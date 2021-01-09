@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1818C433E0
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A27DC433DB
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F05623372
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F05623372
+	by mail.kernel.org (Postfix) with ESMTPS id 81CE723372
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81CE723372
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,37 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KarxF7vDaH9TTt1t0RzxgeOZJnl6hYFCotDTz8X4whg=; b=d19ECnEOn8Nq37uiqV37UI9eV
-	lKseq9cUIihGy4dJsfWS75L+qIMgmqn4FjCuX5Wafo/xGDy7u8KHc74GRhMTZulFi6qPAmP5dasI7
-	LWhDcHO96d5Khzz26f/V6gBg6AsD2wAgSlHweT2JywnxF0EmmOh90LHlp9gcsWMV1KiuVN7J7BL1l
-	gSZNMQ5B5SYSWOm1fZN5ADNFWgvI/EtExkj4v71WBYTMLG9uZnVDW6/c0L/rFdkPs/uqwnhOooNeo
-	ao4ay586mHRsR2VEPCzwcs1CUwX1ZiiIfEzRDP0jSQOjYfmtiHAEJCkh3WYsCPrxjEWEguJCGSK4T
-	TSm5guCxA==;
+	 bh=7dqsZteZhAWRY2G8X4eI2a/DQrTuiJ8VQ21ZipLylxM=; b=IO/8DOMNUJi5kRfaYPRQQIkHY
+	LoYMIzsEyrgM8LGUfRCJQ+uzmb1hra1UMvUc+BfaudozAZl/l5KWZPIeHBOJHsTkxGzdmjvmy38zX
+	Hr7KmN+sG2z3/E+fGnRp90eNVuJuCR8H0ar4egjtLLDhwhabUB++iXX5Dr58ShmrNV0fiZLWvOHf4
+	AiHQdI4c9epLAz5aKbnsKBiSnRI/CMBl053LTCSLCyafZ+lCBUQD6WBOfn54+w5y1fZh6z1Dqi4OB
+	pDDSwPbQ7SsBEXa4TBicnapp3BfdUdAvmFair7nEcmY6F71flAYscX+ffcD+us4Y+AwqDiOuPlzCn
+	Bu+bWnj0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyGLc-0000d6-R9; Sat, 09 Jan 2021 15:40:12 +0000
+	id 1kyGLb-0000cp-Uk; Sat, 09 Jan 2021 15:40:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyGLO-0000Xp-Cv; Sat, 09 Jan 2021 15:39:59 +0000
+ id 1kyGLO-0000Xo-Cv; Sat, 09 Jan 2021 15:39:59 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kyGLM-0000jX-Ed; Sat, 09 Jan 2021 16:39:56 +0100
+ id 1kyGLM-0000jX-O8; Sat, 09 Jan 2021 16:39:56 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: assign a fixed index to mmc devices
- on rk3328 boards
-Date: Sat,  9 Jan 2021 16:39:48 +0100
-Message-Id: <161020678303.3482489.12512122590216902227.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH v2 1/4] ARM: dts: rockchip: add QoS register
+ compatibles for rk3066/rk3188
+Date: Sat,  9 Jan 2021 16:39:49 +0100
+Message-Id: <161020678303.3482489.18290216929874336363.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201219210500.3855-1-jbx6244@gmail.com>
-References: <20201219210500.3855-1-jbx6244@gmail.com>
+In-Reply-To: <20201206103711.7465-1-jbx6244@gmail.com>
+References: <20201206103711.7465-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210109_103958_591199_0EE0EA0A 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210109_103958_565075_57D606C1 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,17 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 19 Dec 2020 22:05:00 +0100, Johan Jonker wrote:
-> Recently introduced async probe on mmc devices can shuffle block IDs.
-> Pin them to fixed values to ease booting in environments where UUIDs
-> are not practical. Use newly introduced aliases for mmcblk devices from [1].
+On Sun, 6 Dec 2020 11:37:08 +0100, Johan Jonker wrote:
+> With the conversion of syscon.yaml minItems for compatibles
+> was set to 2. Current Rockchip dtsi files only use "syscon" for
+> QoS registers. Add Rockchip QoS compatibles for rk3066/rk3188
+> to reduce notifications produced with:
 > 
-> [1] https://patchwork.kernel.org/patch/11747669/
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/mfd/syscon.yaml
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: assign a fixed index to mmc devices on rk3328 boards
-      commit: 221c6c042fa004b73b10780fa2aaf177085e2f3f
+[3/4] arm64: dts: rockchip: add QoS register compatibles for rk3399
+      commit: bd3fd04910ab5e4d571c19f50c341de175597dfa
+[4/4] arm64: dts: rockchip: add QoS register compatibles for px30
+      commit: 6c3ae9f9a133d387ef4e1b4297c9df4e9a1c469d
 
 Best regards,
 -- 
