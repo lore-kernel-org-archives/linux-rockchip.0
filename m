@@ -4,57 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8B36C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 11:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86AC5C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 11:56:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E5D320729
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 11:49:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E5D320729
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2267A224BD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 11:56:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2267A224BD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L23lFReqI4sa6hN08yJDhDn5/FmrkvN0jBIVuOPtADQ=; b=NCWO4yJtkslTud881Ll5JL/OQS
-	U6vpPoBPLZgmn63L6dtdIWFGsWEYrxFnVE/2bmmoExL4rultq58nJOsuNlXp5toi7ojVqHefw2bPl
-	SPgRhffhz/LpFReX9DMD53nycjX6zHsQnoyW1RsCS2yCTlSK3xjFnawbHSCFF2Yg5P3OaVivm+ZYh
-	dP73Iwlk8z8V9czy80Zq6m3M8E901iFmcw+VDvfymNAw4Ic0WMug/OrhAfSkWnKy1XoDUdPuBfAEF
-	tT9M9SKqOg+MgF3lCYTui1MQWKaFB8IX9GCCkVi1rLHLida9Q02hLlKv+0DJpcCuXJWs2S0nD8oqy
-	IrHNj62g==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=C17cP6xVO8u1aSg3gUwz44TrwPtNiW64lv2Z6JwW3JU=; b=hh6td/z0YYhTDcHtMr3hn44hS
+	szX0zL43vYYXmitw8QEOsrUY8MvfJPEHyvRvQDzP4qOBcbTKIpT+HxFzQSAOp6Fa2VBdJx1+YEKSS
+	9aXpObUFLFoj5JDNmRgsO9r2TGtCjUjbCBPJUubib6m3YZr8YlMXrm/62eBoxRGcA2w5abBKAGgNX
+	XYrJrsiEjEn0w/v8QNIv4tn+xVFHR4wSvlPNihv8c1/+fG70vsaYksJZBtfFtO9700Co73RT2IFCe
+	qkL3gsCHMnH7xZvu4x2baWLdgX6hu0FdFvINsxjKedd8pJ+dOndlK8hUiy8DmvYfdIikB4rI5K/Xn
+	jbSvgszwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyvh2-0005eN-63; Mon, 11 Jan 2021 11:49:04 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kyvnt-0006p9-EB; Mon, 11 Jan 2021 11:56:09 +0000
+Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyvgy-0005an-T9
- for linux-rockchip@lists.infradead.org; Mon, 11 Jan 2021 11:49:02 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id AD7F91F44D9B
-Message-ID: <ef218bf2bd948961079237686b58a00ca1b125bf.camel@collabora.com>
-Subject: Re: [PATCH] hantro: Format IOCTLs compliance fixes
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Ricardo Ribalda <ribalda@chromium.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org,  devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org
-Date: Mon, 11 Jan 2021 08:48:46 -0300
-In-Reply-To: <20210111113529.45488-1-ribalda@chromium.org>
-References: <20210111113529.45488-1-ribalda@chromium.org>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ id 1kyvnq-0006oE-S6
+ for linux-rockchip@lists.infradead.org; Mon, 11 Jan 2021 11:56:07 +0000
+Received: by mail-il1-x12f.google.com with SMTP id h3so10325357ils.4
+ for <linux-rockchip@lists.infradead.org>; Mon, 11 Jan 2021 03:56:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uA3TKz8uECHG3k4yaFsUscxG5WEGEfU+DDgmBoAkS/o=;
+ b=cIvAbCgayxCKoOYNityjL7wT9stWwPvV5eiCz7X38vD43GczvDqDpmuctteU9QyQ+e
+ Km9UDE+qcaQ+wrWWNECGFkMSGJXhz5AW0uKH50716CeXLrfWfAe0i4OFHhFv79uQxpSy
+ gnOsEH9u8HNzIAWUO1mhanlP45jDlmTwtKBbU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uA3TKz8uECHG3k4yaFsUscxG5WEGEfU+DDgmBoAkS/o=;
+ b=mANn3Y9r2o+DFgMDjU3OIKp7lAMtdsm5BmR74LB7L4rKszEplkWIWvLL6/2XOt35xk
+ q4jrxZfIlOKW2vV1NM7sFFYtfSWP1Ay0XgsfigAhTMKvS5kRO74ODHreG+ZRyub82JYA
+ sZpThhtiBR/Lq3w8uAyEzBxapui8gDz/aSYJzaD4Ozr3nDNk6puGjoRYdK5FsGVGGq5J
+ fdz2psN2RfIr3EYOaJhKrsMA+1BDp0vmIsFwCIoxT/kvaWZQD0BuMchKJtVhi5//GUOe
+ QnOaxL0vcHsm+LQG33e/tZ+jLUClDng+uTVjfKMhqUvRJfSMoH2PyRytBOWd9LnOnNAH
+ 1qew==
+X-Gm-Message-State: AOAM532q68TOg1k4Ne7/6ShxQiTy47p4ik9LxZhn1ov8NkrH95ig+mp4
+ Z1YVZYwMaqGUDYR0F8UDbECnyTeCz8vQQA==
+X-Google-Smtp-Source: ABdhPJzAVdf1rgRCF9VoO0y59byJvK4KACLIx87cJDe9CQb6A3eHOCOp6us6/m8PGHGe8QOLQio2FQ==
+X-Received: by 2002:a05:6e02:e45:: with SMTP id
+ l5mr14858788ilk.294.1610366164340; 
+ Mon, 11 Jan 2021 03:56:04 -0800 (PST)
+Received: from mail-io1-f42.google.com (mail-io1-f42.google.com.
+ [209.85.166.42])
+ by smtp.gmail.com with ESMTPSA id b6sm14203884ilv.79.2021.01.11.03.56.03
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Jan 2021 03:56:03 -0800 (PST)
+Received: by mail-io1-f42.google.com with SMTP id d9so17497422iob.6
+ for <linux-rockchip@lists.infradead.org>; Mon, 11 Jan 2021 03:56:03 -0800 (PST)
+X-Received: by 2002:a02:c042:: with SMTP id u2mr13813149jam.32.1610366162852; 
+ Mon, 11 Jan 2021 03:56:02 -0800 (PST)
 MIME-Version: 1.0
+References: <20210111113529.45488-1-ribalda@chromium.org>
+ <ef218bf2bd948961079237686b58a00ca1b125bf.camel@collabora.com>
+In-Reply-To: <ef218bf2bd948961079237686b58a00ca1b125bf.camel@collabora.com>
+From: Ricardo Ribalda <ribalda@chromium.org>
+Date: Mon, 11 Jan 2021 12:55:52 +0100
+X-Gmail-Original-Message-ID: <CANiDSCsX3k7xeC7Sr2T2SxHqspay+i054rAuv-NYCQpFRNuGeg@mail.gmail.com>
+Message-ID: <CANiDSCsX3k7xeC7Sr2T2SxHqspay+i054rAuv-NYCQpFRNuGeg@mail.gmail.com>
+Subject: Re: [PATCH] hantro: Format IOCTLs compliance fixes
+To: Ezequiel Garcia <ezequiel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_064901_125572_90E18F26 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20210111_065606_963647_7CFC9212 
+X-CRM114-Status: GOOD (  22.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,40 +96,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-rockchip@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUmljYXJkbywKCk9uIE1vbiwgMjAyMS0wMS0xMSBhdCAxMjozNSArMDEwMCwgUmljYXJkbyBS
-aWJhbGRhIHdyb3RlOgo+IENsZWFyIHRoZSByZXNlcnZlZCBmaWVsZHMuCj4gCj4gRml4ZXM6Cj4g
-wqAgZmFpbDogdjRsMi10ZXN0LWZvcm1hdHMuY3BwKDQ4Mik6IHBpeF9tcC5wbGFuZV9mbXRbMF0u
-cmVzZXJ2ZWQgbm90IHplcm9lZAo+IHRlc3QgVklESU9DX1RSWV9GTVQ6IEZBSUwKPiDCoCBmYWls
-OiB2NGwyLXRlc3QtZm9ybWF0cy5jcHAoNDgyKTogcGl4X21wLnBsYW5lX2ZtdFswXS5yZXNlcnZl
-ZCBub3QgemVyb2VkCj4gdGVzdCBWSURJT0NfU19GTVQ6IEZBSUwKPiAKPiBTaWduZWQtb2ZmLWJ5
-OiBSaWNhcmRvIFJpYmFsZGEgPHJpYmFsZGFAY2hyb21pdW0ub3JnPgo+IC0tLQo+IMKgZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fdjRsMi5jIHwgNSArKysrKwo+IMKgMSBmaWxl
-IGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb192NGwyLmMKPiBpbmRleCBiNjY4YTgyZDQwYWQuLjliMzg0ZmJmZmM5MyAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMKPiAr
-KysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMKPiBAQCAtMjM5
-LDYgKzIzOSw3IEBAIHN0YXRpYyBpbnQgaGFudHJvX3RyeV9mbXQoY29uc3Qgc3RydWN0IGhhbnRy
-b19jdHggKmN0eCwKPiDCoMKgwqDCoMKgwqDCoMKgY29uc3Qgc3RydWN0IGhhbnRyb19mbXQgKmZt
-dCwgKnZwdV9mbXQ7Cj4gwqDCoMKgwqDCoMKgwqDCoGJvb2wgY2FwdHVyZSA9IFY0TDJfVFlQRV9J
-U19DQVBUVVJFKHR5cGUpOwo+IMKgwqDCoMKgwqDCoMKgwqBib29sIGNvZGVkOwo+ICvCoMKgwqDC
-oMKgwqDCoGludCBpOwo+IMKgCj4gwqDCoMKgwqDCoMKgwqDCoGNvZGVkID0gY2FwdHVyZSA9PSBj
-dHgtPmlzX2VuY29kZXI7Cj4gwqAKPiBAQCAtMjkzLDYgKzI5NCwxMCBAQCBzdGF0aWMgaW50IGhh
-bnRyb190cnlfZm10KGNvbnN0IHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4gwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcGl4X21wLT53aWR0aCAqIHBpeF9t
-cC0+aGVpZ2h0ICogZm10LT5tYXhfZGVwdGg7Cj4gwqDCoMKgwqDCoMKgwqDCoH0KPiDCoAo+ICvC
-oMKgwqDCoMKgwqDCoGZvciAoaSA9IDA7IGkgPCBwaXhfbXAtPm51bV9wbGFuZXM7IGkrKykKPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgbWVtc2V0KHBpeF9tcC0+cGxhbmVfZm10W2ld
-LnJlc2VydmVkLCAwLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgc2l6ZW9mKHBpeF9tcC0+cGxhbmVfZm10W2ldLnJlc2VydmVkKSk7Cj4gKwoKVGhpcyBsb29r
-cyBsaWtlIHNvbWV0aGluZyB0aGF0IHNob3VsZCBiZSBoYW5kbGVkIGF0IHRoZSBjb3JlLApwcm9i
-YWJseSBpbiBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmM6OnY0bF90cnlfZm10
-KCkuCgpUaGFua3MsCkV6ZXF1aWVsCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Ezequiel
+
+On Mon, Jan 11, 2021 at 12:48 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
+>
+> Hi Ricardo,
+>
+> On Mon, 2021-01-11 at 12:35 +0100, Ricardo Ribalda wrote:
+> > Clear the reserved fields.
+> >
+> > Fixes:
+> >   fail: v4l2-test-formats.cpp(482): pix_mp.plane_fmt[0].reserved not zeroed
+> > test VIDIOC_TRY_FMT: FAIL
+> >   fail: v4l2-test-formats.cpp(482): pix_mp.plane_fmt[0].reserved not zeroed
+> > test VIDIOC_S_FMT: FAIL
+> >
+> > Signed-off-by: Ricardo Ribalda <ribalda@chromium.org>
+> > ---
+> >  drivers/staging/media/hantro/hantro_v4l2.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >
+> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> > index b668a82d40ad..9b384fbffc93 100644
+> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> > @@ -239,6 +239,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+> >         const struct hantro_fmt *fmt, *vpu_fmt;
+> >         bool capture = V4L2_TYPE_IS_CAPTURE(type);
+> >         bool coded;
+> > +       int i;
+> >
+> >         coded = capture == ctx->is_encoder;
+> >
+> > @@ -293,6 +294,10 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+> >                         pix_mp->width * pix_mp->height * fmt->max_depth;
+> >         }
+> >
+> > +       for (i = 0; i < pix_mp->num_planes; i++)
+> > +               memset(pix_mp->plane_fmt[i].reserved, 0,
+> > +                      sizeof(pix_mp->plane_fmt[i].reserved));
+> > +
+>
+> This looks like something that should be handled at the core,
+> probably in drivers/media/v4l2-core/v4l2-ioctl.c::v4l_try_fmt().
+
+The core does clear the reserved field from v4l2_pix_format_mplane,
+but not the reserved field for every plane. I can try to add it to the
+core as well. At least these drivers have code duplication:
+
+git grep reserved | grep memset | grep plane_fmt
+drivers/media/pci/intel/ipu3/ipu3-cio2.c:
+memset(mpix->plane_fmt[0].reserved, 0,
+drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c:
+memset(pix_mp->plane_fmt[i].reserved, 0,
+drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c:
+memset(&(pix_fmt_mp->plane_fmt[i].reserved[0]), 0x0,
+drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:
+memset(&(pix_fmt_mp->plane_fmt[i].reserved[0]), 0x0,
+drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c:
+memset(&(pix->plane_fmt[i].reserved[0]), 0x0,
+drivers/media/platform/rcar_fdp1.c:
+memset(pix->plane_fmt[i].reserved, 0,
+drivers/media/platform/rcar_fdp1.c:
+memset(pix->plane_fmt[2].reserved, 0,
+drivers/media/platform/rcar_jpu.c:
+memset(pix->plane_fmt[0].reserved, 0,
+drivers/media/platform/rcar_jpu.c:
+memset(pix->plane_fmt[i].reserved, 0,
+drivers/media/platform/sunxi/sun4i-csi/sun4i_v4l2.c:
+memset(pix->plane_fmt[i].reserved, 0,
+drivers/media/platform/ti-vpe/vpe.c:
+memset(plane_fmt->reserved, 0, sizeof(plane_fmt->reserved));
+drivers/media/test-drivers/vicodec/vicodec-core.c:
+memset(pix_mp->plane_fmt[0].reserved, 0,
+drivers/staging/media/hantro/hantro_v4l2.c:
+memset(pix_mp->plane_fmt[i].reserved, 0,
+drivers/staging/media/ipu3/ipu3-v4l2.c: memset(pixm->plane_fmt[0].reserved, 0,
+
+>
+> Thanks,
+> Ezequiel
+>
+
+
+-- 
+Ricardo Ribalda
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
