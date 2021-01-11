@@ -2,18 +2,19 @@ Return-Path: <SRS0=mNPc=GO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFC66C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 03:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83EA2C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 03:43:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7AF1A206D6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 03:28:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7AF1A206D6
+	by mail.kernel.org (Postfix) with ESMTPS id 161B221973
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 03:43:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 161B221973
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,52 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/5ielqMUqhQat0875G8opNGc9v/4++rot0I1c66COXU=; b=HmhhlP4JIAwKmdKjmOuMgD7mG
-	oyPoAI0DAv6fyW5l1VJmVGKMNLRz2NwnE4JTThs8TBh826EdTBooAsIb7CoVbdUFAsdYQvhmm4kdN
-	SR2PqK9oemIHab471wRnW+KsLGHS/b9CdKDS7Geql4BiHE4Y96i7eVjyJOoOM7/2g9Jjhr12voXKD
-	F+eNE4Z3noO+F+cxlVQw2FXR1VqYu20i42GrrKsRMk7Ck0SyN2VYCNLwRywcXzaflVXTT/FM2Qxws
-	mWt8kiPlCSbTQVUrNC9IRXX+XXeqoWW7TSJLOwmZdsiHdoWX6ERXW8SfCeKTMVisgNkSsx19XPNjM
-	CMxtP2cGA==;
+	 bh=qj77ha82m3WG2Dt6eQ4YyC9yPtsKXl9hzyt1MVY/vUo=; b=frGbv2QMzv3yDecIaw72ToMBl
+	lhmwAySDtYNZbH9sz8RsLA9Ca2pfdvdBXv59iHU+urpWqUzMc4pvus2v4ohqQsK/aPsgZXzoxq8q8
+	pBNAApOr8O02h/j3rKHXpUQ8jeXYUTbQpIqEQ5aPncNX0LIgFHBcqLvCUtNhgD0O+0anOuUpz65r6
+	Vva1tkBJLfiyrerYRTWQBGrPFTC/RhLuo20vT2UckjWXlrvWbnWMezKJMtaD/EN1t0l+Z0v3JlwCQ
+	t7dcVPOCwPq3eJDsdmY2onfGpVBETIsTYSpnvUDHA8WNwCr4QHVYJTiB0NbP/0QonVE+Vq0WIySrQ
+	TgwEfy/sQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kynsD-0000KD-AM; Mon, 11 Jan 2021 03:28:05 +0000
+	id 1kyo6k-0005Ji-Av; Mon, 11 Jan 2021 03:43:06 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyns7-0000Hs-E9; Mon, 11 Jan 2021 03:28:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id AE5AA206D6;
- Mon, 11 Jan 2021 03:27:57 +0000 (UTC)
+ id 1kyo6e-0005HM-Aa; Mon, 11 Jan 2021 03:43:01 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A5C3621973;
+ Mon, 11 Jan 2021 03:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610335678;
- bh=+IJTwQXfUOjC47u3kJJ5xfioClx6iqnW8AtMz/ilyYI=;
+ s=k20201202; t=1610336579;
+ bh=CHuh4qN+YmPciHj3YGdWe03a7ipUVuIOFoHrWeqE00k=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=vC+/XqIJpviNUrUgBE6aZgLlbGuNmDDdRdyzRc44p99jaV1ErK3vfllXWOtzCBDSA
- gkz/SzSSw1zMvtuuuhIkivIpjAoBMmCy5AoehqhOzMpg4lzeikQZ7hY8F/oSuEAdQS
- Tq9R/mdDBaX7eOEhMeBImcaTZOYkzcjspOGbnkigWAWiZyIZZHOfxIHOCJ7+LZmQ4W
- 3qO0ZNnelSM+wBh0t5bvQzJxmnYFwdjJqmxPt5S2XLbQcjs/ZhwDBzaIFQ4Ac2CuIF
- fQbMk/nS76bG1xh5E4NVU4QcdwEV0NhPxhb7xnbxmrn6YX+HQiQZbfRmqo+zgYlOBJ
- HvlMq+OrUxF4Q==
-Received: by mail-lj1-f173.google.com with SMTP id y22so1970919ljn.9;
- Sun, 10 Jan 2021 19:27:57 -0800 (PST)
-X-Gm-Message-State: AOAM532llQsaMUAj4MNNN3DGrb+zfXtaWSe6c1nCRb9Sw3i3SR2XkST+
- fquvDSE74Q38wzjtEsVqpaPT4jAllIFlhib6qrk=
-X-Google-Smtp-Source: ABdhPJx+QJLTIR+/b8gx1a/zGX/AFEeyqjUrB+/I8gyRM2KTyu8W5advO2PE43Uj0MDQYlfyc6jU+6Efhz5WjSpZutY=
-X-Received: by 2002:a2e:89d7:: with SMTP id c23mr6270072ljk.282.1610335676076; 
- Sun, 10 Jan 2021 19:27:56 -0800 (PST)
+ b=L7pOMoaJmae0aJ24JwA84nselHSjtQjVpSKXjSLW2V1LaSWnJpF5LLo6xgrTedsBI
+ snnwtXXWLeQoRgMMD4Wj1FOVgQYCRD17yo0Tyb3ynWK46J/rQIvTVJbqRGi/v7rYpr
+ 0ofFj8nbNH39ndm9o/cOaGXuc/RTORzIFKJXwFGgTxhSmpr9d8UHRyXaz6rD8PVhgh
+ TnV2tpr2BjlRbJ/Lrn/ld8QajbvHeHru5dCU5kFF03IMvMV1BudT8KarH3gr37BVMN
+ 4ZpoNnPNnXbVdsbtf2nNje1Bj1njWCqSYD9L6UMzKeN0CxzsB2uSr9TKyWsfygo1VT
+ QPxNcWBioLR6w==
+Received: by mail-lf1-f48.google.com with SMTP id h205so35804241lfd.5;
+ Sun, 10 Jan 2021 19:42:58 -0800 (PST)
+X-Gm-Message-State: AOAM532OP+cFNNeSPSoT4N0rQu+CqzO9LPwPAErItSiN2NtxfSe7xu3g
+ tn/35cKia6gFx2knXfOgbnqGC5r0kSQDdXhx244=
+X-Google-Smtp-Source: ABdhPJzNtkDfrsxKoqJwssn1ctm0LmngFvUPTAOBld/jxIERDit82+Cna0qVFGWRGzh5Q46l8shoY1rOnttUSaCpZ6k=
+X-Received: by 2002:a19:3f01:: with SMTP id m1mr6166021lfa.203.1610336576898; 
+ Sun, 10 Jan 2021 19:42:56 -0800 (PST)
 MIME-Version: 1.0
 References: <20210110035846.9155-1-wens@kernel.org>
+ <20210110035846.9155-4-wens@kernel.org>
  <381648f9-d650-dddf-59e6-ef32d1e1bb43@gmail.com>
  <CAGb2v67=uO4HqRNEbhAJs2-d4mhL8URoijwE4ni9J8cYXrmAtQ@mail.gmail.com>
- <2241380.NG923GbCHz@diego>
-In-Reply-To: <2241380.NG923GbCHz@diego>
+ <96b18111-1dda-83c9-c927-0852b0618874@gmail.com>
+In-Reply-To: <96b18111-1dda-83c9-c927-0852b0618874@gmail.com>
 From: Chen-Yu Tsai <wens@kernel.org>
-Date: Mon, 11 Jan 2021 11:27:47 +0800
-X-Gmail-Original-Message-ID: <CAGb2v67h3v4DdEY68BmHy263=L1tB0DuJnf_exHrLi57SiRjUA@mail.gmail.com>
-Message-ID: <CAGb2v67h3v4DdEY68BmHy263=L1tB0DuJnf_exHrLi57SiRjUA@mail.gmail.com>
+Date: Mon, 11 Jan 2021 11:42:45 +0800
+X-Gmail-Original-Message-ID: <CAGb2v65Qj+VVrF5LFj-2R2vQVSh8HSTAMuoFKfiabR0GsvG=vw@mail.gmail.com>
+Message-ID: <CAGb2v65Qj+VVrF5LFj-2R2vQVSh8HSTAMuoFKfiabR0GsvG=vw@mail.gmail.com>
 Subject: Re: [PATCH 3/3] arm64: dts: rockchip: rk3328: Add Radxa ROCK Pi E
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210110_222759_555240_AA891D1B 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20210110_224300_528969_6BE37E47 
+X-CRM114-Status: GOOD (  49.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,46 +82,492 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, devicetree <devicetree@vger.kernel.org>,
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree <devicetree@vger.kernel.org>,
  linux-kernel <linux-kernel@vger.kernel.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKYW4gMTEsIDIwMjEgYXQgNDowNiBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPgo+IEhpLAo+Cj4gQW0gU29ubnRhZywgMTAuIEphbnVhciAyMDIxLCAx
-NjozNzoxNSBDRVQgc2NocmllYiBDaGVuLVl1IFRzYWk6Cj4gPiA+ID4gKyAgICAgdmNjX3NkOiBz
-ZG1tYy1yZWd1bGF0b3Igewo+ID4gPiA+ICsgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyZWd1
-bGF0b3ItZml4ZWQiOwo+ID4gPiA+ICsgICAgICAgICAgICAgZ3BpbyA9IDwmZ3BpbzAgUktfUEQ2
-IEdQSU9fQUNUSVZFX0xPVz47Cj4gPiA+ID4gKyAgICAgICAgICAgICBwaW5jdHJsLW5hbWVzID0g
-ImRlZmF1bHQiOwo+ID4gPiA+ICsgICAgICAgICAgICAgcGluY3RybC0wID0gPCZzZG1tYzBtMV9w
-aW4+Owo+ID4gPgo+ID4gPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiA+
-ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2Nfc2QiOwo+ID4gPgo+ID4gPiBy
-ZWd1bGF0b3ItbmFtZSBhYm92ZSBvdGhlciByZWd1bGF0b3IgcHJvcGVydGllcwo+ID4KPiA+IFRo
-YXQgaXMgYWN0dWFsbHkgd2hhdCBJIHdhcyB1c2VkIHRvLCBidXQgc29tZSBvdGhlciByb2NrY2hp
-cCBkdHMgZmlsZXMKPiA+IGhhdmUgYWxsIHRoZSBwcm9wZXJ0aWVzIHNvcnRlZCBhbHBoYWJldGlj
-YWxseS4gU28gSSBzdHVjayB3aXRoIHdoYXQgSQo+ID4gc2F3Lgo+Cj4gSSB0cnkgdG8ga2VlcCBp
-dCBhbHBoYWJldGljYWwgZXhjZXB0IGZvciB0aGUgZXhjZXB0aW9ucyA6LUQgLgo+Cj4gcmVndWxh
-dG9yLW5hbWUgaXMgc3VjaCBhbiBleGNlcHRpb24uIFNpbWlsYXIgdG8gY29tcGF0aWJsZXMsIHRo
-ZQo+IHJlZ3VsYXRvci1uYW1lIGlzIGFuIGVudHJ5IG5lZWRlZCB0byBzZWUgaWYgeW91J3JlIGF0
-IHRoZSByaWdodCBub2RlLAo+IHNvIEkgcmVhbGx5IGxpa2UgaXQgYmVpbmcgdGhlIHRvcG1vc3Qg
-cmVndWxhdG9yLWZvbyBwcm9wZXJ0eSAtIGp1c3QgbWFrZXMKPiByZWFkaW5nIGVhc2llci4KPgo+
-IChzYW1lIGZvciB0aGUgY29tcGF0aWJsZSBmaXJzdCwgdGhlbiByZWdzLCBpbnRlcnJ1cHRzIHBh
-cnRzLCBhcyB3ZWxsCj4gYXMgInN0YXR1cy1sYXN0IikKPgo+IEJ1dCBvZnRlbnRpbWVzLCBJIGp1
-c3QgZml4IHRoZSBvcmRlcmluZyB3aGVuIGFwcGx5aW5nIC0gYnV0IHNlZW0gdG8gaGF2ZQo+IG1p
-c3NlZCB0aGlzIHNvbWV3aGVyZSBpbiB0aG9zZSAib3RoZXIgUm9ja2NoaXAgZHRzIGZpbGVzIiA7
-LSkgLgoKSSB3YXMgc2xpZ2h0bHkgY29uZnVzZWQuIEkgbG9va2VkIGFnYWluIGFuZCB5ZXMgcmVn
-dWxhdG9yLW5hbWUgaXMgYWx3YXlzIHRoZQpmaXJzdCByZWd1bGF0b3IgcmVsYXRlZCBwcm9wZXJ0
-eS4gV2hhdCdzIG9mZiBpcyB0aGF0IGluIHNvbWUgY2FzZXMgbWluL21heAp2b2x0YWdlIGNvbWVz
-IGJlZm9yZSBhbHdheXMtb24vYm9vdC1vbiwgYW5kIGluIG90aGVycyB2aWNlIHZlcnNhLgoKRm9y
-IGV4YW1wbGUgaW4gdGhlIFJvY2s2NCBhbmQgUk9DLVJLMzMyOC1DQyBkZXZpY2UgdHJlZXMsIGlu
-IHRoZSBmaXhlZApyZWd1bGF0b3JzLCBhbHdheXMtb24vYm9vdC1vbiBjb21lIGJlZm9yZSBtaW4v
-bWF4IHZvbHRhZ2UsIHdoaWxlIGluIHRoZQpQTUlDIHRoZSBvdGhlciBvcmRlciBpcyB1c2VkLgoK
-CkNoZW5ZdQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+On Mon, Jan 11, 2021 at 4:17 AM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> Hi Chen-Yu,
+>
+> Most is already answered by Heiko.
+>
+> On 1/10/21 4:37 PM, Chen-Yu Tsai wrote:
+> > Hi,
+> >
+> > On Sun, Jan 10, 2021 at 10:45 PM Johan Jonker <jbx6244@gmail.com> wrote:
+> >>
+> >> Hi Chen-Yu,
+> >>
+> >> Some comments, have a look if it is useful...
+> >>
+> >> On 1/10/21 4:58 AM, Chen-Yu Tsai wrote:
+> >>> From: Chen-Yu Tsai <wens@csie.org>
+> >>>
+> >>> Radxa ROCK Pi E is a router oriented SBC based on Rockchip's RK3328 SoC.
+> >>> As the official wiki page puts it, "E for Ethernets".
+> >>>
+> >>> It features the RK3328 SoC, gigabit and fast Ethernet RJ45 ports, both
+> >>> directly served by Ethernet controllers in the SoC, a USB 3.0 host port,
+> >>> a power-only USB type-C port, a 3.5mm headphone jack for audio output,
+> >>
+> >>> two LEDs, a 40-pin Raspberry Pi style GPIO header, and optional WiFi+BT
+> >>> and PoE header.
+> >>>
+> >>> The board comes in multiple configurations, differing in the amount of
+> >>> onboard RAM, the level of WiFi+BT (none, 802.11n 2.4GHz, or 802.11ac
+> >>> 2.4 GHz & 5 GHz), and whether PoE is supported or not. These variants
+> >>> can all share the same device tree.
+> >>>
+> >>> The USB 2.0 OTG controller is available on the 40-pin header. This is
+> >>> not enabled in the device tree, since it is possible to use it in a
+> >>> host-only configuration, or in OTG mode with an extra pin from the
+> >>> header as the ID pin.
+> >>>
+> >>> The device tree is based on the one of the Rock64, with various parts
+> >>> modified to match the ROCK Pi E, and some parts updated to newer styles,
+> >>> such as the gmac2io node's mdio sub-node.
+> >>>
+> >>> Add a new device tree file for the new board.
+> >>>
+> >>> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+> >>> ---
+> >>>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> >>>  .../boot/dts/rockchip/rk3328-rock-pi-e.dts    | 369 ++++++++++++++++++
+> >>>  2 files changed, 370 insertions(+)
+> >>>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> >>> index 622d320ddd13..62d3abc17a24 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> >>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> >>> @@ -11,6 +11,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+> >>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
+> >>>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> >>> new file mode 100644
+> >>> index 000000000000..7818d2e8180c
+> >>> --- /dev/null
+> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dts
+> >>> @@ -0,0 +1,369 @@
+> >>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> >>> +/*
+> >>> + * (C) Copyright 2020 Chen-Yu Tsai <wens@csie.org>
+> >>> + *
+> >>> + * Based on ./rk3328-rock64.dts, which is
+> >>> + *
+> >>> + * Copyright (c) 2017 PINE64
+> >>> + */
+> >>> +
+> >>> +/dts-v1/;
+> >>> +
+> >>> +#include <dt-bindings/leds/common.h>
+> >>> +#include <dt-bindings/gpio/gpio.h>
+> >>> +#include <dt-bindings/pinctrl/rockchip.h>
+> >>> +#include "rk3328.dtsi"
+> >>> +
+> >>> +/ {
+> >>> +     model = "Radxa ROCK Pi E";
+> >>> +     compatible = "radxa,rockpi-e", "rockchip,rk3328";
+> >>> +
+> >>> +     chosen {
+> >>> +             stdout-path = "serial2:1500000n8";
+> >>> +     };
+> >>> +
+> >>> +     gmac_clkin: external-gmac-clock {
+> >>> +             compatible = "fixed-clock";
+> >>> +             clock-frequency = <125000000>;
+> >>> +             clock-output-names = "gmac_clkin";
+> >>> +             #clock-cells = <0>;
+> >>> +     };
+> >>> +
+> >>> +     leds {
+> >>> +             compatible = "gpio-leds";
+> >>> +             pinctrl-0 = <&led_pin>;
+> >>> +             pinctrl-names = "default";
+> >>> +
+> >>> +             led-0 {
+> >>
+> >>> +                     /* schematic say green but the actual thing is blue */
+> >>
+> >> In rockpie-v1.2-20200427-sch.pdf this led is already called "LED_BLUE",
+> >> so comment maybe not needed anymore?
+> >
+> > Thanks. Did not notice there was a new revision.
+> >
+> >>> +                     color = <LED_COLOR_ID_BLUE>;
+> >>> +                     gpios = <&gpio3 RK_PA5 GPIO_ACTIVE_LOW>;
+> >>> +                     linux,default-trigger = "heartbeat";
+> >>> +             };> +   };
+> >>> +
+> >>> +     vcc_sd: sdmmc-regulator {
+> >>> +             compatible = "regulator-fixed";
+> >>> +             gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
+> >>> +             pinctrl-names = "default";
+> >>> +             pinctrl-0 = <&sdmmc0m1_pin>;
+> >>
+> >>> +             regulator-boot-on;
+> >>> +             regulator-name = "vcc_sd";
+> >>
+> >> regulator-name above other regulator properties
+> >
+> > That is actually what I was used to, but some other rockchip dts files
+> > have all the properties sorted alphabetically. So I stuck with what I
+> > saw.
+> >
+> >> regulator voltage missing
+> >> make things as complete as possible
+> >>
+> >> from fixed-regulator.yaml:
+> >>
+> >> description:
+> >>   Any property defined as part of the core regulator binding, defined in
+> >>   regulator.yaml, can also be used. However a fixed voltage regulator is
+> >>   expected to have the regulator-min-microvolt and regulator-max-microvolt
+> >>   to be the same.
+> >
+> > However this is not a real regulator; it is merely an on/off switch.
+> > I believe in this case it should just pass through the voltage from
+> > its upstream.
+>
+> This board is not black box. The schematics are public, so finding out
+> limits was not the problem. Up to you if added or not...
+
+As far as Linux is concerned, if the regulator does not have constraints /
+voltages, then its upstream one's values is passed through. I believe that
+correctly represents what the hardware is doing, so I will stick to that.
+I might have asked Mark about this in the past, but I don't remember
+exactly when and where.
+
+> >>> +             vin-supply = <&vcc_io>;
+> >>> +     };
+> >>> +
+> >>
+> >>> +     vcc_host_5v: vcc-host-5v-regulator {
+> >>> +             compatible = "regulator-fixed";
+> >>> +             gpio = <&gpio3 RK_PA7 GPIO_ACTIVE_HIGH>;
+> >>> +             pinctrl-names = "default";
+> >>> +             pinctrl-0 = <&usb30_host_drv>;
+> >>> +             enable-active-high;
+> >>> +             regulator-name = "vcc_host_5v";
+> >>
+> >> idem limits
+> >
+> > Same here.
+> >
+> >>> +             regulator-always-on;
+> >>> +             regulator-boot-on;
+> >>> +             vin-supply = <&vcc_sys>;
+> >>> +     };
+> >>
+> >> For Heiko: ?? remove ??
+> >> usb3 has no support in mainline.
+> >> Regulators not in use are disabled.
+> >> For mainline this node has no use....
+> >
+> > As it already has a defined binding, we can put it in the device tree.
+> >
+> >>> +
+> >>> +     vcc_sys: vcc-sys {
+> >>> +             compatible = "regulator-fixed";
+> >>> +             regulator-name = "vcc_sys";
+> >>
+> >>> +             regulator-always-on;
+> >>> +             regulator-boot-on;
+> >>
+> >> At the other regulators this is sort below the regulator limits.
+> >
+> > Again, alphabetically sorted vs preferred sorting method.
+>
+> There's some room for "creativity", but you must use that "style"
+> document wise. But not above limits in "vcc_sys" and below in "vcc_io".
+
+Sorry. I thought you were referring to the other fixed regulators.
+I see now you meant the regulators in the PMIC. I will fix those up
+to have consistent styling.
+
+Seems that other boards have the same problem.
+
+> From Heiko:
+>
+> compatible
+> reg
+> interrupts
+> [alphabetical]
+> status [if needed]
+>
+> ////////////////////
+>
+> My list:
+>
+> For nodes:
+> If exists on top: model, compatible and chosen.
+> Sort things without reg alphabetical first,
+> then sort the rest by reg address.
+>
+> Inside nodes:
+> If exists on top: compatible, reg and interrupts.
+> In alphabetical order the required properties.
+> Then in alphabetical order the other properties.
+> And as last things that start with '#' in alphabetical order.
+
+For me, it makes more sense to keep #gpio-cells grouped together with
+gpio-controller, and the same for other controller types. #clock-cells
+grouped with clock-output-names also makes it easier to read.
+
+#address-cells and #size-cells naturally go to the end of the list as
+what they really affect are the child nodes, which get listed after.
+
+Since Heiko is OK either way, I'll stick to my ordering for now.
+
+> Add status below all other properties for soc internal components with
+> any board-specifics.
+> Keep an empty line between properties and nodes.
+>
+> Exceptions:
+> Sort pinctrl-0 above pinctrl-names, so it stays in line with clock-names
+> and dma-names.
+> Sort simple-audio-card,name above other simple-audio-card properties.
+> Sort regulator-name above other regulator properties.
+> Sort regulator-min-microvolt above regulator-max-microvolt.
+>
+> >
+> >>> +             regulator-min-microvolt = <5000000>;
+> >>> +             regulator-max-microvolt = <5000000>;
+> >>> +     };
+> >>> +
+> >>> +     vcc_wifi: vcc-wifi-regulator {
+> >>> +             compatible = "regulator-fixed";
+> >>> +             gpio = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
+> >>> +             pinctrl-names = "default";
+> >>> +             pinctrl-0 = <&wifi_en>;
+> >>> +             regulator-name = "vcc_wifi";
+> >>
+> >> idem limits
+> >
+> > Again, it is just a switch.
+> >
+> >>> +             regulator-always-on;
+> >>> +             regulator-boot-on;
+> >>> +             vin-supply = <&vcc_io>;
+> >>> +     };
+> >>> +};
+> >>> +
+> >>> +&analog_sound {
+> >>> +     status = "okay";
+> >>> +};
+> >>> +
+> >>> +&codec {
+> >>> +     status = "okay";
+> >>> +};
+> >>> +
+> >>> +&cpu0 {
+> >>> +     cpu-supply = <&vdd_arm>;
+> >>> +};
+> >>> +
+> >>> +&cpu1 {
+> >>> +     cpu-supply = <&vdd_arm>;
+> >>> +};
+> >>> +
+> >>> +&cpu2 {
+> >>> +     cpu-supply = <&vdd_arm>;
+> >>> +};
+> >>> +
+> >>> +&cpu3 {
+> >>> +     cpu-supply = <&vdd_arm>;
+> >>> +};
+> >>> +
+> >>> +&emmc {
+> >>> +     bus-width = <8>;
+> >>> +     cap-mmc-highspeed;
+> >>
+> >>> +     max-frequency = <150000000>;
+> >>
+> >> remove
+> >> already defined in dtsi
+> >
+> > OK.
+> >
+> >>> +     mmc-ddr-1_8v;
+> >>> +     mmc-hs200-1_8v;
+> >>> +     non-removable;
+> >>> +     pinctrl-names = "default";
+> >>> +     pinctrl-0 = <&emmc_clk>, <&emmc_cmd>, <&emmc_bus8>;
+> >>> +     vmmc-supply = <&vcc_io>;
+> >>> +     vqmmc-supply = <&vcc18_emmc>;
+> >>> +     status = "okay";
+> >>> +};
+> >>
+> >> ////////////////////////
+> >>         emmc: mmc@ff520000 {
+> >>                 compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
+> >>                 reg = <0x0 0xff520000 0x0 0x4000>;
+> >>                 interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+> >>                 clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+> >>                          <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+> >>                 clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> >>                 fifo-depth = <0x100>;
+> >>                 max-frequency = <150000000>;
+> >>                 status = "disabled";
+> >>         };
+> >> ////////////////////////
+> >>
+> >>> +
+> >>> +&gmac2io {
+> >>> +     assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+> >>> +     assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+> >>> +     clock_in_out = "input";
+> >>> +     phy-handle = <&rtl8211e>;
+> >>> +     phy-mode = "rgmii";
+> >>> +     phy-supply = <&vcc_io>;
+> >>> +     pinctrl-names = "default";
+> >>> +     pinctrl-0 = <&rgmiim1_pins>;
+> >>> +     snps,aal;
+> >>> +     snps,rxpbl = <0x4>;
+> >>> +     snps,txpbl = <0x4>;
+> >>> +     tx_delay = <0x26>;
+> >>> +     rx_delay = <0x11>;
+> >>> +     status = "okay";
+> >>> +
+> >>> +     mdio {
+> >>> +             compatible = "snps,dwmac-mdio";
+> >>> +             #address-cells = <1>;
+> >>> +             #size-cells = <0>;
+> >>> +
+> >>> +             rtl8211e: ethernet-phy@1 {
+> >>> +                     reg = <1>;
+> >>> +                     pinctrl-0 = <&eth_phy_int_pin>, <&eth_phy_reset_pin>;
+> >>> +                     pinctrl-names = "default";
+> >>> +                     interrupt-parent = <&gpio1>;
+> >>> +                     interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
+> >>> +                     reset-assert-us = <10000>;
+> >>> +                     reset-deassert-us = <50000>;
+> >>> +                     reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+> >>> +             };
+> >>> +     };
+> >>> +};
+> >>> +
+> >>> +&gmac2phy {
+> >>> +     pinctrl-names = "default";
+> >>> +     pinctrl-0 = <&fephyled_linkm1>, <&fephyled_rxm1>;
+> >>> +     status = "okay";
+> >>> +};
+> >>> +
+> >>> +&i2c1 {
+> >>> +     status = "okay";
+> >>> +
+> >>> +     rk805: pmic@18 {
+> >>> +             compatible = "rockchip,rk805";
+> >>> +             reg = <0x18>;
+> >>> +             interrupt-parent = <&gpio2>;
+> >>> +             interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
+> >>
+> >>> +             #clock-cells = <1>;
+> >>
+> >> all thing that start with "#" down the list
+> >
+> > Is there a proper "preferred" sorting method defined somewhere?
+>
+> See above.
+>
+> >
+> >>> +             clock-output-names = "xin32k", "rk805-clkout2";
+> >>> +             gpio-controller;
+> >>
+> >>> +             #gpio-cells = <2>;
+> >>
+> >> idem
+> >>
+
+snip
+
+> >>> +
+> >>> +&pinctrl {
+> >>
+> >>> +     ethernet-phy {
+> >>
+> >> gmac2io
+> >
+> > OK.
+
+I thought about this a bit more, and I think e-phy or ephy would be a
+better name, since these pin functions are not directly related to
+gmac2io, but the external Ethernet PHY.
+
+It would be nicer if we could fix the ethernet-phy binding though.
+
+> >> phy / ethernet-phy is a reserved node name
+> >> use something else
+> >>
+> >> make ARCH=arm64 dtbs_check
+> >>
+> >> /arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dt.yaml: ethernet-phy:
+> >> 'reg' is a required property
+> >>         From schema: Documentation/devicetree/bindings/net/ethernet-phy.yaml
+> >
+> > That's somewhat annoying. :(
+> >
+> > I wouldn't say the name is "reserved", just that the binding checking
+> > mechanism can't account for these situations.
+> >
+> >>> +             eth_phy_int_pin: eth-phy-int-pin {
+> >>> +                     rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_down>;
+> >>> +             };
+> >>> +
+> >>> +             eth_phy_reset_pin: eth-phy-reset-pin {
+> >>> +                     rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+> >>> +             };
+> >>> +     };
+> >>> +
+
+snip
+
+> >>> +&saradc {
+> >>> +     vref-supply = <&vcc_18>;
+> >>> +     status = "okay";
+> >>> +};
+> >>
+> >> What happened to the recovery key from the schematic?
+> >
+> > I believe I originally planned on adding it, but failed to find a proper
+> > key event for it. Any suggestions?
+>
+> The consensus seem to be "KEY_VENDOR".
+>
+> Example:
+>
+>         adc-keys {
+>                 compatible = "adc-keys";
+>                 io-channels = <&saradc 0>;
+>                 io-channel-names = "buttons";
+>                 keyup-threshold-microvolt = <1800000>;
+>                 poll-interval = <100>;
+>
+>                 recovery {
+>                         label = "recovery";
+>                         linux,code = <KEY_VENDOR>;
+>                         press-threshold-microvolt = <17000>;
+>                 };
+>         };
+
+Thanks. Though I really wonder what Linux or other OSes could do with it.
+
+
+ChenYu
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
