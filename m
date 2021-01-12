@@ -1,60 +1,85 @@
-Return-Path: <SRS0=mNPc=GO=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=BMHt=GP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B63BFC433E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 23:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2BF1C433E0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35D8822BED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jan 2021 23:41:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35D8822BED
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 7EB2F22E01
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jan 2021 01:47:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EB2F22E01
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ky8PAKBjdVS1Lisk1HIl5XzTT9uJHYs60ZQQAgoE4TI=; b=XpFxNZK7FUCQXfs/StspVEbr2
-	uoIw/BVcFUxWZ+N9IQZn8vYvKXhJzabY5ftbd1fwknV3uKBK9Q43mOj33ejPCQVVCj9qBO2VwctEg
-	P7kBMLuHJkJBtM52+VV5TFfyJ0UQp/RVqmLET9S1C/PfT7MqTM2GQRwlUNoYQjVIsxKPRxzcMUQ7c
-	moIGOXruj+YzhXOjPXYkU35j/HJcLL9xpUiDJCekQQ73yh+OPapCvXfukI7GetD7a7hwk6oKfbjcC
-	24cjsQUmXXjJKsrZXS4NCPCU3ojq1vxXwwWuEI8PdOa4BUzQgD8l7vzBZtlwonhr1eGyRqIxUBzjY
-	yAYkfjMDg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I5EV9w0JJKNJp9ybP8MLab/fQOmd+/t5XUoBobg4QkQ=; b=EMKdd8EAuc6ClLE99CAzLG/C6x
+	AL01GmyZrcdCsIwLWFQZM9lRWVYmGYPbUWH52ooI7xCrRS92EnZVsU96xPgPPUJIs/N3a3Vvf0LLB
+	hWUnoA1lT7eb8gG2zfhDGPDs8a8IheQDOrns11QwsdfyJPdn3goML5jydm/eHgj5szJ2PEpqUCE3y
+	ZbcnPY5TwkF5Oyq47MG6QgcAp699FQZ7ClSk4hW0ZgCbLIV6vnyBIsDH6v+6UyYSqpYVnQDs6cTzR
+	Ruyflj/OA1wiV2pdnRUqlX/rejVk/c1vbTu8vxa1VTDgEU0XyNNI8DpLpj3TW8vHZ9RKYWzkwQioO
+	cr0/3GPA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kz6o1-0000oc-Qz; Mon, 11 Jan 2021 23:41:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kz8mB-0002tm-OT; Tue, 12 Jan 2021 01:47:15 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kz6ny-0000l4-DE
- for linux-rockchip@lists.infradead.org; Mon, 11 Jan 2021 23:40:59 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kz6nm-0001p6-D3; Tue, 12 Jan 2021 00:40:46 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: dafna.hirschfeld@collabora.com, helen.koike@collabora.com,
- linux-media@vger.kernel.org, mchehab@kernel.org,
- Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
-Subject: [PATCH 1/2] media: rockchip: rkisp1: carry ip version information
-Date: Tue, 12 Jan 2021 00:40:10 +0100
-Message-Id: <20210111234011.3642481-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210111234011.3642481-1-heiko@sntech.de>
-References: <20210111234011.3642481-1-heiko@sntech.de>
+ id 1kz8m8-0002rl-GJ; Tue, 12 Jan 2021 01:47:13 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id iq13so628477pjb.3;
+ Mon, 11 Jan 2021 17:47:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
+ b=Xw2j31dYa7SMPypEzYJZYF8wY0mLXfYFnRrVxcJlbSxF0zGLpHLPR6T6Bg8zzujGzJ
+ zaZiUQXiIkayvjga5aPESuNkqGgWOFFQpJvEybATylzQpZ1xIRuXQptih/ZGWPZzoaPR
+ ksMLZwGXjGMwxnDyUNshkicHq9mDWY/odzVyLVRpqHtax39dopg5O5T6oZn4UeIJavJQ
+ TuYKiMhudim7g3ptvZWU4FM6sz6hGq1jm8ByHFlPS/ilmXxTkAbVFmJLfnhFkZbemzgV
+ VyDxLpCOCcE2sGfaOcuwmcxO4XHau8P9gKSGlganrQfq+Ttb+SvZ3EL4WDtL30hcfyL2
+ dRtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zW9C/QxorEMeUx+kFawitRLf1fte/47nwM4QFK+urs8=;
+ b=WFfV2pARwX9oRurRihEzNu8EqGA4OyH1i7yAlY9dBm2dZTZimY0FtP+YYy5HG3U4QT
+ wNSUU8AnU3RwBqLqPub6/N2t65yYSN1UWVIpu5IwtkrNdiz9AJNeaGXEnW4U10yN6q/e
+ OZgBbTNip59ZLeeQzkY7L5zteE6WrshGQoKBcKuxH3fu94UEq7OO6gZCcaIEloWlkqGP
+ jOKkV6dAOFoZAKQA4uj/Qh6dHAQAP0AZy/3zCtOaRW6/ExwvzLdMt2PUchz+lgSXw8H0
+ b9K1P3A4JFrNknBEBIYTUpak2f0pSgqoe5bomAmOM7ZSAG3M0kTzbv1f03UrBXW/ISa7
+ 39wA==
+X-Gm-Message-State: AOAM532hnY5FvfUgzQCmzvuUK5q8zE/k+MrLJg/IqXkVdtv5aZypWPKj
+ WaDdDfisf2MJ8Cp8VUbBJz4=
+X-Google-Smtp-Source: ABdhPJyxFPcLuVKER4Bl8+KtGfVHh/4AqA6sL49fG/uOu5r42FeKYv+0+bdSG/fKKm4dJGHuwUnqxw==
+X-Received: by 2002:a17:902:d202:b029:da:d86b:78be with SMTP id
+ t2-20020a170902d202b02900dad86b78bemr2264745ply.0.1610416027902; 
+ Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+Received: from localhost.localdomain ([49.207.194.207])
+ by smtp.gmail.com with ESMTPSA id 14sm904376pfy.55.2021.01.11.17.46.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Jan 2021 17:47:07 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v3 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Tue, 12 Jan 2021 07:16:31 +0530
+Message-Id: <20210112014650.10887-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210111_184058_548381_D2713BD4 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20210111_204712_600412_EF835798 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,148 +92,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- linux-rockchip@lists.infradead.org, ezequiel@collabora.com, heiko@sntech.de,
- christoph.muellner@theobroma-systems.com
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+From: Allen Pais <apais@linux.microsoft.com>
 
-The IP block evolved from its rk3288/rk3399 base and the vendor
-designates them with a numerical version. rk3399 for example
-is designated V10 probably meaning V1.0.
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
 
-There doesn't seem to be an actual version register we could read that
-information from, so allow the match_data to carry that information
-for future differentiation.
+The series is based on v5.11-rc2 (e71ba9452f0b)
 
-Also carry that information in the hw_revision field of the media-
-controller API, so that userspace also has access to that.
+v3:
+  - fixed rockchip driver(Emil Renner Berthing)
 
-The added versions are:
-- V10: at least rk3288 + rk3399
-- V11: seemingly unused as of now, but probably appeared in some soc
-- V12: at least rk3326 + px30
-- V13: at least rk1808
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
-changes since rfc:
-- move rkisp1_version enum into uapo
-- show version in media-api hw_revision
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
 
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
- .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 +++++++++++--------
- include/uapi/linux/rkisp1-config.h            |  7 ++++++
- 3 files changed, 21 insertions(+), 9 deletions(-)
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 038c303a8aed..bad1bd468f2f 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -354,6 +354,7 @@ struct rkisp1_device {
- 	void __iomem *base_addr;
- 	int irq;
- 	struct device *dev;
-+	enum rkisp1_cif_isp_version isp_ver;
- 	unsigned int clk_size;
- 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
- 	struct v4l2_device v4l2_dev;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 68da1eed753d..f594d7cd03d0 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -104,6 +104,7 @@
- struct rkisp1_match_data {
- 	const char * const *clks;
- 	unsigned int size;
-+	enum rkisp1_cif_isp_version isp_ver;
- };
- 
- /* ----------------------------------------------------------------------------
-@@ -411,15 +412,16 @@ static const char * const rk3399_isp_clks[] = {
- 	"hclk",
- };
- 
--static const struct rkisp1_match_data rk3399_isp_clk_data = {
-+static const struct rkisp1_match_data rk3399_isp_match_data = {
- 	.clks = rk3399_isp_clks,
- 	.size = ARRAY_SIZE(rk3399_isp_clks),
-+	.isp_ver = RKISP1_V10,
- };
- 
- static const struct of_device_id rkisp1_of_match[] = {
- 	{
- 		.compatible = "rockchip,rk3399-cif-isp",
--		.data = &rk3399_isp_clk_data,
-+		.data = &rk3399_isp_match_data,
- 	},
- 	{},
- };
-@@ -457,15 +459,15 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- 
- static int rkisp1_probe(struct platform_device *pdev)
- {
--	const struct rkisp1_match_data *clk_data;
-+	const struct rkisp1_match_data *match_data;
- 	struct device *dev = &pdev->dev;
- 	struct rkisp1_device *rkisp1;
- 	struct v4l2_device *v4l2_dev;
- 	unsigned int i;
- 	int ret, irq;
- 
--	clk_data = of_device_get_match_data(&pdev->dev);
--	if (!clk_data)
-+	match_data = of_device_get_match_data(&pdev->dev);
-+	if (!match_data)
- 		return -ENODEV;
- 
- 	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
-@@ -494,15 +496,17 @@ static int rkisp1_probe(struct platform_device *pdev)
- 
- 	rkisp1->irq = irq;
- 
--	for (i = 0; i < clk_data->size; i++)
--		rkisp1->clks[i].id = clk_data->clks[i];
--	ret = devm_clk_bulk_get(dev, clk_data->size, rkisp1->clks);
-+	for (i = 0; i < match_data->size; i++)
-+		rkisp1->clks[i].id = match_data->clks[i];
-+	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
- 	if (ret)
- 		return ret;
--	rkisp1->clk_size = clk_data->size;
-+	rkisp1->clk_size = match_data->size;
-+	rkisp1->isp_ver = match_data->isp_ver;
- 
- 	pm_runtime_enable(&pdev->dev);
- 
-+	rkisp1->media_dev.hw_revision = rkisp1->isp_ver;
- 	strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
- 		sizeof(rkisp1->media_dev.model));
- 	rkisp1->media_dev.dev = &pdev->dev;
-diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-index 6e449e784260..bad46aadf838 100644
---- a/include/uapi/linux/rkisp1-config.h
-+++ b/include/uapi/linux/rkisp1-config.h
-@@ -124,6 +124,13 @@
- #define RKISP1_CIF_ISP_STAT_AFM           (1U << 2)
- #define RKISP1_CIF_ISP_STAT_HIST          (1U << 3)
- 
-+enum rkisp1_cif_isp_version {
-+	RKISP1_V10 = 0,
-+	RKISP1_V11,
-+	RKISP1_V12,
-+	RKISP1_V13,
-+};
-+
- enum rkisp1_cif_isp_histogram_mode {
- 	RKISP1_CIF_ISP_HISTOGRAM_MODE_DISABLE,
- 	RKISP1_CIF_ISP_HISTOGRAM_MODE_RGB_COMBINED,
 -- 
-2.29.2
+2.25.1
 
 
 _______________________________________________
