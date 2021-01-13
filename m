@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29F5DC433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jan 2021 11:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78C5CC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jan 2021 11:54:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEA55233F7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jan 2021 11:43:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEA55233F7
+	by mail.kernel.org (Postfix) with ESMTPS id 2483422D58
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jan 2021 11:54:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2483422D58
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,42 +22,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=C1VVHTAMxJp1e5eM43X+OcJVJIPS4BbaiAaCI5hSBPg=; b=RPS7SVVtsXTtOtKvMefv3KFPM
-	KWcKrqsiDJ/IuTrxr1jWUKXNUqLbvSkJepgIgLGOrHqtPtOlu452oDyxFXuRG+LTC8dtA8pVXorbr
-	fXeW6in8DHDVcIk4lsJkSpRfKwbbEyfq37ZXmaGFp8q/WRe6KwQW5UcUuLSJIWJeEjFS9pIUGzSaJ
-	kOarKorcCsa6scdiWrm0ykcXSs1+0985lAANTDAqOXhx6gO2RkJm+dPAnurgv9XW+Tn1YUvXQPKEU
-	c+bSZuvxCBW30sIyMuY0hqljpTsKrr6smOi4CRANDTgIB04c0Iq6tdvFSC+Q4GHurA5D1i801BWnW
-	W+heEGBSw==;
+	 bh=Cx79AA1z6eT6Rq/juEPmomLO+gPpxB2/XR+5wCvf1mA=; b=Dmtclf2nquL2G/+pIzUjJtwPK
+	371jq7rR6LNQELEC1wVvIzo/3kuEZEKlh4+NzR87EEnSzmcu5RTbbOp5Q1awhRFI0jLqQ+DEz7jdG
+	Zin0H1UcvcVJ+1PWrqq9TLWKtgcaVuRi4kPR2ppCs/wCV14L/m+HsXEy6AN58aptsl2TLSLtUEHRD
+	/uLMD1BKbcSw71amr5aYi+7DJZCx7Gzz57/bO6wmyTniZfGPl7TctNGhvnu0651Zjtky6FnW7TBza
+	cZxXlYEK6TYTcqpPMGQD/y9BCMW5+Lmc25wbzR91qcBure56R0oyJXF6f6rV8qnFhAtptJ5l0ANBB
+	Vxun5en5g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kzeYi-0004RU-9v; Wed, 13 Jan 2021 11:43:28 +0000
+	id 1kzejZ-0006aT-An; Wed, 13 Jan 2021 11:54:41 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kzeYd-0004QJ-RH; Wed, 13 Jan 2021 11:43:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 99CCB233ED;
- Wed, 13 Jan 2021 11:43:19 +0000 (UTC)
+ id 1kzejT-0006Xv-Gy; Wed, 13 Jan 2021 11:54:36 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CCB7E22CE3;
+ Wed, 13 Jan 2021 11:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1610538203;
- bh=4lfAzIIXpvDgPBgljbfYqu50jIJ3GftaisI4cpyB6LA=;
+ s=k20201202; t=1610538874;
+ bh=UR9Q8J5UKPRcEM0FWW19Ma/gHSEuq+X59AMnoAaIOSU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cH7Q1Mmh8k1Tg7X9NkHaLthBt+Zsk3e8LKYGc7NO2spDW/jO6zbg69p7npgbzjtbK
- m1ChektHDSte7Leb7PcEMROVmrXrjXJmnw4cdq63xG41juyHKrAZBpJV3cBhOwqSDC
- UkhB0gRBLxj0Hqu50/HJrmY6KNlJMGMgp8Q46Kzu6F0EHamlGpzUvSy0PmQKxSvhAL
- tIcYQ237PyW27M8pBu+4hB6EI1N+5xgmoc2Uedzv4FL4i23qViJ2AdRaJCfh6qZCic
- wbCdjLmTt8D/dSD7kFZdSxKigg91d8aB5No+xvOwhz3PlMJIr+pkHmefWXH8CCOSG7
- Dps2UJ/dvL2FQ==
-Date: Wed, 13 Jan 2021 17:13:15 +0530
+ b=PL8QDmOWZGO+UxzzrOt3vax9wXDKEetmuQ6x34HaMfungR60Gb1OuIHpjRcW1K7lF
+ g1fNCYPuNl8WE5bexbvGLHJcXLWcp7SJ3ieFlh/KdW+0iQ5f6+akQDvX7uYsMayIF7
+ ytV6Xz4A8Zgwm886qLEyPXZZfJcWqGLzfCqv1gbePDY/HtJiBH9oSfrV0kVN9uLrtK
+ h0EgHK2ns9PkZxaQx40lOjfzKBKfHZztik5rW4+C4rvaKQOD0Tulrhlg2DMrbPMflI
+ IGWYowpy2uK5k0mwifJ3w4JuM8bmHnU7KgSE0biI9fKqbHlPlP2yAFccZBgM9hp2pP
+ 4VgYhMqDiJsgg==
+Date: Wed, 13 Jan 2021 17:24:26 +0530
 From: Vinod Koul <vkoul@kernel.org>
 To: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-Subject: Re: [PATCH v3] phy: rockchip-emmc: emmc_phy_init() always return 0
-Message-ID: <20210113114315.GB2771@vkoul-mobl>
-References: <20201210080454.17379-1-chris.ruehl@gtsys.com.hk>
+Subject: Re: [PATCH v2 0/2] rockchip: emmc: rk3399 add vendor prefix
+Message-ID: <20210113115426.GE2771@vkoul-mobl>
+References: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201210080454.17379-1-chris.ruehl@gtsys.com.hk>
+In-Reply-To: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210113_064323_991880_DBA914A5 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20210113_065435_700797_6498E744 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,28 +71,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Douglas Anderson <dianders@chromium.org>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>,
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10-12-20, 16:04, Chris Ruehl wrote:
-> rockchip_emmc_phy_init() return variable is not set with the error value
-> if clk_get() failed. 'emmcclk' is optional, thus use clk_get_optional()
-> and if the return value != NULL make error processing and set the
-> return code accordingly.
+On 15-12-20, 09:44, Chris Ruehl wrote:
+> Following the reference in vendor-prefixes.yaml, update implementation
+> and documentation for the phy-rockchip-emmc.
+> This patchset follow up with 
+> commit 8b5c2b45b8f0a ("phy: rockchip: set pulldown for strobe line in dts")
+> commit a8cef928276bb ("phy: rockchip-emmc: output tap delay dt property")
 
 Applied, thanks
-
-> 
-> Fixes: 52c0624a10cce phy: rockchip-emmc: Set phyctrl_frqsel based on card clock
-> 
-
-No empty lines after fixes line pls
 
 -- 
 ~Vinod
