@@ -2,77 +2,61 @@ Return-Path: <SRS0=rUAS=GR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FE54C433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 19:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D871CC433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 22:51:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 369E923A5C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 19:09:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 369E923A5C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 696A32389B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 22:51:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 696A32389B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0igKk7L93qNrEXF2g4FD7egoXAgizfcTC8/eDuw9RFQ=; b=YwNAsRC8opK+8vXDyB6KNx9uK
-	CO+T+I1paBIrxndEeS69popXSAd9LX2bQJ6DVEiykowDs7aFLkNrmVYsCschPCRuy0uCd9IxGGXF7
-	BDSD0qrXSsdy5D58Si3+aqhKfzHLPPY2SWidL25blh/6Zv6Bu0FxLlD8YmUvyYMQ6BsMt31tq7Zmg
-	k6VBH1SKhFF5jbLY6C7TXuIS4Aa+A34qtJg/nrrK+UgqU9pX0xk44dcxDx7o9G1C65zH/Z1tfOh1k
-	NPuIcoNOTrQHxH8bgVB0aFyQQTV2JmlD1JsXf0fpeYsPmYHrEmc60mgs5DM7I6iSDheFKMqQeJmTP
-	FNgGSBFtw==;
+	 bh=UxTZddRxqb/cwrADKHtacBODpLGN/71ZDjIGUMtWVlE=; b=x4m8p9acrSQVelqdma+6fblyX
+	lbuHfaE7OuYt+XFBeZ+4S3Za19Yf2otOkXOjJynlBazkMRhsf4AqDlxsmLRY11YMiGYNK0CZcco2H
+	XN07Pwrja/M8E7Qtdz/T+bdYp2xUAwg+J9YJLYhTOLLxgGSfg2m0hHroNoGRoyThLBt4hh95nmdoR
+	7i970AvjQynSfEJLw3IPaKpoN7x8VZ1tKBBHZiEpBd6dMyRRbwnpK4TiXiSjEoqqXNg5g/MzDpYBM
+	68L23SuMxUFftknCZAG/xQmhoagUD2TalZwxDWOSHHlvjeZLXWtI9PrgzX8N6puhUWG/zdoFOetUP
+	RcXZgC3jw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0807-0007ZX-Un; Thu, 14 Jan 2021 19:09:44 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1l0BSE-0003M8-Oy; Thu, 14 Jan 2021 22:50:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0805-0007Y1-DN; Thu, 14 Jan 2021 19:09:42 +0000
-Received: by mail-ot1-f42.google.com with SMTP id r9so6181871otk.11;
- Thu, 14 Jan 2021 11:09:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=LHnv4YBdvdSukhMOpEajJnzBDnb/tm9j26BMAF7scIo=;
- b=GHJ4HzFmJu7CoaULXECwR/fQGCgQrDkpEDKl9ljbrkwKNnpObD1HqcGsXVC49iD9y4
- 50wyagWuTs7jSc0l6VMe0iaxp43vcFYaloeRdz4RByFsSSn14Tz8XLd8kBTKSTW5LpPL
- 8XG9PPjRu2CWw8lwDVIhrqvM86VNzDF+R2zmnEiE0kK3Iv8IeOBou/QNmRd3QwNNks1T
- +zFYCLOi1uWp1W2ISrqOwcEQGdIJljHmsZZyj3nXomzl2OFWvUgGR8A7eI4vqelwFDKy
- ev3NI1SGr7xsl1jn57QQlj9FfJuJkvXShrigZONX8bw75Aof3aK4kAkhRWur167gihVk
- rO0w==
-X-Gm-Message-State: AOAM531oitFHZnJNKKmeNQSEWtAivlm/pv+1cS9E4ELVyqaBYB7EWt8H
- 74xFQ4d00Epp9xluwvPFRrUJcPgHjg==
-X-Google-Smtp-Source: ABdhPJyXY9ue6QPUzsbYXuR+YT+3/Y46kF6q/lHe43oOwfEA57P9/0c2PVBhldi1Kjbmb/mgV1Fn3A==
-X-Received: by 2002:a9d:8ea:: with SMTP id 97mr5456555otf.223.1610651380243;
- Thu, 14 Jan 2021 11:09:40 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v4sm1225950otk.50.2021.01.14.11.09.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Jan 2021 11:09:39 -0800 (PST)
-Received: (nullmailer pid 3390716 invoked by uid 1000);
- Thu, 14 Jan 2021 19:09:38 -0000
-Date: Thu, 14 Jan 2021 13:09:38 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chen-Yu Tsai <wens@kernel.org>
-Subject: Re: [PATCH 2/3] dt-bindings: arm: rockchip: Add Radxa ROCK Pi E
-Message-ID: <20210114190938.GA3390660@robh.at.kernel.org>
-References: <20210110035846.9155-1-wens@kernel.org>
- <20210110035846.9155-3-wens@kernel.org>
+ id 1l0BSC-0003L1-4o
+ for linux-rockchip@lists.infradead.org; Thu, 14 Jan 2021 22:50:56 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1l0BS1-0001al-M0; Thu, 14 Jan 2021 23:50:45 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Hans Verkuil <hverkuil@xs4all.nl>, helen.koike@collabora.com,
+ linux-media@vger.kernel.org, mchehab@kernel.org,
+ Laurent.pinchart@ideasonboard.com,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 1/2] media: rockchip: rkisp1: carry ip version information
+Date: Thu, 14 Jan 2021 23:50:44 +0100
+Message-ID: <4240320.Wku2Vz74k6@diego>
+In-Reply-To: <81d0ce25-98a9-1785-d046-913c322d98bb@collabora.com>
+References: <20210111234011.3642481-1-heiko@sntech.de>
+ <0154ffe7-19a4-28a9-003e-4f3af7c76274@xs4all.nl>
+ <81d0ce25-98a9-1785-d046-913c322d98bb@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210110035846.9155-3-wens@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_140941_472037_FB0BE1DB 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20210114_175056_198141_DA807E19 
+X-CRM114-Status: GOOD (  34.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,49 +69,192 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>,
+ ezequiel@collabora.com, christoph.muellner@theobroma-systems.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 10 Jan 2021 11:58:45 +0800, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
+Am Dienstag, 12. Januar 2021, 11:47:57 CET schrieb Dafna Hirschfeld:
 > 
-> Radxa ROCK Pi E is a router oriented SBC based on Rockchip's RK3328 SoC.
-> As the official wiki page puts it, "E for Ethernets".
+> Am 12.01.21 um 09:32 schrieb Hans Verkuil:
+> > On 12/01/2021 00:40, Heiko Stuebner wrote:
+> >> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> >>
+> >> The IP block evolved from its rk3288/rk3399 base and the vendor
+> >> designates them with a numerical version. rk3399 for example
+> >> is designated V10 probably meaning V1.0.
+> >>
+> >> There doesn't seem to be an actual version register we could read that
+> >> information from, so allow the match_data to carry that information
+> >> for future differentiation.
 > 
-> It features the RK3328 SoC, gigabit and fast Ethernet RJ45 ports, both
-> directly served by Ethernet controllers in the SoC, a USB 3.0 host port,
-> a power-only USB type-C port, a 3.5mm headphone jack for audio output,
-> two LEDs, a 40-pin Raspberry Pi style GPIO header, and optional WiFi+BT
-> and PoE header.
+> There is a register RKISP1_CIF_VI_ID.
+> The datasheet I have says: "MARVIN revision ID"
+> The datasheet says that the reset value is 1085'3017H
+
+printing CIF_VI_ID on the px30 shows:
+	rkisp1 ff4a0000.isp: CIF_ID 0x09305366
+though I also can't guess what that should mean.
+
+
+> which is also the value for the rk3399 and is described "M14_v2 id (Rel. 1.1)"
 > 
-> The board comes in multiple configurations, differing in the amount of
-> onboard RAM, the level of WiFi+BT (none, 802.11n 2.4GHz, or 802.11ac
-> 2.4 GHz & 5 GHz), and whether PoE is supported or not. These variants
-> can all share the same device tree.
+> I don't how this register corresponds to the versions from
+> the downstream code if at all.
 > 
-> The USB 2.0 OTG controller is available on the 40-pin header. This is
-> not enabled in the device tree, since it is possible to use it in a
-> host-only configuration, or in OTG mode with an extra pin from the
-> header as the ID pin.
+> The register is read and kprinted in function rkisp1_config_cif
+> Could you report the value printed in the px30?
 > 
-> The device tree is based on the one of the Rock64, with various parts
-> modified to match the ROCK Pi E, and some parts updated to newer styles,
-> such as the gmac2io node's mdio sub-node.
+> >>
+> >> Also carry that information in the hw_revision field of the media-
+> >> controller API, so that userspace also has access to that.
+> >>
+> >> The added versions are:
+> >> - V10: at least rk3288 + rk3399
+> >> - V11: seemingly unused as of now, but probably appeared in some soc
+> >> - V12: at least rk3326 + px30
+> >> - V13: at least rk1808
+> >>
+> >> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> >> ---
+> >> changes since rfc:
+> >> - move rkisp1_version enum into uapo
+> >> - show version in media-api hw_revision
+> >>
+> >>   .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
+> >>   .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 +++++++++++--------
+> >>   include/uapi/linux/rkisp1-config.h            |  7 ++++++
+> >>   3 files changed, 21 insertions(+), 9 deletions(-)
+> >>
+> >> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> >> index 038c303a8aed..bad1bd468f2f 100644
+> >> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> >> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> >> @@ -354,6 +354,7 @@ struct rkisp1_device {
+> >>   	void __iomem *base_addr;
+> >>   	int irq;
+> >>   	struct device *dev;
+> >> +	enum rkisp1_cif_isp_version isp_ver;
 > 
-> Add a compatible string for the new board.
-> 
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+> I don't think we need to add this field,
+> seems to be enough to set the media_dev.hw_revision
+
+you're right, one instance in media_dev.hw_revision should be enough
+Will change that in v2.
+
+Heiko
+
+> >>   	unsigned int clk_size;
+> >>   	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+> >>   	struct v4l2_device v4l2_dev;
+> >> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >> index 68da1eed753d..f594d7cd03d0 100644
+> >> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >> @@ -104,6 +104,7 @@
+> >>   struct rkisp1_match_data {
+> >>   	const char * const *clks;
+> >>   	unsigned int size;
+> >> +	enum rkisp1_cif_isp_version isp_ver;
+> >>   };
+> >>   
+> >>   /* ----------------------------------------------------------------------------
+> >> @@ -411,15 +412,16 @@ static const char * const rk3399_isp_clks[] = {
+> >>   	"hclk",
+> >>   };
+> >>   
+> >> -static const struct rkisp1_match_data rk3399_isp_clk_data = {
+> >> +static const struct rkisp1_match_data rk3399_isp_match_data = {
+> >>   	.clks = rk3399_isp_clks,
+> >>   	.size = ARRAY_SIZE(rk3399_isp_clks),
+> >> +	.isp_ver = RKISP1_V10,
+> >>   };
+> >>   
+> >>   static const struct of_device_id rkisp1_of_match[] = {
+> >>   	{
+> >>   		.compatible = "rockchip,rk3399-cif-isp",
+> >> -		.data = &rk3399_isp_clk_data,
+> >> +		.data = &rk3399_isp_match_data,
+> >>   	},
+> >>   	{},
+> >>   };
+> >> @@ -457,15 +459,15 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> >>   
+> >>   static int rkisp1_probe(struct platform_device *pdev)
+> >>   {
+> >> -	const struct rkisp1_match_data *clk_data;
+> >> +	const struct rkisp1_match_data *match_data;
+> >>   	struct device *dev = &pdev->dev;
+> >>   	struct rkisp1_device *rkisp1;
+> >>   	struct v4l2_device *v4l2_dev;
+> >>   	unsigned int i;
+> >>   	int ret, irq;
+> >>   
+> >> -	clk_data = of_device_get_match_data(&pdev->dev);
+> >> -	if (!clk_data)
+> >> +	match_data = of_device_get_match_data(&pdev->dev);
+> >> +	if (!match_data)
+> >>   		return -ENODEV;
+> >>   
+> >>   	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+> >> @@ -494,15 +496,17 @@ static int rkisp1_probe(struct platform_device *pdev)
+> >>   
+> >>   	rkisp1->irq = irq;
+> >>   
+> >> -	for (i = 0; i < clk_data->size; i++)
+> >> -		rkisp1->clks[i].id = clk_data->clks[i];
+> >> -	ret = devm_clk_bulk_get(dev, clk_data->size, rkisp1->clks);
+> >> +	for (i = 0; i < match_data->size; i++)
+> >> +		rkisp1->clks[i].id = match_data->clks[i];
+> >> +	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+> >>   	if (ret)
+> >>   		return ret;
+> >> -	rkisp1->clk_size = clk_data->size;
+> >> +	rkisp1->clk_size = match_data->size;
+> >> +	rkisp1->isp_ver = match_data->isp_ver;
+> >>   
+> >>   	pm_runtime_enable(&pdev->dev);
+> >>   
+> >> +	rkisp1->media_dev.hw_revision = rkisp1->isp_ver;
+> > 
+> > This must be documented in Documentation/media/admin-guide/rkisp1.rst.
+> > Document that this field is used by this driver and the mapping of the
+> > version number to SoCs.
+> > 
+> >>   	strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
+> >>   		sizeof(rkisp1->media_dev.model));
+> >>   	rkisp1->media_dev.dev = &pdev->dev;
+> >> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+> >> index 6e449e784260..bad46aadf838 100644
+> >> --- a/include/uapi/linux/rkisp1-config.h
+> >> +++ b/include/uapi/linux/rkisp1-config.h
+> >> @@ -124,6 +124,13 @@
+> >>   #define RKISP1_CIF_ISP_STAT_AFM           (1U << 2)
+> >>   #define RKISP1_CIF_ISP_STAT_HIST          (1U << 3)
+> >>   
+> >> +enum rkisp1_cif_isp_version {
+> >> +	RKISP1_V10 = 0,
+> >> +	RKISP1_V11,
+> >> +	RKISP1_V12,
+> >> +	RKISP1_V13,
+> >> +};
+> >> +
+> >>   enum rkisp1_cif_isp_histogram_mode {
+> >>   	RKISP1_CIF_ISP_HISTOGRAM_MODE_DISABLE,
+> >>   	RKISP1_CIF_ISP_HISTOGRAM_MODE_RGB_COMBINED,
+> >>
+> > 
+> > Regards,
+> > 
+> > 	Hans
+> > 
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
