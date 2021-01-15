@@ -1,60 +1,85 @@
-Return-Path: <SRS0=rUAS=GR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=MHCR=GS=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5E61C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 23:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4969FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jan 2021 07:41:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39CB523A6C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jan 2021 23:36:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39CB523A6C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 709FB23436
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jan 2021 07:41:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 709FB23436
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=dabbelt.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wM+9UmJezoaqrCzZI4dEBTpOzcSxrh/X1X9gWXxvO38=; b=b6m9b4+sFKQxm/4Ucwi+apbYM
-	5rPyPMEat6ySTTDmu61fMFSQ7ZazN6M1V7A4OqZDVppYP1cdH17bSHnUE4ESlahPJZN4pmISbiZkg
-	FNC9c2vKNCJnLmUQUx2cQdFv5iw2RARdx2ZjlVBOdU4gnRYiXU9HXdMwc0AWTGTOl1c607zS0yjgb
-	nKvwUhr+39lSECFQI+nqX0Edr7kJ7vnVU/uCnUoDZURoMsQHbf2xcbkmTH3F+hEDxHGR/H4y+N1n5
-	BWag5eeqKt4wJkOONgeaGzXYZkMeJRhMv0k9YOVLRt8cD1a4AwFfxwWd7c6jicAW4siVtcGFQknx2
-	z4CrqNd7A==;
+	List-Unsubscribe:List-Id:To:From:MIME-Version:Message-Id:Date:Subject:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RAgePS6Ljo6YHcXvQ+xOaxkKXuKNHxniz9LWGKRIpx4=; b=ieP2It03ddtrjuyeTbX0DdGzMm
+	yUU1o94pzLNPZvafEsDmUAenJoEgZol9+aCojRmtCZX82lAnssDqWN+4LGwXmTbd6l8ZUW8GKbjYm
+	ZRWhIJGwDxPozjbbxUvZH0SRsw3nO6OVgGt7QpX2ugLkCnpUhuIi3bRwuPgQyDyiyoBp/9/OPTUcM
+	vK01sXcJnASyGS5wdRsy/FKXzU43TPq7dbD7IlJKpSPekbTFtKMbC9xaSWzjQnbNfIdR26LaRft8X
+	huHGuzUf6XXqYdqdQGlBh3eeHGfb7dhjuDOhaDY0ttOIlrHo5dvBVlJY/FU9LXx93YH5Wthi5n9sj
+	PUbNZ19g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0C9p-0006Lu-Do; Thu, 14 Jan 2021 23:36:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1l0Jju-0001vk-C0; Fri, 15 Jan 2021 07:41:46 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0C9n-0006LX-FB
- for linux-rockchip@lists.infradead.org; Thu, 14 Jan 2021 23:36:00 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l0C9i-0001no-2u; Fri, 15 Jan 2021 00:35:54 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: dafna.hirschfeld@collabora.com, helen.koike@collabora.com,
- linux-media@vger.kernel.org, mchehab@kernel.org,
- Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
-Subject: Re: [PATCH 0/2] Fix the rkisp1 userspace API for later IP versions
-Date: Fri, 15 Jan 2021 00:35:53 +0100
-Message-ID: <2248126.yKrmzQ4Hd0@diego>
-In-Reply-To: <20210114233345.160223-4-heiko@sntech.de>
-References: <20210114233345.160223-1-heiko@sntech.de>
- <20210114233345.160223-4-heiko@sntech.de>
+ id 1l0Jjr-0001um-Ir
+ for linux-rockchip@lists.infradead.org; Fri, 15 Jan 2021 07:41:44 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id t6so4286071plq.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 14 Jan 2021 23:41:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dabbelt-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:date:message-id:mime-version:content-transfer-encoding:cc
+ :from:to; bh=O+ju7GzUSXgEyONqw2hDG3TWhp+lRUaB6LNMrBnInUE=;
+ b=c4aQ4cyO+IgwfmpdLIqX1q419sayYIGKJD7IUTfQz/7f8CHhBNqAF3Wzrjya7/P7hH
+ TxL/eVFXPOVDkVf5wwZ7v4kMLifmKRHFlyLUHIGST1zgiVGMHkR4hNYOkf4lveAhA0oS
+ 1JhKVacOoCfPS5nlfV+CbFh2UMrIOLz53NDcGWOpf0HOehUB3NoZjDItyhGiAit5SYUA
+ htG0JawNAtwSzaVx015CNsEZEjiDBl98T+2wbYYjqRGUd5LgPSdeAVGnCAz3lL9uOC12
+ 8ABg0muchJyr4U4WR8mCRraOsIinPmYPLeoNSV/pmoNU0DQDIiI2WD4AIRmyA6QaSdUH
+ eMDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:date:message-id:mime-version
+ :content-transfer-encoding:cc:from:to;
+ bh=O+ju7GzUSXgEyONqw2hDG3TWhp+lRUaB6LNMrBnInUE=;
+ b=sjONGOf4rKuYYQGu/4YVdfNK8ejOmkcbKRe39NoGNLMWfABT7KZ245OD56n3jvBFCQ
+ tMudy3G8L270338I5x7S3RVEsec8Q6b1ZiciVMIx4og9tzRPD8R+lF5UEYq02SCmj/63
+ 6ufgm3l1eciLWTqua4PAVTs0M2IFGsL4k/G0cw3vN1hHhsB43XRv3926euGJGEguTUrg
+ PRlbSLxRBGdNLWv3ii4sLBd0I8l04ZVZ1g8CamI+Ai0FHkNtwIQunmWmHQDWETR8jEA5
+ RLm0IdJV5ddwp8q9dmroVN1+7y6RdJoeCVj4fk0z5KIehpvrdZp6qYuMZ6JpD1GI3MnQ
+ djPQ==
+X-Gm-Message-State: AOAM531nOgwBVlvhAnY0g7V1JylGIRkLAE+6WUzQwrDuKn1boP4UBgZx
+ eQ2iiKBKTekMqGzZKgDSnbA7lQ==
+X-Google-Smtp-Source: ABdhPJwsuvXD5qgp029828wqLpR1cX2SOM/CqGlwkz97B2cHjqrKqUR1XAm+Epc/0bMXU0qByl31WQ==
+X-Received: by 2002:a17:902:a412:b029:db:cf5a:8427 with SMTP id
+ p18-20020a170902a412b02900dbcf5a8427mr11747670plq.48.1610696499826; 
+ Thu, 14 Jan 2021 23:41:39 -0800 (PST)
+Received: from localhost (76-210-143-223.lightspeed.sntcca.sbcglobal.net.
+ [76.210.143.223])
+ by smtp.gmail.com with ESMTPSA id 4sm7656692pjn.14.2021.01.14.23.41.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Jan 2021 23:41:39 -0800 (PST)
+Subject: [PATCH] drm/rockchip: cdn-dp-core: Fix cdn_dp_resume unused warning
+Date: Thu, 14 Jan 2021 23:40:43 -0800
+Message-Id: <20210115074043.2944-1-palmer@dabbelt.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
+From: Palmer Dabbelt <palmer@dabbelt.com>
+To: heiko@sntech.de
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210114_183559_533271_0D63498C 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20210115_024143_809550_5FBCEAF1 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,55 +92,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, tfiga@chromium.org,
- ezequiel@collabora.com, christoph.muellner@theobroma-systems.com
+Cc: airlied@linux.ie, Palmer Dabbelt <palmerdabbelt@google.com>,
+ hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ daniel@ffwll.ch, kernel-team@android.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Palmer Dabbelt <palmerdabbelt@google.com>
 
-please only look at the patches marked "v2" of course, I somehow
-made git-send-email also grab the old v1 patches from a subdir
-by accident.
+cdn_dp_resume is only used under PM_SLEEP, and now that it's static an
+unused function warning is triggered undner !PM_SLEEP.  This
+conditionally enables the function to avoid the warning.
 
-Thanks
-Heiko
+Fixes: 7c49abb4c2f8 ("drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static")
+Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Am Freitag, 15. Januar 2021, 00:33:43 CET schrieb Heiko Stuebner:
-> This NEEDs to go into 5.11 while we can still adapt the uapi
-> during its RC-cycle.
-> 
-> 
-> When looking into supporting the rkisp1 of the px30 I noticed that
-> some fields got bigger in the uapi, caused by bigger number of samples
-> for example for histograms or gamma values.
-> 
-> The rkisp1 was destaged with 5.11-rc1 so we have still time during
-> the 5.11 cycle to fix that without big hassles.
-> 
-> This was discussed previously in a mail [0] and a rfc series [1]
-> and this two-part series now splits out the important parts that
-> really should become part of a 5.11-rc and thus the final 5.11.
-> 
-> 
-> [0] http://lore.kernel.org/r/3342088.iIbC2pHGDl@diego
-> [1] https://lore.kernel.org/r/20210108193311.3423236-2-heiko@sntech.de
-> 
-> Heiko Stuebner (2):
->   media: rockchip: rkisp1: carry ip version information
->   media: rockchip: rkisp1: extend uapi array sizes
-> 
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 +++++++++-------
->  include/uapi/linux/rkisp1-config.h            | 25 ++++++++++++++++---
->  3 files changed, 35 insertions(+), 13 deletions(-)
-> 
-> 
-
-
-
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index a4a45daf93f2..063a60d213ba 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1121,6 +1121,7 @@ static int cdn_dp_suspend(struct device *dev)
+ 	return ret;
+ }
+ 
++#ifdef CONFIG_PM_SLEEP
+ static int cdn_dp_resume(struct device *dev)
+ {
+ 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+@@ -1133,6 +1134,7 @@ static int cdn_dp_resume(struct device *dev)
+ 
+ 	return 0;
+ }
++#endif
+ 
+ static int cdn_dp_probe(struct platform_device *pdev)
+ {
+-- 
+2.20.1
 
 
 _______________________________________________
