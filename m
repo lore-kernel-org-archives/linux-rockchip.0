@@ -2,60 +2,61 @@ Return-Path: <SRS0=CLqi=GT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 445EAC433E0
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jan 2021 11:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D76B0C433E0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jan 2021 13:35:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23B9E21D7A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jan 2021 11:57:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23B9E21D7A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 4CC0D22B49
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jan 2021 13:35:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CC0D22B49
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Pn5qTnTomPQLm+JXJbN97Sp2uYAMVRZfMuOUI+akyMw=; b=Uq0Hi8zc9JDksL7BvweDUMEgp
-	pXjmXuOHyoUV2lGe2G9h7MZLTG2fF9UuNpOcJ9OVHOYZ1WMjdTu2H8chQfLNDjs8mTn/MCHPGqF2+
-	QGeNFt/7A8Cb9kyOX7HNaG1zw1yAuFxGiVfspX17gJSLaE8H7124oAtXGR8FvCVSwCI2TWkO9pLtd
-	q6EAWT7demRfUwU/MHAhZg0SnnC0Qsp1A2eJpYL4FcqlOPqmn5PC/PFf1cwChHhywCTyqspDvVJwi
-	SIy5Uz5s9hplJe7FdeH1hxQqQgTR9LML3xQv3YDcTwhDq6sZl4jCIL8qdydKEXISaksAlK5HpX67j
-	Yex4DY72w==;
+	 bh=snqrWYW8IiXtlCKi7Wqy61pyBOoOZ+8X4CvwS/HlOUk=; b=chnIKoTm19biZFGMTrTNSqJD+
+	4F+XUkyoq6UgvEIojLyzMyDrY51LEDDbQYbXihe4C+LfuhWu75ugsEF+kGKRwGLAqJcR3ZTKXlLXM
+	4CwSqAd5ZfYyyvQlNDKDBeXkH1Slh5kcMNcZ+VX8d1iXmYnh9PdF1QsScxG12yArh4J1nRVtl6LXl
+	kBN1sV5DfCv+Pd38f7TA8sSvpIWVAc2bTQZJ2M3g/QjvIo8F5T8nPdOT8Df5Nvr57oKZJ66hkFgn3
+	gx0KAr6srUcszrY/aPIUTdKztHCiYC8QIzz76HOV5GAcQCYL4nk8KnyjrNbVs3T8YmisIJ8TPd7bC
+	GzrQ2+2EQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l0kDB-00030Q-SS; Sat, 16 Jan 2021 11:57:45 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1l0ljC-0000Z8-0x; Sat, 16 Jan 2021 13:34:54 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l0kDA-0002zj-35
- for linux-rockchip@lists.infradead.org; Sat, 16 Jan 2021 11:57:45 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l0kD0-0006w3-3q; Sat, 16 Jan 2021 12:57:34 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: helen.koike@collabora.com, linux-media@vger.kernel.org, mchehab@kernel.org,
- Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+ id 1l0lj8-0000YR-O1
+ for linux-rockchip@lists.infradead.org; Sat, 16 Jan 2021 13:34:52 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 879931F40864
 Subject: Re: [PATCH v4 3/3] media: rockchip: rkisp1: extend uapi array sizes
-Date: Sat, 16 Jan 2021 12:57:33 +0100
-Message-ID: <2554499.uZKlY2gecq@diego>
-In-Reply-To: <06d42f41-d570-7327-daca-40a52978d4f9@collabora.com>
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ helen.koike@collabora.com, linux-media@vger.kernel.org, mchehab@kernel.org,
+ Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
 References: <20210115163829.217131-1-heiko@sntech.de>
  <1739328.QCnGb9OGeP@diego>
  <06d42f41-d570-7327-daca-40a52978d4f9@collabora.com>
+ <2554499.uZKlY2gecq@diego>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <1635e481-364a-f99b-8a0c-3d3e33440ed1@collabora.com>
+Date: Sat, 16 Jan 2021 14:34:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <2554499.uZKlY2gecq@diego>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210116_065744_211658_352848EF 
-X-CRM114-Status: GOOD (  30.35  )
+X-CRM114-CacheID: sfid-20210116_083451_020040_BB3EF18A 
+X-CRM114-Status: GOOD (  25.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,145 +71,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: linux-rockchip@lists.infradead.org, tfiga@chromium.org,
  ezequiel@collabora.com, christoph.muellner@theobroma-systems.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
-
-Am Samstag, 16. Januar 2021, 10:05:39 CET schrieb Dafna Hirschfeld:
-> Am 16.01.21 um 00:52 schrieb Heiko St=FCbner:
-> > Am Freitag, 15. Januar 2021, 18:41:06 CET schrieb Dafna Hirschfeld:
-> >> Am 15.01.21 um 17:38 schrieb Heiko Stuebner:
-> >>> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> >>>
-> >>> Later variants of the rkisp1 block use more entries in some arrays:
-> >>>
-> >>> RKISP1_CIF_ISP_AE_MEAN_MAX                 25 -> 81
-> >>> RKISP1_CIF_ISP_HIST_BIN_N_MAX              16 -> 32
-> >>> RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17 -> 34
-> >>> RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28 -> 81
-> >>
-> >> I see you didn't change the value for that define.
-> > =
-
-> > In the below patch I find
-> > =
-
-> > @@ -103,7 +111,9 @@
-> > * Histogram calculation
-> > */
-> > /* Last 3 values unused. */
-> > -#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28
-> > +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10 28
-> > +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12 81
-> > +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE     RKISP1_CIF_ISP_=
-HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
-> > =
-
-> > so I'm not sure I understand what you mean except this.
-> =
-
-> Opps, I somehow missed that.
-> But now since we have 81 entries, it makes no sense to
-> define it to 28 for V10 and documenting "Last 3 values unused" (see just =
-above the definition).
-> We can set it just to 25, we have 56 (81-25) unused values anyway.
-
-The rkisp1_hst_config() function iterates over its regs-array and accesses
-4 weight values in each step and writing them to the register:
-
-static const u32 hist_weight_regs[] =3D {
-	RKISP1_CIF_ISP_HIST_WEIGHT_00TO30_V10, ... weight0-3
-	RKISP1_CIF_ISP_HIST_WEIGHT_40TO21_V10, ... weight4-7
-	RKISP1_CIF_ISP_HIST_WEIGHT_31TO12_V10, ... weight8-11
-	RKISP1_CIF_ISP_HIST_WEIGHT_22TO03_V10, ... weight12-15
-	RKISP1_CIF_ISP_HIST_WEIGHT_13TO43_V10, ... weight16-19
-	RKISP1_CIF_ISP_HIST_WEIGHT_04TO34_V10, ... weight20-23
-	RKISP1_CIF_ISP_HIST_WEIGHT_44_V10, ... weight24-27
-};
-
-and yes the last step only uses 1 value to write to the register.
-But I guess if we really want to reduce the max value, we should move
-that last part into a separate write, so that we don't access parts we claim
-to not access ;-)
-
-> >> The usage of it is a bit more complicated.
-> >> It is used in function rkisp1_hst_config.
-> > =
-
-> > Yeah, though the for-loop iterates over 4*7 entry values, so stays
-> > below the RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10 in all cases.
-> > =
-
-> > =
-
-> >> Actually the real number of weight values are 25 (5x5) for rk3399,
-> >> the last 3 are not used. I think that in order to support both
-> >> 5x5 and 9x9 the code in rkisp1-params.c should change. I'll
-> >> send a patch fixing it.
-> > =
-
-> > If you look at my V12-patch [0] the weight handling is done different t=
-here
-> > and from the registers, it looks like they exchanges that part of the i=
-sp.
-> > =
-
-> > [0] https://lore.kernel.org/linux-media/20210108193311.3423236-11-heiko=
-@sntech.de/
-> > void rkisp1_hst_config_v12() as a search term
-> > =
-
-> > [...]
-> =
-
-> Right, there is no need to change the relevant code in rkisp1-param.c whe=
-n setting the
-> RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE to 25.
-
-ok, should we add a 4th patch fixing that and moving the last write out of =
-the loop?
-
-
-Heiko
-
-> >>> @@ -862,8 +898,16 @@ struct rkisp1_cif_isp_af_stat {
-> >>>     *
-> >>>     * @hist_bins: measured bin counters
-> >>>     *
-> >>> - * Measurement window divided into 16 sub-windows, set
-> >>> - * with ISP_HIST_XXX
-> >>> + * Measurement window divided into 16 sub-windows for V10/V10
-> >>> + * and 32 sub-windows for V12/V13, set with ISP_HIST_XXX
-> >>
-> >> It is actually not windows but histogram bins. Could you change it to:
-> >> "The histogram values divided into 16 bins for V10/V11 and 32 bins
-> >> for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_con=
-fig.
-> > =
-
-> > I've changed this like your suggestions and will give a bit of time for
-> > the stuff above. But I guess I can send a v5 some time tomorrow?
-> > =
-
-> > =
-
-> > Thanks for your input
-> > Heiko
-> > =
-
-> > =
-
-> =
-
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgpBbSAxNi4wMS4yMSB1bSAxMjo1NyBzY2hyaWViIEhlaWtvIFN0w7xibmVyOgo+IEhpIERhZm5h
+LAo+IAo+IEFtIFNhbXN0YWcsIDE2LiBKYW51YXIgMjAyMSwgMTA6MDU6MzkgQ0VUIHNjaHJpZWIg
+RGFmbmEgSGlyc2NoZmVsZDoKPj4gQW0gMTYuMDEuMjEgdW0gMDA6NTIgc2NocmllYiBIZWlrbyBT
+dMO8Ym5lcjoKPj4+IEFtIEZyZWl0YWcsIDE1LiBKYW51YXIgMjAyMSwgMTg6NDE6MDYgQ0VUIHNj
+aHJpZWIgRGFmbmEgSGlyc2NoZmVsZDoKPj4+PiBBbSAxNS4wMS4yMSB1bSAxNzozOCBzY2hyaWVi
+IEhlaWtvIFN0dWVibmVyOgo+Pj4+PiBGcm9tOiBIZWlrbyBTdHVlYm5lciA8aGVpa28uc3R1ZWJu
+ZXJAdGhlb2Jyb21hLXN5c3RlbXMuY29tPgo+Pj4+Pgo+Pj4+PiBMYXRlciB2YXJpYW50cyBvZiB0
+aGUgcmtpc3AxIGJsb2NrIHVzZSBtb3JlIGVudHJpZXMgaW4gc29tZSBhcnJheXM6Cj4+Pj4+Cj4+
+Pj4+IFJLSVNQMV9DSUZfSVNQX0FFX01FQU5fTUFYICAgICAgICAgICAgICAgICAyNSAtPiA4MQo+
+Pj4+PiBSS0lTUDFfQ0lGX0lTUF9ISVNUX0JJTl9OX01BWCAgICAgICAgICAgICAgMTYgLT4gMzIK
+Pj4+Pj4gUktJU1AxX0NJRl9JU1BfR0FNTUFfT1VUX01BWF9TQU1QTEVTICAgICAgIDE3IC0+IDM0
+Cj4+Pj4+IFJLSVNQMV9DSUZfSVNQX0hJU1RPR1JBTV9XRUlHSFRfR1JJRFNfU0laRSAyOCAtPiA4
+MQo+Pj4+Cj4+Pj4gSSBzZWUgeW91IGRpZG4ndCBjaGFuZ2UgdGhlIHZhbHVlIGZvciB0aGF0IGRl
+ZmluZS4KPj4+Cj4+PiBJbiB0aGUgYmVsb3cgcGF0Y2ggSSBmaW5kCj4+Pgo+Pj4gQEAgLTEwMyw3
+ICsxMTEsOSBAQAo+Pj4gKiBIaXN0b2dyYW0gY2FsY3VsYXRpb24KPj4+ICovCj4+PiAvKiBMYXN0
+IDMgdmFsdWVzIHVudXNlZC4gKi8KPj4+IC0jZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0hJU1RPR1JB
+TV9XRUlHSFRfR1JJRFNfU0laRSAyOAo+Pj4gKyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfSElTVE9H
+UkFNX1dFSUdIVF9HUklEU19TSVpFX1YxMCAyOAo+Pj4gKyNkZWZpbmUgUktJU1AxX0NJRl9JU1Bf
+SElTVE9HUkFNX1dFSUdIVF9HUklEU19TSVpFX1YxMiA4MQo+Pj4gKyNkZWZpbmUgUktJU1AxX0NJ
+Rl9JU1BfSElTVE9HUkFNX1dFSUdIVF9HUklEU19TSVpFICAgICBSS0lTUDFfQ0lGX0lTUF9ISVNU
+T0dSQU1fV0VJR0hUX0dSSURTX1NJWkVfVjEyCj4+Pgo+Pj4gc28gSSdtIG5vdCBzdXJlIEkgdW5k
+ZXJzdGFuZCB3aGF0IHlvdSBtZWFuIGV4Y2VwdCB0aGlzLgo+Pgo+PiBPcHBzLCBJIHNvbWVob3cg
+bWlzc2VkIHRoYXQuCj4+IEJ1dCBub3cgc2luY2Ugd2UgaGF2ZSA4MSBlbnRyaWVzLCBpdCBtYWtl
+cyBubyBzZW5zZSB0bwo+PiBkZWZpbmUgaXQgdG8gMjggZm9yIFYxMCBhbmQgZG9jdW1lbnRpbmcg
+Ikxhc3QgMyB2YWx1ZXMgdW51c2VkIiAoc2VlIGp1c3QgYWJvdmUgdGhlIGRlZmluaXRpb24pLgo+
+PiBXZSBjYW4gc2V0IGl0IGp1c3QgdG8gMjUsIHdlIGhhdmUgNTYgKDgxLTI1KSB1bnVzZWQgdmFs
+dWVzIGFueXdheS4KPiAKPiBUaGUgcmtpc3AxX2hzdF9jb25maWcoKSBmdW5jdGlvbiBpdGVyYXRl
+cyBvdmVyIGl0cyByZWdzLWFycmF5IGFuZCBhY2Nlc3Nlcwo+IDQgd2VpZ2h0IHZhbHVlcyBpbiBl
+YWNoIHN0ZXAgYW5kIHdyaXRpbmcgdGhlbSB0byB0aGUgcmVnaXN0ZXI6Cj4gCj4gc3RhdGljIGNv
+bnN0IHUzMiBoaXN0X3dlaWdodF9yZWdzW10gPSB7Cj4gCVJLSVNQMV9DSUZfSVNQX0hJU1RfV0VJ
+R0hUXzAwVE8zMF9WMTAsIC4uLiB3ZWlnaHQwLTMKPiAJUktJU1AxX0NJRl9JU1BfSElTVF9XRUlH
+SFRfNDBUTzIxX1YxMCwgLi4uIHdlaWdodDQtNwo+IAlSS0lTUDFfQ0lGX0lTUF9ISVNUX1dFSUdI
+VF8zMVRPMTJfVjEwLCAuLi4gd2VpZ2h0OC0xMQo+IAlSS0lTUDFfQ0lGX0lTUF9ISVNUX1dFSUdI
+VF8yMlRPMDNfVjEwLCAuLi4gd2VpZ2h0MTItMTUKPiAJUktJU1AxX0NJRl9JU1BfSElTVF9XRUlH
+SFRfMTNUTzQzX1YxMCwgLi4uIHdlaWdodDE2LTE5Cj4gCVJLSVNQMV9DSUZfSVNQX0hJU1RfV0VJ
+R0hUXzA0VE8zNF9WMTAsIC4uLiB3ZWlnaHQyMC0yMwo+IAlSS0lTUDFfQ0lGX0lTUF9ISVNUX1dF
+SUdIVF80NF9WMTAsIC4uLiB3ZWlnaHQyNC0yNwo+IH07Cj4gCj4gYW5kIHllcyB0aGUgbGFzdCBz
+dGVwIG9ubHkgdXNlcyAxIHZhbHVlIHRvIHdyaXRlIHRvIHRoZSByZWdpc3Rlci4KPiBCdXQgSSBn
+dWVzcyBpZiB3ZSByZWFsbHkgd2FudCB0byByZWR1Y2UgdGhlIG1heCB2YWx1ZSwgd2Ugc2hvdWxk
+IG1vdmUKPiB0aGF0IGxhc3QgcGFydCBpbnRvIGEgc2VwYXJhdGUgd3JpdGUsIHNvIHRoYXQgd2Ug
+ZG9uJ3QgYWNjZXNzIHBhcnRzIHdlIGNsYWltCj4gdG8gbm90IGFjY2VzcyA7LSkKPiAKPj4+PiBU
+aGUgdXNhZ2Ugb2YgaXQgaXMgYSBiaXQgbW9yZSBjb21wbGljYXRlZC4KPj4+PiBJdCBpcyB1c2Vk
+IGluIGZ1bmN0aW9uIHJraXNwMV9oc3RfY29uZmlnLgo+Pj4KPj4+IFllYWgsIHRob3VnaCB0aGUg
+Zm9yLWxvb3AgaXRlcmF0ZXMgb3ZlciA0KjcgZW50cnkgdmFsdWVzLCBzbyBzdGF5cwo+Pj4gYmVs
+b3cgdGhlIFJLSVNQMV9DSUZfSVNQX0hJU1RPR1JBTV9XRUlHSFRfR1JJRFNfU0laRV9WMTAgaW4g
+YWxsIGNhc2VzLgo+Pj4KPj4+Cj4+Pj4gQWN0dWFsbHkgdGhlIHJlYWwgbnVtYmVyIG9mIHdlaWdo
+dCB2YWx1ZXMgYXJlIDI1ICg1eDUpIGZvciByazMzOTksCj4+Pj4gdGhlIGxhc3QgMyBhcmUgbm90
+IHVzZWQuIEkgdGhpbmsgdGhhdCBpbiBvcmRlciB0byBzdXBwb3J0IGJvdGgKPj4+PiA1eDUgYW5k
+IDl4OSB0aGUgY29kZSBpbiBya2lzcDEtcGFyYW1zLmMgc2hvdWxkIGNoYW5nZS4gSSdsbAo+Pj4+
+IHNlbmQgYSBwYXRjaCBmaXhpbmcgaXQuCj4+Pgo+Pj4gSWYgeW91IGxvb2sgYXQgbXkgVjEyLXBh
+dGNoIFswXSB0aGUgd2VpZ2h0IGhhbmRsaW5nIGlzIGRvbmUgZGlmZmVyZW50IHRoZXJlCj4+PiBh
+bmQgZnJvbSB0aGUgcmVnaXN0ZXJzLCBpdCBsb29rcyBsaWtlIHRoZXkgZXhjaGFuZ2VzIHRoYXQg
+cGFydCBvZiB0aGUgaXNwLgo+Pj4KPj4+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51
+eC1tZWRpYS8yMDIxMDEwODE5MzMxMS4zNDIzMjM2LTExLWhlaWtvQHNudGVjaC5kZS8KPj4+IHZv
+aWQgcmtpc3AxX2hzdF9jb25maWdfdjEyKCkgYXMgYSBzZWFyY2ggdGVybQo+Pj4KPj4+IFsuLi5d
+Cj4+Cj4+IFJpZ2h0LCB0aGVyZSBpcyBubyBuZWVkIHRvIGNoYW5nZSB0aGUgcmVsZXZhbnQgY29k
+ZSBpbiBya2lzcDEtcGFyYW0uYyB3aGVuIHNldHRpbmcgdGhlCj4+IFJLSVNQMV9DSUZfSVNQX0hJ
+U1RPR1JBTV9XRUlHSFRfR1JJRFNfU0laRSB0byAyNS4KPiAKPiBvaywgc2hvdWxkIHdlIGFkZCBh
+IDR0aCBwYXRjaCBmaXhpbmcgdGhhdCBhbmQgbW92aW5nIHRoZSBsYXN0IHdyaXRlIG91dCBvZiB0
+aGUgbG9vcD8KCkkgdGhpbmsgY2hhbmdpbmcgdGhlIHJlbGF0ZWQgY29kZSBpbiB0aGUgcmtpc3Ax
+LXBhcmFtcy5jIGNhbiBiZSBkb25lIGxhdGVyIGluIGEgc2VwYXJhdGUgcGF0Y2guCkkgdGhpbmsg
+eW91IGNhbiBjaGFuZ2UgaXQgdG8gMjUgaW4gdGhlIHNhbWUgcGF0Y2ggdGhhdCBhZGRzIFYxMiBz
+dXBwb3J0IGFuZCB3cml0ZSBpbiB0aGUgY29tbWl0IG1lc3NhZ2UKdGhhdCBiZWNhdXNlIHRoZSBh
+cnJheSBzaXplIGlzIG5vdyA4MSwgdGhlcmUgaXMgbm8gcG9pbnQgZGVmaW5pbmcgdGhlIGdyaWQg
+c2l6ZSBmb3IgVjEwIHRvIDI4CmFuZCBpbiBhZGRpdGlvbiBkb2N1bWVudGluZyB0aGF0IHRoZSBs
+YXN0IDMgdmFsdWVzIGFyZSBub3QgdXNlZC4KClRoYW5rcywKRGFmbmEKCj4gCj4gCj4gSGVpa28K
+PiAKPj4+Pj4gQEAgLTg2Miw4ICs4OTgsMTYgQEAgc3RydWN0IHJraXNwMV9jaWZfaXNwX2FmX3N0
+YXQgewo+Pj4+PiAgICAgICoKPj4+Pj4gICAgICAqIEBoaXN0X2JpbnM6IG1lYXN1cmVkIGJpbiBj
+b3VudGVycwo+Pj4+PiAgICAgICoKPj4+Pj4gLSAqIE1lYXN1cmVtZW50IHdpbmRvdyBkaXZpZGVk
+IGludG8gMTYgc3ViLXdpbmRvd3MsIHNldAo+Pj4+PiAtICogd2l0aCBJU1BfSElTVF9YWFgKPj4+
+Pj4gKyAqIE1lYXN1cmVtZW50IHdpbmRvdyBkaXZpZGVkIGludG8gMTYgc3ViLXdpbmRvd3MgZm9y
+IFYxMC9WMTAKPj4+Pj4gKyAqIGFuZCAzMiBzdWItd2luZG93cyBmb3IgVjEyL1YxMywgc2V0IHdp
+dGggSVNQX0hJU1RfWFhYCj4+Pj4KPj4+PiBJdCBpcyBhY3R1YWxseSBub3Qgd2luZG93cyBidXQg
+aGlzdG9ncmFtIGJpbnMuIENvdWxkIHlvdSBjaGFuZ2UgaXQgdG86Cj4+Pj4gIlRoZSBoaXN0b2dy
+YW0gdmFsdWVzIGRpdmlkZWQgaW50byAxNiBiaW5zIGZvciBWMTAvVjExIGFuZCAzMiBiaW5zCj4+
+Pj4gZm9yIFYxMi9WMTMuIEl0IGlzIGNvbmZpZ3VyZWQgd2l0aGluIHRoZSBzdHJ1Y3Qgcmtpc3Ax
+X2NpZl9pc3BfaHN0X2NvbmZpZy4KPj4+Cj4+PiBJJ3ZlIGNoYW5nZWQgdGhpcyBsaWtlIHlvdXIg
+c3VnZ2VzdGlvbnMgYW5kIHdpbGwgZ2l2ZSBhIGJpdCBvZiB0aW1lIGZvcgo+Pj4gdGhlIHN0dWZm
+IGFib3ZlLiBCdXQgSSBndWVzcyBJIGNhbiBzZW5kIGEgdjUgc29tZSB0aW1lIHRvbW9ycm93Pwo+
+Pj4KPj4+Cj4+PiBUaGFua3MgZm9yIHlvdXIgaW5wdXQKPj4+IEhlaWtvCj4+Pgo+Pj4KPj4KPiAK
+PiAKPiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
