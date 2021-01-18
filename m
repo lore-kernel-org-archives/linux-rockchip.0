@@ -2,61 +2,60 @@ Return-Path: <SRS0=qa0x=GV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D2BFC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CFA4C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:22:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C158822240
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:19:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C158822240
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 176332222F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:22:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 176332222F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Va5cug0Mc7X3HnJTIlXQZeRQxxASvXFSClEN7k5ef0E=; b=lxbRjyIU5Wu5TOs+gtQaRXzP2
-	uyStbGA6qSZX7Jb5e2gZvVGFql3ebbJVLFJuCenFecwr28F9SJbifhvHCiwIcU9xIJjeoKjB7HNLV
-	TwexIke1f7gVprYyyDUAAAsseXf3EzSMj44X2SWSm6yhXVT3lRuYa8vRgJCb/VANNC9e9M0VAI0ly
-	jiC1aJ3mtEmNsnuByLetxoLXN1fptzXvEy8UMCIbf+H+GTsrBOF4xB3W8x+iFty5ZIZe1sOr9K7KF
-	pFNY0Cy8D0mMqdVUOpYByn48qR44E+p0oec5NFzjVNc8QQ0qnXQ1dPBt/VJ2VoZ7+s9l/2TDx31CI
-	mNHMFavaA==;
+	 bh=RXO/5a+ZII7zCy5PhAS686v5unzyDXUjzU0UBFiUoaw=; b=GH+uy6C2J8evaeanDjLtgnFx9
+	o3ffRCfu4IxUQDdIf9XZWoSHFEXo8ha1A71EqZ8xUnpHn7MVs+W54o4nxI3AQeATsTTvDB41h7EN+
+	vMiCq6NsoGMxl4bpwKliwFRqO2i/oA5do6oMLRi1qEJBF5UaV/s5o3zz0it7Apb4LU96+5vrpfDqn
+	CY4uXRkoids9fcT8p0RHwC3T/RVn58MySddTSnJmfkeGIUjQsUS6gi9xYA3AQZbBedwMA71gRLRMC
+	PlL/u2OJswPkw3sPpxfv/cRiOp/h+1JlBOfq4y3OjRY17SXpuC+bLER+GuPzaB6Ov9BCUXlACRiCH
+	H4SRTgmDg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1QhW-0005CO-UX; Mon, 18 Jan 2021 09:19:54 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1l1QjT-0005K7-Lk; Mon, 18 Jan 2021 09:21:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1QhT-0005BI-O8
- for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 09:19:53 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 561051F447E5
+ id 1l1QjQ-0005JF-Nf
+ for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 09:21:54 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1l1QjF-0002ce-5M; Mon, 18 Jan 2021 10:21:41 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 Subject: Re: [PATCH v4 2/3] media: rockchip: rkisp1: carry ip version
  information
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Date: Mon, 18 Jan 2021 10:21:40 +0100
+Message-ID: <2673307.AiC22s8V5E@diego>
+In-Reply-To: <f67aadb1-0965-e2eb-6b50-842e548e0043@collabora.com>
 References: <20210115163829.217131-1-heiko@sntech.de>
- <20210115163829.217131-3-heiko@sntech.de>
- <YAHwMb4DD0eRoeg3@pendragon.ideasonboard.com> <2867818.687JKscXgg@diego>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <f67aadb1-0965-e2eb-6b50-842e548e0043@collabora.com>
-Date: Mon, 18 Jan 2021 10:19:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <2867818.687JKscXgg@diego>
+ <f67aadb1-0965-e2eb-6b50-842e548e0043@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <2867818.687JKscXgg@diego>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_041951_939841_ABB52149 
-X-CRM114-Status: GOOD (  30.00  )
+X-CRM114-CacheID: sfid-20210118_042152_882698_E1A4F2A8 
+X-CRM114-Status: GOOD (  34.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,142 +71,249 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
  helen.koike@collabora.com, christoph.muellner@theobroma-systems.com,
  mchehab@kernel.org, ezequiel@collabora.com, linux-media@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpBbSAxNS4wMS4yMSB1bSAyMToyOSBzY2hyaWViIEhlaWtvIFN0w7xibmVyOgo+IEhpIExhdXJl
-bnQsCj4gCj4gQW0gRnJlaXRhZywgMTUuIEphbnVhciAyMDIxLCAyMDo0Mjo0MSBDRVQgc2Nocmll
-YiBMYXVyZW50IFBpbmNoYXJ0Ogo+PiBPbiBGcmksIEphbiAxNSwgMjAyMSBhdCAwNTozODoyOFBN
-ICswMTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+IEZyb206IEhlaWtvIFN0dWVibmVyIDxo
-ZWlrby5zdHVlYm5lckB0aGVvYnJvbWEtc3lzdGVtcy5jb20+Cj4+Pgo+Pj4gVGhlIElQIGJsb2Nr
-IGV2b2x2ZWQgZnJvbSBpdHMgcmszMjg4L3JrMzM5OSBiYXNlIGFuZCB0aGUgdmVuZG9yCj4+PiBk
-ZXNpZ25hdGVzIHRoZW0gd2l0aCBhIG51bWVyaWNhbCB2ZXJzaW9uLiByazMzOTkgZm9yIGV4YW1w
-bGUKPj4+IGlzIGRlc2lnbmF0ZWQgVjEwIHByb2JhYmx5IG1lYW5pbmcgVjEuMC4KPj4+Cj4+PiBU
-aGVyZSBkb2Vzbid0IHNlZW0gdG8gYmUgYW4gYWN0dWFsIHZlcnNpb24gcmVnaXN0ZXIgd2UgY291
-bGQgcmVhZCB0aGF0Cj4+PiBpbmZvcm1hdGlvbiBmcm9tLCBzbyBhbGxvdyB0aGUgbWF0Y2hfZGF0
-YSB0byBjYXJyeSB0aGF0IGluZm9ybWF0aW9uCj4+PiBmb3IgZnV0dXJlIGRpZmZlcmVudGlhdGlv
-bi4KPj4+Cj4+PiBBbHNvIGNhcnJ5IHRoYXQgaW5mb3JtYXRpb24gaW4gdGhlIGh3X3JldmlzaW9u
-IGZpZWxkIG9mIHRoZSBtZWRpYS0KPj4+IGNvbnRyb2xsZXIgQVBJLCBzbyB0aGF0IHVzZXJzcGFj
-ZSBhbHNvIGhhcyBhY2Nlc3MgdG8gdGhhdC4KPj4+Cj4+PiBUaGUgYWRkZWQgdmVyc2lvbnMgYXJl
-Ogo+Pj4gLSBWMTA6IGF0IGxlYXN0IHJrMzI4OCArIHJrMzM5OQo+Pj4gLSBWMTE6IHNlZW1pbmds
-eSB1bnVzZWQgYXMgb2Ygbm93LCBidXQgcHJvYmFibHkgYXBwZWFyZWQgaW4gc29tZSBzb2MKPj4+
-IC0gVjEyOiBhdCBsZWFzdCByazMzMjYgKyBweDMwCj4+PiAtIFYxMzogYXQgbGVhc3QgcmsxODA4
-Cj4+Cj4+IEluIGFkZGl0aW9uIHRvIGNoYW5nZXMgdG8gdGhlIElTUCBpdHNlbGYsIGFyZSB0aGVy
-ZSBjaGFuZ2VzIGluIGhvdyBpdCBpcwo+PiBpbnRlZ3JhdGVkIGluIHRoZSBzeXN0ZW0sIGluIHBh
-cnRpY3VsYXIgaW4gaG93IGl0IGlzIGNvbm5lY3RlZCB0byBDU0ktMgo+PiByZWNlaXZlcnMgPwo+
-IAo+IEhvb2tpbmcgdXAgbXkgY2FtZXJhIG9uIHRoZSBweDMwIHdhcyBwcmV0dHkgc3RyYWlnaHRm
-b3J3YXJkLgo+IEFzIHlvdSBjYW4gc2VlIGluIFswXSB0aGUgYWN0dWFsIGNzaS1waHkgYmxvY2sg
-aXMgZGlmZmVyZW50LCBidXQgc3RydWN0dXJhbGx5Cj4gZXZlcnl0aGluZyBlbHNlIHN0YXllZCB0
-aGUgc2FtZSBhbmQgdGhlIHB4MzAgc2VyaWVzIG1lcmVseSBhY2NvdW50cwo+IGZvciBzb21lIGlz
-cC1zcGVjaWZpYyBjaGFuZ2VzLCBsaWtlIHRoZSBzcGxpdCBpbnRlcnJ1cHRzIGFuZCB0aGUgVjEy
-LXNwZWNpZmljCj4gcGFydHMuCj4gCj4gCj4+IERvIGFsbCB0aGUgYWJvdmUgU29DcyBoYXZlIHR3
-byBJU1AgaW5zdGFuY2VzID8KPiAKPiBOb3BlLCBJIHRoaW5rIG9ubHkgdGhlIHJrMzM5OSBoYXMg
-dHdvIElTUHMuCj4gCj4gQWxsIG90aGVycyBvbmx5IHNlZW0gdG8gaGF2ZSBvbmUgaW5zdGFuY2Ug
-YW5kIG1heWJlIGFuIGFkZGl0aW9uYWwgbW9yZQo+IHNpbXBsZSB2aWRlbyBpbnB1dCBwcm9jZXNz
-b3IuIChsaWtlIHRoZSByazMyODggaGFzIGJvdGggYW4gSVNQIGFuZCBzb21ldGhpbmcKPiBjYWxs
-ZWQgVklQIC0gYSBzaW1wbGVyIGJsb2NrKQo+IAo+IFNpbWlsYXIgaXMgdGhlIHJrMzMyNi9weDMw
-IChzYW1lIHNvYykgd2hpY2ggaGFzIGFuIElTUCBhcyB3ZWxsIGFzIGEgVklQIHRoYXQKPiBNYXhp
-bWUgQ2hldmFsbGllciBpcyB3b3JraW5nIG9uIFsxXQo+IAo+IEhlaWtvCj4gCj4gWzBdIGh0dHBz
-Oi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhLzIwMjEwMTA4MTkzMzExLjM0MjMyMzYtMS1o
-ZWlrb0BzbnRlY2guZGUvCj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWRldmlj
-ZXRyZWUvMjAyMDEyMjkxNjE3MjQuNTExMTAyLTEtbWF4aW1lLmNoZXZhbGxpZXJAYm9vdGxpbi5j
-b20vCj4gCj4gCj4+PiBTaWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa28uc3R1ZWJu
-ZXJAdGhlb2Jyb21hLXN5c3RlbXMuY29tPgo+Pj4gUmV2aWV3ZWQtYnk6IEV6ZXF1aWVsIEdhcmNp
-YSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPj4+IC0tLQo+Pj4gICBEb2N1bWVudGF0aW9uL2Fk
-bWluLWd1aWRlL21lZGlhL3JraXNwMS5yc3QgICAgfCAxNiArKysrKysrKysrKysrKwo+Pj4gICAu
-Li4vcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYyAgICAgfCAyMSArKysrKysr
-KysrKy0tLS0tLS0tCj4+PiAgIGluY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmggICAg
-ICAgICAgICB8IDE2ICsrKysrKysrKysrKysrCj4+PiAgIDMgZmlsZXMgY2hhbmdlZCwgNDQgaW5z
-ZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
-dGlvbi9hZG1pbi1ndWlkZS9tZWRpYS9ya2lzcDEucnN0IGIvRG9jdW1lbnRhdGlvbi9hZG1pbi1n
-dWlkZS9tZWRpYS9ya2lzcDEucnN0Cj4+PiBpbmRleCAyMjY3ZTRmYjQ3NWUuLmNjZjQxODcxMzYy
-MyAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50YXRpb24vYWRtaW4tZ3VpZGUvbWVkaWEvcmtpc3Ax
-LnJzdAo+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9hZG1pbi1ndWlkZS9tZWRpYS9ya2lzcDEucnN0
-Cj4+PiBAQCAtMTMsNiArMTMsMjIgQEAgVGhpcyBmaWxlIGRvY3VtZW50cyB0aGUgZHJpdmVyIGZv
-ciB0aGUgUm9ja2NoaXAgSVNQMSB0aGF0IGlzIHBhcnQgb2YgUkszMjg4Cj4+PiAgIGFuZCBSSzMz
-OTkgU29Dcy4gVGhlIGRyaXZlciBpcyBsb2NhdGVkIHVuZGVyIGRyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9ya2lzcDEKPj4+ICAgYW5kIHVzZXMgdGhlIE1lZGlhLUNvbnRyb2xsZXIgQVBJLgo+Pj4gICAK
-Pj4+ICtSZXZpc2lvbnMKPj4+ICs9PT09PT09PT0KPj4+ICsKPj4+ICtUaGVyZSBleGlzdCBtdWx0
-aXBsZSBzbWFsbGVyIHJldmlzaW9ucyB0byB0aGlzIElTUCB0aGF0IGdvdCBpbnRyb2R1Y2VkIGlu
-Cj4+PiArbGF0ZXIgU29Dcy4gUmV2aXNpb25zIGNhbiBiZSBmb3VuZCBpbiB0aGUgZW51bSA6Yzp0
-eXBlOmBya2lzcDFfY2lmX2lzcF92ZXJzaW9uYAo+Pj4gK2luIHRoZSBVQVBJIGFuZCB0aGUgcmV2
-aXNpb24gb2YgdGhlIElTUCBpbnNpZGUgdGhlIHJ1bm5pbmcgU29DIGNhbiBiZSByZWFkCj4+PiAr
-aW4gdGhlIGZpZWxkIGh3X3JldmlzaW9uIG9mIHN0cnVjdCBtZWRpYV9kZXZpY2VfaW5mbyBhcyBy
-ZXR1cm5lZCBieQo+Pj4gK2lvY3RsIE1FRElBX0lPQ19ERVZJQ0VfSU5GTy4KPj4+ICsKPj4+ICtW
-ZXJzaW9ucyBpbiB1c2UgYXJlOgo+Pj4gKwo+Pj4gKy0gUktJU1AxX1YxMDogdXNlZCBhdCBsZWFz
-dCBpbiByazMyODggYW5kIHJrMzM5OQo+Pj4gKy0gUktJU1AxX1YxMTogZGVjbGFyZWQgaW4gdGhl
-IG9yaWdpbmFsIHZlbmRvciBjb2RlLCBidXQgbm90IHVzZWQKPj4+ICstIFJLSVNQMV9WMTI6IHVz
-ZWQgYXQgbGVhc3QgaW4gcmszMzI2IGFuZCBweDMwCj4+PiArLSBSS0lTUDFfVjEzOiB1c2VkIGF0
-IGxlYXN0IGluIHJrMTgwOAo+Pj4gKwo+Pj4gICBUb3BvbG9neQo+Pj4gICA9PT09PT09PQo+Pj4g
-ICAuLiBfcmtpc3AxX3RvcG9sb2d5X2dyYXBoOgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYyBiL2RyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYwo+Pj4gaW5kZXggNjhkYTFlZWQ3
-NTNkLi5mN2U5ZmQzMDU1NDggMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2LmMKPj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1kZXYuYwo+Pj4gQEAgLTEwNCw2ICsxMDQsNyBA
-QAo+Pj4gICBzdHJ1Y3Qgcmtpc3AxX21hdGNoX2RhdGEgewo+Pj4gICAJY29uc3QgY2hhciAqIGNv
-bnN0ICpjbGtzOwo+Pj4gICAJdW5zaWduZWQgaW50IHNpemU7Cj4+PiArCWVudW0gcmtpc3AxX2Np
-Zl9pc3BfdmVyc2lvbiBpc3BfdmVyOwo+Pj4gICB9Owo+Pj4gICAKPj4+ICAgLyogLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQo+Pj4gQEAgLTQxMSwxNSArNDEyLDE2IEBAIHN0YXRpYyBjb25zdCBjaGFyICog
-Y29uc3QgcmszMzk5X2lzcF9jbGtzW10gPSB7Cj4+PiAgIAkiaGNsayIsCj4+PiAgIH07Cj4+PiAg
-IAo+Pj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3Qgcmtpc3AxX21hdGNoX2RhdGEgcmszMzk5X2lzcF9j
-bGtfZGF0YSA9IHsKPj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJraXNwMV9tYXRjaF9kYXRhIHJr
-MzM5OV9pc3BfbWF0Y2hfZGF0YSA9IHsKPj4+ICAgCS5jbGtzID0gcmszMzk5X2lzcF9jbGtzLAo+
-Pj4gICAJLnNpemUgPSBBUlJBWV9TSVpFKHJrMzM5OV9pc3BfY2xrcyksCj4+PiArCS5pc3BfdmVy
-ID0gUktJU1AxX1YxMCwKPj4+ICAgfTsKPj4+ICAgCj4+PiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-b2ZfZGV2aWNlX2lkIHJraXNwMV9vZl9tYXRjaFtdID0gewo+Pj4gICAJewo+Pj4gICAJCS5jb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1jaWYtaXNwIiwKPj4+IC0JCS5kYXRhID0gJnJrMzM5
-OV9pc3BfY2xrX2RhdGEsCj4+PiArCQkuZGF0YSA9ICZyazMzOTlfaXNwX21hdGNoX2RhdGEsCj4+
-PiAgIAl9LAo+Pj4gICAJe30sCj4+PiAgIH07Cj4+PiBAQCAtNDU3LDE1ICs0NTksMTUgQEAgc3Rh
-dGljIHZvaWQgcmtpc3AxX2RlYnVnX2luaXQoc3RydWN0IHJraXNwMV9kZXZpY2UgKnJraXNwMSkK
-Pj4+ICAgCj4+PiAgIHN0YXRpYyBpbnQgcmtpc3AxX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZp
-Y2UgKnBkZXYpCj4+PiAgIHsKPj4+IC0JY29uc3Qgc3RydWN0IHJraXNwMV9tYXRjaF9kYXRhICpj
-bGtfZGF0YTsKPj4+ICsJY29uc3Qgc3RydWN0IHJraXNwMV9tYXRjaF9kYXRhICptYXRjaF9kYXRh
-Owo+Pj4gICAJc3RydWN0IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPj4+ICAgCXN0cnVjdCBy
-a2lzcDFfZGV2aWNlICpya2lzcDE7Cj4+PiAgIAlzdHJ1Y3QgdjRsMl9kZXZpY2UgKnY0bDJfZGV2
-Owo+Pj4gICAJdW5zaWduZWQgaW50IGk7Cj4+PiAgIAlpbnQgcmV0LCBpcnE7Cj4+PiAgIAo+Pj4g
-LQljbGtfZGF0YSA9IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YSgmcGRldi0+ZGV2KTsKPj4+IC0J
-aWYgKCFjbGtfZGF0YSkKPj4+ICsJbWF0Y2hfZGF0YSA9IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0
-YSgmcGRldi0+ZGV2KTsKPj4+ICsJaWYgKCFtYXRjaF9kYXRhKQo+Pj4gICAJCXJldHVybiAtRU5P
-REVWOwo+Pj4gICAKPj4+ICAgCXJraXNwMSA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcmtp
-c3AxKSwgR0ZQX0tFUk5FTCk7Cj4+PiBAQCAtNDk0LDE1ICs0OTYsMTYgQEAgc3RhdGljIGludCBy
-a2lzcDFfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+ICAgCj4+PiAgIAly
-a2lzcDEtPmlycSA9IGlycTsKPj4+ICAgCj4+PiAtCWZvciAoaSA9IDA7IGkgPCBjbGtfZGF0YS0+
-c2l6ZTsgaSsrKQo+Pj4gLQkJcmtpc3AxLT5jbGtzW2ldLmlkID0gY2xrX2RhdGEtPmNsa3NbaV07
-Cj4+PiAtCXJldCA9IGRldm1fY2xrX2J1bGtfZ2V0KGRldiwgY2xrX2RhdGEtPnNpemUsIHJraXNw
-MS0+Y2xrcyk7Cj4+PiArCWZvciAoaSA9IDA7IGkgPCBtYXRjaF9kYXRhLT5zaXplOyBpKyspCj4+
-PiArCQlya2lzcDEtPmNsa3NbaV0uaWQgPSBtYXRjaF9kYXRhLT5jbGtzW2ldOwo+Pj4gKwlyZXQg
-PSBkZXZtX2Nsa19idWxrX2dldChkZXYsIG1hdGNoX2RhdGEtPnNpemUsIHJraXNwMS0+Y2xrcyk7
-Cj4+PiAgIAlpZiAocmV0KQo+Pj4gICAJCXJldHVybiByZXQ7Cj4+PiAtCXJraXNwMS0+Y2xrX3Np
-emUgPSBjbGtfZGF0YS0+c2l6ZTsKPj4+ICsJcmtpc3AxLT5jbGtfc2l6ZSA9IG1hdGNoX2RhdGEt
-PnNpemU7Cj4+PiAgIAo+Pj4gICAJcG1fcnVudGltZV9lbmFibGUoJnBkZXYtPmRldik7Cj4+PiAg
-IAo+Pj4gKwlya2lzcDEtPm1lZGlhX2Rldi5od19yZXZpc2lvbiA9IG1hdGNoX2RhdGEtPmlzcF92
-ZXI7Cj4+PiAgIAlzdHJzY3B5KHJraXNwMS0+bWVkaWFfZGV2Lm1vZGVsLCBSS0lTUDFfRFJJVkVS
-X05BTUUsCj4+PiAgIAkJc2l6ZW9mKHJraXNwMS0+bWVkaWFfZGV2Lm1vZGVsKSk7Cj4+PiAgIAly
-a2lzcDEtPm1lZGlhX2Rldi5kZXYgPSAmcGRldi0+ZGV2Owo+Pj4gZGlmZiAtLWdpdCBhL2luY2x1
-ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmggYi9pbmNsdWRlL3VhcGkvbGludXgvcmtpc3Ax
-LWNvbmZpZy5oCj4+PiBpbmRleCBiYTQ0Mzc3MWNjMGIuLjlmZWNiNmJjNDU3ZCAxMDA2NDQKPj4+
-IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmgKPj4+ICsrKyBiL2luY2x1
-ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmgKPj4+IEBAIC0xMjQsNiArMTI0LDIyIEBACj4+
-PiAgICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfU1RBVF9BRk0gICAgICAgICAgICgxVSA8PCAyKQo+
-Pj4gICAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX1NUQVRfSElTVCAgICAgICAgICAoMVUgPDwgMykK
-Pj4+ICAgCj4+PiArCj4+PiArLyoqCj4+PiArICogZW51bSBya2lzcDFfY2lmX2lzcF92ZXJzaW9u
-IC0gSVNQIHZhcmlhbnRzCj4+PiArICoKPj4+ICsgKiBAUktJU1AxX1YxMDogdXNlZCBhdCBsZWFz
-dCBpbiByazMyODggYW5kIHJrMzM5OQo+Pj4gKyAqIEBSS0lTUDFfVjExOiBkZWNsYXJlZCBpbiB0
-aGUgb3JpZ2luYWwgdmVuZG9yIGNvZGUsIGJ1dCBub3QgdXNlZAo+Pj4gKyAqIEBSS0lTUDFfVjEy
-OiB1c2VkIGF0IGxlYXN0IGluIHJrMzMyNiBhbmQgcHgzMAo+Pj4gKyAqIEBSS0lTUDFfVjEzOiB1
-c2VkIGF0IGxlYXN0IGluIHJrMTgwOAo+Pj4gKyAqLwo+Pj4gK2VudW0gcmtpc3AxX2NpZl9pc3Bf
-dmVyc2lvbiB7Cj4+PiArCVJLSVNQMV9WMTAgPSAwLAoKSSB3b25kZXIgaWYgaXQgaXMgdXNlZnVs
-IHRvIHN0YXJ0IHRoZSBlbnVtIHdpdGg6ClJLSVNQMV9WMTAgPSAxMCwKClNvIHdoZW4gcHJpbnRp
-bmcgdGhlIGh3IHJldmlzaW9uIGl0IGFsd2F5cyBwcmludHMgYSBwb3NpdGl2ZSBudW1iZXIuCgpU
-aGFua3MsCkRhZm5hCgo+Pj4gKwlSS0lTUDFfVjExLAo+Pj4gKwlSS0lTUDFfVjEyLAo+Pj4gKwlS
-S0lTUDFfVjEzLAo+Pj4gK307Cj4+PiArCj4+PiAgIGVudW0gcmtpc3AxX2NpZl9pc3BfaGlzdG9n
-cmFtX21vZGUgewo+Pj4gICAJUktJU1AxX0NJRl9JU1BfSElTVE9HUkFNX01PREVfRElTQUJMRSwK
-Pj4+ICAgCVJLSVNQMV9DSUZfSVNQX0hJU1RPR1JBTV9NT0RFX1JHQl9DT01CSU5FRCwKPj4KPj4K
-PiAKPiAKPiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Hi Dafna,
+
+Am Montag, 18. Januar 2021, 10:19:41 CET schrieb Dafna Hirschfeld:
+> Am 15.01.21 um 21:29 schrieb Heiko St=FCbner:
+> > Am Freitag, 15. Januar 2021, 20:42:41 CET schrieb Laurent Pinchart:
+> >> On Fri, Jan 15, 2021 at 05:38:28PM +0100, Heiko Stuebner wrote:
+> >>> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> >>>
+> >>> The IP block evolved from its rk3288/rk3399 base and the vendor
+> >>> designates them with a numerical version. rk3399 for example
+> >>> is designated V10 probably meaning V1.0.
+> >>>
+> >>> There doesn't seem to be an actual version register we could read that
+> >>> information from, so allow the match_data to carry that information
+> >>> for future differentiation.
+> >>>
+> >>> Also carry that information in the hw_revision field of the media-
+> >>> controller API, so that userspace also has access to that.
+> >>>
+> >>> The added versions are:
+> >>> - V10: at least rk3288 + rk3399
+> >>> - V11: seemingly unused as of now, but probably appeared in some soc
+> >>> - V12: at least rk3326 + px30
+> >>> - V13: at least rk1808
+> >>
+> >> In addition to changes to the ISP itself, are there changes in how it =
+is
+> >> integrated in the system, in particular in how it is connected to CSI-2
+> >> receivers ?
+> > =
+
+> > Hooking up my camera on the px30 was pretty straightforward.
+> > As you can see in [0] the actual csi-phy block is different, but struct=
+urally
+> > everything else stayed the same and the px30 series merely accounts
+> > for some isp-specific changes, like the split interrupts and the V12-sp=
+ecific
+> > parts.
+> > =
+
+> > =
+
+> >> Do all the above SoCs have two ISP instances ?
+> > =
+
+> > Nope, I think only the rk3399 has two ISPs.
+> > =
+
+> > All others only seem to have one instance and maybe an additional more
+> > simple video input processor. (like the rk3288 has both an ISP and some=
+thing
+> > called VIP - a simpler block)
+> > =
+
+> > Similar is the rk3326/px30 (same soc) which has an ISP as well as a VIP=
+ that
+> > Maxime Chevallier is working on [1]
+> > =
+
+> > Heiko
+> > =
+
+> > [0] https://lore.kernel.org/linux-media/20210108193311.3423236-1-heiko@=
+sntech.de/
+> > [1] https://lore.kernel.org/linux-devicetree/20201229161724.511102-1-ma=
+xime.chevallier@bootlin.com/
+> > =
+
+> > =
+
+> >>> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> >>> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+> >>> ---
+> >>>   Documentation/admin-guide/media/rkisp1.rst    | 16 ++++++++++++++
+> >>>   .../platform/rockchip/rkisp1/rkisp1-dev.c     | 21 +++++++++++-----=
+---
+> >>>   include/uapi/linux/rkisp1-config.h            | 16 ++++++++++++++
+> >>>   3 files changed, 44 insertions(+), 9 deletions(-)
+> >>>
+> >>> diff --git a/Documentation/admin-guide/media/rkisp1.rst b/Documentati=
+on/admin-guide/media/rkisp1.rst
+> >>> index 2267e4fb475e..ccf418713623 100644
+> >>> --- a/Documentation/admin-guide/media/rkisp1.rst
+> >>> +++ b/Documentation/admin-guide/media/rkisp1.rst
+> >>> @@ -13,6 +13,22 @@ This file documents the driver for the Rockchip IS=
+P1 that is part of RK3288
+> >>>   and RK3399 SoCs. The driver is located under drivers/staging/media/=
+rkisp1
+> >>>   and uses the Media-Controller API.
+> >>>   =
+
+> >>> +Revisions
+> >>> +=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> >>> +
+> >>> +There exist multiple smaller revisions to this ISP that got introduc=
+ed in
+> >>> +later SoCs. Revisions can be found in the enum :c:type:`rkisp1_cif_i=
+sp_version`
+> >>> +in the UAPI and the revision of the ISP inside the running SoC can b=
+e read
+> >>> +in the field hw_revision of struct media_device_info as returned by
+> >>> +ioctl MEDIA_IOC_DEVICE_INFO.
+> >>> +
+> >>> +Versions in use are:
+> >>> +
+> >>> +- RKISP1_V10: used at least in rk3288 and rk3399
+> >>> +- RKISP1_V11: declared in the original vendor code, but not used
+> >>> +- RKISP1_V12: used at least in rk3326 and px30
+> >>> +- RKISP1_V13: used at least in rk1808
+> >>> +
+> >>>   Topology
+> >>>   =3D=3D=3D=3D=3D=3D=3D=3D
+> >>>   .. _rkisp1_topology_graph:
+> >>> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/dr=
+ivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >>> index 68da1eed753d..f7e9fd305548 100644
+> >>> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >>> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> >>> @@ -104,6 +104,7 @@
+> >>>   struct rkisp1_match_data {
+> >>>   	const char * const *clks;
+> >>>   	unsigned int size;
+> >>> +	enum rkisp1_cif_isp_version isp_ver;
+> >>>   };
+> >>>   =
+
+> >>>   /* ----------------------------------------------------------------=
+------------
+> >>> @@ -411,15 +412,16 @@ static const char * const rk3399_isp_clks[] =3D=
+ {
+> >>>   	"hclk",
+> >>>   };
+> >>>   =
+
+> >>> -static const struct rkisp1_match_data rk3399_isp_clk_data =3D {
+> >>> +static const struct rkisp1_match_data rk3399_isp_match_data =3D {
+> >>>   	.clks =3D rk3399_isp_clks,
+> >>>   	.size =3D ARRAY_SIZE(rk3399_isp_clks),
+> >>> +	.isp_ver =3D RKISP1_V10,
+> >>>   };
+> >>>   =
+
+> >>>   static const struct of_device_id rkisp1_of_match[] =3D {
+> >>>   	{
+> >>>   		.compatible =3D "rockchip,rk3399-cif-isp",
+> >>> -		.data =3D &rk3399_isp_clk_data,
+> >>> +		.data =3D &rk3399_isp_match_data,
+> >>>   	},
+> >>>   	{},
+> >>>   };
+> >>> @@ -457,15 +459,15 @@ static void rkisp1_debug_init(struct rkisp1_dev=
+ice *rkisp1)
+> >>>   =
+
+> >>>   static int rkisp1_probe(struct platform_device *pdev)
+> >>>   {
+> >>> -	const struct rkisp1_match_data *clk_data;
+> >>> +	const struct rkisp1_match_data *match_data;
+> >>>   	struct device *dev =3D &pdev->dev;
+> >>>   	struct rkisp1_device *rkisp1;
+> >>>   	struct v4l2_device *v4l2_dev;
+> >>>   	unsigned int i;
+> >>>   	int ret, irq;
+> >>>   =
+
+> >>> -	clk_data =3D of_device_get_match_data(&pdev->dev);
+> >>> -	if (!clk_data)
+> >>> +	match_data =3D of_device_get_match_data(&pdev->dev);
+> >>> +	if (!match_data)
+> >>>   		return -ENODEV;
+> >>>   =
+
+> >>>   	rkisp1 =3D devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+> >>> @@ -494,15 +496,16 @@ static int rkisp1_probe(struct platform_device =
+*pdev)
+> >>>   =
+
+> >>>   	rkisp1->irq =3D irq;
+> >>>   =
+
+> >>> -	for (i =3D 0; i < clk_data->size; i++)
+> >>> -		rkisp1->clks[i].id =3D clk_data->clks[i];
+> >>> -	ret =3D devm_clk_bulk_get(dev, clk_data->size, rkisp1->clks);
+> >>> +	for (i =3D 0; i < match_data->size; i++)
+> >>> +		rkisp1->clks[i].id =3D match_data->clks[i];
+> >>> +	ret =3D devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+> >>>   	if (ret)
+> >>>   		return ret;
+> >>> -	rkisp1->clk_size =3D clk_data->size;
+> >>> +	rkisp1->clk_size =3D match_data->size;
+> >>>   =
+
+> >>>   	pm_runtime_enable(&pdev->dev);
+> >>>   =
+
+> >>> +	rkisp1->media_dev.hw_revision =3D match_data->isp_ver;
+> >>>   	strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
+> >>>   		sizeof(rkisp1->media_dev.model));
+> >>>   	rkisp1->media_dev.dev =3D &pdev->dev;
+> >>> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/=
+rkisp1-config.h
+> >>> index ba443771cc0b..9fecb6bc457d 100644
+> >>> --- a/include/uapi/linux/rkisp1-config.h
+> >>> +++ b/include/uapi/linux/rkisp1-config.h
+> >>> @@ -124,6 +124,22 @@
+> >>>   #define RKISP1_CIF_ISP_STAT_AFM           (1U << 2)
+> >>>   #define RKISP1_CIF_ISP_STAT_HIST          (1U << 3)
+> >>>   =
+
+> >>> +
+> >>> +/**
+> >>> + * enum rkisp1_cif_isp_version - ISP variants
+> >>> + *
+> >>> + * @RKISP1_V10: used at least in rk3288 and rk3399
+> >>> + * @RKISP1_V11: declared in the original vendor code, but not used
+> >>> + * @RKISP1_V12: used at least in rk3326 and px30
+> >>> + * @RKISP1_V13: used at least in rk1808
+> >>> + */
+> >>> +enum rkisp1_cif_isp_version {
+> >>> +	RKISP1_V10 =3D 0,
+> =
+
+> I wonder if it is useful to start the enum with:
+> RKISP1_V10 =3D 10,
+> =
+
+> So when printing the hw revision it always prints a positive number.
+
+makes sense ... also if userspace prints the value somewhere, it's
+readable without knowing the constants - will change with the v5
+I'm preparing.
+
+Heiko
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
