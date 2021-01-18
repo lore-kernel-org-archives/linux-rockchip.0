@@ -2,58 +2,61 @@ Return-Path: <SRS0=qa0x=GV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C836C433E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 13:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D7CAC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 14:20:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 889932231F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 13:03:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 889932231F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 0254C2222A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 14:20:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0254C2222A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o32mX3bmEOCiHMruU/uyk708y0+NMimXb2RT9HzA5D0=; b=MBtcWIIoGJy3TyjlLDLjt3PtK
-	VLloQzj9IMlaDycEbqFoT9XnzX3fsi1UmfJAfnxxd8JrBzT0+51VJiuY6SlVzjW67QJ2/3+hr7Xes
-	MldZOxth3JUb7hn/WkbUO1jLujzSp7BYBNeQg864lWU6le0+fra8mCDPvVoNs4Wz7BozeAKdL6jut
-	hoPxVCQTM65YMn4ddwJYSRYMiBPWZsM7aGwRZpR7D9XoO/wwAoluSm87K74qChNtT1pZJZtlBiW3z
-	r5ILEM8y88pL3gSW3qTUNRJn9ljNyULFET3RJsz+aVKfDqNAuchm3Yaunt/K/AzWrov57IfcFxo6O
-	FnnbFvEBQ==;
+	 bh=INtZw9N0P25zWfvUhMZ/DucZXEeUAj41XzZ74bOTPbw=; b=QgeDI/c0FPEt04ZUfs35meRR4
+	dRJh3gntcUxcVd6KNkksYfitkIH5V7ySCdzi7khmkwyNGNN/K1tCb583HzNLdWDolCOJJy3jKy/jT
+	1h4sFCc+vteEO/3CDM9EpLtAkipJscDui7Zl0vC/h3Jy+AooRXBbi1hk6IyYnjGrn+alp61LHJJnE
+	cGkrsKyWPq4tfWgMTqMp2siQ68Mpp2Shu3TRc1/fGdCmTjkj7OpBiFSOzQBTjPMBF0PTvAMOs8/W3
+	9y58nILCowJpA9sDqyMxexqKS5mA8QVZSFLjd6LCS14kHjal4kI5phuohUE8y9nQR8EWQxOR3ATqC
+	Qt6ohgJSw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1UC3-0003wy-Gc; Mon, 18 Jan 2021 13:03:39 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1UBt-0003tS-Qs; Mon, 18 Jan 2021 13:03:32 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l1UBn-00047p-Mz; Mon, 18 Jan 2021 14:03:23 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: richard@nod.at, robh+dt@kernel.org, vigneshr@ti.com,
- miquel.raynal@bootlin.com, Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Subject: Re: (subset) [PATCH v16 0/8] Add Rockchip NFC drivers for RK3308 and
- others
-Date: Mon, 18 Jan 2021 14:03:22 +0100
-Message-ID: <2205525.ECZNHGQPT7@diego>
-In-Reply-To: <161097370156.287816.7898637730580960045.b4-ty@sntech.de>
-References: <20201210002134.5686-1-yifeng.zhao@rock-chips.com>
- <161097370156.287816.7898637730580960045.b4-ty@sntech.de>
+	id 1l1VOR-0006Xi-Ee; Mon, 18 Jan 2021 14:20:31 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l1VOO-0006We-AL; Mon, 18 Jan 2021 14:20:29 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7F1911FB;
+ Mon, 18 Jan 2021 06:20:24 -0800 (PST)
+Received: from [10.57.39.58] (unknown [10.57.39.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5F9CE3F68F;
+ Mon, 18 Jan 2021 06:20:23 -0800 (PST)
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: rename thermal subnodes for
+ rk3399.dtsi
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+References: <20210117150953.16475-1-jbx6244@gmail.com>
+ <20210117150953.16475-3-jbx6244@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <c92467e0-3901-4a1c-3857-6ef055acc381@arm.com>
+Date: Mon, 18 Jan 2021 14:20:23 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.1
 MIME-Version: 1.0
+In-Reply-To: <20210117150953.16475-3-jbx6244@gmail.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_080329_903287_B8BA21F4 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20210118_092028_425003_1655D5D8 
+X-CRM114-Status: GOOD (  17.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,44 +69,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mtd@lists.infradead.org,
+Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+ devicetree@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 18. Januar 2021, 13:57:36 CET schrieb Heiko Stuebner:
-> On Thu, 10 Dec 2020 08:21:30 +0800, Yifeng Zhao wrote:
-> > Rockchp's NFC(Nand Flash Controller) has four versions: V600, V622, V800 and
-> > V900.This series patch can support all four versions.
-> > 
-> > 
-> > Changes in v16:
-> > - Fix some comments about 'ret' variable.
-> > 
-> > [...]
+On 2021-01-17 15:09, Johan Jonker wrote:
+> A test with the command below gives for example this error:
+> /arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml:
+> thermal-zones: 'cpu', 'gpu' do not match any of the regexes:
+> '^[a-zA-Z][a-zA-Z0-9\\-]{1,12}-thermal$', 'pinctrl-[0-9]+'
 > 
-> Applied, thanks!
+> Rename Rockchip rk3399 thermal subnodes so that it ends
+> with "-thermal"
 > 
-> [6/8] arm: dts: rockchip: Add NFC node for RV1108 SoC
->       commit: 2525f194f9dc07c48b0a12697128357068c2e04b
-> [7/8] arm: dts: rockchip: Add NFC node for RK2928 and other SoCs
->       commit: 9c2bfe53b2fc4a8a63311f162e80b27978db6c06
-> [8/8] arm: dts: rockchip: Add NFC node for RK3036 SoC
->       commit: 4cd9a03435bcd20ce6f524e3826fd263951c22fe
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/
+> thermal/thermal-zones.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3399-rock960.dts | 2 +-
+>   arch/arm64/boot/dts/rockchip/rk3399.dtsi        | 4 ++--
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> index c88295782..b20774081 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+> @@ -126,7 +126,7 @@
+>   };
+>   
+>   &thermal_zones {
+> -	cpu_thermal: cpu {
+> +	cpu_thermal: cpu-thermal {
+>   		polling-delay-passive = <100>;
+>   		polling-delay = <1000>;
+>   		thermal-sensors = <&tsadc 0>;
 
-I of course also applied patches 4-5 (arm32) in
-- https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.12-armsoc/dts32&id=2525f194f9dc07c48b0a12697128357068c2e04b
-- https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.12-armsoc/dts32&id=9c2bfe53b2fc4a8a63311f162e80b27978db6c06
+Passing observation: why is this DT not just referencing &cpu_thermal 
+directly to add the board-specific parts (and not repeat all the SoC 
+default properties) anyway? Cleaning the whole thing up might have been 
+a good idea :/
 
-just b4 seemed to hickup with my 2 fetches for arm32+arm64.
+Robin.
 
-
-Heiko
-
-
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 4e94b7ebd..3de493ad6 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -761,7 +761,7 @@
+>   	};
+>   
+>   	thermal_zones: thermal-zones {
+> -		cpu_thermal: cpu {
+> +		cpu_thermal: cpu-thermal {
+>   			polling-delay-passive = <100>;
+>   			polling-delay = <1000>;
+>   
+> @@ -805,7 +805,7 @@
+>   			};
+>   		};
+>   
+> -		gpu_thermal: gpu {
+> +		gpu_thermal: gpu-thermal {
+>   			polling-delay-passive = <100>;
+>   			polling-delay = <1000>;
+>   
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
