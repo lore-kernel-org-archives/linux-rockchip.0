@@ -2,76 +2,59 @@ Return-Path: <SRS0=qa0x=GV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18C96C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 10:12:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEB94C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 11:05:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 637472311A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 10:12:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 637472311A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 1E720221F8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 11:05:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E720221F8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CN5Wncx6mbxijyCacLk0fkmaA5eLAV6Am5kwPmTMkuE=; b=cttsTUkVexMDFwcxrUFns7p1q
-	I0qFT2CqhqshMexdUlZRn3jQsI7Zr+BmKmLnt2QLbH1jIoAdxOQ9SlvkG5c0qEtZA99zAJ8Uek7nP
-	mIEqelsTXR6vx0KgWfrD2eDBBqFzhgmD2sU19jetCk5AWWJCJGsIyKr1PpIWEFNQuNLsxe2kCPfPl
-	t505ace5EoVUwkY2fnj2P2k9Vs999HCUVfI14cDID4S8U9OkS5KmQYvrNXcGV5SzDoRlLWwByws94
-	WNyKgv60/Vgw43bgauoNPfPRXzY6FsM4F8WGCZkWd5CK6+wDxd4Xm3bTh8qnbu370Zg1nxbWRoYyu
-	RMHhbuGxg==;
+	 bh=yjQaBOG+Uue3Rcff9Z+e0lz5lcdoQixM4Kn/tip5IBc=; b=y3M4ZJWle4biv+zxzfLyMwa21
+	YfPS+VhkWwsfr4SzFytvJePGpDfoU6N4GBJeehvsL17MW5mCLyM2/dHRyFD2OF1sCmMWes/Yzxxye
+	53uYbOXsKW5JzZtgDHYaDnkBLnZP85TKchtleAK8KzAF3p1SBJsQIebDmx8J+UKaZpaFcCuYTtNeW
+	3OC4EJke0UCpxYFpXLV8rJdyWHCyJjOl+0hCbSyPxUV8NNDGqMhkz+0uea4LIRW5A9xQ06I14iJnH
+	aDuZ1j+bI/TLzi9xeidfuaL6iGJW7BB7Ew9gUExYdRZw7v15LjwFacmMxH8bhuf+Jr+g2DYxpG0Bp
+	BBCsP4nuQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1RWi-0004gi-VX; Mon, 18 Jan 2021 10:12:49 +0000
-Received: from lb1-smtp-cloud7.xs4all.net ([194.109.24.24])
+	id 1l1SLN-0002sQ-MN; Mon, 18 Jan 2021 11:05:09 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1RWg-0004f3-9f
- for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 10:12:47 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id 1RWOlHppyyutM1RWRlYFC7; Mon, 18 Jan 2021 11:12:35 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1610964755; bh=ayWN1O9yjjDn6kU5MeBoQJ9CyFvEEaw0GBspGXnqg/w=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=g8kJ8k9S1ElbTr4sX5GDBBOvkQxyro1rLlgxYMm71BpqUgdYd4HEnnogz73c5hmfw
- g0T8JHSH++G64EwUlOJhCMburAF4WwuzQCL6+Kx3z80rxLQDaUtEgTGdRLz2QeaPFQ
- 8yTWzkQJwGb9LuJC2oAcAozbbWddHLve7ir97hGX4ZKKCEyyabG3KrBXnMZCJmJGR4
- s10RRW9PPIFEkbD6HHbK2yN57uXueSwhckqFz7nD3i4Z7U9O9nSn08FD+GP0Ekab9h
- pU2p9KFJGx1lluA+rjYEuUZrR4C4RxNEaCa6J+7EzvktMklldCFhUOVn3WUm2mT2J7
- LvB3vEeGnLQvw==
-Subject: Re: [PATCH v5 3/3] media: rockchip: rkisp1: extend uapi array sizes
-To: Heiko Stuebner <heiko@sntech.de>, dafna.hirschfeld@collabora.com,
- helen.koike@collabora.com, linux-media@vger.kernel.org, mchehab@kernel.org,
- Laurent.pinchart@ideasonboard.com
-References: <20210118095736.272473-1-heiko@sntech.de>
- <20210118095736.272473-4-heiko@sntech.de>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <533d6b7b-0e57-f766-5796-bb8e57058a4f@xs4all.nl>
-Date: Mon, 18 Jan 2021 11:12:28 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ id 1l1SLF-0002qO-Ul
+ for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 11:05:07 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1l1SL5-0003HM-Cu; Mon, 18 Jan 2021 12:04:51 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: dafna.hirschfeld@collabora.com, helen.koike@collabora.com,
+ linux-media@vger.kernel.org, mchehab@kernel.org,
+ Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
+Subject: [PATCH v6 3/4] media: rockchip: rkisp1: carry ip version information
+Date: Mon, 18 Jan 2021 12:04:47 +0100
+Message-Id: <20210118110448.275389-4-heiko@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210118110448.275389-1-heiko@sntech.de>
+References: <20210118110448.275389-1-heiko@sntech.de>
 MIME-Version: 1.0
-In-Reply-To: <20210118095736.272473-4-heiko@sntech.de>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfOotmWfX5YvDyGrvUeYghnvQ5b8oEu2LjYdO+8FyHvDkOl9qDIhT7oYV2gO7gR7KRivKu0ellDmUFzAMJZH2vr9+N8Gs4lim3fFISW4S6Kn7C8QBwhso
- CAKnt4xQTpkfdIVDWyGcINSlrMf+YBTS4WomiRrNJSPROAR5S68jdYQ20HtEebnrDaGOSwjddB6sjvltJxJyFiPUhqdfHlFJw6DRSB4F1MPnAHDtGcUTJ//M
- pBpofOIqbEE2oQ/F1VVSl6bPT+UGfAiAEptaWJ2ERSuhzchnHaaIIxEI78Ax9it6vjxpZEUu1voseVpa0Ek/S66PcPNyGOXEu4cpUsKjjP3VOrUYkvqHzJOT
- MokMJzXn4jDEHp7GtpwkI/VcnPUtNua//wnYAvT0856mEajPGHowc3hIyR1Mik5Mb5jbgmEwAUlAR1BGLD0ndRwnVzW7cR+XeznDFdWXbrNLX9jzYFm0BqhZ
- OSXRNwbXLvZydqcWcLL6Q0cuWqpMaAVZTHKR2aE0K01tTc0DIT63f+XTkN3d+s7ZVDvZ2Vj7tVx570MGGfdOArjdsil1jqpLqja5Ff1ryZXhwv3Y7jXvhJcy
- jz5jIzfWsrT/6rQh7xohllK9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_051246_425535_E6AA74B9 
-X-CRM114-Status: GOOD (  27.47  )
+X-CRM114-CacheID: sfid-20210118_060502_057728_69C527AC 
+X-CRM114-Status: GOOD (  19.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,216 +67,169 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- linux-rockchip@lists.infradead.org, tfiga@chromium.org, ezequiel@collabora.com,
+Cc: heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ tfiga@chromium.org, linux-rockchip@lists.infradead.org, ezequiel@collabora.com,
  christoph.muellner@theobroma-systems.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-On 18/01/2021 10:57, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> Later variants of the rkisp1 block use more entries in some arrays:
-> 
-> RKISP1_CIF_ISP_AE_MEAN_MAX                 25 -> 81
-> RKISP1_CIF_ISP_HIST_BIN_N_MAX              16 -> 32
-> RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17 -> 34
-> RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28 -> 81
+The IP block evolved from its rk3288/rk3399 base and the vendor
+designates them with a numerical version. rk3399 for example
+is designated V10 probably meaning V1.0.
 
-This still mentions 28.
+There doesn't seem to be an actual version register we could read that
+information from, so allow the match_data to carry that information
+for future differentiation.
 
-The commit message must say something about changing 28 to 25 as well.
+Also carry that information in the hw_revision field of the media-
+controller API, so that userspace also has access to that.
 
-Actually, I think it would be best if that change (28 -> 25) is done in
-a separate 2/4 patch since this is independent of the V12/13 support.
+The added versions are:
+- V10: at least rk3288 + rk3399
+- V11: seemingly unused as of now, but probably appeared in some soc
+- V12: at least rk3326 + px30
+- V13: at least rk1808
 
-Otherwise this series looks good from my point of view.
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ Documentation/admin-guide/media/rkisp1.rst    | 16 ++++++++++++++
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     | 21 +++++++++++--------
+ include/uapi/linux/rkisp1-config.h            | 16 ++++++++++++++
+ 3 files changed, 44 insertions(+), 9 deletions(-)
 
-Regards,
-
-	Hans
-
-> 
-> and we can still extend the uapi during the 5.11-rc cycle, so do that
-> now to be on the safe side.
-> 
-> V10 and V11 only need the smaller sizes, while V12 and V13 needed
-> the larger sizes.
-> 
-> When adding the bigger sizes make sure, values filled from hardware
-> values and transmitted to userspace don't leak kernel data by zeroing
-> them beforehand.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-> Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-params.c  |  2 +-
->  .../platform/rockchip/rkisp1/rkisp1-stats.c   | 12 +++-
->  include/uapi/linux/rkisp1-config.h            | 58 ++++++++++++++++---
->  3 files changed, 62 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index 6af4d551ffb5..fa47fe2a02d0 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -391,7 +391,7 @@ static void rkisp1_goc_config(struct rkisp1_params *params,
->  				RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
->  	rkisp1_write(params->rkisp1, arg->mode, RKISP1_CIF_ISP_GAMMA_OUT_MODE);
->  
-> -	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES; i++)
-> +	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10; i++)
->  		rkisp1_write(params->rkisp1, arg->gamma_y[i],
->  			     RKISP1_CIF_ISP_GAMMA_OUT_Y_0 + i * 4);
->  }
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> index 3ddab8fa8f2d..a26de388ca13 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> @@ -202,8 +202,12 @@ static void rkisp1_stats_get_aec_meas(struct rkisp1_stats *stats,
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
->  	unsigned int i;
->  
-> +	/* the global max can be bigger than the version-specific one */
-> +	memset(pbuf->params.ae.exp_mean, 0, RKISP1_CIF_ISP_AE_MEAN_MAX *
-> +					    sizeof(*pbuf->params.ae.exp_mean));
-> +
->  	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
-> -	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX; i++)
-> +	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX_V10; i++)
->  		pbuf->params.ae.exp_mean[i] =
->  			(u8)rkisp1_read(rkisp1,
->  					RKISP1_CIF_ISP_EXP_MEAN_00 + i * 4);
-> @@ -232,8 +236,12 @@ static void rkisp1_stats_get_hst_meas(struct rkisp1_stats *stats,
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
->  	unsigned int i;
->  
-> +	/* the global max can be bigger then the version-specific one */
-> +	memset(pbuf->params.hist.hist_bins, 0, RKISP1_CIF_ISP_HIST_BIN_N_MAX *
-> +					       sizeof(*pbuf->params.hist.hist_bins));
-> +
->  	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
-> -	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
-> +	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10; i++)
->  		pbuf->params.hist.hist_bins[i] =
->  			(u8)rkisp1_read(rkisp1,
->  					RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
-> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index d685b7371e71..c0c3abf5e50b 100644
-> --- a/include/uapi/linux/rkisp1-config.h
-> +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -49,8 +49,14 @@
->  #define RKISP1_CIF_ISP_CTK_COEFF_MAX            0x100
->  #define RKISP1_CIF_ISP_CTK_OFFSET_MAX           0x800
->  
-> -#define RKISP1_CIF_ISP_AE_MEAN_MAX              25
-> -#define RKISP1_CIF_ISP_HIST_BIN_N_MAX           16
-> +#define RKISP1_CIF_ISP_AE_MEAN_MAX_V10		25
-> +#define RKISP1_CIF_ISP_AE_MEAN_MAX_V12		81
-> +#define RKISP1_CIF_ISP_AE_MEAN_MAX		RKISP1_CIF_ISP_AE_MEAN_MAX_V12
-> +
-> +#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10	16
-> +#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12	32
-> +#define RKISP1_CIF_ISP_HIST_BIN_N_MAX		RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12
-> +
->  #define RKISP1_CIF_ISP_AFM_MAX_WINDOWS          3
->  #define RKISP1_CIF_ISP_DEGAMMA_CURVE_SIZE       17
->  
-> @@ -86,7 +92,9 @@
->   * Gamma out
->   */
->  /* Maximum number of color samples supported */
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10   17
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12   34
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
->  
->  /*
->   * Lens shade correction
-> @@ -103,7 +111,9 @@
->   * Histogram calculation
->   */
->  /* Last 3 values unused. */
-> -#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28
-> +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10 25
-> +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12 81
-> +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE     RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
->  
->  /*
->   * Defect Pixel Cluster Correction
-> @@ -526,6 +536,15 @@ enum rkisp1_cif_isp_goc_mode {
->   *
->   * @mode: goc mode (from enum rkisp1_cif_isp_goc_mode)
->   * @gamma_y: gamma out curve y-axis for all color components
-> + *
-> + * The number of entries of @gamma_y depends on the hardware revision
-> + * as is reported by the hw_revision field of the struct media_device_info
-> + * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-> + *
-> + * Versions <= V11 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10
-> + * entries, versions >= V12 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
-> + * entries. RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES is equal to the maximum
-> + * of the two.
->   */
->  struct rkisp1_cif_isp_goc_config {
->  	__u32 mode;
-> @@ -540,6 +559,15 @@ struct rkisp1_cif_isp_goc_config {
->   *			  skipped
->   * @meas_window: coordinates of the measure window
->   * @hist_weight: weighting factor for sub-windows
-> + *
-> + * The number of entries of @hist_weight depends on the hardware revision
-> + * as is reported by the hw_revision field of the struct media_device_info
-> + * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-> + *
-> + * Versions <= V11 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10
-> + * entries, versions >= V12 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
-> + * entries. RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE is equal to the maximum
-> + * of the two.
->   */
->  struct rkisp1_cif_isp_hst_config {
->  	__u32 mode;
-> @@ -827,7 +855,15 @@ struct rkisp1_cif_isp_bls_meas_val {
->   * @exp_mean: Mean luminance value of block xx
->   * @bls_val:  BLS measured values
->   *
-> - * Image is divided into 5x5 blocks.
-> + * The number of entries of @exp_mean depends on the hardware revision
-> + * as is reported by the hw_revision field of the struct media_device_info
-> + * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-> + *
-> + * Versions <= V11 have RKISP1_CIF_ISP_AE_MEAN_MAX_V10 entries,
-> + * versions >= V12 have RKISP1_CIF_ISP_AE_MEAN_MAX_V12 entries.
-> + * RKISP1_CIF_ISP_AE_MEAN_MAX is equal to the maximum of the two.
-> + *
-> + * Image is divided into 5x5 blocks on V10 and 9x9 blocks on V12.
->   */
->  struct rkisp1_cif_isp_ae_stat {
->  	__u8 exp_mean[RKISP1_CIF_ISP_AE_MEAN_MAX];
-> @@ -862,8 +898,16 @@ struct rkisp1_cif_isp_af_stat {
->   *
->   * @hist_bins: measured bin counters
->   *
-> - * Measurement window divided into 16 sub-windows, set
-> - * with ISP_HIST_XXX
-> + * The histogram values divided into 16 bins for V10/V11 and 32 bins
-> + * for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_config.
-> + *
-> + * The number of entries of @hist_bins depends on the hardware revision
-> + * as is reported by the hw_revision field of the struct media_device_info
-> + * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-> + *
-> + * Versions <= V11 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10 entries,
-> + * versions >= V12 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12 entries.
-> + * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
->   */
->  struct rkisp1_cif_isp_hist_stat {
->  	__u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
-> 
+diff --git a/Documentation/admin-guide/media/rkisp1.rst b/Documentation/admin-guide/media/rkisp1.rst
+index 2267e4fb475e..ccf418713623 100644
+--- a/Documentation/admin-guide/media/rkisp1.rst
++++ b/Documentation/admin-guide/media/rkisp1.rst
+@@ -13,6 +13,22 @@ This file documents the driver for the Rockchip ISP1 that is part of RK3288
+ and RK3399 SoCs. The driver is located under drivers/staging/media/rkisp1
+ and uses the Media-Controller API.
+ 
++Revisions
++=========
++
++There exist multiple smaller revisions to this ISP that got introduced in
++later SoCs. Revisions can be found in the enum :c:type:`rkisp1_cif_isp_version`
++in the UAPI and the revision of the ISP inside the running SoC can be read
++in the field hw_revision of struct media_device_info as returned by
++ioctl MEDIA_IOC_DEVICE_INFO.
++
++Versions in use are:
++
++- RKISP1_V10: used at least in rk3288 and rk3399
++- RKISP1_V11: declared in the original vendor code, but not used
++- RKISP1_V12: used at least in rk3326 and px30
++- RKISP1_V13: used at least in rk1808
++
+ Topology
+ ========
+ .. _rkisp1_topology_graph:
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 68da1eed753d..f7e9fd305548 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -104,6 +104,7 @@
+ struct rkisp1_match_data {
+ 	const char * const *clks;
+ 	unsigned int size;
++	enum rkisp1_cif_isp_version isp_ver;
+ };
+ 
+ /* ----------------------------------------------------------------------------
+@@ -411,15 +412,16 @@ static const char * const rk3399_isp_clks[] = {
+ 	"hclk",
+ };
+ 
+-static const struct rkisp1_match_data rk3399_isp_clk_data = {
++static const struct rkisp1_match_data rk3399_isp_match_data = {
+ 	.clks = rk3399_isp_clks,
+ 	.size = ARRAY_SIZE(rk3399_isp_clks),
++	.isp_ver = RKISP1_V10,
+ };
+ 
+ static const struct of_device_id rkisp1_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3399-cif-isp",
+-		.data = &rk3399_isp_clk_data,
++		.data = &rk3399_isp_match_data,
+ 	},
+ 	{},
+ };
+@@ -457,15 +459,15 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+ 
+ static int rkisp1_probe(struct platform_device *pdev)
+ {
+-	const struct rkisp1_match_data *clk_data;
++	const struct rkisp1_match_data *match_data;
+ 	struct device *dev = &pdev->dev;
+ 	struct rkisp1_device *rkisp1;
+ 	struct v4l2_device *v4l2_dev;
+ 	unsigned int i;
+ 	int ret, irq;
+ 
+-	clk_data = of_device_get_match_data(&pdev->dev);
+-	if (!clk_data)
++	match_data = of_device_get_match_data(&pdev->dev);
++	if (!match_data)
+ 		return -ENODEV;
+ 
+ 	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+@@ -494,15 +496,16 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 
+ 	rkisp1->irq = irq;
+ 
+-	for (i = 0; i < clk_data->size; i++)
+-		rkisp1->clks[i].id = clk_data->clks[i];
+-	ret = devm_clk_bulk_get(dev, clk_data->size, rkisp1->clks);
++	for (i = 0; i < match_data->size; i++)
++		rkisp1->clks[i].id = match_data->clks[i];
++	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+ 	if (ret)
+ 		return ret;
+-	rkisp1->clk_size = clk_data->size;
++	rkisp1->clk_size = match_data->size;
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
++	rkisp1->media_dev.hw_revision = match_data->isp_ver;
+ 	strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
+ 		sizeof(rkisp1->media_dev.model));
+ 	rkisp1->media_dev.dev = &pdev->dev;
+diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+index ecfb8f7a6c70..97d7829d8831 100644
+--- a/include/uapi/linux/rkisp1-config.h
++++ b/include/uapi/linux/rkisp1-config.h
+@@ -123,6 +123,22 @@
+ #define RKISP1_CIF_ISP_STAT_AFM           (1U << 2)
+ #define RKISP1_CIF_ISP_STAT_HIST          (1U << 3)
+ 
++
++/**
++ * enum rkisp1_cif_isp_version - ISP variants
++ *
++ * @RKISP1_V10: used at least in rk3288 and rk3399
++ * @RKISP1_V11: declared in the original vendor code, but not used
++ * @RKISP1_V12: used at least in rk3326 and px30
++ * @RKISP1_V13: used at least in rk1808
++ */
++enum rkisp1_cif_isp_version {
++	RKISP1_V10 = 10,
++	RKISP1_V11,
++	RKISP1_V12,
++	RKISP1_V13,
++};
++
+ enum rkisp1_cif_isp_histogram_mode {
+ 	RKISP1_CIF_ISP_HISTOGRAM_MODE_DISABLE,
+ 	RKISP1_CIF_ISP_HISTOGRAM_MODE_RGB_COMBINED,
+-- 
+2.29.2
 
 
 _______________________________________________
