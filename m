@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E31EC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 12:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 230C0C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 12:57:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7080122B49
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 12:57:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7080122B49
+	by mail.kernel.org (Postfix) with ESMTPS id 2B38222B4E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 12:57:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B38222B4E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TcDgY0guNTQOD0Al1u8azt9+Z0JOGBcJ7PtEphkEuvY=; b=qcmiJign1nL1kj9pqkNcsDoAX
-	aH454kvyvClyn8qAkdPScxz5naNAH6KTc4iem6zFnvmfVrnof3Eh+XSbaKRfRzQWE4Cz5Wp8heOZO
-	HFTn/R9FOU/I4Q4RT10Itz/7s8Evm+EllRconBfSghqzxvbVZs0RIRcyZzoJMhv85Fky2mGZpbsDj
-	TzO/LZ8T5iG4OSbMEuv0Ng5Z+W22hfNE2aZU+Lkb8tRN0mVK/ZmjzAhBYaUs39JrQYfFqLOyRb/f3
-	dCQdTBwJq+HixzsujOWXboNsgp6af0JOFyn551NxLyBKxEhmQ0XB02RwjEB/cNmqrB1CA+eDll/fJ
-	J1DPgmdfw==;
+	 bh=R0gRUx6/1OadBZs9Xf1fhh3eHCAcR1CCYUg3cxQc14M=; b=Yaqy1T7sOic6ahHOz+BI9QFXD
+	yaYwRE3I4HKo3oUhx6F/YhmK5eGXT2PcCvD5hnPC9xv8rDXt9GDf2jC+zpHM1u7HhX9rF5dPkdxyX
+	4kV2ITnhhEre8INedxB8O6VulTPj7oESga7Ryf1dMbIhFMHmWudElp/HJnngL4XEQ+UXTTn3eDgu3
+	btVuMvUOAWvGNE4qK+s+Kul9OBSFiM6ksBhiHGE5nA+/XQRzsyOBurJq/9cYjZNyIbR0HlHNwm0qO
+	GcdQbdhfeaCIyNvGw3y+55wehNZrUbp8SUwKUhiZ0NoZcxAiVI08FzzfhsgkeSqhUfqpe5oacnHFo
+	gItpk2AXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1U6O-00024e-SF; Mon, 18 Jan 2021 12:57:48 +0000
+	id 1l1U6O-00024P-3N; Mon, 18 Jan 2021 12:57:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1U6I-00022N-Mt; Mon, 18 Jan 2021 12:57:43 +0000
+ id 1l1U6I-00022O-Mu; Mon, 18 Jan 2021 12:57:43 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l1U6D-000424-Uh; Mon, 18 Jan 2021 13:57:38 +0100
+ id 1l1U6E-000424-AR; Mon, 18 Jan 2021 13:57:38 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: (subset) [PATCH 1/3] ARM: dts: rockchip: rename thermal subnodes
- for rk3288.dtsi
-Date: Mon, 18 Jan 2021 13:57:33 +0100
-Message-Id: <161097370156.287816.791052279750108287.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: remove interrupt-names property
+ from rk3399 vdec node
+Date: Mon, 18 Jan 2021 13:57:34 +0100
+Message-Id: <161097370155.287816.107161049165561703.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210117150953.16475-1-jbx6244@gmail.com>
-References: <20210117150953.16475-1-jbx6244@gmail.com>
+In-Reply-To: <20210117181653.24886-1-jbx6244@gmail.com>
+References: <20210117181653.24886-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_075742_795797_1276AC6A 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20210118_075742_808126_B169D8D9 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,24 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 17 Jan 2021 16:09:51 +0100, Johan Jonker wrote:
-> A test with the command below gives for example this error:
-> /arch/arm/boot/dts/rk3288-tinker.dt.yaml:
-> thermal-zones: 'cpu_thermal', 'gpu_thermal', 'reserve_thermal'
-> do not match any of the regexes:
-> '^[a-zA-Z][a-zA-Z0-9\\-]{1,12}-thermal$', 'pinctrl-[0-9]+'
+On Sun, 17 Jan 2021 19:16:53 +0100, Johan Jonker wrote:
+> A test with the command below gives this error:
+> /arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml: video-codec@ff660000:
+> 'interrupt-names' does not match any of the regexes: 'pinctrl-[0-9]+'
 > 
-> Rename Rockchip rk3288 thermal subnodes
-> so that it ends with "-thermal"
+> The rkvdec driver gets it irq with help of the platform_get_irq()
+> function, so remove the interrupt-names property from the rk3399
+> vdec node.
 > 
 > [...]
 
 Applied, thanks!
 
-[2/3] arm64: dts: rockchip: rename thermal subnodes for rk3368.dtsi
-      commit: 7c96a5cf680ac7339999becd454e1f2fd9b258fb
-[3/3] arm64: dts: rockchip: rename thermal subnodes for rk3399.dtsi
-      commit: e58061b59787270a57839397e50bb4400b9e2de9
+[1/1] arm64: dts: rockchip: remove interrupt-names property from rk3399 vdec node
+      commit: a6b519f5ccecb0a68af788b07fd85b8e91969a53
 
 Best regards,
 -- 
