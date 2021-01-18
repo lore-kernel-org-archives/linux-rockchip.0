@@ -2,67 +2,59 @@ Return-Path: <SRS0=qa0x=GV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC0A8C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D28BAC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:57:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC05E2245C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:27:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC05E2245C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3DA1722228
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 09:57:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DA1722228
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wF9/9GzxR9sRECpgDY99SFyUFXAYt2a4Ma6H+eYKXp8=; b=MtFZSZwTPxhKKUaKRLQGzs679
-	4i440CF79sL3YAYE1zSQtTgjzf47QrtXHXh3KuayUlZmf/p93zjag3LLC68KRbiZ7g0rexZHYHQ3V
-	Ad/BaqIIiUTT4yl6JaUO8gcljIZv+SxbcZo1OUxABrv0mspcfNw4Xmnh/UkU6IoMXnmbD83fcVQo/
-	9koWsTltOy4ccL7Ty8NS5cRM2KSk0w8TXqyM/yRP4T451qJTSxn0tdYGX7TqqxaQd43i5XQylPIyJ
-	IQ5I/m3uauKRIMiv0joRunudpzBqtviOj2DnUGEk/wb88/kkiOnHSx9m9JWcF21vALPZ4syGuOyN3
-	c9ZJ/roPg==;
+	 bh=7g20Bcqe8noeYAl0GK3b5WvlQty80paLru8ilYgPkvQ=; b=ulV1UXqf8nkBf8ODcxwziSn4P
+	lTj0sIJVd3QWPinJqRHQTqizjm58mOXaXtia/kjWUmFMHGGvoGXQt0/Gjrv6VzY1HvwG/5i39XQjA
+	3hn272pM2r2QPLWewgsmF9iL7WByoYM/rcIjQZHNrMIJC5PHLWVhuoZ4UMZ3XhzWv1URnXfzhaMFY
+	L2K8sAfC3hWT5dyr3SrpTQV4WElnavnP1YcpEnPh0DEONvHjJSM2zVIlW7M02C0rsM3hqqRsVmrhM
+	WRIlNXCDAMzWSnipX8j0nmAub+DPQ0NWkT+/UHeifVjk54nM+0ZEgfD1o8bH0ONik/wgZGJJgYkBV
+	CjJBeV3+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1Qp6-0005fh-CU; Mon, 18 Jan 2021 09:27:44 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1l1RID-00018L-Fd; Mon, 18 Jan 2021 09:57:49 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1Qp4-0005fG-9V
- for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 09:27:43 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id E75B82BB;
- Mon, 18 Jan 2021 10:27:38 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1610962059;
- bh=TdYT+A4Se1C9EwXIKCnQd/ef8sV86Nya2+7Z0vuBVyQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CvoPUiOmYULYS1rMKc0wQdN3TDNvUEOsKyARmcanDJEtpATCHlGFXw8fQXvb5Ncu+
- wVH73sCUQIFWcz5MjMecuOb9BZe21B9Shs6AYnjqAVCpl8Y61eewVLRyfzSWkGgYgK
- UJyR4Ic/jMruItCcy0NlBHIsjbrxatbMmBXvn/Lg=
-Date: Mon, 18 Jan 2021 11:27:23 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v4 2/3] media: rockchip: rkisp1: carry ip version
- information
-Message-ID: <YAVUe+H0K/j7GROl@pendragon.ideasonboard.com>
-References: <20210115163829.217131-1-heiko@sntech.de>
- <2867818.687JKscXgg@diego>
- <f67aadb1-0965-e2eb-6b50-842e548e0043@collabora.com>
- <2673307.AiC22s8V5E@diego>
+ id 1l1RI9-00016L-1Q
+ for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 09:57:47 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1l1RI3-0002qw-EI; Mon, 18 Jan 2021 10:57:39 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: dafna.hirschfeld@collabora.com, helen.koike@collabora.com,
+ linux-media@vger.kernel.org, mchehab@kernel.org,
+ Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
+Subject: [PATCH v5 3/3] media: rockchip: rkisp1: extend uapi array sizes
+Date: Mon, 18 Jan 2021 10:57:36 +0100
+Message-Id: <20210118095736.272473-4-heiko@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210118095736.272473-1-heiko@sntech.de>
+References: <20210118095736.272473-1-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2673307.AiC22s8V5E@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_042742_435350_BC3D1383 
-X-CRM114-Status: GOOD (  35.28  )
+X-CRM114-CacheID: sfid-20210118_045745_343000_D8A9ECA2 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,158 +67,203 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, christoph.muellner@theobroma-systems.com,
- mchehab@kernel.org, ezequiel@collabora.com, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ tfiga@chromium.org, linux-rockchip@lists.infradead.org, ezequiel@collabora.com,
+ christoph.muellner@theobroma-systems.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKYW4gMTgsIDIwMjEgYXQgMTA6MjE6NDBBTSArMDEwMCwgSGVpa28gU3TDvGJuZXIg
-d3JvdGU6Cj4gQW0gTW9udGFnLCAxOC4gSmFudWFyIDIwMjEsIDEwOjE5OjQxIENFVCBzY2hyaWVi
-IERhZm5hIEhpcnNjaGZlbGQ6Cj4gPiBBbSAxNS4wMS4yMSB1bSAyMToyOSBzY2hyaWViIEhlaWtv
-IFN0w7xibmVyOgo+ID4+IEFtIEZyZWl0YWcsIDE1LiBKYW51YXIgMjAyMSwgMjA6NDI6NDEgQ0VU
-IHNjaHJpZWIgTGF1cmVudCBQaW5jaGFydDoKPiA+Pj4gT24gRnJpLCBKYW4gMTUsIDIwMjEgYXQg
-MDU6Mzg6MjhQTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPj4+PiBGcm9tOiBIZWlr
-byBTdHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAdGhlb2Jyb21hLXN5c3RlbXMuY29tPgo+ID4+Pj4K
-PiA+Pj4+IFRoZSBJUCBibG9jayBldm9sdmVkIGZyb20gaXRzIHJrMzI4OC9yazMzOTkgYmFzZSBh
-bmQgdGhlIHZlbmRvcgo+ID4+Pj4gZGVzaWduYXRlcyB0aGVtIHdpdGggYSBudW1lcmljYWwgdmVy
-c2lvbi4gcmszMzk5IGZvciBleGFtcGxlCj4gPj4+PiBpcyBkZXNpZ25hdGVkIFYxMCBwcm9iYWJs
-eSBtZWFuaW5nIFYxLjAuCj4gPj4+Pgo+ID4+Pj4gVGhlcmUgZG9lc24ndCBzZWVtIHRvIGJlIGFu
-IGFjdHVhbCB2ZXJzaW9uIHJlZ2lzdGVyIHdlIGNvdWxkIHJlYWQgdGhhdAo+ID4+Pj4gaW5mb3Jt
-YXRpb24gZnJvbSwgc28gYWxsb3cgdGhlIG1hdGNoX2RhdGEgdG8gY2FycnkgdGhhdCBpbmZvcm1h
-dGlvbgo+ID4+Pj4gZm9yIGZ1dHVyZSBkaWZmZXJlbnRpYXRpb24uCj4gPj4+Pgo+ID4+Pj4gQWxz
-byBjYXJyeSB0aGF0IGluZm9ybWF0aW9uIGluIHRoZSBod19yZXZpc2lvbiBmaWVsZCBvZiB0aGUg
-bWVkaWEtCj4gPj4+PiBjb250cm9sbGVyIEFQSSwgc28gdGhhdCB1c2Vyc3BhY2UgYWxzbyBoYXMg
-YWNjZXNzIHRvIHRoYXQuCj4gPj4+Pgo+ID4+Pj4gVGhlIGFkZGVkIHZlcnNpb25zIGFyZToKPiA+
-Pj4+IC0gVjEwOiBhdCBsZWFzdCByazMyODggKyByazMzOTkKPiA+Pj4+IC0gVjExOiBzZWVtaW5n
-bHkgdW51c2VkIGFzIG9mIG5vdywgYnV0IHByb2JhYmx5IGFwcGVhcmVkIGluIHNvbWUgc29jCj4g
-Pj4+PiAtIFYxMjogYXQgbGVhc3QgcmszMzI2ICsgcHgzMAo+ID4+Pj4gLSBWMTM6IGF0IGxlYXN0
-IHJrMTgwOAo+ID4+Pgo+ID4+PiBJbiBhZGRpdGlvbiB0byBjaGFuZ2VzIHRvIHRoZSBJU1AgaXRz
-ZWxmLCBhcmUgdGhlcmUgY2hhbmdlcyBpbiBob3cgaXQgaXMKPiA+Pj4gaW50ZWdyYXRlZCBpbiB0
-aGUgc3lzdGVtLCBpbiBwYXJ0aWN1bGFyIGluIGhvdyBpdCBpcyBjb25uZWN0ZWQgdG8gQ1NJLTIK
-PiA+Pj4gcmVjZWl2ZXJzID8KPiA+PiAKPiA+PiBIb29raW5nIHVwIG15IGNhbWVyYSBvbiB0aGUg
-cHgzMCB3YXMgcHJldHR5IHN0cmFpZ2h0Zm9yd2FyZC4KPiA+PiBBcyB5b3UgY2FuIHNlZSBpbiBb
-MF0gdGhlIGFjdHVhbCBjc2ktcGh5IGJsb2NrIGlzIGRpZmZlcmVudCwgYnV0IHN0cnVjdHVyYWxs
-eQo+ID4+IGV2ZXJ5dGhpbmcgZWxzZSBzdGF5ZWQgdGhlIHNhbWUgYW5kIHRoZSBweDMwIHNlcmll
-cyBtZXJlbHkgYWNjb3VudHMKPiA+PiBmb3Igc29tZSBpc3Atc3BlY2lmaWMgY2hhbmdlcywgbGlr
-ZSB0aGUgc3BsaXQgaW50ZXJydXB0cyBhbmQgdGhlIFYxMi1zcGVjaWZpYwo+ID4+IHBhcnRzLgo+
-ID4+IAo+ID4+PiBEbyBhbGwgdGhlIGFib3ZlIFNvQ3MgaGF2ZSB0d28gSVNQIGluc3RhbmNlcyA/
-Cj4gPj4gCj4gPj4gTm9wZSwgSSB0aGluayBvbmx5IHRoZSByazMzOTkgaGFzIHR3byBJU1BzLgo+
-ID4+IAo+ID4+IEFsbCBvdGhlcnMgb25seSBzZWVtIHRvIGhhdmUgb25lIGluc3RhbmNlIGFuZCBt
-YXliZSBhbiBhZGRpdGlvbmFsIG1vcmUKPiA+PiBzaW1wbGUgdmlkZW8gaW5wdXQgcHJvY2Vzc29y
-LiAobGlrZSB0aGUgcmszMjg4IGhhcyBib3RoIGFuIElTUCBhbmQgc29tZXRoaW5nCj4gPj4gY2Fs
-bGVkIFZJUCAtIGEgc2ltcGxlciBibG9jaykKPiA+PiAKPiA+PiBTaW1pbGFyIGlzIHRoZSByazMz
-MjYvcHgzMCAoc2FtZSBzb2MpIHdoaWNoIGhhcyBhbiBJU1AgYXMgd2VsbCBhcyBhIFZJUCB0aGF0
-Cj4gPj4gTWF4aW1lIENoZXZhbGxpZXIgaXMgd29ya2luZyBvbiBbMV0KPiA+PiAKPiA+PiBIZWlr
-bwo+ID4+IAo+ID4+IFswXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYS8yMDIx
-MDEwODE5MzMxMS4zNDIzMjM2LTEtaGVpa29Ac250ZWNoLmRlLwo+ID4+IFsxXSBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9saW51eC1kZXZpY2V0cmVlLzIwMjAxMjI5MTYxNzI0LjUxMTEwMi0xLW1h
-eGltZS5jaGV2YWxsaWVyQGJvb3RsaW4uY29tLwo+ID4+IAo+ID4+Pj4gU2lnbmVkLW9mZi1ieTog
-SGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4KPiA+
-Pj4+IFJldmlld2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxhYm9yYS5jb20+
-Cj4gPj4+PiAtLS0KPiA+Pj4+ICAgRG9jdW1lbnRhdGlvbi9hZG1pbi1ndWlkZS9tZWRpYS9ya2lz
-cDEucnN0ICAgIHwgMTYgKysrKysrKysrKysrKysKPiA+Pj4+ICAgLi4uL3BsYXRmb3JtL3JvY2tj
-aGlwL3JraXNwMS9ya2lzcDEtZGV2LmMgICAgIHwgMjEgKysrKysrKysrKystLS0tLS0tLQo+ID4+
-Pj4gICBpbmNsdWRlL3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oICAgICAgICAgICAgfCAxNiAr
-KysrKysrKysrKysrKwo+ID4+Pj4gICAzIGZpbGVzIGNoYW5nZWQsIDQ0IGluc2VydGlvbnMoKyks
-IDkgZGVsZXRpb25zKC0pCj4gPj4+Pgo+ID4+Pj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
-YWRtaW4tZ3VpZGUvbWVkaWEvcmtpc3AxLnJzdCBiL0RvY3VtZW50YXRpb24vYWRtaW4tZ3VpZGUv
-bWVkaWEvcmtpc3AxLnJzdAo+ID4+Pj4gaW5kZXggMjI2N2U0ZmI0NzVlLi5jY2Y0MTg3MTM2MjMg
-MTAwNjQ0Cj4gPj4+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL2FkbWluLWd1aWRlL21lZGlhL3JraXNw
-MS5yc3QKPiA+Pj4+ICsrKyBiL0RvY3VtZW50YXRpb24vYWRtaW4tZ3VpZGUvbWVkaWEvcmtpc3Ax
-LnJzdAo+ID4+Pj4gQEAgLTEzLDYgKzEzLDIyIEBAIFRoaXMgZmlsZSBkb2N1bWVudHMgdGhlIGRy
-aXZlciBmb3IgdGhlIFJvY2tjaGlwIElTUDEgdGhhdCBpcyBwYXJ0IG9mIFJLMzI4OAo+ID4+Pj4g
-ICBhbmQgUkszMzk5IFNvQ3MuIFRoZSBkcml2ZXIgaXMgbG9jYXRlZCB1bmRlciBkcml2ZXJzL3N0
-YWdpbmcvbWVkaWEvcmtpc3AxCj4gPj4+PiAgIGFuZCB1c2VzIHRoZSBNZWRpYS1Db250cm9sbGVy
-IEFQSS4KPiA+Pj4+ICAgCj4gPj4+PiArUmV2aXNpb25zCj4gPj4+PiArPT09PT09PT09Cj4gPj4+
-PiArCj4gPj4+PiArVGhlcmUgZXhpc3QgbXVsdGlwbGUgc21hbGxlciByZXZpc2lvbnMgdG8gdGhp
-cyBJU1AgdGhhdCBnb3QgaW50cm9kdWNlZCBpbgo+ID4+Pj4gK2xhdGVyIFNvQ3MuIFJldmlzaW9u
-cyBjYW4gYmUgZm91bmQgaW4gdGhlIGVudW0gOmM6dHlwZTpgcmtpc3AxX2NpZl9pc3BfdmVyc2lv
-bmAKPiA+Pj4+ICtpbiB0aGUgVUFQSSBhbmQgdGhlIHJldmlzaW9uIG9mIHRoZSBJU1AgaW5zaWRl
-IHRoZSBydW5uaW5nIFNvQyBjYW4gYmUgcmVhZAo+ID4+Pj4gK2luIHRoZSBmaWVsZCBod19yZXZp
-c2lvbiBvZiBzdHJ1Y3QgbWVkaWFfZGV2aWNlX2luZm8gYXMgcmV0dXJuZWQgYnkKPiA+Pj4+ICtp
-b2N0bCBNRURJQV9JT0NfREVWSUNFX0lORk8uCj4gPj4+PiArCj4gPj4+PiArVmVyc2lvbnMgaW4g
-dXNlIGFyZToKPiA+Pj4+ICsKPiA+Pj4+ICstIFJLSVNQMV9WMTA6IHVzZWQgYXQgbGVhc3QgaW4g
-cmszMjg4IGFuZCByazMzOTkKPiA+Pj4+ICstIFJLSVNQMV9WMTE6IGRlY2xhcmVkIGluIHRoZSBv
-cmlnaW5hbCB2ZW5kb3IgY29kZSwgYnV0IG5vdCB1c2VkCj4gPj4+PiArLSBSS0lTUDFfVjEyOiB1
-c2VkIGF0IGxlYXN0IGluIHJrMzMyNiBhbmQgcHgzMAo+ID4+Pj4gKy0gUktJU1AxX1YxMzogdXNl
-ZCBhdCBsZWFzdCBpbiByazE4MDgKPiA+Pj4+ICsKPiA+Pj4+ICAgVG9wb2xvZ3kKPiA+Pj4+ICAg
-PT09PT09PT0KPiA+Pj4+ICAgLi4gX3JraXNwMV90b3BvbG9neV9ncmFwaDoKPiA+Pj4+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2
-LmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGV2LmMK
-PiA+Pj4+IGluZGV4IDY4ZGExZWVkNzUzZC4uZjdlOWZkMzA1NTQ4IDEwMDY0NAo+ID4+Pj4gLS0t
-IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRldi5jCj4g
-Pj4+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEt
-ZGV2LmMKPiA+Pj4+IEBAIC0xMDQsNiArMTA0LDcgQEAKPiA+Pj4+ICAgc3RydWN0IHJraXNwMV9t
-YXRjaF9kYXRhIHsKPiA+Pj4+ICAgCWNvbnN0IGNoYXIgKiBjb25zdCAqY2xrczsKPiA+Pj4+ICAg
-CXVuc2lnbmVkIGludCBzaXplOwo+ID4+Pj4gKwllbnVtIHJraXNwMV9jaWZfaXNwX3ZlcnNpb24g
-aXNwX3ZlcjsKPiA+Pj4+ICAgfTsKPiA+Pj4+ICAgCj4gPj4+PiAgIC8qIC0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0KPiA+Pj4+IEBAIC00MTEsMTUgKzQxMiwxNiBAQCBzdGF0aWMgY29uc3QgY2hhciAqIGNv
-bnN0IHJrMzM5OV9pc3BfY2xrc1tdID0gewo+ID4+Pj4gICAJImhjbGsiLAo+ID4+Pj4gICB9Owo+
-ID4+Pj4gICAKPiA+Pj4+IC1zdGF0aWMgY29uc3Qgc3RydWN0IHJraXNwMV9tYXRjaF9kYXRhIHJr
-MzM5OV9pc3BfY2xrX2RhdGEgPSB7Cj4gPj4+PiArc3RhdGljIGNvbnN0IHN0cnVjdCBya2lzcDFf
-bWF0Y2hfZGF0YSByazMzOTlfaXNwX21hdGNoX2RhdGEgPSB7Cj4gPj4+PiAgIAkuY2xrcyA9IHJr
-MzM5OV9pc3BfY2xrcywKPiA+Pj4+ICAgCS5zaXplID0gQVJSQVlfU0laRShyazMzOTlfaXNwX2Ns
-a3MpLAo+ID4+Pj4gKwkuaXNwX3ZlciA9IFJLSVNQMV9WMTAsCj4gPj4+PiAgIH07Cj4gPj4+PiAg
-IAo+ID4+Pj4gICBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBya2lzcDFfb2ZfbWF0
-Y2hbXSA9IHsKPiA+Pj4+ICAgCXsKPiA+Pj4+ICAgCQkuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxy
-azMzOTktY2lmLWlzcCIsCj4gPj4+PiAtCQkuZGF0YSA9ICZyazMzOTlfaXNwX2Nsa19kYXRhLAo+
-ID4+Pj4gKwkJLmRhdGEgPSAmcmszMzk5X2lzcF9tYXRjaF9kYXRhLAo+ID4+Pj4gICAJfSwKPiA+
-Pj4+ICAgCXt9LAo+ID4+Pj4gICB9Owo+ID4+Pj4gQEAgLTQ1NywxNSArNDU5LDE1IEBAIHN0YXRp
-YyB2b2lkIHJraXNwMV9kZWJ1Z19pbml0KHN0cnVjdCBya2lzcDFfZGV2aWNlICpya2lzcDEpCj4g
-Pj4+PiAgIAo+ID4+Pj4gICBzdGF0aWMgaW50IHJraXNwMV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2KQo+ID4+Pj4gICB7Cj4gPj4+PiAtCWNvbnN0IHN0cnVjdCBya2lzcDFfbWF0
-Y2hfZGF0YSAqY2xrX2RhdGE7Cj4gPj4+PiArCWNvbnN0IHN0cnVjdCBya2lzcDFfbWF0Y2hfZGF0
-YSAqbWF0Y2hfZGF0YTsKPiA+Pj4+ICAgCXN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7
-Cj4gPj4+PiAgIAlzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxOwo+ID4+Pj4gICAJc3RydWN0
-IHY0bDJfZGV2aWNlICp2NGwyX2RldjsKPiA+Pj4+ICAgCXVuc2lnbmVkIGludCBpOwo+ID4+Pj4g
-ICAJaW50IHJldCwgaXJxOwo+ID4+Pj4gICAKPiA+Pj4+IC0JY2xrX2RhdGEgPSBvZl9kZXZpY2Vf
-Z2V0X21hdGNoX2RhdGEoJnBkZXYtPmRldik7Cj4gPj4+PiAtCWlmICghY2xrX2RhdGEpCj4gPj4+
-PiArCW1hdGNoX2RhdGEgPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoJnBkZXYtPmRldik7Cj4g
-Pj4+PiArCWlmICghbWF0Y2hfZGF0YSkKPiA+Pj4+ICAgCQlyZXR1cm4gLUVOT0RFVjsKPiA+Pj4+
-ICAgCj4gPj4+PiAgIAlya2lzcDEgPSBkZXZtX2t6YWxsb2MoZGV2LCBzaXplb2YoKnJraXNwMSks
-IEdGUF9LRVJORUwpOwo+ID4+Pj4gQEAgLTQ5NCwxNSArNDk2LDE2IEBAIHN0YXRpYyBpbnQgcmtp
-c3AxX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPj4+PiAgIAo+ID4+Pj4g
-ICAJcmtpc3AxLT5pcnEgPSBpcnE7Cj4gPj4+PiAgIAo+ID4+Pj4gLQlmb3IgKGkgPSAwOyBpIDwg
-Y2xrX2RhdGEtPnNpemU7IGkrKykKPiA+Pj4+IC0JCXJraXNwMS0+Y2xrc1tpXS5pZCA9IGNsa19k
-YXRhLT5jbGtzW2ldOwo+ID4+Pj4gLQlyZXQgPSBkZXZtX2Nsa19idWxrX2dldChkZXYsIGNsa19k
-YXRhLT5zaXplLCBya2lzcDEtPmNsa3MpOwo+ID4+Pj4gKwlmb3IgKGkgPSAwOyBpIDwgbWF0Y2hf
-ZGF0YS0+c2l6ZTsgaSsrKQo+ID4+Pj4gKwkJcmtpc3AxLT5jbGtzW2ldLmlkID0gbWF0Y2hfZGF0
-YS0+Y2xrc1tpXTsKPiA+Pj4+ICsJcmV0ID0gZGV2bV9jbGtfYnVsa19nZXQoZGV2LCBtYXRjaF9k
-YXRhLT5zaXplLCBya2lzcDEtPmNsa3MpOwo+ID4+Pj4gICAJaWYgKHJldCkKPiA+Pj4+ICAgCQly
-ZXR1cm4gcmV0Owo+ID4+Pj4gLQlya2lzcDEtPmNsa19zaXplID0gY2xrX2RhdGEtPnNpemU7Cj4g
-Pj4+PiArCXJraXNwMS0+Y2xrX3NpemUgPSBtYXRjaF9kYXRhLT5zaXplOwo+ID4+Pj4gICAKPiA+
-Pj4+ICAgCXBtX3J1bnRpbWVfZW5hYmxlKCZwZGV2LT5kZXYpOwo+ID4+Pj4gICAKPiA+Pj4+ICsJ
-cmtpc3AxLT5tZWRpYV9kZXYuaHdfcmV2aXNpb24gPSBtYXRjaF9kYXRhLT5pc3BfdmVyOwo+ID4+
-Pj4gICAJc3Ryc2NweShya2lzcDEtPm1lZGlhX2Rldi5tb2RlbCwgUktJU1AxX0RSSVZFUl9OQU1F
-LAo+ID4+Pj4gICAJCXNpemVvZihya2lzcDEtPm1lZGlhX2Rldi5tb2RlbCkpOwo+ID4+Pj4gICAJ
-cmtpc3AxLT5tZWRpYV9kZXYuZGV2ID0gJnBkZXYtPmRldjsKPiA+Pj4+IGRpZmYgLS1naXQgYS9p
-bmNsdWRlL3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oIGIvaW5jbHVkZS91YXBpL2xpbnV4L3Jr
-aXNwMS1jb25maWcuaAo+ID4+Pj4gaW5kZXggYmE0NDM3NzFjYzBiLi45ZmVjYjZiYzQ1N2QgMTAw
-NjQ0Cj4gPj4+PiAtLS0gYS9pbmNsdWRlL3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oCj4gPj4+
-PiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oCj4gPj4+PiBAQCAtMTI0
-LDYgKzEyNCwyMiBAQAo+ID4+Pj4gICAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX1NUQVRfQUZNICAg
-ICAgICAgICAoMVUgPDwgMikKPiA+Pj4+ICAgI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9TVEFUX0hJ
-U1QgICAgICAgICAgKDFVIDw8IDMpCj4gPj4+PiAgIAo+ID4+Pj4gKwo+ID4+Pj4gKy8qKgo+ID4+
-Pj4gKyAqIGVudW0gcmtpc3AxX2NpZl9pc3BfdmVyc2lvbiAtIElTUCB2YXJpYW50cwo+ID4+Pj4g
-KyAqCj4gPj4+PiArICogQFJLSVNQMV9WMTA6IHVzZWQgYXQgbGVhc3QgaW4gcmszMjg4IGFuZCBy
-azMzOTkKPiA+Pj4+ICsgKiBAUktJU1AxX1YxMTogZGVjbGFyZWQgaW4gdGhlIG9yaWdpbmFsIHZl
-bmRvciBjb2RlLCBidXQgbm90IHVzZWQKPiA+Pj4+ICsgKiBAUktJU1AxX1YxMjogdXNlZCBhdCBs
-ZWFzdCBpbiByazMzMjYgYW5kIHB4MzAKPiA+Pj4+ICsgKiBAUktJU1AxX1YxMzogdXNlZCBhdCBs
-ZWFzdCBpbiByazE4MDgKPiA+Pj4+ICsgKi8KPiA+Pj4+ICtlbnVtIHJraXNwMV9jaWZfaXNwX3Zl
-cnNpb24gewo+ID4+Pj4gKwlSS0lTUDFfVjEwID0gMCwKPiA+IAo+ID4gSSB3b25kZXIgaWYgaXQg
-aXMgdXNlZnVsIHRvIHN0YXJ0IHRoZSBlbnVtIHdpdGg6Cj4gPiBSS0lTUDFfVjEwID0gMTAsCj4g
-PiAKPiA+IFNvIHdoZW4gcHJpbnRpbmcgdGhlIGh3IHJldmlzaW9uIGl0IGFsd2F5cyBwcmludHMg
-YSBwb3NpdGl2ZSBudW1iZXIuCj4gCj4gbWFrZXMgc2Vuc2UgLi4uIGFsc28gaWYgdXNlcnNwYWNl
-IHByaW50cyB0aGUgdmFsdWUgc29tZXdoZXJlLCBpdCdzCj4gcmVhZGFibGUgd2l0aG91dCBrbm93
-aW5nIHRoZSBjb25zdGFudHMgLSB3aWxsIGNoYW5nZSB3aXRoIHRoZSB2NQo+IEknbSBwcmVwYXJp
-bmcuCgpJdCdzIGFsc28gdXNlZnVsIGZvciB1c2Vyc3BhY2UgdG8gZGlmZmVyZW5jaWF0ZSBiZXR3
-ZWVuIDAgPSBSS0lTUDFfVjEwCmFuZCAwID0gb2xkZXIgZHJpdmVyIHRoYXQgZG9lc24ndCBzZXQg
-dGhlIHZlcnNpb24uCgotLSAKUmVnYXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+
+Later variants of the rkisp1 block use more entries in some arrays:
+
+RKISP1_CIF_ISP_AE_MEAN_MAX                 25 -> 81
+RKISP1_CIF_ISP_HIST_BIN_N_MAX              16 -> 32
+RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17 -> 34
+RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28 -> 81
+
+and we can still extend the uapi during the 5.11-rc cycle, so do that
+now to be on the safe side.
+
+V10 and V11 only need the smaller sizes, while V12 and V13 needed
+the larger sizes.
+
+When adding the bigger sizes make sure, values filled from hardware
+values and transmitted to userspace don't leak kernel data by zeroing
+them beforehand.
+
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ .../platform/rockchip/rkisp1/rkisp1-params.c  |  2 +-
+ .../platform/rockchip/rkisp1/rkisp1-stats.c   | 12 +++-
+ include/uapi/linux/rkisp1-config.h            | 58 ++++++++++++++++---
+ 3 files changed, 62 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+index 6af4d551ffb5..fa47fe2a02d0 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+@@ -391,7 +391,7 @@ static void rkisp1_goc_config(struct rkisp1_params *params,
+ 				RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
+ 	rkisp1_write(params->rkisp1, arg->mode, RKISP1_CIF_ISP_GAMMA_OUT_MODE);
+ 
+-	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES; i++)
++	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10; i++)
+ 		rkisp1_write(params->rkisp1, arg->gamma_y[i],
+ 			     RKISP1_CIF_ISP_GAMMA_OUT_Y_0 + i * 4);
+ }
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+index 3ddab8fa8f2d..a26de388ca13 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+@@ -202,8 +202,12 @@ static void rkisp1_stats_get_aec_meas(struct rkisp1_stats *stats,
+ 	struct rkisp1_device *rkisp1 = stats->rkisp1;
+ 	unsigned int i;
+ 
++	/* the global max can be bigger than the version-specific one */
++	memset(pbuf->params.ae.exp_mean, 0, RKISP1_CIF_ISP_AE_MEAN_MAX *
++					    sizeof(*pbuf->params.ae.exp_mean));
++
+ 	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
+-	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX; i++)
++	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX_V10; i++)
+ 		pbuf->params.ae.exp_mean[i] =
+ 			(u8)rkisp1_read(rkisp1,
+ 					RKISP1_CIF_ISP_EXP_MEAN_00 + i * 4);
+@@ -232,8 +236,12 @@ static void rkisp1_stats_get_hst_meas(struct rkisp1_stats *stats,
+ 	struct rkisp1_device *rkisp1 = stats->rkisp1;
+ 	unsigned int i;
+ 
++	/* the global max can be bigger then the version-specific one */
++	memset(pbuf->params.hist.hist_bins, 0, RKISP1_CIF_ISP_HIST_BIN_N_MAX *
++					       sizeof(*pbuf->params.hist.hist_bins));
++
+ 	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
+-	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
++	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10; i++)
+ 		pbuf->params.hist.hist_bins[i] =
+ 			(u8)rkisp1_read(rkisp1,
+ 					RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
+diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+index d685b7371e71..c0c3abf5e50b 100644
+--- a/include/uapi/linux/rkisp1-config.h
++++ b/include/uapi/linux/rkisp1-config.h
+@@ -49,8 +49,14 @@
+ #define RKISP1_CIF_ISP_CTK_COEFF_MAX            0x100
+ #define RKISP1_CIF_ISP_CTK_OFFSET_MAX           0x800
+ 
+-#define RKISP1_CIF_ISP_AE_MEAN_MAX              25
+-#define RKISP1_CIF_ISP_HIST_BIN_N_MAX           16
++#define RKISP1_CIF_ISP_AE_MEAN_MAX_V10		25
++#define RKISP1_CIF_ISP_AE_MEAN_MAX_V12		81
++#define RKISP1_CIF_ISP_AE_MEAN_MAX		RKISP1_CIF_ISP_AE_MEAN_MAX_V12
++
++#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10	16
++#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12	32
++#define RKISP1_CIF_ISP_HIST_BIN_N_MAX		RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12
++
+ #define RKISP1_CIF_ISP_AFM_MAX_WINDOWS          3
+ #define RKISP1_CIF_ISP_DEGAMMA_CURVE_SIZE       17
+ 
+@@ -86,7 +92,9 @@
+  * Gamma out
+  */
+ /* Maximum number of color samples supported */
+-#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17
++#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10   17
++#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12   34
++#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
+ 
+ /*
+  * Lens shade correction
+@@ -103,7 +111,9 @@
+  * Histogram calculation
+  */
+ /* Last 3 values unused. */
+-#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28
++#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10 25
++#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12 81
++#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE     RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
+ 
+ /*
+  * Defect Pixel Cluster Correction
+@@ -526,6 +536,15 @@ enum rkisp1_cif_isp_goc_mode {
+  *
+  * @mode: goc mode (from enum rkisp1_cif_isp_goc_mode)
+  * @gamma_y: gamma out curve y-axis for all color components
++ *
++ * The number of entries of @gamma_y depends on the hardware revision
++ * as is reported by the hw_revision field of the struct media_device_info
++ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
++ *
++ * Versions <= V11 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10
++ * entries, versions >= V12 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
++ * entries. RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES is equal to the maximum
++ * of the two.
+  */
+ struct rkisp1_cif_isp_goc_config {
+ 	__u32 mode;
+@@ -540,6 +559,15 @@ struct rkisp1_cif_isp_goc_config {
+  *			  skipped
+  * @meas_window: coordinates of the measure window
+  * @hist_weight: weighting factor for sub-windows
++ *
++ * The number of entries of @hist_weight depends on the hardware revision
++ * as is reported by the hw_revision field of the struct media_device_info
++ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
++ *
++ * Versions <= V11 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10
++ * entries, versions >= V12 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
++ * entries. RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE is equal to the maximum
++ * of the two.
+  */
+ struct rkisp1_cif_isp_hst_config {
+ 	__u32 mode;
+@@ -827,7 +855,15 @@ struct rkisp1_cif_isp_bls_meas_val {
+  * @exp_mean: Mean luminance value of block xx
+  * @bls_val:  BLS measured values
+  *
+- * Image is divided into 5x5 blocks.
++ * The number of entries of @exp_mean depends on the hardware revision
++ * as is reported by the hw_revision field of the struct media_device_info
++ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
++ *
++ * Versions <= V11 have RKISP1_CIF_ISP_AE_MEAN_MAX_V10 entries,
++ * versions >= V12 have RKISP1_CIF_ISP_AE_MEAN_MAX_V12 entries.
++ * RKISP1_CIF_ISP_AE_MEAN_MAX is equal to the maximum of the two.
++ *
++ * Image is divided into 5x5 blocks on V10 and 9x9 blocks on V12.
+  */
+ struct rkisp1_cif_isp_ae_stat {
+ 	__u8 exp_mean[RKISP1_CIF_ISP_AE_MEAN_MAX];
+@@ -862,8 +898,16 @@ struct rkisp1_cif_isp_af_stat {
+  *
+  * @hist_bins: measured bin counters
+  *
+- * Measurement window divided into 16 sub-windows, set
+- * with ISP_HIST_XXX
++ * The histogram values divided into 16 bins for V10/V11 and 32 bins
++ * for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_config.
++ *
++ * The number of entries of @hist_bins depends on the hardware revision
++ * as is reported by the hw_revision field of the struct media_device_info
++ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
++ *
++ * Versions <= V11 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10 entries,
++ * versions >= V12 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12 entries.
++ * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
+  */
+ struct rkisp1_cif_isp_hist_stat {
+ 	__u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
+-- 
+2.29.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
