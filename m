@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13ACCC433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 15:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42428C433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 15:53:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0A3922B4E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 15:53:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0A3922B4E
+	by mail.kernel.org (Postfix) with ESMTPS id F236122C7E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 15:53:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F236122C7E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,60 +24,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YlZUFArrCO5i1/dUmBullo6eO4McsR/027680vIW6pw=; b=Rq5vL1VQLQ4mAdpCdANOu29eBR
-	LiH/+10jui1JMuiRcwjbEDlD9dptjeImIbXXaicW/BK2fEzzLiTUjcfe2IJ8OLIpLWhhSI61aJZMS
-	vbbvVDPmcY4c/52Q1kog17ADTvrJrU7G1fb8hAVU1rZyHoCU1/fq2N6Jgf57kwA3zkYedySTaNPvP
-	nZupVATqRjIeYIpz7bv2BV9Rhgre9GA3Mrmul+O8AODlkl9aRaBEHFFRo366hPjvXz2zjWugLuCP2
-	zHBMpa284+uUcOBSvpAF7VLq6FdQsz/Jzrcs2HSTjhrBaft7qVvMMPqIfuRwMCPinZvi6grq/3J5S
-	Azv01UwA==;
+	bh=cGoM6EkRavS5T0Hl+eNw7tDA1tpodfsC70DH94MSCik=; b=qy1Cb+QdreQca8NjIfJnAXdows
+	9T+eMd/PIbJH1jmyVdoOcFV7dl7nVZXHkWSi6+QCo+H0TD96BsqyCSJoukZrt0w0hRiCamjhrcGU9
+	g7wqWVGFgcxfcFD5bC6EMHTqK1icnnCaEWUYPFUnCAbY7Z5/BBjVeLAcZ/mWWL6fslH+qFW19xJ8z
+	58VP7PEs8q/bsvpg2EmGPw05vh1IB/YxO4p+PVaKDHohnYLgP/C3sBrYJnGk2ljOIepUNZbqPsPJJ
+	wnmHJH5auqceQCe4w7EMTra/SoREqzPegsfWQYtJWshbp/RSt2x714BURRt4v5W/f3Ab++NMQ4Y6q
+	GMYNMYDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1Wq4-0008M8-In; Mon, 18 Jan 2021 15:53:08 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1l1WqE-0008P3-SH; Mon, 18 Jan 2021 15:53:19 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1Wpr-0008Hg-PH; Mon, 18 Jan 2021 15:52:56 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id dj23so15534753edb.13;
- Mon, 18 Jan 2021 07:52:55 -0800 (PST)
+ id 1l1Wpt-0008Ic-U2; Mon, 18 Jan 2021 15:52:59 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a10so7713945ejg.10;
+ Mon, 18 Jan 2021 07:52:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=VhphvaoMO0MSplwXzOX+UYmDiouvxFZXbU4yg9NjsGs=;
- b=Vouj50Rd8oFIgyNCzYWsOiRU+A9x8iFQkL81ktgnKTvoP68En66kpjJvjmRDt7qi5O
- BS7mKPJqYU81oEA94M8QnH37V8lvuJqL3MdJHaGCuFR8q78g6oTgIbRpSHtFAPCgOQr1
- 8UYvEn6RTPxSLaQg6z4aum7UZYSvco5dufgb3Osk/Bdr8gAbxoPVZadBJulKRFRqGYob
- 0M3BKZxyyaFV8MZE9my96BuDpCLF/UHQE9nECh/bkrbwf/4OPIkNvGfvYHT3Mk++jZ0U
- MSvtbFIwSndQHAgt36qJbAZ8C9lGnJzhWudTTImYTc4WuXKY5kdZiHtcaTQo2TMyNaGo
- sNOw==
+ bh=1X+r3rIHhYyL6aQz5bVp1gC9k/hbSfHY26WTukrVjhI=;
+ b=AoOuDk/mePLd9aT+57VoNa2cx6wInQE6sPmyZWxAx3/YABARdyO8R1uMuv5dkVo6Y+
+ AYNWfgC3W76LoMtCbG6LWoWX9pUXYvZ8Zl5wiXpJWnMua+VFbbiKKCEsDr8aD6wYoNHw
+ NBLiMRCh01XbA/qFE9AtMz0FgURlVrNjg8cfkfRZYRPGBuVmBx1ZZ1er7Wa6Ox+4arux
+ jDlAg0g7SDyt1D6raDXA3+bKwbDVSfdGhpI+NoYzQ4MI5CN+d9kuJVRxX+CNhn9pokig
+ /hNaRX10ZAoKsuM6sZfaWExtISTPkS2cczFeLJxXsqsZOB9X+sPura6wWwfkZ4A7mP9H
+ /CFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=VhphvaoMO0MSplwXzOX+UYmDiouvxFZXbU4yg9NjsGs=;
- b=DRC6z8cozNWVEvTHSpXrCFofbf5SCjwOad0bRqbC2ECu2Ne0mLvpgqAfviB3zZ0tGk
- U9ZDMfcsYG8PRWyQ7KyxU72UheUTxetvBbBUDGG8sphoo+zfMGOlVdEbPwNI38+Fx/nK
- AgK4dgnmfV8NJbX1Ah+mhnqB05ThjXJ08rI0NJyFwdK0GSjR82l7oh3WXHmJhtfwuXYq
- IzeevB9cRnE8WPS1ka2givHfJCgzkVs2SS3zuyQD4tO0xHg0W4Q3uXVyslctdaRm6TTU
- t8Gtgb4e7yrSxau4O+oDoRRuigUvI0w/bS8rPb60/Y3d0JnhKi1DlF/pLs7HeWonoS90
- c8Mw==
-X-Gm-Message-State: AOAM532/zlMfqVGYG5/UbgAhwhYKFJQFsMGy0TXTeQtxLZwUNOWN8xCd
- PKijor2hE4uO/QqEf2syOX2CjrB/TpQ=
-X-Google-Smtp-Source: ABdhPJx4CXf+UBZO2cerSrewnW6s0+YyK4AbWXQlVAenRYhXiU3JbrruS9bNUM4ZC/xsqO88ibUlQw==
-X-Received: by 2002:aa7:cd4c:: with SMTP id v12mr85455edw.17.1610985174346;
- Mon, 18 Jan 2021 07:52:54 -0800 (PST)
+ bh=1X+r3rIHhYyL6aQz5bVp1gC9k/hbSfHY26WTukrVjhI=;
+ b=Y8cbYOaU34f+fIzAZVV9CTIR6u4OmkRRMT7C5p8KgJDGmtkcXhrJTudo9TWq8e2ZWm
+ QY/pKIqVdwHw5VD0/+TOX/wz58kZ10uThxSwJY2Qr1n1lbd04/ihPJMr6aP89I13ZLAX
+ nyY+h9rsrdEYSLWZ96YwO+fAHXAME9uh3fxtEupZBWr2szihpHfkS0Y3XVKW9N67KLyw
+ 5VI5jVLRQkLJ5c4Y1iFSMGaKV6ugjTNgS/Jzfy07aZjGQ6XKqQY0Y6NPzrBP/6Lqt5Ue
+ Aplt3ANSZApsijYBo+owVfRtTa27t6miF2gl8rqlVT2fCk/pzCbcZEeBMZS4UPnBGvvi
+ hmRw==
+X-Gm-Message-State: AOAM533M0uOREVP6CCFrKqXSPWA2eexfuM3abO5GnfhEpEpdtwiB+/mP
+ 5WQt3V5yXRjWxfkWMJp23CPWe4fyqoU=
+X-Google-Smtp-Source: ABdhPJwEe8+OJdHJZhzDww9IlyIFg3M01x6qLnE+hU9+1Dy3bIe7FkeQFyMzYgPif0U0xPwsHfucnQ==
+X-Received: by 2002:a17:907:3e02:: with SMTP id
+ hp2mr197147ejc.411.1610985176362; 
+ Mon, 18 Jan 2021 07:52:56 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id f13sm9561694ejf.42.2021.01.18.07.52.51
+ by smtp.gmail.com with ESMTPSA id f13sm9561694ejf.42.2021.01.18.07.52.54
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 18 Jan 2021 07:52:53 -0800 (PST)
+ Mon, 18 Jan 2021 07:52:54 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH 3/5] arm64: dts: rockchip: assign a fixed index to mmc devices
- on px30 boards
-Date: Mon, 18 Jan 2021 16:52:40 +0100
-Message-Id: <20210118155242.7172-3-jbx6244@gmail.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: assign a fixed index to mmc devices
+ on rk3308 boards
+Date: Mon, 18 Jan 2021 16:52:41 +0100
+Message-Id: <20210118155242.7172-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210118155242.7172-1-jbx6244@gmail.com>
 References: <20210118155242.7172-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_105255_872671_E9105409 
+X-CRM114-CacheID: sfid-20210118_105258_003659_00AFB949 
 X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -109,20 +110,20 @@ The sort order is based on reg address.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 3 +++
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 1a73a5114..c49366cf4 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -25,6 +25,9 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index ad54acf5d..b360b059f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -24,6 +24,9 @@
  		i2c1 = &i2c1;
  		i2c2 = &i2c2;
  		i2c3 = &i2c3;
 +		mmc0 = &sdmmc;
-+		mmc1 = &sdio;
-+		mmc2 = &emmc;
++		mmc1 = &emmc;
++		mmc2 = &sdio;
  		serial0 = &uart0;
  		serial1 = &uart1;
  		serial2 = &uart2;
