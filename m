@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D2B7C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 18:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85B10C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 18:04:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CCFB22BEA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 18:04:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CCFB22BEA
+	by mail.kernel.org (Postfix) with ESMTPS id 42C6922CA0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jan 2021 18:04:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42C6922CA0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,39 +24,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=k70KBQ+U2QpZ1pTMrAXes41yXlYym/Mkv6vhNvN17gg=; b=JFuA9ivmVu0Yfz77aKLHvPLC5
-	p+m+E1wrfy/EqtEsNT+5VE/rYpqTVpxlPwwYfnGm7+wouXPmCBUVoJBt0F6pF+39e7XbU3l8jKILd
-	CHtVA+Gm8V4BYmiCpa+NEdmzvYDKNb8EeZmGxVt1R6b8iAMm+ILWKdCtdnuWy2nlTZodj4RZ6UgnY
-	ORPn/fm45rouYZNBsRqHGr4TidBXKdk0S2G5AtRpMxQVqguHwJRHUoILrcDfQmIMUhL0HnK04o8zp
-	s1+g7OsW+xPIOkUMj3wbwkTSVxnmrsAgR40wHUIShYrXjw9+oREXcUf1YhSO+CayMLsu6BsWi2XN+
-	M9DaIYF7Q==;
+	 bh=1SAuyWT9mKf9hF9tOcBoPWTp7bzAdZGLSdmcIxPQJJs=; b=oc7Jkrzwrb5sqxePedp88fJji
+	v0IeFnE8NPQJUcmpRdrL6E2W5v2V/1N5fd8PG4qgPxvTUHrTT5VyFOTtxrTEnoyNlNr/dgUd6s6tp
+	BwJJ/6ua2clbPmeC7eoF1wvn/upXRErOCcWbtZxJ6rQG9ka2YaOcc1/NbX+A+guJwHHfJ6KgOY9jH
+	tXTyMXD2tnlzTxmqvrRigj+CztVnizSeC8lXXLZ9mHAyRN1iqNQGNUalYkZpxhhVdsLqLQevXy3XG
+	M3piWoe8tKo2CpdmteXKeZo5PK/Rf9E8D4AO91alWHtTYOhN2VRxseTf9tZ1fnA5UcbzJ+WKTa9+U
+	xpBI+CDGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1Yso-0005hN-Mx; Mon, 18 Jan 2021 18:04:06 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1l1Yss-0005in-6K; Mon, 18 Jan 2021 18:04:10 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1Ysl-0005g5-NN
- for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 18:04:04 +0000
+ id 1l1Ysq-0005hi-HD
+ for linux-rockchip@lists.infradead.org; Mon, 18 Jan 2021 18:04:09 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 696F01F44834
-Subject: Re: [PATCH v6 1/4] media: rockchip: rkisp1: fix comment about number
- of histogram sub-windows
+ (Authenticated sender: koike) with ESMTPSA id EA5C11F44836
+Subject: Re: [PATCH v6 2/4] media: rockchip: rkisp1: reduce number of
+ histogram grid elements in uapi
 To: Heiko Stuebner <heiko@sntech.de>, dafna.hirschfeld@collabora.com,
  linux-media@vger.kernel.org, mchehab@kernel.org,
  Laurent.pinchart@ideasonboard.com, hverkuil@xs4all.nl
 References: <20210118110448.275389-1-heiko@sntech.de>
- <20210118110448.275389-2-heiko@sntech.de>
+ <20210118110448.275389-3-heiko@sntech.de>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <ce91ca03-211c-0c27-1204-4bafc815ffca@collabora.com>
-Date: Mon, 18 Jan 2021 15:03:51 -0300
+Message-ID: <31c655ca-ec76-6135-5e05-5d2f62a48ff5@collabora.com>
+Date: Mon, 18 Jan 2021 15:04:01 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20210118110448.275389-2-heiko@sntech.de>
+In-Reply-To: <20210118110448.275389-3-heiko@sntech.de>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210118_130403_858982_0DFDFDC4 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20210118_130408_674286_582C3292 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,31 +82,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 1/18/21 8:04 AM, Heiko Stuebner wrote:
 > From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> The histogram data is divided into 16 sub-windows, not 25.
-> See RKISP1_CIF_ISP_HIST_BIN_N_MAX being defined as 16 for reference
-> and this also matches the datasheet.
+> The uapi right now specifies an array size of 28 but the actual number
+> of elements is only 25 with the last 3 being unused.
+> 
+> Reduce the array size to the correct number of elements.
 > 
 > Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
 > ---
->  include/uapi/linux/rkisp1-config.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  include/uapi/linux/rkisp1-config.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
 > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index 6e449e784260..ba443771cc0b 100644
+> index ba443771cc0b..ecfb8f7a6c70 100644
 > --- a/include/uapi/linux/rkisp1-config.h
 > +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -846,7 +846,7 @@ struct rkisp1_cif_isp_af_stat {
->   *
->   * @hist_bins: measured bin counters
->   *
-> - * Measurement window divided into 25 sub-windows, set
-> + * Measurement window divided into 16 sub-windows, set
->   * with ISP_HIST_XXX
+> @@ -102,8 +102,7 @@
+>  /*
+>   * Histogram calculation
 >   */
->  struct rkisp1_cif_isp_hist_stat {
+> -/* Last 3 values unused. */
+> -#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 28
+> +#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 25
+>  
+>  /*
+>   * Defect Pixel Cluster Correction
 > 
 
 _______________________________________________
