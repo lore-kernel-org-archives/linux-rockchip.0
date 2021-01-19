@@ -2,20 +2,21 @@ Return-Path: <SRS0=wbav=GW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C78CCC433DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 15:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D2C8C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 15:11:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 400612312E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 15:00:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 400612312E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id C8E5F23110
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 15:11:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8E5F23110
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,55 +24,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zFap3gBBQbPUctPWSZO70F79cxdDCk3Ifv2r6LLYaYk=; b=TRdgTNgZzl+NZSUZySX2KwsmD
-	k+dWh1V20GfQ4fPj/aNV5B8hF5mD6XJGSMn/kVkWBjvmFJm6By7TntCO+NXbGhlMtOlpsm0MxVW8j
-	IZiwYc6uC9ykZWoAivwNGvHIhsWGqiJENJXQ9QjnKGuwTQyhM77tS+0t+1YKoDM8afGcKeYfunys3
-	E/rojoHdMB5Ca1crJk3Pn8OnaTJv91QLlv/4mSAbEHbomC83m0tLdtdACaJd626XZClaTEeG7Qh7R
-	AF2y8vvPN9mJdd+1J4D8isSgz1GuH7gjTnowNevpX7jkQSNWt/jmAVcTM5Rex21SyUoJthu/+d0fD
-	yeABIslhw==;
+	 bh=6u7wwhbeR2PxS9uxSo7n01qEfK4OqUofu2phD2tia5o=; b=eOOPoJnK0JwhwhgqRTPT5QlE+
+	tgwGjFk7ipxUuObfHIORv5pjMm/LWB0VaBKHnfEMP2NtGl3Y03bL2kT2eF0ckrco9jh6DP9F3cwQ0
+	rT00oAGVvKudd/quDhj21IxLjY0LOXDf1bP6yeF+KMrJx9pVmp4ZP/OMN8KdIPOYb94jsvWxkcdIL
+	PAgOSrcg5N1nzCy75iu9nLtBwF1e6zVdqbF5u67WpjAwuWCmhLaHjb9NKoDvILk4BQ9Xk8hLIdx5W
+	hgge/1MaownYDyRtH4RCrA9+Lo7SjhRzYtl8lSCK7MhCgFpm4KGiloM9ceKsOR7citfGirmQBo9dM
+	LXfOZ3n4g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1sUQ-0007yp-JI; Tue, 19 Jan 2021 15:00:14 +0000
-Received: from lb3-smtp-cloud7.xs4all.net ([194.109.24.31])
+	id 1l1sfi-0001KE-I8; Tue, 19 Jan 2021 15:11:54 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1sUO-0007xK-Po
- for linux-rockchip@lists.infradead.org; Tue, 19 Jan 2021 15:00:13 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id 1sUFlPa4uyutM1sUIlbygq; Tue, 19 Jan 2021 16:00:07 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1611068407; bh=3OuqhX0fKb5Rnnw4IYeJ75pOR3gDxev3dlWAVofDOeQ=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=Gz6GeNPCFQv+xwMwBZyw5TePirWbSa3QrX/ZwdYV2CszxJ33vP6N9FbG4RwQOPrvq
- +bss3VRPFVO24RDJ+mPVUSTRjGGNHIRySNrq0zOmYuWdDpki39wFLe7eo8OOyrHZ1g
- 1sYvVTK0wMV02WUWGaw73UDbEe2FcdXioBOvwFg6qyFTFysEqXml182tyjQfeCkjS6
- tNq158Ppyiv3jKXhuYwtfOvl+lXlPwFuVLrCTea3B7lWnNE2lXFunhpA0MJ01TDiqN
- k5q7+ihB9/TIXhO4OE598m4uChgBZj8n1RiN290i9irDsDdtMBqOb0meUs4zfYZGeK
- DltK6yrsvEOKg==
-Subject: Re: [PATCH] media: rkisp1: uapi: change hist_bins array type from
- __u16 to __u32
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com,
- heiko@sntech.de
-References: <20210119145341.29686-1-dafna.hirschfeld@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <a8f8d9e9-30b1-b594-a9bc-f4a11924bf56@xs4all.nl>
-Date: Tue, 19 Jan 2021 16:00:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ id 1l1sff-0001JJ-NQ
+ for linux-rockchip@lists.infradead.org; Tue, 19 Jan 2021 15:11:52 +0000
+Received: by mail-ej1-x631.google.com with SMTP id r12so17618211ejb.9
+ for <linux-rockchip@lists.infradead.org>; Tue, 19 Jan 2021 07:11:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=T684pbRiyXTHMjiyj9K2qNkRy+PGwfHnHIkUTOyJyoc=;
+ b=rwBg1iZ0GoU89hgJR18WBQvxOXb9/628zja19HwjUGMulIOy/0KmK6IqkjxMHiVfEj
+ bTTadX4Iy+kKHnmY+oTOXSLkazhXICmv7dI3rl1EDzAeKsSiG+vNHCbImcHOAycUV4kD
+ GtQra359abpwz4RpgVAbEnfXjXNJ42WSzqh2QKh5nB92G9HFFFdrJlF/80ToHu8DJAAR
+ DD8AeGBEPhGVtSJlrVX9qKs/M4ueUDJVuNW9reTyHIZhsvv6q3iwlUVYz6P3H+NNd8C1
+ ujhVtPMdukkBsOkzwkOS+7GgdutVUxD0InXM8zTabUtFG68IUHFX8WIQJ3ACrYudHtfc
+ 0uRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=T684pbRiyXTHMjiyj9K2qNkRy+PGwfHnHIkUTOyJyoc=;
+ b=VmfmrbbB9wh3IxfTpY8LBkuP6Gsp7jk9mleFKkHO3OI7VEV/ROp1EMvJjef3Y6dai0
+ VRIlXZ6oZDRhmJfZ+LM3mD5efyLq2ev/MA5j9Bjok2ixpKs7M8NhVWbkG6hxGRun+dQ7
+ 8VChWr3cAYB6KJA7SNCRE5/JJeYgJRAt6pS0aykaUngmT/sau+79u6jtdSy9Eo2Tb/FW
+ 5C9U2yi7b/zjSXoRIevpNRvbiWVvAYeHbVi9fAi4or0BI5gy+xfQaVfWwMGkdgSXyIzh
+ o/y/kLa6FQiAERosAi//jYJziZWeAw0R2cTN4rgWl+eFANKAYRHxMVOVwdo3YlJGiljp
+ 1LBQ==
+X-Gm-Message-State: AOAM530Vqruvdnd3NQ5k0ZtE97yIzmv/ZXY/zCyQVF9A+7O031X5l1L0
+ 8bxm8KdtJBFv9blf+2s94gw=
+X-Google-Smtp-Source: ABdhPJzFqLgbC9mdVhryq9kB69wAPD08K3GAiGu/JoWn1hmEvjzNPYCzX2bcVz/GW8glarmpD4P5cA==
+X-Received: by 2002:a17:906:a20e:: with SMTP id
+ r14mr3240679ejy.404.1611069110542; 
+ Tue, 19 Jan 2021 07:11:50 -0800 (PST)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ x17sm13053730edq.77.2021.01.19.07.11.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Jan 2021 07:11:50 -0800 (PST)
+Subject: Re: [PATCH 2/3] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Simon Xue <xxm@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+References: <20210118091739.247040-1-xxm@rock-chips.com>
+ <20210118091739.247040-2-xxm@rock-chips.com>
+ <e143ad9e-1cfd-e59d-0079-513c036981ba@gmail.com> <2336601.uoxibFcf9D@diego>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <677c102d-0b9b-1a12-0ac6-4dd0a1023b68@gmail.com>
+Date: Tue, 19 Jan 2021 16:11:48 +0100
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210119145341.29686-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <2336601.uoxibFcf9D@diego>
 Content-Language: en-US
-X-CMAE-Envelope: MS4xfPWzEw0Wkw4hqjhvm7Ynu4zg2W37OjbDYCUfHN/8TwvtlSueANiCt8E2tsvp+7+oD1cJvAz/ALt3AeMVg53PRTx61SLfeHnTlzowe301BCqSs9D8YmMp
- h9fy1tmkiunFmx4CkmssW4vEjr3s7B2aSJBYCbYaF3S73FEauadDPF53gmOhe0em8CKXJBmp7p1Uy6Z51GBFKr6tGJg/auQ0TTxQTTg8NToAhDuYom5E7Yhz
- kloM5iFJq18o1I62FPTyW8diVQCTx/mog0tw53D0MWHVsVGqWnkE8V2gfr2sYt0N3XPUceHOXHw8ZvMbfPDB/HMlWT/XNlmxUsj60KOR2c5BEL3kGouyLWas
- GrBTFZaB6aHzYQhWNOtiojPtwt2Q8Xv+930UTzVM2Zf4Z1duxE0FsoqfByLZPgVkRUwVLou1TTPSLmjD4834TUi9yTKojWscrESvZXqZ/weaHKulyE8Kj+jF
- CMzzJx4F+ZCgtF4POFRHFAmONrag3Ut2nnmQ8EKhNO3jTvFhWLytosJVia11QXMTvradKMyfj8nvo8zWURV+ONDhL1k/YxDwYLwl+GH1OxvwcKdHLbPKcQoy
- 8GdOxe73LFwOPGuMOlfLQnod
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_100012_941653_5935AE39 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20210119_101151_816297_E014C47F 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,73 +103,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-pci@vger.kernel.org, devicetree <devicetree@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 19/01/2021 15:53, Dafna Hirschfeld wrote:
-> Each entry in the array is a 20 bits value composed of 16
-> bits unsigned integer and 4 bits fractional part. So the
-> type should change to __u32.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
-> This patch is applied on top of v6 of the patchset
-> "Fix the rkisp1 userspace API for later IP versions"
-> 
->  include/uapi/linux/rkisp1-config.h | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index 57ca3eea985f..47f6b84d7c56 100644
-> --- a/include/uapi/linux/rkisp1-config.h
-> +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -895,7 +895,8 @@ struct rkisp1_cif_isp_af_stat {
->  /**
->   * struct rkisp1_cif_isp_hist_stat - statistics histogram data
->   *
-> - * @hist_bins: measured bin counters
-> + * @hist_bins: measured bin counters. Each bin is a 20 bits value
-> + *	       composed of a 16-bit unsigned integer and 4 bits fractional part.
-
-So bits 0-3 are the fractional part and bits 4-19 contain the integer part?
-What goes where should be defined!
-
-Looking at rkisp1_stats_get_hst_meas() I see this:
-
-        for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
-                pbuf->params.hist.hist_bins[i] =
-                        (u8)rkisp1_read(rkisp1,
-                                        RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
-
-Here this is cast to a u8, so how does this work?
-
-There is something fishy here...
-
-Regards,
-
-	Hans
-
->   *
->   * The histogram values divided into 16 bins for V10/V11 and 32 bins
->   * for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_config.
-> @@ -909,7 +910,7 @@ struct rkisp1_cif_isp_af_stat {
->   * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
->   */
->  struct rkisp1_cif_isp_hist_stat {
-> -	__u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
-> +	__u32 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
->  };
->  
->  /**
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2ltb24sIEhlaWtvLAoKT24gMS8xOS8yMSAyOjE0IFBNLCBIZWlrbyBTdMO8Ym5lciB3cm90
+ZToKPiBIaSBKb2hhbiwKPiAKPiBBbSBEaWVuc3RhZywgMTkuIEphbnVhciAyMDIxLCAxNDowNzo0
+MSBDRVQgc2NocmllYiBKb2hhbiBKb25rZXI6Cj4+IEhpIFNpbW9uLAo+Pgo+PiBUaGFuayB5b3Ug
+Zm9yIHRoaXMgcGF0Y2ggZm9yIHJrMzU2OCBwY2llLgo+Pgo+PiBJbmNsdWRlIHRoZSBSb2NrY2hp
+cCBkZXZpY2UgdHJlZSBtYWludGFpbmVyIGFuZCBhbGwgb3RoZXIgcGVvcGxlL2xpc3RzCj4+IHRv
+IHRoZSBDQyBsaXN0Lgo+Pgo+PiAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLXN0cmljdCA8cGF0
+Y2gxPiA8cGF0Y2gyPgo+Pgo+PiAgLi9zY3JpcHRzL2dldF9tYWludGFpbmVyLnBsIC0tbm9yb2xl
+cyAtLW5vcm9sZXN0YXRzIC0tbm9naXQtZmFsbGJhY2sKPj4gLS1ub2dpdCA8cGF0Y2gxPiA8cGF0
+Y2gyPgo+Pgo+PiBnaXQgc2VuZC1lbWFpbCAtLXN1cHByZXNzLWNjIGFsbCAtLWRyeS1ydW4gLS1h
+bm5vdGF0ZSAtLXRvCj4+IGhlaWtvQHNudGVjaC5kZSAtLWNjIDwuLj4gPHBhdGNoMT4gPHBhdGNo
+Mj4KPj4KPj4gVGhpcyBTb0MgaGFzIG5vIHN1cHBvcnQgaW4gbWFpbmxpbmUgbGludXgga2VybmVs
+IHlldC4KPj4gSW4gYWxsIHRoZSBmb2xsb3dpbmcgeWFtbCBkb2N1bWVudHMgZm9yIHJrMzU2OCB3
+ZSBuZWVkIGhlYWRlcnMgd2l0aAo+PiBkZWZpbmVzIGZvciBjbG9ja3MgYW5kIHBvd2VyIGRvbWFp
+bnMsIGV0Yy4KPj4KPj4gRm9yIGV4YW1wbGU6Cj4+ICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9jbG9j
+ay9yazM1NjgtY3J1Lmg+Cj4+ICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9wb3dlci9yazM1NjgtcG93
+ZXIuaD4KPj4KPj4gQ291bGQgUm9ja2NoaXAgc3VibWl0IGZpcnN0IGNsb2NrcyBhbmQgcG93ZXIg
+ZHJpdmVycyBlbnRyaWVzIGFuZCBhIGJhc2ljCj4+IHJrMzU2OC5kdHNpICsgZXZiIGR0cz8KPj4g
+SW5jbHVkZSBhIHBhdGNoIHRvIHRoaXMgc2VyaWUgd2l0aCAzIHBjaWUgbm9kZXMgYWRkZWQgdG8g
+cmszNTY4LmR0c2kuCj4+Cj4+IEEgZHRic19jaGVjayBvbmx5IHdvcmtzIHdpdGggYSBjb21wbGV0
+ZSBkdHNpIGFuZCBldmIgZHRzLgo+Pgo+PiBtYWtlIEFSQ0g9YXJtNjQgZHRic19jaGVjawo+PiBE
+VF9TQ0hFTUFfRklMRVM9RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2Nr
+Y2hpcC1kdy1wY2llLnlhbWwKPj4KPj4gT24gMS8xOC8yMSAxMDoxNyBBTSwgU2ltb24gWHVlIHdy
+b3RlOgo+Pj4gU2lnbmVkLW9mZi1ieTogU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5jb20+Cj4+
+PiAtLS0KPj4+ICAuLi4vYmluZGluZ3MvcGNpL3JvY2tjaGlwLWR3LXBjaWUueWFtbCAgICAgICAg
+fCAxMDEgKysrKysrKysrKysrKysrKysrCj4+PiAgMSBmaWxlIGNoYW5nZWQsIDEwMSBpbnNlcnRp
+b25zKCspCj4+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9wY2kvcm9ja2NoaXAtZHctcGNpZS55YW1sCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wY2kvcm9ja2NoaXAtZHctcGNpZS55YW1s
+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1kdy1wY2ll
+LnlhbWwKPj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4+PiBpbmRleCAwMDAwMDAwMDAwMDAuLmZh
+NjY0Y2ZmZmIyOQo+Pj4gLS0tIC9kZXYvbnVsbAo+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1kdy1wY2llLnlhbWwKPj4+IEBAIC0wLDAgKzEs
+MTAxIEBACj4+PiArIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjAgT1IgQlNELTIt
+Q2xhdXNlKQo+Pj4gKyVZQU1MIDEuMgo+Pj4gKy0tLQo+Pj4gKyRpZDogaHR0cDovL2RldmljZXRy
+ZWUub3JnL3NjaGVtYXMvcGNpL3JvY2tjaGlwLWR3LXBjaWUueWFtbCMKPj4+ICskc2NoZW1hOiBo
+dHRwOi8vZGV2aWNldHJlZS5vcmcvbWV0YS1zY2hlbWFzL2NvcmUueWFtbCMKPj4+ICsKPj4+ICt0
+aXRsZTogRGVzaWduV2FyZSBiYXNlZCBQQ0llIFJDIGNvbnRyb2xsZXIgb24gUm9ja2NoaXAgU29D
+cwo+Pj4gKwo+Pgo+Pj4gK21haW50YWluZXJzOgo+Pj4gKyAgLSBTaGF3biBMaW4gPHNoYXduLmxp
+bkByb2NrLWNoaXBzLmNvbT4KPj4+ICsgIC0gU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5jb20+
+Cj4+Cj4+IG1haW50YWluZXJzOgo+PiAgIC0gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5k
+ZT4KPj4KPj4gQWRkIG9ubHkgcGVvcGxlIHdpdGggbWFpbnRhaW5lciByaWdodHMuCj4gCj4gSSdk
+IGRpc2FncmVlIG9uIHRoaXMgOy0pCgpBbGwgcm9hZHMgbGVhZHMgdG8gSGVpa28uLi4gOykKCkl0
+IHRha2VzIGxvbmcgdGVybSBjb21taXRtZW50LgpZZWFyIGluLCB5ZWFyIG91dC4KS2VlcGluZyB5
+b3Vyc2VsZiB1cCB0byBkYXRlIHdpdGggdGhlIGxhdGVzdCBwY2VpIGRldmVsb3BtZW50LgpDb21t
+dW5pY2F0ZSBpbiBFbmdsaXNoLgpCZSBhYmxlIHRvIHN1Ym1pdCBwYXRjaGVzIHdpdGhvdXQgZXJy
+b3JzLi4uIDspClJldmlldyBvdGhlciBwZW9wbGVzIHBhdGNoZXMuClJlc3BvbmQgaW4gc2hvcnQg
+dGltZS4KQnVnIGZpeGluZy4KCklmIHRoYXQncyB3aGF0IHlvdSByZWFsbHkgd2FudCwgdGhlbiB5
+b3UgbXVzdCBpbmNsdWRlIGEgcGF0Y2ggdG8gdGhpcwpzZXJpZSBmb3IgTUFJTlRBSU5FUlMuCgpD
+aGVjayBwYXRjaCB3aXRoOgoKLi9zY3JpcHRzL3BhcnNlLW1haW50YWluZXJzLnBsIC0taW5wdXQ9
+TUFJTlRBSU5FUlMgLS1vdXRwdXQ9TUFJTlRBSU5FUlMKLS1vcmRlcgoKT3RoZXJ3aXNlIGl0J3Mg
+c2FmZSB0byBpbmNsdWRlIHRoYXQgcGVyc29uIG1lbnRpb25lZCBhYm92ZS4KCj4gCj4gVGhlIG1h
+aW50YWluZXIgZm9yIGluZGl2aWR1YWwgZHJpdmVycyBzaG91bGQgYmUgdGhlIHBlcnNvbnMgd2hv
+IGFyZQo+IGFjdHVhbGx5IGtub3cgdGhlIGhhcmR3YXJlLiBXZSBoYXZlIGluZGl2aWR1YWwgUm9j
+a2NoaXAgZGV2ZWxvcGVycwo+IHRha2luZyBjYXJlIG9mIG90aGVyIGRyaXZlcnMgYXMgd2VsbCBh
+bHJlYWR5Lgo+IAo+IEFuZCBub3JtYWxseSBzY3JpcHRzL2dldF9tYWludGFpbmVyLnBsIHNob3Vs
+ZCBhbHJlYWR5IGluY2x1ZGUgbWUKPiBkdWUgdG8gdGhlIHdpbGRjYXJkIGZvciB0aGluZ3MgaGF2
+aW5nICJyb2NrY2hpcCIgaW4gdGhlIG5hbWUuCj4gCj4gCj4gSGVpa28KPiAKPiAKPiAKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
