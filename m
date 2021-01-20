@@ -2,54 +2,92 @@ Return-Path: <SRS0=q9XV=GX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D20DCC433E6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 16:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2767FC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 17:07:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F65623358
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 16:45:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F65623358
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id B78692242A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 17:07:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B78692242A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rWH3V7xFMitaGQqatOfAH3Qrwq13OMoZS4TejRFus1Y=; b=PHiNrhJDIGcK1fmwOa8jSXxLdG
-	dOnyPPMeRcM2OPDxVHbkFH5cLiJJPPNiooFxkf9xqBCNq81EZFi3p2cxjPDmc9sIItS5Aaupd2nbL
-	2Zj0WAcfgjX6pqs2I3WqtLQ7Ttqgx0J4tDoBodKA/uH4OCUF9WIcrueh2n9ORpXMN81qreW434raf
-	qMvN77YlGAD8WnLNtN8cWTd1xptr2wBE7A9t/GnrUTA2zqSurabCDAbj9yp5CagCxE9MS1VID60I5
-	RC1my/uXrH7Lsjr700xiVKwoeW1ukXR9KytWiOs5QxipkZTGr9+9yercv0iJAx06jxWGmCEqDWQo+
-	anH0aVYg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nBxLu5Ua7nib7VnTco8J29bCvwQD5hMppvZu+mc/U3o=; b=s/TxyJ2T5rVlj/MiT6NZHmRAm
+	tisdF59JGp7CQ+1ArnUMCJanj+gY+b+fNRLP7ZBR5bBQL01lJxJhZnN0K0eeDHEhUSMEmTo76fOfz
+	2RRQrbxZsAorU9ISPQBVbM53TGfamyC+IsfNT5Ll2AMuVY7RgNhl3REuJlV1AfnKDQQoEXHi6/xvv
+	HceS3ps5fLQ1vXssOtIJMuJ/XViD9EZB4BhoB6GXS27n7qGpSgWPe9iDlsgRr44G6zeCoOcccEi2k
+	7sv3qNIwusMQ1/zckg/050mJuUeUYnbVx86dI3cBwGEcbRe90elOUPnylJpu42HiVOt4J1sm4Oe+x
+	1mgNtQ3EQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2GbV-00051I-Er; Wed, 20 Jan 2021 16:45:09 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1l2GxF-0007jK-Jn; Wed, 20 Jan 2021 17:07:37 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2GbM-0004wp-So
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 16:45:06 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 93D311F45025
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org, heiko.stuebner@theobroma-systems.com,
- heiko@sntech.de
-Subject: [PATCH v7 5/5] media: rockchip: rkisp1: extend uapi array sizes
-Date: Wed, 20 Jan 2021 17:44:46 +0100
-Message-Id: <20210120164446.1220-6-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210120164446.1220-1-dafna.hirschfeld@collabora.com>
-References: <20210120164446.1220-1-dafna.hirschfeld@collabora.com>
+ id 1l2GxC-0007il-U1
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 17:07:36 +0000
+Received: by mail-ej1-x633.google.com with SMTP id w1so34500131ejf.11
+ for <linux-rockchip@lists.infradead.org>; Wed, 20 Jan 2021 09:07:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=1wX5ly9KNpFR/9HstrUm3GzasiDkWdUw9hrXvAAY0Ts=;
+ b=KOeywYqay+ueWQ5/AK4VgxKMSGMkyowp/1EijRuSIgJkCuhm/8YWHVQ4LtUExF1ZtC
+ tIbWeGoPwD9A1ajCJaLwgxi8io21qbc2nb1M6xb+/2zLM80lyyVAeD5DsHGy8/WAhojj
+ 8Um4Vx3GtjJYAQy9GAZVDzEtPDL5Uk2WYsEGZljf0EfQLpqw90HJXdOtm4dfKeAzO6mi
+ ZFB1XIHcdldxCF0/izAQm5JFrkr12qjIhw/AM6i1nEupwqsATl+pasqxaryV9LNp3/b3
+ kQiN6jurcYntN1oyRZ6wzrjD9KH/tQoGAtYkr04wAdkUs+AnECzpTCBs6vJLacrbhl7i
+ BQwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1wX5ly9KNpFR/9HstrUm3GzasiDkWdUw9hrXvAAY0Ts=;
+ b=aXAYYWgpQklr2iBuYyg+wO7vr2G3aqYIFzPcnBo6o1F7qhgGAHcivE+Jzqsb9fgwXL
+ VM6aqVr60dzyC5Wt7qFphguPNpd3iUpbf8vyCjIWxWQRsZkXvd76pbC67M5iAJkiGt4k
+ Kj2VRiXBP3tCetigUpyc3QL++SP5BXjLXqdhJUBLztcX+ZwBWMXSyPtOgSKM2ALmL9xM
+ RLPd5F9TwuyWrTmTriUWXYdDcq+f0EINPkQYDPw5kvi8YEudvyQp3n2oTJGFXQwLLV47
+ hMooJPp46orBEgF8q2HA/uNdj9f1VP/PSf8EJ+UdUJZnvA7ciym7bjir9hMMmFxKENsC
+ 1AcA==
+X-Gm-Message-State: AOAM532Hu2bELhKSrBl0ZVHhrsbJkxcx3GM8jqWgA0QkL+LIYz9V2lKg
+ TLDiINwdLfV3XJ3UMBMttr4=
+X-Google-Smtp-Source: ABdhPJzx43bHVjPAsc27foNN651TyJnIkWDokBwgyvBBBheh28vCkRltuJq0N3m+hunyuKGeJiBiIA==
+X-Received: by 2002:a17:906:cedd:: with SMTP id
+ si29mr7109703ejb.426.1611162451828; 
+ Wed, 20 Jan 2021 09:07:31 -0800 (PST)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ y8sm1408114edd.97.2021.01.20.09.07.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 Jan 2021 09:07:31 -0800 (PST)
+Subject: Re: [PATCH v2 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+To: Simon Xue <xxm@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+References: <20210120101554.241029-1-xxm@rock-chips.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <3af70037-c05d-1759-2bae-41db1e8e2768@gmail.com>
+Date: Wed, 20 Jan 2021 18:07:29 +0100
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <20210120101554.241029-1-xxm@rock-chips.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_114501_108876_31FD3F5D 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20210120_120734_998287_2010E805 
+X-CRM114-Status: GOOD (  25.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,212 +100,483 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
+Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, robh+dt@kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Hi Simon,
 
-Later variants of the rkisp1 block use more entries in some arrays:
+Thanks you for version 2.
+A few comments, have a look if it is useful or that you disagree.
 
-RKISP1_CIF_ISP_AE_MEAN_MAX                 25 -> 81
-RKISP1_CIF_ISP_HIST_BIN_N_MAX              16 -> 32
-RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17 -> 34
-RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 25 -> 81
+This patch has no commit message. Add one in version 3.
 
-and we can still extend the uapi during the 5.11-rc cycle, so do that
-now to be on the safe side.
+Submit all patches in one batch with the same sort message ID to all
+maintainers including Heiko.
 
-V10 and V11 only need the smaller sizes, while V12 and V13 needed
-the larger sizes.
+Heiko Stuebner <heiko@sntech.de>
 
-When adding the bigger sizes make sure, values filled from hardware
-values and transmitted to userspace don't leak kernel data by zeroing
-them beforehand.
+Example message ID:
+20210120101554.241029-1-xxm@rock-chips.com
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
----
- .../platform/rockchip/rkisp1/rkisp1-params.c  |  2 +-
- .../platform/rockchip/rkisp1/rkisp1-stats.c   | 12 +++-
- include/uapi/linux/rkisp1-config.h            | 66 ++++++++++++++++---
- 3 files changed, 67 insertions(+), 13 deletions(-)
+/////
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index 021939466b24..aa5f45749543 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -391,7 +391,7 @@ static void rkisp1_goc_config(struct rkisp1_params *params,
- 				RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
- 	rkisp1_write(params->rkisp1, arg->mode, RKISP1_CIF_ISP_GAMMA_OUT_MODE);
- 
--	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES; i++)
-+	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10; i++)
- 		rkisp1_write(params->rkisp1, arg->gamma_y[i],
- 			     RKISP1_CIF_ISP_GAMMA_OUT_Y_0 + i * 4);
- }
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-index 4cdb180fa64d..0f36e12e7533 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-@@ -202,8 +202,12 @@ static void rkisp1_stats_get_aec_meas(struct rkisp1_stats *stats,
- 	struct rkisp1_device *rkisp1 = stats->rkisp1;
- 	unsigned int i;
- 
-+	/* the global max can be bigger than the version-specific one */
-+	memset(pbuf->params.ae.exp_mean, 0, RKISP1_CIF_ISP_AE_MEAN_MAX *
-+					    sizeof(*pbuf->params.ae.exp_mean));
-+
- 	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
--	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX; i++)
-+	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX_V10; i++)
- 		pbuf->params.ae.exp_mean[i] =
- 			(u8)rkisp1_read(rkisp1,
- 					RKISP1_CIF_ISP_EXP_MEAN_00 + i * 4);
-@@ -232,8 +236,12 @@ static void rkisp1_stats_get_hst_meas(struct rkisp1_stats *stats,
- 	struct rkisp1_device *rkisp1 = stats->rkisp1;
- 	unsigned int i;
- 
-+	/* the global max can be bigger than the version-specific one */
-+	memset(pbuf->params.hist.hist_bins, 0, RKISP1_CIF_ISP_HIST_BIN_N_MAX *
-+					       sizeof(*pbuf->params.hist.hist_bins));
-+
- 	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
--	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
-+	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10; i++)
- 		pbuf->params.hist.hist_bins[i] =
- 			rkisp1_read(rkisp1, RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
- }
-diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-index 17217c55708f..340011359968 100644
---- a/include/uapi/linux/rkisp1-config.h
-+++ b/include/uapi/linux/rkisp1-config.h
-@@ -49,8 +49,14 @@
- #define RKISP1_CIF_ISP_CTK_COEFF_MAX            0x100
- #define RKISP1_CIF_ISP_CTK_OFFSET_MAX           0x800
- 
--#define RKISP1_CIF_ISP_AE_MEAN_MAX              25
--#define RKISP1_CIF_ISP_HIST_BIN_N_MAX           16
-+#define RKISP1_CIF_ISP_AE_MEAN_MAX_V10		25
-+#define RKISP1_CIF_ISP_AE_MEAN_MAX_V12		81
-+#define RKISP1_CIF_ISP_AE_MEAN_MAX		RKISP1_CIF_ISP_AE_MEAN_MAX_V12
-+
-+#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10	16
-+#define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12	32
-+#define RKISP1_CIF_ISP_HIST_BIN_N_MAX		RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12
-+
- #define RKISP1_CIF_ISP_AFM_MAX_WINDOWS          3
- #define RKISP1_CIF_ISP_DEGAMMA_CURVE_SIZE       17
- 
-@@ -86,7 +92,9 @@
-  * Gamma out
-  */
- /* Maximum number of color samples supported */
--#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       17
-+#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10   17
-+#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12   34
-+#define RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES       RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
- 
- /*
-  * Lens shade correction
-@@ -102,7 +110,9 @@
- /*
-  * Histogram calculation
-  */
--#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE 25
-+#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10 25
-+#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12 81
-+#define RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE     RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
- 
- /*
-  * Defect Pixel Cluster Correction
-@@ -524,6 +534,15 @@ enum rkisp1_cif_isp_goc_mode {
-  *
-  * @mode: goc mode (from enum rkisp1_cif_isp_goc_mode)
-  * @gamma_y: gamma out curve y-axis for all color components
-+ *
-+ * The number of entries of @gamma_y depends on the hardware revision
-+ * as is reported by the hw_revision field of the struct media_device_info
-+ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-+ *
-+ * Versions <= V11 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10
-+ * entries, versions >= V12 have RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V12
-+ * entries. RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES is equal to the maximum
-+ * of the two.
-  */
- struct rkisp1_cif_isp_goc_config {
- 	__u32 mode;
-@@ -538,6 +557,15 @@ struct rkisp1_cif_isp_goc_config {
-  *			  skipped
-  * @meas_window: coordinates of the measure window
-  * @hist_weight: weighting factor for sub-windows
-+ *
-+ * The number of entries of @hist_weight depends on the hardware revision
-+ * as is reported by the hw_revision field of the struct media_device_info
-+ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-+ *
-+ * Versions <= V11 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V10
-+ * entries, versions >= V12 have RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE_V12
-+ * entries. RKISP1_CIF_ISP_HISTOGRAM_WEIGHT_GRIDS_SIZE is equal to the maximum
-+ * of the two.
-  */
- struct rkisp1_cif_isp_hst_config {
- 	__u32 mode;
-@@ -825,7 +853,15 @@ struct rkisp1_cif_isp_bls_meas_val {
-  * @exp_mean: Mean luminance value of block xx
-  * @bls_val:  BLS measured values
-  *
-- * Image is divided into 5x5 blocks.
-+ * The number of entries of @exp_mean depends on the hardware revision
-+ * as is reported by the hw_revision field of the struct media_device_info
-+ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-+ *
-+ * Versions <= V11 have RKISP1_CIF_ISP_AE_MEAN_MAX_V10 entries,
-+ * versions >= V12 have RKISP1_CIF_ISP_AE_MEAN_MAX_V12 entries.
-+ * RKISP1_CIF_ISP_AE_MEAN_MAX is equal to the maximum of the two.
-+ *
-+ * Image is divided into 5x5 blocks on V10 and 9x9 blocks on V12.
-  */
- struct rkisp1_cif_isp_ae_stat {
- 	__u8 exp_mean[RKISP1_CIF_ISP_AE_MEAN_MAX];
-@@ -861,11 +897,21 @@ struct rkisp1_cif_isp_af_stat {
-  * @hist_bins: measured bin counters. Each bin is a 20 bits unsigned fixed point type.
-  *	       Bits 0-4 are the fractional part and bits 5-19 are the integer part.
-  *
-- * The window of the measurements area is divided to 5x5 sub-windows. The histogram
-- * is then computed for each sub-window independently and the final result is a weighted
-- * average of the histogram measurements on all sub-windows.
-- * The window of the measurements area and the weight of each sub-window are configurable
-- * using struct @rkisp1_cif_isp_hst_config.
-+ * The window of the measurements area is divided to 5x5 sub-windows for V10/V11 and
-+ * to 9x9 sub-windows for V12. The histogram is computed for each sub-window
-+ * independently and the final result is a weighted average of the histogram measurements
-+ * on all sub-windows. The window of the measurements area and the weight of each
-+ * sub-window are configurable using struct @rkisp1_cif_isp_hst_config.
-+ *
-+ * The histogram contains 16 bins in V10/V11 and 32 bins in V12/V13.
-+ *
-+ * The number of entries of @hist_bins depends on the hardware revision
-+ * as is reported by the hw_revision field of the struct media_device_info
-+ * that is returned by ioctl MEDIA_IOC_DEVICE_INFO.
-+ *
-+ * Versions <= V11 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10 entries,
-+ * versions >= V12 have RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12 entries.
-+ * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
-  */
- struct rkisp1_cif_isp_hist_stat {
- 	__u32 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
--- 
-2.17.1
+Included is a copy of the Rockchip pcie nodes in a sort of test.dts below.
+Could you confirm that the properties in that dts are the one that we
+can expect for Linux mainline and can base our YAML document on?
 
+With rk3568-cru.h and rk3568-power.h manualy added we do some tests with
+the following commands:
+
+make ARCH=arm64 dt_binding_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/schemas/pci/pci-bus.yaml
+
+/////
+
+Example notifications:
+
+/arch/arm64/boot/dts/rockchip/test.dt.yaml: pcie@fe270000: reg: [[3,
+3225419776, 0, 4194304], [0, 4263968768, 0, 65536]] is too long
+
+/arch/arm64/boot/dts/rockchip/test.dt.yaml: pcie@fe270000: ranges:
+'oneOf' conditional failed, one must be fixed:
+
+Before you submit version 3 make sure that all warnings gone as much as
+possible.
+
+On 1/20/21 11:15 AM, Simon Xue wrote:
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 140 ++++++++++++++++++
+>  1 file changed, 140 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> new file mode 100644
+> index 000000000000..9d3a57f5305e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> @@ -0,0 +1,140 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: DesignWare based PCIe RC controller on Rockchip SoCs
+> +
+> +maintainers:
+> +  - Shawn Lin <shawn.lin@rock-chips.com>
+> +  - Simon Xue <xxm@rock-chips.com>
+     - Heiko Stuebner <heiko@sntech.de> ;)
+> +
+> +description: |+
+> +  RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
+> +  PCIe IP and thus inherits all the common properties defined in
+> +  designware-pcie.txt.
+> +
+> +allOf:
+> +  - $ref: /schemas/pci/pci-bus.yaml#
+> +
+> +# We need a select here so we don't match all nodes with 'snps,dw-pcie'
+> +select:
+> +  properties:
+> +    compatible:
+> +      contains:
+> +        const: rockchip,rk3568-pcie
+> +  required:
+> +    - compatible
+> +
+> +properties:
+> +  compatible:
+
+> +    item:
+
+    items:
+
+> +      - const: rockchip,rk3568-pcie
+> +      - const: snps,dw-pcie
+
+Add empty line
+
+> +  reg:    items:
+      - description:
+      - description:
+
+Add some description for regs.
+
+> +    maxItems: 1
+remove
+
+This reg maxItems gives errors.
+
+> +
+
+> +  interrupt:
+interrupts:
+   items:
+
+> +      - description: system information
+> +      - description: power management control
+> +      - description: PCIe message
+> +      - description: legacy interrupt
+> +      - description: error report
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: sys
+> +      - const: pmc
+> +      - const: msg
+> +      - const: legacy
+> +      - const: err
+> +
+> +  clocks:
+> +    items:
+> +      - description: AHB clock for PCIe master
+> +      - description: AHB clock for PCIe slave
+> +      - description: AHB clock for PCIe dbi
+> +      - description: APB clock for PCIe
+> +      - description: Auxiliary clock for PCIe
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aclk_mst
+> +      - const: aclk_slv
+> +      - const: aclk_dbi
+> +      - const: pclk
+> +      - const: aux
+> +
+> +  msi-map: true
+> +
+> +  power-domains:
+> +    maxItems: 1
+
+/////
+These properties come from designware-pcie.txt
+Maybe add them here for now till there's a common yaml?
+
+  num-ib-windows: number of inbound address translation windows
+  num-ob-windows: number of outbound address translation windows
+
+Optional properties:
+  num-lanes:
+
+/////
+
+  phys:
+    maxItems: 1
+
+  phy-names:
+    const: pcie-phy
+
+ranges:
+     ......
+     ......
+This ranges needs a fix so that it doesn't generate notifications.
+See above example.
+
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+
+        const: pipe
+
+> +    items:
+> +      - const: pipe
+
+remove
+
+> +
+> +required:
+> +  - compatible
+> +  - bus-range
+> +  - reg
+> +  - reg-names
+> +  - clocks
+> +  - clock-names
+> +  - msi-map
+> +  - num-lanes
+> +  - phys
+> +  - phy-names
+> +  - power-domains
+> +  - resets
+> +  - reset-names
+
+Add also all the other properties that are defined in this binding and
+are required. But not the ones from pci-bus.yaml.
+
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+
+> +    #include <dt-bindings/clock/rk3568-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/power/rk3568-power.h>
+
+If #include is not possible for now replace all defines by there
+original numbers.
+Just to get this binding pass for mainline.
+
+> +
+> +    bus {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+> +        pcie3x2: pcie@fe280000 {
+> +            compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
+
+dts sort order is:
+
+compatible
+reg
+interrupts
+the rest
+things with #
+
+> +            reg = <0x3 0xc0800000 0x0 0x400000>,
+> +                  <0x0 0xfe280000 0x0 0x10000>;
+> +            reg-names = "pcie-dbi", "pcie-apb";
+> +            interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH>,
+> +                         <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>,
+> +                         <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>,
+> +                         <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>,
+> +                         <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>;
+
+> +            interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+
+Could you confirm that these "interrupt-names" are used in your driver?
+Else remove.
+
+            bus-range = <0x20 0x2f>;
+
+> +            clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
+> +                     <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
+> +                     <&cru CLK_PCIE30X2_AUX_NDFT>;
+> +            clock-names = "aclk_mst", "aclk_slv",
+> +                          "aclk_dbi", "pclk",
+> +                          "aux";
+
+		device_type = "pci";
+		linux,pci-domain = <0>;
+		num-ib-windows = <6>;
+		num-ob-windows = <2>;
+		max-link-speed = <2>;
+
+Maybe give a complete example?
+
+> +            msi-map = <0x2000 &its 0x2000 0x1000>;
+> +            num-lanes = <2>;
+> +            phys = <&pcie30phy>;
+> +            phy-names = "pcie-phy";
+> +            power-domains = <&power RK3568_PD_PIPE>;
+> +            ranges = <0x00000800 0x0 0x80000000 0x3 0x80000000 0x0 0x800000
+> +                      0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000
+> +                      0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
+> +            resets = <&cru SRST_PCIE30X2_POWERUP>;
+> +            reset-names = "pipe";
+
+            #address-cells = <3>;
+            #size-cells = <2>;
+
+> +        };
+> +    };
+> +...
+> 
+
+///////////
+
+test.dts
+
+///////////
+/dts-v1/;
+#include <dt-bindings/clock/rk3568-cru.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/phy/phy.h>
+#include <dt-bindings/power/rk3568-power.h>
+
+/ {
+	compatible = "rockchip,rk3568";
+
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	cru: clock-controller@fdd20000 {
+		compatible = "rockchip,rk3568-cru";
+		reg = <0x0 0xfdd20000 0x0 0x1000>;
+		#clock-cells = <1>;
+		#reset-cells = <1>;
+	};
+
+	pcie30phy: phy@fe8c0000 {
+		compatible = "rockchip,rk3568-pcie3-phy";
+		reg = <0x0 0xfe8c0000 0x0 0x20000>;
+		#phy-cells = <0>;
+	};
+
+	combphy2_psq: phy@fe840000 {
+		compatible = "rockchip,rk3568-naneng-combphy";
+		reg = <0x0 0xfe840000 0x0 0x100>;
+		#phy-cells = <1>;
+	};
+
+	gic: interrupt-controller@fd400000 {
+		compatible = "arm,gic-v3";
+		#interrupt-cells = <3>;
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+		interrupt-controller;
+
+		reg = <0x0 0xfd400000 0 0x10000>,
+		      <0x0 0xfd460000 0 0xc0000>;
+		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+		its: interrupt-controller@fd440000 {
+			compatible = "arm,gic-v3-its";
+			msi-controller;
+			#msi-cells = <1>;
+			reg = <0x0 0xfd440000 0x0 0x20000>;
+			status = "disabled";
+		};
+	};
+
+	pmu: power-management@fdd90000 {
+		compatible = "rockchip,rk3568-pmu", "syscon", "simple-mfd";
+		reg = <0x0 0xfdd90000 0x0 0x1000>;
+
+		power: power-controller {
+			compatible = "rockchip,rk3568-power-controller";
+			#power-domain-cells = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+		};
+	};
+
+	pcie2x1: pcie@fe260000 {
+		compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
+		reg = <0x3 0xc0000000 0x0 0x400000>,
+		      <0x0 0xfe260000 0x0 0x10000>;
+		reg-names = "pcie-dbi", "pcie-apb";
+		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+		bus-range = <0x0 0xf>;
+		clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
+			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
+			 <&cru CLK_PCIE20_AUX_NDFT>;
+		clock-names = "aclk_mst", "aclk_slv",
+			      "aclk_dbi", "pclk", "aux";
+		device_type = "pci";
+		linux,pci-domain = <0>;
+		num-ib-windows = <6>;
+		num-ob-windows = <2>;
+		max-link-speed = <2>;
+		msi-map = <0x0 &its 0x0 0x1000>;
+		num-lanes = <1>;
+		phys = <&combphy2_psq PHY_TYPE_PCIE>;
+		phy-names = "pcie-phy";
+		power-domains = <&power RK3568_PD_PIPE>;
+		ranges = <0x00000800 0x0 0x00000000 0x3 0x00000000 0x0 0x800000
+			  0x81000000 0x0 0x00800000 0x3 0x00800000 0x0 0x100000
+			  0x83000000 0x0 0x00900000 0x3 0x00900000 0x0 0x3f700000>;
+		resets = <&cru SRST_PCIE20_POWERUP>;
+		reset-names = "pipe";
+		#address-cells = <3>;
+		#size-cells = <2>;
+		status = "disabled";
+	};
+
+	pcie3x1: pcie@fe270000 {
+		compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
+		reg = <0x3 0xc0400000 0x0 0x400000>,
+		      <0x0 0xfe270000 0x0 0x10000>;
+		reg-names = "pcie-dbi", "pcie-apb";
+		interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 159 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 158 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 157 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+		bus-range = <0x10 0x1f>;
+		clocks = <&cru ACLK_PCIE30X1_MST>, <&cru ACLK_PCIE30X1_SLV>,
+			 <&cru ACLK_PCIE30X1_DBI>, <&cru PCLK_PCIE30X1>,
+			 <&cru CLK_PCIE30X1_AUX_NDFT>;
+		clock-names = "aclk_mst", "aclk_slv",
+			      "aclk_dbi", "pclk", "aux";
+		device_type = "pci";
+		linux,pci-domain = <1>;
+		num-ib-windows = <6>;
+		num-ob-windows = <2>;
+		max-link-speed = <3>;
+		msi-map = <0x1000 &its 0x1000 0x1000>;
+		num-lanes = <1>;
+		phys = <&pcie30phy>;
+		phy-names = "pcie-phy";
+		power-domains = <&power RK3568_PD_PIPE>;
+		ranges = <0x00000800 0x0 0x40000000 0x3 0x40000000 0x0 0x800000
+			  0x81000000 0x0 0x40800000 0x3 0x40800000 0x0 0x100000
+			  0x83000000 0x0 0x40900000 0x3 0x40900000 0x0 0x3f700000>;
+		resets = <&cru SRST_PCIE30X1_POWERUP>;
+		reset-names = "pipe";
+		#address-cells = <3>;
+		#size-cells = <2>;
+		status = "disabled";
+	};
+
+	pcie3x2: pcie@fe280000 {
+		compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
+		reg = <0x3 0xc0800000 0x0 0x400000>,
+		      <0x0 0xfe280000 0x0 0x10000>;
+		reg-names = "pcie-dbi", "pcie-apb";
+		interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>,
+			     <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
+		bus-range = <0x20 0x2f>;
+		clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
+			 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
+			 <&cru CLK_PCIE30X2_AUX_NDFT>;
+		clock-names = "aclk_mst", "aclk_slv",
+			      "aclk_dbi", "pclk", "aux";
+		device_type = "pci";
+		linux,pci-domain = <2>;
+		num-ib-windows = <6>;
+		num-ob-windows = <2>;
+		max-link-speed = <3>;
+		msi-map = <0x2000 &its 0x2000 0x1000>;
+		num-lanes = <2>;
+		phys = <&pcie30phy>;
+		phy-names = "pcie-phy";
+		power-domains = <&power RK3568_PD_PIPE>;
+		ranges = <0x00000800 0x0 0x80000000 0x3 0x80000000 0x0 0x800000
+			  0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000
+			  0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
+		resets = <&cru SRST_PCIE30X2_POWERUP>;
+		reset-names = "pipe";
+		#address-cells = <3>;
+		#size-cells = <2>;
+		status = "disabled";
+	};
+};
 
 _______________________________________________
 Linux-rockchip mailing list
