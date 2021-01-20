@@ -2,74 +2,64 @@ Return-Path: <SRS0=q9XV=GX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68901C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 779E9C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:37:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC85F23330
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:17:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC85F23330
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1AB7523331
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:37:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1AB7523331
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W8VuM24nYqNFBKY4UErAS71Mbv3Vh1k5BXekkpPnBjs=; b=IBl9spG4+KxnyFUFcmR29wU1K
-	Uctk1cKqXt9ZNCTmGtN7wEf9N/G2KrSRyhVjxEvZq7sPr/n1Pb2y0OJGej5Hk8Nhtse/g3zBoCH9x
-	DNUgus9hNt/neRYzoQrVDE1/BA/BUjXizy1IZ0Vb8h+5CD49jB6q+vrpRJU0KpFYewb98aX5PTwje
-	beHv6hU84MbwsW7FZfNDF02fscu/sSG2bAvLFOYM8HnqrGhFDaFE12LAqB+jh/wEhHFNrTa5LuNqQ
-	3e8k3Ko6F0Iial8paZQtXtQtzIc7ETQL7MwzG1Hbf2zHfY+wBsATgYnU7Z0v62e3Tc/rdKVUrFiPR
-	l5Ii7cdRQ==;
+	 bh=5Bwum+n4ZOZVNxlBEPwZMP3AfpNgaJsfGeO+jPFYc9c=; b=FmzaFZzsjQXBheb7N7q84tgmS
+	l7AlUBEfRmwgPbp1fVuYsMfjPf9WTfxeIDjHpaBfy92dOBsC/LhQR8RxWru2UoIG+CW1hWA2wfELH
+	xW3N/a3SG4B9ywPX30MqRle3TIQqBaQGWf/olEocdVVy6UkOFi4QIw05d9buFOLFzTmo+0j+ufle9
+	Z0u/Sc1zyyh77ifSis4z5sLMfYqEP5MYgjw/dTpVuda5i1IzXG97VXW9aPdJqHwekYqSEDp3OX+LQ
+	Pr4+h35YoTr6jxJYq7Nh3wbcloLFsWOKazHPie9JlWz7fDZboaN+1dj+JAvRBmYunGbi0R3wdrknI
+	IAtQ4AAfw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2AYR-0008Ap-VS; Wed, 20 Jan 2021 10:17:36 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1l2ArV-0001pk-L0; Wed, 20 Jan 2021 10:37:17 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2AYN-00089l-Vb
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 10:17:34 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 7CF6DCF3D6;
- Wed, 20 Jan 2021 18:17:26 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from xxm-vm.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P24739T140081880880896S1611137823657337_; 
- Wed, 20 Jan 2021 18:17:26 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <8bb47be61c1b17ff213ae8cebc836f6e>
-X-RL-SENDER: xxm@rock-chips.com
-X-SENDER: xxm@rock-chips.com
-X-LOGIN-NAME: xxm@rock-chips.com
-X-FST-TO: bhelgaas@google.com
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Simon Xue <xxm@rock-chips.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v2 2/2] PCI: rockchip: add DesignWare based PCIe controller
-Date: Wed, 20 Jan 2021 18:16:58 +0800
-Message-Id: <20210120101658.241134-2-xxm@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210120101658.241134-1-xxm@rock-chips.com>
-References: <20210120101658.241134-1-xxm@rock-chips.com>
+ id 1l2ArT-0001pL-EA
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 10:37:16 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 4AEFF1F455F3
+Subject: Re: [PATCH] media: rkisp1: uapi: change hist_bins array type from
+ __u16 to __u32
+To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org,
+ laurent.pinchart@ideasonboard.com, heiko@sntech.de
+References: <20210119145341.29686-1-dafna.hirschfeld@collabora.com>
+ <a8f8d9e9-30b1-b594-a9bc-f4a11924bf56@xs4all.nl>
+ <fbe57350-f319-dbc7-f093-d3c1c76feb89@collabora.com>
+ <2e48068e-fcc4-9288-a9a6-59f71d7f20ce@xs4all.nl>
+ <65be169f-417f-a1f5-53e7-31f701a04d08@collabora.com>
+ <41194a0e-e8ef-1acf-82c2-3553e17e5dca@xs4all.nl>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <c474d304-65ee-a768-a3b1-af1045c97b76@collabora.com>
+Date: Wed, 20 Jan 2021 11:37:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <41194a0e-e8ef-1acf-82c2-3553e17e5dca@xs4all.nl>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_051732_485223_4141D8D7 
-X-CRM114-Status: GOOD (  26.76  )
+X-CRM114-CacheID: sfid-20210120_053715_660598_6BB54D03 
+X-CRM114-Status: GOOD (  29.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,462 +72,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
- Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
+ linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pcie-dw-rockchip is based on DWC IP. But pcie-rockchip-host
-is another IP which is only used for RK3399. So all the following
-non-RK3399 SoCs should use this driver.
-
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
- drivers/pci/controller/Kconfig                |   4 +-
- drivers/pci/controller/dwc/Kconfig            |   9 +
- drivers/pci/controller/dwc/Makefile           |   1 +
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 370 ++++++++++++++++++
- 4 files changed, 382 insertions(+), 2 deletions(-)
- create mode 100644 drivers/pci/controller/dwc/pcie-dw-rockchip.c
-
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 64e2f5e379aa..48a7d62f97f3 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -219,7 +219,7 @@ config PCIE_ROCKCHIP_HOST
- 	help
- 	  Say Y here if you want internal PCI support on Rockchip SoC.
- 	  There is 1 internal PCIe port available to support GEN2 with
--	  4 slots.
-+	  4 slots. Only for RK3399.
- 
- config PCIE_ROCKCHIP_EP
- 	bool "Rockchip PCIe endpoint controller"
-@@ -231,7 +231,7 @@ config PCIE_ROCKCHIP_EP
- 	help
- 	  Say Y here if you want to support Rockchip PCIe controller in
- 	  endpoint mode on Rockchip SoC. There is 1 internal PCIe port
--	  available to support GEN2 with 4 slots.
-+	  available to support GEN2 with 4 slots. Only for RK3399.
- 
- config PCIE_MEDIATEK
- 	tristate "MediaTek PCIe controller"
-diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
-index 22c5529e9a65..110733d0c241 100644
---- a/drivers/pci/controller/dwc/Kconfig
-+++ b/drivers/pci/controller/dwc/Kconfig
-@@ -214,6 +214,15 @@ config PCIE_ARTPEC6_EP
- 	  Enables support for the PCIe controller in the ARTPEC-6 SoC to work in
- 	  endpoint mode. This uses the DesignWare core.
- 
-+config PCIE_DW_ROCKCHIP_HOST
-+	bool "Rockchip DesignWare PCIe controller"
-+	select PCIE_DW
-+	select PCIE_DW_HOST
-+	depends on ARCH_ROCKCHIP
-+	depends on OF
-+	help
-+	  Enables support for the DW PCIe controller in the Rockchip SoC.
-+
- config PCIE_INTEL_GW
- 	bool "Intel Gateway PCIe host controller support"
- 	depends on OF && (X86 || COMPILE_TEST)
-diff --git a/drivers/pci/controller/dwc/Makefile b/drivers/pci/controller/dwc/Makefile
-index a751553fa0db..9c7048d2be17 100644
---- a/drivers/pci/controller/dwc/Makefile
-+++ b/drivers/pci/controller/dwc/Makefile
-@@ -13,6 +13,7 @@ obj-$(CONFIG_PCI_LAYERSCAPE_EP) += pci-layerscape-ep.o
- obj-$(CONFIG_PCIE_QCOM) += pcie-qcom.o
- obj-$(CONFIG_PCIE_ARMADA_8K) += pcie-armada8k.o
- obj-$(CONFIG_PCIE_ARTPEC6) += pcie-artpec6.o
-+obj-$(CONFIG_PCIE_DW_ROCKCHIP_HOST) += pcie-dw-rockchip.o
- obj-$(CONFIG_PCIE_INTEL_GW) += pcie-intel-gw.o
- obj-$(CONFIG_PCIE_KIRIN) += pcie-kirin.o
- obj-$(CONFIG_PCIE_HISI_STB) += pcie-histb.o
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-new file mode 100644
-index 000000000000..e41cd6041c3f
---- /dev/null
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -0,0 +1,370 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * PCIe host controller driver for Rockchip SoCs
-+ *
-+ * Copyright (C) 2021 Rockchip Electronics Co., Ltd.
-+ *		http://www.rock-chips.com
-+ *
-+ * Author: Simon Xue <xxm@rock-chips.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/gpio/consumer.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/phy/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+
-+#include "pcie-designware.h"
-+
-+/*
-+ * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
-+ * mask for the lower 16 bits.  This allows atomic updates
-+ * of the register without locking.
-+ */
-+#define HIWORD_UPDATE(mask, val) (((mask) << 16) | (val))
-+#define HIWORD_UPDATE_BIT(val)	HIWORD_UPDATE(val, val)
-+
-+#define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
-+
-+#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
-+#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
-+#define PCIE_SMLH_LINKUP		BIT(16)
-+#define PCIE_RDLH_LINKUP		BIT(17)
-+#define PCIE_L0S_ENTRY			0x11
-+#define PCIE_CLIENT_GENERAL_CONTROL	0x0
-+#define PCIE_CLIENT_GENERAL_DEBUG	0x104
-+#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
-+#define PCIE_CLIENT_LTSSM_STATUS	0x300
-+#define PCIE_CLIENT_DBG_FIFO_MODE_CON	0x310
-+#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0 0x320
-+#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1 0x324
-+#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0 0x328
-+#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1 0x32c
-+#define PCIE_CLIENT_DBG_FIFO_STATUS	0x350
-+#define PCIE_CLIENT_DBG_TRANSITION_DATA	0xffff0000
-+#define PCIE_CLIENT_DBF_EN		0xffff0003
-+#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
-+
-+struct rockchip_pcie {
-+	struct dw_pcie			*pci;
-+	void __iomem			*apb_base;
-+	struct phy			*phy;
-+	struct clk_bulk_data		*clks;
-+	unsigned int			clk_cnt;
-+	struct reset_control		*rst;
-+	struct gpio_desc		*rst_gpio;
-+	struct pcie_port		pp;
-+	struct regulator                *vpcie3v3;
-+};
-+
-+static inline int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
-+					  u32 reg)
-+{
-+	return readl(rockchip->apb_base + reg);
-+}
-+
-+static inline void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
-+					    u32 reg, u32 val)
-+{
-+	writel(val, rockchip->apb_base + reg);
-+}
-+
-+static inline void rockchip_pcie_set_mode(struct rockchip_pcie *rockchip)
-+{
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_GENERAL_CONTROL,
-+				 PCIE_CLIENT_RC_MODE);
-+}
-+
-+static inline void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
-+{
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_GENERAL_CONTROL,
-+				 PCIE_CLIENT_ENABLE_LTSSM);
-+}
-+
-+static int rockchip_pcie_link_up(struct dw_pcie *pci)
-+{
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+	u32 val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
-+
-+	if ((val & (PCIE_RDLH_LINKUP | PCIE_SMLH_LINKUP)) == 0x30000 &&
-+	    (val & GENMASK(5, 0)) == PCIE_L0S_ENTRY)
-+		return 1;
-+
-+	return 0;
-+}
-+
-+static void rockchip_pcie_establish_link(struct dw_pcie *pci)
-+{
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+
-+	if (dw_pcie_link_up(pci)) {
-+		dev_err(pci->dev, "link already up\n");
-+		return;
-+	}
-+
-+	/* Reset device */
-+	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-+	msleep(100);
-+	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
-+
-+	rockchip_pcie_enable_ltssm(rockchip);
-+}
-+
-+static void rockchip_pcie_enable_debug(struct rockchip_pcie *rockchip)
-+{
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0,
-+				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1,
-+				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0,
-+				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1,
-+				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_MODE_CON,
-+				 PCIE_CLIENT_DBF_EN);
-+}
-+
-+static void rockchip_pcie_debug_dump(struct rockchip_pcie *rockchip)
-+{
-+	u32 loop;
-+	struct dw_pcie *pci = rockchip->pci;
-+
-+	dev_dbg(pci->dev, "ltssm = 0x%x\n",
-+		rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS));
-+	for (loop = 0; loop < 64; loop++)
-+		dev_dbg(pci->dev, "fifo_status = 0x%x\n",
-+			rockchip_pcie_readl_apb(rockchip,
-+						PCIE_CLIENT_DBG_FIFO_STATUS));
-+}
-+
-+static int rockchip_pcie_host_init(struct pcie_port *pp)
-+{
-+	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-+	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+
-+	dw_pcie_setup_rc(pp);
-+
-+	rockchip_pcie_enable_debug(rockchip);
-+
-+	rockchip_pcie_establish_link(pci);
-+	dw_pcie_wait_for_link(pci);
-+
-+	rockchip_pcie_debug_dump(rockchip);
-+
-+	return 0;
-+}
-+
-+static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
-+	.host_init = rockchip_pcie_host_init,
-+};
-+
-+static int rockchip_add_pcie_port(struct rockchip_pcie *rockchip)
-+{
-+	int ret;
-+	struct dw_pcie *pci = rockchip->pci;
-+	struct pcie_port *pp = &pci->pp;
-+
-+	pp->ops = &rockchip_pcie_host_ops;
-+
-+	rockchip_pcie_set_mode(rockchip);
-+
-+	ret = dw_pcie_host_init(pp);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static void rockchip_pcie_clk_deinit(struct rockchip_pcie *rockchip)
-+{
-+	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-+}
-+
-+static int rockchip_pcie_clk_init(struct rockchip_pcie *rockchip)
-+{
-+	struct device *dev = rockchip->pci->dev;
-+	int ret;
-+
-+	ret = devm_clk_bulk_get_all(dev, &rockchip->clks);
-+	if (ret < 0)
-+		return ret;
-+
-+	rockchip->clk_cnt = ret;
-+
-+	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_resource_get(struct platform_device *pdev,
-+				      struct rockchip_pcie *rockchip)
-+{
-+	struct dw_pcie *pci = rockchip->pci;
-+
-+	pci->dbi_base = devm_platform_ioremap_resource_byname(pdev, "pcie-dbi");
-+	if (IS_ERR(pci->dbi_base))
-+		return PTR_ERR(pci->dbi_base);
-+
-+	rockchip->apb_base = devm_platform_ioremap_resource_byname(pdev,
-+								   "pcie-apb");
-+	if (IS_ERR(rockchip->apb_base))
-+		return PTR_ERR(rockchip->apb_base);
-+
-+	rockchip->rst_gpio = devm_gpiod_get_optional(&pdev->dev, "reset",
-+						     GPIOD_OUT_HIGH);
-+	if (IS_ERR(rockchip->rst_gpio))
-+		return PTR_ERR(rockchip->rst_gpio);
-+
-+	return 0;
-+}
-+
-+static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
-+{
-+	int ret;
-+	struct device *dev = rockchip->pci->dev;
-+
-+	rockchip->phy = devm_phy_get(dev, "pcie-phy");
-+	if (IS_ERR(rockchip->phy))
-+		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
-+				     "missing phy\n");
-+
-+	ret = phy_init(rockchip->phy);
-+	if (ret < 0)
-+		return ret;
-+
-+	phy_power_on(rockchip->phy);
-+
-+	return 0;
-+}
-+
-+static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
-+{
-+	phy_exit(rockchip->phy);
-+	phy_power_off(rockchip->phy);
-+}
-+
-+static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
-+{
-+	struct device *dev = rockchip->pci->dev;
-+	int ret;
-+
-+	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
-+	if (IS_ERR(rockchip->rst))
-+		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
-+				     "failed to get reset lines\n");
-+
-+	ret = reset_control_deassert(rockchip->rst);
-+
-+	return ret;
-+}
-+
-+static void rockchip_pcie_fast_link_setup(struct rockchip_pcie *rockchip)
-+{
-+	u32 val;
-+
-+	/* LTSSM EN ctrl mode */
-+	val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL);
-+	val |= PCIE_LTSSM_ENABLE_ENHANCE | (PCIE_LTSSM_ENABLE_ENHANCE << 16);
-+	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL, val);
-+}
-+
-+static const struct of_device_id rockchip_pcie_of_match[] = {
-+	{ .compatible = "rockchip,rk3568-pcie", },
-+	{ /* sentinel */ },
-+};
-+
-+static const struct dw_pcie_ops dw_pcie_ops = {
-+	.link_up = rockchip_pcie_link_up,
-+};
-+
-+static int rockchip_pcie_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct rockchip_pcie *rockchip;
-+	struct dw_pcie *pci;
-+	int ret;
-+
-+	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
-+	if (!rockchip)
-+		return -ENOMEM;
-+
-+	pci = devm_kzalloc(dev, sizeof(*pci), GFP_KERNEL);
-+	if (!pci)
-+		return -ENOMEM;
-+
-+	pci->dev = dev;
-+	pci->ops = &dw_pcie_ops;
-+
-+	rockchip->pci = pci;
-+
-+	ret = rockchip_pcie_resource_get(pdev, rockchip);
-+	if (ret)
-+		return ret;
-+
-+	/* DON'T MOVE ME: must be enable before phy init */
-+	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
-+	if (IS_ERR(rockchip->vpcie3v3)) {
-+		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
-+			return PTR_ERR(rockchip->vpcie3v3);
-+		dev_info(dev, "no vpcie3v3 regulator found\n");
-+	}
-+
-+	if (!IS_ERR(rockchip->vpcie3v3)) {
-+		ret = regulator_enable(rockchip->vpcie3v3);
-+		if (ret) {
-+			dev_err(pci->dev, "fail to enable vpcie3v3 regulator\n");
-+			return ret;
-+		}
-+	}
-+
-+	ret = rockchip_pcie_phy_init(rockchip);
-+	if (ret)
-+		goto disable_regulator;
-+
-+	ret = rockchip_pcie_reset_control_release(rockchip);
-+	if (ret)
-+		goto deinit_phy;
-+
-+	ret = rockchip_pcie_clk_init(rockchip);
-+	if (ret)
-+		goto deinit_phy;
-+
-+	rockchip_pcie_fast_link_setup(rockchip);
-+
-+	platform_set_drvdata(pdev, rockchip);
-+
-+	ret = rockchip_add_pcie_port(rockchip);
-+	if (ret)
-+		goto deinit_clk;
-+
-+	return 0;
-+
-+deinit_clk:
-+	rockchip_pcie_clk_deinit(rockchip);
-+deinit_phy:
-+	rockchip_pcie_phy_deinit(rockchip);
-+disable_regulator:
-+	if (!IS_ERR(rockchip->vpcie3v3))
-+		regulator_disable(rockchip->vpcie3v3);
-+
-+	return ret;
-+}
-+
-+MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
-+
-+static struct platform_driver rockchip_pcie_driver = {
-+	.driver = {
-+		.name	= "rk-pcie",
-+		.of_match_table = rockchip_pcie_of_match,
-+		.suppress_bind_attrs = true,
-+	},
-+	.probe = rockchip_pcie_probe,
-+};
-+
-+builtin_platform_driver(rockchip_pcie_driver);
--- 
-2.25.1
 
 
+Am 20.01.21 um 10:58 schrieb Hans Verkuil:
+> On 19/01/2021 18:47, Dafna Hirschfeld wrote:
+>>
+>>
+>> Am 19.01.21 um 17:32 schrieb Hans Verkuil:
+>>> On 19/01/2021 16:32, Dafna Hirschfeld wrote:
+>>>>
+>>>>
+>>>> Am 19.01.21 um 16:00 schrieb Hans Verkuil:
+>>>>> On 19/01/2021 15:53, Dafna Hirschfeld wrote:
+>>>>>> Each entry in the array is a 20 bits value composed of 16
+>>>>>> bits unsigned integer and 4 bits fractional part. So the
+>>>>>> type should change to __u32.
+>>>>>>
+>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>>>>> ---
+>>>>>> This patch is applied on top of v6 of the patchset
+>>>>>> "Fix the rkisp1 userspace API for later IP versions"
+>>>>>>
+>>>>>>     include/uapi/linux/rkisp1-config.h | 5 +++--
+>>>>>>     1 file changed, 3 insertions(+), 2 deletions(-)
+>>>>>>
+>>>>>> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+>>>>>> index 57ca3eea985f..47f6b84d7c56 100644
+>>>>>> --- a/include/uapi/linux/rkisp1-config.h
+>>>>>> +++ b/include/uapi/linux/rkisp1-config.h
+>>>>>> @@ -895,7 +895,8 @@ struct rkisp1_cif_isp_af_stat {
+>>>>>>     /**
+>>>>>>      * struct rkisp1_cif_isp_hist_stat - statistics histogram data
+>>>>>>      *
+>>>>>> - * @hist_bins: measured bin counters
+>>>>>> + * @hist_bins: measured bin counters. Each bin is a 20 bits value
+>>>>>> + *	       composed of a 16-bit unsigned integer and 4 bits fractional part.
+>>>>>
+>>>>> So bits 0-3 are the fractional part and bits 4-19 contain the integer part?
+>>>>> What goes where should be defined!
+>>>>
+>>>> Actually I don't know, I just copied the docs in the datasheet.
+>>>> I can try figure it out. I can meanwhile send a patch without the doc until
+>>>> we are sure. Is that OK?
+>>>
+>>> No, this should be documented properly.
+>>
+>> I see that indeed bits 0-3 are the fractional part.
+>> The measurements are taken over 25 sub-windows and it is possible to
+>> give a weight to each window. If I set all weights to 1 then I expect to get
+>> an integer value and indeed in that case I see that the last 4 bits are always 0.
+>> If I set the weights to other than 1 I get the last 4 bits not only 0.
+>>
+>> The UAPI is generally not very good documented mainly because there is currently
+>> no open source userspace that uses it.
+>>
+>>>
+>>> Is this the only fractional type that is used in the rkisp1 uapi or are there
+>>> others? (Just checking).
+>>
+>> There are other places as well.
+>> I see that there are some values in rkisp1_cif_isp_lsc_config that are fractional
+>> and not documented.
+>> The two other fractional types in the uapi are already documented.
+>>
+>> I can add a patch that extends the documentation of all the fields in the uapi using the datasheet.
+>> But I think such a patch can be added after de-staging.
+> 
+> You need to make changes anyway in the uAPI for 5.11 (including fixing the
+> bad u8 cast), so let's do this right.
+> 
+> Regards,
+> 
+> 	Hans
 
+So just to make sure I understood correctly, in addition to Heiko Stuebner's patchset.
+I should a add another patchset that includes:
+
+1. changing the hist_bins type to __u32,
+2. removing the u8 cast in rkisp1-stats.c
+3. documenting all the fields in the uapi
+
+I don't know what is the policy for fixes among the kernel management,
+I am worried that if we are too late or the changes are too big they might reject it.
+
+Also, documenting thoroughly can only be done if there is userspace app or at least unit tests
+that test each component since the datasheet lack some details as in this case.
+
+Thanks,
+Dafna
+
+
+> 
+>>
+>> Thanks,
+>> Dafna
+>>
+>>
+>>>
+>>>>
+>>>>>
+>>>>> Looking at rkisp1_stats_get_hst_meas() I see this:
+>>>>>
+>>>>>            for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
+>>>>>                    pbuf->params.hist.hist_bins[i] =
+>>>>>                            (u8)rkisp1_read(rkisp1,
+>>>>>                                            RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
+>>>>>
+>>>>> Here this is cast to a u8, so how does this work?
+>>>>
+>>>> This seems to be a bug. I see that this cast is introduced in v12 of the patch
+>>>> "media: staging: rkisp1: add capture device for statistics".
+>>>> This cast does not exist in any of the downstream versions.
+>>>
+>>> Clearly something that needs to be fixed as well.
+>>>
+>>> Regards,
+>>>
+>>> 	Hans
+>>>
+>>>>
+>>>> Thanks,
+>>>> Dafna
+>>>>
+>>>>>
+>>>>> There is something fishy here...
+>>>>>
+>>>>> Regards,
+>>>>>
+>>>>> 	Hans
+>>>>>
+>>>>>>      *
+>>>>>>      * The histogram values divided into 16 bins for V10/V11 and 32 bins
+>>>>>>      * for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_config.
+>>>>>> @@ -909,7 +910,7 @@ struct rkisp1_cif_isp_af_stat {
+>>>>>>      * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
+>>>>>>      */
+>>>>>>     struct rkisp1_cif_isp_hist_stat {
+>>>>>> -	__u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
+>>>>>> +	__u32 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
+>>>>>>     };
+>>>>>>     
+>>>>>>     /**
+>>>>>>
+>>>>>
+>>>
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
