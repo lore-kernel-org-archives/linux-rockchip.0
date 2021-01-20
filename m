@@ -2,84 +2,76 @@ Return-Path: <SRS0=q9XV=GX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C887CC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 11:37:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF55BC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 14:07:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60BC522AAA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 11:37:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60BC522AAA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 6EA8B23340
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 14:07:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EA8B23340
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=m4J0atQ3AfNv2Xz9s/46gm1oko358iTdmz6dnatbU3s=; b=BlHhOuhRmlKiiFNvJ4wUM5iOH
-	tJN5pNmU7hJJqF29ZovKI6dB9CnlpOX73XiZmdVeWsQ07bj17XcPu0SBbIu37utuzu6BJDh5tb3Ty
-	QWNDt+ir6JUOpAmNKpa242zLc6J/zMukQBl23TAx+lyCr1SmLif5o2anfGOMtAEGEhkI4mrPQScoO
-	e0DB6pqjHc6UH+vcAJ/f99utIxRylAOM4F2878JxuYPVjX8lxOSMCk0G7vgNBE6kDkYPFCScbuzOC
-	ryDUHpwkLfbg2AYBGcwBArPpULXyDf+5/hE5+ozfwDF9h+KImWJmGkNmkHgWANHV6O+aooHH29ZVp
-	29G94mJfQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7xsitIt7UdQMZZ7CxhFRb+Q0KuXZcxR5vSmG8LJRTcQ=; b=i/C+Xcsz7lOyLry92ctYcKdmiD
+	3wSvw8hLTV6ubT/INYUEOnPg1bnfEyF/VHQ4Btrfddq5CRQ6PrJA9DA4ywKp7FcU5Tti/4rrRNcoQ
+	9JL2QUDLTXYIYEBn31h6gIMutVw6KeaHCiDzM8/cFjYVcJpaSRqrbXvlZaMdzm/0pr/dt3vDftNne
+	NqS/ZzEjgEXmydeQ7gErIvje0wHqzu8ULtc4Z+JDhlsFlzXZxOtmR7XoJcr5MtnqwVzAfXyMC0R3j
+	Ec8Poc4qPDqj3zCn+lOxu9zDCAJbS4iDYcIdDB1CNVf64H99nJKuqsDBE/EowtuX/yDKVpQcM6d4Y
+	I8pXdUvg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2Bnp-0003Ec-6d; Wed, 20 Jan 2021 11:37:33 +0000
-Received: from lb2-smtp-cloud8.xs4all.net ([194.109.24.25])
+	id 1l2E96-0008Ox-2w; Wed, 20 Jan 2021 14:07:40 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Bnc-0003B7-Hh
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 11:37:21 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id 2BnPlK0Nzftvz2BnTl9DjU; Wed, 20 Jan 2021 12:37:11 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1611142631; bh=BgXfIZP4VpejNzQx/U7PCPQceu+uPE5cpLgXu6wueyo=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=kHeyYiaza5cprum9YhmmTlm4ppSGTQxMs6t4lv0jiVbzOZvfEIZ2lgjWPZNWMcJmr
- vmNL2Y/naKL8UySNdYP3zUQLXrlO/V4MV+K835Zt7CrMCGZX5ac2AHmn1mmWfunYe7
- ye0v/o+dHW1FvBvwj9urNIKXkII5xxiHBprLQZCpFcheD8WRWzmtzf8m0oZcfNdQdj
- xXhREsxqog6rusBn9x14oH+u31PB/QTIjc7xxz9ITsFN7ClsUCqE3HRM+XReEC/zNw
- tZr9w/gvDyYME3Mx7BhCWDOGS0MfU2HQsV57uyCnaSVwl5uypjWfENZ/C8JUvKmcLH
- +n/DXH2dFWtZw==
-Subject: Re: [PATCH] media: rkisp1: uapi: change hist_bins array type from
- __u16 to __u32
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com,
- heiko@sntech.de
-References: <20210119145341.29686-1-dafna.hirschfeld@collabora.com>
- <a8f8d9e9-30b1-b594-a9bc-f4a11924bf56@xs4all.nl>
- <fbe57350-f319-dbc7-f093-d3c1c76feb89@collabora.com>
- <2e48068e-fcc4-9288-a9a6-59f71d7f20ce@xs4all.nl>
- <65be169f-417f-a1f5-53e7-31f701a04d08@collabora.com>
- <41194a0e-e8ef-1acf-82c2-3553e17e5dca@xs4all.nl>
- <c474d304-65ee-a768-a3b1-af1045c97b76@collabora.com>
- <290b42e0-12ad-011e-a6db-9eb7a057a7e8@xs4all.nl>
- <b77aed66-6c52-8548-c3c0-ea988c51c7aa@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <21dbf50b-e1df-d658-c7da-88f152c2aa13@xs4all.nl>
-Date: Wed, 20 Jan 2021 12:37:07 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
-MIME-Version: 1.0
-In-Reply-To: <b77aed66-6c52-8548-c3c0-ea988c51c7aa@collabora.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfHWkxoAeEgwaDxThKYHcZZFpnQzC681aFzk1CS8wQkG1miWenwjgu/9cyalFD/CwtRdMIBmEJxMYSXJbH2+C7cjJ6W7KTMPZXW0B6R5AFXg3+4mWJ1XA
- I6zkNqLLauZVpg/iQ0/Mdx1fdlg+e2zzjnMl2wP/s31eEk0nSM/IRXxsBHzqDVezSK+hK0PDdncU84/vml4/2aZ3aqbV/YNrONM28PiYDfwe3369Tlo54Pyd
- CFNqS1PdAsqysKhIeeIpHSCf95S8DL8ZbLhQx/mfzxdVi0JxRix0Ow4fl9VZBDBp9Hl4u6XscXgFb9viTojJU78rrE0GUCcOkJEH4d2ecKa2uWNvLjspEQoo
- MkEDwhX8PnBmqMfniVKnW0Qb3ObiQ3j2pXrNY8biYu3H7pDQvyDhAlbWsvFp9+c34wPSu9piOJgXMfAOfp6a977+d9rf5IUlfgIhJ3B0PSjgIU3FkP+5KTQU
- kroh+DIro9jgC3XNETljKKdyYe68dcEHlhD23U3GzC6PuhZQdkSzIYkMjTHSLd5yzcxOHatHCgq+U8Vvuqmf0NBVVnOWHvUeiXDhe8wkEr27RCh+wVIWghmU
- inijW7mDGKfsEKOJIH0v7NhS
+ id 1l2E93-0008OV-Eh
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 14:07:38 +0000
+Received: by mail-oi1-f178.google.com with SMTP id w8so3310891oie.2
+ for <linux-rockchip@lists.infradead.org>; Wed, 20 Jan 2021 06:07:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=zcKgwjky9crKlWMGPybKhU6+7gIFQmOWdjIZJmpIFjc=;
+ b=TX3AmNtax5DW5KRt9kotyCrDRzVkpWNjz4OmW8rPRQKIkQXMKRwBhcUwb4ax/94/WM
+ tQQOJU9x16xWXhtaZWjCrF+e66e89Zyj3BLNbskJFpKbsgK4ACF9re47o4FtbzPFzYrQ
+ lX6zpVIuzqry4c5sLp7kfUuPsdG3jsBbbCxapMxja0Q6F5h1pwJVVxx/sbDKN4ExbOrN
+ DolV92j61/n6TD53JKmXVpQ0HgUpA9hSN8BbpbVPM0WNXHpwIDQmRuXUbkeL6GOnFDDq
+ 3on6FG2XO5Va5LAj7Vu6O3CquWqubS7OjlmFbASTXO4anNa2TLvONdzv6yunhBNuPeph
+ cNXg==
+X-Gm-Message-State: AOAM531xihuWzQROM0Vp1E94F9nIlCkOp5XAhOHXtl0dctwH/AqCNEXH
+ r2cBaVItzitV2w9BvyAVJA==
+X-Google-Smtp-Source: ABdhPJzcEAq7/9jtYgE52EsiAT1br27RsunNbC2p9kjwtyWOTE98FYW9E/oOsC5otWdKb86kBgxzuA==
+X-Received: by 2002:aca:c74d:: with SMTP id x74mr3006218oif.177.1611151656166; 
+ Wed, 20 Jan 2021 06:07:36 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id d10sm360682ooh.32.2021.01.20.06.07.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Jan 2021 06:07:35 -0800 (PST)
+Received: (nullmailer pid 31593 invoked by uid 1000);
+ Wed, 20 Jan 2021 14:07:34 -0000
+From: Rob Herring <robh@kernel.org>
+To: Simon Xue <xxm@rock-chips.com>
+In-Reply-To: <20210120101554.241029-1-xxm@rock-chips.com>
+References: <20210120101554.241029-1-xxm@rock-chips.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+Date: Wed, 20 Jan 2021 08:07:34 -0600
+Message-Id: <1611151654.051365.31592.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_063720_727736_FB6B9A23 
-X-CRM114-Status: GOOD (  29.70  )
+X-CRM114-CacheID: sfid-20210120_090737_537481_43E25B2D 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,141 +84,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Johan Jonker <jbx6244@gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 20/01/2021 12:32, Dafna Hirschfeld wrote:
+On Wed, 20 Jan 2021 18:15:53 +0800, Simon Xue wrote:
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 140 ++++++++++++++++++
+>  1 file changed, 140 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 > 
-> 
-> Am 20.01.21 um 11:49 schrieb Hans Verkuil:
->> On 20/01/2021 11:37, Dafna Hirschfeld wrote:
->>>
->>>
->>> Am 20.01.21 um 10:58 schrieb Hans Verkuil:
->>>> On 19/01/2021 18:47, Dafna Hirschfeld wrote:
->>>>>
->>>>>
->>>>> Am 19.01.21 um 17:32 schrieb Hans Verkuil:
->>>>>> On 19/01/2021 16:32, Dafna Hirschfeld wrote:
->>>>>>>
->>>>>>>
->>>>>>> Am 19.01.21 um 16:00 schrieb Hans Verkuil:
->>>>>>>> On 19/01/2021 15:53, Dafna Hirschfeld wrote:
->>>>>>>>> Each entry in the array is a 20 bits value composed of 16
->>>>>>>>> bits unsigned integer and 4 bits fractional part. So the
->>>>>>>>> type should change to __u32.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->>>>>>>>> ---
->>>>>>>>> This patch is applied on top of v6 of the patchset
->>>>>>>>> "Fix the rkisp1 userspace API for later IP versions"
->>>>>>>>>
->>>>>>>>>      include/uapi/linux/rkisp1-config.h | 5 +++--
->>>>>>>>>      1 file changed, 3 insertions(+), 2 deletions(-)
->>>>>>>>>
->>>>>>>>> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
->>>>>>>>> index 57ca3eea985f..47f6b84d7c56 100644
->>>>>>>>> --- a/include/uapi/linux/rkisp1-config.h
->>>>>>>>> +++ b/include/uapi/linux/rkisp1-config.h
->>>>>>>>> @@ -895,7 +895,8 @@ struct rkisp1_cif_isp_af_stat {
->>>>>>>>>      /**
->>>>>>>>>       * struct rkisp1_cif_isp_hist_stat - statistics histogram data
->>>>>>>>>       *
->>>>>>>>> - * @hist_bins: measured bin counters
->>>>>>>>> + * @hist_bins: measured bin counters. Each bin is a 20 bits value
->>>>>>>>> + *	       composed of a 16-bit unsigned integer and 4 bits fractional part.
->>>>>>>>
->>>>>>>> So bits 0-3 are the fractional part and bits 4-19 contain the integer part?
->>>>>>>> What goes where should be defined!
->>>>>>>
->>>>>>> Actually I don't know, I just copied the docs in the datasheet.
->>>>>>> I can try figure it out. I can meanwhile send a patch without the doc until
->>>>>>> we are sure. Is that OK?
->>>>>>
->>>>>> No, this should be documented properly.
->>>>>
->>>>> I see that indeed bits 0-3 are the fractional part.
->>>>> The measurements are taken over 25 sub-windows and it is possible to
->>>>> give a weight to each window. If I set all weights to 1 then I expect to get
->>>>> an integer value and indeed in that case I see that the last 4 bits are always 0.
->>>>> If I set the weights to other than 1 I get the last 4 bits not only 0.
->>>>>
->>>>> The UAPI is generally not very good documented mainly because there is currently
->>>>> no open source userspace that uses it.
->>>>>
->>>>>>
->>>>>> Is this the only fractional type that is used in the rkisp1 uapi or are there
->>>>>> others? (Just checking).
->>>>>
->>>>> There are other places as well.
->>>>> I see that there are some values in rkisp1_cif_isp_lsc_config that are fractional
->>>>> and not documented.
->>>>> The two other fractional types in the uapi are already documented.
->>>>>
->>>>> I can add a patch that extends the documentation of all the fields in the uapi using the datasheet.
->>>>> But I think such a patch can be added after de-staging.
->>>>
->>>> You need to make changes anyway in the uAPI for 5.11 (including fixing the
->>>> bad u8 cast), so let's do this right.
->>>>
->>>> Regards,
->>>>
->>>> 	Hans
->>>
->>> So just to make sure I understood correctly, in addition to Heiko Stuebner's patchset.
->>> I should a add another patchset that includes:
->>>
->>> 1. changing the hist_bins type to __u32,
->>> 2. removing the u8 cast in rkisp1-stats.c
->>> 3. documenting all the fields in the uapi
->>
->> Well, documenting the fractional types at least. Or are you talking about other
->> fields as well?
->>
->>>
->>> I don't know what is the policy for fixes among the kernel management,
->>> I am worried that if we are too late or the changes are too big they might reject it.
->>
->> rc4 was released last weekend, so if it is possible to post these fixes today/tomorrow
->> then there is enough time. I'd like to post a PR for these and other fixes ideally no
->> later than Friday.
->>
->> The documentation patch can slip to 5.12 if really necessary, but I would prefer
->> to have that as part of the 5.11 fixes as well.
->>
->>>
->>> Also, documenting thoroughly can only be done if there is userspace app or at least unit tests
->>> that test each component since the datasheet lack some details as in this case.
->>
->> Do what you can. If some things need more time, then it is OK to postpone that
->> part to 5.12.
->>
->> Regards,
->>
->> 	Hans
-> 
-> Hi, so there is one issue in Heiko's patch, in 2/4 which changes the array size to 25,
-> the code in rkisp1-params.c should also change to iterate it only 25 times.
-> I talked to Heiko, and we said that I'll send a v7 of his patchset that includes in addition
-> to his patches my patches and also that fix to patch 2/4.
-> Is that fine or should we keep it in two separated patches?
 
-That's fine. Easier, actually.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Regards,
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml:39:7: [warning] wrong indentation: expected 4 but found 6 (indentation)
 
-	Hans
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: properties:interrupt: [{'description': 'system information'}, {'description': 'power management control'}, {'description': 'PCIe message'}, {'description': 'legacy interrupt'}, {'description': 'error report'}] is not of type 'object', 'boolean'
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: properties:compatible: Additional properties are not allowed ('item' was unexpected)
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: properties:compatible: 'item' is not one of ['$ref', 'additionalItems', 'additionalProperties', 'allOf', 'anyOf', 'const', 'contains', 'default', 'dependencies', 'deprecated', 'description', 'else', 'enum', 'exclusiveMaximum', 'exclusiveMinimum', 'items', 'if', 'minItems', 'minimum', 'maxItems', 'maximum', 'multipleOf', 'not', 'oneOf', 'pattern', 'patternProperties', 'properties', 'required', 'then', 'type', 'typeSize', 'unevaluatedProperties', 'uniqueItems']
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: properties:compatible: Additional properties are not allowed ('item' was unexpected)
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: ignoring, error in schema: properties: interrupt
+warning: no schema found in file: ./Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dts:19:18: fatal error: dt-bindings/clock/rk3568-cru.h: No such file or directory
+   19 |         #include <dt-bindings/clock/rk3568-cru.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:344: Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1370: dt_binding_check] Error 2
 
-> 
-> Thanks,
-> Dafna
-> 
->>
+See https://patchwork.ozlabs.org/patch/1429132
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
