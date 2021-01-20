@@ -1,63 +1,79 @@
-Return-Path: <SRS0=wbav=GW=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=q9XV=GX=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D63EC433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 21:29:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D723C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 01:45:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0641B22D08
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jan 2021 21:29:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0641B22D08
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id A68012245C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 01:45:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A68012245C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dxnnnbTekW+Ot3JDqJ3XhFy4lyU9Re40btUHxp/5fRk=; b=TTuyQ2FpNgmoc/ossaBYovxSR
-	I+fOymdgJqWOrzTM5Hgi3d07RxGEfnOG4sNf2uCDzeXjmAzvhYAU+NwxquZqVvJze+sHqIVLrurU/
-	GQajjS0uQcz3ZpKntHhtbvVrYB+Kw51xf/ugEOUHB4XQnhOivZ38h03A5c73m5beCCrZZAHGEHcmN
-	N7xXr5xweTgbWFQy1fpaqldEoFg23j1A4oNjU4AAbRltfReWtWJ5y60FHTAW9w4F9TSgeiZoG2lxN
-	XusvsklYK3RDbXAOnLzT0ox6twunPWxaF05GXEouTnPqMoGZ0HjsmCjyGhX7yajv95hdN4p0KPuWF
-	0RapQ45IA==;
+	 bh=AVHVstn8ObGaFW5ET/bXm+ddHCI6ejzDvEA+HTmSAkk=; b=xQwHn5M9hqvUjbF0UzL4d9ChU
+	yv84niQK4W5etz36X3OROiTH43kGY4kpkjzCDlMedGcJl0zc6MNwUbdqn51PXZjVTv/8D9zDSLed+
+	7bK613KUCVX0kQfgOJQ7EzAcMRWFP8KZyU1igzRJt8R6J6kOUzj4t0Opq/sLdycjMgzDNuLOSbkKm
+	TkV88SuNK4ptm/WytS6mxBNAmYl7QCKB6Ys6GNvtvSIj1w0upO/ftmAuXftZusPeXS+7pbA6LHHIf
+	sn2NFdwVMwWnYderGCWzOm+1wM5dxtOCnQ7dX/+ROcdrELBlClhmGEzF3i6XASDCnQ/a2UPAR8xvi
+	3ida14ryw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l1v5y-0001ev-Kz; Tue, 19 Jan 2021 17:47:10 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1l22YN-0008NK-4n; Wed, 20 Jan 2021 01:44:59 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l1v5v-0001eG-Ia
- for linux-rockchip@lists.infradead.org; Tue, 19 Jan 2021 17:47:08 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id BFCBB1F448ED
-Subject: Re: [PATCH] media: rkisp1: uapi: change hist_bins array type from
- __u16 to __u32
-To: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org,
- laurent.pinchart@ideasonboard.com, heiko@sntech.de
-References: <20210119145341.29686-1-dafna.hirschfeld@collabora.com>
- <a8f8d9e9-30b1-b594-a9bc-f4a11924bf56@xs4all.nl>
- <fbe57350-f319-dbc7-f093-d3c1c76feb89@collabora.com>
- <2e48068e-fcc4-9288-a9a6-59f71d7f20ce@xs4all.nl>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <65be169f-417f-a1f5-53e7-31f701a04d08@collabora.com>
-Date: Tue, 19 Jan 2021 18:47:01 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1l22YK-0008Mz-Ba
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 01:44:57 +0000
+Received: by mail-ot1-f45.google.com with SMTP id e70so6439053ote.11
+ for <linux-rockchip@lists.infradead.org>; Tue, 19 Jan 2021 17:44:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4zFLIX6YbpN5aLim6yrRCBFClVwkiMJYaqWYmkOOPrQ=;
+ b=gFDrkR7E0N6XzfVrqAWLaveYj6gZmMncuBqS9feQIfibZ9F07mflQS34gXkYUXezXv
+ UzL3u4f0rrUxvD0Fvp65v0TgsutMzQ8jTd2awtcAYXml8x4Zd4LsTj6zKhrDeiqnPhBQ
+ hard7R6755tOBK4YiaphTMMNrc013ZPuA48XiENGoas8ox74xD+jI6D+YsG2P0kQ3WlM
+ GecIaplB9zOiU+FB29mJAuhXJmx+1fNpX9YNdStNAUe6Eilo0Yl//uDXAfb1pdMmbyg4
+ D5JM5w+o0498Z2VlBmM33IIzQwpCwoSl77XG1Vk6YUK1fFkWOWFEJQf+nHHVyyNxM0KR
+ vCsg==
+X-Gm-Message-State: AOAM532AXJJSDHdyOyOMIo4DZGKljgvmggVhxshkTNRdQopyZUY+3EKW
+ ijW1cFE1XHnVGN5Jrx4kFA==
+X-Google-Smtp-Source: ABdhPJzNzLwDdCRWb7mfJZPjC5yXOTPWn6hRch00Trm6xqHb+giSCQZAzkcjk4lDkIWsGAcxhvOK9g==
+X-Received: by 2002:a9d:313:: with SMTP id 19mr5381524otv.147.1611107095736;
+ Tue, 19 Jan 2021 17:44:55 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id s24sm99037oij.20.2021.01.19.17.44.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Jan 2021 17:44:54 -0800 (PST)
+Received: (nullmailer pid 3016866 invoked by uid 1000);
+ Wed, 20 Jan 2021 01:44:53 -0000
+Date: Tue, 19 Jan 2021 19:44:53 -0600
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: powerpc: Add a schema for the 'sleep'
+ property
+Message-ID: <20210120014453.GA3706951@robh.at.kernel.org>
+References: <20201008142420.2083861-1-robh@kernel.org>
+ <752e9355-defb-6d3c-248b-f626247d4cee@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <2e48068e-fcc4-9288-a9a6-59f71d7f20ce@xs4all.nl>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <752e9355-defb-6d3c-248b-f626247d4cee@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210119_124707_708103_511E86C1 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20210119_204456_414852_AE183BAF 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,128 +86,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ linux-kernel@vger.kernel.org,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ linuxppc-dev@lists.ozlabs.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-Am 19.01.21 um 17:32 schrieb Hans Verkuil:
-> On 19/01/2021 16:32, Dafna Hirschfeld wrote:
->>
->>
->> Am 19.01.21 um 16:00 schrieb Hans Verkuil:
->>> On 19/01/2021 15:53, Dafna Hirschfeld wrote:
->>>> Each entry in the array is a 20 bits value composed of 16
->>>> bits unsigned integer and 4 bits fractional part. So the
->>>> type should change to __u32.
->>>>
->>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->>>> ---
->>>> This patch is applied on top of v6 of the patchset
->>>> "Fix the rkisp1 userspace API for later IP versions"
->>>>
->>>>    include/uapi/linux/rkisp1-config.h | 5 +++--
->>>>    1 file changed, 3 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
->>>> index 57ca3eea985f..47f6b84d7c56 100644
->>>> --- a/include/uapi/linux/rkisp1-config.h
->>>> +++ b/include/uapi/linux/rkisp1-config.h
->>>> @@ -895,7 +895,8 @@ struct rkisp1_cif_isp_af_stat {
->>>>    /**
->>>>     * struct rkisp1_cif_isp_hist_stat - statistics histogram data
->>>>     *
->>>> - * @hist_bins: measured bin counters
->>>> + * @hist_bins: measured bin counters. Each bin is a 20 bits value
->>>> + *	       composed of a 16-bit unsigned integer and 4 bits fractional part.
->>>
->>> So bits 0-3 are the fractional part and bits 4-19 contain the integer part?
->>> What goes where should be defined!
->>
->> Actually I don't know, I just copied the docs in the datasheet.
->> I can try figure it out. I can meanwhile send a patch without the doc until
->> we are sure. Is that OK?
+On Sun, Jan 17, 2021 at 05:10:03PM +0100, Johan Jonker wrote:
+> Hi Rob,
 > 
-> No, this should be documented properly.
-
-I see that indeed bits 0-3 are the fractional part.
-The measurements are taken over 25 sub-windows and it is possible to
-give a weight to each window. If I set all weights to 1 then I expect to get
-an integer value and indeed in that case I see that the last 4 bits are always 0.
-If I set the weights to other than 1 I get the last 4 bits not only 0.
-
-The UAPI is generally not very good documented mainly because there is currently
-no open source userspace that uses it.
-
+> This patch generates notifications in the Rockchip ARM and arm64 tree.
+> Could you limit the scope to PowerPC only.
 > 
-> Is this the only fractional type that is used in the rkisp1 uapi or are there
-> others? (Just checking).
+> Kind regards,
+> 
+> Johan Jonker
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
+> 
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
+> 
+> Example:
+> 
+> /arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dt.yaml: pinctrl:
+> sleep: {'ddrio-pwroff': {'rockchip,pins': [[0, 1, 1, 168]]},
+> 'ap-pwroff': {'rockchip,pins': [[1, 5, 1, 168]]}} is not of type 'array'
+> 	From schema: /Documentation/devicetree/bindings/powerpc/sleep.yaml
 
-There are other places as well.
-I see that there are some values in rkisp1_cif_isp_lsc_config that are fractional
-and not documented.
-The two other fractional types in the uapi are already documented.
+IMO, the node name should be changed or just removed. The grouping 
+doesn't serve any purpose and changing wouldn't break the ABI.
 
-I can add a patch that extends the documentation of all the fields in the uapi using the datasheet.
-But I think such a patch can be added after de-staging.
-
-Thanks,
-Dafna
-
-
-> 
->>
->>>
->>> Looking at rkisp1_stats_get_hst_meas() I see this:
->>>
->>>           for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX; i++)
->>>                   pbuf->params.hist.hist_bins[i] =
->>>                           (u8)rkisp1_read(rkisp1,
->>>                                           RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
->>>
->>> Here this is cast to a u8, so how does this work?
->>
->> This seems to be a bug. I see that this cast is introduced in v12 of the patch
->> "media: staging: rkisp1: add capture device for statistics".
->> This cast does not exist in any of the downstream versions.
-> 
-> Clearly something that needs to be fixed as well.
-> 
-> Regards,
-> 
-> 	Hans
-> 
->>
->> Thanks,
->> Dafna
->>
->>>
->>> There is something fishy here...
->>>
->>> Regards,
->>>
->>> 	Hans
->>>
->>>>     *
->>>>     * The histogram values divided into 16 bins for V10/V11 and 32 bins
->>>>     * for V12/V13. It is configured within the struct rkisp1_cif_isp_hst_config.
->>>> @@ -909,7 +910,7 @@ struct rkisp1_cif_isp_af_stat {
->>>>     * RKISP1_CIF_ISP_HIST_BIN_N_MAX is equal to the maximum of the two.
->>>>     */
->>>>    struct rkisp1_cif_isp_hist_stat {
->>>> -	__u16 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
->>>> +	__u32 hist_bins[RKISP1_CIF_ISP_HIST_BIN_N_MAX];
->>>>    };
->>>>    
->>>>    /**
->>>>
->>>
-> 
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
