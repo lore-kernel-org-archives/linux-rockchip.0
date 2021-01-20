@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51C20C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BFAFC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:17:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A61A02332B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:16:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A61A02332B
+	by mail.kernel.org (Postfix) with ESMTPS id 00FD223331
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 10:17:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00FD223331
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,22 +23,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1kVL8d2AL2gjv4lZBoPbBfoYpNxHmUjzcpwA6coxm4g=; b=uDX1giPda9Oc63kElU1cwWJ3Lb
-	O+srlBSJ3JKWjo1epppVUp3WbaU4mJEUYJh1aAV7xiXUUGhBwF1g/I12c7d0eok311/4HJW6wuKT4
-	EFXbvryP6UsM8uOmKVf/LapmWeKcpeuFNiF0vaDo1lIG/Pks4czO/eOiZH++g50rSghoQzGjZQcda
-	6h/AwJOgTCVdCd21vyW/bfuW57fpxMTDIQgKEkvbOzHitN/3tSR97L3om0ybKwre1fymMBixcpijF
-	lr88rXdBqSXoGLuQIuWZCeLMuO3g9/3XiiGKS08B/FtGRQKYCQExFOgf9pcq1IAYi0qG7+wtRpGX/
-	pj/YVdow==;
+	bh=1kVL8d2AL2gjv4lZBoPbBfoYpNxHmUjzcpwA6coxm4g=; b=Fd0eDJfXYW+0nTXLshPZFm0SMG
+	ZRALhp+jSbWGXS8W89q0zNJ708cTYHtVHX3FV6hd0gG/gJclH6DPKVbiTb2+4xwYZlNPndUIiSHwj
+	TbQn6yeYD5DwfAvX6jue3rJR82b2PMYsAN6k3ZD4EV0GUZeo0mGD/da9YtT3iY4kzaYipbMOMWBNE
+	wLr7BR68NqQU87Ii0xeH8M2tI0EjhT+v6Os9Sdn6x/2E4jqq1zsloxltI198CyzGBMiOUP/Cq0T6r
+	r0DqN6QUg5KNHPxr2YNGyFZuJsehV4GIJANkTOpSVDM+qTkc2VFKzT+HphPLKoJ5c86x16hDOAxNf
+	aXUQV3Xw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2AX4-000814-49; Wed, 20 Jan 2021 10:16:10 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1l2AY8-00087v-4D; Wed, 20 Jan 2021 10:17:16 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2AWz-0007zX-36
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 10:16:08 +0000
-Received: from localhost (unknown [192.168.167.69])
- by lucky1.263xmail.com (Postfix) with ESMTP id 59422B6C5A;
- Wed, 20 Jan 2021 18:15:59 +0800 (CST)
+ id 1l2AY3-00086f-8s
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 10:17:13 +0000
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id CA553EFECA;
+ Wed, 20 Jan 2021 18:17:05 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,10 +46,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from xxm-vm.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P19895T139772813092608S1611137755735916_; 
- Wed, 20 Jan 2021 18:15:58 +0800 (CST)
+ P24739T140081880880896S1611137823657337_; 
+ Wed, 20 Jan 2021 18:17:06 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <3093c1207baea7857c786500d30da240>
+X-UNIQUE-TAG: <6437ee0df936cb16e67f5d472d753823>
 X-RL-SENDER: xxm@rock-chips.com
 X-SENDER: xxm@rock-chips.com
 X-LOGIN-NAME: xxm@rock-chips.com
@@ -62,13 +62,13 @@ To: Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Subject: [PATCH v2 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
  controller
-Date: Wed, 20 Jan 2021 18:15:53 +0800
-Message-Id: <20210120101554.241029-1-xxm@rock-chips.com>
+Date: Wed, 20 Jan 2021 18:16:57 +0800
+Message-Id: <20210120101658.241134-1-xxm@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_051605_656432_C1CBDF4E 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20210120_051712_519477_A4615F33 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,9 +81,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Simon Xue <xxm@rock-chips.com>,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>
+Cc: linux-pci@vger.kernel.org, Simon Xue <xxm@rock-chips.com>,
+ linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
