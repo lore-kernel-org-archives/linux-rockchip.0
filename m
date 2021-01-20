@@ -2,78 +2,65 @@ Return-Path: <SRS0=q9XV=GX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2402C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 14:55:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E26C9C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 16:20:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E8D323380
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 14:55:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E8D323380
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 99C94233E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 16:20:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99C94233E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OGwAGLcaKH5VYkz5hy5GxDZ07nYV1afGMllQ2ASheSo=; b=OPPttuNSvPUbyLMX3/QxXe0go
-	pAOepoeCwM1qGrYzxeJvQou+ZfXlyomOnkXUQeSz/qbNyTOSoQeKK185poqVRIlp7y9drL/K9EZlj
-	kkoBr0rlpUlypEV8RzLrNkTj/ymiba9VZdVtDnHcS7ELJg02/TuW8i0y2TRu1t2oZ0Bixu6ZygJRU
-	hxgLwXkhvQw4vAc64UwSZRsYg13irlpYlMzoVhN7b0/59cpFJx28BTc6Tf7pWXamyoM04tqzLX9Eb
-	LDsggy6jIkpwb3YIud2EPIv5XRyBiu0f1V50brpMFP3npDjaeVOGduKCZlZA3nKi8rA068GSEGTEJ
-	slh2H6cOA==;
+	 bh=5FR/6jS6kL5eItYGGz7HIsbdCFpvmXWN0whXA22IAeA=; b=Ym8nBapkveIpc4z/txs21Hviy
+	qEbEr6kArfiLswJpBIY+Y4YfmG2ADi8ivttvhHpArjDY5lpHFZc6dKMCu7rvEPfQDJ9jlflp254mS
+	BrkBCqdvujogAMKhAJyC6OXowdwAt98gRR0pSqhAhKCu8ibBdxmEHzW6WSnhklwfd2FLbaFAJMBb5
+	RHCkTCmWWmtriU8ywGerLk3sBEDXTTGZIEh+QDDwEE++7KXHIIkMteN8H2eti3nS60aSqVTpsd7zA
+	kTMBdlIZt3MsjNh6GRD/s3k8dFsM+tzFQ4lzgtlLcIB1cuw3BDMw0QdQq+D/G96VWr1E8wjLXtT4i
+	0HWIsdb1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2EtG-0001cP-Vd; Wed, 20 Jan 2021 14:55:23 +0000
-Received: from mail-oi1-f175.google.com ([209.85.167.175])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2EtD-0001bt-N4
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 14:55:21 +0000
-Received: by mail-oi1-f175.google.com with SMTP id n186so17375824oia.5
- for <linux-rockchip@lists.infradead.org>; Wed, 20 Jan 2021 06:55:19 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Z3w9bZQj7LTCc9vb1SGK6EEOr7K22d7hkMd7EnUsJt4=;
- b=D2Y3IAjpq8FYOVElG3FbY/iOQCvCT5B3QNSQas7kgzvodaVwgMmxT9/ve+0BmcX9/8
- /PYyccGSc1wcbu63IJhtmYDVbLWTpmGf4ls7049KexR7jEy6cL4fCX6sWPBG9cBrcAYf
- k7t6LTh7VOOHk1J4U7s/HCjfM0oFF/ezbh4JijYWF/sx5o82/c7Vj/g3pFlI+eqLJ9Cn
- J89Z1CdhSm3yjo2n5c9EYTtpPNfm0BpNBrViyvtia/qWT+qS44X4jECm/Hf04qkTNJ9S
- 05SdE5C/rS7q8sZbyR0sYYL3OHNXEnDUUu0hMN8op2HPUJzZvmS8yNzKgx6DwpZCzAqN
- 3TZw==
-X-Gm-Message-State: AOAM531W/8vZqjxavwSJxdMEvyZaLGeqQE6yOjv6QegnqYjdaXZPQrwg
- 8NGPdBFjixuLRBR9zgLtWhOHdw5l+Q==
-X-Google-Smtp-Source: ABdhPJx42AuvxlHJOJuqN6TMCcWgDvFTNCgyCHrT9wXcGcGK2Cng6+6EmI3lITqlTEQdZvXkNrOMjA==
-X-Received: by 2002:aca:add7:: with SMTP id w206mr3153725oie.86.1611154518358; 
- Wed, 20 Jan 2021 06:55:18 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id o16sm423518ote.79.2021.01.20.06.55.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Jan 2021 06:55:16 -0800 (PST)
-Received: (nullmailer pid 115798 invoked by uid 1000);
- Wed, 20 Jan 2021 14:55:15 -0000
-Date: Wed, 20 Jan 2021 08:55:15 -0600
-From: Rob Herring <robh@kernel.org>
-To: Simon Xue <xxm@rock-chips.com>
-Subject: Re: [PATCH v2 2/2] PCI: rockchip: add DesignWare based PCIe controller
-Message-ID: <20210120145515.GA66756@robh.at.kernel.org>
-References: <20210120101658.241134-1-xxm@rock-chips.com>
- <20210120101658.241134-2-xxm@rock-chips.com>
+	id 1l2GDK-0007NC-I7; Wed, 20 Jan 2021 16:20:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l2GDH-0007MH-Lk
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 16:20:09 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9822731B;
+ Wed, 20 Jan 2021 08:20:06 -0800 (PST)
+Received: from [10.57.39.58] (unknown [10.57.39.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DC27D3F68F;
+ Wed, 20 Jan 2021 08:20:04 -0800 (PST)
+Subject: Re: [PATCH 2/3] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>
+References: <20210118091739.247040-1-xxm@rock-chips.com>
+ <c9ff67c7-ca1d-d4a6-aef5-4c75688ed6d3@arm.com>
+ <CAL_JsqK=roMm7vb=WAcLUsiru5qwFg=Sc_po1gD8oJu=JipZbg@mail.gmail.com>
+ <3792680.3daJWjYHZt@diego>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <0f83d344-c257-a576-ed38-8f9299047f73@arm.com>
+Date: Wed, 20 Jan 2021 16:20:03 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210120101658.241134-2-xxm@rock-chips.com>
+In-Reply-To: <3792680.3daJWjYHZt@diego>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_095519_808347_DFB3A370 
-X-CRM114-Status: GOOD (  36.65  )
+X-CRM114-CacheID: sfid-20210120_112007_944450_6E6F0FCB 
+X-CRM114-Status: GOOD (  25.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,553 +73,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree <devicetree@vger.kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Simon Xue <xxm@rock-chips.com>,
+ PCI <linux-pci@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 20, 2021 at 06:16:58PM +0800, Simon Xue wrote:
-> pcie-dw-rockchip is based on DWC IP. But pcie-rockchip-host
-> is another IP which is only used for RK3399. So all the following
-
-s/another/Cadence/
-
-There's been a lot of reworking of the DWC drivers. You need to update 
-this based on that. Details inline.
-
-
-> non-RK3399 SoCs should use this driver.
-> 
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
->  drivers/pci/controller/Kconfig                |   4 +-
->  drivers/pci/controller/dwc/Kconfig            |   9 +
->  drivers/pci/controller/dwc/Makefile           |   1 +
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 370 ++++++++++++++++++
->  4 files changed, 382 insertions(+), 2 deletions(-)
->  create mode 100644 drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> 
-> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-> index 64e2f5e379aa..48a7d62f97f3 100644
-> --- a/drivers/pci/controller/Kconfig
-> +++ b/drivers/pci/controller/Kconfig
-> @@ -219,7 +219,7 @@ config PCIE_ROCKCHIP_HOST
->  	help
->  	  Say Y here if you want internal PCI support on Rockchip SoC.
->  	  There is 1 internal PCIe port available to support GEN2 with
-> -	  4 slots.
-> +	  4 slots. Only for RK3399.
->  
->  config PCIE_ROCKCHIP_EP
->  	bool "Rockchip PCIe endpoint controller"
-> @@ -231,7 +231,7 @@ config PCIE_ROCKCHIP_EP
->  	help
->  	  Say Y here if you want to support Rockchip PCIe controller in
->  	  endpoint mode on Rockchip SoC. There is 1 internal PCIe port
-> -	  available to support GEN2 with 4 slots.
-> +	  available to support GEN2 with 4 slots. Only for RK3399.
-
-I would make these changes a separate patch. I have a pending patch to 
-move this driver to the Cadence directory.
-
->  
->  config PCIE_MEDIATEK
->  	tristate "MediaTek PCIe controller"
-> diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
-> index 22c5529e9a65..110733d0c241 100644
-> --- a/drivers/pci/controller/dwc/Kconfig
-> +++ b/drivers/pci/controller/dwc/Kconfig
-> @@ -214,6 +214,15 @@ config PCIE_ARTPEC6_EP
->  	  Enables support for the PCIe controller in the ARTPEC-6 SoC to work in
->  	  endpoint mode. This uses the DesignWare core.
->  
-> +config PCIE_DW_ROCKCHIP_HOST
-
-PCIE_ROCKCHIP_DW_HOST to be more inline with other DWC config options.
-
-> +	bool "Rockchip DesignWare PCIe controller"
-> +	select PCIE_DW
-> +	select PCIE_DW_HOST
-> +	depends on ARCH_ROCKCHIP
-
-|| COMPILE_TEST
-
-> +	depends on OF
-> +	help
-> +	  Enables support for the DW PCIe controller in the Rockchip SoC.
-> +
->  config PCIE_INTEL_GW
->  	bool "Intel Gateway PCIe host controller support"
->  	depends on OF && (X86 || COMPILE_TEST)
-> diff --git a/drivers/pci/controller/dwc/Makefile b/drivers/pci/controller/dwc/Makefile
-> index a751553fa0db..9c7048d2be17 100644
-> --- a/drivers/pci/controller/dwc/Makefile
-> +++ b/drivers/pci/controller/dwc/Makefile
-> @@ -13,6 +13,7 @@ obj-$(CONFIG_PCI_LAYERSCAPE_EP) += pci-layerscape-ep.o
->  obj-$(CONFIG_PCIE_QCOM) += pcie-qcom.o
->  obj-$(CONFIG_PCIE_ARMADA_8K) += pcie-armada8k.o
->  obj-$(CONFIG_PCIE_ARTPEC6) += pcie-artpec6.o
-> +obj-$(CONFIG_PCIE_DW_ROCKCHIP_HOST) += pcie-dw-rockchip.o
->  obj-$(CONFIG_PCIE_INTEL_GW) += pcie-intel-gw.o
->  obj-$(CONFIG_PCIE_KIRIN) += pcie-kirin.o
->  obj-$(CONFIG_PCIE_HISI_STB) += pcie-histb.o
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> new file mode 100644
-> index 000000000000..e41cd6041c3f
-> --- /dev/null
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -0,0 +1,370 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * PCIe host controller driver for Rockchip SoCs
-> + *
-> + * Copyright (C) 2021 Rockchip Electronics Co., Ltd.
-> + *		http://www.rock-chips.com
-> + *
-> + * Author: Simon Xue <xxm@rock-chips.com>
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
-> +
-> +#include "pcie-designware.h"
-> +
-> +/*
-> + * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
-> + * mask for the lower 16 bits.  This allows atomic updates
-> + * of the register without locking.
-> + */
-> +#define HIWORD_UPDATE(mask, val) (((mask) << 16) | (val))
-> +#define HIWORD_UPDATE_BIT(val)	HIWORD_UPDATE(val, val)
-> +
-> +#define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
-> +
-> +#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
-> +#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
-> +#define PCIE_SMLH_LINKUP		BIT(16)
-> +#define PCIE_RDLH_LINKUP		BIT(17)
-> +#define PCIE_L0S_ENTRY			0x11
-> +#define PCIE_CLIENT_GENERAL_CONTROL	0x0
-> +#define PCIE_CLIENT_GENERAL_DEBUG	0x104
-> +#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
-> +#define PCIE_CLIENT_LTSSM_STATUS	0x300
-> +#define PCIE_CLIENT_DBG_FIFO_MODE_CON	0x310
-> +#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0 0x320
-> +#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1 0x324
-> +#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0 0x328
-> +#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1 0x32c
-> +#define PCIE_CLIENT_DBG_FIFO_STATUS	0x350
-> +#define PCIE_CLIENT_DBG_TRANSITION_DATA	0xffff0000
-> +#define PCIE_CLIENT_DBF_EN		0xffff0003
-> +#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
-> +
-> +struct rockchip_pcie {
-> +	struct dw_pcie			*pci;
-
-Make this a struct, not a pointer. Then 1 alloc instead of 2.
-
-> +	void __iomem			*apb_base;
-> +	struct phy			*phy;
-> +	struct clk_bulk_data		*clks;
-> +	unsigned int			clk_cnt;
-> +	struct reset_control		*rst;
-> +	struct gpio_desc		*rst_gpio;
-> +	struct pcie_port		pp;
-
-Move this up to 2nd element.
-
-> +	struct regulator                *vpcie3v3;
-> +};
-> +
-> +static inline int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
-> +					  u32 reg)
-
-You can drop inline on all of these. The compiler does that anyways with 
-static functions.
-
-> +{
-> +	return readl(rockchip->apb_base + reg);
-> +}
-> +
-> +static inline void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
-> +					    u32 reg, u32 val)
-
-Use the same order as writel. val then reg.
-
-> +{
-> +	writel(val, rockchip->apb_base + reg);
-> +}
-> +
-> +static inline void rockchip_pcie_set_mode(struct rockchip_pcie *rockchip)
-
-Set what mode? Just drop this wrapper. The register access tells me more 
-than the function name does.
-
-> +{
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_GENERAL_CONTROL,
-> +				 PCIE_CLIENT_RC_MODE);
-> +}
-> +
-> +static inline void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
-> +{
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_GENERAL_CONTROL,
-> +				 PCIE_CLIENT_ENABLE_LTSSM);
-> +}
-> +
-> +static int rockchip_pcie_link_up(struct dw_pcie *pci)
-> +{
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	u32 val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
-> +
-> +	if ((val & (PCIE_RDLH_LINKUP | PCIE_SMLH_LINKUP)) == 0x30000 &&
-> +	    (val & GENMASK(5, 0)) == PCIE_L0S_ENTRY)
-> +		return 1;
-
-Just to confirm, the PORT_LOGIC registers for this don't work?
-
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_pcie_establish_link(struct dw_pcie *pci)
-
-s/establish/start/
-
-> +{
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +
-> +	if (dw_pcie_link_up(pci)) {
-
-The DWC core does this for you now.
-
-> +		dev_err(pci->dev, "link already up\n");
-> +		return;
-> +	}
-> +
-> +	/* Reset device */
-> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
-> +	msleep(100);
-> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
-> +
-> +	rockchip_pcie_enable_ltssm(rockchip);
-> +}
-> +
-> +static void rockchip_pcie_enable_debug(struct rockchip_pcie *rockchip)
-> +{
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0,
-> +				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1,
-> +				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0,
-> +				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1,
-> +				 PCIE_CLIENT_DBG_TRANSITION_DATA);
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_DBG_FIFO_MODE_CON,
-> +				 PCIE_CLIENT_DBF_EN);
-> +}
-> +
-> +static void rockchip_pcie_debug_dump(struct rockchip_pcie *rockchip)
-> +{
-> +	u32 loop;
-> +	struct dw_pcie *pci = rockchip->pci;
-> +
-> +	dev_dbg(pci->dev, "ltssm = 0x%x\n",
-> +		rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS));
-> +	for (loop = 0; loop < 64; loop++)
-> +		dev_dbg(pci->dev, "fifo_status = 0x%x\n",
-> +			rockchip_pcie_readl_apb(rockchip,
-> +						PCIE_CLIENT_DBG_FIFO_STATUS));
-> +}
-
-Please document what this debug stuff does. I tend to think it should be 
-removed.
-
-> +
-> +static int rockchip_pcie_host_init(struct pcie_port *pp)
-> +{
-> +	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
-> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +
-> +	dw_pcie_setup_rc(pp);
-
-The DWC core does this now after host_init.
-
-> +
-> +	rockchip_pcie_enable_debug(rockchip);
-> +
-> +	rockchip_pcie_establish_link(pci);
-> +	dw_pcie_wait_for_link(pci);
-
-The DWC core does link handling now.
-
-> +
-> +	rockchip_pcie_debug_dump(rockchip);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
-> +	.host_init = rockchip_pcie_host_init,
-> +};
-> +
-> +static int rockchip_add_pcie_port(struct rockchip_pcie *rockchip)
-
-Remove this wrapper and move to probe.
-
-> +{
-> +	int ret;
-> +	struct dw_pcie *pci = rockchip->pci;
-> +	struct pcie_port *pp = &pci->pp;
-> +
-> +	pp->ops = &rockchip_pcie_host_ops;
-> +
-> +	rockchip_pcie_set_mode(rockchip);
-> +
-> +	ret = dw_pcie_host_init(pp);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_pcie_clk_deinit(struct rockchip_pcie *rockchip)
-> +{
-
-Another pointless wrapper.
-
-> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
-> +}
-> +
-> +static int rockchip_pcie_clk_init(struct rockchip_pcie *rockchip)
-> +{
-> +	struct device *dev = rockchip->pci->dev;
-> +	int ret;
-> +
-> +	ret = devm_clk_bulk_get_all(dev, &rockchip->clks);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	rockchip->clk_cnt = ret;
-> +
-> +	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pcie_resource_get(struct platform_device *pdev,
-> +				      struct rockchip_pcie *rockchip)
-> +{
-> +	struct dw_pcie *pci = rockchip->pci;
-> +
-> +	pci->dbi_base = devm_platform_ioremap_resource_byname(pdev, "pcie-dbi");
-
-The established name is 'dbi' and the DWC core handles it for you.
-
-> +	if (IS_ERR(pci->dbi_base))
-> +		return PTR_ERR(pci->dbi_base);
-> +
-> +	rockchip->apb_base = devm_platform_ioremap_resource_byname(pdev,
-> +								   "pcie-apb");
-
-Just 'apb' for the name.
-
-> +	if (IS_ERR(rockchip->apb_base))
-> +		return PTR_ERR(rockchip->apb_base);
-> +
-> +	rockchip->rst_gpio = devm_gpiod_get_optional(&pdev->dev, "reset",
-> +						     GPIOD_OUT_HIGH);
-> +	if (IS_ERR(rockchip->rst_gpio))
-> +		return PTR_ERR(rockchip->rst_gpio);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
-> +{
-> +	int ret;
-> +	struct device *dev = rockchip->pci->dev;
-> +
-> +	rockchip->phy = devm_phy_get(dev, "pcie-phy");
-> +	if (IS_ERR(rockchip->phy))
-> +		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
-> +				     "missing phy\n");
-> +
-> +	ret = phy_init(rockchip->phy);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	phy_power_on(rockchip->phy);
-> +
-> +	return 0;
-> +}
-> +
-> +static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
-> +{
-> +	phy_exit(rockchip->phy);
-> +	phy_power_off(rockchip->phy);
-> +}
-> +
-> +static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
-> +{
-> +	struct device *dev = rockchip->pci->dev;
-> +	int ret;
-> +
-> +	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
-> +	if (IS_ERR(rockchip->rst))
-> +		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
-> +				     "failed to get reset lines\n");
-> +
-> +	ret = reset_control_deassert(rockchip->rst);
-> +
-> +	return ret;
-> +}
-> +
-> +static void rockchip_pcie_fast_link_setup(struct rockchip_pcie *rockchip)
-> +{
-> +	u32 val;
-> +
-> +	/* LTSSM EN ctrl mode */
-> +	val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL);
-> +	val |= PCIE_LTSSM_ENABLE_ENHANCE | (PCIE_LTSSM_ENABLE_ENHANCE << 16);
-> +	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL, val);
-> +}
-> +
-> +static const struct of_device_id rockchip_pcie_of_match[] = {
-> +	{ .compatible = "rockchip,rk3568-pcie", },
-> +	{ /* sentinel */ },
-> +};
-
-Move this next to MODULE_DEVICE_TABLE.
-
-> +
-> +static const struct dw_pcie_ops dw_pcie_ops = {
-> +	.link_up = rockchip_pcie_link_up,
-> +};
-> +
-> +static int rockchip_pcie_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct rockchip_pcie *rockchip;
-> +	struct dw_pcie *pci;
-> +	int ret;
-> +
-> +	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
-> +	if (!rockchip)
-> +		return -ENOMEM;
-> +
-> +	pci = devm_kzalloc(dev, sizeof(*pci), GFP_KERNEL);
-> +	if (!pci)
-> +		return -ENOMEM;
-> +
-> +	pci->dev = dev;
-> +	pci->ops = &dw_pcie_ops;
-> +
-> +	rockchip->pci = pci;
-> +
-> +	ret = rockchip_pcie_resource_get(pdev, rockchip);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* DON'T MOVE ME: must be enable before phy init */
-> +	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
-> +	if (IS_ERR(rockchip->vpcie3v3)) {
-> +		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
-
-I think that cannot happen since it is optional.
-
-> +			return PTR_ERR(rockchip->vpcie3v3);
-
-Use dev_err_probe()
-
-> +		dev_info(dev, "no vpcie3v3 regulator found\n");
-
-So? It's optional.
-
-> +	}
-> +
-> +	if (!IS_ERR(rockchip->vpcie3v3)) {
-
-You shouldn't need this check.
-
-> +		ret = regulator_enable(rockchip->vpcie3v3);
-> +		if (ret) {
-> +			dev_err(pci->dev, "fail to enable vpcie3v3 regulator\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	ret = rockchip_pcie_phy_init(rockchip);
-> +	if (ret)
-> +		goto disable_regulator;
-> +
-> +	ret = rockchip_pcie_reset_control_release(rockchip);
-> +	if (ret)
-> +		goto deinit_phy;
-> +
-> +	ret = rockchip_pcie_clk_init(rockchip);
-> +	if (ret)
-> +		goto deinit_phy;
-> +
-> +	rockchip_pcie_fast_link_setup(rockchip);
-> +
-> +	platform_set_drvdata(pdev, rockchip);
-
-Move this up next to 'rockchip' alloc.
-
-> +
-> +	ret = rockchip_add_pcie_port(rockchip);
-> +	if (ret)
-> +		goto deinit_clk;
-> +
-> +	return 0;
-> +
-> +deinit_clk:
-> +	rockchip_pcie_clk_deinit(rockchip);
-> +deinit_phy:
-> +	rockchip_pcie_phy_deinit(rockchip);
-> +disable_regulator:
-> +	if (!IS_ERR(rockchip->vpcie3v3))
-
-Shouldn't need this check.
-
-> +		regulator_disable(rockchip->vpcie3v3);
-> +
-> +	return ret;
-> +}
-> +
-> +MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
-> +
-> +static struct platform_driver rockchip_pcie_driver = {
-> +	.driver = {
-> +		.name	= "rk-pcie",
-> +		.of_match_table = rockchip_pcie_of_match,
-> +		.suppress_bind_attrs = true,
-> +	},
-> +	.probe = rockchip_pcie_probe,
-> +};
-> +
-> +builtin_platform_driver(rockchip_pcie_driver);
-> -- 
-> 2.25.1
-> 
-> 
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyMS0wMS0yMCAxNDo1NCwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gQW0gTWl0dHdvY2gs
+IDIwLiBKYW51YXIgMjAyMSwgMTU6MTY6MjUgQ0VUIHNjaHJpZWIgUm9iIEhlcnJpbmc6Cj4+IE9u
+IFR1ZSwgSmFuIDE5LCAyMDIxIGF0IDEyOjQwIFBNIFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5
+QGFybS5jb20+IHdyb3RlOgo+Pj4KPj4+IE9uIDIwMjEtMDEtMTkgMTU6MTEsIEpvaGFuIEpvbmtl
+ciB3cm90ZToKPj4+PiBIaSBTaW1vbiwgSGVpa28sCj4+Pj4KPj4+PiBPbiAxLzE5LzIxIDI6MTQg
+UE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+Pj4+PiBIaSBKb2hhbiwKPj4+Pj4KPj4+Pj4gQW0g
+RGllbnN0YWcsIDE5LiBKYW51YXIgMjAyMSwgMTQ6MDc6NDEgQ0VUIHNjaHJpZWIgSm9oYW4gSm9u
+a2VyOgo+Pj4+Pj4gSGkgU2ltb24sCj4+Pj4+Pgo+Pj4+Pj4gVGhhbmsgeW91IGZvciB0aGlzIHBh
+dGNoIGZvciByazM1NjggcGNpZS4KPj4+Pj4+Cj4+Pj4+PiBJbmNsdWRlIHRoZSBSb2NrY2hpcCBk
+ZXZpY2UgdHJlZSBtYWludGFpbmVyIGFuZCBhbGwgb3RoZXIgcGVvcGxlL2xpc3RzCj4+Pj4+PiB0
+byB0aGUgQ0MgbGlzdC4KPj4+Pj4+Cj4+Pj4+PiAuL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLXN0
+cmljdCA8cGF0Y2gxPiA8cGF0Y2gyPgo+Pj4+Pj4KPj4+Pj4+ICAgIC4vc2NyaXB0cy9nZXRfbWFp
+bnRhaW5lci5wbCAtLW5vcm9sZXMgLS1ub3JvbGVzdGF0cyAtLW5vZ2l0LWZhbGxiYWNrCj4+Pj4+
+PiAtLW5vZ2l0IDxwYXRjaDE+IDxwYXRjaDI+Cj4+Pj4+Pgo+Pj4+Pj4gZ2l0IHNlbmQtZW1haWwg
+LS1zdXBwcmVzcy1jYyBhbGwgLS1kcnktcnVuIC0tYW5ub3RhdGUgLS10bwo+Pj4+Pj4gaGVpa29A
+c250ZWNoLmRlIC0tY2MgPC4uPiA8cGF0Y2gxPiA8cGF0Y2gyPgo+Pj4+Pj4KPj4+Pj4+IFRoaXMg
+U29DIGhhcyBubyBzdXBwb3J0IGluIG1haW5saW5lIGxpbnV4IGtlcm5lbCB5ZXQuCj4+Pj4+PiBJ
+biBhbGwgdGhlIGZvbGxvd2luZyB5YW1sIGRvY3VtZW50cyBmb3IgcmszNTY4IHdlIG5lZWQgaGVh
+ZGVycyB3aXRoCj4+Pj4+PiBkZWZpbmVzIGZvciBjbG9ja3MgYW5kIHBvd2VyIGRvbWFpbnMsIGV0
+Yy4KPj4+Pj4+Cj4+Pj4+PiBGb3IgZXhhbXBsZToKPj4+Pj4+ICNpbmNsdWRlIDxkdC1iaW5kaW5n
+cy9jbG9jay9yazM1NjgtY3J1Lmg+Cj4+Pj4+PiAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcG93ZXIv
+cmszNTY4LXBvd2VyLmg+Cj4+Pj4+Pgo+Pj4+Pj4gQ291bGQgUm9ja2NoaXAgc3VibWl0IGZpcnN0
+IGNsb2NrcyBhbmQgcG93ZXIgZHJpdmVycyBlbnRyaWVzIGFuZCBhIGJhc2ljCj4+Pj4+PiByazM1
+NjguZHRzaSArIGV2YiBkdHM/Cj4+Pj4+PiBJbmNsdWRlIGEgcGF0Y2ggdG8gdGhpcyBzZXJpZSB3
+aXRoIDMgcGNpZSBub2RlcyBhZGRlZCB0byByazM1NjguZHRzaS4KPj4+Pj4+Cj4+Pj4+PiBBIGR0
+YnNfY2hlY2sgb25seSB3b3JrcyB3aXRoIGEgY29tcGxldGUgZHRzaSBhbmQgZXZiIGR0cy4KPj4+
+Pj4+Cj4+Pj4+PiBtYWtlIEFSQ0g9YXJtNjQgZHRic19jaGVjawo+Pj4+Pj4gRFRfU0NIRU1BX0ZJ
+TEVTPURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wY2kvcm9ja2NoaXAtZHctcGNp
+ZS55YW1sCj4+Pj4+Pgo+Pj4+Pj4gT24gMS8xOC8yMSAxMDoxNyBBTSwgU2ltb24gWHVlIHdyb3Rl
+Ogo+Pj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFNpbW9uIFh1ZSA8eHhtQHJvY2stY2hpcHMuY29tPgo+
+Pj4+Pj4+IC0tLQo+Pj4+Pj4+ICAgIC4uLi9iaW5kaW5ncy9wY2kvcm9ja2NoaXAtZHctcGNpZS55
+YW1sICAgICAgICB8IDEwMSArKysrKysrKysrKysrKysrKysKPj4+Pj4+PiAgICAxIGZpbGUgY2hh
+bmdlZCwgMTAxIGluc2VydGlvbnMoKykKPj4+Pj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BjaS9yb2NrY2hpcC1kdy1wY2llLnlhbWwK
+Pj4+Pj4+Pgo+Pj4+Pj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvcGNpL3JvY2tjaGlwLWR3LXBjaWUueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9wY2kvcm9ja2NoaXAtZHctcGNpZS55YW1sCj4+Pj4+Pj4gbmV3IGZpbGUgbW9k
+ZSAxMDA2NDQKPj4+Pj4+PiBpbmRleCAwMDAwMDAwMDAwMDAuLmZhNjY0Y2ZmZmIyOQo+Pj4+Pj4+
+IC0tLSAvZGV2L251bGwKPj4+Pj4+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvcGNpL3JvY2tjaGlwLWR3LXBjaWUueWFtbAo+Pj4+Pj4+IEBAIC0wLDAgKzEsMTAxIEBA
+Cj4+Pj4+Pj4gKyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wIE9SIEJTRC0yLUNs
+YXVzZSkKPj4+Pj4+PiArJVlBTUwgMS4yCj4+Pj4+Pj4gKy0tLQo+Pj4+Pj4+ICskaWQ6IGh0dHA6
+Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL3BjaS9yb2NrY2hpcC1kdy1wY2llLnlhbWwjCj4+Pj4+
+Pj4gKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1s
+Iwo+Pj4+Pj4+ICsKPj4+Pj4+PiArdGl0bGU6IERlc2lnbldhcmUgYmFzZWQgUENJZSBSQyBjb250
+cm9sbGVyIG9uIFJvY2tjaGlwIFNvQ3MKPj4+Pj4+PiArCj4+Pj4+Pgo+Pj4+Pj4+ICttYWludGFp
+bmVyczoKPj4+Pj4+PiArICAtIFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+
+Pj4+Pj4+ICsgIC0gU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5jb20+Cj4+Pj4+Pgo+Pj4+Pj4g
+bWFpbnRhaW5lcnM6Cj4+Pj4+PiAgICAgLSBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRl
+Pgo+Pj4+Pj4KPj4+Pj4+IEFkZCBvbmx5IHBlb3BsZSB3aXRoIG1haW50YWluZXIgcmlnaHRzLgo+
+Pj4+Pgo+Pj4+PiBJJ2QgZGlzYWdyZWUgb24gdGhpcyA7LSkKPj4+Pgo+Pj4+IEFsbCByb2FkcyBs
+ZWFkcyB0byBIZWlrby4uLiA7KQo+Pj4+Cj4+Pj4gSXQgdGFrZXMgbG9uZyB0ZXJtIGNvbW1pdG1l
+bnQuCj4+Pj4gWWVhciBpbiwgeWVhciBvdXQuCj4+Pj4gS2VlcGluZyB5b3Vyc2VsZiB1cCB0byBk
+YXRlIHdpdGggdGhlIGxhdGVzdCBwY2VpIGRldmVsb3BtZW50Lgo+Pj4+IENvbW11bmljYXRlIGlu
+IEVuZ2xpc2guCj4+Pj4gQmUgYWJsZSB0byBzdWJtaXQgcGF0Y2hlcyB3aXRob3V0IGVycm9ycy4u
+LiA7KQo+Pj4+IFJldmlldyBvdGhlciBwZW9wbGVzIHBhdGNoZXMuCj4+Pj4gUmVzcG9uZCBpbiBz
+aG9ydCB0aW1lLgo+Pj4+IEJ1ZyBmaXhpbmcuCj4+Pgo+Pj4gQ3Jpa2V5LCBpdCdzIG9ubHkgYSBE
+VCBiaW5kaW5nLi4uIDovCj4+Pgo+Pj4+IElmIHRoYXQncyB3aGF0IHlvdSByZWFsbHkgd2FudCwg
+dGhlbiB5b3UgbXVzdCBpbmNsdWRlIGEgcGF0Y2ggdG8gdGhpcwo+Pj4+IHNlcmllIGZvciBNQUlO
+VEFJTkVSUy4KPj4+Cj4+PiBJIHRoaW5rIGlmIEJqb3JuIGFuZCBMb3JlbnpvIHdhbnQgYSBzcGVj
+aWZpY2FsbHkgbmFtZWQgc3ViLW1haW50YWluZXIKPj4+IGZvciB0aGUgZHJpdmVyIGl0c2VsZiwg
+d2UgY2FuIGxldCB0aGVtIHNheSBzbyByYXRoZXIgdGhhbiBwcmVzdW1lLgo+Pgo+PiBGb3IgdGhl
+IGJpbmRpbmcgaXQncyBteSBjYWxsLiA6KQo+Pgo+PiBUaGlzIHNob3VsZCBiZSBzb21lb25lIHdo
+byBjYXJlcyBhbmQga25vd3MgdGhlIGgvdy4gSU9XLCBpZiBJIHdhbnQgdG8KPj4gZGVsZXRlIHRo
+ZSBiaW5kaW5nLCBzb21lb25lIHdobyB3aWxsIG9iamVjdC4KPj4KPj4gT2YgY291cnNlLCBJJ2Qg
+bGlrZSB0aGF0IHNvbWVvbmUgdG8gaGF2ZSBhbGwgdGhlIGFib3ZlIHF1YWxpdGllcyB0b28uCj4g
+Cj4gSSBndWVzcyB0aGF0IHdvdWxkIGJlIHNlcGFyYXRlIGVudGl0ZXMgdGhlbiAuLi4KCll1cCwg
+dGhhdCdzIHRoZSBwb2ludCBJIHdhcyB0cnlpbmcgdG8gY2xhcmlmeSAtIGJpbmRpbmcgbWFpbnRh
+aW5lciBhbmQgCmRyaXZlciBtYWludGFpbmVyIGFyZSB0ZWNobmljYWxseSBkaXN0aW5jdCByb2xl
+cy4gT2YgY291cnNlIGlmIHNvbWVvbmUgCmlzIGEgZHJpdmVyIG1haW50YWluZXIgdGhlbiBpdCdz
+IHVzdWFsIC0gYW5kIHByZWZlcmFibGUgLSBmb3IgdGhlbSB0byAKbWFpbnRhaW4gdGhlIHJlbGV2
+YW50IGJpbmRpbmdzIGFzIHdlbGwsIHNvIE1BSU5UQUlORVJTIGVudHJpZXMgZm9yIApkcml2ZXJz
+IHR5cGljYWxseSBhbHNvIGNvdmVyIHRob3NlIGZvciBjb252ZW5pZW5jZSBhbmQgcHJlLXNjaGVt
+YSAKaGlzdG9yaWNhbCByZWFzb25zLiBIb3dldmVyLCBzb21lb25lIGNhbiB0YWtlIHJlc3BvbnNp
+YmlsaXR5IGZvciBhIApiaW5kaW5nIHdpdGhvdXQgc2lnbmluZyB1cCB0byBleHBsaWNpdGx5IG1h
+aW50YWluIGEgY29ycmVzcG9uZGluZyBkcml2ZXIgCihJIGtub3cgSSBoYXZlKSwgYW5kIGluIHRo
+YXQgY2FzZSB0aGUgc2NoZW1hIG1ha2VzIHRoZSBiaW5kaW5nIApzZWxmLWRvY3VtZW50aW5nIGFs
+cmVhZHkgLSB3ZSBkb24ndCBoYXZlIE1BSU5UQUlORVJTIGVudHJpZXMgdGhhdCAqb25seSogCmNv
+dmVyIGJpbmRpbmdzLCBvdGhlciB0aGFuIHRoZSB0b3AtbGV2ZWwgb25lIHRoYXQgc2F5cyBSb2In
+cyBpbiBjaGFyZ2UgCm92ZXJhbGwgOikKClJvYmluLgoKPiBTaGF3biBhbmQgU2ltb24ga25vdyB0
+aGUgaGFyZHdhcmUgd2F5IGJldHRlciwgdGhvdWdoIEknbSBub3Qgc3VyZSBpZiB0aGVpcgo+IHdv
+cmsgY29tbWl0bWVudHMgd2lsbCBhbGxvdyB0aGVtIHRvIGtlZXAgdHJhY2sgb2YgYmluZGluZyBk
+ZWxldGlvbnMKPiAKPiBTbyBtYXliZSBhbGwgMyBvZiB1cyA7LSkKPiAKPiBIZWlrbwo+IAo+IAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
