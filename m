@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC0F1C433E6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 09:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11EA6C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 09:31:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7CB0C22D08
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 09:31:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7CB0C22D08
+	by mail.kernel.org (Postfix) with ESMTPS id A92B822D08
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jan 2021 09:31:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A92B822D08
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,64 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Bq+aDhMA36gE/Df5GraLNl1yCVZRoTC1SLbTldJbIjA=; b=mVs6wIXFYcFmFw9XYQEj3eQoG
-	F8AszGDu6KSaaBpoPaNPdbc5hnfd1KE1M4nVEZdvmNPX1Ov5U+VV04yUK34kXToqu6MFjkGQ4bdW/
-	kI0le6hRg8oybUuN4U7tK0z2MYHxP7zawYv3fLtYFZTDdTvy65saiX1VT0671QmXSE6ydHjTM0QVK
-	IrXIA/i/eLrAyo4EcXbQH2rzqaitnv44sY/SRtE6PKig+BFDVOhAQvDHX9WyyPPgYwMeyKvd5cwuY
-	xaRM5xxmGjb4SdpBcs/c7vho5bR6VK82G8cGlbJdaaqVm3w1dOosd3DoLmFnRfILFvadQ5gX4BZgo
-	j7J0un88A==;
+	 bh=d9lWfuP+wr2kmfxdx6urUMdcF0bb+WG9hWzQJ/QChCU=; b=CDRpadM74QPMpTOnoiZTfaWcd
+	YgBoC8bqQnliIJsSGpRhFnAYlu5uunEuLehfRxTWo/ptXYksTS+FMsoWydotwlruU7nJyhUzi4vdP
+	I85vxBfyBwNOs/q/Hpm1DJCHpUdrV93qLJfhj594nJMx76bzbJS6FT0HPHNY0YNVO6gSiy9JMELsz
+	GoJMJgQ2wsT4e5+d40kztj6uawpNfCRyxEggYs44UdkQx3hDjHuJqZdQZTguAyYENTCycwF1AsOGJ
+	L/a3GHeOUuXSMBZfZCgzazfoverqWBEO9xt0h+ANwWxWAGRi9U/Sp2X2bB+tyD08VLTHBWstEtNtR
+	58zpGGHRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l29pS-00011c-3r; Wed, 20 Jan 2021 09:31:06 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1l29po-00018y-EZ; Wed, 20 Jan 2021 09:31:28 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l29p8-0000sc-BR
- for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 09:30:49 +0000
-Received: by mail-wm1-x334.google.com with SMTP id c128so2190448wme.2
- for <linux-rockchip@lists.infradead.org>; Wed, 20 Jan 2021 01:30:46 -0800 (PST)
+ id 1l29pC-0000uS-51
+ for linux-rockchip@lists.infradead.org; Wed, 20 Jan 2021 09:30:52 +0000
+Received: by mail-wr1-x435.google.com with SMTP id m4so22349082wrx.9
+ for <linux-rockchip@lists.infradead.org>; Wed, 20 Jan 2021 01:30:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bN1EA9Jtu/mSRFpfLqJ4hYJd1C2lXhS1XjJCl6CFg1g=;
- b=zFYfx91XPKACjv/flqRWziV33Y4m/EmmyZgP+idh0JI5dCaeislX7SISmaLy2s4VR7
- TIc1ogI7o6CjxnsWalSTE5E/3mDU/Dt9phL15/9AbLNEQW72xnXogiNhgutU8MmGoO93
- Jv4du5hB7Px9HKxcCnEB1RVI476qeKJqLJo8S6/DiBQJ72je2SmV2umD81hzKuyPpm7k
- LbS+mWh5mZyQUje328YOPnyARiClql6txorS+c+WVnuF4iSZJCSE7JIz3KQJRmL5wwsC
- hmSNKVZDLydPhFLGljT+Jfv+sefoEExI+oL65ad3J1xNjCFPK4zzlSzB7xU349ywBE/U
- 7msQ==
+ bh=mIiZ6UdkfZ1pzms9iuBNbuiycjVakqbZxBNbxqLfJT0=;
+ b=XmAXV4QTvia9d7Vz/pwW/8VDwM1KnqnvenvY8gWiIM4kU7VmW018gvcjDYTBZDGLvn
+ UNJcx0c3Lwhntubpnh/K+KYhcJaeWY30f+AL9iD/SAeDtsB+S61sU2SMHk4dn5mOwoS/
+ gkuzsCjm1midnauwlSPHSouHc3o7UsEj4f9W0dnnIiKfXnzmqv8zUTrmowL2VUJ7/PcX
+ ltN/5JSGkyzRH5oWfc+tLKMCHxJvUC2JP9R0B39FOMBN5sBg/4OF6GEtcKxF+osaJtry
+ HvD73sMOxl1aYjWXlzgbgZ61Eb+G6SNv9ppWLJiTsd4DVDv9n9S2C8z0CY6ankFpaOJP
+ ey1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bN1EA9Jtu/mSRFpfLqJ4hYJd1C2lXhS1XjJCl6CFg1g=;
- b=Ov9h876wbhluOieT7Gh4FxHG9OKk1B7nlP6XdyVr64y58rnTLh+vqGfVTIKpnD82Ea
- 3Idi8dInijAmoENJCMDPk/2cm2mqPSey702JSoWQlTnjcPaxbjl3rIH2htU7s8rj+XJW
- /EGt9ORR+/T2DNrsaODceyppXpNIDhUr4OGQjrGc/gPcOMBQap9f1L0kEBLDmjt2vYUH
- ZHCn5hNHfnieek2bjCqtP0R75FP880n6cmTJzTjiTfrpBxZUlOmBFEr75SSlOrab/FI9
- U6JaecZtASRx2zAQegW+y/to0snmP/QH74Bcq+IH/9JtPCXD3Soy9a7ukqpugVP0j1XF
- 8qqw==
-X-Gm-Message-State: AOAM533u1nMEH1ubqH/cAw3glxgwpx3ZbT4n2dTID4Li2YPHA3418n7K
- ePq5Wz9JsjcqOzVwY7Q202QISw==
-X-Google-Smtp-Source: ABdhPJy0QU7f/Vsm0leMTTjzvUhzClwhW+2h4hj2Ui406VthDvXgvODPTyr3pTl1F0dkQzpvKhwYUg==
-X-Received: by 2002:a1c:9d8b:: with SMTP id g133mr3413636wme.44.1611135045419; 
- Wed, 20 Jan 2021 01:30:45 -0800 (PST)
+ bh=mIiZ6UdkfZ1pzms9iuBNbuiycjVakqbZxBNbxqLfJT0=;
+ b=sxz3ZwXsVx6poNouL5txHqcaQcR1R5YWE9cQakgJEFH0Trg6cN3R4PrJ6Uw5uiqPtU
+ 2PydTeLRYlEnIY2lIiUC9KhSmb4oqRJLgTw7gilQuhjfw17jSvmk2tYoATdCm6A45EMS
+ nB7nUzc7n4NT/Rzz+U5LmQx3bYhoux+Om3y5deKLV5hIrtpQhLsnQ3JYav6izUvtkaXM
+ +aAH1I12yIAG72Vp23SFWeUfynjgWGGdTb/cnfbZhR1BJdprAwquPeb9GOJRDFBZ2I/5
+ MtOKqgJf/kLGQwyF/+HLwyNIcHa5DgrfVkjvJPo0wG+XiIUB8a5lXLwQrKimPK1vum1v
+ 7rLg==
+X-Gm-Message-State: AOAM533x8cV/8AvCGyGRbL2f0REvUJfaeXdh8ujxJ9O3tpPTJldGYlzO
+ OfJujLHjhhr11w8sqFcpU9itJmIgs0PQlXkA
+X-Google-Smtp-Source: ABdhPJzb9TpEAlS6uB5qzU34JkRauMRiiiQnVSqfLKRcLm1T15iP+zYNBDZVnTR85MF/1qEjQkO7nQ==
+X-Received: by 2002:a5d:6311:: with SMTP id i17mr6328988wru.195.1611135048804; 
+ Wed, 20 Jan 2021 01:30:48 -0800 (PST)
 Received: from dell.default ([91.110.221.158])
- by smtp.gmail.com with ESMTPSA id z130sm2889201wmb.33.2021.01.20.01.30.44
+ by smtp.gmail.com with ESMTPSA id z130sm2889201wmb.33.2021.01.20.01.30.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Jan 2021 01:30:44 -0800 (PST)
+ Wed, 20 Jan 2021 01:30:48 -0800 (PST)
 From: Lee Jones <lee.jones@linaro.org>
 To: lee.jones@linaro.org
-Subject: [PATCH 01/20] clk: rockchip: clk: Demote non-conformant kernel-doc
- headers
-Date: Wed, 20 Jan 2021 09:30:21 +0000
-Message-Id: <20210120093040.1719407-2-lee.jones@linaro.org>
+Subject: [PATCH 04/20] clk: rockchip: clk-half-divider: Demote non-conformant
+ kernel-doc header
+Date: Wed, 20 Jan 2021 09:30:24 +0000
+Message-Id: <20210120093040.1719407-5-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210120093040.1719407-1-lee.jones@linaro.org>
 References: <20210120093040.1719407-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_043046_412559_E75BC18F 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20210120_043050_259281_DDFFB3CF 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,10 +93,9 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Xing Zheng <zhengxing@rock-chips.com>,
- Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Thomas Abraham <thomas.ab@samsung.com>, linux-clk@vger.kernel.org,
+Cc: Heiko Stuebner <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -105,65 +104,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Fixes the following W=1 kernel build warning(s):
 
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'name' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'parent_names' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'num_parents' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'base' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'muxdiv_offset' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'mux_shift' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'mux_width' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'mux_flags' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'div_offset' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'div_shift' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'div_width' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'div_flags' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'div_table' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'gate_offset' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'gate_shift' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'gate_flags' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'flags' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:45: warning: Function parameter or member 'lock' not described in 'rockchip_clk_register_branch'
- drivers/clk/rockchip/clk.c:180: warning: Function parameter or member 'hw' not described in 'rockchip_fractional_approximation'
- drivers/clk/rockchip/clk.c:180: warning: Function parameter or member 'rate' not described in 'rockchip_fractional_approximation'
- drivers/clk/rockchip/clk.c:180: warning: Function parameter or member 'parent_rate' not described in 'rockchip_fractional_approximation'
- drivers/clk/rockchip/clk.c:180: warning: Function parameter or member 'm' not described in 'rockchip_fractional_approximation'
- drivers/clk/rockchip/clk.c:180: warning: Function parameter or member 'n' not described in 'rockchip_fractional_approximation'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'name' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'parent_names' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'num_parents' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'base' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'muxdiv_offset' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'mux_shift' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'mux_width' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'mux_flags' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'div_shift' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'div_width' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'div_flags' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'gate_offset' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'gate_shift' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'gate_flags' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'flags' not described in 'rockchip_clk_register_halfdiv'
+ drivers/clk/rockchip/clk-half-divider.c:168: warning: Function parameter or member 'lock' not described in 'rockchip_clk_register_halfdiv'
 
 Cc: Michael Turquette <mturquette@baylibre.com>
 Cc: Stephen Boyd <sboyd@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Xing Zheng <zhengxing@rock-chips.com>
-Cc: Thomas Abraham <thomas.ab@samsung.com>
 Cc: linux-clk@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-rockchip@lists.infradead.org
 Signed-off-by: Lee Jones <lee.jones@linaro.org>
 ---
- drivers/clk/rockchip/clk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk-half-divider.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 336481bc6cc72..049e5e0b64f62 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -24,7 +24,7 @@
- #include <linux/rational.h>
- #include "clk.h"
+diff --git a/drivers/clk/rockchip/clk-half-divider.c b/drivers/clk/rockchip/clk-half-divider.c
+index ccd5c270c2132..64f7faad2148f 100644
+--- a/drivers/clk/rockchip/clk-half-divider.c
++++ b/drivers/clk/rockchip/clk-half-divider.c
+@@ -145,7 +145,7 @@ static const struct clk_ops clk_half_divider_ops = {
+ 	.set_rate = clk_half_divider_set_rate,
+ };
  
 -/**
 +/*
   * Register a clock branch.
   * Most clock branches have a form like
   *
-@@ -170,7 +170,7 @@ static int rockchip_clk_frac_notifier_cb(struct notifier_block *nb,
- 	return notifier_from_errno(ret);
- }
- 
--/**
-+/*
-  * fractional divider must set that denominator is 20 times larger than
-  * numerator to generate precise clock frequency.
-  */
 -- 
 2.25.1
 
