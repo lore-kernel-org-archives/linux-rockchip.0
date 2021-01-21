@@ -2,86 +2,70 @@ Return-Path: <SRS0=2Xhb=GY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8939C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30964C433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 05:22:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A191206FA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:45:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A191206FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 88F9323888
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 05:22:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88F9323888
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vZUw7e0lOj1xd2Wh/BYhWi/rkzykNNRyk3wO+QAmY9w=; b=K0KCvUPhfTGobvQGGY5f6f7BU
-	ag4ly1hFS2Y1hlrcNS+kiHjF0qWxUKdC0dVh4g/j/X8VufAxcqCBxGqLo2zC1AHrSbxHdmgK7n3QG
-	ytKKaLhBejJJMP+6rMvpqRpPVYKdR5e/Su9jJlaee8bX5r9mOuiWz3uam0V7ANRUmakla76Rr/UMs
-	8Ikxo0fj3P9xQN+ZpMLg3m/v+TDEx/ltlN/CzUFeyDwGXZv2gdQjhw5S2w2T7c1pF0bG7Z3n45yAu
-	vPB02CazKt7xe4+EEKBbccqxcl/IoZ5hfBBVGsqb++POwigcCpsl2DGD4d69iMbIH2fcRUda35sRk
-	zOkvcbAXg==;
+	 bh=eJUCdV5aPuJMGWDKeu3y9hB+euZxcaTbXxV6VxTPQbk=; b=l1GW5b7NL0MSU7Veel5e4+omN
+	4E+iD0sFz17HHpj8KvUSXCxB1WS7iK/Wx2m4cZb0Oz6sARHTL0/EcxyUeLDKuOaiKSY24pFqD7KUE
+	addz4/EGv7ZYbb6mVbFcKUeLnU/7C/d/JYJYuT+v2BfehEU2T5CqTIin4BcNwYsxTecpAny3gDRZL
+	igelQhRg/l8l6R2lgDV2DR/dLuzwDTjor7lhixOT6aw6NxUvIiPksIS28qSFWFpvh0zKTkTBm7loI
+	HM0Tw+rGXVv+doy4ARjIAnqZ103cUEAnJc/RPuYaCigOaA88bULkRaoWzPrprWN1n/9G9OZBti6NA
+	w/vgm3mzQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2Rq5-0000T9-VF; Thu, 21 Jan 2021 04:44:57 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1l2SQF-0003mW-3R; Thu, 21 Jan 2021 05:22:19 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Rq2-0000QW-2b; Thu, 21 Jan 2021 04:44:55 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d4so593952plh.5;
- Wed, 20 Jan 2021 20:44:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nmGD8HgPe/79+tkqFpZtuKTtNUxMt+0Wii+rdB2TPJ0=;
- b=eS/1ggdFWLmfnsVYZXAbwW1SmBRdM7h+i8u7eMxYshtdJMIwvsuLM6yn9GZBZ9S/K8
- KPB7IXVkvHseo+uWh3JXdsekkzlPnpD1fO5nonseXf9GOWYDGdR+HhSALKkTBW2yHqxA
- vhNiTnb6elTC+ROHAMTVxAmqh54NOFG8AXMg5XK2ZaPgk0Zkawh6ZbuAdmEfdFkEhZm2
- 1UIpxFwDL7fAY+OlhacieGmRlqtZX1Sk/wWXzHNgZL3wH6FTjfH0lEmZHOzXOWK4oZol
- FrhZLsRXZ91FD1PC349AL88h5bApuFeMzE3PJ1YZJKXFQ8yXe/V3L7GGuSfN9S3XXoFM
- SpOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nmGD8HgPe/79+tkqFpZtuKTtNUxMt+0Wii+rdB2TPJ0=;
- b=OPHueOWOxzjPTCcN6mYvlTDQRfAywpo8CX9uUf3NBqhOHcpV3jcSaA6d3ZhRJZ+dG9
- 6okCshYzjdo7g5MpP6tNN76M7X12XKrhv3/m3Y8k1XrPjmImXcOPThcbd4QeTUS6S5fX
- 6I3x5YDVHKQWw8DQtnsvR2YkSgbFTXeT7AHZDtS5JWpz4OBGZtHTHZmWJkTL1kyR31W7
- RDfmRI1Pho7dIMOZx1Zfo9kqVx2nrOnOECHqpdhAbJZV38TD9aaZNKDtEjFBvLPQ9ZW7
- Ayv0m7kzRvFt52tbOwqvyh8C8b2/aWN9QSW8F/L6GWsxi1qzQ2vctCclRyMiUMAGIQN0
- mEMg==
-X-Gm-Message-State: AOAM533bBpKoek0LMP2LePDKpGpPMXxyktrWNb4OfMZd3SJbG7O9KB0+
- xit4jcmJ0JH/nOFKawanzLA=
-X-Google-Smtp-Source: ABdhPJwK12yN+Nm/X1Li1WBmyUtsyI++TR5W0kfCfg/xipnswNtdqtNaye9X6xF+P0AT5ihT3NrvwA==
-X-Received: by 2002:a17:902:8549:b029:de:8aaa:b012 with SMTP id
- d9-20020a1709028549b02900de8aaab012mr13199334plo.34.1611204292055; 
- Wed, 20 Jan 2021 20:44:52 -0800 (PST)
-Received: from localhost.localdomain ([49.207.210.174])
- by smtp.gmail.com with ESMTPSA id jx15sm3916014pjb.17.2021.01.20.20.44.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 20 Jan 2021 20:44:51 -0800 (PST)
-From: Allen Pais <allen.lkml@gmail.com>
-To: herbert@gondor.apana.org.au
-Subject: [PATCH v4 19/19] crypto: octeontx: convert tasklets to use new
- tasklet_setup() API
-Date: Thu, 21 Jan 2021 10:11:26 +0530
-Message-Id: <20210121044126.152274-20-allen.lkml@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210121044126.152274-1-allen.lkml@gmail.com>
-References: <20210121044126.152274-1-allen.lkml@gmail.com>
+ id 1l2SQ9-0003lW-Uu; Thu, 21 Jan 2021 05:22:14 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B2CCB23888;
+ Thu, 21 Jan 2021 05:22:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1611206530;
+ bh=aC0+sbL/GhS+fn6EHvQvuIRN4lfYeg9nJ+Sh8zc9yb0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=UvUCnE1ab4VdNvF3Bjy9DlEHzxIr0lfJmvE7Wzv1F44PC0AtntnTprv82Q/S+WusZ
+ Ms8h54GyByf18xfsLQ2B6AcpTSCkz9SheDzx7WNVSJ00Ku4g83m+DtrVAnROMQP2N7
+ yUPi6LHeFKaZI458XuN31adru+6xem0bqqx9YKwwu03xps6raOL0oz0XJ90dnZ/b+v
+ qPKbAUdXz3Be1QIMVQmlOzWAqmcJUlEGBkUTh6OEqI+Mc7Aw32Y2QuwUH7Gnv9l6jn
+ qm5zaFt+uUhJGlu2FEIP5sGlR6ElOtU4WrYQ5TysgBJak2Va8YnrHeO7RLqnV4dXjX
+ SrZ+qmjOBnZcA==
+Received: by mail-lj1-f181.google.com with SMTP id n8so1103341ljg.3;
+ Wed, 20 Jan 2021 21:22:09 -0800 (PST)
+X-Gm-Message-State: AOAM532FzwDWXUvAuES0CN7KI2+dtUIFuIona2BvKrMJD0R3x7Dm9UAk
+ Y7r3ABJj2eGGYs1p/tRkBdduuOEoNppR8lJToyk=
+X-Google-Smtp-Source: ABdhPJyPkIyy+lYaY2LiEjUZ8SUwWc3vNYgHv8oKn0SROOA78pvdfcxneFPHWHGaMR7f2HAnYSpWccmGKDDQjBLWnSA=
+X-Received: by 2002:a2e:9890:: with SMTP id b16mr1427717ljj.488.1611206527942; 
+ Wed, 20 Jan 2021 21:22:07 -0800 (PST)
 MIME-Version: 1.0
+References: <c4553dfad1ad6792c4f22454c135ff55de77e2d6.1611186099.git.robin.murphy@arm.com>
+In-Reply-To: <c4553dfad1ad6792c4f22454c135ff55de77e2d6.1611186099.git.robin.murphy@arm.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Thu, 21 Jan 2021 13:21:56 +0800
+X-Gmail-Original-Message-ID: <CAGb2v6630awuQy6hZAejDeUWFxV0q0t5Uhk5O2c0i8y8ThD-Mw@mail.gmail.com>
+Message-ID: <CAGb2v6630awuQy6hZAejDeUWFxV0q0t5Uhk5O2c0i8y8ThD-Mw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Disable display for NanoPi R2S
+To: Robin Murphy <robin.murphy@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_234454_144572_DD12EECF 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20210121_002214_098996_54D27D2C 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,69 +78,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
- aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
- jamie@jamieiles.com, jesper.nilsson@axis.com,
- linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
- k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
- gcherian@marvell.com, linux-mediatek@lists.infradead.org,
- lars.persson@axis.com, matthias.bgg@gmail.com,
- Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- linux-crypto@vger.kernel.org, davem@davemloft.net
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Allen Pais <apais@linux.microsoft.com>
+On Thu, Jan 21, 2021 at 7:42 AM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> NanoPi R2S is headless, so rightly does not enable any of the display
+> interface hardware, which currently provokes an obnoxious error in the
+> boot log from the fake DRM device failing to find anything to bind to.
+> It probably isn't *too* hard to obviate the fake device shenanigans
+> entirely with a bit of driver reshuffling, but for now let's just
+> disable it here to shut up the spurious error.
 
-In preparation for unconditionally passing the
-struct tasklet_struct pointer to all tasklet
-callbacks, switch to using the new tasklet_setup()
-and from_tasklet() to pass the tasklet pointer explicitly.
+Maybe we should just drop the error message from the driver?
 
-Signed-off-by: Allen Pais <apais@linux.microsoft.com>
----
- drivers/crypto/marvell/octeontx/otx_cptvf_main.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+I should probably send a similar patch for the ROCK Pi E. :/
 
-diff --git a/drivers/crypto/marvell/octeontx/otx_cptvf_main.c b/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-index c076d0b3ad5f..831550123719 100644
---- a/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-+++ b/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-@@ -17,11 +17,12 @@
- #define DRV_NAME	"octeontx-cptvf"
- #define DRV_VERSION	"1.0"
- 
--static void vq_work_handler(unsigned long data)
-+static void vq_work_handler(struct tasklet_struct *t)
- {
--	struct otx_cptvf_wqe_info *cwqe_info =
--					(struct otx_cptvf_wqe_info *) data;
--
-+	struct otx_cptvf_wqe *cwqe = from_tasklet(cwqe, t, twork);
-+	struct otx_cptvf_wqe_info *cwqe_info = container_of(cwqe,
-+							typeof(*cwqe_info),
-+							vq_wqe[0]);
- 	otx_cpt_post_process(&cwqe_info->vq_wqe[0]);
- }
- 
-@@ -41,8 +42,7 @@ static int init_worker_threads(struct otx_cptvf *cptvf)
- 	}
- 
- 	for (i = 0; i < cptvf->num_queues; i++) {
--		tasklet_init(&cwqe_info->vq_wqe[i].twork, vq_work_handler,
--			     (u64)cwqe_info);
-+		tasklet_setup(&cwqe_info->vq_wqe[i].twork, vq_work_handler);
- 		cwqe_info->vq_wqe[i].cptvf = cptvf;
- 	}
- 	cptvf->wqe_info = cwqe_info;
--- 
-2.25.1
-
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> index 2ee07d15a6e3..1eecad724f04 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> @@ -114,6 +114,10 @@
+>         cpu-supply = <&vdd_arm>;
+>  };
+>
+> +&display_subsystem {
+> +       status = "disabled";
+> +};
+> +
+>  &gmac2io {
+>         assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+>         assigned-clock-parents = <&gmac_clk>, <&gmac_clk>;
+> --
+> 2.17.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
 _______________________________________________
 Linux-rockchip mailing list
