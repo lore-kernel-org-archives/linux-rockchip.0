@@ -2,73 +2,84 @@ Return-Path: <SRS0=2Xhb=GY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95529C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C388EC433E6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:42:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 179B723888
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:40:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 179B723888
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5D952206FA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 04:42:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D952206FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eOk1AjuvxAQOIiSBUAgrnfcsktpAOK/ovZAxhyBVUdQ=; b=cy5ujo76DYYIrxsyvDBxxZjie
-	mbiW1V5999hOgGiscEeJ7ZmfwA/LgQEz0JNnlCL81DgQ5ktzpanOWXl2kc0E+Who5oFhKnplrQUvv
-	18gcqb29R4TkmSifVKJVIuvP5WOvHEtBNWNpMGjQZNcYm3g6d8oOg1S0Ky57kZm5J1YPmDOdFhys4
-	6X41UUN8C2PlvdzNaF8YHOOs8dtZ6FihfrGox7wifvA6Zzisae9wFGJKtsSCV6OlTmL18uL2eu9Xn
-	2oVyMR4tACWYXC2DJNi3ojdur2mD77QYEHFW3fPV0KMcvEGfnGL00hR9DsiBcvuvjoG1GoGHwT+XH
-	qQCyvI/sw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UU6QNeOAg1r4aMQVjUJIBSzYr7Iw0R5MditQY3XfRZk=; b=CWwnctrZi+cZ0jWJFQO+P4BBWd
+	L0cYazvM1idcEN2HAjMax6FJq5b90nWRbswNydRW1ltvfyTxsO+2ofH/AXfKqMmUTsIJEvl6125hF
+	DG17orwk7l3qafxO05ceW+xFmwd7052I6J6GF1VxVgdLA+ys7SAchuM1iKBCRKEjYV6VEbjobJKO0
+	vuA6+voS5S7pi2o4Lct6a+dpcACP7PTNV66ZzozYh4yudervjyg7HjKke2yvZczYXeAXWWQ8NJx2E
+	a96jDr2kvib/0Du26gNE00zEL8pDkIivvGHfLmtK6k5ZY6vVE2WKCFF1o2fL/XwVLFNyUnx3cnho6
+	7fMIKT+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2Rlk-00076u-99; Thu, 21 Jan 2021 04:40:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l2RnF-0007NO-To; Thu, 21 Jan 2021 04:42:01 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2Rlg-00076C-IN; Thu, 21 Jan 2021 04:40:25 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 472E3238E8;
- Thu, 21 Jan 2021 04:40:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611204022;
- bh=uqaKgj8ERy+L2vgyvOGN9yOlUjntHTGqoSn1YcsOB4A=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=ChtW9EXEiiWJxlBj7fuIxQ7XefenOGQVnbZqWkrO87TFGKbgemZLagxOHaZk/4kka
- wxn06cX0D3wv2w38+MTLz5PH0TMf+N8DTO/XWbcON0F0f5bgamdV7Y8iMGdk/AMorf
- t3fgbd4G1m86rNagSTgGmIhTRUnzUIT3hpT1e57SJdix3NxDf7Ncdb5bt0DxSNpxJO
- 9mH00TP+bdGAuuW1b2I6VsPAnURpTfX+lcNsBa+Gka2wdFHnJ2qDOK+RmOIoSlYe54
- u0jEVjLSe6PRr7h3UsAwBv+4mGImUl/2QU2+2cnJhs2YaoToBeVf93khK4kLQnQhEp
- e9UDpSh9Drs9w==
-Received: by mail-lf1-f51.google.com with SMTP id b26so704849lff.9;
- Wed, 20 Jan 2021 20:40:22 -0800 (PST)
-X-Gm-Message-State: AOAM533nsbjbGdgrE19E1/rc+OsC0ZQfSAHttG7ugYQBFwjdDvFozQKD
- wJF70zQKKkXOXnB6NBhqziaSj/hKieN8AtiXDT0=
-X-Google-Smtp-Source: ABdhPJy8qhijve3RxQKPzmAsfsPdPAN5DUoEmElkmffNcBcnxlrBtAU2YthDmaPnmQr4komT5WSroZndwC/ucSf4o2w=
-X-Received: by 2002:a19:810:: with SMTP id 16mr5771851lfi.233.1611204020484;
- Wed, 20 Jan 2021 20:40:20 -0800 (PST)
+ id 1l2RnB-0007LF-5q; Thu, 21 Jan 2021 04:41:58 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id e9so600081plh.3;
+ Wed, 20 Jan 2021 20:41:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G6oushXlU8/JCreEqr43J1ZyQ49iIsjnXql3SR0zTgQ=;
+ b=V4HmS+pH+pLJFk26hyU66R+rmnP2beqGFGjqdPk9FuWtDmlJDWr4kZH98+KgHhv7Ga
+ RPA7Mr2b3Nijoh13iOBPH9ro83W5pkA7ZlLMsPBNE8S8zTHhBhijZzCLCRNvLVRiSTxw
+ jcg7IZQ9ng670NwwC94FORu2Z9248Zky+xIV/Dmm5nah8Dq9CNY777NldJlsRiFJdvBE
+ MRcZ1sciB9airBCKh480cCWUg9vvQ/aesoYCNey5/0dZ68byYdgEcjpAtCfA0Vs59v5Q
+ /YFN7Me1W/MJ7PbfaoEByS8H7wu/X7IubsM2b1yVsble0T92RSA+swdomsE7WMLuY5vd
+ SO6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G6oushXlU8/JCreEqr43J1ZyQ49iIsjnXql3SR0zTgQ=;
+ b=dgF3/Ke1F/aXXiK6zGhLBQqJVN58Yc9zG8zv9xW9e5y0XeFONovBqs2tOPolmDlwIu
+ dBHy0KhZZnBLqFEYrWrybSmWsktlWSeRwH2LJOhWl565k+H2FU8vHRC+FaJ69KvSdn5a
+ p0q6pUYxuW3Jy9gy2/ThlGNxIWELdeyq/zPFtxDh/x8+8+46oeGKLFRAqxfcUW46ANlI
+ Rn6n0Tz3ZahibLnIy+gyaqLYmEnq2C3UX51mvNXvHSVEjjaXV0CLg+N5WCX/l46bc4Cc
+ XxX9oqKf62yZj6MPonebuORU05IChHNu4SnMyev8iLcb/SzM/EUR/zFBZZyXe1gQsEbV
+ SHGg==
+X-Gm-Message-State: AOAM5322NlXURHF5fNYmo7irq5nDCmn5GNF0YrK5uROEK8Tht121D7zC
+ tZ7eIgL5a+WOS74RHaI+xXM3Ubeclu8=
+X-Google-Smtp-Source: ABdhPJyFD6wnC1KYu+9K6XpUwh/1p7UXubKQt0iWRFV1Dfffo1znTuF53UVoEutnmzvIJRV+LiSs/g==
+X-Received: by 2002:a17:902:a501:b029:dc:3e1d:4ddb with SMTP id
+ s1-20020a170902a501b02900dc3e1d4ddbmr13233027plq.60.1611204114069; 
+ Wed, 20 Jan 2021 20:41:54 -0800 (PST)
+Received: from localhost.localdomain ([49.207.210.174])
+ by smtp.gmail.com with ESMTPSA id jx15sm3916014pjb.17.2021.01.20.20.41.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 20 Jan 2021 20:41:53 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v4 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Thu, 21 Jan 2021 10:11:07 +0530
+Message-Id: <20210121044126.152274-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20200902181234.13955-1-lindsey.stanpoor@gmail.com>
- <CAEr9=gsH2UhjMO_55FKmGKS0DYrT_-XKf0iwCKCNc93epbiXNw@mail.gmail.com>
- <87ft5ly5nh.fsf@kernel.org>
- <CAEr9=gsc0L=rn5YDLrArqbOMSt25HhHF7cwhp7sxdPa6-PQGpg@mail.gmail.com>
-In-Reply-To: <CAEr9=gsc0L=rn5YDLrArqbOMSt25HhHF7cwhp7sxdPa6-PQGpg@mail.gmail.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Thu, 21 Jan 2021 12:40:09 +0800
-X-Gmail-Original-Message-ID: <CAGb2v64L94oudNnjhumEE6P6B=MjyOpmbYuZFfDc-fDDBZ_+jQ@mail.gmail.com>
-Message-ID: <CAGb2v64L94oudNnjhumEE6P6B=MjyOpmbYuZFfDc-fDDBZ_+jQ@mail.gmail.com>
-Subject: Re: [PATCH v4 1/4] dt-bindings: usb: add rk3328 dwc3 docs
-To: Lindsey Stanpoor <lindsey.stanpoor@gmail.com>,
- Felipe Balbi <balbi@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210120_234024_690040_2E318F4C 
-X-CRM114-Status: GOOD (  21.14  )
+X-CRM114-CacheID: sfid-20210120_234157_310198_B93747B5 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,66 +92,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, cnemo@tutanota.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-usb <linux-usb@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 21, 2021 at 12:30 PM Lindsey Stanpoor
-<lindsey.stanpoor@gmail.com> wrote:
->
-> On Fri, Nov 6, 2020 at 11:42 PM Felipe Balbi <balbi@kernel.org> wrote:
-> >
-> >
-> > Hi,
-> >
-> > Lindsey Stanpoor <lindsey.stanpoor@gmail.com> writes:
-> > > On Wed, Sep 2, 2020 at 11:12 AM <lindsey.stanpoor@gmail.com> wrote:
-> > >>
-> > >> From: Cameron Nemo <cnemo@tutanota.com>
-> > >>
-> > >> Document compatible for dwc3 on the Rockchip rk3328 platform.
-> > >
-> > > Hi all,
-> > >
-> > > Wanted to give this patch submission a gentle ping.
-> > >
-> > > Rob Herring acked the documentation changes, but I have not heard
-> > > anything
-> > > from the USB or Rockchip maintainers. This patchset would facilitate USB3
-> > > support for Rockchip rk3328 devices like the Pine Rock64.
-> > >
-> > > If there is anything I can do to help move this along, please let me know.
-> >
-> > Sorry, it had fallen through the cracks. It's now in my testing/next.
->
-> Following up on this. Will this move out of your testing/next?
+From: Allen Pais <apais@linux.microsoft.com>
 
-The binding changes are likely stale now that the dwc3 binding has been
-converted to YAML. See Greg's USB tree.
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
 
-Also the DT changes should go through the arm-soc tree separately, so
-we can stack on additional changes enabling USB3 on other boards.
+The series is based on v5.11-rc4 (19c329f68089)
+v4:
+  - added acks
+  - fixed checkpatch errors(Giovanni Cabiddu)
+v3:
+  - fixed rockchip driver(Emil Renner Berthing)
 
-ChenYu
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
 
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
 
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
 
-> --
-> Cameron
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
