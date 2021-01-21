@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E33BEC433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA071C433E6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 617A823A23
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 617A823A23
+	by mail.kernel.org (Postfix) with ESMTPS id 77F1B212CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77F1B212CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8+RmP9n3YQekdBYMYgm5n+AfD+uuzFQsUnrIlT4QCfI=; b=s2slgKazSIm/eao9epc1HDo7m
-	hYU2bGUnFoeo96Bz/CjvsKtDpqFx5HD2w1RGjm8CqJEHDL1MpAlr6Ul1TaFSeApiW4/Kbi3UhlMrV
-	BT0RWk7+lbWClu0uQuup8cWA1YdDwXdcbg/XuqzzbJej9okFDseEkSyqxeB7r0qMzmtZD176Dr9cM
-	pkyzyZVDae+7cF1CzT6MCODVPNpd5A1g0iq/d2gtu8z4iABLBv8hMdjpNGWsPxW5h34OgcxobAbE/
-	q38aRpO6jZ12CakAivL31FVdxX1xTZLoVOOHLscxHDUNbNpQ5HRhSPM1B4SlEPFnmIZkqt7QQjcKp
-	n8a92t9qg==;
+	 bh=UNAtx4ONlTCGraeq4Wxqh1DVBjM32+jIAzbCaa1lecg=; b=1OExavjxFPoMTKtnGEUS/htcm
+	FyQSUghxsy0JITXd1bnWi6P4RoahtC6TUm4EWPQgd2tP8waWxO4ibEWBT/ybqRdYZdbn6f3nun1/5
+	L2/xDgDVKko30x32eZ7TsHsHWigChHXwMr+whUpYpYIXKYLqISW2g1CE1HhTpoD7WlOOhGat+u4+8
+	C8opzhtJu9iLVrz1hxG/XdSWme6OFDE3QUgyY+fBxoPGrNJtVH+FMUk9XIXMD6+AQkz2UNHyXrJ3M
+	zLTKmkNt0w2EgVLd1ggqAtFT2AEyUziXdUVptZcWwmXA23AQo2HuzzLQOFXYn88do2IV4WqpeUTUX
+	izy9xPhug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2ckJ-0007QP-95; Thu, 21 Jan 2021 16:23:43 +0000
+	id 1l2ckI-0007QF-HU; Thu, 21 Jan 2021 16:23:42 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2ckB-0007Nt-K2; Thu, 21 Jan 2021 16:23:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6DC1C21919;
+ id 1l2ckB-0007Nv-K4; Thu, 21 Jan 2021 16:23:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E504E23A22;
  Thu, 21 Jan 2021 16:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1611246211;
- bh=TxPC2i3KodVBMcUvSfNNM7XR6HBVjld0zlamfiLWJnQ=;
+ s=k20201202; t=1611246212;
+ bh=vbZk+5NiV+voE7vyxbI+E68xQ2e7BmZr+LUw9f1ff78=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=suZIrn0sZe9LWunctXBnZBJmxA9qNDHr7PBhkgdM2BMTFF9PdaFlY0qzKOPauf8Xu
- 9njbqikLLV3m4lsOwd7Kh3ZkqV6Wzf1JgshZKHCYOwTId/beAo3hD5Tt3AiQN6LFZ5
- WUzy0Y/yQy1ImySW9zo+n+QT8HoWY8UsZeofDCITrYL8cwO3yLzlafqlN6CNhUUPEG
- mWQOxKvlOk+DcrB5gt+PECxEWZP9UAIfUTULp6MuhXWZfe0T0SYoSK19Fy2HKshkMK
- UM4SxLGzimyEzj38vvF0SQSTGoLOkS6nFjLHPpWDBwykHBVUJ/J9wQdCTxXgImfO6j
- l6tau4ERZezLQ==
+ b=ODBtjb4Chxkm3+oELVFLjOhpiuaUfxuZzk25iisCJctLhez6n1hPE5FlUqy4qiXTO
+ YExdAaHRQT49V51naGIPP3zv/YxQuSKpU6ehzbOKGcyddtjErffJ+7lMONDjJc5UYv
+ oSaSoJMnzPSHT0X9ILJI1U3MOkKM+XPToUDBWxXyjx9U41lOxyu+SA/oQZH05wm2pW
+ JPkkELiOTUlkiGh3+gi2cUXkOZ/q7ZE0Ad31Oy1N9qjP4r6iYRY2NMMMzj/3ChPUeV
+ jTkCItxCQNqMSDK9z4oG/mxOzeJv5jv+8/Th6YvOFqYi1+vYyoARQZ9ZLMuLE8FQyF
+ ZDnB/qzqymt8w==
 Received: by wens.tw (Postfix, from userid 1000)
- id 9F07D5FBD6; Fri, 22 Jan 2021 00:23:28 +0800 (CST)
+ id 7C0DD5F839; Fri, 22 Jan 2021 00:23:28 +0800 (CST)
 From: Chen-Yu Tsai <wens@kernel.org>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v4 1/4] PCI: rockchip: Make 'ep-gpios' DT property optional
-Date: Fri, 22 Jan 2021 00:23:18 +0800
-Message-Id: <20210121162321.4538-2-wens@kernel.org>
+Subject: [PATCH v4 2/4] dt-bindings: arm: rockchip: Add FriendlyARM NanoPi M4B
+Date: Fri, 22 Jan 2021 00:23:19 +0800
+Message-Id: <20210121162321.4538-3-wens@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210121162321.4538-1-wens@kernel.org>
 References: <20210121162321.4538-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210121_112336_141527_B7BC097E 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20210121_112336_138869_51E5696B 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,52 +87,45 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chen-Yu Tsai <wens@csie.org>
 
-The Rockchip PCIe controller DT binding clearly states that 'ep-gpios' is
-an optional property. And indeed there are boards that don't require it.
+The NanoPi M4B is a minor revision of the original M4.
 
-Make the driver follow the binding by using devm_gpiod_get_optional()
-instead of devm_gpiod_get().
+The differences against the original Nanopi M4 that are common with the
+other M4V2 revision include:
 
-Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
-Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
+  - microphone header removed
+  - power button added
+  - recovery button added
+
+Additional changes specific to the M4B:
+
+  - USB 3.0 hub removed; board now has 2x USB 3.0 type-A ports and 2x
+    USB 2.0 ports
+  - ADB toggle switch added; this changes the top USB 3.0 host port to
+    a peripheral port
+  - Type-C port no longer supports data or PD
+  - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
+    but only 1T1R (down from 2T2R) for WiFi
+
+Add a compatible string for the new board revision.
+
+Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Changes since v3:
-  - Directly return dev_err_probe() instead of having a separate return
-    statement
-
-Changes since v2:
-  - Fix error message for failed GPIO
-
-Changes since v1:
-  - Rewrite subject to match existing convention and reference
-    'ep-gpios' DT property instead of the 'ep_gpio' field
----
- drivers/pci/controller/pcie-rockchip.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-index 904dec0d3a88..a2ad0b7614a4 100644
---- a/drivers/pci/controller/pcie-rockchip.c
-+++ b/drivers/pci/controller/pcie-rockchip.c
-@@ -118,11 +118,10 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
- 	}
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 8a2dd9f1cff2..c3036f95c7bc 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -132,6 +132,7 @@ properties:
+           - enum:
+               - friendlyarm,nanopc-t4
+               - friendlyarm,nanopi-m4
++              - friendlyarm,nanopi-m4b
+               - friendlyarm,nanopi-neo4
+           - const: rockchip,rk3399
  
- 	if (rockchip->is_rc) {
--		rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
--		if (IS_ERR(rockchip->ep_gpio)) {
--			dev_err(dev, "missing ep-gpios property in node\n");
--			return PTR_ERR(rockchip->ep_gpio);
--		}
-+		rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
-+		if (IS_ERR(rockchip->ep_gpio))
-+			return dev_err_probe(dev, PTR_ERR(rockchip->ep_gpio),
-+					     "failed to get ep GPIO\n");
- 	}
- 
- 	rockchip->aclk_pcie = devm_clk_get(dev, "aclk");
 -- 
 2.29.2
 
