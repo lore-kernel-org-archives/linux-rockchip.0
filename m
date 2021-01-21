@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E46AFC433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B57B2C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64A3B212CC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64A3B212CC
+	by mail.kernel.org (Postfix) with ESMTPS id 309FF212CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jan 2021 16:23:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 309FF212CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,47 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NCYvj7bntNggpm3BTYstz5y3nri1mpHz78t8Dpi8bF0=; b=EuBy3vQ/vegl1KHSnysgVLDnA
-	K1cCGgi98IkQ25EtRUkTCzrDD0GFnUgbSXYRMxutJPVUuNJF4j0Y14p82ZZQiGNHoX6Etl2F9Epdo
-	lvaGliZSipmHcmfCMW41BtXvX47QnH5cm4upzVfdtq0iJKPp+F85JPuFpvoFSS4YO809Vm1J+L+KX
-	1UEasL4D8IvnxD1I3m9VSqZLlKpOoWDJWq261fzh3TDwvwI1e9XGtWuNWkvhkn1hR8sqedL0dGUeA
-	aSqde9gzMd2YPteKVF/axV3hy063jNYXbubuU9yCtjrIvB86XEzyX3z4B6SNt3oYdt+XOwJliHBSI
-	CTb024rlQ==;
+	 bh=fmW4+9U4lkNkejb9+8Gyl6LGxrLk+CN5Rtczrm6tWew=; b=Voc9QTmaQAIg8TH3MEM4g0QdB
+	MhJpIK047aXVZiS73slcmKkWWoKuQZyZoVPq7dr8/G5XzOm5ttrGHcCfPgzhruzpMs5tRr4tPbGg2
+	Szr3vCBrlSacpKl9ssqQb7x4uJmW04LyJ2EbpqsXx8WqzJ0ZP2hj0SmqcvmQnaIf7z/Bp4KDDx7up
+	rwVdPtWx5MP5ZUz4zYPm8MbmR0C8Rkcz3Q1NbS0SCgQMrpUn55pUKEVXzYAV9CTKcKfbHrdTd5TwQ
+	HxVwD/1cx6dkA2aDb9Hh/U3DMNwqHNksofyqbPxTTb2x97viJB8/PdKt64vEMo4l9HiGo6tPzPWPc
+	RpXToecMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2ckP-0007RK-4L; Thu, 21 Jan 2021 16:23:49 +0000
+	id 1l2ckS-0007Sl-HP; Thu, 21 Jan 2021 16:23:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2ckB-0007Nu-K5; Thu, 21 Jan 2021 16:23:38 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BCBDD22B45;
- Thu, 21 Jan 2021 16:23:31 +0000 (UTC)
+ id 1l2ckB-0007Nw-K3; Thu, 21 Jan 2021 16:23:38 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B05FB21973;
+ Thu, 21 Jan 2021 16:23:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1611246212;
- bh=SGnWKlQo06sg8d+NDOQwaMUesF8OTKiZdb/fFObVA5M=;
+ bh=/QAuvzzbOy5gjAKZaimJyKMU90IrxgHktHCgD4sEem4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=m+iNbUe1iH56GlLK9RfZSVnhckUnp2JZRKs/tbqkhu1wk2ONnMIVExT3hVjT7EGth
- +cYgBB9941K1+gZEu3f9NRKFz0oBIzy5KJhlSIYVYvMzi8aPM099NvjW3luA0M3cAt
- SilMrNkke79EwXj8YwSci70gf4scZ0LPT6yAgk4hKtnYw0BbGFMGHGuyMzXCD/3Ncw
- MQVhraqL9eexYSUKD/SHpMs+PSUVyPJzNIBQH03dKy1SzDjUN/JkJ5S5WPFjivwEgJ
- NknIpZjTLibFgLQ6cOc8OzOt+icSCu9IjNzae72EdwmPulWmz05WcpIWfYQcXmbcrM
- rwRpF3s6cqxAA==
+ b=gQzQG0cRoS36JjZJgTRB4R1hztSjy5/F3lt5GgL6e8qE9YlNiM2kFjMKPA0LGbLvx
+ lkdz5w2X3E97J+wiAujmkoD+n2CGsVRyCmpe3K9aZWBAuBP8TdQtSN21gui9Stln20
+ 23KlDPiu7Eg1pgZN1SQyAW1MGuhVHmAtCWWG4aaa4AERNz7ER1oTmFJAr4ADj3nUMz
+ cONtzRGL9qnHDbBGwnmWYrKm5qG7xaRq/x35SU+6Zuf9GYMDbzeTberti6zTlY8eLI
+ d6DSYyL8CtB54RdFnOtLhs17Zdga6aWnI+Q1OJP3Mo1S2vzRVHaFDg8ahGlBZHNcFO
+ AwhLykEy71W1Q==
 Received: by wens.tw (Postfix, from userid 1000)
- id 94B265FBB9; Fri, 22 Jan 2021 00:23:28 +0800 (CST)
+ id A950E5F9AB; Fri, 22 Jan 2021 00:23:28 +0800 (CST)
 From: Chen-Yu Tsai <wens@kernel.org>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v4 3/4] arm64: dts: rockchip: nanopi4: Move ep-gpios property
- to nanopc-t4
-Date: Fri, 22 Jan 2021 00:23:20 +0800
-Message-Id: <20210121162321.4538-4-wens@kernel.org>
+Subject: [PATCH v4 4/4] arm64: dts: rockchip: rk3399: Add NanoPi M4B
+Date: Fri, 22 Jan 2021 00:23:21 +0800
+Message-Id: <20210121162321.4538-5-wens@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210121162321.4538-1-wens@kernel.org>
 References: <20210121162321.4538-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210121_112336_143821_29A3F4A4 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20210121_112336_140066_2F728B18 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,54 +87,105 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chen-Yu Tsai <wens@csie.org>
 
-Only the NanoPC T4 hs the PCIe reset pin routed to the SoC. For the
-NanoPi M4 family, no such signal is routed to the expansion header on
-the base board.
+The NanoPi M4B is a minor revision of the original M4.
 
-As the schematics for the expansion board were not released, it is
-unclear how this is handled, but the likely answer is that the signal
-is always pulled high.
+The differences against the original Nanopi M4 that are common with the
+other M4V2 revision include:
 
-Move the ep-gpios property from the common nanopi4.dtsi file to the
-board level nanopc-t4.dts file. This makes the nanopi-m4 lack ep-gpios,
-matching the board design.
+  - microphone header removed
+  - power button added
+  - recovery button added
 
-A companion patch "PCI: rockchip: make ep_gpio optional" for the Linux
-driver is required, as the driver currently requires the property to be
-present.
+Additional changes specific to the M4B:
 
-Fixes: e7a095908227 ("arm64: dts: rockchip: Add devicetree for NanoPC-T4")
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+  - USB 3.0 hub removed; board now has 2x USB 3.0 type-A ports and 2x
+    USB 2.0 ports
+  - ADB toggle switch added; this changes the top USB 3.0 host port to
+    a peripheral port
+  - Type-C port no longer supports data or PD
+  - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
+    but only 1T1R (down from 2T2R) for WiFi
+
+Add a new dts file for the new board revision that shows the difference
+against the original.
+
 Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi  | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3399-nanopi-m4b.dts   | 52 +++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-index e0d75617bb7e..452728b82e42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-@@ -95,6 +95,7 @@ map3 {
- };
- 
- &pcie0 {
-+	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
- 	num-lanes = <4>;
- 	vpcie3v3-supply = <&vcc3v3_sys>;
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 76a8b40a93c6..48ed4aaa37f3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -504,7 +504,6 @@ &pcie_phy {
- };
- 
- &pcie0 {
--	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
- 	max-link-speed = <2>;
- 	num-lanes = <2>;
- 	vpcie0v9-supply = <&vcca0v9_s3>;
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index b29a445b355a..62d3abc17a24 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -34,6 +34,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-kobol-helios64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-leez-p710.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-orangepi.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
+new file mode 100644
+index 000000000000..72182c58cc46
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
+@@ -0,0 +1,52 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * FriendlyElec NanoPi M4B board device tree source
++ *
++ * Copyright (c) 2020 Chen-Yu Tsai <wens@csie.org>
++ */
++
++/dts-v1/;
++#include "rk3399-nanopi-m4.dts"
++
++/ {
++	model = "FriendlyElec NanoPi M4B";
++	compatible = "friendlyarm,nanopi-m4b", "rockchip,rk3399";
++
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1500000>;
++		poll-interval = <100>;
++
++		recovery {
++			label = "Recovery";
++			linux,code = <KEY_VENDOR>;
++			press-threshold-microvolt = <18000>;
++		};
++	};
++};
++
++/* No USB type-C PD power manager */
++/delete-node/ &fusb0;
++
++&i2c4 {
++	status = "disabled";
++};
++
++&u2phy0_host {
++	phy-supply = <&vcc5v0_usb2>;
++};
++
++&u2phy0_otg {
++	phy-supply = <&vbus_typec>;
++};
++
++&u2phy1_otg {
++	phy-supply = <&vcc5v0_usb1>;
++};
++
++&vbus_typec {
++	enable-active-high;
++	gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
++};
 -- 
 2.29.2
 
