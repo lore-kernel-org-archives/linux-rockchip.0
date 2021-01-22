@@ -2,69 +2,93 @@ Return-Path: <SRS0=to3J=GZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-2.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AD54C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 12:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18A41C433E0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 14:02:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD5952343E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 12:15:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD5952343E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id CFBEE239D1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 14:02:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFBEE239D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uU6Yc5uxHxflvGSxynszSdSJYAkgYtQhBCbHPKCSuik=; b=MjZWlcN/m9thIByXOzVaFUbPA
-	p+k7QyCFe0yq7ErgwsCSK63kwaYVC+beVja2aY/HS/x9B7SS40dbo+TET5jHsqPTZtDYhktw/CGPO
-	ha8YyeHKjJP0WCRDPYKTeYcRgH55f1WT44LHMqBmMnKDmrHMODmtsL5YE2+DUyg+AUL/i9lnlpxeR
-	mpeleRYLuSIziek3+gDiBW5dkkkoX7v6u6jIZPc0/JgMVqs/iutnIedGAoYbuIJQt9C05k//AvxWj
-	40EFN/h7RV3d7R0UvI4NR2yxLkiRHIuHdGNKtlhhdP4GJZQQVaZ5FbxDNDIj51LOGSaw93csO6Qch
-	Saf48H7ag==;
+	 bh=Dqiuv1o1YYKDjZ8u75f2/82T3dFSzBUa1cWCouYRzpM=; b=cc8Xy4jdt8xeo6P8LqNptulbD
+	LhKOmqdhnq9LK6Y+q3j05+lC1asH/5iaq58ChgpmcoVTFyWX0/OBmWMrtPyJNrYE12pnAe+jY3T26
+	rn1igxjt2fqrvBoX9plJl7H+HUKQf8mnLh4YStyOMNMC4xHsdAgGzEgb2e5iFn/vjDRAJawt/EmW1
+	iO9+nFlZFmOCV2VpvpgaSJI6b6xGyYfNRfNz2nuU/cwZ60brL1NSCkUGjtt7aQYgk4B3mpX2VQ5Q0
+	RRd8P3+dFiizU4XxbRFhNuSORVPIoqPytqZnwk7KZIvhwF0JUQtp3Ur/qfzNFoDgIpDwMWcuD3cH+
+	Ig7vusYaw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2vLg-0008Uy-Ra; Fri, 22 Jan 2021 12:15:32 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1l2x1R-0002xS-NE; Fri, 22 Jan 2021 14:02:45 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2vLa-0008PI-BI; Fri, 22 Jan 2021 12:15:27 +0000
-IronPort-SDR: h0WCbHDDq4QmpmWPy/SMFfX82jk5fy6K2M9GOqwzF2BjKXvvlTuMXZFsbVRMsmyFP0BBFOId5I
- 3DfxuPpaar1Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9871"; a="198192075"
-X-IronPort-AV: E=Sophos;i="5.79,366,1602572400"; d="scan'208";a="198192075"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2021 04:15:19 -0800
-IronPort-SDR: vxhEFHoBM4hXws2Gfq3XVEXWbVHJjZt+mKNZqWwfpNFtZ+x/7C1X0hk8QBjs48BMnxsKHMbW17
- KXS9hV06ZNpw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,366,1602572400"; d="scan'208";a="467909062"
-Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
- by fmsmga001.fm.intel.com with SMTP; 22 Jan 2021 04:15:08 -0800
-Received: by stinkbox (sSMTP sendmail emulation);
- Fri, 22 Jan 2021 14:15:07 +0200
-Date: Fri, 22 Jan 2021 14:15:07 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH v2 08/11] drm: Rename plane->state variables in atomic
- update and disable
-Message-ID: <YArBy2DKdCct5cYW@intel.com>
-References: <20210121163537.1466118-1-maxime@cerno.tech>
- <20210121163537.1466118-8-maxime@cerno.tech>
+ id 1l2x1P-0002vd-Vn
+ for linux-rockchip@lists.infradead.org; Fri, 22 Jan 2021 14:02:44 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id d22so6710911edy.1
+ for <linux-rockchip@lists.infradead.org>; Fri, 22 Jan 2021 06:02:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=rJTtOq8f3FlXKNS2xc6ac2je/Zvq93yXj8Whnd3Or3M=;
+ b=X3g4hnUQFKT/NU/h5d8/fUqMKlC+/2uBgHiH2GmXlUtOrwHENTKO5h6e0oyvpL3Z0w
+ g/HkwRCgYa6BNDwoSfTDzK41Kjouh1XUPZqh7uWnWverY+V6dyEynL/86jIgL3cefFJ6
+ hgk9awlKyZ7+09UHDJHzVLKn5B23FCQhFNYyLhsphUqwLmgKXNfY+RPxSbQ6GNard1nV
+ ddc7t2WPT9vo/7HO2SII0XEl7cjLl7FFN1UXBCAKCxOM7LDnDCgb9x3d/OCYayP/3Odw
+ mBP7CN0KJ4SHjIYqPB05hUDof2976vr9DGtEAaxfo3RofWnbnCnXiTR3+IBa2Jwnts+R
+ hr1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=rJTtOq8f3FlXKNS2xc6ac2je/Zvq93yXj8Whnd3Or3M=;
+ b=dTqCdCdXfs5m8Ph7eiwfsfIn7xIHTxwMgb6J8gnPhdbvwEGwnp1uyelPkM2gFxjZSA
+ zKVcMkv/hoX+tWo1RXIaCpdIcJaZ3iKgvdx/sCyEMi89TA7Sdgx1hKV+hQ4sYqhFnr9d
+ OTTB7qeK8YS9U4VRPDeJh5df0hwC83X9hQQNcf0o+awpydU3TTTUguStZLrPEfU0nO5D
+ ELEQneUlpzMnztMc+TFUvMCJX9oQaPl3d4BSHUhdo4laCL4wUP2ynI/10flmqoAaaIAb
+ ayAmYHwodqEcS1BDPzPkUJgZT5PGVI2FKYO4ZfcFUbqwsHVHlQSWBrJsTN+486enBpKO
+ XrPg==
+X-Gm-Message-State: AOAM5309zs4vTUjfoThWPLgbgaAt4PU/W7TwDoCq978pmIEuELOcoH2/
+ wJHmEsZKg6J1rEoZAtNTulCiRkvtaw8=
+X-Google-Smtp-Source: ABdhPJys+MBeoVfqapSNF84elvf+M7qMEaeBOGGFAU/c93EVbQWEqFFcrrGZaVn999BHQajxg1OGWg==
+X-Received: by 2002:a50:d6dc:: with SMTP id l28mr3383739edj.105.1611324160810; 
+ Fri, 22 Jan 2021 06:02:40 -0800 (PST)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ g2sm4464232ejk.108.2021.01.22.06.02.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 22 Jan 2021 06:02:40 -0800 (PST)
+Subject: Re: [PATCH v2 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+To: xxm <xxm@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+References: <20210120101554.241029-1-xxm@rock-chips.com>
+ <3af70037-c05d-1759-2bae-41db1e8e2768@gmail.com>
+ <31b54a67-eb1e-fa57-fff7-a0c867f27cc6@rock-chips.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <9c560852-8ebf-61a6-906b-9cc8ced8bed0@gmail.com>
+Date: Fri, 22 Jan 2021 15:02:38 +0100
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210121163537.1466118-8-maxime@cerno.tech>
-X-Patchwork-Hint: comment
+In-Reply-To: <31b54a67-eb1e-fa57-fff7-a0c867f27cc6@rock-chips.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_071526_625808_46FE96C4 
-X-CRM114-Status: GOOD (  18.43  )
+X-CRM114-CacheID: sfid-20210122_090244_080409_1B1FE82A 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,125 +101,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: , Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org,
- linux-mips@vger.kernel.org, Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Daniel Vetter <daniel.vetter@intel.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
- Marek Vasut <marex@denx.de>, linux-samsung-soc@vger.kernel.org,
- Joonyoung Shim <jy0922.shim@samsung.com>, linux-rockchip@lists.infradead.org,
- Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>, Sandy Huang <hjc@rock-chips.com>,
- NXP Linux Team <linux-imx@nxp.com>, Chen Feng <puck.chen@hisilicon.com>,
- Dave Airlie <airlied@redhat.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
- Alison Wang <alison.wang@nxp.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-mediatek@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Sean Paul <sean@poorly.run>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Tomi Valkeinen <tomba@kernel.org>,
- Jyri Sarha <jyri.sarha@iki.fi>, Seung-Woo Kim <sw0312.kim@samsung.com>,
- Philippe Cornu <philippe.cornu@st.com>, linux-kernel@vger.kernel.org,
- Yannick Fertre <yannick.fertre@st.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Tian Tao <tiantao6@hisilicon.com>,
- freedreno@lists.freedesktop.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, robh+dt@kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 21, 2021 at 05:35:33PM +0100, Maxime Ripard wrote:
-> Some drivers are storing the plane->state pointer in atomic_update and
-> atomic_disable in a variable simply called state, while the state passed
-> as an argument is called old_state.
-> =
+Hi Simon,
 
-> In order to ease subsequent reworks and to avoid confusing or
-> inconsistent names, let's rename those variables to new_state.
-> =
+A few comments, have a look if it is useful or that you disagree.
 
-> This was done using the following coccinelle script, plus some manual
-> changes for mtk and tegra.
-> =
+/////
 
-> @ plane_atomic_func @
-> identifier helpers;
-> identifier func;
-> @@
-> =
+The format of ranges in your pcie node in rk3568.dtsi and your example
+is wrong!
 
-> (
->  static const struct drm_plane_helper_funcs helpers =3D {
->  	...,
->  	.atomic_disable =3D func,
-> 	...,
->  };
-> |
->  static const struct drm_plane_helper_funcs helpers =3D {
->  	...,
->  	.atomic_update =3D func,
-> 	...,
->  };
-> )
-> =
+  ranges:
+    oneOf:
+      - $ref: "/schemas/types.yaml#/definitions/flag"
+      - minItems: 1
+        maxItems: 32    # Should be enough
+        items:
+          minItems: 5
+          maxItems: 7
+          additionalItems: true
+          items:
+            - enum:
+                - 0x01000000
+                - 0x02000000
+                - 0x03000000
+                - 0x42000000
+                - 0x43000000
+                - 0x81000000
+                - 0x82000000
+                - 0x83000000
+                - 0xc2000000
+                - 0xc3000000
 
-> @ moves_new_state_old_state @
-> identifier plane_atomic_func.func;
-> identifier plane;
-> symbol old_state;
-> symbol state;
-> @@
-> =
+The array size is 3: ==> maxItems: 3
+in a array a range of 5 to 7 u64 is expected.
+They must start with one of the enums above!
+yaml dt_check expects <> around every array member!
 
->  func(struct drm_plane *plane, struct drm_plane_state *old_state)
->  {
->  	...
-> -	struct drm_plane_state *state =3D plane->state;
-> +	struct drm_plane_state *new_state =3D plane->state;
-> 	...
->  }
-> =
+Old example:
 
-> @ depends on moves_new_state_old_state @
-> identifier plane_atomic_func.func;
-> identifier plane;
-> identifier old_state;
-> symbol state;
-> @@
-> =
+ranges = <0x00000800 0x0 0x80000000 0x3 0x80000000 0x0 0x800000
 
->  func(struct drm_plane *plane, struct drm_plane_state *old_state)
->  {
->  	<...
-> -	state
-> +	new_state
-> 	...>
+0x00000800 is not in the list of above, please recheck!
 
-Was going to say that this migh eat something else, but I guess
-the dependency prevents that?
+          0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000
+          0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
 
-Another way to avoid that I suppose would be to declare 'state'
-as
-symbol moves_new_state_old_state.state;
+New example:
+FICTION example with correct first element, but maybe NOT good for
+Rockchip pcie!
 
-That would probably make the intent a bit more obvious, even with
-the dependency. Or does a dependency somehow automagically imply
-that?
+ranges = <0x81000000 0x0 0x80000000 0x3 0x80000000 0x0 0x800000>,
+         <0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000>,
+         <0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
+	
+Change this also in rk3568.dtsi!
 
--- =
+/////
 
-Ville Syrj=E4l=E4
-Intel
+rockchip_add_pcie_port()
+
+For FTRACE filters it is needed that all functions start with the same
+function prefix.
+
+Maybe use:
+rockchip_pcie_add_port()
+
+/////
+
+The function prefix of pcie-dw-rockchip.c is identical with functions in
+pcie-rockchip-host.c
+Is that OK for the maintainers?
+
+/////
+
++static struct platform_driver rockchip_pcie_driver = {
++	.driver = {
++		.name	= "rk-pcie",
+
+Maybe change to:
+
++		.name	= "rockchip-dw-pcie",
+
+This name shows up in the kernel log.
+Could you keep it in line with other Rockchip names, so we can filter
+more easy?
+
+dmesg | grep rockchip
+
+rockchip-vop
+rochchip-drm
+etc.
+
++		.of_match_table = rockchip_pcie_of_match,
++		.suppress_bind_attrs = true,
++	},
++	.probe = rockchip_pcie_probe,
++};
+
+/////
 
 _______________________________________________
 Linux-rockchip mailing list
