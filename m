@@ -2,93 +2,79 @@ Return-Path: <SRS0=to3J=GZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18A41C433E0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 14:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 687A3C433E0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 15:55:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFBEE239D1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 14:02:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFBEE239D1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0EA28221FF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Jan 2021 15:55:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EA28221FF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Dqiuv1o1YYKDjZ8u75f2/82T3dFSzBUa1cWCouYRzpM=; b=cc8Xy4jdt8xeo6P8LqNptulbD
-	LhKOmqdhnq9LK6Y+q3j05+lC1asH/5iaq58ChgpmcoVTFyWX0/OBmWMrtPyJNrYE12pnAe+jY3T26
-	rn1igxjt2fqrvBoX9plJl7H+HUKQf8mnLh4YStyOMNMC4xHsdAgGzEgb2e5iFn/vjDRAJawt/EmW1
-	iO9+nFlZFmOCV2VpvpgaSJI6b6xGyYfNRfNz2nuU/cwZ60brL1NSCkUGjtt7aQYgk4B3mpX2VQ5Q0
-	RRd8P3+dFiizU4XxbRFhNuSORVPIoqPytqZnwk7KZIvhwF0JUQtp3Ur/qfzNFoDgIpDwMWcuD3cH+
-	Ig7vusYaw==;
+	 bh=mNaFWTyK3VXkNRXOdR15602n91NT0f5ne6upZGSIcio=; b=2FLvGZT/ul0YORCzzUM50lfPE
+	EhRBXEZvXwARJLpZezvI5sUYoyYprMIzsVO1R2OVtPNpkjg0DrM+qmOkwQ+1HmSdKb4QkWRjVX3x7
+	eKtPCWHU9CirsWwTt4iP8BYTL6guwvRsv2BPZz8y7VF7yI3GFNDBQ3qIGiBDrgAlL11s4T3NSZXja
+	0nDiU56jTXT3EKk9yydOSYdgknBakXW00/UtOK5vweWMxqpgCziMHqegidSlaCqNAxDdi/QB3wj5p
+	jE8q17k6fYaWPJy4wODzUt/+qxjKRVL7tJ2JDwfVDLBCXdFxHlTPdLE2qupZX5CLJlcFj+SWr1YQV
+	xad6rzSgg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l2x1R-0002xS-NE; Fri, 22 Jan 2021 14:02:45 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1l2ymF-0000ul-0Q; Fri, 22 Jan 2021 15:55:11 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l2x1P-0002vd-Vn
- for linux-rockchip@lists.infradead.org; Fri, 22 Jan 2021 14:02:44 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id d22so6710911edy.1
- for <linux-rockchip@lists.infradead.org>; Fri, 22 Jan 2021 06:02:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rJTtOq8f3FlXKNS2xc6ac2je/Zvq93yXj8Whnd3Or3M=;
- b=X3g4hnUQFKT/NU/h5d8/fUqMKlC+/2uBgHiH2GmXlUtOrwHENTKO5h6e0oyvpL3Z0w
- g/HkwRCgYa6BNDwoSfTDzK41Kjouh1XUPZqh7uWnWverY+V6dyEynL/86jIgL3cefFJ6
- hgk9awlKyZ7+09UHDJHzVLKn5B23FCQhFNYyLhsphUqwLmgKXNfY+RPxSbQ6GNard1nV
- ddc7t2WPT9vo/7HO2SII0XEl7cjLl7FFN1UXBCAKCxOM7LDnDCgb9x3d/OCYayP/3Odw
- mBP7CN0KJ4SHjIYqPB05hUDof2976vr9DGtEAaxfo3RofWnbnCnXiTR3+IBa2Jwnts+R
- hr1w==
+ id 1l2ymB-0000uO-O2
+ for linux-rockchip@lists.infradead.org; Fri, 22 Jan 2021 15:55:08 +0000
+Received: by mail-ot1-f44.google.com with SMTP id k8so5476487otr.8
+ for <linux-rockchip@lists.infradead.org>; Fri, 22 Jan 2021 07:55:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rJTtOq8f3FlXKNS2xc6ac2je/Zvq93yXj8Whnd3Or3M=;
- b=dTqCdCdXfs5m8Ph7eiwfsfIn7xIHTxwMgb6J8gnPhdbvwEGwnp1uyelPkM2gFxjZSA
- zKVcMkv/hoX+tWo1RXIaCpdIcJaZ3iKgvdx/sCyEMi89TA7Sdgx1hKV+hQ4sYqhFnr9d
- OTTB7qeK8YS9U4VRPDeJh5df0hwC83X9hQQNcf0o+awpydU3TTTUguStZLrPEfU0nO5D
- ELEQneUlpzMnztMc+TFUvMCJX9oQaPl3d4BSHUhdo4laCL4wUP2ynI/10flmqoAaaIAb
- ayAmYHwodqEcS1BDPzPkUJgZT5PGVI2FKYO4ZfcFUbqwsHVHlQSWBrJsTN+486enBpKO
- XrPg==
-X-Gm-Message-State: AOAM5309zs4vTUjfoThWPLgbgaAt4PU/W7TwDoCq978pmIEuELOcoH2/
- wJHmEsZKg6J1rEoZAtNTulCiRkvtaw8=
-X-Google-Smtp-Source: ABdhPJys+MBeoVfqapSNF84elvf+M7qMEaeBOGGFAU/c93EVbQWEqFFcrrGZaVn999BHQajxg1OGWg==
-X-Received: by 2002:a50:d6dc:: with SMTP id l28mr3383739edj.105.1611324160810; 
- Fri, 22 Jan 2021 06:02:40 -0800 (PST)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- g2sm4464232ejk.108.2021.01.22.06.02.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Jan 2021 06:02:40 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=b+Blmlo5/G343X4GJ/Rd6bvnggbhUWj/TZr//zejW8U=;
+ b=E+THFF3RwvFDL2XkLqCo+3/mx7d9KkaiDYkZFv8HVRPKtwOidY9FeRUgnVfUo84lNn
+ YtQpr5mi47DTXx5XVGpP0Wj/tktx1V2nvgfgr4M/+fJw510qQMQM+HGdvpo5GqhbaWHm
+ oJlUvCPaw7KF0FUZZRdLjLYYps1d9avpc1YuK3IWjv25NcxsBcTJZCeVZjtSjHS2BkIx
+ FAYdpJ9FW4l5sv8mZiR0DV+KKuqWoTdUi5Cq4NgIH6JNDFJrRMSgep6fjr5w+MKlswm8
+ WDjSWL09TvMw+XbqQwksb4zNPgxSvXuWJiyW+V0yqaIXYzGxMzH7dwtGtTvi/j8pifui
+ Kfkw==
+X-Gm-Message-State: AOAM532b6VseAP1nFOTPKd4BFTf+dFw3DqvHwgBtD8KlAOT+ar8ZEAmF
+ s0GOIapcyfApG86Ku3H6EA==
+X-Google-Smtp-Source: ABdhPJyJqKvwJn/o/cYm8DTTbgPOgWIx77c0lSo5V9uwOCGEsJ1kcCpBGX5Hh5syHMjZTSUFVXb5RA==
+X-Received: by 2002:a9d:66d1:: with SMTP id t17mr3651979otm.163.1611330905408; 
+ Fri, 22 Jan 2021 07:55:05 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id j1sm1751786oiw.50.2021.01.22.07.55.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Jan 2021 07:55:04 -0800 (PST)
+Received: (nullmailer pid 864183 invoked by uid 1000);
+ Fri, 22 Jan 2021 15:55:03 -0000
+Date: Fri, 22 Jan 2021 09:55:03 -0600
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
 Subject: Re: [PATCH v2 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
  controller
-To: xxm <xxm@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Message-ID: <20210122155503.GA860027@robh.at.kernel.org>
 References: <20210120101554.241029-1-xxm@rock-chips.com>
  <3af70037-c05d-1759-2bae-41db1e8e2768@gmail.com>
- <31b54a67-eb1e-fa57-fff7-a0c867f27cc6@rock-chips.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <9c560852-8ebf-61a6-906b-9cc8ced8bed0@gmail.com>
-Date: Fri, 22 Jan 2021 15:02:38 +0100
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <31b54a67-eb1e-fa57-fff7-a0c867f27cc6@rock-chips.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <3af70037-c05d-1759-2bae-41db1e8e2768@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210122_090244_080409_1B1FE82A 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20210122_105507_860242_CE9D171F 
+X-CRM114-Status: GOOD (  28.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,111 +87,182 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, devicetree@vger.kernel.org, robh+dt@kernel.org,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+On Wed, Jan 20, 2021 at 06:07:29PM +0100, Johan Jonker wrote:
+> Hi Simon,
+> 
+> Thanks you for version 2.
+> A few comments, have a look if it is useful or that you disagree.
+> 
+> This patch has no commit message. Add one in version 3.
+> 
+> Submit all patches in one batch with the same sort message ID to all
+> maintainers including Heiko.
+> 
+> Heiko Stuebner <heiko@sntech.de>
+> 
+> Example message ID:
+> 20210120101554.241029-1-xxm@rock-chips.com
+> 
+> /////
+> 
+> Included is a copy of the Rockchip pcie nodes in a sort of test.dts below.
+> Could you confirm that the properties in that dts are the one that we
+> can expect for Linux mainline and can base our YAML document on?
+> 
+> With rk3568-cru.h and rk3568-power.h manualy added we do some tests with
+> the following commands:
+> 
+> make ARCH=arm64 dt_binding_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> 
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> 
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/schemas/pci/pci-bus.yaml
+> 
+> /////
+> 
+> Example notifications:
+> 
+> /arch/arm64/boot/dts/rockchip/test.dt.yaml: pcie@fe270000: reg: [[3,
+> 3225419776, 0, 4194304], [0, 4263968768, 0, 65536]] is too long
+> 
+> /arch/arm64/boot/dts/rockchip/test.dt.yaml: pcie@fe270000: ranges:
+> 'oneOf' conditional failed, one must be fixed:
+> 
+> Before you submit version 3 make sure that all warnings gone as much as
+> possible.
+> 
+> On 1/20/21 11:15 AM, Simon Xue wrote:
+> > Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> > ---
+> >  .../bindings/pci/rockchip-dw-pcie.yaml        | 140 ++++++++++++++++++
+> >  1 file changed, 140 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > new file mode 100644
+> > index 000000000000..9d3a57f5305e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> > @@ -0,0 +1,140 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: DesignWare based PCIe RC controller on Rockchip SoCs
+> > +
+> > +maintainers:
+> > +  - Shawn Lin <shawn.lin@rock-chips.com>
+> > +  - Simon Xue <xxm@rock-chips.com>
+>      - Heiko Stuebner <heiko@sntech.de> ;)
+> > +
+> > +description: |+
+> > +  RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
+> > +  PCIe IP and thus inherits all the common properties defined in
+> > +  designware-pcie.txt.
+> > +
+> > +allOf:
+> > +  - $ref: /schemas/pci/pci-bus.yaml#
+> > +
+> > +# We need a select here so we don't match all nodes with 'snps,dw-pcie'
+> > +select:
+> > +  properties:
+> > +    compatible:
+> > +      contains:
+> > +        const: rockchip,rk3568-pcie
+> > +  required:
+> > +    - compatible
+> > +
+> > +properties:
+> > +  compatible:
+> 
+> > +    item:
+> 
+>     items:
+> 
+> > +      - const: rockchip,rk3568-pcie
+> > +      - const: snps,dw-pcie
+> 
+> Add empty line
+> 
+> > +  reg:    items:
+>       - description:
+>       - description:
+> 
+> Add some description for regs.
+> 
+> > +    maxItems: 1
+> remove
+> 
+> This reg maxItems gives errors.
+> 
+> > +
+> 
+> > +  interrupt:
+> interrupts:
+>    items:
+> 
+> > +      - description: system information
+> > +      - description: power management control
+> > +      - description: PCIe message
+> > +      - description: legacy interrupt
+> > +      - description: error report
+> > +
+> > +  interrupt-names:
+> > +    items:
+> > +      - const: sys
+> > +      - const: pmc
+> > +      - const: msg
 
-A few comments, have a look if it is useful or that you disagree.
+MSI? If so, use 'msi'. The DWC core will handle setting it up now.
 
-/////
+> > +      - const: legacy
+> > +      - const: err
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: AHB clock for PCIe master
+> > +      - description: AHB clock for PCIe slave
+> > +      - description: AHB clock for PCIe dbi
+> > +      - description: APB clock for PCIe
+> > +      - description: Auxiliary clock for PCIe
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: aclk_mst
+> > +      - const: aclk_slv
+> > +      - const: aclk_dbi
+> > +      - const: pclk
+> > +      - const: aux
+> > +
+> > +  msi-map: true
+> > +
+> > +  power-domains:
+> > +    maxItems: 1
+> 
+> /////
+> These properties come from designware-pcie.txt
+> Maybe add them here for now till there's a common yaml?
+> 
+>   num-ib-windows: number of inbound address translation windows
+>   num-ob-windows: number of outbound address translation windows
 
-The format of ranges in your pcie node in rk3568.dtsi and your example
-is wrong!
+These can be and are now detected at runtime.
 
-  ranges:
-    oneOf:
-      - $ref: "/schemas/types.yaml#/definitions/flag"
-      - minItems: 1
-        maxItems: 32    # Should be enough
-        items:
-          minItems: 5
-          maxItems: 7
-          additionalItems: true
-          items:
-            - enum:
-                - 0x01000000
-                - 0x02000000
-                - 0x03000000
-                - 0x42000000
-                - 0x43000000
-                - 0x81000000
-                - 0x82000000
-                - 0x83000000
-                - 0xc2000000
-                - 0xc3000000
-
-The array size is 3: ==> maxItems: 3
-in a array a range of 5 to 7 u64 is expected.
-They must start with one of the enums above!
-yaml dt_check expects <> around every array member!
-
-Old example:
-
-ranges = <0x00000800 0x0 0x80000000 0x3 0x80000000 0x0 0x800000
-
-0x00000800 is not in the list of above, please recheck!
-
-          0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000
-          0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
-
-New example:
-FICTION example with correct first element, but maybe NOT good for
-Rockchip pcie!
-
-ranges = <0x81000000 0x0 0x80000000 0x3 0x80000000 0x0 0x800000>,
-         <0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000>,
-         <0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
-	
-Change this also in rk3568.dtsi!
-
-/////
-
-rockchip_add_pcie_port()
-
-For FTRACE filters it is needed that all functions start with the same
-function prefix.
-
-Maybe use:
-rockchip_pcie_add_port()
-
-/////
-
-The function prefix of pcie-dw-rockchip.c is identical with functions in
-pcie-rockchip-host.c
-Is that OK for the maintainers?
-
-/////
-
-+static struct platform_driver rockchip_pcie_driver = {
-+	.driver = {
-+		.name	= "rk-pcie",
-
-Maybe change to:
-
-+		.name	= "rockchip-dw-pcie",
-
-This name shows up in the kernel log.
-Could you keep it in line with other Rockchip names, so we can filter
-more easy?
-
-dmesg | grep rockchip
-
-rockchip-vop
-rochchip-drm
-etc.
-
-+		.of_match_table = rockchip_pcie_of_match,
-+		.suppress_bind_attrs = true,
-+	},
-+	.probe = rockchip_pcie_probe,
-+};
-
-/////
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
