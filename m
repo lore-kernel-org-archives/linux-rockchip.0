@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DF3EC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E45F0C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E52B122597
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E52B122597
+	by mail.kernel.org (Postfix) with ESMTPS id 4F76222597
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F76222597
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VbkaOw1cEDPgM52SsNrpgW6bv9WOvX+Ck4ZeKo58K5c=; b=1vaDNmjD13dg6tRLxXYdT9exS
-	+A4z/3RDz0d/Gk/yJZfTexN+GrzJp953zfDKucI0XlkLNTMLQWU4lSVH15ECXpbsGLVFNLVPGllBd
-	+H/q2mFN9RJ7MExBCeRWD6YDkpUc4zcododTJdQqr4ybSCyAPmF4SgVa9ftApcTmiqPOiZtGmC8EC
-	1sEeQ6RaMPsF53x3qo+wgqM2aE0vqmhyWQw7Sr5IGkqihZnwXafD4jJVL9H0/TDlsiySnI6WRFOmA
-	9qT9QvGy50uUiXLsyWwtjnng8a+FkJyXfiJ5sZiRJPUxwoTWbs8kaBLlv9S0spiKcCFnX4UiCmB0g
-	sIjG68ARw==;
+	 bh=0BRy9bhQdxSoPvyoIiIvDXKedFHI2N5A/H0qig7WN9o=; b=IKznR/ZqFNTh3L+GEPby5mGPr
+	Ngz8GAWbnGDYemELB94QmmN5VF7BzYvcU0BQBrJeZAKJTESi2R/9GMf+cANY7O6OXNXK7LQlYCOKw
+	3zuAp8oPis37idUYuLEdSpYtH5IDM8ikfs/NE67oS4gJk9RjzvY9Ybtqs/zX5aLuC+8eQ6mF/30p2
+	6M5Y4tunxRkOjrj5QQnPbtBq6CRTC9htQSwyUd5a22i+DhY90FVRRv8G2Xqv3fjs4jwspfm2A/i1B
+	Ae6US+KYOEIZeU/CV3/LEREKhASBWIwY6pQ4yE24ef+Ml0PfGlqfC9c/NIEFh0SkiUiyiPQn1YYwG
+	TaiXXPgtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4BkX-0000nu-Ft; Mon, 25 Jan 2021 23:58:25 +0000
+	id 1l4Bkf-0000tm-1W; Mon, 25 Jan 2021 23:58:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4Bip-000096-H5; Mon, 25 Jan 2021 23:56:40 +0000
+ id 1l4Bix-0000BQ-6I; Mon, 25 Jan 2021 23:56:48 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l4Bij-00066j-Gg; Tue, 26 Jan 2021 00:56:33 +0100
+ id 1l4Bih-00066j-UM; Tue, 26 Jan 2021 00:56:31 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chen-Yu Tsai <wens@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: (subset) [PATCH v4 0/4] arm64: rockchip: Fix PCIe ep-gpios
- requirement and Add Nanopi M4B
-Date: Tue, 26 Jan 2021 00:56:27 +0100
-Message-Id: <161161878915.2050283.9418666502176859174.b4-ty@sntech.de>
+To: Lee Jones <lee.jones@linaro.org>
+Subject: Re: (subset) [PATCH 00/20] Rid W=1 warnings from Clock
+Date: Tue, 26 Jan 2021 00:56:22 +0100
+Message-Id: <161161878917.2050283.12124477211963150680.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210121162321.4538-1-wens@kernel.org>
-References: <20210121162321.4538-1-wens@kernel.org>
+In-Reply-To: <20210120093040.1719407-1-lee.jones@linaro.org>
+References: <20210120093040.1719407-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_185639_647783_7C19366A 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210125_185647_341070_025EC9C6 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,32 +64,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Michal Simek <michal.simek@xilinx.com>, Zong Li <zong.li@sifive.com>,
+ linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>,
+ linux-clk@vger.kernel.org, Xing Zheng <zhengxing@rock-chips.com>,
+ =?UTF-8?q?Emilio=20L=C3=B3pez?= <emilio@elopez.com.ar>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Stephen Gallimore <stephen.gallimore@st.com>,
  linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
- Johan Jonker <jbx6244@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- linux-arm-kernel@lists.infradead.org
+ Thomas Abraham <thomas.ab@samsung.com>, bcm-kernel-feedback-list@broadcom.com,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Kees Cook <keescook@chromium.org>,
+ Arnd Bergmann <arnd@arndb.de>, Ray Jui <rjui@broadcom.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Omri Itach <omrii@marvell.com>,
+ Maxime Ripard <mripard@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ linux-omap@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ =?UTF-8?q?S=C3=B6ren=20Brinkmann?= <soren.brinkmann@xilinx.com>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Scott Branden <sbranden@broadcom.com>, Tero Kristo <kristo@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ Julia Lawall <Julia.Lawall@inria.fr>, Dinh Nguyen <dinguyen@kernel.org>,
+ Pankaj Dev <pankaj.dev@st.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Pragnesh Patel <Pragnesh.patel@sifive.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 22 Jan 2021 00:23:17 +0800, Chen-Yu Tsai wrote:
-> This is v4 of my Nanopi M4B series.
+On Wed, 20 Jan 2021 09:30:20 +0000, Lee Jones wrote:
+> This set is part of a larger effort attempting to clean-up W=1
+> kernel builds, which are currently overwhelmingly riddled with
+> niggly little warnings.
 > 
-> Changes since v3 include:
+> We should have these nailed in ~2 patchsets.
 > 
->   - Directly return dev_err_probe() instead of having a separate return
->     statement
+> Lee Jones (20):
+>   clk: rockchip: clk: Demote non-conformant kernel-doc headers
+>   clk: rockchip: clk-cpu: Remove unused/undocumented struct members
+>   clk: rockchip: clk-pll: Demote kernel-doc abuses to standard comment
+>     blocks
+>   clk: rockchip: clk-half-divider: Demote non-conformant kernel-doc
+>     header
+>   clk: bcm: clk-iproc-pll: Demote kernel-doc abuse
+>   clk: sifive: fu540-prci: Declare static const variable
+>     'prci_clk_fu540' where it's used
+>   clk: socfpga: clk-pll: Remove unused variable 'rc'
+>   clk: socfpga: clk-pll-a10: Remove set but unused variable 'rc'
+>   clk: mvebu: ap-cpu-clk: Demote non-conformant kernel-doc header
+>   clk: imx: clk-imx31: Remove unused static const table 'uart_clks'
+>   clk: st: clkgen-pll: Demote unpopulated kernel-doc header
+>   clk: st: clkgen-fsyn: Fix worthy struct documentation demote partially
+>     filled one
+>   clk: ti: clockdomain: Fix description for 'omap2_init_clk_clkdm's hw
+>     param
+>   clk: sunxi: clk-sunxi: Demote a bunch of non-conformant kernel-doc
+>     headers
+>   clk: ti: dpll: Fix misnaming of '_register_dpll()'s 'user' parameter
+>   clk: ti: gate: Fix possible doc-rot in
+>     'omap36xx_gate_clk_enable_with_hsdiv_restore'
+>   clk: sunxi: clk-a10-ve: Demote obvious kernel-doc abuse
+>   clk: sunxi: clk-mod0: Demote non-conformant kernel-doc header
+>   clk: versatile: clk-icst: Fix worthy struct documentation block
+>   clk: zynq: clkc: Remove various instances of an unused variable 'clk'
 > 
 > [...]
 
 Applied, thanks!
 
-[3/4] arm64: dts: rockchip: nanopi4: Move ep-gpios property to nanopc-t4
-      commit: 3503376d6cc385b6266f93c24ead9a33d8dfe8cb
-[4/4] arm64: dts: rockchip: rk3399: Add NanoPi M4B
-      commit: c7b03115003f7f337ab165542cee37148cf30a8a
+[01/20] clk: rockchip: clk: Demote non-conformant kernel-doc headers
+        commit: 415173712003ad7e54de7198979d68a428440ed6
+[02/20] clk: rockchip: clk-cpu: Remove unused/undocumented struct members
+        commit: 274ae6da4b3275fea32f0807e6e20715695dd210
+[03/20] clk: rockchip: clk-pll: Demote kernel-doc abuses to standard comment blocks
+        commit: eee7b95589e61bd7250cada52ddd8039c63535ef
+[04/20] clk: rockchip: clk-half-divider: Demote non-conformant kernel-doc header
+        commit: d48fbef962b095f7cc22017642fb9055d57fdb53
 
 Best regards,
 -- 
