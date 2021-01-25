@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC4B8C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DF3EC433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 127D622597
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:57:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 127D622597
+	by mail.kernel.org (Postfix) with ESMTPS id E52B122597
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:58:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E52B122597
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,37 +23,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=scbpOTmwS9WsqgHVn5ZZiKSB+/GVYlrrhcq9DpJT/jQ=; b=H74wT7R056IOWqQGqnoj0l7nE
-	iVRlMt2uOcL1ODxrPqnNWR7C+uIpunOAjrT3duWWkMXZuw5lrrPbcBIEInQiiwpIRQYsMarlMEl8c
-	69MuYqgzWD/ovwnePkYoXexhojoUaSSIlz6VeMD6cE7if20QrMKui2C93BlM6HYd6p+m2XwFbranD
-	F51Ug9Wh8f/73XGDk+bS+nlZJkAA8ZBwQO5lttsm2KQ8uYIDaiMFAHEINQbO80mooa5Fh4vrR5iSV
-	YWnZkn4YwZ6UPoMojduGX1nmuGa/OXdjH7cAMuwJ6jun3z8esQ+zfxLNDje4nBvsDbCB4l3128YGE
-	XDZUVrbYA==;
+	 bh=VbkaOw1cEDPgM52SsNrpgW6bv9WOvX+Ck4ZeKo58K5c=; b=1vaDNmjD13dg6tRLxXYdT9exS
+	+A4z/3RDz0d/Gk/yJZfTexN+GrzJp953zfDKucI0XlkLNTMLQWU4lSVH15ECXpbsGLVFNLVPGllBd
+	+H/q2mFN9RJ7MExBCeRWD6YDkpUc4zcododTJdQqr4ybSCyAPmF4SgVa9ftApcTmiqPOiZtGmC8EC
+	1sEeQ6RaMPsF53x3qo+wgqM2aE0vqmhyWQw7Sr5IGkqihZnwXafD4jJVL9H0/TDlsiySnI6WRFOmA
+	9qT9QvGy50uUiXLsyWwtjnng8a+FkJyXfiJ5sZiRJPUxwoTWbs8kaBLlv9S0spiKcCFnX4UiCmB0g
+	sIjG68ARw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4Bjk-0000UR-0M; Mon, 25 Jan 2021 23:57:36 +0000
+	id 1l4BkX-0000nu-Ft; Mon, 25 Jan 2021 23:58:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4Bim-00008C-4C
- for linux-rockchip@lists.infradead.org; Mon, 25 Jan 2021 23:56:37 +0000
+ id 1l4Bip-000096-H5; Mon, 25 Jan 2021 23:56:40 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l4Bii-00066j-RK; Tue, 26 Jan 2021 00:56:33 +0100
+ id 1l4Bij-00066j-Gg; Tue, 26 Jan 2021 00:56:33 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Increase maximal SDIO voltage
- to 3.3 V
-Date: Tue, 26 Jan 2021 00:56:26 +0100
-Message-Id: <161161878916.2050283.12931282362839155996.b4-ty@sntech.de>
+To: Chen-Yu Tsai <wens@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: (subset) [PATCH v4 0/4] arm64: rockchip: Fix PCIe ep-gpios
+ requirement and Add Nanopi M4B
+Date: Tue, 26 Jan 2021 00:56:27 +0100
+Message-Id: <161161878915.2050283.9418666502176859174.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210124210328.611707-1-uwe@kleine-koenig.org>
-References: <20210124210328.611707-1-uwe@kleine-koenig.org>
+In-Reply-To: <20210121162321.4538-1-wens@kernel.org>
+References: <20210121162321.4538-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_185636_553241_974B84EC 
+X-CRM114-CacheID: sfid-20210125_185639_647783_7C19366A 
 X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -68,24 +68,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Aditya Prayoga <aditya@kobol.io>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
+ Johan Jonker <jbx6244@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCAyNCBKYW4gMjAyMSAyMjowMzoyNyArMDEwMCwgVXdlIEtsZWluZS1Lw7ZuaWcgd3Jv
-dGU6Cj4gV2hpbGUgY29tcGFyaW5nIHRoZSB2ZW5kb3IgZHRzIHdpdGggdGhlIG9uZSBhZGRlZCBp
-biB2NS4xMS1yYzEgSSBub3RpY2VkCj4gdGhhdCB0aGUgdmVuZG9yIGR0cyBzcGVjaWZpZWQgMy4z
-IFYgd2hpY2ggbWF0Y2hlcyB0aGUgU0RJTyBzcGVjaWZpY2F0aW9uLgo+IAo+IFNvIGZpeCB0aGUg
-c2RpbyByZWd1bGF0b3IgdG8gcHJvdmlkZSAodXAgdG8pIDMuMyBWLgoKQXBwbGllZCwgdGhhbmtz
-IQoKWzEvMl0gYXJtNjQ6IGR0czogcm9ja2NoaXA6IEluY3JlYXNlIG1heGltYWwgU0RJTyB2b2x0
-YWdlIHRvIDMuMyBWCiAgICAgIGNvbW1pdDogZDEzNGFjNzMxZmVlZDkxYTgxYjQ0N2UwZTYzYzFj
-MzU1MjNmYzU3NApbMi8yXSBhcm02NDogZHRzOiByb2NrY2hpcDogUmVseSBvbiBTb0MgZXh0ZXJu
-YWwgcHVsbCB1cCBvbiBwbWljLWludC1sCiAgICAgIGNvbW1pdDogMTlkZTUxNTZkMDAyOWNjZGYw
-MTUzY2VlMzVmYjgzNTZiNTZiYTljNgoKQmVzdCByZWdhcmRzLAotLSAKSGVpa28gU3R1ZWJuZXIg
-PGhlaWtvQHNudGVjaC5kZT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On Fri, 22 Jan 2021 00:23:17 +0800, Chen-Yu Tsai wrote:
+> This is v4 of my Nanopi M4B series.
+> 
+> Changes since v3 include:
+> 
+>   - Directly return dev_err_probe() instead of having a separate return
+>     statement
+> 
+> [...]
+
+Applied, thanks!
+
+[3/4] arm64: dts: rockchip: nanopi4: Move ep-gpios property to nanopc-t4
+      commit: 3503376d6cc385b6266f93c24ead9a33d8dfe8cb
+[4/4] arm64: dts: rockchip: rk3399: Add NanoPi M4B
+      commit: c7b03115003f7f337ab165542cee37148cf30a8a
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
