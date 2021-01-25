@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 024BBC433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07881C433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:54:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6778207B1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:40:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6778207B1
+	by mail.kernel.org (Postfix) with ESMTPS id 2968720724
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 23:54:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2968720724
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=CDE6G7A0xpYndot4o3+2PzRHLhzkdvBKX8oQO6X7msY=; b=PuSFQ0WEir62aq5I+iW7qQTgG
-	J/RDXwyniIC4IQ6E8YI7ctQ9I3GAJ635vyH3S1EiEJL/r17vSJfSzebY9EIBdE5sqq6y+C8AcZF2P
-	RKHKDxhJbZxKmrm5UYFTBCv+RknUGnWNm11jaUWhFy9yK4MmzX7Reidha4NfXrflmmWLiyOQsJCLY
-	CUrpsyjv79v5NeddR65cEaQOD3z+N2YOkGS9AheNlvrGFKhRiQOYpl9mo5VxJ2p0Nv9lHaFUyichF
-	KvYiHe88sCpvaK5Uo5v02MGOOrExiE+a5/OnBtEmj7miETocFPW7R5Na9AB2J6hQjOeYWeWBhD4zH
-	Hyyv55/Gw==;
+	 bh=ZAyVWfzSpwnCOC7dXM4Fmo+/qjqtT2+CRebac+9Shdg=; b=0MwEN9Z4g3ISbzmdtnsWdsY3Q
+	23J6AvQbWgYg1SlopG2NGzIiiNLzMiJtmAmeecmjOYRPgH8XQ95+XAhRgwDf8uWYJsMUWk2CEDQMs
+	nu9sE09bUijkIh7SdnXs0+PLFXoW8mdTLz0RG/3Op2Mczqaj+31dnhqVZD5dWkP+PgusjVUd+u5dV
+	F/bUhksxKJDduB70pzEEopnAAPBTmeaKjnuaUQDFVP9fkIKKb9g74m3P4YhzU5PCBb2CR75V8ORQA
+	7udpsHj+mO4GiqmDV0NHhaPLbmhEbFoUiP093Uxz0JRA5joleuN+00Db0xIsA4cDpUdtGOUd0HwJZ
+	EiLHvvKuw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4BTX-0007Xw-KV; Mon, 25 Jan 2021 23:40:51 +0000
+	id 1l4BgY-0008IO-OV; Mon, 25 Jan 2021 23:54:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4BTT-0007X5-Nx; Mon, 25 Jan 2021 23:40:48 +0000
+ id 1l4BgV-0008Hz-Oy; Mon, 25 Jan 2021 23:54:17 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l4BTA-00060r-Kk; Tue, 26 Jan 2021 00:40:28 +0100
+ id 1l4BgT-000664-Ry; Tue, 26 Jan 2021 00:54:13 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>, Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH 1/8] dt-binding: watchdog: add more Rockchip compatibles
- to snps, dw-wdt.yaml
-Date: Tue, 26 Jan 2021 00:40:27 +0100
-Message-ID: <11680602.O9o76ZdvQC@phil>
-In-Reply-To: <20210123173401.GA57343@roeck-us.net>
-References: <20201218120534.13788-1-jbx6244@gmail.com>
- <20210123173401.GA57343@roeck-us.net>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: add device_type property to rk3399
+ pcie node
+Date: Tue, 26 Jan 2021 00:54:13 +0100
+Message-ID: <4620030.31r3eYUQgx@phil>
+In-Reply-To: <20210122180559.18171-1-jbx6244@gmail.com>
+References: <20210122180559.18171-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_184047_816620_A3A17432 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20210125_185416_441610_1326C042 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,79 +64,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, jamie@jamieiles.com, wim@linux-watchdog.org,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Guenter,
-
-Am Samstag, 23. Januar 2021, 18:34:01 CET schrieb Guenter Roeck:
-> On Fri, Dec 18, 2020 at 01:05:27PM +0100, Johan Jonker wrote:
-> > The watchdog compatible strings are suppose to be SoC orientated.
-> > In the more recently added Rockchip SoC dtsi files only
-> > the fallback string "snps,dw-wdt" is used, so add the following
-> > compatible strings:
-> > 
-> > "rockchip,px30-wdt", "snps,dw-wdt"
-> > "rockchip,rk3228-wdt", "snps,dw-wdt"
-> > "rockchip,rk3308-wdt", "snps,dw-wdt"
-> > "rockchip,rk3328-wdt", "snps,dw-wdt"
-> > "rockchip,rk3399-wdt", "snps,dw-wdt"
-> > "rockchip,rv1108-wdt", "snps,dw-wdt"
-> > 
-> > make ARCH=arm dtbs_check
-> > DT_SCHEMA_FILES=Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> > 
-> > make ARCH=arm64 dtbs_check
-> > DT_SCHEMA_FILES=Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> > 
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Am Freitag, 22. Januar 2021, 19:05:59 CET schrieb Johan Jonker:
+> A test with the command below gives for example this error:
+> /arch/arm64/boot/dts/rockchip/rk3399-rock960.dt.yaml:
+> pcie@f8000000: 'device_type' is a required property
 > 
-> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
-just to clarify, do you expect me to pick up the dt-binding patch
-with the devicetree patches or do you want to take this individual
-patch through the watchdog tree instead?
-
-
-Thanks
-Heiko
-
-> > ---
-> >  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> > index f7ee9229c..b58596b18 100644
-> > --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> > +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> > @@ -18,10 +18,16 @@ properties:
-> >        - const: snps,dw-wdt
-> >        - items:
-> >            - enum:
-> > +              - rockchip,px30-wdt
-> >                - rockchip,rk3066-wdt
-> >                - rockchip,rk3188-wdt
-> > +              - rockchip,rk3228-wdt
-> >                - rockchip,rk3288-wdt
-> > +              - rockchip,rk3308-wdt
-> > +              - rockchip,rk3328-wdt
-> >                - rockchip,rk3368-wdt
-> > +              - rockchip,rk3399-wdt
-> > +              - rockchip,rv1108-wdt
-> >            - const: snps,dw-wdt
-> >  
-> >    reg:
+> Fix this by adding a device_type property to the rk3399 pcie node.
 > 
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
+> schemas/pci/pci-bus.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-
+already done in
+https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.11-armsoc/dtsfixes&id=43f20b1c6140896916f4e91aacc166830a7ba849
 
 
 
