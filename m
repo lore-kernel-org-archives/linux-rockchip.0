@@ -7,38 +7,38 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6362CC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 02:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52676C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 02:49:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB434225AC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 02:49:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB434225AC
+	by mail.kernel.org (Postfix) with ESMTPS id F3E73225AC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 02:49:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3E73225AC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OeQ84ikRTb+IPBHmW42iBxh5nhANo8Q5Fj64udoV55Q=; b=ept/x8HFT5IMFwi4zStRZ/gJuL
-	NwpuTKqsAG0MUchNa8NeTTW5DFcD+TKf/uSR9IAo6zywwu+urtL2RkXkGUkKCXWqwkHfgEVrHlS94
-	0MhNbtXmW6eSC3Y6scHG/WUOMUiN01uZJXRTkclzMYj9gZdFr1FAeZCQey0G0YWj1Ei2tl27dXV+I
-	8XqHCWTivhqSAvVSmegZcTQnwzWI6CkcaGK/klXHvdxWgwoFYl5d3uG2fFz4WKNH63Kqz5JlA4lBn
-	MYuTj1uJnvxMbzbkYRR380FNTAMckQlXaVFhWxTlAmNcB6RRv29b98ej/wY/xZLpBQDJ7ysvnut5j
-	Z7+b2NUg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Yhl5mfjroOStd+Tcbsh5UlzkXIgmqsJ6WkzSI7OQTh4=; b=sR1VNVsjVQKkX8PlYNMJeseu+
+	eZ1L7zTiuOUpEBnNfYs480NNTxBAOnyQpZEVSawVGgU/v5phqNezq9hUertRYtbR7YF+MFDMPEPWm
+	5rDevOJAqiwcZ3C/+iaDybUbNCFUddWPkuddugIBEx2w9LyzWE6E5yjtBbY4njmcZMbKP5O7ZS+he
+	SnibySI/fI+Da+tt4q1oQVJUuiOoBFR21r2a216OY19e+s8AttPOWZZKLgW2rIqtjwPx9i6ea5J8U
+	JeWS7srbjIoTVSlIY208L79q/VJahIuCAsNEpabJS/mgn6F2sni73UI6ur/9LJP1hvLRjK9IjrS1H
+	lk6JscLdA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l3rw6-0004LF-0b; Mon, 25 Jan 2021 02:49:02 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1l3rwp-0004PU-Mz; Mon, 25 Jan 2021 02:49:47 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l3rw1-0004JF-27
- for linux-rockchip@lists.infradead.org; Mon, 25 Jan 2021 02:49:00 +0000
-Received: from localhost (unknown [192.168.167.69])
- by lucky1.263xmail.com (Postfix) with ESMTP id 43D03C629F;
- Mon, 25 Jan 2021 10:48:48 +0800 (CST)
+ id 1l3rwh-0004OR-Dk
+ for linux-rockchip@lists.infradead.org; Mon, 25 Jan 2021 02:49:46 +0000
+Received: from localhost (unknown [192.168.167.70])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 5783ECB163;
+ Mon, 25 Jan 2021 10:49:32 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,10 +46,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from xxm-vm.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P19895T139773254842112S1611542921937758_; 
- Mon, 25 Jan 2021 10:48:47 +0800 (CST)
+ P13518T140326186465024S1611542968353336_; 
+ Mon, 25 Jan 2021 10:49:31 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <795ec5fdb5e2b7467358464f6eed9eb5>
+X-UNIQUE-TAG: <8107ebce3468964434dc359112aff8ee>
 X-RL-SENDER: xxm@rock-chips.com
 X-SENDER: xxm@rock-chips.com
 X-LOGIN-NAME: xxm@rock-chips.com
@@ -60,15 +60,16 @@ X-System-Flag: 0
 From: Simon Xue <xxm@rock-chips.com>
 To: Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
- controller
-Date: Mon, 25 Jan 2021 10:48:24 +0800
-Message-Id: <20210125024824.634583-1-xxm@rock-chips.com>
+Subject: [PATCH v3 2/2] PCI: rockchip: add DesignWare based PCIe controller
+Date: Mon, 25 Jan 2021 10:49:27 +0800
+Message-Id: <20210125024927.634634-1-xxm@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210125024824.634583-1-xxm@rock-chips.com>
+References: <20210125024824.634583-1-xxm@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210124_214858_065192_C1258370 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20210124_214945_491540_86EB8717 
+X-CRM114-Status: GOOD (  24.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,161 +83,351 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>,
- Simon Xue <xxm@rock-chips.com>
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ Johan Jonker <jbx6244@gmail.com>, Simon Xue <xxm@rock-chips.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document DT bindings for PCIe controller found on Rockchip SoC.
+pcie-dw-rockchip is based on DWC IP. But pcie-rockchip-host
+is Rockchip designed IP which is only used for RK3399. So all the following
+non-RK3399 SoCs should use this driver.
 
 Signed-off-by: Simon Xue <xxm@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
- .../bindings/pci/rockchip-dw-pcie.yaml        | 133 ++++++++++++++++++
- 1 file changed, 133 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+ drivers/pci/controller/dwc/Kconfig            |   9 +
+ drivers/pci/controller/dwc/Makefile           |   1 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 286 ++++++++++++++++++
+ 3 files changed, 296 insertions(+)
+ create mode 100644 drivers/pci/controller/dwc/pcie-dw-rockchip.c
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
+index 22c5529e9a65..aee408fe9283 100644
+--- a/drivers/pci/controller/dwc/Kconfig
++++ b/drivers/pci/controller/dwc/Kconfig
+@@ -214,6 +214,15 @@ config PCIE_ARTPEC6_EP
+ 	  Enables support for the PCIe controller in the ARTPEC-6 SoC to work in
+ 	  endpoint mode. This uses the DesignWare core.
+ 
++config PCIE_ROCKCHIP_DW_HOST
++	bool "Rockchip DesignWare PCIe controller"
++	select PCIE_DW
++	select PCIE_DW_HOST
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	depends on OF
++	help
++	  Enables support for the DW PCIe controller in the Rockchip SoC.
++
+ config PCIE_INTEL_GW
+ 	bool "Intel Gateway PCIe host controller support"
+ 	depends on OF && (X86 || COMPILE_TEST)
+diff --git a/drivers/pci/controller/dwc/Makefile b/drivers/pci/controller/dwc/Makefile
+index a751553fa0db..30eef8e9ee8a 100644
+--- a/drivers/pci/controller/dwc/Makefile
++++ b/drivers/pci/controller/dwc/Makefile
+@@ -13,6 +13,7 @@ obj-$(CONFIG_PCI_LAYERSCAPE_EP) += pci-layerscape-ep.o
+ obj-$(CONFIG_PCIE_QCOM) += pcie-qcom.o
+ obj-$(CONFIG_PCIE_ARMADA_8K) += pcie-armada8k.o
+ obj-$(CONFIG_PCIE_ARTPEC6) += pcie-artpec6.o
++obj-$(CONFIG_PCIE_ROCKCHIP_DW_HOST) += pcie-dw-rockchip.o
+ obj-$(CONFIG_PCIE_INTEL_GW) += pcie-intel-gw.o
+ obj-$(CONFIG_PCIE_KIRIN) += pcie-kirin.o
+ obj-$(CONFIG_PCIE_HISI_STB) += pcie-histb.o
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
 new file mode 100644
-index 000000000000..24ea42203c14
+index 000000000000..07f6d1cd5853
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -0,0 +1,133 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -0,0 +1,286 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * PCIe host controller driver for Rockchip SoCs
++ *
++ * Copyright (C) 2021 Rockchip Electronics Co., Ltd.
++ *		http://www.rock-chips.com
++ *
++ * Author: Simon Xue <xxm@rock-chips.com>
++ */
 +
-+title: DesignWare based PCIe RC controller on Rockchip SoCs
++#include <linux/clk.h>
++#include <linux/gpio/consumer.h>
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/phy/phy.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/reset.h>
 +
-+maintainers:
-+  - Shawn Lin <shawn.lin@rock-chips.com>
-+  - Simon Xue <xxm@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
++#include "pcie-designware.h"
 +
-+description: |+
-+  RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
-+  PCIe IP and thus inherits all the common properties defined in
-+  designware-pcie.txt.
++/*
++ * The upper 16 bits of PCIE_CLIENT_CONFIG are a write
++ * mask for the lower 16 bits.  This allows atomic updates
++ * of the register without locking.
++ */
++#define HIWORD_UPDATE(mask, val) (((mask) << 16) | (val))
++#define HIWORD_UPDATE_BIT(val)	HIWORD_UPDATE(val, val)
 +
-+allOf:
-+  - $ref: /schemas/pci/pci-bus.yaml#
++#define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
 +
-+# We need a select here so we don't match all nodes with 'snps,dw-pcie'
-+select:
-+  properties:
-+    compatible:
-+      contains:
-+        const: rockchip,rk3568-pcie
-+  required:
-+    - compatible
++#define PCIE_CLIENT_RC_MODE		HIWORD_UPDATE_BIT(0x40)
++#define PCIE_CLIENT_ENABLE_LTSSM	HIWORD_UPDATE_BIT(0xc)
++#define PCIE_SMLH_LINKUP		BIT(16)
++#define PCIE_RDLH_LINKUP		BIT(17)
++#define PCIE_L0S_ENTRY			0x11
++#define PCIE_CLIENT_GENERAL_CONTROL	0x0
++#define PCIE_CLIENT_GENERAL_DEBUG	0x104
++#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
++#define PCIE_CLIENT_LTSSM_STATUS	0x300
++#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
 +
-+properties:
-+  compatible:
-+    items:
-+      - const: rockchip,rk3568-pcie
-+      - const: snps,dw-pcie
++struct rockchip_pcie {
++	struct dw_pcie			pci;
++	void __iomem			*apb_base;
++	struct phy			*phy;
++	struct clk_bulk_data		*clks;
++	unsigned int			clk_cnt;
++	struct reset_control		*rst;
++	struct gpio_desc		*rst_gpio;
++	struct regulator                *vpcie3v3;
++};
 +
-+  reg:
-+    items:
-+      - description: Data Bus Interface (DBI) registers
-+      - description: Rockchip designed configuration registers
++static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
++					     u32 reg)
++{
++	return readl(rockchip->apb_base + reg);
++}
 +
-+  clocks:
-+    items:
-+      - description: AHB clock for PCIe master
-+      - description: AHB clock for PCIe slave
-+      - description: AHB clock for PCIe dbi
-+      - description: APB clock for PCIe
-+      - description: Auxiliary clock for PCIe
++static void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
++						u32 val, u32 reg)
++{
++	writel(val, rockchip->apb_base + reg);
++}
 +
-+  clock-names:
-+    items:
-+      - const: aclk_mst
-+      - const: aclk_slv
-+      - const: aclk_dbi
-+      - const: pclk
-+      - const: aux
++static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
++{
++	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
++				 PCIE_CLIENT_GENERAL_CONTROL);
++}
 +
-+  msi-map: true
++static int rockchip_pcie_link_up(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	u32 val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_LTSSM_STATUS);
 +
-+  num-lanes: true
++	if ((val & (PCIE_RDLH_LINKUP | PCIE_SMLH_LINKUP)) == 0x30000 &&
++	    (val & GENMASK(5, 0)) == PCIE_L0S_ENTRY)
++		return 1;
 +
-+  phys:
-+    maxItems: 1
++	return 0;
++}
 +
-+  phy-names:
-+    const: pcie-phy
++static int rockchip_pcie_start_link(struct dw_pcie *pci)
++{
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
 +
-+  power-domains:
-+    maxItems: 1
++	/* Reset device */
++	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
++	msleep(100);
++	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
 +
-+  ranges:
-+    maxItems: 3
++	rockchip_pcie_enable_ltssm(rockchip);
 +
-+  resets:
-+    maxItems: 1
++	return 0;
++}
 +
-+  reset-names:
-+    const: pipe
++static void rockchip_pcie_fast_link_setup(struct rockchip_pcie *rockchip)
++{
++	u32 val;
 +
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+  - msi-map
-+  - num-lanes
-+  - phys
-+  - phy-names
-+  - power-domains
-+  - resets
-+  - reset-names
++	/* LTSSM EN ctrl mode */
++	val = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_HOT_RESET_CTRL);
++	val |= PCIE_LTSSM_ENABLE_ENHANCE | (PCIE_LTSSM_ENABLE_ENHANCE << 16);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++}
 +
-+unevaluatedProperties: false
++static int rockchip_pcie_host_init(struct pcie_port *pp)
++{
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
 +
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
++	rockchip_pcie_fast_link_setup(rockchip);
 +
-+    bus {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
++	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_RC_MODE,
++				 PCIE_CLIENT_GENERAL_CONTROL);
 +
-+        pcie3x2: pcie@fe280000 {
-+            compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
-+            reg = <0x3 0xc0800000 0x0 0x400000>,
-+                  <0x0 0xfe280000 0x0 0x10000>;
-+            reg-names = "pcie-dbi", "pcie-apb";
-+            bus-range = <0x20 0x2f>;
-+            clocks = <&cru 143>, <&cru 144>,
-+                     <&cru 145>, <&cru 146>,
-+                     <&cru 147>;
-+            clock-names = "aclk_mst", "aclk_slv",
-+                          "aclk_dbi", "pclk",
-+                          "aux";
-+            device_type = "pci";
-+            linux,pci-domain = <2>;
-+            max-link-speed = <2>;
-+            msi-map = <0x2000 &its 0x2000 0x1000>;
-+            num-lanes = <2>;
-+            phys = <&pcie30phy>;
-+            phy-names = "pcie-phy";
-+            power-domains = <&power 15>;
-+            ranges = <0x00000800 0x0 0x80000000 0x3 0x80000000 0x0 0x800000>,
-+                     <0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000>,
-+                     <0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
-+            resets = <&cru 193>;
-+            reset-names = "pipe";
-+            #address-cells = <3>;
-+            #size-cells = <2>;
-+        };
-+    };
-+...
++	return 0;
++}
++
++static const struct dw_pcie_host_ops rockchip_pcie_host_ops = {
++	.host_init = rockchip_pcie_host_init,
++};
++
++static int rockchip_pcie_clk_init(struct rockchip_pcie *rockchip)
++{
++	struct device *dev = rockchip->pci.dev;
++	int ret;
++
++	ret = devm_clk_bulk_get_all(dev, &rockchip->clks);
++	if (ret < 0)
++		return ret;
++
++	rockchip->clk_cnt = ret;
++
++	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++static int rockchip_pcie_resource_get(struct platform_device *pdev,
++				      struct rockchip_pcie *rockchip)
++{
++	rockchip->apb_base = devm_platform_ioremap_resource_byname(pdev, "apb");
++	if (IS_ERR(rockchip->apb_base))
++		return PTR_ERR(rockchip->apb_base);
++
++	rockchip->rst_gpio = devm_gpiod_get_optional(&pdev->dev, "reset",
++						     GPIOD_OUT_HIGH);
++	if (IS_ERR(rockchip->rst_gpio))
++		return PTR_ERR(rockchip->rst_gpio);
++
++	return 0;
++}
++
++static int rockchip_pcie_phy_init(struct rockchip_pcie *rockchip)
++{
++	int ret;
++	struct device *dev = rockchip->pci.dev;
++
++	rockchip->phy = devm_phy_get(dev, "pcie-phy");
++	if (IS_ERR(rockchip->phy))
++		return dev_err_probe(dev, PTR_ERR(rockchip->phy),
++				     "missing phy\n");
++
++	ret = phy_init(rockchip->phy);
++	if (ret < 0)
++		return ret;
++
++	phy_power_on(rockchip->phy);
++
++	return 0;
++}
++
++static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
++{
++	phy_exit(rockchip->phy);
++	phy_power_off(rockchip->phy);
++}
++
++static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
++{
++	struct device *dev = rockchip->pci.dev;
++	int ret;
++
++	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
++	if (IS_ERR(rockchip->rst))
++		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
++				     "failed to get reset lines\n");
++
++	ret = reset_control_deassert(rockchip->rst);
++
++	return ret;
++}
++
++static const struct dw_pcie_ops dw_pcie_ops = {
++	.link_up = rockchip_pcie_link_up,
++	.start_link = rockchip_pcie_start_link,
++};
++
++static int rockchip_pcie_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct rockchip_pcie *rockchip;
++	struct pcie_port *pp;
++	int ret;
++
++	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
++	if (!rockchip)
++		return -ENOMEM;
++
++	platform_set_drvdata(pdev, rockchip);
++
++	rockchip->pci.dev = dev;
++	rockchip->pci.ops = &dw_pcie_ops;
++
++	pp = &rockchip->pci.pp;
++	pp->ops = &rockchip_pcie_host_ops;
++
++	ret = rockchip_pcie_resource_get(pdev, rockchip);
++	if (ret)
++		return ret;
++
++	/* DON'T MOVE ME: must be enable before phy init */
++	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
++	if (IS_ERR(rockchip->vpcie3v3))
++		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
++				     "failed to get vpcie3v3 regulator\n");
++
++	if (rockchip->vpcie3v3) {
++		ret = regulator_enable(rockchip->vpcie3v3);
++		if (ret) {
++			dev_err(dev, "fail to enable vpcie3v3 regulator\n");
++			return ret;
++		}
++	}
++
++	ret = rockchip_pcie_phy_init(rockchip);
++	if (ret)
++		goto disable_regulator;
++
++	ret = rockchip_pcie_reset_control_release(rockchip);
++	if (ret)
++		goto deinit_phy;
++
++	ret = rockchip_pcie_clk_init(rockchip);
++	if (ret)
++		goto deinit_phy;
++
++	ret = dw_pcie_host_init(pp);
++	if (ret)
++		goto deinit_clk;
++
++	return 0;
++
++deinit_clk:
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++deinit_phy:
++	rockchip_pcie_phy_deinit(rockchip);
++disable_regulator:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++
++	return ret;
++}
++
++MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
++
++static const struct of_device_id rockchip_pcie_of_match[] = {
++	{ .compatible = "rockchip,rk3568-pcie", },
++	{ /* sentinel */ },
++};
++
++static struct platform_driver rockchip_pcie_driver = {
++	.driver = {
++		.name	= "rockchip-dw-pcie",
++		.of_match_table = rockchip_pcie_of_match,
++		.suppress_bind_attrs = true,
++	},
++	.probe = rockchip_pcie_probe,
++};
++
++builtin_platform_driver(rockchip_pcie_driver);
 -- 
 2.25.1
 
