@@ -2,71 +2,76 @@ Return-Path: <SRS0=VpfD=G4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0C74C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 11:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA71FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 14:51:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A06C22D04
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 11:53:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A06C22D04
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 68CB6208CA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jan 2021 14:51:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68CB6208CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x6GBXvoYge+KZJWc0/K93/J73W3TiYazrp4pZDoNdFs=; b=qpW7OCcCFBr1x3Y+fIzYLUyTp
-	usi7rdaKg9zMEm7uouWgEn2OeLW+PmShqH+bbnp9nmbixfn4kd1yJ6yaF5lhYeWzG+DsnEPJjES7R
-	CjRoRxokkqRSz2BOdrcGbKjDpKBPUSCN+tebiWo0D+768JwOf+jIJBJXXi0SOpqevRMa+Xs6sBlQg
-	9AZQxf8PnI/Ghi/BihlDION9gIPhDbJOsJvu5r2FSerFyTjW1i+VG7PpEEyJhtMFR0Zgf8fWuJIul
-	6vuYo3/ZOcG1FARbruipAVPFUcsIMwRxdiBvLoJjzyXxRbU4Kv2oOlPLFtwd3XrsnDd8VzJBrAEId
-	KUN3Bdoyw==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G+OwvTQpyB/5eIi7Ji66v7yZ3QKJ4hlF5XeKH/X06y0=; b=Fe5/85eqUGsyBXzOxv73q11BpI
+	aAS8vRL8OvMKpGDhLlpWvvFbhgpwuJp1G+sm1xkuU2cujsfmc6w9Sbl6rSfinrEMYtRNUhzkifqij
+	POoXRXQKFu+D9eu6T/75TNlAuWZybmdG9BPUSxVqaBnvm5uU19UtmMsXgsxsBJQgXWOxypnKk5A2z
+	6r66hmEnGBxzGD1KgxQGNYw83AcVcjXrJoYqJErX+HYH/apOUtirjNfDJgOymfQxUTL2WEKEI48+C
+	z7CfiY9Y6+GSUrEd/G2h3sFVsBpQNDSc18F9JoGakOCKA5gALmUFxCzUDxI5LcGOEV2gK4E/r/q4G
+	KRWAY8DA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l40Qa-0003Ds-0J; Mon, 25 Jan 2021 11:53:04 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1l43DV-0006vP-C4; Mon, 25 Jan 2021 14:51:45 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l40QU-0003B8-3P; Mon, 25 Jan 2021 11:52:59 +0000
-IronPort-SDR: JqhrDdetE1Mi9y+6iKDqLd2l60Gy2+AkhmfU/4lusldD+PF9nUU49WBH1bHB+OmBKkl/cbTqx7
- WjNzu0r5B3aQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9874"; a="178934727"
-X-IronPort-AV: E=Sophos;i="5.79,373,1602572400"; d="scan'208";a="178934727"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jan 2021 03:52:51 -0800
-IronPort-SDR: 48DaYsnvHv+gYU3iB0lIM7aytVWrCoDavD2mjf0kyTM07tuyUD4vfRcB0epq/cCvtOYMGfxoLJ
- ZQzg2k7suibA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.79,373,1602572400"; d="scan'208";a="472167193"
-Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
- by fmsmga001.fm.intel.com with SMTP; 25 Jan 2021 03:52:39 -0800
-Received: by stinkbox (sSMTP sendmail emulation);
- Mon, 25 Jan 2021 13:52:38 +0200
-Date: Mon, 25 Jan 2021 13:52:38 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH v2 08/11] drm: Rename plane->state variables in atomic
- update and disable
-Message-ID: <YA6xBuECFjzjY7gG@intel.com>
-References: <20210121163537.1466118-1-maxime@cerno.tech>
- <20210121163537.1466118-8-maxime@cerno.tech>
- <YArBy2DKdCct5cYW@intel.com>
- <20210125105218.kv63vjbxz5b35hdo@gilmour>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210125105218.kv63vjbxz5b35hdo@gilmour>
-X-Patchwork-Hint: comment
+ id 1l43DS-0006uG-SD
+ for linux-rockchip@lists.infradead.org; Mon, 25 Jan 2021 14:51:43 +0000
+Received: by mail-ot1-f43.google.com with SMTP id k8so12949213otr.8
+ for <linux-rockchip@lists.infradead.org>; Mon, 25 Jan 2021 06:51:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=t6AjeOuEVABHdAQoH+abbWUN78XuGNp/FJaAukBK/cE=;
+ b=CFh+mSlDk9X3bMvDbUQwuSeMsMY0FhTIltblLsgbGANhJzsEs7DA+MehDHqH0snAOv
+ lDDGiV7DIo1sSqII5Fb3uX4nBRkNx1voqgb3wUduhjGHTsOkfgcLBSfenfZgFm/2d6hM
+ 16HHOMo6jrGouEk/1IM6MIM13dV8KTMW40qffj6Qp+xKCpha+jcgkfGM80V+0LT2uL3U
+ oYY4lKKE8DtLj4w7xwRj753OqaSQO2cS+gapZUowd+BaRtRAeytlH4w+wJTwyZ5A72Rs
+ FtJMe0nzuSUGz/9D26fkAHZYevGeIMRsy6xNCVuTdktq/kf0xsNTq1qhnb12RUsmSj5Q
+ 3b+Q==
+X-Gm-Message-State: AOAM5324rr2PVMhHNXEuP+3+pot8Ya5994gs82p2wcFHFjNX+mAkkBFf
+ 5pWccRLZZYoMrbShomizjg==
+X-Google-Smtp-Source: ABdhPJyh75is8MUYkM1d0LK6XFWMdy79UP8Cp982xu3Hn3yFCOuUkWG0Yo23WM7csu9NmZ36m1oMzw==
+X-Received: by 2002:a9d:5544:: with SMTP id h4mr732610oti.104.1611586301690;
+ Mon, 25 Jan 2021 06:51:41 -0800 (PST)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id z8sm3258726oon.10.2021.01.25.06.51.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Jan 2021 06:51:40 -0800 (PST)
+Received: (nullmailer pid 327906 invoked by uid 1000);
+ Mon, 25 Jan 2021 14:51:35 -0000
+From: Rob Herring <robh@kernel.org>
+To: Simon Xue <xxm@rock-chips.com>
+In-Reply-To: <20210125024824.634583-1-xxm@rock-chips.com>
+References: <20210125024824.634583-1-xxm@rock-chips.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+Date: Mon, 25 Jan 2021 08:51:35 -0600
+Message-Id: <1611586295.665555.327905.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210125_065258_300747_BC6A5365 
-X-CRM114-Status: GOOD (  25.16  )
+X-CRM114-CacheID: sfid-20210125_095142_915903_99165D19 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,147 +84,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org,
- linux-mips@vger.kernel.org, Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Daniel Vetter <daniel.vetter@intel.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jerome Brunet <jbrunet@baylibre.com>,
- Marek Vasut <marex@denx.de>, linux-samsung-soc@vger.kernel.org,
- Joonyoung Shim <jy0922.shim@samsung.com>, linux-rockchip@lists.infradead.org,
- Kevin Hilman <khilman@baylibre.com>, Russell King <linux@armlinux.org.uk>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>, Sandy Huang <hjc@rock-chips.com>,
- NXP Linux Team <linux-imx@nxp.com>, Chen Feng <puck.chen@hisilicon.com>,
- Dave Airlie <airlied@redhat.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
- Alison Wang <alison.wang@nxp.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- linux-mediatek@lists.infradead.org, Vincent Abriou <vincent.abriou@st.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Sean Paul <sean@poorly.run>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Tomi Valkeinen <tomba@kernel.org>,
- Jyri Sarha <jyri.sarha@iki.fi>, Seung-Woo Kim <sw0312.kim@samsung.com>,
- Philippe Cornu <philippe.cornu@st.com>, linux-kernel@vger.kernel.org,
- Yannick Fertre <yannick.fertre@st.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, Tian Tao <tiantao6@hisilicon.com>,
- freedreno@lists.freedesktop.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 25, 2021 at 11:52:18AM +0100, Maxime Ripard wrote:
-> Hi Ville,
-> =
+On Mon, 25 Jan 2021 10:48:24 +0800, Simon Xue wrote:
+> Document DT bindings for PCIe controller found on Rockchip SoC.
+> 
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> ---
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 133 ++++++++++++++++++
+>  1 file changed, 133 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> 
 
-> On Fri, Jan 22, 2021 at 02:15:07PM +0200, Ville Syrj=E4l=E4 wrote:
-> > On Thu, Jan 21, 2021 at 05:35:33PM +0100, Maxime Ripard wrote:
-> > > Some drivers are storing the plane->state pointer in atomic_update and
-> > > atomic_disable in a variable simply called state, while the state pas=
-sed
-> > > as an argument is called old_state.
-> > > =
+My bot found errors running 'make dt_binding_check' on your patch:
 
-> > > In order to ease subsequent reworks and to avoid confusing or
-> > > inconsistent names, let's rename those variables to new_state.
-> > > =
+yamllint warnings/errors:
 
-> > > This was done using the following coccinelle script, plus some manual
-> > > changes for mtk and tegra.
-> > > =
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml: pcie@fe280000: ranges: 'oneOf' conditional failed, one must be fixed:
+	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml: pcie@fe280000: ranges: 'oneOf' conditional failed, one must be fixed:
+		[[2048, 0, 2147483648, 3, 2147483648, 0, 8388608], [2164260864, 0, 2155872256, 3, 2155872256, 0, 1048576], [2197815296, 0, 2156920832, 3, 2156920832, 0, 1064304640]] is not of type 'boolean'
+		True was expected
+		[[2048, 0, 2147483648, 3, 2147483648, 0, 8388608], [2164260864, 0, 2155872256, 3, 2155872256, 0, 1048576], [2197815296, 0, 2156920832, 3, 2156920832, 0, 1064304640]] is not of type 'null'
+	2048 is not one of [16777216, 33554432, 50331648, 1107296256, 1124073472, 2164260864, 2181038080, 2197815296, 3254779904, 3271557120]
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml: pcie@fe280000: ranges: 'oneOf' conditional failed, one must be fixed:
+	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml: pcie@fe280000: ranges: 'oneOf' conditional failed, one must be fixed:
+		[[2048, 0, 2147483648, 3, 2147483648, 0, 8388608], [2164260864, 0, 2155872256, 3, 2155872256, 0, 1048576], [2197815296, 0, 2156920832, 3, 2156920832, 0, 1064304640]] is not of type 'boolean'
+		True was expected
+		[[2048, 0, 2147483648, 3, 2147483648, 0, 8388608], [2164260864, 0, 2155872256, 3, 2155872256, 0, 1048576], [2197815296, 0, 2156920832, 3, 2156920832, 0, 1064304640]] is not of type 'null'
+	2048 is not one of [16777216, 33554432, 50331648, 1107296256, 1124073472, 2164260864, 2181038080, 2197815296, 3254779904, 3271557120]
+	From schema: /usr/local/lib/python3.8/dist-packages/dtschema/schemas/pci/pci-bus.yaml
 
-> > > @ plane_atomic_func @
-> > > identifier helpers;
-> > > identifier func;
-> > > @@
-> > > =
+See https://patchwork.ozlabs.org/patch/1431082
 
-> > > (
-> > >  static const struct drm_plane_helper_funcs helpers =3D {
-> > >  	...,
-> > >  	.atomic_disable =3D func,
-> > > 	...,
-> > >  };
-> > > |
-> > >  static const struct drm_plane_helper_funcs helpers =3D {
-> > >  	...,
-> > >  	.atomic_update =3D func,
-> > > 	...,
-> > >  };
-> > > )
-> > > =
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-> > > @ moves_new_state_old_state @
-> > > identifier plane_atomic_func.func;
-> > > identifier plane;
-> > > symbol old_state;
-> > > symbol state;
-> > > @@
-> > > =
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-> > >  func(struct drm_plane *plane, struct drm_plane_state *old_state)
-> > >  {
-> > >  	...
-> > > -	struct drm_plane_state *state =3D plane->state;
-> > > +	struct drm_plane_state *new_state =3D plane->state;
-> > > 	...
-> > >  }
-> > > =
+pip3 install dtschema --upgrade
 
-> > > @ depends on moves_new_state_old_state @
-> > > identifier plane_atomic_func.func;
-> > > identifier plane;
-> > > identifier old_state;
-> > > symbol state;
-> > > @@
-> > > =
+Please check and re-submit.
 
-> > >  func(struct drm_plane *plane, struct drm_plane_state *old_state)
-> > >  {
-> > >  	<...
-> > > -	state
-> > > +	new_state
-> > > 	...>
-> > =
-
-> > Was going to say that this migh eat something else, but I guess
-> > the dependency prevents that?
-> =
-
-> Yeah, the dependency takes care of this
-> =
-
-> > Another way to avoid that I suppose would be to declare 'state'
-> > as
-> > symbol moves_new_state_old_state.state;
-> > =
-
-> > That would probably make the intent a bit more obvious, even with
-> > the dependency. Or does a dependency somehow automagically imply
-> > that?
-> =
-
-> I'm not sure if it does, but it's a symbol here not an identifier or an
-> expression, so here moves_new_state_old_state.state would always resolve
-> to state (and only state) anyway
-
-Hm. Right. OK, cocci bits look good to me. Variable naming
-bikeshed I'll leave to others :)
-
-Reviewed-by: Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com>
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
