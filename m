@@ -2,84 +2,69 @@ Return-Path: <SRS0=k6cp=G5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F3C6C433E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jan 2021 11:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B47D0C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jan 2021 13:25:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D971723108
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jan 2021 11:02:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D971723108
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7B9B9206F9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jan 2021 13:25:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B9B9206F9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ooa7ngO3yY1PgjD2cnG9dwNGBG5oP4JsOzhSep1GNKU=; b=WSMUoZY61kXNVD6fgvZ9x0qcDz
-	GKUQd2HkPEsAAGLl4Di0Zw8oDmgJ8jFbFY4rcAxBDHpdGuLZQzDiZQ4YjqwBI0NlhsbGXAwP3LBkR
-	p1S1V/nyJkJx0iRJhHwLyTZQ5K6cNLBxJZopLxTFMrULpc4ZIljt4EG5fIBKMFQp0f1hAq7BGXhjg
-	LoRn7nMjyMgQ1uPIrBewXs+5RPNK8qxLGpXlyilp9/Igwhc6TUZM2uAoZrew+PikCFB8E/wqOzkWR
-	Y+QNnQamDUSxAj8ZYAn97pWB/2V9qciACz7+MNWu0Srw6pvadpt/reqPKTQRDWqojMq+UxVVi4DnS
-	5M7y+bbw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=KUC8dTL7QMHZ+bBxkwXeRjdVeg9ZuLL4jG3e8PhLnyI=; b=gke+jy+4XgCfGDoyyXlp6IkDP
+	dnlTi1tjoV4DY+GVNDeErVsVZGIzIRhI4KK+2u16Hj90Z63S6NpfOIvk9yMka7kYE+4WdSBFuVLPm
+	gL/GRd/rtHZlo8V0by8TGMoyMQj7s0oUPOesy/juuc+8i57Q3acPyE1qZzKX6COObY/yb6NpN7Fq3
+	qh2UTLPRuJjd5ZHyrbam1PdVXNEqSSvVT7IhrY5MTKiRMsxU6SuLV9ocYk9GgtS2d+z/P0p7B7jxh
+	9qYCNVK+MJ+6Y8fnR13EDKn/oghEPVyMCZQSQoIZV8wgSjWYzhBHbAfhT6RViv41wDeaQHa+NSgWM
+	aetGBESBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l4M7H-0003Fn-5R; Tue, 26 Jan 2021 11:02:35 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1l4OL8-0007qz-OD; Tue, 26 Jan 2021 13:25:03 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l4M7D-0003EZ-E7; Tue, 26 Jan 2021 11:02:32 +0000
-Received: by mail-ej1-x630.google.com with SMTP id bl23so1721281ejb.5;
- Tue, 26 Jan 2021 03:02:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=9ExoicPWb9nj37ivHRf0sfAyfETbOTvzRxB/xRvmXmU=;
- b=gULRw+fQvf6cEe5Jiju+B7Su1M7tU8zPqZgjfo1mPadYvRypYxul3cs9pu/COoyDJT
- TRlb4Scm0NubDKK0NBbvUatnV0YGTkpjdl74Xti1i8GIbMCKw5CIlvBziTw7n3rpzL09
- pdwRh9qRCXaGe535cg5CLr3UEFRR0VJ201z1cAcaf2+DdP9NVGVHHLqzvH0vrm+Y5wry
- K5iE0r9CmUnRa59orDPb8uyQbcHydzTjhCysHH8uDPJiUaeh9IooxMCNLgSrOYEoQRei
- 7lZINf5OB3Q29V5fwqh4KIcH0B1iXxoWG449ZVeBp2rs/odQyk9POcMXrhB0zXpkhF2W
- uIUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=9ExoicPWb9nj37ivHRf0sfAyfETbOTvzRxB/xRvmXmU=;
- b=JrjBrPCQ6fFmyZ6Cb/VwUhguxIEQ5ZhXJ/jKInk1DSxrEYnKCrd8wWzuA5MhMeKWeM
- 74BvY1CjF6i2EdaJV3c+yu9xUKhTnuWUkV8/VEKeO0IhJr015KRCazWUcYSee6apxt4N
- I6Szr5CL0VvhSmapoa6uukNR+hoLj0JV9Qpell89S0lbtRHYNJ7PEEYKNP2NI4GPsWF7
- 5hxTi9pFtSkDm4SiHlHA3JNkDUdrrIBPzRMw2sm1U/jVCYBOjC434Mo4tIlJocZCNuMI
- T4zsYi6VTBSs+3SOd3zk2XVgBzIe26PbASPWc9I7/O6M9WyjEYHSP7Jh1O2bjuuNz+B/
- wUGQ==
-X-Gm-Message-State: AOAM533Vksqcmkws5IA2sESt4F5Q8MPIsaBcXcoceNJNashz7duEeLGo
- CBWTWN7tP/z3hP5Rs/HRceyfKx3B7bc=
-X-Google-Smtp-Source: ABdhPJwD9bEZYnFDqHJRo/ilNGeJy4pvg35s/7WkgPHClbyyzEy8XmUpbC8NKCoi6q6Eq7z2G7aUrw==
-X-Received: by 2002:a17:907:94d4:: with SMTP id
- dn20mr3126122ejc.397.1611658950596; 
- Tue, 26 Jan 2021 03:02:30 -0800 (PST)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id a2sm9533408ejk.80.2021.01.26.03.02.29
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 26 Jan 2021 03:02:29 -0800 (PST)
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Subject: [PATCH 2/2] arm64: dts: rockchip: fix pinctrl sleep nodename for
- rk3399.dtsi
-Date: Tue, 26 Jan 2021 12:02:21 +0100
-Message-Id: <20210126110221.10815-2-jbx6244@gmail.com>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20210126110221.10815-1-jbx6244@gmail.com>
-References: <20210126110221.10815-1-jbx6244@gmail.com>
+ id 1l4OL4-0007om-A2; Tue, 26 Jan 2021 13:24:59 +0000
+IronPort-SDR: XaU55DbI5Qo+hlSSIRltyDZkcArTX9POvwvs0bOX/cq/ChDOqLhm4R+evFI10/X9aiAHDTIgM2
+ dq92SLkxzfsA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9875"; a="198687066"
+X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="198687066"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2021 05:24:54 -0800
+IronPort-SDR: g4Zswe3qz4zMid/EyEG5xz4WWhFPriWd/t2t5KrG0ShP0j9WNEEJayXNCJQTEkRkM2/IHRNzgx
+ zk+bb8SSGplQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.79,375,1602572400"; d="scan'208";a="369103591"
+Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
+ by orsmga002.jf.intel.com with SMTP; 26 Jan 2021 05:24:36 -0800
+Received: by stinkbox (sSMTP sendmail emulation);
+ Tue, 26 Jan 2021 15:24:35 +0200
+Date: Tue, 26 Jan 2021 15:24:35 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Maxime Ripard <maxime@cerno.tech>
+Subject: Re: [PATCH v2 10/11] drm: Use state helper instead of the plane
+ state pointer
+Message-ID: <YBAYE4YH4bgURmuf@intel.com>
+References: <20210121163537.1466118-1-maxime@cerno.tech>
+ <20210121163537.1466118-10-maxime@cerno.tech>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210121163537.1466118-10-maxime@cerno.tech>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210126_060231_507814_C9E2BCF3 
-X-CRM114-Status: GOOD (  14.44  )
+X-CRM114-CacheID: sfid-20210126_082458_491685_9F77754B 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,45 +77,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org,
+ Russell King <linux@armlinux.org.uk>, Paul Cercueil <paul@crapouillou.net>,
+ Thierry Reding <thierry.reding@gmail.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ Daniel Vetter <daniel.vetter@intel.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Jerome Brunet <jbrunet@baylibre.com>, Marek Vasut <marex@denx.de>,
+ linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ Joonyoung Shim <jy0922.shim@samsung.com>, linux-rockchip@lists.infradead.org,
+ Alexey Brodkin <abrodkin@synopsys.com>, Michal Simek <michal.simek@xilinx.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Roland Scheidegger <sroland@vmware.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
+ VMware Graphics <linux-graphics-maintainer@vmware.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Chen Feng <puck.chen@hisilicon.com>,
+ Dave Airlie <airlied@redhat.com>, Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
+ Alison Wang <alison.wang@nxp.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-mips@vger.kernel.org, Hans de Goede <hdegoede@redhat.com>,
+ linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org,
+ linux-mediatek@lists.infradead, Hyun Kwon <hyun.kwon@xilinx.com>,
+ Philippe Cornu <philippe.cornu@st.com>, Sandy Huang <hjc@rock-chips.com>,
+ Yannick Fertre <yannick.fertre@st.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, freedreno@lists.freedesktop.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A test with the command below aimed at powerpc generates
-notifications in the Rockchip arm64 tree.
+On Thu, Jan 21, 2021 at 05:35:35PM +0100, Maxime Ripard wrote:
+> Many drivers reference the plane->state pointer in order to get the
+> current plane state in their atomic_update or atomic_disable hooks,
+> which would be the new plane state in the global atomic state since
+> _swap_state happened when those hooks are run.
+> =
 
-Fix pinctrl "sleep" nodename by renaming it to "suspend"
-for rk3399.dtsi
+> Use the drm_atomic_get_new_plane_state helper to get that state to make it
+> more obvious.
+> =
 
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
+> This was made using the coccinelle script below:
+> =
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> @ plane_atomic_func @
+> identifier helpers;
+> identifier func;
+> @@
+> =
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index d0602f62f..6c571fee8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2347,7 +2347,7 @@
- 			};
- 		};
- 
--		sleep {
-+		suspend {
- 			ap_pwroff: ap-pwroff {
- 				rockchip,pins = <1 RK_PA5 1 &pcfg_pull_none>;
- 			};
--- 
-2.11.0
+> (
+>  static const struct drm_plane_helper_funcs helpers =3D {
+>  	...,
+>  	.atomic_disable =3D func,
+> 	...,
+>  };
+> |
+>  static const struct drm_plane_helper_funcs helpers =3D {
+>  	...,
+>  	.atomic_update =3D func,
+> 	...,
+>  };
+> )
+> =
 
+> @ adds_new_state @
+> identifier plane_atomic_func.func;
+> identifier plane, state;
+> identifier new_state;
+> @@
+> =
+
+>  func(struct drm_plane *plane, struct drm_atomic_state *state)
+>  {
+>  	...
+> -	struct drm_plane_state *new_state =3D plane->state;
+> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(st=
+ate, plane);
+> 	...
+>  }
+> =
+
+> @ include depends on adds_new_state @
+> @@
+> =
+
+>  #include <drm/drm_atomic.h>
+> =
+
+> @ no_include depends on !include && adds_new_state @
+> @@
+> =
+
+> + #include <drm/drm_atomic.h>
+>   #include <drm/...>
+> =
+
+> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+
+Looks great.
+
+Reviewed-by: Ville Syrj=E4l=E4 <ville.syrjala@linux.intel.com>
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
