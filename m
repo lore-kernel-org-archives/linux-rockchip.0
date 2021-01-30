@@ -1,68 +1,65 @@
-Return-Path: <SRS0=VXO/=HA=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=S6xn=HB=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47E54C433E0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96ACDC433E0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Jan 2021 11:31:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E638D64E19
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Jan 2021 09:09:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E638D64E19
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
+	by mail.kernel.org (Postfix) with ESMTPS id 50E1864DDD
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Jan 2021 11:31:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50E1864DDD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bR4YIqAR+0PKb7ZRJqCRkAoCupWFu/3C59Xx1CLzxKk=; b=rwp/D29IrV7ZV0z1U9iU+d5Uz
-	wcL0CtPhiIJnh1OhmfDVNJ22bM4FAcutclQZm7xBgrwCBtCvrI4nFxUgxzkEbMtP9KlVluyD3sxtD
-	LBA/XZLhJEAnrB4cbUmPN25EBzmQgPpatWvyYkndHRx2A2QaZMW4srl5l+RRA3YQuxLTBYVaCsiSB
-	ixxlroYOidW+HIDiJFSKUjp7TnY+Dskt9iRw/B48eeb7RRLD+o7PRqbaxYpXR1XA487rLmBe35Kug
-	ni435a/u01TUaXtWXY460IVNRwgl9rfPKbocsCGZp0xhRGwOahyDX9Mb5jTVBp2Uvar7z/fFZBzn9
-	OuWUy40Ng==;
+	 bh=NENRZuiBSM9/tpSqja+ONcuSUfAuNRDwyA7svC2F9NA=; b=lsAO0oT1YfC2lNmvmGHyTTZzd
+	xgGe9z+Q36nD4cFUbEbukCphJTxr6OpxIP/JkLJKR4ta/gmQ2uOIZAUezo8od8gl36YO0oNdwNr+p
+	iVK7oAJiTxJBztBRyqRSNx9o3629dgIVYedH2RrNkhxC80i1H0LyUpX8E0ZyWTxwdLOSknvCOQsi0
+	/aJkh7Mg8ODMRtm3A6qm6Wfu45vXVgzDZ9WT4hgMD+YbWqxhH8scEdWNTmABg9L4CgRvjS4lEqLKi
+	QalzqQXcMPsZQT0oXGeUwpvcm8+OrN620pSWaxqR+0x1cNKJ8XuuJ/vsxUFx5gmAg0t/jwMISLFh/
+	0cg5xPbNQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l5Pm2-0003F0-GG; Fri, 29 Jan 2021 09:09:02 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l5Plz-0003EB-EB; Fri, 29 Jan 2021 09:09:00 +0000
-Received: from [192.168.0.114] (unknown [49.207.221.54])
- by linux.microsoft.com (Postfix) with ESMTPSA id A73BA20B7192;
- Fri, 29 Jan 2021 01:08:47 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com A73BA20B7192
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1611911336;
- bh=zEbtQ5rEHy/dS0FS/n4EtAIZMIOqSB2/eyGBwQkBC6s=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Eq8xcESnyCbqMfMvOqeuQg+phUUz+UpfTyhwg01ftz2e7Mb50KG9NphUbI7d1izz9
- HuJfJ8GwgE+r3YgZ5LwfMT9EqiN98IhG+4JepvvHLXMKoUwHdKYyOsIEgEISD1q4s2
- DjHw8ZOHwqVqLInSLZ97zhz51QeGQAbZLwGwGmPU=
-Subject: Re: [PATCH v4 01/19] crypto: amcc: convert tasklets to use new
- tasklet_setup() API
-To: Herbert Xu <herbert@gondor.apana.org.au>, Allen Pais <allen.lkml@gmail.com>
-References: <20210121044126.152274-1-allen.lkml@gmail.com>
- <20210121044126.152274-2-allen.lkml@gmail.com>
- <20210129050551.GA5586@gondor.apana.org.au>
-From: Allen Pais <apais@linux.microsoft.com>
-Message-ID: <0440823c-39f9-670b-aa1f-a6804e83e99a@linux.microsoft.com>
-Date: Fri, 29 Jan 2021 14:38:41 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1l5oTM-00008q-I4; Sat, 30 Jan 2021 11:31:24 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l5oT3-0008Tp-0y; Sat, 30 Jan 2021 11:31:05 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 38FB164DDD;
+ Sat, 30 Jan 2021 11:31:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612006264;
+ bh=wR0IqTfIS+bxQ8ZZ4693iDOruzaEnXNEWqTlrwUflcU=;
+ h=From:To:List-Id:Cc:Subject:Date:In-Reply-To:References:From;
+ b=qmKlOsw1gbLVr5WTpkJXC98biGX8Xqd84SQV18kozJ5OA1kcujk9i7lj7nUBc6ds8
+ cv5p6HPpxS0pisZD/wd96ECBF9eldIqCCQePNJG+4PTqoQbTmpQjcVa+zm3Wwl2ygc
+ 5XWYa2HaVzgl5bnB6MH4znEQfg5K4fEEoMl7wnX3vxqgnYtqE27uXKMsLobMLXxRPS
+ dvGt0767SNvpykGcUIZIC69+t9GnlPuvTtySl1mnCDD9GtwZ+LmbB2xvwT4DJLMZoB
+ onnKWE3HP8cQhzpLMlAnWwugdM4BFKVUHrX4Q89KFrlcrIQhi2q2+SQJM0lWX60vOb
+ 5WOUkHIkq8ECg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	arm@kernel.org
+Subject: Re: [GIT PULL] Rockchip dts fixes for 5.11
+Date: Sat, 30 Jan 2021 12:30:49 +0100
+Message-Id: <161200623014.2192465.10050654314419322038.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <5429065.DvuYhMxLoT@phil>
+References: <5429065.DvuYhMxLoT@phil>
 MIME-Version: 1.0
-In-Reply-To: <20210129050551.GA5586@gondor.apana.org.au>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210129_040859_760651_97CB192C 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20210130_063105_154334_C3AD3AC5 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,67 +72,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
- aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
- jamie@jamieiles.com, jesper.nilsson@axis.com,
- linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
- k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
- gcherian@marvell.com, linux-mediatek@lists.infradead.org,
- lars.persson@axis.com, matthias.bgg@gmail.com, john.allen@amd.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
- davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+List-Id: <soc.lore.kernel.org>
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
+ linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cj4+IC0tLQo+PiAgIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYyB8IDcgKysr
-LS0tLQo+PiAgIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0p
-Cj4gCj4gVGhpcyBkb2Vzbid0IGV2ZW4gY29tcGlsZToKPiAKPiAgICBDQyBbTV0gIGRyaXZlcnMv
-Y3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUubwo+ICAgIENDIFtNXSAgZHJpdmVycy9jcnlwdG8v
-YW1jYy9jcnlwdG80eHhfYWxnLm8KPiAgICBDQyBbTV0gIGRyaXZlcnMvY3J5cHRvL2FtY2MvY3J5
-cHRvNHh4X3Rybmcubwo+ICAgIENIRUNLICAgLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80
-eHhfdHJuZy5jCj4gLi4vZHJpdmVycy9jcnlwdG8vYW1jYy9jcnlwdG80eHhfY29yZS5jOiBJbiBm
-dW5jdGlvbiDigJhjcnlwdG80eHhfY2lwaGVyX2RvbmXigJk6Cj4gLi4vZHJpdmVycy9jcnlwdG8v
-YW1jYy9jcnlwdG80eHhfY29yZS5jOjUyNjoxMzogd2FybmluZzogdmFyaWFibGUg4oCYYWRkcuKA
-mSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQo+ICAgIGRtYV9h
-ZGRyX3QgYWRkcjsKPiAgICAgICAgICAgICAgIF5+fn4KPiAuLi9kcml2ZXJzL2NyeXB0by9hbWNj
-L2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKAmGNyeXB0bzR4eF9haGFzaF9kb25l4oCZ
-Ogo+IC4uL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYzo1NTc6MjQ6IHdhcm5p
-bmc6IHZhcmlhYmxlIOKAmGN0eOKAmSBzZXQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1idXQtc2V0
-LXZhcmlhYmxlXQo+ICAgIHN0cnVjdCBjcnlwdG80eHhfY3R4ICpjdHg7Cj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgIF5+fgo+IEluIGZpbGUgaW5jbHVkZWQgZnJvbSA8Y29tbWFuZC1saW5lPjoK
-PiAuLi9kcml2ZXJzL2NyeXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmM6IEluIGZ1bmN0aW9uIOKA
-mGNyeXB0bzR4eF9iaF90YXNrbGV0X2Ni4oCZOgo+IC4uL2luY2x1ZGUvbGludXgva2VybmVsLmg6
-Njk0OjUxOiBlcnJvcjog4oCYc3RydWN0IGRldmljZeKAmSBoYXMgbm8gbWVtYmVyIG5hbWVkIOKA
-mHRhc2tsZXTigJkKPiAgICBCVUlMRF9CVUdfT05fTVNHKCFfX3NhbWVfdHlwZSgqKHB0ciksICgo
-dHlwZSAqKTApLT5tZW1iZXIpICYmIFwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgXn4KClRoYW5rcy4gSXQgc2hvdWxkIGhhdmUgYmVlbgoKCi0t
-LSBhL2RyaXZlcnMvY3J5cHRvL2FtY2MvY3J5cHRvNHh4X2NvcmUuYworKysgYi9kcml2ZXJzL2Ny
-eXB0by9hbWNjL2NyeXB0bzR4eF9jb3JlLmMKQEAgLTEwNzIsMTAgKzEwNzIsMTEgQEAgc3RhdGlj
-IHZvaWQgY3J5cHRvNHh4X3VucmVnaXN0ZXJfYWxnKHN0cnVjdCAKY3J5cHRvNHh4X2RldmljZSAq
-c2VjX2RldikKICAgICAgICAgfQogIH0KCi1zdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
-dF9jYih1bnNpZ25lZCBsb25nIGRhdGEpCitzdGF0aWMgdm9pZCBjcnlwdG80eHhfYmhfdGFza2xl
-dF9jYihzdHJ1Y3QgdGFza2xldF9zdHJ1Y3QgKnQpCiAgewotICAgICAgIHN0cnVjdCBkZXZpY2Ug
-KmRldiA9IChzdHJ1Y3QgZGV2aWNlICopZGF0YTsKLSAgICAgICBzdHJ1Y3QgY3J5cHRvNHh4X2Nv
-cmVfZGV2aWNlICpjb3JlX2RldiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOworICAgICAgIHN0cnVj
-dCBjcnlwdG80eHhfY29yZV9kZXZpY2UgKmNvcmVfZGV2ID0gZnJvbV90YXNrbGV0KGNvcmVfZGV2
-LCB0LAorICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIHRhc2tsZXQpOworICAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IGNvcmVfZGV2
-LT5kZXZpY2U7CiAgICAgICAgIHN0cnVjdCBwZF91aW5mbyAqcGRfdWluZm87CiAgICAgICAgIHN0
-cnVjdCBjZV9wZCAqcGQ7CiAgICAgICAgIHUzMiB0YWlsID0gY29yZV9kZXYtPmRldi0+cGRyX3Rh
-aWw7CkBAIC0xNDUyLDggKzE0NTMsNyBAQCBzdGF0aWMgaW50IGNyeXB0bzR4eF9wcm9iZShzdHJ1
-Y3QgcGxhdGZvcm1fZGV2aWNlIAoqb2ZkZXYpCiAgICAgICAgICAgICAgICAgZ290byBlcnJfYnVp
-bGRfc2RyOwoKICAgICAgICAgLyogSW5pdCB0YXNrbGV0IGZvciBib3R0b20gaGFsZiBwcm9jZXNz
-aW5nICovCi0gICAgICAgdGFza2xldF9pbml0KCZjb3JlX2Rldi0+dGFza2xldCwgY3J5cHRvNHh4
-X2JoX3Rhc2tsZXRfY2IsCi0gICAgICAgICAgICAgICAgICAgICh1bnNpZ25lZCBsb25nKSBkZXYp
-OworICAgICAgIHRhc2tsZXRfc2V0dXAoJmNvcmVfZGV2LT50YXNrbGV0LCBjcnlwdG80eHhfYmhf
-dGFza2xldF9jYik7CgogICAgICAgICBjb3JlX2Rldi0+ZGV2LT5jZV9iYXNlID0gb2ZfaW9tYXAo
-b2ZkZXYtPmRldi5vZl9ub2RlLCAwKTsKICAgICAgICAgaWYgKCFjb3JlX2Rldi0+ZGV2LT5jZV9i
-YXNlKSB7CgoKV2lsbCBmaXggaXQgdXAgYW5kIHJlLXNlbmQuCgpUaGFua3MuCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Arnd Bergmann <arnd@arndb.de>
+
+On Thu, 28 Jan 2021 09:32:05 +0100, Heiko Stuebner wrote:
+> please find below some Rockchip devicetree fixes for the 5.11 cycle.
+> Please pull!
+> 
+> Thanks
+> Heiko
+> 
+> The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
+> 
+> [...]
+
+Merged into arm/fixes, thanks!
+
+merge commit: f2d514b4f428265e418e8fb46adebeb6c0717131
+
+       Arnd
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
