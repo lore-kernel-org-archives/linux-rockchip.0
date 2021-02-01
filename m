@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0855AC433E6
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Feb 2021 19:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A8BFC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Feb 2021 19:41:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8046B64E92
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Feb 2021 19:16:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8046B64E92
+	by mail.kernel.org (Postfix) with ESMTPS id CC7BE64E46
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Feb 2021 19:41:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC7BE64E46
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,57 +24,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PsHf3fr8ylEJkzyK9bcWFCVFNXUb6Gb6gzJ0L7mdnDA=; b=I5iuZSINAFsVs72oJPkGNbTU4G
-	NOmqdnE/Yys6RA9g4nGQvmMldHiens/XlNiza6vQaDnnZyAx3Q3P37ueeHVRmNSJ2V1uNLGUr+bky
-	1XO5AiIDm2spH1hqHazLvCCTugua7ZHjE6mrMra9o+1w/lvtStmdQPHeqXHHEjbOUwNFuFRpTsFi1
-	8YSUm2Rjo0UOiIup6zvhdLzhGP9uaMUMqHxj73bvW+S4lK1zStzhSb7UhcbyuIX+2snlPlpXhXG7p
-	oDdU0CndeXur3jbmQfRUSiXFZ5nAj6iKcDLJzPnyT1uOAQzvBfWhx0X3MsUTlOMI56IfOrVwZ2OuO
-	8hvQI9Mw==;
+	bh=PsHf3fr8ylEJkzyK9bcWFCVFNXUb6Gb6gzJ0L7mdnDA=; b=kTtMwrg36fDAEXCn7gfhUM+Ehi
+	B2FV/bvUr+glw8soAMfv3WCu4q7ZBtBWQLjnLYh/9NCOsdVE8sx3V+hLdqX0NKtmJ5QGwWR40cyGz
+	oyf2TjRMx55Z5fIO4gfnkdU/dFlBI6ftnFvFK/bBcK69WlE4aL9Be4xVhRcbMCA4Ui8sLtfvVOeTS
+	jkN92KdMXXz1y6pZDue1duw2O6weP5ylqVd1WX1msVokgD3ePNkkWENtPMTQTgWRzh5nBJhk7OPQo
+	CfFZSLlW5u7P95KRX66oCE3kejzQm1MaazcyTXQl8RHEJt13pERl0RT7UqVRLphQTICmBRo/QxJT9
+	4NpMgd0g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6egc-0006m0-2K; Mon, 01 Feb 2021 19:16:34 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1l6f4b-0000hI-5P; Mon, 01 Feb 2021 19:41:21 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6egY-0006k1-DQ; Mon, 01 Feb 2021 19:16:31 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id c6so20221188ede.0;
- Mon, 01 Feb 2021 11:16:27 -0800 (PST)
+ id 1l6f4Y-0000gA-Gr; Mon, 01 Feb 2021 19:41:19 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id s3so6564191edi.7;
+ Mon, 01 Feb 2021 11:41:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
  bh=Vudz7Jq3CovoiOUmAZDu7pX1ATasm53I9HD8Bq8Ch+U=;
- b=NOlicBRSikm/UtWBLnB71WogDHzgE/ktshfE/+H9dMxldgy4S53TuPHzO6DFWyp7om
- Tkisu2JF0glF1rVvZId9xYSyvLmsVoHCNRBN4A2sWamEKXSTGHRpOpkTnTqDOg82Spy9
- pa232VTfbmnzbh4ZjA/ivPBI2ayKjpEsXY9s8uPYIxWEwX7Om8Amt50CgB1BVWm+Qyva
- G8O1tsMPBvl/eiaiy8vZU/ADdjoC18CYxDLE0oL8bXFuYlBJKp6/MYkGbhx85TmhqDIX
- LtgCN4wW4Kj/LeFFca28hSmeRriTBQnbAAiUVRoeoysAIthTT9KGWtO18IjyUOazj5k1
- FE9Q==
+ b=uRRkmtSb0gkM4AwKwMZrg0TnMdgcY+sOAQP5H0Fgg6DCU/zZ+a03NzSE+iRuYcT0zh
+ 3TmaXRqIJijh6ZUxMY/gKL6NfU6RZAmNm2BO+9WnFeqcON1TgvuIG0R7mnYbWyV2aOwS
+ ccNJCoVu3YMd3prw7pg9vYw8Cc2+UJtNtT2WqLetlTKigTmmg91QPm3bDHVyd0E2i20s
+ +wD81KaOSpoinlgmaaW97zaW248dDcGmVyV4zIjpds20LwjuuIdo87Cm7OdUwG0DDTWQ
+ 91Ya4IFiC/VjouZG7rHa0T60S93zO/AkxgDs6yfWE+fClD+Cag/g1QNheHM9+ZqFqFsd
+ RVmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
  bh=Vudz7Jq3CovoiOUmAZDu7pX1ATasm53I9HD8Bq8Ch+U=;
- b=MHacOI5UrBmZPEQ63UW55l2XKY59y8tVFRLFNiacYd1zRR+qFhT9WHph6PUXmUkBnW
- K7FguOiwvixs+o7z9iM/QkAuI5Z1cLnP+xaXQb1dZVqInSKthuiY5IzWkJtURpgE0Ba1
- bCtoXvaFUDXqfhRJT5XKGla1aa7cgPMEqUXuNx90baPRW5MBszvI+HN7OBfQVHZA+3sM
- 6ZQRD7+1ln/8mPu+PuazwH2M9IoSYTAh0Rj64bdorfsMf/XIY0PbWOgBE1fjGx0LTUYF
- gZAfQjOJuZys1E3wqFSWFKDgt1PKv263/fk2jUT6z/GuxWTTjveFpkzbyibMKlA/pt6k
- oNhA==
-X-Gm-Message-State: AOAM5331orvJWHv5TrR5Mrnos/nP8dphBp75DYYv3FOsOyh2gILosGk3
- REjhhi9VSGh1P58q04Ju5rE=
-X-Google-Smtp-Source: ABdhPJwj/wg6nbbgC4bHudj+wMwJo0zVmkxIcLcYyFNyKLt7bB/XHOd8IiYRotcGBgJyuBgFB5azcw==
-X-Received: by 2002:a50:fd0b:: with SMTP id i11mr11985392eds.387.1612206986770; 
- Mon, 01 Feb 2021 11:16:26 -0800 (PST)
+ b=JVa/2RJ5nqh5qQVB+HaWARNngP4iubUeeSJb7aAJa3wvSIAj/94n+F1nhtNSD4r0qy
+ lZzEw8fZqnYsjBSAldE9KHSYD56Vy1hesCANJZKwItHuFnedYZvE8bWEICdwSFY3qHWT
+ Vyc5dJ4JttBd0cbXtv3TSMi+fKjj5s5roXRwmgjVWaW+cGzLGKrtOqRVOnoFkxup6MUV
+ EXtDeHskzATnkDGC/k9KuLaSQjdCbcQsz5JJSPMsEYFad8fl6co1dYkYWEhVhRfFCwjW
+ de/OTytFa4oFBKwFqObkZDXwt125FRcTQgs+ZONK28/bhXyOpHizNRfuucEBgLQkXP/J
+ MuTA==
+X-Gm-Message-State: AOAM532Nl7iLpz6F0Nm6I+ILLyUKcIdPUHYjLqThjEt4WIYmIfAQspye
+ 6c/PZWQuOirS/KhhnPFHrrM=
+X-Google-Smtp-Source: ABdhPJxSZTnKN9WR55MOnNEgcHmJn9O9hya7WEb4ex42obOcKRcFi5f4yDoWnP2PHvnNEchyZtNDKg==
+X-Received: by 2002:a05:6402:1bde:: with SMTP id
+ ch30mr20541649edb.151.1612208477429; 
+ Mon, 01 Feb 2021 11:41:17 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id a11sm8243630ejc.64.2021.02.01.11.16.25
+ by smtp.gmail.com with ESMTPSA id du6sm6702799ejc.78.2021.02.01.11.41.16
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 01 Feb 2021 11:16:26 -0800 (PST)
+ Mon, 01 Feb 2021 11:41:16 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Subject: [PATCH v1 1/5] dt-bindings: usb: convert rockchip,dwc3.txt to yaml
-Date: Mon,  1 Feb 2021 20:16:15 +0100
-Message-Id: <20210201191619.32353-1-jbx6244@gmail.com>
+Date: Mon,  1 Feb 2021 20:41:01 +0100
+Message-Id: <20210201194105.32673-1-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210201_141630_530081_DC0A770E 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20210201_144118_576090_7FD4D6B7 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,9 +88,10 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: balbi@kernel.org, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, balbi@kernel.org, gregkh@linuxfoundation.org,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
