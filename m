@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FB43C433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Feb 2021 14:57:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA8FFC43381
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Feb 2021 14:57:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E13864F58
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Feb 2021 14:57:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E13864F58
+	by mail.kernel.org (Postfix) with ESMTPS id 3424F64F58
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Feb 2021 14:57:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3424F64F58
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JzBTjRtYQx6B73FB6VyKMS4+JyqHpgn5I5VsPDT5mNI=; b=e/G0eHelQPpMzA14Wio8B4KvS
-	62syaA0PE88HRI7WPEOPKgWESH50KCJmbKpgDnEsN7CemJHHROVtMuxsidiRr/e4ctBMVJ2Ji6Ka0
-	7cKbEn7dMrAxhuHRfrUUaIQOQqjyR26x0bXHRtlBndVYE2zxa6FAw0sGIj960DqBT9U3l105Lo4Q6
-	oqcbIPd0669RQt8UiMc8EUBANSlOHaaPIt9X3Ukt2srEDdaZ1WDBcqOrhvZvmYjtgqVwLAnwYKp7q
-	aqJkXS3cdJZK8STUe1CNqG+An9jFjKHODlRPlSA6Hc8z9vd53zlkhLBAsz5+GRtd8iEUe064qIE+h
-	KnCjAqd8A==;
+	 bh=/HJrVRtkMW6jLP4rbgxLZHxCBFIsy6XRmk4RJu57rQY=; b=hCGoVuX6aQhpiPpWF/89NPwJn
+	pgS+pwVq9sU4U+h8lYcXUF1mgwt+QvhBSMXyRqrS+f3hVzIStXYuCpqsy3nV5a/AWjRuL2ceCH+3h
+	8ChbWohfGXlEKI20P79UlLXxO+wyyjXCGFiWgPyo/W58qN7oMt9VFn/yp4/3AEki2nkGoEIdpMy9F
+	+r6twVxVPyehTYnGB+KUooTryEdsQ29OiBZjU/S6aBni3+N0dj7y8JQppIuSMmaMr5fZx80TbBReB
+	PsKfRn3+5zoRiyk5GQ5d0LDO5t7U43JaFvmokLxwp9t7IEUo1jY/Hxax6hTP+Byr2dTHnD8O3GW31
+	XFupl7oHA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l6x6x-0003uv-Nk; Tue, 02 Feb 2021 14:56:59 +0000
+	id 1l6x6y-0003vE-DI; Tue, 02 Feb 2021 14:57:00 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l6x6q-0003rp-Gv; Tue, 02 Feb 2021 14:56:53 +0000
+ id 1l6x6q-0003rm-Gu; Tue, 02 Feb 2021 14:56:53 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l6x6m-00020V-38; Tue, 02 Feb 2021 15:56:48 +0100
+ id 1l6x6m-00020V-Iv; Tue, 02 Feb 2021 15:56:48 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: dri-devel@lists.freedesktop.org
-Subject: [PATCH 1/6] drm/rockchip: dsi: add own additional pclk handling
-Date: Tue,  2 Feb 2021 15:56:27 +0100
-Message-Id: <20210202145632.1263136-2-heiko@sntech.de>
+Subject: [PATCH 2/6] dt-bindings: display: rockchip-dsi: add optional
+ #phy-cells property
+Date: Tue,  2 Feb 2021 15:56:28 +0100
+Message-Id: <20210202145632.1263136-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210202145632.1263136-1-heiko@sntech.de>
 References: <20210202145632.1263136-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210202_095652_640375_7BF17B45 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20210202_095652_649880_CE60FD1E 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,43 +78,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-In a followup patch, we'll need to access the pclk ourself to enable some
-functionality, so get and store it in the rockchip dw-dsi variant as well.
+The Rockchip DSI controller on some SoCs also controls a bidrectional
+dphy, which would be connected to an Image Signal Processor as a phy
+in the rx configuration.
 
-Clocks are refcounted, so possible cascading enablements are
-no problem.
+So allow a #phy-cells property for the dsi controller.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../bindings/display/rockchip/dw_mipi_dsi_rockchip.txt           | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 24a71091759c..18e112e30f6e 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -223,6 +223,7 @@ struct dw_mipi_dsi_rockchip {
- 	void __iomem *base;
- 
- 	struct regmap *grf_regmap;
-+	struct clk *pclk;
- 	struct clk *pllref_clk;
- 	struct clk *grf_clk;
- 	struct clk *phy_cfg_clk;
-@@ -1051,6 +1052,13 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	dsi->pclk = devm_clk_get(dev, "pclk");
-+	if (IS_ERR(dsi->pclk)) {
-+		ret = PTR_ERR(dsi->pclk);
-+		DRM_DEV_ERROR(dev, "Unable to get pclk: %d\n", ret);
-+		return ret;
-+	}
-+
- 	dsi->pllref_clk = devm_clk_get(dev, "ref");
- 	if (IS_ERR(dsi->pllref_clk)) {
- 		if (dsi->phy) {
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+index 151be3bba06f..39792f051d2d 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+@@ -23,6 +23,7 @@ Required properties:
+ Optional properties:
+ - phys: from general PHY binding: the phandle for the PHY device.
+ - phy-names: Should be "dphy" if phys references an external phy.
++- #phy-cells: Defined when used as ISP phy, should be 0.
+ - power-domains: a phandle to mipi dsi power domain node.
+ - resets: list of phandle + reset specifier pairs, as described in [3].
+ - reset-names: string reset name, must be "apb".
 -- 
 2.29.2
 
