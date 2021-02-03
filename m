@@ -8,74 +8,77 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5F87C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E093CC433E6
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D50264F7C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D50264F7C
+	by mail.kernel.org (Postfix) with ESMTPS id 793AC64F7C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 793AC64F7C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=njxNcErgzo2ykfJExXrzr+WeMW7ZT7bfG2CYSVclkz8=; b=0tPIM2Ks0xLFpkIELFP0R30U6F
-	1dd6zjF+NmuakGt9W8WZ9U8zr58uY+twGbrTVnO2QgEJKytQnpNut040rT4VwWLwF1iWybyw+KFQC
-	z6PKxLddKrvJgM2x7VE/zKYmgAk/gkTsNx/Nox35dehkMLQYGz8qniR3BgrieDlJNmj+1MIRPcbjq
-	ftwcT0/1VAbnRXcOdFcT4Ret4FnFoP3NrELTURXwBn0+4SzbqsbGFd4gRqH6GKtzovcCb0xE1yaUU
-	KdiA9TtQCR969RPL398264D+qFFrX9uhgSxN7zlmGoqLzzp325F0QMBeQi6SKjdFKBp0xNH50+Dti
-	EHgsEJgA==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nFiu5OY6vpeDQJLHy6NpDzrjB+b7d2xM8CKL60gHUB8=; b=c30Hrk619EiOiCBYl5HRneLPyL
+	4CayRVfgNfePIWyI3xT4ljWa1LoWGipof88jp1/5jNF6LRPnglcNGq5WF7W9YiiAvYGULcq+MuDvy
+	UizUxVG6pQDvPgEJtfoFUsAi4CK2N9dwRR72lj3HqqJCGFcL5W7FipViwDI8wmz264v4DYT25rs+S
+	O/bqKa36W3+s1iLuhVfRtj6CMo+Idv+K/d8fzjMdLyfnGIrjijo/1yrXe7vL1mVpAV3Y16SgFiwdg
+	mYxEG6QtxuiAPNDxwsa7+o5gg0bBV8CiDAegaF4d1QYLdh5jD65foOKmw+WK2EJdB9Q0F+O/XgnA3
+	vscQE9Sg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7LOd-0003wm-FU; Wed, 03 Feb 2021 16:52:51 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1l7LOn-00040T-Oo; Wed, 03 Feb 2021 16:53:01 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7LOX-0003tB-Hj; Wed, 03 Feb 2021 16:52:47 +0000
-Received: by mail-ed1-x536.google.com with SMTP id z22so357537edb.9;
- Wed, 03 Feb 2021 08:52:43 -0800 (PST)
+ id 1l7LOY-0003tV-GG; Wed, 03 Feb 2021 16:52:48 +0000
+Received: by mail-ej1-x633.google.com with SMTP id jj19so142869ejc.4;
+ Wed, 03 Feb 2021 08:52:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=YTHvbCjsK4omUl0IWdkmKq6VQg+YpFZVHA+6d5ZU9mk=;
- b=dLlP1Rw8f9InY/ONO5KbGh4Qrp4V9j1Sl6zGeIjzqXvRtN1eIbpWEg6xEXNPo9PXW7
- eCzVSU9dF+vMckZbQiOV3/HO/jmk2H13S8JkLOFr5iI7E53VDBLKZMzbWBMegh50QdrE
- +Z5ExbqDh9Wxj+IEi5TOPRlCksfOfI6oS6ysd/T0zK/nkIH6ii1NlGyl2d4nHgFIJ8Wu
- f9d6CVjAMiPIygI2ZEeZhSuVu0bgT/Tlshb213briU8cnFbdWFagFtL/FpuFfNfxzPmh
- 5OKcsh6MY3m573z+7HMUYv0vgo5P62FkNEg1C2E06tPSme1DqmiQ2YQJSyx7MIgKZtUB
- e0HQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=K7vOF3Qw7Vj9m/dEB9LeeFb8gLBtZdZfVq0Dk/c0mkE=;
+ b=aUvjXF2gYkIX2+5I20r39jRJwSmcoONANqcrIKNeM5k49o849cAKWT7+oAL6QXgfzt
+ FbEHsmXM4FEFSH6IeERpgrmHfxSDmAhQadwoY1iUxpGm4p0d4vTnYLfAhqQqHhDHP2aX
+ oCNy1x2QwPJMCb4Oauxx7/opPymql5TI9wLJgpuGbZWDSN6zKGVZ44wufudsULEQyPiY
+ z09Piu4uuZFUcbAz9UVe/ZlpL0GjJcU4dnGd2dddH18ri0OH5hEa6b0gL7s8liXO+ahi
+ nuAkPrNZKD0FQl1TMelR9gOICPZC8z2u49CSlcOa9IgMqplaV/PJKYOXSw0piV6fy4S4
+ EMog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=YTHvbCjsK4omUl0IWdkmKq6VQg+YpFZVHA+6d5ZU9mk=;
- b=oLdYHto8v95yTWy0jnOQsOVXAXktieMvrSzPn9GJgkl8gbv5DFMni9JiwI0Te1lwRh
- 0xmpXVm4TKMLChOn31F7KmUg/uE1dMPcbWFV5441otmsWjkDb78xlLVYf43SsTW225mw
- oE2h34hpxcL4f8lGC/U10Tv6+6GCfclb43ylWKVU3CUWQHjQsM9GUvkH4rOX4IfgCrm8
- Jm6Liv5dRDhR0GB9C5NkoE7d33jtvU6B+dLBAcFpCRZ8i1UpB00x7NTxLIg6xJ2mudvH
- Qk7NKrNEbN/1k7YIFKxPoB5/mLbDBnhOr6tZcKCPDA6R6vUJQiUBV0hFum7a9ooyOknk
- ba/g==
-X-Gm-Message-State: AOAM531aY5yV7XMF3Nx9fVSubYiXwrKMONYgnrRESZ/pxd4eXi/JrlUu
- nT0WdNaJ6UQrsrzN1TxGaLk=
-X-Google-Smtp-Source: ABdhPJy20Qd5tp6E67FLuATwBrfP19QrqbJ+90f7gWEVIWsDr5KHgPyNFDX/HfHywdP7MaLXxgJIdw==
-X-Received: by 2002:a05:6402:3510:: with SMTP id
- b16mr3858988edd.242.1612371162281; 
- Wed, 03 Feb 2021 08:52:42 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=K7vOF3Qw7Vj9m/dEB9LeeFb8gLBtZdZfVq0Dk/c0mkE=;
+ b=R7EX8eQhymC5zeZrb7VKrPFJ31Tej9zhxU2gIOJdZD2YyOrepLwalyQcC7yNpnbUl6
+ uH6YVwOwdaUCzZ+m0E90BDTyCg1zwJbqTXp92tqposwA6nHVhSOOvnRcbU2XLRNeg8zH
+ 8Z0AMQJnbimyPKvnoGZ4IyMg3QpFBFkM7HUm7zHgKITtmvQKvWKvwBdH4Qzx7jRYDmx6
+ l4Ngj0qStEBB+hgsBcTISGAn5qfNxdtLrXfCkqUL4L2N9fu0vSZAmYkZJzQdxs9rDVCK
+ V1VKStbNfLrTy3NgU9zrmyzkb6y7pElpU33Zu8tCjNoFHDPQokChrUyeKNUBDRE7jVhg
+ MXRw==
+X-Gm-Message-State: AOAM530oQ3SN5Exgq1HSxAZDZD+LYN5kfGtGxfLbQG54Fbg8KomxtkRi
+ 6C0lNud+XYqIyTGnXBqfD18=
+X-Google-Smtp-Source: ABdhPJwpI0VZokomRqJXYpQWN3fEr1sQhyr7+sO1T44orVCksMHTtsMSJVYnPKxAbQ9/UJVImnfgxQ==
+X-Received: by 2002:a17:906:8410:: with SMTP id
+ n16mr4182326ejx.551.1612371164918; 
+ Wed, 03 Feb 2021 08:52:44 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id a25sm1135471eds.48.2021.02.03.08.52.40
+ by smtp.gmail.com with ESMTPSA id a25sm1135471eds.48.2021.02.03.08.52.44
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 03 Feb 2021 08:52:41 -0800 (PST)
+ Wed, 03 Feb 2021 08:52:44 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v2 1/7] dt-bindings: usb: convert rockchip,dwc3.txt to yaml
-Date: Wed,  3 Feb 2021 17:52:27 +0100
-Message-Id: <20210203165233.22177-1-jbx6244@gmail.com>
+Subject: [PATCH v2 4/7] dt-bindings: usb: dwc3: add description for rk3328
+Date: Wed,  3 Feb 2021 17:52:30 +0100
+Message-Id: <20210203165233.22177-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20210203165233.22177-1-jbx6244@gmail.com>
+References: <20210203165233.22177-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210203_115245_610273_530A278A 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20210203_115246_562135_DA6BDF6E 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,195 +101,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the past Rockchip dwc3 usb nodes were manually checked.
-With the conversion of snps,dwc3.yaml as common document
-we now can convert rockchip,dwc3.txt to yaml as well.
-Remove node wrapper.
-
-Added properties for rk3399 are:
-  power-domains
-  resets
-  reset-names
+Add description for "rockchip,rk3328-dwc3".
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- .../devicetree/bindings/usb/rockchip,dwc3.txt      |  56 -----------
- .../devicetree/bindings/usb/rockchip,dwc3.yaml     | 103 +++++++++++++++++++++
- 2 files changed, 103 insertions(+), 56 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
- create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+ Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-deleted file mode 100644
-index 945204932..000000000
---- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-+++ /dev/null
-@@ -1,56 +0,0 @@
--Rockchip SuperSpeed DWC3 USB SoC controller
--
--Required properties:
--- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
--- clocks:	A list of phandle + clock-specifier pairs for the
--		clocks listed in clock-names
--- clock-names:	Should contain the following:
--  "ref_clk"	Controller reference clk, have to be 24 MHz
--  "suspend_clk"	Controller suspend clk, have to be 24 MHz or 32 KHz
--  "bus_clk"	Master/Core clock, have to be >= 62.5 MHz for SS
--		operation and >= 30MHz for HS operation
--  "grf_clk"	Controller grf clk
--
--Required child node:
--A child node must exist to represent the core DWC3 IP block. The name of
--the node is not important. The content of the node is defined in dwc3.txt.
--
--Phy documentation is provided in the following places:
--Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml - USB2.0 PHY
--Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt     - Type-C PHY
--
--Example device nodes:
--
--	usbdrd3_0: usb@fe800000 {
--		compatible = "rockchip,rk3399-dwc3";
--		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
--			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_GRF>;
--		clock-names = "ref_clk", "suspend_clk",
--			      "bus_clk", "grf_clk";
--		#address-cells = <2>;
--		#size-cells = <2>;
--		ranges;
--		usbdrd_dwc3_0: dwc3@fe800000 {
--			compatible = "snps,dwc3";
--			reg = <0x0 0xfe800000 0x0 0x100000>;
--			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
--			dr_mode = "otg";
--		};
--	};
--
--	usbdrd3_1: usb@fe900000 {
--		compatible = "rockchip,rk3399-dwc3";
--		clocks = <&cru SCLK_USB3OTG1_REF>, <&cru SCLK_USB3OTG1_SUSPEND>,
--			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_GRF>;
--		clock-names = "ref_clk", "suspend_clk",
--			      "bus_clk", "grf_clk";
--		#address-cells = <2>;
--		#size-cells = <2>;
--		ranges;
--		usbdrd_dwc3_1: dwc3@fe900000 {
--			compatible = "snps,dwc3";
--			reg = <0x0 0xfe900000 0x0 0x100000>;
--			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
--			dr_mode = "otg";
--		};
--	};
 diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-new file mode 100644
-index 000000000..fdf9497bc
---- /dev/null
+index fdf9497bc..621166a50 100644
+--- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
 +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-@@ -0,0 +1,103 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/usb/rockchip,dwc3.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip SuperSpeed DWC3 USB SoC controller
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description:
-+      The common content of the node is defined in snps,dwc3.yaml.
-+
-+      Phy documentation is provided in the following places.
-+
-+      USB2.0 PHY
-+      Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-+
-+      Type-C PHY
-+      Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-+
-+allOf:
-+  - $ref: snps,dwc3.yaml#
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - rockchip,rk3399-dwc3
-+      - const: snps,dwc3
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description:
-+          Controller reference clock, must to be 24 MHz
-+      - description:
-+          Controller suspend clock, must to be 24 MHz or 32 KHz
-+      - description:
-+          Master/Core clock, must to be >= 62.5 MHz for SS
-+          operation and >= 30MHz for HS operation
-+      - description:
-+          Controller aclk_usb3_rksoc_axi_perf clock
-+      - description:
-+          Controller aclk_usb3 clock
-+      - description:
-+          Controller grf clock
-+
-+  clock-names:
-+    items:
-+      - const: ref_clk
-+      - const: suspend_clk
-+      - const: bus_clk
-+      - const: aclk_usb3_rksoc_axi_perf
-+      - const: aclk_usb3
-+      - const: grf_clk
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 1
-+
-+  reset-names:
-+    const: usb3-otg
-+
-+unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3399-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      usbdrd3_0: usb@fe800000 {
-+        compatible = "rockchip,rk3399-dwc3", "snps,dwc3";
-+        reg = <0x0 0xfe800000 0x0 0x100000>;
-+        interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH>;
-+        clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
-+                 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_RKSOC_AXI_PERF>,
-+                 <&cru ACLK_USB3>, <&cru ACLK_USB3_GRF>;
-+        clock-names = "ref_clk", "suspend_clk",
-+                      "bus_clk", "aclk_usb3_rksoc_axi_perf",
-+                      "aclk_usb3", "grf_clk";
-+        dr_mode = "otg";
-+      };
-+    };
+@@ -27,6 +27,7 @@ properties:
+   compatible:
+     items:
+       - enum:
++          - rockchip,rk3328-dwc3
+           - rockchip,rk3399-dwc3
+       - const: snps,dwc3
+ 
+@@ -37,6 +38,7 @@ properties:
+     maxItems: 1
+ 
+   clocks:
++    minItems: 3
+     items:
+       - description:
+           Controller reference clock, must to be 24 MHz
+@@ -53,6 +55,7 @@ properties:
+           Controller grf clock
+ 
+   clock-names:
++    minItems: 3
+     items:
+       - const: ref_clk
+       - const: suspend_clk
 -- 
 2.11.0
 
