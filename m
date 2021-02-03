@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BFD6C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E9E2C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 17:56:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B5C264F7C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 16:53:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B5C264F7C
+	by mail.kernel.org (Postfix) with ESMTPS id 0B6CC64E08
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 17:56:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B6CC64E08
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,62 +24,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uLG4OEThUb4XsrN3SfjfV918C/5Ww9GSztoIw6WKX4I=; b=22RvnPEwuHtIpQ0fDWs0dQL2Tq
-	Zx9NmaEGRq8G8wBcRsHwHTdSox4/MZOSiSbwNms5eH51+qPBWrZEgKREQCapVCu1EXcwrYcy55FQq
-	qufNgSqJY7I2ZQV2ejoy7+XT3AqWOjXIZo/V0vvHUXuPL3QNN1gehT68HVeaS2rjIHBtrEaG7ESCb
-	7ieYEaeBb+drUi1n8TEl+hWGhF38N1sCFg29NNRCQgohIW3jlDU7bcNo5ZDumCSUZ/h8sDp3uZOxu
-	E040aY7zjcj9irOVIvkL3DEY7OrAkbClNlujpHAOHHsObJTb+0MnbXmDsB6fV0WLcwBMrPUF0trOg
-	c2G2kyeQ==;
+	bh=arxXaOnuxf8YjQgh9QJjdq1vApxE7hkOHPVrzQ7Rz4s=; b=22qGume5dUS4XdzS3H9zcZy0l3
+	jkc8KIyLEoDHyaACpv3ee5ubEfcSGbcq9u6gBsfDwFsqHLOQFrWBGGzsR/54hK5dVctjRALYonTet
+	Y0/Ft4C6rTqm52i6Znb7+iQw2ITaJC1NNmr1i865ryg7ER2ShySmqu+4tp/DX6T6glp4T8pKfSu1q
+	dINbiYxdBDX/L4KDJhNjXpNCL/LHAzQkMlaS+44XovyCeTYEEOjG64hCM1+SYydGQ5ZAfwTLP7miD
+	2uAXba/XgZ6+AFXinFka7TTpZ/3m8nI9bwZphu/h2JtFkjF0cZTS6HNbhEmlcpOG+OS0cYVAqoDeM
+	tTecH0Rg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7LPO-0004Je-Qg; Wed, 03 Feb 2021 16:53:38 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1l7MO8-0002nH-LR; Wed, 03 Feb 2021 17:56:24 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7LOa-0003ua-3z; Wed, 03 Feb 2021 16:52:50 +0000
-Received: by mail-ej1-x629.google.com with SMTP id bl23so132334ejb.5;
- Wed, 03 Feb 2021 08:52:47 -0800 (PST)
+ id 1l7LOa-0003v7-H1; Wed, 03 Feb 2021 16:52:50 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id l12so417547edt.3;
+ Wed, 03 Feb 2021 08:52:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=2+BJMGWHLsTX5MlRIS1oP4w6pgHVT3Wm6jubVVravIM=;
- b=H8j8elFQyAQT596KLgHEEXafZKHCs59NI9h7Ew5zGRsxXwcC/Set/ikAFksjfUGOvg
- IvLoV9T8B+qSQL788a5C/YOAuJBbrKVc32YrijLgxmaEZmgQRrjruCgz75mw73SBJOzl
- 3gmWRJ9qRJ84B3akc1Zx6m/y9V8SqvskUkYRLmFU3fdLXCG1KXXXodRJyp+h+CxXvrh6
- vPqT4nZQz+PBMgWyZtjWWXCmmpYYV43myxmasY5rU/H/9uLyfllJiSNImJzVRFxH7TSK
- I4T43jEqpmClBMEC6o9f3o05lzeUQe7WV8LEM0l/Ye2odw5yFOiAlQh0+6ESx1YLbIBH
- ne+g==
+ bh=PMs0NDSuf1zcUrhFtkHc3rUKSCkURTHcknmuZn+qw+Y=;
+ b=geo41BrGzKU4OH40sIUY27Y+Xsbx+6t3yM73U+tZTOLHdvnj8CwZgKZEGd6uOjnBse
+ hAH4OGul+2rrYOhXI7AmBMtRN1Rb4pyDDa1Ej+orYWa2Q+5naJzTlevELZGzZzmhMbbo
+ +XE3UbKggw6K4cOjTEItCBXiOi6z25mtJRPc4av12jDbsdPnA1E9f90y0XeB7A9a6EsC
+ Cr/XYdGiXZhetMrmBAjgGTTdkMvTk37EHjmy8SYhh0pb394jXeMal5gbw83aIplVlu/E
+ pPhnAUD3bQ3PHcLBKvq1wBLlxixLAK7c6s/3Cqk5Ns7o3nHGAIO68eli3q53cM41CD+i
+ 5yHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=2+BJMGWHLsTX5MlRIS1oP4w6pgHVT3Wm6jubVVravIM=;
- b=Unu8eYQnFRmIgmXsVLFc5tDiKkQfixczpLUn8gou/RPqXu+UnAr2jNZUEpvxMJU+zo
- TkgC51PyufftZwt5CZhToTCe2gE+OZ8HduMDTYxDiKc/u0C9qlKWPwH8UndPEpg4JQOl
- Lm75VxvHzlfU78fkFZfvFlaLMjEMBlP5EIrv0qIXDHAAUiRCPCYlvOUX2z++46b5FyZm
- AfN05F0zJk6l9er75kE0/MN4AWDRoqjsLWpHnwMg9Q8WKBGBGqW2dnQez1LQpejhHfYX
- J+ClRtKLvtxoz/t29pYBxegwmWLpyihaXm26q/kNS87OLaHk5BJcYnwzLpyERFVj3ba3
- oELg==
-X-Gm-Message-State: AOAM533d/3rZ6v78g90RINzqEF1PiG8jRaSyl87PuNw5mxKsTUeGyjP4
- j+kfQ8HhWFKxnwIN68CEeR8=
-X-Google-Smtp-Source: ABdhPJwGyqtK6IyX2vJyppK8AP4yJzS7aB6LYD1lBXXP05MyfuwOsBrgsOGj3a9AxLbcRHCU3i2akA==
-X-Received: by 2002:a17:906:6449:: with SMTP id
- l9mr4287601ejn.320.1612371166492; 
- Wed, 03 Feb 2021 08:52:46 -0800 (PST)
+ bh=PMs0NDSuf1zcUrhFtkHc3rUKSCkURTHcknmuZn+qw+Y=;
+ b=rXy10+EYfBiaVkuIsjkTutHSbnAYctXP6LXOCh4kJxc/LoHlikTl3DYct4Wfm0Sfpr
+ SbXvzZa9HYyOPtBYJXnGL3KEMnMzJJ81pZ9SbD1hNVMLLh0Va/JnYfc7WZnWo893/RV+
+ yGcv1fXMbWKNd4IhMScVEwBOGLXNqGwDZaTyLdqdVxaTJhGjFa1HC38hKz/Ks1o2rMk7
+ pvEjcLsySxOz/4g88q8idv9KN7zw/LyEVzcLAb7OkizQhOzvla2tBr0xBhnmtrMMbgX8
+ Wj0wklyefpz21A9EzPvGAHCisu/l7+LREo4hMdsOz9S3/3WUqq+zISpf9hOA4mJK77v6
+ kniw==
+X-Gm-Message-State: AOAM532r/ZQRbHjIzCTArSzxyuhN0e6owEY7HjBKLoNGyPcHjh4aNiF7
+ yp0w7pIXmOnTADgZ61IbmPQ=
+X-Google-Smtp-Source: ABdhPJwSKL2/RABPjQr6OIwdlGCvg4cQWkDOExMBDUqjjU3Sl65Zz7+TwMx1lj3vzItxNZDBk8F3Sw==
+X-Received: by 2002:a50:acc1:: with SMTP id x59mr3898959edc.43.1612371167242; 
+ Wed, 03 Feb 2021 08:52:47 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id a25sm1135471eds.48.2021.02.03.08.52.45
+ by smtp.gmail.com with ESMTPSA id a25sm1135471eds.48.2021.02.03.08.52.46
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
  Wed, 03 Feb 2021 08:52:46 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v2 6/7] arm64: dts: rockchip: add rk3328 dwc3 usb controller
- node
-Date: Wed,  3 Feb 2021 17:52:32 +0100
-Message-Id: <20210203165233.22177-6-jbx6244@gmail.com>
+Subject: [PATCH v2 7/7] dts64: rockchip: enable dwc3 usb for A95X Z2
+Date: Wed,  3 Feb 2021 17:52:33 +0100
+Message-Id: <20210203165233.22177-7-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210203165233.22177-1-jbx6244@gmail.com>
 References: <20210203165233.22177-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210203_115248_235264_4A25DBAA 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20210203_115248_642324_B6658AC3 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,51 +100,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cameron Nemo <cnemo@tutanota.com>
+Enable dwc3 usb for A95X Z2.
 
-RK3328 SoCs have one USB 3.0 OTG controller which uses DWC_USB3
-core's general architecture. It can act as static xHCI host
-controller, static device controller, USB 3.0/2.0 OTG basing
-on ID of USB3.0 PHY.
-
-Signed-off-by: William Wu <william.wu@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Cameron Nemo <cnemo@tutanota.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 4d4cd1830..a3b069a10 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -988,6 +988,25 @@
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+index 30c73ef25..e71870768 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+@@ -357,6 +357,11 @@
+ 	status = "okay";
+ };
  
-+	usbdrd3: usb@ff600000 {
-+		compatible = "rockchip,rk3328-dwc3", "snps,dwc3";
-+		reg = <0x0 0xff600000 0x0 0x100000>;
-+		interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_USB3OTG_REF>, <&cru SCLK_USB3OTG_SUSPEND>,
-+			 <&cru ACLK_USB3OTG>;
-+		clock-names = "ref_clk", "suspend_clk",
-+			      "bus_clk";
-+		dr_mode = "otg";
-+		phy_type = "utmi_wide";
-+		snps,dis-del-phy-power-chg-quirk;
-+		snps,dis_enblslpm_quirk;
-+		snps,dis-tx-ipgap-linecheck-quirk;
-+		snps,dis-u2-freeclk-exists-quirk;
-+		snps,dis_u2_susphy_quirk;
-+		snps,dis_u3_susphy_quirk;
-+		status = "disabled";
-+	};
++&usbdrd3 {
++	dr_mode = "host";
++	status = "okay";
++};
 +
- 	gic: interrupt-controller@ff811000 {
- 		compatible = "arm,gic-400";
- 		#interrupt-cells = <3>;
+ &usb_host0_ehci {
+ 	status = "okay";
+ };
 -- 
 2.11.0
 
