@@ -1,90 +1,61 @@
-Return-Path: <SRS0=CWUy=HF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=9YuG=HG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4789C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 20:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E96DC433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Feb 2021 11:35:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60FF164F76
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Feb 2021 20:45:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60FF164F76
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id DA17164F4A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Feb 2021 11:35:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA17164F4A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ix+93lNc2EfdfHxzgMImbG+Mjr+2CbVOKy5+Dfr36Dc=; b=2yFLAE/xLKVeWUZyEVpug1mjY
-	DuCSLkH2BfheF03hfxsC+CTIIpRWAU6siib+NzZ3WUh0oFvjYgdamv9jNtRpoAMDlEjxJ+uuCM+Kw
-	Z9iwFo3xqrYQsC0a4jwE3Kz71/WaMGF++8usUbrfqsTnn/uN+2DbXMj+Hq8XKIXbPWbpEtqv/m18r
-	65LBI/OdHi+VlgwOwT6434Pcqd0U+OYAR0pO14wuopjOtI0e26IIcjtlKnLf8/fiVGo5fwOhXRm6+
-	hNLqA2L7DmaR98pA+hOhGGebmqJiTFFfAlIS4wXWogU1k0XDhy8Nu/H/BXKyFRTuB2iD7x+OZ/L9m
-	w2q0plbSg==;
+	 bh=CwrmB+QcyOhM/vu7jFruLoow00z1CaThWO2qrKfH/UU=; b=Q5BDWX2AtJmyqRqG2h3f1JeQb
+	jTVFSYAu15KHhRI/kr+F8ujzlj0mPzrqkFnjQVSlyijoBU43LA6YSKcCt2d0wEJSWOnFVw4+01y3S
+	v/rzSl4tCVg9p5efGOrFW1oxtgjpeiXdOrLUE/SxYUSFUhheO0xAh8f3X2E+DsDiamoA/KQGpV+Ji
+	8C+fyxiF8PW0OAx2Zo1Wgj+M73q10oOHPl45NJ+Ut1CAsmwLWHHUMF4gife0aKmOM66TqaMKSVvQK
+	F8kMeCmHYHfONd2rbSKf9d35Hgov/7KZH/hVbosHHMJ1aHuLIHFPlA774Vby0ZUlMVegdYWeHy+Ef
+	P2IbqyqAw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7P1a-000600-DA; Wed, 03 Feb 2021 20:45:18 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7P1W-0005zR-A9; Wed, 03 Feb 2021 20:45:15 +0000
-Received: by mail-ed1-x529.google.com with SMTP id df22so1343693edb.1;
- Wed, 03 Feb 2021 12:45:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=nMmfcO/AZRyYFfYSGaN+T619JHB1KRYF9FquTjBISLc=;
- b=kyIilSPW7nOlg/PaY1n5KUud5IPBsZimQfmhqkZfK8qI8I/gUAB0FDoY/6dHW9qoVo
- O5S4BQJ6PuyliWi7SnLgMshXNz9GVXvswyxmc4wXDDYXud0By2lvdBIp3417h8a5SLCz
- fAFfIaaM8nRNxKXaXJN9aLyM9cp34ZAm0MRpRTOMN+q/m6JICnOzVqMxAR0eeLCfqThq
- GB20139o5V19wYpc8GNHDBjxlJ8ej0gNXlwMj7nMqHRrtyaAD/2XlE1lbHaVA3MsDbas
- LVqyRzhTQ2XCLDCXydUk27gK7iU0HyksHyqo4Zcbu8YRN00yZqxRwZl0lUe/Phb0hszu
- 5KfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nMmfcO/AZRyYFfYSGaN+T619JHB1KRYF9FquTjBISLc=;
- b=XOvUShg3onh1v6rRTn/b2yYSNr8SQA/y8KozxUGLEuwsnoaLvzGSzgO4TtiwYp8UIw
- jKY0N6tm553zgMutmtEb0Q4+82oKJxNS3zs0h5MfminMhhFPGs353rDfHBKF0eui3ah5
- ZrdEvkeHvM1XU+reZcGvuKT7h/+S5j134fNvhXcaeFWxHalQTsDHohjDq+wBGhhJWGfY
- /s8kqr8g3ILuWM2OjBaS+fTxXUtLnBF0GpJf8WtI7N/MsKYX3b9bVNXDtfbjv1MTIN6d
- 9XcwC2IC5QOqtATpndb6ok7vK7bSljDWE0/37Hmhb6GRoIFDsgjHKCQGCMB57LxXD+OC
- 4K0g==
-X-Gm-Message-State: AOAM533bmGOtmGUcr6+AvHeI0pNslqPnOu6OPKVdBav6w8OZml3Y8mV2
- QqR2Xzht0fJ/DaDQNG8qZfo=
-X-Google-Smtp-Source: ABdhPJyIM0iDtjZHLtqWxu2EzV907xvDuhKhWtz7iCuvodfHQp2cDGjU8WMfIBsw2OVzuyaoxkd22Q==
-X-Received: by 2002:a05:6402:40c4:: with SMTP id
- z4mr4984026edb.233.1612385112898; 
- Wed, 03 Feb 2021 12:45:12 -0800 (PST)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- r9sm1452666eju.74.2021.02.03.12.45.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Feb 2021 12:45:12 -0800 (PST)
+	id 1l7cvQ-00043V-MM; Thu, 04 Feb 2021 11:35:52 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1l7cvM-000423-NF; Thu, 04 Feb 2021 11:35:49 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6787411FB;
+ Thu,  4 Feb 2021 03:35:46 -0800 (PST)
+Received: from [10.57.49.26] (unknown [10.57.49.26])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B4C483F73B;
+ Thu,  4 Feb 2021 03:35:44 -0800 (PST)
 Subject: Re: [PATCH v2 1/7] dt-bindings: usb: convert rockchip,dwc3.txt to yaml
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de,
+ Elaine Zhang <zhangqing@rock-chips.com>
 References: <20210203165233.22177-1-jbx6244@gmail.com>
-Message-ID: <597269b3-3fc4-85a1-fecd-7ee2816e228b@gmail.com>
-Date: Wed, 3 Feb 2021 21:45:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <41efd28c-ff64-2b9f-2cdc-ac4aaaeb4611@arm.com>
+Date: Thu, 4 Feb 2021 11:35:43 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.0
 MIME-Version: 1.0
 In-Reply-To: <20210203165233.22177-1-jbx6244@gmail.com>
-Content-Language: en-US
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210203_154514_391267_A6B51223 
-X-CRM114-Status: GOOD (  26.63  )
+X-CRM114-CacheID: sfid-20210204_063548_894207_1D8C23DD 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,36 +72,29 @@ Cc: devicetree@vger.kernel.org, balbi@kernel.org, gregkh@linuxfoundation.org,
  linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob, Heiko,
-
-Version 2 without node wrapper.
-Is that OK for backwards compatibility?
-New SoC rk3568 and rk3566 in the manufacturer tree also seem to use dwc3
-usb, so now only a rk3399 node restyle in mainline with conversion to yaml.
-
-On 2/3/21 5:52 PM, Johan Jonker wrote:
+On 2021-02-03 16:52, Johan Jonker wrote:
 > In the past Rockchip dwc3 usb nodes were manually checked.
 > With the conversion of snps,dwc3.yaml as common document
 > we now can convert rockchip,dwc3.txt to yaml as well.
 > Remove node wrapper.
 > 
 > Added properties for rk3399 are:
->   power-domains
->   resets
->   reset-names
+>    power-domains
+>    resets
+>    reset-names
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../devicetree/bindings/usb/rockchip,dwc3.txt      |  56 -----------
->  .../devicetree/bindings/usb/rockchip,dwc3.yaml     | 103 +++++++++++++++++++++
->  2 files changed, 103 insertions(+), 56 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
->  create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+>   .../devicetree/bindings/usb/rockchip,dwc3.txt      |  56 -----------
+>   .../devicetree/bindings/usb/rockchip,dwc3.yaml     | 103 +++++++++++++++++++++
+>   2 files changed, 103 insertions(+), 56 deletions(-)
+>   delete mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
+>   create mode 100644 Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
 > 
 > diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
 > deleted file mode 100644
@@ -212,7 +176,6 @@ On 2/3/21 5:52 PM, Johan Jonker wrote:
 > +  - Heiko Stuebner <heiko@sntech.de>
 > +
 > +description:
-
 > +      The common content of the node is defined in snps,dwc3.yaml.
 > +
 > +      Phy documentation is provided in the following places.
@@ -222,45 +185,9 @@ On 2/3/21 5:52 PM, Johan Jonker wrote:
 > +
 > +      Type-C PHY
 > +      Documentation/devicetree/bindings/phy/phy-rockchip-typec.txt
-
-wrong indentation: expected 2 but found 6  (indentation)
-
-yamllint ./Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-
-
-This warning doesn't seem to show up with the command below.
-
-make ARCH=arm64 dt_binding_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
-
 > +
 > +allOf:
-
 > +  - $ref: snps,dwc3.yaml#
-
-No warning is given here with dt_binding_check.
-
-From patchwork log:
-Unknown file referenced: [Errno 2] No such file or directory:
-'/usr/local/lib/python3.8/dist-packages/dtschema/schemas/usb/snps,dwc3.yaml'
-
-/////
-
-What's the correct format?
-
-- $ref: snps,dwc3.yaml#
-
-or
-
-- $ref: "snps,dwc3.yaml#"
-
-/////
-
-This serie is for linux-next.
-What kernel version does patchwork work test with?
-
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210203165233.22177-1-jbx6244@gmail.com/
-
 > +
 > +properties:
 > +  compatible:
@@ -286,8 +213,23 @@ https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210203165233.22
 > +          operation and >= 30MHz for HS operation
 > +      - description:
 > +          Controller aclk_usb3_rksoc_axi_perf clock
+
+I'm pretty sure these last 3 don't belong to the controller itself, 
+hence why they were in the glue layer node to being with.
+
 > +      - description:
 > +          Controller aclk_usb3 clock
+
+Does anything in the USB3 block actually consume this clock directly? If 
+not, then I don't think it needs to be specified since it's already the 
+parent of the controller's required bus_clk.
+
+I'm similarly suspicious of ACLK_USB3_NOC which is currently marked as 
+CLK_IGNORE_UNUSED - if that's necessary for USB3 to function then it 
+probably *should* be specified as part of the glue layer binding here.
+
+Robin.
+
 > +      - description:
 > +          Controller grf clock
 > +
@@ -341,7 +283,6 @@ https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210203165233.22
 > +      };
 > +    };
 > 
-
 
 _______________________________________________
 Linux-rockchip mailing list
