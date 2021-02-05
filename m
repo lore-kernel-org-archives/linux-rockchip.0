@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58386C4332B
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 243AAC433E9
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 11:05:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ACC4464E34
+	by mail.kernel.org (Postfix) with ESMTPS id 8088764F9D
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 11:05:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACC4464E34
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8088764F9D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=s0MdLFjkLVkrCScF6FXResaTekswFutHQBwOsQ5bQjI=; b=CFJhiQLMU57xoJQW7LeadoT6Z
-	FsCUqxL/ZgAZUVL0BmYQCeePlrYErfAFHr8USKYclzDE6xRxE2ce5pDtIqqoiyG2PXxVgVp/YRDTX
-	vyXoyeJDBIfRevGaRUtK62p821UN+Wp5WJDhMdK7nErdWaumu4xTLtZ7bpCFvayUsuGcXBu1x6i4s
-	CnF6wBDZfUgeWLp3oJEMoOKryezeDlF8a/E3ukyWJl8TGrHRmiEyyGGTWgRgmLoSDkEgL8lVGsmvJ
-	cOjKdZjGqBzMErFAVkuC+2u+T5/LG50tBoeSodUEshKEcGFsQr67FJUCFP2uOfQW2FYoFD0f8oB9B
-	bfYITJ1sw==;
+	 bh=mvedlyt0fk7WbX6TYK5+hBzum/xot6fGHT6tB1EOaoE=; b=rd3eOINGwgzr6UjhVqwpVW2on
+	eA8erFQsjXMKare6FLS73vl2lEpe3BSUfJkmitmdHKD/GAUlrLF301P4L+nIiNSKsEjYZ5wefrL62
+	sH192seEtFVbA9XvcVZsGipPSE+khV8wNv0cyWt7GRtiYt3scn0zX0QNk+6tDgDFn8UUEpsnT5jxQ
+	xAErmwHeOWJYK4CT0t5FavoXykTS6TZUijHJbXfwBz35ECyOu7pBE9ii37yC23GM10l5DclUeOV16
+	f5CV9b9fopVU2xu4tKgZ9nfqa7NoOdWdSDWVkOcn2PNfFkDd/5bw9LrQL4KJV4R8meH2d2imLgLB1
+	Mm/C+NZ4A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7yvO-0003G9-26; Fri, 05 Feb 2021 11:05:18 +0000
+	id 1l7yvM-0003FY-5z; Fri, 05 Feb 2021 11:05:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7yvF-0003DV-55
+ id 1l7yvF-0003DU-54
  for linux-rockchip@lists.infradead.org; Fri, 05 Feb 2021 11:05:13 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l7yvB-0001Ja-NS; Fri, 05 Feb 2021 12:05:05 +0100
+ id 1l7yvB-0001Ja-Di; Fri, 05 Feb 2021 12:05:05 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
-Subject: [PATCH 3/5] clk: rockchip: add clock id for SCLK_VIP_OUT on rk3368
-Date: Fri,  5 Feb 2021 12:05:00 +0100
-Message-Id: <20210205110502.1850669-3-heiko@sntech.de>
+Subject: [PATCH 2/5] clk: rockchip: use clock ids for PCLK_DPHYRX and
+ PCLK_DPHYTX0 on rk3368
+Date: Fri,  5 Feb 2021 12:04:59 +0100
+Message-Id: <20210205110502.1850669-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210205110502.1850669-1-heiko@sntech.de>
 References: <20210205110502.1850669-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210205_060509_380071_C702DBBE 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20210205_060509_348650_1C6E4D9C 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,25 +77,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Needed to provide clocks for cameras.
+Export the clocks via the newly added clock-ids.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- include/dt-bindings/clock/rk3368-cru.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/rockchip/clk-rk3368.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rk3368-cru.h b/include/dt-bindings/clock/rk3368-cru.h
-index f89683295935..83c72a163fd3 100644
---- a/include/dt-bindings/clock/rk3368-cru.h
-+++ b/include/dt-bindings/clock/rk3368-cru.h
-@@ -78,6 +78,7 @@
- #define SCLK_TIMER13		136
- #define SCLK_TIMER14		137
- #define SCLK_TIMER15		138
-+#define SCLK_VIP_OUT		139
+diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
+index 55443349439b..76fb04120089 100644
+--- a/drivers/clk/rockchip/clk-rk3368.c
++++ b/drivers/clk/rockchip/clk-rk3368.c
+@@ -818,8 +818,8 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	 * pclk_vio gates
+ 	 * pclk_vio comes from the exactly same source as hclk_vio
+ 	 */
+-	GATE(0, "pclk_dphyrx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
+-	GATE(0, "pclk_dphytx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
++	GATE(PCLK_DPHYRX, "pclk_dphyrx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
++	GATE(PCLK_DPHYTX0, "pclk_dphytx0", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
  
- #define DCLK_VOP		190
- #define MCLK_CRYPTO		191
+ 	/* pclk_pd_pmu gates */
+ 	GATE(PCLK_PMUGRF, "pclk_pmugrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 5, GFLAGS),
 -- 
 2.29.2
 
