@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D5FDC433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18327C433DB
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 11:05:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6BE3E64E34
+	by mail.kernel.org (Postfix) with ESMTPS id 3F95664F9E
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 11:05:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6BE3E64E34
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F95664F9E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gJS/Qbh7bRJ5GWIc3Ej4U96Gx6wPAJ4F8dzJsLpHBQc=; b=Q9I6EuoyH9DHDJx3xa7emlbOE
-	5v2qFKqGtMKKwO/ahgRZFVrabWJHyTvDF1qe2CWhjFk3ldVp+VPAt8B5RRJkvgAlvlW3eVUFM6mym
-	9r2NRltRGpG9GlPT/T3mgB9w9o3ZRbUv8bm38QAzjcky/VSoWSQbyL+Rwl4O0tHjtxI0iJwur7Apt
-	zCm+cOpDdQQ5LOPqEN+PnjCnwN/zsJ5UJ7YVPc9VoI8NLllmi5XFr8XINjy6M5moLuzjwailSwqk6
-	GciJLB4+cTaofAuknL1NQex74ShKp604kIPmptT4dgGEwPqhmk7SaPXwkDYhXtSg0oqp+d3FIT3Hf
-	GvQnNSJtw==;
+	 bh=MO/lcrsxvL5cVbjuFDWItIeQbuBbq+SW9bbUm8egoBw=; b=TdvPK3WcFjbE5kFrPfYa9Jzg1
+	l5UkcmOH8Bz+HaJO3MXmT5Fptm+XGAjCl7jQw8ftr7ntgOawPKyAKigP4CjlkFAMS3wa6CYbOjDWf
+	wOHKm+/hB7m5eY5jCYTOXfUjvYL7n012O8CJ/sOh/8VuGso8RVJ8wAp6h+fyt9qy9YT9nQGHFMAgo
+	nmBZ1e9A+rmcUjhSeD3fACvmiPbqgPD1GSYTtpXlCtJ0ner+i36iwOxudhJfjtcZsCqyqrs/mVQZw
+	h8HCkhvCXiyiPMvma2SGLvMLWi4DaYVMtXryjWTfY44Wo0oqX7I8+NA9PwaZ4rqQaYNw5wZgyYz+i
+	LH2apYk2w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l7yvM-0003Fe-KZ; Fri, 05 Feb 2021 11:05:16 +0000
+	id 1l7yvN-0003Fu-C9; Fri, 05 Feb 2021 11:05:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l7yvF-0003DW-53
+ id 1l7yvF-0003DX-57
  for linux-rockchip@lists.infradead.org; Fri, 05 Feb 2021 11:05:13 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l7yvC-0001Ja-11; Fri, 05 Feb 2021 12:05:06 +0100
+ id 1l7yvC-0001Ja-BO; Fri, 05 Feb 2021 12:05:06 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
-Subject: [PATCH 4/5] clk: rockchip: use clock id for SCLK_VIP_OUT on rk3368
-Date: Fri,  5 Feb 2021 12:05:01 +0100
-Message-Id: <20210205110502.1850669-4-heiko@sntech.de>
+Subject: [PATCH 5/5] clk: rockchip: fix DPHY gate locations on rk3368
+Date: Fri,  5 Feb 2021 12:05:02 +0100
+Message-Id: <20210205110502.1850669-5-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210205110502.1850669-1-heiko@sntech.de>
 References: <20210205110502.1850669-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210205_060509_353987_76A094BA 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20210205_060509_392456_01452E0F 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,26 +76,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Export the vip-out clock via the newly added clock-id.
+Fix the register and bits of the DPHY gate locations.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- drivers/clk/rockchip/clk-rk3368.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/rockchip/clk-rk3368.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3368.c b/drivers/clk/rockchip/clk-rk3368.c
-index 76fb04120089..61413be48d1a 100644
+index 61413be48d1a..9a0dab9448db 100644
 --- a/drivers/clk/rockchip/clk-rk3368.c
 +++ b/drivers/clk/rockchip/clk-rk3368.c
-@@ -474,7 +474,7 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
- 	COMPOSITE_NODIV(0, "vip_src", mux_pll_src_cpll_gpll_p, 0,
- 			RK3368_CLKSEL_CON(21), 15, 1, MFLAGS,
- 			RK3368_CLKGATE_CON(4), 5, GFLAGS),
--	COMPOSITE_NOGATE(0, "sclk_vip_out", mux_vip_out_p, 0,
-+	COMPOSITE_NOGATE(SCLK_VIP_OUT, "sclk_vip_out", mux_vip_out_p, 0,
- 			RK3368_CLKSEL_CON(21), 14, 1, MFLAGS, 8, 5, DFLAGS),
+@@ -818,8 +818,8 @@ static struct rockchip_clk_branch rk3368_clk_branches[] __initdata = {
+ 	 * pclk_vio gates
+ 	 * pclk_vio comes from the exactly same source as hclk_vio
+ 	 */
+-	GATE(PCLK_DPHYRX, "pclk_dphyrx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
+-	GATE(PCLK_DPHYTX0, "pclk_dphytx0", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(14), 8, GFLAGS),
++	GATE(PCLK_DPHYRX, "pclk_dphyrx", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(22), 11, GFLAGS),
++	GATE(PCLK_DPHYTX0, "pclk_dphytx0", "hclk_vio", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(22), 10, GFLAGS),
  
- 	COMPOSITE_NODIV(SCLK_EDP_24M, "sclk_edp_24m", mux_edp_24m_p, 0,
+ 	/* pclk_pd_pmu gates */
+ 	GATE(PCLK_PMUGRF, "pclk_pmugrf", "pclk_pd_pmu", CLK_IGNORE_UNUSED, RK3368_CLKGATE_CON(23), 5, GFLAGS),
 -- 
 2.29.2
 
