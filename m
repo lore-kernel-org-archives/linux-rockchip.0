@@ -2,57 +2,71 @@ Return-Path: <SRS0=7Imz=HH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B080C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 14:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2838DC433E0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 18:42:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD94B64FB5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 14:56:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD94B64FB5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id C48C464EE8
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Feb 2021 18:42:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C48C464EE8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FfvLEJcFW7D9WxcXQM5vM+uMM6DCJ4EFV2WqbUvTiFc=; b=1hgjK5ttM3cKhKcEOYSpLNppC
-	CuSLHDQ7abTVbaIJR3az//Y4+NjiJ8JLMUVAJeQ/1ZfUY/iBSkFtVEd/GAzOFop01iX3BZAequ55l
-	rCwEUTE8itWgGj4cP4RKJ1E727raLqbIg/Z4bqpHR/TkIHWqpXJtNpYZUuArdU/nJEsXwJTFugjd0
-	inO3Iar/bojPOBy9MXX8UTt7yGsbyoZDqEIpDKSZga9UFetUmhA5d3379KIMmTgJITB2HezvZvQMV
-	FG553rA/a+ETLw1/ZIHuR2cPvuz8nl0OhkEvd3rm9LsKbHPhwwk+ZKxegDFoVRlDZHGs7FgY18781
-	4/J4U7huQ==;
+	 bh=XYRXnN45hAxT/4Fd4xoVGBa5HKo225HFo9Ix6X2zppk=; b=BTX2F667q1H5mVRUevV/tCEqt
+	emmzxc0zVeIYzej99dlHc17Aj9JokWPBVsKhwXYZ3IZO+zJX1Tek3igV2RiglZTr2cGkwFn+dy+nL
+	hHsF3e2IzptsfgBuSrUL9eG6rdRvDTuyQ+ujlGUQx5BJftn7SUnoW/BFBjHnfzppdwQY3YClUyGo4
+	FK9CblU1U8cMbetvuRZOlVNtXYD6e93Az6+yl75o7HoXhDuQd+cUYLb5EKaEWNlPlNMWBjDK+dBZA
+	iYrJwHMkQI+tQiTHxMVvSTIWNv87TBB/HJrOcCT2swfKN9k1A+ioIab1GNeSxA7y9ELpkbS2jaYpT
+	VBKJcX8QQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l82Wn-0004Bt-C2; Fri, 05 Feb 2021 14:56:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1l863S-0005Y1-Kg; Fri, 05 Feb 2021 18:42:06 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l82Wi-0004AD-FP; Fri, 05 Feb 2021 14:56:05 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l82Wb-0002S7-Fm; Fri, 05 Feb 2021 15:55:57 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sebastian Fricke <sebastian.fricke@posteo.net>
-Subject: Re: [PATCH 0/6] Support second Image Signal Processor on rk3399
-Date: Fri, 05 Feb 2021 15:55:56 +0100
-Message-ID: <5860385.iIbC2pHGDl@diego>
-In-Reply-To: <5271305.e9J7NaK4W3@diego>
-References: <20210202145632.1263136-1-heiko@sntech.de>
- <20210205064335.6c3gs3h3pgvhceku@basti-TUXEDO-Book-XA1510>
- <5271305.e9J7NaK4W3@diego>
+ id 1l863O-0005XF-EM; Fri, 05 Feb 2021 18:42:03 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6922E64EE8;
+ Fri,  5 Feb 2021 18:42:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612550521;
+ bh=Och95jZSPmS5JZOu3rWCNdzFapqEaxA4bX7uCQJwQso=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=IX2kVxDXqUuV7iowgJJWwlByQAXihwSnK8hf2TkQT1LjJOn+hvItadXV2bJyoRau7
+ HOKkWGUOj+U72dTLpf3ngoAqJxxjr7HVVQLOZ3JeSerI0czD9EOtEjff0dN5pwjAzL
+ lHXtfzrHcLi0OEG13gFG+8vkS1XZn7EwSFmEV6Q4u24sKbaLeKU3RydjLgcxSyVqH9
+ o8/POigpER9rYtSUxohfdtok+MTincfAKZNBVtrzVs0qURvp6KhO+I3fVBFRCsQ/aP
+ QPOOkbBMHxXEPzJyBa4FDHBlm1WDl8DvdHUM+I5p77ZkVSZ+QkDIpX6sWoKuZFbqjt
+ APStkyUYfhrCw==
+Received: by mail-ed1-f54.google.com with SMTP id df22so10015677edb.1;
+ Fri, 05 Feb 2021 10:42:01 -0800 (PST)
+X-Gm-Message-State: AOAM531bANRtU6rSG/b3RLX90pNn7IKekQSazzHqw6cKaMOFyu2g1Ruc
+ /laLpl/fdLtEa2vG88ed+F43Mm+LEvl7QrRR/g==
+X-Google-Smtp-Source: ABdhPJwnoYzJJaU11tmANzpBNOiB4Jrz6Z0M34lW0MRbvQXE//h7k1Ng7TT1yLPvbcgMbS512EbgqHcxVP6l+HwWAJM=
+X-Received: by 2002:aa7:c895:: with SMTP id p21mr4907518eds.165.1612550519893; 
+ Fri, 05 Feb 2021 10:41:59 -0800 (PST)
 MIME-Version: 1.0
+References: <20210205114011.10381-1-jbx6244@gmail.com>
+ <20210205114011.10381-6-jbx6244@gmail.com>
+In-Reply-To: <20210205114011.10381-6-jbx6244@gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Fri, 5 Feb 2021 12:41:45 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJwNdUfoYM8SZmOgMG9iAyZkJ4-kzjjiDDm_mdmghTEOA@mail.gmail.com>
+Message-ID: <CAL_JsqJwNdUfoYM8SZmOgMG9iAyZkJ4-kzjjiDDm_mdmghTEOA@mail.gmail.com>
+Subject: Re: [PATCH v3 6/8] usb: dwc3: of-simple: add compatible for rk3328
+To: Johan Jonker <jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210205_095604_549381_AF587E94 
-X-CRM114-Status: GOOD (  42.90  )
+X-CRM114-CacheID: sfid-20210205_134202_571672_165F8CB0 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,222 +79,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, dafna.hirschfeld@collabora.com,
- cmuellner@linux.com, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, robh+dt@kernel.org, ezequiel@collabora.com,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devicetree@vger.kernel.org, "heiko@sntech.de" <heiko@sntech.de>,
+ Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux USB List <linux-usb@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+On Fri, Feb 5, 2021 at 5:40 AM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> From: Cameron Nemo <cnemo@tutanota.com>
+>
+> Add a compatible to be hooked into by the Rockchip rk3328 device tree.
+>
+> The rk3399 compatible cannot be reused because the rk3328 SoCs may
+> require a specialized driver in the future and old device trees must
+> remain compatible with newer kernels.
 
-I did some tests myself today as well and can confirm your
-hdmi related finding - at least when plugged in on boot.
+Yes that's important, but...
 
-I tried some combinations of camera vs. hdmi and it seems
-really only when hdmi is plugged in on boot
+> Signed-off-by: Cameron Nemo <cnemo@tutanota.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>  drivers/usb/dwc3/dwc3-of-simple.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+> index e62ecd22b..93bc34328 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -171,6 +171,7 @@ static const struct dev_pm_ops dwc3_of_simple_dev_pm_ops = {
+>  };
+>
+>  static const struct of_device_id of_dwc3_simple_match[] = {
+> +       { .compatible = "rockchip,rk3328-dwc3" },
 
-(1)
-- boot
-- camera
---> works
+Why does this driver need it? In fact, you don't want this driver to
+bind to the dwc3 node as we're binding to the 'snps,dwc3' driver.
 
-(2)
-- boot
-- camera
-- hdmi plugged in
-- hdmi works
-- camera
---> works
+>         { .compatible = "rockchip,rk3399-dwc3" },
 
-(3)
-- hdmi plugged in
-- boot
-- hdmi works
-- camera
---> camera doesn't work
+Given the above, you might think we should remove this, but we can't
+since there are old dtb's with the dwc3 child node.
 
-(4)
-- boot
-- hdmi plugged in
-- hdmi works
-- camera
--> camera works
+Presumably you are getting lucky here (with link order). The kernel
+has no logic to decide which driver to bind to if there are 2 matching
+drivers. If we did, it would probably be the opposite of what you want
+here as we'd pick the most specific match. This driver should probably
+bail probe if no dwc3 child node.
 
-
-With a bit of brute-force [0] it seems the camera also works again even
-with hdmi connected on boot. So conclusion would be that some clock
-is misbehaving.
-
-Now we'll "only" need to find out which one that is.
-
-
-Heiko
-
-
-[0]
-Don't disable any clock gates
-
-diff --git a/drivers/clk/clk-gate.c b/drivers/clk/clk-gate.c
-index 070dc47e95a1..8daf1fc3388c 100644
---- a/drivers/clk/clk-gate.c
-+++ b/drivers/clk/clk-gate.c
-@@ -61,6 +61,9 @@ static void clk_gate_endisable(struct clk_hw *hw, int ena=
-ble)
- =
-
-        set ^=3D enable;
- =
-
-+if (!enable)
-+return;
-+
-        if (gate->lock)
-                spin_lock_irqsave(gate->lock, flags);
-        else
-
-
-
-Am Freitag, 5. Februar 2021, 09:15:47 CET schrieb Heiko St=FCbner:
-> Hi Sebastian,
-> =
-
-> Am Freitag, 5. Februar 2021, 07:43:35 CET schrieb Sebastian Fricke:
-> > On 03.02.2021 20:54, Heiko St=FCbner wrote:
-> > >Am Mittwoch, 3. Februar 2021, 19:14:22 CET schrieb Sebastian Fricke:
-> > >> I have tested your patch set on my nanoPC-T4, here is a complete log
-> > >> with:
-> > >> - relevant kernel log entries
-> > >> - system information
-> > >> - media ctl output
-> > >> - sysfs entry information
-> > >>
-> > >> https://paste.debian.net/1183874/
-> > >>
-> > >> Additionally, to your patchset I have applied the following patches:
-> > >> https://github.com/initBasti/Linux_kernel_media_tree_fork/commits/du=
-al_cam_setup
-> > >>
-> > >> And just to not cause confusion the `media_dev` entries come from th=
-is
-> > >> unmerged series:
-> > >> https://patchwork.kernel.org/project/linux-media/list/?series=3D4262=
-69
-> > >>
-> > >> I have actually been able to stream with both of my cameras at the s=
-ame
-> > >> time using the libcamera cam command.
-> > >> I would like to thank you a lot for making this possible.
-> > >
-> > >Thanks for testing a dual camera setup. On my board I could only test
-> > >the second ISP. And really glad it works for you tool :-) .
-> > >
-> > >Out of curiosity, do you also see that green tint in the images the ca=
-meras
-> > >produce?
-> > =
-
-> > Yes, I do. Actually, I currently have two forms of a green tint, on my
-> > OV13850 everything is quite dark and greenish, which is caused by the
-> > missing 3A algorithms. On my OV4689, I have big patches of the image
-> > with bright green color and flickering, I investigated if this is
-> > connected to the 2nd ISP instance, but that doesn't seem to be the case
-> > as I have the same results when I switch the CSI ports of the cameras.
-> > =
-
-> > I have found another issue, while testing I discovered following
-> > issue:
-> > When I start the system with an HDMI monitor connected, then the camera
-> > on the 2nd port doesn't work. This is probably because the RX/TX is
-> > reserved as a TX.
-> > But it made me wonder because if the system has an RX, a TX, and
-> > an RX/TX, why isn't the pure TX used by the monitor and the
-> > cameras take RX and RX/TX?
-> > Or do you think that this is maybe a malfunction of this patch?
-> =
-
-> I don't think it is an issue with this specific series, but still puzzlin=
-g.
-> =
-
-> I.e. the DPHYs are actually only relevant to the DSI controllers,
-> with TX0 being connected to DSI0 and TX1RX1 being connected
-> to DSI1. So having an hdmi display _in theory_ shouldn't matter at all.
-> =
-
-> Out of curiosity what happens, when you boot without hdmi connected
-> turn on the cameras, connect the hdmi after this, try the cameras again?
-> =
-
-> =
-
-> Heiko
-> =
-
-> > =
-
-> > >
-> > >Thanks
-> > >Heiko
-> > =
-
-> > Greetings,
-> > Sebastian
-> > =
-
-> > >
-> > >
-> > >> If you like to you can add:
-> > >> Tested-by: Sebastian Fricke <sebastian.fricke@posteo.net>
-> > >>
-> > >> On 02.02.2021 15:56, Heiko Stuebner wrote:
-> > >> >The rk3399 has two ISPs and right now only the first one is usable.
-> > >> >The second ISP is connected to the TXRX dphy on the soc.
-> > >> >
-> > >> >The phy of ISP1 is only accessible through the DSI controller's
-> > >> >io-memory, so this series adds support for simply using the dsi
-> > >> >controller is a phy if needed.
-> > >> >
-> > >> >That solution is needed at least on rk3399 and rk3288 but no-one
-> > >> >has looked at camera support on rk3288 at all, so right now
-> > >> >only implement the rk3399 specifics.
-> > >> >
-> > >> >
-> > >> >Heiko Stuebner (6):
-> > >> >  drm/rockchip: dsi: add own additional pclk handling
-> > >> >  dt-bindings: display: rockchip-dsi: add optional #phy-cells prope=
-rty
-> > >> >  drm/rockchip: dsi: add ability to work as a phy instead of full d=
-si
-> > >> >  arm64: dts: rockchip: add #phy-cells to mipi-dsi1
-> > >> >  arm64: dts: rockchip: add cif clk-control pinctrl for rk3399
-> > >> >  arm64: dts: rockchip: add isp1 node on rk3399
-> > >> >
-> > >> > .../display/rockchip/dw_mipi_dsi_rockchip.txt |   1 +
-> > >> > arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  39 ++
-> > >> > drivers/gpu/drm/rockchip/Kconfig              |   2 +
-> > >> > .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 342 ++++++++++++++=
-++++
-> > >> > 4 files changed, 384 insertions(+)
-> > >> >
-> > >>
-> > >
-> > >
-> > >
-> > >
-> > =
-
-> =
-
-> =
-
-
-
-
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
