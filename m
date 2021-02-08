@@ -2,63 +2,67 @@ Return-Path: <SRS0=M6n8=HK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFF29C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 14:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00D50C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90A3E64E2E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 14:39:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90A3E64E2E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=glider.be
+	by mail.kernel.org (Postfix) with ESMTPS id 7FEF464EBA
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FEF464EBA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CW/UtQjee/CvJJNdhmc80sSOzAfAfLTVNEPNmIpeEHs=; b=SIokYM5oDiCPauIYZFD3V2td3G
-	7UKE+2g1/3WhugQmSg6XEI7HYopjmcghrmz1L0he6kUwRb67KneX2LVgjrp79F5/2zZJNZ8TV3z0x
-	RbL72v0Wg3D5k/K1EUrq5xKK4M/JGa7OCnmLbtweA3TBp1lvP2bLkg1+foAhOXBW3ZPGpQp30ISln
-	u22UcFikF4sDorx0kCo6pRDESf+Xt1kPtvnPkzOq/7LHsTCd5Yqth89n4cN1DyOhpogFwxssZU3nb
-	cLv6MRWq1W3/03jdiXCBVKLGBL+0LdEecQ2pV0/OkyUOOsxqFU2427K5Jy9eoM+MLfx77Xs1eU5yy
-	IvH6u9KA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4Ms18QJKRU2EId2feV0CQjE1Rr9eiwN0H0+ZQRQrymk=; b=MwdiUgafG4rvDKDKxpa2i/5vO
+	q3cxOgf1NhnoyQK2mibXJmJNee5EjpcMHxT+XKq66cXiFNJzIKvzZs9oDWCcme6IVHRKYvSLL+TrZ
+	1JngFn/Jb9ea3Iw27m2rAw7ki3dqNs5YEzMwmWO3IEwvLQUGCcsFVwfRZziWWYG0ZPcGtz3NF35eB
+	19ef+6uLjOxyQxSr2f+s3AJ1CeIDAiQsFPPseahbq+WWQOJTGbaLYTVZd9zcJxCWiDZdJ9Q6Q8dza
+	37zs1vZyV5H7DCP9sEcblleh2n9YOyrj3BORX212OUqQxbZo8jc8MNs5WeP3pT0EQGmU88AZmKGuV
+	5yZctm/cA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l97gy-0000FB-DC; Mon, 08 Feb 2021 14:39:08 +0000
-Received: from albert.telenet-ops.be ([2a02:1800:110:4::f00:1a])
+	id 1l9Ank-0006dS-4K; Mon, 08 Feb 2021 17:58:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l97gu-0000Cv-Cz
- for linux-rockchip@lists.infradead.org; Mon, 08 Feb 2021 14:39:05 +0000
-Received: from ramsan.of.borg ([84.195.186.194])
- by albert.telenet-ops.be with bizsmtp
- id Seex2400L4C55Sk06eexHy; Mon, 08 Feb 2021 15:38:58 +0100
-Received: from rox.of.borg ([192.168.97.57])
- by ramsan.of.borg with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.93)
- (envelope-from <geert@linux-m68k.org>)
- id 1l97gm-004e2A-Ph; Mon, 08 Feb 2021 15:38:56 +0100
-Received: from geert by rox.of.borg with local (Exim 4.93)
- (envelope-from <geert@linux-m68k.org>)
- id 1l97gm-001kqj-Dd; Mon, 08 Feb 2021 15:38:56 +0100
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] soc: rockchip: ROCKCHIP_GRF should not default to y,
- unconditionally
-Date: Mon,  8 Feb 2021 15:38:55 +0100
-Message-Id: <20210208143855.418374-1-geert+renesas@glider.be>
-X-Mailer: git-send-email 2.25.1
+ id 1l9Anb-0006aD-1x; Mon, 08 Feb 2021 17:58:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7739864E84;
+ Mon,  8 Feb 2021 17:58:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612807090;
+ bh=XNLkFAXZajpl1pvSlYYyiojg6Cj6P5AJkvwdFzbavls=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=QUQyfz36Emg/KIlt81Y9MZ0KLlQRsZgRitaB8klq7n3RoaZLwz9k941fyzXyoCUxq
+ RnGdOiaCdcNPjkqXCrxf80HYkyZBrkvAhgRePGHKn4bijhohL5wUFVLri8bVeZU2N4
+ Oz5NCZYSuB/OmnbFP+xnH5kv/4yVlpVGNf605Y/lHbBMD5UpECcck7lTkNEJiNzkFF
+ WMrX2CfppuLG2bhIs40tkoF+L+vnX6HljD0272bPUe5ZE0IXnYE+m9dI8oi8NWIAQq
+ bKdrgvImG1UGzqI4PNX7H2CHVgTkOLJ8laFRyLc89l5vfU/vAl+Lzxn8gLoCrt5P8f
+ 8k3Vrltt5CwEQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.10 02/36] arm64: dts: rockchip: Fix PCIe DT
+ properties on rk3399
+Date: Mon,  8 Feb 2021 12:57:32 -0500
+Message-Id: <20210208175806.2091668-2-sashal@kernel.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210208175806.2091668-1-sashal@kernel.org>
+References: <20210208175806.2091668-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_093904_552970_1280FA3E 
-X-CRM114-Status: UNSURE (   9.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210208_125811_210440_6616CA69 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,42 +75,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Douglas Anderson <dianders@chromium.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <maz@kernel.org>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Merely enabling CONFIG_COMPILE_TEST should not enable additional code.
-To fix this, restrict the automatic enabling of ROCKCHIP_GRF to
-ARCH_ROCKCHIP, and ask the user in case of compile-testing.
+From: Marc Zyngier <maz@kernel.org>
 
-Fixes: 4c58063d4258f6be ("soc: rockchip: add driver handling grf setup")
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+[ Upstream commit 43f20b1c6140896916f4e91aacc166830a7ba849 ]
+
+It recently became apparent that the lack of a 'device_type = "pci"'
+in the PCIe root complex node for rk3399 is a violation of the PCI
+binding, as documented in IEEE Std 1275-1994. Changes to the kernel's
+parsing of the DT made such violation fatal, as drivers cannot
+probe the controller anymore.
+
+Add the missing property makes the PCIe node compliant. While we
+are at it, drop the pointless linux,pci-domain property, which only
+makes sense when there are multiple host bridges.
+
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+Link: https://lore.kernel.org/r/20200815125112.462652-3-maz@kernel.org
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/soc/rockchip/Kconfig | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index 2c13bf4dd5dbee76..25eb2c1e31bb2a08 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -6,8 +6,8 @@ if ARCH_ROCKCHIP || COMPILE_TEST
- #
- 
- config ROCKCHIP_GRF
--	bool
--	default y
-+	bool "Rockchip General Register Files support" if COMPILE_TEST
-+	default y if ARCH_ROCKCHIP
- 	help
- 	  The General Register Files are a central component providing
- 	  special additional settings registers for a lot of soc-components.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 7a9a7aca86c6a..5df535ad4bbc3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -234,6 +234,7 @@ pcie0: pcie@f8000000 {
+ 		reg = <0x0 0xf8000000 0x0 0x2000000>,
+ 		      <0x0 0xfd000000 0x0 0x1000000>;
+ 		reg-names = "axi-base", "apb-base";
++		device_type = "pci";
+ 		#address-cells = <3>;
+ 		#size-cells = <2>;
+ 		#interrupt-cells = <1>;
+@@ -252,7 +253,6 @@ pcie0: pcie@f8000000 {
+ 				<0 0 0 2 &pcie0_intc 1>,
+ 				<0 0 0 3 &pcie0_intc 2>,
+ 				<0 0 0 4 &pcie0_intc 3>;
+-		linux,pci-domain = <0>;
+ 		max-link-speed = <1>;
+ 		msi-map = <0x0 &its 0x0 0x1000>;
+ 		phys = <&pcie_phy 0>, <&pcie_phy 1>,
 -- 
-2.25.1
+2.27.0
 
 
 _______________________________________________
