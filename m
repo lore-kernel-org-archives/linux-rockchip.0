@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00D50C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94476C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FEF464EBA
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FEF464EBA
+	by mail.kernel.org (Postfix) with ESMTPS id 3315A64EB8
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 17:58:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3315A64EB8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,37 +23,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4Ms18QJKRU2EId2feV0CQjE1Rr9eiwN0H0+ZQRQrymk=; b=MwdiUgafG4rvDKDKxpa2i/5vO
-	q3cxOgf1NhnoyQK2mibXJmJNee5EjpcMHxT+XKq66cXiFNJzIKvzZs9oDWCcme6IVHRKYvSLL+TrZ
-	1JngFn/Jb9ea3Iw27m2rAw7ki3dqNs5YEzMwmWO3IEwvLQUGCcsFVwfRZziWWYG0ZPcGtz3NF35eB
-	19ef+6uLjOxyQxSr2f+s3AJ1CeIDAiQsFPPseahbq+WWQOJTGbaLYTVZd9zcJxCWiDZdJ9Q6Q8dza
-	37zs1vZyV5H7DCP9sEcblleh2n9YOyrj3BORX212OUqQxbZo8jc8MNs5WeP3pT0EQGmU88AZmKGuV
-	5yZctm/cA==;
+	 bh=U1/3SEDIvX5jriYNQ8pGrJPbst/gn6YLvpefZRWvwUg=; b=fy4Z5Gg4Wm2IaLznKEoodVsEg
+	lWgSD8HnxKkh3hclhC2n/L+RixLTjQ8Hs5ZtTshCme/8mT5f8OvXE+tSBOgmW6XnJKppbEliiHhuL
+	e7kEEp71/M0120KJVTTKz6YRwjY9krgWCo6FL6kKRDYP7xv2BJOM8iR1UZwW+YGos51K9zuu8ap4y
+	fHKMRhooAXDOycbVEGthIRaU0+o8rOHqwFu+HhLeVUQ0mACgI84X5shkrb9Q74aziTyibzVnQ2Hnf
+	EzNKYlOLFjZAcPe4BPfrwU9LHa1DtIXacQzllsIjp3JXo1mlWzcOK51CHpzPQrCz3apmeIgRkGhIl
+	C4CVBJFAQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9Ank-0006dS-4K; Mon, 08 Feb 2021 17:58:20 +0000
+	id 1l9Anw-0006i9-GY; Mon, 08 Feb 2021 17:58:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9Anb-0006aD-1x; Mon, 08 Feb 2021 17:58:11 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7739864E84;
- Mon,  8 Feb 2021 17:58:09 +0000 (UTC)
+ id 1l9Ang-0006cG-G4; Mon, 08 Feb 2021 17:58:19 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CDBC264E87;
+ Mon,  8 Feb 2021 17:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612807090;
- bh=XNLkFAXZajpl1pvSlYYyiojg6Cj6P5AJkvwdFzbavls=;
+ s=k20201202; t=1612807095;
+ bh=iFWC2DtP+Zvyu7SqrESfK1vWP5a8+/pgdlP0zwg4DB0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QUQyfz36Emg/KIlt81Y9MZ0KLlQRsZgRitaB8klq7n3RoaZLwz9k941fyzXyoCUxq
- RnGdOiaCdcNPjkqXCrxf80HYkyZBrkvAhgRePGHKn4bijhohL5wUFVLri8bVeZU2N4
- Oz5NCZYSuB/OmnbFP+xnH5kv/4yVlpVGNf605Y/lHbBMD5UpECcck7lTkNEJiNzkFF
- WMrX2CfppuLG2bhIs40tkoF+L+vnX6HljD0272bPUe5ZE0IXnYE+m9dI8oi8NWIAQq
- bKdrgvImG1UGzqI4PNX7H2CHVgTkOLJ8laFRyLc89l5vfU/vAl+Lzxn8gLoCrt5P8f
- 8k3Vrltt5CwEQ==
+ b=b5S+rE337Yd3hiFU81wXbnnu8ZoruYoWy7O2/H77fRNdvGjanZevUg9ra/BuQLozL
+ 9TceuZe/Zf8L3I7yqCNPi2Y4XzCiZvW1JA16KnmEQOjB+znu9cfKfNLzR2LGxsgo3+
+ NK61dz8OeN1Ot6x/6//W/ArOqKfpj1K1noOu846ijLPiu56aLfPTWn+MjLdpaL3I2r
+ TNBNdx5ueMYEFX50qL59qQewQvOVgjvXPptVEJaGIerzYkysqdn2hsQ9+dvcQW79RB
+ eFf+jqoemH2gvgAb1OFGsZ8jXwljoBZLmROO2DWq58Zk9GVqikkcrAWKBdpGKwOKMO
+ 27pBALffwPAYg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 02/36] arm64: dts: rockchip: Fix PCIe DT
- properties on rk3399
-Date: Mon,  8 Feb 2021 12:57:32 -0500
-Message-Id: <20210208175806.2091668-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 06/36] arm64: dts: rockchip: remove
+ interrupt-names property from rk3399 vdec node
+Date: Mon,  8 Feb 2021 12:57:36 -0500
+Message-Id: <20210208175806.2091668-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210208175806.2091668-1-sashal@kernel.org>
 References: <20210208175806.2091668-1-sashal@kernel.org>
@@ -61,8 +61,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_125811_210440_6616CA69 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20210208_125816_714473_680D5B43 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,55 +76,49 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <maz@kernel.org>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Marc Zyngier <maz@kernel.org>
+From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 43f20b1c6140896916f4e91aacc166830a7ba849 ]
+[ Upstream commit 94a5400f8b966c91c49991bae41c2ef911b935ac ]
 
-It recently became apparent that the lack of a 'device_type = "pci"'
-in the PCIe root complex node for rk3399 is a violation of the PCI
-binding, as documented in IEEE Std 1275-1994. Changes to the kernel's
-parsing of the DT made such violation fatal, as drivers cannot
-probe the controller anymore.
+A test with the command below gives this error:
+/arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml: video-codec@ff660000:
+'interrupt-names' does not match any of the regexes: 'pinctrl-[0-9]+'
 
-Add the missing property makes the PCIe node compliant. While we
-are at it, drop the pointless linux,pci-domain property, which only
-makes sense when there are multiple host bridges.
+The rkvdec driver gets it irq with help of the platform_get_irq()
+function, so remove the interrupt-names property from the rk3399
+vdec node.
 
-Signed-off-by: Marc Zyngier <maz@kernel.org>
-Link: https://lore.kernel.org/r/20200815125112.462652-3-maz@kernel.org
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/
+media/rockchip,vdec.yaml
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/20210117181653.24886-1-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 7a9a7aca86c6a..5df535ad4bbc3 100644
+index 5df535ad4bbc3..7e69603fb41c0 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -234,6 +234,7 @@ pcie0: pcie@f8000000 {
- 		reg = <0x0 0xf8000000 0x0 0x2000000>,
- 		      <0x0 0xfd000000 0x0 0x1000000>;
- 		reg-names = "axi-base", "apb-base";
-+		device_type = "pci";
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 		#interrupt-cells = <1>;
-@@ -252,7 +253,6 @@ pcie0: pcie@f8000000 {
- 				<0 0 0 2 &pcie0_intc 1>,
- 				<0 0 0 3 &pcie0_intc 2>,
- 				<0 0 0 4 &pcie0_intc 3>;
--		linux,pci-domain = <0>;
- 		max-link-speed = <1>;
- 		msi-map = <0x0 &its 0x0 0x1000>;
- 		phys = <&pcie_phy 0>, <&pcie_phy 1>,
+@@ -1278,7 +1278,6 @@ vdec: video-codec@ff660000 {
+ 		compatible = "rockchip,rk3399-vdec";
+ 		reg = <0x0 0xff660000 0x0 0x400>;
+ 		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
+-		interrupt-names = "vdpu";
+ 		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
+ 			 <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
+ 		clock-names = "axi", "ahb", "cabac", "core";
 -- 
 2.27.0
 
