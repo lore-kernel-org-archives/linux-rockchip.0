@@ -2,62 +2,55 @@ Return-Path: <SRS0=M6n8=HK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C8EAC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 00:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8681C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 00:51:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ABADA64E3A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 00:24:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABADA64E3A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id BE36764E56
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 00:51:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE36764E56
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Message-ID:Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Subject:
-	From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DtKvOHvnMilPbWsxqv24zqgGpnzNCjbcL5AfbB6JkG8=; b=nlXSOe4o81ECCZMoB1Gr/7nZhQ
-	+D+l9H7Jxjzbv2Ed2EwBdtjDkW76gOMPPZL/ecoDfdHhhOAIZbMu9lud90UbTWOxpFz4CJMYibAyV
-	9bqLlPenyYDJVi2gimEwQk1w8yq7bC6ad4B4MrbnemDKbaojGoa4n7+CG/xZrlItWyzEV8KCF2ymv
-	+1WYRVdsbEreEYwgTCoDtjNFgqaLn/SQlhPO2nx4b5rsQ6N71vhMkBjJobj50voO/IYEFbfPpBf2q
-	0JHETlmGamTVMPGOqpTNzBwOtxJ3Lem/b9OWPb22Khi5lfnIt4m0tWiJlYfRxK2RCPwI7NTwrZyyi
-	gTOit4mQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ru7YVXvsumd30zecod2BVLVZZWi05GMRT2uP41qobV0=; b=inoYrqnQ0yWSW3PJdigsB4Wl6L
+	Q+O0PTXWgKv1fS5sWEl34I/GQtXz2fyUE13u+oCkuADw+KX2S4QVPylccz8G42DQ1j/iGwLf8JbKY
+	I5gK7N2igDPwTusfQd30mNdOCF9WQVaf1aF8zkiPoR6hkpdBRsw2ggIPq0YaAStiG6hBY+/ukHYPK
+	rLWS5tnCtViGn92DGkubZeRBLCXjh+u3V3g2BOIgH8FRQtj+mVy7QVLOYLwnR1/ntyM5j/1eIXnn8
+	u4VeciJUXIUYhLr6DrKeoaEqt5fDHM3ELINvS3QpIrPUOlgoyQ6h9OpMqahfffL15OZX5MVF1YTS3
+	rSIEXvMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l8uLI-0001oj-5n; Mon, 08 Feb 2021 00:23:52 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1l8ulX-0003IL-Nj; Mon, 08 Feb 2021 00:50:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l8uLG-0001oX-4p
- for linux-rockchip@merlin.infradead.org; Mon, 08 Feb 2021 00:23:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Date:Reply-To:Content-Type:To:Subject:
- From:Sender:Message-ID:Cc:MIME-Version:Content-Transfer-Encoding:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=22PjdP3HY0tZzoW6pHULZs18Ep/qcWy+gXqf0IurJHM=; b=OqFOf5XAVV62ih9a73zL6iRSqr
- IZxmfsR4fUZL0k1jceukCgVFthoY07O+3/zznsF2YpuQsvaYm+IhBNgXiCXuspxh3uqMR0n+51+0h
- ifn9FnL+UApbercSz3Nxft/JkciuWbp+9ThPxyj75YA2XhREpVTKn94AEwypsYHh4sbPSSwkthaBJ
- dzZTpnNm1OMiUqdyfh09Sz+6BzgeQIZlqLMoytRMmudT5NKAfo/Q05YnVSO7CdpDovCMq+K0VqL3i
- SHElRbnXwjRRdK0PiP2fvPg0c7dD98UgekMHNQM6XbbziFE2ws4CrnVcZ5xR+xdHzJwj8OraFCrfU
- f9ST+1vQ==;
-Received: from [209.141.46.27] (helo=50uj302.com)
- by casper.infradead.org with smtp (Exim 4.94 #2 (Red Hat Linux))
- id 1l8uLD-005How-Iv
- for linux-rockchip@lists.infradead.org; Mon, 08 Feb 2021 00:23:48 +0000
-From: "Ms. Kim Chan" <mskmchanouk@gmail.com>
-Subject: Investment research about your country
-To: linux-rockchip@lists.infradead.org
-Date: Mon, 8 Feb 2021 07:23:47 +0700
-X-Priority: 3
+ id 1l8ulW-0003Hi-0j
+ for linux-rockchip@lists.infradead.org; Mon, 08 Feb 2021 00:50:58 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1l8ulN-0006cH-UM; Mon, 08 Feb 2021 01:50:50 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Subject: [GIT PULL] Rockchip clock changes for 5.12
+Date: Mon, 08 Feb 2021 01:50:45 +0100
+Message-ID: <3091603.aeNJFYEL58@phil>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_002348_815791_F0795B85 
-X-CRM114-Status: SPAM  (  -5.18  )
+X-CRM114-CacheID: sfid-20210207_195058_119512_7DCF3691 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,24 +63,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: "Ms. Kim Chan" <mskmchanouk@gmail.com>
-MIME-Version: 1.0
+Cc: linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-Message-ID: <E1l8uLI-0001oj-5n@merlin.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-My name is Ms. Kim Chan Ouk, A Thai citizen in Asian Continent but currently
-residing in abroad, I trust this email meets you in good health, I just got
-your contact today during a research about your country and I will say that
-I foresee success of my future investment ventures in your country. I want
-to invest in your country and I would like you to assist me in my investment
-my investment Please do reply me as soon as possible so
-we can discuss more.
+Hi Mike, Stephen,
 
-I look forward to hear from you soon
-mskmchanouk@gmail.com
+please find below Rockchip clock changes for 5.12
+
+Please pull, thanks
+Heiko
+
+The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
+
+  Linux 5.11-rc1 (2020-12-27 15:30:22 -0800)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.12-rockchip-clk1
+
+for you to fetch changes up to 4bc23b3c83c9a3fc0a7dd8f2f11f451aa92c85cd:
+
+  clk: rockchip: fix DPHY gate locations on rk3368 (2021-02-06 01:05:04 +0100)
+
+----------------------------------------------------------------
+Kerneldoc fixes and some new rk3368 clock ids related to
+camera input.
+
+----------------------------------------------------------------
+Heiko Stuebner (5):
+      clk: rockchip: add clock ids for PCLK_DPHYRX and PCLK_DPHYTX0 on rk3368
+      clk: rockchip: use clock ids for PCLK_DPHYRX and PCLK_DPHYTX0 on rk3368
+      clk: rockchip: add clock id for SCLK_VIP_OUT on rk3368
+      clk: rockchip: use clock id for SCLK_VIP_OUT on rk3368
+      clk: rockchip: fix DPHY gate locations on rk3368
+
+Lee Jones (4):
+      clk: rockchip: Demote non-conformant kernel-doc headers in main clock code
+      clk: rockchip: Remove unused/undocumented struct members from clk-cpu
+      clk: rockchip: Demote kernel-doc abuses to standard comment blocks in plls
+      clk: rockchip: Demote non-conformant kernel-doc header in half-divider
+
+ drivers/clk/rockchip/clk-cpu.c          | 4 ----
+ drivers/clk/rockchip/clk-half-divider.c | 2 +-
+ drivers/clk/rockchip/clk-pll.c          | 6 +++---
+ drivers/clk/rockchip/clk-rk3368.c       | 6 +++---
+ drivers/clk/rockchip/clk.c              | 4 ++--
+ include/dt-bindings/clock/rk3368-cru.h  | 3 +++
+ 6 files changed, 12 insertions(+), 13 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
