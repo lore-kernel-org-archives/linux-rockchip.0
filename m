@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CE61C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 09:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C22DC433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 09:43:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EF5864E82
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 09:43:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EF5864E82
+	by mail.kernel.org (Postfix) with ESMTPS id 0B32664E85
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 09:43:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B32664E85
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,63 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JWalHDVxpsKrX8T1ZAzgyAuxf1xc61tTvVQZxqOmFHc=; b=yhbIiEL5SkTImpEP2M9SAFM4l
-	G3YM7XVB4KcN6WiLoNttvsvNAAZHObgiH1AZd7EztTIDAktPlPaI/l782lK2PyLxvqB077FqLMqqn
-	c7hLE+3qG/aCRzxsNtADK/PdWOW6P7EdzcIogAKd0axEryuXf5or4fdvHEiHFhFf5c6Th1JgPeijR
-	45qtjN9mVzkoYUTgp7M8SdYep3Ul2J/1KLyCeZF/2aU88nAULMPMIEVGo3s9s9HntppWbZLHz3DXC
-	TZTvwbFsnGD9Yc5jd7ost7fW/iKgPUgxX/ZV6see3AT+RhkPUpLjYdHpy8Gh3pZtlk+ipJ4Bc99sE
-	ELU3OBL3A==;
+	 bh=PxW8f37orsk++3uoGYhypovZFAJ7NBuueOOQbiHCHIg=; b=U43ZroJr9Yc4ZApCC2JURTRDf
+	7O0Ox9XFud4qEIl4Cvjv7i+VbXciUma5g2br+DlBrPMm2jAGAdPrtFr6hio2d8SMMjUBBBVyJiVLn
+	1EhO6whQ5w0fKTeIxm1VhXbODYzqEZpzNMxF9pAJNczbZc9CRD477vx7lCR9A7I4Z9cBqXKiId167
+	JBEmj5zrfRZoBL2p6NbnNMI4R4iFUF7gyuNcdon24vPsneoGFCcs+HC/k85NGQEJFnI59rqM8WN2g
+	xpbFtOp/oi9e4azrATo/jO8xLjaCUV3tviwALcvFY8Q429k/52QKtZLOaRpuwZ45cvU/kEheUf+j2
+	2T5BpDXiA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l934y-0006Ld-Rt; Mon, 08 Feb 2021 09:43:36 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1l9358-0006S2-J2; Mon, 08 Feb 2021 09:43:46 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l934w-0006J5-Al; Mon, 08 Feb 2021 09:43:35 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id 189so337485pfy.6;
- Mon, 08 Feb 2021 01:43:32 -0800 (PST)
+ id 1l9354-0006Og-E3; Mon, 08 Feb 2021 09:43:44 +0000
+Received: by mail-pf1-x429.google.com with SMTP id q131so9337543pfq.10;
+ Mon, 08 Feb 2021 01:43:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Pt3Ra9o7wlpdpNYx3JDjTYF1o1dX6A0SMQwis6c4Pyw=;
- b=QhEV9FMXBvym/ARUTAOQRFT+VSGwsl+HFKUhZjk6UM9PU4Um8MSAEq5+EDwRqucqEY
- KB+KMqB66L+SkZrbcgoBoYwk09huncASO+rSBdiVdLeJ+Kfc4jIyl6ziOkJ8+p9DIKQD
- XaURfC5FDoO/ulyUauhjQJz3XGVZ+yOCxp8c6N5JNiGx2jV1cSH3wAP1XDVfIrBRNhON
- VfufsnT2Zxl6P4kRkJnU84TY8vkRxWlsnVOYffiAarN243ukvf6p9GRD+jXEuiITdmQC
- fwYttSWNPBMPvKn4J4nqTVvhc2GjC/qa2tqWSz0bW0YDaWAzAvmwdPIaGOyqyX+9c1AL
- mZPQ==
+ bh=JIfhZma4t7M0QhjqQIwVj37Q6U0ytCyWa6sVJ86x3+E=;
+ b=GQCluQJxJXU9uIGARRK+2GdtsN+NyXOuW/U2ccm33GGglLSogWbh5D5VtQmxM/E31U
+ I7xCg7PyEbqoNcVzHtne/74YLLxgC82a1yHVRU09hWn83+P+g6l/xas/W8MYdfZoBuAw
+ bpaz4N564ZDcqbEycWvbr4e7WScZ/41x/PuV0fWl53f9PJyAei/J1WV/zld4sLKHYFMV
+ MqYqaIvsB+PzHeBna0n42H9H5BuAidKVJZBqAC3ZvhmBTM0q6jduudkK3ZeW9K+sPJwb
+ 8qPVdLqq5mTyRfMNFAtAxayXTvPMBN4tH7x6WTUqc+XNQOj39ap9bRBV7WmkRDIhl5dZ
+ or6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Pt3Ra9o7wlpdpNYx3JDjTYF1o1dX6A0SMQwis6c4Pyw=;
- b=tKhNcwJUQ75cnpxBOj+c456EXQmC0QIr4olTayafhseExVIBnjSezfVPpJWBmQBvse
- UcJYLWUBXkfw+fF+pGqkNqKCMsif9ZDqg0gMNil7ho9RGx4UcW729MIHWXhe8OGEZQpx
- JpEg+Hyo1qfOW0JVa4ymsRbzczQt//sN1553cXQnMySaKFjkvIrWjhAQlE3m4lktik8T
- LWgQ/9SnfVD7f9YtSU5ipryvd7L5TQsDqGu+TywbssXBITr+WwGVofyli0BPMqMX2ryt
- KLc29n5n8VEZ6UsXkVCeiIekud0z5dG+xCjqZIZa8s14qEt7snTlpMyyn14huF39RWGq
- mUsw==
-X-Gm-Message-State: AOAM532Xz8ZGY6jqlRttv+avi2t5xr56mZvD/h21NpIfmaqMC009zPwO
- GHgcUgE0TCeEpT/GHMWxhwE=
-X-Google-Smtp-Source: ABdhPJxFGWbnMXnrhMoIW3WHCggAdOTATl5cBsG/jL9ehDb2rVejdDgpbUztvsK8Q4PVA28zFFyc6g==
-X-Received: by 2002:a63:505d:: with SMTP id q29mr16117823pgl.89.1612777410468; 
- Mon, 08 Feb 2021 01:43:30 -0800 (PST)
+ bh=JIfhZma4t7M0QhjqQIwVj37Q6U0ytCyWa6sVJ86x3+E=;
+ b=cuqx3xFObg+fgT6dz2ys4gP99/Q8sbHGKH/ip1TyqfKVAWTsLA8yVM4vjSDG1xunOZ
+ y/s7sJxj/z97QDmxCG1YMBzeE67UBuEmzsBEXpO9bvXvD+xtoxZrkMg9nVbdBH5+2CoK
+ kB3r8Wo7wCC45tEZ+uURTXdmg3a+GhuaYwJ//Q1Qxas2cSyFMW27mLHnk7eT9o+kZ17K
+ CQ5GeiiN5LpiEzaeiRcV6V705/W/84tE49BdSUOwU1sZ3u2zEMepPJFOrVuocz+VM0+0
+ wJSfWVqaiaVhjIAe1AHRjqTLJI+4XiEa2UBBHiH694erx1rVKmr3ZjIAFkelYLvE0Lgb
+ afrA==
+X-Gm-Message-State: AOAM533ovlOYnjwg8mAYM4RwF7hrTREiWfStZtUd8KvGG6V31v4AHnnk
+ BI2ZONqz2vhmEzTqbn2MVCY=
+X-Google-Smtp-Source: ABdhPJyCi6H7A0+lSBpy0VXpnhSlJbVPtYI4IZSa+s8nFTsLOY3aaUqBz0iAZ7ZtST6WEnXqN3wlqA==
+X-Received: by 2002:a62:2702:0:b029:1d1:b92a:ef2a with SMTP id
+ n2-20020a6227020000b02901d1b92aef2amr16985867pfn.5.1612777420043; 
+ Mon, 08 Feb 2021 01:43:40 -0800 (PST)
 Received: from localhost.localdomain ([49.207.205.214])
- by smtp.gmail.com with ESMTPSA id k69sm12208958pfd.4.2021.02.08.01.43.21
+ by smtp.gmail.com with ESMTPSA id k69sm12208958pfd.4.2021.02.08.01.43.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Feb 2021 01:43:29 -0800 (PST)
+ Mon, 08 Feb 2021 01:43:39 -0800 (PST)
 From: Allen Pais <allen.lkml@gmail.com>
 To: herbert@gondor.apana.org.au
-Subject: [PATCH v5 03/19] crypto: axis: convert tasklets to use new
+Subject: [PATCH v5 04/19] crypto: caam: convert tasklets to use new
  tasklet_setup() API
-Date: Mon,  8 Feb 2021 15:12:22 +0530
-Message-Id: <20210208094238.571015-4-allen.lkml@gmail.com>
+Date: Mon,  8 Feb 2021 15:12:23 +0530
+Message-Id: <20210208094238.571015-5-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210208094238.571015-1-allen.lkml@gmail.com>
 References: <20210208094238.571015-1-allen.lkml@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_044334_400482_200C9728 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20210208_044342_531308_F78B7837 
+X-CRM114-Status: GOOD (  14.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,55 +107,44 @@ Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
  linux-crypto@vger.kernel.org, Romain Perier <romain.perier@gmail.com>,
  davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Allen Pais <apais@linux.microsoft.com>
-
-In preparation for unconditionally passing the
-struct tasklet_struct pointer to all tasklet
-callbacks, switch to using the new tasklet_setup()
-and from_tasklet() to pass the tasklet pointer explicitly.
-
-Signed-off-by: Romain Perier <romain.perier@gmail.com>
-Signed-off-by: Allen Pais <apais@linux.microsoft.com>
----
- drivers/crypto/axis/artpec6_crypto.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/crypto/axis/artpec6_crypto.c b/drivers/crypto/axis/artpec6_crypto.c
-index 9ad188cffd0d..52e0c7fdbfa8 100644
---- a/drivers/crypto/axis/artpec6_crypto.c
-+++ b/drivers/crypto/axis/artpec6_crypto.c
-@@ -2075,9 +2075,9 @@ static void artpec6_crypto_timeout(struct timer_list *t)
- 	tasklet_schedule(&ac->task);
- }
- 
--static void artpec6_crypto_task(unsigned long data)
-+static void artpec6_crypto_task(struct tasklet_struct *t)
- {
--	struct artpec6_crypto *ac = (struct artpec6_crypto *)data;
-+	struct artpec6_crypto *ac = from_tasklet(ac, t, task);
- 	struct artpec6_crypto_req_common *req;
- 	struct artpec6_crypto_req_common *n;
- 	struct list_head complete_done;
-@@ -2900,8 +2900,7 @@ static int artpec6_crypto_probe(struct platform_device *pdev)
- 	artpec6_crypto_init_debugfs();
- #endif
- 
--	tasklet_init(&ac->task, artpec6_crypto_task,
--		     (unsigned long)ac);
-+	tasklet_setup(&ac->task, artpec6_crypto_task);
- 
- 	ac->pad_buffer = devm_kzalloc(&pdev->dev, 2 * ARTPEC_CACHE_LINE_MAX,
- 				      GFP_KERNEL);
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogQWxsZW4gUGFpcyA8YXBhaXNAbGludXgubWljcm9zb2Z0LmNvbT4KCkluIHByZXBhcmF0
+aW9uIGZvciB1bmNvbmRpdGlvbmFsbHkgcGFzc2luZyB0aGUKc3RydWN0IHRhc2tsZXRfc3RydWN0
+IHBvaW50ZXIgdG8gYWxsIHRhc2tsZXQKY2FsbGJhY2tzLCBzd2l0Y2ggdG8gdXNpbmcgdGhlIG5l
+dyB0YXNrbGV0X3NldHVwKCkKYW5kIGZyb21fdGFza2xldCgpIHRvIHBhc3MgdGhlIHRhc2tsZXQg
+cG9pbnRlciBleHBsaWNpdGx5LgoKUmV2aWV3ZWQtYnk6IEhvcmlhIEdlYW50xIMgPGhvcmlhLmdl
+YW50YUBueHAuY29tPgpTaWduZWQtb2ZmLWJ5OiBSb21haW4gUGVyaWVyIDxyb21haW4ucGVyaWVy
+QGdtYWlsLmNvbT4KU2lnbmVkLW9mZi1ieTogQWxsZW4gUGFpcyA8YXBhaXNAbGludXgubWljcm9z
+b2Z0LmNvbT4KLS0tCiBkcml2ZXJzL2NyeXB0by9jYWFtL2pyLmMgfCA5ICsrKysrLS0tLQogMSBm
+aWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL2NyeXB0by9jYWFtL2pyLmMgYi9kcml2ZXJzL2NyeXB0by9jYWFtL2pyLmMKaW5k
+ZXggN2YyYjExMDFmNTY3Li4yOTAzZTFhZjBhNTYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY3J5cHRv
+L2NhYW0vanIuYworKysgYi9kcml2ZXJzL2NyeXB0by9jYWFtL2pyLmMKQEAgLTksNiArOSw3IEBA
+CiAKICNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4KICNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNz
+Lmg+CisjaW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+CiAKICNpbmNsdWRlICJjb21wYXQuaCIK
+ICNpbmNsdWRlICJjdHJsLmgiCkBAIC0yMDEsMTEgKzIwMiwxMSBAQCBzdGF0aWMgaXJxcmV0dXJu
+X3QgY2FhbV9qcl9pbnRlcnJ1cHQoaW50IGlycSwgdm9pZCAqc3RfZGV2KQogfQogCiAvKiBEZWZl
+cnJlZCBzZXJ2aWNlIGhhbmRsZXIsIHJ1biBhcyBpbnRlcnJ1cHQtZmlyZWQgdGFza2xldCAqLwot
+c3RhdGljIHZvaWQgY2FhbV9qcl9kZXF1ZXVlKHVuc2lnbmVkIGxvbmcgZGV2YXJnKQorc3RhdGlj
+IHZvaWQgY2FhbV9qcl9kZXF1ZXVlKHN0cnVjdCB0YXNrbGV0X3N0cnVjdCAqdCkKIHsKIAlpbnQg
+aHdfaWR4LCBzd19pZHgsIGksIGhlYWQsIHRhaWw7Ci0Jc3RydWN0IGRldmljZSAqZGV2ID0gKHN0
+cnVjdCBkZXZpY2UgKilkZXZhcmc7Ci0Jc3RydWN0IGNhYW1fZHJ2X3ByaXZhdGVfanIgKmpycCA9
+IGRldl9nZXRfZHJ2ZGF0YShkZXYpOworCXN0cnVjdCBjYWFtX2Rydl9wcml2YXRlX2pyICpqcnAg
+PSBmcm9tX3Rhc2tsZXQoanJwLCB0LCBpcnF0YXNrKTsKKwlzdHJ1Y3QgZGV2aWNlICpkZXYgPSBq
+cnAtPmRldjsKIAl2b2lkICgqdXNlcmNhbGwpKHN0cnVjdCBkZXZpY2UgKmRldiwgdTMyICpkZXNj
+LCB1MzIgc3RhdHVzLCB2b2lkICphcmcpOwogCXUzMiAqdXNlcmRlc2MsIHVzZXJzdGF0dXM7CiAJ
+dm9pZCAqdXNlcmFyZzsKQEAgLTQ4Myw3ICs0ODQsNyBAQCBzdGF0aWMgaW50IGNhYW1fanJfaW5p
+dChzdHJ1Y3QgZGV2aWNlICpkZXYpCiAJCSAgICAgIChKT0JSX0lOVENfQ09VTlRfVEhMRCA8PCBK
+UkNGR19JQ0RDVF9TSElGVCkgfAogCQkgICAgICAoSk9CUl9JTlRDX1RJTUVfVEhMRCA8PCBKUkNG
+R19JQ1RUX1NISUZUKSk7CiAKLQl0YXNrbGV0X2luaXQoJmpycC0+aXJxdGFzaywgY2FhbV9qcl9k
+ZXF1ZXVlLCAodW5zaWduZWQgbG9uZylkZXYpOworCXRhc2tsZXRfc2V0dXAoJmpycC0+aXJxdGFz
+aywgY2FhbV9qcl9kZXF1ZXVlKTsKIAogCS8qIENvbm5lY3Qgam9iIHJpbmcgaW50ZXJydXB0IGhh
+bmRsZXIuICovCiAJZXJyb3IgPSBkZXZtX3JlcXVlc3RfaXJxKGRldiwganJwLT5pcnEsIGNhYW1f
+anJfaW50ZXJydXB0LCBJUlFGX1NIQVJFRCwKLS0gCjIuMjUuMQoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
+dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
