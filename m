@@ -2,20 +2,21 @@ Return-Path: <SRS0=M6n8=HK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 771ACC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 18:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48A9FC433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 19:17:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 040AB64DE1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 18:02:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 040AB64DE1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CC74764E74
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Feb 2021 19:17:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC74764E74
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,44 +24,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lsuODpuqlsePuRWpoYtSbNeE3P/rBmGAu7JxeYTcK2c=; b=e/T3cOMmRayasZKo3koMyFWO9e
-	joobXzZA3HSEyUbUH3YT8op9hHanc7+DEHH3BPMZeS3sRLTPV5tjhsljOpe2Iv1c34f3G4luNszEn
-	RjbaNW7Pv2lJkYEvqxeLolDIa8PQBMx7IqQUO7Ahuxw122KXX05XnxxPOq2LhdLYvAFy5xwBH20gk
-	6BbFtkqWo9/KDEzK4RDgh/ulifXPjCcMrnm+/sh6X0HW2XTYnTksCO9b4LHlx7jCfaOG/yBHef5Mk
-	6GxhmGmUYeGvo0O8yhA+pW3HnJ5Py89srWNaOY3w5A3ZOpe2bac+2gymfZJ/yZO0RRoLJ07p8Gwvo
-	UPy8rqrw==;
+	bh=LsjdyVn6zL7f7xeXs4VlZIusQQ2gOYQfEkAaY19RNrM=; b=sUwjG/2Pw3fI9yHpj/x8hFYuon
+	tNROyoZWqmfvI3JVoDz0VzJKUARcoS66X6WUpr2ot7XcQLpvdhpKzl223FuTXenMkqZfILeJnLZWJ
+	xpQVxCY8NETpksSEGL33Q5TDgqm/GCc7E5SNI7GunOPq/JvPvlzg2B3EznXhTc4HtRUgfnwLm+XCF
+	dXAD9PWQXdkR8r/PcnE5Vw4cn0xFSuAUGvAfak/MRt3nxntt3icnybaZ6cKJl50THcqr6lW6jLdUD
+	vTRVgeTPeqteoXPbO3NBoGd2H5sZhlKuZXRDjfE5oR/M2uicVA2wU65yf3dnNS4sr744KKVd6M7og
+	x58AY62A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9Arw-0000fu-SA; Mon, 08 Feb 2021 18:02:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1l9C2F-0004wo-4E; Mon, 08 Feb 2021 19:17:23 +0000
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9ApC-0007QR-7d; Mon, 08 Feb 2021 17:59:51 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2637D64EEB;
- Mon,  8 Feb 2021 17:59:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612807189;
- bh=wPmpKzaMmcqvacjEw2wc2+06+yB2WqJNho5sWTARSE8=;
- h=From:To:Cc:Subject:Date:From;
- b=coRd55kkCrOFgS3hb/uGVEjui4VJV5j/2HCt5QY3u4ptbMk0lQYZB7u2bB3m6VYDL
- yGHaeDpVZV1t5MX0Av3ORBNzwCm/nrsH1n1HUBbi2ACqe4TfBBCksqxJwWnC+vMhI9
- CXvmR1/3KtOIqDP4bbLVmgFhqa2OH1IlIAkUzXDoblYb1XxV4LnGebWAOvTV4un5fp
- NXZJZ1oxtpC20htI6KljWhjTV4+aLAQlJPSaE7kUJYDc3j/CBGPmtgJBIzJzrmUZs2
- p8+A9VDZFRI+Jddvyg/wK7KuNoFM/AL0/r0S/1Md5JFns6skP7Yjm8BVaeagraGwl2
- KHojPxtshZ5Hw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 1/9] arm64: dts: rockchip: Fix PCIe DT properties
- on rk3399
-Date: Mon,  8 Feb 2021 12:59:38 -0500
-Message-Id: <20210208175946.2092374-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.27.0
+ id 1l9C28-0004uV-Bu; Mon, 08 Feb 2021 19:17:17 +0000
+Received: by mail-il1-x12e.google.com with SMTP id y17so13793062ili.12;
+ Mon, 08 Feb 2021 11:17:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JeycJMVrT1Dsbk9XtCwjyUvDzF/dcIodjFIrjeRF9Uw=;
+ b=j5xqL69DpZ9yPEm4gQOwSpBh2g5smaE9P2MPnP62rEWZEHts61LsIe6SFn3sG3qtfs
+ PSaANvdV5epXdO7HiH01tzIBK7qJDojZ3UmYVCYcmsV5HFyM31F5KHSy1xmL2qCMF84T
+ W+lb2Sx28TQ48v9om0X9Ik3YO+2/XB9FojBHit1x2SVl4YPBXVyGdmkqyoRSzf42j3XP
+ CtuiuzZ8F6YfRoa1homosSqsngcHVEldPdPHCCNV7lJdMs/avY801gGEzhkAEuybX/ib
+ TGE6xVpSl4hR1ClnnfAO3DBj1TtrkS5VcNeu6UhlVmrMo5YWf9DaqiqUrCUzSL/CDDDj
+ Ge0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=JeycJMVrT1Dsbk9XtCwjyUvDzF/dcIodjFIrjeRF9Uw=;
+ b=DCDc/m648/Cs1YonqvWRB5NIGr5rOCJPnn2l7MInY1Uy9wms7J5JWQPbkJv1d4RUI6
+ 6ft6u2aPd01oMKQpJRRyuFRzGM4q6Itz8FvujhB6ViO3FmoW9Ppj4r2SWH1wzPmYJPWt
+ 2FPtz3Y0FBG7xxTAUQILj53ITGqqg8DuxQQSS0ay/ZbiXFsqLvzxP6QTHaMzDzcun71Y
+ LwdMZ/C8a16ctZXlcfAQnmR6eRGcfx/Dy5JLy6NkpK7+wUiHtOZvlVxV6Fawxrqw+c3S
+ +eTQqY6F+shf4hrRQwBUQupDyiZWSxTPNmmQJ4kHS9/t5JAX8WsxEMbJTCxj9a96+E1P
+ 6FCw==
+X-Gm-Message-State: AOAM533EX0lczog/3z3aGxisb19OhBlYLPBjQ6KynwmP9Hb9BTD4kLh5
+ msJ8/3bFjZrk/zinEhoFGe0=
+X-Google-Smtp-Source: ABdhPJwd2VKq6K3S7zfgm6zF0SnaIRJ8zrSyJR3bE1Y72wItD6hLqv+XlHFG52YX4wJIR2g1SOPtWw==
+X-Received: by 2002:a92:c248:: with SMTP id k8mr17387977ilo.141.1612811832591; 
+ Mon, 08 Feb 2021 11:17:12 -0800 (PST)
+Received: from localhost.localdomain
+ (tunnel525895-pt.tunnel.tserv15.lax1.ipv6.he.net. [2001:470:c:1200::2])
+ by smtp.googlemail.com with ESMTPSA id j25sm9429645iog.27.2021.02.08.11.17.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Feb 2021 11:17:11 -0800 (PST)
+From: Tianling Shen <cnsztl@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jagan Teki <jagan@amarulasolutions.com>, Johan Jonker <jbx6244@gmail.com>,
+ Tianling Shen <cnsztl@gmail.com>, Emmanuel Vadot <manu@freebsd.org>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ David Bauer <mail@david-bauer.net>, Tobias Schramm <t.schramm@manjaro.org>,
+ Marty Jones <mj8263788@gmail.com>,
+ Jensen Huang <jensenhuang@friendlyarm.com>
+Subject: [PATCH 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
+Date: Tue,  9 Feb 2021 03:16:45 +0800
+Message-Id: <20210208191646.6511-1-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210208_125950_508104_EB0CDD5A 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20210208_141716_450364_CCE72CF9 
+X-CRM114-Status: GOOD (  11.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,58 +97,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <maz@kernel.org>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Marc Zyngier <maz@kernel.org>
+Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
 
-[ Upstream commit 43f20b1c6140896916f4e91aacc166830a7ba849 ]
-
-It recently became apparent that the lack of a 'device_type = "pci"'
-in the PCIe root complex node for rk3399 is a violation of the PCI
-binding, as documented in IEEE Std 1275-1994. Changes to the kernel's
-parsing of the DT made such violation fatal, as drivers cannot
-probe the controller anymore.
-
-Add the missing property makes the PCIe node compliant. While we
-are at it, drop the pointless linux,pci-domain property, which only
-makes sense when there are multiple host bridges.
-
-Signed-off-by: Marc Zyngier <maz@kernel.org>
-Link: https://lore.kernel.org/r/20200815125112.462652-3-maz@kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 82747048381fa..721f4b6b262f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -231,6 +231,7 @@ pcie0: pcie@f8000000 {
- 		reg = <0x0 0xf8000000 0x0 0x2000000>,
- 		      <0x0 0xfd000000 0x0 0x1000000>;
- 		reg-names = "axi-base", "apb-base";
-+		device_type = "pci";
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 		#interrupt-cells = <1>;
-@@ -249,7 +250,6 @@ pcie0: pcie@f8000000 {
- 				<0 0 0 2 &pcie0_intc 1>,
- 				<0 0 0 3 &pcie0_intc 2>,
- 				<0 0 0 4 &pcie0_intc 3>;
--		linux,pci-domain = <0>;
- 		max-link-speed = <1>;
- 		msi-map = <0x0 &its 0x0 0x1000>;
- 		phys = <&pcie_phy 0>, <&pcie_phy 1>,
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ef4544ad6f82..b85ebf2c8d52 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -133,6 +133,7 @@ properties:
+               - friendlyarm,nanopc-t4
+               - friendlyarm,nanopi-m4
+               - friendlyarm,nanopi-neo4
++              - friendlyarm,nanopi-r4s
+           - const: rockchip,rk3399
+ 
+       - description: GeekBuying GeekBox
 -- 
-2.27.0
+2.17.1
 
 
 _______________________________________________
