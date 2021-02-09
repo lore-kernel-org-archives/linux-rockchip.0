@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B2A0C433E0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 19:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4AC6C433E0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 19:24:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C98FC64EB4
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 19:24:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C98FC64EB4
+	by mail.kernel.org (Postfix) with ESMTPS id 3283964ED1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 19:24:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3283964ED1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,61 +24,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fBtGb353wbEji6pfvTcFJl93KLHw+8VXApNngGPazoU=; b=j5/OSBtA2rgkzWYR3wJBZTbe/G
-	ZBAUkHYMt0znjZrM7AC5DCWRpKtYlMdIiic+tELBxlBvflLJ+jyvbHWkWYM63TrL99Nvar+Y5PLOX
-	tsws7G382UKUcsXXlmJo2xpBinBW7EieF9HCzQMKSwCzIa+IJgkecHDaM6vOzFfvmT8KmrP4Q8RSZ
-	41eMBa+PLnX8xh/AbRzg13SsqQXe5M6UFdujG3YGh51XrjRQgbQqCjYuWi2lZg1CIeyF0fmzLJ24V
-	duU5vUoZFm4VB8acAAmjvkkMCnXSLey/4C+wGa9EqsieQUaIyO1tTf40exMR9sGvlj3YzbzSjpIHz
-	cDa2vTIA==;
+	bh=QiYk2YeneAxknBvp3qBqvBvwBcfYMZZYvQx3PAI/uBk=; b=wiaOFE0qYojfS+7QWOP+X90NOG
+	xs4s+sSyqoYvDrQQJqdS0SJ6YmkABm9m6R4jHwUJTCBg21dTObA+9essPKLHYeayfzgWi8uDyu+Kh
+	9M7tAx/VPtRCBkE6Y478jetzwLwZsV3+9YNobzG4o4uTYRUoFIjlF0iRBCTgEQ9nkSfZt3TWc3pzk
+	m4q+4zPpCOhHBF4LQTQ1wiGSccOf/ynJ9QlkbPh5wW2ATN+eyaVybYjkQUulHcr7OnY7RuNH8hVFw
+	P+A2GbFTGkf6S62vBC9voCbM0HU2j/6zUUIqMRBUDeJqqb/WnnJWFhkWo3ULszQHpQsf6V805Pi1A
+	jrZtRWMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9YcH-0004tB-Co; Tue, 09 Feb 2021 19:24:05 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1l9YcX-0004yB-1k; Tue, 09 Feb 2021 19:24:21 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9YcE-0004rR-SI; Tue, 09 Feb 2021 19:24:03 +0000
-Received: by mail-ed1-x529.google.com with SMTP id q2so22240355eds.11;
- Tue, 09 Feb 2021 11:24:00 -0800 (PST)
+ id 1l9YcF-0004rk-HO; Tue, 09 Feb 2021 19:24:04 +0000
+Received: by mail-ej1-x631.google.com with SMTP id a9so33655250ejr.2;
+ Tue, 09 Feb 2021 11:24:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=pyReI/BEuC4BzvSRo5mXE3P7CpFBNp0uOKqtRDtZmz0=;
- b=YJPjb0dS96lYDOexjOydBEkgbTkDbxwnkeUSHVABRARJeOksmXglyDYD2RqyVw3O2E
- t+EVY/HYTcyuQPEAkxjsWudzToJR098RylZVaKH1Of8kbjRGDnhUfN64E81gKOABvlTN
- BPs/t2qVYxNAG2t7UXIasMOM9q+jQDV4jJrw72K7hdOKuZAdn7uHWPmj+kh8XogAP30L
- SHqKpYLguNlitYOH2Ih4GBSHsujJDoOn8KvJ19oO+GMVUp5V2bjf6t8a85fd+zJhhlTp
- bMNFWbKlGIOe1EmF9QeWKZXkz1AiCvIGuhtWnq35HOS2ukzxBa+E7DK/Dl2kle/gS8gh
- cVHA==
+ bh=r7BU1Ua7cwHe6jzoj7pIEXXpfnh5K4Y+YXR073vkvQE=;
+ b=bh1IT2E376Yq6oXbtlLRVU+ZZgwlQGngdXEgtoCLNApGVLxKZgNcwTXuBftb9haijP
+ IIjApj2MGOwBkU4/qoDv8H5kROC7Ft9rXktG0pwxcodKCht0kPvXTv/S5Sw/XF2cBeGd
+ qAwGBS1P4pNyT8b2GVyW1VbiAFE2pbYimxz6Wh3twMtY5kDU0JRy1UKKWpaK6ujwF9SI
+ qp3oeiRdTb0QMw0J4grCoBzbrLvAzZhdNi++4bjwbOkdPCyOyiYcuj5p8D4S+Lwffwzd
+ zTXauPyAD+rCiPkeMGS8u2Z9aqlADrMziri6dNWDPabmtIt8ewRfL1HgSNzN38rADgBh
+ he3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=pyReI/BEuC4BzvSRo5mXE3P7CpFBNp0uOKqtRDtZmz0=;
- b=KEwFUiE/h1NYXksLaSioRDwoCK4Qslj23+cYKvMCN/UthutUtVZDr8jsUozruZRXhW
- i9qGUMTuWYXy8nRY77BnaO96kZa/DNGmwjs4Ii9siFQJD4ipEIghenqxbE0NBRrqeN5T
- x1f3Wd9xWuSrmBUCuCtB6d3pbMqQdyv5xqcusJU0+/BL74lwPSSKDSNBFf/+uyUXe1O5
- OzITRp9aTG+JbR1xFDiw1IBl7/LvJT1GsQr9JFbLc9Qm/XSI5ec5uVjejAqhWZ/AeBLJ
- Pi71LLwYrfo7ze601kMzmzGiYE2ItwnUE6fP7sBjRqOwuBwWcLfBQS5bOi1Xh3IwK1oQ
- tNgg==
-X-Gm-Message-State: AOAM530f7dy2V6PC8BOU5f9pED4F89odOhnQSMKKyhNs0LkG8dDrv7Yy
- 6hmq0Uu/uV72GMzarfuj4Xo=
-X-Google-Smtp-Source: ABdhPJz+bOuBJ3/9q6WA9aKGxDaFG4ToV8V9ky4ts+krOYiuFJikzdaJMlOuwtuQTxx8Th0zBx7T9A==
-X-Received: by 2002:a05:6402:104b:: with SMTP id
- e11mr22202102edu.367.1612898639910; 
- Tue, 09 Feb 2021 11:23:59 -0800 (PST)
+ bh=r7BU1Ua7cwHe6jzoj7pIEXXpfnh5K4Y+YXR073vkvQE=;
+ b=beSumKTgDmZFIL+pV2N+wgfNuxIEJS1G/pj2RhWX1yTnLWGkrd/H5MIlBLtbF1sMH/
+ 8EYGPV7Sce0Jj8gBp6YtouFWaFJXbSLXZlP/nhFz+qXQcTOymzydxoDUYHJHjYf1U+cx
+ 7Omcz7x0aeLLPlD9XXqtfefTfgQI/Nis168Kenoz8KOeaJuW3WFrvbtaGHtcPO8ANzra
+ HjWsGbCUiNa38WIUoYKZ6LxtDSohjfVNFnKfkClPnc/kczX0kJzQ/XMQDcL+AdOjK7Nb
+ 9Vo/58Yx9xJTL88s3XE200/f0EiIDJIGzFF4zdBCo/P5svrrqgVuBTAXVfXdwTRhTukR
+ PXPw==
+X-Gm-Message-State: AOAM5337KyBsvELz8Jd/0XMsGR7AqnWIF3WcgIJtG3MOBn3G04H9hfLC
+ 85lCrXmT5ttRBsrHZCZ8akS9hENcOgE=
+X-Google-Smtp-Source: ABdhPJxKg0jN0s/0ilpBmiIkOppmd8gfTSX0HME5CQ924LQSHlmH/a9j412UFHOcO2XDV1B8AX7bGw==
+X-Received: by 2002:a17:906:7b8d:: with SMTP id
+ s13mr23864808ejo.479.1612898640598; 
+ Tue, 09 Feb 2021 11:24:00 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id w3sm11075779eja.52.2021.02.09.11.23.59
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 09 Feb 2021 11:23:59 -0800 (PST)
+ Tue, 09 Feb 2021 11:24:00 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v5 2/8] usb: dwc3: of-simple: bail probe if no dwc3 child node
-Date: Tue,  9 Feb 2021 20:23:44 +0100
-Message-Id: <20210209192350.7130-2-jbx6244@gmail.com>
+Subject: [PATCH v5 3/8] arm64: dts: rockchip: optimize clks for rk3399 dwc3
+Date: Tue,  9 Feb 2021 20:23:45 +0100
+Message-Id: <20210209192350.7130-3-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210209192350.7130-1-jbx6244@gmail.com>
 References: <20210209192350.7130-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_142402_926690_E1DA0003 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20210209_142403_660551_8FBC34FB 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,33 +101,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For some of the dwc3-of-simple compatible SoCs we
-don't want to bind this driver to a dwc3 node,
-but bind that node to the 'snps,dwc3' driver instead.
-The kernel has no logic to decide which driver to bind
-to if there are 2 matching drivers, so bail probe if no
-dwc3 child node.
+From: Wu Liang feng <wulf@rock-chips.com>
 
+Remove unnecessary clocks, refer to rk3399 TRM, aclk_usb3 is the
+parent of aclk_usb3otg0/1 and aclk_usb3_grf, and we will enable
+aclk_usb3otg0/1 and aclk_usb3_grf, so don't need to enable aclk_usb3
+again. In addition, the aclk_usb3_rksoc_axi_perf clk is used for usb3
+performance monitor module which we don't use now, so don't need to
+enable it.
+
+Signed-off-by: Wu Liang feng <wulf@rock-chips.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- drivers/usb/dwc3/dwc3-of-simple.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
-index e62ecd22b..347b4d384 100644
---- a/drivers/usb/dwc3/dwc3-of-simple.c
-+++ b/drivers/usb/dwc3/dwc3-of-simple.c
-@@ -38,6 +38,10 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
- 
- 	int			ret;
- 
-+	/* Bail probe if no dwc3 child node. */
-+	if (!of_get_compatible_child(dev->of_node, "snps,dwc3"))
-+		return -ENODEV;
-+
- 	simple = devm_kzalloc(dev, sizeof(*simple), GFP_KERNEL);
- 	if (!simple)
- 		return -ENOMEM;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 04f7cc5c3..b125cac89 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -399,11 +399,9 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
+-			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_RKSOC_AXI_PERF>,
+-			 <&cru ACLK_USB3>, <&cru ACLK_USB3_GRF>;
++			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_GRF>;
+ 		clock-names = "ref_clk", "suspend_clk",
+-			      "bus_clk", "aclk_usb3_rksoc_axi_perf",
+-			      "aclk_usb3", "grf_clk";
++			      "bus_clk", "grf_clk";
+ 		resets = <&cru SRST_A_USB3_OTG0>;
+ 		reset-names = "usb3-otg";
+ 		status = "disabled";
+@@ -435,11 +433,9 @@
+ 		#size-cells = <2>;
+ 		ranges;
+ 		clocks = <&cru SCLK_USB3OTG1_REF>, <&cru SCLK_USB3OTG1_SUSPEND>,
+-			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_RKSOC_AXI_PERF>,
+-			 <&cru ACLK_USB3>, <&cru ACLK_USB3_GRF>;
++			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_GRF>;
+ 		clock-names = "ref_clk", "suspend_clk",
+-			      "bus_clk", "aclk_usb3_rksoc_axi_perf",
+-			      "aclk_usb3", "grf_clk";
++			      "bus_clk", "grf_clk";
+ 		resets = <&cru SRST_A_USB3_OTG1>;
+ 		reset-names = "usb3-otg";
+ 		status = "disabled";
 -- 
 2.11.0
 
