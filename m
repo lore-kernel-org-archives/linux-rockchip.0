@@ -2,72 +2,64 @@ Return-Path: <SRS0=fMZx=HL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC0A5C433E0
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 22:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A43FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 23:07:04 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5C5FC64E5A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 22:26:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C5FC64E5A
+	by mail.kernel.org (Postfix) with ESMTPS id C5E0A64E4B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 23:07:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5E0A64E4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JETjpvTJvSza8xClydE+eGZawg134A7SHnGrqrhn9XU=; b=FyaITGz23Q+2p92Bs2r0+o83R
-	MYGRTGkvDxvNR341RqBhINanmQ2Y/eykNQFuO0r0wbfLRUYodH+16Wdpfq5T2Dbj+FdhAIFeOSGhU
-	8WLDdGXoeaM8nVTrIuT8fR+qyIwCaBnlmXpnLei+1yHuRshcKGru5DulohUbYndPjO0w5Tl7W3iv4
-	F5p93g+S+l/PmEnxsEmeX8nrv5GTK6r/LwxFrH09wygRwsPKICzxs2vZJbJRUiRY2W4kjE3PCtiUI
-	N4B+mjRrEOEtLfnInIle2OZGEFWmXi3Gpp5XLI4kzWO172PMKa/BppRFtNFcRXnHIJ8VTPBmVh/Da
-	fXx3/31yw==;
+	 bh=BbBXGdGVx93+S2fr1jq0kwRIow4UnRroGfuPbQtzXhA=; b=HrzT2s80for9NLJuoglzijudI
+	CCqP2HH0NEogl5EYu79cWB73zuix0EvqjUj/QbioDL0A8a+jnURqdzJNjvUUBgZE0XFasYoeRZM0R
+	G4zCvfnxkX14DGgYZ4Q7F1vxT5bHmaDetPIzRqutLVtaaxrsyJAkKDQa2EJsH1D8aYUlsCZ4roLZn
+	AhZ4sRsel/XZD4TfkcqMrmZRyF+Qzyc3H7AlwiAQ86KHtjOvPpReUAlWUftraD/Ug7hs6cnyS7WOk
+	2FwDIGYVlsizfc1/2Ks8Na41i/amdn1Sl2bJw4QEK/ISv9JdMcZb8/5hl5OXd/IH4UozwKGU1GGMq
+	drwc30dbg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9bSO-0000do-2Z; Tue, 09 Feb 2021 22:26:04 +0000
+	id 1l9c5v-0007MT-Uc; Tue, 09 Feb 2021 23:06:56 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9bSI-0000cn-OA; Tue, 09 Feb 2021 22:26:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 14B8564E6F;
- Tue,  9 Feb 2021 22:25:57 +0000 (UTC)
+ id 1l9c5Y-0007ES-OW; Tue, 09 Feb 2021 23:06:33 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A5E0E64E40;
+ Tue,  9 Feb 2021 23:06:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1612909557;
- bh=nw/ggB5jzR4hpWOSjGu1T6DGUn4f/TcXu5vrKIAECdE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=CkRLsGOlFRPALIbg9/QTofurAP7gdziEAZNjlF4+9qYK9AZfVJ6LH17Y1uajqGAGa
- 292m7F97yZocwCj6yK9Z5Nj7JEiFa5Sm7q9aMNpwmQWtbwSOYXQ1RXJkwUtGjtZ66u
- H4LJXF+vmX4QnCPmrhPwsZQBUHgLjGBLFvtqVXTjPLF6zEaRzhoDA3Q9A4gFrRTH/g
- wkCdKQ30/e12eWoAwVoCcqqTFfcgkbbPFR6OWqAhb2UkCKP/geRjTc54zBtizWPk8K
- rUbkL8YUeQS+dr/wluoyyXy7HnTNQBu4jO/e7D293KJ2nWcBAMfxkjo172iHv7phAI
- my1k0yqoZnVWw==
-Received: by mail-oi1-f177.google.com with SMTP id l3so11248111oii.2;
- Tue, 09 Feb 2021 14:25:57 -0800 (PST)
-X-Gm-Message-State: AOAM5310bBkgwGyjQpPpbwGnJwEVuAp8/xOrcqOqgEuey71e6Bt78cko
- Ae+h4VuPQV7TxyTAJ/xw4EpD0rOFo+S4gO78gMQ=
-X-Google-Smtp-Source: ABdhPJyxeWPTUKO8K39WOQhnrdR+Po94kCeKWyZcS8GtPy5M8duSmhG7JaCwy+7Lj5TeJCM/XahicK3lCqxRz+WzUAQ=
-X-Received: by 2002:aca:d908:: with SMTP id q8mr3778046oig.67.1612909556361;
- Tue, 09 Feb 2021 14:25:56 -0800 (PST)
-MIME-Version: 1.0
-References: <20210118155242.7172-1-jbx6244@gmail.com>
- <20210118155242.7172-2-jbx6244@gmail.com>
-In-Reply-To: <20210118155242.7172-2-jbx6244@gmail.com>
+ s=k20201202; t=1612911992;
+ bh=rAcG2UB8Kq5DbCJSjMVawZ9I9vxStmotuOgB9Re6wVQ=;
+ h=From:To:List-Id:Cc:Subject:Date:In-Reply-To:References:From;
+ b=TVshADiI4hTeKvjOr7t0fSVpfP39ybZfTYVPSvdzmtaD8rGwpS3houLoNGgFdcssW
+ /x+zFEum1H08HEJt0BE5yDDXQuWTIAziHVyEUz7MJQFxGkT3OgkUHxw2wefToh426l
+ b4i3potnZ6Rz8AIiQZ0bihtqq7l31zaTSk9tYgf5BTJii9CPB7yNmIocyaN+/HXt+E
+ dTiOi/1QVMvlcr4LxrE2eT45GLFs4pW1+No56KnWYc3uKSSN1fgrWrJedSzLMAGRI4
+ dJXYvDkXRkU1JTTZ7kk/tdMCRg4zlV7BZmidc7wTLy0gErS6KQ+5dTW9oB+zjKpdkS
+ Y//qV7EUC+Asg==
 From: Arnd Bergmann <arnd@kernel.org>
-Date: Tue, 9 Feb 2021 23:25:40 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a3_uO23Y0tyfdh26tmCVcyp6XM+ur0WUd4khGUoBb32Hw@mail.gmail.com>
-Message-ID: <CAK8P3a3_uO23Y0tyfdh26tmCVcyp6XM+ur0WUd4khGUoBb32Hw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] ARM: dts: rockchip: assign a fixed index to mmc
- devices on rv1108 boards
-To: Johan Jonker <jbx6244@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	arm@kernel.org
+Subject: Re: [GIT PULL RESEND] Rockchip dts64 changes for 5.12
+Date: Wed, 10 Feb 2021 00:06:06 +0100
+Message-Id: <161291108121.974605.14393901422512013571.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <12699743.uLZWGnKmhe@phil>
+References: <12699743.uLZWGnKmhe@phil>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_172558_871865_BFFD01EB 
-X-CRM114-Status: GOOD (  19.87  )
+X-CRM114-CacheID: sfid-20210209_180632_983340_7FB09D9B 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,61 +72,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+List-Id: <soc.lore.kernel.org>
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
+ linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 18, 2021 at 4:52 PM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Recently introduced async probe on mmc devices can shuffle block IDs.
-> Pin them to fixed values to ease booting in environments where UUIDs are
-> not practical. Use newly introduced aliases for mmcblk devices from [1].
-> The sort order is based on reg address.
->
-> [1] https://patchwork.kernel.org/patch/11747669/
+From: Arnd Bergmann <arnd@arndb.de>
 
-I just saw this in the pull request:
+On Sat, 06 Feb 2021 11:18:18 +0100, Heiko Stuebner wrote:
+> sorry I mixed up the versioning in the pull's subject.
+> The changes are of course meant for 5.12.
+> 
+> Thanks
+> Heiko
+> 
+> 
+> The following changes since commit 5c8fe583cce542aa0b84adc939ce85293de36e5e:
+> 
+> [...]
 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  arch/arm/boot/dts/rv1108.dtsi | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-> index bec47e0be..a754851f4 100644
-> --- a/arch/arm/boot/dts/rv1108.dtsi
-> +++ b/arch/arm/boot/dts/rv1108.dtsi
-> @@ -19,6 +19,9 @@
->                 i2c1 = &i2c1;
->                 i2c2 = &i2c2;
->                 i2c3 = &i2c3;
-> +               mmc0 = &emmc;
-> +               mmc1 = &sdio;
-> +               mmc2 = &sdmmc;
->                 serial0 = &uart0;
->                 serial1 = &uart1;
->                 serial2 = &uart2;
+Merged into arm/dt, thanks!
 
-Please don't put these aliases into a .dtsi file, as not every board
-will provide each instance. The entire point of the aliases is to
-have sane enumeration, so you should start at index 0 for the
-first one that is actually present and count up from there.
+merge commit: 889231c6c80113ad0929eea01e8272048be38552
 
-I would suggest you move these aliases into the .dts files for
-the existing boards for the next cycle, and then make sure
-only the ones that are present have an alias.
-
-It might actually be a good idea to have a warning in dtc when
-there is an alias pointing to a status="disabled" device, but I
-suspect there would be a lot of fallout from that.
-
-      Arnd
+       Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
