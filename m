@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51496C433E6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 11:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84027C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 11:11:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9834564E2A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 11:11:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9834564E2A
+	by mail.kernel.org (Postfix) with ESMTPS id E66BD64E2A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 11:11:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E66BD64E2A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0bFSvMpR4LsAoZFjUg73orb/wtIaACeqVOMk/rFzRuU=; b=JP20YU0U2kD3OSDt+OmPK73Fp
-	onjLMhIB/TjVSBhoxPwTlEBRTjg7L0/C9dimCfeTI868oT/gyS5Xl73M+p+jPyHgrvEl0Vl9boNuv
-	byu0ni96g3kjimieKAd3FdfVkJvSsesNTqvJ/wUbHcS45wTzf+LFRU/ehrIDdEmG56ep01tpE+HSi
-	RnsouV1luXSwfRnrrNuwhzlP9M6jnadqI6nK16uin3uXue4Tke5lnbX7FYpjfgU4SvTEOyLcu/Fie
-	JVAIRVh18A6lVZEt4GOhNvYjP3d0DthpZ54PeTfgwYq9cqgAoehVGQU+uYrsRnwkllQFPWhsIFRpl
-	D0jtjpq5A==;
+	 bh=sagzQngItvoum/XNzaQMLKL71kgT1BKsOkh04O4C4MU=; b=vg6lMIjeKYO0A1b6R/PhYdNZS
+	oQJVVMJWBklVjNrl0FkENfL6ZW50pqx9WkXpvb9/iXFhuH1Q414eUZ/6zK4oMN1H5qthgu6jnqzlM
+	QBSAkJ8nl7lRQJzWiZURpy59jZ38Udhpe0HOATyWxk3AVudKK6kSVGv2CAGYgf+S234+x/d12QOYF
+	+Ml8efOV1/60LRpyCQENjdAEvdikQiMIhUEybT8qTYmG16561yDG2FZQAa4zRtv3/lXl1D8ZjmQ8+
+	ayvMrZs7sESXpjdIFhsCR6Equ+y9ZyrYjc0a1xJROQ3mIg2x55IVhGT7NNb2zxEJ6HnKCdt5jj2nE
+	+oKc3Ni+w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9nPB-0001uQ-VU; Wed, 10 Feb 2021 11:11:34 +0000
+	id 1l9nPG-0001vn-Ea; Wed, 10 Feb 2021 11:11:41 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9nO7-0001PR-6V; Wed, 10 Feb 2021 11:10:30 +0000
+ id 1l9nO6-0001OV-Hg; Wed, 10 Feb 2021 11:10:30 +0000
 Received: from [95.90.166.74] (helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l9nO4-0003eN-Ec; Wed, 10 Feb 2021 12:10:24 +0100
+ id 1l9nO2-0003eN-Su; Wed, 10 Feb 2021 12:10:22 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: dri-devel@lists.freedesktop.org
-Subject: [PATCH 4/6] arm64: dts: rockchip: add #phy-cells to mipi-dsi1
-Date: Wed, 10 Feb 2021 12:10:18 +0100
-Message-Id: <20210210111020.2476369-5-heiko@sntech.de>
+Subject: [PATCH v2 1/6] drm/rockchip: dsi: add own additional pclk handling
+Date: Wed, 10 Feb 2021 12:10:15 +0100
+Message-Id: <20210210111020.2476369-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210210111020.2476369-1-heiko@sntech.de>
 References: <20210210111020.2476369-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210210_061027_313508_F6EDF444 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20210210_061026_661971_A05F1076 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,28 +76,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-The dsi controller includes access to the dphy which might be used
-not only for dsi output but also for csi input on dsi1, so add the
-necessary #phy-cells to allow it to be used as phy.
+In a followup patch, we'll need to access the pclk ourself to enable some
+functionality, so get and store it in the rockchip dw-dsi variant as well.
+
+Clocks are refcounted, so possible cascading enablements are
+no problem.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 Tested-by: Sebastian Fricke <sebastian.fricke@posteo.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index edbbf35fe19e..5d2178cb3e38 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1865,6 +1865,7 @@ mipi_dsi1: mipi@ff968000 {
- 		rockchip,grf = <&grf>;
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		#phy-cells = <0>;
- 		status = "disabled";
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 24a71091759c..18e112e30f6e 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -223,6 +223,7 @@ struct dw_mipi_dsi_rockchip {
+ 	void __iomem *base;
  
- 		ports {
+ 	struct regmap *grf_regmap;
++	struct clk *pclk;
+ 	struct clk *pllref_clk;
+ 	struct clk *grf_clk;
+ 	struct clk *phy_cfg_clk;
+@@ -1051,6 +1052,13 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	dsi->pclk = devm_clk_get(dev, "pclk");
++	if (IS_ERR(dsi->pclk)) {
++		ret = PTR_ERR(dsi->pclk);
++		DRM_DEV_ERROR(dev, "Unable to get pclk: %d\n", ret);
++		return ret;
++	}
++
+ 	dsi->pllref_clk = devm_clk_get(dev, "ref");
+ 	if (IS_ERR(dsi->pllref_clk)) {
+ 		if (dsi->phy) {
 -- 
 2.29.2
 
