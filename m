@@ -1,4 +1,4 @@
-Return-Path: <SRS0=fMZx=HL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ealT=HM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,53 +7,82 @@ X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45BC9C433DB
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 23:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 04183C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 06:10:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C93964DEC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Feb 2021 23:51:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C93964DEC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 80CC464E45
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 06:10:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80CC464E45
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zepuJoKhw4AiVTFjPGJHhVdmLl0fIafr3kEmgokBUrA=; b=kJ2rKoIjuv/QsBp2FqCPcB1E7
-	b9GbCkKQU3MCJZzCS/7vQF3JHf+GJcqEOLD2ps+9umzfGsiCF5V5MK9344ZcUDdWmWPJqworSSPOA
-	iEOhA9FJL5zibEGyvR7NWxZJUsN3QxjuPdoQDgP8tP644j4uicn3tBqE0O1uGs59UJYV70sHMu+lF
-	SLSSTeP7bSPwytEJ66P8hK2wnWDDC01SKAB/XWU6VdeGNMmyYS5tY/yyKH7gE5W7peG8Ah5tcpL1x
-	5wW7Ionbv9QD2t/tLPw4DmEKAd4LI+2hm8iBB2qSb5yRbjRYwQyZU4JsIFQa1cripOOW+km3g6rEg
-	D+vuGl5ag==;
+	 bh=k+mALqqLOXSV2NII/xF36lnat4ORyR7KoRjK0wXNl0M=; b=QFLlkzfPRyr8ZX9+nfk/tRGc+
+	Iy4s/SlfF8hCbMSDxWuE/QsasVCe6kS4uMXT7HXEn7Xkx0ih3xHm/YgKaCw0WoMaD8/b7UzufMLai
+	mqTgad2GXjE4P34RBGP7BKLVWDZbiO/0VyzhiTbhnES6aaasinojDbCdMH9eaj1ElmO3Ta4ARwKPD
+	UURprzczzkyoTzKes3HNHdBjaKOQRX0xW/0+W2MG4u7JQN95ruJB5w1OPtjNMudVPJyUF6wdVHDuX
+	P8rpT1tt0YCmYAgchDX78sh+sLI5UPKhtJWmUSLtFZqoasQMDu9aIh2N46fzNYTzVJYCkjgzA1Vm9
+	1rwNsM9mA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9cmc-0006Mh-OQ; Tue, 09 Feb 2021 23:51:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1l9ihT-0001GM-FG; Wed, 10 Feb 2021 06:10:07 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9cma-0006MF-8T; Tue, 09 Feb 2021 23:51:01 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l9cmX-0001IP-F6; Wed, 10 Feb 2021 00:50:57 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>, Arnd Bergmann <arnd@kernel.org>
-Subject: Re: [PATCH 2/5] ARM: dts: rockchip: assign a fixed index to mmc
- devices on rv1108 boards
-Date: Wed, 10 Feb 2021 00:50:56 +0100
-Message-ID: <6598201.ejJDZkT8p0@diego>
-In-Reply-To: <CAK8P3a3_uO23Y0tyfdh26tmCVcyp6XM+ur0WUd4khGUoBb32Hw@mail.gmail.com>
-References: <20210118155242.7172-1-jbx6244@gmail.com>
- <20210118155242.7172-2-jbx6244@gmail.com>
- <CAK8P3a3_uO23Y0tyfdh26tmCVcyp6XM+ur0WUd4khGUoBb32Hw@mail.gmail.com>
+ id 1l9ihS-0001Fy-12
+ for linux-rockchip@lists.infradead.org; Wed, 10 Feb 2021 06:10:06 +0000
+Received: by mail-ed1-x529.google.com with SMTP id c6so1435533ede.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 09 Feb 2021 22:10:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wwlKP1RTFNLDabVbts09rwYJYD2gNRuoRgrutcdNUcA=;
+ b=YktyyTdnCMLomK78yb17A6z9gU6O3heQRRJUqp3xYfwVkA8xGCFeZDl5GXnE0PkGFw
+ NdkDcJvEBCP1HWIrbMH+wfQHPqi/DfzN+V3sMy8uax8LciAjCd+PaUVTE8ffNDQldi1f
+ TVe2fm3XMF7NaaFawhKRn2WPMzUK3EnTiCmV0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wwlKP1RTFNLDabVbts09rwYJYD2gNRuoRgrutcdNUcA=;
+ b=F5nPiMjoglb7vGlCiqOgCTPHoOReHxUxwH27O3m3oIQgNgN4vOndsuKFgSvGAe9sm8
+ Kvbx7EndmRwurdIs3OstWB4dAr9b6qgLkBTgpx383288lM8qL4QJ9olSTSxDQ37Pg7Lp
+ KNdFXNrhx8e8IW6CCf42h1U5QLq3Dg4Dvz2uJJPwlR9GA/Ntv2cwDKflWvL+0Zb9pO/3
+ bf2fRYJ8RzeW/O3f1u7cycHMlcwMBnZR2o4Wc7dv/a2nbfQSHOOKLxc33oo+VGccnqJ8
+ Iy2lpcExm/LzMCUsFbkvUgIN1PDk0tNaAFvS4BBiAftfIXPNATkNbnz5efQGqm39MmvW
+ e7PA==
+X-Gm-Message-State: AOAM53081DP25K8nemQfKOjkoiwCeo2G5KfFBoZTV17fArhFa6r4WqYC
+ 4SeJXx+KPjit09ewqspDw54zclELf0o7ow==
+X-Google-Smtp-Source: ABdhPJwY6AHPPoPZqYW1ZkMfpBEQiVkmDIj9wy5Mj6EZMSk5xKPAB9GVKDNeX8YRy0HD60tSZrdomg==
+X-Received: by 2002:aa7:d28a:: with SMTP id w10mr1631923edq.278.1612937404128; 
+ Tue, 09 Feb 2021 22:10:04 -0800 (PST)
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com.
+ [209.85.128.51])
+ by smtp.gmail.com with ESMTPSA id u9sm471245ejc.57.2021.02.09.22.10.02
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Feb 2021 22:10:02 -0800 (PST)
+Received: by mail-wm1-f51.google.com with SMTP id i9so827418wmq.1
+ for <linux-rockchip@lists.infradead.org>; Tue, 09 Feb 2021 22:10:02 -0800 (PST)
+X-Received: by 2002:a1c:107:: with SMTP id 7mr1346852wmb.28.1612937401698;
+ Tue, 09 Feb 2021 22:10:01 -0800 (PST)
 MIME-Version: 1.0
+References: <20201209161510.31399-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20201209161510.31399-1-dafna.hirschfeld@collabora.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 10 Feb 2021 15:09:50 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5ChELzM8suj5SGZXLPQJgciAmx-chumTe3=g5VSo+Hzjg@mail.gmail.com>
+Message-ID: <CAAFQd5ChELzM8suj5SGZXLPQJgciAmx-chumTe3=g5VSo+Hzjg@mail.gmail.com>
+Subject: Re: [PATCH] media: rkisp1: rsz: crash fix when setting src format
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210209_185100_356421_E90814F1 
-X-CRM114-Status: GOOD (  27.88  )
+X-CRM114-CacheID: sfid-20210210_011006_116506_2CA645D6 
+X-CRM114-Status: GOOD (  23.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,88 +95,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: DTML <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>, robin.murphy@arm.com,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+Cc: Dafna Hirschfeld <dafna3@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Helen Koike <helen.koike@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 9. Februar 2021, 23:25:40 CET schrieb Arnd Bergmann:
-> On Mon, Jan 18, 2021 at 4:52 PM Johan Jonker <jbx6244@gmail.com> wrote:
-> >
-> > Recently introduced async probe on mmc devices can shuffle block IDs.
-> > Pin them to fixed values to ease booting in environments where UUIDs are
-> > not practical. Use newly introduced aliases for mmcblk devices from [1].
-> > The sort order is based on reg address.
-> >
-> > [1] https://patchwork.kernel.org/patch/11747669/
-> 
-> I just saw this in the pull request:
-> 
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > ---
-> >  arch/arm/boot/dts/rv1108.dtsi | 3 +++
-> >  1 file changed, 3 insertions(+)
-> >
-> > diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-> > index bec47e0be..a754851f4 100644
-> > --- a/arch/arm/boot/dts/rv1108.dtsi
-> > +++ b/arch/arm/boot/dts/rv1108.dtsi
-> > @@ -19,6 +19,9 @@
-> >                 i2c1 = &i2c1;
-> >                 i2c2 = &i2c2;
-> >                 i2c3 = &i2c3;
-> > +               mmc0 = &emmc;
-> > +               mmc1 = &sdio;
-> > +               mmc2 = &sdmmc;
-> >                 serial0 = &uart0;
-> >                 serial1 = &uart1;
-> >                 serial2 = &uart2;
-> 
-> Please don't put these aliases into a .dtsi file, as not every board
-> will provide each instance. The entire point of the aliases is to
-> have sane enumeration, so you should start at index 0 for the
-> first one that is actually present and count up from there.
+On Thu, Dec 10, 2020 at 1:15 AM Dafna Hirschfeld
+<dafna.hirschfeld@collabora.com> wrote:
+>
+> When setting the source media bus code in the resizer,
+> we first check that the current media bus code in the
+> source is yuv encoded format. This is done by
+> retrieving the data from the formats list of the isp
+> entity. This cause a crash when the media bus code on the
+> source is YUYV8_1_5X8 which is not supported by the isp
+> entity. Instead we should test the sink format of the resizer
+> which is guaranteed to be supported by the isp entity.
+>
+> Fixes: 251b6eebb6c49 ("media: staging: rkisp1: rsz: Add support to more YUV encoded mbus codes on src pad")
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> index 813670ed9577..79deed8adcea 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> @@ -520,14 +520,15 @@ static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
+>                                    struct v4l2_mbus_framefmt *format,
+>                                    unsigned int which)
+>  {
+> -       const struct rkisp1_isp_mbus_info *mbus_info;
+> -       struct v4l2_mbus_framefmt *src_fmt;
+> +       const struct rkisp1_isp_mbus_info *sink_mbus_info;
+> +       struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
+>
+> +       sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SINK, which);
+>         src_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SRC, which);
+> -       mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
+> +       sink_mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+>
+>         /* for YUV formats, userspace can change the mbus code on the src pad if it is supported */
+> -       if (mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV &&
+> +       if (sink_mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV &&
+>             rkisp1_rsz_get_yuv_mbus_info(format->code))
+>                 src_fmt->code = format->code;
+>
+> --
+> 2.17.1
+>
 
-Hmm, right now I don't see the disadvantage of missing mmc numbers.
-As similarly we count i2c and serial numbers for a long time, even though
-not all of them appear on every board.
+Gentle ping on this patch. I think it should also go to stable, as it
+fixes a crash.
 
-Especially as the main goal is to simply have stable numbers and
-not having the mmc devices swap numbers on every boot.
-
-So right now we're not using them from a userspace POV but
-instead agreed on following the address ordering of the soc.
-so when ordering mmc controllers by their io-address, mmc0
-is the first one, then mmc1, etc.
-
-So just for my understanding, what is different for mmc?
-I guess to guarantee ongoing numbering similar to sd{a,b,c,...}
-Or should all aliases be duplicted in each board dts and not
-live in any soc dtsi?
-
-
-Heiko
-
-
-> I would suggest you move these aliases into the .dts files for
-> the existing boards for the next cycle, and then make sure
-> only the ones that are present have an alias.
-> 
-> It might actually be a good idea to have a warning in dtc when
-> there is an alias pointing to a status="disabled" device, but I
-> suspect there would be a lot of fallout from that.
-> 
->       Arnd
-> 
-
-
-
-
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-rockchip mailing list
