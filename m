@@ -2,98 +2,74 @@ Return-Path: <SRS0=ealT=HM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62AC6C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 13:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41AB3C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 13:53:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD7E764DD8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 13:11:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD7E764DD8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id E562364E6F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 13:53:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E562364E6F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jf3daleDPs6YK4c7kLzGY2xjM9v2mpSkil3sCqV2Myg=; b=p4y7xpCIXgIn8JVUhHfGwfHky
-	wU/HEorzssqcXYO50tvVBPQ6p6n3hsmhJotQuQdEhRZv7oaVSlJtHLKEUbKLZhNBgcRKntbW1MuqG
-	LwI08SCKtVlbNJEA12LX2tcG7xONnCzHkUoam3j2DjhjlRfMu5mcj75BG6L1acT20jfkbYMOEknlt
-	skx42jVix4rBcd6jbFrMKkH1X0xi5nC+k8W/bqH7ZerLRmUNmmt3O6brbGBaT75giWG6Z6VUmJeOT
-	UxkNA3VMMCWPSr4nZ7e8EC539wSsJFKWI4ylEM8iM6zRatdRILUu9O3xagtQ03yXHjSJGGw/v+of3
-	BqSFrwNBw==;
+	 bh=EqET5ulmhlHWsVK6qUD6Lxa7BgwUam4pthq4ammkc1w=; b=h6XuDuu1HzB3whSAPKrgGl7Lm
+	0TTiZrkz5zi3/8J5ASU2FQtcZxsHAfzQ4J6pF3NsPlHOICav3a8ujOThG49pCgtxd5Xhv84piAkYK
+	qQXVDaBJHOwNr7P5A8SehlI4Rf320noFkY5PpYTQluetkrXkTjXx0FPKdQ7fmmcUs5N0nER+H2ZIB
+	JVtLcrfz92+otXvhPaEwY765rPMQ5JwsEGZzOAA2Ur2mVOaVwisUiA+7qCBUj1YRuLPzglf29I/mj
+	UK7jmbNMRqHE7syOIKa2WKEVT4vc/6J5CjEDB5WFTo9IBGWQ6cdVEQWGA3B8pqg2ja1bbPEPgmXBo
+	07uE8JTlg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9pH7-00074n-Q8; Wed, 10 Feb 2021 13:11:21 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1l9pvo-0004na-Lo; Wed, 10 Feb 2021 13:53:24 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9pH4-00073h-HA
- for linux-rockchip@lists.infradead.org; Wed, 10 Feb 2021 13:11:19 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id v14so2463061wro.7
- for <linux-rockchip@lists.infradead.org>; Wed, 10 Feb 2021 05:11:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=s03sQ832SgXdiNDUmP03CTP+mq4NdcSn/+dYlfQmwcc=;
- b=PxY1ItijCBx9yZt9GDoetR+Op0lQC/DWXgC1sXU8fsSETfJLCku2M5hbsJux72ypT5
- 68s4xbs4GCHobFHT7aJxRgV07aKZpAXtydg1v/Qes/K+Ik5pM7mCeU3qwizOHDmmyIYp
- 9SV2Ipl+/MBK+WwF1Bx5MDU8zdm3twTWHnTQY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=s03sQ832SgXdiNDUmP03CTP+mq4NdcSn/+dYlfQmwcc=;
- b=VoPfatc+RezK8asDtLcDmJITn5q9JEO23UCsRyFK0ITi15dfi3E0ZfGRUx0+vA6SDn
- CsSp2U7829yY8hI/8EUgwzuaRx0BA2WALazja1XzlS/KYD8hsnVngPAc9WVmGRQzHA+H
- pK7mVfBFNX3todlNl8aE3bLdDbYuhCH0SdhiiDEfhnXaaznRR3D2JyGzPFgUtYdPRFUs
- eMSWOJLoCjl9blS2dNuvSqDTjWY0/drpzFes1OAWEaEJ/SlZIiN9OBkuIKHfFxKa7bxY
- eQm4FuPO6AI9LpIOx3S5x3BS1m09FVDszypA/DuZcS3HatAQJEza/M7wwEsSZ/f/WlHF
- gM5w==
-X-Gm-Message-State: AOAM530Dshbo6WTsRdAOH0wxxjgRKFeBmsw6Bxj3WmMiJU9XwMIciDFW
- V9PAZwxPeDPv7jLoaWOAqHINWA==
-X-Google-Smtp-Source: ABdhPJxvQIoEeHx1VzpIFLhKqb997h456wb6uD0Jberkt3N+Tp+np8Vt694+JDyf4Mgk3yBG1UKPVQ==
-X-Received: by 2002:adf:dd92:: with SMTP id x18mr3686880wrl.4.1612962677521;
- Wed, 10 Feb 2021 05:11:17 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id a84sm2430371wme.12.2021.02.10.05.11.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Feb 2021 05:11:16 -0800 (PST)
-Date: Wed, 10 Feb 2021 14:11:14 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Julia Lawall <Julia.Lawall@inria.fr>
-Subject: Re: [PATCH] drm: use getter/setter functions
-Message-ID: <YCPbctaFCApnwOmT@phenom.ffwll.local>
-Mail-Followup-To: Julia Lawall <Julia.Lawall@inria.fr>,
- David Airlie <airlied@linux.ie>, kernel-janitors@vger.kernel.org,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Jonas Karlman <jonas@kwiboo.se>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Andrzej Hajda <a.hajda@samsung.com>,
- linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@aj.id.au>, linux-aspeed@lists.ozlabs.org
-References: <20210209211304.1261740-1-Julia.Lawall@inria.fr>
+ id 1l9pvk-0004m1-IV; Wed, 10 Feb 2021 13:53:21 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8B5A464E79;
+ Wed, 10 Feb 2021 13:53:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1612965199;
+ bh=yV6TURZhEtJ6Cwgc9q7dRhbULRCstmiM+RHhfwGM2ZU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=JuFE+/H/htE9E/JO5D55Z9g4jY9h9NX1qVbDUM8eEX8uBvEEq15Yi6eAIg9CL3UTs
+ dmSgQzaaBxUTBYQETr46T+2eDsMYyHLJayQLZ/RfqnARndQ3ClGdbCNLNe8RFab8Gl
+ NKMj8qtJUfl3h/mBKInuJ3S15ZM3d6sASQDnlqAcB7Bj5YJbz/wC3wqh4HNDk65W1U
+ MMzEE1Q532KBw3uluuTIa/PbV2poQ14K32F1pyV/85SZOyGFlFWbSg2ayghHrk9CdD
+ V3Gf3PJP3XNUn82c8MTf1ff3AVnCD7TFJX0ySGDqM0ru+oZbTnsMGChgjoi9GJFF1+
+ mmS/2czj8Tnzw==
+Received: by mail-ot1-f46.google.com with SMTP id q4so1805572otm.9;
+ Wed, 10 Feb 2021 05:53:19 -0800 (PST)
+X-Gm-Message-State: AOAM531PrX89nZB09TfFV1INExFzpXZ7AWTwVYT45cH0xodOcz+nXynR
+ Ubrw8D4wWr6eRcKgBlc+eT0qr/o8TaJkeX0q2A0=
+X-Google-Smtp-Source: ABdhPJwb9CXfMxZUsIBeiH+dbVDlq4uugNf+KJ+ZAnHaP33UGz/UDaKmzdX0HWNyLIVQBUvu0kkylO78Qv9oAn+xQiA=
+X-Received: by 2002:a05:6830:18e6:: with SMTP id
+ d6mr2159421otf.251.1612965198882; 
+ Wed, 10 Feb 2021 05:53:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210209211304.1261740-1-Julia.Lawall@inria.fr>
-X-Operating-System: Linux phenom 5.7.0-1-amd64 
+References: <20210118155242.7172-1-jbx6244@gmail.com>
+ <6598201.ejJDZkT8p0@diego>
+ <CAK8P3a25iYksubCnQb1-e5yj=crEsK37RB9Hn4ZGZMwcVVrG7g@mail.gmail.com>
+ <46108228.fMDQidcC6G@diego>
+In-Reply-To: <46108228.fMDQidcC6G@diego>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Wed, 10 Feb 2021 14:53:02 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a0ALgbhTVJ7t3XRXALs9vBM=XBvkGhNKXxB+QTepo-3AQ@mail.gmail.com>
+Message-ID: <CAK8P3a0ALgbhTVJ7t3XRXALs9vBM=XBvkGhNKXxB+QTepo-3AQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] ARM: dts: rockchip: assign a fixed index to mmc
+ devices on rv1108 boards
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210210_081118_662801_F6039CBB 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20210210_085320_711182_A51225C7 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,136 +82,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
- Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- linux-aspeed@lists.ozlabs.org, Neil Armstrong <narmstrong@baylibre.com>,
- David Airlie <airlied@linux.ie>, Andrew Jeffery <andrew@aj.id.au>,
- Jonas Karlman <jonas@kwiboo.se>, kernel-janitors@vger.kernel.org,
- Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, Andrzej Hajda <a.hajda@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, linux-rockchip@lists.infradead.org,
- Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org,
- Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: DTML <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 09, 2021 at 10:13:04PM +0100, Julia Lawall wrote:
-> Use getter and setter functions, for platform_device structures and a
-> mipi_dsi_device structure.
-> 
-> Signed-off-by: Julia Lawall <Julia.Lawall@inria.fr>
-
-Applied to drm-misc-next, thanks for the patch.
--Daniel
-> 
-> ---
->  drivers/gpu/drm/aspeed/aspeed_gfx_drv.c             |    2 +-
->  drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c |    2 +-
->  drivers/gpu/drm/panel/panel-lvds.c                  |    2 +-
->  drivers/gpu/drm/panel/panel-seiko-43wvf1g.c         |    4 ++--
->  drivers/gpu/drm/panel/panel-simple.c                |    2 +-
->  drivers/gpu/drm/rockchip/rockchip_lvds.c            |    2 +-
->  6 files changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-> index 4e2dad314c79..9858079f9e14 100644
-> --- a/drivers/gpu/drm/panel/panel-simple.c
-> +++ b/drivers/gpu/drm/panel/panel-simple.c
-> @@ -4800,7 +4800,7 @@ static int panel_simple_dsi_probe(struct mipi_dsi_device *dsi)
->  
->  	err = mipi_dsi_attach(dsi);
->  	if (err) {
-> -		struct panel_simple *panel = dev_get_drvdata(&dsi->dev);
-> +		struct panel_simple *panel = mipi_dsi_get_drvdata(dsi);
->  
->  		drm_panel_remove(&panel->base);
->  	}
-> diff --git a/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c b/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
-> index 0ee508576231..3939b25e6666 100644
-> --- a/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
-> +++ b/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
-> @@ -267,7 +267,7 @@ static int seiko_panel_probe(struct device *dev,
->  
->  static int seiko_panel_remove(struct platform_device *pdev)
->  {
-> -	struct seiko_panel *panel = dev_get_drvdata(&pdev->dev);
-> +	struct seiko_panel *panel = platform_get_drvdata(pdev);
->  
->  	drm_panel_remove(&panel->base);
->  	drm_panel_disable(&panel->base);
-> @@ -277,7 +277,7 @@ static int seiko_panel_remove(struct platform_device *pdev)
->  
->  static void seiko_panel_shutdown(struct platform_device *pdev)
->  {
-> -	struct seiko_panel *panel = dev_get_drvdata(&pdev->dev);
-> +	struct seiko_panel *panel = platform_get_drvdata(pdev);
->  
->  	drm_panel_disable(&panel->base);
->  }
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> index 654bc52d9ff3..bd5ba10822c2 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-> @@ -725,7 +725,7 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
->  
->  static int rockchip_lvds_remove(struct platform_device *pdev)
->  {
-> -	struct rockchip_lvds *lvds = dev_get_drvdata(&pdev->dev);
-> +	struct rockchip_lvds *lvds = platform_get_drvdata(pdev);
->  
->  	component_del(&pdev->dev, &rockchip_lvds_component_ops);
->  	clk_unprepare(lvds->pclk);
-> diff --git a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-> index 457ec04950f7..c7707338bfdb 100644
-> --- a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-> +++ b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-> @@ -284,7 +284,7 @@ static int aspeed_gfx_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> -	dev_set_drvdata(&pdev->dev, priv);
-> +	platform_set_drvdata(pdev, priv);
->  
->  	ret = sysfs_create_group(&pdev->dev.kobj, &aspeed_sysfs_attr_group);
->  	if (ret)
-> diff --git a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> index d0c65610ebb5..989a05bc8197 100644
-> --- a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> +++ b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
-> @@ -2457,7 +2457,7 @@ static int cdns_mhdp_probe(struct platform_device *pdev)
->  
->  static int cdns_mhdp_remove(struct platform_device *pdev)
->  {
-> -	struct cdns_mhdp_device *mhdp = dev_get_drvdata(&pdev->dev);
-> +	struct cdns_mhdp_device *mhdp = platform_get_drvdata(pdev);
->  	unsigned long timeout = msecs_to_jiffies(100);
->  	bool stop_fw = false;
->  	int ret;
-> diff --git a/drivers/gpu/drm/panel/panel-lvds.c b/drivers/gpu/drm/panel/panel-lvds.c
-> index 66c7d765b8f7..59a8d99e777d 100644
-> --- a/drivers/gpu/drm/panel/panel-lvds.c
-> +++ b/drivers/gpu/drm/panel/panel-lvds.c
-> @@ -244,7 +244,7 @@ static int panel_lvds_probe(struct platform_device *pdev)
->  
->  static int panel_lvds_remove(struct platform_device *pdev)
->  {
-> -	struct panel_lvds *lvds = dev_get_drvdata(&pdev->dev);
-> +	struct panel_lvds *lvds = platform_get_drvdata(pdev);
->  
->  	drm_panel_remove(&lvds->panel);
->  
-> 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBGZWIgMTAsIDIwMjEgYXQgMTE6NDkgQU0gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4gd3JvdGU6Cj4gQW0gTWl0dHdvY2gsIDEwLiBGZWJydWFyIDIwMjEsIDExOjM0OjQx
+IENFVCBzY2hyaWViIEFybmQgQmVyZ21hbm46Cj4gPiBPbiBXZWQsIEZlYiAxMCwgMjAyMSBhdCAx
+Mjo1MCBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiA+ID4gQW0g
+RGllbnN0YWcsIDkuIEZlYnJ1YXIgMjAyMSwgMjM6MjU6NDAgQ0VUIHNjaHJpZWIgQXJuZCBCZXJn
+bWFubjoKPiA+IEVhY2ggYm9hcmQgc2hvdWxkIGhhdmUgaXRzIG93biBhbGlhc2VzIG5vZGUgdGhh
+dCBkZXNjcmliZXMKPiA+IGV4YWN0bHkgd2hpY2ggb2YgdGhlIGRldmljZXMgYXJlIHdpcmVkIHVw
+IG9uIHRoYXQgYm9hcmQsIGFuZAo+ID4gaW4gd2hpY2ggb3JkZXIuIElmIHRoZXJlIGFyZSBjb25u
+ZWN0b3JzIG9uIHRoZSBib2FyZCB0aGF0Cj4gPiBhcmUgbGFiZWxlZCBpbiBzb21lIGZvcm0sIHRo
+ZW4gdGhlIGFsaWFzZXMgYXJlIG1lYW50IHRvCj4gPiBtYXRjaCB3aGF0IGlzIHdyaXR0ZW4gb24g
+dGhlIGJvYXJkIG9yIGluIGl0cyBkb2N1bWVudGF0aW9uLgo+Cj4gVGhlbiB3ZSdyZSBhdCBsZWFz
+dCBpbiB0aGUgY2xlYXIgZm9yIGkyYywgc2VyaWFsIGFuZCB0aGUgcmVzdCAuLi4gYXMgdGhlc2UK
+PiBhcmUgbnVtYmVyZWQgaW4gdGhlIHNvYyBkb2N1bWVudGF0aW9uLCBhbmQgYWxsIGJvYXJkcyBJ
+J3ZlIHNlZW4gc28KPiBmYXIgdXNlIHRoZXNlIG51bWJlciBhbHNvIHRvIGlkZW50aWZ5IHRoZXNl
+IGluIHNjaGVtYXRpY3MuCgpPaywgdGhhdCBpcyBoZWxwZnVsLiBJdCB3b3VsZCBzdGlsbCBiZSBn
+b29kIHRvIGVuc3VyZSB0aGF0IG9ubHkgYWxpYXNlcwpleGlzdCBmb3Igbm9kZXMgdGhhdCBhcmUg
+YWN0dWFsbHkgZW5hYmxlZC4KCj4gU28gYW4gaTJjMiBpcyBhbHdheXMgaTJjMiBldmVuIGlmIGky
+YzEgaXMgbm90IHBvcHVsYXRlZC4KPgo+IEFuZCBvZiBjb3Vyc2UgZG9pbmcKPiAgICAgICAgIGky
+YzAgPSAmaTJjMgo+IHdvdWxkIGRlZmluaXRseSBjb25mdXNlIHBlb3BsZSB0byBubyBlbmQuCgpJ
+IHRoaW5rIHRoYXQncyBqdXN0IGFuIHVuZm9ydHVuYXRlIGNob2ljZSBvZiB0aGUgbGFiZWxzIGhl
+cmUsCml0J3Mgc29tZXRpbWVzIGVhc2llciB0byBqdXN0IHJlZmVyIHRvIHRoZSBub2RlIGJ5IHRo
+ZSBmdWxsCnBhdGggaW5zdGVhZCBvZiB0aGUgbGFiZWwuCgogICAgICBBcm5kCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
