@@ -1,59 +1,70 @@
-Return-Path: <SRS0=ealT=HM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=2G0u=HN=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-19.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 028FDC433E6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 21:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC4DDC433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Feb 2021 05:25:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 993C560233
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Feb 2021 21:42:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 993C560233
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 4DE7B64E26
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Feb 2021 05:25:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4DE7B64E26
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=posteo.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LMN24Zv7/My8x++QObXU7wYckqNIjkoTiuP2oVQ5SXk=; b=jvRjrgmmwJ3EpLUfWyXENwpXV
-	BlCj5FFJBxI19O6fvC225aIfg8v/SXoP2mbZb+oWz4eIXLRwJFg9Q1qZ08juawkdGAE/KK6oijVnN
-	OVeN49cxxwT38GR7y07EoPdAS1dGEUkuTzxA74/X0JXj3AGabmDaJx2Q4ObG7Iu6loGQbIIlIsuqL
-	rLa26028afv7B5KpIOkNQTgqGeTrqbqCnRo0TKmIm4qtgLABAHjuiPqgAu6mkeFsuAmzX4/zvfvKb
-	ogbNASVJBK0uX40ccgd1/oG/qlDYhAgUWuLighxQN0cpsImFGSKPSwIwjjS/8FYUIXOX65Rb3d8iV
-	q4CXk73TA==;
+	 bh=XvH6A4Mo/0TVSTmKYRsUsKVibfc5fGRXnCmxxE7mGPM=; b=Tue33t9UChkS/NqTQHrfaLQJf
+	8Mxkv9+QkL92oXxQOwVdA8k4KZxiiXdT5W9gDBfIIqzVnesFa3kNU2tgk3GULzmDKf9j3n4iR1c3Y
+	FvdHkm9odY+DlSDe3+OkNeP16rqeq24/gLU+ZKH1S8KVtKDGiBenp2VgPvImg9nUq4c+xoJEK7+sT
+	WwWM/xNfcTcyJkIAL2t7bEYwOgE0GNfu5eKslLddz7E9m9dyJYZBYfclRVp8xRk/wLgYAQ4AUCJX1
+	ur+3zr2yL4lPYGyvLmqaKpJ4yEXw91RJhMe1xA2S9ITLR8jETdMUEH0XflmrHX2/Wf73v8ROWZPeR
+	tFplzW2eQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1l9xFk-00086O-TE; Wed, 10 Feb 2021 21:42:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lA4Tl-0002wO-Sr; Thu, 11 Feb 2021 05:25:25 +0000
+Received: from mout01.posteo.de ([185.67.36.65])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1l9xFf-00083q-TQ
- for linux-rockchip@lists.infradead.org; Wed, 10 Feb 2021 21:42:26 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.sntech)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1l9xFZ-0006dd-Sy; Wed, 10 Feb 2021 22:42:17 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: kishon@ti.com,
-	vkoul@kernel.org
-Subject: [PATCH 2/2] phy/rockchip: add Innosilicon-based CSI dphy
-Date: Wed, 10 Feb 2021 22:42:05 +0100
-Message-Id: <20210210214205.2496336-3-heiko@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210210214205.2496336-1-heiko@sntech.de>
-References: <20210210214205.2496336-1-heiko@sntech.de>
+ id 1lA4Ti-0002u6-3m
+ for linux-rockchip@lists.infradead.org; Thu, 11 Feb 2021 05:25:24 +0000
+Received: from submission (posteo.de [89.146.220.130]) 
+ by mout01.posteo.de (Postfix) with ESMTPS id BEE35160062
+ for <linux-rockchip@lists.infradead.org>; Thu, 11 Feb 2021 06:25:18 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.net; s=2017;
+ t=1613021118; bh=aNEeiTBD34YkfYikf3TzOyiT2A93HvlOgXBGDAaHf04=;
+ h=Date:From:To:Cc:Subject:From;
+ b=IaaZtF+ARmpB9G4ECtXyBCdoB4k4Cdm4r2IxeHpnKgvOhriGD4+T0dbzaowfcB0Hk
+ DA9DcdXQ8HlBKpQfEAmC3XH8UDSxDVIy59ib4mNE9G/F3GkZQxRi+Yv4lhmD/9hTSO
+ QS4oNARJuhMa7x9g32a9MQxKF/vxXz4Nan6zESTyNIN5iXV1gObqPfcjMTLHeIHlUr
+ VI6osHy18V43QYddu3Vc3q1lyVxWcSmTF0+SS0xT7Pve1Pc1QdrSosGON59lqVIAwD
+ GhvCEoP+qv97fP8G8AdAspbeB3EKybn84OKJqexDsjkv7tYYv1haJ/y3fJAlfKtS+p
+ uarOlVMyPnlVQ==
+Received: from customer (localhost [127.0.0.1])
+ by submission (posteo.de) with ESMTPSA id 4DblSr0vhJz6tmK;
+ Thu, 11 Feb 2021 06:25:16 +0100 (CET)
+Date: Thu, 11 Feb 2021 06:25:15 +0100
+From: Sebastian Fricke <sebastian.fricke@posteo.net>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 0/6] Support second Image Signal Processor on rk3399
+Message-ID: <20210211052515.qdqe256cipdwwrz6@basti-TUXEDO-Book-XA1510>
+References: <20210202145632.1263136-1-heiko@sntech.de>
+ <5271305.e9J7NaK4W3@diego> <5860385.iIbC2pHGDl@diego>
+ <808992741.0ifERbkFSE@diego>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <808992741.0ifERbkFSE@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210210_164224_305073_EDED3171 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20210211_002522_493229_B25798BE 
+X-CRM114-Status: GOOD (  47.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,551 +77,139 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, cmuellner@linux.com,
+Cc: devicetree@vger.kernel.org, dafna.hirschfeld@collabora.com,
+ cmuellner@linux.com, hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- ezequiel@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ helen.koike@collabora.com, robh+dt@kernel.org, ezequiel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-
-The CSI dphy found for example on the rk3326/px30 and rk3368 is based
-on an IP design from Innosilicon. Add a driver for it.
-
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
- drivers/phy/rockchip/Kconfig                  |   9 +
- drivers/phy/rockchip/Makefile                 |   1 +
- .../phy/rockchip/phy-rockchip-inno-csidphy.c  | 480 ++++++++++++++++++
- 3 files changed, 490 insertions(+)
- create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index 159285f42e5c..e812adad7242 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -48,6 +48,15 @@ config PHY_ROCKCHIP_INNO_USB2
- 	help
- 	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
- 
-+config PHY_ROCKCHIP_INNO_CSIDPHY
-+	tristate "Rockchip Innosilicon MIPI CSI PHY driver"
-+	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-+	select GENERIC_PHY
-+	select GENERIC_PHY_MIPI_DPHY
-+	help
-+	  Enable this to support the Rockchip MIPI CSI PHY with
-+	  Innosilicon IP block.
-+
- config PHY_ROCKCHIP_INNO_DSIDPHY
- 	tristate "Rockchip Innosilicon MIPI/LVDS/TTL PHY driver"
- 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-index c3cfc7f0af5c..f0eec212b2aa 100644
---- a/drivers/phy/rockchip/Makefile
-+++ b/drivers/phy/rockchip/Makefile
-@@ -2,6 +2,7 @@
- obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
- obj-$(CONFIG_PHY_ROCKCHIP_DPHY_RX0)     += phy-rockchip-dphy-rx0.o
- obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
-+obj-$(CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY)	+= phy-rockchip-inno-csidphy.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+= phy-rockchip-inno-dsidphy.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-new file mode 100644
-index 000000000000..b30bb2885029
---- /dev/null
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-@@ -0,0 +1,480 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Rockchip MIPI RX Innosilicon DPHY driver
-+ *
-+ * Copyright (C) 2017 Fuzhou Rockchip Electronics Co., Ltd.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/io.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy/phy.h>
-+#include <linux/phy/phy-mipi-dphy.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+
-+/* GRF */
-+#define RK1808_GRF_PD_VI_CON_OFFSET	0x0430
-+
-+#define RK3326_GRF_PD_VI_CON_OFFSET	0x0430
-+
-+#define RK3368_GRF_SOC_CON6_OFFSET	0x0418
-+
-+/* PHY */
-+#define CSIDPHY_CTRL_LANE_ENABLE		0x00
-+#define CSIDPHY_CTRL_LANE_ENABLE_CK		BIT(6)
-+#define CSIDPHY_CTRL_LANE_ENABLE_LANE3		BIT(5)
-+#define CSIDPHY_CTRL_LANE_ENABLE_LANE2		BIT(4)
-+#define CSIDPHY_CTRL_LANE_ENABLE_LANE1		BIT(3)
-+#define CSIDPHY_CTRL_LANE_ENABLE_LANE0		BIT(2)
-+#define CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED	BIT(0)
-+
-+#define CSIDPHY_CTRL_LANE_ENABLE_SHIFT		2
-+
-+/* not present on all variants */
-+#define CSIDPHY_CTRL_PWRCTL			0x04
-+#define CSIDPHY_CTRL_PWRCTL_UNDEFINED		GENMASK(7, 5)
-+#define CSIDPHY_CTRL_PWRCTL_SYNCRST		BIT(2)
-+#define CSIDPHY_CTRL_PWRCTL_LDO_PD		BIT(1)
-+#define CSIDPHY_CTRL_PWRCTL_PLL_PD		BIT(0)
-+
-+#define CSIDPHY_CTRL_DIG_RST			0x80
-+#define CSIDPHY_CTRL_DIG_RST_UNDEFINED		0x1e
-+#define CSIDPHY_CTRL_DIG_RST_RESET		BIT(0)
-+
-+/* offset after ths_settle_offset */
-+#define CSIDPHY_CLK_THS_SETTLE			0
-+#define CSIDPHY_LANE_THS_SETTLE(n)		((n + 1) * 0x80)
-+#define CSIDPHY_THS_SETTLE_MASK			0x7f
-+
-+/* offset after calib_offset */
-+#define CSIDPHY_CLK_CALIB_EN			0
-+#define CSIDPHY_LANE_CALIB_EN(n)		((n + 1) * 0x80)
-+#define CSIDPHY_CALIB_EN			BIT(7)
-+
-+/* Configure the count time of the THS-SETTLE by protocol. */
-+#define RK1808_CSIDPHY_CLK_WR_THS_SETTLE	0x160
-+#define RK3326_CSIDPHY_CLK_WR_THS_SETTLE	0x100
-+#define RK3368_CSIDPHY_CLK_WR_THS_SETTLE	0x100
-+
-+/* Calibration reception enable */
-+#define RK1808_CSIDPHY_CLK_CALIB_EN		0x168
-+
-+#define HIWORD_UPDATE(val, mask)		((val) | (mask) << 16)
-+
-+enum dphy_reg_id {
-+	GRF_DPHY_RX0_TURNDISABLE = 0,
-+	GRF_DPHY_RX0_FORCERXMODE,
-+	GRF_DPHY_RX0_FORCETXSTOPMODE,
-+	GRF_DPHY_RX0_ENABLE,
-+	GRF_DPHY_RX0_TURNREQUEST,
-+	GRF_DPHY_TX0_TURNDISABLE,
-+	GRF_DPHY_TX0_FORCERXMODE,
-+	GRF_DPHY_TX0_FORCETXSTOPMODE,
-+	GRF_DPHY_TX0_TURNREQUEST,
-+	GRF_DPHY_RX1_SRC_SEL,
-+	/* rk1808 & rk3326 */
-+	GRF_DPHY_CSIPHY_FORCERXMODE,
-+	GRF_DPHY_CSIPHY_CLKLANE_EN,
-+	GRF_DPHY_CSIPHY_DATALANE_EN,
-+};
-+
-+struct dphy_reg {
-+	u32 offset;
-+	u32 mask;
-+	u32 shift;
-+};
-+
-+#define PHY_REG(_offset, _width, _shift) \
-+	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, }
-+
-+static const struct dphy_reg rk1808_grf_dphy_regs[] = {
-+	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 0),
-+	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 1, 8),
-+	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 4),
-+};
-+
-+static const struct dphy_reg rk3326_grf_dphy_regs[] = {
-+	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 4, 0),
-+	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 1, 8),
-+	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 4, 4),
-+};
-+
-+static const struct dphy_reg rk3368_grf_dphy_regs[] = {
-+	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3368_GRF_SOC_CON6_OFFSET, 4, 8),
-+};
-+
-+struct hsfreq_range {
-+	u32 range_h;
-+	u8 cfg_bit;
-+};
-+
-+struct rockchip_inno_csidphy;
-+
-+struct dphy_drv_data {
-+	int pwrctl_offset;
-+	int ths_settle_offset;
-+	int calib_offset;
-+	const struct hsfreq_range *hsfreq_ranges;
-+	int num_hsfreq_ranges;
-+	const struct dphy_reg *grf_regs;
-+};
-+
-+struct rockchip_inno_csidphy {
-+	struct device *dev;
-+	void __iomem *phy_base;
-+	struct clk *pclk;
-+	struct regmap *grf;
-+	struct reset_control *rst;
-+	const struct dphy_drv_data *drv_data;
-+	struct phy_configure_opts_mipi_dphy config;
-+	u8 hsfreq;
-+};
-+
-+static inline void write_grf_reg(struct rockchip_inno_csidphy *priv,
-+				 int index, u8 value)
-+{
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+	const struct dphy_reg *reg = &drv_data->grf_regs[index];
-+
-+	/* Update high word */
-+	unsigned int val = (value << reg->shift) |
-+			   (reg->mask << (reg->shift + 16));
-+
-+	if (reg->offset)
-+		regmap_write(priv->grf, reg->offset, val);
-+}
-+
-+static inline u32 read_grf_reg(struct rockchip_inno_csidphy *priv, int index)
-+{
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+	const struct dphy_reg *reg = &drv_data->grf_regs[index];
-+	unsigned int val = 0;
-+
-+	if (reg->offset) {
-+		regmap_read(priv->grf, reg->offset, &val);
-+		val = (val >> reg->shift) & reg->mask;
-+	}
-+	return val;
-+}
-+
-+/* These tables must be sorted by .range_h ascending. */
-+static const struct hsfreq_range rk1808_mipidphy_hsfreq_ranges[] = {
-+	{ 109, 0x02}, { 149, 0x03}, { 199, 0x06}, { 249, 0x06},
-+	{ 299, 0x06}, { 399, 0x08}, { 499, 0x0b}, { 599, 0x0e},
-+	{ 699, 0x10}, { 799, 0x12}, { 999, 0x16}, {1199, 0x1e},
-+	{1399, 0x23}, {1599, 0x2d}, {1799, 0x32}, {1999, 0x37},
-+	{2199, 0x3c}, {2399, 0x41}, {2499, 0x46}
-+};
-+
-+static const struct hsfreq_range rk3326_mipidphy_hsfreq_ranges[] = {
-+	{ 109, 0x00}, { 149, 0x01}, { 199, 0x02}, { 249, 0x03},
-+	{ 299, 0x04}, { 399, 0x05}, { 499, 0x06}, { 599, 0x07},
-+	{ 699, 0x08}, { 799, 0x09}, { 899, 0x0a}, {1099, 0x0b},
-+	{1249, 0x0c}, {1349, 0x0d}, {1500, 0x0e}
-+};
-+
-+static const struct hsfreq_range rk3368_mipidphy_hsfreq_ranges[] = {
-+	{ 109, 0x00}, { 149, 0x01}, { 199, 0x02}, { 249, 0x03},
-+	{ 299, 0x04}, { 399, 0x05}, { 499, 0x06}, { 599, 0x07},
-+	{ 699, 0x08}, { 799, 0x09}, { 899, 0x0a}, {1099, 0x0b},
-+	{1249, 0x0c}, {1349, 0x0d}, {1500, 0x0e}
-+};
-+
-+static void rockchip_inno_csidphy_ths_settle(struct rockchip_inno_csidphy *priv,
-+					     int hsfreq, int offset)
-+{
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+	u32 val;
-+
-+	val = readl(priv->phy_base + drv_data->ths_settle_offset + offset);
-+	val &= ~CSIDPHY_THS_SETTLE_MASK;
-+	val |= hsfreq;
-+	writel(val, priv->phy_base + drv_data->ths_settle_offset + offset);
-+}
-+
-+static int rockchip_inno_csidphy_configure(struct phy *phy,
-+					   union phy_configure_opts *opts)
-+{
-+	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+	struct phy_configure_opts_mipi_dphy *config = &opts->mipi_dphy;
-+	unsigned int hsfreq = 0;
-+	unsigned int i;
-+	u64 data_rate_mbps;
-+	int ret;
-+
-+	/* pass with phy_mipi_dphy_get_default_config (with pixel rate?) */
-+	ret = phy_mipi_dphy_config_validate(config);
-+	if (ret)
-+		return ret;
-+
-+	data_rate_mbps = div_u64(config->hs_clk_rate, 1000 * 1000);
-+
-+	dev_dbg(priv->dev, "lanes %d - data_rate_mbps %llu\n",
-+		config->lanes, data_rate_mbps);
-+	for (i = 0; i < drv_data->num_hsfreq_ranges; i++) {
-+		if (drv_data->hsfreq_ranges[i].range_h >= data_rate_mbps) {
-+			hsfreq = drv_data->hsfreq_ranges[i].cfg_bit;
-+			break;
-+		}
-+	}
-+	if (!hsfreq)
-+		return -EINVAL;
-+
-+	priv->hsfreq = hsfreq;
-+	priv->config = *config;
-+	return 0;
-+}
-+
-+static int rockchip_inno_csidphy_power_on(struct phy *phy)
-+{
-+	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+	u64 data_rate_mbps;
-+	u32 val = 0;
-+	int ret, i;
-+
-+	data_rate_mbps = div_u64(priv->config.hs_clk_rate, 1000 * 1000);
-+
-+	ret = clk_enable(priv->pclk);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* phy start */
-+	if (drv_data->pwrctl_offset >= 0)
-+		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED |
-+		       CSIDPHY_CTRL_PWRCTL_SYNCRST,
-+		       priv->phy_base + drv_data->pwrctl_offset);
-+
-+	/* set data lane num and enable clock lane */
-+	val = GENMASK(priv->config.lanes - 1, 0) << CSIDPHY_CTRL_LANE_ENABLE_SHIFT;
-+	writel(val | CSIDPHY_CTRL_LANE_ENABLE_CK |
-+	       CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED,
-+	       priv->phy_base + CSIDPHY_CTRL_LANE_ENABLE);
-+
-+	/* Reset dphy analog part */
-+	if (drv_data->pwrctl_offset >= 0)
-+		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED,
-+		       priv->phy_base + drv_data->pwrctl_offset);
-+	usleep_range(500, 1000);
-+
-+	/* Reset dphy digital part */
-+	writel(CSIDPHY_CTRL_DIG_RST_UNDEFINED,
-+	       priv->phy_base + CSIDPHY_CTRL_DIG_RST);
-+	writel(CSIDPHY_CTRL_DIG_RST_UNDEFINED + CSIDPHY_CTRL_DIG_RST_RESET,
-+	       priv->phy_base + CSIDPHY_CTRL_DIG_RST);
-+
-+	/* not into receive mode/wait stopstate */
-+	write_grf_reg(priv, GRF_DPHY_CSIPHY_FORCERXMODE, 0x0);
-+
-+	/* enable calibration */
-+	if (data_rate_mbps > 1500 && drv_data->calib_offset >= 0) {
-+		writel(CSIDPHY_CALIB_EN,
-+		       priv->phy_base + drv_data->calib_offset +
-+					CSIDPHY_CLK_CALIB_EN);
-+		for (i = 0; i < priv->config.lanes; i++)
-+			writel(CSIDPHY_CALIB_EN,
-+			       priv->phy_base + drv_data->calib_offset +
-+						CSIDPHY_LANE_CALIB_EN(i));
-+	}
-+
-+	rockchip_inno_csidphy_ths_settle(priv, priv->hsfreq,
-+					 CSIDPHY_CLK_THS_SETTLE);
-+	for (i = 0; i < priv->config.lanes; i++)
-+		rockchip_inno_csidphy_ths_settle(priv, priv->hsfreq,
-+						 CSIDPHY_LANE_THS_SETTLE(i));
-+
-+	write_grf_reg(priv, GRF_DPHY_CSIPHY_CLKLANE_EN, 0x1);
-+	write_grf_reg(priv, GRF_DPHY_CSIPHY_DATALANE_EN,
-+		      GENMASK(priv->config.lanes - 1, 0));
-+
-+	return 0;
-+}
-+
-+static int rockchip_inno_csidphy_power_off(struct phy *phy)
-+{
-+	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-+	const struct dphy_drv_data *drv_data = priv->drv_data;
-+
-+	/* disable all lanes */
-+	writel(CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED,
-+	       priv->phy_base + CSIDPHY_CTRL_LANE_ENABLE);
-+
-+	/* disable pll and ldo */
-+	if (drv_data->pwrctl_offset >= 0)
-+		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED |
-+		       CSIDPHY_CTRL_PWRCTL_LDO_PD |
-+		       CSIDPHY_CTRL_PWRCTL_PLL_PD,
-+		       priv->phy_base + drv_data->pwrctl_offset);
-+	usleep_range(500, 1000);
-+
-+	clk_disable(priv->pclk);
-+
-+	return 0;
-+}
-+
-+static int rockchip_inno_csidphy_init(struct phy *phy)
-+{
-+	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-+
-+	return clk_prepare(priv->pclk);
-+}
-+
-+static int rockchip_inno_csidphy_exit(struct phy *phy)
-+{
-+	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-+
-+	clk_unprepare(priv->pclk);
-+
-+	return 0;
-+}
-+
-+static const struct phy_ops rockchip_inno_csidphy_ops = {
-+	.power_on	= rockchip_inno_csidphy_power_on,
-+	.power_off	= rockchip_inno_csidphy_power_off,
-+	.init		= rockchip_inno_csidphy_init,
-+	.exit		= rockchip_inno_csidphy_exit,
-+	.configure	= rockchip_inno_csidphy_configure,
-+	.owner		= THIS_MODULE,
-+};
-+
-+static const struct dphy_drv_data rk1808_mipidphy_drv_data = {
-+	.pwrctl_offset = -1,
-+	.ths_settle_offset = RK1808_CSIDPHY_CLK_WR_THS_SETTLE,
-+	.calib_offset = RK1808_CSIDPHY_CLK_CALIB_EN,
-+	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
-+	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
-+	.grf_regs = rk1808_grf_dphy_regs,
-+};
-+
-+static const struct dphy_drv_data rk3326_mipidphy_drv_data = {
-+	.pwrctl_offset = CSIDPHY_CTRL_PWRCTL,
-+	.ths_settle_offset = RK3326_CSIDPHY_CLK_WR_THS_SETTLE,
-+	.calib_offset = -1,
-+	.hsfreq_ranges = rk3326_mipidphy_hsfreq_ranges,
-+	.num_hsfreq_ranges = ARRAY_SIZE(rk3326_mipidphy_hsfreq_ranges),
-+	.grf_regs = rk3326_grf_dphy_regs,
-+};
-+
-+static const struct dphy_drv_data rk3368_mipidphy_drv_data = {
-+	.pwrctl_offset = CSIDPHY_CTRL_PWRCTL,
-+	.ths_settle_offset = RK3368_CSIDPHY_CLK_WR_THS_SETTLE,
-+	.calib_offset = -1,
-+	.hsfreq_ranges = rk3368_mipidphy_hsfreq_ranges,
-+	.num_hsfreq_ranges = ARRAY_SIZE(rk3368_mipidphy_hsfreq_ranges),
-+	.grf_regs = rk3368_grf_dphy_regs,
-+};
-+
-+static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
-+	{
-+		.compatible = "rockchip,px30-csi-dphy",
-+		.data = &rk3326_mipidphy_drv_data,
-+	},
-+	{
-+		.compatible = "rockchip,rk1808-csi-dphy",
-+		.data = &rk1808_mipidphy_drv_data,
-+	},
-+	{
-+		.compatible = "rockchip,rk3326-csi-dphy",
-+		.data = &rk3326_mipidphy_drv_data,
-+	},
-+	{
-+		.compatible = "rockchip,rk3368-csi-dphy",
-+		.data = &rk3368_mipidphy_drv_data,
-+	},
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, rockchip_inno_csidphy_match_id);
-+
-+
-+static int rockchip_inno_csidphy_probe(struct platform_device *pdev)
-+{
-+	struct rockchip_inno_csidphy *priv;
-+	struct device *dev = &pdev->dev;
-+	struct phy_provider *phy_provider;
-+	struct phy *phy;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = dev;
-+	platform_set_drvdata(pdev, priv);
-+
-+	priv->drv_data = of_device_get_match_data(dev);
-+	if (!priv->drv_data) {
-+		dev_err(dev, "Can't find device data\n");
-+		return -ENODEV;
-+	}
-+
-+	priv->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
-+						    "rockchip,grf");
-+	if (IS_ERR(priv->grf)) {
-+		dev_err(dev, "Can't find GRF syscon\n");
-+		return PTR_ERR(priv->grf);
-+	}
-+
-+	priv->phy_base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(priv->phy_base))
-+		return PTR_ERR(priv->phy_base);
-+
-+	priv->pclk = devm_clk_get(dev, "pclk");
-+	if (IS_ERR(priv->pclk)) {
-+		dev_err(dev, "failed to get pclk\n");
-+		return PTR_ERR(priv->pclk);
-+	}
-+
-+	priv->rst = devm_reset_control_get(dev, "apb");
-+	if (IS_ERR(priv->rst)) {
-+		dev_err(dev, "failed to get system reset control\n");
-+		return PTR_ERR(priv->rst);
-+	}
-+
-+	phy = devm_phy_create(dev, NULL, &rockchip_inno_csidphy_ops);
-+	if (IS_ERR(phy)) {
-+		dev_err(dev, "failed to create phy\n");
-+		return PTR_ERR(phy);
-+	}
-+
-+	phy_set_drvdata(phy, priv);
-+
-+	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-+	if (IS_ERR(phy_provider)) {
-+		dev_err(dev, "failed to register phy provider\n");
-+		return PTR_ERR(phy_provider);
-+	}
-+
-+	pm_runtime_enable(dev);
-+
-+	return 0;
-+}
-+
-+static int rockchip_inno_csidphy_remove(struct platform_device *pdev)
-+{
-+	struct rockchip_inno_csidphy *priv = platform_get_drvdata(pdev);
-+
-+	pm_runtime_disable(priv->dev);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver rockchip_inno_csidphy_driver = {
-+	.driver = {
-+			.name = "rockchip-inno-csidphy",
-+			.of_match_table = rockchip_inno_csidphy_match_id,
-+	},
-+	.probe = rockchip_inno_csidphy_probe,
-+	.remove = rockchip_inno_csidphy_remove,
-+};
-+
-+module_platform_driver(rockchip_inno_csidphy_driver);
-+MODULE_AUTHOR("Heiko Stuebner <heiko.stuebner@theobroma-systems.com>");
-+MODULE_DESCRIPTION("Rockchip MIPI Innosilicon CSI-DPHY driver");
-+MODULE_LICENSE("Dual BSD/GPL");
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGV5IEhlaWtvLAoKT24gMTAuMDIuMjAyMSAxMjoxNSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj5I
+aSBTZWJhc3RpYW4sCj4KPkFtIEZyZWl0YWcsIDUuIEZlYnJ1YXIgMjAyMSwgMTU6NTU6NTYgQ0VU
+IHNjaHJpZWIgSGVpa28gU3TDvGJuZXI6Cj4+IEhpIFNlYmFzdGlhbiwKPj4KPj4gSSBkaWQgc29t
+ZSB0ZXN0cyBteXNlbGYgdG9kYXkgYXMgd2VsbCBhbmQgY2FuIGNvbmZpcm0geW91cgo+PiBoZG1p
+IHJlbGF0ZWQgZmluZGluZyAtIGF0IGxlYXN0IHdoZW4gcGx1Z2dlZCBpbiBvbiBib290Lgo+Pgo+
+PiBJIHRyaWVkIHNvbWUgY29tYmluYXRpb25zIG9mIGNhbWVyYSB2cy4gaGRtaSBhbmQgaXQgc2Vl
+bXMKPj4gcmVhbGx5IG9ubHkgd2hlbiBoZG1pIGlzIHBsdWdnZWQgaW4gb24gYm9vdAo+Cj5hcyB5
+b3UgY2FuIHNlZSBpbiB2MiwgaXQgc2hvdWxkIHdvcmsgbm93IGV2ZW4gd2l0aCBoZG1pCj5jb25u
+ZWN0ZWQgb24gYm9vdC4gTXkgcGF0Y2ggaWdub3JlZCB0aGUgZ3JmLWNsb2NrIHdoZW4KPmRvaW5n
+IHRoZSBncmYtYmFzZWQgaW5pdC4KPgo+QWxsIGNsb2NrcyBhcmUgb24gZHVyaW5nIGJvb3QgYW5k
+IEkgZ3Vlc3MgdGhlIGhkbWktZHJpdmVyCj5kaWQgZGlzYWJsZSBpdCBhZnRlciBpdHMgcHJvYmUu
+IFRoZSBwaHlfcG93ZXJfb24gZnVuY3Rpb25zCj5kaWQgaGFuZGxlIGl0IGNvcnJlY3RseSBhbHJl
+YWR5LCBzbyBpdCB3YXMgb25seSBoYXBwZW5pbmcKPndpdGggaGRtaSBjb25uZWN0ZWQgb24gYm9v
+dC4KClRoYW5rIHlvdSB2ZXJ5IG11Y2ggZm9yIHNvbHZpbmcgdGhhdCBwcm9ibGVtLCBJJ3ZlIHRl
+c3RlZCB0aGUgc2NlbmFyaW9zCmRlc2NyaWJlZCBiZWxvdyBhbmQgaXQgd29ya3MgbGlrZSBhIGNo
+YXJtLiAoV2l0aCB5b3VyIFYyKQo+Cj4KPkJ0dy4gZG8geW91IHBsYW4gb24gc3VibWl0dGluZyB5
+b3VyIG92MTM4NTAgZHJpdmVyCj5zb29uaXNoPwoKQWN0dWFsbHksIEkgaGF2ZSBwb3N0ZWQgdGhl
+IHBhdGNoIGFscmVhZHkgc2VlIGhlcmU6Cmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJv
+amVjdC9saW51eC1tZWRpYS9wYXRjaC8yMDIxMDEzMDE4MjMxMy4zMjkwMy0yLXNlYmFzdGlhbi5m
+cmlja2VAcG9zdGVvLm5ldC8KCkkgY3VycmVudGx5IHJldmlldyB0aGUgcmVxdWVzdGVkIGNoYW5n
+ZXMgYW5kIHF1ZXN0aW9ucyBhbmQgd2lsbCBzb29uCnBvc3QgYSBzZWNvbmQgdmVyc2lvbiwgYnV0
+IEkgZXhwZWN0IHF1aXRlIHNvbWUgdGltZSB1bnRpbCBpdCBpcyBhY3R1YWxseQptZXJnZWQuCgo+
+Cj4KPkhlaWtvCgpHcmVldGluZ3MsClNlYmFzdGlhbgoKPgo+Cj4+Cj4+ICgxKQo+PiAtIGJvb3QK
+Pj4gLSBjYW1lcmEKPj4gLS0+IHdvcmtzCj4+Cj4+ICgyKQo+PiAtIGJvb3QKPj4gLSBjYW1lcmEK
+Pj4gLSBoZG1pIHBsdWdnZWQgaW4KPj4gLSBoZG1pIHdvcmtzCj4+IC0gY2FtZXJhCj4+IC0tPiB3
+b3Jrcwo+Pgo+PiAoMykKPj4gLSBoZG1pIHBsdWdnZWQgaW4KPj4gLSBib290Cj4+IC0gaGRtaSB3
+b3Jrcwo+PiAtIGNhbWVyYQo+PiAtLT4gY2FtZXJhIGRvZXNuJ3Qgd29yawo+Pgo+PiAoNCkKPj4g
+LSBib290Cj4+IC0gaGRtaSBwbHVnZ2VkIGluCj4+IC0gaGRtaSB3b3Jrcwo+PiAtIGNhbWVyYQo+
+PiAtPiBjYW1lcmEgd29ya3MKPj4KPj4KPj4gV2l0aCBhIGJpdCBvZiBicnV0ZS1mb3JjZSBbMF0g
+aXQgc2VlbXMgdGhlIGNhbWVyYSBhbHNvIHdvcmtzIGFnYWluIGV2ZW4KPj4gd2l0aCBoZG1pIGNv
+bm5lY3RlZCBvbiBib290LiBTbyBjb25jbHVzaW9uIHdvdWxkIGJlIHRoYXQgc29tZSBjbG9jawo+
+PiBpcyBtaXNiZWhhdmluZy4KPj4KPj4gTm93IHdlJ2xsICJvbmx5IiBuZWVkIHRvIGZpbmQgb3V0
+IHdoaWNoIG9uZSB0aGF0IGlzLgo+Pgo+Pgo+PiBIZWlrbwo+Pgo+Pgo+PiBbMF0KPj4gRG9uJ3Qg
+ZGlzYWJsZSBhbnkgY2xvY2sgZ2F0ZXMKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL2Ns
+ay1nYXRlLmMgYi9kcml2ZXJzL2Nsay9jbGstZ2F0ZS5jCj4+IGluZGV4IDA3MGRjNDdlOTVhMS4u
+OGRhZjFmYzMzODhjIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2Nsay9jbGstZ2F0ZS5jCj4+ICsr
+KyBiL2RyaXZlcnMvY2xrL2Nsay1nYXRlLmMKPj4gQEAgLTYxLDYgKzYxLDkgQEAgc3RhdGljIHZv
+aWQgY2xrX2dhdGVfZW5kaXNhYmxlKHN0cnVjdCBjbGtfaHcgKmh3LCBpbnQgZW5hYmxlKQo+Pgo+
+PiAgICAgICAgIHNldCBePSBlbmFibGU7Cj4+Cj4+ICtpZiAoIWVuYWJsZSkKPj4gK3JldHVybjsK
+Pj4gKwo+PiAgICAgICAgIGlmIChnYXRlLT5sb2NrKQo+PiAgICAgICAgICAgICAgICAgc3Bpbl9s
+b2NrX2lycXNhdmUoZ2F0ZS0+bG9jaywgZmxhZ3MpOwo+PiAgICAgICAgIGVsc2UKPj4KPj4KPj4K
+Pj4gQW0gRnJlaXRhZywgNS4gRmVicnVhciAyMDIxLCAwOToxNTo0NyBDRVQgc2NocmllYiBIZWlr
+byBTdMO8Ym5lcjoKPj4gPiBIaSBTZWJhc3RpYW4sCj4+ID4KPj4gPiBBbSBGcmVpdGFnLCA1LiBG
+ZWJydWFyIDIwMjEsIDA3OjQzOjM1IENFVCBzY2hyaWViIFNlYmFzdGlhbiBGcmlja2U6Cj4+ID4g
+PiBPbiAwMy4wMi4yMDIxIDIwOjU0LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4gPiA+ID5BbSBN
+aXR0d29jaCwgMy4gRmVicnVhciAyMDIxLCAxOToxNDoyMiBDRVQgc2NocmllYiBTZWJhc3RpYW4g
+RnJpY2tlOgo+PiA+ID4gPj4gSSBoYXZlIHRlc3RlZCB5b3VyIHBhdGNoIHNldCBvbiBteSBuYW5v
+UEMtVDQsIGhlcmUgaXMgYSBjb21wbGV0ZSBsb2cKPj4gPiA+ID4+IHdpdGg6Cj4+ID4gPiA+PiAt
+IHJlbGV2YW50IGtlcm5lbCBsb2cgZW50cmllcwo+PiA+ID4gPj4gLSBzeXN0ZW0gaW5mb3JtYXRp
+b24KPj4gPiA+ID4+IC0gbWVkaWEgY3RsIG91dHB1dAo+PiA+ID4gPj4gLSBzeXNmcyBlbnRyeSBp
+bmZvcm1hdGlvbgo+PiA+ID4gPj4KPj4gPiA+ID4+IGh0dHBzOi8vcGFzdGUuZGViaWFuLm5ldC8x
+MTgzODc0Lwo+PiA+ID4gPj4KPj4gPiA+ID4+IEFkZGl0aW9uYWxseSwgdG8geW91ciBwYXRjaHNl
+dCBJIGhhdmUgYXBwbGllZCB0aGUgZm9sbG93aW5nIHBhdGNoZXM6Cj4+ID4gPiA+PiBodHRwczov
+L2dpdGh1Yi5jb20vaW5pdEJhc3RpL0xpbnV4X2tlcm5lbF9tZWRpYV90cmVlX2ZvcmsvY29tbWl0
+cy9kdWFsX2NhbV9zZXR1cAo+PiA+ID4gPj4KPj4gPiA+ID4+IEFuZCBqdXN0IHRvIG5vdCBjYXVz
+ZSBjb25mdXNpb24gdGhlIGBtZWRpYV9kZXZgIGVudHJpZXMgY29tZSBmcm9tIHRoaXMKPj4gPiA+
+ID4+IHVubWVyZ2VkIHNlcmllczoKPj4gPiA+ID4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
+cmcvcHJvamVjdC9saW51eC1tZWRpYS9saXN0Lz9zZXJpZXM9NDI2MjY5Cj4+ID4gPiA+Pgo+PiA+
+ID4gPj4gSSBoYXZlIGFjdHVhbGx5IGJlZW4gYWJsZSB0byBzdHJlYW0gd2l0aCBib3RoIG9mIG15
+IGNhbWVyYXMgYXQgdGhlIHNhbWUKPj4gPiA+ID4+IHRpbWUgdXNpbmcgdGhlIGxpYmNhbWVyYSBj
+YW0gY29tbWFuZC4KPj4gPiA+ID4+IEkgd291bGQgbGlrZSB0byB0aGFuayB5b3UgYSBsb3QgZm9y
+IG1ha2luZyB0aGlzIHBvc3NpYmxlLgo+PiA+ID4gPgo+PiA+ID4gPlRoYW5rcyBmb3IgdGVzdGlu
+ZyBhIGR1YWwgY2FtZXJhIHNldHVwLiBPbiBteSBib2FyZCBJIGNvdWxkIG9ubHkgdGVzdAo+PiA+
+ID4gPnRoZSBzZWNvbmQgSVNQLiBBbmQgcmVhbGx5IGdsYWQgaXQgd29ya3MgZm9yIHlvdSB0b29s
+IDotKSAuCj4+ID4gPiA+Cj4+ID4gPiA+T3V0IG9mIGN1cmlvc2l0eSwgZG8geW91IGFsc28gc2Vl
+IHRoYXQgZ3JlZW4gdGludCBpbiB0aGUgaW1hZ2VzIHRoZSBjYW1lcmFzCj4+ID4gPiA+cHJvZHVj
+ZT8KPj4gPiA+Cj4+ID4gPiBZZXMsIEkgZG8uIEFjdHVhbGx5LCBJIGN1cnJlbnRseSBoYXZlIHR3
+byBmb3JtcyBvZiBhIGdyZWVuIHRpbnQsIG9uIG15Cj4+ID4gPiBPVjEzODUwIGV2ZXJ5dGhpbmcg
+aXMgcXVpdGUgZGFyayBhbmQgZ3JlZW5pc2gsIHdoaWNoIGlzIGNhdXNlZCBieSB0aGUKPj4gPiA+
+IG1pc3NpbmcgM0EgYWxnb3JpdGhtcy4gT24gbXkgT1Y0Njg5LCBJIGhhdmUgYmlnIHBhdGNoZXMg
+b2YgdGhlIGltYWdlCj4+ID4gPiB3aXRoIGJyaWdodCBncmVlbiBjb2xvciBhbmQgZmxpY2tlcmlu
+ZywgSSBpbnZlc3RpZ2F0ZWQgaWYgdGhpcyBpcwo+PiA+ID4gY29ubmVjdGVkIHRvIHRoZSAybmQg
+SVNQIGluc3RhbmNlLCBidXQgdGhhdCBkb2Vzbid0IHNlZW0gdG8gYmUgdGhlIGNhc2UKPj4gPiA+
+IGFzIEkgaGF2ZSB0aGUgc2FtZSByZXN1bHRzIHdoZW4gSSBzd2l0Y2ggdGhlIENTSSBwb3J0cyBv
+ZiB0aGUgY2FtZXJhcy4KPj4gPiA+Cj4+ID4gPiBJIGhhdmUgZm91bmQgYW5vdGhlciBpc3N1ZSwg
+d2hpbGUgdGVzdGluZyBJIGRpc2NvdmVyZWQgZm9sbG93aW5nCj4+ID4gPiBpc3N1ZToKPj4gPiA+
+IFdoZW4gSSBzdGFydCB0aGUgc3lzdGVtIHdpdGggYW4gSERNSSBtb25pdG9yIGNvbm5lY3RlZCwg
+dGhlbiB0aGUgY2FtZXJhCj4+ID4gPiBvbiB0aGUgMm5kIHBvcnQgZG9lc24ndCB3b3JrLiBUaGlz
+IGlzIHByb2JhYmx5IGJlY2F1c2UgdGhlIFJYL1RYIGlzCj4+ID4gPiByZXNlcnZlZCBhcyBhIFRY
+Lgo+PiA+ID4gQnV0IGl0IG1hZGUgbWUgd29uZGVyIGJlY2F1c2UgaWYgdGhlIHN5c3RlbSBoYXMg
+YW4gUlgsIGEgVFgsIGFuZAo+PiA+ID4gYW4gUlgvVFgsIHdoeSBpc24ndCB0aGUgcHVyZSBUWCB1
+c2VkIGJ5IHRoZSBtb25pdG9yIGFuZCB0aGUKPj4gPiA+IGNhbWVyYXMgdGFrZSBSWCBhbmQgUlgv
+VFg/Cj4+ID4gPiBPciBkbyB5b3UgdGhpbmsgdGhhdCB0aGlzIGlzIG1heWJlIGEgbWFsZnVuY3Rp
+b24gb2YgdGhpcyBwYXRjaD8KPj4gPgo+PiA+IEkgZG9uJ3QgdGhpbmsgaXQgaXMgYW4gaXNzdWUg
+d2l0aCB0aGlzIHNwZWNpZmljIHNlcmllcywgYnV0IHN0aWxsIHB1enpsaW5nLgo+PiA+Cj4+ID4g
+SS5lLiB0aGUgRFBIWXMgYXJlIGFjdHVhbGx5IG9ubHkgcmVsZXZhbnQgdG8gdGhlIERTSSBjb250
+cm9sbGVycywKPj4gPiB3aXRoIFRYMCBiZWluZyBjb25uZWN0ZWQgdG8gRFNJMCBhbmQgVFgxUlgx
+IGJlaW5nIGNvbm5lY3RlZAo+PiA+IHRvIERTSTEuIFNvIGhhdmluZyBhbiBoZG1pIGRpc3BsYXkg
+X2luIHRoZW9yeV8gc2hvdWxkbid0IG1hdHRlciBhdCBhbGwuCj4+ID4KPj4gPiBPdXQgb2YgY3Vy
+aW9zaXR5IHdoYXQgaGFwcGVucywgd2hlbiB5b3UgYm9vdCB3aXRob3V0IGhkbWkgY29ubmVjdGVk
+Cj4+ID4gdHVybiBvbiB0aGUgY2FtZXJhcywgY29ubmVjdCB0aGUgaGRtaSBhZnRlciB0aGlzLCB0
+cnkgdGhlIGNhbWVyYXMgYWdhaW4/Cj4+ID4KPj4gPgo+PiA+IEhlaWtvCj4+ID4KPj4gPiA+Cj4+
+ID4gPiA+Cj4+ID4gPiA+VGhhbmtzCj4+ID4gPiA+SGVpa28KPj4gPiA+Cj4+ID4gPiBHcmVldGlu
+Z3MsCj4+ID4gPiBTZWJhc3RpYW4KPj4gPiA+Cj4+ID4gPiA+Cj4+ID4gPiA+Cj4+ID4gPiA+PiBJ
+ZiB5b3UgbGlrZSB0byB5b3UgY2FuIGFkZDoKPj4gPiA+ID4+IFRlc3RlZC1ieTogU2ViYXN0aWFu
+IEZyaWNrZSA8c2ViYXN0aWFuLmZyaWNrZUBwb3N0ZW8ubmV0Pgo+PiA+ID4gPj4KPj4gPiA+ID4+
+IE9uIDAyLjAyLjIwMjEgMTU6NTYsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+PiA+ID4gPj4gPlRo
+ZSByazMzOTkgaGFzIHR3byBJU1BzIGFuZCByaWdodCBub3cgb25seSB0aGUgZmlyc3Qgb25lIGlz
+IHVzYWJsZS4KPj4gPiA+ID4+ID5UaGUgc2Vjb25kIElTUCBpcyBjb25uZWN0ZWQgdG8gdGhlIFRY
+UlggZHBoeSBvbiB0aGUgc29jLgo+PiA+ID4gPj4gPgo+PiA+ID4gPj4gPlRoZSBwaHkgb2YgSVNQ
+MSBpcyBvbmx5IGFjY2Vzc2libGUgdGhyb3VnaCB0aGUgRFNJIGNvbnRyb2xsZXIncwo+PiA+ID4g
+Pj4gPmlvLW1lbW9yeSwgc28gdGhpcyBzZXJpZXMgYWRkcyBzdXBwb3J0IGZvciBzaW1wbHkgdXNp
+bmcgdGhlIGRzaQo+PiA+ID4gPj4gPmNvbnRyb2xsZXIgaXMgYSBwaHkgaWYgbmVlZGVkLgo+PiA+
+ID4gPj4gPgo+PiA+ID4gPj4gPlRoYXQgc29sdXRpb24gaXMgbmVlZGVkIGF0IGxlYXN0IG9uIHJr
+MzM5OSBhbmQgcmszMjg4IGJ1dCBuby1vbmUKPj4gPiA+ID4+ID5oYXMgbG9va2VkIGF0IGNhbWVy
+YSBzdXBwb3J0IG9uIHJrMzI4OCBhdCBhbGwsIHNvIHJpZ2h0IG5vdwo+PiA+ID4gPj4gPm9ubHkg
+aW1wbGVtZW50IHRoZSByazMzOTkgc3BlY2lmaWNzLgo+PiA+ID4gPj4gPgo+PiA+ID4gPj4gPgo+
+PiA+ID4gPj4gPkhlaWtvIFN0dWVibmVyICg2KToKPj4gPiA+ID4+ID4gIGRybS9yb2NrY2hpcDog
+ZHNpOiBhZGQgb3duIGFkZGl0aW9uYWwgcGNsayBoYW5kbGluZwo+PiA+ID4gPj4gPiAgZHQtYmlu
+ZGluZ3M6IGRpc3BsYXk6IHJvY2tjaGlwLWRzaTogYWRkIG9wdGlvbmFsICNwaHktY2VsbHMgcHJv
+cGVydHkKPj4gPiA+ID4+ID4gIGRybS9yb2NrY2hpcDogZHNpOiBhZGQgYWJpbGl0eSB0byB3b3Jr
+IGFzIGEgcGh5IGluc3RlYWQgb2YgZnVsbCBkc2kKPj4gPiA+ID4+ID4gIGFybTY0OiBkdHM6IHJv
+Y2tjaGlwOiBhZGQgI3BoeS1jZWxscyB0byBtaXBpLWRzaTEKPj4gPiA+ID4+ID4gIGFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBhZGQgY2lmIGNsay1jb250cm9sIHBpbmN0cmwgZm9yIHJrMzM5OQo+PiA+
+ID4gPj4gPiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCBpc3AxIG5vZGUgb24gcmszMzk5Cj4+
+ID4gPiA+PiA+Cj4+ID4gPiA+PiA+IC4uLi9kaXNwbGF5L3JvY2tjaGlwL2R3X21pcGlfZHNpX3Jv
+Y2tjaGlwLnR4dCB8ICAgMSArCj4+ID4gPiA+PiA+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LmR0c2kgICAgICB8ICAzOSArKwo+PiA+ID4gPj4gPiBkcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgfCAgIDIgKwo+PiA+ID4gPj4gPiAuLi4vZ3B1
+L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jICAgfCAzNDIgKysrKysrKysrKysr
+KysrKysrCj4+ID4gPiA+PiA+IDQgZmlsZXMgY2hhbmdlZCwgMzg0IGluc2VydGlvbnMoKykKPj4g
+PiA+ID4+ID4KPj4gPiA+ID4+Cj4+ID4gPiA+Cj4+ID4gPiA+Cj4+ID4gPiA+Cj4+ID4gPiA+Cj4+
+ID4gPgo+PiA+Cj4+ID4KPj4KPj4KPgo+Cj4KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
