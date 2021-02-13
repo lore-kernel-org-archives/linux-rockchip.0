@@ -1,58 +1,71 @@
-Return-Path: <SRS0=2G0u=HN=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=wo7w=HP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-19.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01090C433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Feb 2021 14:42:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F4E8C433E0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Feb 2021 11:20:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56AA664E7A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Feb 2021 14:42:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56AA664E7A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id A1CC364E3F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 13 Feb 2021 11:20:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1CC364E3F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=posteo.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1gS5oQIl9uIGNYLyj6r1mJIrwIs6r5SyZYtmpqYksUs=; b=mi0qZxp9zb22FoDRWvwhHHeZT
-	PS7QEeQOvd/x+bnBBgOOkqiFxF7Ykn4ex2LUe0eRB8DDzolYDdaSzi94zFN8eeKCp/Nhbo0E/Jq3S
-	n1hZ6IenL9+zRtRo0P4VmR+73Sffa348dJ1i0FRHC2Qylkuoofg4PVuya+j+ERgYa2mGmBQ7HLrLR
-	i1KkgKV9uL+z7RJT7Jv2C+f/JQbQEkWzmdQxaScqN2gYUd9s1cAxtxWem6gpfDvX9OaIDmVcSJURW
-	OwWchONcGIjxowAD97vZ53ysc2vn2NC8KeUY+q0BEe1uyUImXbQ+R9OC3yzTIrZuSK7MZxO9JQchv
-	STVrNF/Cg==;
+	 bh=KD2u/AZ7tQlbaxJpKM8JcrLqO/N+CTbUs+8ZCwRpr+I=; b=gBkfT52ClFYnK+GpuwIJ7YgND
+	AvZ/dQ7Dbc9C0M2oZTh4s9dYewSMyUE32zlkEOG4nJUZDMH+AZ+k9MXF8QAeY0qOSLSWSnfhQkd7m
+	J/pomBMcsl3ZVMtq41U1yMjutcCEN7K4FvW1hRyM/v3VhCfvE+g7h6nfFOhWOzGQyyi2Cb6Pt3y/5
+	TEfvxn8jqoBbwImSIOlRlAUwCWBq/p0Ydz1fnqizGtKwLiGloKpav/W7QEp6S9M0Up/0El1Es2ENw
+	N/j5juMUTAknanxZHVJV44JeizrHgy6kCl8I6x54aSnifBNFJfiu7ZF8yb6pQOOB4lCaIJksCY7FQ
+	iQy/l88ug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lADAj-0003dd-6S; Thu, 11 Feb 2021 14:42:21 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lAsy8-00076P-Qk; Sat, 13 Feb 2021 11:20:08 +0000
+Received: from mout02.posteo.de ([185.67.36.66])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lADAd-0003bC-EO; Thu, 11 Feb 2021 14:42:17 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lADAX-0002Dn-Fl; Thu, 11 Feb 2021 15:42:09 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sebastian Fricke <sebastian.fricke@posteo.net>
+ id 1lAsy4-00075J-SA
+ for linux-rockchip@lists.infradead.org; Sat, 13 Feb 2021 11:20:07 +0000
+Received: from submission (posteo.de [89.146.220.130]) 
+ by mout02.posteo.de (Postfix) with ESMTPS id C609B240100
+ for <linux-rockchip@lists.infradead.org>; Sat, 13 Feb 2021 12:20:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.net; s=2017;
+ t=1613215200; bh=LdSMwsAk/xXFN+Y8P4/lPu3FFkk8ht3k2CuANxWxN+o=;
+ h=Date:From:To:Cc:Subject:From;
+ b=REgD1Z/6HIAXxfkkCD9uJi50/Qx2znnMo2p9QMqd9C5hfHNcVFgcjZ326b0XvTBWG
+ tu5Pdr473MU09lsG99AVsyxfpdP+kTxozhrj8e4+gcik4HtBiSagVMyFvYQ1E+hZTk
+ x2UCMVEOQ81FH27eP62yAT2Oa1itUA8ZLchFGrDkYrXk6B5P7BE/QAAFIOg8d1XGJL
+ BcnexzWu0ZTSxDUqlVoPd99TypQxQGOKUwXUCkhzQ90Q6DD3It21ff1Or6Uzu2AY8V
+ SNREdaEbvIQa1RhgAsw+ilu581s58f+IzlGTxmGJShq2vKSCW6G32kTJjdch/8pAqm
+ pIGNJc1QTZddw==
+Received: from customer (localhost [127.0.0.1])
+ by submission (posteo.de) with ESMTPSA id 4Dd7FB123Zz6tmJ;
+ Sat, 13 Feb 2021 12:19:58 +0100 (CET)
+Date: Sat, 13 Feb 2021 12:19:57 +0100
+From: Sebastian Fricke <sebastian.fricke@posteo.net>
+To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH 0/6] Support second Image Signal Processor on rk3399
-Date: Thu, 11 Feb 2021 15:42:08 +0100
-Message-ID: <16789691.tv2OnDr8pf@diego>
-In-Reply-To: <20210211052515.qdqe256cipdwwrz6@basti-TUXEDO-Book-XA1510>
+Message-ID: <20210213111957.3ocxgcyno6ent4vt@basti-TUXEDO-Book-XA1510>
 References: <20210202145632.1263136-1-heiko@sntech.de>
  <808992741.0ifERbkFSE@diego>
  <20210211052515.qdqe256cipdwwrz6@basti-TUXEDO-Book-XA1510>
+ <16789691.tv2OnDr8pf@diego>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <16789691.tv2OnDr8pf@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210211_094215_622748_FCFC973E 
-X-CRM114-Status: GOOD (  53.75  )
+X-CRM114-CacheID: sfid-20210213_062005_238936_C566A03D 
+X-CRM114-Status: GOOD (  43.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,276 +83,150 @@ Cc: devicetree@vger.kernel.org, dafna.hirschfeld@collabora.com,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  helen.koike@collabora.com, robh+dt@kernel.org, ezequiel@collabora.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
-
-Am Donnerstag, 11. Februar 2021, 06:25:15 CET schrieb Sebastian Fricke:
-> Hey Heiko,
-> =
-
-> On 10.02.2021 12:15, Heiko St=FCbner wrote:
-> >Hi Sebastian,
-> >
-> >Am Freitag, 5. Februar 2021, 15:55:56 CET schrieb Heiko St=FCbner:
-> >> Hi Sebastian,
-> >>
-> >> I did some tests myself today as well and can confirm your
-> >> hdmi related finding - at least when plugged in on boot.
-> >>
-> >> I tried some combinations of camera vs. hdmi and it seems
-> >> really only when hdmi is plugged in on boot
-> >
-> >as you can see in v2, it should work now even with hdmi
-> >connected on boot. My patch ignored the grf-clock when
-> >doing the grf-based init.
-> >
-> >All clocks are on during boot and I guess the hdmi-driver
-> >did disable it after its probe. The phy_power_on functions
-> >did handle it correctly already, so it was only happening
-> >with hdmi connected on boot.
-> =
-
-> Thank you very much for solving that problem, I've tested the scenarios
-> described below and it works like a charm. (With your V2)
-> >
-> >
-> >Btw. do you plan on submitting your ov13850 driver
-> >soonish?
-> =
-
-> Actually, I have posted the patch already see here:
-> https://patchwork.kernel.org/project/linux-media/patch/20210130182313.329=
-03-2-sebastian.fricke@posteo.net/
-
-very cool to see
-
-> I currently review the requested changes and questions and will soon
-> post a second version, but I expect quite some time until it is actually
-> merged.
-
-could you Cc me on future versions?
-
-
-Thanks
-Heiko
-> =
-
-> Greetings,
-> Sebastian
-> =
-
-> >
-> >
-> >>
-> >> (1)
-> >> - boot
-> >> - camera
-> >> --> works
-> >>
-> >> (2)
-> >> - boot
-> >> - camera
-> >> - hdmi plugged in
-> >> - hdmi works
-> >> - camera
-> >> --> works
-> >>
-> >> (3)
-> >> - hdmi plugged in
-> >> - boot
-> >> - hdmi works
-> >> - camera
-> >> --> camera doesn't work
-> >>
-> >> (4)
-> >> - boot
-> >> - hdmi plugged in
-> >> - hdmi works
-> >> - camera
-> >> -> camera works
-> >>
-> >>
-> >> With a bit of brute-force [0] it seems the camera also works again even
-> >> with hdmi connected on boot. So conclusion would be that some clock
-> >> is misbehaving.
-> >>
-> >> Now we'll "only" need to find out which one that is.
-> >>
-> >>
-> >> Heiko
-> >>
-> >>
-> >> [0]
-> >> Don't disable any clock gates
-> >>
-> >> diff --git a/drivers/clk/clk-gate.c b/drivers/clk/clk-gate.c
-> >> index 070dc47e95a1..8daf1fc3388c 100644
-> >> --- a/drivers/clk/clk-gate.c
-> >> +++ b/drivers/clk/clk-gate.c
-> >> @@ -61,6 +61,9 @@ static void clk_gate_endisable(struct clk_hw *hw, in=
-t enable)
-> >>
-> >>         set ^=3D enable;
-> >>
-> >> +if (!enable)
-> >> +return;
-> >> +
-> >>         if (gate->lock)
-> >>                 spin_lock_irqsave(gate->lock, flags);
-> >>         else
-> >>
-> >>
-> >>
-> >> Am Freitag, 5. Februar 2021, 09:15:47 CET schrieb Heiko St=FCbner:
-> >> > Hi Sebastian,
-> >> >
-> >> > Am Freitag, 5. Februar 2021, 07:43:35 CET schrieb Sebastian Fricke:
-> >> > > On 03.02.2021 20:54, Heiko St=FCbner wrote:
-> >> > > >Am Mittwoch, 3. Februar 2021, 19:14:22 CET schrieb Sebastian Fric=
-ke:
-> >> > > >> I have tested your patch set on my nanoPC-T4, here is a complet=
-e log
-> >> > > >> with:
-> >> > > >> - relevant kernel log entries
-> >> > > >> - system information
-> >> > > >> - media ctl output
-> >> > > >> - sysfs entry information
-> >> > > >>
-> >> > > >> https://paste.debian.net/1183874/
-> >> > > >>
-> >> > > >> Additionally, to your patchset I have applied the following pat=
-ches:
-> >> > > >> https://github.com/initBasti/Linux_kernel_media_tree_fork/commi=
-ts/dual_cam_setup
-> >> > > >>
-> >> > > >> And just to not cause confusion the `media_dev` entries come fr=
-om this
-> >> > > >> unmerged series:
-> >> > > >> https://patchwork.kernel.org/project/linux-media/list/?series=
-=3D426269
-> >> > > >>
-> >> > > >> I have actually been able to stream with both of my cameras at =
-the same
-> >> > > >> time using the libcamera cam command.
-> >> > > >> I would like to thank you a lot for making this possible.
-> >> > > >
-> >> > > >Thanks for testing a dual camera setup. On my board I could only =
-test
-> >> > > >the second ISP. And really glad it works for you tool :-) .
-> >> > > >
-> >> > > >Out of curiosity, do you also see that green tint in the images t=
-he cameras
-> >> > > >produce?
-> >> > >
-> >> > > Yes, I do. Actually, I currently have two forms of a green tint, o=
-n my
-> >> > > OV13850 everything is quite dark and greenish, which is caused by =
-the
-> >> > > missing 3A algorithms. On my OV4689, I have big patches of the ima=
-ge
-> >> > > with bright green color and flickering, I investigated if this is
-> >> > > connected to the 2nd ISP instance, but that doesn't seem to be the=
- case
-> >> > > as I have the same results when I switch the CSI ports of the came=
-ras.
-> >> > >
-> >> > > I have found another issue, while testing I discovered following
-> >> > > issue:
-> >> > > When I start the system with an HDMI monitor connected, then the c=
-amera
-> >> > > on the 2nd port doesn't work. This is probably because the RX/TX is
-> >> > > reserved as a TX.
-> >> > > But it made me wonder because if the system has an RX, a TX, and
-> >> > > an RX/TX, why isn't the pure TX used by the monitor and the
-> >> > > cameras take RX and RX/TX?
-> >> > > Or do you think that this is maybe a malfunction of this patch?
-> >> >
-> >> > I don't think it is an issue with this specific series, but still pu=
-zzling.
-> >> >
-> >> > I.e. the DPHYs are actually only relevant to the DSI controllers,
-> >> > with TX0 being connected to DSI0 and TX1RX1 being connected
-> >> > to DSI1. So having an hdmi display _in theory_ shouldn't matter at a=
-ll.
-> >> >
-> >> > Out of curiosity what happens, when you boot without hdmi connected
-> >> > turn on the cameras, connect the hdmi after this, try the cameras ag=
-ain?
-> >> >
-> >> >
-> >> > Heiko
-> >> >
-> >> > >
-> >> > > >
-> >> > > >Thanks
-> >> > > >Heiko
-> >> > >
-> >> > > Greetings,
-> >> > > Sebastian
-> >> > >
-> >> > > >
-> >> > > >
-> >> > > >> If you like to you can add:
-> >> > > >> Tested-by: Sebastian Fricke <sebastian.fricke@posteo.net>
-> >> > > >>
-> >> > > >> On 02.02.2021 15:56, Heiko Stuebner wrote:
-> >> > > >> >The rk3399 has two ISPs and right now only the first one is us=
-able.
-> >> > > >> >The second ISP is connected to the TXRX dphy on the soc.
-> >> > > >> >
-> >> > > >> >The phy of ISP1 is only accessible through the DSI controller's
-> >> > > >> >io-memory, so this series adds support for simply using the dsi
-> >> > > >> >controller is a phy if needed.
-> >> > > >> >
-> >> > > >> >That solution is needed at least on rk3399 and rk3288 but no-o=
-ne
-> >> > > >> >has looked at camera support on rk3288 at all, so right now
-> >> > > >> >only implement the rk3399 specifics.
-> >> > > >> >
-> >> > > >> >
-> >> > > >> >Heiko Stuebner (6):
-> >> > > >> >  drm/rockchip: dsi: add own additional pclk handling
-> >> > > >> >  dt-bindings: display: rockchip-dsi: add optional #phy-cells =
-property
-> >> > > >> >  drm/rockchip: dsi: add ability to work as a phy instead of f=
-ull dsi
-> >> > > >> >  arm64: dts: rockchip: add #phy-cells to mipi-dsi1
-> >> > > >> >  arm64: dts: rockchip: add cif clk-control pinctrl for rk3399
-> >> > > >> >  arm64: dts: rockchip: add isp1 node on rk3399
-> >> > > >> >
-> >> > > >> > .../display/rockchip/dw_mipi_dsi_rockchip.txt |   1 +
-> >> > > >> > arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  39 ++
-> >> > > >> > drivers/gpu/drm/rockchip/Kconfig              |   2 +
-> >> > > >> > .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 342 +++++++++=
-+++++++++
-> >> > > >> > 4 files changed, 384 insertions(+)
-> >> > > >> >
-> >> > > >>
-> >> > > >
-> >> > > >
-> >> > > >
-> >> > > >
-> >> > >
-> >> >
-> >> >
-> >>
-> >>
-> >
-> >
-> >
-> >
-> =
-
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGV5IEhlaWtvLAoKT24gMTEuMDIuMjAyMSAxNTo0MiwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj5I
+aSBTZWJhc3RpYW4sCj4KPkFtIERvbm5lcnN0YWcsIDExLiBGZWJydWFyIDIwMjEsIDA2OjI1OjE1
+IENFVCBzY2hyaWViIFNlYmFzdGlhbiBGcmlja2U6Cj4+IEhleSBIZWlrbywKPj4KPj4gT24gMTAu
+MDIuMjAyMSAxMjoxNSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+ID5IaSBTZWJhc3RpYW4sCj4+
+ID4KPj4gPkFtIEZyZWl0YWcsIDUuIEZlYnJ1YXIgMjAyMSwgMTU6NTU6NTYgQ0VUIHNjaHJpZWIg
+SGVpa28gU3TDvGJuZXI6Cj4+ID4+IEhpIFNlYmFzdGlhbiwKPj4gPj4KPj4gPj4gSSBkaWQgc29t
+ZSB0ZXN0cyBteXNlbGYgdG9kYXkgYXMgd2VsbCBhbmQgY2FuIGNvbmZpcm0geW91cgo+PiA+PiBo
+ZG1pIHJlbGF0ZWQgZmluZGluZyAtIGF0IGxlYXN0IHdoZW4gcGx1Z2dlZCBpbiBvbiBib290Lgo+
+PiA+Pgo+PiA+PiBJIHRyaWVkIHNvbWUgY29tYmluYXRpb25zIG9mIGNhbWVyYSB2cy4gaGRtaSBh
+bmQgaXQgc2VlbXMKPj4gPj4gcmVhbGx5IG9ubHkgd2hlbiBoZG1pIGlzIHBsdWdnZWQgaW4gb24g
+Ym9vdAo+PiA+Cj4+ID5hcyB5b3UgY2FuIHNlZSBpbiB2MiwgaXQgc2hvdWxkIHdvcmsgbm93IGV2
+ZW4gd2l0aCBoZG1pCj4+ID5jb25uZWN0ZWQgb24gYm9vdC4gTXkgcGF0Y2ggaWdub3JlZCB0aGUg
+Z3JmLWNsb2NrIHdoZW4KPj4gPmRvaW5nIHRoZSBncmYtYmFzZWQgaW5pdC4KPj4gPgo+PiA+QWxs
+IGNsb2NrcyBhcmUgb24gZHVyaW5nIGJvb3QgYW5kIEkgZ3Vlc3MgdGhlIGhkbWktZHJpdmVyCj4+
+ID5kaWQgZGlzYWJsZSBpdCBhZnRlciBpdHMgcHJvYmUuIFRoZSBwaHlfcG93ZXJfb24gZnVuY3Rp
+b25zCj4+ID5kaWQgaGFuZGxlIGl0IGNvcnJlY3RseSBhbHJlYWR5LCBzbyBpdCB3YXMgb25seSBo
+YXBwZW5pbmcKPj4gPndpdGggaGRtaSBjb25uZWN0ZWQgb24gYm9vdC4KPj4KPj4gVGhhbmsgeW91
+IHZlcnkgbXVjaCBmb3Igc29sdmluZyB0aGF0IHByb2JsZW0sIEkndmUgdGVzdGVkIHRoZSBzY2Vu
+YXJpb3MKPj4gZGVzY3JpYmVkIGJlbG93IGFuZCBpdCB3b3JrcyBsaWtlIGEgY2hhcm0uIChXaXRo
+IHlvdXIgVjIpCj4+ID4KPj4gPgo+PiA+QnR3LiBkbyB5b3UgcGxhbiBvbiBzdWJtaXR0aW5nIHlv
+dXIgb3YxMzg1MCBkcml2ZXIKPj4gPnNvb25pc2g/Cj4+Cj4+IEFjdHVhbGx5LCBJIGhhdmUgcG9z
+dGVkIHRoZSBwYXRjaCBhbHJlYWR5IHNlZSBoZXJlOgo+PiBodHRwczovL3BhdGNod29yay5rZXJu
+ZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWEvcGF0Y2gvMjAyMTAxMzAxODIzMTMuMzI5MDMtMi1z
+ZWJhc3RpYW4uZnJpY2tlQHBvc3Rlby5uZXQvCj4KPnZlcnkgY29vbCB0byBzZWUKPgo+PiBJIGN1
+cnJlbnRseSByZXZpZXcgdGhlIHJlcXVlc3RlZCBjaGFuZ2VzIGFuZCBxdWVzdGlvbnMgYW5kIHdp
+bGwgc29vbgo+PiBwb3N0IGEgc2Vjb25kIHZlcnNpb24sIGJ1dCBJIGV4cGVjdCBxdWl0ZSBzb21l
+IHRpbWUgdW50aWwgaXQgaXMgYWN0dWFsbHkKPj4gbWVyZ2VkLgo+Cj5jb3VsZCB5b3UgQ2MgbWUg
+b24gZnV0dXJlIHZlcnNpb25zPwoKU3VyZSB3aWxsIGRvIDopCgo+Cj4KPlRoYW5rcwo+SGVpa28K
+ClNlYmFzdGlhbgo+Pgo+PiBHcmVldGluZ3MsCj4+IFNlYmFzdGlhbgo+Pgo+PiA+Cj4+ID4KPj4g
+Pj4KPj4gPj4gKDEpCj4+ID4+IC0gYm9vdAo+PiA+PiAtIGNhbWVyYQo+PiA+PiAtLT4gd29ya3MK
+Pj4gPj4KPj4gPj4gKDIpCj4+ID4+IC0gYm9vdAo+PiA+PiAtIGNhbWVyYQo+PiA+PiAtIGhkbWkg
+cGx1Z2dlZCBpbgo+PiA+PiAtIGhkbWkgd29ya3MKPj4gPj4gLSBjYW1lcmEKPj4gPj4gLS0+IHdv
+cmtzCj4+ID4+Cj4+ID4+ICgzKQo+PiA+PiAtIGhkbWkgcGx1Z2dlZCBpbgo+PiA+PiAtIGJvb3QK
+Pj4gPj4gLSBoZG1pIHdvcmtzCj4+ID4+IC0gY2FtZXJhCj4+ID4+IC0tPiBjYW1lcmEgZG9lc24n
+dCB3b3JrCj4+ID4+Cj4+ID4+ICg0KQo+PiA+PiAtIGJvb3QKPj4gPj4gLSBoZG1pIHBsdWdnZWQg
+aW4KPj4gPj4gLSBoZG1pIHdvcmtzCj4+ID4+IC0gY2FtZXJhCj4+ID4+IC0+IGNhbWVyYSB3b3Jr
+cwo+PiA+Pgo+PiA+Pgo+PiA+PiBXaXRoIGEgYml0IG9mIGJydXRlLWZvcmNlIFswXSBpdCBzZWVt
+cyB0aGUgY2FtZXJhIGFsc28gd29ya3MgYWdhaW4gZXZlbgo+PiA+PiB3aXRoIGhkbWkgY29ubmVj
+dGVkIG9uIGJvb3QuIFNvIGNvbmNsdXNpb24gd291bGQgYmUgdGhhdCBzb21lIGNsb2NrCj4+ID4+
+IGlzIG1pc2JlaGF2aW5nLgo+PiA+Pgo+PiA+PiBOb3cgd2UnbGwgIm9ubHkiIG5lZWQgdG8gZmlu
+ZCBvdXQgd2hpY2ggb25lIHRoYXQgaXMuCj4+ID4+Cj4+ID4+Cj4+ID4+IEhlaWtvCj4+ID4+Cj4+
+ID4+Cj4+ID4+IFswXQo+PiA+PiBEb24ndCBkaXNhYmxlIGFueSBjbG9jayBnYXRlcwo+PiA+Pgo+
+PiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvY2xrLWdhdGUuYyBiL2RyaXZlcnMvY2xrL2Ns
+ay1nYXRlLmMKPj4gPj4gaW5kZXggMDcwZGM0N2U5NWExLi44ZGFmMWZjMzM4OGMgMTAwNjQ0Cj4+
+ID4+IC0tLSBhL2RyaXZlcnMvY2xrL2Nsay1nYXRlLmMKPj4gPj4gKysrIGIvZHJpdmVycy9jbGsv
+Y2xrLWdhdGUuYwo+PiA+PiBAQCAtNjEsNiArNjEsOSBAQCBzdGF0aWMgdm9pZCBjbGtfZ2F0ZV9l
+bmRpc2FibGUoc3RydWN0IGNsa19odyAqaHcsIGludCBlbmFibGUpCj4+ID4+Cj4+ID4+ICAgICAg
+ICAgc2V0IF49IGVuYWJsZTsKPj4gPj4KPj4gPj4gK2lmICghZW5hYmxlKQo+PiA+PiArcmV0dXJu
+Owo+PiA+PiArCj4+ID4+ICAgICAgICAgaWYgKGdhdGUtPmxvY2spCj4+ID4+ICAgICAgICAgICAg
+ICAgICBzcGluX2xvY2tfaXJxc2F2ZShnYXRlLT5sb2NrLCBmbGFncyk7Cj4+ID4+ICAgICAgICAg
+ZWxzZQo+PiA+Pgo+PiA+Pgo+PiA+Pgo+PiA+PiBBbSBGcmVpdGFnLCA1LiBGZWJydWFyIDIwMjEs
+IDA5OjE1OjQ3IENFVCBzY2hyaWViIEhlaWtvIFN0w7xibmVyOgo+PiA+PiA+IEhpIFNlYmFzdGlh
+biwKPj4gPj4gPgo+PiA+PiA+IEFtIEZyZWl0YWcsIDUuIEZlYnJ1YXIgMjAyMSwgMDc6NDM6MzUg
+Q0VUIHNjaHJpZWIgU2ViYXN0aWFuIEZyaWNrZToKPj4gPj4gPiA+IE9uIDAzLjAyLjIwMjEgMjA6
+NTQsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiA+PiA+ID4gPkFtIE1pdHR3b2NoLCAzLiBGZWJy
+dWFyIDIwMjEsIDE5OjE0OjIyIENFVCBzY2hyaWViIFNlYmFzdGlhbiBGcmlja2U6Cj4+ID4+ID4g
+PiA+PiBJIGhhdmUgdGVzdGVkIHlvdXIgcGF0Y2ggc2V0IG9uIG15IG5hbm9QQy1UNCwgaGVyZSBp
+cyBhIGNvbXBsZXRlIGxvZwo+PiA+PiA+ID4gPj4gd2l0aDoKPj4gPj4gPiA+ID4+IC0gcmVsZXZh
+bnQga2VybmVsIGxvZyBlbnRyaWVzCj4+ID4+ID4gPiA+PiAtIHN5c3RlbSBpbmZvcm1hdGlvbgo+
+PiA+PiA+ID4gPj4gLSBtZWRpYSBjdGwgb3V0cHV0Cj4+ID4+ID4gPiA+PiAtIHN5c2ZzIGVudHJ5
+IGluZm9ybWF0aW9uCj4+ID4+ID4gPiA+Pgo+PiA+PiA+ID4gPj4gaHR0cHM6Ly9wYXN0ZS5kZWJp
+YW4ubmV0LzExODM4NzQvCj4+ID4+ID4gPiA+Pgo+PiA+PiA+ID4gPj4gQWRkaXRpb25hbGx5LCB0
+byB5b3VyIHBhdGNoc2V0IEkgaGF2ZSBhcHBsaWVkIHRoZSBmb2xsb3dpbmcgcGF0Y2hlczoKPj4g
+Pj4gPiA+ID4+IGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0QmFzdGkvTGludXhfa2VybmVsX21lZGlh
+X3RyZWVfZm9yay9jb21taXRzL2R1YWxfY2FtX3NldHVwCj4+ID4+ID4gPiA+Pgo+PiA+PiA+ID4g
+Pj4gQW5kIGp1c3QgdG8gbm90IGNhdXNlIGNvbmZ1c2lvbiB0aGUgYG1lZGlhX2RldmAgZW50cmll
+cyBjb21lIGZyb20gdGhpcwo+PiA+PiA+ID4gPj4gdW5tZXJnZWQgc2VyaWVzOgo+PiA+PiA+ID4g
+Pj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhL2xpc3Qv
+P3Nlcmllcz00MjYyNjkKPj4gPj4gPiA+ID4+Cj4+ID4+ID4gPiA+PiBJIGhhdmUgYWN0dWFsbHkg
+YmVlbiBhYmxlIHRvIHN0cmVhbSB3aXRoIGJvdGggb2YgbXkgY2FtZXJhcyBhdCB0aGUgc2FtZQo+
+PiA+PiA+ID4gPj4gdGltZSB1c2luZyB0aGUgbGliY2FtZXJhIGNhbSBjb21tYW5kLgo+PiA+PiA+
+ID4gPj4gSSB3b3VsZCBsaWtlIHRvIHRoYW5rIHlvdSBhIGxvdCBmb3IgbWFraW5nIHRoaXMgcG9z
+c2libGUuCj4+ID4+ID4gPiA+Cj4+ID4+ID4gPiA+VGhhbmtzIGZvciB0ZXN0aW5nIGEgZHVhbCBj
+YW1lcmEgc2V0dXAuIE9uIG15IGJvYXJkIEkgY291bGQgb25seSB0ZXN0Cj4+ID4+ID4gPiA+dGhl
+IHNlY29uZCBJU1AuIEFuZCByZWFsbHkgZ2xhZCBpdCB3b3JrcyBmb3IgeW91IHRvb2wgOi0pIC4K
+Pj4gPj4gPiA+ID4KPj4gPj4gPiA+ID5PdXQgb2YgY3VyaW9zaXR5LCBkbyB5b3UgYWxzbyBzZWUg
+dGhhdCBncmVlbiB0aW50IGluIHRoZSBpbWFnZXMgdGhlIGNhbWVyYXMKPj4gPj4gPiA+ID5wcm9k
+dWNlPwo+PiA+PiA+ID4KPj4gPj4gPiA+IFllcywgSSBkby4gQWN0dWFsbHksIEkgY3VycmVudGx5
+IGhhdmUgdHdvIGZvcm1zIG9mIGEgZ3JlZW4gdGludCwgb24gbXkKPj4gPj4gPiA+IE9WMTM4NTAg
+ZXZlcnl0aGluZyBpcyBxdWl0ZSBkYXJrIGFuZCBncmVlbmlzaCwgd2hpY2ggaXMgY2F1c2VkIGJ5
+IHRoZQo+PiA+PiA+ID4gbWlzc2luZyAzQSBhbGdvcml0aG1zLiBPbiBteSBPVjQ2ODksIEkgaGF2
+ZSBiaWcgcGF0Y2hlcyBvZiB0aGUgaW1hZ2UKPj4gPj4gPiA+IHdpdGggYnJpZ2h0IGdyZWVuIGNv
+bG9yIGFuZCBmbGlja2VyaW5nLCBJIGludmVzdGlnYXRlZCBpZiB0aGlzIGlzCj4+ID4+ID4gPiBj
+b25uZWN0ZWQgdG8gdGhlIDJuZCBJU1AgaW5zdGFuY2UsIGJ1dCB0aGF0IGRvZXNuJ3Qgc2VlbSB0
+byBiZSB0aGUgY2FzZQo+PiA+PiA+ID4gYXMgSSBoYXZlIHRoZSBzYW1lIHJlc3VsdHMgd2hlbiBJ
+IHN3aXRjaCB0aGUgQ1NJIHBvcnRzIG9mIHRoZSBjYW1lcmFzLgo+PiA+PiA+ID4KPj4gPj4gPiA+
+IEkgaGF2ZSBmb3VuZCBhbm90aGVyIGlzc3VlLCB3aGlsZSB0ZXN0aW5nIEkgZGlzY292ZXJlZCBm
+b2xsb3dpbmcKPj4gPj4gPiA+IGlzc3VlOgo+PiA+PiA+ID4gV2hlbiBJIHN0YXJ0IHRoZSBzeXN0
+ZW0gd2l0aCBhbiBIRE1JIG1vbml0b3IgY29ubmVjdGVkLCB0aGVuIHRoZSBjYW1lcmEKPj4gPj4g
+PiA+IG9uIHRoZSAybmQgcG9ydCBkb2Vzbid0IHdvcmsuIFRoaXMgaXMgcHJvYmFibHkgYmVjYXVz
+ZSB0aGUgUlgvVFggaXMKPj4gPj4gPiA+IHJlc2VydmVkIGFzIGEgVFguCj4+ID4+ID4gPiBCdXQg
+aXQgbWFkZSBtZSB3b25kZXIgYmVjYXVzZSBpZiB0aGUgc3lzdGVtIGhhcyBhbiBSWCwgYSBUWCwg
+YW5kCj4+ID4+ID4gPiBhbiBSWC9UWCwgd2h5IGlzbid0IHRoZSBwdXJlIFRYIHVzZWQgYnkgdGhl
+IG1vbml0b3IgYW5kIHRoZQo+PiA+PiA+ID4gY2FtZXJhcyB0YWtlIFJYIGFuZCBSWC9UWD8KPj4g
+Pj4gPiA+IE9yIGRvIHlvdSB0aGluayB0aGF0IHRoaXMgaXMgbWF5YmUgYSBtYWxmdW5jdGlvbiBv
+ZiB0aGlzIHBhdGNoPwo+PiA+PiA+Cj4+ID4+ID4gSSBkb24ndCB0aGluayBpdCBpcyBhbiBpc3N1
+ZSB3aXRoIHRoaXMgc3BlY2lmaWMgc2VyaWVzLCBidXQgc3RpbGwgcHV6emxpbmcuCj4+ID4+ID4K
+Pj4gPj4gPiBJLmUuIHRoZSBEUEhZcyBhcmUgYWN0dWFsbHkgb25seSByZWxldmFudCB0byB0aGUg
+RFNJIGNvbnRyb2xsZXJzLAo+PiA+PiA+IHdpdGggVFgwIGJlaW5nIGNvbm5lY3RlZCB0byBEU0kw
+IGFuZCBUWDFSWDEgYmVpbmcgY29ubmVjdGVkCj4+ID4+ID4gdG8gRFNJMS4gU28gaGF2aW5nIGFu
+IGhkbWkgZGlzcGxheSBfaW4gdGhlb3J5XyBzaG91bGRuJ3QgbWF0dGVyIGF0IGFsbC4KPj4gPj4g
+Pgo+PiA+PiA+IE91dCBvZiBjdXJpb3NpdHkgd2hhdCBoYXBwZW5zLCB3aGVuIHlvdSBib290IHdp
+dGhvdXQgaGRtaSBjb25uZWN0ZWQKPj4gPj4gPiB0dXJuIG9uIHRoZSBjYW1lcmFzLCBjb25uZWN0
+IHRoZSBoZG1pIGFmdGVyIHRoaXMsIHRyeSB0aGUgY2FtZXJhcyBhZ2Fpbj8KPj4gPj4gPgo+PiA+
+PiA+Cj4+ID4+ID4gSGVpa28KPj4gPj4gPgo+PiA+PiA+ID4KPj4gPj4gPiA+ID4KPj4gPj4gPiA+
+ID5UaGFua3MKPj4gPj4gPiA+ID5IZWlrbwo+PiA+PiA+ID4KPj4gPj4gPiA+IEdyZWV0aW5ncywK
+Pj4gPj4gPiA+IFNlYmFzdGlhbgo+PiA+PiA+ID4KPj4gPj4gPiA+ID4KPj4gPj4gPiA+ID4KPj4g
+Pj4gPiA+ID4+IElmIHlvdSBsaWtlIHRvIHlvdSBjYW4gYWRkOgo+PiA+PiA+ID4gPj4gVGVzdGVk
+LWJ5OiBTZWJhc3RpYW4gRnJpY2tlIDxzZWJhc3RpYW4uZnJpY2tlQHBvc3Rlby5uZXQ+Cj4+ID4+
+ID4gPiA+Pgo+PiA+PiA+ID4gPj4gT24gMDIuMDIuMjAyMSAxNTo1NiwgSGVpa28gU3R1ZWJuZXIg
+d3JvdGU6Cj4+ID4+ID4gPiA+PiA+VGhlIHJrMzM5OSBoYXMgdHdvIElTUHMgYW5kIHJpZ2h0IG5v
+dyBvbmx5IHRoZSBmaXJzdCBvbmUgaXMgdXNhYmxlLgo+PiA+PiA+ID4gPj4gPlRoZSBzZWNvbmQg
+SVNQIGlzIGNvbm5lY3RlZCB0byB0aGUgVFhSWCBkcGh5IG9uIHRoZSBzb2MuCj4+ID4+ID4gPiA+
+PiA+Cj4+ID4+ID4gPiA+PiA+VGhlIHBoeSBvZiBJU1AxIGlzIG9ubHkgYWNjZXNzaWJsZSB0aHJv
+dWdoIHRoZSBEU0kgY29udHJvbGxlcidzCj4+ID4+ID4gPiA+PiA+aW8tbWVtb3J5LCBzbyB0aGlz
+IHNlcmllcyBhZGRzIHN1cHBvcnQgZm9yIHNpbXBseSB1c2luZyB0aGUgZHNpCj4+ID4+ID4gPiA+
+PiA+Y29udHJvbGxlciBpcyBhIHBoeSBpZiBuZWVkZWQuCj4+ID4+ID4gPiA+PiA+Cj4+ID4+ID4g
+PiA+PiA+VGhhdCBzb2x1dGlvbiBpcyBuZWVkZWQgYXQgbGVhc3Qgb24gcmszMzk5IGFuZCByazMy
+ODggYnV0IG5vLW9uZQo+PiA+PiA+ID4gPj4gPmhhcyBsb29rZWQgYXQgY2FtZXJhIHN1cHBvcnQg
+b24gcmszMjg4IGF0IGFsbCwgc28gcmlnaHQgbm93Cj4+ID4+ID4gPiA+PiA+b25seSBpbXBsZW1l
+bnQgdGhlIHJrMzM5OSBzcGVjaWZpY3MuCj4+ID4+ID4gPiA+PiA+Cj4+ID4+ID4gPiA+PiA+Cj4+
+ID4+ID4gPiA+PiA+SGVpa28gU3R1ZWJuZXIgKDYpOgo+PiA+PiA+ID4gPj4gPiAgZHJtL3JvY2tj
+aGlwOiBkc2k6IGFkZCBvd24gYWRkaXRpb25hbCBwY2xrIGhhbmRsaW5nCj4+ID4+ID4gPiA+PiA+
+ICBkdC1iaW5kaW5nczogZGlzcGxheTogcm9ja2NoaXAtZHNpOiBhZGQgb3B0aW9uYWwgI3BoeS1j
+ZWxscyBwcm9wZXJ0eQo+PiA+PiA+ID4gPj4gPiAgZHJtL3JvY2tjaGlwOiBkc2k6IGFkZCBhYmls
+aXR5IHRvIHdvcmsgYXMgYSBwaHkgaW5zdGVhZCBvZiBmdWxsIGRzaQo+PiA+PiA+ID4gPj4gPiAg
+YXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCAjcGh5LWNlbGxzIHRvIG1pcGktZHNpMQo+PiA+PiA+
+ID4gPj4gPiAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCBjaWYgY2xrLWNvbnRyb2wgcGluY3Ry
+bCBmb3IgcmszMzk5Cj4+ID4+ID4gPiA+PiA+ICBhcm02NDogZHRzOiByb2NrY2hpcDogYWRkIGlz
+cDEgbm9kZSBvbiByazMzOTkKPj4gPj4gPiA+ID4+ID4KPj4gPj4gPiA+ID4+ID4gLi4uL2Rpc3Bs
+YXkvcm9ja2NoaXAvZHdfbWlwaV9kc2lfcm9ja2NoaXAudHh0IHwgICAxICsKPj4gPj4gPiA+ID4+
+ID4gYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSAgICAgIHwgIDM5ICsr
+Cj4+ID4+ID4gPiA+PiA+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnICAgICAgICAg
+ICAgICB8ICAgMiArCj4+ID4+ID4gPiA+PiA+IC4uLi9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLXJvY2tjaGlwLmMgICB8IDM0MiArKysrKysrKysrKysrKysrKysKPj4gPj4gPiA+ID4+ID4g
+NCBmaWxlcyBjaGFuZ2VkLCAzODQgaW5zZXJ0aW9ucygrKQo+PiA+PiA+ID4gPj4gPgo+PiA+PiA+
+ID4gPj4KPj4gPj4gPiA+ID4KPj4gPj4gPiA+ID4KPj4gPj4gPiA+ID4KPj4gPj4gPiA+ID4KPj4g
+Pj4gPiA+Cj4+ID4+ID4KPj4gPj4gPgo+PiA+Pgo+PiA+Pgo+PiA+Cj4+ID4KPj4gPgo+PiA+Cj4+
+Cj4KPgo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
