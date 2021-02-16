@@ -1,85 +1,70 @@
-Return-Path: <SRS0=FO72=HR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=n7Ji=HS=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 165DFC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Feb 2021 15:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BACB3C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Feb 2021 08:50:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8626260233
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Feb 2021 15:11:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8626260233
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=konsulko.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6CB2164D9A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Feb 2021 08:50:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CB2164D9A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=163.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fxzlB5q4NcoU6pgrAd8Q29sVTGYYdsS1HNSyfYYUZZ8=; b=JNdQo2ywReoiHMbBb/LRf7XCD
-	xUGP4HWMypcTIj1KpVYKM+DyZWEOHMe+QLZooJKETy+Ms5uhVX4J5YKyWFsBi4bfs3QDl5PYxbgO0
-	PkNixB1hISrVbF/bph87vwKEdMb+9kJtAC4ASiCC4JL6HBvLQkdm3JiaRwbGP95QRV0SpaImbZhek
-	zZOZQSYzUCJSUrFvdhcikvRC30CXRSNTFRV0IFOA3assnAxKubSu4RSRJOBKF/TV/6kczrS8uSNjj
-	6/1/buLhyJCr+HUexKUhcTzZLacL8mt5Q8hY/7X2QSxqWTOKZqinf6U7hBt0xlaiAxh0N7yB3mFTK
-	bd3IpeKfw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3SFAclb+C3oad8X/TRD2AO0MYipO9eQJXANEsPvPloM=; b=zhi4CPpTGMnbs73M+LpqThOly4
+	046+CXTQTylgPsSVao2D5FyPa76g3TLjpW53512d8tX98mguIz4jRWv8jydfpoH2khFKMgmOdeMqD
+	BpQP+8ZDBBuOiv4pJ6E7nA20B5pfVZVrEcQCUX8XoAvu5gVbKHirvOVqV2tZ75rLHjAzWCGn0QGNj
+	endMZpt0b2c8GZwDAyQ/JgNbcH3c776YHuv55B0cOzw3A/RLHLERuwBNjILZ8rpTFkjBLg8d9YbSk
+	6fjTU7lLxFFFWqFdbdg81dMTjR7R1VtC2GNH98gia76krAJz941zhsu5nWalQ1Fk21VGH9JV9DWMj
+	seSQtWsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lBfXA-0007tD-7O; Mon, 15 Feb 2021 15:11:32 +0000
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lBfX8-0007sn-BF
- for linux-rockchip@lists.infradead.org; Mon, 15 Feb 2021 15:11:31 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id t63so6654371qkc.1
- for <linux-rockchip@lists.infradead.org>; Mon, 15 Feb 2021 07:11:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=konsulko.com; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=mvX6EmHRlL9zi/FVzHFmyVnt3mpmjgi0M/t0dOAUcLA=;
- b=tfIzyTFO+VbVFn5mKaB9pkfkWDug/UcEQqzwVUukyzfWuHIYDYS+zw/n5ROU/FWTlV
- ibwWa/n6FxM3sWX4/gGcu8jjTjnfYG7KdmFMb3FySyCawgcAMQHpvcMHIX2BX3rfoufX
- 6mEfvb+1GbCA8Vf27iOwJQliqS2sFSNBUIAlA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=mvX6EmHRlL9zi/FVzHFmyVnt3mpmjgi0M/t0dOAUcLA=;
- b=PoWJh5r6UzGHZfxDH6VnJVgdnvhCnCsUoiTOACa92gO39BeHfiOhWUNzoVzhqpPIew
- evmpqBIIIq+XCJMqSUKgo+jR0XPzoWqOLUxMfJsf49VharrdMD3yHn6y4VOwdaXEBf1g
- zsBzqqGztCLiu/aCon//1ZvJ6CTtOkP0cN637lhIo9CM141g2c2BYxUzBSZmgdXuoW9P
- 7LC+s5uvgzxpsSb6+oIhQjznGkts1eW45B8Z32GIZIuwu4asMzMlcT8xdjB73DG+4+Uh
- HAzUCIhTunxIndBcdDSkhEFKdPwtfFcQcBIv8n8LdagZBNICOMcQxBD/IC3AwvSKBrCY
- oH4A==
-X-Gm-Message-State: AOAM530/RNMyqJXrjIKqmGcbQaPdJNFBwfBwQ5qZLqivvOO/MNZpJu+m
- 36OnF96i58rxcByaou1hOYIM4g==
-X-Google-Smtp-Source: ABdhPJx/pcJUHfToG8bix71lqFrfFTFdN3ZwvZxCeG5YUM4wnGwMmptROQlYzyxhYl8Sk9x1mDkXuA==
-X-Received: by 2002:a37:bd01:: with SMTP id n1mr15646653qkf.469.1613401886747; 
- Mon, 15 Feb 2021 07:11:26 -0800 (PST)
-Received: from bill-the-cat
- (2603-6081-7b07-927a-3801-240a-0456-87f9.res6.spectrum.com.
- [2603:6081:7b07:927a:3801:240a:456:87f9])
- by smtp.gmail.com with ESMTPSA id n4sm11592954qtp.72.2021.02.15.07.11.25
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 15 Feb 2021 07:11:26 -0800 (PST)
-Date: Mon, 15 Feb 2021 10:11:24 -0500
-From: Tom Rini <trini@konsulko.com>
-To: Markus Reichl <m.reichl@fivetechno.de>
-Subject: Re: [BUG] [BISECT] rockchip: roc-pc-rk3399: TPL misses dtb
-Message-ID: <20210215151124.GN10169@bill-the-cat>
-References: <a197cddb-f363-f790-f743-5012341591ba@fivetechno.de>
+	id 1lBw3o-0006AN-VK; Tue, 16 Feb 2021 08:50:20 +0000
+Received: from m12-16.163.com ([220.181.12.16])
+ by merlin.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1lBw3e-00069X-Im; Tue, 16 Feb 2021 08:50:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=0LMaX
+ 4jV0+UOm0Ix/3TX1zlsdHX89BB1/AZlV63epNg=; b=ORWnOkTKW8QRZbLsNeVph
+ HCJj+bFqiul6J8OL0XMNeDDOpzk59Dz166ZZTxtn/f2kOOzmZiA91V6hNGADVnQv
+ sjI7Q4JLCoQWaby0EODhw/MwNrTYsgBbcF74QlLfXstYC1//GEW66wu8hR77zDW6
+ kkj/GCH+9D3J59kV7Do068=
+Received: from yangjunlin.ccdomain.com (unknown [218.17.89.92])
+ by smtp12 (Coremail) with SMTP id EMCowAAnLloZhytgvl4AcQ--.25268S2;
+ Tue, 16 Feb 2021 16:49:31 +0800 (CST)
+From: angkery <angkery@163.com>
+To: kishon@ti.com,
+	vkoul@kernel.org,
+	heiko@sntech.de
+Subject: [PATCH] phy: rockchip-typec: add missing of_node_put
+Date: Tue, 16 Feb 2021 16:48:47 +0800
+Message-Id: <20210216084847.1544-1-angkery@163.com>
+X-Mailer: git-send-email 2.24.0.windows.2
 MIME-Version: 1.0
-In-Reply-To: <a197cddb-f363-f790-f743-5012341591ba@fivetechno.de>
-X-Clacks-Overhead: GNU Terry Pratchett
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-CM-TRANSID: EMCowAAnLloZhytgvl4AcQ--.25268S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrZF1kur15GryDZw1kCryUZFb_yoWfXFbEkw
+ 1Sva47Ww4v9Fn5JwnrJa47G34qyw1q9a95Ga1IyFW5Z3WDtw10vFWfZrZ8Ja4Uu3y2kr92
+ k34qvF1IkFW5JjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUe7PE3UUUUU==
+X-Originating-IP: [218.17.89.92]
+X-CM-SenderInfo: 5dqjyvlu16il2tof0z/xtbBHhc7I13l-nlGDwABsm
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210215_101130_494745_BA816FB6 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20210216_035017_185247_550DA830 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,87 +77,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- u-boot@lists.denx.de, Jagan Teki <jagan@amarulasolutions.com>,
- Suniel Mahesh <sunil@amarulasolutions.com>, Levin Du <djw@t-chip.com.cn>
-Content-Type: multipart/mixed; boundary="===============7294989715417648515=="
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Junlin Yang <yangjunlin@yulong.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Junlin Yang <yangjunlin@yulong.com>
 
---===============7294989715417648515==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="GchPhc2tMwNMEruq"
-Content-Disposition: inline
+Fix OF node leaks by calling of_node_put in
+for_each_available_child_of_node when the cycle returns.
 
+Generated by: scripts/coccinelle/iterators/for_each_child.cocci
 
---GchPhc2tMwNMEruq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Junlin Yang <yangjunlin@yulong.com>
+---
+ drivers/phy/rockchip/phy-rockchip-typec.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Mon, Feb 15, 2021 at 03:05:20PM +0100, Markus Reichl wrote:
-
-> With recent U-Boot and roc-pc-mezzanine-rk3399_defconfig
-> and booting from SPI flash I get:
->=20
-> U-Boot TPL 2021.01-00884-g0a2aaab0b6 (Feb 15 2021 - 14:36:50)
-> Missing DTB
-> ### ERROR ### Please RESET the board ###
->=20
-> Bisecting points to:
->=20
-> commit 0a2aaab0b678fd1778ff2fc59d0770fc82995532
-> Author: Simon Glass <sjg@chromium.org>
-> Date:   Wed Jan 13 20:29:49 2021 -0700
->=20
->     fdtdec: Use CONFIG_IS_ENABLED in board_fdt_blob_setup()
->     This setting may be different in SPL and TPL. Update the code to check
->     the correct setting.
->     Signed-off-by: Simon Glass <sjg@chromium.org>
->=20
->  lib/fdtdec.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> Reverting this commit fixes booting.
-
-Thanks for the report.  I'm about to push a revert for this and I'll add
-a Reported-by from you.
-
---=20
-Tom
-
---GchPhc2tMwNMEruq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAABCgAdFiEEGjx/cOCPqxcHgJu/FHw5/5Y0tywFAmAqjxgACgkQFHw5/5Y0
-tyztBAv8C1uf9Tuy6Pep6SQ3A/a2vriz0QEQ0fXfrzXozsz8tg2ORZNBmyR6x6yb
-dmIT/4oL9N3G7q1CeRt0rZgCBB5vMvRb7988VLWvHzbud5x07sY+0IDcZZ4zC4OC
-gB69WE250hhkgBR3PgRtuGjY25ga67m1urSPQkAfT4Yd+k5rVSx9eDS50hUI7e2P
-hHorr8RteOF5nqpcYQxzWw96GMUdPy+IX0OSEboo/E8g3ez5XPZz1ozmPfnf1htG
-yJhmKuhvbfusKSOyKuCiKxDEcwggpkUQHreIhcaXlvYuamX+gXiXSsONxhQWRjGj
-kt0SXJaXFsUbUOiLoCNSmIIXPhYKlc/cID9Ouu31wX4C1W0e6NuXhKNyVkgVA81r
-DuBw05cpL1w3sI49LX+nJ+9at3xoGEPT6+FyGyAEJ0f7f8VSz2V/Ro85ciCx975t
-PRTqVyDDUHWKf1gWFFvI1MnCEjvLs6nHg4VxXvnODQ3MG900IHtmRzj2pj2uE5Gi
-jI2iaODu
-=I03A
------END PGP SIGNATURE-----
-
---GchPhc2tMwNMEruq--
+diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rockchip/phy-rockchip-typec.c
+index 70a3125..d2bbdc9 100644
+--- a/drivers/phy/rockchip/phy-rockchip-typec.c
++++ b/drivers/phy/rockchip/phy-rockchip-typec.c
+@@ -1180,6 +1180,7 @@ static int rockchip_typec_phy_probe(struct platform_device *pdev)
+ 			dev_err(dev, "failed to create phy: %pOFn\n",
+ 				child_np);
+ 			pm_runtime_disable(dev);
++			of_node_put(child_np);
+ 			return PTR_ERR(phy);
+ 		}
+ 
+-- 
+1.9.1
 
 
---===============7294989715417648515==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7294989715417648515==--
-
