@@ -2,64 +2,63 @@ Return-Path: <SRS0=wec+=HT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 851AAC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 09:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 783E3C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 19:31:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A5C764E42
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 09:24:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A5C764E42
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 30A9A64E45
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 19:31:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30A9A64E45
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Pz+lEd4KCdPY/98CSl5k0TN0HWVuu+M40ZydS5nTCTw=; b=U9mSVS3k/O4NnCuk2eWo2eYm7
-	yptEfywZzBaQVts2sphmd0k+xte7sB9DTWY4yV223+PnBHBPZjzny8k7iUAyiaw/xZqtcXRq1PtH8
-	JVz+NHjGRzjj3bHgEsvJVuwVGQrVXxlai+TzM2agdhBR0IIkTSTAKcBci7Zgsorukoo7YhKFrLnVZ
-	jna6V8mCqVnylQ5q7IzsSjMG7zAuQBbiN3Rz4yEuy5fUsfMP1WQkg0uOaRBMO2AJs/jlMQbMa0zaA
-	7fIGX3XcmyaCJkKV5H8OvcefzfEDneLK6/XQ0p6VhK3IRktak4dkQGncV6f+B4PRBxMIbxVBQ4pM0
-	xHa0WkgMg==;
+	 bh=WdJ2Jx/c4q+xx5rfBc1QL5Mp6QAPCMXegj3x8Pbj4cM=; b=c9mhK9HDY6yWostnTImsj1N0m
+	wbHAyKT8xnBfF6FJcpa0kKDIrv2A16KAAo3Uf9cYLL391y6111BmI1vxh7DWEkjN0BtbeacAFu1o1
+	CwSscqAjspJZZ7meRV4lI3qYnVj7A9eCjl4BRwRP6BSqaX79VbOwGV2omC8zcV+vQzPXlAGTpttX1
+	6kG6pDgAQbgtE+zOR7o3FaGJoK24mDlbqzu7iXyhSyNJAHhRmHCAuPc9nYcuCmzcAJCuEjakwZHEr
+	xuCdg4q48XbEAn5m0rJCIP3Xn7XUmFnDYbS/otNuAjjpxAgWk470gSPGxAaj7Hx4myscbtxc/xVt9
+	2+468G1VQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCJ41-0000CK-Se; Wed, 17 Feb 2021 09:24:05 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lCSXn-0003um-8I; Wed, 17 Feb 2021 19:31:27 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCJ3x-0000AR-6M; Wed, 17 Feb 2021 09:24:02 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9CD2664E33;
- Wed, 17 Feb 2021 09:23:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1613553839;
- bh=FD7WhxzDm+JDUfR6hgpEBF+USlSpiOrjLGWZu2X98cI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jF0NlVSCU9pO4orJwFctgDl16Qz2q2xtNLtJz1DaP0buysksSPJFRfQZaeyvNHuJC
- bWg6BJByx2Um/j+t1QKHcL4nCqILFeEcl0KBWCZ0NTtWvCyVZbQCHShrxjkS/D1663
- kEFHpQqChcLhQHnuNstCKZ+Z5w5oZm7MHbJhrH2I=
-Date: Wed, 17 Feb 2021 10:23:56 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: Re: [PATCH v1 00/18] Add HANTRO G2/HEVC decoder support for IMX8MQ
-Message-ID: <YCzgrGr8JpUYcQ+L@kroah.com>
+ id 1lCSXj-0003tu-Dk; Wed, 17 Feb 2021 19:31:24 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id DEF431F4583E
+Message-ID: <c9922c9c5875889648e765f2267505d20f9a1da8.camel@collabora.com>
+Subject: Re: [PATCH v1 02/18] media: hantro: Define HEVC codec profiles and
+ supported features
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org, 
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, 
+ festevam@gmail.com, linux-imx@nxp.com, gregkh@linuxfoundation.org, 
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org, 
+ jernej.skrabec@siol.net, krzk@kernel.org, shengjiu.wang@nxp.com, 
+ adrian.ratiu@collabora.com, aisheng.dong@nxp.com, peng.fan@nxp.com, 
+ Anson.Huang@nxp.com, hverkuil-cisco@xs4all.nl
+Date: Wed, 17 Feb 2021 16:31:07 -0300
+In-Reply-To: <20210217080306.157876-3-benjamin.gaignard@collabora.com>
 References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
- <YCzO7SRmBKzGeMUS@kroah.com>
- <04dfae0b-92e5-e02d-c687-ba4d28b7aaf2@collabora.com>
- <YCzVmRVL79KMkxXQ@kroah.com>
- <63b62e9e-b95f-59a4-b830-c56d2cb9e4f8@xs4all.nl>
+ <20210217080306.157876-3-benjamin.gaignard@collabora.com>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <63b62e9e-b95f-59a4-b830-c56d2cb9e4f8@xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210217_042401_547782_8133625A 
-X-CRM114-Status: GOOD (  33.77  )
+X-CRM114-CacheID: sfid-20210217_143123_689123_DABD8CC2 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,127 +71,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: peng.fan@nxp.com, kernel@collabora.com, devel@driverdev.osuosl.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Anson.Huang@nxp.com,
- krzk@kernel.org, linux-rockchip@lists.infradead.org, wens@csie.org,
- linux-imx@nxp.com, linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- p.zabel@pengutronix.de, s.hauer@pengutronix.de, mripard@kernel.org,
- robh+dt@kernel.org, mchehab@kernel.org, ezequiel@collabora.com,
- linux-arm-kernel@lists.infradead.org, aisheng.dong@nxp.com,
- jernej.skrabec@siol.net, adrian.ratiu@collabora.com,
- linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
- kernel@pengutronix.de, shawnguo@kernel.org, shengjiu.wang@nxp.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 17, 2021 at 10:10:35AM +0100, Hans Verkuil wrote:
-> On 17/02/2021 09:36, Greg KH wrote:
-> > On Wed, Feb 17, 2021 at 09:28:09AM +0100, Benjamin Gaignard wrote:
-> >>
-> >> Le 17/02/2021 =E0 09:08, Greg KH a =E9crit=A0:
-> >>> On Wed, Feb 17, 2021 at 09:02:48AM +0100, Benjamin Gaignard wrote:
-> >>>> The IMX8MQ got two VPUs but until now only G1 has been enabled.
-> >>>> This series aim to add the second VPU (aka G2) and provide basic
-> >>>> HEVC decoding support.
-> >>> Why are you adding this directly to drivers/staging/media/ and not
-> >>> drivers/media/?  Why can't this just go to the main location and not
-> >>> live in staging?
-> >>
-> >> G2/HEVC is added inside the already exiting Hantro driver, it is "just"
-> >> an other codec from Hantro driver point of view.
-> >> In addition of that v4l2-hevc uAPI is still unstable.
-> >> One goal of this series is to have one more consumer of this v4l2-hevc
-> >> uAPI so maybe we can claim it to be stable enough to move away from st=
-aging
-> >> and then do the same for Hantro driver. That would be a great achievem=
-ent !
-> > =
-
-> > I know I do not like seeing new additions/features/whatever being added
-> > to staging drivers as that encourages people to do new stuff on them
-> > without doing the real work needed to get them out of staging.
-> =
-
-> In order to support a specific codec (MPEG-2, H.264, HEVC, VP8, etc.) for
-> stateless codec hardware like the hantro, V4L2 controls need to be define=
-d.
-> The contents of these controls is derived directly from the underlying co=
-dec
-> standards, but it is quite difficult to get this right with the first att=
-empt,
-> since these standards are very complex.
-> =
-
-> So we went for the strategy of keeping these drivers in staging to make it
-> easy to work on, while keeping the APIs for each codec private (i.e., the=
-y are
-> not exposed in include/uapi/linux).
-> =
-
-> Once we have sufficient confidence in the API for a specific codec we move
-> it to uapi and thus fix the API. We also renumber the control IDs at that
-> time to avoid any confusion between the staging version and the final ver=
-sion.
-> =
-
-> We did that for H.264 and I hope we can soon do the same for MPEG-2 and V=
-P8.
-> =
-
-> HEVC is definitely not ready for that yet.
-> =
-
-> The key phrase is 'sufficient confidence': one requirement is that it is =
-supported
-> by at least two drivers to be reasonably certain the API doesn't contain =
-any HW
-> specific stuff, and it passes test suites and review by codec experts.
-> =
-
-> All this is actively being worked on, so this is very much alive, but it =
-is
-> complex and time consuming.
-> =
-
-> > So what is preventing the existing driver from getting out of staging
-> > now?
-> =
-
-> Once MPEG-2 and VP8 are finalized it is probably time to move these drive=
-rs
-> out of staging, while still keeping the HEVC API part private.
-> =
-
-> > =
-
-> > And how are you all creating new userspace apis for staging drivers to
-> > the v4l layer?  What happens when you export something new and then
-> > userspace starts to rely on it and then you change it?
-> =
-
-> Nothing is exported. So if userspace want to use it they have to manually
-> copy headers from include/media to their application.
-> =
-
-> > =
-
-> > Anyway, the media staging drivers are on their own, I don't touch them,
-> > it just feels odd to me...
-> =
-
-> It's an unusual situation. But putting the drivers in staging and keeping
-> the codec API headers private turns out to be the most effective way to
-> develop this.
-
-Ah, ok, thanks for the explaination, makes sense.
-
-good luck!
-
-greg k-h
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8gQmVuamFtaW4sCgpUaGFua3MgYSBsb3QgZm9yIHRoZSBwYXRjaC4KCk9uIFdlZCwgMjAy
+MS0wMi0xNyBhdCAwOTowMiArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gRGVmaW5l
+IHdoaWNoIEhFVkMgcHJvZmlsZXMgKHVwIHRvIGxldmVsIDUuMSkgYW5kIGZlYXR1cmVzCj4gKG5v
+IHNjYWxpbmcsIG5vIDEwIGJpdHMpIGFyZSBzdXBwb3J0ZWQgYnkgdGhlIGRyaXZlci4KPiAKPiBT
+aWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFi
+b3JhLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQGNvbGxh
+Ym9yYS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogQWRyaWFuIFJhdGl1IDxhZHJpYW4ucmF0aXVAY29s
+bGFib3JhLmNvbT4KPiAtLS0KPiDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
+LmjCoMKgwqDCoCB8wqAgMiArCj4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
+b19kcnYuYyB8IDYzICsrKysrKysrKysrKysrKysrKysrKysrCj4gwqAyIGZpbGVzIGNoYW5nZWQs
+IDY1IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlh
+L2hhbnRyby9oYW50cm8uaCBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmgK
+PiBpbmRleCA2NWY5ZjdlYTdkY2YuLmJkZTY1MjMxZjIyZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyby5oCj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21l
+ZGlhL2hhbnRyby9oYW50cm8uaAo+IEBAIC05OSw2ICs5OSw3IEBAIHN0cnVjdCBoYW50cm9fdmFy
+aWFudCB7Cj4gwqAgKiBASEFOVFJPX01PREVfSDI2NF9ERUM6IEgyNjQgZGVjb2Rlci4KPiDCoCAq
+IEBIQU5UUk9fTU9ERV9NUEVHMl9ERUM6IE1QRUctMiBkZWNvZGVyLgo+IMKgICogQEhBTlRST19N
+T0RFX1ZQOF9ERUM6IFZQOCBkZWNvZGVyLgo+ICsgKiBASEFOVFJPX01PREVfSEVWQ19ERUM6IEhF
+VkMgZGVjb2Rlci4KPiDCoCAqLwo+IMKgZW51bSBoYW50cm9fY29kZWNfbW9kZSB7Cj4gwqDCoMKg
+wqDCoMKgwqDCoEhBTlRST19NT0RFX05PTkUgPSAtMSwKPiBAQCAtMTA2LDYgKzEwNyw3IEBAIGVu
+dW0gaGFudHJvX2NvZGVjX21vZGUgewo+IMKgwqDCoMKgwqDCoMKgwqBIQU5UUk9fTU9ERV9IMjY0
+X0RFQywKPiDCoMKgwqDCoMKgwqDCoMKgSEFOVFJPX01PREVfTVBFRzJfREVDLAo+IMKgwqDCoMKg
+wqDCoMKgwqBIQU5UUk9fTU9ERV9WUDhfREVDLAo+ICvCoMKgwqDCoMKgwqDCoEhBTlRST19NT0RF
+X0hFVkNfREVDLAo+IMKgfTsKPiDCoAo+IMKgLyoKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFn
+aW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
+dHJvL2hhbnRyb19kcnYuYwo+IGluZGV4IGU1ZjIwMGU2NDk5My4uMGQ1ODIwOWZjNTVjIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gKysr
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPiBAQCAtMjQzLDYg
+KzI0MywxOCBAQCBzdGF0aWMgaW50IGhhbnRyb190cnlfY3RybChzdHJ1Y3QgdjRsMl9jdHJsICpj
+dHJsKQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaWYgKHNwcy0+Yml0X2RlcHRo
+X2x1bWFfbWludXM4ICE9IDApCj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgLyogT25seSA4LWJpdCBpcyBzdXBwb3J0ZWQgKi8KPiDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gLUVJTlZBTDsKPiArwqDC
+oMKgwqDCoMKgwqB9IGVsc2UgaWYgKGN0cmwtPmlkID09IFY0TDJfQ0lEX01QRUdfVklERU9fSEVW
+Q19TUFMpIHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY29uc3Qgc3RydWN0IHY0
+bDJfY3RybF9oZXZjX3NwcyAqc3BzID0gY3RybC0+cF9uZXcucF9oZXZjX3NwczsKPiArCj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVz
+OCAhPSBzcHMtPmJpdF9kZXB0aF9jaHJvbWFfbWludXM4KQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLyogTHVtYSBhbmQgY2hyb21hIGJpdCBkZXB0aCBt
+aXNtYXRjaCAqLwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgcmV0dXJuIC1FSU5WQUw7Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGlmIChz
+cHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCAhPSAwKQo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLyogT25seSA4LWJpdCBpcyBzdXBwb3J0ZWQgKi8KPiAr
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJldHVybiAtRUlO
+VkFMOwo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpZiAoc3BzLT5mbGFncyAmIFY0
+TDJfSEVWQ19TUFNfRkxBR19TQ0FMSU5HX0xJU1RfRU5BQkxFRCkKCk5vdGUgdGhhdCB5b3UgYXJl
+IHJlamVjdGluZyBzY2FsaW5nIGxpc3RzIGhlcmUsIGJ1dHggeW91IGFyZSBhZGRpbmcgdGhlClND
+QUxJTkdfTUFUUklYIGNvbnRyb2wsIGFuZCB0aGVyZSdzIHNvbWUgc3VwcG9ydCBpbiBwYXRjaCAx
+My8xOAooc2VlIHByZXBhcmVfc2NhbGluZ19saXN0X2J1ZmZlcikuCgpFaXRoZXIgZHJvcCBhbGwg
+dGhlIHNjYWxpbmcgbGlzdCBzdXBwb3J0IGZvciBub3cgKGFuZCBpdHMgZXh0cmEgY29udHJvbHMp
+Cm9yIGFsbG93IGl0IHByb3Blcmx5IChhbmQgbWFrZSBzdXJlIGl0J3Mgd29ya2luZyBhcyBleHBl
+Y3RlZCkuCgpUaGFua3MsCkV6ZXF1aWVsCgo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgLyogTm8gc2NhbGluZyBzdXBwb3J0ICovCj4gK8KgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gLUVJTlZBTDsKPiDCoMKg
+wqDCoMKgwqDCoMKgfQo+IMKgwqDCoMKgwqDCoMKgwqByZXR1cm4gMDsKPiDCoH0KPiBAQCAtMzQ5
+LDYgKzM2MSw1NyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19jdHJsIGNvbnRyb2xzW10g
+PSB7Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmRl
+ZiA9IFY0TDJfTVBFR19WSURFT19IMjY0X1BST0ZJTEVfTUFJTiwKPiDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoH0KPiDCoMKgwqDCoMKgwqDCoMKgfSwgewo+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAuY29kZWMgPSBIQU5UUk9fSEVWQ19ERUNPREVSLAo+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuY2ZnID0gewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmlkID0gVjRMMl9DSURfTVBFR19WSURFT19IRVZDX0RF
+Q09ERV9NT0RFLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgLm1pbiA9IFY0TDJfTVBFR19WSURFT19IRVZDX0RFQ09ERV9NT0RFX0ZSQU1FX0JBU0VELAo+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLm1heCA9IFY0
+TDJfTVBFR19WSURFT19IRVZDX0RFQ09ERV9NT0RFX0ZSQU1FX0JBU0VELAo+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmRlZiA9IFY0TDJfTVBFR19WSURF
+T19IRVZDX0RFQ09ERV9NT0RFX0ZSQU1FX0JBU0VELAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqB9LAo+ICvCoMKgwqDCoMKgwqDCoH0sIHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgLmNvZGVjID0gSEFOVFJPX0hFVkNfREVDT0RFUiwKPiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgLmNmZyA9IHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoC5pZCA9IFY0TDJfQ0lEX01QRUdfVklERU9fSEVWQ19TVEFSVF9DT0RF
+LAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLm1pbiA9
+IFY0TDJfTVBFR19WSURFT19IRVZDX1NUQVJUX0NPREVfQU5ORVhfQiwKPiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5tYXggPSBWNEwyX01QRUdfVklERU9f
+SEVWQ19TVEFSVF9DT0RFX0FOTkVYX0IsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAuZGVmID0gVjRMMl9NUEVHX1ZJREVPX0hFVkNfU1RBUlRfQ09ERV9B
+Tk5FWF9CLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9LAo+ICvCoMKgwqDCoMKg
+wqDCoH0sIHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmNvZGVjID0gSEFOVFJP
+X0hFVkNfREVDT0RFUiwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLmNmZyA9IHsK
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5pZCA9IFY0
+TDJfQ0lEX01QRUdfVklERU9fSEVWQ19QUk9GSUxFLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgLm1pbiA9IFY0TDJfTVBFR19WSURFT19IRVZDX1BST0ZJ
+TEVfTUFJTiwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oC5tYXggPSBWNEwyX01QRUdfVklERU9fSEVWQ19QUk9GSUxFX01BSU5fMTAsCj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuZGVmID0gVjRMMl9NUEVHX1ZJ
+REVPX0hFVkNfUFJPRklMRV9NQUlOLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9
+LAo+ICvCoMKgwqDCoMKgwqDCoH0sIHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+LmNvZGVjID0gSEFOVFJPX0hFVkNfREVDT0RFUiwKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgLmNmZyA9IHsKPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoC5pZCA9IFY0TDJfQ0lEX01QRUdfVklERU9fSEVWQ19MRVZFTCwKPiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5taW4gPSBWNEwyX01QRUdfVklE
+RU9fSEVWQ19MRVZFTF8xLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgLm1heCA9IFY0TDJfTVBFR19WSURFT19IRVZDX0xFVkVMXzVfMSwKPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfSwKPiArwqDCoMKgwqDCoMKgwqB9LCB7Cj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5jb2RlYyA9IEhBTlRST19IRVZDX0RFQ09ERVIsCj4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5jZmcgPSB7Cj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuaWQgPSBWNEwyX0NJRF9NUEVHX1ZJREVP
+X0hFVkNfU1BTLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgLm9wcyA9ICZoYW50cm9fY3RybF9vcHMsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoH0sCj4gK8KgwqDCoMKgwqDCoMKgfSwgewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAuY29kZWMgPSBIQU5UUk9fSEVWQ19ERUNPREVSLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAuY2ZnID0gewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgLmlkID0gVjRMMl9DSURfTVBFR19WSURFT19IRVZDX1BQUywKPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgfSwKPiArwqDCoMKgwqDCoMKgwqB9LCB7Cj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5jb2RlYyA9IEhBTlRST19IRVZDX0RFQ09ERVIsCj4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoC5jZmcgPSB7Cj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAuaWQgPSBWNEwyX0NJRF9NUEVHX1ZJREVP
+X0hFVkNfU0NBTElOR19NQVRSSVgsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0s
+Cj4gK8KgwqDCoMKgwqDCoMKgfSwgewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAu
+Y29kZWMgPSBIQU5UUk9fSEVWQ19ERUNPREVSLAo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAuY2ZnID0gewo+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgLmlkID0gVjRMMl9DSURfTVBFR19WSURFT19IRVZDX0RFQ09ERV9QQVJBTVMsCj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH0sCj4gwqDCoMKgwqDCoMKgwqDCoH0sCj4gwqB9
+Owo+IMKgCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
