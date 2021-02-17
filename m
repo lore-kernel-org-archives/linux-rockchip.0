@@ -2,61 +2,62 @@ Return-Path: <SRS0=wec+=HT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23AC5C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 08:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFB64C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 08:36:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B217464E24
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 08:28:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B217464E24
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6086164E2E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 08:36:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6086164E2E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VZ2fj/7WJ99RGNPDa6oXhM6/BY24s8LB/wlBam7g/6w=; b=JsaY2C5crs2S3WvHJsqCg/ft6
-	8oYHTDGFrOBkjuBXs9lP4XyULX/G6PVJTG/ATyJ0tgcgCzXUFKhf1MWdpqErhe3GCT5qWxiiwmyvZ
-	kkLIRVCPzTITWVIJAnO64R89uATF+35lm6MgETbviyu4IRf8lmdhKWZ5mcPxzU7pLhm+skHIBQdpv
-	LO73+N34LxsH3vilwnUFdINOnTaTiiSZ960F90zfksu4bdhLUuaYp+zeo1361/zLJ9v/atPw3z6GP
-	R4vIyVmvZ2jBs5RndxxyjoRqsf2N3ZtgGGGSf+fg5t4dEFF1G0EKJdHgEjhmGb8qVMPcWadOejPOg
-	4Edjavz6Q==;
+	 bh=w9LBnYfflDRhdWK0toUUiuqUe9oF7yjBgGHln8ZWX2I=; b=Xt1AnInR4bikbh0sEmx9eJl6y
+	maPL9m45Pqep4d6bDQ3L7B7RL+6cWizJqIds5T6tvraJt0Bf7eDebe1LawpwfTZcQBJI1caOfQdGC
+	B8XwxU6BdJdbFzMlQBaGwBS/7uozE86F9qaN6Iw3aGgdvt2XCw84ZRFjq+LME2z+494ctOk0nKigz
+	9L9bfoimDYkNHeB2p0Xt2K2TjxookNDXDokS45sAbNA/6X/qX9gXrnaXxZatX7qnEFHhPp/2sIfPt
+	B5La7lh1IIsbu2UyA4S5IY/KhBc69XDDfM6BpL9/uf3c6B14AT/5qWtMs5l450z5YAD4K6gmkVfVM
+	c6d6Xieyg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCIC5-0004pZ-QQ; Wed, 17 Feb 2021 08:28:21 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lCIKJ-0005gJ-Gv; Wed, 17 Feb 2021 08:36:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCIC1-0004oI-Iz; Wed, 17 Feb 2021 08:28:19 +0000
-Received: from [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350] (unknown
- [IPv6:2a01:e0a:4cb:a870:fd6e:12cd:95d7:3350])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id E4BA41F44D79;
- Wed, 17 Feb 2021 08:28:12 +0000 (GMT)
+ id 1lCIKD-0005eY-Mr; Wed, 17 Feb 2021 08:36:47 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1AF9264E28;
+ Wed, 17 Feb 2021 08:36:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1613551004;
+ bh=i4kNSveyDKj4UzuU1mXSC8PvJCQPboPkNLn+8F+ab1k=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=yv8i9+KWelFKyWLh1az5qyANS5nqW/AHNH77/f72B/vWnXtGRFkSTStnMXIzvn9+/
+ 7Yapooh4A9SgaLexotU/96Kqx2XvJlhLyMEQmHNANmx1G4weIrm/bwd1/Aq4aDsYwO
+ o+5GaOV3bjjAb3IKdFImyUa6w0MOJR8ndzyMTx1U=
+Date: Wed, 17 Feb 2021 09:36:41 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Subject: Re: [PATCH v1 00/18] Add HANTRO G2/HEVC decoder support for IMX8MQ
-To: Greg KH <gregkh@linuxfoundation.org>
+Message-ID: <YCzVmRVL79KMkxXQ@kroah.com>
 References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
  <YCzO7SRmBKzGeMUS@kroah.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <04dfae0b-92e5-e02d-c687-ba4d28b7aaf2@collabora.com>
-Date: Wed, 17 Feb 2021 09:28:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <04dfae0b-92e5-e02d-c687-ba4d28b7aaf2@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <YCzO7SRmBKzGeMUS@kroah.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <04dfae0b-92e5-e02d-c687-ba4d28b7aaf2@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210217_032818_133065_8F06881B 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20210217_033645_907827_2D64712D 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,38 +70,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: peng.fan@nxp.com, kernel@collabora.com, festevam@gmail.com,
- devel@driverdev.osuosl.org, Anson.Huang@nxp.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, wens@csie.org, linux-imx@nxp.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- p.zabel@pengutronix.de, s.hauer@pengutronix.de, mripard@kernel.org,
- robh+dt@kernel.org, mchehab@kernel.org, ezequiel@collabora.com,
- linux-arm-kernel@lists.infradead.org, aisheng.dong@nxp.com,
- jernej.skrabec@siol.net, adrian.ratiu@collabora.com,
+Cc: peng.fan@nxp.com, kernel@collabora.com, devel@driverdev.osuosl.org,
+ Anson.Huang@nxp.com, krzk@kernel.org, linux-rockchip@lists.infradead.org,
+ wens@csie.org, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de, s.hauer@pengutronix.de,
+ mripard@kernel.org, robh+dt@kernel.org, mchehab@kernel.org,
+ ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ aisheng.dong@nxp.com, jernej.skrabec@siol.net, adrian.ratiu@collabora.com,
  linux-kernel@vger.kernel.org, paul.kocialkowski@bootlin.com,
- kernel@pengutronix.de, hverkuil-cisco@xs4all.nl, shawnguo@kernel.org,
+ p.zabel@pengutronix.de, hverkuil-cisco@xs4all.nl, shawnguo@kernel.org,
  shengjiu.wang@nxp.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE3LzAyLzIwMjEgw6AgMDk6MDgsIEdyZWcgS0ggYSDDqWNyaXTCoDoKPiBPbiBXZWQsIEZl
-YiAxNywgMjAyMSBhdCAwOTowMjo0OEFNICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToK
-Pj4gVGhlIElNWDhNUSBnb3QgdHdvIFZQVXMgYnV0IHVudGlsIG5vdyBvbmx5IEcxIGhhcyBiZWVu
-IGVuYWJsZWQuCj4+IFRoaXMgc2VyaWVzIGFpbSB0byBhZGQgdGhlIHNlY29uZCBWUFUgKGFrYSBH
-MikgYW5kIHByb3ZpZGUgYmFzaWMKPj4gSEVWQyBkZWNvZGluZyBzdXBwb3J0Lgo+IFdoeSBhcmUg
-eW91IGFkZGluZyB0aGlzIGRpcmVjdGx5IHRvIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS8gYW5kIG5v
-dAo+IGRyaXZlcnMvbWVkaWEvPyAgV2h5IGNhbid0IHRoaXMganVzdCBnbyB0byB0aGUgbWFpbiBs
-b2NhdGlvbiBhbmQgbm90Cj4gbGl2ZSBpbiBzdGFnaW5nPwoKRzIvSEVWQyBpcyBhZGRlZCBpbnNp
-ZGUgdGhlIGFscmVhZHkgZXhpdGluZyBIYW50cm8gZHJpdmVyLCBpdCBpcyAianVzdCIKYW4gb3Ro
-ZXIgY29kZWMgZnJvbSBIYW50cm8gZHJpdmVyIHBvaW50IG9mIHZpZXcuCkluIGFkZGl0aW9uIG9m
-IHRoYXQgdjRsMi1oZXZjIHVBUEkgaXMgc3RpbGwgdW5zdGFibGUuCk9uZSBnb2FsIG9mIHRoaXMg
-c2VyaWVzIGlzIHRvIGhhdmUgb25lIG1vcmUgY29uc3VtZXIgb2YgdGhpcyB2NGwyLWhldmMKdUFQ
-SSBzbyBtYXliZSB3ZSBjYW4gY2xhaW0gaXQgdG8gYmUgc3RhYmxlIGVub3VnaCB0byBtb3ZlIGF3
-YXkgZnJvbSBzdGFnaW5nCmFuZCB0aGVuIGRvIHRoZSBzYW1lIGZvciBIYW50cm8gZHJpdmVyLiBU
-aGF0IHdvdWxkIGJlIGEgZ3JlYXQgYWNoaWV2ZW1lbnQgIQoKQmVuamFtaW4KCj4gdGhhbmtzLAo+
-Cj4gZ3JlZyBrLWgKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+On Wed, Feb 17, 2021 at 09:28:09AM +0100, Benjamin Gaignard wrote:
+> =
+
+> Le 17/02/2021 =E0 09:08, Greg KH a =E9crit=A0:
+> > On Wed, Feb 17, 2021 at 09:02:48AM +0100, Benjamin Gaignard wrote:
+> > > The IMX8MQ got two VPUs but until now only G1 has been enabled.
+> > > This series aim to add the second VPU (aka G2) and provide basic
+> > > HEVC decoding support.
+> > Why are you adding this directly to drivers/staging/media/ and not
+> > drivers/media/?  Why can't this just go to the main location and not
+> > live in staging?
+> =
+
+> G2/HEVC is added inside the already exiting Hantro driver, it is "just"
+> an other codec from Hantro driver point of view.
+> In addition of that v4l2-hevc uAPI is still unstable.
+> One goal of this series is to have one more consumer of this v4l2-hevc
+> uAPI so maybe we can claim it to be stable enough to move away from stagi=
+ng
+> and then do the same for Hantro driver. That would be a great achievement=
+ !
+
+I know I do not like seeing new additions/features/whatever being added
+to staging drivers as that encourages people to do new stuff on them
+without doing the real work needed to get them out of staging.
+
+So what is preventing the existing driver from getting out of staging
+now?
+
+And how are you all creating new userspace apis for staging drivers to
+the v4l layer?  What happens when you export something new and then
+userspace starts to rely on it and then you change it?
+
+Anyway, the media staging drivers are on their own, I don't touch them,
+it just feels odd to me...
+
+thanks,
+
+greg k-h
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
