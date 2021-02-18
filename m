@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EEEEC433E6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 418F9C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9A8A64E2F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9A8A64E2F
+	by mail.kernel.org (Postfix) with ESMTPS id CF13B64E4B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF13B64E4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,25 +23,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QDv4gNHV6mdx86prOC48gO9JfFL/yu0fcn2b8Hnomdc=; b=Sji4aeP/sZcTcHVbOvnvnieq8
-	thJe8gp5jUsSIsR1m5zEEB/Di9P/SI29bSBuhajxMnaotaWKCdEhDa3m4sV8oVbJVVpRRmbYH01kh
-	HxJzmGxPgahKwk2NdIu+FCe4Gyte3E0x36KOZ26v8LsevOe1hLEvEhM76F8eKevhDza/VRvgnLG1o
-	fONfDRgfPSc5DWpFsnznqkjzPE69gVyZS016SRZ07iatKE+C5VBb+4Ja8RaWB5tDyEGIyp/LiNCPq
-	O3kmJ9Kz/rjQx9r7n/QDJ3cjWBlqkIW5MbfyivJNXmATsSRVgAfLAkuqwmYoQ0SjUgo2VA1k99TH8
-	skCwPtVww==;
+	 bh=jD/US1zRs3abWNv56RlcVHAGzmWKX9k/56GyyoBOFxs=; b=kn4Dv0FXYwoOaPMmcgbLxdeK/
+	xLozb+Abq0RLBUlaM/HqCnW3/PJo6k+qhwKC4KYUZUrypUVkOGlfPUPNeWg4vCvLzFcFwWer6T32L
+	ia1tbey9MczeJDVCEskMjrfGm3x9ed+Ulr+nKn8B8fJkQPEbOhhFXl6RY9bfddDhvkdBvR6sWiqb5
+	/Upk//NCwvND7aeliCEAdUeBearM0v0sQLml39fS+/Ssuu5JX+YYB4+8jVaeoKPFdJk25fhLDjQtX
+	txuMRmoQxDJdND9V9R18PL/bHHZkyZq6Zh07VUOVh1jCl81WLOMcWrUXrfFEKcKDvhWri7UFtQETV
+	bixzTXEbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCopY-000405-01; Thu, 18 Feb 2021 19:19:16 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lCopk-00043e-Bb; Thu, 18 Feb 2021 19:19:28 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCopK-0003su-D3; Thu, 18 Feb 2021 19:19:03 +0000
+ id 1lCopM-0003tw-JQ; Thu, 18 Feb 2021 19:19:06 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:851a:1dfb:a143:80e])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8E5E61F445CA;
- Thu, 18 Feb 2021 19:19:00 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B50871F445E2;
+ Thu, 18 Feb 2021 19:19:01 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -49,17 +49,17 @@ To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  gregkh@linuxfoundation.org, mripard@kernel.org,
  paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
  peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
-Subject: [PATCH v2 2/9] media: hantro: Define HEVC codec profiles and
- supported features
-Date: Thu, 18 Feb 2021 20:18:37 +0100
-Message-Id: <20210218191844.297869-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 3/9] media: hantro: Add a field to distinguish the hardware
+ versions
+Date: Thu, 18 Feb 2021 20:18:38 +0100
+Message-Id: <20210218191844.297869-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210218191844.297869-1-benjamin.gaignard@collabora.com>
 References: <20210218191844.297869-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210218_141902_606475_435F3FA1 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20210218_141904_803470_BCBB69C9 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,111 +82,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Define which HEVC profiles (up to level 5.1) and features
-(no scaling, no 10 bits) are supported by the driver.
+Decoders hardware blocks could exist in multiple versions: add
+a field to distinguish them at runtime.
+G2 hardware block doesn't have postprocessor hantro_needs_postproc
+function should always returns false in for this hardware.
+hantro_needs_postproc function becoming to much complex to
+stay inline in .h file move it to .c file.
+
+Keep the default behavoir to be G1 hardware.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h     |  2 +
- drivers/staging/media/hantro/hantro_drv.c | 58 +++++++++++++++++++++++
- 2 files changed, 60 insertions(+)
+version 2:
+- squash this commit with the post processor change
+to show one usage of core_hw_dec_rev
+
+ drivers/staging/media/hantro/hantro.h          | 13 +++++++------
+ drivers/staging/media/hantro/hantro_drv.c      |  2 ++
+ drivers/staging/media/hantro/hantro_postproc.c | 17 +++++++++++++++++
+ 3 files changed, 26 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index 65f9f7ea7dcf..bde65231f22f 100644
+index bde65231f22f..352930bd49fc 100644
 --- a/drivers/staging/media/hantro/hantro.h
 +++ b/drivers/staging/media/hantro/hantro.h
-@@ -99,6 +99,7 @@ struct hantro_variant {
-  * @HANTRO_MODE_H264_DEC: H264 decoder.
-  * @HANTRO_MODE_MPEG2_DEC: MPEG-2 decoder.
-  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
-+ * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
-  */
- enum hantro_codec_mode {
- 	HANTRO_MODE_NONE = -1,
-@@ -106,6 +107,7 @@ enum hantro_codec_mode {
- 	HANTRO_MODE_H264_DEC,
- 	HANTRO_MODE_MPEG2_DEC,
- 	HANTRO_MODE_VP8_DEC,
-+	HANTRO_MODE_HEVC_DEC,
- };
+@@ -36,6 +36,9 @@ struct hantro_codec_ops;
+ #define HANTRO_H264_DECODER	BIT(18)
+ #define HANTRO_DECODERS		0xffff0000
  
- /*
++#define HANTRO_G1_REV		0x6731
++#define HANTRO_G2_REV		0x6732
++
+ /**
+  * struct hantro_irq - irq handler and name
+  *
+@@ -170,6 +173,7 @@ hantro_vdev_to_func(struct video_device *vdev)
+  * @enc_base:		Mapped address of VPU encoder register for convenience.
+  * @dec_base:		Mapped address of VPU decoder register for convenience.
+  * @ctrl_base:		Mapped address of VPU control block.
++ * @core_hw_dec_rev	Runtime detected HW decoder core revision
+  * @vpu_mutex:		Mutex to synchronize V4L2 calls.
+  * @irqlock:		Spinlock to synchronize access to data structures
+  *			shared with interrupt handlers.
+@@ -189,6 +193,7 @@ struct hantro_dev {
+ 	void __iomem *enc_base;
+ 	void __iomem *dec_base;
+ 	void __iomem *ctrl_base;
++	u32 core_hw_dec_rev;
+ 
+ 	struct mutex vpu_mutex;	/* video_device lock */
+ 	spinlock_t irqlock;
+@@ -411,12 +416,8 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
+ 	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ }
+ 
+-static inline bool
+-hantro_needs_postproc(const struct hantro_ctx *ctx,
+-		      const struct hantro_fmt *fmt)
+-{
+-	return !ctx->is_encoder && fmt->fourcc != V4L2_PIX_FMT_NV12;
+-}
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt);
+ 
+ static inline dma_addr_t
+ hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
 diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index e5f200e64993..d86e322a5980 100644
+index d86e322a5980..0a62beb0bfbd 100644
 --- a/drivers/staging/media/hantro/hantro_drv.c
 +++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -243,6 +243,18 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		if (sps->bit_depth_luma_minus8 != 0)
- 			/* Only 8-bit is supported */
- 			return -EINVAL;
-+	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
-+		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
-+
-+		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-+			/* Luma and chroma bit depth mismatch */
-+			return -EINVAL;
-+		if (sps->bit_depth_luma_minus8 != 0)
-+			/* Only 8-bit is supported */
-+			return -EINVAL;
-+		if (sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED)
-+			/* No scaling support */
-+			return -EINVAL;
+@@ -834,6 +834,8 @@ static int hantro_probe(struct platform_device *pdev)
  	}
- 	return 0;
- }
-@@ -349,6 +361,52 @@ static const struct hantro_ctrl controls[] = {
- 			.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
- 		}
- 	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+			.max = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+			.def = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+			.max = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+			.def = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+			.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
-+			.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
-+			.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
-+			.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_SPS,
-+			.ops = &hantro_ctrl_ops,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_PPS,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
-+		},
- 	},
+ 	vpu->enc_base = vpu->reg_bases[0] + vpu->variant->enc_offset;
+ 	vpu->dec_base = vpu->reg_bases[0] + vpu->variant->dec_offset;
++	/* by default decoder is G1 */
++	vpu->core_hw_dec_rev = HANTRO_G1_REV;
+ 
+ 	ret = dma_set_coherent_mask(vpu->dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 6d2a8f2a8f0b..050880f720d6 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -50,6 +50,23 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ 	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
  };
  
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	if (ctx->is_encoder)
++		return false;
++
++	if (vpu->core_hw_dec_rev == HANTRO_G1_REV)
++		return fmt->fourcc != V4L2_PIX_FMT_NV12;
++
++	if (vpu->core_hw_dec_rev == HANTRO_G2_REV)
++		return false;
++
++	return false;
++}
++
+ void hantro_postproc_enable(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
 -- 
 2.25.1
 
