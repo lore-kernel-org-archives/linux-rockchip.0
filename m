@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B15AC433E6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DA6BC433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:20:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F134B64E2F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:20:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F134B64E2F
+	by mail.kernel.org (Postfix) with ESMTPS id D1C4264E2F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:20:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1C4264E2F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,25 +23,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NmXnVuivpz9t3cGC4CwGACKgJdgM3nVmvnPsKIwAADY=; b=j+x1uruCOnlhdjVoS4MAtB/mP
-	Uq/HAEJpYE1AS/mg8Q28blbUC2TzJOAOHpAFl0YIjX7XQSMUqfd0P5hnTX0jYuVllvvahuIwYAhei
-	tZElkgCoPApdEuo6chFti6FzuAJt5vC35Y+6EjViIZuQQUqQnD0EoBDALV7A1ina3AxTyPNkbxkh1
-	5oyVNsyj2kavS6G94lKSdkJnAjeeKA1YnyRab7q4vP/7HOsdu5iMAWRhRB+IfeMPuQES/NbfDNQfu
-	sicKrzt/Eho3h4eh9hwiWnSJyFB5o+0nS2UtxKork6t7GmjDOXt8tkrf+vL5AWJW7ZQlqjeIxZMmC
-	DlV74hJkw==;
+	 bh=slm8Qj5F8MguJ+meccKybA/T/z/DmxjRV0CwB7pakDg=; b=DIrkMBL7NQquL+fTyUJKxXctj
+	Vn2Th0Fth596aVeCNWML3BpFaN5eojo4kGVjY7+VaySjfZ3opgS1Z1Hc9zYS2bzmOtgis2b6IiBMb
+	Ap41he5CozJksPl8jNjf5k6tz7H9k/cNDvrG3x9YtT5kgPj9ut958hsTk4vMmwqtAp85KtoOerq0t
+	yuf1tbUk086HUK/2FuTzeQ7tvQr0cr43EMVRjZkXCTEpl2cS3BZg+XCaJtC/NsV8UQnMA+ZSn9kff
+	hQrGgAGQ3wAEE1ycuoD7OHAKqaJz9Q0HZwspT/Wdnf2U1PH8bO+UMp+lAvxk4q3Nz+3cHZ+vypWIe
+	gD40V84ZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCoqe-0004Qs-AT; Thu, 18 Feb 2021 19:20:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lCoqg-0004SW-Tv; Thu, 18 Feb 2021 19:20:26 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCopU-0003yD-H4; Thu, 18 Feb 2021 19:19:18 +0000
+ id 1lCopV-0003z8-VY; Thu, 18 Feb 2021 19:19:21 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:851a:1dfb:a143:80e])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 91EA71F4589B;
- Thu, 18 Feb 2021 19:19:10 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id DDD2C1F456BF;
+ Thu, 18 Feb 2021 19:19:06 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -49,16 +49,16 @@ To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  gregkh@linuxfoundation.org, mripard@kernel.org,
  paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
  peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
-Subject: [PATCH v2 9/9] arm64: dts: imx8mq: Add node to G2 hardware
-Date: Thu, 18 Feb 2021 20:18:44 +0100
-Message-Id: <20210218191844.297869-10-benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 6/9] media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+Date: Thu, 18 Feb 2021 20:18:41 +0100
+Message-Id: <20210218191844.297869-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210218191844.297869-1-benjamin.gaignard@collabora.com>
 References: <20210218191844.297869-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210218_141912_745622_2825F855 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20210218_141914_203367_CE1C5B2C 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,83 +81,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Split VPU node in two: one for G1 and one for G2 since they are
-different hardware blocks.
+Make sure that V4L2_PIX_FMT_HEVC_SLICE is correctly handle by v4l2
+of the driver.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
-version 2:
-- remove useless clocks in VPUs nodes
+ drivers/staging/media/hantro/hantro_v4l2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- arch/arm64/boot/dts/freescale/imx8mq.dtsi | 41 +++++++++++++++++------
- 1 file changed, 31 insertions(+), 10 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index d9d9efc8592d..8358e214d696 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -1287,17 +1287,15 @@ vpu_reset: vpu-reset@38320000 {
- 			#reset-cells = <1>;
- 		};
- 
--		vpu: video-codec@38300000 {
-+		vpu_g1: video-codec@38300000 {
- 			compatible = "nxp,imx8mq-vpu";
--			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>;
--			reg-names = "g1", "g2";
--			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--			interrupt-names = "g1", "g2";
-+			reg = <0x38300000 0x10000>;
-+			reg-names = "g1";
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g1";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
--			clock-names = "g1", "g2";
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g1", "bus";
- 			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
- 					  <&clk IMX8MQ_CLK_VPU_G2>,
- 					  <&clk IMX8MQ_CLK_VPU_BUS>,
-@@ -1306,12 +1304,35 @@ vpu: video-codec@38300000 {
- 						 <&clk IMX8MQ_VPU_PLL_OUT>,
- 						 <&clk IMX8MQ_SYS1_PLL_800M>,
- 						 <&clk IMX8MQ_VPU_PLL>;
--			assigned-clock-rates = <600000000>, <600000000>,
-+			assigned-clock-rates = <600000000>, <300000000>,
- 					       <800000000>, <0>;
- 			resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
- 			power-domains = <&pgc_vpu>;
- 		};
- 
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			reg-names = "g2";
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g2";
-+			clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g2",  "bus";
-+			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+					  <&clk IMX8MQ_CLK_VPU_G2>,
-+					  <&clk IMX8MQ_CLK_VPU_BUS>,
-+					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_SYS1_PLL_800M>,
-+						 <&clk IMX8MQ_VPU_PLL>;
-+			assigned-clock-rates = <600000000>, <300000000>,
-+					       <800000000>, <0>;
-+			resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G2>;
-+			power-domains = <&pgc_vpu>;
-+		};
-+
- 		pcie0: pcie@33800000 {
- 			compatible = "fsl,imx8mq-pcie";
- 			reg = <0x33800000 0x400000>,
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 1bc118e375a1..e16d5fd0b9f7 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -390,6 +390,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
+ 	case V4L2_PIX_FMT_MPEG2_SLICE:
+ 	case V4L2_PIX_FMT_VP8_FRAME:
+ 	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_HEVC_SLICE:
+ 		ctx->fh.m2m_ctx->out_q_ctx.q.requires_requests = true;
+ 		break;
+ 	default:
 -- 
 2.25.1
 
