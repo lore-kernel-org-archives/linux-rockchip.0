@@ -1,80 +1,78 @@
-Return-Path: <SRS0=wec+=HT=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=3svJ=HU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59997C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 22:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 824FDC433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 04:46:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 075AB60241
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Feb 2021 22:48:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 075AB60241
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 21D0B64E3E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 04:46:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21D0B64E3E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4s5r2r7ULjYhFN6G3yUW+2bVci2eoSthmrJXGe7RRBA=; b=Yowl8PbPxmAR4D7K1UwE22EYI
-	e8rASNThxgj/e2dIM8P6xAVZaAqMSPAX1sSJDECO4CS9ei/ZZNztsiwrvhege9xkQprE103UekXUc
-	i3WHrqfaTd//M3NRvIM31LImMdbIGV2s81Fd1lRxMhJCB/0ALwh8Ewhs1/4q6LO/HzLICgM6caZ7z
-	UMeeUhfJiRPwTBE1GupZ2eDhg/G4U1HBYus8TXR6qQDtKuL9fcyq+TQT6CooPExsedy/dc+0HobNq
-	DugloHfdn7X8u3gbuiOP3Z/U1+LrBSWMtWxNnY1Ht/LHFo0bFrcPG4DTI1+Ffn9CqKzBGQ4HFk/md
-	PiC7e8q3Q==;
+	 bh=2Xg1N0t4YOnTgoXEsLYiGDM47SFftTbp0f7fM+Zdbm8=; b=BKoFvEt6ug5YTAAOpLTPQhSKr
+	W8X2mnIjNp7TzczHDvrg9dxCBNfGRCHZb0uf2iX4Pt1Tp054worc3HE7VbuQk/s37oBsT0AXkSpbt
+	iYnud+/11AfPv0n/p90+nU5xhtZTb5gSeFLSj8q9Fo3BOfy9yh3rxpB6UNmkBSLrlymvf9qCTVP8Y
+	rh8rdI2RRZeVd3e1U+UDe8S0bO/+6nuuhWJ6qwMaWy0N0YuosItZ+D+F4BAc5GCnbKb9RZdM3aLok
+	tO4zWjvg7BXsYH/9BW/OaxeGsG5FVb7VogCg4WpCUDE2WggysjZsgNB0c45hF+zfGVMFZqShfVbgY
+	Lx6rdbpaw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCVcn-000500-3i; Wed, 17 Feb 2021 22:48:49 +0000
-Received: from mail-oi1-f176.google.com ([209.85.167.176])
+	id 1lCbCX-0006A4-JN; Thu, 18 Feb 2021 04:46:05 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCVcl-0004z1-4i; Wed, 17 Feb 2021 22:48:48 +0000
-Received: by mail-oi1-f176.google.com with SMTP id r75so16754308oie.11;
- Wed, 17 Feb 2021 14:48:43 -0800 (PST)
+ id 1lCbCV-00069Q-4Q
+ for linux-rockchip@lists.infradead.org; Thu, 18 Feb 2021 04:46:03 +0000
+Received: by mail-ot1-x335.google.com with SMTP id v16so771067ote.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 17 Feb 2021 20:45:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uRPXBOcc3B/pu4CSBIS5XwHK36dQbIHE3BhZvfVHemg=;
+ b=d4B/Z9a1xLLux5NTqCqMTPdCWZ3GigC57FPPcCk63NCIEXIvVYlTU4/vrTqTekO3sZ
+ sk9Ux95uTuM5sM7M/jzujMWkNJI3NyGCIGpa+6VilumewFNHFnZu+qBmzHZhBZhes6cO
+ 2bM+nLc6GF9gr6WrFHVQKLGY0txdGr05PgB7w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=iwFEJ3kjWH7byU1Bj+qTU+zAIBp4rtQWtPBYut/wBEM=;
- b=kYqwsKrzCFE3GGKoFbGM1s9yhh96k0JFwcnnOTrIyWKw9/ZUncvRJoNRqDKym6gtXH
- GKsIgEs9VnbpHur4Z8b0Oyy26pHzLQi9HG5tbFUtQcl04wRd3VAaKJnWAh3tx9snVPQy
- nDFPp2whVnvGQcI4XC/NVwt4PKbW5mAQm7W6gkBZMtmOQarLuzuOd/z46pwyHCCZuK/Q
- LnI10kPkEBKLdusnplRSH5UCS9ipaur9686jwL91hjvXKF2qOk9tSmaFUUkMrp2zatwx
- ej6mOlcYLwkJc6FZ/Q5eHhP0nwSG3eIzKiqmpQc5gGbMzZd2LAl9pPa9PUkt/T699wfP
- TTyQ==
-X-Gm-Message-State: AOAM532W/vtWskQ1iZiCRNBghRVPLr3R7yP61tDQXUNIQAhECl4jp9e3
- IqpKnbeWF4IPT63ZmoDImw==
-X-Google-Smtp-Source: ABdhPJyf/6sqkBW6AkNJ46Z+XYd5SPLiqxsxxEvUsHVT9KbgLtYtbIRNM/9Zyv8yIyOIeh47JrRsXA==
-X-Received: by 2002:a05:6808:8da:: with SMTP id
- k26mr704298oij.165.1613602122708; 
- Wed, 17 Feb 2021 14:48:42 -0800 (PST)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id 20sm166385oiz.14.2021.02.17.14.48.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Feb 2021 14:48:41 -0800 (PST)
-Received: (nullmailer pid 2937635 invoked by uid 1000);
- Wed, 17 Feb 2021 22:48:39 -0000
-Date: Wed, 17 Feb 2021 16:48:39 -0600
-From: Rob Herring <robh@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: Re: [PATCH v1 17/18] dt-bindings: media: nxp,imx8mq-vpu: Update
- bindings
-Message-ID: <20210217224839.GA2888647@robh.at.kernel.org>
-References: <20210217080306.157876-1-benjamin.gaignard@collabora.com>
- <20210217080306.157876-18-benjamin.gaignard@collabora.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uRPXBOcc3B/pu4CSBIS5XwHK36dQbIHE3BhZvfVHemg=;
+ b=pONmI0kbbHhYtClF19xkaNUhtbq0xXqe4eAljWUzOeN2Sh0Vtq1MGiFEBr36ZYfu5P
+ H1dUQ2C4i71uD8Qc0xDZjI8qKbULbldorQ0INOXawhNuRB0oTb/hYSRxobKXstI5gZtT
+ dKmX4MKc02ahgvj2Mr9xChMAy3k+cIiIhAdK0ciVciPZgVjiIk42g+D8XfCqDWZHp1Pr
+ PxtZFjgwnP9QgcJ5admDuVQVi2nb7xc0/ZSN5aKUbcOcTGJG3MkkSFv3VA9MoRLdrIfW
+ NciF0amE0oia5Rlkk6vgAHWPxljNP/9vR3gbnxsLBl09TJBE8Emu5q5iOpVo0jVDw58F
+ 0+vA==
+X-Gm-Message-State: AOAM531L1Fx0O101Z4lea12qFK8eKIq1KYSGHX/Yrto2TpApesEBWrct
+ 8uVJORtEZStCUzcraTZcgjmhobrAUl6CSPYCPpTeIw==
+X-Google-Smtp-Source: ABdhPJxLq+KtqLQSlWLQMpYhpQUU33vFxZWTtQgp2WfR55g23TVlh5IGRK67ImVbn1ZhWvdViZqhfuRq1Km8AaPyxFw=
+X-Received: by 2002:a05:6830:1589:: with SMTP id
+ i9mr1759990otr.28.1613623557144; 
+ Wed, 17 Feb 2021 20:45:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210217080306.157876-18-benjamin.gaignard@collabora.com>
+References: <a197cddb-f363-f790-f743-5012341591ba@fivetechno.de>
+ <20210215151124.GN10169@bill-the-cat>
+In-Reply-To: <20210215151124.GN10169@bill-the-cat>
+From: Simon Glass <sjg@chromium.org>
+Date: Wed, 17 Feb 2021 21:45:44 -0700
+Message-ID: <CAPnjgZ2Cz1zhbvTBPpOb0jaMWT_J7+okXKUrh8Td5_LfUNSV+g@mail.gmail.com>
+Subject: Re: [BUG] [BISECT] rockchip: roc-pc-rk3399: TPL misses dtb
+To: Tom Rini <trini@konsulko.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210217_174847_228708_B76D7749 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20210217_234603_209255_260BA9C3 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,138 +85,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: peng.fan@nxp.com, kernel@collabora.com, festevam@gmail.com,
- devel@driverdev.osuosl.org, Anson.Huang@nxp.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, wens@csie.org, linux-imx@nxp.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, kernel@pengutronix.de,
- s.hauer@pengutronix.de, mripard@kernel.org, mchehab@kernel.org,
- ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org,
- aisheng.dong@nxp.com, jernej.skrabec@siol.net, gregkh@linuxfoundation.org,
- adrian.ratiu@collabora.com, linux-kernel@vger.kernel.org,
- paul.kocialkowski@bootlin.com, p.zabel@pengutronix.de,
- hverkuil-cisco@xs4all.nl, shawnguo@kernel.org, shengjiu.wang@nxp.com
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ U-Boot Mailing List <u-boot@lists.denx.de>,
+ Markus Reichl <m.reichl@fivetechno.de>, linux-rockchip@lists.infradead.org,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Suniel Mahesh <sunil@amarulasolutions.com>, Levin Du <djw@t-chip.com.cn>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 17, 2021 at 09:03:05AM +0100, Benjamin Gaignard wrote:
-> The introduction on HEVC decoder lead to update the bindings
-> to support it.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
-> ---
->  .../bindings/media/nxp,imx8mq-vpu.yaml        | 54 ++++++++++++-------
->  1 file changed, 36 insertions(+), 18 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> index 762be3f96ce9..468435c70eef 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> @@ -15,24 +15,25 @@ description:
->  
->  properties:
->    compatible:
-> -    const: nxp,imx8mq-vpu
-> +    enum:
-> +      - nxp,imx8mq-vpu
-> +      - nxp,imx8mq-vpu-g2
->  
->    reg:
-> -    maxItems: 3
-> +    maxItems: 1
->  
->    reg-names:
-> -    items:
-> -      - const: g1
-> -      - const: g2
-> -      - const: ctrl
-> +    enum:
-> +      - g1
-> +      - g2
+Hi,
 
-This isn't a compatible change. You need to state why that's okay if it 
-is okay.
+On Mon, 15 Feb 2021 at 08:11, Tom Rini <trini@konsulko.com> wrote:
+>
+> On Mon, Feb 15, 2021 at 03:05:20PM +0100, Markus Reichl wrote:
+>
+> > With recent U-Boot and roc-pc-mezzanine-rk3399_defconfig
+> > and booting from SPI flash I get:
+> >
+> > U-Boot TPL 2021.01-00884-g0a2aaab0b6 (Feb 15 2021 - 14:36:50)
+> > Missing DTB
+> > ### ERROR ### Please RESET the board ###
+> >
+> > Bisecting points to:
+> >
+> > commit 0a2aaab0b678fd1778ff2fc59d0770fc82995532
+> > Author: Simon Glass <sjg@chromium.org>
+> > Date:   Wed Jan 13 20:29:49 2021 -0700
+> >
+> >     fdtdec: Use CONFIG_IS_ENABLED in board_fdt_blob_setup()
+> >     This setting may be different in SPL and TPL. Update the code to check
+> >     the correct setting.
+> >     Signed-off-by: Simon Glass <sjg@chromium.org>
+> >
+> >  lib/fdtdec.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > Reverting this commit fixes booting.
+>
+> Thanks for the report.  I'm about to push a revert for this and I'll add
+> a Reported-by from you.
 
->  
->    interrupts:
-> -    maxItems: 2
-> +    maxItems: 1
->  
->    interrupt-names:
-> -    items:
-> -      - const: g1
-> -      - const: g2
-> +    enum:
-> +      - g1
-> +      - g2
->  
->    clocks:
->      maxItems: 3
-> @@ -46,6 +47,9 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  resets:
-> +    maxItems: 1
-> +
->  required:
->    - compatible
->    - reg
-> @@ -54,6 +58,7 @@ required:
->    - interrupt-names
->    - clocks
->    - clock-names
-> +  - resets
->  
->  additionalProperties: false
->  
-> @@ -61,19 +66,32 @@ examples:
->    - |
->          #include <dt-bindings/clock/imx8mq-clock.h>
->          #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +        #include <dt-bindings/reset/imx8mq-vpu-reset.h>
->  
-> -        vpu: video-codec@38300000 {
-> +        vpu_g1: video-codec@38300000 {
->                  compatible = "nxp,imx8mq-vpu";
-> -                reg = <0x38300000 0x10000>,
-> -                      <0x38310000 0x10000>,
-> -                      <0x38320000 0x10000>;
-> -                reg-names = "g1", "g2", "ctrl";
-> -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> -                interrupt-names = "g1", "g2";
-> +                reg = <0x38300000 0x10000>;
-> +                reg-names = "g1";
-> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g1";
-> +                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> +                clock-names = "g1", "g2", "bus";
-> +                power-domains = <&pgc_vpu>;
-> +                resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
-> +        };
-> +
-> +        vpu_g2: video-codec@38310000 {
-> +                compatible = "nxp,imx8mq-vpu-g2";
-> +                reg = <0x38310000 0x10000>;
-> +                reg-names = "g2";
-> +                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g2";
->                  clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
->                  clock-names = "g1", "g2", "bus";
->                  power-domains = <&pgc_vpu>;
-> +                resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G2>;
->          };
-> -- 
-> 2.25.1
-> 
+I'm not sure what is going on here, but possibly we need to add
+TPL_SEPARATE_BSS to the board config..
+
+Regards,
+Simon
 
 _______________________________________________
 Linux-rockchip mailing list
