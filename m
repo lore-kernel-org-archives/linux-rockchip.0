@@ -2,95 +2,61 @@ Return-Path: <SRS0=3svJ=HU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D027C433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 16:35:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94206C433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCD0C64EAD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 16:35:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCD0C64EAD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
+	by mail.kernel.org (Postfix) with ESMTPS id 1F74864ECC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Feb 2021 19:19:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F74864ECC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XhsN/8TQK1SjPJGXHzPF7wikl4Xgc1km9FXj5GIPTfw=; b=saGE37pCzTFe60aK//E+4y1gu
-	f52nj+j/55lNke/32BxzhtCbpGVRF5W3nsfi1mMq6ieQytUG4TNWNkhBUvfDfQesOsBfPtof+W0Vg
-	iFENxeq9xcl5L9XzTGktAM4es4/niFKfQJN3I3IEDks65HAUEp2Kc7W9w7pW6kZ9j8gabFOm0yS9x
-	7UAM53GInFut27xxqtBzHk6kvjqwZQuSkFvc0bxjeK8g7J1U7xKrdtA6S5sd6jjqxnNLDqzxJ5Q84
-	F2BEtOJPhfPAeHBd34dKTd1QzOqVxJ2uiO9VPNt8ZTOBhECkHQNnF4AfxK0JVDRx/Nqcdh9Z0t4J1
-	NyZ+/KjRw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=K4trnt+E/erGeK1maode7Nkw5cImaibuSRx98x8iX3U=; b=YUq4JQOc6II/IOcJ5L3yL2uPOF
+	VhRZ+y224EB/XCR3az0tWHdQgSLhlgQPKMYfwPKV/HI0DgxCj2JxOt0djaBb/5ZahLsOHzOpzahP6
+	hw6PlDtAA2aDJsmYwMf8tqxVUlE3We3Iq2PerNz02udTmjSPQftCjqZKrGlbRa6J/fF8MlI+GaWNj
+	O/rqYid8bwJW8JsxWhmEN1BJnMn/JWj1eUDQp+pgta41nUr4v0cG4hZc8xQfrBBfChuv0ThRWjPQh
+	Hq4TCG9U1eF3VKSMKQox2HkxZjsP9WnWXvaXORrOTqBLMnH08C+HugWHyb+crXKbPnHGp3YRTi37G
+	0sLp4rVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lCmH5-0001qb-IP; Thu, 18 Feb 2021 16:35:31 +0000
-Received: from wnew2-smtp.messagingengine.com ([64.147.123.27])
+	id 1lCopI-0003sj-Ix; Thu, 18 Feb 2021 19:19:00 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lCmGz-0001ou-Ru; Thu, 18 Feb 2021 16:35:26 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.west.internal (Postfix) with ESMTP id DF1EFE1F;
- Thu, 18 Feb 2021 11:35:18 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Thu, 18 Feb 2021 11:35:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=9glu1NqYQ89GMrISno2hyWbjb5g
- /OTCuIq2T05YOits=; b=G6pm+BxV6Dh9oiD6SJUz1xXNJ7zPPCZpBW9AEchzgQY
- SsCnHwIhIZleE9PczJeaxSABPuNfyZNS1u3Zj2kDGJdZzYOuF3md0m5GftSNoeev
- ZavMKbuw+WSPSBcY4VpVTBkV/ddPDz1xHbCCETt+RAuJ3CD0g/aAsRM9ST0bJ2+t
- +6ifUhzBy+1w+NmK0Bu03Ar0ji4npJeGmU9jySby/2b7puTSkKn/YECDpUC+LyuL
- 6Guj5EkOzfnyrZ7fuCEdeNrI7VmN9ZSWN6LpeNmu5/FnzVAUNcjxOj673ayo+RK2
- 5fiMH3d3rCy4RcepJW9kS8GD2lNioOxaP+2WrEFLkFQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=9glu1N
- qYQ89GMrISno2hyWbjb5g/OTCuIq2T05YOits=; b=F8tizhTRDZ1QmkV4IX/nKz
- GFGeeljOv0nlv95ycFp0ze5k8JaZwhxcx+uGwtKUsVGuJaf3wBvlVHShQ6AEUuUa
- nYa/M+CR3Q7nQv96fSu/CfaeIwuzJxRKrhn2B8yNMcGRvghgtZ0Vp/RbSek1ItaO
- Huq8VE54K1HbMzSfgJ/qk4vTktg7KPqCaeXhHlIBqpyMVIsKqMHjMXcuPGS+ft/T
- 80Nr4qrm62gEv7vJ1wWgcbm6pcoegFAPfttgQ+bfSTEtA0b5vB4AgmFNGzLe9Jjp
- 2mDgst8VHznkjEYhvASc+FuMU+CJuXELKFptery4MIiY6qnvOy5wsWIYxYIQt8qA
- ==
-X-ME-Sender: <xms:Q5cuYNHGf4DP6s5Yrk94g87bEt9maVsvZUvIZ5_OSwOa3ygXsvSckA>
- <xme:Q5cuYCWJqVHxc0TBvW8RaM0wSdODYkxfn4yClOKahSKwcF7ZJMIFzdXO9brx_KJON
- wVOak8LO-iBIzeTj3U>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrjeeggdekjecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
- ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
- gvrhhnpeelkeeghefhuddtleejgfeljeffheffgfeijefhgfeufefhtdevteegheeiheeg
- udenucfkphepledtrdekledrieekrdejieenucevlhhushhtvghrufhiiigvpedtnecurf
- grrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:Q5cuYPL64pGtEXDOIjB2LytBtepgEjTDIlirUSWB4Z_2bk7CHwRyNw>
- <xmx:Q5cuYDGxFYNq90q1Kozd9_sE8xI5mkNSdlmaFJwB_t_-qpDhKS53yA>
- <xmx:Q5cuYDU83mA2iruvPx6pKrkqUS3fSvQrhe9kV_x71Rp0kdmagu5q-g>
- <xmx:RpcuYHmzfxpDFq6rYEjERoNkSWa7GUcR73y9VFLtc6uo7hgIIot_W0suCF8>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id DE99E24005C;
- Thu, 18 Feb 2021 11:35:14 -0500 (EST)
-Date: Thu, 18 Feb 2021 17:35:12 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2] drm/gem: Move drm_gem_fb_prepare_fb() to GEM atomic
- helpers
-Message-ID: <20210218163512.arnmixdkygysxrqk@gilmour>
-References: <20210211081636.28311-1-tzimmermann@suse.de>
+ id 1lCopD-0003rj-K6; Thu, 18 Feb 2021 19:18:57 +0000
+Received: from localhost.localdomain (unknown
+ [IPv6:2a01:e0a:4cb:a870:851a:1dfb:a143:80e])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D94251F417F7;
+ Thu, 18 Feb 2021 19:18:52 +0000 (GMT)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
+Subject: [PATCH v2 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
+Date: Thu, 18 Feb 2021 20:18:35 +0100
+Message-Id: <20210218191844.297869-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210211081636.28311-1-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210218_113526_004508_CFC6C864 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20210218_141855_780394_67B044FF 
+X-CRM114-Status: GOOD (  16.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,79 +69,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linaro-mm-sig@lists.linaro.org, linux-aspeed@lists.ozlabs.org,
- airlied@linux.ie, linux-arm-msm@vger.kernel.org,
- maarten.lankhorst@linux.intel.com, linux-mips@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- daniel@ffwll.ch, xen-devel@lists.xenproject.org, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, freedreno@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
+Cc: devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
  linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============5709792205565475017=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The IMX8MQ got two VPUs but until now only G1 has been enabled.
+This series aim to add the second VPU (aka G2) and provide basic 
+HEVC decoding support.
 
---===============5709792205565475017==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="qyrmapmaovukaths"
-Content-Disposition: inline
+To be able to decode HEVC it is needed to add/update some of the
+structures in the uapi. In addition of them one HANTRO dedicated
+control is required to inform the driver of the numbre of bits to skip
+at the beginning of the slice header.
+The hardware require to allocate few auxiliary buffers to store the
+references frame or tile size data.
 
+The driver has been tested with fluster test suite stream.
+For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
+ 
+This series depends of the reset rework posted here: https://www.spinics.net/lists/arm-kernel/msg875766.html
 
---qyrmapmaovukaths
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Finally the both VPUs will have a node the device-tree and be
+independent from v4l2 point of view.
 
-Hi,
+A branch with all the dev is available here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/upstream_g2_v2
 
-On Thu, Feb 11, 2021 at 09:16:36AM +0100, Thomas Zimmermann wrote:
-> diff --git a/include/drm/drm_gem_framebuffer_helper.h b/include/drm/drm_gem_framebuffer_helper.h
-> index 6b013154911d..495d174d9989 100644
-> --- a/include/drm/drm_gem_framebuffer_helper.h
-> +++ b/include/drm/drm_gem_framebuffer_helper.h
-> @@ -9,9 +9,11 @@ struct drm_framebuffer;
->  struct drm_framebuffer_funcs;
->  struct drm_gem_object;
->  struct drm_mode_fb_cmd2;
-> +#if 0
->  struct drm_plane;
->  struct drm_plane_state;
->  struct drm_simple_display_pipe;
-> +#endif
+version 2:
+- remove all change related to scaling
+- squash commits to a coherent split
+- be more verbose about the added fields
+- fix the comments done by Ezequiel about dma_alloc_coherent usage
+- fix Dan's comments about control copy, reverse the test logic
+in tile_buffer_reallocate, rework some goto and return cases.
+- be more verbose about why I change the bindings
+- remove all sign-off expect mime since it is confusing
+- remove useless clocks in VPUs nodes
 
-That's probably not what you meant?
+Benjamin
 
-With that fixed,
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Benjamin Gaignard (9):
+  media: hevc: Modify structures to follow H265 ITU spec
+  media: hantro: Define HEVC codec profiles and supported features
+  media: hantro: Add a field to distinguish the hardware versions
+  media: uapi: Add a control for HANTRO driver
+  media: hantro: Introduce G2/HEVC decoder
+  media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+  media: hantro: IMX8M: add variant for G2/HEVC codec
+  dt-bindings: media: nxp,imx8mq-vpu: Update bindings
+  arm64: dts: imx8mq: Add node to G2 hardware
 
-Thanks!
-Maxime
+ .../bindings/media/nxp,imx8mq-vpu.yaml        |  54 +-
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  41 +-
+ drivers/media/v4l2-core/v4l2-ctrls.c          |  26 +-
+ drivers/staging/media/hantro/Makefile         |   2 +
+ drivers/staging/media/hantro/hantro.h         |  34 +-
+ drivers/staging/media/hantro/hantro_drv.c     | 103 +++
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
+ drivers/staging/media/hantro/hantro_hevc.c    | 321 ++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  48 ++
+ .../staging/media/hantro/hantro_postproc.c    |  17 +
+ drivers/staging/media/hantro/hantro_v4l2.c    |   1 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   |  95 ++-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |   6 +-
+ include/media/hevc-ctrls.h                    |  45 +-
+ include/uapi/linux/hantro-v4l2-controls.h     |  20 +
+ include/uapi/linux/v4l2-controls.h            |   5 +
+ 20 files changed, 1557 insertions(+), 55 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
+ create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
+ create mode 100644 include/uapi/linux/hantro-v4l2-controls.h
 
---qyrmapmaovukaths
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+2.25.1
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYC6XQAAKCRDj7w1vZxhR
-xeYjAQDBp12JMmHuiBCHQBmWyl9fGbmCMg6R9psxq9edd+0vigD+MjBWZAmh8A1d
-2S0DtBQtnfgH07vDxZs1Eb8jJZ+x/QQ=
-=WmxA
------END PGP SIGNATURE-----
-
---qyrmapmaovukaths--
-
-
---===============5709792205565475017==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5709792205565475017==--
-
