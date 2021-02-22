@@ -2,76 +2,78 @@ Return-Path: <SRS0=vRnG=HY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EFB5C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 02:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 641A5C433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 04:19:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6832064E44
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 02:38:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6832064E44
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
+	by mail.kernel.org (Postfix) with ESMTPS id 389E764E44
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 04:19:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 389E764E44
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=krWWnIVhJGSjWHeBKaBcFPcjKPOzQEPGgbiNf2V0PPU=; b=h9VQpDHt3dUMNUaoB+hVquPLg
-	p/6WYdoCic9PaePp6fdCUO4QoU3sv+CjYKptI2Vear5jUTG8V2xjnlQtSoC8F4fNHaZaN4eXqfDJ8
-	KitUXcfcLNX91TNts8tEoK+aLyt6iZ7DynPnzjkd2an2EuJMVt6xL/sxuiOoEmNsoRaHeS/ZLpRGP
-	IaXDXfsOwyRpkDM3+Azq8Z2+fJPhoeJ8lEsOLMZxqdOFfTux+gqIfxmrTOXSWhpqJCgB5RZLsDQ02
-	4keYICI8F7h9I8ZPaIHwIUhFfT57LSsYCQtE0XlAYdZfPrJt/pACZ0vv2zm5s2q8I1jPDue5QXQiQ
-	JWFG0exNw==;
+	 bh=u0gz0P7z6m7QRcDqqk6LbbCRiPC6+mfjQyTHh5e4HVc=; b=wKTzayH+7SQqliHrE0FCwMR/8
+	dJNNMqhZ0tllGvtkDFjeCwalV52NO3Qc9y8kwANOcPwHRWbWUcn3Rph4wadHab3GZgsaUOot6s1iS
+	dnPwBlt9ZfF2HS3IwMoQKbFC20Qz63ZHM/1w7/VZNosTYg3adA5i3br8IRs5IH6wyoFCHR/oh6+qN
+	9zrUFHaYSHgIJXnlkzafE0GrCDq0rE6hG5C1Grcgw3ZU8bCgC9qEGrNLSALuM4lEYfp5lzyKDArqy
+	NSzIexAjbPJB4xbuV69kvDRUOtWX/Ck6HuvXICJzJ/sJbuvH0r2XbDNvZZYwbD0C6nyFRcq5TSM0y
+	IWaOKxZSg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lE16r-000152-9S; Mon, 22 Feb 2021 02:38:05 +0000
-Received: from mail-wm1-f51.google.com ([209.85.128.51])
+	id 1lE2hG-000576-Vk; Mon, 22 Feb 2021 04:19:47 +0000
+Received: from regular1.263xmail.com ([211.150.70.195])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lE16o-00014k-Bw
- for linux-rockchip@lists.infradead.org; Mon, 22 Feb 2021 02:38:03 +0000
-Received: by mail-wm1-f51.google.com with SMTP id i9so2150685wml.5
- for <linux-rockchip@lists.infradead.org>; Sun, 21 Feb 2021 18:38:01 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=WQh8VCQevRvNmuRhsDtQ7nIEzMD2gLxTk3f4V+L1aEc=;
- b=CSaQgvYu1AE1ekG6xCXWQ8mF+9CvsH2ikAgUpNrXyZ83B22DpFEqSMZasw5Ayc1A+p
- egpo3ZDOEvOjPousQhFvaW1LCuHwmOK+/s8PddI5ZC/FqZrMGDG/q0hAPNSL41Cdi3cD
- zDzbo+FQhkML4nqBKoPTWlaM15b6gsMoRH18aZBwkgxZ/DOoPkeb4xfTbdEqmCQu0ONN
- AuiAsqXsZtsefuj1mKASatp07Rj6GEC37BZ/if829Fk21bfz9RWhAPv8V0NbeF7wmqkM
- EqUkciX8ms0LtuPHs0+WoMN65MelKwCGXcc5QPMbcGsW7ZlGP8SWDmYDr/BNvh0M3U7y
- TiPQ==
-X-Gm-Message-State: AOAM532x5Hwj65U8Jc0ESyowOBVtUGXRBOE+0/mB5XXtJAKUsRj3Laip
- ftk3GFqzoyeyQCMbtbMbJ7g=
-X-Google-Smtp-Source: ABdhPJyYa0OSAEf9Hv486ErFQ9KxIaLDKDhIt9gQZs03ZhTS6GCiMeEAtagI9mrNDmC8zYJNgQcF6g==
-X-Received: by 2002:a1c:7301:: with SMTP id d1mr17923444wmb.33.1613961480554; 
- Sun, 21 Feb 2021 18:38:00 -0800 (PST)
-Received: from rocinante ([95.155.85.46])
- by smtp.gmail.com with ESMTPSA id f2sm26344434wrt.7.2021.02.21.18.37.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Feb 2021 18:38:00 -0800 (PST)
-Date: Mon, 22 Feb 2021 03:37:59 +0100
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Simon Xue <xxm@rock-chips.com>
-Subject: Re: [PATCH v4 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
- controller
-Message-ID: <YDMZB94qMkpOx38Q@rocinante>
+ id 1lE2hC-00055N-VA
+ for linux-rockchip@lists.infradead.org; Mon, 22 Feb 2021 04:19:45 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by regular1.263xmail.com (Postfix) with ESMTP id 981171C11;
+ Mon, 22 Feb 2021 12:19:04 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+Received: from [192.168.31.83] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P32470T140679103641344S1613967544149545_; 
+ Mon, 22 Feb 2021 12:19:04 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <4925c1eead27d0d36bf4c7d588184ee1>
+X-RL-SENDER: xxm@rock-chips.com
+X-SENDER: xxm@rock-chips.com
+X-LOGIN-NAME: xxm@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v4_1/2=5d_dt-bindings=3a_rockchip=3a_Add_D?=
+ =?UTF-8?B?ZXNpZ25XYXJlIGJhc2VkIFBDSWUgY29udHJvbGxlcuOAkOivt+azqOaEj++8jA==?=
+ =?UTF-8?B?6YKu5Lu255Sxa3N3aWxjenluc2tpQGdtYWlsLmNvbeS7o+WPkeOAkQ==?=
+To: =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>
 References: <20210127022406.820975-1-xxm@rock-chips.com>
+ <YDMZB94qMkpOx38Q@rocinante>
+From: xxm <xxm@rock-chips.com>
+Message-ID: <01e5ef9b-aef1-64ed-88e6-de74ea3e3e5b@rock-chips.com>
+Date: Mon, 22 Feb 2021 12:19:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210127022406.820975-1-xxm@rock-chips.com>
+In-Reply-To: <YDMZB94qMkpOx38Q@rocinante>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210221_213802_423093_9597BAF3 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210221_231943_744932_9A160C00 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,30 +90,23 @@ Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
  linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
  Bjorn Helgaas <helgaas@kernel.org>, Johan Jonker <jbx6244@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
-
-[...]
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-
-The driver is only based on GPL v2.0, should this be the same, or is
-there a reason for dual-license?
-
-[...]
-> +title: DesignWare based PCIe RC controller on Rockchip SoCs
-[...]
-
-What does the "RC" here stands for?  Would it be "Rockchip"?  If so,
-then perhaps dropping it would be fine to do, as rest of the title
-mentions "Rockchip SoCs"."  What do you think?
-
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgS3J6eXN6dG9mLAoK5ZyoIDIwMjEvMi8yMiAxMDozNywgS3J6eXN6dG9mIFdpbGN6ecWEc2tp
+IOWGmemBkzoKPiBIaSBTaW1vbiwKPgo+IFsuLi5dCj4+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlm
+aWVyOiAoR1BMLTIuMCBPUiBCU0QtMi1DbGF1c2UpCj4gVGhlIGRyaXZlciBpcyBvbmx5IGJhc2Vk
+IG9uIEdQTCB2Mi4wLCBzaG91bGQgdGhpcyBiZSB0aGUgc2FtZSwgb3IgaXMKPiB0aGVyZSBhIHJl
+YXNvbiBmb3IgZHVhbC1saWNlbnNlPwpXaWxsIHJlbW92ZSBCU0QtMi1DbGF1c2UKPiBbLi4uXQo+
+PiArdGl0bGU6IERlc2lnbldhcmUgYmFzZWQgUENJZSBSQyBjb250cm9sbGVyIG9uIFJvY2tjaGlw
+IFNvQ3MKPiBbLi4uXQo+Cj4gV2hhdCBkb2VzIHRoZSAiUkMiIGhlcmUgc3RhbmRzIGZvcj8gIFdv
+dWxkIGl0IGJlICJSb2NrY2hpcCI/ICBJZiBzbywKPiB0aGVuIHBlcmhhcHMgZHJvcHBpbmcgaXQg
+d291bGQgYmUgZmluZSB0byBkbywgYXMgcmVzdCBvZiB0aGUgdGl0bGUKPiBtZW50aW9ucyAiUm9j
+a2NoaXAgU29DcyIuIiAgV2hhdCBkbyB5b3UgdGhpbms/CgpSQyA9IFJvb3QgQ29tcGxleCwganVz
+dCB0byBkaXN0aW5ndWlzaCAiRVAiKEVuZCBQb2ludCksIGJ1dCBkcm9wICJSQyIgCnNlZW1zIGZp
+bmUuCgpTaW1vbgoKPiBLcnp5c3p0b2YKPgo+Cj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
