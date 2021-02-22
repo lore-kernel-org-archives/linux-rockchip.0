@@ -2,46 +2,46 @@ Return-Path: <SRS0=vRnG=HY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78AB9C433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9902C433DB
 	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 12:25:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FA4864EEC
+	by mail.kernel.org (Postfix) with ESMTPS id 80E2064E44
 	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Feb 2021 12:25:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FA4864EEC
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80E2064E44
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sfb8dtynjCvQNhBvEqSzlEaP9VFY81dGX+dsIATDkSc=; b=ZfYMRyF1aWtek7QE4vDf3Zoy43
-	f2pseyM8KXy3MW/AGZLie+xArjG3ba5ONBrjSnZS2/jq6GCKFtVwin97zRC5fqM0yD7lSBDdrt7BM
-	22tXle9mA/IKgCInbsHtGJ+3VcLhCsKX4dkYawJtMcCVZdHmL61H7J+YwbzLnj5+s0xP64VGmY8hl
-	LMVT34yzz7VKB16u2jmUuoMqYAFLHeAdfWAXG6/j8P/RsVSeJKqKdxjGyZUC/0v/tZdI4E8Y0Ol/o
-	BHx5Pc3oLOl2i5NP0k58FRlk718YZ0jxu4O+yP7PUGxMil5NLjAW0iPchxGH97SPW3Va59DoD2S7Z
-	7IePUToQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jD/US1zRs3abWNv56RlcVHAGzmWKX9k/56GyyoBOFxs=; b=abxk9VwKIRB1xTB8Li9JDM6zG
+	YECqfgAO0yQHBX0JsDjitAFxalGaNZ3IdAIqxup8geVF7TnDmB4S2pDleJpnaCr1dWuqnN9qd7El2
+	Oc2s7YGfDrrSujq8dfGgM3DIE2kL8TuenkQIb6MQmvyL8rRFouVVTeRauBdEF6+OfHRBeP4oM/wTL
+	7pjHcBsUNB/xxathpaGx+LNyaSluFCsvfcvczCQqxeLPfOG/2cVPYjx+VpBBUDPT35Cf4Z/D3wgQO
+	qcmucvRdjWWolO0+NSCwSV6iKRY5XY8dMGonozyNNKDGc/GR8fzWOOXJZKpEUGhaMX96dXgb1om3c
+	59pn9rdlg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEAGp-000386-9d; Mon, 22 Feb 2021 12:24:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lEAGn-00037G-OD; Mon, 22 Feb 2021 12:24:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEAGH-0002te-Mq; Mon, 22 Feb 2021 12:24:29 +0000
+ id 1lEAGH-0002u0-VE; Mon, 22 Feb 2021 12:24:29 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:5956:412c:4850:9073])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id BEA441F44CC8;
- Mon, 22 Feb 2021 12:24:16 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 808641F44FF1;
+ Mon, 22 Feb 2021 12:24:20 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -49,14 +49,17 @@ To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  gregkh@linuxfoundation.org, mripard@kernel.org,
  paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
  peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
-Subject: [PATCH v3 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
-Date: Mon, 22 Feb 2021 13:23:57 +0100
-Message-Id: <20210222122406.41782-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 3/9] media: hantro: Add a field to distinguish the hardware
+ versions
+Date: Mon, 22 Feb 2021 13:24:00 +0100
+Message-Id: <20210222122406.41782-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210222122406.41782-1-benjamin.gaignard@collabora.com>
+References: <20210222122406.41782-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210222_072425_935578_E85A8E7E 
-X-CRM114-Status: GOOD (  17.34  )
+X-CRM114-CacheID: sfid-20210222_072426_131215_B43B4CFD 
+X-CRM114-Status: GOOD (  18.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,85 +82,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The IMX8MQ got two VPUs but until now only G1 has been enabled.
-This series aim to add the second VPU (aka G2) and provide basic 
-HEVC decoding support.
+Decoders hardware blocks could exist in multiple versions: add
+a field to distinguish them at runtime.
+G2 hardware block doesn't have postprocessor hantro_needs_postproc
+function should always returns false in for this hardware.
+hantro_needs_postproc function becoming to much complex to
+stay inline in .h file move it to .c file.
 
-To be able to decode HEVC it is needed to add/update some of the
-structures in the uapi. In addition of them one HANTRO dedicated
-control is required to inform the driver of the numbre of bits to skip
-at the beginning of the slice header.
-The hardware require to allocate few auxiliary buffers to store the
-references frame or tile size data.
+Keep the default behavoir to be G1 hardware.
 
-The driver has been tested with fluster test suite stream.
-For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
- 
-This series depends of the reset rework posted here: https://www.spinics.net/lists/arm-kernel/msg875766.html
-
-Finally the both VPUs will have a node the device-tree and be
-independent from v4l2 point of view.
-
-A branch with all the dev is available here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/upstream_g2_v2
-
-version 3:
-- Fix typo in Hantro v4l2 dedicated control
-- Add documentation for the new structures and fields
-- Rebased on top of media_tree for-linus-5.12-rc1 tag
-
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
 version 2:
-- remove all change related to scaling
-- squash commits to a coherent split
-- be more verbose about the added fields
-- fix the comments done by Ezequiel about dma_alloc_coherent usage
-- fix Dan's comments about control copy, reverse the test logic
-in tile_buffer_reallocate, rework some goto and return cases.
-- be more verbose about why I change the bindings
-- remove all sign-off expect mime since it is confusing
-- remove useless clocks in VPUs nodes
+- squash this commit with the post processor change
+to show one usage of core_hw_dec_rev
 
-Benjamin
+ drivers/staging/media/hantro/hantro.h          | 13 +++++++------
+ drivers/staging/media/hantro/hantro_drv.c      |  2 ++
+ drivers/staging/media/hantro/hantro_postproc.c | 17 +++++++++++++++++
+ 3 files changed, 26 insertions(+), 6 deletions(-)
 
-Benjamin Gaignard (9):
-  media: hevc: Modify structures to follow H265 ITU spec
-  media: hantro: Define HEVC codec profiles and supported features
-  media: hantro: Add a field to distinguish the hardware versions
-  media: uapi: Add a control for HANTRO driver
-  media: hantro: Introduce G2/HEVC decoder
-  media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
-  media: hantro: IMX8M: add variant for G2/HEVC codec
-  dt-bindings: media: nxp,imx8mq-vpu: Update bindings
-  arm64: dts: imx8mq: Add node to G2 hardware
-
- .../bindings/media/nxp,imx8mq-vpu.yaml        |  54 +-
- .../media/v4l/ext-ctrls-codec.rst             | 126 +++-
- .../media/v4l/vidioc-queryctrl.rst            |   6 +
- arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  41 +-
- drivers/media/v4l2-core/v4l2-ctrls.c          |  26 +-
- drivers/staging/media/hantro/Makefile         |   2 +
- drivers/staging/media/hantro/hantro.h         |  34 +-
- drivers/staging/media/hantro/hantro_drv.c     | 103 +++
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
- drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
- drivers/staging/media/hantro/hantro_hevc.c    | 321 ++++++++++
- drivers/staging/media/hantro/hantro_hw.h      |  48 ++
- .../staging/media/hantro/hantro_postproc.c    |  17 +
- drivers/staging/media/hantro/hantro_v4l2.c    |   1 +
- drivers/staging/media/hantro/imx8m_vpu_hw.c   |  95 ++-
- drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
- drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
- .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |   6 +-
- include/media/hevc-ctrls.h                    |  45 +-
- include/uapi/linux/hantro-v4l2-controls.h     |  20 +
- include/uapi/linux/v4l2-controls.h            |   5 +
- 22 files changed, 1674 insertions(+), 70 deletions(-)
- create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
- create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
- create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
- create mode 100644 include/uapi/linux/hantro-v4l2-controls.h
-
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index bde65231f22f..352930bd49fc 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -36,6 +36,9 @@ struct hantro_codec_ops;
+ #define HANTRO_H264_DECODER	BIT(18)
+ #define HANTRO_DECODERS		0xffff0000
+ 
++#define HANTRO_G1_REV		0x6731
++#define HANTRO_G2_REV		0x6732
++
+ /**
+  * struct hantro_irq - irq handler and name
+  *
+@@ -170,6 +173,7 @@ hantro_vdev_to_func(struct video_device *vdev)
+  * @enc_base:		Mapped address of VPU encoder register for convenience.
+  * @dec_base:		Mapped address of VPU decoder register for convenience.
+  * @ctrl_base:		Mapped address of VPU control block.
++ * @core_hw_dec_rev	Runtime detected HW decoder core revision
+  * @vpu_mutex:		Mutex to synchronize V4L2 calls.
+  * @irqlock:		Spinlock to synchronize access to data structures
+  *			shared with interrupt handlers.
+@@ -189,6 +193,7 @@ struct hantro_dev {
+ 	void __iomem *enc_base;
+ 	void __iomem *dec_base;
+ 	void __iomem *ctrl_base;
++	u32 core_hw_dec_rev;
+ 
+ 	struct mutex vpu_mutex;	/* video_device lock */
+ 	spinlock_t irqlock;
+@@ -411,12 +416,8 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
+ 	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ }
+ 
+-static inline bool
+-hantro_needs_postproc(const struct hantro_ctx *ctx,
+-		      const struct hantro_fmt *fmt)
+-{
+-	return !ctx->is_encoder && fmt->fourcc != V4L2_PIX_FMT_NV12;
+-}
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt);
+ 
+ static inline dma_addr_t
+ hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index d86e322a5980..0a62beb0bfbd 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -834,6 +834,8 @@ static int hantro_probe(struct platform_device *pdev)
+ 	}
+ 	vpu->enc_base = vpu->reg_bases[0] + vpu->variant->enc_offset;
+ 	vpu->dec_base = vpu->reg_bases[0] + vpu->variant->dec_offset;
++	/* by default decoder is G1 */
++	vpu->core_hw_dec_rev = HANTRO_G1_REV;
+ 
+ 	ret = dma_set_coherent_mask(vpu->dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 6d2a8f2a8f0b..050880f720d6 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -50,6 +50,23 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ 	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
+ };
+ 
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	if (ctx->is_encoder)
++		return false;
++
++	if (vpu->core_hw_dec_rev == HANTRO_G1_REV)
++		return fmt->fourcc != V4L2_PIX_FMT_NV12;
++
++	if (vpu->core_hw_dec_rev == HANTRO_G2_REV)
++		return false;
++
++	return false;
++}
++
+ void hantro_postproc_enable(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
 -- 
 2.25.1
 
