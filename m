@@ -2,65 +2,61 @@ Return-Path: <SRS0=ad98=HZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB1F7C433DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 17:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 656E1C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 17:10:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B8F064EC8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 17:09:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B8F064EC8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rjwysocki.net
+	by mail.kernel.org (Postfix) with ESMTPS id 1B60C64DD3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 17:10:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B60C64DD3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M5UEZVHmTi1fnJBFOAPjZEh2h9LJ6hjLAiAC02/TNoQ=; b=0IkaBEeHr+oIUsvERYrTW5j+g
-	d78nA1igLzddiog6oi3uQg4kAzx+AFhGnkoW2hl16EMXsC7QPhGlne+2p8AWqm1PmbmzAVhjg3gSm
-	fYR9+45KyKGoBj6Ty7kE1r5GMBlssNbxlKRFojqombDjL7INYoY0s80zuxuMlzX7mxd+uGJ22WzbN
-	NoxhXt8YimiQFbhGyJDD/6WeqMU2W0Zf6bvedgEVb8f9FoPLg+tSVXfPBG+UAgbCFcJ5WDkIrD8/r
-	+Uv2kONub4vbPLH+LBvKyAXmMPdZaPzu8zfj36yM1WcxgN4KiZ97tIN77qogrJGQCpMZMwk5xQpWz
-	RUDAxp1Uw==;
+	 bh=Q+25bLaMrV8JyDPD9butNJIFmH9TeTGWP8PRCCsNiqs=; b=0ARqh1V36zgfp46vc4PzHNIUe
+	QcugFvB0l3ZGpR/wx82HN53O7ATkVftp3Cg4sCO/vOEOAMxsh5ER9WHO+va6i5CLA0O8/Ktms7+v5
+	19KLZ+V5w2xTpJrtRnNC7y6t/40e84NGHG0oHs9MY81qeEfsQlBKk2Vd15/5pDTodokl39f1i11F4
+	YnfeabxV1owQWmm2cmRuBQRoxPgKjh/5qzJb75Iuh8gbqUF1K4hWgpmHuBPU8+ZkmOKcOYZAKPap+
+	gP6sDJyLmmXbmf4cAzLW3myEPoAjmd86cSmUL83TNCvC8fktRL84zTUQKaskxprKH+VMefKovCxuj
+	PHHzcSqRA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEbBW-0006sD-1Y; Tue, 23 Feb 2021 17:09:18 +0000
-Received: from cloudserver094114.home.pl ([79.96.170.134])
+	id 1lEbCf-0006z3-Ex; Tue, 23 Feb 2021 17:10:29 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEbBT-0006rk-LE
- for linux-rockchip@lists.infradead.org; Tue, 23 Feb 2021 17:09:16 +0000
-Received: from localhost (127.0.0.1) (HELO v370.home.net.pl)
- by /usr/run/smtp (/usr/run/postfix/private/idea_smtp) via UNIX with SMTP
- (IdeaSmtpServer 0.83.537)
- id 7ee96b4537d496d8; Tue, 23 Feb 2021 18:09:10 +0100
-Received: from kreacher.localnet (89-64-82-35.dynamic.chello.pl [89.64.82.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by v370.home.net.pl (Postfix) with ESMTPSA id C0DAD661F13;
- Tue, 23 Feb 2021 18:09:08 +0100 (CET)
-From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [REPORT_ISSUE]: RK3399 pd power down failed
-Date: Tue, 23 Feb 2021 18:09:08 +0100
-Message-ID: <5598462.KkIXRrj88c@kreacher>
-In-Reply-To: <CAPDyKFqm06KDw_p8WXsM4dijDbho4bb6T4k50UqqvR1_COsp8g@mail.gmail.com>
-References: <20210120172939160049119@rock-chips.com>
- <CAPDyKFqm06KDw_p8WXsM4dijDbho4bb6T4k50UqqvR1_COsp8g@mail.gmail.com>
+ id 1lEbCc-0006yF-AM
+ for linux-rockchip@lists.infradead.org; Tue, 23 Feb 2021 17:10:27 +0000
+Received: from maud (unknown [IPv6:2600:8800:8c08:3600::7632])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: alyssa)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id A6B7B1F457E0;
+ Tue, 23 Feb 2021 17:10:21 +0000 (GMT)
+Date: Tue, 23 Feb 2021 17:10:16 +0000
+From: Alyssa Rosenzweig <alyssa@collabora.com>
+To: Brian Starkey <brian.starkey@arm.com>
+Subject: Re: [PATCH] drm/rockchip: Require the YTR modifier for AFBC
+Message-ID: <YDU2+A0MNJnrWxPs@maud>
+References: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
+ <CAPj87rMS5zxY6sK4N8zVZF9MHThmURj6kuso=G5+MQDVmNjC4Q@mail.gmail.com>
+ <20210223145143.7bfayhp32tzdj637@DESKTOP-E1NTVVP.localdomain>
+ <CAPj87rMkSdtrHnoLzK6zAVvST2KH8SprNnp5bS92qpr84g=fPg@mail.gmail.com>
+ <20210223165348.edghgglgx4g2lvfw@DESKTOP-E1NTVVP.localdomain>
 MIME-Version: 1.0
-X-VADE-SPAMSTATE: clean
-X-VADE-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduledrkeehgdeljecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfjqffogffrnfdpggftiffpkfenuceurghilhhouhhtmecuudehtdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkfgjfhgggfgtsehtqhertddttdejnecuhfhrohhmpedftfgrfhgrvghlucflrdcuhgihshhotghkihdfuceorhhjfiesrhhjfiihshhotghkihdrnhgvtheqnecuggftrfgrthhtvghrnhepieejkeefheegjefffeevffegheehteeuveduuedttddvteeugeduheeiieehfeevnecukfhppeekledrieegrdekvddrfeehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehinhgvthepkeelrdeigedrkedvrdefhedphhgvlhhopehkrhgvrggthhgvrhdrlhhotggrlhhnvghtpdhmrghilhhfrhhomhepfdftrghfrggvlhculfdrucghhihsohgtkhhifdcuoehrjhifsehrjhifhihsohgtkhhirdhnvghtqedprhgtphhtthhopehulhhfrdhhrghnshhsohhnsehlihhnrghrohdrohhrghdprhgtphhtthhopeiihhgrnhhgqhhinhhgsehrohgtkhdqtghhihhpshdrtghomhdprhgtphhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtohepfhhinhhlvgihrdigihgrohesrhhotghkqdgthhhiphhsrdgtohhmpdhrtghpthhtoheplhgvnhdrsghrohifnhesihhnthgvlhdrtghomhdprhgtphhtthhopehprghv
- vghlsehutgifrdgtiidprhgtphhtthhopehgrhgvghhkhheslhhinhhugihfohhunhgurghtihhonhdrohhrghdprhgtphhtthhopehkhhhilhhmrghnsehkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhrohgtkhgthhhipheslhhishhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehlihhnuhigqdhpmhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehhuhgrnhhgthgrohesrhhotghkqdgthhhiphhsrdgtohhmpdhrtghpthhtohepthhonhihrdigihgvsehrohgtkhdqtghhihhpshdrtghomhdprhgtphhtthhopehkvghvvghrrdihrghnghesrhhotghkqdgthhhiphhsrdgtohhm
-X-DCC--Metrics: v370.home.net.pl 1024; Body=13 Fuz1=13 Fuz2=13
+Content-Disposition: inline
+In-Reply-To: <20210223165348.edghgglgx4g2lvfw@DESKTOP-E1NTVVP.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210223_120915_850314_DC107EAC 
-X-CRM114-Status: GOOD (  25.55  )
+X-CRM114-CacheID: sfid-20210223_121026_473851_FD62DEBB 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,122 +69,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "Huang, Tao" <huangtao@rock-chips.com>, "len.brown" <len.brown@intel.com>,
- heiko <heiko@sntech.de>, khilman <khilman@kernel.org>,
- gregkh <gregkh@linuxfoundation.org>, linux-pm <linux-pm@vger.kernel.org>,
- "zhangqing@rock-chips.com" <zhangqing@rock-chips.com>,
- =?utf-8?B?5p2o5Yev?= <kever.yang@rock-chips.com>,
+Cc: nd <nd@arm.com>, Sandy Huang <hjc@rock-chips.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  linux-rockchip <linux-rockchip@lists.infradead.org>,
- =?utf-8?B?6LCi5L+u6ZGr?= <tony.xie@rock-chips.com>,
- Finley Xiao <finley.xiao@rock-chips.com>, pavel <pavel@ucw.cz>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Stone <daniel@fooishbar.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlc2RheSwgRmVicnVhcnkgMjMsIDIwMjEgMTI6MzA6MzkgUE0gQ0VUIFVsZiBIYW5zc29u
-IHdyb3RlOgo+IE9uIFdlZCwgMjAgSmFuIDIwMjEgYXQgMTA6MzAsIHpoYW5ncWluZ0Byb2NrLWNo
-aXBzLmNvbQo+IDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+ID4KPiA+IEhpLCBI
-ZWlrbyA6Cj4gPgo+ID4gSW4gcmszMzk5IGV2YiBib2FyZCwgIEkgZm91bmQgYSBwcm9iYWJpbGlz
-dGljIHByb2JsZW0gYWJvdXQgUEQuIFR1cm5pbmcgb2ZmIFBEIG9jY2FzaW9uYWxseSBmYWlsZWQu
-Cj4gPgo+ID4gbG9nIHNob3fvvJoKPiA+IE9wZW4gdGhlIHZvcAo+ID4gI21vZGV0ZXN0IC1NIHJv
-Y2tjaGlwIC1zIDQyQDM2OjE1MzZ4MjA0OCAtUCAzMUAzNjoxNTM2eDIwNDhAQVIyNCAtYQo+ID4K
-PiA+IGNsb3NlIHRoZSB2b3AKPiA+ICNlbnRlcgo+ID4KPiA+ICAjIGNhdCBzeXMva2VybmVsL2Rl
-YnVnL3BtX2dlbnBkL3BtX2dlbnBkX3N1bW1hcnkKPiA+IGRvbWFpbiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgc3RhdHVzICAgICAgICAgIHNsYXZlcwo+ID4gICAgIC9kZXZpY2UgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBydW50aW1lIHN0YXR1cwo+ID4gLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQo+ID4gcGRfdm9wbCAgICAgICAgICAgICAgICAgICAgICAgICBvZmYKPiA+IHBk
-X3ZvcGIgICAgICAgICAgICAgICAgICAgICAgICAgb24KPiA+ICAgICAvZGV2aWNlcy9wbGF0Zm9y
-bS9mZjkwM2YwMC5pb21tdSAgICAgICAgICAgICAgICAgICAgIHN1c3BlbmRlZAo+ID4gICAgIC9k
-ZXZpY2VzL3BsYXRmb3JtL2ZmOTAwMDAwLnZvcCAgICAgICAgICAgICAgICAgICAgICAgICAgc3Vz
-cGVuZGVkCj4gPgo+ID4gSSBoYXZlIGNoZWNrZWQgdGhlIGNvZGVzIGFuZCBjb25jbHVkZWQgdGhh
-dCB0aGVyZSBpcyBhIHdpbmRvdyBvZiB0aW1lIGZvciBQRCB0byBiZSBjbG9zZWQgd2hlbiB1c2lu
-ZyB0aGUgZGV2aWNlIGxpbmsuIE9uY2UgcXVldWVfd29yayBpcyBleGVjdXRlZCBpbW1lZGlhdGVs
-eSwgIFBEIHBvd2VyIG9mZiBtYXkgYmUgZmFpbGVkLgo+ID4gVGhlIHByb2Nlc3MgaXMgYXMgZm9s
-bG93czoKPiA+Cj4gPiBWT1AgcmVxdWVzdHMgdG8gcG93ZXIgb2ZmIFBEOgo+ID4gcG1fcnVudGlt
-ZV9wdXRfc3luYyh2b3AtPmRldikKPiA+ICAgICAtPiBycG1faWRsZSh2b3ApCj4gPiAgICAgICAg
-IC0+IHJwbV9zdXNwZW5kKHZvcCkKPiA+ICAgICAgICAgICAgIC0+IF9fdXBkYXRlX3J1bnRpbWVf
-c3RhdHVzKGRldiwgUlBNX1NVU1BFTkRJTkcpCj4gPiAgICAgICAgICAgICAgICAgLT4gcnBtX2Nh
-bGxiYWNrKHZvcCkKPiA+ICAgICAgICAgICAgICAgICAgICAgLT4gX19ycG1fY2FsbGJhY2sodm9w
-KQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgLT4gZG8gcG93ZXIgb2ZmIHBkIGNhbGxiYWNr
-KGdlbnBkX3Bvd2VyX29mZikKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtPiBsaXN0
-X2Zvcl9lYWNoX2VudHJ5KHBkZCwgJmdlbnBkLT5kZXZfbGlzdCwgbGlzdF9ub2RlKSwgZmY5MDAw
-MDAudm9wOiBzdXNwZW5kaW5n77yMIGZmOTAzZjAwLmlvbW11IDogYWN0aXZl77yMc28gbm90X3N1
-c3BlbmRlZCA9IDIgcmV0dXJuIC1FQlVTWTsgTm90IHJlYWxseSBwb3dlciBvZmYgUETjgIIKPiA+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLT4gSGFuZGxlIGxpbmsgZGV2aWNlIGNh
-bGxiYWNrcyBhY2NvcmRpbmcgdG8gZGV2aWNlIGxpbmvvvIhycG1fcHV0X3N1cHBsaWVyc++8iQo+
-ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLT4gcG1fcnVudGltZV9wdXQo
-bGluay0+c3VwcGxpZXIpCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgLT4gcXVldWVfd29yayhwbV93cSwgJmRldi0+cG93ZXIud29yayksIGV4ZWN1dGUgaW1tZWRp
-YXRlbHkKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgLT5y
-cG1faWRsZShpb21tdSkKPiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIC0+IHJwbV9zdXNwZW5kKGlvbW11KQo+ID4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC0+IHJwbV9jYWxsYmFjayhpb21tdSkKPiA+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-LT4gcmtfaW9tbXVfc3VzcGVuZAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgLT4gIGRvIHBvd2VyIG9mZiBwZCBjYWxsYmFjayhn
-ZW5wZF9wb3dlcl9vZmYpCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgLT4gbGlzdF9mb3JfZWFjaF9lbnRyeShwZGQsICZn
-ZW5wZC0+ZGV2X2xpc3QsIGxpc3Rfbm9kZSksIGZmOTAwMDAwLnZvcDogc3VzcGVuZGluZ++8jCBm
-ZjkwM2YwMC5pb21tdSA6IHN1c3BlbmRpbmfvvIxzbyBub3Rfc3VzcGVuZGVkID0gMiByZXR1cm4g
-LUVCVVNZOyBOb3QgcmVhbGx5IHBvd2VyIG9mZiBQROOAggo+ID4gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAtPiBpb21t
-dSBkbyBfX3VwZGF0ZV9ydW50aW1lX3N0YXR1cyhkZXYsIFJQTV9TVVNQRU5ERUQpCj4gPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAtPiB2b3AgZG8gX191cGRhdGVfcnVudGltZV9zdGF0dXMoZGV2LCBSUE1fU1VT
-UEVOREVEKQo+IAo+IFNvLCBycG1fc3VzcGVuZCgpIHRyaWVzIHRvIHN1c3BlbmQgdGhlIHN1cHBs
-aWVyIGRldmljZSBsaW5rIHZpYQo+IHJwbV9wdXRfc3VwcGxpZXJzKCksIGJlZm9yZSBpdCBoYXMg
-dXBkYXRlZCBpdHMgY29uc3VtZXIgZGV2aWNlJ3Mgc3RhdGUKPiB0byBSUE1fU1VTUEVOREVELgo+
-IAo+IFRoaXMgbG9va3Mgd29ycnlpbmcgdG8gbWUsIGJvdGggYmVjYXVzZSBpdCdzIHNlZW1zIHdy
-b25nIHRvIGFsbG93IGEKPiBzdXBwbGllciB0byBiZSBzdXNwZW5kZWQgYmVmb3JlIGEgY29uc3Vt
-ZXJzIGRldmljZSdzIHN0YXRlIGhhcyByZWFjaGVkCj4gUlBNX1NVU1BFTkRFRCAtIGJ1dCBhbHNv
-IGJlY2F1c2UgaXQncyBub3QgY29uc2lzdGVudCB3aXRoIHRoZSB3YXkgd2UKPiB0cmVhdCBwYXJl
-bnQvY2hpbGQgZGV2aWNlcy4gVGhlIGNoaWxkJ3Mgc3RhdGUgd2lsbCBhbHdheXMgYmUgc2V0IHRv
-Cj4gUlBNX1NVU1BFTkRFRCwgYmVmb3JlIHdlIHRyeSB0byBzdXNwZW5kIGl0cyBwYXJlbnQgYnkg
-Y2FsbGluZwo+IHJwbV9pZGxlKCkgZm9yIGl0IGluIHJwbV9zdXNwZW5kKCkuCj4gCj4gUmFmYWVs
-LCB3aGF0J3MgeW91ciB0YWtlIG9uIHRoaXM/IFdvdWxkIGl0IG1ha2Ugc2Vuc2UgdG8gYWxpZ24g
-dGhlCj4gYmVoYXZpb3IgZm9yIGNvbnN1bWVyL3N1cHBsaWVyLWxpbmtzIGluIHJwbV9zdXNwZW5k
-KCkgYWNjb3JkaW5nIHRvCj4gY2hpbGQvcGFyZW50cz8KClN1c3BlbmRpbmcgdGhlIHN1cHBsaWVy
-cyBiZWZvcmUgY2hhbmdpbmcgdGhlIGNvbnN1bWVyIFJQTSBzdGF0dXMgdG8KInN1c3BlbmRlZCIg
-aXMgaW5kZWVkIGluY29ycmVjdCwgd2hpY2ggaXMgc29tZXRoaW5nIEkgb3Zlcmxvb2tlZCB3aGVu
-CndyaXRpbmcgdGhlIGNvZGUgaW4gcXVlc3Rpb24uCgpGb3J0dW5hdGVseSwgaXQgc2VlbXMgdG8g
-YmUgcmVsYXRpdmVseSBlYXN5IHRvIGFkZHJlc3MuCgpQbGVhc2Ugc2VlIHRoZSBhcHBlbmRlZCB0
-ZW50YXRpdmUgcGF0Y2ggKHVudGVzdGVkKS4gIEl0IGFsc28gYXZvaWRzIHJlYWRpbmcKcnVudGlt
-ZV9zdGF0dXMgb3V0c2lkZSB0aGUgbG9jayB3aGljaCBpcyBhcmd1YWJseSBmaXNoeS4KCi0tLQog
-ZHJpdmVycy9iYXNlL3Bvd2VyL3J1bnRpbWUuYyB8ICAgMjQgKysrKysrKysrKysrKysrKysrKyst
-LS0tCiAxIGZpbGUgY2hhbmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCklu
-ZGV4OiBsaW51eC1wbS9kcml2ZXJzL2Jhc2UvcG93ZXIvcnVudGltZS5jCj09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KLS0t
-IGxpbnV4LXBtLm9yaWcvZHJpdmVycy9iYXNlL3Bvd2VyL3J1bnRpbWUuYworKysgbGludXgtcG0v
-ZHJpdmVycy9iYXNlL3Bvd2VyL3J1bnRpbWUuYwpAQCAtMzMwLDcgKzMzMCwxMSBAQCBzdGF0aWMg
-aW50IF9fcnBtX2NhbGxiYWNrKGludCAoKmNiKShzdHJ1CiAKIAlpZiAoZGV2LT5wb3dlci5pcnFf
-c2FmZSkgewogCQlzcGluX3VubG9jaygmZGV2LT5wb3dlci5sb2NrKTsKKwl9IGVsc2UgaWYgKCF1
-c2VfbGlua3MpIHsKKwkJc3Bpbl91bmxvY2tfaXJxKCZkZXYtPnBvd2VyLmxvY2spOwogCX0gZWxz
-ZSB7CisJCWJvb2wgZ2V0ID0gZGV2LT5wb3dlci5ydW50aW1lX3N0YXR1cyA9PSBSUE1fUkVTVU1J
-Tkc7CisKIAkJc3Bpbl91bmxvY2tfaXJxKCZkZXYtPnBvd2VyLmxvY2spOwogCiAJCS8qCkBAIC0z
-NDAsNyArMzQ0LDcgQEAgc3RhdGljIGludCBfX3JwbV9jYWxsYmFjayhpbnQgKCpjYikoc3RydQog
-CQkgKiByb3V0aW5lIHJldHVybnMsIHNvIGl0IGlzIHNhZmUgdG8gcmVhZCB0aGUgc3RhdHVzIG91
-dHNpZGUgb2YKIAkJICogdGhlIGxvY2suCiAJCSAqLwotCQlpZiAodXNlX2xpbmtzICYmIGRldi0+
-cG93ZXIucnVudGltZV9zdGF0dXMgPT0gUlBNX1JFU1VNSU5HKSB7CisJCWlmIChnZXQpIHsKIAkJ
-CWlkeCA9IGRldmljZV9saW5rc19yZWFkX2xvY2soKTsKIAogCQkJcmV0dmFsID0gcnBtX2dldF9z
-dXBwbGllcnMoZGV2KTsKQEAgLTM1NSw3ICszNTksMjEgQEAgc3RhdGljIGludCBfX3JwbV9jYWxs
-YmFjayhpbnQgKCpjYikoc3RydQogCiAJaWYgKGRldi0+cG93ZXIuaXJxX3NhZmUpIHsKIAkJc3Bp
-bl9sb2NrKCZkZXYtPnBvd2VyLmxvY2spOworCX0gaWYgKCF1c2VfbGlua3MpIHsKKwkJc3Bpbl9s
-b2NrX2lycSgmZGV2LT5wb3dlci5sb2NrKTsKIAl9IGVsc2UgeworCQlib29sIHB1dDsKKworCQlz
-cGluX2xvY2tfaXJxKCZkZXYtPnBvd2VyLmxvY2spOworCisJCXB1dCA9IGRldi0+cG93ZXIucnVu
-dGltZV9zdGF0dXMgPT0gUlBNX1NVU1BFTkRJTkcgJiYgIXJldHZhbDsKKwkJaWYgKHB1dCkKKwkJ
-CV9fdXBkYXRlX3J1bnRpbWVfc3RhdHVzKGRldiwgUlBNX1NVU1BFTkRFRCk7CisJCWVsc2UKKwkJ
-CXB1dCA9IGRldi0+cG93ZXIucnVudGltZV9zdGF0dXMgPT0gUlBNX1JFU1VNSU5HICYmIHJldHZh
-bDsKKworCQlzcGluX3VubG9ja19pcnEoJmRldi0+cG93ZXIubG9jayk7CisKIAkJLyoKIAkJICog
-SWYgdGhlIGRldmljZSBpcyBzdXNwZW5kaW5nIGFuZCB0aGUgY2FsbGJhY2sgaGFzIHJldHVybmVk
-CiAJCSAqIHN1Y2Nlc3MsIGRyb3AgdGhlIHVzYWdlIGNvdW50ZXJzIG9mIHRoZSBzdXBwbGllcnMg
-dGhhdCBoYXZlCkBAIC0zNjMsOSArMzgxLDcgQEAgc3RhdGljIGludCBfX3JwbV9jYWxsYmFjayhp
-bnQgKCpjYikoc3RydQogCQkgKgogCQkgKiBEbyB0aGF0IGlmIHJlc3VtZSBmYWlscyB0b28uCiAJ
-CSAqLwotCQlpZiAodXNlX2xpbmtzCi0JCSAgICAmJiAoKGRldi0+cG93ZXIucnVudGltZV9zdGF0
-dXMgPT0gUlBNX1NVU1BFTkRJTkcgJiYgIXJldHZhbCkKLQkJICAgIHx8IChkZXYtPnBvd2VyLnJ1
-bnRpbWVfc3RhdHVzID09IFJQTV9SRVNVTUlORyAmJiByZXR2YWwpKSkgeworCQlpZiAocHV0KSB7
-CiAJCQlpZHggPSBkZXZpY2VfbGlua3NfcmVhZF9sb2NrKCk7CiAKICBmYWlsOgoKCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+> If YTR can't be turned off, then according to the AFBC spec - correct.
+
+There is no public AFBC spec, so I'm not sure how to respond to this.
+
+> If the hardware allows it to be configured to use YTR with other
+> component orders, I don't know exactly what the impact would be -
+> maybe nothing.
+
+It's legal to use YTR with a BGR framebuffer regardless of the content
+of the framebuffer, yes? Could I postprocess with the following shader?
+
+	void main() {
+		vec4 colour = ....;
+		gl_FragColor = colour.bgra;
+	}
+
+That's just 3D rendering. But now if I feed that rendered "BGR"
+framebuffer in I get the illusion of RGB out.
+
+Doing the colourspace conversion in hardware (with the
+GPU's component reordering) is mathematically indistinguishable from
+rendering BGR with that shader.
+
+I sympathize with reducing AFBC's combinatoric explosion, and I realize
+that the Rockchip VOP is probably wrong. I also realize that the
+transform is defined for BGR inputs, not RGB ones, so it might be
+slightly less effective for real content. But it seems to me allowing
+both BGR+YTR and RGB+YTR upstream is the better route than simply
+preventing hardware from using AFBC at all, and there are natural
+encodings for both with fourcc modifiers.
+
+Maybe there's a deeper reason to require BGR that I'm missing? Please
+let me know if I've misunderstood, I only know AFBC from the GPU side.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
