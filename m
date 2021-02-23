@@ -2,56 +2,70 @@ Return-Path: <SRS0=ad98=HZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CB00C433E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:23:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5439FC433E9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88CC864E02
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:23:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88CC864E02
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id A008764E4B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A008764E4B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dy41aNC1FjhVZeVLKMoTblTi3Pl9//tk+4IsVXMjIcU=; b=SRgAstJGXpqQvarIaMfb1i66J
-	5U0JKLAwACvqMBf02iHdh9z9Rc6jaoBG9WQzA+OQqKFRf+grjxnitf3LJZa4agiO/zKNDux3mIV/3
-	RFnkAc/IwRvXqy2nngX+d2fnOPJDywgVUYvtHAaksUkAkJYdOtJJNkoELHcOnjBVMpKgoy0GqtX5W
-	L1P/u+6rgfkb9UmYCZFUUaxQiOrtOk6vAKh7J5X9Kf/A5tW1GhahtyoFt8T040JIg43IE3WAiliQ+
-	V+IbU556RRf+yO1WXpeSFnZLNnSxpGIuIFIKzWZRejhqDOlqvjadH9ND2DImB8Tb2RG55/tdWGNaS
-	gshpxABkg==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r+HaQRE5cWmnDNomdy/8Q3Zz2AZDfuqDvR76zEh6YgU=; b=YRSSlHTllahuuYXb7aB++5Skpp
+	8+eaCKyRNqW8IG7ejNxu4adWGatotx9cvNaArHKtJ0ipKNYX5ReuwMoOwW8xoyrRylDeRBFe0VXgV
+	4Kmn71DgqFH7dT8mb5qDUmo/S+pstwAQD38tlv0PvFc9faZXyg8HKV19vyP/PgiKZJ4ek22b/X4D7
+	UHOsn7gtBZiaGeZeYbTpKr6hS2E1DjFOtDJjz9ZhOOs62qiDEY1VBgfD8sD6/wqBzMaEGELQTclxo
+	Neye4Ocy60cwedUhTFw0sDD+Jl1xEXn+YQEDigxns1b8xVnta4bnOIS1Q1WTSAookvWld+Nuqw5uZ
+	ZJqtlz5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lETBH-0008W9-Pg; Tue, 23 Feb 2021 08:36:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lEUOX-0005Zp-4q; Tue, 23 Feb 2021 09:54:17 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lETBF-0008Vl-6B
- for linux-rockchip@lists.infradead.org; Tue, 23 Feb 2021 08:36:30 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lETB7-0007rd-72; Tue, 23 Feb 2021 09:36:21 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linus.walleij@linaro.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH] pinctrl: rockchip: fix restore error in resume
-Date: Tue, 23 Feb 2021 09:36:20 +0100
-Message-ID: <30831879.43St1lv6Oq@diego>
-In-Reply-To: <20210223064807.121358-1-jay.xu@rock-chips.com>
-References: <20210223064807.121358-1-jay.xu@rock-chips.com>
-MIME-Version: 1.0
+ id 1lEUOP-0005Wg-Ec; Tue, 23 Feb 2021 09:54:10 +0000
+Received: from localhost (unknown [192.168.167.130])
+ by lucky1.263xmail.com (Postfix) with ESMTP id DA6D7A7521;
+ Tue, 23 Feb 2021 17:53:55 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P21323T140439055234816S1614074035264055_; 
+ Tue, 23 Feb 2021 17:53:56 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <4718419ea0cf12351627ef3878a0b8c1>
+X-RL-SENDER: zhangqing@rock-chips.com
+X-SENDER: zhangqing@rock-chips.com
+X-LOGIN-NAME: zhangqing@rock-chips.com
+X-FST-TO: sboyd@kernel.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: sboyd@kernel.org,
+	heiko@sntech.de
+Subject: [PATCH v1 0/4] clk: rockchip: add clock controller for rk3568
+Date: Tue, 23 Feb 2021 17:53:48 +0800
+Message-Id: <20210223095352.11544-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210223_033629_262918_78B02AA0 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20210223_045409_779931_0B390013 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,61 +78,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
- Wang Panzhenzhuan <randy.wang@rock-chips.com>,
- linux-rockchip@lists.infradead.org
+Cc: huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-kernel@vger.kernel.org, kever.yang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, tony.xie@rock-chips.com,
+ finley.xiao@rock-chips.com, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, cl@rock-chips.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 23. Februar 2021, 07:48:07 CET schrieb Jianqun Xu:
-> From: Wang Panzhenzhuan <randy.wang@rock-chips.com>
-> 
-> The restore in resume should match to suspend which only set for RK3288
-> SoCs pinctrl.
-> 
-> Fixes: 8dca933127024 ("pinctrl: rockchip: save and restore gpio6_c6 pinmux in suspend/resume")
-> Reviewed-by: Jianqun Xu <jay.xu@rock-chips.com>
-> Signed-off-by: Wang Panzhenzhuan <randy.wang@rock-chips.com>
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Add the clock tree definition for the new rk3568 SoC
 
-Very good catch. Writing something to that register even on non-rk3288 socs
-probably can cause strange effects.
+Elaine Zhang (4):
+  dt-bindings: add bindings for rk3568 clock controller
+  clk: rockchip: add dt-binding header for rk3568
+  clk: rockchip: support more core div setting
+  clk: rockchip: add clock controller for rk3568
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+ .../bindings/clock/rockchip,rk3568-cru.txt    |   66 +
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-cpu.c                |   25 +
+ drivers/clk/rockchip/clk-rk3568.c             | 1724 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   45 +-
+ include/dt-bindings/clock/rk3568-cru.h        |  926 +++++++++
+ 7 files changed, 2793 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.txt
+ create mode 100644 drivers/clk/rockchip/clk-rk3568.c
+ create mode 100644 include/dt-bindings/clock/rk3568-cru.h
 
-> ---
->  drivers/pinctrl/pinctrl-rockchip.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index aa1a1c850d05..53a0badc6b03 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -3727,12 +3727,15 @@ static int __maybe_unused rockchip_pinctrl_suspend(struct device *dev)
->  static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
->  {
->  	struct rockchip_pinctrl *info = dev_get_drvdata(dev);
-> -	int ret = regmap_write(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
-> -			       rk3288_grf_gpio6c_iomux |
-> -			       GPIO6C6_SEL_WRITE_ENABLE);
-> +	int ret;
->  
-> -	if (ret)
-> -		return ret;
-> +	if (info->ctrl->type == RK3288) {
-> +		ret = regmap_write(info->regmap_base, RK3288_GRF_GPIO6C_IOMUX,
-> +				   rk3288_grf_gpio6c_iomux |
-> +				   GPIO6C6_SEL_WRITE_ENABLE);
-> +		if (ret)
-> +			return ret;
-> +	}
->  
->  	return pinctrl_force_default(info->pctl_dev);
->  }
-> 
-
+-- 
+2.17.1
 
 
 
