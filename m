@@ -2,42 +2,42 @@ Return-Path: <SRS0=ad98=HZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5439FC433E9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A566C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A008764E4B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A008764E4B
+	by mail.kernel.org (Postfix) with ESMTPS id BD7C864E02
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 09:54:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD7C864E02
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=r+HaQRE5cWmnDNomdy/8Q3Zz2AZDfuqDvR76zEh6YgU=; b=YRSSlHTllahuuYXb7aB++5Skpp
-	8+eaCKyRNqW8IG7ejNxu4adWGatotx9cvNaArHKtJ0ipKNYX5ReuwMoOwW8xoyrRylDeRBFe0VXgV
-	4Kmn71DgqFH7dT8mb5qDUmo/S+pstwAQD38tlv0PvFc9faZXyg8HKV19vyP/PgiKZJ4ek22b/X4D7
-	UHOsn7gtBZiaGeZeYbTpKr6hS2E1DjFOtDJjz9ZhOOs62qiDEY1VBgfD8sD6/wqBzMaEGELQTclxo
-	Neye4Ocy60cwedUhTFw0sDD+Jl1xEXn+YQEDigxns1b8xVnta4bnOIS1Q1WTSAookvWld+Nuqw5uZ
-	ZJqtlz5A==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C1WRuvFiPWkLmRlVkPo25NgJ9LL0iEyrQuhCqNwE6Xs=; b=tOz/P5vWJuh+ImYtXWKf0bIFfT
+	MLzfxD7k4ClWIYXJBtFXeA/lEFIO9/s3hAGILGDeUmrR9YSwuhipuifGTA7w8KkOGXU/ziZTT1Dyx
+	dFaaiMADM1PrDEpcy5nZtz0zYNJGCucuRsLlqnKOR4MJDRRR9RU0CE26+foQukIX8Fawj74cCnu3B
+	OGy1Xtn7nI/BA4bXWbsmA8RPgdo5hKVHn8Q1qTkzf0uSzKAD+pZVjmJDzPShBhTZAS6WXb2H3tTt6
+	s36wB79RmmLokePoXzkZPu84vs2bqbbLdi/SVNoSuu0t9uVps+wammHLK1hybbTCF5MGVmPAAynIV
+	rxB2ky2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEUOX-0005Zp-4q; Tue, 23 Feb 2021 09:54:17 +0000
+	id 1lEUOX-0005Zy-Qg; Tue, 23 Feb 2021 09:54:17 +0000
 Received: from lucky1.263xmail.com ([211.157.147.135])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEUOP-0005Wg-Ec; Tue, 23 Feb 2021 09:54:10 +0000
+ id 1lEUOP-0005Vc-E3; Tue, 23 Feb 2021 09:54:10 +0000
 Received: from localhost (unknown [192.168.167.130])
- by lucky1.263xmail.com (Postfix) with ESMTP id DA6D7A7521;
- Tue, 23 Feb 2021 17:53:55 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id B2488A7361;
+ Tue, 23 Feb 2021 17:53:56 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P21323T140439055234816S1614074035264055_; 
- Tue, 23 Feb 2021 17:53:56 +0800 (CST)
+ Tue, 23 Feb 2021 17:53:57 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <4718419ea0cf12351627ef3878a0b8c1>
+X-UNIQUE-TAG: <a34d75881c57d64c6536b0a15fa6bede>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -59,13 +59,15 @@ X-System-Flag: 0
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: sboyd@kernel.org,
 	heiko@sntech.de
-Subject: [PATCH v1 0/4] clk: rockchip: add clock controller for rk3568
-Date: Tue, 23 Feb 2021 17:53:48 +0800
-Message-Id: <20210223095352.11544-1-zhangqing@rock-chips.com>
+Subject: [PATCH v1 1/4] dt-bindings: add bindings for rk3568 clock controller
+Date: Tue, 23 Feb 2021 17:53:49 +0800
+Message-Id: <20210223095352.11544-2-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210223095352.11544-1-zhangqing@rock-chips.com>
+References: <20210223095352.11544-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210223_045409_779931_0B390013 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20210223_045409_973505_351CC4C8 
+X-CRM114-Status: GOOD (  15.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,26 +91,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the clock tree definition for the new rk3568 SoC
+Add devicetree bindings for Rockchip cru which found on
+Rockchip SoCs.
 
-Elaine Zhang (4):
-  dt-bindings: add bindings for rk3568 clock controller
-  clk: rockchip: add dt-binding header for rk3568
-  clk: rockchip: support more core div setting
-  clk: rockchip: add clock controller for rk3568
-
- .../bindings/clock/rockchip,rk3568-cru.txt    |   66 +
- drivers/clk/rockchip/Kconfig                  |    7 +
- drivers/clk/rockchip/Makefile                 |    1 +
- drivers/clk/rockchip/clk-cpu.c                |   25 +
- drivers/clk/rockchip/clk-rk3568.c             | 1724 +++++++++++++++++
- drivers/clk/rockchip/clk.h                    |   45 +-
- include/dt-bindings/clock/rk3568-cru.h        |  926 +++++++++
- 7 files changed, 2793 insertions(+), 1 deletion(-)
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+---
+ .../bindings/clock/rockchip,rk3568-cru.txt    | 66 +++++++++++++++++++
+ 1 file changed, 66 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.txt
- create mode 100644 drivers/clk/rockchip/clk-rk3568.c
- create mode 100644 include/dt-bindings/clock/rk3568-cru.h
 
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.txt
+new file mode 100644
+index 000000000000..b1119aecb7c7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.txt
+@@ -0,0 +1,66 @@
++* Rockchip RK3568 Clock and Reset Unit
++
++The RK3568 clock controller generates and supplies clock to various
++controllers within the SoC and also implements a reset controller for SoC
++peripherals.
++
++Required Properties:
++
++- compatible: PMU for CRU should be "rockchip,rk3568-pmucru"
++- compatible: CRU should be "rockchip,rk3568-cru"
++- reg: physical base address of the controller and length of memory mapped
++  region.
++- #clock-cells: should be 1.
++- #reset-cells: should be 1.
++
++Optional Properties:
++
++- rockchip,grf: phandle to the syscon managing the "general register files"
++  If missing, pll rates are not changeable, due to the missing pll lock status.
++
++Each clock is assigned an identifier and client nodes can use this identifier
++to specify the clock which they consume. All available clocks are defined as
++preprocessor macros in the dt-bindings/clock/rk3568-cru.h headers and can be
++used in device tree sources. Similar macros exist for the reset sources in
++these files.
++
++External clocks:
++
++There are several clocks that are generated outside the SoC. It is expected
++that they are defined using standard clock bindings with following
++clock-output-names:
++ - "xin24m" - crystal input - required,
++ - "xin32k" - rtc clock - optional,
++ - "i2sx_mclkin" - external I2S clock - optional,
++ - "xin_osc0_usbphyx_g" - external USBPHY clock - optional,
++ - "xin_osc0_mipidsiphyx_g" - external MIPIDSIPHY clock - optional,
++
++Example: Clock controller node:
++
++	pmucru: clock-controller@fdd00000 {
++		compatible = "rockchip,rK3568-pmucru";
++		reg = <0x0 0xfdd00000 0x0 0x1000>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
++	cru: clock-controller@fdd20000 {
++		compatible = "rockchip,rK3568-cru";
++		reg = <0x0 0xfdd20000 0x0 0x1000>;
++		rockchip,grf = <&grf>;
++		#clock-cells = <1>;
++		#reset-cells = <1>;
++	};
++
++Example: UART controller node that consumes the clock generated by the clock
++  controller:
++
++	uart1: serial@fe650000 {
++		compatible = "rockchip,rK3568-uart", "snps,dw-apb-uart";
++		reg = <0x0 0xfe650000 0x0 0x100>;
++		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
++		reg-shift = <2>;
++		reg-io-width = <4>;
++		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
++		clock-names = "baudclk", "apb_pclk";
++	};
 -- 
 2.17.1
 
