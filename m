@@ -2,20 +2,19 @@ Return-Path: <SRS0=ad98=HZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E8B7C433DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 14:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3B50C433DB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 14:31:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0AC1F64E5C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 14:27:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0AC1F64E5C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fooishbar.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4C70E64E58
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Feb 2021 14:31:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C70E64E58
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,59 +22,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=//Rye675SzcIxloPU0MqF1UVMG3iyCXTVvDuW07bCZ4=; b=1nI6PO3cWxm8xbkal6eF/cWnD
-	iGl21nyNGtzolfjEjoiyEPE+NWAsZ8SEp8iIVTyNBnG20j97maV4/jvk+NY7GsLTr+Zz6xMivRdXq
-	g1kdUGgPBeis9S8xunIvMvyXLbDGyR3SJCSlIKsvu6B7r0gHyvjSjCXOitNp8xsnPPZkwCnsvMjE0
-	Rqms6kT3pQk9g/FwkJBVcyM6g9hrRwV75dE/vbHgJKlBfDOmAq2HB2e0t8qFaro3uDy1eP2KiTZFQ
-	wQ1U2EEfEZS+co4jjW4EqKGo9mJwLvFqRo9foE8Jl53GbCGNYm2e50l0z8JWd1si8nkUwj2x1strD
-	ROTgj9rAQ==;
+	 bh=zkVXVmFznFgy1aFko2Hld8cAbft5JzU905SHpZfLQIs=; b=uuV+ujyfStBRDOojTNlNJ8rM9
+	VUgSH3RfOgp7gMlyv/dBBNcAwTckDs0Rf4qrDMVnLPvBrbU0b+8k9aPVj7JO9dSfCOzUkP4Dk0O4g
+	XRPrhELG+bTW4wQPNefiOzX2fRRzifjMoxGrBDM17cwtJW03M+uYRHNQxSz9XQypT5Q/B441sEypM
+	dUvgKAe6TllJev+cExJDpby6OFY08Oy70K0NGLKlCnh2zvJWbDhqkGDICf0zM7KT9T+/9gMhGgBBU
+	PWfUW8cjQYwqPmhYLc0y+JZnfalFSvabap8NZ/tcNSaJJxMq4jk4x5FUf6JcjsbuL5FZIX5Nk3Aw/
+	/7h1RAVKA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEYev-0003jU-O7; Tue, 23 Feb 2021 14:27:29 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1lEYil-00042u-Ta; Tue, 23 Feb 2021 14:31:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEYes-0003hw-GW
- for linux-rockchip@lists.infradead.org; Tue, 23 Feb 2021 14:27:27 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id 7so22796310wrz.0
- for <linux-rockchip@lists.infradead.org>; Tue, 23 Feb 2021 06:27:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fooishbar-org.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Ua5mUBb1kXJwLpY5FtH2hXzt7wQx27QWyD9CzcSllG0=;
- b=z7ZK36m6RBMM+TS726upxalf8gZFlnGBsxFjQ7PnIdJnoe9hb8NLiRGixuMhgb6oN/
- /DLe0Gd4aQeV+5PrvgplISSYx3DE2ar2Jn4fpm2SOOFZWnZdahpFiXjsWCn4Eabc4RDx
- VSlke85NFhsHPwuC8yDMLOz528x+uYM4y1eVc+HygRMDX/qWKvTJgZYw7GD2JbAJrif9
- kRBLB+8sIS+2s242O8dxE8V3qVn+A68bwnNCx9ez0cJ5REIwCN+jwgYeBTuzrJ97m0Hb
- 6j/deXf5acbruC0fFa5T7ayrlXBr1ETWq9kD9RONjuDXdUfHM+GA0wLjtg37ZE4tE6n6
- 1eTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Ua5mUBb1kXJwLpY5FtH2hXzt7wQx27QWyD9CzcSllG0=;
- b=PN7W/a02oKLTmjxR9u/KII3Zhun6iwwIGYfyVDjsLcSrYWJ44annd7FUgNfin5arNa
- 3Rhup0F183vdcmBlOIZMqbfMr5Z0EqaGH9RctQsr80nQC16F+0aidfvjPTKPTcxsukhc
- M5LrTcnopwGJ8PfwQQpXGtCqz1gMj3sYmAFVwkzr4IqoXozxzZOuvUcA/Bi226TswXvr
- 8H6kzqM5tLV4aDQuQ2gv3TdYE3p0ddFHpq885lW6XROCwXcCca2kLq8qlk1obc4bADXG
- GUu4ZVBMRa1OrYP/11PQnSoQSSNlioyFRVR3XR0yNDxUfQ1uqkbKc2FumJSjSncXUV6B
- x7IQ==
-X-Gm-Message-State: AOAM53127OQVe8KZMUtqrrm2L1ufXH80U4H6hHMd9Y1s1qHWpeeVr/VT
- lXS8DHDFIxXh8Pnqp5UTaQPJmt9YZicl3iXquB67NqFhQas=
-X-Google-Smtp-Source: ABdhPJxuHX8Wvue+y5zUj/iQnNI1u4s7XcFW3kvzWr5c2h2PHW8CZFWMo1qwLSptAJKX0RMF5pnCSQeFYVP+xKFVtpQ=
-X-Received: by 2002:a05:6000:18a3:: with SMTP id
- b3mr26948488wri.373.1614090443053; 
- Tue, 23 Feb 2021 06:27:23 -0800 (PST)
+ id 1lEYih-00041C-Jt; Tue, 23 Feb 2021 14:31:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 494FD64E6C;
+ Tue, 23 Feb 2021 14:31:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1614090682;
+ bh=oqCJx8NHXStuqlV1NrC2dd7e7CMVlgeyC8oEC7KrlG0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=p2B2lsUBRUHMQNFYCxErtzkEFiHGphDbdtN+G9Z1KL0Od+TLCb52iwYAJdqum+PgU
+ Zf4xyqNbXwUKLnalc8pRRulVdsFBxpodn2mvpbb2CKBk01obkYCvpQvlTEhEO95Dtt
+ Gcq260nyEdsVrjBu3ExkixiFX7+XScq57aodHBD434enlAPaW5G8VmCQfKHIvzkX3E
+ EOomp0dz6XDte7O9k6vTuDRMPN5Us238cTFK3ZZ9uKy//EvDHmTI7/ioM/a9Q8LBQ4
+ L0I0MPFKXyqOmSLvFU+Y4Jb4so2rUjJuujJjPmXTty2oLK0kKdjEg0upNwPwPpKOeM
+ 9jsuIFnV6R8Cg==
+Received: by mail-ed1-f49.google.com with SMTP id q10so26122090edt.7;
+ Tue, 23 Feb 2021 06:31:22 -0800 (PST)
+X-Gm-Message-State: AOAM531qgprMgUVfoAITEnCQLVSsC2bfNT4kG1cbLoUxTMShEFKG+4Wa
+ MBz42hMbrXUMjNWbIzJyoS/+ByaXzfzCfSvzwQ==
+X-Google-Smtp-Source: ABdhPJyYhIvQsC2FuZjzr5FowQAASKFykbjYyZN9ovf0Da99A769RxD3C30Z3RZmtSjSV1KoZikYqHKwpHOh5s+qPbE=
+X-Received: by 2002:a05:6402:164e:: with SMTP id
+ s14mr15513878edx.62.1614090680626; 
+ Tue, 23 Feb 2021 06:31:20 -0800 (PST)
 MIME-Version: 1.0
-References: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
-In-Reply-To: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 23 Feb 2021 14:27:11 +0000
-Message-ID: <CAPj87rMS5zxY6sK4N8zVZF9MHThmURj6kuso=G5+MQDVmNjC4Q@mail.gmail.com>
-Subject: Re: [PATCH] drm/rockchip: Require the YTR modifier for AFBC
-To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+References: <20210222122406.41782-1-benjamin.gaignard@collabora.com>
+ <20210222122406.41782-9-benjamin.gaignard@collabora.com>
+ <20210223003442.GA2516123@robh.at.kernel.org>
+ <25f30110-d655-2d77-d3b7-30c1c61f6965@collabora.com>
+In-Reply-To: <25f30110-d655-2d77-d3b7-30c1c61f6965@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 23 Feb 2021 08:31:08 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJGZK2C8mcDiYa4yfKxf4sKykxSQ-Nfr4bi_u_OcAxW_Q@mail.gmail.com>
+Message-ID: <CAL_JsqJGZK2C8mcDiYa4yfKxf4sKykxSQ-Nfr4bi_u_OcAxW_Q@mail.gmail.com>
+Subject: Re: [PATCH v3 8/9] dt-bindings: media: nxp,
+ imx8mq-vpu: Update bindings
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210223_092726_717193_E0D8FEB5 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20210223_093123_804991_EF0F3B54 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,69 +82,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- linux-rockchip <linux-rockchip@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Peng Fan <peng.fan@nxp.com>, Collabora Kernel ML <kernel@collabora.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Chen-Yu Tsai <wens@csie.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, 12 Aug 2020 at 08:05, Alyssa Rosenzweig
-<alyssa.rosenzweig@collabora.com> wrote:
-> The AFBC decoder used in the Rockchip VOP assumes the use of the
-> YUV-like colourspace transform (YTR). YTR is lossless for RGB(A)
-> buffers, which covers the RGBA8 and RGB565 formats supported in
-> vop_convert_afbc_format. Use of YTR is signaled with the
-> AFBC_FORMAT_MOD_YTR modifier, which prior to this commit was missing. As
-> such, a producer would have to generate buffers that do not use YTR,
-> which the VOP would erroneously decode as YTR, leading to severe visual
-> corruption.
->
-> The upstream AFBC support was developed against a captured frame, which
-> failed to exercise modifier support. Prior to bring-up of AFBC in Mesa
-> (in the Panfrost driver), no open userspace respected modifier
-> reporting. As such, this change is not expected to affect broken
-> userspaces.
->
-> Tested on RK3399 with Panfrost and Weston.
-
-Bumping this one: it seems like the Rockchip VOP either always applies
-the YTR transform, or has a YTR control bit which is not documented in
-the driver's register definitions. This means that it is incorrect to
-advertise the currently-used modifier, which specifies that YTR is
-_not_ used, and doing so breaks Panfrost which correctly uses the
-modifier as documented. Based on our knowledge of Mali, we believe
-that Panfrost is correct, and the error lies with Rockchip erroneously
-using the YTR transform in the VOP's AFBC decoder despite declaring
-through the modifier that YTR is not in use.
-
-Looking at the downstream vendor tree, VOP2 as used in newer SoCs has
-explicit control bits for YTR and other AFBC knobs, but this has been
-substantially reworked from the original VOP and is not applicable to
-this IP block.
-
-Mark, or others from Rockchip, can you please:
-- explain if there is a way to enable/disable the YTR transform in the
-VOP's AFBC decoder, similar to the split-block control bit?
-- ack this patch which correctly declares that the YTR transform is in
-use in order to make Panfrost work, so it can be merged through
-drm-misc, or provide another solution which fixes this API mistake?
-- if VOP does have a hidden YTR-disable bit, add support to disable
-YTR so rockchip-drm can continue advertising the non-YTR modifier, and
-Cc this patch for backporting to every kernel tree which declares AFBC
-modifier support?
-
-Thanks in advance.
-
-Cheers,
-Daniel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBGZWIgMjMsIDIwMjEgYXQgMjowNCBBTSBCZW5qYW1pbiBHYWlnbmFyZAo8YmVuamFt
+aW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4KPgo+IExlIDIzLzAyLzIwMjEgw6Ag
+MDE6MzQsIFJvYiBIZXJyaW5nIGEgw6ljcml0IDoKPiA+IE9uIE1vbiwgRmViIDIyLCAyMDIxIGF0
+IDAxOjI0OjA1UE0gKzAxMDAsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+ID4+IFRoZSBjdXJy
+ZW50IGJpbmRpbmdzIHNlZW0gdG8gbWFrZSB0aGUgYXNzdW1wdGlvbiB0aGF0IHRoZQo+ID4+IHR3
+byBWUFVzIGhhcmR3YXJlIGJsb2NrcyAoRzEgYW5kIEcyKSBhcmUgb25seSBvbmUgc2V0IG9mCj4g
+Pj4gcmVnaXN0ZXJzLgo+ID4+IEFmdGVyIGltcGxlbWVudGluZyB0aGUgVlBVIHJlc2V0IGRyaXZl
+ciBhbmQgRzIgZGVjb2RlciBkcml2ZXIKPiA+PiBpdCBzaG93cyB0aGF0IGFsbCB0aGUgVlBVcyBh
+cmUgaW5kZXBlbmRlbnQgYW5kIGRvbid0IG5lZWQgdG8KPiA+PiBrbm93IGFib3V0IHRoZSByZWdp
+c3RlcnMgb2YgdGhlIG90aGVyIGJsb2Nrcy4KPiA+PiBSZW1vdmUgZnJvbSB0aGUgYmluZGluZ3Mg
+dGhlIG5lZWQgdG8gc2V0IGFsbCBibG9ja3MgcmVnaXN0ZXIKPiA+PiBidXQga2VlcCByZWctbmFt
+ZXMgcHJvcGVydHkgYmVjYXVzZSByZW1vdmluZyBpdCBmcm9tIHRoZSBkcml2ZXIKPiA+PiBtYXkg
+YWZmZWN0IG90aGVyIHZhcmlhbnRzLgo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogQmVuamFtaW4g
+R2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4gPj4gLS0tCj4gPj4g
+dmVyc2lvbiAyOgo+ID4+IC0gYmUgbW9yZSB2ZXJib3NlIGFib3V0IHdoeSBJIGNoYW5nZSB0aGUg
+YmluZGluZ3MKPiA+PiBLZWVwIGluIG1pbmQgdGhhdCBzZXJpZXMgY29tZXMgYWZ0ZXI6IGh0dHBz
+Oi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2FybS1rZXJuZWwvbXNnODc1NzY2Lmh0bWwKPiA+PiB3
+aXRob3V0IHRoYXQgcmV2aWV3IGFuZCBhY2sgaXQgd29uJ3Qgd29yawo+ID4gQmV0dGVyLCBidXQg
+eW91J3ZlIHN0aWxsIG1lbnRpb25lZCBub3RoaW5nIGFib3V0IGJyZWFraW5nIGNvbXBhdGliaWxp
+dHkuCj4gPiBXaHkgaXMgdGhhdCBva2F5Pwo+Cj4gQmVjYXVzZSB0aGlzIHJlZy1uYW1lcyB3YXNu
+J3QgdXNlZCBiZWZvcmUgZm9yIHRoaXMgdmFyaWFudCBzbyByZW1vdmUgaXQgd29uJ3QgY2hhbmdl
+IGFueXRoaW5nLgoKSXQgaXMgdGhlIHJlc2V0IGNoYW5nZXMgaW4gdGhlIGRyaXZlciB0aGF0IGJy
+ZWFrLiBUaGUgZHJpdmVyCnByZXZpb3VzbHkgZ290IHRoZSAnY3RybCcgcmVnaXN0ZXJzIHdoZXRo
+ZXIgaXQgd2VudCBieSBuYW1lIG9yIGluZGV4LApyaWdodD8gV2l0aCBhbiBvbGQgRFRCIGFuZCBh
+IGtlcm5lbCB3aXRoIHRoZSBjaGFuZ2VzIChhbmQgdmljZS12ZXJzYSksCnlvdSdsbCBoYXZlIG5v
+dGhpbmcgdG8gaGFuZGxlIHRoZSBWUFUgcmVzZXRzIGJlY2F1c2UgdGhlIFZQVSByZXNldApub2Rl
+IGRvZXNuJ3QgZXhpc3QuIEl0IGNvdWxkIHdvcmsgaWYgdGhlIGRlZmF1bHQgc3RhdGUgaXMgbm90
+IGhlbGQgaW4KcmVzZXQuCgpBdCBsZWFzdCB0aGUgcmVtb3ZhbCBvZiAnY3RybCcgcmVnaXN0ZXJz
+IGJlbG9uZ3MgaW4gdGhlIHJlc2V0IGNoYW5nZXMgc2VyaWVzLgoKUm9iCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
