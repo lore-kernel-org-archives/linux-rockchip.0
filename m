@@ -2,59 +2,74 @@ Return-Path: <SRS0=b48f=H2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5EA0C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 11:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AC1FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 11:39:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 173B06023C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 11:34:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 173B06023C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 1367764DAF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 11:39:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1367764DAF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LwDZVijZtkjzKYPk6aBCeBPJsgsvxxBkBEZp9XL+iHY=; b=Ae+At3cfa7EiDDacE6gDsIGB8
-	o7entq+V0fhJLeAVkzwNi08GUjyEoooH00p6UW09xNSyeeEXjtLCUSpxxbT4YXUDHVeXsBt8Y4bWe
-	DvJXVJBR5DT4FbpIbsAA76RpIPCjhk1pav3RwL9oeMgCVlkhEJ15lU1xqX7k50QhYopNsgEzjA29l
-	4vyT77rAun4jSX/OIibXfY8b6WQZM/n7vJ/oGKx2UvpHaX9Fo4F7eRyTQlnO6m18KHNhr8Hmm3tb1
-	G+IMUvqZr2UeyLHEGk+RXa/3/2V1Iu2HfuZXjiPPUBXsNUqao3Y7naLSGCT2weLqeJa/PJkKPhiDI
-	TRJeOy/Ag==;
+	 bh=BEc7aIC4+49hXF+HDUE/coZ4W/mhEaNGaRPjXLLlG+A=; b=lzigWUp05sL1GksVcNm3dMr/O
+	rc+jGuHSBuCW6f40cV59OPVQmhdLbSFV1fgb8zPSrLiJJ1l0bAADbKN/ug/W07w9ESadZjPzcrZRm
+	sZuvP7myCNoM4h9se0BkeNtwChP0mBAewOvyZ5m+doqfXnrc1mdf9hsx6NZR0QKlpcgruZ39IuekE
+	yAVDyy/HKHglll3OV2I6ZQeWEQuTZXvsFdaXTziayal2QSvmRzePVB6zAgFTW0CAT3YIpfBfwyWiv
+	K1Ch//cY+NgUDjUWwwdU+zSaKPjbjLa/KHdgprry1e6z7sVdlsewS4oOCqGPKhGJPtgZjQ3ojT4EN
+	Z2xRo3YNA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEsQe-0005L2-Gr; Wed, 24 Feb 2021 11:34:04 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1lEsW5-0005qI-EB; Wed, 24 Feb 2021 11:39:41 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEsQX-0005Jc-Nj; Wed, 24 Feb 2021 11:34:00 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id B158DADE5;
- Wed, 24 Feb 2021 11:33:47 +0000 (UTC)
-Subject: Re: [PATCH v3 01/11] drm/atomic: Pass the full state to planes async
- atomic check and update
-To: Maxime Ripard <maxime@cerno.tech>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>
-References: <20210219120032.260676-1-maxime@cerno.tech>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <cead3a20-08cf-78a4-88a9-c6b6697bd8b8@suse.de>
-Date: Wed, 24 Feb 2021 12:33:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ id 1lEsW0-0005pW-9z
+ for linux-rockchip@lists.infradead.org; Wed, 24 Feb 2021 11:39:39 +0000
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 40C4DD03E4;
+ Wed, 24 Feb 2021 19:39:21 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P19729T140185249511168S1614166760382237_; 
+ Wed, 24 Feb 2021 19:39:21 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <3b4db46f3d6d629764889d565e9b9203>
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: linus.walleij@linaro.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: linus.walleij@linaro.org,
+	heiko@sntech.de
+Subject: [PATCH v2] pinctrl: rockchip: add support for rk3568
+Date: Wed, 24 Feb 2021 19:39:18 +0800
+Message-Id: <20210224113918.957738-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210223072419.123308-1-jay.xu@rock-chips.com>
+References: <20210223072419.123308-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20210219120032.260676-1-maxime@cerno.tech>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_063358_019613_DB82C9E4 
-X-CRM114-Status: GOOD (  30.44  )
+X-CRM114-CacheID: sfid-20210224_063937_139777_51A4D621 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,749 +82,457 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Leo Li <sunpeng.li@amd.com>,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
- Sean Paul <sean@poorly.run>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============1744362123062031961=="
+Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
+ linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1744362123062031961==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d"
+RK3568 SoCs have 5 gpio controllers, each gpio has 32 pins. GPIO supports
+set iomux, pull, drive strength, schmitt and slew rate.
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d
-Content-Type: multipart/mixed; boundary="lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Maxime Ripard <maxime@cerno.tech>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Daniel Vetter <daniel.vetter@intel.com>, David Airlie <airlied@linux.ie>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Leo Li <sunpeng.li@amd.com>,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
- Alex Deucher <alexander.deucher@amd.com>, freedreno@lists.freedesktop.org,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <cead3a20-08cf-78a4-88a9-c6b6697bd8b8@suse.de>
-Subject: Re: [PATCH v3 01/11] drm/atomic: Pass the full state to planes async
- atomic check and update
-References: <20210219120032.260676-1-maxime@cerno.tech>
-In-Reply-To: <20210219120032.260676-1-maxime@cerno.tech>
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+changes since v1:
+  suggested by Heiko, thank for heiko
+- modify _GENMASK to WRITE_MASK_VAL, and add comment for the define
+- modify MR_GRF to RK_MUXROUTE_GRF, also for MR_SAME and MR_PMU
+- add comment for pull setting for GPIO0_D0-D6
 
---lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+ drivers/pinctrl/pinctrl-rockchip.c | 319 ++++++++++++++++++++++++++++-
+ 1 file changed, 317 insertions(+), 2 deletions(-)
 
-Hi Maxime,
-
-for the whole series:
-
-Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-Am 19.02.21 um 13:00 schrieb Maxime Ripard:
-> The current atomic helpers have either their object state being passed =
-as
-> an argument or the full atomic state.
->=20
-> The former is the pattern that was done at first, before switching to t=
-he
-> latter for new hooks or when it was needed.
->=20
-> Let's start convert all the remaining helpers to provide a consistent
-> interface, starting with the planes atomic_async_check and
-> atomic_async_update.
->=20
-> The conversion was done using the coccinelle script below, built tested=
- on
-> all the drivers.
->=20
-> @@
-> identifier plane, plane_state;
-> symbol state;
-> @@
->=20
->   struct drm_plane_helper_funcs {
->   	...
-> 	int (*atomic_async_check)(struct drm_plane *plane,
-> -				  struct drm_plane_state *plane_state);
-> +				  struct drm_atomic_state *state);
-> 	...
->   }
->=20
-> @@
-> identifier plane, plane_state;
-> symbol state;
-> @@
->   struct drm_plane_helper_funcs {
->   	...
-> 	void (*atomic_async_update)(struct drm_plane *plane,
-> -				    struct drm_plane_state *plane_state);
-> +				    struct drm_atomic_state *state);
-> 	...
->   }
->=20
-> @ plane_atomic_func @
-> identifier helpers;
-> identifier func;
-> @@
->=20
-> (
->   static const struct drm_plane_helper_funcs helpers =3D {
-> 	...,
->   	.atomic_async_check =3D func,
-> 	...,
->   };
-> |
->   static const struct drm_plane_helper_funcs helpers =3D {
->   	...,
->   	.atomic_async_update =3D func,
->   	...,
->   };
-> )
->=20
-> @@
-> struct drm_plane_helper_funcs *FUNCS;
-> identifier f;
-> identifier dev;
-> identifier plane, plane_state, state;
-> @@
->=20
->   f(struct drm_device *dev, struct drm_atomic_state *state)
->   {
->   	<+...
-> -	FUNCS->atomic_async_check(plane, plane_state)
-> +	FUNCS->atomic_async_check(plane, state)
->   	...+>
->   }
->=20
-> @@
-> struct drm_plane_helper_funcs *FUNCS;
-> identifier f;
-> identifier dev;
-> identifier plane, plane_state, state;
-> @@
->=20
->   f(struct drm_device *dev, struct drm_atomic_state *state)
->   {
->   	<+...
-> -	FUNCS->atomic_async_update(plane, plane_state)
-> +	FUNCS->atomic_async_update(plane, state)
->   	...+>
->   }
->=20
-> @@
-> identifier mtk_plane_atomic_async_update;
-> identifier plane;
-> symbol new_state, state;
-> expression e;
-> @@
->=20
->    void mtk_plane_atomic_async_update(struct drm_plane *plane, struct d=
-rm_plane_state *new_state)
-> {
->    ...
-> - struct mtk_plane_state *state =3D e;
-> + struct mtk_plane_state *new_plane_state =3D e;
->    <+...
-> -       state
-> +       new_plane_state
->    ...+>
->    }
->=20
-> @@
-> identifier plane_atomic_func.func;
-> identifier plane;
-> symbol state;
-> @@
->=20
->   func(struct drm_plane *plane,
-> -    struct drm_plane_state *state)
-> +    struct drm_plane_state *new_plane_state)
->   {
-> 	<...
-> -	state
-> +	new_plane_state
-> 	...>
->   }
->=20
-> @ ignores_new_state @
-> identifier plane_atomic_func.func;
-> identifier plane, new_plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_plane_state *new_plane_state=
-)
->   {
-> 	... when !=3D new_plane_state
->   }
->=20
-> @ adds_new_state depends on plane_atomic_func && !ignores_new_state @
-> identifier plane_atomic_func.func;
-> identifier plane, new_plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_plane_state *new_plane_state=
-)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state, plane);
->   	...
->   }
->=20
-> @ depends on plane_atomic_func @
-> identifier plane_atomic_func.func;
-> identifier plane, plane_state;
-> @@
->=20
->   func(struct drm_plane *plane,
-> -     struct drm_plane_state *plane_state
-> +     struct drm_atomic_state *state
->       )
->   { ... }
->=20
-> @ include depends on adds_new_state @
-> @@
->=20
->   #include <drm/drm_atomic.h>
->=20
-> @ no_include depends on !include && adds_new_state @
-> @@
->=20
-> + #include <drm/drm_atomic.h>
->    #include <drm/...>
->=20
-> @@
-> identifier plane_atomic_func.func;
-> identifier plane, state;
-> identifier plane_state;
-> @@
->=20
->   func(struct drm_plane *plane, struct drm_atomic_state *state) {
->          ...
->          struct drm_plane_state *plane_state =3D drm_atomic_get_new_pla=
-ne_state(state, plane);
->          <+...
-> -       plane_state->state
-> +       state
->          ...+>
->   }
->=20
-> Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Signed-off-by: Maxime Ripard <maxime@cerno.tech>
->=20
-> ---
->=20
-> Changes from v1:
->    - Updated the comment according to Thomas suggestions
-> ---
->   .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  8 ++-
->   drivers/gpu/drm/drm_atomic_helper.c           |  4 +-
->   drivers/gpu/drm/mediatek/mtk_drm_plane.c      | 26 +++++----
->   drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c    | 33 ++++++-----
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c   | 16 ++++--
->   drivers/gpu/drm/vc4/vc4_plane.c               | 56 ++++++++++--------=
--
->   include/drm/drm_modeset_helper_vtables.h      | 18 +++---
->   7 files changed, 89 insertions(+), 72 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/driver=
-s/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> index 6ed96633425f..63f839679a0a 100644
-> --- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> +++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
-> @@ -6468,7 +6468,7 @@ static int dm_plane_atomic_check(struct drm_plane=
- *plane,
->   }
->  =20
->   static int dm_plane_atomic_async_check(struct drm_plane *plane,
-> -				       struct drm_plane_state *new_plane_state)
-> +				       struct drm_atomic_state *state)
->   {
->   	/* Only support async updates on cursor planes. */
->   	if (plane->type !=3D DRM_PLANE_TYPE_CURSOR)
-> @@ -6478,10 +6478,12 @@ static int dm_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   }
->  =20
->   static void dm_plane_atomic_async_update(struct drm_plane *plane,
-> -					 struct drm_plane_state *new_state)
-> +					 struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct drm_plane_state *old_state =3D
-> -		drm_atomic_get_old_plane_state(new_state->state, plane);
-> +		drm_atomic_get_old_plane_state(state, plane);
->  =20
->   	trace_amdgpu_dm_atomic_update_cursor(new_state);
->  =20
-> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_=
-atomic_helper.c
-> index 9fa3f97223a1..bd0bb74437c7 100644
-> --- a/drivers/gpu/drm/drm_atomic_helper.c
-> +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> @@ -1742,7 +1742,7 @@ int drm_atomic_helper_async_check(struct drm_devi=
-ce *dev,
->   		return -EBUSY;
->   	}
->  =20
-> -	return funcs->atomic_async_check(plane, new_plane_state);
-> +	return funcs->atomic_async_check(plane, state);
->   }
->   EXPORT_SYMBOL(drm_atomic_helper_async_check);
->  =20
-> @@ -1772,7 +1772,7 @@ void drm_atomic_helper_async_commit(struct drm_de=
-vice *dev,
->   		struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
->   		funcs =3D plane->helper_private;
-> -		funcs->atomic_async_update(plane, plane_state);
-> +		funcs->atomic_async_update(plane, state);
->  =20
->   		/*
->   		 * ->atomic_async_update() is supposed to update the
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm=
-/mediatek/mtk_drm_plane.c
-> index 92141a19681b..30ebcfd8832f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -77,12 +77,14 @@ static void mtk_drm_plane_destroy_state(struct drm_=
-plane *plane,
->   }
->  =20
->   static int mtk_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct drm_crtc_state *crtc_state;
->   	int ret;
->  =20
-> -	if (plane !=3D state->crtc->cursor)
-> +	if (plane !=3D new_plane_state->crtc->cursor)
->   		return -EINVAL;
->  =20
->   	if (!plane->state)
-> @@ -91,16 +93,16 @@ static int mtk_plane_atomic_async_check(struct drm_=
-plane *plane,
->   	if (!plane->state->fb)
->   		return -EINVAL;
->  =20
-> -	ret =3D mtk_drm_crtc_plane_check(state->crtc, plane,
-> -				       to_mtk_plane_state(state));
-> +	ret =3D mtk_drm_crtc_plane_check(new_plane_state->crtc, plane,
-> +				       to_mtk_plane_state(new_plane_state));
->   	if (ret)
->   		return ret;
->  =20
-> -	if (state->state)
-> -		crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -								state->crtc);
-> +	if (state)
-> +		crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +								new_plane_state->crtc);
->   	else /* Special case for asynchronous cursor updates. */
-> -		crtc_state =3D state->crtc->state;
-> +		crtc_state =3D new_plane_state->crtc->state;
->  =20
->   	return drm_atomic_helper_check_plane_state(plane->state, crtc_state,=
-
->   						   DRM_PLANE_HELPER_NO_SCALING,
-> @@ -109,9 +111,11 @@ static int mtk_plane_atomic_async_check(struct drm=
-_plane *plane,
->   }
->  =20
->   static void mtk_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *new_state)
-> +					  struct drm_atomic_state *state)
->   {
-> -	struct mtk_plane_state *state =3D to_mtk_plane_state(plane->state);
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
-> +	struct mtk_plane_state *new_plane_state =3D to_mtk_plane_state(plane-=
->state);
->  =20
->   	plane->state->crtc_x =3D new_state->crtc_x;
->   	plane->state->crtc_y =3D new_state->crtc_y;
-> @@ -122,7 +126,7 @@ static void mtk_plane_atomic_async_update(struct dr=
-m_plane *plane,
->   	plane->state->src_h =3D new_state->src_h;
->   	plane->state->src_w =3D new_state->src_w;
->   	swap(plane->state->fb, new_state->fb);
-> -	state->pending.async_dirty =3D true;
-> +	new_plane_state->pending.async_dirty =3D true;
->  =20
->   	mtk_drm_crtc_async_update(new_state->crtc, plane, new_state);
->   }
-> diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c b/drivers/gpu/d=
-rm/msm/disp/mdp5/mdp5_plane.c
-> index 83423092de2f..05fa8255caeb 100644
-> --- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-> +++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_plane.c
-> @@ -5,6 +5,7 @@
->    * Author: Rob Clark <robdclark@gmail.com>
->    */
->  =20
-> +#include <drm/drm_atomic.h>
->   #include <drm/drm_damage_helper.h>
->   #include <drm/drm_fourcc.h>
->   #include <drm/drm_print.h>
-> @@ -438,41 +439,43 @@ static void mdp5_plane_atomic_update(struct drm_p=
-lane *plane,
->   }
->  =20
->   static int mdp5_plane_atomic_async_check(struct drm_plane *plane,
-> -					 struct drm_plane_state *state)
-> +					 struct drm_atomic_state *state)
->   {
-> -	struct mdp5_plane_state *mdp5_state =3D to_mdp5_plane_state(state);
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
-> +	struct mdp5_plane_state *mdp5_state =3D to_mdp5_plane_state(new_plane=
-_state);
->   	struct drm_crtc_state *crtc_state;
->   	int min_scale, max_scale;
->   	int ret;
->  =20
-> -	crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -							state->crtc);
-> +	crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +							new_plane_state->crtc);
->   	if (WARN_ON(!crtc_state))
->   		return -EINVAL;
->  =20
->   	if (!crtc_state->active)
->   		return -EINVAL;
->  =20
-> -	mdp5_state =3D to_mdp5_plane_state(state);
-> +	mdp5_state =3D to_mdp5_plane_state(new_plane_state);
->  =20
->   	/* don't use fast path if we don't have a hwpipe allocated yet */
->   	if (!mdp5_state->hwpipe)
->   		return -EINVAL;
->  =20
->   	/* only allow changing of position(crtc x/y or src x/y) in fast path=
- */
-> -	if (plane->state->crtc !=3D state->crtc ||
-> -	    plane->state->src_w !=3D state->src_w ||
-> -	    plane->state->src_h !=3D state->src_h ||
-> -	    plane->state->crtc_w !=3D state->crtc_w ||
-> -	    plane->state->crtc_h !=3D state->crtc_h ||
-> +	if (plane->state->crtc !=3D new_plane_state->crtc ||
-> +	    plane->state->src_w !=3D new_plane_state->src_w ||
-> +	    plane->state->src_h !=3D new_plane_state->src_h ||
-> +	    plane->state->crtc_w !=3D new_plane_state->crtc_w ||
-> +	    plane->state->crtc_h !=3D new_plane_state->crtc_h ||
->   	    !plane->state->fb ||
-> -	    plane->state->fb !=3D state->fb)
-> +	    plane->state->fb !=3D new_plane_state->fb)
->   		return -EINVAL;
->  =20
->   	min_scale =3D FRAC_16_16(1, 8);
->   	max_scale =3D FRAC_16_16(8, 1);
->  =20
-> -	ret =3D drm_atomic_helper_check_plane_state(state, crtc_state,
-> +	ret =3D drm_atomic_helper_check_plane_state(new_plane_state, crtc_sta=
-te,
->   						  min_scale, max_scale,
->   						  true, true);
->   	if (ret)
-> @@ -485,15 +488,17 @@ static int mdp5_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   	 * also assign/unassign the hwpipe(s) tied to the plane. We avoid
->   	 * taking the fast path for both these reasons.
->   	 */
-> -	if (state->visible !=3D plane->state->visible)
-> +	if (new_plane_state->visible !=3D plane->state->visible)
->   		return -EINVAL;
->  =20
->   	return 0;
->   }
->  =20
->   static void mdp5_plane_atomic_async_update(struct drm_plane *plane,
-> -					   struct drm_plane_state *new_state)
-> +					   struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
->   	plane->state->src_x =3D new_state->src_x;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_vop.c
-> index 8d15cabdcb02..fefeab73ca27 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1021,8 +1021,10 @@ static void vop_plane_atomic_update(struct drm_p=
-lane *plane,
->   }
->  =20
->   static int vop_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vop_win *vop_win =3D to_vop_win(plane);
->   	const struct vop_win_data *win =3D vop_win->data;
->   	int min_scale =3D win->phy->scl ? FRAC_16_16(1, 8) :
-> @@ -1031,7 +1033,7 @@ static int vop_plane_atomic_async_check(struct dr=
-m_plane *plane,
->   					DRM_PLANE_HELPER_NO_SCALING;
->   	struct drm_crtc_state *crtc_state;
->  =20
-> -	if (plane !=3D state->crtc->cursor)
-> +	if (plane !=3D new_plane_state->crtc->cursor)
->   		return -EINVAL;
->  =20
->   	if (!plane->state)
-> @@ -1040,9 +1042,9 @@ static int vop_plane_atomic_async_check(struct dr=
-m_plane *plane,
->   	if (!plane->state->fb)
->   		return -EINVAL;
->  =20
-> -	if (state->state)
-> -		crtc_state =3D drm_atomic_get_existing_crtc_state(state->state,
-> -								state->crtc);
-> +	if (state)
-> +		crtc_state =3D drm_atomic_get_existing_crtc_state(state,
-> +								new_plane_state->crtc);
->   	else /* Special case for asynchronous cursor updates. */
->   		crtc_state =3D plane->crtc->state;
->  =20
-> @@ -1052,8 +1054,10 @@ static int vop_plane_atomic_async_check(struct d=
-rm_plane *plane,
->   }
->  =20
->   static void vop_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *new_state)
-> +					  struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_state =3D drm_atomic_get_new_plane_state(=
-state,
-> +									   plane);
->   	struct vop *vop =3D to_vop(plane->state->crtc);
->   	struct drm_framebuffer *old_fb =3D plane->state->fb;
->  =20
-> diff --git a/drivers/gpu/drm/vc4/vc4_plane.c b/drivers/gpu/drm/vc4/vc4_=
-plane.c
-> index 6bd8260aa9f2..ff485e58d271 100644
-> --- a/drivers/gpu/drm/vc4/vc4_plane.c
-> +++ b/drivers/gpu/drm/vc4/vc4_plane.c
-> @@ -1118,32 +1118,34 @@ void vc4_plane_async_set_fb(struct drm_plane *p=
-lane, struct drm_framebuffer *fb)
->   }
->  =20
->   static void vc4_plane_atomic_async_update(struct drm_plane *plane,
-> -					  struct drm_plane_state *state)
-> +					  struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vc4_plane_state *vc4_state, *new_vc4_state;
->  =20
-> -	swap(plane->state->fb, state->fb);
-> -	plane->state->crtc_x =3D state->crtc_x;
-> -	plane->state->crtc_y =3D state->crtc_y;
-> -	plane->state->crtc_w =3D state->crtc_w;
-> -	plane->state->crtc_h =3D state->crtc_h;
-> -	plane->state->src_x =3D state->src_x;
-> -	plane->state->src_y =3D state->src_y;
-> -	plane->state->src_w =3D state->src_w;
-> -	plane->state->src_h =3D state->src_h;
-> -	plane->state->src_h =3D state->src_h;
-> -	plane->state->alpha =3D state->alpha;
-> -	plane->state->pixel_blend_mode =3D state->pixel_blend_mode;
-> -	plane->state->rotation =3D state->rotation;
-> -	plane->state->zpos =3D state->zpos;
-> -	plane->state->normalized_zpos =3D state->normalized_zpos;
-> -	plane->state->color_encoding =3D state->color_encoding;
-> -	plane->state->color_range =3D state->color_range;
-> -	plane->state->src =3D state->src;
-> -	plane->state->dst =3D state->dst;
-> -	plane->state->visible =3D state->visible;
-> +	swap(plane->state->fb, new_plane_state->fb);
-> +	plane->state->crtc_x =3D new_plane_state->crtc_x;
-> +	plane->state->crtc_y =3D new_plane_state->crtc_y;
-> +	plane->state->crtc_w =3D new_plane_state->crtc_w;
-> +	plane->state->crtc_h =3D new_plane_state->crtc_h;
-> +	plane->state->src_x =3D new_plane_state->src_x;
-> +	plane->state->src_y =3D new_plane_state->src_y;
-> +	plane->state->src_w =3D new_plane_state->src_w;
-> +	plane->state->src_h =3D new_plane_state->src_h;
-> +	plane->state->src_h =3D new_plane_state->src_h;
-> +	plane->state->alpha =3D new_plane_state->alpha;
-> +	plane->state->pixel_blend_mode =3D new_plane_state->pixel_blend_mode;=
-
-> +	plane->state->rotation =3D new_plane_state->rotation;
-> +	plane->state->zpos =3D new_plane_state->zpos;
-> +	plane->state->normalized_zpos =3D new_plane_state->normalized_zpos;
-> +	plane->state->color_encoding =3D new_plane_state->color_encoding;
-> +	plane->state->color_range =3D new_plane_state->color_range;
-> +	plane->state->src =3D new_plane_state->src;
-> +	plane->state->dst =3D new_plane_state->dst;
-> +	plane->state->visible =3D new_plane_state->visible;
->  =20
-> -	new_vc4_state =3D to_vc4_plane_state(state);
-> +	new_vc4_state =3D to_vc4_plane_state(new_plane_state);
->   	vc4_state =3D to_vc4_plane_state(plane->state);
->  =20
->   	vc4_state->crtc_x =3D new_vc4_state->crtc_x;
-> @@ -1187,23 +1189,25 @@ static void vc4_plane_atomic_async_update(struc=
-t drm_plane *plane,
->   }
->  =20
->   static int vc4_plane_atomic_async_check(struct drm_plane *plane,
-> -					struct drm_plane_state *state)
-> +					struct drm_atomic_state *state)
->   {
-> +	struct drm_plane_state *new_plane_state =3D drm_atomic_get_new_plane_=
-state(state,
-> +										 plane);
->   	struct vc4_plane_state *old_vc4_state, *new_vc4_state;
->   	int ret;
->   	u32 i;
->  =20
-> -	ret =3D vc4_plane_mode_set(plane, state);
-> +	ret =3D vc4_plane_mode_set(plane, new_plane_state);
->   	if (ret)
->   		return ret;
->  =20
->   	old_vc4_state =3D to_vc4_plane_state(plane->state);
-> -	new_vc4_state =3D to_vc4_plane_state(state);
-> +	new_vc4_state =3D to_vc4_plane_state(new_plane_state);
->   	if (old_vc4_state->dlist_count !=3D new_vc4_state->dlist_count ||
->   	    old_vc4_state->pos0_offset !=3D new_vc4_state->pos0_offset ||
->   	    old_vc4_state->pos2_offset !=3D new_vc4_state->pos2_offset ||
->   	    old_vc4_state->ptr0_offset !=3D new_vc4_state->ptr0_offset ||
-> -	    vc4_lbm_size(plane->state) !=3D vc4_lbm_size(state))
-> +	    vc4_lbm_size(plane->state) !=3D vc4_lbm_size(new_plane_state))
->   		return -EINVAL;
->  =20
->   	/* Only pos0, pos2 and ptr0 DWORDS can be updated in an async update=
-
-> diff --git a/include/drm/drm_modeset_helper_vtables.h b/include/drm/drm=
-_modeset_helper_vtables.h
-> index eb706342861d..2b4d085da450 100644
-> --- a/include/drm/drm_modeset_helper_vtables.h
-> +++ b/include/drm/drm_modeset_helper_vtables.h
-> @@ -1292,9 +1292,9 @@ struct drm_plane_helper_funcs {
->   	/**
->   	 * @atomic_async_check:
->   	 *
-> -	 * Drivers should set this function pointer to check if the plane sta=
-te
-> -	 * can be updated in a async fashion. Here async means "not vblank
-> -	 * synchronized".
-> +	 * Drivers should set this function pointer to check if the plane's
-> +	 * atomic state can be updated in a async fashion. Here async means
-> +	 * "not vblank synchronized".
->   	 *
->   	 * This hook is called by drm_atomic_async_check() to establish if a=
-
->   	 * given update can be committed asynchronously, that is, if it can
-> @@ -1306,7 +1306,7 @@ struct drm_plane_helper_funcs {
->   	 * can not be applied in asynchronous manner.
->   	 */
->   	int (*atomic_async_check)(struct drm_plane *plane,
-> -				  struct drm_plane_state *state);
-> +				  struct drm_atomic_state *state);
->  =20
->   	/**
->   	 * @atomic_async_update:
-> @@ -1322,11 +1322,9 @@ struct drm_plane_helper_funcs {
->   	 * update won't happen if there is an outstanding commit modifying
->   	 * the same plane.
->   	 *
-> -	 * Note that unlike &drm_plane_helper_funcs.atomic_update this hook
-> -	 * takes the new &drm_plane_state as parameter. When doing async_upda=
-te
-> -	 * drivers shouldn't replace the &drm_plane_state but update the
-> -	 * current one with the new plane configurations in the new
-> -	 * plane_state.
-> +	 * When doing async_update drivers shouldn't replace the
-> +	 * &drm_plane_state but update the current one with the new plane
-> +	 * configurations in the new plane_state.
->   	 *
->   	 * Drivers should also swap the framebuffers between current plane
->   	 * state (&drm_plane.state) and new_state.
-> @@ -1345,7 +1343,7 @@ struct drm_plane_helper_funcs {
->   	 *    for deferring if needed, until a common solution is created.
->   	 */
->   	void (*atomic_async_update)(struct drm_plane *plane,
-> -				    struct drm_plane_state *new_state);
-> +				    struct drm_atomic_state *state);
->   };
->  =20
->   /**
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index aa1a1c850d05..35b367c9b30e 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -61,8 +61,17 @@ enum rockchip_pinctrl_type {
+ 	RK3308,
+ 	RK3368,
+ 	RK3399,
++	RK3568,
+ };
+ 
++
++/**
++ * Generate a bitmask for setting a value (v) with a write mask bit in hiword
++ * register 31:16 area.
++ */
++#define WRITE_MASK_VAL(h, l, v) \
++	(GENMASK(((h) + 16), ((l) + 16)) | (((v) << (l)) & GENMASK((h), (l))))
++
+ /*
+  * Encode variants of iomux registers into a type variable
+  */
+@@ -290,6 +299,25 @@ struct rockchip_pin_bank {
+ 		.pull_type[3] = pull3,					\
+ 	}
+ 
++#define PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, FLAG)		\
++	{								\
++		.bank_num	= ID,					\
++		.pin		= PIN,					\
++		.func		= FUNC,					\
++		.route_offset	= REG,					\
++		.route_val	= VAL,					\
++		.route_type	= FLAG,					\
++	}
++
++#define RK_MUXROUTE_SAME(ID, PIN, FUNC, REG, VAL)	\
++	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_SAME)
++
++#define RK_MUXROUTE_GRF(ID, PIN, FUNC, REG, VAL)	\
++	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_GRF)
++
++#define RK_MUXROUTE_PMU(ID, PIN, FUNC, REG, VAL)	\
++	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_PMU)
++
+ /**
+  * struct rockchip_mux_recalced_data: represent a pin iomux data.
+  * @num: bank number.
+@@ -1394,6 +1422,102 @@ static struct rockchip_mux_route_data rk3399_mux_route_data[] = {
+ 	},
+ };
+ 
++static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
++	RK_MUXROUTE_GRF(0, RK_PB7, 1, 0x0110, WRITE_MASK_VAL(1, 0, 0)), /* PWM0 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PC7, 2, 0x0110, WRITE_MASK_VAL(1, 0, 1)), /* PWM0 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PC0, 1, 0x0110, WRITE_MASK_VAL(3, 2, 0)), /* PWM1 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PB5, 4, 0x0110, WRITE_MASK_VAL(3, 2, 1)), /* PWM1 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PC1, 1, 0x0110, WRITE_MASK_VAL(5, 4, 0)), /* PWM2 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PB6, 4, 0x0110, WRITE_MASK_VAL(5, 4, 1)), /* PWM2 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PB3, 2, 0x0300, WRITE_MASK_VAL(0, 0, 0)), /* CAN0 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PA1, 4, 0x0300, WRITE_MASK_VAL(0, 0, 1)), /* CAN0 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA1, 3, 0x0300, WRITE_MASK_VAL(2, 2, 0)), /* CAN1 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC3, 3, 0x0300, WRITE_MASK_VAL(2, 2, 1)), /* CAN1 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PB5, 3, 0x0300, WRITE_MASK_VAL(4, 4, 0)), /* CAN2 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PB2, 4, 0x0300, WRITE_MASK_VAL(4, 4, 1)), /* CAN2 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PC4, 1, 0x0300, WRITE_MASK_VAL(6, 6, 0)), /* HPDIN IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PC2, 2, 0x0300, WRITE_MASK_VAL(6, 6, 1)), /* HPDIN IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB1, 3, 0x0300, WRITE_MASK_VAL(8, 8, 0)), /* GMAC1 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PA7, 3, 0x0300, WRITE_MASK_VAL(8, 8, 1)), /* GMAC1 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PD1, 1, 0x0300, WRITE_MASK_VAL(10, 10, 0)), /* HDMITX IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PC7, 1, 0x0300, WRITE_MASK_VAL(10, 10, 1)), /* HDMITX IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PB6, 1, 0x0300, WRITE_MASK_VAL(14, 14, 0)), /* I2C2 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PB4, 1, 0x0300, WRITE_MASK_VAL(14, 14, 1)), /* I2C2 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA0, 1, 0x0304, WRITE_MASK_VAL(0, 0, 0)), /* I2C3 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PB6, 4, 0x0304, WRITE_MASK_VAL(0, 0, 1)), /* I2C3 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PB2, 1, 0x0304, WRITE_MASK_VAL(2, 2, 0)), /* I2C4 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PB1, 2, 0x0304, WRITE_MASK_VAL(2, 2, 1)), /* I2C4 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB4, 4, 0x0304, WRITE_MASK_VAL(4, 4, 0)), /* I2C5 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PD0, 2, 0x0304, WRITE_MASK_VAL(4, 4, 1)), /* I2C5 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB1, 5, 0x0304, WRITE_MASK_VAL(14, 14, 0)), /* PWM8 IO mux M0 */
++	RK_MUXROUTE_GRF(1, RK_PD5, 4, 0x0304, WRITE_MASK_VAL(14, 14, 1)), /* PWM8 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB2, 5, 0x0308, WRITE_MASK_VAL(0, 0, 0)), /* PWM9 IO mux M0 */
++	RK_MUXROUTE_GRF(1, RK_PD6, 4, 0x0308, WRITE_MASK_VAL(0, 0, 1)), /* PWM9 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB5, 5, 0x0308, WRITE_MASK_VAL(2, 2, 0)), /* PWM10 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PA1, 2, 0x0308, WRITE_MASK_VAL(2, 2, 1)), /* PWM10 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB6, 5, 0x0308, WRITE_MASK_VAL(4, 4, 0)), /* PWM11 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC0, 3, 0x0308, WRITE_MASK_VAL(4, 4, 1)), /* PWM11 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PB7, 2, 0x0308, WRITE_MASK_VAL(6, 6, 0)), /* PWM12 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC5, 1, 0x0308, WRITE_MASK_VAL(6, 6, 1)), /* PWM12 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PC0, 2, 0x0308, WRITE_MASK_VAL(8, 8, 0)), /* PWM13 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC6, 1, 0x0308, WRITE_MASK_VAL(8, 8, 1)), /* PWM13 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PC4, 1, 0x0308, WRITE_MASK_VAL(10, 10, 0)), /* PWM14 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC2, 1, 0x0308, WRITE_MASK_VAL(10, 10, 1)), /* PWM14 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PC5, 1, 0x0308, WRITE_MASK_VAL(12, 12, 0)), /* PWM15 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC3, 1, 0x0308, WRITE_MASK_VAL(12, 12, 1)), /* PWM15 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PD2, 3, 0x0308, WRITE_MASK_VAL(14, 14, 0)), /* SDMMC2 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PA5, 5, 0x0308, WRITE_MASK_VAL(14, 14, 1)), /* SDMMC2 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PB5, 2, 0x030c, WRITE_MASK_VAL(0, 0, 0)), /* SPI0 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PD3, 3, 0x030c, WRITE_MASK_VAL(0, 0, 1)), /* SPI0 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PB5, 3, 0x030c, WRITE_MASK_VAL(2, 2, 0)), /* SPI1 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PC3, 3, 0x030c, WRITE_MASK_VAL(2, 2, 1)), /* SPI1 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PC1, 4, 0x030c, WRITE_MASK_VAL(4, 4, 0)), /* SPI2 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PA0, 3, 0x030c, WRITE_MASK_VAL(4, 4, 1)), /* SPI2 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PB3, 4, 0x030c, WRITE_MASK_VAL(6, 6, 0)), /* SPI3 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC2, 2, 0x030c, WRITE_MASK_VAL(6, 6, 1)), /* SPI3 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PB4, 2, 0x030c, WRITE_MASK_VAL(8, 8, 0)), /* UART1 IO mux M0 */
++	RK_MUXROUTE_GRF(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(8, 8, 1)), /* UART1 IO mux M1 */
++	RK_MUXROUTE_GRF(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(10, 10, 0)), /* UART2 IO mux M0 */
++	RK_MUXROUTE_GRF(1, RK_PD5, 2, 0x030c, WRITE_MASK_VAL(10, 10, 1)), /* UART2 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA1, 2, 0x030c, WRITE_MASK_VAL(12, 12, 0)), /* UART3 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PB7, 4, 0x030c, WRITE_MASK_VAL(12, 12, 1)), /* UART3 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA6, 2, 0x030c, WRITE_MASK_VAL(14, 14, 0)), /* UART4 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PB2, 4, 0x030c, WRITE_MASK_VAL(14, 14, 1)), /* UART4 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PA2, 3, 0x0310, WRITE_MASK_VAL(0, 0, 0)), /* UART5 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PC2, 4, 0x0310, WRITE_MASK_VAL(0, 0, 1)), /* UART5 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PA4, 3, 0x0310, WRITE_MASK_VAL(2, 2, 0)), /* UART6 IO mux M0 */
++	RK_MUXROUTE_GRF(1, RK_PD5, 3, 0x0310, WRITE_MASK_VAL(2, 2, 1)), /* UART6 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PA6, 3, 0x0310, WRITE_MASK_VAL(5, 4, 0)), /* UART7 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PC4, 4, 0x0310, WRITE_MASK_VAL(5, 4, 1)), /* UART7 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PA2, 4, 0x0310, WRITE_MASK_VAL(5, 4, 2)), /* UART7 IO mux M2 */
++	RK_MUXROUTE_GRF(2, RK_PC5, 3, 0x0310, WRITE_MASK_VAL(6, 6, 0)), /* UART8 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PD7, 4, 0x0310, WRITE_MASK_VAL(6, 6, 1)), /* UART8 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PB0, 3, 0x0310, WRITE_MASK_VAL(9, 8, 0)), /* UART9 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC5, 4, 0x0310, WRITE_MASK_VAL(9, 8, 1)), /* UART9 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PA4, 4, 0x0310, WRITE_MASK_VAL(9, 8, 2)), /* UART9 IO mux M2 */
++	RK_MUXROUTE_GRF(1, RK_PA2, 1, 0x0310, WRITE_MASK_VAL(11, 10, 0)), /* I2S1 IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PC6, 4, 0x0310, WRITE_MASK_VAL(11, 10, 1)), /* I2S1 IO mux M1 */
++	RK_MUXROUTE_GRF(2, RK_PD0, 5, 0x0310, WRITE_MASK_VAL(11, 10, 2)), /* I2S1 IO mux M2 */
++	RK_MUXROUTE_GRF(2, RK_PC1, 1, 0x0310, WRITE_MASK_VAL(12, 12, 0)), /* I2S2 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PB6, 5, 0x0310, WRITE_MASK_VAL(12, 12, 1)), /* I2S2 IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PA2, 4, 0x0310, WRITE_MASK_VAL(14, 14, 0)), /* I2S3 IO mux M0 */
++	RK_MUXROUTE_GRF(4, RK_PC2, 5, 0x0310, WRITE_MASK_VAL(14, 14, 1)), /* I2S3 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(1, 0, 0)), /* PDM IO mux M0 */
++	RK_MUXROUTE_GRF(1, RK_PA6, 3, 0x0314, WRITE_MASK_VAL(1, 0, 0)), /* PDM IO mux M0 */
++	RK_MUXROUTE_GRF(3, RK_PD6, 5, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PA0, 4, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
++	RK_MUXROUTE_GRF(3, RK_PC4, 5, 0x0314, WRITE_MASK_VAL(1, 0, 2)), /* PDM IO mux M2 */
++	RK_MUXROUTE_GRF(0, RK_PA5, 3, 0x0314, WRITE_MASK_VAL(3, 2, 0)), /* PCIE20 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PD0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 1)), /* PCIE20 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PB0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 2)), /* PCIE20 IO mux M2 */
++	RK_MUXROUTE_GRF(0, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(5, 4, 0)), /* PCIE30X1 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PD2, 4, 0x0314, WRITE_MASK_VAL(5, 4, 1)), /* PCIE30X1 IO mux M1 */
++	RK_MUXROUTE_GRF(1, RK_PA5, 4, 0x0314, WRITE_MASK_VAL(5, 4, 2)), /* PCIE30X1 IO mux M2 */
++	RK_MUXROUTE_GRF(0, RK_PA6, 2, 0x0314, WRITE_MASK_VAL(7, 6, 0)), /* PCIE30X2 IO mux M0 */
++	RK_MUXROUTE_GRF(2, RK_PD4, 4, 0x0314, WRITE_MASK_VAL(7, 6, 1)), /* PCIE30X2 IO mux M1 */
++	RK_MUXROUTE_GRF(4, RK_PC2, 4, 0x0314, WRITE_MASK_VAL(7, 6, 2)), /* PCIE30X2 IO mux M2 */
++};
++
+ static bool rockchip_get_mux_route(struct rockchip_pin_bank *bank, int pin,
+ 				   int mux, u32 *loc, u32 *reg, u32 *value)
+ {
+@@ -2102,6 +2226,94 @@ static void rk3399_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
+ 		*bit = (pin_num % 8) * 2;
+ }
+ 
++#define RK3568_SR_PMU_OFFSET		0x60
++#define RK3568_SR_GRF_OFFSET		0x0180
++#define RK3568_SR_BANK_STRIDE		0x10
++#define RK3568_SR_PINS_PER_REG		16
++
++static int rk3568_calc_slew_rate_reg_and_bit(struct rockchip_pin_bank *bank,
++					     int pin_num,
++					     struct regmap **regmap,
++					     int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK3568_SR_PMU_OFFSET;
++	} else {
++		*regmap = info->regmap_base;
++		*reg = RK3568_SR_GRF_OFFSET;
++		*reg += (bank->bank_num  - 1) * RK3568_SR_BANK_STRIDE;
++	}
++	*reg += ((pin_num / RK3568_SR_PINS_PER_REG) * 4);
++	*bit = pin_num % RK3568_SR_PINS_PER_REG;
++
++	return 0;
++}
++
++#define RK3568_PULL_PMU_OFFSET		0x20
++#define RK3568_PULL_GRF_OFFSET		0x80
++#define RK3568_PULL_BITS_PER_PIN	2
++#define RK3568_PULL_PINS_PER_REG	8
++#define RK3568_PULL_BANK_STRIDE		0x10
++
++static void rk3568_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
++					 int pin_num, struct regmap **regmap,
++					 int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK3568_PULL_PMU_OFFSET;
++		*reg += bank->bank_num * RK3568_PULL_BANK_STRIDE;
++		*reg += ((pin_num / RK3568_PULL_PINS_PER_REG) * 4);
++
++		*bit = pin_num % RK3568_PULL_PINS_PER_REG;
++		*bit *= RK3568_PULL_BITS_PER_PIN;
++	} else {
++		*regmap = info->regmap_base;
++		*reg = RK3568_PULL_GRF_OFFSET;
++		*reg += (bank->bank_num - 1) * RK3568_PULL_BANK_STRIDE;
++		*reg += ((pin_num / RK3568_PULL_PINS_PER_REG) * 4);
++
++		*bit = (pin_num % RK3568_PULL_PINS_PER_REG);
++		*bit *= RK3568_PULL_BITS_PER_PIN;
++	}
++}
++
++#define RK3568_DRV_PMU_OFFSET		0x70
++#define RK3568_DRV_GRF_OFFSET		0x200
++#define RK3568_DRV_BITS_PER_PIN		8
++#define RK3568_DRV_PINS_PER_REG		2
++#define RK3568_DRV_BANK_STRIDE		0x40
++
++static void rk3568_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
++					int pin_num, struct regmap **regmap,
++					int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	/* The first 32 pins of the first bank are located in PMU */
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK3568_DRV_PMU_OFFSET;
++		*reg += ((pin_num / RK3568_DRV_PINS_PER_REG) * 4);
++
++		*bit = pin_num % RK3568_DRV_PINS_PER_REG;
++		*bit *= RK3568_DRV_BITS_PER_PIN;
++	} else {
++		*regmap = info->regmap_base;
++		*reg = RK3568_DRV_GRF_OFFSET;
++		*reg += (bank->bank_num - 1) * RK3568_DRV_BANK_STRIDE;
++		*reg += ((pin_num / RK3568_DRV_PINS_PER_REG) * 4);
++
++		*bit = (pin_num % RK3568_DRV_PINS_PER_REG);
++		*bit *= RK3568_DRV_BITS_PER_PIN;
++	}
++}
++
+ static int rockchip_perpin_drv_list[DRV_TYPE_MAX][8] = {
+ 	{ 2, 4, 8, 12, -1, -1, -1, -1 },
+ 	{ 3, 6, 9, 12, -1, -1, -1, -1 },
+@@ -2202,6 +2414,11 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 		bank->bank_num, pin_num, strength);
+ 
+ 	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
++	if (ctrl->type == RK3568) {
++		rmask_bits = RK3568_DRV_BITS_PER_PIN;
++		ret = (1 << (strength + 1)) - 1;
++		goto config;
++	}
+ 
+ 	ret = -EINVAL;
+ 	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list[drv_type]); i++) {
+@@ -2271,6 +2488,7 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 		return -EINVAL;
+ 	}
+ 
++config:
+ 	/* enable the write to the equivalent lower bits */
+ 	data = ((1 << rmask_bits) - 1) << (bit + 16);
+ 	rmask = data | (data >> 16);
+@@ -2373,6 +2591,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 	case RK3308:
+ 	case RK3368:
+ 	case RK3399:
++	case RK3568:
+ 		pull_type = bank->pull_type[pin_num / 8];
+ 		ret = -EINVAL;
+ 		for (i = 0; i < ARRAY_SIZE(rockchip_pull_list[pull_type]);
+@@ -2382,6 +2601,14 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 				break;
+ 			}
+ 		}
++		/*
++		 * In the TRM, pull-up being 1 for everything except the GPIO0_D0-D6,
++		 * where that pull up value becomes 3.
++		 */
++		if (ctrl->type == RK3568 && bank->bank_num == 0 && pin_num >= 27 && pin_num <= 30) {
++			if (ret == 1)
++				ret = 3;
++		}
+ 
+ 		if (ret < 0) {
+ 			dev_err(info->dev, "unsupported pull setting %d\n",
+@@ -2426,6 +2653,35 @@ static int rk3328_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
+ 	return 0;
+ }
+ 
++#define RK3568_SCHMITT_BITS_PER_PIN		2
++#define RK3568_SCHMITT_PINS_PER_REG		8
++#define RK3568_SCHMITT_BANK_STRIDE		0x10
++#define RK3568_SCHMITT_GRF_OFFSET		0xc0
++#define RK3568_SCHMITT_PMUGRF_OFFSET		0x30
++
++static int rk3568_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
++					   int pin_num,
++					   struct regmap **regmap,
++					   int *reg, u8 *bit)
++{
++	struct rockchip_pinctrl *info = bank->drvdata;
++
++	if (bank->bank_num == 0) {
++		*regmap = info->regmap_pmu;
++		*reg = RK3568_SCHMITT_PMUGRF_OFFSET;
++	} else {
++		*regmap = info->regmap_base;
++		*reg = RK3568_SCHMITT_GRF_OFFSET;
++		*reg += (bank->bank_num - 1) * RK3568_SCHMITT_BANK_STRIDE;
++	}
++
++	*reg += ((pin_num / RK3568_SCHMITT_PINS_PER_REG) * 4);
++	*bit = pin_num % RK3568_SCHMITT_PINS_PER_REG;
++	*bit *= RK3568_SCHMITT_BITS_PER_PIN;
++
++	return 0;
++}
++
+ static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+@@ -2444,6 +2700,13 @@ static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
+ 		return ret;
+ 
+ 	data >>= bit;
++	switch (ctrl->type) {
++	case RK3568:
++		return data & ((1 << RK3568_SCHMITT_BITS_PER_PIN) - 1);
++	default:
++		break;
++	}
++
+ 	return data & 0x1;
+ }
+ 
+@@ -2465,8 +2728,17 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
+ 		return ret;
+ 
+ 	/* enable the write to the equivalent lower bits */
+-	data = BIT(bit + 16) | (enable << bit);
+-	rmask = BIT(bit + 16) | BIT(bit);
++	switch (ctrl->type) {
++	case RK3568:
++		data = ((1 << RK3568_SCHMITT_BITS_PER_PIN) - 1) << (bit + 16);
++		rmask = data | (data >> 16);
++		data |= ((enable ? 0x2 : 0x1) << bit);
++		break;
++	default:
++		data = BIT(bit + 16) | (enable << bit);
++		rmask = BIT(bit + 16) | BIT(bit);
++		break;
++	}
+ 
+ 	return regmap_update_bits(regmap, reg, rmask, data);
+ }
+@@ -2640,6 +2912,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
+ 	case RK3308:
+ 	case RK3368:
+ 	case RK3399:
++	case RK3568:
+ 		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
+ 	}
+ 
+@@ -4210,6 +4483,46 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
+ 		.drv_calc_reg		= rk3399_calc_drv_reg_and_bit,
+ };
+ 
++static struct rockchip_pin_bank rk3568_pin_banks[] = {
++	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
++					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
++					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
++					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT),
++	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT),
++	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT),
++	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT),
++	PIN_BANK_IOMUX_FLAGS(4, 32, "gpio4", IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT,
++					     IOMUX_WIDTH_4BIT),
++};
++
++static struct rockchip_pin_ctrl rk3568_pin_ctrl = {
++	.pin_banks		= rk3568_pin_banks,
++	.nr_banks		= ARRAY_SIZE(rk3568_pin_banks),
++	.label			= "RK3568-GPIO",
++	.type			= RK3568,
++	.grf_mux_offset		= 0x0,
++	.pmu_mux_offset		= 0x0,
++	.grf_drv_offset		= 0x0200,
++	.pmu_drv_offset		= 0x0070,
++	.iomux_routes		= rk3568_mux_route_data,
++	.niomux_routes		= ARRAY_SIZE(rk3568_mux_route_data),
++	.pull_calc_reg		= rk3568_calc_pull_reg_and_bit,
++	.drv_calc_reg		= rk3568_calc_drv_reg_and_bit,
++	.slew_rate_calc_reg	= rk3568_calc_slew_rate_reg_and_bit,
++	.schmitt_calc_reg	= rk3568_calc_schmitt_reg_and_bit,
++};
++
+ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 	{ .compatible = "rockchip,px30-pinctrl",
+ 		.data = &px30_pin_ctrl },
+@@ -4239,6 +4552,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 		.data = &rk3368_pin_ctrl },
+ 	{ .compatible = "rockchip,rk3399-pinctrl",
+ 		.data = &rk3399_pin_ctrl },
++	{ .compatible = "rockchip,rk3568-pinctrl",
++		.data = &rk3568_pin_ctrl },
+ 	{},
+ };
+ 
+-- 
+2.25.1
 
 
---lNrdpw1gQPFCstc4KRt3YhDetJdJsZ42A--
 
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmA2OZkFAwAAAAAACgkQlh/E3EQov+AD
-3A//Z1xOfG65Q8IvlGSHx85E17xZXmr5GLJ0UeMXhy/GR4IuaGab4AGd6n/cbz6pBosEWzMRRAZd
-Klatjvlse1LXWSFaTqzaBRGtpe828gHX+tueNmk/3z1lKlJY2UnXkYeTCUH0n3F9mKs4hgH4gtPo
-4a/76kbXjF/NhRwU8gXdvEWYnzX7KNOxyxfKFle2WawuCX1/KuVrNJImIZ5yYAVR7UjsXN0Bpd3t
-XKPqEc4edVZx5/HJAOBCdU/1H+60clkQCL6rM2bWjAU0rjCmJZMtUvqI706gAR18hTY7J7Fq+jBz
-lAhaDNsKEyTcRreXyQNfvWr7wj/Js28y386ljOaqZ+mRIBGKtlVGTn0KuAwFEnjHx9V/DLjtyacA
-VmJyn/5/MZoXTtSPAFMnsv3M5WOxay1kxmPABdj9SRp3cQiMWbuIyX7xwEe/Ajk9CfDWO3SX20rW
-er2lkuTcGnE6NLNYKHdQR+jfUONu3NKaS9LKZLbN+512Lik4ifQLQHyyTwUKMdDSXBNlBFWd6sFI
-I2zrT3AGL08s9MQa4Oz/mPYulDIPLN09/1b/pu3yYxPOWZU5NxG0gu1Eq2fz7lyo3l1sALt558Tl
-h6DXWBhaIaPKZzhaBeFV1tSXOC8IyET8g3IgJ9ryTh5Yh9rFFMyKvcyzAG/Wco0AFnjCywF0r4zk
-sII=
-=+3EL
------END PGP SIGNATURE-----
-
---lCAEdGC7QfE0IYgcAz5gwTuSi1ZNxEr6d--
-
-
---===============1744362123062031961==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1744362123062031961==--
-
