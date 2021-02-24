@@ -2,109 +2,83 @@ Return-Path: <SRS0=b48f=H2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=0.1 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DC1F7C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 13:29:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA310C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 14:58:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A06664EF5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 13:29:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A06664EF5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id EDDF864E05
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 14:58:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDDF864E05
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=d5Ua3O+TXST5ivG7mbOeNEM/aO2V3KMUKkqGpefgGEo=; b=PYUvptmd06nwY/+XfjrKTX3UuO
-	C6qFjVqK30V6o2ESoMKJgOwGD+2FeY7dKRqpQADLZm8R+RIcNQYKWm1QBzfbQfRc6U+1CnkFl0xml
-	uVLUb64RL6urUMhUPnhGCn3nzKOqm8nbsgluPgdknj24abdJ36BwZ5XJ2u+4YiKfQS8LpvtTdabRE
-	YxbPGmuoIxyE2OOgc72J1VrS3RACI5x7IT7UYnSq2ZjbQDAVnsNfrnAXd5vz5mXZAlZj5f2Bm2yP3
-	SNDsCeFewOkyU7/KOh1otLOgIFBaw31TUvROTSeXaTBhHaspNP+0uyqBJXiflfdhSLNA/C1D4tCiA
-	YNaXp9AA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=n7+e0EaiizNRrVRTjGDoGAZmph1I7kUotYxKAktlt+A=; b=tuEnyL+rYZq4u2mOCVqB+7YEh
+	pi4d4Bwk1PNyXiyKtLDdPAgC46bBYE+qw0wYTRIpB42O9hw5mZZLx4JhtT5op2rTrmFwfeHmTBjUp
+	vn50s0TTcqxoJn51eG//WQUs1voQCp71DewbWr/w5PyOdtpqVXpJgMH9OxFURkfopAeZrp+JK2Cxx
+	GouUsiY1BHM+BFfsJnfkhRhn0mFllQl5DD5RvArygTy2E0YctGe3h4Ps8NDPdqbsOM6qKeN642Nt0
+	6V8dRaT5f/pYnJ/RuCXjySyvRTD7APtFE5dJPmSiHNLrCx0V1PhUr6t0tfQVFc0KUj5OLUyARdhNP
+	cPgmMAlJQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEuER-0007s1-V6; Wed, 24 Feb 2021 13:29:35 +0000
-Received: from mail-oln040092069033.outbound.protection.outlook.com
- ([40.92.69.33] helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1lEvcJ-0006F2-25; Wed, 24 Feb 2021 14:58:19 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEuEP-0007r5-IM
- for linux-rockchip@lists.infradead.org; Wed, 24 Feb 2021 13:29:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kSDiBFM13pqUisFBJFDuyDAdjZpoBkRWndaFg6xi7X4fkvt/kis0h1LVx1LI8umaZwCxBNVZoxGiiA7nKnBlPTU9OIDBd3/6Mv+43L9ZDvKLnOm2F+6PQXoQqLjWGtU0+20ieVZNBGtqRILDxQPqlfX0f4LBB2VrxWGxu61C2RoPggfL7CQpzsWQFw1fAH+mG1S9ScvQGZdb0zFz7g5BLSKzWwUlxd1hwN3bhhzZBNZYILI69I56ao55fWwIeLtKxD0jIeEubLAqkFVmfs2VxCWVE3VgPWbmkp9oukLLwA6SW5Znm9K9efuk+3TsqCRW5c33uCl8nvMwv3Cdhn+2ww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=87GlDCZrgfM9deMUNTBHo8CdqSJ5ZYodsYnbbS7Zgz0=;
- b=Z62c1FVUyiBh4cSjA05W+5WfrMmp0V8B1SyLlWr8BaCFbtWqI2JqLsocqFc3eI2Q4TiWZgcs/gMmTEjbHIVqPcbUNvOe/mSy/tnorBvWXJfBxBXGeLpznz/lgTE3axrHaETSxsNqhwLbK5VFm9W20KCs/s5LSnFkHo39SNqI6kbqdBCqjYe46hJ/wPlUIJnh6VORBdeAjJ/nQ6Fzv9h6uHdRm40CzwOK6zjtC19fXEB5kNRmY5+gk+G9Ivd2AzQ8NqGO9jYtUOkFLm9T4EuRg9xX6k9Vf9mT0aZd5UCU0P7Y8o35j2/WLpqa8tOzO7olGD2J6NNaEBZt1ia3Z6V+9A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=87GlDCZrgfM9deMUNTBHo8CdqSJ5ZYodsYnbbS7Zgz0=;
- b=PPqvxaxB7NQhcxXhS4fbEf8WBovI0vG2sKuLRuE8UN4icSqV/ARGP6bzBKLTsqIOpQYKNd7exKnei1vlyP2AQvf/MPxbF28VFlQZ4o6GfOm4CLPLSCW1+aZ1z1ss6bo9f2mouSau4Qm6s06xyj5YKQZXLO5apEr9VNAy/gAnEaTjKksMjPx311iIzzWwQfqLNBdsHNLlwCs4Nz070jWCzlTWOfDuZJ+y8hQwr9DmmKgc3yQKvYO58cTRXjZE40ueRMraemlH9UxFB2OzTDLgfEuc5erYDq28l/KlP9W03Or4VHfMTCS+3eulJ4eB11fa5klP32wW7Onvt5Q3mlpBuA==
-Received: from VE1EUR02FT035.eop-EUR02.prod.protection.outlook.com
- (2a01:111:e400:7e1e::46) by
- VE1EUR02HT231.eop-EUR02.prod.protection.outlook.com (2a01:111:e400:7e1e::182)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3868.27; Wed, 24 Feb
- 2021 13:29:28 +0000
-Received: from AM9P190MB1252.EURP190.PROD.OUTLOOK.COM (2a01:111:e400:7e1e::51)
- by VE1EUR02FT035.mail.protection.outlook.com
- (2a01:111:e400:7e1e::86) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3890.19 via Frontend
- Transport; Wed, 24 Feb 2021 13:29:28 +0000
-Received: from AM9P190MB1252.EURP190.PROD.OUTLOOK.COM
- ([fe80::8c6:51fd:4637:ccc6]) by AM9P190MB1252.EURP190.PROD.OUTLOOK.COM
- ([fe80::8c6:51fd:4637:ccc6%7]) with mapi id 15.20.3846.047; Wed, 24 Feb 2021
- 13:29:27 +0000
-From: Mohammed Subair <msubair@hotmail.com>
-To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: RK3288 AUDIO and LVDS
-Thread-Topic: RK3288 AUDIO and LVDS
-Thread-Index: AdcKsOOuv2QpxaVFRm+U7addTWfhLw==
-Date: Wed, 24 Feb 2021 13:29:27 +0000
-Message-ID: <AM9P190MB12523F27BC667A02885A2218BC9F9@AM9P190MB1252.EURP190.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:AB431514F887E4F6A6D31A910AD58FB232E9EC4F288B4F39FBB3281421258241;
- UpperCasedChecksum:2A79623C0A26845CAE7A1B57A38CD02200C5F16952CB88CAD1313D6141977BF6;
- SizeAsReceived:6611; Count:41
-x-tmn: [0/P5FMrZHjJnwGc28SvP6GRL7Pz0t2Qv]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 41
-x-eopattributedmessage: 0
-x-ms-office365-filtering-correlation-id: d7495cf5-50de-42b6-b97a-08d8d8c835c3
-x-ms-traffictypediagnostic: VE1EUR02HT231:
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xWotPys3tc9QwnQRGwfGjRimq4Q9SBkzXbg9MAHalahKMNucedoN0ORWPF39Bm1uu/vtMARakl56kzXrUK0tdSq+GA1XVCMO1vLdR8z568ifw6yO4F7fPSnXEJ2lFxkDuKlcYDcnNFkLSjpMRPuwGmVO8uL88rDUC5gZQpgsiQ8cZ2XPW4xuKziVkT+iKm//ciMi2JRTJA0URMT5zbjGqB3cO7aBb/o4e9E3t+YB/oiRffZOQck9mXp+M91gL9QA+/UdMDhbNPejMQIeb0Sn2hCSg10psxrklXVsCK5yjzAN7ci0Q26OrS1tc4AfAaVpqm+kPNfuu/k7GuGg34h9z7nWXyQsKYdE5M7QJgPLhH4G8OoLE0hWpV/qvdWzM0VEWljZgGasAT3gvwaXA9WKyg==
-x-ms-exchange-antispam-messagedata: iRox3SP82snbbWYEWTuAtI3McPLrIZZbdujfGgbguRk3/q13hk7HHE5l0OZzg52XAze8dJx+YgT8FROjQRcWr00R7HCDF1kJuYQxy/NUqLDKskkfyAa+tgBAvHY1O91/KabOXXA7qxhVibccIrvHPQ==
-x-ms-exchange-transport-forked: True
+ id 1lEvcG-0006Dz-IK
+ for linux-rockchip@lists.infradead.org; Wed, 24 Feb 2021 14:58:17 +0000
+Received: by mail-oi1-x234.google.com with SMTP id a13so2691998oid.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 24 Feb 2021 06:58:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gbU3IwxCR0mtqbhNfEFbj9D+PW+MeORgC6CdErr7nBw=;
+ b=aP8fFHE/1ypcctQDrQ66JN4WfZzCZCWyk5DsEmODx6RbyZHbXmS+gDZCxdIiBpS7ae
+ JqQgicjks45SjWq8Mac/w6Sj28if3/2cyau2VhN3qtbyxQKsjfftuq4mcNl3QW4/ZNVP
+ DJIBV9jOs9trgr0yv0VtGwbv4OV1ESHoUKf3g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gbU3IwxCR0mtqbhNfEFbj9D+PW+MeORgC6CdErr7nBw=;
+ b=NR9fS6QjEcolQTQG8BqOvTlpAA3djjz1z/1d+2Ki46D54yd2MY0ekicw3r7QWKOIEK
+ UXd5L3Qz2x67/HUB/DEsI6iZ3/dH73Kf/aRhbTBqEDkbCjID+u9laHOjeRIKlNfHGq5A
+ TV1MlZyQOAFixPuRr6fnWskZImE53hUtHqYV2I3I/llWbCoqwUcvydlyhxyoWZHJ6GeP
+ tjdoHY3QDqBiD7RpazCNiwfvJN5vEEPSeZtFqVk2sFOb21n51CPKL/cvl1e5p0HLCL0Q
+ FJmR+K/AU4jj5Es1BheHIjMp3nwXSiIqkhGL5IxRDNuTboXHJa50SnO8PYyEt0Ry6HZU
+ EOyA==
+X-Gm-Message-State: AOAM530U3gm3dXaKmPTbnjSO7EeL9cCMvF9YstaAVAnL+rl5cGDm+vPD
+ BDwKx6umDz/o0mCR12ANLA0XQOc/CVMR353/qImsSOHjDvQ=
+X-Google-Smtp-Source: ABdhPJzJDOBbeNCNg40mB6I5gWO0MUt3jWsrMLPQKLNLiFPv/fG0zUjoIfpU83KjB12h43GZOU9O0WTDiIBwqklWw1E=
+X-Received: by 2002:a05:6808:aa6:: with SMTP id
+ r6mr2960078oij.128.1614178693009; 
+ Wed, 24 Feb 2021 06:58:13 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-AuthSource: VE1EUR02FT035.eop-EUR02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: d7495cf5-50de-42b6-b97a-08d8d8c835c3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2021 13:29:27.9515 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1EUR02HT231
+References: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
+ <CAPj87rMS5zxY6sK4N8zVZF9MHThmURj6kuso=G5+MQDVmNjC4Q@mail.gmail.com>
+ <20210223145143.7bfayhp32tzdj637@DESKTOP-E1NTVVP.localdomain>
+ <CAPj87rMkSdtrHnoLzK6zAVvST2KH8SprNnp5bS92qpr84g=fPg@mail.gmail.com>
+ <20210223165348.edghgglgx4g2lvfw@DESKTOP-E1NTVVP.localdomain>
+ <YDU2+A0MNJnrWxPs@maud>
+ <20210223183404.jmdw5rojy4s64xfd@DESKTOP-E1NTVVP.localdomain>
+ <CAPj87rOVTd7YhbPoYyxhDD1+S7xG23L2v8Hujdh6tGFBq+n+Hg@mail.gmail.com>
+In-Reply-To: <CAPj87rOVTd7YhbPoYyxhDD1+S7xG23L2v8Hujdh6tGFBq+n+Hg@mail.gmail.com>
+From: Daniel Vetter <daniel@ffwll.ch>
+Date: Wed, 24 Feb 2021 15:58:01 +0100
+Message-ID: <CAKMK7uG+xNt4iQkB2ysbMQPbe_JSPWCq+3VzV+OOAuAhn=9x0Q@mail.gmail.com>
+Subject: Re: [PATCH] drm/rockchip: Require the YTR modifier for AFBC
+To: Daniel Stone <daniel@fooishbar.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_082933_668528_E4E5F4B0 
-X-CRM114-Status: UNSURE (   7.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210224_095816_624083_18BE55A1 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,18 +91,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Sandy Huang <hjc@rock-chips.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ linux-rockchip <linux-rockchip@lists.infradead.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, nd <nd@arm.com>,
+ Brian Starkey <brian.starkey@arm.com>,
+ Alyssa Rosenzweig <alyssa@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello
+On Tue, Feb 23, 2021 at 7:50 PM Daniel Stone <daniel@fooishbar.org> wrote:
+>
+> Hi Brian,
+>
+> On Tue, 23 Feb 2021 at 18:34, Brian Starkey <brian.starkey@arm.com> wrote:
+> > On Tue, Feb 23, 2021 at 05:10:16PM +0000, Alyssa Rosenzweig wrote:
+> > > But it seems to me allowing
+> > > both BGR+YTR and RGB+YTR upstream is the better route than simply
+> > > preventing hardware from using AFBC at all, and there are natural
+> > > encodings for both with fourcc modifiers.
+> >
+> > Are those the only options? I see XBGR8888, ABGR8888, BGR888 and
+> > BGR565 are all handled in vop_convert_afbc_format(), which are all
+> > "valid" for use with YTR, and all except XBGR are on the "preferred"
+> > AFBC format list in afbc.rst.
+>
+> The issue is a userspace one though, not a kernel one. Userspace (e.g.
+> GNOME Shell, Weston, Xorg) decides ahead of time that it's going to
+> use XRGB8888, then use the modifiers available to it for that format.
+> There's no logic in those projects to look at the list of 8bpc
+> non-alpha formats, examine XRGB vs. XBGR, decide that XBGR is 'better'
+> since it has more modifiers available, then go use XBGR.
 
-I have a RK3288 Multimedia board with RK808PMU chip,  which has built in  PAM8006A  audio amplifier and speaker out pins on the board.
-I can see RK808 based dts files in 4.4 kernel, the board is booting with rk3288-evb-rk808.dts file ,however none of them have LVDS integrated. Trying to fine some documentation on this LVDS and audio integration.
-Can anybody help on this ?
+That sounds a bit like userspace being too simple. Since if they're ok
+with dealing with modifiers accessing the raw buffer is out the window
+anyway, so bgr vs rgb shouldn't matter.
 
-Subair
+> So whilst removing XRGB+AFBC wouldn't technically remove the
+> possibility to use AFBC, the practical effect is that it wouldn't be
+> used.
+
+But also this ofc.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-rockchip mailing list
