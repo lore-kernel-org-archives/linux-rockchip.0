@@ -7,15 +7,15 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA310C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 14:58:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E40CC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 16:06:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDDF864E05
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 14:58:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDDF864E05
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id B27A264EF5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Feb 2021 16:06:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B27A264EF5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fooishbar.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -23,44 +23,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n7+e0EaiizNRrVRTjGDoGAZmph1I7kUotYxKAktlt+A=; b=tuEnyL+rYZq4u2mOCVqB+7YEh
-	pi4d4Bwk1PNyXiyKtLDdPAgC46bBYE+qw0wYTRIpB42O9hw5mZZLx4JhtT5op2rTrmFwfeHmTBjUp
-	vn50s0TTcqxoJn51eG//WQUs1voQCp71DewbWr/w5PyOdtpqVXpJgMH9OxFURkfopAeZrp+JK2Cxx
-	GouUsiY1BHM+BFfsJnfkhRhn0mFllQl5DD5RvArygTy2E0YctGe3h4Ps8NDPdqbsOM6qKeN642Nt0
-	6V8dRaT5f/pYnJ/RuCXjySyvRTD7APtFE5dJPmSiHNLrCx0V1PhUr6t0tfQVFc0KUj5OLUyARdhNP
-	cPgmMAlJQ==;
+	 bh=gF3zjLQd+PW1JnHZyIrMzu06vjXWVVzl/9CdqsVkwMM=; b=0csF/GRjIInEwC2iofiMCJBgo
+	o8QYw5ZU9A7o0QTHmzsnvSGjbhR4OkZuoh8WpjSsHhDbThJa4I3TWQ/xH7twjA+dcTgpvK/Gx9GK5
+	JMq7tHdYApoAqxQTCLNroMcwa9HACIP+LhDgLkbhX/g7ZMGpJKmX0ouNbznMpJuEn7bWLt/Judyup
+	wK7c0zJH8tVDSDIN5yYiX50JEnY9DNiTDAXZI4TSx0etBkFHc4lInSEkuYp2svnBn5KQMSiNOkIlN
+	005PIepksRwLZUgyS3R97SiECY5D21VC1k6W2M8gaf/AnBWMMF69TsquFCn2vojWWAcw5ut1ZRi5n
+	I4w+to8+A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lEvcJ-0006F2-25; Wed, 24 Feb 2021 14:58:19 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1lEwgB-0001wO-Gq; Wed, 24 Feb 2021 16:06:23 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lEvcG-0006Dz-IK
- for linux-rockchip@lists.infradead.org; Wed, 24 Feb 2021 14:58:17 +0000
-Received: by mail-oi1-x234.google.com with SMTP id a13so2691998oid.0
- for <linux-rockchip@lists.infradead.org>; Wed, 24 Feb 2021 06:58:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ id 1lEwg8-0001ve-6d
+ for linux-rockchip@lists.infradead.org; Wed, 24 Feb 2021 16:06:21 +0000
+Received: by mail-wr1-x434.google.com with SMTP id e10so2184435wro.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 24 Feb 2021 08:06:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fooishbar-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gbU3IwxCR0mtqbhNfEFbj9D+PW+MeORgC6CdErr7nBw=;
- b=aP8fFHE/1ypcctQDrQ66JN4WfZzCZCWyk5DsEmODx6RbyZHbXmS+gDZCxdIiBpS7ae
- JqQgicjks45SjWq8Mac/w6Sj28if3/2cyau2VhN3qtbyxQKsjfftuq4mcNl3QW4/ZNVP
- DJIBV9jOs9trgr0yv0VtGwbv4OV1ESHoUKf3g=
+ :cc; bh=ho7+jbWkPLe62RqDxRMAHg2mRAnGfcFm5FI9bReH5Ic=;
+ b=D9i4vOJZBIGoaG+7t5QKqBCGfC4/n8CeTKgeq9x1bR/uneeT5y8a+YXTTLOT1HB1Ft
+ D1I47nnO8wj5gV+f014x9CyCCWuHDl8ulsOnbPrudUD32DG5VqZy6JU+utcc+onGTs0g
+ /KszCsSwIRecLOl3OudhRxPnxIhxxGRkbR9blfXGfreHJHN6Ad5WSF9HuEBvQJcKBB9v
+ x0FjZZjIo10MNHiLgewGvw/VSzz+XjJ6MBYhYHu8zk1SRfJCvLd9LvmTovUCOzjdgR4+
+ CNMEUUZ/gtRMI/qerb7DsfaJMB6ucCBErRADFyXswps4GSV2L9YbGPeYpx+7lC+OafMZ
+ irqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=gbU3IwxCR0mtqbhNfEFbj9D+PW+MeORgC6CdErr7nBw=;
- b=NR9fS6QjEcolQTQG8BqOvTlpAA3djjz1z/1d+2Ki46D54yd2MY0ekicw3r7QWKOIEK
- UXd5L3Qz2x67/HUB/DEsI6iZ3/dH73Kf/aRhbTBqEDkbCjID+u9laHOjeRIKlNfHGq5A
- TV1MlZyQOAFixPuRr6fnWskZImE53hUtHqYV2I3I/llWbCoqwUcvydlyhxyoWZHJ6GeP
- tjdoHY3QDqBiD7RpazCNiwfvJN5vEEPSeZtFqVk2sFOb21n51CPKL/cvl1e5p0HLCL0Q
- FJmR+K/AU4jj5Es1BheHIjMp3nwXSiIqkhGL5IxRDNuTboXHJa50SnO8PYyEt0Ry6HZU
- EOyA==
-X-Gm-Message-State: AOAM530U3gm3dXaKmPTbnjSO7EeL9cCMvF9YstaAVAnL+rl5cGDm+vPD
- BDwKx6umDz/o0mCR12ANLA0XQOc/CVMR353/qImsSOHjDvQ=
-X-Google-Smtp-Source: ABdhPJzJDOBbeNCNg40mB6I5gWO0MUt3jWsrMLPQKLNLiFPv/fG0zUjoIfpU83KjB12h43GZOU9O0WTDiIBwqklWw1E=
-X-Received: by 2002:a05:6808:aa6:: with SMTP id
- r6mr2960078oij.128.1614178693009; 
- Wed, 24 Feb 2021 06:58:13 -0800 (PST)
+ bh=ho7+jbWkPLe62RqDxRMAHg2mRAnGfcFm5FI9bReH5Ic=;
+ b=Ef/qhbf44r/WXKwed9XBGXw0bLeEWucgnVz9uveQYaf7gfhCc2U6IhG2IVcuFs9VgH
+ dHNAmITwrutjorXFjiAcfR30+FGQrUkhzSqAWwXvRU6/Yr1RD+B2kfOFtGuTTopEGjH4
+ kppRcxfXRbQrQmyY+CCxJHryV1/PLcwl3++3/ulGMr3/Uzw7OuZErOOx6VJp1+jbSqUW
+ zqfHRfR7rb3FuDTRh8KZiC5Y/cYmtKPE6Cj/KNo7IRlVKAX/CEqoRInDvjLzMw/4YXmj
+ qgNuKkAwQVg3cKmBpYEIZGOqh6Of5bmb3Z6m0Ql8H1tl7AIflTaCXuY7RpH53XcAzNOk
+ w8iw==
+X-Gm-Message-State: AOAM5307qCGFqoC7xTCd7mBiEs/d2f+Rx/ZuBfen9EMUujnt7UX7RY2P
+ HRor3wyQie2uxoLsoU7J7CmxM8Squ3EQ6k6qyBfgmSRw5bxUlQ==
+X-Google-Smtp-Source: ABdhPJzMjfW7et16dlBlIUk3RMbaiTevIDWEWvDsfKcc4aiZ0oNOp8ZVMiM1JKkb4SyFU9nFeq+Smn+VtqilCPjJayA=
+X-Received: by 2002:a5d:4521:: with SMTP id j1mr5630733wra.354.1614182777056; 
+ Wed, 24 Feb 2021 08:06:17 -0800 (PST)
 MIME-Version: 1.0
 References: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
  <CAPj87rMS5zxY6sK4N8zVZF9MHThmURj6kuso=G5+MQDVmNjC4Q@mail.gmail.com>
@@ -70,15 +73,16 @@ References: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
  <YDU2+A0MNJnrWxPs@maud>
  <20210223183404.jmdw5rojy4s64xfd@DESKTOP-E1NTVVP.localdomain>
  <CAPj87rOVTd7YhbPoYyxhDD1+S7xG23L2v8Hujdh6tGFBq+n+Hg@mail.gmail.com>
-In-Reply-To: <CAPj87rOVTd7YhbPoYyxhDD1+S7xG23L2v8Hujdh6tGFBq+n+Hg@mail.gmail.com>
-From: Daniel Vetter <daniel@ffwll.ch>
-Date: Wed, 24 Feb 2021 15:58:01 +0100
-Message-ID: <CAKMK7uG+xNt4iQkB2ysbMQPbe_JSPWCq+3VzV+OOAuAhn=9x0Q@mail.gmail.com>
+ <CAKMK7uG+xNt4iQkB2ysbMQPbe_JSPWCq+3VzV+OOAuAhn=9x0Q@mail.gmail.com>
+In-Reply-To: <CAKMK7uG+xNt4iQkB2ysbMQPbe_JSPWCq+3VzV+OOAuAhn=9x0Q@mail.gmail.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Wed, 24 Feb 2021 16:06:05 +0000
+Message-ID: <CAPj87rPRgJU0N7-41K2VLuBahEnYQH52FaTqVbDpW7CHu_6VmA@mail.gmail.com>
 Subject: Re: [PATCH] drm/rockchip: Require the YTR modifier for AFBC
-To: Daniel Stone <daniel@fooishbar.org>
+To: Daniel Vetter <daniel@ffwll.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210224_095816_624083_18BE55A1 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20210224_110620_384309_438D4232 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,43 +107,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 23, 2021 at 7:50 PM Daniel Stone <daniel@fooishbar.org> wrote:
->
-> Hi Brian,
->
-> On Tue, 23 Feb 2021 at 18:34, Brian Starkey <brian.starkey@arm.com> wrote:
-> > On Tue, Feb 23, 2021 at 05:10:16PM +0000, Alyssa Rosenzweig wrote:
-> > > But it seems to me allowing
-> > > both BGR+YTR and RGB+YTR upstream is the better route than simply
-> > > preventing hardware from using AFBC at all, and there are natural
-> > > encodings for both with fourcc modifiers.
-> >
-> > Are those the only options? I see XBGR8888, ABGR8888, BGR888 and
-> > BGR565 are all handled in vop_convert_afbc_format(), which are all
-> > "valid" for use with YTR, and all except XBGR are on the "preferred"
-> > AFBC format list in afbc.rst.
->
-> The issue is a userspace one though, not a kernel one. Userspace (e.g.
-> GNOME Shell, Weston, Xorg) decides ahead of time that it's going to
-> use XRGB8888, then use the modifiers available to it for that format.
-> There's no logic in those projects to look at the list of 8bpc
-> non-alpha formats, examine XRGB vs. XBGR, decide that XBGR is 'better'
-> since it has more modifiers available, then go use XBGR.
+Hey,
 
-That sounds a bit like userspace being too simple. Since if they're ok
-with dealing with modifiers accessing the raw buffer is out the window
-anyway, so bgr vs rgb shouldn't matter.
+On Wed, 24 Feb 2021 at 14:58, Daniel Vetter <daniel@ffwll.ch> wrote:
+> On Tue, Feb 23, 2021 at 7:50 PM Daniel Stone <daniel@fooishbar.org> wrote:
+> > The issue is a userspace one though, not a kernel one. Userspace (e.g.
+> > GNOME Shell, Weston, Xorg) decides ahead of time that it's going to
+> > use XRGB8888, then use the modifiers available to it for that format.
+> > There's no logic in those projects to look at the list of 8bpc
+> > non-alpha formats, examine XRGB vs. XBGR, decide that XBGR is 'better'
+> > since it has more modifiers available, then go use XBGR.
+>
+> That sounds a bit like userspace being too simple. Since if they're ok
+> with dealing with modifiers accessing the raw buffer is out the window
+> anyway, so bgr vs rgb shouldn't matter.
 
-> So whilst removing XRGB+AFBC wouldn't technically remove the
-> possibility to use AFBC, the practical effect is that it wouldn't be
-> used.
+Sure, you can add colour-channel permutations, if you have concrete
+'rough equivalence' mappings, and you check that between KMS + EGL +
+anything external you want to use like PipeWire.
 
-But also this ofc.
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+We pretty much punted on that long ago and just use XRGB for
+everything. Android punted on that from the beginning and just uses
+XBGR for everything ... so it's not really a matter of dumb vs. smart
+userspace, just equally dumb userspaces which disagree with each
+other. ;)
+
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
