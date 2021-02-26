@@ -2,60 +2,67 @@ Return-Path: <SRS0=dCsk=H4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BA580C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51B9DC433E9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:48:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4200C64F03
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:12:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4200C64F03
+	by mail.kernel.org (Postfix) with ESMTPS id CA71D64EB7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:48:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA71D64EB7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/cIQA0KLC40tXzdpUwVNJ4Klpgh8wl4U8+TVRChz19Y=; b=wX9aTU2I1sRUEfOrzTulnprxD
-	baUUzIvcxC/aFfLdt5vUsSjNhOj2xIeiBLpZBTdPTs9tK32k2wgxy+F/xdH7hYhvtXyej+4vY+VEg
-	P6+gMT6n9WNu3+h7zkeglpmMXMY+q4/+TRiXEzunuH/Mj9W3zKc6teAH9xQWGN3VR5csLIA6tp+3x
-	FYRvSTQYJvCCNWOmMnXxrQ22h3MmFOxfWqDiVWBT1+5PIpRm7Ib2Gr9feC30VEZq4jUTUPSu2W8MJ
-	G2QZqHkA3dVLj72ZAiF4Bt9LN/DG4whTo8thXFsPmupHtmIn3PJqamGVLQ7l1QorGiW9edjnnb9WJ
-	ht6beEokw==;
+	 bh=7r95boma1n49S5EPfIX+Qarws/9Sae/XDDYBPlxqU8I=; b=yAtK7YrBBbDrb3U9Xyo8zvCMq
+	KEB/TsVB1aZIdCigp928MZ1BtRrbDbrOx76IXuIOgWanThAVuQXc3Pvz1P+6cOLUTSGOZa/mtXSC1
+	TPvaJ8H2I9M0+GXqgpVOGtT76KD1tQ31hYatfi5fVV5XmzuNrCQoKw31jmjLMZiB3KSiYhr4jDC06
+	t3/YKhkWdRTm1YHhWbdzcmC++bzMimmdu/dLE8VRQ4YFI42jDXRiHNaI8mqlzvOkgXMmzyfQmxvGi
+	WukVCUbGacYS3rcg3xs//nj3UXAE0rabVNl+lQDf4ybTmkWmUBH50EsKvfT4Yg79cJjMJyNPzYuL2
+	7IHDkf3Vw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFZAy-00029v-FZ; Fri, 26 Feb 2021 09:12:44 +0000
+	id 1lFZjA-00069G-FY; Fri, 26 Feb 2021 09:48:04 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFZ9x-0001jx-8V; Fri, 26 Feb 2021 09:11:44 +0000
-Received: from localhost.localdomain (unknown
+ id 1lFZj5-00068I-VS; Fri, 26 Feb 2021 09:48:01 +0000
+Received: from [IPv6:2a01:e0a:4cb:a870:297a:447b:deb4:3f5c] (unknown
  [IPv6:2a01:e0a:4cb:a870:297a:447b:deb4:3f5c])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 0B4831F464CC;
- Fri, 26 Feb 2021 09:11:39 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C37D51F40EAE;
+ Fri, 26 Feb 2021 09:47:57 +0000 (GMT)
+Subject: Re: [PATCH v3 5/9] media: hantro: Introduce G2/HEVC decoder
+To: Ezequiel Garcia <ezequiel@collabora.com>, p.zabel@pengutronix.de,
+ mchehab@kernel.org, robh+dt@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
+References: <20210222122406.41782-1-benjamin.gaignard@collabora.com>
+ <20210222122406.41782-6-benjamin.gaignard@collabora.com>
+ <4a432492dc3894bef6024c74140891acc2e17604.camel@collabora.com>
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: p.zabel@pengutronix.de, robh+dt@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, festevam@gmail.com, ezequiel@collabora.com,
- mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH v2 3/5] reset: Add reset driver for IMX8MQ VPU block
-Date: Fri, 26 Feb 2021 10:11:26 +0100
-Message-Id: <20210226091128.14379-4-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
-References: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
+Message-ID: <6f3c23a6-4b74-c7b4-f6b2-2fb983a8bbb8@collabora.com>
+Date: Fri, 26 Feb 2021 10:47:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <4a432492dc3894bef6024c74140891acc2e17604.camel@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_041141_520487_C7A45728 
-X-CRM114-Status: GOOD (  21.05  )
+X-CRM114-CacheID: sfid-20210226_044800_214048_3DD52028 
+X-CRM114-Status: GOOD (  37.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,238 +75,155 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- benjamin.gaignard@collabora.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com, kernel@pengutronix.de,
- kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kernel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-IMX8MQ SoC got a dedicated hardware block to reset the video processor
-units (G1 and G2).
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/reset/Kconfig            |   8 ++
- drivers/reset/Makefile           |   1 +
- drivers/reset/reset-imx8mq-vpu.c | 169 +++++++++++++++++++++++++++++++
- 3 files changed, 178 insertions(+)
- create mode 100644 drivers/reset/reset-imx8mq-vpu.c
-
-diff --git a/drivers/reset/Kconfig b/drivers/reset/Kconfig
-index 71ab75a46491..fa95380b271a 100644
---- a/drivers/reset/Kconfig
-+++ b/drivers/reset/Kconfig
-@@ -80,6 +80,14 @@ config RESET_IMX7
- 	help
- 	  This enables the reset controller driver for i.MX7 SoCs.
- 
-+config RESET_VPU_IMX8MQ
-+	tristate "i.MX8MQ VPU Reset Driver"
-+	depends on HAS_IOMEM
-+	depends on (ARM64 && ARCH_MXC) || COMPILE_TEST
-+	select MFD_SYSCON
-+	help
-+	  This enables the VPU reset controller driver for i.MX8MQ SoCs.
-+
- config RESET_INTEL_GW
- 	bool "Intel Reset Controller Driver"
- 	depends on OF && HAS_IOMEM
-diff --git a/drivers/reset/Makefile b/drivers/reset/Makefile
-index 1054123fd187..6007e0cdfc05 100644
---- a/drivers/reset/Makefile
-+++ b/drivers/reset/Makefile
-@@ -12,6 +12,7 @@ obj-$(CONFIG_RESET_BRCMSTB) += reset-brcmstb.o
- obj-$(CONFIG_RESET_BRCMSTB_RESCAL) += reset-brcmstb-rescal.o
- obj-$(CONFIG_RESET_HSDK) += reset-hsdk.o
- obj-$(CONFIG_RESET_IMX7) += reset-imx7.o
-+obj-$(CONFIG_RESET_VPU_IMX8MQ) += reset-imx8mq-vpu.o
- obj-$(CONFIG_RESET_INTEL_GW) += reset-intel-gw.o
- obj-$(CONFIG_RESET_LANTIQ) += reset-lantiq.o
- obj-$(CONFIG_RESET_LPC18XX) += reset-lpc18xx.o
-diff --git a/drivers/reset/reset-imx8mq-vpu.c b/drivers/reset/reset-imx8mq-vpu.c
-new file mode 100644
-index 000000000000..14c589f19266
---- /dev/null
-+++ b/drivers/reset/reset-imx8mq-vpu.c
-@@ -0,0 +1,169 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2021, Collabora
-+ *
-+ * i.MX8MQ VPU Reset Controller driver
-+ *
-+ * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/reset-controller.h>
-+#include <linux/regmap.h>
-+#include <dt-bindings/reset/imx8mq-vpu-reset.h>
-+
-+#define CTRL_SOFT_RESET		0x00
-+#define RESET_G1		((u32)BIT(1))
-+#define RESET_G2		((u32)BIT(0))
-+
-+#define CTRL_ENABLE		0x04
-+#define ENABLE_G1		BIT(1)
-+#define ENABLE_G2		BIT(0)
-+
-+#define CTRL_G1_DEC_FUSE	0x08
-+#define CTRL_G1_PP_FUSE		0x0c
-+#define CTRL_G2_DEC_FUSE	0x10
-+
-+struct imx8mq_vpu_reset {
-+	struct reset_controller_dev rcdev;
-+	struct regmap *regmap;
-+	struct clk_bulk_data *clocks;
-+	int num_clocks;
-+	struct device *dev;
-+};
-+
-+static inline struct imx8mq_vpu_reset *to_imx8mq_vpu_reset(struct reset_controller_dev *rcdev)
-+{
-+	return container_of(rcdev, struct imx8mq_vpu_reset, rcdev);
-+}
-+
-+static int imx8mq_vpu_reset_assert(struct reset_controller_dev *rcdev,
-+				   unsigned long id)
-+{
-+	struct imx8mq_vpu_reset *reset = to_imx8mq_vpu_reset(rcdev);
-+	int ret = -EINVAL;
-+
-+	ret = clk_bulk_prepare_enable(reset->num_clocks, reset->clocks);
-+	if (ret) {
-+		dev_err(reset->dev, "Failed to prepare clocks\n");
-+		return ret;
-+	}
-+
-+	switch (id) {
-+	case IMX8MQ_RESET_VPU_RESET_G1:
-+		ret = regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G1, ~RESET_G1);
-+		ret |= regmap_update_bits(reset->regmap, CTRL_ENABLE, ENABLE_G1, ENABLE_G1);
-+		break;
-+	case IMX8MQ_RESET_VPU_RESET_G2:
-+		ret = regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G2, ~RESET_G2);
-+		ret |= regmap_update_bits(reset->regmap, CTRL_ENABLE, ENABLE_G2, ENABLE_G2);
-+		break;
-+	}
-+
-+	/* Set values of the fuse registers */
-+	ret |= regmap_write(reset->regmap, CTRL_G1_DEC_FUSE, 0xffffffff);
-+	ret |= regmap_write(reset->regmap, CTRL_G1_PP_FUSE, 0xffffffff);
-+	ret |= regmap_write(reset->regmap, CTRL_G2_DEC_FUSE, 0xffffffff);
-+
-+	clk_bulk_disable_unprepare(reset->num_clocks, reset->clocks);
-+
-+	return ret;
-+}
-+
-+static int imx8mq_vpu_reset_deassert(struct reset_controller_dev *rcdev,
-+				     unsigned long id)
-+{
-+	struct imx8mq_vpu_reset *reset = to_imx8mq_vpu_reset(rcdev);
-+	int ret;
-+
-+	ret = clk_bulk_prepare_enable(reset->num_clocks, reset->clocks);
-+	if (ret) {
-+		dev_err(reset->dev, "Failed to prepare clocks\n");
-+		return ret;
-+	}
-+
-+	switch (id) {
-+	case IMX8MQ_RESET_VPU_RESET_G1:
-+		return regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G1, RESET_G1);
-+	case IMX8MQ_RESET_VPU_RESET_G2:
-+		return regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G2, RESET_G2);
-+	}
-+
-+	clk_bulk_disable_unprepare(reset->num_clocks, reset->clocks);
-+
-+	return -EINVAL;
-+}
-+
-+static int imx8mq_vpu_reset_dev(struct reset_controller_dev *rcdev,
-+				unsigned long id)
-+{
-+	int ret;
-+
-+	ret = imx8mq_vpu_reset_assert(rcdev, id);
-+	if (ret)
-+		return ret;
-+
-+	udelay(2);
-+
-+	return imx8mq_vpu_reset_deassert(rcdev, id);
-+}
-+
-+static const struct reset_control_ops imx8mq_vpu_reset_ops = {
-+	.reset		= imx8mq_vpu_reset_dev,
-+	.assert		= imx8mq_vpu_reset_assert,
-+	.deassert	= imx8mq_vpu_reset_deassert,
-+};
-+
-+static int imx8mq_vpu_reset_probe(struct platform_device *pdev)
-+{
-+	struct imx8mq_vpu_reset *reset;
-+	struct device *dev = &pdev->dev;
-+	struct regmap_config config = { .name = "vpu-reset" };
-+
-+	reset = devm_kzalloc(dev, sizeof(*reset), GFP_KERNEL);
-+	if (!reset)
-+		return -ENOMEM;
-+
-+	reset->regmap = device_node_to_regmap(dev->of_node);
-+	if (IS_ERR(reset->regmap)) {
-+		dev_err(dev, "Unable to get imx8mq-vpu-reset regmap");
-+		return PTR_ERR(reset->regmap);
-+	}
-+	regmap_attach_dev(dev, reset->regmap, &config);
-+
-+	reset->num_clocks = devm_clk_bulk_get_all(dev, &reset->clocks);
-+	if (!reset->num_clocks)
-+		return -EINVAL;
-+
-+	reset->rcdev.owner     = THIS_MODULE;
-+	reset->rcdev.nr_resets = 2;
-+	reset->rcdev.ops       = &imx8mq_vpu_reset_ops;
-+	reset->rcdev.of_node   = dev->of_node;
-+	reset->dev = dev;
-+
-+	return devm_reset_controller_register(dev, &reset->rcdev);
-+}
-+
-+static const struct of_device_id imx8mq_vpu_reset_dt_ids[] = {
-+	{ .compatible = "fsl,imx8mq-vpu-reset",},
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, imx8mq_vpu_reset_dt_ids);
-+
-+static struct platform_driver imx8mq_vpu_reset_driver = {
-+	.probe	= imx8mq_vpu_reset_probe,
-+	.driver = {
-+		.name		= KBUILD_MODNAME,
-+		.of_match_table	= imx8mq_vpu_reset_dt_ids,
-+	},
-+};
-+module_platform_driver(imx8mq_vpu_reset_driver);
-+
-+MODULE_AUTHOR("Benjamin Gaignard <benjamin.gaignard@collabora.com>");
-+MODULE_DESCRIPTION("NXP i.MX8MQ VPU reset driver");
-+MODULE_LICENSE("GPL v2");
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDI1LzAyLzIwMjEgw6AgMTg6NTUsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IEhp
+IEJlbmphbWluLAo+Cj4gVGhhbmtzIGZvciB0aGUgZ29vZCB3b3JrIQo+IEkgbW9zdGx5IGhhdmUg
+dHdvIGNvbmNlcm5zIHdpdGggdGhpcyBpbXBsZW1lbnRhdGlvbiwKPiB0aGUgdGlsZWQgb3V0cHV0
+IGFuZCB0aGUgYWxsb2NhdGlvbiBwYXRoLgo+Cj4gTW9yZSBiZWxvdy4KPgo+IE9uIE1vbiwgMjAy
+MS0wMi0yMiBhdCAxMzoyNCArMDEwMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4+IEltcGxl
+bWVudCBhbGwgdGhlIGxvZ2ljIHRvIGdldCBHMiBoYXJkd2FyZSBkZWNvZGluZyBIRVZDIGZyYW1l
+cy4KPj4gSXQgc3VwcG9ydCB1cCBsZXZlbCA1LjEgSEVWQyBzdHJlYW0uCj4+IEl0IGRvZXNuJ3Qg
+c3VwcG9ydCB5ZXQgMTAgYml0cyBmb3JtYXRzIG9yIHNjYWxpbmcgZmVhdHVyZS4KPj4KPj4gQWRk
+IEhBTlRSTyBIRVZDIGRlZGljYXRlZCBjb250cm9sIHRvIHNraXAgc29tZSBiaXRzIGF0IHRoZSBi
+ZWdpbm5pbmcKPj4gb2YgdGhlIHNsaWNlIGhlYWRlci4gVGhhdCBpcyB2ZXJ5IHNwZWNpZmljIHRv
+IHRoaXMgaGFyZHdhcmUgc28gY2FuJ3QKPj4gZ28gaW50byB1YXBpIHN0cnVjdHVyZXMuIENvbXB1
+dGUgdGhlIG5lZWRlZCB2YWx1ZSBpcyBjb21wbGV4IGFuZCByZXF1aXJlCj4+IGluZm9ybWF0aW9u
+IGZyb20gdGhlIHN0cmVhbSB0aGF0IG9ubHkgdGhlIHVzZXJsYW5kIGtub3dzIHNvIGxldCBpdAo+
+PiBwcm92aWRlIHRoZSBjb3JyZWN0IHZhbHVlIHRvIHRoZSBkcml2ZXIuCj4+Cj4+IFNpZ25lZC1v
+ZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29t
+Pgo+PiAtLS0KPj4gdmVyc2lvbiAyOgo+PiAtIHNxdWFzaCBtdWx0aXBsZSBjb21taXRzIGluIHRo
+aXMgb25lLgo+PiAtIGZpeCB0aGUgY29tbWVudHMgZG9uZSBieSBFemVxdWllbCBhYm91dCBkbWFf
+YWxsb2NfY29oZXJlbnQgdXNhZ2UKPj4gLSBmaXggRGFuJ3MgY29tbWVudHMgYWJvdXQgY29udHJv
+bCBjb3B5LCByZXZlcnNlIHRoZSB0ZXN0IGxvZ2ljCj4+IGluIHRpbGVfYnVmZmVyX3JlYWxsb2Nh
+dGUsIHJld29yayBzb21lIGdvdG8gYW5kIHJldHVybiBjYXNlcy4KPj4KPj4gIMKgZHJpdmVycy9z
+dGFnaW5nL21lZGlhL2hhbnRyby9NYWtlZmlsZcKgwqDCoMKgwqDCoMKgwqAgfMKgwqAgMiArCj4+
+ICDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmjCoMKgwqDCoMKgwqDCoMKg
+IHzCoCAxOSArCj4+ICDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5j
+wqDCoMKgwqAgfMKgIDQyICsrCj4+ICDCoC4uLi9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9f
+ZzJfaGV2Y19kZWMuYyB8IDU4NyArKysrKysrKysrKysrKysrKysKPj4gIMKgZHJpdmVycy9zdGFn
+aW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfcmVncy5oIHwgMTk4ICsrKysrKwo+PiAgwqBkcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmPCoMKgwqAgfCAzMjEgKysrKysr
+KysrKwo+PiAgwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5owqDCoMKg
+wqDCoCB8wqAgNDcgKysKPj4gIMKgNyBmaWxlcyBjaGFuZ2VkLCAxMjE2IGluc2VydGlvbnMoKykK
+Pj4gIMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
+dHJvX2cyX2hldmNfZGVjLmMKPj4gIMKgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX3JlZ3MuaAo+PiAgwqBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jCj4+Cj4+Cj4gW3NuaXBd
+Cj4+ICsKPj4gK3N0YXRpYyB2b2lkIHNldF9idWZmZXJzKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgp
+Cj4+ICt7Cj4+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCB2YjJfdjRsMl9idWZmZXIgKnNyY19idWYs
+ICpkc3RfYnVmOwo+PiArwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgaGFudHJvX2RldiAqdnB1ID0gY3R4
+LT5kZXY7Cj4+ICvCoMKgwqDCoMKgwqDCoGNvbnN0IHN0cnVjdCBoYW50cm9faGV2Y19kZWNfY3Ry
+bHMgKmN0cmxzID0gJmN0eC0+aGV2Y19kZWMuY3RybHM7Cj4+ICvCoMKgwqDCoMKgwqDCoGNvbnN0
+IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcyA9IGN0cmxzLT5zcHM7Cj4+ICvCoMKgwqDC
+oMKgwqDCoHNpemVfdCBjcl9vZmZzZXQgPSBoYW50cm9faGV2Y19jaHJvbWFfb2Zmc2V0KHNwcyk7
+Cj4+ICvCoMKgwqDCoMKgwqDCoGRtYV9hZGRyX3Qgc3JjX2RtYSwgZHN0X2RtYTsKPj4gK8KgwqDC
+oMKgwqDCoMKgdTMyIHNyY19sZW4sIHNyY19idWZfbGVuOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDC
+oHNyY19idWYgPSBoYW50cm9fZ2V0X3NyY19idWYoY3R4KTsKPj4gK8KgwqDCoMKgwqDCoMKgZHN0
+X2J1ZiA9IGhhbnRyb19nZXRfZHN0X2J1ZihjdHgpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoC8q
+IFNvdXJjZSAoc3RyZWFtKSBidWZmZXIuICovCj4+ICvCoMKgwqDCoMKgwqDCoHNyY19kbWEgPSB2
+YjJfZG1hX2NvbnRpZ19wbGFuZV9kbWFfYWRkcigmc3JjX2J1Zi0+dmIyX2J1ZiwgMCk7Cj4+ICvC
+oMKgwqDCoMKgwqDCoHNyY19sZW4gPSB2YjJfZ2V0X3BsYW5lX3BheWxvYWQoJnNyY19idWYtPnZi
+Ml9idWYsIDApOwo+PiArwqDCoMKgwqDCoMKgwqBzcmNfYnVmX2xlbiA9IHZiMl9wbGFuZV9zaXpl
+KCZzcmNfYnVmLT52YjJfYnVmLCAwKTsKPj4gKwo+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fd3Jp
+dGVfYWRkcih2cHUsIEhFVkNfQUREUl9TVFIsIHNyY19kbWEpOwo+PiArwqDCoMKgwqDCoMKgwqBo
+YW50cm9fcmVnX3dyaXRlKHZwdSwgaGV2Y19zdHJlYW1fbGVuLCBzcmNfbGVuKTsKPj4gK8KgwqDC
+oMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2cHUsIGhldmNfc3RybV9idWZmZXJfbGVuLCBzcmNf
+YnVmX2xlbik7Cj4+ICvCoMKgwqDCoMKgwqDCoGhhbnRyb19yZWdfd3JpdGUodnB1LCBoZXZjX3N0
+cm1fc3RhcnRfb2Zmc2V0LCAwKTsKPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2
+cHUsIGhldmNfd3JpdGVfbXZzX2UsIDEpOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoC8qIERlc3Rp
+bmF0aW9uIChkZWNvZGVkIGZyYW1lKSBidWZmZXIuICovCj4+ICvCoMKgwqDCoMKgwqDCoGRzdF9k
+bWEgPSBoYW50cm9fZ2V0X2RlY19idWZfYWRkcihjdHgsICZkc3RfYnVmLT52YjJfYnVmKTsKPj4g
+Kwo+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fd3JpdGVfYWRkcih2cHUsIEhFVkNfUkFTVEVSX1ND
+QU4sIGRzdF9kbWEpOwo+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fd3JpdGVfYWRkcih2cHUsIEhF
+VkNfUkFTVEVSX1NDQU5fQ0hSLCBkc3RfZG1hICsgY3Jfb2Zmc2V0KTsKPiBUaGUgd2F5IHRoaXMg
+aXMgZG9uZSB0aGUgcmFzdGVyLXNjYW4gb3V0cHV0IGlzIHRoZSBvbmx5Cj4gb3V0cHV0LCBhbmQg
+dGhlIHRpbGVkIG91cHV0IGl0IGtlcHQgZW50aXJlbHkgaW50ZXJuYWwsIGluIGhhbnRyb19oZXZj
+X2RlY19od19jdHgucmVmX2J1ZnMuCj4KPiBUaGlzIG1lYW5zIHRoZXJlJ3Mgbm8gd2F5IHRvIGV4
+cG9zZSB0aWxlZCBOVjEyIGluIGkuTVg4TSBWUFUgdGlsZWQgZm9ybWF0Cj4gdG8gdXNlcnNwYWNl
+LCB3aGljaCBjb3VsZCBiZSBkZXNpcmFibGUgZm9yIHNvbWUgdXNlIGNhc2VzLgo+Cj4gSSdtIG5v
+dCBzdWdnZXN0aW5nIHRvIGFjdHVhbGx5IGV4cG9zZSB0aWxlZCBOVjEyIGluIHRoaXMgcGF0Y2gs
+IGJ1dCB0byBwcmVwYXJlCj4gdGhlIGRyaXZlciB0byBiZSBhYmxlIHRvIHN1cHBvcnQgdGhhdCBl
+YXNpbHkgaW4gdGhlIGZ1dHVyZS4KPgo+IEl0IHNob3VsZCBiZSBwb3NzaWJsZSB0byBjb25zaWRl
+ciB0aGlzIGRldGlsaW5nIGFzCj4gcG9zdC1wcm9jZXNzaW5nLCBhZGRpbmcgc29tZSBjb2RlIGlu
+IGhhbnRyb19wb3N0cHJvYy5jCj4gbGV2ZXJhZ2luZyB0aGUgZXhpc3RpbmcgcG9zdC1wcm9jIHN1
+cHBvcnQuCj4KPiBJT1csIGhhbnRyb19wb3N0cHJvY19jdHguZGVjX3Egd291bGQgaG9sZCB0aGUg
+dGlsZWQgb3V0cHV0LAo+IGhhbnRyb19wb3N0cHJvY19lbmFibGUoKSB3cml0ZXMgdGhlIHJhc3Rl
+ci1zY2FuCj4gYnVmZmVyIGRlc3RpbmF0aW9uIGFkZHJlc3MsIGFuZCBzbyBvbi4KCldlbGwgdGhl
+IEcyIGNhbid0IHVzZSB0aGUgcG9zdC1wcm9jZXNzb3Igc28gSSdtIHJlbHVjdGFudCB0byBkbyBh
+cyBpZiBpdCB3YXMgdGhlIGNhc2UuCgpUbyBzdXBwb3J0IHRpbGVkIE5WMTIgZm9yIG1lIHRoZSBz
+b2x1dGlvbiBpcyB0byBjcmVhdGUgYSBoYW50cm9faGV2Y19hZGRfcmVmX2J1ZigpIGZ1bmN0aW9u
+CnRvIGFkZCB0aGUgZGVzdGluYXRpb24gYnVmZmVyIGluIGhldmNfZGVjLT5yZWZfYnVmcy4KV2Ug
+Y2FuIHRlc3QgZGVzdGluYXRpb24gZm9ybWF0IHRvIHNldCBoZXZjX291dF9yc19lIGJpdCBhbmQg
+SEVWQ19SQVNURVJfU0NBTiByZWdpc3Rlci4KCj4KPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3dy
+aXRlX2FkZHIodnB1LCBIRVZDX0FERFJfVElMRV9TSVpFLCBjdHgtPmhldmNfZGVjLnRpbGVfc2l6
+ZXMuZG1hKTsKPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBIRVZDX1RJ
+TEVfRklMVEVSLCBjdHgtPmhldmNfZGVjLnRpbGVfZmlsdGVyLmRtYSk7Cj4+ICvCoMKgwqDCoMKg
+wqDCoGhhbnRyb193cml0ZV9hZGRyKHZwdSwgSEVWQ19USUxFX1NBTywgY3R4LT5oZXZjX2RlYy50
+aWxlX3Nhby5kbWEpOwo+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fd3JpdGVfYWRkcih2cHUsIEhF
+VkNfVElMRV9CU0QsIGN0eC0+aGV2Y19kZWMudGlsZV9ic2QuZG1hKTsKPj4gK30KPj4gKwo+PiAr
+dm9pZCBoYW50cm9fZzJfY2hlY2tfaWRsZShzdHJ1Y3QgaGFudHJvX2RldiAqdnB1KQo+PiArewo+
+PiArwqDCoMKgwqDCoMKgwqBpbnQgaTsKPj4gKwo+PiArwqDCoMKgwqDCoMKgwqBmb3IgKGkgPSAw
+OyBpIDwgMzsgaSsrKSB7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB1MzIgc3Rh
+dHVzOwo+PiArCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAvKiBNYWtlIHN1cmUg
+dGhlIFZQVSBpcyBpZGxlICovCj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0
+dXMgPSB2ZHB1X3JlYWQodnB1LCBIRVZDX1JFR19JTlRFUlJVUFQpOwo+PiArwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgaWYgKHN0YXR1cyAmIEhFVkNfUkVHX0lOVEVSUlVQVF9ERUNfRSkg
+ewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHByX3dh
+cm4oIiVzOiBzdGlsbCBlbmFibGVkISEhIHJlc2V0dGluZy5cbiIsIF9fZnVuY19fKTsKPj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0dXMgfD0gSEVW
+Q19SRUdfSU5URVJSVVBUX0RFQ19BQk9SVF9FIHwgSEVWQ19SRUdfSU5URVJSVVBUX0RFQ19JUlFf
+RElTOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZk
+cHVfd3JpdGUodnB1LCBzdGF0dXMsIEhFVkNfUkVHX0lOVEVSUlVQVCk7Cj4+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqB9Cj4+ICvCoMKgwqDCoMKgwqDCoH0KPj4gK30KPj4gKwo+PiAr
+dm9pZCBoYW50cm9fZzJfaGV2Y19kZWNfcnVuKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4+ICt7
+Cj4+ICvCoMKgwqDCoMKgwqDCoHN0cnVjdCBoYW50cm9fZGV2ICp2cHUgPSBjdHgtPmRldjsKPj4g
+Kwo+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fZzJfY2hlY2tfaWRsZSh2cHUpOwo+PiArCj4+ICvC
+oMKgwqDCoMKgwqDCoC8qIFByZXBhcmUgSEVWQyBkZWNvZGVyIGNvbnRleHQuICovCj4+ICvCoMKg
+wqDCoMKgwqDCoGlmIChoYW50cm9faGV2Y19kZWNfcHJlcGFyZV9ydW4oY3R4KSkKPj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJldHVybjsKPj4gKwo+PiArwqDCoMKgwqDCoMKgwqAv
+KiBDb25maWd1cmUgaGFyZHdhcmUgcmVnaXN0ZXJzLiAqLwo+PiArwqDCoMKgwqDCoMKgwqBzZXRf
+cGFyYW1zKGN0eCk7Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgLyogc2V0IHJlZmVyZW5jZSBwaWN0
+dXJlcyAqLwo+PiArwqDCoMKgwqDCoMKgwqBpZiAoc2V0X3JlZihjdHgpKQo+PiArwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgLyogc29tZXRoaW5nIGdvZXMgd3JvbmcgKi8KPj4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGhhbnRyb19pcnFfZG9uZSh2cHUsIFZCMl9CVUZfU1RB
+VEVfRVJST1IpOwo+PiArCj4gSSBkb24ndCB0aGluayB3ZSB3YW50IHRvIGFsbG93IHRoZSBfcnVu
+KCkgb3BlcmF0aW9uIHRvIGZhaWwgbGlrZSB0aGlzLgo+IEluIG90aGVyIHdvcmRzLCBJIHdvdWxk
+IGF2b2lkIGFsbG9jYXRpbmcgYnVmZmVycyBpbiB0aGUgX3J1bigpIHBhdGgsCj4gYW5kIGRvaW5n
+IGFsbCBhbGxvY2F0aW9uIGF0IHN0YXJ0KCkgdGltZS4KPgo+IFRoYXQncyB3aHkgaGFudHJvX3N0
+YXJ0X3N0cmVhbWluZygpIGNhbGxzIGhhbnRyb19wb3N0cHJvY19hbGxvYygpIGlmIG5lZWRlZC4K
+ClRoZSBlcnJvciBjb3VsZCBhbHNvIGJlIHRoYXQgdGhlIHJlZmVyZW5jZSBwaWN0dXJlIGlzbid0
+IGZvdW5kIGluIHRoZSBsaXN0IHNvCndlIGNhbid0IHBlcmZvcm0gdGhlIGRlY29kZSBvcGVyYXRp
+b24uCklmIHdlIGRvIHRoZSBhbGxvY2F0aW9uIGF0IHN0YXJ0IHRpbWUgd2Ugd2lsbCBhbGxvY2F0
+ZSBhbGwgdGhlIHJlZmVyZW5jZSBmcmFtZXMKYnVmZmVycyBldmVuIGlmIHdlIGRvbid0IGtub3cg
+aWYgd2Ugd2lsbCB1c2UgdGhlbS4gVGhhdCBjb3VsZCBpbmNyZWFzZSBhIGxvdAptZW1vcnkgdXNh
+Z2UuIE5vdGUgdGhhdCBidWZmZXJzIGFsbG9jYXRlZCBvbmNlIGFuZCByZS11c2VkIHVudGlsIHRo
+ZSBlbmQgb2YgdGhlCnNlc3Npb24uCgo+Cj4+ICvCoMKgwqDCoMKgwqDCoHNldF9idWZmZXJzKGN0
+eCk7Cj4+ICvCoMKgwqDCoMKgwqDCoHByZXBhcmVfdGlsZV9pbmZvX2J1ZmZlcihjdHgpOwo+PiAr
+Cj4+ICvCoMKgwqDCoMKgwqDCoGhhbnRyb19lbmRfcHJlcGFyZV9ydW4oY3R4KTsKPj4gKwo+PiAr
+wqDCoMKgwqDCoMKgwqBoYW50cm9fcmVnX3dyaXRlKHZwdSwgaGV2Y19tb2RlLCBIRVZDX0RFQ19N
+T0RFKTsKPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2cHUsIGhldmNfY2xrX2dh
+dGVfZSwgMSk7Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgLyogRG9uJ3QgZGlzYWJsZSBvdXRwdXQg
+Ki8KPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2cHUsIGhldmNfb3V0X2Rpcywg
+MCk7Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgLyogRG9uJ3QgY29tcHJlc3MgYnVmZmVycyAqLwo+
+PiArwqDCoMKgwqDCoMKgwqBoYW50cm9fcmVnX3dyaXRlKHZwdSwgaGV2Y19yZWZfY29tcHJlc3Nf
+YnlwYXNzLCAxKTsKPj4gKwo+PiArwqDCoMKgwqDCoMKgwqAvKiB1c2UgTlYxMiBhcyBvdXRwdXQg
+Zm9ybWF0ICovCj4+ICvCoMKgwqDCoMKgwqDCoGhhbnRyb19yZWdfd3JpdGUodnB1LCBoZXZjX3Rp
+bGVfZSwgMCk7Cj4gVW5sZXNzIEknbSBtaXNzaW5nIHNvbWV0aGluZywgdGhpcyBeCj4KPj4gK8Kg
+wqDCoMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2cHUsIGhldmNfb3V0X3JzX2UsIDEpOwo+PiAr
+wqDCoMKgwqDCoMKgwqBoYW50cm9fcmVnX3dyaXRlKHZwdSwgaGV2Y19udW1fdGlsZV9yb3dzLCAx
+KTsKPj4gK8KgwqDCoMKgwqDCoMKgaGFudHJvX3JlZ193cml0ZSh2cHUsIGhldmNfbnVtX3RpbGVf
+Y29scywgMSk7Cj4+ICsKPiBhbmQgdGhpcyBeIHRoZXNlIHNob3VsZG4ndCBiZSBoZXJlLgo+Cj4g
+SEVWQyB0aWxlcyBhcmUgaGFuZGxlZCBhbHJlYWR5LiBTZWUgcHJlcGFyZV90aWxlX2luZm9fYnVm
+ZmVyKCkuCgpZb3UgYXJlIHJpZ2h0LCBJIHdpbGwgcmVtb3ZlIHRoYXQsIHRoYW5rcy4KCkJlbmph
+bWluCgo+IE5vdGUgdGhhdCBIRVZDICJ0aWxlcyIgYXJlIG5vdCByZWxhdGVkIHRvIE5WMTIgInRp
+bGVkIiBmb3JtYXQuCj4KPiBUaGFua3MhCj4gRXplcXVpZWwKPgo+CgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
