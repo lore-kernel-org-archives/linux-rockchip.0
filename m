@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E163CC433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA580C433DB
 	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:12:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8842564EE7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:12:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8842564EE7
+	by mail.kernel.org (Postfix) with ESMTPS id 4200C64F03
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Feb 2021 09:12:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4200C64F03
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZKXVtpE649M/nkoCuiHJ4/yXEC588aCT7vy8xhNVm6E=; b=JJfJB/b/7UWI5Rz3kV5Y70rdU
-	6NJZyK5A69LNct+wozlheOUn6XERgboetU5Kyudb2rSkXA2YQSA8YmXlrB1JQSnQ48qR5L0C2BwpW
-	5Gl36b6B6Y+VEV3rVmoxaiHraXxKqdK/w5IFUWSRBo6buZc5tuO+k/2QyN40B4ImTExuXpNppBgPd
-	jqXvIjndHtmwkZ8z7eHlHAeQPLfWP79eu9+XqDZne3n66yRIA4bzjW/DPDrelyctFVk8nD9Vzk3SK
-	cotOv/C+vX2wrqiom3sZeB6apW7WIXj4LEdQfi00H0sOOmHgGfxEwGOFE8D8+iGNvQdmr+eG3ZazT
-	DJdIF6K/Q==;
+	 bh=/cIQA0KLC40tXzdpUwVNJ4Klpgh8wl4U8+TVRChz19Y=; b=wX9aTU2I1sRUEfOrzTulnprxD
+	baUUzIvcxC/aFfLdt5vUsSjNhOj2xIeiBLpZBTdPTs9tK32k2wgxy+F/xdH7hYhvtXyej+4vY+VEg
+	P6+gMT6n9WNu3+h7zkeglpmMXMY+q4/+TRiXEzunuH/Mj9W3zKc6teAH9xQWGN3VR5csLIA6tp+3x
+	FYRvSTQYJvCCNWOmMnXxrQ22h3MmFOxfWqDiVWBT1+5PIpRm7Ib2Gr9feC30VEZq4jUTUPSu2W8MJ
+	G2QZqHkA3dVLj72ZAiF4Bt9LN/DG4whTo8thXFsPmupHtmIn3PJqamGVLQ7l1QorGiW9edjnnb9WJ
+	ht6beEokw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lFZB0-0002BD-BD; Fri, 26 Feb 2021 09:12:46 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lFZAy-00029v-FZ; Fri, 26 Feb 2021 09:12:44 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lFZ9z-0001m5-RG; Fri, 26 Feb 2021 09:11:45 +0000
+ id 1lFZ9x-0001jx-8V; Fri, 26 Feb 2021 09:11:44 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:297a:447b:deb4:3f5c])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C172E1F464D0;
- Fri, 26 Feb 2021 09:11:41 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 0B4831F464CC;
+ Fri, 26 Feb 2021 09:11:39 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: p.zabel@pengutronix.de, robh+dt@kernel.org, shawnguo@kernel.org,
  s.hauer@pengutronix.de, festevam@gmail.com, ezequiel@collabora.com,
  mchehab@kernel.org, gregkh@linuxfoundation.org
-Subject: [PATCH v2 5/5] arm64: dts: imx8mq: Use reset driver for VPU hardware
- block
-Date: Fri, 26 Feb 2021 10:11:28 +0100
-Message-Id: <20210226091128.14379-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 3/5] reset: Add reset driver for IMX8MQ VPU block
+Date: Fri, 26 Feb 2021 10:11:26 +0100
+Message-Id: <20210226091128.14379-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
 References: <20210226091128.14379-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210226_041144_060387_E98F6B71 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20210226_041141_520487_C7A45728 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,76 +78,223 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a vpu reset hardware block node.
+IMX8MQ SoC got a dedicated hardware block to reset the video processor
+units (G1 and G2).
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- arch/arm64/boot/dts/freescale/imx8mq.dtsi | 31 ++++++++++++++++++-----
- 1 file changed, 25 insertions(+), 6 deletions(-)
+ drivers/reset/Kconfig            |   8 ++
+ drivers/reset/Makefile           |   1 +
+ drivers/reset/reset-imx8mq-vpu.c | 169 +++++++++++++++++++++++++++++++
+ 3 files changed, 178 insertions(+)
+ create mode 100644 drivers/reset/reset-imx8mq-vpu.c
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index a841a023e8e0..d9d9efc8592d 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -7,6 +7,7 @@
- #include <dt-bindings/clock/imx8mq-clock.h>
- #include <dt-bindings/power/imx8mq-power.h>
- #include <dt-bindings/reset/imx8mq-reset.h>
-+#include <dt-bindings/reset/imx8mq-vpu-reset.h>
- #include <dt-bindings/gpio/gpio.h>
- #include "dt-bindings/input/input.h"
- #include <dt-bindings/interrupt-controller/arm-gic.h>
-@@ -1267,19 +1268,36 @@ usb3_phy1: usb-phy@382f0040 {
- 			status = "disabled";
- 		};
+diff --git a/drivers/reset/Kconfig b/drivers/reset/Kconfig
+index 71ab75a46491..fa95380b271a 100644
+--- a/drivers/reset/Kconfig
++++ b/drivers/reset/Kconfig
+@@ -80,6 +80,14 @@ config RESET_IMX7
+ 	help
+ 	  This enables the reset controller driver for i.MX7 SoCs.
  
-+		vpu_reset: vpu-reset@38320000 {
-+			compatible = "fsl,imx8mq-vpu-reset", "syscon";
-+			reg = <0x38320000 0x10000>;
-+			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+					  <&clk IMX8MQ_CLK_VPU_G2>,
-+					  <&clk IMX8MQ_CLK_VPU_BUS>,
-+					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_SYS1_PLL_800M>,
-+						 <&clk IMX8MQ_VPU_PLL>;
-+			assigned-clock-rates = <600000000>, <300000000>,
-+					       <800000000>, <0>;
-+			#reset-cells = <1>;
-+		};
++config RESET_VPU_IMX8MQ
++	tristate "i.MX8MQ VPU Reset Driver"
++	depends on HAS_IOMEM
++	depends on (ARM64 && ARCH_MXC) || COMPILE_TEST
++	select MFD_SYSCON
++	help
++	  This enables the VPU reset controller driver for i.MX8MQ SoCs.
 +
- 		vpu: video-codec@38300000 {
- 			compatible = "nxp,imx8mq-vpu";
- 			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>,
--			      <0x38320000 0x10000>;
--			reg-names = "g1", "g2", "ctrl";
-+			      <0x38310000 0x10000>;
-+			reg-names = "g1", "g2";
- 			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
- 				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
- 			interrupt-names = "g1", "g2";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
--			clock-names = "g1", "g2", "bus";
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-+			clock-names = "g1", "g2";
- 			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
- 					  <&clk IMX8MQ_CLK_VPU_G2>,
- 					  <&clk IMX8MQ_CLK_VPU_BUS>,
-@@ -1290,6 +1308,7 @@ vpu: video-codec@38300000 {
- 						 <&clk IMX8MQ_VPU_PLL>;
- 			assigned-clock-rates = <600000000>, <600000000>,
- 					       <800000000>, <0>;
-+			resets = <&vpu_reset IMX8MQ_RESET_VPU_RESET_G1>;
- 			power-domains = <&pgc_vpu>;
- 		};
- 
+ config RESET_INTEL_GW
+ 	bool "Intel Reset Controller Driver"
+ 	depends on OF && HAS_IOMEM
+diff --git a/drivers/reset/Makefile b/drivers/reset/Makefile
+index 1054123fd187..6007e0cdfc05 100644
+--- a/drivers/reset/Makefile
++++ b/drivers/reset/Makefile
+@@ -12,6 +12,7 @@ obj-$(CONFIG_RESET_BRCMSTB) += reset-brcmstb.o
+ obj-$(CONFIG_RESET_BRCMSTB_RESCAL) += reset-brcmstb-rescal.o
+ obj-$(CONFIG_RESET_HSDK) += reset-hsdk.o
+ obj-$(CONFIG_RESET_IMX7) += reset-imx7.o
++obj-$(CONFIG_RESET_VPU_IMX8MQ) += reset-imx8mq-vpu.o
+ obj-$(CONFIG_RESET_INTEL_GW) += reset-intel-gw.o
+ obj-$(CONFIG_RESET_LANTIQ) += reset-lantiq.o
+ obj-$(CONFIG_RESET_LPC18XX) += reset-lpc18xx.o
+diff --git a/drivers/reset/reset-imx8mq-vpu.c b/drivers/reset/reset-imx8mq-vpu.c
+new file mode 100644
+index 000000000000..14c589f19266
+--- /dev/null
++++ b/drivers/reset/reset-imx8mq-vpu.c
+@@ -0,0 +1,169 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2021, Collabora
++ *
++ * i.MX8MQ VPU Reset Controller driver
++ *
++ * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
++ */
++
++#include <linux/clk.h>
++#include <linux/delay.h>
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include <linux/reset-controller.h>
++#include <linux/regmap.h>
++#include <dt-bindings/reset/imx8mq-vpu-reset.h>
++
++#define CTRL_SOFT_RESET		0x00
++#define RESET_G1		((u32)BIT(1))
++#define RESET_G2		((u32)BIT(0))
++
++#define CTRL_ENABLE		0x04
++#define ENABLE_G1		BIT(1)
++#define ENABLE_G2		BIT(0)
++
++#define CTRL_G1_DEC_FUSE	0x08
++#define CTRL_G1_PP_FUSE		0x0c
++#define CTRL_G2_DEC_FUSE	0x10
++
++struct imx8mq_vpu_reset {
++	struct reset_controller_dev rcdev;
++	struct regmap *regmap;
++	struct clk_bulk_data *clocks;
++	int num_clocks;
++	struct device *dev;
++};
++
++static inline struct imx8mq_vpu_reset *to_imx8mq_vpu_reset(struct reset_controller_dev *rcdev)
++{
++	return container_of(rcdev, struct imx8mq_vpu_reset, rcdev);
++}
++
++static int imx8mq_vpu_reset_assert(struct reset_controller_dev *rcdev,
++				   unsigned long id)
++{
++	struct imx8mq_vpu_reset *reset = to_imx8mq_vpu_reset(rcdev);
++	int ret = -EINVAL;
++
++	ret = clk_bulk_prepare_enable(reset->num_clocks, reset->clocks);
++	if (ret) {
++		dev_err(reset->dev, "Failed to prepare clocks\n");
++		return ret;
++	}
++
++	switch (id) {
++	case IMX8MQ_RESET_VPU_RESET_G1:
++		ret = regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G1, ~RESET_G1);
++		ret |= regmap_update_bits(reset->regmap, CTRL_ENABLE, ENABLE_G1, ENABLE_G1);
++		break;
++	case IMX8MQ_RESET_VPU_RESET_G2:
++		ret = regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G2, ~RESET_G2);
++		ret |= regmap_update_bits(reset->regmap, CTRL_ENABLE, ENABLE_G2, ENABLE_G2);
++		break;
++	}
++
++	/* Set values of the fuse registers */
++	ret |= regmap_write(reset->regmap, CTRL_G1_DEC_FUSE, 0xffffffff);
++	ret |= regmap_write(reset->regmap, CTRL_G1_PP_FUSE, 0xffffffff);
++	ret |= regmap_write(reset->regmap, CTRL_G2_DEC_FUSE, 0xffffffff);
++
++	clk_bulk_disable_unprepare(reset->num_clocks, reset->clocks);
++
++	return ret;
++}
++
++static int imx8mq_vpu_reset_deassert(struct reset_controller_dev *rcdev,
++				     unsigned long id)
++{
++	struct imx8mq_vpu_reset *reset = to_imx8mq_vpu_reset(rcdev);
++	int ret;
++
++	ret = clk_bulk_prepare_enable(reset->num_clocks, reset->clocks);
++	if (ret) {
++		dev_err(reset->dev, "Failed to prepare clocks\n");
++		return ret;
++	}
++
++	switch (id) {
++	case IMX8MQ_RESET_VPU_RESET_G1:
++		return regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G1, RESET_G1);
++	case IMX8MQ_RESET_VPU_RESET_G2:
++		return regmap_update_bits(reset->regmap, CTRL_SOFT_RESET, RESET_G2, RESET_G2);
++	}
++
++	clk_bulk_disable_unprepare(reset->num_clocks, reset->clocks);
++
++	return -EINVAL;
++}
++
++static int imx8mq_vpu_reset_dev(struct reset_controller_dev *rcdev,
++				unsigned long id)
++{
++	int ret;
++
++	ret = imx8mq_vpu_reset_assert(rcdev, id);
++	if (ret)
++		return ret;
++
++	udelay(2);
++
++	return imx8mq_vpu_reset_deassert(rcdev, id);
++}
++
++static const struct reset_control_ops imx8mq_vpu_reset_ops = {
++	.reset		= imx8mq_vpu_reset_dev,
++	.assert		= imx8mq_vpu_reset_assert,
++	.deassert	= imx8mq_vpu_reset_deassert,
++};
++
++static int imx8mq_vpu_reset_probe(struct platform_device *pdev)
++{
++	struct imx8mq_vpu_reset *reset;
++	struct device *dev = &pdev->dev;
++	struct regmap_config config = { .name = "vpu-reset" };
++
++	reset = devm_kzalloc(dev, sizeof(*reset), GFP_KERNEL);
++	if (!reset)
++		return -ENOMEM;
++
++	reset->regmap = device_node_to_regmap(dev->of_node);
++	if (IS_ERR(reset->regmap)) {
++		dev_err(dev, "Unable to get imx8mq-vpu-reset regmap");
++		return PTR_ERR(reset->regmap);
++	}
++	regmap_attach_dev(dev, reset->regmap, &config);
++
++	reset->num_clocks = devm_clk_bulk_get_all(dev, &reset->clocks);
++	if (!reset->num_clocks)
++		return -EINVAL;
++
++	reset->rcdev.owner     = THIS_MODULE;
++	reset->rcdev.nr_resets = 2;
++	reset->rcdev.ops       = &imx8mq_vpu_reset_ops;
++	reset->rcdev.of_node   = dev->of_node;
++	reset->dev = dev;
++
++	return devm_reset_controller_register(dev, &reset->rcdev);
++}
++
++static const struct of_device_id imx8mq_vpu_reset_dt_ids[] = {
++	{ .compatible = "fsl,imx8mq-vpu-reset",},
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(of, imx8mq_vpu_reset_dt_ids);
++
++static struct platform_driver imx8mq_vpu_reset_driver = {
++	.probe	= imx8mq_vpu_reset_probe,
++	.driver = {
++		.name		= KBUILD_MODNAME,
++		.of_match_table	= imx8mq_vpu_reset_dt_ids,
++	},
++};
++module_platform_driver(imx8mq_vpu_reset_driver);
++
++MODULE_AUTHOR("Benjamin Gaignard <benjamin.gaignard@collabora.com>");
++MODULE_DESCRIPTION("NXP i.MX8MQ VPU reset driver");
++MODULE_LICENSE("GPL v2");
 -- 
 2.25.1
 
