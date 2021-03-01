@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D072C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Mar 2021 23:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E2F4C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Mar 2021 23:39:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D8AD60295
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Mar 2021 23:39:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D8AD60295
+	by mail.kernel.org (Postfix) with ESMTPS id 1DA4B61494
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Mar 2021 23:39:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DA4B61494
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,41 +22,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:References:
 	In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XgX4QdcfkRH2+jgdi6dZkjXApUgg6aZ0Q3EdQFSaTQM=; b=0k8lROhPnTWGKwNIPQXZZ9Y7L
-	18uKFZ9RuHx/oc7wJ+HsISjZQSYUdAkSdEvPjlCKWX02KjMBPE3nDE35EHceQu11lzfxcIZco4tqk
-	68sXIkb7ZWyeBLF8rNiSEu9vHWm8wD8KSUAme1FySFiCPjMvr9fMQac87+UG+kiiUKFCjYCxgI0Zy
-	LFsKtJv2B3YikVcPdpk0wzjwETZ9ry1uIDH4kKQpk58fYCNgqKJKQOWcQJY03ol3PTjVCJArXtsM/
-	kGFrRqpZj83TIZG8IpcWngeKkD1JLUOaR3bwVuO6AF9QcNvvvsarUNg4dNWvJHILRQQ4tcFylqPhA
-	4wABBrOmQ==;
+	 bh=GWKm4NabX74kqoq5XdxJrRbMM3UzALmQiL3wUehmwuE=; b=IbmjQ9DDbXuktN8mEdilK/o0L
+	BJbv39Q90MDm1nenrMGa1PLg5YeFbDeX7s0CxHEv+ZxNS3fd869iA3MXILKwz+RikY3RirvqZrxdE
+	tmwenPllJmhpgJHyRnoXAMqN06uHsrytyur6gYgnyAPW5/Nalp+c/gsl24bwWIVky1ZLQslJX6Uc7
+	MLMF8RVfRX7cvrgIQJ8+r0ML6MHylrrzPzeRw0IPJdtX6v4ng2LtzubwhJeOZxl+BK34bA8HXhlxL
+	i2vBhcLZSo40B1datIgt4b5pgvgfrGAVwGnf6aiFhExh8xWZ4shlRT25kYSMed7eVViCYJd8TIjmn
+	ve0v+gloQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1lGs84-0005ck-Dx; Mon, 01 Mar 2021 23:39:08 +0000
+	id 1lGs89-0005eM-Lr; Mon, 01 Mar 2021 23:39:13 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1lGs80-0005bm-He; Mon, 01 Mar 2021 23:39:05 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 498E460240;
- Mon,  1 Mar 2021 23:39:03 +0000 (UTC)
+ id 1lGs85-0005cy-OA; Mon, 01 Mar 2021 23:39:10 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9E55F6146B;
+ Mon,  1 Mar 2021 23:39:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1614641943;
- bh=11tc3XCd4ttATWcpDw1lCPmytuMBwWlibLxpQSnMXC4=;
+ s=k20201202; t=1614641949;
+ bh=FC5E0jgM2oYDDQU3j98r7awtXgaJzsC9gg9QAlFAKC8=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=GcmFDVy/XO0MF3h2k+3kRlAYVcIjZhsNdcaOD1aAC0d++PaSK8FIatnNxc2asVRH1
- KVsQlpwfgQC7AlTMuhmxCj7cTSJoNagR8eincqRB258X1vTWmc20y6Eh/orJRkm7BT
- tU2yWjneoN24CCcSFhLKsMydQrYBj6sTAcBzf0b/KJF6ASjwClDudoGWvn0Vj3poy0
- 6ZXZMQ6zZlSh72LdObtMK5FSbcyPwvtKbI2KEvz4wuV1FTyi4R0EvjU6qiBGIevc9a
- leyq4vLdyN2PesuaeeJoc3P+1qvqxF1y43zQjNvycpgY/ewF1s9mrBeeGrxO4V/T1O
- aMP/TBHCfCuPg==
+ b=ge/cQFMMzNZ8kEJ0nCBHlFyfI4rzjL2b8N5jGL5BpTA8jXuBqFqNgQQpRhhNYGwGq
+ bUnqFurDNzQFkgb0UDk4R7yex3dETJDiPrY2ftRv8nGc5Cu/H3eWZ2vVF8aNNgPWuc
+ meTwGEMNlRALGaEdKlzO7J0BCQt/irAzh/Ae0/Il1qcMmMuV9C+pege+buXLNUgar5
+ cfco/rKBuz7jM+/5FGoBRM+KDPzmWM7tb/9cXBL5LVo0ONdfrPOd79PcM9nXbrdOOe
+ wvYmeHaSjTAYQhTw3/ISwovbx+1S04PJIs/2rbS3+isWqtTmDbw/dVEuN0JWbzYjDA
+ FZ6/3JAPi7iWQ==
 From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@kernel.org>
-In-Reply-To: <20210226140109.3477093-1-arnd@kernel.org>
-References: <20210226140109.3477093-1-arnd@kernel.org>
-Subject: Re: [PATCH] [v2] spi: rockchip: avoid objtool warning
-Message-Id: <161464187231.31555.9991392584243139110.b4-ty@kernel.org>
+To: Nick Desaulniers <ndesaulniers@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@kernel.org>,
+ Nathan Chancellor <nathan@kernel.org>, Emil Renner Berthing <kernel@esmil.dk>
+In-Reply-To: <20210225125541.1808719-1-arnd@kernel.org>
+References: <20210225125541.1808719-1-arnd@kernel.org>
+Subject: Re: [PATCH] spi: rockchip: avoid objtool warning
+Message-Id: <161464187231.31555.17379793263807156995.b4-ty@kernel.org>
 Date: Mon, 01 Mar 2021 23:37:52 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210301_183904_649022_942B99D3 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20210301_183909_885890_735CC9FE 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +71,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Emil Renner Berthing <kernel@esmil.dk>, Arnd Bergmann <arnd@arndb.de>,
- clang-built-linux@googlegroups.com, Nick Desaulniers <ndesaulniers@google.com>,
+Cc: Arnd Bergmann <arnd@arndb.de>, Alexander Kochetkov <al.kochet@gmail.com>,
  linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- Nathan Chancellor <nathan@kernel.org>, linux-rockchip@lists.infradead.org,
- Jon Lin <jon.lin@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
- Pratyush Yadav <p.yadav@ti.com>, linux-arm-kernel@lists.infradead.org
+ linux-rockchip@lists.infradead.org, Jon Lin <jon.lin@rock-chips.com>,
+ clang-built-linux@googlegroups.com, Vincent Pelletier <plr.vincent@gmail.com>,
+ Johan Jonker <jbx6244@gmail.com>, Chris Ruehl <chris.ruehl@gtsys.com.hk>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Feb 2021 15:00:48 +0100, Arnd Bergmann wrote:
+On Thu, 25 Feb 2021 13:55:34 +0100, Arnd Bergmann wrote:
 > Building this file with clang leads to a an unreachable code path
 > causing a warning from objtool:
 > 
 > drivers/spi/spi-rockchip.o: warning: objtool: rockchip_spi_transfer_one()+0x2e0: sibling call from callable instruction with modified stack frame
 > 
-> Change the unreachable() into an error return that can be
-> handled if it ever happens, rather than silently crashing
-> the kernel.
+> Use BUG() instead of unreachable() to avoid the undefined behavior
+> if it does happen.
 
 Applied to
 
