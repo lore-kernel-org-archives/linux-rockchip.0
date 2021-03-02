@@ -2,81 +2,95 @@ Return-Path: <SRS0=qEJD=IB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94A90C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:18:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2599BC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:29:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F29E64ED9
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:18:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F29E64ED9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 94D1964EDB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:29:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94D1964EDB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=svnoy4CT/09xK9W74WstQgOGeWvTSb3jK1X5GoO0s0Q=; b=GVaAMkOrZ7LJv3b510oFL3EDl
-	MPZeP1tpmhhN3oWNGftui4eQYREGDaC62uXjxxKpIaKGrn/RLEafh0cFes8ejdXwqXBHJSjX2Ygwk
-	zt6PlU8mF1rWYfo/lGPoJF9M5qAx/83eEtfaLJInJnIJR1XIftuYme+XsY2ou5+PLPNNkk33n+LRQ
-	vUsqnyJuRMTaEiviCmtIMEXTI9B76c8dkiFXt1OhJiUnu5MiabI1dKtJrgPVal0NSzNOH3jszFuZ8
-	POJps9ltc8G3UIGPTIwa3vYsF7TGi5mEODtohEBvOKu+6jNVOneoyiMUKOzOcZn1Ujtqv/iUgVdf1
-	fhcTmM9xg==;
+	 bh=Mr9xc7LWO+QkwnKNEYARX6eW5i7DCPSfYz8kxWXpvnc=; b=QXOwh+4yYPCXmfxqXbQxgDvT+
+	e5KFFPZOhQYcYRFcJxxpahIkLigGEp0TPZCKFioPyuNqvVsAm8jgGbj8awzF8FjrHLdvxk4t95NpF
+	cAUpNGH5CpXAE06yxQd0iqgvW/pP2Dtggmub4PgSjpyc1m+fWdjPD+ufV4ZZNadoAAMz+5AXd6PpA
+	VPFGwwJFCFJ+GBhJ/SCinq4bne9bngfMQAP5HILhB01HM9bfmq+nTxt3fEPlLv4Xc8iIi51Bd4LKt
+	yDmc6G30/MizdPjpWksxjQTWZnRk9FlVeyC8Dtp6L2KItcIaygAPruF/sjJv9g5rE4XD4Co/TMxFO
+	x9Cz6NiHQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHV8n-005lhe-QW; Wed, 03 Mar 2021 17:18:30 +0000
+	id 1lHVJI-005o19-8B; Wed, 03 Mar 2021 17:29:20 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHStb-005F33-AZ; Wed, 03 Mar 2021 14:54:40 +0000
+ id 1lHSv5-005FS4-Pw
+ for linux-rockchip@desiato.infradead.org; Wed, 03 Mar 2021 14:56:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
- References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=V6ibxchNatcAq1u3cjbVN+48aup3B1l+qvsGZNyMIoU=; b=ucjPhXR00yKgNWbmhHD6YcjGoQ
- 8QTQ0ZbyQd6deDDmeIg1AeC140eiBJKGd+F+S7XWkyEvFuOtXFymvar6uf1RqqqOromed3i6roSxw
- heREdIdhA8P1p7GuLXakeMkxbwsuUnqy+zNOVdAuD7bvJwdzeVZN7WOmZkShqtyZEqAJaMgJ6OHQg
- KZ6rp7c95wFDFWkftFkNCf5bz3xTxWidNkeTCQgjw9IR0bWl1fxfQwbDNtDCaDOzlaiGSvgc4Dw2o
- TGRrmUD6elC43wYH3fLsLpp6Zq1Qnwh9qF79OLmtJyRCDlvFHWoOuQCWfwEAwZOrXLFwZPI2EQ+TU
- y4h8mo8w==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ d=infradead.org; s=casper.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
+ Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=3zrRjA7YBWfjokl2Xgay7jI8fNwkayDcVMdDOQenPBE=; b=O8L1uWDiTTr/3iAMcOcwTX3YlX
+ 5PXmlaZ2tvzJ/ZnPlkQBPjviieFjXVv689+dc2Jmlgf45efsYxN7EtKE+uIOo5jMfKr2L73jrxObo
+ P3X79gALkPTQcRbGRFKg4tPKMAMHof/Tin3gv0ipV3WdjJI5BMLA2srbIndFAIGn4jHaM2z66JfKc
+ DvPx93nBLdW/Tkmhq8nFRPtGdu0crWcJoVlia+yAY+P49hA8oOvtBhN4vXR46iYhYB6jBv7R7WMzv
+ Nt9UUBKUIacJUnl65RoHCIdlYcUiBVuTaGaXcPhk9E9wT/SeWGolH5KacN/uMw4lY0bl7iR2cjlYJ
+ FuvKkBvA==;
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHPre-002O3L-GI; Wed, 03 Mar 2021 11:40:26 +0000
-Received: from localhost.localdomain (unknown
- [IPv6:2a01:e0a:4cb:a870:2035:1dcd:21c7:b3af])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 463131F45C2B;
- Wed,  3 Mar 2021 11:40:19 +0000 (GMT)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 03/11] media: hantro: change hantro_codec_ops run prototype
- to return errors
-Date: Wed,  3 Mar 2021 12:39:44 +0100
-Message-Id: <20210303113952.178519-4-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
-References: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
+ id 1lH4Zh-00H8Xb-K4
+ for linux-rockchip@lists.infradead.org; Tue, 02 Mar 2021 12:56:33 +0000
+Received: by mail-ua1-x936.google.com with SMTP id a9so6730343uat.3
+ for <linux-rockchip@lists.infradead.org>; Tue, 02 Mar 2021 04:56:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3zrRjA7YBWfjokl2Xgay7jI8fNwkayDcVMdDOQenPBE=;
+ b=eB0H/6iRKCdIF+Oa3bn+ZIr4IQ+0wFbU1qS3HfP8pz0hVjFqxgyqUHE6GXT+S0dQYQ
+ KUC7VJFhqJGzsuMn3pz7EF4xYVXHnwv0zXIeYjyNGVLvzcm2PYGHQO2253NFdI2+/jMg
+ cwypZX8eAqKyas19vj9iRHtHue/nFY+WYPnJJx9dVYRWmhYWtHGUANcYOqCmUrYFi08j
+ f3uUh+3JRQvg6Ye1+9uyWO0+chtxFdvgDGaItIe7rju/hS+MO+8jb8kFsJw653BU4VIO
+ pnT359+ocyREYCvtJhdXNSfeY7dSedDZJkZIOHd1RsWjr+ald6dj6FNBxg4iOQv6aPGj
+ 9ptw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3zrRjA7YBWfjokl2Xgay7jI8fNwkayDcVMdDOQenPBE=;
+ b=OO80ilJ69lurnBkRbXg1lyKW1jXR0dVQ7acm7sxaC3zxfHN7hSz+/zOQ4B40q6AQ7Q
+ GTvFk5yZfSVWHTUYtRqlBy0DiZvZIY1ta42V9cGdK+3FRvnT9xiPacaUqJ1jDw/gR93Q
+ ExW++l2NSlkH4wivgELr1GlHdGnKvaElKHqKUhRtmHSAbkzFD0GeS3WiwWZfXXYz/f+K
+ r9U4z05VZuVLIUMdmZY7KZerecxk4IcVt2Pc+9rrQdz1E8NpqsBfdKNF41R3AT+hdgiR
+ NdubupW/pLME6bgLhzbrlAop/MnoCCVRlF6awv8roNrMUxu9F0Pmb89Zm6fJefXuAEvD
+ X8sQ==
+X-Gm-Message-State: AOAM532UQMmNZxs7TO/umXRnp6E0j1+y3NvkHHEYUj5ecBb0qZBmKH8k
+ EZ0PJDU6KherQRvUmpCcCLfAlXAyVFp4jNkbNZvPMw6tgaY=
+X-Google-Smtp-Source: ABdhPJxJWRqugaT2ktEGhfcjiMKDkDS0ihuhhne8GvhRwqY4O++ZmWQcUhqiqQ5Acd/8YKjOeH1rxim4P3Yrb7ekaM8=
+X-Received: by 2002:ab0:6045:: with SMTP id o5mr10321516ual.100.1614689724060; 
+ Tue, 02 Mar 2021 04:55:24 -0800 (PST)
 MIME-Version: 1.0
+References: <1614671217-133008-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1614671217-133008-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 2 Mar 2021 13:54:47 +0100
+Message-ID: <CAPDyKFo4NkL5jqpRja6Ekmn1Hqww2fB8fehMBcan8OAPg4UVWw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: sdhci-of-dwcmshc: add rockchip platform support
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Adrian Hunter <adrian.hunter@intel.com>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210303_114026_901002_EAF5DD1A 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20210302_125632_862760_3A20F1A2 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,270 +108,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change hantro_codec_ops run prototype from 'void' to 'int'.
-This allow to cancel the job if an error occur while configuring
-the hardware.
+On Tue, 2 Mar 2021 at 08:48, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> sdhci based synopsys MMC IP is also used on some rockchip platforms,
+> so add a basic support here.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+>
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 220 ++++++++++++++++++++++++++++++++++--
+>  1 file changed, 213 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> index 59d8d96..959084c 100644
+> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/staging/media/hantro/hantro_drv.c     |  4 +++-
- .../staging/media/hantro/hantro_g1_h264_dec.c |  6 ++++--
- .../media/hantro/hantro_g1_mpeg2_dec.c        |  4 +++-
- .../staging/media/hantro/hantro_g1_vp8_dec.c  |  6 ++++--
- .../staging/media/hantro/hantro_h1_jpeg_enc.c |  4 +++-
- drivers/staging/media/hantro/hantro_hw.h      | 19 ++++++++++---------
- .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |  4 +++-
- .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |  4 +++-
- .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |  6 ++++--
- 9 files changed, 37 insertions(+), 20 deletions(-)
+[...]
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index e5f200e64993..ac1429f00b33 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -161,7 +161,9 @@ static void device_run(void *priv)
- 
- 	v4l2_m2m_buf_copy_metadata(src, dst, true);
- 
--	ctx->codec_ops->run(ctx);
-+	if (ctx->codec_ops->run(ctx))
-+		goto err_cancel_job;
-+
- 	return;
- 
- err_cancel_job:
-diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-index 845bef73d218..fcd4db13c9fe 100644
---- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
-@@ -273,13 +273,13 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	vdpu_write_relaxed(vpu, ctx->h264_dec.priv.dma, G1_REG_ADDR_QTABLE);
- }
- 
--void hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
-+int hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 
- 	/* Prepare the H264 decoder context. */
- 	if (hantro_h264_dec_prepare_run(ctx))
--		return;
-+		return -EINVAL;
- 
- 	/* Configure hardware registers. */
- 	set_params(ctx);
-@@ -301,4 +301,6 @@ void hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
- 			   G1_REG_CONFIG_DEC_CLK_GATE_E,
- 			   G1_REG_CONFIG);
- 	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
-+
-+	return 0;
- }
-diff --git a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-index 6386a3989bfe..5e8943d31dc5 100644
---- a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
-@@ -155,7 +155,7 @@ hantro_g1_mpeg2_dec_set_buffers(struct hantro_dev *vpu, struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, backward_addr, G1_REG_REFER3_BASE);
- }
- 
--void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
-+int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -248,4 +248,6 @@ void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
- 
- 	reg = G1_REG_DEC_E(1);
- 	vdpu_write(vpu, reg, G1_SWREG(1));
-+
-+	return 0;
- }
-diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-index a5cdf150cd16..d665df026546 100644
---- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-@@ -426,7 +426,7 @@ static void cfg_buffers(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
- }
- 
--void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
-+int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- {
- 	const struct v4l2_ctrl_vp8_frame_header *hdr;
- 	struct hantro_dev *vpu = ctx->dev;
-@@ -439,7 +439,7 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- 
- 	hdr = hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
- 	if (WARN_ON(!hdr))
--		return;
-+		return -EINVAL;
- 
- 	/* Reset segment_map buffer in keyframe */
- 	if (VP8_FRAME_IS_KEY_FRAME(hdr) && ctx->vp8_dec.segment_map.cpu)
-@@ -499,4 +499,6 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
- 	hantro_end_prepare_run(ctx);
- 
- 	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
-+
-+	return 0;
- }
-diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-index b88dc4ed06db..56cf261a8e95 100644
---- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-@@ -88,7 +88,7 @@ hantro_h1_jpeg_enc_set_qtable(struct hantro_dev *vpu,
- 	}
- }
- 
--void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
-+int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -136,6 +136,8 @@ void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- 	hantro_end_prepare_run(ctx);
- 
- 	vepu_write(vpu, reg, H1_REG_ENC_CTRL);
-+
-+	return 0;
- }
- 
- void hantro_jpeg_enc_done(struct hantro_ctx *ctx)
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 34c9e4649a25..4e2e7a5ed283 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -126,14 +126,15 @@ struct hantro_postproc_ctx {
-  *		Optional and called from process context.
-  * @run:	Start single {en,de)coding job. Called from atomic context
-  *		to indicate that a pair of buffers is ready and the hardware
-- *		should be programmed and started.
-+ *		should be programmed and started. Returns zero if OK, a
-+ *		negative value in error cases.
-  * @done:	Read back processing results and additional data from hardware.
-  * @reset:	Reset the hardware in case of a timeout.
-  */
- struct hantro_codec_ops {
- 	int (*init)(struct hantro_ctx *ctx);
- 	void (*exit)(struct hantro_ctx *ctx);
--	void (*run)(struct hantro_ctx *ctx);
-+	int (*run)(struct hantro_ctx *ctx);
- 	void (*done)(struct hantro_ctx *ctx);
- 	void (*reset)(struct hantro_ctx *ctx);
- };
-@@ -164,8 +165,8 @@ void hantro_irq_done(struct hantro_dev *vpu,
- void hantro_start_prepare_run(struct hantro_ctx *ctx);
- void hantro_end_prepare_run(struct hantro_ctx *ctx);
- 
--void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
--void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
-+int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
-+int rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
- int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
- void hantro_jpeg_enc_exit(struct hantro_ctx *ctx);
- void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
-@@ -173,7 +174,7 @@ void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
- dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
- 				   unsigned int dpb_idx);
- int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx);
--void hantro_g1_h264_dec_run(struct hantro_ctx *ctx);
-+int hantro_g1_h264_dec_run(struct hantro_ctx *ctx);
- int hantro_h264_dec_init(struct hantro_ctx *ctx);
- void hantro_h264_dec_exit(struct hantro_ctx *ctx);
- 
-@@ -204,15 +205,15 @@ hantro_h264_mv_size(unsigned int width, unsigned int height)
- 	return 64 * MB_WIDTH(width) * MB_WIDTH(height) + 32;
- }
- 
--void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
--void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx);
-+int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
-+int rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx);
- void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
- 	const struct v4l2_ctrl_mpeg2_quantization *ctrl);
- int hantro_mpeg2_dec_init(struct hantro_ctx *ctx);
- void hantro_mpeg2_dec_exit(struct hantro_ctx *ctx);
- 
--void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx);
--void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx);
-+int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx);
-+int rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx);
- int hantro_vp8_dec_init(struct hantro_ctx *ctx);
- void hantro_vp8_dec_exit(struct hantro_ctx *ctx);
- void hantro_vp8_prob_update(struct hantro_ctx *ctx,
-diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-index 3498e6124acd..3a27ebef4f38 100644
---- a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
-@@ -118,7 +118,7 @@ rk3399_vpu_jpeg_enc_set_qtable(struct hantro_dev *vpu,
- 	}
- }
- 
--void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
-+int rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -168,4 +168,6 @@ void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
- 	/* Kick the watchdog and start encoding */
- 	hantro_end_prepare_run(ctx);
- 	vepu_write(vpu, reg, VEPU_REG_ENCODE_START);
-+
-+	return 0;
- }
-diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-index f610fa5b4335..4bd3080abbc1 100644
---- a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-+++ b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
-@@ -157,7 +157,7 @@ rk3399_vpu_mpeg2_dec_set_buffers(struct hantro_dev *vpu,
- 	vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER3_BASE);
- }
- 
--void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
-+int rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-@@ -254,4 +254,6 @@ void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
- 
- 	reg = vdpu_read(vpu, VDPU_SWREG(57)) | VDPU_REG_DEC_E(1);
- 	vdpu_write(vpu, reg, VDPU_SWREG(57));
-+
-+	return 0;
- }
-diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
-index a4a792f00b11..755571e16fcd 100644
---- a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
-+++ b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
-@@ -504,7 +504,7 @@ static void cfg_buffers(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, dst_dma, VDPU_REG_ADDR_DST);
- }
- 
--void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
-+int rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
- {
- 	const struct v4l2_ctrl_vp8_frame_header *hdr;
- 	struct hantro_dev *vpu = ctx->dev;
-@@ -517,7 +517,7 @@ void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
- 
- 	hdr = hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
- 	if (WARN_ON(!hdr))
--		return;
-+		return -EINVAL;
- 
- 	/* Reset segment_map buffer in keyframe */
- 	if (VP8_FRAME_IS_KEY_FRAME(hdr) && ctx->vp8_dec.segment_map.cpu)
-@@ -590,4 +590,6 @@ void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
- 	hantro_end_prepare_run(ctx);
- 
- 	hantro_reg_write(vpu, &vp8_dec_start_dec, 1);
-+
-+	return 0;
- }
--- 
-2.25.1
+> +static int rockchip_pltf_init(struct sdhci_host *host, struct dwcmshc_priv *priv)
+> +{
+> +       int err;
+> +
+> +       priv->rockchip_clks[0].id = "axi";
+> +       priv->rockchip_clks[1].id = "block";
+> +       priv->rockchip_clks[2].id = "timer";
+> +       err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), ROCKCHIP_MAX_CLKS,
+> +                                        priv->rockchip_clks);
 
+These clocks need to be properly described in the DT docs.
+
+> +       if (err) {
+> +               dev_err(mmc_dev(host->mmc), "failed to get clocks %d\n", err);
+> +               return err;
+> +       }
+> +
+> +       err = clk_bulk_prepare_enable(ROCKCHIP_MAX_CLKS, priv->rockchip_clks);
+> +       if (err) {
+> +               dev_err(mmc_dev(host->mmc), "failed to enable clocks %d\n", err);
+> +               return err;
+> +       }
+> +
+> +       if (of_property_read_u32(mmc_dev(host->mmc)->of_node, "rockchip,txclk-tapnum",
+> +                                &priv->txclk_tapnum))
+> +               priv->txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
+> +
+> +       /* Disable cmd conflict check */
+> +       sdhci_writel(host, 0x0, DWCMSHC_HOST_CTRL3);
+> +       /* Reset previous settings */
+> +       sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_TXCLK);
+> +       sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_STRBIN);
+> +
+> +       return 0;
+> +}
+> +
+> +static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+> +       {
+> +               .compatible = "snps,dwcmshc-sdhci",
+> +               .data = &sdhci_dwcmshc_pdata,
+> +       },
+> +       {
+> +               .compatible = "rockchip,dwcmshc-sdhci",
+> +               .data = &sdhci_dwcmshc_rk_pdata,
+> +       },
+> +       {},
+> +};
+
+Speaking about DT docs. I have recently started to reject changes to
+existing txt based DT docs.
+
+Can you plese convert the existing DT bindings into the yaml formal -
+and then add the new compatible for the new Rockchip variant on top?
+
+[...]
+
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
