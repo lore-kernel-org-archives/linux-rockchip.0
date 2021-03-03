@@ -2,96 +2,80 @@ Return-Path: <SRS0=qEJD=IB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 532AAC433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 19:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B799C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 20:19:10 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B92D564EDF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 19:43:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B92D564EDF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id EFCF864ED0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 20:19:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFCF864ED0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FdpysegxEB2bb4Dx1+bfo31X/ZyPjXNI35dx6S37xpo=; b=gU8Lob0jtcid70CYWn9UAdaBu
-	uBXU8bHaw8AxtiadIRppOaMo8wwczNVtnRwBNhG3mPEqtMNuCvPUtAf2xHfBaU+DhAR1BuG5yEJ86
-	/gwisAaPuGa64yTwZIgRTEzYTHJbEbN0AZqhgAbXOC4YeYMSsxeMUyhd64KTzQ48CDJMoZsj2/RoS
-	703kkZGnnVt+iW0K/+K0NouBNnimeLDlbsf6JMYTk+S5LpEhib5IJzTT322R3Phz183mMy9RJG2Dt
-	2jzOHh1hoJIoGJ5uSHBn6XgxJ1upqUHfgZCFAcJGB0kW42y32pL1ietu8pkKCmGSPHKmb6bfgIXOj
-	twgWSHOpw==;
+	 bh=mKPhAi6DYpIu3eYUBCKFAwT7bBmiE5UFbmzS6iIdk/o=; b=XI4vlPon5q1/vYiDNs7+pKJ2R
+	1ZLyL+FOWdRJc9Jb6FIQ5vBI1Pe4geKRQXJy+ucxCYINdcUuiL1zrF5jEZcwBc4aCgWgG5/8+vmS7
+	skQVmytrHwQSN0oaq21HtgA2JA5afBAwwttNiIUsOVPqUM/p9vmFrth4cogJPiYg0ZY+4/I+rTQeK
+	OikpgQHjSPkWOab6gHmHiUQj9R/fXQaECRz4g+BjSxX3bvaFh6X+aUaOyu56U/roSte9QWX0kjOEA
+	kZ3omgXLd4nO4M6oA2n3YLcu62VAGg8V7eNFtxqTt9MsHJNre3vwjE+dtCZgaUFNcAHd/i+Efj/Og
+	65YpcqmRQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHXOb-006GZj-17; Wed, 03 Mar 2021 19:42:57 +0000
+	id 1lHXxQ-006OQh-PI; Wed, 03 Mar 2021 20:18:57 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHT3p-005IBn-Uo
- for linux-rockchip@desiato.infradead.org; Wed, 03 Mar 2021 15:05:14 +0000
+ id 1lHT5S-005IjM-AB; Wed, 03 Mar 2021 15:06:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
- Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=3LFPoAfk7O5qeF3Y4rUX5gE1CQLUrhXp4Z8+GayD0FQ=; b=GXH/pHlJop033fK5xiSI++tr3A
- 4oobu283YbG2+mvxcGeG98+YhHwKNaSneFWSrPgmIWi8PIfhWOBTPH+KuLjs3b7kJ13n4XS+Np/JY
- DGS5zcf8d/NzVtxiUcu+ihTd8NzpNiXhrXfhTP8ndSS+lIf0Rq+BrpOR8V1On4FhxjkkBLk9WhBeO
- oGi+bQlE5NB+4bs521S7H6sJnsub+QWcJKjeUrB1FO/Kj1+PZdxDcMcUzrUp0WmtdeGUfCQYRUoU8
- wWtSHNFiB5hlNkcuyxDrfNd/0D77Sv2geP9MAWjcGShcVTRgCvW54TpdHVrRMSjiR9w/EaY32jCC2
- 4g7Gdvzg==;
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=UcWDG5FaiCMpqQUaRwvYvi5pxz9y90z0o2E8V7uLYEA=; b=oR7749NCfXQEEUVx/iVCdHeZ++
+ BmPKaofcZdOC4AxxfWQ2Kgtpaw0Ei/BFq0ICr7efrb6tWdp5VAzDw6XOY8TBFXMHPOe4d+LdN17M1
+ tR3vwn01DXYvrO4d+WRU6j2kl3l/BRwm91hL6XR38zDCZvHZOmX20jeDeydAOSNhoKlu2ZMc21jIK
+ 07D0fQrv8O5zuveKI+8YLXrAL2tMNIb48FG2aqk5vy0pVb1bcRW1kxrWCMjbzXkCOCh6QuG8Ha2Vb
+ 40xsXuG4HP2jSw+I1BoxKNASvDvca048yodJpFBQ8a7bRkngKSqoSpM3A6hfUPrleK03Eajs20NDg
+ nCbm8qkQ==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lH4vr-00HATd-NO
- for linux-rockchip@lists.infradead.org; Tue, 02 Mar 2021 13:19:27 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id e7so31239402lft.2
- for <linux-rockchip@lists.infradead.org>; Tue, 02 Mar 2021 05:19:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3LFPoAfk7O5qeF3Y4rUX5gE1CQLUrhXp4Z8+GayD0FQ=;
- b=IrumaFHcp/MnXfUwA+tJBdHp0hZ8wayBSy+H5vJVP9MdhhClsGzaU69AuZJ0EhkXfz
- fxaM7ylsxwJgr92wqQtnfdHrOlb7RzZat6xwVDXjRlVnnz+ebFgOQG6EjKFu1eJ6tG68
- aXYVdUO6+1zra//C2K73BYpbw8XsO7VHywkzE1BO6pfmH4IgmNp3ofzRQrR7BPtygmHQ
- JvK4WRCzvRwqX+BWIu+gqVjgfPyuZEhqWiS+l52omHxfozAZAefka0OY4TMsElVeJDsj
- iP4zy54OIhQTH9IBEUoUUMG8Ho6DPAwgGO8EdDVAL8yGwx3rKN/jPP684tJX0HRbVuAo
- MZ7g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3LFPoAfk7O5qeF3Y4rUX5gE1CQLUrhXp4Z8+GayD0FQ=;
- b=SfwJ9pPxmdw6jcZ2pENgKl9938zyL4RSZBHIqoNxZWZmsX9TtzDJZgZ+ME+y6IFUJ/
- n9JGmjjuxGL7Ds/ROAnKWtY+eG1kRyMBnmJrAeYYMiqDmJr7tCDyZR+CU+h/TZZtexyo
- TiBZsgpL6mL8HluhdrctR/1m42GKziVRiyMmjYGwxOj6rRbL29+PKDGaloeGM6TKQKsx
- zlJWDCkjo7QwSlXPLubAnZDC1B+meqHUjL5PK6sShk0GiyUiY/+elNHBkAk103rRyaSv
- kizrL4zK/3NgvS2uSAdLWA6SiQgv5tKo5fecXYU6oFQsFDD/EZkhFcJS7F9wE1WPo06K
- MTTw==
-X-Gm-Message-State: AOAM533dCyDovXDd8vu07z+NhUhOVb4iEfQw/6V4syafw0S5kW/kdko+
- lfHltgWk0aRg8Yhk/orHL0EgxhiwOOsPkblqJ4UyTg==
-X-Google-Smtp-Source: ABdhPJyXLXj1ElbNsZ8nYLMjQKDHPE2WIbQ64a9N7NA809dZ8rZFodCUWxqls+DIBYtN3FZw01VL+N1dWPfKnLeAfwo=
-X-Received: by 2002:a19:548:: with SMTP id 69mr10031398lff.465.1614691095978; 
- Tue, 02 Mar 2021 05:18:15 -0800 (PST)
+ id 1lHPrf-002O3t-Gg; Wed, 03 Mar 2021 11:40:28 +0000
+Received: from localhost.localdomain (unknown
+ [IPv6:2a01:e0a:4cb:a870:2035:1dcd:21c7:b3af])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 74CEC1F45C2A;
+ Wed,  3 Mar 2021 11:40:03 +0000 (GMT)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ peng.fan@nxp.com, hverkuil-cisco@xs4all.nl, dan.carpenter@oracle.com
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 01/11] media: hevc: Add fields and flags for hevc PPS
+Date: Wed,  3 Mar 2021 12:39:42 +0100
+Message-Id: <20210303113952.178519-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
+References: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20210223064211.120935-1-jay.xu@rock-chips.com>
-In-Reply-To: <20210223064211.120935-1-jay.xu@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 2 Mar 2021 14:18:05 +0100
-Message-ID: <CACRpkdbqkCEMuZdwgfPJAhnZBKW1KV0+1MnXqNvTjm300jaS9Q@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: rockchip: make driver be tristate module
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210302_131927_588611_24F74F6E 
-X-CRM114-Status: UNSURE (   7.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210303_114028_716583_10F68522 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,18 +93,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 23, 2021 at 7:42 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+Add fields and flags as they are defined in
+7.4.3.3.1 "General picture parameter set RBSP semantics of the
+H.265 ITU specification.
 
-> Make pinctrl-rockchip driver to be tristate module, support to build as
-> a module, this is useful for GKI.
->
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../userspace-api/media/v4l/ext-ctrls-codec.rst    | 14 ++++++++++++++
+ include/media/hevc-ctrls.h                         |  4 ++++
+ 2 files changed, 18 insertions(+)
 
-Patch applied.
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index 00944e97d638..d62e8e423f3b 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -3234,6 +3234,12 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``num_extra_slice_header_bits``
+       -
++    * - __u8
++      - ``num_ref_idx_l0_default_active_minus1``
++      - Specifies the inferred value of num_ref_idx_l0_active_minus1
++    * - __u8
++      - ``num_ref_idx_l1_default_active_minus1``
++      - Specifies the inferred value of num_ref_idx_l1_active_minus1
+     * - __s8
+       - ``init_qp_minus26``
+       -
+@@ -3342,6 +3348,14 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - ``V4L2_HEVC_PPS_FLAG_SLICE_SEGMENT_HEADER_EXTENSION_PRESENT``
+       - 0x00040000
+       -
++    * - ``V4L2_HEVC_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT``
++      - 0x00080000
++      - Specifies the presence of deblocking filter control syntax elements in
++        the PPS
++    * - ``V4L2_HEVC_PPS_FLAG_UNIFORM_SPACING``
++      - 0x00100000
++      - Specifies that tile column boundaries and likewise tile row boundaries
++        are distributed uniformly across the picture
+ 
+ ``V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS (struct)``
+     Specifies various slice-specific parameters, especially from the NAL unit
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index b4cb2ef02f17..003f819ecb26 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -100,10 +100,14 @@ struct v4l2_ctrl_hevc_sps {
+ #define V4L2_HEVC_PPS_FLAG_PPS_DISABLE_DEBLOCKING_FILTER	(1ULL << 16)
+ #define V4L2_HEVC_PPS_FLAG_LISTS_MODIFICATION_PRESENT		(1ULL << 17)
+ #define V4L2_HEVC_PPS_FLAG_SLICE_SEGMENT_HEADER_EXTENSION_PRESENT (1ULL << 18)
++#define V4L2_HEVC_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT	(1ULL << 19)
++#define V4L2_HEVC_PPS_FLAG_UNIFORM_SPACING			(1ULL << 20)
+ 
+ struct v4l2_ctrl_hevc_pps {
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
+ 	__u8	num_extra_slice_header_bits;
++	__u8	num_ref_idx_l0_default_active_minus1;
++	__u8	num_ref_idx_l1_default_active_minus1;
+ 	__s8	init_qp_minus26;
+ 	__u8	diff_cu_qp_delta_depth;
+ 	__s8	pps_cb_qp_offset;
+-- 
+2.25.1
 
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
