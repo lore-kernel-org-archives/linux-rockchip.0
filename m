@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 384C4C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94A90C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:18:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B505964E25
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:01:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B505964E25
+	by mail.kernel.org (Postfix) with ESMTPS id 8F29E64ED9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Mar 2021 17:18:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F29E64ED9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DCTwuWPn49HNG06Nu0xOQoDTVS7MTnuMlI0a+9cS8Kc=; b=G7qVQLkh8Q5qGsukPODmWKDeW
-	DM4mTcW5zMfQokDWPrtR2ZegGJFbA06+Vt6pCW1ZCaCWPMDf9JLpyH3Z42k47A5gRzvhu2hzPtN+o
-	lPyrvEDluMRK/mTbh1oF0LqFKpim+a46sokTEYPhdENb0VYbxZmEA6Kjz7X6/veViUbBB8xKbbbzZ
-	O1EghVBSYE5uOtwNQEB5uKT0AcByOz+khtQxJeiGL7Cb+Vs98few+owgdXLvu986B9t92/6hoxTo0
-	p4UxeidjOA+HtEJv22c+cz5S3rTd0zCmAgso5TQGLtyHAmz9cVx5z+V017sH3zW8s9awOJUteoeB1
-	cCYzMkSBQ==;
+	 bh=svnoy4CT/09xK9W74WstQgOGeWvTSb3jK1X5GoO0s0Q=; b=GVaAMkOrZ7LJv3b510oFL3EDl
+	MPZeP1tpmhhN3oWNGftui4eQYREGDaC62uXjxxKpIaKGrn/RLEafh0cFes8ejdXwqXBHJSjX2Ygwk
+	zt6PlU8mF1rWYfo/lGPoJF9M5qAx/83eEtfaLJInJnIJR1XIftuYme+XsY2ou5+PLPNNkk33n+LRQ
+	vUsqnyJuRMTaEiviCmtIMEXTI9B76c8dkiFXt1OhJiUnu5MiabI1dKtJrgPVal0NSzNOH3jszFuZ8
+	POJps9ltc8G3UIGPTIwa3vYsF7TGi5mEODtohEBvOKu+6jNVOneoyiMUKOzOcZn1Ujtqv/iUgVdf1
+	fhcTmM9xg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHUsb-005iAL-Je; Wed, 03 Mar 2021 17:01:46 +0000
+	id 1lHV8n-005lhe-QW; Wed, 03 Mar 2021 17:18:30 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHSsG-005Ei2-2U; Wed, 03 Mar 2021 14:53:17 +0000
+ id 1lHStb-005F33-AZ; Wed, 03 Mar 2021 14:54:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=0CvSFS/F/cGKpC6RiWLtDNn6z/28c/ED4xuPmqfFEuw=; b=QWiuzA5oGJsP8Jv+nrxrwhH+2B
- cjKGndfJ3BxxyUYA/0KGctXsD2VoKJN4OMUA9wrp5drv0mYrVHFs3QZmDIMWwWS7f4ndd+bOYovzk
- woUDKitfGyIJcEDFltNCEc+SYI4gr8+v4o8kB+p3XpPNXIIbRkARDpobvAzwfn4CNYLhpHv+PSZrX
- psp0ghOxFw9dVFqvWWN5RKqZ4i0G4cyNWVBWA3CnCwqL5Tn54xJZo7nh2wB6zRFZ3GIUhUCBa1CRM
- qRVq5LlDQOCmAct+nxPClVH4wK2gwS/KWHEm8eez5u9DT9O5rtrNcL+wkKCrLXndg0gJxtIr/ZX6w
- U5bwg0cw==;
+ bh=V6ibxchNatcAq1u3cjbVN+48aup3B1l+qvsGZNyMIoU=; b=ucjPhXR00yKgNWbmhHD6YcjGoQ
+ 8QTQ0ZbyQd6deDDmeIg1AeC140eiBJKGd+F+S7XWkyEvFuOtXFymvar6uf1RqqqOromed3i6roSxw
+ heREdIdhA8P1p7GuLXakeMkxbwsuUnqy+zNOVdAuD7bvJwdzeVZN7WOmZkShqtyZEqAJaMgJ6OHQg
+ KZ6rp7c95wFDFWkftFkNCf5bz3xTxWidNkeTCQgjw9IR0bWl1fxfQwbDNtDCaDOzlaiGSvgc4Dw2o
+ TGRrmUD6elC43wYH3fLsLpp6Zq1Qnwh9qF79OLmtJyRCDlvFHWoOuQCWfwEAwZOrXLFwZPI2EQ+TU
+ y4h8mo8w==;
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHPrb-002O2p-U8; Wed, 03 Mar 2021 11:40:24 +0000
+ id 1lHPre-002O3L-GI; Wed, 03 Mar 2021 11:40:26 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:2035:1dcd:21c7:b3af])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 85C751F45C2C;
- Wed,  3 Mar 2021 11:40:20 +0000 (GMT)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 463131F45C2B;
+ Wed,  3 Mar 2021 11:40:19 +0000 (GMT)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -66,17 +66,17 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 04/11] media: hantro: Define HEVC codec profiles and
- supported features
-Date: Wed,  3 Mar 2021 12:39:45 +0100
-Message-Id: <20210303113952.178519-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 03/11] media: hantro: change hantro_codec_ops run prototype
+ to return errors
+Date: Wed,  3 Mar 2021 12:39:44 +0100
+Message-Id: <20210303113952.178519-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
 References: <20210303113952.178519-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210303_114024_752594_015EBB3C 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20210303_114026_901002_EAF5DD1A 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,119 +94,267 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Define which HEVC profiles (up to level 5.1) and features
-(no scaling, no 10 bits) are supported by the driver.
+Change hantro_codec_ops run prototype from 'void' to 'int'.
+This allow to cancel the job if an error occur while configuring
+the hardware.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h     |  3 ++
- drivers/staging/media/hantro/hantro_drv.c | 58 +++++++++++++++++++++++
- 2 files changed, 61 insertions(+)
+ drivers/staging/media/hantro/hantro_drv.c     |  4 +++-
+ .../staging/media/hantro/hantro_g1_h264_dec.c |  6 ++++--
+ .../media/hantro/hantro_g1_mpeg2_dec.c        |  4 +++-
+ .../staging/media/hantro/hantro_g1_vp8_dec.c  |  6 ++++--
+ .../staging/media/hantro/hantro_h1_jpeg_enc.c |  4 +++-
+ drivers/staging/media/hantro/hantro_hw.h      | 19 ++++++++++---------
+ .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |  4 +++-
+ .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |  4 +++-
+ .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |  6 ++++--
+ 9 files changed, 37 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index 65f9f7ea7dcf..a76a0d79db9f 100644
---- a/drivers/staging/media/hantro/hantro.h
-+++ b/drivers/staging/media/hantro/hantro.h
-@@ -34,6 +34,7 @@ struct hantro_codec_ops;
- #define HANTRO_MPEG2_DECODER	BIT(16)
- #define HANTRO_VP8_DECODER	BIT(17)
- #define HANTRO_H264_DECODER	BIT(18)
-+#define HANTRO_HEVC_DECODER	BIT(19)
- #define HANTRO_DECODERS		0xffff0000
- 
- /**
-@@ -99,6 +100,7 @@ struct hantro_variant {
-  * @HANTRO_MODE_H264_DEC: H264 decoder.
-  * @HANTRO_MODE_MPEG2_DEC: MPEG-2 decoder.
-  * @HANTRO_MODE_VP8_DEC: VP8 decoder.
-+ * @HANTRO_MODE_HEVC_DEC: HEVC decoder.
-  */
- enum hantro_codec_mode {
- 	HANTRO_MODE_NONE = -1,
-@@ -106,6 +108,7 @@ enum hantro_codec_mode {
- 	HANTRO_MODE_H264_DEC,
- 	HANTRO_MODE_MPEG2_DEC,
- 	HANTRO_MODE_VP8_DEC,
-+	HANTRO_MODE_HEVC_DEC,
- };
- 
- /*
 diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index ac1429f00b33..f0b68e16fcc0 100644
+index e5f200e64993..ac1429f00b33 100644
 --- a/drivers/staging/media/hantro/hantro_drv.c
 +++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -245,6 +245,18 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		if (sps->bit_depth_luma_minus8 != 0)
- 			/* Only 8-bit is supported */
- 			return -EINVAL;
-+	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
-+		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
-+
-+		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-+			/* Luma and chroma bit depth mismatch */
-+			return -EINVAL;
-+		if (sps->bit_depth_luma_minus8 != 0)
-+			/* Only 8-bit is supported */
-+			return -EINVAL;
-+		if (sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED)
-+			/* No scaling support */
-+			return -EINVAL;
- 	}
- 	return 0;
- }
-@@ -351,6 +363,52 @@ static const struct hantro_ctrl controls[] = {
- 			.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
- 		}
- 	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+			.max = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+			.def = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+			.max = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+			.def = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_PROFILE,
-+			.min = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+			.max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
-+			.def = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_LEVEL,
-+			.min = V4L2_MPEG_VIDEO_HEVC_LEVEL_1,
-+			.max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_SPS,
-+			.ops = &hantro_ctrl_ops,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_PPS,
-+		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
-+		},
- 	},
- };
+@@ -161,7 +161,9 @@ static void device_run(void *priv)
  
+ 	v4l2_m2m_buf_copy_metadata(src, dst, true);
+ 
+-	ctx->codec_ops->run(ctx);
++	if (ctx->codec_ops->run(ctx))
++		goto err_cancel_job;
++
+ 	return;
+ 
+ err_cancel_job:
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index 845bef73d218..fcd4db13c9fe 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -273,13 +273,13 @@ static void set_buffers(struct hantro_ctx *ctx)
+ 	vdpu_write_relaxed(vpu, ctx->h264_dec.priv.dma, G1_REG_ADDR_QTABLE);
+ }
+ 
+-void hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
++int hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 
+ 	/* Prepare the H264 decoder context. */
+ 	if (hantro_h264_dec_prepare_run(ctx))
+-		return;
++		return -EINVAL;
+ 
+ 	/* Configure hardware registers. */
+ 	set_params(ctx);
+@@ -301,4 +301,6 @@ void hantro_g1_h264_dec_run(struct hantro_ctx *ctx)
+ 			   G1_REG_CONFIG_DEC_CLK_GATE_E,
+ 			   G1_REG_CONFIG);
+ 	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
++
++	return 0;
+ }
+diff --git a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
+index 6386a3989bfe..5e8943d31dc5 100644
+--- a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
+@@ -155,7 +155,7 @@ hantro_g1_mpeg2_dec_set_buffers(struct hantro_dev *vpu, struct hantro_ctx *ctx,
+ 	vdpu_write_relaxed(vpu, backward_addr, G1_REG_REFER3_BASE);
+ }
+ 
+-void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
++int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -248,4 +248,6 @@ void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
+ 
+ 	reg = G1_REG_DEC_E(1);
+ 	vdpu_write(vpu, reg, G1_SWREG(1));
++
++	return 0;
+ }
+diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+index a5cdf150cd16..d665df026546 100644
+--- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+@@ -426,7 +426,7 @@ static void cfg_buffers(struct hantro_ctx *ctx,
+ 	vdpu_write_relaxed(vpu, dst_dma, G1_REG_ADDR_DST);
+ }
+ 
+-void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
++int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+ {
+ 	const struct v4l2_ctrl_vp8_frame_header *hdr;
+ 	struct hantro_dev *vpu = ctx->dev;
+@@ -439,7 +439,7 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+ 
+ 	hdr = hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
+ 	if (WARN_ON(!hdr))
+-		return;
++		return -EINVAL;
+ 
+ 	/* Reset segment_map buffer in keyframe */
+ 	if (VP8_FRAME_IS_KEY_FRAME(hdr) && ctx->vp8_dec.segment_map.cpu)
+@@ -499,4 +499,6 @@ void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+ 	hantro_end_prepare_run(ctx);
+ 
+ 	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
++
++	return 0;
+ }
+diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+index b88dc4ed06db..56cf261a8e95 100644
+--- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
++++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+@@ -88,7 +88,7 @@ hantro_h1_jpeg_enc_set_qtable(struct hantro_dev *vpu,
+ 	}
+ }
+ 
+-void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
++int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -136,6 +136,8 @@ void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
+ 	hantro_end_prepare_run(ctx);
+ 
+ 	vepu_write(vpu, reg, H1_REG_ENC_CTRL);
++
++	return 0;
+ }
+ 
+ void hantro_jpeg_enc_done(struct hantro_ctx *ctx)
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 34c9e4649a25..4e2e7a5ed283 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -126,14 +126,15 @@ struct hantro_postproc_ctx {
+  *		Optional and called from process context.
+  * @run:	Start single {en,de)coding job. Called from atomic context
+  *		to indicate that a pair of buffers is ready and the hardware
+- *		should be programmed and started.
++ *		should be programmed and started. Returns zero if OK, a
++ *		negative value in error cases.
+  * @done:	Read back processing results and additional data from hardware.
+  * @reset:	Reset the hardware in case of a timeout.
+  */
+ struct hantro_codec_ops {
+ 	int (*init)(struct hantro_ctx *ctx);
+ 	void (*exit)(struct hantro_ctx *ctx);
+-	void (*run)(struct hantro_ctx *ctx);
++	int (*run)(struct hantro_ctx *ctx);
+ 	void (*done)(struct hantro_ctx *ctx);
+ 	void (*reset)(struct hantro_ctx *ctx);
+ };
+@@ -164,8 +165,8 @@ void hantro_irq_done(struct hantro_dev *vpu,
+ void hantro_start_prepare_run(struct hantro_ctx *ctx);
+ void hantro_end_prepare_run(struct hantro_ctx *ctx);
+ 
+-void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
+-void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
++int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
++int rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
+ int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
+ void hantro_jpeg_enc_exit(struct hantro_ctx *ctx);
+ void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
+@@ -173,7 +174,7 @@ void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
+ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
+ 				   unsigned int dpb_idx);
+ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx);
+-void hantro_g1_h264_dec_run(struct hantro_ctx *ctx);
++int hantro_g1_h264_dec_run(struct hantro_ctx *ctx);
+ int hantro_h264_dec_init(struct hantro_ctx *ctx);
+ void hantro_h264_dec_exit(struct hantro_ctx *ctx);
+ 
+@@ -204,15 +205,15 @@ hantro_h264_mv_size(unsigned int width, unsigned int height)
+ 	return 64 * MB_WIDTH(width) * MB_WIDTH(height) + 32;
+ }
+ 
+-void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+-void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx);
++int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
++int rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+ 	const struct v4l2_ctrl_mpeg2_quantization *ctrl);
+ int hantro_mpeg2_dec_init(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_exit(struct hantro_ctx *ctx);
+ 
+-void hantro_g1_vp8_dec_run(struct hantro_ctx *ctx);
+-void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx);
++int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx);
++int rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx);
+ int hantro_vp8_dec_init(struct hantro_ctx *ctx);
+ void hantro_vp8_dec_exit(struct hantro_ctx *ctx);
+ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
+diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
+index 3498e6124acd..3a27ebef4f38 100644
+--- a/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
++++ b/drivers/staging/media/hantro/rk3399_vpu_hw_jpeg_enc.c
+@@ -118,7 +118,7 @@ rk3399_vpu_jpeg_enc_set_qtable(struct hantro_dev *vpu,
+ 	}
+ }
+ 
+-void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
++int rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -168,4 +168,6 @@ void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx)
+ 	/* Kick the watchdog and start encoding */
+ 	hantro_end_prepare_run(ctx);
+ 	vepu_write(vpu, reg, VEPU_REG_ENCODE_START);
++
++	return 0;
+ }
+diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
+index f610fa5b4335..4bd3080abbc1 100644
+--- a/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
++++ b/drivers/staging/media/hantro/rk3399_vpu_hw_mpeg2_dec.c
+@@ -157,7 +157,7 @@ rk3399_vpu_mpeg2_dec_set_buffers(struct hantro_dev *vpu,
+ 	vdpu_write_relaxed(vpu, backward_addr, VDPU_REG_REFER3_BASE);
+ }
+ 
+-void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
++int rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+@@ -254,4 +254,6 @@ void rk3399_vpu_mpeg2_dec_run(struct hantro_ctx *ctx)
+ 
+ 	reg = vdpu_read(vpu, VDPU_SWREG(57)) | VDPU_REG_DEC_E(1);
+ 	vdpu_write(vpu, reg, VDPU_SWREG(57));
++
++	return 0;
+ }
+diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
+index a4a792f00b11..755571e16fcd 100644
+--- a/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
++++ b/drivers/staging/media/hantro/rk3399_vpu_hw_vp8_dec.c
+@@ -504,7 +504,7 @@ static void cfg_buffers(struct hantro_ctx *ctx,
+ 	vdpu_write_relaxed(vpu, dst_dma, VDPU_REG_ADDR_DST);
+ }
+ 
+-void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
++int rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
+ {
+ 	const struct v4l2_ctrl_vp8_frame_header *hdr;
+ 	struct hantro_dev *vpu = ctx->dev;
+@@ -517,7 +517,7 @@ void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
+ 
+ 	hdr = hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_VP8_FRAME_HEADER);
+ 	if (WARN_ON(!hdr))
+-		return;
++		return -EINVAL;
+ 
+ 	/* Reset segment_map buffer in keyframe */
+ 	if (VP8_FRAME_IS_KEY_FRAME(hdr) && ctx->vp8_dec.segment_map.cpu)
+@@ -590,4 +590,6 @@ void rk3399_vpu_vp8_dec_run(struct hantro_ctx *ctx)
+ 	hantro_end_prepare_run(ctx);
+ 
+ 	hantro_reg_write(vpu, &vp8_dec_start_dec, 1);
++
++	return 0;
+ }
 -- 
 2.25.1
 
