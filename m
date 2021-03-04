@@ -2,85 +2,79 @@ Return-Path: <SRS0=/i9y=IC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2266EC433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Mar 2021 06:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D444BC433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Mar 2021 08:20:54 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC9C864EF9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Mar 2021 06:28:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC9C864EF9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gondor.apana.org.au
+	by mail.kernel.org (Postfix) with ESMTPS id 85C5764EFC
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Mar 2021 08:20:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85C5764EFC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hzbAjLftQS7kFKbmUg1GjWeC+uOyzX1FzzcxSQWW750=; b=Uc4suOg9KYpE/1H297V7/Uqcd
-	qWJmmTVuFH+pU7igNzcMXpua/cJnixm1OVC6iN62fNehZps7Vf5UhRZuQvyo7ut5KJkyrO1ocBPH+
-	CyWBW1t/9dFbk7OPg0osyq2Z5+1kKUqUMZDVve0SbTH0qaaDCSbXKU0VMj4ZvdxHtoxK+3Y2XD0dE
-	sW8AIrf+5iI3DPDYkOL1TosbkS0500aUoExtrnnLRm2Gj5vK6YSkTizPk2FSahwhQFKZQyTLqsemB
-	C2f0dqg1X7bEH5zwyLOUCL1xgFDhd+sn9ZpTyoxtBw/h3Uxx/Fq2A9bNL7+b/SrNl3Eg4fQ/okf+8
-	zoio4C07g==;
+	 bh=lb7EE0EvR2bK88bq0HXaJhzrf5uCz/MJR+4RDrcrlTE=; b=lzbaMYnuU8SOU6XZJs1mcRgLF
+	3pn3VQ6RaPN5Gbz3zpFGiGrqjF+ei/PMBc7FZPpOqSYcBvnvAaU/ncBoPIF+7ruhSzh3QUj1WQOv9
+	19qqh1Q5JzLclAKI7bmL6bWipxmWNBU0thnmuYYb5s3DWC+ObDBiMRtcrbz7CXc4CUOnTLBXK52Z5
+	vbzV0eNHBJz/o44nxvvXBr2GHaV8JlMd5Y2SOXLFwvGLb/fa7souVecchqhQmm33pK+bRCFUTHqXZ
+	KZYxGPOdNxrRAN94TqMLy/hm/fXLF/2YwR9mlKvHd+TBwu1N/Q3klgWzoA3zHYgus45N/yOjnmLXD
+	MjVQHGPNg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHhSw-007vEX-BB; Thu, 04 Mar 2021 06:28:06 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1lHjE1-0087yp-Pq; Thu, 04 Mar 2021 08:20:50 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHhSp-007vDG-DF; Thu, 04 Mar 2021 06:28:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=qY+hpYBOveCI8Pg3WBMYKpJF2n9ALXSLFfXX/pdXvZM=; b=h4YEHEATKotM+sXZqQNteVnQ+q
- ewR5GlWY/uOxUnY7qQSXEN5FnHwOSi2hCYiY9hpogG31zAAAlrW1k3L17AvZNw5JoW/EBHXigIBBj
- 8YSQD/K20Wx0co5loJvckfqrPK0lTpxfv66q/IbcOb9BiqCcYDBis+d0Cuff4XJqfFwHpvKkJyXTl
- ULbsysPcnknXmw4I3dtev0THYI0tDOPwwuhbmtUK55Rx+rACm95bUbib/p5g0Rcfm5F9W5s8uZV42
- FgT3hxdOluzkGyIYZnwWBt3ddiSlyRm5Jz9AyL0P7kFBB+rIKThGIe2WXMBt04jNdPk52Yvn++kuG
- tvLI0Jgg==;
-Received: from helcar.hmeau.com ([216.24.177.18] helo=fornost.hmeau.com)
- by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHhSm-005rHq-Af; Thu, 04 Mar 2021 06:27:56 +0000
-Received: from gwarestrin.arnor.me.apana.org.au ([192.168.103.7])
- by fornost.hmeau.com with smtp (Exim 4.92 #5 (Debian))
- id 1lHhRd-0007I3-Am; Thu, 04 Mar 2021 17:26:46 +1100
-Received: by gwarestrin.arnor.me.apana.org.au (sSMTP sendmail emulation);
- Thu, 04 Mar 2021 17:26:44 +1100
-Date: Thu, 4 Mar 2021 17:26:44 +1100
-From: Herbert Xu <herbert@gondor.apana.org.au>
-To: Allen Pais <allen.lkml@gmail.com>
-Cc: davem@davemloft.net, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- jesper.nilsson@axis.com, lars.persson@axis.com,
- horia.geanta@nxp.com, aymen.sghaier@nxp.com, gcherian@marvell.com,
- thomas.lendacky@amd.com, john.allen@amd.com, gilad@benyossef.com,
- bbrezillon@kernel.org, arno@natisbad.org, schalla@marvell.com,
- matthias.bgg@gmail.com, jamie@jamieiles.com,
- giovanni.cabiddu@intel.com, heiko@sntech.de, krzk@kernel.org,
- vz@mleia.com, k.konieczny@samsung.com, linux-crypto@vger.kernel.org,
- linux-mediatek@lists.infradead.org, qat-linux@intel.com,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Allen Pais <apais@linux.microsoft.com>,
- Romain Perier <romain.perier@gmail.com>
-Subject: Re: [PATCH v5 01/19] crypto: amcc: convert tasklets to use new
- tasklet_setup() API
-Message-ID: <20210304062644.GA5107@gondor.apana.org.au>
-References: <20210208094238.571015-1-allen.lkml@gmail.com>
- <20210208094238.571015-2-allen.lkml@gmail.com>
+ id 1lHjCD-0087iZ-Dj
+ for linux-rockchip@lists.infradead.org; Thu, 04 Mar 2021 08:19:10 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id k12so23212951ljg.9
+ for <linux-rockchip@lists.infradead.org>; Thu, 04 Mar 2021 00:18:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wKpE7AB3B8yj7ip5M0juhBDFHrYKd9OzJtgHmGKFGF8=;
+ b=BFezrt5r3E509RL8PRm8d7nraqZx4eCLk6nI6xP6ZSqKCikGBFSgzHgAweQYoQel53
+ 8p8zDl8Xl3t2LfP1YcoUfdVmXYAy/3FUcIJcHKXl9mMI9shcfyi9rZXcdFseds6l0F2N
+ S+iIb/D7p/N3Uqdg7FdROGaSNyAiHN77dQEvNt4YtZ/SGVFr+2X5Ien332wIjmkauW0o
+ qQPvrwGPB3qstPQnYsdogXumOhy+wd2/kotFYpoCn0E+s7b9aII/vS2YAChNDuBFMnKl
+ 4qEW+X2n0eTWDeZTtIH5I6dEQYjW1nfHdQUWjFB3GhdaiXr9qcqvgOj/EHnA5zXAlTAC
+ MkIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wKpE7AB3B8yj7ip5M0juhBDFHrYKd9OzJtgHmGKFGF8=;
+ b=SR9I2ytGjorpN4ybMgPjjIGz5dtdHlKoCheXu4LbmKJo2hTSUOP2fLkBx0qipAGdBc
+ qpEWYrQndhmV1wVC88GGh7gOk9GV4aaZ3dehbdZjfpNjI4I+4RHtha74xmQc3pjTB4wU
+ urBQlvYwKXw8FOcsdk9RJACM94pZhoGLHwJSkZRyyFouVyvTFIS73KO+oSQ0lzJ1wJWN
+ pl7DINBmu2E+gKVeC52CK5Z83V1DUkjMfM5uVj27fm9MEn3o3/sKdJggqNaTas9TPmtB
+ nEyJ4W2EEXLLNNUO5bTqhhYP37sNbBaMJFIMhgudDVSm4LylsmTfkyecLLAsfbvHRtMM
+ zqHg==
+X-Gm-Message-State: AOAM530gdeu46hIc1ep3aZ/YFeo9YZYmsK0VLRWuqwy1RByyA0oTI+wV
+ zkhWbvFVQiO87DhgLsDK8ncQW3dvuD9oEe4kn1CUhQ==
+X-Google-Smtp-Source: ABdhPJyRVTCRr6C19Jx3r+MDw6/bFutW7QtHtmn9VJKmj3yJqoG8YWzapGyq42EX3KDfZ7IwyeC9KLpnpe+UQbgCiw4=
+X-Received: by 2002:a2e:864a:: with SMTP id i10mr1580285ljj.467.1614845936659; 
+ Thu, 04 Mar 2021 00:18:56 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210208094238.571015-2-allen.lkml@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210304_062756_871822_4D432018 
-X-CRM114-Status: GOOD (  10.99  )
+References: <20210223064211.120935-1-jay.xu@rock-chips.com>
+ <CACRpkdbqkCEMuZdwgfPJAhnZBKW1KV0+1MnXqNvTjm300jaS9Q@mail.gmail.com>
+In-Reply-To: <CACRpkdbqkCEMuZdwgfPJAhnZBKW1KV0+1MnXqNvTjm300jaS9Q@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 4 Mar 2021 09:18:45 +0100
+Message-ID: <CACRpkdYkBD0-AWz6gWrxK_5GjM6_mSoJ4wR64BijsJ8juzuFug@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: make driver be tristate module
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +92,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 08, 2021 at 03:12:20PM +0530, Allen Pais wrote:
-> From: Allen Pais <apais@linux.microsoft.com>
-> 
-> In preparation for unconditionally passing the
-> struct tasklet_struct pointer to all tasklet
-> callbacks, switch to using the new tasklet_setup()
-> and from_tasklet() to pass the tasklet pointer explicitly.
-> 
-> Signed-off-by: Romain Perier <romain.perier@gmail.com>
-> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
-> ---
->  drivers/crypto/amcc/crypto4xx_core.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+On Tue, Mar 2, 2021 at 2:18 PM Linus Walleij <linus.walleij@linaro.org> wrote:
+> On Tue, Feb 23, 2021 at 7:42 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+>
+> > Make pinctrl-rockchip driver to be tristate module, support to build as
+> > a module, this is useful for GKI.
+> >
+> > Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+>
+> Patch applied.
 
-This introduces a compiler warning with C=1 W=1.
+Dropped this patch again since it breaks x86_64 allmodconfig.
 
-Cheers,
--- 
-Email: Herbert Xu <herbert@gondor.apana.org.au>
-Home Page: http://gondor.apana.org.au/~herbert/
-PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
