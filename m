@@ -5,40 +5,40 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 491E4C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 02:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01648C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 02:11:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 423B16500F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 02:11:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 423B16500F
+	by mail.kernel.org (Postfix) with ESMTPS id 6CA9164FDB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 02:11:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CA9164FDB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HVcltIYlvoeAjeABn5+YxGUxfqSS6yf1DU6SBy9TRl8=; b=IX/BWt5UnmhYqyVJLfGEYYxNVL
-	Jm7/p7Jfy87JnsZwOnG3IkT5E5mw522s8+JR0I3uOwTzh3wtPm8Oj1ZtwPs2knn8GIuy+PfncWEjx
-	TrUU9f088TGTcU6AYT7MvXrMmUaHM4wtt2sPg1E00dqVralkYg2R5Vvwie0pzkCca37Q8lRQOQJAJ
-	1AhYmaOnEtff4bXY52S2AJzXbd5MqDxJLgIlX/9TYCCCvSKM09ny1sHLmB0aWw5d+l1tXB/uCtGRU
-	AkuGWb+6bqUMIacVcrJUr10AKAPOVc3mrRfyvtpbbZQDXowGcLRYb9dvy0cqtKEB0L/GqxLrqm9Os
-	F+IXpApw==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=seG3SGwh7f37sIylcxTbXl6oMq5EU4J8+MGODnnQCyg=; b=Asa7L5WHWXkQJnpQlY1esd7SLx
+	/vpvOynolBR4Y8lfL/hGPdHcV6UEW93hYuivssckjWTSQoBvJoDUiFNqwJaS2frthaBfxBsrIS+RM
+	HSPBTOhfYJ1aJZ3eMBVfE6R8zwJ50sDNsHJxSEZ1KRdRORVu4ypjhH3Ge2+aYPtiJO4QBKzsg7VAk
+	YDbbB6zs+JcqZmTImcFIKwA3D913yCXPrCtAnfpb2jJTnAqF4NwnkzTtIDRPmOiDRWca2OetRl0Ph
+	XAJYg1HHgWPC9gd0TKIS/UnY2rQ+f4dRbZ2FGGSIveMhH/HV8NJ00xqdub4SDq3DcEgIgTsk+BiTP
+	NUnbD5aA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lHzgD-00BUBX-RP; Fri, 05 Mar 2021 01:55:02 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1lHzg7-00BU8y-4d; Fri, 05 Mar 2021 01:54:55 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lHzg8-00BU5c-W3
- for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 01:54:59 +0000
+ id 1lHzg2-00BU5k-NP
+ for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 01:54:53 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 714A2C7879;
- Fri,  5 Mar 2021 09:54:41 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 7E4E4A7DBA;
+ Fri,  5 Mar 2021 09:54:39 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P19729T140184970585856S1614909278778031_; 
- Fri, 05 Mar 2021 09:54:41 +0800 (CST)
+ Fri, 05 Mar 2021 09:54:39 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <a791826a7deeea1e23b63ecb992322a0>
+X-UNIQUE-TAG: <88c5651cd2d978ad78e325badf42c0b1>
 X-RL-SENDER: shawn.lin@rock-chips.com
 X-SENDER: lintao@rock-chips.com
 X-LOGIN-NAME: shawn.lin@rock-chips.com
@@ -63,16 +63,14 @@ To: Rob Herring <robh+dt@kernel.org>,
 Cc: linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2 2/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Add rockchip
- support
-Date: Fri,  5 Mar 2021 09:54:21 +0800
-Message-Id: <1614909262-205658-2-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2 1/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Convert to yaml
+ file
+Date: Fri,  5 Mar 2021 09:54:20 +0800
+Message-Id: <1614909262-205658-1-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1614909262-205658-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1614909262-205658-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_015457_522269_54BF13DA 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20210305_015451_283722_44092611 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,73 +89,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds rockchip support in sdhci-of-dwcmhsc.yaml
+This patch converts sdhci-of-dwcmshc.txt to sdhci-of-dwcmshc.yaml
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
- .../devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml  | 26 ++++++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/mmc/sdhci-of-dwcmshc.txt   | 20 -------
+ .../devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml  | 63 ++++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 20 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+ create mode 100755 Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml
 
+diff --git a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt b/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+deleted file mode 100644
+index ee4253b..0000000
+--- a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-* Synopsys DesignWare Cores Mobile Storage Host Controller
+-
+-Required properties:
+-- compatible: should be one of the following:
+-    "snps,dwcmshc-sdhci"
+-- reg: offset and length of the register set for the device.
+-- interrupts: a single interrupt specifier.
+-- clocks: Array of clocks required for SDHCI; requires at least one for
+-    core clock.
+-- clock-names: Array of names corresponding to clocks property; shall be
+-    "core" for core clock and "bus" for optional bus clock.
+-
+-Example:
+-	sdhci2: sdhci@aa0000 {
+-		compatible = "snps,dwcmshc-sdhci";
+-		reg = <0xaa0000 0x1000>;
+-		interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&emmcclk>;
+-		bus-width = <8>;
+-	}
 diff --git a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml b/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml
-index 9d717a8..efec5d5 100755
---- a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml
+new file mode 100755
+index 0000000..9d717a8
+--- /dev/null
 +++ b/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.yaml
-@@ -16,6 +16,7 @@ allOf:
- properties:
-   compatible:
-     enum:
-+      - rockchip,dwcmshc-sdhci
-       - snps,dwcmshc-sdhci
- 
-   reg:
-@@ -27,16 +28,26 @@ properties:
- 
-   clocks:
-     minItems: 1
--    maxItems: 2
-+    maxItems: 5
-     description:
-       Handle to "core" for core clock and "bus" for optional bus clock.
-+      "axi", "block" and "timer" are for Rockchip specified which aims for
-+      DMA, pipe and internal timer respectively.
- 
-   clock-names:
-     minItems: 1
--    maxItems: 2
-+    maxItems: 5
-     items:
-       - const: core
-       - const: bus
-+      - const: axi
-+      - const: block
-+      - const: timer
+@@ -0,0 +1,63 @@
++# SPDX-License-Identifier: GPL-2.0-only
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/sdhci-of-dwcmshc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+  rockchip,txclk-tapnum:
-+    description: Specify the number of delay for tx sampling.
-+    $ref: /schemas/types.yaml#/definitions/uint32
++title: Synopsys Designware Mobile Storage Host Controller Binding
 +
- 
- required:
-   - compatible
-@@ -49,6 +60,17 @@ unevaluatedProperties: false
- 
- examples:
-   - |
-+    mmc@fe310000 {
-+      compatible = "rockchip,dwcmshc-sdhci";
-+      reg = <0xfe310000 0x10000>;
++maintainers:
++  - Ulf Hansson <ulf.hansson@linaro.org>
++  - Jisheng Zhang <Jisheng.Zhang@synaptics.com>
++
++allOf:
++  - $ref: mmc-controller.yaml#
++
++properties:
++  compatible:
++    enum:
++      - snps,dwcmshc-sdhci
++
++  reg:
++    minItems: 1
++    maxItems: 3
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++    maxItems: 2
++    description:
++      Handle to "core" for core clock and "bus" for optional bus clock.
++
++  clock-names:
++    minItems: 1
++    maxItems: 2
++    items:
++      - const: core
++      - const: bus
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    mmc@aa0000 {
++      compatible = "snps,dwcmshc-sdhci";
++      reg = <0xaa000 0x1000>;
 +      interrupts = <0 25 0x4>;
-+      clocks = <&cru 17>, <&cru 18>, <&cru 19>, <&cru 20>, <&cru 21>;
-+      clock-names = "core", "bus", "axi", "block", "timer";
++      clocks = <&cru 17>, <&cru 18>;
++      clock-names = "core", "bus";
 +      bus-width = <8>;
 +      #address-cells = <1>;
 +      #size-cells = <0>;
 +    };
-+  - |
-     mmc@aa0000 {
-       compatible = "snps,dwcmshc-sdhci";
-       reg = <0xaa000 0x1000>;
++
++...
 -- 
 2.7.4
 
