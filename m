@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D99A1C43332
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 18:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A65FC43381
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 18:39:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 607ED650A4
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 18:39:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 607ED650A4
+	by mail.kernel.org (Postfix) with ESMTPS id 57EDB650B5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 18:39:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57EDB650B5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,70 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HDOIsFDNJl0N3dc7vWBBtX2I2BmvStpo9FirTxX+4e0=; b=TN+AmB7Up+RlLaxG7WeOcpXI9
-	iUUoMXmuD9rwt95qKhiAOkNyCdULXV8C4RaIdqQTz4OG3pb1rUPJyutP0A3AzvY9Dnvc+5I1RV38j
-	U9/R0hYpPrhFNcK+HK21/tiqzUZxT+RUStlhNXD5dKsBFGUn3SIsb6MlT0m5xwnvlx8B4jOQgXrYg
-	IFIWDIIaKMN90AI7gzlaia1h+uFZBw/HxuPp7qI1EaOJNX5yTBTTHqHazjLjRK4/6ZhcAODNsqgKR
-	zUAvy+a2syyX+cFuoq/e6gYj7zyc4bdRi7ACcIdXJRIrdo32c0NKM3Hjf0uu86CNoraoKIGwBIpfw
-	lf4Tcvznw==;
+	 bh=PB9WhPfBhYaqD64JqsbYNRTjniQlpaCb9Dgk+gT4MS0=; b=GsQ4ZS5nXp6H7IaGK7ZD+0kKu
+	//6gQYVTTxnc5nwWNNXUONfuDQfv0RuJixLOBuSvlY0QH4+6Yx69VPpJk9/cAhkXfvDfuPMmiqGxd
+	5skgzJlfE0ea/m/7Egzw+044c1/AANEIXloCrtQzchkTNsUIZLcfm+iekBn5F+Qb7b3Qm34EbhFrD
+	zn5TCiocBK8sQG0cgRm05WHqX5y30qwhvigqrPhUtYq983oOJEtE4PRt8oWcEoO2tRw5o7ySWBO9n
+	G4qIrtBN15RPVWAhK+408+meAh69K914xd9AYTHcVC6C6cQgOOkDL++76NScopkIPrqcjrEyh796y
+	Tlwh9E7Xg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIFMW-00G0Ea-6f; Fri, 05 Mar 2021 18:39:44 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1lIFMT-00G0Ch-6L; Fri, 05 Mar 2021 18:39:41 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIFMR-00G0Bs-Po
- for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 18:39:41 +0000
-Received: by mail-ej1-x636.google.com with SMTP id mm21so5335388ejb.12
- for <linux-rockchip@lists.infradead.org>; Fri, 05 Mar 2021 10:39:39 -0800 (PST)
+ id 1lIFMP-00G0Ar-OJ
+ for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 18:39:39 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id w17so5396118ejc.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 05 Mar 2021 10:39:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Ay/VePmX2E/QdxtPcN6EVcrY1//aOiSoLhu5+Byfit4=;
- b=a6a3cisX0udcGADfxE4OE2hEwPSsWnQDpdAmXJJc+Vy1RKa3JKLMgmD/eKbNdVfA4A
- StQZOtXuo3QZh1t/6ubhyM3b2+NpyGJ3lhuLQXKGQ8yEKNp51WNB/Q1YUUn28F7LxAZR
- wL7GM/MAGl+djORupYY6CXx/DcB4t6yUj5K6wSnP67wVDe5epFqhSh5Rcn0gLufmrOlT
- NY9Bvw9rZ/oGTblMv60mnLyDaoI9/xks0ECCKT6Xguqzd3cXmirXnFnJ4Lok7+k4G1o/
- dyHvOFKQ/O34Kpj9USKsyRxf7VOIB7+r2cAq5uAKsI7SQI/NDnVFokFQJ2UbVxrrweCl
- PqRg==
+ bh=bIJdIGKj6HKNSz+mFrNMaUm/bPZqpcnizzIMsRqYuoY=;
+ b=RiVWhR/OvXOcja8xhoQiGT5PENPEhs6J6857L37rppeYpLlOTH6et5xlvA4+/l13oB
+ IgaRlZNmLThTUY36AbheXvHSUyptu/w4y/kNgRcH8BW+s6CZe7PZdF95iLM6XL4YUwLu
+ bJ5qmvSmOLTEitH66jN4etv4LydMPbJeyRZJOiSrnoNQ87xaKYAOrt4ceqRRnsKCTuZn
+ PCbHjZbHpdMRs7LdBdfWzQ9cW2YM7fRq/AMFje8ieYX7bQmjk4zRyp8l84iR6+uMTHvU
+ X4J3apTH6S5zqMHdBsLR8zyjSlsmmzFgUGJmcjUv5/89r+kPcSIBo8ohwOm8mnurXhst
+ yoUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Ay/VePmX2E/QdxtPcN6EVcrY1//aOiSoLhu5+Byfit4=;
- b=ekbER0icwJKvrw/yCcgME3SNP8u0ev/9UQhsGGVhMDJTm1wTztYQhpbvwPEf75ko27
- A0UOSEVrmMT7ZK8mSxeW4kEgzn6fM18Z2Ne8z75XjStd/dlSF/gCZnXI9HJDH1FTW6RG
- xH5dmtBC7jva6wtw0lpGlhg/HY6DVoYmBPnEgdBQebb643l1pof7C7iH51VKawBQ+UjC
- fe8DoIFUuaH31pDOBIK0N2bj3QtBEZ2GtjJ4pHfqoK3RBBoRqmi1JQIx+iugkc3WKLzW
- uu3avLVV/ao5Y36breR/4TGnFOyW6xqQTBhu1zjOUVMlybfJ2LJZdrFHDb+gU7JbFTJE
- Xwlg==
-X-Gm-Message-State: AOAM533bGRc1tymbVQpbB1EDl94FZDQ/OmvSQQsD2On2Zwd31pnpnHGr
- FAlKtfzsQH/ylKpFvwofVnQ=
-X-Google-Smtp-Source: ABdhPJwEwactJjc4D3Bx7DICv+mc4VyjqP52lF84bycTxInNNIhN5/8ERDGvF9ftNFCzrlU/cOdTVg==
-X-Received: by 2002:a17:906:9243:: with SMTP id
- c3mr3279149ejx.388.1614969579120; 
- Fri, 05 Mar 2021 10:39:39 -0800 (PST)
+ bh=bIJdIGKj6HKNSz+mFrNMaUm/bPZqpcnizzIMsRqYuoY=;
+ b=ISxnfLyr7x9l44INJMzxoqgqPcu6+XcFKeliFkXmy5VgOLApVWF8DwUqg2vzR2euXb
+ 28OHyk7O0ASSw+TUqxkUufURr1+XlTSRZCg3cCJnUXStc97cm2fspMgZk8PsLgvSA/fb
+ 5wrbqV+w/iu49z6F16c/YMtoi41tpftj47qnSD2Te6iJf8ELsE2WLcY95P18rANvCrb9
+ lVfJE7nm8JkU1MOCLf8PobMRyv1/ncZZMlQTIUBlcMb93g/iKTMsJGEKEmqA7s6SnulN
+ NLdh7a7tuPjuOpMkr2z1yukzCp9gd+C7r+irByd5UBcJG7jVvP4oKPZbZ9t/SLAwlOsP
+ S3rw==
+X-Gm-Message-State: AOAM530a6s6uK3HEVHlevDWREu8Esb+TVfVORKP299gOub2kkkUx6FN3
+ XxbjCcEwAIjJSHSGqGCXa+Q=
+X-Google-Smtp-Source: ABdhPJyYrwPZqYJTonz4hUccXLXjyd7w2XNt8KWKQ+V7zyILnAlCiP4HpU6o6QjjEkD32oC9F2oRPg==
+X-Received: by 2002:a17:906:c210:: with SMTP id
+ d16mr3539327ejz.187.1614969576258; 
+ Fri, 05 Mar 2021 10:39:36 -0800 (PST)
 Received: from arch-x1c3.. (cpc92308-cmbg19-2-0-cust99.5-4.cable.virginm.net.
  [82.24.248.100])
- by smtp.gmail.com with ESMTPSA id o1sm2121808eds.26.2021.03.05.10.39.37
+ by smtp.gmail.com with ESMTPSA id o1sm2121808eds.26.2021.03.05.10.39.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Mar 2021 10:39:38 -0800 (PST)
+ Fri, 05 Mar 2021 10:39:35 -0800 (PST)
 From: Emil Velikov <emil.l.velikov@gmail.com>
 To: dri-devel@lists.freedesktop.org
 Cc: Nicolas Ferre <nicolas.ferre@microchip.com>, kernel@collabora.com,
  Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH 3/7] media: hantro: imx: remove duplicate dec_base init
-Date: Fri,  5 Mar 2021 18:39:20 +0000
-Message-Id: <20210305183924.1754026-4-emil.l.velikov@gmail.com>
+Subject: [PATCH 1/7] media: hantro: use G1_REG_INTERRUPT directly for the mpeg2
+Date: Fri,  5 Mar 2021 18:39:18 +0000
+Message-Id: <20210305183924.1754026-2-emil.l.velikov@gmail.com>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210305183924.1754026-1-emil.l.velikov@gmail.com>
 References: <20210305183924.1754026-1-emil.l.velikov@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_183939_963662_81B64D26 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210305_183937_978899_B7111F35 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,7 +106,11 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Emil Velikov <emil.velikov@collabora.com>
 
-The vpu->dec_base is already set by the hantro driver itself.
+Use the register directly over the existing SWREG().
+
+Ideally we'll port the driver away from the local registers, but for
+now this is enough. For context - I was reading through the IRQ register
+handling across the variants.
 
 Cc: Ezequiel Garcia <ezequiel@collabora.com>
 Cc: Philipp Zabel <p.zabel@pengutronix.de>
@@ -115,21 +118,37 @@ Cc: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org
 Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
 ---
- drivers/staging/media/hantro/imx8m_vpu_hw.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index 1f48c1956cd2..cb1ac02c03d2 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -150,7 +150,6 @@ static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
+diff --git a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
+index 6386a3989bfe..0fd306806f16 100644
+--- a/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_mpeg2_dec.c
+@@ -10,6 +10,7 @@
+ #include <media/v4l2-mem2mem.h>
+ #include "hantro.h"
+ #include "hantro_hw.h"
++#include "hantro_g1_regs.h"
  
- static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
- {
--	vpu->dec_base = vpu->reg_bases[0];
- 	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+ #define G1_SWREG(nr)			((nr) * 4)
  
- 	return 0;
+@@ -20,7 +21,6 @@
+ #define G1_REG_REFER2_BASE		G1_SWREG(16)
+ #define G1_REG_REFER3_BASE		G1_SWREG(17)
+ #define G1_REG_QTABLE_BASE		G1_SWREG(40)
+-#define G1_REG_DEC_E(v)			((v) ? BIT(0) : 0)
+ 
+ #define G1_REG_DEC_AXI_RD_ID(v)		(((v) << 24) & GENMASK(31, 24))
+ #define G1_REG_DEC_TIMEOUT_E(v)		((v) ? BIT(23) : 0)
+@@ -246,6 +246,5 @@ void hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx)
+ 
+ 	hantro_end_prepare_run(ctx);
+ 
+-	reg = G1_REG_DEC_E(1);
+-	vdpu_write(vpu, reg, G1_SWREG(1));
++	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_E, G1_REG_INTERRUPT);
+ }
 -- 
 2.30.1
 
