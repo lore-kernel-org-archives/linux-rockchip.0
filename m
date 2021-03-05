@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34F9DC433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 19:13:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78056C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 23:25:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEAB865074
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 19:13:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEAB865074
+	by mail.kernel.org (Postfix) with ESMTPS id EC3EE64F4B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Mar 2021 23:25:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC3EE64F4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pd5FC8R0EQGR9bzWGHJT9yKOisFNlWET+/6IiJyvgJE=; b=gqAc2JUl/cDmCCXc/4+kHoYm9
-	pBSByMYUxNUBxsjbWH9tQ15cyTXsn5kCtRlgTaiOprotWNcCtQXbgluNaHlc55XmcGlVey9HrOUQG
-	zYQ1f5yhQ1t/1XKG8IFRTsdNKoeTN7BnrSWJiIe25FDcYDcSh7fkHnKfUdO1qsthuoojsOQul7NbZ
-	2qlCuRG16naLApXTJUsbk6cQevQpnQqK9eywYj3xHGXxRNVNjd5765txBXmWQsFNMb9GbVYaPg5SB
-	eJPWbHrkVGqr8beg9sP0XiNw/IdYNebKDlDieEl3NWtzbjOTosbEVec95hsgqN3qoCou4QzJM3DzP
-	EOnwgw5ag==;
+	 bh=N3uCxfQoAabLjSOXp17NYvPEBZPDFdw2pawjrPY4xe4=; b=M7pqVh5MYHsjHwzyfQ5VeMlYk
+	7W4B20b8sEyFn+IUP+0A9SCrApVN35uCDn7/JJcbjMWX4Jkb7WZArxj3vZjYSIga8ROmkmFvAI7JP
+	yeT1bS1I5eotfLGwg65FcL27+rb77R0Xwlq9BO9DD1OEzdkKj83MSAV0qQ8wRMusSBJgV9W3r/mE8
+	BkNWaxYseIcEh0LsJ4Qwj/4hVtEgSxipsjY7x+T2FwH+5YWvydAW44RTpUiNS61m2gPqCdfb5jb1i
+	P3EFvPHixVCUdyBoD0Vp0soDNd6HqdXP036yXABKtp/+lUnFv2qOcQXgGcm4kpQHEZ+FYKOUQ1ewv
+	gEHmD5Ojg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lIFtV-00G8uA-S0; Fri, 05 Mar 2021 19:13:49 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1lIJpR-00H6M8-NJ; Fri, 05 Mar 2021 23:25:54 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lIFtO-00G8s6-8t
- for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 19:13:44 +0000
-Received: by mail-oi1-f182.google.com with SMTP id x78so3696698oix.1
- for <linux-rockchip@lists.infradead.org>; Fri, 05 Mar 2021 11:13:42 -0800 (PST)
+ id 1lIJpO-00H6L8-FF
+ for linux-rockchip@lists.infradead.org; Fri, 05 Mar 2021 23:25:52 +0000
+Received: by mail-ot1-f42.google.com with SMTP id f33so3415186otf.11
+ for <linux-rockchip@lists.infradead.org>; Fri, 05 Mar 2021 15:25:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=7j21bnY8V6XoojzoBkuZb1Em80loFildh8CKtjCoQFY=;
- b=kiRZE+WK12kX09I0CEEEEoiJig9RfLELmUIyTNt0ggQH7wVLzCRCCjHscPAf8db/qb
- O//LhnY/Z+nCIG1XAbJvjR4SuwIqjx/48tfr2yivlLq21BbLQJBInKluqJ9G9z7geRiY
- iHsPPZ7tSsgbOIhSbKDIhPuQiPozSAppskJLnhCDCWyqNXEWQD8gseETGo14bBCOy8no
- JZql1HdqpD66X1PmmB+DFgTsENwWJ1Gy6NnDDBmPpWJmD9wPVpiVyaepPVXKeW7y+HbQ
- pdZkp7rHtexQTqb3JTnYHsiHUIXFo0EM721D9fWcC+zMrSkcndFfFjZbclanahOEv5q2
- D6BQ==
-X-Gm-Message-State: AOAM530bAE21Ho1Ofq9CI+UuTwbSQ28n8qEtPTq5v2QK3RQU+iIvebGk
- /qijVv3O/Gl/otVEKhn4Nw==
-X-Google-Smtp-Source: ABdhPJzdQQd2b6iohPA/qBq+VyyV2jEDmlGbzbgOGcsS+r86TXvBx5D0DH4bTuYrinqaApp6cKEM0w==
-X-Received: by 2002:aca:5cd6:: with SMTP id q205mr8201202oib.94.1614971621083; 
- Fri, 05 Mar 2021 11:13:41 -0800 (PST)
+ bh=mb/bHLHRlD1QhUjsA/kL7M011uwxJwJbkWKDR1d1xxQ=;
+ b=BI0zgu35srtxiMMTUHf52xqMjJPAhf6uk4EixBhDm0X/vGz1tjUd95CYHDDey4VAPn
+ MwF+GuijkMy1PJ31xpzP4vXJUYygSVXa084Ktcvx1Zev7r5cYDSDTOF+jHz4ljJE7Gca
+ eCv5fWJHjst/yCfnmt9GvFmS8g7XYUKvd0fWMyuY2ukYOZYhuk1+IkFDrvGKDGf1uBGP
+ 7mz237PhElTYgnMZolx57o/P30ZhSwbiQgmd8ZQd2XT9n46ZzcoKdFkkpOk+7S0oYlG1
+ VrgogvlW3W5z9ff9/vdjTq3Hu20kSg7IgpM6x2pTKdwWELd/lptIMJkGUvbrihe9VYuI
+ 8Slg==
+X-Gm-Message-State: AOAM533G19V5d/p6bW8p7qzgo2dYS0U1FbnCBC20qdYkKjrg/9oogoHd
+ iKfsroYHC56UYDnOaixf5g==
+X-Google-Smtp-Source: ABdhPJx1AqrTrxCgGfAxgOvLtnbl3D/Y4pWyJcFyQrRf1ZvWbsAjlcom7dlm1cSekmmuXhE1nwRhXQ==
+X-Received: by 2002:a05:6830:1db5:: with SMTP id
+ z21mr9345356oti.95.1614986749320; 
+ Fri, 05 Mar 2021 15:25:49 -0800 (PST)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id k21sm763429otl.27.2021.03.05.11.13.39
+ by smtp.gmail.com with ESMTPSA id q65sm881483oia.0.2021.03.05.15.25.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Mar 2021 11:13:40 -0800 (PST)
-Received: (nullmailer pid 494318 invoked by uid 1000);
- Fri, 05 Mar 2021 19:13:39 -0000
-Date: Fri, 5 Mar 2021 13:13:39 -0600
+ Fri, 05 Mar 2021 15:25:48 -0800 (PST)
+Received: (nullmailer pid 834554 invoked by uid 1000);
+ Fri, 05 Mar 2021 23:25:46 -0000
+Date: Fri, 5 Mar 2021 17:25:46 -0600
 From: Rob Herring <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: ezequiel@collabora.com, robh+dt@kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- cmuellner@linux.com, kishon@ti.com, vkoul@kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: phy: add yaml binding for
- rockchip-inno-csi-dphy
-Message-ID: <20210305191339.GA494261@robh.at.kernel.org>
-References: <20210210214205.2496336-1-heiko@sntech.de>
- <20210210214205.2496336-2-heiko@sntech.de>
+To: Simon Xue <xxm@rock-chips.com>
+Cc: robh+dt@kernel.org, linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v5 1/2] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+Message-ID: <20210305232546.GA834502@robh.at.kernel.org>
+References: <20210222071721.30062-1-xxm@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210210214205.2496336-2-heiko@sntech.de>
+In-Reply-To: <20210222071721.30062-1-xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210305_191342_523111_9A38732F 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20210305_232550_605237_002590A3 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,17 +97,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 10 Feb 2021 22:42:04 +0100, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+On Mon, 22 Feb 2021 15:17:21 +0800, Simon Xue wrote:
+> Document DT bindings for PCIe controller found on Rockchip SoC.
 > 
-> Some Rockchip SoCs like the rk3368, rk3326, px30 use a CSI dphy
-> based on an Innosilicon IP. Add a binding for them.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
 > ---
->  .../bindings/phy/rockchip-inno-csi-dphy.yaml  | 79 +++++++++++++++++++
->  1 file changed, 79 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml
+>  .../bindings/pci/rockchip-dw-pcie.yaml        | 141 ++++++++++++++++++
+>  1 file changed, 141 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
