@@ -2,19 +2,20 @@ Return-Path: <SRS0=fRcm=IG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AEEBC433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 15:57:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EA15C433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 16:02:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 129B065105
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 15:57:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 129B065105
+	by mail.kernel.org (Postfix) with ESMTPS id B9E026521D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 16:02:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9E026521D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,66 +24,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4N+wBQyfAa4ESSNtEVpzJU/98dsVrdQne4ZqGnlaN+A=; b=pWil70/TBOqjuwwcBdQ/21DCV
-	nMUT02AA6h1oc8jVK/pqy685T9dDdjCoTErMRfwadaahIQk0ONLVxT+vPDOwQW2dDAGt5oRrAR5zP
-	ozJ2HK/ARkGJ+k2f0hVILLezzEEcv90XLMc5SgFwOnLn6icuxkGTSHFJ7k9jgXAsFsKCds/zMF5wf
-	ZB7ffRDopYWv4weNllOVX8HBQT/qOPvnPHx6e9Fu+cgP17+8VLY4wDru6R12/AjEFFAG5DQtguFd4
-	FcU1oNGngEGWvug5Iqni5ozjiQ8qD6s1EHa1Nk9m/Oh0OoiB0lj8Xq/IQ/d4n3FAcpzJoP8zzZOH/
-	QRb9VYLuQ==;
+	 bh=3m+tOkZs5KWUzfVuhM56pooOrWWdy4ezCwGe3Y7XuFo=; b=osyxa9sMJnQb3Ubsz7jvS9xhL
+	vnrCE6EEqDBD25PBrVkjqPL/UOhnyq94x1an39ZLNRwaqDBVpTdTaM7FNb6AbR8pnEwpgjKIeYEGh
+	0c+VKpmcNr1NIjB94iWwi9hXL56XE2BGZhPaHPFhITPg5MTm7xSqOA6FdZqdUS/q16PiPrfkAhWmc
+	5SWUTgiCBENPeuynpveM/ko4bq3SFQ3z4SZE2XMS2hkObTdEDxYaTQDRUZjfZl8DNfBK6WWNNLMcs
+	emq1eUi+Tn9XpDklv1V9aXVGodm/kRr76woUA5F5E/YZ1yztRFM3a33DYIw3ANWjQ+NNHqBMvKNY7
+	rHlGOz3sw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJIGP-000nCc-E2; Mon, 08 Mar 2021 15:57:46 +0000
-Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
+	id 1lJIKj-000pJ6-8L; Mon, 08 Mar 2021 16:02:13 +0000
+Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJIGI-000n7X-TD
- for linux-rockchip@lists.infradead.org; Mon, 08 Mar 2021 15:57:41 +0000
-Received: by mail-vs1-xe2f.google.com with SMTP id e21so3086909vsh.5
- for <linux-rockchip@lists.infradead.org>; Mon, 08 Mar 2021 07:57:38 -0800 (PST)
+ id 1lJIKd-000pFe-Qc
+ for linux-rockchip@lists.infradead.org; Mon, 08 Mar 2021 16:02:09 +0000
+Received: by mail-ua1-x92c.google.com with SMTP id 101so3496538uag.1
+ for <linux-rockchip@lists.infradead.org>; Mon, 08 Mar 2021 08:02:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SwCFKt4GMozKY730ds1tdX8e7lguf4IlSDg7liGwqag=;
- b=uVTM3kaXojfmBzvO37KITKTrxLkPmHU1poLanoepTW0qTgWVZm/5x+F/I4G5bSwr/I
- kZToSGaToHTvNcnZpH1LbXXxdItf0LsmPcDBblkzdYfLfH0AnakyZT5ROjW3ih4euyfx
- I8uHxryN+8cX9afGFLptLJgu6UPQHmcIOjqiY6H78RVZihypTqSchQSPDwGutEAXQXwi
- rycioaUyd+s1up7QIh8GCngrGdJlFBnjraiDdvBy1sdpjv4ptqQ2AuH9tvfXR6TM1AOh
- 5kJgV2VmTnShyz1xD4uDqqEA7IU4coUsPYTPkelrYqKjA0TEMAhKipsm3y0HAqdpDnZN
- 09CA==
+ :cc; bh=An011ivT1O5IqSBEP+Exr4/mnv85DViHzOw1dLqooWM=;
+ b=jeekrIFCRYpPa+xsnZZ0w38J4frFu3ydE5//Ca6SwxwiJuOBITzb8myXXxB2epwxuW
+ QXhA0GsxH5Kzy+w/NLBijDaExj4XxJLpS0t12VGvm3drSXU3uYkQFjZAANJI/fqR6Nph
+ gsKPjQ4kMSdZYsb4Zne/nZUft7dzr562wi66gmN4jy5EpU/GBYcCWav2RihEOzrGDsHa
+ 0pjHJLsw8Gmlu69SlBE3wNGCmClYiQQvP6hIm/vyisD+vfpZJ64W+ruYA3M+V7fqYXRz
+ bcP2vhChHWWvXtUCl6oNO2ZJmfLt1sB9KH0hlzu1ZN+qSzk0edH0a0EUmTDPuS+GmE0U
+ vcMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=SwCFKt4GMozKY730ds1tdX8e7lguf4IlSDg7liGwqag=;
- b=gz4S53vv/806gvYcpJXxIivtQZJldQJLCG3ehIWDDP+W5kIPotq+q4AohenC6jyEa3
- lQi8s/OfJndVJv5+N/yVb497qK7ozSFev3uQwgjFhySrVdOE1Gmox8UR0Bgi7Y50o0Ga
- ihZgKFFsHwR0/OvHVDhmoFBGIjiVMpbXI31EfrqmbCt7oAM+i78Ty8if4aKBm52hM03/
- S2jh+4T+MvUZR9sG8HgfMFE9383TN6GijViDW1rVGLPgajRnxsACJRVoUxa7znlkRodb
- gfVhmY5oakfdCHX7DV1LjOdfP4s0dJgTMZleWpBUjD/BwE+g5+ik7cLX4n+2WN61m0fa
- dGnA==
-X-Gm-Message-State: AOAM530UsSlS84lVysN290a5FO7hQ7KqnVddtHy4XQCzLwKzRkv2Zw7l
- E0M+JOM1wgNcXhuTjPJiNExPNg8UQ6VGYmaBK3E=
-X-Google-Smtp-Source: ABdhPJxRY5PAXQbO2E8L7KGjxzRnWIIivSjsRhaRYV3E7/RFN0Jf9vaLtpIiAen3eZB8wpvg511wf1eiUeCvrh7B+ck=
-X-Received: by 2002:a67:f04f:: with SMTP id q15mr13359263vsm.22.1615219057722; 
- Mon, 08 Mar 2021 07:57:37 -0800 (PST)
+ bh=An011ivT1O5IqSBEP+Exr4/mnv85DViHzOw1dLqooWM=;
+ b=mOhcoaY3b58nL4LdLTQodvB+s25hhJWLPoBbG/gvQTxousae3iAUWZswbKfzK34fE5
+ 03fAhtMJ/QKfvZF9yA3wmuohtUiMLYKxzqDLyctB8e/zeZCwwwDrQ68vW3F7OuyQQfjt
+ WmeHkqpAeHGNgEW2zR+4SwzLJvNioRoIwKgxznk4T/atdg1NnZRmvFqqEopXWMKsJ9gY
+ D8Bo0/ORv0KnEeQoG/OSpMCUno5K6mDR/USBNVU7sCbPJFmwY3D+AeIRktYTqT5D4ZDo
+ xewcjzlXwlwW+iLIx+0KmhBLi4t9wRBXd0lxJhUx15lcNAdzkQ659uaqAPxC5UIh9TFV
+ W1ww==
+X-Gm-Message-State: AOAM533ylh1Qjym9v+QkryBgZjMBsHDtRMZZkruDDI1vtSSxT6mdSkZE
+ 6SED4gofcxiTaVuMe65eb7mNNg/nZUFEfF9Sd2kDgzazQyE=
+X-Google-Smtp-Source: ABdhPJwuFYQnKSyKc5E1TZUyp9J9Sp60E60qo2mEIw3WxuI/ANDkpscroQkTo0tFo+0nFPEO/vB6lShkVnmIEsS29mw=
+X-Received: by 2002:ab0:382:: with SMTP id 2mr14186118uau.46.1615219326677;
+ Mon, 08 Mar 2021 08:02:06 -0800 (PST)
 MIME-Version: 1.0
 References: <20210305183924.1754026-1-emil.l.velikov@gmail.com>
- <20210305183924.1754026-8-emil.l.velikov@gmail.com>
- <915739c6fc01f17b00c4fac8b7fede1f25396286.camel@collabora.com>
- <CACvgo51peuKsuqx-NwZSWU4Ys1q5MuXb=BRx7GLo3tkWH+vb0w@mail.gmail.com>
- <2e921a53-def3-ed3a-6240-b81ea3ddf946@microchip.com>
-In-Reply-To: <2e921a53-def3-ed3a-6240-b81ea3ddf946@microchip.com>
+ <20210305183924.1754026-5-emil.l.velikov@gmail.com>
+ <20210308135704.GB18168@pengutronix.de>
+In-Reply-To: <20210308135704.GB18168@pengutronix.de>
 From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Mon, 8 Mar 2021 15:57:26 +0000
-Message-ID: <CACvgo52dNRyiLDGDf8wQMKoxsCUyn3Ro=hHL7GAMtVXRdC_19A@mail.gmail.com>
-Subject: Re: [PATCH 7/7] ARM: dts: at91: sama5d4: add vdec0 component
-To: Nicolas Ferre <nicolas.ferre@microchip.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com, 
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, 
- linux-rockchip <linux-rockchip@lists.infradead.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Date: Mon, 8 Mar 2021 16:01:55 +0000
+Message-ID: <CACvgo52e8be9MqHOiq4V4a7QnHq__34GcSeOn4scmydW-=vvSA@mail.gmail.com>
+Subject: Re: [PATCH 4/7] media: hantro: imx: remove unused include
+To: Philipp Zabel <pza@pengutronix.de>
+Cc: ML dri-devel <dri-devel@lists.freedesktop.org>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, kernel@collabora.com, 
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, 
+ linux-rockchip <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_155739_192044_43ACE9F5 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20210308_160207_974140_49E292E8 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,30 +98,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 8 Mar 2021 at 13:21, Nicolas Ferre <nicolas.ferre@microchip.com> wrote:
+On Mon, 8 Mar 2021 at 13:57, Philipp Zabel <pza@pengutronix.de> wrote:
 >
 > Hi Emil,
 >
-Greetings Nicolas,
-
-> So nice to see this support! Thank you so much for handling that.
+> On Fri, Mar 05, 2021 at 06:39:21PM +0000, Emil Velikov wrote:
+> > From: Emil Velikov <emil.velikov@collabora.com>
+> >
+> > The current imx8 code does not use the jpeg encoder. Remove the
+> > unnecessary include.
+> >
+> > Cc: Ezequiel Garcia <ezequiel@collabora.com>
+> > Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> > Cc: linux-media@vger.kernel.org
+> > Cc: linux-rockchip@lists.infradead.org
+> > Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
 >
-> Little comments below...
+> thank you, patches 2-4 could be tagged
 >
-
-> Nitpicking: I would use "microchip,sama5d4-vdec". We tend to use the
-> microchip name for new DT bidings and compatibility strings.
+> Fixes: 8e4aaa687863 ("media: hantro: add initial i.MX8MQ support")
+> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 >
-Should i use Microchip (instead of Atmel) only for the DT bindings or
-throughout the series?
+Much appreciated. Will add all the tags for v2.
 
-> I'm fine with having a "staging" component. Maybe add the hantro vdec as
-> a module instead.
->
-Ack, will do for v2.
-
-Thanks
-Emil
+-Emil
 
 _______________________________________________
 Linux-rockchip mailing list
