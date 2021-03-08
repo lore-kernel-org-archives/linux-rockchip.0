@@ -2,92 +2,94 @@ Return-Path: <SRS0=fRcm=IG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BFDB3C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 21:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75B47C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 23:39:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 626BD651B7
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 21:50:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 626BD651B7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 185966527D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 23:39:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 185966527D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3iV6n5ig8hQ7GAzfM2zzq8jD/i/JWJNuV0ftNuxL7dM=; b=Wn0AkA2LOgu++7sinUZCIo6uI
-	/siRJ/+Sl6xUvyRJPT2cbn6AFqWUHmADlwNQdHGLQAGKKO8UAdEJu+sALISC3nnAHMQwy9VGAhN56
-	tsD/pESwZSDvg9rKdAYFwF8mOJWwHpUGBEhkg5FlzEnr2ECE/iDxwg4O1aBGS+0RA5UaRt3TBMV/s
-	WqdXxS98dcZ+V6JtXYfY+J+0tNgW+4u17bk/235BE/8rJTImA7rLOvya3TouPSehUaoiMu6Hp258y
-	Gb4r5GtCVVlu+4ox7lWutxUct14FIo9LC/C9GtOLx9G3hIzGSvzuEcjTOJO4WIQDnds0m26ws1IXE
-	mXIn6mNiw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7Q2mxbZnnckMjHGJPIaYXXqfJ9BQFaDd10IeQpXVgso=; b=hwPjrDTTR1icRyc8jqxDRiGQ+a
+	HJ6u56uI60l/XjK/VW8tfRTxLVmh5hAJ/FHetT/ClH24VZN033LVt003DTPHUc9tSbc0qo5BFlIPT
+	tU+Y2zb9mcekM3+2SnUlUF+5WR5i9KDhurBQbzoi4KFXBYjDlAVHBTkkL2gJ/8uFM7tMWYm9hQgDC
+	W4NgVWTLKilpG23Zm+jGvVtu2m8IzFW0TL0w0hha9pH6R2Q53M/KSCRG6RPviongxyuAoJEmSVwY2
+	rDDJzLT9OLneWM4rMJTD0CiUttS2bYkw3K9jdsWvOb2PeFNi6KNoA1K+4pn8Z9YQRPoiuOdhrt1BW
+	bw16uiyA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJNlY-0033uW-Hj; Mon, 08 Mar 2021 21:50:16 +0000
-Received: from mail-io1-f41.google.com ([209.85.166.41])
+	id 1lJPTN-003OGr-Fq; Mon, 08 Mar 2021 23:39:37 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJNlC-0033rJ-5j; Mon, 08 Mar 2021 21:49:56 +0000
-Received: by mail-io1-f41.google.com with SMTP id u20so11637506iot.9;
- Mon, 08 Mar 2021 13:49:54 -0800 (PST)
+ id 1lJPT8-003ODZ-QT
+ for linux-rockchip@lists.infradead.org; Mon, 08 Mar 2021 23:39:24 +0000
+Received: by mail-wm1-x336.google.com with SMTP id
+ b2-20020a7bc2420000b029010be1081172so4831500wmj.1
+ for <linux-rockchip@lists.infradead.org>; Mon, 08 Mar 2021 15:39:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eqyLkN28+VbZJ1BodN0k6GRf4WGaBBOV7lcLbkfiJBQ=;
+ b=Xh+k5bGSptAyjUDGZQnXgFqbHzAG1QPvOAA81X4+86hLvLLPcBkxJp7PAp0mXyk8gI
+ yAvz8MiX/7rbhLuhxHMMxcYXxEfCti/hBoXil6MGBKkmQ7gkro9wSdEKf2JNbhliCu0i
+ VbGbqiqJfX8rUQjvkdQPoX6VJcl7sHNQuPGt309aH7ih1/9xWv+z297uaGFlfS+3Rijh
+ del9/iXKRiBxWOGvTcprNCOUtJ6jMglS3lo8yhrgrim/WBjV+AUkG5L2AEQx8hro87Wr
+ NRIbt0HqoqkQMZi1jxQpNbkKrBHGUatDDf4hPFqyXQIcIxSQ12Z2yRweL5U8hyLgpJ3+
+ +Eug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Aopk2xA4zD/bXMuGz7qZQmTI9QDAmCg2/YOh8hW5b/0=;
- b=Zgzkg6fJiR/Xr6aOSHQCxftbEm+SGfC2+Jb5xZvEl9qaWwJoX1aaOJi8mTR5kRWH1f
- x7Hzr0gYkYVqi21feU3VL6pnu91SF5xjSYXMwRhul+X/pa5+2W1F2dCiPYAKk8co5Wj7
- mDpPCwpdZyo4EVq2lJUuZkUutCKwjtVUYw8+2Yk/P7OKu01BMT6IrPksQBTv6aR00THD
- mL7S7dY4IvJiF8iSdQyc/3W1TfJAR7s3rkxJzgMDbHUZtlQbvO2nlFUYEZ+/4lMviywa
- ADLzqWuoJ2THHs98pfV70qV/Yx5O9KO8JvhkJIhQr3qwAXZSHc36AyhTb8eHu1vfJBDa
- iWsw==
-X-Gm-Message-State: AOAM531EulijNWKzKZnFykopVhYdsLdir37xOiilrx1IUozquCX3kPp5
- AGVx5b/JCfM4aNmrdTBFSg==
-X-Google-Smtp-Source: ABdhPJz4X8nedqPUFZXhmT/nr+nyG6cyHJpqU/AUG5gmHwFE1jAgJvvym0gu44LweRh8c7GRY2E0Ig==
-X-Received: by 2002:a05:6602:2497:: with SMTP id
- g23mr20165160ioe.22.1615240193189; 
- Mon, 08 Mar 2021 13:49:53 -0800 (PST)
-Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id k8sm6514522ilu.4.2021.03.08.13.49.51
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=eqyLkN28+VbZJ1BodN0k6GRf4WGaBBOV7lcLbkfiJBQ=;
+ b=orFtDTS1QsvnaB9qT6xO199/U25pep/YNrxyFYviQ7oyYW9HhRYWIJfJVw9PSu2QlQ
+ rUKILzueuSPMDpyLuWAMnnEvCszY4GuiKLGgqmtxwGquMddyZ/r6qbtgVfpktbS2jXsQ
+ 2vlKxsfKRPVyto0SY0OIBlKuSGwfN3aIwtIJPVMeAmuSKE00JPqNdBjjYuBRo7Tso3oW
+ vh97OtYEji9oAI8bMZpyRzz+WfK1OhpOU0bsPxOkpoTCKaljSbgwXUcGoAzuTdT6FxQB
+ hkBLr/FxYvLGu2P1ehjkMtsVGqBKlGGnPA0odiy6/T59VUC0p8zX8MyFpmB3GA/Y6QV0
+ b3kQ==
+X-Gm-Message-State: AOAM5311QArsZQjCUvXfZTLv4yP2iwMj3EHkx/O/VbvwlGnNXAHS4ath
+ 3u0NSKKD/nE8e7M1bapHOKuwtw==
+X-Google-Smtp-Source: ABdhPJx6PRCVhueYee+s5rTUuSEOQ5BGaZfr6qtVs+qF+7WlrvYJ8gsYqpzm7ZADmb/sCt4UW4mj3g==
+X-Received: by 2002:a1c:9849:: with SMTP id a70mr1108634wme.48.1615246761430; 
+ Mon, 08 Mar 2021 15:39:21 -0800 (PST)
+Received: from localhost.localdomain
+ (lns-bzn-59-82-252-141-80.adsl.proxad.net. [82.252.141.80])
+ by smtp.gmail.com with ESMTPSA id b186sm1145408wmc.44.2021.03.08.15.39.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Mar 2021 13:49:52 -0800 (PST)
-Received: (nullmailer pid 3014339 invoked by uid 1000);
- Mon, 08 Mar 2021 21:49:50 -0000
-Date: Mon, 8 Mar 2021 14:49:50 -0700
-From: Rob Herring <robh@kernel.org>
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
- Arnd Bergmann <arnd@arndb.de>, Tom Joseph <tjoseph@cadence.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Nadeem Athani <nadeem@cadence.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pci@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Lokesh Vutla <lokeshvutla@ti.com>
-Subject: Re: [PATCH v3 1/7] dt-bindings: PCI: pci-ep: Add binding to specify
- virtual function
-Message-ID: <20210308214950.GA3010566@robh.at.kernel.org>
-References: <20210305050410.9201-1-kishon@ti.com>
- <20210305050410.9201-2-kishon@ti.com>
+ Mon, 08 Mar 2021 15:39:21 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ =?UTF-8?q?Ga=C3=ABl=20PORTAY?= <gael.portay@collabora.com>,
+ Rob Herring <robh@kernel.org>, MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-pm@vger.kernel.org (open list:DEVICE FREQUENCY (DEVFREQ)),
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), linux-kernel@vger.kernel.org (open list)
+Subject: [RESEND PATCH v5 1/4] dt-bindings: devfreq: rk3399_dmc: Add rockchip,
+ pmu phandle.
+Date: Tue,  9 Mar 2021 00:38:55 +0100
+Message-Id: <20210308233858.24741-1-daniel.lezcano@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210305050410.9201-2-kishon@ti.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_214954_489016_A8654400 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20210308_233923_065092_D070092A 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,44 +102,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 05, 2021 at 10:34:04AM +0530, Kishon Vijay Abraham I wrote:
-> Add binding to specify virtual function (associated with each physical
-> function) in endpoint mode.
-> 
-> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
-> ---
->  Documentation/devicetree/bindings/pci/pci-ep.yaml | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/pci-ep.yaml b/Documentation/devicetree/bindings/pci/pci-ep.yaml
-> index 7847bbcd4a03..b8d5406f94ce 100644
-> --- a/Documentation/devicetree/bindings/pci/pci-ep.yaml
-> +++ b/Documentation/devicetree/bindings/pci/pci-ep.yaml
-> @@ -23,6 +23,15 @@ properties:
->      default: 1
->      maximum: 255
->  
-> +  max-virtual-functions:
-> +    description: Array representing the number of virtual functions corresponding to each physical
-> +      function
-> +    $ref: /schemas/types.yaml#/definitions/uint8-array
-> +    minItems: 1
-> +    maxItems: 255
-> +    items:
-> +      maximum: 255
-
-No need for maximum, as that is already the case for uint8.
-
-With that dropped,
-
-Reviewed-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNv
+bT4KClRoZSBSb2NrY2hpcCBETUMgKER5bmFtaWMgTWVtb3J5IEludGVyZmFjZSkgbmVlZHMgdG8g
+YWNjZXNzIHRvIHRoZSBQTVUKZ2VuZXJhbCByZWdpc3RlciBmaWxlcyB0byBrbm93IHRoZSBEUkFN
+IHR5cGUsIHNvIGFkZCBhIHBoYW5kbGUgdG8gdGhlCnN5c2NvbiB0aGF0IG1hbmFnZXMgdGhlc2Ug
+cmVnaXN0ZXJzLgoKU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMu
+YmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KUmV2aWV3ZWQtYnk6IENoYW53b28gQ2hvaSA8Y3cwMC5j
+aG9pQHNhbXN1bmcuY29tPgpBY2tlZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9yZz4K
+U2lnbmVkLW9mZi1ieTogR2HDq2wgUE9SVEFZIDxnYWVsLnBvcnRheUBjb2xsYWJvcmEuY29tPgpB
+Y2tlZC1ieTogTXl1bmdKb28gSGFtIDxteXVuZ2pvby5oYW1Ac2Ftc3VuZy5jb20+ClNpZ25lZC1v
+ZmYtYnk6IERhbmllbCBMZXpjYW5vIDxkYW5pZWwubGV6Y2Fub0BsaW5hcm8ub3JnPgotLS0KIERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL3JrMzM5OV9kbWMudHh0IHwg
+MiArKwogMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL3JrMzM5OV9kbWMudHh0IGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RldmZyZXEvcmszMzk5X2RtYy50eHQKaW5k
+ZXggYTEwZDFmNmQ4NWM2Li5hNDFiY2ZlZjk1YzggMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL3JrMzM5OV9kbWMudHh0CisrKyBiL0RvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL3JrMzM5OV9kbWMudHh0CkBAIC0xMiw2
+ICsxMiw4IEBAIFJlcXVpcmVkIHByb3BlcnRpZXM6CiAJCQkgZm9yIGRldGFpbHMuCiAtIGNlbnRl
+ci1zdXBwbHk6CSBETUMgc3VwcGx5IG5vZGUuCiAtIHN0YXR1czoJCSBNYXJrcyB0aGUgbm9kZSBl
+bmFibGVkL2Rpc2FibGVkLgorLSByb2NrY2hpcCxwbXU6CQkgUGhhbmRsZSB0byB0aGUgc3lzY29u
+IG1hbmFnaW5nIHRoZSAiUE1VIGdlbmVyYWwgcmVnaXN0ZXIKKwkJCSBmaWxlcyIuCiAKIE9wdGlv
+bmFsIHByb3BlcnRpZXM6CiAtIGludGVycnVwdHM6CQkgVGhlIENQVSBpbnRlcnJ1cHQgbnVtYmVy
+LiBUaGUgaW50ZXJydXB0IHNwZWNpZmllcgotLSAKMi4xNy4xCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
