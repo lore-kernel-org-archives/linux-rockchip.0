@@ -2,85 +2,83 @@ Return-Path: <SRS0=fRcm=IG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EA15C433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 16:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D902C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 17:28:09 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9E026521D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 16:02:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9E026521D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id DAB1465235
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 17:28:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAB1465235
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3m+tOkZs5KWUzfVuhM56pooOrWWdy4ezCwGe3Y7XuFo=; b=osyxa9sMJnQb3Ubsz7jvS9xhL
-	vnrCE6EEqDBD25PBrVkjqPL/UOhnyq94x1an39ZLNRwaqDBVpTdTaM7FNb6AbR8pnEwpgjKIeYEGh
-	0c+VKpmcNr1NIjB94iWwi9hXL56XE2BGZhPaHPFhITPg5MTm7xSqOA6FdZqdUS/q16PiPrfkAhWmc
-	5SWUTgiCBENPeuynpveM/ko4bq3SFQ3z4SZE2XMS2hkObTdEDxYaTQDRUZjfZl8DNfBK6WWNNLMcs
-	emq1eUi+Tn9XpDklv1V9aXVGodm/kRr76woUA5F5E/YZ1yztRFM3a33DYIw3ANWjQ+NNHqBMvKNY7
-	rHlGOz3sw==;
+	 bh=CWxsK2EwG+HqRr3uXuQPaBpnUTYyWPT9E5eW0XvsNL0=; b=regul2zq1v/hpDCQ3Vtuz+Fql
+	h8ucQj6WbX7+y3mAtZp3Up8fqfreO+qe7GvMIU//1NNjF4bqQC9dRQiBnRQ0ka9s4e3RjuKWRXxsf
+	z+fb3F7QJn60SbP4Jwf9X9Zp33YRGhY0dFCe8kwuDwUtYvuvIq1MqTZ8WHcVEnayOZVE0iPi5aXCh
+	lQKGgSuW7mixuGpvohVSi3Gzdj36y6oGQUIGFADjIOps66JixxyM/4eaa1fC0t9vWYWP7w/cAuFHt
+	Ja7Qrvf3KPpl+qRMaZ4BueeKfGCNA+2F5qMCiV4/zILFFAwC7TQIyEylV8RY9I/xMgmAKUq9FaiMr
+	zkZ8wCQKA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJIKj-000pJ6-8L; Mon, 08 Mar 2021 16:02:13 +0000
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+	id 1lJJfk-001OHZ-Tt; Mon, 08 Mar 2021 17:28:01 +0000
+Received: from mail-il1-f177.google.com ([209.85.166.177])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJIKd-000pFe-Qc
- for linux-rockchip@lists.infradead.org; Mon, 08 Mar 2021 16:02:09 +0000
-Received: by mail-ua1-x92c.google.com with SMTP id 101so3496538uag.1
- for <linux-rockchip@lists.infradead.org>; Mon, 08 Mar 2021 08:02:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=An011ivT1O5IqSBEP+Exr4/mnv85DViHzOw1dLqooWM=;
- b=jeekrIFCRYpPa+xsnZZ0w38J4frFu3ydE5//Ca6SwxwiJuOBITzb8myXXxB2epwxuW
- QXhA0GsxH5Kzy+w/NLBijDaExj4XxJLpS0t12VGvm3drSXU3uYkQFjZAANJI/fqR6Nph
- gsKPjQ4kMSdZYsb4Zne/nZUft7dzr562wi66gmN4jy5EpU/GBYcCWav2RihEOzrGDsHa
- 0pjHJLsw8Gmlu69SlBE3wNGCmClYiQQvP6hIm/vyisD+vfpZJ64W+ruYA3M+V7fqYXRz
- bcP2vhChHWWvXtUCl6oNO2ZJmfLt1sB9KH0hlzu1ZN+qSzk0edH0a0EUmTDPuS+GmE0U
- vcMw==
+ id 1lJJfK-001Nzn-3S; Mon, 08 Mar 2021 17:27:36 +0000
+Received: by mail-il1-f177.google.com with SMTP id f10so9542804ilq.5;
+ Mon, 08 Mar 2021 09:27:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=An011ivT1O5IqSBEP+Exr4/mnv85DViHzOw1dLqooWM=;
- b=mOhcoaY3b58nL4LdLTQodvB+s25hhJWLPoBbG/gvQTxousae3iAUWZswbKfzK34fE5
- 03fAhtMJ/QKfvZF9yA3wmuohtUiMLYKxzqDLyctB8e/zeZCwwwDrQ68vW3F7OuyQQfjt
- WmeHkqpAeHGNgEW2zR+4SwzLJvNioRoIwKgxznk4T/atdg1NnZRmvFqqEopXWMKsJ9gY
- D8Bo0/ORv0KnEeQoG/OSpMCUno5K6mDR/USBNVU7sCbPJFmwY3D+AeIRktYTqT5D4ZDo
- xewcjzlXwlwW+iLIx+0KmhBLi4t9wRBXd0lxJhUx15lcNAdzkQ659uaqAPxC5UIh9TFV
- W1ww==
-X-Gm-Message-State: AOAM533ylh1Qjym9v+QkryBgZjMBsHDtRMZZkruDDI1vtSSxT6mdSkZE
- 6SED4gofcxiTaVuMe65eb7mNNg/nZUFEfF9Sd2kDgzazQyE=
-X-Google-Smtp-Source: ABdhPJwuFYQnKSyKc5E1TZUyp9J9Sp60E60qo2mEIw3WxuI/ANDkpscroQkTo0tFo+0nFPEO/vB6lShkVnmIEsS29mw=
-X-Received: by 2002:ab0:382:: with SMTP id 2mr14186118uau.46.1615219326677;
- Mon, 08 Mar 2021 08:02:06 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=z4VzCr+NjykMx6ss3+YedQXI/QaFLF89E2u39WmSoLQ=;
+ b=Z+Xtd/iX/JdjOw9PtyGkgdS/vDA6j3mZd2lbtxGs199rDBs9CsnoECL3GWfdVyh6JS
+ hAmRYRZwNhnml1UdJtVOZEYM2PI+U6oNkV504XFywMfFSqYMoJmDF+sFc6tiXk5O2sCO
+ 70D1CrcwIWOsQgYxFA4D5OyYDv05cZwenRrGZ/9Jt4pdsxw8bb7SL3CG2cCUNRtv+Arq
+ Pa0wB/5wVDgWEhOUbTJKGqi5z+osqNJKj1Q7Ln2jHBlDWhjGuspRga6C9p/n+bJc1+Js
+ 2KQIvKNy9ncaSmSSOC8Z1UpMs7FFFBLOdYrnQz5rTfSCmcgriCqGFPa1YE3Em8g9PYkN
+ fEhw==
+X-Gm-Message-State: AOAM532hkHrdb5CaLn6Lo8UlWDMztoY5DTMdXdJs3SycnxS++3mvkQOw
+ aueofdjXRl8V3+8JDY3Owg==
+X-Google-Smtp-Source: ABdhPJymVBviqDmcjogfw4M2rtCtsicnvt2LVjcMBx2jYkzfy4qseIoAI3ubQ28VbDMgrro+hskwag==
+X-Received: by 2002:a92:194a:: with SMTP id e10mr21733466ilm.213.1615224452312; 
+ Mon, 08 Mar 2021 09:27:32 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id k3sm6267660ioj.35.2021.03.08.09.27.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Mar 2021 09:27:31 -0800 (PST)
+Received: (nullmailer pid 2663388 invoked by uid 1000);
+ Mon, 08 Mar 2021 17:27:28 -0000
+Date: Mon, 8 Mar 2021 10:27:28 -0700
+From: Rob Herring <robh@kernel.org>
+To: Elaine Zhang <zhangqing@rock-chips.com>
+Cc: sboyd@kernel.org, kever.yang@rock-chips.com,
+ linux-arm-kernel@lists.infradead.org, mturquette@baylibre.com,
+ linux-rockchip@lists.infradead.org, heiko@sntech.de, robh+dt@kernel.org,
+ cl@rock-chips.com, devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
+ finley.xiao@rock-chips.com, tony.xie@rock-chips.com, huangtao@rock-chips.com,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/4] dt-binding: clock: Document rockchip, rk3568-cru
+ bindings
+Message-ID: <20210308172728.GA2663354@robh.at.kernel.org>
+References: <20210301064749.10392-1-zhangqing@rock-chips.com>
+ <20210301064749.10392-2-zhangqing@rock-chips.com>
 MIME-Version: 1.0
-References: <20210305183924.1754026-1-emil.l.velikov@gmail.com>
- <20210305183924.1754026-5-emil.l.velikov@gmail.com>
- <20210308135704.GB18168@pengutronix.de>
-In-Reply-To: <20210308135704.GB18168@pengutronix.de>
-From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Mon, 8 Mar 2021 16:01:55 +0000
-Message-ID: <CACvgo52e8be9MqHOiq4V4a7QnHq__34GcSeOn4scmydW-=vvSA@mail.gmail.com>
-Subject: Re: [PATCH 4/7] media: hantro: imx: remove unused include
-To: Philipp Zabel <pza@pengutronix.de>
-Cc: ML dri-devel <dri-devel@lists.freedesktop.org>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, kernel@collabora.com, 
- Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, 
- linux-rockchip <linux-rockchip@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20210301064749.10392-2-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_160207_974140_49E292E8 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210308_172735_306681_66F5698F 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,30 +96,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 8 Mar 2021 at 13:57, Philipp Zabel <pza@pengutronix.de> wrote:
->
-> Hi Emil,
->
-> On Fri, Mar 05, 2021 at 06:39:21PM +0000, Emil Velikov wrote:
-> > From: Emil Velikov <emil.velikov@collabora.com>
-> >
-> > The current imx8 code does not use the jpeg encoder. Remove the
-> > unnecessary include.
-> >
-> > Cc: Ezequiel Garcia <ezequiel@collabora.com>
-> > Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> > Cc: linux-media@vger.kernel.org
-> > Cc: linux-rockchip@lists.infradead.org
-> > Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
->
-> thank you, patches 2-4 could be tagged
->
-> Fixes: 8e4aaa687863 ("media: hantro: add initial i.MX8MQ support")
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
->
-Much appreciated. Will add all the tags for v2.
+On Mon, 01 Mar 2021 14:47:46 +0800, Elaine Zhang wrote:
+> Document the device tree bindings of the rockchip Rk3568 SoC
+> clock driver in Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> ---
+>  .../bindings/clock/rockchip,rk3568-cru.yaml   | 60 +++++++++++++++++++
+>  1 file changed, 60 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml
+> 
 
--Emil
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
