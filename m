@@ -2,19 +2,18 @@ Return-Path: <SRS0=fRcm=IG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F062C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 18:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86805C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 18:27:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A18D86148E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 18:24:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A18D86148E
+	by mail.kernel.org (Postfix) with ESMTPS id 209826148E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 18:27:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 209826148E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,44 +22,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AufVLUhTz5rxMk1qIOLAjCN9sqX27OfjvDVQrf6HHOk=; b=YtM/Cr7lx1tYZ3pFc8w925O6j
-	qMyWjZD6qrGpAhXJQXFT3dK+QE1oi2kUTbo9G0F5+hVYgeFugSNJd4/sO0cS0px2Gr6oQ64WWN8yn
-	RjjFuBHoTm6a4iZYy816Ne49e1IbJYqxj2eBGcfES/W1tYzrC5Yrs3f9hId1CQTmyKDYFU67JHqku
-	cmr+jiz0FLSR9oU2LPM7Gfeohq+LSXwE9wMf9Zs1H8BJOBIizo0Mogi5CIjUVd66t4d1QYYg2dteH
-	kInL/yELMTMgloaf0mMX4Nased1G7keHKxQurcy4ROMQNYm6TkoNi8yaivWPYj3CBmzP9SHIPWmvc
-	1j9oyALow==;
+	 bh=cfQIY33Oscgl80XGH+9HYraNE2mrOGODyeHgRHHnexI=; b=rJm7Mi89OuIK+cRfceX0GUs+i
+	pl+tT05kTnkVVpeKo8IaJtnCdOJ6uT/UrA2Wp4qdEzT64zrVLFSi0KCEdAJylHFLNAmEDzt9U1S8y
+	4zmI17PjGOr1YBpkdD+4CAPdr/0ZlA7xmNXuscvzDpyp8koleyHd3bkcawaxcZJZykjUh8UoqDbop
+	oFoYnCh7IttrkSKVAqfLDVT9TF1jbL8DHVfB07KoPqtLjI+wYKXm3nzmU7fUKt8DpV4VXiq38OA5X
+	wHvwwrVzdND4yw0crXkfzKuWHlTZfEdweJ7Uvg0Do1j7On4DDw5L+PZ9KUyqOW37Z6A9udCwzCgHL
+	sngFqRgzg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJKYc-001h3w-M1; Mon, 08 Mar 2021 18:24:42 +0000
-Received: from mail-il1-f179.google.com ([209.85.166.179])
+	id 1lJKaz-001iTm-Jb; Mon, 08 Mar 2021 18:27:09 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJKXw-001gm5-U2; Mon, 08 Mar 2021 18:24:03 +0000
-Received: by mail-il1-f179.google.com with SMTP id z9so9744565iln.1;
- Mon, 08 Mar 2021 10:24:00 -0800 (PST)
+ id 1lJKam-001iMx-Fx; Mon, 08 Mar 2021 18:26:58 +0000
+Received: by mail-io1-f42.google.com with SMTP id n132so11035380iod.0;
+ Mon, 08 Mar 2021 10:26:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=PLiShrgEDa+YZGxymkcoz3r/gBAUf5KhORptv57Q7PU=;
- b=rL0cU+Uq/A2apYOO4CwBZJVO4xriBFSgGJWzD7tZShhDT6pAu/4+KpXcYbpCgDjAxz
- QLFDraP83umGe9bGtid1BzVWk20ZjXzBKSyuvgdaQYEymXMzlcV2vfeDYo/Ado4YLYjJ
- JUcGlu1z3bjRIapJ31/BcGPfnVEOEXMueElt7qmH/TSfk5K0IdxXxqKiYRMO2G0d5IGE
- gJk5zYz97ddg7W6W9iUD6u36i0e70RSkdK6usNavwcMgoW/npQGeMMdP5Ij4/Xj2LHBN
- VgYZYWfqEaZWUX3Inu6a1eGAJGjjzDiHeFW6Z1oeV/d0bSNvTGlXzOZrkaC/1E3l7Xu0
- Y+lQ==
-X-Gm-Message-State: AOAM531h+1c2L6I7h1D5TKN4kY/uN00AuON71zOfPGqJlpe/OSxs4kEg
- doR7dMGjsESRxIURspnSCA==
-X-Google-Smtp-Source: ABdhPJxwGUCavMylqrxYrtCaf9JyknJB34LVNHlt+wpP3oXmyDFpN7LHxPrWUPGRxrzRYjnckByvUg==
-X-Received: by 2002:a05:6e02:d53:: with SMTP id
- h19mr21756929ilj.157.1615227839943; 
- Mon, 08 Mar 2021 10:23:59 -0800 (PST)
+ bh=QuSkewPTpe0085TNG2W2Oa8CDkZlQPGzs8cqLJpUUBA=;
+ b=joYLJnglmGsHFfszsXWXn/j9uG3ZWN4tVAZtpCMI7XGk43K18dbnVuayLagyHJOzCJ
+ W+0ldSoaUN8ZXDxn8BROsjavGXN9FYEyyWMECPBWa0rNjMHuslG4HK0uW6k2/xDOIw+t
+ AUa4w1lOZSGVhIMglkDk1JCaWG82nmpB566IUUqq8etAgwt6+MhFRvLE517UtXuZXMuQ
+ 6McO2H0czw0xVKnM2BElvZw9FAkonH20dZv48IIpl04QVcTB1LYfjW+RQ1rCop5Ah+CV
+ qpN6fgoejpFFWXDRYvvr4mm05s1nvmxnxecXUTGYavmyzu9lDcsOtxa9xZkzqeirL/ni
+ W/xg==
+X-Gm-Message-State: AOAM532/tyYHKIbRULUai9V/neVuRQb5tS1GnWEGSIhFQuMRYuwEDIRy
+ tWCxYjduRAEY/qNuxDeU5Q==
+X-Google-Smtp-Source: ABdhPJzjTtDhSDB3XWXDb5ygvtpGkDlzRkFu6tzU5LP8yUrH3ZVysbAhFaWWZoDnzHDhQvS2pjs7Gw==
+X-Received: by 2002:a02:cad9:: with SMTP id f25mr24409763jap.26.1615228015582; 
+ Mon, 08 Mar 2021 10:26:55 -0800 (PST)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id n7sm6636715ile.12.2021.03.08.10.23.56
+ by smtp.gmail.com with ESMTPSA id h193sm6546637iof.9.2021.03.08.10.26.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Mar 2021 10:23:59 -0800 (PST)
-Received: (nullmailer pid 2741091 invoked by uid 1000);
- Mon, 08 Mar 2021 18:23:56 -0000
-Date: Mon, 8 Mar 2021 11:23:56 -0700
+ Mon, 08 Mar 2021 10:26:55 -0800 (PST)
+Received: (nullmailer pid 2744943 invoked by uid 1000);
+ Mon, 08 Mar 2021 18:26:51 -0000
+Date: Mon, 8 Mar 2021 11:26:51 -0700
 From: Rob Herring <robh@kernel.org>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -70,16 +68,16 @@ Cc: p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
  linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, devel@driverdev.osuosl.org,
  kernel@collabora.com
-Subject: Re: [PATCH v3 1/5] dt-bindings: reset: IMX8MQ VPU reset
-Message-ID: <20210308182356.GB2735443@robh.at.kernel.org>
+Subject: Re: [PATCH v3 0/5] Reset driver for IMX8MQ VPU hardware block
+Message-ID: <20210308182651.GA2741282@robh.at.kernel.org>
 References: <20210301151754.104749-1-benjamin.gaignard@collabora.com>
- <20210301151754.104749-2-benjamin.gaignard@collabora.com>
+ <20210308182217.GA2735443@robh.at.kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210301151754.104749-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20210308182217.GA2735443@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_182401_120525_2C857706 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20210308_182656_642086_4E4B9332 
+X-CRM114-Status: GOOD (  25.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,112 +95,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 01, 2021 at 04:17:50PM +0100, Benjamin Gaignard wrote:
-> Document bindings for IMX8MQ VPU reset hardware block
+On Mon, Mar 08, 2021 at 11:22:17AM -0700, Rob Herring wrote:
+> On Mon, Mar 01, 2021 at 04:17:49PM +0100, Benjamin Gaignard wrote:
+> > The two VPUs inside IMX8MQ share the same control block which can be see
+> > as a reset hardware block.
+> > In order to be able to add the second VPU (for HECV decoding) it will be
+> > more handy if the both VPU drivers instance don't have to share the
+> > control block registers. This lead to implement it as an independ reset 
+> > driver and to change the VPU driver to use it.
+> > 
+> > Please note that this series break the compatibility between the DTB and
+> > kernel. This break is limited to IMX8MQ SoC and is done when the driver
+> > is still in staging directory.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  | 54 +++++++++++++++++++
->  include/dt-bindings/reset/imx8mq-vpu-reset.h  | 16 ++++++
->  2 files changed, 70 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
->  create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+> As this information will be lost, please put in the binding and dts 
+> patch.
+
+Actually, the adding the VPU reset binding doesn't break compatibility, 
+so just the dts file changes needs it.
+
 > 
-> diff --git a/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-> new file mode 100644
-> index 000000000000..00020421c0e3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
-> @@ -0,0 +1,54 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/reset/fsl,imx8mq-vpu-reset.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Freescale i.MX8MQ VPU Reset Controller
-> +
-> +maintainers:
-> +  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> +
-> +description: |
-> +  The VPU reset controller is used to reset the video processor
-> +  unit peripherals. Device nodes that need access to reset lines should
-> +  specify them as a reset phandle in their corresponding node as
-> +  specified in reset.txt.
-> +
-> +  For list of all valid reset indices see
-> +    <dt-bindings/reset/imx8mq-vpu-reset.h> for i.MX8MQ.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: fsl,imx8mq-vpu-reset
-> +      - const: syscon
-
-Is there other functionality in the block? If so, add some details in 
-'description' above.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 3
-
-Need to say what each clock is.
-
-> +
-> +  '#reset-cells':
-> +    const: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - '#reset-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/imx8mq-clock.h>
-> +
-> +    vpu-reset@38320000 {
-
-reset-controller@...
-
-> +        compatible = "fsl,imx8mq-vpu-reset", "syscon";
-> +        reg = <0x38320000 0x10000>;
-> +        clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> +        #reset-cells = <1>;
-> +    };
-> diff --git a/include/dt-bindings/reset/imx8mq-vpu-reset.h b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-> new file mode 100644
-> index 000000000000..efcbe18177fe
-> --- /dev/null
-> +++ b/include/dt-bindings/reset/imx8mq-vpu-reset.h
-> @@ -0,0 +1,16 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2021, Collabora
-> + *
-> + * i.MX7 System Reset Controller (SRC) driver
-> + *
-> + * Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> + */
-> +
-> +#ifndef DT_BINDINGS_VPU_RESET_IMX8MQ
-> +#define DT_BINDINGS_VPU_RESET_IMX8MQ
-> +
-> +#define IMX8MQ_RESET_VPU_RESET_G1	0
-> +#define IMX8MQ_RESET_VPU_RESET_G2	1
-> +
-> +#endif
-> -- 
-> 2.25.1
-> 
+> > 
+> > version 3:
+> > - Fix error in VPU example node
+> > 
+> > version 2:
+> > - Document the change in VPU bindings
+> >  
+> > Benjamin Gaignard (5):
+> >   dt-bindings: reset: IMX8MQ VPU reset
+> >   dt-bindings: media: IMX8MQ VPU: document reset usage
+> >   reset: Add reset driver for IMX8MQ VPU block
+> >   media: hantro: Use reset driver
+> >   arm64: dts: imx8mq: Use reset driver for VPU hardware block
+> > 
+> >  .../bindings/media/nxp,imx8mq-vpu.yaml        |  14 +-
+> >  .../bindings/reset/fsl,imx8mq-vpu-reset.yaml  |  54 ++++++
+> >  arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  31 +++-
+> >  drivers/reset/Kconfig                         |   8 +
+> >  drivers/reset/Makefile                        |   1 +
+> >  drivers/reset/reset-imx8mq-vpu.c              | 169 ++++++++++++++++++
+> >  drivers/staging/media/hantro/Kconfig          |   1 +
+> >  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  61 ++-----
+> >  include/dt-bindings/reset/imx8mq-vpu-reset.h  |  16 ++
+> >  9 files changed, 294 insertions(+), 61 deletions(-)
+> >  create mode 100644 Documentation/devicetree/bindings/reset/fsl,imx8mq-vpu-reset.yaml
+> >  create mode 100644 drivers/reset/reset-imx8mq-vpu.c
+> >  create mode 100644 include/dt-bindings/reset/imx8mq-vpu-reset.h
+> > 
+> > -- 
+> > 2.25.1
+> > 
 
 _______________________________________________
 Linux-rockchip mailing list
