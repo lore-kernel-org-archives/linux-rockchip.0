@@ -1,101 +1,76 @@
-Return-Path: <SRS0=fRcm=IG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=gCTq=IH=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB2CFC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 23:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6EE5C433E0
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Mar 2021 01:57:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EE6D6527D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Mar 2021 23:42:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EE6D6527D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 62CC865255
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Mar 2021 01:57:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62CC865255
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nOV4H9PwvsLk3/sx9AjA9hxKalqcP1j0+Kol/LoMf5o=; b=pItf23bJnqHJlH/KT0Mgo7LQA
-	wVW94alpq4jumlVpxQl4Pri3GOGlRFcuMqC6uMfqr44Wkcl5Gj27gw6UkkAjIdrP8Th73PVWocuV4
-	Q/FUaCU939zU0foqgzJ0CMRExg/2vubFoAQDTqvSRLxsSNkWXebHrNF2jMBlBY+plVIWMjiqftvRu
-	uuhGnXMKlrFdUfT+d0GC9z4uwKkE4MG35iAquJqSDCQCcYUhdoCcxFfoQsQpG2b0u77EPPJdwgXv6
-	7RPdzmyB225IG57e2BCg25tlfkOiAGUn4MyJWKJeKflYeby4rrsfOd7r/Q7LFpg8L/ZJpTkshJHEM
-	oG15LConA==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=e+r2HwHVRv+pOjH+e0xnn8yya/97X5R9lhv49Mc7R5w=; b=nitfxNxGftkQ9hRQRAS8+u82NW
+	/q6KE9ZwZbI0pWvrS3b7PGJcXfVWIu/qMQ3KaRLRUyrNA1DQt/YhQQH1/yXzqXkgD/mVci5TWsoop
+	CDEflrS/LC1ighEdeoeGLv/yHbo01f/TadaFtYniBt8E66CARg/lWVwLeFM7RjZO97mw4rK/rq0jl
+	OwBGn/V25s95AFe3nuO+TVFKF0UMjv4qcbL7FPxFA+7kQal+Bb0/aks+IIxqrHnNX949WGjvyAkQN
+	gL9SWzMivemmIYB8ZHaMrDGTQJVK8HjnGPaP6xZ1FMU8cCw8Ub5PRk4odNHFATYU5nUX1LGOrUr4a
+	HPL9SaNQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lJPW0-003P6z-KT; Mon, 08 Mar 2021 23:42:20 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1lJRcM-003cMS-Ao; Tue, 09 Mar 2021 01:57:02 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lJPVt-003P5V-I1
- for linux-rockchip@lists.infradead.org; Mon, 08 Mar 2021 23:42:17 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id
- 124-20020a1c00820000b029010b871409cfso4811764wma.4
- for <linux-rockchip@lists.infradead.org>; Mon, 08 Mar 2021 15:42:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hwc6ioSeyDLj2VeBA1I8VhaON0iiYWH5K/33t+nVEd4=;
- b=fG2Rf1CFFFJOBspVUlpQ58aCn5uGaTWTG5S2k7Kybh/91K2GAbdqKd08CvgyEghb/v
- Wcyt4s3jj1DrxGQNenrDByBqIO2oVEcoemDa+Z8QSM0Tae7LoJCm73rMhwLvzOt7soLa
- O1bd+/urR20jWf6kPZXJSWTCNFsP98AoQJbxzbaiYnVNySdgYmVucLU6umzI2ksECekN
- 6KQdPPMQqFmlmyurT0EpFOZeR4cJCwf8Z5Q6X7yw2qEHPaNKKzTJM4Gws9qW/1J9i+a9
- sqlQMuSttREb5QD9bFj9Vt/URjmssrlxCyMVJ6R7alQYqUDoGchRWXyph6/7AnC5Ay0L
- amHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hwc6ioSeyDLj2VeBA1I8VhaON0iiYWH5K/33t+nVEd4=;
- b=lh3av4Yydj+TeY30GLEmW/1wkbClbu5S0Ho4w1t6byrxXIRbhMPWPdpggpZT0Q6PGD
- bjQT1eRYI0obwN9efxrHLN5/qQFzRgy+ntpG+lpT2+gemMfjtnb0Xryod2XENVBSJ7B2
- 91ej5q/yvqGzaRKpUkI1mo2wIvMzPXe5SBvKt7YilTgs8+IZvE9vc0P/samGnD/oWdeW
- zGNcfAzU5Y/ttRYMPSqxWAHOrETqf6wCeTE+xhlXiVKrHWHcIoq766DpX90d8Ahk98X1
- 21dpZdkFgp+YgH+OgF8VyqlVxV4wua44/0/lYHgXXb0q3j+UBuhfv4C77TPLI3lQlqaS
- 1ngQ==
-X-Gm-Message-State: AOAM531Ahj52Z0DQsgj8kBa72HcQoMqKrFwjMlyv9Ar7tACB0a5j7z3y
- x+SE7PAPmw6gZRWrSZDodn4cyw==
-X-Google-Smtp-Source: ABdhPJwxqDuF6ZBG+tpLP00v/+QBSkSxlsTwFBddThHUrkPRzL59fLYqHDncktr+qz2xfyOcvqL48A==
-X-Received: by 2002:a05:600c:220d:: with SMTP id
- z13mr1053866wml.1.1615246932725; 
- Mon, 08 Mar 2021 15:42:12 -0800 (PST)
-Received: from ?IPv6:2a01:e34:ed2f:f020:8499:4f69:106b:da0?
- ([2a01:e34:ed2f:f020:8499:4f69:106b:da0])
- by smtp.googlemail.com with ESMTPSA id j16sm1684956wmi.2.2021.03.08.15.42.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Mar 2021 15:42:12 -0800 (PST)
-Subject: Re: [RESEND PATCH v5 1/4] dt-bindings: devfreq: rk3399_dmc: Add
- rockchip,pmu phandle.
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- =?UTF-8?Q?Ga=c3=abl_PORTAY?= <gael.portay@collabora.com>,
- Rob Herring <robh@kernel.org>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- "open list:DEVICE FREQUENCY (DEVFREQ)" <linux-pm@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>
-References: <20210308233858.24741-1-daniel.lezcano@linaro.org>
-Message-ID: <0771841f-9227-1c6a-2dc2-366511bcc926@linaro.org>
-Date: Tue, 9 Mar 2021 00:42:10 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20210308233858.24741-1-daniel.lezcano@linaro.org>
-Content-Language: en-US
+ id 1lJRc9-003cJo-BJ
+ for linux-rockchip@lists.infradead.org; Tue, 09 Mar 2021 01:56:52 +0000
+Received: from localhost (unknown [192.168.167.223])
+ by lucky1.263xmail.com (Postfix) with ESMTP id B297FF2DFF;
+ Tue,  9 Mar 2021 09:56:38 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P23505T140626794366720S1615254997318814_; 
+ Tue, 09 Mar 2021 09:56:38 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <99b35143d881a883b8cbf2167576181f>
+X-RL-SENDER: shawn.lin@rock-chips.com
+X-SENDER: lintao@rock-chips.com
+X-LOGIN-NAME: shawn.lin@rock-chips.com
+X-FST-TO: robh+dt@kernel.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3 1/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Convert to yaml
+ file
+Date: Tue,  9 Mar 2021 09:56:28 +0800
+Message-Id: <1615254990-192784-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210308_234213_738025_6A953922 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20210309_015649_994071_132F29B1 
+X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,39 +83,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDkvMDMvMjAyMSAwMDozOCwgRGFuaWVsIExlemNhbm8gd3JvdGU6Cj4gRnJvbTogRW5yaWMg
-QmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPiAKPiBUaGUg
-Um9ja2NoaXAgRE1DIChEeW5hbWljIE1lbW9yeSBJbnRlcmZhY2UpIG5lZWRzIHRvIGFjY2VzcyB0
-byB0aGUgUE1VCj4gZ2VuZXJhbCByZWdpc3RlciBmaWxlcyB0byBrbm93IHRoZSBEUkFNIHR5cGUs
-IHNvIGFkZCBhIHBoYW5kbGUgdG8gdGhlCj4gc3lzY29uIHRoYXQgbWFuYWdlcyB0aGVzZSByZWdp
-c3RlcnMuCj4gCj4gU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMu
-YmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPiBSZXZpZXdlZC1ieTogQ2hhbndvbyBDaG9pIDxjdzAw
-LmNob2lAc2Ftc3VuZy5jb20+Cj4gQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5v
-cmc+Cj4gU2lnbmVkLW9mZi1ieTogR2HDq2wgUE9SVEFZIDxnYWVsLnBvcnRheUBjb2xsYWJvcmEu
-Y29tPgo+IEFja2VkLWJ5OiBNeXVuZ0pvbyBIYW0gPG15dW5nam9vLmhhbUBzYW1zdW5nLmNvbT4K
-PiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgTGV6Y2FubyA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9y
-Zz4KPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RldmZyZXEvcmsz
-Mzk5X2RtYy50eHQgfCAyICsrCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPiAK
-PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RldmZyZXEv
-cmszMzk5X2RtYy50eHQgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGV2ZnJl
-cS9yazMzOTlfZG1jLnR4dAo+IGluZGV4IGExMGQxZjZkODVjNi4uYTQxYmNmZWY5NWM4IDEwMDY0
-NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kZXZmcmVxL3JrMzM5
-OV9kbWMudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2RldmZy
-ZXEvcmszMzk5X2RtYy50eHQKPiBAQCAtMTIsNiArMTIsOCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVz
-Ogo+ICAJCQkgZm9yIGRldGFpbHMuCj4gIC0gY2VudGVyLXN1cHBseToJIERNQyBzdXBwbHkgbm9k
-ZS4KPiAgLSBzdGF0dXM6CQkgTWFya3MgdGhlIG5vZGUgZW5hYmxlZC9kaXNhYmxlZC4KPiArLSBy
-b2NrY2hpcCxwbXU6CQkgUGhhbmRsZSB0byB0aGUgc3lzY29uIG1hbmFnaW5nIHRoZSAiUE1VIGdl
-bmVyYWwgcmVnaXN0ZXIKPiArCQkJIGZpbGVzIi4KCkZvciB0aGUgcmVjb3JkLCBodHRwczovL2xr
-bWwub3JnL2xrbWwvMjAyMC82LzMwLzM2NwoKCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+
-IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9sbG93
-IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vib29r
-IHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDovL3d3
-dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This patch converts sdhci-of-dwcmshc.txt to sdhci-of-dwcmshc.yaml
+
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+---
+
+Changes in v3:
+- fix filename and other improvments suggested by Rob
+
+ .../devicetree/bindings/mmc/sdhci-of-dwcmshc.txt   | 20 -------
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml           | 63 ++++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 20 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+ create mode 100644 Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+
+diff --git a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt b/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+deleted file mode 100644
+index ee4253b..0000000
+--- a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-* Synopsys DesignWare Cores Mobile Storage Host Controller
+-
+-Required properties:
+-- compatible: should be one of the following:
+-    "snps,dwcmshc-sdhci"
+-- reg: offset and length of the register set for the device.
+-- interrupts: a single interrupt specifier.
+-- clocks: Array of clocks required for SDHCI; requires at least one for
+-    core clock.
+-- clock-names: Array of names corresponding to clocks property; shall be
+-    "core" for core clock and "bus" for optional bus clock.
+-
+-Example:
+-	sdhci2: sdhci@aa0000 {
+-		compatible = "snps,dwcmshc-sdhci";
+-		reg = <0xaa0000 0x1000>;
+-		interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&emmcclk>;
+-		bus-width = <8>;
+-	}
+diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+new file mode 100644
+index 0000000..f99fb9f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+@@ -0,0 +1,63 @@
++# SPDX-License-Identifier: GPL-2.0-only
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/snps,dwcmshc-sdhci.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Synopsys Designware Mobile Storage Host Controller Binding
++
++maintainers:
++  - Ulf Hansson <ulf.hansson@linaro.org>
++  - Jisheng Zhang <Jisheng.Zhang@synaptics.com>
++
++allOf:
++  - $ref: mmc-controller.yaml#
++
++properties:
++  compatible:
++    enum:
++      - snps,dwcmshc-sdhci
++
++  reg:
++    minItems: 1
++    items:
++      - description: Offset and length of the register set for the device
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++    items:
++      - description: core clock
++      - description: bus clock for optional
++
++  clock-names:
++    minItems: 1
++    items:
++      - const: core
++      - const: bus
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    mmc@aa0000 {
++      compatible = "snps,dwcmshc-sdhci";
++      reg = <0xaa000 0x1000>;
++      interrupts = <0 25 0x4>;
++      clocks = <&cru 17>, <&cru 18>;
++      clock-names = "core", "bus";
++      bus-width = <8>;
++      #address-cells = <1>;
++      #size-cells = <0>;
++    };
++
++...
+-- 
+2.7.4
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
