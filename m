@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7393DC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A40FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:11:13 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E9F564F9B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E9F564F9B
+	by mail.kernel.org (Postfix) with ESMTPS id CB5B264F4A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:11:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB5B264F4A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,44 +23,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5Tvtoqk4fL4eNgkvjSr6noUa9/UM49wmEjkmSVtz+3Q=; b=qgSSnErQxnmsVaPXQiat89kHX
-	zcjo1XsBfiJ4oJ16bh5LL4rlHxmNiVKsFKHyaJP0Q6NPU/8HmWA+D0xRQhmhMG0yHBu5gchUbejcy
-	Js8QWNicl2fpN5OeWMacPFKLZUqNzBFXu4IFXzXU9a1d1KFtpLaYEAvRMRm76t372nWHMSV38uCYK
-	nHSX4leg7X2AlvpbiRkCL3u+sRDVZT2sxb8Y/HrBbX4grrqzcoQK8HfxgOgeo6HaBR9sQVFqbDn+S
-	r2f0EW0jH2tHZUOsHdbDEJm9ScowTB33S/WO67bp02yyfDtH9LOTdT5l7cwu6TE82J2GngqhOldb/
-	TuL3VnTDA==;
+	 bh=l0f6giGpd0uXPGTTSwQzG5g4y+YptZPwEi9WBnn5orc=; b=PtVkVWPeg1G+CEF2nR8MC9j/A
+	1u+1H6oo9Z37AH+FqWsLRtSRsjG88AOKOhL7dC+BPGWYAQQDQsTzlJrX9d3Siypa8n+dYCMPKEGIN
+	vK0E/q7pBfdBat8/tYh5M1YPqNPFJYPa+NN9RNb6qJ2Prb6V7bLeNfPx/kIsP83tiV11ujfHZ56OY
+	uZoZGiR3q6P1PkDmUbfAnFksgYwoVzY1wzFuopOjbZ1bymrOv2mFZwWBjC1Zoev2fA3sJSVQIJKHj
+	5r0bY2PXv35ce+bYDBsNW6VH3/En+f2g38WOkGFD6gr54Ulb7kuUqyPwFNYgsF+7AZzSFdbTXSXpb
+	5Fil3qhtw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lK1Q9-007B9e-TU; Wed, 10 Mar 2021 16:10:50 +0000
+	id 1lK1QQ-007BHG-C8; Wed, 10 Mar 2021 16:11:06 +0000
 Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lK1Pk-007B37-Ah; Wed, 10 Mar 2021 16:10:26 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 12AGADBl127899;
- Wed, 10 Mar 2021 10:10:13 -0600
+ id 1lK1Ps-007B4X-0F; Wed, 10 Mar 2021 16:10:34 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 12AGAKgT127932;
+ Wed, 10 Mar 2021 10:10:20 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1615392613;
- bh=OGbCluNMFYG6+JkGXeTpWGq0Yq7jW6KuFE4M51a90Qw=;
+ s=ti-com-17Q1; t=1615392620;
+ bh=xZP94/W6e+feo2IXbD5QHf0IlP942uGU++0kfiWPUQA=;
  h=From:To:CC:Subject:Date:In-Reply-To:References;
- b=JQ1oTy0W3+oX7vU6VhlKXcvwWa8ijAyRmks+Yp4M6D9lg4cX2cM9/0BYbyc9l8T1l
- Z70HJTMMceT7G/ix54U3eGpWVgc35nG9I5AP842AAxiKaOI4kQmF+5QCktbbHwMT6g
- YY8NbZplToei4b+A0X1HTqDEKMiYyk6h2gqkEAmc=
-Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 12AGAD3L004979
+ b=cKQQte9h66p0BZQg0GzYo+D4kirMxlbVKoLIhPhty5upa+/3tO4pGrEBrm4IQCfk2
+ UipUvBysP/8TYHIlsXHjQqAim4vnEa1GTmiCKcDaIv8zzaCm1li4LLNUfNicVDJ5Oj
+ XbPrFZ81D8DJoWVgYs5dMh+9ZRvfcUm6twKgXZgk=
+Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 12AGAJWg093655
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 10 Mar 2021 10:10:13 -0600
-Received: from DFLE107.ent.ti.com (10.64.6.28) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+ Wed, 10 Mar 2021 10:10:20 -0600
+Received: from DFLE110.ent.ti.com (10.64.6.31) by DFLE103.ent.ti.com
+ (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 10
- Mar 2021 10:10:12 -0600
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE107.ent.ti.com
- (10.64.6.28) with Microsoft SMTP Server (version=TLS1_2,
+ Mar 2021 10:10:19 -0600
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE110.ent.ti.com
+ (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Wed, 10 Mar 2021 10:10:12 -0600
+ Frontend Transport; Wed, 10 Mar 2021 10:10:19 -0600
 Received: from a0393678-ssd.dhcp.ti.com (ileax41-snat.itg.ti.com
  [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 12AG9qkt100440;
- Wed, 10 Mar 2021 10:10:06 -0600
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 12AG9qku100440;
+ Wed, 10 Mar 2021 10:10:13 -0600
 From: Kishon Vijay Abraham I <kishon@ti.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi
  <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Jonathan
@@ -77,18 +77,18 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  <linux-arm-kernel@lists.infradead.org>,
  <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
  Lokesh Vutla <lokeshvutla@ti.com>
-Subject: [PATCH v4 2/7] PCI: endpoint: Add support to add virtual function in
- endpoint core
-Date: Wed, 10 Mar 2021 21:39:38 +0530
-Message-ID: <20210310160943.7606-3-kishon@ti.com>
+Subject: [PATCH v4 3/7] PCI: endpoint: Add support to link a physical function
+ to a virtual function
+Date: Wed, 10 Mar 2021 21:39:39 +0530
+Message-ID: <20210310160943.7606-4-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210310160943.7606-1-kishon@ti.com>
 References: <20210310160943.7606-1-kishon@ti.com>
 MIME-Version: 1.0
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_161024_691428_95DBF3B7 
-X-CRM114-Status: GOOD (  24.08  )
+X-CRM114-CacheID: sfid-20210310_161032_480632_5AB1BDBA 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,228 +106,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support to add virtual function in endpoint core. The virtual
-function can only be associated with a physical function instead of a
-endpoint controller. Provide APIs to associate a virtual function with
-a physical function here.
+While the physical function has to be linked to endpoint controller, the
+virtual function has to be linked to a physical function. Add support to
+link a physical function to a virtual function in pci-ep-cfs.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/pci-epc-core.c |  2 +-
- drivers/pci/endpoint/pci-epf-core.c | 96 ++++++++++++++++++++++++++++-
- include/linux/pci-epf.h             | 16 ++++-
- 3 files changed, 111 insertions(+), 3 deletions(-)
+ drivers/pci/endpoint/pci-ep-cfs.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index cc8f9eb2b177..fe6d23849502 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -548,7 +548,7 @@ int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf,
- 	u32 func_no;
- 	int ret = 0;
- 
--	if (IS_ERR_OR_NULL(epc))
-+	if (IS_ERR_OR_NULL(epc) || epf->is_vf)
- 		return -EINVAL;
- 
- 	if (type == PRIMARY_INTERFACE && epf->epc)
-diff --git a/drivers/pci/endpoint/pci-epf-core.c b/drivers/pci/endpoint/pci-epf-core.c
-index 7646c8660d42..3f1271a63be5 100644
---- a/drivers/pci/endpoint/pci-epf-core.c
-+++ b/drivers/pci/endpoint/pci-epf-core.c
-@@ -62,13 +62,20 @@ EXPORT_SYMBOL_GPL(pci_epf_type_add_cfs);
-  */
- void pci_epf_unbind(struct pci_epf *epf)
- {
-+	struct pci_epf *epf_vf;
-+
- 	if (!epf->driver) {
- 		dev_WARN(&epf->dev, "epf device not bound to driver\n");
- 		return;
- 	}
- 
- 	mutex_lock(&epf->lock);
--	epf->driver->ops->unbind(epf);
-+	list_for_each_entry(epf_vf, &epf->pci_vepf, list) {
-+		if (epf_vf->is_bound)
-+			epf_vf->driver->ops->unbind(epf_vf);
-+	}
-+	if (epf->is_bound)
-+		epf->driver->ops->unbind(epf);
- 	mutex_unlock(&epf->lock);
- 	module_put(epf->driver->owner);
- }
-@@ -83,6 +90,7 @@ EXPORT_SYMBOL_GPL(pci_epf_unbind);
-  */
- int pci_epf_bind(struct pci_epf *epf)
- {
-+	struct pci_epf *epf_vf;
- 	int ret;
- 
- 	if (!epf->driver) {
-@@ -94,13 +102,95 @@ int pci_epf_bind(struct pci_epf *epf)
- 		return -EAGAIN;
- 
- 	mutex_lock(&epf->lock);
-+	list_for_each_entry(epf_vf, &epf->pci_vepf, list) {
-+		epf_vf->func_no = epf->func_no;
-+		epf_vf->epc = epf->epc;
-+		epf_vf->sec_epc = epf->sec_epc;
-+		ret = epf_vf->driver->ops->bind(epf_vf);
-+		if (ret)
-+			goto ret;
-+		epf_vf->is_bound = true;
-+	}
-+
- 	ret = epf->driver->ops->bind(epf);
-+	if (ret)
-+		goto ret;
-+	epf->is_bound = true;
-+
-+	mutex_unlock(&epf->lock);
-+	return 0;
-+
-+ret:
- 	mutex_unlock(&epf->lock);
-+	pci_epf_unbind(epf);
- 
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(pci_epf_bind);
- 
-+/**
-+ * pci_epf_add_vepf() - associate virtual EP function to physical EP function
-+ * @epf_pf: the physical EP function to which the virtual EP function should be
-+ *   associated
-+ * @epf_vf: the virtual EP function to be added
-+ *
-+ * A physical endpoint function can be associated with multiple virtual
-+ * endpoint functions. Invoke pci_epf_add_epf() to add a virtual PCI endpoint
-+ * function to a physical PCI endpoint function.
-+ */
-+int pci_epf_add_vepf(struct pci_epf *epf_pf, struct pci_epf *epf_vf)
-+{
-+	u32 vfunc_no;
-+
-+	if (IS_ERR_OR_NULL(epf_pf) || IS_ERR_OR_NULL(epf_vf))
-+		return -EINVAL;
-+
-+	if (epf_pf->epc || epf_vf->epc || epf_vf->epf_pf)
-+		return -EBUSY;
-+
-+	if (epf_pf->sec_epc || epf_vf->sec_epc)
-+		return -EBUSY;
-+
-+	mutex_lock(&epf_pf->lock);
-+	vfunc_no = find_first_zero_bit(&epf_pf->vfunction_num_map,
-+				       BITS_PER_LONG);
-+	if (vfunc_no >= BITS_PER_LONG)
-+		return -EINVAL;
-+
-+	set_bit(vfunc_no, &epf_pf->vfunction_num_map);
-+	epf_vf->vfunc_no = vfunc_no;
-+
-+	epf_vf->epf_pf = epf_pf;
-+	epf_vf->is_vf = true;
-+
-+	list_add_tail(&epf_vf->list, &epf_pf->pci_vepf);
-+	mutex_unlock(&epf_pf->lock);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(pci_epf_add_vepf);
-+
-+/**
-+ * pci_epf_remove_vepf() - remove virtual EP function from physical EP function
-+ * @epf_pf: the physical EP function from which the virtual EP function should
-+ *   be removed
-+ * @epf_vf: the virtual EP function to be removed
-+ *
-+ * Invoke to remove a virtual endpoint function from the physcial endpoint
-+ * function.
-+ */
-+void pci_epf_remove_vepf(struct pci_epf *epf_pf, struct pci_epf *epf_vf)
-+{
-+	if (IS_ERR_OR_NULL(epf_pf) || IS_ERR_OR_NULL(epf_vf))
-+		return;
-+
-+	mutex_lock(&epf_pf->lock);
-+	clear_bit(epf_vf->vfunc_no, &epf_pf->vfunction_num_map);
-+	list_del(&epf_vf->list);
-+	mutex_unlock(&epf_pf->lock);
-+}
-+EXPORT_SYMBOL_GPL(pci_epf_remove_vepf);
-+
- /**
-  * pci_epf_free_space() - free the allocated PCI EPF register space
-  * @epf: the EPF device from whom to free the memory
-@@ -317,6 +407,10 @@ struct pci_epf *pci_epf_create(const char *name)
- 		return ERR_PTR(-ENOMEM);
- 	}
- 
-+	/* VFs are numbered starting with 1. So set BIT(0) by default */
-+	epf->vfunction_num_map = 1;
-+	INIT_LIST_HEAD(&epf->pci_vepf);
-+
- 	dev = &epf->dev;
- 	device_initialize(dev);
- 	dev->bus = &pci_epf_bus_type;
-diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
-index 6833e2160ef1..1de8fb72ce20 100644
---- a/include/linux/pci-epf.h
-+++ b/include/linux/pci-epf.h
-@@ -118,8 +118,10 @@ struct pci_epf_bar {
-  * @header: represents standard configuration header
-  * @bar: represents the BAR of EPF device
-  * @msi_interrupts: number of MSI interrupts required by this function
-- * @func_no: unique function number within this endpoint device
-+ * @func_no: unique (physical) function number within this endpoint device
-+ * @vfunc_no: unique virtual function number within a physical function
-  * @epc: the EPC device to which this EPF device is bound
-+ * @epf_pf: the physical EPF device to which this virtual EPF device is bound
-  * @driver: the EPF driver to which this EPF device is bound
-  * @list: to add pci_epf as a list of PCI endpoint functions to pci_epc
-  * @nb: notifier block to notify EPF of any EPC events (like linkup)
-@@ -130,6 +132,10 @@ struct pci_epf_bar {
-  * @sec_epc_bar: represents the BAR of EPF device associated with secondary EPC
-  * @sec_epc_func_no: unique (physical) function number within the secondary EPC
-  * @group: configfs group associated with the EPF device
-+ * @is_bound: indicates if bind notification to function driver has been invoked
-+ * @is_vf: true - virtual function, false - physical function
-+ * @vfunction_num_map: bitmap to manage virtual function number
-+ * @pci_vepf: list of virtual endpoint functions associated with this function
-  */
- struct pci_epf {
- 	struct device		dev;
-@@ -139,8 +145,10 @@ struct pci_epf {
- 	u8			msi_interrupts;
- 	u16			msix_interrupts;
- 	u8			func_no;
-+	u8			vfunc_no;
- 
- 	struct pci_epc		*epc;
-+	struct pci_epf		*epf_pf;
- 	struct pci_epf_driver	*driver;
- 	struct list_head	list;
- 	struct notifier_block   nb;
-@@ -153,6 +161,10 @@ struct pci_epf {
- 	struct pci_epf_bar	sec_epc_bar[6];
- 	u8			sec_epc_func_no;
- 	struct config_group	*group;
-+	unsigned int		is_bound;
-+	unsigned int		is_vf;
-+	unsigned long		vfunction_num_map;
-+	struct list_head	pci_vepf;
+diff --git a/drivers/pci/endpoint/pci-ep-cfs.c b/drivers/pci/endpoint/pci-ep-cfs.c
+index f3a8b833b479..999911801877 100644
+--- a/drivers/pci/endpoint/pci-ep-cfs.c
++++ b/drivers/pci/endpoint/pci-ep-cfs.c
+@@ -475,6 +475,28 @@ static struct configfs_attribute *pci_epf_attrs[] = {
+ 	NULL,
  };
  
- /**
-@@ -196,4 +208,6 @@ int pci_epf_bind(struct pci_epf *epf);
- void pci_epf_unbind(struct pci_epf *epf);
- struct config_group *pci_epf_type_add_cfs(struct pci_epf *epf,
- 					  struct config_group *group);
-+int pci_epf_add_vepf(struct pci_epf *epf_pf, struct pci_epf *epf_vf);
-+void pci_epf_remove_vepf(struct pci_epf *epf_pf, struct pci_epf *epf_vf);
- #endif /* __LINUX_PCI_EPF_H */
++static int pci_epf_vepf_link(struct config_item *epf_pf_item,
++			     struct config_item *epf_vf_item)
++{
++	struct pci_epf_group *epf_vf_group = to_pci_epf_group(epf_vf_item);
++	struct pci_epf_group *epf_pf_group = to_pci_epf_group(epf_pf_item);
++	struct pci_epf *epf_pf = epf_pf_group->epf;
++	struct pci_epf *epf_vf = epf_vf_group->epf;
++
++	return pci_epf_add_vepf(epf_pf, epf_vf);
++}
++
++static void pci_epf_vepf_unlink(struct config_item *epf_pf_item,
++				struct config_item *epf_vf_item)
++{
++	struct pci_epf_group *epf_vf_group = to_pci_epf_group(epf_vf_item);
++	struct pci_epf_group *epf_pf_group = to_pci_epf_group(epf_pf_item);
++	struct pci_epf *epf_pf = epf_pf_group->epf;
++	struct pci_epf *epf_vf = epf_vf_group->epf;
++
++	pci_epf_remove_vepf(epf_pf, epf_vf);
++}
++
+ static void pci_epf_release(struct config_item *item)
+ {
+ 	struct pci_epf_group *epf_group = to_pci_epf_group(item);
+@@ -487,6 +509,8 @@ static void pci_epf_release(struct config_item *item)
+ }
+ 
+ static struct configfs_item_operations pci_epf_ops = {
++	.allow_link		= pci_epf_vepf_link,
++	.drop_link		= pci_epf_vepf_unlink,
+ 	.release		= pci_epf_release,
+ };
+ 
 -- 
 2.17.1
 
