@@ -2,65 +2,65 @@ Return-Path: <SRS0=2K8y=II=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D924C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E06EC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B26B364F4A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B26B364F4A
+	by mail.kernel.org (Postfix) with ESMTPS id 98ED464EB3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 16:10:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98ED464EB3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G9gXTN8T3TVqcj54yeNsBzyLz+vSTmOZOGgDWtmggXM=; b=qez5Dbsn5Mbvfgivtzd2jyokCr
-	tKGipKiRTaR52BbZEf1sw89JhTm67Np4Qu/uJUqOb6sqZw5Gr9CNm31O/dSOjafLBoOKmVghLsKfb
-	nV2bdRdFMXqIqkgfbVXCBPUn7fLuJgcSMfALzPKYOkC7OdQ/F35PjrPUcsVDIR4TIzQ+QsSm3Cgnl
-	rpZZv1Lsg65qloxRqptf7QTIwxd9jVToXsQ08tK2qNcXiUaupPgiVr87biUAtHVn00rOTlkfgeoaZ
-	k1N20OiiL+DOOuLzO0pwGTzC87ptFQmIycqUaByDbRtNmEX9+4C/v+Tpb2Ny2Xnu/XHM4vu6BHmfT
-	hQ8sFNaA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=sDzDjzdvgPIw8ojjwH0yWhlh8zql2pZvsoiOBYmfj6A=; b=h0SCem6LoPYsoTPTZ3IiRjbcU
+	erAvtm2qFdYIbt2xCSM39atF65YRYIbBO6vYbASUJ5WIFVmVL9xGty+6UdYiYvnodsuGRDbScITuw
+	HjsVI00YeyXPOvwJmfM+fjEO2N5FODClXaSjKNJp2o3Epbp4Dpbzga70fIsB/qXL0RNw4mvh3KVhz
+	kNQLIfOiH9Pw5lVUwmW4jNOLuXqkct1Q6Lfs9Gy/+llXnjYB4F/fgHEn2eNWlVo5Df/Eyl2DXDd8I
+	sZfJvdd3S+WgNOVZSnKit7tiQVz9IuuaAeFn4FqYOCKUP87wP57q0pRjhwcm68XE0PwVvI67iwG6O
+	q9UI1SWNQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lK1Pp-007B4B-4h; Wed, 10 Mar 2021 16:10:29 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1lK1Py-007B64-BK; Wed, 10 Mar 2021 16:10:38 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lK1Pc-007B28-Nr; Wed, 10 Mar 2021 16:10:19 +0000
+ id 1lK1Pj-007B2v-5n; Wed, 10 Mar 2021 16:10:25 +0000
 Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 12AG9x4b127769;
- Wed, 10 Mar 2021 10:09:59 -0600
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 12AGA6OX078381;
+ Wed, 10 Mar 2021 10:10:06 -0600
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1615392599;
- bh=Uaw2AhSFxM9oBV3jzN5LoozupiwUAtWEp62rFJomdbs=;
- h=From:To:CC:Subject:Date;
- b=edKji/Ypjl6R/GH86U7ToJnG27nz5QAOc8ejtMGf6CqAdPPGuMUEemeGoBPiXDJFN
- Iryf70ViYg3/+pQ/R+lEpZgd5IWLGoGnxfZNTKpWgWI/hesV4MqwWcuW2ZLJo0CvzU
- 0ItSAh9rZOHGCoQG6YpQUYDocrSSeF36asJLCuY4=
-Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 12AG9x0F003935
+ s=ti-com-17Q1; t=1615392606;
+ bh=eQhxI1/W18BOVkUywuakjL/3whfh8fzgc4sdkMyr0SM=;
+ h=From:To:CC:Subject:Date:In-Reply-To:References;
+ b=ancyOoAeMoTSdL6OiZYtTJRdFBX0yyOdK7/H5kCnujjLpA8douFdTTIUI0bVpwLH5
+ zvClUAWz4upC+foxrKQy1B5t6EimvYA5WgeRJs6mPUnO7MdjOZY/69cuudFM0Ig4ol
+ rLBUBMLjEFhigqYpaWDFMdqgc5CYnmlOagkeI61c=
+Received: from DFLE101.ent.ti.com (dfle101.ent.ti.com [10.64.6.22])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 12AGA6gq004621
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 10 Mar 2021 10:09:59 -0600
-Received: from DFLE102.ent.ti.com (10.64.6.23) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
+ Wed, 10 Mar 2021 10:10:06 -0600
+Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE101.ent.ti.com
+ (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 10
- Mar 2021 10:09:59 -0600
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE102.ent.ti.com
- (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
+ Mar 2021 10:10:06 -0600
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE112.ent.ti.com
+ (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Wed, 10 Mar 2021 10:09:59 -0600
+ Frontend Transport; Wed, 10 Mar 2021 10:10:06 -0600
 Received: from a0393678-ssd.dhcp.ti.com (ileax41-snat.itg.ti.com
  [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 12AG9qkr100440;
- Wed, 10 Mar 2021 10:09:52 -0600
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 12AG9qks100440;
+ Wed, 10 Mar 2021 10:09:59 -0600
 From: Kishon Vijay Abraham I <kishon@ti.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi
  <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Jonathan
@@ -77,15 +77,19 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  <linux-arm-kernel@lists.infradead.org>,
  <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
  Lokesh Vutla <lokeshvutla@ti.com>
-Subject: [PATCH v4 0/7] Add SR-IOV support in PCIe Endpoint Core
-Date: Wed, 10 Mar 2021 21:39:36 +0530
-Message-ID: <20210310160943.7606-1-kishon@ti.com>
+Subject: [PATCH v4 1/7] dt-bindings: PCI: pci-ep: Add binding to specify
+ virtual function
+Date: Wed, 10 Mar 2021 21:39:37 +0530
+Message-ID: <20210310160943.7606-2-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210310160943.7606-1-kishon@ti.com>
+References: <20210310160943.7606-1-kishon@ti.com>
 MIME-Version: 1.0
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_161017_238332_0BBDF5B1 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20210310_161023_509584_BC19E3AF 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,64 +107,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Patch series
-*) Adds support to add virtual functions to enable endpoint controller
-   which supports SR-IOV capability
-*) Add support in Cadence endpoint driver to configure virtual functions
-*) Enable pci_endpoint_test driver to create pci_device for virtual
-   functions
+Add binding to specify virtual function (associated with each physical
+function) in endpoint mode.
 
-v1 of the patch series can be found at [1]
-v2 of the patch series can be found at [2]
-v3 of the patch series can be found at [3]
+Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/pci/pci-ep.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Here both physical functions and virtual functions use the same
-pci_endpoint_test driver and existing pcitest utility can be used
-to test virtual functions as well.
-
-Changes from v3:
-*) Fixed Rob's comment and added his Reviewed-by as suggested by him.
-
-Changes from v2:
-*) Fixed DT binding documentation comment by Rob
-*) Fixed the error check in pci-epc-core.c
-
-Changes from v1:
-*) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
-   binding for EP)
-
-[1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
-[2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
-[3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
-
-Kishon Vijay Abraham I (7):
-  dt-bindings: PCI: pci-ep: Add binding to specify virtual function
-  PCI: endpoint: Add support to add virtual function in endpoint core
-  PCI: endpoint: Add support to link a physical function to a virtual
-    function
-  PCI: endpoint: Add virtual function number in pci_epc ops
-  PCI: cadence: Add support to configure virtual functions
-  misc: pci_endpoint_test: Populate sriov_configure ops to configure
-    SR-IOV device
-  Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
-
- .../PCI/endpoint/pci-endpoint-cfs.rst         |  12 +-
- .../devicetree/bindings/pci/pci-ep.yaml       |   7 +
- drivers/misc/pci_endpoint_test.c              |   1 +
- .../pci/controller/cadence/pcie-cadence-ep.c  | 251 +++++++++++++++---
- drivers/pci/controller/cadence/pcie-cadence.h |   7 +
- .../pci/controller/dwc/pcie-designware-ep.c   |  36 +--
- drivers/pci/controller/pcie-rcar-ep.c         |  19 +-
- drivers/pci/controller/pcie-rockchip-ep.c     |  18 +-
- drivers/pci/endpoint/functions/pci-epf-ntb.c  |  79 +++---
- drivers/pci/endpoint/functions/pci-epf-test.c |  66 +++--
- drivers/pci/endpoint/pci-ep-cfs.c             |  24 ++
- drivers/pci/endpoint/pci-epc-core.c           | 130 ++++++---
- drivers/pci/endpoint/pci-epf-core.c           | 144 +++++++++-
- include/linux/pci-epc.h                       |  57 ++--
- include/linux/pci-epf.h                       |  16 +-
- 15 files changed, 664 insertions(+), 203 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/pci/pci-ep.yaml b/Documentation/devicetree/bindings/pci/pci-ep.yaml
+index 7847bbcd4a03..ccec51ab5247 100644
+--- a/Documentation/devicetree/bindings/pci/pci-ep.yaml
++++ b/Documentation/devicetree/bindings/pci/pci-ep.yaml
+@@ -23,6 +23,13 @@ properties:
+     default: 1
+     maximum: 255
+ 
++  max-virtual-functions:
++    description: Array representing the number of virtual functions corresponding to each physical
++      function
++    $ref: /schemas/types.yaml#/definitions/uint8-array
++    minItems: 1
++    maxItems: 255
++
+   max-link-speed:
+     $ref: /schemas/types.yaml#/definitions/uint32
+     enum: [ 1, 2, 3, 4 ]
 -- 
 2.17.1
 
