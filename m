@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B56A5C433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0AD7C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4645864E31
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4645864E31
+	by mail.kernel.org (Postfix) with ESMTPS id 7311B64E31
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7311B64E31
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,68 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aHgG3BUPAerKGIN5w6u78I9+7Il/92WY/MT+wYnbUxY=; b=b4/3tOuHp0TM/Cz8DcDMskwj1
-	P3teEQ7i4EQYUQXFMbxz7QLcA/o5o3qlGOdgGVRa1zU7wSJWoJRLlYxPEf3GfaoApC6zr4Qt4u8Du
-	TruFsB3Hxu/yyU1hLj50OojK8Z8GuEt/db9SPX00hLqpbCfkdPImVe5X+bcwFi0rq30W098tQZRb7
-	rH9zH/tUGplzynvvnrzXn8Zor2ZLJ8O3zVjCc9NM01yYECcdgbo4aTPEbXpQRB6BofqfsmuTUZ9K0
-	wdUeXgmo0++SK+0XTqYYbHDRFGPbxOYbDD+xJa+L+U02xvyvSGx8NE5M1p+YDcRRxw0NPd3BPEJ2C
-	GIkQpzkXQ==;
+	 bh=DuPJOKEakRsmSKzDfsG6TUO/o8rcRx9B4jZtDfzWSuo=; b=h7eVWu1FStwsZIBSZhjCU3xec
+	7fg1kwmPw5dyWLu0YVeRVzJuqC/js3+DIvuA8laGc5eTKfS1czZ51kdGAPCTYdzgTpDWkqC2v20ML
+	piXm8J8tCV9rf3+a4P9XvOdbYtnP4b4GMwDDWxamg1afPay6Savqhr8hg/13bHSoVwqLCElXEdQYe
+	ZfRlJ5pE42SCg6l1b4V5KJ+Dcd5s5M+ViVWIAvCtowWf+5BEOlOUvbRaCG7T53MLt9lUHrAUiVMwx
+	5QVu/eYSwykfgq9bsyjjsd2XolJAz6IkjvW1QnfXvDzTer7yW7bFX2DAebhfLv5VNQ3JL2WCDrbrw
+	B8dfUVfmg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKNR2-009UEY-5J; Thu, 11 Mar 2021 15:41:13 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1lKNR5-009UFe-3l; Thu, 11 Mar 2021 15:41:15 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKNQv-009UC9-EK
- for linux-rockchip@lists.infradead.org; Thu, 11 Mar 2021 15:41:08 +0000
-Received: by mail-wm1-x330.google.com with SMTP id
- f22-20020a7bc8d60000b029010c024a1407so13496394wml.2
- for <linux-rockchip@lists.infradead.org>; Thu, 11 Mar 2021 07:41:05 -0800 (PST)
+ id 1lKNQx-009UCf-Dv
+ for linux-rockchip@lists.infradead.org; Thu, 11 Mar 2021 15:41:11 +0000
+Received: by mail-wm1-x332.google.com with SMTP id
+ f22-20020a7bc8d60000b029010c024a1407so13496460wml.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 11 Mar 2021 07:41:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kKmhv2Y0oUyyi/VXeYaxzp9JGOustNOwjC5/Ra6ht2Q=;
- b=qgnAy80K0P4ESBNv8l3gm6xQ52lXJ5JFgOP6sl9KO4Cuha2cLxIireMBCSbdQ7egGf
- mT5mSjE3JbBjRYkVyknxVYZgcm8N+UmsoYuLA+NrBD+LVItCeI1vcQ6HHG0Id6xke8XU
- bTacpY5cbA9wjhzMWmm0/dWCxeJMP6FSn85I3Bwh7TmVnJb90698r31mc31SsmIcbsW5
- MG6QJFPAD2ORQE4+hzQzEV81XkfOWsNjqtxlhNbAtANCPx8vYL8Yttn6jsBQ0Q9FY+Bf
- Kdv67OSQ7lr26cOgy8RhOtwtaSIYeHIvMhQ+wJI7Wm/Ilm/ZB+I+C3YiUKMTMwghOE3z
- RHzw==
+ bh=/r3aZbcoQSdd2XlNz/UGKekZlF4ttbt76qWK9B/aFNk=;
+ b=UqPLiW74XyVzX+/8i1wFG4KYZv4JtNlR+POcaYks2dw73DeibmIKY+eAfxocTv4QAh
+ m9w9FOgQIXx2pUE9rEwweK+GY755VQKjBGotptkRCyy8y/l3JDsvEICCZy0is/lshXts
+ 25Fkooa49fmVuLkqtZO/QxcRnmnBLdeEstgwA4AStWv8aLNj2GsICxNApRrUPj0+BrSt
+ TUJWmeRncmVYDie3V5+U9UuCLewznQfsnKDauWAqvXyMVM6VvPoobxp6YVC6aAw/TqVN
+ Xh6IMh1C+9cxKO47tOV9FxhK2NTLgubFMJiYVQEju+0SA+LVZ/6gljVO2LMjljWhksl7
+ 3lbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kKmhv2Y0oUyyi/VXeYaxzp9JGOustNOwjC5/Ra6ht2Q=;
- b=XmI6mAfS66EEZSZCOetUfyA+qdp47QYCjpf1kzHxCRbqaUWTJf4N2udGeHv7YpNv+X
- CaL5eajOzaCK6kyy1QWi1OmkMLQ2RNroTxl3Nse4mWdCZeMNL/pSh8erGehBQAUQAoOk
- IxzEmmVfdB0Dc7Dqy1NW9BVcTYkietHNqQFbSYKATCsMG3UFDNVDQupSh12GA+33oVNg
- yRgwtxDbvx+luRweRvqS9D3oz7mjSxgGrfI6h1xbu+f4JYlE8J4KXRnhuNU8Sp2ohTl+
- 4bjlPyCb8wf3a3I3Iti46wGuPgsqnO3g5bdOvMlUBt7QiF2IdHicJhn/XtO9EMId8Ork
- uaog==
-X-Gm-Message-State: AOAM533nyOZx9eHsGkc9s6zUIpTQuGn2KE3UeYJIbap8/WCJnt023UQf
- PQCElSK/lfW+nfdwx467iZs=
-X-Google-Smtp-Source: ABdhPJwgR89QBqoRghUCewrCWayclTBmXDuP7KmBhKWoB55wtpWDGR4+HiegDvgrfhvj7ywLxPIrEw==
-X-Received: by 2002:a1c:498b:: with SMTP id w133mr9146215wma.134.1615477264937; 
- Thu, 11 Mar 2021 07:41:04 -0800 (PST)
+ bh=/r3aZbcoQSdd2XlNz/UGKekZlF4ttbt76qWK9B/aFNk=;
+ b=TQ16KaqfK7iUm4H1fGTC5e+1ofywNWsimX8bkJvZ7+stDkKRdUHor4MZ3x7vdvuHCi
+ jH0IznsKe1CxMz1ll8cBHHJn1LAYtzeaBpIkx4BHVCPUQ+627IVZBEGwlgQD0Krc0WO+
+ 1/wI40LoiaS50tPzst+DKUlAA5DMC+nM/rD8twRb24FSDldLaDsx3EsnQlIs9yr6VcRf
+ Jqe/fkxMIQiW33d4VjvX+J1cYwVbOHNwcxw+hXjNy0/LITMRDX6v1kKJ+zPcY/Nc6DN6
+ tdMxKP7kQnbQucBx21yDk3Yox5UP7z/s04nmsBT5yzSeqCOZx6Rv5se+36vHbzGlbPl0
+ +zDw==
+X-Gm-Message-State: AOAM532x2ExCOeksTY9jwNEPSTETVilFYm3GMKxibY31zg6XsZF99Td4
+ AAjS3DbSx2M3DpUFLXQAMLe9dwEh6vS4IQ==
+X-Google-Smtp-Source: ABdhPJwZaFjAOAqytix5m62/UG9vW5dE/VZ2CndcnxU4JL0UkXJxjs5A40JB6/bpCXjBwhvuJunELw==
+X-Received: by 2002:a1c:a306:: with SMTP id m6mr8517880wme.13.1615477266868;
+ Thu, 11 Mar 2021 07:41:06 -0800 (PST)
 Received: from arch-x1c3.. ([2a00:5f00:102:0:b16d:9752:8f38:7d6b])
- by smtp.gmail.com with ESMTPSA id a17sm4008547wmj.9.2021.03.11.07.41.03
+ by smtp.gmail.com with ESMTPSA id a17sm4008547wmj.9.2021.03.11.07.41.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Mar 2021 07:41:04 -0800 (PST)
+ Thu, 11 Mar 2021 07:41:06 -0800 (PST)
 From: Emil Velikov <emil.l.velikov@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org,
  Nicolas Ferre <nicolas.ferre@microchip.com>
 Cc: emil.l.velikov@gmail.com
-Subject: [PATCH v2 02/10] media: hantro: imx: reuse MB_DIM define
-Date: Thu, 11 Mar 2021 15:40:47 +0000
-Message-Id: <20210311154055.3496076-3-emil.l.velikov@gmail.com>
+Subject: [PATCH v2 04/10] media: hantro: imx: remove unused include
+Date: Thu, 11 Mar 2021 15:40:49 +0000
+Message-Id: <20210311154055.3496076-5-emil.l.velikov@gmail.com>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
 References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_154105_670494_16A4233C 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20210311_154107_559617_644E91B2 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,32 +106,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Emil Velikov <emil.velikov@collabora.com>
 
-Swap the hardcoded 16 with MB_DIM define.
+The current imx8 code does not use the jpeg encoder. Remove the
+unnecessary include.
 
 Fixes: 8e4aaa687863 ("media: hantro: add initial i.MX8MQ support")
 Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
 ---
- drivers/staging/media/hantro/imx8m_vpu_hw.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/hantro/imx8m_vpu_hw.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index c222de075ef4..1f48c1956cd2 100644
+index cb1ac02c03d2..f36c1bd681ba 100644
 --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
 +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -109,10 +109,10 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 		.frmsize = {
- 			.min_width = 48,
- 			.max_width = 3840,
--			.step_width = 16,
-+			.step_width = MB_DIM,
- 			.min_height = 48,
- 			.max_height = 2160,
--			.step_height = 16,
-+			.step_height = MB_DIM,
- 		},
- 	},
- 	{
+@@ -9,7 +9,6 @@
+ #include <linux/delay.h>
+ 
+ #include "hantro.h"
+-#include "hantro_jpeg.h"
+ #include "hantro_g1_regs.h"
+ 
+ #define CTRL_SOFT_RESET		0x00
 -- 
 2.30.1
 
