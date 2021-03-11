@@ -1,84 +1,78 @@
-Return-Path: <SRS0=2K8y=II=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=iGaN=IJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF6F7C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 22:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0791BC433E6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 06:22:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3CA6F64E4B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Mar 2021 22:59:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CA6F64E4B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3786E64FD3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 06:22:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3786E64FD3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=r5o3FgocKSZIo1ixxJ6K0RRQRJlIKzyfQ+iCANPA5SU=; b=AEuQTkxe4VLm2XXACjz5zhAzT
-	sZ8h6rlnXeZgk6qLaxvM8YQ8sSugQNMpySeSZYk/i02ybcgYhMXr7NNobKRGIJ8qa5c6B/i4+05hd
-	YNwJqW9StyRXjlYG0ryK6MOIkKMfuoYqcQmzfH+jQtRXWHCtSE8QGl3GLmL6/C/gGWtOWpYMydIC7
-	KrfKODNNLvFvNcPiqn4wrxHIwzCWroM+ZgD0JapzOyjYPuXzaK1+dVjKwyua1YBz/2LwWmfvNOVlN
-	0KWW198kkwbFsUBEQx+Y+suQqzXxWk/SXDesXZ9rrpCy9BzpazfdSPVw0NFcPF6q7vSFgLi3tSxkt
-	t/G3qNDEA==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8+8UWPrl/IojbZdqrbAz/n4lLiebpUK3gX0V3s8Yeqs=; b=T1KZzxCfVCsnmFiXMqraRfk/5o
+	8fHosFswfeR4CdOg1Is+xwacCmBZkfhtFZF+cd25qw+U7sp/YcfpLIgz/k6M/v1BN9n01Rt7T5L66
+	Fh2lWg55Ut6GxX9mZCuHttxxPk9fHDWl3qGYNwUnFB6OQ3aWxgUDcCCsLcnZxEd1MqRIbRiM6m5G3
+	iMGuR0Y5V7IVh7s5fsVYldF+arvoCYpHp1ihbXldbYjZ/f74/krYNJoCrpjGOGQQtj/zk0x55GpXy
+	EonYWUwKCpHNAFIZmSp4GIO4FQunjpVlJ07bYyxxpQRV+2lyDXPuc16AcJr50vBq+FjuPtIOLGOC3
+	I5kiidZg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lK7nG-007wwS-Qy; Wed, 10 Mar 2021 22:59:06 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1lKEiT-008Snq-9D; Thu, 11 Mar 2021 06:22:37 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lK7nB-007wvB-PT
- for linux-rockchip@lists.infradead.org; Wed, 10 Mar 2021 22:59:05 +0000
-Received: by mail-lf1-x130.google.com with SMTP id r3so28236240lfc.13
- for <linux-rockchip@lists.infradead.org>; Wed, 10 Mar 2021 14:59:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=N68/UEUzlpif7Ax075aqYxprAMrYKWK3Ssev8phjkaM=;
- b=yvUcCC1gSAOlgiDwgi5B7EC/gKPt7Jr6aw1ASICE4SntLDDliq2VAnNy6AZofg4RTM
- PXpOUI79Vn0rE4RckPFB4KU+zR70TGSPDMFmi3zG1a/T4Q8mwBz3yqFN0VGD1eQw+TsT
- QQiGJ1vsoy5qKKEgJpU2AWdd5dnvbOk9Z+l2i2yQ3wClVwI7ltAORb6KzH6a8Qr3Aw7j
- GE9l1kwYZwY1Nleg2tRz6frwvvDY2AZ/r5WToT5yBXB45M40w7qXwAhwPe0n3+/aoMaj
- BzwJdv8gfoLaeWEZ+/mn+4QeGnQgymzlnufGZA4hABAtn0ZS5mOSMHDR0tVeyJn5Maxj
- 5Nww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=N68/UEUzlpif7Ax075aqYxprAMrYKWK3Ssev8phjkaM=;
- b=pWwqlf23BIThxofD6iiC4Ls1Xu0WEDnj72lzinlTe1f1StFrDDUgMHAy0RgXaOVmY8
- elCxlT86tfHdKRfMnr608SDS3zbC0gcXalk09EI87NxV/RuKBzx8aLlptHOVeqzKCB4e
- bGLQEit1hgGLoFYtXsVUfehW7FjEdspQtyMndITuXu1DYNqUqABwM4u3uS36EttVYsvN
- IwZRHos2xkdDi3/Ld487jaZOtZvAgoJ/F8XwepLWmEHpK7RmgBu7hMP4Z7XKo5xRyZ9M
- KAy/25UHTD+flQY+gGtLXLyVc/6dNpvJYxl4qcJkl2V9ZgPHSJiwfpaLw8Rp/fCiWMdO
- e52g==
-X-Gm-Message-State: AOAM533K/lxgkllbz2f3aNBMi1Wpyl1Wo56xN8xNSZgoVPJFvD5EqByE
- QbUWmAQin/qfoRpz2SgfTaQ6De7rakfa09mC7hnp1Ta9few5aW8+
-X-Google-Smtp-Source: ABdhPJwgJjRVFNbR7sDlEvybOfyGPw+Qfct55BdTShLcobamBGE6tDfd41XZY1h4VDsdpIw15BRLXHYkHe14mpZBa3E=
-X-Received: by 2002:ac2:4d95:: with SMTP id g21mr469271lfe.29.1615417141090;
- Wed, 10 Mar 2021 14:59:01 -0800 (PST)
-MIME-Version: 1.0
-References: <20210305080658.2422114-1-jay.xu@rock-chips.com>
-In-Reply-To: <20210305080658.2422114-1-jay.xu@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Wed, 10 Mar 2021 23:58:50 +0100
-Message-ID: <CACRpkda-Hbue8Si=1D=qMAyZjOHcybAdSRY1F75ofbdBr8DnNA@mail.gmail.com>
-Subject: Re: [PATCH] kernel/irq: export irq_gc_set_wake
-To: Jianqun Xu <jay.xu@rock-chips.com>, Marc Zyngier <maz@kernel.org>, 
- Thomas Gleixner <tglx@linutronix.de>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+ id 1lKEhc-008SRo-GZ
+ for linux-rockchip@lists.infradead.org; Thu, 11 Mar 2021 06:21:48 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 0D175F2D0A;
+ Thu, 11 Mar 2021 14:21:39 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P13109T139928614725376S1615443697190972_; 
+ Thu, 11 Mar 2021 14:21:39 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <547d4f46cb5b92e042ac684ae553b291>
+X-RL-SENDER: shawn.lin@rock-chips.com
+X-SENDER: lintao@rock-chips.com
+X-LOGIN-NAME: shawn.lin@rock-chips.com
+X-FST-TO: robh+dt@kernel.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v4 2/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Add rockchip
+ support
+Date: Thu, 11 Mar 2021 14:21:23 +0800
+Message-Id: <1615443684-198078-2-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1615443684-198078-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1615443684-198078-1-git-send-email-shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210310_225902_043481_F69B9FA7 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210311_062145_438200_37CB0834 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,24 +85,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 5, 2021 at 9:07 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+This patch adds rockchip support in sdhci-of-dwcmhsc.yaml
 
-> Module driver may use irq_gc_set_wake.
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-Aha there it is, perfect!
+Changes in v4:
+- rename compatible to rockchip,rk3568-dwcmshc
+- constrains rockchip,txclk-tapnum to u8 to match the register map
 
-Marc/Thomas: can I have an ACK to apply this patch to the
-pin control tree?
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml           | 24 ++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-Yours,
-Linus Walleij
+diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+index f99fb9f..e6c9a2f 100644
+--- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
++++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+@@ -16,6 +16,7 @@ allOf:
+ properties:
+   compatible:
+     enum:
++      - rockchip,rk3568-dwcmshc
+       - snps,dwcmshc-sdhci
+ 
+   reg:
+@@ -31,12 +32,24 @@ properties:
+     items:
+       - description: core clock
+       - description: bus clock for optional
++      - description: axi clock for rockchip specified
++      - description: block clock for rockchip specified
++      - description: timer clock for rockchip specified
++
+ 
+   clock-names:
+     minItems: 1
+     items:
+       - const: core
+       - const: bus
++      - const: axi
++      - const: block
++      - const: timer
++
++  rockchip,txclk-tapnum:
++    description: Specify the number of delay for tx sampling.
++    $ref: /schemas/types.yaml#/definitions/uint8
++
+ 
+ required:
+   - compatible
+@@ -49,6 +62,17 @@ unevaluatedProperties: false
+ 
+ examples:
+   - |
++    mmc@fe310000 {
++      compatible = "rockchip,rk3568-dwcmshc";
++      reg = <0xfe310000 0x10000>;
++      interrupts = <0 25 0x4>;
++      clocks = <&cru 17>, <&cru 18>, <&cru 19>, <&cru 20>, <&cru 21>;
++      clock-names = "core", "bus", "axi", "block", "timer";
++      bus-width = <8>;
++      #address-cells = <1>;
++      #size-cells = <0>;
++    };
++  - |
+     mmc@aa0000 {
+       compatible = "snps,dwcmshc-sdhci";
+       reg = <0xaa000 0x1000>;
+-- 
+2.7.4
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
