@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF946C433DB
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2995FC433E0
 	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:37 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5211264E31
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5211264E31
+	by mail.kernel.org (Postfix) with ESMTPS id 9931364F99
+	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Mar 2021 15:41:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9931364F99
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,68 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vNmN+rfEMfg7Mre53KGnkhFJ8c9Aefamx801HzDU1gc=; b=fFOLabrXdRP780EbPHFaJw7J2
-	JrqCxnm01QguGz93NDidJNtfMHbR4QEWjvY18K/dZI6nB98Kx2syR+QmwNYrTSaVV9rf6CRTfsYNA
-	6UpJgdUCxnoD1KB2mJ/7PY82/IRxe4jQeoMGqK+NO9t2uLzlgZ1Uk1CTr5IVzR/HyOTjHgmC08wWk
-	EYDsDS9LuZbSWBRfijYsZaaP8cPERJYX/qoiR/taK+machf/S8L1/LEo4I2bh5g5CvHHoJcM/yUbQ
-	RYfgpRE0ATxFg6HGyiWw2Qs5ulw0Beaky3Re0ohNPJmgXOP2vOVQxAExm37MMYw82MI8k56A9gnsx
-	L3d3L2JfA==;
+	 bh=GtUV5yKMdVjNHsdvZE7LQXuDX6EP/FqIh//bC3Bm6dw=; b=COUnjEHrHdXps/7FlH+gwprab
+	9mKsGBYHVecHE6bcUh4qi2gC/YH8Kza6D9pzygceKalumkm4iGdxCksHD08tgRon9LtoLEN58ngXa
+	7EY6iegTz0ar8DJc2XY+poXOcqRSFFJjvadro1amenm3WU+laOtYyXCl3MCQr47u8iLCrs936CV+k
+	rDu2fBR7An+g7FiEEn9HzN2Y0qFx+t8teMO0LdTKkijuHD6FRAay7CoSUNg5+l9+CYEJOAiHKA2uR
+	Y4I7UuN9pJ+YsvW77Vv14Ygypq2g3O98EShGwa4lqsShRrLsYE9BbHMIr78TX5bnSFqcJlkhUZkZU
+	166r8X40g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lKNRK-009UM6-Sl; Thu, 11 Mar 2021 15:41:31 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1lKNRL-009UMi-T9; Thu, 11 Mar 2021 15:41:31 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lKNR0-009UDZ-Gs
+ id 1lKNR1-009UDa-DS
  for linux-rockchip@lists.infradead.org; Thu, 11 Mar 2021 15:41:15 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id g20so1585517wmk.3
- for <linux-rockchip@lists.infradead.org>; Thu, 11 Mar 2021 07:41:10 -0800 (PST)
+Received: by mail-wr1-x433.google.com with SMTP id l12so2392547wry.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 11 Mar 2021 07:41:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xAXG6ZA5Y2HE3m+oHpL1iaPFBMdmoorVW3rcbcNGpAc=;
- b=QI2RhaXaXoLThUOBvp6jXj/Nqah5umuf6W4X4J5HIGNNTPn3Jz5i8eHtW0EMAxfH53
- T57rt98KDm9PM0+OdlQNwRwH0Wh18SxdReu+RmJga1uJX0yZ6e4RJtLDVS5G8xrrOZXp
- LtboAqLpz1BRq4cC27OWQsdb+DnkSGk2wdoOdlJilybsY9Mxg2B2JXZGxcYmkghyaDQp
- xfLL5jWptdc6IKvRQjXMTHDY9sx+RuyclOrp/tZ1V5JtibQY7B7Im1x94JvHjGHQnmpH
- T/bNxOI8haKo1qXu2OODdiA6AcG/+F8LdZf0hKvbkngUW0J0eBPA38mOB/XQpncFZQ/1
- d1Qw==
+ bh=2LSJdNzI10Uzadt8Nfbff+p/pjnmY6eCoDYVHbZS0BI=;
+ b=jk4TUDGTRQb0WrtAIBIrDEGB+N+EHoOx/CWb1rrpdeCt9/+QQflENTvHgSGb4cCidG
+ 45D5yr7yxWIDSvPnNksRdGovpxpIpXyzJBazRLXF9y0xZBdLdYWYTNOP/ER07fgNJl4z
+ a70DcFB+R6uwCyEMM6QDo4iXZ348n63WaDmx2A9ZwutNi1ScGXomGHen+GJSEJv836jC
+ WzzjuiM2UL2ZbxW9ZIOw275PCQsofz5BKkcW15plxb9F3mNi6jXYruO34wM47Am8VJMZ
+ pC86kmi/7jj0Thw76590R6mByJ1KSwR+nwqCHtbQO9tRS1KYQGq1jzlHl/kDn7vbLusw
+ qKHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xAXG6ZA5Y2HE3m+oHpL1iaPFBMdmoorVW3rcbcNGpAc=;
- b=KOBGVx4JsmzulHWo0PiHwlsdEu3RDBHxW29tqNOP979VgL6IoKdezdxRoR3D9xmj6+
- nDJLDmDcmA+zoZ9ykXN5Ffw4wXIyHmA/GSzXsLzlmIVrgxKpqDR7sNftOliKhQPV+MJL
- 1+snUbCz7ySZY56xPw7DU8CV3dC4dLOpbXu4tMFJKAhYuRrLdT80C9dQngaU2oOXopmm
- askH7/z7pW0Q7GajUG5gwjus68mv43rcSVg9UL+amwVV48DqQfvaY4ddhX+kx/91serM
- vJECm5Zu6OH7fNwb73uzFrWDt/3/jMgsCGzU+CKDyIMislvUF/nVp4eZskJQkItwRg6g
- ZYrw==
-X-Gm-Message-State: AOAM5320Cuy4Wv8C+UinIfrfwfgDolTL3Aa9QPyUIgfvkakKYESMLE4W
- 2sPE76+4WgIu4+6UoFW1OPY=
-X-Google-Smtp-Source: ABdhPJwuz3nP2YREPz0nQBizO+XbjVBcsDxYKqYIiux+SwS/8io3xaehqemQUS9UUA6hAuNztk8KKQ==
-X-Received: by 2002:a7b:c34a:: with SMTP id l10mr8824624wmj.46.1615477269969; 
- Thu, 11 Mar 2021 07:41:09 -0800 (PST)
+ bh=2LSJdNzI10Uzadt8Nfbff+p/pjnmY6eCoDYVHbZS0BI=;
+ b=PGk6K6XH1Z1whcnBR8fe5AlKxaHl5Fsemp3iUyyjC+aBObeAn80Fh4WYRU7nejHWOr
+ 86uD+VPBAI2XZu7BcNPamxmoIO7ALOSdf7lqS4O3KzJieLA1AMm/hPhZJKsJFTRUiuOC
+ iBI2z7V2ew8jOH86FiJ2Z9OPVZhw1ErpMBYJKRwgmcbB2BVo+J9XusCM3DNCwQrHjrOa
+ U6pyCNSKXh7NFGpGPQR+K2Oen+QTMv0A3CPA0xjBpTLzvI/papcnYIXtEvbbflTkl1BC
+ 5Tc0wJ2MvaOwVur6QoQGSw6NZ3IicMQ+I3JKvVBeGFnkoHh5aBH/QzijuE+F9xHFOvPj
+ wMLQ==
+X-Gm-Message-State: AOAM531E5mg6zx8nYQ6qm94+Kd7Z9E1y004Fbz7ES5LtbKxOU6AuyhHE
+ YayeWIIuKuedUX1JShjfw56O5lzXajCMiA==
+X-Google-Smtp-Source: ABdhPJx85w5D5mT/Nq0DQGWDwzHjyIlxwrp8M2xgn2lGZFx7xp6QayXKc3+tZBKXpfRtukgCNlNfrQ==
+X-Received: by 2002:a5d:4445:: with SMTP id x5mr9570311wrr.30.1615477270720;
+ Thu, 11 Mar 2021 07:41:10 -0800 (PST)
 Received: from arch-x1c3.. ([2a00:5f00:102:0:b16d:9752:8f38:7d6b])
- by smtp.gmail.com with ESMTPSA id a17sm4008547wmj.9.2021.03.11.07.41.09
+ by smtp.gmail.com with ESMTPSA id a17sm4008547wmj.9.2021.03.11.07.41.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Mar 2021 07:41:09 -0800 (PST)
+ Thu, 11 Mar 2021 07:41:10 -0800 (PST)
 From: Emil Velikov <emil.l.velikov@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org,
  Nicolas Ferre <nicolas.ferre@microchip.com>
-Cc: emil.l.velikov@gmail.com, Rob Herring <robh+dt@kernel.org>,
- Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org
-Subject: [PATCH v2 07/10] media: hantro: add initial SAMA5D4 support
-Date: Thu, 11 Mar 2021 15:40:52 +0000
-Message-Id: <20210311154055.3496076-8-emil.l.velikov@gmail.com>
+Cc: emil.l.velikov@gmail.com,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 08/10] ARM: dts: sama5d4: enable Hantro G1 VDEC
+Date: Thu, 11 Mar 2021 15:40:53 +0000
+Message-Id: <20210311154055.3496076-9-emil.l.velikov@gmail.com>
 X-Mailer: git-send-email 2.30.1
 In-Reply-To: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
 References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210311_154111_057418_D8B13FAB 
-X-CRM114-Status: GOOD (  20.36  )
+X-CRM114-CacheID: sfid-20210311_154111_533008_DB59973C 
+X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,219 +106,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Emil Velikov <emil.velikov@collabora.com>
 
-The SoC features a Hantro G1 compatible video decoder, supporting the
-MPEG-2, VP8 and H264 codecs with resolutions up-to 1280x720.
+Add the SAMA5D4 VDEC module which comprises Hantro G1 video decoder
+core.
 
-Post-processing core is also available on the SoC.
-
-Cc: Rob Herring <robh+dt@kernel.org>
-Cc: Frank Rowand <frowand.list@gmail.com>
-Cc: devicetree@vger.kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org
+Cc: Frank Rowand <frowand.list@gmail.com
+Cc: devicetree@vger.kernel.org
 Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
 ---
 v2
- - Split DT and defconfig changes to separate patches (Eze)
+ - Split out of larger patch (Eze)
  - s/Atmel/Microchip/ (Nicolas)
+ - Drop leading 0 in node name/address
 ---
- drivers/staging/media/hantro/Kconfig          |  10 +-
- drivers/staging/media/hantro/Makefile         |   3 +
- drivers/staging/media/hantro/hantro_drv.c     |   3 +
- drivers/staging/media/hantro/hantro_hw.h      |   1 +
- .../staging/media/hantro/sama5d4_vdec_hw.c    | 117 ++++++++++++++++++
- 5 files changed, 133 insertions(+), 1 deletion(-)
- create mode 100644 drivers/staging/media/hantro/sama5d4_vdec_hw.c
+ arch/arm/boot/dts/sama5d4.dtsi | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/staging/media/hantro/Kconfig b/drivers/staging/media/hantro/Kconfig
-index 5b6cf9f62b1a..20b1f6d7b69c 100644
---- a/drivers/staging/media/hantro/Kconfig
-+++ b/drivers/staging/media/hantro/Kconfig
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0
- config VIDEO_HANTRO
- 	tristate "Hantro VPU driver"
--	depends on ARCH_MXC || ARCH_ROCKCHIP || COMPILE_TEST
-+	depends on ARCH_MXC || ARCH_ROCKCHIP || ARCH_AT91 || COMPILE_TEST
- 	depends on VIDEO_DEV && VIDEO_V4L2
- 	select MEDIA_CONTROLLER
- 	select MEDIA_CONTROLLER_REQUEST_API
-@@ -24,6 +24,14 @@ config VIDEO_HANTRO_IMX8M
- 	help
- 	  Enable support for i.MX8M SoCs.
+diff --git a/arch/arm/boot/dts/sama5d4.dtsi b/arch/arm/boot/dts/sama5d4.dtsi
+index 05c55875835d..88284f60feb1 100644
+--- a/arch/arm/boot/dts/sama5d4.dtsi
++++ b/arch/arm/boot/dts/sama5d4.dtsi
+@@ -101,6 +101,15 @@ nfc_sram: sram@100000 {
+ 			ranges = <0 0x100000 0x2400>;
+ 		};
  
-+config VIDEO_HANTRO_SAMA5D4
-+	bool "Hantro VDEC SAMA5D4 support"
-+	depends on VIDEO_HANTRO
-+	depends on ARCH_AT91 || COMPILE_TEST
-+	default y
-+	help
-+	  Enable support for Microchip SAMA5D4 SoCs.
++		vdec0: vdec@300000 {
++			compatible = "microchip,sama5d4-vdec";
++			reg = <0x00300000 0x100000>;
++			interrupts = <19 IRQ_TYPE_LEVEL_HIGH 4>;
++			interrupt-names = "vdec";
++			clocks = <&pmc PMC_TYPE_PERIPHERAL 19>;
++			clock-names = "vdec_clk";
++		};
 +
- config VIDEO_HANTRO_ROCKCHIP
- 	bool "Hantro VPU Rockchip support"
- 	depends on VIDEO_HANTRO
-diff --git a/drivers/staging/media/hantro/Makefile b/drivers/staging/media/hantro/Makefile
-index 3747a32799b2..f4b99901eeee 100644
---- a/drivers/staging/media/hantro/Makefile
-+++ b/drivers/staging/media/hantro/Makefile
-@@ -22,6 +22,9 @@ hantro-vpu-y += \
- hantro-vpu-$(CONFIG_VIDEO_HANTRO_IMX8M) += \
- 		imx8m_vpu_hw.o
- 
-+hantro-vpu-$(CONFIG_VIDEO_HANTRO_SAMA5D4) += \
-+		sama5d4_vdec_hw.o
-+
- hantro-vpu-$(CONFIG_VIDEO_HANTRO_ROCKCHIP) += \
- 		rk3288_vpu_hw.o \
- 		rk3399_vpu_hw.o
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index e5f200e64993..a530c0eda595 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -478,6 +478,9 @@ static const struct of_device_id of_hantro_match[] = {
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
-+#endif
-+#ifdef CONFIG_VIDEO_HANTRO_SAMA5D4
-+	{ .compatible = "microchip,sama5d4-vdec", .data = &sama5d4_vdec_variant, },
- #endif
- 	{ /* sentinel */ }
- };
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 73c71bb2320c..4d39da1d1581 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -152,6 +152,7 @@ extern const struct hantro_variant rk3399_vpu_variant;
- extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3288_vpu_variant;
- extern const struct hantro_variant imx8mq_vpu_variant;
-+extern const struct hantro_variant sama5d4_vdec_variant;
- 
- extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
- 
-diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-new file mode 100644
-index 000000000000..58ae72c2b723
---- /dev/null
-+++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-@@ -0,0 +1,117 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Hantro VDEC driver
-+ *
-+ * Copyright (C) 2021 Collabora Ltd, Emil Velikov <emil.velikov@collabora.com>
-+ */
-+
-+#include "hantro.h"
-+
-+/*
-+ * Supported formats.
-+ */
-+
-+static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_YUYV,
-+		.codec_mode = HANTRO_MODE_NONE,
-+	},
-+};
-+
-+static const struct hantro_fmt sama5d4_vdec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
-+		.codec_mode = HANTRO_MODE_MPEG2_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1280,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 720,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_VP8_FRAME,
-+		.codec_mode = HANTRO_MODE_VP8_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1280,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 720,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.codec_mode = HANTRO_MODE_H264_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1280,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 720,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+};
-+
-+static int sama5d4_hw_init(struct hantro_dev *vpu)
-+{
-+	return 0;
-+}
-+
-+/*
-+ * Supported codec ops.
-+ */
-+
-+static const struct hantro_codec_ops sama5d4_vdec_codec_ops[] = {
-+	[HANTRO_MODE_MPEG2_DEC] = {
-+		.run = hantro_g1_mpeg2_dec_run,
-+		.reset = hantro_g1_reset,
-+		.init = hantro_mpeg2_dec_init,
-+		.exit = hantro_mpeg2_dec_exit,
-+	},
-+	[HANTRO_MODE_VP8_DEC] = {
-+		.run = hantro_g1_vp8_dec_run,
-+		.reset = hantro_g1_reset,
-+		.init = hantro_vp8_dec_init,
-+		.exit = hantro_vp8_dec_exit,
-+	},
-+	[HANTRO_MODE_H264_DEC] = {
-+		.run = hantro_g1_h264_dec_run,
-+		.reset = hantro_g1_reset,
-+		.init = hantro_h264_dec_init,
-+		.exit = hantro_h264_dec_exit,
-+	},
-+};
-+
-+static const struct hantro_irq sama5d4_irqs[] = {
-+	{ "vdec", hantro_g1_irq },
-+};
-+
-+static const char * const sama5d4_clk_names[] = { "vdec_clk" };
-+
-+const struct hantro_variant sama5d4_vdec_variant = {
-+	.dec_fmts = sama5d4_vdec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(sama5d4_vdec_fmts),
-+	.postproc_fmts = sama5d4_vdec_postproc_fmts,
-+	.num_postproc_fmts = ARRAY_SIZE(sama5d4_vdec_postproc_fmts),
-+	.postproc_regs = &hantro_g1_postproc_regs,
-+	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
-+		 HANTRO_H264_DECODER,
-+	.codec_ops = sama5d4_vdec_codec_ops,
-+	.init = sama5d4_hw_init,
-+	.irqs = sama5d4_irqs,
-+	.num_irqs = ARRAY_SIZE(sama5d4_irqs),
-+	.clk_names = sama5d4_clk_names,
-+	.num_clocks = ARRAY_SIZE(sama5d4_clk_names),
-+};
+ 		usb0: gadget@400000 {
+ 			compatible = "atmel,sama5d3-udc";
+ 			reg = <0x00400000 0x100000
 -- 
 2.30.1
 
