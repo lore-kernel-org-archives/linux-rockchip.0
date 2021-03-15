@@ -2,82 +2,82 @@ Return-Path: <SRS0=ms/I=IN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB70FC433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 15:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFBAFC433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 16:25:37 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E08C64D99
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 15:32:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E08C64D99
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7D41C64F21
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 16:25:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D41C64F21
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HZTkvqpK8gHTRHfQ6ogSO34jVP/ndlL2B/aLNcZ8WTM=; b=AACAuEJlVvoneC0kgWX5gzMSo
-	F6zgiJU0Gj0SMgEX201oy0BsZV7kgF/Fn6mecALWmFIufu4WgXBGzkZgCkyqIHmnJ4C69VHeHC5Pp
-	XgYrPDPYZC/z3O/F4KEGbzaQtYdua9n/jFTP2NUhkoG9NgK75xa7B8Ob9YB0eOqtq0TtORF5QcUuo
-	irCFCSmiy19k1aBkcIJAlFBnGCaHmj6rDHZtGzJYsIzyeY1c9maotSLvwrLMbClI0wdKptkdkFW1b
-	/P56IMm5tA4OWf22u4dFtJ8n4rVgbkBrcaVAsL6LL7AJJBn3GmfObXJO7pltvh8h1qeY0VzPCIACU
-	nAiRAAFCg==;
+	 bh=ABz+DiajyXj3mrZZq6mH91n8a0Uz3qIEqM9OJXmYdO4=; b=Ih9mlfJdmLPm1TjJ3UKs6rT8T
+	QnfMX36u7BxC15J37xKRIlPiOQYeI21kPWyCCsAOUxH7bqhSugaF3p+b3YxsCOnhyvBhUy4tBpJPA
+	LBIGJxi5wfeX4AT5W5KNroAS7//nIpbPc/WFNgnz1XIv18UfxnT3JayHEM+s7N30UB77OCIFixP2y
+	p9vKBfyRbn0jvlifylztM19oLUJF2hHcZ7TmvpmfmloHorogBO+HYdK5b3Wz/1F63LKwnoxLwk8lq
+	lEdMCwSGUwXIT3Nj7bxgSxr5oM2z8E/6XnAcv41lE6eMXoNWKyJf4T+D59MG4P9ce6fYZU9OpUo63
+	v03my6W5w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLpD9-00GGsy-9g; Mon, 15 Mar 2021 15:32:51 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1lLq23-00GLUR-Sq; Mon, 15 Mar 2021 16:25:31 +0000
+Received: from mail-io1-f51.google.com ([209.85.166.51])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLpD5-00GGsL-2M
- for linux-rockchip@lists.infradead.org; Mon, 15 Mar 2021 15:32:49 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id y1so16753912ljm.10
- for <linux-rockchip@lists.infradead.org>; Mon, 15 Mar 2021 08:32:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=u4mfgg1DIUGlXI6xo6QY7f2Figp4+tXtMVg/4l0zfRQ=;
- b=BlZKt2JOJ3qgNgj0raT2+uZA/qUkIWMlqrm2M+aX6bHHfX3i11JrEg14J+LmgyfKlm
- hlv5qWWIppwBes/z3o8TRayhMEDfoRD7wDs/s/70xXzU0Fp2VRToNojrk7W/Xegn0ZFx
- XVRSgCYezE3pnaKTYGWDxS8JIfp8IPRrjv6Fs8roOe6g1Btkp5h00wT27asoxCp5hoKF
- V7ZFDy997e6i61sDg4XS5CNeSgHlhg29kM24P0LkEfJubU+L+3r9bsAHykmIk6RqD6LP
- 9s99JD2sokPfM8m4ZAZMgyMqoAkwC/WCC0JGwqfqkCoEaCfrJeOOuUHFJjwCfC8nWCdk
- m5Ug==
+ id 1lLq1x-00GLTc-Ow; Mon, 15 Mar 2021 16:25:24 +0000
+Received: by mail-io1-f51.google.com with SMTP id g27so34026980iox.2;
+ Mon, 15 Mar 2021 09:25:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=u4mfgg1DIUGlXI6xo6QY7f2Figp4+tXtMVg/4l0zfRQ=;
- b=kcMIlEKUsUN50TYfhAt0fGEyw+SSelL/E/dw0cqGh0sZBFNyuBKHLlI3QjJ5q1jDoM
- qj5/uHzn957MJMWw2hcMvPuk9yITrDpzYLXvetMg679XXq4NdsWXljwsrkystFQVypO9
- 0vhSQJcYu1K8CKIC8Phy9DPGzTphJ05qTIAhIpkfnE1WWtGezeQb/WVGuI9iZrUPqcy+
- TZF4KsgbNjo7P7rUXUSEtJnphFr1zgr1vJ6KyvXzoHf2yWoRXgq13M3ZyCYay9oYA7NR
- MJv9rpGGqHVfigtY3Go6gcbRvWWUw/B9LP9cXR97lYVtQ+nqd7INfU4oOIBLkWI4aleb
- xyhA==
-X-Gm-Message-State: AOAM530ZV14Qk1qrk+xLVxBDH+ie/eNk//h9PIWd4DjHqeTnI8fn0oCu
- KL0eb9VUPFxYhAsjB052vWkhUjvHV8iTfrAoBI5tyg==
-X-Google-Smtp-Source: ABdhPJx7bQdMlV7qNayDIZJ4LIK/NhHoHaOaRFmne1Lui34RFwaVgtIahs6g02YLw46XTH+5paM8kjQz2UswgbyTke0=
-X-Received: by 2002:a2e:1649:: with SMTP id 9mr11340184ljw.74.1615822366345;
- Mon, 15 Mar 2021 08:32:46 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=27vnsydVUa4ltua5W1oR+ou4V2KplNlbp+72QsF/VKc=;
+ b=VZYqGK1w5NkSlBtS8mhnlwHwF5rzynTLNZAigrLw4Jda0PWuNK4dwgl6OpIcByZXxx
+ nJARwXpV8WeJa/fAjbWntsFwkTYJeSWSmO5JJTZfaNpB5GGe1phID1l7gLTU/ogT2FaD
+ tBTZ9j2mQBX1UcNkdMQp+HOHpmHyNZanHgpNQ0qiK3tw/hdPhk2x8F7vk+V9a9kXKU8R
+ GqIG+20108ERP5SaBCLvXZHOHh7Eiy9hH3Fqiekusw/Gle8Pl35iDL9jTQjQimV4Lgza
+ Fh8asBlklmlrJns8L0QMXEpciLDfFvLk5Xp5kke8C6QRimSpMyoWZQ50stLNaok6gaCv
+ Mc4w==
+X-Gm-Message-State: AOAM530xgpKmWZECodis/w0yCRnVa5s4Np0u8f7x9HinEKWyq2T+fx1s
+ CSGu18mP7GGcDT3+9ORagQ==
+X-Google-Smtp-Source: ABdhPJxE9HKb1bqeMCiFcbCoEn58lMfaFkpCdrPrjNBrSCx1vHowTC3QNzQnIT1m/JGswSXQdzAlrw==
+X-Received: by 2002:a5d:8552:: with SMTP id b18mr301530ios.124.1615825520666; 
+ Mon, 15 Mar 2021 09:25:20 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id h128sm7305247ioa.32.2021.03.15.09.25.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Mar 2021 09:25:19 -0700 (PDT)
+Received: (nullmailer pid 980057 invoked by uid 1000);
+ Mon, 15 Mar 2021 16:25:16 -0000
+Date: Mon, 15 Mar 2021 10:25:16 -0600
+From: Rob Herring <robh@kernel.org>
+To: Tianling Shen <cnsztl@gmail.com>
+Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
+ Johan Jonker <jbx6244@gmail.com>, David Bauer <mail@david-bauer.net>,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org,
+ Marty Jones <mj8263788@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v4 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
+Message-ID: <20210315162516.GA978743@robh.at.kernel.org>
+References: <20210315084241.22345-1-cnsztl@gmail.com>
 MIME-Version: 1.0
-References: <20210305003907.1692515-1-jay.xu@rock-chips.com>
-In-Reply-To: <20210305003907.1692515-1-jay.xu@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 15 Mar 2021 16:32:35 +0100
-Message-ID: <CACRpkdaAL4U_ymEJTnP9SFV4P0EVLkRGsyVNY9PPqNPFPVxf+A@mail.gmail.com>
-Subject: Re: [PATCH 0/2] make rockchip pinctrl module able
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20210315084241.22345-1-cnsztl@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_153247_298786_7E5F558E 
-X-CRM114-Status: UNSURE (   7.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210315_162523_375128_CE26C791 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,16 +95,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 5, 2021 at 1:39 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+On Mon, 15 Mar 2021 16:42:40 +0800, Tianling Shen wrote:
+> Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
+> 
+> Changes in v2:
+> - Disable display for NanoPi R4S (reference commit: 74532de460ec)
+> - Light "sys" LED on NanoPi R4S (reference commit: 833821eeab91)
+> 
+> Changes in v3:
+> - Dropped non-existent node `display_subsystem`
+> 
+> Changes in v4:
+> - Correctly dropped `display-subsystem` node
+> - Dropped meaningless `pwm-fan` node
+> - Dropped wrong `sdmmc` node
+> - Disabled `i2c4` and `uart0` as they don't exist in the design
+> - Format fixes
+> 
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-> Make the rockchip pinctrl driver able to be module by unselect
-> PINCTRL_ROCKCHIP from ARCH_ROCKCHIP, then modify driver module define.
-
-Applied this again with the irqchip patch under, let's see how this
-works!
-
-Yours,
-Linus Walleij
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
