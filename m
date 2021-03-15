@@ -2,59 +2,82 @@ Return-Path: <SRS0=ms/I=IN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04A48C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 11:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB70FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 15:32:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0AA8F60C3E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 11:25:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0AA8F60C3E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 4E08C64D99
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 15:32:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E08C64D99
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=2fKRSApCZIQue/q0j6ixkpsitkzc3fc0ePSX+2afHkI=; b=dtHEA/F4cDNu2LAnxjzZYCckHY
-	4XudW7nkjKaVqcV2IWdPJqnSXONrmWlRM8+ltJbMcMpdTi81iPOfulymkjdq9I45g/NZaHIzBFS/U
-	EJDdjiAa7bPulgyGjMkW/abQDDSwzQQtMhEp/s4lSiq7CkbsiJ0ZJyK89YEx5ehmMTyGH4ivtW7qb
-	ZnxSHckLFXUhuizRrnIAdCmTZEcTGVaQReYLDYYzm4p+n5nUhCTf22mK2tbiAdx5300wlK6Cs8n9m
-	uLB8U3kXjiV/IBYVBSyB8Gp4V59qaUgOEaquXkLxodzwWx3yc9oz4sp82OkZ33vjxGi3L6mkk42lT
-	ggwuWRJQ==;
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=HZTkvqpK8gHTRHfQ6ogSO34jVP/ndlL2B/aLNcZ8WTM=; b=AACAuEJlVvoneC0kgWX5gzMSo
+	F6zgiJU0Gj0SMgEX201oy0BsZV7kgF/Fn6mecALWmFIufu4WgXBGzkZgCkyqIHmnJ4C69VHeHC5Pp
+	XgYrPDPYZC/z3O/F4KEGbzaQtYdua9n/jFTP2NUhkoG9NgK75xa7B8Ob9YB0eOqtq0TtORF5QcUuo
+	irCFCSmiy19k1aBkcIJAlFBnGCaHmj6rDHZtGzJYsIzyeY1c9maotSLvwrLMbClI0wdKptkdkFW1b
+	/P56IMm5tA4OWf22u4dFtJ8n4rVgbkBrcaVAsL6LL7AJJBn3GmfObXJO7pltvh8h1qeY0VzPCIACU
+	nAiRAAFCg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLlLp-00Fev9-HB; Mon, 15 Mar 2021 11:25:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lLpD9-00GGsy-9g; Mon, 15 Mar 2021 15:32:51 +0000
+Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLlLe-00Fesr-Ab
- for linux-rockchip@lists.infradead.org; Mon, 15 Mar 2021 11:25:29 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lLlLT-0007LD-Md; Mon, 15 Mar 2021 12:25:11 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: linux-clk@vger.kernel.org, zhangqing@rock-chips.com,
- mturquette@baylibre.com, sboyd@kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: [PATCH 1/2] clk: rockchip: drop parenthesis from ARM || COMPILE_TEST
- depends
-Date: Mon, 15 Mar 2021 12:25:01 +0100
-Message-Id: <20210315112502.343699-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.29.2
+ id 1lLpD5-00GGsL-2M
+ for linux-rockchip@lists.infradead.org; Mon, 15 Mar 2021 15:32:49 +0000
+Received: by mail-lj1-x22e.google.com with SMTP id y1so16753912ljm.10
+ for <linux-rockchip@lists.infradead.org>; Mon, 15 Mar 2021 08:32:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=u4mfgg1DIUGlXI6xo6QY7f2Figp4+tXtMVg/4l0zfRQ=;
+ b=BlZKt2JOJ3qgNgj0raT2+uZA/qUkIWMlqrm2M+aX6bHHfX3i11JrEg14J+LmgyfKlm
+ hlv5qWWIppwBes/z3o8TRayhMEDfoRD7wDs/s/70xXzU0Fp2VRToNojrk7W/Xegn0ZFx
+ XVRSgCYezE3pnaKTYGWDxS8JIfp8IPRrjv6Fs8roOe6g1Btkp5h00wT27asoxCp5hoKF
+ V7ZFDy997e6i61sDg4XS5CNeSgHlhg29kM24P0LkEfJubU+L+3r9bsAHykmIk6RqD6LP
+ 9s99JD2sokPfM8m4ZAZMgyMqoAkwC/WCC0JGwqfqkCoEaCfrJeOOuUHFJjwCfC8nWCdk
+ m5Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=u4mfgg1DIUGlXI6xo6QY7f2Figp4+tXtMVg/4l0zfRQ=;
+ b=kcMIlEKUsUN50TYfhAt0fGEyw+SSelL/E/dw0cqGh0sZBFNyuBKHLlI3QjJ5q1jDoM
+ qj5/uHzn957MJMWw2hcMvPuk9yITrDpzYLXvetMg679XXq4NdsWXljwsrkystFQVypO9
+ 0vhSQJcYu1K8CKIC8Phy9DPGzTphJ05qTIAhIpkfnE1WWtGezeQb/WVGuI9iZrUPqcy+
+ TZF4KsgbNjo7P7rUXUSEtJnphFr1zgr1vJ6KyvXzoHf2yWoRXgq13M3ZyCYay9oYA7NR
+ MJv9rpGGqHVfigtY3Go6gcbRvWWUw/B9LP9cXR97lYVtQ+nqd7INfU4oOIBLkWI4aleb
+ xyhA==
+X-Gm-Message-State: AOAM530ZV14Qk1qrk+xLVxBDH+ie/eNk//h9PIWd4DjHqeTnI8fn0oCu
+ KL0eb9VUPFxYhAsjB052vWkhUjvHV8iTfrAoBI5tyg==
+X-Google-Smtp-Source: ABdhPJx7bQdMlV7qNayDIZJ4LIK/NhHoHaOaRFmne1Lui34RFwaVgtIahs6g02YLw46XTH+5paM8kjQz2UswgbyTke0=
+X-Received: by 2002:a2e:1649:: with SMTP id 9mr11340184ljw.74.1615822366345;
+ Mon, 15 Mar 2021 08:32:46 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210305003907.1692515-1-jay.xu@rock-chips.com>
+In-Reply-To: <20210305003907.1692515-1-jay.xu@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 15 Mar 2021 16:32:35 +0100
+Message-ID: <CACRpkdaAL4U_ymEJTnP9SFV4P0EVLkRGsyVNY9PPqNPFPVxf+A@mail.gmail.com>
+Subject: Re: [PATCH 0/2] make rockchip pinctrl module able
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_112527_616669_5D900EEC 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20210315_153247_298786_7E5F558E 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,113 +95,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As suggested by Stephen in the series adding the rk3568 clock controller
-the depends works just as well without the parenthesis around the depends.
+On Fri, Mar 5, 2021 at 1:39 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 
-So to make everything look the same, drop them from existing entries too.
+> Make the rockchip pinctrl driver able to be module by unselect
+> PINCTRL_ROCKCHIP from ARCH_ROCKCHIP, then modify driver module define.
 
-Suggested-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/clk/rockchip/Kconfig | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+Applied this again with the irqchip patch under, let's see how this
+works!
 
-diff --git a/drivers/clk/rockchip/Kconfig b/drivers/clk/rockchip/Kconfig
-index effd05032e85..067aacec96db 100644
---- a/drivers/clk/rockchip/Kconfig
-+++ b/drivers/clk/rockchip/Kconfig
-@@ -11,77 +11,77 @@ config COMMON_CLK_ROCKCHIP
- if COMMON_CLK_ROCKCHIP
- config CLK_PX30
- 	bool "Rockchip PX30 clock controller support"
--	depends on (ARM64 || COMPILE_TEST)
-+	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for PX30 Clock Driver.
- 
- config CLK_RV110X
- 	bool "Rockchip RV110x clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RV110x Clock Driver.
- 
- config CLK_RK3036
- 	bool "Rockchip RK3036 clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3036 Clock Driver.
- 
- config CLK_RK312X
- 	bool "Rockchip RK312x clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK312x Clock Driver.
- 
- config CLK_RK3188
- 	bool "Rockchip RK3188 clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3188 Clock Driver.
- 
- config CLK_RK322X
- 	bool "Rockchip RK322x clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK322x Clock Driver.
- 
- config CLK_RK3288
- 	bool "Rockchip RK3288 clock controller support"
--	depends on (ARM || COMPILE_TEST)
-+	depends on ARM || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3288 Clock Driver.
- 
- config CLK_RK3308
- 	bool "Rockchip RK3308 clock controller support"
--	depends on (ARM64 || COMPILE_TEST)
-+	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3308 Clock Driver.
- 
- config CLK_RK3328
- 	bool "Rockchip RK3328 clock controller support"
--	depends on (ARM64 || COMPILE_TEST)
-+	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3328 Clock Driver.
- 
- config CLK_RK3368
- 	bool "Rockchip RK3368 clock controller support"
--	depends on (ARM64 || COMPILE_TEST)
-+	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3368 Clock Driver.
- 
- config CLK_RK3399
- 	tristate "Rockchip RK3399 clock controller support"
--	depends on (ARM64 || COMPILE_TEST)
-+	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3399 Clock Driver.
--- 
-2.29.2
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
