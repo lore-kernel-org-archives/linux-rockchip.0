@@ -2,66 +2,61 @@ Return-Path: <SRS0=ms/I=IN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,PDS_TONAME_EQ_TOLOCAL_SHORT,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 152DDC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 10:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1695BC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 11:25:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7BBC964EBD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 10:06:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BBC964EBD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5F2FC64E61
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 11:25:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F2FC64E61
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5g6a6usrRyb3QlKiXBZRJ+8UP4Hx9lYsuhCi0kve7rI=; b=Yu3qM+FV3tGdSqrceu8ec1qzd
-	JyWNU06KXp6tcHPwK4OrasaTrT0/VRe7w8oA03867itssFD5S3p3/Ut0IN+YXNvka9S+NS8HXEN7V
-	u7QD6GTLjc/pvDt0iPurC0dbxcToSjCw9RNUenEqYUVUuoPDVsDSauWSj3sQ3drHUVGEqOJHBCmgb
-	bHm6/yrTI1B8Xf/3kfzKkMnohQ2mpft0y60HkdybCA/ZLVogU6nVGY/Clvro/iFd06JPyspVM/Fl6
-	zAHlBofGK5rXJQBxrSPz3TukenKh6Vmy1jA47Bsxi87VLg5GCRq9CH0IVc9KjEkNcuqMLziebhAld
-	VTHIql9mw==;
+	 bh=mFHEksJdGEQ2FXuo2WdvB1Om4PQoZ/GxwrXU3w7ksPU=; b=la+d60i3s0h3B4AHDfELenPPL
+	jhOw9tB44S6vWrZD7tZDlcF7ml1dFjx0/VpNpS8JFQE6kuyGXAvNHSl44zJ8JEwkAniqjWr5J8s+6
+	jOedQEdWLMbYLkrkBck+1CbPegZpj5dvSjk1MUEAyBo3xmT4mNedeVPe+PFQpzYbBffq4JZ7h2s9a
+	MeMD9Z7VP71BzGhG0W3SmzsODGfJBdUl4Axb7vu2je+hLuOTDdA17HW+8A2iFzeAe+1mV3O/0WCQ4
+	AwFk8tFO0jkWnkC2VFIzUabqpC9ORubHy+xc3ZdHKIQh0Vh43DPHIaHNdaa6y/uLWqm0F9cFWfA6S
+	A316rDw7Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLk7H-00FUC7-ES; Mon, 15 Mar 2021 10:06:27 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lLlLo-00Feuu-1X; Mon, 15 Mar 2021 11:25:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLk6p-00FU7i-3b; Mon, 15 Mar 2021 10:06:01 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D069E64EB3;
- Mon, 15 Mar 2021 10:05:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615802757;
- bh=zDsdLBuO+uBhHqwxgi/XFCMbI4kEx1bVVgCTA34RTUs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SKbX2BD65Mt+sXk5dNZBJo4IQJ2iTsZqD6orkzyvbm1wUTKklGKCClzx/KRo6Lp0d
- 6EOW9vqUKosdpgvexPDNPB/BPmFEismKBEZqVPksCW14k3mTgFSc5qJmTcDoP+4ZMm
- EW3R72FnUtgvyCQC0ICQ3RUBDNJO/l5dCbCbj21faEw/RvpqZ1EvUhtqXfL0iHvTIT
- yGhlQcqvImitbwozvc1OgbChVxEodt4at3+cgslFH+TAoIrLg4T/E8TPata2W16kjX
- Zfs+t63ixvp9rdbZQri7VxnHUD33isESDvBLGTaDaBsCFBNggf+SAZP2WM/bwYVP1+
- C76+GQxOayAsw==
-Date: Mon, 15 Mar 2021 15:35:53 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: angkery <angkery@163.com>
-Cc: kishon@ti.com, heiko@sntech.de, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Junlin Yang <yangjunlin@yulong.com>
-Subject: Re: [PATCH] phy: rockchip-typec: add missing of_node_put
-Message-ID: <YE8xgRO+Dh6SOuDx@vkoul-mobl>
-References: <20210216084847.1544-1-angkery@163.com>
+ id 1lLlLj-00Fesq-Bp
+ for linux-rockchip@lists.infradead.org; Mon, 15 Mar 2021 11:25:29 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lLlLT-0007LD-VY; Mon, 15 Mar 2021 12:25:12 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, zhangqing@rock-chips.com,
+ mturquette@baylibre.com, sboyd@kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH 2/2] clk: rockchip: drop MODULE_ALIAS from rk3399 clock
+ controller
+Date: Mon, 15 Mar 2021 12:25:02 +0100
+Message-Id: <20210315112502.343699-2-heiko@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210315112502.343699-1-heiko@sntech.de>
+References: <20210315112502.343699-1-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210216084847.1544-1-angkery@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_100559_492356_5AA806D7 
-X-CRM114-Status: UNSURE (   5.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210315_112527_867109_BE2FC472 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,18 +74,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 16-02-21, 16:48, angkery wrote:
-> From: Junlin Yang <yangjunlin@yulong.com>
-> 
-> Fix OF node leaks by calling of_node_put in
-> for_each_available_child_of_node when the cycle returns.
-> 
-> Generated by: scripts/coccinelle/iterators/for_each_child.cocci
+As suggested by Stephen during the rk3568 clock review, the MOUDLE_ALIAS
+doesn't serve any meaningful purpose, so drop it from the rk3399 as well.
 
-Applied, thanks
+Suggested-by: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ drivers/clk/rockchip/clk-rk3399.c | 1 -
+ 1 file changed, 1 deletion(-)
 
+diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+index 7df2f1e00347..5fe40a2b5d2e 100644
+--- a/drivers/clk/rockchip/clk-rk3399.c
++++ b/drivers/clk/rockchip/clk-rk3399.c
+@@ -1655,4 +1655,3 @@ builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
+ 
+ MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
+ MODULE_LICENSE("GPL");
+-MODULE_ALIAS("platform:clk-rk3399");
 -- 
-~Vinod
+2.29.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
