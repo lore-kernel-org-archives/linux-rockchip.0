@@ -2,42 +2,42 @@ Return-Path: <SRS0=ms/I=IN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B0AC433E0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 08:57:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70C7DC433E0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 08:57:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24D3A64E89
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 08:57:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24D3A64E89
+	by mail.kernel.org (Postfix) with ESMTPS id D692964EB3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Mar 2021 08:57:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D692964EB3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ELPt4SXLvbuV6dRR/v04UtUlweqv1PZj1yCYEtlRW0=; b=KGN7Mf6dTb681e0I5L84lGlhkd
-	XuT3C4ndwxBLCBQSEoLWj3XqPpuZ0w9d/tT5VkMEIcGkJHtH4BybHnPso9MJO26aXeU4j1DTMXFPL
-	E9tCs83QK2n1Wi5MEid5SmQE4xCcY+HqBCGo7p6vaO8APo+y/VibS2gt8EuBDKeHINCqT7VFrd18L
-	GcVBEBjVHdFl5lQZ8b4kSZPW1+9Vf4lFLnhF5bnXQ+C00FgVRvyk7aYE1o0DbakhcrVoQ2ssI3JQv
-	WPE1EHMu/4mRIf4uJe0WWLDN0nyKNh90Dkswf2dSYDzcydVj+sh5aGz5io5WYJERYjI26PNlmMgwa
-	tSi5PT9Q==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5bPekLzFFy+O8RtF1Xaz+a1UlzTE3YS1+tYGcbgEaDU=; b=rO7f7+btkq7iXSg4Wxr9yxHulW
+	zHZfu7U93UlZ0cGwgplBpImPALw3Vrp6i7iuxK1dN4Sd5SeEM1pwE1GmQLmdIcEfSkxtV5olO1vuY
+	LPZv6hPtDBHrV1VDF5ZaSca56Xl7jUDfMtVTUU3QJjz8gXKfDoHUv/rlhorAqZW7oJqofo5se9u/n
+	dr07KEQv5nS1ly1ufHxigpjGSqXlDtkWT1hKdjcL238W0E/vooK9Rtcd9RUPu8RXqKIb3mYpn5Rr7
+	7VCJf2xRK9l4h/fo3g6FPjXpmXS/xnms67tox3UioT3vy+FDAnwVYyd+v8Yqs1m7fDoU9sVjpTzRu
+	lO5+ky5Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lLj1w-00FJTh-57; Mon, 15 Mar 2021 08:56:52 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1lLj2n-00FJcX-Cu; Mon, 15 Mar 2021 08:57:45 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lLj1N-00FJO4-NR; Mon, 15 Mar 2021 08:56:22 +0000
+ id 1lLj1O-00FJNz-Pz; Mon, 15 Mar 2021 08:56:26 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 741DBB9A8B;
- Mon, 15 Mar 2021 16:56:12 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 73002D0F79;
+ Mon, 15 Mar 2021 16:56:11 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P13109T139929564739328S1615798570035027_; 
- Mon, 15 Mar 2021 16:56:12 +0800 (CST)
+ Mon, 15 Mar 2021 16:56:11 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9079f2d2c860caa2dd85a51016204cdc>
+X-UNIQUE-TAG: <bb98c2b9af4f7bd12a95f263a5a8b7f1>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -64,16 +64,13 @@ Cc: devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
  linux-kernel@vger.kernel.org, cl@rock-chips.com, huangtao@rock-chips.com,
  kever.yang@rock-chips.com, tony.xie@rock-chips.com,
  finley.xiao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v5 1/4] dt-binding: clock: Document rockchip,
- rk3568-cru bindings
-Date: Mon, 15 Mar 2021 16:56:05 +0800
-Message-Id: <20210315085608.16010-2-zhangqing@rock-chips.com>
+Subject: [PATCH v5 0/4] clk: rockchip: add clock controller for rk3568
+Date: Mon, 15 Mar 2021 16:56:04 +0800
+Message-Id: <20210315085608.16010-1-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210315085608.16010-1-zhangqing@rock-chips.com>
-References: <20210315085608.16010-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210315_085618_470569_5324A453 
-X-CRM114-Status: GOOD (  13.91  )
+X-CRM114-CacheID: sfid-20210315_085619_446485_FE675DDC 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,83 +89,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the device tree bindings of the rockchip Rk3568 SoC
-clock driver in Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml.
+Add the clock tree definition for the new rk3568 SoC.
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- .../bindings/clock/rockchip,rk3568-cru.yaml   | 60 +++++++++++++++++++
- 1 file changed, 60 insertions(+)
+Change in V5:
+[PATCH v5 1/4]: No change.
+[PATCH v5 2/4]: No change.
+[PATCH v5 3/4]: fix up the warning:
+		>> drivers/clk/rockchip/clk-rk3188.c:187:67: warning:
+		>> missing braces around initializer [-Wmissing-braces]
+		187 | static const struct rockchip_cpuclk_reg_data
+		rk3188_cpuclk_data = {
+[PATCH v5 4/4]: No change.
+
+Change in V4:
+[PATCH v4 1/4]: No change.
+[PATCH v4 2/4]: No change.
+[PATCH v4 3/4]: No change.
+[PATCH v4 4/4]: Drop parenthesis and module alias.
+
+Change in V3:
+[PATCH v3 1/4]: Fix some code styles.
+[PATCH v3 2/4]: No change.
+[PATCH v3 3/4]: No change.
+[PATCH v3 4/4]: No change.
+
+Change in V2:
+[PATCH v2 1/4]: Convert rockchip,rk3568-cru.txt to YAML,
+                And update commit message.
+[PATCH v2 2/4]: No change.
+[PATCH v2 3/4]: Use arrays to support more core independent div
+settings.
+[PATCH v2 4/4]: Adapter [PATCH v2 3/4] changes.
+
+Elaine Zhang (4):
+  dt-binding: clock: Document rockchip,rk3568-cru bindings
+  clk: rockchip: add dt-binding header for rk3568
+  clk: rockchip: support more core div setting
+  clk: rockchip: add clock controller for rk3568
+
+ .../bindings/clock/rockchip,rk3568-cru.yaml   |   60 +
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-cpu.c                |   53 +-
+ drivers/clk/rockchip/clk-px30.c               |    7 +-
+ drivers/clk/rockchip/clk-rk3036.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3128.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3188.c             |   14 +-
+ drivers/clk/rockchip/clk-rk3228.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3288.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3308.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3328.c             |    7 +-
+ drivers/clk/rockchip/clk-rk3368.c             |   14 +-
+ drivers/clk/rockchip/clk-rk3399.c             |   14 +-
+ drivers/clk/rockchip/clk-rk3568.c             | 1725 +++++++++++++++++
+ drivers/clk/rockchip/clk-rv1108.c             |    7 +-
+ drivers/clk/rockchip/clk.h                    |   54 +-
+ include/dt-bindings/clock/rk3568-cru.h        |  926 +++++++++
+ 18 files changed, 2846 insertions(+), 78 deletions(-)
  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3568.c
+ create mode 100644 include/dt-bindings/clock/rk3568-cru.h
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml
-new file mode 100644
-index 000000000000..b2c26097827f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml
-@@ -0,0 +1,60 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/clock/rockchip,rk3568-cru.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: ROCKCHIP rk3568 Family Clock Control Module Binding
-+
-+maintainers:
-+  - Elaine Zhang <zhangqing@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description: |
-+  The RK3568 clock controller generates the clock and also implements a
-+  reset controller for SoC peripherals.
-+  (examples: provide SCLK_UART1\PCLK_UART1 and SRST_P_UART1\SRST_S_UART1 for UART module)
-+  Each clock is assigned an identifier and client nodes can use this identifier
-+  to specify the clock which they consume. All available clocks are defined as
-+  preprocessor macros in the dt-bindings/clock/rk3568-cru.h headers and can be
-+  used in device tree sources.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3568-cru
-+      - rockchip,rk3568-pmucru
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#clock-cells":
-+    const: 1
-+
-+  "#reset-cells":
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - "#clock-cells"
-+  - "#reset-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  # Clock Control Module node:
-+  - |
-+    pmucru: clock-controller@fdd00000 {
-+      compatible = "rockchip,rk3568-pmucru";
-+      reg = <0xfdd00000 0x1000>;
-+      #clock-cells = <1>;
-+      #reset-cells = <1>;
-+    };
-+  - |
-+    cru: clock-controller@fdd20000 {
-+      compatible = "rockchip,rk3568-cru";
-+      reg = <0xfdd20000 0x1000>;
-+      #clock-cells = <1>;
-+      #reset-cells = <1>;
-+    };
 -- 
 2.17.1
 
