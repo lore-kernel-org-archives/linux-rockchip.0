@@ -2,68 +2,61 @@ Return-Path: <SRS0=J32z=IP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49646C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 10:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60BACC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 17:32:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A78FC64EEC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 10:20:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A78FC64EEC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E11CD64EBD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 17:32:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E11CD64EBD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LrUFK1k+dJV6tVYxvhFBdzyQ/tSTF6t5qB/ozsL45q8=; b=F2TiBY8XlnPLuqCKc4lfktnZ0
-	3dgziCpFd6SUuEDxBdbZ90TTr9aJPWedfmSN2Tv6ahh1mHAUe8iODXn0nL+QPCucpeV+7DQBIpowG
-	tn24zz9MH9i8CluNWt9jCFoQMMmzXCBSx2LROO1HKui8AY28vZvKsAcQKuEDa+R6p7h2xpbA3KF4Z
-	/K1UHadBHeD72GQ3fA8NoKe4rlDKvSl+kP+SjqG9Rpdrr4Uan/hlr8v1/WUWb8XZ6cdHMT7sq6+lB
-	q8JvLT/tCLJPrPrMjm9QOhEm7zjgj3L4K7q3XpvJdAvd83g/voYA9MoLSubdwaoELBzQQrbFdu8Qp
-	WiXlN7q6g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aQX34FW6xIW5hU7Ed7buOXWUhZF3zLBQFEVoj9ekYyI=; b=fyzSponRj9shqZlb00CMDx1RlN
+	MyYB5//19cRjSbNFZrlmBGDrKRS5Bf36Wnqx+tNc39NFHQP+Iucyj4k8HDHTg8834oooOTfnmv4+9
+	dIyu2Ksi8pzp4fphHxZLNHZY3nswfrOhJDkbE6v7FeOyKTJx1ahEAZdBE5YGc4eHJ1BkJV5sDOE0B
+	njYZ8lDtDZeCYn4eukNqTeLDGlcNhJXJzG/5ShOwzLx1kBCmIOXEIrzJJOmhrq14DCtOWWMs+MZWa
+	Zd2W6Txe9P8vWIAb1J8823asmWOtu792I4Ntq2q0nW2CMaDn+Mr11tI/BidHm+GgLIraoXCrcJiyU
+	IysBytew==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMTHY-002ver-Em; Wed, 17 Mar 2021 10:20:04 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lMa28-003dLR-S1; Wed, 17 Mar 2021 17:32:37 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMTHT-002veL-Ib
- for linux-rockchip@lists.infradead.org; Wed, 17 Mar 2021 10:20:02 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1841764EE1;
- Wed, 17 Mar 2021 10:19:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615976397;
- bh=K1rmdzuhEi4Gh1qr5SpPr87yILvmDXFtYo1hg/3gFVo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=thLar0DUS7RZGRHlEbfhzN5XF1R4h/AmbpHhEQm+D1JS10kUl+7aP8LpWx8OLIeCl
- Xk5srTpog4GzF8wSE2ORCwLuoxMzNiHWT7v5jWh9VwrKopkok7bqh5UWlXn1jWKVFJ
- YVyy67m7BR52dOegMOJPRbW/Cc2t5ZFdptjkxaM2vA2kp3r2xwhDxoy45eMFrmhLfy
- jQoyRHeo+LPU3qxhKGJcW9uGNtg0h/8Zh0U94P/YbiHhjyE7Vnqaq8Pj5lCswUsmWZ
- bZc7xeqXKg0z6WXavgNwUUqLnzbgkcMQcdRM2PBB2Gp+ahhJ+AoHih/nIdwcAm6M9l
- cJfgndmryComw==
-Date: Wed, 17 Mar 2021 15:49:52 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: kishon@ti.com, cmuellner@linux.com, robh+dt@kernel.org,
- ezequiel@collabora.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: Re: [PATCH 2/2] phy/rockchip: add Innosilicon-based CSI dphy
-Message-ID: <YFHXyDNFi3jQkAv2@vkoul-mobl.Dlink>
-References: <20210210214205.2496336-1-heiko@sntech.de>
- <20210210214205.2496336-3-heiko@sntech.de>
+ id 1lMa1x-003dHv-QK; Wed, 17 Mar 2021 17:32:28 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id E0F4A1F45457
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com
+Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devel@driverdev.osuosl.org, kernel@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 00/13] Add HANTRO G2/HEVC decoder support for IMX8MQ
+Date: Wed, 17 Mar 2021 18:31:49 +0100
+Message-Id: <20210317173202.107519-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210210214205.2496336-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210317_102000_080104_3DBFDF12 
-X-CRM114-Status: GOOD (  34.36  )
+X-CRM114-CacheID: sfid-20210317_173226_048847_5D7B159A 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,578 +74,259 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10-02-21, 22:42, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> The CSI dphy found for example on the rk3326/px30 and rk3368 is based
-> on an IP design from Innosilicon. Add a driver for it.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
->  drivers/phy/rockchip/Kconfig                  |   9 +
->  drivers/phy/rockchip/Makefile                 |   1 +
->  .../phy/rockchip/phy-rockchip-inno-csidphy.c  | 480 ++++++++++++++++++
->  3 files changed, 490 insertions(+)
->  create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-> 
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index 159285f42e5c..e812adad7242 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -48,6 +48,15 @@ config PHY_ROCKCHIP_INNO_USB2
->  	help
->  	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
->  
-> +config PHY_ROCKCHIP_INNO_CSIDPHY
-> +	tristate "Rockchip Innosilicon MIPI CSI PHY driver"
-> +	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> +	select GENERIC_PHY
-> +	select GENERIC_PHY_MIPI_DPHY
-> +	help
-> +	  Enable this to support the Rockchip MIPI CSI PHY with
-> +	  Innosilicon IP block.
-> +
->  config PHY_ROCKCHIP_INNO_DSIDPHY
->  	tristate "Rockchip Innosilicon MIPI/LVDS/TTL PHY driver"
->  	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-> index c3cfc7f0af5c..f0eec212b2aa 100644
-> --- a/drivers/phy/rockchip/Makefile
-> +++ b/drivers/phy/rockchip/Makefile
-> @@ -2,6 +2,7 @@
->  obj-$(CONFIG_PHY_ROCKCHIP_DP)		+= phy-rockchip-dp.o
->  obj-$(CONFIG_PHY_ROCKCHIP_DPHY_RX0)     += phy-rockchip-dphy-rx0.o
->  obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
-> +obj-$(CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY)	+= phy-rockchip-inno-csidphy.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+= phy-rockchip-inno-dsidphy.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
->  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-> new file mode 100644
-> index 000000000000..b30bb2885029
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-csidphy.c
-> @@ -0,0 +1,480 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Rockchip MIPI RX Innosilicon DPHY driver
-> + *
-> + * Copyright (C) 2017 Fuzhou Rockchip Electronics Co., Ltd.
+The IMX8MQ got two VPUs but until now only G1 has been enabled.
+This series aim to add the second VPU (aka G2) and provide basic 
+HEVC decoding support.
 
-We are in 2021 now :)
+To be able to decode HEVC it is needed to add/update some of the
+structures in the uapi. In addition of them one HANTRO dedicated
+control is required to inform the driver of the numbre of bits to skip
+at the beginning of the slice header.
+The hardware require to allocate few auxiliary buffers to store the
+references frame or tile size data.
 
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/io.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/phy/phy.h>
-> +#include <linux/phy/phy-mipi-dphy.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
-> +
-> +/* GRF */
-> +#define RK1808_GRF_PD_VI_CON_OFFSET	0x0430
-> +
-> +#define RK3326_GRF_PD_VI_CON_OFFSET	0x0430
-> +
-> +#define RK3368_GRF_SOC_CON6_OFFSET	0x0418
-> +
-> +/* PHY */
-> +#define CSIDPHY_CTRL_LANE_ENABLE		0x00
-> +#define CSIDPHY_CTRL_LANE_ENABLE_CK		BIT(6)
-> +#define CSIDPHY_CTRL_LANE_ENABLE_LANE3		BIT(5)
-> +#define CSIDPHY_CTRL_LANE_ENABLE_LANE2		BIT(4)
-> +#define CSIDPHY_CTRL_LANE_ENABLE_LANE1		BIT(3)
-> +#define CSIDPHY_CTRL_LANE_ENABLE_LANE0		BIT(2)
-> +#define CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED	BIT(0)
-> +
-> +#define CSIDPHY_CTRL_LANE_ENABLE_SHIFT		2
-> +
-> +/* not present on all variants */
-> +#define CSIDPHY_CTRL_PWRCTL			0x04
-> +#define CSIDPHY_CTRL_PWRCTL_UNDEFINED		GENMASK(7, 5)
-> +#define CSIDPHY_CTRL_PWRCTL_SYNCRST		BIT(2)
-> +#define CSIDPHY_CTRL_PWRCTL_LDO_PD		BIT(1)
-> +#define CSIDPHY_CTRL_PWRCTL_PLL_PD		BIT(0)
-> +
-> +#define CSIDPHY_CTRL_DIG_RST			0x80
-> +#define CSIDPHY_CTRL_DIG_RST_UNDEFINED		0x1e
-> +#define CSIDPHY_CTRL_DIG_RST_RESET		BIT(0)
-> +
-> +/* offset after ths_settle_offset */
-> +#define CSIDPHY_CLK_THS_SETTLE			0
-> +#define CSIDPHY_LANE_THS_SETTLE(n)		((n + 1) * 0x80)
-> +#define CSIDPHY_THS_SETTLE_MASK			0x7f
+The driver has been tested with fluster test suite stream.
+For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
+ 
+This series depends of the reset rework posted here: https://www.spinics.net/lists/arm-kernel/msg878440.html
 
-GENMASK for this?
+Finally the both VPUs will have a node the device-tree and be
+independent from v4l2 point of view.
 
-> +
-> +/* offset after calib_offset */
-> +#define CSIDPHY_CLK_CALIB_EN			0
-> +#define CSIDPHY_LANE_CALIB_EN(n)		((n + 1) * 0x80)
-> +#define CSIDPHY_CALIB_EN			BIT(7)
-> +
-> +/* Configure the count time of the THS-SETTLE by protocol. */
-> +#define RK1808_CSIDPHY_CLK_WR_THS_SETTLE	0x160
-> +#define RK3326_CSIDPHY_CLK_WR_THS_SETTLE	0x100
-> +#define RK3368_CSIDPHY_CLK_WR_THS_SETTLE	0x100
-> +
-> +/* Calibration reception enable */
-> +#define RK1808_CSIDPHY_CLK_CALIB_EN		0x168
-> +
-> +#define HIWORD_UPDATE(val, mask)		((val) | (mask) << 16)
-> +
-> +enum dphy_reg_id {
-> +	GRF_DPHY_RX0_TURNDISABLE = 0,
-> +	GRF_DPHY_RX0_FORCERXMODE,
-> +	GRF_DPHY_RX0_FORCETXSTOPMODE,
-> +	GRF_DPHY_RX0_ENABLE,
-> +	GRF_DPHY_RX0_TURNREQUEST,
-> +	GRF_DPHY_TX0_TURNDISABLE,
-> +	GRF_DPHY_TX0_FORCERXMODE,
-> +	GRF_DPHY_TX0_FORCETXSTOPMODE,
-> +	GRF_DPHY_TX0_TURNREQUEST,
-> +	GRF_DPHY_RX1_SRC_SEL,
-> +	/* rk1808 & rk3326 */
-> +	GRF_DPHY_CSIPHY_FORCERXMODE,
-> +	GRF_DPHY_CSIPHY_CLKLANE_EN,
-> +	GRF_DPHY_CSIPHY_DATALANE_EN,
-> +};
-> +
-> +struct dphy_reg {
-> +	u32 offset;
-> +	u32 mask;
-> +	u32 shift;
-> +};
-> +
-> +#define PHY_REG(_offset, _width, _shift) \
-> +	{ .offset = _offset, .mask = BIT(_width) - 1, .shift = _shift, }
-> +
-> +static const struct dphy_reg rk1808_grf_dphy_regs[] = {
-> +	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 0),
-> +	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 1, 8),
-> +	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK1808_GRF_PD_VI_CON_OFFSET, 4, 4),
-> +};
-> +
-> +static const struct dphy_reg rk3326_grf_dphy_regs[] = {
-> +	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 4, 0),
-> +	[GRF_DPHY_CSIPHY_CLKLANE_EN] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 1, 8),
-> +	[GRF_DPHY_CSIPHY_DATALANE_EN] = PHY_REG(RK3326_GRF_PD_VI_CON_OFFSET, 4, 4),
-> +};
-> +
-> +static const struct dphy_reg rk3368_grf_dphy_regs[] = {
-> +	[GRF_DPHY_CSIPHY_FORCERXMODE] = PHY_REG(RK3368_GRF_SOC_CON6_OFFSET, 4, 8),
-> +};
-> +
-> +struct hsfreq_range {
-> +	u32 range_h;
-> +	u8 cfg_bit;
-> +};
-> +
-> +struct rockchip_inno_csidphy;
+A branch with all the dev is available here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/upstream_g2_v5
 
-why this forward declaration here, it is not used before defining few
-lines below?
+version 5:
+ - use syscon instead of VPU reset driver.
+ - Do not break kernel/DT backward compatibility.
+ - Add documentation for dedicated Hantro control.
+ - Fix the remarks done by Ezequeil (typo, comments, unused function)
+ - Run v4l2-compliance without errors (see below).
+ - Do not add field to distinguish version, check postproc reg instead
 
-> +
-> +struct dphy_drv_data {
-> +	int pwrctl_offset;
-> +	int ths_settle_offset;
-> +	int calib_offset;
-> +	const struct hsfreq_range *hsfreq_ranges;
-> +	int num_hsfreq_ranges;
-> +	const struct dphy_reg *grf_regs;
-> +};
-> +
-> +struct rockchip_inno_csidphy {
-> +	struct device *dev;
-> +	void __iomem *phy_base;
-> +	struct clk *pclk;
-> +	struct regmap *grf;
-> +	struct reset_control *rst;
-> +	const struct dphy_drv_data *drv_data;
-> +	struct phy_configure_opts_mipi_dphy config;
-> +	u8 hsfreq;
-> +};
-> +
-> +static inline void write_grf_reg(struct rockchip_inno_csidphy *priv,
-> +				 int index, u8 value)
+version 4:
+- Split the changes in hevc controls in 2 commits to make them easier to
+  review.
+- Change hantro_codec_ops run() prototype to return errors   
+- Hantro v4l2 dedicated control is now only an integer
+- rebase on top of VPU reset changes posted here:
+  https://www.spinics.net/lists/arm-kernel/msg878440.html
+- Various fix from previous remarks
+- Limit the modifications in API to what the driver needs
 
-align with precceding line opening brace please (checkpatch --strict
-would warn about such alignment)
+version 3:
+- Fix typo in Hantro v4l2 dedicated control
+- Add documentation for the new structures and fields
+- Rebased on top of media_tree for-linus-5.12-rc1 tag
 
-> +{
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +	const struct dphy_reg *reg = &drv_data->grf_regs[index];
-> +
-> +	/* Update high word */
-> +	unsigned int val = (value << reg->shift) |
-> +			   (reg->mask << (reg->shift + 16));
+version 2:
+- remove all change related to scaling
+- squash commits to a coherent split
+- be more verbose about the added fields
+- fix the comments done by Ezequiel about dma_alloc_coherent usage
+- fix Dan's comments about control copy, reverse the test logic
+in tile_buffer_reallocate, rework some goto and return cases.
+- be more verbose about why I change the bindings
+- remove all sign-off expect mime since it is confusing
+- remove useless clocks in VPUs nodes
 
-please use macros in bitfield to avoid shifting..
+./v4l2-compliance -m 1 
+v4l2-compliance 1.21.0-4705, 64 bits, 64-bit time_t
+v4l2-compliance SHA: 733f7a54f79d 2021-02-03 08:25:49
 
-why calculate val, if reg->offset is not valid, why not do both under
-the if condition?
+Compliance test for hantro-vpu device /dev/media1:
 
-> +
-> +	if (reg->offset)
-> +		regmap_write(priv->grf, reg->offset, val);
-> +}
-> +
-> +static inline u32 read_grf_reg(struct rockchip_inno_csidphy *priv, int index)
-> +{
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +	const struct dphy_reg *reg = &drv_data->grf_regs[index];
-> +	unsigned int val = 0;
-> +
-> +	if (reg->offset) {
-> +		regmap_read(priv->grf, reg->offset, &val);
-> +		val = (val >> reg->shift) & reg->mask;
-> +	}
-> +	return val;
+Media Driver Info:
+	Driver name      : hantro-vpu
+	Model            : hantro-vpu
+	Serial           : 
+	Bus info         : platform: hantro-vpu
+	Media version    : 5.11.0
+	Hardware revision: 0x00000000 (0)
+	Driver version   : 5.11.0
 
-so is 0 a valid value to be read?
+Required ioctls:
+	test MEDIA_IOC_DEVICE_INFO: OK
+	test invalid ioctls: OK
 
-> +}
-> +
-> +/* These tables must be sorted by .range_h ascending. */
-> +static const struct hsfreq_range rk1808_mipidphy_hsfreq_ranges[] = {
-> +	{ 109, 0x02}, { 149, 0x03}, { 199, 0x06}, { 249, 0x06},
-> +	{ 299, 0x06}, { 399, 0x08}, { 499, 0x0b}, { 599, 0x0e},
-> +	{ 699, 0x10}, { 799, 0x12}, { 999, 0x16}, {1199, 0x1e},
-> +	{1399, 0x23}, {1599, 0x2d}, {1799, 0x32}, {1999, 0x37},
-> +	{2199, 0x3c}, {2399, 0x41}, {2499, 0x46}
-> +};
-> +
-> +static const struct hsfreq_range rk3326_mipidphy_hsfreq_ranges[] = {
-> +	{ 109, 0x00}, { 149, 0x01}, { 199, 0x02}, { 249, 0x03},
-> +	{ 299, 0x04}, { 399, 0x05}, { 499, 0x06}, { 599, 0x07},
-> +	{ 699, 0x08}, { 799, 0x09}, { 899, 0x0a}, {1099, 0x0b},
-> +	{1249, 0x0c}, {1349, 0x0d}, {1500, 0x0e}
-> +};
-> +
-> +static const struct hsfreq_range rk3368_mipidphy_hsfreq_ranges[] = {
-> +	{ 109, 0x00}, { 149, 0x01}, { 199, 0x02}, { 249, 0x03},
-> +	{ 299, 0x04}, { 399, 0x05}, { 499, 0x06}, { 599, 0x07},
-> +	{ 699, 0x08}, { 799, 0x09}, { 899, 0x0a}, {1099, 0x0b},
-> +	{1249, 0x0c}, {1349, 0x0d}, {1500, 0x0e}
-> +};
-> +
-> +static void rockchip_inno_csidphy_ths_settle(struct rockchip_inno_csidphy *priv,
-> +					     int hsfreq, int offset)
-> +{
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +	u32 val;
-> +
-> +	val = readl(priv->phy_base + drv_data->ths_settle_offset + offset);
-> +	val &= ~CSIDPHY_THS_SETTLE_MASK;
-> +	val |= hsfreq;
-> +	writel(val, priv->phy_base + drv_data->ths_settle_offset + offset);
-> +}
-> +
-> +static int rockchip_inno_csidphy_configure(struct phy *phy,
-> +					   union phy_configure_opts *opts)
-> +{
-> +	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +	struct phy_configure_opts_mipi_dphy *config = &opts->mipi_dphy;
-> +	unsigned int hsfreq = 0;
-> +	unsigned int i;
-> +	u64 data_rate_mbps;
-> +	int ret;
-> +
-> +	/* pass with phy_mipi_dphy_get_default_config (with pixel rate?) */
-> +	ret = phy_mipi_dphy_config_validate(config);
-> +	if (ret)
-> +		return ret;
-> +
-> +	data_rate_mbps = div_u64(config->hs_clk_rate, 1000 * 1000);
-> +
-> +	dev_dbg(priv->dev, "lanes %d - data_rate_mbps %llu\n",
-> +		config->lanes, data_rate_mbps);
-> +	for (i = 0; i < drv_data->num_hsfreq_ranges; i++) {
-> +		if (drv_data->hsfreq_ranges[i].range_h >= data_rate_mbps) {
-> +			hsfreq = drv_data->hsfreq_ranges[i].cfg_bit;
-> +			break;
-> +		}
-> +	}
-> +	if (!hsfreq)
-> +		return -EINVAL;
-> +
-> +	priv->hsfreq = hsfreq;
-> +	priv->config = *config;
-> +	return 0;
-> +}
-> +
-> +static int rockchip_inno_csidphy_power_on(struct phy *phy)
-> +{
-> +	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +	u64 data_rate_mbps;
-> +	u32 val = 0;
+Allow for multiple opens:
+	test second /dev/media1 open: OK
+	test MEDIA_IOC_DEVICE_INFO: OK
+	test for unlimited opens: OK
 
-superfluous init?
+Media Controller ioctls:
+	test MEDIA_IOC_G_TOPOLOGY: OK
+	Entities: 3 Interfaces: 1 Pads: 4 Links: 4
+	test MEDIA_IOC_ENUM_ENTITIES/LINKS: OK
+	test MEDIA_IOC_SETUP_LINK: OK
 
-> +	int ret, i;
-> +
-> +	data_rate_mbps = div_u64(priv->config.hs_clk_rate, 1000 * 1000);
+Total for hantro-vpu device /dev/media1: 8, Succeeded: 8, Failed: 0, Warnings: 0
+--------------------------------------------------------------------------------
+Compliance test for hantro-vpu device /dev/video1:
 
-helper for this?
+Driver Info:
+	Driver name      : hantro-vpu
+	Card type        : nxp,imx8mq-vpu-g2-dec
+	Bus info         : platform: hantro-vpu
+	Driver version   : 5.11.0
+	Capabilities     : 0x84204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04204000
+		Video Memory-to-Memory Multiplanar
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : hantro-vpu
+	Model            : hantro-vpu
+	Serial           : 
+	Bus info         : platform: hantro-vpu
+	Media version    : 5.11.0
+	Hardware revision: 0x00000000 (0)
+	Driver version   : 5.11.0
+Interface Info:
+	ID               : 0x0300000c
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000001 (1)
+	Name             : nxp,imx8mq-vpu-g2-dec-source
+	Function         : V4L2 I/O
+	Pad 0x01000002   : 0: Source
+	  Link 0x02000008: to remote pad 0x1000004 of entity 'nxp,imx8mq-vpu-g2-dec-proc': Data, Enabled, Immutable
 
-> +
-> +	ret = clk_enable(priv->pclk);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	/* phy start */
-> +	if (drv_data->pwrctl_offset >= 0)
-> +		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED |
-> +		       CSIDPHY_CTRL_PWRCTL_SYNCRST,
-> +		       priv->phy_base + drv_data->pwrctl_offset);
-> +
-> +	/* set data lane num and enable clock lane */
-> +	val = GENMASK(priv->config.lanes - 1, 0) << CSIDPHY_CTRL_LANE_ENABLE_SHIFT;
+Required ioctls:
+	test MC information (see 'Media Driver Info' above): OK
+	test VIDIOC_QUERYCAP: OK
+	test invalid ioctls: OK
 
-Consider using helpers in bitfield.h instead of using shifts
+Allow for multiple opens:
+	test second /dev/video1 open: OK
+	test VIDIOC_QUERYCAP: OK
+	test VIDIOC_G/S_PRIORITY: OK
+	test for unlimited opens: OK
 
-> +	writel(val | CSIDPHY_CTRL_LANE_ENABLE_CK |
-> +	       CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED,
-> +	       priv->phy_base + CSIDPHY_CTRL_LANE_ENABLE);
-> +
-> +	/* Reset dphy analog part */
-> +	if (drv_data->pwrctl_offset >= 0)
-> +		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED,
-> +		       priv->phy_base + drv_data->pwrctl_offset);
-> +	usleep_range(500, 1000);
-> +
-> +	/* Reset dphy digital part */
-> +	writel(CSIDPHY_CTRL_DIG_RST_UNDEFINED,
-> +	       priv->phy_base + CSIDPHY_CTRL_DIG_RST);
-> +	writel(CSIDPHY_CTRL_DIG_RST_UNDEFINED + CSIDPHY_CTRL_DIG_RST_RESET,
-> +	       priv->phy_base + CSIDPHY_CTRL_DIG_RST);
-> +
-> +	/* not into receive mode/wait stopstate */
-> +	write_grf_reg(priv, GRF_DPHY_CSIPHY_FORCERXMODE, 0x0);
-> +
-> +	/* enable calibration */
-> +	if (data_rate_mbps > 1500 && drv_data->calib_offset >= 0) {
-> +		writel(CSIDPHY_CALIB_EN,
-> +		       priv->phy_base + drv_data->calib_offset +
-> +					CSIDPHY_CLK_CALIB_EN);
-> +		for (i = 0; i < priv->config.lanes; i++)
-> +			writel(CSIDPHY_CALIB_EN,
-> +			       priv->phy_base + drv_data->calib_offset +
-> +						CSIDPHY_LANE_CALIB_EN(i));
-> +	}
-> +
-> +	rockchip_inno_csidphy_ths_settle(priv, priv->hsfreq,
-> +					 CSIDPHY_CLK_THS_SETTLE);
-> +	for (i = 0; i < priv->config.lanes; i++)
-> +		rockchip_inno_csidphy_ths_settle(priv, priv->hsfreq,
-> +						 CSIDPHY_LANE_THS_SETTLE(i));
-> +
-> +	write_grf_reg(priv, GRF_DPHY_CSIPHY_CLKLANE_EN, 0x1);
-> +	write_grf_reg(priv, GRF_DPHY_CSIPHY_DATALANE_EN,
-> +		      GENMASK(priv->config.lanes - 1, 0));
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_inno_csidphy_power_off(struct phy *phy)
-> +{
-> +	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-> +	const struct dphy_drv_data *drv_data = priv->drv_data;
-> +
-> +	/* disable all lanes */
-> +	writel(CSIDPHY_CTRL_LANE_ENABLE_UNDEFINED,
-> +	       priv->phy_base + CSIDPHY_CTRL_LANE_ENABLE);
-> +
-> +	/* disable pll and ldo */
-> +	if (drv_data->pwrctl_offset >= 0)
-> +		writel(CSIDPHY_CTRL_PWRCTL_UNDEFINED |
-> +		       CSIDPHY_CTRL_PWRCTL_LDO_PD |
-> +		       CSIDPHY_CTRL_PWRCTL_PLL_PD,
-> +		       priv->phy_base + drv_data->pwrctl_offset);
-> +	usleep_range(500, 1000);
-> +
-> +	clk_disable(priv->pclk);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_inno_csidphy_init(struct phy *phy)
-> +{
-> +	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-> +
-> +	return clk_prepare(priv->pclk);
-> +}
-> +
-> +static int rockchip_inno_csidphy_exit(struct phy *phy)
-> +{
-> +	struct rockchip_inno_csidphy *priv = phy_get_drvdata(phy);
-> +
-> +	clk_unprepare(priv->pclk);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct phy_ops rockchip_inno_csidphy_ops = {
-> +	.power_on	= rockchip_inno_csidphy_power_on,
-> +	.power_off	= rockchip_inno_csidphy_power_off,
-> +	.init		= rockchip_inno_csidphy_init,
-> +	.exit		= rockchip_inno_csidphy_exit,
-> +	.configure	= rockchip_inno_csidphy_configure,
-> +	.owner		= THIS_MODULE,
-> +};
-> +
-> +static const struct dphy_drv_data rk1808_mipidphy_drv_data = {
-> +	.pwrctl_offset = -1,
-> +	.ths_settle_offset = RK1808_CSIDPHY_CLK_WR_THS_SETTLE,
-> +	.calib_offset = RK1808_CSIDPHY_CLK_CALIB_EN,
-> +	.hsfreq_ranges = rk1808_mipidphy_hsfreq_ranges,
-> +	.num_hsfreq_ranges = ARRAY_SIZE(rk1808_mipidphy_hsfreq_ranges),
-> +	.grf_regs = rk1808_grf_dphy_regs,
-> +};
-> +
-> +static const struct dphy_drv_data rk3326_mipidphy_drv_data = {
-> +	.pwrctl_offset = CSIDPHY_CTRL_PWRCTL,
-> +	.ths_settle_offset = RK3326_CSIDPHY_CLK_WR_THS_SETTLE,
-> +	.calib_offset = -1,
-> +	.hsfreq_ranges = rk3326_mipidphy_hsfreq_ranges,
-> +	.num_hsfreq_ranges = ARRAY_SIZE(rk3326_mipidphy_hsfreq_ranges),
-> +	.grf_regs = rk3326_grf_dphy_regs,
-> +};
-> +
-> +static const struct dphy_drv_data rk3368_mipidphy_drv_data = {
-> +	.pwrctl_offset = CSIDPHY_CTRL_PWRCTL,
-> +	.ths_settle_offset = RK3368_CSIDPHY_CLK_WR_THS_SETTLE,
-> +	.calib_offset = -1,
-> +	.hsfreq_ranges = rk3368_mipidphy_hsfreq_ranges,
-> +	.num_hsfreq_ranges = ARRAY_SIZE(rk3368_mipidphy_hsfreq_ranges),
-> +	.grf_regs = rk3368_grf_dphy_regs,
-> +};
-> +
-> +static const struct of_device_id rockchip_inno_csidphy_match_id[] = {
-> +	{
-> +		.compatible = "rockchip,px30-csi-dphy",
-> +		.data = &rk3326_mipidphy_drv_data,
-> +	},
-> +	{
-> +		.compatible = "rockchip,rk1808-csi-dphy",
-> +		.data = &rk1808_mipidphy_drv_data,
-> +	},
-> +	{
-> +		.compatible = "rockchip,rk3326-csi-dphy",
-> +		.data = &rk3326_mipidphy_drv_data,
-> +	},
-> +	{
-> +		.compatible = "rockchip,rk3368-csi-dphy",
-> +		.data = &rk3368_mipidphy_drv_data,
-> +	},
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, rockchip_inno_csidphy_match_id);
-> +
-> +
-> +static int rockchip_inno_csidphy_probe(struct platform_device *pdev)
-> +{
-> +	struct rockchip_inno_csidphy *priv;
-> +	struct device *dev = &pdev->dev;
-> +	struct phy_provider *phy_provider;
-> +	struct phy *phy;
-> +
-> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	priv->dev = dev;
-> +	platform_set_drvdata(pdev, priv);
-> +
-> +	priv->drv_data = of_device_get_match_data(dev);
-> +	if (!priv->drv_data) {
-> +		dev_err(dev, "Can't find device data\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	priv->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
-> +						    "rockchip,grf");
-> +	if (IS_ERR(priv->grf)) {
-> +		dev_err(dev, "Can't find GRF syscon\n");
-> +		return PTR_ERR(priv->grf);
-> +	}
-> +
-> +	priv->phy_base = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(priv->phy_base))
-> +		return PTR_ERR(priv->phy_base);
-> +
-> +	priv->pclk = devm_clk_get(dev, "pclk");
-> +	if (IS_ERR(priv->pclk)) {
-> +		dev_err(dev, "failed to get pclk\n");
-> +		return PTR_ERR(priv->pclk);
-> +	}
-> +
-> +	priv->rst = devm_reset_control_get(dev, "apb");
-> +	if (IS_ERR(priv->rst)) {
-> +		dev_err(dev, "failed to get system reset control\n");
-> +		return PTR_ERR(priv->rst);
-> +	}
-> +
-> +	phy = devm_phy_create(dev, NULL, &rockchip_inno_csidphy_ops);
-> +	if (IS_ERR(phy)) {
-> +		dev_err(dev, "failed to create phy\n");
-> +		return PTR_ERR(phy);
-> +	}
-> +
-> +	phy_set_drvdata(phy, priv);
-> +
-> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
-> +	if (IS_ERR(phy_provider)) {
-> +		dev_err(dev, "failed to register phy provider\n");
-> +		return PTR_ERR(phy_provider);
-> +	}
-> +
-> +	pm_runtime_enable(dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_inno_csidphy_remove(struct platform_device *pdev)
-> +{
-> +	struct rockchip_inno_csidphy *priv = platform_get_drvdata(pdev);
-> +
-> +	pm_runtime_disable(priv->dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver rockchip_inno_csidphy_driver = {
-> +	.driver = {
-> +			.name = "rockchip-inno-csidphy",
-> +			.of_match_table = rockchip_inno_csidphy_match_id,
+Debug ioctls:
+	test VIDIOC_DBG_G/S_REGISTER: OK (Not Supported)
+	test VIDIOC_LOG_STATUS: OK (Not Supported)
 
-double indent here?
+Input ioctls:
+	test VIDIOC_G/S_TUNER/ENUM_FREQ_BANDS: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_S_HW_FREQ_SEEK: OK (Not Supported)
+	test VIDIOC_ENUMAUDIO: OK (Not Supported)
+	test VIDIOC_G/S/ENUMINPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDIO: OK (Not Supported)
+	Inputs: 0 Audio Inputs: 0 Tuners: 0
 
-> +	},
-> +	.probe = rockchip_inno_csidphy_probe,
-> +	.remove = rockchip_inno_csidphy_remove,
-> +};
-> +
-> +module_platform_driver(rockchip_inno_csidphy_driver);
-> +MODULE_AUTHOR("Heiko Stuebner <heiko.stuebner@theobroma-systems.com>");
-> +MODULE_DESCRIPTION("Rockchip MIPI Innosilicon CSI-DPHY driver");
-> +MODULE_LICENSE("Dual BSD/GPL");
+Output ioctls:
+	test VIDIOC_G/S_MODULATOR: OK (Not Supported)
+	test VIDIOC_G/S_FREQUENCY: OK (Not Supported)
+	test VIDIOC_ENUMAUDOUT: OK (Not Supported)
+	test VIDIOC_G/S/ENUMOUTPUT: OK (Not Supported)
+	test VIDIOC_G/S_AUDOUT: OK (Not Supported)
+	Outputs: 0 Audio Outputs: 0 Modulators: 0
 
-That is not what the SPDX tag for file says?
+Input/Output configuration ioctls:
+	test VIDIOC_ENUM/G/S/QUERY_STD: OK (Not Supported)
+	test VIDIOC_ENUM/G/S/QUERY_DV_TIMINGS: OK (Not Supported)
+	test VIDIOC_DV_TIMINGS_CAP: OK (Not Supported)
+	test VIDIOC_G/S_EDID: OK (Not Supported)
+
+Control ioctls:
+	test VIDIOC_QUERY_EXT_CTRL/QUERYMENU: OK
+	test VIDIOC_QUERYCTRL: OK
+	test VIDIOC_G/S_CTRL: OK
+	test VIDIOC_G/S/TRY_EXT_CTRLS: OK
+	test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: OK
+	test VIDIOC_G/S_JPEGCOMP: OK (Not Supported)
+	Standard Controls: 8 Private Controls: 1
+
+Format ioctls:
+	test VIDIOC_ENUM_FMT/FRAMESIZES/FRAMEINTERVALS: OK
+	test VIDIOC_G/S_PARM: OK (Not Supported)
+	test VIDIOC_G_FBUF: OK (Not Supported)
+	test VIDIOC_G_FMT: OK
+	test VIDIOC_TRY_FMT: OK
+	test VIDIOC_S_FMT: OK
+	test VIDIOC_G_SLICED_VBI_CAP: OK (Not Supported)
+	test Cropping: OK (Not Supported)
+	test Composing: OK (Not Supported)
+	test Scaling: OK (Not Supported)
+
+Codec ioctls:
+	test VIDIOC_(TRY_)ENCODER_CMD: OK (Not Supported)
+	test VIDIOC_G_ENC_INDEX: OK (Not Supported)
+	test VIDIOC_(TRY_)DECODER_CMD: OK (Not Supported)
+
+Buffer ioctls:
+	test VIDIOC_REQBUFS/CREATE_BUFS/QUERYBUF: OK
+	test VIDIOC_EXPBUF: OK
+	test Requests: OK
+
+Total for hantro-vpu device /dev/video1: 46, Succeeded: 46, Failed: 0, Warnings: 0
+
+Grand Total for hantro-vpu device /dev/media1: 54, Succeeded: 54, Failed: 0, Warnings: 0
+
+Benjamin
+
+Benjamin Gaignard (13):
+  dt-bindings: mfd: Add 'nxp,imx8mq-vpu-ctrl' to syscon list
+  dt-bindings: media: nxp,imx8mq-vpu: Update the bindings for G2 support
+  media: hantro: Use syscon instead of 'ctrl' register
+  media: hevc: Add fields and flags for hevc PPS
+  media: hevc: Add decode params control
+  media: hantro: change hantro_codec_ops run prototype to return errors
+  media: hantro: Define HEVC codec profiles and supported features
+  media: hantro: Only use postproc when post processed formats are
+    defined
+  media: uapi: Add a control for HANTRO driver
+  media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+  media: hantro: Introduce G2/HEVC decoder
+  media: hantro: IMX8M: add variant for G2/HEVC codec
+  arm64: dts: imx8mq: Add node to G2 hardware
+
+ .../bindings/media/nxp,imx8mq-vpu.yaml        |  53 +-
+ .../devicetree/bindings/mfd/syscon.yaml       |   1 +
+ .../userspace-api/media/drivers/hantro.rst    |  14 +
+ .../userspace-api/media/drivers/index.rst     |   1 +
+ .../media/v4l/ext-ctrls-codec.rst             | 108 +++-
+ .../media/v4l/vidioc-queryctrl.rst            |   6 +
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  43 +-
+ drivers/media/v4l2-core/v4l2-ctrls.c          |  26 +-
+ drivers/staging/media/hantro/Makefile         |   2 +
+ drivers/staging/media/hantro/hantro.h         |  18 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  99 ++-
+ .../staging/media/hantro/hantro_g1_h264_dec.c |  10 +-
+ .../media/hantro/hantro_g1_mpeg2_dec.c        |   4 +-
+ .../staging/media/hantro/hantro_g1_vp8_dec.c  |   6 +-
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
+ .../staging/media/hantro/hantro_h1_jpeg_enc.c |   4 +-
+ drivers/staging/media/hantro/hantro_hevc.c    | 324 ++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  69 +-
+ .../staging/media/hantro/hantro_postproc.c    |  14 +
+ drivers/staging/media/hantro/hantro_v4l2.c    |   5 +-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 128 +++-
+ .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |   4 +-
+ .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   4 +-
+ .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |   6 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |   6 +-
+ include/media/hevc-ctrls.h                    |  33 +-
+ include/uapi/linux/v4l2-controls.h            |  13 +
+ 31 files changed, 1678 insertions(+), 117 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
+ create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
 
 -- 
-~Vinod
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
