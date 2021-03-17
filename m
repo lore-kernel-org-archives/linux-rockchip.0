@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AED4AC433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D958C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E79064F99
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E79064F99
+	by mail.kernel.org (Postfix) with ESMTPS id 2D55D64F99
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D55D64F99
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,46 +22,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:References:
 	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0lWYrBGF4iqTRKOw3y/77B23booOhoQKxoPQZVFTnoY=; b=XYTgfmT5VoYBYLzUVXPM3EdLL
-	VozWuMpBQVOUHVMcMy+8+qFvxdfQbMlo4Ka15UWVlVKHA0Ks5s3d3ti59CbOKiNFlLlMJgzTUmD07
-	4CE1/h2qGQ3RuS9gaJitP9wutEJl9mpyy6alQSmYbsd9WUjZRyff65rD+RyBjWzp/PGV9567kkbdY
-	AvJFqmhNT89MVU40yLPrSeRtLa+KNJUf+AVPuGnbZc39Ofz6/EzHEniJXK2AV/qasLRRhkaTHj6b9
-	4r0gk/iYLZn720w/eYK6wVsvctcsyURAa960SjjhkCSeH/A/sAFOKf18j/85JORwYppqNPGPFO2dx
-	5eBcoNxaw==;
+	 bh=+RqUiTOeYUbrHPsNyBbBVp00ySW5QA1H0L8Cbi0mU4s=; b=andM+a/0HeLaPE/VjNC91kH1H
+	iWomSn0VJ8QTMaEO0qFBaivgs/v3D/yK+YpQJAyDcNnK1X4H61EKTknmlHWWE++tHLIWZ626sAjhH
+	cbFEjO6yiB2cKAazUWTtpB59kJsGkn7ssQAqIyi3zYiwoD4k9y2JuTiYd0s7siJe9oWGhQlYWRWwv
+	DVTIbJ3XJ02P2swdKKw3v9W/kLAz6AlJhLKbfseY1CN+a3sBptvVP9gm/gdb0kFMjTiWjZkGlRf2Y
+	nYWzeyEjvKe+PbjAKi05fYFTveK0MR+1reJREQ+RN/nvVIESpbDNZrW4pyJw+VFHRBZKEntVy33AJ
+	hbyQcPreA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lML72-002EH2-Lo; Wed, 17 Mar 2021 01:36:41 +0000
+	id 1lML78-002EI0-4E; Wed, 17 Mar 2021 01:36:47 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lML6x-002EGN-3F
- for linux-rockchip@lists.infradead.org; Wed, 17 Mar 2021 01:36:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 57CB164F97;
- Wed, 17 Mar 2021 01:36:33 +0000 (UTC)
+ id 1lML73-002EH0-Av
+ for linux-rockchip@lists.infradead.org; Wed, 17 Mar 2021 01:36:43 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EF29D64F99;
+ Wed, 17 Mar 2021 01:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615944993;
- bh=FZgfTha48+8fEpkTBH9H3veXQK0JI2YdcPNLkNruT/M=;
+ s=k20201202; t=1615945000;
+ bh=Sc97qhhpJZEboCOxPhj04eeJ/fGLVXl1L3DyhupBQJc=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=hP2a9k1y38HPYB4uzyW9VPwRCSh+ChjAyMH759aWt7AKxpm/VtW+0boTC90b4YiYI
- j+ybwX07XSEHHFjAHgJtO74TbjhxIpLf/6YUp308xeSL0/dvX/Ny2ulgu7ftwmUvG9
- vaSY/qN/5DQfvJE4Slef3wKZeCSyc1RUnfqpSChWIJd5JW/7cY/yRnk3siMMGxZaXb
- dNFQAgHWymxwsruDnTlMHPuVhiJ7NZRkCI4MRh7XSUHacbXVHAUZFCajFPP25YE2GD
- CoxPZPYJLzx1uepFRxQObli31TEMSjh5vjARYzShiRz7mk4E8BAqAdBlQvShO4QwNK
- nbrf9VoFC8JQw==
+ b=jVb6urGcVHcBQTAoM/5siv6wYgCE6Aapy2KqcHi1yL0d+PWtdhuBBEMJ+lgnesdFd
+ lhvkzm3NAp7n/FE2EtFy94ZQYZSD5tZJ/EaSZ1jCmkMA/oY0lk8PwOtW9DZzdYlXz3
+ 7NWFmPrQOQNHhQMbz8zIPMzUBxSaJ5E9vJ4RmPEwVObR/kgDUuIFh7ka/A5xiahnku
+ +J5cY/aw4R44WkEVyGEX6wreKRYyMaEazOU3JgGgCW/KNPkpO7/+z3uwZrJARzyb9n
+ QFD2thYFoybH41pW9ehFo9iRQWGXe11TXkD68yUAlRBGogkkuPFBoU6J/gZYUroPgI
+ /AwOFa9XCrrGw==
 MIME-Version: 1.0
-In-Reply-To: <20210315112502.343699-1-heiko@sntech.de>
+In-Reply-To: <20210315112502.343699-2-heiko@sntech.de>
 References: <20210315112502.343699-1-heiko@sntech.de>
-Subject: Re: [PATCH 1/2] clk: rockchip: drop parenthesis from ARM ||
- COMPILE_TEST depends
+ <20210315112502.343699-2-heiko@sntech.de>
+Subject: Re: [PATCH 2/2] clk: rockchip: drop MODULE_ALIAS from rk3399 clock
+ controller
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: linux-clk@vger.kernel.org, zhangqing@rock-chips.com,
  mturquette@baylibre.com, linux-rockchip@lists.infradead.org
 To: heiko@sntech.de
-Date: Tue, 16 Mar 2021 18:36:32 -0700
-Message-ID: <161594499215.1478170.15629079546863596316@swboyd.mtv.corp.google.com>
+Date: Tue, 16 Mar 2021 18:36:38 -0700
+Message-ID: <161594499885.1478170.3779535512987411515@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210317_013635_649720_DB7C5A96 
-X-CRM114-Status: UNSURE (   4.87  )
+X-CRM114-CacheID: sfid-20210317_013641_941985_3A955A3C 
+X-CRM114-Status: UNSURE (   4.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,11 +81,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2021-03-15 04:25:01)
-> As suggested by Stephen in the series adding the rk3568 clock controller
-> the depends works just as well without the parenthesis around the depends.
-> 
-> So to make everything look the same, drop them from existing entries too.
+Quoting Heiko Stuebner (2021-03-15 04:25:02)
+> As suggested by Stephen during the rk3568 clock review, the MOUDLE_ALIAS
+> doesn't serve any meaningful purpose, so drop it from the rk3399 as well.
 > 
 > Suggested-by: Stephen Boyd <sboyd@kernel.org>
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
