@@ -2,42 +2,42 @@ Return-Path: <SRS0=J32z=IP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F4C9C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 02:55:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E827C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 02:55:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13AEC64F96
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 02:55:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13AEC64F96
+	by mail.kernel.org (Postfix) with ESMTPS id A5F9464F80
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 02:55:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5F9464F80
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q5TscIMZ8ZA5Pmtg+oJ/Zcuiw+nj68JiiGV/M05koq4=; b=lh97h9EyortHgI0lPZ6lnGhRD+
-	iebdE9et6Fte0nOyl0Dn9OeOgXbu8SGoDpzm+Avl+4HSmOcC5jXEs7dVeLwexhXjVPPkPdKdxXqKC
-	djgEXMAZDclQERSy/HKKyKM2MP5Kg/j5Ep3JfqmUV4Tt0AYQ3SEun0wOQ6qJalmM495q8FqLuopYU
-	oPli0S6p6j7d+8zwXBHooNI4VWZNAssql5dC8oipyZf2dgxoiHL+QYgC6zEVtk4CmV31kBMUJWhq/
-	lOrdskSxzaCnKoZUoVEVe+R7gGRQ1kewh408HP2az6ThSoofO0o6r7iKHpdNFUXlFABIZ17H0i04d
-	OnVjcSAg==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Pg2g4LFLdvgA2883Anr+a0A5knKaa4SyqwipBQUJZuQ=; b=VHV5xCSw6/40eDf23wdPItwq+X
+	O5d7TgSn7+ClF0DBJ//p4becxex+M+VaaW7w8yaCn0UVBfx8PinBfLpQg9BMIgmFMWFrwcyL62qpM
+	xghx+8MWWmOuuoqBucHI68hAJnh7E9Gs3oiob5Feh7JiCzijOToH7JQLnD4yunMrVhOdhyIl+YWE7
+	DZ2GQGo5tN5UO1YqqDCUDTdXKFqCy+EEdvdn0lTfY9QbTqrTUb8OzS2mF1X4b/c8ZY1I4hDK7RGlu
+	kkPbx9Kd3gY/KCPDOyGZmarEH6NJHK53NBxnC7z0Ra0HMPQg3S+5SkO4zbpP+tMMQr4VUicD6hhOo
+	Ihkgi2IA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMML6-002JOQ-Kx; Wed, 17 Mar 2021 02:55:16 +0000
+	id 1lMMLF-002JQC-OQ; Wed, 17 Mar 2021 02:55:25 +0000
 Received: from lucky1.263xmail.com ([211.157.147.131])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMMKu-002J3n-Os; Wed, 17 Mar 2021 02:55:06 +0000
+ id 1lMMKw-002J3a-Gf; Wed, 17 Mar 2021 02:55:15 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 0E01BB9B03;
- Wed, 17 Mar 2021 10:52:12 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id CB47CB9A37;
+ Wed, 17 Mar 2021 10:52:09 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P24306T139685293258496S1615949528087809_; 
- Wed, 17 Mar 2021 10:52:11 +0800 (CST)
+ Wed, 17 Mar 2021 10:52:09 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <d47b69ba50e05ef60a04cd071edf9b0a>
+X-UNIQUE-TAG: <c09a4826d63e9ca14eb03a0c7fc1a64a>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -64,15 +64,14 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
  tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
  Elaine Zhang <zhangqing@rock-chips.com>
-Subject: [PATCH v1 3/3] soc: rockchip: power-domain: add rk3568 powerdomains
-Date: Wed, 17 Mar 2021 10:51:59 +0800
-Message-Id: <20210317025159.2248-4-zhangqing@rock-chips.com>
+Subject: [PATCH v1 0/3] soc: rockchip: power-domain: add rk3568 powerdomains
+Date: Wed, 17 Mar 2021 10:51:56 +0800
+Message-Id: <20210317025159.2248-1-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210317025159.2248-1-zhangqing@rock-chips.com>
-References: <20210317025159.2248-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210317_025505_361400_255B6F80 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20210317_025513_835001_10E4915F 
+X-CRM114-Status: UNSURE (   8.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,83 +90,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add power-domains found on rk3568 socs.
+Support power domain function for RK3568 Soc.
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
----
- drivers/soc/rockchip/pm_domains.c | 31 +++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+Elaine Zhang (3):
+  dt-bindings: add power-domain header for RK3568 SoCs
+  dt-bindings: Convert the rockchip power_domain to YAML and extend
+  soc: rockchip: power-domain: add rk3568 powerdomains
 
-diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-index 54eb6cfc5d5b..a2c19c845cf2 100644
---- a/drivers/soc/rockchip/pm_domains.c
-+++ b/drivers/soc/rockchip/pm_domains.c
-@@ -27,6 +27,7 @@
- #include <dt-bindings/power/rk3366-power.h>
- #include <dt-bindings/power/rk3368-power.h>
- #include <dt-bindings/power/rk3399-power.h>
-+#include <dt-bindings/power/rk3568-power.h>
- 
- struct rockchip_domain_info {
- 	int pwr_mask;
-@@ -131,6 +132,9 @@ struct rockchip_pmu {
- #define DOMAIN_RK3399(pwr, status, req, wakeup)		\
- 	DOMAIN(pwr, status, req, req, req, wakeup)
- 
-+#define DOMAIN_RK3568(pwr, req, wakeup)		\
-+	DOMAIN_M(pwr, pwr, req, req, req, wakeup)
-+
- static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
- {
- 	struct rockchip_pmu *pmu = pd->pmu;
-@@ -841,6 +845,18 @@ static const struct rockchip_domain_info rk3399_pm_domains[] = {
- 	[RK3399_PD_SDIOAUDIO]	= DOMAIN_RK3399(BIT(31), BIT(31), BIT(29), true),
- };
- 
-+static const struct rockchip_domain_info rk3568_pm_domains[] = {
-+	[RK3568_PD_NPU]		= DOMAIN_RK3568(BIT(1), BIT(2), false),
-+	[RK3568_PD_GPU]		= DOMAIN_RK3568(BIT(0), BIT(1), false),
-+	[RK3568_PD_VI]		= DOMAIN_RK3568(BIT(6), BIT(3), false),
-+	[RK3568_PD_VO]		= DOMAIN_RK3568(BIT(7),  BIT(4), false),
-+	[RK3568_PD_RGA]		= DOMAIN_RK3568(BIT(5),  BIT(5), false),
-+	[RK3568_PD_VPU]		= DOMAIN_RK3568(BIT(2), BIT(6), false),
-+	[RK3568_PD_RKVDEC]	= DOMAIN_RK3568(BIT(4), BIT(8), false),
-+	[RK3568_PD_RKVENC]	= DOMAIN_RK3568(BIT(3), BIT(7), false),
-+	[RK3568_PD_PIPE]	= DOMAIN_RK3568(BIT(8), BIT(11), false),
-+};
-+
- static const struct rockchip_pmu_info px30_pmu = {
- 	.pwr_offset = 0x18,
- 	.status_offset = 0x20,
-@@ -976,6 +992,17 @@ static const struct rockchip_pmu_info rk3399_pmu = {
- 	.domain_info = rk3399_pm_domains,
- };
- 
-+static const struct rockchip_pmu_info rk3568_pmu = {
-+	.pwr_offset = 0xa0,
-+	.status_offset = 0x98,
-+	.req_offset = 0x50,
-+	.idle_offset = 0x68,
-+	.ack_offset = 0x60,
-+
-+	.num_domains = ARRAY_SIZE(rk3568_pm_domains),
-+	.domain_info = rk3568_pm_domains,
-+};
-+
- static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 	{
- 		.compatible = "rockchip,px30-power-controller",
-@@ -1021,6 +1048,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
- 		.compatible = "rockchip,rk3399-power-controller",
- 		.data = (void *)&rk3399_pmu,
- 	},
-+	{
-+		.compatible = "rockchip,rk3568-power-controller",
-+		.data = (void *)&rk3568_pmu,
-+	},
- 	{ /* sentinel */ },
- };
- 
+ .../bindings/soc/rockchip/power_domain.txt    | 136 ------------
+ .../rockchip/rockchip,power-controller.yaml   | 199 ++++++++++++++++++
+ drivers/soc/rockchip/pm_domains.c             |  31 +++
+ include/dt-bindings/power/rk3568-power.h      |  32 +++
+ 4 files changed, 262 insertions(+), 136 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+ create mode 100644 Documentation/devicetree/bindings/soc/rockchip/rockchip,power-controller.yaml
+ create mode 100644 include/dt-bindings/power/rk3568-power.h
+
 -- 
 2.17.1
 
