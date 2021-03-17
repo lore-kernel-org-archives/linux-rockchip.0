@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D958C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68447C433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:39:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D55D64F99
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:36:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D55D64F99
+	by mail.kernel.org (Postfix) with ESMTPS id 0539264F8A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Mar 2021 01:39:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0539264F8A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,47 +22,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:References:
 	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+RqUiTOeYUbrHPsNyBbBVp00ySW5QA1H0L8Cbi0mU4s=; b=andM+a/0HeLaPE/VjNC91kH1H
-	iWomSn0VJ8QTMaEO0qFBaivgs/v3D/yK+YpQJAyDcNnK1X4H61EKTknmlHWWE++tHLIWZ626sAjhH
-	cbFEjO6yiB2cKAazUWTtpB59kJsGkn7ssQAqIyi3zYiwoD4k9y2JuTiYd0s7siJe9oWGhQlYWRWwv
-	DVTIbJ3XJ02P2swdKKw3v9W/kLAz6AlJhLKbfseY1CN+a3sBptvVP9gm/gdb0kFMjTiWjZkGlRf2Y
-	nYWzeyEjvKe+PbjAKi05fYFTveK0MR+1reJREQ+RN/nvVIESpbDNZrW4pyJw+VFHRBZKEntVy33AJ
-	hbyQcPreA==;
+	 bh=jlRipNW49KNV8T/5E8Se8Ag6hlcZF7XzaZt5Gad+d0o=; b=cLGvLc58qXSE6eSsM1JxC28TT
+	5IykVt3KWQhu3z15tuck7XO28zlS+iMcP3yGdhcTgs7U3Jada4HbyDBAckoeXW5joayRRxcj1XRpG
+	keMXEnRaeoxsIIFISere5oVZZt5H2YCDGLtV8rMDurhri9IGg1XhH0R3g6IVV0lN36wMgtyCA6VNd
+	WMTFu+0Rk+/slqtPCQakZ3aDMcuWHBM5rj8mameDEAEJHfb8tXDOT7tU6HxU7IJ7Q2Snh08n5lNB9
+	POwF3mTPDRTvohAar/E1FUC5sv7cYv7mmJxZYORpB7tmuLqWAdDuy7ja0XMvwhkbegjdUC/gH5k3Q
+	Tt/K8MYsw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lML78-002EI0-4E; Wed, 17 Mar 2021 01:36:47 +0000
+	id 1lML9b-002EWC-Cp; Wed, 17 Mar 2021 01:39:19 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lML73-002EH0-Av
- for linux-rockchip@lists.infradead.org; Wed, 17 Mar 2021 01:36:43 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id EF29D64F99;
- Wed, 17 Mar 2021 01:36:39 +0000 (UTC)
+ id 1lML9P-002EUv-Ri; Wed, 17 Mar 2021 01:39:09 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 50CA364F3C;
+ Wed, 17 Mar 2021 01:39:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1615945000;
- bh=Sc97qhhpJZEboCOxPhj04eeJ/fGLVXl1L3DyhupBQJc=;
+ s=k20201202; t=1615945146;
+ bh=qGnc9fuxsfjUHSlaUCeiyxDxXEohk8ay31RvtAPRkDE=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=jVb6urGcVHcBQTAoM/5siv6wYgCE6Aapy2KqcHi1yL0d+PWtdhuBBEMJ+lgnesdFd
- lhvkzm3NAp7n/FE2EtFy94ZQYZSD5tZJ/EaSZ1jCmkMA/oY0lk8PwOtW9DZzdYlXz3
- 7NWFmPrQOQNHhQMbz8zIPMzUBxSaJ5E9vJ4RmPEwVObR/kgDUuIFh7ka/A5xiahnku
- +J5cY/aw4R44WkEVyGEX6wreKRYyMaEazOU3JgGgCW/KNPkpO7/+z3uwZrJARzyb9n
- QFD2thYFoybH41pW9ehFo9iRQWGXe11TXkD68yUAlRBGogkkuPFBoU6J/gZYUroPgI
- /AwOFa9XCrrGw==
+ b=BqUhghEP2W5tHnWYYQg5SbChqqx5dyGv498DX9lWX8BHg8Zzoa2d4PY0n6qfztG5o
+ QpXB9KzVv4zfQ8xWT3PyKoSCvTbfgeaDjm4GcBAvEQ1EUyHr/IWRQN+KEem/QFdggm
+ IVlH84OwRUBQa0Pizb0sl3IJXe3Ygfh7DCVIiGPTyBH4HC4bRj64OlC8jcDw5ltriz
+ 9Klv5aaSVydz6aBEnMr26G1/RYnxEp6BeUnuGMV02XpX5VnOLsS/nVanXPYQRLLYGw
+ bvQD9XkRwSVMF+BuaWAtLVJ4U9S3oYs9ByoISEGHR6V+IeDSiclY8w1eQYI/zK7S7h
+ rc3GkWx5QFNhg==
 MIME-Version: 1.0
-In-Reply-To: <20210315112502.343699-2-heiko@sntech.de>
-References: <20210315112502.343699-1-heiko@sntech.de>
- <20210315112502.343699-2-heiko@sntech.de>
-Subject: Re: [PATCH 2/2] clk: rockchip: drop MODULE_ALIAS from rk3399 clock
- controller
+In-Reply-To: <20210315085608.16010-2-zhangqing@rock-chips.com>
+References: <20210315085608.16010-1-zhangqing@rock-chips.com>
+ <20210315085608.16010-2-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v5 1/4] dt-binding: clock: Document rockchip,
+ rk3568-cru bindings
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, zhangqing@rock-chips.com,
- mturquette@baylibre.com, linux-rockchip@lists.infradead.org
-To: heiko@sntech.de
-Date: Tue, 16 Mar 2021 18:36:38 -0700
-Message-ID: <161594499885.1478170.3779535512987411515@swboyd.mtv.corp.google.com>
+Cc: devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, cl@rock-chips.com, huangtao@rock-chips.com,
+ kever.yang@rock-chips.com, tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
+ Elaine Zhang <zhangqing@rock-chips.com>
+To: Elaine Zhang <zhangqing@rock-chips.com>, heiko@sntech.de,
+ mturquette@baylibre.com, robh+dt@kernel.org
+Date: Tue, 16 Mar 2021 18:39:05 -0700
+Message-ID: <161594514504.1478170.12364418555385947548@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210317_013641_941985_3A955A3C 
-X-CRM114-Status: UNSURE (   4.58  )
+X-CRM114-CacheID: sfid-20210317_013908_080640_1C0A1A07 
+X-CRM114-Status: UNSURE (   5.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,15 +84,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2021-03-15 04:25:02)
-> As suggested by Stephen during the rk3568 clock review, the MOUDLE_ALIAS
-> doesn't serve any meaningful purpose, so drop it from the rk3399 as well.
+Quoting Elaine Zhang (2021-03-15 01:56:05)
+> Document the device tree bindings of the rockchip Rk3568 SoC
+> clock driver in Documentation/devicetree/bindings/clock/rockchip,rk3568-cru.yaml.
 > 
-> Suggested-by: Stephen Boyd <sboyd@kernel.org>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > ---
 
-Reviewed-by: Stephen Boyd <sboyd@kernel.org>
+Acked-by: Stephen Boyd <sboyd@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
