@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72C0BC433E6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Mar 2021 08:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4786C433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Mar 2021 08:22:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1D25A64EF6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Mar 2021 08:21:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D25A64EF6
+	by mail.kernel.org (Postfix) with ESMTPS id 74C5764F30
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Mar 2021 08:22:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74C5764F30
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,21 +24,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ToisKk+FSv7SsfoiwZZaojJX/mF0QsIgUdw0x08UgeA=; b=k9b7GohnueCs2n8Uv12kttB/F
-	36LIN0tf8ABEOigKAD2qTtcwC2AFGykGwhh4ykKFCRMZ9qrrRK8ER0bdKsFVBSMCWiFurfHaVu9MY
-	PQOrjUh8ES4JNxiQ6WDQRGmI2CeQdYiFaDJt7tsA7iWo79u9lOzw15CLcn++OG/M60E5h5wW6arZm
-	m/g+yMd9A4HwqXo1P3ohhn27I6VwiwrBwdY96MXj+pOZ5Izqes+ayGjcwhv4wpZEAM1a3SeGsboBE
-	jMF2uHwUPej1RmRLYavfV+P9TcwRIbENceYtu9t0NCaVaOP+xMvsl40+OZUopTyq0wXWHf4alJpy9
-	1fsihZQiQ==;
+	 bh=9c+tIw1i9V+YFn8Oc6SYjqD1W3GTN9V8PkeY8gdmI14=; b=P1Soaw4BGSDWzPyRhDB/pL0sq
+	lD2zgI4zF2JVXFF9l/Asy+7qDtLWO7G/TlHAODsO0h54Nqdde1oTobY2nN+qR26M5C3bZhOiMTzAK
+	FCnipaJQGsoTKb3D/buQ60kvVoLnww4WPjrVJAlZ9FEcU9KdFaT2UYwg9cfLRTeNlYSn7JIQzRkps
+	ZAAs3zE0ThpCsoo10gNY+0yfwkA0HHNYNHoiqmX/ioVmiq4RYvOADAT/TRSdX0cVQ/mCVXIc2/0w/
+	xY1izRchOzQZG4bIia/3gyWXJDgS5IYlayzZCPCUhJU3+164PfOlZ5v9O5qeU6WmNdrmJPn0gxJ9M
+	RKOrvhEcA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lMnue-004kQf-O3; Thu, 18 Mar 2021 08:21:48 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lMnut-004kVi-6m; Thu, 18 Mar 2021 08:22:03 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lMntw-004kA9-AT; Thu, 18 Mar 2021 08:21:06 +0000
+ id 1lMntx-004kAV-Hp; Thu, 18 Mar 2021 08:21:07 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 147791F456D3
+ with ESMTPSA id 49B3F1F456D4
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -50,17 +50,16 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  devel@driverdev.osuosl.org, kernel@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 02/13] dt-bindings: media: nxp,
- imx8mq-vpu: Update the bindings for G2 support
-Date: Thu, 18 Mar 2021 09:20:35 +0100
-Message-Id: <20210318082046.51546-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 03/13] media: hantro: Use syscon instead of 'ctrl' register
+Date: Thu, 18 Mar 2021 09:20:36 +0100
+Message-Id: <20210318082046.51546-4-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
 References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210318_082104_549305_6DA02A4C 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20210318_082106_107830_8C0A9789 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,120 +77,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Introducing G2 hevc video decoder lead to modify the bindings to allow
-to get one node per VPUs.
-VPUs share one hardware control block which is provided as a phandle on
-an syscon.
-Each node got now one reg and one interrupt.
-Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
-
-To be compatible with older DT the driver is still capable to use 'ctrl'
-reg-name even if it is deprecated now.
+In order to be able to share the control hardware block between
+VPUs use a syscon instead a ioremap it in the driver.
+To keep the compatibility with older DT if 'nxp,imx8mq-vpu-ctrl'
+phandle is not found look at 'ctrl' reg-name.
+With the method it becomes useless to provide a list of register
+names so remove it.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
 version 5:
-- This version doesn't break the backward compatibilty between kernel
-  and DT.
+ - use syscon instead of VPU reset driver.
+ - if DT doesn't provide syscon keep backward compatibilty by using
+   'ctrl' reg-name.
 
- .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++-------
- 1 file changed, 34 insertions(+), 19 deletions(-)
+ drivers/staging/media/hantro/hantro.h       |  5 +-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c | 52 ++++++++++++---------
+ 2 files changed, 34 insertions(+), 23 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-index 762be3f96ce9..79502fc8bde5 100644
---- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-+++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-@@ -15,22 +15,18 @@ description:
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index 65f9f7ea7dcf..a99a96b84b5e 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -13,6 +13,7 @@
+ #define HANTRO_H_
  
- properties:
-   compatible:
--    const: nxp,imx8mq-vpu
-+    oneOf:
-+      - const: nxp,imx8mq-vpu
-+      - const: nxp,imx8mq-vpu-g2
+ #include <linux/platform_device.h>
++#include <linux/regmap.h>
+ #include <linux/videodev2.h>
+ #include <linux/wait.h>
+ #include <linux/clk.h>
+@@ -167,7 +168,7 @@ hantro_vdev_to_func(struct video_device *vdev)
+  * @reg_bases:		Mapped addresses of VPU registers.
+  * @enc_base:		Mapped address of VPU encoder register for convenience.
+  * @dec_base:		Mapped address of VPU decoder register for convenience.
+- * @ctrl_base:		Mapped address of VPU control block.
++ * @ctrl_base:		Regmap of VPU control block.
+  * @vpu_mutex:		Mutex to synchronize V4L2 calls.
+  * @irqlock:		Spinlock to synchronize access to data structures
+  *			shared with interrupt handlers.
+@@ -186,7 +187,7 @@ struct hantro_dev {
+ 	void __iomem **reg_bases;
+ 	void __iomem *enc_base;
+ 	void __iomem *dec_base;
+-	void __iomem *ctrl_base;
++	struct regmap *ctrl_base;
  
-   reg:
--    maxItems: 3
+ 	struct mutex vpu_mutex;	/* video_device lock */
+ 	spinlock_t irqlock;
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index c222de075ef4..bd9d135dd440 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -7,6 +7,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/mfd/syscon.h>
+ 
+ #include "hantro.h"
+ #include "hantro_jpeg.h"
+@@ -24,30 +25,28 @@
+ #define CTRL_G1_PP_FUSE		0x0c
+ #define CTRL_G2_DEC_FUSE	0x10
+ 
++static const struct regmap_config ctrl_regmap_ctrl = {
++	.reg_bits = 32,
++	.val_bits = 32,
++	.reg_stride = 0x14,
++};
++
+ static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
+ {
+-	u32 val;
 -
--  reg-names:
--    items:
--      - const: g1
--      - const: g2
--      - const: ctrl
-+    maxItems: 1
+ 	/* Assert */
+-	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+-	val &= ~reset_bits;
+-	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
++	regmap_update_bits(vpu->ctrl_base, CTRL_SOFT_RESET, reset_bits, 0);
  
-   interrupts:
--    maxItems: 2
-+    maxItems: 1
+ 	udelay(2);
  
-   interrupt-names:
--    items:
-+    oneOf:
-       - const: g1
-       - const: g2
+ 	/* Release */
+-	val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+-	val |= reset_bits;
+-	writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
++	regmap_update_bits(vpu->ctrl_base, CTRL_SOFT_RESET,
++			   reset_bits, reset_bits);
+ }
  
-@@ -46,14 +42,18 @@ properties:
-   power-domains:
-     maxItems: 1
+ static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
+ {
+-	u32 val;
+-
+-	val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+-	val |= clock_bits;
+-	writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
++	regmap_update_bits(vpu->ctrl_base, CTRL_CLOCK_ENABLE,
++			   clock_bits, clock_bits);
+ }
  
-+  nxp,imx8mq-vpu-ctrl:
-+    description: Specifies a phandle to syscon VPU hardware control block
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
+ static int imx8mq_runtime_resume(struct hantro_dev *vpu)
+@@ -64,9 +63,9 @@ static int imx8mq_runtime_resume(struct hantro_dev *vpu)
+ 	imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
+ 
+ 	/* Set values of the fuse registers */
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
+-	writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
++	regmap_write(vpu->ctrl_base, CTRL_G1_DEC_FUSE, 0xffffffff);
++	regmap_write(vpu->ctrl_base, CTRL_G1_PP_FUSE, 0xffffffff);
++	regmap_write(vpu->ctrl_base, CTRL_G2_DEC_FUSE, 0xffffffff);
+ 
+ 	clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 
+@@ -150,8 +149,22 @@ static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
+ 
+ static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+ {
+-	vpu->dec_base = vpu->reg_bases[0];
+-	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
++	struct device_node *np = vpu->dev->of_node;
 +
- required:
-   - compatible
-   - reg
--  - reg-names
-   - interrupts
-   - interrupt-names
-   - clocks
-   - clock-names
-+  - nxp,imx8mq-vpu-ctrl
- 
- additionalProperties: false
- 
-@@ -62,18 +62,33 @@ examples:
-         #include <dt-bindings/clock/imx8mq-clock.h>
-         #include <dt-bindings/interrupt-controller/arm-gic.h>
- 
--        vpu: video-codec@38300000 {
-+        vpu_ctrl: syscon@38320000 {
-+                 compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
-+                 reg = <0x38320000 0x10000>;
-+        };
++	vpu->ctrl_base = syscon_regmap_lookup_by_phandle(np, "nxp,imx8mq-vpu-ctrl");
++	if (IS_ERR(vpu->ctrl_base)) {
++		struct resource *res;
++		void __iomem *ctrl;
 +
-+        vpu_g1: video-codec@38300000 {
-                 compatible = "nxp,imx8mq-vpu";
--                reg = <0x38300000 0x10000>,
--                      <0x38310000 0x10000>,
--                      <0x38320000 0x10000>;
--                reg-names = "g1", "g2", "ctrl";
--                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--                interrupt-names = "g1", "g2";
-+                reg = <0x38300000 0x10000>;
-+                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+                interrupt-names = "g1";
-+                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+                clock-names = "g1", "g2", "bus";
-+                power-domains = <&pgc_vpu>;
-+                nxp,imx8mq-vpu-ctrl = <&vpu_ctrl>;
-+        };
++		res = platform_get_resource_byname(vpu->pdev, IORESOURCE_MEM, "ctrl");
++		ctrl = devm_ioremap_resource(vpu->dev, res);
++		if (IS_ERR(ctrl))
++			return PTR_ERR(ctrl);
 +
-+        vpu_g2: video-codec@38310000 {
-+                compatible = "nxp,imx8mq-vpu-g2";
-+                reg = <0x38300000 0x10000>;
-+                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+                interrupt-names = "g2";
-                 clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-                          <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-                          <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-                 clock-names = "g1", "g2", "bus";
-                 power-domains = <&pgc_vpu>;
-+                nxp,imx8mq-vpu-ctrl = <&vpu_ctrl>;
-         };
++		vpu->ctrl_base = devm_regmap_init_mmio(vpu->dev, ctrl, &ctrl_regmap_ctrl);
++		if (IS_ERR(vpu->ctrl_base))
++			return PTR_ERR(vpu->ctrl_base);
++	}
+ 
+ 	return 0;
+ }
+@@ -198,7 +211,6 @@ static const struct hantro_irq imx8mq_irqs[] = {
+ };
+ 
+ static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
+-static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
+ 
+ const struct hantro_variant imx8mq_vpu_variant = {
+ 	.dec_fmts = imx8m_vpu_dec_fmts,
+@@ -215,6 +227,4 @@ const struct hantro_variant imx8mq_vpu_variant = {
+ 	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
+ 	.clk_names = imx8mq_clk_names,
+ 	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
+-	.reg_names = imx8mq_reg_names,
+-	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
+ };
 -- 
 2.25.1
 
