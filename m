@@ -2,76 +2,91 @@ Return-Path: <SRS0=S+7F=IR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01274C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 08:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD705C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 11:16:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6050C64F6A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 08:15:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6050C64F6A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5C38964F53
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 11:16:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C38964F53
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mZqE2XzMnK6z3UQefWVGf3HZvjfw5ZETNjIvtdc/ffw=; b=jKXrn5uHmc8CugQsoaikRRUqY
-	J8A4yA/eBqqfOppLjm2dHupjXsPE9Y10FvgzXTQQytRFL7YFnrs1YX4HXkQEFjg8WzhlffI1HxgWc
-	EUqdYt02m6Tg6C/YtQUNr91+6yMcV5wL4JG0PSTSHIsPDT3v6NUKUQq4OBarojV9PUt93/S33/F68
-	BHXc4ERANTYds8PVUuP+ww3xhAao+6abYaKe+JO9TdPbd1LqWBxPjzVrTAqabJGjXM1tw533gqVGj
-	1NUhLkm6MLtMeMRyeMH+SbHhkNAj0JhfC66QlpW0TfIkJQ8rELEm4iUkHOBa7QxUX3wT+4wh+mdmb
-	yxiHue/Zg==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nh44Wt4YNhJAxHN6AEGqM8xI79nXjyRhnrb5ET+3f7k=; b=KrP5jjGXvP7EFE3kOUofXyCmd8
+	yKCozyr907DqE2a3KU+aZe19BbuJZquoJeIhJTGcuobGGDdpU1GBOF6zzYjDUzXgVx5cmFIJvznMT
+	LvJdVj5u7DHQmVcygFPFHiOnFaC0+KIE++u5jSQlLuG5eXdU6b8Sepr/VfUE68BsWBWWlzTU0Y/rc
+	YbRXxkCcEM1v/xvaNK5CM+LHW1/UgiHfbJKI29QoHAQ9td2ZR9TtKhZ9FyAUseCv2AbaDb9Ljc80+
+	sqq0OeprcATpf6UaMkJL/PX2shZQFX1Tqlxa6Dmn7hYMIBXPsoAr+P3oe0BteAhTuH/F0esbi8WuV
+	JEkx/F8A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lNAHW-006rwn-2j; Fri, 19 Mar 2021 08:14:54 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1lND7Z-007IkG-3I; Fri, 19 Mar 2021 11:16:49 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lNAHQ-006ruO-SY
- for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 08:14:51 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id DCE82B9C86;
- Fri, 19 Mar 2021 16:14:44 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P13109T139929653327616S1616141684234242_; 
- Fri, 19 Mar 2021 16:14:45 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b4fc76202e7e426faa080cc9ffe48171>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: linus.walleij@linaro.org
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: linus.walleij@linaro.org, heiko@sntech.de, catalin.marinas@arm.com,
- will@kernel.org
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v4] pinctrl: rockchip: add support for rk3568
-Date: Fri, 19 Mar 2021 16:14:41 +0800
-Message-Id: <20210319081441.368358-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210304013342.1106361-1-jay.xu@rock-chips.com>
-References: <20210304013342.1106361-1-jay.xu@rock-chips.com>
-MIME-Version: 1.0
+ id 1lNCwn-007F2I-Op
+ for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 11:05:50 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id e18so8682654wrt.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 04:05:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=4/chfQtIv4nkYAhw823ZDxPsTY3OzuaLkKHNmOeT7jY=;
+ b=Vzo9kEvKSFjCgF3u/xU/KHGfVl2K/vlYFQAD38/teB0a4LANjjXp/zZWeg7HEyfnRP
+ 2ncamnZAptv1u18sshdQmfkpLO70SorzlfQDcqlImCIqdvuUKjpki69jFQKUkq/H9sCo
+ pfvNvOA+ldgHbgyJEEnIillJNT2t6yXp4zGDc/Os9Nsp/hj7cgvsRs7adqZQkamIjUg3
+ J2kaIwVvyJnBrL15jO218e6JV5Wah0VB1XdF1n1Wr+nuBd0rIHNktYgVkQ+IByzGRhUQ
+ AP/wxv5fiysZ7PTGzmP4gSTkJQS50hDGcjiL3sdLbkFWkroJfz4r9bcfWwgwTbITO/Va
+ hhqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=4/chfQtIv4nkYAhw823ZDxPsTY3OzuaLkKHNmOeT7jY=;
+ b=F1UjtnFZ7UhaiP/wHmmvzAXVSXMYNBN+LSYUsuFahPpigWeg/fgjab2hc0BRdq2402
+ hLZsCwtYcd175VsEv4k8EUVUuurLEUVIz6ydiumLvETICuJJpsjZKIlBgJJqo/zYJBbz
+ d7/eD5PGhMhCHwiBPjF7MRSE+Devw46W9cpNm8HrFKjAHGBR7CJtulelpU4LDrfVpEqb
+ uoiWZw+8ihfTmhlRN3Q72dMxmBZpCZuzJREaacxd9pLHj0kb+gG7GwyOJ772DnKpN0Hn
+ 9domXwKCBP/RT6sr4lfdJEzLyT90uj5PVy+FJDxcdsz2UZRTwLhT6g7NnalcBm5KAX/0
+ kUnQ==
+X-Gm-Message-State: AOAM530BDEXWy5XiZW6voE0Pzx14MIeRFujj4rl9bMZeRkMuFKsfimoE
+ oIt4PGGblVv0uwkcxO0G0nUYPPQ772/JVg==
+X-Google-Smtp-Source: ABdhPJxjEFbBmaa3JKCf17wA3LZKsE8ujdZs700Nr3q83zpiD4R/NgKRFxXRqcSK3AVITKnZ1R0B/g==
+X-Received: by 2002:a5d:6703:: with SMTP id o3mr3886879wru.357.1616151939819; 
+ Fri, 19 Mar 2021 04:05:39 -0700 (PDT)
+Received: from localhost.localdomain ([82.142.18.100])
+ by smtp.gmail.com with ESMTPSA id y205sm7232314wmc.18.2021.03.19.04.05.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Mar 2021 04:05:39 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: heiko@sntech.de
+Cc: Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ Helen Koike <helen.koike@collabora.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>,
+ Jacob Chen <jacob2.chen@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), 
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+ linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+ linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH] dt: rockchip: rk3399: Add dynamic power coefficient for GPU
+Date: Fri, 19 Mar 2021 12:05:09 +0100
+Message-Id: <20210319110511.24787-1-daniel.lezcano@linaro.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_081449_548430_6BA4F75A 
-X-CRM114-Status: GOOD (  21.40  )
+X-CRM114-CacheID: sfid-20210319_110542_339566_861DE731 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,429 +99,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3568 SoCs have 5 gpio controllers, each gpio has 32 pins. GPIO supports
-set iomux, pull, drive strength and schmitt.
+The DTPM framework is looking for upstream SoC candidates to share the
+power numbers.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+We can see around different numbers but the one which seems to be
+consistent with the initial post for the values on the CPUs can be
+found in the patch https://lore.kernel.org/patchwork/patch/810159/
+
+I don't know the precision of this value but it is better than
+nothing.
+
+Hopefully, one day SoC vendors will be more generous with the power
+numbers at least for the SoC which are from the previous generation
+and give the community the opportunity to develop power based
+frameworks.
 ---
-v3:
-- fix route_type to route_location, compile error fix
-- remove slewrate option
-v2:
-- fix mux route grf base for gpio bank 0
-v1:
-- modify _GENMASK to WRITE_MASK_VAL, and add comment for the define
-- modify MR_GRF to RK_MUXROUTE_GRF, also for MR_SAME and MR_PMU
-- add comment for pull setting for GPIO0_D0-D6
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
- drivers/pinctrl/pinctrl-rockchip.c | 292 ++++++++++++++++++++++++++++-
- 1 file changed, 290 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index deabfbc74a01..2eb51ddfca02 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -63,8 +63,17 @@ enum rockchip_pinctrl_type {
- 	RK3308,
- 	RK3368,
- 	RK3399,
-+	RK3568,
- };
- 
-+
-+/**
-+ * Generate a bitmask for setting a value (v) with a write mask bit in hiword
-+ * register 31:16 area.
-+ */
-+#define WRITE_MASK_VAL(h, l, v) \
-+	(GENMASK(((h) + 16), ((l) + 16)) | (((v) << (l)) & GENMASK((h), (l))))
-+
- /*
-  * Encode variants of iomux registers into a type variable
-  */
-@@ -292,6 +301,25 @@ struct rockchip_pin_bank {
- 		.pull_type[3] = pull3,					\
- 	}
- 
-+#define PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, FLAG)		\
-+	{								\
-+		.bank_num	= ID,					\
-+		.pin		= PIN,					\
-+		.func		= FUNC,					\
-+		.route_offset	= REG,					\
-+		.route_val	= VAL,					\
-+		.route_location	= FLAG,					\
-+	}
-+
-+#define RK_MUXROUTE_SAME(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_SAME)
-+
-+#define RK_MUXROUTE_GRF(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_GRF)
-+
-+#define RK_MUXROUTE_PMU(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_PMU)
-+
- /**
-  * struct rockchip_mux_recalced_data: represent a pin iomux data.
-  * @num: bank number.
-@@ -1396,6 +1424,102 @@ static struct rockchip_mux_route_data rk3399_mux_route_data[] = {
- 	},
- };
- 
-+static struct rockchip_mux_route_data rk3568_mux_route_data[] = {
-+	RK_MUXROUTE_PMU(0, RK_PB7, 1, 0x0110, WRITE_MASK_VAL(1, 0, 0)), /* PWM0 IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PC7, 2, 0x0110, WRITE_MASK_VAL(1, 0, 1)), /* PWM0 IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PC0, 1, 0x0110, WRITE_MASK_VAL(3, 2, 0)), /* PWM1 IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PB5, 4, 0x0110, WRITE_MASK_VAL(3, 2, 1)), /* PWM1 IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PC1, 1, 0x0110, WRITE_MASK_VAL(5, 4, 0)), /* PWM2 IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PB6, 4, 0x0110, WRITE_MASK_VAL(5, 4, 1)), /* PWM2 IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PB3, 2, 0x0300, WRITE_MASK_VAL(0, 0, 0)), /* CAN0 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PA1, 4, 0x0300, WRITE_MASK_VAL(0, 0, 1)), /* CAN0 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA1, 3, 0x0300, WRITE_MASK_VAL(2, 2, 0)), /* CAN1 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC3, 3, 0x0300, WRITE_MASK_VAL(2, 2, 1)), /* CAN1 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PB5, 3, 0x0300, WRITE_MASK_VAL(4, 4, 0)), /* CAN2 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PB2, 4, 0x0300, WRITE_MASK_VAL(4, 4, 1)), /* CAN2 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PC4, 1, 0x0300, WRITE_MASK_VAL(6, 6, 0)), /* HPDIN IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PC2, 2, 0x0300, WRITE_MASK_VAL(6, 6, 1)), /* HPDIN IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB1, 3, 0x0300, WRITE_MASK_VAL(8, 8, 0)), /* GMAC1 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PA7, 3, 0x0300, WRITE_MASK_VAL(8, 8, 1)), /* GMAC1 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PD1, 1, 0x0300, WRITE_MASK_VAL(10, 10, 0)), /* HDMITX IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PC7, 1, 0x0300, WRITE_MASK_VAL(10, 10, 1)), /* HDMITX IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PB6, 1, 0x0300, WRITE_MASK_VAL(14, 14, 0)), /* I2C2 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PB4, 1, 0x0300, WRITE_MASK_VAL(14, 14, 1)), /* I2C2 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA0, 1, 0x0304, WRITE_MASK_VAL(0, 0, 0)), /* I2C3 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PB6, 4, 0x0304, WRITE_MASK_VAL(0, 0, 1)), /* I2C3 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PB2, 1, 0x0304, WRITE_MASK_VAL(2, 2, 0)), /* I2C4 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PB1, 2, 0x0304, WRITE_MASK_VAL(2, 2, 1)), /* I2C4 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB4, 4, 0x0304, WRITE_MASK_VAL(4, 4, 0)), /* I2C5 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PD0, 2, 0x0304, WRITE_MASK_VAL(4, 4, 1)), /* I2C5 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB1, 5, 0x0304, WRITE_MASK_VAL(14, 14, 0)), /* PWM8 IO mux M0 */
-+	RK_MUXROUTE_GRF(1, RK_PD5, 4, 0x0304, WRITE_MASK_VAL(14, 14, 1)), /* PWM8 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB2, 5, 0x0308, WRITE_MASK_VAL(0, 0, 0)), /* PWM9 IO mux M0 */
-+	RK_MUXROUTE_GRF(1, RK_PD6, 4, 0x0308, WRITE_MASK_VAL(0, 0, 1)), /* PWM9 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB5, 5, 0x0308, WRITE_MASK_VAL(2, 2, 0)), /* PWM10 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PA1, 2, 0x0308, WRITE_MASK_VAL(2, 2, 1)), /* PWM10 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB6, 5, 0x0308, WRITE_MASK_VAL(4, 4, 0)), /* PWM11 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC0, 3, 0x0308, WRITE_MASK_VAL(4, 4, 1)), /* PWM11 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PB7, 2, 0x0308, WRITE_MASK_VAL(6, 6, 0)), /* PWM12 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC5, 1, 0x0308, WRITE_MASK_VAL(6, 6, 1)), /* PWM12 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PC0, 2, 0x0308, WRITE_MASK_VAL(8, 8, 0)), /* PWM13 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC6, 1, 0x0308, WRITE_MASK_VAL(8, 8, 1)), /* PWM13 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PC4, 1, 0x0308, WRITE_MASK_VAL(10, 10, 0)), /* PWM14 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC2, 1, 0x0308, WRITE_MASK_VAL(10, 10, 1)), /* PWM14 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PC5, 1, 0x0308, WRITE_MASK_VAL(12, 12, 0)), /* PWM15 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC3, 1, 0x0308, WRITE_MASK_VAL(12, 12, 1)), /* PWM15 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PD2, 3, 0x0308, WRITE_MASK_VAL(14, 14, 0)), /* SDMMC2 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PA5, 5, 0x0308, WRITE_MASK_VAL(14, 14, 1)), /* SDMMC2 IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PB5, 2, 0x030c, WRITE_MASK_VAL(0, 0, 0)), /* SPI0 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD3, 3, 0x030c, WRITE_MASK_VAL(0, 0, 1)), /* SPI0 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PB5, 3, 0x030c, WRITE_MASK_VAL(2, 2, 0)), /* SPI1 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PC3, 3, 0x030c, WRITE_MASK_VAL(2, 2, 1)), /* SPI1 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PC1, 4, 0x030c, WRITE_MASK_VAL(4, 4, 0)), /* SPI2 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PA0, 3, 0x030c, WRITE_MASK_VAL(4, 4, 1)), /* SPI2 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PB3, 4, 0x030c, WRITE_MASK_VAL(6, 6, 0)), /* SPI3 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC2, 2, 0x030c, WRITE_MASK_VAL(6, 6, 1)), /* SPI3 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PB4, 2, 0x030c, WRITE_MASK_VAL(8, 8, 0)), /* UART1 IO mux M0 */
-+	RK_MUXROUTE_PMU(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(8, 8, 1)), /* UART1 IO mux M1 */
-+	RK_MUXROUTE_PMU(0, RK_PD1, 1, 0x030c, WRITE_MASK_VAL(10, 10, 0)), /* UART2 IO mux M0 */
-+	RK_MUXROUTE_GRF(1, RK_PD5, 2, 0x030c, WRITE_MASK_VAL(10, 10, 1)), /* UART2 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA1, 2, 0x030c, WRITE_MASK_VAL(12, 12, 0)), /* UART3 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PB7, 4, 0x030c, WRITE_MASK_VAL(12, 12, 1)), /* UART3 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA6, 2, 0x030c, WRITE_MASK_VAL(14, 14, 0)), /* UART4 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PB2, 4, 0x030c, WRITE_MASK_VAL(14, 14, 1)), /* UART4 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PA2, 3, 0x0310, WRITE_MASK_VAL(0, 0, 0)), /* UART5 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PC2, 4, 0x0310, WRITE_MASK_VAL(0, 0, 1)), /* UART5 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PA4, 3, 0x0310, WRITE_MASK_VAL(2, 2, 0)), /* UART6 IO mux M0 */
-+	RK_MUXROUTE_GRF(1, RK_PD5, 3, 0x0310, WRITE_MASK_VAL(2, 2, 1)), /* UART6 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PA6, 3, 0x0310, WRITE_MASK_VAL(5, 4, 0)), /* UART7 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PC4, 4, 0x0310, WRITE_MASK_VAL(5, 4, 1)), /* UART7 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PA2, 4, 0x0310, WRITE_MASK_VAL(5, 4, 2)), /* UART7 IO mux M2 */
-+	RK_MUXROUTE_GRF(2, RK_PC5, 3, 0x0310, WRITE_MASK_VAL(6, 6, 0)), /* UART8 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD7, 4, 0x0310, WRITE_MASK_VAL(6, 6, 1)), /* UART8 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PB0, 3, 0x0310, WRITE_MASK_VAL(9, 8, 0)), /* UART9 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC5, 4, 0x0310, WRITE_MASK_VAL(9, 8, 1)), /* UART9 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PA4, 4, 0x0310, WRITE_MASK_VAL(9, 8, 2)), /* UART9 IO mux M2 */
-+	RK_MUXROUTE_GRF(1, RK_PA2, 1, 0x0310, WRITE_MASK_VAL(11, 10, 0)), /* I2S1 IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PC6, 4, 0x0310, WRITE_MASK_VAL(11, 10, 1)), /* I2S1 IO mux M1 */
-+	RK_MUXROUTE_GRF(2, RK_PD0, 5, 0x0310, WRITE_MASK_VAL(11, 10, 2)), /* I2S1 IO mux M2 */
-+	RK_MUXROUTE_GRF(2, RK_PC1, 1, 0x0310, WRITE_MASK_VAL(12, 12, 0)), /* I2S2 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PB6, 5, 0x0310, WRITE_MASK_VAL(12, 12, 1)), /* I2S2 IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PA2, 4, 0x0310, WRITE_MASK_VAL(14, 14, 0)), /* I2S3 IO mux M0 */
-+	RK_MUXROUTE_GRF(4, RK_PC2, 5, 0x0310, WRITE_MASK_VAL(14, 14, 1)), /* I2S3 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(1, 0, 0)), /* PDM IO mux M0 */
-+	RK_MUXROUTE_GRF(1, RK_PA6, 3, 0x0314, WRITE_MASK_VAL(1, 0, 0)), /* PDM IO mux M0 */
-+	RK_MUXROUTE_GRF(3, RK_PD6, 5, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PA0, 4, 0x0314, WRITE_MASK_VAL(1, 0, 1)), /* PDM IO mux M1 */
-+	RK_MUXROUTE_GRF(3, RK_PC4, 5, 0x0314, WRITE_MASK_VAL(1, 0, 2)), /* PDM IO mux M2 */
-+	RK_MUXROUTE_PMU(0, RK_PA5, 3, 0x0314, WRITE_MASK_VAL(3, 2, 0)), /* PCIE20 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 1)), /* PCIE20 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PB0, 4, 0x0314, WRITE_MASK_VAL(3, 2, 2)), /* PCIE20 IO mux M2 */
-+	RK_MUXROUTE_PMU(0, RK_PA4, 3, 0x0314, WRITE_MASK_VAL(5, 4, 0)), /* PCIE30X1 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD2, 4, 0x0314, WRITE_MASK_VAL(5, 4, 1)), /* PCIE30X1 IO mux M1 */
-+	RK_MUXROUTE_GRF(1, RK_PA5, 4, 0x0314, WRITE_MASK_VAL(5, 4, 2)), /* PCIE30X1 IO mux M2 */
-+	RK_MUXROUTE_PMU(0, RK_PA6, 2, 0x0314, WRITE_MASK_VAL(7, 6, 0)), /* PCIE30X2 IO mux M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD4, 4, 0x0314, WRITE_MASK_VAL(7, 6, 1)), /* PCIE30X2 IO mux M1 */
-+	RK_MUXROUTE_GRF(4, RK_PC2, 4, 0x0314, WRITE_MASK_VAL(7, 6, 2)), /* PCIE30X2 IO mux M2 */
-+};
-+
- static bool rockchip_get_mux_route(struct rockchip_pin_bank *bank, int pin,
- 				   int mux, u32 *loc, u32 *reg, u32 *value)
- {
-@@ -2104,6 +2228,68 @@ static void rk3399_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
- 		*bit = (pin_num % 8) * 2;
- }
- 
-+#define RK3568_PULL_PMU_OFFSET		0x20
-+#define RK3568_PULL_GRF_OFFSET		0x80
-+#define RK3568_PULL_BITS_PER_PIN	2
-+#define RK3568_PULL_PINS_PER_REG	8
-+#define RK3568_PULL_BANK_STRIDE		0x10
-+
-+static void rk3568_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					 int pin_num, struct regmap **regmap,
-+					 int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK3568_PULL_PMU_OFFSET;
-+		*reg += bank->bank_num * RK3568_PULL_BANK_STRIDE;
-+		*reg += ((pin_num / RK3568_PULL_PINS_PER_REG) * 4);
-+
-+		*bit = pin_num % RK3568_PULL_PINS_PER_REG;
-+		*bit *= RK3568_PULL_BITS_PER_PIN;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK3568_PULL_GRF_OFFSET;
-+		*reg += (bank->bank_num - 1) * RK3568_PULL_BANK_STRIDE;
-+		*reg += ((pin_num / RK3568_PULL_PINS_PER_REG) * 4);
-+
-+		*bit = (pin_num % RK3568_PULL_PINS_PER_REG);
-+		*bit *= RK3568_PULL_BITS_PER_PIN;
-+	}
-+}
-+
-+#define RK3568_DRV_PMU_OFFSET		0x70
-+#define RK3568_DRV_GRF_OFFSET		0x200
-+#define RK3568_DRV_BITS_PER_PIN		8
-+#define RK3568_DRV_PINS_PER_REG		2
-+#define RK3568_DRV_BANK_STRIDE		0x40
-+
-+static void rk3568_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 32 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK3568_DRV_PMU_OFFSET;
-+		*reg += ((pin_num / RK3568_DRV_PINS_PER_REG) * 4);
-+
-+		*bit = pin_num % RK3568_DRV_PINS_PER_REG;
-+		*bit *= RK3568_DRV_BITS_PER_PIN;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK3568_DRV_GRF_OFFSET;
-+		*reg += (bank->bank_num - 1) * RK3568_DRV_BANK_STRIDE;
-+		*reg += ((pin_num / RK3568_DRV_PINS_PER_REG) * 4);
-+
-+		*bit = (pin_num % RK3568_DRV_PINS_PER_REG);
-+		*bit *= RK3568_DRV_BITS_PER_PIN;
-+	}
-+}
-+
- static int rockchip_perpin_drv_list[DRV_TYPE_MAX][8] = {
- 	{ 2, 4, 8, 12, -1, -1, -1, -1 },
- 	{ 3, 6, 9, 12, -1, -1, -1, -1 },
-@@ -2204,6 +2390,11 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		bank->bank_num, pin_num, strength);
- 
- 	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
-+	if (ctrl->type == RK3568) {
-+		rmask_bits = RK3568_DRV_BITS_PER_PIN;
-+		ret = (1 << (strength + 1)) - 1;
-+		goto config;
-+	}
- 
- 	ret = -EINVAL;
- 	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list[drv_type]); i++) {
-@@ -2273,6 +2464,7 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		return -EINVAL;
- 	}
- 
-+config:
- 	/* enable the write to the equivalent lower bits */
- 	data = ((1 << rmask_bits) - 1) << (bit + 16);
- 	rmask = data | (data >> 16);
-@@ -2375,6 +2567,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case RK3308:
- 	case RK3368:
- 	case RK3399:
-+	case RK3568:
- 		pull_type = bank->pull_type[pin_num / 8];
- 		ret = -EINVAL;
- 		for (i = 0; i < ARRAY_SIZE(rockchip_pull_list[pull_type]);
-@@ -2384,6 +2577,14 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 				break;
- 			}
- 		}
-+		/*
-+		 * In the TRM, pull-up being 1 for everything except the GPIO0_D0-D6,
-+		 * where that pull up value becomes 3.
-+		 */
-+		if (ctrl->type == RK3568 && bank->bank_num == 0 && pin_num >= 27 && pin_num <= 30) {
-+			if (ret == 1)
-+				ret = 3;
-+		}
- 
- 		if (ret < 0) {
- 			dev_err(info->dev, "unsupported pull setting %d\n",
-@@ -2428,6 +2629,35 @@ static int rk3328_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	return 0;
- }
- 
-+#define RK3568_SCHMITT_BITS_PER_PIN		2
-+#define RK3568_SCHMITT_PINS_PER_REG		8
-+#define RK3568_SCHMITT_BANK_STRIDE		0x10
-+#define RK3568_SCHMITT_GRF_OFFSET		0xc0
-+#define RK3568_SCHMITT_PMUGRF_OFFSET		0x30
-+
-+static int rk3568_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-+					   int pin_num,
-+					   struct regmap **regmap,
-+					   int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	if (bank->bank_num == 0) {
-+		*regmap = info->regmap_pmu;
-+		*reg = RK3568_SCHMITT_PMUGRF_OFFSET;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RK3568_SCHMITT_GRF_OFFSET;
-+		*reg += (bank->bank_num - 1) * RK3568_SCHMITT_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RK3568_SCHMITT_PINS_PER_REG) * 4);
-+	*bit = pin_num % RK3568_SCHMITT_PINS_PER_REG;
-+	*bit *= RK3568_SCHMITT_BITS_PER_PIN;
-+
-+	return 0;
-+}
-+
- static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
- {
- 	struct rockchip_pinctrl *info = bank->drvdata;
-@@ -2446,6 +2676,13 @@ static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
- 		return ret;
- 
- 	data >>= bit;
-+	switch (ctrl->type) {
-+	case RK3568:
-+		return data & ((1 << RK3568_SCHMITT_BITS_PER_PIN) - 1);
-+	default:
-+		break;
-+	}
-+
- 	return data & 0x1;
- }
- 
-@@ -2467,8 +2704,17 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
- 		return ret;
- 
- 	/* enable the write to the equivalent lower bits */
--	data = BIT(bit + 16) | (enable << bit);
--	rmask = BIT(bit + 16) | BIT(bit);
-+	switch (ctrl->type) {
-+	case RK3568:
-+		data = ((1 << RK3568_SCHMITT_BITS_PER_PIN) - 1) << (bit + 16);
-+		rmask = data | (data >> 16);
-+		data |= ((enable ? 0x2 : 0x1) << bit);
-+		break;
-+	default:
-+		data = BIT(bit + 16) | (enable << bit);
-+		rmask = BIT(bit + 16) | BIT(bit);
-+		break;
-+	}
- 
- 	return regmap_update_bits(regmap, reg, rmask, data);
- }
-@@ -2642,6 +2888,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case RK3308:
- 	case RK3368:
- 	case RK3399:
-+	case RK3568:
- 		return (pull != PIN_CONFIG_BIAS_PULL_PIN_DEFAULT);
- 	}
- 
-@@ -4216,6 +4463,45 @@ static struct rockchip_pin_ctrl rk3399_pin_ctrl = {
- 		.drv_calc_reg		= rk3399_calc_drv_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rk3568_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
-+					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
-+					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT,
-+					     IOMUX_SOURCE_PMU | IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(1, 32, "gpio1", IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2", IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3", IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(4, 32, "gpio4", IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT,
-+					     IOMUX_WIDTH_4BIT),
-+};
-+
-+static struct rockchip_pin_ctrl rk3568_pin_ctrl = {
-+	.pin_banks		= rk3568_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rk3568_pin_banks),
-+	.label			= "RK3568-GPIO",
-+	.type			= RK3568,
-+	.grf_mux_offset		= 0x0,
-+	.pmu_mux_offset		= 0x0,
-+	.grf_drv_offset		= 0x0200,
-+	.pmu_drv_offset		= 0x0070,
-+	.iomux_routes		= rk3568_mux_route_data,
-+	.niomux_routes		= ARRAY_SIZE(rk3568_mux_route_data),
-+	.pull_calc_reg		= rk3568_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rk3568_calc_drv_reg_and_bit,
-+	.schmitt_calc_reg	= rk3568_calc_schmitt_reg_and_bit,
-+};
-+
- static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 	{ .compatible = "rockchip,px30-pinctrl",
- 		.data = &px30_pin_ctrl },
-@@ -4245,6 +4531,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 		.data = &rk3368_pin_ctrl },
- 	{ .compatible = "rockchip,rk3399-pinctrl",
- 		.data = &rk3399_pin_ctrl },
-+	{ .compatible = "rockchip,rk3568-pinctrl",
-+		.data = &rk3568_pin_ctrl },
- 	{},
- };
- 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index edbbf35fe19e..1ab1d293d2e9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1933,6 +1933,7 @@
+ 		interrupt-names = "job", "mmu", "gpu";
+ 		clocks = <&cru ACLK_GPU>;
+ 		#cooling-cells = <2>;
++		dynamic-power-coefficient = <977>;
+ 		power-domains = <&power RK3399_PD_GPU>;
+ 		status = "disabled";
+ 	};
 -- 
-2.25.1
-
-
+2.17.1
 
 
 _______________________________________________
