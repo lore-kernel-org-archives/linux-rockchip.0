@@ -2,96 +2,91 @@ Return-Path: <SRS0=S+7F=IR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3EDCC433E0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 05:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7223C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 05:21:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6317A64F59
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 05:17:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6317A64F59
+	by mail.kernel.org (Postfix) with ESMTPS id 5F4F664E61
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 05:21:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F4F664E61
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=2LOBQQp+orjSRB6LliMjoTIq2l6IC0Agx7MVX+4hGTs=; b=hBtNEV3pT2Xh+hgrq41tTq8Rk
-	liDgJ2IL55Cx7eMxKghupfxAOh4gflT5XLeorced5YP0k2i4+Ov1Oyx79r4JXopXStrFq5VwK8536
-	ktFcFjikIC0Rx5JMELmKCbyUJo/ynxPD0To6o+ZX2g+SPxt6iqLxhaje4YjiSafbad0WfuK56tMlm
-	mvvwar8yB0xSyQYqbGpIIFhUsfndP0rYj+XeZfk6L+v5xVSLiV1LbbzprHIFNzkSAdf4E3IfKSIfL
-	URchqnjKfnP2XigeCN7bTNcvtSFLtuMpLor0p1ZsTWxgxzn4RrN7Q9HWbY7P5pvlAScl9Iof2Sesa
-	M8oG8qVBQ==;
+	 bh=TwF645yUrEy9g3kE2dfbmsamctWcV/tE8+tRo14Q4/c=; b=J7rJ6LNDCV7ZKerf8P3WBA4Nn
+	AI9jDISsOAxQ2+GMSJxhSuzORpv9nF3JFKiJt6zfpadN6LdCIYDUvxmKhSZkT+Atg0Rt4zKJzbYdi
+	EuhhKImzKppEwJT7emaWMo21kbnGmrYHGIdtH5iwV5F5typVrdm2PY/+8JULWURPKGwX8Ryjsug+b
+	ooA91bCV6utvvweuCYaQhjfZWps1Vdu3V+oyBCHPDJR4RjGf0K4pP7kQwCBo0ZVoHo9S03H8tqkTb
+	zrPZhLr79wKmhRVxk0c+q2XhzJhHOo0AfLWQbiOpMgqh5xrPaKGuL3HTGXgX4k1EogtrqTRTGWdid
+	vTiJoZE2Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lN7VT-006YG5-8Q; Fri, 19 Mar 2021 05:17:07 +0000
-Received: from mail-il1-x134.google.com ([2607:f8b0:4864:20::134])
+	id 1lN7ZD-006Yw9-Dk; Fri, 19 Mar 2021 05:20:59 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lN7V1-006Y9G-44; Fri, 19 Mar 2021 05:16:41 +0000
-Received: by mail-il1-x134.google.com with SMTP id c17so6995288ilj.7;
- Thu, 18 Mar 2021 22:16:38 -0700 (PDT)
+ id 1lN7Ye-006YqD-7U; Fri, 19 Mar 2021 05:20:26 +0000
+Received: by mail-lj1-x230.google.com with SMTP id u10so10431665lju.7;
+ Thu, 18 Mar 2021 22:20:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=feqvIIX1TyTgejukNexbzWLQI+ZY/SioJBhvwi9VmOc=;
- b=j731lBK8+E1sW462zd2Do7Vcb90OfF2lm7mk0QFy4w2GzwBdECF+BNXHWYRSZs4kIw
- c0waax9P8T/XvbPMspHf8Pz6L5qnqVtXI82iYAsmN4qziou4/lEyYn9Bo3h/E3jh7NRM
- 6masbUpakyFV5NSxX0A1TxdsF6aLUuhG5bsdv5HgwOIbbds7NWVpSyTfq3d7HeqBd3uB
- JcmYaziX1X451mWbQLtDXM51wHZaWa8/yQ6Nwcd5KAYIWpilkdg8w7SMNtFxrfaWsquD
- XSRZKKBvvPN47Wk1aKMuLJeURd9kQI2+98eu3pLWDxoU/D3n4+Lkg8c9ntGqu+XV575S
- 5MIg==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=+KD7NBAK+4Rp9SsLbxbAqM6nGsZ0UIVgR+zzJ73WPa8=;
+ b=VKgAsSPp7XJZsRpn+a7h46waRIltfczCpXv1GgDwjp6+Myford91fYemGNfZdVcgE1
+ hdZq0HCsI2BK+wLJXjx2WWGdSbd4L5Qg2dEJrYq+PI7lIZA791TN07CV+8fzxeN0rWYD
+ O8JNQcv18rjB6SuMWaIgyG9edG5H2DFAm4Rw0P0DUxFHJlLMis+J1lNs+JJjmoW323Wx
+ E52/49bjdvH1Btp8wqm371jH4BTE/eMaMRQqiagX9eM2it+/FK4peQmMD69v6bCZne9T
+ Ppm3/ds8Gp85SiJxFO+ZY4uz3URKU5YrWwxYgQcD//uRv5zh6VvSco+QPI8/NOIc4Zfn
+ Jw7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=feqvIIX1TyTgejukNexbzWLQI+ZY/SioJBhvwi9VmOc=;
- b=lYlupQI8Th1tthT35rlmFqoDl83MDyqJW7uvyZtxBCfUD9BZxZtTLl0sBnphTFm771
- 7Lw6hOHakOMqBMsEgJ9WjnrLS2oyFaeDVa+0Khmzp2C9oprOemk7EMRk0ngfan1JGS8a
- 35jjK3ZS2qe/HWsY1fJgwVP67QyiNAjdBiBud4EZLtBC31TpGwJ0aa0+17NvuOYpO7Uu
- RslqqZFzSIzLvS+TjFIknQhcdn0jKsaJGMhUg8SbyLCMFBrK2cODrpDesGKTc/sm3CQA
- MEEl92qFuNO7BZGP/smJ2vkcRqrHHysf7ePdb82awD8ONVquKBWnZEOBVEX1mJnPqwQ4
- QVcw==
-X-Gm-Message-State: AOAM532YvxmU+tGU8lVDbNIefRbZ6sdpc+pZ2RJyvb6p9ukiiOxdM2if
- qGY3o5U3WlA1/WjqMqBFvic=
-X-Google-Smtp-Source: ABdhPJySz2XJNdtoXQp352xVCg4bHdiq9G832iqxzRtph3xUdA32+zbgXAnzkNGO9JZpDmuFvp2W/Q==
-X-Received: by 2002:a92:dc03:: with SMTP id t3mr1510646iln.76.1616130997899;
- Thu, 18 Mar 2021 22:16:37 -0700 (PDT)
-Received: from localhost.localdomain
- (tunnel525895-pt.tunnel.tserv15.lax1.ipv6.he.net. [2001:470:c:1200::2])
- by smtp.googlemail.com with ESMTPSA id s16sm2013154ioe.44.2021.03.18.22.16.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Mar 2021 22:16:37 -0700 (PDT)
-From: Tianling Shen <cnsztl@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Jagan Teki <jagan@amarulasolutions.com>, Chen-Yu Tsai <wens@csie.org>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- Johan Jonker <jbx6244@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- David Bauer <mail@david-bauer.net>,
- Jensen Huang <jensenhuang@friendlyarm.com>,
- Marty Jones <mj8263788@gmail.com>, Tianling Shen <cnsztl@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v6 2/2] rockchip: rk3399: Add support for FriendlyARM NanoPi
- R4S
-Date: Fri, 19 Mar 2021 13:16:27 +0800
-Message-Id: <20210319051627.814-2-cnsztl@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210319051627.814-1-cnsztl@gmail.com>
-References: <20210319051627.814-1-cnsztl@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=+KD7NBAK+4Rp9SsLbxbAqM6nGsZ0UIVgR+zzJ73WPa8=;
+ b=pEFxNq1L5vI1J7WHwSXGFp3i2YZcYdK7P0qLFnHbSOnNfbsBn/XPIV1N9jDDDO51qX
+ c4fGRHoIqvkYW1KMVRi/GG188KJjUlIvWBBC0frA157jVqtEh57yVeZOyf+hY8AUOwv8
+ YdO6UJc5j9+7N8wyB6wlxR21lQA/lYoKRRHbkeh56mDigVm2P6BOYHdNMYqnuAEqnXAa
+ 4c8C/uxNedhwBJNX3vPWYh92SmNSSzgJGxp+azOBjk/7svcvP0qM39e5+9qM7KhMOM00
+ u6GtGjvY9m0euPWSZgangbt9KtA6+5rbOatVJNICYsOA+sbRuE8Metv3Jleb/TkKkDUE
+ c3qA==
+X-Gm-Message-State: AOAM53213Py1rKV0aHnBSSh2K6sJbJHkAlClGlEsP0HCflvH6bP9Pxky
+ VC21jw1DRIH8Fe5/8YmZoUBw62WTCBWKPPR6jfc=
+X-Google-Smtp-Source: ABdhPJxvT7sa2Q3Z5WwT1E+D8H+Ezxins5VaY6wNnxwe7OVa/ao4zxTDjbQbbrizDX/iwBMXzK2nwfLDVht34eGQVhs=
+X-Received: by 2002:a2e:5c7:: with SMTP id 190mr7608722ljf.164.1616131223387; 
+ Thu, 18 Mar 2021 22:20:23 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210319051047.27619-1-cnsztl@gmail.com>
+In-Reply-To: <20210319051047.27619-1-cnsztl@gmail.com>
+From: Tianling Shen <cnsztl@gmail.com>
+Date: Fri, 19 Mar 2021 13:20:11 +0800
+Message-ID: <CAOP2_Tjo+5tOEJ-oLCMqref1JtA13FP91urxe86H6bhK=QsKng@mail.gmail.com>
+Subject: Re: [PATCH v5 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Chen-Yu Tsai <wens@csie.org>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <uwe@kleine-koenig.org>, 
+ Geert Uytterhoeven <geert@linux-m68k.org>, Johan Jonker <jbx6244@gmail.com>,
+ Pavel Machek <pavel@ucw.cz>, 
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ David Bauer <mail@david-bauer.net>, 
+ Jensen Huang <jensenhuang@friendlyarm.com>, Marty Jones <mj8263788@gmail.com>, 
+ Tianling Shen <cnsztl@gmail.com>
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_051639_226957_85892A3D 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20210319_052025_124176_11583853 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,185 +104,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds support for the NanoPi R4S from FriendlyArm.
+Sorry everyone, please ignore these patches as I forgot to update them...
+New patches were sent.
 
-Rockchip RK3399 SoC
-1GB DDR3 or 4GB LPDDR4 RAM
-Gigabit Ethernet (WAN)
-Gigabit Ethernet (PCIe) (LAN)
-USB 3.0 Port x 2
-MicroSD slot
-Reset button
-WAN - LAN - SYS LED
-
-[initial DTS file]
-Co-developed-by: Jensen Huang <jensenhuang@friendlyarm.com>
-Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
-[minor adjustments]
-Co-developed-by: Marty Jones <mj8263788@gmail.com>
-Signed-off-by: Marty Jones <mj8263788@gmail.com>
-[further adjustments, fixed format issues]
-Signed-off-by: Tianling Shen <cnsztl@gmail.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3399-nanopi-r4s.dts   | 133 ++++++++++++++++++
- 2 files changed, 134 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 62d3abc17a24..c3e00c0e2db7 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -36,6 +36,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-r4s.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-orangepi.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-new file mode 100644
-index 000000000000..fa5809887643
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-@@ -0,0 +1,133 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * FriendlyElec NanoPC-T4 board device tree source
-+ *
-+ * Copyright (c) 2020 FriendlyElec Computer Tech. Co., Ltd.
-+ * (http://www.friendlyarm.com)
-+ *
-+ * Copyright (c) 2018 Collabora Ltd.
-+ *
-+ * Copyright (c) 2020 Jensen Huang <jensenhuang@friendlyarm.com>
-+ * Copyright (c) 2020 Marty Jones <mj8263788@gmail.com>
-+ * Copyright (c) 2021 Tianling Shen <cnsztl@gmail.com>
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-nanopi4.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPi R4S";
-+	compatible = "friendlyarm,nanopi-r4s", "rockchip,rk3399";
-+
-+	/delete-node/ display-subsystem;
-+
-+	gpio-leds {
-+		pinctrl-0 = <&lan_led_pin>, <&sys_led_pin>, <&wan_led_pin>;
-+
-+		/delete-node/ led-0;
-+
-+		lan_led: led-lan {
-+			gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-+			label = "green:lan";
-+		};
-+
-+		sys_led: led-sys {
-+			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
-+			label = "red:sys";
-+			default-state = "on";
-+		};
-+
-+		wan_led: led-wan {
-+			gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;
-+			label = "green:wan";
-+		};
-+	};
-+
-+	gpio-keys {
-+		pinctrl-0 = <&reset_button_pin>;
-+
-+		/delete-node/ power;
-+
-+		reset {
-+			debounce-interval = <50>;
-+			gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
-+			label = "reset";
-+			linux,code = <KEY_RESTART>;
-+		};
-+	};
-+
-+	vdd_5v: vdd-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_5v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&emmc_phy {
-+	status = "disabled";
-+};
-+
-+&i2c4 {
-+	status = "disabled";
-+};
-+
-+&pcie0 {
-+	max-link-speed = <1>;
-+	num-lanes = <1>;
-+	vpcie3v3-supply = <&vcc3v3_sys>;
-+};
-+
-+&pinctrl {
-+	gpio-leds {
-+		/delete-node/ status-led-pin;
-+
-+		lan_led_pin: lan-led-pin {
-+			rockchip,pins = <1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		sys_led_pin: sys-led-pin {
-+			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		wan_led_pin: wan-led-pin {
-+			rockchip,pins = <1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	rockchip-key {
-+		/delete-node/ power-key;
-+
-+		reset_button_pin: reset-button-pin {
-+			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&sdhci {
-+	status = "disabled";
-+};
-+
-+&sdio0 {
-+	status = "disabled";
-+};
-+
-+&u2phy0_host {
-+	phy-supply = <&vdd_5v>;
-+};
-+
-+&u2phy1_host {
-+	status = "disabled";
-+};
-+
-+&uart0 {
-+	status = "disabled";
-+};
-+
-+&usbdrd_dwc3_0 {
-+	dr_mode = "host";
-+};
-+
-+&vcc3v3_sys {
-+	vin-supply = <&vcc5v0_sys>;
-+};
--- 
-2.17.1
-
+On 2021-03-19 13:10, Tianling Shen <cnsztl@gmail.com> wrote:
+>
+> Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
+>
+> Changes in v5:
+> - Dropped the empty PCIe node
+> - Dropped useless `/delete-property/`
+> - Renamed LED nodes
+>
+> Changes in v4:
+> - Correctly dropped `display-subsystem` node
+> - Dropped meaningless `pwm-fan` node
+> - Dropped wrong `sdmmc` node
+> - Disabled `i2c4` and `uart0` as they don't exist in the design
+> - Format fixes
+>
+> Changes in v3:
+> - Dropped non-existent node `display_subsystem`
+>
+> Changes in v2:
+> - Disable display for NanoPi R4S (reference commit: 74532de460ec)
+> - Light "sys" LED on NanoPi R4S (reference commit: 833821eeab91)
+>
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index c3036f95c7bc..4a6f772c1043 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -134,6 +134,7 @@ properties:
+>                - friendlyarm,nanopi-m4
+>                - friendlyarm,nanopi-m4b
+>                - friendlyarm,nanopi-neo4
+> +              - friendlyarm,nanopi-r4s
+>            - const: rockchip,rk3399
+>
+>        - description: GeekBuying GeekBox
+> --
+> 2.17.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
