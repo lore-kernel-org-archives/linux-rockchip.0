@@ -2,83 +2,102 @@ Return-Path: <SRS0=S+7F=IR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED1E4C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1CBCC433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:35:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6180064E0F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6180064E0F
+	by mail.kernel.org (Postfix) with ESMTPS id 86F0464EE2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:35:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 86F0464EE2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uMjHKinBXdtQ3k0Pu3q77eIMuqGp6Ghtw+NeP22d4/Y=; b=QRGPg1nFUje8VtvRvshobuBxr
-	TkEA82PzfuRFXDeWn+FgzRmvuMckc/q92C8D4jnGEROcS7+yPneJBB5eJViIYUSI03MBB9MNcmtbE
-	z0+EoMcmna8j9p8OiEXEbrqgksXMj784cCog9O0UIVnEHohJCaowIfukPbZIWfuPTsZUgBEC+dqva
-	QE6xKUyA+J5lUtwCePCHXBgC1ZOQcRB/knbDW/4uWR8jeFX4SNmJnowqmUbbC1tePjjCmsFh2znnz
-	iKL/Yiu6DzKzalGBk9J+6izArpEU/XGYgNP8Icv/bcyNgZuL2lBsFxzNbuk8yQrfSgnqBRt5vbWZ5
-	PiVy2fFHw==;
+	 bh=3Z5u7ycaKBhMykdDH4PPzaot1U7UZej7rOY+w9hCYKo=; b=DuJs2bPK2pPaZC9q7uXl9Wf1y
+	Mdub1oX1L601oarcZ/Su1mdiNI5WWbg6hBhVXznglLmtpq5NmP+iRhrTjdQzoHE/s5lWvJWNbzy1A
+	k4xYZaBbZ5+a51STr42e4AUToXU4yWQPdE/XegK47Yc8mIv1vnvYQWqWDS4KwgRBZL9Y9cw6h3Rgx
+	lFMdE2Q6lemZaoNqDUSwQX/WWMV0h0NETOV/SCK4WKivYqPjv4c28taks0mFkA6FLWSKDCf1qMGej
+	xeHLyvJiCWP6oithZJG4p0zNeRVOXP7zEpynnYUU5U3yFQseBiTUBr7YXT0jR0udqUD6Wrns6fCvD
+	QoiLVgISA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lNFsA-007WTL-1o; Fri, 19 Mar 2021 14:13:06 +0000
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
+	id 1lNGDg-007Y7u-C2; Fri, 19 Mar 2021 14:35:20 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lNFs5-007WSV-OK
- for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 14:13:03 +0000
-Received: by mail-ua1-x932.google.com with SMTP id 97so3076744uav.7
- for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 07:13:01 -0700 (PDT)
+ id 1lNGDc-007Y6x-Ej
+ for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 14:35:18 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id
+ r10-20020a05600c35cab029010c946c95easo5358946wmq.4
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 07:35:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=81d6GJrELSSCW5LCwqTVpfRPWOljAmWO/kZTe23h7B8=;
- b=wCn+QVvs88WpK76XaHVCjFhwcJhitd+9EKnzCu4+1ftgPwZOu+LiHzdy5TPk6jUm4B
- iKkADz+PwQU0N/0Fiq50VrUu/GY3anDvBoHZFVf57Rwo9AwgFS0btoe2p0lQ4x517SHM
- Ki9aGNFTGvCcPQPfPPJxx4BAysWQOrWda4q9UbloQuqJ1Z7J+qYxExLbm8ntIlcwn8bk
- P4yY8uB0Oz3QOt+anyCwoEM7DEPQreMyAlO0njGePHxijzxxvSrYnIlqheEhhM8BhSEy
- cwmyF1hAxaj2BltUAbkYOhH2crFGZKETjPMssWeVx0PgmYyBUoiPHN+DXp1ywlJKQH1R
- JMhQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=aG3hsMsSF84DehWdMYy5xOrEmBMs4XEnaGkmWmOkDWc=;
+ b=J9KMgYMVZseCs92nqFlibr8ezBeRsZFadGIPmmu/06a+u0aGNjKfDUsrc+pjDzxsQE
+ mkk1nwhozlvKHGJtiqN9OYBEjM/MhYawGCNV9AZIkQb1W1HPR5pkRUYPwXzyCF/Z8sKi
+ YAB4c6ZDaNWDu6y2KAd/ywmWM449zp6gCE6Or+BLnvbW0tkmqaH4rgBH27e8ZB2hT7jL
+ eT0Uxb5VDOaOUozeyfySML0u1sh9L2htmSknpJj3WgOhkhyarEHRA9fkTjwDWI903HhL
+ Flrv6XHcy8t1Nd8x2EZC2tPAEbNe7L6Vob/H6O55Ussv13uP10jTLSCHYscvnXmvZwAL
+ ffTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=81d6GJrELSSCW5LCwqTVpfRPWOljAmWO/kZTe23h7B8=;
- b=sDbJ1DLBX/q8iDKMxV6pCsXPqwhiWgyljxqcJxWL7whAuiD4GN83OjBaRLcNczuK61
- BZ3mBBndm30ELDpsLX6jPxurOfFulCZ14oiquAdRknYGx3GwsRWux1fvprLw+UXXHoKc
- wM+Q178MYsDS7xf+WixSCjK36+K+Yf212wgK6eI3XTqaQNf3xBEBrzHakmekpVfOdUH1
- NidFywmkqncQzxaz38kKY9jo6qXwyT43pyGcRnmZscXJmcd2geY3OX02t0Vlwq11Wkie
- LpFZKCsdw8QBZBTxfui+JKPB+oCFg1trptVMW9gh1kHqMM94kX9hgTOzjJFZlcRoipur
- OQiA==
-X-Gm-Message-State: AOAM532SkMKGyFWOu/Y2KiS9YaZ5CpF3nyXI5VUOYt5e/E8p4Le7rW1c
- R40XqqW8b9bUISwPBMg5amyqyqaH4CO6GvzhoF2BAA==
-X-Google-Smtp-Source: ABdhPJz0NP/HIhZGzGr1PxFUVl/mUsvWgNgSY5kPIr19GJ66RgVfgXdMVEi2rkXoJCQAnGYFxtpvSwhwfYefkzrXtqc=
-X-Received: by 2002:ab0:7a68:: with SMTP id c8mr5520428uat.104.1616163180444; 
- Fri, 19 Mar 2021 07:13:00 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=aG3hsMsSF84DehWdMYy5xOrEmBMs4XEnaGkmWmOkDWc=;
+ b=Rt3+iDy0F4DrFV6sQ/0EXkedbCXjzlj+cm2yzlSTGrTAe/19FUa0m1jg9NkKD0a55H
+ X5MNmBp8HYGNIid7ybTxL8A3nGKUflgTzbijL1tyFHabrTNxE5gSDKvH0eAhBZa6QCJ8
+ OkUZlEwJtgY/JKdKjNC8Y3p9kPDXdG+YYwDMRdjdjXglVetQb8GUeLJKVr+/R0bDREon
+ CQ3yC0vACycbeRcVdxgdtJcff64zFfXVNadPb243WUVpcCn74ph2O8oxoah0j+XR15y5
+ E44ftKYQL5KUOKAvLfJgKiEjUT6g74oPINs3+tgBTTuDPjkL9j0FKtY+U6196I5aY1BD
+ 0wbQ==
+X-Gm-Message-State: AOAM533JSQh7clMTcFCffvjGHslXDGn7Xu+pJ/8lTeLxtdSvIZ5GDJeR
+ DUyt5BQF/7vM0Ow0gyeyi0f/YVy2TDL9RA==
+X-Google-Smtp-Source: ABdhPJzSX3PFY+cvi6T6/TD2sAivLk7L3F3d4hXr31NTWiAroz3YXBttnpjlUk5WQvBG43jOnRuznQ==
+X-Received: by 2002:a1c:b006:: with SMTP id z6mr3877987wme.19.1616164515310;
+ Fri, 19 Mar 2021 07:35:15 -0700 (PDT)
+Received: from ?IPv6:2a01:e34:ed2f:f020:ddd7:1eb:a66:7a85?
+ ([2a01:e34:ed2f:f020:ddd7:1eb:a66:7a85])
+ by smtp.googlemail.com with ESMTPSA id l15sm6781389wme.43.2021.03.19.07.35.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Mar 2021 07:35:14 -0700 (PDT)
+Subject: Re: [PATCH] dt: rockchip: rk3399: Add dynamic power coefficient for
+ GPU
+To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de
+Cc: Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ Helen Koike <helen.koike@collabora.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>,
+ Jacob Chen <jacob2.chen@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+References: <20210319110511.24787-1-daniel.lezcano@linaro.org>
+ <5db868e4-5b86-7b32-51e0-665a2e1fc1ac@arm.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Message-ID: <9322db05-2cad-453c-ec1b-1fdb3df142fa@linaro.org>
+Date: Fri, 19 Mar 2021 15:35:13 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <1615879102-45919-1-git-send-email-shawn.lin@rock-chips.com>
- <1615879102-45919-3-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1615879102-45919-3-git-send-email-shawn.lin@rock-chips.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 19 Mar 2021 15:12:23 +0100
-Message-ID: <CAPDyKFqGhqT-dD5djp3vnWoXeg+01=294+nS69AxyY3G69P1eg@mail.gmail.com>
-Subject: Re: [PATCH v6 3/3] mmc: sdhci-of-dwcmshc: add rockchip platform
- support
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, 
- Adrian Hunter <adrian.hunter@intel.com>, DTML <devicetree@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+In-Reply-To: <5db868e4-5b86-7b32-51e0-665a2e1fc1ac@arm.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_141301_855712_0EDC2CA9 
-X-CRM114-Status: GOOD (  32.34  )
+X-CRM114-CacheID: sfid-20210319_143516_653387_88B1C22B 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,426 +110,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 16 Mar 2021 at 08:18, Shawn Lin <shawn.lin@rock-chips.com> wrote:
->
-> sdhci based synopsys MMC IP is also used on some rockchip platforms,
-> so add a basic support here.
->
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-
-Applied for next, thanks!
-
-Kind regards
-Uffe
-
-
->
-> ---
->
-> Changes in v6:
-> - fix build warnning from kernel test robot
->
-> Changes in v5:
-> - read vendor area1 from standard IP reg and move hs400es
->   out of rockchip specified, as suggested.
-> - improve as Johan suggested
-> - remove Adrian's tag for new review
->
-> Changes in v4:
-> - add comments for disabling rx invert
-> - add tag from Adrian
->
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 261 ++++++++++++++++++++++++++++++++++--
->  1 file changed, 253 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index 59d8d96..0687368 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -9,9 +9,11 @@
->
->  #include <linux/clk.h>
->  #include <linux/dma-mapping.h>
-> +#include <linux/iopoll.h>
->  #include <linux/kernel.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> +#include <linux/of_device.h>
->  #include <linux/sizes.h>
->
->  #include "sdhci-pltfm.h"
-> @@ -21,11 +23,52 @@
->  /* DWCMSHC specific Mode Select value */
->  #define DWCMSHC_CTRL_HS400             0x7
->
-> +/* DWC IP vendor area 1 pointer */
-> +#define DWCMSHC_P_VENDOR_AREA1         0xe8
-> +#define DWCMSHC_AREA1_MASK             GENMASK(11, 0)
-> +/* Offset inside the  vendor area 1 */
-> +#define DWCMSHC_HOST_CTRL3             0x8
-> +#define DWCMSHC_EMMC_CONTROL           0x2c
-> +#define DWCMSHC_ENHANCED_STROBE                BIT(8)
-> +#define DWCMSHC_EMMC_ATCTRL            0x40
-> +
-> +/* Rockchip specific Registers */
-> +#define DWCMSHC_EMMC_DLL_CTRL          0x800
-> +#define DWCMSHC_EMMC_DLL_RXCLK         0x804
-> +#define DWCMSHC_EMMC_DLL_TXCLK         0x808
-> +#define DWCMSHC_EMMC_DLL_STRBIN                0x80c
-> +#define DLL_STRBIN_TAPNUM_FROM_SW      BIT(24)
-> +#define DWCMSHC_EMMC_DLL_STATUS0       0x840
-> +#define DWCMSHC_EMMC_DLL_START         BIT(0)
-> +#define DWCMSHC_EMMC_DLL_LOCKED                BIT(8)
-> +#define DWCMSHC_EMMC_DLL_TIMEOUT       BIT(9)
-> +#define DWCMSHC_EMMC_DLL_RXCLK_SRCSEL  29
-> +#define DWCMSHC_EMMC_DLL_START_POINT   16
-> +#define DWCMSHC_EMMC_DLL_INC           8
-> +#define DWCMSHC_EMMC_DLL_DLYENA                BIT(27)
-> +#define DLL_TXCLK_TAPNUM_DEFAULT       0x8
-> +#define DLL_STRBIN_TAPNUM_DEFAULT      0x8
-> +#define DLL_TXCLK_TAPNUM_FROM_SW       BIT(24)
-> +#define DLL_RXCLK_NO_INVERTER          1
-> +#define DLL_RXCLK_INVERTER             0
-> +#define DLL_LOCK_WO_TMOUT(x) \
-> +       ((((x) & DWCMSHC_EMMC_DLL_LOCKED) == DWCMSHC_EMMC_DLL_LOCKED) && \
-> +       (((x) & DWCMSHC_EMMC_DLL_TIMEOUT) == 0))
-> +#define RK3568_MAX_CLKS 3
-> +
->  #define BOUNDARY_OK(addr, len) \
->         ((addr | (SZ_128M - 1)) == ((addr + len - 1) | (SZ_128M - 1)))
->
-> +struct rk3568_priv {
-> +       /* Rockchip specified optional clocks */
-> +       struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
-> +       u8 txclk_tapnum;
-> +};
-> +
->  struct dwcmshc_priv {
->         struct clk      *bus_clk;
-> +       int vendor_specific_area1; /* P_VENDOR_SPECIFIC_AREA reg */
-> +       void *priv; /* pointer to SoC private stuff */
->  };
->
->  /*
-> @@ -100,6 +143,107 @@ static void dwcmshc_set_uhs_signaling(struct sdhci_host *host,
->         sdhci_writew(host, ctrl_2, SDHCI_HOST_CONTROL2);
->  }
->
-> +static void dwcmshc_hs400_enhanced_strobe(struct mmc_host *mmc,
-> +                                         struct mmc_ios *ios)
-> +{
-> +       u32 vendor;
-> +       struct sdhci_host *host = mmc_priv(mmc);
-> +       struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +       struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> +       int reg = priv->vendor_specific_area1 + DWCMSHC_EMMC_CONTROL;
-> +
-> +       vendor = sdhci_readl(host, reg);
-> +       if (ios->enhanced_strobe)
-> +               vendor |= DWCMSHC_ENHANCED_STROBE;
-> +       else
-> +               vendor &= ~DWCMSHC_ENHANCED_STROBE;
-> +
-> +       sdhci_writel(host, vendor, reg);
-> +}
-> +
-> +static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock)
-> +{
-> +       struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +       struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
-> +       struct rk3568_priv *priv = dwc_priv->priv;
-> +       u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
-> +       u32 extra, reg;
-> +       int err;
-> +
-> +       host->mmc->actual_clock = 0;
-> +
-> +       /*
-> +        * DO NOT TOUCH THIS SETTING. RX clk inverter unit is enabled
-> +        * by default, but it shouldn't be enabled. We should anyway
-> +        * disable it before issuing any cmds.
-> +        */
-> +       extra = DWCMSHC_EMMC_DLL_DLYENA |
-> +               DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
-> +       sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
-> +
-> +       if (clock == 0)
-> +               return;
-> +
-> +       /* Rockchip platform only support 375KHz for identify mode */
-> +       if (clock <= 400000)
-> +               clock = 375000;
-> +
-> +       err = clk_set_rate(pltfm_host->clk, clock);
-> +       if (err)
-> +               dev_err(mmc_dev(host->mmc), "fail to set clock %d", clock);
-> +
-> +       sdhci_set_clock(host, clock);
-> +
-> +       /* Disable cmd conflict check */
-> +       reg = dwc_priv->vendor_specific_area1 + DWCMSHC_HOST_CTRL3;
-> +       extra = sdhci_readl(host, reg);
-> +       extra &= ~BIT(0);
-> +       sdhci_writel(host, extra, reg);
-> +
-> +       if (clock <= 400000) {
-> +               /* Disable DLL to reset sample clock */
-> +               sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_CTRL);
-> +               return;
-> +       }
-> +
-> +       /* Reset DLL */
-> +       sdhci_writel(host, BIT(1), DWCMSHC_EMMC_DLL_CTRL);
-> +       udelay(1);
-> +       sdhci_writel(host, 0x0, DWCMSHC_EMMC_DLL_CTRL);
-> +
-> +       /* Init DLL settings */
-> +       extra = 0x5 << DWCMSHC_EMMC_DLL_START_POINT |
-> +               0x2 << DWCMSHC_EMMC_DLL_INC |
-> +               DWCMSHC_EMMC_DLL_START;
-> +       sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_CTRL);
-> +       err = readl_poll_timeout(host->ioaddr + DWCMSHC_EMMC_DLL_STATUS0,
-> +                                extra, DLL_LOCK_WO_TMOUT(extra), 1,
-> +                                500 * USEC_PER_MSEC);
-> +       if (err) {
-> +               dev_err(mmc_dev(host->mmc), "DLL lock timeout!\n");
-> +               return;
-> +       }
-> +
-> +       extra = 0x1 << 16 | /* tune clock stop en */
-> +               0x2 << 17 | /* pre-change delay */
-> +               0x3 << 19;  /* post-change delay */
-> +       sdhci_writel(host, extra, dwc_priv->vendor_specific_area1 + DWCMSHC_EMMC_ATCTRL);
-> +
-> +       if (host->mmc->ios.timing == MMC_TIMING_MMC_HS200 ||
-> +           host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
-> +               txclk_tapnum = priv->txclk_tapnum;
-> +
-> +       extra = DWCMSHC_EMMC_DLL_DLYENA |
-> +               DLL_TXCLK_TAPNUM_FROM_SW |
-> +               txclk_tapnum;
-> +       sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_TXCLK);
-> +
-> +       extra = DWCMSHC_EMMC_DLL_DLYENA |
-> +               DLL_STRBIN_TAPNUM_DEFAULT |
-> +               DLL_STRBIN_TAPNUM_FROM_SW;
-> +       sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
-> +}
-> +
->  static const struct sdhci_ops sdhci_dwcmshc_ops = {
->         .set_clock              = sdhci_set_clock,
->         .set_bus_width          = sdhci_set_bus_width,
-> @@ -109,21 +253,93 @@ static const struct sdhci_ops sdhci_dwcmshc_ops = {
->         .adma_write_desc        = dwcmshc_adma_write_desc,
->  };
->
-> +static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
-> +       .set_clock              = dwcmshc_rk3568_set_clock,
-> +       .set_bus_width          = sdhci_set_bus_width,
-> +       .set_uhs_signaling      = dwcmshc_set_uhs_signaling,
-> +       .get_max_clock          = sdhci_pltfm_clk_get_max_clock,
-> +       .reset                  = sdhci_reset,
-> +       .adma_write_desc        = dwcmshc_adma_write_desc,
-> +};
-> +
->  static const struct sdhci_pltfm_data sdhci_dwcmshc_pdata = {
->         .ops = &sdhci_dwcmshc_ops,
->         .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN,
->         .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN,
->  };
->
-> +static const struct sdhci_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
-> +       .ops = &sdhci_dwcmshc_rk3568_ops,
-> +       .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> +                 SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> +       .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> +                  SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +};
-> +
-> +static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
-> +{
-> +       int err;
-> +       struct rk3568_priv *priv = dwc_priv->priv;
-> +
-> +       priv->rockchip_clks[0].id = "axi";
-> +       priv->rockchip_clks[1].id = "block";
-> +       priv->rockchip_clks[2].id = "timer";
-> +       err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), RK3568_MAX_CLKS,
-> +                                        priv->rockchip_clks);
-> +       if (err) {
-> +               dev_err(mmc_dev(host->mmc), "failed to get clocks %d\n", err);
-> +               return err;
-> +       }
-> +
-> +       err = clk_bulk_prepare_enable(RK3568_MAX_CLKS, priv->rockchip_clks);
-> +       if (err) {
-> +               dev_err(mmc_dev(host->mmc), "failed to enable clocks %d\n", err);
-> +               return err;
-> +       }
-> +
-> +       if (of_property_read_u8(mmc_dev(host->mmc)->of_node, "rockchip,txclk-tapnum",
-> +                               &priv->txclk_tapnum))
-> +               priv->txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
-> +
-> +       /* Disable cmd conflict check */
-> +       sdhci_writel(host, 0x0, dwc_priv->vendor_specific_area1 + DWCMSHC_HOST_CTRL3);
-> +       /* Reset previous settings */
-> +       sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_TXCLK);
-> +       sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_STRBIN);
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
-> +       {
-> +               .compatible = "rockchip,rk3568-dwcmshc",
-> +               .data = &sdhci_dwcmshc_rk3568_pdata,
-> +       },
-> +       {
-> +               .compatible = "snps,dwcmshc-sdhci",
-> +               .data = &sdhci_dwcmshc_pdata,
-> +       },
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(of, sdhci_dwcmshc_dt_ids);
-> +
->  static int dwcmshc_probe(struct platform_device *pdev)
->  {
->         struct sdhci_pltfm_host *pltfm_host;
->         struct sdhci_host *host;
->         struct dwcmshc_priv *priv;
-> +       struct rk3568_priv *rk_priv = NULL;
-> +       const struct sdhci_pltfm_data *pltfm_data;
->         int err;
->         u32 extra;
->
-> -       host = sdhci_pltfm_init(pdev, &sdhci_dwcmshc_pdata,
-> +       pltfm_data = of_device_get_match_data(&pdev->dev);
-> +       if (!pltfm_data) {
-> +               dev_err(&pdev->dev, "Error: No device match data found\n");
-> +               return -ENODEV;
-> +       }
-> +
-> +       host = sdhci_pltfm_init(pdev, pltfm_data,
->                                 sizeof(struct dwcmshc_priv));
->         if (IS_ERR(host))
->                 return PTR_ERR(host);
-> @@ -159,7 +375,23 @@ static int dwcmshc_probe(struct platform_device *pdev)
->
->         sdhci_get_of_property(pdev);
->
-> +       priv->vendor_specific_area1 =
-> +               sdhci_readl(host, DWCMSHC_P_VENDOR_AREA1) & DWCMSHC_AREA1_MASK;
-> +
->         host->mmc_host_ops.request = dwcmshc_request;
-> +       host->mmc_host_ops.hs400_enhanced_strobe = dwcmshc_hs400_enhanced_strobe;
-> +
-> +       if (pltfm_data == &sdhci_dwcmshc_rk3568_pdata) {
-> +               rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk3568_priv), GFP_KERNEL);
-> +               if (!rk_priv)
-> +                       goto err_clk;
-> +
-> +               priv->priv = rk_priv;
-> +
-> +               err = dwcmshc_rk3568_init(host, priv);
-> +               if (err)
-> +                       goto err_clk;
-> +       }
->
->         err = sdhci_add_host(host);
->         if (err)
-> @@ -170,6 +402,9 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  err_clk:
->         clk_disable_unprepare(pltfm_host->clk);
->         clk_disable_unprepare(priv->bus_clk);
-> +       if (rk_priv)
-> +               clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +                                          rk_priv->rockchip_clks);
->  free_pltfm:
->         sdhci_pltfm_free(pdev);
->         return err;
-> @@ -180,12 +415,15 @@ static int dwcmshc_remove(struct platform_device *pdev)
->         struct sdhci_host *host = platform_get_drvdata(pdev);
->         struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->         struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> +       struct rk3568_priv *rk_priv = priv->priv;
->
->         sdhci_remove_host(host, 0);
->
->         clk_disable_unprepare(pltfm_host->clk);
->         clk_disable_unprepare(priv->bus_clk);
-> -
-> +       if (rk_priv)
-> +               clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +                                          rk_priv->rockchip_clks);
->         sdhci_pltfm_free(pdev);
->
->         return 0;
-> @@ -197,6 +435,7 @@ static int dwcmshc_suspend(struct device *dev)
->         struct sdhci_host *host = dev_get_drvdata(dev);
->         struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->         struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> +       struct rk3568_priv *rk_priv = priv->priv;
->         int ret;
->
->         ret = sdhci_suspend_host(host);
-> @@ -207,6 +446,10 @@ static int dwcmshc_suspend(struct device *dev)
->         if (!IS_ERR(priv->bus_clk))
->                 clk_disable_unprepare(priv->bus_clk);
->
-> +       if (rk_priv)
-> +               clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +                                          rk_priv->rockchip_clks);
-> +
->         return ret;
->  }
->
-> @@ -215,6 +458,7 @@ static int dwcmshc_resume(struct device *dev)
->         struct sdhci_host *host = dev_get_drvdata(dev);
->         struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->         struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> +       struct rk3568_priv *rk_priv = priv->priv;
->         int ret;
->
->         ret = clk_prepare_enable(pltfm_host->clk);
-> @@ -227,18 +471,19 @@ static int dwcmshc_resume(struct device *dev)
->                         return ret;
->         }
->
-> +       if (rk_priv) {
-> +               ret = clk_bulk_prepare_enable(RK3568_MAX_CLKS,
-> +                                             rk_priv->rockchip_clks);
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +
->         return sdhci_resume_host(host);
->  }
->  #endif
->
->  static SIMPLE_DEV_PM_OPS(dwcmshc_pmops, dwcmshc_suspend, dwcmshc_resume);
->
-> -static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
-> -       { .compatible = "snps,dwcmshc-sdhci" },
-> -       {}
-> -};
-> -MODULE_DEVICE_TABLE(of, sdhci_dwcmshc_dt_ids);
-> -
->  static struct platform_driver sdhci_dwcmshc_driver = {
->         .driver = {
->                 .name   = "sdhci-dwcmshc",
-> --
-> 2.7.4
->
->
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhpIFJvYmluLAoKT24gMTkvMDMvMjAyMSAxMzoxNywgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9u
+IDIwMjEtMDMtMTkgMTE6MDUsIERhbmllbCBMZXpjYW5vIHdyb3RlOgo+PiBUaGUgRFRQTSBmcmFt
+ZXdvcmsgaXMgbG9va2luZyBmb3IgdXBzdHJlYW0gU29DIGNhbmRpZGF0ZXMgdG8gc2hhcmUgdGhl
+Cj4+IHBvd2VyIG51bWJlcnMuCj4+Cj4+IFdlIGNhbiBzZWUgYXJvdW5kIGRpZmZlcmVudCBudW1i
+ZXJzIGJ1dCB0aGUgb25lIHdoaWNoIHNlZW1zIHRvIGJlCj4+IGNvbnNpc3RlbnQgd2l0aCB0aGUg
+aW5pdGlhbCBwb3N0IGZvciB0aGUgdmFsdWVzIG9uIHRoZSBDUFVzIGNhbiBiZQo+PiBmb3VuZCBp
+biB0aGUgcGF0Y2ggaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcGF0Y2h3b3JrL3BhdGNoLzgxMDE1
+OS8KPiAKPiBUaGUga2VybmVsIGhhY2tlciBpbiBtZSB3b3VsZCBiZSBtb3JlIGluY2xpbmVkIHRv
+IHRydXN0IHRoZSBCU1AgdGhhdCB0aGUKPiB2ZW5kb3IgYWN0aXZlbHkgc3VwcG9ydHMgdGhhbiBh
+IDUteWVhci1vbGQgcGF0Y2ggdGhhdCB3YXMgbmV2ZXIgcHVyc3VlZAo+IHVwc3RyZWFtLiBBcHBh
+cmVudGx5IHRoYXQgd2FzIGxhc3QgdXBkYXRlZCBtb3JlIHJlY2VudGx5Ogo+IAo+IGh0dHBzOi8v
+Z2l0aHViLmNvbS9yb2NrY2hpcC1saW51eC9rZXJuZWwvY29tbWl0Lzk4ZDQ1MDVlMWJkNjJmZjAy
+OGJkNzlmYmQ4Mjg0ZDY0YjZmNDY4ZjgKClllcywgSSd2ZSBzZWVuIHRoaXMgdmFsdWUgYWxzby4K
+Cj4gVGhlIGV4LW1hdGhlbWF0aWNpYW4gaW4gbWUgY2FuJ3QgZXZlbiBjb21tZW50IGVpdGhlciB3
+YXkgd2l0aG91dAo+IGV2aWRlbmNlIHRoYXQgd2hhdGV2ZXIgbW9kZWwgZXhwZWN0cyB0byBjb25z
+dW1lIHRoaXMgdmFsdWUgaXMgZXZlbgo+IGNvbXBhcmFibGUgdG8gd2hhdGV2ZXIgImFybSxtYWxp
+LXNpbXBsZS1wb3dlci1tb2RlbCIgaXMuID4KPiBUaGUgd2F5IHRoZQo+IGxhdHRlciBhcHBhcmVu
+dGx5IG5lZWRzIGFuIGV4cGxpY2l0ICJzdGF0aWMiIGNvZWZmaWNpZW50IGFzIHdlbGwgYXMgYQo+
+ICJkeW5hbWljIiBvbmUsIGFuZCB0aGUgdmFsdWUgaGVyZSBiZWluZyBuZWFybHkgMyB0aW1lcyB0
+aGF0IG9mIGEKPiBzaW1pbGFybHktbmFtZWQgb25lIGluIGFjdGl2ZSB1c2UgZG93bnN0cmVhbSAo
+Q2hyb21lT1MgYXBwZWFycyB0byBzdGlsbAo+IGJlIHVzaW5nIHRoZSB2YWx1ZXMgZnJvbSBiZWZv
+cmUgdGhlIGFib3ZlIGNvbW1pdCksIGNlcnRhaW5seSBpbmNsaW5lIG1lCj4gdG8gdGhpbmsgdGhl
+eSBtYXkgbm90IGJlLi4uCgpTb3JyeSwgSSdtIG1pc3NpbmcgdGhlIHBvaW50IDovCgpXZSBkcm9w
+cGVkIGluIHRoZSBrZXJuZWwgYW55IHN0YXRpYyBwb3dlciBjb21wdXRhdGlvbiBiZWNhdXNlIGFz
+IHRoZXJlCndhcyBubyB2YWx1ZSwgdGhlIHJlc3VsdGluZyBjb2RlIHdhcyBjb25zaWRlcmVkIGRl
+YWQuIFNvIHdlIHJlbHkgb24gdGhlCmR5bmFtaWMgcG93ZXIgb25seS4KCj4+IEkgZG9uJ3Qga25v
+dyB0aGUgcHJlY2lzaW9uIG9mIHRoaXMgdmFsdWUgYnV0IGl0IGlzIGJldHRlciB0aGFuCj4+IG5v
+dGhpbmcuCj4gCj4gQnV0IGlzIGl0PyBJZiBpdCBsZWFkcyB0byBzb21lIHRocm90dGxpbmcgbWVj
+aGFuaXNtIGtpY2tpbmcgaW4gYW5kCj4gY3JpcHBsaW5nIEdQVSBwZXJmb3JtYW5jZSBiZWNhdXNl
+IGl0J3MgbWFzc2l2ZWx5IG92ZXJlc3RpbWF0aW5nIHBvd2VyCj4gY29uc3VtcHRpb24sIHRoYXQg
+d291bGQgYmUgb2JqZWN0aXZlbHkgd29yc2UgZm9yIG1vc3QgdXNlcnMsIG5vPwoKTm8gYmVjYXVz
+ZSB0aGVyZSBpcyBubyBzdXN0YWluYWJsZSBwb3dlciBzcGVjaWZpZWQgZm9yIHRoZSB0aGVybWFs
+IHpvbmVzCnJlbGF0ZWQgdG8gdGhlIEdQVS4KCgoKLS0gCjxodHRwOi8vd3d3LmxpbmFyby5vcmcv
+PiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKCkZvbGxv
+dyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9vay5jb20vcGFnZXMvTGluYXJvPiBGYWNlYm9v
+ayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGluYXJvb3JnPiBUd2l0dGVyIHwKPGh0dHA6Ly93
+d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
