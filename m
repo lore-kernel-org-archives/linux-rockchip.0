@@ -2,71 +2,83 @@ Return-Path: <SRS0=S+7F=IR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A84CAC43381
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 12:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71F3BC433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 54CE164F65
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 12:17:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54CE164F65
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 16D7A64DEC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16D7A64DEC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W6Ti5/Z53X3Eyb7cj03RWyhnfW2owEyDxpytrO6CGlM=; b=p8kO7tzRtIXmZwEg/QZZxMBnT
-	xHRFeVG9O5GzRLtMl39XQC6eLU1CgNP7mkYs6IQ7hfxsbk/YXKGyjDB4KBVqicU+rj88ssdP+RD2T
-	diaxpjAk7Xwqh4/4Bz2EmUvt91LPePNwsFM0cIGzKH6tPuluwDxnAqDqhFoKi5XtIdntHvRCn48ub
-	jc9K8X4aHPQUeo3wJUhwc7+xlJXI5jB0Ln5brsbWEabYHeRPimBoICEcNAg+XNwc25dhTkltsv37l
-	BrzYebowfN0/pVucqw6+RHY6Xg+CYpgcRKIghjCyL0gxokXe546C0Z6kk+9b2n9xDNSFPJPZWspPZ
-	fCXzqIZZQ==;
+	 bh=Hg5nSJCEKT8yZ2bBSNjuCz3cLszjQ/EQlSX2KNPQPw4=; b=XTzE8fiu7PonSnP9abjFbZLRK
+	cn7/9ozXj1IJmdrwYI8z1G7wHt79hXqgY5T9aatXBHe8wZXxApQ/30L3EYvuibeTb1P484YgHu+TS
+	zrjY6YFaE4LQUWrz9P2uGJ3T/lWoRxqES8l03PRjapMc5zGP2F+23I7uhA2/GLo5zLDI9m6EZLZbI
+	/aT7af9lekjtWr8znwJyAgI/5uqa1vKzvl6usRdYh/CqFbmZ6NsPo6wanWB8+c0M0qov8+Fym47uU
+	g+IeLokOVfaZ++lODggTJRqAZPU2rkFE8ROOBP72lrg46nkVXW5rgwhoqrTK+g4TeipEr/QQbD7VS
+	k6nCMQoNw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lNE4G-007Nqb-2y; Fri, 19 Mar 2021 12:17:28 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lNE46-007Npv-8x; Fri, 19 Mar 2021 12:17:20 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 06F64ED1;
- Fri, 19 Mar 2021 05:17:10 -0700 (PDT)
-Received: from [10.57.50.37] (unknown [10.57.50.37])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F02D83F70D;
- Fri, 19 Mar 2021 05:17:07 -0700 (PDT)
-Subject: Re: [PATCH] dt: rockchip: rk3399: Add dynamic power coefficient for
- GPU
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, heiko@sntech.de
-Cc: Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- Helen Koike <helen.koike@collabora.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Jacob Chen <jacob2.chen@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>,
- Markus Reichl <m.reichl@fivetechno.de>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>
-References: <20210319110511.24787-1-daniel.lezcano@linaro.org>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <5db868e4-5b86-7b32-51e0-665a2e1fc1ac@arm.com>
-Date: Fri, 19 Mar 2021 12:17:01 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+	id 1lNFs6-007WSt-WD; Fri, 19 Mar 2021 14:13:03 +0000
+Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lNFs3-007WS9-IZ
+ for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 14:13:01 +0000
+Received: by mail-ua1-x936.google.com with SMTP id v11so3092408uao.0
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 07:12:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PWgAYd4GZnp/T9aLTG5OoUnHXCTXz0kWLYL1sUoKSAs=;
+ b=pE55rx/nQAWWiRcoufqivpmIlRzEZI94QO9TqdlQvOOAyIVhYB3wg9rKP28xSWSdND
+ 8ejGpFL7Hru1KdgUfbnz9esO6B16LKif/0/V93pB+dueCVSqoitKE554m26G3jJAz/4W
+ K5TTrMnG0fx4HWa+ZI0nFwWdXE4jNXVx4bul67ywCLG1BREjNCWtUYFJ63DtoXjusnG1
+ pzRj2CxrhTm3rHroP4F1mLECTFH+vnaCi+JdUoOqweNNkvI3DWtfZuULjiSg08LUL0F4
+ Hr0CU8bi/+ER4v0ZVkNtB0vWix01KeTgAKV1xg4wiKRU9fitdxo9sW86UIl/a2uCfgNw
+ 4q3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PWgAYd4GZnp/T9aLTG5OoUnHXCTXz0kWLYL1sUoKSAs=;
+ b=UNp9uwfAowWm4CBjK2AcYUJn+RCJB0AJVpkz8TfJ50NorsFcKrdU2gr+CYjtAy5Tl9
+ eeTLU9cyQ3gCOxR8q+avXeF2Sl6RpzhrNoxRE6F3qpCsKGFlsDwcX/GiaULKhJKIpKFg
+ f3AAlLqYsBi+HX+Tp2sZNPhWub+kHFTTT1i3VOZJYzhot9Q+2mdVpYP6Sfb6FdsW+WnH
+ Fm0g0hdO2hXNRDVDT2NrFozAmBlur9bfBS4ilzcH8s2f5dhRA3t5l7jmoKawNkfxjV1d
+ CU3Pmm+H3ckP9CIgp7sQWBnF4Zk00FALrQe1VCdOOy1cVTG/0qVS7uYDMxa45afjYYOQ
+ Vadw==
+X-Gm-Message-State: AOAM532sCx3P1hsNqZeOibPBNMVp1s0TYIiOtoVGODtwKF6zAsXyXw9m
+ xXyoLurlof7Y3AlLnFP1qKTfqwtBVW18bEp9ZOan81MyFQ08YA==
+X-Google-Smtp-Source: ABdhPJybbh/9ZCCPoUUBxpdshVjauryv12ykA3cCDS1cePj8MJAy6TjeAM1Lg26t8d7/zZ7mGyc6CxPIuECyP0fWj0g=
+X-Received: by 2002:ab0:6f0e:: with SMTP id r14mr5394574uah.15.1616163176593; 
+ Fri, 19 Mar 2021 07:12:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210319110511.24787-1-daniel.lezcano@linaro.org>
-Content-Language: en-GB
+References: <1615879102-45919-1-git-send-email-shawn.lin@rock-chips.com>
+ <1615879102-45919-2-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1615879102-45919-2-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 19 Mar 2021 15:12:20 +0100
+Message-ID: <CAPDyKFoANfvc1-jnM6+kSprzxoefECvDoRW5K07aU11QaNsdoQ@mail.gmail.com>
+Subject: Re: [PATCH v6 2/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Add rockchip
+ support
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, 
+ Adrian Hunter <adrian.hunter@intel.com>, DTML <devicetree@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_121718_531142_C77FEA7B 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20210319_141259_703494_1AC80610 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +91,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2021-03-19 11:05, Daniel Lezcano wrote:
-> The DTPM framework is looking for upstream SoC candidates to share the
-> power numbers.
-> 
-> We can see around different numbers but the one which seems to be
-> consistent with the initial post for the values on the CPUs can be
-> found in the patch https://lore.kernel.org/patchwork/patch/810159/
+On Tue, 16 Mar 2021 at 08:18, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> This patch adds rockchip support in sdhci-of-dwcmhsc.yaml
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 
-The kernel hacker in me would be more inclined to trust the BSP that the 
-vendor actively supports than a 5-year-old patch that was never pursued 
-upstream. Apparently that was last updated more recently:
+Applied for next, thanks!
 
-https://github.com/rockchip-linux/kernel/commit/98d4505e1bd62ff028bd79fbd8284d64b6f468f8
+Kind regards
+Uffe
 
-The ex-mathematician in me can't even comment either way without 
-evidence that whatever model expects to consume this value is even 
-comparable to whatever "arm,mali-simple-power-model" is. The way the 
-latter apparently needs an explicit "static" coefficient as well as a 
-"dynamic" one, and the value here being nearly 3 times that of a 
-similarly-named one in active use downstream (ChromeOS appears to still 
-be using the values from before the above commit), certainly incline me 
-to think they may not be...
 
-> I don't know the precision of this value but it is better than
-> nothing.
-
-But is it? If it leads to some throttling mechanism kicking in and 
-crippling GPU performance because it's massively overestimating power 
-consumption, that would be objectively worse for most users, no?
-
-Robin.
-
-> Hopefully, one day SoC vendors will be more generous with the power
-> numbers at least for the SoC which are from the previous generation
-> and give the community the opportunity to develop power based
-> frameworks.
 > ---
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index edbbf35fe19e..1ab1d293d2e9 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1933,6 +1933,7 @@
->   		interrupt-names = "job", "mmu", "gpu";
->   		clocks = <&cru ACLK_GPU>;
->   		#cooling-cells = <2>;
-> +		dynamic-power-coefficient = <977>;
->   		power-domains = <&power RK3399_PD_GPU>;
->   		status = "disabled";
->   	};
-> 
+>
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4:
+> - rename compatible to rockchip,rk3568-dwcmshc
+> - constrains rockchip,txclk-tapnum to u8 to match the register map
+>
+>  .../bindings/mmc/snps,dwcmshc-sdhci.yaml           | 24 ++++++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> index f99fb9f..e6c9a2f 100644
+> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> @@ -16,6 +16,7 @@ allOf:
+>  properties:
+>    compatible:
+>      enum:
+> +      - rockchip,rk3568-dwcmshc
+>        - snps,dwcmshc-sdhci
+>
+>    reg:
+> @@ -31,12 +32,24 @@ properties:
+>      items:
+>        - description: core clock
+>        - description: bus clock for optional
+> +      - description: axi clock for rockchip specified
+> +      - description: block clock for rockchip specified
+> +      - description: timer clock for rockchip specified
+> +
+>
+>    clock-names:
+>      minItems: 1
+>      items:
+>        - const: core
+>        - const: bus
+> +      - const: axi
+> +      - const: block
+> +      - const: timer
+> +
+> +  rockchip,txclk-tapnum:
+> +    description: Specify the number of delay for tx sampling.
+> +    $ref: /schemas/types.yaml#/definitions/uint8
+> +
+>
+>  required:
+>    - compatible
+> @@ -49,6 +62,17 @@ unevaluatedProperties: false
+>
+>  examples:
+>    - |
+> +    mmc@fe310000 {
+> +      compatible = "rockchip,rk3568-dwcmshc";
+> +      reg = <0xfe310000 0x10000>;
+> +      interrupts = <0 25 0x4>;
+> +      clocks = <&cru 17>, <&cru 18>, <&cru 19>, <&cru 20>, <&cru 21>;
+> +      clock-names = "core", "bus", "axi", "block", "timer";
+> +      bus-width = <8>;
+> +      #address-cells = <1>;
+> +      #size-cells = <0>;
+> +    };
+> +  - |
+>      mmc@aa0000 {
+>        compatible = "snps,dwcmshc-sdhci";
+>        reg = <0xaa000 0x1000>;
+> --
+> 2.7.4
+>
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
