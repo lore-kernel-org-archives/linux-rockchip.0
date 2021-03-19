@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71F3BC433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8018C433E0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:05 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16D7A64DEC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16D7A64DEC
+	by mail.kernel.org (Postfix) with ESMTPS id 7B35A64DEC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Mar 2021 14:13:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B35A64DEC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,62 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Hg5nSJCEKT8yZ2bBSNjuCz3cLszjQ/EQlSX2KNPQPw4=; b=XTzE8fiu7PonSnP9abjFbZLRK
-	cn7/9ozXj1IJmdrwYI8z1G7wHt79hXqgY5T9aatXBHe8wZXxApQ/30L3EYvuibeTb1P484YgHu+TS
-	zrjY6YFaE4LQUWrz9P2uGJ3T/lWoRxqES8l03PRjapMc5zGP2F+23I7uhA2/GLo5zLDI9m6EZLZbI
-	/aT7af9lekjtWr8znwJyAgI/5uqa1vKzvl6usRdYh/CqFbmZ6NsPo6wanWB8+c0M0qov8+Fym47uU
-	g+IeLokOVfaZ++lODggTJRqAZPU2rkFE8ROOBP72lrg46nkVXW5rgwhoqrTK+g4TeipEr/QQbD7VS
-	k6nCMQoNw==;
+	 bh=WD7ktVS3G58gk59KJPezdnoFzIq6MVM3/llxb8NnK7g=; b=i2UIxCGJ2ien/iTpmwL5Xojz0
+	AD5ISp2f1PcC//9VG3Yu8K/FJISdX8bz3nWalBV4bevYZUqH5TN1sNGpeYnrApq1MmAr+cvQrnTW9
+	taeNPDPk5FkL4P+exittz7H0kdr2nayY+pdAN3f0spJeeAH00abyCxeRxjwdpp0/PVtw6CJiCnXTV
+	dDuOYKcm5c2L/t0tnqotoQp3DZXKlD49AZzFyUPdWW81rCitO/1Pziq5+NTh4lVOWgFIpPoEKTUKZ
+	IC2AcHHQNT4w3NpSvF0oNN0TykrLibmKjgOTwbMx2sWs6AeFwPzznsdZsSuLxM5i0hXSrzNfRmi0w
+	HgMNf0bYA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lNFs6-007WSt-WD; Fri, 19 Mar 2021 14:13:03 +0000
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+	id 1lNFs3-007WSB-2L; Fri, 19 Mar 2021 14:12:59 +0000
+Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lNFs3-007WS9-IZ
- for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 14:13:01 +0000
-Received: by mail-ua1-x936.google.com with SMTP id v11so3092408uao.0
- for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 07:12:58 -0700 (PDT)
+ id 1lNFrz-007WRV-AW
+ for linux-rockchip@lists.infradead.org; Fri, 19 Mar 2021 14:12:57 +0000
+Received: by mail-vs1-xe35.google.com with SMTP id l22so3556698vsr.13
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Mar 2021 07:12:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PWgAYd4GZnp/T9aLTG5OoUnHXCTXz0kWLYL1sUoKSAs=;
- b=pE55rx/nQAWWiRcoufqivpmIlRzEZI94QO9TqdlQvOOAyIVhYB3wg9rKP28xSWSdND
- 8ejGpFL7Hru1KdgUfbnz9esO6B16LKif/0/V93pB+dueCVSqoitKE554m26G3jJAz/4W
- K5TTrMnG0fx4HWa+ZI0nFwWdXE4jNXVx4bul67ywCLG1BREjNCWtUYFJ63DtoXjusnG1
- pzRj2CxrhTm3rHroP4F1mLECTFH+vnaCi+JdUoOqweNNkvI3DWtfZuULjiSg08LUL0F4
- Hr0CU8bi/+ER4v0ZVkNtB0vWix01KeTgAKV1xg4wiKRU9fitdxo9sW86UIl/a2uCfgNw
- 4q3w==
+ :cc; bh=rhtJ+/KMkr9j4F5l7xToUE92auUuaZKXFXYtoFbzKi8=;
+ b=p7spQuRg1ZgSy6xXjHIhASGtcj5pHDWKmuEjqbTuyd2ab5B1LRC1hI5nshuiyBxvzP
+ 2KjnykBqVgutT9bhh/25h8ldA8uUsvxNRDkpQOIRmX5+QdfgAVFEMJ9eefG4ow2IN/KU
+ oK4teq7scaPduKErOQRSk9HffPNZanPkoNlWxeC6nDW1PriQLgu/fSPrA+xNc0uBpN6/
+ Ar2IS7WI+Cnl0pCSaJOSmVriUT6Pi0UpVB8TH73IdWqLOcJgHATliBlXxLIIgSRl1CiS
+ S+PM9GC+W+KafUfrXglYpTtlBDSoOoYuew0/3xPTw/engvhuCr2n3rSoFuQhMtAvl4nc
+ sK+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=PWgAYd4GZnp/T9aLTG5OoUnHXCTXz0kWLYL1sUoKSAs=;
- b=UNp9uwfAowWm4CBjK2AcYUJn+RCJB0AJVpkz8TfJ50NorsFcKrdU2gr+CYjtAy5Tl9
- eeTLU9cyQ3gCOxR8q+avXeF2Sl6RpzhrNoxRE6F3qpCsKGFlsDwcX/GiaULKhJKIpKFg
- f3AAlLqYsBi+HX+Tp2sZNPhWub+kHFTTT1i3VOZJYzhot9Q+2mdVpYP6Sfb6FdsW+WnH
- Fm0g0hdO2hXNRDVDT2NrFozAmBlur9bfBS4ilzcH8s2f5dhRA3t5l7jmoKawNkfxjV1d
- CU3Pmm+H3ckP9CIgp7sQWBnF4Zk00FALrQe1VCdOOy1cVTG/0qVS7uYDMxa45afjYYOQ
- Vadw==
-X-Gm-Message-State: AOAM532sCx3P1hsNqZeOibPBNMVp1s0TYIiOtoVGODtwKF6zAsXyXw9m
- xXyoLurlof7Y3AlLnFP1qKTfqwtBVW18bEp9ZOan81MyFQ08YA==
-X-Google-Smtp-Source: ABdhPJybbh/9ZCCPoUUBxpdshVjauryv12ykA3cCDS1cePj8MJAy6TjeAM1Lg26t8d7/zZ7mGyc6CxPIuECyP0fWj0g=
-X-Received: by 2002:ab0:6f0e:: with SMTP id r14mr5394574uah.15.1616163176593; 
- Fri, 19 Mar 2021 07:12:56 -0700 (PDT)
+ bh=rhtJ+/KMkr9j4F5l7xToUE92auUuaZKXFXYtoFbzKi8=;
+ b=mRjRieSKcmA5fqcvxMwQdkzQ4wUOw0Qbe29My+eyRyI/vB08wGjTc63p24WNGSSSKn
+ UpWdcdBKAOmrek9qVMzKVWNRo5QMnOoV0AKawbMi7Jn9DEQtkUcFxEe2kb+Rdc39ypRc
+ u7O/wfwNd2YRJGGP274/3VolGO4a2HDrXk/ljbhaBhrhbHry3HGbDX4qHup1bfg2TRkP
+ IqOdp7BEVaRGH0ESUagt3EkvoPePptkq4i5FpbFQvMNpi/N2V7ebCRzDQ9Ur7ISDYMuM
+ cQ9eN/HnPQGMF4pjf+iKAD6AnDFDXgtkoyUsa5XlMYhLEwtJMQbuTXA4fi7npyxoK1f+
+ qvDw==
+X-Gm-Message-State: AOAM531o9I8dWwq1/VHmrwaDImVpYklVFgOvHKk0G+7xsDzmqQBQdZjh
+ 0mxHvQ3VnO1Ez885IpbldpQyG9KkSdSNmlh1kHmRhA==
+X-Google-Smtp-Source: ABdhPJzis8HlXL3zAqtJ2aBs7zLA8bDwN8cVmClyr3n/W4dECta2ibESJFO+yC/KmKAcg6A4t8jqptidBW25Oo2rPO4=
+X-Received: by 2002:a67:77c1:: with SMTP id s184mr2813086vsc.55.1616163173959; 
+ Fri, 19 Mar 2021 07:12:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <1615879102-45919-1-git-send-email-shawn.lin@rock-chips.com>
- <1615879102-45919-2-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1615879102-45919-2-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1615879102-45919-1-git-send-email-shawn.lin@rock-chips.com>
 From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 19 Mar 2021 15:12:20 +0100
-Message-ID: <CAPDyKFoANfvc1-jnM6+kSprzxoefECvDoRW5K07aU11QaNsdoQ@mail.gmail.com>
-Subject: Re: [PATCH v6 2/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Add rockchip
- support
+Date: Fri, 19 Mar 2021 15:12:16 +0100
+Message-ID: <CAPDyKFou+0=zh-sqOa3DwhQr-iWLjPoP7tjVHDFp87+wVhCr8Q@mail.gmail.com>
+Subject: Re: [PATCH v6 1/3] dt-bindings: mmc: sdhci-of-dwcmhsc: Convert to
+ yaml file
 To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, 
  Adrian Hunter <adrian.hunter@intel.com>, DTML <devicetree@vger.kernel.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210319_141259_703494_1AC80610 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20210319_141255_422063_306062F0 
+X-CRM114-Status: GOOD (  22.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,9 +97,10 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Tue, 16 Mar 2021 at 08:18, Shawn Lin <shawn.lin@rock-chips.com> wrote:
 >
-> This patch adds rockchip support in sdhci-of-dwcmhsc.yaml
+> This patch converts sdhci-of-dwcmshc.txt to sdhci-of-dwcmshc.yaml
 >
 > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
 Applied for next, thanks!
 
@@ -113,67 +113,111 @@ Uffe
 > Changes in v6: None
 > Changes in v5: None
 > Changes in v4:
-> - rename compatible to rockchip,rk3568-dwcmshc
-> - constrains rockchip,txclk-tapnum to u8 to match the register map
+> - add tag from Rob
+> Series-changes: 3
+> - fix filename and other improvments suggested by Rob
 >
->  .../bindings/mmc/snps,dwcmshc-sdhci.yaml           | 24 ++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
+>  .../devicetree/bindings/mmc/sdhci-of-dwcmshc.txt   | 20 -------
+>  .../bindings/mmc/snps,dwcmshc-sdhci.yaml           | 63 ++++++++++++++++++++++
+>  2 files changed, 63 insertions(+), 20 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+>  create mode 100644 Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
 >
+> diff --git a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt b/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+> deleted file mode 100644
+> index ee4253b..0000000
+> --- a/Documentation/devicetree/bindings/mmc/sdhci-of-dwcmshc.txt
+> +++ /dev/null
+> @@ -1,20 +0,0 @@
+> -* Synopsys DesignWare Cores Mobile Storage Host Controller
+> -
+> -Required properties:
+> -- compatible: should be one of the following:
+> -    "snps,dwcmshc-sdhci"
+> -- reg: offset and length of the register set for the device.
+> -- interrupts: a single interrupt specifier.
+> -- clocks: Array of clocks required for SDHCI; requires at least one for
+> -    core clock.
+> -- clock-names: Array of names corresponding to clocks property; shall be
+> -    "core" for core clock and "bus" for optional bus clock.
+> -
+> -Example:
+> -       sdhci2: sdhci@aa0000 {
+> -               compatible = "snps,dwcmshc-sdhci";
+> -               reg = <0xaa0000 0x1000>;
+> -               interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
+> -               clocks = <&emmcclk>;
+> -               bus-width = <8>;
+> -       }
 > diff --git a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
-> index f99fb9f..e6c9a2f 100644
-> --- a/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
+> new file mode 100644
+> index 0000000..f99fb9f
+> --- /dev/null
 > +++ b/Documentation/devicetree/bindings/mmc/snps,dwcmshc-sdhci.yaml
-> @@ -16,6 +16,7 @@ allOf:
->  properties:
->    compatible:
->      enum:
-> +      - rockchip,rk3568-dwcmshc
->        - snps,dwcmshc-sdhci
->
->    reg:
-> @@ -31,12 +32,24 @@ properties:
->      items:
->        - description: core clock
->        - description: bus clock for optional
-> +      - description: axi clock for rockchip specified
-> +      - description: block clock for rockchip specified
-> +      - description: timer clock for rockchip specified
+> @@ -0,0 +1,63 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mmc/snps,dwcmshc-sdhci.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
->
->    clock-names:
->      minItems: 1
->      items:
->        - const: core
->        - const: bus
-> +      - const: axi
-> +      - const: block
-> +      - const: timer
+> +title: Synopsys Designware Mobile Storage Host Controller Binding
 > +
-> +  rockchip,txclk-tapnum:
-> +    description: Specify the number of delay for tx sampling.
-> +    $ref: /schemas/types.yaml#/definitions/uint8
+> +maintainers:
+> +  - Ulf Hansson <ulf.hansson@linaro.org>
+> +  - Jisheng Zhang <Jisheng.Zhang@synaptics.com>
 > +
->
->  required:
->    - compatible
-> @@ -49,6 +62,17 @@ unevaluatedProperties: false
->
->  examples:
->    - |
-> +    mmc@fe310000 {
-> +      compatible = "rockchip,rk3568-dwcmshc";
-> +      reg = <0xfe310000 0x10000>;
+> +allOf:
+> +  - $ref: mmc-controller.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - snps,dwcmshc-sdhci
+> +
+> +  reg:
+> +    minItems: 1
+> +    items:
+> +      - description: Offset and length of the register set for the device
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +    items:
+> +      - description: core clock
+> +      - description: bus clock for optional
+> +
+> +  clock-names:
+> +    minItems: 1
+> +    items:
+> +      - const: core
+> +      - const: bus
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    mmc@aa0000 {
+> +      compatible = "snps,dwcmshc-sdhci";
+> +      reg = <0xaa000 0x1000>;
 > +      interrupts = <0 25 0x4>;
-> +      clocks = <&cru 17>, <&cru 18>, <&cru 19>, <&cru 20>, <&cru 21>;
-> +      clock-names = "core", "bus", "axi", "block", "timer";
+> +      clocks = <&cru 17>, <&cru 18>;
+> +      clock-names = "core", "bus";
 > +      bus-width = <8>;
 > +      #address-cells = <1>;
 > +      #size-cells = <0>;
 > +    };
-> +  - |
->      mmc@aa0000 {
->        compatible = "snps,dwcmshc-sdhci";
->        reg = <0xaa000 0x1000>;
+> +
+> +...
 > --
 > 2.7.4
 >
