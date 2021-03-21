@@ -2,19 +2,19 @@ Return-Path: <SRS0=Ii8/=IT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96604C433C1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69272C433C1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:02:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F25F76194C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:00:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F25F76194C
+	by mail.kernel.org (Postfix) with ESMTPS id 9F5526195B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:02:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F5526195B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FypVpCIbMBJr4VO6nidHff3A1lulrUrZMW17oO1UxcE=; b=dam5P1R8ipP41yz3zlo6RhqiS
-	2Mdj6GieglR412HKwFunVZD1BKX6WB0LUpSLw6trH83tC3GUTgu9qKViTnNA61PG4L2MacgR9gqQX
-	ZCit0c6nCWx1cZMoXAYQvvYJEaneBlu6YqSMTYmxOAHtx071Yg60KMJDvaapCAC17Lg78Ps+TZcno
-	pb6EHbuCUs3ZcqRi5u9Z3Dnv1OAPs1huB9yB4XvEApqc/qgLme870Q4tvtA2X0AtjB8aaFeaAK2Qu
-	pVQDL/0MmDdd538ZpE1UvvJhwou0QA9X5f6pM7ROswQVgFdPNH6W0A+yxpnI8OTI6JV5IGB/ogZtn
-	uqFzEzrWA==;
+	 bh=LRul62xOLVLIOA1fFR4ZD+G6N/JmtuiyapAV8fCV/7E=; b=AdH3Dd8Fr4t/NU3KXGqVD3oFV
+	Q2OgdNaoz1CrAhzK3MP3C0WJzYo+gGNpA+4SvmPlW99zVgxLpGnb6qfDC6u8kpSuiMZjqUNP9Fpwx
+	LE90WYk1Au0enj7x3nP39Z5DpsdZ6tlUgYN7euw2qSh6ZCPsefwQWJNypyugEk5XEjrlw7a3P78MV
+	yU7WjCTOcjSUkUeachsgvNZ5fzDx7uQFDSZwOBmQfX4svARcYCVfP93rKrq2aUN8/ju8hGPdFvYNP
+	FrlExkkMNzkzkaCtjsE4aZXSKvKu/qxT20p42D+17ZNGws8ZrwoBPj4J9B0VmVdaqvjPfZ2iDH+Dl
+	52Qaqg3/A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lO3Ig-00AFpV-Tw; Sun, 21 Mar 2021 18:59:59 +0000
+	id 1lO3LQ-00AGFi-Ii; Sun, 21 Mar 2021 19:02:36 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lO3IS-00AFnv-L7; Sun, 21 Mar 2021 18:59:34 +0000
+ id 1lO3L4-00AG60-7w; Sun, 21 Mar 2021 19:02:19 +0000
 Received: from p508fc3a3.dip0.t-ipconnect.de ([80.143.195.163]
  helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lO3IR-0006zk-Tf; Sun, 21 Mar 2021 19:59:31 +0100
+ id 1lO3Kr-000710-FT; Sun, 21 Mar 2021 20:02:01 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH] pinctrl: PINCTRL_ROCKCHIP should depend on ARCH_ROCKCHIP
-Date: Sun, 21 Mar 2021 19:59:31 +0100
-Message-ID: <9858038.nUPlyArG6x@phil>
-In-Reply-To: <20210316134059.2377081-1-geert+renesas@glider.be>
-References: <20210316134059.2377081-1-geert+renesas@glider.be>
+To: Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>,
+ Chen-Yu Tsai <wens@csie.org>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <uwe@kleine-koenig.org>,
+ Geert Uytterhoeven <geert@linux-m68k.org>, Johan Jonker <jbx6244@gmail.com>,
+ Pavel Machek <pavel@ucw.cz>, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ David Bauer <mail@david-bauer.net>, Jensen Huang <jensenhuang@friendlyarm.com>,
+ Marty Jones <mj8263788@gmail.com>, Tianling Shen <cnsztl@gmail.com>,
+ Tianling Shen <cnsztl@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
+Date: Sun, 21 Mar 2021 20:02:00 +0100
+Message-ID: <1851600.PYKUYFuaPT@phil>
+In-Reply-To: <20210319051627.814-1-cnsztl@gmail.com>
+References: <20210319051627.814-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210321_185932_781316_6D3A9FF1 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210321_190217_597141_059A9C50 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,23 +77,73 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 16. M=E4rz 2021, 14:40:59 CET schrieb Geert Uytterhoeven:
-> The Rockchip GPIO and pin control modules are only present on Rockchip
-> SoCs.  Hence add a dependency on ARCH_ROCKCHIP, to prevent asking the
-> user about this driver when configuring a kernel without Rockchip
-> platform support.
+Hi,
+
+Am Freitag, 19. M=E4rz 2021, 06:16:26 CET schrieb Tianling Shen:
+> Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
 > =
 
-> Note that before, the PINCTRL_ROCKCHIP symbol was not visible, and
-> automatically selected when needed.  By making it tristate and
-> user-selectable, it became visible for everyone.
+> Changes in v6:
+> - Fixed format of LED nodes
 > =
 
-> Fixes: be786ac5a6c4bf4e ("pinctrl: rockchip: make driver be tristate modu=
-le")
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Changes in v5:
+> - Dropped the empty PCIe node
+> - Dropped useless `/delete-property/`
+> - Renamed LED nodes
+> =
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Changes in v4:
+> - Correctly dropped `display-subsystem` node
+> - Dropped meaningless `pwm-fan` node
+> - Dropped wrong `sdmmc` node
+> - Disabled `i2c4` and `uart0` as they don't exist in the design
+> - Format fixes
+> =
+
+> Changes in v3:
+> - Dropped non-existent node `display_subsystem`
+> =
+
+> Changes in v2:
+> - Disable display for NanoPi R4S (reference commit: 74532de460ec)
+> - Light "sys" LED on NanoPi R4S (reference commit: 833821eeab91)
+> =
+
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+
+In v4 you received a
+Acked-by: Rob Herring <robh@kernel.org>
+
+Please pick these up and carry them over into new versions
+of your patchset. Otherwise Rob would needlessly review
+things multiple times.
+
+
+Heiko
+
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> =
+
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
+ntation/devicetree/bindings/arm/rockchip.yaml
+> index c3036f95c7bc..4a6f772c1043 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -134,6 +134,7 @@ properties:
+>                - friendlyarm,nanopi-m4
+>                - friendlyarm,nanopi-m4b
+>                - friendlyarm,nanopi-neo4
+> +              - friendlyarm,nanopi-r4s
+>            - const: rockchip,rk3399
+>  =
+
+>        - description: GeekBuying GeekBox
+> =
+
+
 
 
 
