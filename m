@@ -2,64 +2,61 @@ Return-Path: <SRS0=Ii8/=IT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69272C433C1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:02:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6FCF6C433DB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 20:14:54 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F5526195B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 19:02:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F5526195B
+	by mail.kernel.org (Postfix) with ESMTPS id A76F761944
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Mar 2021 20:14:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A76F761944
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LRul62xOLVLIOA1fFR4ZD+G6N/JmtuiyapAV8fCV/7E=; b=AdH3Dd8Fr4t/NU3KXGqVD3oFV
-	Q2OgdNaoz1CrAhzK3MP3C0WJzYo+gGNpA+4SvmPlW99zVgxLpGnb6qfDC6u8kpSuiMZjqUNP9Fpwx
-	LE90WYk1Au0enj7x3nP39Z5DpsdZ6tlUgYN7euw2qSh6ZCPsefwQWJNypyugEk5XEjrlw7a3P78MV
-	yU7WjCTOcjSUkUeachsgvNZ5fzDx7uQFDSZwOBmQfX4svARcYCVfP93rKrq2aUN8/ju8hGPdFvYNP
-	FrlExkkMNzkzkaCtjsE4aZXSKvKu/qxT20p42D+17ZNGws8ZrwoBPj4J9B0VmVdaqvjPfZ2iDH+Dl
-	52Qaqg3/A==;
+	 bh=PQ8sIt27I5uQmCwHUU498IzSrCnjp3FircTKarG1G1w=; b=q9zqv2q5hRANzflZt17iHXOTi
+	LhIw9s4MbRRc1VYyaabWg/3UKaHwY96WR2RRktsMXI4G025emSZSYcGzGm5iulMHI6v1pp+I7xsgq
+	Mq3eFOqEeIuG8XrsAymMT/J74v152kW80Z04a8Aj1v7dOBHAreTUAN63yU1cYiIDDCRmhHU80jIOU
+	mn4Ypysa8TmnvSETbfO8uqT0wephqKkYVe2c+8DcXrybBRnHNMMFhS0l2GhbNLrEiNta6WQAQd9Ny
+	g1EqkhmPXG7xdx2qELOng6S7JnS0AZjEdnQmUT77hxJGNgWMCT4PgOW8tNwOmUHTfx+s4rAwqvLnD
+	DRtx10BLA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lO3LQ-00AGFi-Ii; Sun, 21 Mar 2021 19:02:36 +0000
+	id 1lO4TI-00AKoQ-2N; Sun, 21 Mar 2021 20:14:48 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lO3L4-00AG60-7w; Sun, 21 Mar 2021 19:02:19 +0000
+ id 1lO4T9-00AKmT-2O; Sun, 21 Mar 2021 20:14:44 +0000
 Received: from p508fc3a3.dip0.t-ipconnect.de ([80.143.195.163]
- helo=phil.localnet)
+ helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lO3Kr-000710-FT; Sun, 21 Mar 2021 20:02:01 +0100
+ id 1lO4T8-0007Oi-Ht; Sun, 21 Mar 2021 21:14:38 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>,
- Chen-Yu Tsai <wens@csie.org>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <uwe@kleine-koenig.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>, Johan Jonker <jbx6244@gmail.com>,
- Pavel Machek <pavel@ucw.cz>, Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- David Bauer <mail@david-bauer.net>, Jensen Huang <jensenhuang@friendlyarm.com>,
- Marty Jones <mj8263788@gmail.com>, Tianling Shen <cnsztl@gmail.com>,
- Tianling Shen <cnsztl@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
-Date: Sun, 21 Mar 2021 20:02:00 +0100
-Message-ID: <1851600.PYKUYFuaPT@phil>
-In-Reply-To: <20210319051627.814-1-cnsztl@gmail.com>
-References: <20210319051627.814-1-cnsztl@gmail.com>
+To: linux-rockchip@lists.infradead.org,
+	Thomas Schneider <qsx@chaotikum.eu>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add infrared receiver node to
+ rockpro64
+Date: Sun, 21 Mar 2021 21:14:34 +0100
+Message-Id: <161635763247.767241.7420445041544765170.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210310122821.126408-1-qsx@chaotikum.eu>
+References: <20210310122821.126408-1-qsx@chaotikum.eu>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210321_190217_597141_059A9C50 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20210321_201442_751239_41B650E6 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,83 +69,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Freitag, 19. M=E4rz 2021, 06:16:26 CET schrieb Tianling Shen:
-> Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
-> =
-
-> Changes in v6:
-> - Fixed format of LED nodes
-> =
-
-> Changes in v5:
-> - Dropped the empty PCIe node
-> - Dropped useless `/delete-property/`
-> - Renamed LED nodes
-> =
-
-> Changes in v4:
-> - Correctly dropped `display-subsystem` node
-> - Dropped meaningless `pwm-fan` node
-> - Dropped wrong `sdmmc` node
-> - Disabled `i2c4` and `uart0` as they don't exist in the design
-> - Format fixes
-> =
-
-> Changes in v3:
-> - Dropped non-existent node `display_subsystem`
-> =
-
-> Changes in v2:
-> - Disable display for NanoPi R4S (reference commit: 74532de460ec)
-> - Light "sys" LED on NanoPi R4S (reference commit: 833821eeab91)
-> =
-
-> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
-
-In v4 you received a
-Acked-by: Rob Herring <robh@kernel.org>
-
-Please pick these up and carry them over into new versions
-of your patchset. Otherwise Rob would needlessly review
-things multiple times.
-
-
-Heiko
-
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> =
-
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Docume=
-ntation/devicetree/bindings/arm/rockchip.yaml
-> index c3036f95c7bc..4a6f772c1043 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -134,6 +134,7 @@ properties:
->                - friendlyarm,nanopi-m4
->                - friendlyarm,nanopi-m4b
->                - friendlyarm,nanopi-neo4
-> +              - friendlyarm,nanopi-r4s
->            - const: rockchip,rk3399
->  =
-
->        - description: GeekBuying GeekBox
-> =
-
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAxMCBNYXIgMjAyMSAxMzoyODoyMSArMDEwMCwgVGhvbWFzIFNjaG5laWRlciB3cm90
+ZToKPiBUaGlzIGFkZHMgdGhlIFJvY2tQcm82NOKAmXMgaW5mcmFyZWQgcmVjZWl2ZXIgdG8gaXRz
+IGR0c2kuICBUaGUgY29uZmlndXJhdGlvbiBpcwo+IGFsbW9zdCB0aGUgc2FtZSBhcyBvbiByazMz
+Mjgtcm9jazY0LCBleGNlcHQgZm9yIHRoZSBHUElPIHBpbnMsIGFuZCB0aHVzIGFkYXB0ZWQKPiBm
+cm9tIHRoZXJlLgoKQXBwbGllZCwgdGhhbmtzIQoKWzEvMV0gYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IGFkZCBpbmZyYXJlZCByZWNlaXZlciBub2RlIHRvIHJvY2twcm82NAogICAgICBjb21taXQ6IDdj
+N2YwNDEzMDlmNzNiMDVkMjE5ODBmODhmMjkzMDUyNTVlMTI2ZWUKCkJlc3QgcmVnYXJkcywKLS0g
+CkhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
