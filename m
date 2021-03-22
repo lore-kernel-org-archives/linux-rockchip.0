@@ -8,90 +8,90 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 575FBC433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 18:19:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54C4AC433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 19:03:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA5DC61983
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 18:19:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA5DC61983
+	by mail.kernel.org (Postfix) with ESMTPS id C03AA6157E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 19:03:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C03AA6157E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P4b9+BF3In3FVkplSMZj7T/vLwmm0IuhuL9FOYsUn54=; b=gcsbhcXcYFCzlKISUT2KX/M54
-	zm/DORK1SQ2VsjJvuqTdT89D7AaAbVI/bsyXhmlvLQbcrS0Bbmo5SgzIkBP5wrOA1QHbdQlJ9qU8R
-	DGMJUfZGpmXHTEA++tQLIBeeHMuShjCe8JWWOb7BFx/+th6eiNiOvJzL6FXTTrGs0Lx1WvMwGwcz5
-	qhG4L9bO7vtdnjs89KyVUtPcCPkc8QcVWEKLgRWpoxAdN1XLZYdfJ+wVrsNuZH+eSEoYwMMPsO0bC
-	dRn3s2rW1v3WYPXzy1EhsLQ6iG3NtGA5jz50d4cotfxwLGvGxOTS5PdK3Pc/p07ivG1+wNL9vOD0j
-	ru+Gopr6Q==;
+	 bh=7oPgU+fK4WTwetYxmMdkHti83CcqkrLGNr8IHxQHJTI=; b=MRS6E+EC9mOjl8/FuCWWaWYJi
+	g856+KmCrvKxjFU+VTlntAst3JV8bASFm7jMpBrhr5yuhLGUmz/O5r9TxKXwB32co+r9/8EeYNyaI
+	YUd+16s2qxJ10iVh+Y/1puWhXwHNdOw9Xfbep+rTWKNfRdEEQDPf/CUD7V4+SYUmdRYTEsw4oxuDX
+	6UAZfKsCeRP0amcC1YoMhLM1Qw3SsTD5tkEx87UHoBuZd1kZH1sXBa8eZc+Uo4fX0tGKbI+EcFf9z
+	xcLVGAxX9A068vSDzLweQWYoEMY0mRM56S65flhEGfUIovvMsZlbNzrREMfRkQROjQX+5wW5msFRQ
+	alPxkR3uA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOP96-00CEZb-Mp; Mon, 22 Mar 2021 18:19:20 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1lOPq8-00COHd-9r; Mon, 22 Mar 2021 19:03:48 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOP8t-00CEYD-7S; Mon, 22 Mar 2021 18:19:09 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id b16so20547061eds.7;
- Mon, 22 Mar 2021 11:19:04 -0700 (PDT)
+ id 1lOPq3-00COGg-JU; Mon, 22 Mar 2021 19:03:46 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id k10so23087081ejg.0;
+ Mon, 22 Mar 2021 12:03:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=he1sHNhqR2uI8k5Zg0QdITwzf6w5j/Yg2Uh7d+S2xLg=;
- b=vCJcRopkyQsuskm6zcIoUiJ9GWAgVLbIjcAewyRF7O8lVbZivCnAmuc1mDBqI4dwDe
- L+2gUceCa4NZYWxACOaT3OX3jp7EWY0uRbUaCrDIqLAPk2tkZ173Ep4Cq4i5jWOiAn5R
- 2S17iwCtOvDa5p34y1f3Y7LE8/VOBBfyJyiEHFK0BCMCOHng4F2iFsJ8vNEfoK+FB10A
- rMxUurH+1HGOXXGHHcKCw6idJatfeVsRDYTTGuBOXFt6LlaYaoSKoI3wovuDCRTFt/Hq
- VK0Wzz8TiEe1f6oUgkFUtWBbBvUSP7FXF4z1RUP/SrdpkG7PZS7HCBoL/7e6KYn48xga
- kJ1w==
+ bh=nS7FRgbdv9jzkLNC53gBu26ppeGL60bI1cJEtoSx6Q4=;
+ b=cy84B8AuA2CqCaMmNm1zSllxGdADGcNXpbhdemnIUroofKmE+81iCJRRQ3uheQdzlu
+ TddoX+ru/grVclcYiN5+VpICZ0lg/wdSuP5I/4hmXcLiaEDZMpCuqmzel3tdri5v6Q5e
+ rSog0kKkbI2FYd8LmnhtBP3avfl2SCuWwrc87zImU7Gx7T1mK3bWcesQ77Pn8jUOP8IE
+ 0dLZ66uSWY5waEVNw/EhOgRh+nsbRWVST+GlwijTsDr7U+rmQbm7MrMmIn21hlc2rqBO
+ AP+7eRgVKq63Q6uL/NnToR9UaUzO21XQhaCResJHxqfOeUOirICc6VcQK0CtDDpX+9vu
+ 61FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=he1sHNhqR2uI8k5Zg0QdITwzf6w5j/Yg2Uh7d+S2xLg=;
- b=f0nsD3chVI2/m1zVqMCLDk120Jx6a8fpZaM+BamG9w3M4Tx/+dLzkcE0xPvEXh0aAu
- SjFJdqRhy+wF8xdUBtvInQsxtw9fIC4B5T33T7Tv2VSsEbWQLh10+xLqDrWO+rfabmFK
- tFlGES+bo6Pgq6HTfHB/R5YapOXNerYFQZnwJastXA5VCFDPdH50RSJWNpXFYiqOm2Y6
- P1y1HUsRwFUBeEpOwWtiyWx8Dq6f8YMq4RsD67I/SH0frsKJS3QKC1UraHl1z9QqwrIP
- pMy0xVx9TwUwDbeYxvlfSRBApDuXjpGv86qpt2u2iE9o+sJr79S6EkN80ISsDmP1wy06
- fcrA==
-X-Gm-Message-State: AOAM532rVs2Z3UgyroMJA8CsbKTqyP45xypDs27m6ar6vhH+ASusuoVP
- fkR5wsL6KRHc1/s71WPYmyGa0ie+xy5Ayw==
-X-Google-Smtp-Source: ABdhPJyQTAbHgsYJ40Dng8g4x/bptgrSUZ5xMOHL7gNjZ4UJRFyVYyFWFwfuMEPoS7xJgoxKwEBtXw==
-X-Received: by 2002:a05:6402:4386:: with SMTP id
- o6mr917732edc.307.1616437144316; 
- Mon, 22 Mar 2021 11:19:04 -0700 (PDT)
+ bh=nS7FRgbdv9jzkLNC53gBu26ppeGL60bI1cJEtoSx6Q4=;
+ b=NrE/VNR6I7keoO9ycpL8fpXVGTq4dhua8Ywj51KLTF52k+1R9lqkdeoL0WYdCAxPVh
+ IL55psU8Rce5hinNOxLqB5+rTYpb62shNY4oM7JuchRhDOxDs7XFScgPX+3B6CMlU8w4
+ myfh6OQ0WhSZozpoeUSNoIp4G61+hOGJPIH3FW4cOJ3bQDk+SlED2wp+VVZz8vql+W62
+ q6P7OOfhKqzP1uRHuNop133V6lF8lwGtBNYiAeU8KqQyaGZcwetJ9i2Y6uTviWnCVh5U
+ UAU8H3t0+GNzxofVDwPQ5xAevb3p2VxP+1j3VZlaF9sdfqIaUmAzvvdiOOKfuHg9l7A5
+ YIYg==
+X-Gm-Message-State: AOAM532L2wLQzwU9EjcST5p87q+1iUNxrZB/2KRoqLqOzWkb5cDCwwqy
+ QgOJvcdxtBgTCmQQwmR9HMg=
+X-Google-Smtp-Source: ABdhPJx+VYqzaOlZ8muPmDOzZLCW3YLYfps8nZreDgEpD0r5b/SxK92p5oynRs5wr6ly6o1dnfW3rw==
+X-Received: by 2002:a17:906:c9c2:: with SMTP id
+ hk2mr1296044ejb.244.1616439822903; 
+ Mon, 22 Mar 2021 12:03:42 -0700 (PDT)
 Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- m7sm11473349edp.81.2021.03.22.11.19.02
+ d1sm10059728eje.26.2021.03.22.12.03.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Mar 2021 11:19:03 -0700 (PDT)
-Subject: Re: [PATCH v6 2/5] drm: rockchip: add sound support to rk3066 hdmi
- driver
+ Mon, 22 Mar 2021 12:03:42 -0700 (PDT)
+Subject: Re: [PATCH v1 2/3] dt-bindings: Convert the rockchip power_domain to
+ YAML and extend
+To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org,
+ heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
+ tony.xie@rock-chips.com, finley.xiao@rock-chips.com
+References: <20210317025159.2248-1-zhangqing@rock-chips.com>
+ <20210317025159.2248-3-zhangqing@rock-chips.com>
 From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
- airlied@linux.ie, linux-kernel@vger.kernel.org, broonie@kernel.org,
- hjc@rock-chips.com, dri-devel@lists.freedesktop.org, lgirdwood@gmail.com,
- linux-rockchip@lists.infradead.org, robh+dt@kernel.org, daniel@ffwll.ch,
- linux-arm-kernel@lists.infradead.org
-References: <20201206133355.16007-1-jbx6244@gmail.com>
- <20201206133355.16007-3-jbx6244@gmail.com>
-Message-ID: <48dbe9b7-0aa0-f459-301f-f380e2b7f2f8@gmail.com>
-Date: Mon, 22 Mar 2021 19:19:01 +0100
+Message-ID: <79a19747-0dcf-5bc7-6c1f-3a76df9b1002@gmail.com>
+Date: Mon, 22 Mar 2021 20:03:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201206133355.16007-3-jbx6244@gmail.com>
+In-Reply-To: <20210317025159.2248-3-zhangqing@rock-chips.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_181907_413748_D983BE94 
-X-CRM114-Status: GOOD (  37.34  )
+X-CRM114-CacheID: sfid-20210322_190343_779858_FAD7ADFF 
+X-CRM114-Status: GOOD (  32.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,416 +109,444 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ping
+Hi Elaine,
 
-On 12/6/20 2:33 PM, Johan Jonker wrote:
-> From: Zheng Yang <zhengyang@rock-chips.com>
-> 
-> Add sound support to the rk3066 HDMI driver.
-> 
-> The I2S input of the HDMI TX allows transmission of
-> DVD-Audio and decoded Dolby Digital
-> to A/V Receivers and high-end displays.
-> The interface supports 2 to 8 channels audio up to 192 kHz.
-> The HDMI TX supports variable word length of
-> 16bits to 32bits for I2S audio inputs.(This driver 24bit max)
-> There are three I2S input modes supported.(This driver HDMI_I2S only)
-> On RK3066/PX2 the HDMI TX audio source is connected to I2S_8CH.
-> 
-> Signed-off-by: Zheng Yang <zhengyang@rock-chips.com>
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Some comments. Have a look if it's useful or that you disagree with...
+
+On 3/17/21 3:51 AM, Elaine Zhang wrote:
+> This converts the rockchip power domain family bindings to YAML schema,
+> and add binding documentation for the power domains found on Rockchip
+> RK3568 SoCs.
+>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > ---
->  drivers/gpu/drm/rockchip/Kconfig       |   2 +
->  drivers/gpu/drm/rockchip/rk3066_hdmi.c | 277 ++++++++++++++++++++++++++++++++-
->  2 files changed, 278 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-> index 310aa1546..4c20445dc 100644
-> --- a/drivers/gpu/drm/rockchip/Kconfig
-> +++ b/drivers/gpu/drm/rockchip/Kconfig
-> @@ -11,6 +11,8 @@ config DRM_ROCKCHIP
->  	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
->  	select DRM_RGB if ROCKCHIP_RGB
->  	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
-> +	select SND_SOC_HDMI_CODEC if ROCKCHIP_RK3066_HDMI && SND_SOC
-> +	select SND_SOC_ROCKCHIP_I2S if ROCKCHIP_RK3066_HDMI && SND_SOC
->  	help
->  	  Choose this option if you have a Rockchip soc chipset.
->  	  This driver provides kernel mode setting and buffer
-> diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> index 1c546c3a8..2f8654023 100644
-> --- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> +++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-> @@ -13,6 +13,8 @@
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  
-> +#include <sound/hdmi-codec.h>
+>  .../bindings/soc/rockchip/power_domain.txt    | 136 ------------
+>  .../rockchip/rockchip,power-controller.yaml   | 196 ++++++++++++++++++
+>  2 files changed, 196 insertions(+), 136 deletions(-)
+>  delete mode 100644
+Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+>  create mode 100644
+Documentation/devicetree/bindings/soc/rockchip/rockchip,power-controller.yaml
+>
+> diff --git
+a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> deleted file mode 100644
+> index 8304eceb62e4..000000000000
+> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> +++ /dev/null
+> @@ -1,136 +0,0 @@
+> -* Rockchip Power Domains
+> -
+> -Rockchip processors include support for multiple power domains which
+can be
+> -powered up/down by software based on different application scenes to
+save power.
+> -
+> -Required properties for power domain controller:
+> -- compatible: Should be one of the following.
+> -	"rockchip,px30-power-controller" - for PX30 SoCs.
+> -	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
+> -	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
+> -	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
+> -	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
+> -	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
+> -	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+> -	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
+> -	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
+> -	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
+> -	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+> -- #power-domain-cells: Number of cells in a power-domain specifier.
+> -	Should be 1 for multiple PM domains.
+> -- #address-cells: Should be 1.
+> -- #size-cells: Should be 0.
+> -
+> -Required properties for power domain sub nodes:
+> -- reg: index of the power domain, should use macros in:
+> -	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
+> -	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power
+domain.
+> -	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power
+domain.
+> -	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power
+domain.
+> -	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power
+domain.
+> -	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power
+domain.
+> -	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power
+domain.
+> -	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power
+domain.
+> -	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power
+domain.
+> -	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power
+domain.
+> -	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power
+domain.
+> -- clocks (optional): phandles to clocks which need to be enabled
+while power domain
+> -	switches state.
+> -- pm_qos (optional): phandles to qos blocks which need to be saved
+and restored
+> -	while power domain switches state.
+> -
+> -Qos Example:
+> -
+> -	qos_gpu: qos_gpu@ffaf0000 {
+> -		compatible ="syscon";
+> -		reg = <0x0 0xffaf0000 0x0 0x20>;
+> -	};
+> -
+> -Example:
+> -
+> -	power: power-controller {
+> -		compatible = "rockchip,rk3288-power-controller";
+> -		#power-domain-cells = <1>;
+> -		#address-cells = <1>;
+> -		#size-cells = <0>;
+> -
+> -		pd_gpu {
+> -			reg = <RK3288_PD_GPU>;
+> -			clocks = <&cru ACLK_GPU>;
+> -			pm_qos = <&qos_gpu>;
+> -		};
+> -	};
+> -
+> -	 power: power-controller {
+> -                compatible = "rockchip,rk3368-power-controller";
+> -                #power-domain-cells = <1>;
+> -                #address-cells = <1>;
+> -                #size-cells = <0>;
+> -
+> -                pd_gpu_1 {
+> -                        reg = <RK3368_PD_GPU_1>;
+> -                        clocks = <&cru ACLK_GPU_CFG>;
+> -                };
+> -        };
+> -
+> -Example 2:
+> -		power: power-controller {
+> -			compatible = "rockchip,rk3399-power-controller";
+> -			#power-domain-cells = <1>;
+> -			#address-cells = <1>;
+> -			#size-cells = <0>;
+> -
+> -			pd_vio {
+> -				#address-cells = <1>;
+> -				#size-cells = <0>;
+> -				reg = <RK3399_PD_VIO>;
+> -
+> -				pd_vo {
+> -					#address-cells = <1>;
+> -					#size-cells = <0>;
+> -					reg = <RK3399_PD_VO>;
+> -
+> -					pd_vopb {
+> -						reg = <RK3399_PD_VOPB>;
+> -					};
+> -
+> -					pd_vopl {
+> -						reg = <RK3399_PD_VOPL>;
+> -					};
+> -				};
+> -			};
+> -		};
+> -
+> -Node of a device using power domains must have a power-domains property,
+> -containing a phandle to the power device node and an index specifying
+which
+> -power domain to use.
+> -The index should use macros in:
+> -	"include/dt-bindings/power/px30-power.h" - for px30 type power domain.
+> -	"include/dt-bindings/power/rk3036-power.h" - for rk3036 type power
+domain.
+> -	"include/dt-bindings/power/rk3128-power.h" - for rk3128 type power
+domain.
+> -	"include/dt-bindings/power/rk3128-power.h" - for rk3228 type power
+domain.
+> -	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power
+domain.
+> -	"include/dt-bindings/power/rk3328-power.h" - for rk3328 type power
+domain.
+> -	"include/dt-bindings/power/rk3366-power.h" - for rk3366 type power
+domain.
+> -	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power
+domain.
+> -	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power
+domain.
+> -
+> -Example of the node using power domain:
+> -
+> -	node {
+> -		/* ... */
+> -		power-domains = <&power RK3288_PD_GPU>;
+> -		/* ... */
+> -	};
+> -
+> -	node {
+> -                /* ... */
+> -                power-domains = <&power RK3368_PD_GPU_1>;
+> -                /* ... */
+> -        };
+> -
+> -	node {
+> -		/* ... */
+> -		power-domains = <&power RK3399_PD_VOPB>;
+> -		/* ... */
+> -	};
+> diff --git
+a/Documentation/devicetree/bindings/soc/rockchip/rockchip,power-controller.yaml
+b/Documentation/devicetree/bindings/soc/rockchip/rockchip,power-controller.yaml
+> new file mode 100644
+> index 000000000000..c9c8058d17ab
+> --- /dev/null
+> +++
+b/Documentation/devicetree/bindings/soc/rockchip/rockchip,power-controller.yaml
+> @@ -0,0 +1,196 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +# %YAML 1.2
+> +---
+> +$id: http://devicetree.org/soc/rockchip/rockchip,power-controller.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
->  #include "rk3066_hdmi.h"
->  
->  #include "rockchip_drm_drv.h"
-> @@ -20,9 +22,16 @@
->  
->  #define DEFAULT_PLLA_RATE 30000000
->  
-> +struct audio_info {
-> +	int channels;
-> +	int sample_rate;
-> +	int sample_width;
-> +};
-> +
->  struct hdmi_data_info {
->  	int vic; /* The CEA Video ID (VIC) of the current drm display mode. */
->  	bool sink_is_hdmi;
-> +	bool sink_has_audio;
->  	unsigned int enc_out_format;
->  	unsigned int colorimetry;
->  };
-> @@ -54,12 +63,19 @@ struct rk3066_hdmi {
->  
->  	unsigned int tmdsclk;
->  
-> +	struct platform_device *audio_pdev;
-> +	struct audio_info audio;
-> +	bool audio_enable;
-> +
->  	struct hdmi_data_info hdmi_data;
->  	struct drm_display_mode previous_mode;
->  };
->  
->  #define to_rk3066_hdmi(x) container_of(x, struct rk3066_hdmi, x)
->  
-> +static int
-> +rk3066_hdmi_config_audio(struct rk3066_hdmi *hdmi, struct audio_info *audio);
-> +
->  static inline u8 hdmi_readb(struct rk3066_hdmi *hdmi, u16 offset)
->  {
->  	return readl_relaxed(hdmi->regs + offset);
-> @@ -205,6 +221,23 @@ static int rk3066_hdmi_config_avi(struct rk3066_hdmi *hdmi,
->  					HDMI_INFOFRAME_AVI, 0, 0, 0);
->  }
->  
-> +static int rk3066_hdmi_config_aai(struct rk3066_hdmi *hdmi,
-> +				  struct audio_info *audio)
-> +{
-> +	union hdmi_infoframe frame;
-> +	int rc;
-> +
-> +	rc = hdmi_audio_infoframe_init(&frame.audio);
-> +
-> +	frame.audio.coding_type = HDMI_AUDIO_CODING_TYPE_STREAM;
-> +	frame.audio.sample_frequency = HDMI_AUDIO_SAMPLE_FREQUENCY_STREAM;
-> +	frame.audio.sample_size = HDMI_AUDIO_SAMPLE_SIZE_STREAM;
-> +	frame.audio.channels = hdmi->audio.channels;
-> +
-> +	return rk3066_hdmi_upload_frame(hdmi, rc, &frame,
-> +					HDMI_INFOFRAME_AAI, 0, 0, 0);
-> +}
-> +
->  static int rk3066_hdmi_config_video_timing(struct rk3066_hdmi *hdmi,
->  					   struct drm_display_mode *mode)
->  {
-> @@ -353,6 +386,7 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
->  		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK,
->  			  HDMI_VIDEO_MODE_HDMI);
->  		rk3066_hdmi_config_avi(hdmi, mode);
-> +		rk3066_hdmi_config_audio(hdmi, &hdmi->audio);
->  	} else {
->  		hdmi_modb(hdmi, HDMI_HDCP_CTRL, HDMI_VIDEO_MODE_MASK, 0);
->  	}
-> @@ -369,9 +403,20 @@ static int rk3066_hdmi_setup(struct rk3066_hdmi *hdmi,
->  	 */
->  	rk3066_hdmi_i2c_init(hdmi);
->  
-> -	/* Unmute video output. */
-> +	/* Unmute video and audio output. */
->  	hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
->  		  HDMI_VIDEO_AUDIO_DISABLE_MASK, HDMI_AUDIO_DISABLE);
-> +	if (hdmi->audio_enable) {
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
-> +		/* Reset audio capture logic. */
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET);
-> +		usleep_range(900, 1000);
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
-> +	}
-> +
->  	return 0;
->  }
->  
-> @@ -473,9 +518,13 @@ static int rk3066_hdmi_connector_get_modes(struct drm_connector *connector)
->  	edid = drm_get_edid(connector, hdmi->ddc);
->  	if (edid) {
->  		hdmi->hdmi_data.sink_is_hdmi = drm_detect_hdmi_monitor(edid);
-> +		hdmi->hdmi_data.sink_has_audio = drm_detect_monitor_audio(edid);
->  		drm_connector_update_edid_property(connector, edid);
->  		ret = drm_add_edid_modes(connector, edid);
->  		kfree(edid);
-> +	} else {
-> +		hdmi->hdmi_data.sink_is_hdmi = true;
-> +		hdmi->hdmi_data.sink_has_audio = true;
->  	}
->  
->  	return ret;
-> @@ -536,6 +585,228 @@ struct drm_connector_helper_funcs rk3066_hdmi_connector_helper_funcs = {
->  };
->  
->  static int
-> +rk3066_hdmi_config_audio(struct rk3066_hdmi *hdmi, struct audio_info *audio)
-> +{
-> +	u32 rate, channel, word_length, N, CTS;
-> +	u64 tmp;
-> +
-> +	if (audio->channels < 3)
-> +		channel = HDMI_AUDIO_I2S_CHANNEL_1_2;
-> +	else if (audio->channels < 5)
-> +		channel = HDMI_AUDIO_I2S_CHANNEL_3_4;
-> +	else if (audio->channels < 7)
-> +		channel = HDMI_AUDIO_I2S_CHANNEL_5_6;
-> +	else
-> +		channel = HDMI_AUDIO_I2S_CHANNEL_7_8;
-> +
-> +	switch (audio->sample_rate) {
-> +	case 32000:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_32000;
-> +		N = N_32K;
-> +		break;
-> +	case 44100:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_44100;
-> +		N = N_441K;
-> +		break;
-> +	case 48000:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_48000;
-> +		N = N_48K;
-> +		break;
-> +	case 88200:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_88200;
-> +		N = N_882K;
-> +		break;
-> +	case 96000:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_96000;
-> +		N = N_96K;
-> +		break;
-> +	case 176400:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_176400;
-> +		N = N_1764K;
-> +		break;
-> +	case 192000:
-> +		rate = HDMI_AUDIO_SAMPLE_FRE_192000;
-> +		N = N_192K;
-> +		break;
-> +	default:
-> +		DRM_DEV_ERROR(hdmi->dev, "no support for sample rate %d\n",
-> +			      audio->sample_rate);
-> +		return -ENOENT;
-> +	}
-> +
-> +	switch (audio->sample_width) {
-> +	case 16:
-> +		word_length = 0x02;
-> +		break;
-> +	case 20:
-> +		word_length = 0x0a;
-> +		break;
-> +	case 24:
-> +		word_length = 0x0b;
-> +		break;
-> +	default:
-> +		DRM_DEV_ERROR(hdmi->dev, "no support for word length %d\n",
-> +			      audio->sample_width);
-> +		return -ENOENT;
-> +	}
-> +
-> +	tmp = (u64)hdmi->tmdsclk * N;
-> +	do_div(tmp, 128 * audio->sample_rate);
-> +	CTS = tmp;
-> +
-> +	/* Set_audio source I2S. */
-> +	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL1, 0x00);
-> +	hdmi_writeb(hdmi, HDMI_AUDIO_CTRL2, 0x40);
-> +	hdmi_writeb(hdmi, HDMI_I2S_AUDIO_CTRL,
-> +		    HDMI_AUDIO_I2S_FORMAT_STANDARD | channel);
-> +	hdmi_writeb(hdmi, HDMI_I2S_SWAP, 0x00);
-> +	hdmi_modb(hdmi, HDMI_AV_CTRL1, HDMI_AUDIO_SAMPLE_FRE_MASK, rate);
-> +	hdmi_writeb(hdmi, HDMI_AUDIO_SRC_NUM_AND_LENGTH, word_length);
-> +
-> +	/* Set N value. */
-> +	hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
-> +		  HDMI_AUDIO_N_19_16_MASK, (N >> 16) & 0x0F);
-> +	hdmi_writeb(hdmi, HDMI_N2, (N >> 8) & 0xFF);
-> +	hdmi_writeb(hdmi, HDMI_N1, N & 0xFF);
-> +
-> +	/* Set CTS value. */
-> +	hdmi_writeb(hdmi, HDMI_CTS_EXT1, CTS & 0xff);
-> +	hdmi_writeb(hdmi, HDMI_CTS_EXT2, (CTS >> 8) & 0xff);
-> +	hdmi_writeb(hdmi, HDMI_CTS_EXT3, (CTS >> 16) & 0xff);
-> +
-> +	if (audio->channels > 2)
-> +		hdmi_modb(hdmi, HDMI_LR_SWAP_N3,
-> +			  HDMI_AUDIO_LR_SWAP_MASK,
-> +			  HDMI_AUDIO_LR_SWAP_SUBPACKET1);
-> +	rate = (~(rate >> 4)) & 0x0f;
-> +	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL1, rate);
-> +	hdmi_writeb(hdmi, HDMI_AUDIO_STA_BIT_CTRL2, 0);
-> +
-> +	return rk3066_hdmi_config_aai(hdmi, audio);
-> +}
-> +
-> +static int rk3066_hdmi_audio_hw_params(struct device *dev, void *d,
-> +				       struct hdmi_codec_daifmt *daifmt,
-> +				       struct hdmi_codec_params *params)
-> +{
-> +	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	if (!hdmi->hdmi_data.sink_has_audio) {
-> +		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	if (!hdmi->encoder.crtc)
-> +		return -ENODEV;
-> +
-> +	switch (daifmt->fmt) {
-> +	case HDMI_I2S:
-> +		break;
-> +	default:
-> +		DRM_DEV_ERROR(dev, "invalid format %d\n", daifmt->fmt);
-> +		return -EINVAL;
-> +	}
-> +
-> +	hdmi->audio.channels = params->channels;
-> +	hdmi->audio.sample_rate = params->sample_rate;
-> +	hdmi->audio.sample_width = params->sample_width;
-> +
-> +	return rk3066_hdmi_config_audio(hdmi, &hdmi->audio);
-> +}
-> +
-> +static void rk3066_hdmi_audio_shutdown(struct device *dev, void *d)
-> +{
-> +	/* do nothing */
-> +}
-> +
-> +static int
-> +rk3066_hdmi_audio_mute_stream(struct device *dev, void *d,
-> +			      bool mute, int direction)
-> +{
-> +	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
-> +
-> +	if (!hdmi->hdmi_data.sink_has_audio) {
-> +		DRM_DEV_ERROR(hdmi->dev, "no audio support\n");
-> +		return -ENODEV;
-> +	}
-> +
-> +	hdmi->audio_enable = !mute;
-> +
-> +	if (mute)
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> +			  HDMI_AUDIO_DISABLE, HDMI_AUDIO_DISABLE);
-> +	else
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2, HDMI_AUDIO_DISABLE, 0);
-> +
-> +	/*
-> +	 * Under power mode E we need to reset the audio capture logic to
-> +	 * make the audio setting update.
-> +	 */
-> +	if (rk3066_hdmi_get_power_mode(hdmi) == HDMI_SYS_POWER_MODE_E) {
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET_MASK,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET);
-> +		usleep_range(900, 1000);
-> +		hdmi_modb(hdmi, HDMI_VIDEO_CTRL2,
-> +			  HDMI_AUDIO_CP_LOGIC_RESET_MASK, 0);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk3066_hdmi_audio_get_eld(struct device *dev, void *d,
-> +				     u8 *buf, size_t len)
-> +{
-> +	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
-> +	struct drm_mode_config *config = &hdmi->encoder.dev->mode_config;
-> +	struct drm_connector *connector;
-> +	int ret = -ENODEV;
-> +
-> +	mutex_lock(&config->mutex);
-> +	list_for_each_entry(connector, &config->connector_list, head) {
-> +		if (&hdmi->encoder == connector->encoder) {
-> +			memcpy(buf, connector->eld,
-> +			       min(sizeof(connector->eld), len));
-> +			ret = 0;
-> +		}
-> +	}
-> +	mutex_unlock(&config->mutex);
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct hdmi_codec_ops audio_codec_ops = {
-> +	.hw_params = rk3066_hdmi_audio_hw_params,
-> +	.audio_shutdown = rk3066_hdmi_audio_shutdown,
-> +	.mute_stream = rk3066_hdmi_audio_mute_stream,
-> +	.get_eld = rk3066_hdmi_audio_get_eld,
-> +	.no_capture_mute = 1,
-> +};
-> +
-> +static int rk3066_hdmi_audio_codec_init(struct rk3066_hdmi *hdmi,
-> +					struct device *dev)
-> +{
-> +	struct hdmi_codec_pdata codec_data = {
-> +		.i2s = 1,
-> +		.ops = &audio_codec_ops,
-> +		.max_i2s_channels = 8,
-> +	};
-> +
-> +	hdmi->audio.channels = 2;
-> +	hdmi->audio.sample_rate = 48000;
-> +	hdmi->audio.sample_width = 16;
-> +	hdmi->audio_enable = false;
-> +	hdmi->audio_pdev =
-> +		platform_device_register_data(dev,
-> +					      HDMI_CODEC_DRV_NAME,
-> +					      PLATFORM_DEVID_NONE,
-> +					      &codec_data,
-> +					      sizeof(codec_data));
-> +
-> +	return PTR_ERR_OR_ZERO(hdmi->audio_pdev);
-> +}
-> +
-> +static int
->  rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
->  {
->  	struct drm_encoder *encoder = &hdmi->encoder;
-> @@ -567,6 +838,8 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
->  
->  	drm_connector_attach_encoder(&hdmi->connector, encoder);
->  
-> +	rk3066_hdmi_audio_codec_init(hdmi, dev);
-> +
->  	return 0;
->  }
->  
-> @@ -815,6 +1088,7 @@ static int rk3066_hdmi_bind(struct device *dev, struct device *master,
->  	return 0;
->  
->  err_cleanup_hdmi:
-> +	platform_device_unregister(hdmi->audio_pdev);
->  	hdmi->connector.funcs->destroy(&hdmi->connector);
->  	hdmi->encoder.funcs->destroy(&hdmi->encoder);
->  err_disable_i2c:
-> @@ -830,6 +1104,7 @@ static void rk3066_hdmi_unbind(struct device *dev, struct device *master,
->  {
->  	struct rk3066_hdmi *hdmi = dev_get_drvdata(dev);
->  
-> +	platform_device_unregister(hdmi->audio_pdev);
->  	hdmi->connector.funcs->destroy(&hdmi->connector);
->  	hdmi->encoder.funcs->destroy(&hdmi->encoder);
->  
-> 
+> +title: Rcokchip Generic PM domains
+Rockchip
+Maybe use correct company name?
 
+> +
+> +maintainers:
+> +  - Rob Herring <robh+dt@kernel.org>
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +description: |
+> +  Rockchip processors include support for multiple power domains
+which can be
+> +  powered up/down by software based on different application scenes
+to save power.
+> +
+> +  IP cores belonging to a power domain should contain a 'power-domains'
+> +  property that is a phandle for SCPSYS node representing the domain.
+what's SCPSYS?
+Maybe reword phrase?
+
+> +
+> +properties:
+> +  $nodename:
+> +    const: power-controller
+> +
+> +  compatible:
+> +    enum:
+> +      - rockchip,px30-power-controller
+> +      - rockchip,rk3036-power-controller
+> +      - rockchip,rk3066-power-controller
+> +      - rockchip,rk3128-power-controller
+> +      - rockchip,rk3188-power-controller
+> +      - rockchip,rk3228-power-controller
+> +      - rockchip,rk3288-power-controller
+> +      - rockchip,rk3328-power-controller
+> +      - rockchip,rk3366-power-controller
+> +      - rockchip,rk3368-power-controller
+> +      - rockchip,rk3399-power-controller
+> +      - rockchip,rk3568-power-controller
+> +
+> +  '#power-domain-cells':
+> +    const: 1
+> +
+> +  '#address-cells':
+> +    const: 1
+> +
+> +  '#size-cells':
+> +    const: 0
+> +
+> +patternProperties:
+> +  "^power-domain@[0-9a-f]+$":
+> +    type: object
+> +    description: |
+> +      Represents the power domains within the power controller node
+as documented
+> +      in Documentation/devicetree/bindings/power/power-domain.yaml.
+> +
+> +    properties:
+> +
+> +      '#power-domain-cells':
+> +        description:
+> +          Must be 0 for nodes representing a single PM domain and 1
+for nodes
+> +          providing multiple PM domains.
+> +
+> +      '#address-cells':
+> +        const: 1
+> +
+> +      '#size-cells':
+> +        const: 0
+> +
+> +      reg:
+> +        description: |
+> +          Power domain index. Valid values are defined in:
+in the files with the SoC name as prefix in the file name below.
+improve phrase
+
+> +              "include/dt-bindings/power/px30-power.h" - for PX30
+type power domain.
+> +              "include/dt-bindings/power/rk3036-power.h" - for RK3036
+type power domain.
+> +              "include/dt-bindings/power/rk3066-power.h" - for RK3066
+type power domain.
+> +              "include/dt-bindings/power/rk3128-power.h" - for RK3128
+type power domain.
+> +              "include/dt-bindings/power/rk3188-power.h" - for RK3188
+type power domain.
+> +              "include/dt-bindings/power/rk3228-power.h" - for RK3228
+type power domain.
+> +              "include/dt-bindings/power/rk3288-power.h" - for RK3288
+type power domain.
+> +              "include/dt-bindings/power/rk3328-power.h" - for RK3328
+type power domain.
+> +              "include/dt-bindings/power/rk3366-power.h" - for RK3366
+type power domain.
+> +              "include/dt-bindings/power/rk3368-power.h" - for RK3368
+type power domain.
+> +              "include/dt-bindings/power/rk3399-power.h" - for RK3399
+type power domain.
+> +              "include/dt-bindings/power/rk3568-power.h" - for RK3568
+type power domain.
+The phrase "for RK3568 type power domain" repeats the file name.
+Maybe reduce a little bit of text?
+
+> +        maxItems: 1
+move up below reg:
+
+> +
+> +      clocks:
+> +        description: |
+> +          A number of phandles to clocks that need to be enabled
+during domain
+> +          power-up sequencing.
+> +
+> +      clock-names:
+> +        description: |
+> +          List of names of clocks, in order to match the power-up
+sequencing
+> +          for each power domain we need to group the clocks by name.
+BASIC
+> +          clocks need to be enabled before enabling the corresponding
+power
+> +          domain.
+> +
+> +      pm_qos:
+> +        description: |
+> +          A number of phandles for qos registers that need to be save
+and restor during domain
+QoS is an abriviation
+saved
+restored
+
+> +          power-up sequencing.
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+#include <dt-bindings/clock/rk3568-cru.h>
+#include <dt-bindings/power/rk3568-power.h>
+
+Please check example with script before submitting and fix!
+
+> +    pmu: power-management@fdd90000 {
+> +        compatible = "rockchip,rk3568-pmu", "syscon", "simple-mfd";
+> +        reg = <0xfdd90000 0x1000>;
+> +
+> +        power: power-controller {
+> +            compatible = "rockchip,rk3568-power-controller";
+> +            #power-domain-cells = <1>;
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +            status = "okay";
+no status in examples
+
+> +
+> +            /* These power domains are grouped by VD_NPU */
+> +            pd_npu@RK3568_PD_NPU {
+> +                reg = <RK3568_PD_NPU>;
+> +                clocks = <&cru ACLK_NPU_PRE>,
+> +                         <&cru HCLK_NPU_PRE>,
+> +                         <&cru PCLK_NPU_PRE>;
+> +                pm_qos = <&qos_npu>;
+> +            };
+> +            /* These power domains are grouped by VD_GPU */
+> +            pd_gpu@RK3568_PD_GPU {
+> +                reg = <RK3568_PD_GPU>;
+> +                clocks = <&cru ACLK_GPU_PRE>,
+> +                         <&cru PCLK_GPU_PRE>;
+> +                pm_qos = <&qos_gpu>;
+> +            };
+> +            /* These power domains are grouped by VD_LOGIC */
+> +            pd_vi@RK3568_PD_VI {
+> +                reg = <RK3568_PD_VI>;
+> +                clocks = <&cru HCLK_VI>,
+> +                         <&cru PCLK_VI>;
+> +                pm_qos = <&qos_isp>,
+> +                         <&qos_vicap0>,
+> +                         <&qos_vicap1>;
+> +            };
+> +            pd_vo@RK3568_PD_VO {
+> +                reg = <RK3568_PD_VO>;
+> +                clocks = <&cru HCLK_VO>,
+> +                         <&cru PCLK_VO>,
+> +                         <&cru ACLK_VOP_PRE>;
+> +                pm_qos = <&qos_hdcp>,
+> +                         <&qos_vop_m0>,
+> +                         <&qos_vop_m1>;
+> +            };
+> +            pd_rga@RK3568_PD_RGA {
+> +                reg = <RK3568_PD_RGA>;
+> +                clocks = <&cru HCLK_RGA_PRE>,
+> +                         <&cru PCLK_RGA_PRE>;
+> +                pm_qos = <&qos_ebc>,
+> +                         <&qos_iep>,
+> +                         <&qos_jpeg_dec>,
+> +                         <&qos_jpeg_enc>,
+> +                         <&qos_rga_rd>,
+> +                         <&qos_rga_wr>;
+> +            };
+> +            pd_vpu@RK3568_PD_VPU {
+> +                reg = <RK3568_PD_VPU>;
+> +                clocks = <&cru HCLK_VPU_PRE>;
+> +                pm_qos = <&qos_vpu>;
+> +            };
+> +            pd_rkvdec@RK3568_PD_RKVDEC {
+> +                clocks = <&cru HCLK_RKVDEC_PRE>;
+> +                reg = <RK3568_PD_RKVDEC>;
+> +                pm_qos = <&qos_rkvdec>;
+> +            };
+> +            pd_rkvenc@RK3568_PD_RKVENC {
+> +                reg = <RK3568_PD_RKVENC>;
+> +                clocks = <&cru HCLK_RKVENC_PRE>;
+> +                pm_qos = <&qos_rkvenc_rd_m0>,
+> +                <&qos_rkvenc_rd_m1>,
+> +                <&qos_rkvenc_wr_m0>;
+> +            };
+> +            pd_pipe@RK3568_PD_PIPE {
+> +                reg = <RK3568_PD_PIPE>;
+> +                clocks = <&cru PCLK_PIPE>;
+> +                pm_qos = <&qos_pcie2x1>,
+> +                         <&qos_pcie3x1>,
+> +                         <&qos_pcie3x2>,
+> +                         <&qos_sata0>,
+> +                         <&qos_sata1>,
+> +                         <&qos_sata2>,
+> +                         <&qos_usb3_0>,
+> +                         <&qos_usb3_1>;
+> +            };
+> +        };
+> +    };
+>
 
 _______________________________________________
 Linux-rockchip mailing list
