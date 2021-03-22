@@ -2,67 +2,75 @@ Return-Path: <SRS0=HfFp=IU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7AF5C433DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 10:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD9C4C433DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 10:43:33 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B128A61927
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 10:04:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B128A61927
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 3648160200
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Mar 2021 10:43:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3648160200
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OXrWUzZs2+05KCNKmLemvtjgl8TGyUpWAWSjU+zdtyE=; b=TD0rdw/xB3JMWs+bFeh9nNKoI
-	iehH6YBwHgnZWhxHUCVWI8nvduigZsCuNXIANKxstlDMeaEksbFhvPOktO3ePNfmWKp0Pmik6kDSc
-	Hrt+EYBMoMCICZFDuwa12eK/uisCC9kvei700TevPvD1t8wdY8svYX8oIAJDPB7RyTq9PNGuAixPq
-	m649Jb6M7iMlBcjNfZVwL+tUnE0HscTKcywcKXznxYzV+BF0vN2PtthuCxdkKVJH+qH+n/l1vWxec
-	Ne1NrsTkwko2qLInT+8wm+ChaG3QcxqItUVUhybMx/jUnxvRzxCcbQqNezQa05qUKV0I+Yu6zRf7j
-	EjdGokcJg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fUPkDOm+RTYipNrx+CHyoAB0/XzNrTnqqO18LOZinYg=; b=V/TjVb3KqMxtIhJhqdDzuCo8mp
+	jliwcl+r1RXY2kzk6urrg+hTgpIMMxwia2LfHbBMaUkXWrrnbcp82Z1C2Ks5vpCkM9YhdHNr5sJv1
+	KmqXYav1GO8dIwDx+UQFolPQ9j+lHXFn5cyfDLuTsmTqUKS1yX9LWn8b9Qg7+vbJYRpiiTu1+LHT0
+	H81FG6P4lgdZvJPDs6qsBimfDnU158xF8F/GNc3l6CTTuEm1KLCkflns0uthgND0E2IpVbbFnw3/3
+	Uj1l6sBHm+feh9ESzNoK/t2zCURmrHfnuIrLcqlGxvXdOtQ7bHx7NfBxrQDarO66Y4Lrhdd1gUyQH
+	MCc3emzw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOHQ5-00BIv2-MB; Mon, 22 Mar 2021 10:04:21 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lOI1s-00BMAd-VT; Mon, 22 Mar 2021 10:43:25 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOHPz-00BIuE-SD; Mon, 22 Mar 2021 10:04:18 +0000
-Received: from p5b127c0a.dip0.t-ipconnect.de ([91.18.124.10]
- helo=phil.fritz.box)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lOHPd-0003jN-LW; Mon, 22 Mar 2021 11:03:53 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Marty Jones <mj8263788@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Rob Herring <robh+dt@kernel.org>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- Jensen Huang <jensenhuang@friendlyarm.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- David Bauer <mail@david-bauer.net>, Johan Jonker <jbx6244@gmail.com>,
- Jagan Teki <jagan@amarulasolutions.com>, Chen-Yu Tsai <wens@csie.org>,
- Tianling Shen <cnsztl@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
-Date: Mon, 22 Mar 2021 11:03:52 +0100
-Message-Id: <161640742725.808893.3666594351389773587.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210319051627.814-1-cnsztl@gmail.com>
-References: <20210319051627.814-1-cnsztl@gmail.com>
+ id 1lOI1m-00BM8h-6b
+ for linux-rockchip@lists.infradead.org; Mon, 22 Mar 2021 10:43:22 +0000
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id BA41AF3227;
+ Mon, 22 Mar 2021 18:43:13 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P24306T139685293258496S1616409792243826_; 
+ Mon, 22 Mar 2021 18:43:13 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <d2a69f0cb541076f56fdc6182079d62f>
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: huangtao@rock-chips.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: huangtao@rock-chips.com, kever.yang@rock-chips.com,
+ linus.walleij@linaro.org, heiko@sntech.de
+Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH 0/3] gpio-rockchip driver
+Date: Mon, 22 Mar 2021 18:43:07 +0800
+Message-Id: <20210322104310.863029-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210322_100416_315097_9081AC01 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210322_104320_268304_81C5DBAC 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +88,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 19 Mar 2021 13:16:26 +0800, Tianling Shen wrote:
-> Add devicetree binding documentation for the FriendlyARM NanoPi R4S.
-> 
-> Changes in v6:
-> - Fixed format of LED nodes
-> 
-> Changes in v5:
-> - Dropped the empty PCIe node
-> - Dropped useless `/delete-property/`
-> - Renamed LED nodes
-> 
-> [...]
+Separate gpio driver from pinctrl driver.
 
-Applied, thanks!
+Jianqun Xu (3):
+  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
+  pinctrl/pinctrl-rockchip.h: add pinctrl device to gpio bank struct
+  gpio: separate gpio driver from pinctrl-rockchip driver
 
-[1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
-      commit: 1003888415e83e15ddb63d1d96189b4f2c5f1d48
-[2/2] rockchip: rk3399: Add support for FriendlyARM NanoPi R4S
-      commit: db792e9adbf85ffc9d6b0b060ac3c8e3148c8992
+ drivers/gpio/Kconfig               |   8 +
+ drivers/gpio/Makefile              |   1 +
+ drivers/gpio/gpio-rockchip.c       | 650 +++++++++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.c | 909 +----------------------------
+ drivers/pinctrl/pinctrl-rockchip.h | 246 ++++++++
+ 5 files changed, 924 insertions(+), 890 deletions(-)
+ create mode 100644 drivers/gpio/gpio-rockchip.c
+ create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
 
-Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.25.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
