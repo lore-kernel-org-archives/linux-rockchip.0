@@ -2,88 +2,76 @@ Return-Path: <SRS0=NEY9=IW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27FCCC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 02:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C29FC433C1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 03:23:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 471C0619D5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 02:49:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 471C0619D5
+	by mail.kernel.org (Postfix) with ESMTPS id A2FFE619E6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 03:23:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2FFE619E6
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=E7pAFYSHnb0DRfp0kQRWjVBDQi974dyE/wHeMjU6tZU=; b=S+2ytS00ujxqPqhADYUndSlvO
-	xO0RieW2IpA5QeQtDshy5OQtcasgleJKShYLa9Z3QppECN9c8/rZZ7LXnjBZ/7woW5OtbU92ejwbb
-	OMlsB8wL/qrHKAWJDdGYBLWJJWnyAn86G1yZ6Cjz8vnGCojMKBchNXtlB2yxmpx9zhaaSuqKVroHD
-	PakMQqbi1opYZ6Fa+AxWqj1+LXJtqIzhKYaSwQgoOr+mH9/pyqt1Oxu7aJL4dwBCWyaJiR2qdktuh
-	+UZFCgENL8TFkhatbfGSnyW+iP4LnbLsjiEH//RdnjyzK2oNkM3xhNnF/mCSXVdB1sKj3GkTwPk9q
-	rER1CYs5Q==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MzX0xamvFTzrJCKLWyOw5D9KMMKw2Y4g91Ppw8Wlk7o=; b=AA1b+81B1hRy3RdaI8Si0q4FMS
+	ztgUi5GSM8O00/SagPVVeiznfpUoCmTqRhVdTkfsM2USlGixIDHQHq6LjSpyGQ/EBk6K7ECT5mYvI
+	C6fpR+RSFDksoy/NYR+yM9hQ3GIa/c7BhqCOwRLSST7JohjPVabYLxxfyC5wMTHEGIu3CQevF8jvt
+	9Y6AQ7ENBUPlgdJDGROuzNyumk0pDnm1bq385Fya90RxMjdA87TUIlEdDSpQSbL8zcdzIGC02j+P6
+	YcDLcQFD3EIWIch1eHA7mDD/pTVIw7RJf1BUI9V/BHYoXhgzgEr0g2swxCF/HJOEQKKVKtFtwFc9d
+	Iek/KyIA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOtaO-00GAPW-FN; Wed, 24 Mar 2021 02:49:32 +0000
-Received: from regular1.263xmail.com ([211.150.70.195])
+	id 1lOu7G-00GEtQ-0o; Wed, 24 Mar 2021 03:23:30 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOtZy-00GANp-5l; Wed, 24 Mar 2021 02:49:13 +0000
+ id 1lOu72-00GEr0-TJ; Wed, 24 Mar 2021 03:23:20 +0000
 Received: from localhost (unknown [192.168.167.16])
- by regular1.263xmail.com (Postfix) with ESMTP id 335B91D1D;
- Wed, 24 Mar 2021 10:49:00 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 9FCEEF3344;
+ Wed, 24 Mar 2021 11:23:10 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
 X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from [172.16.12.236] (unknown [58.22.7.114])
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P13111T139928526636800S1616554138557516_; 
- Wed, 24 Mar 2021 10:48:59 +0800 (CST)
+ P13109T139929674307328S1616556189578495_; 
+ Wed, 24 Mar 2021 11:23:10 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <04df23d237b6fbd553a9c872d6560c96>
+X-UNIQUE-TAG: <cdee19ffc678ee8e11142310d3e75f1e>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
-X-FST-TO: finley.xiao@rock-chips.com
+X-FST-TO: robh+dt@kernel.org
 X-SENDER-IP: 58.22.7.114
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
-Subject: Re: [PATCH v2 2/3] dt-bindings: Convert the rockchip power_domain to
- YAML and extend
-To: Enric Balletbo Serra <eballetbo@gmail.com>,
- Johan Jonker <jbx6244@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, devicetree <devicetree@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, cl@rock-chips.com,
- huangtao@rock-chips.com, kever.yang@rock-chips.com, tony.xie@rock-chips.com,
- finley.xiao@rock-chips.com
-References: <20210323082410.22818-1-zhangqing@rock-chips.com>
- <20210323082410.22818-3-zhangqing@rock-chips.com>
- <87e50d5b-604b-508c-f3cb-ee07fcf15241@gmail.com>
- <CAFqH_53kBf++SPfir_5mA9Dv2v=u4s1zpqnztAH8Tt2-9dLVnQ@mail.gmail.com>
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Organization: rockchip
-Message-ID: <6e906aee-646f-ff7e-deca-fe9bbd435cd8@rock-chips.com>
-Date: Wed, 24 Mar 2021 10:48:58 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <CAFqH_53kBf++SPfir_5mA9Dv2v=u4s1zpqnztAH8Tt2-9dLVnQ@mail.gmail.com>
-Content-Language: en-US
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: robh+dt@kernel.org,
+	heiko@sntech.de
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
+ tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
+ Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v3 0/3] soc: rockchip: power-domain: add rk3568 powerdomains
+Date: Wed, 24 Mar 2021 11:23:05 +0800
+Message-Id: <20210324032308.6309-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_024909_770648_4362104B 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20210324_032317_301641_92D6D64A 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +84,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksIEVucmljCgrlnKggMjAyMS8zLzI0IOS4iuWNiDQ6NTgsIEVucmljIEJhbGxldGJvIFNlcnJh
-IOWGmemBkzoKPiBIaSBFbGFpbmUsCj4KPiBNaXNzYXRnZSBkZSBKb2hhbiBKb25rZXIgPGpieDYy
-NDRAZ21haWwuY29tPiBkZWwgZGlhIGR0LiwgMjMgZGUgbWFyw6cKPiAyMDIxIGEgbGVzIDEyOjA2
-Ogo+PiBIaSBFbGFpbmUsCj4+Cj4+IFNvbWUgY29tbWVudHMuIEhhdmUgYSBsb29rIGlmIGl0J3Mg
-dXNlZnVsIG9yIHRoYXQgeW91IGRpc2FncmVlCj4+IHdpdGguLi4ocGFydCAxKQo+Pgo+PiA9PT09
-PT0KPj4gVGhlcmUgaXMgY3VycmVudGx5IGFscmVhZHkgYSBwYXRjaCBwcm9wb3NhbCB0aGF0IGRv
-ZXMgdGhlIHNhbWUuCj4+IENvdWxkIHlvdSByZWFkIHRoYXQgcmV2aWV3IGhpc3RvcnkgYW5kIHBv
-cnQgdGhlIGdvb2QgdGhpbmdzIHRvIHlvdXIgb3duCj4+IHBhdGNoIHNlcmllPwo+Pgo+PiBSZTog
-W1BBVENIXSBkdC1iaW5kaW5nczogcG93ZXI6IHJvY2tjaGlwOiBDb252ZXJ0IHRvIGpzb24tc2No
-ZW1hCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjAxMDA3MTUx
-MTU5LkdBMjIxNzU0QGJvZ3VzLwo+Pgo+PiBSZTogW1BBVENIIHYzXSBkdC1iaW5kaW5nczogcG93
-ZXI6IHJvY2tjaGlwOiBDb252ZXJ0IHRvIGpzb24tc2NoZW1hCj4+IGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIwMjAxMDA3MTUxMTU5LkdBMjIxNzU0QGJvZ3VzLwo+Pgo+
-IEluIGZhY3QsIHRoZSBsYXRlc3QgdmVyc2lvbiBpcyB2NiB3aGljaCBjYW4gYmUgZm91bmQgaGVy
-ZToKPgo+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hp
-cC9wYXRjaC8yMDIxMDIyNTEwMjY0My42NTMwOTUtMS1lbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEu
-Y29tLwo+Cj4gRmVlbCBmcmVlIHRvIGludGVncmF0ZSBhbmQvb3IgaW1wcm92ZSB0aGF0IHZlcnNp
-b24gaW4geW91ciBzZXJpZXMuClRoYW5rIHlvdSBmb3IgeW91ciBzdWJtaXNzaW9uLiBJIHdpbGwg
-cmV2aXNlIHRoZSBzdWJtaXNzaW9uIG9uIHRoaXMgYmFzaXMuCj4KPgo+CgoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Support power domain function for RK3568 Soc.
+
+Change in V3:
+[PATCH v3 1/3]: No change.
+[PATCH v3 2/3]: Fix up the code styles and add rk3568 base on:
+https://patchwork.kernel.org/project/linux-rockchip/patch/20210225102643.653095-1-enric.balletbo@collabora.com/
+[PATCH v3 3/3]: No change.
+
+Change in V2:
+[PATCH v2 1/3]: No change.
+[PATCH v2 2/3]: Fix up yaml code styles.
+[PATCH v2 3/3]: No change.
+
+Elaine Zhang (3):
+  dt-bindings: add power-domain header for RK3568 SoCs
+  dt-bindings: Convert the rockchip power_domain to YAML and extend
+  soc: rockchip: power-domain: add rk3568 powerdomains
+
+ .../power/rockchip,power-controller.yaml      | 286 ++++++++++++++++++
+ .../bindings/soc/rockchip/power_domain.txt    | 136 ---------
+ drivers/soc/rockchip/pm_domains.c             |  31 ++
+ include/dt-bindings/power/rk3568-power.h      |  32 ++
+ 4 files changed, 349 insertions(+), 136 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+ delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+ create mode 100644 include/dt-bindings/power/rk3568-power.h
+
+-- 
+2.17.1
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
