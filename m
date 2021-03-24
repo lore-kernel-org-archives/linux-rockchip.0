@@ -2,83 +2,68 @@ Return-Path: <SRS0=NEY9=IW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D55EBC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 15:17:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 352A8C433C1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:17:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A5B961A06
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 15:17:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A5B961A06
+	by mail.kernel.org (Postfix) with ESMTPS id C2EB261A0E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:17:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2EB261A0E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TF811FbNv6PjE1BRzKDITimuATHBdRlFSsqjqUnXqVE=; b=o2ZW4fiqP7c+rBdwjoHO9zLPN
-	DaBN50IQ1fJri578eRiiRdpbcFpstjM8C2FTAnKmcQFZNuTbKpZwD4UJbCDn2DagwpmxcwkmW3U7v
-	VoNtyas4ZYvmIWRtZlCNdcITHJsx5y4msZDa1Z/qQMEgXtgxD32xh4xrTSo+INjpQncKmBOOGK4Ko
-	uCXh2JZZ4XBAFXKDALzua0c4bDDxsbgRuzRYoNsaZjiiFAxxBDKPTX2lcAkkdKyKCmcIcjZ1nGIZo
-	E4qkeAx9fZAhtxIcSwrW0/HrJCeY56mDJr8yIlqOhKRyeeajQ/R31td0OjKDco+SThBJS4qakUTZR
-	FkvMo35RQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=/PBECRFGl+MiPOO0gVGHcuY9yLuOtR52Yy+ra7GYkNI=; b=loL9PmNywOHH6ncItxLTYsrc2
+	Aky3zDDXYbM0HNhl711RmejZ8Rt0bTQxG0B9eOy3iGChy66xMV8Wo/dLMgXfnbwfA4L4m+exxDWms
+	81872mtVrkLocTr89deGaFeamgfGpx6R5hvwyW7baFBs8N4Ufz0h8QBmePy564w4vrAc2SRju1xe9
+	tb7KUKtdUzszWbsLfQl9CfyUkehCCrj8gMx32/J3N1od/uf7nGnE0gkLIGRbFTjL15zEZlqYYrOWJ
+	4EZoZCXvwRrwyBi2ftM1qVLuUfhLK/Bq9M5FrLdwrrt/v7kNDwRtOHXovfivnIg+Y7e0Rn704UKxp
+	JY70d6tuw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP5G8-00HGA5-AB; Wed, 24 Mar 2021 15:17:24 +0000
-Received: from mail-io1-f51.google.com ([209.85.166.51])
+	id 1lP6CK-00HMy9-RL; Wed, 24 Mar 2021 16:17:33 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP5G4-00HG9R-CN
- for linux-rockchip@lists.infradead.org; Wed, 24 Mar 2021 15:17:22 +0000
-Received: by mail-io1-f51.google.com with SMTP id r193so21863622ior.9
- for <linux-rockchip@lists.infradead.org>; Wed, 24 Mar 2021 08:17:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=pFK/hlLIyYgFOB9MKct/KWeHqcYMta2ZA7PC3OnmFDI=;
- b=cSOXFHHGaYvaJq5+5jVeUlfMy/dQzIVvXJ8pFeh9t3m7WAWXcj6vSdhjv+h/fbP/cn
- ZmYZAh5474Qrs+RebkNL6HjC3xRjx96y55MOU0wtupzoYXBwGwSysdwSdRjc2cOpWqmq
- ECrhy6S/8+IwIWfe+E6vUk1/KpnXHZlBEtTveG393GQ4rarYuYIXygnOF6Lx9IVcz26M
- ieZoKoi6P2FaBxEerjyLKPf39qvr/0aElGXk5ViDbQ0ILwpbflfAHQkXeGWMwnI/aNOA
- TBoAFNMJZBjKVrCUqxxHCR1JK7OcX/z39ZlpUZJsOAmyCkana4PtVH+HVVIdKM19YqQF
- 71lg==
-X-Gm-Message-State: AOAM532gFp43DUFPc89mi1rCzHEXC7fjOQtXXJ+nXIZw9k/r2l0xH5vk
- 4Df1uCFlLPCn0wJRsG60eg==
-X-Google-Smtp-Source: ABdhPJxa1T5Mab+bhlE6pdxQmGvtMBiwyMq64Di77lMMKOnjRC3K5lSWHh1Il3w07Isf9/IdyGVIXg==
-X-Received: by 2002:a6b:4109:: with SMTP id n9mr2760705ioa.43.1616599039279;
- Wed, 24 Mar 2021 08:17:19 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id s15sm1247129ilv.4.2021.03.24.08.17.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Mar 2021 08:17:17 -0700 (PDT)
-Received: (nullmailer pid 3082380 invoked by uid 1000);
- Wed, 24 Mar 2021 15:17:15 -0000
-Date: Wed, 24 Mar 2021 09:17:15 -0600
-From: Rob Herring <robh@kernel.org>
-To: Emil Velikov <emil.l.velikov@gmail.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Frank Rowand <frowand.list@gmail.com>, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 06/10] media: dt-bindings: Document SAMA5D4 VDEC
- bindings
-Message-ID: <20210324151715.GA3070006@robh.at.kernel.org>
-References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
- <20210311154055.3496076-7-emil.l.velikov@gmail.com>
+ id 1lP6CE-00HMvU-6y
+ for linux-rockchip@lists.infradead.org; Wed, 24 Mar 2021 16:17:29 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A986561878;
+ Wed, 24 Mar 2021 16:17:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1616602643;
+ bh=ZfQfwnRrFQEw2lg7pL8kZK71afKfEVHk9YK12q8Pq3A=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=kxNts/LJiaGY+S8UMeWsggEZzqhmutWnW+fnYJm8J0IqzPZ5BGa2uls2tEug/CP+R
+ 6uoIPuXbU+RT6OAeDWcdTHzlTSUjS5y2Mbu7y8muKCxqTVw0PnUkUUYE18LOj+CXps
+ lxn9O7KHZ9AH2rnw66qDYAXe0kBVQntM8l8HhVhhjFHWcFFhUchOPVSBe1JwvsLz+g
+ ezaM2rf0+ADcukvne72BHyOUPgY3QNFemXPVEmsBbPVXLRgPz/ERxu3UUfbk+2fkoO
+ UI2Yxgfg7om8D6C+eKPKJnX7Ok8WtFt1SS7dPKB6L0BiAq28k4p1skrhlRKS9H6JOU
+ Nq7Xois4VF8kg==
+Date: Wed, 24 Mar 2021 11:17:21 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Simon Xue <xxm@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v5 2/2] PCI: rockchip: Add DesignWare based PCIe controller
+Message-ID: <20210324161721.GA612661@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210311154055.3496076-7-emil.l.velikov@gmail.com>
+In-Reply-To: <20210222071828.30120-1-xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_151720_477659_F3B846B2 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20210324_161726_615851_66D8CDA1 
+X-CRM114-Status: GOOD (  21.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,102 +81,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 11, 2021 at 03:40:51PM +0000, Emil Velikov wrote:
-> From: Emil Velikov <emil.velikov@collabora.com>
-> 
-> Add devicetree binding documentation for the Hantro G1/G2 VDEC on
-> the Microchip SAMAS5D4 SoC.
-> 
-> Cc: Rob Herring <robh+dt@kernel.org>
-> Cc: Frank Rowand <frowand.list@gmail.com>
-> Cc: devicetree@vger.kernel.org>
-> Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
-> ---
-> v2
->  - Newly introduced
->  - s/Atmel/Microchip/ (Nicolas)
->  - Drop leading 0 in node name/address
-> ---
->  .../media/microchip,sama5d4-vdec.yaml         | 59 +++++++++++++++++++
->  1 file changed, 59 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml b/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
-> new file mode 100644
-> index 000000000000..9cb2c0295d54
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
-> @@ -0,0 +1,59 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/media/microchip,sama5d4-vdec.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: Hantro G1 VPU codec implemented on Microchip SAMA5D4 SoCs
-> +
-> +maintainers:
-> +  - Emil Velikov <emil.velikov@collabora.com>
-> +
-> +description:
-> +  Hantro G1 video decode accelerator present on Microchip SAMA5D4 SoCs.
-> +
-> +properties:
-> +  compatible:
-> +    const: microchip,sama5d4-vdec
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: vdec
+On Mon, Feb 22, 2021 at 03:18:28PM +0800, Simon Xue wrote:
+> Add driver for DesignWare based PCIe controller found on RK356X.
+> The already existed driver pcie-rockchip-host is only used for
+> Rockchip designed IP found on RK3399.
 
-Why do you need a name? *-names are used to distinguish multiple entries 
-and don't add anything if only a single entry.
+> +static int rockchip_pcie_start_link(struct dw_pcie *pci)
+> +{
+> +	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+> +
+> +	/* Reset device */
+> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 0);
+> +	msleep(100);
 
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  clock-names:
-> +    items:
-> +      - const: vdec_clk
+Maybe a spec reference for the 100ms delay so we can match this up
+with other places and make sure we aren't repeating delays because we
+don't know what they are?
 
-And here too? These are typically named for either the name of input 
-signal (hclk, aclk, etc.) or function ('core', 'bus', etc.). 
+> +	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
+> +
+> +	rockchip_pcie_enable_ltssm(rockchip);
+> +
+> +	return 0;
+> +}
 
+> +static int rockchip_pcie_clk_init(struct rockchip_pcie *rockchip)
+> +{
+> +	struct device *dev = rockchip->pci.dev;
+> +	int ret;
 > +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +  - clock-names
+> +	ret = devm_clk_bulk_get_all(dev, &rockchip->clks);
+> +	if (ret < 0)
+> +		return ret;
 > +
-> +additionalProperties: false
+> +	rockchip->clk_cnt = ret;
 > +
-> +examples:
-> +  - |
-> +        #include <dt-bindings/clock/at91.h>
-> +        #include <dt-bindings/interrupt-controller/irq.h>
+> +	ret = clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
+> +	if (ret)
+> +		return ret;
 > +
-> +        vdec0: vdec@300000 {
-> +                compatible = "microchip,sama5d4-vdec";
-> +                reg = <0x00300000 0x100000>;
-> +                interrupts = <19 IRQ_TYPE_LEVEL_HIGH 4>;
-> +                interrupt-names = "vdec";
-> +                clocks = <&pmc PMC_TYPE_PERIPHERAL 19>;
-> +                clock-names = "vdec_clk";
-> +        };
-> -- 
-> 2.30.1
-> 
+> +	return 0;
+
+This is the same as
+
+  return clk_bulk_prepare_enable(rockchip->clk_cnt, rockchip->clks);
+
+> +}
+
+> +static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
+> +{
+> +	struct device *dev = rockchip->pci.dev;
+> +	int ret;
+> +
+> +	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
+> +	if (IS_ERR(rockchip->rst))
+> +		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
+> +				     "failed to get reset lines\n");
+> +
+> +	ret = reset_control_deassert(rockchip->rst);
+> +
+> +	return ret;
+
+  return reset_control_deassert(rockchip->rst);
+
+and drop "ret".
+
+> +}
+
+> +static int rockchip_pcie_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct rockchip_pcie *rockchip;
+> +	struct pcie_port *pp;
+> +	int ret;
+> +
+> +	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
+> +	if (!rockchip)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, rockchip);
+> +
+> +	rockchip->pci.dev = dev;
+> +	rockchip->pci.ops = &dw_pcie_ops;
+> +
+> +	pp = &rockchip->pci.pp;
+> +	pp->ops = &rockchip_pcie_host_ops;
+> +
+> +	ret = rockchip_pcie_resource_get(pdev, rockchip);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* DON'T MOVE ME: must be enable before PHY init */
+> +	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+> +	if (IS_ERR(rockchip->vpcie3v3))
+> +		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
+> +				     "failed to get vpcie3v3 regulator\n");
+> +
+> +	if (rockchip->vpcie3v3) {
+
+This assumes devm_regulator_get_optional() returns a valid regulator,
+IS_ERR, or NULL.  I can't easily tell whether it can actually return
+NULL.  The regulator_get_optional() comment says it returns either a
+regulator or IS_ERR; it doesn't mention NULL.
+
+The other callers in drivers/pci (imx6_pcie_probe(),
+histb_pcie_probe(), tegra_pcie_get_slot_regulators()) all explicitly
+set the result to NULL in case of error.  They should all do it the
+same way.
+
+> +		ret = regulator_enable(rockchip->vpcie3v3);
+> +		if (ret) {
+> +			dev_err(dev, "failed to enable vpcie3v3 regulator\n");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = rockchip_pcie_phy_init(rockchip);
+> +	if (ret)
+> +		goto disable_regulator;
+> +
+> +	ret = rockchip_pcie_reset_control_release(rockchip);
+> +	if (ret)
+> +		goto deinit_phy;
+> +
+> +	ret = rockchip_pcie_clk_init(rockchip);
+> +	if (ret)
+> +		goto deinit_phy;
+> +
+> +	ret = dw_pcie_host_init(pp);
+> +	if (ret)
+> +		goto deinit_clk;
+> +
+> +	return 0;
+> +
+> +deinit_clk:
+> +	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+> +deinit_phy:
+> +	rockchip_pcie_phy_deinit(rockchip);
+> +disable_regulator:
+> +	if (rockchip->vpcie3v3)
+> +		regulator_disable(rockchip->vpcie3v3);
+> +
+> +	return ret;
+> +}
+> +
+> +MODULE_DEVICE_TABLE(of, rockchip_pcie_of_match);
+
+I don't think this is necessary, is it?  I don't see MODULE_DEVICE_TABLE
+being used except for modular drivers.
+
+There are a couple other builtin drivers (mobiveil, microchip) that
+use it, but I think those are mistakes.
+
+> +static const struct of_device_id rockchip_pcie_of_match[] = {
+> +	{ .compatible = "rockchip,rk3568-pcie", },
+> +	{},
+> +};
+> +
+> +static struct platform_driver rockchip_pcie_driver = {
+> +	.driver = {
+> +		.name	= "rockchip-dw-pcie",
+> +		.of_match_table = rockchip_pcie_of_match,
+> +		.suppress_bind_attrs = true,
+> +	},
+> +	.probe = rockchip_pcie_probe,
+> +};
+> +
+
+Drop the blank line.
+
+> +builtin_platform_driver(rockchip_pcie_driver);
 
 _______________________________________________
 Linux-rockchip mailing list
