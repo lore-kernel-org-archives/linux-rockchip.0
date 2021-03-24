@@ -2,19 +2,20 @@ Return-Path: <SRS0=NEY9=IW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4AE3C433C1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 06:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 446F9C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 06:46:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF790619D5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 06:46:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF790619D5
+	by mail.kernel.org (Postfix) with ESMTPS id 48FE4619D5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 06:46:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48FE4619D5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,22 +24,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wGl38BKEJtsSyuUTYSoeBaD/e1aInO9oNRsdXetKmvI=; b=UadEHJxgxB54fKpMRcOLy3gEx
-	1DI4ae6AAra8A2EYy0Fd8K/W2f1uu55HxBH5HDUsBI1TB3HrdAcLP2imGZp1vXXJh1FrQA9QM6VYq
-	2Zq2Cx4NZR1oRdErVLLtGSQLzlJTrPjplaLtXAjTwEb/UlprZRmZSBqy92+iRARIqTQeX5r9hV0Bv
-	8Drw7LrFa/nDdxzpjLliUBrXR8f9SyYL/LxQVoQHn/QwMBCN0aBlmOz3+3Ie06FsaOcK+DPA+OiIk
-	qu0Qo2C11p41qk1BdUko8St1XhS8KH3i+Gonm8TXbZdQP7ccL54ixGzZxFKQHShHJ11cQjI4+P/QW
-	gLU0swaUA==;
+	 bh=CHnHfqclC2AluCvOxRX+ltdSFQDdcwNEg8Ilcxfb0HQ=; b=W7YagxNk0rLetG1LUYnrcwfIc
+	NfFMY4cAdzWmwcT8/FNrA2WKeaK6os0MDELurY9wvo/zKx55aUvITZJ7XV6MzXnkvxZ65wcdURRq+
+	YL8JK09hfzK9B+izypbugLWQsqNeGyKCcmXPnifE+Gv+sBgfm7Ec++H3EFgMUh0/acnm0jUELjIN2
+	himTtjpxm9qxOg/8LZdPdZSQke2ecXr64M1kTS2PWiBIC/9oBTMSuHt6uvZ8Enk5//+65gr+3DCkV
+	AphIf8cxAyv3VIQtmwNGFH0hGbj4ou9rhGpoVTU5tFQL9v0uKs9gl7mVCsig1L8+jrygJKAbnl/+e
+	3NU+VKAWg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOxHM-00GQrH-F3; Wed, 24 Mar 2021 06:46:08 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1lOxHT-00GQti-69; Wed, 24 Mar 2021 06:46:15 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOxHB-00GQnw-Qt
- for linux-rockchip@lists.infradead.org; Wed, 24 Mar 2021 06:46:06 +0000
+ id 1lOxHO-00GQqH-1k
+ for linux-rockchip@lists.infradead.org; Wed, 24 Mar 2021 06:46:13 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id B0498F3197;
- Wed, 24 Mar 2021 14:45:50 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 74C59CC301;
+ Wed, 24 Mar 2021 14:46:05 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +48,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P24306T139685112297216S1616568346904525_; 
- Wed, 24 Mar 2021 14:45:50 +0800 (CST)
+ Wed, 24 Mar 2021 14:46:05 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <29c4821d54a3f399aa27b995e276b1f4>
+X-UNIQUE-TAG: <6725ce3e5a3142726a202e9cff8238ae>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -62,17 +63,17 @@ To: huangtao@rock-chips.com, kever.yang@rock-chips.com,
  linus.walleij@linaro.org, heiko@sntech.de
 Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 1/7] pinctrl/rockchip: separate struct rockchip_pin_bank to a
- head file
-Date: Wed, 24 Mar 2021 14:45:35 +0800
-Message-Id: <20210324064541.949630-2-jay.xu@rock-chips.com>
+Subject: [PATCH 4/7] gpio/rockchip: use struct rockchip_gpio_regs for gpio
+ controller
+Date: Wed, 24 Mar 2021 14:45:38 +0800
+Message-Id: <20210324064541.949630-5-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210324064541.949630-1-jay.xu@rock-chips.com>
 References: <20210324064541.949630-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_064602_043067_A0D17AB2 
-X-CRM114-Status: GOOD (  24.49  )
+X-CRM114-CacheID: sfid-20210324_064610_807396_A9991DEA 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,522 +91,299 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Separate struct rockchip_pin_bank to pinctrl-rockchip.h file, which will
-be used by gpio-rockchip driver in the future.
+Store register offsets in the struct rockchip_gpio_regs, this patch
+prepare for the driver update for new gpio controller.
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 224 +-------------------------
- drivers/pinctrl/pinctrl-rockchip.h | 244 +++++++++++++++++++++++++++++
- 2 files changed, 245 insertions(+), 223 deletions(-)
- create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
+ drivers/gpio/gpio-rockchip.c       | 85 ++++++++++++++++--------------
+ drivers/pinctrl/pinctrl-rockchip.h | 38 +++++++++++++
+ 2 files changed, 84 insertions(+), 39 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index deabfbc74a01..625ebc1cdfd5 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -37,6 +37,7 @@
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 03a3d251faae..b12db3a523d0 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -24,19 +24,21 @@
+ #include "../pinctrl/core.h"
+ #include "../pinctrl/pinctrl-rockchip.h"
  
- #include "core.h"
- #include "pinconf.h"
-+#include "pinctrl-rockchip.h"
+-/* GPIO control registers */
+-#define GPIO_SWPORT_DR		0x00
+-#define GPIO_SWPORT_DDR		0x04
+-#define GPIO_INTEN		0x30
+-#define GPIO_INTMASK		0x34
+-#define GPIO_INTTYPE_LEVEL	0x38
+-#define GPIO_INT_POLARITY	0x3c
+-#define GPIO_INT_STATUS		0x40
+-#define GPIO_INT_RAWSTATUS	0x44
+-#define GPIO_DEBOUNCE		0x48
+-#define GPIO_PORTS_EOI		0x4c
+-#define GPIO_EXT_PORT		0x50
+-#define GPIO_LS_SYNC		0x60
++#define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
++
++static const struct rockchip_gpio_regs gpio_regs_v1 = {
++	.port_dr = 0x00,
++	.port_ddr = 0x04,
++	.int_en = 0x30,
++	.int_mask = 0x34,
++	.int_type = 0x38,
++	.int_polarity = 0x3c,
++	.int_status = 0x40,
++	.int_rawstatus = 0x44,
++	.debounce = 0x48,
++	.port_eoi = 0x4c,
++	.ext_port = 0x50,
++};
  
- /* GPIO control registers */
- #define GPIO_SWPORT_DR		0x00
-@@ -52,19 +53,6 @@
- #define GPIO_EXT_PORT		0x50
- #define GPIO_LS_SYNC		0x60
+ static int rockchip_gpio_get_direction(struct gpio_chip *chip,
+ 				       unsigned int offset)
+@@ -51,7 +53,7 @@ static int rockchip_gpio_get_direction(struct gpio_chip *chip,
+ 			"failed to enable clock for bank %s\n", bank->name);
+ 		return ret;
+ 	}
+-	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
++	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
+ 	clk_disable(bank->clk);
  
--enum rockchip_pinctrl_type {
--	PX30,
--	RV1108,
--	RK2928,
--	RK3066B,
--	RK3128,
--	RK3188,
--	RK3288,
--	RK3308,
--	RK3368,
--	RK3399,
--};
--
- /*
-  * Encode variants of iomux registers into a type variable
-  */
-@@ -75,103 +63,6 @@ enum rockchip_pinctrl_type {
- #define IOMUX_WIDTH_3BIT	BIT(4)
- #define IOMUX_WIDTH_2BIT	BIT(5)
+ 	if (data & BIT(offset))
+@@ -70,13 +72,13 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
+ 	clk_enable(bank->clk);
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
  
--/**
-- * struct rockchip_iomux
-- * @type: iomux variant using IOMUX_* constants
-- * @offset: if initialized to -1 it will be autocalculated, by specifying
-- *	    an initial offset value the relevant source offset can be reset
-- *	    to a new value for autocalculating the following iomux registers.
-- */
--struct rockchip_iomux {
--	int				type;
--	int				offset;
--};
--
--/*
-- * enum type index corresponding to rockchip_perpin_drv_list arrays index.
-- */
--enum rockchip_pin_drv_type {
--	DRV_TYPE_IO_DEFAULT = 0,
--	DRV_TYPE_IO_1V8_OR_3V0,
--	DRV_TYPE_IO_1V8_ONLY,
--	DRV_TYPE_IO_1V8_3V0_AUTO,
--	DRV_TYPE_IO_3V3_ONLY,
--	DRV_TYPE_MAX
--};
--
--/*
-- * enum type index corresponding to rockchip_pull_list arrays index.
-- */
--enum rockchip_pin_pull_type {
--	PULL_TYPE_IO_DEFAULT = 0,
--	PULL_TYPE_IO_1V8_ONLY,
--	PULL_TYPE_MAX
--};
--
--/**
-- * struct rockchip_drv
-- * @drv_type: drive strength variant using rockchip_perpin_drv_type
-- * @offset: if initialized to -1 it will be autocalculated, by specifying
-- *	    an initial offset value the relevant source offset can be reset
-- *	    to a new value for autocalculating the following drive strength
-- *	    registers. if used chips own cal_drv func instead to calculate
-- *	    registers offset, the variant could be ignored.
-- */
--struct rockchip_drv {
--	enum rockchip_pin_drv_type	drv_type;
--	int				offset;
--};
--
--/**
-- * struct rockchip_pin_bank
-- * @reg_base: register base of the gpio bank
-- * @regmap_pull: optional separate register for additional pull settings
-- * @clk: clock of the gpio bank
-- * @irq: interrupt of the gpio bank
-- * @saved_masks: Saved content of GPIO_INTEN at suspend time.
-- * @pin_base: first pin number
-- * @nr_pins: number of pins in this bank
-- * @name: name of the bank
-- * @bank_num: number of the bank, to account for holes
-- * @iomux: array describing the 4 iomux sources of the bank
-- * @drv: array describing the 4 drive strength sources of the bank
-- * @pull_type: array describing the 4 pull type sources of the bank
-- * @valid: is all necessary information present
-- * @of_node: dt node of this bank
-- * @drvdata: common pinctrl basedata
-- * @domain: irqdomain of the gpio bank
-- * @gpio_chip: gpiolib chip
-- * @grange: gpio range
-- * @slock: spinlock for the gpio bank
-- * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
-- * @recalced_mask: bit mask to indicate a need to recalulate the mask
-- * @route_mask: bits describing the routing pins of per bank
-- */
--struct rockchip_pin_bank {
--	void __iomem			*reg_base;
--	struct regmap			*regmap_pull;
--	struct clk			*clk;
--	int				irq;
--	u32				saved_masks;
--	u32				pin_base;
--	u8				nr_pins;
--	char				*name;
--	u8				bank_num;
--	struct rockchip_iomux		iomux[4];
--	struct rockchip_drv		drv[4];
--	enum rockchip_pin_pull_type	pull_type[4];
--	bool				valid;
--	struct device_node		*of_node;
--	struct rockchip_pinctrl		*drvdata;
--	struct irq_domain		*domain;
--	struct gpio_chip		gpio_chip;
--	struct pinctrl_gpio_range	grange;
--	raw_spinlock_t			slock;
--	u32				toggle_edge_mode;
--	u32				recalced_mask;
--	u32				route_mask;
--};
--
- #define PIN_BANK(id, pins, label)			\
- 	{						\
- 		.bank_num	= id,			\
-@@ -292,119 +183,6 @@ struct rockchip_pin_bank {
- 		.pull_type[3] = pull3,					\
+-	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
++	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
+ 	/* set bit to 1 for output, 0 for input */
+ 	if (!input)
+ 		data |= BIT(offset);
+ 	else
+ 		data &= ~BIT(offset);
+-	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
++	writel_relaxed(data, bank->reg_base + bank->gpio_regs->port_ddr);
+ 
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+ 	clk_disable(bank->clk);
+@@ -88,7 +90,7 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned int offset,
+ 			      int value)
+ {
+ 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
+-	void __iomem *reg = bank->reg_base + GPIO_SWPORT_DR;
++	void __iomem *reg = bank->reg_base + bank->gpio_regs->port_dr;
+ 	unsigned long flags;
+ 	u32 data;
+ 
+@@ -111,7 +113,7 @@ static int rockchip_gpio_get(struct gpio_chip *gc, unsigned int offset)
+ 	u32 data;
+ 
+ 	clk_enable(bank->clk);
+-	data = readl(bank->reg_base + GPIO_EXT_PORT);
++	data = readl(bank->reg_base + bank->gpio_regs->ext_port);
+ 	clk_disable(bank->clk);
+ 	data >>= offset;
+ 	data &= 1;
+@@ -122,7 +124,7 @@ static void rockchip_gpio_set_debounce(struct gpio_chip *gc,
+ 				       unsigned int offset, bool enable)
+ {
+ 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
+-	void __iomem *reg = bank->reg_base + GPIO_DEBOUNCE;
++	void __iomem *reg = bank->reg_base + bank->gpio_regs->debounce;
+ 	unsigned long flags;
+ 	u32 data;
+ 
+@@ -226,7 +228,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
+ 
+ 	chained_irq_enter(chip, desc);
+ 
+-	pend = readl_relaxed(bank->reg_base + GPIO_INT_STATUS);
++	pend = readl_relaxed(bank->reg_base + bank->gpio_regs->int_status);
+ 
+ 	while (pend) {
+ 		unsigned int irq, virq;
+@@ -250,24 +252,26 @@ static void rockchip_irq_demux(struct irq_desc *desc)
+ 			u32 data, data_old, polarity;
+ 			unsigned long flags;
+ 
+-			data = readl_relaxed(bank->reg_base + GPIO_EXT_PORT);
++			data = readl_relaxed(bank->reg_base +
++					     bank->gpio_regs->ext_port);
+ 			do {
+ 				raw_spin_lock_irqsave(&bank->slock, flags);
+ 
+ 				polarity = readl_relaxed(bank->reg_base +
+-							 GPIO_INT_POLARITY);
++							 bank->gpio_regs->int_polarity);
+ 				if (data & BIT(irq))
+ 					polarity &= ~BIT(irq);
+ 				else
+ 					polarity |= BIT(irq);
+ 				writel(polarity,
+-				       bank->reg_base + GPIO_INT_POLARITY);
++				       bank->reg_base +
++				       bank->gpio_regs->int_polarity);
+ 
+ 				raw_spin_unlock_irqrestore(&bank->slock, flags);
+ 
+ 				data_old = data;
+ 				data = readl_relaxed(bank->reg_base +
+-						     GPIO_EXT_PORT);
++						     bank->gpio_regs->ext_port);
+ 			} while ((data & BIT(irq)) != (data_old & BIT(irq)));
+ 		}
+ 
+@@ -290,9 +294,9 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 	clk_enable(bank->clk);
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
+ 
+-	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
++	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
+ 	data &= ~mask;
+-	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
++	writel_relaxed(data, bank->reg_base + bank->gpio_regs->port_ddr);
+ 
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+ 
+@@ -304,8 +308,8 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
+ 	irq_gc_lock(gc);
+ 
+-	level = readl_relaxed(gc->reg_base + GPIO_INTTYPE_LEVEL);
+-	polarity = readl_relaxed(gc->reg_base + GPIO_INT_POLARITY);
++	level = readl_relaxed(gc->reg_base + bank->gpio_regs->int_type);
++	polarity = readl_relaxed(gc->reg_base + bank->gpio_regs->int_polarity);
+ 
+ 	switch (type) {
+ 	case IRQ_TYPE_EDGE_BOTH:
+@@ -316,7 +320,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 		 * Determine gpio state. If 1 next interrupt should be falling
+ 		 * otherwise rising.
+ 		 */
+-		data = readl(bank->reg_base + GPIO_EXT_PORT);
++		data = readl(bank->reg_base + bank->gpio_regs->ext_port);
+ 		if (data & mask)
+ 			polarity &= ~mask;
+ 		else
+@@ -349,8 +353,8 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 		return -EINVAL;
  	}
  
--/**
-- * struct rockchip_mux_recalced_data: represent a pin iomux data.
-- * @num: bank number.
-- * @pin: pin number.
-- * @bit: index at register.
-- * @reg: register offset.
-- * @mask: mask bit
-- */
--struct rockchip_mux_recalced_data {
--	u8 num;
--	u8 pin;
--	u32 reg;
--	u8 bit;
--	u8 mask;
--};
--
--enum rockchip_mux_route_location {
--	ROCKCHIP_ROUTE_SAME = 0,
--	ROCKCHIP_ROUTE_PMU,
--	ROCKCHIP_ROUTE_GRF,
--};
--
--/**
-- * struct rockchip_mux_recalced_data: represent a pin iomux data.
-- * @bank_num: bank number.
-- * @pin: index at register or used to calc index.
-- * @func: the min pin.
-- * @route_location: the mux route location (same, pmu, grf).
-- * @route_offset: the max pin.
-- * @route_val: the register offset.
-- */
--struct rockchip_mux_route_data {
--	u8 bank_num;
--	u8 pin;
--	u8 func;
--	enum rockchip_mux_route_location route_location;
--	u32 route_offset;
--	u32 route_val;
--};
--
--struct rockchip_pin_ctrl {
--	struct rockchip_pin_bank	*pin_banks;
--	u32				nr_banks;
--	u32				nr_pins;
--	char				*label;
--	enum rockchip_pinctrl_type	type;
--	int				grf_mux_offset;
--	int				pmu_mux_offset;
--	int				grf_drv_offset;
--	int				pmu_drv_offset;
--	struct rockchip_mux_recalced_data *iomux_recalced;
--	u32				niomux_recalced;
--	struct rockchip_mux_route_data *iomux_routes;
--	u32				niomux_routes;
--
--	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
--				    int pin_num, struct regmap **regmap,
--				    int *reg, u8 *bit);
--	void	(*drv_calc_reg)(struct rockchip_pin_bank *bank,
--				    int pin_num, struct regmap **regmap,
--				    int *reg, u8 *bit);
--	int	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
--				    int pin_num, struct regmap **regmap,
--				    int *reg, u8 *bit);
--};
--
--struct rockchip_pin_config {
--	unsigned int		func;
--	unsigned long		*configs;
--	unsigned int		nconfigs;
--};
--
--/**
-- * struct rockchip_pin_group: represent group of pins of a pinmux function.
-- * @name: name of the pin group, used to lookup the group.
-- * @pins: the pins included in this group.
-- * @npins: number of pins included in this group.
-- * @data: local pin configuration
-- */
--struct rockchip_pin_group {
--	const char			*name;
--	unsigned int			npins;
--	unsigned int			*pins;
--	struct rockchip_pin_config	*data;
--};
--
--/**
-- * struct rockchip_pmx_func: represent a pin function.
-- * @name: name of the pin function, used to lookup the function.
-- * @groups: one or more names of pin groups that provide this function.
-- * @ngroups: number of groups included in @groups.
-- */
--struct rockchip_pmx_func {
--	const char		*name;
--	const char		**groups;
--	u8			ngroups;
--};
--
--struct rockchip_pinctrl {
--	struct regmap			*regmap_base;
--	int				reg_size;
--	struct regmap			*regmap_pull;
--	struct regmap			*regmap_pmu;
--	struct device			*dev;
--	struct rockchip_pin_ctrl	*ctrl;
--	struct pinctrl_desc		pctl;
--	struct pinctrl_dev		*pctl_dev;
--	struct rockchip_pin_group	*groups;
--	unsigned int			ngroups;
--	struct rockchip_pmx_func	*functions;
--	unsigned int			nfunctions;
--};
--
- static struct regmap_config rockchip_regmap_config = {
- 	.reg_bits = 32,
- 	.val_bits = 32,
+-	writel_relaxed(level, gc->reg_base + GPIO_INTTYPE_LEVEL);
+-	writel_relaxed(polarity, gc->reg_base + GPIO_INT_POLARITY);
++	writel_relaxed(level, gc->reg_base + bank->gpio_regs->int_type);
++	writel_relaxed(polarity, gc->reg_base + bank->gpio_regs->int_polarity);
+ 
+ 	irq_gc_unlock(gc);
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+@@ -365,8 +369,8 @@ static void rockchip_irq_suspend(struct irq_data *d)
+ 	struct rockchip_pin_bank *bank = gc->private;
+ 
+ 	clk_enable(bank->clk);
+-	bank->saved_masks = irq_reg_readl(gc, GPIO_INTMASK);
+-	irq_reg_writel(gc, ~gc->wake_active, GPIO_INTMASK);
++	bank->saved_masks = irq_reg_readl(gc, bank->gpio_regs->int_mask);
++	irq_reg_writel(gc, ~gc->wake_active, bank->gpio_regs->int_mask);
+ 	clk_disable(bank->clk);
+ }
+ 
+@@ -376,7 +380,7 @@ static void rockchip_irq_resume(struct irq_data *d)
+ 	struct rockchip_pin_bank *bank = gc->private;
+ 
+ 	clk_enable(bank->clk);
+-	irq_reg_writel(gc, bank->saved_masks, GPIO_INTMASK);
++	irq_reg_writel(gc, bank->saved_masks, bank->gpio_regs->int_mask);
+ 	clk_disable(bank->clk);
+ }
+ 
+@@ -435,8 +439,8 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+ 	gc = irq_get_domain_generic_chip(bank->domain, 0);
+ 	gc->reg_base = bank->reg_base;
+ 	gc->private = bank;
+-	gc->chip_types[0].regs.mask = GPIO_INTMASK;
+-	gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
++	gc->chip_types[0].regs.mask = bank->gpio_regs->int_mask;
++	gc->chip_types[0].regs.ack = bank->gpio_regs->port_eoi;
+ 	gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
+ 	gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
+ 	gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
+@@ -453,9 +457,9 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+ 	 * Our driver only uses the concept of masked and always keeps
+ 	 * things enabled, so for us that's all masked and all enabled.
+ 	 */
+-	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
+-	writel_relaxed(0xffffffff, bank->reg_base + GPIO_PORTS_EOI);
+-	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
++	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->int_mask);
++	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->port_eoi);
++	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->int_en);
+ 	gc->mask_cache = 0xffffffff;
+ 
+ 	irq_set_chained_handler_and_data(bank->irq,
+@@ -546,6 +550,9 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ 
+ 	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
+ 
++	bank->gpio_regs = &gpio_regs_v1;
++	bank->gpio_type = GPIO_TYPE_V1;
++
+ 	bank->clk = of_clk_get(bank->of_node, 0);
+ 	if (!IS_ERR(bank->clk))
+ 		return clk_prepare(bank->clk);
 diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-new file mode 100644
-index 000000000000..ba4afab2845f
---- /dev/null
+index 20f734ce3933..9b8f653627ac 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
 +++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -0,0 +1,244 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2020-2021 Rockchip Electronics Co. Ltd.
-+ *
-+ * Copyright (c) 2013 MundoReader S.L.
-+ * Author: Heiko Stuebner <heiko@sntech.de>
-+ *
-+ * With some ideas taken from pinctrl-samsung:
-+ * Copyright (c) 2012 Samsung Electronics Co., Ltd.
-+ *		http://www.samsung.com
-+ * Copyright (c) 2012 Linaro Ltd
-+ *		https://www.linaro.org
-+ *
-+ * and pinctrl-at91:
-+ * Copyright (C) 2011-2012 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
-+ */
-+
-+#ifndef _PINCTRL_ROCKCHIP_H
-+#define _PINCTRL_ROCKCHIP_H
-+
-+enum rockchip_pinctrl_type {
-+	PX30,
-+	RV1108,
-+	RK2928,
-+	RK3066B,
-+	RK3128,
-+	RK3188,
-+	RK3288,
-+	RK3308,
-+	RK3368,
-+	RK3399,
-+};
-+
+@@ -31,6 +31,42 @@ enum rockchip_pinctrl_type {
+ 	RK3399,
+ };
+ 
 +/**
-+ * struct rockchip_iomux
-+ * @type: iomux variant using IOMUX_* constants
-+ * @offset: if initialized to -1 it will be autocalculated, by specifying
-+ *	    an initial offset value the relevant source offset can be reset
-+ *	    to a new value for autocalculating the following iomux registers.
++ * struct rockchip_gpio_regs
++ * @port_dr: data register
++ * @port_ddr: data direction register
++ * @int_en: interrupt enable
++ * @int_mask: interrupt mask
++ * @int_type: interrupt trigger type, such as high, low, edge trriger type.
++ * @int_polarity: interrupt polarity enable register
++ * @int_bothedge: interrupt bothedge enable register
++ * @int_status: interrupt status register
++ * @int_rawstatus: int_status = int_rawstatus & int_mask
++ * @debounce: enable debounce for interrupt signal
++ * @dbclk_div_en: enable divider for debounce clock
++ * @dbclk_div_con: setting for divider of debounce clock
++ * @port_eoi: end of interrupt of the port
++ * @ext_port: port data from external
++ * @version_id: controller version register
 + */
-+struct rockchip_iomux {
-+	int type;
-+	int offset;
++struct rockchip_gpio_regs {
++	u32 port_dr;
++	u32 port_ddr;
++	u32 int_en;
++	u32 int_mask;
++	u32 int_type;
++	u32 int_polarity;
++	u32 int_bothedge;
++	u32 int_status;
++	u32 int_rawstatus;
++	u32 debounce;
++	u32 dbclk_div_en;
++	u32 dbclk_div_con;
++	u32 port_eoi;
++	u32 ext_port;
++	u32 version_id;
 +};
 +
-+/*
-+ * enum type index corresponding to rockchip_perpin_drv_list arrays index.
-+ */
-+enum rockchip_pin_drv_type {
-+	DRV_TYPE_IO_DEFAULT = 0,
-+	DRV_TYPE_IO_1V8_OR_3V0,
-+	DRV_TYPE_IO_1V8_ONLY,
-+	DRV_TYPE_IO_1V8_3V0_AUTO,
-+	DRV_TYPE_IO_3V3_ONLY,
-+	DRV_TYPE_MAX
-+};
-+
-+/*
-+ * enum type index corresponding to rockchip_pull_list arrays index.
-+ */
-+enum rockchip_pin_pull_type {
-+	PULL_TYPE_IO_DEFAULT = 0,
-+	PULL_TYPE_IO_1V8_ONLY,
-+	PULL_TYPE_MAX
-+};
-+
-+/**
-+ * struct rockchip_drv
-+ * @drv_type: drive strength variant using rockchip_perpin_drv_type
-+ * @offset: if initialized to -1 it will be autocalculated, by specifying
-+ *	    an initial offset value the relevant source offset can be reset
-+ *	    to a new value for autocalculating the following drive strength
-+ *	    registers. if used chips own cal_drv func instead to calculate
-+ *	    registers offset, the variant could be ignored.
-+ */
-+struct rockchip_drv {
-+	enum rockchip_pin_drv_type	drv_type;
-+	int				offset;
-+};
-+
-+/**
-+ * struct rockchip_pin_bank
-+ * @reg_base: register base of the gpio bank
-+ * @regmap_pull: optional separate register for additional pull settings
-+ * @clk: clock of the gpio bank
-+ * @irq: interrupt of the gpio bank
-+ * @saved_masks: Saved content of GPIO_INTEN at suspend time.
-+ * @pin_base: first pin number
-+ * @nr_pins: number of pins in this bank
-+ * @name: name of the bank
-+ * @bank_num: number of the bank, to account for holes
-+ * @iomux: array describing the 4 iomux sources of the bank
-+ * @drv: array describing the 4 drive strength sources of the bank
-+ * @pull_type: array describing the 4 pull type sources of the bank
-+ * @valid: is all necessary information present
-+ * @of_node: dt node of this bank
-+ * @drvdata: common pinctrl basedata
-+ * @domain: irqdomain of the gpio bank
-+ * @gpio_chip: gpiolib chip
-+ * @grange: gpio range
-+ * @slock: spinlock for the gpio bank
-+ * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
-+ * @recalced_mask: bit mask to indicate a need to recalulate the mask
-+ * @route_mask: bits describing the routing pins of per bank
-+ */
-+struct rockchip_pin_bank {
-+	void __iomem			*reg_base;
-+	struct regmap			*regmap_pull;
-+	struct clk			*clk;
-+	int				irq;
-+	u32				saved_masks;
-+	u32				pin_base;
-+	u8				nr_pins;
-+	char				*name;
-+	u8				bank_num;
-+	struct rockchip_iomux		iomux[4];
-+	struct rockchip_drv		drv[4];
-+	enum rockchip_pin_pull_type	pull_type[4];
-+	bool				valid;
-+	struct device_node		*of_node;
-+	struct rockchip_pinctrl		*drvdata;
-+	struct irq_domain		*domain;
-+	struct gpio_chip		gpio_chip;
-+	struct pinctrl_gpio_range	grange;
-+	raw_spinlock_t			slock;
-+	u32				toggle_edge_mode;
-+	u32				recalced_mask;
-+	u32				route_mask;
-+};
-+
-+/**
-+ * struct rockchip_mux_recalced_data: represent a pin iomux data.
-+ * @num: bank number.
-+ * @pin: pin number.
-+ * @bit: index at register.
-+ * @reg: register offset.
-+ * @mask: mask bit
-+ */
-+struct rockchip_mux_recalced_data {
-+	u8 num;
-+	u8 pin;
-+	u32 reg;
-+	u8 bit;
-+	u8 mask;
-+};
-+
-+enum rockchip_mux_route_location {
-+	ROCKCHIP_ROUTE_SAME = 0,
-+	ROCKCHIP_ROUTE_PMU,
-+	ROCKCHIP_ROUTE_GRF,
-+};
-+
-+/**
-+ * struct rockchip_mux_recalced_data: represent a pin iomux data.
-+ * @bank_num: bank number.
-+ * @pin: index at register or used to calc index.
-+ * @func: the min pin.
-+ * @route_location: the mux route location (same, pmu, grf).
-+ * @route_offset: the max pin.
-+ * @route_val: the register offset.
-+ */
-+struct rockchip_mux_route_data {
-+	u8 bank_num;
-+	u8 pin;
-+	u8 func;
-+	enum rockchip_mux_route_location route_location;
-+	u32 route_offset;
-+	u32 route_val;
-+};
-+
-+struct rockchip_pin_ctrl {
-+	struct rockchip_pin_bank	*pin_banks;
-+	u32				nr_banks;
-+	u32				nr_pins;
-+	char				*label;
-+	enum rockchip_pinctrl_type	type;
-+	int				grf_mux_offset;
-+	int				pmu_mux_offset;
-+	int				grf_drv_offset;
-+	int				pmu_drv_offset;
-+	struct rockchip_mux_recalced_data *iomux_recalced;
-+	u32				niomux_recalced;
-+	struct rockchip_mux_route_data *iomux_routes;
-+	u32				niomux_routes;
-+
-+	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit);
-+	void	(*drv_calc_reg)(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit);
-+	int	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
-+				    int pin_num, struct regmap **regmap,
-+				    int *reg, u8 *bit);
-+};
-+
-+struct rockchip_pin_config {
-+	unsigned int		func;
-+	unsigned long		*configs;
-+	unsigned int		nconfigs;
-+};
-+
-+/**
-+ * struct rockchip_pin_group: represent group of pins of a pinmux function.
-+ * @name: name of the pin group, used to lookup the group.
-+ * @pins: the pins included in this group.
-+ * @npins: number of pins included in this group.
-+ * @data: local pin configuration
-+ */
-+struct rockchip_pin_group {
-+	const char			*name;
-+	unsigned int			npins;
-+	unsigned int			*pins;
-+	struct rockchip_pin_config	*data;
-+};
-+
-+/**
-+ * struct rockchip_pmx_func: represent a pin function.
-+ * @name: name of the pin function, used to lookup the function.
-+ * @groups: one or more names of pin groups that provide this function.
-+ * @ngroups: number of groups included in @groups.
-+ */
-+struct rockchip_pmx_func {
-+	const char		*name;
-+	const char		**groups;
-+	u8			ngroups;
-+};
-+
-+struct rockchip_pinctrl {
-+	struct regmap			*regmap_base;
-+	int				reg_size;
-+	struct regmap			*regmap_pull;
-+	struct regmap			*regmap_pmu;
-+	struct device			*dev;
-+	struct rockchip_pin_ctrl	*ctrl;
-+	struct pinctrl_desc		pctl;
-+	struct pinctrl_dev		*pctl_dev;
-+	struct rockchip_pin_group	*groups;
-+	unsigned int			ngroups;
-+	struct rockchip_pmx_func	*functions;
-+	unsigned int			nfunctions;
-+};
-+
-+#endif
+ /**
+  * struct rockchip_iomux
+  * @type: iomux variant using IOMUX_* constants
+@@ -125,6 +161,8 @@ struct rockchip_pin_bank {
+ 	struct gpio_chip		gpio_chip;
+ 	struct pinctrl_gpio_range	grange;
+ 	raw_spinlock_t			slock;
++	const struct rockchip_gpio_regs	*gpio_regs;
++	u32				gpio_type;
+ 	u32				toggle_edge_mode;
+ 	u32				recalced_mask;
+ 	u32				route_mask;
 -- 
 2.25.1
 
