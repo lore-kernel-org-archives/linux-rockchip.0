@@ -2,21 +2,21 @@ Return-Path: <SRS0=NEY9=IW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41D8EC433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82983C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:56:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C0C561A01
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:18:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C0C561A01
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E0EF4619B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:56:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0EF4619B4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -24,53 +24,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vWN7OBAPC0E6qkJB8NCSluPkF6JUToYd5o+B+IBgu1M=; b=J1vM+xgNu1VCBCIhZU2NRBatE
-	HYbe9BMg1OxqYVfc51Cmj4+Fnu4D4tnAdozyxYvbYUU0ii8W1xKahZxIQFfqIDLevHMdMQ4bH3Sk5
-	3ajQlTamrvhLnYGfRbD22Gc5PtudEhZMMY34lF4Fd4ml8jkM0bXU4sVHrQqHsqS4BiLlfYkYNND8N
-	ub/t6p4nOuPwgrB2BmEZtaHc4fM3afZ59BUduTXmvvJWgVyjPNUgPCW1965tC1prcf+zs/9iVQEwt
-	SdsBICrlWr1uROLzXIAxDCaHk/wIun879KU3bsHhf/D4PgOwSaZQDEnOmgCJF8H0Q0IlyRFUA9VEn
-	7OyQ4GZeQ==;
+	 bh=NDa91Te4b140GSs+Vv66uzRJUfAG0UG7I8HIAv1UANk=; b=H/9J0Vf8LDeZwQjwejZmybQ4W
+	AJUqpzjI8vMPKWOX3Lp84xHwgi3KBkk+WBJAPaO/0iyRgsLEGRBjBHp9pm3ZJ6EaUMMMS20x9FXio
+	SmbFmEyV4CplnGyXwnwCCnLDF5VWy8fxMUYg+Pjf7FKQFGxNWaaoK/vvjhv51LhLN0+te0eWD7EHZ
+	MhE7MqC0C/VQ6QPlCY1g3NN7S3gyL5Yd+1I0iA8GNCovA21hEexNLu1NrJd8WuL7WJkcPxxPdQ/sV
+	3OMEzvu9jwR2I96dNEFkBGnCKSWxfgLX7/HTGKEU6gZh1wyYaSvy4xXEGo2mkw/pki/yYvkeqHkVn
+	JiPYhDq5Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lOzeM-00Gi4x-8z; Wed, 24 Mar 2021 09:18:03 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1lP0Fy-00Gmkg-Ik; Wed, 24 Mar 2021 09:56:54 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lOzeH-00Gi2S-2P; Wed, 24 Mar 2021 09:18:00 +0000
-Received: by mail-ed1-x531.google.com with SMTP id e7so26697219edu.10;
- Wed, 24 Mar 2021 02:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=NCbR0EtQahO3kI99pgHG8ThCPhBOLUoKqiveWEK2PA4=;
- b=f7hiYEcYEXMlF9QRMoUGAIpBEO1eACTygMZVx4G5w5epbYC/Ewhl6Rv/xYcqpPWW+Z
- /1dRJv4dl0MxuOlxljPp/e9FYML43u893qhhESiSZMTUzi/3IkUDQpmb1wcPqUjJtrGi
- 7rNlgNP2aOVtSOtP5xMXPQxx5cvcWaE2lHyRJu4dZ8F/85OBNAHa1stpROV1+qyKP5tk
- twlGdwcv7hbpWcKBLCYGXO9tIB9HqnP43ij9zwP5so1r8+dpvH+y92V6yawlW59o5XIZ
- j9knU8QnXQwmT4a81Sy6aJLORMfgo7BGo739HRtmQvbfpPEiCvrfxeKWjIjVDlq1cUIB
- kT+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=NCbR0EtQahO3kI99pgHG8ThCPhBOLUoKqiveWEK2PA4=;
- b=Gm3JSSYwO1PH0i4EaDI43a+Wa6D9f53D+8cN+AiJUogMehmTNhImWMphhSSpXKRPa8
- 7yu30DdE2/I93uCG8tmYupJ+QuUhvmRgUNbEVRf089RExl4JsLn2LkNTQwdXg9uXXyJo
- fuclG5Enntr/9gAktML4eg0D17EfAMDPKTwmd5yA5ei4dBe3iTPqB8TOo+rciEA1EQJm
- WFbKQb61QkfrdvSFCM+qS8lmzk8BIjKSr9tuAdWaFYI/7dNuAwOIH/1TetAD23VTdOq/
- LFYWZGvw4otp6Z9E/S9OFVX2/j0ekMrjZqMOsND/5JUHhhFiof9cW6N+5UQX4yfiQAu2
- xcVQ==
-X-Gm-Message-State: AOAM531v8PfDMjvQW/ZSH+VTSRxL17bYMYCUS+r/n08s20U1eeb8z3l8
- wpUklWy/iuazp2HyElUkGZWPtJ/QS5YoiQ==
-X-Google-Smtp-Source: ABdhPJzu/c3qeY/9Zq7fajtANlrtZIbklOL8KrAummRwjQEvRYdGp7SVQD4L/vEQ634z6FtEvKHdmQ==
-X-Received: by 2002:a05:6402:4242:: with SMTP id
- g2mr2311884edb.329.1616577475522; 
- Wed, 24 Mar 2021 02:17:55 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- n25sm827988edq.55.2021.03.24.02.17.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Mar 2021 02:17:55 -0700 (PDT)
+ id 1lP0Fl-00Gmhr-E4; Wed, 24 Mar 2021 09:56:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 4ED9A1F458F1
 Subject: Re: [PATCH v4 2/4] dt-bindings: power: rockchip: Convert to
  json-schema
 To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org,
@@ -78,21 +45,20 @@ To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org,
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
- tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
+ tony.xie@rock-chips.com, finley.xiao@rock-chips.com
 References: <20210324071609.7531-1-zhangqing@rock-chips.com>
  <20210324071609.7531-3-zhangqing@rock-chips.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <be921bd8-a878-3131-15a7-27400786e67a@gmail.com>
-Date: Wed, 24 Mar 2021 10:17:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <7ffdf0ca-1f7c-c135-086a-08e982e6cb41@collabora.com>
+Date: Wed, 24 Mar 2021 10:56:36 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.0
 MIME-Version: 1.0
 In-Reply-To: <20210324071609.7531-3-zhangqing@rock-chips.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_091757_392930_1DFD0BBB 
-X-CRM114-Status: GOOD (  25.92  )
+X-CRM114-CacheID: sfid-20210324_095641_599721_F1DAF614 
+X-CRM114-Status: GOOD (  29.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,29 +78,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Elaine,
 
-From Rob's build log it turns out that 2 more properties must be added.
-Add these new properties in separate patch.
-Retest with commands below.
-====
-See rk3288.dtsi
+This is not the exact version I sent, and you reintroduced a "problem" that were
+already solved/discussed on previous versions. See below:
 
-			assigned-clocks = <&cru SCLK_EDP_24M>;
-			assigned-clock-parents = <&xin24m>;
-====
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210324071609.7531-3-zhangqing@rock-chips.com/
-
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-
-On 3/24/21 8:16 AM, Elaine Zhang wrote:
+On 24/3/21 8:16, Elaine Zhang wrote:
 > Convert the soc/rockchip/power_domain.txt binding document to
 > json-schema and move to the power bindings directory.
 > 
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+If you do significant is a good practice shortly describe them within [] here.
+
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+Note that my last version already had the
+
+Reviewed-by: Rob Herring <robh@kernel.org>
+
+Which should be fine for merging (with probably only minor changes) and you
+could maintain if you don't do significant changes, but that's not the case, as
+I said, you are reintroducing one problem. Please review the comments already
+received on this patchset or similar patchsets to avoid this.
+
 > ---
 >  .../power/rockchip,power-controller.yaml      | 284 ++++++++++++++++++
 >  .../bindings/soc/rockchip/power_domain.txt    | 136 ---------
@@ -159,6 +124,11 @@ On 3/24/21 8:16 AM, Elaine Zhang wrote:
 > +maintainers:
 > +  - Elaine Zhang <zhangqing@rock-chips.com>
 > +  - Rob Herring <robh+dt@kernel.org>
+
+Up to Rob, but I don't think Rob would like to be the maintainer. I think you
+can only include yourself and Heiko.
+
+
 > +  - Heiko Stuebner <heiko@sntech.de>
 > +
 > +description: |
@@ -197,14 +167,6 @@ On 3/24/21 8:16 AM, Elaine Zhang wrote:
 > +
 > +  "#size-cells":
 > +    const: 0
-
-
-assigned-clocks:
-  maxItems: 1
-
-assigned-clock-parents:
-  maxItems: 1
-
 > +
 > +patternProperties:
 > +  "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
@@ -213,6 +175,13 @@ assigned-clock-parents:
 > +      Represents the power domains within the power controller node as documented
 > +      in Documentation/devicetree/bindings/power/power-domain.yaml.
 > +
+
+The node names must be generic, as this is power-domain must be in the form:
+
++patternProperties:
++  "^power-domain@[0-9a-f]+$":
+
+
 > +    properties:
 > +
 > +      "#power-domain-cells":
@@ -254,6 +223,14 @@ assigned-clock-parents:
 > +
 > +    patternProperties:
 > +      "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
+
+The same here:
+
++patternProperties:
++  "^power-domain@[0-9a-f]+$":
+
+
+
 > +        type: object
 > +        description: |
 > +          Represents a power domain child within a power domain parent node.
@@ -286,6 +263,9 @@ assigned-clock-parents:
 > +
 > +        patternProperties:
 > +          "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
+
+And here:
+
 > +            type: object
 > +            description: |
 > +              Represents a power domain child within a power domain parent node.
@@ -393,6 +373,10 @@ assigned-clock-parents:
 > +
 > +                /* These power domains are grouped by VD_CENTER */
 > +                pd_iep@RK3399_PD_IEP {
+
+Here and below must be generic power-domain@RK3399_PD_IEP
+
+
 > +                    reg = <RK3399_PD_IEP>;
 > +                    clocks = <&cru ACLK_IEP>,
 > +                             <&cru HCLK_IEP>;
@@ -583,7 +567,6 @@ assigned-clock-parents:
 > -		/* ... */
 > -	};
 > 
-
 
 _______________________________________________
 Linux-rockchip mailing list
