@@ -2,69 +2,61 @@ Return-Path: <SRS0=NEY9=IW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0E93C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:35:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C36EC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:41:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9D9D9619A4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:35:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D9D9619A4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2C36861A12
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 16:41:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C36861A12
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=g12+/4zI6m9ZMiAID3egtWmN9S2QHny4kZzk3VBh3F0=; b=avW7wtWjnKooxktmLG7BxlAiC
-	2sKEfiGmcthLew0vunyLqtVU8+f3shv7lzy6ITX5Cg3YQwkRe5sP+CfMxVgM96zb0DxyMkwApYp7Q
-	q0ESgN/yf2f7Rt2URddLnT+8O66DGwYmmcx3kGL+dDUlSRlf7OZucM81G2nTZiJ+m5HsVe81lhWOj
-	oJoDeoTZqQTcvKheHaS7cH5f8QLL32uMWiFt1QUwJW5j1g6d5Q6GjxUYYnXml8jVmSQyFW5jl3IyQ
-	+Y4MAMAwXps8qJvuyMPKArFAvEo+G+DXe0YctUWD5Nff79wxts0+yzcWyebJdtfDegZLYN+mEmJv0
-	IfgHQT7oQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ejS9rqpXl0le61XTKBL+p7TYCDnGqmebraOtjlKR9As=; b=pCg2ZEo1BItEBgN3ig4uSeQWR
+	2nFLeG3PoV+udywMgqmszmxcyrgbQMMOfnRoSRqH1+VtMNsHf98MDmrB5sth8zclVsGrnGkrO9qbL
+	IomHA5Q7LoZCaTzZAMuQDUh+Lh6Qe8IXb/ZOfN9uEb2vwJE+rhiIFjb22prRQ+is8mPcE01meWCN0
+	MZcY0NyHGeDOW1+XUVq/jhsGk18gaB+6/J7sugS/d/q/JJ5FXKQv20AzMVoUBVg4Mqd3cMrER31LG
+	JgZakQ1IlYPyok1TxN0LNWQa10iTHqWDQe7ep9ezWlIKmZeV66HYgun/hfvQJLNgAkQCCq3IaMvN4
+	6/vqjtWMg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP6TD-00HP1Y-Qq; Wed, 24 Mar 2021 16:34:59 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lP6ZU-00HPva-Qh; Wed, 24 Mar 2021 16:41:28 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP6TA-00HP0w-Gy
- for linux-rockchip@lists.infradead.org; Wed, 24 Mar 2021 16:34:58 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E15CB619E4;
- Wed, 24 Mar 2021 16:34:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1616603695;
- bh=hUOBLPPbTSZw0MdksqtVo7DW9tnlNyx/Ii6rWxq74mA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=p8pYM0SNfVF9Zl28f0ktwPKzyr9TJCwcW1ZyyKMR18Sp4l2/jjj7jcBkhw3uyepkd
- VSnjPiYccSarkQH5C/XpD+nYYFqXMjcXpsDdsImgLvTUlN6x0+/aXz52gWXBNGlgSI
- QMxY3ScjWMjhV9uDJaTj+OR3xbL/AUKYrvJs7ORYJj/AS7KJlAg279P220x7rrqM1F
- uEuMeNPkwjrC1ysHatS9HVV6q9T/jmLsHAF1NDTJ4F0DClwYRSkrXaWWoFHa8IguVY
- 6+R/xCbKHNFht2Yh/n7QsgKavxDsv5aG7euxILjOTASDLUQyvRE9FgwkjNjDuuWbC7
- JNxzdIO01PEGQ==
-Date: Wed, 24 Mar 2021 11:34:53 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Simon Xue <xxm@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, robh+dt@kernel.org,
- Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v5 2/2] PCI: rockchip: Add DesignWare based PCIe controller
-Message-ID: <20210324163453.GA695478@bjorn-Precision-5520>
+ id 1lP6ZQ-00HPul-Pw; Wed, 24 Mar 2021 16:41:27 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lP6ZO-0001QD-TS; Wed, 24 Mar 2021 17:41:22 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>, gregkh@linuxfoundation.org,
+ balbi@kernel.org
+Cc: robh+dt@kernel.org, linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 2/8] usb: dwc3: of-simple: bail probe if no dwc3 child
+ node
+Date: Wed, 24 Mar 2021 17:41:22 +0100
+Message-ID: <1861638.PYKUYFuaPT@diego>
+In-Reply-To: <20210209192350.7130-2-jbx6244@gmail.com>
+References: <20210209192350.7130-1-jbx6244@gmail.com>
+ <20210209192350.7130-2-jbx6244@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210222071828.30120-1-xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_163456_847674_6DFF6EDA 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210324_164124_908650_5098DBA6 
+X-CRM114-Status: GOOD (  24.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,18 +74,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Also, please make the subject line more specific, e.g.,
+Hi Greg, Felipe,
 
-  PCI: rockchip: Add Rockchip RK356X host controller driver
+Am Dienstag, 9. Februar 2021, 20:23:44 CET schrieb Johan Jonker:
+> For some of the dwc3-of-simple compatible SoCs we
+> don't want to bind this driver to a dwc3 node,
+> but bind that node to the 'snps,dwc3' driver instead.
+> The kernel has no logic to decide which driver to bind
+> to if there are 2 matching drivers, so bail probe if no
+> dwc3 child node.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-On Mon, Feb 22, 2021 at 03:18:28PM +0800, Simon Xue wrote:
-> Add driver for DesignWare based PCIe controller found on RK356X.
-> The already existed driver pcie-rockchip-host is only used for
-> Rockchip designed IP found on RK3399.
+It looks like this patch fell through the cracks?
 
-  Add a driver for the DesignWare-based PCIe controller found on
-  RK356X.  The existing pcie-rockchip-host driver is only used for
-  the Rockchip-designed IP found on RK3399.
+I.e. I can see patches 1+6 adding the devicetree bindings
+in 5.12-rc but haven't found this patch there.
+
+And looking at
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git/log/drivers/usb/dwc3/dwc3-of-simple.c?h=usb-next
+I also didn't find it.
+
+From what I gathered that was somehow mandated from the Devicetree side
+as the dwc3-subnode system merely is some Linux-specific thingy
+and should not be enforced if not explicitly needed.
+
+I guess Johan can provide pointers to the previous discussion.
+
+So could you look at applying this patch to some usb-tree?
+
+
+Thanks
+Heiko
+
+
+> ---
+>  drivers/usb/dwc3/dwc3-of-simple.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+> index e62ecd22b..347b4d384 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -38,6 +38,10 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
+>  
+>  	int			ret;
+>  
+> +	/* Bail probe if no dwc3 child node. */
+> +	if (!of_get_compatible_child(dev->of_node, "snps,dwc3"))
+> +		return -ENODEV;
+> +
+>  	simple = devm_kzalloc(dev, sizeof(*simple), GFP_KERNEL);
+>  	if (!simple)
+>  		return -ENOMEM;
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
