@@ -5,60 +5,81 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 82983C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:56:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E282C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 10:14:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0EF4619B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 09:56:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0EF4619B4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 27C2D619AB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Mar 2021 10:14:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27C2D619AB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NDa91Te4b140GSs+Vv66uzRJUfAG0UG7I8HIAv1UANk=; b=H/9J0Vf8LDeZwQjwejZmybQ4W
-	AJUqpzjI8vMPKWOX3Lp84xHwgi3KBkk+WBJAPaO/0iyRgsLEGRBjBHp9pm3ZJ6EaUMMMS20x9FXio
-	SmbFmEyV4CplnGyXwnwCCnLDF5VWy8fxMUYg+Pjf7FKQFGxNWaaoK/vvjhv51LhLN0+te0eWD7EHZ
-	MhE7MqC0C/VQ6QPlCY1g3NN7S3gyL5Yd+1I0iA8GNCovA21hEexNLu1NrJd8WuL7WJkcPxxPdQ/sV
-	3OMEzvu9jwR2I96dNEFkBGnCKSWxfgLX7/HTGKEU6gZh1wyYaSvy4xXEGo2mkw/pki/yYvkeqHkVn
-	JiPYhDq5Q==;
+	 bh=qouBmKr0J32mpJb0YLF4xm1kRi2yFlD3qSQWeW/a0DA=; b=npw/+MWC36RqVGxpsS2ra9Asg
+	6HLBNuoZBalrCCoaLDpcE3r4BTmOm8oGr1cXNl5Y4dj+pTQwWVXiZAIBuiQIqmGg7a2GB8G+Axe9e
+	3c6m5kw+yHw8/gvBXGXpNvqnJNaBPmvW4e7Hlzuha3TDKUXDDEZL+uWfTgtwQf6iFwH92XNGb3sCI
+	ZAZrbPSJw6ax2vGZa0BYv0lrfeU+tCMYGVOMF7Ks6iyN+ngKOotSZKW/Xb8GU9/E6ehw8fSIG6vf5
+	oWGhKeUeyYtDbcbOesJGTqIeVEWbWVV48GJ3DIhIMMs7TdvUsVHX3fG4m1fCdu20b4ZozbVME0H5P
+	lL4/VsiXw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lP0Fy-00Gmkg-Ik; Wed, 24 Mar 2021 09:56:54 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lP0X8-00GohC-Cs; Wed, 24 Mar 2021 10:14:38 +0000
+Received: from regular1.263xmail.com ([211.150.70.201])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lP0Fl-00Gmhr-E4; Wed, 24 Mar 2021 09:56:44 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 4ED9A1F458F1
+ id 1lP0Wq-00GodE-Nt; Wed, 24 Mar 2021 10:14:26 +0000
+Received: from localhost (unknown [192.168.167.69])
+ by regular1.263xmail.com (Postfix) with ESMTP id 6460BD68;
+ Wed, 24 Mar 2021 18:14:10 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+Received: from [172.16.12.236] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P1826T139669733877504S1616580848215820_; 
+ Wed, 24 Mar 2021 18:14:09 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <f22c26093101f93084f537449d599e29>
+X-RL-SENDER: zhangqing@rock-chips.com
+X-SENDER: zhangqing@rock-chips.com
+X-LOGIN-NAME: zhangqing@rock-chips.com
+X-FST-TO: enric.balletbo@collabora.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
 Subject: Re: [PATCH v4 2/4] dt-bindings: power: rockchip: Convert to
  json-schema
-To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org,
- heiko@sntech.de
+To: Johan Jonker <jbx6244@gmail.com>, robh+dt@kernel.org, heiko@sntech.de
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
- tony.xie@rock-chips.com, finley.xiao@rock-chips.com
+ tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 References: <20210324071609.7531-1-zhangqing@rock-chips.com>
  <20210324071609.7531-3-zhangqing@rock-chips.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <7ffdf0ca-1f7c-c135-086a-08e982e6cb41@collabora.com>
-Date: Wed, 24 Mar 2021 10:56:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.0
+ <be921bd8-a878-3131-15a7-27400786e67a@gmail.com>
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Organization: rockchip
+Message-ID: <42489358-8a3e-698e-7d10-816899de75cd@rock-chips.com>
+Date: Wed, 24 Mar 2021 18:14:08 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210324071609.7531-3-zhangqing@rock-chips.com>
+In-Reply-To: <be921bd8-a878-3131-15a7-27400786e67a@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210324_095641_599721_F1DAF614 
-X-CRM114-Status: GOOD (  29.20  )
+X-CRM114-CacheID: sfid-20210324_101421_534468_E0704D1E 
+X-CRM114-Status: GOOD (  26.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,504 +92,314 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Elaine,
-
-This is not the exact version I sent, and you reintroduced a "problem" that were
-already solved/discussed on previous versions. See below:
-
-On 24/3/21 8:16, Elaine Zhang wrote:
-> Convert the soc/rockchip/power_domain.txt binding document to
-> json-schema and move to the power bindings directory.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-If you do significant is a good practice shortly describe them within [] here.
-
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-
-Note that my last version already had the
-
-Reviewed-by: Rob Herring <robh@kernel.org>
-
-Which should be fine for merging (with probably only minor changes) and you
-could maintain if you don't do significant changes, but that's not the case, as
-I said, you are reintroducing one problem. Please review the comments already
-received on this patchset or similar patchsets to avoid this.
-
-> ---
->  .../power/rockchip,power-controller.yaml      | 284 ++++++++++++++++++
->  .../bindings/soc/rockchip/power_domain.txt    | 136 ---------
->  2 files changed, 284 insertions(+), 136 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
->  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> new file mode 100644
-> index 000000000000..a220322c5139
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-> @@ -0,0 +1,284 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip Power Domains
-> +
-> +maintainers:
-> +  - Elaine Zhang <zhangqing@rock-chips.com>
-> +  - Rob Herring <robh+dt@kernel.org>
-
-Up to Rob, but I don't think Rob would like to be the maintainer. I think you
-can only include yourself and Heiko.
-
-
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +description: |
-> +  Rockchip processors include support for multiple power domains which can be
-> +  powered up/down by software based on different application scenarios to save power.
-> +
-> +  Power domains contained within power-controller node are generic power domain
-> +  providers documented in Documentation/devicetree/bindings/power/power-domain.yaml.
-> +
-> +  IP cores belonging to a power domain should contain a "power-domains"
-> +  property that is a phandle for the power domain node representing the domain.
-> +
-> +properties:
-> +  $nodename:
-> +    const: power-controller
-> +
-> +  compatible:
-> +    enum:
-> +      - rockchip,px30-power-controller
-> +      - rockchip,rk3036-power-controller
-> +      - rockchip,rk3066-power-controller
-> +      - rockchip,rk3128-power-controller
-> +      - rockchip,rk3188-power-controller
-> +      - rockchip,rk3228-power-controller
-> +      - rockchip,rk3288-power-controller
-> +      - rockchip,rk3328-power-controller
-> +      - rockchip,rk3366-power-controller
-> +      - rockchip,rk3368-power-controller
-> +      - rockchip,rk3399-power-controller
-> +
-> +  "#power-domain-cells":
-> +    const: 1
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +patternProperties:
-> +  "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
-> +    type: object
-> +    description: |
-> +      Represents the power domains within the power controller node as documented
-> +      in Documentation/devicetree/bindings/power/power-domain.yaml.
-> +
-
-The node names must be generic, as this is power-domain must be in the form:
-
-+patternProperties:
-+  "^power-domain@[0-9a-f]+$":
-
-
-> +    properties:
-> +
-> +      "#power-domain-cells":
-> +        description:
-> +          Must be 0 for nodes representing a single PM domain and 1 for nodes
-> +          providing multiple PM domains.
-> +
-> +      "#address-cells":
-> +        const: 1
-> +
-> +      "#size-cells":
-> +        const: 0
-> +
-> +      reg:
-> +        maxItems: 1
-> +        description: |
-> +          Power domain index. Valid values are defined in
-> +          "include/dt-bindings/power/px30-power.h"
-> +          "include/dt-bindings/power/rk3036-power.h"
-> +          "include/dt-bindings/power/rk3066-power.h"
-> +          "include/dt-bindings/power/rk3128-power.h"
-> +          "include/dt-bindings/power/rk3188-power.h"
-> +          "include/dt-bindings/power/rk3228-power.h"
-> +          "include/dt-bindings/power/rk3288-power.h"
-> +          "include/dt-bindings/power/rk3328-power.h"
-> +          "include/dt-bindings/power/rk3366-power.h"
-> +          "include/dt-bindings/power/rk3368-power.h"
-> +          "include/dt-bindings/power/rk3399-power.h"
-> +
-> +      clocks:
-> +        description: |
-> +          A number of phandles to clocks that need to be enabled while power domain
-> +          switches state.
-> +
-> +      pm_qos:
-> +        description: |
-> +          A number of phandles to qos blocks which need to be saved and restored
-> +          while power domain switches state.
-> +
-> +    patternProperties:
-> +      "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
-
-The same here:
-
-+patternProperties:
-+  "^power-domain@[0-9a-f]+$":
-
-
-
-> +        type: object
-> +        description: |
-> +          Represents a power domain child within a power domain parent node.
-> +
-> +        properties:
-> +
-> +          "#power-domain-cells":
-> +            description:
-> +              Must be 0 for nodes representing a single PM domain and 1 for nodes
-> +              providing multiple PM domains.
-> +
-> +          "#address-cells":
-> +            const: 1
-> +
-> +          "#size-cells":
-> +            const: 0
-> +
-> +          reg:
-> +            maxItems: 1
-> +
-> +          clocks:
-> +            description: |
-> +              A number of phandles to clocks that need to be enabled while power domain
-> +              switches state.
-> +
-> +          pm_qos:
-> +            description: |
-> +              A number of phandles to qos blocks which need to be saved and restored
-> +              while power domain switches state.
-> +
-> +        patternProperties:
-> +          "^pd_[0-9a-z_]{2,10}@[0-9a-f]+$":
-
-And here:
-
-> +            type: object
-> +            description: |
-> +              Represents a power domain child within a power domain parent node.
-> +
-> +            properties:
-> +
-> +              "#power-domain-cells":
-> +                description:
-> +                  Must be 0 for nodes representing a single PM domain and 1 for nodes
-> +                  providing multiple PM domains.
-> +
-> +              "#address-cells":
-> +                const: 1
-> +
-> +              "#size-cells":
-> +                const: 0
-> +
-> +              reg:
-> +                maxItems: 1
-> +
-> +              clocks:
-> +                description: |
-> +                  A number of phandles to clocks that need to be enabled while power domain
-> +                  switches state.
-> +
-> +              pm_qos:
-> +                description: |
-> +                  A number of phandles to qos blocks which need to be saved and restored
-> +                  while power domain switches state.
-> +
-> +            required:
-> +              - reg
-> +
-> +            additionalProperties: false
-> +
-> +        required:
-> +          - reg
-> +
-> +        additionalProperties: false
-> +
-> +    required:
-> +      - reg
-> +
-> +    additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - "#power-domain-cells"
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3399-cru.h>
-> +    #include <dt-bindings/power/rk3399-power.h>
-> +
-> +    soc {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        qos_hdcp: qos@ffa90000 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffa90000 0x0 0x20>;
-> +        };
-> +
-> +        qos_iep: qos@ffa98000 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffa98000 0x0 0x20>;
-> +        };
-> +
-> +        qos_rga_r: qos@ffab0000 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffab0000 0x0 0x20>;
-> +        };
-> +
-> +        qos_rga_w: qos@ffab0080 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffab0080 0x0 0x20>;
-> +        };
-> +
-> +        qos_video_m0: qos@ffab8000 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffab8000 0x0 0x20>;
-> +        };
-> +
-> +        qos_video_m1_r: qos@ffac0000 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffac0000 0x0 0x20>;
-> +        };
-> +
-> +        qos_video_m1_w: qos@ffac0080 {
-> +            compatible = "rockchip,rk3399-qos", "syscon";
-> +            reg = <0x0 0xffac0080 0x0 0x20>;
-> +        };
-> +
-> +        power-management@ff310000 {
-> +            compatible = "rockchip,rk3399-pmu", "syscon", "simple-mfd";
-> +            reg = <0x0 0xff310000 0x0 0x1000>;
-> +
-> +            power-controller {
-> +                compatible = "rockchip,rk3399-power-controller";
-> +                #power-domain-cells = <1>;
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                /* These power domains are grouped by VD_CENTER */
-> +                pd_iep@RK3399_PD_IEP {
-
-Here and below must be generic power-domain@RK3399_PD_IEP
-
-
-> +                    reg = <RK3399_PD_IEP>;
-> +                    clocks = <&cru ACLK_IEP>,
-> +                             <&cru HCLK_IEP>;
-> +                    pm_qos = <&qos_iep>;
-> +                    #power-domain-cells = <0>;
-> +                };
-> +                pd_rga@RK3399_PD_RGA {
-> +                    reg = <RK3399_PD_RGA>;
-> +                    clocks = <&cru ACLK_RGA>,
-> +                             <&cru HCLK_RGA>;
-> +                    pm_qos = <&qos_rga_r>,
-> +                             <&qos_rga_w>;
-> +                    #power-domain-cells = <0>;
-> +                };
-> +                pd_vcodec@RK3399_PD_VCODEC {
-> +                    reg = <RK3399_PD_VCODEC>;
-> +                    clocks = <&cru ACLK_VCODEC>,
-> +                             <&cru HCLK_VCODEC>;
-> +                    pm_qos = <&qos_video_m0>;
-> +                    #power-domain-cells = <0>;
-> +                };
-> +                pd_vdu@RK3399_PD_VDU {
-> +                    reg = <RK3399_PD_VDU>;
-> +                    clocks = <&cru ACLK_VDU>,
-> +                             <&cru HCLK_VDU>;
-> +                    pm_qos = <&qos_video_m1_r>,
-> +                             <&qos_video_m1_w>;
-> +                    #power-domain-cells = <0>;
-> +                };
-> +                pd_vio@RK3399_PD_VIO {
-> +                    reg = <RK3399_PD_VIO>;
-> +                    #power-domain-cells = <1>;
-> +                    #address-cells = <1>;
-> +                    #size-cells = <0>;
-> +
-> +                    pd_hdcp@RK3399_PD_HDCP {
-> +                        reg = <RK3399_PD_HDCP>;
-> +                        clocks = <&cru ACLK_HDCP>,
-> +                                 <&cru HCLK_HDCP>,
-> +                                 <&cru PCLK_HDCP>;
-> +                        pm_qos = <&qos_hdcp>;
-> +                        #power-domain-cells = <0>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> deleted file mode 100644
-> index 8304eceb62e4..000000000000
-> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> +++ /dev/null
-> @@ -1,136 +0,0 @@
-> -* Rockchip Power Domains
-> -
-> -Rockchip processors include support for multiple power domains which can be
-> -powered up/down by software based on different application scenes to save power.
-> -
-> -Required properties for power domain controller:
-> -- compatible: Should be one of the following.
-> -	"rockchip,px30-power-controller" - for PX30 SoCs.
-> -	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
-> -	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
-> -	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
-> -	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
-> -	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
-> -	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
-> -	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
-> -	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
-> -	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
-> -	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
-> -- #power-domain-cells: Number of cells in a power-domain specifier.
-> -	Should be 1 for multiple PM domains.
-> -- #address-cells: Should be 1.
-> -- #size-cells: Should be 0.
-> -
-> -Required properties for power domain sub nodes:
-> -- reg: index of the power domain, should use macros in:
-> -	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
-> -	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
-> -	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
-> -	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
-> -	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
-> -	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
-> -	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
-> -	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
-> -	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
-> -	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
-> -	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
-> -- clocks (optional): phandles to clocks which need to be enabled while power domain
-> -	switches state.
-> -- pm_qos (optional): phandles to qos blocks which need to be saved and restored
-> -	while power domain switches state.
-> -
-> -Qos Example:
-> -
-> -	qos_gpu: qos_gpu@ffaf0000 {
-> -		compatible ="syscon";
-> -		reg = <0x0 0xffaf0000 0x0 0x20>;
-> -	};
-> -
-> -Example:
-> -
-> -	power: power-controller {
-> -		compatible = "rockchip,rk3288-power-controller";
-> -		#power-domain-cells = <1>;
-> -		#address-cells = <1>;
-> -		#size-cells = <0>;
-> -
-> -		pd_gpu {
-> -			reg = <RK3288_PD_GPU>;
-> -			clocks = <&cru ACLK_GPU>;
-> -			pm_qos = <&qos_gpu>;
-> -		};
-> -	};
-> -
-> -	 power: power-controller {
-> -                compatible = "rockchip,rk3368-power-controller";
-> -                #power-domain-cells = <1>;
-> -                #address-cells = <1>;
-> -                #size-cells = <0>;
-> -
-> -                pd_gpu_1 {
-> -                        reg = <RK3368_PD_GPU_1>;
-> -                        clocks = <&cru ACLK_GPU_CFG>;
-> -                };
-> -        };
-> -
-> -Example 2:
-> -		power: power-controller {
-> -			compatible = "rockchip,rk3399-power-controller";
-> -			#power-domain-cells = <1>;
-> -			#address-cells = <1>;
-> -			#size-cells = <0>;
-> -
-> -			pd_vio {
-> -				#address-cells = <1>;
-> -				#size-cells = <0>;
-> -				reg = <RK3399_PD_VIO>;
-> -
-> -				pd_vo {
-> -					#address-cells = <1>;
-> -					#size-cells = <0>;
-> -					reg = <RK3399_PD_VO>;
-> -
-> -					pd_vopb {
-> -						reg = <RK3399_PD_VOPB>;
-> -					};
-> -
-> -					pd_vopl {
-> -						reg = <RK3399_PD_VOPL>;
-> -					};
-> -				};
-> -			};
-> -		};
-> -
-> -Node of a device using power domains must have a power-domains property,
-> -containing a phandle to the power device node and an index specifying which
-> -power domain to use.
-> -The index should use macros in:
-> -	"include/dt-bindings/power/px30-power.h" - for px30 type power domain.
-> -	"include/dt-bindings/power/rk3036-power.h" - for rk3036 type power domain.
-> -	"include/dt-bindings/power/rk3128-power.h" - for rk3128 type power domain.
-> -	"include/dt-bindings/power/rk3128-power.h" - for rk3228 type power domain.
-> -	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power domain.
-> -	"include/dt-bindings/power/rk3328-power.h" - for rk3328 type power domain.
-> -	"include/dt-bindings/power/rk3366-power.h" - for rk3366 type power domain.
-> -	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power domain.
-> -	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power domain.
-> -
-> -Example of the node using power domain:
-> -
-> -	node {
-> -		/* ... */
-> -		power-domains = <&power RK3288_PD_GPU>;
-> -		/* ... */
-> -	};
-> -
-> -	node {
-> -                /* ... */
-> -                power-domains = <&power RK3368_PD_GPU_1>;
-> -                /* ... */
-> -        };
-> -
-> -	node {
-> -		/* ... */
-> -		power-domains = <&power RK3399_PD_VOPB>;
-> -		/* ... */
-> -	};
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksIEpvaGFuOgoK5ZyoIDIwMjEvMy8yNCDkuIvljYg1OjE3LCBKb2hhbiBKb25rZXIg5YaZ6YGT
+Ogo+IEhpIEVsYWluZSwKPgo+ID5Gcm9tIFJvYidzIGJ1aWxkIGxvZyBpdCB0dXJucyBvdXQgdGhh
+dCAyIG1vcmUgcHJvcGVydGllcyBtdXN0IGJlIGFkZGVkLgo+IEFkZCB0aGVzZSBuZXcgcHJvcGVy
+dGllcyBpbiBzZXBhcmF0ZSBwYXRjaC4KPiBSZXRlc3Qgd2l0aCBjb21tYW5kcyBiZWxvdy4KPiA9
+PT09Cj4gU2VlIHJrMzI4OC5kdHNpCj4KPiAJCQlhc3NpZ25lZC1jbG9ja3MgPSA8JmNydSBTQ0xL
+X0VEUF8yNE0+Owo+IAkJCWFzc2lnbmVkLWNsb2NrLXBhcmVudHMgPSA8JnhpbjI0bT47ClRoaXMg
+c2hvdWxkIG5vdCBiZSBpbiB0aGUgcG93ZXIgbm9kZS4KSXQgc2hvdWxkIGJlIG9uIHRoZSBDUlUg
+bm9kZSwgb3Igb24gdGhlIEVEUCdzIG93biBub2RlLgpJIGNvdWxkIGhhdmUgYWRkZWQgaXQganVz
+dCB0byBzb2x2ZSBkdGJzX2NoZWNrIC4KPiA9PT09Cj4gaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJz
+Lm9yZy9wcm9qZWN0L2RldmljZXRyZWUtYmluZGluZ3MvcGF0Y2gvMjAyMTAzMjQwNzE2MDkuNzUz
+MS0zLXpoYW5ncWluZ0Byb2NrLWNoaXBzLmNvbS8KPgo+IG1ha2UgQVJDSD1hcm0gZHRic19jaGVj
+awo+IERUX1NDSEVNQV9GSUxFUz1Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93
+ZXIvcm9ja2NoaXAscG93ZXItY29udHJvbGxlci55YW1sCj4KPiBtYWtlIEFSQ0g9YXJtNjQgZHRi
+c19jaGVjawo+IERUX1NDSEVNQV9GSUxFUz1Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvcG93ZXIvcm9ja2NoaXAscG93ZXItY29udHJvbGxlci55YW1sCj4KPiBPbiAzLzI0LzIxIDg6
+MTYgQU0sIEVsYWluZSBaaGFuZyB3cm90ZToKPj4gQ29udmVydCB0aGUgc29jL3JvY2tjaGlwL3Bv
+d2VyX2RvbWFpbi50eHQgYmluZGluZyBkb2N1bWVudCB0bwo+PiBqc29uLXNjaGVtYSBhbmQgbW92
+ZSB0byB0aGUgcG93ZXIgYmluZGluZ3MgZGlyZWN0b3J5Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBF
+bnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgo+PiBT
+aWduZWQtb2ZmLWJ5OiBFbGFpbmUgWmhhbmcgPHpoYW5ncWluZ0Byb2NrLWNoaXBzLmNvbT4KPj4g
+LS0tCj4+ICAgLi4uL3Bvd2VyL3JvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbCAgICAgIHwg
+Mjg0ICsrKysrKysrKysrKysrKysrKwo+PiAgIC4uLi9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93
+ZXJfZG9tYWluLnR4dCAgICB8IDEzNiAtLS0tLS0tLS0KPj4gICAyIGZpbGVzIGNoYW5nZWQsIDI4
+NCBpbnNlcnRpb25zKCspLCAxMzYgZGVsZXRpb25zKC0pCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0
+IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9yb2NrY2hpcCxwb3dlci1j
+b250cm9sbGVyLnlhbWwKPj4gICBkZWxldGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL3NvYy9yb2NrY2hpcC9wb3dlcl9kb21haW4udHh0Cj4+Cj4+IGRpZmYg
+LS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvcm9ja2NoaXAs
+cG93ZXItY29udHJvbGxlci55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L3Bvd2VyL3JvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbAo+PiBuZXcgZmlsZSBtb2RlIDEw
+MDY0NAo+PiBpbmRleCAwMDAwMDAwMDAwMDAuLmEyMjAzMjJjNTEzOQo+PiAtLS0gL2Rldi9udWxs
+Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9yb2NrY2hp
+cCxwb3dlci1jb250cm9sbGVyLnlhbWwKPj4gQEAgLTAsMCArMSwyODQgQEAKPj4gKyMgU1BEWC1M
+aWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQo+PiArJVlBTUwgMS4yCj4+ICstLS0KPj4g
+KyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvcG93ZXIvcm9ja2NoaXAscG93ZXIt
+Y29udHJvbGxlci55YW1sIwo+PiArJHNjaGVtYTogaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEt
+c2NoZW1hcy9jb3JlLnlhbWwjCj4+ICsKPj4gK3RpdGxlOiBSb2NrY2hpcCBQb3dlciBEb21haW5z
+Cj4+ICsKPj4gK21haW50YWluZXJzOgo+PiArICAtIEVsYWluZSBaaGFuZyA8emhhbmdxaW5nQHJv
+Y2stY2hpcHMuY29tPgo+PiArICAtIFJvYiBIZXJyaW5nIDxyb2JoK2R0QGtlcm5lbC5vcmc+Cj4+
+ICsgIC0gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4gKwo+PiArZGVzY3JpcHRp
+b246IHwKPj4gKyAgUm9ja2NoaXAgcHJvY2Vzc29ycyBpbmNsdWRlIHN1cHBvcnQgZm9yIG11bHRp
+cGxlIHBvd2VyIGRvbWFpbnMgd2hpY2ggY2FuIGJlCj4+ICsgIHBvd2VyZWQgdXAvZG93biBieSBz
+b2Z0d2FyZSBiYXNlZCBvbiBkaWZmZXJlbnQgYXBwbGljYXRpb24gc2NlbmFyaW9zIHRvIHNhdmUg
+cG93ZXIuCj4+ICsKPj4gKyAgUG93ZXIgZG9tYWlucyBjb250YWluZWQgd2l0aGluIHBvd2VyLWNv
+bnRyb2xsZXIgbm9kZSBhcmUgZ2VuZXJpYyBwb3dlciBkb21haW4KPj4gKyAgcHJvdmlkZXJzIGRv
+Y3VtZW50ZWQgaW4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Bvd2VyL3Bvd2Vy
+LWRvbWFpbi55YW1sLgo+PiArCj4+ICsgIElQIGNvcmVzIGJlbG9uZ2luZyB0byBhIHBvd2VyIGRv
+bWFpbiBzaG91bGQgY29udGFpbiBhICJwb3dlci1kb21haW5zIgo+PiArICBwcm9wZXJ0eSB0aGF0
+IGlzIGEgcGhhbmRsZSBmb3IgdGhlIHBvd2VyIGRvbWFpbiBub2RlIHJlcHJlc2VudGluZyB0aGUg
+ZG9tYWluLgo+PiArCj4+ICtwcm9wZXJ0aWVzOgo+PiArICAkbm9kZW5hbWU6Cj4+ICsgICAgY29u
+c3Q6IHBvd2VyLWNvbnRyb2xsZXIKPj4gKwo+PiArICBjb21wYXRpYmxlOgo+PiArICAgIGVudW06
+Cj4+ICsgICAgICAtIHJvY2tjaGlwLHB4MzAtcG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSBy
+b2NrY2hpcCxyazMwMzYtcG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMw
+NjYtcG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMxMjgtcG93ZXItY29u
+dHJvbGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMxODgtcG93ZXItY29udHJvbGxlcgo+PiAr
+ICAgICAgLSByb2NrY2hpcCxyazMyMjgtcG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSByb2Nr
+Y2hpcCxyazMyODgtcG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMzMjgt
+cG93ZXItY29udHJvbGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMzNjYtcG93ZXItY29udHJv
+bGxlcgo+PiArICAgICAgLSByb2NrY2hpcCxyazMzNjgtcG93ZXItY29udHJvbGxlcgo+PiArICAg
+ICAgLSByb2NrY2hpcCxyazMzOTktcG93ZXItY29udHJvbGxlcgo+PiArCj4+ICsgICIjcG93ZXIt
+ZG9tYWluLWNlbGxzIjoKPj4gKyAgICBjb25zdDogMQo+PiArCj4+ICsgICIjYWRkcmVzcy1jZWxs
+cyI6Cj4+ICsgICAgY29uc3Q6IDEKPj4gKwo+PiArICAiI3NpemUtY2VsbHMiOgo+PiArICAgIGNv
+bnN0OiAwCj4KPiBhc3NpZ25lZC1jbG9ja3M6Cj4gICAgbWF4SXRlbXM6IDEKPgo+IGFzc2lnbmVk
+LWNsb2NrLXBhcmVudHM6Cj4gICAgbWF4SXRlbXM6IDEKPgo+PiArCj4+ICtwYXR0ZXJuUHJvcGVy
+dGllczoKPj4gKyAgIl5wZF9bMC05YS16X117MiwxMH1AWzAtOWEtZl0rJCI6Cj4+ICsgICAgdHlw
+ZTogb2JqZWN0Cj4+ICsgICAgZGVzY3JpcHRpb246IHwKPj4gKyAgICAgIFJlcHJlc2VudHMgdGhl
+IHBvd2VyIGRvbWFpbnMgd2l0aGluIHRoZSBwb3dlciBjb250cm9sbGVyIG5vZGUgYXMgZG9jdW1l
+bnRlZAo+PiArICAgICAgaW4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Bvd2Vy
+L3Bvd2VyLWRvbWFpbi55YW1sLgo+PiArCj4+ICsgICAgcHJvcGVydGllczoKPj4gKwo+PiArICAg
+ICAgIiNwb3dlci1kb21haW4tY2VsbHMiOgo+PiArICAgICAgICBkZXNjcmlwdGlvbjoKPj4gKyAg
+ICAgICAgICBNdXN0IGJlIDAgZm9yIG5vZGVzIHJlcHJlc2VudGluZyBhIHNpbmdsZSBQTSBkb21h
+aW4gYW5kIDEgZm9yIG5vZGVzCj4+ICsgICAgICAgICAgcHJvdmlkaW5nIG11bHRpcGxlIFBNIGRv
+bWFpbnMuCj4+ICsKPj4gKyAgICAgICIjYWRkcmVzcy1jZWxscyI6Cj4+ICsgICAgICAgIGNvbnN0
+OiAxCj4+ICsKPj4gKyAgICAgICIjc2l6ZS1jZWxscyI6Cj4+ICsgICAgICAgIGNvbnN0OiAwCj4+
+ICsKPj4gKyAgICAgIHJlZzoKPj4gKyAgICAgICAgbWF4SXRlbXM6IDEKPj4gKyAgICAgICAgZGVz
+Y3JpcHRpb246IHwKPj4gKyAgICAgICAgICBQb3dlciBkb21haW4gaW5kZXguIFZhbGlkIHZhbHVl
+cyBhcmUgZGVmaW5lZCBpbgo+PiArICAgICAgICAgICJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2Vy
+L3B4MzAtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMwMzYtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMwNjYtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMxMjgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMxODgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMyMjgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMyODgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMzMjgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMzNjYtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMzNjgtcG93ZXIuaCIKPj4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9y
+azMzOTktcG93ZXIuaCIKPj4gKwo+PiArICAgICAgY2xvY2tzOgo+PiArICAgICAgICBkZXNjcmlw
+dGlvbjogfAo+PiArICAgICAgICAgIEEgbnVtYmVyIG9mIHBoYW5kbGVzIHRvIGNsb2NrcyB0aGF0
+IG5lZWQgdG8gYmUgZW5hYmxlZCB3aGlsZSBwb3dlciBkb21haW4KPj4gKyAgICAgICAgICBzd2l0
+Y2hlcyBzdGF0ZS4KPj4gKwo+PiArICAgICAgcG1fcW9zOgo+PiArICAgICAgICBkZXNjcmlwdGlv
+bjogfAo+PiArICAgICAgICAgIEEgbnVtYmVyIG9mIHBoYW5kbGVzIHRvIHFvcyBibG9ja3Mgd2hp
+Y2ggbmVlZCB0byBiZSBzYXZlZCBhbmQgcmVzdG9yZWQKPj4gKyAgICAgICAgICB3aGlsZSBwb3dl
+ciBkb21haW4gc3dpdGNoZXMgc3RhdGUuCj4+ICsKPj4gKyAgICBwYXR0ZXJuUHJvcGVydGllczoK
+Pj4gKyAgICAgICJecGRfWzAtOWEtel9dezIsMTB9QFswLTlhLWZdKyQiOgo+PiArICAgICAgICB0
+eXBlOiBvYmplY3QKPj4gKyAgICAgICAgZGVzY3JpcHRpb246IHwKPj4gKyAgICAgICAgICBSZXBy
+ZXNlbnRzIGEgcG93ZXIgZG9tYWluIGNoaWxkIHdpdGhpbiBhIHBvd2VyIGRvbWFpbiBwYXJlbnQg
+bm9kZS4KPj4gKwo+PiArICAgICAgICBwcm9wZXJ0aWVzOgo+PiArCj4+ICsgICAgICAgICAgIiNw
+b3dlci1kb21haW4tY2VsbHMiOgo+PiArICAgICAgICAgICAgZGVzY3JpcHRpb246Cj4+ICsgICAg
+ICAgICAgICAgIE11c3QgYmUgMCBmb3Igbm9kZXMgcmVwcmVzZW50aW5nIGEgc2luZ2xlIFBNIGRv
+bWFpbiBhbmQgMSBmb3Igbm9kZXMKPj4gKyAgICAgICAgICAgICAgcHJvdmlkaW5nIG11bHRpcGxl
+IFBNIGRvbWFpbnMuCj4+ICsKPj4gKyAgICAgICAgICAiI2FkZHJlc3MtY2VsbHMiOgo+PiArICAg
+ICAgICAgICAgY29uc3Q6IDEKPj4gKwo+PiArICAgICAgICAgICIjc2l6ZS1jZWxscyI6Cj4+ICsg
+ICAgICAgICAgICBjb25zdDogMAo+PiArCj4+ICsgICAgICAgICAgcmVnOgo+PiArICAgICAgICAg
+ICAgbWF4SXRlbXM6IDEKPj4gKwo+PiArICAgICAgICAgIGNsb2NrczoKPj4gKyAgICAgICAgICAg
+IGRlc2NyaXB0aW9uOiB8Cj4+ICsgICAgICAgICAgICAgIEEgbnVtYmVyIG9mIHBoYW5kbGVzIHRv
+IGNsb2NrcyB0aGF0IG5lZWQgdG8gYmUgZW5hYmxlZCB3aGlsZSBwb3dlciBkb21haW4KPj4gKyAg
+ICAgICAgICAgICAgc3dpdGNoZXMgc3RhdGUuCj4+ICsKPj4gKyAgICAgICAgICBwbV9xb3M6Cj4+
+ICsgICAgICAgICAgICBkZXNjcmlwdGlvbjogfAo+PiArICAgICAgICAgICAgICBBIG51bWJlciBv
+ZiBwaGFuZGxlcyB0byBxb3MgYmxvY2tzIHdoaWNoIG5lZWQgdG8gYmUgc2F2ZWQgYW5kIHJlc3Rv
+cmVkCj4+ICsgICAgICAgICAgICAgIHdoaWxlIHBvd2VyIGRvbWFpbiBzd2l0Y2hlcyBzdGF0ZS4K
+Pj4gKwo+PiArICAgICAgICBwYXR0ZXJuUHJvcGVydGllczoKPj4gKyAgICAgICAgICAiXnBkX1sw
+LTlhLXpfXXsyLDEwfUBbMC05YS1mXSskIjoKPj4gKyAgICAgICAgICAgIHR5cGU6IG9iamVjdAo+
+PiArICAgICAgICAgICAgZGVzY3JpcHRpb246IHwKPj4gKyAgICAgICAgICAgICAgUmVwcmVzZW50
+cyBhIHBvd2VyIGRvbWFpbiBjaGlsZCB3aXRoaW4gYSBwb3dlciBkb21haW4gcGFyZW50IG5vZGUu
+Cj4+ICsKPj4gKyAgICAgICAgICAgIHByb3BlcnRpZXM6Cj4+ICsKPj4gKyAgICAgICAgICAgICAg
+IiNwb3dlci1kb21haW4tY2VsbHMiOgo+PiArICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOgo+
+PiArICAgICAgICAgICAgICAgICAgTXVzdCBiZSAwIGZvciBub2RlcyByZXByZXNlbnRpbmcgYSBz
+aW5nbGUgUE0gZG9tYWluIGFuZCAxIGZvciBub2Rlcwo+PiArICAgICAgICAgICAgICAgICAgcHJv
+dmlkaW5nIG11bHRpcGxlIFBNIGRvbWFpbnMuCj4+ICsKPj4gKyAgICAgICAgICAgICAgIiNhZGRy
+ZXNzLWNlbGxzIjoKPj4gKyAgICAgICAgICAgICAgICBjb25zdDogMQo+PiArCj4+ICsgICAgICAg
+ICAgICAgICIjc2l6ZS1jZWxscyI6Cj4+ICsgICAgICAgICAgICAgICAgY29uc3Q6IDAKPj4gKwo+
+PiArICAgICAgICAgICAgICByZWc6Cj4+ICsgICAgICAgICAgICAgICAgbWF4SXRlbXM6IDEKPj4g
+Kwo+PiArICAgICAgICAgICAgICBjbG9ja3M6Cj4+ICsgICAgICAgICAgICAgICAgZGVzY3JpcHRp
+b246IHwKPj4gKyAgICAgICAgICAgICAgICAgIEEgbnVtYmVyIG9mIHBoYW5kbGVzIHRvIGNsb2Nr
+cyB0aGF0IG5lZWQgdG8gYmUgZW5hYmxlZCB3aGlsZSBwb3dlciBkb21haW4KPj4gKyAgICAgICAg
+ICAgICAgICAgIHN3aXRjaGVzIHN0YXRlLgo+PiArCj4+ICsgICAgICAgICAgICAgIHBtX3FvczoK
+Pj4gKyAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogfAo+PiArICAgICAgICAgICAgICAgICAg
+QSBudW1iZXIgb2YgcGhhbmRsZXMgdG8gcW9zIGJsb2NrcyB3aGljaCBuZWVkIHRvIGJlIHNhdmVk
+IGFuZCByZXN0b3JlZAo+PiArICAgICAgICAgICAgICAgICAgd2hpbGUgcG93ZXIgZG9tYWluIHN3
+aXRjaGVzIHN0YXRlLgo+PiArCj4+ICsgICAgICAgICAgICByZXF1aXJlZDoKPj4gKyAgICAgICAg
+ICAgICAgLSByZWcKPj4gKwo+PiArICAgICAgICAgICAgYWRkaXRpb25hbFByb3BlcnRpZXM6IGZh
+bHNlCj4+ICsKPj4gKyAgICAgICAgcmVxdWlyZWQ6Cj4+ICsgICAgICAgICAgLSByZWcKPj4gKwo+
+PiArICAgICAgICBhZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UKPj4gKwo+PiArICAgIHJlcXVp
+cmVkOgo+PiArICAgICAgLSByZWcKPj4gKwo+PiArICAgIGFkZGl0aW9uYWxQcm9wZXJ0aWVzOiBm
+YWxzZQo+PiArCj4+ICtyZXF1aXJlZDoKPj4gKyAgLSBjb21wYXRpYmxlCj4+ICsgIC0gIiNwb3dl
+ci1kb21haW4tY2VsbHMiCj4+ICsKPj4gK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxzZQo+PiAr
+Cj4+ICtleGFtcGxlczoKPj4gKyAgLSB8Cj4+ICsgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Ns
+b2NrL3JrMzM5OS1jcnUuaD4KPj4gKyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvcG93ZXIvcmsz
+Mzk5LXBvd2VyLmg+Cj4+ICsKPj4gKyAgICBzb2Mgewo+PiArICAgICAgICAjYWRkcmVzcy1jZWxs
+cyA9IDwyPjsKPj4gKyAgICAgICAgI3NpemUtY2VsbHMgPSA8Mj47Cj4+ICsKPj4gKyAgICAgICAg
+cW9zX2hkY3A6IHFvc0BmZmE5MDAwMCB7Cj4+ICsgICAgICAgICAgICBjb21wYXRpYmxlID0gInJv
+Y2tjaGlwLHJrMzM5OS1xb3MiLCAic3lzY29uIjsKPj4gKyAgICAgICAgICAgIHJlZyA9IDwweDAg
+MHhmZmE5MDAwMCAweDAgMHgyMD47Cj4+ICsgICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICAgcW9z
+X2llcDogcW9zQGZmYTk4MDAwIHsKPj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2No
+aXAscmszMzk5LXFvcyIsICJzeXNjb24iOwo+PiArICAgICAgICAgICAgcmVnID0gPDB4MCAweGZm
+YTk4MDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICAgfTsKPj4gKwo+PiArICAgICAgICBxb3Nfcmdh
+X3I6IHFvc0BmZmFiMDAwMCB7Cj4+ICsgICAgICAgICAgICBjb21wYXRpYmxlID0gInJvY2tjaGlw
+LHJrMzM5OS1xb3MiLCAic3lzY29uIjsKPj4gKyAgICAgICAgICAgIHJlZyA9IDwweDAgMHhmZmFi
+MDAwMCAweDAgMHgyMD47Cj4+ICsgICAgICAgIH07Cj4+ICsKPj4gKyAgICAgICAgcW9zX3JnYV93
+OiBxb3NAZmZhYjAwODAgewo+PiArICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxy
+azMzOTktcW9zIiwgInN5c2NvbiI7Cj4+ICsgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmZhYjAw
+ODAgMHgwIDB4MjA+Owo+PiArICAgICAgICB9Owo+PiArCj4+ICsgICAgICAgIHFvc192aWRlb19t
+MDogcW9zQGZmYWI4MDAwIHsKPj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAs
+cmszMzk5LXFvcyIsICJzeXNjb24iOwo+PiArICAgICAgICAgICAgcmVnID0gPDB4MCAweGZmYWI4
+MDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICAgfTsKPj4gKwo+PiArICAgICAgICBxb3NfdmlkZW9f
+bTFfcjogcW9zQGZmYWMwMDAwIHsKPj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2No
+aXAscmszMzk5LXFvcyIsICJzeXNjb24iOwo+PiArICAgICAgICAgICAgcmVnID0gPDB4MCAweGZm
+YWMwMDAwIDB4MCAweDIwPjsKPj4gKyAgICAgICAgfTsKPj4gKwo+PiArICAgICAgICBxb3Nfdmlk
+ZW9fbTFfdzogcW9zQGZmYWMwMDgwIHsKPj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9j
+a2NoaXAscmszMzk5LXFvcyIsICJzeXNjb24iOwo+PiArICAgICAgICAgICAgcmVnID0gPDB4MCAw
+eGZmYWMwMDgwIDB4MCAweDIwPjsKPj4gKyAgICAgICAgfTsKPj4gKwo+PiArICAgICAgICBwb3dl
+ci1tYW5hZ2VtZW50QGZmMzEwMDAwIHsKPj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9j
+a2NoaXAscmszMzk5LXBtdSIsICJzeXNjb24iLCAic2ltcGxlLW1mZCI7Cj4+ICsgICAgICAgICAg
+ICByZWcgPSA8MHgwIDB4ZmYzMTAwMDAgMHgwIDB4MTAwMD47Cj4+ICsKPj4gKyAgICAgICAgICAg
+IHBvd2VyLWNvbnRyb2xsZXIgewo+PiArICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9j
+a2NoaXAscmszMzk5LXBvd2VyLWNvbnRyb2xsZXIiOwo+PiArICAgICAgICAgICAgICAgICNwb3dl
+ci1kb21haW4tY2VsbHMgPSA8MT47Cj4+ICsgICAgICAgICAgICAgICAgI2FkZHJlc3MtY2VsbHMg
+PSA8MT47Cj4+ICsgICAgICAgICAgICAgICAgI3NpemUtY2VsbHMgPSA8MD47Cj4+ICsKPj4gKyAg
+ICAgICAgICAgICAgICAvKiBUaGVzZSBwb3dlciBkb21haW5zIGFyZSBncm91cGVkIGJ5IFZEX0NF
+TlRFUiAqLwo+PiArICAgICAgICAgICAgICAgIHBkX2llcEBSSzMzOTlfUERfSUVQIHsKPj4gKyAg
+ICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9JRVA+Owo+PiArICAgICAgICAgICAg
+ICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX0lFUD4sCj4+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIDwmY3J1IEhDTEtfSUVQPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgcG1fcW9z
+ID0gPCZxb3NfaWVwPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgI3Bvd2VyLWRvbWFpbi1jZWxs
+cyA9IDwwPjsKPj4gKyAgICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgIHBkX3Jn
+YUBSSzMzOTlfUERfUkdBIHsKPj4gKyAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9Q
+RF9SR0E+Owo+PiArICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1JHQT4s
+Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfUkdBPjsKPj4gKyAg
+ICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfcmdhX3I+LAo+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICA8JnFvc19yZ2Ffdz47Cj4+ICsgICAgICAgICAgICAgICAgICAgICNw
+b3dlci1kb21haW4tY2VsbHMgPSA8MD47Cj4+ICsgICAgICAgICAgICAgICAgfTsKPj4gKyAgICAg
+ICAgICAgICAgICBwZF92Y29kZWNAUkszMzk5X1BEX1ZDT0RFQyB7Cj4+ICsgICAgICAgICAgICAg
+ICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVkNPREVDPjsKPj4gKyAgICAgICAgICAgICAgICAgICAg
+Y2xvY2tzID0gPCZjcnUgQUNMS19WQ09ERUM+LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICA8JmNydSBIQ0xLX1ZDT0RFQz47Cj4+ICsgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9
+IDwmcW9zX3ZpZGVvX20wPjsKPj4gKyAgICAgICAgICAgICAgICAgICAgI3Bvd2VyLWRvbWFpbi1j
+ZWxscyA9IDwwPjsKPj4gKyAgICAgICAgICAgICAgICB9Owo+PiArICAgICAgICAgICAgICAgIHBk
+X3ZkdUBSSzMzOTlfUERfVkRVIHsKPj4gKyAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5
+OV9QRF9WRFU+Owo+PiArICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZE
+VT4sCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfVkRVPjsKPj4g
+KyAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfdmlkZW9fbTFfcj4sCj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIDwmcW9zX3ZpZGVvX20xX3c+Owo+PiArICAgICAgICAg
+ICAgICAgICAgICAjcG93ZXItZG9tYWluLWNlbGxzID0gPDA+Owo+PiArICAgICAgICAgICAgICAg
+IH07Cj4+ICsgICAgICAgICAgICAgICAgcGRfdmlvQFJLMzM5OV9QRF9WSU8gewo+PiArICAgICAg
+ICAgICAgICAgICAgICByZWcgPSA8UkszMzk5X1BEX1ZJTz47Cj4+ICsgICAgICAgICAgICAgICAg
+ICAgICNwb3dlci1kb21haW4tY2VsbHMgPSA8MT47Cj4+ICsgICAgICAgICAgICAgICAgICAgICNh
+ZGRyZXNzLWNlbGxzID0gPDE+Owo+PiArICAgICAgICAgICAgICAgICAgICAjc2l6ZS1jZWxscyA9
+IDwwPjsKPj4gKwo+PiArICAgICAgICAgICAgICAgICAgICBwZF9oZGNwQFJLMzM5OV9QRF9IRENQ
+IHsKPj4gKyAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfSERDUD47Cj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JmNydSBBQ0xLX0hEQ1A+LAo+PiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19IRENQPiwKPj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IFBDTEtfSERDUD47Cj4+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc19oZGNwPjsKPj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICNwb3dlci1kb21haW4tY2VsbHMgPSA8MD47Cj4+ICsgICAgICAgICAgICAg
+ICAgICAgIH07Cj4+ICsgICAgICAgICAgICAgICAgfTsKPj4gKyAgICAgICAgICAgIH07Cj4+ICsg
+ICAgICAgIH07Cj4+ICsgICAgfTsKPj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dCBiL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2Mvcm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dAo+PiBk
+ZWxldGVkIGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggODMwNGVjZWI2MmU0Li4wMDAwMDAwMDAw
+MDAKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvYy9yb2NrY2hp
+cC9wb3dlcl9kb21haW4udHh0Cj4+ICsrKyAvZGV2L251bGwKPj4gQEAgLTEsMTM2ICswLDAgQEAK
+Pj4gLSogUm9ja2NoaXAgUG93ZXIgRG9tYWlucwo+PiAtCj4+IC1Sb2NrY2hpcCBwcm9jZXNzb3Jz
+IGluY2x1ZGUgc3VwcG9ydCBmb3IgbXVsdGlwbGUgcG93ZXIgZG9tYWlucyB3aGljaCBjYW4gYmUK
+Pj4gLXBvd2VyZWQgdXAvZG93biBieSBzb2Z0d2FyZSBiYXNlZCBvbiBkaWZmZXJlbnQgYXBwbGlj
+YXRpb24gc2NlbmVzIHRvIHNhdmUgcG93ZXIuCj4+IC0KPj4gLVJlcXVpcmVkIHByb3BlcnRpZXMg
+Zm9yIHBvd2VyIGRvbWFpbiBjb250cm9sbGVyOgo+PiAtLSBjb21wYXRpYmxlOiBTaG91bGQgYmUg
+b25lIG9mIHRoZSBmb2xsb3dpbmcuCj4+IC0JInJvY2tjaGlwLHB4MzAtcG93ZXItY29udHJvbGxl
+ciIgLSBmb3IgUFgzMCBTb0NzLgo+PiAtCSJyb2NrY2hpcCxyazMwMzYtcG93ZXItY29udHJvbGxl
+ciIgLSBmb3IgUkszMDM2IFNvQ3MuCj4+IC0JInJvY2tjaGlwLHJrMzA2Ni1wb3dlci1jb250cm9s
+bGVyIiAtIGZvciBSSzMwNjYgU29Dcy4KPj4gLQkicm9ja2NoaXAscmszMTI4LXBvd2VyLWNvbnRy
+b2xsZXIiIC0gZm9yIFJLMzEyOCBTb0NzLgo+PiAtCSJyb2NrY2hpcCxyazMxODgtcG93ZXItY29u
+dHJvbGxlciIgLSBmb3IgUkszMTg4IFNvQ3MuCj4+IC0JInJvY2tjaGlwLHJrMzIyOC1wb3dlci1j
+b250cm9sbGVyIiAtIGZvciBSSzMyMjggU29Dcy4KPj4gLQkicm9ja2NoaXAscmszMjg4LXBvd2Vy
+LWNvbnRyb2xsZXIiIC0gZm9yIFJLMzI4OCBTb0NzLgo+PiAtCSJyb2NrY2hpcCxyazMzMjgtcG93
+ZXItY29udHJvbGxlciIgLSBmb3IgUkszMzI4IFNvQ3MuCj4+IC0JInJvY2tjaGlwLHJrMzM2Ni1w
+b3dlci1jb250cm9sbGVyIiAtIGZvciBSSzMzNjYgU29Dcy4KPj4gLQkicm9ja2NoaXAscmszMzY4
+LXBvd2VyLWNvbnRyb2xsZXIiIC0gZm9yIFJLMzM2OCBTb0NzLgo+PiAtCSJyb2NrY2hpcCxyazMz
+OTktcG93ZXItY29udHJvbGxlciIgLSBmb3IgUkszMzk5IFNvQ3MuCj4+IC0tICNwb3dlci1kb21h
+aW4tY2VsbHM6IE51bWJlciBvZiBjZWxscyBpbiBhIHBvd2VyLWRvbWFpbiBzcGVjaWZpZXIuCj4+
+IC0JU2hvdWxkIGJlIDEgZm9yIG11bHRpcGxlIFBNIGRvbWFpbnMuCj4+IC0tICNhZGRyZXNzLWNl
+bGxzOiBTaG91bGQgYmUgMS4KPj4gLS0gI3NpemUtY2VsbHM6IFNob3VsZCBiZSAwLgo+PiAtCj4+
+IC1SZXF1aXJlZCBwcm9wZXJ0aWVzIGZvciBwb3dlciBkb21haW4gc3ViIG5vZGVzOgo+PiAtLSBy
+ZWc6IGluZGV4IG9mIHRoZSBwb3dlciBkb21haW4sIHNob3VsZCB1c2UgbWFjcm9zIGluOgo+PiAt
+CSJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3B4MzAtcG93ZXIuaCIgLSBmb3IgUFgzMCB0eXBl
+IHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMwMzYtcG93
+ZXIuaCIgLSBmb3IgUkszMDM2IHR5cGUgcG93ZXIgZG9tYWluLgo+PiAtCSJpbmNsdWRlL2R0LWJp
+bmRpbmdzL3Bvd2VyL3JrMzA2Ni1wb3dlci5oIiAtIGZvciBSSzMwNjYgdHlwZSBwb3dlciBkb21h
+aW4uCj4+IC0JImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszMTI4LXBvd2VyLmgiIC0gZm9y
+IFJLMzEyOCB0eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dl
+ci9yazMxODgtcG93ZXIuaCIgLSBmb3IgUkszMTg4IHR5cGUgcG93ZXIgZG9tYWluLgo+PiAtCSJp
+bmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzIyOC1wb3dlci5oIiAtIGZvciBSSzMyMjggdHlw
+ZSBwb3dlciBkb21haW4uCj4+IC0JImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszMjg4LXBv
+d2VyLmgiIC0gZm9yIFJLMzI4OCB0eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9kdC1i
+aW5kaW5ncy9wb3dlci9yazMzMjgtcG93ZXIuaCIgLSBmb3IgUkszMzI4IHR5cGUgcG93ZXIgZG9t
+YWluLgo+PiAtCSJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzM2Ni1wb3dlci5oIiAtIGZv
+ciBSSzMzNjYgdHlwZSBwb3dlciBkb21haW4uCj4+IC0JImluY2x1ZGUvZHQtYmluZGluZ3MvcG93
+ZXIvcmszMzY4LXBvd2VyLmgiIC0gZm9yIFJLMzM2OCB0eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQki
+aW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMzOTktcG93ZXIuaCIgLSBmb3IgUkszMzk5IHR5
+cGUgcG93ZXIgZG9tYWluLgo+PiAtLSBjbG9ja3MgKG9wdGlvbmFsKTogcGhhbmRsZXMgdG8gY2xv
+Y2tzIHdoaWNoIG5lZWQgdG8gYmUgZW5hYmxlZCB3aGlsZSBwb3dlciBkb21haW4KPj4gLQlzd2l0
+Y2hlcyBzdGF0ZS4KPj4gLS0gcG1fcW9zIChvcHRpb25hbCk6IHBoYW5kbGVzIHRvIHFvcyBibG9j
+a3Mgd2hpY2ggbmVlZCB0byBiZSBzYXZlZCBhbmQgcmVzdG9yZWQKPj4gLQl3aGlsZSBwb3dlciBk
+b21haW4gc3dpdGNoZXMgc3RhdGUuCj4+IC0KPj4gLVFvcyBFeGFtcGxlOgo+PiAtCj4+IC0JcW9z
+X2dwdTogcW9zX2dwdUBmZmFmMDAwMCB7Cj4+IC0JCWNvbXBhdGlibGUgPSJzeXNjb24iOwo+PiAt
+CQlyZWcgPSA8MHgwIDB4ZmZhZjAwMDAgMHgwIDB4MjA+Owo+PiAtCX07Cj4+IC0KPj4gLUV4YW1w
+bGU6Cj4+IC0KPj4gLQlwb3dlcjogcG93ZXItY29udHJvbGxlciB7Cj4+IC0JCWNvbXBhdGlibGUg
+PSAicm9ja2NoaXAscmszMjg4LXBvd2VyLWNvbnRyb2xsZXIiOwo+PiAtCQkjcG93ZXItZG9tYWlu
+LWNlbGxzID0gPDE+Owo+PiAtCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4gLQkJI3NpemUtY2Vs
+bHMgPSA8MD47Cj4+IC0KPj4gLQkJcGRfZ3B1IHsKPj4gLQkJCXJlZyA9IDxSSzMyODhfUERfR1BV
+PjsKPj4gLQkJCWNsb2NrcyA9IDwmY3J1IEFDTEtfR1BVPjsKPj4gLQkJCXBtX3FvcyA9IDwmcW9z
+X2dwdT47Cj4+IC0JCX07Cj4+IC0JfTsKPj4gLQo+PiAtCSBwb3dlcjogcG93ZXItY29udHJvbGxl
+ciB7Cj4+IC0gICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzNjgtcG93
+ZXItY29udHJvbGxlciI7Cj4+IC0gICAgICAgICAgICAgICAgI3Bvd2VyLWRvbWFpbi1jZWxscyA9
+IDwxPjsKPj4gLSAgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwxPjsKPj4gLSAgICAg
+ICAgICAgICAgICAjc2l6ZS1jZWxscyA9IDwwPjsKPj4gLQo+PiAtICAgICAgICAgICAgICAgIHBk
+X2dwdV8xIHsKPj4gLSAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzNjhfUERfR1BV
+XzE+Owo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19HUFVf
+Q0ZHPjsKPj4gLSAgICAgICAgICAgICAgICB9Owo+PiAtICAgICAgICB9Owo+PiAtCj4+IC1FeGFt
+cGxlIDI6Cj4+IC0JCXBvd2VyOiBwb3dlci1jb250cm9sbGVyIHsKPj4gLQkJCWNvbXBhdGlibGUg
+PSAicm9ja2NoaXAscmszMzk5LXBvd2VyLWNvbnRyb2xsZXIiOwo+PiAtCQkJI3Bvd2VyLWRvbWFp
+bi1jZWxscyA9IDwxPjsKPj4gLQkJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+PiAtCQkJI3NpemUt
+Y2VsbHMgPSA8MD47Cj4+IC0KPj4gLQkJCXBkX3ZpbyB7Cj4+IC0JCQkJI2FkZHJlc3MtY2VsbHMg
+PSA8MT47Cj4+IC0JCQkJI3NpemUtY2VsbHMgPSA8MD47Cj4+IC0JCQkJcmVnID0gPFJLMzM5OV9Q
+RF9WSU8+Owo+PiAtCj4+IC0JCQkJcGRfdm8gewo+PiAtCQkJCQkjYWRkcmVzcy1jZWxscyA9IDwx
+PjsKPj4gLQkJCQkJI3NpemUtY2VsbHMgPSA8MD47Cj4+IC0JCQkJCXJlZyA9IDxSSzMzOTlfUERf
+Vk8+Owo+PiAtCj4+IC0JCQkJCXBkX3ZvcGIgewo+PiAtCQkJCQkJcmVnID0gPFJLMzM5OV9QRF9W
+T1BCPjsKPj4gLQkJCQkJfTsKPj4gLQo+PiAtCQkJCQlwZF92b3BsIHsKPj4gLQkJCQkJCXJlZyA9
+IDxSSzMzOTlfUERfVk9QTD47Cj4+IC0JCQkJCX07Cj4+IC0JCQkJfTsKPj4gLQkJCX07Cj4+IC0J
+CX07Cj4+IC0KPj4gLU5vZGUgb2YgYSBkZXZpY2UgdXNpbmcgcG93ZXIgZG9tYWlucyBtdXN0IGhh
+dmUgYSBwb3dlci1kb21haW5zIHByb3BlcnR5LAo+PiAtY29udGFpbmluZyBhIHBoYW5kbGUgdG8g
+dGhlIHBvd2VyIGRldmljZSBub2RlIGFuZCBhbiBpbmRleCBzcGVjaWZ5aW5nIHdoaWNoCj4+IC1w
+b3dlciBkb21haW4gdG8gdXNlLgo+PiAtVGhlIGluZGV4IHNob3VsZCB1c2UgbWFjcm9zIGluOgo+
+PiAtCSJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3B4MzAtcG93ZXIuaCIgLSBmb3IgcHgzMCB0
+eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMwMzYt
+cG93ZXIuaCIgLSBmb3IgcmszMDM2IHR5cGUgcG93ZXIgZG9tYWluLgo+PiAtCSJpbmNsdWRlL2R0
+LWJpbmRpbmdzL3Bvd2VyL3JrMzEyOC1wb3dlci5oIiAtIGZvciByazMxMjggdHlwZSBwb3dlciBk
+b21haW4uCj4+IC0JImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszMTI4LXBvd2VyLmgiIC0g
+Zm9yIHJrMzIyOCB0eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9kdC1iaW5kaW5ncy9w
+b3dlci9yazMyODgtcG93ZXIuaCIgLSBmb3IgcmszMjg4IHR5cGUgcG93ZXIgZG9tYWluLgo+PiAt
+CSJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzMyOC1wb3dlci5oIiAtIGZvciByazMzMjgg
+dHlwZSBwb3dlciBkb21haW4uCj4+IC0JImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszMzY2
+LXBvd2VyLmgiIC0gZm9yIHJrMzM2NiB0eXBlIHBvd2VyIGRvbWFpbi4KPj4gLQkiaW5jbHVkZS9k
+dC1iaW5kaW5ncy9wb3dlci9yazMzNjgtcG93ZXIuaCIgLSBmb3IgcmszMzY4IHR5cGUgcG93ZXIg
+ZG9tYWluLgo+PiAtCSJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzM5OS1wb3dlci5oIiAt
+IGZvciByazMzOTkgdHlwZSBwb3dlciBkb21haW4uCj4+IC0KPj4gLUV4YW1wbGUgb2YgdGhlIG5v
+ZGUgdXNpbmcgcG93ZXIgZG9tYWluOgo+PiAtCj4+IC0Jbm9kZSB7Cj4+IC0JCS8qIC4uLiAqLwo+
+PiAtCQlwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzMyODhfUERfR1BVPjsKPj4gLQkJLyogLi4u
+ICovCj4+IC0JfTsKPj4gLQo+PiAtCW5vZGUgewo+PiAtICAgICAgICAgICAgICAgIC8qIC4uLiAq
+Lwo+PiAtICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnBvd2VyIFJLMzM2OF9QRF9H
+UFVfMT47Cj4+IC0gICAgICAgICAgICAgICAgLyogLi4uICovCj4+IC0gICAgICAgIH07Cj4+IC0K
+Pj4gLQlub2RlIHsKPj4gLQkJLyogLi4uICovCj4+IC0JCXBvd2VyLWRvbWFpbnMgPSA8JnBvd2Vy
+IFJLMzM5OV9QRF9WT1BCPjsKPj4gLQkJLyogLi4uICovCj4+IC0JfTsKPj4KPgo+CgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
