@@ -2,66 +2,83 @@ Return-Path: <SRS0=wzRa=IX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2904C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Mar 2021 08:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03BE2C433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Mar 2021 09:26:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2EA8D619F2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Mar 2021 08:51:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EA8D619F2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
+	by mail.kernel.org (Postfix) with ESMTPS id 724CE619DC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Mar 2021 09:26:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 724CE619DC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NTmfS0DSqeESrwHUKEYw6m+TPWG+K9tHOGw6jex5YJc=; b=gZvru1rPPmsupSmelFlwzhRvX
-	0r7O/Otf7jbwtcnrmbXRc0IJmWN0tplJ2zf5N65YHfPrO+5C5DG0pkvJkHCVzqHiMdtHYdRM9WLYi
-	R58sNZoCJEWhUvchPRSw65O9LJEbFBTb7x/R5hTnhdzpNvkpP0AZ4I3zFFH7UqsnFQGwzn6ZT0Cmd
-	KxcXUZsIZ8PN3arTZ1T/whA/NcokVDCMtaiBRWCxjMC/3U0MfY42as0TNortch7PkjkMHZckkOmXv
-	zZYNclGP/PcKcJ9U7GERbQ4WPj61+ipDi2pktOxbivYhd4MZW43n92D6pGOZLq4bM3Xaie1D1G3AC
-	xBL6Y17NQ==;
+	 bh=CD9TAzPEzAkMYCDkH9b0X1SL/hwqyESVQk/KSC7wsv8=; b=mirT/+U0rnJB3pE42spgcVzBV
+	WWjO478TYPDXa4IyjvUknIHIyg1wPvrldKZNKf6x44WMRMgine4TEKhIeCSr9SUz4FpJcIfZhh87s
+	svgK8INDWiBtMI2PId7aKXCbvwB+EKubgu5aAeXkVGkH0F6pJFDzmdjWLyHIBInGQ4ibszadg2PCv
+	NJYhJ89Xri7bXAZ/6UqqTkOtNdWRmHo2J0j1mB3w8l7MdkGBLhR7C2OE+1sDAzywZU+eQrHpF33XD
+	jisqfUSwCdyW7FYFROLE/pY7PZAKSJqw3SzG2jwh7+8aiWG/AaPP698bA+GliJP/gD7ExuwUdSzBG
+	+pibFf6GA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPLhh-000yf1-ON; Thu, 25 Mar 2021 08:50:57 +0000
-Received: from relay5-d.mail.gandi.net ([217.70.183.197])
+	id 1lPMFr-0014zj-Lo; Thu, 25 Mar 2021 09:26:15 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPLfm-000yVd-9A
- for linux-rockchip@lists.infradead.org; Thu, 25 Mar 2021 08:49:28 +0000
-X-Originating-IP: 90.65.108.55
-Received: from localhost (lfbn-lyo-1-1676-55.w90-65.abo.wanadoo.fr
- [90.65.108.55]) (Authenticated sender: alexandre.belloni@bootlin.com)
- by relay5-d.mail.gandi.net (Postfix) with ESMTPSA id 470BB1C0006;
- Thu, 25 Mar 2021 08:48:46 +0000 (UTC)
-Date: Thu, 25 Mar 2021 09:48:46 +0100
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: Nicolas Ferre <nicolas.ferre@microchip.com>
-Cc: Emil Velikov <emil.l.velikov@gmail.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- devicetree <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org,
- linux-rockchip <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v2 00/10] Microship SAMA5D4 VPU support et al
-Message-ID: <YFxObibxqK23WTMf@piout.net>
-References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
- <5ecf1d3b8a8f88d6387a1549faeb4f4180cf5d4b.camel@collabora.com>
- <CACvgo51uNyQgzGdW=f-0wxvjv-+OD1p7E4DJXRzu1GvnAHbcCQ@mail.gmail.com>
- <50b3b4b3-6c5b-3f1e-3499-c88574ce9f74@microchip.com>
+ id 1lPM7E-0013as-Ng
+ for linux-rockchip@lists.infradead.org; Thu, 25 Mar 2021 09:17:51 +0000
+Received: by mail-lj1-x234.google.com with SMTP id s17so2199852ljc.5
+ for <linux-rockchip@lists.infradead.org>; Thu, 25 Mar 2021 02:17:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xtgWxHl1jBWFbgD+kv6AqSAbbwppmDLPyH8H5SEmUxY=;
+ b=WYB7Cc3r/N8toO5HEXS4WvgZdy7e4DisDnlKJSVDlcwRznNZr3R/C2SKilRf8Rq4gj
+ XHXoF+BOQkpgxnV2TcAs34RQwe1fA8xFgqxIpMXhF1+dsrccNXqaAz7GzmHsHMqSuDy3
+ IXW8OETtw3Ehwes1LhfsJ1pwTAGJMfokwcUPGs2r4AoSlCaNeP7qxiXwSyUZ977FKt14
+ SnqDCSgG3EDkOi51SUY8P3o6l2L4JU9POOt3xCt0GpVmKeJhSjh7XbSP41jy75enhdr0
+ k1oVi8IQoNFyb7OQVJ61YCvuwnuO1P9bmHBFL7i0EbBDWR9UTS/lw7+hy0kdy5U5A8jq
+ TcAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xtgWxHl1jBWFbgD+kv6AqSAbbwppmDLPyH8H5SEmUxY=;
+ b=DI6PuCxVL36Bgyv1kJb/fi/kqx9PV+/PAyHOdENbpwLo7nd4mi6R17Dz11W04s600G
+ 2/P9zJYMszCle5kW0pBNtGwmqumBgs2nD+OzRmx7dZBMsImTlWvRH1RgM3mDYM/K2uss
+ q86puvxO97lsehd0U3Zg/T/5VmM40GNO/3NjW6ss3houcYkBGIAZ1JK1NYegu3hNMMHu
+ UOsvcPsFITJSd0QSIVdXHTNehiNK9BToZyaJ+0DjDNnzyAPNKR0iL7QiSiv0jcLO0u7t
+ qbld1He1oftfZ7HEfvSRo4xiwVUVg+oavITjQ5Bh++5acvKinL7QsFls14LEAaGIS3nw
+ qUQA==
+X-Gm-Message-State: AOAM531T2zJxEJHUb6ZC1EJlWBed9QCLUdRm78DU3hzb+FtYX05shMvf
+ v1LbdnwSznrrVaf0oT19IMOlvnWHDNdf95zsaPeDeA==
+X-Google-Smtp-Source: ABdhPJztjGrwBtJbNrrNxBR/yEEBoi4BB8Tjr78VRoOeWtyAz1JU3+GYgpMwR4+Idq17mB80FNZQyb4r6pcliq6jXLo=
+X-Received: by 2002:a2e:1649:: with SMTP id 9mr5210204ljw.74.1616663840040;
+ Thu, 25 Mar 2021 02:17:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <50b3b4b3-6c5b-3f1e-3499-c88574ce9f74@microchip.com>
+References: <20210316134059.2377081-1-geert+renesas@glider.be>
+In-Reply-To: <20210316134059.2377081-1-geert+renesas@glider.be>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 25 Mar 2021 10:17:09 +0100
+Message-ID: <CACRpkdZFqQd=g9u907LndbqNMYLnnAN-M5HRotbw5CU0EG0NDg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: PINCTRL_ROCKCHIP should depend on ARCH_ROCKCHIP
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210325_084926_294760_EE303BB5 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210325_091749_393120_CA364331 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,22 +96,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 24/03/2021 14:44:14+0100, Nicolas Ferre wrote:
-> Now, when we have the tag from Rob, how to coordinate these different
-> pieces? Will it go through the media git tree? Will we benefit from a stable
-> branch to share or will we just have to wait for the driver to hit Mainline
-> before adding the defconfig and DT patches?
-> 
+On Tue, Mar 16, 2021 at 2:41 PM Geert Uytterhoeven
+<geert+renesas@glider.be> wrote:
 
-I think the defconfig and dt patches can go through at91 as soon as we
-get Rob's ack. There is no build dependency so it can be taken at any
-time. Worst case, we end up with a selected config option that doesn't
-exist.
+> The Rockchip GPIO and pin control modules are only present on Rockchip
+> SoCs.  Hence add a dependency on ARCH_ROCKCHIP, to prevent asking the
+> user about this driver when configuring a kernel without Rockchip
+> platform support.
+>
+> Note that before, the PINCTRL_ROCKCHIP symbol was not visible, and
+> automatically selected when needed.  By making it tristate and
+> user-selectable, it became visible for everyone.
+>
+> Fixes: be786ac5a6c4bf4e ("pinctrl: rockchip: make driver be tristate module")
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Patch applied.
+
+I saw this was causing issues on S390.
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
