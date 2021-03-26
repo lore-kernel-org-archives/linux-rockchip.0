@@ -2,91 +2,62 @@ Return-Path: <SRS0=Z0ts=IY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9823EC433C1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0354AC433E1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:49:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA46A61A1E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:43:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA46A61A1E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id DFF3B61A45
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:49:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFF3B61A45
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LcMMJtNiv7GTiXOmYzNoxSQ29dCkxv6iTXE/gE6CLLM=; b=CtQVMRXJBCYtoFL/1yjA1muef
-	apWdHEfCjbzYtLODBz/VT05GtRgla3RDlALuayEJ2mCpnKIe+Wh122wT3SBB1voLBUPa5l3IJ0xYD
-	AqsQa92ItU4iFx/CbFEK8+mUKj6oGo8WbU640dmgapKFfVkumiWCG37VTEFlZ6NafDpYU77SE54UK
-	woIKuQzeW5XUS1A8ShftUqndqJx0X4MXIDeskykrymxXtiv70AvdP7dW87PSdvilMwlTZWwlDKbvN
-	yA3gkJB1qi3a6ALW6MjVbWmYqUcYTtesbVv47CVVLZedW5WyPidAnLz1mXL9DM6S7uizk66Y8oKTi
-	f1gKVhwqQ==;
+	 bh=FoqKH6XBiNoJqmEmoakwXVHnPtOgTCydlepEsnyMQU8=; b=O7syHIny7UlYevCHgkqHe11sI
+	pMEaWDiNjTfLPt12DoXYd71dGt3wjP+OB1AaHajJ8UaOH6i2EvrkTlDDnFBjeK3DEcPJGDawQz6ss
+	lfpZWFCQ6ka8ylQmCjxl2ZHOeyg+fOvzN+rZDo1magXbX1ccMe4mygtChfthVCQsDEiRrf6XTGy/H
+	L4UXd4QmrWPQwuF7eT6m1EqlbcFbZQdl35mq9Y23pzk1wN0grusvmTXGoN4TbIs1/0pHRigItPBbO
+	nKDvmbaXp0lWMqEn/YRmhTWHS9TGKqDYo6ZkWwZU+jOx3gfopgApQwO/PGzfLtSId5NXmc7S6Nqbw
+	Ut4uM7K2w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPizd-003CKa-7i; Fri, 26 Mar 2021 09:43:01 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1lPj61-003EAA-9s; Fri, 26 Mar 2021 09:49:37 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPiz0-003C30-3X; Fri, 26 Mar 2021 09:42:25 +0000
-Received: by mail-ot1-x336.google.com with SMTP id
- g8-20020a9d6c480000b02901b65ca2432cso4672017otq.3; 
- Fri, 26 Mar 2021 02:42:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ISnIxxZGPH2fmdCzXOS225MJa1eOPQxxHvjF0Ltvtzw=;
- b=cZ2+8TbfOQVPhZNbRGeM5Bfn0tcmSayXAhROI/+HzPy3MAGQvIcUH9gUB+cQ8iD+X9
- UStOeoPmq77LIqCxDe2oqdy4CMyZLr/A6cAEHl4xiyy/iNym11DR/rIWrcwTH0NAVYUC
- 0pC0fVxP5KJLIy4Ia0aAFgtm5HQkFJYHnNPJbiqkl8wy7UuOXtfx6RIV+Dbt6+gI3kdR
- q1UPo6P9oEd4RiqAb52zAAnrwWk0tFf05VlxGWKh5DsKE4TakDp1ViL+Y0i88wq85LVQ
- DubPOXcBpEh7JCVY9LuD8o6aYQQHQoqTbT+Mh9qxvGxHyhZ1zQowR7VfQmQB8+O22cz6
- DCrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ISnIxxZGPH2fmdCzXOS225MJa1eOPQxxHvjF0Ltvtzw=;
- b=SMj6Os0uiyMjGT90Sc0lSHuWsXx2OeThpR8POpI43Vulj68IXFj77pp3pkdDIunpBo
- K5LSWYI3p0cwm8ybekdB7M0+2Py/zrbMFF2GhahrO+RvpRrUf+2MMJ9sRSI6PVq1hUIb
- c15k3xYwzZ0BthyC+nlwXnC2gJsN+8yX6wK+8ulZpFUetTnG+CKDqKqBU8JmLRM4QtmA
- mvRwsf0By2sTLaK6OOW47mRZibjbPRPyn3o/F/poScP4J9JROb2LbbdVyxgnGOTLdCu/
- UIjIGWM9JZ7BKyORcpw2E5Eh/qvaGr5b0Kd0OalcAtJolYKsQuvJ9bm8zyCUCOt/rn+E
- nfNQ==
-X-Gm-Message-State: AOAM532AkaUaj+tys3epZIAtB2WleQ+mu5+YQDCEMmF2boCVs1x/xw33
- SqmJv6Ae06nB4PJbTV3KJqtKDv/VfK3iqIepwaqCokwF9O8ahw==
-X-Google-Smtp-Source: ABdhPJx/Z5l80IEc8JhwiDQ9bZ2JWj1MwThGz8CRMbrg0MVp0Tmm9jpUZxyrS6hPv3OM5jbQ1unZd473TMcDNNQKJcE=
-X-Received: by 2002:a9d:7b4e:: with SMTP id f14mr11299971oto.281.1616751740814; 
- Fri, 26 Mar 2021 02:42:20 -0700 (PDT)
-MIME-Version: 1.0
+ id 1lPj5b-003E5V-W1; Fri, 26 Mar 2021 09:49:16 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lPj5a-0002pi-2v; Fri, 26 Mar 2021 10:49:10 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: robh+dt@kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
+ tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
+ Elaine Zhang <zhangqing@rock-chips.com>
+Subject: Re: [PATCH v5 07/11] soc: rockchip: pm-domains: Add a meaningful
+ power domain name
+Date: Fri, 26 Mar 2021 10:49:07 +0100
+Message-ID: <8751177.CDJkKcVGEf@diego>
+In-Reply-To: <20210326091739.12584-1-zhangqing@rock-chips.com>
 References: <20210326091547.12375-1-zhangqing@rock-chips.com>
- <20210326091726.12531-1-zhangqing@rock-chips.com>
-In-Reply-To: <20210326091726.12531-1-zhangqing@rock-chips.com>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Fri, 26 Mar 2021 10:42:07 +0100
-Message-ID: <CAFqH_51sGjbyVLoPxTRby50uvWinX=2TVX3hK8KB_t71F-RyjA@mail.gmail.com>
-Subject: Re: [PATCH v5 06/11] arm64: dts: rockchip: Fix power-controller node
- names for rk3399
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, cl@rock-chips.com,
- huangtao@rock-chips.com, 
- kever.yang@rock-chips.com, tony.xie@rock-chips.com, 
- finley.xiao@rock-chips.com
+ <20210326091739.12584-1-zhangqing@rock-chips.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_094222_519342_E0D03EF6 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20210326_094912_364611_786D14C7 
+X-CRM114-Status: GOOD (  18.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,165 +70,466 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TWlzc2F0Z2UgZGUgRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+IGRlbCBk
-aWEgZHYuLCAyNiBkZQptYXLDpyAyMDIxIGEgbGVzIDEwOjE4Ogo+Cj4gVXNlIG1vcmUgZ2VuZXJp
-YyBuYW1lcyAoYXMgcmVjb21tZW5kZWQgaW4gdGhlIGRldmljZSB0cmVlIHNwZWNpZmljYXRpb24K
-PiBvciB0aGUgYmluZGluZyBkb2N1bWVudGF0aW9uKQo+Cj4gU2lnbmVkLW9mZi1ieTogRWxhaW5l
-IFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CgpSZXZpZXdlZC1ieTogRW5yaWMgQmFs
-bGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KCj4gLS0tCj4gIGFy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LmR0c2kgfCA0MCArKysrKysrKysrKyst
-LS0tLS0tLS0tLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIwIGluc2VydGlvbnMoKyksIDIwIGRlbGV0
-aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-Mzk5LmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpCj4gaW5k
-ZXggZWRiYmYzNWZlMTllLi4xNDJmNTU5M2Q0OGIgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaQo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzk5LmR0c2kKPiBAQCAtOTcxLDI2ICs5NzEsMjYgQEAKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAjc2l6ZS1jZWxscyA9IDwwPjsKPgo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgIC8qIFRoZXNlIHBvd2VyIGRvbWFpbnMgYXJlIGdyb3VwZWQgYnkgVkRfQ0VOVEVSICovCj4g
-LSAgICAgICAgICAgICAgICAgICAgICAgcGRfaWVwQFJLMzM5OV9QRF9JRVAgewo+ICsgICAgICAg
-ICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlfUERfSUVQIHsKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfSUVQPjsKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfSUVQPiwKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfSUVQPjsKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX2llcD47Cj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgICAgICAgICBwZF9yZ2FAUksz
-Mzk5X1BEX1JHQSB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG93ZXItZG9tYWluQFJLMzM5
-OV9QRF9SR0Egewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5
-OV9QRF9SR0E+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZj
-cnUgQUNMS19SR0E+LAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-PCZjcnUgSENMS19SR0E+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcG1fcW9z
-ID0gPCZxb3NfcmdhX3I+LAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgPCZxb3NfcmdhX3c+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAg
-ICAgICAgICAgICAgICAgcGRfdmNvZGVjQFJLMzM5OV9QRF9WQ09ERUMgewo+ICsgICAgICAgICAg
-ICAgICAgICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlfUERfVkNPREVDIHsKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVkNPREVDPjsKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfVkNPREVDPiwKPiAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmY3J1IEhDTEtfVkNPREVD
-PjsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX3ZpZGVv
-X20wPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICAgICAg
-ICAgIHBkX3ZkdUBSSzMzOTlfUERfVkRVIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBwb3dl
-ci1kb21haW5AUkszMzk5X1BEX1ZEVSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICByZWcgPSA8UkszMzk5X1BEX1ZEVT47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBjbG9ja3MgPSA8JmNydSBBQ0xLX1ZEVT4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICA8JmNydSBIQ0xLX1ZEVT47Cj4gQEAgLTk5OSw5NCArOTk5LDk0IEBACj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgfTsKPgo+ICAgICAgICAgICAgICAgICAgICAgICAgIC8q
-IFRoZXNlIHBvd2VyIGRvbWFpbnMgYXJlIGdyb3VwZWQgYnkgVkRfR1BVICovCj4gLSAgICAgICAg
-ICAgICAgICAgICAgICAgcGRfZ3B1QFJLMzM5OV9QRF9HUFUgewo+ICsgICAgICAgICAgICAgICAg
-ICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlfUERfR1BVIHsKPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfR1BVPjsKPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfR1BVPjsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX2dwdT47Cj4gICAgICAgICAgICAgICAgICAg
-ICAgICAgfTsKPgo+ICAgICAgICAgICAgICAgICAgICAgICAgIC8qIFRoZXNlIHBvd2VyIGRvbWFp
-bnMgYXJlIGdyb3VwZWQgYnkgVkRfTE9HSUMgKi8KPiAtICAgICAgICAgICAgICAgICAgICAgICBw
-ZF9lZHBAUkszMzk5X1BEX0VEUCB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG93ZXItZG9t
-YWluQFJLMzM5OV9QRF9FRFAgewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVn
-ID0gPFJLMzM5OV9QRF9FRFA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xv
-Y2tzID0gPCZjcnUgUENMS19FRFBfQ1RSTD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgfTsK
-PiAtICAgICAgICAgICAgICAgICAgICAgICBwZF9lbW1jQFJLMzM5OV9QRF9FTU1DIHsKPiArICAg
-ICAgICAgICAgICAgICAgICAgICBwb3dlci1kb21haW5AUkszMzk5X1BEX0VNTUMgewo+ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9FTU1DPjsKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFDTEtfRU1NQz47Cj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc19lbW1jPjsKPiAg
-ICAgICAgICAgICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBkX2dt
-YWNAUkszMzk5X1BEX0dNQUMgewo+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFp
-bkBSSzMzOTlfUERfR01BQyB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcg
-PSA8UkszMzk5X1BEX0dNQUM+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xv
-Y2tzID0gPCZjcnUgQUNMS19HTUFDPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIDwmY3J1IFBDTEtfR01BQz47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBwbV9xb3MgPSA8JnFvc19nbWFjPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+
-IC0gICAgICAgICAgICAgICAgICAgICAgIHBkX3NkQFJLMzM5OV9QRF9TRCB7Cj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgcG93ZXItZG9tYWluQFJLMzM5OV9QRF9TRCB7Cj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICByZWcgPSA8UkszMzk5X1BEX1NEPjsKPiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEhDTEtfU0RNTUM+LAo+ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgU0NMS19TRE1NQz47Cj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc19zZD47Cj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgICAgICAgICBwZF9zZGlvYXVk
-aW9AUkszMzk5X1BEX1NESU9BVURJTyB7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgcG93ZXIt
-ZG9tYWluQFJLMzM5OV9QRF9TRElPQVVESU8gewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgcmVnID0gPFJLMzM5OV9QRF9TRElPQVVESU8+Owo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgSENMS19TRElPPjsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX3NkaW9hdWRpbz47Cj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgICAgICAgICBwZF90Y3BjMEBSSzMzOTlf
-UERfVENQRDAgewo+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlf
-UERfVENQRDAgewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5
-OV9QRF9UQ1BEMD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8
-JmNydSBTQ0xLX1VQSFkwX1RDUERDT1JFPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIDwmY3J1IFNDTEtfVVBIWTBfVENQRFBIWV9SRUY+Owo+ICAgICAgICAgICAg
-ICAgICAgICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgcGRfdGNwYzFAUkszMzk5
-X1BEX1RDUEQxIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBwb3dlci1kb21haW5AUkszMzk5
-X1BEX1RDUEQxIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMz
-OTlfUERfVENQRDE+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0g
-PCZjcnUgU0NMS19VUEhZMV9UQ1BEQ09SRT4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICA8JmNydSBTQ0xLX1VQSFkxX1RDUERQSFlfUkVGPjsKPiAgICAgICAgICAg
-ICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBkX3VzYjNAUkszMzk5
-X1BEX1VTQjMgewo+ICsgICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlf
-UERfVVNCMyB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8UkszMzk5
-X1BEX1VTQjM+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZj
-cnUgQUNMS19VU0IzPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9
-IDwmcW9zX3VzYl9vdGcwPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDwmcW9zX3VzYl9vdGcxPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+IC0gICAg
-ICAgICAgICAgICAgICAgICAgIHBkX3Zpb0BSSzMzOTlfUERfVklPIHsKPiArICAgICAgICAgICAg
-ICAgICAgICAgICBwb3dlci1kb21haW5AUkszMzk5X1BEX1ZJTyB7Cj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICByZWcgPSA8UkszMzk5X1BEX1ZJTz47Cj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICNzaXplLWNlbGxzID0gPDA+Owo+Cj4gLSAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBwZF9oZGNwQFJLMzM5OV9QRF9IRENQIHsKPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbkBSSzMzOTlfUERfSERDUCB7Cj4gICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfSERDUD47Cj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEFD
-TEtfSERDUD4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDwmY3J1IEhDTEtfSERDUD4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIDwmY3J1IFBDTEtfSERDUD47Cj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHBtX3FvcyA9IDwmcW9zX2hkY3A+Owo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBk
-X2lzcDBAUkszMzk5X1BEX0lTUDAgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cG93ZXItZG9tYWluQFJLMzM5OV9QRF9JU1AwIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9JU1AwPjsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19JU1AwPiwKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19J
-U1AwPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0g
-PCZxb3NfaXNwMF9tMD4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIDwmcW9zX2lzcDBfbTE+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgfTsKPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBkX2lzcDFAUkszMzk5X1BE
-X0lTUDEgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcG93ZXItZG9tYWluQFJL
-MzM5OV9QRF9JU1AxIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-cmVnID0gPFJLMzM5OV9QRF9JU1AxPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgY2xvY2tzID0gPCZjcnUgQUNMS19JU1AxPiwKPiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19JU1AxPjsKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcG1fcW9zID0gPCZxb3NfaXNwMV9tMD4s
-Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmcW9z
-X2lzcDFfbTE+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHBkX3ZvQFJLMzM5OV9QRF9WTyB7Cj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBwb3dlci1kb21haW5AUkszMzk5X1BEX1ZPIHsKPiAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPFJLMzM5OV9QRF9WTz47
-Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICNhZGRyZXNzLWNlbGxz
-ID0gPDE+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjc2l6ZS1j
-ZWxscyA9IDwwPjsKPgo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBw
-ZF92b3BiQFJLMzM5OV9QRF9WT1BCIHsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgcG93ZXItZG9tYWluQFJLMzM5OV9QRF9WT1BCIHsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWcgPSA8UkszMzk5X1BEX1ZPUEI+Owo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9
-IDwmY3J1IEFDTEtfVk9QMD4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgPCZjcnUgSENMS19WT1AwPjsKPiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbV9xb3MgPSA8JnFvc192b3BfYmlnX3I+
-LAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIDwmcW9zX3ZvcF9iaWdfdz47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHBkX3Zv
-cGxAUkszMzk5X1BEX1ZPUEwgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBwb3dlci1kb21haW5AUkszMzk5X1BEX1ZPUEwgewo+ICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDxSSzMzOTlfUERfVk9QTD47Cj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZj
-cnUgQUNMS19WT1AxPiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICA8JmNydSBIQ0xLX1ZPUDE+Owo+IC0tCj4gMi4xNy4xCj4KPgo+Cj4K
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Elaine,
+
+Am Freitag, 26. M=E4rz 2021, 10:17:39 CET schrieb Elaine Zhang:
+> Add the power domains names to the power domain info struct so we
+> have meaningful name for every power domain.
+> =
+
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+
+I like that approach very much, there is one tiny comment below.
+
+> ---
+>  drivers/soc/rockchip/pm_domains.c | 217 +++++++++++++++---------------
+>  1 file changed, 112 insertions(+), 105 deletions(-)
+> =
+
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_=
+domains.c
+> index 54eb6cfc5d5b..d661d967079f 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -29,6 +29,7 @@
+>  #include <dt-bindings/power/rk3399-power.h>
+>  =
+
+>  struct rockchip_domain_info {
+> +	const char *name;
+>  	int pwr_mask;
+>  	int status_mask;
+>  	int req_mask;
+> @@ -85,8 +86,9 @@ struct rockchip_pmu {
+>  =
+
+>  #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain,=
+ genpd)
+>  =
+
+> -#define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
+> +#define DOMAIN(_name, pwr, status, req, idle, ack, wakeup)	\
+>  {							\
+> +	.name =3D _name,				\
+>  	.pwr_mask =3D (pwr),				\
+>  	.status_mask =3D (status),			\
+>  	.req_mask =3D (req),				\
+> @@ -95,8 +97,9 @@ struct rockchip_pmu {
+>  	.active_wakeup =3D (wakeup),			\
+>  }
+>  =
+
+> -#define DOMAIN_M(pwr, status, req, idle, ack, wakeup)	\
+> +#define DOMAIN_M(_name, pwr, status, req, idle, ack, wakeup)	\
+>  {							\
+> +	.name =3D _name,				\
+>  	.pwr_w_mask =3D (pwr) << 16,			\
+>  	.pwr_mask =3D (pwr),				\
+>  	.status_mask =3D (status),			\
+> @@ -107,8 +110,9 @@ struct rockchip_pmu {
+>  	.active_wakeup =3D wakeup,			\
+>  }
+>  =
+
+> -#define DOMAIN_RK3036(req, ack, idle, wakeup)		\
+> +#define DOMAIN_RK3036(_name, req, ack, idle, wakeup)		\
+>  {							\
+> +	.name =3D _name,				\
+>  	.req_mask =3D (req),				\
+>  	.req_w_mask =3D (req) << 16,			\
+>  	.ack_mask =3D (ack),				\
+> @@ -119,17 +123,17 @@ struct rockchip_pmu {
+>  #define DOMAIN_PX30(pwr, status, req, wakeup)		\
+>  	DOMAIN_M(pwr, status, req, (req) << 16, req, wakeup)
+>  =
+
+> -#define DOMAIN_RK3288(pwr, status, req, wakeup)		\
+> -	DOMAIN(pwr, status, req, req, (req) << 16, wakeup)
+> +#define DOMAIN_RK3288(name, pwr, status, req, wakeup)		\
+> +	DOMAIN(name, pwr, status, req, req, (req) << 16, wakeup)
+>  =
+
+> -#define DOMAIN_RK3328(pwr, status, req, wakeup)		\
+> -	DOMAIN_M(pwr, pwr, req, (req) << 10, req, wakeup)
+> +#define DOMAIN_RK3328(name, pwr, status, req, wakeup)		\
+> +	DOMAIN_M(name, pwr, pwr, req, (req) << 10, req, wakeup)
+>  =
+
+> -#define DOMAIN_RK3368(pwr, status, req, wakeup)		\
+> -	DOMAIN(pwr, status, req, (req) << 16, req, wakeup)
+> +#define DOMAIN_RK3368(name, pwr, status, req, wakeup)		\
+> +	DOMAIN(name, pwr, status, req, (req) << 16, req, wakeup)
+>  =
+
+> -#define DOMAIN_RK3399(pwr, status, req, wakeup)		\
+> -	DOMAIN(pwr, status, req, req, req, wakeup)
+> +#define DOMAIN_RK3399(name, pwr, status, req, wakeup)		\
+> +	DOMAIN(name, pwr, status, req, req, req, wakeup)
+>  =
+
+>  static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
+>  {
+> @@ -490,7 +494,10 @@ static int rockchip_pm_add_one_domain(struct rockchi=
+p_pmu *pmu,
+>  		goto err_unprepare_clocks;
+>  	}
+>  =
+
+> -	pd->genpd.name =3D node->name;
+> +	if (!pd->info->name)
+> +		pd->genpd.name =3D node->name;
+
+I guess we should make that "node->full_name" perhaps?
+And I guess it might be nicer to swap the cases
+
+if (pd->info->name)
+	pd->genpd.name =3D pd->info->name
+else
+	pd->genpd.name =3D node->full_name;
+
+for easier readability
+
+
+Heiko
+
+> +	else
+> +		pd->genpd.name =3D pd->info->name;
+>  	pd->genpd.power_off =3D rockchip_pd_power_off;
+>  	pd->genpd.power_on =3D rockchip_pd_power_on;
+>  	pd->genpd.attach_dev =3D rockchip_pd_attach_dev;
+> @@ -716,129 +723,129 @@ static int rockchip_pm_domain_probe(struct platfo=
+rm_device *pdev)
+>  }
+>  =
+
+>  static const struct rockchip_domain_info px30_pm_domains[] =3D {
+> -	[PX30_PD_USB]		=3D DOMAIN_PX30(BIT(5),  BIT(5),  BIT(10), false),
+> -	[PX30_PD_SDCARD]	=3D DOMAIN_PX30(BIT(8),  BIT(8),  BIT(9),  false),
+> -	[PX30_PD_GMAC]		=3D DOMAIN_PX30(BIT(10), BIT(10), BIT(6),  false),
+> -	[PX30_PD_MMC_NAND]	=3D DOMAIN_PX30(BIT(11), BIT(11), BIT(5),  false),
+> -	[PX30_PD_VPU]		=3D DOMAIN_PX30(BIT(12), BIT(12), BIT(14), false),
+> -	[PX30_PD_VO]		=3D DOMAIN_PX30(BIT(13), BIT(13), BIT(7),  false),
+> -	[PX30_PD_VI]		=3D DOMAIN_PX30(BIT(14), BIT(14), BIT(8),  false),
+> -	[PX30_PD_GPU]		=3D DOMAIN_PX30(BIT(15), BIT(15), BIT(2),  false),
+> +	[PX30_PD_USB]		=3D DOMAIN_PX30("usb", BIT(5),  BIT(5),  BIT(10), false),
+> +	[PX30_PD_SDCARD]	=3D DOMAIN_PX30("sdcard", BIT(8),  BIT(8),  BIT(9),  f=
+alse),
+> +	[PX30_PD_GMAC]		=3D DOMAIN_PX30("gmac", BIT(10), BIT(10), BIT(6),  fals=
+e),
+> +	[PX30_PD_MMC_NAND]	=3D DOMAIN_PX30("mmc_nand", BIT(11), BIT(11), BIT(5)=
+,  false),
+> +	[PX30_PD_VPU]		=3D DOMAIN_PX30("vpu", BIT(12), BIT(12), BIT(14), false),
+> +	[PX30_PD_VO]		=3D DOMAIN_PX30("vo", BIT(13), BIT(13), BIT(7),  false),
+> +	[PX30_PD_VI]		=3D DOMAIN_PX30("vi", BIT(14), BIT(14), BIT(8),  false),
+> +	[PX30_PD_GPU]		=3D DOMAIN_PX30("gpu", BIT(15), BIT(15), BIT(2),  false),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3036_pm_domains[] =3D {
+> -	[RK3036_PD_MSCH]	=3D DOMAIN_RK3036(BIT(14), BIT(23), BIT(30), true),
+> -	[RK3036_PD_CORE]	=3D DOMAIN_RK3036(BIT(13), BIT(17), BIT(24), false),
+> -	[RK3036_PD_PERI]	=3D DOMAIN_RK3036(BIT(12), BIT(18), BIT(25), false),
+> -	[RK3036_PD_VIO]		=3D DOMAIN_RK3036(BIT(11), BIT(19), BIT(26), false),
+> -	[RK3036_PD_VPU]		=3D DOMAIN_RK3036(BIT(10), BIT(20), BIT(27), false),
+> -	[RK3036_PD_GPU]		=3D DOMAIN_RK3036(BIT(9),  BIT(21), BIT(28), false),
+> -	[RK3036_PD_SYS]		=3D DOMAIN_RK3036(BIT(8),  BIT(22), BIT(29), false),
+> +	[RK3036_PD_MSCH]	=3D DOMAIN_RK3036("msch", BIT(14), BIT(23), BIT(30), t=
+rue),
+> +	[RK3036_PD_CORE]	=3D DOMAIN_RK3036("core", BIT(13), BIT(17), BIT(24), f=
+alse),
+> +	[RK3036_PD_PERI]	=3D DOMAIN_RK3036("peri", BIT(12), BIT(18), BIT(25), f=
+alse),
+> +	[RK3036_PD_VIO]		=3D DOMAIN_RK3036("vio", BIT(11), BIT(19), BIT(26), fa=
+lse),
+> +	[RK3036_PD_VPU]		=3D DOMAIN_RK3036("vpu", BIT(10), BIT(20), BIT(27), fa=
+lse),
+> +	[RK3036_PD_GPU]		=3D DOMAIN_RK3036("gpu", BIT(9),  BIT(21), BIT(28), fa=
+lse),
+> +	[RK3036_PD_SYS]		=3D DOMAIN_RK3036("sys", BIT(8),  BIT(22), BIT(29), fa=
+lse),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3066_pm_domains[] =3D {
+> -	[RK3066_PD_GPU]		=3D DOMAIN(BIT(9), BIT(9), BIT(3), BIT(24), BIT(29), f=
+alse),
+> -	[RK3066_PD_VIDEO]	=3D DOMAIN(BIT(8), BIT(8), BIT(4), BIT(23), BIT(28), =
+false),
+> -	[RK3066_PD_VIO]		=3D DOMAIN(BIT(7), BIT(7), BIT(5), BIT(22), BIT(27), f=
+alse),
+> -	[RK3066_PD_PERI]	=3D DOMAIN(BIT(6), BIT(6), BIT(2), BIT(25), BIT(30), f=
+alse),
+> -	[RK3066_PD_CPU]		=3D DOMAIN(0,      BIT(5), BIT(1), BIT(26), BIT(31), f=
+alse),
+> +	[RK3066_PD_GPU]		=3D DOMAIN("gpu", BIT(9), BIT(9), BIT(3), BIT(24), BIT=
+(29), false),
+> +	[RK3066_PD_VIDEO]	=3D DOMAIN("video", BIT(8), BIT(8), BIT(4), BIT(23), =
+BIT(28), false),
+> +	[RK3066_PD_VIO]		=3D DOMAIN("vio", BIT(7), BIT(7), BIT(5), BIT(22), BIT=
+(27), false),
+> +	[RK3066_PD_PERI]	=3D DOMAIN("peri", BIT(6), BIT(6), BIT(2), BIT(25), BI=
+T(30), false),
+> +	[RK3066_PD_CPU]		=3D DOMAIN("cpu", 0,      BIT(5), BIT(1), BIT(26), BIT=
+(31), false),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3128_pm_domains[] =3D {
+> -	[RK3128_PD_CORE]	=3D DOMAIN_RK3288(BIT(0), BIT(0), BIT(4), false),
+> -	[RK3128_PD_MSCH]	=3D DOMAIN_RK3288(0,      0,      BIT(6), true),
+> -	[RK3128_PD_VIO]		=3D DOMAIN_RK3288(BIT(3), BIT(3), BIT(2), false),
+> -	[RK3128_PD_VIDEO]	=3D DOMAIN_RK3288(BIT(2), BIT(2), BIT(1), false),
+> -	[RK3128_PD_GPU]		=3D DOMAIN_RK3288(BIT(1), BIT(1), BIT(3), false),
+> +	[RK3128_PD_CORE]	=3D DOMAIN_RK3288("core", BIT(0), BIT(0), BIT(4), fals=
+e),
+> +	[RK3128_PD_MSCH]	=3D DOMAIN_RK3288("msch", 0,      0,      BIT(6), true=
+),
+> +	[RK3128_PD_VIO]		=3D DOMAIN_RK3288("vio", BIT(3), BIT(3), BIT(2), false=
+),
+> +	[RK3128_PD_VIDEO]	=3D DOMAIN_RK3288("video", BIT(2), BIT(2), BIT(1), fa=
+lse),
+> +	[RK3128_PD_GPU]		=3D DOMAIN_RK3288("gpu", BIT(1), BIT(1), BIT(3), false=
+),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3188_pm_domains[] =3D {
+> -	[RK3188_PD_GPU]		=3D DOMAIN(BIT(9), BIT(9), BIT(3), BIT(24), BIT(29), f=
+alse),
+> -	[RK3188_PD_VIDEO]	=3D DOMAIN(BIT(8), BIT(8), BIT(4), BIT(23), BIT(28), =
+false),
+> -	[RK3188_PD_VIO]		=3D DOMAIN(BIT(7), BIT(7), BIT(5), BIT(22), BIT(27), f=
+alse),
+> -	[RK3188_PD_PERI]	=3D DOMAIN(BIT(6), BIT(6), BIT(2), BIT(25), BIT(30), f=
+alse),
+> -	[RK3188_PD_CPU]		=3D DOMAIN(BIT(5), BIT(5), BIT(1), BIT(26), BIT(31), f=
+alse),
+> +	[RK3188_PD_GPU]		=3D DOMAIN("gpu", BIT(9), BIT(9), BIT(3), BIT(24), BIT=
+(29), false),
+> +	[RK3188_PD_VIDEO]	=3D DOMAIN("video", BIT(8), BIT(8), BIT(4), BIT(23), =
+BIT(28), false),
+> +	[RK3188_PD_VIO]		=3D DOMAIN("vio", BIT(7), BIT(7), BIT(5), BIT(22), BIT=
+(27), false),
+> +	[RK3188_PD_PERI]	=3D DOMAIN("peri", BIT(6), BIT(6), BIT(2), BIT(25), BI=
+T(30), false),
+> +	[RK3188_PD_CPU]		=3D DOMAIN("cpu", BIT(5), BIT(5), BIT(1), BIT(26), BIT=
+(31), false),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3228_pm_domains[] =3D {
+> -	[RK3228_PD_CORE]	=3D DOMAIN_RK3036(BIT(0),  BIT(0),  BIT(16), true),
+> -	[RK3228_PD_MSCH]	=3D DOMAIN_RK3036(BIT(1),  BIT(1),  BIT(17), true),
+> -	[RK3228_PD_BUS]		=3D DOMAIN_RK3036(BIT(2),  BIT(2),  BIT(18), true),
+> -	[RK3228_PD_SYS]		=3D DOMAIN_RK3036(BIT(3),  BIT(3),  BIT(19), true),
+> -	[RK3228_PD_VIO]		=3D DOMAIN_RK3036(BIT(4),  BIT(4),  BIT(20), false),
+> -	[RK3228_PD_VOP]		=3D DOMAIN_RK3036(BIT(5),  BIT(5),  BIT(21), false),
+> -	[RK3228_PD_VPU]		=3D DOMAIN_RK3036(BIT(6),  BIT(6),  BIT(22), false),
+> -	[RK3228_PD_RKVDEC]	=3D DOMAIN_RK3036(BIT(7),  BIT(7),  BIT(23), false),
+> -	[RK3228_PD_GPU]		=3D DOMAIN_RK3036(BIT(8),  BIT(8),  BIT(24), false),
+> -	[RK3228_PD_PERI]	=3D DOMAIN_RK3036(BIT(9),  BIT(9),  BIT(25), true),
+> -	[RK3228_PD_GMAC]	=3D DOMAIN_RK3036(BIT(10), BIT(10), BIT(26), false),
+> +	[RK3228_PD_CORE]	=3D DOMAIN_RK3036("core", BIT(0),  BIT(0),  BIT(16), t=
+rue),
+> +	[RK3228_PD_MSCH]	=3D DOMAIN_RK3036("msch", BIT(1),  BIT(1),  BIT(17), t=
+rue),
+> +	[RK3228_PD_BUS]		=3D DOMAIN_RK3036("bus", BIT(2),  BIT(2),  BIT(18), tr=
+ue),
+> +	[RK3228_PD_SYS]		=3D DOMAIN_RK3036("sys", BIT(3),  BIT(3),  BIT(19), tr=
+ue),
+> +	[RK3228_PD_VIO]		=3D DOMAIN_RK3036("vio", BIT(4),  BIT(4),  BIT(20), fa=
+lse),
+> +	[RK3228_PD_VOP]		=3D DOMAIN_RK3036("vop", BIT(5),  BIT(5),  BIT(21), fa=
+lse),
+> +	[RK3228_PD_VPU]		=3D DOMAIN_RK3036("vpu", BIT(6),  BIT(6),  BIT(22), fa=
+lse),
+> +	[RK3228_PD_RKVDEC]	=3D DOMAIN_RK3036("vdec", BIT(7),  BIT(7),  BIT(23),=
+ false),
+> +	[RK3228_PD_GPU]		=3D DOMAIN_RK3036("gpu", BIT(8),  BIT(8),  BIT(24), fa=
+lse),
+> +	[RK3228_PD_PERI]	=3D DOMAIN_RK3036("peri", BIT(9),  BIT(9),  BIT(25), t=
+rue),
+> +	[RK3228_PD_GMAC]	=3D DOMAIN_RK3036("gmac", BIT(10), BIT(10), BIT(26), f=
+alse),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3288_pm_domains[] =3D {
+> -	[RK3288_PD_VIO]		=3D DOMAIN_RK3288(BIT(7),  BIT(7),  BIT(4), false),
+> -	[RK3288_PD_HEVC]	=3D DOMAIN_RK3288(BIT(14), BIT(10), BIT(9), false),
+> -	[RK3288_PD_VIDEO]	=3D DOMAIN_RK3288(BIT(8),  BIT(8),  BIT(3), false),
+> -	[RK3288_PD_GPU]		=3D DOMAIN_RK3288(BIT(9),  BIT(9),  BIT(2), false),
+> +	[RK3288_PD_VIO]		=3D DOMAIN_RK3288("vio", BIT(7),  BIT(7),  BIT(4), fal=
+se),
+> +	[RK3288_PD_HEVC]	=3D DOMAIN_RK3288("hevc", BIT(14), BIT(10), BIT(9), fa=
+lse),
+> +	[RK3288_PD_VIDEO]	=3D DOMAIN_RK3288("video", BIT(8),  BIT(8),  BIT(3), =
+false),
+> +	[RK3288_PD_GPU]		=3D DOMAIN_RK3288("gpu", BIT(9),  BIT(9),  BIT(2), fal=
+se),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3328_pm_domains[] =3D {
+> -	[RK3328_PD_CORE]	=3D DOMAIN_RK3328(0, BIT(0), BIT(0), false),
+> -	[RK3328_PD_GPU]		=3D DOMAIN_RK3328(0, BIT(1), BIT(1), false),
+> -	[RK3328_PD_BUS]		=3D DOMAIN_RK3328(0, BIT(2), BIT(2), true),
+> -	[RK3328_PD_MSCH]	=3D DOMAIN_RK3328(0, BIT(3), BIT(3), true),
+> -	[RK3328_PD_PERI]	=3D DOMAIN_RK3328(0, BIT(4), BIT(4), true),
+> -	[RK3328_PD_VIDEO]	=3D DOMAIN_RK3328(0, BIT(5), BIT(5), false),
+> -	[RK3328_PD_HEVC]	=3D DOMAIN_RK3328(0, BIT(6), BIT(6), false),
+> -	[RK3328_PD_VIO]		=3D DOMAIN_RK3328(0, BIT(8), BIT(8), false),
+> -	[RK3328_PD_VPU]		=3D DOMAIN_RK3328(0, BIT(9), BIT(9), false),
+> +	[RK3328_PD_CORE]	=3D DOMAIN_RK3328("core", 0, BIT(0), BIT(0), false),
+> +	[RK3328_PD_GPU]		=3D DOMAIN_RK3328("gpu", 0, BIT(1), BIT(1), false),
+> +	[RK3328_PD_BUS]		=3D DOMAIN_RK3328("bus", 0, BIT(2), BIT(2), true),
+> +	[RK3328_PD_MSCH]	=3D DOMAIN_RK3328("msch", 0, BIT(3), BIT(3), true),
+> +	[RK3328_PD_PERI]	=3D DOMAIN_RK3328("peri", 0, BIT(4), BIT(4), true),
+> +	[RK3328_PD_VIDEO]	=3D DOMAIN_RK3328("video", 0, BIT(5), BIT(5), false),
+> +	[RK3328_PD_HEVC]	=3D DOMAIN_RK3328("hevc", 0, BIT(6), BIT(6), false),
+> +	[RK3328_PD_VIO]		=3D DOMAIN_RK3328("vio", 0, BIT(8), BIT(8), false),
+> +	[RK3328_PD_VPU]		=3D DOMAIN_RK3328("vpu", 0, BIT(9), BIT(9), false),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3366_pm_domains[] =3D {
+> -	[RK3366_PD_PERI]	=3D DOMAIN_RK3368(BIT(10), BIT(10), BIT(6), true),
+> -	[RK3366_PD_VIO]		=3D DOMAIN_RK3368(BIT(14), BIT(14), BIT(8), false),
+> -	[RK3366_PD_VIDEO]	=3D DOMAIN_RK3368(BIT(13), BIT(13), BIT(7), false),
+> -	[RK3366_PD_RKVDEC]	=3D DOMAIN_RK3368(BIT(11), BIT(11), BIT(7), false),
+> -	[RK3366_PD_WIFIBT]	=3D DOMAIN_RK3368(BIT(8),  BIT(8),  BIT(9), false),
+> -	[RK3366_PD_VPU]		=3D DOMAIN_RK3368(BIT(12), BIT(12), BIT(7), false),
+> -	[RK3366_PD_GPU]		=3D DOMAIN_RK3368(BIT(15), BIT(15), BIT(2), false),
+> +	[RK3366_PD_PERI]	=3D DOMAIN_RK3368("peri", BIT(10), BIT(10), BIT(6), tr=
+ue),
+> +	[RK3366_PD_VIO]		=3D DOMAIN_RK3368("vio", BIT(14), BIT(14), BIT(8), fal=
+se),
+> +	[RK3366_PD_VIDEO]	=3D DOMAIN_RK3368("video", BIT(13), BIT(13), BIT(7), =
+false),
+> +	[RK3366_PD_RKVDEC]	=3D DOMAIN_RK3368("vdec", BIT(11), BIT(11), BIT(7), =
+false),
+> +	[RK3366_PD_WIFIBT]	=3D DOMAIN_RK3368("wifibt", BIT(8),  BIT(8),  BIT(9)=
+, false),
+> +	[RK3366_PD_VPU]		=3D DOMAIN_RK3368("vpu", BIT(12), BIT(12), BIT(7), fal=
+se),
+> +	[RK3366_PD_GPU]		=3D DOMAIN_RK3368("gpu", BIT(15), BIT(15), BIT(2), fal=
+se),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3368_pm_domains[] =3D {
+> -	[RK3368_PD_PERI]	=3D DOMAIN_RK3368(BIT(13), BIT(12), BIT(6), true),
+> -	[RK3368_PD_VIO]		=3D DOMAIN_RK3368(BIT(15), BIT(14), BIT(8), false),
+> -	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368(BIT(14), BIT(13), BIT(7), false),
+> -	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368(BIT(16), BIT(15), BIT(2), false),
+> -	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368(BIT(17), BIT(16), BIT(2), false),
+> +	[RK3368_PD_PERI]	=3D DOMAIN_RK3368("peri", BIT(13), BIT(12), BIT(6), tr=
+ue),
+> +	[RK3368_PD_VIO]		=3D DOMAIN_RK3368("vio", BIT(15), BIT(14), BIT(8), fal=
+se),
+> +	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368("video", BIT(14), BIT(13), BIT(7), =
+false),
+> +	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368("gpu_0", BIT(16), BIT(15), BIT(2), =
+false),
+> +	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368("gpu_1", BIT(17), BIT(16), BIT(2), =
+false),
+>  };
+>  =
+
+>  static const struct rockchip_domain_info rk3399_pm_domains[] =3D {
+> -	[RK3399_PD_TCPD0]	=3D DOMAIN_RK3399(BIT(8),  BIT(8),  0,	   false),
+> -	[RK3399_PD_TCPD1]	=3D DOMAIN_RK3399(BIT(9),  BIT(9),  0,	   false),
+> -	[RK3399_PD_CCI]		=3D DOMAIN_RK3399(BIT(10), BIT(10), 0,	   true),
+> -	[RK3399_PD_CCI0]	=3D DOMAIN_RK3399(0,	 0,	  BIT(15), true),
+> -	[RK3399_PD_CCI1]	=3D DOMAIN_RK3399(0,	 0,	  BIT(16), true),
+> -	[RK3399_PD_PERILP]	=3D DOMAIN_RK3399(BIT(11), BIT(11), BIT(1),  true),
+> -	[RK3399_PD_PERIHP]	=3D DOMAIN_RK3399(BIT(12), BIT(12), BIT(2),  true),
+> -	[RK3399_PD_CENTER]	=3D DOMAIN_RK3399(BIT(13), BIT(13), BIT(14), true),
+> -	[RK3399_PD_VIO]		=3D DOMAIN_RK3399(BIT(14), BIT(14), BIT(17), false),
+> -	[RK3399_PD_GPU]		=3D DOMAIN_RK3399(BIT(15), BIT(15), BIT(0),  false),
+> -	[RK3399_PD_VCODEC]	=3D DOMAIN_RK3399(BIT(16), BIT(16), BIT(3),  false),
+> -	[RK3399_PD_VDU]		=3D DOMAIN_RK3399(BIT(17), BIT(17), BIT(4),  false),
+> -	[RK3399_PD_RGA]		=3D DOMAIN_RK3399(BIT(18), BIT(18), BIT(5),  false),
+> -	[RK3399_PD_IEP]		=3D DOMAIN_RK3399(BIT(19), BIT(19), BIT(6),  false),
+> -	[RK3399_PD_VO]		=3D DOMAIN_RK3399(BIT(20), BIT(20), 0,	   false),
+> -	[RK3399_PD_VOPB]	=3D DOMAIN_RK3399(0,	 0,	  BIT(7),  false),
+> -	[RK3399_PD_VOPL]	=3D DOMAIN_RK3399(0, 	 0,	  BIT(8),  false),
+> -	[RK3399_PD_ISP0]	=3D DOMAIN_RK3399(BIT(22), BIT(22), BIT(9),  false),
+> -	[RK3399_PD_ISP1]	=3D DOMAIN_RK3399(BIT(23), BIT(23), BIT(10), false),
+> -	[RK3399_PD_HDCP]	=3D DOMAIN_RK3399(BIT(24), BIT(24), BIT(11), false),
+> -	[RK3399_PD_GMAC]	=3D DOMAIN_RK3399(BIT(25), BIT(25), BIT(23), true),
+> -	[RK3399_PD_EMMC]	=3D DOMAIN_RK3399(BIT(26), BIT(26), BIT(24), true),
+> -	[RK3399_PD_USB3]	=3D DOMAIN_RK3399(BIT(27), BIT(27), BIT(12), true),
+> -	[RK3399_PD_EDP]		=3D DOMAIN_RK3399(BIT(28), BIT(28), BIT(22), false),
+> -	[RK3399_PD_GIC]		=3D DOMAIN_RK3399(BIT(29), BIT(29), BIT(27), true),
+> -	[RK3399_PD_SD]		=3D DOMAIN_RK3399(BIT(30), BIT(30), BIT(28), true),
+> -	[RK3399_PD_SDIOAUDIO]	=3D DOMAIN_RK3399(BIT(31), BIT(31), BIT(29), true=
+),
+> +	[RK3399_PD_TCPD0]	=3D DOMAIN_RK3399("tcpd0", BIT(8),  BIT(8),  0,	   fa=
+lse),
+> +	[RK3399_PD_TCPD1]	=3D DOMAIN_RK3399("tcpd1", BIT(9),  BIT(9),  0,	   fa=
+lse),
+> +	[RK3399_PD_CCI]		=3D DOMAIN_RK3399("cci", BIT(10), BIT(10), 0,	   true),
+> +	[RK3399_PD_CCI0]	=3D DOMAIN_RK3399("cci0", 0,	 0,	  BIT(15), true),
+> +	[RK3399_PD_CCI1]	=3D DOMAIN_RK3399("cci1", 0,	 0,	  BIT(16), true),
+> +	[RK3399_PD_PERILP]	=3D DOMAIN_RK3399("perilp", BIT(11), BIT(11), BIT(1)=
+,  true),
+> +	[RK3399_PD_PERIHP]	=3D DOMAIN_RK3399("perihp", BIT(12), BIT(12), BIT(2)=
+,  true),
+> +	[RK3399_PD_CENTER]	=3D DOMAIN_RK3399("center", BIT(13), BIT(13), BIT(14=
+), true),
+> +	[RK3399_PD_VIO]		=3D DOMAIN_RK3399("vio", BIT(14), BIT(14), BIT(17), fa=
+lse),
+> +	[RK3399_PD_GPU]		=3D DOMAIN_RK3399("gpu", BIT(15), BIT(15), BIT(0),  fa=
+lse),
+> +	[RK3399_PD_VCODEC]	=3D DOMAIN_RK3399("vcodec", BIT(16), BIT(16), BIT(3)=
+,  false),
+> +	[RK3399_PD_VDU]		=3D DOMAIN_RK3399("vdu", BIT(17), BIT(17), BIT(4),  fa=
+lse),
+> +	[RK3399_PD_RGA]		=3D DOMAIN_RK3399("rga", BIT(18), BIT(18), BIT(5),  fa=
+lse),
+> +	[RK3399_PD_IEP]		=3D DOMAIN_RK3399("iep", BIT(19), BIT(19), BIT(6),  fa=
+lse),
+> +	[RK3399_PD_VO]		=3D DOMAIN_RK3399("vo", BIT(20), BIT(20), 0,	   false),
+> +	[RK3399_PD_VOPB]	=3D DOMAIN_RK3399("vopb", 0,	 0,	  BIT(7),  false),
+> +	[RK3399_PD_VOPL]	=3D DOMAIN_RK3399("vopl", 0, 	 0,	  BIT(8),  false),
+> +	[RK3399_PD_ISP0]	=3D DOMAIN_RK3399("isp0", BIT(22), BIT(22), BIT(9),  f=
+alse),
+> +	[RK3399_PD_ISP1]	=3D DOMAIN_RK3399("isp1", BIT(23), BIT(23), BIT(10), f=
+alse),
+> +	[RK3399_PD_HDCP]	=3D DOMAIN_RK3399("hdcp", BIT(24), BIT(24), BIT(11), f=
+alse),
+> +	[RK3399_PD_GMAC]	=3D DOMAIN_RK3399("gmac", BIT(25), BIT(25), BIT(23), t=
+rue),
+> +	[RK3399_PD_EMMC]	=3D DOMAIN_RK3399("emmc", BIT(26), BIT(26), BIT(24), t=
+rue),
+> +	[RK3399_PD_USB3]	=3D DOMAIN_RK3399("usb3", BIT(27), BIT(27), BIT(12), t=
+rue),
+> +	[RK3399_PD_EDP]		=3D DOMAIN_RK3399("edp", BIT(28), BIT(28), BIT(22), fa=
+lse),
+> +	[RK3399_PD_GIC]		=3D DOMAIN_RK3399("gic", BIT(29), BIT(29), BIT(27), tr=
+ue),
+> +	[RK3399_PD_SD]		=3D DOMAIN_RK3399("sd", BIT(30), BIT(30), BIT(28), true=
+),
+> +	[RK3399_PD_SDIOAUDIO]	=3D DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), =
+BIT(29), true),
+>  };
+>  =
+
+>  static const struct rockchip_pmu_info px30_pmu =3D {
+> =
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
