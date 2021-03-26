@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0354AC433E1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:49:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BFEAC433C1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:51:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFF3B61A45
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:49:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFF3B61A45
+	by mail.kernel.org (Postfix) with ESMTPS id 2BA0061A32
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 09:51:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BA0061A32
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,41 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FoqKH6XBiNoJqmEmoakwXVHnPtOgTCydlepEsnyMQU8=; b=O7syHIny7UlYevCHgkqHe11sI
-	pMEaWDiNjTfLPt12DoXYd71dGt3wjP+OB1AaHajJ8UaOH6i2EvrkTlDDnFBjeK3DEcPJGDawQz6ss
-	lfpZWFCQ6ka8ylQmCjxl2ZHOeyg+fOvzN+rZDo1magXbX1ccMe4mygtChfthVCQsDEiRrf6XTGy/H
-	L4UXd4QmrWPQwuF7eT6m1EqlbcFbZQdl35mq9Y23pzk1wN0grusvmTXGoN4TbIs1/0pHRigItPBbO
-	nKDvmbaXp0lWMqEn/YRmhTWHS9TGKqDYo6ZkWwZU+jOx3gfopgApQwO/PGzfLtSId5NXmc7S6Nqbw
-	Ut4uM7K2w==;
+	 bh=SXwyjQt71LVsvnOoe24BcHGPcGpuUD/MGjHvT5vTA6U=; b=W769NWAO+N18Vw4RDlv9kTQaI
+	yJVq9NCuThmEQlVWCvz1IP8fM06L/SY1UrfwUHsEBXVyIeqORzgdJONoveAKQAX7eE0M18mDeEIlF
+	6XUN+HVby3hvmS7yderji0g5da6Rlvk6sl2NecZytWAp38DIKCjd7VDdGGI2Db19mlqI9RMc7PtOQ
+	KcZz7jtZQPvztL2ydBMlPkc6SDf1v5PQ6TI8MxazdFdrbSI9pKw3NFr0dO8kzx2yp34R34XXWtWQs
+	CXEQVkkEBt0mfaVGYgrblX5CVBV1sg4LjA2VOAfPGI7U55uOjARveSw8+a+Y873D3q1ZN+N1I4M55
+	i+33OZnlA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPj61-003EAA-9s; Fri, 26 Mar 2021 09:49:37 +0000
+	id 1lPj7z-003EiF-8f; Fri, 26 Mar 2021 09:51:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPj5b-003E5V-W1; Fri, 26 Mar 2021 09:49:16 +0000
+ id 1lPj7i-003EdZ-Ll; Fri, 26 Mar 2021 09:51:26 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lPj5a-0002pi-2v; Fri, 26 Mar 2021 10:49:10 +0100
+ id 1lPj7i-0002qb-4Y; Fri, 26 Mar 2021 10:51:22 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: robh+dt@kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  cl@rock-chips.com, huangtao@rock-chips.com, kever.yang@rock-chips.com,
  tony.xie@rock-chips.com, finley.xiao@rock-chips.com,
- Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v5 07/11] soc: rockchip: pm-domains: Add a meaningful
- power domain name
-Date: Fri, 26 Mar 2021 10:49:07 +0100
-Message-ID: <8751177.CDJkKcVGEf@diego>
-In-Reply-To: <20210326091739.12584-1-zhangqing@rock-chips.com>
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v5 09/11] dt-bindings: power: rockchip: Convert to
+ json-schema
+Date: Fri, 26 Mar 2021 10:51:21 +0100
+Message-ID: <5606275.MhkbZ0Pkbq@diego>
+In-Reply-To: <20210326091803.12698-1-zhangqing@rock-chips.com>
 References: <20210326091547.12375-1-zhangqing@rock-chips.com>
- <20210326091739.12584-1-zhangqing@rock-chips.com>
+ <20210326091803.12698-1-zhangqing@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_094912_364611_786D14C7 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20210326_095122_850505_B18FCC9D 
+X-CRM114-Status: GOOD (  26.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,453 +76,514 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Elaine,
-
-Am Freitag, 26. M=E4rz 2021, 10:17:39 CET schrieb Elaine Zhang:
-> Add the power domains names to the power domain info struct so we
-> have meaningful name for every power domain.
+Am Freitag, 26. M=E4rz 2021, 10:18:03 CET schrieb Elaine Zhang:
+> Convert the soc/rockchip/power_domain.txt binding document to
+> json-schema and move to the power bindings directory.
 > =
 
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
-I like that approach very much, there is one tiny comment below.
+If Enric is the original author of this patch, maybe this needs a matching
+"From: ... " line?
 
-> ---
->  drivers/soc/rockchip/pm_domains.c | 217 +++++++++++++++---------------
->  1 file changed, 112 insertions(+), 105 deletions(-)
-> =
-
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_=
-domains.c
-> index 54eb6cfc5d5b..d661d967079f 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -29,6 +29,7 @@
->  #include <dt-bindings/power/rk3399-power.h>
->  =
-
->  struct rockchip_domain_info {
-> +	const char *name;
->  	int pwr_mask;
->  	int status_mask;
->  	int req_mask;
-> @@ -85,8 +86,9 @@ struct rockchip_pmu {
->  =
-
->  #define to_rockchip_pd(gpd) container_of(gpd, struct rockchip_pm_domain,=
- genpd)
->  =
-
-> -#define DOMAIN(pwr, status, req, idle, ack, wakeup)	\
-> +#define DOMAIN(_name, pwr, status, req, idle, ack, wakeup)	\
->  {							\
-> +	.name =3D _name,				\
->  	.pwr_mask =3D (pwr),				\
->  	.status_mask =3D (status),			\
->  	.req_mask =3D (req),				\
-> @@ -95,8 +97,9 @@ struct rockchip_pmu {
->  	.active_wakeup =3D (wakeup),			\
->  }
->  =
-
-> -#define DOMAIN_M(pwr, status, req, idle, ack, wakeup)	\
-> +#define DOMAIN_M(_name, pwr, status, req, idle, ack, wakeup)	\
->  {							\
-> +	.name =3D _name,				\
->  	.pwr_w_mask =3D (pwr) << 16,			\
->  	.pwr_mask =3D (pwr),				\
->  	.status_mask =3D (status),			\
-> @@ -107,8 +110,9 @@ struct rockchip_pmu {
->  	.active_wakeup =3D wakeup,			\
->  }
->  =
-
-> -#define DOMAIN_RK3036(req, ack, idle, wakeup)		\
-> +#define DOMAIN_RK3036(_name, req, ack, idle, wakeup)		\
->  {							\
-> +	.name =3D _name,				\
->  	.req_mask =3D (req),				\
->  	.req_w_mask =3D (req) << 16,			\
->  	.ack_mask =3D (ack),				\
-> @@ -119,17 +123,17 @@ struct rockchip_pmu {
->  #define DOMAIN_PX30(pwr, status, req, wakeup)		\
->  	DOMAIN_M(pwr, status, req, (req) << 16, req, wakeup)
->  =
-
-> -#define DOMAIN_RK3288(pwr, status, req, wakeup)		\
-> -	DOMAIN(pwr, status, req, req, (req) << 16, wakeup)
-> +#define DOMAIN_RK3288(name, pwr, status, req, wakeup)		\
-> +	DOMAIN(name, pwr, status, req, req, (req) << 16, wakeup)
->  =
-
-> -#define DOMAIN_RK3328(pwr, status, req, wakeup)		\
-> -	DOMAIN_M(pwr, pwr, req, (req) << 10, req, wakeup)
-> +#define DOMAIN_RK3328(name, pwr, status, req, wakeup)		\
-> +	DOMAIN_M(name, pwr, pwr, req, (req) << 10, req, wakeup)
->  =
-
-> -#define DOMAIN_RK3368(pwr, status, req, wakeup)		\
-> -	DOMAIN(pwr, status, req, (req) << 16, req, wakeup)
-> +#define DOMAIN_RK3368(name, pwr, status, req, wakeup)		\
-> +	DOMAIN(name, pwr, status, req, (req) << 16, req, wakeup)
->  =
-
-> -#define DOMAIN_RK3399(pwr, status, req, wakeup)		\
-> -	DOMAIN(pwr, status, req, req, req, wakeup)
-> +#define DOMAIN_RK3399(name, pwr, status, req, wakeup)		\
-> +	DOMAIN(name, pwr, status, req, req, req, wakeup)
->  =
-
->  static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
->  {
-> @@ -490,7 +494,10 @@ static int rockchip_pm_add_one_domain(struct rockchi=
-p_pmu *pmu,
->  		goto err_unprepare_clocks;
->  	}
->  =
-
-> -	pd->genpd.name =3D node->name;
-> +	if (!pd->info->name)
-> +		pd->genpd.name =3D node->name;
-
-I guess we should make that "node->full_name" perhaps?
-And I guess it might be nicer to swap the cases
-
-if (pd->info->name)
-	pd->genpd.name =3D pd->info->name
-else
-	pd->genpd.name =3D node->full_name;
-
-for easier readability
-
-
+Thanks
 Heiko
 
-> +	else
-> +		pd->genpd.name =3D pd->info->name;
->  	pd->genpd.power_off =3D rockchip_pd_power_off;
->  	pd->genpd.power_on =3D rockchip_pd_power_on;
->  	pd->genpd.attach_dev =3D rockchip_pd_attach_dev;
-> @@ -716,129 +723,129 @@ static int rockchip_pm_domain_probe(struct platfo=
-rm_device *pdev)
->  }
->  =
 
->  static const struct rockchip_domain_info px30_pm_domains[] =3D {
-> -	[PX30_PD_USB]		=3D DOMAIN_PX30(BIT(5),  BIT(5),  BIT(10), false),
-> -	[PX30_PD_SDCARD]	=3D DOMAIN_PX30(BIT(8),  BIT(8),  BIT(9),  false),
-> -	[PX30_PD_GMAC]		=3D DOMAIN_PX30(BIT(10), BIT(10), BIT(6),  false),
-> -	[PX30_PD_MMC_NAND]	=3D DOMAIN_PX30(BIT(11), BIT(11), BIT(5),  false),
-> -	[PX30_PD_VPU]		=3D DOMAIN_PX30(BIT(12), BIT(12), BIT(14), false),
-> -	[PX30_PD_VO]		=3D DOMAIN_PX30(BIT(13), BIT(13), BIT(7),  false),
-> -	[PX30_PD_VI]		=3D DOMAIN_PX30(BIT(14), BIT(14), BIT(8),  false),
-> -	[PX30_PD_GPU]		=3D DOMAIN_PX30(BIT(15), BIT(15), BIT(2),  false),
-> +	[PX30_PD_USB]		=3D DOMAIN_PX30("usb", BIT(5),  BIT(5),  BIT(10), false),
-> +	[PX30_PD_SDCARD]	=3D DOMAIN_PX30("sdcard", BIT(8),  BIT(8),  BIT(9),  f=
-alse),
-> +	[PX30_PD_GMAC]		=3D DOMAIN_PX30("gmac", BIT(10), BIT(10), BIT(6),  fals=
-e),
-> +	[PX30_PD_MMC_NAND]	=3D DOMAIN_PX30("mmc_nand", BIT(11), BIT(11), BIT(5)=
-,  false),
-> +	[PX30_PD_VPU]		=3D DOMAIN_PX30("vpu", BIT(12), BIT(12), BIT(14), false),
-> +	[PX30_PD_VO]		=3D DOMAIN_PX30("vo", BIT(13), BIT(13), BIT(7),  false),
-> +	[PX30_PD_VI]		=3D DOMAIN_PX30("vi", BIT(14), BIT(14), BIT(8),  false),
-> +	[PX30_PD_GPU]		=3D DOMAIN_PX30("gpu", BIT(15), BIT(15), BIT(2),  false),
->  };
->  =
+> ---
+>  .../power/rockchip,power-controller.yaml      | 291 ++++++++++++++++++
+>  .../bindings/soc/rockchip/power_domain.txt    | 136 --------
+>  2 files changed, 291 insertions(+), 136 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/power/rockchip,powe=
+r-controller.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_=
+domain.txt
+> =
 
->  static const struct rockchip_domain_info rk3036_pm_domains[] =3D {
-> -	[RK3036_PD_MSCH]	=3D DOMAIN_RK3036(BIT(14), BIT(23), BIT(30), true),
-> -	[RK3036_PD_CORE]	=3D DOMAIN_RK3036(BIT(13), BIT(17), BIT(24), false),
-> -	[RK3036_PD_PERI]	=3D DOMAIN_RK3036(BIT(12), BIT(18), BIT(25), false),
-> -	[RK3036_PD_VIO]		=3D DOMAIN_RK3036(BIT(11), BIT(19), BIT(26), false),
-> -	[RK3036_PD_VPU]		=3D DOMAIN_RK3036(BIT(10), BIT(20), BIT(27), false),
-> -	[RK3036_PD_GPU]		=3D DOMAIN_RK3036(BIT(9),  BIT(21), BIT(28), false),
-> -	[RK3036_PD_SYS]		=3D DOMAIN_RK3036(BIT(8),  BIT(22), BIT(29), false),
-> +	[RK3036_PD_MSCH]	=3D DOMAIN_RK3036("msch", BIT(14), BIT(23), BIT(30), t=
-rue),
-> +	[RK3036_PD_CORE]	=3D DOMAIN_RK3036("core", BIT(13), BIT(17), BIT(24), f=
-alse),
-> +	[RK3036_PD_PERI]	=3D DOMAIN_RK3036("peri", BIT(12), BIT(18), BIT(25), f=
-alse),
-> +	[RK3036_PD_VIO]		=3D DOMAIN_RK3036("vio", BIT(11), BIT(19), BIT(26), fa=
-lse),
-> +	[RK3036_PD_VPU]		=3D DOMAIN_RK3036("vpu", BIT(10), BIT(20), BIT(27), fa=
-lse),
-> +	[RK3036_PD_GPU]		=3D DOMAIN_RK3036("gpu", BIT(9),  BIT(21), BIT(28), fa=
-lse),
-> +	[RK3036_PD_SYS]		=3D DOMAIN_RK3036("sys", BIT(8),  BIT(22), BIT(29), fa=
-lse),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3066_pm_domains[] =3D {
-> -	[RK3066_PD_GPU]		=3D DOMAIN(BIT(9), BIT(9), BIT(3), BIT(24), BIT(29), f=
-alse),
-> -	[RK3066_PD_VIDEO]	=3D DOMAIN(BIT(8), BIT(8), BIT(4), BIT(23), BIT(28), =
-false),
-> -	[RK3066_PD_VIO]		=3D DOMAIN(BIT(7), BIT(7), BIT(5), BIT(22), BIT(27), f=
-alse),
-> -	[RK3066_PD_PERI]	=3D DOMAIN(BIT(6), BIT(6), BIT(2), BIT(25), BIT(30), f=
-alse),
-> -	[RK3066_PD_CPU]		=3D DOMAIN(0,      BIT(5), BIT(1), BIT(26), BIT(31), f=
-alse),
-> +	[RK3066_PD_GPU]		=3D DOMAIN("gpu", BIT(9), BIT(9), BIT(3), BIT(24), BIT=
-(29), false),
-> +	[RK3066_PD_VIDEO]	=3D DOMAIN("video", BIT(8), BIT(8), BIT(4), BIT(23), =
-BIT(28), false),
-> +	[RK3066_PD_VIO]		=3D DOMAIN("vio", BIT(7), BIT(7), BIT(5), BIT(22), BIT=
-(27), false),
-> +	[RK3066_PD_PERI]	=3D DOMAIN("peri", BIT(6), BIT(6), BIT(2), BIT(25), BI=
-T(30), false),
-> +	[RK3066_PD_CPU]		=3D DOMAIN("cpu", 0,      BIT(5), BIT(1), BIT(26), BIT=
-(31), false),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3128_pm_domains[] =3D {
-> -	[RK3128_PD_CORE]	=3D DOMAIN_RK3288(BIT(0), BIT(0), BIT(4), false),
-> -	[RK3128_PD_MSCH]	=3D DOMAIN_RK3288(0,      0,      BIT(6), true),
-> -	[RK3128_PD_VIO]		=3D DOMAIN_RK3288(BIT(3), BIT(3), BIT(2), false),
-> -	[RK3128_PD_VIDEO]	=3D DOMAIN_RK3288(BIT(2), BIT(2), BIT(1), false),
-> -	[RK3128_PD_GPU]		=3D DOMAIN_RK3288(BIT(1), BIT(1), BIT(3), false),
-> +	[RK3128_PD_CORE]	=3D DOMAIN_RK3288("core", BIT(0), BIT(0), BIT(4), fals=
-e),
-> +	[RK3128_PD_MSCH]	=3D DOMAIN_RK3288("msch", 0,      0,      BIT(6), true=
-),
-> +	[RK3128_PD_VIO]		=3D DOMAIN_RK3288("vio", BIT(3), BIT(3), BIT(2), false=
-),
-> +	[RK3128_PD_VIDEO]	=3D DOMAIN_RK3288("video", BIT(2), BIT(2), BIT(1), fa=
-lse),
-> +	[RK3128_PD_GPU]		=3D DOMAIN_RK3288("gpu", BIT(1), BIT(1), BIT(3), false=
-),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3188_pm_domains[] =3D {
-> -	[RK3188_PD_GPU]		=3D DOMAIN(BIT(9), BIT(9), BIT(3), BIT(24), BIT(29), f=
-alse),
-> -	[RK3188_PD_VIDEO]	=3D DOMAIN(BIT(8), BIT(8), BIT(4), BIT(23), BIT(28), =
-false),
-> -	[RK3188_PD_VIO]		=3D DOMAIN(BIT(7), BIT(7), BIT(5), BIT(22), BIT(27), f=
-alse),
-> -	[RK3188_PD_PERI]	=3D DOMAIN(BIT(6), BIT(6), BIT(2), BIT(25), BIT(30), f=
-alse),
-> -	[RK3188_PD_CPU]		=3D DOMAIN(BIT(5), BIT(5), BIT(1), BIT(26), BIT(31), f=
-alse),
-> +	[RK3188_PD_GPU]		=3D DOMAIN("gpu", BIT(9), BIT(9), BIT(3), BIT(24), BIT=
-(29), false),
-> +	[RK3188_PD_VIDEO]	=3D DOMAIN("video", BIT(8), BIT(8), BIT(4), BIT(23), =
-BIT(28), false),
-> +	[RK3188_PD_VIO]		=3D DOMAIN("vio", BIT(7), BIT(7), BIT(5), BIT(22), BIT=
-(27), false),
-> +	[RK3188_PD_PERI]	=3D DOMAIN("peri", BIT(6), BIT(6), BIT(2), BIT(25), BI=
-T(30), false),
-> +	[RK3188_PD_CPU]		=3D DOMAIN("cpu", BIT(5), BIT(5), BIT(1), BIT(26), BIT=
-(31), false),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3228_pm_domains[] =3D {
-> -	[RK3228_PD_CORE]	=3D DOMAIN_RK3036(BIT(0),  BIT(0),  BIT(16), true),
-> -	[RK3228_PD_MSCH]	=3D DOMAIN_RK3036(BIT(1),  BIT(1),  BIT(17), true),
-> -	[RK3228_PD_BUS]		=3D DOMAIN_RK3036(BIT(2),  BIT(2),  BIT(18), true),
-> -	[RK3228_PD_SYS]		=3D DOMAIN_RK3036(BIT(3),  BIT(3),  BIT(19), true),
-> -	[RK3228_PD_VIO]		=3D DOMAIN_RK3036(BIT(4),  BIT(4),  BIT(20), false),
-> -	[RK3228_PD_VOP]		=3D DOMAIN_RK3036(BIT(5),  BIT(5),  BIT(21), false),
-> -	[RK3228_PD_VPU]		=3D DOMAIN_RK3036(BIT(6),  BIT(6),  BIT(22), false),
-> -	[RK3228_PD_RKVDEC]	=3D DOMAIN_RK3036(BIT(7),  BIT(7),  BIT(23), false),
-> -	[RK3228_PD_GPU]		=3D DOMAIN_RK3036(BIT(8),  BIT(8),  BIT(24), false),
-> -	[RK3228_PD_PERI]	=3D DOMAIN_RK3036(BIT(9),  BIT(9),  BIT(25), true),
-> -	[RK3228_PD_GMAC]	=3D DOMAIN_RK3036(BIT(10), BIT(10), BIT(26), false),
-> +	[RK3228_PD_CORE]	=3D DOMAIN_RK3036("core", BIT(0),  BIT(0),  BIT(16), t=
-rue),
-> +	[RK3228_PD_MSCH]	=3D DOMAIN_RK3036("msch", BIT(1),  BIT(1),  BIT(17), t=
-rue),
-> +	[RK3228_PD_BUS]		=3D DOMAIN_RK3036("bus", BIT(2),  BIT(2),  BIT(18), tr=
-ue),
-> +	[RK3228_PD_SYS]		=3D DOMAIN_RK3036("sys", BIT(3),  BIT(3),  BIT(19), tr=
-ue),
-> +	[RK3228_PD_VIO]		=3D DOMAIN_RK3036("vio", BIT(4),  BIT(4),  BIT(20), fa=
-lse),
-> +	[RK3228_PD_VOP]		=3D DOMAIN_RK3036("vop", BIT(5),  BIT(5),  BIT(21), fa=
-lse),
-> +	[RK3228_PD_VPU]		=3D DOMAIN_RK3036("vpu", BIT(6),  BIT(6),  BIT(22), fa=
-lse),
-> +	[RK3228_PD_RKVDEC]	=3D DOMAIN_RK3036("vdec", BIT(7),  BIT(7),  BIT(23),=
- false),
-> +	[RK3228_PD_GPU]		=3D DOMAIN_RK3036("gpu", BIT(8),  BIT(8),  BIT(24), fa=
-lse),
-> +	[RK3228_PD_PERI]	=3D DOMAIN_RK3036("peri", BIT(9),  BIT(9),  BIT(25), t=
-rue),
-> +	[RK3228_PD_GMAC]	=3D DOMAIN_RK3036("gmac", BIT(10), BIT(10), BIT(26), f=
-alse),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3288_pm_domains[] =3D {
-> -	[RK3288_PD_VIO]		=3D DOMAIN_RK3288(BIT(7),  BIT(7),  BIT(4), false),
-> -	[RK3288_PD_HEVC]	=3D DOMAIN_RK3288(BIT(14), BIT(10), BIT(9), false),
-> -	[RK3288_PD_VIDEO]	=3D DOMAIN_RK3288(BIT(8),  BIT(8),  BIT(3), false),
-> -	[RK3288_PD_GPU]		=3D DOMAIN_RK3288(BIT(9),  BIT(9),  BIT(2), false),
-> +	[RK3288_PD_VIO]		=3D DOMAIN_RK3288("vio", BIT(7),  BIT(7),  BIT(4), fal=
-se),
-> +	[RK3288_PD_HEVC]	=3D DOMAIN_RK3288("hevc", BIT(14), BIT(10), BIT(9), fa=
-lse),
-> +	[RK3288_PD_VIDEO]	=3D DOMAIN_RK3288("video", BIT(8),  BIT(8),  BIT(3), =
-false),
-> +	[RK3288_PD_GPU]		=3D DOMAIN_RK3288("gpu", BIT(9),  BIT(9),  BIT(2), fal=
-se),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3328_pm_domains[] =3D {
-> -	[RK3328_PD_CORE]	=3D DOMAIN_RK3328(0, BIT(0), BIT(0), false),
-> -	[RK3328_PD_GPU]		=3D DOMAIN_RK3328(0, BIT(1), BIT(1), false),
-> -	[RK3328_PD_BUS]		=3D DOMAIN_RK3328(0, BIT(2), BIT(2), true),
-> -	[RK3328_PD_MSCH]	=3D DOMAIN_RK3328(0, BIT(3), BIT(3), true),
-> -	[RK3328_PD_PERI]	=3D DOMAIN_RK3328(0, BIT(4), BIT(4), true),
-> -	[RK3328_PD_VIDEO]	=3D DOMAIN_RK3328(0, BIT(5), BIT(5), false),
-> -	[RK3328_PD_HEVC]	=3D DOMAIN_RK3328(0, BIT(6), BIT(6), false),
-> -	[RK3328_PD_VIO]		=3D DOMAIN_RK3328(0, BIT(8), BIT(8), false),
-> -	[RK3328_PD_VPU]		=3D DOMAIN_RK3328(0, BIT(9), BIT(9), false),
-> +	[RK3328_PD_CORE]	=3D DOMAIN_RK3328("core", 0, BIT(0), BIT(0), false),
-> +	[RK3328_PD_GPU]		=3D DOMAIN_RK3328("gpu", 0, BIT(1), BIT(1), false),
-> +	[RK3328_PD_BUS]		=3D DOMAIN_RK3328("bus", 0, BIT(2), BIT(2), true),
-> +	[RK3328_PD_MSCH]	=3D DOMAIN_RK3328("msch", 0, BIT(3), BIT(3), true),
-> +	[RK3328_PD_PERI]	=3D DOMAIN_RK3328("peri", 0, BIT(4), BIT(4), true),
-> +	[RK3328_PD_VIDEO]	=3D DOMAIN_RK3328("video", 0, BIT(5), BIT(5), false),
-> +	[RK3328_PD_HEVC]	=3D DOMAIN_RK3328("hevc", 0, BIT(6), BIT(6), false),
-> +	[RK3328_PD_VIO]		=3D DOMAIN_RK3328("vio", 0, BIT(8), BIT(8), false),
-> +	[RK3328_PD_VPU]		=3D DOMAIN_RK3328("vpu", 0, BIT(9), BIT(9), false),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3366_pm_domains[] =3D {
-> -	[RK3366_PD_PERI]	=3D DOMAIN_RK3368(BIT(10), BIT(10), BIT(6), true),
-> -	[RK3366_PD_VIO]		=3D DOMAIN_RK3368(BIT(14), BIT(14), BIT(8), false),
-> -	[RK3366_PD_VIDEO]	=3D DOMAIN_RK3368(BIT(13), BIT(13), BIT(7), false),
-> -	[RK3366_PD_RKVDEC]	=3D DOMAIN_RK3368(BIT(11), BIT(11), BIT(7), false),
-> -	[RK3366_PD_WIFIBT]	=3D DOMAIN_RK3368(BIT(8),  BIT(8),  BIT(9), false),
-> -	[RK3366_PD_VPU]		=3D DOMAIN_RK3368(BIT(12), BIT(12), BIT(7), false),
-> -	[RK3366_PD_GPU]		=3D DOMAIN_RK3368(BIT(15), BIT(15), BIT(2), false),
-> +	[RK3366_PD_PERI]	=3D DOMAIN_RK3368("peri", BIT(10), BIT(10), BIT(6), tr=
-ue),
-> +	[RK3366_PD_VIO]		=3D DOMAIN_RK3368("vio", BIT(14), BIT(14), BIT(8), fal=
-se),
-> +	[RK3366_PD_VIDEO]	=3D DOMAIN_RK3368("video", BIT(13), BIT(13), BIT(7), =
-false),
-> +	[RK3366_PD_RKVDEC]	=3D DOMAIN_RK3368("vdec", BIT(11), BIT(11), BIT(7), =
-false),
-> +	[RK3366_PD_WIFIBT]	=3D DOMAIN_RK3368("wifibt", BIT(8),  BIT(8),  BIT(9)=
-, false),
-> +	[RK3366_PD_VPU]		=3D DOMAIN_RK3368("vpu", BIT(12), BIT(12), BIT(7), fal=
-se),
-> +	[RK3366_PD_GPU]		=3D DOMAIN_RK3368("gpu", BIT(15), BIT(15), BIT(2), fal=
-se),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3368_pm_domains[] =3D {
-> -	[RK3368_PD_PERI]	=3D DOMAIN_RK3368(BIT(13), BIT(12), BIT(6), true),
-> -	[RK3368_PD_VIO]		=3D DOMAIN_RK3368(BIT(15), BIT(14), BIT(8), false),
-> -	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368(BIT(14), BIT(13), BIT(7), false),
-> -	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368(BIT(16), BIT(15), BIT(2), false),
-> -	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368(BIT(17), BIT(16), BIT(2), false),
-> +	[RK3368_PD_PERI]	=3D DOMAIN_RK3368("peri", BIT(13), BIT(12), BIT(6), tr=
-ue),
-> +	[RK3368_PD_VIO]		=3D DOMAIN_RK3368("vio", BIT(15), BIT(14), BIT(8), fal=
-se),
-> +	[RK3368_PD_VIDEO]	=3D DOMAIN_RK3368("video", BIT(14), BIT(13), BIT(7), =
-false),
-> +	[RK3368_PD_GPU_0]	=3D DOMAIN_RK3368("gpu_0", BIT(16), BIT(15), BIT(2), =
-false),
-> +	[RK3368_PD_GPU_1]	=3D DOMAIN_RK3368("gpu_1", BIT(17), BIT(16), BIT(2), =
-false),
->  };
->  =
-
->  static const struct rockchip_domain_info rk3399_pm_domains[] =3D {
-> -	[RK3399_PD_TCPD0]	=3D DOMAIN_RK3399(BIT(8),  BIT(8),  0,	   false),
-> -	[RK3399_PD_TCPD1]	=3D DOMAIN_RK3399(BIT(9),  BIT(9),  0,	   false),
-> -	[RK3399_PD_CCI]		=3D DOMAIN_RK3399(BIT(10), BIT(10), 0,	   true),
-> -	[RK3399_PD_CCI0]	=3D DOMAIN_RK3399(0,	 0,	  BIT(15), true),
-> -	[RK3399_PD_CCI1]	=3D DOMAIN_RK3399(0,	 0,	  BIT(16), true),
-> -	[RK3399_PD_PERILP]	=3D DOMAIN_RK3399(BIT(11), BIT(11), BIT(1),  true),
-> -	[RK3399_PD_PERIHP]	=3D DOMAIN_RK3399(BIT(12), BIT(12), BIT(2),  true),
-> -	[RK3399_PD_CENTER]	=3D DOMAIN_RK3399(BIT(13), BIT(13), BIT(14), true),
-> -	[RK3399_PD_VIO]		=3D DOMAIN_RK3399(BIT(14), BIT(14), BIT(17), false),
-> -	[RK3399_PD_GPU]		=3D DOMAIN_RK3399(BIT(15), BIT(15), BIT(0),  false),
-> -	[RK3399_PD_VCODEC]	=3D DOMAIN_RK3399(BIT(16), BIT(16), BIT(3),  false),
-> -	[RK3399_PD_VDU]		=3D DOMAIN_RK3399(BIT(17), BIT(17), BIT(4),  false),
-> -	[RK3399_PD_RGA]		=3D DOMAIN_RK3399(BIT(18), BIT(18), BIT(5),  false),
-> -	[RK3399_PD_IEP]		=3D DOMAIN_RK3399(BIT(19), BIT(19), BIT(6),  false),
-> -	[RK3399_PD_VO]		=3D DOMAIN_RK3399(BIT(20), BIT(20), 0,	   false),
-> -	[RK3399_PD_VOPB]	=3D DOMAIN_RK3399(0,	 0,	  BIT(7),  false),
-> -	[RK3399_PD_VOPL]	=3D DOMAIN_RK3399(0, 	 0,	  BIT(8),  false),
-> -	[RK3399_PD_ISP0]	=3D DOMAIN_RK3399(BIT(22), BIT(22), BIT(9),  false),
-> -	[RK3399_PD_ISP1]	=3D DOMAIN_RK3399(BIT(23), BIT(23), BIT(10), false),
-> -	[RK3399_PD_HDCP]	=3D DOMAIN_RK3399(BIT(24), BIT(24), BIT(11), false),
-> -	[RK3399_PD_GMAC]	=3D DOMAIN_RK3399(BIT(25), BIT(25), BIT(23), true),
-> -	[RK3399_PD_EMMC]	=3D DOMAIN_RK3399(BIT(26), BIT(26), BIT(24), true),
-> -	[RK3399_PD_USB3]	=3D DOMAIN_RK3399(BIT(27), BIT(27), BIT(12), true),
-> -	[RK3399_PD_EDP]		=3D DOMAIN_RK3399(BIT(28), BIT(28), BIT(22), false),
-> -	[RK3399_PD_GIC]		=3D DOMAIN_RK3399(BIT(29), BIT(29), BIT(27), true),
-> -	[RK3399_PD_SD]		=3D DOMAIN_RK3399(BIT(30), BIT(30), BIT(28), true),
-> -	[RK3399_PD_SDIOAUDIO]	=3D DOMAIN_RK3399(BIT(31), BIT(31), BIT(29), true=
-),
-> +	[RK3399_PD_TCPD0]	=3D DOMAIN_RK3399("tcpd0", BIT(8),  BIT(8),  0,	   fa=
-lse),
-> +	[RK3399_PD_TCPD1]	=3D DOMAIN_RK3399("tcpd1", BIT(9),  BIT(9),  0,	   fa=
-lse),
-> +	[RK3399_PD_CCI]		=3D DOMAIN_RK3399("cci", BIT(10), BIT(10), 0,	   true),
-> +	[RK3399_PD_CCI0]	=3D DOMAIN_RK3399("cci0", 0,	 0,	  BIT(15), true),
-> +	[RK3399_PD_CCI1]	=3D DOMAIN_RK3399("cci1", 0,	 0,	  BIT(16), true),
-> +	[RK3399_PD_PERILP]	=3D DOMAIN_RK3399("perilp", BIT(11), BIT(11), BIT(1)=
-,  true),
-> +	[RK3399_PD_PERIHP]	=3D DOMAIN_RK3399("perihp", BIT(12), BIT(12), BIT(2)=
-,  true),
-> +	[RK3399_PD_CENTER]	=3D DOMAIN_RK3399("center", BIT(13), BIT(13), BIT(14=
-), true),
-> +	[RK3399_PD_VIO]		=3D DOMAIN_RK3399("vio", BIT(14), BIT(14), BIT(17), fa=
-lse),
-> +	[RK3399_PD_GPU]		=3D DOMAIN_RK3399("gpu", BIT(15), BIT(15), BIT(0),  fa=
-lse),
-> +	[RK3399_PD_VCODEC]	=3D DOMAIN_RK3399("vcodec", BIT(16), BIT(16), BIT(3)=
-,  false),
-> +	[RK3399_PD_VDU]		=3D DOMAIN_RK3399("vdu", BIT(17), BIT(17), BIT(4),  fa=
-lse),
-> +	[RK3399_PD_RGA]		=3D DOMAIN_RK3399("rga", BIT(18), BIT(18), BIT(5),  fa=
-lse),
-> +	[RK3399_PD_IEP]		=3D DOMAIN_RK3399("iep", BIT(19), BIT(19), BIT(6),  fa=
-lse),
-> +	[RK3399_PD_VO]		=3D DOMAIN_RK3399("vo", BIT(20), BIT(20), 0,	   false),
-> +	[RK3399_PD_VOPB]	=3D DOMAIN_RK3399("vopb", 0,	 0,	  BIT(7),  false),
-> +	[RK3399_PD_VOPL]	=3D DOMAIN_RK3399("vopl", 0, 	 0,	  BIT(8),  false),
-> +	[RK3399_PD_ISP0]	=3D DOMAIN_RK3399("isp0", BIT(22), BIT(22), BIT(9),  f=
-alse),
-> +	[RK3399_PD_ISP1]	=3D DOMAIN_RK3399("isp1", BIT(23), BIT(23), BIT(10), f=
-alse),
-> +	[RK3399_PD_HDCP]	=3D DOMAIN_RK3399("hdcp", BIT(24), BIT(24), BIT(11), f=
-alse),
-> +	[RK3399_PD_GMAC]	=3D DOMAIN_RK3399("gmac", BIT(25), BIT(25), BIT(23), t=
-rue),
-> +	[RK3399_PD_EMMC]	=3D DOMAIN_RK3399("emmc", BIT(26), BIT(26), BIT(24), t=
-rue),
-> +	[RK3399_PD_USB3]	=3D DOMAIN_RK3399("usb3", BIT(27), BIT(27), BIT(12), t=
-rue),
-> +	[RK3399_PD_EDP]		=3D DOMAIN_RK3399("edp", BIT(28), BIT(28), BIT(22), fa=
-lse),
-> +	[RK3399_PD_GIC]		=3D DOMAIN_RK3399("gic", BIT(29), BIT(29), BIT(27), tr=
-ue),
-> +	[RK3399_PD_SD]		=3D DOMAIN_RK3399("sd", BIT(30), BIT(30), BIT(28), true=
-),
-> +	[RK3399_PD_SDIOAUDIO]	=3D DOMAIN_RK3399("sdioaudio", BIT(31), BIT(31), =
-BIT(29), true),
->  };
->  =
-
->  static const struct rockchip_pmu_info px30_pmu =3D {
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-contr=
+oller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-control=
+ler.yaml
+> new file mode 100644
+> index 000000000000..9fec9e227432
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.y=
+aml
+> @@ -0,0 +1,291 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Power Domains
+> +
+> +maintainers:
+> +  - Elaine Zhang <zhangqing@rock-chips.com>
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +description: |
+> +  Rockchip processors include support for multiple power domains which c=
+an be
+> +  powered up/down by software based on different application scenarios t=
+o save power.
+> +
+> +  Power domains contained within power-controller node are generic power=
+ domain
+> +  providers documented in Documentation/devicetree/bindings/power/power-=
+domain.yaml.
+> +
+> +  IP cores belonging to a power domain should contain a "power-domains"
+> +  property that is a phandle for the power domain node representing the =
+domain.
+> +
+> +properties:
+> +  $nodename:
+> +    const: power-controller
+> +
+> +  compatible:
+> +    enum:
+> +      - rockchip,px30-power-controller
+> +      - rockchip,rk3036-power-controller
+> +      - rockchip,rk3066-power-controller
+> +      - rockchip,rk3128-power-controller
+> +      - rockchip,rk3188-power-controller
+> +      - rockchip,rk3228-power-controller
+> +      - rockchip,rk3288-power-controller
+> +      - rockchip,rk3328-power-controller
+> +      - rockchip,rk3366-power-controller
+> +      - rockchip,rk3368-power-controller
+> +      - rockchip,rk3399-power-controller
+> +
+> +  "#power-domain-cells":
+> +    const: 1
+> +
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
+> +
+> +  clocks: true
+> +
+> +  assigned-clocks:
+> +    minItems: 1
+> +
+> +  assigned-clock-parents:
+> +    minItems: 1
+> +
+> +patternProperties:
+> +  "^power-domain@[0-9a-f]+$":
+> +    type: object
+> +    description: |
+> +      Represents the power domains within the power controller node as d=
+ocumented
+> +      in Documentation/devicetree/bindings/power/power-domain.yaml.
+> +
+> +    properties:
+> +
+> +      "#power-domain-cells":
+> +        description:
+> +          Must be 0 for nodes representing a single PM domain and 1 for =
+nodes
+> +          providing multiple PM domains.
+> +
+> +      "#address-cells":
+> +        const: 1
+> +
+> +      "#size-cells":
+> +        const: 0
+> +
+> +      reg:
+> +        maxItems: 1
+> +        description: |
+> +          Power domain index. Valid values are defined in
+> +          "include/dt-bindings/power/px30-power.h"
+> +          "include/dt-bindings/power/rk3036-power.h"
+> +          "include/dt-bindings/power/rk3066-power.h"
+> +          "include/dt-bindings/power/rk3128-power.h"
+> +          "include/dt-bindings/power/rk3188-power.h"
+> +          "include/dt-bindings/power/rk3228-power.h"
+> +          "include/dt-bindings/power/rk3288-power.h"
+> +          "include/dt-bindings/power/rk3328-power.h"
+> +          "include/dt-bindings/power/rk3366-power.h"
+> +          "include/dt-bindings/power/rk3368-power.h"
+> +          "include/dt-bindings/power/rk3399-power.h"
+> +
+> +      clocks:
+> +        description: |
+> +          A number of phandles to clocks that need to be enabled while p=
+ower domain
+> +          switches state.
+> +
+> +      pm_qos:
+> +        description: |
+> +          A number of phandles to qos blocks which need to be saved and =
+restored
+> +          while power domain switches state.
+> +
+> +    patternProperties:
+> +      "^power-domain@[0-9a-f]+$":
+> +        type: object
+> +        description: |
+> +          Represents a power domain child within a power domain parent n=
+ode.
+> +
+> +        properties:
+> +
+> +          "#power-domain-cells":
+> +            description:
+> +              Must be 0 for nodes representing a single PM domain and 1 =
+for nodes
+> +              providing multiple PM domains.
+> +
+> +          "#address-cells":
+> +            const: 1
+> +
+> +          "#size-cells":
+> +            const: 0
+> +
+> +          reg:
+> +            maxItems: 1
+> +
+> +          clocks:
+> +            description: |
+> +              A number of phandles to clocks that need to be enabled whi=
+le power domain
+> +              switches state.
+> +
+> +          pm_qos:
+> +            description: |
+> +              A number of phandles to qos blocks which need to be saved =
+and restored
+> +              while power domain switches state.
+> +
+> +        patternProperties:
+> +          "^power-domain@[0-9a-f]+$":
+> +            type: object
+> +            description: |
+> +              Represents a power domain child within a power domain pare=
+nt node.
+> +
+> +            properties:
+> +
+> +              "#power-domain-cells":
+> +                description:
+> +                  Must be 0 for nodes representing a single PM domain an=
+d 1 for nodes
+> +                  providing multiple PM domains.
+> +
+> +              "#address-cells":
+> +                const: 1
+> +
+> +              "#size-cells":
+> +                const: 0
+> +
+> +              reg:
+> +                maxItems: 1
+> +
+> +              clocks:
+> +                description: |
+> +                  A number of phandles to clocks that need to be enabled=
+ while power domain
+> +                  switches state.
+> +
+> +              pm_qos:
+> +                description: |
+> +                  A number of phandles to qos blocks which need to be sa=
+ved and restored
+> +                  while power domain switches state.
+> +
+> +            required:
+> +              - reg
+> +
+> +            additionalProperties: false
+> +
+> +        required:
+> +          - reg
+> +
+> +        additionalProperties: false
+> +
+> +    required:
+> +      - reg
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - "#power-domain-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3399-cru.h>
+> +    #include <dt-bindings/power/rk3399-power.h>
+> +
+> +    soc {
+> +        #address-cells =3D <2>;
+> +        #size-cells =3D <2>;
+> +
+> +        qos_hdcp: qos@ffa90000 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffa90000 0x0 0x20>;
+> +        };
+> +
+> +        qos_iep: qos@ffa98000 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffa98000 0x0 0x20>;
+> +        };
+> +
+> +        qos_rga_r: qos@ffab0000 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffab0000 0x0 0x20>;
+> +        };
+> +
+> +        qos_rga_w: qos@ffab0080 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffab0080 0x0 0x20>;
+> +        };
+> +
+> +        qos_video_m0: qos@ffab8000 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffab8000 0x0 0x20>;
+> +        };
+> +
+> +        qos_video_m1_r: qos@ffac0000 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffac0000 0x0 0x20>;
+> +        };
+> +
+> +        qos_video_m1_w: qos@ffac0080 {
+> +            compatible =3D "rockchip,rk3399-qos", "syscon";
+> +            reg =3D <0x0 0xffac0080 0x0 0x20>;
+> +        };
+> +
+> +        power-management@ff310000 {
+> +            compatible =3D "rockchip,rk3399-pmu", "syscon", "simple-mfd";
+> +            reg =3D <0x0 0xff310000 0x0 0x1000>;
+> +
+> +            power-controller {
+> +                compatible =3D "rockchip,rk3399-power-controller";
+> +                #power-domain-cells =3D <1>;
+> +                #address-cells =3D <1>;
+> +                #size-cells =3D <0>;
+> +
+> +                /* These power domains are grouped by VD_CENTER */
+> +                 power-domain@RK3399_PD_IEP {
+> +                    reg =3D <RK3399_PD_IEP>;
+> +                    clocks =3D <&cru ACLK_IEP>,
+> +                             <&cru HCLK_IEP>;
+> +                    pm_qos =3D <&qos_iep>;
+> +                    #power-domain-cells =3D <0>;
+> +                };
+> +                 power-domain@RK3399_PD_RGA {
+> +                    reg =3D <RK3399_PD_RGA>;
+> +                    clocks =3D <&cru ACLK_RGA>,
+> +                             <&cru HCLK_RGA>;
+> +                    pm_qos =3D <&qos_rga_r>,
+> +                             <&qos_rga_w>;
+> +                    #power-domain-cells =3D <0>;
+> +                };
+> +                 power-domain@RK3399_PD_VCODEC {
+> +                    reg =3D <RK3399_PD_VCODEC>;
+> +                    clocks =3D <&cru ACLK_VCODEC>,
+> +                             <&cru HCLK_VCODEC>;
+> +                    pm_qos =3D <&qos_video_m0>;
+> +                    #power-domain-cells =3D <0>;
+> +                };
+> +                 power-domain@RK3399_PD_VDU {
+> +                    reg =3D <RK3399_PD_VDU>;
+> +                    clocks =3D <&cru ACLK_VDU>,
+> +                             <&cru HCLK_VDU>;
+> +                    pm_qos =3D <&qos_video_m1_r>,
+> +                             <&qos_video_m1_w>;
+> +                    #power-domain-cells =3D <0>;
+> +                };
+> +                 power-domain@RK3399_PD_VIO {
+> +                    reg =3D <RK3399_PD_VIO>;
+> +                    #power-domain-cells =3D <1>;
+> +                    #address-cells =3D <1>;
+> +                    #size-cells =3D <0>;
+> +
+> +                     power-domain@RK3399_PD_HDCP {
+> +                        reg =3D <RK3399_PD_HDCP>;
+> +                        clocks =3D <&cru ACLK_HDCP>,
+> +                                 <&cru HCLK_HDCP>,
+> +                                 <&cru PCLK_HDCP>;
+> +                        pm_qos =3D <&qos_hdcp>;
+> +                        #power-domain-cells =3D <0>;
+> +                    };
+> +                };
+> +            };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.=
+txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> deleted file mode 100644
+> index 8304eceb62e4..000000000000
+> --- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> +++ /dev/null
+> @@ -1,136 +0,0 @@
+> -* Rockchip Power Domains
+> -
+> -Rockchip processors include support for multiple power domains which can=
+ be
+> -powered up/down by software based on different application scenes to sav=
+e power.
+> -
+> -Required properties for power domain controller:
+> -- compatible: Should be one of the following.
+> -	"rockchip,px30-power-controller" - for PX30 SoCs.
+> -	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
+> -	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
+> -	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
+> -	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
+> -	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
+> -	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+> -	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
+> -	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
+> -	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
+> -	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+> -- #power-domain-cells: Number of cells in a power-domain specifier.
+> -	Should be 1 for multiple PM domains.
+> -- #address-cells: Should be 1.
+> -- #size-cells: Should be 0.
+> -
+> -Required properties for power domain sub nodes:
+> -- reg: index of the power domain, should use macros in:
+> -	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
+> -	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power doma=
+in.
+> -- clocks (optional): phandles to clocks which need to be enabled while p=
+ower domain
+> -	switches state.
+> -- pm_qos (optional): phandles to qos blocks which need to be saved and r=
+estored
+> -	while power domain switches state.
+> -
+> -Qos Example:
+> -
+> -	qos_gpu: qos_gpu@ffaf0000 {
+> -		compatible =3D"syscon";
+> -		reg =3D <0x0 0xffaf0000 0x0 0x20>;
+> -	};
+> -
+> -Example:
+> -
+> -	power: power-controller {
+> -		compatible =3D "rockchip,rk3288-power-controller";
+> -		#power-domain-cells =3D <1>;
+> -		#address-cells =3D <1>;
+> -		#size-cells =3D <0>;
+> -
+> -		pd_gpu {
+> -			reg =3D <RK3288_PD_GPU>;
+> -			clocks =3D <&cru ACLK_GPU>;
+> -			pm_qos =3D <&qos_gpu>;
+> -		};
+> -	};
+> -
+> -	 power: power-controller {
+> -                compatible =3D "rockchip,rk3368-power-controller";
+> -                #power-domain-cells =3D <1>;
+> -                #address-cells =3D <1>;
+> -                #size-cells =3D <0>;
+> -
+> -                pd_gpu_1 {
+> -                        reg =3D <RK3368_PD_GPU_1>;
+> -                        clocks =3D <&cru ACLK_GPU_CFG>;
+> -                };
+> -        };
+> -
+> -Example 2:
+> -		power: power-controller {
+> -			compatible =3D "rockchip,rk3399-power-controller";
+> -			#power-domain-cells =3D <1>;
+> -			#address-cells =3D <1>;
+> -			#size-cells =3D <0>;
+> -
+> -			pd_vio {
+> -				#address-cells =3D <1>;
+> -				#size-cells =3D <0>;
+> -				reg =3D <RK3399_PD_VIO>;
+> -
+> -				pd_vo {
+> -					#address-cells =3D <1>;
+> -					#size-cells =3D <0>;
+> -					reg =3D <RK3399_PD_VO>;
+> -
+> -					pd_vopb {
+> -						reg =3D <RK3399_PD_VOPB>;
+> -					};
+> -
+> -					pd_vopl {
+> -						reg =3D <RK3399_PD_VOPL>;
+> -					};
+> -				};
+> -			};
+> -		};
+> -
+> -Node of a device using power domains must have a power-domains property,
+> -containing a phandle to the power device node and an index specifying wh=
+ich
+> -power domain to use.
+> -The index should use macros in:
+> -	"include/dt-bindings/power/px30-power.h" - for px30 type power domain.
+> -	"include/dt-bindings/power/rk3036-power.h" - for rk3036 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3128-power.h" - for rk3128 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3128-power.h" - for rk3228 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3328-power.h" - for rk3328 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3366-power.h" - for rk3366 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power doma=
+in.
+> -	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power doma=
+in.
+> -
+> -Example of the node using power domain:
+> -
+> -	node {
+> -		/* ... */
+> -		power-domains =3D <&power RK3288_PD_GPU>;
+> -		/* ... */
+> -	};
+> -
+> -	node {
+> -                /* ... */
+> -                power-domains =3D <&power RK3368_PD_GPU_1>;
+> -                /* ... */
+> -        };
+> -
+> -	node {
+> -		/* ... */
+> -		power-domains =3D <&power RK3399_PD_VOPB>;
+> -		/* ... */
+> -	};
 > =
 
 
