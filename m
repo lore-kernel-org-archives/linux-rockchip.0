@@ -2,86 +2,67 @@ Return-Path: <SRS0=Z0ts=IY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72B75C433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 14:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF3D7C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 15:28:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C0EC61A05
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 14:37:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C0EC61A05
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 77E2061A1A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 15:28:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77E2061A1A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uLXyViuChxdL071M78yIIw6UzB0lNILCj5ztJFIlU1g=; b=EFTQSaHpHSrPM/HiAisTPvNbB
-	+F7wzyD23U+dcn2hSIgOqs9ITA5Cm9z8Df0ZAeRCv95scFSSOZ7xuyxZdKozxCACxh79zel3WjwXv
-	OEoiEvrlmhdHo2pihZCpz1LzILSiQA9HE/odvZqGQHQd/oyfE097xr+KgeeatNetnFSPPLyfAhXCB
-	+9Lj4L8fQyWx5HwdAq7b3g9LuGnhBM1cXvCJiX8r9v/HdAladW+0JPcNXshO3EAnVjVw79MDcQPgp
-	sy536z1ljFn747G6h01dsrR6ZmkJ+MT9KK7kbdeUozXke6lqoO2hSGSaIVJJ8gnnSYbVLrI+PSzlH
-	KbdFtgK0w==;
+	 bh=AE7bTgveMPh4Ve9EXiy+An/PtRjSK8kPQKKFmLLvmBA=; b=Wj61pkSRxRCzM7MtEZTxzlVkQ
+	mTlAFTRcndK1qZTuFnmRxb3wZz8sOdb2zH2RAF16rWUlmsYug8XLoIUqkqn7b/DjgnG1YdTZkJ1uj
+	EDrCkGCQqCH764At7QKA/x9delNP+thqeZmcpSOMYhrEsDsyALRf3l8KeOH5ml9BRUwBKbS10eexv
+	47qNoOVen5qeJlUrKIIL3XLxc1wU/iQtdMjY+XMozCUx2jc5AYUTOrc00tBzwtSmc6z/Tp+FZrAzZ
+	KSEQa/AMk1OTof6wgOSjnilk6kUwA9ez0/fAK0OuNcEPFEg2fawZ4fJilfVtiRZR3MHj15vw3nziA
+	mSBMBQpJA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPnac-003nh5-6p; Fri, 26 Mar 2021 14:37:30 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1lPoOG-003t1c-2B; Fri, 26 Mar 2021 15:28:48 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPnaY-003nfg-Rv
- for linux-rockchip@lists.infradead.org; Fri, 26 Mar 2021 14:37:28 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <pza@pengutronix.de>)
- id 1lPnaQ-0001Ln-5z; Fri, 26 Mar 2021 15:37:18 +0100
-Received: from pza by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <pza@pengutronix.de>)
- id 1lPnaO-0007mU-JM; Fri, 26 Mar 2021 15:37:16 +0100
-Date: Fri, 26 Mar 2021 15:37:16 +0100
-From: Philipp Zabel <pza@pengutronix.de>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: ezequiel@collabora.com, mchehab@kernel.org, robh+dt@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- lee.jones@linaro.org, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl,
- emil.l.velikov@gmail.com, kernel@pengutronix.de, linux-imx@nxp.com,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
- kernel@collabora.com
-Subject: Re: [PATCH v6 02/13] dt-bindings: media: nxp,imx8mq-vpu: Update the
- bindings for G2 support
-Message-ID: <20210326143716.GA27823@pengutronix.de>
+ id 1lPoO5-003t03-0M; Fri, 26 Mar 2021 15:28:38 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 80C151F470A1
+Message-ID: <986ee841d0c512a6f0ffe9dfa2e0803980b02aa0.camel@collabora.com>
+Subject: Re: [PATCH v6 13/13] arm64: dts: imx8mq: Add node to G2 hardware
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel
+ <pza@pengutronix.de>
+Cc: mchehab@kernel.org, robh+dt@kernel.org, shawnguo@kernel.org, 
+ s.hauer@pengutronix.de, festevam@gmail.com, lee.jones@linaro.org, 
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com,  wens@csie.org, jernej.skrabec@siol.net,
+ hverkuil-cisco@xs4all.nl,  emil.l.velikov@gmail.com, kernel@pengutronix.de,
+ linux-imx@nxp.com,  linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,  devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ devel@driverdev.osuosl.org, kernel@collabora.com
+Date: Fri, 26 Mar 2021 12:28:25 -0300
+In-Reply-To: <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
 References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
- <20210318082046.51546-3-benjamin.gaignard@collabora.com>
- <20210326141156.GA8441@pengutronix.de>
- <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
+ <20210318082046.51546-14-benjamin.gaignard@collabora.com>
+ <20210326142440.GD8441@pengutronix.de>
+ <4df3c9e4-0983-6007-f3b3-323882f903cf@collabora.com>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3c23bfb0-eed4-63ad-be70-58aa129b0e35@collabora.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 15:29:00 up 36 days, 17:52, 99 users,  load average: 0.78, 0.37, 0.20
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: pza@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_143727_005471_AB30217E 
-X-CRM114-Status: GOOD (  30.81  )
+X-CRM114-CacheID: sfid-20210326_152837_143049_EE219AD3 
+X-CRM114-Status: GOOD (  22.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,141 +75,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 26, 2021 at 03:26:15PM +0100, Benjamin Gaignard wrote:
-> =
-
-> Le 26/03/2021 =E0 15:11, Philipp Zabel a =E9crit=A0:
-> > On Thu, Mar 18, 2021 at 09:20:35AM +0100, Benjamin Gaignard wrote:
-> > > Introducing G2 hevc video decoder lead to modify the bindings to allow
-> > > to get one node per VPUs.
-> > > VPUs share one hardware control block which is provided as a phandle =
-on
-> > > an syscon.
-> > > Each node got now one reg and one interrupt.
-> > > Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
-> > > =
-
-> > > To be compatible with older DT the driver is still capable to use 'ct=
-rl'
-> > > reg-name even if it is deprecated now.
-> > > =
-
-> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > > ---
-> > > version 5:
-> > > - This version doesn't break the backward compatibilty between kernel
-> > >    and DT.
-> > > =
-
-> > >   .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++----=
----
-> > >   1 file changed, 34 insertions(+), 19 deletions(-)
-> > > =
-
-> > > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.y=
-aml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > index 762be3f96ce9..79502fc8bde5 100644
-> > > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > > @@ -15,22 +15,18 @@ description:
-> > >   properties:
-> > >     compatible:
-> > > -    const: nxp,imx8mq-vpu
-> > > +    oneOf:
-> > > +      - const: nxp,imx8mq-vpu
-> > > +      - const: nxp,imx8mq-vpu-g2
-> > >     reg:
-> > > -    maxItems: 3
-> > > -
-> > > -  reg-names:
-> > > -    items:
-> > > -      - const: g1
-> > > -      - const: g2
-> > > -      - const: ctrl
-> > > +    maxItems: 1
-> > >     interrupts:
-> > > -    maxItems: 2
-> > > +    maxItems: 1
-> > >     interrupt-names:
-> > > -    items:
-> > > +    oneOf:
-> > >         - const: g1
-> > >         - const: g2
-> > > @@ -46,14 +42,18 @@ properties:
-> > >     power-domains:
-> > >       maxItems: 1
-> > > +  nxp,imx8mq-vpu-ctrl:
-> > > +    description: Specifies a phandle to syscon VPU hardware control =
-block
-> > > +    $ref: "/schemas/types.yaml#/definitions/phandle"
-> > > +
-> > Should we drop the 'q' here, i.e. nxp,imx8m-vpu-ctrl so we can use the =
-same
-> > binding for i.MX8MM later?
-> =
-
-> I don't know if the control block is the same or not on IMX8MM, so I have=
- only
-> put a compatible targeting IMX8MQ.
-
-Oh, the compatible property of the control handle node can be different.
-I'm just suggesting that this phandle property be called the same.
-Otherwise we'd have to add another nxp,imx8mm-vpu-ctrl property and then
-mark either of the two as required, depending on the compatible.
-
-> > =
-
-> > >   required:
-> > >     - compatible
-> > >     - reg
-> > > -  - reg-names
-> > >     - interrupts
-> > >     - interrupt-names
-> > >     - clocks
-> > >     - clock-names
-> > > +  - nxp,imx8mq-vpu-ctrl
-> > >   additionalProperties: false
-> > > @@ -62,18 +62,33 @@ examples:
-> > >           #include <dt-bindings/clock/imx8mq-clock.h>
-> > >           #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > -        vpu: video-codec@38300000 {
-> > > +        vpu_ctrl: syscon@38320000 {
-> > > +                 compatible =3D "nxp,imx8mq-vpu-ctrl", "syscon";
-> > > +                 reg =3D <0x38320000 0x10000>;
-> > > +        };
-> > > +
-> > > +        vpu_g1: video-codec@38300000 {
-> > >                   compatible =3D "nxp,imx8mq-vpu";
-> > > -                reg =3D <0x38300000 0x10000>,
-> > > -                      <0x38310000 0x10000>,
-> > > -                      <0x38320000 0x10000>;
-> > > -                reg-names =3D "g1", "g2", "ctrl";
-> > > -                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> > > -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> > > -                interrupt-names =3D "g1", "g2";
-> > > +                reg =3D <0x38300000 0x10000>;
-> > > +                interrupts =3D <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> > > +                interrupt-names =3D "g1";
-> > > +                clocks =3D <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> > > +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> > Does the G1 VPU require the G2 clock and vice versa?
-> =
-
-> Yes either the control hardware block won't work.
-
-Ok.
-
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-regards
-Philipp
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCAyMDIxLTAzLTI2IGF0IDE1OjMzICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90
+ZToKPiAKPiBMZSAyNi8wMy8yMDIxIMOgIDE1OjI0LCBQaGlsaXBwIFphYmVsIGEgw6ljcml0wqA6
+Cj4gPiBPbiBUaHUsIE1hciAxOCwgMjAyMSBhdCAwOToyMDo0NkFNICswMTAwLCBCZW5qYW1pbiBH
+YWlnbmFyZCB3cm90ZToKPiA+ID4gU3BsaXQgVlBVIG5vZGUgaW4gdHdvOiBvbmUgZm9yIEcxIGFu
+ZCBvbmUgZm9yIEcyIHNpbmNlIHRoZXkgYXJlCj4gPiA+IGRpZmZlcmVudCBoYXJkd2FyZSBibG9j
+a3MuCj4gPiA+IEFkZCBzeXNjb24gZm9yIGhhcmR3YXJlIGNvbnRyb2wgYmxvY2suCj4gPiA+IFJl
+bW92ZSByZWctbmFtZXMgcHJvcGVydHkgdGhhdCBpcyB1c2VsZXNzLgo+ID4gPiBFYWNoIFZQVSBu
+b2RlIG9ubHkgbmVlZCBvbmUgaW50ZXJydXB0Lgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTog
+QmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4gPiA+
+IC0tLQo+ID4gPiB2ZXJzaW9uIDU6Cj4gPiA+IMKgIC0gdXNlIHN5c2NvbiBpbnN0ZWFkIG9mIFZQ
+VSByZXNldAo+ID4gPiAKPiA+ID4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14
+OG1xLmR0c2kgfCA0MyArKysrKysrKysrKysrKysrKystLS0tLQo+ID4gPiDCoCAxIGZpbGUgY2hh
+bmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRzaSBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiA+IGluZGV4IDE3YzQ0OWUx
+MmMyZS4uYjUzN2QxNTNlYmJkIDEwMDY0NAo+ID4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
+L2ZyZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2Zy
+ZWVzY2FsZS9pbXg4bXEuZHRzaQo+ID4gPiBAQCAtMTMyOSwxNSArMTMyOSwxNiBAQCB1c2IzX3Bo
+eTE6IHVzYi1waHlAMzgyZjAwNDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ID4gPiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+IMKgIAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgdnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7Cj4gPiA+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfY3RybDogc3lzY29uQDM4MzIwMDAwIHsKPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjb21wYXRpYmxl
+ID0gIm54cCxpbXg4bXEtdnB1LWN0cmwiLCAic3lzY29uIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMyMDAwMCAweDEwMDAw
+PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+ICsKPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHZwdV9nMTogdmlkZW8tY29kZWNAMzgzMDAw
+MDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1IjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMwMDAwMCAweDEwMDAwPiwK
+PiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIDwweDM4MzEwMDAwIDB4MTAwMDA+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDB4MzgzMjAwMDAgMHgxMDAwMD47
+Cj4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVn
+LW5hbWVzID0gImcxIiwgImcyIiwgImN0cmwiOwo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA3IElSUV9UWVBF
+X0xFVkVMX0hJR0g+LAo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8R0lDX1NQSSA4IElSUV9UWVBFX0xF
+VkVMX0hJR0g+Owo+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoGludGVycnVwdC1uYW1lcyA9ICJnMSIsICJnMiI7Cj4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0gPDB4MzgzMDAwMDAgMHgxMDAw
+MD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+aW50ZXJydXB0cyA9IDxHSUNfU1BJIDcgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0LW5hbWVz
+ID0gImcxIjsKPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzFfUk9PVD4sCj4gPiA+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjbGsgSU1Y
+OE1RX0NMS19WUFVfREVDX1JPT1Q+Owo+ID4gPiBAQCAtMTM1MCw5ICsxMzUxLDMzIEBAIHZwdTog
+dmlkZW8tY29kZWNAMzgzMDAwMDAgewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgPCZjbGsgSU1YOE1RX1ZQVV9QTExfT1VUPiwKPiA+ID4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9TWVMxX1BMTF84MDBNPiwK
+PiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhN
+UV9WUFVfUExMPjsKPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8NjAwMDAwMDAwPiwK
+PiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBhc3Np
+Z25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LCA8MzAwMDAwMDAwPiwKPiA+IEknZCBsaWtl
+IHRvIHNlZSB0aGlzIG1lbnRpb25lZCBpbiB0aGUgY29tbWl0IG1lc3NhZ2UuCj4gCj4gWWVzIEkg
+d291bGQgZG8gdGhhdC4KPiBUaGUgdmFsdWUgY29tZXMgZnJvbSB0aGUgZGF0YXNoZWV0Lgo+IAo+
+ID4gCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPDgwMDAwMDAwMD4s
+IDwwPjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBwb3dlci1kb21haW5zID0gPCZwZ2NfdnB1PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBueHAsaW14OG1xLXZwdS1jdHJsID0gPCZ2cHVfY3Ry
+bD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+ID4gPiArCj4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVfZzI6IHZpZGVvLWNvZGVjQDM4MzEw
+MDAwIHsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqBjb21wYXRpYmxlID0gIm54cCxpbXg4bXEtdnB1LWcyIjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMxMDAwMCAweDEwMDAw
+PjsKPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBp
+bnRlcnJ1cHRzID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHQtbmFtZXMg
+PSAiZzIiOwo+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gPiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
+PCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD4sCj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4TVFf
+Q0xLX1ZQVV9ERUNfUk9PVD47Cj4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLMKgICJidXMiOwo+ID4gPiAr
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2lnbmVkLWNs
+b2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxPiwKPiA+IENhbiB0aGUgRzEgY2xvY2sgY29u
+ZmlndXJhdGlvbiBiZSBkcm9wcGVkIGZyb20gdGhlIEcyIGRldmljZSBub2RlIGFuZAo+ID4gdGhl
+IEcyIGNsb2NrIGNvbmZpZ3VyYXRpb24gZnJvbSB0aGUgRzEgZGV2aWNlIG5vZGU/IEl0IGxvb2tz
+IHdlaXJkIHRoYXQKPiA+IHRoZXNlIGRldmljZXMgY29uZmlndXJlIGVhY2ggb3RoZXIncyBjbG9j
+a3MuCj4gCj4gTm8gYmVjYXVzZSBpZiBvbmx5IG9uZSBkZXZpY2Ugbm9kZSBpcyBlbmFibGVkIHdl
+IG5lZWQgdG8gY29uZmlndXJlIHRoZSBib3RoCj4gY2xvY2tzIGFueXdheS4KPiAKClNpbmNlIHRo
+aXMgaXMgYWt3YXJkLCBob3cgYWJvdXQgYWRkaW5nIGEgY29tbWVudCBoZXJlIGluIHRoZSBkdHNp
+IHRvIGNsYXJpZnkgaXQ/CgpUaGFua3MsCkV6ZXF1aWVsCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
