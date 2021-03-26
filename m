@@ -2,88 +2,84 @@ Return-Path: <SRS0=Z0ts=IY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 534B3C433E1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 13:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8AD4C433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 14:12:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35148619FF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 13:07:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35148619FF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 10CAB61A02
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 14:12:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10CAB61A02
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GTwMdJ72PkOb7iL1Qb174Z71f2MTv3vFIvt7o0QUB+A=; b=IVVJzt93WRF8DfYXT7MT4GQNF
-	zSrsziQztWrnafpJ+YC2XdCLWox3Fw5bmof/rxTD2HdKlrLQAM2LyPgnGvhWQm1jQvgYsUcW0gJUZ
-	L30Avi4tyBwIH4iGPgTLhe1CjDGkcv1TDg2qH5k1/br8y+3zB322nxCkaPglv+fiU585pMvXh/3/l
-	8edI/NJGcEvaR0Xhjfr48YqENspqT9vmMv/g0r0nIwYnLld6Un6W0iz5CvSjXl5+BSFgGlibQM6FT
-	ctJ87uvZlU5HPGlfYuPandLmP1TNnUCX1X4Kev7EpdU8TKuNLLeFjQHqUtRgNcNsNEknb+mg0+vir
-	g21ey5jrw==;
+	 bh=akAcRhdP9cKjEKsW+RH2Y1/2gI11Eq8mWuYyKO1/KjI=; b=V5ZuXdx1bbKcLgJvIwyb1rHMg
+	Ol/y4NbI5I8maOZHsqTUwwIv2x+cMrE80V4ZkLMEWCVgNgQ+YgvIL/g1YdakPAWER5rPvsC91t5H+
+	VuNcgQWDSjJigipu0+Q40XmxJ1khbmzOITlkSpe0fDo88OKJdYNSQm9+2Hjq9Ke4NSYfZ3zXgf04z
+	up0leAYIcbwZehXTW5MoZNONMi3iX3q2JZcnSQOM9UDuqNnEx3TXNAoc/iD3dy15+8jPXRjZHSg1q
+	bYRpcdg/0+1SUSyBs7Y9RZ4rCAVUEtl0IEyju4MFYxYRTwFJEYxPk9/NElh9UY4081Nm6C6J5x1LW
+	4xsnNLfnQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPmBY-003ZiC-F4; Fri, 26 Mar 2021 13:07:32 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1lPnCB-003kHW-Of; Fri, 26 Mar 2021 14:12:15 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPmBU-003Zh9-JE
- for linux-rockchip@lists.infradead.org; Fri, 26 Mar 2021 13:07:30 +0000
-Received: by mail-ed1-x536.google.com with SMTP id bf3so6232576edb.6
- for <linux-rockchip@lists.infradead.org>; Fri, 26 Mar 2021 06:07:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UzC5FBVz05PHuae7oBlniWjIpKp36WiskgIQCfeie3A=;
- b=V2Ytu6qBPPGkLMv7S6mlhwfXx73xncAijDlfo/GWHDkV2vSaO7UEb+pL2lXTMSyc5T
- IS8zUw/vml70QF5x1CKd0LeZY3y+6cRbfEMJ1xDLKyJ6P1Wp0E1aRqCoJxutN99HxIIj
- ApPez/DvySFJy9SEe6wXhAga56XRZj9RLazbYoPnqEHIvlzyG6zLm9eLX0EjsTPTQtS0
- 1Gtv7+5x4BTV5lm9KgOtXvV1GfUeRwO+ZJlYOtIzyaUgKQrdCDD0mJHLE0cQd693TKmR
- I/76K60wh46tNX2SDm8Oitpz6W/2T+/oA/Mzq4sulFiheOe1a+VhaE5W+dWYFP/97uVa
- jsXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UzC5FBVz05PHuae7oBlniWjIpKp36WiskgIQCfeie3A=;
- b=t+nyj/RubjhkiE7pD57DUx+8Wq/Lojs2tYUKFiPd8HAOkt/oKUhtprwTdFV3tjXkoM
- /G4S0x1ftVU0eQFDk/RU0ZwF/8NW0SkT4NvzL6bsvHemd373AjVg9kbsLYXGAQf0yMz0
- z3c/e4FboFc8d+Hg62hY3681tGATaVzrI1mrftsfFyoqsQ7SbtdYg20RfZEXjWe4v7Eq
- C6NKC9u4C05a80HPK9pEIQptshV0H5yDR6Uu6cLB6iulYEIpDm5lKNO1r4/AdKJPPx10
- VQzvRwWDouRmrHJ98rBV0bMnBbVqbBm210JVx7RFgAwTTURBPXDqZ1bKbqtlyfrjsPci
- ZG6g==
-X-Gm-Message-State: AOAM532JYBzyKKAmA/jKuCCoijSz5TUdPbJQ3hwymaeqeMU810AoRMD4
- UTQuYmhSAKWqElLmLW1QIvwSMfN3+W7ELHyafr7PXg==
-X-Google-Smtp-Source: ABdhPJwkjDuvTV8Eny6IaII+A63BvbGqHoVciv6m70WrZQH4YTnZlVRI3Qv1mAGKV+kcQQCfrCPZQPEI7Hh3uEB5emg=
-X-Received: by 2002:a05:6402:17d6:: with SMTP id
- s22mr14815062edy.232.1616764047557; 
- Fri, 26 Mar 2021 06:07:27 -0700 (PDT)
+ id 1lPnC8-003kGd-Er
+ for linux-rockchip@lists.infradead.org; Fri, 26 Mar 2021 14:12:14 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <pza@pengutronix.de>)
+ id 1lPnBv-0005tW-3S; Fri, 26 Mar 2021 15:11:59 +0100
+Received: from pza by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <pza@pengutronix.de>)
+ id 1lPnBs-0006cN-1E; Fri, 26 Mar 2021 15:11:56 +0100
+Date: Fri, 26 Mar 2021 15:11:56 +0100
+From: Philipp Zabel <pza@pengutronix.de>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: ezequiel@collabora.com, mchehab@kernel.org, robh+dt@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ lee.jones@linaro.org, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl,
+ emil.l.velikov@gmail.com, kernel@pengutronix.de, linux-imx@nxp.com,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org,
+ kernel@collabora.com
+Subject: Re: [PATCH v6 02/13] dt-bindings: media: nxp,imx8mq-vpu: Update the
+ bindings for G2 support
+Message-ID: <20210326141156.GA8441@pengutronix.de>
+References: <20210318082046.51546-1-benjamin.gaignard@collabora.com>
+ <20210318082046.51546-3-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20210324064541.949630-1-jay.xu@rock-chips.com>
- <202103241450286417142@rock-chips.com>
-In-Reply-To: <202103241450286417142@rock-chips.com>
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Fri, 26 Mar 2021 14:07:16 +0100
-Message-ID: <CAMpxmJWmUu962YrcCQmxukV3hM9K8hGVuOzimZ5friX58oSDWw@mail.gmail.com>
-Subject: Re: [PATCH RESEND 0/7] gpio-rockchip driver
-To: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: Tao Huang <huangtao@rock-chips.com>,
- =?UTF-8?B?5p2o5Yev?= <kever.yang@rock-chips.com>, 
- Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20210318082046.51546-3-benjamin.gaignard@collabora.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 15:07:47 up 36 days, 17:31, 96 users,  load average: 0.09, 0.22, 0.17
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: pza@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_130729_005969_031BEE96 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20210326_141212_551338_F931DBE1 
+X-CRM114-Status: GOOD (  23.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,42 +97,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 24, 2021 at 7:50 AM jay.xu@rock-chips.com
-<jay.xu@rock-chips.com> wrote:
->
-> I'm forget to send-to include Bartosz, I'll remember in next version
->
-> --------------
-> jay.xu@rock-chips.com
-> >Separate gpio driver from pinctrl driver, and support v2 controller.
-> >
-> >Jianqun Xu (7):
-> >  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
-> >  pinctrl/pinctrl-rockchip.h: add pinctrl device to gpio bank struct
-> >  gpio: separate gpio driver from pinctrl-rockchip driver
-> >  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
-> >  gpio/rockchip: support next version gpio controller
-> >  gpio/rockchip: always enable clock for gpio controller
-> >  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
-> >
-> > drivers/gpio/Kconfig               |   8 +
-> > drivers/gpio/Makefile              |   1 +
-> > drivers/gpio/gpio-rockchip.c       | 758 ++++++++++++++++++++++++
-> > drivers/pinctrl/pinctrl-rockchip.c | 909 +----------------------------
-> > drivers/pinctrl/pinctrl-rockchip.h | 286 +++++++++
-> > 5 files changed, 1072 insertions(+), 890 deletions(-)
-> > create mode 100644 drivers/gpio/gpio-rockchip.c
-> > create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
-> >
-> >--
-> >2.25.1
-> >
-> >
-> >
+On Thu, Mar 18, 2021 at 09:20:35AM +0100, Benjamin Gaignard wrote:
+> Introducing G2 hevc video decoder lead to modify the bindings to allow
+> to get one node per VPUs.
+> VPUs share one hardware control block which is provided as a phandle on
+> an syscon.
+> Each node got now one reg and one interrupt.
+> Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
+> 
+> To be compatible with older DT the driver is still capable to use 'ctrl'
+> reg-name even if it is deprecated now.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> version 5:
+> - This version doesn't break the backward compatibilty between kernel
+>   and DT.
+> 
+>  .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++-------
+>  1 file changed, 34 insertions(+), 19 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> index 762be3f96ce9..79502fc8bde5 100644
+> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> @@ -15,22 +15,18 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    const: nxp,imx8mq-vpu
+> +    oneOf:
+> +      - const: nxp,imx8mq-vpu
+> +      - const: nxp,imx8mq-vpu-g2
+>  
+>    reg:
+> -    maxItems: 3
+> -
+> -  reg-names:
+> -    items:
+> -      - const: g1
+> -      - const: g2
+> -      - const: ctrl
+> +    maxItems: 1
+>  
+>    interrupts:
+> -    maxItems: 2
+> +    maxItems: 1
+>  
+>    interrupt-names:
+> -    items:
+> +    oneOf:
+>        - const: g1
+>        - const: g2
+>  
+> @@ -46,14 +42,18 @@ properties:
+>    power-domains:
+>      maxItems: 1
+>  
+> +  nxp,imx8mq-vpu-ctrl:
+> +    description: Specifies a phandle to syscon VPU hardware control block
+> +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> +
 
-I don't even have this in my inbox so I can't review it.
+Should we drop the 'q' here, i.e. nxp,imx8m-vpu-ctrl so we can use the same
+binding for i.MX8MM later?
 
-Bartosz
+>  required:
+>    - compatible
+>    - reg
+> -  - reg-names
+>    - interrupts
+>    - interrupt-names
+>    - clocks
+>    - clock-names
+> +  - nxp,imx8mq-vpu-ctrl
+>  
+>  additionalProperties: false
+>  
+> @@ -62,18 +62,33 @@ examples:
+>          #include <dt-bindings/clock/imx8mq-clock.h>
+>          #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  
+> -        vpu: video-codec@38300000 {
+> +        vpu_ctrl: syscon@38320000 {
+> +                 compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
+> +                 reg = <0x38320000 0x10000>;
+> +        };
+> +
+> +        vpu_g1: video-codec@38300000 {
+>                  compatible = "nxp,imx8mq-vpu";
+> -                reg = <0x38300000 0x10000>,
+> -                      <0x38310000 0x10000>,
+> -                      <0x38320000 0x10000>;
+> -                reg-names = "g1", "g2", "ctrl";
+> -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> -                interrupt-names = "g1", "g2";
+> +                reg = <0x38300000 0x10000>;
+> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+> +                interrupt-names = "g1";
+> +                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+> +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+
+Does the G1 VPU require the G2 clock and vice versa?
+
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
