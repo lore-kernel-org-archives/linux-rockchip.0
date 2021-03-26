@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4319DC433C1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 11:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77B9EC433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 12:42:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA05961A2D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 11:43:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA05961A2D
+	by mail.kernel.org (Postfix) with ESMTPS id DACE261954
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 12:42:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DACE261954
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=F2zhcE727uGexEXWZb2ZdorPr9tMxlfb6XmSEPnlKDI=; b=lp3E1oHUPiiM3C3wTuoPVpQts
-	YpIh7KMwmSz2xZx9i8YqbxwkQwtr+4pkksXmVqrYazlx/0QWk55BdiXN3/je4F7MRWgdzusKAdVPF
-	/IUC28PnF8AOCcBnv00DB6vNVelqZsohHBW6/RlBVB12ZaldaYc3zZRP9yldq7RPjW0yFXz6A7C9g
-	D7rZPd5SMxQVr7BsqO+elVAwgjLSaKO3YMaR1w2qnEC1xuLybDC1xjZlEf5onEGfxcEHm92vn512O
-	Sx4UpYIu2Yb6PFrScrqPL1HDEHLhEbF4camL/19m5z+q4ltObjHYJvu6IWWaP783QDRRluf5Ne21H
-	QYwJhyCqQ==;
+	 bh=jy5emS/2+nuKDoay2dUa9mtNOdZcU/bXtUzA7ZRjwBU=; b=C0cgHMMFlZgiWZqCxftbouVeI
+	/53jmBUk659hkiQNoYuozlxcLfmfAjNsr+s50/usl5ZJGzQfUcC4hXd+7CM39gSKDs1uTML7cP8Gl
+	ltPB2LBocEnwi2x5q3OOyoe8gRca6pCWt2ufUlBkI2/tvX0jdZX3J4IAY8AEIXf7KoSatRK/JV/WV
+	r70HXXhqedFKSRdf3gRpmzEXgIrtSyQ+ei3P3n/f/uWI5FVdEA1SKpHWn6LKfvkdJ2GIzZtk8Dlyx
+	tM8qId5AdDb9qKqohjaQkctd22TphfJUDhzz3BVrCnddRK8JmTX4/dPYEJKQ2LaJ0Pto7iA/KdMLX
+	sDGPVauCA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPksM-003RrV-S6; Fri, 26 Mar 2021 11:43:38 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1lPlnW-003WyB-Rj; Fri, 26 Mar 2021 12:42:42 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPksH-003RqR-BP; Fri, 26 Mar 2021 11:43:36 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id bx7so5919205edb.12;
- Fri, 26 Mar 2021 04:43:30 -0700 (PDT)
+ id 1lPlnT-003Wxg-D8; Fri, 26 Mar 2021 12:42:42 +0000
+Received: by mail-ej1-x630.google.com with SMTP id jy13so8210275ejc.2;
+ Fri, 26 Mar 2021 05:42:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=z+ymJSzw3ln9nUitY5At2Wj8e4yU6qkv/jQhmBCnIRk=;
- b=Lg5VsvvSMZwrY0AX0IIYoKWiFzGfqNcvuplWclN9n72qraY5rgU8AKSdarVfDUrzhY
- 7kAL/vhh5vARC1DBWCrp7ie6vv4ja3HsUhqbNCUnL8h8swmoUH44H2LoIF5SeLCqNquj
- JHclq6jCJ6QDf4DPWQoEA46J7gQtcXosCIqgdEyOUaR4GExnmC3AnAHL2IfUQgpZiyCT
- 6o5PZ3CnOt9oHHcgk4w76HLus1bpVpYeWQrRQ2iSYfFLurrgVsKhqjbptkilYrzylvvv
- gCeIGFGbQQglQPnitZTlmTUzh5slv+mW/MDSHlBDOCIWDqIm6A0uuv40tNqt/GauU/zd
- y27Q==
+ bh=ZAIADYfQEQgQ6pAWYfIoUHlR7wyZP4QpglxHsThLEiE=;
+ b=MCRTcp3UXDyoELLAqOdCfpsxiCrQE10eR3VQdFY9idQ18ORoeuQ3563FaQcFs63KhD
+ qTru2NoYOIB4bARIumGI63VHVIzJimrvar/141VSU3QD3lL4xyxP85j1lU3Zdx2ucXn+
+ 3S9xvDs3zcrKiU9qu7/TXvOZiTrmRwHo/kTP9myjARDqH4YI4E59GjE83alZkBehsDh2
+ pns/RAsq5clJfnfnmmIPhxaCJj4voa4dxaQMKF/cx6ZmbbPEGiIeNrySWubljSst8dxZ
+ g8ig/n5pRSyaq2H53HSyQM671Nm+hd42mC+E1k5TyUOUFakZHflS8wwh0icm4Yg3k5Qk
+ OfVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=z+ymJSzw3ln9nUitY5At2Wj8e4yU6qkv/jQhmBCnIRk=;
- b=Vq7KGMlG3wM/+pgTFtgG9eQkNzhjANEO+sFNbjWvk26nFxPC55wlhzzZNZwCGu/QaY
- oRSwi1pOf7PeynGiH/eV9MrRldcnZiboCMdIPT6EveBDsX3ZbSJj662j4u86rPfjW3ux
- C7bGxneHNpzfCxjANgpiZodU0AUb/JHyRE9c89nHNGPBxYvUHnt/J2GtNaq1SlMQO7MU
- SbGJ/R38iN+c2tLOjKmJizNj1cgnGsw7XDGcjeuSbTjYVOKwsoJlj53/csQFdBdSxu1j
- TOxhUfgVrFxL33+ax0yBZJ657uEAM4GRmCqNVRNB1T20F9Jq0Dwt92GXajdYcFJNUIKF
- CcMA==
-X-Gm-Message-State: AOAM531UTCdt9xcGSiBqFhc8abJVm8XPpeOz5Jn7S7/rxho98XKNGYd3
- 9nQ8ujrK+v4VrvxVaMHieyQCGYMUAioKzg==
-X-Google-Smtp-Source: ABdhPJyJH5JklptvC0B+qLb794za8o0EBujSvMDFpocfOL9qtWq5pEobbQbZfPYfgXdFRMJjNZuUyw==
-X-Received: by 2002:aa7:c903:: with SMTP id b3mr14486867edt.156.1616759009626; 
- Fri, 26 Mar 2021 04:43:29 -0700 (PDT)
+ bh=ZAIADYfQEQgQ6pAWYfIoUHlR7wyZP4QpglxHsThLEiE=;
+ b=n4pmKjpfS8kRJyvr4pxoFiTqNp2lLz+SJprzFXLHuIIDO+bBDMKJXRQb7OgfCI0Oks
+ XVrBAeJ3blMYZIXhkwYwRZ9cZDdBSUEN78/8pInuYYI3+zCKzSbHwzXCmF0BP8zvFSdr
+ yIxQmCQhwq2sA6R1oUSy3YAvsUEN5+FSUZu3/A1HgdFCt+xvOBuESAAjlSzh0Fh3TsH8
+ QU3+n5bT/NIaNlPgTZqt1sQE30QdipthZVdiSBc+2eydzbRp746XOZ/FOtHfhtyptt1A
+ 09RR7DzoNQnMSFX1qKM3ofyc9bYqCNyB1+JZvhoFSx1AJZXSCHZnjqzF5KHYeVhn08YI
+ P6Hw==
+X-Gm-Message-State: AOAM533yHYUCCOR9raEqXnqDaaqPfIeczlM7EOCoSlsMaHOUZWMt8SEN
+ 4vXhFx9Vy32iZxoWL4e8pJ4=
+X-Google-Smtp-Source: ABdhPJyAF04tIYZCdJ23bEC+iPqN6mxjerkI5RU7SCEEYcJci1Z1UiFYtNQd1rMFi+crISris8BOzg==
+X-Received: by 2002:a17:906:b297:: with SMTP id
+ q23mr15273263ejz.315.1616762558603; 
+ Fri, 26 Mar 2021 05:42:38 -0700 (PDT)
 Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- q2sm3750836eje.24.2021.03.26.04.43.27
+ r19sm3853768ejr.55.2021.03.26.05.42.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Mar 2021 04:43:29 -0700 (PDT)
+ Fri, 26 Mar 2021 05:42:38 -0700 (PDT)
 Subject: Re: [PATCH v6 09/11] dt-bindings: power: rockchip: Convert to
  json-schema
 To: Elaine Zhang <zhangqing@rock-chips.com>, robh+dt@kernel.org,
@@ -81,16 +82,16 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 References: <20210326102738.14767-1-zhangqing@rock-chips.com>
  <20210326103036.15173-1-zhangqing@rock-chips.com>
 From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <a02548cf-aa1e-58eb-8996-6ae9a43931d7@gmail.com>
-Date: Fri, 26 Mar 2021 12:43:26 +0100
+Message-ID: <e481e295-0427-045a-7b13-137a7538057e@gmail.com>
+Date: Fri, 26 Mar 2021 13:42:35 +0100
 User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
 In-Reply-To: <20210326103036.15173-1-zhangqing@rock-chips.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_114333_480388_2A65930A 
-X-CRM114-Status: GOOD (  28.27  )
+X-CRM114-CacheID: sfid-20210326_124239_904679_F38CC17D 
+X-CRM114-Status: GOOD (  27.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,11 +109,6 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Elaine,
-
-You've changed the license ones again.
-Could someone advise about GPL2.0 and legal stuff here?
-
 On 3/26/21 11:30 AM, Elaine Zhang wrote:
 > Convert the soc/rockchip/power_domain.txt binding document to
 > json-schema and move to the power bindings directory.
@@ -120,27 +116,10 @@ On 3/26/21 11:30 AM, Elaine Zhang wrote:
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 
 > From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Is this the correct position for that?
+
+Not sure if 'From:' is save to use here at this position for news readers ??
 
 > Link:https://patchwork.kernel.org/project/linux-rockchip/patch/20210225102643.653095-1-enric.balletbo@collabora.com/
-
-Normally the original author of a patch should be honored with help of
-this command below:
-
-git commit --amend --author="Enric Balletbo i Serra
-<enric.balletbo@collabora.com>"
-
-This places a "From: ...." on top of the commit message.
-
-But this is still a conversion/restyle to YAML.
-Meanwhile various other authors in the past have made
-contributions/comments to this document as well that was GPL2.0 only at
-the time.
-
-(I'm just saying: Claiming to be the only author sounds a bit strange here)
-
-Johan
-
 > ---
 >  .../power/rockchip,power-controller.yaml      | 291 ++++++++++++++++++
 >  .../bindings/soc/rockchip/power_domain.txt    | 136 --------
@@ -154,13 +133,7 @@ Johan
 > --- /dev/null
 > +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
 > @@ -0,0 +1,291 @@
-
 > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-
-This is a conversion of an excising document.
-When distributing derived works, the source code of the work must be
-made available under the same license.
-
 > +%YAML 1.2
 > +---
 > +$id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
@@ -211,11 +184,41 @@ made available under the same license.
 > +
 > +  clocks: true
 > +
+
 > +  assigned-clocks:
+
 > +    minItems: 1
+
+Currently rk3288.dtsi has some 'extra' properties.
+One of the purposes of this document is to filter bogus properties in dt
+files.
+With "minItems: 1" you have 1 to 'endless' options.
+Better restrict with:
+
+    maxItems: 1
+
+Given this from rk3288.dtsi:
+			assigned-clocks = <&cru SCLK_EDP_24M>;
+			assigned-clock-parents = <&xin24m>;
+
+Introduced with patch:
+
+ARM: dts: rockchip: Assign RK3288 EDP_24M input centrally
+
+Moved from rk3288-veyron.dtsi
+Please advise if they still are needed or not.
+
+Adding new minor properties should be added as note in the commit
+message for review by Rob, because it isn't an exact conversion of the
+original.
+
 > +
 > +  assigned-clock-parents:
+
 > +    minItems: 1
+
+dito
+
 > +
 > +patternProperties:
 > +  "^power-domain@[0-9a-f]+$":
