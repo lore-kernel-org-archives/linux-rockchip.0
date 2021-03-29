@@ -1,82 +1,96 @@
-Return-Path: <SRS0=Z0ts=IY=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=mUlv=I3=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E207C433C1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 20:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA31BC433C1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Mar 2021 16:52:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 032FB61A02
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Mar 2021 20:06:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 032FB61A02
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 50B7D61920
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Mar 2021 16:52:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50B7D61920
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:CC:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u7tXvtgNnq6qiKPSmT6jGBRGcTMhDWxrmCxbAGDtf5E=; b=dauWfYqEfu3kc5pYFu0DvTsCW
-	WjMet336+wER2WKK5pEeD159vIRlLR+20tPPZxBp6PZ2YxcE3raoS5/A0MhkVQeCFUi5PX+gGHnsr
-	yHnqZq0bCsEFsshu7nWiSQYcCbZaG8gjgN7kt5i6P07R3mQPnJMnRFKIgTqdX315tJ+U9C9bCB4lt
-	vZuifdLzxzq2a8x3q3/bsPyiR+RJQP80x6ZidByNHS2ZDA7yilEiByLMM7Al5La7HeBNaREMPu+H9
-	9o20+xX4w4C9HQdducuvMYCeuLS16QShFHwsQHooIE33Q2ew41TGlFmpgVU4oUa2ZNuQ777s5gM47
-	zSJs2z71A==;
+	 bh=liZI6LcjY2fmDUsUuuIHDxqLLgqvboH3or3DfsFcLyI=; b=dn/i8fd7kB5NefoAl7BWK8etb
+	wTE1FCBChrjbOOT0COKEKsVJryzg8j6R6l0R84bLVF+Qo6ca9jWmlX3nGyWD8TQTO6FIgE0IHC2h+
+	p526uUzEZ2b4WZLN+CfsFHrAgSI3Kt7jn5X3j68fxLSfqfm4opUGr7HgvMe5HJoqf2kYjtk8ZmpXx
+	vCs79A+dw+byCBvfIZfQZ+ek9k2I6vefKpOOYHM7YjEGZ4EqrNiT5p8wHhQPuE8rb/TTqLtirtymy
+	ZBkthJ8GdEBwhXkH2peADvUjtYa29FiPeeiRLa4i3d1qXFBH1SiXqTfTKJ2RGlwqIwvalgktxaWzH
+	NOt8iElGA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPsjI-004Ggm-FA; Fri, 26 Mar 2021 20:06:48 +0000
-Received: from mail-io1-f47.google.com ([209.85.166.47])
+	id 1lQv7b-000nKN-Ki; Mon, 29 Mar 2021 16:52:11 +0000
+Received: from esa.microchip.iphmx.com ([68.232.154.123])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPsj2-004GfO-4B; Fri, 26 Mar 2021 20:06:34 +0000
-Received: by mail-io1-f47.google.com with SMTP id k25so6635876iob.6;
- Fri, 26 Mar 2021 13:06:31 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZPC6AhpeUK9aDOYittyj6FiD+H8vNNaEbL6HgDphH9Y=;
- b=mYyE7slpQnBMO7pPy0kPxjArpTTktRW6ZOXICl01D9xMc5oFa56polbZk+uE3TY7mh
- bsVicDm0krSyhc8v1h5OTqAHXmNl0SL0qvJ9ciLDg+XSEmg3tweWSRn4/i/cdz7KLg3O
- fRj9gtAxtZHJEKq+qSnQnB/Rps38ggGX1H5qxtZtYP5NV6ccQpLRa5rrFQ50Au2ntnLp
- 0dpVfXravxA3dsNFaWpfYm2ZWyga1QZvVvUi5icjCkj7wt6QYSEFEP9AwkHYZXN4/xu1
- lmwc8WiM+Bo0nSOPH3rqRgQweDOtejwot/LrZUcpSep47+QFgThUEwZoS3OJEssWBnL+
- dKyg==
-X-Gm-Message-State: AOAM531RPT1kw/a+ySNeZUxJsdDzB3s1Ux5Hy6MakxRpBOJJJ49RUy2Z
- g2R6jRnT2XTQqPNcOmLj5GEv5El+Ow==
-X-Google-Smtp-Source: ABdhPJzyEzuLouL86I5aw/aN83geqOXKVBaxXOaOqVr7XPwcSkwq5woeldZd12J9taFb95HyphUP2A==
-X-Received: by 2002:a5d:9e09:: with SMTP id h9mr12176395ioh.178.1616789190894; 
- Fri, 26 Mar 2021 13:06:30 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id y18sm4914955ili.16.2021.03.26.13.06.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Mar 2021 13:06:29 -0700 (PDT)
-Received: (nullmailer pid 3781826 invoked by uid 1000);
- Fri, 26 Mar 2021 20:06:26 -0000
-Date: Fri, 26 Mar 2021 14:06:26 -0600
-From: Rob Herring <robh@kernel.org>
-To: Elaine Zhang <zhangqing@rock-chips.com>
-Cc: heiko@sntech.de, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, cl@rock-chips.com, huangtao@rock-chips.com,
- kever.yang@rock-chips.com, tony.xie@rock-chips.com, finley.xiao@rock-chips.com
-Subject: Re: [PATCH v6 09/11] dt-bindings: power: rockchip: Convert to
- json-schema
-Message-ID: <20210326200626.GA3776228@robh.at.kernel.org>
-References: <20210326102738.14767-1-zhangqing@rock-chips.com>
- <20210326103036.15173-1-zhangqing@rock-chips.com>
+ id 1lQoe2-000Ykz-NT
+ for linux-rockchip@lists.infradead.org; Mon, 29 Mar 2021 09:57:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+ t=1617011834; x=1648547834;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=iqjkFOT92R42EBV1+ip/OTCYxN2E0rr9W21GWrOPJW8=;
+ b=XAytSZvCZgIwl0euF/v1D8TiZw7eXzmoFHxSUyd3EvtZI+LoV7oUFsJO
+ SyDtWXRd1Rk3Ispz7aqHeezkCuEXxIK+pFCNMPmwr02or7M0u/47v7CMZ
+ lc6ulVdi0HSM31Ng9M7XldXGMVLHELiGL1f6VoKcEp2y1qkafbqbgy6oM
+ UxUITbyNkwiCJFGukResTUj+R1iwjrmOBDdF4+10v+xFgtDFI7zVnm09g
+ v8Z2osFrwfng9NemhuOTRj4PAUo6EFZ3x5IDHA/0Irf8RrpJNZOvKom1C
+ +j4SunFj6ripvbghccdaKNFunBOnkq9Gg9P8Y45vlCYLnelZmRQZPLZFK Q==;
+IronPort-SDR: EoF2F1D8H+Crm52uj2dRiGS01WnW/ncbQQVWt6qQT27wItBj0vseQ0vbtuiTw1HcZ6Pn2hGTru
+ iUtw7exDg2R7F3tDpNlJriU97PK7EHrqQRw0QrmWDQq1jfxGwBeDi0E3oQaJV3/eW2oinR+ZFn
+ /5LK4W8KScUGTywyXB/OIzdqA7WDtPGA/YeEkbS9YtsL1c8EZPsXrmcVITXgvPxqgIhWirHajI
+ fQbFxj46KE1jpa+qZlgTdbZ+SQ2AlTlGCzNodS6iBzysEdjXoTxavzN24SZYTBJyX70DUiH+Cc
+ kzU=
+X-IronPort-AV: E=Sophos;i="5.81,287,1610434800"; d="scan'208";a="108891101"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa4.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 29 Mar 2021 02:54:02 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Mon, 29 Mar 2021 02:54:02 -0700
+Received: from [10.171.246.61] (10.10.115.15) by chn-vm-ex01.mchp-main.com
+ (10.10.85.143) with Microsoft SMTP Server id 15.1.2176.2 via Frontend
+ Transport; Mon, 29 Mar 2021 02:54:00 -0700
+Subject: Re: [PATCH v2 00/10] Microship SAMA5D4 VPU support et al
+To: Emil Velikov <emil.l.velikov@gmail.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>
+CC: Ezequiel Garcia <ezequiel@collabora.com>, devicetree
+ <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, "Ludovic
+ Desroches" <ludovic.desroches@microchip.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, <linux-media@vger.kernel.org>, linux-rockchip
+ <linux-rockchip@lists.infradead.org>
+References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
+ <5ecf1d3b8a8f88d6387a1549faeb4f4180cf5d4b.camel@collabora.com>
+ <CACvgo51uNyQgzGdW=f-0wxvjv-+OD1p7E4DJXRzu1GvnAHbcCQ@mail.gmail.com>
+ <50b3b4b3-6c5b-3f1e-3499-c88574ce9f74@microchip.com>
+ <YFxObibxqK23WTMf@piout.net>
+ <CACvgo53V8sZ2PA0NTR1=JCqcFGBecqs7=aB4uofApOa-C0GZCA@mail.gmail.com>
+From: Nicolas Ferre <nicolas.ferre@microchip.com>
+Organization: microchip
+Message-ID: <3aeb1924-d461-ab8b-440b-81f33a1a8213@microchip.com>
+Date: Mon, 29 Mar 2021 11:53:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210326103036.15173-1-zhangqing@rock-chips.com>
+In-Reply-To: <CACvgo53V8sZ2PA0NTR1=JCqcFGBecqs7=aB4uofApOa-C0GZCA@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_200632_410078_ACC4BC0A 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20210329_105715_277863_EC8865EA 
+X-CRM114-Status: GOOD (  18.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,34 +103,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 26, 2021 at 06:30:36PM +0800, Elaine Zhang wrote:
-> Convert the soc/rockchip/power_domain.txt binding document to
-> json-schema and move to the power bindings directory.
+On 25/03/2021 at 15:22, Emil Velikov wrote:
+> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
 > 
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> Link:https://patchwork.kernel.org/project/linux-rockchip/patch/20210225102643.653095-1-enric.balletbo@collabora.com/
-> ---
->  .../power/rockchip,power-controller.yaml      | 291 ++++++++++++++++++
->  .../bindings/soc/rockchip/power_domain.txt    | 136 --------
->  2 files changed, 291 insertions(+), 136 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
->  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+> Greetings all,
+> 
+> On Thu, 25 Mar 2021 at 08:48, Alexandre Belloni
+> <alexandre.belloni@bootlin.com> wrote:
+>>
+>> On 24/03/2021 14:44:14+0100, Nicolas Ferre wrote:
+>>> Now, when we have the tag from Rob, how to coordinate these different
+>>> pieces? Will it go through the media git tree? Will we benefit from a stable
+>>> branch to share or will we just have to wait for the driver to hit Mainline
+>>> before adding the defconfig and DT patches?
+>>>
+> Thanks for the Acked-by Nicolas.
+> 
+>>
+>> I think the defconfig and dt patches can go through at91 as soon as we
+>> get Rob's ack. There is no build dependency so it can be taken at any
+>> time. Worst case, we end up with a selected config option that doesn't
+>> exist.
+>>
+> My personal preference is to merge everything in one go.
+> I believe it will be easier from maintainer's point of view, plus odds
+> of conflicts with the AT91 tree are close to zero.
+> 
+> Then again, as long as the maintainers are happy - I'm fine either way.
 
-My review checks tell me I already reviewed this and IIRC that was 
-pointed out to you in the last version. Am I supposed to review the 
-whole thing again or is it unchanged or ???. I have no idea with no 
-version history.
+I'm taking defconfig 2 last patches of your series right now. No need to 
+include them in subsequent versions.
 
-As there are other issues pointed out, I'm going with 'wait for the next 
-version'.
+For DT, I'm waiting for settlement on refined code. As indicated by 
+Alexandre, changes will need to travel through arm-soc tree so we'll 
+coordinate when patches are ready.
 
-Rob
+Thanks a lot! Best regards,
+   Nicolas
+
+
+-- 
+Nicolas Ferre
 
 _______________________________________________
 Linux-rockchip mailing list
