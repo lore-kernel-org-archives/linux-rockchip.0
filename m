@@ -2,90 +2,92 @@ Return-Path: <SRS0=G7C5=I5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E4CEC433ED
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Mar 2021 17:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CEC2C433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Mar 2021 18:49:09 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A9D5861006
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Mar 2021 17:43:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A9D5861006
+	by mail.kernel.org (Postfix) with ESMTPS id 4C66661007
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Mar 2021 18:49:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C66661007
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LtvpbdiGcDW289C3skkbsZZ6tTK0m/Zfdt5qpWTqOmM=; b=FbgeOTTkwHpxxlJfiRFDpdr7n
-	7/6mL6aE706x0UHNr7o3gL4Fvn3htFpH5hAywu7cpyMc8L3usCtyrNcPAjhfB0MuGrLZzCfzWW4gH
-	GC0t/5BNOG2exOdRbMfvDBTbsQEKsUy9LE641ef1istmtFnlCrOhapX075GR23IVnGr4BYuy1a12b
-	M+Bq+QWX+bcaMs+6m5Ci4XyRPyPvEM65bqcltKTTBirBciuFhkmKPrbRSqz3+yqDRMKKN/1/GGqVX
-	9O7y42W4jWhR1su84nHPmMOsJS4y+UNsP+z81t2auxdGRDiMMqzHCOzJZW3WFklTO6jd+AzU2gZIE
-	RsV5lOnkA==;
+	 bh=A/oAuTcDEExsZLLwoaPsmatGHcjdasZfGCCoxDEFAUs=; b=EMeYchTSD1QigWqZ7X7mA+BP4
+	fyE3AAj/f1S2R5alqUV0+WyenQOf7ontgmfnxiGXP6b7mrl58Lf7fZS5cItxuOPu+ryjBDsehBH9J
+	DJrXFitolX8s0UinrBkffwAndr2TzcodGEajJROp4SIagQHJC9atmSIWbLjj83DDZEaOiOvQrIQZ5
+	IsR5NcVMulHoLMoLJujLTk3gZqhUbObZiEqRyif4/k5N4rxBQUOZfOcQ6cxh3DaNH/qQZd/78Cp5l
+	vwk1Pmqjw9mHsRkYRvexNSjvtGeaDhyJwiMC0MD4wxXMsB4K5zm+u4sr1FyBZRe/Ry3u99c/AsJ4B
+	nCmqrSejw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRes0-007D7v-VS; Wed, 31 Mar 2021 17:43:09 +0000
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+	id 1lRftn-007JPY-Ul; Wed, 31 Mar 2021 18:49:04 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRerw-007D7O-J5
- for linux-rockchip@lists.infradead.org; Wed, 31 Mar 2021 17:43:06 +0000
-Received: by mail-ua1-x934.google.com with SMTP id b7so6330989uam.10
- for <linux-rockchip@lists.infradead.org>; Wed, 31 Mar 2021 10:43:01 -0700 (PDT)
+ id 1lRfti-007JOv-N6
+ for linux-rockchip@lists.infradead.org; Wed, 31 Mar 2021 18:49:00 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id x21so23488568eds.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 31 Mar 2021 11:48:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6QUinmrvLjexZh4h6qxhdrf+90LRRGclLO2gy+3m3h0=;
- b=bDcIcHosuB1gdY9wWuOho+xe1EAqCn/mgVXT0aZV46gFLzCOHAQts+kRA+maDvEzKZ
- Xdcws4+Y71rHgxYyRITbYHFu470S75k5aUzTzr9q7GoMLH9rMTP/BFMXJcBHj4+LuuBF
- NiPR16CudOKuhuFNzxzslz0SFU6pIyYXXt1+TRKCYJOer/8nZIikcWUiGuprajWuUvbj
- RXhF4FHNCyG9fZYlOlT9i0+rIhzOpluCg0J12gphF75/Wsx+XbLb5Nb5QH5ZZGQRZZuX
- /Tjyhm+eKWJr6/raA8h92pbHaFmileDu4ghji83D9rY8Hx0xFWMZcvwNjnWUStmEBPjs
- ei6A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=zwsGjPkGaotb7ZsEBdVviG/LoubldrQow2Hx2iAHbwE=;
+ b=nuTbQS44SiZ/ilMyK5E0QEy0/xYjy6Da3aA/jYRJHeXns1MWjmbuP3G3kFwtcS6kk+
+ ngPimMGslCPgY4NLRQodpsGLmuNXL4Iu9gEtdgUQex7qUqp1dZfMJQnG+goX/6UK3V/S
+ 1amUfL7JKD4F399c9A/yylBSo0JcG08QPkP6bFBF6xqsOQZJm7gKmizUuD8jIm4k83C0
+ EkSnn5GXFih+SET1BRwEsiD4Qw0RuWoV0raBIA5H91uo6rpLHQ/+IdMTZrSKFRoZ3LDc
+ todXtoP+K8s4HhiPJw/vE6RGgocGhfwRZtGuM2sUurjksuW1yM+GTce/pGGFHoxONxIw
+ VIxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6QUinmrvLjexZh4h6qxhdrf+90LRRGclLO2gy+3m3h0=;
- b=e+WpgLghAXByauW52w1w5BNgutXfN7C1tVzbuT0qyFPZiAOcIAgUKiSY9ba7CVR3Gd
- KSrL8H27sBwNjOKgmHpd7WNoHdpQ9i/qNJ1PpwwUz7SFexdJf6Wdxe8PVHZEWkeLhMGr
- Jkv4Th8YXYX0iWykXXP0fg4TeObvxHSXYloscXzCyjqgqYAuHBt9Sc33vV9gDTdohAN4
- nUuGXDmGvYQzKT1MgFyD7iyLo6/YSk5jip9Ifxp1L7xcLmMTtD+2AQssv8YmidCsOmf5
- yfLcFsDeyS4+o1sr1dv62v2nZZLGZgmyMw/Cm7ruqHtcf1qNmw07Qim0hyU5RbhVx3Hi
- H93Q==
-X-Gm-Message-State: AOAM533EJMzgPYHkQhf779p9gbpt2maMzNPt3pr2yphTMLeKcPa4YiSi
- ZNLrVx39eYIg8/m8Hs3J3sL/EPhUpVltQGhhWwU=
-X-Google-Smtp-Source: ABdhPJy3yexeTGobTP9R8fdNLFXCSzmoWAuERwfQlI+gE5cqr3/I+uy//5OSLMXkzsMGB3WDh2SXsV+7KZ2Ml4hXzkA=
-X-Received: by 2002:ab0:12a:: with SMTP id 39mr2339668uak.19.1617212580827;
- Wed, 31 Mar 2021 10:43:00 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210311154055.3496076-1-emil.l.velikov@gmail.com>
- <20210311154055.3496076-7-emil.l.velikov@gmail.com>
- <20210324151715.GA3070006@robh.at.kernel.org>
- <CACvgo51EpUqRBDQ0tO8aoUM3eo=y9R5VFOazWD05hOaiGwgZPg@mail.gmail.com>
- <a47cea7f31abdd25e6c9d4262be07ce2d852881e.camel@collabora.com>
-In-Reply-To: <a47cea7f31abdd25e6c9d4262be07ce2d852881e.camel@collabora.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=zwsGjPkGaotb7ZsEBdVviG/LoubldrQow2Hx2iAHbwE=;
+ b=VQDI0VFi+hTae0cj4XSCgFi8CQHeLJHXeOD+vkpQX/7w+V/dge1tyUa4/nKHOC5igI
+ NEh5oe/ENLZVz1b0J9cLC1Z1bSOg3HmPoJyXVYyKEa3VWYirCUxPROSCxdpYErwFsn50
+ 04XlyLUEcc9dH2g+Dc2jiCL3LR9KA+8cdBy6k2mdPMBp7GXDfomogQwqbIYS7z6FCKMu
+ rB//jGeWaa1cKidvEYJ3/5lHhexOR4r9habRHnCLBhuUM4BbD8oeqjE7kb+0uDhAc+kS
+ I9JWf06ahZ6Deqod92nVEEOpRJCYWAFVtK0hphLxhekz83xARRB1EqZ1DS1ToXwXbOsR
+ Wc9g==
+X-Gm-Message-State: AOAM531lhznVdaSlVTYm0sxb/QAmSVGfy/bZ1Fi3yXgmC3O2HjUWIaY4
+ ma7WBsF1yzKnccifbMeZxYM/X0xbrQDImw==
+X-Google-Smtp-Source: ABdhPJz5KvDr5IRskZlPAuATXnfkYJmXkZUFqq6t10+M/p+OV7P8pq9GVYOng7HEEYikFFGxE7jOdQ==
+X-Received: by 2002:a05:6402:31e9:: with SMTP id
+ dy9mr5625057edb.186.1617216538172; 
+ Wed, 31 Mar 2021 11:48:58 -0700 (PDT)
+Received: from arch-x1c3.. (cpc92308-cmbg19-2-0-cust99.5-4.cable.virginm.net.
+ [82.24.248.100])
+ by smtp.gmail.com with ESMTPSA id r19sm1604127ejr.55.2021.03.31.11.48.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Mar 2021 11:48:57 -0700 (PDT)
 From: Emil Velikov <emil.l.velikov@gmail.com>
-Date: Wed, 31 Mar 2021 18:42:49 +0100
-Message-ID: <CACvgo53GKQDZeiCjWKnt_hEp8Ctnueau_BKTqw7WXuPz-HUaPw@mail.gmail.com>
-Subject: Re: [PATCH v2 06/10] media: dt-bindings: Document SAMA5D4 VDEC
- bindings
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- linux-media@vger.kernel.org, 
- linux-rockchip <linux-rockchip@lists.infradead.org>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Frank Rowand <frowand.list@gmail.com>, 
- devicetree <devicetree@vger.kernel.org>
+To: kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Cc: emil.l.velikov@gmail.com,
+	Frank Rowand <frowand.list@gmail.com>
+Subject: [PATCH v3.5 7/9] media: dt-bindings: Document SAMA5D4 VDEC bindings
+Date: Wed, 31 Mar 2021 19:48:49 +0100
+Message-Id: <20210331184849.231221-1-emil.l.velikov@gmail.com>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210331173520.184191-8-emil.l.velikov@gmail.com>
+References: <20210331173520.184191-8-emil.l.velikov@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210331_184304_728591_FC14A13C 
-X-CRM114-Status: GOOD (  30.83  )
+X-CRM114-CacheID: sfid-20210331_194858_920355_4D000CBA 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,106 +105,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 26 Mar 2021 at 14:29, Ezequiel Garcia <ezequiel@collabora.com> wrote:
->
-> Hi Emil,
->
-> On Thu, 2021-03-25 at 14:14 +0000, Emil Velikov wrote:
-> > On Wed, 24 Mar 2021 at 15:17, Rob Herring <robh@kernel.org> wrote:
-> > >
-> > > On Thu, Mar 11, 2021 at 03:40:51PM +0000, Emil Velikov wrote:
-> > > > From: Emil Velikov <emil.velikov@collabora.com>
-> > > >
-> > > > Add devicetree binding documentation for the Hantro G1/G2 VDEC on
-> > > > the Microchip SAMAS5D4 SoC.
-> > > >
-> > > > Cc: Rob Herring <robh+dt@kernel.org>
-> > > > Cc: Frank Rowand <frowand.list@gmail.com>
-> > > > Cc: devicetree@vger.kernel.org>
-> > > > Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
-> > > > ---
-> > > > v2
-> > > >  - Newly introduced
-> > > >  - s/Atmel/Microchip/ (Nicolas)
-> > > >  - Drop leading 0 in node name/address
-> > > > ---
-> > > >  .../media/microchip,sama5d4-vdec.yaml         | 59 +++++++++++++++++++
-> > > >  1 file changed, 59 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml b/Documentation/devicetree/bindings/media/microchip,sama5d4-
-> > > > vdec.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..9cb2c0295d54
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
-> > > > @@ -0,0 +1,59 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > +
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: "http://devicetree.org/schemas/media/microchip,sama5d4-vdec.yaml#"
-> > > > +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> > > > +
-> > > > +title: Hantro G1 VPU codec implemented on Microchip SAMA5D4 SoCs
-> > > > +
-> > > > +maintainers:
-> > > > +  - Emil Velikov <emil.velikov@collabora.com>
-> > > > +
-> > > > +description:
-> > > > +  Hantro G1 video decode accelerator present on Microchip SAMA5D4 SoCs.
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    const: microchip,sama5d4-vdec
-> > > > +
-> > > > +  reg:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  interrupts:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  interrupt-names:
-> > > > +    items:
-> > > > +      - const: vdec
-> > >
-> > > Why do you need a name? *-names are used to distinguish multiple entries
-> > > and don't add anything if only a single entry.
-> > >
-> > On one hand the names are used to describe the hardware - the SAMA
-> > board uses designated clock and interrupt lines - both called "vdec".
-> > Additionally the names are ultimately required by the underlying API -
-> > platform_get_irq_byname and  devm_clk_bulk_get respectively.
-> > How can we get the respective entries without the name?
-> >
->
-> There are APIs to get the resource by index as opposed to by name.
-> E.g. platform_get_irq.
->
-> However, you are confusing here internal kernel implementation
-> with devicetree bindings. The latter is just a representation
-> of the hardware.
->
-My train of thought was that if we're missing API to fetch the entries
-via non-name means, then there's a reasonable precedent to expose the
-name. Clearly I missed the API, so my argument is just off.
+From: Emil Velikov <emil.velikov@collabora.com>
 
-> > Skimming through the existing dts file -
-> > arch/arm/boot/dts/sama5d4.dtsi and other dts files - there are lots of
-> > examples where the device tree binding contains the name for a single
-> > clock/interrupt.
-> >
->
->
-> Note that dtsi and dts are the device-tree files, not the bindings.
-> And even if you find examples, the fact that there exist examples
-> doesn't mean it's the right thing to do.
->
-Fully agreed. Thanks for the correction and hints.
+Add devicetree binding documentation for the Hantro G1/G2 VDEC on
+the Microchip SAMAS5D4 SoC.
 
-The v3, just submitted, lacks the names all together.
+Cc: Rob Herring <robh+dt@kernel.org>
+Cc: Frank Rowand <frowand.list@gmail.com>
+Cc: devicetree@vger.kernel.org>
+Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
+Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
+---
+v2
+ - Newly introduced
+ - s/Atmel/Microchip/ (Nicolas)
+ - Drop leading 0 in node name/address
 
--Emil
+v3.5
+ - Drop interrupt/clock names (RobH)
+---
+ .../media/microchip,sama5d4-vdec.yaml         | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
+
+diff --git a/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml b/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
+new file mode 100644
+index 000000000000..4b77103ca913
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/microchip,sama5d4-vdec.yaml
+@@ -0,0 +1,47 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/media/microchip,sama5d4-vdec.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Hantro G1 VPU codec implemented on Microchip SAMA5D4 SoCs
++
++maintainers:
++  - Emil Velikov <emil.velikov@collabora.com>
++
++description:
++  Hantro G1 video decode accelerator present on Microchip SAMA5D4 SoCs.
++
++properties:
++  compatible:
++    const: microchip,sama5d4-vdec
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++        #include <dt-bindings/clock/at91.h>
++        #include <dt-bindings/interrupt-controller/irq.h>
++
++        vdec0: vdec@300000 {
++                compatible = "microchip,sama5d4-vdec";
++                reg = <0x00300000 0x100000>;
++                interrupts = <19 IRQ_TYPE_LEVEL_HIGH 4>;
++                clocks = <&pmc PMC_TYPE_PERIPHERAL 19>;
++        };
+-- 
+2.31.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
