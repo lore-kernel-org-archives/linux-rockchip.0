@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 399DFC433ED
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 14:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DAFD5C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 14:44:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAB4261243
+	by mail.kernel.org (Postfix) with ESMTPS id 65D066135E
 	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 14:44:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAB4261243
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65D066135E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,69 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uPgXfCYBtQWKGpRkf9mZyAElYuoQ5c+W+UefNUFGi7Y=; b=nBXH/uqQ3AssAArVKHY/PIJ/6
-	y908HzcbIQgMeH7iQH/ZruXphR7BstcP9Zf8ItCKapPTu1iUEf8BPVufS1DI1EtES3Rj+EWh2XNTS
-	84V8w+BL8M8vm47CCjUZwTZByFn+OTP9+hqo6d2kj/NEX/2P+T6vux4PI7S8Jx5COIkiqmrExATh9
-	snBglL87MtH4bpkfFogBlXZuWzA1FOHLA3MTiB04TCvHioQzbiiMOQRBXZMVA/B4m36i7NzED1Kui
-	koD3xElV6GD48L9fE5nZvbP/rA0V0iaFdzAmaFuqdBjNXksgapnurvWHHpZwyPtB4jvB1krwWFI2F
-	MyBfmLq6A==;
+	 bh=xBi0+AHI3eTeRtvEiCICsAWNuNSo/WguKXp3Fu5H4/g=; b=hddG+Ej4Sl+AIV/66i0gJeo6K
+	WoW0rch38Rc8AIacJy9+5M7W+viHPQKnWaD9VM4AlYF+ORTKdxnIzNVhBxxzBn3dWmR9xnW3eRYhB
+	HKFR3GjSlmRSNsAu9Bb5dR6yvweIM1377JpN/hZskmCMxGM+P1cv6QHELytMRwCdSlGgR16rouYL8
+	cDp6f8sQhtBu2EgeNu5RXWFrwGh2lU2reP8Ci0SK+v7JHq4XiXpV1VZ6nJZablV84gqfPEiE+NMTU
+	QQNmGfPR89wxycGzY2V5Sn9aPSbygG34MYN3/lrtNBQOBsHwWVijZOuvhZWIPrQqc1REAL/KwNTa7
+	l8Mm4NKDQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRyY8-009sdk-JA; Thu, 01 Apr 2021 14:43:57 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1lRyYA-009sfJ-Rz; Thu, 01 Apr 2021 14:43:58 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRyY1-009sa6-Rj
+ id 1lRyY3-009sa9-1j
  for linux-rockchip@lists.infradead.org; Thu, 01 Apr 2021 14:43:53 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id r12so3264894ejr.5
- for <linux-rockchip@lists.infradead.org>; Thu, 01 Apr 2021 07:43:49 -0700 (PDT)
+Received: by mail-ed1-x52a.google.com with SMTP id h10so2221271edt.13
+ for <linux-rockchip@lists.infradead.org>; Thu, 01 Apr 2021 07:43:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=RKzjLcplK3Qj6N++ugVsRlEJA8YUUn4W3Fexo0s7VWk=;
- b=Yx8aJJF9roXhjRvDam2PZ/yiaGQfqO6XO6xisEn4pmEJrBCqSuW73+eIrydZ8+7iwJ
- 0Xt6ZBC77PaQOMtj4201lxCmu4wX/dkuj/RVa1r9XkwWmiRQb6dDdjmKsSQbv+vhRbPx
- u+dMeYQZJW7ZhTvkhNs+vIBwagNotIf8JBLoxszWk8De+6QZjAP8C6RE4vgaOtm3f7Y7
- Ht+vr4bDq4zY16YByGONEw2LshCyJbFte7VvJjH4on84mLfs3NRKmcU6be1j6clerxf2
- ReXUEyf+PGGKQ4JcBruu2oQMLxw6Rtm/+5TX4V8pdtTbTApFFhkUb38ZpCbFZPyCNd/k
- /U3g==
+ bh=//s5GXhvTYBFxepTOFjvgKPgNSSVEMfEdoDacbVrJhc=;
+ b=srOwqToty+vlDNm7oWtGDR2rnfrMWI9xJ/AbSrtKPS6ImnqjGhLG4EF5aj0htMsX+m
+ 6ZzqPZuGSwy++hrcbJqmzOiAV6L4AFMvuwQIYYejhQVV6xLcLjQgA1bjYAnO7vVNm7Od
+ 3JcGJJ+rvbkXtDVlK3U2lQ4PRQ+J9jwyIejQqDC4nPseYN92yjwErLnsI6ff9U52E0Ib
+ XlY3RLi30q7jfkGGOnTEOnW9DBltSSL9CWl93FRNAZmiAB2yGzb5vIeLmDwpnUaa8FDS
+ rXJiKcSW4tDPKW4wnWdMZmMy45OLwDf6wc5zxXDN4BE6lauX8r6NG0CRDWuyufmoVO9V
+ W8Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RKzjLcplK3Qj6N++ugVsRlEJA8YUUn4W3Fexo0s7VWk=;
- b=LFzUzkOsq+KQTKxxU5M9QRhnrnNWqm8BGwV0bMPyqIIvj7LO1/C3nICFYgWeZ/ilto
- CEF1FhbsZ3+m4PAl8wSdkGy6nlYe4bszvR11Pxtbh1yekvam40l1FSoqPMUzB0rw9q4d
- vez6XpijFKKcVw7s/di5MXzdTuSrBfu027CGEtS4L5hWIZsLWE1sBOFXImI4A8VRuaa6
- 48W1AgFWOISkR7VJWsjzUzcz/G902RLwDnqwUVRWYIhGVy65j1dA3/qtw95ZP9knU2wF
- hIIknvHPoqtN8oNjelzghRAiyxaLWjJ/LCtdgghFgyd+HtRXet2dAASHqhLUVsrzCcQX
- MCdg==
-X-Gm-Message-State: AOAM533B5L4B8ed8ggeKdeYn7i5DM3VNm1/9D6X0HK34NxXLc0ZMaat9
- tHRNYhCGZOhRBZa0Sr50r6g=
-X-Google-Smtp-Source: ABdhPJzZowtT7P8Uk03UXsaDI9qXGEjJgDB6omDUiNF5Lwe4cohmebQyyy0VbSRa7O5DF0gjk8/Vyw==
-X-Received: by 2002:a17:907:7785:: with SMTP id
- ky5mr9157045ejc.133.1617288229379; 
- Thu, 01 Apr 2021 07:43:49 -0700 (PDT)
+ bh=//s5GXhvTYBFxepTOFjvgKPgNSSVEMfEdoDacbVrJhc=;
+ b=VQHZPST71tcng0oh0jjxu/kBxnWWEQqO7Ct/VVdTqmTgcMqGQHX+vDB6RD+dZjvNku
+ PkMzzngxM2eyblZEIozez1tYq2secUTdg/ZGF/FmaPXrrIQ/qRERan4uHJ8iY2GDMLt/
+ nIV7MgvJyUTIJRAV438CrH8qmZg0bJ+KqPwWwFeJWG8zAhjXoYCKPF2PWnZ3+qXK4LI/
+ 6ScvwkrCRuYNKJ3SYyWVcY2ntCaA2VtQo5eVMpw3+5zbEO9/YQdrgYCKWY3zy4/6BHwN
+ sHBBF5+uECL+f18dhRQQMpRieHbl8LkzZIKFXBiLZpzH8NCuv3KDnIMy3naxcDWVS6/8
+ QW/A==
+X-Gm-Message-State: AOAM530Zw3ghFCgD0IeXuM+B/rHgRotggvyyyuy/LfOW6Ipl7nyholeb
+ IYLgbPOGOBh82TU6Lb5euos=
+X-Google-Smtp-Source: ABdhPJzRF3IZ7eUDkITHBb5jDzzgzF/Uytq1qkOWxgyKdzjQJXYQ75EK0bm6BTY2xxVf/P8SRYopRQ==
+X-Received: by 2002:a05:6402:447:: with SMTP id
+ p7mr10216224edw.89.1617288230479; 
+ Thu, 01 Apr 2021 07:43:50 -0700 (PDT)
 Received: from arch-x1c3.. (cpc92308-cmbg19-2-0-cust99.5-4.cable.virginm.net.
  [82.24.248.100])
- by smtp.gmail.com with ESMTPSA id nd36sm2854950ejc.21.2021.04.01.07.43.48
+ by smtp.gmail.com with ESMTPSA id nd36sm2854950ejc.21.2021.04.01.07.43.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Apr 2021 07:43:48 -0700 (PDT)
+ Thu, 01 Apr 2021 07:43:50 -0700 (PDT)
 From: Emil Velikov <emil.l.velikov@gmail.com>
 To: kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 Cc: emil.l.velikov@gmail.com
-Subject: [PATCH v4 4/9] media: hantro: imx: remove unused include
-Date: Thu,  1 Apr 2021 15:43:31 +0100
-Message-Id: <20210401144336.2495479-5-emil.l.velikov@gmail.com>
+Subject: [PATCH v4 5/9] media: hantro: introduce hantro_g1.c for common API
+Date: Thu,  1 Apr 2021 15:43:32 +0100
+Message-Id: <20210401144336.2495479-6-emil.l.velikov@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210401144336.2495479-1-emil.l.velikov@gmail.com>
 References: <20210401144336.2495479-1-emil.l.velikov@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_154351_843638_D75B74F5 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20210401_154351_731126_1ED76B81 
+X-CRM114-Status: GOOD (  19.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,30 +106,225 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Emil Velikov <emil.velikov@collabora.com>
 
-The current imx8 code does not use the jpeg encoder. Remove the
-unnecessary include.
+The Hantro G1 IRQ and reset handling it pretty standard. I was this
+close to duplicating it, yet again, before reconsidering and refactoring
+it to a separate file.
 
-Fixes: 8e4aaa687863 ("media: hantro: add initial i.MX8MQ support")
 Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
 Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 Signed-off-by: Emil Velikov <emil.velikov@collabora.com>
 ---
- drivers/staging/media/hantro/imx8m_vpu_hw.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/hantro/Makefile        |  1 +
+ drivers/staging/media/hantro/hantro_g1.c     | 39 ++++++++++++++++++++
+ drivers/staging/media/hantro/hantro_hw.h     |  3 ++
+ drivers/staging/media/hantro/imx8m_vpu_hw.c  | 21 +----------
+ drivers/staging/media/hantro/rk3288_vpu_hw.c | 36 ++----------------
+ 5 files changed, 48 insertions(+), 52 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g1.c
 
+diff --git a/drivers/staging/media/hantro/Makefile b/drivers/staging/media/hantro/Makefile
+index 743ce08eb184..3747a32799b2 100644
+--- a/drivers/staging/media/hantro/Makefile
++++ b/drivers/staging/media/hantro/Makefile
+@@ -7,6 +7,7 @@ hantro-vpu-y += \
+ 		hantro_v4l2.o \
+ 		hantro_postproc.o \
+ 		hantro_h1_jpeg_enc.o \
++		hantro_g1.o \
+ 		hantro_g1_h264_dec.o \
+ 		hantro_g1_mpeg2_dec.o \
+ 		hantro_g1_vp8_dec.o \
+diff --git a/drivers/staging/media/hantro/hantro_g1.c b/drivers/staging/media/hantro/hantro_g1.c
+new file mode 100644
+index 000000000000..0ab1cee62218
+--- /dev/null
++++ b/drivers/staging/media/hantro/hantro_g1.c
+@@ -0,0 +1,39 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Hantro VPU codec driver
++ *
++ * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
++ *	Jeffy Chen <jeffy.chen@rock-chips.com>
++ * Copyright (C) 2019 Pengutronix, Philipp Zabel <kernel@pengutronix.de>
++ * Copyright (C) 2021 Collabora Ltd, Emil Velikov <emil.velikov@collabora.com>
++ */
++
++#include "hantro.h"
++#include "hantro_g1_regs.h"
++
++irqreturn_t hantro_g1_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, G1_REG_INTERRUPT);
++	state = (status & G1_REG_INTERRUPT_DEC_RDY_INT) ?
++		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, G1_REG_INTERRUPT);
++	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
++
++	hantro_irq_done(vpu, state);
++
++	return IRQ_HANDLED;
++}
++
++void hantro_g1_reset(struct hantro_ctx *ctx)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_IRQ_DIS, G1_REG_INTERRUPT);
++	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
++	vdpu_write(vpu, 1, G1_REG_SOFT_RESET);
++}
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 34c9e4649a25..73c71bb2320c 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -164,6 +164,9 @@ void hantro_irq_done(struct hantro_dev *vpu,
+ void hantro_start_prepare_run(struct hantro_ctx *ctx);
+ void hantro_end_prepare_run(struct hantro_ctx *ctx);
+ 
++irqreturn_t hantro_g1_irq(int irq, void *dev_id);
++void hantro_g1_reset(struct hantro_ctx *ctx);
++
+ void hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
+ void rk3399_vpu_jpeg_enc_run(struct hantro_ctx *ctx);
+ int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
 diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index cb1ac02c03d2..f36c1bd681ba 100644
+index f36c1bd681ba..9eb556460e52 100644
 --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
 +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
 @@ -9,7 +9,6 @@
  #include <linux/delay.h>
  
  #include "hantro.h"
--#include "hantro_jpeg.h"
- #include "hantro_g1_regs.h"
+-#include "hantro_g1_regs.h"
  
  #define CTRL_SOFT_RESET		0x00
+ #define RESET_G1		BIT(1)
+@@ -129,24 +128,6 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
+ 	},
+ };
+ 
+-static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
+-{
+-	struct hantro_dev *vpu = dev_id;
+-	enum vb2_buffer_state state;
+-	u32 status;
+-
+-	status = vdpu_read(vpu, G1_REG_INTERRUPT);
+-	state = (status & G1_REG_INTERRUPT_DEC_RDY_INT) ?
+-		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+-
+-	vdpu_write(vpu, 0, G1_REG_INTERRUPT);
+-	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
+-
+-	hantro_irq_done(vpu, state);
+-
+-	return IRQ_HANDLED;
+-}
+-
+ static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+ {
+ 	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+@@ -191,7 +172,7 @@ static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+  */
+ 
+ static const struct hantro_irq imx8mq_irqs[] = {
+-	{ "g1", imx8m_vpu_g1_irq },
++	{ "g1", hantro_g1_irq },
+ 	{ "g2", NULL /* TODO: imx8m_vpu_g2_irq */ },
+ };
+ 
+diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+index 7b299ee3e93d..fefd45269e52 100644
+--- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
++++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
+@@ -10,7 +10,6 @@
+ 
+ #include "hantro.h"
+ #include "hantro_jpeg.h"
+-#include "hantro_g1_regs.h"
+ #include "hantro_h1_regs.h"
+ 
+ #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
+@@ -127,24 +126,6 @@ static irqreturn_t rk3288_vepu_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static irqreturn_t rk3288_vdpu_irq(int irq, void *dev_id)
+-{
+-	struct hantro_dev *vpu = dev_id;
+-	enum vb2_buffer_state state;
+-	u32 status;
+-
+-	status = vdpu_read(vpu, G1_REG_INTERRUPT);
+-	state = (status & G1_REG_INTERRUPT_DEC_RDY_INT) ?
+-		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+-
+-	vdpu_write(vpu, 0, G1_REG_INTERRUPT);
+-	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
+-
+-	hantro_irq_done(vpu, state);
+-
+-	return IRQ_HANDLED;
+-}
+-
+ static int rk3288_vpu_hw_init(struct hantro_dev *vpu)
+ {
+ 	/* Bump ACLK to max. possible freq. to improve performance. */
+@@ -161,15 +142,6 @@ static void rk3288_vpu_enc_reset(struct hantro_ctx *ctx)
+ 	vepu_write(vpu, 0, H1_REG_AXI_CTRL);
+ }
+ 
+-static void rk3288_vpu_dec_reset(struct hantro_ctx *ctx)
+-{
+-	struct hantro_dev *vpu = ctx->dev;
+-
+-	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_IRQ_DIS, G1_REG_INTERRUPT);
+-	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
+-	vdpu_write(vpu, 1, G1_REG_SOFT_RESET);
+-}
+-
+ /*
+  * Supported codec ops.
+  */
+@@ -184,19 +156,19 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
+ 	},
+ 	[HANTRO_MODE_H264_DEC] = {
+ 		.run = hantro_g1_h264_dec_run,
+-		.reset = rk3288_vpu_dec_reset,
++		.reset = hantro_g1_reset,
+ 		.init = hantro_h264_dec_init,
+ 		.exit = hantro_h264_dec_exit,
+ 	},
+ 	[HANTRO_MODE_MPEG2_DEC] = {
+ 		.run = hantro_g1_mpeg2_dec_run,
+-		.reset = rk3288_vpu_dec_reset,
++		.reset = hantro_g1_reset,
+ 		.init = hantro_mpeg2_dec_init,
+ 		.exit = hantro_mpeg2_dec_exit,
+ 	},
+ 	[HANTRO_MODE_VP8_DEC] = {
+ 		.run = hantro_g1_vp8_dec_run,
+-		.reset = rk3288_vpu_dec_reset,
++		.reset = hantro_g1_reset,
+ 		.init = hantro_vp8_dec_init,
+ 		.exit = hantro_vp8_dec_exit,
+ 	},
+@@ -208,7 +180,7 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
+ 
+ static const struct hantro_irq rk3288_irqs[] = {
+ 	{ "vepu", rk3288_vepu_irq },
+-	{ "vdpu", rk3288_vdpu_irq },
++	{ "vdpu", hantro_g1_irq },
+ };
+ 
+ static const char * const rk3288_clk_names[] = {
 -- 
 2.31.1
 
