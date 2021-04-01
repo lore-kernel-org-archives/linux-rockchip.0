@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47A53C433B4
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 16:22:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6F16C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 16:23:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE3FA6137F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 16:22:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE3FA6137F
+	by mail.kernel.org (Postfix) with ESMTPS id 8874561379
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 16:23:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8874561379
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,21 +24,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6TSGf+tWTvBeV5cp3btWTTTZGKjEDsddv/j9ZxM/3TM=; b=HziD1c9cKf0IqxZfbWOzWYA80
-	3TqIo1KeY2WFXNZq/mhKU0puvCJHqTHbTsN/ix/AAcXPC879yhiRTgefUmT4OVVWNknGrRxW/L4mq
-	M4AjfiIxM0ZSE4syCJzlt4E0i5UegbuaKJ0aQeq/RuVvfE0vdNQTDgToYbNWGRsOduKvx9hTrQx0I
-	qIzibO3/dCORjtaWEIFRzUmv2PswKOaUSYZhrsebNQRZWR0s/bjGwwY8tvAUzNsVoqk+ZhDQh+h+n
-	FiiBtyqRzbNZ4MYolD0A4t7SsWkI4J7M9RYUt0LJDIf1mdUtafojV6sSNpsJbGCe+zWWLMFEr1uM1
-	0fFur9oYg==;
+	 bh=vnBaIYrnCAoTThsoMzy7B3PbKW4I+157snbhmGt73KU=; b=bFCKYIEd3VxUF4zWUUqJr1y3l
+	kH/1td85IuPqmtx7Rtg2O5s+QE2t06X7l+6qzMTzlIbOJXZEV+wCirjDaf2mNfJ8/JXSULoiEPzDt
+	oHsI20WZZXp94mJqa/X/qhUn/hLIHf07mB/6qhrC10sotPMonzJ399aZ8NpZjYzKDHMcyHaDe6aYw
+	iDBI4ga4mY4qsdGqfj0YTDVqQT8l0CvZ+0jZYFh1/4oqTv6GaGu6kYQF6GOcC9fk2gVGvGASyXGa7
+	/XQtLK6cwatfYs1UNy9cmILJLlK3zH7DrES5mqA3q1uZzMemrfHtY845AfS0uFlt+2fDlg3z5S9/F
+	5UUnXjFSg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lS05m-00AGJ5-Ov; Thu, 01 Apr 2021 16:22:46 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lS06K-00AGWK-8T; Thu, 01 Apr 2021 16:23:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRzkO-00A81O-Qm; Thu, 01 Apr 2021 16:00:56 +0000
+ id 1lRzkM-00A805-PU; Thu, 01 Apr 2021 16:00:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 8220F1F46899
+ with ESMTPSA id C57AC1F46894
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -50,17 +50,17 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  devel@driverdev.osuosl.org, kernel@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 13/13] arm64: dts: imx8mq: Add node to G2 hardware
-Date: Thu,  1 Apr 2021 18:00:03 +0200
-Message-Id: <20210401160003.88803-14-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 08/13] media: hantro: Only use postproc when post processed
+ formats are defined
+Date: Thu,  1 Apr 2021 17:59:58 +0200
+Message-Id: <20210401160003.88803-9-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210401160003.88803-1-benjamin.gaignard@collabora.com>
 References: <20210401160003.88803-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_170041_192947_DA758B72 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210401_170040_990597_02F57B6D 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,91 +78,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Split VPU node in two: one for G1 and one for G2 since they are
-different hardware blocks.
-Add syscon for hardware control block.
-Remove reg-names property that is useless.
-Each VPU node only need one interrupt.
-Change G2 assigned clock to match to the specifications.
-In the both nodes all the clocks need to assigned to make
-sure that control block will be correctly clocked even if
-only one device node is enabled.
+If the variant doesn't offert postprocessed formats make sure it will
+be ok.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
-version 7:
- - use nxp,imx8m-vpu-ctrl as phandle syscon property name
+version 8:
+ - add Ezequiel review tag
 
-version 5:
- - use syscon instead of VPU reset
+ drivers/staging/media/hantro/hantro.h          |  8 ++------
+ drivers/staging/media/hantro/hantro_postproc.c | 14 ++++++++++++++
+ drivers/staging/media/hantro/hantro_v4l2.c     |  4 +++-
+ 3 files changed, 19 insertions(+), 7 deletions(-)
 
- arch/arm64/boot/dts/freescale/imx8mq.dtsi | 43 ++++++++++++++++++-----
- 1 file changed, 34 insertions(+), 9 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index 17c449e12c2e..65158414d255 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -1329,15 +1329,16 @@ usb3_phy1: usb-phy@382f0040 {
- 			status = "disabled";
- 		};
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index edb4561a6887..7a5ad93466c8 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -414,12 +414,8 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
+ 	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+ }
  
--		vpu: video-codec@38300000 {
-+		vpu_ctrl: syscon@38320000 {
-+			compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
-+			reg = <0x38320000 0x10000>;
-+		};
-+
-+		vpu_g1: video-codec@38300000 {
- 			compatible = "nxp,imx8mq-vpu";
--			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>,
--			      <0x38320000 0x10000>;
--			reg-names = "g1", "g2", "ctrl";
--			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--			interrupt-names = "g1", "g2";
-+			reg = <0x38300000 0x10000>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g1";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
- 				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
- 				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-@@ -1350,9 +1351,33 @@ vpu: video-codec@38300000 {
- 						 <&clk IMX8MQ_VPU_PLL_OUT>,
- 						 <&clk IMX8MQ_SYS1_PLL_800M>,
- 						 <&clk IMX8MQ_VPU_PLL>;
--			assigned-clock-rates = <600000000>, <600000000>,
-+			assigned-clock-rates = <600000000>, <300000000>,
-+					       <800000000>, <0>;
-+			power-domains = <&pgc_vpu>;
-+			nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g2";
-+			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g1", "g2",  "bus";
-+			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+					  <&clk IMX8MQ_CLK_VPU_G2>,
-+					  <&clk IMX8MQ_CLK_VPU_BUS>,
-+					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_VPU_PLL_OUT>,
-+						 <&clk IMX8MQ_SYS1_PLL_800M>,
-+						 <&clk IMX8MQ_VPU_PLL>;
-+			assigned-clock-rates = <600000000>, <300000000>,
- 					       <800000000>, <0>;
- 			power-domains = <&pgc_vpu>;
-+			nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
- 		};
+-static inline bool
+-hantro_needs_postproc(const struct hantro_ctx *ctx,
+-		      const struct hantro_fmt *fmt)
+-{
+-	return !ctx->is_encoder && fmt->fourcc != V4L2_PIX_FMT_NV12;
+-}
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt);
  
- 		pcie0: pcie@33800000 {
+ static inline dma_addr_t
+ hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 6d2a8f2a8f0b..ed8916c950a4 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -50,6 +50,20 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ 	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
+ };
+ 
++bool hantro_needs_postproc(const struct hantro_ctx *ctx,
++			   const struct hantro_fmt *fmt)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	if (ctx->is_encoder)
++		return false;
++
++	if (!vpu->variant->postproc_fmts)
++		return false;
++
++	return fmt->fourcc != V4L2_PIX_FMT_NV12;
++}
++
+ void hantro_postproc_enable(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 1bc118e375a1..77d7fe62ce81 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -55,7 +55,9 @@ static const struct hantro_fmt *
+ hantro_get_postproc_formats(const struct hantro_ctx *ctx,
+ 			    unsigned int *num_fmts)
+ {
+-	if (ctx->is_encoder) {
++	struct hantro_dev *vpu = ctx->dev;
++
++	if (ctx->is_encoder || !vpu->variant->postproc_fmts) {
+ 		*num_fmts = 0;
+ 		return NULL;
+ 	}
 -- 
 2.25.1
 
