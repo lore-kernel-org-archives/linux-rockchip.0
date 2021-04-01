@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15478C433ED
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 21:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9636C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 21:39:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BA0B610F8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 21:39:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BA0B610F8
+	by mail.kernel.org (Postfix) with ESMTPS id 573D260FF3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Apr 2021 21:39:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 573D260FF3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xWjvIf83g60sRcXOUWfiAwLa3ySLnl4UU9li6POnnxA=; b=hN4Phn5kjiDJkvWU+sUSc2US1M
-	PI5oAXe5CyHctk4fIhyE/5cK6UlTJRZkZr6rtpwsQiZRFI+/gjHdKyBKD7+lg0bKDG1S1YTObbqzf
-	7u/0G6CEJl2OgzSbRojhaDWBizrD7lpZzF0CYSYervbXgks8dwiF0odOvehMSkfsMQF7qYcJHTluU
-	hREBbWbm4j55BeK0lpeadLQNEBVu33kpQA3qdtCLWg5ItDGwEf9OE/MYLTmIqcpyZ+QAz5NJSdhyb
-	JGntrxeZkto+gCal2TFLsMYUkSogd0rhz7O64nTOS0G7DrThDJEP8SVE+wo2WpjesDofCIcmAbhx6
-	Z/daKsOA==;
+	bh=Aoidrn/eVXrbp2CKnBu0BbIOoP929i2xidGy93TLmz0=; b=dbl9Xu53MW9G3WpHRZpj+s8ibh
+	XnOIriA2UwoYHC9X/wjyrrS4NNYOOFOChJOpMy2zm3o15lBReyzGcN1jcKLCyIl9T8DlSBZq6Xpyi
+	pPwNGs1wJON5GB4x6iluHv9f8QS/hcZwNc0M/hlPedh5k35TlzRt/jcH2WqVXuNQkSCKVEbexW4q4
+	B2mq0A1P2J7bAhUfLJSyn6X69TOPon4lLArTiRwqNVhMb6UBw5TpB+pwf9EeRJWB1rMFrvHg0c1tV
+	PGLo9XWVXbcYDA0/Vpa1sNKJ1aQMnPtYOZPJWxKm02KupBJPw3578P4O+thJlWjm+laWKOGEzIUns
+	+MYoo6ew==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lS51k-00B5xW-Kd; Thu, 01 Apr 2021 21:38:56 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1lS52I-00B67Q-VA; Thu, 01 Apr 2021 21:39:31 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lS4zx-00B5c5-1r; Thu, 01 Apr 2021 21:37:15 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id o19so3544070edc.3;
- Thu, 01 Apr 2021 14:37:04 -0700 (PDT)
+ id 1lS4zv-00B5c3-FX; Thu, 01 Apr 2021 21:37:17 +0000
+Received: by mail-ej1-x632.google.com with SMTP id ce10so4969329ejb.6;
+ Thu, 01 Apr 2021 14:37:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=L+MlXzK/gX+Ev+HLGvN+yRa0MaXPdgFFgZ11XTZeSGQ=;
- b=k6ZxQMiZAIjzu8wlAu1zuwmEi6+ORAELwN6phiSqlyU1ZNJeGTKL2RdGzrz/vSsJ5V
- lZqJANyQ7vQykNymrongprID3w0nxH16parxUT3scUskm2njS5zQlqL2MM0dxvUL7wLg
- GYXUPmh3YQMJHIGAPRWWR0+tkCnpFUpRRPwqSUfcxYrl+gJz0c16XS8qCwWk7ihGO8fV
- wlrjqYYpb61F8dJyx2naAJMhu07nj0MDxgEge0mSJpfzfBKYlxcHaJaC4DQxB8OGE4V1
- oSyG67FmWUKQ4USd1c6cco/Zn2CEqltwa5YoLM4a9kCaer8luThib1FOSD4DoH7g612Q
- Hc4g==
+ bh=GHpx++F9qxXFAoyX+lLV8P5ugzLRk8jhk2+JIF6szec=;
+ b=bnHIS5Is5F7kGSXPOrjFOAo2vn6bXz2zBAlLpKFAGcCtlOrHL/1QNAuZ5GLNuKdrtS
+ AXa2Y9A9BEF9vSXXP4hiE4qJPbdD/ZvP3k17bg19iIxocKUhJKORJo3aXVVDUPF8/3X+
+ dEl6hignoTQeCu6la6I7sOky0KBg87OsonxHf2GveFq/Z+lfHO9iazFX8Juu4JknTHGZ
+ atC+adc4FAK3O8jQ+T1fXLsUowI9e3zafCD65jOlyBCHlkpEuJpXkAirpfTCitZRNPlJ
+ PYCB8/TWjDGhSMBvu5cAztSwMIxtFq5Tp22uLNhQsbYh+44hIVygjof74uQVEDh/IpCt
+ zPQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=L+MlXzK/gX+Ev+HLGvN+yRa0MaXPdgFFgZ11XTZeSGQ=;
- b=U8Magl/7dfhrif3jlEI4l7FvZVerXYu4cBl42ASPoncmDsfHSkTkFGnWZ4lHVPSp8+
- t1NUVIB6LNl8FaBJZtvezhyKWacumTuyB9/d76pIXkekBAoVgk4DCcIuhrFZB8H9ABmL
- 18smzd12QVixIpsipM9tuxeEBVv0pOHD4I+Eg2QAXUNvZ5311QymQi0eQ9PllbKlRlwp
- dYp/M0kVprS7Nb993dMwBf3bOjWmzYcqZMmYOtjAjoehpOAe3fjW4pm4OQ9clZUG4U3P
- 15ioqRR8xsQbMjxgAcKnMPZO7B8qgCUahNCanvAYnMFP+bMyzOsHq/O08+8GNxRaCPIH
- 1Wvg==
-X-Gm-Message-State: AOAM533tjDGm1rSXRKjM7y0ikhA1xYRHOGNC9Z0u93kWK+YWxsjejGRc
- zifY94sGDjxQ+LVThJTtYtw=
-X-Google-Smtp-Source: ABdhPJwVfZwfBTZFklQwPm91xnGt7An+SCmAyWUrpzvkGUWpoHLLnwv1wEiCr686b+92zzHVU03v8w==
-X-Received: by 2002:aa7:c850:: with SMTP id g16mr11986100edt.324.1617313024470; 
- Thu, 01 Apr 2021 14:37:04 -0700 (PDT)
+ bh=GHpx++F9qxXFAoyX+lLV8P5ugzLRk8jhk2+JIF6szec=;
+ b=tR190revBouEn253xH9AKzFe5UG2GevdXfqJT5kRkJdRPy75fPqsD8HZLNZsQ2MCmY
+ SRWQJOh42hUSjtrVtJc/tE+0K7tkNG9guHuq/y8NFV3w1kcdsvX66nOjr7Q9NlKSJ/wy
+ 88eh/QsUUUUhGHRsZuchvyktVdICXNVVEtK4CzTXakcADezknKRqesi6F2+tRPfB03fd
+ Rt5i0alaR8iHcNT8e9oOwWGaZfZitR5aPKLfeNia5Mi1nFLciYdOTj9dvcjW8l/pSB1A
+ LrjtGuI/mxBDGY7FQ7XW2hmH/bOJC470Ov9MkxmVg1egmn5/+3i4kWve2PV/e7sAGPjG
+ 7WDA==
+X-Gm-Message-State: AOAM531sTKibVeks5n+Sn6wuGhg+FMnZM7yj7bUCVBCwgRHqApzL/6sB
+ 3lUo8Om8thZgxR5hdX+RESs=
+X-Google-Smtp-Source: ABdhPJwyQoZc7cv1vBccoldfMHICbKw9x2p5By7ZGWRdh851ke3aQdNtMTZzi/2q7JU3T8Xw2mgJbA==
+X-Received: by 2002:a17:907:20c7:: with SMTP id
+ qq7mr10872885ejb.528.1617313022923; 
+ Thu, 01 Apr 2021 14:37:02 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id f9sm4237006edq.43.2021.04.01.14.37.03
+ by smtp.gmail.com with ESMTPSA id f9sm4237006edq.43.2021.04.01.14.37.01
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 01 Apr 2021 14:37:04 -0700 (PDT)
+ Thu, 01 Apr 2021 14:37:02 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, gregkh@linuxfoundation.org, balbi@kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-usb@vger.kernel.org
-Subject: [PATCH v6 4/4] arm64: dts: rockchip: restyle rk3399 usbdrd3_1 node
-Date: Thu,  1 Apr 2021 23:36:52 +0200
-Message-Id: <20210401213652.14676-5-jbx6244@gmail.com>
+Subject: [PATCH v6 3/4] arm64: dts: rockchip: restyle rk3399 usbdrd3_0 node
+Date: Thu,  1 Apr 2021 23:36:51 +0200
+Message-Id: <20210401213652.14676-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210401213652.14676-1-jbx6244@gmail.com>
 References: <20210401213652.14676-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_223713_233302_99889B16 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20210401_223713_282872_AEA8F372 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,329 +102,341 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 For rk3399 dwc3 usb the wrapper node for only clocks makes no sense,
-so restyle the rk3399 usbdrd3_1 node before more new SoC types are
+so restyle the rk3399 usbdrd3_0 node before more new SoC types are
 added with the same IP.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
+Changed V6:
+  rebase
+
 Changed V3:
   remove aclk_usb3_rksoc_axi_perf
   remove aclk_usb3
 ---
  arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      |  2 +-
  arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |  6 +---
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |  6 +---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |  6 +---
  arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |  6 +---
  .../boot/dts/rockchip/rk3399-khadas-edge.dtsi      |  6 +---
  arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts  |  6 +---
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts |  2 +-
  arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |  4 ---
  arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |  6 +---
  .../boot/dts/rockchip/rk3399-pinebook-pro.dts      |  4 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi      |  6 +---
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |  6 +---
+ .../arm64/boot/dts/rockchip/rk3399-puma-haikou.dts |  4 ---
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |  4 ---
  arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  6 +---
  arch/arm64/boot/dts/rockchip/rk3399-rock960.dts    |  2 +-
  arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |  4 ---
  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi |  6 +---
  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi  |  6 +---
  arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 37 ++++++++--------------
- 17 files changed, 26 insertions(+), 93 deletions(-)
+ .../boot/dts/rockchip/rk3399pro-vmarc-som.dtsi     |  4 ---
+ 19 files changed, 25 insertions(+), 96 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-index 95110d065..4392780db 100644
+index 1ce85a581..95110d065 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
-@@ -157,7 +157,7 @@
- 	dr_mode = "host";
+@@ -153,7 +153,7 @@
+ 	status = "okay";
  };
  
--&usbdrd_dwc3_1 {
-+&usbdrd3_1 {
+-&usbdrd_dwc3_0 {
++&usbdrd3_0 {
  	dr_mode = "host";
  };
  
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index 4017b0e8c..28e5895de 100644
+index 6db18808b..4017b0e8c 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -778,12 +778,8 @@
+@@ -773,12 +773,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
- 	dr_mode = "host";
+ 	dr_mode = "otg";
 +	status = "okay";
  };
  
- &vopb {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 1384dabbd..c996c688d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -351,13 +351,9 @@ ap_i2c_tp: &i2c5 {
+ &usbdrd3_1 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 32dcaf210..e42783cb7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -618,13 +618,9 @@ ap_i2c_audio: &i2c8 {
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 +	dr_mode = "host";
- 	extcon = <&usbc_extcon1>;
+ 	extcon = <&usbc_extcon0>;
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
  	status = "okay";
 -	dr_mode = "host";
  };
  
- &pinctrl {
+ &vopb {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index daf14f732..397050703 100644
+index 341d074ed..daf14f732 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -736,12 +736,8 @@
+@@ -731,12 +731,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
  	dr_mode = "host";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index d028285fb..30e6e3e41 100644
+index 635afdd99..d028285fb 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -802,12 +802,8 @@
+@@ -797,12 +797,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
- 	dr_mode = "host";
+ 	dr_mode = "otg";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-index 1c0b48a71..a7092fda3 100644
+index 1fa80ac15..1c0b48a71 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts
-@@ -616,12 +616,8 @@
+@@ -611,12 +611,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
- 	dr_mode = "host";
+ 	dr_mode = "otg";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+index fa5809887..33730b3c5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+@@ -124,7 +124,7 @@
+ 	status = "disabled";
+ };
+ 
+-&usbdrd_dwc3_0 {
++&usbdrd3_0 {
+ 	dr_mode = "host";
+ };
+ 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 01c15c833..6605d0bcb 100644
+index 48ed4aaa3..01c15c833 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -711,10 +711,6 @@
+@@ -714,10 +714,6 @@
+ 	status = "okay";
  };
  
- &usbdrd3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+ &usbdrd_dwc3_1 {
  	dr_mode = "host";
  	status = "okay";
- };
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 7b633622c..fdc027ff3 100644
+index ad7c4d008..7b633622c 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -859,12 +859,8 @@
+@@ -854,12 +854,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
  	dr_mode = "host";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index f00e11075..80ac8ab6a 100644
+index 219b7507a..f00e11075 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -1091,10 +1091,6 @@
+@@ -1086,10 +1086,6 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
  	dr_mode = "host";
  	status = "okay";
  };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 6ae9032d8..542980344 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -466,12 +466,8 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index a8d363568..35780506c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -223,10 +223,6 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
--	status = "okay";
- 	dr_mode = "host";
-+	status = "okay";
+-&usbdrd_dwc3_0 {
+ 	dr_mode = "otg";
+ 	status = "okay";
  };
- 
- &usb_host1_ehci {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 4d30c1b32..f15f85162 100644
+index 20309076d..4d30c1b32 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -793,12 +793,8 @@
+@@ -792,10 +792,6 @@
+ 	status = "okay";
  };
  
- &usbdrd3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
--	status = "okay";
- 	dr_mode = "host";
-+	status = "okay";
+ &usbdrd3_1 {
+ 	status = "okay";
  };
- 
- &vopb {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 69c067dd1..f07f49f45 100644
+index fb7599f07..69c067dd1 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -673,12 +673,8 @@
+@@ -668,12 +668,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
  	dr_mode = "host";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-index df4119441..bb110c456 100644
+index 1a23e8f3c..df4119441 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-@@ -143,7 +143,7 @@
+@@ -139,7 +139,7 @@
+ 	status = "okay";
+ };
+ 
+-&usbdrd_dwc3_0 {
++&usbdrd3_0 {
  	dr_mode = "otg";
  };
  
--&usbdrd_dwc3_1 {
-+&usbdrd3_1 {
- 	dr_mode = "host";
- };
- 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-index 3920dcbd1..b5f23661e 100644
+index 5e3ac589b..3920dcbd1 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi
-@@ -639,10 +639,6 @@
+@@ -635,10 +635,6 @@
  	status = "okay";
  };
  
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
 -};
 -
- &vopb {
+ &usbdrd3_1 {
  	status = "okay";
  };
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index f119fc41f..a8e5d9e02 100644
+index d42c75c6d..f119fc41f 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -835,12 +835,8 @@
+@@ -830,12 +830,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
  	dr_mode = "host";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 2e76f178e..fe9d4b2f8 100644
+index 701a567d7..2e76f178e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -619,12 +619,8 @@
+@@ -614,12 +614,8 @@
  };
  
- &usbdrd3_1 {
+ &usbdrd3_0 {
 -	status = "okay";
 -};
 -
--&usbdrd_dwc3_1 {
+-&usbdrd_dwc3_0 {
 -	status = "okay";
  	dr_mode = "host";
 +	status = "okay";
  };
  
- &vopb {
+ &usbdrd3_1 {
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index deac8f8e5..497df16cc 100644
+index 186a7c483..deac8f8e5 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -388,37 +388,26 @@
+@@ -365,37 +365,26 @@
  	};
  
- 	usbdrd3_1: usb@fe900000 {
+ 	usbdrd3_0: usb@fe800000 {
 -		compatible = "rockchip,rk3399-dwc3";
 -		#address-cells = <2>;
 -		#size-cells = <2>;
 -		ranges;
 +		compatible = "rockchip,rk3399-dwc3", "snps,dwc3";
-+		reg = <0x0 0xfe900000 0x0 0x100000>;
-+		interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru SCLK_USB3OTG1_REF>, <&cru SCLK_USB3OTG1_SUSPEND>,
- 			 <&cru ACLK_USB3OTG1>, <&cru ACLK_USB3_GRF>;
++		reg = <0x0 0xfe800000 0x0 0x100000>;
++		interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		clocks = <&cru SCLK_USB3OTG0_REF>, <&cru SCLK_USB3OTG0_SUSPEND>,
+ 			 <&cru ACLK_USB3OTG0>, <&cru ACLK_USB3_GRF>;
  		clock-names = "ref_clk", "suspend_clk",
  			      "bus_clk", "grf_clk";
 +		dr_mode = "otg";
-+		phys = <&u2phy1_otg>, <&tcphy1_usb3>;
++		phys = <&u2phy0_otg>, <&tcphy0_usb3>;
 +		phy-names = "usb2-phy", "usb3-phy";
 +		phy_type = "utmi_wide";
 +		power-domains = <&power RK3399_PD_USB3>;
- 		resets = <&cru SRST_A_USB3_OTG1>;
+ 		resets = <&cru SRST_A_USB3_OTG0>;
  		reset-names = "usb3-otg";
 +		snps,dis-del-phy-power-chg-quirk;
 +		snps,dis_enblslpm_quirk;
@@ -432,15 +445,15 @@ index deac8f8e5..497df16cc 100644
 +		snps,dis_u2_susphy_quirk;
  		status = "disabled";
 -
--		usbdrd_dwc3_1: usb@fe900000 {
+-		usbdrd_dwc3_0: usb@fe800000 {
 -			compatible = "snps,dwc3";
--			reg = <0x0 0xfe900000 0x0 0x100000>;
--			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
--			clocks = <&cru SCLK_USB3OTG1_REF>, <&cru ACLK_USB3OTG1>,
--				 <&cru SCLK_USB3OTG1_SUSPEND>;
+-			reg = <0x0 0xfe800000 0x0 0x100000>;
+-			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+-			clocks = <&cru SCLK_USB3OTG0_REF>, <&cru ACLK_USB3OTG0>,
+-				 <&cru SCLK_USB3OTG0_SUSPEND>;
 -			clock-names = "ref", "bus_early", "suspend";
 -			dr_mode = "otg";
--			phys = <&u2phy1_otg>, <&tcphy1_usb3>;
+-			phys = <&u2phy0_otg>, <&tcphy0_usb3>;
 -			phy-names = "usb2-phy", "usb3-phy";
 -			phy_type = "utmi_wide";
 -			snps,dis_enblslpm_quirk;
@@ -453,7 +466,22 @@ index deac8f8e5..497df16cc 100644
 -		};
  	};
  
- 	cdn_dp: dp@fec00000 {
+ 	usbdrd3_1: usb@fe900000 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+index 7257494d2..810fb7880 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+@@ -454,10 +454,6 @@
+ 	status = "okay";
+ };
+ 
+-&usbdrd_dwc3_0 {
+-	status = "okay";
+-};
+-
+ &vbus_host {
+ 	enable-active-high;
+ 	gpio = <&gpio4 RK_PD1 GPIO_ACTIVE_HIGH>; /* USB1_EN_OC# */
 -- 
 2.11.0
 
