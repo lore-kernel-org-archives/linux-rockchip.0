@@ -2,87 +2,113 @@ Return-Path: <SRS0=2XDZ=JD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BCB7C433B4
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 10:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AC96C433ED
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 11:16:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3836661154
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 10:58:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3836661154
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 01802613C6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 11:16:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01802613C6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y84Qa77DqMBn1cgH4soJjpReITwi6Uv05ms5BmMqXxI=; b=TarpwsnsQu4yOKeMhJTeR+dL5
-	5TVeffZKD8soZQ5gPtob9m49x5FMyTR2ZVQrO1YbntzcaL33ZSX0Y1lmcyXKAWUj01yeE6HRiM/95
-	8VJ8vHru7iqiU+z6Z5P22H4ylR0O38YOWaHRFjEIao9qkP8GSqFVuLnDzbmykMaIBSFINjskBlnzs
-	rPR4tZutcdo3DrB42PkYoD2bU7BWZlA9l5gigCHL86v7vWBsL134W2lcYtX2/jf38gOwE5Zim17w7
-	8iPBUkxbB2YIYDD+Vdaxf8K9JQA3UCqpQSvIalyPi56JQuym3NTSMMU2bt4H4f2w3ssqfXeJ1exsG
-	lgcVkay1w==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qw7nOZGaqhPNgL42Yogx0YHWDc4Bkiy+19jGXdMUyQI=; b=A3fTfEq+nq4NKuSXZlfyS0r+o
+	ORK9gstEULuxoBY4Ke/aI9sm3R57FcUleRoJnT42jMHD3LO8DshbEUh5IKLC9dPRKKg3/566irORz
+	AMuQNXrdiLpPPjDGq1sEa0QZUWb95eOfxAUZfmwE5z6PwWZgZWYG7IZPvp0oDDLHvBuLhB5oyqmIX
+	e4scwKVoJh23uCaFyoqO9ocdDyEIg+6FiuOnGUr7c9KEP/OSVDVITNhPkg9hHKdZ04+6CoURa8fBp
+	ghDffcfKPP09SZ4U4gdHLBO6ajN5/Dbte9/hoSltcOrPQJSKV7WCm3kFQB7NcTt3WVbH3L/3+G3qn
+	5Ea9Mk/wA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTjPJ-002FOw-RP; Tue, 06 Apr 2021 10:58:05 +0000
-Received: from lb3-smtp-cloud9.xs4all.net ([194.109.24.30])
+	id 1lTjgq-002IUO-Ci; Tue, 06 Apr 2021 11:16:12 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTjP8-002FNK-PU; Tue, 06 Apr 2021 10:57:56 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id TjP4l4TyT43ycTjP7lNdM9; Tue, 06 Apr 2021 12:57:54 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1617706674; bh=DNZA3oB8UWCwpjl0MBgM7pX0tWEw6GsoXltvd2t81NU=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=ELrtghCbyYtkMftCze+cGk8jwkrhBrEW0e0FbuDwatREOz9Vw8976h4t28+50dZrR
- yBocUbnn6OPqt43i7rGkXJJebsQ0crL9kFUmV6IzddQJ208lOnRS+DCa5OsqGl5ids
- O+Q9Cxa7B/JqoeK0YKcULW9CTmx0NgIt5uJng6sSkjFEnU4eJ+Fl62rphB7MV/CA5p
- 1VWbkl2/oHW69Kt9itgyeTZW6hbwoX5sUQh11QJm9xrgO0uaToJ1u26zy4SUoVIPTs
- MMSy6BwpybaGP/VudlA+GocgyJSy8aob5Eex4tf20IYVjZjaVcwUpPyqK99aVLi+ZN
- g361PfWICMlcw==
-Subject: Re: [PATCH v8 02/13] dt-bindings: media: nxp,imx8mq-vpu: Update the
- bindings for G2 support
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, emil.l.velikov@gmail.com
-Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devel@driverdev.osuosl.org, kernel@collabora.com,
- Rob Herring <robh@kernel.org>
-References: <20210401160003.88803-1-benjamin.gaignard@collabora.com>
- <20210401160003.88803-3-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <64bcdb7c-37a8-0d6e-1588-db096523725d@xs4all.nl>
-Date: Tue, 6 Apr 2021 12:57:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+ id 1lTjgf-002ISl-HV; Tue, 06 Apr 2021 11:16:03 +0000
+Received: by mail-ej1-x631.google.com with SMTP id ap14so21338821ejc.0;
+ Tue, 06 Apr 2021 04:16:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=yVEDKiVUDMBOpgUCPiSByRWJFXrj0auSVMAOE9mqU+U=;
+ b=eF4JkJr9jyFg9X/TymlZbfz77nC1P0sRTQUA4jzF2Pz25yTkHXNWicf0Y3N/KFEMBg
+ KtSkAXw6WXUHAv+8G32fsEH635mZevPOihNO49sWpIUwQ8I+CT7CtQPtkW/QGFq++k4G
+ DugHhWhubTu0yLiWjuT4VrSF+WfFquNFrxVCrC1TNcnPl0rMnOGvaV9aGYrbZAzbZNpu
+ 9yQpA9rBcDGa9ucFhda2RoVxLSvBByHuklnjvrjh/XFUcSAl0FBhHnUi5liXQC7P2Y7F
+ amxG+oFeNkRZcvjRNXSyUoD3p7KU9lroDVDd7/X+I9p9hMyzHQ1rVvwPMlTMRP6CZn4f
+ MRXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=yVEDKiVUDMBOpgUCPiSByRWJFXrj0auSVMAOE9mqU+U=;
+ b=BUR0d2sIvbdkxpmCIcYfWH+/OGwQL3Oz8+/XGLP90IzkI+kn1NJiEMgRSbnzA0NikF
+ PNo5AG9LSlKiLEo77v71vafyTnh7ousVtMJOwi8T/eJf7m5TcKdZ+u56w3rsLDUu9Xrm
+ fxpEpTWkePdca9Ltet0xWZ/fyuCxyvAI0YjoyZcXKMI/9F4NnlTy2Er7w8NZCny9c/M6
+ +2TzEuX/SUZoZ4qb1h/8EAHP+ysR/aUIzFqpCkav6c7sNi7UsPjsY2LLliQCSARaq3++
+ 05D54oQMJvmOVvC7Jp+BYy6uwMPKOnLoezD689tJU2g8D3F1O6du6sOLP+qymmh7iN7O
+ 7emQ==
+X-Gm-Message-State: AOAM532pFY5KiQO3JOGKY+nFEeyYHED/F0v6AsZkAPcMnL3ss8uTTxFu
+ NsGf2V+9DIh0fUd83ab1Y+U=
+X-Google-Smtp-Source: ABdhPJySr3mBbF07VyzFBl9k8WSX0iBzHT1u+7rCFpmxkrk+5FOaupGQM5xmxtmv1+7X7Xid4NTPbA==
+X-Received: by 2002:a17:907:2da7:: with SMTP id
+ gt39mr1456317ejc.193.1617707760199; 
+ Tue, 06 Apr 2021 04:16:00 -0700 (PDT)
+Received: from localhost (p2e5be490.dip0.t-ipconnect.de. [46.91.228.144])
+ by smtp.gmail.com with ESMTPSA id y24sm13894442eds.23.2021.04.06.04.15.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Apr 2021 04:15:58 -0700 (PDT)
+Date: Tue, 6 Apr 2021 13:16:31 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Lee Jones <lee.jones@linaro.org>, Jonathan Corbet <corbet@lwn.net>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Daniel Thompson <daniel.thompson@linaro.org>,
+ Jingoo Han <jingoohan1@gmail.com>, linux-pwm@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-input@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-fbdev@vger.kernel.org
+Subject: Re: [PATCH] pwm: Rename pwm_get_state() to better reflect its semantic
+Message-ID: <YGxDD4jVZx/H/Zdr@orome.fritz.box>
+References: <20210406073036.26857-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20210401160003.88803-3-benjamin.gaignard@collabora.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfLDv0rUrPK58xwNzO4QnehCj97lxwmR/HSBvm+VjPM3UbXxNQHw9C6pgJ3C6PGCs4LQbnvjjmq08S63vpsIpmAZ0Ib7JH9wPTn0AYPWETHPx95/3cM3o
- NuhZ4GPC0mgIgDPVGSqs/pte/3+kBas//009BMv7+MOPulMK92pFUcUflVmRwG6hlN7t6VsFfAU0dY9ZYVMam08TEXy3Yc7VmbTwEHg81P6daEQMNZNCFCOZ
- KBTc8oreJBJ/9uv5cvZHGRIcuvFFsddzLDk7CXbc/fun2VDS30dII/kb9xzq8gLB8UcTdYrhkobeHQpMlPPk3g2B+i8B31sB7SNMve5EfnVw9YgQiKIbolzB
- EAEXR/bf2jFT1TzxXMzy7T2ljlGeg6XgHngz52YJwGtQyUlxR79BuRYH/M+vbBHHjwllvtSR/4dOlXI1E9i+uZY3CNNAstwqaYF+p69LXO9d7Y4yDukwuru4
- ftAJaPGT2xlTCG3hcRgfNxmulOB+aecZpmi68VvFA+8JNvoOHIWteO+4kE8FIcMjGXe/2R7Rt02PYgVckFxneQfGKdS8PAt72cG3WnUCSP5vNgMqIingeBXy
- TXOHDOmHFEL2z0ANeVx7aQDuA7sGwn+Oy3yMsB+GhFkQu1HQxbJgVgzG9e35xD91ufqA9wiEjD3Ts/wC2rhSTYKpiliSxTUL1tAX5+ncmQ5Bi3g68iYefHou
- cVngT5n/goY+EmB/yYYNP81lUfChxPV5IYS/HrsPalto/2yqetWkRnNY0j2PFv9VoDPtREvGYJN+IJ8D2H4BwXVF9tNdZ83ykPuChDi4TjZ1Sq6CxFii/KXi
- r4ny5846jH+tD2zqKYjijNkiJaF9uBr/SoBtvU8Y9KfMHeTlC7+k3kDdJirkTpFw7immdH9Rm35HXFGYOA/HUCINKWckZ4hWJqohnd7lmgQboZcf9o6ElOX7
- vbRjfmb3Uu78VnYSE0EOF+teyRZ3udhW48HuAV0JYxpnEmwdkMlsR7Ej5+mopsYkl/cwvZwrasHR4x1Z7MtaAr3Aw4Ge2+q9744b7jt5ZZkXfr/z
+In-Reply-To: <20210406073036.26857-1-u.kleine-koenig@pengutronix.de>
+User-Agent: Mutt/2.0.6 (98f8cb83) (2021-03-06)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_115754_892235_114D1275 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20210406_121601_665969_7C03497C 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,155 +121,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3402934041251998116=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/04/2021 17:59, Benjamin Gaignard wrote:
-> Introducing G2 hevc video decoder lead to modify the bindings to allow
-> to get one node per VPUs.
 
-Introducing the G2 hevc video decoder requires modifications of the bindings to allow
-one node per VPU.
+--===============3402934041251998116==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="kAjYvSBiDvNQ2JMa"
+Content-Disposition: inline
 
-> VPUs share one hardware control block which is provided as a phandle on
-> an syscon.
 
-an -> a
+--kAjYvSBiDvNQ2JMa
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Each node got now one reg and one interrupt.
-
-got now -> has now
-
-> Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
-> 
-> To be compatible with older DT the driver is still capable to use 'ctrl'
-
-use -> use the
-
-> reg-name even if it is deprecated now.
-
-Regards,
-
-	Hans
-
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+On Tue, Apr 06, 2021 at 09:30:36AM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> Given that lowlevel drivers usually cannot implement exactly what a
+> consumer requests with pwm_apply_state() there is some rounding involved.
+>=20
+> pwm_get_state() traditionally returned the setting that was requested most
+> recently by the consumer (opposed to what was actually implemented in
+> hardware in reply to the last request). To make this semantic obvious
+> rename the function.
+>=20
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
 > ---
-> version 7:
-> - Add Rob and Philipp reviewed-by tag
-> - Change syscon phandle name to nxp,imx8m-vpu-ctrl (remove 'q' to be
->   usable for iMX8MM too)
-> 
-> version 5:
-> - This version doesn't break the backward compatibilty between kernel
->   and DT.
-> 
->  .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++-------
->  1 file changed, 34 insertions(+), 19 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> index 762be3f96ce9..18e7d40a5f24 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> @@ -15,22 +15,18 @@ description:
->  
->  properties:
->    compatible:
-> -    const: nxp,imx8mq-vpu
-> +    oneOf:
-> +      - const: nxp,imx8mq-vpu
-> +      - const: nxp,imx8mq-vpu-g2
->  
->    reg:
-> -    maxItems: 3
-> -
-> -  reg-names:
-> -    items:
-> -      - const: g1
-> -      - const: g2
-> -      - const: ctrl
-> +    maxItems: 1
->  
->    interrupts:
-> -    maxItems: 2
-> +    maxItems: 1
->  
->    interrupt-names:
-> -    items:
-> +    oneOf:
->        - const: g1
->        - const: g2
->  
-> @@ -46,14 +42,18 @@ properties:
->    power-domains:
->      maxItems: 1
->  
-> +  nxp,imx8m-vpu-ctrl:
-> +    description: Specifies a phandle to syscon VPU hardware control block
-> +    $ref: "/schemas/types.yaml#/definitions/phandle"
-> +
->  required:
->    - compatible
->    - reg
-> -  - reg-names
->    - interrupts
->    - interrupt-names
->    - clocks
->    - clock-names
-> +  - nxp,imx8m-vpu-ctrl
->  
->  additionalProperties: false
->  
-> @@ -62,18 +62,33 @@ examples:
->          #include <dt-bindings/clock/imx8mq-clock.h>
->          #include <dt-bindings/interrupt-controller/arm-gic.h>
->  
-> -        vpu: video-codec@38300000 {
-> +        vpu_ctrl: syscon@38320000 {
-> +                 compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
-> +                 reg = <0x38320000 0x10000>;
-> +        };
-> +
-> +        vpu_g1: video-codec@38300000 {
->                  compatible = "nxp,imx8mq-vpu";
-> -                reg = <0x38300000 0x10000>,
-> -                      <0x38310000 0x10000>,
-> -                      <0x38320000 0x10000>;
-> -                reg-names = "g1", "g2", "ctrl";
-> -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> -                interrupt-names = "g1", "g2";
-> +                reg = <0x38300000 0x10000>;
-> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g1";
-> +                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> +                clock-names = "g1", "g2", "bus";
-> +                power-domains = <&pgc_vpu>;
-> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
-> +        };
-> +
-> +        vpu_g2: video-codec@38310000 {
-> +                compatible = "nxp,imx8mq-vpu-g2";
-> +                reg = <0x38300000 0x10000>;
-> +                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g2";
->                  clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
->                  clock-names = "g1", "g2", "bus";
->                  power-domains = <&pgc_vpu>;
-> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
->          };
-> 
+>  Documentation/driver-api/pwm.rst           |  6 +++-
+>  drivers/clk/clk-pwm.c                      |  2 +-
+>  drivers/gpu/drm/i915/display/intel_panel.c |  4 +--
+>  drivers/input/misc/da7280.c                |  2 +-
+>  drivers/input/misc/pwm-beeper.c            |  2 +-
+>  drivers/input/misc/pwm-vibra.c             |  4 +--
+>  drivers/pwm/core.c                         |  4 +--
+>  drivers/pwm/pwm-atmel-hlcdc.c              |  2 +-
+>  drivers/pwm/pwm-atmel.c                    |  2 +-
+>  drivers/pwm/pwm-imx27.c                    |  2 +-
+>  drivers/pwm/pwm-rockchip.c                 |  2 +-
+>  drivers/pwm/pwm-stm32-lp.c                 |  4 +--
+>  drivers/pwm/pwm-sun4i.c                    |  2 +-
+>  drivers/pwm/sysfs.c                        | 18 ++++++------
+>  drivers/regulator/pwm-regulator.c          |  4 +--
+>  drivers/video/backlight/pwm_bl.c           | 10 +++----
+>  include/linux/pwm.h                        | 34 ++++++++++++++--------
+>  17 files changed, 59 insertions(+), 45 deletions(-)
 
+Honestly, I don't think this is worth the churn. If you think people
+will easily get confused by this then a better solution might be to more
+explicitly document the pwm_get_state() function to say exactly what it
+returns. But there's no need to make life difficult for everyone by
+renaming this to something as cumbersome as this.
+
+Thierry
+
+--kAjYvSBiDvNQ2JMa
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmBsQwwACgkQ3SOs138+
+s6ECqA//Zd57LkVbLnSm51dMJdU3OzbgvA2eSnrblJcbIJaVQX93rfojOCA72Loe
+UqwrOYm9kh6H6Drl9Z2koBzoW1IW0UteSwPwn/KhORLXqdbDPnLWhQgEiMpykEIy
+avZbWjX1fgz6pX0CGwmbns0dJs7knTCFroGMjOnZamRoU9fe5fj6MzhlPtIVluBz
+LDUa5s1k74PnNc5REcD53DNOtFBWYUQa/2mv1MGIOKNdFmJBfb+gVJrayUN9iAmn
+jVUy50BHt0Hrp6GunWAAEsjogOTtXbV+X2opyG3aXM/EMfCli06XHEsI+rTcHl07
+F4cU9K4gQOprj2pQ+5CX3QZ1VPi17rk1/Ny5EoFMRIfPuFWQtiJIoWCG11eEv7Xv
+D0at6sonV6l9zuH60/udcqMoq+ktq9v5bgCZJkY2lswkR1u4droUBsEaak7fm3/E
+DfRVgSBTCVnPhEBtL06UXQURErSP6GFShSeOflPXKudYj2OPRb/xYSw5iLbJDL2U
+L9o7KxbaYeSdNcT0q+ubQuegWdUfc289Om3VbTBPz8H61FpSsgt5YEpYGgpUx84G
+ZQkIs5iv3dgUm0ip3GbUtT5FxHXUoqCRhFJBZfaCJMTEaBFlmT413aZthMWmdYJY
+RJeTHFTLUaptPV26ZSqYpNRLr070C4wJMNCnleCoYFAJY/gdZ8w=
+=zxs0
+-----END PGP SIGNATURE-----
+
+--kAjYvSBiDvNQ2JMa--
+
+
+--===============3402934041251998116==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3402934041251998116==--
+
