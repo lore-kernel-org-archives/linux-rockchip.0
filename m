@@ -2,92 +2,87 @@ Return-Path: <SRS0=2XDZ=JD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B74F5C433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 11:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F067CC433ED
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 12:10:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51A4B613D5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 11:54:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51A4B613D5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 96616613CA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 12:10:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96616613CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8I44NV/FrOvm43QtsrODwaSRolMVZd969j2rmqGSFzI=; b=qfgx9FF/BHZQnOUWkUwequRbY
-	/Lpedy9D56Ru5eRGptYND2CMOxtf7JAttiNwp7ceMvJ/IJOaKfiJbROno8A06yfPAro7pUBTNSS1p
-	VLD38RobD2nMYnzUIi01juI6nZxnpECnaLlMFP+ReGMlSE87SG7N6cpRPxeO8fZ3A3abmOJZGEJw9
-	GW9so1/s2k5ivrxZ1tL1ZETV2Vojvbf3tPIi1Ab6EDBYkgxR7n7gyzhQ/z3mFJTsvkaaPvt/cF0qI
-	wAYkTa4epo/bIl5/GrpZR4Lhjz3cdxiHqTcaY56HJcxuSMiogmS0fQlBdYZkhXH0wHOKq1OYtEjDZ
-	/sUmELI2w==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=KMqAbiQKVHcnDnBw41qHNQXmuAMRJ54f7akAK7Rw47E=; b=ZayHVky1lUGbyMB9a58SUiBmf
+	B+huB2XgJ8esYx1S1czX7AB+i6HtZACQuMOondOgKHMHXFkQ13UZMbnHUXEUC+0X3BHrHaKp/Oi3M
+	KirClaReZCIMQhG+sKjDgPrLS2WbGlWywBgFZ2i1QAjwu96Klj4gYeh3u+Nqx57TeAbNnX89V2Dig
+	uQfus/LoVu4/QiGSaKzhHWTGDuHXoOFIV6EwDl5nmwKlQXWHpN/hwKcRU4qe1UXnotEbO0n9Z3T08
+	IeeRta1qVRPUyg7790FG8MmhE6ajMwqaaKYtmpymJRvxz0FVZ4EyhNBRDYXvqd3yUiR7mOIGw3oDr
+	OQVEx+Pjw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTkHl-002SOu-Do; Tue, 06 Apr 2021 11:54:22 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lTkXX-002W3Y-8Z; Tue, 06 Apr 2021 12:10:39 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTk7z-002Psi-LW; Tue, 06 Apr 2021 11:44:36 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 54559613A3;
- Tue,  6 Apr 2021 11:44:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1617709453;
- bh=2Vm9ityjyZldn07RFATp/5Z6vJvrtF34+UIuw8/w51g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GReFQWQpMbEkyEVsTKHs7ItqEeoFaP16m5Z3rbHGee/xUg8t97DrCK353XkdbGbf9
- lao7igukf7FQKFGApt0frZlorzz/1m9K6PSQnaNs8KWGe74p49eVqMnMWSMWr/eWb6
- h0E6V8WCjhzowkzHQKaBkT6y+Zl0z1OLo0UBhroRVCHDhJe0Nw2db833UnCeJjEsF5
- vFXsftpWcfKnGw/Wg7KJBeV7IdlAJh6JaV2qku9wWyxeJQCnvfMWFJ4nXmMzAkQKYp
- MBgfG9A4tCMG1nh+ayjA722WXw/iGJ434k7CUQ3wegQio0D9yZSJwuwQyNNFxp3+dF
- yc6IGZsD1CfUg==
-Date: Tue, 6 Apr 2021 12:43:57 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Jonathan Corbet <corbet@lwn.net>,
- Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Support Opensource <support.opensource@diasemi.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Heiko Stuebner <heiko@sntech.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Jingoo Han <jingoohan1@gmail.com>, linux-pwm@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-input@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-fbdev@vger.kernel.org
-Subject: Re: [PATCH] pwm: Rename pwm_get_state() to better reflect its semantic
-Message-ID: <20210406114357.GC6443@sirena.org.uk>
-References: <20210406073036.26857-1-u.kleine-koenig@pengutronix.de>
+ id 1lTkXL-002W0j-F5; Tue, 06 Apr 2021 12:10:29 +0000
+Received: by mail-lf1-x134.google.com with SMTP id b14so22301618lfv.8;
+ Tue, 06 Apr 2021 05:10:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=A0FXSTiM7GC4Mvwuv2T0oynhHNDd7L5en4InWzjAui8=;
+ b=immwf48ORJKbTnbiusrILWixOG0SjnZnU9YsXi79NfCDXcOLmUuRT1TsielKwFzHRf
+ Q0UFpaJ08oq0o9TvShdrZ4y3scfNFZbr1RmMFzwVE3qZo8u15YbEuSJukLC1Poe+26eE
+ w7KRKoVL+KN5ShIDhGdc4DbyURCW1fAo9d8IB2k6TiX20Gwi/DDNmeb/JL4sCev+sf8i
+ kHElm7txv2YKTsQucNpYG2gZndEnTjBAMLxIF6d2Zm9bmYE3MQnv8T6vkdt5ESZfGGpM
+ X3zkBX9nBP3ZSqqoqQ0wpPmiLBtqmEvYqsEmeXaW3PtBzQ5n0wPNkABvzmdHj48Yz7V5
+ PeUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=A0FXSTiM7GC4Mvwuv2T0oynhHNDd7L5en4InWzjAui8=;
+ b=qZ1Yl2iQih8g8/4+vFtNjaUJKDRc6DaMdjqXB6ixHblsHZH7j2OOOlzLc0vxGvPN2C
+ dv6uFDqC0Pu4VgoifjDaPSRai8G4QMqtmbv6TBnwrhXKoNKhiE80lpPEM8qXq2wpYEIX
+ K8NPmAfg+qrbvpEHLfkRYWMbpRztrsNadPMDcqfe6wzFuRfd9ZZjG14pd/BqbmwEGiCj
+ k2RV8zpVZXh4eRrlGws1tN6cIfSXi0aldOwMLvtzqExeAffQiJXuRYltvFmdTnl4lnGW
+ 3xuwkYAuVezQeVp69E+tpOz2m7V6u952IXXmXO/3UdtnrLO5VwMsSkxKUqpBI59ReiEu
+ GoFQ==
+X-Gm-Message-State: AOAM532FE39xSZc3RS+1yYzQYkUrZc604FtsbWlyluQEhGQwbqlj1sMK
+ 4zeXNeLg9L61MoCY5Yo1PYn2klXEIh6YKDqaLRmlrK0ZW20=
+X-Google-Smtp-Source: ABdhPJy5j7Oe8GDmvwGPYJBow20bn4HG2AffSOHb5q7QrCTnk5XtXrtLuRd9Vm9lhM9/OaOc98uquqs4FenNXOVGvNM=
+X-Received: by 2002:ac2:5ca7:: with SMTP id e7mr20852931lfq.646.1617711026053; 
+ Tue, 06 Apr 2021 05:10:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210406073036.26857-1-u.kleine-koenig@pengutronix.de>
-X-Cookie: BARBARA STANWYCK makes me nervous!!
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20210405093423.16149-1-cnsztl@gmail.com>
+ <c12341c8-8590-8314-d59b-3d5903041491@gmail.com>
+In-Reply-To: <c12341c8-8590-8314-d59b-3d5903041491@gmail.com>
+From: Tianling Shen <cnsztl@gmail.com>
+Date: Tue, 6 Apr 2021 20:10:14 +0800
+Message-ID: <CAOP2_Tjm9k0n_=_8+kZhFh_xC7o+ne1EWiL2UKWGXpUY+L2vRA@mail.gmail.com>
+Subject: Re: [PATCH v2] rockchip: enabled LAN port on NanoPi R2S
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ David Bauer <mail@david-bauer.net>, Robin Murphy <robin.murphy@arm.com>, 
+ Chen-Yu Tsai <wens@kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_124416_459157_84A1F982 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20210406_131027_611816_5EBF3E56 
+X-CRM114-Status: GOOD (  25.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,56 +95,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7867737614953313139=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Johan,
 
---===============7867737614953313139==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="UFHRwCdBEJvubb2X"
-Content-Disposition: inline
+On 2021-04-05 19:03, Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> Hi Tianling,
+>
+> On 4/5/21 11:34 AM, Tianling Shen wrote:
+> > From: David Bauer <mail@david-bauer.net>
+> >
+> > Enable the USB3 port on the FriendlyARM NanoPi R2S.
+> > This is required for the USB3 attached LAN port to work.
+> >
+> > Signed-off-by: David Bauer <mail@david-bauer.net>
+> > [added device node for USB Ethernet controller]
+> > Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> > ---
+> >  .../boot/dts/rockchip/rk3328-nanopi-r2s.dts   | 32 +++++++++++++++++++
+> >  1 file changed, 32 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> > index faf496d789cf..18936b393d9d 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> > @@ -13,6 +13,10 @@
+> >       model = "FriendlyElec NanoPi R2S";
+> >       compatible = "friendlyarm,nanopi-r2s", "rockchip,rk3328";
+> >
+> > +     aliases {
+> > +             ethernet1 = &r8153;
+> > +     };
+> > +
+> >       chosen {
+> >               stdout-path = "serial2:1500000n8";
+> >       };
+> > @@ -37,6 +41,16 @@
+> >               };
+> >       };
+> >
+>
+> > +     vcc_rtl8153: vcc-rtl8153-regulator {
+>
+> sort nodename
+>
+> > +             compatible = "regulator-fixed";
+> > +             gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
+> > +             pinctrl-names = "default";
+> > +             pinctrl-0 = <&rtl8153_en_drv>;
+> > +             regulator-always-on;
+>
+> > +             regulator-name = "vcc_rtl8153";
+>
+> exception to the sort rule
+> sort regulator-name above all other regulator properties
+>
+> > +             enable-active-high;
+>
+> sort
+>
+> ----
+> Heiko's sort rules:
+>
+> compatible
+> reg
+> interrupts
+> [alphabetical]
+> status [if needed]
+>
+> ----
 
+Thank you very much, and I will update it in v3.
 
---UFHRwCdBEJvubb2X
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+>
+> > +     };
+> > +
+> >       leds {
+> >               compatible = "gpio-leds";
+> >               pinctrl-0 = <&lan_led_pin>,  <&sys_led_pin>, <&wan_led_pin>;
+> > @@ -265,6 +279,12 @@
+> >                       };
+> >               };
+> >       };
+> > +
+> > +     usb {
+> > +             rtl8153_en_drv: rtl8153-en-drv {
+> > +                     rockchip,pins = <2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +             };
+> > +     };
+> >  };
+> >
+> >  &io_domains {
+> > @@ -364,6 +384,18 @@
+> >       dr_mode = "host";
+> >  };
+> >
+> > +&usbdrd3 {
+> > +     dr_mode = "host";
+> > +     status = "okay";
+> > +
+>
+> > +     r8153: usb-eth@2 {
+>
+> With YAML undocumented additional properties and nodes generate
+> notifications.
+> We need a change in the documents below for that.
+> rockchip,dwc3.yaml > usb-drd.yaml > usb.yaml
+>
+> Is there a standard for the usb-eth nodename?
+>
+> > +             compatible = "realtek,rtl8153";
+>
+> Since a while Rob has improved has scripts.
+> There's no escape anymore.
+> Add a YAML document to this serie for "realtek,rtl8153".
 
-On Tue, Apr 06, 2021 at 09:30:36AM +0200, Uwe Kleine-K=F6nig wrote:
-> Given that lowlevel drivers usually cannot implement exactly what a
-> consumer requests with pwm_apply_state() there is some rounding involved.
+This is actually added by another patch[1], but doesn't go to upstream yet.
+I'll ask David if he would like to submit it.
 
-Acked-by: Mark Brown <broonie@kernel.org>
+Kindly ping David.
 
---UFHRwCdBEJvubb2X
-Content-Type: application/pgp-signature; name="signature.asc"
+1:
+https://github.com/openwrt/openwrt/blob/master/target/linux/rockchip/patches-5.10/002-net-usb-r8152-add-LED-configuration-from-OF.patch
+https://github.com/openwrt/openwrt/blob/master/target/linux/rockchip/patches-5.10/003-dt-bindings-net-add-RTL8152-binding-documentation.patch
 
------BEGIN PGP SIGNATURE-----
+>
+> Improve checking for undocumented compatible strings
+> https://github.com/devicetree-org/dt-schema/commit/93e7ada8d53af099074cb5d53f7caa12835784e0
+>
+> > +             reg = <2>;
+>
+> Why 2 ?
+>
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmBsSXwACgkQJNaLcl1U
-h9CeAAgAg9/Q2RgSOxhbh64cI3whEBi2rDoy4JrnVOIaezDbl1KVpYtyba0y715D
-Y+27eAxh97zRr3AOb8di8IGVTcKZqEJvwbFWeAxIYTqr7yewyfFV2r3+aj1n6uji
-E06xtLVSajGadFJ8cwDdQmB2HGTiOraS8BIQTq8UgV4X6S2LOC6RRZ/BADXxlSXZ
-awgIor1dw+uVGentYfCseXYt3xOeoBGm1kcv2bLWZOf7p34NrBErZxEelYeZycnR
-FVaAHx4aGe2/1xPGOYGRdXxub+JSiKOXp8tFNWDNnrr/343S2A8pBE8u1GWqB2tu
-i/C2E1EQmwot6hIKN5/6hIg/LOb4cA==
-=bscb
------END PGP SIGNATURE-----
+This is the device number on the USB bus.
 
---UFHRwCdBEJvubb2X--
+> > +
+>
+> > +             local-mac-address = [ 00 00 00 00 00 00 ]; /* Filled in by U-Boot */
+>
+> This is a private property.
+> In a generic dts that's up to the user.
 
+Okay I will drop this.
 
---===============7867737614953313139==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Tianling.
+
+>
+> > +     };
+> > +};
+> > +
+> >  &usb_host0_ehci {
+> >       status = "okay";
+> >  };
+> >
+>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7867737614953313139==--
-
