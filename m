@@ -4,18 +4,18 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E541C433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 02:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42E1CC433ED
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 07:31:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63E1C6136A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 02:54:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 63E1C6136A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 97FDC60C41
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 07:31:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97FDC60C41
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,54 +23,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ns5Dcxk2C57f1Qd/lAInKUy9XLqdhp30QK68tnUAvPw=; b=EBeLnfoNQr0rChBCvIP3fe14VC
-	CkZiUIVCOw99pjRVRIsuuS+Cgiw4CzZ0TNP/akECVjyge4Zm14Aj7aQGPNTo2iAgEGJPG/182LJ+z
-	5fZao3CQtAaqQLAWqLGKRJ8+N4UC8Z5fkJBFR+cyi4V35Zh/c+WaQFrUUhTd9+2i31PY5IKBETBGp
-	CgZcloQyLjlWcRqNUC795RAet7W0Zf2ZKAtMxmkhFG1Xk9PqLFZxc0+tfzlMVetv35VSFmAXcHi50
-	UiMKBUpIxzkzeigW75wDf7IFKR4O7t5aqSjaDMmiRZqZbtqwraL3Ve06CWEgWOs4IzQeQJSUA19yX
-	vpUEK1Zg==;
+	bh=EAHf0aXjH/gQW6aS203APTWD9ZshBH1aZ2BquM+6wGk=; b=WSsTMLbNC6WCNxqK8ppJF9YUur
+	KRKBVP8QGDyYem2o0KUFhT4MkqDH0hv1d8V+R+G0BJNxgP9NW53NTnrNbIchJY0iONv6/D7PiUms3
+	I+f1SPeRP5HmE8HaRQDOZu1zXg2MwiE2Ec0b9NCOUqk/iEtYhkXY07r75DUCXrTWrIvphnbnrulpQ
+	FdcrVKxu+8Tlq3Q8NykBPRmPad8PQVkJIa6WG8KGF1yskGSZ7nQ6eKTUVtf/g3hRoWuxGAtRbfhe1
+	AUeP6WWgjLf9nTuPl9DDfU8WAYmcHW/0E9gTB4WtRT91MqqEesU0qciyl6LG2EnIU4u4/Ms6jXZUp
+	QNzaOFcg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTbr6-001I8M-6j; Tue, 06 Apr 2021 02:54:16 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1lTgBP-001nis-Tn; Tue, 06 Apr 2021 07:31:31 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTbqz-001I63-1g
- for linux-rockchip@lists.infradead.org; Tue, 06 Apr 2021 02:54:13 +0000
-Received: from localhost (unknown [192.168.167.172])
- by lucky1.263xmail.com (Postfix) with ESMTP id 07673CD307;
- Tue,  6 Apr 2021 10:53:59 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P25594T139883981444864S1617677637292371_; 
- Tue, 06 Apr 2021 10:53:58 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <523125eacacdcfc1f53b485faa6e2b92>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: heiko@sntech.de,
-	linus.walleij@linaro.org
-Cc: huangtao@rock-chips.com, linux-gpio@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH] pinctrl: rockchip: do coding style for mux route struct
-Date: Tue,  6 Apr 2021 10:53:56 +0800
-Message-Id: <20210406025356.534876-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+ id 1lTgBC-001nh8-NT
+ for linux-rockchip@lists.infradead.org; Tue, 06 Apr 2021 07:31:21 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lTgAf-0007N9-UL; Tue, 06 Apr 2021 09:30:45 +0200
+Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lTgAa-0001YT-Vl; Tue, 06 Apr 2021 09:30:40 +0200
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>
+Cc: Jonathan Corbet <corbet@lwn.net>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, Fabrice Gasnier <fabrice.gasnier@st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Daniel Thompson <daniel.thompson@linaro.org>,
+ Jingoo Han <jingoohan1@gmail.com>, linux-pwm@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-input@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-fbdev@vger.kernel.org
+Subject: [PATCH] pwm: Rename pwm_get_state() to better reflect its semantic
+Date: Tue,  6 Apr 2021 09:30:36 +0200
+Message-Id: <20210406073036.26857-1-u.kleine-koenig@pengutronix.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_035409_731370_72611249 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20210406_083119_077816_26359DC7 
+X-CRM114-Status: GOOD (  24.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,790 +99,324 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The mux route tables take many lines for each SoC, and it will be more
-instances for newly SoC, that makes the file size increase larger.
-
-This patch only do coding style for mux route struct, by adding a new
-definition and replace the structs by script which supplied by
-huangtao@rock-chips.com
-
-sed -i -e "
-/static struct rockchip_mux_route_data /bcheck
-b
-:append-next-line
-N
-:check
-/^[^;]*$/bappend-next-line
-s/[[:blank:]]*.bank_num = \([[:digit:]]*,\)\n/\tRK_MUXROUTE_SAME(\1/g
-s/[[:blank:]]*.pin =[[:blank:]]*0,\n/ RK_PA0,/g
-s/[[:blank:]]*.pin =[[:blank:]]*1,\n/ RK_PA1,/g
-s/[[:blank:]]*.pin =[[:blank:]]*2,\n/ RK_PA2,/g
-s/[[:blank:]]*.pin =[[:blank:]]*3,\n/ RK_PA3,/g
-s/[[:blank:]]*.pin =[[:blank:]]*4,\n/ RK_PA4,/g
-s/[[:blank:]]*.pin =[[:blank:]]*5,\n/ RK_PA5,/g
-s/[[:blank:]]*.pin =[[:blank:]]*6,\n/ RK_PA6,/g
-s/[[:blank:]]*.pin =[[:blank:]]*7,\n/ RK_PA7,/g
-s/[[:blank:]]*.pin =[[:blank:]]*8,\n/ RK_PB0,/g
-s/[[:blank:]]*.pin =[[:blank:]]*9,\n/ RK_PB1,/g
-s/[[:blank:]]*.pin =[[:blank:]]*10,\n/ RK_PB2,/g
-s/[[:blank:]]*.pin =[[:blank:]]*11,\n/ RK_PB3,/g
-s/[[:blank:]]*.pin =[[:blank:]]*12,\n/ RK_PB4,/g
-s/[[:blank:]]*.pin =[[:blank:]]*13,\n/ RK_PB5,/g
-s/[[:blank:]]*.pin =[[:blank:]]*14,\n/ RK_PB6,/g
-s/[[:blank:]]*.pin =[[:blank:]]*15,\n/ RK_PB7,/g
-s/[[:blank:]]*.pin =[[:blank:]]*16,\n/ RK_PC0,/g
-s/[[:blank:]]*.pin =[[:blank:]]*17,\n/ RK_PC1,/g
-s/[[:blank:]]*.pin =[[:blank:]]*18,\n/ RK_PC2,/g
-s/[[:blank:]]*.pin =[[:blank:]]*19,\n/ RK_PC3,/g
-s/[[:blank:]]*.pin =[[:blank:]]*20,\n/ RK_PC4,/g
-s/[[:blank:]]*.pin =[[:blank:]]*21,\n/ RK_PC5,/g
-s/[[:blank:]]*.pin =[[:blank:]]*22,\n/ RK_PC6,/g
-s/[[:blank:]]*.pin =[[:blank:]]*23,\n/ RK_PC7,/g
-s/[[:blank:]]*.pin =[[:blank:]]*24,\n/ RK_PD0,/g
-s/[[:blank:]]*.pin =[[:blank:]]*25,\n/ RK_PD1,/g
-s/[[:blank:]]*.pin =[[:blank:]]*26,\n/ RK_PD2,/g
-s/[[:blank:]]*.pin =[[:blank:]]*27,\n/ RK_PD3,/g
-s/[[:blank:]]*.pin =[[:blank:]]*28,\n/ RK_PD4,/g
-s/[[:blank:]]*.pin =[[:blank:]]*29,\n/ RK_PD5,/g
-s/[[:blank:]]*.pin =[[:blank:]]*30,\n/ RK_PD6,/g
-s/[[:blank:]]*.pin =[[:blank:]]*31,\n/ RK_PD7,/g
-s/[[:blank:]]*.func = \([[:digit:]]*,\)\n/ \1/g
-s/[[:blank:]]*.route_location =[[:blank:]]*\([[:print:]]*,\)\n//g
-s/[[:blank:]]*.route_offset = \(0x[[:xdigit:]]*,\)\n/ \1/g
-s/[[:blank:]]*.route_val =[[:blank:]]*\([[:print:]]*\),\n/ \1),/g
-s/\t{\n//g
-s/\t}, {\n//g
-s/\t},//g
-s/[[:blank:]]*\(\/\*[[:print:]]*\*\/\)\n[[:blank:]]*RK_MUXROUTE_SAME(\([[:print:]]*\)),\n/\tRK_MUXROUTE_SAME(\2), \1\n/g
-s/[[:blank:]]*\(\/\*[[:print:]]*\*\/\)\n[[:blank:]]*RK_MUXROUTE_SAME(\([[:print:]]*\)),/\tRK_MUXROUTE_SAME(\2), \1\n/g
-" drivers/pinctrl/pinctrl-rockchip.c
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-Change-Id: Ifc823d9557605b9dfcc9c0455a739f04f3fce5be
----
- drivers/pinctrl/pinctrl-rockchip.c | 669 +++++------------------------
- 1 file changed, 99 insertions(+), 570 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index deabfbc74a01..6ba31c66ef8b 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -292,6 +292,25 @@ struct rockchip_pin_bank {
- 		.pull_type[3] = pull3,					\
- 	}
- 
-+#define PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, FLAG)		\
-+	{								\
-+		.bank_num	= ID,					\
-+		.pin		= PIN,					\
-+		.func		= FUNC,					\
-+		.route_offset	= REG,					\
-+		.route_val	= VAL,					\
-+		.route_location	= FLAG,					\
-+	}
-+
-+#define RK_MUXROUTE_SAME(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_SAME)
-+
-+#define RK_MUXROUTE_GRF(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_GRF)
-+
-+#define RK_MUXROUTE_PMU(ID, PIN, FUNC, REG, VAL)	\
-+	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_PMU)
-+
- /**
-  * struct rockchip_mux_recalced_data: represent a pin iomux data.
-  * @num: bank number.
-@@ -803,597 +822,107 @@ static void rockchip_get_recalced_mux(struct rockchip_pin_bank *bank, int pin,
- }
- 
- static struct rockchip_mux_route_data px30_mux_route_data[] = {
--	{
--		/* cif-d2m0 */
--		.bank_num = 2,
--		.pin = 0,
--		.func = 1,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 7),
--	}, {
--		/* cif-d2m1 */
--		.bank_num = 3,
--		.pin = 3,
--		.func = 3,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 7) | BIT(7),
--	}, {
--		/* pdm-m0 */
--		.bank_num = 3,
--		.pin = 22,
--		.func = 2,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 8),
--	}, {
--		/* pdm-m1 */
--		.bank_num = 2,
--		.pin = 22,
--		.func = 1,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 8) | BIT(8),
--	}, {
--		/* uart2-rxm0 */
--		.bank_num = 1,
--		.pin = 27,
--		.func = 2,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 10),
--	}, {
--		/* uart2-rxm1 */
--		.bank_num = 2,
--		.pin = 14,
--		.func = 2,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 10) | BIT(10),
--	}, {
--		/* uart3-rxm0 */
--		.bank_num = 0,
--		.pin = 17,
--		.func = 2,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 9),
--	}, {
--		/* uart3-rxm1 */
--		.bank_num = 1,
--		.pin = 15,
--		.func = 2,
--		.route_offset = 0x184,
--		.route_val = BIT(16 + 9) | BIT(9),
--	},
-+	RK_MUXROUTE_SAME(2, RK_PA0, 1, 0x184, BIT(16 + 7)), /* cif-d2m0 */
-+	RK_MUXROUTE_SAME(3, RK_PA3, 3, 0x184, BIT(16 + 7) | BIT(7)), /* cif-d2m1 */
-+	RK_MUXROUTE_SAME(3, RK_PC6, 2, 0x184, BIT(16 + 8)), /* pdm-m0 */
-+	RK_MUXROUTE_SAME(2, RK_PC6, 1, 0x184, BIT(16 + 8) | BIT(8)), /* pdm-m1 */
-+	RK_MUXROUTE_SAME(1, RK_PD3, 2, 0x184, BIT(16 + 10)), /* uart2-rxm0 */
-+	RK_MUXROUTE_SAME(2, RK_PB6, 2, 0x184, BIT(16 + 10) | BIT(10)), /* uart2-rxm1 */
-+	RK_MUXROUTE_SAME(0, RK_PC1, 2, 0x184, BIT(16 + 9)), /* uart3-rxm0 */
-+	RK_MUXROUTE_SAME(1, RK_PB7, 2, 0x184, BIT(16 + 9) | BIT(9)), /* uart3-rxm1 */
- };
- 
- static struct rockchip_mux_route_data rk3128_mux_route_data[] = {
--	{
--		/* spi-0 */
--		.bank_num = 1,
--		.pin = 10,
--		.func = 1,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 3) | BIT(16 + 4),
--	}, {
--		/* spi-1 */
--		.bank_num = 1,
--		.pin = 27,
--		.func = 3,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 3) | BIT(16 + 4) | BIT(3),
--	}, {
--		/* spi-2 */
--		.bank_num = 0,
--		.pin = 13,
--		.func = 2,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 3) | BIT(16 + 4) | BIT(4),
--	}, {
--		/* i2s-0 */
--		.bank_num = 1,
--		.pin = 5,
--		.func = 1,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 5),
--	}, {
--		/* i2s-1 */
--		.bank_num = 0,
--		.pin = 14,
--		.func = 1,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 5) | BIT(5),
--	}, {
--		/* emmc-0 */
--		.bank_num = 1,
--		.pin = 22,
--		.func = 2,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 6),
--	}, {
--		/* emmc-1 */
--		.bank_num = 2,
--		.pin = 4,
--		.func = 2,
--		.route_offset = 0x144,
--		.route_val = BIT(16 + 6) | BIT(6),
--	},
-+	RK_MUXROUTE_SAME(1, RK_PB2, 1, 0x144, BIT(16 + 3) | BIT(16 + 4)), /* spi-0 */
-+	RK_MUXROUTE_SAME(1, RK_PD3, 3, 0x144, BIT(16 + 3) | BIT(16 + 4) | BIT(3)), /* spi-1 */
-+	RK_MUXROUTE_SAME(0, RK_PB5, 2, 0x144, BIT(16 + 3) | BIT(16 + 4) | BIT(4)), /* spi-2 */
-+	RK_MUXROUTE_SAME(1, RK_PA5, 1, 0x144, BIT(16 + 5)), /* i2s-0 */
-+	RK_MUXROUTE_SAME(0, RK_PB6, 1, 0x144, BIT(16 + 5) | BIT(5)), /* i2s-1 */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x144, BIT(16 + 6)), /* emmc-0 */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x144, BIT(16 + 6) | BIT(6)), /* emmc-1 */
- };
- 
- static struct rockchip_mux_route_data rk3188_mux_route_data[] = {
--	{
--		/* non-iomuxed emmc/flash pins on flash-dqs */
--		.bank_num = 0,
--		.pin = 24,
--		.func = 1,
--		.route_location = ROCKCHIP_ROUTE_GRF,
--		.route_offset = 0xa0,
--		.route_val = BIT(16 + 11),
--	}, {
--		/* non-iomuxed emmc/flash pins on emmc-clk */
--		.bank_num = 0,
--		.pin = 24,
--		.func = 2,
--		.route_location = ROCKCHIP_ROUTE_GRF,
--		.route_offset = 0xa0,
--		.route_val = BIT(16 + 11) | BIT(11),
--	},
-+	RK_MUXROUTE_SAME(0, RK_PD0, 1, 0xa0, BIT(16 + 11)), /* non-iomuxed emmc/flash pins on flash-dqs */
-+	RK_MUXROUTE_SAME(0, RK_PD0, 2, 0xa0, BIT(16 + 11) | BIT(11)), /* non-iomuxed emmc/flash pins on emmc-clk */
- };
- 
- static struct rockchip_mux_route_data rk3228_mux_route_data[] = {
--	{
--		/* pwm0-0 */
--		.bank_num = 0,
--		.pin = 26,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16),
--	}, {
--		/* pwm0-1 */
--		.bank_num = 3,
--		.pin = 21,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16) | BIT(0),
--	}, {
--		/* pwm1-0 */
--		.bank_num = 0,
--		.pin = 27,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 1),
--	}, {
--		/* pwm1-1 */
--		.bank_num = 0,
--		.pin = 30,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 1) | BIT(1),
--	}, {
--		/* pwm2-0 */
--		.bank_num = 0,
--		.pin = 28,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 2),
--	}, {
--		/* pwm2-1 */
--		.bank_num = 1,
--		.pin = 12,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 2) | BIT(2),
--	}, {
--		/* pwm3-0 */
--		.bank_num = 3,
--		.pin = 26,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 3),
--	}, {
--		/* pwm3-1 */
--		.bank_num = 1,
--		.pin = 11,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 3) | BIT(3),
--	}, {
--		/* sdio-0_d0 */
--		.bank_num = 1,
--		.pin = 1,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 4),
--	}, {
--		/* sdio-1_d0 */
--		.bank_num = 3,
--		.pin = 2,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 4) | BIT(4),
--	}, {
--		/* spi-0_rx */
--		.bank_num = 0,
--		.pin = 13,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 5),
--	}, {
--		/* spi-1_rx */
--		.bank_num = 2,
--		.pin = 0,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 5) | BIT(5),
--	}, {
--		/* emmc-0_cmd */
--		.bank_num = 1,
--		.pin = 22,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 7),
--	}, {
--		/* emmc-1_cmd */
--		.bank_num = 2,
--		.pin = 4,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 7) | BIT(7),
--	}, {
--		/* uart2-0_rx */
--		.bank_num = 1,
--		.pin = 19,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 8),
--	}, {
--		/* uart2-1_rx */
--		.bank_num = 1,
--		.pin = 10,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 8) | BIT(8),
--	}, {
--		/* uart1-0_rx */
--		.bank_num = 1,
--		.pin = 10,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 11),
--	}, {
--		/* uart1-1_rx */
--		.bank_num = 3,
--		.pin = 13,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 11) | BIT(11),
--	},
-+	RK_MUXROUTE_SAME(0, RK_PD2, 1, 0x50, BIT(16)), /* pwm0-0 */
-+	RK_MUXROUTE_SAME(3, RK_PC5, 1, 0x50, BIT(16) | BIT(0)), /* pwm0-1 */
-+	RK_MUXROUTE_SAME(0, RK_PD3, 1, 0x50, BIT(16 + 1)), /* pwm1-0 */
-+	RK_MUXROUTE_SAME(0, RK_PD6, 2, 0x50, BIT(16 + 1) | BIT(1)), /* pwm1-1 */
-+	RK_MUXROUTE_SAME(0, RK_PD4, 1, 0x50, BIT(16 + 2)), /* pwm2-0 */
-+	RK_MUXROUTE_SAME(1, RK_PB4, 2, 0x50, BIT(16 + 2) | BIT(2)), /* pwm2-1 */
-+	RK_MUXROUTE_SAME(3, RK_PD2, 1, 0x50, BIT(16 + 3)), /* pwm3-0 */
-+	RK_MUXROUTE_SAME(1, RK_PB3, 2, 0x50, BIT(16 + 3) | BIT(3)), /* pwm3-1 */
-+	RK_MUXROUTE_SAME(1, RK_PA1, 1, 0x50, BIT(16 + 4)), /* sdio-0_d0 */
-+	RK_MUXROUTE_SAME(3, RK_PA2, 1, 0x50, BIT(16 + 4) | BIT(4)), /* sdio-1_d0 */
-+	RK_MUXROUTE_SAME(0, RK_PB5, 2, 0x50, BIT(16 + 5)), /* spi-0_rx */
-+	RK_MUXROUTE_SAME(2, RK_PA0, 2, 0x50, BIT(16 + 5) | BIT(5)), /* spi-1_rx */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x50, BIT(16 + 7)), /* emmc-0_cmd */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x50, BIT(16 + 7) | BIT(7)), /* emmc-1_cmd */
-+	RK_MUXROUTE_SAME(1, RK_PC3, 2, 0x50, BIT(16 + 8)), /* uart2-0_rx */
-+	RK_MUXROUTE_SAME(1, RK_PB2, 2, 0x50, BIT(16 + 8) | BIT(8)), /* uart2-1_rx */
-+	RK_MUXROUTE_SAME(1, RK_PB2, 1, 0x50, BIT(16 + 11)), /* uart1-0_rx */
-+	RK_MUXROUTE_SAME(3, RK_PB5, 1, 0x50, BIT(16 + 11) | BIT(11)), /* uart1-1_rx */
- };
- 
- static struct rockchip_mux_route_data rk3288_mux_route_data[] = {
--	{
--		/* edphdmi_cecinoutt1 */
--		.bank_num = 7,
--		.pin = 16,
--		.func = 2,
--		.route_offset = 0x264,
--		.route_val = BIT(16 + 12) | BIT(12),
--	}, {
--		/* edphdmi_cecinout */
--		.bank_num = 7,
--		.pin = 23,
--		.func = 4,
--		.route_offset = 0x264,
--		.route_val = BIT(16 + 12),
--	},
-+	RK_MUXROUTE_SAME(7, RK_PC0, 2, 0x264, BIT(16 + 12) | BIT(12)), /* edphdmi_cecinoutt1 */
-+	RK_MUXROUTE_SAME(7, RK_PC7, 4, 0x264, BIT(16 + 12)), /* edphdmi_cecinout */
- };
- 
- static struct rockchip_mux_route_data rk3308_mux_route_data[] = {
--	{
--		/* rtc_clk */
--		.bank_num = 0,
--		.pin = 19,
--		.func = 1,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 0) | BIT(0),
--	}, {
--		/* uart2_rxm0 */
--		.bank_num = 1,
--		.pin = 22,
--		.func = 2,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 2) | BIT(16 + 3),
--	}, {
--		/* uart2_rxm1 */
--		.bank_num = 4,
--		.pin = 26,
--		.func = 2,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 2) | BIT(16 + 3) | BIT(2),
--	}, {
--		/* i2c3_sdam0 */
--		.bank_num = 0,
--		.pin = 15,
--		.func = 2,
--		.route_offset = 0x608,
--		.route_val = BIT(16 + 8) | BIT(16 + 9),
--	}, {
--		/* i2c3_sdam1 */
--		.bank_num = 3,
--		.pin = 12,
--		.func = 2,
--		.route_offset = 0x608,
--		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(8),
--	}, {
--		/* i2c3_sdam2 */
--		.bank_num = 2,
--		.pin = 0,
--		.func = 3,
--		.route_offset = 0x608,
--		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(9),
--	}, {
--		/* i2s-8ch-1-sclktxm0 */
--		.bank_num = 1,
--		.pin = 3,
--		.func = 2,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 3),
--	}, {
--		/* i2s-8ch-1-sclkrxm0 */
--		.bank_num = 1,
--		.pin = 4,
--		.func = 2,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 3),
--	}, {
--		/* i2s-8ch-1-sclktxm1 */
--		.bank_num = 1,
--		.pin = 13,
--		.func = 2,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 3) | BIT(3),
--	}, {
--		/* i2s-8ch-1-sclkrxm1 */
--		.bank_num = 1,
--		.pin = 14,
--		.func = 2,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 3) | BIT(3),
--	}, {
--		/* pdm-clkm0 */
--		.bank_num = 1,
--		.pin = 4,
--		.func = 3,
--		.route_offset = 0x308,
--		.route_val =  BIT(16 + 12) | BIT(16 + 13),
--	}, {
--		/* pdm-clkm1 */
--		.bank_num = 1,
--		.pin = 14,
--		.func = 4,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
--	}, {
--		/* pdm-clkm2 */
--		.bank_num = 2,
--		.pin = 6,
--		.func = 2,
--		.route_offset = 0x308,
--		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
--	}, {
--		/* pdm-clkm-m2 */
--		.bank_num = 2,
--		.pin = 4,
--		.func = 3,
--		.route_offset = 0x600,
--		.route_val = BIT(16 + 2) | BIT(2),
--	}, {
--		/* spi1_miso */
--		.bank_num = 3,
--		.pin = 10,
--		.func = 3,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 9),
--	}, {
--		/* spi1_miso_m1 */
--		.bank_num = 2,
--		.pin = 4,
--		.func = 2,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 9) | BIT(9),
--	}, {
--		/* owire_m0 */
--		.bank_num = 0,
--		.pin = 11,
--		.func = 3,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 10) | BIT(16 + 11),
--	}, {
--		/* owire_m1 */
--		.bank_num = 1,
--		.pin = 22,
--		.func = 7,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
--	}, {
--		/* owire_m2 */
--		.bank_num = 2,
--		.pin = 2,
--		.func = 5,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
--	}, {
--		/* can_rxd_m0 */
--		.bank_num = 0,
--		.pin = 11,
--		.func = 2,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 12) | BIT(16 + 13),
--	}, {
--		/* can_rxd_m1 */
--		.bank_num = 1,
--		.pin = 22,
--		.func = 5,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
--	}, {
--		/* can_rxd_m2 */
--		.bank_num = 2,
--		.pin = 2,
--		.func = 4,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
--	}, {
--		/* mac_rxd0_m0 */
--		.bank_num = 1,
--		.pin = 20,
--		.func = 3,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 14),
--	}, {
--		/* mac_rxd0_m1 */
--		.bank_num = 4,
--		.pin = 2,
--		.func = 2,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 14) | BIT(14),
--	}, {
--		/* uart3_rx */
--		.bank_num = 3,
--		.pin = 12,
--		.func = 4,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 15),
--	}, {
--		/* uart3_rx_m1 */
--		.bank_num = 0,
--		.pin = 17,
--		.func = 3,
--		.route_offset = 0x314,
--		.route_val = BIT(16 + 15) | BIT(15),
--	},
-+	RK_MUXROUTE_SAME(0, RK_PC3, 1, 0x314, BIT(16 + 0) | BIT(0)), /* rtc_clk */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x314, BIT(16 + 2) | BIT(16 + 3)), /* uart2_rxm0 */
-+	RK_MUXROUTE_SAME(4, RK_PD2, 2, 0x314, BIT(16 + 2) | BIT(16 + 3) | BIT(2)), /* uart2_rxm1 */
-+	RK_MUXROUTE_SAME(0, RK_PB7, 2, 0x608, BIT(16 + 8) | BIT(16 + 9)), /* i2c3_sdam0 */
-+	RK_MUXROUTE_SAME(3, RK_PB4, 2, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(8)), /* i2c3_sdam1 */
-+	RK_MUXROUTE_SAME(2, RK_PA0, 3, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(9)), /* i2c3_sdam2 */
-+	RK_MUXROUTE_SAME(1, RK_PA3, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclktxm0 */
-+	RK_MUXROUTE_SAME(1, RK_PA4, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclkrxm0 */
-+	RK_MUXROUTE_SAME(1, RK_PB5, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclktxm1 */
-+	RK_MUXROUTE_SAME(1, RK_PB6, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclkrxm1 */
-+	RK_MUXROUTE_SAME(1, RK_PA4, 3, 0x308, BIT(16 + 12) | BIT(16 + 13)), /* pdm-clkm0 */
-+	RK_MUXROUTE_SAME(1, RK_PB6, 4, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* pdm-clkm1 */
-+	RK_MUXROUTE_SAME(2, RK_PA6, 2, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* pdm-clkm2 */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 3, 0x600, BIT(16 + 2) | BIT(2)), /* pdm-clkm-m2 */
-+	RK_MUXROUTE_SAME(3, RK_PB2, 3, 0x314, BIT(16 + 9)), /* spi1_miso */
-+	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x314, BIT(16 + 9) | BIT(9)), /* spi1_miso_m1 */
-+	RK_MUXROUTE_SAME(0, RK_PB3, 3, 0x314, BIT(16 + 10) | BIT(16 + 11)), /* owire_m0 */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 7, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(10)), /* owire_m1 */
-+	RK_MUXROUTE_SAME(2, RK_PA2, 5, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(11)), /* owire_m2 */
-+	RK_MUXROUTE_SAME(0, RK_PB3, 2, 0x314, BIT(16 + 12) | BIT(16 + 13)), /* can_rxd_m0 */
-+	RK_MUXROUTE_SAME(1, RK_PC6, 5, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* can_rxd_m1 */
-+	RK_MUXROUTE_SAME(2, RK_PA2, 4, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* can_rxd_m2 */
-+	RK_MUXROUTE_SAME(1, RK_PC4, 3, 0x314, BIT(16 + 14)), /* mac_rxd0_m0 */
-+	RK_MUXROUTE_SAME(4, RK_PA2, 2, 0x314, BIT(16 + 14) | BIT(14)), /* mac_rxd0_m1 */
-+	RK_MUXROUTE_SAME(3, RK_PB4, 4, 0x314, BIT(16 + 15)), /* uart3_rx */
-+	RK_MUXROUTE_SAME(0, RK_PC1, 3, 0x314, BIT(16 + 15) | BIT(15)), /* uart3_rx_m1 */
- };
- 
- static struct rockchip_mux_route_data rk3328_mux_route_data[] = {
--	{
--		/* uart2dbg_rxm0 */
--		.bank_num = 1,
--		.pin = 1,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16) | BIT(16 + 1),
--	}, {
--		/* uart2dbg_rxm1 */
--		.bank_num = 2,
--		.pin = 1,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16) | BIT(16 + 1) | BIT(0),
--	}, {
--		/* gmac-m1_rxd0 */
--		.bank_num = 1,
--		.pin = 11,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 2) | BIT(2),
--	}, {
--		/* gmac-m1-optimized_rxd3 */
--		.bank_num = 1,
--		.pin = 14,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 10) | BIT(10),
--	}, {
--		/* pdm_sdi0m0 */
--		.bank_num = 2,
--		.pin = 19,
--		.func = 2,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 3),
--	}, {
--		/* pdm_sdi0m1 */
--		.bank_num = 1,
--		.pin = 23,
--		.func = 3,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 3) | BIT(3),
--	}, {
--		/* spi_rxdm2 */
--		.bank_num = 3,
--		.pin = 2,
--		.func = 4,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 4) | BIT(16 + 5) | BIT(5),
--	}, {
--		/* i2s2_sdim0 */
--		.bank_num = 1,
--		.pin = 24,
--		.func = 1,
--		.route_offset = 0x50,
--		.route_val = BIT(16 + 6),
--	}, {
--		/* i2s2_sdim1 */
--		.bank_num = 3,
--		.pin = 2,
--		.func = 6,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 6) | BIT(6),
--	}, {
--		/* card_iom1 */
--		.bank_num = 2,
--		.pin = 22,
--		.func = 3,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 7) | BIT(7),
--	}, {
--		/* tsp_d5m1 */
--		.bank_num = 2,
--		.pin = 16,
--		.func = 3,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 8) | BIT(8),
--	}, {
--		/* cif_data5m1 */
--		.bank_num = 2,
--		.pin = 16,
--		.func = 4,
--		.route_offset = 0x50,
--		.route_val =  BIT(16 + 9) | BIT(9),
--	},
-+	RK_MUXROUTE_SAME(1, RK_PA1, 2, 0x50, BIT(16) | BIT(16 + 1)), /* uart2dbg_rxm0 */
-+	RK_MUXROUTE_SAME(2, RK_PA1, 1, 0x50, BIT(16) | BIT(16 + 1) | BIT(0)), /* uart2dbg_rxm1 */
-+	RK_MUXROUTE_SAME(1, RK_PB3, 2, 0x50, BIT(16 + 2) | BIT(2)), /* gmac-m1_rxd0 */
-+	RK_MUXROUTE_SAME(1, RK_PB6, 2, 0x50, BIT(16 + 10) | BIT(10)), /* gmac-m1-optimized_rxd3 */
-+	RK_MUXROUTE_SAME(2, RK_PC3, 2, 0x50, BIT(16 + 3)), /* pdm_sdi0m0 */
-+	RK_MUXROUTE_SAME(1, RK_PC7, 3, 0x50, BIT(16 + 3) | BIT(3)), /* pdm_sdi0m1 */
-+	RK_MUXROUTE_SAME(3, RK_PA2, 4, 0x50, BIT(16 + 4) | BIT(16 + 5) | BIT(5)), /* spi_rxdm2 */
-+	RK_MUXROUTE_SAME(1, RK_PD0, 1, 0x50, BIT(16 + 6)), /* i2s2_sdim0 */
-+	RK_MUXROUTE_SAME(3, RK_PA2, 6, 0x50, BIT(16 + 6) | BIT(6)), /* i2s2_sdim1 */
-+	RK_MUXROUTE_SAME(2, RK_PC6, 3, 0x50, BIT(16 + 7) | BIT(7)), /* card_iom1 */
-+	RK_MUXROUTE_SAME(2, RK_PC0, 3, 0x50, BIT(16 + 8) | BIT(8)), /* tsp_d5m1 */
-+	RK_MUXROUTE_SAME(2, RK_PC0, 4, 0x50, BIT(16 + 9) | BIT(9)), /* cif_data5m1 */
- };
- 
- static struct rockchip_mux_route_data rk3399_mux_route_data[] = {
--	{
--		/* uart2dbga_rx */
--		.bank_num = 4,
--		.pin = 8,
--		.func = 2,
--		.route_offset = 0xe21c,
--		.route_val = BIT(16 + 10) | BIT(16 + 11),
--	}, {
--		/* uart2dbgb_rx */
--		.bank_num = 4,
--		.pin = 16,
--		.func = 2,
--		.route_offset = 0xe21c,
--		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
--	}, {
--		/* uart2dbgc_rx */
--		.bank_num = 4,
--		.pin = 19,
--		.func = 1,
--		.route_offset = 0xe21c,
--		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
--	}, {
--		/* pcie_clkreqn */
--		.bank_num = 2,
--		.pin = 26,
--		.func = 2,
--		.route_offset = 0xe21c,
--		.route_val = BIT(16 + 14),
--	}, {
--		/* pcie_clkreqnb */
--		.bank_num = 4,
--		.pin = 24,
--		.func = 1,
--		.route_offset = 0xe21c,
--		.route_val = BIT(16 + 14) | BIT(14),
--	},
-+	RK_MUXROUTE_SAME(4, RK_PB0, 2, 0xe21c, BIT(16 + 10) | BIT(16 + 11)), /* uart2dbga_rx */
-+	RK_MUXROUTE_SAME(4, RK_PC0, 2, 0xe21c, BIT(16 + 10) | BIT(16 + 11) | BIT(10)), /* uart2dbgb_rx */
-+	RK_MUXROUTE_SAME(4, RK_PC3, 1, 0xe21c, BIT(16 + 10) | BIT(16 + 11) | BIT(11)), /* uart2dbgc_rx */
-+	RK_MUXROUTE_SAME(2, RK_PD2, 2, 0xe21c, BIT(16 + 14)), /* pcie_clkreqn */
-+	RK_MUXROUTE_SAME(4, RK_PD0, 1, 0xe21c, BIT(16 + 14) | BIT(14)), /* pcie_clkreqnb */
- };
- 
- static bool rockchip_get_mux_route(struct rockchip_pin_bank *bank, int pin,
--- 
-2.25.1
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+R2l2ZW4gdGhhdCBsb3dsZXZlbCBkcml2ZXJzIHVzdWFsbHkgY2Fubm90IGltcGxlbWVudCBleGFj
+dGx5IHdoYXQgYQpjb25zdW1lciByZXF1ZXN0cyB3aXRoIHB3bV9hcHBseV9zdGF0ZSgpIHRoZXJl
+IGlzIHNvbWUgcm91bmRpbmcgaW52b2x2ZWQuCgpwd21fZ2V0X3N0YXRlKCkgdHJhZGl0aW9uYWxs
+eSByZXR1cm5lZCB0aGUgc2V0dGluZyB0aGF0IHdhcyByZXF1ZXN0ZWQgbW9zdApyZWNlbnRseSBi
+eSB0aGUgY29uc3VtZXIgKG9wcG9zZWQgdG8gd2hhdCB3YXMgYWN0dWFsbHkgaW1wbGVtZW50ZWQg
+aW4KaGFyZHdhcmUgaW4gcmVwbHkgdG8gdGhlIGxhc3QgcmVxdWVzdCkuIFRvIG1ha2UgdGhpcyBz
+ZW1hbnRpYyBvYnZpb3VzCnJlbmFtZSB0aGUgZnVuY3Rpb24uCgpTaWduZWQtb2ZmLWJ5OiBVd2Ug
+S2xlaW5lLUvDtm5pZyA8dS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlPgotLS0KIERvY3Vt
+ZW50YXRpb24vZHJpdmVyLWFwaS9wd20ucnN0ICAgICAgICAgICB8ICA2ICsrKy0KIGRyaXZlcnMv
+Y2xrL2Nsay1wd20uYyAgICAgICAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2dwdS9k
+cm0vaTkxNS9kaXNwbGF5L2ludGVsX3BhbmVsLmMgfCAgNCArLS0KIGRyaXZlcnMvaW5wdXQvbWlz
+Yy9kYTcyODAuYyAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJzL2lucHV0L21pc2MvcHdt
+LWJlZXBlci5jICAgICAgICAgICAgfCAgMiArLQogZHJpdmVycy9pbnB1dC9taXNjL3B3bS12aWJy
+YS5jICAgICAgICAgICAgIHwgIDQgKy0tCiBkcml2ZXJzL3B3bS9jb3JlLmMgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgNCArLS0KIGRyaXZlcnMvcHdtL3B3bS1hdG1lbC1obGNkYy5jICAgICAg
+ICAgICAgICB8ICAyICstCiBkcml2ZXJzL3B3bS9wd20tYXRtZWwuYyAgICAgICAgICAgICAgICAg
+ICAgfCAgMiArLQogZHJpdmVycy9wd20vcHdtLWlteDI3LmMgICAgICAgICAgICAgICAgICAgIHwg
+IDIgKy0KIGRyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jICAgICAgICAgICAgICAgICB8ICAyICst
+CiBkcml2ZXJzL3B3bS9wd20tc3RtMzItbHAuYyAgICAgICAgICAgICAgICAgfCAgNCArLS0KIGRy
+aXZlcnMvcHdtL3B3bS1zdW40aS5jICAgICAgICAgICAgICAgICAgICB8ICAyICstCiBkcml2ZXJz
+L3B3bS9zeXNmcy5jICAgICAgICAgICAgICAgICAgICAgICAgfCAxOCArKysrKystLS0tLS0KIGRy
+aXZlcnMvcmVndWxhdG9yL3B3bS1yZWd1bGF0b3IuYyAgICAgICAgICB8ICA0ICstLQogZHJpdmVy
+cy92aWRlby9iYWNrbGlnaHQvcHdtX2JsLmMgICAgICAgICAgIHwgMTAgKysrLS0tLQogaW5jbHVk
+ZS9saW51eC9wd20uaCAgICAgICAgICAgICAgICAgICAgICAgIHwgMzQgKysrKysrKysrKysrKyst
+LS0tLS0tLQogMTcgZmlsZXMgY2hhbmdlZCwgNTkgaW5zZXJ0aW9ucygrKSwgNDUgZGVsZXRpb25z
+KC0pCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3B3bS5yc3QgYi9Eb2N1
+bWVudGF0aW9uL2RyaXZlci1hcGkvcHdtLnJzdAppbmRleCBhYjYyZjFiYjAzNjYuLjM4MWYzYzQ2
+Y2RhYyAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3B3bS5yc3QKKysrIGIv
+RG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL3B3bS5yc3QKQEAgLTU1LDcgKzU1LDExIEBAIHNldmVy
+YWwgcGFyYW1ldGVyIGF0IG9uY2UuIEZvciBleGFtcGxlLCBpZiB5b3Ugc2VlIHB3bV9jb25maWco
+KSBhbmQKIHB3bV97ZW5hYmxlLGRpc2FibGV9KCkgY2FsbHMgaW4gdGhlIHNhbWUgZnVuY3Rpb24s
+IHRoaXMgcHJvYmFibHkgbWVhbnMgeW91CiBzaG91bGQgc3dpdGNoIHRvIHB3bV9hcHBseV9zdGF0
+ZSgpLgogCi1UaGUgUFdNIHVzZXIgQVBJIGFsc28gYWxsb3dzIG9uZSB0byBxdWVyeSB0aGUgUFdN
+IHN0YXRlIHdpdGggcHdtX2dldF9zdGF0ZSgpLgorVGhlIFBXTSB1c2VyIEFQSSBhbHNvIGFsbG93
+cyBvbmUgdG8gcXVlcnkgdGhlIGxhc3QgYXBwbGllZCBQV00gc3RhdGUgd2l0aAorcHdtX2dldF9s
+YXN0X2FwcGxpZWRfc3RhdGUoKS4gTm90ZSB0aGlzIGlzIGRpZmZlcmVudCB0byB3aGF0IHRoZSBk
+cml2ZXIgaGFzCithY3R1YWxseSBpbXBsZW1lbnRlZCBpZiB0aGUgcmVxdWVzdCBjYW5ub3QgYmUg
+aW1wbGVtZW50ZWQgZXhhY3RseSB3aXRoIHRoZQoraGFyZHdhcmUgaW4gdXNlLiBUaGVyZSBpcyBj
+dXJyZW50bHkgbm8gd2F5IGZvciBjb25zdW1lcnMgdG8gZ2V0IHRoZSBhY3R1YWxseQoraW1wbGVt
+ZW50ZWQgc2V0dGluZ3MuCiAKIEluIGFkZGl0aW9uIHRvIHRoZSBQV00gc3RhdGUsIHRoZSBQV00g
+QVBJIGFsc28gZXhwb3NlcyBQV00gYXJndW1lbnRzLCB3aGljaAogYXJlIHRoZSByZWZlcmVuY2Ug
+UFdNIGNvbmZpZyBvbmUgc2hvdWxkIHVzZSBvbiB0aGlzIFBXTS4KZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvY2xrL2Nsay1wd20uYyBiL2RyaXZlcnMvY2xrL2Nsay1wd20uYwppbmRleCBkYTJjOGVkZGZk
+OWYuLjdjZmFmZjMyOTgwYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9jbGsvY2xrLXB3bS5jCisrKyBi
+L2RyaXZlcnMvY2xrL2Nsay1wd20uYwpAQCAtNDksNyArNDksNyBAQCBzdGF0aWMgaW50IGNsa19w
+d21fZ2V0X2R1dHlfY3ljbGUoc3RydWN0IGNsa19odyAqaHcsIHN0cnVjdCBjbGtfZHV0eSAqZHV0
+eSkKIAlzdHJ1Y3QgY2xrX3B3bSAqY2xrX3B3bSA9IHRvX2Nsa19wd20oaHcpOwogCXN0cnVjdCBw
+d21fc3RhdGUgc3RhdGU7CiAKLQlwd21fZ2V0X3N0YXRlKGNsa19wd20tPnB3bSwgJnN0YXRlKTsK
+Kwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZShjbGtfcHdtLT5wd20sICZzdGF0ZSk7CiAKIAlk
+dXR5LT5udW0gPSBzdGF0ZS5kdXR5X2N5Y2xlOwogCWR1dHktPmRlbiA9IHN0YXRlLnBlcmlvZDsK
+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3BsYXkvaW50ZWxfcGFuZWwuYyBi
+L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3BsYXkvaW50ZWxfcGFuZWwuYwppbmRleCA1ZmRmNTI2
+NDMxNTAuLjNhZWJmOWJlNmI2YSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2k5MTUvZGlz
+cGxheS9pbnRlbF9wYW5lbC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2Rpc3BsYXkvaW50
+ZWxfcGFuZWwuYwpAQCAtNjI3LDcgKzYyNyw3IEBAIHN0YXRpYyB1MzIgZXh0X3B3bV9nZXRfYmFj
+a2xpZ2h0KHN0cnVjdCBpbnRlbF9jb25uZWN0b3IgKmNvbm5lY3RvciwgZW51bSBwaXBlIHVuCiAJ
+c3RydWN0IGludGVsX3BhbmVsICpwYW5lbCA9ICZjb25uZWN0b3ItPnBhbmVsOwogCXN0cnVjdCBw
+d21fc3RhdGUgc3RhdGU7CiAKLQlwd21fZ2V0X3N0YXRlKHBhbmVsLT5iYWNrbGlnaHQucHdtLCAm
+c3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHBhbmVsLT5iYWNrbGlnaHQucHdt
+LCAmc3RhdGUpOwogCXJldHVybiBwd21fZ2V0X3JlbGF0aXZlX2R1dHlfY3ljbGUoJnN0YXRlLCAx
+MDApOwogfQogCkBAIC0xOTE1LDcgKzE5MTUsNyBAQCBzdGF0aWMgaW50IGV4dF9wd21fc2V0dXBf
+YmFja2xpZ2h0KHN0cnVjdCBpbnRlbF9jb25uZWN0b3IgKmNvbm5lY3RvciwKIAogCWlmIChwd21f
+aXNfZW5hYmxlZChwYW5lbC0+YmFja2xpZ2h0LnB3bSkpIHsKIAkJLyogUFdNIGlzIGFscmVhZHkg
+ZW5hYmxlZCwgdXNlIGV4aXN0aW5nIHNldHRpbmdzICovCi0JCXB3bV9nZXRfc3RhdGUocGFuZWwt
+PmJhY2tsaWdodC5wd20sICZwYW5lbC0+YmFja2xpZ2h0LnB3bV9zdGF0ZSk7CisJCXB3bV9nZXRf
+bGFzdF9hcHBsaWVkX3N0YXRlKHBhbmVsLT5iYWNrbGlnaHQucHdtLCAmcGFuZWwtPmJhY2tsaWdo
+dC5wd21fc3RhdGUpOwogCiAJCWxldmVsID0gcHdtX2dldF9yZWxhdGl2ZV9kdXR5X2N5Y2xlKCZw
+YW5lbC0+YmFja2xpZ2h0LnB3bV9zdGF0ZSwKIAkJCQkJCSAgICAxMDApOwpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9pbnB1dC9taXNjL2RhNzI4MC5jIGIvZHJpdmVycy9pbnB1dC9taXNjL2RhNzI4MC5j
+CmluZGV4IGIwODYxMGQ2ZTU3NS4uNDA5NjcwYmUxZDJiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lu
+cHV0L21pc2MvZGE3MjgwLmMKKysrIGIvZHJpdmVycy9pbnB1dC9taXNjL2RhNzI4MC5jCkBAIC0z
+MzMsNyArMzMzLDcgQEAgc3RhdGljIGludCBkYTcyODBfaGFwdGljX3NldF9wd20oc3RydWN0IGRh
+NzI4MF9oYXB0aWMgKmhhcHRpY3MsIGJvb2wgZW5hYmxlZCkKIAkJcmV0dXJuIC1FSU5WQUw7CiAJ
+fQogCi0JcHdtX2dldF9zdGF0ZShoYXB0aWNzLT5wd21fZGV2LCAmc3RhdGUpOworCXB3bV9nZXRf
+bGFzdF9hcHBsaWVkX3N0YXRlKGhhcHRpY3MtPnB3bV9kZXYsICZzdGF0ZSk7CiAJc3RhdGUuZW5h
+YmxlZCA9IGVuYWJsZWQ7CiAJaWYgKGVuYWJsZWQpIHsKIAkJcGVyaW9kX21hZ19tdWx0aSA9ICh1
+NjQpc3RhdGUucGVyaW9kICogaGFwdGljcy0+Z2FpbjsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaW5w
+dXQvbWlzYy9wd20tYmVlcGVyLmMgYi9kcml2ZXJzL2lucHV0L21pc2MvcHdtLWJlZXBlci5jCmlu
+ZGV4IGQ2YjEyNDc3NzQ4YS4uNGM1ZjA5MjAxZWNmIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lucHV0
+L21pc2MvcHdtLWJlZXBlci5jCisrKyBiL2RyaXZlcnMvaW5wdXQvbWlzYy9wd20tYmVlcGVyLmMK
+QEAgLTMzLDcgKzMzLDcgQEAgc3RhdGljIGludCBwd21fYmVlcGVyX29uKHN0cnVjdCBwd21fYmVl
+cGVyICpiZWVwZXIsIHVuc2lnbmVkIGxvbmcgcGVyaW9kKQogCXN0cnVjdCBwd21fc3RhdGUgc3Rh
+dGU7CiAJaW50IGVycm9yOwogCi0JcHdtX2dldF9zdGF0ZShiZWVwZXItPnB3bSwgJnN0YXRlKTsK
+Kwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZShiZWVwZXItPnB3bSwgJnN0YXRlKTsKIAogCXN0
+YXRlLmVuYWJsZWQgPSB0cnVlOwogCXN0YXRlLnBlcmlvZCA9IHBlcmlvZDsKZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvaW5wdXQvbWlzYy9wd20tdmlicmEuYyBiL2RyaXZlcnMvaW5wdXQvbWlzYy9wd20t
+dmlicmEuYwppbmRleCA4MWU3NzdhMDRiODguLmQ0ZTI4NmU1MGFlZSAxMDA2NDQKLS0tIGEvZHJp
+dmVycy9pbnB1dC9taXNjL3B3bS12aWJyYS5jCisrKyBiL2RyaXZlcnMvaW5wdXQvbWlzYy9wd20t
+dmlicmEuYwpAQCAtNDgsNyArNDgsNyBAQCBzdGF0aWMgaW50IHB3bV92aWJyYXRvcl9zdGFydChz
+dHJ1Y3QgcHdtX3ZpYnJhdG9yICp2aWJyYXRvcikKIAkJdmlicmF0b3ItPnZjY19vbiA9IHRydWU7
+CiAJfQogCi0JcHdtX2dldF9zdGF0ZSh2aWJyYXRvci0+cHdtLCAmc3RhdGUpOworCXB3bV9nZXRf
+bGFzdF9hcHBsaWVkX3N0YXRlKHZpYnJhdG9yLT5wd20sICZzdGF0ZSk7CiAJcHdtX3NldF9yZWxh
+dGl2ZV9kdXR5X2N5Y2xlKCZzdGF0ZSwgdmlicmF0b3ItPmxldmVsLCAweGZmZmYpOwogCXN0YXRl
+LmVuYWJsZWQgPSB0cnVlOwogCkBAIC01OSw3ICs1OSw3IEBAIHN0YXRpYyBpbnQgcHdtX3ZpYnJh
+dG9yX3N0YXJ0KHN0cnVjdCBwd21fdmlicmF0b3IgKnZpYnJhdG9yKQogCX0KIAogCWlmICh2aWJy
+YXRvci0+cHdtX2RpcikgewotCQlwd21fZ2V0X3N0YXRlKHZpYnJhdG9yLT5wd21fZGlyLCAmc3Rh
+dGUpOworCQlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZSh2aWJyYXRvci0+cHdtX2RpciwgJnN0
+YXRlKTsKIAkJc3RhdGUuZHV0eV9jeWNsZSA9IHZpYnJhdG9yLT5kaXJlY3Rpb25fZHV0eV9jeWNs
+ZTsKIAkJc3RhdGUuZW5hYmxlZCA9IHRydWU7CiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcHdtL2Nv
+cmUuYyBiL2RyaXZlcnMvcHdtL2NvcmUuYwppbmRleCBhOGVmZjRiM2VlMzYuLmNjOGE5NDgwOThl
+YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9wd20vY29yZS5jCisrKyBiL2RyaXZlcnMvcHdtL2NvcmUu
+YwpAQCAtNjk3LDcgKzY5Nyw3IEBAIGludCBwd21fYWRqdXN0X2NvbmZpZyhzdHJ1Y3QgcHdtX2Rl
+dmljZSAqcHdtKQogCXN0cnVjdCBwd21fYXJncyBwYXJnczsKIAogCXB3bV9nZXRfYXJncyhwd20s
+ICZwYXJncyk7Ci0JcHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdtX2dldF9sYXN0X2Fw
+cGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCiAJLyoKIAkgKiBJZiB0aGUgY3VycmVudCBwZXJp
+b2QgaXMgemVybyBpdCBtZWFucyB0aGF0IGVpdGhlciB0aGUgUFdNIGRyaXZlcgpAQCAtMTI3NCw3
+ICsxMjc0LDcgQEAgc3RhdGljIHZvaWQgcHdtX2RiZ19zaG93KHN0cnVjdCBwd21fY2hpcCAqY2hp
+cCwgc3RydWN0IHNlcV9maWxlICpzKQogCQlzdHJ1Y3QgcHdtX2RldmljZSAqcHdtID0gJmNoaXAt
+PnB3bXNbaV07CiAJCXN0cnVjdCBwd21fc3RhdGUgc3RhdGU7CiAKLQkJcHdtX2dldF9zdGF0ZShw
+d20sICZzdGF0ZSk7CisJCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgJnN0YXRlKTsK
+IAogCQlzZXFfcHJpbnRmKHMsICIgcHdtLSUtM2QgKCUtMjAuMjBzKToiLCBpLCBwd20tPmxhYmVs
+KTsKIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9wd20vcHdtLWF0bWVsLWhsY2RjLmMgYi9kcml2ZXJz
+L3B3bS9wd20tYXRtZWwtaGxjZGMuYwppbmRleCBkY2JjMDQ4OWRmZDQuLmNiNWZhZTQwNTZlYyAx
+MDA2NDQKLS0tIGEvZHJpdmVycy9wd20vcHdtLWF0bWVsLWhsY2RjLmMKKysrIGIvZHJpdmVycy9w
+d20vcHdtLWF0bWVsLWhsY2RjLmMKQEAgLTE5OCw3ICsxOTgsNyBAQCBzdGF0aWMgaW50IGF0bWVs
+X2hsY2RjX3B3bV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQogCXN0cnVjdCBwd21fc3RhdGUg
+c3RhdGU7CiAJaW50IHJldDsKIAotCXB3bV9nZXRfc3RhdGUoJmNoaXAtPmNoaXAucHdtc1swXSwg
+JnN0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZSgmY2hpcC0+Y2hpcC5wd21zWzBd
+LCAmc3RhdGUpOwogCiAJLyogUmUtZW5hYmxlIHRoZSBwZXJpcGggY2xvY2sgaXQgd2FzIHN0b3Bw
+ZWQgZHVyaW5nIHN1c3BlbmQuICovCiAJaWYgKCFzdGF0ZS5lbmFibGVkKSB7CmRpZmYgLS1naXQg
+YS9kcml2ZXJzL3B3bS9wd20tYXRtZWwuYyBiL2RyaXZlcnMvcHdtL3B3bS1hdG1lbC5jCmluZGV4
+IDU4MTMzMzliNTk3Yi4uNGVlZTg5NTQ3MWE3IDEwMDY0NAotLS0gYS9kcml2ZXJzL3B3bS9wd20t
+YXRtZWwuYworKysgYi9kcml2ZXJzL3B3bS9wd20tYXRtZWwuYwpAQCAtMjQxLDcgKzI0MSw3IEBA
+IHN0YXRpYyBpbnQgYXRtZWxfcHdtX2FwcGx5KHN0cnVjdCBwd21fY2hpcCAqY2hpcCwgc3RydWN0
+IHB3bV9kZXZpY2UgKnB3bSwKIAl1MzIgcHJlcywgdmFsOwogCWludCByZXQ7CiAKLQlwd21fZ2V0
+X3N0YXRlKHB3bSwgJmNzdGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUocHdtLCAm
+Y3N0YXRlKTsKIAogCWlmIChzdGF0ZS0+ZW5hYmxlZCkgewogCQlpZiAoY3N0YXRlLmVuYWJsZWQg
+JiYKZGlmZiAtLWdpdCBhL2RyaXZlcnMvcHdtL3B3bS1pbXgyNy5jIGIvZHJpdmVycy9wd20vcHdt
+LWlteDI3LmMKaW5kZXggMTgwNTUzMjZhMmYzLi5iOWQ1NGUyMDlhNWMgMTAwNjQ0Ci0tLSBhL2Ry
+aXZlcnMvcHdtL3B3bS1pbXgyNy5jCisrKyBiL2RyaXZlcnMvcHdtL3B3bS1pbXgyNy5jCkBAIC0y
+MjMsNyArMjIzLDcgQEAgc3RhdGljIGludCBwd21faW14MjdfYXBwbHkoc3RydWN0IHB3bV9jaGlw
+ICpjaGlwLCBzdHJ1Y3QgcHdtX2RldmljZSAqcHdtLAogCWludCByZXQ7CiAJdTMyIGNyOwogCi0J
+cHdtX2dldF9zdGF0ZShwd20sICZjc3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRl
+KHB3bSwgJmNzdGF0ZSk7CiAKIAljbGtyYXRlID0gY2xrX2dldF9yYXRlKGlteC0+Y2xrX3Blcik7
+CiAJYyA9IGNsa3JhdGUgKiBzdGF0ZS0+cGVyaW9kOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9wd20v
+cHdtLXJvY2tjaGlwLmMgYi9kcml2ZXJzL3B3bS9wd20tcm9ja2NoaXAuYwppbmRleCA2YWQ3ZDBh
+NTBhZWQuLjE2Zjk5MzY5ZjRjNSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wd20vcHdtLXJvY2tjaGlw
+LmMKKysrIGIvZHJpdmVycy9wd20vcHdtLXJvY2tjaGlwLmMKQEAgLTE5OCw3ICsxOTgsNyBAQCBz
+dGF0aWMgaW50IHJvY2tjaGlwX3B3bV9hcHBseShzdHJ1Y3QgcHdtX2NoaXAgKmNoaXAsIHN0cnVj
+dCBwd21fZGV2aWNlICpwd20sCiAJaWYgKHJldCkKIAkJcmV0dXJuIHJldDsKIAotCXB3bV9nZXRf
+c3RhdGUocHdtLCAmY3Vyc3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwg
+JmN1cnN0YXRlKTsKIAllbmFibGVkID0gY3Vyc3RhdGUuZW5hYmxlZDsKIAogCWlmIChzdGF0ZS0+
+cG9sYXJpdHkgIT0gY3Vyc3RhdGUucG9sYXJpdHkgJiYgZW5hYmxlZCAmJgpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9wd20vcHdtLXN0bTMyLWxwLmMgYi9kcml2ZXJzL3B3bS9wd20tc3RtMzItbHAuYwpp
+bmRleCAxMzRjMTQ2MjFlZTAuLmM5ZTEwYWExYThlZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9wd20v
+cHdtLXN0bTMyLWxwLmMKKysrIGIvZHJpdmVycy9wd20vcHdtLXN0bTMyLWxwLmMKQEAgLTQxLDcg
+KzQxLDcgQEAgc3RhdGljIGludCBzdG0zMl9wd21fbHBfYXBwbHkoc3RydWN0IHB3bV9jaGlwICpj
+aGlwLCBzdHJ1Y3QgcHdtX2RldmljZSAqcHdtLAogCWJvb2wgcmVlbmFibGU7CiAJaW50IHJldDsK
+IAotCXB3bV9nZXRfc3RhdGUocHdtLCAmY3N0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBwbGllZF9z
+dGF0ZShwd20sICZjc3RhdGUpOwogCXJlZW5hYmxlID0gIWNzdGF0ZS5lbmFibGVkOwogCiAJaWYg
+KCFzdGF0ZS0+ZW5hYmxlZCkgewpAQCAtMjM1LDcgKzIzNSw3IEBAIHN0YXRpYyBpbnQgX19tYXli
+ZV91bnVzZWQgc3RtMzJfcHdtX2xwX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQogCXN0cnVj
+dCBzdG0zMl9wd21fbHAgKnByaXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKIAlzdHJ1Y3QgcHdt
+X3N0YXRlIHN0YXRlOwogCi0JcHdtX2dldF9zdGF0ZSgmcHJpdi0+Y2hpcC5wd21zWzBdLCAmc3Rh
+dGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKCZwcml2LT5jaGlwLnB3bXNbMF0sICZz
+dGF0ZSk7CiAJaWYgKHN0YXRlLmVuYWJsZWQpIHsKIAkJZGV2X2VycihkZXYsICJUaGUgY29uc3Vt
+ZXIgZGlkbid0IHN0b3AgdXMgKCVzKVxuIiwKIAkJCXByaXYtPmNoaXAucHdtc1swXS5sYWJlbCk7
+CmRpZmYgLS1naXQgYS9kcml2ZXJzL3B3bS9wd20tc3VuNGkuYyBiL2RyaXZlcnMvcHdtL3B3bS1z
+dW40aS5jCmluZGV4IGNlNWM0ZmM4ZGE2Zi4uYjRhZTgxOTBjM2U5IDEwMDY0NAotLS0gYS9kcml2
+ZXJzL3B3bS9wd20tc3VuNGkuYworKysgYi9kcml2ZXJzL3B3bS9wd20tc3VuNGkuYwpAQCAtMjM5
+LDcgKzIzOSw3IEBAIHN0YXRpYyBpbnQgc3VuNGlfcHdtX2FwcGx5KHN0cnVjdCBwd21fY2hpcCAq
+Y2hpcCwgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSwKIAl1bnNpZ25lZCBsb25nIG5vdzsKIAlib29s
+IGJ5cGFzczsKIAotCXB3bV9nZXRfc3RhdGUocHdtLCAmY3N0YXRlKTsKKwlwd21fZ2V0X2xhc3Rf
+YXBwbGllZF9zdGF0ZShwd20sICZjc3RhdGUpOwogCiAJaWYgKCFjc3RhdGUuZW5hYmxlZCkgewog
+CQlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoc3VuNGlfcHdtLT5jbGspOwpkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9wd20vc3lzZnMuYyBiL2RyaXZlcnMvcHdtL3N5c2ZzLmMKaW5kZXggOTkwM2MzYTdl
+Y2VkLi4zNDFkZWY1MGUyZGYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcHdtL3N5c2ZzLmMKKysrIGIv
+ZHJpdmVycy9wd20vc3lzZnMuYwpAQCAtNDAsNyArNDAsNyBAQCBzdGF0aWMgc3NpemVfdCBwZXJp
+b2Rfc2hvdyhzdHJ1Y3QgZGV2aWNlICpjaGlsZCwKIAljb25zdCBzdHJ1Y3QgcHdtX2RldmljZSAq
+cHdtID0gY2hpbGRfdG9fcHdtX2RldmljZShjaGlsZCk7CiAJc3RydWN0IHB3bV9zdGF0ZSBzdGF0
+ZTsKIAotCXB3bV9nZXRfc3RhdGUocHdtLCAmc3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVk
+X3N0YXRlKHB3bSwgJnN0YXRlKTsKIAogCXJldHVybiBzcHJpbnRmKGJ1ZiwgIiVsbHVcbiIsIHN0
+YXRlLnBlcmlvZCk7CiB9CkBAIC02MCw3ICs2MCw3IEBAIHN0YXRpYyBzc2l6ZV90IHBlcmlvZF9z
+dG9yZShzdHJ1Y3QgZGV2aWNlICpjaGlsZCwKIAkJcmV0dXJuIHJldDsKIAogCW11dGV4X2xvY2so
+JmV4cG9ydC0+bG9jayk7Ci0JcHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdtX2dldF9s
+YXN0X2FwcGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCXN0YXRlLnBlcmlvZCA9IHZhbDsKIAly
+ZXQgPSBwd21fYXBwbHlfc3RhdGUocHdtLCAmc3RhdGUpOwogCW11dGV4X3VubG9jaygmZXhwb3J0
+LT5sb2NrKTsKQEAgLTc1LDcgKzc1LDcgQEAgc3RhdGljIHNzaXplX3QgZHV0eV9jeWNsZV9zaG93
+KHN0cnVjdCBkZXZpY2UgKmNoaWxkLAogCWNvbnN0IHN0cnVjdCBwd21fZGV2aWNlICpwd20gPSBj
+aGlsZF90b19wd21fZGV2aWNlKGNoaWxkKTsKIAlzdHJ1Y3QgcHdtX3N0YXRlIHN0YXRlOwogCi0J
+cHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUo
+cHdtLCAmc3RhdGUpOwogCiAJcmV0dXJuIHNwcmludGYoYnVmLCAiJWxsdVxuIiwgc3RhdGUuZHV0
+eV9jeWNsZSk7CiB9CkBAIC05NSw3ICs5NSw3IEBAIHN0YXRpYyBzc2l6ZV90IGR1dHlfY3ljbGVf
+c3RvcmUoc3RydWN0IGRldmljZSAqY2hpbGQsCiAJCXJldHVybiByZXQ7CiAKIAltdXRleF9sb2Nr
+KCZleHBvcnQtPmxvY2spOwotCXB3bV9nZXRfc3RhdGUocHdtLCAmc3RhdGUpOworCXB3bV9nZXRf
+bGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgJnN0YXRlKTsKIAlzdGF0ZS5kdXR5X2N5Y2xlID0gdmFs
+OwogCXJldCA9IHB3bV9hcHBseV9zdGF0ZShwd20sICZzdGF0ZSk7CiAJbXV0ZXhfdW5sb2NrKCZl
+eHBvcnQtPmxvY2spOwpAQCAtMTEwLDcgKzExMCw3IEBAIHN0YXRpYyBzc2l6ZV90IGVuYWJsZV9z
+aG93KHN0cnVjdCBkZXZpY2UgKmNoaWxkLAogCWNvbnN0IHN0cnVjdCBwd21fZGV2aWNlICpwd20g
+PSBjaGlsZF90b19wd21fZGV2aWNlKGNoaWxkKTsKIAlzdHJ1Y3QgcHdtX3N0YXRlIHN0YXRlOwog
+Ci0JcHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3Rh
+dGUocHdtLCAmc3RhdGUpOwogCiAJcmV0dXJuIHNwcmludGYoYnVmLCAiJWRcbiIsIHN0YXRlLmVu
+YWJsZWQpOwogfQpAQCAtMTMwLDcgKzEzMCw3IEBAIHN0YXRpYyBzc2l6ZV90IGVuYWJsZV9zdG9y
+ZShzdHJ1Y3QgZGV2aWNlICpjaGlsZCwKIAogCW11dGV4X2xvY2soJmV4cG9ydC0+bG9jayk7CiAK
+LQlwd21fZ2V0X3N0YXRlKHB3bSwgJnN0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0
+ZShwd20sICZzdGF0ZSk7CiAKIAlzd2l0Y2ggKHZhbCkgewogCWNhc2UgMDoKQEAgLTE1OSw3ICsx
+NTksNyBAQCBzdGF0aWMgc3NpemVfdCBwb2xhcml0eV9zaG93KHN0cnVjdCBkZXZpY2UgKmNoaWxk
+LAogCWNvbnN0IGNoYXIgKnBvbGFyaXR5ID0gInVua25vd24iOwogCXN0cnVjdCBwd21fc3RhdGUg
+c3RhdGU7CiAKLQlwd21fZ2V0X3N0YXRlKHB3bSwgJnN0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBw
+bGllZF9zdGF0ZShwd20sICZzdGF0ZSk7CiAKIAlzd2l0Y2ggKHN0YXRlLnBvbGFyaXR5KSB7CiAJ
+Y2FzZSBQV01fUE9MQVJJVFlfTk9STUFMOgpAQCAtMTkyLDcgKzE5Miw3IEBAIHN0YXRpYyBzc2l6
+ZV90IHBvbGFyaXR5X3N0b3JlKHN0cnVjdCBkZXZpY2UgKmNoaWxkLAogCQlyZXR1cm4gLUVJTlZB
+TDsKIAogCW11dGV4X2xvY2soJmV4cG9ydC0+bG9jayk7Ci0JcHdtX2dldF9zdGF0ZShwd20sICZz
+dGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCXN0YXRl
+LnBvbGFyaXR5ID0gcG9sYXJpdHk7CiAJcmV0ID0gcHdtX2FwcGx5X3N0YXRlKHB3bSwgJnN0YXRl
+KTsKIAltdXRleF91bmxvY2soJmV4cG9ydC0+bG9jayk7CkBAIC0zOTIsNyArMzkyLDcgQEAgc3Rh
+dGljIHN0cnVjdCBwd21fZXhwb3J0ICpwd21fY2xhc3NfZ2V0X3N0YXRlKHN0cnVjdCBkZXZpY2Ug
+KnBhcmVudCwKIAlwdXRfZGV2aWNlKGNoaWxkKTsJLyogZm9yIGRldmljZV9maW5kX2NoaWxkKCkg
+Ki8KIAogCW11dGV4X2xvY2soJmV4cG9ydC0+bG9jayk7Ci0JcHdtX2dldF9zdGF0ZShwd20sIHN0
+YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZShwd20sIHN0YXRlKTsKIAogCXJldHVy
+biBleHBvcnQ7CiB9CmRpZmYgLS1naXQgYS9kcml2ZXJzL3JlZ3VsYXRvci9wd20tcmVndWxhdG9y
+LmMgYi9kcml2ZXJzL3JlZ3VsYXRvci9wd20tcmVndWxhdG9yLmMKaW5kZXggNzYyOTQ3NmQ5NGFl
+Li5lOGFkYTI5ZjM0MGEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvcmVndWxhdG9yL3B3bS1yZWd1bGF0
+b3IuYworKysgYi9kcml2ZXJzL3JlZ3VsYXRvci9wd20tcmVndWxhdG9yLmMKQEAgLTU4LDcgKzU4
+LDcgQEAgc3RhdGljIHZvaWQgcHdtX3JlZ3VsYXRvcl9pbml0X3N0YXRlKHN0cnVjdCByZWd1bGF0
+b3JfZGV2ICpyZGV2KQogCXVuc2lnbmVkIGludCBkdXR5Y3ljbGU7CiAJaW50IGk7CiAKLQlwd21f
+Z2V0X3N0YXRlKGRydmRhdGEtPnB3bSwgJnB3bV9zdGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxp
+ZWRfc3RhdGUoZHJ2ZGF0YS0+cHdtLCAmcHdtX3N0YXRlKTsKIAlkdXR5Y3ljbGUgPSBwd21fZ2V0
+X3JlbGF0aXZlX2R1dHlfY3ljbGUoJnB3bV9zdGF0ZSwgMTAwKTsKIAogCWZvciAoaSA9IDA7IGkg
+PCByZGV2LT5kZXNjLT5uX3ZvbHRhZ2VzOyBpKyspIHsKQEAgLTE1NSw3ICsxNTUsNyBAQCBzdGF0
+aWMgaW50IHB3bV9yZWd1bGF0b3JfZ2V0X3ZvbHRhZ2Uoc3RydWN0IHJlZ3VsYXRvcl9kZXYgKnJk
+ZXYpCiAJdW5zaWduZWQgaW50IGRpZmZfZHV0eTsKIAl1bnNpZ25lZCBpbnQgdm9sdGFnZTsKIAot
+CXB3bV9nZXRfc3RhdGUoZHJ2ZGF0YS0+cHdtLCAmcHN0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBw
+bGllZF9zdGF0ZShkcnZkYXRhLT5wd20sICZwc3RhdGUpOwogCiAJdm9sdGFnZSA9IHB3bV9nZXRf
+cmVsYXRpdmVfZHV0eV9jeWNsZSgmcHN0YXRlLCBkdXR5X3VuaXQpOwogCmRpZmYgLS1naXQgYS9k
+cml2ZXJzL3ZpZGVvL2JhY2tsaWdodC9wd21fYmwuYyBiL2RyaXZlcnMvdmlkZW8vYmFja2xpZ2h0
+L3B3bV9ibC5jCmluZGV4IGU0OGZkZWQzZTQxNC4uZGY5NTBkOWIzNzM4IDEwMDY0NAotLS0gYS9k
+cml2ZXJzL3ZpZGVvL2JhY2tsaWdodC9wd21fYmwuYworKysgYi9kcml2ZXJzL3ZpZGVvL2JhY2ts
+aWdodC9wd21fYmwuYwpAQCAtNDQsNyArNDQsNyBAQCBzdGF0aWMgdm9pZCBwd21fYmFja2xpZ2h0
+X3Bvd2VyX29uKHN0cnVjdCBwd21fYmxfZGF0YSAqcGIpCiAJc3RydWN0IHB3bV9zdGF0ZSBzdGF0
+ZTsKIAlpbnQgZXJyOwogCi0JcHdtX2dldF9zdGF0ZShwYi0+cHdtLCAmc3RhdGUpOworCXB3bV9n
+ZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHBiLT5wd20sICZzdGF0ZSk7CiAJaWYgKHBiLT5lbmFibGVk
+KQogCQlyZXR1cm47CiAKQEAgLTY4LDcgKzY4LDcgQEAgc3RhdGljIHZvaWQgcHdtX2JhY2tsaWdo
+dF9wb3dlcl9vZmYoc3RydWN0IHB3bV9ibF9kYXRhICpwYikKIHsKIAlzdHJ1Y3QgcHdtX3N0YXRl
+IHN0YXRlOwogCi0JcHdtX2dldF9zdGF0ZShwYi0+cHdtLCAmc3RhdGUpOworCXB3bV9nZXRfbGFz
+dF9hcHBsaWVkX3N0YXRlKHBiLT5wd20sICZzdGF0ZSk7CiAJaWYgKCFwYi0+ZW5hYmxlZCkKIAkJ
+cmV0dXJuOwogCkBAIC05Miw3ICs5Miw3IEBAIHN0YXRpYyBpbnQgY29tcHV0ZV9kdXR5X2N5Y2xl
+KHN0cnVjdCBwd21fYmxfZGF0YSAqcGIsIGludCBicmlnaHRuZXNzKQogCXN0cnVjdCBwd21fc3Rh
+dGUgc3RhdGU7CiAJdTY0IGR1dHlfY3ljbGU7CiAKLQlwd21fZ2V0X3N0YXRlKHBiLT5wd20sICZz
+dGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUocGItPnB3bSwgJnN0YXRlKTsKIAog
+CWlmIChwYi0+bGV2ZWxzKQogCQlkdXR5X2N5Y2xlID0gcGItPmxldmVsc1ticmlnaHRuZXNzXTsK
+QEAgLTExNSw3ICsxMTUsNyBAQCBzdGF0aWMgaW50IHB3bV9iYWNrbGlnaHRfdXBkYXRlX3N0YXR1
+cyhzdHJ1Y3QgYmFja2xpZ2h0X2RldmljZSAqYmwpCiAJCWJyaWdodG5lc3MgPSBwYi0+bm90aWZ5
+KHBiLT5kZXYsIGJyaWdodG5lc3MpOwogCiAJaWYgKGJyaWdodG5lc3MgPiAwKSB7Ci0JCXB3bV9n
+ZXRfc3RhdGUocGItPnB3bSwgJnN0YXRlKTsKKwkJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUo
+cGItPnB3bSwgJnN0YXRlKTsKIAkJc3RhdGUuZHV0eV9jeWNsZSA9IGNvbXB1dGVfZHV0eV9jeWNs
+ZShwYiwgYnJpZ2h0bmVzcyk7CiAJCXB3bV9hcHBseV9zdGF0ZShwYi0+cHdtLCAmc3RhdGUpOwog
+CQlwd21fYmFja2xpZ2h0X3Bvd2VyX29uKHBiKTsKQEAgLTU2Nyw3ICs1NjcsNyBAQCBzdGF0aWMg
+aW50IHB3bV9iYWNrbGlnaHRfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAkJ
+ICovCiAKIAkJLyogR2V0IHRoZSBQV00gcGVyaW9kIChpbiBuYW5vc2Vjb25kcykgKi8KLQkJcHdt
+X2dldF9zdGF0ZShwYi0+cHdtLCAmc3RhdGUpOworCQlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0
+ZShwYi0+cHdtLCAmc3RhdGUpOwogCiAJCXJldCA9IHB3bV9iYWNrbGlnaHRfYnJpZ2h0bmVzc19k
+ZWZhdWx0KCZwZGV2LT5kZXYsIGRhdGEsCiAJCQkJCQkgICAgICAgc3RhdGUucGVyaW9kKTsKZGlm
+ZiAtLWdpdCBhL2luY2x1ZGUvbGludXgvcHdtLmggYi9pbmNsdWRlL2xpbnV4L3B3bS5oCmluZGV4
+IGU0ZDg0ZDRkYjI5My4uMzU3ODJjZDQwNzViIDEwMDY0NAotLS0gYS9pbmNsdWRlL2xpbnV4L3B3
+bS5oCisrKyBiL2luY2x1ZGUvbGludXgvcHdtLmgKQEAgLTg4LDEyICs4OCwxOCBAQCBzdHJ1Y3Qg
+cHdtX2RldmljZSB7CiB9OwogCiAvKioKLSAqIHB3bV9nZXRfc3RhdGUoKSAtIHJldHJpZXZlIHRo
+ZSBjdXJyZW50IFBXTSBzdGF0ZQorICogcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUoKSAtIHJl
+dHJpZXZlIHRoZSBQV00gc3RhdGUgdGhhdCB3YXMgcGFzc2VkIHRvCisgKiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgcHdtX2FwcGx5X3N0YXRlKCkgYmVmb3JlCisgKgorICogSWYgcHdt
+X2FwcGx5X3N0YXRlKCkgd2Fzbid0IGNhbGxlZCBiZWZvcmUgdGhlIHN0YXRlIHJldHVybmVkIG1p
+Z2h0IGJlIHdoYXQgaXMKKyAqIGFjdHVhbGx5IGltcGxlbWVudGVkIGluIHRoZSBoYXJkd2FyZSAo
+aWYgc3VwcG9ydGVkIGJ5IHRoZSBkcml2ZXIpIG9yIGEKKyAqIGRlZmF1bHQgc2V0dGluZy4KKyAq
+CiAgKiBAcHdtOiBQV00gZGV2aWNlCiAgKiBAc3RhdGU6IHN0YXRlIHRvIGZpbGwgd2l0aCB0aGUg
+Y3VycmVudCBQV00gc3RhdGUKICAqLwotc3RhdGljIGlubGluZSB2b2lkIHB3bV9nZXRfc3RhdGUo
+Y29uc3Qgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSwKLQkJCQkgc3RydWN0IHB3bV9zdGF0ZSAqc3Rh
+dGUpCitzdGF0aWMgaW5saW5lIHZvaWQgcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUoY29uc3Qg
+c3RydWN0IHB3bV9kZXZpY2UgKnB3bSwKKwkJCQkJICAgICAgc3RydWN0IHB3bV9zdGF0ZSAqc3Rh
+dGUpCiB7CiAJKnN0YXRlID0gcHdtLT5zdGF0ZTsKIH0KQEAgLTEwMiw3ICsxMDgsNyBAQCBzdGF0
+aWMgaW5saW5lIGJvb2wgcHdtX2lzX2VuYWJsZWQoY29uc3Qgc3RydWN0IHB3bV9kZXZpY2UgKnB3
+bSkKIHsKIAlzdHJ1Y3QgcHdtX3N0YXRlIHN0YXRlOwogCi0JcHdtX2dldF9zdGF0ZShwd20sICZz
+dGF0ZSk7CisJcHdtX2dldF9sYXN0X2FwcGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCiAJcmV0
+dXJuIHN0YXRlLmVuYWJsZWQ7CiB9CkBAIC0xMTcsNyArMTIzLDcgQEAgc3RhdGljIGlubGluZSB1
+NjQgcHdtX2dldF9wZXJpb2QoY29uc3Qgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSkKIHsKIAlzdHJ1
+Y3QgcHdtX3N0YXRlIHN0YXRlOwogCi0JcHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdt
+X2dldF9sYXN0X2FwcGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCiAJcmV0dXJuIHN0YXRlLnBl
+cmlvZDsKIH0KQEAgLTEzMiw3ICsxMzgsNyBAQCBzdGF0aWMgaW5saW5lIHU2NCBwd21fZ2V0X2R1
+dHlfY3ljbGUoY29uc3Qgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSkKIHsKIAlzdHJ1Y3QgcHdtX3N0
+YXRlIHN0YXRlOwogCi0JcHdtX2dldF9zdGF0ZShwd20sICZzdGF0ZSk7CisJcHdtX2dldF9sYXN0
+X2FwcGxpZWRfc3RhdGUocHdtLCAmc3RhdGUpOwogCiAJcmV0dXJuIHN0YXRlLmR1dHlfY3ljbGU7
+CiB9CkBAIC0xNDEsNyArMTQ3LDcgQEAgc3RhdGljIGlubGluZSBlbnVtIHB3bV9wb2xhcml0eSBw
+d21fZ2V0X3BvbGFyaXR5KGNvbnN0IHN0cnVjdCBwd21fZGV2aWNlICpwd20pCiB7CiAJc3RydWN0
+IHB3bV9zdGF0ZSBzdGF0ZTsKIAotCXB3bV9nZXRfc3RhdGUocHdtLCAmc3RhdGUpOworCXB3bV9n
+ZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgJnN0YXRlKTsKIAogCXJldHVybiBzdGF0ZS5wb2xh
+cml0eTsKIH0KQEAgLTE3NSw3ICsxODEsNyBAQCBzdGF0aWMgaW5saW5lIHZvaWQgcHdtX2luaXRf
+c3RhdGUoY29uc3Qgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSwKIAlzdHJ1Y3QgcHdtX2FyZ3MgYXJn
+czsKIAogCS8qIEZpcnN0IGdldCB0aGUgY3VycmVudCBzdGF0ZS4gKi8KLQlwd21fZ2V0X3N0YXRl
+KHB3bSwgc3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgc3RhdGUpOwog
+CiAJLyogVGhlbiBmaWxsIGl0IHdpdGggdGhlIHJlZmVyZW5jZSBjb25maWcgKi8KIAlwd21fZ2V0
+X2FyZ3MocHdtLCAmYXJncyk7CkBAIC0xOTUsOCArMjAxLDEyIEBAIHN0YXRpYyBpbmxpbmUgdm9p
+ZCBwd21faW5pdF9zdGF0ZShjb25zdCBzdHJ1Y3QgcHdtX2RldmljZSAqcHdtLAogICoKICAqIEZv
+ciBleGFtcGxlIGlmIHlvdSB3YW50IHRvIGdldCB0aGUgZHV0eV9jeWNsZSBleHByZXNzZWQgaW4g
+cGVyY2VudCwgY2FsbDoKICAqCi0gKiBwd21fZ2V0X3N0YXRlKHB3bSwgJnN0YXRlKTsKKyAqIHB3
+bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgJnN0YXRlKTsKICAqIGR1dHkgPSBwd21fZ2V0
+X3JlbGF0aXZlX2R1dHlfY3ljbGUoJnN0YXRlLCAxMDApOworICoKKyAqIE5vdGUgaG93ZXZlciB0
+aGF0IHRoaXMgZXhhbXBsZSB5aWVsZHMgdGhlIHJlbGF0aXZlIGR1dHkgY3ljbGUgdGhhdCB3YXMK
+KyAqIHJlcXVlc3RlZCBiZWZvcmUgd2hpY2ggZG9lc24ndCBuZWNlc3NhcmlseSBleGFjdGx5IG1h
+dGNoZXMgd2hhdCBpcyBhY3R1YWxseQorICogcHJvdmlkZWQgYnkgdGhlIGhhcmR3YXJlLgogICov
+CiBzdGF0aWMgaW5saW5lIHVuc2lnbmVkIGludAogcHdtX2dldF9yZWxhdGl2ZV9kdXR5X2N5Y2xl
+KGNvbnN0IHN0cnVjdCBwd21fc3RhdGUgKnN0YXRlLCB1bnNpZ25lZCBpbnQgc2NhbGUpCkBAIC0z
+MzcsNyArMzQ3LDcgQEAgc3RhdGljIGlubGluZSBpbnQgcHdtX2NvbmZpZyhzdHJ1Y3QgcHdtX2Rl
+dmljZSAqcHdtLCBpbnQgZHV0eV9ucywKIAlpZiAoZHV0eV9ucyA8IDAgfHwgcGVyaW9kX25zIDwg
+MCkKIAkJcmV0dXJuIC1FSU5WQUw7CiAKLQlwd21fZ2V0X3N0YXRlKHB3bSwgJnN0YXRlKTsKKwlw
+d21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZShwd20sICZzdGF0ZSk7CiAJaWYgKHN0YXRlLmR1dHlf
+Y3ljbGUgPT0gZHV0eV9ucyAmJiBzdGF0ZS5wZXJpb2QgPT0gcGVyaW9kX25zKQogCQlyZXR1cm4g
+MDsKIApAQCAtMzU5LDcgKzM2OSw3IEBAIHN0YXRpYyBpbmxpbmUgaW50IHB3bV9lbmFibGUoc3Ry
+dWN0IHB3bV9kZXZpY2UgKnB3bSkKIAlpZiAoIXB3bSkKIAkJcmV0dXJuIC1FSU5WQUw7CiAKLQlw
+d21fZ2V0X3N0YXRlKHB3bSwgJnN0YXRlKTsKKwlwd21fZ2V0X2xhc3RfYXBwbGllZF9zdGF0ZShw
+d20sICZzdGF0ZSk7CiAJaWYgKHN0YXRlLmVuYWJsZWQpCiAJCXJldHVybiAwOwogCkBAIC0zNzgs
+NyArMzg4LDcgQEAgc3RhdGljIGlubGluZSB2b2lkIHB3bV9kaXNhYmxlKHN0cnVjdCBwd21fZGV2
+aWNlICpwd20pCiAJaWYgKCFwd20pCiAJCXJldHVybjsKIAotCXB3bV9nZXRfc3RhdGUocHdtLCAm
+c3RhdGUpOworCXB3bV9nZXRfbGFzdF9hcHBsaWVkX3N0YXRlKHB3bSwgJnN0YXRlKTsKIAlpZiAo
+IXN0YXRlLmVuYWJsZWQpCiAJCXJldHVybjsKIAotLSAKMi4zMC4yCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
