@@ -1,96 +1,71 @@
-Return-Path: <SRS0=2XDZ=JD=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=HYuE=JE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6635C433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 19:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 08CC2C433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Apr 2021 00:20:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37D56613D4
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Apr 2021 19:04:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37D56613D4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8C355613C2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Apr 2021 00:20:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C355613C2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:Message-Id:From:
+	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xTd4gzUAIttUQxiBB4GQwv8rVL8mdery3R1qfWM4VyA=; b=S3qAv8xVYsiZkASXh7Ldm3uIQ
-	mNqL0RZaio1Tkzz8bgG3gsin7zqYTwAVlxfbdnHbZVd0cT5VyCh0fDkmyOJq/kV3rrC1GWCLx/DRp
-	wJGzY660P70rJzwm1y9IbRbbRN9I8MkEPnUyOH1RucuK0+MQb+gpxT772Ixfg37wODqbfJ7lIw5XE
-	yS7xExVCYsoOnKgl2YmwwF/QqaFrSamYmU1/mI6D5njFOSY94RMxiCw6R7Uqpi2jAL/8Sy0GK9APv
-	Qb1h86IS5XnTKHol0jYLSV6oEi+CTKQJ2WX7j8drZUrTnuJHGMbwOJvlzdNgHVfqCnp3IhEV5GwFS
-	exg93+akQ==;
+	 bh=kUZkt45xqrVg0Rp8R/a1wYLt4F0MjmdYgXJTLTZNTdg=; b=o2faQfFhmLusmAIelBQU6f9Er
+	Ir9bpMGUQSCzheW9J5ckwpkaivxwHmHAnYhLlqt3K5ZZzWBd69ZP6tqs90/Z/cNAzQPPwo7moP3yj
+	g7WA+JGAN44wt0XP2FQflrAm4hdn+MsLJgqEzY6LMr9+y6KiiI3MLWl70gs8jHhpe3H96pIAIW+BM
+	CMifM3S47DBhHUb2jSl8e+y8D383+ef70gmYBf/CKLxG5EF3n1I2z0xMPc4B5m+0T8tgc/t7UPL6e
+	nnHHTuSNsaQ29fT4LdDSY/Nkrg6V+jcQtcV4j/rXilYzXeCjN4mOQidxRP/zrKaBTH4N0Ewjt25C4
+	dzUbliVGw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTr0B-003IiS-O6; Tue, 06 Apr 2021 19:04:39 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1lTvw9-003fRA-Ef; Wed, 07 Apr 2021 00:20:49 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTr05-003Ihd-N1; Tue, 06 Apr 2021 19:04:36 +0000
-Received: by mail-ed1-x534.google.com with SMTP id w23so6603242edx.7;
- Tue, 06 Apr 2021 12:04:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LUs9XCcyO38dnpQfCCErPK9kbceKsMJW9AomZ2ltfZg=;
- b=c06VSNerePCuaMgNeajGyGqs3sjrO1yx1Dg2G8q8SP7jjie93CVtIipY87mMEwQMLo
- HD120wLUiXqIuLFkFkzYTA8qkycws1676OsS3V+2Ig3DFetSsNTiBF43oS6EVSkYU+cM
- /asEvQPfM/OTYGtoycZjlu+FZ1qyKYqqu3HK5f1V2l4wtM6w2goLJyeVLRVlL3YaGlMb
- JDeBAN554nuNG7wI490hy/oQk73W22tWf0+Kgh1jF1gwauv5sX2baa4MBpXHjUtfd0Hq
- aeWVWhslHQSyWSB1MH+P3dN0EHUHUujzmoun0nd0Q9JglG8utSfbHt2iyyzREEbszKDN
- ZN5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LUs9XCcyO38dnpQfCCErPK9kbceKsMJW9AomZ2ltfZg=;
- b=jID37F1IDbMZxbiXQ0keoDock9fbVgjYi8W4uI1gee0Bx0Ll+KwBAYXaEUfLwmtOVm
- uKRhWvMPAIOcBY8L2VZCyU/FXIVX1/C9NIdHoxrdq0fhl/OmxzTinkr8QY5IRra0zYvs
- 06LO4R52UXJVrntNMtvWO4vD9gL35QNnHsUDE3Bn9Y8Te+d0uTXfCgIaou5utndibM8z
- YSnXUaU5ZgyRZXFCNR1MDVzGQ+mNn175WGmKneKfVgkLlTOM3l5ZSg+VOZPcPERLuS8E
- YTYq2MZeEDHHB4n7Wue5SewjlZg474hQuXHR2ZQ+JqDMV6V0LL9bEyyH3ba+QU6AWZ8V
- FRtg==
-X-Gm-Message-State: AOAM532/apANWKu8guVdQhrCkOy1DlzI1gjh4zZgu2N5T7+BpUDOUCjP
- FNrclORUOHCaxPF+QdAVC1dH2HlR3yIpSw==
-X-Google-Smtp-Source: ABdhPJwnwbybytM9+pESinCANbkSL/NZzrl3ilccwsjlyHnygG5SeKxP3e87GSHwhOU4fHnptGgj/w==
-X-Received: by 2002:a05:6402:3493:: with SMTP id
- v19mr41022098edc.355.1617735872135; 
- Tue, 06 Apr 2021 12:04:32 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- h17sm14037494eds.26.2021.04.06.12.04.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Apr 2021 12:04:31 -0700 (PDT)
-Subject: Re: [PATCH v1 1/2] dt-bindings: pwm: convert pwm-rockchip.txt to YAML
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210406155053.29101-1-jbx6244@gmail.com>
-Message-ID: <8f05dc0d-8fb7-c200-5251-d9e147b1d00d@gmail.com>
-Date: Tue, 6 Apr 2021 21:04:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1lTvvd-003fPC-5z; Wed, 07 Apr 2021 00:20:19 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPS id 12A42613D0;
+ Wed,  7 Apr 2021 00:20:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1617754813;
+ bh=68ezURRB4IzMUiiFsKN47apLoSsRPZ+MXLR9pJgl0dk=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=HPpNXmeN7inrJ64lopW5zGrefa3HtQKEBPDRvgn0KYeDZRczof5Q+UZ0OkP0qnjql
+ S+aUIJwJ7XFF15zfSnehdq8yeZThdHndKYi8eIIVD+ciGECReXqV3rf9LclM7X3IYg
+ XGH/ydAu5JZ2T0u2yxWGanAGwe36u/9uRehE+sKJyvEmt8KUctPvIS5pvUYcMRomml
+ YyfvQxa1MqSwNMgNzS0nRRz8jfd/aSK2SGfUsxXwSGRXeLZpU3YPT/zQqkNGaxkzT0
+ hERcyipbn7h23+vXd/K2gL0ml7Xk+j2QNMIDyntL4diD1BvByCveWSAqLtSfs69qfS
+ H9tIqVivSFHLQ==
 MIME-Version: 1.0
-In-Reply-To: <20210406155053.29101-1-jbx6244@gmail.com>
-Content-Language: en-US
+Subject: Re: [PATCH v2 1/1] time64.h: Consolidated PSEC_PER_SEC definition
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <161775481302.4854.4555470311488320359.git-patchwork-notify@kernel.org>
+Date: Wed, 07 Apr 2021 00:20:13 +0000
+References: <20210406102251.60301-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20210406102251.60301-1-andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: davem@davemloft.net, yangbo.lu@nxp.com, vladimir.oltean@nxp.com,
+ heiko@sntech.de, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, claudiu.manoil@nxp.com,
+ alexandre.belloni@bootlin.com, UNGLinuxDriver@microchip.com, kuba@kernel.org, 
+ kishon@ti.com, vkoul@kernel.org, luto@kernel.org, tglx@linutronix.de,
+ vincenzo.frascino@arm.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_200433_967718_977710C3 
-X-CRM114-Status: GOOD (  28.38  )
+X-CRM114-CacheID: sfid-20210407_012017_646963_5285A0CC 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,157 +83,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-Question for Heiko:
-rv1108.dtsi and rk3328.dtsi have a undocumented "interrupts" property
-AFAICT without driver support.
-Please advise what to do with it.
+This patch was applied to netdev/net-next.git (refs/heads/master):
 
-
-See build log:
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210406155053.29101-1-jbx6244@gmail.com/
-
-====
-
-Question for Rob:
-It looks like that recent "improvements" with regard to checking for
-undocumented compatible strings make it almost impossible to do any
-useful dt_checking, let alone for the average user. Maybe reduce the
-notification blurb output a bit for things that have nothing to do with
-this document. Unable to fall back to previous versions for older kernels.
-
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master
---upgrade
-
-make ARCH=arm dtbs_check
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-
-make ARCH=arm64 dtbs_check
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-
-
-On 4/6/21 5:50 PM, Johan Jonker wrote:
-> Current dts files with 'pwm' nodes are manually verified.
-> In order to automate this process pwm-rockchip.txt
-> has to be converted to yaml.
+On Tue,  6 Apr 2021 13:22:51 +0300 you wrote:
+> We have currently three users of the PSEC_PER_SEC each of them defining it
+> individually. Instead, move it to time64.h to be available for everyone.
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  .../devicetree/bindings/pwm/pwm-rockchip.txt       | 27 ---------
->  .../devicetree/bindings/pwm/pwm-rockchip.yaml      | 66 ++++++++++++++++++++++
->  2 files changed, 66 insertions(+), 27 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> There is a new user coming with the same constant in use. It will also
+> make its life easier.
 > 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt b/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
-> deleted file mode 100644
-> index f70956dea..000000000
-> --- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
-> +++ /dev/null
-> @@ -1,27 +0,0 @@
-> -Rockchip PWM controller
-> -
-> -Required properties:
-> - - compatible: should be "rockchip,<name>-pwm"
-> -   "rockchip,rk2928-pwm": found on RK29XX,RK3066 and RK3188 SoCs
-> -   "rockchip,rk3288-pwm": found on RK3288 SOC
-> -   "rockchip,rv1108-pwm", "rockchip,rk3288-pwm": found on RV1108 SoC
-> -   "rockchip,vop-pwm": found integrated in VOP on RK3288 SoC
-> - - reg: physical base address and length of the controller's registers
-> - - clocks: See ../clock/clock-bindings.txt
-> -   - For older hardware (rk2928, rk3066, rk3188, rk3228, rk3288, rk3399):
-> -     - There is one clock that's used both to derive the functional clock
-> -       for the device and as the bus clock.
-> -   - For newer hardware (rk3328 and future socs): specified by name
-> -     - "pwm": This is used to derive the functional clock.
-> -     - "pclk": This is the APB bus clock.
-> - - #pwm-cells: must be 2 (rk2928) or 3 (rk3288). See pwm.yaml in this directory
-> -   for a description of the cell format.
-> -
-> -Example:
-> -
-> -	pwm0: pwm@20030000 {
-> -		compatible = "rockchip,rk2928-pwm";
-> -		reg = <0x20030000 0x10>;
-> -		clocks = <&cru PCLK_PWM01>;
-> -		#pwm-cells = <2>;
-> -	};
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-> new file mode 100644
-> index 000000000..cfd637d3e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-> @@ -0,0 +1,66 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pwm/pwm-rockchip.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip PWM controller
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - const: rockchip,rk2928-pwm
-> +      - const: rockchip,rk3288-pwm
-> +      - const: rockchip,vop-pwm
-> +      - items:
-> +          - enum:
-> +              - rockchip,rv1108-pwm
-> +          - const: rockchip,rk3288-pwm
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 2
-> +    description:
-> +      For older hardware (rk2928, rk3066, rk3188, rk3228, rk3288, rk3399)
-> +        There is one clock that is used both to derive the functional clock
-> +        for the device and as the bus clock.
-> +      For newer hardware (rk3328 and future SoCs) that is also specified
-> +      with clock names.
-> +        "pwm" is used to derive the functional clock for the device.
-> +        "pclk" is used as the APB bus clock.
-> +
-> +  clock-names:
-> +    minItems: 1
-> +    items:
-> +      - const: pwm
-> +      - const: pclk
-> +
-> +  "#pwm-cells":
-> +    enum: [2, 3]
-> +    description:
-> +      Must be 2 (rk2928) or 3 (rk3288).
-> +      See pwm.yaml for a description of the cell format.
-> +
-> +additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - "#pwm-cells"
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3188-cru-common.h>
-> +    pwm0: pwm@20030000 {
-> +      compatible = "rockchip,rk2928-pwm";
-> +      reg = <0x20030000 0x10>;
-> +      clocks = <&cru PCLK_PWM01>;
-> +      #pwm-cells = <2>;
-> +    };
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Acked-by: Heiko Stuebner <heiko@sntech.de>
 > 
+> [...]
+
+Here is the summary with links:
+  - [v2,1/1] time64.h: Consolidated PSEC_PER_SEC definition
+    https://git.kernel.org/netdev/net-next/c/a460513ed4b6
+
+You are awesome, thank you!
+--
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
