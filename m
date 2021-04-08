@@ -2,19 +2,18 @@ Return-Path: <SRS0=F7Lw=JF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A037C43460
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Apr 2021 13:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2C80C43460
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Apr 2021 13:43:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ACF6B61130
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Apr 2021 13:41:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACF6B61130
+	by mail.kernel.org (Postfix) with ESMTPS id 64D2061041
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Apr 2021 13:43:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64D2061041
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,62 +22,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=94Jq0RPYmMOR4QerMHT2Tfv7cIrb7gehi0ZhlMD1vMI=; b=IEC/OayHjxNeBM2JDzw2bbRIr
-	UNF3Fh9R146TzZk1r66IyO0QTn+HOeo+h1mALQocBTO7skoml0peUwjz4dur1D2zRtb2MhqVU/Nul
-	OVdH8RjDNJqtJsg6RuWgO9E6IoGN5UHXRFNUnoCPfATjNV7x4odl7++JqLg8So1hJH2OE003zX0hD
-	lD3eWC9jzifREjB8Eb90h4kKOeYZz/rxvgC2TXGdp8j1vgYB2bGHb2wAN4+Ni4/XJM19/EA10WVc9
-	Nst2a9LJuORPgSwbTEw6IVhhm1HlzXD8W9jMuhnZCg+RMla3A1Y8Tsupj/7n9moy4DLtG0VJKOSSx
-	CKk3Hdp4A==;
+	 bh=96oCorVO3aASAiwi8SGMeBNDmA+cwxxhXHECaP8JOpM=; b=hm4scfYBkCWu3Y+N8KPT4Qxv+
+	n3r2ZHIAhAqzpSG/OlXgOCrDiLYahudXh0RjVs5YUtgT2KGROLrzK/i8zIpIvoQFrttdX82u9cZwT
+	geLt3vLo7J1yJpkXzrWCOhsNqkNSuXKHqdfaiNUD7Vza7BcAK3FI9l60EIPW904Qv0h84s8zdPQzH
+	Hd3JaHdWQgsrjDBlDkIczG01oXLQIAHqcO4n6zxNQMEhe4tk6Kmo4pILgnkrETmI08AMfdPSc3Lh7
+	YJH49TPWwq5KKZ7J7U81k6u5bfCxmLhbjhtM2TR6bUD0GlanFWPIGVY0lGxZsVY2zXjf3kdXDa/50
+	FICVJe45Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUUuB-008ADI-V9; Thu, 08 Apr 2021 13:41:08 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1lUUwr-008AbJ-0e; Thu, 08 Apr 2021 13:43:53 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUUu7-008ACZ-SB
- for linux-rockchip@lists.infradead.org; Thu, 08 Apr 2021 13:41:06 +0000
-Received: by mail-lj1-x235.google.com with SMTP id r20so2322320ljk.4
- for <linux-rockchip@lists.infradead.org>; Thu, 08 Apr 2021 06:41:03 -0700 (PDT)
+ id 1lUUwm-008AaX-JU
+ for linux-rockchip@lists.infradead.org; Thu, 08 Apr 2021 13:43:50 +0000
+Received: by mail-lf1-x132.google.com with SMTP id b4so4105085lfi.6
+ for <linux-rockchip@lists.infradead.org>; Thu, 08 Apr 2021 06:43:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GtXbzBdE0M1Nm+ar4q3BvNUevDQ17mjgYSKVolqwxG0=;
- b=UAXlRZwWzqDqVm+TVZLuG/9aX2jJ4Wl3yNdGBz3MdsdIwKK1frRrTbyyOFFzbj3iuc
- d2oaovoBG3OctPJdpjfc6tdJGohJKMAKusRTTV2a7+SUa+2yn+iDEuUsiWXmmvdKFKPN
- jq1VgZS5HRf4oXWVOteZJe1li79bLJFEZYK6FKaJGGSpI9tyZv2ZlPvXnfYj9hSLD8HX
- by5xFZolG0/MunXe5+yAuDUjXu7tvNkwYzS0xBotgy2sk6B11Ey42Pr6SA1vsAcLJKPN
- 7ztxfKUjam1lmK6jQy3pXzmPHUgrl0/8WCGd84Llu5YZF/AahBjrgt23yJP8xSDAb10W
- ZDjw==
+ :cc; bh=nd4MS/2X/IdRu/IPJEY7GmmOKW9PjkQK5am7Q8bLstI=;
+ b=hD8KAQHdn5unol9mIEukltB0Fz0T3qQQS2GZ1hEXbDV+LUdIomndFB8jDC+/8r5lsf
+ Zuap4QsWc1i4BK0nV76woFFpjpqd78ay7JVuJE7lRA5+35oX3JTgPwkEsw52eqNDq+Js
+ 5/H5iVyHA5mFpNATM0UjymDtqiGtC0PoWZcHa3SZblgizwLkDZi80MQVS+U5ITAfwY/I
+ RxrQHVfGoTFjaWzb+27JUUk9VYyRvsXYcDeuMUUWeKDbqNwM9M1Wo1dWew9qOvQb6Ww+
+ zQrZDd9dGfAdGdRTD0k2W6XIjAC/I2SvGAVsnkPq0/YgTNviQ6MVih9Lzi1pAalLAwQf
+ a5BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GtXbzBdE0M1Nm+ar4q3BvNUevDQ17mjgYSKVolqwxG0=;
- b=UXT3XlEDvtncP+KkgJ2fNDupcKmXeytMGrRbSItzOymt2mN+CrsC98AU9oAmy2IUvP
- 3I9JSym+iKehJmiR9wZj2dUCH0Fcxjkg+AIMtbq8+2nTbKDnclbq7c9zQ+wCaTj0XdNK
- SwzimGLBSVsnqrrKGOG04ToUwfJbOpT65x7jN7b8iqnuyqWyYtL0lFbr9npJTDHFjJ33
- YqxRV9MJrZmVBU6DU2yiqCX2WgOi6cFwnx9ITSMiaDtKnkXg84ARSZUf5+VLyd2ocNi/
- Wv1EXwKajqzCYwMrGngAOp61aP8lB9wO87ZNO6rFuF15fXI9xn05C2V1Te7A3/m6NxPA
- PZVw==
-X-Gm-Message-State: AOAM530VZ9qK5232vQrdWYFZkFLB0tn3vHoSaIKAfD8LFj05nvha6zMr
- ZAmOGY+b0lFum6EnDHdg4svhtOJxF5LloIicTnx1LQ==
-X-Google-Smtp-Source: ABdhPJyTMHU0TlT4KAzDlrvO6EJpbswl5uNFx3547wf9kdRUSms7wWxsib6LTdrfRUvi7kIRYamP2OBW/7Rh1Qli2yw=
-X-Received: by 2002:a2e:9004:: with SMTP id h4mr5845223ljg.326.1617889262784; 
- Thu, 08 Apr 2021 06:41:02 -0700 (PDT)
+ bh=nd4MS/2X/IdRu/IPJEY7GmmOKW9PjkQK5am7Q8bLstI=;
+ b=iDfhnM8jlpkFMADkwWNWjrjHZEOkWKRkxOQ+cX2SbhUsrPJmL2+MLrauBPDN9rdz1q
+ nkXtazBlq/L4vVzLSIlBvAhblx7FqTFo64F6ZUToo+NCLl55MUbvscMQmPnIT98ilvDD
+ aF84YvGtILp8QQ/2LUHOiuF5NMQvqXzYN9jpnX9HS8ZT01zyuVVZpPBVU7PbElb+DQ8p
+ ytlRPApTfj4ibTSCo6Sp3lgf6ZugLbsYQJjMptSiXBZnNlWxQb9ffKIcjvg63GQVnNSR
+ wEb4cI1adAdF5Mb6Kw6Zlm1sOmnKc0f8j4vi3LKyO0PVIVlRhcizRVPeuQyoGcbSTwWw
+ VOdA==
+X-Gm-Message-State: AOAM530o0claf6CyOYU3lX5ArjSGHj/HvYCF+K2BZRu8s672Uso+9tMO
+ uCyJpkTHQB2gfVFlRhBz6lRHSnlURtvylqtBcF6zAQ==
+X-Google-Smtp-Source: ABdhPJymnbt4FfiI9iPC+BINQwSJEhxevKghWv8S1VlDu3pJBTF5MsChnMg8U1zsHNd7he3i/ZkOw0THQ/rxhuG91CA=
+X-Received: by 2002:ac2:4d95:: with SMTP id g21mr6715385lfe.29.1617889427809; 
+ Thu, 08 Apr 2021 06:43:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210304013342.1106361-1-jay.xu@rock-chips.com>
- <20210319081441.368358-1-jay.xu@rock-chips.com>
-In-Reply-To: <20210319081441.368358-1-jay.xu@rock-chips.com>
+References: <20210322104310.863029-1-jay.xu@rock-chips.com>
+In-Reply-To: <20210322104310.863029-1-jay.xu@rock-chips.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 8 Apr 2021 15:40:51 +0200
-Message-ID: <CACRpkdY+A4bsW28yXRGeGVnK_UcR70sMeX3jpABGVJc49A-xcg@mail.gmail.com>
-Subject: Re: [PATCH v4] pinctrl: rockchip: add support for rk3568
+Date: Thu, 8 Apr 2021 15:43:36 +0200
+Message-ID: <CACRpkdZWH9Mitp8+SMSCW7kGy5Uz=govbh6=c8gqzL2u6FR-Ew@mail.gmail.com>
+Subject: Re: [PATCH 0/3] gpio-rockchip driver
 To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+Cc: Tao Huang <huangtao@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_144104_655175_ECA5C612 
-X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-CacheID: sfid-20210408_144349_204735_46A5FBD9 
+X-CRM114-Status: UNSURE (   7.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,19 +96,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 19, 2021 at 9:14 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+On Mon, Mar 22, 2021 at 11:43 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 
-> RK3568 SoCs have 5 gpio controllers, each gpio has 32 pins. GPIO supports
-> set iomux, pull, drive strength and schmitt.
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
-> v3:
-> - fix route_type to route_location, compile error fix
-> - remove slewrate option
+> Separate gpio driver from pinctrl driver.
 
-This v3 applied. Any additional review comments can be fixed in follow-up
-patches.
+I tried to apply this too, but it fails, can you rebase on the pinctrl "devel"
+branch (I suppose the RK3568 driver got in the way).
 
 Yours,
 Linus Walleij
