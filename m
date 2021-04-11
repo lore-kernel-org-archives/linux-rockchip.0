@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1CD8C433ED
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 13:11:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD70DC433ED
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 13:11:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 811CB60FD8
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 13:11:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 811CB60FD8
+	by mail.kernel.org (Postfix) with ESMTPS id 675B0610CB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 13:11:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 675B0610CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,62 +24,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xu3FWhTw8y0wNngp+bVSekrOJ56mKyvgMBksoRTrYsA=; b=Bv0jRl+j5by7QQv9ZNQ1no3/qK
-	0aMqQhpZa7uJvks13MmWVl1sVJhSxZAoOzbQh2v/M7yMeb5hRJGhwHU74WEeODn3LASL+dmf8RS5u
-	zrLsBqJpr/YT8xJoHEG9cRHEHO5LTqhas0Sh2XXxhirYIq3IdobIr7Mh5iqNPHJ8xTe3o2De3MRBw
-	uIlvuJa9etR4/HVauE5LQVFGhp7njOjdTzvT/HOzkKEQrbxdZAa6o32W2XqxwmfTmLYsdl8sLLMaf
-	33XsgarxxbON+qxTn0eF2Sfd+arzFf/anCe/sAJ33TXomMnAJdHbG1rChdBUr3Dhujk7F/2qNmT/7
-	rBRfWppg==;
+	bh=8f02RwnHHlQ/CHy0+0dyPECAah+yieJVqRdPvcU/nDk=; b=EGPeIkgWiDVXShUTM9SHP3Amly
+	cqWvE96Q+LC2n05tRAkEtvCIHeyb+geTME4kazMwsfuWi6sRkp4FPdFU92oQoR/zjEhJJBDUUP4G1
+	JpSy33/N33EeBp17fW4Rrcctu8j4eSjLkaieq5T8W1v4rsXoD8e6c1ev2Zj/wkerdFBFFitasDiQR
+	3otuqtJheR0WJ3VKVT6ruNRCc6W1jsZK1LMry/T1OYa1wa+oJhEJqZKCn1h/AFyiOWHL1KftIfLzX
+	2ce204Wa5HH+HG1Wcnvu0XCXd94tYV9hcq4XiCNuNUkguTjTxvK1MebE/lYnBvDyyJR80YKb25yy9
+	UfP4DD8A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVZri-004TW6-AR; Sun, 11 Apr 2021 13:11:02 +0000
+	id 1lVZrt-004Tah-NZ; Sun, 11 Apr 2021 13:11:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVZr2-004TO5-TD; Sun, 11 Apr 2021 13:10:21 +0000
+ id 1lVZr3-004TOB-Iu; Sun, 11 Apr 2021 13:10:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=+xTKglaTtBBnIwb4sWoIFa19QpsHo2j4/zd4VoY1yJc=; b=WJsqz40T0D4BiTasYDvGrv49iD
- vz84KBghg/zwlE4QSPWaEirn/2IYWkjs2MS3sWBzjQKrhOGX5PZQCZAh6u+PYXDGbIk7gNpgDVTV+
- I6bIqUli0CgRsee8ijUPIIuYTZ/wu76lnLwUMsXg1+mzIcck7tI1gQa8A7WkJ68Us/E7xqAlw++ud
- K2iU25kWrsuhpYOK6nQglVF8qWI14PuaDnLU1r2qOYgP/NQSEiDJB6tV1wjcH25m3vg6oB4PqxjxN
- 3/LolizX7dkOhCRF6bY0ZBpFpNYtl3JdL+qM+yZdUbroNGOzjaWH+kF3mcIfW7shYAVcdWHECMsNE
- FLtMcRkw==;
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ bh=2ujtYj1V+AzSvPoFMu6+U6S2xLSiGrGvBvjS2h7YGhQ=; b=MvFpGMhEGiAgeR7jsUZwwfashB
+ whJKwJ1p7MUHBd7IzwEfRLcNLpdTrItTRNXrpobxe15or18150GclTK61b6b3sEHRI5uJyKwMPagu
+ KpNWmv8Km6zC9s8uHO/GElPU4rP91PTOnx21TYPem5jThTsFBvSr+K2C7CdAJVLulYzzEGMRI30Gt
+ kBS2Z0Cq7oxH9clvspoG4bKul4NNHTK1ytSfsG41ZeCnpmqEGL8C4lB1vDzLeMhSgg5UAAMCoEwas
+ bHjQnIdEhalSKILtsZMaXMQ8x7bcQoA8aZooHj+BRFiYb8Rmt5WKJwkMckJ/+TMlLX/gfG7kiIGnS
+ M52V+4dA==;
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVZr0-005WMe-E0; Sun, 11 Apr 2021 13:10:19 +0000
-Received: by mail-ed1-x535.google.com with SMTP id m3so11805019edv.5;
+ id 1lVZr1-005WMx-80; Sun, 11 Apr 2021 13:10:20 +0000
+Received: by mail-ed1-x532.google.com with SMTP id r22so11769612edq.9;
  Sun, 11 Apr 2021 06:10:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=+xTKglaTtBBnIwb4sWoIFa19QpsHo2j4/zd4VoY1yJc=;
- b=TujKURGt1FeHGz4K0iqBb/VqGehpedpe2hXzNLdrqyv+CTmBYZOGuVQ/MHjTiJtx2L
- WQ+Xr8qJxwXBLj6c/w5RqBSSzlLx5/nkwv4pzbojJ92hpa40mTx/tkvPidXov5qzIK3t
- OoO7XRM33sQG4v6KfCdWk9fB3jge7TFjMYhIt17lW2mOYpH4Z+EqSlCca+4pUU+2OF6u
- A24QMmTzndsdUyHnDrv9XV/1czyIf/V786efC3Ta1/wQmce8qof+54nPbkuV8a0z9Tre
- jdREJcvJFZ5hMJ+adrSbdL4rP67v5Up9y5U476RrRaw5yXMVmULtufZCHrNKX2JH6T36
- nhFw==
+ bh=2ujtYj1V+AzSvPoFMu6+U6S2xLSiGrGvBvjS2h7YGhQ=;
+ b=nImbimFUrsZmgsKFZjLsGwM6DbETh5PDM8dpv9N1/pjZ5jribSOb5m3H+tIrqkcZzG
+ XLj2bDC3+FO4WjEzer1MS7z8jj+Z06o7Us00Cel+KKrMmcwZiHPtC/I/cnivEWz/ihJ+
+ Y4n0W5HzatImaABA7JyqlP0I4tnKTldLiTzYBbiyah6N4wOg74N6LE7q56Gt+gEnZ9ZF
+ 2PTgbWWas+8CkuAwkCEbHCF1CuxpM4C09zqvMqmgpbGzMAaCG/zbG7mzK+nxxBptpGhV
+ hq9M8in+ERChD9JuqPdproppFenwxK8sk9LTGQNTpCVOPNQZQCjvoj9Z2xJyji1/5x/C
+ E9hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=+xTKglaTtBBnIwb4sWoIFa19QpsHo2j4/zd4VoY1yJc=;
- b=iZQetk+PY/gvKECK1AUEQypHx8qvRYTR1ymOOkoNCl+zQb+wFqYcjmcBdzkZkNEDnI
- 6aUc8TKEeB/nVu7vxoHKfwAhSW5PRsEzpPpNkkUK7gFCDCunlLiB3oL5950nPvGcAcbi
- PndGpdLlnY4xhiyp4Q6Uch0oNQvD635VSAMwZaT161nmUjrJSQTcWH8qqhVoLY2uUTGr
- A4X7VbrFYWaHUEgKr0+yRC5JpQwda6pio433j/8/eDA1PZHFk2/EScWUAXM3mDjSCca2
- 6oWupQMwxOP8hEYg2R/peBAks2w9+KoR/ytogTQziMH0xmR01gpxH3lAZVtQq5T2jXei
- zlPg==
-X-Gm-Message-State: AOAM53150D3JyZeKyfN+DBOuBa3v4kkRnZfJNUjoNbLsytraJMcNBePs
- l4AH2NMBl86oddvv2JP7Cg4=
-X-Google-Smtp-Source: ABdhPJxpWbRylv8hRSWy+Dl3+JQE8MDXnNeIdWg+QZ0c0yqg5G6HGyew3HpL9IuIVzF4jA1UVB+ddA==
-X-Received: by 2002:aa7:da46:: with SMTP id w6mr26215661eds.30.1618146617114; 
+ bh=2ujtYj1V+AzSvPoFMu6+U6S2xLSiGrGvBvjS2h7YGhQ=;
+ b=Q81V3ef9bZWA1ZjFd5Bu+5LKAiNGzDQgXwPPiXJdH/ia59iL45U7DhyQu1kX78EdfY
+ h4R+QzWYTmKbiqDi4xUvM68cEyIxsltlmRVXWbamvtCQTRAXyiiMZ7w5jqkyddb1ttiA
+ 5Wgqg4as0YyraJoUpvbfxhUiTitu4iC6ZXEj7qRiJDLkbzOHUXdt7uARsH+d9PYRx8L1
+ 0ogGPBAg3oOgeGOPhJni+/XTlM6iItlon5fsypyWJbUuKtVcnMP/aLwKzzuZ7bB46diB
+ oFx8Nn5I8wwZsKKrnEpkgRYZVNmDBylVuzeWpUbM3aWR2E9o2NXtutGdl3Pxog2cByRg
+ p12g==
+X-Gm-Message-State: AOAM533/mx9v+gNGK9DdDSEWPPc9JxraG/Rk8dYZF02xizFYNlddYq2T
+ ltbE90kI6QGeJppS2FdmGE8=
+X-Google-Smtp-Source: ABdhPJybujYIcdFXWYyDboQF1+JnkfO3gG/0WV5MpwmcEsYfCSs1sYZQbZ9gaxClONr4PJm+vFQUcg==
+X-Received: by 2002:aa7:cc98:: with SMTP id p24mr25331641edt.187.1618146617918; 
  Sun, 11 Apr 2021 06:10:17 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id w2sm3983520eju.71.2021.04.11.06.10.16
+ by smtp.gmail.com with ESMTPSA id w2sm3983520eju.71.2021.04.11.06.10.17
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 11 Apr 2021 06:10:16 -0700 (PDT)
+ Sun, 11 Apr 2021 06:10:17 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, thierry.reding@gmail.com,
@@ -87,15 +87,16 @@ Cc: robh+dt@kernel.org, thierry.reding@gmail.com,
  linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/6] ARM: dts: rockchip: remove clock-names from pwm nodes
-Date: Sun, 11 Apr 2021 15:10:05 +0200
-Message-Id: <20210411131007.21757-4-jbx6244@gmail.com>
+Subject: [PATCH v2 5/6] arm64: dts: rockchip: remove interrupts properties
+ from pwm nodes rk3328.dtsi
+Date: Sun, 11 Apr 2021 15:10:06 +0200
+Message-Id: <20210411131007.21757-5-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210411131007.21757-1-jbx6244@gmail.com>
 References: <20210411131007.21757-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210411_061018_489056_CA993757 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20210411_061019_301153_0E889486 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,95 +117,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 A test with the command below gives this error:
 
-/arch/arm/boot/dts/rk3036-evb.dt.yaml:
-pwm@20050030: clock-names: ['pwm'] is too short
+/arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml: pwm@ff1b0030:
+'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
 
-Devices with only one pwm clock use it to both
-to derive the functional clock for the device
-and as the bus clock. The driver does not need
-"clock-names" to get a handle, so remove them all.
+"interrupts" is an undocumented property, so remove them
+from pwm nodes in rk3328.dtsi.
 
-make ARCH=arm dtbs_check
+make ARCH=arm64 dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm/boot/dts/rk3036.dtsi | 4 ----
- arch/arm/boot/dts/rk3288.dtsi | 4 ----
- 2 files changed, 8 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 47a787a12..e24230d50 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -355,7 +355,6 @@
- 		reg = <0x20050000 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index c2ca358c7..5c968b3cd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -480,7 +480,6 @@
+ 	pwm3: pwm@ff1b0030 {
+ 		compatible = "rockchip,rk3328-pwm";
+ 		reg = <0x0 0xff1b0030 0x0 0x10>;
+-		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru SCLK_PWM>, <&cru PCLK_PWM>;
+ 		clock-names = "pwm", "pclk";
  		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm0_pin>;
- 		status = "disabled";
-@@ -366,7 +365,6 @@
- 		reg = <0x20050010 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm1_pin>;
- 		status = "disabled";
-@@ -377,7 +375,6 @@
- 		reg = <0x20050020 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm2_pin>;
- 		status = "disabled";
-@@ -388,7 +385,6 @@
- 		reg = <0x20050030 0x10>;
- 		#pwm-cells = <2>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm3_pin>;
- 		status = "disabled";
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index ea7416c31..05557ad02 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -679,7 +679,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm0_pin>;
- 		clocks = <&cru PCLK_RKPWM>;
--		clock-names = "pwm";
- 		status = "disabled";
- 	};
- 
-@@ -690,7 +689,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm1_pin>;
- 		clocks = <&cru PCLK_RKPWM>;
--		clock-names = "pwm";
- 		status = "disabled";
- 	};
- 
-@@ -701,7 +699,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm2_pin>;
- 		clocks = <&cru PCLK_RKPWM>;
--		clock-names = "pwm";
- 		status = "disabled";
- 	};
- 
-@@ -712,7 +709,6 @@
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm3_pin>;
- 		clocks = <&cru PCLK_RKPWM>;
--		clock-names = "pwm";
- 		status = "disabled";
- 	};
- 
 -- 
 2.11.0
 
