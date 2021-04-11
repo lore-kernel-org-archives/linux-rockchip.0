@@ -2,77 +2,105 @@ Return-Path: <SRS0=scLn=JI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 894F2C433B4
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 17:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0C22C433ED
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 17:58:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CC736109F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 17:55:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CC736109F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 6AA7B610A7
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Apr 2021 17:58:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AA7B610A7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UrjnwZQvweW4UXerc0+ok0TK3v4ouPvYg2EVqRXVpWg=; b=QCFKLukyDOtujovFByV8qm+Dm
-	CI2513VfnY6w8/DB0f5/l1kVOuxyQPZURSmGWttvREiwz7g6UGFNk8olB2if5Iel0M+0CZ1TLsDf1
-	ddT6PTVKcRQfKFxR8E5U7D6icyumfemMxOi4rdA/d20k1diYVCUua8s7GDDkES7Mq3K67+TSIDawv
-	Dv5TRAevU8+5B899gxUgGCgH8zAQSIL8mCfJgnR/hnrXk1QykbN0V7KVbBDB3EC7EQFgHSKAV3V5u
-	cYmL3uYnz4+zxjQlv4NX1hzFlRJybn1nTLgnax7R3ZeGREaYHXN8okylzGFTRFzgnOqkfn3QMNWHB
-	4HJ4z0eLg==;
+	 bh=jHDn94iNpKrrK93DsxVOArHAKe1i0htJR1p2v76NxjU=; b=Pi4Ly3CkT7ajVFhlt48dYaAZS
+	7BohcKP96/m+Mdc7DHlD2omWBhtb89c/CNyh1rSp8zbO3RfbqMq6qhXT3C5eqLzPDc6y1kGbYrrzH
+	kalaTzh7Hq9SR4cJydLmoktVJ+8lnEkzsR6jj2N7WcvepMWpY3ifmcIracx1cvsgArKfDXRCtCTrl
+	a8U+2xjUFAyX5leugya9UAlBElq+hE2Ijv95zdnV/wi6qvd0O7n/zZcm/LHcG+B7X/mcLnX1qULrc
+	AlkLOhejV9PiGrPIQHCoYBkXmlB1jtu8lc4JZICQagGLbmfoiiqy4N2oH8iHWG2u2did+ms1XfWUw
+	ZGeZb1Fag==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVeIt-004rfx-DY; Sun, 11 Apr 2021 17:55:23 +0000
+	id 1lVeMG-004sD2-6W; Sun, 11 Apr 2021 17:58:52 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVeIn-004rek-Gy
- for linux-rockchip@desiato.infradead.org; Sun, 11 Apr 2021 17:55:19 +0000
+ id 1lVeMD-004sCi-Kp
+ for linux-rockchip@desiato.infradead.org; Sun, 11 Apr 2021 17:58:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:
- Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
- :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=/VB5JzCDX57jYEKhFLn33EEibkg7SEZV2jOWFZa1wvg=; b=mAz6dJPMmPdt0VD94r5hHY9q+l
- 0DXi5hthMZaiSvMSwTWrC2CeaUqbViI+JhNZI/u3A5aI4E1+GSH9zqhRHQgBE4dGohfe9Z6SdSGlv
- Lry+sf7htm0inhnvmGj/buv/YROV0CbCQ1AxG1iP24InkDQeSeDB55+UMq0Uq0Qvt1gulT7iznZ6V
- PagnyIuF+pGDaG6oxdvIs9fnZ6ozQJB1XgZ52Akl81cJtgsaT2g4GSkbUhh1r47TMhw8OZnH6WAky
- hYxHuuqhL0bieeiuSp8qjF9amA2Eg0GhvVCiN9hgK+gSh8PODivJ3VBa7Ne8kJt76OUXjlT2rG9yT
- qpFBIkjQ==;
-Received: from gloria.sntech.de ([185.11.138.130])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
+ bh=3DDCybzO29d1mi7MkAlI+MHdu6EXtztxR3XyGpabuzc=; b=iCbwrd29tIanIV3yOAf0QRGhhE
+ m7TklHxDcXxpp1SiAUjBJqr/Lx3zrowDmMxEbg9uT9OWVPb7NmyDPUF4sHcwiOhgh6ffxDy8DTdek
+ zNbFR8BbJdaeF1rpEhpec4/FylXYzExa14/Zhvnrqf380IhY9Os47OHgU8wphzklbW1HzNzMZz+V5
+ sCtt55uYXb8QpRK7Kc/T0NAxe88wwfDxgBYPDl6EmKaTuJOWo7SSXuYkiCIWZRavjARWRTkljgD8b
+ p2+bDZqEgLh/EaAqkqExDkE1CdM550vYZ1At/yf31eBKP4oJPguInwfUfbEvpT7yfBOGy9Y0g1U9b
+ Am30lGmQ==;
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVeIl-005d4M-4u
- for linux-rockchip@lists.infradead.org; Sun, 11 Apr 2021 17:55:16 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lVeIe-0005oy-5c; Sun, 11 Apr 2021 19:55:08 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Peter Geis <pgwipeout@gmail.com>, Jianqun Xu <jay.xu@rock-chips.com>,
- huangtao@rock-chips.com, kever.yang@rock-chips.com, linus.walleij@linaro.org,
- Johan Jonker <jbx6244@gmail.com>
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/7] gpio: separate gpio driver from pinctrl-rockchip
- driver
-Date: Sun, 11 Apr 2021 19:55:07 +0200
-Message-ID: <3591437.LM0AJKV5NW@diego>
-In-Reply-To: <5308a59c-29e9-75a4-2c9a-4aeb3d37bf6e@gmail.com>
+ id 1lVeMA-005d9i-Hl
+ for linux-rockchip@lists.infradead.org; Sun, 11 Apr 2021 17:58:48 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id x4so12359624edd.2
+ for <linux-rockchip@lists.infradead.org>; Sun, 11 Apr 2021 10:58:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=3DDCybzO29d1mi7MkAlI+MHdu6EXtztxR3XyGpabuzc=;
+ b=mL+YCbdm07+DijtP+F7faKeS3BIjRlH4rFPiYUjtWiij2e8XZa+28V7EYgOeHtyULl
+ ZoC0uq4PAOFwtQyqbTKgrV+qKwtIFRwF5lBJRTLpJVgtfCHKYN5ChkzbGqRBmNzYD+QT
+ xcMZ+e+bAvDrMg4CjW41ZbPfTARWgJr3KL94qlo/moGR0k38R+IlYIn3tj68U6jTD+yd
+ O+xOiXKIfSbrqpkS60EhpkE4I58xjtfsANhVjEftBQNxt5bRvTQ7iDyuG5Ls9Ma+dTLn
+ hn09Vy3E+JalNR06gTlM7lJYTidxd6t62b2PJ8vBtIzjuOh8allFd6LegjDKZA/upzJn
+ By6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=3DDCybzO29d1mi7MkAlI+MHdu6EXtztxR3XyGpabuzc=;
+ b=lpqr0qxm7rKon9gfNe6EbEbyYTjtsZBPZifXcybX3icOZ1mSH7Tt2XKbD589Q6LTwq
+ pEBIo1Dz7pM6yxsTg2bGlvIa3JmfQPrPQY7n/0i5ovWLSjY6w5MKt9ScVfLCRsW0Pqpi
+ eKV0xQr+cWMQpRQiudBcLPPqiVKmu5d0Lt1PlDYMeh4dsmj9i2Y5AoBlUM+OsnQdlLsk
+ dHF9WT5yuPsTEmbPBY2MmU6GdXmlxJ5eQWmoctRMFZyqOz++lyoa79XwpiZInj7SgKnH
+ K2LCBReOg7vPSJZzfqG2THQWSXFl39By2CMXROP0lOORWWrbfFymEVcVUJAK0EMwHtSE
+ D3eQ==
+X-Gm-Message-State: AOAM530EZClLGIqtYv7bL0KpgnyT88doGyQVz+Q+trqJo0scVyYLZuxr
+ mxtINM9MWMI3T6O//7WhxF4MN9VGDzWvhTEt+qAFcQ==
+X-Google-Smtp-Source: ABdhPJx0wLPSDEzis/809CZGAiecB3Npfoz6bNO1zTPvKX0ti3jySaq8ZHIHK6ywYmJK46uSpOXHAVjkbKVGxIQj3Tk=
+X-Received: by 2002:a05:6402:1013:: with SMTP id
+ c19mr26186315edu.213.1618163922543; 
+ Sun, 11 Apr 2021 10:58:42 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210411133030.1663936-1-pgwipeout@gmail.com>
  <20210411133030.1663936-4-pgwipeout@gmail.com>
- <5308a59c-29e9-75a4-2c9a-4aeb3d37bf6e@gmail.com>
-MIME-Version: 1.0
+ <5308a59c-29e9-75a4-2c9a-4aeb3d37bf6e@gmail.com> <3591437.LM0AJKV5NW@diego>
+In-Reply-To: <3591437.LM0AJKV5NW@diego>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Sun, 11 Apr 2021 14:58:29 -0300
+Message-ID: <CAAEAJfDBLfeRVt3=2jcPS05Tm0t5NWeSAV4EX=acPry_L3L1vQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/7] gpio: separate gpio driver from pinctrl-rockchip
+ driver
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, Jianqun Xu <jay.xu@rock-chips.com>,
+ huangtao@rock-chips.com, 
+ kever.yang@rock-chips.com, Linus Walleij <linus.walleij@linaro.org>, 
+ Johan Jonker <jbx6244@gmail.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210411_105515_220521_546CFBC7 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20210411_105846_784871_CA752496 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,60 +113,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan,
-
-Am Sonntag, 11. April 2021, 19:51:52 CEST schrieb Johan Jonker:
-> Hi,
-> 
-> When I check "rockchip,gpio-bank" with YAML it turns out that
-> rk3288-veyron-XXX has 'gpio-line-names' as 'extra' property.
-> It is not defined in the "rockchip,pinctrl.txt" document, but in
-> ~/.local/lib/python3.5/site-packages/dtschema/schemas/gpio/gpio.yaml
-> 
-> Where is that in use?
-> In this driver or external?
-> Can it be removed from mainline dts?
-
-gpio-line-names gets defined in devicetree/bindings/gpio/gpio.txt
-which isn't converted to yaml yet:
-
-Optionally, a GPIO controller may have a "gpio-line-names" property. This is
-an array of strings defining the names of the GPIO lines going out of the
-GPIO controller.
-
-
-So that property is perfectly fine where it is.
-
-Heiko
-
-
-> 
-> Johan
-> 
-> /arch/arm/boot/dts/rk3288-veyron-fievel.dt.yaml: gpio7@ff7e0000:
-> 'gpio-line-names' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	From schema:
-> /Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> 
-> On 4/11/21 3:30 PM, Peter Geis wrote:
-> > From: Jianqun Xu <jay.xu@rock-chips.com>
-> > 
-> > Separate the gpio driver from the pinctrl driver.
-> > 
-> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> > ---
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9oYW4sCgpPbiBTdW4sIDExIEFwciAyMDIxIGF0IDE0OjU3LCBIZWlrbyBTdMO8Ym5lciA8
+aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEhpIEpvaGFuLAo+Cj4gQW0gU29ubnRhZywgMTEu
+IEFwcmlsIDIwMjEsIDE5OjUxOjUyIENFU1Qgc2NocmllYiBKb2hhbiBKb25rZXI6Cj4gPiBIaSwK
+PiA+Cj4gPiBXaGVuIEkgY2hlY2sgInJvY2tjaGlwLGdwaW8tYmFuayIgd2l0aCBZQU1MIGl0IHR1
+cm5zIG91dCB0aGF0Cj4gPiByazMyODgtdmV5cm9uLVhYWCBoYXMgJ2dwaW8tbGluZS1uYW1lcycg
+YXMgJ2V4dHJhJyBwcm9wZXJ0eS4KPiA+IEl0IGlzIG5vdCBkZWZpbmVkIGluIHRoZSAicm9ja2No
+aXAscGluY3RybC50eHQiIGRvY3VtZW50LCBidXQgaW4KPiA+IH4vLmxvY2FsL2xpYi9weXRob24z
+LjUvc2l0ZS1wYWNrYWdlcy9kdHNjaGVtYS9zY2hlbWFzL2dwaW8vZ3Bpby55YW1sCj4gPgo+ID4g
+V2hlcmUgaXMgdGhhdCBpbiB1c2U/Cj4gPiBJbiB0aGlzIGRyaXZlciBvciBleHRlcm5hbD8KPiA+
+IENhbiBpdCBiZSByZW1vdmVkIGZyb20gbWFpbmxpbmUgZHRzPwo+Cj4gZ3Bpby1saW5lLW5hbWVz
+IGdldHMgZGVmaW5lZCBpbiBkZXZpY2V0cmVlL2JpbmRpbmdzL2dwaW8vZ3Bpby50eHQKPiB3aGlj
+aCBpc24ndCBjb252ZXJ0ZWQgdG8geWFtbCB5ZXQ6Cj4KCk9uIHRvcCBvZiB3aGF0IEhlaWtvIHNh
+eXMsIGZlZWwgZnJlZSB0byBjb252ZXJ0CkRvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9ncGlvL2dwaW8udHh0IHRvIFlBTUwgOi0pCgpUaGFua3MhCkV6ZXF1aWVsCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
