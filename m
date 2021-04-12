@@ -2,113 +2,94 @@ Return-Path: <SRS0=kcRh=JJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07F53C433B4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 10:03:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77269C43460
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 10:33:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A32946121E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 10:03:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A32946121E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 113686121E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 10:33:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 113686121E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:Content-Type:Reply-To:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dVDTcm7zY/SvHs2n7jIOCr9+ozWkj8RWdCOLsJc7lnY=; b=NL02f4wYS4EoXjo34rzInWUO2
-	QwIkoOgatTdX+b6SZauXrzVZlQDhVrVU+LjmJlcwEg65Evtal743mLJ+yRsd35EYiW62i1e8zksJk
-	RRsXbs6AIig2PsvANCWTDFKanNEn8BbRLLXBiNBWxUm9fyF4PIEMVSu+1wE2Q5NVAUGxF2Hpf4JCp
-	3GtpaY5xbHHE8kEJaxogfLZeM2FF3d3EQx74N2W6SwY0z5pg18H0q4ijfYtOmBQLTT+al1HsV/8iA
-	I+80tthspqILE2qAoIqvqxGdE7YnuvK0a1x3H866Ymlui6oXu6m/XI7VSnljq1mirCyIJLHIoURty
-	0EMQW1DZQ==;
+	 bh=kJu3QA/DP3tiUdGYiI/dPjK2o904s/5GT2KsXO+kB9U=; b=MFnKmR19zCxRpp7mUqRFEsao3
+	s46pPxA4lrqp7cbmB4PmEt/3fRdOsgsN6waWtuieKCQSMqPd33Sen5rUXP2HKvwLsJfOfh93QyMYz
+	ycBRwxVaw8ZzuNah45A5lkzL+gXISjpOBBCdAdBMwgJdVNFXc5xC9HEJ67fj4EOYDVInC77VF99bE
+	fCzWvIIPtIpN3Yn066nbFkbBpGKtQfR3CZc9bTesPwIwnqQGo5TGlpfu1n7NwDXNpC0PGAnMIYXww
+	8ZxhtlmhZY7COvI092KwWpUgyFHhkQvQsK+R+YyxnrWY7mT3pez89RSImiZVuehPgd8glAYvo8MzD
+	DnXsTe+Sw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVtPt-006OnD-0N; Mon, 12 Apr 2021 10:03:37 +0000
+	id 1lVtsw-006Rmo-EN; Mon, 12 Apr 2021 10:33:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVtPp-006OmW-Rx; Mon, 12 Apr 2021 10:03:34 +0000
+ id 1lVtsf-006Rlo-Si; Mon, 12 Apr 2021 10:33:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=IecIer/Daj67JEJVhH+GPnEHHlaRlGiwgqpp2Q/YAIU=; b=OLfk2wf4ufOiFDEMeN2wh22VZy
- Ldoe1RlYWRVA8Z1lIgS9JTlAPbRfsSvTC/8e+PGMGMUYtzyMDlbrQh8OH3/dw5+3Oxjja20tr/0Lw
- qjJCJn5fuwbKUxs7g1lQUBwiL/+/GNaDvx4QErivwdSmovQQ/0vwRdwYCb3gA10uTAwVe1zw1VX7r
- +wfIexJLgSkx4MBk1GFXVcx0Boor4PmSV/JaqigHtwoMVV4HxQfB5PmtaA8bVfMwQJOIVGuvGHaaD
- 2RCHLyb6bfzSUzCHV511Z5JCJFidi//C9+fsLdLI8wEW14VXbQeqdbqc43kx8NJ7USKh+xuaolZFk
- 40AgLfXw==;
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:Reply-To:In-Reply-To:References:MIME-Version:Sender:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=SR/PxIXoVKr0sQJJrL2BdCG9aZFeEpbl6WMAwf8j2Fg=; b=kP7MfpuIZ7KjUTyw5u7e1Y1Oc8
+ BHuyDN0zckHHsN5q7Fg32nEjug+xlBy2BeskddaIFnKlRE0z2WKczrwBY/4fHRWtvSBSviCUhKVeu
+ Q7WsCYeCThxw4HBtFovb6waDPXjWMtcMyXwWvn+n51Qy3eCuVLx3iOCGZM1slxBrPJ5ObtgEfu6+z
+ mWmXHzaEJgoEDYGsDgNGD9Hr7hXRMjayGGYAMrMBY8P1zPmytcUcCUAral2DeZr4AVYKphjB+uoUc
+ pbwdxmHh8+jWQUwAEI1ec2XpR0GdBuGqygaSc1jHuyUKcAZ5DZbECqbMTWxzCdKoYN6Iu6S7JR96U
+ K2S5q11Q==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVtPm-0067AI-Tr; Mon, 12 Apr 2021 10:03:32 +0000
-Received: by mail-ed1-x534.google.com with SMTP id z1so14338825edb.8;
- Mon, 12 Apr 2021 03:03:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IecIer/Daj67JEJVhH+GPnEHHlaRlGiwgqpp2Q/YAIU=;
- b=ln51gpRQqxs+aXEIsek0esHSItFg0Webv0LPtRTD2g0FmtU/iQPUd8sThf8D1iSel4
- zwDkLyxXl4ytJMdasEVWhqEWwXgWLXzop/l06D5GK7a/ylDCpdbEQEgvURJ25qsVQ2Fn
- /poXqgd6Gt0ZQK0VFY0dI3zwm35FeEgziFPsNKjYp9WdANyrO+PsLjAm7bSAA+s0Obsg
- OemRwl/0IkyD8QMUYfUJLaErOm2jBvnEDkcyxGmcWYNjNQqEt4AMOTDQuQSEa5RePELp
- t/iVc+YmVP/esBqgvjg+x8qM/w+81EGkWhvFsXSCmN7uwvJ2OR5WoY8V6wRuCwMjYIpe
- 7mwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IecIer/Daj67JEJVhH+GPnEHHlaRlGiwgqpp2Q/YAIU=;
- b=cnURfHdDW2ZPlXrZSatNBnFXRYhHjc2Yi5zYEvqjw3xLurRCwiciAW81wWSNU0+rgH
- 9HSzlbKtZddbH+mnCumTnzWShFrOJ4z7p7WS69s2YD4MdwXL9k9UkyV0aTu7RfG3hYga
- gfyiV1KFcgnLJGRjp92rD8MU45jevQ+B1K0f52CHhjrCowUcqUNn0HdfYcgC9GZdugCX
- Z08BjbFPHHbiPdWIgt3In+7dOZAYAuidJ61pGoT/n6NhfKrm/ElsCPiDXGcTXRppowxt
- xW/oqN4emKse942zwwHH1ka+dStG309kyfVubM/IzC7jZU7+1dhR9ZfX7sG01rfk40Qn
- gbZg==
-X-Gm-Message-State: AOAM533YO9Kcu/PR+SnTlKnnErtKMka64ZKDGdEVG73XAPrEWmNINNLG
- uLHS+2ZtE8XtzbUStoOZ5oo=
-X-Google-Smtp-Source: ABdhPJwsC2fOcR1VpuH/xWkjRQVk4aT58cqY4kGqC/1+OKqjTFeg+noo1vbd2uJIVw1TFGySTfCM+w==
-X-Received: by 2002:a05:6402:11c9:: with SMTP id
- j9mr28456381edw.348.1618221809192; 
- Mon, 12 Apr 2021 03:03:29 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- w25sm6172320edq.66.2021.04.12.03.03.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Apr 2021 03:03:28 -0700 (PDT)
-Subject: Re: [PATCH v2 3/6] ARM: dts: rockchip: remove interrupts properties
- from pwm nodes rv1108.dtsi
-To: wens@kernel.org
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- Lee Jones <lee.jones@linaro.org>, linux-pwm@vger.kernel.org,
- devicetree <devicetree@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>
+ id 1lVtsd-0068c6-3N; Mon, 12 Apr 2021 10:33:20 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 34E0A61288;
+ Mon, 12 Apr 2021 10:33:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1618223597;
+ bh=DI6Y5IaDG396+b13BKUebb20otLOdsYhFeHZfaDT9V4=;
+ h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
+ b=X7jWGalE6o9E2WtBf29/CWgdQzpRBMTYxl+EbeZ2PjRhAHFbdbilQ48tXTFEzRnLP
+ io3b5/xS/UQrSSGZ0uEH4LRw7+wm/iU1USYSmJbGajL71TGEg7ZO/vGl1zsgX8mj9v
+ p6RBJDntm/0rpFYQSBjV8yGPZmEAjjt5LGIC2noL4X738OyZuH5UjSYnZ1t+174++H
+ uPxyuHpwhH91Q2EFDsDJYeXsWsiE5yi3d81jPKLk1G6W/kU2lg0AJZhaR2Mc1w/EcU
+ 5F3CtPzWmSDLaO4+vIUk2tHTRoJqe24m0gszc85b5Yq3vQgOBy/TXImag0KzyxLQxC
+ yc4uEBdiwzxKA==
+Received: by mail-lj1-f170.google.com with SMTP id r22so4025439ljc.5;
+ Mon, 12 Apr 2021 03:33:17 -0700 (PDT)
+X-Gm-Message-State: AOAM5304sP1i1yWx1ZN+Y8PAV3vmOShy2pqlE+AOHLealXhTtK9OK0YE
+ unhYSnx9TP0Et7Y1xm0rnWZuhyizE1kJwlNUfrg=
+X-Google-Smtp-Source: ABdhPJw4UvUUAcyRG4ixDjCJyFywXgHnShAa8N99RTa/8dJVp4vWCnF3DoBG5ylB2oKBUZnkwGZr8tJLGWeZ5bxiQks=
+X-Received: by 2002:a2e:7d04:: with SMTP id y4mr18002872ljc.94.1618223595500; 
+ Mon, 12 Apr 2021 03:33:15 -0700 (PDT)
+MIME-Version: 1.0
 References: <20210411131007.21757-1-jbx6244@gmail.com>
  <20210411131007.21757-3-jbx6244@gmail.com>
  <CAGb2v67s7a4GARfAnROKS40kaYQpdW_qWX=HX6GU09jV9wrbXw@mail.gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <31b5ff50-afe5-b446-7d3c-943d148814d8@gmail.com>
-Date: Mon, 12 Apr 2021 12:03:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <CAGb2v67s7a4GARfAnROKS40kaYQpdW_qWX=HX6GU09jV9wrbXw@mail.gmail.com>
-Content-Language: en-US
+ <31b5ff50-afe5-b446-7d3c-943d148814d8@gmail.com>
+In-Reply-To: <31b5ff50-afe5-b446-7d3c-943d148814d8@gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Mon, 12 Apr 2021 18:33:03 +0800
+X-Gmail-Original-Message-ID: <CAGb2v65+A402jCPVRJdDBdxqAEYOJmFTkKB4LJCvnW89hXb8QA@mail.gmail.com>
+Message-ID: <CAGb2v65+A402jCPVRJdDBdxqAEYOJmFTkKB4LJCvnW89hXb8QA@mail.gmail.com>
+Subject: Re: [PATCH v2 3/6] ARM: dts: rockchip: remove interrupts properties
+ from pwm nodes rv1108.dtsi
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Rob Herring <robh+dt@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Lee Jones <lee.jones@linaro.org>, linux-pwm@vger.kernel.org, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_030330_994715_0DAF3608 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20210412_033319_216431_E6E54E9B 
+X-CRM114-Status: GOOD (  29.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,65 +102,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/12/21 5:15 AM, Chen-Yu Tsai wrote:
-> On Sun, Apr 11, 2021 at 9:11 PM Johan Jonker <jbx6244@gmail.com> wrote:
->>
->> A test with the command below gives this error:
->>
->> /arch/arm/boot/dts/rv1108-evb.dt.yaml:
->> pwm@10280000: 'interrupts' does not match any of the regexes:
->> 'pinctrl-[0-9]+'
->>
->> "interrupts" is an undocumented property, so remove them
->> from pwm nodes in rv1108.dtsi.
->>
->> make ARCH=arm dtbs_check
->> DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
->>
->> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> 
-> Given that the interrupts were specified, meaning they are wired up in hardware,
-> shouldn't the solution be to add the interrupts property to the binding instead?
-> 
-> After all, the device tree describes the actual hardware, not just what the
-> implementations need.
-> 
-> ChenYu
-> 
+On Mon, Apr 12, 2021 at 6:03 PM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> On 4/12/21 5:15 AM, Chen-Yu Tsai wrote:
+> > On Sun, Apr 11, 2021 at 9:11 PM Johan Jonker <jbx6244@gmail.com> wrote:
+> >>
+> >> A test with the command below gives this error:
+> >>
+> >> /arch/arm/boot/dts/rv1108-evb.dt.yaml:
+> >> pwm@10280000: 'interrupts' does not match any of the regexes:
+> >> 'pinctrl-[0-9]+'
+> >>
+> >> "interrupts" is an undocumented property, so remove them
+> >> from pwm nodes in rv1108.dtsi.
+> >>
+> >> make ARCH=arm dtbs_check
+> >> DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> >>
+> >> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> >
+> > Given that the interrupts were specified, meaning they are wired up in hardware,
+> > shouldn't the solution be to add the interrupts property to the binding instead?
+> >
+> > After all, the device tree describes the actual hardware, not just what the
+> > implementations need.
+> >
+> > ChenYu
+> >
+>
+> Hi,
+>
+> The question of what to do with it was asked in version 1, but no answer
+> was given, so I made a proposal.
+> The device tree description should be complete, but also as lean as
+> possible. If someone manages to sneak in undocumented properties without
+> reason then the ultimate consequence should be removal I think.
+>
+> Not sure about the (missing?) rv1108 TRM, but for rk3328 the interrupt
+> is used for:
+>
+> PWM_INTSTS 0x0040 W 0x00000000 Interrupt Status Register
+>   Channel Interrupt Polarity Flag
+>     This bit is used in capture mode in order to identify the
+>     transition of the input waveform when interrupt is generated.
+>   Channel Interrupt Status
+>     Interrupt generated
+>
+> PWM_INT_EN 0x0044 W 0x00000000 Interrupt Enable Register
+>   Channel Interrupt Enable
+>
+> Is there any current realistic use/setup for it to convince rob+dt this
+> should be added to pwm-rockchip.yaml?
 
-Hi,
+Well, the PWM core has capture support, and pwm-sti implements it with
+interrupt support, so I guess there's at least a legitimate case for
+adding that to the binding. Whether someone has an actual use case for
+it and adds code to implement it is another story.
 
-The question of what to do with it was asked in version 1, but no answer
-was given, so I made a proposal.
-The device tree description should be complete, but also as lean as
-possible. If someone manages to sneak in undocumented properties without
-reason then the ultimate consequence should be removal I think.
+> The rk3328 interrupt rkpwm_int seems shared between channels, but only
+> included to pwm3. What is the proper way for that?
 
-Not sure about the (missing?) rv1108 TRM, but for rk3328 the interrupt
-is used for:
+I guess the bigger question is why was the PWM controller split into
+four device nodes, instead of just one encompassing the whole block.
+Now we'd have to introduce a new binding to support capture mode and
+interrupts.
 
-PWM_INTSTS 0x0040 W 0x00000000 Interrupt Status Register
-  Channel Interrupt Polarity Flag
-    This bit is used in capture mode in order to identify the
-    transition of the input waveform when interrupt is generated.
-  Channel Interrupt Status
-    Interrupt generated
+In that case I agree with dropping the interrupts for now, as it just
+won't fit. But I would add this additional information to the commit
+message.
 
-PWM_INT_EN 0x0044 W 0x00000000 Interrupt Enable Register
-  Channel Interrupt Enable
 
-Is there any current realistic use/setup for it to convince rob+dt this
-should be added to pwm-rockchip.yaml?
-
-The rk3328 interrupt rkpwm_int seems shared between channels, but only
-included to pwm3. What is the proper way for that?
-
-Johan
+Regards
+ChenYu
 
 _______________________________________________
 Linux-rockchip mailing list
