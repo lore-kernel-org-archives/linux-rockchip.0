@@ -2,96 +2,92 @@ Return-Path: <SRS0=kcRh=JJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43C8FC433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 20:29:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B9F1C433B4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 20:50:37 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E383261287
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 20:29:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E383261287
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B4DD96121F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Apr 2021 20:50:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4DD96121F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EPsk0i86y7D+DZ3ofKLoGNH+kx2MA3JDDPyW/xhvU5o=; b=ZquUYTzFV4wZQqm6AHD0Pz0jz
-	+WhjJ7vIoHWSVXA833bkrG8uJk+WkwctKL3fpBRSctARQSx9JO8wpAGPwkigl109xzSw0G4pGPyw1
-	v/urMnIAJywMldSVhlfCLi1mckrg930bpwjPb2/y5SEEm2BA5oa5VlSQXiuSySPRDPwQ6dFGFoArY
-	Ivejk50qYHCqGDC/kqQ+UwFs4bhPY3HkisSK7oAYhUhTGIpuR9oE6iIP9ay0ljAbZFQkVpigl48lZ
-	sfTz/4pYMgojDOSEmuSrIKYp0ZTSgcgDk2IGjdGVE+mjg9oGuzI8arSm1TAam8lCI5it98+pu7AZq
-	2HrQ8+QmQ==;
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:MIME-Version:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8TIGe5EK/R3CTSjcSUCalHogYlZjkUgAEgONXxQOCOg=; b=Xnn+xeWlqQb7qIYrSlOhC7SFwR
+	JsXmumjFIKMAW0GIdKkgdw+US/xtNC8M5DOpfuq3wZWEDUrjjtXkwhDoAn0WoY0ndKpgDm1wT77EO
+	b/mNdK3hkf3TVo/Sbdi48eOJmD6p36iG6fVc3DsVGCxEXBmiTqCI81/nddbRYctL4eSbGjTY7TkFZ
+	AvOVTNg0qf1wPfUbP6fDHRfIJWkbHwpuN9Bk4rjN3xmXKjuqWooTTj7zpmhgJc0sDGVaolucaiIvF
+	W0H+I+TPUGrlaoxHh1f3ll6BRtz00uiYu4LRLKGGr2DXbQwe5ks1GLk4fYSGk6bk1oVGHvMQLD9wp
+	TZFT2wbQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lW3B6-007d8W-S2; Mon, 12 Apr 2021 20:29:01 +0000
+	id 1lW3Vo-007f5X-P5; Mon, 12 Apr 2021 20:50:26 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lW3B3-007d6Z-9N
- for linux-rockchip@desiato.infradead.org; Mon, 12 Apr 2021 20:28:57 +0000
+ id 1lW3Ve-007f4D-ER
+ for linux-rockchip@desiato.infradead.org; Mon, 12 Apr 2021 20:50:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=gmmbo3TN+g8o4ISTYa9CAt/6v37cqafsVydyODiNQ7o=; b=JRy2V8oExbUZ00Z1+1F6nAt4mF
- KvJ+t5igEaNvOnL/401dj4PZ9/uJ26naTxEvXLFb8Yu1oiDXiTOPdxKdAx8aR9nGtl47iJH5FFxUq
- 1Y8LBGKh9rp/XoS3TCFBbvwy4v/66Qj1hsyxkB+gGdqdiN3xy+6NjT5uNBnfWNEuHzaaFM1qL1Zoh
- LrrxvPK4W1uPCVbD4xlvL05sJa+oDBNHF2eqYrERYVo8HLw9Yc2eBoKLmdcqr8XA30x7oh7nggAeQ
- wAeh0jrVARzSzFrtGqiFqyB4t6nhEokMgICcDdDZwt+vMzST+7dD+QvF/QgDlN7zoeEO8ujOqZHDW
- OxFcZjaQ==;
-Received: from mail-ot1-f45.google.com ([209.85.210.45])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:MIME-Version:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=obDs/XpxWEky4e66MRh3RwGDUsnC0qd3Ri4kxaTuKVM=; b=grZaSd/IaTdW7FFjwPpbdFiJdy
+ iuzA53NjrUJ/b0xDjwWX4g1LwMhdCwf/UuhxLuQxNAYb5l8GPm5A8FQLGtRPi1qFNM8nvPGEhxVzi
+ Ja5Cqx0+kvq8oV87OAjp+1QBLPoMJE0kjmEjKLg+pWXoHtWMOPJClZlOcqW2LhZ2KcMDzoQLDfjdF
+ QikA/YHraybAjLqXLHI+Cqb9zgKBF/raHODmAn4TV2ae5Lodbmh1i3HIsFpzU2UWjX74W5cT7MU6w
+ aCr0/uffO5bXiRorD7Zv1aw3lYEQaCG1u7lqr5mC140S1qmMKEzC5XHcCh1Oby7GMPrMue0hTuqXk
+ ZqqDa3wQ==;
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lW3Az-006XUm-MI
- for linux-rockchip@lists.infradead.org; Mon, 12 Apr 2021 20:28:54 +0000
-Received: by mail-ot1-f45.google.com with SMTP id
- 65-20020a9d03470000b02902808b4aec6dso9323026otv.6
- for <linux-rockchip@lists.infradead.org>; Mon, 12 Apr 2021 13:28:52 -0700 (PDT)
+ id 1lW3Vb-006Y2O-DD
+ for linux-rockchip@lists.infradead.org; Mon, 12 Apr 2021 20:50:12 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id c123so10909794qke.1
+ for <linux-rockchip@lists.infradead.org>; Mon, 12 Apr 2021 13:50:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=obDs/XpxWEky4e66MRh3RwGDUsnC0qd3Ri4kxaTuKVM=;
+ b=b4jBGfBgoCqAPMTDGTMJhhJRJnpch/jGiLcO6hBxq+SYk/nb+hEcnTpZsT8MFXMaWU
+ Fl5GNO0aghy5wRC6TxaqcjWO3wyhgXKPYADbOwr0BWyybazAIKBnHdBvN7mEI3oERCLO
+ q2/1YtzQrwFFlwYeHDeu8MwIkiqxOX/2KZHafjHZLVUvRy4Jw+BLiFqAXYxJEu5ht44L
+ XswawYxlQ/UtyMldBl2rtt389f2oWy/GzZTowQJJfcdYlccYIzxBkhS0aKmHWi8p0BJV
+ ribe78YGuT22I//7j6pyXjzfrEIilUwLGgcJaRbq52IqYCjNfm2VOduSesFeQ0FcFlJF
+ a6FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=gmmbo3TN+g8o4ISTYa9CAt/6v37cqafsVydyODiNQ7o=;
- b=qDT7YNwU8gWg1Q/Anhe9/RpPMIwoezfxH3+xynrotf1fE/lK2lDb6gPntA0UAsneDJ
- 8blcCxEe4eNSSKA5tk3JrXdLKW+U7gSlLD1ygcu9YX+h6VQbI16TPpFKBmklnSMHRm6k
- 0GngDQJYreJATLcDZebtuXUn22FumkLejGISpvwMvXY/ah66YWCsUxyqlSElBne3lRwy
- u9SA2zPuM4+lCzCiyy4Z9VR+RPkZbbLaJP9+eLdFn8s0LZzXqkcW9TQMHMwP61ogEpPd
- 9EGky9ryl7OM5o7xsspF+T90VtIGqYpnvW3OuyR5SY9mJf7wjvLOuLPnCHYoU2A9X7nV
- 0OFA==
-X-Gm-Message-State: AOAM532tOInD86T4B1i2n/iQwkK9ei3K1NhSs5kggmuKSxuRnXguACIH
- eP2jtpDkLKTo7EuavQJskQ==
-X-Google-Smtp-Source: ABdhPJxtch6LM4lIaaqORQ8JDSlz4d/MX0eMA45yfzohL4ty+Pm27CDjlNgIdUuhG6N65/W1aj4S3w==
-X-Received: by 2002:a9d:7a53:: with SMTP id z19mr1905158otm.40.1618259331867; 
- Mon, 12 Apr 2021 13:28:51 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id p3sm2406087oif.53.2021.04.12.13.28.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Apr 2021 13:28:50 -0700 (PDT)
-Received: (nullmailer pid 120437 invoked by uid 1000);
- Mon, 12 Apr 2021 20:28:49 -0000
-Date: Mon, 12 Apr 2021 15:28:49 -0500
-From: Rob Herring <robh@kernel.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-Subject: Re: [PATCH] dt-bindings: pinctrl: rockchip: add RK3568 SoC support
-Message-ID: <20210412202849.GA120386@robh.at.kernel.org>
-References: <20210410204500.18091-1-ezequiel@collabora.com>
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=obDs/XpxWEky4e66MRh3RwGDUsnC0qd3Ri4kxaTuKVM=;
+ b=Uijj+LSY+wGZsYq4u7fFsH1VCxlhpL3J+P3I/C0ZqrkQ0jrDBC+I2DaBpQwYcg6p2J
+ OsbtUT+hZI1EZNMJpoJR92Fg0FKb3yCcy/svHKLtBWxlgycaCdU+twVsh1U8eIVX4xyh
+ hqeEhmYV2UGcnrSeX9CLHCa3W/TECdrMoF7nC1w4/sJXWqJuxhtIhO4zDycqzjmn/Pl/
+ h+alOlri0VM4xj8sNT+eonMlqN858DSuhLdnwtk+PVZ2fc/EW78av1DFLFhbV7fU/Lyj
+ +ia5vPrv+qbRRfQPwjIv1ZoGam+VWHE0PON7fciK+s6zDHyl6sgWBLJuvBQ9Ba3BeTJN
+ Ci1A==
+X-Gm-Message-State: AOAM533nyMUp5RsXtGxH/NCFhZdmZ7b8ar6O5g+u30RPLPQfb74E9Xw1
+ P6j7vQVPcE5PGscih8IRcPPj//NKrjc/EplUXXc=
+X-Google-Smtp-Source: ABdhPJzOXOyeVgHecXY+yYdUMmZi1Kh2SAby+9mebJ7RaTmJRac6fpN0YXMxCQgkQAEYbBE515q2O1tZ088euwgZHdc=
+X-Received: by 2002:a05:620a:20ca:: with SMTP id
+ f10mr22371359qka.426.1618260610049; 
+ Mon, 12 Apr 2021 13:50:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210410204500.18091-1-ezequiel@collabora.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 12 Apr 2021 16:49:59 -0400
+Message-ID: <CAMdYzYrQ5f-mv_VmTq_CRf9tR=j3mwRpKHNLmPFgCF9whsGFRw@mail.gmail.com>
+Subject: [RFC] ITS fails to allocate on rk3568/rk3566
+To: Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_132853_744564_8427A29A 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20210412_135011_488067_906FB4D3 
+X-CRM114-Status: UNSURE (   6.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,16 +106,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 10 Apr 2021 17:45:00 -0300, Ezequiel Garcia wrote:
-> Add RK3568/RK3566 SoC support to pinctrl.
-> 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+Good Afternoon,
 
-Acked-by: Rob Herring <robh@kernel.org>
+I am assisting with early bringup of the rk3566 based quartz64
+development board for mainline linux.
+I've encountered a few issues with allocating ITS on their version of
+the GIC-V3.
+The first issue is the ITS controller can only use 32bit addresses.
+This leads to the following error:
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 320 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] GICv3: Distributor has no Range Selector support
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: 16 PPIs implemented
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fd460000
+[    0.000000] ITS [mem 0xfd440000-0xfd45ffff]
+[    0.000000] ITS@0x00000000fd440000: Devices doesn't stick:
+f907000100190600 f907000000190600
+[    0.000000] ITS@0x00000000fd440000: failed probing (-6)
+[    0.000000] ITS: No ITS available, not enabling LPIs
+
+Downstream fixed this by adding the GFP_DMA32 flag to the memory allocations.
+They also force clear the GITS_BASER_SHAREABILITY_MASK.
+Unfortunately while this allowed ITS to allocate on downstream, as
+soon as MSIs attempted to use it all interrupts would time out.
+
+On upstream, we observe this during allocation:
+[    0.000000] ITS [mem 0xfd440000-0xfd45ffff]
+[    0.000000] ITS@0x00000000fd440000: allocated 8192 Devices @3810000
+(indirect, esz 8, psz 64K, shr 1)
+[    0.000000] ITS@0x00000000fd440000: allocated 32768 Interrupt
+Collections @3820000 (flat, esz 2, psz 64K, shr 1)
+[    0.000000] GICv3: using LPI property table @0x0000000003830000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table
+@0x0000000003840000
+[    0.000000] ITS queue timeout (64 1)
+[    0.000000] ITS cmd its_build_mapc_cmd failed
+[    0.000000] ITS queue timeout (96 1)
+[    0.000000] ITS cmd its_build_invall_cmd failed
+<snip>
+[    0.150282] Platform MSI: interrupt-controller@fd440000 domain created
+[    0.152409] PCI/MSI:
+/interrupt-controller@fd400000/interrupt-controller@fd440000 domain
+created
+[    0.156158] EFI services will not be available.
+[    0.161168] smp: Bringing up secondary CPUs ...
+[    0.170252] Detected VIPT I-cache on CPU1
+[    0.170325] GICv3: CPU1: found redistributor 100 region 0:0x00000000fd480000
+[    0.170356] GICv3: GIC_READ_PMR old_pmr=0xf0
+[    0.170371] GICv3: GIC_READ_PMR new_pmr=0x0
+[    0.170393] GICv3: CPU1: using allocated LPI pending table
+@0x0000000003850000
+[    1.686709] ITS queue timeout (160 1)
+[    1.686733] ITS cmd its_build_mapc_cmd failed
+[    3.202979] ITS queue timeout (192 1)
+[    3.202999] ITS cmd its_build_invall_cmd failed
+[    3.203157] CPU1: Booted secondary processor 0x0000000100 [0x412fd050]
+[    3.208303] Callback from call_rcu_tasks_rude() invoked.
+[    3.228487] Detected VIPT I-cache on CPU2
+[    3.228559] GICv3: CPU2: found redistributor 200 region 0:0x00000000fd4a0000
+[    3.228590] GICv3: GIC_READ_PMR old_pmr=0xf0
+[    3.228606] GICv3: GIC_READ_PMR new_pmr=0x0
+[    3.228630] GICv3: CPU2: using allocated LPI pending table
+@0x0000000003860000
+[    4.744675] ITS queue timeout (256 1)
+[    4.744698] ITS cmd its_build_mapc_cmd failed
+[    6.260797] ITS queue timeout (288 1)
+[    6.260816] ITS cmd its_build_invall_cmd failed
+[    6.260948] CPU2: Booted secondary processor 0x0000000200 [0x412fd050]
+[    6.269204] Callback from call_rcu_tasks() invoked.
+[    6.278358] Detected VIPT I-cache on CPU3
+[    6.278430] GICv3: CPU3: found redistributor 300 region 0:0x00000000fd4c0000
+[    6.278460] GICv3: GIC_READ_PMR old_pmr=0xf0
+[    6.278476] GICv3: GIC_READ_PMR new_pmr=0x0
+[    6.278501] GICv3: CPU3: using allocated LPI pending table
+@0x0000000003870000
+[    7.794367] ITS queue timeout (352 1)
+[    7.794390] ITS cmd its_build_mapc_cmd failed
+[    9.310219] ITS queue timeout (384 1)
+[    9.310237] ITS cmd its_build_invall_cmd failed
+[    9.310368] CPU3: Booted secondary processor 0x0000000300 [0x412fd050]
+[    9.311925] smp: Brought up 1 node, 4 CPUs
+[    9.318831] SMP: Total of 4 processors activated.
+
+Also, when MSIs activate the same timeouts seen downstream happen:
+[   13.884698] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
+[   13.886476] pcieport 0000:00:00.0: of_irq_parse_pci: failed with rc=-22
+[   13.887466] pcieport 0000:00:00.0: assign IRQ: got 0
+[   15.414727] ITS queue timeout (416 1)
+[   15.415476] ITS cmd its_build_mapd_cmd failed
+[   16.957519] ITS queue timeout (480 1)
+[   16.958040] ITS cmd its_build_mapti_cmd failed
+[   18.482251] ITS queue timeout (544 1)
+[   18.482762] ITS cmd its_build_mapti_cmd failed
+<snip>
+[   70.267783] ITS queue timeout (2656 1)
+[   70.268363] ITS cmd its_build_inv_cmd failed
+[   70.269782] pcieport 0000:00:00.0: PME: Signaling with IRQ 64
+
+Any assistance you can provide would be greatly appreciated.
+
+Very Respectfully,
+Peter Geis
 
 _______________________________________________
 Linux-rockchip mailing list
