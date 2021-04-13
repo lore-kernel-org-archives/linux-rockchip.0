@@ -2,74 +2,92 @@ Return-Path: <SRS0=BK0I=JK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CED01C433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 15:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31A54C433B4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 15:51:33 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55481611CE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 15:25:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55481611CE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id EAC74610C8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 15:51:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAC74610C8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XfTSAfADt5kzTWeujQgHLLXLyFoH8OTuh+5C+E3prx4=; b=GedSzNcr3rD42cQMy44Nckibt
-	9YwC6ZhUS41dDeS00tl4dEFMmeR+1z4HTHoH2ykVvWCWnqlGW7BciGnnKUrPx58HsPYMYgqZa7LSE
-	yBrnyBbF283MbkjIn4ldppOgudoHsQi90eucJ+20PvfCnd/qeKF3v6+Or0vhHE2TKewxmKE1/qGAe
-	elk3owCKhzS7d1O+jMkM1YFBAvkHfHcuUrIIwAdV6EZ31OrNDA1ACjyW6bmImD7H8WSGZXr6XEovq
-	faPrUrEteKjQ523Fr8fUT3itkDPhcPWYMR3vC+G8iNgCE2IQ9QU4pOUtvZEp+YxbbERBku8BmnVMQ
-	zZCgkYkig==;
+	 bh=nJinAjYJmWmLbC9GxhmiR4xZML53glRoO6UhxQQgwoA=; b=ivrONsViNynOw4AKK3oBy6amT
+	Cv/VJv82T436CzU/RaYOzAja7gawjxaJ5SOK1T5wza3gaiGTcbWZpBl18jBiI3FD27e5RxBLlDQZh
+	Xjblb96V6KQqRMhAVde0OnwPgTuDKDdt6envjmRRzEkMxr9033CeqQ8yot6+LKdKoSen3MkRrjIRE
+	QPBuTuejgFe50pcrnuaxsr0OFJmLwAZ7aa5FQWzuio/e/PuLdkDoIEJL4u+9+Z82aGabbKTELmSUe
+	ci/m0OQk83RDEdAJMreXkbZYhawmL8/72fxUiVCp1t04ETT+qzqjHddFxL/1lsds0vqAiDIqq+mEK
+	RlzLq4xuQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWKvE-009e1Z-3E; Tue, 13 Apr 2021 15:25:48 +0000
+	id 1lWLK3-009iCj-LA; Tue, 13 Apr 2021 15:51:27 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKtp-009dks-60; Tue, 13 Apr 2021 15:24:40 +0000
+ id 1lWLJw-009iAk-UF
+ for linux-rockchip@desiato.infradead.org; Tue, 13 Apr 2021 15:51:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:
- Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
- :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=pwo6VGWtXeClcJNiXBrZobhKHZ6+nZfGFmQIUtu7r60=; b=4ENtlfnPqkS/oI8BYNhuiAQhY5
- z8Sir+JGzXHJCjFCsL5zh3K2XCQ90C/EGSArxoaz7IPTlNZMRitbiDqldDiwUv7vI6wP9nW7R5Ub5
- wjBrOwyEZxycbOMGkWdwUFalNoeTOsayTS+y11kK+P2QeTMyek/nBoLKZy7Equ0tdYQPNWTP1ISJu
- fIEjeC4M4eTs7kbLOApS/hvEl6jit9Vdxb2gp7TW6iAyOaX0Wt717/yL24RpE+PQ2KGI9rGzhNVI3
- nLW1587zwNcM0XMsXasjyqmTKSRqJdP+WqaQ5ZUfG80uwpsV9Wuk/J9TXgziYndJIZoif8h8cjfNx
- dRSnxS8g==;
-Received: from gloria.sntech.de ([185.11.138.130])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:References:
+ In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=VP6TiEdwSrpiFBF37woMF819ujNAaDbLeK3tmHPhD08=; b=eWqqEoxtfpiXtBB9rKOCjQqb1h
+ 0+wzl0jsNduXQs5Jz/SX6ntarwJyPVsydinLlABBpZ+HxMtmf8uBWq9st0d/N/q+7TrwuiV9XiAM5
+ jJeRXVz1oG3aUW8dUXOtD+PpWr3x1jhivzN8KP7A61xR5CmLlzhYAFv47FHVx6c7daG186x5xspUE
+ deAhuqurwGXize+3wkA3BfMUdU3tdPaPseNkCdsKR94VRYwOkLTsCBGKhF6Xbiret2jC8ENnFvSVq
+ iI795eI418gK36FebUvovwtce4pUdWkDGAYwcBzO9wS6jfcIqXgsxdVZFNI1/rQAxYpyZfQ3MVZ7s
+ Q6Xyhi5g==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKtm-0078mQ-OU; Tue, 13 Apr 2021 15:24:20 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lWKtf-0000C8-KR; Tue, 13 Apr 2021 17:24:11 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Johan Jonker <jbx6244@gmail.com>, robh+dt@kernel.org,
- u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/4] dt-bindings: pwm: convert pwm-rockchip.txt to YAML
-Date: Tue, 13 Apr 2021 17:24:09 +0200
-Message-ID: <9940894.0AQdONaE2F@diego>
-In-Reply-To: <YHW3DYjr2ifBltVk@orome.fritz.box>
-References: <20210412200155.5316-1-jbx6244@gmail.com>
- <YHW3DYjr2ifBltVk@orome.fritz.box>
-MIME-Version: 1.0
+ id 1lWLJu-0079iY-G5
+ for linux-rockchip@lists.infradead.org; Tue, 13 Apr 2021 15:51:19 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5E620613B6;
+ Tue, 13 Apr 2021 15:51:15 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lWLJp-007Gjb-Ai; Tue, 13 Apr 2021 16:51:13 +0100
+Date: Tue, 13 Apr 2021 16:51:12 +0100
+Message-ID: <87tuoambdb.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Subject: Re: [RFC] ITS fails to allocate on rk3568/rk3566
+In-Reply-To: <CAMdYzYrNa_wJa9mvBkhDrvdNaDugR9Y=LEnbcVHxjxJS0UFcMg@mail.gmail.com>
+References: <CAMdYzYrQ5f-mv_VmTq_CRf9tR=j3mwRpKHNLmPFgCF9whsGFRw@mail.gmail.com>
+ <871rbeo7wf.wl-maz@kernel.org>
+ <CAMdYzYruPyiT89FrbJhuV=c36PyRwZ7sT45abnv8rTv85AKRow@mail.gmail.com>
+ <87y2dmmggt.wl-maz@kernel.org>
+ <CAMdYzYrNa_wJa9mvBkhDrvdNaDugR9Y=LEnbcVHxjxJS0UFcMg@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: pgwipeout@gmail.com, tglx@linutronix.de,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210413_082418_825811_9BB617B2 
-X-CRM114-Status: GOOD (  20.19  )
+X-CRM114-CacheID: sfid-20210413_085118_576554_456E14FF 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,50 +105,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thierry,
-
-Am Dienstag, 13. April 2021, 17:21:49 CEST schrieb Thierry Reding:
-> On Mon, Apr 12, 2021 at 10:01:52PM +0200, Johan Jonker wrote:
-> > Current dts files with 'pwm' nodes are manually verified.
-> > In order to automate this process pwm-rockchip.txt
-> > has to be converted to yaml.
-> > 
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > ---
-> > For some SoC nodes this patch serie generates notifications
-> > for undocumented "interrupts" properties shared between
-> > PWM channels till there is consensus of what to do with it or
-> > someone makes a solution for the whole PWM block.
-> > 
-> > Changed V3:
-> >   fix mistake with compatibles introduced in V2
-> > Changed V2:
-> >   changed schema for clocks and clock-names
-> > ---
-> >  .../devicetree/bindings/pwm/pwm-rockchip.txt       | 27 -------
-> >  .../devicetree/bindings/pwm/pwm-rockchip.yaml      | 88 ++++++++++++++++++++++
-> >  2 files changed, 88 insertions(+), 27 deletions(-)
-> >  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
-> >  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+On Tue, 13 Apr 2021 16:03:51 +0100,
+Peter Geis <pgwipeout@gmail.com> wrote:
 > 
-> Heiko, do you want to pick up patches 1 & 2 into your tree along with 3 & 4? If so:
+> On Tue, Apr 13, 2021 at 10:01 AM Marc Zyngier <maz@kernel.org> wrote:
+
+[...]
+
+> > What happens if you hack all the allocations to happen in the low 4GB
+> > of the PA space?
 > 
-> Acked-by: Thierry Reding <thierry.reding@gmail.com>
+> It seems to work correctly.
+> The downstream hacks used GFP_DMA32 which gets discarded by
+> kmalloc_fix_flags on certain allocations.
+> Switching to GFP_DMA seems to have satisfied it, but it feels wrong
+> using this code.
+> Need to check the corner cases to make sure I'm not missing something.
 
-however you like :-)
+The problem is that GFP_DMA doesn't always mean the same thing.
+Overall, we need to hear from Rockchip about the exact nature of the
+problem, and then we *may* be able to work something out.
 
-I can pick up everything for 5.14 for sure.
+I'd also like to understand whether it is broken because you happen to
+have pre-release silicon that will never make it into the wild, or if
+this is the real thing that is going to ship on millions of devices.
 
-Depending on your tree-schedule for the merge-window, you could also pick
-up all 4 with my:
+Thanks,
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+	M.
 
-
-Heiko
-
-
-
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
