@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 821FDC433B4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 13:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE7D1C433B4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 13:38:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F3E760551
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 13:37:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F3E760551
+	by mail.kernel.org (Postfix) with ESMTPS id 4F757613AB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Apr 2021 13:38:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F757613AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,73 +23,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=prQKvrvBS2lehMD47zWraxkuE7UpoZax4N0iMSWEn8w=; b=R1YSmCGMl6v//l4zo73+cfewO
-	w8MtAiqHpOUY2N38Eqt62h1n9opuhsWObGT/PS9zAHMbCywHiYWjvfnmri4hfqMnQcCOY1XCZE08k
-	htprLhGN53yP2b9kNxAcVwcCkCQ3vBAlrMo0ukm2/2l53pQQvTYDo8EbYVqis+ZCoIguTuMRFIPZe
-	0PjgHCmzzyfJIxVQUdce7kTehyoufbbuhOXHSVW3uoeTwl2TrK94T+aS6MXMYZAzNxVTsyUwNdaLy
-	3yC201Bu9hCmSxtbMcQoE6a441JQYshEZrrUpMZS8vVYh1thtqRskMdSPTXNgbf1HcfqYD5h9e6wO
-	MEPZNhwew==;
+	 bh=dr6mb/s37MOwrnJAEcAy3B8YWkEAB1/jrzjNC/220I8=; b=expMnGNLfJdiIpQD2HGr02t30
+	IRajMFdepW+dJI7WImeCG3nMZ6zo25cPVM6Q+fHjt4l/LngWk+lkeE7clYVSD7ZUaQWYeAwBG867a
+	UMmnVbH4DaEAKQXMav+j8HhaYSFgtdPWn7bm6q3KDpJYdRKUkPyT7Xr2tkJAv6mu50MNg7E8GsElx
+	aRL3D6ofl7FyzXzEUkon233c9XdflxAvGGq+wYRFVAHSXBMeEBPVfckWmC6rfSUAw4mNxeuV2fGfv
+	+Yg8NY9d7IZ1qQUqi70+LbYmL2pxwQEJyAFMxDd3icwO17bcM6UkZNd7O61oOieyN1mUUBji+pK1z
+	dVK0kQOcQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWJEY-009Ov0-HE; Tue, 13 Apr 2021 13:37:41 +0000
+	id 1lWJFX-009PAp-88; Tue, 13 Apr 2021 13:38:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWJET-009OtX-1P; Tue, 13 Apr 2021 13:37:33 +0000
+ id 1lWJEu-009Oxr-Bf; Tue, 13 Apr 2021 13:38:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Xn+qkSOy3KWxo2N+mRffQC+USY48yDM1PS9olUJC/UU=; b=ndfKhyS4OWZnRpQZ+VqLWhd5xs
- s2sK7SEyhNXdISwSbVCcdaL2eCArt1J98CdboMGhFiZrJi9r/kvmmeEgsxxfHdSm6FeZtY3U/oAVP
- 1fVQ9pITizZk02Ln7MgqKSODYYyttSbCAV7NH4ReyT6yh0H/+b8OpRGA0PvKVLJe3/JWTMDoKC24E
- cxqVNy3fnIIbnqnzJCz/eORNSyhiXweqa/lEuR4HMbuyD8Tg+pVyLNkb3G0bzH1ErA/tTQ/2nzHZL
- rzEmPzVpAL7Cd4LhDzGZ/emlcDvX4eyYflqPTU9MPgDXZiO6/sHaU/3q82T3zX5hsfdoDiU1m9OgR
- xWkH+0MA==;
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+ bh=NCfulLhASkF88YSVbFbXw+77PePkNkMy3z6Ere15nDg=; b=VLOWzeNbi5AJ7ZvVpNxKzDjOiA
+ Su3fHveAJR9+KITI5hOtE97F7icC40oM3AZTnWNARlAhmG2IzaPfIyBsCjLy1WWJsSgZjIDqcFWCn
+ Z8UaSP8mpBzg0OUhFWkPKMlcUJWFV+QhFgr1Vh2J8NQuJ9qiv41w75C3T1bovRRmhSNSX0HrGImwk
+ s1gypXykMpH9Fvd9FE7AYhIOfV5wHKVyfoNDBX0uiH2ZYBuOk3BBNFN2eqtX7SYOFhiiCDTWRJTwG
+ I/Zt/Ed9+mBeo6+4BcfWYnTv755XW2ieXxw+2Hclh2c4rhT646Fsu48VzlfUP9Qw87wVkVF6DpMDO
+ mr6R1dbw==;
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWJEQ-00742P-Kh; Tue, 13 Apr 2021 13:37:31 +0000
-Received: by mail-oi1-f174.google.com with SMTP id l131so11960715oih.0;
- Tue, 13 Apr 2021 06:37:29 -0700 (PDT)
+ id 1lWJEr-00743L-Tv; Tue, 13 Apr 2021 13:37:59 +0000
+Received: by mail-oi1-f175.google.com with SMTP id d12so16973055oiw.12;
+ Tue, 13 Apr 2021 06:37:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=Xn+qkSOy3KWxo2N+mRffQC+USY48yDM1PS9olUJC/UU=;
- b=W3b3YXMZzzSCXViF2S3UDphCCykGlqlrkoyVljUUhs/2JTe5zSVfJKc0ZbngTw1LWi
- 1CGV++2wD+8t3ycOUp0vw0LPHk6KyZhmAk1QUkM2VcyuFncy4MktK8NSU/dL4sSL+gPA
- AM919oqE8LCogdkJjAXDGE1geHxxH5tR6WiFDNxJmJzighQ8TlwB34prjwNe2lB9Wqpb
- DEDo2DC2iBIhVxjY4hA5TX+sxuUJyDdjjkljHVLSTKAkKxn28u00LUOEWC0+bjueAyNu
- xyERoe7N67+4JECxp1x5Xa1yrQFQ+JF6l8uM8c0jJwK/Md7M1Cs6pwGJGlbhT5vwqtLD
- UGXA==
-X-Gm-Message-State: AOAM5310KKl7GniXYcRr+HS7dVTzlXM9rPBx3fvkGlVtBPb/1SCX10WS
- DE/dWKIvqMDMIvQnq+LssA==
-X-Google-Smtp-Source: ABdhPJw0hyiYZe3k60GOvhnPdj8SpMVm2NrmkXHH8u9CXJ6mTgQ6LCCmoj3obd9wm15J9X4nBnBsUQ==
-X-Received: by 2002:aca:3303:: with SMTP id z3mr52906oiz.140.1618321048567;
- Tue, 13 Apr 2021 06:37:28 -0700 (PDT)
+ bh=NCfulLhASkF88YSVbFbXw+77PePkNkMy3z6Ere15nDg=;
+ b=AKIMRwC/9M3wAtmLi0SbWieMyb5M+Ug0YJFc13+SIQ49M2zK3722OWwvl0hn9/0a+n
+ P7MoUVmt1MdsOaR0/ofurpaxhKMx/2JAy+ikponEr/mhkD1bsLO4jSyxNrlbTqn8UpCV
+ 62m7iPn3woC0iecXw/fd6GBFgqUICTq+eeczmJB+N02soaNsDdeeSQ93fXx/nBDLL8W4
+ FPlQcgt97md3+zr3q+1gL4QzjgtHEMAmxLlFRT0f4Cy2DtMCDNbwzu1usm/+gS8lCDFz
+ txEQc/Cv4v8B5lCtnfOjlhpzag5kUXQ3sdMnSDQzU+CW7gRlLop9bDaJIWclB7jARWlO
+ It0w==
+X-Gm-Message-State: AOAM5313CJDo3AwrwgRssscm5k4zUl0VGuCSAlDPtXSc494P3DwVD7Xj
+ eUK8dn84MLsCHGwF8dsDcw==
+X-Google-Smtp-Source: ABdhPJwoB6nerGCsqk2RnCpz9BLfhmFDaJqLZVqu6kmHEQeNF7ERD7F6xRZMQgH/qyHta5MM8irjlg==
+X-Received: by 2002:a05:6808:98b:: with SMTP id a11mr68964oic.14.1618321076612; 
+ Tue, 13 Apr 2021 06:37:56 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id x2sm3486274ote.47.2021.04.13.06.37.27
+ by smtp.gmail.com with ESMTPSA id g11sm3412058ots.34.2021.04.13.06.37.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Apr 2021 06:37:27 -0700 (PDT)
-Received: (nullmailer pid 1535101 invoked by uid 1000);
- Tue, 13 Apr 2021 13:37:26 -0000
-Date: Tue, 13 Apr 2021 08:37:26 -0500
+ Tue, 13 Apr 2021 06:37:55 -0700 (PDT)
+Received: (nullmailer pid 1535864 invoked by uid 1000);
+ Tue, 13 Apr 2021 13:37:53 -0000
+Date: Tue, 13 Apr 2021 08:37:53 -0500
 From: Rob Herring <robh@kernel.org>
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: heiko@sntech.de, u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- thierry.reding@gmail.com, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org
-Subject: Re: [PATCH v3 1/4] dt-bindings: pwm: convert pwm-rockchip.txt to YAML
-Message-ID: <20210413133726.GA1534983@robh.at.kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, robh+dt@kernel.org, thierry.reding@gmail.com,
+ u.kleine-koenig@pengutronix.de, heiko@sntech.de, lee.jones@linaro.org
+Subject: Re: [PATCH v3 2/4] dt-bindings: pwm: add more compatible strings to
+ pwm-rockchip.yaml
+Message-ID: <20210413133753.GA1535744@robh.at.kernel.org>
 References: <20210412200155.5316-1-jbx6244@gmail.com>
+ <20210412200155.5316-2-jbx6244@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210412200155.5316-1-jbx6244@gmail.com>
+In-Reply-To: <20210412200155.5316-2-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210413_063730_699912_F11DEB46 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20210413_063757_983945_9D9854F9 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,13 +108,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 12 Apr 2021 22:01:52 +0200, Johan Jonker wrote:
-> Current dts files with 'pwm' nodes are manually verified.
-> In order to automate this process pwm-rockchip.txt
-> has to be converted to yaml.
+On Mon, 12 Apr 2021 22:01:53 +0200, Johan Jonker wrote:
+> The compatible strings below are already in use in the Rockchip
+> dtsi files, but were somehow never added to a document, so add
+> 
+> "rockchip,rk3328-pwm"
+> 
+> "rockchip,rk3036-pwm", "rockchip,rk2928-pwm"
+> 
+> "rockchip,rk3368-pwm", "rockchip,rk3288-pwm"
+> "rockchip,rk3399-pwm", "rockchip,rk3288-pwm"
+> 
+> "rockchip,px30-pwm", "rockchip,rk3328-pwm"
+> "rockchip,rk3308-pwm", "rockchip,rk3328-pwm"
+> 
+> for pwm nodes to pwm-rockchip.yaml.
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
+> Note for rob+dt:
+> A tag was not added on purpose, because by the change of schema
+> for clocks and clock-names I add "rockchip,rk3328-pwm" to
+> the "if:", so strictly speaking V1 and (V2) V3 will not be the same.
+> Please have a look at it again.
+> 
 > For some SoC nodes this patch serie generates notifications
 > for undocumented "interrupts" properties shared between
 > PWM channels till there is consensus of what to do with it or
@@ -124,11 +142,8 @@ On Mon, 12 Apr 2021 22:01:52 +0200, Johan Jonker wrote:
 > Changed V2:
 >   changed schema for clocks and clock-names
 > ---
->  .../devicetree/bindings/pwm/pwm-rockchip.txt       | 27 -------
->  .../devicetree/bindings/pwm/pwm-rockchip.yaml      | 88 ++++++++++++++++++++++
->  2 files changed, 88 insertions(+), 27 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.txt
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+>  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
