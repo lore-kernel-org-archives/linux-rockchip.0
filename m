@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C14B9C433ED
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 21:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A334C433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 21:21:25 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 482F361166
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 21:20:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 482F361166
+	by mail.kernel.org (Postfix) with ESMTPS id CBE7661155
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 21:21:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBE7661155
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,77 +24,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLOA1iAhYGR4GKKWlMmOkw1rFyMV6SBbP9ZF/t7czOE=; b=OOKua8oQCGQUZSYHhsPyXYmlDb
-	2vJqdSVzUOpZ5J8okHGoCcuZs9x8Jjf2OKyDt5+4ZpbCC/sdU0U1P0CBIk9bGQN5BwqFRvlUCIHJQ
-	cbET5Xv0p8AO34cj802ffX1UXL1grlSov7H8+s85984VXffAtQ1dpvjp3bNJGX227SbUa5nzqYfC4
-	vriesfMq3DG0EQHdFzpTpwyn7nI8W7tLiZfDUk9WmHQAXeF2CrrWhoJPG7s4Yq7eFyHnSEnUuH9pQ
-	SUKavBw0Z6e773dbdepG/qZj7Pea8BeAyX25hoFAdSmOIyxPJykfI7UGwBkJtDrMvIt5diKMvnE7C
-	Dv+8BhTg==;
+	bh=FYoQNXOeKyJ2LpImAam+oyp85JSkGGGWltXH7GhiPLw=; b=qiFw+canvUTnFwdiNS3cEAeZwi
+	WkbVbPb8dUk+93Hy9xUY2K7PD58ALecLGpdUHG+jU+YUQ2cp4hfj69Xlq24Eu8kRBhIGcMUG6mx1p
+	DU8u2peeuaH27uj8DMglVDLHfjwwCI1C3Q4km5D9lKP8UqrS+AEAVmo0eMZrZ8yNwn00Vsa4oDeTO
+	OkD/9EMW22qm1eYB5hJeWifufD2azxNMHD4/5w6He3bdVZ7eyzfRJJffhqHhlpe0phujf/2i0MtIp
+	MMaYBk8SWVs+RFceqOI0+JMkbGSV8wtb5ocl/kKtBcfRQgpiOunvh06oimkcwpGRuGfrdOT5MoFQ2
+	5JSGXM9A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWmvw-00Dozb-Vs; Wed, 14 Apr 2021 21:20:25 +0000
+	id 1lWmwo-00DpH8-VM; Wed, 14 Apr 2021 21:21:20 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWmul-00Domp-Oe; Wed, 14 Apr 2021 21:19:11 +0000
+ id 1lWmum-00DonO-LC; Wed, 14 Apr 2021 21:19:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=loIVksKZEL5F0wKKCjoxiHiwkxUopdNbbRXrt2wSAqM=; b=Jf352wiKk6ywq3XPDj2GNI1dtO
- MJ067UHFZi4dhHj7zI+SBdTyblcljqFqfJrWE0m2Q4bV1dpp3TDTJxMCBe4qWx0x3yICTQH1DCuin
- xV8e7unploxE7a9AF92WDRFQcbHbRbRZHcovxZ/rv+Ip0LojaqVuoI/8E68DcB3WStsobeZKyPzst
- yXDWCO9b252OxqqowoBUm7E5VjG10lbzQAnR/dw0TVeA8qpRMmvCscv1CDW+s5Bh/gz+r8tEzdqnX
- RzVPTO1hjOSWdkXci6XcBFtpUoZj5dMVyrfJunufXJodee2oITJz62oHCjW4yFkikOzNeb1BaNe9O
- ZB1wo9CQ==;
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ bh=tKq3KmV45GoK0Thnkb+rqanYcWMZ9fjuF6uc/TWZBZk=; b=Hn9lEc4pix6xB/X69b/uCn9Nua
+ gfx2ZlI9AOaDbjnN1hPAw3pxq6BY0EMunrdibt7eEOrKV6sighi4dPTAxSKyizsN8noFoZBp6gvjc
+ Wo6TYAAJvYQNafdUVdAU3I+w6rNJS+LmJjCDiw9Bl7tYRJ4u4cLmOwViIQ0J5SGszVYeEAJfekSPC
+ r6LipOJKROOSNwnoMl/Ol20d/2XQu2fQuSMogtcJqWPszKNNQSYlPEE6RA/1djrXLg0shWn1VZneP
+ elmiYDEUAlroEDWb3jpdcXB7EqEf5e5HjNMBZeGetkiPkHfY/ygrMoBb12ls5+WQ4JD/+ZqCgKti3
+ ZvBRyRPw==;
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWmuj-0086qQ-BY; Wed, 14 Apr 2021 21:19:10 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id x4so25456360edd.2;
+ id 1lWmuk-0086qj-7J; Wed, 14 Apr 2021 21:19:11 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id z1so25421254edb.8;
  Wed, 14 Apr 2021 14:19:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=loIVksKZEL5F0wKKCjoxiHiwkxUopdNbbRXrt2wSAqM=;
- b=Txnutc60o/j/AkKNmGyoN4Rt7gCWA2CX+TVKgLpSFL/ydK3eYSxmXjW72M9gANbqwT
- uHB1Ngvt/So8airX5rNR5p+U4QppzWHwuSW3pUPOFYNDU426qgPX4/NeSqEMCfqoUCdY
- L+bu12Cxqocekc3pkkLPZ/+Y+1KTFLlCVkZ+bWY6vFHC7LvDPjbpMXJ/2R+dUlAVYuz6
- kvx6CzT8/QpOudUMFVSMeWlUecejYdGYI3WasIl9q9sH8+dSHKOYTabdRPt+NOF6O/BA
- 0lipia02vk2RBAVg6I4ihGSx2O0CAI2Y68qcbTvIs5X1AnEajDVBe+7WQEl7rJmUHelk
- gHBw==
+ bh=tKq3KmV45GoK0Thnkb+rqanYcWMZ9fjuF6uc/TWZBZk=;
+ b=YqKT4SI1v9R4LEvk80UH8n+sy4MPcpTpPrLcdOogMHQtV3Yr2OKlCMFlQdM0xJVE/0
+ f9hr5PPin5yzuvlOrYJv4zHDDMyPwiqDK3tVwx6ILst5vw/m3hxfXyAH/ObdqXL4XbHh
+ RwMQmxr9qi3yHblVUOdbKpD9HXtFK9f5Iv7ZejpXbbWVyEn2tVu0q9ddNOCC6SnQr4R8
+ fcR5IidNI9ToVEMVwwfNvclMKNJRxmIPVDcxXLOZFL699noNvAa/MleSD2tLln5bp8XU
+ RdHoNtdtUs6IskhA9Gpqn9lFfRLUIhKjU9u9OVtbPENIpl3c7HGJ3Zd1g25vsOg5cIHK
+ FuKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=loIVksKZEL5F0wKKCjoxiHiwkxUopdNbbRXrt2wSAqM=;
- b=DxzHjap3188vX7g4QRU+M6qDPZ6I4oLlI51YdTuNrWQQUI0UM463BpT7A/GwiCNUgG
- mS/DyDAGe5z8gLyq1IX0RFDFkKdGo+kVJb23dUpLVE2w2PxIJIS/jSyB4F/PKlCyPRjl
- aQZIDABzT8Mk+0UObAVg3mAo2Xo1kFClEgaoVv78no8PQzGxW7hNaUL2gzj3SiljAu5x
- hha42CZ+I3utLUPqhX1Q+rqLMEoeYZvIfg/S8WunRRG7BJ6OTNV18Eh4eaPx9Jzcmi59
- QAfNFNq88Rv3xhXf39ay+grvdj7IUsNEleFTZd0D67ZsHId49EIeF0V0BYusnpFSBnuz
- bKZQ==
-X-Gm-Message-State: AOAM532Cs57Kz0SgyNJydNQNdJjPns+2z+ELAhshVKbf0tex1TbZKroH
- 4Yc40eh9xOTaOyTcuq30bLU=
-X-Google-Smtp-Source: ABdhPJzlI8k1Ch2cg4wHXi2bjATLUor4PBl2TPterEPTFBM1f9HXKPYK3TubrJIRa+Y/VOCh5NzzdQ==
-X-Received: by 2002:a50:8d8a:: with SMTP id r10mr251153edh.132.1618435147990; 
- Wed, 14 Apr 2021 14:19:07 -0700 (PDT)
+ bh=tKq3KmV45GoK0Thnkb+rqanYcWMZ9fjuF6uc/TWZBZk=;
+ b=dkGaQ8//CHlbJ2mp0V0VHWxTe77kgwOdRXL2vgJ14MYg8GtPjmcHMExdKbOgP1OEPV
+ LV1Ol0oux5egnXmsXFQGPMbuA5h/2Modx4nDI5vsZmPGuHeVr60jv1pVCxodQDGJ5cdw
+ va6bpuEhDphBpmf/wPVN442LV35l8z0HaYNny76aipSY2NY1w8cZnZ+4Unbt5d+/16Lw
+ hK1jKUd3JuatxhpAi8WhGaS2QlIUDgiWS78x8zbho6ITL/so+a+zQwwDto0+1szBA7U6
+ hwejW8nY3bxHKKA1RUQSSeH3XrcCRVvy+noALCY1zZiAtuzKWLdv5ne7bEcV00WkfIUb
+ qGtQ==
+X-Gm-Message-State: AOAM530MkJCNUE1Nxa/fn2b986HP/F0xnCqhHN1FqFkRz6RI+HugQDZf
+ tD/e4zL0a142jykVWcuzKEQ=
+X-Google-Smtp-Source: ABdhPJwGaoyXbcXZZDDR9Bdi4koV4AolNtt2HiuR/HCyC01ILpIZK2Opxa2GHecgZn/knYI/amUKMw==
+X-Received: by 2002:a05:6402:515:: with SMTP id
+ m21mr238606edv.382.1618435148888; 
+ Wed, 14 Apr 2021 14:19:08 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id v5sm568222edx.87.2021.04.14.14.19.07
+ by smtp.gmail.com with ESMTPSA id v5sm568222edx.87.2021.04.14.14.19.08
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 14 Apr 2021 14:19:07 -0700 (PDT)
+ Wed, 14 Apr 2021 14:19:08 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, zhangqing@rock-chips.com, enric.balletbo@collabora.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v7 03/11] arm: dts: rockchip: Fix power-controller node names
- for rk3288
-Date: Wed, 14 Apr 2021 23:18:48 +0200
-Message-Id: <20210414211856.12104-4-jbx6244@gmail.com>
+Subject: [PATCH v7 04/11] arm64: dts: rockchip: Fix power-controller node
+ names for px30
+Date: Wed, 14 Apr 2021 23:18:49 +0200
+Message-Id: <20210414211856.12104-5-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210414211856.12104-1-jbx6244@gmail.com>
 References: <20210414211856.12104-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_141909_416163_BD6DFB09 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20210414_141910_283823_D74F00B3 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,49 +123,81 @@ Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index ea7416c31..6f4d7929e 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -769,7 +769,7 @@
- 			 *	*_HDMI		HDMI
- 			 *	*_MIPI_*	MIPI
- 			 */
--			pd_vio@RK3288_PD_VIO {
-+			power-domain@RK3288_PD_VIO {
- 				reg = <RK3288_PD_VIO>;
- 				clocks = <&cru ACLK_IEP>,
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 09baa8a16..2b43c3d72 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -244,20 +244,20 @@
+ 			#size-cells = <0>;
+ 
+ 			/* These power domains are grouped by VD_LOGIC */
+-			pd_usb@PX30_PD_USB {
++			power-domain@PX30_PD_USB {
+ 				reg = <PX30_PD_USB>;
+ 				clocks = <&cru HCLK_HOST>,
+ 					 <&cru HCLK_OTG>,
+ 					 <&cru SCLK_OTG_ADP>;
+ 				pm_qos = <&qos_usb_host>, <&qos_usb_otg>;
+ 			};
+-			pd_sdcard@PX30_PD_SDCARD {
++			power-domain@PX30_PD_SDCARD {
+ 				reg = <PX30_PD_SDCARD>;
+ 				clocks = <&cru HCLK_SDMMC>,
+ 					 <&cru SCLK_SDMMC>;
+ 				pm_qos = <&qos_sdmmc>;
+ 			};
+-			pd_gmac@PX30_PD_GMAC {
++			power-domain@PX30_PD_GMAC {
+ 				reg = <PX30_PD_GMAC>;
+ 				clocks = <&cru ACLK_GMAC>,
+ 					 <&cru PCLK_GMAC>,
+@@ -265,7 +265,7 @@
+ 					 <&cru SCLK_GMAC_RX_TX>;
+ 				pm_qos = <&qos_gmac>;
+ 			};
+-			pd_mmc_nand@PX30_PD_MMC_NAND {
++			power-domain@PX30_PD_MMC_NAND {
+ 				reg = <PX30_PD_MMC_NAND>;
+ 				clocks =  <&cru HCLK_NANDC>,
+ 					  <&cru HCLK_EMMC>,
+@@ -278,14 +278,14 @@
+ 				pm_qos = <&qos_emmc>, <&qos_nand>,
+ 					 <&qos_sdio>, <&qos_sfc>;
+ 			};
+-			pd_vpu@PX30_PD_VPU {
++			power-domain@PX30_PD_VPU {
+ 				reg = <PX30_PD_VPU>;
+ 				clocks = <&cru ACLK_VPU>,
+ 					 <&cru HCLK_VPU>,
+ 					 <&cru SCLK_CORE_VPU>;
+ 				pm_qos = <&qos_vpu>, <&qos_vpu_r128>;
+ 			};
+-			pd_vo@PX30_PD_VO {
++			power-domain@PX30_PD_VO {
+ 				reg = <PX30_PD_VO>;
+ 				clocks = <&cru ACLK_RGA>,
+ 					 <&cru ACLK_VOPB>,
+@@ -301,7 +301,7 @@
+ 				pm_qos = <&qos_rga_rd>, <&qos_rga_wr>,
+ 					 <&qos_vop_m0>, <&qos_vop_m1>;
+ 			};
+-			pd_vi@PX30_PD_VI {
++			power-domain@PX30_PD_VI {
+ 				reg = <PX30_PD_VI>;
+ 				clocks = <&cru ACLK_CIF>,
  					 <&cru ACLK_ISP>,
-@@ -811,7 +811,7 @@
- 			 * Note: The following 3 are HEVC(H.265) clocks,
- 			 * and on the ACLK_HEVC_NIU (NOC).
- 			 */
--			pd_hevc@RK3288_PD_HEVC {
-+			power-domain@RK3288_PD_HEVC {
- 				reg = <RK3288_PD_HEVC>;
- 				clocks = <&cru ACLK_HEVC>,
- 					 <&cru SCLK_HEVC_CABAC>,
-@@ -825,7 +825,7 @@
- 			 * (video endecoder & decoder) clocks that on the
- 			 * ACLK_VCODEC_NIU and HCLK_VCODEC_NIU (NOC).
- 			 */
--			pd_video@RK3288_PD_VIDEO {
-+			power-domain@RK3288_PD_VIDEO {
- 				reg = <RK3288_PD_VIDEO>;
- 				clocks = <&cru ACLK_VCODEC>,
- 					 <&cru HCLK_VCODEC>;
-@@ -836,7 +836,7 @@
- 			 * Note: ACLK_GPU is the GPU clock,
- 			 * and on the ACLK_GPU_NIU (NOC).
- 			 */
--			pd_gpu@RK3288_PD_GPU {
-+			power-domain@RK3288_PD_GPU {
- 				reg = <RK3288_PD_GPU>;
- 				clocks = <&cru ACLK_GPU>;
- 				pm_qos = <&qos_gpu_r>,
+@@ -312,7 +312,7 @@
+ 					 <&qos_isp_wr>, <&qos_isp_m1>,
+ 					 <&qos_vip>;
+ 			};
+-			pd_gpu@PX30_PD_GPU {
++			power-domain@PX30_PD_GPU {
+ 				reg = <PX30_PD_GPU>;
+ 				clocks = <&cru SCLK_GPU>;
+ 				pm_qos = <&qos_gpu>;
 -- 
 2.11.0
 
