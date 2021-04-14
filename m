@@ -2,77 +2,101 @@ Return-Path: <SRS0=TltV=JL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9ABCC433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 11:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA907C433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 11:41:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0BBAF600D4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 11:16:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BBAF600D4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 2F4A4611C9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Apr 2021 11:41:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F4A4611C9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kF9CzNgSEoxdzMKRE+vtbEVnbYIRzy0+uOpoc6Yzjno=; b=D97bWtNgLYmnaHmSH4ZNXzhrz
-	39kJI3kohDD46IrYY8kev/QHdXrWCjdwRHKNS27ITIRJrSn4Jai7hFfd+3ogS0iVCr0cn5zP7m0N9
-	QJ1GDGr4Pe5+FtKWXAKIrnlPOQYpYz2qfLZHgO9N0+co5RoyeuEVSwIxZBL8rlVY5wJeIZTRtFHaU
-	kvcOx04l39qq7BOr7VtCvn5d1L1LxhEeKln6W4QE8+y4QFZnccgEijaMmwMdhH9guXuSCv3nK5BNC
-	AEFGZHhKMWbRu7erHShLmcYBD868NFoP5FvD6kztLVkIOVmVvtSpdUEv+UoerKU+YWk6BzdNZZJYu
-	fMv6KMRdQ==;
+	 bh=FU5y0NC2s7VHwiuPL16MGea3RBoxJ7vsYxSa3o7rscw=; b=OUvTn0h/0vr/gGA39RFdMWaNe
+	X2JyNuXbBl4BueJnFYh//volJ6q/MJDRCM7gIgfNIt454pVo0isMeTgPoivakCX8CEM1Cdrt49JkG
+	jPdwi4Hmp8L/5eWBnPWodx/oDj0KwTaMLQcyZYF+VT3oeGthQmH7kK/0ZIT1An5wKnzZk+Z0utfb9
+	kXMiF0l2YSH/8iGUvBBJoh964bFCcH+U7pu0yYF6r+JN9lyCiiO854YnnYNRoRmP5Bbg/ac0MAxDs
+	X4SJiOEbpfKCzpOuV4Bu4uPkBJPXg0XkgkTO8WqK9LDgElV762EXrTeqbqJ2krUnKv5iP19SopK1n
+	XHZmyOYig==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWdVA-00CNSZ-LW; Wed, 14 Apr 2021 11:16:08 +0000
+	id 1lWdtv-00CTmW-G0; Wed, 14 Apr 2021 11:41:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWdV3-00CNRL-Vz
- for linux-rockchip@desiato.infradead.org; Wed, 14 Apr 2021 11:16:02 +0000
+ id 1lWdto-00CTlm-QT
+ for linux-rockchip@desiato.infradead.org; Wed, 14 Apr 2021 11:41:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:
- Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
- :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=UdKUCDciC6SJW8xjjeGPXnpiSWzgg1la1612BTypiQM=; b=X7esE3nD4TDicF1rDCSVdKJ6fA
- pG0209rQwNMCQiLYOzvyKqaMgyG2P01aYfUW/yI7jtwrRIhA5SuvxoIApJhEW8U5QeZZewStOCo66
- Tgm+q1s+uegIzf1zWnhqqhogjWqZ675pYkC0vLinrrrmhcpwB8SAwpYe5wdbPI+pj/2U1cZL9Nc6Q
- CXyo6YVNjhEBnethIgVSfZFFd+0CTQV63rabM4osT8xwnKZfwcFljfPoh4EjwyTH5ft6FtioSjQAr
- G1pAyb5S5FjwFDZk9zdSNwqUY7L1fPaanNLnNW+QK0sn9DvOjdEMZfEMoSLCpzSo28VAGbQtOjgrD
- Z4NB/sJg==;
-Received: from gloria.sntech.de ([185.11.138.130])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=vuwN2tps+A9iGF/qWHJo0OKDNEJp6OUg5buE8ubsh+M=; b=pFOPZkqAelqtT56MmQNeOs3W9K
+ IRhNcpqy3UAWFmfKVReU71Aj+TEJjk8k2Pp1WntvTyFSJORR/MnH3sBd+RLfIMOd84rNJzqiH2IZd
+ F7ETMJYCBrVU43acxeD4sxRwTn5TYiT2IxjMQJwlTDJAZHIawMxzKiidEkegnoXD4TWUZHv6G/y2X
+ 5z76hLu8d7XalyN01wbUF8E+EjoaXHEMMmzPSm8p3k7TL2ReUXEqog/KBKGACOHBjKyhoBpabRRh9
+ isra+hJMSP5oYD9l0kWnX9w2kChf9RPqFfIEC5XUOU0+5nIEXWaRFRGJsrph3a+/Zc/QSGzBFj80O
+ ngP04xsg==;
+Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWdV1-007hjB-89
- for linux-rockchip@lists.infradead.org; Wed, 14 Apr 2021 11:16:00 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lWdUu-0004eF-2u; Wed, 14 Apr 2021 13:15:52 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Ezequiel Garcia <ezequiel@collabora.com>, Peter Geis <pgwipeout@gmail.com>
-Cc: Linux Kernel Network Developers <netdev@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Jose Abreu <joabreu@synopsys.com>, "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, David Wu <david.wu@rock-chips.com>,
- kernel@collabora.com
-Subject: Re: [PATCH net-next 3/3] net: stmmac: Add RK3566/RK3568 SoC support
-Date: Wed, 14 Apr 2021 13:15:51 +0200
-Message-ID: <2596687.TLnPLrj5Ze@diego>
-In-Reply-To: <CAMdYzYpyD1bTN+3Zaf4nGnN-O-c0u0koiCK45fLucL0T2+69+w@mail.gmail.com>
-References: <CAMdYzYpv0dvz4X2JE4J6Qg-5D9mnkqe5RpiRC845wQpZhDKDPA@mail.gmail.com>
- <1412-60762b80-423-d9eaa5@27901112>
- <CAMdYzYpyD1bTN+3Zaf4nGnN-O-c0u0koiCK45fLucL0T2+69+w@mail.gmail.com>
+ id 1lWdtm-007ilu-8z
+ for linux-rockchip@lists.infradead.org; Wed, 14 Apr 2021 11:41:35 +0000
+Received: by mail-qt1-x830.google.com with SMTP id u8so15103563qtq.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 14 Apr 2021 04:41:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vuwN2tps+A9iGF/qWHJo0OKDNEJp6OUg5buE8ubsh+M=;
+ b=lOa2FIKMpFcGcgOps89l43t3sEAOetiZcbF6/1KxJDlnOmuEOwaRkcD7cjK1bDrKVN
+ B1Y2gwmq0+eNEAE2/fYb3p8K5+P/gmzguNSWZOFlLYNMfIchgOyv5a/dBbgBEWQZnxRM
+ SRh59l2LYd3uXf4FI+xMiDn/Hh5DB06DliKIVfqcOJmNaSLf1czsSB8cD9JE3Fr3vERq
+ HPr8Vu3RMEu83moP+TTnH8KQymECCnSAND+vdd0g4rEzseJ69WeF+BffSb77smaP4inO
+ sqonwy40eLCYwq4jo28jHsandWRYysbHo5Zfld3O/8mUdtsv+8HxtzyQo1ggNVH9MR8A
+ ADKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vuwN2tps+A9iGF/qWHJo0OKDNEJp6OUg5buE8ubsh+M=;
+ b=FUDJ0wqL8S+a4/hpQ/sqSBB56M/41VMyHSa+ilT++fuZ9RvhPhvT5dbzlYuAlEnUDj
+ NQ8B3f551K1Ekkjl0DErZS5Gd+TOg9/lQpJNJ6Gx9PNntuAJDUk9w/egmhyFuIsvLSl+
+ /V3WriwsbujtQokbp+ZPTGr5LkUp33RyTRGQ2Oww9eKjefOsbWbae4y55gtGm5q9gM9w
+ P3w6OEcMoFn4qel4iyV7UzpUP/i9GWtiCO8ugb20AwK88Yy+iONYGnCBtGyCWHvb+BZ0
+ UhYCOeX7awwr2wJXflzP2qEnIq+eix1IW65zIBDNZ3PxIEb5e+LBFHBVipDy5yZwRFBV
+ 1hDg==
+X-Gm-Message-State: AOAM531GjQgacrV+L67BRVZcFL6DFZHylapkpqvpmpBEQBeoPK8NM4Jv
+ irQQE7hXsR//Q0+4zOK2oEkEUZ347CvysCSx8U8=
+X-Google-Smtp-Source: ABdhPJwPl8i36Umu1G4a9Ow3HV4gVUZJJGNOLDjrXEAQWNZwCO9VlfZ0EiUu+OSe/wt+8nBBntLmteq+qo7uX83CN7o=
+X-Received: by 2002:a05:622a:216:: with SMTP id
+ b22mr35132063qtx.263.1618400492664; 
+ Wed, 14 Apr 2021 04:41:32 -0700 (PDT)
 MIME-Version: 1.0
+References: <CAMdYzYrQ5f-mv_VmTq_CRf9tR=j3mwRpKHNLmPFgCF9whsGFRw@mail.gmail.com>
+ <871rbeo7wf.wl-maz@kernel.org>
+ <CAMdYzYruPyiT89FrbJhuV=c36PyRwZ7sT45abnv8rTv85AKRow@mail.gmail.com>
+ <87y2dmmggt.wl-maz@kernel.org>
+ <CAMdYzYrNa_wJa9mvBkhDrvdNaDugR9Y=LEnbcVHxjxJS0UFcMg@mail.gmail.com>
+ <87tuoambdb.wl-maz@kernel.org>
+In-Reply-To: <87tuoambdb.wl-maz@kernel.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Wed, 14 Apr 2021 07:41:20 -0400
+Message-ID: <CAMdYzYo2+h+=39cw1t=11HUih-O+NUs4hhNaPbrU6si-AbqNiA@mail.gmail.com>
+Subject: Re: [RFC] ITS fails to allocate on rk3568/rk3566
+To: Marc Zyngier <maz@kernel.org>
+Cc: Thomas Gleixner <tglx@linutronix.de>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_041559_321723_149C953A 
-X-CRM114-Status: GOOD (  18.16  )
+X-CRM114-CacheID: sfid-20210414_044134_354063_75B58B67 
+X-CRM114-Status: GOOD (  23.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,69 +114,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 14. April 2021, 13:03:25 CEST schrieb Peter Geis:
-> On Tue, Apr 13, 2021 at 7:37 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> > > > +static void rk3566_set_to_rmii(struct rk_priv_data *bsp_priv)
-> > > > +{
-> > > > +       struct device *dev = &bsp_priv->pdev->dev;
-> > > > +
-> > > > +       if (IS_ERR(bsp_priv->grf)) {
-> > > > +               dev_err(dev, "%s: Missing rockchip,grf property\n", __func__);
-> > > > +               return;
-> > > > +       }
-> > > > +
-> > > > +       regmap_write(bsp_priv->grf, RK3568_GRF_GMAC1_CON1,
-> > > > +                    RK3568_GMAC_PHY_INTF_SEL_RMII);
-> > > > +}
-> > > > +
-> > > > +static void rk3568_set_to_rgmii(struct rk_priv_data *bsp_priv,
-> > > > +                               int tx_delay, int rx_delay)
-> > > > +{
-> > > > +       struct device *dev = &bsp_priv->pdev->dev;
-> > > > +
-> > > > +       if (IS_ERR(bsp_priv->grf)) {
-> > > > +               dev_err(dev, "Missing rockchip,grf property\n");
-> > > > +               return;
-> > > > +       }
-> > > > +
-> > > > +       regmap_write(bsp_priv->grf, RK3568_GRF_GMAC0_CON1,
-> > > > +                    RK3568_GMAC_PHY_INTF_SEL_RGMII |
-> > > > +                    RK3568_GMAC_RXCLK_DLY_ENABLE |
-> > > > +                    RK3568_GMAC_TXCLK_DLY_ENABLE);
-> > > > +
-> > > > +       regmap_write(bsp_priv->grf, RK3568_GRF_GMAC0_CON0,
-> > > > +                    RK3568_GMAC_CLK_RX_DL_CFG(rx_delay) |
-> > > > +                    RK3568_GMAC_CLK_TX_DL_CFG(tx_delay));
-> > > > +
-> > > > +       regmap_write(bsp_priv->grf, RK3568_GRF_GMAC1_CON1,
-> > > > +                    RK3568_GMAC_PHY_INTF_SEL_RGMII |
-> > > > +                    RK3568_GMAC_RXCLK_DLY_ENABLE |
-> > > > +                    RK3568_GMAC_TXCLK_DLY_ENABLE);
-> > > > +
-> > > > +       regmap_write(bsp_priv->grf, RK3568_GRF_GMAC1_CON0,
-> > > > +                    RK3568_GMAC_CLK_RX_DL_CFG(rx_delay) |
-> > > > +                    RK3568_GMAC_CLK_TX_DL_CFG(tx_delay));
-> > >
-> > > Since there are two GMACs on the rk3568, and either, or, or both may
-> > > be enabled in various configurations, we should only configure the
-> > > controller we are currently operating.
-> 
-> Perhaps we should have match data (such as reg = <0>, or against the
-> address) to identify the individual controllers.
+On Tue, Apr 13, 2021 at 11:51 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> On Tue, 13 Apr 2021 16:03:51 +0100,
+> Peter Geis <pgwipeout@gmail.com> wrote:
+> >
+> > On Tue, Apr 13, 2021 at 10:01 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> [...]
+>
+> > > What happens if you hack all the allocations to happen in the low 4GB
+> > > of the PA space?
+> >
+> > It seems to work correctly.
+> > The downstream hacks used GFP_DMA32 which gets discarded by
+> > kmalloc_fix_flags on certain allocations.
+> > Switching to GFP_DMA seems to have satisfied it, but it feels wrong
+> > using this code.
+> > Need to check the corner cases to make sure I'm not missing something.
+>
+> The problem is that GFP_DMA doesn't always mean the same thing.
+> Overall, we need to hear from Rockchip about the exact nature of the
+> problem, and then we *may* be able to work something out.
 
-Hmm, "reg" will be used by the actual mmio address of the controller,
-so matching against that should be the way I guess.
+From what I've read, GFP_DMA allocates as low as possible, while
+GFP_DMA32 ensures it's in the 32 bit address range, am I understanding
+this correctly?
+Is there a reason GFP_DMA is permitted while GFP_DMA32 is not, aside
+from backwards compatibility?
+(I saw the notes about how we aren't really supposed to rely on these flags)
 
-We're already doing something similar for dsi:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c#n1170
+I've also confirmed that their disabling shareability and caching is necessary.
 
+>
+> I'd also like to understand whether it is broken because you happen to
+> have pre-release silicon that will never make it into the wild, or if
+> this is the real thing that is going to ship on millions of devices.
 
-Heiko
+My understanding is these chips are samples prior to the full
+production run, but we are waiting on official comment from Rockchip
+about this particular errata.
 
-
-
-
-
+>
+> Thanks,
+>
+>         M.
+>
+> --
+> Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
