@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24CF8C433B4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 08:42:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70170C433ED
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 08:43:35 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EEAA61152
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 08:42:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EEAA61152
+	by mail.kernel.org (Postfix) with ESMTPS id BAD3261152
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 08:43:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAD3261152
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,78 +24,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/+jBu2z3N03C+LITSZCPJ6hEpeVUoeFlOMxVfA5qyCY=; b=f6eBfT2usDtzuC+6ED2ZKMLe42
-	LGU2Gv21lwGALbgRIEqNeAtvKYTKRJWmCSjdaf1WGAROMD1s7zKTRBAxkUgQhwV0b4yRlgF+0n9Ri
-	tJXq98PYWtNDAbG6G0Jzl+7q0vtM4ZLKqJGDYb7eI39O6n9z88i/fauMLtvcV3tdFptNs45XfCfi7
-	dNZineb3Ibcvk7SWGhZVXXGNb+gsEKyo4pS4sHF2cPTJBEftW0qQFCBfJHE3cSPcwYSj4dU/zAJ0z
-	65frvXeOYxBv3WXOJ/KEytU9K/FIDIUXpWkZq/8Oj/DZiIs+R7k+3mBO1ikQV1lTO9SmMduT75B1d
-	8xnuRU5Q==;
+	bh=7debzzuSAmfItyUo14aIHGyr2QaoP1SLTpWloKGgcdg=; b=Zps/yX/174hw8V3pmQjQr5ZAZK
+	U0/XL2jqB/7oAwBhtHwVNQ3+YShgRl6O1EDbEfV5+nKSBWwP6PKm25ymrmpVaQnltpcP8xh7eQSma
+	DLcrsns78AI6jCGhwyEmDlbNH3CTaGRKIOfsBzD79kMRVGs0ieQSva+kH/YhGjDQF2fMfshtGMzBO
+	DakuSZh4qcbKB21ve5Ko59D56vZCPHKgNcxYIL2BcS8yWbTFc9vy/WfQHY3U89vLzsTxJ0Sl32Ewj
+	oMj+Y4g4QO9qUrysYKySkZTYTVxtpbLo6eUcldrA7tVJoRUgUbZ+eiTQdQ0YWDluwj9H0e8Ng8cWH
+	YOSdCJaQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXK31-001P7s-Vk; Fri, 16 Apr 2021 08:41:56 +0000
+	id 1lXK4P-001PX1-1K; Fri, 16 Apr 2021 08:43:21 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXJVg-001Hdu-9V; Fri, 16 Apr 2021 08:07:31 +0000
+ id 1lXJW9-001HfB-1O; Fri, 16 Apr 2021 08:08:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=5mB5QX7GLjRWhPxkNbmeC6oHdNd9j3nQs38k8Ij4Qs8=; b=PKtvoJJEMlgm69q1vEYP7R0i/f
- 7ezRFsR64IlXedB7b/YlnHiU1ZAB9VmveB7XMnq3BuupgKH+8yv1zl++ALHOVkR3w+Em+UMT3wvFH
- COWUe4R0mL63eCzbnSSRxIg16pt7BtDltIPfHAC01ShyVibv31wGce54gHfHBMm+e6IjEdA4uu0Em
- SNjzSRuApVAcEzJ+9jof4+zYcJziYvZ2skwgNb3dpNZEkgiUMaAOquWEMYVdXd7clJEMn7C9HA8FE
- mZllj41lt2PHjZ4ZDrWSAL/tNkenczw+cc7kCHLZ3vD4HufX03i3mVxSNpAk962y/bnDVDc3dibYZ
- IQFkkcaQ==;
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ bh=JB/6AfI4ud8q47U6IB+7D2XVQS2wvjRMG+o3isDfwPk=; b=AlrmFUVhQ+6QJ9DNJ6Q9TP7vUl
+ qsQpBkIZvbbgL164YWZBXYSwFfKAuMTRDRNZ7nrorCq/derhJacGTEMCPPr2jR5y4eA6i1DlfzT3o
+ HBXxw+bNUt2IIu0NsRkcKadmkLunS7mHh9YB+Ke9fvIpeLZgHKs2Ruk0TdT/vGh60P8r38x+4awZ7
+ Y4th+JC8zY/aj+Fa7zd077kzCIBN79/iXJPnxM/gH+2CbpRCxUMJiXe6iz3baRMkHetDijo1veIRP
+ 1yarn0OtRa6JI8r1MsCACOYjGngEmgmCiLVTtN75ziqqEkmkJg6HC89MOrEDxy+Tp4Vb4/GfhCcXf
+ QAtSAE2A==;
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXJVd-009Ayk-Gw; Fri, 16 Apr 2021 08:07:27 +0000
-Received: by mail-ej1-x632.google.com with SMTP id v6so39538999ejo.6;
- Fri, 16 Apr 2021 01:07:25 -0700 (PDT)
+ id 1lXJW6-009B0Z-DB; Fri, 16 Apr 2021 08:07:55 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id x12so20061461ejc.1;
+ Fri, 16 Apr 2021 01:07:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=5mB5QX7GLjRWhPxkNbmeC6oHdNd9j3nQs38k8Ij4Qs8=;
- b=AwTXqkjr9yEGijafn44dXzCqlv90zRICVYq1NM7xFRYQs8ohd6K5qu7MaKwfoWotwA
- CJ07paTYoSrQBgxZ+792KGnEQ1qJECo8KhFDyz98cVsF5y+2ynmOuwH6/kpPSKgTN2Cb
- OqFXY3T060fTjDWPPYGKb8sU+Pbtg12mCEViEnirTE/YkVs4ONwX4VGVP9lFCzjKJQnF
- K2Ewm4gPRYqPgrEiscZwx9na1EWfVqFdbDUW42Bx+9aZYAPOMurVo1r28S9Kh/SbjX/6
- ww9kFR2uoZvXb4Um3EZ80GmME7yaPPUkjMYo5D+v+ciu/+YiqZm/4pv1C23wqIDqWP+R
- meeQ==
+ bh=JB/6AfI4ud8q47U6IB+7D2XVQS2wvjRMG+o3isDfwPk=;
+ b=gX9kjeKTIrlEdDQZhJ3nxnCkByo/W5bezm2SwwaIQFgr1v6e/AQYEKYc88mVWvDbev
+ 3nOCQcc6ycWLc314y9oz8HfO+f7/ijdTQfJNEm2j06jrAMpkEi+biFG2bEEmhQbGYnLX
+ FyMeW+8ckeUDTmYB4yG6dB74BlSnwHdZrs7uG1Jyudbr0cXCxTp+kWn0xdnXfImfLIv3
+ YZ8GscJY3/63egkVdR4iFc1NxBG3u3lY2LlQElQKavGsHKe9NHFrzFpjCpLtwK8cxMbF
+ m95rVOwN2XYBZMeGCTCl3AdTZO8nucKiTUDY6gempDR8ZPEs0bHkB6Ai78GNatJAQP28
+ Y1OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=5mB5QX7GLjRWhPxkNbmeC6oHdNd9j3nQs38k8Ij4Qs8=;
- b=CwsxtZLvHLyH5aBg8sCTUt11pAXOOBsmJP7bfOikzbb5G71loam/riI6UbU+3dWz0A
- jtDBCoSwSGNGCvrzASd+6fDeifiEi7drIiHuO+2ySN1u2wb5uDceccb/udfJEeiieKzt
- qAFm4mGvgqTp7HdcEiAN+cXoow1PYnpAA6vhGRJdIHLJ9RhGQcdRCyLY4uSq44etTVZj
- 4dS26t0UFe8ZHnuO8PkhnjWeNgTaCOX8higiI2uhy7L1Cv14mDEMaB1JgAD6xK1lIdfV
- o094rW4QlFl5ha555SvO3mv0Tib6v4krQqar5GUdlPIKfLAbG2bKCcVmRrOMy2mxuobS
- lxUA==
-X-Gm-Message-State: AOAM531kGNTJ7tOke+ApZnqnAkmhq17tzHbY+JZ82bF3ZbNG9CL6eoo6
- u7/suuzAt689jBPWrFsDQ9s=
-X-Google-Smtp-Source: ABdhPJxsnwqZxHbQOdfYAN0xepj06UIJOHB4nn7GdsZK/03ovcNDupy6YDHMNbcqsqdmDQv2aZeobg==
-X-Received: by 2002:a17:906:170a:: with SMTP id
- c10mr7051497eje.493.1618560444126; 
- Fri, 16 Apr 2021 01:07:24 -0700 (PDT)
+ bh=JB/6AfI4ud8q47U6IB+7D2XVQS2wvjRMG+o3isDfwPk=;
+ b=O7nYgaWMHjHonwbM6/QoBXnfILs907GOvd5UUF4aVLhPHhiZqu26swJKn5aCnTCWoV
+ kzZqRLtAvoVnwk87E+7crEAXfje3JMwTmyl4qwKPzvKuWQcV1Lj0Vm3nEGbvo1WeRpSF
+ E9dr7xrdhrUbtcdoij9t3OG7KqPsyEHVNo/5/UWEf0ZyYWU5wcHeAIffcD1tjWYYCzFL
+ Ciu3qCE7mCHpU/pRm7StpIc7jDjA2ehz/Vw6BCkvBWAKjg1/Mn7BfBcYxoAe66Ht6xoQ
+ gaksJ1Ou1uU2nFIDuThqiWfH/DLsW0m+OosdxjeHCnTsBj5tGQ0tnhIGAbCegUv2vKXq
+ 8GGw==
+X-Gm-Message-State: AOAM5324tdzZNr9Zg9cvvyZZceRjL8QIShY7DmbXukfwoHz8ghJaAgOW
+ fx1Rnd9V5pnaosTmw98TGkA=
+X-Google-Smtp-Source: ABdhPJz0qwv5UviIlnsK3nx1HPlgfkqcRasGMe4EXUnjKGPYp+ZNof/CYOEvlKn0P3kjoEnQ5iIqoA==
+X-Received: by 2002:a17:906:e84:: with SMTP id
+ p4mr7194244ejf.248.1618560472807; 
+ Fri, 16 Apr 2021 01:07:52 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id q16sm4672303edv.61.2021.04.16.01.07.15
+ by smtp.gmail.com with ESMTPSA id q16sm4672303edv.61.2021.04.16.01.07.37
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 16 Apr 2021 01:07:23 -0700 (PDT)
+ Fri, 16 Apr 2021 01:07:52 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, zhangqing@rock-chips.com, enric.balletbo@collabora.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v8 08/15] arm64: dts: rockchip: add #power-domain-cells to
- power domain nodes
-Date: Fri, 16 Apr 2021 10:03:35 +0200
-Message-Id: <20210416080342.18614-9-jbx6244@gmail.com>
+Subject: [PATCH v8 11/15] dt-bindings: arm: rockchip: convert pmu.txt to YAML
+Date: Fri, 16 Apr 2021 10:03:38 +0200
+Message-Id: <20210416080342.18614-12-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210416080342.18614-1-jbx6244@gmail.com>
 References: <20210416080342.18614-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_010725_586402_0EF92439 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20210416_010754_464080_8D5EF146 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,244 +113,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add #power-domain-cells to power domain nodes, because they
-are required by power-domain.yaml
+Current dts files with 'pmu' nodes are manually verified.
+In order to automate this process pmu.txt
+has to be converted to yaml.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi   |  8 ++++++++
- arch/arm64/boot/dts/rockchip/rk3328.dtsi |  3 +++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 20 ++++++++++++++++++++
- 3 files changed, 31 insertions(+)
+ .../devicetree/bindings/arm/rockchip/pmu.txt       | 16 -------
+ .../devicetree/bindings/arm/rockchip/pmu.yaml      | 49 ++++++++++++++++++++++
+ 2 files changed, 49 insertions(+), 16 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/rockchip/pmu.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 2b43c3d72..c96ebfe3e 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -250,12 +250,14 @@
- 					 <&cru HCLK_OTG>,
- 					 <&cru SCLK_OTG_ADP>;
- 				pm_qos = <&qos_usb_host>, <&qos_usb_otg>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_SDCARD {
- 				reg = <PX30_PD_SDCARD>;
- 				clocks = <&cru HCLK_SDMMC>,
- 					 <&cru SCLK_SDMMC>;
- 				pm_qos = <&qos_sdmmc>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_GMAC {
- 				reg = <PX30_PD_GMAC>;
-@@ -264,6 +266,7 @@
- 					 <&cru SCLK_MAC_REF>,
- 					 <&cru SCLK_GMAC_RX_TX>;
- 				pm_qos = <&qos_gmac>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_MMC_NAND {
- 				reg = <PX30_PD_MMC_NAND>;
-@@ -277,6 +280,7 @@
- 					  <&cru SCLK_SFC>;
- 				pm_qos = <&qos_emmc>, <&qos_nand>,
- 					 <&qos_sdio>, <&qos_sfc>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_VPU {
- 				reg = <PX30_PD_VPU>;
-@@ -284,6 +288,7 @@
- 					 <&cru HCLK_VPU>,
- 					 <&cru SCLK_CORE_VPU>;
- 				pm_qos = <&qos_vpu>, <&qos_vpu_r128>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_VO {
- 				reg = <PX30_PD_VO>;
-@@ -300,6 +305,7 @@
- 					 <&cru SCLK_VOPB_PWM>;
- 				pm_qos = <&qos_rga_rd>, <&qos_rga_wr>,
- 					 <&qos_vop_m0>, <&qos_vop_m1>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_VI {
- 				reg = <PX30_PD_VI>;
-@@ -311,11 +317,13 @@
- 				pm_qos = <&qos_isp_128>, <&qos_isp_rd>,
- 					 <&qos_isp_wr>, <&qos_isp_m1>,
- 					 <&qos_vip>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@PX30_PD_GPU {
- 				reg = <PX30_PD_GPU>;
- 				clocks = <&cru SCLK_GPU>;
- 				pm_qos = <&qos_gpu>;
-+				#power-domain-cells = <0>;
- 			};
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 35df57535..470da614e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -302,13 +302,16 @@
- 
- 			power-domain@RK3328_PD_HEVC {
- 				reg = <RK3328_PD_HEVC>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3328_PD_VIDEO {
- 				reg = <RK3328_PD_VIDEO>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3328_PD_VPU {
- 				reg = <RK3328_PD_VPU>;
- 				clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+				#power-domain-cells = <0>;
- 			};
- 		};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 19614c2ce..99f85b1d9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -973,6 +973,7 @@
- 				clocks = <&cru ACLK_IEP>,
- 					 <&cru HCLK_IEP>;
- 				pm_qos = <&qos_iep>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_RGA {
- 				reg = <RK3399_PD_RGA>;
-@@ -980,12 +981,14 @@
- 					 <&cru HCLK_RGA>;
- 				pm_qos = <&qos_rga_r>,
- 					 <&qos_rga_w>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_VCODEC {
- 				reg = <RK3399_PD_VCODEC>;
- 				clocks = <&cru ACLK_VCODEC>,
- 					 <&cru HCLK_VCODEC>;
- 				pm_qos = <&qos_video_m0>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_VDU {
- 				reg = <RK3399_PD_VDU>;
-@@ -993,6 +996,7 @@
- 					 <&cru HCLK_VDU>;
- 				pm_qos = <&qos_video_m1_r>,
- 					 <&qos_video_m1_w>;
-+				#power-domain-cells = <0>;
- 			};
- 
- 			/* These power domains are grouped by VD_GPU */
-@@ -1000,53 +1004,63 @@
- 				reg = <RK3399_PD_GPU>;
- 				clocks = <&cru ACLK_GPU>;
- 				pm_qos = <&qos_gpu>;
-+				#power-domain-cells = <0>;
- 			};
- 
- 			/* These power domains are grouped by VD_LOGIC */
- 			power-domain@RK3399_PD_EDP {
- 				reg = <RK3399_PD_EDP>;
- 				clocks = <&cru PCLK_EDP_CTRL>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_EMMC {
- 				reg = <RK3399_PD_EMMC>;
- 				clocks = <&cru ACLK_EMMC>;
- 				pm_qos = <&qos_emmc>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_GMAC {
- 				reg = <RK3399_PD_GMAC>;
- 				clocks = <&cru ACLK_GMAC>,
- 					 <&cru PCLK_GMAC>;
- 				pm_qos = <&qos_gmac>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_SD {
- 				reg = <RK3399_PD_SD>;
- 				clocks = <&cru HCLK_SDMMC>,
- 					 <&cru SCLK_SDMMC>;
- 				pm_qos = <&qos_sd>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_SDIOAUDIO {
- 				reg = <RK3399_PD_SDIOAUDIO>;
- 				clocks = <&cru HCLK_SDIO>;
- 				pm_qos = <&qos_sdioaudio>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_TCPD0 {
- 				reg = <RK3399_PD_TCPD0>;
- 				clocks = <&cru SCLK_UPHY0_TCPDCORE>,
- 					 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_TCPD1 {
- 				reg = <RK3399_PD_TCPD1>;
- 				clocks = <&cru SCLK_UPHY1_TCPDCORE>,
- 					 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_USB3 {
- 				reg = <RK3399_PD_USB3>;
- 				clocks = <&cru ACLK_USB3>;
- 				pm_qos = <&qos_usb_otg0>,
- 					 <&qos_usb_otg1>;
-+				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3399_PD_VIO {
- 				reg = <RK3399_PD_VIO>;
-+				#power-domain-cells = <1>;
- 				#address-cells = <1>;
- 				#size-cells = <0>;
- 
-@@ -1056,6 +1070,7 @@
- 						 <&cru HCLK_HDCP>,
- 						 <&cru PCLK_HDCP>;
- 					pm_qos = <&qos_hdcp>;
-+					#power-domain-cells = <0>;
- 				};
- 				power-domain@RK3399_PD_ISP0 {
- 					reg = <RK3399_PD_ISP0>;
-@@ -1063,6 +1078,7 @@
- 						 <&cru HCLK_ISP0>;
- 					pm_qos = <&qos_isp0_m0>,
- 						 <&qos_isp0_m1>;
-+					#power-domain-cells = <0>;
- 				};
- 				power-domain@RK3399_PD_ISP1 {
- 					reg = <RK3399_PD_ISP1>;
-@@ -1070,9 +1086,11 @@
- 						 <&cru HCLK_ISP1>;
- 					pm_qos = <&qos_isp1_m0>,
- 						 <&qos_isp1_m1>;
-+					#power-domain-cells = <0>;
- 				};
- 				power-domain@RK3399_PD_VO {
- 					reg = <RK3399_PD_VO>;
-+					#power-domain-cells = <1>;
- 					#address-cells = <1>;
- 					#size-cells = <0>;
- 
-@@ -1082,12 +1100,14 @@
- 							 <&cru HCLK_VOP0>;
- 						pm_qos = <&qos_vop_big_r>,
- 							 <&qos_vop_big_w>;
-+						#power-domain-cells = <0>;
- 					};
- 					power-domain@RK3399_PD_VOPL {
- 						reg = <RK3399_PD_VOPL>;
- 						clocks = <&cru ACLK_VOP1>,
- 							 <&cru HCLK_VOP1>;
- 						pm_qos = <&qos_vop_little>;
-+						#power-domain-cells = <0>;
- 					};
- 				};
- 			};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.txt b/Documentation/devicetree/bindings/arm/rockchip/pmu.txt
+deleted file mode 100644
+index 3ee9b428b..000000000
+--- a/Documentation/devicetree/bindings/arm/rockchip/pmu.txt
++++ /dev/null
+@@ -1,16 +0,0 @@
+-Rockchip power-management-unit:
+--------------------------------
+-
+-The pmu is used to turn off and on different power domains of the SoCs
+-This includes the power to the CPU cores.
+-
+-Required node properties:
+-- compatible value : = "rockchip,rk3066-pmu";
+-- reg : physical base address and the size of the registers window
+-
+-Example:
+-
+-	pmu@20004000 {
+-		compatible = "rockchip,rk3066-pmu";
+-		reg = <0x20004000 0x100>;
+-	};
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+new file mode 100644
+index 000000000..0b816943d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+@@ -0,0 +1,49 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/rockchip/pmu.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Power Management Unit (PMU)
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  The PMU is used to turn on and off different power domains of the SoCs.
++  This includes the power to the CPU cores.
++
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - rockchip,rk3066-pmu
++
++  required:
++    - compatible
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - rockchip,rk3066-pmu
++      - const: syscon
++      - const: simple-mfd
++
++  reg:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: true
++
++examples:
++  - |
++    pmu@20004000 {
++      compatible = "rockchip,rk3066-pmu", "syscon", "simple-mfd";
++      reg = <0x20004000 0x100>;
++    };
 -- 
 2.11.0
 
