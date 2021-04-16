@@ -2,91 +2,86 @@ Return-Path: <SRS0=xf8t=JN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EACE6C433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 10:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A869AC433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 11:31:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D7A9610E7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 10:55:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D7A9610E7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 20A1E61107
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Apr 2021 11:31:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20A1E61107
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=earth.li
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=H3tF2omcXLTngWv5FyJ/vvKwEw8/FzqR1dmSufjdxyE=; b=R2gI+Zktl0GzdQYH9TGr8UGYy
-	l5RBJmfJ/F8PhqdDoxIQNKj6eVOtd9jzVzNZvVwN+bxGBAzq0qAVV6833tVTLjhgJ3r4NIhrtum79
-	ZaNniCzZK/ecqkz+sMSJuhHmXj7zfr/aGpxRx40ypxrip74OfaTvpgVGitQ+XTf1Jbew5oScM1ame
-	n8nCAX/UP6qf2EVeGwo4N3V9hM/XH3qttnYz3NoX2BkBmrgOswphy9xVXe1XuPYD7oNIapEDPOAyz
-	Plsm1jspCpilYT9qahZ7ZHEUEnLIrUUd2HMZtCFYIoRaHEg8mWRiU5kVRtAkJNvqlUIkh372H+XnC
-	YCjmf/kFQ==;
+	 bh=zJE8KAXsZqkjqyu8/LuiM2nHv/SlkKHx25FRSSH4k0U=; b=Gwexg8FUzFI+f/bAKWCLPINP+
+	/M2lUOJpYKs818VHn5D8Ts6aKywzY6FC2oGDhEKbaku8OVYjCENHGCyBYIGznt8qX28lAzL03J9WC
+	irDzjSBUCFNXLfCMTeSK+xmzZDmTaC/BpD0+sHXhZq3B/6RSF6gH+5YRSpjRyuQCB5CR2VzET3uZU
+	9d3IqOBK4AbzrOPezO3C2mZxgsZlxYzBBEWVInDFlbpZaUz3E5BtNbheiFtmikeh8W61ro3ovKg2m
+	hS9/x3tmsAwTcr9ZiMJey9TAQol1tcypwALLqnv0wRydQSwuYFNza64F65OVxKBrdht2gYY7zTkpn
+	dL1rD8C4w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXM8D-001oVt-P9; Fri, 16 Apr 2021 10:55:26 +0000
+	id 1lXMhE-001vam-Vh; Fri, 16 Apr 2021 11:31:37 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXM7Y-001oIa-Ib
- for linux-rockchip@desiato.infradead.org; Fri, 16 Apr 2021 10:54:45 +0000
+ id 1lXMfz-001vMD-NL; Fri, 16 Apr 2021 11:30:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=v+63l0Umk8ETP29tJ8qEANf3jDdFoqLZT3p6CAtfPw4=; b=llCFFlYDQSpGcTO3CQ9+n1Dcc9
- rTr0W63sbP9Hn7gx7L4LZwVQehxwuFkVKIHwvx56gsv+6b6Bb5InJtyGrAMpUerv5HeFcG9Q3tyOR
- LJsyg5D/sTiSJDYQkDEvn8gbyXwbwEsIGkG/6pwsNdt9OnutQhBxSWy/5AvhyHddO6kS05VnTo+Iu
- I5fNc9W1cq/77/DGavCyBtzF1R/bvkv89dhmND5kSP3zg853bEHLPUHhXovyG7iiFjYPNg/rxlUO+
- eWnhzj3IFd0UUv1/OwZu1PjDZ/SKqf5ygtQrZIaz5gBNNYGmwy4riQAfIcNVnLNHneyOBq5k8Enwj
- VYs+1Mwg==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
+ :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=RJbwMca3HWTPhpw7xIW9Qq7e+WzukTXRdxw66YuQufo=; b=I0VK/772Zbc4vGF+btDZpyAxp5
+ zVc5FPyVfLZ7yIMOW3+qvW5Qv8tVervBlgcFH/242FRJWzyUrb04jDblqT8lTVP91CA81Dh0X9/fc
+ JF1IY7jZGupeuDCvkrZJLdZ1T61JJxtCt5bypXNh8oBUasNOgAApNpqx7n5YRl/N/qkiN5b8VHOM0
+ 8xej+mN3JOp3AL4V6QDbzYJkK6NgYmc05t1mGn968u9nl6UsPQke3oey4n6IdxEB556sluLz4OWeq
+ tHjU8dfDH7LSVxX4mXRJcGosyA58o/fXyCednHYCCMBVC3+Y+06ojCcU1eMddNG+cFbJL/gDFbkUk
+ JMpO+FBA==;
+Received: from the.earth.li ([2a00:1098:86:4d:c0ff:ee:15:900d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXM7V-009IAV-Gn
- for linux-rockchip@lists.infradead.org; Fri, 16 Apr 2021 10:54:43 +0000
-Received: from gallifrey.ext.pengutronix.de
- ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <l.stach@pengutronix.de>)
- id 1lXM7C-0004vQ-27; Fri, 16 Apr 2021 12:54:22 +0200
-Message-ID: <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
-Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
- register
-From: Lucas Stach <l.stach@pengutronix.de>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org, 
- robh+dt@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de, 
- festevam@gmail.com, lee.jones@linaro.org, gregkh@linuxfoundation.org, 
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org, 
- jernej.skrabec@siol.net, hverkuil-cisco@xs4all.nl,
- emil.l.velikov@gmail.com,  "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Jacky
- Bai <ping.bai@nxp.com>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
- cphealy@gmail.com,  linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Date: Fri, 16 Apr 2021 12:54:16 +0200
-In-Reply-To: <20210407073534.376722-4-benjamin.gaignard@collabora.com>
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-4-benjamin.gaignard@collabora.com>
-User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
+ id 1lXMfw-009JnZ-6l; Fri, 16 Apr 2021 11:30:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=earth.li;
+ s=the; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=RJbwMca3HWTPhpw7xIW9Qq7e+WzukTXRdxw66YuQufo=; b=aUGBP3d/qfBQUdtvaDMKYuBTvz
+ slWpKMc7ouKXgcXYzKeggC9IZ6HPyJoZWUxeHaIKrCmWn411wmMts/6786gOuSsUKQ8wST2uJh5XY
+ 6i/8izHDInpAl/5Z+ZQJNoO+M4n4WSSSVvKsJeaQCca2mzgY3+m2lIRUtErZHhzLFU4eBFKJ8IPvI
+ mePo2K407iV7UCCJ8LglNCB2kHe+N370JaeETmGqM01hzEsGSQBRuLQeEP/WGngqYU7qLD6q7Tmpq
+ RIA6BJ0K9QnYOEXU4MAFCSHZ+m92f0GSJqQ06xdtDYj47SJrvfOykBAacmTiDEMY7tzjmMAuafV6U
+ fBsmCN4Q==;
+Received: from noodles by the.earth.li with local (Exim 4.92)
+ (envelope-from <noodles@earth.li>)
+ id 1lXMfk-0003r3-Hf; Fri, 16 Apr 2021 12:30:04 +0100
+Date: Fri, 16 Apr 2021 12:30:04 +0100
+From: Jonathan McDowell <noodles@earth.li>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] drm/rockchip: Cope with endpoints that haven't been
+ registered yet
+Message-ID: <20210416113004.GW11733@earth.li>
+References: <20210316182753.GA25685@earth.li>
+ <3104631.44csPzL39Z@phil>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
-X-SA-Exim-Mail-From: l.stach@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <3104631.44csPzL39Z@phil>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_035441_732741_B38AF0AF 
-X-CRM114-Status: GOOD (  32.16  )
+X-CRM114-CacheID: sfid-20210416_043017_201486_8FC378BF 
+X-CRM114-Status: GOOD (  32.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,131 +94,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIGRlbSAwNy4wNC4yMDIxIHVtIDA5OjM1ICswMjAwIHNjaHJpZWIgQmVuamFt
-aW4gR2FpZ25hcmQ6Cj4gSW4gb3JkZXIgdG8gYmUgYWJsZSB0byBzaGFyZSB0aGUgY29udHJvbCBo
-YXJkd2FyZSBibG9jayBiZXR3ZWVuCj4gVlBVcyB1c2UgYSBzeXNjb24gaW5zdGVhZCBhIGlvcmVt
-YXAgaXQgaW4gdGhlIGRyaXZlci4KPiBUbyBrZWVwIHRoZSBjb21wYXRpYmlsaXR5IHdpdGggb2xk
-ZXIgRFQgaWYgJ254cCxpbXg4bXEtdnB1LWN0cmwnCj4gcGhhbmRsZSBpcyBub3QgZm91bmQgbG9v
-ayBhdCAnY3RybCcgcmVnLW5hbWUuCj4gV2l0aCB0aGUgbWV0aG9kIGl0IGJlY29tZXMgdXNlbGVz
-cyB0byBwcm92aWRlIGEgbGlzdCBvZiByZWdpc3Rlcgo+IG5hbWVzIHNvIHJlbW92ZSBpdC4KClNv
-cnJ5IGZvciBwdXR0aW5nIGEgc3Bva2UgaW4gdGhlIHdoZWVsIGFmdGVyIG1hbnkgaXRlcmF0aW9u
-cyBvZiB0aGUKc2VyaWVzLgoKV2UganVzdCBkaXNjdXNzZWQgYSB3YXkgZm9yd2FyZCBvbiBob3cg
-dG8gaGFuZGxlIHRoZSBjbG9ja3MgYW5kIHJlc2V0cwpwcm92aWRlZCBieSB0aGUgYmxrY3RsIGJs
-b2NrIG9uIGkuTVg4TU0gYW5kIGxhdGVyIGFuZCBpdCBzZWVtcyB0aGVyZSBpcwphIGNvbnNlbnN1
-cyBvbiB0cnlpbmcgdG8gcHJvdmlkZSB2aXJ0dWFsIHBvd2VyIGRvbWFpbnMgZnJvbSBhIGJsa2N0
-bApkcml2ZXIsIGNvbnRyb2xsaW5nIGNsb2NrcyBhbmQgcmVzZXRzIGZvciB0aGUgZGV2aWNlcyBp
-biB0aGUgcG93ZXIKZG9tYWluLiBJIHdvdWxkIGxpa2UgdG8gYXZvaWQgaW50cm9kdWNpbmcgeWV0
-IGFub3RoZXIgd2F5IG9mIGhhbmRsaW5nCnRoZSBibGtjdGwgYW5kIHRodXMgd291bGQgbGlrZSB0
-byBhbGlnbiB0aGUgaS5NWDhNUSBWUFUgYmxrY3RsIHdpdGgKd2hhdCB3ZSBhcmUgcGxhbm5pbmcg
-dG8gZG8gb24gdGhlIGxhdGVyIGNoaXAgZ2VuZXJhdGlvbnMuCgpDQydpbmcgSmFja3kgQmFpIGFu
-ZCBQZW5nIEZhbiBmcm9tIE5YUCwgYXMgdGhleSB3ZXJlIGdvaW5nIHRvIGdpdmUgdGhpcwp2aXJ0
-dWFsIHBvd2VyIGRvbWFpbiB0aGluZyBhIHNob3QuCgpSZWdhcmRzLApMdWNhcwoKPiBTaWduZWQt
-b2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNv
-bT4KPiBSZXZpZXdlZC1ieTogUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4K
-PiAtLS0KPiB2ZXJzaW9uIDk6Cj4gwqAtIENvcnJlY3Rpb25zIGluIGNvbW1pdCBtZXNzYWdlCj4g
-Cj4gdmVyc2lvbiA3Ogo+IMKgLSBBZGQgUGhpbGlwcCByZXZpZXdlZC1ieSB0YWcuCj4gwqAtIENo
-YW5nZSBzeXNjb24gcGhhbmRsZSBuYW1lLgo+IMKgCj4gCj4gCj4gCj4gdmVyc2lvbiA1Ogo+IMKg
-LSB1c2Ugc3lzY29uIGluc3RlYWQgb2YgVlBVIHJlc2V0IGRyaXZlci4KPiDCoC0gaWYgRFQgZG9l
-c24ndCBwcm92aWRlIHN5c2NvbiBrZWVwIGJhY2t3YXJkIGNvbXBhdGliaWx0eSBieSB1c2luZwo+
-IMKgwqDCoCdjdHJsJyByZWctbmFtZS4KPiAKPiDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaGFudHJvLmggICAgICAgfCAgNSArLQo+IMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
-by9pbXg4bV92cHVfaHcuYyB8IDUyICsrKysrKysrKysrKy0tLS0tLS0tLQo+IMKgMiBmaWxlcyBj
-aGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCAyMyBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm8uaCBiL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvLmgKPiBpbmRleCA2YzFiODg4YWJlNzUuLjM3YjljZTA0YmQ0
-ZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyby5oCj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm8uaAo+IEBAIC0xMyw2ICsx
-Myw3IEBACj4gwqAjZGVmaW5lIEhBTlRST19IXwo+IMKgCj4gCj4gCj4gCj4gwqAjaW5jbHVkZSA8
-bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPiDC
-oCNpbmNsdWRlIDxsaW51eC92aWRlb2RldjIuaD4KPiDCoCNpbmNsdWRlIDxsaW51eC93YWl0Lmg+
-Cj4gwqAjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4gQEAgLTE2Nyw3ICsxNjgsNyBAQCBoYW50cm9f
-dmRldl90b19mdW5jKHN0cnVjdCB2aWRlb19kZXZpY2UgKnZkZXYpCj4gwqDCoCogQHJlZ19iYXNl
-czoJCU1hcHBlZCBhZGRyZXNzZXMgb2YgVlBVIHJlZ2lzdGVycy4KPiDCoMKgKiBAZW5jX2Jhc2U6
-CQlNYXBwZWQgYWRkcmVzcyBvZiBWUFUgZW5jb2RlciByZWdpc3RlciBmb3IgY29udmVuaWVuY2Uu
-Cj4gwqDCoCogQGRlY19iYXNlOgkJTWFwcGVkIGFkZHJlc3Mgb2YgVlBVIGRlY29kZXIgcmVnaXN0
-ZXIgZm9yIGNvbnZlbmllbmNlLgo+IC0gKiBAY3RybF9iYXNlOgkJTWFwcGVkIGFkZHJlc3Mgb2Yg
-VlBVIGNvbnRyb2wgYmxvY2suCj4gKyAqIEBjdHJsX2Jhc2U6CQlSZWdtYXAgb2YgVlBVIGNvbnRy
-b2wgYmxvY2suCj4gwqDCoCogQHZwdV9tdXRleDoJCU11dGV4IHRvIHN5bmNocm9uaXplIFY0TDIg
-Y2FsbHMuCj4gwqDCoCogQGlycWxvY2s6CQlTcGlubG9jayB0byBzeW5jaHJvbml6ZSBhY2Nlc3Mg
-dG8gZGF0YSBzdHJ1Y3R1cmVzCj4gwqDCoCoJCQlzaGFyZWQgd2l0aCBpbnRlcnJ1cHQgaGFuZGxl
-cnMuCj4gQEAgLTE4Niw3ICsxODcsNyBAQCBzdHJ1Y3QgaGFudHJvX2RldiB7Cj4gwqAJdm9pZCBf
-X2lvbWVtICoqcmVnX2Jhc2VzOwo+IMKgCXZvaWQgX19pb21lbSAqZW5jX2Jhc2U7Cj4gwqAJdm9p
-ZCBfX2lvbWVtICpkZWNfYmFzZTsKPiAtCXZvaWQgX19pb21lbSAqY3RybF9iYXNlOwo+ICsJc3Ry
-dWN0IHJlZ21hcCAqY3RybF9iYXNlOwo+IMKgCj4gCj4gCj4gCj4gwqAJc3RydWN0IG11dGV4IHZw
-dV9tdXRleDsJLyogdmlkZW9fZGV2aWNlIGxvY2sgKi8KPiDCoAlzcGlubG9ja190IGlycWxvY2s7
-Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaW14OG1fdnB1X2h3
-LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jCj4gaW5kZXgg
-YzIyMmRlMDc1ZWY0Li44ZDBjMzQyNTIzNGIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9pbXg4bV92cHVfaHcuYwo+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vaW14OG1fdnB1X2h3LmMKPiBAQCAtNyw2ICs3LDcgQEAKPiDCoAo+IAo+IAo+IAo+
-IMKgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+IMKgI2luY2x1ZGUgPGxpbnV4L2RlbGF5Lmg+Cj4g
-KyNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4gwqAKPiAKPiAKPiAKPiDCoCNpbmNsdWRl
-ICJoYW50cm8uaCIKPiDCoCNpbmNsdWRlICJoYW50cm9fanBlZy5oIgo+IEBAIC0yNCwzMCArMjUs
-MjggQEAKPiDCoCNkZWZpbmUgQ1RSTF9HMV9QUF9GVVNFCQkweDBjCj4gwqAjZGVmaW5lIENUUkxf
-RzJfREVDX0ZVU0UJMHgxMAo+IMKgCj4gCj4gCj4gCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgcmVn
-bWFwX2NvbmZpZyBjdHJsX3JlZ21hcF9jdHJsID0gewo+ICsJLnJlZ19iaXRzID0gMzIsCj4gKwku
-dmFsX2JpdHMgPSAzMiwKPiArCS5yZWdfc3RyaWRlID0gMHgxNCwKPiArfTsKPiArCj4gwqBzdGF0
-aWMgdm9pZCBpbXg4bV9zb2Z0X3Jlc2V0KHN0cnVjdCBoYW50cm9fZGV2ICp2cHUsIHUzMiByZXNl
-dF9iaXRzKQo+IMKgewo+IC0JdTMyIHZhbDsKPiAtCj4gwqAJLyogQXNzZXJ0ICovCj4gLQl2YWwg
-PSByZWFkbCh2cHUtPmN0cmxfYmFzZSArIENUUkxfU09GVF9SRVNFVCk7Cj4gLQl2YWwgJj0gfnJl
-c2V0X2JpdHM7Cj4gLQl3cml0ZWwodmFsLCB2cHUtPmN0cmxfYmFzZSArIENUUkxfU09GVF9SRVNF
-VCk7Cj4gKwlyZWdtYXBfdXBkYXRlX2JpdHModnB1LT5jdHJsX2Jhc2UsIENUUkxfU09GVF9SRVNF
-VCwgcmVzZXRfYml0cywgMCk7Cj4gwqAKPiAKPiAKPiAKPiDCoAl1ZGVsYXkoMik7Cj4gwqAKPiAK
-PiAKPiAKPiDCoAkvKiBSZWxlYXNlICovCj4gLQl2YWwgPSByZWFkbCh2cHUtPmN0cmxfYmFzZSAr
-IENUUkxfU09GVF9SRVNFVCk7Cj4gLQl2YWwgfD0gcmVzZXRfYml0czsKPiAtCXdyaXRlbCh2YWws
-IHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9TT0ZUX1JFU0VUKTsKPiArCXJlZ21hcF91cGRhdGVfYml0
-cyh2cHUtPmN0cmxfYmFzZSwgQ1RSTF9TT0ZUX1JFU0VULAo+ICsJCQkgICByZXNldF9iaXRzLCBy
-ZXNldF9iaXRzKTsKPiDCoH0KPiDCoAo+IAo+IAo+IAo+IMKgc3RhdGljIHZvaWQgaW14OG1fY2xr
-X2VuYWJsZShzdHJ1Y3QgaGFudHJvX2RldiAqdnB1LCB1MzIgY2xvY2tfYml0cykKPiDCoHsKPiAt
-CXUzMiB2YWw7Cj4gLQo+IC0JdmFsID0gcmVhZGwodnB1LT5jdHJsX2Jhc2UgKyBDVFJMX0NMT0NL
-X0VOQUJMRSk7Cj4gLQl2YWwgfD0gY2xvY2tfYml0czsKPiAtCXdyaXRlbCh2YWwsIHZwdS0+Y3Ry
-bF9iYXNlICsgQ1RSTF9DTE9DS19FTkFCTEUpOwo+ICsJcmVnbWFwX3VwZGF0ZV9iaXRzKHZwdS0+
-Y3RybF9iYXNlLCBDVFJMX0NMT0NLX0VOQUJMRSwKPiArCQkJICAgY2xvY2tfYml0cywgY2xvY2tf
-Yml0cyk7Cj4gwqB9Cj4gwqAKPiAKPiAKPiAKPiDCoHN0YXRpYyBpbnQgaW14OG1xX3J1bnRpbWVf
-cmVzdW1lKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUpCj4gQEAgLTY0LDkgKzYzLDkgQEAgc3RhdGlj
-IGludCBpbXg4bXFfcnVudGltZV9yZXN1bWUoc3RydWN0IGhhbnRyb19kZXYgKnZwdSkKPiDCoAlp
-bXg4bV9jbGtfZW5hYmxlKHZwdSwgQ0xPQ0tfRzEgfCBDTE9DS19HMik7Cj4gwqAKPiAKPiAKPiAK
-PiDCoAkvKiBTZXQgdmFsdWVzIG9mIHRoZSBmdXNlIHJlZ2lzdGVycyAqLwo+IC0Jd3JpdGVsKDB4
-ZmZmZmZmZmYsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9HMV9ERUNfRlVTRSk7Cj4gLQl3cml0ZWwo
-MHhmZmZmZmZmZiwgdnB1LT5jdHJsX2Jhc2UgKyBDVFJMX0cxX1BQX0ZVU0UpOwo+IC0Jd3JpdGVs
-KDB4ZmZmZmZmZmYsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9HMl9ERUNfRlVTRSk7Cj4gKwlyZWdt
-YXBfd3JpdGUodnB1LT5jdHJsX2Jhc2UsIENUUkxfRzFfREVDX0ZVU0UsIDB4ZmZmZmZmZmYpOwo+
-ICsJcmVnbWFwX3dyaXRlKHZwdS0+Y3RybF9iYXNlLCBDVFJMX0cxX1BQX0ZVU0UsIDB4ZmZmZmZm
-ZmYpOwo+ICsJcmVnbWFwX3dyaXRlKHZwdS0+Y3RybF9iYXNlLCBDVFJMX0cyX0RFQ19GVVNFLCAw
-eGZmZmZmZmZmKTsKPiDCoAo+IAo+IAo+IAo+IMKgCWNsa19idWxrX2Rpc2FibGVfdW5wcmVwYXJl
-KHZwdS0+dmFyaWFudC0+bnVtX2Nsb2NrcywgdnB1LT5jbG9ja3MpOwo+IMKgCj4gCj4gCj4gCj4g
-QEAgLTE1MCw4ICsxNDksMjIgQEAgc3RhdGljIGlycXJldHVybl90IGlteDhtX3ZwdV9nMV9pcnEo
-aW50IGlycSwgdm9pZCAqZGV2X2lkKQo+IMKgCj4gCj4gCj4gCj4gwqBzdGF0aWMgaW50IGlteDht
-cV92cHVfaHdfaW5pdChzdHJ1Y3QgaGFudHJvX2RldiAqdnB1KQo+IMKgewo+IC0JdnB1LT5kZWNf
-YmFzZSA9IHZwdS0+cmVnX2Jhc2VzWzBdOwo+IC0JdnB1LT5jdHJsX2Jhc2UgPSB2cHUtPnJlZ19i
-YXNlc1t2cHUtPnZhcmlhbnQtPm51bV9yZWdzIC0gMV07Cj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUg
-Km5wID0gdnB1LT5kZXYtPm9mX25vZGU7Cj4gKwo+ICsJdnB1LT5jdHJsX2Jhc2UgPSBzeXNjb25f
-cmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAibnhwLGlteDhtLXZwdS1jdHJsIik7Cj4gKwlp
-ZiAoSVNfRVJSKHZwdS0+Y3RybF9iYXNlKSkgewo+ICsJCXN0cnVjdCByZXNvdXJjZSAqcmVzOwo+
-ICsJCXZvaWQgX19pb21lbSAqY3RybDsKPiArCj4gKwkJcmVzID0gcGxhdGZvcm1fZ2V0X3Jlc291
-cmNlX2J5bmFtZSh2cHUtPnBkZXYsIElPUkVTT1VSQ0VfTUVNLCAiY3RybCIpOwo+ICsJCWN0cmwg
-PSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UodnB1LT5kZXYsIHJlcyk7Cj4gKwkJaWYgKElTX0VSUihj
-dHJsKSkKPiArCQkJcmV0dXJuIFBUUl9FUlIoY3RybCk7Cj4gKwo+ICsJCXZwdS0+Y3RybF9iYXNl
-ID0gZGV2bV9yZWdtYXBfaW5pdF9tbWlvKHZwdS0+ZGV2LCBjdHJsLCAmY3RybF9yZWdtYXBfY3Ry
-bCk7Cj4gKwkJaWYgKElTX0VSUih2cHUtPmN0cmxfYmFzZSkpCj4gKwkJCXJldHVybiBQVFJfRVJS
-KHZwdS0+Y3RybF9iYXNlKTsKPiArCX0KPiDCoAo+IAo+IAo+IAo+IMKgCXJldHVybiAwOwo+IMKg
-fQo+IEBAIC0xOTgsNyArMjExLDYgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBoYW50cm9faXJxIGlt
-eDhtcV9pcnFzW10gPSB7Cj4gwqB9Owo+IMKgCj4gCj4gCj4gCj4gwqBzdGF0aWMgY29uc3QgY2hh
-ciAqIGNvbnN0IGlteDhtcV9jbGtfbmFtZXNbXSA9IHsgImcxIiwgImcyIiwgImJ1cyIgfTsKPiAt
-c3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBpbXg4bXFfcmVnX25hbWVzW10gPSB7ICJnMSIsICJn
-MiIsICJjdHJsIiB9Owo+IMKgCj4gCj4gCj4gCj4gwqBjb25zdCBzdHJ1Y3QgaGFudHJvX3Zhcmlh
-bnQgaW14OG1xX3ZwdV92YXJpYW50ID0gewo+IMKgCS5kZWNfZm10cyA9IGlteDhtX3ZwdV9kZWNf
-Zm10cywKPiBAQCAtMjE1LDYgKzIyNyw0IEBAIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBp
-bXg4bXFfdnB1X3ZhcmlhbnQgPSB7Cj4gwqAJLm51bV9pcnFzID0gQVJSQVlfU0laRShpbXg4bXFf
-aXJxcyksCj4gwqAJLmNsa19uYW1lcyA9IGlteDhtcV9jbGtfbmFtZXMsCj4gwqAJLm51bV9jbG9j
-a3MgPSBBUlJBWV9TSVpFKGlteDhtcV9jbGtfbmFtZXMpLAo+IC0JLnJlZ19uYW1lcyA9IGlteDht
-cV9yZWdfbmFtZXMsCj4gLQkubnVtX3JlZ3MgPSBBUlJBWV9TSVpFKGlteDhtcV9yZWdfbmFtZXMp
-Cj4gwqB9OwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+On Sun, Mar 21, 2021 at 07:58:13PM +0100, Heiko Stuebner wrote:
+> Am Dienstag, 16. M=E4rz 2021, 19:27:53 CET schrieb Jonathan McDowell:
+> > The Rockchip RGB CRTC output driver attempts to avoid probing Rockchip
+> > subdrivers to see if they're a connected panel or bridge. However part
+> > of its checks assumes that if no OF platform device is found then it
+> > can't be a valid bridge or panel. This causes issues with I2C controlled
+> > bridges that have not yet been registered to the point they can be
+> > found.
+> > =
+
+> > Change this to return EPROBE_DEFER instead of ENODEV and don't ignore
+> > such devices. The subsequent call to drm_of_find_panel_or_bridge() will
+> > return EPROBE_DEFER as well if there's actually a valid device we should
+> > wait for.
+> > =
+
+> > Signed-off-by: Jonathan McDowell <noodles@earth.li>
+> > ---
+> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 8 ++++++--
+> >  drivers/gpu/drm/rockchip/rockchip_rgb.c     | 7 ++++---
+> >  2 files changed, 10 insertions(+), 5 deletions(-)
+> > =
+
+> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/=
+drm/rockchip/rockchip_drm_drv.c
+> > index 212bd87c0c4a..b0d63a566501 100644
+> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> > @@ -270,11 +270,15 @@ int rockchip_drm_endpoint_is_subdriver(struct dev=
+ice_node *ep)
+> >  	if (!node)
+> >  		return -ENODEV;
+> >  =
+
+> > -	/* status disabled will prevent creation of platform-devices */
+> > +	/*
+> > +	 * status disabled will prevent creation of platform-devices,
+> > +	 * but equally we can't rely on the driver having been registered
+> > +	 * yet (e.g. I2C bridges).
+> > +	 */
+> >  	pdev =3D of_find_device_by_node(node);
+> >  	of_node_put(node);
+> >  	if (!pdev)
+> > -		return -ENODEV;
+> > +		return -EPROBE_DEFER;
+> =
+
+> In general, how does that relate to i2c-bridge-drivers, as
+> of_find_device_by_node supposedly only acts on platform-devices?
+
+I think the problem here is that not finding the device node means we
+return an error here, which means it's not actually possible to attach
+an i2c bridge driver to the Rockchip RGB interface at present.
+
+> Also if that points to a disabled bridge (hdmi, etc) that would likely ma=
+ke
+> it probe-defer indefinitly, as that device will never become available?
+> =
+
+> Maybe we could do something like of_device_is_available() which checks
+> the status property of the node. So something like:
+> =
+
+>   	pdev =3D of_find_device_by_node(node);
+>   	if (!pdev) {
+> 		bool avail =3D of_device_is_available(node);
+> =
+
+> 		of_node_put(node);
+> =
+
+> 		/* if disabled
+> 		if (!avail)
+> 			return -ENODEV;
+> 		else
+> 			return -EPROBE_DEFER;
+> 	}
+>   	of_node_put(node);
+> =
+
+> Though I still do not understand how that should actually pick up on
+> i2c devices at all.
+
+of_find_device_by_node will fail here, as it's not a platform device,
+but then of_device_is_available should return true so I think I can
+actually just return false here rather than EPROBE_DEFER - because if
+it's not a platform device then it's not a subdriver, which is what
+we're checking for.
+
+I'll re-roll and test this weekend and post an updated revision. Thanks
+for the pointers.
+
+J.
+
+-- =
+
+101 things you can't have too much of : 3 - Sleep.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
