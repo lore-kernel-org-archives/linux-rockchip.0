@@ -2,105 +2,133 @@ Return-Path: <SRS0=DXbu=JQ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3DD9C433B4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 08:36:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 978D1C433ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 15:58:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65F7761107
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 08:36:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65F7761107
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id BAB9860E0C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 15:58:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAB9860E0C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TXuaP1UpGrwwRmdLPo3dcED65/PUr1OJFDZthoQ2fuU=; b=NgnEWNdjAoSOSBAeWHIlWqRaS
-	qDw8P4Bz5aTM1K1UYDjS5KyPnCqYRREeTk/aS5ddTkH6DcjAXeix0z4t0yXsKhhqRjDw3Ga2yyzKd
-	lLnzpKOIOElrbj0u4suX2sT2oJ9Jmsi20UdlmsP8npJMPSaaCZXaZlQ3buI8S1FNTKAmpra7jf/Fa
-	F2SI8NzowQyxDPxj/asGtfZZTU0lWO48YMLgOJ5WGvxvV/sCI/B+Bc2bQumGjPzDc9IdkZwNE1/vg
-	5Bz3MMJbXD0wIygh9jErDDQzHvmovqa1j0zuKU7Q24A5KeHhiHb+luok1kiZMoelVmQpbS0K+D4Hw
-	AuL4w2l7g==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DZakBOs2KyuWwxO2w/2TdWa9eb49hI/p46r0P3MREQE=; b=AeM5+TyyJ93uuubobiD6FYb0rU
+	ieC3oot6oOav+/MfwC4x1IooDVKH6jQxcaX3tnlZMPbfNw5myx2zlm6sG2H+zqEo2sPQDTTbRsgj7
+	ldH5XHIDZZzNrtSBMtVdFLn28KN0ge+gGLdQvesBm8jyToRiRtevbIddm+9RQYlwr+4Ao/iDJKN0A
+	dhNONUjNTr+kf6UvNJBw/hz/X1qmWnC1NCDdyH5AuD12QZHX0hr9kWsqBs/5riz07xEnzNd3f6M68
+	adYKhKuZoWhddEdVoPwifiPs8ku6xKQYXh93Yar2+RaLnb4eJU57U3hcwrG+YZzbcw/DJHMg0Rjs+
+	rr59ZQ1w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYPOC-009RpT-N3; Mon, 19 Apr 2021 08:36:16 +0000
+	id 1lYWHY-00AEU4-7W; Mon, 19 Apr 2021 15:57:52 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYPNE-009RRn-2h; Mon, 19 Apr 2021 08:35:16 +0000
+ id 1lYWHW-00AETv-Hy
+ for linux-rockchip@desiato.infradead.org; Mon, 19 Apr 2021 15:57:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:References:
- In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=PswJzuVJEpo2V7rLJvAKEapfrXwbPZ/ywMR3JM+8zp4=; b=PZoQtYe+1UXfrYbqYrmbRkviMd
- LgDauJix1U1ajeQlmVK4x19zqhQRsfutjcVd0htLsxHAIotfROpV/0o0HMWbYXO94U9nwUo9v3aHt
- 6bE0pEx9tjRNiLBXNKp1c+cjypoMV4nNLCrkCKN6EeZ+C7zrSyQ+uy83qq/Xrt5krTXSovieDYS9Y
- J7+v7R5J4p7LdLZ4F4IHsCRRdW2fAzVCacjNdV2NGBZkRadQ/wK0VRIe77YvZTDg1eY8qsM3yWJtb
- VeG57Q9oZvSALZcaKP1UzUYvIom5Ocn1bgsnJIwLx4ldiRImQlyETOGGOVP5dOSKVJammT2OWM5Ka
- OQOTsYQg==;
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+ d=infradead.org; s=bombadil.20210309; h=MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=aByzEHp9ovlis/GooH0HTomT5X3u/nCY542tbrjpHAA=; b=mO59h5IttyEG28iBcE0Z6NF89X
+ i9DnZFgzIAayN0BDJrk9Kg19Ahd6AhFNdhSnkoi+RkX7VyeZLOFuWF9vBJXpt0LikaP3T6ZBnR0/t
+ AxL7LvhfUeuWDA/7i3noAMuzdUcIq5YUquoDKqHaxUz+ktP/nXfYYGANGqqJSana9bk95FgrVXWxd
+ qZRODblrkW3GzKjgCxv2tWUoDmNAOQH1gSgkrUSN3U5y9UAFjyoRFyPznP4JwdlzY8ZWILUvF6UVW
+ bXUxFTddEzFyIJroLBEf30KSD+wSlnJELHjFF4dXPeOO2w91vAVjkiPIVSKXRSAlqnrOTmnQ7irpf
+ rCbCOcWQ==;
+Received: from mail-bn8nam11olkn2024.outbound.protection.outlook.com
+ ([40.92.20.24] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYPNB-00BBzo-Ey; Mon, 19 Apr 2021 08:35:14 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 13J8Z3gb119417;
- Mon, 19 Apr 2021 03:35:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1618821303;
- bh=PswJzuVJEpo2V7rLJvAKEapfrXwbPZ/ywMR3JM+8zp4=;
- h=From:To:CC:Subject:Date:In-Reply-To:References;
- b=QTc06a+hqPZjvTA9C7tbHS3ZVkO4sTIYgMUrrxHc4H3HNoJGau+iCAK8eDbtLiV2g
- YFfrI0yBPaj2TgnPmAxCiyqBIZ62/gdVFrHeTI+MeYe/zbj22SMqnzSHib9LRlKZBf
- 1fca5fnFRzHscfyVNgIyTXrcl6Lc0z2S35qxlRl8=
-Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 13J8Z3hm022740
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 19 Apr 2021 03:35:03 -0500
-Received: from DLEE104.ent.ti.com (157.170.170.34) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Mon, 19
- Apr 2021 03:35:03 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Mon, 19 Apr 2021 03:35:03 -0500
-Received: from a0393678-ssd.dhcp.ti.com (ileax41-snat.itg.ti.com
- [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 13J8Y2aW051194;
- Mon, 19 Apr 2021 03:34:56 -0500
-From: Kishon Vijay Abraham I <kishon@ti.com>
-To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-CC: Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
-Subject: [PATCH v5 7/7] Documentation: PCI: endpoint/pci-endpoint-cfs: Guide
- to use SR-IOV
-Date: Mon, 19 Apr 2021 14:04:01 +0530
-Message-ID: <20210419083401.31628-8-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210419083401.31628-1-kishon@ti.com>
-References: <20210419083401.31628-1-kishon@ti.com>
+ id 1lYWHR-00BVNe-Fq
+ for linux-rockchip@lists.infradead.org; Mon, 19 Apr 2021 15:57:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=I0dGiYLObjEcZXcUImiLhmVGOGq0tGrF6b+5By41CHbCVax69jzt3nOZBK+Qi3AV+PHw6V8aFERNgf/ZfSRsdQ7t3V8Uh73v0xDBpby0qqDfxyemPJcPIkzTYFtmV/IDUk8/3PZ5D8mu2KE6g2Fr6cKDMAwuSfgmI7yjOar+2843ZoMxFGspobJ/fqh22ZSNJv+WkE3qc2RYCbhKGSsj+GqqEEpOxFeHK6m6s1b+3ZbdGLTtDPD0JfKbV8s+5lv7YVnXgx1MSv08ekS3+9TEo48NYcyZ7CuUvMvXOwFsHncgJWMQXAuRArMB4Yw6lW3iwAnijRQ0u/hSAYgcckYkjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aByzEHp9ovlis/GooH0HTomT5X3u/nCY542tbrjpHAA=;
+ b=jZxZnGWQQFvyovmdGf4hYSi7OgOVpDRFr7GbrVKuVHqkI5cn8VPDz+6yW64o/DdCoLTKvi0G5IrzNGlPs0LK3RA41j5V/DlcyihXbEa2ZKEYB7iqcaPvCg18L+N2oWswB9MPpsWVzRL8Wrcc43a/rcrPyLLvA70bxoPOBRuq3k3e9rUvp0SDvDsjM/KwibK7gWzZQG0FSHvi9TVGBGnaqw1TZRSEQoPoNbkAxbmCIkHArnxhpN8K5JLhf7NYjIFjWFptTqa64z75cDmlcdgjLbp3ktPMN1wVyxo9X//YubpRl2Ihxt74MJObt9sDOQxr2guu75Uha+k5TwLhu+CwtA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aByzEHp9ovlis/GooH0HTomT5X3u/nCY542tbrjpHAA=;
+ b=pfqEkmsYQxNsuhnDK/5gH8jH75SpqyrcNX4l0Tx7tZVUlva2WoDLLub5xxEXmoGH7Sn8ywK2m3Eqxiq5FT6RTF71crQbAxOIlU7qjBs0dpyDl9fadgh0+l7n+9hrgFRe/VXMJL2VuHPndOySTFaSzsr/Gjj2c37u5O/BPWbDQjFUij5cMAhlxFRNFzF+8tWbHm3giQ538m9Vk9Lxnu1FWp94wPlkNHNAvRQ9195+T339i1fgsv90mp2bJvtE07Iaoqghk8wMe6HChZVomydtY/nme2uwe1KlcbM6K4CFxFg8pzss91Z8opL3mYnph4R9Gf4TGI32MJU7I9IH7vjo1Q==
+Received: from DM6NAM11FT058.eop-nam11.prod.protection.outlook.com
+ (2a01:111:e400:fc4d::4f) by
+ DM6NAM11HT052.eop-nam11.prod.protection.outlook.com (2a01:111:e400:fc4d::478)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.16; Mon, 19 Apr
+ 2021 15:57:42 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ (2a01:111:e400:fc4d::40) by DM6NAM11FT058.mail.protection.outlook.com
+ (2a01:111:e400:fc4d::216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.16 via Frontend
+ Transport; Mon, 19 Apr 2021 15:57:42 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:DCFD92C1B093BCEDB66465C4D37F56F8ECD874D5865BC7607FF6BDA39879A808;
+ UpperCasedChecksum:B0C0D632416DC4D01E90D30C6E8FF6AA335B0047516695DED6D9209122061662;
+ SizeAsReceived:7563; Count:45
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::fc38:a692:c2c8:f63e]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::fc38:a692:c2c8:f63e%7]) with mapi id 15.20.4042.024; Mon, 19 Apr 2021
+ 15:57:42 +0000
+From: Chris Morgan <macromorgan@hotmail.com>
+To: alsa-devel@alsa-project.org
+Cc: broonie@kernel.org, lgirdwood@gmail.com,
+ pierre-louis.bossart@linux.intel.com, tiwai@suse.com, heiko@sntech.de,
+ lee.jones@linaro.org, robh+dt@kernel.org, perex@perex.cz,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [v6 1/3] mfd: Add Rockchip rk817 audio CODEC support
+Date: Mon, 19 Apr 2021 10:57:16 -0500
+Message-ID: <SN6PR06MB5342B036562B085C95BDAB42A5499@SN6PR06MB5342.namprd06.prod.outlook.com>
+X-Mailer: git-send-email 2.25.1
+X-TMN: [9fLmyeWXp9nZ3TreEksinp+RfcOEPz8c]
+X-ClientProxiedBy: SN6PR2101CA0015.namprd21.prod.outlook.com
+ (2603:10b6:805:106::25) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID: <20210419155718.17348-1-macromorgan@hotmail.com>
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from wintermute.localdomain (76.183.134.35) by
+ SN6PR2101CA0015.namprd21.prod.outlook.com (2603:10b6:805:106::25) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4087.3 via Frontend
+ Transport; Mon, 19 Apr 2021 15:57:41 +0000
+X-MS-PublicTrafficType: Email
+X-IncomingHeaderCount: 45
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-Correlation-Id: 3a99f36e-3cd7-499a-da57-08d9034bdd62
+X-MS-Exchange-SLBlob-MailProps: c2lCoQNu4ID10AyVGR+QpJizbz6bHfbmEHAusOCIqeHD3RSgxdbzCEtrKMcb2/B6/n0uH+l43AWM8mUFJQP9yxvlhRj/jfxUfkxhGPiGt+VmJfAdtao6oba1kaqjhsbbVCtlEEKFdeDgin9bhh2pbTMwfAnU/M4IKhl3C/2GZQh5Ws8Q01XMn4eBHDa8+/RcDo2pXYKGSzuV1ZAIXrRpwtajD3JUXeemRe32Q9oLh5YLXyHx6BIng7PPILZs7kKPyt+aGmKVAOcwHGTEdW0XmQYIZit+LBKbtY0QQ6PJsfJKZg7EhQsjZR2SgPdRoN3FVqp+JxtLtCFhzvgJcKa+tmjOEz7sPVWOwzu3waD+WLjLbFpS5UQfQh0fUef0YIUF8mCqeG5B7TmxNeZv3+40bt7hLQMa+Fv4qO/z4pIK32QZ0Yb097nP5bKPPVE9NXSlzU4pAjtNAoLwYILS47AIBH/OidBCTQ0PXk7YWdvmW9pPcYuAhR0iISudncJcVvAafEvx+Lt5xl/eaWFNhUZTYRyOtq2VvLbEkNchL5fLNBUS/AosmXmoegJJopyfU9a5RzWTMazsorXDT7Ri+a66bbToeKbcBbbcVEfd914/DtWrQQ9GFmuehKP53XlQbm3ca6cAptmjoF/prpjuUzcWOofUZF5X2cxYa5e9+IkPKeG9W+CDfvA93n02LRedky6t/G4b6+YHNhE2OOVSH5MecTA1lJp0DLtznsKZo4/EF0M=
+X-MS-TrafficTypeDiagnostic: DM6NAM11HT052:
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: cso+zwlfI6aeOnzcQOSYwWcUp1OtZKLApxvqiQD+wdIx5oCRjTQRE8VTCmCPik7LSMXRSSWLAQnJg+tVqSd/8lxfUyzCvEkxkeQGL47igWcTZo2Pir/SX3HtnTCUMRC1ikRiE0Cbz4sGRXh6MTIsPurZey0tkeVZL5EafJaVYX+Lr5ACXntdTITz+fjb8I/lBjxF7OXaVkpa8yCJTLl4XsnzOMCeXxeDWswfmS1ZVmBiIJtK06ezLs31Nz5+EWvDhOXyRGPMHS9EU5cL++QaG4lVMOt7sb2tL2a38o74t858Vafu8JrhbHZm1wMAukYDruDBdLDUSAudWMd4dCJNX/oMEK+DknO80uilVrgFYl9IIdVVeJ8hIEGHHJ55Q//lOXeDVTfQqjk4YCLkOnZBTw==
+X-MS-Exchange-AntiSpam-MessageData: HB+DR+YVwCno1sgoLc7Kjt4djKaCtLZ3uZ2JZ99n8YW96gimp+lmLs6GTw1BoZZ/f8/DT0ywyRNewFpen/4Wxw8Q2CppKovR0tmyLlj6zRdWkZpjSrpQlDApS+jWemhgTeZQEuCfaCghP19kyCyUxQ==
+X-OriginatorOrg: hotmail.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a99f36e-3cd7-499a-da57-08d9034bdd62
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2021 15:57:42.5547 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT058.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6NAM11HT052
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_013513_602674_C40C1DAE 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20210419_085745_734607_E0DA4F3C 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,62 +146,247 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Documentation to help users use PCI endpoint to create virtual
-functions using configfs. An endpoint function is designated as a
-virtual endpoint function device when it is linked to a physical
-endpoint function device (instead of a endpoint controller).
+Add rk817 codec support cell to rk808 mfd driver.
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- Documentation/PCI/endpoint/pci-endpoint-cfs.rst | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+Changes in v6:
+ - Included additional project maintainers for correct subsystems.
+ - Removed unneeded compatible from DT documentation.
+ - Removed binding update for Odroid Go Advance (will do in seperate series).
+Changes in v5:
+ - Move register definitions from rk817_codec.h to main rk808.h register
+   definitions.
+ - Add volatile register for codec bits.
+ - Add default values for codec bits.
+ - Removed of_compatible from mtd driver (not necessary).
+ - Switched to using parent regmap instead of private regmap for codec.
+Changes in v4:
+ - Created set_pll() call.
+ - Created user visible gain control in mic.
+ - Check for return value of clk_prepare_enable().
+ - Removed duplicate clk_prepare_enable().
+ - Split DT documentation to separate commit.
+Changes in v3:
+ - Use DAPM macros to set audio path.
+ - Updated devicetree binding (as every rk817 has this codec chip).
+ - Changed documentation to yaml format.
+ - Split MFD changes to separate commit.
+Changes in v2:
+ - Fixed audio path registers to solve some bugs.
 
-diff --git a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-index 696f8eeb4738..56fb33c5e8fd 100644
---- a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-+++ b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-@@ -43,6 +43,7 @@ entries corresponding to EPF driver will be created by the EPF core.
- 		.. <EPF Driver1>/
- 			... <EPF Device 11>/
- 			... <EPF Device 21>/
-+			... <EPF Device 31>/
- 		.. <EPF Driver2>/
- 			... <EPF Device 12>/
- 			... <EPF Device 22>/
-@@ -68,6 +69,7 @@ created)
- 				... subsys_vendor_id
- 				... subsys_id
- 				... interrupt_pin
-+			        ... <Symlink EPF Device 31>/
-                                 ... primary/
- 			                ... <Symlink EPC Device1>/
-                                 ... secondary/
-@@ -79,6 +81,13 @@ interface should be added in 'primary' directory and symlink of endpoint
- controller connected to secondary interface should be added in 'secondary'
- directory.
+ drivers/mfd/rk808.c       | 89 +++++++++++++++++++++++++++++++++++++++
+ include/linux/mfd/rk808.h | 81 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 170 insertions(+)
+
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index ad923dd4e007..b92f4c6f503e 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -65,6 +65,9 @@ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	switch (reg) {
+ 	case RK817_SECONDS_REG ... RK817_WEEKS_REG:
+ 	case RK817_RTC_STATUS_REG:
++#ifdef CONFIG_SND_SOC_RK817
++	case RK817_CODEC_DTOP_LPT_SRST:
++#endif
+ 	case RK817_INT_STS_REG0:
+ 	case RK817_INT_STS_REG1:
+ 	case RK817_INT_STS_REG2:
+@@ -163,6 +166,11 @@ static const struct mfd_cell rk817s[] = {
+ 		.num_resources = ARRAY_SIZE(rk817_rtc_resources),
+ 		.resources = &rk817_rtc_resources[0],
+ 	},
++#ifdef CONFIG_SND_SOC_RK817
++	{
++		.name = "rk817-codec",
++	},
++#endif
+ };
  
-+The <EPF Device> directory can have a list of symbolic links
-+(<Symlink EPF Device 31>) to other <EPF Device>. These symbolic links should
-+be created by the user to represent the virtual functions that are bound to
-+the physical function. In the above directory structure <EPF Device 11> is a
-+physical function and <EPF Device 31> is a virtual function. An EPF device once
-+it's linked to another EPF device, cannot be linked to a EPC device.
+ static const struct mfd_cell rk818s[] = {
+@@ -201,6 +209,87 @@ static const struct rk808_reg_data rk808_pre_init_reg[] = {
+ 
+ static const struct rk808_reg_data rk817_pre_init_reg[] = {
+ 	{RK817_RTC_CTRL_REG, RTC_STOP, RTC_STOP},
++#ifdef CONFIG_SND_SOC_RK817
++	/* Codec specific registers */
++	{ RK817_CODEC_DTOP_VUCTL, MASK_ALL, 0x03 },
++	{ RK817_CODEC_DTOP_VUCTIME, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DTOP_LPT_SRST, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DTOP_DIGEN_CLKE, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_AREF_RTCFG0 not defined in data sheet */
++	{ RK817_CODEC_AREF_RTCFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AREF_RTCFG1, MASK_ALL, 0x06 },
++	{ RK817_CODEC_AADC_CFG0, MASK_ALL, 0xc8 },
++	/* from vendor driver, CODEC_AADC_CFG1 not defined in data sheet */
++	{ RK817_CODEC_AADC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_SR_ACL0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_ALC1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_ALC2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_NG, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_HPF, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
++	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
++	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
++	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
++	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
++	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
++	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
++	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
++	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
++	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
++	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
++	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
++	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DDAC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AHP_ANTI0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AHP_ANTI1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AHP_CFG0, MASK_ALL, 0xe0 },
++	{ RK817_CODEC_AHP_CFG1, MASK_ALL, 0x1f },
++	{ RK817_CODEC_AHP_CP, MASK_ALL, 0x09 },
++	{ RK817_CODEC_ACLASSD_CFG1, MASK_ALL, 0x69 },
++	{ RK817_CODEC_ACLASSD_CFG2, MASK_ALL, 0x44 },
++	{ RK817_CODEC_APLL_CFG0, MASK_ALL, 0x04 },
++	{ RK817_CODEC_APLL_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_APLL_CFG2, MASK_ALL, 0x30 },
++	{ RK817_CODEC_APLL_CFG3, MASK_ALL, 0x19 },
++	{ RK817_CODEC_APLL_CFG4, MASK_ALL, 0x65 },
++	{ RK817_CODEC_APLL_CFG5, MASK_ALL, 0x01 },
++	{ RK817_CODEC_DI2S_CKM, MASK_ALL, 0x01 },
++	{ RK817_CODEC_DI2S_RSD, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_RXCR1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_RXCR2, MASK_ALL, 0x17 },
++	{ RK817_CODEC_DI2S_RXCMD_TSD, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_TXCR1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_TXCR2, MASK_ALL, 0x17 },
++	{ RK817_CODEC_DI2S_TXCR3_TXCMD, MASK_ALL, 0x00 },
++#endif
+ 	{RK817_GPIO_INT_CFG, RK817_INT_POL_MSK, RK817_INT_POL_L},
+ 	{RK817_SYS_CFG(1), RK817_HOTDIE_TEMP_MSK | RK817_TSD_TEMP_MSK,
+ 					   RK817_HOTDIE_105 | RK817_TSD_140},
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index e07f6e61cd38..a96e6d43ca06 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -437,6 +437,87 @@ enum rk809_reg_id {
+ #define RK817_RTC_COMP_LSB_REG		0x10
+ #define RK817_RTC_COMP_MSB_REG		0x11
+ 
++/* RK817 Codec Registers */
++#define RK817_CODEC_DTOP_VUCTL		0x12
++#define RK817_CODEC_DTOP_VUCTIME	0x13
++#define RK817_CODEC_DTOP_LPT_SRST	0x14
++#define RK817_CODEC_DTOP_DIGEN_CLKE	0x15
++#define RK817_CODEC_AREF_RTCFG0		0x16
++#define RK817_CODEC_AREF_RTCFG1		0x17
++#define RK817_CODEC_AADC_CFG0		0x18
++#define RK817_CODEC_AADC_CFG1		0x19
++#define RK817_CODEC_DADC_VOLL		0x1a
++#define RK817_CODEC_DADC_VOLR		0x1b
++#define RK817_CODEC_DADC_SR_ACL0	0x1e
++#define RK817_CODEC_DADC_ALC1		0x1f
++#define RK817_CODEC_DADC_ALC2		0x20
++#define RK817_CODEC_DADC_NG		0x21
++#define RK817_CODEC_DADC_HPF		0x22
++#define RK817_CODEC_DADC_RVOLL		0x23
++#define RK817_CODEC_DADC_RVOLR		0x24
++#define RK817_CODEC_AMIC_CFG0		0x27
++#define RK817_CODEC_AMIC_CFG1		0x28
++#define RK817_CODEC_DMIC_PGA_GAIN	0x29
++#define RK817_CODEC_DMIC_LMT1		0x2a
++#define RK817_CODEC_DMIC_LMT2		0x2b
++#define RK817_CODEC_DMIC_NG1		0x2c
++#define RK817_CODEC_DMIC_NG2		0x2d
++#define RK817_CODEC_ADAC_CFG0		0x2e
++#define RK817_CODEC_ADAC_CFG1		0x2f
++#define RK817_CODEC_DDAC_POPD_DACST	0x30
++#define RK817_CODEC_DDAC_VOLL		0x31
++#define RK817_CODEC_DDAC_VOLR		0x32
++#define RK817_CODEC_DDAC_SR_LMT0	0x35
++#define RK817_CODEC_DDAC_LMT1		0x36
++#define RK817_CODEC_DDAC_LMT2		0x37
++#define RK817_CODEC_DDAC_MUTE_MIXCTL	0x38
++#define RK817_CODEC_DDAC_RVOLL		0x39
++#define RK817_CODEC_DDAC_RVOLR		0x3a
++#define RK817_CODEC_AHP_ANTI0		0x3b
++#define RK817_CODEC_AHP_ANTI1		0x3c
++#define RK817_CODEC_AHP_CFG0		0x3d
++#define RK817_CODEC_AHP_CFG1		0x3e
++#define RK817_CODEC_AHP_CP		0x3f
++#define RK817_CODEC_ACLASSD_CFG1	0x40
++#define RK817_CODEC_ACLASSD_CFG2	0x41
++#define RK817_CODEC_APLL_CFG0		0x42
++#define RK817_CODEC_APLL_CFG1		0x43
++#define RK817_CODEC_APLL_CFG2		0x44
++#define RK817_CODEC_APLL_CFG3		0x45
++#define RK817_CODEC_APLL_CFG4		0x46
++#define RK817_CODEC_APLL_CFG5		0x47
++#define RK817_CODEC_DI2S_CKM		0x48
++#define RK817_CODEC_DI2S_RSD		0x49
++#define RK817_CODEC_DI2S_RXCR1		0x4a
++#define RK817_CODEC_DI2S_RXCR2		0x4b
++#define RK817_CODEC_DI2S_RXCMD_TSD	0x4c
++#define RK817_CODEC_DI2S_TXCR1		0x4d
++#define RK817_CODEC_DI2S_TXCR2		0x4e
++#define RK817_CODEC_DI2S_TXCR3_TXCMD	0x4f
 +
- EPC Device
- ==========
++/* RK817_CODEC_DI2S_CKM */
++#define RK817_I2S_MODE_MASK		(0x1 << 0)
++#define RK817_I2S_MODE_MST		(0x1 << 0)
++#define RK817_I2S_MODE_SLV		(0x0 << 0)
++
++/* RK817_CODEC_DDAC_MUTE_MIXCTL */
++#define DACMT_MASK			(0x1 << 0)
++#define DACMT_ENABLE			(0x1 << 0)
++#define DACMT_DISABLE			(0x0 << 0)
++
++/* RK817_CODEC_DI2S_RXCR2 */
++#define VDW_RX_24BITS			(0x17)
++#define VDW_RX_16BITS			(0x0f)
++
++/* RK817_CODEC_DI2S_TXCR2 */
++#define VDW_TX_24BITS			(0x17)
++#define VDW_TX_16BITS			(0x0f)
++
++/* RK817_CODEC_AMIC_CFG0 */
++#define MIC_DIFF_MASK			(0x1 << 7)
++#define MIC_DIFF_DIS			(0x0 << 7)
++#define MIC_DIFF_EN			(0x1 << 7)
++
+ #define RK817_POWER_EN_REG(i)		(0xb1 + (i))
+ #define RK817_POWER_SLP_EN_REG(i)	(0xb5 + (i))
  
-@@ -98,7 +107,8 @@ entries corresponding to EPC device will be created by the EPC core.
- 
- The <EPC Device> directory will have a list of symbolic links to
- <EPF Device>. These symbolic links should be created by the user to
--represent the functions present in the endpoint device.
-+represent the functions present in the endpoint device. Only <EPF Device>
-+that represents a physical function can be linked to a EPC device.
- 
- The <EPC Device> directory will also have a *start* field. Once
- "1" is written to this field, the endpoint device will be ready to
 -- 
-2.17.1
+2.25.1
 
 
 _______________________________________________
