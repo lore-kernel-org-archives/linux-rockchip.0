@@ -2,134 +2,109 @@ Return-Path: <SRS0=DXbu=JQ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=0.1 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D287C433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 17:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECEB9C433B4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 18:38:14 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 073F66108B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 17:51:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 073F66108B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 56BFB6127C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Apr 2021 18:38:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56BFB6127C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Cw69popy41GBpCj6BYpK9R281ktOyP4WfHN9pnLS5FU=; b=GAeY8IMGEXi6QcsdDSPqQ0Ilz
-	U5JbguIdORScsWDu19CpsIcgPkTaOJHgf/8AJE7GhP2CgpWjArrz5wsfsS3PXjn9DqBtoHAHiBie6
-	A0jToqPZ4l8TE6K/CiFMDqWTMXDlXlxr/H8VoOkNTM2wKk8MJastBJ3ils5pWjmAEWbJV8aDWTP+2
-	ArADZ+prCGk6ZqK1OMuAttcLOv1/7QdSE8u4+0VNCnKWIzbAYhcI0cLdoLtELmf2wSzmjRWBsKunT
-	Vng4W7ZYKnyLk1lA1pnQRDnjbzx9TgDmRcHDfSOuFpDsCeFZqIU2kVsU3uZVDN9lYq/BjxC4H0Y6B
-	ko2SlKjnA==;
+	 bh=l2lCsV1SQH2Z4rDG1SOJXSVvWswOWeqpmGxsj+bklTA=; b=AcrMVpzlyKT6bWyR7deJ7TNTj
+	i20EOcrdjdDYJHBmYwacaG1WNP0viACPh1p3PN1x0+tKAOBpHdh1LASiAtnToZvftg6TIx0hNVXyX
+	yubDtEPpJUZNht/8YZzGtq4mGCqHB8yOR1bSKyXaESJOP765834RGamOZVXjOeFv2SiOeI78/QObM
+	WNDuh6ZYv6UbuV7fQgKOnABiBm9eTIhiInqfkRdcpReWges6THUHcaRKBUKfro0/tbz/a7ipB7QG1
+	6liUyl8EMGGBG20d8NtaumVQ1y51VLgDmWGVS713+qWTaMIpjcQ2eguIvuoAdWe8DFpyY42TMD3DD
+	lAWwDpuog==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYY3Q-00ANTk-IK; Mon, 19 Apr 2021 17:51:24 +0000
+	id 1lYYmf-00ASQy-4B; Mon, 19 Apr 2021 18:38:09 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYY3O-00ANTP-Jw
- for linux-rockchip@desiato.infradead.org; Mon, 19 Apr 2021 17:51:23 +0000
+ id 1lYYme-00ASQj-BF
+ for linux-rockchip@desiato.infradead.org; Mon, 19 Apr 2021 18:38:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=MIME-Version:In-Reply-To:Content-Type
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=BlkeXtSPvowXnIutjh+j8W5/w8bmuoOVQOqq1uDVsKk=; b=r6K7e60WZ/jA9ODo2aOFaE2Ia5
- K3TmYK8MI636LnT8JBNOVVjM2A7HEfNt6Ho8GS4LlDKeIsMc7W7MEdraZNdqMvox+Bi6E4P+Y5Cc9
- 6gpY1XKUche72cPPxgtZXH+pnGYKy0pxVuZOmcIE56ljbXlTkB+nK4wtVzRRUsPzsCvXjR+X5/clW
- /ewrQm6zNJtvMW9XRhNPA2cigdio2K+88fW7jdoXbHdpb0FApBi6Kqm0+oeNNHsUsjWWOi2TnGztG
- dUHwHPWfHzBLoktLpNaFdpZKYHav0wdRWLwWyJRum/wXAlZ4/kCBQYIgheqsY+4kcIcB4CRCFgNHR
- 9MVifmZQ==;
-Received: from mail-mw2nam12olkn2075.outbound.protection.outlook.com
- ([40.92.23.75] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=Jrs+XBm6ggvtJYv1/c5X0qFwYhKg9w9qG3XK2lChT6Q=; b=LHTaP4N5qSC4S54C9VfqC1P8Tf
+ 2sCBd+KmPRFhDOizJcr67plopnkEVCMqQxm0/10OHyucicwUe/trSQC2Za0hZfzLPYOuUMJGSsYb6
+ WqAQOYR6jrfizBzZl7lHRgBsCvTHdWJdRL16a3ZVoG9E+SJt1lfzhah+cfd8EIWwDDeMlhHBrxGp+
+ WSMKywYZV4fuRQU8ByNj4WpBkNVRSTtLpZNCGBhJeQrdjDKMPc9CHiYgL0BwR+9hsuH3ADg+5Cr+a
+ +3SerwVqSOr2liqTRpTz6emp5Amda/kzkcru1B5BfyMTPf8aWGi3K6J7bKyFNAmWOlv07mI0bCNIm
+ eKHIFlcQ==;
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYY3I-00BZQd-SM
- for linux-rockchip@lists.infradead.org; Mon, 19 Apr 2021 17:51:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XrkzjKc7veqOVQrlGSi6QYhIVTKKmxmcsmzNI3/fJ/CpKiz4jLZe5ro0VxDiLrtzuGAGXa8zCXDzlTr5SLpALG+Tv8GGX0nNDkMEIYyvKq/OHYNazArX4HY/TgC27EHNYGKfq0hqz5KOm+6K+zp8MtBK4/UOMg3XcfONhchHrTBGcoFP4CRPVgzjvSR1UUfRtUXuamBImFG8hfEQTKRj4+f/Dx6pJgtIhxSA3w5+U9eqBYzbEYViwH7TVarqYR9ntEjLx0esX/z9r1+by+N+f20ZREXtbXZKIzWjFFzelg952PfRH3ULJtBGoSULj/PvY9m/fsNUF0dz2o57BmyJpA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BlkeXtSPvowXnIutjh+j8W5/w8bmuoOVQOqq1uDVsKk=;
- b=JWnZYsXtiaWp+I+x2bGC2Zc2qJepHf05eBBJZBwEf/jN8EAGPTsfqhdIHljkUSim6b0xnreBkHMMoCR6IePOsNvHV2oVvNQCWnnpDO66lKl5jkTdbJFr1BJfWynrDuT1x/Ryzi5UAd+5pEt+wXdYNxlthNxR0Z8glaxgODGhgY3fiXlWSivnSxqFzgTggs0y/d5UBSQDR8SN8gof5sMAZZbNUI66WMvy9LWMAzlg/b3mHgKIn+UKEcHPs38ZXnrh+O1Qzq8gwYmjsDmXlEJ+va7yjIkEu7o/RTQyorXj4FK5WxD9ogEuAhJ+3fHSXncRxVNWEKtQ3XvWNNStpqE/GQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BlkeXtSPvowXnIutjh+j8W5/w8bmuoOVQOqq1uDVsKk=;
- b=UWnyIZuqQyzeqK1ESOCl95BTLBvQ46Tjl2BPbzMhp5KnQtNUXKteiqafpd6R/LLXg+a3dF1Ax0xbPSJm6Old+VkWV3gxci3snqLms40pczNF3H1TQGL7uMWKsorXhB0KOqAAfjziDn9b7N7IfmAZzCs065XD8lhwdNfq1BSDVw2/U8ITDZXxZtb/eJwokSQgM9/HWk+XGodllh3rF9l6R+9LMTufP91D2/IaGye7NcaOWqOZMxAqlkOix6JndRdTeMCFRuZsghMiauwlprH8DJpC6RqnztQ70hLp46XwcTz/3VYBMGHboNnLITocQSvdz3IACXGC17i+Sq2Xv4KYIQ==
-Received: from DM6NAM12FT020.eop-nam12.prod.protection.outlook.com
- (2a01:111:e400:fc64::43) by
- DM6NAM12HT003.eop-nam12.prod.protection.outlook.com (2a01:111:e400:fc64::81)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4065.7; Mon, 19 Apr
- 2021 17:51:15 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- (2a01:111:e400:fc64::4f) by DM6NAM12FT020.mail.protection.outlook.com
- (2a01:111:e400:fc64::477) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4065.7 via Frontend
- Transport; Mon, 19 Apr 2021 17:51:15 +0000
-X-IncomingTopHeaderMarker: OriginalChecksum:05E40A2F629A017658140987131BC96C834252B9EE480337C8429E96BDD12759;
- UpperCasedChecksum:1CF589E05C1EB96F4ECD69531523B8736EEF2D97DCDF27518027D624B8A04A86;
- SizeAsReceived:7687; Count:46
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::fc38:a692:c2c8:f63e]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::fc38:a692:c2c8:f63e%7]) with mapi id 15.20.4042.024; Mon, 19 Apr 2021
- 17:51:15 +0000
-Date: Mon, 19 Apr 2021 12:51:12 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, lgirdwood@gmail.com,
- pierre-louis.bossart@linux.intel.com, tiwai@suse.com,
- heiko@sntech.de, lee.jones@linaro.org, robh+dt@kernel.org,
- perex@perex.cz, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [v6 1/3] mfd: Add Rockchip rk817 audio CODEC support
-Message-ID: <SN6PR06MB534296C9BA80C56C0AD694FAA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <SN6PR06MB5342B036562B085C95BDAB42A5499@SN6PR06MB5342.namprd06.prod.outlook.com>
- <20210419165116.GE5645@sirena.org.uk>
-Content-Disposition: inline
-In-Reply-To: <20210419165116.GE5645@sirena.org.uk>
-X-TMN: [qJPUzAm7GWazMbLeSGeB+NQaIm6ePloK]
-X-ClientProxiedBy: SN7PR04CA0043.namprd04.prod.outlook.com
- (2603:10b6:806:120::18) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <20210419175112.GA26491@wintermute.localdomain>
+ id 1lYYmZ-00Bavb-AD
+ for linux-rockchip@lists.infradead.org; Mon, 19 Apr 2021 18:38:07 +0000
+Received: by mail-ed1-x529.google.com with SMTP id d21so21863129edv.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 19 Apr 2021 11:38:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Jrs+XBm6ggvtJYv1/c5X0qFwYhKg9w9qG3XK2lChT6Q=;
+ b=b0NwK4xLCTp2I4QI7ahsuHGRcGm/SVXCLrAbkmSB6F84muMtpFMtGDl6ttK8FagNsR
+ Ipy5GlyFjEo0z44+b372t2vEQC8/tYBMpbuGg7pAEA9ESCdqThDH5bm8EbeD12YHq1Aa
+ 8Fw8X5ZtSx9r6rS9epPF4QlnfKp5qiSNUJJt+BkQiRVmCr6J2+SEVid/THQslkL8zQwD
+ Mgr+c8uXTIXZAJXWlekOw22OSXuwY2AmXiyyerd20Uo+YF5x75JDP3sPNVsWXCjlc0a6
+ 4PK8OyIOEa5X7vD0nk9Vn3xwWlEiyVT59TpU/u/FS8OKkJEQWhCMmuejzLOP/AsOo+Cm
+ 2bHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Jrs+XBm6ggvtJYv1/c5X0qFwYhKg9w9qG3XK2lChT6Q=;
+ b=PsYZQATgE7J4LllL2Txtcx+UnKnrzFSc5poW8H5xEiuYv63P8iE6hV349Bysb4dPLH
+ oMai2j6grb30AMjteDAa1mLLHaGbtZZMaGDiIanbIbKATHljVTPnZSGYawfaqxevGaIg
+ OnEh/joI7DCBVEXTWF1yj8wUyklHxTks08ZicE8bYiHFA92mN886QZaoq4r0rPcbHSlE
+ xlebBi0JfsTYaWakMW+0kYrf75VFkOdpOu4KPKNrq6doT7YspAI0u3fcXSY1+6fykiwG
+ T6eyNds0IU6YN4AgasCWytIZC6mLfFp9HoQv0J9CXr36aVS6cGT1oRMIS1c1yt4j/7cx
+ cusA==
+X-Gm-Message-State: AOAM530M2mmFLzsfvIR48ZxCwPX8ya6vQH5Mi58Zm7Hz2qeo0hk+sWuw
+ SeatHUw3VxAKUdhXuvSPrvc=
+X-Google-Smtp-Source: ABdhPJxegTgbTkCeYJYJ5bYMyVBkLvV3cvuTH8TQ2bDbAkBKMQEDJfOeiLYdm/o2SyuqCssTvOmXWQ==
+X-Received: by 2002:aa7:da15:: with SMTP id r21mr26937828eds.253.1618857480677; 
+ Mon, 19 Apr 2021 11:38:00 -0700 (PDT)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ bw26sm8704212ejb.119.2021.04.19.11.37.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Apr 2021 11:38:00 -0700 (PDT)
+Subject: Re: [v6 3/3] dt-bindings: Add Rockchip rk817 audio CODEC support
+To: Chris Morgan <macromorgan@hotmail.com>, alsa-devel@alsa-project.org
+Cc: pierre-louis.bossart@linux.intel.com, heiko@sntech.de,
+ devicetree@vger.kernel.org, tiwai@suse.com, robh+dt@kernel.org,
+ lgirdwood@gmail.com, linux-rockchip@lists.infradead.org, broonie@kernel.org,
+ lee.jones@linaro.org
+References: <20210419155718.17348-1-macromorgan@hotmail.com>
+ <SN6PR06MB53420A0E831C17342A73188BA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <5cad7e70-89ca-6e4c-47cc-1248250108c7@gmail.com>
+Date: Mon, 19 Apr 2021 20:37:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from wintermute.localdomain (76.183.134.35) by
- SN7PR04CA0043.namprd04.prod.outlook.com (2603:10b6:806:120::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.18 via Frontend
- Transport; Mon, 19 Apr 2021 17:51:13 +0000
-X-MS-PublicTrafficType: Email
-X-IncomingHeaderCount: 46
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-Correlation-Id: cf218391-f480-4a16-4f03-08d9035bb9c0
-X-MS-TrafficTypeDiagnostic: DM6NAM12HT003:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: EZNiFslrXtfU/4CNEOANQVZ2wtx68g2xdmeA5JVZgigDJ0qZgwg6SJnvVpsazADdG4JPNzDQZCanKqW10StxJdi4CogV2YepLAFbYF9W4NukuDifhK8B5xeh8yeDpwU5xLwm3swlRucisZvYrB40D7IECYBpa7PthFYtRVejZeSqH0iYNemnmy8B9D+zO1rTTmzJjMTy/UL6lThh3ltNRVmBLR0CBBZHDpFV+MRiz1kqgHYHYqujWKvr1/ux2khK8/NQnaphR5QD9hdMEKvtChaDiYX0zvktX1ee8/lPOCucvYjz9oMTRI3BMKQ0EUOjat7SWMRoF0ZfWHRxbbwOja/MOgz3Nr85iX8VCcU0DV+I1vRC7MDsimXow6rCCXve
-X-MS-Exchange-AntiSpam-MessageData: veNpCVTKZnxR9DKbNIU7r4IAB2EUmMuI83z6wvDcLB1NoEWiqXfucnCFcxtEcuH8+ciesjo2SuQit+9fQL0fIR4FtgXyf0UNqSiKbOOkoPNGs51PtkvTzXRsmI5xEVCnTvWFtYeagDBuXJ+6/SxW+g==
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cf218391-f480-4a16-4f03-08d9035bb9c0
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2021 17:51:14.9847 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM12FT020.eop-nam12.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6NAM12HT003
+In-Reply-To: <SN6PR06MB53420A0E831C17342A73188BA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_105117_026767_2910BBC3 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20210419_113803_407456_EB452392 
+X-CRM114-Status: GOOD (  24.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,27 +122,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 19, 2021 at 05:51:16PM +0100, Mark Brown wrote:
-> On Mon, Apr 19, 2021 at 10:57:16AM -0500, Chris Morgan wrote:
+Hi Chris,
+
+Never use hotmail.com for sending patches.
+They corrupt Message-ID, so use for example Gmail.
+
+X-Microsoft-Original-Message-ID:
+ <20210419155718.17348-3-macromorgan@hotmail.com>
+
+Message-ID:
+<SN6PR06MB53420A0E831C17342A73188BA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
+
+====
+
+If you like rk817.txt should be converted to YAML, which is beyond your
+serie, so move these changes to rk817.txt instead for now if rob+dt
+agrees. ;)
+
+====
+
+Include the dts patch back in, so we can compare it with the
+documentation changes.
+
+On 4/19/21 5:57 PM, Chris Morgan wrote:
+> Create dt-binding documentation to document rk817 codec.
 > 
-> > +#ifdef CONFIG_SND_SOC_RK817
-> > +	case RK817_CODEC_DTOP_LPT_SRST:
-> > +#endif
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+> Changes in v6:
+>  - Included additional project maintainers for correct subsystems.
+>  - Removed unneeded compatible from DT documentation.
+>  - Removed binding update for Odroid Go Advance (will do in seperate series).
+> Changes in v5:
+>  - Move register definitions from rk817_codec.h to main rk808.h register
+>    definitions.
+>  - Add volatile register for codec bits.
+>  - Add default values for codec bits.
+>  - Removed of_compatible from mtd driver (not necessary).
+>  - Switched to using parent regmap instead of private regmap for codec.
+> Changes in v4:
+>  - Created set_pll() call.
+>  - Created user visible gain control in mic.
+>  - Check for return value of clk_prepare_enable().
+>  - Removed duplicate clk_prepare_enable().
+>  - Split DT documentation to separate commit.
+> Changes in v3:
+>  - Use DAPM macros to set audio path.
+>  - Updated devicetree binding (as every rk817 has this codec chip).
+>  - Changed documentation to yaml format.
+>  - Split MFD changes to separate commit.
+> Changes in v2:
+>  - Fixed audio path registers to solve some bugs.
 > 
-> The register map of the device isn't going to change based on the kernel
-> configuration, I wouldn't expect any ifdefs for it.
+>  .../bindings/sound/rockchip,rk817-codec.yaml  | 57 +++++++++++++++++++
+>  1 file changed, 57 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
+> new file mode 100644
+> index 000000000000..0059ef54d6b5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
+> @@ -0,0 +1,57 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/rockchip-rk817.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip rk817 audio codec
+> +
+> +description:
+> +  The rk817 codec is an I2C codec integrated with every Rockchip
+> +  rk817 PMIC MFD.
 
-You are correct, but I was thinking that I should make the codec bits optional
-in the event someone had a RK817 and didn't want to use the codec. If you think
-this or the rest of the bits should not be optional please let me know. I still
-think it's best that at least the cell be optional so users can build a kernel
-without the audio if they so choose (I tested both building this module and
-audio codec with no devicetree entry - you get a dmesg log error but nothing
-else, and building with the devicetree entry but no driver - nothing happens).
+If you want to convert rk817.txt to rockchip,rk817.yaml then add
 
-If we enable the regmap bits unconditionally, is there any potential harm?
+maintainers:
+  - Heiko Stuebner <heiko@sntech.de>
 
-Thank you.
+> +
+> +properties:
+> +
+
+> +  "#sound-dai-cells":
+> +    const: 1
+
+Move things with "#" below as much as possible.
+
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    const: "mclk"
+> +
+
+> +  mic-in-differential:
+> +    description: the microphone is in differential mode.
+> +    $ref: /schemas/types.yaml#/definitions/flag
+
+This is part of a sub node now.
+
+> +
+> +required:
+
+> +  - compatible
+
+Add compatible "rockchip,rk817" to properties
+
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +rk817: pmic@20 {
+
+> +	compatible = "rockchip,rk817";
+
+Without rockchip,rk817.yaml this example will generate notifications.
+
+> +	reg = <0x20>;
+> +	interrupt-parent = <&gpio0>;
+
+> +	interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
+
+add include for IRQ_TYPE_LEVEL_LOW
+
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pmic_int>, <&i2s_8ch_mclk>;
+
+> +	#sound-dai-cells = <0>;
+
+Move things with "#" down below the list in possible.
+
+> +	clocks = <&cru SCLK_I2S_8CH_OUT>;
+
+add include for SCLK_I2S_8CH_OUT
+
+> +	clock-names = "mclk";
+
+----
+Heiko's sort rules:
+
+compatible
+reg
+interrupts
+[alphabetical]
+status [if needed]
+
+----
+
+
+> +
+
+> +	........
+
+remove
+
+> +
+
+> +	rk817_codec: codec {
+
+
+Move to rk817.txt example.
+
+> +			mic-in-differential;
+
+> +			status = "okay";
+
+Never use status in examples.
+
+> +	};
+> +
+
+> +	........
+
+remove
+
+> +
+> +};
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
