@@ -2,86 +2,74 @@ Return-Path: <SRS0=rMIB=JR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_NONE,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_NONE
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DD7AC43618
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48400C433B4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 757F56101E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 757F56101E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 32F5B6101E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32F5B6101E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yOsKBOiV9q48OljDIb6xbD9GeIDzf5cQDGMDR/gWtME=; b=EE1a/Vp0FaYr9ueZPHQV7OjJp
-	XQCtPZNpLE2Fa51AYekmCzMJV+Kkuufnj/f8rKMn+3ms+HJdEzdCW32NQDgBTBwn9ee4+ZbbSVUEN
-	VsmSlpbncJZuS9nzs748LFaVg58AG1jq6WJBo93zEVX4Ha9kdBfX2oILRxQ+BUxatNI+VhvvKFmeu
-	32wzdJd73Nvhea+LZmkshdiJDzH8Lk6HWeDXkEOr1ff3Xi9YB/9x4y5lfdkfo9uY1OKdW2wJ/0CwP
-	3TAz1FXqDJemT0jQ7WfjlnnPdb605rvXJP4HJeDl76dUlkJ3AmsxKhzZdM4dcp2OXTH0f3lsAwfoa
-	225J53mmQ==;
+	 bh=Sao2020ojCZi2PyJ5Q+neA3QiOepefLBZMXgTO6iIR8=; b=eHolaTPibXWtJmhYZvHneMi54
+	rbhtxmJXQG9hM8mDxT77qiqNaT4ljfedAX50YbtZBoD/ZqefMqbdw99KXwEiX02s1yd+CGNYYPMU+
+	LSKTDWzHzhZWoW5UF5qlB4WuBuIsscv5W4XOJFO8Bi6WPmYWPgVnN9UgZjrykqyLWl0UYaw3c7o4c
+	LDyrPKy9b88+AoDv1nOweQhEgwGwoXS62q85ClOShYjUhbvOGPtOkXaP5XukclCKP1sPcjLqh4QkC
+	KjsOAVieWiPc/uxqDhuVkfN1jAJEAtWfFrre2Gu7BxWDld0PJuqR3ZL/tiGo8G7/2BPZ3T6Tn5sgd
+	gXOvp1exw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYmPZ-00Bg9d-HA; Tue, 20 Apr 2021 09:11:13 +0000
+	id 1lYmPf-00BgBJ-LN; Tue, 20 Apr 2021 09:11:19 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYmOl-00Bfzd-2Y; Tue, 20 Apr 2021 09:10:23 +0000
+ id 1lYmPR-00Bg8I-Oh
+ for linux-rockchip@desiato.infradead.org; Tue, 20 Apr 2021 09:11:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=ZD97JqxKMrxJLl5m5soy5BJCP81W4AyZFRxNCX8qCW4=; b=WCnUYPSJc1wIzaBqK89JB/04OV
- 85bdfrQPNlnA3ocOqvx0StaNEzEGVQqEEqMuUSpgZP2VeAIdR4tP3xB4JydiEIPJxvdYFRHB4vO8I
- rYt98zXbGrmXmWLgN5+ZLSru4d4Z9YRMVJW5y3k/Op+g6EX0of13dg7XJ/vCmKgPv7fOH/WP5PUoq
- gdd0fwEOX+MJykbZ2/Vc7VA3s+PttkwEG2esmCTNWbdc6KbskpSJcEW4M5UxwPTbZKHEFJ4U/7yRc
- pN501R+Sk+tw/7KUoY5OpWSu9uG6xi1y3WGCVuaQ/k8Yzm3k0o68WZpGNDv/QKyQ/AXdTQWc467hk
- NTiC1idg==;
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:
+ Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+ :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=FBbonuL9gN7GfO5zLTtY44TCKaZkuyCW5mAAj4G8ROY=; b=XFC0ZvNqwFZ3JRDOZOyprAT0wI
+ 0fI/ZRxsF7hkvTlFrebOO5TEKXrTfcbRVlkpxxAfz9uy5Gv8tbxcpu01Zfkr0ewYvAI7pEb/BaR8u
+ nDJh44s58IwxE+wmIAkUZsXeB6970Ms3grUBhqdTYomq2rKOiJTbR2fi8ixksVBwxX13Dg7JgzMb5
+ w1xjr470pVi7Q9DZ0sUAc19ZXP2TTCKf+Y8HHDePd7oTcvWfR7AYyZR8YKFgUtVHKAKwgyjdNbyHd
+ YQ3+dr4iEa2LVxoqL8WmsG2plQDH+rXELHXTyu9TWFq3OB9cK1U6I4euzgiAhImGyM2yDklUEsxln
+ smy6+bYQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYmOe-00BxSP-9Y; Tue, 20 Apr 2021 09:10:21 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 34F941F4270E
-Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
- register
-To: Lucas Stach <l.stach@pengutronix.de>, ezequiel@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, robh+dt@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- lee.jones@linaro.org, gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com,
- "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Jacky Bai <ping.bai@nxp.com>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com,
- kernel@pengutronix.de, kernel@collabora.com, cphealy@gmail.com,
- linux-arm-kernel@lists.infradead.org
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-4-benjamin.gaignard@collabora.com>
- <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
- <ffe9b3f5-94f5-453e-73f0-4b42d0454b63@collabora.com>
- <529b61b1b1e6030c92a7944c4864246521b2ccdd.camel@pengutronix.de>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <36008691-d075-203d-0cac-2a012773ea34@collabora.com>
-Date: Tue, 20 Apr 2021 11:10:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ id 1lYmPL-00BxXC-ME
+ for linux-rockchip@lists.infradead.org; Tue, 20 Apr 2021 09:11:04 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lYmPK-0004PP-8p; Tue, 20 Apr 2021 11:10:58 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linus.walleij@linaro.org, Jianqun Xu <jay.xu@rock-chips.com>
+Cc: huangtao@rock-chips.com, linux-gpio@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jianqun Xu <jay.xu@rock-chips.com>
+Subject: Re: [PATCH v2] pinctrl: rockchip: do coding style for mux route struct
+Date: Tue, 20 Apr 2021 11:10:57 +0200
+Message-ID: <11673564.zAa99ISigo@diego>
+In-Reply-To: <20210420090727.1246116-1-jay.xu@rock-chips.com>
+References: <20210406025356.534876-1-jay.xu@rock-chips.com>
+ <20210420090727.1246116-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <529b61b1b1e6030c92a7944c4864246521b2ccdd.camel@pengutronix.de>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_021016_602255_0CBD608D 
-X-CRM114-Status: GOOD (  29.92  )
+X-CRM114-CacheID: sfid-20210420_021100_070724_571B13A9 
+X-CRM114-Status: GOOD (  20.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,166 +82,777 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE2LzA0LzIwMjEgw6AgMTc6MTQsIEx1Y2FzIFN0YWNoIGEgw6ljcml0wqA6Cj4gQW0gRnJl
-aXRhZywgZGVtIDE2LjA0LjIwMjEgdW0gMTU6MDggKzAyMDAgc2NocmllYiBCZW5qYW1pbiBHYWln
-bmFyZDoKPj4gTGUgMTYvMDQvMjAyMSDDoCAxMjo1NCwgTHVjYXMgU3RhY2ggYSDDqWNyaXTCoDoK
-Pj4+IEFtIE1pdHR3b2NoLCBkZW0gMDcuMDQuMjAyMSB1bSAwOTozNSArMDIwMCBzY2hyaWViIEJl
-bmphbWluIEdhaWduYXJkOgo+Pj4+IEluIG9yZGVyIHRvIGJlIGFibGUgdG8gc2hhcmUgdGhlIGNv
-bnRyb2wgaGFyZHdhcmUgYmxvY2sgYmV0d2Vlbgo+Pj4+IFZQVXMgdXNlIGEgc3lzY29uIGluc3Rl
-YWQgYSBpb3JlbWFwIGl0IGluIHRoZSBkcml2ZXIuCj4+Pj4gVG8ga2VlcCB0aGUgY29tcGF0aWJp
-bGl0eSB3aXRoIG9sZGVyIERUIGlmICdueHAsaW14OG1xLXZwdS1jdHJsJwo+Pj4+IHBoYW5kbGUg
-aXMgbm90IGZvdW5kIGxvb2sgYXQgJ2N0cmwnIHJlZy1uYW1lLgo+Pj4+IFdpdGggdGhlIG1ldGhv
-ZCBpdCBiZWNvbWVzIHVzZWxlc3MgdG8gcHJvdmlkZSBhIGxpc3Qgb2YgcmVnaXN0ZXIKPj4+PiBu
-YW1lcyBzbyByZW1vdmUgaXQuCj4+PiBTb3JyeSBmb3IgcHV0dGluZyBhIHNwb2tlIGluIHRoZSB3
-aGVlbCBhZnRlciBtYW55IGl0ZXJhdGlvbnMgb2YgdGhlCj4+PiBzZXJpZXMuCj4+Pgo+Pj4gV2Ug
-anVzdCBkaXNjdXNzZWQgYSB3YXkgZm9yd2FyZCBvbiBob3cgdG8gaGFuZGxlIHRoZSBjbG9ja3Mg
-YW5kIHJlc2V0cwo+Pj4gcHJvdmlkZWQgYnkgdGhlIGJsa2N0bCBibG9jayBvbiBpLk1YOE1NIGFu
-ZCBsYXRlciBhbmQgaXQgc2VlbXMgdGhlcmUgaXMKPj4+IGEgY29uc2Vuc3VzIG9uIHRyeWluZyB0
-byBwcm92aWRlIHZpcnR1YWwgcG93ZXIgZG9tYWlucyBmcm9tIGEgYmxrY3RsCj4+PiBkcml2ZXIs
-IGNvbnRyb2xsaW5nIGNsb2NrcyBhbmQgcmVzZXRzIGZvciB0aGUgZGV2aWNlcyBpbiB0aGUgcG93
-ZXIKPj4+IGRvbWFpbi4gSSB3b3VsZCBsaWtlIHRvIGF2b2lkIGludHJvZHVjaW5nIHlldCBhbm90
-aGVyIHdheSBvZiBoYW5kbGluZwo+Pj4gdGhlIGJsa2N0bCBhbmQgdGh1cyB3b3VsZCBsaWtlIHRv
-IGFsaWduIHRoZSBpLk1YOE1RIFZQVSBibGtjdGwgd2l0aAo+Pj4gd2hhdCB3ZSBhcmUgcGxhbm5p
-bmcgdG8gZG8gb24gdGhlIGxhdGVyIGNoaXAgZ2VuZXJhdGlvbnMuCj4+Pgo+Pj4gQ0MnaW5nIEph
-Y2t5IEJhaSBhbmQgUGVuZyBGYW4gZnJvbSBOWFAsIGFzIHRoZXkgd2VyZSBnb2luZyB0byBnaXZl
-IHRoaXMKPj4+IHZpcnR1YWwgcG93ZXIgZG9tYWluIHRoaW5nIGEgc2hvdC4KPj4gVGhhdCBjb3Vs
-ZCByZXBsYWNlIHRoZSAzIGZpcnN0IHBhdGNoZXMgYW5kIER0IHBhdGNoZSBvZiB0aGlzIHNlcmll
-cwo+PiBidXQgdGhhdCB3aWxsIG5vdCBpbXBhY3QgdGhlIGhldmMgcGFydCwgc28gSSB3b25kZXIg
-aWYgcHVyZSBoZXZjIHBhdGNoZXMKPj4gY291bGQgYmUgbWVyZ2VkIGFueXdheSA/Cj4+IFRoZXkg
-YXJlIHJldmlld2VkIGFuZCBkb24ndCBkZXBlbmQgb2YgaG93IHRoZSBjdHJsIGJsb2NrIGlzIG1h
-bmFnZWQuCj4gSSdtIG5vdCByZWFsbHkgaW4gYSBwb3NpdGlvbiB0byBnaXZlIGFueSBpbmZvcm1l
-ZCBvcGluaW9uIGFib3V0IHRoYXQKPiBodmVjIHBhdGNoZXMsIGFzIEkgb25seSBza2ltbWVkIHRo
-ZW0sIGJ1dCBJIGRvbid0IHNlZSBhbnkgcmVhc29uIHRvCj4gZGVsYXkgcGF0Y2hlcyAwNC0xMSBm
-cm9tIHRoaXMgc2VyaWVzIHVudGlsIHRoZSBpLk1YOE0gcGxhdGZvcm0gaXNzdWVzCj4gYXJlIHNv
-cnRlZC4gQUZBSUNTIHRob3NlIHRoaW5ncyBhcmUgdG90YWxseSBvcnRob2dvbmFsLgoKSGkgSGFu
-cywKV2hhdCBkbyB5b3UgdGhpbmsgYWJvdXQgdGhpcyBwcm9wb3NhbCB0byBzcGxpdCB0aGlzIHNl
-cmllcyA/CkdldCBoZXZjIHBhcnQgbWVyZ2VkIGNvdWxkIGFsbG93IG1lIHRvIGNvbnRpbnVlIHRv
-IGFkZCBmZWF0dXJlcwpsaWtlIHNjYWxpbmcgbGlzdHMsIGNvbXByZXNzZWQgcmVmZXJlbmNlIGJ1
-ZmZlcnMgYW5kIDEwLWJpdCBzdXBwb3J0cy4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gUmVnYXJk
-cywKPiBMdWNhcwo+Cj4+PiBSZWdhcmRzLAo+Pj4gTHVjYXMKPj4+Cj4+Pj4gU2lnbmVkLW9mZi1i
-eTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4+
-Pj4gUmV2aWV3ZWQtYnk6IFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4+
-Pj4gLS0tCj4+Pj4gdmVyc2lvbiA5Ogo+Pj4+ICDCoMKgLSBDb3JyZWN0aW9ucyBpbiBjb21taXQg
-bWVzc2FnZQo+Pj4+Cj4+Pj4gdmVyc2lvbiA3Ogo+Pj4+ICDCoMKgLSBBZGQgUGhpbGlwcCByZXZp
-ZXdlZC1ieSB0YWcuCj4+Pj4gIMKgwqAtIENoYW5nZSBzeXNjb24gcGhhbmRsZSBuYW1lLgo+Pj4+
-ICAgIAo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+IHZlcnNpb24gNToKPj4+PiAg
-wqDCoC0gdXNlIHN5c2NvbiBpbnN0ZWFkIG9mIFZQVSByZXNldCBkcml2ZXIuCj4+Pj4gIMKgwqAt
-IGlmIERUIGRvZXNuJ3QgcHJvdmlkZSBzeXNjb24ga2VlcCBiYWNrd2FyZCBjb21wYXRpYmlsdHkg
-YnkgdXNpbmcKPj4+PiAgwqDCoMKgwqAnY3RybCcgcmVnLW5hbWUuCj4+Pj4KPj4+PiAgwqDCoGRy
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmggICAgICAgfCAgNSArLQo+Pj4+ICDC
-oMKgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9pbXg4bV92cHVfaHcuYyB8IDUyICsrKysr
-KysrKysrKy0tLS0tLS0tLQo+Pj4+ICDCoMKgMiBmaWxlcyBjaGFuZ2VkLCAzNCBpbnNlcnRpb25z
-KCspLCAyMyBkZWxldGlvbnMoLSkKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvaGFudHJvL2hhbnRyby5oIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
-YW50cm8uaAo+Pj4+IGluZGV4IDZjMWI4ODhhYmU3NS4uMzdiOWNlMDRiZDRlIDEwMDY0NAo+Pj4+
-IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmgKPj4+PiArKysgYi9k
-cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyby5oCj4+Pj4gQEAgLTEzLDYgKzEzLDcg
-QEAKPj4+PiAgwqDCoCNkZWZpbmUgSEFOVFJPX0hfCj4+Pj4gICAgCj4+Pj4KPj4+Pgo+Pj4+Cj4+
-Pj4KPj4+Pgo+Pj4+Cj4+Pj4gIMKgwqAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+
-Cj4+Pj4gKyNpbmNsdWRlIDxsaW51eC9yZWdtYXAuaD4KPj4+PiAgwqDCoCNpbmNsdWRlIDxsaW51
-eC92aWRlb2RldjIuaD4KPj4+PiAgwqDCoCNpbmNsdWRlIDxsaW51eC93YWl0Lmg+Cj4+Pj4gIMKg
-wqAjaW5jbHVkZSA8bGludXgvY2xrLmg+Cj4+Pj4gQEAgLTE2Nyw3ICsxNjgsNyBAQCBoYW50cm9f
-dmRldl90b19mdW5jKHN0cnVjdCB2aWRlb19kZXZpY2UgKnZkZXYpCj4+Pj4gIMKgwqDCoCogQHJl
-Z19iYXNlczoJCU1hcHBlZCBhZGRyZXNzZXMgb2YgVlBVIHJlZ2lzdGVycy4KPj4+PiAgwqDCoMKg
-KiBAZW5jX2Jhc2U6CQlNYXBwZWQgYWRkcmVzcyBvZiBWUFUgZW5jb2RlciByZWdpc3RlciBmb3Ig
-Y29udmVuaWVuY2UuCj4+Pj4gIMKgwqDCoCogQGRlY19iYXNlOgkJTWFwcGVkIGFkZHJlc3Mgb2Yg
-VlBVIGRlY29kZXIgcmVnaXN0ZXIgZm9yIGNvbnZlbmllbmNlLgo+Pj4+IC0gKiBAY3RybF9iYXNl
-OgkJTWFwcGVkIGFkZHJlc3Mgb2YgVlBVIGNvbnRyb2wgYmxvY2suCj4+Pj4gKyAqIEBjdHJsX2Jh
-c2U6CQlSZWdtYXAgb2YgVlBVIGNvbnRyb2wgYmxvY2suCj4+Pj4gIMKgwqDCoCogQHZwdV9tdXRl
-eDoJCU11dGV4IHRvIHN5bmNocm9uaXplIFY0TDIgY2FsbHMuCj4+Pj4gIMKgwqDCoCogQGlycWxv
-Y2s6CQlTcGlubG9jayB0byBzeW5jaHJvbml6ZSBhY2Nlc3MgdG8gZGF0YSBzdHJ1Y3R1cmVzCj4+
-Pj4gIMKgwqDCoCoJCQlzaGFyZWQgd2l0aCBpbnRlcnJ1cHQgaGFuZGxlcnMuCj4+Pj4gQEAgLTE4
-Niw3ICsxODcsNyBAQCBzdHJ1Y3QgaGFudHJvX2RldiB7Cj4+Pj4gIMKgwqAJdm9pZCBfX2lvbWVt
-ICoqcmVnX2Jhc2VzOwo+Pj4+ICDCoMKgCXZvaWQgX19pb21lbSAqZW5jX2Jhc2U7Cj4+Pj4gIMKg
-wqAJdm9pZCBfX2lvbWVtICpkZWNfYmFzZTsKPj4+PiAtCXZvaWQgX19pb21lbSAqY3RybF9iYXNl
-Owo+Pj4+ICsJc3RydWN0IHJlZ21hcCAqY3RybF9iYXNlOwo+Pj4+ICAgIAo+Pj4+Cj4+Pj4KPj4+
-Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+ICDCoMKgCXN0cnVjdCBtdXRleCB2cHVfbXV0ZXg7CS8qIHZp
-ZGVvX2RldmljZSBsb2NrICovCj4+Pj4gIMKgwqAJc3BpbmxvY2tfdCBpcnFsb2NrOwo+Pj4+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jIGIv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9pbXg4bV92cHVfaHcuYwo+Pj4+IGluZGV4IGMy
-MjJkZTA3NWVmNC4uOGQwYzM0MjUyMzRiIDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaW14OG1fdnB1X2h3LmMKPj4+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jCj4+Pj4gQEAgLTcsNiArNyw3IEBACj4+Pj4gICAg
-Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4gIMKgwqAjaW5jbHVkZSA8bGludXgv
-Y2xrLmg+Cj4+Pj4gIMKgwqAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPj4+PiArI2luY2x1ZGUg
-PGxpbnV4L21mZC9zeXNjb24uaD4KPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+
-Pj4KPj4+PiAgwqDCoCNpbmNsdWRlICJoYW50cm8uaCIKPj4+PiAgwqDCoCNpbmNsdWRlICJoYW50
-cm9fanBlZy5oIgo+Pj4+IEBAIC0yNCwzMCArMjUsMjggQEAKPj4+PiAgwqDCoCNkZWZpbmUgQ1RS
-TF9HMV9QUF9GVVNFCQkweDBjCj4+Pj4gIMKgwqAjZGVmaW5lIENUUkxfRzJfREVDX0ZVU0UJMHgx
-MAo+Pj4+ICAgIAo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+ICtzdGF0aWMgY29u
-c3Qgc3RydWN0IHJlZ21hcF9jb25maWcgY3RybF9yZWdtYXBfY3RybCA9IHsKPj4+PiArCS5yZWdf
-Yml0cyA9IDMyLAo+Pj4+ICsJLnZhbF9iaXRzID0gMzIsCj4+Pj4gKwkucmVnX3N0cmlkZSA9IDB4
-MTQsCj4+Pj4gK307Cj4+Pj4gKwo+Pj4+ICDCoMKgc3RhdGljIHZvaWQgaW14OG1fc29mdF9yZXNl
-dChzdHJ1Y3QgaGFudHJvX2RldiAqdnB1LCB1MzIgcmVzZXRfYml0cykKPj4+PiAgwqDCoHsKPj4+
-PiAtCXUzMiB2YWw7Cj4+Pj4gLQo+Pj4+ICDCoMKgCS8qIEFzc2VydCAqLwo+Pj4+IC0JdmFsID0g
-cmVhZGwodnB1LT5jdHJsX2Jhc2UgKyBDVFJMX1NPRlRfUkVTRVQpOwo+Pj4+IC0JdmFsICY9IH5y
-ZXNldF9iaXRzOwo+Pj4+IC0Jd3JpdGVsKHZhbCwgdnB1LT5jdHJsX2Jhc2UgKyBDVFJMX1NPRlRf
-UkVTRVQpOwo+Pj4+ICsJcmVnbWFwX3VwZGF0ZV9iaXRzKHZwdS0+Y3RybF9iYXNlLCBDVFJMX1NP
-RlRfUkVTRVQsIHJlc2V0X2JpdHMsIDApOwo+Pj4+ICAgIAo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+
-Pj4KPj4+Pgo+Pj4+ICDCoMKgCXVkZWxheSgyKTsKPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+
-Pgo+Pj4+Cj4+Pj4KPj4+PiAgwqDCoAkvKiBSZWxlYXNlICovCj4+Pj4gLQl2YWwgPSByZWFkbCh2
-cHUtPmN0cmxfYmFzZSArIENUUkxfU09GVF9SRVNFVCk7Cj4+Pj4gLQl2YWwgfD0gcmVzZXRfYml0
-czsKPj4+PiAtCXdyaXRlbCh2YWwsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9TT0ZUX1JFU0VUKTsK
-Pj4+PiArCXJlZ21hcF91cGRhdGVfYml0cyh2cHUtPmN0cmxfYmFzZSwgQ1RSTF9TT0ZUX1JFU0VU
-LAo+Pj4+ICsJCQkgICByZXNldF9iaXRzLCByZXNldF9iaXRzKTsKPj4+PiAgwqDCoH0KPj4+PiAg
-ICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiAgwqDCoHN0YXRpYyB2b2lkIGlt
-eDhtX2Nsa19lbmFibGUoc3RydWN0IGhhbnRyb19kZXYgKnZwdSwgdTMyIGNsb2NrX2JpdHMpCj4+
-Pj4gIMKgwqB7Cj4+Pj4gLQl1MzIgdmFsOwo+Pj4+IC0KPj4+PiAtCXZhbCA9IHJlYWRsKHZwdS0+
-Y3RybF9iYXNlICsgQ1RSTF9DTE9DS19FTkFCTEUpOwo+Pj4+IC0JdmFsIHw9IGNsb2NrX2JpdHM7
-Cj4+Pj4gLQl3cml0ZWwodmFsLCB2cHUtPmN0cmxfYmFzZSArIENUUkxfQ0xPQ0tfRU5BQkxFKTsK
-Pj4+PiArCXJlZ21hcF91cGRhdGVfYml0cyh2cHUtPmN0cmxfYmFzZSwgQ1RSTF9DTE9DS19FTkFC
-TEUsCj4+Pj4gKwkJCSAgIGNsb2NrX2JpdHMsIGNsb2NrX2JpdHMpOwo+Pj4+ICDCoMKgfQo+Pj4+
-ICAgIAo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+ICDCoMKgc3RhdGljIGludCBp
-bXg4bXFfcnVudGltZV9yZXN1bWUoc3RydWN0IGhhbnRyb19kZXYgKnZwdSkKPj4+PiBAQCAtNjQs
-OSArNjMsOSBAQCBzdGF0aWMgaW50IGlteDhtcV9ydW50aW1lX3Jlc3VtZShzdHJ1Y3QgaGFudHJv
-X2RldiAqdnB1KQo+Pj4+ICDCoMKgCWlteDhtX2Nsa19lbmFibGUodnB1LCBDTE9DS19HMSB8IENM
-T0NLX0cyKTsKPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiAgwqDC
-oAkvKiBTZXQgdmFsdWVzIG9mIHRoZSBmdXNlIHJlZ2lzdGVycyAqLwo+Pj4+IC0Jd3JpdGVsKDB4
-ZmZmZmZmZmYsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9HMV9ERUNfRlVTRSk7Cj4+Pj4gLQl3cml0
-ZWwoMHhmZmZmZmZmZiwgdnB1LT5jdHJsX2Jhc2UgKyBDVFJMX0cxX1BQX0ZVU0UpOwo+Pj4+IC0J
-d3JpdGVsKDB4ZmZmZmZmZmYsIHZwdS0+Y3RybF9iYXNlICsgQ1RSTF9HMl9ERUNfRlVTRSk7Cj4+
-Pj4gKwlyZWdtYXBfd3JpdGUodnB1LT5jdHJsX2Jhc2UsIENUUkxfRzFfREVDX0ZVU0UsIDB4ZmZm
-ZmZmZmYpOwo+Pj4+ICsJcmVnbWFwX3dyaXRlKHZwdS0+Y3RybF9iYXNlLCBDVFJMX0cxX1BQX0ZV
-U0UsIDB4ZmZmZmZmZmYpOwo+Pj4+ICsJcmVnbWFwX3dyaXRlKHZwdS0+Y3RybF9iYXNlLCBDVFJM
-X0cyX0RFQ19GVVNFLCAweGZmZmZmZmZmKTsKPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+
-Pj4+Cj4+Pj4KPj4+PiAgwqDCoAljbGtfYnVsa19kaXNhYmxlX3VucHJlcGFyZSh2cHUtPnZhcmlh
-bnQtPm51bV9jbG9ja3MsIHZwdS0+Y2xvY2tzKTsKPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+
-Pgo+Pj4+Cj4+Pj4KPj4+PiBAQCAtMTUwLDggKzE0OSwyMiBAQCBzdGF0aWMgaXJxcmV0dXJuX3Qg
-aW14OG1fdnB1X2cxX2lycShpbnQgaXJxLCB2b2lkICpkZXZfaWQpCj4+Pj4gICAgCj4+Pj4KPj4+
-Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4gIMKgwqBzdGF0aWMgaW50IGlteDhtcV92cHVfaHdf
-aW5pdChzdHJ1Y3QgaGFudHJvX2RldiAqdnB1KQo+Pj4+ICDCoMKgewo+Pj4+IC0JdnB1LT5kZWNf
-YmFzZSA9IHZwdS0+cmVnX2Jhc2VzWzBdOwo+Pj4+IC0JdnB1LT5jdHJsX2Jhc2UgPSB2cHUtPnJl
-Z19iYXNlc1t2cHUtPnZhcmlhbnQtPm51bV9yZWdzIC0gMV07Cj4+Pj4gKwlzdHJ1Y3QgZGV2aWNl
-X25vZGUgKm5wID0gdnB1LT5kZXYtPm9mX25vZGU7Cj4+Pj4gKwo+Pj4+ICsJdnB1LT5jdHJsX2Jh
-c2UgPSBzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAibnhwLGlteDhtLXZwdS1j
-dHJsIik7Cj4+Pj4gKwlpZiAoSVNfRVJSKHZwdS0+Y3RybF9iYXNlKSkgewo+Pj4+ICsJCXN0cnVj
-dCByZXNvdXJjZSAqcmVzOwo+Pj4+ICsJCXZvaWQgX19pb21lbSAqY3RybDsKPj4+PiArCj4+Pj4g
-KwkJcmVzID0gcGxhdGZvcm1fZ2V0X3Jlc291cmNlX2J5bmFtZSh2cHUtPnBkZXYsIElPUkVTT1VS
-Q0VfTUVNLCAiY3RybCIpOwo+Pj4+ICsJCWN0cmwgPSBkZXZtX2lvcmVtYXBfcmVzb3VyY2UodnB1
-LT5kZXYsIHJlcyk7Cj4+Pj4gKwkJaWYgKElTX0VSUihjdHJsKSkKPj4+PiArCQkJcmV0dXJuIFBU
-Ul9FUlIoY3RybCk7Cj4+Pj4gKwo+Pj4+ICsJCXZwdS0+Y3RybF9iYXNlID0gZGV2bV9yZWdtYXBf
-aW5pdF9tbWlvKHZwdS0+ZGV2LCBjdHJsLCAmY3RybF9yZWdtYXBfY3RybCk7Cj4+Pj4gKwkJaWYg
-KElTX0VSUih2cHUtPmN0cmxfYmFzZSkpCj4+Pj4gKwkJCXJldHVybiBQVFJfRVJSKHZwdS0+Y3Ry
-bF9iYXNlKTsKPj4+PiArCX0KPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4K
-Pj4+PiAgwqDCoAlyZXR1cm4gMDsKPj4+PiAgwqDCoH0KPj4+PiBAQCAtMTk4LDcgKzIxMSw2IEBA
-IHN0YXRpYyBjb25zdCBzdHJ1Y3QgaGFudHJvX2lycSBpbXg4bXFfaXJxc1tdID0gewo+Pj4+ICDC
-oMKgfTsKPj4+PiAgICAKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiAgwqDCoHN0
-YXRpYyBjb25zdCBjaGFyICogY29uc3QgaW14OG1xX2Nsa19uYW1lc1tdID0geyAiZzEiLCAiZzIi
-LCAiYnVzIiB9Owo+Pj4+IC1zdGF0aWMgY29uc3QgY2hhciAqIGNvbnN0IGlteDhtcV9yZWdfbmFt
-ZXNbXSA9IHsgImcxIiwgImcyIiwgImN0cmwiIH07Cj4+Pj4gICAgCj4+Pj4KPj4+Pgo+Pj4+Cj4+
-Pj4KPj4+Pgo+Pj4+Cj4+Pj4gIMKgwqBjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQgaW14OG1x
-X3ZwdV92YXJpYW50ID0gewo+Pj4+ICDCoMKgCS5kZWNfZm10cyA9IGlteDhtX3ZwdV9kZWNfZm10
-cywKPj4+PiBAQCAtMjE1LDYgKzIyNyw0IEBAIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBp
-bXg4bXFfdnB1X3ZhcmlhbnQgPSB7Cj4+Pj4gIMKgwqAJLm51bV9pcnFzID0gQVJSQVlfU0laRShp
-bXg4bXFfaXJxcyksCj4+Pj4gIMKgwqAJLmNsa19uYW1lcyA9IGlteDhtcV9jbGtfbmFtZXMsCj4+
-Pj4gIMKgwqAJLm51bV9jbG9ja3MgPSBBUlJBWV9TSVpFKGlteDhtcV9jbGtfbmFtZXMpLAo+Pj4+
-IC0JLnJlZ19uYW1lcyA9IGlteDhtcV9yZWdfbmFtZXMsCj4+Pj4gLQkubnVtX3JlZ3MgPSBBUlJB
-WV9TSVpFKGlteDhtcV9yZWdfbmFtZXMpCj4+Pj4gIMKgwqB9Owo+Pj4KPgo+CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Dienstag, 20. April 2021, 11:07:27 CEST schrieb Jianqun Xu:
+> The mux route tables take many lines for each SoC, and it will be more
+> instances for newly SoC, that makes the file size increase larger.
+> 
+> This patch only do coding style for mux route struct, by adding a new
+> definition and replace the structs by script which supplied by
+> huangtao@rock-chips.com
+> 
+> sed -i -e "
+> /static struct rockchip_mux_route_data /bcheck
+> b
+> :append-next-line
+> N
+> :check
+> /^[^;]*$/bappend-next-line
+> s/[[:blank:]]*.bank_num = \([[:digit:]]*,\)\n/\tRK_MUXROUTE_SAME(\1/g
+> s/[[:blank:]]*.pin =[[:blank:]]*0,\n/ RK_PA0,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*1,\n/ RK_PA1,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*2,\n/ RK_PA2,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*3,\n/ RK_PA3,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*4,\n/ RK_PA4,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*5,\n/ RK_PA5,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*6,\n/ RK_PA6,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*7,\n/ RK_PA7,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*8,\n/ RK_PB0,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*9,\n/ RK_PB1,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*10,\n/ RK_PB2,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*11,\n/ RK_PB3,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*12,\n/ RK_PB4,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*13,\n/ RK_PB5,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*14,\n/ RK_PB6,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*15,\n/ RK_PB7,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*16,\n/ RK_PC0,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*17,\n/ RK_PC1,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*18,\n/ RK_PC2,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*19,\n/ RK_PC3,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*20,\n/ RK_PC4,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*21,\n/ RK_PC5,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*22,\n/ RK_PC6,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*23,\n/ RK_PC7,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*24,\n/ RK_PD0,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*25,\n/ RK_PD1,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*26,\n/ RK_PD2,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*27,\n/ RK_PD3,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*28,\n/ RK_PD4,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*29,\n/ RK_PD5,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*30,\n/ RK_PD6,/g
+> s/[[:blank:]]*.pin =[[:blank:]]*31,\n/ RK_PD7,/g
+> s/[[:blank:]]*.func = \([[:digit:]]*,\)\n/ \1/g
+> s/[[:blank:]]*.route_location =[[:blank:]]*\([[:print:]]*,\)\n//g
+> s/[[:blank:]]*.route_offset = \(0x[[:xdigit:]]*,\)\n/ \1/g
+> s/[[:blank:]]*.route_val =[[:blank:]]*\([[:print:]]*\),\n/ \1),/g
+> s/\t{\n//g
+> s/\t}, {\n//g
+> s/\t},//g
+> s/[[:blank:]]*\(\/\*[[:print:]]*\*\/\)\n[[:blank:]]*RK_MUXROUTE_SAME(\([[:print:]]*\)),\n/\tRK_MUXROUTE_SAME(\2), \1\n/g
+> s/[[:blank:]]*\(\/\*[[:print:]]*\*\/\)\n[[:blank:]]*RK_MUXROUTE_SAME(\([[:print:]]*\)),/\tRK_MUXROUTE_SAME(\2), \1\n/g
+> " drivers/pinctrl/pinctrl-rockchip.c
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Change-Id: I50a12f00ae127df8938221d10f94e6733baab1c5
+
+Looks like you still have that gerrit hook in your git tree, so
+it inserted a new Change-Id :-(
+
+
+Heiko
+
+> ---
+> v2:
+>  - remove change-id
+>  - reviewed-by heiko
+> 
+>  drivers/pinctrl/pinctrl-rockchip.c | 650 ++++-------------------------
+>  1 file changed, 80 insertions(+), 570 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index aa1a1c850d05..c135ea847c54 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -801,597 +801,107 @@ static void rockchip_get_recalced_mux(struct rockchip_pin_bank *bank, int pin,
+>  }
+>  
+>  static struct rockchip_mux_route_data px30_mux_route_data[] = {
+> -	{
+> -		/* cif-d2m0 */
+> -		.bank_num = 2,
+> -		.pin = 0,
+> -		.func = 1,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 7),
+> -	}, {
+> -		/* cif-d2m1 */
+> -		.bank_num = 3,
+> -		.pin = 3,
+> -		.func = 3,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 7) | BIT(7),
+> -	}, {
+> -		/* pdm-m0 */
+> -		.bank_num = 3,
+> -		.pin = 22,
+> -		.func = 2,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 8),
+> -	}, {
+> -		/* pdm-m1 */
+> -		.bank_num = 2,
+> -		.pin = 22,
+> -		.func = 1,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 8) | BIT(8),
+> -	}, {
+> -		/* uart2-rxm0 */
+> -		.bank_num = 1,
+> -		.pin = 27,
+> -		.func = 2,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 10),
+> -	}, {
+> -		/* uart2-rxm1 */
+> -		.bank_num = 2,
+> -		.pin = 14,
+> -		.func = 2,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 10) | BIT(10),
+> -	}, {
+> -		/* uart3-rxm0 */
+> -		.bank_num = 0,
+> -		.pin = 17,
+> -		.func = 2,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 9),
+> -	}, {
+> -		/* uart3-rxm1 */
+> -		.bank_num = 1,
+> -		.pin = 15,
+> -		.func = 2,
+> -		.route_offset = 0x184,
+> -		.route_val = BIT(16 + 9) | BIT(9),
+> -	},
+> +	RK_MUXROUTE_SAME(2, RK_PA0, 1, 0x184, BIT(16 + 7)), /* cif-d2m0 */
+> +	RK_MUXROUTE_SAME(3, RK_PA3, 3, 0x184, BIT(16 + 7) | BIT(7)), /* cif-d2m1 */
+> +	RK_MUXROUTE_SAME(3, RK_PC6, 2, 0x184, BIT(16 + 8)), /* pdm-m0 */
+> +	RK_MUXROUTE_SAME(2, RK_PC6, 1, 0x184, BIT(16 + 8) | BIT(8)), /* pdm-m1 */
+> +	RK_MUXROUTE_SAME(1, RK_PD3, 2, 0x184, BIT(16 + 10)), /* uart2-rxm0 */
+> +	RK_MUXROUTE_SAME(2, RK_PB6, 2, 0x184, BIT(16 + 10) | BIT(10)), /* uart2-rxm1 */
+> +	RK_MUXROUTE_SAME(0, RK_PC1, 2, 0x184, BIT(16 + 9)), /* uart3-rxm0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB7, 2, 0x184, BIT(16 + 9) | BIT(9)), /* uart3-rxm1 */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3128_mux_route_data[] = {
+> -	{
+> -		/* spi-0 */
+> -		.bank_num = 1,
+> -		.pin = 10,
+> -		.func = 1,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 3) | BIT(16 + 4),
+> -	}, {
+> -		/* spi-1 */
+> -		.bank_num = 1,
+> -		.pin = 27,
+> -		.func = 3,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 3) | BIT(16 + 4) | BIT(3),
+> -	}, {
+> -		/* spi-2 */
+> -		.bank_num = 0,
+> -		.pin = 13,
+> -		.func = 2,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 3) | BIT(16 + 4) | BIT(4),
+> -	}, {
+> -		/* i2s-0 */
+> -		.bank_num = 1,
+> -		.pin = 5,
+> -		.func = 1,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 5),
+> -	}, {
+> -		/* i2s-1 */
+> -		.bank_num = 0,
+> -		.pin = 14,
+> -		.func = 1,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 5) | BIT(5),
+> -	}, {
+> -		/* emmc-0 */
+> -		.bank_num = 1,
+> -		.pin = 22,
+> -		.func = 2,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 6),
+> -	}, {
+> -		/* emmc-1 */
+> -		.bank_num = 2,
+> -		.pin = 4,
+> -		.func = 2,
+> -		.route_offset = 0x144,
+> -		.route_val = BIT(16 + 6) | BIT(6),
+> -	},
+> +	RK_MUXROUTE_SAME(1, RK_PB2, 1, 0x144, BIT(16 + 3) | BIT(16 + 4)), /* spi-0 */
+> +	RK_MUXROUTE_SAME(1, RK_PD3, 3, 0x144, BIT(16 + 3) | BIT(16 + 4) | BIT(3)), /* spi-1 */
+> +	RK_MUXROUTE_SAME(0, RK_PB5, 2, 0x144, BIT(16 + 3) | BIT(16 + 4) | BIT(4)), /* spi-2 */
+> +	RK_MUXROUTE_SAME(1, RK_PA5, 1, 0x144, BIT(16 + 5)), /* i2s-0 */
+> +	RK_MUXROUTE_SAME(0, RK_PB6, 1, 0x144, BIT(16 + 5) | BIT(5)), /* i2s-1 */
+> +	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x144, BIT(16 + 6)), /* emmc-0 */
+> +	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x144, BIT(16 + 6) | BIT(6)), /* emmc-1 */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3188_mux_route_data[] = {
+> -	{
+> -		/* non-iomuxed emmc/flash pins on flash-dqs */
+> -		.bank_num = 0,
+> -		.pin = 24,
+> -		.func = 1,
+> -		.route_location = ROCKCHIP_ROUTE_GRF,
+> -		.route_offset = 0xa0,
+> -		.route_val = BIT(16 + 11),
+> -	}, {
+> -		/* non-iomuxed emmc/flash pins on emmc-clk */
+> -		.bank_num = 0,
+> -		.pin = 24,
+> -		.func = 2,
+> -		.route_location = ROCKCHIP_ROUTE_GRF,
+> -		.route_offset = 0xa0,
+> -		.route_val = BIT(16 + 11) | BIT(11),
+> -	},
+> +	RK_MUXROUTE_SAME(0, RK_PD0, 1, 0xa0, BIT(16 + 11)), /* non-iomuxed emmc/flash pins on flash-dqs */
+> +	RK_MUXROUTE_SAME(0, RK_PD0, 2, 0xa0, BIT(16 + 11) | BIT(11)), /* non-iomuxed emmc/flash pins on emmc-clk */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3228_mux_route_data[] = {
+> -	{
+> -		/* pwm0-0 */
+> -		.bank_num = 0,
+> -		.pin = 26,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16),
+> -	}, {
+> -		/* pwm0-1 */
+> -		.bank_num = 3,
+> -		.pin = 21,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16) | BIT(0),
+> -	}, {
+> -		/* pwm1-0 */
+> -		.bank_num = 0,
+> -		.pin = 27,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 1),
+> -	}, {
+> -		/* pwm1-1 */
+> -		.bank_num = 0,
+> -		.pin = 30,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 1) | BIT(1),
+> -	}, {
+> -		/* pwm2-0 */
+> -		.bank_num = 0,
+> -		.pin = 28,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 2),
+> -	}, {
+> -		/* pwm2-1 */
+> -		.bank_num = 1,
+> -		.pin = 12,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 2) | BIT(2),
+> -	}, {
+> -		/* pwm3-0 */
+> -		.bank_num = 3,
+> -		.pin = 26,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 3),
+> -	}, {
+> -		/* pwm3-1 */
+> -		.bank_num = 1,
+> -		.pin = 11,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 3) | BIT(3),
+> -	}, {
+> -		/* sdio-0_d0 */
+> -		.bank_num = 1,
+> -		.pin = 1,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 4),
+> -	}, {
+> -		/* sdio-1_d0 */
+> -		.bank_num = 3,
+> -		.pin = 2,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 4) | BIT(4),
+> -	}, {
+> -		/* spi-0_rx */
+> -		.bank_num = 0,
+> -		.pin = 13,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 5),
+> -	}, {
+> -		/* spi-1_rx */
+> -		.bank_num = 2,
+> -		.pin = 0,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 5) | BIT(5),
+> -	}, {
+> -		/* emmc-0_cmd */
+> -		.bank_num = 1,
+> -		.pin = 22,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 7),
+> -	}, {
+> -		/* emmc-1_cmd */
+> -		.bank_num = 2,
+> -		.pin = 4,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 7) | BIT(7),
+> -	}, {
+> -		/* uart2-0_rx */
+> -		.bank_num = 1,
+> -		.pin = 19,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 8),
+> -	}, {
+> -		/* uart2-1_rx */
+> -		.bank_num = 1,
+> -		.pin = 10,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 8) | BIT(8),
+> -	}, {
+> -		/* uart1-0_rx */
+> -		.bank_num = 1,
+> -		.pin = 10,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 11),
+> -	}, {
+> -		/* uart1-1_rx */
+> -		.bank_num = 3,
+> -		.pin = 13,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 11) | BIT(11),
+> -	},
+> +	RK_MUXROUTE_SAME(0, RK_PD2, 1, 0x50, BIT(16)), /* pwm0-0 */
+> +	RK_MUXROUTE_SAME(3, RK_PC5, 1, 0x50, BIT(16) | BIT(0)), /* pwm0-1 */
+> +	RK_MUXROUTE_SAME(0, RK_PD3, 1, 0x50, BIT(16 + 1)), /* pwm1-0 */
+> +	RK_MUXROUTE_SAME(0, RK_PD6, 2, 0x50, BIT(16 + 1) | BIT(1)), /* pwm1-1 */
+> +	RK_MUXROUTE_SAME(0, RK_PD4, 1, 0x50, BIT(16 + 2)), /* pwm2-0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB4, 2, 0x50, BIT(16 + 2) | BIT(2)), /* pwm2-1 */
+> +	RK_MUXROUTE_SAME(3, RK_PD2, 1, 0x50, BIT(16 + 3)), /* pwm3-0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB3, 2, 0x50, BIT(16 + 3) | BIT(3)), /* pwm3-1 */
+> +	RK_MUXROUTE_SAME(1, RK_PA1, 1, 0x50, BIT(16 + 4)), /* sdio-0_d0 */
+> +	RK_MUXROUTE_SAME(3, RK_PA2, 1, 0x50, BIT(16 + 4) | BIT(4)), /* sdio-1_d0 */
+> +	RK_MUXROUTE_SAME(0, RK_PB5, 2, 0x50, BIT(16 + 5)), /* spi-0_rx */
+> +	RK_MUXROUTE_SAME(2, RK_PA0, 2, 0x50, BIT(16 + 5) | BIT(5)), /* spi-1_rx */
+> +	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x50, BIT(16 + 7)), /* emmc-0_cmd */
+> +	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x50, BIT(16 + 7) | BIT(7)), /* emmc-1_cmd */
+> +	RK_MUXROUTE_SAME(1, RK_PC3, 2, 0x50, BIT(16 + 8)), /* uart2-0_rx */
+> +	RK_MUXROUTE_SAME(1, RK_PB2, 2, 0x50, BIT(16 + 8) | BIT(8)), /* uart2-1_rx */
+> +	RK_MUXROUTE_SAME(1, RK_PB2, 1, 0x50, BIT(16 + 11)), /* uart1-0_rx */
+> +	RK_MUXROUTE_SAME(3, RK_PB5, 1, 0x50, BIT(16 + 11) | BIT(11)), /* uart1-1_rx */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3288_mux_route_data[] = {
+> -	{
+> -		/* edphdmi_cecinoutt1 */
+> -		.bank_num = 7,
+> -		.pin = 16,
+> -		.func = 2,
+> -		.route_offset = 0x264,
+> -		.route_val = BIT(16 + 12) | BIT(12),
+> -	}, {
+> -		/* edphdmi_cecinout */
+> -		.bank_num = 7,
+> -		.pin = 23,
+> -		.func = 4,
+> -		.route_offset = 0x264,
+> -		.route_val = BIT(16 + 12),
+> -	},
+> +	RK_MUXROUTE_SAME(7, RK_PC0, 2, 0x264, BIT(16 + 12) | BIT(12)), /* edphdmi_cecinoutt1 */
+> +	RK_MUXROUTE_SAME(7, RK_PC7, 4, 0x264, BIT(16 + 12)), /* edphdmi_cecinout */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3308_mux_route_data[] = {
+> -	{
+> -		/* rtc_clk */
+> -		.bank_num = 0,
+> -		.pin = 19,
+> -		.func = 1,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 0) | BIT(0),
+> -	}, {
+> -		/* uart2_rxm0 */
+> -		.bank_num = 1,
+> -		.pin = 22,
+> -		.func = 2,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 2) | BIT(16 + 3),
+> -	}, {
+> -		/* uart2_rxm1 */
+> -		.bank_num = 4,
+> -		.pin = 26,
+> -		.func = 2,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 2) | BIT(16 + 3) | BIT(2),
+> -	}, {
+> -		/* i2c3_sdam0 */
+> -		.bank_num = 0,
+> -		.pin = 15,
+> -		.func = 2,
+> -		.route_offset = 0x608,
+> -		.route_val = BIT(16 + 8) | BIT(16 + 9),
+> -	}, {
+> -		/* i2c3_sdam1 */
+> -		.bank_num = 3,
+> -		.pin = 12,
+> -		.func = 2,
+> -		.route_offset = 0x608,
+> -		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(8),
+> -	}, {
+> -		/* i2c3_sdam2 */
+> -		.bank_num = 2,
+> -		.pin = 0,
+> -		.func = 3,
+> -		.route_offset = 0x608,
+> -		.route_val = BIT(16 + 8) | BIT(16 + 9) | BIT(9),
+> -	}, {
+> -		/* i2s-8ch-1-sclktxm0 */
+> -		.bank_num = 1,
+> -		.pin = 3,
+> -		.func = 2,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 3),
+> -	}, {
+> -		/* i2s-8ch-1-sclkrxm0 */
+> -		.bank_num = 1,
+> -		.pin = 4,
+> -		.func = 2,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 3),
+> -	}, {
+> -		/* i2s-8ch-1-sclktxm1 */
+> -		.bank_num = 1,
+> -		.pin = 13,
+> -		.func = 2,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 3) | BIT(3),
+> -	}, {
+> -		/* i2s-8ch-1-sclkrxm1 */
+> -		.bank_num = 1,
+> -		.pin = 14,
+> -		.func = 2,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 3) | BIT(3),
+> -	}, {
+> -		/* pdm-clkm0 */
+> -		.bank_num = 1,
+> -		.pin = 4,
+> -		.func = 3,
+> -		.route_offset = 0x308,
+> -		.route_val =  BIT(16 + 12) | BIT(16 + 13),
+> -	}, {
+> -		/* pdm-clkm1 */
+> -		.bank_num = 1,
+> -		.pin = 14,
+> -		.func = 4,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
+> -	}, {
+> -		/* pdm-clkm2 */
+> -		.bank_num = 2,
+> -		.pin = 6,
+> -		.func = 2,
+> -		.route_offset = 0x308,
+> -		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
+> -	}, {
+> -		/* pdm-clkm-m2 */
+> -		.bank_num = 2,
+> -		.pin = 4,
+> -		.func = 3,
+> -		.route_offset = 0x600,
+> -		.route_val = BIT(16 + 2) | BIT(2),
+> -	}, {
+> -		/* spi1_miso */
+> -		.bank_num = 3,
+> -		.pin = 10,
+> -		.func = 3,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 9),
+> -	}, {
+> -		/* spi1_miso_m1 */
+> -		.bank_num = 2,
+> -		.pin = 4,
+> -		.func = 2,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 9) | BIT(9),
+> -	}, {
+> -		/* owire_m0 */
+> -		.bank_num = 0,
+> -		.pin = 11,
+> -		.func = 3,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11),
+> -	}, {
+> -		/* owire_m1 */
+> -		.bank_num = 1,
+> -		.pin = 22,
+> -		.func = 7,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
+> -	}, {
+> -		/* owire_m2 */
+> -		.bank_num = 2,
+> -		.pin = 2,
+> -		.func = 5,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
+> -	}, {
+> -		/* can_rxd_m0 */
+> -		.bank_num = 0,
+> -		.pin = 11,
+> -		.func = 2,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 12) | BIT(16 + 13),
+> -	}, {
+> -		/* can_rxd_m1 */
+> -		.bank_num = 1,
+> -		.pin = 22,
+> -		.func = 5,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(12),
+> -	}, {
+> -		/* can_rxd_m2 */
+> -		.bank_num = 2,
+> -		.pin = 2,
+> -		.func = 4,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 12) | BIT(16 + 13) | BIT(13),
+> -	}, {
+> -		/* mac_rxd0_m0 */
+> -		.bank_num = 1,
+> -		.pin = 20,
+> -		.func = 3,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 14),
+> -	}, {
+> -		/* mac_rxd0_m1 */
+> -		.bank_num = 4,
+> -		.pin = 2,
+> -		.func = 2,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 14) | BIT(14),
+> -	}, {
+> -		/* uart3_rx */
+> -		.bank_num = 3,
+> -		.pin = 12,
+> -		.func = 4,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 15),
+> -	}, {
+> -		/* uart3_rx_m1 */
+> -		.bank_num = 0,
+> -		.pin = 17,
+> -		.func = 3,
+> -		.route_offset = 0x314,
+> -		.route_val = BIT(16 + 15) | BIT(15),
+> -	},
+> +	RK_MUXROUTE_SAME(0, RK_PC3, 1, 0x314, BIT(16 + 0) | BIT(0)), /* rtc_clk */
+> +	RK_MUXROUTE_SAME(1, RK_PC6, 2, 0x314, BIT(16 + 2) | BIT(16 + 3)), /* uart2_rxm0 */
+> +	RK_MUXROUTE_SAME(4, RK_PD2, 2, 0x314, BIT(16 + 2) | BIT(16 + 3) | BIT(2)), /* uart2_rxm1 */
+> +	RK_MUXROUTE_SAME(0, RK_PB7, 2, 0x608, BIT(16 + 8) | BIT(16 + 9)), /* i2c3_sdam0 */
+> +	RK_MUXROUTE_SAME(3, RK_PB4, 2, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(8)), /* i2c3_sdam1 */
+> +	RK_MUXROUTE_SAME(2, RK_PA0, 3, 0x608, BIT(16 + 8) | BIT(16 + 9) | BIT(9)), /* i2c3_sdam2 */
+> +	RK_MUXROUTE_SAME(1, RK_PA3, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclktxm0 */
+> +	RK_MUXROUTE_SAME(1, RK_PA4, 2, 0x308, BIT(16 + 3)), /* i2s-8ch-1-sclkrxm0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB5, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclktxm1 */
+> +	RK_MUXROUTE_SAME(1, RK_PB6, 2, 0x308, BIT(16 + 3) | BIT(3)), /* i2s-8ch-1-sclkrxm1 */
+> +	RK_MUXROUTE_SAME(1, RK_PA4, 3, 0x308, BIT(16 + 12) | BIT(16 + 13)), /* pdm-clkm0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB6, 4, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* pdm-clkm1 */
+> +	RK_MUXROUTE_SAME(2, RK_PA6, 2, 0x308, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* pdm-clkm2 */
+> +	RK_MUXROUTE_SAME(2, RK_PA4, 3, 0x600, BIT(16 + 2) | BIT(2)), /* pdm-clkm-m2 */
+> +	RK_MUXROUTE_SAME(3, RK_PB2, 3, 0x314, BIT(16 + 9)), /* spi1_miso */
+> +	RK_MUXROUTE_SAME(2, RK_PA4, 2, 0x314, BIT(16 + 9) | BIT(9)), /* spi1_miso_m1 */
+> +	RK_MUXROUTE_SAME(0, RK_PB3, 3, 0x314, BIT(16 + 10) | BIT(16 + 11)), /* owire_m0 */
+> +	RK_MUXROUTE_SAME(1, RK_PC6, 7, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(10)), /* owire_m1 */
+> +	RK_MUXROUTE_SAME(2, RK_PA2, 5, 0x314, BIT(16 + 10) | BIT(16 + 11) | BIT(11)), /* owire_m2 */
+> +	RK_MUXROUTE_SAME(0, RK_PB3, 2, 0x314, BIT(16 + 12) | BIT(16 + 13)), /* can_rxd_m0 */
+> +	RK_MUXROUTE_SAME(1, RK_PC6, 5, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(12)), /* can_rxd_m1 */
+> +	RK_MUXROUTE_SAME(2, RK_PA2, 4, 0x314, BIT(16 + 12) | BIT(16 + 13) | BIT(13)), /* can_rxd_m2 */
+> +	RK_MUXROUTE_SAME(1, RK_PC4, 3, 0x314, BIT(16 + 14)), /* mac_rxd0_m0 */
+> +	RK_MUXROUTE_SAME(4, RK_PA2, 2, 0x314, BIT(16 + 14) | BIT(14)), /* mac_rxd0_m1 */
+> +	RK_MUXROUTE_SAME(3, RK_PB4, 4, 0x314, BIT(16 + 15)), /* uart3_rx */
+> +	RK_MUXROUTE_SAME(0, RK_PC1, 3, 0x314, BIT(16 + 15) | BIT(15)), /* uart3_rx_m1 */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3328_mux_route_data[] = {
+> -	{
+> -		/* uart2dbg_rxm0 */
+> -		.bank_num = 1,
+> -		.pin = 1,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16) | BIT(16 + 1),
+> -	}, {
+> -		/* uart2dbg_rxm1 */
+> -		.bank_num = 2,
+> -		.pin = 1,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16) | BIT(16 + 1) | BIT(0),
+> -	}, {
+> -		/* gmac-m1_rxd0 */
+> -		.bank_num = 1,
+> -		.pin = 11,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 2) | BIT(2),
+> -	}, {
+> -		/* gmac-m1-optimized_rxd3 */
+> -		.bank_num = 1,
+> -		.pin = 14,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 10) | BIT(10),
+> -	}, {
+> -		/* pdm_sdi0m0 */
+> -		.bank_num = 2,
+> -		.pin = 19,
+> -		.func = 2,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 3),
+> -	}, {
+> -		/* pdm_sdi0m1 */
+> -		.bank_num = 1,
+> -		.pin = 23,
+> -		.func = 3,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 3) | BIT(3),
+> -	}, {
+> -		/* spi_rxdm2 */
+> -		.bank_num = 3,
+> -		.pin = 2,
+> -		.func = 4,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 4) | BIT(16 + 5) | BIT(5),
+> -	}, {
+> -		/* i2s2_sdim0 */
+> -		.bank_num = 1,
+> -		.pin = 24,
+> -		.func = 1,
+> -		.route_offset = 0x50,
+> -		.route_val = BIT(16 + 6),
+> -	}, {
+> -		/* i2s2_sdim1 */
+> -		.bank_num = 3,
+> -		.pin = 2,
+> -		.func = 6,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 6) | BIT(6),
+> -	}, {
+> -		/* card_iom1 */
+> -		.bank_num = 2,
+> -		.pin = 22,
+> -		.func = 3,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 7) | BIT(7),
+> -	}, {
+> -		/* tsp_d5m1 */
+> -		.bank_num = 2,
+> -		.pin = 16,
+> -		.func = 3,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 8) | BIT(8),
+> -	}, {
+> -		/* cif_data5m1 */
+> -		.bank_num = 2,
+> -		.pin = 16,
+> -		.func = 4,
+> -		.route_offset = 0x50,
+> -		.route_val =  BIT(16 + 9) | BIT(9),
+> -	},
+> +	RK_MUXROUTE_SAME(1, RK_PA1, 2, 0x50, BIT(16) | BIT(16 + 1)), /* uart2dbg_rxm0 */
+> +	RK_MUXROUTE_SAME(2, RK_PA1, 1, 0x50, BIT(16) | BIT(16 + 1) | BIT(0)), /* uart2dbg_rxm1 */
+> +	RK_MUXROUTE_SAME(1, RK_PB3, 2, 0x50, BIT(16 + 2) | BIT(2)), /* gmac-m1_rxd0 */
+> +	RK_MUXROUTE_SAME(1, RK_PB6, 2, 0x50, BIT(16 + 10) | BIT(10)), /* gmac-m1-optimized_rxd3 */
+> +	RK_MUXROUTE_SAME(2, RK_PC3, 2, 0x50, BIT(16 + 3)), /* pdm_sdi0m0 */
+> +	RK_MUXROUTE_SAME(1, RK_PC7, 3, 0x50, BIT(16 + 3) | BIT(3)), /* pdm_sdi0m1 */
+> +	RK_MUXROUTE_SAME(3, RK_PA2, 4, 0x50, BIT(16 + 4) | BIT(16 + 5) | BIT(5)), /* spi_rxdm2 */
+> +	RK_MUXROUTE_SAME(1, RK_PD0, 1, 0x50, BIT(16 + 6)), /* i2s2_sdim0 */
+> +	RK_MUXROUTE_SAME(3, RK_PA2, 6, 0x50, BIT(16 + 6) | BIT(6)), /* i2s2_sdim1 */
+> +	RK_MUXROUTE_SAME(2, RK_PC6, 3, 0x50, BIT(16 + 7) | BIT(7)), /* card_iom1 */
+> +	RK_MUXROUTE_SAME(2, RK_PC0, 3, 0x50, BIT(16 + 8) | BIT(8)), /* tsp_d5m1 */
+> +	RK_MUXROUTE_SAME(2, RK_PC0, 4, 0x50, BIT(16 + 9) | BIT(9)), /* cif_data5m1 */
+>  };
+>  
+>  static struct rockchip_mux_route_data rk3399_mux_route_data[] = {
+> -	{
+> -		/* uart2dbga_rx */
+> -		.bank_num = 4,
+> -		.pin = 8,
+> -		.func = 2,
+> -		.route_offset = 0xe21c,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11),
+> -	}, {
+> -		/* uart2dbgb_rx */
+> -		.bank_num = 4,
+> -		.pin = 16,
+> -		.func = 2,
+> -		.route_offset = 0xe21c,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(10),
+> -	}, {
+> -		/* uart2dbgc_rx */
+> -		.bank_num = 4,
+> -		.pin = 19,
+> -		.func = 1,
+> -		.route_offset = 0xe21c,
+> -		.route_val = BIT(16 + 10) | BIT(16 + 11) | BIT(11),
+> -	}, {
+> -		/* pcie_clkreqn */
+> -		.bank_num = 2,
+> -		.pin = 26,
+> -		.func = 2,
+> -		.route_offset = 0xe21c,
+> -		.route_val = BIT(16 + 14),
+> -	}, {
+> -		/* pcie_clkreqnb */
+> -		.bank_num = 4,
+> -		.pin = 24,
+> -		.func = 1,
+> -		.route_offset = 0xe21c,
+> -		.route_val = BIT(16 + 14) | BIT(14),
+> -	},
+> +	RK_MUXROUTE_SAME(4, RK_PB0, 2, 0xe21c, BIT(16 + 10) | BIT(16 + 11)), /* uart2dbga_rx */
+> +	RK_MUXROUTE_SAME(4, RK_PC0, 2, 0xe21c, BIT(16 + 10) | BIT(16 + 11) | BIT(10)), /* uart2dbgb_rx */
+> +	RK_MUXROUTE_SAME(4, RK_PC3, 1, 0xe21c, BIT(16 + 10) | BIT(16 + 11) | BIT(11)), /* uart2dbgc_rx */
+> +	RK_MUXROUTE_SAME(2, RK_PD2, 2, 0xe21c, BIT(16 + 14)), /* pcie_clkreqn */
+> +	RK_MUXROUTE_SAME(4, RK_PD0, 1, 0xe21c, BIT(16 + 14) | BIT(14)), /* pcie_clkreqnb */
+>  };
+>  
+>  static bool rockchip_get_mux_route(struct rockchip_pin_bank *bank, int pin,
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
