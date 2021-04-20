@@ -2,134 +2,94 @@ Return-Path: <SRS0=rMIB=JR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5153FC433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 14:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23C62C433ED
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 15:06:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6BEB1613C7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 14:46:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6BEB1613C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6D71E61104
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Apr 2021 15:06:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D71E61104
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FL/SlphgZUCq6tkysCtgIU4Kd6P3ixxJzx+PumcFpWk=; b=dQ88NsTvRvrXyu6CG95rftvWy
-	sx5sf2iQwW2nXnFUA6upkkolp/dLj1vaS1pqVm3QyrgUn/+RJHH1zCr1nFhF8IIrpEAC0YeY5OzQO
-	IbmL9xANvWj74NthYLPmiUdHcrF6wPDlG4YqtoWJG/0CSBzjD7dwfEzoSnvkIYtAjZjwuFaGW0yzQ
-	hoBBAj5DR5MB3oMSzLFj+IpOoMeATv5btj50hXTLlcNvZmwgmbVo3qjiFIraQiIW5drtMIWcRCxnS
-	T5B3iJ05EyOh0cK8UBToojYYYya83Npzu0YDhlPWl6rwI0atfrrVyH6RAqiBkipSO4JuJ6g1u1wYs
-	7uVSypRLQ==;
+	 bh=2zGTfpNO8W+f+dkwWiaXdavFXfL4NaT4AQVftc7rSTM=; b=GUR+K6JRHEKPCRbI2PHY9aEuN
+	6wD76U2sm9Ni15U6y8aSNxb8iItD/k0IaG/uDOJ95hvpfU18DxWbE+Lj0/MAyy0i+UeIbKHcz6OcD
+	uK6c174xnk/Z4fM/LSxVVRt1WllMLOS9ebPgM0ITFC9sPGzDus+2RuZC8I44Zn/1Rb/J+7tIIZsDj
+	PAv7/dzZ8u117Q2cRkKFLg4f8zrM8pW8eGCCyHETAskdHCTYhozQhNiIGbu9dc5foXfxQ6LkqnjJU
+	vvCc7YQVB2Fy9A5cbeDbf71DXty+cJY+kKVq5Nlr3BSSOccx8uFQyE+ZjcRpCJ0gUPC+d8rmT64RY
+	hZrvOdflQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYreN-00CNvy-IM; Tue, 20 Apr 2021 14:46:51 +0000
+	id 1lYrwr-00CQ7q-Eb; Tue, 20 Apr 2021 15:05:57 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYreM-00CNvp-0S
- for linux-rockchip@desiato.infradead.org; Tue, 20 Apr 2021 14:46:50 +0000
+ id 1lYrwo-00CQ7D-Fw; Tue, 20 Apr 2021 15:05:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=MIME-Version:In-Reply-To:Content-Type
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=5zIJzvnsgvD9WtnM7Zkc/0lhfLhVONLve1otw7575l0=; b=OX5CRX0LnAx5Yipx3S0kAVqkya
- /DSzzF/ZP9KiyY8MixDgAVLPOZISwK+rpZ54hBIfV7+v2ol87gU+sdr7TjtrDVsc10FJz33tI3BCu
- 0Rcz2iT1xxCyhVqpUQil9mQzU5UAfH5L30WAVZBmWRA5HiOTkb1ymC+1OJ2mW/MNv2yCMEEmY5mGQ
- Ft08phRidegOehRIJH70u1BoZrRa7EsuocK9/GHBdekhzyevkZuP2e9HdQlqQWtJAp3XW8HDozxVh
- qOUbCvhHUEzDaMAD8AF0+T7cF5hz5zDd4nRI/7zMiExsYXQIdwoBhUB2gmYaolRRslJTzDYX5G5RQ
- YuzIAW5w==;
-Received: from mail-oln040092003034.outbound.protection.outlook.com
- ([40.92.3.34] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
+ bh=aHuLvQqopShusp+Waua9JzWi2y+R0TxyWbIgHg3wkjM=; b=b/ZAzCfY/48372l2+/WGFgUDCr
+ L+95gniRGr3+XUkYX2+mwhrlwxfqxk81s/9XQ8+9q6ppNd6cirRBd9ckujL45DogFzQOR43sS3jac
+ e7lkYN98WsQvifz+VX4yWb45YAsfompcXgsYXib0dT6gd7QGpZmZIme5o63mGtQgL+Jay6Kx3aUoj
+ /2vYptVjV0jgf5sR5c5ndCSO99nZP2xFqaP62nv10oZq3ibGAdNtcgxN9jAjq/2AckTHngLSowDv5
+ Zym8n54f4rzJDirWJOUcqZALu4VajDGGVmY1J6CegSyKreti+CqDrlFGWuCec9/AQS4KwRAemrRQj
+ 0S0ymV2A==;
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYreG-00CCmp-Nq
- for linux-rockchip@lists.infradead.org; Tue, 20 Apr 2021 14:46:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Nputi9yWoOzWZjD8pQ480IYqP8fHeAvYx+Jt7EGHIte/Bluz1NGt77oIb/lcHSPnp8hgTEFEdFbQerRb1GSjc2TcaflII0twbd7FE6bp5WE/ZMQBUDuaKhCoCFCSnwD4uaKKkW7c0k3EZgUE1Bm3Ym3hhn36sgnp64dq0Lgq5ONWIWBzzfeeVHf4IBzltnOFLb3r+ekqjKYY7kYbFmcI05RoUvrtpdyZ4bEHgAJX+W7SSjRF85g7mXP5ON2AKhUrZhfR97ShDw7QR/NpkisVvb9xtZK5EAHCV4OyYFe6UJKxf/LXsJh/AwrCmumMlHzKDHT+D0IN0ZUxMf/++ZLjbA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5zIJzvnsgvD9WtnM7Zkc/0lhfLhVONLve1otw7575l0=;
- b=LdSRB52xgL5kgDWetzLiOtxGMIn6r2bQs4BRQPIMchcpRg+D65WROskJTqmq32DbkC4zNjTjQaw/YlrMWvzsevQQTjQNcd0yTUn7ajEO5NW6HOuT6WYWklaQLhF5UeFquN9LsX9TRd+/78jXm5G18AORK5rDK9vQOY9nVY+/cQsJihhWgjJLKFQpevHz2lPROWayZgBvI7p42isfZU3hPODarQB4qH0fuqcM5GkqT6oTFLYpekez4g5xxWRkh4t/7UsiP0GbcjmgofnSWy7q4i7V4OoOyV6DjWFYwIY+0yRvA3wT2/q9xiZ9r3eLX+mZOvBFMNyKMpSObWaTl8cFLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5zIJzvnsgvD9WtnM7Zkc/0lhfLhVONLve1otw7575l0=;
- b=BSqPJnWQYBx/Vq6atYrOf42sIucMeHJFlbQsYLayuTpv3PfE7V1j/vOISb8TulJagRG77ZB3RlfvE6PgbmLMDOcgvTAKisS03WlFJ28JcCCVSVA1VlVOD2cxeahBF2nkJRdrWKiGrjjFzKJsH4/S4+FWL9RY958GIQbLjPPJ+kBpaQbHn1EwmxaJjIMK9DZcdllrCZ+LgAgvpl9w2S6haku2DxBc8YUX9ma2swc8b7zt3rnLfbXxg2PWjoVTao177fvXhaKuWB8D7t2cLP9D5dg+FLxGcfo33342tJ10Jb1rjLGLqC1FJoCtD2Ft3YofvXPgvz6KOC46r96jeVEecw==
-Received: from CY1NAM02FT031.eop-nam02.prod.protection.outlook.com
- (10.152.74.55) by CY1NAM02HT044.eop-nam02.prod.protection.outlook.com
- (10.152.74.198) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.19; Tue, 20 Apr
- 2021 14:46:42 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- (2a01:111:e400:7e45::43) by CY1NAM02FT031.mail.protection.outlook.com
- (2a01:111:e400:7e45::436) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.19 via Frontend
- Transport; Tue, 20 Apr 2021 14:46:41 +0000
-X-IncomingTopHeaderMarker: OriginalChecksum:59D83F73EABEC8FD674E2737EFEA4B5CDA519AE032A4E9F50E1677BABC18B226;
- UpperCasedChecksum:D28FB22E71F37FA37382931E1E1ED75ECC3B612642BB09C1D89C037C9668712A;
- SizeAsReceived:7776; Count:46
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::fc38:a692:c2c8:f63e]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::fc38:a692:c2c8:f63e%7]) with mapi id 15.20.4042.024; Tue, 20 Apr 2021
- 14:46:41 +0000
-Date: Tue, 20 Apr 2021 09:46:39 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
+ id 1lYrwi-00CDit-OF; Tue, 20 Apr 2021 15:05:53 +0000
+Received: by mail-oi1-f175.google.com with SMTP id k25so39251540oic.4;
+ Tue, 20 Apr 2021 08:05:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=aHuLvQqopShusp+Waua9JzWi2y+R0TxyWbIgHg3wkjM=;
+ b=RCp00gCfxyZTVpX2JuP1oPMpiXyfDX1v3nlcQeQ251+XpngV8uKedhlQKtV5rOkZF4
+ Rg4GrV97mSLHkfDobEmw8pJBDz70IAQNP3AnmSxpEJZy8bSPDig/wm/coxTsIMgh+bkX
+ LmuGymuSI1yXqdHtc/k0x9e0NkJVLaT1vkiRAPEmOZoJklGfdsBCJ6e5ZoWdELSi2WoS
+ uNIMAVrGssm3aj3pEz05QN2xqIT9Kg6tcF1SM1klQBQWiyi6XqODVdLP85I+LM9sbTUX
+ vUvNerkRxKwlyRJhEBbXZZHUFR7dKm23f7yvIvXLejEcgvEs10Opf80Uus9hZeQzuG2S
+ YecQ==
+X-Gm-Message-State: AOAM533wBJfrXYzh+V1WjpVwi4F86lQ0tZ7pB419jJKsDSX1pufHlnzl
+ RFOOx4YcHl52a/itF+Ft2g==
+X-Google-Smtp-Source: ABdhPJylx4E1RxTqUlW7O/drJY8WtJ82nhEcNAzvr9a/xRMxuYOgAqBOm/KnxqZQwAgQlagmnftR8w==
+X-Received: by 2002:aca:4dd3:: with SMTP id a202mr3396610oib.17.1618931145824; 
+ Tue, 20 Apr 2021 08:05:45 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id d17sm4205939oth.19.2021.04.20.08.05.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Apr 2021 08:05:44 -0700 (PDT)
+Received: (nullmailer pid 3327674 invoked by uid 1000);
+ Tue, 20 Apr 2021 15:05:43 -0000
+Date: Tue, 20 Apr 2021 10:05:43 -0500
+From: Rob Herring <robh@kernel.org>
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: alsa-devel@alsa-project.org, pierre-louis.bossart@linux.intel.com,
- heiko@sntech.de, devicetree@vger.kernel.org, tiwai@suse.com,
- robh+dt@kernel.org, lgirdwood@gmail.com,
- linux-rockchip@lists.infradead.org, broonie@kernel.org,
- lee.jones@linaro.org
-Subject: Re: [v6 3/3] dt-bindings: Add Rockchip rk817 audio CODEC support
-Message-ID: <SN6PR06MB53425F044B5696A9443B469BA5489@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20210419155718.17348-1-macromorgan@hotmail.com>
- <SN6PR06MB53420A0E831C17342A73188BA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
- <5cad7e70-89ca-6e4c-47cc-1248250108c7@gmail.com>
-Content-Disposition: inline
-In-Reply-To: <5cad7e70-89ca-6e4c-47cc-1248250108c7@gmail.com>
-X-TMN: [t6fCGqx5QCqoYh4OSq7BZNCVpcWaxmbn]
-X-ClientProxiedBy: SN6PR05CA0006.namprd05.prod.outlook.com
- (2603:10b6:805:de::19) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <20210420144639.GA25513@wintermute.localdomain>
+Cc: devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-kernel@vger.kernel.org, heiko@sntech.de,
+ linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com,
+ enric.balletbo@collabora.com, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v9 13/15] dt-bindings: power: rockchip: Convert to
+ json-schema
+Message-ID: <20210420150543.GA3327645@robh.at.kernel.org>
+References: <20210417112952.8516-1-jbx6244@gmail.com>
+ <20210417112952.8516-14-jbx6244@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from wintermute.localdomain (76.183.134.35) by
- SN6PR05CA0006.namprd05.prod.outlook.com (2603:10b6:805:de::19) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4065.6 via Frontend Transport; Tue, 20 Apr 2021 14:46:40 +0000
-X-MS-PublicTrafficType: Email
-X-IncomingHeaderCount: 46
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-Correlation-Id: 9a9de985-faac-4493-9e6b-08d9040b1c10
-X-MS-TrafficTypeDiagnostic: CY1NAM02HT044:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: sqivxNwTP2HrmV/U5wwBefxLNybfCZ6m7kvJX7tULHswPOOhCFfIyOMkS/+zrBuj6jtTK5NzCZhG05Q5+h9sasPTJuCJZzr01R7+/qxGF8hnn+pTvinF11wdslQ+skESZCmmjonns5DZI124LT2HvT7b4fKM0kEKVKNLvw3s1PNP2Rjfi8SaKtKmhTyzipW+zqVQwTdXxf8zslfefyacx5xhiVUE+GHM9zg3RRD+kB4cIpRZm2pxncqs85PSyhU/KeapdXxJq2wtRf+f025pScSIs0VGuoXWBev5zPbgj0tGRdvtKA0h6ia5kGeUw6uBERcelXhTt0nP4EdOpIfiifRuzM3CxeafauXkaw5elMslJJeFr8qOl0T7GRONIUKpuZZcWSIikMxVJ684xLfUwQeGdWmHnwkVBgzjKyRNndE=
-X-MS-Exchange-AntiSpam-MessageData: bzdh0lxEHN+wMmNnroiTF9oONJNOXtj/awDA+NEpO9BxMJ0xzzjMLdoOlrPqlGi0MaQ2FKCVt11gACeQ+mjQJXBYyCpqd924nW1kODxVg9WJ0zcB3pIgBlQo7F4pRCSEa1S0r3H8//TGSNp+NZDPZw==
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a9de985-faac-4493-9e6b-08d9040b1c10
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2021 14:46:41.9014 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-AuthSource: CY1NAM02FT031.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY1NAM02HT044
+Content-Disposition: inline
+In-Reply-To: <20210417112952.8516-14-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_074644_951632_70FF7B3B 
-X-CRM114-Status: GOOD (  32.61  )
+X-CRM114-CacheID: sfid-20210420_080548_812458_2E39CC18 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,233 +107,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 19, 2021 at 08:37:57PM +0200, Johan Jonker wrote:
-> Hi Chris,
+On Sat, 17 Apr 2021 13:29:50 +0200, Johan Jonker wrote:
+> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > 
-> Never use hotmail.com for sending patches.
-> They corrupt Message-ID, so use for example Gmail.
-
-Understood. I'll get a gmail set up as soon as possible. Sorry if this
-message comes through funky (still on Hotmail, been using it since 96).
-
+> Convert the soc/rockchip/power_domain.txt binding document to
+> json-schema and move to the power bindings directory.
 > 
-> X-Microsoft-Original-Message-ID:
->  <20210419155718.17348-3-macromorgan@hotmail.com>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+> Note for rob+dt:
+> A tag was not added on purpose, because:
+>   Add "rockchip," prefix to the qos compatible name
+>   in example.
+>   Changed maintainers.
+>   Size reg description is reduced.
+>   Little style changes '' to ""
+>   Restyle patternProperties
+> Please have a look at it again.
 > 
-> Message-ID:
-> <SN6PR06MB53420A0E831C17342A73188BA5499@SN6PR06MB5342.namprd06.prod.outlook.com>
-> 
-> ====
-> 
-> If you like rk817.txt should be converted to YAML, which is beyond your
-> serie, so move these changes to rk817.txt instead for now if rob+dt
-> agrees. ;)
-
-Will do, assuming everyone agrees.
-
-> 
-> ====
-> 
-> Include the dts patch back in, so we can compare it with the
-> documentation changes.
-> 
-
-Acknowledged.
-
-> On 4/19/21 5:57 PM, Chris Morgan wrote:
-> > Create dt-binding documentation to document rk817 codec.
-> > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> > Changes in v6:
-> >  - Included additional project maintainers for correct subsystems.
-> >  - Removed unneeded compatible from DT documentation.
-> >  - Removed binding update for Odroid Go Advance (will do in seperate series).
-> > Changes in v5:
-> >  - Move register definitions from rk817_codec.h to main rk808.h register
-> >    definitions.
-> >  - Add volatile register for codec bits.
-> >  - Add default values for codec bits.
-> >  - Removed of_compatible from mtd driver (not necessary).
-> >  - Switched to using parent regmap instead of private regmap for codec.
-> > Changes in v4:
-> >  - Created set_pll() call.
-> >  - Created user visible gain control in mic.
-> >  - Check for return value of clk_prepare_enable().
-> >  - Removed duplicate clk_prepare_enable().
-> >  - Split DT documentation to separate commit.
-> > Changes in v3:
-> >  - Use DAPM macros to set audio path.
-> >  - Updated devicetree binding (as every rk817 has this codec chip).
-> >  - Changed documentation to yaml format.
-> >  - Split MFD changes to separate commit.
-> > Changes in v2:
-> >  - Fixed audio path registers to solve some bugs.
-> > 
-> >  .../bindings/sound/rockchip,rk817-codec.yaml  | 57 +++++++++++++++++++
-> >  1 file changed, 57 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
-> > new file mode 100644
-> > index 000000000000..0059ef54d6b5
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/sound/rockchip,rk817-codec.yaml
-> > @@ -0,0 +1,57 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fdevicetree.org%2Fschemas%2Fsound%2Frockchip-rk817.yaml%23&amp;data=04%7C01%7C%7C7f2c986dc85e4a835aae08d9036242b2%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637544542817084121%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=Dlh0Gn0DH%2FLwLWGr%2BxqAmVU7mUVwzMrsX2LYiIyGDtU%3D&amp;reserved=0
-> > +$schema: https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fdevicetree.org%2Fmeta-schemas%2Fcore.yaml%23&amp;data=04%7C01%7C%7C7f2c986dc85e4a835aae08d9036242b2%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637544542817084121%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata=82MFRpHilkJCkQKT1Esi6UX1F4WZJEE4%2BOOZL0bFQpg%3D&amp;reserved=0
-> > +
-> > +title: Rockchip rk817 audio codec
-> > +
-> > +description:
-> > +  The rk817 codec is an I2C codec integrated with every Rockchip
-> > +  rk817 PMIC MFD.
-> 
-> If you want to convert rk817.txt to rockchip,rk817.yaml then add
-> 
-> maintainers:
->   - Heiko Stuebner <heiko@sntech.de>
-
-Heiko is on here anyway as I believe he has one of these devices to
-test and asked previously that I include him as I upstream things
-for the Odroid Go Advance.
-
-> 
-> > +
-> > +properties:
-> > +
-> 
-> > +  "#sound-dai-cells":
-> > +    const: 1
-> 
-> Move things with "#" below as much as possible.
+> For some SoC nodes this patch serie generates notifications
+> for undocumented "assigned-clocks" and "assigned-clock-parents"
+> properties till there is consensus of what to do with it.
+> ---
+> Changed V9:
+>   Rename definitions to $defs
+>   Restyle patternProperties
+> Changed V8:
+>   Add pd-node ref schema
+> Changed V7:
+>   Fix commit message and author format
+>   Changed SPDX-License-Identifier back to GPL-2.0
+>   Remove "clocks", "assigned-clocks" and "assigned-clock-parents"
+>   Fix indent example
+> Changed V6:
+>   Changed author
+> Changed V5:
+>   Change SPDX-License-Identifier to  GPL-2.0-only OR BSD-2-Clause
+>   Remove a maintainer
+>   Changed patternProperties to power-domain
+>   Add "clocks", "assigned-clocks" and "assigned-clock-parents"
+> Changed V4:
+>   Remove new compatible string
+>   Style changes '' to ""
+> Changed V3:
+>   Use Enric's conversion with rk3399 example
+> Changed V2:
+>   Convert power_domain.txt to YAML with rk3568 example
+> ---
+>  .../bindings/power/rockchip,power-controller.yaml  | 246 +++++++++++++++++++++
+>  .../bindings/soc/rockchip/power_domain.txt         | 136 ------------
+>  2 files changed, 246 insertions(+), 136 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
 > 
 
-Ack
-
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +
-> > +  clock-names:
-> > +    const: "mclk"
-> > +
-> 
-
-Ack
-
-> > +  mic-in-differential:
-> > +    description: the microphone is in differential mode.
-> > +    $ref: /schemas/types.yaml#/definitions/flag
-> 
-> This is part of a sub node now.
-> 
-
-Correct, will update this when I move it to the rk808 documentation.
-
-> > +
-> > +required:
-> 
-> > +  - compatible
-> 
-> Add compatible "rockchip,rk817" to properties
-> 
-
-Will make sure I note these updates as "optional for the rk817" in the
-MFD devicetree bindings. The "compatible" is listed there.
-
-> > +  - clocks
-> > +  - clock-names
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +rk817: pmic@20 {
-> 
-> > +	compatible = "rockchip,rk817";
-> 
-> Without rockchip,rk817.yaml this example will generate notifications.
-> 
-
-I'm afraid I don't understand.  I'll update the rk808 documentation to
-show the correct bindings, if it's still incorrect please let me know.
-
-> > +	reg = <0x20>;
-> > +	interrupt-parent = <&gpio0>;
-> 
-> > +	interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
-> 
-> add include for IRQ_TYPE_LEVEL_LOW
-
-I do not understand, I'll update the rk808, if it's still wrong please
-let me know.
-
-> 
-> > +	pinctrl-names = "default";
-> > +	pinctrl-0 = <&pmic_int>, <&i2s_8ch_mclk>;
-> 
-> > +	#sound-dai-cells = <0>;
-> 
-> Move things with "#" down below the list in possible.
-> 
-
-Acknowledged.
-
-> > +	clocks = <&cru SCLK_I2S_8CH_OUT>;
-> 
-> add include for SCLK_I2S_8CH_OUT
-> 
-> > +	clock-names = "mclk";
-> 
-> ----
-> Heiko's sort rules:
-> 
-> compatible
-> reg
-> interrupts
-> [alphabetical]
-> status [if needed]
-> 
-> ----
-> 
-> 
-> > +
-> 
-> > +	........
-> 
-> remove
-> 
-> > +
-> 
-> > +	rk817_codec: codec {
-> 
-> 
-> Move to rk817.txt example.
-> 
-> > +			mic-in-differential;
-> 
-> > +			status = "okay";
-> 
-> Never use status in examples.
-> 
-
-Acknowledged.
-
-> > +	};
-> > +
-> 
-> > +	........
-> 
-> remove
-> 
-> > +
-> > +};
-> > 
-> 
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
