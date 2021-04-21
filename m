@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3E5AC433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 564B1C433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:19:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DD2761440
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:17:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DD2761440
+	by mail.kernel.org (Postfix) with ESMTPS id 991A061440
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:19:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 991A061440
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,67 +24,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wNF49cA31N53jH6AVYzAyhKowfu8ZjM/C9HofnHI6tw=; b=g+4+GBkJjrQ2878ZVeVlPKEOG
-	m8yqSKUBIww8WbrQHYr0D797bLfjBmBXhJIYF+3F6I4dxgIQy7x3XFlNLHZBTncOnn1uZmtCpoZRF
-	xc24m8JSr0iMxaEd4F3IMZZQTIU8N6p5/cT8xuxscHds5DUU/OSmjA6UBq66Sv8durVEWXstWpb2d
-	GFvIzqX/uhO6WJ6zyaegwisAEzBeVlPtEekE7N3n1EJCN0QY51J+TpjCQ/9g+xQOdPZqTgHxt3UKw
-	yCikofL6RgiRYrQEYkjgpBupTYZ3CIKgYoIxwynb2VhsGAdJqHTymyv7ZmOE/kIETujDHWafJpNHS
-	uSw1qnmnw==;
+	 bh=x9dQ1F8yoiKJz4EzhbS63IFHWx54fl0Ex7d3+zjC31s=; b=cv3LpSG2bXOT6QDu2DYJWbLqL
+	JitV8uIRRpczKBlVeyHzlUoESOfNWT3qo9ULj9cylzEH6i7injvV5mYd1es8g6b5lE8mIigjiarkr
+	taOQpT517GId1I2q9Q2V75Q84fil6T5ILngvtFma5qn4LbHNUcQgBRJ/zUar3yTDB3Rj9C8kVVrni
+	1cBVKiVtNOSDh7C5B/sGsio8+V0AQe86WXE0K+Sf42CAK7PFJw6GrNJMsauDZwmZl5RfF1/A4DwVk
+	G6EKLV2Fj2falQaoSnYH+cGI6Aa8VUmtj2tUknevvKdE/H5Y863LdhyEiZbnUYcDQ1FEQwzf6rVn6
+	XMBlYv+AA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZGTO-00EqPs-0X; Wed, 21 Apr 2021 17:17:10 +0000
+	id 1lZGVs-00Er7w-CC; Wed, 21 Apr 2021 17:19:44 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZGTL-00EqPT-QW
- for linux-rockchip@desiato.infradead.org; Wed, 21 Apr 2021 17:17:08 +0000
+ id 1lZGVq-00Er7b-TI
+ for linux-rockchip@desiato.infradead.org; Wed, 21 Apr 2021 17:19:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=MIME-Version:In-Reply-To:Content-Type
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=5unh9pPs0pJCKIpNHQLcmKwQsGSh9zXNfiouygoEHF4=; b=G3Pu0glU/dbA4Bv/De4qNzv+xX
- KVOvfhKhKnS/dYgLW/MLAc9dWDiifJGbO5sMhc9z3r9zcE3Nfu0tHrl+V6nlJyCA1ayMAY53VR/RT
- vpwfZyKVuLiGbYU9v+MkR82FByhbm1j5Nj/B77BaMJ3eEdB8XLuLAivb3MFKg20wxBvkano3c1j8s
- o5T5+XRMvhmv56SmphtixP0Xp2obDkO8exBrxkCOKDfUN8pGiDKHySM/zsjywrIzg7rjlghZW2nXI
- TvrafR4weOGUCnz1ypoatztJP0K10inQrhg/xER9K0P4++pz3c08GH/dHMZyoWTnlNb5Gn7jqUv1B
- 5aEP+0mg==;
-Received: from mail-co1nam11olkn2032.outbound.protection.outlook.com
- ([40.92.18.32] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ bh=NB0yfNvWyMp26wFDNA2XtrNmmbRd+2Zm3l0zr1Pm8so=; b=ApGhrDD+A0AHK2PV8F9aufF35i
+ tOqGpalVJr4mzZhK2x9MwujlmkZkfPK62FAwxXD2LCZKqJFngAigkoeA3zHWoP4rCa3jXF263O2RR
+ c2JOrq5MQugFD8uSW+v8fYFE96+tEIDJHImZergH68wzF0WqUnf7QxZWY0CSoDTk/qojEr8EXDqJz
+ UUlNp97L34p4cM06A/wanB9ZIxMX7gW/3sENzWly/ZY2rbYrqyIlbCTE63XceNxXMtpOHnGq8iynX
+ cBbDWo6dssOy5pHxcvqDMN6UDm1NLJd6mGluNXG32EOn7/zKWpOtAocZ/8Sw1IBF/7VBW3AbcxKyW
+ bQYxaomQ==;
+Received: from mail-co1nam11olkn2010.outbound.protection.outlook.com
+ ([40.92.18.10] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZGTG-00D3Zu-4O
- for linux-rockchip@lists.infradead.org; Wed, 21 Apr 2021 17:17:06 +0000
+ id 1lZGVl-00D3g3-Cc
+ for linux-rockchip@lists.infradead.org; Wed, 21 Apr 2021 17:19:41 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Mi+ZPRFjnrbv8gxZ+5vIhssyYAD/7PzGf4eL3RLyRIg/vT7gKytaNNUmZgKPYSQ5yz3mWpeDsu75/NIQ0C7w4OIkcuq7/LoR8ByJUBnov918JCRg6G0wVya7ZzSCULObWCbNIGcVg0uBkJ8p/1HFba1atXiwIo9hNq1t7o3bq7Doo5NChHDnTlCvK1eU9Vx01UvcZRhlw9EVR7VZ8Z8QshHFR13OtcQ3nnAC8CipC7oeC0A4RyHfrNgzLHWWO03aJO7W/QFOY2hIklFxK7rnsNPhKrhvoRrTIfWzNvTgGc25cPAXBpQKTuStASJ1ov5liJ5RXl1cg9P3eqYL35Q70A==
+ b=a9JovvAh7SqxsaYX2CElN2QsmN4CfKh06Wth2FX5X6npu0FkvqDR06yaffhsp3O63pZkaSJjw/spNMPaLE2Nr/tNwrtVbUYlMjC+E+ejKcBY6WNqtIoGDCUnqae+RVe8SKkfn6WG89sDFiMQvf1pQIu+omy+knUE/YJM2Ls//Og8KvG0F+rWfWlyPt63tX4UXSDeA3jIG2vv3qdaOXQw7TuXnptiG5iXXC4cFGS9eLbVoMuIM1FTY7viU2QEb2kZPk0Vocm6bl+v+0HG1+yi7A2HsPNuPScA0YnWMvii5jCVQ4aBjgfUUEHpZZ+Op1HqMZx0IsHSSxIc8ASk48YI3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5unh9pPs0pJCKIpNHQLcmKwQsGSh9zXNfiouygoEHF4=;
- b=Lt7nUMBTzDrR39VSttNbM2afUmplKjrhglHJ1axUhGY0eP2ZsdV0ZLgTjFS6LtsRt5xHWMwmR6Ka7fwXNctybtqqZfGWgdi0pEfRAVnjo6oeGalcVUiaaHU1rnHp9ne9q4hrJ+ees0/BQVmihftA89X0Xl9H52aD35vdNLishH23UobtKQEc0E1t5ghTBsUstL9X6Xs9vqFI9eiNAa0/9A9TuNNPnHDe9RWbXx70IM7VYCJdy8ixaDNDvqOXjhROEJiOX8A6kX8pCR1NrMmnp7M38NX3rWLc7tRUp8aHBFLTnnTnDoL9ay0mUoWlwPekCdoGRk+aPa7gHBN/H6rFMQ==
+ bh=NB0yfNvWyMp26wFDNA2XtrNmmbRd+2Zm3l0zr1Pm8so=;
+ b=XBvM+GmVuq9Q1q6f9/N7a0u+TNAUvMcn800DTkQLVhiix/fmcqnMoA7XbQfU2ZKvdfgYGSS5efyorUXshrTToGwBUW5GuH49XAlDuZnD4yojao4vs8EGC7ifHA2VJxttMwBrzyFHzqlslgW3fRtJLrkvC90TGRbqDngFeyFAaLD6RRYqpmCegl9aUCAW87rSYUZfiaPPK4EPsBCtnl6K8Fd9aVaReaPZGR/srxGfY7Avr18+56ODxfhS95knBH7SxIg5mRaykRJ+i0JKQ2Hxp0fbRrmis0xDRoqzSsFqaiWORN5ZVHDeLK0efrynj/Jq7NHohyRBX41QGzlxlZc3BA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
  dkim=none; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5unh9pPs0pJCKIpNHQLcmKwQsGSh9zXNfiouygoEHF4=;
- b=sHHctoLKiNDN5S9wHjwXD5467aDO4KCjW7pXN8bAMru0YNAA0RM3lpCryr9w2lXVG1x7ljnDiDTcGIfUk1LmLj0e0IEcZ/JDnazeEYGoKrDCrW9yWqgq7ayUyRzUWsRvR+NiQipEXAQaiPgsWoxVW7hyHUWGutIaDoTakCFH+G/Z7O7amdAeDsFgs+q2iQ7817tLhcZkDJCJH3iFOEMRTeaMfRG48Y/jKZ572ZlGCmcOHOdqIPujvBSWCF6WTXwniA4p0MLRMoGZW2PHzNq/U6nDyRg1WunnD7XP2SxnQCkSVfGQ+kICu0oNOAdnu+m1aDSOkiBwv5PxJOduODlvYA==
-Received: from DM6NAM11FT036.eop-nam11.prod.protection.outlook.com
- (2a01:111:e400:fc4d::4f) by
- DM6NAM11HT195.eop-nam11.prod.protection.outlook.com (2a01:111:e400:fc4d::78)
+ bh=NB0yfNvWyMp26wFDNA2XtrNmmbRd+2Zm3l0zr1Pm8so=;
+ b=kT2xVhKxbs05lNmPAFNtwplZUcQRLhxL7Cm8r/edltWlhQCwglsTnLYDJtDviQKpED2fVFqgzTRao+A4D3DA7eKf/V1B7Bf8HHvHr5raUhkUtSAPbUspJWumSs0JDZUdXEDUYdnRE7nUDLUXLqKK9shOPTD35z6hCLUGv1ExDKYU5zPvLchcD8SPaF4Ls4maDb+01Ak9peW7dN/AZV5TgBBuMq8X7xA1Ovaa0pkAprNEwksH+GEQo/mouAJBwWS4uWlrea/ryfwylqVKq0bG7d2kV+UFaENJ6gr/D/s90x36X+SUHZKLBQe8TYxj8VDYqrXqq0w92cp8FsLw8wfe+A==
+Received: from DM6NAM11FT012.eop-nam11.prod.protection.outlook.com
+ (2a01:111:e400:fc4d::40) by
+ DM6NAM11HT180.eop-nam11.prod.protection.outlook.com (2a01:111:e400:fc4d::105)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.16; Wed, 21 Apr
- 2021 17:16:55 +0000
+ 2021 17:19:34 +0000
 Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- (2a01:111:e400:fc4d::4e) by DM6NAM11FT036.mail.protection.outlook.com
- (2a01:111:e400:fc4d::64) with Microsoft SMTP Server (version=TLS1_2,
+ (2a01:111:e400:fc4d::48) by DM6NAM11FT012.mail.protection.outlook.com
+ (2a01:111:e400:fc4d::365) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4065.21 via Frontend
- Transport; Wed, 21 Apr 2021 17:16:54 +0000
-X-IncomingTopHeaderMarker: OriginalChecksum:2372569B72899EC2CDD9F766BEFB6B0DE820BE2FF17133B1745BD6F30D44668C;
- UpperCasedChecksum:F678E2B8C45D54A112544C046D150E5375AC09FCDAFE3E64E4559AD35E81DFFA;
- SizeAsReceived:7804; Count:46
+ Transport; Wed, 21 Apr 2021 17:19:34 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:4B758E55213042BA89874B91152A28AFFE9AB132BFA3A83AE098443655A32332;
+ UpperCasedChecksum:D0632CD6D7291639C1EA76EE9CB62DF5E1DEC8A94E5098530E1B7ADABF90C90D;
+ SizeAsReceived:7812; Count:46
 Received: from SN6PR06MB5342.namprd06.prod.outlook.com
  ([fe80::fc38:a692:c2c8:f63e]) by SN6PR06MB5342.namprd06.prod.outlook.com
  ([fe80::fc38:a692:c2c8:f63e%7]) with mapi id 15.20.4042.024; Wed, 21 Apr 2021
- 17:16:54 +0000
-Date: Wed, 21 Apr 2021 12:16:52 -0500
+ 17:19:34 +0000
+Date: Wed, 21 Apr 2021 12:19:32 -0500
 From: Chris Morgan <macromorgan@hotmail.com>
 To: Johan Jonker <jbx6244@gmail.com>
 Cc: Chris Morgan <macroalpha82@gmail.com>, alsa-devel@alsa-project.org,
@@ -93,46 +93,45 @@ Cc: Chris Morgan <macroalpha82@gmail.com>, alsa-devel@alsa-project.org,
  heiko@sntech.de, lee.jones@linaro.org, robh+dt@kernel.org,
  perex@perex.cz, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
-Subject: Re: [v7 3/4] dt-bindings: Add Rockchip rk817 audio CODEC support
-Message-ID: <SN6PR06MB53421B47D52055B391BF0D49A5479@SN6PR06MB5342.namprd06.prod.outlook.com>
+Subject: Re: [v7 4/4] arm64: dts: rockchip: add rk817 codec to Odroid Go
+Message-ID: <SN6PR06MB5342DB86A948FAADA4B175C7A5479@SN6PR06MB5342.namprd06.prod.outlook.com>
 References: <20210420160747.22942-1-macroalpha82@gmail.com>
- <20210420160747.22942-3-macroalpha82@gmail.com>
- <375b3145-70cc-9351-76f5-b9a159dc244f@gmail.com>
+ <20210420160747.22942-4-macroalpha82@gmail.com>
+ <c31c3417-0ded-3274-6879-bbd56f26a2aa@gmail.com>
 Content-Disposition: inline
-In-Reply-To: <375b3145-70cc-9351-76f5-b9a159dc244f@gmail.com>
-X-TMN: [++ub+KGBcKw5u9R1NQEd1KAXUh2XaAo2]
-X-ClientProxiedBy: SA0PR13CA0020.namprd13.prod.outlook.com
- (2603:10b6:806:130::25) To SN6PR06MB5342.namprd06.prod.outlook.com
+In-Reply-To: <c31c3417-0ded-3274-6879-bbd56f26a2aa@gmail.com>
+X-TMN: [DVhHmNP/xhzOFpjDsclT0nqyWZDEr+nh]
+X-ClientProxiedBy: SN6PR05CA0032.namprd05.prod.outlook.com
+ (2603:10b6:805:de::45) To SN6PR06MB5342.namprd06.prod.outlook.com
  (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <20210421171652.GA1713@wintermute.localdomain>
+X-Microsoft-Original-Message-ID: <20210421171932.GB1713@wintermute.localdomain>
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from wintermute.localdomain (76.183.134.35) by
- SA0PR13CA0020.namprd13.prod.outlook.com (2603:10b6:806:130::25) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4087.15 via Frontend
- Transport; Wed, 21 Apr 2021 17:16:53 +0000
+ SN6PR05CA0032.namprd05.prod.outlook.com (2603:10b6:805:de::45) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4087.16 via Frontend Transport; Wed, 21 Apr 2021 17:19:33 +0000
 X-MS-PublicTrafficType: Email
 X-IncomingHeaderCount: 46
 X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-Correlation-Id: 80250e50-2e48-4521-54a1-08d904e94288
-X-MS-TrafficTypeDiagnostic: DM6NAM11HT195:
+X-MS-Office365-Filtering-Correlation-Id: 4f6d8efa-a751-4af3-f8b3-08d904e9a1de
+X-MS-TrafficTypeDiagnostic: DM6NAM11HT180:
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: nvdxj0DQQfsz9o2o7h36c2cY1xqtMZUNzEBZ3U9Pyjk8bkv091653XpSrHi301exVqEaBjN5MrRkIGTSAFxep5vlKY5Xx7N8FHvTZ9cIOrdXWzr/tJEmY0KEDYJKNvIPVGCNeVsJfDIlXG454tTTqnnRd660DqlQ1gKsE0FRvUCrwEL9Ilv2h0c9rnn+bj8R7q0v+tWmlhmRcTwBIJ99eNjwR9heRsoiIfc39bw2O5GFcjOSCsiRr218iH/1cn/u7vEvo+5WI2lCb8jddIVS+djLxBNrzCK0WQoYG0+Tg56Y3OS2vfG4TGk7w0kRHw7LRAtZPvHEvhtihfTNfdvdZ/k63U5wgWtcLWqURdqMebPpFxZpS0U0n/FmIXJv7gxiyDsznpIEoJHbtPtHyq2Qow==
-X-MS-Exchange-AntiSpam-MessageData: w0PSVXLB2fAXaR04ulGYVwd/SYw2UYL7Olfi2xnp1sBegEqKKLerEH2QnPKS4BVcxGaOkjmvO3SHVnGc6NgRPGPOtpxEXHCknI2XWtNUX8eDwCqknCdKv1A2oRE+6cBKbZ23OsPaK4wa3yJbufwWpA==
+X-Microsoft-Antispam-Message-Info: 6DPAn6mz32mRJI11R08mJp04DtEamkXkS768XT97cpmYzBLhUzMY9PbU+XVtuz5AB7lWt8dPNvMgxrqDrMpmcY0r5dJxgFootxnGLKDos8+rLozj6ShsU9ZeTUUVZFfGxxBiRz9ZGZOPFcGmKy5rHJMdJ9XQSDWY3W3pgz8yudKvgW56u9WNbx6SHO1p1hV5z9TPUqhFlN7ivmCOlZBHGLPtJS3g5a7uTyFhlbl9Eh+BgHvyNwj/6sLUDgdj9ArEz0JfsOeZRAg1iow5/bUX/SGX41qDCpehPf/BSqVNzI/zwxelF5H1ROdYrQBh7axtw+aWILuPVxXcI58q5vl04F6tD7X/azcerq3mpj1YCjZdtH07HDCfev4WSEoUiehp2+7P/tNImVzy+LpoWIPZeA==
+X-MS-Exchange-AntiSpam-MessageData: eehreRASYGtnGzeNH5cILR+YWKGsMfVlUtrOO1J52FGQ1AD4b5ffdf78MhUnse7pCmgTTJHprmvkdTERvawr3YXkfl1uAb/7IpOQfUwcMY8qmIPxSge79um920e+2+bWXDP6oX/tbfWG40Hl88hXag==
 X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80250e50-2e48-4521-54a1-08d904e94288
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Apr 2021 17:16:54.5234 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4f6d8efa-a751-4af3-f8b3-08d904e9a1de
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Apr 2021 17:19:34.3219 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT036.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT012.eop-nam11.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
 X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6NAM11HT195
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6NAM11HT180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_101702_323876_8CEED675 
-X-CRM114-Status: GOOD (  34.96  )
+X-CRM114-CacheID: sfid-20210421_101937_466208_1F2583AD 
+X-CRM114-Status: GOOD (  27.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,15 +149,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 20, 2021 at 09:56:35PM +0200, Johan Jonker wrote:
-> Hi Chris,
-> 
-> Some comments. Have a look if they are useful.
-> 
+On Tue, Apr 20, 2021 at 10:13:38PM +0200, Johan Jonker wrote:
 > On 4/20/21 6:07 PM, Chris Morgan wrote:
 > > From: Chris Morgan <macromorgan@hotmail.com>
 > > 
-> > Create dt-binding documentation to document rk817 codec.
+> > Add the new rk817 codec driver to the Odroid Go Advance.
 > > 
 > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > > ---
@@ -193,282 +188,123 @@ On Tue, Apr 20, 2021 at 09:56:35PM +0200, Johan Jonker wrote:
 > > Changes in v2:
 > >  - Fixed audio path registers to solve some bugs.
 > > 
-> >  .../devicetree/bindings/mfd/rk808.txt         | 181 ++++++++++++++++++
-> >  1 file changed, 181 insertions(+)
+> >  .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 36 +++++++++++++++++--
+> >  1 file changed, 34 insertions(+), 2 deletions(-)
 > > 
-> > diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-> > index 04df07f6f793..31eaabd2e179 100644
-> > --- a/Documentation/devicetree/bindings/mfd/rk808.txt
-> > +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-> > @@ -63,6 +63,11 @@ Optional RK809 properties:
-> >  - vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > index 97fb93e1cc00..5356bcf6d99c 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > @@ -161,6 +161,29 @@ blue_led: led-0 {
+> >  		};
+> >  	};
 > >  
-> >  Optional RK817 properties:
-> > +- clocks:	The input clock for the audio codec
-> > +- clock-names:	The clock name for the codec clock. Should be "mclk".
+> > +	rk817-sound {
+> > +		compatible = "simple-audio-card";
+> > +		simple-audio-card,format = "i2s";
 > 
-> #sound-dai-cells:
+> > +		simple-audio-card,name = "rockchip,rk817-codec";
 > 
-> Needed for the interpretation of sound dais.
-> Should be 0.
-
-Will add, thank you.
-
-> 
-> Add empty line
-> 
-> > +- codec:	The child node for the codec to hold additional properties.
-> 
-> This is a nodename and not a property. Add below "vcc9-supply".
-> 
-
-Will change, thank you.
-
-> > +- mic-in-differential: Telling if the microphone uses differential mode. Should
-> > +		       be under the codec child node.
-> 
-> This goes in a subnode. Maybe add indent a bit?
-> "mic-in-differential" is a property specific for Rockchip.
-> 
-
-I've moved it after the codec description to hopefully clarify that its
-position.
-
-> Ask rob+dt for exact name.
-> Maybe this has to change to "rockchip,mic-in-differential"
-> Update code as well!
-> 
+> "simple-audio-card,name" is an exception to the Heiko's sort rules.
+> Move above all other "simple-audio-card" properties.
 
 Will do.
 
-> Add new added property names explicit in your commit message, so rob+dt
-> can review more easy.
 > 
+> ===
 > 
-> >  - vcc8-supply:  The input supply for BOOST
-> >  - vcc9-supply:  The input supply for OTG_SWITCH
-> >  
-> > @@ -275,3 +280,179 @@ Example:
-> >  			};
-> >  		};
-> >  	};
+> "rockchip,rk817-codec" is too long for the "aplay -l" command.
+> Maybe keep it in line with other boards
 > 
-> Maybe add separator/title?
+> ?? "Analog" ??
 > 
+
+I can do analog if you want, or maybe just rk817-codec? I notice that several
+boards (such as the pinebook pro) do have longish names (21 characters versus
+20 for this board). Happy to change it though, your call.
+
+> 
+> > +		simple-audio-card,mclk-fs = <256>;
+> > +		simple-audio-card,widgets =
+> > +			"Microphone", "Mic Jack",
+> > +			"Headphone", "Headphones",
+> > +			"Speaker", "Speaker";
+> > +		simple-audio-card,routing =
+> > +			"MICL", "Mic Jack",
+> > +			"Headphones", "HPOL",
+> > +			"Headphones", "HPOR",
+> > +			"Speaker", "SPKO";
+> > +		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
+> 
+> Add empty line between nodes.
+> 
+> > +		simple-audio-card,cpu {
+> > +			sound-dai = <&i2s1_2ch>;
+> > +		};
+> 
+> Add empty line between nodes.
+> 
+> > +		simple-audio-card,codec {
+> > +			sound-dai = <&rk817>;
+> > +		};
+> > +	};
 > > +
-> > +	rk817: pmic@20 {
-> > +		compatible = "rockchip,rk817";
-> > +		reg = <0x20>;
-> 
-> > +		interrupt-parent = <&gpio0>;
-> 
-> Missing in properties.
-> 
-
-This one was tricky; I honestly am not 100% sure but I think it's a required
-property. I added it to the required properties as I see it used on every
-implementation for this chip.
-
-> > +		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+> >  	vccsys: vccsys {
+> >  		compatible = "regulator-fixed";
+> >  		regulator-name = "vcc3v8_sys";
+> > @@ -265,11 +288,14 @@ rk817: pmic@20 {
+> >  		reg = <0x20>;
+> >  		interrupt-parent = <&gpio0>;
+> >  		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
 > > +		clock-output-names = "rk808-clkout1", "xin32k";
 > > +		clock-names = "mclk";
 > > +		clocks = <&cru SCLK_I2S1_OUT>;
-> > +		pinctrl-names = "default";
+> >  		pinctrl-names = "default";
+> > -		pinctrl-0 = <&pmic_int>;
 > > +		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
-> 
-> > +		wakeup-source;
-> 
-> Missing in properties.
-> Is this common for all rkXXX?
-> 
-
-I don't think this is common for all, I believe it is optional for some. If I
-am not mistaken this is because there is a button connected to the PMIC that
-is used to wake/suspend/poweron/poweroff the device. I put it under optional
-for now as I'm not sure if every device has this or not.
-
-> > +		#clock-cells = <1>;
-> 
+> >  		wakeup-source;
+> >  		#clock-cells = <1>;
+> > -		clock-output-names = "rk808-clkout1", "xin32k";
 > > +		#sound-dai-cells = <0>;
-> 
-> Missing in properties.
-
-Will fix.
-
-> 
+> >  
+> >  		vcc1-supply = <&vccsys>;
+> >  		vcc2-supply = <&vccsys>;
+> > @@ -428,6 +454,10 @@ regulator-state-mem {
+> >  				};
+> >  			};
+> >  		};
 > > +
-> > +		vcc1-supply = <&vccsys>;
-> > +		vcc2-supply = <&vccsys>;
-> > +		vcc3-supply = <&vccsys>;
-> > +		vcc4-supply = <&vccsys>;
-> > +		vcc5-supply = <&vccsys>;
-> > +		vcc6-supply = <&vccsys>;
-> > +		vcc7-supply = <&vccsys>;
-> > +
-> > +		regulators {
-> > +			vdd_logic: DCDC_REG1 {
-> > +				regulator-name = "vdd_logic";
-> > +				regulator-min-microvolt = <950000>;
-> > +				regulator-max-microvolt = <1150000>;
-> > +				regulator-ramp-delay = <6001>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <950000>;
-> > +				};
-> > +			};
-> > +
-> > +			vdd_arm: DCDC_REG2 {
-> > +				regulator-name = "vdd_arm";
-> > +				regulator-min-microvolt = <950000>;
-> > +				regulator-max-microvolt = <1350000>;
-> > +				regulator-ramp-delay = <6001>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +					regulator-suspend-microvolt = <950000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_ddr: DCDC_REG3 {
-> > +				regulator-name = "vcc_ddr";
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_3v3: DCDC_REG4 {
-> > +				regulator-name = "vcc_3v3";
-> > +				regulator-min-microvolt = <3300000>;
-> > +				regulator-max-microvolt = <3300000>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +					regulator-suspend-microvolt = <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_1v8: LDO_REG2 {
-> > +				regulator-name = "vcc_1v8";
-> > +				regulator-min-microvolt = <1800000>;
-> > +				regulator-max-microvolt = <1800000>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <1800000>;
-> > +				};
-> > +			};
-> > +
-> > +			vdd_1v0: LDO_REG3 {
-> > +				regulator-name = "vdd_1v0";
-> > +				regulator-min-microvolt = <1000000>;
-> > +				regulator-max-microvolt = <1000000>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <1000000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc3v3_pmu: LDO_REG4 {
-> > +				regulator-name = "vcc3v3_pmu";
-> > +				regulator-min-microvolt = <3300000>;
-> > +				regulator-max-microvolt = <3300000>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vccio_sd: LDO_REG5 {
-> > +				regulator-name = "vccio_sd";
-> > +				regulator-min-microvolt = <1800000>;
-> > +				regulator-max-microvolt = <3300000>;
-> > +				regulator-always-on;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_sd: LDO_REG6 {
-> > +				regulator-name = "vcc_sd";
-> > +				regulator-min-microvolt = <3300000>;
-> > +				regulator-max-microvolt = <3300000>;
-> > +				regulator-boot-on;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-on-in-suspend;
-> > +					regulator-suspend-microvolt = <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_bl: LDO_REG7 {
-> > +				regulator-name = "vcc_bl";
-> > +				regulator-min-microvolt = <3300000>;
-> > +				regulator-max-microvolt = <3300000>;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +					regulator-suspend-microvolt = <3300000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_lcd: LDO_REG8 {
-> > +				regulator-name = "vcc_lcd";
-> > +				regulator-min-microvolt = <2800000>;
-> > +				regulator-max-microvolt = <2800000>;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +					regulator-suspend-microvolt = <2800000>;
-> > +				};
-> > +			};
-> > +
-> > +			vcc_cam: LDO_REG9 {
-> > +				regulator-name = "vcc_cam";
-> > +				regulator-min-microvolt = <3000000>;
-> > +				regulator-max-microvolt = <3000000>;
-> > +
-> > +				regulator-state-mem {
-> > +					regulator-off-in-suspend;
-> > +					regulator-suspend-microvolt = <3000000>;
-> > +				};
-> > +			};
-> > +		};
-> 
-> Add empty line, like the rest.
-> 
-
-My mistake, will fix.
-
 > > +		rk817_codec: codec {
 > 
 > > +			mic-in-differential;
 > 
-> See comment above.
-> rockchip,mic-in-differential ??
+> This property name might have to change.
 > 
+
+Yep, will do.
+
 > > +		};
-> > +	};
+> >  	};
+> >  };
+> >  
+> > @@ -439,6 +469,8 @@ &i2c1 {
+> >  
+> >  /* I2S 1 Channel Used */
+> >  &i2s1_2ch {
+> 
+> > +	resets = <&cru SRST_I2S1>, <&cru SRST_I2S1_H>;
+> > +	reset-names = "reset-m", "reset-h";
+> 
+> Remove.
+> "resets" and "reset-names" have no support in mainline.
+> See rockchip-i2s.yaml
+> 
+
+Did not know that, will remove!
+
+> >  	status = "okay";
+> >  };
+> >  
 > > 
 > 
 
