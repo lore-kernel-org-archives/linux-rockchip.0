@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A49CDC433ED
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:59:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A90AC433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:59:48 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FA8A6141C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:59:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FA8A6141C
+	by mail.kernel.org (Postfix) with ESMTPS id E329561427
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Apr 2021 17:59:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E329561427
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,66 +24,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Rh3/zUf1KRoa4PIoftXGZHzqQwOBGQsAQeuYxN/s0qs=; b=TsAPlIYQJnZKra8eYoY/M/exS
-	/5/IM+KiK8B50Pc9NHKInIegkz8v3VssPTkJKBsbO9F55BJj+65cOp3UzL3YH+m8oGBoZMx4REI8o
-	R/yUGm+jM7O3VUu3iJn/eNOt4BVsYPnCZLY2uMN0CTlYE6K74aFMjIinaAcaYLIRH8A6TZcMtmAtm
-	UFFdxNgfIoCIhunlL1tpUUVylivXgTHaJ66zkkc4eB+g4G+nilBTizWpn89Pex5O+xY9ovlIwI1F+
-	acdPMNVzgIcS3FGntrH+WIV0WEm3ZIWBqdgGR+K7jkFH7brjtd2gL+rFTJxPCFjKEi6RHCVJDq51G
-	Mz5GrHKvw==;
+	 bh=rxSKz4FJdalK/XIOkNouIVIUaMAvG6i9bFP0puvost0=; b=escLM8zJL0LT63zGsGRCt2DyI
+	DDNbGrzxGEIYWLncajQ7j9RkBMS9a5y1tptvDj0HDJIT4h9n7DZF8E3EKxAaMS0Uy0oy1yLpUk5CF
+	+GOI3mQhQaCQAd7SRRerOTx3A76S6y7miReVr5+6PKjzVfl7bv+OQ86tyQOrQnH5WE2Qh7UedOK1S
+	/qHSc0yxag3Z+1S3yxPlEopr9QEKKQC0n4Z09MJajoac58WEe9eXtFo+p5hoRljUSyN+WM1LFwqlx
+	jYRE63iarmW3qitFekSSJ95btbh/fS9UkHuwj4XDPTbKXL9jaxbB1xxAt/+T+hwGzWcJ+bsevFk9p
+	AKT6Km+EQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZH8U-00EvjA-F3; Wed, 21 Apr 2021 17:59:39 +0000
+	id 1lZH8Y-00Evjw-Dh; Wed, 21 Apr 2021 17:59:42 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZH8Q-00Evhi-G4
- for linux-rockchip@desiato.infradead.org; Wed, 21 Apr 2021 17:59:34 +0000
+ id 1lZH8R-00EviD-S3
+ for linux-rockchip@desiato.infradead.org; Wed, 21 Apr 2021 17:59:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=GFCjFDnTKts+03sH7fTjJ2Hzlbk05WTqad5B7papnEE=; b=CnV3kWg2Vs1pF3VjRwqy+1YXcq
- kxc4UhnsNicdLuVNEjOQxe15kMpgkw1GU7aqFxOmkAqsPEOYot0FVbSTiR3VTXwTlnk6L4MGENsYC
- FaQV8gHgRdlN0+ftGrlvREQ1jLvv2ydrl42vW1JH4shsID3MWoR6t+78ntgkQvhInB9B1n0vBWl18
- UvNKALRSKUTGxGGIO9d21Ra2Fff1OxZ0OEn1BG2JSm43n4qOqwDW/PZW1TDltWrDxnPPOdjQ+kp05
- Xh67nlAnfGZSUmvh6t8efta6xhgfbjXjfSUlC8+nKVyID3mKx4VEnCRT8+2FnU18rkgqbr1XjnI5S
- Pja6gnkQ==;
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+ bh=495ANDExh29fLvAneW8mnxB/22AS/uHqxyX3lcF+iKw=; b=XRphq4W8ilACwlArvz3ZPQmAOG
+ AJaIUK7+VJFe68tVXR+jVK6W3bAqOrfg1si/UU7qnFegsafa5u0ZdBDrAi8Tp0FFYbndgIVcfSSCN
+ lJBmMLvBSPpMyoeMZdkFCQHYEKIKyXBpgDMUeY6JeVxIq8TOhlr0FFNlBd+RKv1Yb13EDya13qu+g
+ zIISfGbUNP1bIFsFigww7K79itrXrS/VU1uWhkpNJI8iFHrUGWspUogfYGm2OqSEJVEKYEtdj1Xnf
+ AYtIlL+Fa9L4IBmiFE6Ufek5Q+I+H9ttSZX1j8j3o+7KZBg3YHY9bWNTp6vA+lFvNbKVrOw/eHnL3
+ JXFb2efA==;
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZH8N-00D5Lw-Q3
- for linux-rockchip@lists.infradead.org; Wed, 21 Apr 2021 17:59:33 +0000
-Received: by mail-oi1-x234.google.com with SMTP id k18so38304004oik.1
- for <linux-rockchip@lists.infradead.org>; Wed, 21 Apr 2021 10:59:29 -0700 (PDT)
+ id 1lZH8O-00D5Li-Q9
+ for linux-rockchip@lists.infradead.org; Wed, 21 Apr 2021 17:59:34 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id
+ e89-20020a9d01e20000b0290294134181aeso13913582ote.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 21 Apr 2021 10:59:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=GFCjFDnTKts+03sH7fTjJ2Hzlbk05WTqad5B7papnEE=;
- b=AEys/8bSEhTIx0oIJJSawACS89ej9X6f4uTuZD9dPR0dvpLadTnWJu39H5NIj68RCr
- 6mgYTETBPxwaE0PLYu6d9qSS1NCxKRqu9jVepPwiLhrroDo8Tiv/u1JIIWU3VCjTXiEG
- T00POD+kqBGpehCle4nCvuoqmvnVF8QZqc8lJjt+oAWrDY8uFZsZzdUG/nEYUtrhQuFi
- ozkaLTxzsMC1tA0MToqWQGnwhQV1Y1K7f89ef712WOKnkZRFG5N39jgtPAsds8YTkSGC
- 291ixJ6tMSZ10dvjlroxozebQOdflFHv9CaEF8FXzx6sd7+NDbWvrGlG0w5xJJKNTIRg
- nkkA==
+ bh=495ANDExh29fLvAneW8mnxB/22AS/uHqxyX3lcF+iKw=;
+ b=m0uaX7c5C7xFfPLJeQlbCreXq4RjEk4RPA7FuupddiuDKeYHMp6hHIwryl8CFGvLGN
+ srGSykbaxgxOaFH5XeSqxVugwTczK8OeCxWXVrbPm0rTGBVWPyjSBZ4jCrXuuPWAvzzB
+ 5r+gRTrVTrXkhg522AAMxC8+JdiHFh7ciejr+pWuw9MUv3UuKmtxTzETgmQ//OmJv3Gw
+ yduxyuD1s2a3ZJ0e2bvqGOgE8Xmxczml+iZhVk0sjaVarOvzDBNhChOe6By6EpumADma
+ JUqCoqFpGMEGInjjMOCNmytkJ1sGP9iXSq1Fv1epOQh52iNAk2GCrLelFRllEbfvul/O
+ az5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=GFCjFDnTKts+03sH7fTjJ2Hzlbk05WTqad5B7papnEE=;
- b=g+H8CWU5SHa+3kBYtaHNLwXR+DM6B8tb5UoKhlqk3jmOy6GCLwicSmOukRrFsg6PDF
- qZHfAiqCqnWCn1jmYGvFof3J3sY/hGZSD0Pz4FCtVwYTHnbtm1SvrUtzx0Rqd37/tnwg
- xzPfXUjk3PtuiAH+DS57S+dTYTogzZhZ5RTJmmaSKeB7vMiomfJulfGpM11j3NsddZU+
- JvseDedU81O9Ze1ZD3/uRoHgvhzMpbK9lD+K56MXzhGbAMkxQwg9DxnBgzhcAlay8JNW
- 96bUt2CKwsuJdLlS0kEiF3z3N6AeTNjcfovjVHpnaVDRqgx8CqcUDa4QrZHtSpRkAHFz
- 6hGg==
-X-Gm-Message-State: AOAM530VmfTu5tJe1P5imnutiFTBb2LTv+XRGQ2g1fsLMaB2kK+1epAq
- wX02Q6RYEi6dqACYwnIjEqw=
-X-Google-Smtp-Source: ABdhPJy35tGx7OnR7lXlEBK/EZatiYx9tb4/EQP6rMQD7CleDi/jo7CDKf6ooCozvtMeTF72U0JEhw==
-X-Received: by 2002:aca:b387:: with SMTP id c129mr7311825oif.30.1619027968983; 
- Wed, 21 Apr 2021 10:59:28 -0700 (PDT)
+ bh=495ANDExh29fLvAneW8mnxB/22AS/uHqxyX3lcF+iKw=;
+ b=PZFhsnLaQ9ey0formb8xjpDAyK7STy3pXWLHPHaUa0f4UxuYaqA16S9k+yMVeBZSeS
+ ChniG2iQK0GgvYa1g4X1b2HNAZRzT3Hai4oRyMas1+CP4poWh/7E7ee/dWVvbxA+g59E
+ FNb1L9WHIv3EnpDhyeytwfsg4j+Fs66udAW9q7GQrQpC5ZaqPf82kxBFg1DNhLu1xcNJ
+ ZwiDUcHWS+ZJnu9ArhyV0mYYxI0Ha18nTm1O3t9C5tMX+GV2DI4qq2Gdeptj9FffxvmF
+ sodnp6ZazX8IhHPmSEpvmDT3MIs16HIuanQf6h5DF/3EMhj499r5YSUkdHkLFCA3TY5z
+ J68g==
+X-Gm-Message-State: AOAM530Ow5BXeTSK3PkG3Wvp2Imil2C8RM5n9wAtwvLCAYXYNwRL73vk
+ LbpGUtASVPxvEgRLwI5WU30=
+X-Google-Smtp-Source: ABdhPJw6G7Rd7nNch0aZd5kCNGeV016juKjGBYeRj+nzDc4Ef8YCTheUVlCS2eiYPqVgFo46cfcffA==
+X-Received: by 2002:a05:6830:618:: with SMTP id
+ w24mr23641127oti.147.1619027966794; 
+ Wed, 21 Apr 2021 10:59:26 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id l62sm13662oih.2.2021.04.21.10.59.27
+ by smtp.gmail.com with ESMTPSA id l62sm13662oih.2.2021.04.21.10.59.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Apr 2021 10:59:28 -0700 (PDT)
+ Wed, 21 Apr 2021 10:59:26 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: alsa-devel@alsa-project.org
 Cc: broonie@kernel.org, lgirdwood@gmail.com,
@@ -92,16 +94,16 @@ Cc: broonie@kernel.org, lgirdwood@gmail.com,
  jbx6244@gmail.com, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, maccraft123mc@gmail.com,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [v8 4/4] arm64: dts: rockchip: add rk817 codec to Odroid Go
-Date: Wed, 21 Apr 2021 12:59:06 -0500
-Message-Id: <20210421175906.31977-4-macroalpha82@gmail.com>
+Subject: [v8 3/4] dt-bindings: Add Rockchip rk817 audio CODEC support
+Date: Wed, 21 Apr 2021 12:59:05 -0500
+Message-Id: <20210421175906.31977-3-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210421175906.31977-1-macroalpha82@gmail.com>
 References: <20210421175906.31977-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_105931_870214_70B6C8EC 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20210421_105932_878026_323EC1B0 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,7 +123,9 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the new rk817 codec driver to the Odroid Go Advance.
+Create dt-binding documentation to document rk817 codec.
+New property name of rockchip,mic-in-differential added to control if
+the microphone is in differential mode or not.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
@@ -163,73 +167,228 @@ Changes in v3:
 Changes in v2:
  - Fixed audio path registers to solve some bugs.
 
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 36 +++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/mfd/rk808.txt         | 188 ++++++++++++++++++
+ 1 file changed, 188 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 97fb93e1cc00..e3ecd34f3028 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -161,6 +161,31 @@ blue_led: led-0 {
+diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
+index 04df07f6f793..e27fb2c1ebe0 100644
+--- a/Documentation/devicetree/bindings/mfd/rk808.txt
++++ b/Documentation/devicetree/bindings/mfd/rk808.txt
+@@ -14,6 +14,8 @@ Required properties:
+ - compatible: "rockchip,rk817"
+ - compatible: "rockchip,rk818"
+ - reg: I2C slave address
++- interrupt-parent: Should contain a phandle to the correct interrupt
++		    controller node.
+ - interrupts: the interrupt outputs of the controller.
+ - #clock-cells: from common clock binding; shall be set to 1 (multiple clock
+   outputs). See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+@@ -23,6 +25,7 @@ Optional properties:
+   default output clock name
+ - rockchip,system-power-controller: Telling whether or not this pmic is controlling
+   the system power.
++- wakeup-source: Device can be used as a wakeup source.
+ 
+ Optional RK805 properties:
+ - vcc1-supply:  The input supply for DCDC_REG1
+@@ -63,8 +66,16 @@ Optional RK809 properties:
+ - vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
+ 
+ Optional RK817 properties:
++- clocks:	The input clock for the audio codec
++- clock-names:	The clock name for the codec clock. Should be "mclk".
++- #sound-dai-cells: Needed for the interpretation of sound dais. Should be 0.
++
+ - vcc8-supply:  The input supply for BOOST
+ - vcc9-supply:  The input supply for OTG_SWITCH
++- codec:	The child node for the codec to hold additional properties.
++
++- rockchip,mic-in-differential: Telling if the microphone uses differential
++				mode. Should be under the codec child node.
+ 
+ Optional RK818 properties:
+ - vcc1-supply:  The input supply for DCDC_REG1
+@@ -275,3 +286,180 @@ Example:
+ 			};
  		};
  	};
- 
-+	rk817-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "Analog";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,widgets =
-+			"Microphone", "Mic Jack",
-+			"Headphone", "Headphones",
-+			"Speaker", "Speaker";
-+		simple-audio-card,routing =
-+			"MICL", "Mic Jack",
-+			"Headphones", "HPOL",
-+			"Headphones", "HPOR",
-+			"Speaker", "SPKO";
-+		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
 +
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_2ch>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&rk817>;
-+		};
-+	};
-+
- 	vccsys: vccsys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v8_sys";
-@@ -265,11 +290,14 @@ rk817: pmic@20 {
- 		reg = <0x20>;
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++	rk817: pmic@20 {
++		compatible = "rockchip,rk817";
++		reg = <0x20>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
 +		clock-output-names = "rk808-clkout1", "xin32k";
 +		clock-names = "mclk";
 +		clocks = <&cru SCLK_I2S1_OUT>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int>;
++		pinctrl-names = "default";
 +		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
- 		wakeup-source;
- 		#clock-cells = <1>;
--		clock-output-names = "rk808-clkout1", "xin32k";
++		wakeup-source;
++		#clock-cells = <1>;
 +		#sound-dai-cells = <0>;
- 
- 		vcc1-supply = <&vccsys>;
- 		vcc2-supply = <&vccsys>;
-@@ -428,6 +456,10 @@ regulator-state-mem {
- 				};
- 			};
- 		};
++
++		vcc1-supply = <&vccsys>;
++		vcc2-supply = <&vccsys>;
++		vcc3-supply = <&vccsys>;
++		vcc4-supply = <&vccsys>;
++		vcc5-supply = <&vccsys>;
++		vcc6-supply = <&vccsys>;
++		vcc7-supply = <&vccsys>;
++
++		regulators {
++			vdd_logic: DCDC_REG1 {
++				regulator-name = "vdd_logic";
++				regulator-min-microvolt = <950000>;
++				regulator-max-microvolt = <1150000>;
++				regulator-ramp-delay = <6001>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vdd_arm: DCDC_REG2 {
++				regulator-name = "vdd_arm";
++				regulator-min-microvolt = <950000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_3v3: DCDC_REG4 {
++				regulator-name = "vcc_3v3";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_1v8: LDO_REG2 {
++				regulator-name = "vcc_1v8";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdd_1v0: LDO_REG3 {
++				regulator-name = "vdd_1v0";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++
++			vcc3v3_pmu: LDO_REG4 {
++				regulator-name = "vcc3v3_pmu";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vccio_sd: LDO_REG5 {
++				regulator-name = "vccio_sd";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_sd: LDO_REG6 {
++				regulator-name = "vcc_sd";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_bl: LDO_REG7 {
++				regulator-name = "vcc_bl";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_lcd: LDO_REG8 {
++				regulator-name = "vcc_lcd";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <2800000>;
++				};
++			};
++
++			vcc_cam: LDO_REG9 {
++				regulator-name = "vcc_cam";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3000000>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <3000000>;
++				};
++			};
++		};
 +
 +		rk817_codec: codec {
 +			rockchip,mic-in-differential;
 +		};
- 	};
- };
- 
++	};
 -- 
 2.25.1
 
