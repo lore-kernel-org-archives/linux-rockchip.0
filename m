@@ -2,77 +2,72 @@ Return-Path: <SRS0=NLp6=JV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4126C433ED
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 18:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E484C433ED
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 19:20:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFFCD613B1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 18:58:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFFCD613B1
+	by mail.kernel.org (Postfix) with ESMTPS id 24E0D6117A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 19:20:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24E0D6117A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PZJQ3DIbkng7n4+AtD26jdO0yWxAQYkbVgZHd6H7GLs=; b=YuzwCIqYE+OD1jMAPG7ByPqpE
-	SCQVJqSsNxWtOXu41COg0yGmnj2vO7eRIN+QamsrzRYsfcYKfiQkIGzJgd/NkjOLMtDR0iBuiqmNo
-	lls/DVqK+CjPzPKxAnwxH4FF1VFufWsCscrxLue+j6MXWepzEPUYhCnF1xHZLg+NYuZ0hFM9JoZuf
-	OMfmtwQ2wxFvNiqOYQJuRVp2TuCpbbECEJChnDeNxi3PGj23RmhyFwjPzkhHdfwEOp6DEFI0zTA5L
-	pjvz9o9jTBQHKEQg3B/IOP6+WLuhTaAPAP0XDymz+65ko0enaayawZRnHGNhFmSq+CWVAiMO9U/71
-	ATRKSEzRA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=c7JL/gUyXcaN0OskLxUi15MXIQu5tntWVUIH+kDgu4A=; b=Vt9NQ+dCaeCor4w8O3EOIOP+cv
+	wN4OoOXQDK5p0XpzQlCEqkq75lRBYwqjDmFLWDtGii/m0454m8R0IvxqpsfUFvvpUAmo9PUmGBIAE
+	I/hLfStD3/Iw4Uwqa789PJoxztSRAh6FvDRIqQBCWNhJ0eaZmVwlVoJFd2b6ynJs5k9ReKcE5qqs0
+	J++uUTE8pKyjgvktfuYJdyMRnhPL96C9NIoehwVxVaNzcfInLqv1eFC75L9gY4CTjwGrhq4lSxVbi
+	g/bnwQPlY7qVZz91/mRu4+digbyUq2iQe0KcnTb9FzqsJEoG90TqPggP27bi2EssmVe9BWhs5g7M3
+	9IzxiWCw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1laNTc-004HO5-4p; Sat, 24 Apr 2021 18:58:00 +0000
+	id 1laNow-004Itc-JB; Sat, 24 Apr 2021 19:20:03 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1laNTZ-004HNZ-Vq
- for linux-rockchip@desiato.infradead.org; Sat, 24 Apr 2021 18:57:58 +0000
+ id 1laNou-004IsN-Hh
+ for linux-rockchip@desiato.infradead.org; Sat, 24 Apr 2021 19:20:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=upnP+OajusLkvGmy3Zf4OdfojHX5RN7fiHK48dqZYIE=; b=3WAqwqGJiTJ9hS+ruCc83uHoHI
- 4fg9hc+y9g8s0pcFCp9RZjB2edJzj0+hYn9f/tmKxFoD26HJmImdoXPJ9jCTQifzBVVq/G2AmmUpK
- qHarTZgWV8QogDj/iM9qQ+Z8TMk0Q/NV5BE9jotI3C/93yD/AXJNN2MBwJGrKUjN6qWoTGGWcRYFL
- QAlUOBNA//9V+rxA0ls8pUakbKtiQahkqmEsofwzynAFKPTZ1w3k4mmijPhGVHn4ohMtlwvauNdSs
- bMH2aVQcYj/TVNbdLhvYwWGPYhUnFxYtD1hzaZmCxaZZczx9qzLLgflw1uiWe+4Wp8beCORytdjTQ
- OT2ZSUKA==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=Ov61iFvN2z3VZQ6KLxZoP4dgi8n2uS5QT3R2P4mH5Vs=; b=C220y9MXZ4eqPT+E4sw1yBF6zD
+ AVeMWRCxG/w6p/nNcS69bSlL1WFKGwNPcWaPrHPyThfc4gvHgL6AiYZ8jTM6QlM0kJQBPsRcfMq8l
+ 7mf+5HinlXRhG/615aC/2ZBtT1JPevxEUph2rqoKi3qu0Ihbo4OmMQ2mn+TmT/D+S7L6nWpZy8H2q
+ R0fLbs5jHM4srZdWvutUvVw9Hvb83tz/mNfUNnLrReA6Te/+NPN/2Ltdb0h5GX1okgercwQTJezaI
+ Czugw0/QEoze82trFZ/Gv2/fZg2j0McetcHL+mUaez7ifaxc0iGZzHNWmykUQxQZjjhNr2XTM1uxX
+ RiALL0qg==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1laNTW-00F7eo-If
- for linux-rockchip@lists.infradead.org; Sat, 24 Apr 2021 18:57:56 +0000
+ id 1laNor-00F86v-Uo
+ for linux-rockchip@lists.infradead.org; Sat, 24 Apr 2021 19:19:59 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 260D11F4310A
-Message-ID: <7786c76ae276ee7bb5885592231a8089c9bfbdf9.camel@collabora.com>
-Subject: Re: [PATCH 2/2] thermal/rockchip: Support RK3568 SoCs in the
- thermal driver
+ (Authenticated sender: ezequiel) with ESMTPSA id 949B61F40E8C
 From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
- Kever Yang <kever.yang@rock-chips.com>, Elaine Zhang
- <zhangqing@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>, Finley Xiao
- <finley.xiao@rock-chips.com>,  kernel@collabora.com
-Date: Sat, 24 Apr 2021 15:57:43 -0300
-In-Reply-To: <ef9140da-c996-512a-b459-53461bd8198e@linaro.org>
-References: <20210421200445.32977-1-ezequiel@collabora.com>
- <20210421200445.32977-2-ezequiel@collabora.com>
- <ef9140da-c996-512a-b459-53461bd8198e@linaro.org>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+To: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>,
+ kernel@collabora.com
+Subject: [PATCH 1/2] arm64: dts: rockchip: add timer0 clocks on rk3368
+Date: Sat, 24 Apr 2021 16:19:45 -0300
+Message-Id: <20210424191946.69978-1-ezequiel@collabora.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210424_115754_905687_E27EB35D 
-X-CRM114-Status: GOOD (  24.69  )
+X-CRM114-CacheID: sfid-20210424_121958_144934_B09981E2 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,134 +80,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRGFuaWVsLAoKVGhhbmtzIGZvciB0aGUgcmV2aWV3LgoKT24gU2F0LCAyMDIxLTA0LTI0IGF0
-IDE2OjE0ICswMjAwLCBEYW5pZWwgTGV6Y2FubyB3cm90ZToKPiBPbiAyMS8wNC8yMDIxIDIyOjA0
-LCBFemVxdWllbCBHYXJjaWEgd3JvdGU6Cj4gPiBGcm9tOiBGaW5sZXkgWGlhbyA8ZmlubGV5Lnhp
-YW9Acm9jay1jaGlwcy5jb20+Cj4gPiAKPiA+IFRoZSBSSzM1NjggU29DcyBoYXZlIHR3byBUZW1w
-ZXJhdHVyZSBTZW5zb3JzLCBjaGFubmVsIDAgaXMgZm9yIENQVSwKPiA+IGNoYW5uZWwgMSBpcyBm
-b3IgR1BVLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBGaW5sZXkgWGlhbyA8ZmlubGV5LnhpYW9A
-cm9jay1jaGlwcy5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1
-aWVsQGNvbGxhYm9yYS5jb20+Cj4gPiAtLS0KPiA+IMKgZHJpdmVycy90aGVybWFsL3JvY2tjaGlw
-X3RoZXJtYWwuYyB8IDEwNyArKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gwqAxIGZp
-bGUgY2hhbmdlZCwgMTA3IGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMgYi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBf
-dGhlcm1hbC5jCj4gPiBpbmRleCBhYTllMGUzMWVmOTguLjhlMjZmMjY4NTAwMyAxMDA2NDQKPiA+
-IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPiA+ICsrKyBiL2RyaXZl
-cnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPiA+IEBAIC0yMTEsNyArMjExLDExIEBAIHN0
-cnVjdCByb2NrY2hpcF90aGVybWFsX2RhdGEgewo+ID4gwqAjZGVmaW5lIFRTQURDVjNfQVVUT19Q
-RVJJT0RfVElNRcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoDE4NzUgLyogMi41bXMgKi8K
-PiA+IMKgI2RlZmluZSBUU0FEQ1YzX0FVVE9fUEVSSU9EX0hUX1RJTUXCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAxODc1IC8qIDIuNW1zICovCj4gPiDCoAo+ID4gKyNkZWZpbmUgVFNBRENWNV9BVVRP
-X1BFUklPRF9USU1FwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgMTYyMiAvKiAyLjVtcyAq
-Lwo+ID4gKyNkZWZpbmUgVFNBRENWNV9BVVRPX1BFUklPRF9IVF9USU1FwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgMTYyMiAvKiAyLjVtcyAqLwo+ID4gKwo+ID4gwqAjZGVmaW5lIFRTQURDVjJfVVNF
-Ul9JTlRFUl9QRF9TT0PCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgMHgzNDAgLyogMTMgY2xv
-Y2tzICovCj4gPiArI2RlZmluZSBUU0FEQ1Y1X1VTRVJfSU5URVJfUERfU09DwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoDB4ZmMwIC8qIDk3dXMsIGF0IGxlYXN0IDkwdXMgKi8KPiA+IMKgCj4g
-PiDCoCNkZWZpbmUgR1JGX1NBUkFEQ19URVNUQklUwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgMHgwZTY0NAo+ID4gwqAjZGVmaW5lIEdSRl9UU0FEQ19URVNUQklUX0zC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgMHgwZTY0OAo+ID4gQEAgLTIx
-OSw2ICsyMjMsMTIgQEAgc3RydWN0IHJvY2tjaGlwX3RoZXJtYWxfZGF0YSB7Cj4gPiDCoAo+ID4g
-wqAjZGVmaW5lIFBYMzBfR1JGX1NPQ19DT04ywqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAweDA0MDgKPiA+IMKgCj4gPiArI2RlZmluZSBSSzM1NjhfR1JGX1RTQURD
-X0NPTsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgMHgwNjAwCj4gPiArI2Rl
-ZmluZSBSSzM1NjhfR1JGX1RTQURDX0FOQV9SRUcwwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCgweDEwMDAxIDw8IDApCj4gPiArI2RlZmluZSBSSzM1NjhfR1JGX1RTQURDX0FOQV9SRUcxwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCgweDEwMDAxIDw8IDEpCj4gPiArI2RlZmluZSBSSzM1
-NjhfR1JGX1RTQURDX0FOQV9SRUcywqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCgweDEwMDAx
-IDw8IDIpCj4gPiArI2RlZmluZSBSSzM1NjhfR1JGX1RTQURDX1RTRU7CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAoMHgxMDAwMSA8PCA4KQo+ID4gKwo+ID4gwqAjZGVmaW5lIEdS
-Rl9TQVJBRENfVEVTVEJJVF9PTsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCgw
-eDEwMDAxIDw8IDIpCj4gPiDCoCNkZWZpbmUgR1JGX1RTQURDX1RFU1RCSVRfSF9PTsKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAoMHgxMDAwMSA8PCAyKQo+ID4gwqAjZGVmaW5lIEdS
-Rl9UU0FEQ19WQ01fRU5fTMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCgweDEwMDAxIDw8IDcpCj4gPiBAQCAtNDc0LDYgKzQ4NCw0NSBAQCBzdGF0aWMgY29uc3Qgc3Ry
-dWN0IHRzYWRjX3RhYmxlIHJrMzM5OV9jb2RlX3RhYmxlW10gPSB7Cj4gPiDCoMKgwqDCoMKgwqDC
-oMKge1RTQURDVjNfREFUQV9NQVNLLCAxMjUwMDB9LAo+ID4gwqB9Owo+ID4gwqAKPiA+ICtzdGF0
-aWMgY29uc3Qgc3RydWN0IHRzYWRjX3RhYmxlIHJrMzU2OF9jb2RlX3RhYmxlW10gPSB7Cj4gPiAr
-wqDCoMKgwqDCoMKgwqB7MCwgLTQwMDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsxNTg0LCAtNDAw
-MDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKgezE2MjAsIC0zNTAwMH0sCj4gPiArwqDCoMKgwqDCoMKg
-wqB7MTY1MiwgLTMwMDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsxNjg4LCAtMjUwMDB9LAo+ID4g
-K8KgwqDCoMKgwqDCoMKgezE3MjAsIC0yMDAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MTc1Niwg
-LTE1MDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsxNzg4LCAtMTAwMDB9LAo+ID4gK8KgwqDCoMKg
-wqDCoMKgezE4MjQsIC01MDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsxODU2LCAwfSwKPiA+ICvC
-oMKgwqDCoMKgwqDCoHsxODkyLCA1MDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsxOTI0LCAxMDAw
-MH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MTk1NiwgMTUwMDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKg
-ezE5OTIsIDIwMDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsyMDI0LCAyNTAwMH0sCj4gPiArwqDC
-oMKgwqDCoMKgwqB7MjA2MCwgMzAwMDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKgezIwOTIsIDM1MDAw
-fSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsyMTI4LCA0MDAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7
-MjE2MCwgNDUwMDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKgezIxOTYsIDUwMDAwfSwKPiA+ICvCoMKg
-wqDCoMKgwqDCoHsyMjI4LCA1NTAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MjI2NCwgNjAwMDB9
-LAo+ID4gK8KgwqDCoMKgwqDCoMKgezIzMDAsIDY1MDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsy
-MzMyLCA3MDAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MjM2OCwgNzUwMDB9LAo+ID4gK8KgwqDC
-oMKgwqDCoMKgezI0MDAsIDgwMDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsyNDM2LCA4NTAwMH0s
-Cj4gPiArwqDCoMKgwqDCoMKgwqB7MjQ2OCwgOTAwMDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKgezI1
-MDAsIDk1MDAwfSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsyNTM2LCAxMDAwMDB9LAo+ID4gK8KgwqDC
-oMKgwqDCoMKgezI1NzIsIDEwNTAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MjYwNCwgMTEwMDAw
-fSwKPiA+ICvCoMKgwqDCoMKgwqDCoHsyNjM2LCAxMTUwMDB9LAo+ID4gK8KgwqDCoMKgwqDCoMKg
-ezI2NzIsIDEyMDAwMH0sCj4gPiArwqDCoMKgwqDCoMKgwqB7MjcwNCwgMTI1MDAwfSwKPiA+ICvC
-oMKgwqDCoMKgwqDCoHtUU0FEQ1YyX0RBVEFfTUFTSywgMTI1MDAwfSwKPiA+ICt9Owo+ID4gKwo+
-ID4gwqBzdGF0aWMgdTMyIHJrX3RzYWRjdjJfdGVtcF90b19jb2RlKGNvbnN0IHN0cnVjdCBjaGlw
-X3RzYWRjX3RhYmxlICp0YWJsZSwKPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGludCB0ZW1wKQo+ID4gwqB7Cj4g
-PiBAQCAtNzAxLDYgKzc1MCwzNSBAQCBzdGF0aWMgdm9pZCBya190c2FkY3Y0X2luaXRpYWxpemUo
-c3RydWN0IHJlZ21hcCAqZ3JmLCB2b2lkIF9faW9tZW0gKnJlZ3MsCj4gPiDCoMKgwqDCoMKgwqDC
-oMKgcmVnbWFwX3dyaXRlKGdyZiwgUFgzMF9HUkZfU09DX0NPTjIsIEdSRl9DT05fVFNBRENfQ0hf
-SU5WKTsKPiA+IMKgfQo+ID4gwqAKPiA+ICtzdGF0aWMgdm9pZCBya190c2FkY3Y3X2luaXRpYWxp
-emUoc3RydWN0IHJlZ21hcCAqZ3JmLCB2b2lkIF9faW9tZW0gKnJlZ3MsCj4gPiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBl
-bnVtIHRzaHV0X3BvbGFyaXR5IHRzaHV0X3BvbGFyaXR5KQo+ID4gK3sKPiA+ICvCoMKgwqDCoMKg
-wqDCoHdyaXRlbF9yZWxheGVkKFRTQURDVjVfVVNFUl9JTlRFUl9QRF9TT0MsIHJlZ3MgKyBUU0FE
-Q1YyX1VTRVJfQ09OKTsKPiA+ICvCoMKgwqDCoMKgwqDCoHdyaXRlbF9yZWxheGVkKFRTQURDVjVf
-QVVUT19QRVJJT0RfVElNRSwgcmVncyArIFRTQURDVjJfQVVUT19QRVJJT0QpOwo+ID4gK8KgwqDC
-oMKgwqDCoMKgd3JpdGVsX3JlbGF4ZWQoVFNBRENWMl9ISUdIVF9JTlRfREVCT1VOQ0VfQ09VTlQs
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlZ3MgKyBU
-U0FEQ1YyX0hJR0hUX0lOVF9ERUJPVU5DRSk7Cj4gPiArwqDCoMKgwqDCoMKgwqB3cml0ZWxfcmVs
-YXhlZChUU0FEQ1Y1X0FVVE9fUEVSSU9EX0hUX1RJTUUsCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlZ3MgKyBUU0FEQ1YyX0FVVE9fUEVSSU9EX0hUKTsK
-PiA+ICvCoMKgwqDCoMKgwqDCoHdyaXRlbF9yZWxheGVkKFRTQURDVjJfSElHSFRfVFNIVVRfREVC
-T1VOQ0VfQ09VTlQsCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHJlZ3MgKyBUU0FEQ1YyX0hJR0hUX1RTSFVUX0RFQk9VTkNFKTsKPiA+ICsKPiA+ICvCoMKg
-wqDCoMKgwqDCoGlmICh0c2h1dF9wb2xhcml0eSA9PSBUU0hVVF9ISUdIX0FDVElWRSkKPiA+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB3cml0ZWxfcmVsYXhlZCgwVSB8IFRTQURDVjJf
-QVVUT19UU0hVVF9QT0xBUklUWV9ISUdILAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmVncyArIFRTQURDVjJfQVVUT19DT04p
-Owo+ID4gK8KgwqDCoMKgwqDCoMKgZWxzZQo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoHdyaXRlbF9yZWxheGVkKDBVICYgflRTQURDVjJfQVVUT19UU0hVVF9QT0xBUklUWV9ISUdI
-LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgcmVncyArIFRTQURDVjJfQVVUT19DT04pOwo+ID4gKwo+ID4gK8KgwqDCoMKgwqDC
-oMKgaWYgKCFJU19FUlIoZ3JmKSkgewo+IAo+IFRoYXQgaXMgc3RyYW5nZSB0byBkbyB0aGlzIGNo
-ZWNrIHdpdGggYSBwYXJhbWV0ZXIuIElzIHRoZSBzZW5zb3IKPiBmdW5jdGlvbmFsIGlmIHRoZSBy
-ZWdtYXAgZmFpbGVkID8KPiAKCkluZGVlZCwgaXQgc2VlbXMgaXQncyBvcHRpb25hbC4gVGhlIHNh
-bWUgY2hlY2sgaXMgaW4gcmtfdHNhZGN2M19pbml0aWFsaXplLAphbmQgYWxzbyBpbiByb2NrY2hp
-cF9jb25maWd1cmVfZnJvbV9kdCgpOgoKICAgICAgICAvKiBUaGUgdHNhZGMgd29udCB0byBoYW5k
-bGUgdGhlIGVycm9yIGluIGhlcmUgc2luY2Ugc29tZSBTb0NzIGRpZG4ndCAgICAgCiAgICAgICAg
-ICogbmVlZCB0aGlzIHByb3BlcnR5LiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIAogICAgICAgICAqLyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICB0aGVybWFs
-LT5ncmYgPSBzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKG5wLCAicm9ja2NoaXAsZ3Jm
-Iik7ICAgICAgCiAgICAgICAgaWYgKElTX0VSUih0aGVybWFsLT5ncmYpKSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgZGV2X3dh
-cm4oZGV2LCAiTWlzc2luZyByb2NrY2hpcCxncmYgcHJvcGVydHlcbiIpOyAKCkJ1dCBJIGNvbXBs
-ZXRlbHkgYWdyZWUgaXQgbG9va3Mgc3RyYW5nZSB3aXRob3V0IGEgY29tbWVudCwKbWlnaHQgYmUg
-YmV0dGVyIHRvIGFkZCBvbmUuCgo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJl
-Z21hcF93cml0ZShncmYsIFJLMzU2OF9HUkZfVFNBRENfQ09OLCBSSzM1NjhfR1JGX1RTQURDX1RT
-RU4pOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHVkZWxheSgxNSk7Cj4gPiAr
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnbWFwX3dyaXRlKGdyZiwgUkszNTY4X0dS
-Rl9UU0FEQ19DT04sIFJLMzU2OF9HUkZfVFNBRENfQU5BX1JFRzApOwo+ID4gK8KgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoHJlZ21hcF93cml0ZShncmYsIFJLMzU2OF9HUkZfVFNBRENfQ09O
-LCBSSzM1NjhfR1JGX1RTQURDX0FOQV9SRUcxKTsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqByZWdtYXBfd3JpdGUoZ3JmLCBSSzM1NjhfR1JGX1RTQURDX0NPTiwgUkszNTY4X0dS
-Rl9UU0FEQ19BTkFfUkVHMik7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdXNs
-ZWVwX3JhbmdlKDEwMCwgMjAwKTsKPiAKPiBJcyBpdCBwb3NzaWJsZSB0byBwdXQgYSBjb21tZW50
-IG9uIHdoeSB0aGVzZSBkZWxheXMgYXJlIG5lY2Vzc2FyeSAoaWYKPiB5b3UgaGF2ZSB0aGUgaW5m
-bykgPwo+IAoKU3VyZSwgSSdsbCBhZGQgYSBjb21tZW50IHRoZXJlLiBJdCBpcyBkZXNjcmliZWQg
-aW4gUkszNTY4IFBhcnQxIFRSTSwKc2VjdGlvbiAxOC41LjIuCgpUaGFua3MsCkV6ZXF1aWVsCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
-a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The timer driver requires pclk and sclk clocks
+to be present in the device tree node, so add them.
+
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 242f821a90ba..548be81c9d3f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -668,6 +668,8 @@ timer0: timer@ff810000 {
+ 		compatible = "rockchip,rk3368-timer", "rockchip,rk3288-timer";
+ 		reg = <0x0 0xff810000 0x0 0x20>;
+ 		interrupts = <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER00>;
++		clock-names = "pclk", "timer";
+ 	};
+ 
+ 	spdif: spdif@ff880000 {
+-- 
+2.30.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
