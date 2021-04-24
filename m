@@ -1,20 +1,20 @@
-Return-Path: <SRS0=DeNp=JU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=NLp6=JV=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A968C433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Apr 2021 18:07:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA804C433ED
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 06:54:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0D3961207
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Apr 2021 18:07:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0D3961207
+	by mail.kernel.org (Postfix) with ESMTPS id 94A0861465
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Apr 2021 06:54:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94A0861465
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AILnmGavgpvj1+69ly9Al1cPc/JH+jE3sQfqBYat2yk=; b=AOxc4uG2wkGS25wG6pMUK9a6M
-	AClvNbfqQCJXFz6zLJ1g1JZG54FYo3SDNGr4iwMP3VzZ3iM+izmyCHOrMA/iU+hmYM3hn4A9KCoV4
-	pBG79049la9YfQjnsSinAdRpksjuaEyDvdT7XNa3LZZWUMnI0yY3L9KvmlAswkbYUGNzmh9/rf9DT
-	Hx76TD8tQMTE168WQ7l9a1p9mLt0JvLF/8SN1NQx1OOsMbpd79gEStCx907yS5ZrblFn8ZGvWCo7e
-	e/eC59uMVnwCpWDafVMLna/vwnh66PiUUO9icDv5fh40SoBTxm35fR16a/HZlDBiNuDoSUdgnWt7W
-	CHWYUIrGw==;
+	 bh=rcSwQLc1rkS7H8qg45tz87qWp+ZD0dsV0gRCOmDfL1w=; b=dPcXhyFI1+Ay7ZBfZCEDuV2/p
+	vZHCANxgWusLOD4XX/GQF/KEib5pm46++djVgYicCJZznwrsOICRWAUV7QfQwKyUOIeR2TpBLIfyL
+	MYJ1umRRo6tasLCrvsdtdxhJjon4w5kqU9fkdpq5HNEg2CmTTXzzcWtWomu9N3ZrQ8IhACmRWT2eY
+	uSwe9X2++5/MUUb9TgsYDunsgEBM8IP3ReKOuV6lUiA6Mx3uLytYPlPq1CHm33yur691uT8M0Wn4J
+	pghVXcNU8N3j2F5weZX/4A/3AS2wTxD8QhQI+OPe9/qOaHVbaZDeu57o5wpuJ2HtSlZX5hljk7A2v
+	LDoxqtbEw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1la0Cl-0025LR-IK; Fri, 23 Apr 2021 18:07:03 +0000
+	id 1laCB7-003Bcm-8B; Sat, 24 Apr 2021 06:54:09 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la0Cg-0025L6-D5
- for linux-rockchip@desiato.infradead.org; Fri, 23 Apr 2021 18:06:58 +0000
+ id 1laC2t-003B16-0j
+ for linux-rockchip@desiato.infradead.org; Sat, 24 Apr 2021 06:46:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=aJwiR8LyEpRBLtQYO6WrsDXcgPgrpvoQm7iEXOGKjfg=; b=0SkwrTDPjlOLkOh5QKxU0a+nWW
- 3SFw8sJKb9hvTXWqz0aV/PbxjBcGh4eIcLyYqK/NZa3lZhTV73WKj5RutsHriuc7BNM0ymyIPCMY+
- 9kWYwEuUyJwCUnn4HZwC3jy4QNtSTuKAwZHUfnwhWXRdi3fn8rGYXEWmkZXQvRT71YMx2jJRoufIW
- zcBj/tpEs8bVk+KIvRi2Cv1N1kDVZQE8//AZAiHZYWBC34ZHmMr8QPaqTr3UCpQqUVacSAElUmlSu
- 9Ilr7MiItuxrfWQH1Q64kAitlGpNheVzDlsCPnVKineKzRP17wtr7JFFh6hf/33ybLXZWABtcAJkl
- gmsQ0Y+g==;
+ d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=oMBG16nKn+4qoVxTUY/HKPszUNeQPkTmVhN7FD9lqJ8=; b=wYYivSixIkno7pUmlBtpxK7iyD
+ 7ePgJg2jIU2Cdg+xIwza5Wjzm3URXtqCbSveiPLxnfUvFPyai4Hc/PkDYUTlqjO3Xm+i4/1pxVdP8
+ zgXNbs27Mnu4G80yhuw1bOBBDVCD7qxbHPCo+QL2MWmPyeBNKrw41502jbp/Vr3GLFZEWqgoNcPAV
+ lkSFYTCGjOJQ2kwEttQFTe0qI01T2aW6U7m6schFE/ost4d3FulNPOaMHgnh1q8i/vg3hzSu75Mfv
+ Ko7sJ8TaHvlwk3lroh0VrKzRMY1QmC06OGUU0xOvUgI0J0OG4fWaXrIr5GQL211S6yPIxaKu//BdH
+ lO8BIoag==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la0Cb-00EbpB-1L
- for linux-rockchip@lists.infradead.org; Fri, 23 Apr 2021 18:06:57 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E34C60FE6;
- Fri, 23 Apr 2021 18:06:50 +0000 (UTC)
+ id 1laC2o-00EsJa-Rp
+ for linux-rockchip@lists.infradead.org; Sat, 24 Apr 2021 06:45:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DDD1261481;
+ Sat, 24 Apr 2021 06:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619201211;
- bh=zY8W3QUzcAWl6AFnPYVD24wO4KnCsJRKIXsxHN8wx1c=;
+ s=k20201202; t=1619246732;
+ bh=Z69ehY7S6HpjbLMjJqStag1+c7JNJRTD4xVET17kLNs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=dTiTKJSplBFdws7Z670JSl0N3QnlSoG/MoXHlgmknls69QEaMI4AZS0zAiJVGn6Sn
- 80zKX+YZ7XvG4iXz0s4AVJF7PHczSnd/AQyvbSPpNTLmdAyn5lOtZNTpooK7p/6FC1
- tYpZxIH9z9nzGB0SI+BfDZ9E2AzLg15qzJrGXI7jqb/mpOpg1Jm17zVT5pVi2O1jwY
- DMnxOBp4giIJ6ylJop8R/4fT32MRGwUN31+Hqn+yShNjHWYwq9skVN5ws+UvxLITk6
- WHyYdsAyNQGxXM95V//QHFcNbIjUOm+qm21Uw46Or6ZeP4jSGF8o5Ss30h+6QcdSiP
- spTh0yeAk27/g==
-From: Mark Brown <broonie@kernel.org>
-To: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Ezequiel Garcia <ezequiel@collabora.com>, devicetree@vger.kernel.org
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Joseph Chen <chenjh@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>,
- kernel@collabora.com, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: Add Tang Cheng (TCS)
-Date: Fri, 23 Apr 2021 19:06:17 +0100
-Message-Id: <161920103667.15429.2219995515166264842.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210421210338.43819-1-ezequiel@collabora.com>
-References: <20210421210338.43819-1-ezequiel@collabora.com>
+ b=WBeluuHPMoohV6kjXrt6232lvnQ1kN4ts7abU9qOxVGedDbsoVZUjVlSx9CyzK6he
+ Yiun2LKC9gsmGZXQ7r3fYBgg0To3UQmQ8rl4yu4FcbytktdlfWtttfxdkuKW2zsrIH
+ f0CGqlaey01b8FdGWH9TDAddwcEXlftj0t/Ipb371f0LY6bOc8TQrGShe1yV2OGRPi
+ VhE/jWKWaRKQlCi4Szq8Y8jnua/fBZiZHFrwqO5OppoJHmvGALTUK/MTtQnYYRJZj4
+ gzBKC3fZWy4qM5uz6TWHbJ7xF5aDneI93POB3PKIZSFr2mIDfmM+oHs1kWFE0SMVc4
+ 64uoUkHsBG9YA==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1laC2l-004JeF-6F; Sat, 24 Apr 2021 08:45:31 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH 11/78] staging: media: rkvdec: fix pm_runtime_get_sync() usage
+ count
+Date: Sat, 24 Apr 2021 08:44:21 +0200
+Message-Id: <978ba3b7acceb858870c8029f761ae47ea59563d.1619191723.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1619191723.git.mchehab+huawei@kernel.org>
+References: <cover.1619191723.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_110653_136113_7B1F8653 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20210423_234535_045600_E8C76634 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,41 +103,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 21 Apr 2021 18:03:36 -0300, Ezequiel Garcia wrote:
-> Shenzhen City Tang Cheng Technology (http://www.tctek.cn/)
-> is a power management IC manufacturer.
+The pm_runtime_get_sync() internally increments the
+dev->power.usage_count without decrementing it, even on errors.
+replace it by the new pm_runtime_resume_and_get(), introduced by:
+commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+in order to properly decrement the usage counter and avoid memory
+leaks.
 
-Applied to
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index d821661d30f3..8c17615f3a7a 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -658,7 +658,7 @@ static void rkvdec_device_run(void *priv)
+ 	if (WARN_ON(!desc))
+ 		return;
+ 
+-	ret = pm_runtime_get_sync(rkvdec->dev);
++	ret = pm_runtime_resume_and_get(rkvdec->dev);
+ 	if (ret < 0) {
+ 		rkvdec_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
+ 		return;
+-- 
+2.30.2
 
-Thanks!
-
-[1/3] dt-bindings: vendor-prefixes: Add Tang Cheng (TCS)
-      commit: 3007accc39776e0888f7692bd1cb639c51cc29c5
-[2/3] dt-bindings: regulator: Add support for TCS4525
-      commit: f80505fdff771c89c9350895e99140ffc824e564
-[3/3] regulator: fan53555: Add TCS4525 DCDC support
-      commit: 914df8faa7d6fdff7afa1fbde888a2bed8d72fa7
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-rockchip mailing list
