@@ -2,55 +2,55 @@ Return-Path: <SRS0=ZyAL=JW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8155BC433ED
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Apr 2021 09:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6602FC433B4
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Apr 2021 09:43:10 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41F2661103
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Apr 2021 09:42:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41F2661103
+	by mail.kernel.org (Postfix) with ESMTPS id 3082161288
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Apr 2021 09:43:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3082161288
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7uiNz6RoA/i+DtmoLhqOqd4/dph78RH7ZZXqYEAbf/4=; b=bxoJFKH/BhH4X0hvsfpqs5xUeC
-	oWRIlOfhXVwgBV5qw5l4BccdzbFedwz4ekSvB5KiHLYRn2qqPaVXgfp4C+JY7DgXtqAHmZkDD/M69
-	LvBVsZF6YBA8ySx+j6ws0hJLRRnCG0YuwoWv0wdJTvog1QyDC+F6fYlkN/AYGZi70SqZDaR5fUz4l
-	af6FrXe1yCGFavlUwimlCoj0dC9li4JhTK7q1Yadrv2kDNo62p/mY4VC5+rj8qQKWK/myO48ht3in
-	dOsyMN+OV/gfKvm04OAIBSoDC18lja4rBDbkUlbMUiHO2b5H8uiZXqCs0jUij/67g/16Plepqsgfi
-	gBoplwRQ==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZybP9JutY6PNuV7vxd/KCULMY4zVFNwwuRdfBQJpLuo=; b=YH9R0LjWyJe+j1mGNlUt6XlvWf
+	J4ScJI3pEDcbWqrqlNvdEwE9VduQeiuTxUUGgRlJH+6NgYQ/CCmQi9hNcMmp1DM6aK/tVLLeOzujc
+	ibjfhIcO2nPiEwtDmZ3BsqI2G6mFXhcxCCGDboRUvWhLzCguousOCPkNvOzIkPoD6kb5hF1qJ/Tvk
+	z7O+K8fc3YJta9jFXQktkETN8rRikQ1gmQIEaxcsAXLJr3a5OJXKHXZNe4za39xZgCuWUNuXWU6wF
+	WxE6ifXdzByaZNQAx+8f+/BwQSIwWQox7P5FF2zUIk53WOnU3KspwSEOqH4Oi7y3Ue0Qv+euooX8M
+	z0dylrRA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1labHt-005Nui-BU; Sun, 25 Apr 2021 09:42:51 +0000
+	id 1labI8-005Nxn-L6; Sun, 25 Apr 2021 09:43:04 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1labHZ-005NtD-C2; Sun, 25 Apr 2021 09:42:29 +0000
+ id 1labHd-005NtX-17; Sun, 25 Apr 2021 09:42:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=rOFLfMiFmmCyBg92b118iFjL0jldwjmQzCDi5osN5/8=; b=X0FIp56dJM7LpU4ycHW8kdm9pK
- 5kC8fi5ywSUmuYu0jlJ1JlY/LGbwYV+OieqWwl2/CDNp3TEE0ZllVNUHZcInkldoPMBlufImLXT2I
- LoSNuiBFzQF7z67tpBHKlmXbZuzdXmjz/pTUPpK0HwWnc3sKiNtYDbTWm6Uod0P4TQO7XtBGpL4Au
- tsv/PGp3Y+kjC+IiofcKJYZ9jpshMoHrQ6an0ohYSECfrpJCfxYoyGfVWrSBJQPpCVNP+id/XNNrC
- LmXC9PVczll2OYT6C0N4IpwsW0YtztJ4xQINEQjRH1VILsIW6UJWXKEZwBkT64qr29/SxguVAbqy5
- tX84arLQ==;
-Received: from lucky1.263xmail.com ([211.157.147.135])
+ d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=23M70nJzY4D5dSg0EN1/BUmEcTSd6UttYZMONrxTHWM=; b=Mad4HSxVtvrYGrcEThy9Wlbm4g
+ 5JDmb+mM70KkERFkqOtybwTXPL8nlve3Nsg6vDh3GLMIpc9QM6efeiCjSWoewWGOjFeRuYSSWthpc
+ kP1sXO7GWg2ARkE2Zf1QlKTm1ew0dOmLPBlr1jpMlpyGrqaZtB+Hj9LNrxiZrQoHkO/CHJXwxuhxV
+ tSWxYRJy/FTKUbAW3k1lhVpaBtyx8U+QAS3rU1ROaD+KePEOdSRrmwtCBDX3m8SBHuL+cIYG4s/LT
+ EXfpzb9pLngugi0XqnQ4aQDslqf+AiYHdG1AUnHky2qKJKm/JCeITTREQPZ+g6p3VgGEEFsIOhob3
+ VX9Q++lw==;
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1labHW-00FNsw-Ef; Sun, 25 Apr 2021 09:42:27 +0000
+ id 1labHa-00FNtP-H5; Sun, 25 Apr 2021 09:42:31 +0000
 Received: from localhost (unknown [192.168.167.225])
- by lucky1.263xmail.com (Postfix) with ESMTP id 3248EAB633;
- Sun, 25 Apr 2021 17:42:23 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 9B4D8D188D;
+ Sun, 25 Apr 2021 17:42:26 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -59,9 +59,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P3565T140663333058304S1619343740259115_; 
- Sun, 25 Apr 2021 17:42:22 +0800 (CST)
+ Sun, 25 Apr 2021 17:42:25 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <c756feb8cf8e1bf199ae898dc058cfda>
+X-UNIQUE-TAG: <0283a0a77b3882e71481c7371a03fe2b>
 X-RL-SENDER: cl@rock-chips.com
 X-SENDER: cl@rock-chips.com
 X-LOGIN-NAME: cl@rock-chips.com
@@ -83,14 +83,17 @@ Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
  david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
  cl@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
  jamie@jamieiles.com, linux-watchdog@vger.kernel.org
-Subject: [PATCH v2 0/7] arm64: dts: rockchip: add basic dtsi/dts files for
- RK3568 SoC
-Date: Sun, 25 Apr 2021 17:42:09 +0800
-Message-Id: <20210425094216.25724-1-cl@rock-chips.com>
+Subject: [PATCH v2 2/7] dt-bindings: serial: snps-dw-apb-uart: add description
+ for rk3568
+Date: Sun, 25 Apr 2021 17:42:11 +0800
+Message-Id: <20210425094216.25724-3-cl@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210425094216.25724-1-cl@rock-chips.com>
+References: <20210425094216.25724-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210425_024226_674573_6C0443EE 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20210425_024230_751505_0505E25A 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,40 +114,26 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Liang Chen <cl@rock-chips.com>
 
-v1:
-1. add some dt-bindings for RK3568 devices.
-2. add core dtsi for RK3568 SoC.
-3. add basic dts for RK3568 EVB
+add "rockchip,rk3568-uart", "snps,dw-apb-uart" for uart nodes on
+a rk3568 platform to snps-dw-apb-uart.yaml.
 
-v2:
-1. sort device nodes by some rules.
+Signed-off-by: Liang Chen <cl@rock-chips.com>
+---
+ Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Liang Chen (7):
-  dt-bindings: i2c: i2c-rk3x: add description for rk3568
-  dt-bindings: serial: snps-dw-apb-uart: add description for rk3568
-  dt-bindings: mmc: rockchip-dw-mshc: add description for rk3568
-  dt-bindings: watchdog: dw-wdt: add description for rk3568
-  arm64: dts: rockchip: add generic pinconfig settings used by most
-    Rockchip socs
-  arm64: dts: rockchip: add core dtsi for RK3568 SoC
-  arm64: dts: rockchip: add basic dts for RK3568 EVB
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../devicetree/bindings/i2c/i2c-rk3x.yaml     |    1 +
- .../bindings/mmc/rockchip-dw-mshc.yaml        |    9 +-
- .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
- .../bindings/watchdog/snps,dw-wdt.yaml        |    1 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     |   80 +
- .../boot/dts/rockchip/rk3568-pinctrl.dtsi     | 3119 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      |  812 +++++
- .../boot/dts/rockchip/rockchip-pinconf.dtsi   |  345 ++
- 10 files changed, 4366 insertions(+), 8 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
-
+diff --git a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+index 87ef1e218152..97debbf68748 100644
+--- a/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
++++ b/Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml
+@@ -31,6 +31,7 @@ properties:
+               - rockchip,rk3328-uart
+               - rockchip,rk3368-uart
+               - rockchip,rk3399-uart
++              - rockchip,rk3568-uart
+               - rockchip,rv1108-uart
+           - const: snps,dw-apb-uart
+       - items:
 -- 
 2.17.1
 
