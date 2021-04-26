@@ -2,108 +2,107 @@ Return-Path: <SRS0=k14b=JX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 82423C43461
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 11:14:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57609C433ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 11:47:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D00F561131
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 11:14:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D00F561131
+	by mail.kernel.org (Postfix) with ESMTPS id 7D6FD61027
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 11:47:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D6FD61027
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uSkAi6sQUI1gmSs4c88YCvyymru1Xy36sYcO9q8Evc0=; b=H8FdEtGpsLUFC1kndSn6Waw4R
-	UrRwvPOyfF8YNhSdtxjNRpeo9rSMeiOgdoxTRIUG6i0csY612+y7q1UIlmar284wdf/zCZooUQoLN
-	UPVEA5palgkBpaI1nCFbGNk8iCSjQ6RVZvTk/etnHw4TnYkKI0rsuwXlnMK80S1axU0HOyUbMKYtc
-	9ilwfCkyuvoTrn+BRMv9bbrASrG2boEhvmHOFapQ8ZiZZeRlXjWyXduGZnQbzXivOQt6t6YoBXXwI
-	al0MCY2rrJHdckWTJWSv7vlwFPEEiezmC6lbD+40HvQN92AQkJK0cI8OOBA+pPWASjniFZbsaKqW6
-	IYtqulo6Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CAhXB8RVro2wC3q2Djks4dRdD/BaAjC1aH8lWdPRdsI=; b=baMQ3hL6FKWauSMwPPIbG/z6py
+	DltkE4AhoOxKq+UQvT9BNFGuSqLb6pDoGf+Z9Z1cfsSTQ2unRwR/ILXaMbTlS8KcUS30DX3kE1IZS
+	Fvl5SCNPD/i61mCywlIWa5g6IVTZEsH9roy+4oWW838itFyzmM8qRNvpAdbF8jZ8hYYgP7zoFArBm
+	s3VaxiZ6o/GiD3blkPXzMQgSOmNipSBevh7WOI8RzWRjTRzV9JCTUVFFIyVlWb+YO9RD8icUB2br0
+	fZnzWNdB+ugLOdhvemgo3SbgOQwMkb4hUqEzZrcPAYeTThh1kSiYrdejqoV3rzVyl27BL/wM2oD3N
+	1vMhsTiw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lazC3-007UAq-Bo; Mon, 26 Apr 2021 11:14:23 +0000
+	id 1lazhr-007WYG-OK; Mon, 26 Apr 2021 11:47:15 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lazC0-007UAd-Tx; Mon, 26 Apr 2021 11:14:20 +0000
+ id 1lazhg-007WXC-6y; Mon, 26 Apr 2021 11:47:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=52Uf4pbv7Be7r8HttTVBFMD00su27oeNctOk9bOo0UY=; b=L47hS7k8Qn/W7gbQ1gtiV97SR8
- 0GjfU0a0eQ9aOaYxT8WVK9vLKniFpjzx1JcCnW7PYatIh0GwwliuCpuaCHL9CRa1ltcBWzdf4Yl5I
- BIr3guMInvo3EAdfgvFRAPp4vaaHriwKI30r0DEqpD6UsXdpDHqbnWOovf/V5o1cb2t9hXnpZSW0M
- v2qbwpnzWSlMh2lF+6+RlJz4pBFtxVz7EqGfjLzeFhCgPW/KMu0CUUkZvegFKBWnPhUOqW2N7YHvF
- OmOueH8JFH/iSRh84GMedtMGYfwrMD6QOEZh70YJkU40eL5CYraraxpSvfoeucQS7WPXalvU3mAgz
- 4jkf37rg==;
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=7CWCSDgIxEP9nExMiQ8gtfxRiziS98W5A2zeK4MEZOs=; b=p7KmxLZkJOYslN6EYpTZTz+w5Q
+ t3HCtQ6cD+f5JH7sbSLhsA12sRLWJIj8ZshXLKekkEznAe76fM2WrMDCpllb5yF9ymBxe0JppuLtT
+ PKoRLA+35EM8CH6t4sniYorCzsbUe0BRc67n5DbeMV6C/h6aDtINviTNxF9D/hKEsT/aNG2ZgS8mC
+ BCkXODbwRshOltOeTpSsS2IdghvXmQpeckXYJ9BCQ9LXsiOTKSF2i11DEfm1dfTmZI+S5YRlq1Roe
+ LCMjSEX3dsMMkfenBonzAtJflRN8WR9CUO4Gg37ysYxhvwbZim6FPJ4edsBGFncu3DK07gRdxIIuT
+ 9CnLesGg==;
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lazBx-00Fv3P-W9; Mon, 26 Apr 2021 11:14:19 +0000
-Received: by mail-lf1-x132.google.com with SMTP id x20so57378341lfu.6;
- Mon, 26 Apr 2021 04:14:15 -0700 (PDT)
+ id 1lazhd-00Fvua-LB; Mon, 26 Apr 2021 11:47:02 +0000
+Received: by mail-io1-xd2a.google.com with SMTP id a11so3254487ioo.0;
+ Mon, 26 Apr 2021 04:47:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=52Uf4pbv7Be7r8HttTVBFMD00su27oeNctOk9bOo0UY=;
- b=WZbwdqoQ3ErwD7gH9wCfRSN2wCxbqy8q/m56bvnvzvN9lyi7BddE5JwwX950cIl3Uj
- 8QfUE5nHiaVx/uXzgdphq+fbOICZIs+FFar5Qcb5PWfvrmhHzLWJWbxjH82UJMKtdztO
- rdAtmyDcCsB/N991TcZH9jHv9u6dpKMWxIaD7Ufm1scRSArbj2sXGO8Y1CioQ4DS016B
- z1Veh3w95ezVgOmhNzReTF8+CCduRwIRbVCB5BEdwKSM/AYV81jIi60uf6N9xcKCiF3k
- tzlw8M/E9Co6758w7cnjuDdYMsIEuADqGinzpBy1QXXAIfdZXGkP9ajLuI4SyHOmmUwM
- 8s8g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7CWCSDgIxEP9nExMiQ8gtfxRiziS98W5A2zeK4MEZOs=;
+ b=pVZIz4mrDyFn0QNuqWuNexCDE2SY1Rw0FX/KJdpqIqdOTY5W4Dup3WIh8WY0pXJc/k
+ IRevNbLm4DPVXDu04hk/iaS/QFIj8Kya1syrimkagRU0VXHMGsm3hHbDQXWh1qJodik1
+ Q32ZA/G1ATDYDg/f81Fb5uMBDQaOvmTsT4Ua9Q8VP4+KodhqtVOarxM6oGdfWez9R8uZ
+ DBGQCqKK/IUhaBYqZEflDVtZv5dt0REsm6LxAXCW30dNBf17eSuIJxFXA+52tuWnlF9a
+ LcNTp7957suwSeF51TKiwrGiQ/MA4FmYmSq4QJNyZBIILsXdYqyB9fC0FowkWNjn6XsU
+ x2Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=52Uf4pbv7Be7r8HttTVBFMD00su27oeNctOk9bOo0UY=;
- b=ZFL5smSy3Nes9z14yT6jGffCRU7nkloDKfWJi3vYfeA93XcyV4M4E0DJ4OZJHj10D1
- BalVyITA3J0Ytn20wwK1YFxJIZgU0RYLoNu0AzmtZOIa6VJ++o4jF0Jj105RqmS87H+V
- ZElEwXJZ6SwMoxJ3iKvoRqEo1+lADNo/wI6LVGwUH6qrlJUBAIpMTZtzC7MRHBa15Lx9
- U4B37oVr9VrM2I/FasW3e/0NBOCHQiS1WzzU79oJBEPoxYp/+ZT8oc0WpHZzAd56e6SE
- O02THZ1Z8GHBak3Acom287hKM09ExOvdm6m5ypgPEBlot3cJkwoQdHYQYTEwBCSJJcrY
- A4Kg==
-X-Gm-Message-State: AOAM533cq4v9lqXRES49TsuKbYzFJvr0Sq3VeNd6CcVF0+8HqEdwjOTS
- Lq5c3syPrt4yt0A2sGUXz7O15f+2Q285enD1nzA=
-X-Google-Smtp-Source: ABdhPJxXN+68YbSNClsnO/fCPEyWZI/DyXI7kHstDwSzwjedC7Xg9vSTmr7z44uw6hw6V1vrUlP4rpfz71JTDG/eGkE=
-X-Received: by 2002:a05:6512:3b92:: with SMTP id
- g18mr12306758lfv.646.1619435654269; 
- Mon, 26 Apr 2021 04:14:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210319051627.814-1-cnsztl@gmail.com>
- <161640742725.808893.3666594351389773587.b4-ty@sntech.de>
- <20210425213321.GF10996@amd>
- <CAOP2_ThcRMkgSm872q2By=gALoK-qAjq92FtNQkDO999pZR8kg@mail.gmail.com>
- <20210426110316.GA13974@duo.ucw.cz>
-In-Reply-To: <20210426110316.GA13974@duo.ucw.cz>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7CWCSDgIxEP9nExMiQ8gtfxRiziS98W5A2zeK4MEZOs=;
+ b=X+ICsM4fuoYwTnGhC9miLQIZ9O4PKvVayjGaZPlWE8AiNoNVKM/sKF2EXjiy73UVtQ
+ jaFtceDDa9wRm4FPDH36iOGX5PnodFKuZX7m4gAyQ1Q0QQDXbAw7oud4qFWnfjgqaaJY
+ 4VQbOsplxEc+M9KpoVHi7b2Ho/lFBFMHjw9eUaWjA4htDItDsIQVv+lvWhbwaf9A30/6
+ +wyV1j+cIRnratU8K1F3OnoIYapzQ0Wn+AFNkcMKt2kgCrOu1QSO863XaDwdYz7RXL6c
+ 8XVl0IsCboSf0iC6njfK+BJMsQKQdVITnmq+YnpcaW07/6zhypsqkrBurMVssf5qkXVt
+ Kk1A==
+X-Gm-Message-State: AOAM530bfb8cVe0kHwry624jfi2bWa7MJ32CwJ4S8HvCgvwOFK2JrDW9
+ FXGoxt98dh7+w8u/MTJ/3eI=
+X-Google-Smtp-Source: ABdhPJxPkh2qqZZagWe0I5W6/yGxbOpR4Ir0nBSVpx85yhUqGmF97W9sxcamUQ+Ot1bMFhE7tpH1pQ==
+X-Received: by 2002:a05:6638:443:: with SMTP id
+ r3mr15578383jap.43.1619437620683; 
+ Mon, 26 Apr 2021 04:47:00 -0700 (PDT)
+Received: from localhost.localdomain
+ (tunnel525895-pt.tunnel.tserv15.lax1.ipv6.he.net. [2001:470:c:1200::2])
+ by smtp.googlemail.com with ESMTPSA id y19sm6969683ili.51.2021.04.26.04.46.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Apr 2021 04:47:00 -0700 (PDT)
 From: Tianling Shen <cnsztl@gmail.com>
-Date: Mon, 26 Apr 2021 19:14:03 +0800
-Message-ID: <CAOP2_Tixnza0w8x7-viZAgV1fSysuJ5ht_Ri1kyMEgZ9yabOhQ@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
-To: Pavel Machek <pavel@ucw.cz>
-Cc: Heiko Stuebner <heiko@sntech.de>, Marty Jones <mj8263788@gmail.com>, 
- Rob Herring <robh+dt@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <uwe@kleine-koenig.org>, 
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Pavel Machek <pavel@ucw.cz>, Johan Jonker <jbx6244@gmail.com>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Jacek Anaszewski <jacek.anaszewski@gmail.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ Marty Jones <mj8263788@gmail.com>,
  Jensen Huang <jensenhuang@friendlyarm.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>, 
- Geert Uytterhoeven <geert@linux-m68k.org>, David Bauer <mail@david-bauer.net>, 
- Johan Jonker <jbx6244@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, 
- Chen-Yu Tsai <wens@csie.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ Tianling Shen <cnsztl@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: rename LED label for NanoPi R4S
+Date: Mon, 26 Apr 2021 19:46:52 +0800
+Message-Id: <20210426114652.29542-1-cnsztl@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_041418_052561_53B908A5 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20210426_044701_753824_C2172B25 
+X-CRM114-Status: GOOD (  12.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,52 +120,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+However "sys" is not a valid function, and it is always on.
+Let's keep existing functions.
 
-On Mon, Apr 26, 2021 at 7:03 PM Pavel Machek <pavel@ucw.cz> wrote:
->
-> Hi!
-> > > > > - Fixed format of LED nodes
-> > > > >
-> > > > > Changes in v5:
-> > > > > - Dropped the empty PCIe node
-> > > > > - Dropped useless `/delete-property/`
-> > > > > - Renamed LED nodes
-> > > > >
-> > > > > [...]
-> > > >
-> > > > Applied, thanks!
-> > > >
-> > > > [1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S
-> > > >       commit: 1003888415e83e15ddb63d1d96189b4f2c5f1d48
-> > > > [2/2] rockchip: rk3399: Add support for FriendlyARM NanoPi R4S
-> > > >       commit: db792e9adbf85ffc9d6b0b060ac3c8e3148c8992
-> > >
-> > > Sorry for late review, but:
-> > >
-> > >
-> > > +                       label = "red:sys";
-> > >
-> > > This should be red:power based on the discussion in earlier threads.
-> >
-> > However based on the introduction from FriendlyELEC[1], this is not
-> > the "power" lamp...
-> > "LEDs: 1 x power LED and 3 x GPIO Controlled LED (SYS, LAN, WAN)"
->
-> It is always on, and "sys" is not a valid function.
->
-> I'd suggest labeling it as "red:power". Feel free to make other
-> suggestion but lets keep existing functions.
+Fixes: db792e9adbf85f ("rockchip: rk3399: Add support for FriendlyARM NanoPi R4S")
 
-I see, thank you very much!
-I'll submit a patch later.
+Suggested-by: Pavel Machek <pavel@ucw.cz>
+Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Tianling.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+index fa5809887643..cef4d18b599d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+@@ -33,7 +33,7 @@
+ 
+ 		sys_led: led-sys {
+ 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+-			label = "red:sys";
++			label = "red:power";
+ 			default-state = "on";
+ 		};
+ 
+-- 
+2.17.1
 
->                                                                 Pavel
-> --
-> http://www.livejournal.com/~pavelmachek
 
 _______________________________________________
 Linux-rockchip mailing list
