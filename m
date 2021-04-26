@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34867C433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 02:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5653DC433B4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 02:41:54 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5CE561078
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 02:41:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5CE561078
+	by mail.kernel.org (Postfix) with ESMTPS id ABC7A6105A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Apr 2021 02:41:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABC7A6105A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UB19TbPEaEr5zsfP37qomTzEJexvaDDstxz4xHXz0Rg=; b=BiAAILr4U6LkFIVvht9OFujOV
-	gw5Ij/GoOJ7w6Rd6WrCinx6nvbabfZV/y5VOyjIR/cCMZ7Qwp5lSmZZ/w1btXiPYGp3oQSz4TOWuP
-	fzgQwTmWwfRn6eKGBJH/TbT0JEIPvkAf+nGTv/vz8SClUA3E0UP+4JcD6so5kMISjEtxGTnGK3dTa
-	zTZgq0ARAw0xcK5JmS8o0fp5HTCR804z4O0NMXUsIH7sgJjP4bZOyon/HBkX8rTqoeFRmd24Feuiq
-	lVDHHz6op7TB+NV4vKZFSmpqbWqHbxEgHyiD+9EoUhIflJsImZ+PSdFAchx6xfiJT+jis43vdDXQB
-	cU/ghzsAg==;
+	 bh=nvUB2GPDBpxWctgaGQVkMjp4aTxurz3J+ZyhG84WGhM=; b=CQo6R2YMYc4VXrXuKb5qmbeEm
+	m/Ht79vX47PmKQPhjp+/6V/K7D+BbfKn/wdmDmWAsYHIBsRXAjs1vKWfMTKkHrWgL/7g1YDbL0BFT
+	Q01Tod1BMNvjFIYniN7FMToShm7M+X6VNSrc8FF50KpFIvv80pyPAimz2VljYzChPeucVDuUUjBqz
+	u0JO/Ql0ayZR6vrp/H7k34pwZBuLM3O8zR/jjJ/parMHnZlwfYrW3P8fKZ3iY66agXxFNU8VPiphe
+	sUUQyD2v3pxFHdK1M7Mkse468CqF28Q3ih0ZA0NgN4NHtOj2q86PNXA4AWecn7JrLroKomHX8yMSO
+	SxoOEgd0w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1larBx-006jJ7-Dx; Mon, 26 Apr 2021 02:41:45 +0000
+	id 1larC0-006jKb-WE; Mon, 26 Apr 2021 02:41:49 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1larBt-006jIb-VN
- for linux-rockchip@desiato.infradead.org; Mon, 26 Apr 2021 02:41:42 +0000
+ id 1larBz-006jJx-Mj
+ for linux-rockchip@desiato.infradead.org; Mon, 26 Apr 2021 02:41:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=Rm3et1aUduO4IsPOiG/2cYGc81STi2q2m5hpe2kbFjY=; b=e662Coq1sm1jEImreMMRvXhf1d
- TQLpcFt+qmGNcEGjT04HD1ZcI1r4AwOiamMAU5ODVeGsjsraWtYsjXVpZdMIk0M4msm6pnqt/66iB
- OcGtBAnVDTzMuzSkiTt2BUjAucgceI2vFE0RdYhZYxqTeRc8qfLEA3HJGFyzKSTFw9gMoZCQb+sbS
- h5jCGNq7WkZrrWM8NNgra/39pWsKHv4g3DSmHfghU8ZANksx+n6JZ4GWDgrK+yRwlNPl48Mcxcvat
- 2Pdd8jHLGAiJKRyMI2kB8IVfDhh6ekraKva0DdI3kUhUYFhq71gpE6O0HHIorx+m2EWko0VCcsNyU
- DDD2sPHg==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ bh=e0vHwBKT+R3upY1j/O1NeotnQS9v7FrKrkhdIb9Tb3k=; b=bz3KGm18j7+B1LpU9Vedsn5iCn
+ fCJVkjtsrwFaXRQ6ux1x8+lq6FgL0mZuOCM47LxQyJTfiAmfH5priwMeRpRtWYaagOoKfi9hmGB/p
+ 4re0G6SuxbdoVWwangRbg+vTlpagirsYdOdAbpxuB6SPLGp/YUDA96NoN2m3EBdImz6TA6tUX7fMw
+ epXXTttYYIpfgqB5b/T7R4x+bB8uQ9bzKPtE3Ynm2qSmThCWMqdWJKXsoOvNSASMT1e+MgDbPLvkR
+ r/O/xZRNODsCT+MJCmfo7udeaa83bP/g9NhEDOxtEsYAl1wMSuQ/UKlLWOyON/c+RQiPrDUfSpW2s
+ WXbqOgYQ==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1larBr-00FhDz-DS
- for linux-rockchip@lists.infradead.org; Mon, 26 Apr 2021 02:41:40 +0000
+ id 1larBw-00FhEb-Eb
+ for linux-rockchip@lists.infradead.org; Mon, 26 Apr 2021 02:41:46 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 030D31F41F94
+ (Authenticated sender: ezequiel) with ESMTPSA id 8B7671F41F95
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
@@ -61,17 +61,16 @@ Cc: Jose Abreu <joabreu@synopsys.com>, Heiko Stuebner <heiko@sntech.de>,
  David Wu <david.wu@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
  Johan Jonker <jbx6244@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>,
  kernel@collabora.com
-Subject: [PATCH 2/3] dt-bindings: net: dwmac: Add Rockchip DWMAC support
-Date: Sun, 25 Apr 2021 23:41:17 -0300
-Message-Id: <20210426024118.18717-2-ezequiel@collabora.com>
+Subject: [PATCH 3/3] dt-bindings: net: convert rockchip-dwmac to json-schema
+Date: Sun, 25 Apr 2021 23:41:18 -0300
+Message-Id: <20210426024118.18717-3-ezequiel@collabora.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210426024118.18717-1-ezequiel@collabora.com>
 References: <20210426024118.18717-1-ezequiel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210425_194139_599210_EB108143 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210425_194144_776463_59EEA2E0 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,53 +88,224 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Rockchip DWMAC controllers, which are based on snps,dwmac.
-Some of the SoCs require up to eight clocks, so maxItems
-for clocks and clock-names need to be increased.
+Convert Rockchip dwmac controller dt-bindings to YAML.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- .../devicetree/bindings/net/snps,dwmac.yaml         | 13 +++++++++++--
- 1 file changed, 11 insertions(+), 2 deletions(-)
+ .../bindings/net/rockchip-dwmac.txt           |  76 -----------
+ .../bindings/net/rockchip-dwmac.yaml          | 120 ++++++++++++++++++
+ 2 files changed, 120 insertions(+), 76 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
 
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 0642b0f59491..2edd8bea993e 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -56,6 +56,15 @@ properties:
-         - amlogic,meson8m2-dwmac
-         - amlogic,meson-gxbb-dwmac
-         - amlogic,meson-axg-dwmac
-+        - rockchip,px30-gmac
-+        - rockchip,rk3128-gmac
-+        - rockchip,rk3228-gmac
-+        - rockchip,rk3288-gmac
-+        - rockchip,rk3328-gmac
-+        - rockchip,rk3366-gmac
-+        - rockchip,rk3368-gmac
-+        - rockchip,rk3399-gmac
-+        - rockchip,rv1108-gmac
-         - snps,dwmac
-         - snps,dwmac-3.50a
-         - snps,dwmac-3.610
-@@ -89,7 +98,7 @@ properties:
- 
-   clocks:
-     minItems: 1
--    maxItems: 5
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt b/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
+deleted file mode 100644
+index 3b71da7e8742..000000000000
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.txt
++++ /dev/null
+@@ -1,76 +0,0 @@
+-Rockchip SoC RK3288 10/100/1000 Ethernet driver(GMAC)
+-
+-The device node has following properties.
+-
+-Required properties:
+- - compatible: should be "rockchip,<name>-gamc"
+-   "rockchip,px30-gmac":   found on PX30 SoCs
+-   "rockchip,rk3128-gmac": found on RK312x SoCs
+-   "rockchip,rk3228-gmac": found on RK322x SoCs
+-   "rockchip,rk3288-gmac": found on RK3288 SoCs
+-   "rockchip,rk3328-gmac": found on RK3328 SoCs
+-   "rockchip,rk3366-gmac": found on RK3366 SoCs
+-   "rockchip,rk3368-gmac": found on RK3368 SoCs
+-   "rockchip,rk3399-gmac": found on RK3399 SoCs
+-   "rockchip,rv1108-gmac": found on RV1108 SoCs
+- - reg: addresses and length of the register sets for the device.
+- - interrupts: Should contain the GMAC interrupts.
+- - interrupt-names: Should contain the interrupt names "macirq".
+- - rockchip,grf: phandle to the syscon grf used to control speed and mode.
+- - clocks: <&cru SCLK_MAC>: clock selector for main clock, from PLL or PHY.
+-	   <&cru SCLK_MAC_PLL>: PLL clock for SCLK_MAC
+-	   <&cru SCLK_MAC_RX>: clock gate for RX
+-	   <&cru SCLK_MAC_TX>: clock gate for TX
+-	   <&cru SCLK_MACREF>: clock gate for RMII referce clock
+-	   <&cru SCLK_MACREF_OUT> clock gate for RMII reference clock output
+-	   <&cru ACLK_GMAC>: AXI clock gate for GMAC
+-	   <&cru PCLK_GMAC>: APB clock gate for GMAC
+- - clock-names: One name for each entry in the clocks property.
+- - phy-mode: See ethernet.txt file in the same directory.
+- - pinctrl-names: Names corresponding to the numbered pinctrl states.
+- - pinctrl-0: pin-control mode. can be <&rgmii_pins> or <&rmii_pins>.
+- - clock_in_out: For RGMII, it must be "input", means main clock(125MHz)
+-   is not sourced from SoC's PLL, but input from PHY; For RMII, "input" means
+-   PHY provides the reference clock(50MHz), "output" means GMAC provides the
+-   reference clock.
+- - snps,reset-gpio       gpio number for phy reset.
+- - snps,reset-active-low boolean flag to indicate if phy reset is active low.
+- - assigned-clocks: main clock, should be <&cru SCLK_MAC>;
+- - assigned-clock-parents = parent of main clock.
+-   can be <&ext_gmac> or <&cru SCLK_MAC_PLL>.
+-
+-Optional properties:
+- - tx_delay: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
+- - rx_delay: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
+- - phy-supply: phandle to a regulator if the PHY needs one
+-
+-Example:
+-
+-gmac: ethernet@ff290000 {
+-	compatible = "rockchip,rk3288-gmac";
+-	reg = <0xff290000 0x10000>;
+-	interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
+-	interrupt-names = "macirq";
+-	rockchip,grf = <&grf>;
+-	clocks = <&cru SCLK_MAC>,
+-		<&cru SCLK_MAC_RX>, <&cru SCLK_MAC_TX>,
+-		<&cru SCLK_MACREF>, <&cru SCLK_MACREF_OUT>,
+-		<&cru ACLK_GMAC>, <&cru PCLK_GMAC>;
+-	clock-names = "stmmaceth",
+-		"mac_clk_rx", "mac_clk_tx",
+-		"clk_mac_ref", "clk_mac_refout",
+-		"aclk_mac", "pclk_mac";
+-	phy-mode = "rgmii";
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&rgmii_pins /*&rmii_pins*/>;
+-
+-	clock_in_out = "input";
+-	snps,reset-gpio = <&gpio4 7 0>;
+-	snps,reset-active-low;
+-
+-	assigned-clocks = <&cru SCLK_MAC>;
+-	assigned-clock-parents = <&ext_gmac>;
+-	tx_delay = <0x30>;
+-	rx_delay = <0x10>;
+-
+-};
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+new file mode 100644
+index 000000000000..5acddb6171bf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -0,0 +1,120 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/net/rockchip-dwmac.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: Rockchip 10/100/1000 Ethernet driver(GMAC)
++
++maintainers:
++  - David Wu <david.wu@rock-chips.com>
++
++# We need a select here so we don't match all nodes with 'snps,dwmac'
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - rockchip,px30-gmac
++          - rockchip,rk3128-gmac
++          - rockchip,rk3228-gmac
++          - rockchip,rk3288-gmac
++          - rockchip,rk3328-gmac
++          - rockchip,rk3366-gmac
++          - rockchip,rk3368-gmac
++          - rockchip,rk3399-gmac
++          - rockchip,rv1108-gmac
++  required:
++    - compatible
++
++allOf:
++  - $ref: "snps,dwmac.yaml#"
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - rockchip,px30-gmac
++          - rockchip,rk3128-gmac
++          - rockchip,rk3228-gmac
++          - rockchip,rk3288-gmac
++          - rockchip,rk3328-gmac
++          - rockchip,rk3366-gmac
++          - rockchip,rk3368-gmac
++          - rockchip,rk3399-gmac
++          - rockchip,rv1108-gmac
++
++  clocks:
++    minItems: 5
 +    maxItems: 8
-     additionalItems: true
-     items:
-       - description: GMAC main clock
-@@ -101,7 +110,7 @@ properties:
- 
-   clock-names:
-     minItems: 1
--    maxItems: 5
-+    maxItems: 8
-     additionalItems: true
-     contains:
-       enum:
++
++  clock-names:
++    contains:
++      enum:
++        - stmmaceth
++        - mac_clk_tx
++        - mac_clk_rx
++        - aclk_mac
++        - pclk_mac
++        - clk_mac_ref
++        - clk_mac_refout
++        - clk_mac_speed
++
++  clock_in_out:
++    description:
++      For RGMII, it must be "input", means main clock(125MHz)
++      is not sourced from SoC's PLL, but input from PHY.
++      For RMII, "input" means PHY provides the reference clock(50MHz),
++      "output" means GMAC provides the reference clock.
++    $ref: /schemas/types.yaml#/definitions/string
++    enum: [input, output]
++
++  rockchip,grf:
++    description: The phandle of the syscon node for the general register file.
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++  tx_delay:
++    description: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
++    $ref: /schemas/types.yaml#/definitions/uint32
++
++  rx_delay:
++    description: Delay value for RXD timing. Range value is 0~0x7F, 0x10 as default.
++    $ref: /schemas/types.yaml#/definitions/uint32
++
++  phy-supply:
++    description: PHY regulator
++
++required:
++  - compatible
++  - clocks
++  - clock-names
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/rk3288-cru.h>
++
++    gmac: ethernet@ff290000 {
++        compatible = "rockchip,rk3288-gmac";
++        reg = <0xff290000 0x10000>;
++        interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-names = "macirq";
++        clocks = <&cru SCLK_MAC>,
++                 <&cru SCLK_MAC_RX>, <&cru SCLK_MAC_TX>,
++                 <&cru SCLK_MACREF>, <&cru SCLK_MACREF_OUT>,
++                 <&cru ACLK_GMAC>, <&cru PCLK_GMAC>;
++        clock-names = "stmmaceth",
++                      "mac_clk_rx", "mac_clk_tx",
++                      "clk_mac_ref", "clk_mac_refout",
++                      "aclk_mac", "pclk_mac";
++        assigned-clocks = <&cru SCLK_MAC>;
++        assigned-clock-parents = <&ext_gmac>;
++
++        rockchip,grf = <&grf>;
++        phy-mode = "rgmii";
++        clock_in_out = "input";
++        tx_delay = <0x30>;
++        rx_delay = <0x10>;
++    };
 -- 
 2.30.0
 
