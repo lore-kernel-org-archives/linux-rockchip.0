@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE7E7C433B4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B1D4C43460
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:32:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EF226101B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:31:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EF226101B
+	by mail.kernel.org (Postfix) with ESMTPS id 46E8E613B0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:32:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46E8E613B0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+Rae2ZtGICAqJ8v9P9Bfp7HOOsi0SgNHRQZJR1yxU6Y=; b=W9+y2+nK1/qnwGtoAZIfJKTe5
-	eqYuVn38W2UruQMMFQ8u6cfFu4wzn5pgd7cNMt7ybiVkaJ+VpxQMjIObDVCifYtK9o0thx7mMGbyM
-	CzrLn5tlo7+hp1R4f2JpiHZTGF/117syUgxIBKOhd3QceZQQs09Ftq0ITIWWCMAPKgjZcDFnLLN0Y
-	06H/IG/g3fXVJsnx/nF8xvoYNM8FABBwuTiFsC+kbNNR0WLvnKSs7dtKsJJAixYO3OU02kSOdPGkn
-	lDLwIL4haumRx0uGZdKXbqAAl6crJML0pkEeTK2mLMk/STBSHN+XXghuO8a0nD8GdaTj662ILJjXi
-	QR7q5/lYg==;
+	 bh=uYhhwvdzAHsd1sxiMTRQPeg++8Pl9jgPFWj73GiLEqE=; b=KRZ8b3kPrrfWpcrZoZr2Y2Uzb
+	HReLOPaYQFigxHPegrpeeKbo4hp9vo7tNaYzgDDWaYkb5HsRtQZYKnHiyIKCKx0eqnlB2+b81Kfh0
+	+Ge41vjQ+JSXhr5gfQ5pMdAA3z+AsQioHDcFha+dTdIaKPe1aVDVPU9zSeA981OgrNrPKq39tMUeg
+	Sx3e9IYdBcVeLgkavZXAxtFRtkJNg2zdvflPLsp/xSlBTZJFx+hmsAoZoyJMnpSCPBqu+2tan7yCq
+	o96dlYBIi6sXujpulhVKhIffDHrWy5PBHB7Jyuvh2f7b0oc++ziaavvTQfvJkM1KHx/4Otmy/mJvA
+	74lS7XE+g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbL0C-001OHt-B5; Tue, 27 Apr 2021 10:31:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lbL0i-001OSC-0J; Tue, 27 Apr 2021 10:32:08 +0000
+Received: from bombadil.infradead.org ([198.137.202.133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbKw9-001MyW-Kn
- for linux-rockchip@lists.infradead.org; Tue, 27 Apr 2021 10:27:30 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 735A06140E;
+ id 1lbKwB-001Mzg-N6; Tue, 27 Apr 2021 10:27:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=wNlWAJheWo8r305lpFRr+Xmq5CAdeEepltQZlmQJw8g=; b=LmKSsFmgKPLSGjTk3e9F8/yKYe
+ zdhAU89sK2pYFE7yw9GlX6XnB0MmJV+/OoaXoouKELu+2/EnoO7o4b1/iADXe73Fn+cHpbICRKhuq
+ Nwhx6E8g4O1ht2gPlXaxasJokyGSyUSRjSRqhjG5w3cuVJB2nEz8JjwzPKYtSCNtGAfBaoB821Hc2
+ VETTqJ2gzhQ3HaKt2aoZQp5ih6qyBAcefxSItZ0sIsYMFembGvsETyaLOdYMsutZjAWTvZe3Wnvdd
+ mu2aJQOfRfIayTwWrAF2n07PG1OGUz0wVdD2OX6SeBbbyJg7LiJR4mSd11iVtUtFSjuFVr19I8Yfx
+ aYarEs7Q==;
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lbKw6-00GdDj-Oo; Tue, 27 Apr 2021 10:27:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 87AC76141B;
  Tue, 27 Apr 2021 10:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619519236;
- bh=9XhzsT7qorzb0O8m+AZfDrHyIqnxWFrm1sswMUzcdRI=;
+ bh=rChg/pXG2Qjbehywcb/+z5hE6+LFH66GvNnoCtLFEBo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=tf914diWBrl8TDvXMl5MLXGnXhoS7XUaWw5QGfh55jhiWLbSpRdpvTzlw8J5UysaU
- jBsXLJJNXnvdzEzd5UuC4JNMdgz4Apn3uggzXUulqA7iTvZjqMwLrpDUy+UTJpIQhv
- CJat0sLmS/XVxjPR6B8gwIlB9aLieQI8PheQt35mTD0a1cGmLmk4t8ULtrwmgoC5IM
- L2Kld2gSrXRUa4stHtOpUh71/ja/dRGVRGLemrB7h8mI4q9pGNcLH5eAlrasCDTiqe
- h6f3S7+apWzvZimwh2HHitnK1E4i7y2E1fPmelY7kH7j9cnMhxgMb1CmXxl63Q928Q
- l8vs9Z0HYh9ig==
+ b=QoTamJiO+JxWdt3o4Hs6vYrg2jgI81cjPn/kT0glZGbqmWBM9aOjPXJVl8cyWQmQy
+ 26cQBTSG214To1rzhZwxEd8DWaeNPXaYCPNgx9TjugtyzxzqP17ni7VfGq7JyR1YGt
+ eluVYYOH8buCEmvbeDPmH+SnnxwSJWplGFoFQrxxCI9hutBi63CEyGn6RHjyNcmng8
+ XOQDYhQy3IYrSTx5pqC/lwZGxHm+ZoMJ/+a3ms26yWuqp5hKZpmOQZhbIVa71JY/AP
+ +H+DNnw5dL0SKM/yN62bnrs6zSaJHLl64PNMQR3QGkuJI1GUGG6sLkl/MVozaGldFl
+ WaHNIK2jM2a8g==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lbKvz-000o32-Tr; Tue, 27 Apr 2021 12:27:15 +0200
+ id 1lbKvz-000o2b-7s; Tue, 27 Apr 2021 12:27:15 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 79/79] media: hantro: document the usage of
- pm_runtime_get_sync()
-Date: Tue, 27 Apr 2021 12:27:09 +0200
-Message-Id: <230f22170db7fa57b49cff4570cef15bf11b2ad5.1619519080.git.mchehab+huawei@kernel.org>
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 70/79] media: rkisp1: use pm_runtime_resume_and_get()
+Date: Tue, 27 Apr 2021 12:27:00 +0200
+Message-Id: <ed910c61ae00f88fcd29d15282e1018c1d894b56.1619519080.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619519080.git.mchehab+huawei@kernel.org>
 References: <cover.1619519080.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_112726_998352_27D93F0E 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20210427_032722_843674_1A42E495 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,46 +99,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Despite other *_get()/*_put() functions, where usage count is
-incremented only if not errors, the pm_runtime_get_sync() has
-a different behavior, incrementing the counter *even* on
-errors.
+Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+added pm_runtime_resume_and_get() in order to automatically handle
+dev->power.usage_count decrement on errors.
 
-That's an error prone behavior, as people often forget to
-decrement the usage counter.
-
-However, the hantro driver depends on this behavior, as it
-will decrement the usage_count unconditionally at the m2m
-job finish time, which makes sense.
-
-So, intead of using the pm_runtime_resume_and_get() that
-would decrement the counter on error, keep the current
-API, but add a documentation explaining the rationale for
-keep using pm_runtime_get_sync().
+Use the new API, in order to cleanup the error check logic.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/staging/media/hantro/hantro_drv.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 595e82a82728..96f940c1c85c 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -155,6 +155,13 @@ static void device_run(void *priv)
- 	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 5f6c9d1623e4..3730376897d9 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1003,9 +1003,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
  	if (ret)
- 		goto err_cancel_job;
-+
-+	/*
-+	 * The pm_runtime_get_sync() will increment dev->power.usage_count,
-+	 * even on errors. That's the expected behavior here, since the
-+	 * hantro_job_finish() function at the error handling code
-+	 * will internally call pm_runtime_put_autosuspend().
-+	 */
- 	ret = pm_runtime_get_sync(ctx->dev->dev);
- 	if (ret < 0)
- 		goto err_cancel_job;
+ 		goto err_pipeline_stop;
+ 
+-	ret = pm_runtime_get_sync(cap->rkisp1->dev);
++	ret = pm_runtime_resume_and_get(cap->rkisp1->dev);
+ 	if (ret < 0) {
+-		pm_runtime_put_noidle(cap->rkisp1->dev);
+ 		dev_err(cap->rkisp1->dev, "power up failed %d\n", ret);
+ 		goto err_destroy_dummy;
+ 	}
 -- 
 2.30.2
 
