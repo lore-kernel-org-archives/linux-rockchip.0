@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9423DC433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C8F5C433B4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:29:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF997611C1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:28:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF997611C1
+	by mail.kernel.org (Postfix) with ESMTPS id 23A80611C1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 10:29:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23A80611C1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8v+o3h2RWKxMIDfKdAPXeKf7hZAi6GW7fDbdXcRg9Ng=; b=ClAQxxPSrxYizxyffjuX5DAAZ
-	OKLYT9VJxNW6UNrbaoeTvxkjjfxrm/9FjNXrak+e1/5X+Tcs+QWvD9fYS3kD4gF0JSDRiqbtZNSq2
-	lOf65jr8TX1VwCxkKS9l5dfr00sEkExZjaBce7dyZCAxED6cMe59IDU8S3XLXHQj5Nf2TFwYEh3AG
-	ewPBDy7Z0afaOfV8jeolBAoIPK/oMfLCZ1Vz3STPKvAdctM27HY/jXrVuRmQLORGoGOZwwtSWGq59
-	Paxuwqu1zSiP3ne1supbhGiUzhE/x7zeng5gbq9tqU7UFomugn6Tg4v2f4CJ0XG1R62NV8wsAHHaq
-	RzdTwwU7g==;
+	 bh=pPmT+Ll9kXIX7EunXRwTezaS5m0ecUFlRy2VwaoQH4o=; b=MTn6XTz7RwHIS9MdgDGwVo9mg
+	8FoFK2FrI5URuWcnwKOPX+IjElhtUdm1QS+bALhvJIdXpGoCW4e/pYwK0aHlmF+NDTyXNaYNptgkg
+	GRL5K1SJ1LfS+z4C68IvuMGHl6tgP8ItmYIL+MtQn/0C2Xk7l56qoUAyQeNE65XSt13eqI+6MSABB
+	kgVuSelb3qUkpgiU4/ZaceID2tyW6+nVedvdT4PrMrckeBUVp3wwl+VAWINoEf/+UTbZltNHQJ7Tj
+	z+gcXVlktoQuByKB4PSiCStDNPim+gYSrpBVUDd4m/ZjiilLhn5NrDGjHNrBGXJ/Go4rBIQOyjif+
+	I3Fgc6LPQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbKxB-001NFu-A5; Tue, 27 Apr 2021 10:28:29 +0000
+	id 1lbKyA-001NYj-RA; Tue, 27 Apr 2021 10:29:33 +0000
 Received: from bombadil.infradead.org ([198.137.202.133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbKw7-001MyX-MP; Tue, 27 Apr 2021 10:27:23 +0000
+ id 1lbKw9-001Myz-92
+ for linux-rockchip@desiato.infradead.org; Tue, 27 Apr 2021 10:27:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=k/JT4xNc8q+xgw65KVZhdHtvOyVt1/eDaJCw7AtYUJ4=; b=ec9FGY1raNPljVKO5M65twyI3k
- cEgLjBXnfRkpBzcZi50DE1IE/TDjh7yDC5T3EMcbxcD9pyZwAKfp54bMDWYzEphyqJsHIcPbQZMJf
- QheOLTtlaAq6MEioxWi+5s8mFvvsG4mo2jojrJWVDpKWyBhRJB2ihRmxqwuoR2D4Mez2EX7TcBoTE
- ivSnzcjAcM2wVKhg/6tUp1MK5kqS8iPixFq7xEovLPgT7Id08vX0cBlNWBC24xsO+SMmSpXZ90OUh
- yp0mo2WI1Ych+ftQy+97M/zrLf5vnMyYcMMeXTP4zHB/kOBew75qCR6G1kuz5PMlu2pAQVxCbeXMr
- oKPjy4qQ==;
+ bh=u5PcMNolJ+Hbjx5TaiiRECAjrT7wB+0xPtci4EIZYbc=; b=f1/xI2pc2gm83EczkY6nfraD7F
+ 85SAqEYKhTspHKiOgGfqR4ocskOd/XlrOG37Mc+Jub34hDmGM32J9PJFIT5OQMlfG/Bx99hB89a41
+ 2Rgun84gLNjGfp+pbFbpDJTwXvMggDOf7XyT5XlzPc9WQmKYyg7dgFXH88xqH/pt6IFrop+hKjfBy
+ zPhRvromkYDjq/OjFY9sABkMSIgfVQOK1b7Vq0XMHh51Sp181iIin2+q6hNCAGG1LZuOza0s/1/yB
+ TxJkjmYvccQ/rT9WALRnlPoZP/vZzJ4DmH587GgbbMQyGoXwKuBDBWDpmdI4n84WxZ9DYBH+HB+lq
+ 0aU/fZlQ==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbKw2-00Gd7p-Hq; Tue, 27 Apr 2021 10:27:22 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 487C1613EF;
+ id 1lbKw5-00GdBG-HO
+ for linux-rockchip@lists.infradead.org; Tue, 27 Apr 2021 10:27:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4B585613F4;
  Tue, 27 Apr 2021 10:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619519236;
- bh=uJQR0czm+DeAW2PWQeBvZ4Rvzd+S5i8+90myFebensI=;
+ bh=LvHrsFJn6JLbIexuKZaI+hIEIjqhrM13uG8Z/t+ytHI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jVnwnb5PZqgl+8wS3a81LGuG33LLQQG5gU+krefP1JpsPHclKD/qXIjYqGWDhXj55
- 33ZRf6pF3l25eqc23Gs5pQdb0PDVHjURu+5v6pv2wTDR2k3uuNt6odSP9+6BpqCcYd
- d/3Degiy2aE7zY3jDL0nmMN6wAYcVoY24xda0SeYx6pUfEfpJCXrXpLKzBsi3uUBHL
- pVypllmFBWs0zwfTFOHdkx9Da4ikdpe+ma+x5heSsVnA874VjASk5gH6YgAulNQ3WA
- BufVzIeVNbWeGsNO45wpB2uYN9PNZRI/HwQ2DqN3hKdQKXTVe0cPNGxufc13iTQ33+
- pdjzD89XjIGGw==
+ b=gizOl2AQe/jXLKmc+7i83jA+O0Wo1bF6j4oi46pMEcTl7/BWz6lVm/+PTT8Sv0cpO
+ tE5/VhfSYR4We5KtkO113SGvLMUzmduFSIHzuiuQBzef91tj88BXNlDkG6NUY4JBqB
+ VL8b7iCr5xf/1C9QdifZSnkYbv6fiIqCCeuB4dYEmt9p+MbUHovpznskbX07qJ81UM
+ 25YLoBBo7WyY92slmjLh0f7EtDJwRU/OFoHvzqxUxfwwDWieX0AlZ73N/jq4mnSYzu
+ yb4V0aKvZfD2iBqVblPOy29YITyz96H9PvTVjgXmwX7SgOe1liq56ppEuzbr4JskMI
+ 9vV/neCiQ/MIg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lbKvv-000nzk-DU; Tue, 27 Apr 2021 12:27:11 +0200
+ id 1lbKvv-000o0B-VD; Tue, 27 Apr 2021 12:27:11 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 11/79] media: rga-buf: use pm_runtime_resume_and_get()
-Date: Tue, 27 Apr 2021 12:26:01 +0200
-Message-Id: <a9099f1ffc537e5f997cb260a175715892387c5a.1619519080.git.mchehab+huawei@kernel.org>
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 20/79] staging: media: rkvdec: fix pm_runtime_get_sync()
+ usage count
+Date: Tue, 27 Apr 2021 12:26:10 +0200
+Message-Id: <cb588379521b61d3728888c2522fc052e1bb2c91.1619519080.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619519080.git.mchehab+huawei@kernel.org>
 References: <cover.1619519080.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_032718_742861_2966571C 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20210427_032721_626639_3BEE94AD 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,48 +102,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-added pm_runtime_resume_and_get() in order to automatically handle
-dev->power.usage_count decrement on errors.
+The pm_runtime_get_sync() internally increments the
+dev->power.usage_count without decrementing it, even on errors.
+Replace it by the new pm_runtime_resume_and_get(), introduced by:
+commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+in order to properly decrement the usage counter and avoid memory
+leaks.
 
-Use the new API, in order to cleanup the error check logic.
-
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/media/platform/rockchip/rga/rga-buf.c | 3 +--
- drivers/media/platform/rockchip/rga/rga.c     | 4 +++-
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index bf9a75b75083..81508ed5abf3 100644
---- a/drivers/media/platform/rockchip/rga/rga-buf.c
-+++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -79,9 +79,8 @@ static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
- 	struct rockchip_rga *rga = ctx->rga;
- 	int ret;
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index d821661d30f3..8c17615f3a7a 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -658,7 +658,7 @@ static void rkvdec_device_run(void *priv)
+ 	if (WARN_ON(!desc))
+ 		return;
  
--	ret = pm_runtime_get_sync(rga->dev);
-+	ret = pm_runtime_resume_and_get(rga->dev);
+-	ret = pm_runtime_get_sync(rkvdec->dev);
++	ret = pm_runtime_resume_and_get(rkvdec->dev);
  	if (ret < 0) {
--		pm_runtime_put_noidle(rga->dev);
- 		rga_buf_return_buffers(q, VB2_BUF_STATE_QUEUED);
- 		return ret;
- 	}
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 9d122429706e..bf3fd71ec3af 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -866,7 +866,9 @@ static int rga_probe(struct platform_device *pdev)
- 		goto unreg_video_dev;
- 	}
- 
--	pm_runtime_get_sync(rga->dev);
-+	ret = pm_runtime_resume_and_get(rga->dev);
-+	if (ret < 0)
-+		goto unreg_video_dev;
- 
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+ 		rkvdec_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
+ 		return;
 -- 
 2.30.2
 
