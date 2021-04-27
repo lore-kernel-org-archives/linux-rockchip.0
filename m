@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43A76C433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 07:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79613C433B4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 07:45:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC7FA6100C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 07:45:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC7FA6100C
+	by mail.kernel.org (Postfix) with ESMTPS id 3A9DB6100C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Apr 2021 07:45:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A9DB6100C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QxY7F3vby1p1DzpmM43S3OO9HVdcHqF5vWCGXCTr9lE=; b=fDPOGuUm+kOhF7hZ1r+jv1vVW7
-	G97QEe7a41p93AiXTd0jYbCc7LHLMU5er1SmooePBW6rQ51C0o5jjS2CybqZyJvsY41OV7zNwXyv9
-	9sZy5ApsoMg9I22QdP9tFjAzjDG5PjE4VcK1ny9xbChejLns2mueYc1sjJUtcXQvZqVy5FjP1lCtL
-	26ps0k7JRBySvcUgTJNFIUclEMSgfpEso4RMumpfdWKAn6wrtkry3wfwQG1mAgYxuAYYTqMsa/ViT
-	+bhpvTVkd/qDaVWEfeJBJDVC1huIojcF05nNz/njYWXDSS+L0H+7WjfgsTWw6tU2YJ+y+w/klbkeW
-	jHfILkfg==;
+	bh=4m7YDrzw7k7Oqm6FAg9lUbmoO9jJmX3tQe7u45Vu/z8=; b=JWy0UVUvi1deHqa2DdgLL8AV/m
+	pfq7rZLdKx2B/RfATL4o7lDIqUtNmkHaaeFb+OuX/2wK9s0QhsnDDCfEe2iUAeeK2KzoEoNiwVD4T
+	jpW1bmGmpY5U1BU6JcTnbKDPZmf03G4Kf8Hw7f1ZZrVHIuugsiRQSGgOnzCnqaf4J2xldjfIernEl
+	T0duJhdyyqpsZClYjcoJn+kz20pgie1fzKGbvyucm5uJUs5q4PWBUx6HyoLizJ2fWUCxXawpaBCBf
+	BRDyqpDoq8LK2bBv3cR4rMbZJgJxSp2P7dmvfYv9ZLobWgydbEkw1QMPmSq1XQC0xpLtPLuDo8da/
+	tWh2juZw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbIOz-0010Cg-6a; Tue, 27 Apr 2021 07:45:01 +0000
+	id 1lbIP5-0010Dh-Ie; Tue, 27 Apr 2021 07:45:07 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbII4-000z9s-9u; Tue, 27 Apr 2021 07:37:52 +0000
+ id 1lbII4-000z9j-GQ; Tue, 27 Apr 2021 07:37:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=wO6h88rCFL6jUV5X9N8mokMhbuhKjxNLIO8lLsddsYo=; b=lRT9LgtCYgZo5gNVr3jvMzAlgA
- zrGvxw6RDRx689sKq4R776Q2CZZWSFtpEmwaOvIxkPBkLSTSvXu8OkktuEy1qgmYwplTqV+oKy5tS
- dkQy2RrFypkZm2wD0IqacGcf6YT1g8/XAPQ2+5IeKmUoFS4MgW7Gvoojg3UblZBm78nCbYCkE4red
- qB2D/cdTZ4wDY9d7x9wmc5IMGoufnujLvWoX6Br6ynPvkaBN+3jCFXkgsfYVJQU8PwCBwlffBvyb3
- IGIkw76EQ02b8ohr2qEAxGJ5fAMuzT4Ac4qxwJMoItjtsaVDtTXiT4IbRweINuZuzCtRCqTYNLr5y
- vVX8uu0w==;
-Received: from lucky1.263xmail.com ([211.157.147.132])
+ bh=I62t0os2wYM+ocAcdnKGBjrkD2yFyGf3SdNLEXn0P9Y=; b=oEjIQnWjDTE15h0uBzqMAOoj2h
+ RAuTzRGdXnI9vas0ZSATUiLI/BG3AFbYvqOxEFrjVI0XL6Y54QcmeMrRo5XNm/b91S/Y6YIOVFs7U
+ 2pfE5Ph2qi9np3Hy8Jc2yudxkJKEd853AazPTWVY70ESYWfF4WQsiamOWDVpk8NYA0CxBb85ePfnF
+ ra7YWd1KE1vXf55pGVQnqqpYehKHE9An2aVmQKQnUjg8Svwy59kKA/0N2mBwY7YgYAkoFXq6tv0xg
+ +ffXnAoj389CwGPc/BURNGH69t9kIM0cSUrPoF8jLzLk931NJgdvyPmIUT+hUZtLSmbSrYsLVBz61
+ E0RM/qQA==;
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbIHx-00GVlu-MA; Tue, 27 Apr 2021 07:37:47 +0000
+ id 1lbIHw-00GVlk-Ad; Tue, 27 Apr 2021 07:37:46 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id A958BF3AF1;
- Tue, 27 Apr 2021 15:37:39 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 76401BA165;
+ Tue, 27 Apr 2021 15:37:38 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -59,9 +59,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P2750T140648996910848S1619509055243892_; 
- Tue, 27 Apr 2021 15:37:37 +0800 (CST)
+ Tue, 27 Apr 2021 15:37:38 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <01111ffee587bf109de715e58a149324>
+X-UNIQUE-TAG: <6d357976f75a46d70ce2d1b41d2548a5>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -76,16 +76,15 @@ Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@esmil.dk,
  Jon Lin <jon.lin@rock-chips.com>
-Subject: [PATCH v2 3/8] dt-bindings: spi: spi-rockchip: add description for
- rv1126
-Date: Tue, 27 Apr 2021 15:37:28 +0800
-Message-Id: <20210427073733.31419-3-jon.lin@rock-chips.com>
+Subject: [PATCH v2 4/8] spi: rockchip: add compatible string for rv1126
+Date: Tue, 27 Apr 2021 15:37:29 +0800
+Message-Id: <20210427073733.31419-4-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210427073733.31419-1-jon.lin@rock-chips.com>
 References: <20210427073733.31419-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_003745_899414_2D108C3E 
-X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-CacheID: sfid-20210427_003744_542000_8A847DB9 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,25 +104,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The description below will be used for rv1126.dtsi in the future
+Add compatible string for rv1126 to applications for potential
+applications.
 
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
+ drivers/spi/spi-rockchip.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 1e6cf29e6388..4ed5b72a8494 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -27,6 +27,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,px30-spi
-+              - rockchip,rv1126-spi
-               - rockchip,rk3188-spi
-               - rockchip,rk3288-spi
-               - rockchip,rk3308-spi
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 0f39ea2d1d31..9fdb53fb7ede 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -929,6 +929,7 @@ static const struct of_device_id rockchip_spi_dt_match[] = {
+ 	{ .compatible = "rockchip,rk3368-spi", },
+ 	{ .compatible = "rockchip,rk3399-spi", },
+ 	{ .compatible = "rockchip,rv1108-spi", },
++	{ .compatible = "rockchip,rv1126-spi", },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_spi_dt_match);
 -- 
 2.17.1
 
