@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E58BC433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85322C433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:51:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCCC3613C8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:51:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCCC3613C8
+	by mail.kernel.org (Postfix) with ESMTPS id C035C61073
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:51:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C035C61073
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=52iTefBV5knpmkGoS2VhWCmPml86MKuGhjq6Vv6qnSg=; b=U3ZvbrtjXr6REKGp3Ao/RNn5hj
-	8L2OShwTl3arsmfU1rr1WI/E9Fr90YWab1NwQvRK4cPD3TiObmIhLJgTTWT8h0fSK7oMj6J80PWO/
-	WqyK4Kv2PE8Zm1RroAyt+hD0Ggo+OIzQEurUWs4vV8r6o0a8RSOSmuSVtzsr/BWE0xgw6FXQDQcKt
-	A+bf7DAjeExZgLTdMbUkTnnrJBZepZw+ETHBWxtttncQu07DS3SZFQj1OtnTtrSkeq0irgusuzecI
-	pDilDK+YXBYQn0dki2nFcvIlZGIOFglWJVVkvKiPZlfCzARMrQ3G6kGPt7aPxiGoUlj0Zk9GhmO58
-	+XbnCy2g==;
+	bh=IkwIoLRTZR01HaGoKmt4+O1RvDChnPJLMo933lexOfI=; b=UUv5iVL94LNPX5XObISv+MYdoo
+	GR7Ife1pbmn4rYXtXjLkaAKbPECTcWcxNQCkh7OjiA6BU53/btlzOKwSUvj917WzAURVMO9jpQmpm
+	Sz8RiaR4uW3KxBe8uqCTFwJKESGsLpJUeV35ULowkUM0hNBrHj4HAxCmeulpAhomm3dpwgJeoB0oB
+	uMFdmInAwHQ2QycqwmicbWrwzmLHonSmLVYLlw7tXKdIsATuu7+A1r7jdd1v+4wOzwU/96dehRYJe
+	RNZn4s/30yk/CVQbLZQ88etTE3EOXV/9bawuIQWvMDMEGiwUun/yPliTmbZhFA4XCHrXswIKb4CUu
+	H80HSjhQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbkb7-003ZL8-5q; Wed, 28 Apr 2021 13:51:25 +0000
+	id 1lbkbZ-003ZVv-V6; Wed, 28 Apr 2021 13:51:54 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbkZZ-003YgB-E6; Wed, 28 Apr 2021 13:49:49 +0000
+ id 1lbkZq-003YnZ-Ui; Wed, 28 Apr 2021 13:50:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=4bCK7iD8CZvb6pPrX/ARyERk2g6iNcf0H3sGIz9AG4w=; b=Mqhl5rreXTfZxwqXzSTt0On14P
- ZW1+qTLFO0w7+ip0rFQlxy3MyP8c+3jnR+QqHIjlMUilj370SYLpgk0wgEJWTxgFpl4/FRBeY3n2S
- S8eUMaftroqjxanHpZd8VYs09sY+PeQY/BkhQxDkrj3yn6MfGKDQUHFE9IoU78hyRxq5ZGAKgjETW
- VtutgpU8YY4rkJV8Jr7eXCZt6aL4cHdVCi2prqe8iLEJoggHd3Rn84IZMoiKMKjVCxkp1Wmxt6mOM
- 7TVq130/jTyDSI+MNhQJKWSugRUSIW3Jt9LLUblceTF9awC301ue94+WbGdisjNmPq7QFHewMWyZD
- mcPRZQ0g==;
-Received: from lucky1.263xmail.com ([211.157.147.132])
+ bh=hyArXkcP9/MXipMnyY5jSRyJc1svjGh84u52bb8jpcU=; b=Vd1m2PT4+vPnHCmFgjePd5Tn3o
+ 7aV+eQ9VFRFG3dqV7AwjmKV3y5VCfDGIc96N6EHOsjOdm+d3PURYlSe7FpnNWgPD9l+C02KQV4FGP
+ 2i4s2M40d1gN/C15qZP7c9C1EA0WnO5rhC+11bKyiZPkwjfcONug9DLQa4+YzPfXRGMBHyVfu2h6C
+ h10EM+qP/cvJUTRtIgjp2TUZQcJHZMUJ107XHXWcRSTqoRIYFzcIBA04p6Un0/gFckf5TlaFWIios
+ alopon/9Iuj5YvAQ+PYH7Flyvf519hFDIfg5Y6hkPHo04lus0EklnsUBr0NLHyb5+KASHh2rYpjpg
+ u5g68dxg==;
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbkZW-00HT2y-1h; Wed, 28 Apr 2021 13:49:48 +0000
+ id 1lbkZm-00HT3i-6D; Wed, 28 Apr 2021 13:50:05 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 3F48BF39F2;
- Wed, 28 Apr 2021 21:49:43 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 942A1C85F0;
+ Wed, 28 Apr 2021 21:49:56 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -58,10 +58,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P31919T139684250371840S1619617781122888_; 
- Wed, 28 Apr 2021 21:49:43 +0800 (CST)
+ P31919T139684229392128S1619617793135049_; 
+ Wed, 28 Apr 2021 21:49:55 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <ad199528e5dbea354ea097c5ee717f31>
+X-UNIQUE-TAG: <d7f84823073c5f4106f9708ffb762837>
 X-RL-SENDER: cl@rock-chips.com
 X-SENDER: cl@rock-chips.com
 X-LOGIN-NAME: cl@rock-chips.com
@@ -83,15 +83,16 @@ Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
  david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
  cl@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
  jamie@jamieiles.com, linux-watchdog@vger.kernel.org, maz@kernel.org
-Subject: [PATCH v3 07/10] dt-bindings: soc: rockchip: Convert grf.txt to YAML
-Date: Wed, 28 Apr 2021 21:49:38 +0800
-Message-Id: <20210428134938.22383-1-cl@rock-chips.com>
+Subject: [PATCH v3 08/10] arm64: dts: rockchip: add generic pinconfig settings
+ used by most Rockchip socs
+Date: Wed, 28 Apr 2021 21:49:51 +0800
+Message-Id: <20210428134951.22457-1-cl@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210428134759.22076-1-cl@rock-chips.com>
 References: <20210428134759.22076-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_064946_691629_97E7C878 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20210428_065002_787885_1E9D5BC3 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,151 +113,366 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Liang Chen <cl@rock-chips.com>
 
-Current dts files with 'grf' nodes are manually verified. In order to
-automate this process grf.txt has to be converted to YAML.
+The pinconfig settings for Rockchip SoCs are pretty similar on all socs,
+so move them to a shared dtsi to be included, instead of redefining them
+for each soc.
 
 Signed-off-by: Liang Chen <cl@rock-chips.com>
 ---
- .../devicetree/bindings/soc/rockchip/grf.txt  | 61 -------------------
- .../devicetree/bindings/soc/rockchip/grf.yaml | 61 +++++++++++++++++++
- 2 files changed, 61 insertions(+), 61 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.txt
- create mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+ .../boot/dts/rockchip/rockchip-pinconf.dtsi   | 344 ++++++++++++++++++
+ 1 file changed, 344 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-deleted file mode 100644
-index f96511aa3897..000000000000
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
-+++ /dev/null
-@@ -1,61 +0,0 @@
--* Rockchip General Register Files (GRF)
--
--The general register file will be used to do static set by software, which
--is composed of many registers for system control.
--
--From RK3368 SoCs, the GRF is divided into two sections,
--- GRF, used for general non-secure system,
--- SGRF, used for general secure system,
--- PMUGRF, used for always on system
--
--On RK3328 SoCs, the GRF adds a section for USB2PHYGRF,
--
--ON RK3308 SoC, the GRF is divided into four sections:
--- GRF, used for general non-secure system,
--- SGRF, used for general secure system,
--- DETECTGRF, used for audio codec system,
--- COREGRF, used for pvtm,
--
--Required Properties:
--
--- compatible: GRF should be one of the following:
--   - "rockchip,px30-grf", "syscon": for px30
--   - "rockchip,rk3036-grf", "syscon": for rk3036
--   - "rockchip,rk3066-grf", "syscon": for rk3066
--   - "rockchip,rk3188-grf", "syscon": for rk3188
--   - "rockchip,rk3228-grf", "syscon": for rk3228
--   - "rockchip,rk3288-grf", "syscon": for rk3288
--   - "rockchip,rk3308-grf", "syscon": for rk3308
--   - "rockchip,rk3328-grf", "syscon": for rk3328
--   - "rockchip,rk3368-grf", "syscon": for rk3368
--   - "rockchip,rk3399-grf", "syscon": for rk3399
--   - "rockchip,rv1108-grf", "syscon": for rv1108
--- compatible: DETECTGRF should be one of the following:
--   - "rockchip,rk3308-detect-grf", "syscon": for rk3308
--- compatilbe: COREGRF should be one of the following:
--   - "rockchip,rk3308-core-grf", "syscon": for rk3308
--- compatible: PMUGRF should be one of the following:
--   - "rockchip,px30-pmugrf", "syscon": for px30
--   - "rockchip,rk3368-pmugrf", "syscon": for rk3368
--   - "rockchip,rk3399-pmugrf", "syscon": for rk3399
--- compatible: SGRF should be one of the following:
--   - "rockchip,rk3288-sgrf", "syscon": for rk3288
--- compatible: USB2PHYGRF should be one of the following:
--   - "rockchip,px30-usb2phy-grf", "syscon": for px30
--   - "rockchip,rk3328-usb2phy-grf", "syscon": for rk3328
--- compatible: USBGRF should be one of the following:
--   - "rockchip,rv1108-usbgrf", "syscon": for rv1108
--- reg: physical base address of the controller and length of memory mapped
--  region.
--
--Example: GRF and PMUGRF of RK3399 SoCs
--
--	pmugrf: syscon@ff320000 {
--		compatible = "rockchip,rk3399-pmugrf", "syscon";
--		reg = <0x0 0xff320000 0x0 0x1000>;
--	};
--
--	grf: syscon@ff770000 {
--		compatible = "rockchip,rk3399-grf", "syscon";
--		reg = <0x0 0xff770000 0x0 0x10000>;
--	};
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+diff --git a/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi b/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
 new file mode 100644
-index 000000000000..61ce5b4c9ed0
+index 000000000000..5c645437b507
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/arch/arm64/boot/dts/rockchip/rockchip-pinconf.dtsi
+@@ -0,0 +1,344 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++ */
 +
-+title: Rockchip General Register Files
++&pinctrl {
++	/omit-if-no-ref/
++	pcfg_pull_up: pcfg-pull-up {
++		bias-pull-up;
++	};
 +
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
++	/omit-if-no-ref/
++	pcfg_pull_down: pcfg-pull-down {
++		bias-pull-down;
++	};
 +
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - rockchip,px30-grf
-+              - rockchip,px30-pmugrf
-+              - rockchip,px30-usb2phy-grf
-+              - rockchip,rk3036-grf
-+              - rockchip,rk3066-grf
-+              - rockchip,rk3188-grf
-+              - rockchip,rk3228-grf
-+              - rockchip,rk3288-grf
-+              - rockchip,rk3288-sgrf
-+              - rockchip,rk3308-core-grf
-+              - rockchip,rk3308-detect-grf
-+              - rockchip,rk3308-grf
-+              - rockchip,rk3328-grf
-+              - rockchip,rk3328-usb2phy-grf
-+              - rockchip,rk3368-grf
-+              - rockchip,rk3368-pmugrf
-+              - rockchip,rk3399-grf
-+              - rockchip,rk3399-pmugrf
-+              - rockchip,rk3568-grf
-+              - rockchip,rk3568-pmugrf
-+              - rockchip,rv1108-grf
-+              - rockchip,rv1108-usbgrf
-+          - const: syscon
-+          - const: simple-mfd
++	/omit-if-no-ref/
++	pcfg_pull_none: pcfg-pull-none {
++		bias-disable;
++	};
 +
-+  reg:
-+    maxItems: 1
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_0: pcfg-pull-none-drv-level-0 {
++		bias-disable;
++		drive-strength = <0>;
++	};
 +
-+required:
-+  - compatible
-+  - reg
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_1: pcfg-pull-none-drv-level-1 {
++		bias-disable;
++		drive-strength = <1>;
++	};
 +
-+additionalProperties: false
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_2: pcfg-pull-none-drv-level-2 {
++		bias-disable;
++		drive-strength = <2>;
++	};
 +
-+examples:
-+  - |
-+    pmugrf: syscon@ff320000 {
-+       compatible = "rockchip,rk3399-pmugrf", "syscon";
-+       reg = <0x0 0xff320000 0x0 0x1000>;
-+    };
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_3: pcfg-pull-none-drv-level-3 {
++		bias-disable;
++		drive-strength = <3>;
++	};
 +
-+    grf: syscon@ff770000 {
-+       compatible = "rockchip,rk3399-grf", "syscon";
-+       reg = <0x0 0xff770000 0x0 0x10000>;
-+    };
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_4: pcfg-pull-none-drv-level-4 {
++		bias-disable;
++		drive-strength = <4>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_5: pcfg-pull-none-drv-level-5 {
++		bias-disable;
++		drive-strength = <5>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_6: pcfg-pull-none-drv-level-6 {
++		bias-disable;
++		drive-strength = <6>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_7: pcfg-pull-none-drv-level-7 {
++		bias-disable;
++		drive-strength = <7>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_8: pcfg-pull-none-drv-level-8 {
++		bias-disable;
++		drive-strength = <8>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_9: pcfg-pull-none-drv-level-9 {
++		bias-disable;
++		drive-strength = <9>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_10: pcfg-pull-none-drv-level-10 {
++		bias-disable;
++		drive-strength = <10>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_11: pcfg-pull-none-drv-level-11 {
++		bias-disable;
++		drive-strength = <11>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_12: pcfg-pull-none-drv-level-12 {
++		bias-disable;
++		drive-strength = <12>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_13: pcfg-pull-none-drv-level-13 {
++		bias-disable;
++		drive-strength = <13>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_14: pcfg-pull-none-drv-level-14 {
++		bias-disable;
++		drive-strength = <14>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_15: pcfg-pull-none-drv-level-15 {
++		bias-disable;
++		drive-strength = <15>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_0: pcfg-pull-up-drv-level-0 {
++		bias-pull-up;
++		drive-strength = <0>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_1: pcfg-pull-up-drv-level-1 {
++		bias-pull-up;
++		drive-strength = <1>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_2: pcfg-pull-up-drv-level-2 {
++		bias-pull-up;
++		drive-strength = <2>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_3: pcfg-pull-up-drv-level-3 {
++		bias-pull-up;
++		drive-strength = <3>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_4: pcfg-pull-up-drv-level-4 {
++		bias-pull-up;
++		drive-strength = <4>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_5: pcfg-pull-up-drv-level-5 {
++		bias-pull-up;
++		drive-strength = <5>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_6: pcfg-pull-up-drv-level-6 {
++		bias-pull-up;
++		drive-strength = <6>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_7: pcfg-pull-up-drv-level-7 {
++		bias-pull-up;
++		drive-strength = <7>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_8: pcfg-pull-up-drv-level-8 {
++		bias-pull-up;
++		drive-strength = <8>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_9: pcfg-pull-up-drv-level-9 {
++		bias-pull-up;
++		drive-strength = <9>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_10: pcfg-pull-up-drv-level-10 {
++		bias-pull-up;
++		drive-strength = <10>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_11: pcfg-pull-up-drv-level-11 {
++		bias-pull-up;
++		drive-strength = <11>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_12: pcfg-pull-up-drv-level-12 {
++		bias-pull-up;
++		drive-strength = <12>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_13: pcfg-pull-up-drv-level-13 {
++		bias-pull-up;
++		drive-strength = <13>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_14: pcfg-pull-up-drv-level-14 {
++		bias-pull-up;
++		drive-strength = <14>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_drv_level_15: pcfg-pull-up-drv-level-15 {
++		bias-pull-up;
++		drive-strength = <15>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_0: pcfg-pull-down-drv-level-0 {
++		bias-pull-down;
++		drive-strength = <0>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_1: pcfg-pull-down-drv-level-1 {
++		bias-pull-down;
++		drive-strength = <1>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_2: pcfg-pull-down-drv-level-2 {
++		bias-pull-down;
++		drive-strength = <2>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_3: pcfg-pull-down-drv-level-3 {
++		bias-pull-down;
++		drive-strength = <3>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_4: pcfg-pull-down-drv-level-4 {
++		bias-pull-down;
++		drive-strength = <4>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_5: pcfg-pull-down-drv-level-5 {
++		bias-pull-down;
++		drive-strength = <5>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_6: pcfg-pull-down-drv-level-6 {
++		bias-pull-down;
++		drive-strength = <6>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_7: pcfg-pull-down-drv-level-7 {
++		bias-pull-down;
++		drive-strength = <7>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_8: pcfg-pull-down-drv-level-8 {
++		bias-pull-down;
++		drive-strength = <8>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_9: pcfg-pull-down-drv-level-9 {
++		bias-pull-down;
++		drive-strength = <9>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_10: pcfg-pull-down-drv-level-10 {
++		bias-pull-down;
++		drive-strength = <10>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_11: pcfg-pull-down-drv-level-11 {
++		bias-pull-down;
++		drive-strength = <11>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_12: pcfg-pull-down-drv-level-12 {
++		bias-pull-down;
++		drive-strength = <12>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_13: pcfg-pull-down-drv-level-13 {
++		bias-pull-down;
++		drive-strength = <13>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_14: pcfg-pull-down-drv-level-14 {
++		bias-pull-down;
++		drive-strength = <14>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_drv_level_15: pcfg-pull-down-drv-level-15 {
++		bias-pull-down;
++		drive-strength = <15>;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_up_smt: pcfg-pull-up-smt {
++		bias-pull-up;
++		input-schmitt-enable;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_down_smt: pcfg-pull-down-smt {
++		bias-pull-down;
++		input-schmitt-enable;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_smt: pcfg-pull-none-smt {
++		bias-disable;
++		input-schmitt-enable;
++	};
++
++	/omit-if-no-ref/
++	pcfg_pull_none_drv_level_0_smt: pcfg-pull-none-drv-level-0-smt {
++		bias-disable;
++		drive-strength = <0>;
++		input-schmitt-enable;
++	};
++
++	/omit-if-no-ref/
++	pcfg_output_high: pcfg-output-high {
++		output-high;
++	};
++
++	/omit-if-no-ref/
++	pcfg_output_low: pcfg-output-low {
++		output-low;
++	};
++};
 -- 
 2.17.1
 
