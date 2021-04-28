@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9722C43460
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 14:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7BCEC433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 14:56:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B32C6113D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 14:56:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B32C6113D
+	by mail.kernel.org (Postfix) with ESMTPS id 9694961027
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 14:56:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9694961027
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8v+o3h2RWKxMIDfKdAPXeKf7hZAi6GW7fDbdXcRg9Ng=; b=ZU0a37R7KNZmuB8IJLLczrkLe
-	Q8zPLVnO22cLmQVa1RAGO3b/pF1efkyYwowUfwZSJhc+cDJlA+wARC+mTWARwmr/lWETdBw816ROG
-	nnwPVw51Di7myVjFc2gf+/iygwU9BA+0XLaKVwvjaAgibQ63IMRr+STsjEIYJ+W3v/IBZdsVbhI3i
-	DeHlGI4IcgjND7LzVwWZ298OXekB6Tf25qD6xScxyt16ka04np7SPfehHEFIOs6C6wnvuhxwRZgZ+
-	6X/alyngwsFXE2ZKkKb90Q4VVwX2WpBi3txNklzA70pbTi/s5uNLMp7/VZCKuo8YMdNfEiGYMsLZp
-	36LBM3hGQ==;
+	 bh=21V/sjOuxuKEv8gWqalRtoakx8GKCCeHjYPMqmesQJ0=; b=VvR15DgV417j86mrgQt5GBW1C
+	uXPNsTwhP10T/aMxKyNgmQHDAc7toSb2UXzxOZF3Af96MfCj7xTBO7YpBn7lFimEswpHoxR8DJmNp
+	Qt99YZZDbz2zUmrf4o/wpsk7XAGT5KUJvzgVQD4KhTMtXSTjZbvONCR1Cl7/5VUYvDsfc0wR4AcWV
+	Y9oz+S2zmrZ8Z6atU97G/HPOo/Lx0rYaCASzIrlQs70OubP0w1epotba3IJjIRa7kPHrvuZED51Le
+	RhXVtqE/2SX70ZojgOdJKT6zcJBvDHdxyFihgciP+g02K4ASOxoheFyns42gZzIBIUXE6VDqQOoWE
+	KbNuLtX5A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lblc9-003gXO-Ic; Wed, 28 Apr 2021 14:56:33 +0000
+	id 1lblcD-003gZ8-NT; Wed, 28 Apr 2021 14:56:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lblYh-003fSs-G6; Wed, 28 Apr 2021 14:52:59 +0000
+ id 1lblYi-003fSs-IH
+ for linux-rockchip@desiato.infradead.org; Wed, 28 Apr 2021 14:53:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=k/JT4xNc8q+xgw65KVZhdHtvOyVt1/eDaJCw7AtYUJ4=; b=aErzh0D8/a8uNZ9+btmuvKtElt
- M1Pu2FmrMJoozUBHsTazYwIRAauDLsOgkODRbTPuUjYI9mZGui7csIYMy4b4aNvGugr3qlMITIHQ0
- O6DfWfM+B1u5/ueE0GfTSOeuIsZx4i4LvTpqmdB2vXYQJNFUZsGFpa+jlZPGTIk0W3Bvdq/KpA6tg
- BYG51ele303Dp6MflY9bNiiZJMfD4ZW0yczVMd7Fl2aKJtIffmik0wUoEDcsCRdi/zqyuWnd+mf9R
- +nRhuF2gomWGZ1g9GKI6WZX1IbFk3NMQWAduoysaW4un576mbLB2zOjJ0wckzaWSI3CgWWsapFJqg
- vTsSZ5Pw==;
+ bh=GTX0vTRos7KShyz/ObUVYiSs3KYC2oNWMFgYSRqgy2M=; b=QrqOJlbV3p15b7XDyFEDve9q9o
+ 8Z03VJNwkQKqV5hfgfx+opev5+hygl5Qf0KQZqEwM3aY1Omy20r9F/jsUznLLbX+xfIdkB56LePGu
+ 82vIqhE+tuToC4S8iunKau7ZaVLmYKfPr/B+L3/BQ6rnan3Wpk5eJfvNyu6CDCSN33MXCRq+riBNR
+ BrGLgp4u/uNIbVIbwahKHPN8+I0NCMobugPs6h2ZwBZLqkytNxHn3RWg3FcXpMaaQQ54WLYWihZH8
+ yda3t6DFdsF72r14bHnBLFOIGosTtCIC4/6pGdvSF85hRrF3DLxZHcdMTA8lkZti0ylr+b+KcGJJV
+ YTa3l0xQ==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lblYZ-00HVSj-WB; Wed, 28 Apr 2021 14:52:55 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B45F961943;
+ id 1lblYY-00HVQU-Ud
+ for linux-rockchip@lists.infradead.org; Wed, 28 Apr 2021 14:52:54 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AA0676193A;
  Wed, 28 Apr 2021 14:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619621565;
- bh=uJQR0czm+DeAW2PWQeBvZ4Rvzd+S5i8+90myFebensI=;
+ s=k20201202; t=1619621564;
+ bh=iGZe8aaDJjF2bkRR0aV7yAcLZay9Jx4R6lGwINryHgY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gd0RWjwESYvChE/vXJCMbgMdur/zgpmsndv+U7m1KPFsydIARd9u/rGZfIxnlVWAK
- dEC37mB/No0AtlFC4lrWsscAwp8/zNCRUShMCT9rLYXvM5lw01qGK7jOhujoyJC/Vr
- /k66J5MVQ/fBrmTq2ao4mLnRs/Z/AJPnOvR3Z7rJnNTPIFRXy74874ksxc1UiQxncJ
- Ky6bALQZhCk2CSmQZYAazp9dOf8L+iqw9CvSwhw40Ft4DLVJ8oIV6stXFrGcoYqxw5
- ilknZ4+VUlkH7MlSRyNF6zFpOWMQQZT2E1BxZ4PXQA9m/3aw5ghLONpdS8tV9EFPn1
- Q5rn/6+Bh6vBQ==
+ b=r7Zsn7ZfibgO5NJ4O8W7hayhDjJqzikad8KZcJEMy4lO6Tn7c1Z9mq4POy6ubsaNP
+ EevLODRnXfD9y4mg3Jb8InxQUOfR89aCWmOcVk67go3jfWYt8Z2ua1Vol8/5h9J+y+
+ HUs3ADhigpOxMlJwTfi3kVMCPSg/qr1HNKwKzct5J59tQ3+Tza/AYLeBbf9Eki6GXM
+ wadAqpYw59ZjJ17iQcLkDHfLelN7Yiq9xGn8U4ueZeZ0yE2LxmnQbEulEHX+WqXLEh
+ oe0VvCNPYVjwSktLb+OGh+KHNrDm9IlHHRVsaGZ4l1K/hk/tCFoEf4NAQC2epp4MuH
+ IUpDoVR0Gc6Lg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lblYR-001DsL-7K; Wed, 28 Apr 2021 16:52:43 +0200
+ id 1lblYS-001Dtv-AF; Wed, 28 Apr 2021 16:52:44 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
- Jacob Chen <jacob-chen@iotwrt.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 57/79] media: rockchip/rga: use pm_runtime_resume_and_get()
-Date: Wed, 28 Apr 2021 16:52:18 +0200
-Message-Id: <cf0f0cb266c8b552f03583590a3b02a56f751c79.1619621413.git.mchehab+huawei@kernel.org>
+ Philipp Zabel <p.zabel@pengutronix.de>, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH v4 78/79] media: hantro: use pm_runtime_resume_and_get()
+Date: Wed, 28 Apr 2021 16:52:39 +0200
+Message-Id: <803c39fafdd62efc6f9e4d99a372af2c6955143b.1619621413.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619621413.git.mchehab+huawei@kernel.org>
 References: <cover.1619621413.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_075252_094563_D3B8EE59 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20210428_075251_104230_5F9DB810 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,44 +106,74 @@ Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with us
 added pm_runtime_resume_and_get() in order to automatically handle
 dev->power.usage_count decrement on errors.
 
-Use the new API, in order to cleanup the error check logic.
+While there's nothing wrong with the current usage on this driver,
+as we're getting rid of the pm_runtime_get_sync() call all over
+the media subsystem, let's remove the last occurrence on this
+driver.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/media/platform/rockchip/rga/rga-buf.c | 3 +--
- drivers/media/platform/rockchip/rga/rga.c     | 4 +++-
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/media/hantro/hantro_drv.c | 23 ++++++++++++++++-------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
-index bf9a75b75083..81508ed5abf3 100644
---- a/drivers/media/platform/rockchip/rga/rga-buf.c
-+++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-@@ -79,9 +79,8 @@ static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
- 	struct rockchip_rga *rga = ctx->rga;
- 	int ret;
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 595e82a82728..25fa36e7e773 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -56,14 +56,12 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
+ 	return hantro_get_dec_buf_addr(ctx, buf);
+ }
  
--	ret = pm_runtime_get_sync(rga->dev);
-+	ret = pm_runtime_resume_and_get(rga->dev);
- 	if (ret < 0) {
--		pm_runtime_put_noidle(rga->dev);
- 		rga_buf_return_buffers(q, VB2_BUF_STATE_QUEUED);
- 		return ret;
- 	}
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 9d122429706e..bf3fd71ec3af 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -866,7 +866,9 @@ static int rga_probe(struct platform_device *pdev)
- 		goto unreg_video_dev;
- 	}
+-static void hantro_job_finish(struct hantro_dev *vpu,
+-			      struct hantro_ctx *ctx,
+-			      enum vb2_buffer_state result)
++static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
++				    struct hantro_ctx *ctx,
++				    enum vb2_buffer_state result)
+ {
+ 	struct vb2_v4l2_buffer *src, *dst;
  
--	pm_runtime_get_sync(rga->dev);
-+	ret = pm_runtime_resume_and_get(rga->dev);
-+	if (ret < 0)
-+		goto unreg_video_dev;
+-	pm_runtime_mark_last_busy(vpu->dev);
+-	pm_runtime_put_autosuspend(vpu->dev);
+ 	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
  
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+ 	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+@@ -81,6 +79,16 @@ static void hantro_job_finish(struct hantro_dev *vpu,
+ 					 result);
+ }
+ 
++static void hantro_job_finish(struct hantro_dev *vpu,
++			      struct hantro_ctx *ctx,
++			      enum vb2_buffer_state result)
++{
++	pm_runtime_mark_last_busy(vpu->dev);
++	pm_runtime_put_autosuspend(vpu->dev);
++
++	hantro_job_finish_no_pm(vpu, ctx, result);
++}
++
+ void hantro_irq_done(struct hantro_dev *vpu,
+ 		     enum vb2_buffer_state result)
+ {
+@@ -155,7 +163,8 @@ static void device_run(void *priv)
+ 	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+ 	if (ret)
+ 		goto err_cancel_job;
+-	ret = pm_runtime_get_sync(ctx->dev->dev);
++
++	ret = pm_runtime_resume_and_get(ctx->dev->dev);
+ 	if (ret < 0)
+ 		goto err_cancel_job;
+ 
+@@ -165,7 +174,7 @@ static void device_run(void *priv)
+ 	return;
+ 
+ err_cancel_job:
+-	hantro_job_finish(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
++	hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
+ }
+ 
+ static struct v4l2_m2m_ops vpu_m2m_ops = {
 -- 
 2.30.2
 
