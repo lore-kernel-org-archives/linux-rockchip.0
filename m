@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F768C433ED
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79866C43460
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:50:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DAE1761449
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:49:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAE1761449
+	by mail.kernel.org (Postfix) with ESMTPS id 202C061443
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Apr 2021 13:50:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 202C061443
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJKI2cWlM7pWBUydJ4QJzpTkX11IDHaqNNqOYa3Jx5M=; b=ojD3Cw/yZWiVnhifJ2wCrxUe4w
-	Rj1aNydoznIc0Jf2xrO541JVgeBTpDrqxa5hdZuPGW5FAvQorbARY6qDrvg/0dePKDMm/74e7FIh5
-	0HPQlxa6H3p13yOOIYZKNIQVnEKnM7YgnaAE12gWSxnlsJ6aDT+zKa0Ye+QzrYuwfMEP02SBdDk3F
-	DyzwpF4MGKHA22r1DJuaxTthUwTNVPFBmW+TpVXf4KZ8Si5sQCeBAo8XqRAK/R+rrWbPTUDQzpfIw
-	4fquR4kJ961kxftWPbA3VWqt6K1+VRta7kpgIGVlELru26Bxf9ONBKjVD6urzxA5IIkOiMsYesxub
-	fjXb+0DQ==;
+	bh=GsxAEiZIEj8qtaQHRMkAn2b3H42KKh6Qm6TynISlvR8=; b=XjxNNN7HiWDyH+hRtvA9YfHpps
+	WiZfxCZhB62mCZIoaHXKxe6OEApzXEEf4uQa8bWi+qauATW2evN85B2ohDSR0YnulkINarns3ULGJ
+	EIBP+paoi7tIQR2xr6RwnCLTuuYINJ6Y8a1j9cktiZuwlIgksMmmw3QjAtRRJsCGq3FehwMXBg027
+	W5qFPSwiVx0g4b7G1OCuQuQJzPa1JCtK8KpPRS7EhAtT1g6ZVCJ2uNfN9mwaWVzNL/DL/F6PhoZBh
+	6s9SRKkh4/rzfuIoJ+1T1+bks4Ia2DUKHa716lqKDc0bOU2C1aRpIgOfctbOkkDNdE/vj1vg4/dlk
+	uIBp7alg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbkZK-003Yct-BH; Wed, 28 Apr 2021 13:49:39 +0000
+	id 1lbkZl-003YmK-F4; Wed, 28 Apr 2021 13:50:01 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbkY7-003YP6-Nx; Wed, 28 Apr 2021 13:48:19 +0000
+ id 1lbkY8-003YPG-Ov; Wed, 28 Apr 2021 13:48:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=MWs3NhAaCq8rtk0/aMiR2FSXKyxnekezxSp7ywS9kMM=; b=ignL8OR/IliLB4Cf7WjuM50IHb
- M5SGAphaUe0NGSyAH7gb+ttYrxwRTrtmGXUuAxbYLtG5gEv+4Vo7RT8cobkNOYhQM7CK4zwrH4qh8
- 7ACQfC2RNLLkPu/+GXB/1tku1gTnzxGVX6c8LOrMQx5zGYlohgFCw07ticVW7nBAKsJRC5c3DT1VD
- GSZHdBdpVIY8DWzCxLuxJq6hYlBqu4py+tOPnDGgTcf/pMxQo3s43nkHTVWqlgIHhxx1o0v7TNUtL
- Sb2wQR5QKNasttiZ/0ezVF88sSBm6VJonLWINHFeKRgxeQ3iUQbpppD1ZfxdEH0iqokT3wMZiIxZS
- HL3woXYQ==;
-Received: from lucky1.263xmail.com ([211.157.147.132])
+ bh=OnpgthqlwWLHbNCU8zvsBtSU7OO67z/aMlogdMs2yTk=; b=s4+R1rQFgfuLA47GbcFhr7FV5k
+ QY/Nr93KSzqBXEmKi3Z6NUtoR+Env+wCmCRTx8qK2TvN92cDNr4iWWUarm1jxfNNfuF4fSkHRdaL2
+ a/IAsUv1LJGiio442oLMN4HjRVDK3EEtjk0o+Q9BgvTy+1+S6iNjm1IzWppeMCqJB1ko6OcWk3wUX
+ 4bJOSbwwSpD132w4V5bOwKRLEV3cipPbjVk5m01L1jC2YrgRoFbwHFpZZb1WVRrLKuTqRTMSaFFkC
+ sjCRPaFLC2IdZ+nPsccgJM81lPGVHuIc3KOdYUoryYHZmbsmgP/5GcLT3cZ62uHCE+lKsRr+AUFWc
+ d1t5Es6g==;
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbkY5-00HSu3-27; Wed, 28 Apr 2021 13:48:18 +0000
+ id 1lbkY4-00HStx-Rr; Wed, 28 Apr 2021 13:48:19 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id A8E5FF3822;
- Wed, 28 Apr 2021 21:48:10 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id ECA40AB22E;
+ Wed, 28 Apr 2021 21:48:05 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -59,9 +59,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P2750T140649007400704S1619617681633012_; 
- Wed, 28 Apr 2021 21:48:10 +0800 (CST)
+ Wed, 28 Apr 2021 21:48:05 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <7185ae63b5b0517c005d303060098782>
+X-UNIQUE-TAG: <a753825bce6abdf78f6cd0fb8c14db17>
 X-RL-SENDER: cl@rock-chips.com
 X-SENDER: cl@rock-chips.com
 X-LOGIN-NAME: cl@rock-chips.com
@@ -83,16 +83,17 @@ Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
  david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
  cl@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
  jamie@jamieiles.com, linux-watchdog@vger.kernel.org, maz@kernel.org
-Subject: [PATCH v3 04/10] dt-bindings: watchdog: dw-wdt: add description for
+Subject: [PATCH v3 01/10] dt-bindings: i2c: i2c-rk3x: add description for
  rk3568
-Date: Wed, 28 Apr 2021 21:47:53 +0800
-Message-Id: <20210428134759.22076-5-cl@rock-chips.com>
+Date: Wed, 28 Apr 2021 21:47:50 +0800
+Message-Id: <20210428134759.22076-2-cl@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210428134759.22076-1-cl@rock-chips.com>
 References: <20210428134759.22076-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_064817_440493_E2FB9F25 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20210428_064817_804854_D20697C3 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,26 +114,26 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Liang Chen <cl@rock-chips.com>
 
-add "rockchip,rk3568-wdt", "snps,dw-wdt" for watchdog nodes on
-a rk3568 platform to snps,dw-wdt.yaml.
+add "rockchip,rk3568-i2c", "rockchip,rk3399-i2c" for i2c nodes on
+a rk3568 platform to i2c-rk3x.yaml.
 
 Signed-off-by: Liang Chen <cl@rock-chips.com>
 ---
- Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-index b58596b1831d..6461eb4f4a27 100644
---- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-@@ -27,6 +27,7 @@ properties:
-               - rockchip,rk3328-wdt
-               - rockchip,rk3368-wdt
-               - rockchip,rk3399-wdt
-+              - rockchip,rk3568-wdt
-               - rockchip,rv1108-wdt
-           - const: snps,dw-wdt
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+index 7f254d79558c..5339dd4fc370 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+@@ -36,6 +36,7 @@ properties:
+               - rockchip,px30-i2c
+               - rockchip,rk3308-i2c
+               - rockchip,rk3328-i2c
++              - rockchip,rk3568-i2c
+           - const: rockchip,rk3399-i2c
  
+   reg:
 -- 
 2.17.1
 
