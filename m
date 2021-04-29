@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16696C43470
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 08:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E350C433ED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 08:14:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FF6961419
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 08:14:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FF6961419
+	by mail.kernel.org (Postfix) with ESMTPS id BB57A61418
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 08:14:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB57A61418
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZfSlG45HfwWimHFQZLOtnv+DvXSqbJHoHwItxwN079E=; b=XhxDAW/fJFVLSvu2buDP8ASm0y
-	YrYmRFKF+SmYuTpiV/s/hVDfpeAVHdTjj46BMiL1baNNpyZlMQBpM975UY6sIkEJzHM411Wq3yLaz
-	A2WqNOskq76uRjQxc1UJn1/BW6lELbFKBs+RYpFq4nuM3h6BvHlTE7hgT9Bg6i/JH6G6LIFTkHX05
-	DXhisj8+zyMWRHwY3tBnZ82c8NO3vDpCMuFzhGaihVt+wfYBzHAVVLc8DOjxXzmA3Xya3FQYEAfFo
-	S0hoXf54Xp3JlOAe4ROU02KDo33kn2w4kU1XgF+qet0o8Tb7fPaJPZnrzcA7pl5g3YUVVpjAChEDK
-	cKiw910Q==;
+	bh=3qP/4dUDkwKGqB5OhItl1hI9e7LEkfwffXGW9Iojjhk=; b=XYei280/kgpAY/XKR3QEB6SvDA
+	4XR9ALHcaWxOj3JowdaZXAw8r5fjyEjamJe6XLG4a8uKTun/ein0UoB37UU5hYD9r3tDrtpVokqkK
+	erdCk7erjL7fTy4THkO+NJzIoPKylzor9Dnb63iuz9fvczI8h2qLjV2/HMODMRyhr/4enSau6LhzX
+	bpB1px7jzBigmWOQvIYYyJW6X/lANAY6xjJ8Xn/a9shl7QJqX+H7f4HFFa2d+ai6Ys8oohAgOsGjV
+	gxatz8YTpTZva5dD1jOO4vohtbpuOh1xzcgUJCXi/0hDJvsc2DW94is8eUvp4Ch5fswmdDDmwmCS/
+	l0P2AbjQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc1oK-005Gvt-OW; Thu, 29 Apr 2021 08:14:14 +0000
+	id 1lc1on-005HAk-CW; Thu, 29 Apr 2021 08:14:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc1nP-005GYR-H9; Thu, 29 Apr 2021 08:13:15 +0000
+ id 1lc1nf-005GeV-3q; Thu, 29 Apr 2021 08:13:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=++mkiVdYfLYGy9uKWfS5r+EscaRVpxQOQhC8KovZaR4=; b=21Dq0Ei6McfonD7erGUeOylfQ2
- xDmwsAn5xawyG57FMJ+dYodsVHRYnRCmYWTBGGe8iRPPIDmCfqag5f7NTJLi9xYPEn+v8y7AvhbH8
- vsO64CkH3JUI/hyzZZh7GF9XwqOGFULJ3M+mKIS3s6ZVDMv3PNGuPkTHkvWZ62TJiOSx5C2OcWlEt
- rCXNAMq472UCWAyVIOd+p6HkOvCyzJdliOE0fAJL6/wzpUwQ37VrAceXZK1lhAPlxufHp/gH6UtUk
- js/n/hD8acsBZEmx/t8Yaz+vFX81liGjBa1A/RDW9xJ/eKnqztwkG4VWXNtTCc7+TUDmb+J4BSU8N
- VlL3lLqA==;
-Received: from lucky1.263xmail.com ([211.157.147.133])
+ bh=w58VUjAZoGGqALlO7cm3pzBe1lO1nXIwyEdrhkVALWY=; b=r73p2KoUv/PSzCurZKmvJImzOQ
+ /l1XLmfYyk/3saDhkrtjVJtb2/BPFLTtmo8wf66nCfn5EFkvgFMBD52wL8Aw5L3KbaEifROwdoknz
+ QJrChZ6DBSJmQnvdB162ymcmJ1fO+pZktZJYDJcRwyyBrm3RNUM9las9QQBZzx6SbuNJJATvLkYEv
+ TOx3zSoYxsHNI8yO9Ut0IbeJsQ6obR/LzuqAo0zF8pStVXP/E7KUE2IZS6VaFAuVlSDgxKC3YS7aj
+ kZb5guIB1/NrMM2FAYibXTpGmUfL9Ktc9RCaJd0KhyAa2YhP/iS/m4t8e6Z2i1gHnWfFkn0rbRxCl
+ fVKgZQLA==;
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc1nN-000Tj1-25; Thu, 29 Apr 2021 08:13:14 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 721D5CD927;
- Thu, 29 Apr 2021 16:13:11 +0800 (CST)
+ id 1lc1nb-000Tkg-TM; Thu, 29 Apr 2021 08:13:29 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 482AFBA1B9;
+ Thu, 29 Apr 2021 16:13:26 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -58,10 +58,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P2750T140649275836160S1619683988244514_; 
- Thu, 29 Apr 2021 16:13:10 +0800 (CST)
+ P31919T139683992426240S1619684003975702_; 
+ Thu, 29 Apr 2021 16:13:26 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b27ab1de2e4b11fefa54563e4e5665cb>
+X-UNIQUE-TAG: <eee30af8476834019eba667cd31b47e4>
 X-RL-SENDER: cl@rock-chips.com
 X-SENDER: cl@rock-chips.com
 X-LOGIN-NAME: cl@rock-chips.com
@@ -83,17 +83,15 @@ Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
  david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
  cl@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
  jamie@jamieiles.com, linux-watchdog@vger.kernel.org, maz@kernel.org
-Subject: [PATCH v4 06/10] dt-bindings: gpio: change items restriction of clock
- for rockchip, gpio-bank
-Date: Thu, 29 Apr 2021 16:13:06 +0800
-Message-Id: <20210429081306.17784-1-cl@rock-chips.com>
+Subject: [PATCH v4 07/10] dt-bindings: soc: rockchip: Convert grf.txt to YAML
+Date: Thu, 29 Apr 2021 16:13:21 +0800
+Message-Id: <20210429081321.17855-1-cl@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210429081151.17558-1-cl@rock-chips.com>
 References: <20210429081151.17558-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_011313_263934_60C9C41B 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210429_011328_314582_9350D726 
+X-CRM114-Status: GOOD (  17.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,27 +112,154 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Liang Chen <cl@rock-chips.com>
 
-The clock property need 2 items on some rockchip chips.
+Current dts files with 'grf' nodes are manually verified. In order to
+automate this process grf.txt has to be converted to YAML.
+
+Add new descriptions for:
+"rockchip,rk3568-grf", "syscon", "simple-mfd"
+"rockchip,rk3568-pmugrf", "syscon", "simple-mfd"
 
 Signed-off-by: Liang Chen <cl@rock-chips.com>
 ---
- Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/soc/rockchip/grf.txt  | 61 -------------------
+ .../devicetree/bindings/soc/rockchip/grf.yaml | 60 ++++++++++++++++++
+ 2 files changed, 60 insertions(+), 61 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.txt
+ create mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.yaml
 
-diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-index d993e002cebe..7b3fd2975c74 100644
---- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-+++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-@@ -22,7 +22,8 @@ properties:
-     maxItems: 1
- 
-   clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 2
- 
-   gpio-controller: true
- 
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.txt b/Documentation/devicetree/bindings/soc/rockchip/grf.txt
+deleted file mode 100644
+index f96511aa3897..000000000000
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.txt
++++ /dev/null
+@@ -1,61 +0,0 @@
+-* Rockchip General Register Files (GRF)
+-
+-The general register file will be used to do static set by software, which
+-is composed of many registers for system control.
+-
+-From RK3368 SoCs, the GRF is divided into two sections,
+-- GRF, used for general non-secure system,
+-- SGRF, used for general secure system,
+-- PMUGRF, used for always on system
+-
+-On RK3328 SoCs, the GRF adds a section for USB2PHYGRF,
+-
+-ON RK3308 SoC, the GRF is divided into four sections:
+-- GRF, used for general non-secure system,
+-- SGRF, used for general secure system,
+-- DETECTGRF, used for audio codec system,
+-- COREGRF, used for pvtm,
+-
+-Required Properties:
+-
+-- compatible: GRF should be one of the following:
+-   - "rockchip,px30-grf", "syscon": for px30
+-   - "rockchip,rk3036-grf", "syscon": for rk3036
+-   - "rockchip,rk3066-grf", "syscon": for rk3066
+-   - "rockchip,rk3188-grf", "syscon": for rk3188
+-   - "rockchip,rk3228-grf", "syscon": for rk3228
+-   - "rockchip,rk3288-grf", "syscon": for rk3288
+-   - "rockchip,rk3308-grf", "syscon": for rk3308
+-   - "rockchip,rk3328-grf", "syscon": for rk3328
+-   - "rockchip,rk3368-grf", "syscon": for rk3368
+-   - "rockchip,rk3399-grf", "syscon": for rk3399
+-   - "rockchip,rv1108-grf", "syscon": for rv1108
+-- compatible: DETECTGRF should be one of the following:
+-   - "rockchip,rk3308-detect-grf", "syscon": for rk3308
+-- compatilbe: COREGRF should be one of the following:
+-   - "rockchip,rk3308-core-grf", "syscon": for rk3308
+-- compatible: PMUGRF should be one of the following:
+-   - "rockchip,px30-pmugrf", "syscon": for px30
+-   - "rockchip,rk3368-pmugrf", "syscon": for rk3368
+-   - "rockchip,rk3399-pmugrf", "syscon": for rk3399
+-- compatible: SGRF should be one of the following:
+-   - "rockchip,rk3288-sgrf", "syscon": for rk3288
+-- compatible: USB2PHYGRF should be one of the following:
+-   - "rockchip,px30-usb2phy-grf", "syscon": for px30
+-   - "rockchip,rk3328-usb2phy-grf", "syscon": for rk3328
+-- compatible: USBGRF should be one of the following:
+-   - "rockchip,rv1108-usbgrf", "syscon": for rv1108
+-- reg: physical base address of the controller and length of memory mapped
+-  region.
+-
+-Example: GRF and PMUGRF of RK3399 SoCs
+-
+-	pmugrf: syscon@ff320000 {
+-		compatible = "rockchip,rk3399-pmugrf", "syscon";
+-		reg = <0x0 0xff320000 0x0 0x1000>;
+-	};
+-
+-	grf: syscon@ff770000 {
+-		compatible = "rockchip,rk3399-grf", "syscon";
+-		reg = <0x0 0xff770000 0x0 0x10000>;
+-	};
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+new file mode 100644
+index 000000000000..93231b95554b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -0,0 +1,60 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/rockchip/grf.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip General Register Files
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    - items:
++        - enum:
++            - rockchip,px30-grf
++            - rockchip,px30-pmugrf
++            - rockchip,px30-usb2phy-grf
++            - rockchip,rk3036-grf
++            - rockchip,rk3066-grf
++            - rockchip,rk3188-grf
++            - rockchip,rk3228-grf
++            - rockchip,rk3288-grf
++            - rockchip,rk3288-sgrf
++            - rockchip,rk3308-core-grf
++            - rockchip,rk3308-detect-grf
++            - rockchip,rk3308-grf
++            - rockchip,rk3328-grf
++            - rockchip,rk3328-usb2phy-grf
++            - rockchip,rk3368-grf
++            - rockchip,rk3368-pmugrf
++            - rockchip,rk3399-grf
++            - rockchip,rk3399-pmugrf
++            - rockchip,rk3568-grf
++            - rockchip,rk3568-pmugrf
++            - rockchip,rv1108-grf
++            - rockchip,rv1108-usbgrf
++        - const: syscon
++        - const: simple-mfd
++
++  reg:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    pmugrf: syscon@ff320000 {
++       compatible = "rockchip,rk3399-pmugrf", "syscon", "simple-mfd";
++       reg = <0xff320000 0x1000>;
++    };
++
++    grf: syscon@ff770000 {
++       compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
++       reg = <0xff770000 0x10000>;
++    };
 -- 
 2.17.1
 
