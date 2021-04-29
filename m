@@ -7,97 +7,92 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83C55C43461
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 15:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3A21C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 16:25:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3842613F8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 15:25:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3842613F8
+	by mail.kernel.org (Postfix) with ESMTPS id 39BCB61407
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Apr 2021 16:25:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39BCB61407
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:References:In-Reply-To:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3aUxXk4AYEtMptu+sgaxU5SXSMwfvoXWjNWJTINQN38=; b=NPXKp5cq0YTdO5O327l/2xbqU3
-	WwiLI69Frr08ynq8dt89Zob/WR7EFqfvdSoiIMSZjH8Cuf2+Jo7uXqsniOBj86cYIOoxakc513nuj
-	gqs+u/4O900pnma9wQoNkREyMXRbCJrfcNFHLACL9/Ra+dI1EILsO3avIunHD5wFFSSWx7VYaof9k
-	XFzHodLvtU/njAJpN04mvxPagODt1KmDfFlQVqhoOHsEgYm4IzpxBV0LJKPoZDpyt/eq5pJyoJD12
-	loIQSNJBcDEgulLbrbkMtKalsTvkeKYdm96W9NGNI528Q14kkM9q9dkReOMTASl+uF/rDMqYT5fET
-	c+75dkVg==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ErI7w1V6268sdOgql4f6KyxADGIKHrS2jVnsL9eUm+M=; b=L7BTUt2p1m4z+jOHzvJ4j0bRZ
+	v+3wiH1VwrAjIuzhBbpS/jbb0UxukL8hNFpLlLjAlrq9PcgEh+vRUyjJ/7u5eCUHM4sMkgZ8AH456
+	FFZzOPxJR3a101immNfXvQAxFxXuakGp3uEuh77pZJ2Qu25bsXq6aIy9cThjyhmEdyafjUd2zovVm
+	FeHmYkVBuOCARYwdQB8eW9SIQln9AmABbll8YWeG+PC1Ep/2DEKtg0/5vQCOp+SmWO9wdjLawt7hg
+	6JoENQrDQQY3xlU4o6RiIOtMzS2H7CZIgZHjA3HG5KFqpz2NmwAq05I061qLJcWg0wufLddjyAliH
+	wZdPP86tw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc8Xm-005x6h-TE; Thu, 29 Apr 2021 15:25:34 +0000
+	id 1lc9U5-0062sQ-VU; Thu, 29 Apr 2021 16:25:50 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc8Xc-005x4V-8O; Thu, 29 Apr 2021 15:25:24 +0000
+ id 1lc9U4-0062s3-35
+ for linux-rockchip@desiato.infradead.org; Thu, 29 Apr 2021 16:25:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:References:
- In-Reply-To:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=i0xoMhXwtne9LnlYePyFNsxRYqWjGV7vCqvSAINSLGU=; b=4nflTJl0/9KtuSsHsztkaVThTh
- /sdJRt4fGcXETSS/oKxNm+MVZWlmCtT7M+kNxrufsp7HiEJATT1bTVsWWiwDwGs6S0kUFwRJk87Dx
- wMGrxcKJG/WQQvTS+tqStB4xWoVe+w4Fx/iZD5uDkkPmZN1ryP3QF80nuNVA5ltwfPX0DE9MmlmtO
- ISpkELkOwSSh9OBlA2o8iHeIn4Ve1fqvcedOUmTQGyOxFPPV58aJPg4uMgxO61+pzQH/LoVXJDDux
- iDBRyko5/wXrB1aGk3tj2ntO0S0SFIlvyGZJUtMIwHUxaomLKCIwXoTPpBWHxr51JeHjvLWkucsQc
- qY9S1nLA==;
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+ bh=UXnoFKwuMiPzvvK01lRtolly0aZXNow6zBk2bpS1MGg=; b=un2nqqE5StF3C1eJg9Ev2biNTk
+ FBxneAjOVSrQjMd6FoFmz7Er2Vo3vbWrS5XIOddZFysMx/dJkcnc/PB+LR25On8x30IJtL4aKcKQt
+ p/GonHvuS53HGqPCvBAWh02sV2epBGGv0qB6Trl4X4u4exo1v4nPei8LzYVr6QUByGcqdKdz71TzC
+ 9mamBUNfmUWak1K8cUh08HKhBleUJFmMwX13OYmBAmkKnNU9I4g8KqZAVcUgln0qjnyip8WhnwuMM
+ cjRgU+/9mvcetozyjU8U/msCoBLoKV08R/9Ly2hdDTJv1p5MclSRoO6erdjDSWfqLOPd/GSqzm3Tr
+ Z8VBFhWA==;
+Received: from mail-oo1-f43.google.com ([209.85.161.43])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc8XZ-000itD-JZ; Thu, 29 Apr 2021 15:25:23 +0000
-Received: by mail-ot1-f50.google.com with SMTP id
- 35-20020a9d05260000b029029c82502d7bso30269479otw.2; 
- Thu, 29 Apr 2021 08:25:20 -0700 (PDT)
+ id 1lc9U1-000lJu-2Y
+ for linux-rockchip@lists.infradead.org; Thu, 29 Apr 2021 16:25:46 +0000
+Received: by mail-oo1-f43.google.com with SMTP id
+ s1-20020a4ac1010000b02901cfd9170ce2so14792396oop.12
+ for <linux-rockchip@lists.infradead.org>; Thu, 29 Apr 2021 09:25:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=i0xoMhXwtne9LnlYePyFNsxRYqWjGV7vCqvSAINSLGU=;
- b=aTBVFPU5rFtmqQfjs16ZHadC/ZgO3faa7HpiuDHibKaIQa/2iO7abvSxLSneGiMacU
- JrdolWP087SGEOBLDIE1y4NaYNgnsYlwiAJic41S4DayY9f5sZZFiNunYRqX5yCh28LO
- bUZbO43xICOMUQH4GaNXqsRNHt4APwnLMixSbx8ChTNQXlvVhs/bOEiyp0GbzJvH+ZVG
- iDosOY80QAaLBJcWd4RFQ/6+MIIwltRtjZC6szELOHgxW66nCz6UHbLiQcNrBIeP0Q9Y
- UL004GB+D9NI0ppD3/QN1cjj1lluQQo8heBCE8SEOM2gh7hOdSLCac+rMaB576n9l5rN
- yxEg==
-X-Gm-Message-State: AOAM532SBbopjQEXbeDT+WxTaUnvvjInV0ADVybuKyU/cARQLPKeJqqb
- S59vAqe+gSoVpJZRR/XONw==
-X-Google-Smtp-Source: ABdhPJxEU28Uo1HsSxBn20WvETdomdWerhn4crR+liE7z6I2O6zQ+ZVGdv7UMW7On1mtAFTke7piXQ==
-X-Received: by 2002:a05:6830:2456:: with SMTP id
- x22mr28339399otr.262.1619709920279; 
- Thu, 29 Apr 2021 08:25:20 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UXnoFKwuMiPzvvK01lRtolly0aZXNow6zBk2bpS1MGg=;
+ b=UtGIgepRQJCAw40IH4b2QLiY4DvAApN9E2NzcPnPCPyRKH89QQ8eQujTEtDGnjp0ch
+ 0YKbD75R3j7rWqbFSJnN69MjLx2O2SsmncWRJyu4LaMweqt/1NqEE1Q7HfvU3SHE0IJT
+ MmH+yGvOPaJ+3SKjD+14eFQaXuGNtN5u1LYcU8peGH+uJYCOCCOMS8N18qn2mMw/tiae
+ vGlB5YGurKc6Fwp5AHIt1yppr5e3jByF20aUxuJ7urJwxzPMzUjG9Z8YRDTg6SwpbEGT
+ K0s6OnbbPuU5vrZgwUNrPluoX2PEWZU2a5KKV/sM19K0dhl5MAIcRnxI2d4LMS5aGbLo
+ Yu9A==
+X-Gm-Message-State: AOAM531c5WKdWti3rAlucWolbZRGa2h/LH7+8BGZUdjXHjfejnnPKMxM
+ ZdllG8WgcV7CTZ/YXK2t2Q==
+X-Google-Smtp-Source: ABdhPJy/SwOW3kA4MZSXV5430F6E+2Y4h2VL5FNijyTPzx1U3UMp925R3nTW0bafrR0xvJOjTuv9wQ==
+X-Received: by 2002:a4a:8d81:: with SMTP id i1mr625383ook.55.1619713543630;
+ Thu, 29 Apr 2021 09:25:43 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id m5sm25975ots.13.2021.04.29.08.25.18
+ by smtp.gmail.com with ESMTPSA id l11sm48226ooq.44.2021.04.29.09.25.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Apr 2021 08:25:19 -0700 (PDT)
-Received: (nullmailer pid 1303438 invoked by uid 1000);
- Thu, 29 Apr 2021 15:25:15 -0000
+ Thu, 29 Apr 2021 09:25:43 -0700 (PDT)
+Received: (nullmailer pid 1375643 invoked by uid 1000);
+ Thu, 29 Apr 2021 16:25:42 -0000
+Date: Thu, 29 Apr 2021 11:25:42 -0500
 From: Rob Herring <robh@kernel.org>
-To: cl@rock-chips.com
-Cc: zhangqing@rock-chips.com, uwe@kleine-koenig.org, heiko@sntech.de,
- jensenhuang@friendlyarm.com, devicetree@vger.kernel.org, linux@roeck-us.net,
- michael@amarulasolutions.com, linux-watchdog@vger.kernel.org,
- jay.xu@rock-chips.com, mail@david-bauer.net,
- linux-rockchip@lists.infradead.org, wens@csie.org,
- linux-serial@vger.kernel.org, ulf.hansson@linaro.org, jamie@jamieiles.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org, jbx6244@gmail.com, linux-i2c@vger.kernel.org,
- wim@linux-watchdog.org, shawn.lin@rock-chips.com, jagan@amarulasolutions.com,
- david.wu@rock-chips.com, cnsztl@gmail.com, gregkh@linuxfoundation.org,
- huangtao@rock-chips.com, maz@kernel.org, linux-mmc@vger.kernel.org
-In-Reply-To: <20210429081321.17855-1-cl@rock-chips.com>
-References: <20210429081151.17558-1-cl@rock-chips.com>
- <20210429081321.17855-1-cl@rock-chips.com>
-Subject: Re: [PATCH v4 07/10] dt-bindings: soc: rockchip: Convert grf.txt to
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, kernel@collabora.com
+Subject: Re: [PATCH 2/2] dt-bindings: timer: convert rockchip, rk-timer.txt to
  YAML
-Date: Thu, 29 Apr 2021 10:25:15 -0500
-Message-Id: <1619709915.260424.1303436.nullmailer@robh.at.kernel.org>
+Message-ID: <20210429162542.GA1372880@robh.at.kernel.org>
+References: <20210424191946.69978-1-ezequiel@collabora.com>
+ <20210424191946.69978-2-ezequiel@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210424191946.69978-2-ezequiel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_082521_664192_3359008E 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20210429_092545_140713_6D6F0397 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,56 +105,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Apr 2021 16:13:21 +0800, cl@rock-chips.com wrote:
-> From: Liang Chen <cl@rock-chips.com>
+On Sat, Apr 24, 2021 at 04:19:46PM -0300, Ezequiel Garcia wrote:
+> Convert Rockchip Timer dt-bindings to YAML.
 > 
-> Current dts files with 'grf' nodes are manually verified. In order to
-> automate this process grf.txt has to be converted to YAML.
-> 
-> Add new descriptions for:
-> "rockchip,rk3568-grf", "syscon", "simple-mfd"
-> "rockchip,rk3568-pmugrf", "syscon", "simple-mfd"
-> 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 > ---
->  .../devicetree/bindings/soc/rockchip/grf.txt  | 61 -------------------
->  .../devicetree/bindings/soc/rockchip/grf.yaml | 60 ++++++++++++++++++
->  2 files changed, 60 insertions(+), 61 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.txt
->  create mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+>  .../bindings/timer/rockchip,rk-timer.txt      | 27 --------
+>  .../bindings/timer/rockchip,rk-timer.yaml     | 67 +++++++++++++++++++
+>  2 files changed, 67 insertions(+), 27 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+>  create mode 100644 Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
 > 
+> diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+> deleted file mode 100644
+> index d65fdce7c7f0..000000000000
+> --- a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.txt
+> +++ /dev/null
+> @@ -1,27 +0,0 @@
+> -Rockchip rk timer
+> -
+> -Required properties:
+> -- compatible: should be:
+> -  "rockchip,rv1108-timer", "rockchip,rk3288-timer": for Rockchip RV1108
+> -  "rockchip,rk3036-timer", "rockchip,rk3288-timer": for Rockchip RK3036
+> -  "rockchip,rk3066-timer", "rockchip,rk3288-timer": for Rockchip RK3066
+> -  "rockchip,rk3188-timer", "rockchip,rk3288-timer": for Rockchip RK3188
+> -  "rockchip,rk3228-timer", "rockchip,rk3288-timer": for Rockchip RK3228
+> -  "rockchip,rk3229-timer", "rockchip,rk3288-timer": for Rockchip RK3229
+> -  "rockchip,rk3288-timer": for Rockchip RK3288
+> -  "rockchip,rk3368-timer", "rockchip,rk3288-timer": for Rockchip RK3368
+> -  "rockchip,rk3399-timer": for Rockchip RK3399
+> -- reg: base address of the timer register starting with TIMERS CONTROL register
+> -- interrupts: should contain the interrupts for Timer0
+> -- clocks : must contain an entry for each entry in clock-names
+> -- clock-names : must include the following entries:
+> -  "timer", "pclk"
+> -
+> -Example:
+> -	timer: timer@ff810000 {
+> -		compatible = "rockchip,rk3288-timer";
+> -		reg = <0xff810000 0x20>;
+> -		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+> -		clocks = <&xin24m>, <&cru PCLK_TIMER>;
+> -		clock-names = "timer", "pclk";
+> -	};
+> diff --git a/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+> new file mode 100644
+> index 000000000000..f1bc3ac7abc8
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml
+> @@ -0,0 +1,67 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/timer/rockchip,rk-timer.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Timer Device Tree Bindings
+> +
+> +maintainers:
+> +  - Daniel Lezcano <daniel.lezcano@linaro.org>
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+This should be someone that knows the h/w and cares about Rockchip.
 
-yamllint warnings/errors:
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: rockchip,rk3288-timer
+> +      - const: rockchip,rk3399-timer
+> +      - items:
+> +          - enum:
+> +            - rockchip,rv1108-timer
+> +            - rockchip,rk3036-timer
+> +            - rockchip,rk3066-timer
+> +            - rockchip,rk3188-timer
+> +            - rockchip,rk3228-timer
+> +            - rockchip,rk3229-timer
+> +            - rockchip,rk3288-timer
+> +            - rockchip,rk3368-timer
+> +            - rockchip,px30-timer
+> +          - const: rockchip,rk3288-timer
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 2
+> +    maxItems: 2
+> +
+> +  clock-names:
+> +    items:
+> +      enum:
+> +        - timer
+> +        - pclk
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/rockchip/grf.yaml: properties:compatible: [{'items': [{'enum': ['rockchip,px30-grf', 'rockchip,px30-pmugrf', 'rockchip,px30-usb2phy-grf', 'rockchip,rk3036-grf', 'rockchip,rk3066-grf', 'rockchip,rk3188-grf', 'rockchip,rk3228-grf', 'rockchip,rk3288-grf', 'rockchip,rk3288-sgrf', 'rockchip,rk3308-core-grf', 'rockchip,rk3308-detect-grf', 'rockchip,rk3308-grf', 'rockchip,rk3328-grf', 'rockchip,rk3328-usb2phy-grf', 'rockchip,rk3368-grf', 'rockchip,rk3368-pmugrf', 'rockchip,rk3399-grf', 'rockchip,rk3399-pmugrf', 'rockchip,rk3568-grf', 'rockchip,rk3568-pmugrf', 'rockchip,rv1108-grf', 'rockchip,rv1108-usbgrf']}, {'const': 'syscon'}, {'const': 'simple-mfd'}]}] is not of type 'object', 'boolean'
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/rockchip/grf.yaml: ignoring, error in schema: properties: compatible
-warning: no schema found in file: ./Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-Documentation/devicetree/bindings/soc/rockchip/grf.example.dt.yaml:0:0: /example-0/syscon@ff320000: failed to match any schema with compatible: ['rockchip,rk3399-pmugrf', 'syscon', 'simple-mfd']
-Documentation/devicetree/bindings/soc/rockchip/grf.example.dt.yaml:0:0: /example-0/syscon@ff770000: failed to match any schema with compatible: ['rockchip,rk3399-grf', 'syscon', 'simple-mfd']
+We can't define the order here? We should fix dts files if they are 
+inconsistent.
 
-See https://patchwork.ozlabs.org/patch/1471595
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+> +    minItems: 2
+> +    maxItems: 2
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/rk3288-cru.h>
+> +
+> +    timer: timer@ff810000 {
+> +        compatible = "rockchip,rk3288-timer";
+> +        reg = <0xff810000 0x20>;
+> +        interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+> +        clocks = <&xin24m>, <&cru PCLK_TIMER>;
+> +        clock-names = "timer", "pclk";
+> +    };
+> -- 
+> 2.30.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
