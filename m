@@ -2,116 +2,103 @@ Return-Path: <SRS0=A12b=J3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1AF8C433B4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 20:29:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05BD9C433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:17:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC4706145A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 20:29:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC4706145A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8D33261466
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:17:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D33261466
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qZajfrmHHROyhYaKOyh4RsinRDpu7ZKpqeWaA9VF3Zo=; b=RQGmAmgYkVpR2dMZ6bNsN8nJc
-	3nD3fvW0o+TNzGclKVc7JmSxr1JM2KBqosRXR8SYgJPVfpR1FXFIsdbVRT1+hc5RwmahUkpz4/WwJ
-	Z014muqC7hT1uAPpRsFGaORxFqM1+JjaAbUuEFrFTGo1U6l7vGxfzhsyZu5dZRKW+Roi6eitwj0ZN
-	ih3IKptAkozMySuUX+j1fFEECmapKB9rXsuC3UZITt5VjgTIZx0QDY+qxV+8oDGWLNV6E0jUzZ3dj
-	JE5A3XI/ms9EwnHYQ2WzuTSq8RyA5flN69+JRxDi5M1W36K0YL2I22Cx4Mxc3Csh9dBHkORLWh0gN
-	c8cQYcrjQ==;
+	 bh=N4D7PK+352m9NtWDLkJCrLDon85yYcTBBS3AAk/C+Is=; b=A0J8D+yOZnVgZlIVu9Zp0OeI9
+	mwbRy56yQ1ea5LVgYTNGX+taPg+jSyilBzoLFk28xuyZdUEgiFF1xrQmf0XpryGacJom7+VWdMTRP
+	dJ+3zxBiFls8B18aoswFNtnSAzDLXg/jAt24hLvsSHznq0B6xpfJmx5rOp5YKEJf93kxnGBRatdW6
+	ngSQ3N9vURgY9Lstj9/z23pkhTa4JSZmj1ZKdOmF5PTkmx+HVfB4nkE3YzIPFXt156i4lgBfm0lg/
+	Q08GKFIBYXHDL8ViLqH2xSpr69dG//ElZk/EkHOnhHf0d9dbOARMcI7LEfcKGsYdeg5g5HXkQ67+i
+	LAXovuXBQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcZlc-008WiO-Fr; Fri, 30 Apr 2021 20:29:40 +0000
+	id 1lcaVv-008cj7-CL; Fri, 30 Apr 2021 21:17:31 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcZlB-008Wd3-Jl; Fri, 30 Apr 2021 20:29:13 +0000
+ id 1lcaPR-008cAY-0F; Fri, 30 Apr 2021 21:11:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=; b=ZufeHkUXh4xwX3uq5XO6W7qsOC
- oB5K+Cq1ljQHt4af294gIBUaYeAguMpJ6+SjIWhoUqYWiuxA8BFr1nkNgtcYlf1Qpl5RdyHoTo8Op
- WDj5aBOpPhxDzcDjYPbIIk/bwKzBUN2xv5VROo5stjXThBL7GtpGhU/y/1X8GmJNP51P3jKHlpDvg
- OPlb7dOfwU+cqlWAFD/7x3pcwnponNneDaWjFwmgazaDN/mzBf7ARgwrrq9Y/rmBfWMvGVJYjwNqn
- 9vRyOPGGpEOMQudh3zgafVghbU1SIT6NOuZN9Fts7Kw/E+RqCsXNxSm5WyeGs9w3BOM6N6veM6BvS
- Ryse6n7w==;
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=kSEgVUlltgSDOONBiS4sAFkzxQMosR8q2b8hfma9UC8=; b=b58QXyz1aUp1GgHb2mokJgz0wF
+ EsXw5w7U9CL0uVazf06MK5XVg2os1VVcZ1bFb9866YHuHbELIEPUItjl+bYYeIa1rHfrJjOihCgsy
+ 45LztpINN7tfEW3DZDv+FT9/u/55QkftE/UL6PH83G/QNRtm0ABB66ttcYUsZzonfhwMVN2nHonGg
+ Jg6/QoxokfPzwOkVyNYlxWQmC3/5xzONAIcdSG2c78vkSFybYrfsK61jkavKWcud7Kn7vr0HkI/OU
+ 1fosZLd0GSykVvfa1KmvmC+jUAMwVyc1Hg9Y/eWui/kXwZbEaioYprrFCGx4BbYzjIbxLNRn2ae6Q
+ QAPWjFMA==;
+Received: from mail-oi1-f180.google.com ([209.85.167.180])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcZl8-001eJa-UZ; Fri, 30 Apr 2021 20:29:12 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a4so13739180ejk.1;
- Fri, 30 Apr 2021 13:29:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=;
- b=EY+IEzBUu9oW5ND5WvGXq8irviGV51BVZB/O3Zuztl09Q1rCW+7Ytf+kbvQ8J/IONX
- sa5FRjyjdK7CfM7edv5v87pTGvSmtSQhm/I9n/IFA6ydKhNL6Pdy4S7zNIWx3F5XKMh4
- QqQYDMQ4KB08czfy3KaNmEagCc92tSObszTsL7tWA9k1Rm/bt/u17BnmBG3fF2J1dwok
- rDWwmQvPFWagsI4tIfva00Jqe4fYsPb56e+ZqYE/EDGbUVI0Pd0mayzLN8H4j3z7lFKg
- H3PpdOHA4dygCIzqWgRCYQBdIVQTC1H7N0gtUv0BcKjlu+mONsymqkgR3tItKiXoHXVg
- tKKA==
+ id 1lcaPO-001fot-DM; Fri, 30 Apr 2021 21:10:47 +0000
+Received: by mail-oi1-f180.google.com with SMTP id k25so71329750oic.4;
+ Fri, 30 Apr 2021 14:10:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=;
- b=D70NuibLPEpdJTULUK3FItEZ/ywmwY6Ytrue6Yr4rsS+qpv8kdDlF384uKu3huPQO6
- ZjthI+teYH+SlifQFFqifT++agmxPvmbVQYcsiJ6HPvZmJ1IqMfIFNbuHCXZv8YLa+H8
- jeeTsES6nxhA0inbSeKKXvOr41XIO1dG+T49ZBeLZKtrySW9HDXIzczbuSbWrZJ6FoHj
- atfXGuisvKVj7Odb8O5rOWm+2DjErWX0wnmHbATPaP0axBheQMI+vMRBd/YW7rtuReEo
- dEPdEm0OCXvWF+c6qwu5aPpD1KrsSk23O1ROV7NOJ4Eow2f7srZ/XCD+OmaVewsNxTe7
- We1w==
-X-Gm-Message-State: AOAM531qIYS3x2hxAR392muhiMOlmhzLHdmRlueR/iw5rsJwn0CTFzp0
- rodKWVsdqwzJ3g2MefLR1DY=
-X-Google-Smtp-Source: ABdhPJzx0kI7Y5mCHmBcgoMkoXDcdMXPnCoSKVhqyWYiLS59obUrogmNsVukVf6Nz96RySLz4B/BRQ==
-X-Received: by 2002:a17:907:1b1e:: with SMTP id
- mp30mr6448680ejc.532.1619814548930; 
- Fri, 30 Apr 2021 13:29:08 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- da25sm2568034edb.38.2021.04.30.13.29.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 30 Apr 2021 13:29:08 -0700 (PDT)
-Subject: Re: [PATCH v4 07/10] dt-bindings: soc: rockchip: Convert grf.txt to
- YAML
-To: Rob Herring <robh@kernel.org>, cl@rock-chips.com
-Cc: heiko@sntech.de, jagan@amarulasolutions.com, wens@csie.org,
- uwe@kleine-koenig.org, mail@david-bauer.net,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, jensenhuang@friendlyarm.com,
- michael@amarulasolutions.com, cnsztl@gmail.com, devicetree@vger.kernel.org,
- ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
- linux-i2c@vger.kernel.org, jay.xu@rock-chips.com, shawn.lin@rock-chips.com,
- david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
- wim@linux-watchdog.org, linux@roeck-us.net, jamie@jamieiles.com,
- linux-watchdog@vger.kernel.org, maz@kernel.org
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=kSEgVUlltgSDOONBiS4sAFkzxQMosR8q2b8hfma9UC8=;
+ b=bf/SloG2HX07iMmUs+V4bHb5imMTGpPpudc268EgYKYGExtFktseJM6QUu7+b6M/12
+ pchkmsoJ+nO3BVXtINtvbpqdnRWaahY1LIXsOwB3M4y4jB9Z3VLbRq7n1NDOpBddIHxt
+ opErlRvodw23oHD/lqZzci67haCK3uPGS4jNwYQoFalOoRfkxsx0JW7aG99+3EC1PxAl
+ Oa8XNau9n/I1MCJ0tbMXcEvACeOzNVsUPhokWCVHmVl+dvHT539tYl4wvD4/lTYRuR8A
+ GMPr7HiGR2naqGU7gGPazJzFV7liLDEeh06UW0vZfQDyfxilBGw3EQcl40r3t7/jlNnh
+ OMyQ==
+X-Gm-Message-State: AOAM5339gZt81J22r+dNdWw0b7wnt4et39qRCk0yWCJg6Y8/5bk4R9mD
+ E3QvIN6rMZjEw1VuXqFgBg==
+X-Google-Smtp-Source: ABdhPJyC09D8lASABIQOXdJUS4e0eg6y4Lwzcjjkv84brMLnJFgup/NBDzBUDxNZkEwVZYlQzZxdWQ==
+X-Received: by 2002:aca:1211:: with SMTP id 17mr5508725ois.20.1619817044122;
+ Fri, 30 Apr 2021 14:10:44 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id q130sm1010654oif.40.2021.04.30.14.10.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Apr 2021 14:10:43 -0700 (PDT)
+Received: (nullmailer pid 3899661 invoked by uid 1000);
+ Fri, 30 Apr 2021 21:10:41 -0000
+Date: Fri, 30 Apr 2021 16:10:41 -0500
+From: Rob Herring <robh@kernel.org>
+To: cl@rock-chips.com
+Cc: jbx6244@gmail.com, david.wu@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ gregkh@linuxfoundation.org, jagan@amarulasolutions.com, linux@roeck-us.net,
+ maz@kernel.org, linux-serial@vger.kernel.org, cnsztl@gmail.com,
+ wim@linux-watchdog.org, shawn.lin@rock-chips.com, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, linux-arm-kernel@lists.infradead.org,
+ zhangqing@rock-chips.com, linux-watchdog@vger.kernel.org,
+ jensenhuang@friendlyarm.com, huangtao@rock-chips.com, heiko@sntech.de,
+ jamie@jamieiles.com, uwe@kleine-koenig.org, linux-i2c@vger.kernel.org,
+ jay.xu@rock-chips.com, mail@david-bauer.net, linux-mmc@vger.kernel.org,
+ wens@csie.org, michael@amarulasolutions.com, robh+dt@kernel.org
+Subject: Re: [PATCH v4 01/10] dt-bindings: i2c: i2c-rk3x: add description for
+ rk3568
+Message-ID: <20210430211041.GA3899631@robh.at.kernel.org>
 References: <20210429081151.17558-1-cl@rock-chips.com>
- <20210429081321.17855-1-cl@rock-chips.com>
- <20210429212413.GA1794356@robh.at.kernel.org>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <c4130ba7-5f28-57e9-f391-89b6539fb29c@gmail.com>
-Date: Fri, 30 Apr 2021 22:29:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ <20210429081151.17558-2-cl@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20210429212413.GA1794356@robh.at.kernel.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210429081151.17558-2-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_132911_027216_DF91AF44 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20210430_141046_481537_BBCF2493 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,132 +116,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/29/21 11:24 PM, Rob Herring wrote:
-> On Thu, Apr 29, 2021 at 04:13:21PM +0800, cl@rock-chips.com wrote:
->> From: Liang Chen <cl@rock-chips.com>
->>
->> Current dts files with 'grf' nodes are manually verified. In order to
->> automate this process grf.txt has to be converted to YAML.
->>
->> Add new descriptions for:
->> "rockchip,rk3568-grf", "syscon", "simple-mfd"
->> "rockchip,rk3568-pmugrf", "syscon", "simple-mfd"
->>
->> Signed-off-by: Liang Chen <cl@rock-chips.com>
->> ---
-
-[..]
-
->> +properties:
->> +  compatible:
->> +    - items:
+On Thu, 29 Apr 2021 16:11:42 +0800, cl@rock-chips.com wrote:
+> From: Liang Chen <cl@rock-chips.com>
 > 
-> The '-' is the source of your error.
+> add "rockchip,rk3568-i2c", "rockchip,rk3399-i2c" for i2c nodes on
+> a rk3568 platform to i2c-rk3x.yaml.
 > 
->> +        - enum:
->> +            - rockchip,px30-grf
->> +            - rockchip,px30-pmugrf
->> +            - rockchip,px30-usb2phy-grf
->> +            - rockchip,rk3036-grf
->> +            - rockchip,rk3066-grf
->> +            - rockchip,rk3188-grf
->> +            - rockchip,rk3228-grf
->> +            - rockchip,rk3288-grf
->> +            - rockchip,rk3288-sgrf
->> +            - rockchip,rk3308-core-grf
->> +            - rockchip,rk3308-detect-grf
->> +            - rockchip,rk3308-grf
->> +            - rockchip,rk3328-grf
->> +            - rockchip,rk3328-usb2phy-grf
->> +            - rockchip,rk3368-grf
->> +            - rockchip,rk3368-pmugrf
->> +            - rockchip,rk3399-grf
->> +            - rockchip,rk3399-pmugrf
->> +            - rockchip,rk3568-grf
->> +            - rockchip,rk3568-pmugrf
->> +            - rockchip,rv1108-grf
->> +            - rockchip,rv1108-usbgrf
->> +        - const: syscon
->> +        - const: simple-mfd
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> ---
+>  Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-> 'simple-mfd' was not in the old binding. That implies you have child 
-> nodes, and if so, they need to be documented. I imagine that will mean 
-> splitting this into multiple schemas if that's the case.
-> 
-
-Hi,
-
-Question for rob+dt:
-
-Given that a number of txt documents still are in need for YAML
-conversion. Which is a bit beyond the author of this serie.
-The core rk3568.dtsi is needed for other series to base on.
-
-To speed things up a bit and reduce the work load:
-Is it possible to add the grf compatibles in use first and do the rest
-of the subnodes for various SoCs later?
-
-Is it possible to add for now to reduce notification output:
-
-additionalProperties: true
-
-and then later:
-
-additionalProperties: false
-
-
-===
-
-From build log:
-
-#address-cells
-#size-cells
-reboot-mode
-io-domains
-usb2-phy@100
-mipi-dphy-rx0
-pcie-phy
-phy@f780
-edp-phy
-usbphy
-lvds
-power-controller
-grf-gpio
-
-===
-
-Example for rk3399:
-
-	grf: syscon@ff770000 {
-		compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
-
-		io_domains: io-domains {
-			compatible = "rockchip,rk3399-io-voltage-domain"; //
-rockchip-io-domain.txt
-		};
-
-		mipi_dphy_rx0: mipi-dphy-rx0 {
-			compatible = "rockchip,rk3399-mipi-dphy-rx0"; //
-rockchip-mipi-dphy-rx0.yaml
-		};
-
-		u2phy0: usb2-phy@e450 {
-			compatible = "rockchip,rk3399-usb2phy"; // phy-rockchip-inno-usb2.yaml
-		};
-
-		u2phy1: usb2-phy@e460 {
-			compatible = "rockchip,rk3399-usb2phy"; // phy-rockchip-inno-usb2.yaml
-		};
-
-		emmc_phy: phy@f780 {
-			compatible = "rockchip,rk3399-emmc-phy"; // rockchip-emmc-phy.txt
-		};
-
-		pcie_phy: pcie-phy {
-			compatible = "rockchip,rk3399-pcie-phy"; // rockchip-pcie-phy.txt
-		};
-	};
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
