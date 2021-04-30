@@ -2,89 +2,116 @@ Return-Path: <SRS0=A12b=J3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C5FFC433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 18:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1AF8C433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 20:29:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D03561468
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 18:10:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D03561468
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=Huawei.com
+	by mail.kernel.org (Postfix) with ESMTPS id EC4706145A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 20:29:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC4706145A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6DgOrTh+wH7Fmg8p6LdPCOBPHsDQoMcAS9W3JK6bM9k=; b=jiHH9kOMdH6kHiC3yXG5MACy/
-	9SP87kOjKhS/A7r673bh5EeDaHDVFWMRA8+LTtEPQMiWQF19LNp7Qg6MYitkc9en9Aio5Ze1JA/gR
-	vjOUGVkny6XuDTQoXkwkrqhnJcRNrcZy+kfCgbZVgKuoTBdZjMnjA1wJ+YYjTf/7CMpdMewpAhyuO
-	VVSOm1Af9Rs+AWldAk4Oq+Q7fKo35YOgBJM7yFnnKI7qZaGApvgEb6/iQcR5l1b7GlzdAMMgZE3GS
-	00KolmFuuvVaPutiVNf6m+skc4DeBXoLYDDyLp+xnVcUqaJJT874hbvjvfCevzBOjvHzfvra5gk7x
-	SPfjjAEbQ==;
+	 bh=qZajfrmHHROyhYaKOyh4RsinRDpu7ZKpqeWaA9VF3Zo=; b=RQGmAmgYkVpR2dMZ6bNsN8nJc
+	3nD3fvW0o+TNzGclKVc7JmSxr1JM2KBqosRXR8SYgJPVfpR1FXFIsdbVRT1+hc5RwmahUkpz4/WwJ
+	Z014muqC7hT1uAPpRsFGaORxFqM1+JjaAbUuEFrFTGo1U6l7vGxfzhsyZu5dZRKW+Roi6eitwj0ZN
+	ih3IKptAkozMySuUX+j1fFEECmapKB9rXsuC3UZITt5VjgTIZx0QDY+qxV+8oDGWLNV6E0jUzZ3dj
+	JE5A3XI/ms9EwnHYQ2WzuTSq8RyA5flN69+JRxDi5M1W36K0YL2I22Cx4Mxc3Csh9dBHkORLWh0gN
+	c8cQYcrjQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcXbG-008M4D-7e; Fri, 30 Apr 2021 18:10:50 +0000
+	id 1lcZlc-008WiO-Fr; Fri, 30 Apr 2021 20:29:40 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcXbA-008M3j-Sh
- for linux-rockchip@desiato.infradead.org; Fri, 30 Apr 2021 18:10:47 +0000
+ id 1lcZlB-008Wd3-Jl; Fri, 30 Apr 2021 20:29:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
- From:Date:Sender:Reply-To:Content-ID:Content-Description;
- bh=gRzAMwMf+i7VLo3hQE6NqbR5Qih+MvAslwTLajyxKKM=; b=TCIAT4gi4bulersp/sMcBB8wOF
- 3+zKZ/IdhyjPsmTa/Q3z84vn9L3w3BrVR9qnX8StMtgSqit39gaoTanovFGWh+cXWWeULCqo5Y5j/
- +0q5vvOPfLFi5kg514utoBN/WsXZgCYj+KRzD17L0evZU4NGLjGuPMKkEgteCBX5AO40Mshy2PXYt
- 0ylp/v3fRMhpArZ5ig5qil3eIkqM/yusbxniVoW/Uvtua03Qp9Wu1ec5YQLriw3IHDVV16jRdAf7W
- b3S5HZ6cgq2pxNimpGPe93C2g6bCP6k2w4XbcGuSnYTMUT4Us6WX2gKf+/nCtmDMutoQuirYjUDY/
- d6FUDygQ==;
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=; b=ZufeHkUXh4xwX3uq5XO6W7qsOC
+ oB5K+Cq1ljQHt4af294gIBUaYeAguMpJ6+SjIWhoUqYWiuxA8BFr1nkNgtcYlf1Qpl5RdyHoTo8Op
+ WDj5aBOpPhxDzcDjYPbIIk/bwKzBUN2xv5VROo5stjXThBL7GtpGhU/y/1X8GmJNP51P3jKHlpDvg
+ OPlb7dOfwU+cqlWAFD/7x3pcwnponNneDaWjFwmgazaDN/mzBf7ARgwrrq9Y/rmBfWMvGVJYjwNqn
+ 9vRyOPGGpEOMQudh3zgafVghbU1SIT6NOuZN9Fts7Kw/E+RqCsXNxSm5WyeGs9w3BOM6N6veM6BvS
+ Ryse6n7w==;
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcXb6-001a05-Cz
- for linux-rockchip@lists.infradead.org; Fri, 30 Apr 2021 18:10:42 +0000
-Received: from fraeml714-chm.china.huawei.com (unknown [172.18.147.201])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4FX0Zs18T3z689Nt;
- Sat,  1 May 2021 02:02:45 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml714-chm.china.huawei.com (10.206.15.33) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.2; Fri, 30 Apr 2021 20:10:36 +0200
-Received: from localhost (10.52.125.96) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Fri, 30 Apr
- 2021 19:10:35 +0100
-Date: Fri, 30 Apr 2021 19:09:00 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: <linuxarm@huawei.com>, <mauro.chehab@huawei.com>, Ezequiel Garcia
- <ezequiel@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, <devel@driverdev.osuosl.org>,
- <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v4 78/79] media: hantro: use pm_runtime_resume_and_get()
-Message-ID: <20210430190900.00004dd3@Huawei.com>
-In-Reply-To: <803c39fafdd62efc6f9e4d99a372af2c6955143b.1619621413.git.mchehab+huawei@kernel.org>
-References: <cover.1619621413.git.mchehab+huawei@kernel.org>
- <803c39fafdd62efc6f9e4d99a372af2c6955143b.1619621413.git.mchehab+huawei@kernel.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; i686-w64-mingw32)
+ id 1lcZl8-001eJa-UZ; Fri, 30 Apr 2021 20:29:12 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a4so13739180ejk.1;
+ Fri, 30 Apr 2021 13:29:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=;
+ b=EY+IEzBUu9oW5ND5WvGXq8irviGV51BVZB/O3Zuztl09Q1rCW+7Ytf+kbvQ8J/IONX
+ sa5FRjyjdK7CfM7edv5v87pTGvSmtSQhm/I9n/IFA6ydKhNL6Pdy4S7zNIWx3F5XKMh4
+ QqQYDMQ4KB08czfy3KaNmEagCc92tSObszTsL7tWA9k1Rm/bt/u17BnmBG3fF2J1dwok
+ rDWwmQvPFWagsI4tIfva00Jqe4fYsPb56e+ZqYE/EDGbUVI0Pd0mayzLN8H4j3z7lFKg
+ H3PpdOHA4dygCIzqWgRCYQBdIVQTC1H7N0gtUv0BcKjlu+mONsymqkgR3tItKiXoHXVg
+ tKKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Wrp/1A4Vx3OcbB2pr/PEDNHt/zuDZ0QGymHwI8CKIHg=;
+ b=D70NuibLPEpdJTULUK3FItEZ/ywmwY6Ytrue6Yr4rsS+qpv8kdDlF384uKu3huPQO6
+ ZjthI+teYH+SlifQFFqifT++agmxPvmbVQYcsiJ6HPvZmJ1IqMfIFNbuHCXZv8YLa+H8
+ jeeTsES6nxhA0inbSeKKXvOr41XIO1dG+T49ZBeLZKtrySW9HDXIzczbuSbWrZJ6FoHj
+ atfXGuisvKVj7Odb8O5rOWm+2DjErWX0wnmHbATPaP0axBheQMI+vMRBd/YW7rtuReEo
+ dEPdEm0OCXvWF+c6qwu5aPpD1KrsSk23O1ROV7NOJ4Eow2f7srZ/XCD+OmaVewsNxTe7
+ We1w==
+X-Gm-Message-State: AOAM531qIYS3x2hxAR392muhiMOlmhzLHdmRlueR/iw5rsJwn0CTFzp0
+ rodKWVsdqwzJ3g2MefLR1DY=
+X-Google-Smtp-Source: ABdhPJzx0kI7Y5mCHmBcgoMkoXDcdMXPnCoSKVhqyWYiLS59obUrogmNsVukVf6Nz96RySLz4B/BRQ==
+X-Received: by 2002:a17:907:1b1e:: with SMTP id
+ mp30mr6448680ejc.532.1619814548930; 
+ Fri, 30 Apr 2021 13:29:08 -0700 (PDT)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ da25sm2568034edb.38.2021.04.30.13.29.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 30 Apr 2021 13:29:08 -0700 (PDT)
+Subject: Re: [PATCH v4 07/10] dt-bindings: soc: rockchip: Convert grf.txt to
+ YAML
+To: Rob Herring <robh@kernel.org>, cl@rock-chips.com
+Cc: heiko@sntech.de, jagan@amarulasolutions.com, wens@csie.org,
+ uwe@kleine-koenig.org, mail@david-bauer.net,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, jensenhuang@friendlyarm.com,
+ michael@amarulasolutions.com, cnsztl@gmail.com, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
+ linux-i2c@vger.kernel.org, jay.xu@rock-chips.com, shawn.lin@rock-chips.com,
+ david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
+ wim@linux-watchdog.org, linux@roeck-us.net, jamie@jamieiles.com,
+ linux-watchdog@vger.kernel.org, maz@kernel.org
+References: <20210429081151.17558-1-cl@rock-chips.com>
+ <20210429081321.17855-1-cl@rock-chips.com>
+ <20210429212413.GA1794356@robh.at.kernel.org>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <c4130ba7-5f28-57e9-f391-89b6539fb29c@gmail.com>
+Date: Fri, 30 Apr 2021 22:29:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-X-Originating-IP: [10.52.125.96]
-X-ClientProxiedBy: lhreml721-chm.china.huawei.com (10.201.108.72) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
+In-Reply-To: <20210429212413.GA1794356@robh.at.kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_111040_744910_EE5BE84B 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20210430_132911_027216_DF91AF44 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,92 +129,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 28 Apr 2021 16:52:39 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+On 4/29/21 11:24 PM, Rob Herring wrote:
+> On Thu, Apr 29, 2021 at 04:13:21PM +0800, cl@rock-chips.com wrote:
+>> From: Liang Chen <cl@rock-chips.com>
+>>
+>> Current dts files with 'grf' nodes are manually verified. In order to
+>> automate this process grf.txt has to be converted to YAML.
+>>
+>> Add new descriptions for:
+>> "rockchip,rk3568-grf", "syscon", "simple-mfd"
+>> "rockchip,rk3568-pmugrf", "syscon", "simple-mfd"
+>>
+>> Signed-off-by: Liang Chen <cl@rock-chips.com>
+>> ---
 
-> Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-> added pm_runtime_resume_and_get() in order to automatically handle
-> dev->power.usage_count decrement on errors.
+[..]
+
+>> +properties:
+>> +  compatible:
+>> +    - items:
 > 
-> While there's nothing wrong with the current usage on this driver,
-> as we're getting rid of the pm_runtime_get_sync() call all over
-> the media subsystem, let's remove the last occurrence on this
-> driver.
-
-Not sure there is nothing wrong in here before your patch...
-
-
+> The '-' is the source of your error.
 > 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  drivers/staging/media/hantro/hantro_drv.c | 23 ++++++++++++++++-------
->  1 file changed, 16 insertions(+), 7 deletions(-)
+>> +        - enum:
+>> +            - rockchip,px30-grf
+>> +            - rockchip,px30-pmugrf
+>> +            - rockchip,px30-usb2phy-grf
+>> +            - rockchip,rk3036-grf
+>> +            - rockchip,rk3066-grf
+>> +            - rockchip,rk3188-grf
+>> +            - rockchip,rk3228-grf
+>> +            - rockchip,rk3288-grf
+>> +            - rockchip,rk3288-sgrf
+>> +            - rockchip,rk3308-core-grf
+>> +            - rockchip,rk3308-detect-grf
+>> +            - rockchip,rk3308-grf
+>> +            - rockchip,rk3328-grf
+>> +            - rockchip,rk3328-usb2phy-grf
+>> +            - rockchip,rk3368-grf
+>> +            - rockchip,rk3368-pmugrf
+>> +            - rockchip,rk3399-grf
+>> +            - rockchip,rk3399-pmugrf
+>> +            - rockchip,rk3568-grf
+>> +            - rockchip,rk3568-pmugrf
+>> +            - rockchip,rv1108-grf
+>> +            - rockchip,rv1108-usbgrf
+>> +        - const: syscon
+>> +        - const: simple-mfd
 > 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index 595e82a82728..25fa36e7e773 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -56,14 +56,12 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
->  	return hantro_get_dec_buf_addr(ctx, buf);
->  }
->  
-> -static void hantro_job_finish(struct hantro_dev *vpu,
-> -			      struct hantro_ctx *ctx,
-> -			      enum vb2_buffer_state result)
-> +static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
-> +				    struct hantro_ctx *ctx,
-> +				    enum vb2_buffer_state result)
->  {
->  	struct vb2_v4l2_buffer *src, *dst;
->  
-> -	pm_runtime_mark_last_busy(vpu->dev);
-> -	pm_runtime_put_autosuspend(vpu->dev);
->  	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
->  
->  	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> @@ -81,6 +79,16 @@ static void hantro_job_finish(struct hantro_dev *vpu,
->  					 result);
->  }
->  
-> +static void hantro_job_finish(struct hantro_dev *vpu,
-> +			      struct hantro_ctx *ctx,
-> +			      enum vb2_buffer_state result)
-> +{
-> +	pm_runtime_mark_last_busy(vpu->dev);
-> +	pm_runtime_put_autosuspend(vpu->dev);
-> +
-> +	hantro_job_finish_no_pm(vpu, ctx, result);
-> +}
-> +
->  void hantro_irq_done(struct hantro_dev *vpu,
->  		     enum vb2_buffer_state result)
->  {
-> @@ -155,7 +163,8 @@ static void device_run(void *priv)
->  	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
->  	if (ret)
->  		goto err_cancel_job;
 
-Before your patch, if this error condition happened, we'd call runtime_put
-before the related runtime_get...  You fixed that, but the patch description
-doesn't call it out.
+> 'simple-mfd' was not in the old binding. That implies you have child 
+> nodes, and if so, they need to be documented. I imagine that will mean 
+> splitting this into multiple schemas if that's the case.
+> 
+
+Hi,
+
+Question for rob+dt:
+
+Given that a number of txt documents still are in need for YAML
+conversion. Which is a bit beyond the author of this serie.
+The core rk3568.dtsi is needed for other series to base on.
+
+To speed things up a bit and reduce the work load:
+Is it possible to add the grf compatibles in use first and do the rest
+of the subnodes for various SoCs later?
+
+Is it possible to add for now to reduce notification output:
+
+additionalProperties: true
+
+and then later:
+
+additionalProperties: false
 
 
-> -	ret = pm_runtime_get_sync(ctx->dev->dev);
-> +
-> +	ret = pm_runtime_resume_and_get(ctx->dev->dev);
->  	if (ret < 0)
->  		goto err_cancel_job;
->  
-> @@ -165,7 +174,7 @@ static void device_run(void *priv)
->  	return;
->  
->  err_cancel_job:
-> -	hantro_job_finish(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
-> +	hantro_job_finish_no_pm(ctx->dev, ctx, VB2_BUF_STATE_ERROR);
->  }
->  
->  static struct v4l2_m2m_ops vpu_m2m_ops = {
+===
 
+From build log:
+
+#address-cells
+#size-cells
+reboot-mode
+io-domains
+usb2-phy@100
+mipi-dphy-rx0
+pcie-phy
+phy@f780
+edp-phy
+usbphy
+lvds
+power-controller
+grf-gpio
+
+===
+
+Example for rk3399:
+
+	grf: syscon@ff770000 {
+		compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+
+		io_domains: io-domains {
+			compatible = "rockchip,rk3399-io-voltage-domain"; //
+rockchip-io-domain.txt
+		};
+
+		mipi_dphy_rx0: mipi-dphy-rx0 {
+			compatible = "rockchip,rk3399-mipi-dphy-rx0"; //
+rockchip-mipi-dphy-rx0.yaml
+		};
+
+		u2phy0: usb2-phy@e450 {
+			compatible = "rockchip,rk3399-usb2phy"; // phy-rockchip-inno-usb2.yaml
+		};
+
+		u2phy1: usb2-phy@e460 {
+			compatible = "rockchip,rk3399-usb2phy"; // phy-rockchip-inno-usb2.yaml
+		};
+
+		emmc_phy: phy@f780 {
+			compatible = "rockchip,rk3399-emmc-phy"; // rockchip-emmc-phy.txt
+		};
+
+		pcie_phy: pcie-phy {
+			compatible = "rockchip,rk3399-pcie-phy"; // rockchip-pcie-phy.txt
+		};
+	};
 
 _______________________________________________
 Linux-rockchip mailing list
