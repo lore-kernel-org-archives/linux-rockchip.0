@@ -4,16 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1145DC433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81C04C433ED
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:33:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C78E56144F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:29:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C78E56144F
+	by mail.kernel.org (Postfix) with ESMTPS id E98A761466
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Apr 2021 21:33:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E98A761466
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,83 +23,81 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=t7J+RsSsI6VTaNiiE42DtjZ8ve3THuPwA9KCnMa0wUc=; b=eR9EyH0KZie2tFMbZGb4bdzJG
-	qyl751wddxGai/L0hH6z4N7UDt9svgz2qFCUgo53oO5IdGbMkl/tv+2Hh4+a57xlppUDXZmDwF/YG
-	H5nU5Zta0UtQX8T/5G/8E43Mp5FR8u+zErdNLG9Fq18B56yKN4pJRCPVrFjGVdRlMZMw1aHmMNJBf
-	VaKy/k02fsgL+JsX64QJewnXHs3Syw19eit0+omRoVnkfCZyUpcDM6DqSERVMjMnFZ7wR4ARdYg0K
-	D/GrRRnl7r8pxBb1xrJIy6x18D027K6gLQw5boio68PVIJx3t+aE99qgzXW1lnlU+BOd++wtHrg3z
-	9u/ICNs3A==;
+	 bh=YH0+Rg/kb5+4cIdfv9duL3GyznURtel9nETssUKsBqk=; b=ZArFF9LnyUbvtkW29glcD7Ifr
+	/mAilEr9PPORfelAKG3PNF/MaS5u5iJW8Unxj9vj9UBuxNJEz/V2ANQ1TvN7q8L41Vi+Stt9mJzez
+	Y09IFxGtKbn6KT9nupFE0c8aINow7Y2Z5Pl94aDUjV55bBkUFKk8A6edaYeOsPBgkQT8+MOzkohHZ
+	Jdy68Q1wiNSs7ezPR2I08a2xBNaJcZoCDX6FJTWeY0fFLui9Yf1iRpHJKuDjCzz8orZPOvYA55mvB
+	5RybG3QqpkEwwWIF9IQy61FfXfIZgh96tEl2aenYi/3MKr/0BfrDzU3Zn933gV2bfqdARoKc8t2HN
+	eFiV16fGg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcah9-008e5n-96; Fri, 30 Apr 2021 21:29:07 +0000
+	id 1lcakz-008eYD-1T; Fri, 30 Apr 2021 21:33:25 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcaSx-008cPL-6A; Fri, 30 Apr 2021 21:14:32 +0000
+ id 1lcaTp-008cUI-Fz; Fri, 30 Apr 2021 21:15:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=EMqKtknFqehmn7rN033x+tvY3ntthgIPwO2iOKZYoag=; b=HFC6JSRYE7dmpD+8DdsthG+tmw
- E5AiBQj9nv0hQMWWKHKLla8qmt7oXOqedm7DjqG04OQAtkRwwn51zABF596p2XgQ7BLUWVttb98w8
- YlSe5jKrQaxSnIQTfnRX+vm9Kxj4YIEoB12psqswJHHifbGwTq+VUm+hz7VaeeVg5TcJt5mswS6A5
- 3Sfifke5lm5Xh9NzepxkxcpRURZVuQp/oHuGcBgJtyBLSOfCKhk5KqfGnRSe8Yj/tZH3s2W42DJJ8
- 6PPrfnfDuBgrabxcLN817ehuUJq33/rpWNysiFWvlAMmMP/iGMmGCl7mfE/fD1JQGIhudTw1peFkh
- XPSKSZDg==;
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+ bh=VxUW5OdCWJGNzSLfVlPjiWNNaJCqr+3fTpTcrVSH4ZY=; b=cpoQXWp6RQ2r60PDhXdhHmfnVl
+ QDc6SlgbmK1bdYZ7VBIiwEZ0bpO28r5tWbGR9McfQ7FsY3AMqFi+xQCqj2YFNG9npxQU1r67rTsNq
+ aDKHnqe0n1s0Yd4YEZ3K8x/+jh6z62ia5B5nUq/EvtKGAwB/OeGNOx12goBtCxvxnc3QRF9H9R9Ig
+ 03xrZvtKA7RFPaYNm3D7whJBGtbVY8mpyaDZte1agfMdcrEpiIa01LnT9YoiFpooQkIp0I/BSbYoK
+ nF+53eF4nIbFXmSjmpvA0JMNlRlPxFQnbKcsR5E6T5XpLywC3rXQ65PrZSF0Bsjh41/Pbbm7wafOu
+ DCwFYJVg==;
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcaSu-001fvQ-Rw; Fri, 30 Apr 2021 21:14:26 +0000
-Received: by mail-ot1-f50.google.com with SMTP id
- y14-20020a056830208eb02902a1c9fa4c64so29141492otq.9; 
- Fri, 30 Apr 2021 14:14:24 -0700 (PDT)
+ id 1lcaTn-001fww-28; Fri, 30 Apr 2021 21:15:20 +0000
+Received: by mail-ot1-f54.google.com with SMTP id
+ d3-20020a9d29030000b029027e8019067fso63759863otb.13; 
+ Fri, 30 Apr 2021 14:15:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=EMqKtknFqehmn7rN033x+tvY3ntthgIPwO2iOKZYoag=;
- b=os3v3YkrMvQc6wxR4CZ2T2SDU2GB9oR/olTY+sVWvgdYZZ6QVVk/6dL1/AJ+O9U569
- u6vyszDdWx8AozaFnxBeWfRUOVxTOFs7oZ5l3JIAFftiUrqLYkpkfB0WLWuXViVjRWSn
- 0YOnyncC+EcV2pQeoi1ufEFwcLPHZVwt8T+Spc1p8PY34HQ7weREl05aY1MvlvNEhBWW
- ofnhVgVrQSX4WbiAi1xh3kgYzmzWMI69eYNe39gwjxxhIVK9jADEScIIuyKZmgyWvJ2G
- h0PNtqCuSAs8jhjDfLgVwaXuXaRRtwmxLSaNZFtOxzLVG6rjZ2Btww+xkCyct4BVSioZ
- c91w==
-X-Gm-Message-State: AOAM530/Cd9gkYVPmlMff1iBAhisZNo8iA68EgdgscI7TKKj2LluCeZZ
- zZOTAzNi0S1Nxhn2bmFa2Q==
-X-Google-Smtp-Source: ABdhPJyYa/c/d1x4QUaZh1rrRfInSBi7VljCcrNXjhzEZhKhhNGuLhnNgn0Ti2aCh0igIifuoLMBjA==
-X-Received: by 2002:a05:6830:12c6:: with SMTP id
- a6mr4940474otq.239.1619817263859; 
- Fri, 30 Apr 2021 14:14:23 -0700 (PDT)
+ bh=VxUW5OdCWJGNzSLfVlPjiWNNaJCqr+3fTpTcrVSH4ZY=;
+ b=H4WQpAzuSfGxKlTmgjJLl/oyPjjAnh2CUKza8DpJrPbZFgfS0Rz/RQMXqNC9TYh6xE
+ nU15vwe2RwmqkThVEMTOSgtGcc71j9hZ4Ln10Uj2ZBlJNW8AT3a+TiSc1t8dj92THduI
+ jdDPlOwLDk/dcHwcfaGs56+Rvy3ZaXmyWY1EaL6zXgmaaYRxKl//hijpPFR2LhAgoL7h
+ DEvsNpu9XWzgzwh9xKCjVnYUQM5mdTc82yli1wfenZmirhfYmiJbP4zkQ8uiaL6CNHsf
+ l2YjFaHHXewGtSUnKaINDnpLDgVlVIoWInuU0sfReaqoKJ5PBxC+DJJpcBd/jhw/Rkyc
+ yVcw==
+X-Gm-Message-State: AOAM532v5oWPsuakSISN07V0ARlHrY0FoRg6e/bbIdcqfzW6QvIKbegG
+ +cCqJ30pjOXsKOSCay/XTA==
+X-Google-Smtp-Source: ABdhPJw7SRe7qPCQI/wcVuiwivDcq25XvfKU7E097UGMjVGG4wUzYEUfjYOOtZwSlRM3zkSLsuyZFQ==
+X-Received: by 2002:a9d:630e:: with SMTP id q14mr5179477otk.69.1619817317126; 
+ Fri, 30 Apr 2021 14:15:17 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id 88sm958638otx.2.2021.04.30.14.14.22
+ by smtp.gmail.com with ESMTPSA id w140sm1098248oif.42.2021.04.30.14.15.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Apr 2021 14:14:23 -0700 (PDT)
-Received: (nullmailer pid 3905795 invoked by uid 1000);
- Fri, 30 Apr 2021 21:14:21 -0000
-Date: Fri, 30 Apr 2021 16:14:21 -0500
+ Fri, 30 Apr 2021 14:15:16 -0700 (PDT)
+Received: (nullmailer pid 3907199 invoked by uid 1000);
+ Fri, 30 Apr 2021 21:15:14 -0000
+Date: Fri, 30 Apr 2021 16:15:14 -0500
 From: Rob Herring <robh@kernel.org>
 To: cl@rock-chips.com
-Cc: heiko@sntech.de, cnsztl@gmail.com, maz@kernel.org, robh+dt@kernel.org,
- devicetree@vger.kernel.org, jbx6244@gmail.com, mail@david-bauer.net,
- jagan@amarulasolutions.com, zhangqing@rock-chips.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- jay.xu@rock-chips.com, huangtao@rock-chips.com, linux@roeck-us.net,
- jamie@jamieiles.com, uwe@kleine-koenig.org, linux-serial@vger.kernel.org,
- jensenhuang@friendlyarm.com, linux-watchdog@vger.kernel.org,
- gregkh@linuxfoundation.org, shawn.lin@rock-chips.com, david.wu@rock-chips.com,
- linux-mmc@vger.kernel.org, wim@linux-watchdog.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- wens@csie.org, ulf.hansson@linaro.org, michael@amarulasolutions.com
-Subject: Re: [PATCH v4 05/10] dt-bindings: pwm: rockchip: add description for
- rk3568
-Message-ID: <20210430211421.GA3905741@robh.at.kernel.org>
+Cc: heiko@sntech.de, jagan@amarulasolutions.com, wens@csie.org,
+ uwe@kleine-koenig.org, mail@david-bauer.net, jbx6244@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, jensenhuang@friendlyarm.com,
+ michael@amarulasolutions.com, cnsztl@gmail.com, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, gregkh@linuxfoundation.org,
+ linux-serial@vger.kernel.org, linux-i2c@vger.kernel.org, jay.xu@rock-chips.com,
+ shawn.lin@rock-chips.com, david.wu@rock-chips.com, zhangqing@rock-chips.com,
+ huangtao@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
+ jamie@jamieiles.com, linux-watchdog@vger.kernel.org, maz@kernel.org
+Subject: Re: [PATCH v4 06/10] dt-bindings: gpio: change items restriction of
+ clock for rockchip,gpio-bank
+Message-ID: <20210430211514.GA3905898@robh.at.kernel.org>
 References: <20210429081151.17558-1-cl@rock-chips.com>
- <20210429081252.17711-1-cl@rock-chips.com>
+ <20210429081306.17784-1-cl@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210429081252.17711-1-cl@rock-chips.com>
+In-Reply-To: <20210429081306.17784-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_141424_920589_C44B1427 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20210430_141519_126088_41A6DF65 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,19 +115,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Apr 2021 16:12:52 +0800, cl@rock-chips.com wrote:
+On Thu, Apr 29, 2021 at 04:13:06PM +0800, cl@rock-chips.com wrote:
 > From: Liang Chen <cl@rock-chips.com>
 > 
-> add "rockchip,rk3568-pwm", "rockchip,rk3328-pwm" for pwm nodes on
-> a rk3568 platform to pwm-rockchip.yaml.
+> The clock property need 2 items on some rockchip chips.
 > 
 > Signed-off-by: Liang Chen <cl@rock-chips.com>
 > ---
->  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> index d993e002cebe..7b3fd2975c74 100644
+> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> @@ -22,7 +22,8 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 2
 
-Acked-by: Rob Herring <robh@kernel.org>
+Need to define what they are:
+
+minItems: 1
+items:
+  - description: ...
+  - description: ...
+
+>  
+>    gpio-controller: true
+>  
+> -- 
+> 2.17.1
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
