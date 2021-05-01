@@ -2,95 +2,76 @@ Return-Path: <SRS0=EhM5=J4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5D15C433B4
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 May 2021 01:35:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C145BC433ED
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 May 2021 15:21:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47FB4613D8
-	for <linux-rockchip@archiver.kernel.org>; Sat,  1 May 2021 01:35:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47FB4613D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5658661462
+	for <linux-rockchip@archiver.kernel.org>; Sat,  1 May 2021 15:21:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5658661462
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=wanadoo.fr
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/kK5TQc//KCNxT5ekUZQJ4fcx3FRAB07ejTnk7BdxVE=; b=cukVNE4vvOTMnVflw00tJr4CW
-	gIz5L4S5FbpwHGiO5EJI/8n/NK8RU4OrgxZSQfZ2wiPvdTH4twq2A8aGT3Dn6yXCpgRDV2bijmEbe
-	dQrTf3SxLLAkuz5FigMHNMJhN5z1tvNuKfInC1SSaUHRA2EXURmEkhB7xdLPThfW2bldEM9t61/lC
-	7q2FJ+/8rMNfTIUhuIuF2TD26WBuH/B3o+H2J+U+wMgPYVc5DT4gKGPTfaBODrZCav9WPjszaJ1Ar
-	yCt+wqPLlJ1sq3nOlWISlnC/ltJc5mpkj6KZT+2D+q+p1bmIJP/3YEE76aGm9CcbKzaVBmDiogSHh
-	/non5Xgwg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SHECZdJvbNhy7vKmNjAC8vTWMydaZLPxIcH2FDvhuqM=; b=nahfDdxqYsoXjImrP2IWNCh8cx
+	4923U9cc9OiHKnlmK2NriaVpAauu6uxy9CuKpaibuSISZd9gcnNrDFcYXk83cKQiWzFhLg/gcHg9w
+	dyOlvuD5V/ZUxuXF6g5nbE6CEjywKUlwMAmOMTn3wVuPVlzhexI86DIsorakE+Kxy/yGGW5Dh3oQN
+	2rbnOk4fhLJrZI/H5QWCxVqXFQG5Eloc4XnGPE5qL6YRuragDKzqxovydK+IIm4eOiQ5npjh8A7N3
+	/CZySxxiB3YthtlijcNo7M/o+xt1sA0icYhX8WEC6BZtoj0Iovz22SxK9dVxAtKHm1cH4TH09kSKd
+	LNmxGUZw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lceXJ-0095iY-5H; Sat, 01 May 2021 01:35:13 +0000
+	id 1lcrQR-00AGsY-Od; Sat, 01 May 2021 15:20:59 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lceX4-0095hZ-J4; Sat, 01 May 2021 01:34:58 +0000
+ id 1lcrQQ-00AGrt-8R
+ for linux-rockchip@desiato.infradead.org; Sat, 01 May 2021 15:20:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=zUXpAoI/KzwgrARmWw+voeZ0INm/PtgvJecf6NLxWtI=; b=1HjdCR4m+5vzaeHdMZv9oMKD7y
- Z5Hzu06lXxhIj1ieXmKcnal7eZl9kD5dbdXQkvw/eDglLPBqMFo7X3wmSosMgrAWF4gWdHiOgs4Sq
- K2o/TuxiX6eUxoO+h4TIHnObZriKEYDF645xaMb530NRZxFwR1r8kEn6i7aMynsXT7cWjeF28bUC1
- J8UbIiZJbseDjFmtpD7a+SnpUB0CJ1LanDUt1KVmjuPpHNGQ/DJrlTW+AC1nN6OyReOSbSJFV4gF8
- NbGduEtOuQ6vB7cjZK5AZxVVNJOv8zYXvdNO9mr2XaX12Kp5Z/sTdSpa0Jrx+YF/tr+dKqr0BO+el
- mR7+5fcQ==;
-Received: from mail-oo1-f41.google.com ([209.85.161.41])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lceX1-001mJW-TJ; Sat, 01 May 2021 01:34:57 +0000
-Received: by mail-oo1-f41.google.com with SMTP id
- i9-20020a4ad0890000b02901efee2118aaso39086oor.7; 
- Fri, 30 Apr 2021 18:34:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=zUXpAoI/KzwgrARmWw+voeZ0INm/PtgvJecf6NLxWtI=;
- b=Uu/qQaZkFtGKbb+BRZ2SEcz+O+cOuEXrsUvhor+8Pqj5QGqtFx/OpPU1qYA7Y8FXIB
- uC3srDXJxKe8SC/xAFwl/pECNtqZSKrcdYWxX1jDDgHfWbMxr3jubyUj7TITXXTkgLhu
- /yN3U5UpnbM4qvamBKSrX1WYRebYfaRf2iza6BAlBGw48jCMmSOJhYrGeEa7VVZmcrEI
- a+4Agtrp6DXPgtNJXXecORCyInBwO7RjpNPv5/pxNPDcPskfUwpkUQfKlRYrfUhtry7e
- 9uNEo8FgtbUuta9/bHXwNQNnHZjVr54chdlzYbknGDLKL+ohp1R6zLCT7viTDexj7D3g
- N8yw==
-X-Gm-Message-State: AOAM533Cn4A4P1Bk4EIPPduwmjOX6cOxm8XYYljnzQMD7+LDa2pQJOen
- I3n9N3D/Lvbz6gViiWz3pw==
-X-Google-Smtp-Source: ABdhPJxUbLnwv8w2KIA2KErjdTKoBtPoNxqe9/Doqh2tks/IILgB7WLqP++X9JxZZnzRy/SkywjjVw==
-X-Received: by 2002:a4a:d781:: with SMTP id c1mr6861569oou.44.1619832891658;
- Fri, 30 Apr 2021 18:34:51 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id a23sm56732otf.47.2021.04.30.18.34.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Apr 2021 18:34:50 -0700 (PDT)
-Received: (nullmailer pid 121538 invoked by uid 1000);
- Sat, 01 May 2021 01:34:48 -0000
-Date: Fri, 30 Apr 2021 20:34:48 -0500
-From: Rob Herring <robh@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, will@kernel.org, heiko@sntech.de, xxm@rock-chips.com,
- iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/4] dt-bindings: iommu: rockchip: Add compatible for v2
-Message-ID: <20210501013448.GA4001859@robh.at.kernel.org>
-References: <20210422141602.350746-1-benjamin.gaignard@collabora.com>
- <20210422141602.350746-3-benjamin.gaignard@collabora.com>
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=bONLIDkXw2BpdlVf19Ul++H1ru5xam3FaowW5IXNpMk=; b=Uk42VLtFfymHx8I2FZLd0i5613
+ QZXwMiqUbWqNEeqoncCuo0ox/LgixZ8GwY79WO84DkG3Od1/9ewYe08JrgSCQtyxaI1pVlA4pxqfB
+ wnFo+K1Ep8CpLrKsYFu07oh02VNzF1zHaB1KMFscyAD4WvKOxQPhXbx2DIqHFzqqIFVVJP9CB3PE7
+ hNdEMz2ZVtrRtu6+b0LnG8BZ0CtBhkHaebg9kozeNU8J8N0G6JLpvVSWhalILxRc38wPEYDUrP+cI
+ ttMB9FniLjzu9WhtgYWjrDsQ7PipHKGuV0ApYUaeNGG6OQ9pSFoytiO2A7Ua3AGT2EAUrNiGD+Cqd
+ sh3Qnz8g==;
+Received: from smtp03.smtpout.orange.fr ([80.12.242.125]
+ helo=smtp.smtpout.orange.fr)
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lcrQN-0022ZB-F6
+ for linux-rockchip@lists.infradead.org; Sat, 01 May 2021 15:20:57 +0000
+Received: from localhost.localdomain ([86.243.172.93]) by mwinf5d06 with ME
+ id zTDH2400S21Fzsu03TDJFe; Sat, 01 May 2021 17:13:20 +0200
+X-ME-Helo: localhost.localdomain
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Sat, 01 May 2021 17:13:20 +0200
+X-ME-IP: 86.243.172.93
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch,
+ miquel.raynal@bootlin.com
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Subject: [PATCH] drm/rockchip: Fix an error handling path
+Date: Sat,  1 May 2021 17:13:16 +0200
+Message-Id: <248220d4815dc8c8088cebfab7d6df5f70518438.1619881852.git.christophe.jaillet@wanadoo.fr>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210422141602.350746-3-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_183455_970237_AC780F61 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20210501_082055_667271_C3452361 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,49 +89,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 22, 2021 at 04:16:00PM +0200, Benjamin Gaignard wrote:
-> Add compatible for the second version of IOMMU hardware block.
-> RK356x IOMMU can also be link to a power domain.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> version 2:
->  - Add power-domains property
-> 
->  .../devicetree/bindings/iommu/rockchip,iommu.yaml          | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> index 0db208cf724a..e54353ccd1ec 100644
-> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
-> @@ -19,7 +19,9 @@ description: |+
->  
->  properties:
->    compatible:
-> -    const: rockchip,iommu
-> +    enum:
-> +      - rockchip,iommu
-> +      - rockchip,iommu-v2
+'ret' is know to be 0 a this point. Checking the return value of
+'phy_init()' and 'phy_set_mode()' was intended instead.
 
-This should be SoC specific.
+So add the missing assignments.
 
->  
->    reg:
->      minItems: 1
-> @@ -46,6 +48,9 @@ properties:
->    "#iommu-cells":
->      const: 0
->  
-> +  power-domains:
-> +    maxItems: 1
-> +
->    rockchip,disable-mmu-reset:
->      $ref: /schemas/types.yaml#/definitions/flag
->      description: |
-> -- 
-> 2.25.1
-> 
+Fixes: cca1705c3d89 ("drm/rockchip: lvds: Add PX30 support")
+Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+---
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index bd5ba10822c2..489d63c05c0d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -499,11 +499,11 @@ static int px30_lvds_probe(struct platform_device *pdev,
+ 	if (IS_ERR(lvds->dphy))
+ 		return PTR_ERR(lvds->dphy);
+ 
+-	phy_init(lvds->dphy);
++	ret = phy_init(lvds->dphy);
+ 	if (ret)
+ 		return ret;
+ 
+-	phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
++	ret = phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
