@@ -2,107 +2,88 @@ Return-Path: <SRS0=Kxb6=KA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B950C43460
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 925F3C433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:16:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EC2461182
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EC2461182
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E4DC161106
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:15:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4DC161106
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Qo1T5rK3QoRQ9iCPD0tVSyMNQW3yb+XjGX6tI8qbvc4=; b=fBtG/FOwCiVExvUHElCTvwWlo
-	Kjn3Vmc2ocaIZ7KHCUeVV5aXae81YvQRlOQxIrr82UGZjJ/Yq6ddVzVjXg5yb94vT0If+wWb+KrOi
-	Pvl2S27uHiiw0HB2/f0LX1qePqqVckqQrVfmMAL55La1xCLqzaclKNhhijUXsQMBxXefXQ50Lgc7t
-	crw8qAuDxuu8+7UakZcQpdLw+VbfewEIq4+1MtET6X3Pjw4OrhNSfKyfe3WMXYMUM51xkY9mDHgzl
-	Eyk9O4n8lfNRzjkI+efUZulevtQ6qNmiPTV1aGKH3oO0yCchDmiReoTfLYcx7HkDjgWchmDD0d+jN
-	ui5isZOOA==;
+	 bh=+/gXO0uAbfG0CGm0Eo9mm7QyRC5mfFAsoYF6BpsLiC4=; b=ngKle7S7QX3ek7eYgcM0r4FM2
+	0VKjr77jpB4gJUm4ehzUVDCQysjzTeD9ZRQG1tQnDdjxO0E5u7Ol/E3lAsC03uhIuyI8lIETu/G3g
+	6I0rexxprhxXHXCGuA1V2MeukSbXBAqcAlwovVABfOxQWybdtGs93cfUOlzBAwnT8J/UxtvTpItyp
+	36G0y0DLSF6PWgy0o19mG6uHqT0Uen0QUwUbd+Veyihcl/6aJGy2ZnqLE2K/gtGZBasxDtbkl8DK3
+	b6yrAJjVSpf9MbbXL9fJEEEvV6eWJTALxXxWWM0Rdy3+scLoX54t73cFPAlZ2ZGusVlXeZn2KQCnp
+	Dswrw29dg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leIDV-001O7d-Nc; Wed, 05 May 2021 14:09:33 +0000
+	id 1leIJX-001PAz-HM; Wed, 05 May 2021 14:15:51 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leIDH-001O3m-BT
- for linux-rockchip@desiato.infradead.org; Wed, 05 May 2021 14:09:20 +0000
+ id 1leIJR-001P9k-Q9
+ for linux-rockchip@desiato.infradead.org; Wed, 05 May 2021 14:15:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=ZuMGnmL873A8Aht3acchiMitNnW9MriMCQQhwiTX/hM=; b=gtxw8J811mX4WCvLYO4KSWWErG
- hY33yi2BYIARNpSOttBw6yRPEX2RNVetY+GfGlUcbsOr5TvqnI12uT/AjiU+5F38CE0/mrkvM23Lf
- hl4SquffQmw0RPEnfrU5yH6A/vG/BDzzBJ1cEjUAlZ0i8yKYbErMYY6u3GFe2LLqnTJ3jOZTG8F+r
- cTkleH5qquEbHczUztPT/5kXkvI7dhEnDjBOy5KZqVnWvuThgnIBBIEji5F2SmMnCRnq0zhoxtN3y
- d/gLyWH1MfkIxPHJ8GknL/kS11l/eSt5wuQFb0E29pOW568fCVO6ipTykXyFZL0lA1x0aIk8lQ409
- mKmV6mUQ==;
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=9vD1KRaUtHtuD7e40NRO3Uq3fqOldwU+bYDGSkmNxp4=; b=lhQHSx+HeHUKg6j4HPahCxDyi4
+ nfbmfaLHqrzqm1nTaf6ApkCcxAGS4VI195L3OKOyv6SL9LT4NxVOVhp/6ZMIDfarji1X3JdLw5djw
+ mPSiHdmYE6kwNIQ4Lds59SRyP3gIudXUAX/M0N3IBNvbliMOQmN9aOd20z4kPsCSp6W/oIhMYBlmh
+ TkP28QVjLXI90tHdf+630i5vrGVr3toCOsI0LGEiom5E6FTdw+BjlMLn8ezDEDefdpWPzuHS8PBWO
+ NSN98Uc2+31ojUmf9K650s4PBWPy4ok+O+/JHmhrJJamOZFZvijkIkklOa/uBuadl/Hw6QfxoAmWi
+ +6xAHJFg==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leIDD-004oIa-7C
- for linux-rockchip@lists.infradead.org; Wed, 05 May 2021 14:09:18 +0000
-Received: by mail-oo1-xc34.google.com with SMTP id
- p6-20020a4adc060000b02901f9a8fc324fso495692oov.10
- for <linux-rockchip@lists.infradead.org>; Wed, 05 May 2021 07:09:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ZuMGnmL873A8Aht3acchiMitNnW9MriMCQQhwiTX/hM=;
- b=N8IXljK5qtjMFkTFmFzeu1ek3SFPoXXgC7fwzywN1V5H5TDbgdqSgcqMTfDfsWZAun
- 7bKAF8WSz9TzlRwq2nKdcTc32GIxplxU1IWkgVNALR44i/P62vHRIUfFvLY31Ma1s636
- 22AIigf34Xga4/Wd9D6PVYGc5Li/TpXhbgF95PQnaPLFI4GLHNb/vw1zSI6tcEOt48V9
- RIHJE3SSOrbI+E1tK8QNbza/GWp0k3+e+OOyfQnRT0WZKYcqyiYg/lUhAVxuDu+P/jBJ
- ePWynYhnsigSYkP8U1I25fjCJCuLcn08KmAjHWKdxS4P/xPGv2+JxOml0EiHpHHvQXcK
- fZ1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ZuMGnmL873A8Aht3acchiMitNnW9MriMCQQhwiTX/hM=;
- b=IQJEKI0Iw5DCDHh/cwK09m2gQ0gfG2VM5F0fceHNZDZfMYspsDSMb2phFW4GHWax/O
- RW/SYsE2R4RBIxtJCObPNHuQFwojzjFG+GMXZuJ4eaEbC60n1w4o/tfd5959g2oLQEv8
- 9HoRQHXFsWytkSrevjxhkdAWcsWY6tFSbx0CsMVOIOA24U8GXlnR+IXVYeScdOUpwaA9
- w64/AlkLJFL0eKrxZOWQ+izcBaYpffPl496J9qxpY+WCLzZO/VJn2vtSdFykVOvT+VqB
- SZC2aBnvoVgdbTiA/BU9g9r53ap5hfTmoZ+4I9jeTM3/JxX+MRAt5/7hEm8PF8ImbmAz
- gD6A==
-X-Gm-Message-State: AOAM530x/K9KzZ4Ozd39fZtEAe3B5QGrUpVOAEMik+yEyGNF1+7M2YTc
- /vJR6/IadrSPhICSAh9vZ/Q=
-X-Google-Smtp-Source: ABdhPJxk0b4f1mO+g5I5jpcbo1nP9K30KmuvaULBn5tMixHQo5CIGCbW0A7nYiYl0ITHLIkldz5y8Q==
-X-Received: by 2002:a4a:e8cd:: with SMTP id h13mr13998919ooe.58.1620223752635; 
- Wed, 05 May 2021 07:09:12 -0700 (PDT)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
- [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id k20sm621707otb.15.2021.05.05.07.09.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 May 2021 07:09:12 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: alsa-devel@alsa-project.org
-Cc: broonie@kernel.org, lgirdwood@gmail.com,
- pierre-louis.bossart@linux.intel.com, tiwai@suse.com, heiko@sntech.de,
- lee.jones@linaro.org, robh+dt@kernel.org, perex@perex.cz,
- jbx6244@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, maccraft123mc@gmail.com,
- Chris Morgan <macromorgan@hotmail.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH 3/4] dt-bindings: Add Rockchip rk817 audio CODEC support
-Date: Wed,  5 May 2021 09:08:53 -0500
-Message-Id: <20210505140854.15929-4-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210505140854.15929-1-macroalpha82@gmail.com>
-References: <20210505140854.15929-1-macroalpha82@gmail.com>
+ id 1leIJO-004olj-O1
+ for linux-rockchip@lists.infradead.org; Wed, 05 May 2021 14:15:40 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7B97261106;
+ Wed,  5 May 2021 14:15:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620224138;
+ bh=Dm86HNWhTP5ywVYQgBazD3r+DHUcNYJVAYcVIdMuGt4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=mPQAayT+vIeGsDpuv5VCic1U8BoxH50iO7qWXqGufVb8NAbxCJtYhs6bsnKQtjN/C
+ xBGcAoZ49N/sGES3er5z8VmPDdRGJ/BJeWWorTCFB/vfKsgk5V1Rc9W4o/FzZVwn5n
+ KhiQV4CDU5lOQVeFp1S9Y0dvqLB7KHMkYHr+gbgFvCrkx0m5p4uD86WjQH/cBcYUkZ
+ anyI8gy42uJ+/KDtm6G4uUWXi+rGgX5mpizE7GyIDHM3G65mF4HdCs8PvnMZuOPGxh
+ r8HPWWQokQZ2tvGZzC4LHVwAf+iqzKsIBVO3FxrlTajLnrBMr9VpByvg1uejhk+My1
+ 1kFgXf0DdDseg==
+Date: Wed, 5 May 2021 16:15:32 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linuxarm@huawei.com, mauro.chehab@huawei.com, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev
+Subject: Re: [PATCH 09/25] media: hantro: do a PM resume earlier
+Message-ID: <20210505161532.6d9da768@coco.lan>
+In-Reply-To: <735925557d7fde1c11affeea703f8486febc825d.camel@collabora.com>
+References: <cover.1620207353.git.mchehab+huawei@kernel.org>
+ <82114a4bd9c7bc1188c6a7167a6e74bb3360961d.1620207353.git.mchehab+huawei@kernel.org>
+ <11c24f97ef71b16c2e7b3ba40ca66a28c12df692.camel@collabora.com>
+ <20210505154647.62784bf7@coco.lan>
+ <735925557d7fde1c11affeea703f8486febc825d.camel@collabora.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_070915_295388_8E4537F8 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20210505_071538_893237_D13EBA46 
+X-CRM114-Status: GOOD (  35.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,282 +96,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Create dt-binding documentation to document rk817 codec.
-New property name of rockchip,mic-in-differential added to control if
-the microphone is in differential mode or not.
-
-Tested-by: Maciej Matuszczyk <maccraft123mc@gmail.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
-Changes in v9:
- - Add cover letter.
- - Remove documentation for interrupt parent per Rob Herring's request.
- - Remove unused MODULE_DEVICE_TABLE to fix a bug identified by kernel test
-   robot.
-Changes in v8:
- - Added additional documentation for missing properties of #sound-dai-cells,
-   interrupt-parent, and wakeup-source for mfd documentation.
- - Corrected order of elements descriptions in device tree documentation.
- - Changed name of "mic-in-differential" to "rockchip,mic-in-differential".
- - Changed name of sound card from "rockchip,rk817-codec" to "Analog".
- - Removed unused resets and reset-names from the i2s1_2ch node.
-Changes in v7:
- - Removed ifdef around register definitions for MFD.
- - Replaced codec documentation with updates to MFD documentation.
- - Reordered elements in example to comply with upstream rules.
- - Added binding update back for Odroid Go Advance as requested.
- - Submitting patches from gmail now.
-Changes in v6:
- - Included additional project maintainers for correct subsystems.
- - Removed unneeded compatible from DT documentation.
- - Removed binding update for Odroid Go Advance (will do in seperate series).
-Changes in v5:
- - Move register definitions from rk817_codec.h to main rk808.h register
-   definitions.
- - Add volatile register for codec bits.
- - Add default values for codec bits.
- - Removed of_compatible from mtd driver (not necessary).
- - Switched to using parent regmap instead of private regmap for codec.
-Changes in v4:
- - Created set_pll() call.
- - Created user visible gain control in mic.
- - Check for return value of clk_prepare_enable().
- - Removed duplicate clk_prepare_enable().
- - Split DT documentation to separate commit.
-Changes in v3:
- - Use DAPM macros to set audio path.
- - Updated devicetree binding (as every rk817 has this codec chip).
- - Changed documentation to yaml format.
- - Split MFD changes to separate commit.
-Changes in v2:
- - Fixed audio path registers to solve some bugs.
-
- .../devicetree/bindings/mfd/rk808.txt         | 186 ++++++++++++++++++
- 1 file changed, 186 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-index 04df07f6f793..56121039154f 100644
---- a/Documentation/devicetree/bindings/mfd/rk808.txt
-+++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-@@ -23,6 +23,7 @@ Optional properties:
-   default output clock name
- - rockchip,system-power-controller: Telling whether or not this pmic is controlling
-   the system power.
-+- wakeup-source: Device can be used as a wakeup source.
- 
- Optional RK805 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
-@@ -63,8 +64,16 @@ Optional RK809 properties:
- - vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
- 
- Optional RK817 properties:
-+- clocks:	The input clock for the audio codec
-+- clock-names:	The clock name for the codec clock. Should be "mclk".
-+- #sound-dai-cells: Needed for the interpretation of sound dais. Should be 0.
-+
- - vcc8-supply:  The input supply for BOOST
- - vcc9-supply:  The input supply for OTG_SWITCH
-+- codec:	The child node for the codec to hold additional properties.
-+
-+- rockchip,mic-in-differential: Telling if the microphone uses differential
-+				mode. Should be under the codec child node.
- 
- Optional RK818 properties:
- - vcc1-supply:  The input supply for DCDC_REG1
-@@ -275,3 +284,180 @@ Example:
- 			};
- 		};
- 	};
-+
-+	rk817: pmic@20 {
-+		compatible = "rockchip,rk817";
-+		reg = <0x20>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
-+		clock-output-names = "rk808-clkout1", "xin32k";
-+		clock-names = "mclk";
-+		clocks = <&cru SCLK_I2S1_OUT>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
-+		wakeup-source;
-+		#clock-cells = <1>;
-+		#sound-dai-cells = <0>;
-+
-+		vcc1-supply = <&vccsys>;
-+		vcc2-supply = <&vccsys>;
-+		vcc3-supply = <&vccsys>;
-+		vcc4-supply = <&vccsys>;
-+		vcc5-supply = <&vccsys>;
-+		vcc6-supply = <&vccsys>;
-+		vcc7-supply = <&vccsys>;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-min-microvolt = <950000>;
-+				regulator-max-microvolt = <1150000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-min-microvolt = <950000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3: DCDC_REG4 {
-+				regulator-name = "vcc_3v3";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_1v8: LDO_REG2 {
-+				regulator-name = "vcc_1v8";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_1v0: LDO_REG3 {
-+				regulator-name = "vdd_1v0";
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vcc3v3_pmu: LDO_REG4 {
-+				regulator-name = "vcc3v3_pmu";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-name = "vccio_sd";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_sd: LDO_REG6 {
-+				regulator-name = "vcc_sd";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_bl: LDO_REG7 {
-+				regulator-name = "vcc_bl";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_lcd: LDO_REG8 {
-+				regulator-name = "vcc_lcd";
-+				regulator-min-microvolt = <2800000>;
-+				regulator-max-microvolt = <2800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <2800000>;
-+				};
-+			};
-+
-+			vcc_cam: LDO_REG9 {
-+				regulator-name = "vcc_cam";
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
-+		};
-+
-+		rk817_codec: codec {
-+			rockchip,mic-in-differential;
-+		};
-+	};
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RW0gV2VkLCAwNSBNYXkgMjAyMSAxMTowMTozNSAtMDMwMApFemVxdWllbCBHYXJjaWEgPGV6ZXF1
+aWVsQGNvbGxhYm9yYS5jb20+IGVzY3JldmV1OgoKPiBPbiBXZWQsIDIwMjEtMDUtMDUgYXQgMTU6
+NDYgKzAyMDAsIE1hdXJvIENhcnZhbGhvIENoZWhhYiB3cm90ZToKPiA+IEVtIFdlZCwgMDUgTWF5
+IDIwMjEgMTA6MjI6MDMgLTAzMDAKPiA+IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFi
+b3JhLmNvbT4gZXNjcmV2ZXU6Cj4gPiAgIAo+ID4gPiBIaSBNYXVybywKPiA+ID4gCj4gPiA+IFRo
+YW5rcyBmb3Igd29ya2luZyBvbiB0aGlzLgo+ID4gPiAKPiA+ID4gT24gV2VkLCAyMDIxLTA1LTA1
+IGF0IDExOjQxICswMjAwLCBNYXVybyBDYXJ2YWxobyBDaGVoYWIgd3JvdGU6ICAKPiA+ID4gPiBU
+aGUgZGV2aWNlX3J1bigpIGZpcnN0IGVuYWJsZXMgdGhlIGNsb2NrIGFuZCB0aGVuCj4gPiA+ID4g
+dHJpZXMgdG8gcmVzdW1lIFBNIHJ1bnRpbWUsIGNoZWNraW5nIGZvciBlcnJvcnMuCj4gPiA+ID4g
+Cj4gPiA+ID4gV2VsbCwgaWYgZm9yIHNvbWUgcmVhc29uIHRoZSBwbV9ydW50aW1lIGNhbiBub3Qg
+cmVzdW1lLAo+ID4gPiA+IGl0IHdvdWxkIGJlIGJldHRlciB0byBkZXRlY3QgaXQgYmVmb3JlaGFu
+ZC4KPiA+ID4gPiAKPiA+ID4gPiBTbywgY2hhbmdlIHRoZSBvcmRlciBpbnNpZGUgZGV2aWNlX3J1
+bigpLgo+ID4gPiA+IAo+ID4gPiA+IFJldmlld2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1
+aWVsQGNvbGxhYm9yYS5jb20+Cj4gPiA+ID4gRml4ZXM6IDc3NWZlYzY5MDA4ZCAoIm1lZGlhOiBh
+ZGQgUm9ja2NoaXAgVlBVIEpQRUcgZW5jb2RlciBkcml2ZXIiKQo+ID4gPiA+IFNpZ25lZC1vZmYt
+Ynk6IE1hdXJvIENhcnZhbGhvIENoZWhhYiA8bWNoZWhhYitodWF3ZWlAa2VybmVsLm9yZz7CoCAg
+IAo+ID4gPiAKPiA+ID4gSXQgc2VlbXMgdGhpcyBpcyB3cm9uZyBub3csIGFzIHRoaXMgc2VyaWVz
+IGRvZXNuJ3QgaGF2ZQo+ID4gPiAKPiA+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgt
+bWVkaWEvODAzYzM5ZmFmZGQ2MmVmYzZmOWU0ZDk5YTM3MmFmMmM2OTU1MTQzYi4xNjE5NjIxNDEz
+LmdpdC5tY2hlaGFiK2h1YXdlaUBrZXJuZWwub3JnLwo+ID4gPiAKPiA+ID4gSSBkb24ndCBmdWxs
+eSB1bmRlcnN0YW5kIHdoeSBhbGwgdGhlIGJhY2sgYW5kIGZvcnRoCj4gPiA+IGhhcHBlbmluZyBv
+biB0aGlzIHNlcmllcywgYnV0IHRoZSBmb3JtZXIgSGFudHJvIHBhdGNoZXMKPiA+ID4gbG9va2Vk
+IGdvb2QgKGRlc3BpdGUgcGVyaGFwcyB1bmNsZWFyIGNvbW1pdCBtZXNzYWdlcykuICAKPiA+IAo+
+ID4gVGhlcmUgd2FzIGEgcmVxdWVzdCB0byBicmVhayB0aGUgb3JpZ2luYWwgLzc5IHNlcmllcyBp
+bnRvIHNtYWxsZXIgb25lcywKPiA+IHRvIG1ha2UgZWFzaWVyIGZvciByZXZpZXdlcnMuIFNvLCBJ
+IG9wdGVkIHRvIHNwbGl0IGl0IGludG8gKHByb2JhYmx5KQo+ID4gMyBzZXJpZXM6Cj4gPiAKPiA+
+IDEuIEZpeGVzICh0aGlzIHNlcmllcyk7Cj4gPiAyLiAidXNlIHBtX3J1bnRpbWVfcmVzdW1lX2Fu
+ZF9nZXQiIGZvciB0aGUgSTJDIGRyaXZlcnM7Cj4gPiAzLiAidXNlIHBtX3J1bnRpbWVfcmVzdW1l
+X2FuZF9nZXQiIGZvciByZW1haW5pbmcgb25lcy4KPiA+IAo+ID4gQmVmb3JlIGZsb29kaW5nIGV2
+ZXJ5Ym9keSdzIGVtYWlsJ3Mgd2l0aCBzZXJpZXMgKDIpIGFuZCAoMyksIGJldHRlcgo+ID4gdG8g
+Zm9jdXMgYXQgdGhlIGZpeGVzIGZpcnN0LiBJJ2xsIHByb2JhYmx5IHNlbmQgdGhlIG90aGVyIHR3
+byBzZXJpZXMKPiA+IGJ5IHRvbW9ycm93Lgo+ID4gICAKPiA+ID4gQW55IGlzc3VlcyBqdXN0IHNx
+dWFzaGluZyB0aGVzZSB0d28gY29tbWl0cyBmcm9tICJbUEFUQ0ggdjQgMDAvNzldIEFkZHJlc3Mg
+c29tZSBpc3N1ZXMgd2l0aCBQTSBydW50aW1lIGF0IG1lZGlhIHN1YnN5c3RlbSI6Cj4gPiA+IAo+
+ID4gPiDCoCBtZWRpYTogaGFudHJvOiB1c2UgcG1fcnVudGltZV9yZXN1bWVfYW5kX2dldCgpCj4g
+PiA+IMKgIG1lZGlhOiBoYW50cm86IGRvIGEgUE0gcmVzdW1lIGVhcmxpZXIgIAo+ID4gCj4gPiBU
+aGUgcHJvYmxlbSBpcyB0aGF0IHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoKSB3YXMgYWRkZWQg
+b25seQo+ID4gcmVjZW50bHkgKEtlcm5lbCB2NS4xMCkuIAo+ID4gCj4gPiBTbywgSSBvcHRlZCB0
+byBwbGFjZSB0aGUgZml4IHBhdGNoZXMgYmVmb3JlIHRoZSBjaGFuZ2VzLCBhcyB0aGlzCj4gPiB3
+YXksIG1vc3QgKGFsbD8pIHBhdGNoZXMgY2FuIGJlIGVhc2lseSBiZSBiYWNrcG9ydGVkIHRvIGxl
+Z2FjeSBLZXJuZWxzCj4gPiBhcyBuZWVkZWQuCj4gPiAgIAo+IAo+IEdvdCBpdC4KPiAKPiBNYXli
+ZSB0aGUgYmV0dGVyIGZpeCB3b3VsZCBiZSB0aGUgc3F1YXNoIG9mIFtQQVRDSCB2NCA3OC83OV0g
+bWVkaWE6IGhhbnRybzogdXNlIHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQoKQo+IGFuZCBbUEFU
+Q0ggdjQgNzkvNzldIG1lZGlhOiBoYW50cm86IGRvIGEgUE0gcmVzdW1lIGVhcmxpZXIgYnV0IGtl
+ZXBpbmcgcG1fcnVudGltZV9nZXRfc3luYy4KPiAKPiBBbmQgdGhlbiB5b3UgY2FuIHJlcGxhY2Ug
+dGhlIHBtX3J1bnRpbWVfZ2V0X3N5bmMgd2l0aCBwbV9ydW50aW1lX3Jlc3VtZV9hbmRfZ2V0LgoK
+V29ya3MgZm9yIG1lLiBTbywgdGhlIGZpeGVzIHBhdGNoIHdpbGwgYmUgdGhlIGVuY2xvc2VkIG9u
+ZSwgcmlnaHQ/CgpCdHcsIEkgYWdyZWUgd2l0aCBKb25hdGhhbiB0aGF0IHRoZSBiZXN0IHdvdWxk
+IGJlIHRvIGFsc28gbW92ZSB0aGlzOgoKCWNsa19idWxrX2Rpc2FibGUodnB1LT52YXJpYW50LT5u
+dW1fY2xvY2tzLCB2cHUtPmNsb2Nrcyk7CgpvdXQgb2YgaGFudHJvX2pvYl9maW5pc2hfbm9fcG0o
+KSwgYXMsIHdoZW4gYW4gZXJyb3IgaGFwcGVucyBhdApkZXZpY2VfcnVuKCksIHRoZSBjbG9jayBs
+aW5lcyB3b24ndCBiZSBlbmFibGVkIGF0IHRoZSBmaXJzdCBwbGFjZS4KCj4gVGhhbmtzLAo+IEV6
+ZXF1aWVsCgpUaGFua3MsCk1hdXJvCgpbUEFUQ0hdIG1lZGlhOiBoYW50cm86IGRvIGEgUE0gcmVz
+dW1lIGVhcmxpZXIKClRoZSBkZXZpY2VfcnVuKCkgZmlyc3QgZW5hYmxlcyB0aGUgY2xvY2sgYW5k
+IHRoZW4KdHJpZXMgdG8gcmVzdW1lIFBNIHJ1bnRpbWUsIGNoZWNraW5nIGZvciBlcnJvcnMuCgpX
+ZWxsLCBpZiBmb3Igc29tZSByZWFzb24gdGhlIHBtX3J1bnRpbWUgY2FuIG5vdCByZXN1bWUsCml0
+IHdvdWxkIGJlIGJldHRlciB0byBkZXRlY3QgaXQgYmVmb3JlaGFuZC4KClNvLCBjaGFuZ2UgdGhl
+IG9yZGVyIGluc2lkZSBkZXZpY2VfcnVuKCkuCgpSZXZpZXdlZC1ieTogRXplcXVpZWwgR2FyY2lh
+IDxlemVxdWllbEBjb2xsYWJvcmEuY29tPgpGaXhlczogNzc1ZmVjNjkwMDhkICgibWVkaWE6IGFk
+ZCBSb2NrY2hpcCBWUFUgSlBFRyBlbmNvZGVyIGRyaXZlciIpClNpZ25lZC1vZmYtYnk6IE1hdXJv
+IENhcnZhbGhvIENoZWhhYiA8bWNoZWhhYitodWF3ZWlAa2VybmVsLm9yZz4KCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYyBiL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCmluZGV4IDU5NWU4MmE4MjcyOC4uYmRiNTdm
+YjU2ZjQ3IDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19k
+cnYuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwpAQCAt
+NTYsMTQgKzU2LDEyIEBAIGRtYV9hZGRyX3QgaGFudHJvX2dldF9yZWYoc3RydWN0IGhhbnRyb19j
+dHggKmN0eCwgdTY0IHRzKQogCXJldHVybiBoYW50cm9fZ2V0X2RlY19idWZfYWRkcihjdHgsIGJ1
+Zik7CiB9CiAKLXN0YXRpYyB2b2lkIGhhbnRyb19qb2JfZmluaXNoKHN0cnVjdCBoYW50cm9fZGV2
+ICp2cHUsCi0JCQkgICAgICBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAotCQkJICAgICAgZW51bSB2
+YjJfYnVmZmVyX3N0YXRlIHJlc3VsdCkKK3N0YXRpYyB2b2lkIGhhbnRyb19qb2JfZmluaXNoX25v
+X3BtKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUsCisJCQkJICAgIHN0cnVjdCBoYW50cm9fY3R4ICpj
+dHgsCisJCQkJICAgIGVudW0gdmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCiB7CiAJc3RydWN0IHZi
+Ml92NGwyX2J1ZmZlciAqc3JjLCAqZHN0OwogCi0JcG1fcnVudGltZV9tYXJrX2xhc3RfYnVzeSh2
+cHUtPmRldik7Ci0JcG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQodnB1LT5kZXYpOwogCWNsa19i
+dWxrX2Rpc2FibGUodnB1LT52YXJpYW50LT5udW1fY2xvY2tzLCB2cHUtPmNsb2Nrcyk7CiAKIAlz
+cmMgPSB2NGwyX20ybV9uZXh0X3NyY19idWYoY3R4LT5maC5tMm1fY3R4KTsKQEAgLTgxLDYgKzc5
+LDE2IEBAIHN0YXRpYyB2b2lkIGhhbnRyb19qb2JfZmluaXNoKHN0cnVjdCBoYW50cm9fZGV2ICp2
+cHUsCiAJCQkJCSByZXN1bHQpOwogfQogCitzdGF0aWMgdm9pZCBoYW50cm9fam9iX2ZpbmlzaChz
+dHJ1Y3QgaGFudHJvX2RldiAqdnB1LAorCQkJICAgICAgc3RydWN0IGhhbnRyb19jdHggKmN0eCwK
+KwkJCSAgICAgIGVudW0gdmIyX2J1ZmZlcl9zdGF0ZSByZXN1bHQpCit7CisJcG1fcnVudGltZV9t
+YXJrX2xhc3RfYnVzeSh2cHUtPmRldik7CisJcG1fcnVudGltZV9wdXRfYXV0b3N1c3BlbmQodnB1
+LT5kZXYpOworCisJaGFudHJvX2pvYl9maW5pc2hfbm9fcG0odnB1LCBjdHgsIHJlc3VsdCk7Cit9
+CisKIHZvaWQgaGFudHJvX2lycV9kb25lKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUsCiAJCSAgICAg
+ZW51bSB2YjJfYnVmZmVyX3N0YXRlIHJlc3VsdCkKIHsKQEAgLTE1MiwxMiArMTYwLDE1IEBAIHN0
+YXRpYyB2b2lkIGRldmljZV9ydW4odm9pZCAqcHJpdikKIAlzcmMgPSBoYW50cm9fZ2V0X3NyY19i
+dWYoY3R4KTsKIAlkc3QgPSBoYW50cm9fZ2V0X2RzdF9idWYoY3R4KTsKIAorCXJldCA9IHBtX3J1
+bnRpbWVfZ2V0X3N5bmMoY3R4LT5kZXYtPmRldik7CisJaWYgKHJldCA8IDApIHsKKwkJcG1fcnVu
+dGltZV9wdXRfbm9pZGxlKGN0eC0+ZGV2LT5kZXYpOworCQlnb3RvIGVycl9jYW5jZWxfam9iOwor
+CX0KKwogCXJldCA9IGNsa19idWxrX2VuYWJsZShjdHgtPmRldi0+dmFyaWFudC0+bnVtX2Nsb2Nr
+cywgY3R4LT5kZXYtPmNsb2Nrcyk7CiAJaWYgKHJldCkKIAkJZ290byBlcnJfY2FuY2VsX2pvYjsK
+LQlyZXQgPSBwbV9ydW50aW1lX2dldF9zeW5jKGN0eC0+ZGV2LT5kZXYpOwotCWlmIChyZXQgPCAw
+KQotCQlnb3RvIGVycl9jYW5jZWxfam9iOwogCiAJdjRsMl9tMm1fYnVmX2NvcHlfbWV0YWRhdGEo
+c3JjLCBkc3QsIHRydWUpOwogCkBAIC0xNjUsNyArMTc2LDcgQEAgc3RhdGljIHZvaWQgZGV2aWNl
+X3J1bih2b2lkICpwcml2KQogCXJldHVybjsKIAogZXJyX2NhbmNlbF9qb2I6Ci0JaGFudHJvX2pv
+Yl9maW5pc2goY3R4LT5kZXYsIGN0eCwgVkIyX0JVRl9TVEFURV9FUlJPUik7CisJaGFudHJvX2pv
+Yl9maW5pc2hfbm9fcG0oY3R4LT5kZXYsIGN0eCwgVkIyX0JVRl9TVEFURV9FUlJPUik7CiB9CiAK
+IHN0YXRpYyBzdHJ1Y3QgdjRsMl9tMm1fb3BzIHZwdV9tMm1fb3BzID0gewoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
