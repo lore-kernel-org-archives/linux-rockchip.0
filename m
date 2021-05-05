@@ -2,107 +2,89 @@ Return-Path: <SRS0=Kxb6=KA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7875C433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 09:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED30FC433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 11:36:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31BFB61106
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 09:45:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31BFB61106
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4CFA1610A1
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 11:36:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CFA1610A1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=Huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hZcXEcxbEI8ONcaTvLikjhdZQpVccoj0IBEfZn32BQU=; b=Sw/Q46onMgEpimLHMpDl5155bT
-	uufttQQpwTMsJclvuC5vOVRHDKbCJTFx1Zsdw8CUD4bzsNsc/RTlbqJOf0591HViuvLS9Qsep6+CW
-	CqDPQjNTToVOYsG7vp0YZG5ytYe1Gi4jjKi2g3UkmywaJIwkCX9LV2cjHNK9tXykcP89I2WW7nIPU
-	vK/yGNfHUlcVRh/nw2J5D/8aG2fMEx1IgkQcH+AHm7qZE5L/5wGnOUVbSvUPw2pkq4QbMs8iXgfB0
-	O0JWjWx6QbK5VkJgXjszoYlbreAq+oFcvsBvWE3n2h1vdCJEE68NfKQFLvHZIJAFqtjv0TJVsYPSJ
-	yhiMiTJA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=k795IPsGuGE+Gaw1Kzurib+b/v75KdBY71XpmSie8SI=; b=I3tG0bG4+X1YVVGlQGBFVyiyE
+	t4wgP9yWHufWEY5mKzpmNcIRr02tyVhsldc1WoxbP9c46Ql9KsNQiQo4Ac4O3lGqLsBjuIEx6keU5
+	wj75kS5UtD+ElQhZuVeoWK9SuFaVhq+VEPAE+OCmlCfrnlFNj9e2v3kNjtNiEm9N7zNVdjILtmar5
+	OZ4irH9UIZWOD241hHCFBnVx6Y9nC3LuW1lClmNnmX2zMNSaQMfBsLyp4dIUFXrF0KhdSrUha+RvD
+	ZCTPTI2wsqZ6VYzbrtQa4vWkAFObfKZBToEdMCYl+D6k1wLW9kO47k9yHnjBUNrU6yWn5nVajyPCC
+	8ATh1iKGg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leE67-000mLF-A6; Wed, 05 May 2021 09:45:40 +0000
+	id 1leFpP-0016L0-NM; Wed, 05 May 2021 11:36:31 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leE2z-000l5o-Es; Wed, 05 May 2021 09:42:29 +0000
+ id 1leFpH-0016J7-Ez
+ for linux-rockchip@desiato.infradead.org; Wed, 05 May 2021 11:36:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=rszBJj9aV+Fgnfu5GSJRaCm2qYnVL6C1ZOvh5PSg1Z4=; b=q9HNzfdQMGfbpyf5IKXSWVcbkC
- aipYl57y6gCSYzDFG06VywtdHII1KFDTBPL1gsGuF0NwFOvVTZVpEu9x1lSShb81WyZGdwSDFQp49
- KGVm1Gpk/iHg0J97K5kyB3g9IXoditRP0/5QLRZAhtiZMLpYsjSQnfeyqyaVwNafPmsBZu5no8UYh
- Gy2rR3DyCFGQXu670kGRNHg2SuZFh+wF9GnuBfHrtBu33F8hfgtt95eOShNGzJazhSkrHFJIUxv5K
- IHYitlPTGE21djgQkGCx9h0WxakLIyWQQ3DVKzRxERd7ehq8YArVRzWcBTGdNrFfLswzAupq/s42+
- wnNvieHg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+ From:Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=r+of4F5vlTfKS1MP90fStKqvk6Olhpx9FaMgMETAWXY=; b=MryV4uedZso1FQCwUP+hBhKRsC
+ 8oZ80w2LlE/3Vx31p5KgscsmuqN3cLzU9oJnKH1vzAN6w+ECokjdD7LH7KyI/o9o5RemmPfH/dHcQ
+ jUmZp8aIsRzsaGqPwY90X+uVdZsZSB1ZSYkLpb9oC8gt1JzSpwPYA0AwgixjbKj08dLjzkAre52FQ
+ KKrPHw2gAkq8WEbFHs0LkHI+Yxy8qvFHX9NvjLqhHdHxIZwfiLXrhHcqmv9lSpktHNDwlLhUBnZaC
+ k5FvhP1azm2WQrDuKaGeNSTyBMM3PwQgNndFaLqQQbfvUAcFMZqC6cet1xvlmFQIzuHmBuRJo5E7A
+ CdL0cdOA==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leE2u-004cd1-ML; Wed, 05 May 2021 09:42:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0602D61401;
- Wed,  5 May 2021 09:42:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620207739;
- bh=yt06NNHz8DnYKToINWX+kvUyHzX2tR5CxsEbiivgk9Q=;
- h=From:To:Cc:Subject:Date:From;
- b=aqDRmaF3drwaIh64M6SmLAXcURg7md3/lxLq6hY7zb9NqADehFDhLwTfZdBs7O+Ua
- PrWk1xzp0TuIUKCqW49WlvukyoTfR5zgDGz7Uu2PZqSgv1pEGUUxNbyoLUBf8HZnu5
- qRdm6t31xE9TWLgGFmfaTYQA8hMkY0ziRes30XuBsRHwKIVlQv7wfSkyxIpDYtEO+h
- OCd1Y0Rg6YCyxJf0fUjbsEoL8cTStyP6CBORWLMbL183NygQ2Jt0qsW8FwH+QN9AJO
- UNaAIvqUS7AS4O6rIj0PTrvaAvgGwleAAphalHt9KMZmiBAzijNKMWxdBLmzF/O1Jj
- VRSlJc4wK+6AA==
-Received: by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1leE2q-00AHvp-Hf; Wed, 05 May 2021 11:42:16 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Fabio Estevam <festevam@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Rui Miguel Silva <rmfrfs@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev
-Subject: [PATCH 00/25] Fix some PM runtime issues at the media subsystem
-Date: Wed,  5 May 2021 11:41:50 +0200
-Message-Id: <cover.1620207353.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.30.2
+ id 1leFpC-004hwG-My
+ for linux-rockchip@lists.infradead.org; Wed, 05 May 2021 11:36:20 +0000
+Received: from fraeml734-chm.china.huawei.com (unknown [172.18.147.201])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4FZvbK0QHrz6rlWH;
+ Wed,  5 May 2021 19:28:13 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml734-chm.china.huawei.com (10.206.15.215) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Wed, 5 May 2021 13:36:15 +0200
+Received: from localhost (10.52.120.138) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Wed, 5 May 2021
+ 12:36:14 +0100
+Date: Wed, 5 May 2021 12:34:35 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: <linuxarm@huawei.com>, <mauro.chehab@huawei.com>, Ezequiel Garcia
+ <ezequiel@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-staging@lists.linux.dev>
+Subject: Re: [PATCH 09/25] media: hantro: do a PM resume earlier
+Message-ID: <20210505123435.00002065@Huawei.com>
+In-Reply-To: <82114a4bd9c7bc1188c6a7167a6e74bb3360961d.1620207353.git.mchehab+huawei@kernel.org>
+References: <cover.1620207353.git.mchehab+huawei@kernel.org>
+ <82114a4bd9c7bc1188c6a7167a6e74bb3360961d.1620207353.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; i686-w64-mingw32)
 MIME-Version: 1.0
+X-Originating-IP: [10.52.120.138]
+X-ClientProxiedBy: lhreml725-chm.china.huawei.com (10.201.108.76) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_024220_810770_84B06BD4 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210505_043618_906148_F96998ED 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,94 +102,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As part of an effort to cleanup pm_runtime*get* calls, I detected a number
-of issues at the media subsystem.
+On Wed, 5 May 2021 11:41:59 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-Most of the patches here were submitted previously at:
+> The device_run() first enables the clock and then
+> tries to resume PM runtime, checking for errors.
+> 
+> Well, if for some reason the pm_runtime can not resume,
+> it would be better to detect it beforehand.
+> 
+> So, change the order inside device_run().
+> 
+> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-	https://lore.kernel.org/linux-media/cover.1619621413.git.mchehab+huawei@kernel.org/
+Does this move not result in a potential call of clk_bulk_disable() for clocks
+that aren't enabled?
 
-This series contain just the bug fixes and other related issues that are
-present with the current code on media.
-
-It address the points from the existing reviews. I also did my own
-set of reviews, in order to avoid regressions.
-
-Changes from v4 of the previous changeset:
-
-- reworked i2c/css RPM get logic;
-- dropped two patches that could cause regressions;
-- am437x: keep using pm_runtime_get_sync on suspend/resume;
-- atmel: fix the returned code and add a print on failures at start streaming;
-- simplify some checks for return code > 0;
-- mdk-vcodec: properly handle RPM errors at device on logic;
-- venus: rework venus_sys_error_handler() logic;
-- sti/delta: fix an issue at the error checking logic.
-
-Mauro Carvalho Chehab (25):
-  staging: media: rkvdec: fix pm_runtime_get_sync() usage count
-  staging: media: imx7-mipi-csis: fix pm_runtime_get_sync() usage count
-  media: venus: Rework error fail recover logic
-  media: s5p_cec: decrement usage count if disabled
-  media: i2c: ccs-core: return the right error code at suspend
-  media: i2c: imx334: fix the pm runtime get logic
-  media: exynos-gsc: don't resume at remove time
-  media: atmel: properly get pm_runtime
-  media: hantro: do a PM resume earlier
-  media: marvel-ccic: fix some issues when getting pm_runtime
-  media: mdk-mdp: fix pm_runtime_get_sync() usage count
-  media: rcar_fdp1: simplify error check logic at fdp_open()
-  media: rcar_fdp1: fix pm_runtime_get_sync() usage count
-  media: renesas-ceu: Properly check for PM errors
-  media: s5p: fix pm_runtime_get_sync() usage count
-  media: am437x: fix pm_runtime_get_sync() usage count
-  media: sh_vou: fix pm_runtime_get_sync() usage count
-  media: mtk-vcodec: fix PM runtime get logic
-  media: s5p-jpeg: fix pm_runtime_get_sync() usage count
-  media: sti/delta: use pm_runtime_resume_and_get()
-  media: sunxi: fix pm_runtime_get_sync() usage count
-  media: sti/bdisp: fix pm_runtime_get_sync() usage count
-  media: exynos4-is: fix pm_runtime_get_sync() usage count
-  media: exynos-gsc: fix pm_runtime_get_sync() usage count
-  media: i2c: ccs-core: fix pm_runtime_get_sync() usage count
-
- drivers/media/cec/platform/s5p/s5p_cec.c      |  7 ++-
- drivers/media/i2c/ccs/ccs-core.c              | 41 ++++++++-----
- drivers/media/i2c/imx334.c                    |  7 ++-
- drivers/media/platform/am437x/am437x-vpfe.c   | 15 ++++-
- drivers/media/platform/atmel/atmel-isc-base.c | 30 +++++++---
- drivers/media/platform/atmel/atmel-isi.c      | 19 ++++--
- drivers/media/platform/exynos-gsc/gsc-core.c  | 11 ++--
- drivers/media/platform/exynos-gsc/gsc-m2m.c   |  4 +-
- .../media/platform/exynos4-is/fimc-capture.c  |  6 +-
- drivers/media/platform/exynos4-is/fimc-is.c   |  4 +-
- .../platform/exynos4-is/fimc-isp-video.c      |  3 +-
- drivers/media/platform/exynos4-is/fimc-isp.c  |  7 +--
- drivers/media/platform/exynos4-is/fimc-lite.c |  5 +-
- drivers/media/platform/exynos4-is/fimc-m2m.c  |  5 +-
- drivers/media/platform/exynos4-is/media-dev.c |  9 +--
- drivers/media/platform/exynos4-is/mipi-csis.c | 10 ++--
- .../media/platform/marvell-ccic/mcam-core.c   |  9 ++-
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  6 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  4 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  8 ++-
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  2 +-
- drivers/media/platform/qcom/venus/core.c      | 59 +++++++++++++++----
- drivers/media/platform/rcar_fdp1.c            | 28 ++++++---
- drivers/media/platform/renesas-ceu.c          |  4 +-
- drivers/media/platform/s5p-jpeg/jpeg-core.c   |  5 +-
- drivers/media/platform/sh_vou.c               |  6 +-
- drivers/media/platform/sti/bdisp/bdisp-v4l2.c |  7 ++-
- drivers/media/platform/sti/delta/delta-v4l2.c |  8 +--
- .../sunxi/sun8i-rotate/sun8i_rotate.c         |  2 +-
- drivers/staging/media/hantro/hantro_drv.c     |  7 ++-
- drivers/staging/media/imx/imx7-mipi-csis.c    |  7 +--
- drivers/staging/media/rkvdec/rkvdec.c         |  2 +-
- 32 files changed, 220 insertions(+), 127 deletions(-)
-
--- 
-2.30.2
-
+> ---
+>  drivers/staging/media/hantro/hantro_drv.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index 595e82a82728..4387edaa1d0d 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -152,13 +152,14 @@ static void device_run(void *priv)
+>  	src = hantro_get_src_buf(ctx);
+>  	dst = hantro_get_dst_buf(ctx);
+>  
+> -	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+> -	if (ret)
+> -		goto err_cancel_job;
+>  	ret = pm_runtime_get_sync(ctx->dev->dev);
+>  	if (ret < 0)
+>  		goto err_cancel_job;
+>  
+> +	ret = clk_bulk_enable(ctx->dev->variant->num_clocks, ctx->dev->clocks);
+> +	if (ret)
+> +		goto err_cancel_job;
+> +
+>  	v4l2_m2m_buf_copy_metadata(src, dst, true);
+>  
+>  	ctx->codec_ops->run(ctx);
 
 
 _______________________________________________
