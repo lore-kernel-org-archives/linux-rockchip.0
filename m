@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FEA1C43460
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D22DC433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEB39610D2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEB39610D2
+	by mail.kernel.org (Postfix) with ESMTPS id E9E5B61182
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 May 2021 14:09:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9E5B61182
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,67 +24,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tbvCbJKlTD0YDsgYr6jaLyTDiRyzka0PFPq30wv+JGA=; b=WNPvIThN8+RTxpi/GbcBIUcOr
-	rsSZnj2FoAv3k9IOYQhkO+Rb1lE2donZvMyZAL1bShqzzAmehL0xgzR40nNBPqOfummU63fVe+xQo
-	pSUVVduRfZOZEKVohVmk2Jz3x54OwKEumzdo1oyUmOX2pLnJ+quirnNgNuqRGugyczkTL9InSwVbP
-	dztj2X/JZlKiO9lfQvbq1ED2CI1o5hPRtajLVUckRjDU81rN7Etq8gHnqR1MAa6vZwyZdmIs9CTXq
-	KGQ7YcYZhtPHUvS+0drmUyWecMPiHaYes5OAck8SkO9TptYFDJRCT3DOsFbKdr52otncBhnCwLc/u
-	bBJOLyt1Q==;
+	 bh=/Tuh5b3/8L8Sfr4VOvvqsFpQv1lCP88/Gu29/ru57XI=; b=SCYbPx6wrLojxrxccpRziynmL
+	tKGXV4VyZpCi4D8LBgPhjk6W6UbPvujwYiBEy5SQqcJnWsIInSfLVgGy6Of88kP468JGveP30HQDp
+	q2G58rrL0SdtPvVaU6r67nnfZQhZMbbrJTVeWNaehHcaZXa5e0TtfgrvXBdU8D6c27VJEi4HlOcsb
+	Q2SAhA5iVXSBJn3n86uxzhfdV+tyaGzmA5KOghzABza93vvOQfCSXjMfFRaAMliLyncDQ+aIgG+Lx
+	ZvQ/mG5vl4+i+LAYc80CVeqNEfty/eic7Gkzhi+ID/zC5cpL5iOi+7VwR2u+swLPi0r8PVfGcbErE
+	sJSRqh6Mw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leIDM-001O68-Ps; Wed, 05 May 2021 14:09:25 +0000
+	id 1leIDY-001O8R-51; Wed, 05 May 2021 14:09:36 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leIDH-001O3r-JJ
+ id 1leIDH-001O3q-JP
  for linux-rockchip@desiato.infradead.org; Wed, 05 May 2021 14:09:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=4Dk9pYJBEZ4Vt1CwY0d+apj8cWXATeqeVII8dtrdo6g=; b=IsAP5u8j/3o8wp13PYUBtRaFKw
- Q5HuMXkWg0oZjEYzauqKJE7i3pL9RF6PjLTvwBIgDI5BCDotDEdq1aeYuaYs2c5NfGRWaBx7AM21K
- PABUqPG1gWmUa2AnQKPAJg63KvkpffyGyIGU8LwMKptcdRKKuuM3fKpyAM8uhfk4Z6R3Ad80xQleK
- myr58gIOdqfhVqVVVUOFt6Zqju+QSuA6t9QV04fCumwYSAvOBsF5r3/dj7GAkhKFXwFi5G2ESkGtF
- 9BIHPljTi95aSrXXPJXtGwqHMjaz8gyO3X+PWKXYi/Gcu2GDOTBXKCMb3kgTM6k50R9xGHPHB0sXZ
- aZO71j8Q==;
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ bh=m5j/btsyLd9DUMe1LQtazP7T7DFpmpjQ+IT4zZRKp0k=; b=ZI4cjkfm+y2KxpoMtfViSCUChW
+ FBPiMKmmsL0FwYiW01YiMrqO9imba70JDweouVJcpwBOH5Y5XPRTbwadL+NpmXVgaqWV0GEce7jw1
+ YDUI3M9Yz/RsHrSbawdpxRVgCEuvrrpHZebqvL6Yp3/mp/vtpBkxhdfdpnoO4O1FgH52Gfqh6D2l8
+ ViAbo28xYFbVNZIXvaMcQPFKvY+mT+LaaJfYi3Fpap05nUHzaHJi8wXkgrBR06aJU8ssoOXAq/wN2
+ ezMKPqYHOlO930eaehxTDNTMLpldkAdRENOrvKLaYBTDs1UbdkLC4K3rBhFmnDDJDs0zIuXPopAW6
+ 3ZAsvzow==;
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leIDD-004oIA-7V
+ id 1leIDE-004oJA-Qd
  for linux-rockchip@lists.infradead.org; Wed, 05 May 2021 14:09:18 +0000
-Received: by mail-ot1-x332.google.com with SMTP id
- u25-20020a0568302319b02902ac3d54c25eso1809853ote.1
- for <linux-rockchip@lists.infradead.org>; Wed, 05 May 2021 07:09:08 -0700 (PDT)
+Received: by mail-oo1-xc36.google.com with SMTP id
+ h9-20020a4a94090000b02901f9d4f64172so502236ooi.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 05 May 2021 07:09:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4Dk9pYJBEZ4Vt1CwY0d+apj8cWXATeqeVII8dtrdo6g=;
- b=PYvuUHa5hAFnD/4t/Q25cG1kpZOOTmSkukaL1EveZptxGpE9iADu+znV1pVryKictt
- xSj3lY67wJCf/hP1kn8tMRtTYWCKIQ52faemNrPNUDWVz86p/ECHkANQ+OnDolGxBnIP
- /Vja70hcqEcIcb8HlfdxLfx+dIPOZvgxAS8epXMIQcjxwHzGuAJniE03Kswm2VvjRf1X
- uAVydmb+Cb+HYxfOcGvNb9rnbK5ddiPZT5hQHQDhZvhSCbK3NrhaTx2WPLcGCpwgZhuf
- T4O7U6fa7ciUtE+F6pBrrqAXG2I5aZPQqOod+FTuOngrqr/ztuswe1N+Kr4UNdZ51cnC
- Sw3g==
+ bh=m5j/btsyLd9DUMe1LQtazP7T7DFpmpjQ+IT4zZRKp0k=;
+ b=tZdXJBvIv84bP0TNCkZbIoTuEQGmESa8+/CPkZHMwKApjTYShvzXDTgJr7dEaDgo3s
+ uEVbbW+JJUxu6qdNDwYcbaSesnvGzQahOMB7djEdbTF9BnSRM41eddgW1gVnNBWURo0C
+ H3fed/EJStEy0owahqZijFOXhuXa41gSOwXf7UPQUWEa8gSp0ueq82csHl2Ru8zojmSr
+ A55dswEYmt0tdhg/wP9YRKJr5aDY081hhu3uWU+qe+NSvOZeV/AO73QUdNFmGKuJq90g
+ kswxIZwWxQqd7CORuWAk9gDwMSQxnNn6VeTvzP9Eans/CCxRjGvtguAVOOEZk6aGpdyj
+ agGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4Dk9pYJBEZ4Vt1CwY0d+apj8cWXATeqeVII8dtrdo6g=;
- b=l4XpbHXhdmCRhg7Gpj2KcBp63VNbJBMoDEokbqAK2p5TQa/LoVWk/MpB0FVhbsLWfM
- mX+4Mk+bXdEyJZeBC6OvaqU7f792hFaUAZCNYfpariqlHJx/pg5APiLKbR/1V5hFK9z/
- IzOoavcjM132vxTrtDrE8vLLDC7dVfI6i4Pm/9xi83nWy0fWNvrgtXVf7UcjJp+gL7Kn
- VlZ2T3U2wImupNYjPnVAIYcAwnB6EdqpkOog3xGgyju74pHSG8tPTazVvDpRjJvjaSuw
- RIsWNqb8tniNWMOZG+kQoHUYaDQo+Z+pm2ZJvH6Qpl6dA3qb03qK+sxGgGbQ6UWqUh5d
- aBaw==
-X-Gm-Message-State: AOAM532naFoVtRfSRG5nyxkY6MYoUA0jMF2/eHnedzOP0GiRjmC0ydqv
- aN63RcyXZxeM4QeWr6uHwoE=
-X-Google-Smtp-Source: ABdhPJw2J/dq4PsBc2ENLHqzx2HeebYRqi0IgG1lB5NFMHdCvODGA/feR3OvJQsB59aFXODlt8NkBw==
-X-Received: by 2002:a9d:30c3:: with SMTP id r3mr9548680otg.292.1620223748353; 
- Wed, 05 May 2021 07:09:08 -0700 (PDT)
+ bh=m5j/btsyLd9DUMe1LQtazP7T7DFpmpjQ+IT4zZRKp0k=;
+ b=sf3AvQTP+hqf5stZe8DJAewm0pjoSv6qIUGvZIvMVIHO9zwXI5h3Y/UgWldOL0sMKx
+ bJKb5hIBNxq1/OrcTPISN2vHImyAEh0WUPz1Q6Lv8wKVHCDhmG6GRi+qqQqVOpRnHp7J
+ 1hlXJau8K4tC8mj47gfFhdkWM7HALJCJNtNiDkSwHACyP8rDFFgWlTqQ/tWGDuWgSXjn
+ kqbRyk4eUJrJjNikzW3bxk/K4A1FjAOBCj4JB/idHoNwXUygdlRspzQpVnhC6JlwXzCC
+ 3mek4wqWEOHIknGYPQfMAhiGFrCKatJRdPd1vlMbOG40UnE/HBmrBVw3is0mnVe9/Z8/
+ 2LNw==
+X-Gm-Message-State: AOAM531Fo+Z1Y7XAFMrLOfOyeQT8vcu9+pQ/DIHl16/2CrBbNEnvI2T8
+ +ZbeXHnjLHzc8yuH16P/utE=
+X-Google-Smtp-Source: ABdhPJybwK7GrzJrvVw8R4pJ8a+m50GIQzMVAv2HCjmDEpdFDjkQnrcaVF7NXxYGC4524gJLmv5B2w==
+X-Received: by 2002:a4a:e548:: with SMTP id s8mr24476709oot.63.1620223754796; 
+ Wed, 05 May 2021 07:09:14 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id k20sm621707otb.15.2021.05.05.07.09.07
+ by smtp.gmail.com with ESMTPSA id k20sm621707otb.15.2021.05.05.07.09.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 May 2021 07:09:07 -0700 (PDT)
+ Wed, 05 May 2021 07:09:14 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: alsa-devel@alsa-project.org
 Cc: broonie@kernel.org, lgirdwood@gmail.com,
@@ -93,16 +93,16 @@ Cc: broonie@kernel.org, lgirdwood@gmail.com,
  jbx6244@gmail.com, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, maccraft123mc@gmail.com,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v9 1/4] mfd: Add Rockchip rk817 audio CODEC support
-Date: Wed,  5 May 2021 09:08:51 -0500
-Message-Id: <20210505140854.15929-2-macroalpha82@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: add rk817 codec to Odroid Go
+Date: Wed,  5 May 2021 09:08:54 -0500
+Message-Id: <20210505140854.15929-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210505140854.15929-1-macroalpha82@gmail.com>
 References: <20210505140854.15929-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_070915_320558_947BE668 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20210505_070916_889363_A65252E6 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,7 +122,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add rk817 codec support cell to rk808 mfd driver.
+Add the new rk817 codec driver to the Odroid Go Advance.
 
 Tested-by: Maciej Matuszczyk <maccraft123mc@gmail.com>
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
@@ -170,211 +170,72 @@ Changes in v3:
 Changes in v2:
  - Fixed audio path registers to solve some bugs.
 
- drivers/mfd/rk808.c       | 85 +++++++++++++++++++++++++++++++++++++++
- include/linux/mfd/rk808.h | 81 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 166 insertions(+)
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 36 +++++++++++++++++--
+ 1 file changed, 34 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index ad923dd4e007..9231209184e0 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -65,6 +65,7 @@ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
- 	switch (reg) {
- 	case RK817_SECONDS_REG ... RK817_WEEKS_REG:
- 	case RK817_RTC_STATUS_REG:
-+	case RK817_CODEC_DTOP_LPT_SRST:
- 	case RK817_INT_STS_REG0:
- 	case RK817_INT_STS_REG1:
- 	case RK817_INT_STS_REG2:
-@@ -163,6 +164,11 @@ static const struct mfd_cell rk817s[] = {
- 		.num_resources = ARRAY_SIZE(rk817_rtc_resources),
- 		.resources = &rk817_rtc_resources[0],
- 	},
-+#ifdef CONFIG_SND_SOC_RK817
-+	{
-+		.name = "rk817-codec",
-+	},
-+#endif
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 49c97f76df77..e8c2b5a817a7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -165,6 +165,31 @@ blue_led: led-0 {
+ 		};
+ 	};
+ 
++	rk817-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "Analog";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,widgets =
++			"Microphone", "Mic Jack",
++			"Headphone", "Headphones",
++			"Speaker", "Speaker";
++		simple-audio-card,routing =
++			"MICL", "Mic Jack",
++			"Headphones", "HPOL",
++			"Headphones", "HPOR",
++			"Speaker", "SPKO";
++		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
++
++		simple-audio-card,cpu {
++			sound-dai = <&i2s1_2ch>;
++		};
++
++		simple-audio-card,codec {
++			sound-dai = <&rk817>;
++		};
++	};
++
+ 	vccsys: vccsys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v8_sys";
+@@ -269,11 +294,14 @@ rk817: pmic@20 {
+ 		reg = <0x20>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++		clock-output-names = "rk808-clkout1", "xin32k";
++		clock-names = "mclk";
++		clocks = <&cru SCLK_I2S1_OUT>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&pmic_int>;
++		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+-		clock-output-names = "rk808-clkout1", "xin32k";
++		#sound-dai-cells = <0>;
+ 
+ 		vcc1-supply = <&vccsys>;
+ 		vcc2-supply = <&vccsys>;
+@@ -432,6 +460,10 @@ regulator-state-mem {
+ 				};
+ 			};
+ 		};
++
++		rk817_codec: codec {
++			rockchip,mic-in-differential;
++		};
+ 	};
  };
- 
- static const struct mfd_cell rk818s[] = {
-@@ -201,6 +207,85 @@ static const struct rk808_reg_data rk808_pre_init_reg[] = {
- 
- static const struct rk808_reg_data rk817_pre_init_reg[] = {
- 	{RK817_RTC_CTRL_REG, RTC_STOP, RTC_STOP},
-+	/* Codec specific registers */
-+	{ RK817_CODEC_DTOP_VUCTL, MASK_ALL, 0x03 },
-+	{ RK817_CODEC_DTOP_VUCTIME, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DTOP_LPT_SRST, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DTOP_DIGEN_CLKE, MASK_ALL, 0x00 },
-+	/* from vendor driver, CODEC_AREF_RTCFG0 not defined in data sheet */
-+	{ RK817_CODEC_AREF_RTCFG0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_AREF_RTCFG1, MASK_ALL, 0x06 },
-+	{ RK817_CODEC_AADC_CFG0, MASK_ALL, 0xc8 },
-+	/* from vendor driver, CODEC_AADC_CFG1 not defined in data sheet */
-+	{ RK817_CODEC_AADC_CFG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_VOLL, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_VOLR, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_SR_ACL0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_ALC1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_ALC2, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_NG, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_HPF, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DADC_RVOLL, MASK_ALL, 0xff },
-+	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
-+	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
-+	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
-+	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
-+	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
-+	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
-+	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
-+	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
-+	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
-+	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
-+	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
-+	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
-+	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
-+	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
-+	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
-+	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
-+	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
-+	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
-+	{ RK817_CODEC_DDAC_RVOLR, MASK_ALL, 0xff },
-+	{ RK817_CODEC_AHP_ANTI0, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_AHP_ANTI1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_AHP_CFG0, MASK_ALL, 0xe0 },
-+	{ RK817_CODEC_AHP_CFG1, MASK_ALL, 0x1f },
-+	{ RK817_CODEC_AHP_CP, MASK_ALL, 0x09 },
-+	{ RK817_CODEC_ACLASSD_CFG1, MASK_ALL, 0x69 },
-+	{ RK817_CODEC_ACLASSD_CFG2, MASK_ALL, 0x44 },
-+	{ RK817_CODEC_APLL_CFG0, MASK_ALL, 0x04 },
-+	{ RK817_CODEC_APLL_CFG1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_APLL_CFG2, MASK_ALL, 0x30 },
-+	{ RK817_CODEC_APLL_CFG3, MASK_ALL, 0x19 },
-+	{ RK817_CODEC_APLL_CFG4, MASK_ALL, 0x65 },
-+	{ RK817_CODEC_APLL_CFG5, MASK_ALL, 0x01 },
-+	{ RK817_CODEC_DI2S_CKM, MASK_ALL, 0x01 },
-+	{ RK817_CODEC_DI2S_RSD, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DI2S_RXCR1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DI2S_RXCR2, MASK_ALL, 0x17 },
-+	{ RK817_CODEC_DI2S_RXCMD_TSD, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DI2S_TXCR1, MASK_ALL, 0x00 },
-+	{ RK817_CODEC_DI2S_TXCR2, MASK_ALL, 0x17 },
-+	{ RK817_CODEC_DI2S_TXCR3_TXCMD, MASK_ALL, 0x00 },
- 	{RK817_GPIO_INT_CFG, RK817_INT_POL_MSK, RK817_INT_POL_L},
- 	{RK817_SYS_CFG(1), RK817_HOTDIE_TEMP_MSK | RK817_TSD_TEMP_MSK,
- 					   RK817_HOTDIE_105 | RK817_TSD_140},
-diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
-index e07f6e61cd38..a96e6d43ca06 100644
---- a/include/linux/mfd/rk808.h
-+++ b/include/linux/mfd/rk808.h
-@@ -437,6 +437,87 @@ enum rk809_reg_id {
- #define RK817_RTC_COMP_LSB_REG		0x10
- #define RK817_RTC_COMP_MSB_REG		0x11
- 
-+/* RK817 Codec Registers */
-+#define RK817_CODEC_DTOP_VUCTL		0x12
-+#define RK817_CODEC_DTOP_VUCTIME	0x13
-+#define RK817_CODEC_DTOP_LPT_SRST	0x14
-+#define RK817_CODEC_DTOP_DIGEN_CLKE	0x15
-+#define RK817_CODEC_AREF_RTCFG0		0x16
-+#define RK817_CODEC_AREF_RTCFG1		0x17
-+#define RK817_CODEC_AADC_CFG0		0x18
-+#define RK817_CODEC_AADC_CFG1		0x19
-+#define RK817_CODEC_DADC_VOLL		0x1a
-+#define RK817_CODEC_DADC_VOLR		0x1b
-+#define RK817_CODEC_DADC_SR_ACL0	0x1e
-+#define RK817_CODEC_DADC_ALC1		0x1f
-+#define RK817_CODEC_DADC_ALC2		0x20
-+#define RK817_CODEC_DADC_NG		0x21
-+#define RK817_CODEC_DADC_HPF		0x22
-+#define RK817_CODEC_DADC_RVOLL		0x23
-+#define RK817_CODEC_DADC_RVOLR		0x24
-+#define RK817_CODEC_AMIC_CFG0		0x27
-+#define RK817_CODEC_AMIC_CFG1		0x28
-+#define RK817_CODEC_DMIC_PGA_GAIN	0x29
-+#define RK817_CODEC_DMIC_LMT1		0x2a
-+#define RK817_CODEC_DMIC_LMT2		0x2b
-+#define RK817_CODEC_DMIC_NG1		0x2c
-+#define RK817_CODEC_DMIC_NG2		0x2d
-+#define RK817_CODEC_ADAC_CFG0		0x2e
-+#define RK817_CODEC_ADAC_CFG1		0x2f
-+#define RK817_CODEC_DDAC_POPD_DACST	0x30
-+#define RK817_CODEC_DDAC_VOLL		0x31
-+#define RK817_CODEC_DDAC_VOLR		0x32
-+#define RK817_CODEC_DDAC_SR_LMT0	0x35
-+#define RK817_CODEC_DDAC_LMT1		0x36
-+#define RK817_CODEC_DDAC_LMT2		0x37
-+#define RK817_CODEC_DDAC_MUTE_MIXCTL	0x38
-+#define RK817_CODEC_DDAC_RVOLL		0x39
-+#define RK817_CODEC_DDAC_RVOLR		0x3a
-+#define RK817_CODEC_AHP_ANTI0		0x3b
-+#define RK817_CODEC_AHP_ANTI1		0x3c
-+#define RK817_CODEC_AHP_CFG0		0x3d
-+#define RK817_CODEC_AHP_CFG1		0x3e
-+#define RK817_CODEC_AHP_CP		0x3f
-+#define RK817_CODEC_ACLASSD_CFG1	0x40
-+#define RK817_CODEC_ACLASSD_CFG2	0x41
-+#define RK817_CODEC_APLL_CFG0		0x42
-+#define RK817_CODEC_APLL_CFG1		0x43
-+#define RK817_CODEC_APLL_CFG2		0x44
-+#define RK817_CODEC_APLL_CFG3		0x45
-+#define RK817_CODEC_APLL_CFG4		0x46
-+#define RK817_CODEC_APLL_CFG5		0x47
-+#define RK817_CODEC_DI2S_CKM		0x48
-+#define RK817_CODEC_DI2S_RSD		0x49
-+#define RK817_CODEC_DI2S_RXCR1		0x4a
-+#define RK817_CODEC_DI2S_RXCR2		0x4b
-+#define RK817_CODEC_DI2S_RXCMD_TSD	0x4c
-+#define RK817_CODEC_DI2S_TXCR1		0x4d
-+#define RK817_CODEC_DI2S_TXCR2		0x4e
-+#define RK817_CODEC_DI2S_TXCR3_TXCMD	0x4f
-+
-+/* RK817_CODEC_DI2S_CKM */
-+#define RK817_I2S_MODE_MASK		(0x1 << 0)
-+#define RK817_I2S_MODE_MST		(0x1 << 0)
-+#define RK817_I2S_MODE_SLV		(0x0 << 0)
-+
-+/* RK817_CODEC_DDAC_MUTE_MIXCTL */
-+#define DACMT_MASK			(0x1 << 0)
-+#define DACMT_ENABLE			(0x1 << 0)
-+#define DACMT_DISABLE			(0x0 << 0)
-+
-+/* RK817_CODEC_DI2S_RXCR2 */
-+#define VDW_RX_24BITS			(0x17)
-+#define VDW_RX_16BITS			(0x0f)
-+
-+/* RK817_CODEC_DI2S_TXCR2 */
-+#define VDW_TX_24BITS			(0x17)
-+#define VDW_TX_16BITS			(0x0f)
-+
-+/* RK817_CODEC_AMIC_CFG0 */
-+#define MIC_DIFF_MASK			(0x1 << 7)
-+#define MIC_DIFF_DIS			(0x0 << 7)
-+#define MIC_DIFF_EN			(0x1 << 7)
-+
- #define RK817_POWER_EN_REG(i)		(0xb1 + (i))
- #define RK817_POWER_SLP_EN_REG(i)	(0xb5 + (i))
  
 -- 
 2.25.1
