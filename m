@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E908C43600
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:27:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CF09C43470
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:27:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A5FB6142F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:26:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A5FB6142F
+	by mail.kernel.org (Postfix) with ESMTPS id E005F613C7
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:27:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E005F613C7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uYhhwvdzAHsd1sxiMTRQPeg++8Pl9jgPFWj73GiLEqE=; b=dnphI7OfctErYL6G7zrZEHSGB
-	i0itxBWcC3A66z/dbSS3IpGUzoU01DgNHXziSr0e/cDeQBs6XaMh3OxcDsLRN0I3N/ZuMoGUllhvr
-	PFHqWY+4hsYJqyvn65ZdSnYKbxJGSR0hb7CZSHLZzZBRk8SmTH5bJdzs86K4Dfvjxe1FUe8ScMdKO
-	t+ZTb3R5zs31crAdVbvK8+t5yJGHZo1wOsdYSCizCOlug7fdMA8GCEqIqTpA5I6tso+m0mH1jRAw7
-	daWpUAOWK156d5ei/8pw7YUYXPL7B7Yey9OdvjdUCfXOwIYVwbB2GBez+0v2BPSTGlBpHD0WREwSZ
-	IEFCjyg1g==;
+	 bh=6qFeOrENuA3d98NJHF6QNUnhJoKXDv04/Bl0RMFEV+Q=; b=m+WVTstSZYt1ReETj/LZjMRov
+	Hh54rTAzHRL3QjYCN5wUvkBIU/loLZmrZgIGLXhpQvu7ZFM7g2LT4FvmvnZkbyJrRSymiOp5xKmHF
+	Z57YQwW0FJn47UDjAY/r/ST8c0B8c1pG8mLEyyX4ZsgsMs9xc/+L2Wi4Ce/c0/09jRuU2KHFQGyfj
+	i79xUIYra82w6Aizj4oDjcBKzWJ7xucONiXvhGdNCRMZBojjhPe5o/1syOSlFVEbXZ4EiX8Xu9qIR
+	3nSSIAoFQdQKAAfoNYWDPKRbbpe+zSEH6tNq69OdEmCpNgJ15lMGHQB+/MTA+Vxrdcnov5w3u1bjL
+	eVixI4VMw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leftu-004XuJ-3f; Thu, 06 May 2021 15:26:54 +0000
+	id 1lefuC-004Xzc-Tr; Thu, 06 May 2021 15:27:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leftU-004Xo3-KF; Thu, 06 May 2021 15:26:28 +0000
+ id 1leftX-004XoS-Ha
+ for linux-rockchip@desiato.infradead.org; Thu, 06 May 2021 15:26:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=wNlWAJheWo8r305lpFRr+Xmq5CAdeEepltQZlmQJw8g=; b=tsapPM2r9XqkCg3j3Ot/xwn2xe
- TmR0bMFXx5pv8YhpRp8Ouj3secuc04McbDxdJQk2xJm9rs5rNlzbQaUEQWpCtciZ5i+HtKfDzlThu
- 7Ne6iNfUyULy9hkmcEKK0/1kzxlLVL/6aaF0YfFXz0PjMaR/0Tmb/B7fAzGVlscBtxPls/xGvR9ki
- PtrzpkbwSkVOgfowsnhUgcqKMc8uFKNcwOXslbbJafzRiiqq3LU8h7e5HoP7ZafKtsiE1m9S9/DAZ
- lAwPM4Ig/Ok8O+D7+llXHtUaomgyed/JVCt48NsFXfa+DXpKTfUk7Ax+gCvlX4zjGz2UqLzzD+wfa
- NrnpNj9Q==;
+ bh=LCS2DO2BGxm9672Y2FCmLYUq13JuYrqvFO5XM0Vc7VI=; b=wvaPQldJO2uDUVMSzu48M7GvZR
+ 6v9c+JLHTjhjilumL6mB9AMYRHTH82334WfT01gUr+FhOUmi5Mgnd5QRtq7zY+a60eRvue94KrQeW
+ 1j0aM0LAkp345mgcO2bQGBU4HEJ1K62YlLPKxGWUTu+gP340rDeMHEOlsBFWzuchygKNHy8q1pT/m
+ X5bHHiMVqSA0gBHNOMKJwafJaydMgqzixPWiORE0gN9pGBohNDPe6Ituszsm7cLvFn82939xjU14+
+ YUOucXBIXr6UCKhR1ixfiCyKQRKdcjYazF0M/toA9qTpS7TUlcKH8hY05FqQ+6KLza3l/f7quWbRz
+ Yr54M7vg==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leftQ-0068li-0o; Thu, 06 May 2021 15:26:27 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 888D16191F;
- Thu,  6 May 2021 15:26:23 +0000 (UTC)
+ id 1leftT-0068oG-M7
+ for linux-rockchip@lists.infradead.org; Thu, 06 May 2021 15:26:30 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1AD9A61969;
+ Thu,  6 May 2021 15:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620314783;
- bh=rChg/pXG2Qjbehywcb/+z5hE6+LFH66GvNnoCtLFEBo=;
+ s=k20201202; t=1620314784;
+ bh=CljwneJOzsAzCxr1z7NSaPn2lzrNFeMbh5spoGp6sG0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JXEy9i/N7ERG6aoKkMzb4M5TO/fIhlAerMHSRsd02jm3W8bz1QfYSBg6roEahS6sU
- oKBJSurRGxIOISna8YHYPh0WiaQIhO6EvbOZZSQyGdXRQqlC5Hnm4FgDAxn9Jwxh/b
- Z6bC3A85niYeQfH3mpYaYLz/53CukSkgBqEz2gHHHiHGf/pTS+6OiZsd8jbRx4c6wR
- 5l/TQfFfbTJ71wxYl+iAs3uICx+LhHp2futFacCJaSWrCGpOlcoPWVPZUq0bxxdZ59
- Kzo+dH8p4BwynSTw8JS4X560xreu6dWaCKzlch2jP/cTjDiVmta87lEowHyUJlzfv7
- a3NYVYXsP+hug==
+ b=JpkDG+1kkaRH/dCZPmcLtq3DaDCDXgF5xWcjAlKhOuiUr1z/IQVXCsgyYy2omoce6
+ /J75nCgEPRGrT+lFqehcRMdlScj/mf7jCFr2Z9aBMBMxECtiL4J6s64/MbFBeptZlX
+ NZDUMytGMTCucl0bBrCTjkzqxTUtfV8jvInIhciF+n+CBWTTMvyzPwd01dvWT+aKuc
+ O0fDecAngeMhSfJ2WbQRVDCOwVvnmXm3mb0lMpLfQ3Wg4d9Buv7RFYV5CMBMueHuLm
+ G2QP2lombNU9zFcZ9gkn7ogCARdt5wj9AvXbuLpzWkKC640nDWOaY8D5R+22RRDvr4
+ mBIh405q8I3mg==
 Received: by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1left8-000SC7-6d; Thu, 06 May 2021 17:26:06 +0200
+ id 1left8-000SCd-FN; Thu, 06 May 2021 17:26:06 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v5 17/25] media: rkisp1: use pm_runtime_resume_and_get()
-Date: Thu,  6 May 2021 17:25:55 +0200
-Message-Id: <cd3a667a75a34288a72ba4da5952076a82620520.1620314616.git.mchehab+huawei@kernel.org>
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev
+Subject: [PATCH v5 25/25] media: hantro: use pm_runtime_resume_and_get()
+Date: Thu,  6 May 2021 17:26:03 +0200
+Message-Id: <0505970478fcb86e190ecdc4aefe55c9982ae7d5.1620314616.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1620314616.git.mchehab+huawei@kernel.org>
 References: <cover.1620314616.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210506_082624_144323_0EA317BB 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20210506_082627_792128_41ED27F2 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,28 +106,33 @@ Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with us
 added pm_runtime_resume_and_get() in order to automatically handle
 dev->power.usage_count decrement on errors.
 
-Use the new API, in order to cleanup the error check logic.
+While there's nothing wrong with the current usage on this driver,
+as we're getting rid of the pm_runtime_get_sync() call all over
+the media subsystem, let's remove the last occurrence on this
+driver.
 
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/hantro/hantro_drv.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 5f6c9d1623e4..3730376897d9 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1003,9 +1003,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	if (ret)
- 		goto err_pipeline_stop;
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index eea2009fa17b..74d6545395f9 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -160,9 +160,8 @@ static void device_run(void *priv)
+ 	src = hantro_get_src_buf(ctx);
+ 	dst = hantro_get_dst_buf(ctx);
  
--	ret = pm_runtime_get_sync(cap->rkisp1->dev);
-+	ret = pm_runtime_resume_and_get(cap->rkisp1->dev);
- 	if (ret < 0) {
--		pm_runtime_put_noidle(cap->rkisp1->dev);
- 		dev_err(cap->rkisp1->dev, "power up failed %d\n", ret);
- 		goto err_destroy_dummy;
+-	ret = pm_runtime_get_sync(ctx->dev->dev);
+-	if (ret < 0) {
+-		pm_runtime_put_noidle(ctx->dev->dev);
++	ret = pm_runtime_resume_and_get(ctx->dev->dev);
++	if (ret < 0)
+ 		goto err_cancel_job;
  	}
+ 
 -- 
 2.30.2
 
