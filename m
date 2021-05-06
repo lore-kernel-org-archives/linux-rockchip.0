@@ -2,102 +2,86 @@ Return-Path: <SRS0=3OfA=KB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A21DDC43460
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0131EC433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:28:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B98161990
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:28:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B98161990
+	by mail.kernel.org (Postfix) with ESMTPS id 5F21861A13
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 15:28:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F21861A13
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9iN2CZpcfMdPpmiEyxVZQWWiKHY/yeFhMw4W5IMm0LY=; b=InC9jYpTheDZq9qk0nqfeolQyj
-	lBiyHXoDnUQDqhX8n1iWCdB0ZKNePzmXTfOSWM5YubOIt26K8NEB9rZtFVY3JMvTgGT5uOVsSkgQq
-	GU9TJ2Kt9+icdqo9P1dBRgwJd5a3QZV10pUSieDw9wiPcZbEL/YO9YHKY1WjE4EudIMMftS9JO2rV
-	v93EcV5kGyaJ+xM/ACrNr+vGZG3RkibDoi3cymrpQTLyW6F4v+hjw0XS1pWMlm10HqZ7jbzSIQ7++
-	TKPEH4bbqv6wh+9/+PlVPWd9zNNzw05kqgsFERcG6hhPGVM5RSn0ZI5xuXks3zfHQlzHTUkuikri6
-	xG9V/k7A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PrjjTIznuqnKKLrWLbkzSPhr8b1QhRRyYcQkUoSVGk4=; b=DIiv5VW3cf3koh/c067Wk70Uw
+	ICWDg5lSECbJqFyS1LHsl3NiXVLeEZYseQIbM+Cze0z6jgMbNvwhe87rUD5GR7VP/lGNuDD4VdPry
+	b2T4fMQ0NuMK294plU1uLDVnCM1/m6U+kWZ3FM2z9EAD4N8YELUJdBvDwGrGCUQW09NkNe/wX/xt+
+	ZM0J6wpSqLW46ybL7G10Cx39XGVFapQ1a38yy0+qJyZvjzMhy5YcRsqxyGox9tLJjLXXrX04zNAcQ
+	cVfLfZELSKrEQhmgkwSnDmYgS08qjvKqT2OTH2aX8kkUSMsJPTz5CM5ndK7eo02NxpVfhQxEf20BO
+	G3bbMm1lw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lefva-004YZI-T2; Thu, 06 May 2021 15:28:39 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lefvf-004Ybd-Js; Thu, 06 May 2021 15:28:44 +0000
+Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lefth-004Xrj-MR; Thu, 06 May 2021 15:26:44 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2403A61584;
- Thu,  6 May 2021 15:26:40 +0000 (UTC)
+ id 1leftl-004Xsr-2M; Thu, 06 May 2021 15:26:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=X3E5qrAd9LhofXUaewv7AB/0Kjm3+iqK+K8x/5xUMME=; b=ip+MGus50Xjrd71gTgtp761TCB
+ csTGBGR5dFNnXHtJZnh+uf9F0w0vxrey6mXIb8Eodov2gUVxH5lrEfLqFzGp/XPWjeEDetN9gXBD9
+ rXwNbfbnVWFIJeCeUwwMsGzHnyeMREwzvsmx/Qg99ZP2cs6Ed2f5aWLnAnNVO0KNP1tW8/uX9rYHv
+ ZDIT1cO/vhh2yC1x6TlK1f1csOeZUHddH/NnijhIyfGoTboldEEkSaiyo+rph2cfiWxd+PKtZs/7L
+ ctNLwcETpcaydJ/x7iUQbWrB69KK7MxtCd4aZAfl7qk9YmKlMlGPVF2oyyno6jZy1EjfIHjkSPH8e
+ 8KC0S4Rg==;
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1leftg-0068x0-F9; Thu, 06 May 2021 15:26:43 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E72E1613C7;
+ Thu,  6 May 2021 15:26:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1620314800;
- bh=PvMAY6Y2fz/EvEn1dyCRJ72V76RqJb8t+KOlunBx8UY=;
- h=From:To:Cc:Subject:Date:From;
- b=WnFjjXi6QufHdKAf0NrxvIr88fq46S7vbtcI30ddxj18mrch8A+v1YNh2H9MQqftF
- xbggOG7JOxwSWbQTzeyT2oG4vE9DQQlDsqvm2Shs6WHwvcQtkEff1vL1xmCenTDUxz
- DDU2AwYzImtlNSUjehesEzHx7hlo+/ZKRBsRPbb9i9aumHNHqJTJUYvJFv8/Qa6aLG
- H5cs5YZDguj3bStGcWFq7Fsc7w2JID15ILH4nlzjsa4uOXBi6Sc5apsyWSH8ooG3GB
- bkXTuVqCSd6zl0UkdjlpxZOrap35ifdCt681cypv2r3raeYR+W9YzcVfw734dX4O9c
- P34nCnsFHocGA==
+ bh=4K87ljT9ixqFdaKF30WMhbJexV0Sw0oEND6zL2GFWyI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=lLnjGGdtKuEp8Ae3/TLwodZT6L9J0mJGUVHCcp7oiubnKJP1SN9PJ3SE5sOvTz8H/
+ jtqudlwpiO/23UqSTQDZCt3Pxq74xnaA+uOZSx30VRKccvIgAmiR7OvNO41C7iwNCX
+ W0nzOB/wuyooRIvmkyzcbQ9DSP6HcVP6KcQ27M8XVL010CcUA/yY/vBCxdYUp3/OfM
+ 24y8PK3CbqFAx8Q5+64Omd3C05O4QRwUlx1qdkNm1bi5pXwl139s9xdyxK1ATvE6dO
+ jBEjXvCS2XTutIlFerMoPnUREcvkAO4FXTnUiw5jxlHJn/6YDUiJtAjCcaB7tzyKh8
+ JtYHol86iAkxQ==
 Received: by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1left7-000SB2-KN; Thu, 06 May 2021 17:26:05 +0200
+ id 1left7-000SBT-SM; Thu, 06 May 2021 17:26:05 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrzej Hajda <a.hajda@samsung.com>, Andy Gross <agross@kernel.org>,
- Benoit Parrot <bparrot@ti.com>, Bingbu Cao <bingbu.cao@intel.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Dan Scally <djrscally@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Fabio Estevam <festevam@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Helen Koike <helen.koike@collabora.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
  Jacob Chen <jacob-chen@iotwrt.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Robert Foss <robert.foss@linaro.org>, Rui Miguel Silva <rmfrfs@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>, Todor Tomov <todor.too@gmail.com>,
- Yong Zhi <yong.zhi@intel.com>, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org
-Subject: [PATCH v5 00/25] media: use pm_runtime_resume_and_get() on non-i2c
- drivers
-Date: Thu,  6 May 2021 17:25:38 +0200
-Message-Id: <cover.1620314616.git.mchehab+huawei@kernel.org>
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH v5 07/25] media: rockchip/rga: use pm_runtime_resume_and_get()
+Date: Thu,  6 May 2021 17:25:45 +0200
+Message-Id: <ce18a4f9ca1bdcf4c68e77eaa410ec03a6ec8fe2.1620314616.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1620314616.git.mchehab+huawei@kernel.org>
+References: <cover.1620314616.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210506_162642_245352_CC7E737F 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20210506_082640_629376_B56633B7 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,101 +99,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dealing with PM runtime (RPM) is different than dealing with other kAPIs used
-on media, as most pm_runtime_get_*() functions won't return to the the state
-before the call if an error rises. They, instead, increment an usage_count.
+Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+added pm_runtime_resume_and_get() in order to automatically handle
+dev->power.usage_count decrement on errors.
 
-Due to that, there were several bugs on media. Just on this review, we found
-24 such errors.
+Use the new API, in order to cleanup the error check logic.
 
-So, let's use pm_runtime_resume_and_get() whenever possible, as it
-has two advantages over :
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/media/platform/rockchip/rga/rga-buf.c | 3 +--
+ drivers/media/platform/rockchip/rga/rga.c     | 4 +++-
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-1. On errors, it decrements the usage count;
-2. It always return zero on success or an error code. This prevents a
-   common error pattern of checking if ret is not zero to identify
-   for errors.
-
-There are however a few places where calls to pm_runtime_get_sync()
-are kept. On several of those, a comment was added, in order to
-help preventing trivial patches that could try to change them.
-
-PS.: This series was submitted already together with the fix patches
-at:
-
-   	https://lore.kernel.org/linux-media/cover.1619621413.git.mchehab+huawei@kernel.org/
-
-I opted to break it on 3 parts, in order to make easier to review.
-
-This is the third (and final) part.
-
-Mauro Carvalho Chehab (25):
-  staging: media: imx7-mipi-csis: use pm_runtime_resume_and_get()
-  staging: media: atomisp: use pm_runtime_resume_and_get()
-  staging: media: ipu3: use pm_runtime_resume_and_get()
-  staging: media: cedrus_video: use pm_runtime_resume_and_get()
-  staging: media: tegra-vde: use pm_runtime_resume_and_get()
-  staging: media: tegra-video: use pm_runtime_resume_and_get()
-  media: rockchip/rga: use pm_runtime_resume_and_get()
-  media: sti/hva: use pm_runtime_resume_and_get()
-  media: ipu3: use pm_runtime_resume_and_get()
-  media: coda: use pm_runtime_resume_and_get()
-  media: mtk-jpeg: use pm_runtime_resume_and_get()
-  media: camss: use pm_runtime_resume_and_get()
-  media: venus: core: use pm_runtime_resume_and_get()
-  media: venus: vdec: use pm_runtime_resume_and_get()
-  media: venus: venc: use pm_runtime_resume_and_get()
-  media: rcar-fcp: use pm_runtime_resume_and_get()
-  media: rkisp1: use pm_runtime_resume_and_get()
-  media: s3c-camif: use pm_runtime_resume_and_get()
-  media: s5p-mfc: use pm_runtime_resume_and_get()
-  media: stm32: use pm_runtime_resume_and_get()
-  media: sunxi: use pm_runtime_resume_and_get()
-  media: ti-vpe: use pm_runtime_resume_and_get()
-  media: vsp1: use pm_runtime_resume_and_get()
-  media: rcar-vin: use pm_runtime_resume_and_get()
-  media: hantro: use pm_runtime_resume_and_get()
-
- drivers/media/pci/intel/ipu3/ipu3-cio2-main.c |  3 +--
- drivers/media/platform/coda/coda-common.c     |  7 ++++---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   |  4 ++--
- .../media/platform/qcom/camss/camss-csid.c    |  6 ++----
- .../media/platform/qcom/camss/camss-csiphy.c  |  6 ++----
- .../media/platform/qcom/camss/camss-ispif.c   |  6 ++----
- drivers/media/platform/qcom/camss/camss-vfe.c |  5 +++--
- .../media/platform/qcom/venus/pm_helpers.c    |  3 +--
- drivers/media/platform/qcom/venus/vdec.c      |  6 +++---
- drivers/media/platform/qcom/venus/venc.c      |  5 +++--
- drivers/media/platform/rcar-fcp.c             |  8 +------
- drivers/media/platform/rcar-vin/rcar-csi2.c   | 15 ++++++++++---
- drivers/media/platform/rcar-vin/rcar-dma.c    |  6 ++----
- drivers/media/platform/rcar-vin/rcar-v4l2.c   |  6 ++----
- drivers/media/platform/rockchip/rga/rga-buf.c |  3 +--
- drivers/media/platform/rockchip/rga/rga.c     |  4 +++-
- .../platform/rockchip/rkisp1/rkisp1-capture.c |  3 +--
- .../media/platform/s3c-camif/camif-capture.c  |  2 +-
- drivers/media/platform/s3c-camif/camif-core.c |  5 +++--
- drivers/media/platform/s5p-mfc/s5p_mfc_pm.c   |  6 ++----
- drivers/media/platform/sti/hva/hva-hw.c       | 17 ++++++++-------
- drivers/media/platform/stm32/stm32-dcmi.c     |  5 +++--
- .../platform/sunxi/sun4i-csi/sun4i_v4l2.c     |  6 ++++--
- drivers/media/platform/ti-vpe/cal-video.c     |  4 +++-
- drivers/media/platform/ti-vpe/cal.c           |  8 ++++---
- drivers/media/platform/ti-vpe/vpe.c           |  8 +++----
- drivers/media/platform/vsp1/vsp1_drv.c        | 10 +--------
- .../staging/media/atomisp/pci/atomisp_fops.c  |  6 +++---
- drivers/staging/media/hantro/hantro_drv.c     |  5 ++---
- drivers/staging/media/imx/imx7-mipi-csis.c    |  7 +++----
- drivers/staging/media/ipu3/ipu3.c             |  3 +--
- .../staging/media/sunxi/cedrus/cedrus_video.c |  6 ++----
- drivers/staging/media/tegra-vde/vde.c         | 21 ++++++++++++++++---
- drivers/staging/media/tegra-video/csi.c       |  3 +--
- drivers/staging/media/tegra-video/vi.c        |  3 +--
- 35 files changed, 110 insertions(+), 111 deletions(-)
-
+diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/media/platform/rockchip/rga/rga-buf.c
+index bf9a75b75083..81508ed5abf3 100644
+--- a/drivers/media/platform/rockchip/rga/rga-buf.c
++++ b/drivers/media/platform/rockchip/rga/rga-buf.c
+@@ -79,9 +79,8 @@ static int rga_buf_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	struct rockchip_rga *rga = ctx->rga;
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(rga->dev);
++	ret = pm_runtime_resume_and_get(rga->dev);
+ 	if (ret < 0) {
+-		pm_runtime_put_noidle(rga->dev);
+ 		rga_buf_return_buffers(q, VB2_BUF_STATE_QUEUED);
+ 		return ret;
+ 	}
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index 9d122429706e..bf3fd71ec3af 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -866,7 +866,9 @@ static int rga_probe(struct platform_device *pdev)
+ 		goto unreg_video_dev;
+ 	}
+ 
+-	pm_runtime_get_sync(rga->dev);
++	ret = pm_runtime_resume_and_get(rga->dev);
++	if (ret < 0)
++		goto unreg_video_dev;
+ 
+ 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
+ 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
 -- 
 2.30.2
-
 
 
 _______________________________________________
