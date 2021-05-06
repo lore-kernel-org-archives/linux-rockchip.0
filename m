@@ -2,76 +2,96 @@ Return-Path: <SRS0=3OfA=KB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF1B3C433ED
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 17:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8006C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 20:35:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7D7B611AE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 17:56:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7D7B611AE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3F75361107
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 May 2021 20:35:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F75361107
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3K2+kLrMWEAp5yzw8uEKI5meiH8bj1nQvWiArfvaIMY=; b=gQAgj3LZwyG+cUx79KrJ1owka
-	EGEUlPBA0OoXz05ZGfCQ6/70fncfjeUHkBGVoWUrBcRuyQiahaNogG66fQZOlLr6s0Ym1TU0kZfNo
-	R6uhS0K1+N+OseLLRZF4/H1GsmW/loiQdhy2CW1t3kmPSjEiKRrSq2zVNlsvKYB7KA5dVocyKcPsx
-	Mx89OT1AMj0LnS8oeI2SIgj3hfzAZlAYzs++FIgLSCehsRyM88g3ow3E4E/jVUSEHka/GHAgSVsAX
-	5uAY4yjyhyGFskizFXOytaIs0wqcviuyQJDZsbsSD+2aPXXID2jXRv556kwUrEZ6Ln3h9LdOslEcW
-	aclWDH3JQ==;
+	 bh=RJ2FzW/Gxp1Hp9J3BIrhIRWjxHJ3z1RUU6bYdx2jY7E=; b=jhG2Ho5A4d5ECRJFT3+dew7+o
+	Vdtk/WfkKOi9Oo8P4VqiVg3O/KS/uk7E9au0BykQu/dhoC3bsESpcGHZrbzHBReQPzlH7EH3P8Ib9
+	EzJ5DCwNABe8+Z3f7G8uWNdZCFAMqcKeJtL2PPNHoeegsJPTXqlczpSSXJjHTkQESk/6aCRfcNaFY
+	egUS4lpgXAVneafzmJEEfsaALBs2BQXEF/e/uCInX0sgBGLyOLH0/+bto0Xrubfz8HN9nu1QHnsFt
+	dLjupk4t1QSB7nQBrnrjAO9jpAuMrDEZMXM9BnMNSvBAlPlHpTXWnI7lrAzHZMFW76oDQ9RnJ567d
+	jm1KkpW4Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leiEB-004zKc-5z; Thu, 06 May 2021 17:55:59 +0000
+	id 1lekij-005GxK-KA; Thu, 06 May 2021 20:35:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leiE9-004zK6-Um
- for linux-rockchip@desiato.infradead.org; Thu, 06 May 2021 17:55:58 +0000
+ id 1lekiT-005GuI-Jl; Thu, 06 May 2021 20:35:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=VCodyThkqjNnGcUagbWvlVRjH2BCeX2HXda6ZoSPqZw=; b=wjcKG68w6huRc9M2pkg0pt5fCm
- CJO+gkcA3ko+9zO+Ehcz3F2RDjW6iMbV5Jt95LMzolA/CuqdeBGTBeESYQBhX/VyFKtBrEyXm4rS3
- 5dKSU4XB/udPsAlAhr+RNUxYplHN8wBzh9X+que91X1Vp8p8BNKtOkoodYrF6v6SPairlFyUONJ0k
- ZNnt8Px038VHvo1kAXInNH3wplQM0UrkUqVnBYzK6e3+3J6Z2FpnbaUuyGKWI3fpZOFx480NctXcP
- +YwSEJiOB9D1w5Ula3XMeDX7uDLTF1m8jUwv0myLUtklnU01I/iVmQNEXDrrs6aasCM4dbt+gWwLQ
- bTCxBWww==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=onrgqNhsc6VTUYv6U1qfk40eTxmzLwGljQWarb0zJmY=; b=b9d0NFhUnPksHDiQwbTT7x+L9B
+ f0of3xb3gaztSuJJkF3Fqrz5u1PnDICmwVCeb0Rw/SpmdfzTgh2BlNFoNzj9+BsiTHV4ta5tybX4g
+ gYVNTgDPCnPEzDBTVHxMxvNvrA6hKJLgxz7oWsD56yzH7rvyumknAZDoOSAlueCSkGPZZI4q4UazN
+ bt7lsqxwHjGY/yhqT+PgtGJMblvjYlu+M9cP4rgb6mKt05ZbCXsNDt+NL1ceV17+Bf3gi92iyXujD
+ LG5suk0F9CnptWpbaLCTPTnoaxkVT5yqUgGA0WlPOqnaHhy96t5L3pHsar+c/OsUwaELSyYFJu58n
+ 17sx+axQ==;
+Received: from mail-oo1-f48.google.com ([209.85.161.48])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leiE6-006Gij-Ue
- for linux-rockchip@lists.infradead.org; Thu, 06 May 2021 17:55:56 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 931F91F43B7E
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>,
- Zhang Rui <rui.zhang@intel.com>, kernel@collabora.com,
- Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v2 4/4] thermal/rockchip: Support RK3568 SoCs in the thermal
- driver
-Date: Thu,  6 May 2021 14:55:14 -0300
-Message-Id: <20210506175514.168365-5-ezequiel@collabora.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210506175514.168365-1-ezequiel@collabora.com>
-References: <20210506175514.168365-1-ezequiel@collabora.com>
+ id 1lekiQ-006NND-FI; Thu, 06 May 2021 20:35:24 +0000
+Received: by mail-oo1-f48.google.com with SMTP id
+ c12-20020a4ae24c0000b02901bad05f40e4so1537000oot.4; 
+ Thu, 06 May 2021 13:35:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=onrgqNhsc6VTUYv6U1qfk40eTxmzLwGljQWarb0zJmY=;
+ b=H9NsUXcpQTwkhKH71GEDsotVpczrkWwTo+YnPiTLx5ntWFjFWEuvJjv+DkR6pWo+KB
+ dBoPbQFw0ObVr18p7o06lJzOyS2Zpff70lULuFdC4WG2ACR/uz8xcV0ow+l6NOl9bMd/
+ JzrxolFqxbKgufIoYYB3uIKpuGx3egypTgH69Ff+tFiEZL3VKm2Dsuk9cDJ/fziH3ixk
+ Ml2U9Lx75EW5u2NwMDHyB2mruDKCBvBmOD9HVfGAgyScLu6jR5GcoXGih9IQu+eJH9Q6
+ drouLaMXfqngZU0sT01IOe4cHGhQJbFXRc9xQu0ERZ8fk9h4Zg/D0rWK3yBNZ/aYx1LZ
+ owog==
+X-Gm-Message-State: AOAM533BNTCa1fat2w1D7Eb7HgC6Uft28p9GRrvHYUcTD7Yu5D2cEqpz
+ dLHm1www5JklEzvOmUSnzD1+pl415Q==
+X-Google-Smtp-Source: ABdhPJxC+96lwNJ6hOaKSxCJ2EIvAf6AIHpT5UmpFzFPB2Ee5lOKBHu+ZStfrF/jlLvXdGUVCBj/FQ==
+X-Received: by 2002:a4a:dc84:: with SMTP id g4mr5012064oou.24.1620333321458;
+ Thu, 06 May 2021 13:35:21 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id h59sm787947otb.29.2021.05.06.13.35.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 May 2021 13:35:20 -0700 (PDT)
+Received: (nullmailer pid 758912 invoked by uid 1000);
+ Thu, 06 May 2021 20:35:19 -0000
+Date: Thu, 6 May 2021 15:35:19 -0500
+From: Rob Herring <robh@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, will@kernel.org, heiko@sntech.de, xxm@rock-chips.com,
+ iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH v3 1/4] dt-bindings: iommu: rockchip: Convert IOMMU to DT
+ schema
+Message-ID: <20210506203519.GA754007@robh.at.kernel.org>
+References: <20210504084124.131884-1-benjamin.gaignard@collabora.com>
+ <20210504084124.131884-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210504084124.131884-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210506_105555_271639_10994A1A 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20210506_133522_540115_780CD8D5 
+X-CRM114-Status: GOOD (  25.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,188 +109,164 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+On Tue, May 04, 2021 at 10:41:21AM +0200, Benjamin Gaignard wrote:
+> Convert Rockchip IOMMU to DT schema
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> version 2:
+>  - Change maintainer
+>  - Change reg maxItems
+>  - Change interrupt maxItems
+> 
+>  .../bindings/iommu/rockchip,iommu.txt         | 38 ---------
+>  .../bindings/iommu/rockchip,iommu.yaml        | 79 +++++++++++++++++++
+>  2 files changed, 79 insertions(+), 38 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+>  create mode 100644 Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt b/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+> deleted file mode 100644
+> index 6ecefea1c6f9..000000000000
+> --- a/Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+> +++ /dev/null
+> @@ -1,38 +0,0 @@
+> -Rockchip IOMMU
+> -==============
+> -
+> -A Rockchip DRM iommu translates io virtual addresses to physical addresses for
+> -its master device.  Each slave device is bound to a single master device, and
+> -shares its clocks, power domain and irq.
+> -
+> -Required properties:
+> -- compatible      : Should be "rockchip,iommu"
+> -- reg             : Address space for the configuration registers
+> -- interrupts      : Interrupt specifier for the IOMMU instance
+> -- interrupt-names : Interrupt name for the IOMMU instance
+> -- #iommu-cells    : Should be <0>.  This indicates the iommu is a
+> -                    "single-master" device, and needs no additional information
+> -                    to associate with its master device.  See:
+> -                    Documentation/devicetree/bindings/iommu/iommu.txt
+> -- clocks          : A list of clocks required for the IOMMU to be accessible by
+> -                    the host CPU.
+> -- clock-names     : Should contain the following:
+> -	"iface" - Main peripheral bus clock (PCLK/HCL) (required)
+> -	"aclk"  - AXI bus clock (required)
+> -
+> -Optional properties:
+> -- rockchip,disable-mmu-reset : Don't use the mmu reset operation.
+> -			       Some mmu instances may produce unexpected results
+> -			       when the reset operation is used.
+> -
+> -Example:
+> -
+> -	vopl_mmu: iommu@ff940300 {
+> -		compatible = "rockchip,iommu";
+> -		reg = <0xff940300 0x100>;
+> -		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+> -		interrupt-names = "vopl_mmu";
+> -		clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+> -		clock-names = "aclk", "iface";
+> -		#iommu-cells = <0>;
+> -	};
+> diff --git a/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> new file mode 100644
+> index 000000000000..0db208cf724a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
+> @@ -0,0 +1,79 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iommu/rockchip,iommu.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip IOMMU
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +description: |+
+> +  A Rockchip DRM iommu translates io virtual addresses to physical addresses for
+> +  its master device. Each slave device is bound to a single master device and
+> +  shares its clocks, power domain and irq.
+> +
+> +  For information on assigning IOMMU controller to its peripheral devices,
+> +  see generic IOMMU bindings.
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,iommu
+> +
+> +  reg:
+> +    minItems: 1
+> +    maxItems: 2
 
-The RK3568 SoCs have two Temperature Sensors, channel 0 is for CPU,
-channel 1 is for GPU.
+What's the 2nd entry? If there's only 1 entry, then you don't have to 
+describe what it is. If more than 1, then each entry has to be defined.
 
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- drivers/thermal/rockchip_thermal.c | 121 +++++++++++++++++++++++++++++
- 1 file changed, 121 insertions(+)
+> +
+> +  interrupts:
+> +    minItems: 1
+> +    maxItems: 2
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index aa9e0e31ef98..657d84b9963e 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -211,7 +211,11 @@ struct rockchip_thermal_data {
- #define TSADCV3_AUTO_PERIOD_TIME		1875 /* 2.5ms */
- #define TSADCV3_AUTO_PERIOD_HT_TIME		1875 /* 2.5ms */
- 
-+#define TSADCV5_AUTO_PERIOD_TIME		1622 /* 2.5ms */
-+#define TSADCV5_AUTO_PERIOD_HT_TIME		1622 /* 2.5ms */
-+
- #define TSADCV2_USER_INTER_PD_SOC		0x340 /* 13 clocks */
-+#define TSADCV5_USER_INTER_PD_SOC		0xfc0 /* 97us, at least 90us */
- 
- #define GRF_SARADC_TESTBIT			0x0e644
- #define GRF_TSADC_TESTBIT_L			0x0e648
-@@ -219,6 +223,12 @@ struct rockchip_thermal_data {
- 
- #define PX30_GRF_SOC_CON2			0x0408
- 
-+#define RK3568_GRF_TSADC_CON			0x0600
-+#define RK3568_GRF_TSADC_ANA_REG0		(0x10001 << 0)
-+#define RK3568_GRF_TSADC_ANA_REG1		(0x10001 << 1)
-+#define RK3568_GRF_TSADC_ANA_REG2		(0x10001 << 2)
-+#define RK3568_GRF_TSADC_TSEN			(0x10001 << 8)
-+
- #define GRF_SARADC_TESTBIT_ON			(0x10001 << 2)
- #define GRF_TSADC_TESTBIT_H_ON			(0x10001 << 2)
- #define GRF_TSADC_VCM_EN_L			(0x10001 << 7)
-@@ -474,6 +484,45 @@ static const struct tsadc_table rk3399_code_table[] = {
- 	{TSADCV3_DATA_MASK, 125000},
- };
- 
-+static const struct tsadc_table rk3568_code_table[] = {
-+	{0, -40000},
-+	{1584, -40000},
-+	{1620, -35000},
-+	{1652, -30000},
-+	{1688, -25000},
-+	{1720, -20000},
-+	{1756, -15000},
-+	{1788, -10000},
-+	{1824, -5000},
-+	{1856, 0},
-+	{1892, 5000},
-+	{1924, 10000},
-+	{1956, 15000},
-+	{1992, 20000},
-+	{2024, 25000},
-+	{2060, 30000},
-+	{2092, 35000},
-+	{2128, 40000},
-+	{2160, 45000},
-+	{2196, 50000},
-+	{2228, 55000},
-+	{2264, 60000},
-+	{2300, 65000},
-+	{2332, 70000},
-+	{2368, 75000},
-+	{2400, 80000},
-+	{2436, 85000},
-+	{2468, 90000},
-+	{2500, 95000},
-+	{2536, 100000},
-+	{2572, 105000},
-+	{2604, 110000},
-+	{2636, 115000},
-+	{2672, 120000},
-+	{2704, 125000},
-+	{TSADCV2_DATA_MASK, 125000},
-+};
-+
- static u32 rk_tsadcv2_temp_to_code(const struct chip_tsadc_table *table,
- 				   int temp)
- {
-@@ -701,6 +750,49 @@ static void rk_tsadcv4_initialize(struct regmap *grf, void __iomem *regs,
- 	regmap_write(grf, PX30_GRF_SOC_CON2, GRF_CON_TSADC_CH_INV);
- }
- 
-+static void rk_tsadcv7_initialize(struct regmap *grf, void __iomem *regs,
-+				  enum tshut_polarity tshut_polarity)
-+{
-+	writel_relaxed(TSADCV5_USER_INTER_PD_SOC, regs + TSADCV2_USER_CON);
-+	writel_relaxed(TSADCV5_AUTO_PERIOD_TIME, regs + TSADCV2_AUTO_PERIOD);
-+	writel_relaxed(TSADCV2_HIGHT_INT_DEBOUNCE_COUNT,
-+		       regs + TSADCV2_HIGHT_INT_DEBOUNCE);
-+	writel_relaxed(TSADCV5_AUTO_PERIOD_HT_TIME,
-+		       regs + TSADCV2_AUTO_PERIOD_HT);
-+	writel_relaxed(TSADCV2_HIGHT_TSHUT_DEBOUNCE_COUNT,
-+		       regs + TSADCV2_HIGHT_TSHUT_DEBOUNCE);
-+
-+	if (tshut_polarity == TSHUT_HIGH_ACTIVE)
-+		writel_relaxed(0U | TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
-+			       regs + TSADCV2_AUTO_CON);
-+	else
-+		writel_relaxed(0U & ~TSADCV2_AUTO_TSHUT_POLARITY_HIGH,
-+			       regs + TSADCV2_AUTO_CON);
-+
-+	/*
-+	 * The general register file will is optional
-+	 * and might not be available.
-+	 */
-+	if (!IS_ERR(grf)) {
-+		regmap_write(grf, RK3568_GRF_TSADC_CON, RK3568_GRF_TSADC_TSEN);
-+		/*
-+		 * RK3568 TRM, section 18.5. requires a delay no less
-+		 * than 10us between the rising edge of tsadc_tsen_en
-+		 * and the rising edge of tsadc_ana_reg_0/1/2.
-+		 */
-+		udelay(15);
-+		regmap_write(grf, RK3568_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG0);
-+		regmap_write(grf, RK3568_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG1);
-+		regmap_write(grf, RK3568_GRF_TSADC_CON, RK3568_GRF_TSADC_ANA_REG2);
-+
-+		/*
-+		 * RK3568 TRM, section 18.5. requires a delay no less
-+		 * than 90us after the rising edge of tsadc_ana_reg_0/1/2.
-+		 */
-+		usleep_range(100, 200);
-+	}
-+}
-+
- static void rk_tsadcv2_irq_ack(void __iomem *regs)
- {
- 	u32 val;
-@@ -1027,6 +1119,31 @@ static const struct rockchip_tsadc_chip rk3399_tsadc_data = {
- 	},
- };
- 
-+static const struct rockchip_tsadc_chip rk3568_tsadc_data = {
-+	.chn_id[SENSOR_CPU] = 0, /* cpu sensor is channel 0 */
-+	.chn_id[SENSOR_GPU] = 1, /* gpu sensor is channel 1 */
-+	.chn_num = 2, /* two channels for tsadc */
-+
-+	.tshut_mode = TSHUT_MODE_GPIO, /* default TSHUT via GPIO give PMIC */
-+	.tshut_polarity = TSHUT_LOW_ACTIVE, /* default TSHUT LOW ACTIVE */
-+	.tshut_temp = 95000,
-+
-+	.initialize = rk_tsadcv7_initialize,
-+	.irq_ack = rk_tsadcv3_irq_ack,
-+	.control = rk_tsadcv3_control,
-+	.get_temp = rk_tsadcv2_get_temp,
-+	.set_alarm_temp = rk_tsadcv2_alarm_temp,
-+	.set_tshut_temp = rk_tsadcv2_tshut_temp,
-+	.set_tshut_mode = rk_tsadcv2_tshut_mode,
-+
-+	.table = {
-+		.id = rk3568_code_table,
-+		.length = ARRAY_SIZE(rk3568_code_table),
-+		.data_mask = TSADCV2_DATA_MASK,
-+		.mode = ADC_INCREMENT,
-+	},
-+};
-+
- static const struct of_device_id of_rockchip_thermal_match[] = {
- 	{	.compatible = "rockchip,px30-tsadc",
- 		.data = (void *)&px30_tsadc_data,
-@@ -1059,6 +1176,10 @@ static const struct of_device_id of_rockchip_thermal_match[] = {
- 		.compatible = "rockchip,rk3399-tsadc",
- 		.data = (void *)&rk3399_tsadc_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3568-tsadc",
-+		.data = (void *)&rk3568_tsadc_data,
-+	},
- 	{ /* end */ },
- };
- MODULE_DEVICE_TABLE(of, of_rockchip_thermal_match);
--- 
-2.30.0
+Same here, though if interrupt-names defines them, that's good enough.
 
+> +
+> +  interrupt-names:
+> +    minItems: 1
+> +    maxItems: 2
+
+Here we need the values.
+
+> +
+> +  clocks:
+> +    items:
+> +      - description: Core clock
+> +      - description: Interface clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: aclk
+> +      - const: iface
+> +
+> +  "#iommu-cells":
+> +    const: 0
+> +
+> +  rockchip,disable-mmu-reset:
+> +    $ref: /schemas/types.yaml#/definitions/flag
+> +    description: |
+> +      Do not use the mmu reset operation.
+> +      Some mmu instances may produce unexpected results
+> +      when the reset operation is used.
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - "#iommu-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3399-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    vopl_mmu: iommu@ff940300 {
+> +      compatible = "rockchip,iommu";
+> +      reg = <0xff940300 0x100>;
+> +      interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+> +      interrupt-names = "vopl_mmu";
+> +      clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+> +      clock-names = "aclk", "iface";
+> +      #iommu-cells = <0>;
+> +    };
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
