@@ -2,77 +2,97 @@ Return-Path: <SRS0=eK8e=KC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC1F2C433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 May 2021 20:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA917C433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 May 2021 21:02:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B03561401
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 May 2021 20:59:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B03561401
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id B1DF861426
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 May 2021 21:02:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1DF861426
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MuBcvNSOi7MOdZKlhXDQwH9Vjc7ctBhE4Y7Dky0Gcys=; b=Tk1igJkYa3+1dpFdaXAoP7G+f
-	xsDNb8yIgvagiZOKxvwivoaYZeuuWmE6LKcgodTCBPYVyHPtNzDv3q/P4yJdOaGaNwhYVoQqOx0Ne
-	YNwOGx2wOLYEZJE8gB4A0w4Ehcwh6pSZgKwe5LkRadu6otscz83ZEMPJx+vhBguZeVSPWwSPfTtbY
-	lvFx6nunPQiibyNaWFmlENrFFV9H/pXj0fNnsivDqNbxKiJrb6CKleHwnBI+geKOFSRcRA+GFkzzx
-	4BZINL+rt79hbyH/XTxFPJ5/9mtvs75Ca4K+jwyQ4Tt6TXK124u6H17nciSVxbiMPkUW8pLaqvpK6
-	Mi9xSBImA==;
+	 bh=OPWWlCshMUvvjl4q4SWRRr6mEYnh3e+yfSHgYeUZFrk=; b=XAGTdrmkM3Tgh4ld/Vbl+qSXi
+	f0aGTdYlUmm5cL3Rd0Bj+UkY9nxpIKm2pfSMkl2+0wzflovqG/XvW/gAM13O4gs8vsyLsB7aUidWp
+	ktuqf4OPZ7I1DJGR7lGLajhh+rQfws8bMWZwzFIcrqBe3pqwnsm/isHI70B5LPVvcUSFMBHd2iGa5
+	K9stcyyLAaYEXwvr70/laYYc8S+82Ie9A07y64jX2LYrMz5Or6+R/voKuKDjkiq+Fiw0rpfugxFc4
+	nAZz046/K1ZcbPCMSyE6zExhqqlIILCCBxHxS+4Q+uN3Zya4p1V/ji4WHpNmbeAa0bDOMEb51MuCC
+	1dmLLtR3A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lf7ZE-0083Om-OB; Fri, 07 May 2021 20:59:24 +0000
+	id 1lf7cW-0083r3-Tt; Fri, 07 May 2021 21:02:49 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lf7ZC-0083OI-20; Fri, 07 May 2021 20:59:22 +0000
+ id 1lf7cT-0083qI-Ng; Fri, 07 May 2021 21:02:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:
- Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
- :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=gC5+hQaA7O7Kml97HKslI5Th6xW9ngo98FNpZ9LNHuc=; b=iU9sUL5I02/2dXLzfzegEfJivc
- UGr8/LPEjDTC0PEhowmxkcE2hKs7dCm6oEK/BtnYZuStmkpCJOChlcPWXzKkNBPG4fk8cPbNPGdU9
- ByhZZMdBAJccj4i8YYaTcmxzz9P7QyRwUlGAFeEbU4HF3lIDK/Hw++mG1O8W/AxwqDqfQRnhGOiiN
- ZioaGiLUf7XvQEGWhKBe/hRWUSTsmKsvpgG1Ho45WirO3oWWoQobeh/BJrzG9DvoeTezliryFAfEP
- 81hJIreECitqr2EGDSiofqXLH5RDYy2z73PRQwqdNqvjKbaNbYIeSQ5wACotU1FFvAqFbpitTP1Z9
- MunY8WOg==;
-Received: from gloria.sntech.de ([185.11.138.130])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=DO84sjLIGDwcAM2CNEDLSdiq+br7DBsTGAzQsrrr+pg=; b=Iuu/HfHg/nxdejvEMUqXvxhcZi
+ qWgIz9c/BpgrAlQ73XISTCSISkFSASQqZ4J3pZTkuPjpVPBHsukHes42UMRU3n4w7OxvNKD+LxlsA
+ BZFYT4IQVBMTAW8mw/DlZ/58cusCVHIBp3Il/OE0SZOgcF5A4QQV97dQkzJ9Fd9CXCw1GxQwNAV1d
+ U9JqCkZpH6q6NL6qQj+s0wCnPqI456bjNyFl79C/ICGOf/AcBzLiEu8Zj5KPKbaBUXXvcp821qC/C
+ 6o7aniYWvPK61+WzbHBmlE36I4inAF2aFKuDgAYucgbzYOst15s5Eh1XYfvaHDv8maixj6vcNCftd
+ 1zYYgcgg==;
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lf7Z9-007BL3-L1; Fri, 07 May 2021 20:59:20 +0000
-Received: from p5b127e83.dip0.t-ipconnect.de ([91.18.126.131]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lf7Z1-000525-5N; Fri, 07 May 2021 22:59:11 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: robh+dt@kernel.org, linus.walleij@linaro.org, bgolaszewski@baylibre.com,
- jay.xu@rock-chips.com, shawn.lin@rock-chips.com, david.wu@rock-chips.com,
- zhangqing@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com,
- linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ id 1lf7cQ-007BUs-WA; Fri, 07 May 2021 21:02:44 +0000
+Received: by mail-oi1-f181.google.com with SMTP id z3so8703184oib.5;
+ Fri, 07 May 2021 14:02:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=DO84sjLIGDwcAM2CNEDLSdiq+br7DBsTGAzQsrrr+pg=;
+ b=TaWC2NBa9R2BNmyu7r8zb3onBna6Qg2nSuRhjp9UXRe7r5jnB75q92IbockTksNyqG
+ VCHzWhNUyMTF2lPPY7hwnGVmOdytqF1cEtRpiEfrSPtm6f9ZdCMXDUWtw/KCzjR2wGGW
+ y2FVpemGyt6UytEM2zPparvujPI+kZWuAAJX8Lz/i8vjOfgInD3Cktc8C5xzI7q/OwGj
+ YtdwqApokaQJTrEv+LWDZvwKToSIeJCiC+NlRbBcREDvbCLyCL3q2JhBEvjeyeIvJbE8
+ +J8kOUaxuThCEuTlaAU0qBVCmvnyY8BI0RPvisXMjkvu2q12FeVNlApcsOQer+uXJUfl
+ 0TRg==
+X-Gm-Message-State: AOAM530khP8Bgx4KyKllwnpRbm5Fx5iXGcy3U00gtaQNB9VIYQnKI+K+
+ wbOCEsTlmJ7A4zeNDNzA1w==
+X-Google-Smtp-Source: ABdhPJzGyVwFjylBNk+9CXgwXew9QRQ+W239mTVZzULe1gjXLn4AvTcsr5e2JqI/c7bb5p4ShjdtRg==
+X-Received: by 2002:aca:1814:: with SMTP id h20mr16149416oih.150.1620421361927; 
+ Fri, 07 May 2021 14:02:41 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id t9sm1418345otl.5.2021.05.07.14.02.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 May 2021 14:02:41 -0700 (PDT)
+Received: (nullmailer pid 2878901 invoked by uid 1000);
+ Fri, 07 May 2021 21:02:39 -0000
+Date: Fri, 7 May 2021 16:02:39 -0500
+From: Rob Herring <robh@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Johan Jonker <jbx6244@gmail.com>, linus.walleij@linaro.org,
+ bgolaszewski@baylibre.com, jay.xu@rock-chips.com, shawn.lin@rock-chips.com,
+ david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
+ cl@rock-chips.com, linux-gpio@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2 1/4] dt-bindings: gpio: convert rk3328-grf-gpio.txt to
  YAML
-Date: Fri, 07 May 2021 22:59:09 +0200
-Message-ID: <4104568.ejJDZkT8p0@phil>
-In-Reply-To: <20210505134028.13431-2-jbx6244@gmail.com>
+Message-ID: <20210507210239.GA2875797@robh.at.kernel.org>
 References: <20210505134028.13431-1-jbx6244@gmail.com>
  <20210505134028.13431-2-jbx6244@gmail.com>
+ <4104568.ejJDZkT8p0@phil>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <4104568.ejJDZkT8p0@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210507_135919_738497_3310F922 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210507_140243_054535_4DE3ECC2 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,24 +110,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Bartosz,
-
-Am Mittwoch, 5. Mai 2021, 15:40:25 CEST schrieb Johan Jonker:
-> Current dts files with RK3328 GRF 'gpio' nodes are manually verified.
-> In order to automate this process rk3328-grf-gpio.txt has to be
-> converted to YAML.
+On Fri, May 07, 2021 at 10:59:09PM +0200, Heiko Stuebner wrote:
+> Hi Bartosz,
 > 
-> Rename 'grf-gpio' nodename to 'gpio'.
+> Am Mittwoch, 5. Mai 2021, 15:40:25 CEST schrieb Johan Jonker:
+> > Current dts files with RK3328 GRF 'gpio' nodes are manually verified.
+> > In order to automate this process rk3328-grf-gpio.txt has to be
+> > converted to YAML.
+> > 
+> > Rename 'grf-gpio' nodename to 'gpio'.
+> > 
+> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> just to not step on any toes, do you plan to apply this patch1 later on?
+> Patches 2-4 are in my domain so I'll get them after -rc1, but in theory
+> the gpio binding should go through the gpio tree.
 
-just to not step on any toes, do you plan to apply this patch1 later on?
-Patches 2-4 are in my domain so I'll get them after -rc1, but in theory
-the gpio binding should go through the gpio tree.
+Different trees will break the schema checks because the grf schema 
+refers to the gpio schema.
 
-Heiko
-
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
