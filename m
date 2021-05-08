@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16C28C433ED
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 May 2021 12:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF69AC433B4
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 May 2021 12:38:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CBD561466
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 May 2021 12:38:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CBD561466
+	by mail.kernel.org (Postfix) with ESMTPS id 30FD06112F
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 May 2021 12:38:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30FD06112F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,63 +24,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iWIWHoBkH4Zik1ZNYhiLpFTVVDvaCfgyFHCGvNI6cG0=; b=I2j5CCcix8hEt1tpa4YjhqNHGf
-	pot/Xo/BYwjqV1UY0UFNDnroS9lOTDxpINU51DvskqrP3VyI0/ppYZJW+fjBZDB24KPcjnnz0E2vS
-	t/H9aCvDLyGP1kwoyV+BLdghvNFCDbqQFbTJD9rLgnUOMjrDbxhNKSpXItSFRYgdtM818uKqbQq5e
-	uFC7CLLKX+fluUQzS49zX/srUkpwA61C3J30Rj46UfVAdWVUnvIhEIKkcUIv52PXWmEEF74nb0t4A
-	MTTDCt2S+F2YlHFrs0fqzvSp/ZIyk3reJoI/wW67F243bv/geWJXB1q6YjcP39gjZfq2kn7p+trKQ
-	jJnYn4JQ==;
+	bh=iP/WXrPEezv+A/ztzftX3t2CaVcF0Y54lX003mntxss=; b=eC2T49B0+nSfEdTuVDIW5lgmhI
+	H5lM9VplKvv015OYJm1WdQuRXy0N5/Qg9Ccb5Yr/PgNE5NanNhbKRMBxmKthWGhWKRAuSdMmdnfep
+	VuMvZDo3+tU756ISuy68k0pZUDxQ/Gk9Yb3clfIsnnR2bKRCwTUSUXrfrlrW5ePl02sIry6OT2ucD
+	LBzEVcm3ux6vWg+Yeb1+re/HAgvD4Pv1UU2PbqzyNPFEzBK6jz/H4snhqvpDPZsuk+ElT6JYrkR9W
+	ndYSPDS11FJwTc7pWsEksKlIpFLPZaJbxMGbXSIFUB87/GrjqF3SUM0R0crOthtEZefPva0BmKvl4
+	V9ijghDA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lfMDr-009YL9-4I; Sat, 08 May 2021 12:38:19 +0000
+	id 1lfME9-009YNW-DW; Sat, 08 May 2021 12:38:37 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfMDX-009YGs-0n; Sat, 08 May 2021 12:37:59 +0000
+ id 1lfMDb-009YHv-UC; Sat, 08 May 2021 12:38:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=iNqkCqnJS+8lE5A1JGiBhGJCy9lYCE4136JGur/Nmf0=; b=fzCx5SNw+qrt6YSXci00XwO2Pf
- 17033O8nSaA8AcH1Ch2paPbx1rTHFANvCfwZ8LUHjuH1Hb7/SAiv41kfR5W1yhUlhHIhWgdUCQrsh
- iZbN5FvI8b7N8kuRSlsNpml2PeR4t0llueeBKUsoDi2cZjlE4ZmrFksxnQSZ14zHgLU/HNZSEXD7B
- hCG1piGW0TST+9lRh56EtHonyjHw4vpf3C00gSMP+GOLOPTyTsVhq31qVZ0d69FH5bL0AQT+NvhfC
- DiHxKqA6q+PVOF+lET4u/swcjxwMzl7VxrdzRFmRQMn2tSCGtC5FCf9FH2Ekymw4RD9s3zEf4fTvo
- XxeJyXCA==;
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ bh=kKYG8ob0N102i49XdsyoJlNpypHz4XdicUmmY8YrBm8=; b=VXjeFzBy/NE5hxBrTBondoJVRk
+ 2UxYwp+1q2WerD1+dYB8IzsUwyaiNtcuHYARhJHGQz3i00fEk9raAyQl4SW1Tvyx8XadMwbE7Vvzb
+ lCBzjlTwcvtHX03+UR9hzBrvrd9ndRz9Fno9BlCnf0HGkJnUmYQGJboh+LWFwzCDthDfxOuQYnBv+
+ KWX5AXI+eHrIE2vAgWQMkUsiKUG9XAHhE1bE+kvPXXu7TDe/hEEvl9uKKTWCxOmOCvWn5PNAGqSnu
+ OrBCVRz+gGSjy68NOHGKMOJ/KXRRGIVld+z+JDknro9O16uReaKoxlUXx7ST934mKOZDNpVxAsR1o
+ LwQBA6Mw==;
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfMDU-007XoR-4Q; Sat, 08 May 2021 12:37:57 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id gx5so17637918ejb.11;
- Sat, 08 May 2021 05:37:55 -0700 (PDT)
+ id 1lfMDZ-007XpZ-Gb; Sat, 08 May 2021 12:38:02 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id gx5so17638117ejb.11;
+ Sat, 08 May 2021 05:38:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=iNqkCqnJS+8lE5A1JGiBhGJCy9lYCE4136JGur/Nmf0=;
- b=GrD8JRK+522fNYlkEt1wephxp+qIfWAukgz+ZtR9QQBBJmU8UMBNoII9pAhENA/Dqn
- BPYvkvHRqLuQ8M/QmCTPWlQCpJsr1YFJDP5fDkAGI9iQSJ9GTN1nhmGT7ay09F4ayHy3
- AryPHVFDs4/u0bf5Kp8p2ZUUCDvllhS9HBc3usTgCvWiJGOPqSzOVw1jFA39NpQuiHCj
- QNn0wVOaZwlunGQlRkggBg9nPVUWdVLRS7g8TiSR3U6LjVxphsf9ZVCpxok2JbeSmUeU
- mhFN268KcbNDrEPioKRemTDzNc3R0/xHg9oLfzX/6iU9hAo0IIezOihd61VksZlrq6Pc
- Hpmg==
+ bh=kKYG8ob0N102i49XdsyoJlNpypHz4XdicUmmY8YrBm8=;
+ b=SZXbeqJYH4Rvw5YTLCZ684jtQQ9XkKWV/PLa+f2/6q2APp41GjQCtU3xBrw1ONDjBh
+ +WUQ0y5zObLWZw71SxP3ozGubUgdZGZAmv+TmkhSCwz8BOJgSwjqhNrJRh9dCsa+Lcxa
+ +hfpja3I70Ti5RclTugVGp2qQ5YsyQB9XnGBvrDCsfap8smU3vpT0NnzjIjRqBYouuDt
+ uHBr5UxpxvQfOTL7hXJvOAPJlM7EHxYTZppq16qbRG17cIJHiIy2OGZruKMcymObgMet
+ YAKP7QLlKb9IlPyx3yQg2Z03PQqCGVKYEyeTwQkiYws/7lYLPYbKnfIz0DpChvqPJDWP
+ vatw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=iNqkCqnJS+8lE5A1JGiBhGJCy9lYCE4136JGur/Nmf0=;
- b=ICvX9w1fMZVphy1pF8EdQVXu+vkCdlcehn1BjQzuPTLBgL1JsD1HJ/0Jfe8tyMuWJ3
- 5OvOcKoJPSpND1KY6fv23ChAfCTOOsIBc2dAf63l+Tv3xBfCCbRC5CMycj4MhIRpbFKL
- LZQC6RE/v8MXLaZ0oX/hlqTx9U8/RUa5QF8U+H8KWuj0AszyZ7K6Vd6wwR3+X2J2Pvxe
- qhhiFE7ZGjgLYmo/sG+GPxz1sf5DOTeIKZMXDa49hwZ2YlGW8IVlVjB9Kjb5D4Rdrhgu
- cAvPtJtWZx/RerQU/bmktlVx4MDzDS7PHwpThjOm0aw9WAUWttJrNnlpRhpwzshU0xcm
- g9cw==
-X-Gm-Message-State: AOAM532cZMoIlueRs+vxXRLTzB0jvOb7t4ArO8FkjkRi6mYuBCnMXF9n
- b3CpqZcg1kmcx+s9fe4rUN8=
-X-Google-Smtp-Source: ABdhPJyD2TlTXQs0MNwE0YD+ezkqnn74HPSMU2FvSNdSRxxEN/zVuoRIVnCbXU++Ub+gfd8txWLF2A==
-X-Received: by 2002:a17:906:18e1:: with SMTP id
- e1mr15285777ejf.341.1620477474673; 
- Sat, 08 May 2021 05:37:54 -0700 (PDT)
+ bh=kKYG8ob0N102i49XdsyoJlNpypHz4XdicUmmY8YrBm8=;
+ b=e3fX1pfuNgik5BzKfHjUDngrVn4i1mdQyZBINBxijP+1NFkPEnSi0eUJd4Nb3ZMrpE
+ BmAmEo7RASa5d5ZIt0WOYgNcxfaozDt56lGe5yUq4im2dwOxI1ssbXShVAckW0VCwbGK
+ xci0zvxi9hecUgEDCGE+hXu/xzqLW8V5JeLVFkMPFoup4VDf51X4Q0nYS4EzDDFaHVU9
+ 4aCRYqcPVhLunBxaDPdLd6SeZrGqx+mx2ARnCkltC8Jx2FKnv7n94XL7svRX2jMEQe6A
+ 8e0nRYDO/H4Nc1v/55EQr4yq25e4lx2sAl4ZcgIb9RIiCTP6dXAFypRkcoI5gal+j6Qa
+ FrPw==
+X-Gm-Message-State: AOAM530O6TYKIxs852+yS5s2WxJRG2l5lvdXgM3+RavVfapx1qvQiHvb
+ CEbFT+gaBGmaDZCd6qP15Oo=
+X-Google-Smtp-Source: ABdhPJyribyIKpHanX97X8mGzuRPy4EQuIN3hdClvLQ3RrA1Um+6A/V8iGIVuTzkj9mNHnvOipR5RQ==
+X-Received: by 2002:a17:906:a103:: with SMTP id
+ t3mr15664038ejy.334.1620477480152; 
+ Sat, 08 May 2021 05:38:00 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id q25sm6262618edt.51.2021.05.08.05.37.53
+ by smtp.gmail.com with ESMTPSA id q25sm6262618edt.51.2021.05.08.05.37.58
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 08 May 2021 05:37:54 -0700 (PDT)
+ Sat, 08 May 2021 05:37:59 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, linus.walleij@linaro.org, bgolaszewski@baylibre.com,
@@ -89,15 +89,15 @@ Cc: robh+dt@kernel.org, linus.walleij@linaro.org, bgolaszewski@baylibre.com,
  linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/4] dt-bindings: gpio: convert rk3328-grf-gpio.txt to YAML
-Date: Sat,  8 May 2021 14:37:40 +0200
-Message-Id: <20210508123743.18128-2-jbx6244@gmail.com>
+Subject: [PATCH v3 4/4] arm64: dts: rename grf-gpio nodename in rk3328.dtsi
+Date: Sat,  8 May 2021 14:37:43 +0200
+Message-Id: <20210508123743.18128-5-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20210508123743.18128-1-jbx6244@gmail.com>
 References: <20210508123743.18128-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210508_053756_194720_7BFECC06 
-X-CRM114-Status: GOOD (  20.76  )
+X-CRM114-CacheID: sfid-20210508_053801_568283_083A40FC 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,117 +116,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current dts files with RK3328 GRF 'gpio' nodes are manually verified.
-In order to automate this process rk3328-grf-gpio.txt has to be
-converted to YAML.
+A test with the command below gives this error:
 
-Rename 'grf-gpio' nodename to 'gpio'.
+/arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml: syscon@ff100000:
+grf-gpio: {'compatible': ['rockchip,rk3328-grf-gpio'],
+'gpio-controller': True, '#gpio-cells': [[2]], 'phandle': [[68]]} is not
+of type 'array'
+From schema:
+~/.local/lib/python3.5/site-packages/dtschema/schemas/gpio/gpio-consumer.yaml
+
+Due to the regex "(?<!,nr)-gpios?$" anything that ends on
+'-gpio', '-gpios' gives a match.
+
+Rename 'grf-gpio' nodename to generic 'gpio'
+
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
+schemas/gpio/gpio-consumer.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 ---
- .../bindings/gpio/rockchip,rk3328-grf-gpio.txt     | 32 --------------
- .../bindings/gpio/rockchip,rk3328-grf-gpio.yaml    | 51 ++++++++++++++++++++++
- 2 files changed, 51 insertions(+), 32 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt
- create mode 100644 Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt
-deleted file mode 100644
-index f9231df17..000000000
---- a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.txt
-+++ /dev/null
-@@ -1,32 +0,0 @@
--Rockchip RK3328 GRF (General Register Files) GPIO controller.
--
--In Rockchip RK3328, the output only GPIO_MUTE pin, originally for codec mute
--control, can also be used for general purpose. It is manipulated by the
--GRF_SOC_CON10 register in GRF. Aside from the GPIO_MUTE pin, the HDMI pins can
--also be set in the same way.
--
--Currently this GPIO controller only supports the mute pin. If needed in the
--future, the HDMI pins support can also be added.
--
--Required properties:
--- compatible: Should contain "rockchip,rk3328-grf-gpio".
--- gpio-controller: Marks the device node as a gpio controller.
--- #gpio-cells: Should be 2. The first cell is the pin number and
--  the second cell is used to specify the gpio polarity:
--    0 = Active high,
--    1 = Active low.
--
--Example:
--
--	grf: syscon@ff100000 {
--		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
--
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 4ce49aae7..2e458fb87 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -291,7 +291,7 @@
+ 			status = "disabled";
+ 		};
+ 
 -		grf_gpio: grf-gpio {
--			compatible = "rockchip,rk3328-grf-gpio";
--			gpio-controller;
--			#gpio-cells = <2>;
--		};
--	};
--
--Note: The grf_gpio node should be declared as the child of the GRF (General
--Register File) node. The GPIO_MUTE pin is referred to as <&grf_gpio 0>.
-diff --git a/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
-new file mode 100644
-index 000000000..ea169f6fb
---- /dev/null
-+++ b/Documentation/devicetree/bindings/gpio/rockchip,rk3328-grf-gpio.yaml
-@@ -0,0 +1,51 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/gpio/rockchip,rk3328-grf-gpio.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip RK3328 General Register Files GPIO controller
-+
-+description:
-+  The Rockchip RK3328 General Register File (GRF) outputs only the
-+  GPIO_MUTE pin, originally for codec mute control, but it can also be used
-+  for general purpose. It is manipulated by the GRF_SOC_CON10 register.
-+  If needed in the future support for the HDMI pins can also be added.
-+  The GPIO node should be declared as the child of the GRF node.
-+
-+  The GPIO_MUTE pin is referred to in the format
-+
-+  <&grf_gpio 0 GPIO_ACTIVE_LOW>
-+
-+  The first cell is the pin number and
-+  the second cell is used to specify the GPIO polarity
-+    0 = Active high
-+    1 = Active low
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3328-grf-gpio
-+
-+  gpio-controller: true
-+
-+  "#gpio-cells":
-+    const: 2
-+
-+required:
-+  - compatible
-+  - gpio-controller
-+  - "#gpio-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    grf_gpio: gpio {
-+      compatible = "rockchip,rk3328-grf-gpio";
-+      gpio-controller;
-+      #gpio-cells = <2>;
-+    };
-+
++		grf_gpio: gpio {
+ 			compatible = "rockchip,rk3328-grf-gpio";
+ 			gpio-controller;
+ 			#gpio-cells = <2>;
 -- 
 2.11.0
 
