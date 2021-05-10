@@ -2,56 +2,56 @@ Return-Path: <SRS0=aAmn=KF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D82AC433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D353CC43461
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:10 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 012F261104
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 012F261104
+	by mail.kernel.org (Postfix) with ESMTPS id 05D9760234
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05D9760234
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Fpyh0/FH841skBDA5c6LwygEGbTtWudaIgmCIwa7tAg=; b=VrVwzSSVvHgg2a3s43QEoB4Z1V
-	mHqDmbILcVOMlhAU7zTL2P9GbnporIvUx7+2v1H6Anyyj0mX36ofVKALJMfvGt+IXB0p9/pqRf9ZK
-	1mGNKsPJjxNY+UPkGMhiL1zGTUVHXKDDUs4H/bWhtHUIIigznCzdp9b+SovtMUHaW6qaFmbpyNL80
-	ji7es6IR1z+GXaxaBAHDTqdVmjxs7b1EHLTS01ehXABDebWkBU8LS0gUg2ixrYm3r0R8p82PeEykU
-	3pUWh9Snpm1+5/FtF5f6JFly9hY0NUIPRH9rJkn1ehzMWLHkbB4L4PISYmswJsvQYT7cMHZ6jMEmt
-	jx9nAobw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vJoa+BrzrytLYzFtOBDx0417FsBVksUz3O2ODn3oPXU=; b=Y5TogKm3XCp/ZeeMXetwihYe0
+	zSH5KON1XUoJ5MBRb3C7ZlYwY2clCIg+QsWLm/uKpB3fjcD0XSLosuwyt4FkpQejsE1BEUA3P499Y
+	TzxgI0P1Y8QHRlWQW+duhNHUz1/CGimcIZUhPXKFxya18BpWXqHXZ+nuBqB83EET1XTFbHeF1GZ6c
+	ygqyMpjo9x4L6/sfn5hR+VYAlhgF+lRGjYp+QYsSxzIIOQHnZuXfyxh8r7tpEWjqY20lHnC4HQyXk
+	LMugREliEsz2K0O2Zn8/7pe4YPQFdOWzuh1SUjaEC7YcGkSsaC+4w5gLk4RfLUyxnrEdf0m+ulnsv
+	0FKdnXuIg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lfzXM-00DO2K-9b; Mon, 10 May 2021 06:37:04 +0000
+	id 1lfzXO-00DO39-DT; Mon, 10 May 2021 06:37:06 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzWe-00DNwp-6U
- for linux-rockchip@desiato.infradead.org; Mon, 10 May 2021 06:36:24 +0000
+ id 1lfzWe-00DNwt-6U
+ for linux-rockchip@desiato.infradead.org; Mon, 10 May 2021 06:36:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=GyuOi6BS9kLA3efnLlkGB2kK16BGyX4Q/NGJtYf/0n0=; b=WhpDVrz5uH28LB4qzjJuvwa2F2
- vLEUnD41GMAmKyieXctt3d0yBr0B+8Yu0vteQxc2vymAkPIVJvHIj0esNH7jEurM7b2pF33O+P9kb
- O16tZD0iAFIH/favEWpigUs5bIWpVu7+VoncQkyhLmeWqTOVJN/dwtdLysSar71eY72lQo5Ya/QwI
- unYcW8xf6JMVQ0NOPmNGIGzbGsIHKyXNVJCBRd9lGMm95CkbXqe6DaYuHqgchIm3lOChPTaU8EtdG
- VHDK7zAnJXs96ZC95Fl4vk1jZDy8tOGchLEk2SIhxIlzhxQ2/v/5m7Kn5DabSNEABSEDwTVYCy+/Q
- EIgeNFQQ==;
-Received: from lucky1.263xmail.com ([211.157.147.133])
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=uxAmQXmr5jfMeV9cm6c4NsfSbCHE4vT3t3TaYQDwJVY=; b=h9mIYvCTzZ+BIEYnPsF9HBGCha
+ 55xCIpiFknJ0Eqm86kTojDp8yM2xldrotcYpQl7q67JAYflzq/meOIRhoRB8jv/B3YK6dxcpO/sUs
+ PL1REOeOk/J/mQ8a3p4UskQ5pUHsVLVu8uAMdkcvxdHas2OOTfO4yU5U1xLCJPMcc3J7cQDXvkbil
+ /53/aptaa5WAvZHF+XESvl/91OZMCQrtSws1nmp7XdR6VcZlFEpB6ssWk5kp/Se/OIBWM0NdXMwnh
+ y3jj9Dp7lTporx532S3uF4VLt2yrUyquImIKw87PQc4oMVQoAwtJkPFn+BVTxYJAvq+QFem6hqeTI
+ QCPOAaAg==;
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzWZ-008LKL-8W
- for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:36:16 +0000
+ id 1lfzWZ-008LKK-MI
+ for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:36:18 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 2513FCD444;
+ by lucky1.263xmail.com (Postfix) with ESMTP id 97CD7AC908;
  Mon, 10 May 2021 14:36:05 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
@@ -63,7 +63,7 @@ Received: from localhost.localdomain (unknown [58.22.7.114])
  P2750T140649254856448S1620628564034882_; 
  Mon, 10 May 2021 14:36:05 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <f8fb39bda157b2de25c6824f9dc7fe96>
+X-UNIQUE-TAG: <f4bb8c26bd32f7d7cbcfe5d72409a656>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -78,15 +78,17 @@ To: heiko@sntech.de,
 	robh+dt@kernel.org
 Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v4 0/7] gpio-rockchip driver
-Date: Mon, 10 May 2021 14:35:55 +0800
-Message-Id: <20210510063602.505829-1-jay.xu@rock-chips.com>
+Subject: [PATCH 1/7] pinctrl/rockchip: separate struct rockchip_pin_bank to a
+ head file
+Date: Mon, 10 May 2021 14:35:56 +0800
+Message-Id: <20210510063602.505829-2-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210510063602.505829-1-jay.xu@rock-chips.com>
+References: <20210510063602.505829-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210509_233615_503351_000A4F50 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210509_233616_058808_282C538A 
+X-CRM114-Status: GOOD (  24.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,30 +106,526 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Separate gpio driver from pinctrl driver, and support v2 controller.
+Separate struct rockchip_pin_bank to pinctrl-rockchip.h file, which will
+be used by gpio-rockchip driver in the future.
 
-Jianqun Xu (7):
-  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
-  pinctrl/pinctrl-rockchip.h: add pinctrl device to gpio bank struct
-  gpio: separate gpio driver from pinctrl-rockchip driver
-  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
-  gpio/rockchip: support next version gpio controller
-  gpio/rockchip: always enable clock for gpio controller
-  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
-
- drivers/gpio/Kconfig               |   8 +
- drivers/gpio/Makefile              |   1 +
- drivers/gpio/gpio-rockchip.c       | 758 ++++++++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.c | 910 +----------------------------
- drivers/pinctrl/pinctrl-rockchip.h | 287 +++++++++
- 5 files changed, 1073 insertions(+), 891 deletions(-)
- create mode 100644 drivers/gpio/gpio-rockchip.c
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 226 +-------------------------
+ drivers/pinctrl/pinctrl-rockchip.h | 245 +++++++++++++++++++++++++++++
+ 2 files changed, 246 insertions(+), 225 deletions(-)
  create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
 
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 94fa18cdcd8d..ae88045dc3e4 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -37,6 +37,7 @@
+ 
+ #include "core.h"
+ #include "pinconf.h"
++#include "pinctrl-rockchip.h"
+ 
+ /* GPIO control registers */
+ #define GPIO_SWPORT_DR		0x00
+@@ -52,21 +53,6 @@
+ #define GPIO_EXT_PORT		0x50
+ #define GPIO_LS_SYNC		0x60
+ 
+-enum rockchip_pinctrl_type {
+-	PX30,
+-	RV1108,
+-	RK2928,
+-	RK3066B,
+-	RK3128,
+-	RK3188,
+-	RK3288,
+-	RK3308,
+-	RK3368,
+-	RK3399,
+-	RK3568,
+-};
+-
+-
+ /**
+  * Generate a bitmask for setting a value (v) with a write mask bit in hiword
+  * register 31:16 area.
+@@ -84,103 +70,6 @@ enum rockchip_pinctrl_type {
+ #define IOMUX_WIDTH_3BIT	BIT(4)
+ #define IOMUX_WIDTH_2BIT	BIT(5)
+ 
+-/**
+- * struct rockchip_iomux
+- * @type: iomux variant using IOMUX_* constants
+- * @offset: if initialized to -1 it will be autocalculated, by specifying
+- *	    an initial offset value the relevant source offset can be reset
+- *	    to a new value for autocalculating the following iomux registers.
+- */
+-struct rockchip_iomux {
+-	int				type;
+-	int				offset;
+-};
+-
+-/*
+- * enum type index corresponding to rockchip_perpin_drv_list arrays index.
+- */
+-enum rockchip_pin_drv_type {
+-	DRV_TYPE_IO_DEFAULT = 0,
+-	DRV_TYPE_IO_1V8_OR_3V0,
+-	DRV_TYPE_IO_1V8_ONLY,
+-	DRV_TYPE_IO_1V8_3V0_AUTO,
+-	DRV_TYPE_IO_3V3_ONLY,
+-	DRV_TYPE_MAX
+-};
+-
+-/*
+- * enum type index corresponding to rockchip_pull_list arrays index.
+- */
+-enum rockchip_pin_pull_type {
+-	PULL_TYPE_IO_DEFAULT = 0,
+-	PULL_TYPE_IO_1V8_ONLY,
+-	PULL_TYPE_MAX
+-};
+-
+-/**
+- * struct rockchip_drv
+- * @drv_type: drive strength variant using rockchip_perpin_drv_type
+- * @offset: if initialized to -1 it will be autocalculated, by specifying
+- *	    an initial offset value the relevant source offset can be reset
+- *	    to a new value for autocalculating the following drive strength
+- *	    registers. if used chips own cal_drv func instead to calculate
+- *	    registers offset, the variant could be ignored.
+- */
+-struct rockchip_drv {
+-	enum rockchip_pin_drv_type	drv_type;
+-	int				offset;
+-};
+-
+-/**
+- * struct rockchip_pin_bank
+- * @reg_base: register base of the gpio bank
+- * @regmap_pull: optional separate register for additional pull settings
+- * @clk: clock of the gpio bank
+- * @irq: interrupt of the gpio bank
+- * @saved_masks: Saved content of GPIO_INTEN at suspend time.
+- * @pin_base: first pin number
+- * @nr_pins: number of pins in this bank
+- * @name: name of the bank
+- * @bank_num: number of the bank, to account for holes
+- * @iomux: array describing the 4 iomux sources of the bank
+- * @drv: array describing the 4 drive strength sources of the bank
+- * @pull_type: array describing the 4 pull type sources of the bank
+- * @valid: is all necessary information present
+- * @of_node: dt node of this bank
+- * @drvdata: common pinctrl basedata
+- * @domain: irqdomain of the gpio bank
+- * @gpio_chip: gpiolib chip
+- * @grange: gpio range
+- * @slock: spinlock for the gpio bank
+- * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
+- * @recalced_mask: bit mask to indicate a need to recalulate the mask
+- * @route_mask: bits describing the routing pins of per bank
+- */
+-struct rockchip_pin_bank {
+-	void __iomem			*reg_base;
+-	struct regmap			*regmap_pull;
+-	struct clk			*clk;
+-	int				irq;
+-	u32				saved_masks;
+-	u32				pin_base;
+-	u8				nr_pins;
+-	char				*name;
+-	u8				bank_num;
+-	struct rockchip_iomux		iomux[4];
+-	struct rockchip_drv		drv[4];
+-	enum rockchip_pin_pull_type	pull_type[4];
+-	bool				valid;
+-	struct device_node		*of_node;
+-	struct rockchip_pinctrl		*drvdata;
+-	struct irq_domain		*domain;
+-	struct gpio_chip		gpio_chip;
+-	struct pinctrl_gpio_range	grange;
+-	raw_spinlock_t			slock;
+-	u32				toggle_edge_mode;
+-	u32				recalced_mask;
+-	u32				route_mask;
+-};
+-
+ #define PIN_BANK(id, pins, label)			\
+ 	{						\
+ 		.bank_num	= id,			\
+@@ -320,119 +209,6 @@ struct rockchip_pin_bank {
+ #define RK_MUXROUTE_PMU(ID, PIN, FUNC, REG, VAL)	\
+ 	PIN_BANK_MUX_ROUTE_FLAGS(ID, PIN, FUNC, REG, VAL, ROCKCHIP_ROUTE_PMU)
+ 
+-/**
+- * struct rockchip_mux_recalced_data: represent a pin iomux data.
+- * @num: bank number.
+- * @pin: pin number.
+- * @bit: index at register.
+- * @reg: register offset.
+- * @mask: mask bit
+- */
+-struct rockchip_mux_recalced_data {
+-	u8 num;
+-	u8 pin;
+-	u32 reg;
+-	u8 bit;
+-	u8 mask;
+-};
+-
+-enum rockchip_mux_route_location {
+-	ROCKCHIP_ROUTE_SAME = 0,
+-	ROCKCHIP_ROUTE_PMU,
+-	ROCKCHIP_ROUTE_GRF,
+-};
+-
+-/**
+- * struct rockchip_mux_recalced_data: represent a pin iomux data.
+- * @bank_num: bank number.
+- * @pin: index at register or used to calc index.
+- * @func: the min pin.
+- * @route_location: the mux route location (same, pmu, grf).
+- * @route_offset: the max pin.
+- * @route_val: the register offset.
+- */
+-struct rockchip_mux_route_data {
+-	u8 bank_num;
+-	u8 pin;
+-	u8 func;
+-	enum rockchip_mux_route_location route_location;
+-	u32 route_offset;
+-	u32 route_val;
+-};
+-
+-struct rockchip_pin_ctrl {
+-	struct rockchip_pin_bank	*pin_banks;
+-	u32				nr_banks;
+-	u32				nr_pins;
+-	char				*label;
+-	enum rockchip_pinctrl_type	type;
+-	int				grf_mux_offset;
+-	int				pmu_mux_offset;
+-	int				grf_drv_offset;
+-	int				pmu_drv_offset;
+-	struct rockchip_mux_recalced_data *iomux_recalced;
+-	u32				niomux_recalced;
+-	struct rockchip_mux_route_data *iomux_routes;
+-	u32				niomux_routes;
+-
+-	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
+-				    int pin_num, struct regmap **regmap,
+-				    int *reg, u8 *bit);
+-	void	(*drv_calc_reg)(struct rockchip_pin_bank *bank,
+-				    int pin_num, struct regmap **regmap,
+-				    int *reg, u8 *bit);
+-	int	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
+-				    int pin_num, struct regmap **regmap,
+-				    int *reg, u8 *bit);
+-};
+-
+-struct rockchip_pin_config {
+-	unsigned int		func;
+-	unsigned long		*configs;
+-	unsigned int		nconfigs;
+-};
+-
+-/**
+- * struct rockchip_pin_group: represent group of pins of a pinmux function.
+- * @name: name of the pin group, used to lookup the group.
+- * @pins: the pins included in this group.
+- * @npins: number of pins included in this group.
+- * @data: local pin configuration
+- */
+-struct rockchip_pin_group {
+-	const char			*name;
+-	unsigned int			npins;
+-	unsigned int			*pins;
+-	struct rockchip_pin_config	*data;
+-};
+-
+-/**
+- * struct rockchip_pmx_func: represent a pin function.
+- * @name: name of the pin function, used to lookup the function.
+- * @groups: one or more names of pin groups that provide this function.
+- * @ngroups: number of groups included in @groups.
+- */
+-struct rockchip_pmx_func {
+-	const char		*name;
+-	const char		**groups;
+-	u8			ngroups;
+-};
+-
+-struct rockchip_pinctrl {
+-	struct regmap			*regmap_base;
+-	int				reg_size;
+-	struct regmap			*regmap_pull;
+-	struct regmap			*regmap_pmu;
+-	struct device			*dev;
+-	struct rockchip_pin_ctrl	*ctrl;
+-	struct pinctrl_desc		pctl;
+-	struct pinctrl_dev		*pctl_dev;
+-	struct rockchip_pin_group	*groups;
+-	unsigned int			ngroups;
+-	struct rockchip_pmx_func	*functions;
+-	unsigned int			nfunctions;
+-};
+-
+ static struct regmap_config rockchip_regmap_config = {
+ 	.reg_bits = 32,
+ 	.val_bits = 32,
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+new file mode 100644
+index 000000000000..dba9e9540633
+--- /dev/null
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -0,0 +1,245 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2020-2021 Rockchip Electronics Co. Ltd.
++ *
++ * Copyright (c) 2013 MundoReader S.L.
++ * Author: Heiko Stuebner <heiko@sntech.de>
++ *
++ * With some ideas taken from pinctrl-samsung:
++ * Copyright (c) 2012 Samsung Electronics Co., Ltd.
++ *		http://www.samsung.com
++ * Copyright (c) 2012 Linaro Ltd
++ *		https://www.linaro.org
++ *
++ * and pinctrl-at91:
++ * Copyright (C) 2011-2012 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
++ */
++
++#ifndef _PINCTRL_ROCKCHIP_H
++#define _PINCTRL_ROCKCHIP_H
++
++enum rockchip_pinctrl_type {
++	PX30,
++	RV1108,
++	RK2928,
++	RK3066B,
++	RK3128,
++	RK3188,
++	RK3288,
++	RK3308,
++	RK3368,
++	RK3399,
++	RK3568,
++};
++
++/**
++ * struct rockchip_iomux
++ * @type: iomux variant using IOMUX_* constants
++ * @offset: if initialized to -1 it will be autocalculated, by specifying
++ *	    an initial offset value the relevant source offset can be reset
++ *	    to a new value for autocalculating the following iomux registers.
++ */
++struct rockchip_iomux {
++	int type;
++	int offset;
++};
++
++/*
++ * enum type index corresponding to rockchip_perpin_drv_list arrays index.
++ */
++enum rockchip_pin_drv_type {
++	DRV_TYPE_IO_DEFAULT = 0,
++	DRV_TYPE_IO_1V8_OR_3V0,
++	DRV_TYPE_IO_1V8_ONLY,
++	DRV_TYPE_IO_1V8_3V0_AUTO,
++	DRV_TYPE_IO_3V3_ONLY,
++	DRV_TYPE_MAX
++};
++
++/*
++ * enum type index corresponding to rockchip_pull_list arrays index.
++ */
++enum rockchip_pin_pull_type {
++	PULL_TYPE_IO_DEFAULT = 0,
++	PULL_TYPE_IO_1V8_ONLY,
++	PULL_TYPE_MAX
++};
++
++/**
++ * struct rockchip_drv
++ * @drv_type: drive strength variant using rockchip_perpin_drv_type
++ * @offset: if initialized to -1 it will be autocalculated, by specifying
++ *	    an initial offset value the relevant source offset can be reset
++ *	    to a new value for autocalculating the following drive strength
++ *	    registers. if used chips own cal_drv func instead to calculate
++ *	    registers offset, the variant could be ignored.
++ */
++struct rockchip_drv {
++	enum rockchip_pin_drv_type	drv_type;
++	int				offset;
++};
++
++/**
++ * struct rockchip_pin_bank
++ * @reg_base: register base of the gpio bank
++ * @regmap_pull: optional separate register for additional pull settings
++ * @clk: clock of the gpio bank
++ * @irq: interrupt of the gpio bank
++ * @saved_masks: Saved content of GPIO_INTEN at suspend time.
++ * @pin_base: first pin number
++ * @nr_pins: number of pins in this bank
++ * @name: name of the bank
++ * @bank_num: number of the bank, to account for holes
++ * @iomux: array describing the 4 iomux sources of the bank
++ * @drv: array describing the 4 drive strength sources of the bank
++ * @pull_type: array describing the 4 pull type sources of the bank
++ * @valid: is all necessary information present
++ * @of_node: dt node of this bank
++ * @drvdata: common pinctrl basedata
++ * @domain: irqdomain of the gpio bank
++ * @gpio_chip: gpiolib chip
++ * @grange: gpio range
++ * @slock: spinlock for the gpio bank
++ * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
++ * @recalced_mask: bit mask to indicate a need to recalulate the mask
++ * @route_mask: bits describing the routing pins of per bank
++ */
++struct rockchip_pin_bank {
++	void __iomem			*reg_base;
++	struct regmap			*regmap_pull;
++	struct clk			*clk;
++	int				irq;
++	u32				saved_masks;
++	u32				pin_base;
++	u8				nr_pins;
++	char				*name;
++	u8				bank_num;
++	struct rockchip_iomux		iomux[4];
++	struct rockchip_drv		drv[4];
++	enum rockchip_pin_pull_type	pull_type[4];
++	bool				valid;
++	struct device_node		*of_node;
++	struct rockchip_pinctrl		*drvdata;
++	struct irq_domain		*domain;
++	struct gpio_chip		gpio_chip;
++	struct pinctrl_gpio_range	grange;
++	raw_spinlock_t			slock;
++	u32				toggle_edge_mode;
++	u32				recalced_mask;
++	u32				route_mask;
++};
++
++/**
++ * struct rockchip_mux_recalced_data: represent a pin iomux data.
++ * @num: bank number.
++ * @pin: pin number.
++ * @bit: index at register.
++ * @reg: register offset.
++ * @mask: mask bit
++ */
++struct rockchip_mux_recalced_data {
++	u8 num;
++	u8 pin;
++	u32 reg;
++	u8 bit;
++	u8 mask;
++};
++
++enum rockchip_mux_route_location {
++	ROCKCHIP_ROUTE_SAME = 0,
++	ROCKCHIP_ROUTE_PMU,
++	ROCKCHIP_ROUTE_GRF,
++};
++
++/**
++ * struct rockchip_mux_recalced_data: represent a pin iomux data.
++ * @bank_num: bank number.
++ * @pin: index at register or used to calc index.
++ * @func: the min pin.
++ * @route_location: the mux route location (same, pmu, grf).
++ * @route_offset: the max pin.
++ * @route_val: the register offset.
++ */
++struct rockchip_mux_route_data {
++	u8 bank_num;
++	u8 pin;
++	u8 func;
++	enum rockchip_mux_route_location route_location;
++	u32 route_offset;
++	u32 route_val;
++};
++
++struct rockchip_pin_ctrl {
++	struct rockchip_pin_bank	*pin_banks;
++	u32				nr_banks;
++	u32				nr_pins;
++	char				*label;
++	enum rockchip_pinctrl_type	type;
++	int				grf_mux_offset;
++	int				pmu_mux_offset;
++	int				grf_drv_offset;
++	int				pmu_drv_offset;
++	struct rockchip_mux_recalced_data *iomux_recalced;
++	u32				niomux_recalced;
++	struct rockchip_mux_route_data *iomux_routes;
++	u32				niomux_routes;
++
++	void	(*pull_calc_reg)(struct rockchip_pin_bank *bank,
++				    int pin_num, struct regmap **regmap,
++				    int *reg, u8 *bit);
++	void	(*drv_calc_reg)(struct rockchip_pin_bank *bank,
++				    int pin_num, struct regmap **regmap,
++				    int *reg, u8 *bit);
++	int	(*schmitt_calc_reg)(struct rockchip_pin_bank *bank,
++				    int pin_num, struct regmap **regmap,
++				    int *reg, u8 *bit);
++};
++
++struct rockchip_pin_config {
++	unsigned int		func;
++	unsigned long		*configs;
++	unsigned int		nconfigs;
++};
++
++/**
++ * struct rockchip_pin_group: represent group of pins of a pinmux function.
++ * @name: name of the pin group, used to lookup the group.
++ * @pins: the pins included in this group.
++ * @npins: number of pins included in this group.
++ * @data: local pin configuration
++ */
++struct rockchip_pin_group {
++	const char			*name;
++	unsigned int			npins;
++	unsigned int			*pins;
++	struct rockchip_pin_config	*data;
++};
++
++/**
++ * struct rockchip_pmx_func: represent a pin function.
++ * @name: name of the pin function, used to lookup the function.
++ * @groups: one or more names of pin groups that provide this function.
++ * @ngroups: number of groups included in @groups.
++ */
++struct rockchip_pmx_func {
++	const char		*name;
++	const char		**groups;
++	u8			ngroups;
++};
++
++struct rockchip_pinctrl {
++	struct regmap			*regmap_base;
++	int				reg_size;
++	struct regmap			*regmap_pull;
++	struct regmap			*regmap_pmu;
++	struct device			*dev;
++	struct rockchip_pin_ctrl	*ctrl;
++	struct pinctrl_desc		pctl;
++	struct pinctrl_dev		*pctl_dev;
++	struct rockchip_pin_group	*groups;
++	unsigned int			ngroups;
++	struct rockchip_pmx_func	*functions;
++	unsigned int			nfunctions;
++};
++
++#endif
 -- 
-v5:
- - change to devel branch
-
 2.25.1
 
 
