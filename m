@@ -7,89 +7,63 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2A27C433B4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:38:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06787C43460
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:56:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF28C61104
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:38:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF28C61104
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6D58561448
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:56:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D58561448
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kleine-koenig.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tceZ4WfuAT2rBXTQVbNppG/P3rp33gZgsRayjEaGVO4=; b=eLOebyEwifoHEpXxI7e8Ienge
-	ibL24qe7lIeTEu8KzuGO6ru3zgbX9OWkbo3yWDXJVfn68FqvpVJOGN7eOuUdIj6wo2kPjQWuOozWs
-	mDWtlZdlXMVTiGEiK0m/0rrMqO7fELXfO5L9vHHcjIE80FC/LAG7fvP6E+E+9JdxCgu6uEyr/cv7H
-	WrndJr8PRpvheRZhWEYm/qfBw6vRccdIuiC41f0MpcweW6SVp9lZ+yYMqx9xhL3cjnUGFIStNmfsw
-	6Sauju2eBwEF3+iFshZIVt2XbqRcUtQDqk8VOtlTrzh+wLd8DDTZ4THUldNvqzPm+Fu70CTIjH1K+
-	gjoCdcHxw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mIqbGCoMMaTLc63ozlnS7X1EVTgyXFi84z3Y6KJwuE4=; b=l9xgu/nbKd6bUn6+SUUJpkPI9D
+	3bOhSNepsyM03+dbRIqHVXvpGuQkMLXICLmBdPtQrCSULKia/v2BGuHH2QBS/wh6nHun5Eku5uIAz
+	lL1t73t2YUv5mszSq1q6l4piI18Xlvsii1h9jlUjpwN82+V2zbMT2hOmiWiRjRqq7ZPLR4WznL+nY
+	F0nos8tU6b5ApPWUlq7e11MKJ2GhPytDqzVCZofact01u+ZosX8CLSfGiHLI4fejSHqunWiP/xpIj
+	oO8FigmOrT5QGBK2FgE9FfD6oIxCbS4fh1JBfLixgnSifZ6bN8vO30FME3fXaK/r+MFckiC/3F9kC
+	ao2ekT3A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lfzYG-00DOEa-3Y; Mon, 10 May 2021 06:38:00 +0000
+	id 1lfzpl-00DQ8U-7s; Mon, 10 May 2021 06:56:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzXx-00DOAD-RD
- for linux-rockchip@desiato.infradead.org; Mon, 10 May 2021 06:37:48 +0000
+ id 1lfzok-00DPru-4B
+ for linux-rockchip@desiato.infradead.org; Mon, 10 May 2021 06:55:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=tKY8w8y/AACF36R/faxPdF/fcIu6eyyU+gaJ7lFi4gU=; b=eNc3Ji4SzYrDjZkyPNyWR/8D/p
- uOWnOU+pWPvkH0cuXKPUT+gwN1hyG2YpruG/Li1DztXBa7A6EOnnhcZrEV1GBjZ+Vpd/+5NmPu9pT
- y9pgRK1/V4w2SkJ8F/tSelNQBKn4zcZSf3X8NXK3JO55NvFtzx7izj8azuanbXlVo2g+le9UlOYZp
- NHq6I9DLkgrzylioWPJEXLdh6TEFX0lZ50bcB1Ju/YCqymK6uUvYLfXoGt6SZWX2rhkkVCxkitZGV
- 8CPGE7nyNJW3tVcuVzhZlFbzoo4NI9pEswRx/EMz80G08AmqDUoJi4GqN9xnXOg+ouu/vzCX7GxyJ
- PeKfTXdg==;
-Received: from lucky1.263xmail.com ([211.157.147.134])
+ Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=fZQh5/pikwftQUygg0bDqSCCoQX3NUvTvsliZRpwd6s=; b=KTY56OcUZ0JMxXn+s7NoRbbIgq
+ ERFy6tO/SJY9uWluxDkATo93dqSgF+sXeN9fG8Yiq0HBr4WacXFeU+p/ku5VmF6I58U45FTbmAI+0
+ eYdTfgrEU37DeXPgiEYaWurM11Jr68tyi3lLnqUlHt9EwHYOF4BxSDDuRS1em3gDPiTdrY1fOefgC
+ gV40jygVXMwTSFrAB8BfaxnIJF6xGWKtaKG8GchRbyl0TmW4ZFf+Ano9aUNn24nFQshHlw/6mKXcN
+ 8o3JtMasiifqcm2nUOaNMfSbNA0L3gS9Sly2yfsSD7fk+cloH+ENqePVksLx9eKmpi1pE8JgD9uIx
+ xQYSxUSA==;
+Received: from antares.kleine-koenig.org ([94.130.110.236])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzXv-008LQR-AF
- for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:37:40 +0000
-Received: from localhost (unknown [192.168.167.130])
- by lucky1.263xmail.com (Postfix) with ESMTP id 41CF7C8603;
- Mon, 10 May 2021 14:37:37 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P29694T140717190006528S1620628656593974_; 
- Mon, 10 May 2021 14:37:37 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <e409584a888479cdfcdec1650aab20fe>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-RCPT-COUNT: 7
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: heiko@sntech.de,
-	linus.walleij@linaro.org,
-	robh+dt@kernel.org
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 7/7] gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set
- type
-Date: Mon, 10 May 2021 14:37:34 +0800
-Message-Id: <20210510063734.506063-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210510063602.505829-1-jay.xu@rock-chips.com>
-References: <20210510063602.505829-1-jay.xu@rock-chips.com>
+ id 1lfzog-008LsZ-OS
+ for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:55:00 +0000
+Received: by antares.kleine-koenig.org (Postfix, from userid 1000)
+ id 25A48B91AE8; Mon, 10 May 2021 08:54:53 +0200 (CEST)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Aditya Prayoga <aditya@kobol.io>
+Subject: [PATCH] arm64: dts: rockchip: Increase maximal SDIO voltage to 3.3 V
+Date: Mon, 10 May 2021 08:54:49 +0200
+Message-Id: <20210510065449.942173-1-uwe@kleine-koenig.org>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210509_233739_530546_4970BCEF 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210509_235458_961283_FA02B2FD 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +76,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There has spin lock for irq set type already, so drop irq_gc_lock and
-irq_gc_unlock.
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 048e7eecddba..c9c55614bbef 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -406,7 +406,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 		irq_set_handler_locked(d, handle_level_irq);
- 
- 	raw_spin_lock_irqsave(&bank->slock, flags);
--	irq_gc_lock(gc);
- 
- 	level = rockchip_gpio_readl(bank, bank->gpio_regs->int_type);
- 	polarity = rockchip_gpio_readl(bank, bank->gpio_regs->int_polarity);
-@@ -461,7 +460,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	rockchip_gpio_writel(bank, level, bank->gpio_regs->int_type);
- 	rockchip_gpio_writel(bank, polarity, bank->gpio_regs->int_polarity);
- out:
--	irq_gc_unlock(gc);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 
- 	return ret;
--- 
-2.25.1
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+V2hpbGUgY29tcGFyaW5nIHRoZSB2ZW5kb3IgZHRzIHdpdGggdGhlIG9uZSBhZGRlZCBpbiB2NS4x
+MS1yYzEgSSBub3RpY2VkCnRoYXQgdGhlIHZlbmRvciBkdHMgc3BlY2lmaWVkIDMuMyBWIHdoaWNo
+IG1hdGNoZXMgdGhlIFNESU8gc3BlY2lmaWNhdGlvbi4KClNvIGZpeCB0aGUgc2RpbyByZWd1bGF0
+b3IgdG8gcHJvdmlkZSAodXAgdG8pIDMuMyBWLgoKU2lnbmVkLW9mZi1ieTogVXdlIEtsZWluZS1L
+w7ZuaWcgPHV3ZUBrbGVpbmUta29lbmlnLm9yZz4KLS0tCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzM5OS1rb2JvbC1oZWxpb3M2NC5kdHMgfCA0ICsrLS0KIDEgZmlsZSBjaGFuZ2Vk
+LCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRzIGIvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRzCmluZGV4IDE5NDg1
+YjU1MmJjNC4uMzlhMWQyNzZiZDA1IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzM5OS1rb2JvbC1oZWxpb3M2NC5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRzCkBAIC0yNTYsMTEgKzI1NiwxMSBA
+QCB2Y2Nfc2Rpb19zMDogTERPX1JFRzQgewogCQkJCXJlZ3VsYXRvci1hbHdheXMtb247CiAJCQkJ
+cmVndWxhdG9yLWJvb3Qtb247CiAJCQkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAw
+MD47Ci0JCQkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzAwMDAwMD47CisJCQkJcmVndWxh
+dG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47CiAKIAkJCQlyZWd1bGF0b3Itc3RhdGUtbWVt
+IHsKIAkJCQkJcmVndWxhdG9yLW9uLWluLXN1c3BlbmQ7Ci0JCQkJCXJlZ3VsYXRvci1zdXNwZW5k
+LW1pY3Jvdm9sdCA9IDwzMDAwMDAwPjsKKwkJCQkJcmVndWxhdG9yLXN1c3BlbmQtbWljcm92b2x0
+ID0gPDMzMDAwMDA+OwogCQkJCX07CiAJCQl9OwogCi0tIAoyLjMwLjIKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
