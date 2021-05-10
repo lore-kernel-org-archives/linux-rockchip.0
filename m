@@ -2,58 +2,57 @@ Return-Path: <SRS0=aAmn=KF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCBB0C433B4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D82AC433ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0733961104
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0733961104
+	by mail.kernel.org (Postfix) with ESMTPS id 012F261104
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 06:37:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 012F261104
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ogf41jhJll8o77mX2eZdB1CUidfoKqeawgeGNEcYTt4=; b=gfWu7kgLSeYVEZtVlmttOXuBB
-	fRdTAmYu67DIDcsww9BIo+4/sJSz5/qYn61zrypDZGHn7aIbl/YyyBvkcSPBT0EOV+4T/R+KK+B+0
-	cPjAc4X7QRINcQ3c2juYOZMqSiUQLKTKRNp1Uzka9mGIcI4E7Nxw7j7RPIBYST1VQD4mkJwA99oA+
-	gcIIX1jLoM45vzz3M9s5658JflnywfD/2gtrcaQOL8aAh5VUu7ws0To8o2p13qdD+xw2k78qjE8nF
-	vgKl0mxHGSBgjv1Xm8keQPthHj7Aq1CogrM6E8cIIq4eS16alPpDc1vOjJAToiTNiSTV5Gid4lg6+
-	wYpzmL23A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Fpyh0/FH841skBDA5c6LwygEGbTtWudaIgmCIwa7tAg=; b=VrVwzSSVvHgg2a3s43QEoB4Z1V
+	mHqDmbILcVOMlhAU7zTL2P9GbnporIvUx7+2v1H6Anyyj0mX36ofVKALJMfvGt+IXB0p9/pqRf9ZK
+	1mGNKsPJjxNY+UPkGMhiL1zGTUVHXKDDUs4H/bWhtHUIIigznCzdp9b+SovtMUHaW6qaFmbpyNL80
+	ji7es6IR1z+GXaxaBAHDTqdVmjxs7b1EHLTS01ehXABDebWkBU8LS0gUg2ixrYm3r0R8p82PeEykU
+	3pUWh9Snpm1+5/FtF5f6JFly9hY0NUIPRH9rJkn1ehzMWLHkbB4L4PISYmswJsvQYT7cMHZ6jMEmt
+	jx9nAobw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lfzXI-00DO1Z-Vt; Mon, 10 May 2021 06:37:01 +0000
+	id 1lfzXM-00DO2K-9b; Mon, 10 May 2021 06:37:04 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzWe-00DNwu-6U
+ id 1lfzWe-00DNwp-6U
  for linux-rockchip@desiato.infradead.org; Mon, 10 May 2021 06:36:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=LRnvU6vUT8orBBDvKUF5zr6A1iG3Rkhb3nnpP3iNepE=; b=TYfCalV1AhpPduoQVQHRaBrTs7
- vNk1oVs2v9qfaNNP5AWqGtwS7UrbRvY7S7GE8NtK3WNjNOzIk5K6rlqJD7yRs0CQroxdOtgUXnaQ8
- TuF/FDIwNcps5bPD2KesoQLtv/OACIHjhFcU6M4DDIkTTR6SHRIdw6TVcqF0QddesEpVjhmguwh71
- H4x8f1ZO8ffuVV8KY5suPKQAIhdud4vtQKb1QV/Rt/brUGIcAC3bF3iLlxHCL0aYq7EXUNfltWKd9
- JaZmz2PQJPM25Mp76dDqC9kNUgDXIwEbyPcAXN/9BDTab3vPVLcS9OrfE1RvM2NeHEOCK3gVByoag
- Hj6lhq5g==;
-Received: from lucky1.263xmail.com ([211.157.147.134])
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=GyuOi6BS9kLA3efnLlkGB2kK16BGyX4Q/NGJtYf/0n0=; b=WhpDVrz5uH28LB4qzjJuvwa2F2
+ vLEUnD41GMAmKyieXctt3d0yBr0B+8Yu0vteQxc2vymAkPIVJvHIj0esNH7jEurM7b2pF33O+P9kb
+ O16tZD0iAFIH/favEWpigUs5bIWpVu7+VoncQkyhLmeWqTOVJN/dwtdLysSar71eY72lQo5Ya/QwI
+ unYcW8xf6JMVQ0NOPmNGIGzbGsIHKyXNVJCBRd9lGMm95CkbXqe6DaYuHqgchIm3lOChPTaU8EtdG
+ VHDK7zAnJXs96ZC95Fl4vk1jZDy8tOGchLEk2SIhxIlzhxQ2/v/5m7Kn5DabSNEABSEDwTVYCy+/Q
+ EIgeNFQQ==;
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lfzWZ-008LKN-O1
- for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:36:18 +0000
+ id 1lfzWZ-008LKL-8W
+ for linux-rockchip@lists.infradead.org; Mon, 10 May 2021 06:36:16 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 3F5FAC84C2;
- Mon, 10 May 2021 14:36:08 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 2513FCD444;
+ Mon, 10 May 2021 14:36:05 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -62,9 +61,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P2750T140649254856448S1620628564034882_; 
- Mon, 10 May 2021 14:36:07 +0800 (CST)
+ Mon, 10 May 2021 14:36:05 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <5288393d83d194f6ae43ce016fdf43ba>
+X-UNIQUE-TAG: <f8fb39bda157b2de25c6824f9dc7fe96>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -79,17 +78,15 @@ To: heiko@sntech.de,
 	robh+dt@kernel.org
 Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 4/7] gpio/rockchip: use struct rockchip_gpio_regs for gpio
- controller
-Date: Mon, 10 May 2021 14:35:59 +0800
-Message-Id: <20210510063602.505829-5-jay.xu@rock-chips.com>
+Subject: [PATCH v4 0/7] gpio-rockchip driver
+Date: Mon, 10 May 2021 14:35:55 +0800
+Message-Id: <20210510063602.505829-1-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210510063602.505829-1-jay.xu@rock-chips.com>
-References: <20210510063602.505829-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210509_233616_116824_CB5B2A03 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20210509_233615_503351_000A4F50 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,300 +104,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Store register offsets in the struct rockchip_gpio_regs, this patch
-prepare for the driver update for new gpio controller.
+Separate gpio driver from pinctrl driver, and support v2 controller.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c       | 85 ++++++++++++++++--------------
- drivers/pinctrl/pinctrl-rockchip.h | 38 +++++++++++++
- 2 files changed, 84 insertions(+), 39 deletions(-)
+Jianqun Xu (7):
+  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
+  pinctrl/pinctrl-rockchip.h: add pinctrl device to gpio bank struct
+  gpio: separate gpio driver from pinctrl-rockchip driver
+  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
+  gpio/rockchip: support next version gpio controller
+  gpio/rockchip: always enable clock for gpio controller
+  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 03a3d251faae..b12db3a523d0 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -24,19 +24,21 @@
- #include "../pinctrl/core.h"
- #include "../pinctrl/pinctrl-rockchip.h"
- 
--/* GPIO control registers */
--#define GPIO_SWPORT_DR		0x00
--#define GPIO_SWPORT_DDR		0x04
--#define GPIO_INTEN		0x30
--#define GPIO_INTMASK		0x34
--#define GPIO_INTTYPE_LEVEL	0x38
--#define GPIO_INT_POLARITY	0x3c
--#define GPIO_INT_STATUS		0x40
--#define GPIO_INT_RAWSTATUS	0x44
--#define GPIO_DEBOUNCE		0x48
--#define GPIO_PORTS_EOI		0x4c
--#define GPIO_EXT_PORT		0x50
--#define GPIO_LS_SYNC		0x60
-+#define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
-+
-+static const struct rockchip_gpio_regs gpio_regs_v1 = {
-+	.port_dr = 0x00,
-+	.port_ddr = 0x04,
-+	.int_en = 0x30,
-+	.int_mask = 0x34,
-+	.int_type = 0x38,
-+	.int_polarity = 0x3c,
-+	.int_status = 0x40,
-+	.int_rawstatus = 0x44,
-+	.debounce = 0x48,
-+	.port_eoi = 0x4c,
-+	.ext_port = 0x50,
-+};
- 
- static int rockchip_gpio_get_direction(struct gpio_chip *chip,
- 				       unsigned int offset)
-@@ -51,7 +53,7 @@ static int rockchip_gpio_get_direction(struct gpio_chip *chip,
- 			"failed to enable clock for bank %s\n", bank->name);
- 		return ret;
- 	}
--	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-+	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
- 	clk_disable(bank->clk);
- 
- 	if (data & BIT(offset))
-@@ -70,13 +72,13 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- 	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
--	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-+	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
- 	/* set bit to 1 for output, 0 for input */
- 	if (!input)
- 		data |= BIT(offset);
- 	else
- 		data &= ~BIT(offset);
--	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-+	writel_relaxed(data, bank->reg_base + bank->gpio_regs->port_ddr);
- 
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 	clk_disable(bank->clk);
-@@ -88,7 +90,7 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned int offset,
- 			      int value)
- {
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
--	void __iomem *reg = bank->reg_base + GPIO_SWPORT_DR;
-+	void __iomem *reg = bank->reg_base + bank->gpio_regs->port_dr;
- 	unsigned long flags;
- 	u32 data;
- 
-@@ -111,7 +113,7 @@ static int rockchip_gpio_get(struct gpio_chip *gc, unsigned int offset)
- 	u32 data;
- 
- 	clk_enable(bank->clk);
--	data = readl(bank->reg_base + GPIO_EXT_PORT);
-+	data = readl(bank->reg_base + bank->gpio_regs->ext_port);
- 	clk_disable(bank->clk);
- 	data >>= offset;
- 	data &= 1;
-@@ -122,7 +124,7 @@ static void rockchip_gpio_set_debounce(struct gpio_chip *gc,
- 				       unsigned int offset, bool enable)
- {
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
--	void __iomem *reg = bank->reg_base + GPIO_DEBOUNCE;
-+	void __iomem *reg = bank->reg_base + bank->gpio_regs->debounce;
- 	unsigned long flags;
- 	u32 data;
- 
-@@ -226,7 +228,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
- 
- 	chained_irq_enter(chip, desc);
- 
--	pend = readl_relaxed(bank->reg_base + GPIO_INT_STATUS);
-+	pend = readl_relaxed(bank->reg_base + bank->gpio_regs->int_status);
- 
- 	while (pend) {
- 		unsigned int irq, virq;
-@@ -250,24 +252,26 @@ static void rockchip_irq_demux(struct irq_desc *desc)
- 			u32 data, data_old, polarity;
- 			unsigned long flags;
- 
--			data = readl_relaxed(bank->reg_base + GPIO_EXT_PORT);
-+			data = readl_relaxed(bank->reg_base +
-+					     bank->gpio_regs->ext_port);
- 			do {
- 				raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 				polarity = readl_relaxed(bank->reg_base +
--							 GPIO_INT_POLARITY);
-+							 bank->gpio_regs->int_polarity);
- 				if (data & BIT(irq))
- 					polarity &= ~BIT(irq);
- 				else
- 					polarity |= BIT(irq);
- 				writel(polarity,
--				       bank->reg_base + GPIO_INT_POLARITY);
-+				       bank->reg_base +
-+				       bank->gpio_regs->int_polarity);
- 
- 				raw_spin_unlock_irqrestore(&bank->slock, flags);
- 
- 				data_old = data;
- 				data = readl_relaxed(bank->reg_base +
--						     GPIO_EXT_PORT);
-+						     bank->gpio_regs->ext_port);
- 			} while ((data & BIT(irq)) != (data_old & BIT(irq)));
- 		}
- 
-@@ -290,9 +294,9 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
--	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-+	data = readl_relaxed(bank->reg_base + bank->gpio_regs->port_ddr);
- 	data &= ~mask;
--	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
-+	writel_relaxed(data, bank->reg_base + bank->gpio_regs->port_ddr);
- 
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
- 
-@@ -304,8 +308,8 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 	irq_gc_lock(gc);
- 
--	level = readl_relaxed(gc->reg_base + GPIO_INTTYPE_LEVEL);
--	polarity = readl_relaxed(gc->reg_base + GPIO_INT_POLARITY);
-+	level = readl_relaxed(gc->reg_base + bank->gpio_regs->int_type);
-+	polarity = readl_relaxed(gc->reg_base + bank->gpio_regs->int_polarity);
- 
- 	switch (type) {
- 	case IRQ_TYPE_EDGE_BOTH:
-@@ -316,7 +320,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 		 * Determine gpio state. If 1 next interrupt should be falling
- 		 * otherwise rising.
- 		 */
--		data = readl(bank->reg_base + GPIO_EXT_PORT);
-+		data = readl(bank->reg_base + bank->gpio_regs->ext_port);
- 		if (data & mask)
- 			polarity &= ~mask;
- 		else
-@@ -349,8 +353,8 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 		return -EINVAL;
- 	}
- 
--	writel_relaxed(level, gc->reg_base + GPIO_INTTYPE_LEVEL);
--	writel_relaxed(polarity, gc->reg_base + GPIO_INT_POLARITY);
-+	writel_relaxed(level, gc->reg_base + bank->gpio_regs->int_type);
-+	writel_relaxed(polarity, gc->reg_base + bank->gpio_regs->int_polarity);
- 
- 	irq_gc_unlock(gc);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
-@@ -365,8 +369,8 @@ static void rockchip_irq_suspend(struct irq_data *d)
- 	struct rockchip_pin_bank *bank = gc->private;
- 
- 	clk_enable(bank->clk);
--	bank->saved_masks = irq_reg_readl(gc, GPIO_INTMASK);
--	irq_reg_writel(gc, ~gc->wake_active, GPIO_INTMASK);
-+	bank->saved_masks = irq_reg_readl(gc, bank->gpio_regs->int_mask);
-+	irq_reg_writel(gc, ~gc->wake_active, bank->gpio_regs->int_mask);
- 	clk_disable(bank->clk);
- }
- 
-@@ -376,7 +380,7 @@ static void rockchip_irq_resume(struct irq_data *d)
- 	struct rockchip_pin_bank *bank = gc->private;
- 
- 	clk_enable(bank->clk);
--	irq_reg_writel(gc, bank->saved_masks, GPIO_INTMASK);
-+	irq_reg_writel(gc, bank->saved_masks, bank->gpio_regs->int_mask);
- 	clk_disable(bank->clk);
- }
- 
-@@ -435,8 +439,8 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	gc = irq_get_domain_generic_chip(bank->domain, 0);
- 	gc->reg_base = bank->reg_base;
- 	gc->private = bank;
--	gc->chip_types[0].regs.mask = GPIO_INTMASK;
--	gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
-+	gc->chip_types[0].regs.mask = bank->gpio_regs->int_mask;
-+	gc->chip_types[0].regs.ack = bank->gpio_regs->port_eoi;
- 	gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
- 	gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
- 	gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
-@@ -453,9 +457,9 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	 * Our driver only uses the concept of masked and always keeps
- 	 * things enabled, so for us that's all masked and all enabled.
- 	 */
--	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
--	writel_relaxed(0xffffffff, bank->reg_base + GPIO_PORTS_EOI);
--	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
-+	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->int_mask);
-+	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->port_eoi);
-+	writel_relaxed(0xffffffff, bank->reg_base + bank->gpio_regs->int_en);
- 	gc->mask_cache = 0xffffffff;
- 
- 	irq_set_chained_handler_and_data(bank->irq,
-@@ -546,6 +550,9 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 
- 	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
- 
-+	bank->gpio_regs = &gpio_regs_v1;
-+	bank->gpio_type = GPIO_TYPE_V1;
-+
- 	bank->clk = of_clk_get(bank->of_node, 0);
- 	if (!IS_ERR(bank->clk))
- 		return clk_prepare(bank->clk);
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 4aa3d2f1fa67..1b774b6bbc3e 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -32,6 +32,42 @@ enum rockchip_pinctrl_type {
- 	RK3568,
- };
- 
-+/**
-+ * struct rockchip_gpio_regs
-+ * @port_dr: data register
-+ * @port_ddr: data direction register
-+ * @int_en: interrupt enable
-+ * @int_mask: interrupt mask
-+ * @int_type: interrupt trigger type, such as high, low, edge trriger type.
-+ * @int_polarity: interrupt polarity enable register
-+ * @int_bothedge: interrupt bothedge enable register
-+ * @int_status: interrupt status register
-+ * @int_rawstatus: int_status = int_rawstatus & int_mask
-+ * @debounce: enable debounce for interrupt signal
-+ * @dbclk_div_en: enable divider for debounce clock
-+ * @dbclk_div_con: setting for divider of debounce clock
-+ * @port_eoi: end of interrupt of the port
-+ * @ext_port: port data from external
-+ * @version_id: controller version register
-+ */
-+struct rockchip_gpio_regs {
-+	u32 port_dr;
-+	u32 port_ddr;
-+	u32 int_en;
-+	u32 int_mask;
-+	u32 int_type;
-+	u32 int_polarity;
-+	u32 int_bothedge;
-+	u32 int_status;
-+	u32 int_rawstatus;
-+	u32 debounce;
-+	u32 dbclk_div_en;
-+	u32 dbclk_div_con;
-+	u32 port_eoi;
-+	u32 ext_port;
-+	u32 version_id;
-+};
-+
- /**
-  * struct rockchip_iomux
-  * @type: iomux variant using IOMUX_* constants
-@@ -126,6 +162,8 @@ struct rockchip_pin_bank {
- 	struct gpio_chip		gpio_chip;
- 	struct pinctrl_gpio_range	grange;
- 	raw_spinlock_t			slock;
-+	const struct rockchip_gpio_regs	*gpio_regs;
-+	u32				gpio_type;
- 	u32				toggle_edge_mode;
- 	u32				recalced_mask;
- 	u32				route_mask;
+ drivers/gpio/Kconfig               |   8 +
+ drivers/gpio/Makefile              |   1 +
+ drivers/gpio/gpio-rockchip.c       | 758 ++++++++++++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.c | 910 +----------------------------
+ drivers/pinctrl/pinctrl-rockchip.h | 287 +++++++++
+ 5 files changed, 1073 insertions(+), 891 deletions(-)
+ create mode 100644 drivers/gpio/gpio-rockchip.c
+ create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
+
 -- 
+v5:
+ - change to devel branch
+
 2.25.1
 
 
