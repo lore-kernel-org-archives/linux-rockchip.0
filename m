@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D866C433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 17:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18C65C433ED
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 19:21:25 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6EB861481
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 17:57:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6EB861481
+	by mail.kernel.org (Postfix) with ESMTPS id 9009661494
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 May 2021 19:21:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9009661494
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,75 +24,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TcpemxRVKVH/5tbdwzZD5arSVdROEdQan4AwZ6tjXDg=; b=XN0yNhTjDJwak1LpIDp3cO955X
-	6DlWAeuOb7Rqyg6t+rJmOczEloAkEVI2JXqHRkk4rrqNyGSA8mMcNJhKlvFcZabohRAd4Niy1u++Z
-	Ao/rQpeAssgoLb8Mi1i7vaHpDrSoe2po8ZOcxvZtlvlm4qFCnnzfPE1hDrkYxqUc+BD49QGztPCRp
-	yUUF4LniQg1gg1gBW/h2myc6OEud/Es11WHrIUnFpIIi4et6njesE70j/yiZqP+taZDelpsNZQGHN
-	DZhXUazjcUsN2qPE4RWuunNbpgWhlQuxF9RoHndHJ3CxCIOefO5V223tneggyULijRPYMDQU3ZTA3
-	FULUv+xA==;
+	bh=3E7M8to1v1l5WIM+/WKOyOgowLTsDTi/2yLNky810mI=; b=d3fPazyPKoA+PHTy4PkQsSiQzp
+	CoThtwIlWwgfwGM1wmbjz2/tmS6bzO//V9r06Sa0W8nLm2ISV5/zD0Ce00nLMmWnL/ya2Wru0SGVu
+	RoF7Iu1JF5U0OsPDtb4C0zAJTXSqrPprpZSOD0k3FEy6V/R0oCbAUaNBTgy7A72cJzKBrWOvFql3y
+	4NkJeehr+zBc2qOFy1bHNg+h2h0W7XNYfs/uTk42khI+cKgxXNxx7O2P8g+qn/fHIRah+XqDxLLJb
+	5YqqTfw9tUZseJqlYyxFTZPw+OG6quUhbq7I2zwuOxu2cxRSB4YCrnz8dLsVsJqxuUs+QuQf29eGu
+	+bxJuOcg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgA9e-00FJRJ-5H; Mon, 10 May 2021 17:57:18 +0000
+	id 1lgBSo-00FXR0-Jn; Mon, 10 May 2021 19:21:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg9id-00F9Ul-J8; Mon, 10 May 2021 17:29:23 +0000
+ id 1lgBSk-00FXPq-Ec; Mon, 10 May 2021 19:21:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
  Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=zPZnXyNiITS1+tga2LkqtsJSSJCY8+DuMqte16OgOgA=; b=Q9A8ItdS0m3UMXaP+0JtOZnOLK
- V0FbGCUpZks2npp2SFmYIe7/sb4cKAnQqvWfyOr4ODzml5cDpVLuALCVbeyzSlpUovICsHPWR9Vqz
- OaKhSqqXxAl/+fO5jGtVdO0vf+7s2Ml8GGUVOs4ED1Eer2tzOzdcVPvJXCRpLmyXEWJNcvDRfNc8m
- DueZHMAt6O/xOu2T38+QnoLBI7RLtfjdk2LKgLeu6lr8XnKnU9dM6zeHzohXUrRAnLDohQ//MxCqt
- FnOaXuoPocEIZ7ralCE2ZPCoRLBqWe6v3qJ5xC1+gNxjMUIhw8Ko8371bmKvC5y19snsrywYI32qP
- 1Pd7HTdg==;
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ bh=EFsFb8pMI8UH4jNijLN54heTyN+8V4Uo+MBIc8sUxEk=; b=EfSDYsBOzJGOxw3F6S3TXlArNq
+ zMqshkNl7ew4mhprsqpMqEFKhokXD7Zgin5fVWiwiXCJLJ6OTPnHtlPCgsdNDUOmcu3meoMlD/z6T
+ ct73ctXB4+MYlK5eQr+F32gBO2GlEf3ThmvShlXRgHUrhkrd3dIP9LrOCMLafhJlsD44bbkaLHUlB
+ +DimgZjR4tJi2fE2x1iwJRK4tsuaLnsdGPkg7y7LVwX71neHN+aopVvCmrz9fuG43sqxEf4SiMDSb
+ VwuI+tYq9EU8TvrMFIH8w7f8TOqGO0ZDeqAX6pz5BvynCdjFAeWAv9OsxmnLuZSdKhEgs850TS3rR
+ qQMamJMw==;
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg9ia-008yr6-6E; Mon, 10 May 2021 17:29:22 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id n2so25720862ejy.7;
- Mon, 10 May 2021 10:29:19 -0700 (PDT)
+ id 1lgBSh-0094Bw-KG; Mon, 10 May 2021 19:21:04 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id di13so20043401edb.2;
+ Mon, 10 May 2021 12:21:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id;
- bh=zPZnXyNiITS1+tga2LkqtsJSSJCY8+DuMqte16OgOgA=;
- b=V+W8htSrVhXwsW0l/oyEpTn2StkXXbaVoRhOAECMU1WYOpkX/GL7Go+VY1+BybiodQ
- 0P7DjHJCZvtCbWd8XiBRctvLB0mBVINuMx9qZNPhdFiXE2Xm3P1z9yhSOKx6Dyy5RtED
- 2Hz4JMcw2nEIzbLC3/b0Jl0ypUomWRPGVFQK1mrd4BmIRIizYUFssFM6wqHvh99Aw8LY
- Gm7hLDHpZNQvsfcIwHlJlwaJcM7/gbvKEuudEUXACKtWeEYGZ5pwzIZHB6+26X333TlH
- ogosfZwQyjBebMjxSr6gYODQfzsYG7qp2MJCL2ipB5DZwXkCP/xsEq4MCpUp861wHOUD
- aoaQ==
+ bh=EFsFb8pMI8UH4jNijLN54heTyN+8V4Uo+MBIc8sUxEk=;
+ b=B3BkgcsmCDDggzaQBqgSezKwkbbqsZfGSGHotgPFSo6MlhFi5AZI+EQJXmxL6ONXIH
+ +XxT3brBTzKMIl2XB5AaK+hb0YNx6DinOhsmfRc/nInm5YEIeiDMltiuAI/bi+dp8yMt
+ zHuHR5wg0IXhjq6MWHo5Xcp+bDr/7B3uOhlAhI6fCyybriz0X6gcBQooJh7NLRl4CXGN
+ GOUXbAg0vOxhKZgOIPf8VsZfG5SSHaqQvy37N8Am7RUAM/0THSJ9jPG16/Rf49WDc4/n
+ PvK3s+s0stZSfOozyYcCckeD1l1NRYuJErP3JiX0MuL368RMCgV7KZK/6RNqoC6j4Jn9
+ 5RhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=zPZnXyNiITS1+tga2LkqtsJSSJCY8+DuMqte16OgOgA=;
- b=HigFmDlidKw7MpmLU7spFcSHLA/4Bv2//OSoFYs0k3Q0BvcKdC0k+JwgvXGuM8WJ2a
- mqSpUdkxqM1tn3NHHquLovlRoq4N5KW4IhEmzZVOI7+ALiAskWcHIKRsQfwgKR+uaKWj
- aHdYzTLtVCdIjP+rHmYsRo5b/NjOYqoz3YgKsVVSGsBpeHjwXpwDWF1CPgUC+svF57CO
- lpG1JPO7M9ssKCeT9fzVHmKNFRJTi6/VOcGA0JssR+JBLApT7zH5k2ISPBnnMRH6DLxl
- X2iL7LbWgR+5L6peWxWFRIvRNSRSQBBcHfyMs0FUQBSrz60+0VYdHdyxnImEiXpRs57b
- ke5Q==
-X-Gm-Message-State: AOAM531VdgKMUtws/aXKlJsvh3kStlIyQmW+EozeDIEmoWw3vhRNMj9v
- +4ahO5tkDclMfmodPBqPtUg=
-X-Google-Smtp-Source: ABdhPJx2bYXVXBCJKyTo+5sI4UwIDOABWxWjS+okg5EsuFjME9+vKWnV5k8mUiIGHZHVQa9c3Xs/KA==
-X-Received: by 2002:a17:906:724b:: with SMTP id
- n11mr27061945ejk.338.1620667758481; 
- Mon, 10 May 2021 10:29:18 -0700 (PDT)
+ bh=EFsFb8pMI8UH4jNijLN54heTyN+8V4Uo+MBIc8sUxEk=;
+ b=fjDb6SmFkV+zzs/jNvN+KaawdEPFI7tc2VHPOharjlhv/5pEphC+HTWLyKRQTB+eRV
+ 7+TJ7kkIT5saZ83aCguoueDOekFKJdrgPLk2GhW0qSYGcKTyk1jIcLCFHogXUN+icOlM
+ pLQY1EE8ui9xNtjf2L6e2GA1oCHEf8moJnOyiv7ycLppM6TznoNBWzcKe7MDvvQ//yor
+ fQjRkqf5O5VaR6E2mS3Dql3CWjJPbf8ZlRngD23AnNQuyweKW6IJx9yMDfiDQbNymNo1
+ BtaYgZ1gH8I8TZRkRrxuVdsZKYnNQ4ZF5zjTl1sw4DZsVTVLrkeAmTzmkPXYpdc746ax
+ GZOw==
+X-Gm-Message-State: AOAM532TMixJJYFMynU/tVjY1WAHS0WsqfZQ7T3K2PusO6xPcRdrIcdY
+ UB5lN5RXIq1ISyqKqUd2n+w=
+X-Google-Smtp-Source: ABdhPJxsLinSeYfgg7lxOp4j3xHptYRQPXsgIzFgXp1XDQN7tfLYAzTCO0Vru0TAv7NHrcaunEiqIA==
+X-Received: by 2002:a05:6402:4383:: with SMTP id
+ o3mr31312889edc.333.1620674461780; 
+ Mon, 10 May 2021 12:21:01 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id g17sm14215855edv.47.2021.05.10.10.29.17
+ by smtp.gmail.com with ESMTPSA id da25sm12588723edb.38.2021.05.10.12.21.00
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 10 May 2021 10:29:18 -0700 (PDT)
+ Mon, 10 May 2021 12:21:01 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] ARM: dts: rockchip: Remove more clock-names from PWM nodes A
- test with the command below gives this error:
-Date: Mon, 10 May 2021 19:29:11 +0200
-Message-Id: <20210510172911.6763-1-jbx6244@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: rename vcc_stdby node name for
+ rk3066a-rayeager.dts
+Date: Mon, 10 May 2021 21:20:54 +0200
+Message-Id: <20210510192054.8876-1-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210510_102920_267703_74A8F325 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20210510_122103_683171_643B5C57 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,57 +111,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-/arch/arm/boot/dts/rk3228-evb.dt.yaml:
-pwm@110b0020: clock-names: ['pwm'] is too short
+A test with the command below gives this error:
 
-Devices with only one PWM clock use it to both to derive the functional
-clock for the device and as the bus clock. The driver does not need
-"clock-names" to get a handle, so remove them all.
+/arch/arm/boot/dts/rk3066a-rayeager.dt.yaml:
+/: '5v-stdby-regulator' does not match any of the regexes:
+'.*-names$',
+'.*-supply$',
+'^#.*-cells$',
+'^#[a-zA-Z0-9,+\\-._]{0,63}$',
+'^[a-zA-Z][a-zA-Z0-9,+\\-._]{0,63}$',
+'^[a-zA-Z][a-zA-Z0-9,+\\-._]{0,63}@[0-9a-fA-F]+(,[0-9a-fA-F]+)*$',
+'^__.*__$',
+'pinctrl-[0-9]+'
+
+A node name shouldn't start with a number,
+so change it to 'stdby-regulator'.
 
 make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema
+/schemas/dt-core.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 4 ----
- 1 file changed, 4 deletions(-)
+ arch/arm/boot/dts/rk3066a-rayeager.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 9fbd96c3f..61028a5c9 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -384,7 +384,6 @@
- 		reg = <0x110b0000 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm0_pin>;
- 		status = "disabled";
-@@ -395,7 +394,6 @@
- 		reg = <0x110b0010 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm1_pin>;
- 		status = "disabled";
-@@ -406,7 +404,6 @@
- 		reg = <0x110b0020 0x10>;
- 		#pwm-cells = <3>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm2_pin>;
- 		status = "disabled";
-@@ -417,7 +414,6 @@
- 		reg = <0x110b0030 0x10>;
- 		#pwm-cells = <2>;
- 		clocks = <&cru PCLK_PWM>;
--		clock-names = "pwm";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwm3_pin>;
- 		status = "disabled";
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index 309518403..a73e8900c 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -58,7 +58,7 @@
+ 	};
+ 
+ 	/* input for 5V_STDBY is VSYS or DC5V, selectable by jumper J4 */
+-	vcc_stdby: 5v-stdby-regulator {
++	vcc_stdby: stdby-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "5v_stdby";
+ 		regulator-min-microvolt = <5000000>;
 -- 
 2.11.0
 
