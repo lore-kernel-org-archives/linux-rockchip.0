@@ -2,105 +2,111 @@ Return-Path: <SRS0=2pai=KG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F28FC433ED
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 May 2021 11:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1964FC433ED
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 May 2021 13:01:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D952B616E9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 May 2021 11:33:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D952B616E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6802161921
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 May 2021 13:01:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6802161921
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YKeO3VQAEtiBV7d60rygzkS4XVF6FrV9qUJi2W7MmHw=; b=G6sk4EB/56UAIuiQMWZkct6h+5
-	b4pg620e5E3NP+V1NM3QwPdzHfBChgeQBC3raSUqbaDjeiSu34UX6qpq9teGCNOkedaS13LAW4RCS
-	lJCnPRB4XJJLuvK4fQK9wSlGS2eopeST9PzBEa4eLL1MBPy7ID9sCJkD6EF4+F+z2iu5hyeMbRv8o
-	git0eo//5kZmUFhiOjVK2hvLJgnMUkMVOKCo4EZujwdxePv5TBa/D4E3UAcZZ5I1HjI215cLIBuOk
-	Pk38QpeOZZGZpDHF9Bya5pmuYM5HHEKmRNCPJdmR86Weys57iitHqsim8VB7+f3XZKL8HZbWKJDfE
-	1xYAnxzg==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=CG3QdFgYpkT4FgonClD1x/uxjRS7dVniGoQL015TCfs=; b=hCcBVTQhuzPqnU88m6BQFIFWr
+	xzof7NEq5cNCQ7ThhjgwOswmVCwfvRSKYqjJsDZvqXfgUuwElWOXVRaDaWFSnzN7IXwihm8aVYd9e
+	j/6McFZD01yCUF5ztAQF0BTLdpcB+Xq16qsOLBpp3/gwGuMWsG0nlcXCTqucArdUVq/1NDnQrGivW
+	ZD5e4t5awAs0/PagJA5LOJ4MzeJRULEE5QpcmUob1OOGXiM/DNDA+6HYbQgBulL01FMeoOXBBPYBs
+	pKRe0Y8o6/4CykZWgiZD7+ulaNaxsHPai+4sUM+NT2aV9yJSrw/taQ5/HvnTZRIhQry8uflEuidPh
+	m/bevImmQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgQdN-00H8wJ-C5; Tue, 11 May 2021 11:33:05 +0000
-Received: from [2607:7c80:54:e::133] (helo=bombadil.infradead.org)
+	id 1lgS0Q-00HXtO-UJ; Tue, 11 May 2021 13:00:59 +0000
+Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgKaJ-00GJMZ-1L; Tue, 11 May 2021 05:05:34 +0000
+ id 1lgQ4d-00H2eO-IV
+ for linux-rockchip@desiato.infradead.org; Tue, 11 May 2021 10:57:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
- Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=60Lo7xpvw9UYiOl5jHY1jyhH6Kp5rVQT5uk6x+ikYXU=; b=wVpCVM7vB7MrqVgMdlH451MGan
- P7hAxh1Vb1aZkAIdRV2kArqYkky7h3uSGwL8s8qhlzMSxPgJZi26NrLvfwpZ/xmiHrWu0g40Uw0Jd
- W/oHM557GWimGh+R9T4YtzM13VigLrm1i3+5uhcW9S53pctFRwI/49mRDwwKBhfh07aBbxmBIAclG
- MAO+oD0mCDhMEoYHyo3eiCUDpdFHl7ItUYOrPPTuWoMVcrhbVNtlRl/ojOzA9I82q8vx7mKVzSmpc
- pdEb2+t0D0Vq+i/NjL/aXT0dhK5LhioFIPv9TnMZVkK9IR1tENUHtMNU4NTgEBEYH2j98Pg59za6s
- hI33ZhxQ==;
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ bh=H3TFuIrc3Mj7EWsSB5KHDQrg/psdazR0cVvA5Agy22s=; b=2/9wLJw3fHXMExIvpFOXbQ4P7F
+ sHPx2q8nQntzFYGNsrpc2PW5OeZReOj3v0T4lsTq1sMxfYuf9nm4xaeVudfhBhHKUgLmL6ecilAeO
+ MnBVXiCqD/IFKrNDBVTIOJnF89ZeYa61v8Ykwes6gJ9plipJs64i5gKT53HORTZJkIAC8kam0Q4Ld
+ aRWn35IQAl3SYYt10OA8mwsfwWEcaBqHKyPqJEQz4WHgKifNLPgUijzEj4DxyVH9mDw2pX725ueAb
+ OUWDG0c81FwFSF63gFeoWiDp5BcX4SmO5pEONOtbBJqQB42ScsAk3RZcNTf9zmVKCntQCTom+2uUQ
+ wWKZBnaA==;
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgKaG-009JD7-Iw; Tue, 11 May 2021 05:05:29 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id n25so21311900edr.5;
- Mon, 10 May 2021 22:05:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=60Lo7xpvw9UYiOl5jHY1jyhH6Kp5rVQT5uk6x+ikYXU=;
- b=pjQO8ugBczY9ILfH5Ui6UlNeLY/hw0v2Wri0bS7ozgYFH7Rw7zZ2L+Ocuz6mTii+5M
- s7scXBV+9K7VzAh1xOi1X81cAx/a8eRzcoKJeYeJD4XTAbY94W/rpTUnNxoj6bK5iwVn
- RCxL2BKbUzyxZpsGCNKyoSWgPwrByD7gwvkJpetY3sD6qDwDrrj297WF1X64ArPugqfW
- KxP9ah9+vSu1cCc4kInCQrJuw3yYb8tHIgqbBf65v1hCMRhalDLL29C1ZFC5nXaDdZus
- 8FVzJSKIM9mflu7XevZtKrPU5j5De0skFtRRj1wlsi3hHHTBIIxLgNrauhBnTdWWs7/Z
- 2+wQ==
+ id 1lgQ4a-009Uxm-Vd
+ for linux-rockchip@lists.infradead.org; Tue, 11 May 2021 10:57:10 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id 33so6205590uaa.7
+ for <linux-rockchip@lists.infradead.org>; Tue, 11 May 2021 03:57:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=H3TFuIrc3Mj7EWsSB5KHDQrg/psdazR0cVvA5Agy22s=;
+ b=BI5betzphHV53YRAHo1kbf3qtN5EZ+oJQvqpn4XXUNTvjtju9UI5Wxwcu/qn0vpzMa
+ l8lD+g5mD22XYfa4O8a/DkbtdqMxftpPoCgk3EzFxlgMa9475q6tweCGnyLgcCpSu8ue
+ poRgY190B4IYUbsx23WRK7dsxuPfKqFzfOElVB1Ti0fK7UgpND6B/TIlH7Ez2Ztt/UZw
+ X9ChYwX5o5XMrZarBxHM9k9fuDXw7GeXfg0wQeftAJktbg8FdqoErJmdZxTz9ySB9ljp
+ 5kzgCqLZ8a1IL5VP4fZ8V/3eoLv/D//8lDoYt4CeIJg/ADMwinFvoAgj3MdlTZUA2vJ8
+ V+KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=60Lo7xpvw9UYiOl5jHY1jyhH6Kp5rVQT5uk6x+ikYXU=;
- b=lodSALjARi/iwKIpmAsQmelU3kMY/qsycLt+PAMYqNZcRSpdK1FIPdVE0kc3ZKdJl1
- Igy1HyQA/EJjeSY1FW1qG8Is59eiTvlKALs5Mu50FsW0/4e10mwgp114Ba21WzloO8eZ
- sOEQ51lYbaJhmvWcDt3NyvRmmWX2nL4iOzSuy8OGtf6RJsoy5UvS52aQKQlb6Pqw9r20
- ZkpTZbSvsgtxNX0nY0efJjkWi5cpqxlnc3pZK9Acy+egT9x7Evi66J6xgV7NEsWIokDG
- GLEeflO3Oh29TgVq/pE0Hfiy6aniA62FBoflKkeQguomS0e0iNEsKkjyBrVdaNAfWeF9
- DrvA==
-X-Gm-Message-State: AOAM533Q6mdNoxmUd8/OG8KD4LGrfrQ0g0Pa9ilJqEcaQQ82Ih0aRnUu
- xhd336xrEG1+Q8H99KybGc8=
-X-Google-Smtp-Source: ABdhPJw7kqDOZphNYsS6zYAyisU/b00uYXV8iECUQs30s1WPz+PYOUmr7Ei3q1Xd9QTuux1I5TbZgg==
-X-Received: by 2002:a50:ee86:: with SMTP id f6mr33839634edr.154.1620709527251; 
- Mon, 10 May 2021 22:05:27 -0700 (PDT)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id g24sm3620302eds.41.2021.05.10.22.05.26
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 10 May 2021 22:05:27 -0700 (PDT)
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, linus.walleij@linaro.org, bgolaszewski@baylibre.com,
- jay.xu@rock-chips.com, shawn.lin@rock-chips.com, david.wu@rock-chips.com,
- zhangqing@rock-chips.com, huangtao@rock-chips.com, cl@rock-chips.com,
- linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v4 4/4] arm64: dts: rename grf-gpio nodename in rk3328.dtsi
-Date: Tue, 11 May 2021 07:05:11 +0200
-Message-Id: <20210511050511.5973-5-jbx6244@gmail.com>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20210511050511.5973-1-jbx6244@gmail.com>
-References: <20210511050511.5973-1-jbx6244@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=H3TFuIrc3Mj7EWsSB5KHDQrg/psdazR0cVvA5Agy22s=;
+ b=YA+zzSv8+07/FWPexbuZESaza0l9BaDtQIcHQjYZBVbxEWQgt9EMcVitrnG8piQVma
+ VssEb6es5HT8xW4rSyLktRNyPQZoAZ5XUclt0h7zXYs9GBvHDFo8zN2Jm/DYTDAI6EJc
+ gmMzi/fD2/aW9HThBoJUPNCIGokkRj2Z0A6CpfeY03fmxrL/7Hc1BcTErO8qvYMlwec4
+ QAPpgOdvCMC03ijRNfV7Z1r+nlpKPes+DjUViHPsnPmuw+xikG5ZKZX3epuMe2dUoW2e
+ OzZozUo2Jaclfjz53LAcokpow6NZik4GR2cp6FcK97KYkGUXNwIxYOit6zLtBj5+S0pj
+ UBaQ==
+X-Gm-Message-State: AOAM533deCgqf+GKy5O5qtJj5D+JxAwrcknTtlIl3vwfj9SBEEIQy86W
+ kwPeTfw2CniFWZsGW35bJigDrEHTHvx8nHAOYEXR5Q==
+X-Google-Smtp-Source: ABdhPJwynumHCSzbxs9fEYhSTsTQNyquQmA9nby0MfgarYqJoMGRF7eJ8B5GdcKLxBd8RzpG4b/jdGZAXltAK2YZE4E=
+X-Received: by 2002:ab0:7002:: with SMTP id k2mr25127013ual.104.1620730627962; 
+ Tue, 11 May 2021 03:57:07 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210429081151.17558-1-cl@rock-chips.com>
+ <20210429081151.17558-4-cl@rock-chips.com>
+In-Reply-To: <20210429081151.17558-4-cl@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 11 May 2021 12:56:29 +0200
+Message-ID: <CAPDyKFr3cpARwxZPUfnFfJT-=UMynUNK-Jb0NLNJG=k9O-=R9g@mail.gmail.com>
+Subject: Re: [PATCH v4 03/10] dt-bindings: mmc: rockchip-dw-mshc: add
+ description for rk3568
+To: cl@rock-chips.com
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+ Jagan Teki <jagan@amarulasolutions.com>, Chen-Yu Tsai <wens@csie.org>,
+ uwe@kleine-koenig.org, 
+ mail@david-bauer.net, Johan Jonker <jbx6244@gmail.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ jensenhuang@friendlyarm.com, 
+ Michael Trimarchi <michael@amarulasolutions.com>, cnsztl@gmail.com, 
+ DTML <devicetree@vger.kernel.org>, linux-mmc <linux-mmc@vger.kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-serial@vger.kernel.org, 
+ linux-i2c@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, David Wu <david.wu@rock-chips.com>, 
+ zhangqing <zhangqing@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>, 
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+ Jamie Iles <jamie@jamieiles.com>, linux-watchdog@vger.kernel.org, 
+ Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210510_220528_642309_A845976D 
-X-CRM114-Status: GOOD (  12.39  )
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210510_220528_642309_A845976D 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210511_035709_036630_5F0A0658 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,49 +119,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A test with the command below gives this error:
+On Thu, 29 Apr 2021 at 10:12, <cl@rock-chips.com> wrote:
+>
+> From: Liang Chen <cl@rock-chips.com>
+>
+> add "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc" for mmc nodes on
+> a rk3568 platform to rockchip-dw-mshc.yaml.
+>
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
 
-/arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml: syscon@ff100000:
-grf-gpio: {'compatible': ['rockchip,rk3328-grf-gpio'],
-'gpio-controller': True, '#gpio-cells': [[2]], 'phandle': [[68]]} is not
-of type 'array'
+Applied for next (and by amending the commit message according to
+Rob's suggestion), thanks!
 
-Due to the regex "(?<!,nr)-gpios?$" anything that ends on
-'-gpio', '-gpios' gives a match.
+Kind regards
+Uffe
 
-Rename 'grf-gpio' nodename to generic 'gpio'
 
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
-schemas/gpio/gpio-consumer.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 4ce49aae7..2e458fb87 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -291,7 +291,7 @@
- 			status = "disabled";
- 		};
- 
--		grf_gpio: grf-gpio {
-+		grf_gpio: gpio {
- 			compatible = "rockchip,rk3328-grf-gpio";
- 			gpio-controller;
- 			#gpio-cells = <2>;
--- 
-2.11.0
-
+> ---
+>  .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml        | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> index 3762f1c8de96..eaa3b0ef24f6 100644
+> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> @@ -29,21 +29,14 @@ properties:
+>        - const: rockchip,rk3288-dw-mshc
+>        - items:
+>            - enum:
+> -            # for Rockchip PX30
+>                - rockchip,px30-dw-mshc
+> -            # for Rockchip RK3036
+>                - rockchip,rk3036-dw-mshc
+> -            # for Rockchip RK322x
+>                - rockchip,rk3228-dw-mshc
+> -            # for Rockchip RK3308
+>                - rockchip,rk3308-dw-mshc
+> -            # for Rockchip RK3328
+>                - rockchip,rk3328-dw-mshc
+> -            # for Rockchip RK3368
+>                - rockchip,rk3368-dw-mshc
+> -            # for Rockchip RK3399
+>                - rockchip,rk3399-dw-mshc
+> -            # for Rockchip RV1108
+> +              - rockchip,rk3568-dw-mshc
+>                - rockchip,rv1108-dw-mshc
+>            - const: rockchip,rk3288-dw-mshc
+>
+> --
+> 2.17.1
+>
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
