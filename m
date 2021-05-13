@@ -2,97 +2,98 @@ Return-Path: <SRS0=l1tV=KI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D090C433ED
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 May 2021 02:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E1D6C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 May 2021 03:34:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8A1C613DE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 May 2021 02:28:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8A1C613DE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D1866611C9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 May 2021 03:34:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1866611C9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0S1XnJHk7nBZ5y9S2NrjVexiNl6bUdvEW9U8Wvkx7FY=; b=aeg4amBRg4xVFcvIdakQUcKIT
-	J7wEImmEpLM7OYjedp0eslOFh6b7UQfX4G8YtsxPqflpNxkwwU9M9UC+MuNU36+rJTbraTPJAeqdQ
-	5FavZxDY4gqdMuuNaWrq572nSvFHbBp8fmHz+NZeX503MzWrYAWo+6mEsYJfOnEKMaWQN25YHNhfF
-	lhriPScApcnIOw7tiECdCZb8q5AS263PBaFG+K/hXa1Xb7NXB/gm6zfgHCoTX7quVa4Lpzylnez6V
-	RAJTDHvCgDzGoS1pswZ4xgGWqKqeMo3wyxZ+3e88L3+YpqN7KGhbQY6tTQsDDInFkOA82whUbL5eE
-	IM+w+KvNg==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2pDsFy1/YYzgFzjzCO0W1LEFb3TXIkxpVbdruv0R7BU=; b=CSVhxZB6EojYGA4Xamfv8InaOm
+	DJyEwHmuyS0L4Fr3ypl+SCmB+PJnaWvCNYgQvKBwE0dclMRGKSt3tIyo7S85M0yvFDhKT9xjHVoJ9
+	UwybKdtEjR0AE9ZMqn+qkFtSo34kEH0gXHFiGdYS//d6hvK1sVWBN9fnAxFRMii2CWeDpwys6yJmi
+	mSX6Vqg5+sg5IyYU31k7ELGNFqC/8E9ON1ZRGxbblWVZ8YWMHx+cyoBAJg46f7QsoG1mtJ+bsLm2r
+	YiVuiZljvmSo4rqOfhexpjdlpuYiuuQ55Ek94oSJdDfrixrBpDEn0sUGAvE41SK/kLjL+ymmFOZQW
+	9KKuArRw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lh15U-004VaF-U0; Thu, 13 May 2021 02:28:33 +0000
+	id 1lh27F-004chN-QI; Thu, 13 May 2021 03:34:25 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lh15D-004VVb-0O; Thu, 13 May 2021 02:28:15 +0000
+ id 1lh271-004cfr-1c; Thu, 13 May 2021 03:34:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=WM3wqjbZ0uWUsYgTc6vUqFiP5RXGtVRH28XdkWq9dp0=; b=Hftvhd2pkql5OhiFj5yPX19RYK
- pBHPojtobdiUeNeF1MWqoKo4CGsMiwsOngSEKcX8HqFeihm0Kn52klAttJm2iTxYtlunmf9hexEd9
- i/YOZti8yCZvjFNoj6O3wrFWqPV83yFDLeeBZEm8xjjZ9vTT70zCDVd+hBysZnzB3xMpPCdENL4E8
- lTusDAHwMbl7Rr109bQPwCKg9CtuDZXsEmtYXnEkZH7/8jTDqF4UPaRq487Y9Dh3y27kY0D+FThiS
- 3gR38+4h+LvYUK2Qn+yNCBX5qPNGYD33zYJVUI487H5ZCtH2AXfy/dSLfGubM4r6GJwy9rmXQ3P6m
- mhtXEUYw==;
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+ bh=b1paN47hJkLJSOf584nlFdp8ERniY6JMpnmLnXPeviQ=; b=lorBLMxQJmecIsuQywvWhQjA0a
+ gRDM+anMN32tNU+p91dA9WhZ+3Gs1enBnl2ca+xqbiMDpCaPpPZgCtCBtF0JhXvMNb/brDT63yHoT
+ eJh+iA9uDtrVJNSFJJbdfZpjiuUe5C6fF2Wxjk4rU4Dwm7gSVpG0RZP5A3xDwp5/pH7Qo7VIJNej2
+ +yqFwRS6PwDHdrzUU1ACVqGWHSb39RgPHCIqoG1cq3QHOSZqKsymYDZlx8fjGv5bvVSeeKq27hbnH
+ rLSnAvAS2TooQBk+kahEULq4KJIKMreE/bD3Mr1Yd2DkVwLhZjcMAml3orrou9A4oCCSuiIHWnGS+
+ ZOKeKeIA==;
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lh15A-00AyJM-IB; Thu, 13 May 2021 02:28:13 +0000
-Received: by mail-ot1-f47.google.com with SMTP id
- d3-20020a9d29030000b029027e8019067fso22432549otb.13; 
- Wed, 12 May 2021 19:28:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=WM3wqjbZ0uWUsYgTc6vUqFiP5RXGtVRH28XdkWq9dp0=;
- b=hucTqDMQ+gvejdheAYF1m4kqY0Y0OaFYwNGg24w/TPHylcGAK1gWDRNlFi2YZcao2w
- vGLLiVi8eSAUWcNcbQxAQiEe9NfMZ1vOpSRak0o44tYLZIm4R59ViAdtT4Vj3xxg9ojZ
- sYpchlEdEZZ5SLVX9iQ9ZU3m74IQelNnBAjzqoSC8H/SVar4f/IMxK9kgpgWwX/sos5+
- rJ8UEtGYyPKE5zEtWkU7aDpMvFcShiwhHnVUBjI6LVdHBVfj2l/nnl67/4ix8mOkChz7
- /KnS/oWueKWp8H24EWb113Z8irWwe1ydN/FcSLdQdtPODi1VSEMLJrss+k+M+neApC0c
- k2sg==
-X-Gm-Message-State: AOAM530zCIczVxkxk8CdLSEiRDGOghyYuCM5xOE/QJCj+UHMe8T8vBfT
- TuaR+ywdEjSVOaGoRrPWnA==
-X-Google-Smtp-Source: ABdhPJzDrlevnOEgIPO65TeRK+k0GXi9QHGUAlJ5o92znRn3uqMrp3SjO26UMzEtCS+trS7DZGXSsg==
-X-Received: by 2002:a9d:1ac:: with SMTP id e41mr33575541ote.166.1620872891436; 
- Wed, 12 May 2021 19:28:11 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id h9sm386817otn.56.2021.05.12.19.28.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 May 2021 19:28:10 -0700 (PDT)
-Received: (nullmailer pid 908108 invoked by uid 1000);
- Thu, 13 May 2021 02:28:09 -0000
-Date: Wed, 12 May 2021 21:28:09 -0500
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: kishon@ti.com, vkoul@kernel.org, huangtao@rock-chips.com, cl@rock-chips.com,
- linux-arm-kernel@lists.infradead.org, jay.xu@rock-chips.com, heiko@sntech.de,
- david.wu@rock-chips.com, linus.walleij@linaro.org, zhangqing@rock-chips.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, robh+dt@kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v5 2/4] dt-bindings: soc: rockchip: convert grf.txt to YAML
-Message-ID: <20210513022809.GA907945@robh.at.kernel.org>
-References: <20210512122346.9463-1-jbx6244@gmail.com>
- <20210512122346.9463-3-jbx6244@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210512122346.9463-3-jbx6244@gmail.com>
+ id 1lh26x-00AzAv-WD; Thu, 13 May 2021 03:34:09 +0000
+Received: from localhost (unknown [192.168.167.224])
+ by lucky1.263xmail.com (Postfix) with ESMTP id D0640BA0CE;
+ Thu, 13 May 2021 11:33:58 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P12381T139987660035840S1620876834871090_; 
+ Thu, 13 May 2021 11:33:57 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <9e628830b7c19a64fdc016674d074f56>
+X-RL-SENDER: cl@rock-chips.com
+X-SENDER: cl@rock-chips.com
+X-LOGIN-NAME: cl@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-RCPT-COUNT: 30
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: <cl@rock-chips.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
+ uwe@kleine-koenig.org, mail@david-bauer.net, jbx6244@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, jensenhuang@friendlyarm.com,
+ michael@amarulasolutions.com, cnsztl@gmail.com, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
+ linux-i2c@vger.kernel.org, jay.xu@rock-chips.com, shawn.lin@rock-chips.com,
+ david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
+ cl@rock-chips.com, wim@linux-watchdog.org, linux@roeck-us.net,
+ jamie@jamieiles.com, linux-watchdog@vger.kernel.org, maz@kernel.org
+Subject: [RESEND PATCH v4 06/10] dt-bindings: gpio: change items restriction
+ of clock for rockchip, gpio-bank
+Date: Thu, 13 May 2021 11:33:51 +0800
+Message-Id: <20210513033351.17879-1-cl@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210429081151.17558-1-cl@rock-chips.com>
+References: <20210429081151.17558-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_192812_622901_7325B479 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20210512_203408_236479_A8081686 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,58 +106,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 12 May 2021 14:23:44 +0200, Johan Jonker wrote:
-> Current dts files with 'grf' nodes are manually verified.
-> In order to automate this process grf.txt has to be
-> converted to YAML.
-> 
-> Most compatibility strings are in use with "simple-mfd" added.
-> 
-> Changed compatibles:
-> "rockchip,rk3066-grf", "syscon", "simple-mfd"
-> "rockchip,rk3188-grf", "syscon", "simple-mfd"
-> 
-> Add description already in use:
-> "rockchip,rv1108-pmugrf", "syscon"
-> 
-> Add new descriptions for:
-> "rockchip,rk3568-grf", "syscon", "simple-mfd"
-> "rockchip,rk3568-pmugrf", "syscon", "simple-mfd"
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
-> 
-> Changed V5:
->   changed compatibles for rk3066/rk3188
->   add rockchip-usb-phy.yaml
-> 
-> Changed V4:
->   revert separate schemas for each 'if' subset
->   add additionalProperties
->   move properties to top level
-> 
-> Changed V3:
->   remove select
->   change unevaluatedProperties
->   add separate schemas for each 'if' subset
-> 
-> Changed V2:
->   add rockchip,rk3328-grf-gpio.yaml
->   rename grf-gpio nodename
-> ---
->  .../devicetree/bindings/soc/rockchip/grf.txt       |  61 -----
->  .../devicetree/bindings/soc/rockchip/grf.yaml      | 260 +++++++++++++++++++++
->  2 files changed, 260 insertions(+), 61 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.txt
->  create mode 100644 Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> 
+From: Liang Chen <cl@rock-chips.com>
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+The clock property need 2 items on some rockchip chips.
+
+Signed-off-by: Liang Chen <cl@rock-chips.com>
+---
+ Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index d993e00..0df147f 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -22,7 +22,11 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 2
++    items:
++      - description: APB interface clock source
++      - description: GPIO debounce reference clock source
+ 
+   gpio-controller: true
+ 
+-- 
+2.7.4
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
