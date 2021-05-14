@@ -2,88 +2,89 @@ Return-Path: <SRS0=Se97=KJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UPPERCASE_50_75,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBF6EC43460
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 17:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30CF3C433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 17:34:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F4C0613C8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 17:34:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F4C0613C8
+	by mail.kernel.org (Postfix) with ESMTPS id AAA4A61350
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 17:34:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAA4A61350
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nG17InlHBQLihEp3DGeUeNoyg3mrDqC+BrHIw0gL1hA=; b=VkNADt05xPK6xU/+3r/UoplZ01
-	b2eKkkoHBjh85QjWXn9bnYB1w5wCOwNhP674ZwmLctwepqiYyGiIh2BIXYWSQ+uuxd9S+QdqBbWWS
-	Cx97Uf8bQYdcqeoFy2Yn8HMlkpQE0whtwmzdSK44ruMTfd2WHCTEJlQJcuj8HvZSWjYF3/l2NdvnX
-	dUrirXe/NAfUJ1iGUq3Ja9bXX5ytwcp1U+97mZh97u5S8WayvSoJ/9Ctimr0x8VSnUU7eKT/3togS
-	srH6htbJotCw9Mofghj1Wo6QIYvGkGOz5Sn4r52rlJYyvRcR+q6izMyjTl+JbJQmDeFUikeLJhLPF
-	y0+jgUsQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=sbqyLW7U64QCscpjOdNVQTo0a3fJk9LnnBTpumcY9Wg=; b=kNvOQinMO+hHS5p4W70eyojyE
+	kaWn3NCo+B4Nb1UXMY7CcpwV58OUnphsqgfh0G0tBo2MiorkOX3gxods9flgoxqdY5FRnroyerlVP
+	sUPLP15yqN9b36DTATi2C9+eIh56Yga1qJkAnPbKr5A7J6eLVU0gSxnKfrSpWm8qilZTufCIKD+01
+	mJnmGjkjGH3j97NFRDScmAEkXGWDt8jL/fig/Nz61K/r6MsurWYWfzv4EvTwarEmH/zUF/jxIP8Wg
+	slwzvjX0aYmZA/t8Rb2+NIiDI0CZHvQ3dhV4u+/zE6UoHX251GepIjAfLnUUjJj2BWZL4t+Pobz5P
+	9Y9NsYlYA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhbTp-008Zuv-Ar; Fri, 14 May 2021 17:20:06 +0000
+	id 1lhbTt-008ZvW-6k; Fri, 14 May 2021 17:20:09 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhbTn-008Zub-BP
- for linux-rockchip@desiato.infradead.org; Fri, 14 May 2021 17:20:03 +0000
+ id 1lhbTo-008Zur-RJ
+ for linux-rockchip@desiato.infradead.org; Fri, 14 May 2021 17:20:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=xbWNyumSaakRF5+I6Q4pxoTvTeel3gGdC/C0gEVAsbs=; b=hmDMRT/Wb8eU/QV7U4b6Y/65Mu
- jcsD5D4MSQY470CFA4hmbctxWgoRRkLFLY4giEzogweJXs6lJJESusLWTUnHn/hToi1serY+/PmTK
- rzuqYOeX6ww5oLIxIafbtQ0VIF9G3rQjp3xQ5iS0fS1hS6SZjd7ayZJWuJXrrR6nJNBsWBxRaJzbj
- M0xEm7xepNNqKhCyizkKDo//bYoOZeUWcsCa7svUH95kTMZrpM2o2y5Z1cjNdjfp42HX85zUnOVi1
- +F+lfj+w57UhWf1FntgpPJbYppafKuyGPZpULwVu+H1VuTYrsPSC/bfJwXBGTnVlOM2z6o9frhE6e
- gp0yHH6A==;
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=TGilxIeLGMAdbUQy8UR6BOgUeQECYwGOMtCHBeH+wNk=; b=X2C7PkZ1kBtbhYwUMIO5y2tq9w
+ OZSgsffWaoqM0tvLZW1whkCHp3ciezV3d//KOPBMGabwIADOcj6PIzwlrpHd9XATTZhZukan1e4vI
+ muZB7qgXQvCz+TbtG0CtBELFYKxhiQIiXBYNH9iU5ga1Grmh82X8uMPt56NZ5UdTdabJkDTDXfxv2
+ lYIav/QPNpmj6Fx3j7IaVg6bgy/wrXzS9OZwM42aFafgMGNCM0L6/Z2LwEkZrieiIbViwaVzFc6XL
+ GnrlgBmK4sS6MMu/kb8IndDtYsJ3o6LSVaqpwvAC5vizvmpDR8dhXGaj+Z/32zbZRqaKvnZD4ulsq
+ tb7V8RKg==;
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhbTk-00C91c-Bj
- for linux-rockchip@lists.infradead.org; Fri, 14 May 2021 17:20:01 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id
- t4-20020a05683014c4b02902ed26dd7a60so16918761otq.7
- for <linux-rockchip@lists.infradead.org>; Fri, 14 May 2021 10:19:56 -0700 (PDT)
+ id 1lhbTl-00C91r-Gn
+ for linux-rockchip@lists.infradead.org; Fri, 14 May 2021 17:20:03 +0000
+Received: by mail-ot1-x333.google.com with SMTP id
+ u19-20020a0568302493b02902d61b0d29adso26279147ots.10
+ for <linux-rockchip@lists.infradead.org>; Fri, 14 May 2021 10:19:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xbWNyumSaakRF5+I6Q4pxoTvTeel3gGdC/C0gEVAsbs=;
- b=Dwh3atl/PTSoQ9H/H6a4cNIEThJZNPerQ/tXcinbE0bdgxFqsgtR4mDIVyHWQfpqkY
- xyYiaAxBFmQpDsRfiAgy5/Gojr+l9GFDoLHGrVtts6zQPc361s8FuuW8vRtSPq/d5Gbb
- wXFleeaW6uF49icg9V0zwivLUghj1VBU08G+iXJ2w2sG1/XOWtnEnlAk0pLlR3hljbA1
- lX84pynsasB32TLHxeOQSJ/eBG1DT0ZchbXlMpuoi5GzN4EvN+Z8Hu5FPprMArWzWvS7
- 01Q0FVdxIcXacYkRo+0THJxQfkPjHJT6bw4Yl01DQMI0ed6BtkkJYcBitt+XRtd9xQWU
- rw6Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=TGilxIeLGMAdbUQy8UR6BOgUeQECYwGOMtCHBeH+wNk=;
+ b=QC06L+Pjo/WdYG2i/eEq0iS3EMD/YNjK9Vx7k+85MVG/A2cQgHlZGvycahTU8WBLtr
+ Khr/WaBMW61yuOqRezqGMY20XmzI9mSn2S3alCGkQQtI/A8PqabUr9L+G4fe5i6ATIho
+ UkGcwmKmFchGKKMv74FL3QLUTK/h2+kklGKiF8l0CLhfwxQyE977a3f3DIFDSE9oqybI
+ ZaYS6zg3wSpYc4luIpR9ZzDgkTFyvvLr4+8rqPRgv0zauNesrmFnFQUfzOl5n9++f8+K
+ 8mlyuKr+5QNe9jvO+8nk+BphrtYixpVaK5besfUbY7exQb1vxV6gjq/p/j6f1iFlDSf9
+ rzYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xbWNyumSaakRF5+I6Q4pxoTvTeel3gGdC/C0gEVAsbs=;
- b=eVGTgU7GqAcUy5DyL23Q3JM1AdAcg4qiwXwrSIFM1VsAoIx9qXqSfYF7akZaJ5kKCO
- m2kXlrwaDPD131z3NOqP6ZWvCDfC42NOcZmq4yDI16ZnXem57+STLfqHWpPwFCkz6UIA
- 7nZZ2xdZpQ6mMot5Bzgl5smjTdQDHH2HG+GGHb0gyOam7AR4D4cIWd624S4OC5Ot18Yf
- hLHDHsLd757gXYaNHPQ+ySiFH+sbF/zAHRJlFNUL9x0BY/ttHML5+MW7O/VKpVBvAMY8
- utGTnOc6oBGBfAEMqauzf57bX167xqAqyc9XqcYI6Y4BvM1X8XmSYNmnWRdO/5FX3yVe
- uPOg==
-X-Gm-Message-State: AOAM531veDxKjDK4JOUF99H7SFoYpnt70Z1sXrtw5N1haQFWJfTPnhPl
- yWoTT44W3Q2GmQtSxm/ppjtdY4Htsl4=
-X-Google-Smtp-Source: ABdhPJz8lMS4CDvotbsdOQuc1xfRx11VPyOBYz3m8DpVxMvPMreE9czwFp9QfdXU1nZqX/SyzbqqNQ==
-X-Received: by 2002:a9d:5a10:: with SMTP id v16mr40663546oth.187.1621012795795; 
- Fri, 14 May 2021 10:19:55 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=TGilxIeLGMAdbUQy8UR6BOgUeQECYwGOMtCHBeH+wNk=;
+ b=hlQVb1DfQEKIWajoMJL+dmjNy7kuk/+dm7SDMPiTcN5DQ/EV1rUoraP71taeOQOScN
+ 62NeBE4wuv7xCNGvpnMCsfYZ4i3Lso/PhunoCVRj21YsByYgllZXm6rUE72MSaL53vW6
+ coe39rH0rQ/DsSRurGOlZUaImSjr8mArBylKMLUBTRWONGLEAhX0GUl1ZW37mophnJe8
+ ieseGi26tHpWHXTwbA0D85iYnsBlTD5dqcFrunhZPtJRaxyyf2xeYVEnjK4oCmaks+CY
+ QoRMdxG6GMIe/3GKztwWIE6hHIeDusRwI/fqlchQL1a9pa1tg+P9oN77x0K/c/N0Lmqy
+ mXAw==
+X-Gm-Message-State: AOAM5334FOEz2H3DoeI4g3qM89Aym1Pn+jot9kNfEs2JO42lEOoX19YT
+ jnX9K65noJdnsxUxwSMJUFU=
+X-Google-Smtp-Source: ABdhPJzSm3V2efSvKozPXzx0Y+pvpZs/HFocoVwCVQE0I0en5RGc0QR7qg9SMu66WVSyVLMndSQviQ==
+X-Received: by 2002:a9d:8d6:: with SMTP id 80mr7250059otf.33.1621012797146;
+ Fri, 14 May 2021 10:19:57 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id x14sm1302547oic.3.2021.05.14.10.19.54
+ by smtp.gmail.com with ESMTPSA id x14sm1302547oic.3.2021.05.14.10.19.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 May 2021 10:19:55 -0700 (PDT)
+ Fri, 14 May 2021 10:19:56 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: alsa-devel@alsa-project.org
 Cc: broonie@kernel.org, lgirdwood@gmail.com,
@@ -92,14 +93,16 @@ Cc: broonie@kernel.org, lgirdwood@gmail.com,
  jbx6244@gmail.com, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, maccraft123mc@gmail.com,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v10 0/4] ASoC: codecs: add rk817 support
-Date: Fri, 14 May 2021 12:19:36 -0500
-Message-Id: <20210514171940.20831-1-macroalpha82@gmail.com>
+Subject: [PATCH v10 1/4] mfd: Add Rockchip rk817 audio CODEC support
+Date: Fri, 14 May 2021 12:19:37 -0500
+Message-Id: <20210514171940.20831-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210514171940.20831-1-macroalpha82@gmail.com>
+References: <20210514171940.20831-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_102000_435197_F670C9A0 
-X-CRM114-Status: GOOD (  15.31  )
+X-CRM114-CacheID: sfid-20210514_102001_585109_C5672F7C 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,78 +122,215 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-This series is to add support for the Rockchip rk817 audio codec which
-is present in all Rockchip rk817 MFD chips.
+Add rk817 codec support cell to rk808 mfd driver.
 
-Changes in v10:
- - Correct order of test/ack/signed-off to chronological order.
- - Removed ifdef from mfd driver keep cell from being added when the
-   codec was not to be built.
- - Changed codec DT parsing messages from error to debug to prevent
-   errors in dmesg log in the rare but valid case a user has the rk817
-   PMIC but does not use the codec.
-Changes in v9:
- - Add cover letter.
- - Remove documentation for interrupt parent per Rob Herring's request.
- - Remove unused MODULE_DEVICE_TABLE to fix a bug identified by kernel test
-   robot.
-Changes in v8:
- - Added additional documentation for missing properties of
-   #sound-dai-cells, interrupt-parent, and wakeup-source for mfd
-   documentation.
- - Corrected order of elements descriptions in device tree documentation.
- - Changed name of "mic-in-differential" to
-   "rockchip,mic-in-differential".
- - Changed name of sound card from "rockchip,rk817-codec" to "Analog".
- - Removed unused resets and reset-names from the i2s1_2ch node.
-Changes in v7:
- - Removed ifdef around register definitions for MFD.
- - Replaced codec documentation with updates to MFD documentation.
- - Reordered elements in example to comply with upstream rules.
- - Added binding update back for Odroid Go Advance as requested.
- - Submitting patches from gmail now.
-Changes in v6:
- - Included additional project maintainers for correct subsystems.
- - Removed unneeded compatible from DT documentation.
- - Removed binding update for Odroid Go Advance (will do in separate
-   series).
-Changes in v5:
- - Move register definitions from rk817_codec.h to main rk808.h register
-   definitions.
- - Add volatile register for codec bits.
- - Add default values for codec bits.
- - Removed of_compatible from mtd driver (not necessary).
- - Switched to using parent regmap instead of private regmap for codec.
-Changes in v4:
- - Created set_pll() call.
- - Created user visible gain control in mic.
- - Check for return value of clk_prepare_enable().
- - Removed duplicate clk_prepare_enable().
- - Split DT documentation to separate commit.
-Changes in v3:
- - Use DAPM macros to set audio path.
- - Updated devicetree binding (as every rk817 has this codec chip).
- - Changed documentation to yaml format.
- - Split MFD changes to separate commit.
-Changes in v2:
- - Fixed audio path registers to solve some bugs.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Tested-by: Maciej Matuszczyk <maccraft123mc@gmail.com>
+---
+ drivers/mfd/rk808.c       | 83 +++++++++++++++++++++++++++++++++++++++
+ include/linux/mfd/rk808.h | 81 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 164 insertions(+)
 
-Chris Morgan (4):
-  mfd: Add Rockchip rk817 audio CODEC support
-  ASoC: Add Rockchip rk817 audio CODEC support
-  dt-bindings: Add Rockchip rk817 audio CODEC support
-  arm64: dts: rockchip: add rk817 codec to Odroid Go
-
- .../devicetree/bindings/mfd/rk808.txt         | 186 ++++++
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  36 +-
- drivers/mfd/rk808.c                           |  83 +++
- include/linux/mfd/rk808.h                     |  81 +++
- sound/soc/codecs/Kconfig                      |   6 +
- sound/soc/codecs/Makefile                     |   2 +
- sound/soc/codecs/rk817_codec.c                | 558 ++++++++++++++++++
- 7 files changed, 950 insertions(+), 2 deletions(-)
- create mode 100644 sound/soc/codecs/rk817_codec.c
-
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index ad923dd4e007..b94f805719a6 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -65,6 +65,7 @@ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	switch (reg) {
+ 	case RK817_SECONDS_REG ... RK817_WEEKS_REG:
+ 	case RK817_RTC_STATUS_REG:
++	case RK817_CODEC_DTOP_LPT_SRST:
+ 	case RK817_INT_STS_REG0:
+ 	case RK817_INT_STS_REG1:
+ 	case RK817_INT_STS_REG2:
+@@ -163,6 +164,9 @@ static const struct mfd_cell rk817s[] = {
+ 		.num_resources = ARRAY_SIZE(rk817_rtc_resources),
+ 		.resources = &rk817_rtc_resources[0],
+ 	},
++	{
++		.name = "rk817-codec",
++	},
+ };
+ 
+ static const struct mfd_cell rk818s[] = {
+@@ -201,6 +205,85 @@ static const struct rk808_reg_data rk808_pre_init_reg[] = {
+ 
+ static const struct rk808_reg_data rk817_pre_init_reg[] = {
+ 	{RK817_RTC_CTRL_REG, RTC_STOP, RTC_STOP},
++	/* Codec specific registers */
++	{ RK817_CODEC_DTOP_VUCTL, MASK_ALL, 0x03 },
++	{ RK817_CODEC_DTOP_VUCTIME, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DTOP_LPT_SRST, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DTOP_DIGEN_CLKE, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_AREF_RTCFG0 not defined in data sheet */
++	{ RK817_CODEC_AREF_RTCFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AREF_RTCFG1, MASK_ALL, 0x06 },
++	{ RK817_CODEC_AADC_CFG0, MASK_ALL, 0xc8 },
++	/* from vendor driver, CODEC_AADC_CFG1 not defined in data sheet */
++	{ RK817_CODEC_AADC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_SR_ACL0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_ALC1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_ALC2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_NG, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_HPF, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DADC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
++	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
++	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
++	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
++	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
++	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
++	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DADC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AMIC_CFG0, MASK_ALL, 0x70 },
++	{ RK817_CODEC_AMIC_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_PGA_GAIN, MASK_ALL, 0x66 },
++	{ RK817_CODEC_DMIC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DMIC_NG2, MASK_ALL, 0x00 },
++	/* from vendor driver, CODEC_ADAC_CFG0 not defined in data sheet */
++	{ RK817_CODEC_ADAC_CFG0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_ADAC_CFG1, MASK_ALL, 0x07 },
++	{ RK817_CODEC_DDAC_POPD_DACST, MASK_ALL, 0x82 },
++	{ RK817_CODEC_DDAC_VOLL, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_VOLR, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_SR_LMT0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_LMT2, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DDAC_MUTE_MIXCTL, MASK_ALL, 0xa0 },
++	{ RK817_CODEC_DDAC_RVOLL, MASK_ALL, 0xff },
++	{ RK817_CODEC_DDAC_RVOLR, MASK_ALL, 0xff },
++	{ RK817_CODEC_AHP_ANTI0, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AHP_ANTI1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_AHP_CFG0, MASK_ALL, 0xe0 },
++	{ RK817_CODEC_AHP_CFG1, MASK_ALL, 0x1f },
++	{ RK817_CODEC_AHP_CP, MASK_ALL, 0x09 },
++	{ RK817_CODEC_ACLASSD_CFG1, MASK_ALL, 0x69 },
++	{ RK817_CODEC_ACLASSD_CFG2, MASK_ALL, 0x44 },
++	{ RK817_CODEC_APLL_CFG0, MASK_ALL, 0x04 },
++	{ RK817_CODEC_APLL_CFG1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_APLL_CFG2, MASK_ALL, 0x30 },
++	{ RK817_CODEC_APLL_CFG3, MASK_ALL, 0x19 },
++	{ RK817_CODEC_APLL_CFG4, MASK_ALL, 0x65 },
++	{ RK817_CODEC_APLL_CFG5, MASK_ALL, 0x01 },
++	{ RK817_CODEC_DI2S_CKM, MASK_ALL, 0x01 },
++	{ RK817_CODEC_DI2S_RSD, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_RXCR1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_RXCR2, MASK_ALL, 0x17 },
++	{ RK817_CODEC_DI2S_RXCMD_TSD, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_TXCR1, MASK_ALL, 0x00 },
++	{ RK817_CODEC_DI2S_TXCR2, MASK_ALL, 0x17 },
++	{ RK817_CODEC_DI2S_TXCR3_TXCMD, MASK_ALL, 0x00 },
+ 	{RK817_GPIO_INT_CFG, RK817_INT_POL_MSK, RK817_INT_POL_L},
+ 	{RK817_SYS_CFG(1), RK817_HOTDIE_TEMP_MSK | RK817_TSD_TEMP_MSK,
+ 					   RK817_HOTDIE_105 | RK817_TSD_140},
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index e07f6e61cd38..a96e6d43ca06 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -437,6 +437,87 @@ enum rk809_reg_id {
+ #define RK817_RTC_COMP_LSB_REG		0x10
+ #define RK817_RTC_COMP_MSB_REG		0x11
+ 
++/* RK817 Codec Registers */
++#define RK817_CODEC_DTOP_VUCTL		0x12
++#define RK817_CODEC_DTOP_VUCTIME	0x13
++#define RK817_CODEC_DTOP_LPT_SRST	0x14
++#define RK817_CODEC_DTOP_DIGEN_CLKE	0x15
++#define RK817_CODEC_AREF_RTCFG0		0x16
++#define RK817_CODEC_AREF_RTCFG1		0x17
++#define RK817_CODEC_AADC_CFG0		0x18
++#define RK817_CODEC_AADC_CFG1		0x19
++#define RK817_CODEC_DADC_VOLL		0x1a
++#define RK817_CODEC_DADC_VOLR		0x1b
++#define RK817_CODEC_DADC_SR_ACL0	0x1e
++#define RK817_CODEC_DADC_ALC1		0x1f
++#define RK817_CODEC_DADC_ALC2		0x20
++#define RK817_CODEC_DADC_NG		0x21
++#define RK817_CODEC_DADC_HPF		0x22
++#define RK817_CODEC_DADC_RVOLL		0x23
++#define RK817_CODEC_DADC_RVOLR		0x24
++#define RK817_CODEC_AMIC_CFG0		0x27
++#define RK817_CODEC_AMIC_CFG1		0x28
++#define RK817_CODEC_DMIC_PGA_GAIN	0x29
++#define RK817_CODEC_DMIC_LMT1		0x2a
++#define RK817_CODEC_DMIC_LMT2		0x2b
++#define RK817_CODEC_DMIC_NG1		0x2c
++#define RK817_CODEC_DMIC_NG2		0x2d
++#define RK817_CODEC_ADAC_CFG0		0x2e
++#define RK817_CODEC_ADAC_CFG1		0x2f
++#define RK817_CODEC_DDAC_POPD_DACST	0x30
++#define RK817_CODEC_DDAC_VOLL		0x31
++#define RK817_CODEC_DDAC_VOLR		0x32
++#define RK817_CODEC_DDAC_SR_LMT0	0x35
++#define RK817_CODEC_DDAC_LMT1		0x36
++#define RK817_CODEC_DDAC_LMT2		0x37
++#define RK817_CODEC_DDAC_MUTE_MIXCTL	0x38
++#define RK817_CODEC_DDAC_RVOLL		0x39
++#define RK817_CODEC_DDAC_RVOLR		0x3a
++#define RK817_CODEC_AHP_ANTI0		0x3b
++#define RK817_CODEC_AHP_ANTI1		0x3c
++#define RK817_CODEC_AHP_CFG0		0x3d
++#define RK817_CODEC_AHP_CFG1		0x3e
++#define RK817_CODEC_AHP_CP		0x3f
++#define RK817_CODEC_ACLASSD_CFG1	0x40
++#define RK817_CODEC_ACLASSD_CFG2	0x41
++#define RK817_CODEC_APLL_CFG0		0x42
++#define RK817_CODEC_APLL_CFG1		0x43
++#define RK817_CODEC_APLL_CFG2		0x44
++#define RK817_CODEC_APLL_CFG3		0x45
++#define RK817_CODEC_APLL_CFG4		0x46
++#define RK817_CODEC_APLL_CFG5		0x47
++#define RK817_CODEC_DI2S_CKM		0x48
++#define RK817_CODEC_DI2S_RSD		0x49
++#define RK817_CODEC_DI2S_RXCR1		0x4a
++#define RK817_CODEC_DI2S_RXCR2		0x4b
++#define RK817_CODEC_DI2S_RXCMD_TSD	0x4c
++#define RK817_CODEC_DI2S_TXCR1		0x4d
++#define RK817_CODEC_DI2S_TXCR2		0x4e
++#define RK817_CODEC_DI2S_TXCR3_TXCMD	0x4f
++
++/* RK817_CODEC_DI2S_CKM */
++#define RK817_I2S_MODE_MASK		(0x1 << 0)
++#define RK817_I2S_MODE_MST		(0x1 << 0)
++#define RK817_I2S_MODE_SLV		(0x0 << 0)
++
++/* RK817_CODEC_DDAC_MUTE_MIXCTL */
++#define DACMT_MASK			(0x1 << 0)
++#define DACMT_ENABLE			(0x1 << 0)
++#define DACMT_DISABLE			(0x0 << 0)
++
++/* RK817_CODEC_DI2S_RXCR2 */
++#define VDW_RX_24BITS			(0x17)
++#define VDW_RX_16BITS			(0x0f)
++
++/* RK817_CODEC_DI2S_TXCR2 */
++#define VDW_TX_24BITS			(0x17)
++#define VDW_TX_16BITS			(0x0f)
++
++/* RK817_CODEC_AMIC_CFG0 */
++#define MIC_DIFF_MASK			(0x1 << 7)
++#define MIC_DIFF_DIS			(0x0 << 7)
++#define MIC_DIFF_EN			(0x1 << 7)
++
+ #define RK817_POWER_EN_REG(i)		(0xb1 + (i))
+ #define RK817_POWER_SLP_EN_REG(i)	(0xb5 + (i))
+ 
 -- 
 2.25.1
 
