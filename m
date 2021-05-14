@@ -2,101 +2,88 @@ Return-Path: <SRS0=Se97=KJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45093C433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 15:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 868E9C433ED
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 15:41:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3AE561458
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 15:25:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3AE561458
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 49EE661057
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 15:41:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49EE661057
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0sDnSrJZ8qHfv7tFVXTsAlMC9yOQgbPaZXaa3+ecdCo=; b=UTtBnO56KTO3ZK+zT+7Umgj9L
-	MnGSovxCCsMUZb46Ekbec2tNd6l7jeesqRo9dLSRNRKYLG1HtDR+daFJNJy4lgsAiEpkKd84wbiIq
-	NPu6Gqp9fK9rXnf77hiZ2pprJMgi/eD7NmczOZMWF7NzdXPqlm4SOqXsfo/MCU6dGoy0tV+b3ZJsA
-	9XDnr2DW3KqNqzw+28uUSl3h+7/hcsi3Hw42qXON5EWFlj9EDQbBg9RhhccyWb2DQyJda5TdBViEc
-	dHVeyzf/LOjv398JCL2OkQHbcUK5yCEuZha3ZYADP26h8rKYd1AYSVK5OoT2LIKn3NmEuz6LmtWIi
-	FF7TMWskw==;
+	 bh=K6dUcwxlRBGjL1+gsrtqpYvpf+96B4NjyfvPcu15CfM=; b=lkiITdRey/uuXSTQVy/ZCN3/b
+	qlY3rGdjg69AEtQtGQA27tLUT6uESP04DHv0PBfd4IVmqHfzNAzryeDzMTPWprqCbUv/lu5U756eY
+	dma4a23YCCK9+m74RCJhZ/72mqqo8CQhRpgicpWIIpB93Xq/MRh3GzKKnTlh7DH2M+jUuPjteihyB
+	q4r+/UNIhAx4kM6l8Z5QtABOtqWFQqTHilzhLeGiPwtQSIy/v93r8yJv7E3EBSz5NPkDbUUm7ViLG
+	YZDm5+iE8kXTDw0Kjl64GNcancQAf0gNgl6dhnDfbv7v4DgjbF0L0zXEIwhkZB7e6QvT6N7T3Qjb9
+	5ayxaD/Bw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhZhI-008OTg-88; Fri, 14 May 2021 15:25:52 +0000
+	id 1lhZwd-008QBI-8J; Fri, 14 May 2021 15:41:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhZhG-008OTY-UP
- for linux-rockchip@desiato.infradead.org; Fri, 14 May 2021 15:25:51 +0000
+ id 1lhZwc-008QBB-1L
+ for linux-rockchip@desiato.infradead.org; Fri, 14 May 2021 15:41:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=vqCUlgEhU2vMEHObdxNGJkUzrl21MYKxGafI7N4a84s=; b=F1Q7xQa+7rWlxLKGyRoQA/PG+j
- gHYDV8RdW9cKO4cit2JkdpH6CC8niWVylEx3Z90h0ioDdXF1vPEzIAIynVX/SMOoN0zM2tGFx7M9E
- 0j1kRle0vEho8linxiGD1vJI6kEC9ZzDzFAAexk6io7zU9rgEdhyJAybDfokHf5TRLH4N0T3h2rbw
- CsjNZYVckKuAutamTRHS1686VggQVVljAj/26y6JQcqltN0xPJoAmojOHCAxAOlA+g2mmw2+36sRm
- 44hQCqHx/5qH1+Y1iS56pNbeb9cgzAprBRUOerdOoUB/n5Mw+avE3DlkrYoODRxbu8pI+lgng8Bgi
- XghjZZZA==;
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ bh=JGPg2rGN1c6V/ZgAIaVM+slcrBMKD0rGiiBx+eLZO3E=; b=gPjHLo033aw33vs5fIxSrsV/DR
+ QCEup4k5Riam578FlHyRIqEj4SPlnqPtTB7uscEcG7WN4yOhQYOU14A3RtaVEpKUPQNGT5sf0kw3i
+ 747BL8Tuj2nQM/ziyUWdpLkkAQ0Y5fUwVcbaL3EQt5dKNdRN05nZOTyXCDTBCG5P22Z6qn/RiHxY5
+ kiQ4jY3dKRpyIyCrNX0elFj0WBuMTLeYSl2f+4B3ZmNWx8qHSWBHx59+g/zQoqY1k/s2M79kOMXW7
+ 6UEnKssRj2hwnUJb5D6L+J09H7aCaS8nMwBZlBKqEXVT3gsoz+CQDppMc+gcRx+uwu5BuQksgXigs
+ dE9utdEg==;
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhZhE-00C4wo-0R
- for linux-rockchip@lists.infradead.org; Fri, 14 May 2021 15:25:49 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id r8so39315619ybb.9
- for <linux-rockchip@lists.infradead.org>; Fri, 14 May 2021 08:25:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vqCUlgEhU2vMEHObdxNGJkUzrl21MYKxGafI7N4a84s=;
- b=ClpN339cc1cnyFhsMokqbR+Pcw5ZIT88FYVY557pVaa609Kd9FBTClI0MRaUJbqZ8L
- aixexHzYPwcFd+6VjXVAFI+zJISkzIabGyaoQ1Aah1bH8CQHoDd0jaa3MH1nPxkABEpW
- f2FZdZUH6vCGoKnsjU8wFVLbu9B3TFQH463gd9bzYdknttYQtC58EksSl0aLzCuLS45C
- aySBwbkfF+bcgmfZH/rCPpxtLRVtai7eHAK1PGQ6NdmfGu3pQpIiDIddwDKrlcvibRWs
- CIpPwjIMurCbBccN+lGip53scfInyVoPz8266s2//0YbYCd4z6T3xXgM9VHaOVqw0GO0
- 8yiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vqCUlgEhU2vMEHObdxNGJkUzrl21MYKxGafI7N4a84s=;
- b=WGdEVDvjlcSm+DYINfE0U7r/JIJnXIYxtiXzU9t2xsfXP4REFAmx0yNIT0gz3acgZV
- C+4y+VxiP/GGTLqOCzd1dCbcRuuhLsBkusDFUly1uE+BgYSlJRokg0bkzK11yCfeo3ie
- X2wWmvnFUi91mpU1VSjde+yJJiv6ZjkDSFX7JD6pjcyDsoEqISJs6hhIzfH80Qq1JZUB
- 0MKXij2UxOSWWvB8Vd0jQj5Lj1Lso42+eOfX5SXZPMueq65OhO217KpS7cfr4dXoCLPq
- Y5dBxY/fQ4t/orpTRTxQU/hwUdAZQTkL3ooHLyOi3OOzYL+sneTW7nxBxqgCD9N7S+xs
- BsuA==
-X-Gm-Message-State: AOAM532mDiCrBu6S8OGHr4UT2rpu6MbbbfgOcHCD2T2A4enuDOUIx1Gu
- pjPA2pxoktFxaIlD651aW3TwrfCaW3gxU4UD7Kg=
-X-Google-Smtp-Source: ABdhPJx04DscHLr+Tp32e93DCe+zWPSXZGHy3f/l+WhpgVsCc4QIzwzlDQXs4nwHoYPjm8LgnhGO3dXA/+RgqApDaHQ=
-X-Received: by 2002:a25:4d56:: with SMTP id a83mr57525294ybb.437.1621005946841; 
- Fri, 14 May 2021 08:25:46 -0700 (PDT)
-MIME-Version: 1.0
+ id 1lhZwZ-00C5dK-HF
+ for linux-rockchip@lists.infradead.org; Fri, 14 May 2021 15:41:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=JGPg2rGN1c6V/ZgAIaVM+slcrBMKD0rGiiBx+eLZO3E=; b=GVdjFcI8OK/Bo9hHneBzVr4s8W
+ V+xQ9NkGYW0TWXNNZ0pqk4c9dbcSYJ6BI9eOBM3H9/zcF+u2Q007kZYjvogndKCw0jtgZ31r14M+A
+ HnotK1H/rKZ+jnYF6mQm8ThH/wZ2J8fKi0bzJIaWgPqHQa/IDcD3Ojevhg5CA50WRfq8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1lhZwT-004Cnj-AV; Fri, 14 May 2021 17:41:33 +0200
+Date: Fri, 14 May 2021 17:41:33 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v3] net: phy: add driver for Motorcomm yt8511 phy
+Message-ID: <YJ6aLTo3fJ6kRvzK@lunn.ch>
 References: <20210514115826.3025223-1-pgwipeout@gmail.com>
  <YJ56G23e930pg4Iv@lunn.ch>
  <CAMdYzYrSB0G7jfG9fo85X0DxVG_r-qaWUyVAa5paAW0ugLvoxw@mail.gmail.com>
  <YJ6OqpRTo+rlfb51@lunn.ch>
-In-Reply-To: <YJ6OqpRTo+rlfb51@lunn.ch>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 14 May 2021 11:25:35 -0400
-Message-ID: <CAMdYzYrdNqDZdkCj5Jf9+MmGtZgy263cYmwWkB3rZY02dPefYw@mail.gmail.com>
-Subject: Re: [PATCH v3] net: phy: add driver for Motorcomm yt8511 phy
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>, 
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux Kernel Network Developers <netdev@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+ <CAMdYzYrdNqDZdkCj5Jf9+MmGtZgy263cYmwWkB3rZY02dPefYw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAMdYzYrdNqDZdkCj5Jf9+MmGtZgy263cYmwWkB3rZY02dPefYw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_082548_084859_33F56C60 
-X-CRM114-Status: GOOD (  17.11  )
+X-CRM114-CacheID: sfid-20210514_084139_588179_A05A4AB1 
+X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,33 +101,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 14, 2021 at 10:52 AM Andrew Lunn <andrew@lunn.ch> wrote:
->
-> > > I also wonder about bits 15:12 of PHY EXT ODH: Delay and driver
-> > > strength CFG register.
-> >
-> > The default value *works*, and from an emi perspective we want the
-> > lowest strength single that is reliable.
->
-> I was not meaning signal strength, but Txc_delay_sel_fe,
->
->   selecte tx_clk_rgmii delay in chip which is used to latch txd_rgmii
->   in 100BT/10BTe mode. 150ps step. Default value 15 means about 2ns
->   clock delay compared to txd_rgmii in typical cornor.
->
-> [Typos courtesy of the datasheet, not me!]
->
-> This sounds like more RGMII delays. It seems like PHY EXT 0CH is about
-> 1G mode, and PHY EXT 0DH is about 10/100 mode. I think you probably
-> need to set this bits as well. Have you tested against a link peer at
-> 10 Half? 100 Full?
+> Good Catch!
+> 
+> Guess I'll have to set that too, anything else you'd recommend looking into?
 
-Good Catch!
+I think for a first submission, you have the basics. I'm just pushing
+RGMII delays because we have had backwards compatibility problems in
+that area when added later. Experience suggests adding features in
+other areas is much less of a problem. So as you suggested, you can
+add cable test, downshift control, interrupts etc later.
 
-Guess I'll have to set that too, anything else you'd recommend looking into?
-
->
->    Andrew
+    Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
