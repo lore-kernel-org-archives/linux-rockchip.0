@@ -2,19 +2,19 @@ Return-Path: <SRS0=Se97=KJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4389DC433ED
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 10:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 510CDC433B4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 10:27:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD07761454
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 10:27:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD07761454
+	by mail.kernel.org (Postfix) with ESMTPS id 1399A61396
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 May 2021 10:27:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1399A61396
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=manjaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5Uxlpf5M0Mc7/pzf/gcQ+4Ss84sXss64UCSEqWF9BFM=; b=X8SBb2GeVBdFK7E2mq92N4qMU
-	aN7ODEKMbZ7urUk2+3q1UKbNzPJXYjXWsquQZwXV3FMSQqeOMyJAPktgpD+7AdvROVmYdC5VKz/j+
-	8MqveU1BerokvuWeve3I/A6Dbs3R+arO6xwJbkpMzj9U4O8i4w4s2eRS6n7oebaMpTbnkYy6pCW0u
-	aJsd+gEC0txxmx3QP/7nfnA/SO+nQFO7ckIDDW5pIX2yCgq/7VWUrtFTWxACeeSUuM3zsVKMG5YRW
-	uAAtqY5LUeY/ofKwNfbEhXZoKIa06iFsisW/gGgJGM8qeDfUMXNlSANrI3N8uB3qeaahzA2Z9dKDf
-	JX3mw/vPg==;
+	 bh=7PsRfazMOA9q5cyZvNZoRVkGg+L3Ww5XcaZT5Y586fw=; b=VMFLP+DaEsF+tHoEpzXAZXzQb
+	/BPnXXWHkFA9etIh/eeTyao2RC3bhQy0EbsblDJJQ3sEHi02dqdGuJDRsyge7t2DxONU8VEUR1Zk8
+	ueuTEPDe93sKPz2wl4vZLqY+ZNJPvQqB+9XUZHd9T1gVNE5qbWrtlvmldRZuW3F1VITD+pNzTsy5a
+	G86Ude+AdQEGoQ3FbSGM8m+is6F5s8mbkvDDMGjCUyVcDRiMHaJEdKNrdX1cVaqXi9e0fkzUiRHNG
+	BHOH6otOpQ3T+I3jKE3mP+8sO3iTwVhbhy3JTKlvxz5lKfSMGtwtjzh8Wdy5P5fEJ9zwmizys2gNw
+	P8kM156lw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhV2T-007lM1-3n; Fri, 14 May 2021 10:27:25 +0000
+	id 1lhV2g-007lPx-Sf; Fri, 14 May 2021 10:27:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhV1q-007lB1-6c; Fri, 14 May 2021 10:26:46 +0000
+ id 1lhV1q-007lBI-Sm; Fri, 14 May 2021 10:26:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=9qosxxRkbPLtQiOVsNhwEK6fg8bGFYtMyBg7cyxHEfs=; b=yqNccCy7hJgLOOMay+0s/RtBoW
- KelCVKHampA4PpFO/+ytn5PyvlRTTrLIZf8Ro+BCXL8J+vDUTQoV9TzgZ/8OmkwgeRZ5Ktd+Dn9Gg
- D0KczIZzuRBQTjzyaoKsyQ2ITIgcBx0wxbHQGPJt6RqhnSb4+G1JQ2GvRs//Xs4kYmpJ6sR9nUOwa
- F893h3T2MrGTNBB5HSCZUs9EUzE2gP5Y1hK1XZvkqTdWvrFSc9l2bWVJoPWc31eEZcFq4LdfXr310
- Ue6KSx5Hs/vgFfX/dzDTubIy2ldvaLdGZewugcAJyceql5Byr8gYMmobtXYP5mLtM8auKGAeBVqFv
- h/H7nw/A==;
-Received: from mail.manjaro.org ([2a01:4f8:150:448b::1])
+ bh=Cs41mioYQ+sZovsJ0UMQOqMg8rdBg3GqSgyqpD4kATE=; b=IU9QKThmEhC4GQ/9Thdv/FPd+4
+ 94NIczp/jQxWJJpV02GGTP75N5W3ClEq85jqVey5kjJFPlKUcaFCTtyEyAme4Oxd3mhi3p6J3BQz2
+ X6MVqm4bqg6dcURl9wasLB6zWofj4vcjRIHpPG9IMbLZmgBMRCn/58mMMh8X6jJmD3d6GexdWhZfy
+ s9fv3rYqzHxZcud9LWxm4EGF9ILTJsHAFvfmoMY4Gvl5cwhd1w8o7Kl9sOQudJNzwyck+rl0kzJao
+ sVEH7QUHrTLoYyqFeUHUMCVjpGvW9trN1JQt4bmKTnWstdvzrR0rHVl8C8jA0/heFPUUgd7g24/2w
+ vezd6RLg==;
+Received: from mail.manjaro.org ([176.9.38.148])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhV1n-00BtfR-IR; Fri, 14 May 2021 10:26:44 +0000
+ id 1lhV1o-00Btfd-Dj; Fri, 14 May 2021 10:26:45 +0000
 Received: from localhost (localhost [127.0.0.1])
- by mail.manjaro.org (Postfix) with ESMTP id 25F2422257C;
+ by mail.manjaro.org (Postfix) with ESMTP id E18A1222588;
  Fri, 14 May 2021 12:26:42 +0200 (CEST)
 X-Virus-Scanned: Debian amavisd-new at manjaro.org
 Received: from mail.manjaro.org ([127.0.0.1])
  by localhost (manjaro.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LK2uS5elxPUI; Fri, 14 May 2021 12:26:38 +0200 (CEST)
+ with ESMTP id Qsi7fE3KL_nW; Fri, 14 May 2021 12:26:39 +0200 (CEST)
 From: Tobias Schramm <t.schramm@manjaro.org>
 To: linux-usb@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org
@@ -62,16 +62,17 @@ Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Tobias Schramm <t.schramm@manjaro.org>
-Subject: [PATCH 2/4] phy: phy-rockchip-inno-usb2: add support for RK3308 USB
- phy
-Date: Fri, 14 May 2021 12:27:32 +0200
-Message-Id: <20210514102734.2091238-3-t.schramm@manjaro.org>
+Subject: [PATCH 3/4] dt-bindings: usb: dwc2: add compatible for RK3308 USB
+ controller
+Date: Fri, 14 May 2021 12:27:33 +0200
+Message-Id: <20210514102734.2091238-4-t.schramm@manjaro.org>
 In-Reply-To: <20210514102734.2091238-1-t.schramm@manjaro.org>
 References: <20210514102734.2091238-1-t.schramm@manjaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_032643_781223_D8772303 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20210514_032644_629840_881615C9 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,77 +90,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3308 SoC uses a slightly different USB phy than other Rockchip
-parts.
-This commit adds support for that phy.
+The USB controller in the RK3308 is compatible with the RK3066 USB
+controller.
+This patch adds a compatible string for it.
 
 Signed-off-by: Tobias Schramm <t.schramm@manjaro.org>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ Documentation/devicetree/bindings/usb/dwc2.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 46ebdb1460a3..beacac1dd253 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1256,6 +1256,49 @@ static const struct rockchip_usb2phy_cfg rk3228_phy_cfgs[] = {
- 	{ /* sentinel */ }
- };
- 
-+static const struct rockchip_usb2phy_cfg rk3308_phy_cfgs[] = {
-+	{
-+		.reg = 0x100,
-+		.num_ports	= 2,
-+		.clkout_ctl	= { 0x108, 4, 4, 1, 0 },
-+		.port_cfgs	= {
-+			[USB2PHY_PORT_OTG] = {
-+				.phy_sus	= { 0x0100, 8, 0, 0, 0x1d1 },
-+				.bvalid_det_en	= { 0x3020, 2, 2, 0, 1 },
-+				.bvalid_det_st	= { 0x3024, 2, 2, 0, 1 },
-+				.bvalid_det_clr = { 0x3028, 2, 2, 0, 1 },
-+				.ls_det_en	= { 0x3020, 0, 0, 0, 1 },
-+				.ls_det_st	= { 0x3024, 0, 0, 0, 1 },
-+				.ls_det_clr	= { 0x3028, 0, 0, 0, 1 },
-+				.utmi_avalid	= { 0x0120, 10, 10, 0, 1 },
-+				.utmi_bvalid	= { 0x0120, 9, 9, 0, 1 },
-+				.utmi_ls	= { 0x0120, 5, 4, 0, 1 },
-+			},
-+			[USB2PHY_PORT_HOST] = {
-+				.phy_sus	= { 0x0104, 8, 0, 0, 0x1d1 },
-+				.ls_det_en	= { 0x3020, 1, 1, 0, 1 },
-+				.ls_det_st	= { 0x3024, 1, 1, 0, 1 },
-+				.ls_det_clr	= { 0x3028, 1, 1, 0, 1 },
-+				.utmi_ls	= { 0x0120, 17, 16, 0, 1 },
-+				.utmi_hstdet	= { 0x0120, 19, 19, 0, 1 }
-+			}
-+		},
-+		.chg_det = {
-+			.opmode		= { 0x0100, 3, 0, 5, 1 },
-+			.cp_det		= { 0x0120, 24, 24, 0, 1 },
-+			.dcp_det	= { 0x0120, 23, 23, 0, 1 },
-+			.dp_det		= { 0x0120, 25, 25, 0, 1 },
-+			.idm_sink_en	= { 0x0108, 8, 8, 0, 1 },
-+			.idp_sink_en	= { 0x0108, 7, 7, 0, 1 },
-+			.idp_src_en	= { 0x0108, 9, 9, 0, 1 },
-+			.rdm_pdwn_en	= { 0x0108, 10, 10, 0, 1 },
-+			.vdm_src_en	= { 0x0108, 12, 12, 0, 1 },
-+			.vdp_src_en	= { 0x0108, 11, 11, 0, 1 },
-+		},
-+	},
-+	{ /* sentinel */ }
-+};
-+
- static const struct rockchip_usb2phy_cfg rk3328_phy_cfgs[] = {
- 	{
- 		.reg = 0x100,
-@@ -1425,6 +1468,7 @@ static const struct rockchip_usb2phy_cfg rv1108_phy_cfgs[] = {
- static const struct of_device_id rockchip_usb2phy_dt_match[] = {
- 	{ .compatible = "rockchip,px30-usb2phy", .data = &rk3328_phy_cfgs },
- 	{ .compatible = "rockchip,rk3228-usb2phy", .data = &rk3228_phy_cfgs },
-+	{ .compatible = "rockchip,rk3308-usb2phy", .data = &rk3308_phy_cfgs },
- 	{ .compatible = "rockchip,rk3328-usb2phy", .data = &rk3328_phy_cfgs },
- 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
- 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
+diff --git a/Documentation/devicetree/bindings/usb/dwc2.yaml b/Documentation/devicetree/bindings/usb/dwc2.yaml
+index e5ee51b7b470..10c7d9b6cc53 100644
+--- a/Documentation/devicetree/bindings/usb/dwc2.yaml
++++ b/Documentation/devicetree/bindings/usb/dwc2.yaml
+@@ -24,6 +24,7 @@ properties:
+               - rockchip,rk3188-usb
+               - rockchip,rk3228-usb
+               - rockchip,rk3288-usb
++              - rockchip,rk3308-usb
+               - rockchip,rk3328-usb
+               - rockchip,rk3368-usb
+               - rockchip,rv1108-usb
 -- 
 2.31.1
 
