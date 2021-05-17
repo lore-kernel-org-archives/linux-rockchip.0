@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D14EEC433B4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 15:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E241C433B4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 15:41:16 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9911F61108
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 15:41:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9911F61108
+	by mail.kernel.org (Postfix) with ESMTPS id DF42B61006
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 15:41:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF42B61006
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4Q5cb0F40m0ZlsQ7zcY/vhiDI5DkqC2Qn0UhRbjKa34=; b=bsw9UC3rbtj/1cejvtY+LvQuc
-	wKgq31dlyMVA00mSExiHJZ290c/f+RNm8Xwom8E1AP6hp/+oSyL9n+Ze6mKGzPTKroKCc1lJeQlKF
-	1cK9GoTPWYmvvEuufgLD3Ly0VMRTlwffcqFU5VGq0VR+RR9oM/Ukz4Qi1rNDKZkN21GYXXw0CIEsS
-	k4o3935pZ1KyV/YslBmyNIDganwv9OH2tHMY3YjmPhxYhWdcmBr9pCw99G6Dg8WCFh5mkFkUwlvK0
-	/gZqDm6GhYp7raC3DzKBHgy3RWoh9cSP6C+8NJF4MdTzetr30HF7nu1n0GoirXuPnIfsfsX4Mlben
-	McCjCLrjA==;
+	 bh=3Dgk46gcA4T9X5Nuu6nDrULvS2jGeM17i+eWI1R/U0Y=; b=Vr0EMLFDyjmdcPUAA8N6SB5cB
+	LNDvLq/ulQBOewFIEg1uwtHH17wr85/szo2LN3Bx8YWF3h2Rqd7CkN8pHgezM1e9iVGHOOstVuDQQ
+	jGbQkFKm9Sp8YSIv5osGnq4fI9r26BqetaVR2uLyr/YZfrCtmNRZlLZZis5Ge3ZwlQgs7Tg0lOxWi
+	8WYu7sdDlx8NFzY5N0q4wnbi2BR12P0dvkFv0OrcjHSC4AVy2jo1ZvhVFbpavR0mSkh87gC0PBAC+
+	kfYNFy0wwta8hM8bY95CJp2/pXoDefTsjhb6v5eEs9Viz+FMnYepRc95458CrpOJR+ABUx3gkn5nF
+	NXto6spuA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lifMe-00FRN7-B0; Mon, 17 May 2021 15:41:04 +0000
+	id 1lifMj-00FROr-Uc; Mon, 17 May 2021 15:41:10 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lifMc-00FRMT-Av
- for linux-rockchip@desiato.infradead.org; Mon, 17 May 2021 15:41:02 +0000
+ id 1lifMh-00FROA-Eh
+ for linux-rockchip@desiato.infradead.org; Mon, 17 May 2021 15:41:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=+WABODUOkGFIrZMOr06ZD0FvrHOxQ+T9otH4rfZo5jg=; b=ojSUjNtNMKlcYRVM1PNVD2n7w3
- /FnOcB23Q8Y+0TYun4+9cATjdALVe1xUnNEtyuWuuAde3DMmsSjQk7K6dX/VJtdj2phK7ljTB/HUT
- yrFWsS9GgpQ3Q1lBmadunkX27R3tRxNVKExvVJ+2IxZqAXXWTuP+CRpLF76gRysuNWO7Nw5ZpWRRK
- ulaGhmKAVVL6+WpiaEk4Xfbcj81dxnqE+osHNZzndR7yZj1hUfhm5W+Qlo9XWZrlpkk0RnUbOoK7R
- k4KVzjMR+OIwZjlgzJ6F4WP/A8f1TdJFfyGKHfRGhUWP8ikyBr1BP7oFtrhPewWQt/7wqy0QZwHwt
- xu3u/Z6A==;
+ bh=EjVhrqSVOUWprwwTE51AgIdnbah59cEq0mxYsG8NUJQ=; b=IeJ+sHS/BEynpcEWHUQfQJzoWg
+ b2MGz+szhOI/obSRmkGa/OrPAHzu4HxU6kZCc0Lvgh7wFQZgzcBMG0GrG2kIPf0an890nyrHylnjW
+ CkQH/o0Ga9/Ej3gL+uIzmRPOLOoSVDXE6aDJQmS1F9zv6TTEUJCuJD7V9sEDPfh/gb2h1VP4Qovbp
+ JmzD+gjRlnMQGhTGrjchmA2y+tX+BWTE0/D4eVlK6HvqBrpDwdpNyvVWU5/42ncQGNegQP+JKvSFC
+ JpDl6OZkA6j3bJb+IYU0OXv8crIqxk9Snkfcr5JwNg0aa0EICsU8e+1taeARcCIiakdgT2qJrEh9X
+ kHytezBA==;
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lifMZ-00Dw1f-OE
- for linux-rockchip@lists.infradead.org; Mon, 17 May 2021 15:41:01 +0000
+ id 1lifMe-00Dw3L-TJ
+ for linux-rockchip@lists.infradead.org; Mon, 17 May 2021 15:41:06 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 8D5C71F40323
+ (Authenticated sender: ezequiel) with ESMTPSA id 3BE141F423BB
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
@@ -61,17 +61,18 @@ Cc: Jose Abreu <joabreu@synopsys.com>, Heiko Stuebner <heiko@sntech.de>,
  David Wu <david.wu@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
  Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens213@gmail.com>,
  Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 net-next 2/4] net: stmmac: dwmac-rk: Check
- platform-specific ops
-Date: Mon, 17 May 2021 12:40:35 -0300
-Message-Id: <20210517154037.37946-3-ezequiel@collabora.com>
+Subject: [PATCH v3 net-next 3/4] dt-bindings: net: rockchip-dwmac: add rk3568
+ compatible string
+Date: Mon, 17 May 2021 12:40:36 -0300
+Message-Id: <20210517154037.37946-4-ezequiel@collabora.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210517154037.37946-1-ezequiel@collabora.com>
 References: <20210517154037.37946-1-ezequiel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210517_084059_935854_A5015C37 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20210517_084105_098068_0E820745 
+X-CRM114-Status: UNSURE (   7.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,74 +90,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Wu <david.wu@rock-chips.com>
+Add compatible string for RK3568 gmac, and constrain it to
+be compatible with Synopsys dwmac 4.20a.
 
-Add a check for non-null struct rk_gmac_ops for the
-configured PHY interface mode, failing if unsupported.
-
-Signed-off-by: David Wu <david.wu@rock-chips.com>
-[Ezequiel: Refactor so it fails if unsupported]
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 31 +++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
+ .../bindings/net/rockchip-dwmac.yaml          | 30 +++++++++++--------
+ 1 file changed, 18 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 56034f21fcef..791c13d47a35 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1342,11 +1342,36 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
- 	return bsp_priv;
- }
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 34a660ad6b30..083623c8d718 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -24,6 +24,7 @@ select:
+           - rockchip,rk3366-gmac
+           - rockchip,rk3368-gmac
+           - rockchip,rk3399-gmac
++          - rockchip,rk3568-gmac
+           - rockchip,rv1108-gmac
+   required:
+     - compatible
+@@ -33,18 +34,23 @@ allOf:
  
-+static int rk_gmac_check_ops(struct rk_priv_data *bsp_priv)
-+{
-+	switch (bsp_priv->phy_iface) {
-+	case PHY_INTERFACE_MODE_RGMII:
-+	case PHY_INTERFACE_MODE_RGMII_ID:
-+	case PHY_INTERFACE_MODE_RGMII_RXID:
-+	case PHY_INTERFACE_MODE_RGMII_TXID:
-+		if (!bsp_priv->ops->set_to_rgmii)
-+			return -EINVAL;
-+		break;
-+	case PHY_INTERFACE_MODE_RMII:
-+		if (!bsp_priv->ops->set_to_rmii)
-+			return -EINVAL;
-+		break;
-+	default:
-+		dev_err(&bsp_priv->pdev->dev,
-+			"unsupported interface %d", bsp_priv->phy_iface);
-+	}
-+	return 0;
-+}
-+
- static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- {
- 	int ret;
- 	struct device *dev = &bsp_priv->pdev->dev;
+ properties:
+   compatible:
+-    items:
+-      - enum:
+-          - rockchip,px30-gmac
+-          - rockchip,rk3128-gmac
+-          - rockchip,rk3228-gmac
+-          - rockchip,rk3288-gmac
+-          - rockchip,rk3308-gmac
+-          - rockchip,rk3328-gmac
+-          - rockchip,rk3366-gmac
+-          - rockchip,rk3368-gmac
+-          - rockchip,rk3399-gmac
+-          - rockchip,rv1108-gmac
++    oneOf:
++      - items:
++          - enum:
++              - rockchip,px30-gmac
++              - rockchip,rk3128-gmac
++              - rockchip,rk3228-gmac
++              - rockchip,rk3288-gmac
++              - rockchip,rk3308-gmac
++              - rockchip,rk3328-gmac
++              - rockchip,rk3366-gmac
++              - rockchip,rk3368-gmac
++              - rockchip,rk3399-gmac
++              - rockchip,rv1108-gmac
++      - items:
++          - enum:
++              - rockchip,rk3568-gmac
++          - const: snps,dwmac-4.20a
  
-+	ret = rk_gmac_check_ops(bsp_priv);
-+	if (ret)
-+		return ret;
-+
- 	ret = gmac_clk_enable(bsp_priv, true);
- 	if (ret)
- 		return ret;
-@@ -1417,10 +1442,12 @@ static void rk_fix_speed(void *priv, unsigned int speed)
- 	case PHY_INTERFACE_MODE_RGMII_ID:
- 	case PHY_INTERFACE_MODE_RGMII_RXID:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
--		bsp_priv->ops->set_rgmii_speed(bsp_priv, speed);
-+		if (bsp_priv->ops->set_rgmii_speed)
-+			bsp_priv->ops->set_rgmii_speed(bsp_priv, speed);
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
--		bsp_priv->ops->set_rmii_speed(bsp_priv, speed);
-+		if (bsp_priv->ops->set_rmii_speed)
-+			bsp_priv->ops->set_rmii_speed(bsp_priv, speed);
- 		break;
- 	default:
- 		dev_err(dev, "unsupported interface %d", bsp_priv->phy_iface);
+   clocks:
+     minItems: 5
 -- 
 2.30.0
 
