@@ -2,85 +2,88 @@ Return-Path: <SRS0=F3mh=KM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5661DC433ED
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 08:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7B7FC433B4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 09:03:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 159FA61242
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 08:31:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 159FA61242
+	by mail.kernel.org (Postfix) with ESMTPS id 60F9361184
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 May 2021 09:03:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60F9361184
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LXt3x4zaiAt06SVx+5g44mwvqdxM5n+E2fah21mGE6I=; b=O3cxuY0c3Vw7DI82vysx2zS75
-	e+DM8s1KE8uenDKtgkawvxYeA9iuJnPy9BQDq9PVTx0V+QVQF5y9rgmKt4qfRrs+GFvgiCmVnZGrW
-	8SUYUADRq7TtZg4YEYRClYZDnj1a+g6aU59mhNcGFKU29IIa4eA7JSFA4LGcqZ8SUBG6RYoc4wSAa
-	bBUtUtF612LvJSI7plFQVcj4KNCAs6B6vBAzdE3oSoDrW6pi8V64LdQo56OxsaRxBvP3UpgVC745d
-	zBj2HXGHVcHfMyaKK7zU4NFungTeNGuVpbaSELSPv2RT1qhZrQpU3nUJNVpsxDj6KHUUvUPwOmY+C
-	vRWe78Xcw==;
+	 bh=mGJs413KCp9pQDQiU+FNTBlniwbvzm28ZWhibM12Ioc=; b=nUTndiU4PG0Q8/Ibx4B+4kDv2
+	0AEYd1gKqrm0ShlJsRgEWCnWfEbgnJG/wNtQlsF8i/sg70fPdiDE7E2gJLSbgKmXrelEJaIU1E6JS
+	E8qWFW5RPNURYDNTBsmI4Ew0pTH/Me83VRSnNw6W9cY6YUoYQ2rTEGyV9T2xqxM6erl2s3J8WqHre
+	y6wMDzn/bvhv+Oeci/9//J/OA+Rk3jmgjXelRd2qiGRNxlwEYmIo9nE4SZe443WOinH47ZbDju32p
+	5MGsH1AJM3VECC4GirYNA0OVTB1mBfeHp0LH5UtTLlYfD3WL1UqC5oiOPH71OsUHOds5mOpfQH+EY
+	CPh/WfBzg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1liYeg-00EFi2-Cv; Mon, 17 May 2021 08:31:14 +0000
+	id 1liZ9p-00ELmO-Az; Mon, 17 May 2021 09:03:25 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liYVv-00EDQ4-4s
- for linux-rockchip@desiato.infradead.org; Mon, 17 May 2021 08:22:52 +0000
+ id 1liZ9Q-00ELjh-8f; Mon, 17 May 2021 09:03:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=A8t3Gjnf87n9FGF4LRcGIG77AVaSPm906TAa2oK1ZWc=; b=tFEiUzqq6dSwyEn2eiy64g8haq
- km6VIezke3L/gNnmqrm6LS/0hMzIW9PaUzLUOvu372UrNaYPJnLxN6fvRV2s7tEjLJ19x3mq79bAK
- I8x2PC3fTbZj+sCxU/3MHCejO/+LbKH833nrt/l533KXpwutFaNF7z8ONJUWQy7x5ndlHFywm/nM+
- kkI5fvtAXRFrJSgLOIDyEtuCBN+jXThAjQAfw6cRuvRt5q0sW/weDzu8VV9qXrECQ0SMx2wMe380y
- w2P8VKw02EFSCmkf9ZSMLLfVfFjhqE2jlnSYkCT/Q6FFJI4bj62jsgZng962GgKQAtcr4kwtBExS5
- b46MOJIg==;
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+ Message-ID:Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=r2NhgD0WGnAxXJVDQdjKsg2xfgzOx26DvPWUI53F+wM=; b=AhCz7FCPd9m/BJAw8dxNfznwzb
+ f6TpM7WY5txmgZ35eeR4kmZfnVIpHznEXvyCMurHHQu5lOUFq4qgQfo6eeLleYU911iyxwHm3C58d
+ ISBJApcQtQ0lHyR50zbwwB1IAlKtrU9YSp3f93rwuoIk++5wkPMjpQq6hOEHYoKef38T0nzFKzwKs
+ YoRzgTJtrOYVNLrEyrH1OsWNAuufx/aKIVy0H51pZJIt9OxUdRDK3brDgDwTwyWNr6vH2b2r7b0Xl
+ fwrXfdKxICi7JJwm3Qq1TNwnQ7fz34owweMyCvz3WVmAEm+L8vDuyZbmNlztHGEL840/f4owBT3+x
+ nR+lILxQ==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liYVr-00DamF-Vt
- for linux-rockchip@lists.infradead.org; Mon, 17 May 2021 08:22:09 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1809C610E9;
- Mon, 17 May 2021 08:22:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621239727;
- bh=58Gn/10SxvI87o4A0OIYhCYPlq3keF9eIzCKT5l+01I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KhpAhkz3DZddRWxXXVvH/v+9Xn4JgP8SP+a+oVVMzKmtwklGko8M3Er3WY10ODhKP
- 84TSjvTai6Zc2PVvphxu7p01lHw9zvup4AuGepC1X0PCJz7LEBZrn5JhXJ32pu5HjF
- xov0tsTdNPVKmN9ftc1fJ2m6EQN2w9iWoVCXwxd71g6qMYQjSpYTHX5yX6umV5oWsI
- iXkWWVIf3DuwKO6nLi8VZ3wIseIK/j7o2piROKRzTNLXnjexmo0VzcFyCiMEx7Tv3P
- EesxKcvKJaW/AP4RPJ0geM5GQoJGot8i0oRSHTx/fOggXJP8N9xvYO/nSt13lSvSWj
- ytUTzNy3oVJkw==
-Received: from johan by xi.lan with local (Exim 4.94.2)
- (envelope-from <johan@kernel.org>)
- id 1liYVo-0003QV-2W; Mon, 17 May 2021 10:22:04 +0200
-Date: Mon, 17 May 2021 10:22:04 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Yu Kuai <yukuai3@huawei.com>
-Cc: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, yi.zhang@huawei.com
-Subject: Re: [PATCH] media: hantro: Fix PM reference leak in device_run()
-Message-ID: <YKInrIMZYGI1VKdl@hovoldconsulting.com>
-References: <20210517081516.1562794-1-yukuai3@huawei.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210517081516.1562794-1-yukuai3@huawei.com>
+ id 1liZ9I-00DcSt-9Q; Mon, 17 May 2021 09:02:56 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7B9A961184;
+ Mon, 17 May 2021 09:02:51 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1liZ9F-001lN6-9a; Mon, 17 May 2021 10:02:49 +0100
+Date: Mon, 17 May 2021 10:02:40 +0100
+Message-ID: <87im3hvikv.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 0/9] arm64: dts: rockchip: Initial Toybrick TB-RK1808M0
+ support
+In-Reply-To: <20210516230551.12469-1-afaerber@suse.de>
+References: <20210516230551.12469-1-afaerber@suse.de>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: afaerber@suse.de, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210517_012208_054485_E65BF955 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20210517_020252_373918_9EE6BF68 
+X-CRM114-Status: GOOD (  24.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +96,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 17, 2021 at 04:15:16PM +0800, Yu Kuai wrote:
-> pm_runtime_get_sync will increment pm usage counter even it failed.
-> Forgetting to putting operation will result in reference leak here.
-> Fix it by replacing it with pm_runtime_resume_and_get to keep usage
-> counter balanced.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Yu Kuai <yukuai3@huawei.com>
-> ---
->  drivers/staging/media/hantro/hantro_drv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index eea2009fa17b..7a6d3ef22096 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -160,7 +160,7 @@ static void device_run(void *priv)
->  	src = hantro_get_src_buf(ctx);
->  	dst = hantro_get_dst_buf(ctx);
->  
-> -	ret = pm_runtime_get_sync(ctx->dev->dev);
-> +	ret = pm_runtime_resume_and_get(ctx->dev->dev);
->  	if (ret < 0) {
->  		pm_runtime_put_noidle(ctx->dev->dev);
-
-This is clearly broken as there is no PM usage count leak here.
-
-Please try to understand the code you're changing before submitting any
-more patches based on "robot" feedback.
-
->  		goto err_cancel_job;
-
-Johan
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCAxNyBNYXkgMjAyMSAwMDowNTo0MiArMDEwMCwKQW5kcmVhcyBGw6RyYmVyIDxhZmFl
+cmJlckBzdXNlLmRlPiB3cm90ZToKPiAKPiBIZWxsbyBIZWlrbyBldCBhbC4sCj4gCj4gSXQgc2Vl
+bXMgbGludXgtcm9ja2NoaXAgbGlzdCBvbmx5IHNhdyB0d28gUksxODA4IHBhdGNoZXMgZm9yIEFT
+b0MgaW4gMjAxOS4KPiBGb2xsb3dpbmcgdXAgb24gYSBTVVNFIEhhY2t3ZWVrIDIwIHByb2plY3Qg
+b2YgbWluZSwgaGVyZSdzIHNvbWUgcGF0Y2hlcyB0aGF0Cj4gYWxsb3cgbWUgdG8gc3RhcnQgYm9v
+dGluZyBpbnRvIHRoZSBUQi1SSzE4MDhNMCBtUENJZSBjYXJkJ3MgZU1NQy4KPiAKPiBUZXN0ZWQg
+dXNpbmcgaXRzIFVTQiBhZGFwdGVyLCB3aGljaCBhbGxvd3MgdG8gY29ubmVjdCBhIHNlcmlhbCBj
+YWJsZSBhbmQgYQo+IFVTQiBzdG9yYWdlIGRldmljZSB0aGF0IEkgbG9hZCBrZXJuZWwrZHRiIGZy
+b20uIEl0IGhhcyBhIHJlc2V0IGJ1dHRvbiwgYW5kCj4gQ3RybCtDIGFsbG93cyB0byBlbnRlciBh
+IFUtQm9vdCBwcm9tcHQgKHdpdGhvdXQgRUJCUi9VRUZJIHN1cHBvcnQgdGhvdWdoKS4KPiAKPiBQ
+YXRjaGVzIGFyZSBiYXNlZCBvbiB0aGUgc2hpcHBpbmcgdG95YnJpY2suZHRiIGZpbGUuCj4gaHR0
+cDovL3Qucm9jay1jaGlwcy5jb20vZW4vd2lraS5waHA/bW9kPXZpZXcmaWQ9MTEwIGdpdmVzIGlu
+c3RydWN0aW9ucyBmb3IKPiBjb21waWxpbmcgc291cmNlcywgYnV0IG5vIHNvdXJjZSBkb3dubG9h
+ZCBvciBsaW5rIGlzIGFjdHVhbGx5IHByb3ZpZGVkLgo+IAo+IEkgZW5jb3VudGVyZWQgYSBoYW5n
+OiBlYXJseWNvbiByZXZlYWxlZCBpdCBiZWluZyByZWxhdGVkIHRvIEtWTSBhbmQKPiB2R0lDLiAg
+RGlzYWJsaW5nIEtWTSBpbiBLY29uZmlnIHdvcmtzIGFyb3VuZCBpdCwgYXMgZG9lcyByZW1vdmlu
+Zwo+IHRoZSB2R0lDIGlycSBpbiBEVC4gIEkndmUgYWxyZWFkeSB0cmllZCBsb3cgYW5kIGhpZ2gg
+Zm9yIHRoZSB2R0lDCj4gaW50ZXJydXB0LCBzbyBubyBjbHVlIHdoYXQgbWlnaHQgY2F1c2UgaXQu
+IE9uIGFuIG1QQ0llIGNhcmQgd2l0aCAxCj4gR2lCIG9mIFJBTSBJIGZpZ3VyZWQgS1ZNIGlzIG5v
+dCBnb2luZyB0byBiZSBhIG1ham9yIHVzZSBjYXNlLCBzbyBpZgo+IHdlIGZpbmQgbm8gb3RoZXIg
+c29sdXRpb24sIHdlIGNvdWxkIGp1c3QgZGVsZXRlIHRoZSBpbnRlcnJ1cHRzCj4gcHJvcGVydHkg
+aW4gaXRzIC5kdHMsIGFzIGRlbW9uc3RyYXRlZCBoZXJlLgoKSSB0aGluayB5b3UgZmlndXJlZCBp
+dCBvdXQgd3JvbmcsIGZvciBhIG51bWJlciBvZiByZWFzb25zOgoKLSBLVk0gaGFuZ2luZyBpcyB1
+c3VhbGx5IGEgc2lnbiB0aGF0IHlvdSBoYXZlIGRlc2NyaWJlZCB0aGUgcGxhdGZvcm0KICB0aGUg
+d3Jvbmcgd2F5LiBFaXRoZXIgeW91IGFyZSBzdGVwcGluZyBvdmVyIHJlc2VydmVkIG1lbW9yeSBy
+ZWdpb25zLAogIG9yIHlvdSBoYXZlIGJhZGx5IGRlc2NyaWJlZCB0aGUgR0lDIGl0c2VsZi4KCi0g
+SXQgY291bGQgYWxzbyBiZSBhIGJ1ZyBpbiBLVk0sIHdoaWNoIHdpbGwgbmVlZCB0byBiZSBmaXhl
+ZC4gSWYKICB0aGF0J3MgYmVjYXVzZSB0aGUgSFcgaXMgYnJva2VuLCB3ZSBuZWVkIHRvIGJlIGFi
+bGUgdG8gZGV0ZWN0IGl0LgoKLSBZb3UgY2Fubm90IGJlIHByZXNjcmlwdGl2ZSBvZiB3aGF0IGEg
+dXNlciBpcyBnb2luZyB0byBydW4uIFBlb3BsZQogIGhhdmUgYmVlbiBydW5uaW5nIEtWTSBvbiBz
+eXN0ZW1zIHdpdGggbGVzcyBtZW1vcnkgdGhhbiB0aGF0LgoKU28gbm8sIHdlIGRvbid0IHBhcGVy
+IG92ZXIgdGhlc2UgaXNzdWVzLiBXZSB3b3JrIG91dCB3aGF0IGlzIGdvaW5nCndyb25nIGFuZCB3
+ZSBmaXggaXQuCgpUaGFua3MsCgoJTS4KCi0tIApXaXRob3V0IGRldmlhdGlvbiBmcm9tIHRoZSBu
+b3JtLCBwcm9ncmVzcyBpcyBub3QgcG9zc2libGUuCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
