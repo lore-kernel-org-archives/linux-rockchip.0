@@ -2,20 +2,20 @@ Return-Path: <SRS0=17rj=KO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3306C433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:13:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C526C433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:17:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47D2860FF1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:13:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47D2860FF1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	by mail.kernel.org (Postfix) with ESMTPS id EBBEE610CC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:17:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBBEE610CC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,90 +23,81 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=q9SYWs+Hw84Io5YOFgAbSx+7sdzh1B8kDncfEpxbWQY=; b=cWKYMNj1MLyG/G+Y3geVHEBhi
-	8Y33F/n45fdpTtTjLfhJZk5J1jTkki4t9gNhYqOxWaHv2G7NWvdIsjQOzBPhUat46NjTSqMlVu4Ay
-	g6axAFpjwTm0/HYh3hlMhvnP4bzQ4MWP/vXvNkzsRfTQRB7GpoPkH4ecO9d/5AM/AB3sKl/STXNPL
-	ZpAT6VdSwpezHKo0Vbob5BLLj8rEIQJGBhQ20WRe7BU4NUCQt+t2fmR9yTAomm5k9bBzpBAfhZ15V
-	Qc/vTH3VpVzfc4z7uWwo46vB9C67nRFz8b1g4sKj5so0ySydJ2ONz1PRyvAuYXcbOrz+5GD/+og3r
-	Zc4ujOAPw==;
+	 bh=+rbvDZhyi0905ed0EJVXPzv/JG1FhLD/23nYMS12ZhI=; b=e7PsvNl9ybN826iqA0+yGrooi
+	IAGivWmcF8Ja5lvtqHftUsI7oZlMKSfxk2K00U4VM5tp5GzhxZETGmtj4ohPZJvIy0/uHrNkvOuXT
+	vyPAkkk37WRnYNYMgMQZ9VsbCYwTDaFXUcXVXZHalITTtOuu4JAqrdU/U66D1SH3GgIzRhY0M4pat
+	RfNBbHzFvNWYc6wQoEBT0Sovz9ega3mWEDwD14jv0IXmXWZTmcEErb1lu/zWLPds3sv8gIyBk3tDm
+	e+IljCYrzt/Li3maWm7ffgKtBlN66GsYOKF0vW5YSrcDbCcRSLKnm74PE+cdfVs+iAJQPFclE+iWI
+	vbbVMu4Qw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljM0V-0044MS-Bs; Wed, 19 May 2021 13:13:03 +0000
+	id 1ljM4F-0045bg-C2; Wed, 19 May 2021 13:16:56 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljLll-003zTf-Ac; Wed, 19 May 2021 12:57:49 +0000
+ id 1ljM2p-00456m-Tw
+ for linux-rockchip@desiato.infradead.org; Wed, 19 May 2021 13:15:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=; b=lCC3OLJacnLdDPH2KgV2h6nO/9
- a1+E5VgtaION3xdCYs+wRwsRIffq/k6v3KWfPGak0ZQVvhrMQhLCUYOMAlb4wjBHh+Vz408Oi8oj6
- BGB6ObztZW9VoswLnwy5RkKJFRUTPmSk+i5c1he1HwGqmjAjPIUZ1taNQ3522PEJrWih63LuGnAB/
- K9XKxPKROIYsv9HFsZT9dE2J9JVSRfgF6H+iibs0VUZgSSZHShGdxdiiJxNjT6oPcN9kK6f8iGmyd
- CchVGi9bA+IOQNoaHSZW/ktlNuiAFFy+dP3tnQXyWK3TuataTcejGt68g49anZMb1i9u7FItSxf+8
- zkHI4X1w==;
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+ bh=oqsAPUWXIGMYpUjPUFn+8YbwmjYEi12f9Rt7EvYL5AE=; b=n72rtFO2LcBufdDBE/p8y0t06E
+ lw5hOg5oa7EzKNgtpzaZ9qYnUZtnJNm7yYqMcDgovHTWz1krD/aa+6OPm/7fl/mkG07jcPWyk3FuD
+ 1OlMWeAcRvOpQXeSJtFjnZr+zlus2lri1Lv9IUtdygCRRoqybOptsB3GpdSuRq2qFWIsYgPYBgp47
+ SUD89FEetJy7DXPfBMndJ3W6w3hGs9ddeJa7V/CY46cxM7NELaFmTWlcrMcGUdR0ZtLZCO7ooq8L7
+ SqhLs5nvzBwkrfvc3KRnQHPtBs9k83mofHhHN1v/+cCbITM9wZ6ujyi9sPv+63lcnGYQsVKviqftr
+ Udt/sMGQ==;
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljLli-00FTeX-Cx; Wed, 19 May 2021 12:57:47 +0000
-Received: by mail-qk1-x730.google.com with SMTP id k4so1447472qkd.0;
- Wed, 19 May 2021 05:57:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=;
- b=Pa4ogUhOF7OBZJ6ZHNl0MgR59SkKIlnoGrDNn/lcOBGbuPpPz34+2AOEpjE6KcRep0
- 3rhPml2WgX1tHOgnE1NyFZrFzIlt51EJmUSsfjrkf10trdA60D+Zcz73YlqdI0rdL3D0
- KrGwfkNaKB0U/YzFPmg3WUmOjWMfEjOBenyI3ohJ8Lx3B0u5X/nxD0NtpdaB9371Y0md
- dCOkLqkLT/f7QItk5bUjTi6/SI7VFvvOngKItIaipenTMH6IuuHpoeOaIaVv7YRKCb5q
- /YNW293ujFUdLxhJ07r8jesWtFVEBcPP9Nu7eWr+ikxPxIpnIJhQQ8mwpXU3mKa6ib6s
- AOpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to;
- bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=;
- b=rQxeWlk5/QgMMopWWAG0NstUSDoupeLb0w/WW0fKO+ZKAAty/gTSOK+ZZCdLo7IXb8
- 72If/HbAQSwFQIAPp1/LOioyopbdAMQ2K7jUubQv48xDEgR18hVo5BIyVmdecdF31Pd5
- zbckR0NzsLmjZTFKeAEgU7JuNFdfI2Rt3uIqdV6bHB6utOPy/gSep7fzUtrrgl9cbTYr
- 7O6GM+t7xWHLc6eZ5JkiX2GSkz6yo0ENFDHZnz2zat3DQRADYHNxx1kS69ec53JBjqXt
- uLDjynYemn1biJCeWoHAH7UpISaCgvAA23smR3HykhkDBpDiF/FgNjCwexeJdMGbaPiw
- 6dnQ==
-X-Gm-Message-State: AOAM530HCW/8knaxo9cumdnl2de3wA8YajAGU4opQTxC/1YjFbNdelL5
- OOUIlw3dCn0S6DOnprlGgJI=
-X-Google-Smtp-Source: ABdhPJzaymXiwmNRUJ76y5xNhS+pauWT0YHJrip4/vT9Q++zTymq3niN2b7yOKjYqwJx982fyC8aoA==
-X-Received: by 2002:ae9:c016:: with SMTP id u22mr11911036qkk.114.1621429063845; 
- Wed, 19 May 2021 05:57:43 -0700 (PDT)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id d11sm15252598qke.61.2021.05.19.05.57.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 05:57:42 -0700 (PDT)
-Date: Wed, 19 May 2021 05:57:41 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: cl@rock-chips.com
-Cc: heiko@sntech.de, robh+dt@kernel.org, jagan@amarulasolutions.com,
- wens@csie.org, uwe@kleine-koenig.org, mail@david-bauer.net,
- jbx6244@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- jensenhuang@friendlyarm.com, michael@amarulasolutions.com,
- cnsztl@gmail.com, devicetree@vger.kernel.org,
- ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
- linux-i2c@vger.kernel.org, jay.xu@rock-chips.com,
- shawn.lin@rock-chips.com, david.wu@rock-chips.com,
- zhangqing@rock-chips.com, huangtao@rock-chips.com,
- wim@linux-watchdog.org, jamie@jamieiles.com,
- linux-watchdog@vger.kernel.org, maz@kernel.org
-Subject: Re: [PATCH v4 04/10] dt-bindings: watchdog: dw-wdt: add description
- for rk3568
-Message-ID: <20210519125741.GA2241939@roeck-us.net>
-References: <20210429081151.17558-1-cl@rock-chips.com>
- <20210429081151.17558-5-cl@rock-chips.com>
+ id 1ljM2n-00FUTg-2z
+ for linux-rockchip@lists.infradead.org; Wed, 19 May 2021 13:15:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=oqsAPUWXIGMYpUjPUFn+8YbwmjYEi12f9Rt7EvYL5AE=; b=loS0BerXYT08KWDBPBZNF6Biv
+ w5tzVd3y0T+YnKzKN2R5UlXEy6uN6u1vOoN6q2AwsRxrFAF1Fv9UXNEo6k1pMN9P+EYAvamcC1q24
+ NScW+K5XWO6AEqbjH0J86VkDYDdibZiLVHsvI22Q3UnzKAS/Ni5kDSuBmheMj0oHxoEeaFfm5mZ+Z
+ aXMtRgZyt2t+Q9eFqu64oHGKo8TQqYYNuL27VNU543eYdYfhvJLMj3lTFVlPNT33zqWsMhypwg4K3
+ 5r0QfhktmXjjZi+CLCDoxXXTQIOe8Aq/qGR/6Ze6vGPUpaYtE9SB88uMt8TnVMUsi0t3rtAhvVtxh
+ FVYvoMFgw==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:44172)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1ljM2c-0005oK-Kg; Wed, 19 May 2021 14:15:14 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1ljM2b-00022p-D8; Wed, 19 May 2021 14:15:13 +0100
+Date: Wed, 19 May 2021 14:15:13 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Leon Romanovsky <leon@kernel.org>
+Cc: Peter Geis <pgwipeout@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, "David S . Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH] net: phy: add driver for Motorcomm yt8511 phy
+Message-ID: <20210519131512.GA30436@shell.armlinux.org.uk>
+References: <20210511214605.2937099-1-pgwipeout@gmail.com>
+ <YKOB7y/9IptUvo4k@unreal>
+ <CAMdYzYrV0T9H1soxSVpQv=jLCR9k9tuJddo1Kw-c3O5GJvg92A@mail.gmail.com>
+ <YKTJwscaV1WaK98z@unreal>
+ <cbfecaf2-2991-c79e-ba80-c805d119ac2f@gmail.com>
+ <YKT7bLjzucl/QEo2@unreal>
+ <CAMdYzYpVYuNuYgZp-sNj4QFbgHH+SoFpffbdCNJST2_KZEhSug@mail.gmail.com>
+ <YKUK8hBImIUFV35I@unreal>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210429081151.17558-5-cl@rock-chips.com>
+In-Reply-To: <YKUK8hBImIUFV35I@unreal>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_055746_459435_93B90B4D 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20210519_061525_218194_DE544C92 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,33 +115,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 29, 2021 at 04:11:45PM +0800, cl@rock-chips.com wrote:
-> From: Liang Chen <cl@rock-chips.com>
-> 
-> add "rockchip,rk3568-wdt", "snps,dw-wdt" for watchdog nodes on
-> a rk3568 platform to snps,dw-wdt.yaml.
-> 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> Acked-by: Rob Herring <robh@kernel.org>
+On Wed, May 19, 2021 at 03:56:18PM +0300, Leon Romanovsky wrote:
+> I'm sorry that I continue to ask, but is net/phy/* usable without MODULE?
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Simple answer: it is.
 
-> ---
->  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> index b58596b1831d..6461eb4f4a27 100644
-> --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> @@ -27,6 +27,7 @@ properties:
->                - rockchip,rk3328-wdt
->                - rockchip,rk3368-wdt
->                - rockchip,rk3399-wdt
-> +              - rockchip,rk3568-wdt
->                - rockchip,rv1108-wdt
->            - const: snps,dw-wdt
->  
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
