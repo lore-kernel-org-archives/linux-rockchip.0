@@ -2,20 +2,20 @@ Return-Path: <SRS0=17rj=KO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8CE53C433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:12:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3306C433B4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:13:09 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C08E60FF1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:12:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C08E60FF1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 47D2860FF1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 13:13:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47D2860FF1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,69 +23,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=C0QISRnapmMlWIvS7jbAkFs3ni3xis5b21Dfmm3RIZM=; b=lNSEs8CT2RgW7fvV6bjj/db1W
-	atmEDKJqOvik42Oyjy4dB/NBNJLeNjOH8246Wo2a5P6JDtNdSy9xoCiEnJv8GzwBu5J3UueDmr5YF
-	/Wrh4vY2JgoFrlUl9tc0E7DyFHEIer8G49K/Vupqm0aSiIzEFBmPwFD1NxFJAW9RCPir4rYhyYU5V
-	UbQc0OiIVfNkhoXQE2twyFLZCrxQotmwF/S/x+2u0UrGAylEdI+FXpVfWJpwrZBvu6Ta3l0Kz9hvL
-	yXpi7L251r4Be2K1LDYN4nS7l+XbQoMchyfszS1e1Id6ME4XLwmA4hO5L1S9xdbCKDixmrOBf1sMj
-	ZWBnJDfig==;
+	 bh=q9SYWs+Hw84Io5YOFgAbSx+7sdzh1B8kDncfEpxbWQY=; b=cWKYMNj1MLyG/G+Y3geVHEBhi
+	8Y33F/n45fdpTtTjLfhJZk5J1jTkki4t9gNhYqOxWaHv2G7NWvdIsjQOzBPhUat46NjTSqMlVu4Ay
+	g6axAFpjwTm0/HYh3hlMhvnP4bzQ4MWP/vXvNkzsRfTQRB7GpoPkH4ecO9d/5AM/AB3sKl/STXNPL
+	ZpAT6VdSwpezHKo0Vbob5BLLj8rEIQJGBhQ20WRe7BU4NUCQt+t2fmR9yTAomm5k9bBzpBAfhZ15V
+	Qc/vTH3VpVzfc4z7uWwo46vB9C67nRFz8b1g4sKj5so0ySydJ2ONz1PRyvAuYXcbOrz+5GD/+og3r
+	Zc4ujOAPw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljLzx-0044A7-2V; Wed, 19 May 2021 13:12:29 +0000
+	id 1ljM0V-0044MS-Bs; Wed, 19 May 2021 13:13:03 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljLkP-003zDe-Tg
- for linux-rockchip@desiato.infradead.org; Wed, 19 May 2021 12:56:26 +0000
+ id 1ljLll-003zTf-Ac; Wed, 19 May 2021 12:57:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=iPJX7n32ZqUihk3cs9bEttHAe7eWM5NFJjTzqpkn35A=; b=r/ghxOnEz72/SJZFpI1hbuqIHX
- AwOgmIVOClOJHif9CR0ME0B5KSNgGkpOuQ1p2mez15RulatMBm8aK0rhIi2ysuxgE5E+uxxJyjF2w
- 8U1yPUv0LLmX+vNJXHvV/ZfkVELDH8GcCvTxOu6Dre80PQqmCls4wOmJGLkBtbGyU30Hw6wQmvLUo
- zN/EkHZnONPOwen+OYymbyXujGdCzLONopBw6e7kHeiW5KGE2sQ/ARjQ3hIct+wz6zsPkSSlN3fmt
- 0ueeIB1hK9AC0zXO0bPiD1C1JnG3lq+96YnUOhECWRptolhTOkmrrxpfMGssh1l6I+sndlbz0Hfs0
- nfMzqs8w==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=; b=lCC3OLJacnLdDPH2KgV2h6nO/9
+ a1+E5VgtaION3xdCYs+wRwsRIffq/k6v3KWfPGak0ZQVvhrMQhLCUYOMAlb4wjBHh+Vz408Oi8oj6
+ BGB6ObztZW9VoswLnwy5RkKJFRUTPmSk+i5c1he1HwGqmjAjPIUZ1taNQ3522PEJrWih63LuGnAB/
+ K9XKxPKROIYsv9HFsZT9dE2J9JVSRfgF6H+iibs0VUZgSSZHShGdxdiiJxNjT6oPcN9kK6f8iGmyd
+ CchVGi9bA+IOQNoaHSZW/ktlNuiAFFy+dP3tnQXyWK3TuataTcejGt68g49anZMb1i9u7FItSxf+8
+ zkHI4X1w==;
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljLkN-00FTaU-2C
- for linux-rockchip@lists.infradead.org; Wed, 19 May 2021 12:56:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C0EAA6124C;
- Wed, 19 May 2021 12:56:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621428982;
- bh=uHLg5icCC3xpZyJI1+jRahgAtowPa/rbAim0BxR6NR8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pCNyEIxV9y1+0VGujexB6B/CDIPzVD7OZ2RN9jpzcgqUbSqVs+425K63NnxyeOLiW
- qroY126NCh4zhx0dBonpOioJ4PUpLAtkTx/MuCYzEE/vgSK+FJLumLjCbLsAK3ngtb
- krIDkJgejF5SVLTmDqZGp85NLbINqcabNg4YyxjCS6IA5KodCRWo4m6J2rEOQBvdfy
- COwpEt0BJLSbTDVM2q+BcT5CYUkCnt1q7+H61v5J+0+4RQCLvUX6VapzcjN7y9XWsF
- zBSYjeg+0RX8+U8hfz8qVTrO8CC0BOTlux96NksmCBL5/jBLEhSaWz94k1TLcs+2l6
- gYaUSm3zE1CiA==
-Date: Wed, 19 May 2021 15:56:18 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Russell King <linux@armlinux.org.uk>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux Kernel Network Developers <netdev@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH] net: phy: add driver for Motorcomm yt8511 phy
-Message-ID: <YKUK8hBImIUFV35I@unreal>
-References: <20210511214605.2937099-1-pgwipeout@gmail.com>
- <YKOB7y/9IptUvo4k@unreal>
- <CAMdYzYrV0T9H1soxSVpQv=jLCR9k9tuJddo1Kw-c3O5GJvg92A@mail.gmail.com>
- <YKTJwscaV1WaK98z@unreal>
- <cbfecaf2-2991-c79e-ba80-c805d119ac2f@gmail.com>
- <YKT7bLjzucl/QEo2@unreal>
- <CAMdYzYpVYuNuYgZp-sNj4QFbgHH+SoFpffbdCNJST2_KZEhSug@mail.gmail.com>
+ id 1ljLli-00FTeX-Cx; Wed, 19 May 2021 12:57:47 +0000
+Received: by mail-qk1-x730.google.com with SMTP id k4so1447472qkd.0;
+ Wed, 19 May 2021 05:57:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=;
+ b=Pa4ogUhOF7OBZJ6ZHNl0MgR59SkKIlnoGrDNn/lcOBGbuPpPz34+2AOEpjE6KcRep0
+ 3rhPml2WgX1tHOgnE1NyFZrFzIlt51EJmUSsfjrkf10trdA60D+Zcz73YlqdI0rdL3D0
+ KrGwfkNaKB0U/YzFPmg3WUmOjWMfEjOBenyI3ohJ8Lx3B0u5X/nxD0NtpdaB9371Y0md
+ dCOkLqkLT/f7QItk5bUjTi6/SI7VFvvOngKItIaipenTMH6IuuHpoeOaIaVv7YRKCb5q
+ /YNW293ujFUdLxhJ07r8jesWtFVEBcPP9Nu7eWr+ikxPxIpnIJhQQ8mwpXU3mKa6ib6s
+ AOpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=aipg9oIDAuCQSbPEUtZjOrYb0WaeP7Y8nbKSRmG50Bc=;
+ b=rQxeWlk5/QgMMopWWAG0NstUSDoupeLb0w/WW0fKO+ZKAAty/gTSOK+ZZCdLo7IXb8
+ 72If/HbAQSwFQIAPp1/LOioyopbdAMQ2K7jUubQv48xDEgR18hVo5BIyVmdecdF31Pd5
+ zbckR0NzsLmjZTFKeAEgU7JuNFdfI2Rt3uIqdV6bHB6utOPy/gSep7fzUtrrgl9cbTYr
+ 7O6GM+t7xWHLc6eZ5JkiX2GSkz6yo0ENFDHZnz2zat3DQRADYHNxx1kS69ec53JBjqXt
+ uLDjynYemn1biJCeWoHAH7UpISaCgvAA23smR3HykhkDBpDiF/FgNjCwexeJdMGbaPiw
+ 6dnQ==
+X-Gm-Message-State: AOAM530HCW/8knaxo9cumdnl2de3wA8YajAGU4opQTxC/1YjFbNdelL5
+ OOUIlw3dCn0S6DOnprlGgJI=
+X-Google-Smtp-Source: ABdhPJzaymXiwmNRUJ76y5xNhS+pauWT0YHJrip4/vT9Q++zTymq3niN2b7yOKjYqwJx982fyC8aoA==
+X-Received: by 2002:ae9:c016:: with SMTP id u22mr11911036qkk.114.1621429063845; 
+ Wed, 19 May 2021 05:57:43 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id d11sm15252598qke.61.2021.05.19.05.57.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 May 2021 05:57:42 -0700 (PDT)
+Date: Wed, 19 May 2021 05:57:41 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: cl@rock-chips.com
+Cc: heiko@sntech.de, robh+dt@kernel.org, jagan@amarulasolutions.com,
+ wens@csie.org, uwe@kleine-koenig.org, mail@david-bauer.net,
+ jbx6244@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ jensenhuang@friendlyarm.com, michael@amarulasolutions.com,
+ cnsztl@gmail.com, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
+ linux-i2c@vger.kernel.org, jay.xu@rock-chips.com,
+ shawn.lin@rock-chips.com, david.wu@rock-chips.com,
+ zhangqing@rock-chips.com, huangtao@rock-chips.com,
+ wim@linux-watchdog.org, jamie@jamieiles.com,
+ linux-watchdog@vger.kernel.org, maz@kernel.org
+Subject: Re: [PATCH v4 04/10] dt-bindings: watchdog: dw-wdt: add description
+ for rk3568
+Message-ID: <20210519125741.GA2241939@roeck-us.net>
+References: <20210429081151.17558-1-cl@rock-chips.com>
+ <20210429081151.17558-5-cl@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMdYzYpVYuNuYgZp-sNj4QFbgHH+SoFpffbdCNJST2_KZEhSug@mail.gmail.com>
+In-Reply-To: <20210429081151.17558-5-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_055623_167915_C5D29348 
-X-CRM114-Status: GOOD (  34.55  )
+X-CRM114-CacheID: sfid-20210519_055746_459435_93B90B4D 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,120 +119,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 19, 2021 at 08:45:21AM -0400, Peter Geis wrote:
-> On Wed, May 19, 2021 at 7:50 AM Leon Romanovsky <leon@kernel.org> wrote:
-> >
-> > On Wed, May 19, 2021 at 12:37:43PM +0200, Heiner Kallweit wrote:
-> > > On 19.05.2021 10:18, Leon Romanovsky wrote:
-> > > > On Tue, May 18, 2021 at 08:20:03PM -0400, Peter Geis wrote:
-> > > >> On Tue, May 18, 2021 at 4:59 AM Leon Romanovsky <leon@kernel.org> =
-wrote:
-> > > >>>
-> > > >>> On Tue, May 11, 2021 at 05:46:06PM -0400, Peter Geis wrote:
-> > > >>>> Add a driver for the Motorcomm yt8511 phy that will be used in t=
-he
-> > > >>>> production Pine64 rk3566-quartz64 development board.
-> > > >>>> It supports gigabit transfer speeds, rgmii, and 125mhz clk outpu=
-t.
-> > > >>>>
-> > > >>>> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > > >>>> ---
-> > > >>>>  MAINTAINERS                 |  6 +++
-> > > >>>>  drivers/net/phy/Kconfig     |  6 +++
-> > > >>>>  drivers/net/phy/Makefile    |  1 +
-> > > >>>>  drivers/net/phy/motorcomm.c | 85 ++++++++++++++++++++++++++++++=
-+++++++
-> > > >>>>  4 files changed, 98 insertions(+)
-> > > >>>>  create mode 100644 drivers/net/phy/motorcomm.c
-> > > >>>
-> > > >>> <...>
-> > > >>>
-> > > >>>> +static const struct mdio_device_id __maybe_unused motorcomm_tbl=
-[] =3D {
-> > > >>>> +     { PHY_ID_MATCH_EXACT(PHY_ID_YT8511) },
-> > > >>>> +     { /* sentinal */ }
-> > > >>>> +}
-> > > >>>
-> > > >>> Why is this "__maybe_unused"? This *.c file doesn't have any comp=
-ilation option
-> > > >>> to compile part of it.
-> > > >>>
-> > > >>> The "__maybe_unused" is not needed in this case.
-> > > >>
-> > > >> I was simply following convention, for example the realtek.c,
-> > > >> micrel.c, and smsc.c drivers all have this as well.
-> > > >
-> > > > Maybe they have a reason, but this specific driver doesn't have suc=
-h.
-> > > >
-> > >
-> > > It's used like this:
-> > > MODULE_DEVICE_TABLE(mdio, <mdio_device_id_tbl>);
-> > >
-> > > And MODULE_DEVICE_TABLE is a no-op if MODULE isn't defined:
-> > >
-> > > #ifdef MODULE
-> > > /* Creates an alias so file2alias.c can find device table. */
-> > > #define MODULE_DEVICE_TABLE(type, name)                              =
-         \
-> > > extern typeof(name) __mod_##type##__##name##_device_table            =
- \
-> > >   __attribute__ ((unused, alias(__stringify(name))))
-> > > #else  /* !MODULE */
-> > > #define MODULE_DEVICE_TABLE(type, name)
-> > > #endif
-> > >
-> > > In this case the table is unused.
-> >
-> > Do you see compilation warning for such scenario?
-> =
+On Thu, Apr 29, 2021 at 04:11:45PM +0800, cl@rock-chips.com wrote:
+> From: Liang Chen <cl@rock-chips.com>
+> 
+> add "rockchip,rk3568-wdt", "snps,dw-wdt" for watchdog nodes on
+> a rk3568 platform to snps,dw-wdt.yaml.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-> The issue you are describing has been fixed since 2010:
-> =
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-> commit cf93c94581bab447a5634c6d737c1cf38c080261
-> Author: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-> Date:   Sun Oct 3 23:43:32 2010 +0000
-> =
-
->     net/phy: fix many "defined but unused" warnings
-> =
-
->     MODULE_DEVICE_TABLE only expands to something if it's compiled
->     for a module.  So when building-in support for the phys, the
->     mdio_device_id tables are unused.  Marking them with __maybe_unused
->     fixes the following warnings:
-> =
-
-> There is a strong push to fix all warnings during build, including W=3D1 =
-warnings.
-> For fun I rebuilt without module support and confirmed that removing
-> this does trigger a W=3D1 warning.
-
-I'm sorry that I continue to ask, but is net/phy/* usable without MODULE?
-If not, the better fix is to require it in Kconfig instead of fixing all dr=
-ivers.
-
-Thanks for your answers.
-
-> =
-
-> >
-> > Thanks
-> >
-> > >
-> > > > Thanks
-> > > >
-> > > >>
-> > > >>>
-> > > >>> Thanks
-> > >
-> > >
+> ---
+>  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> index b58596b1831d..6461eb4f4a27 100644
+> --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> @@ -27,6 +27,7 @@ properties:
+>                - rockchip,rk3328-wdt
+>                - rockchip,rk3368-wdt
+>                - rockchip,rk3399-wdt
+> +              - rockchip,rk3568-wdt
+>                - rockchip,rv1108-wdt
+>            - const: snps,dw-wdt
+>  
 
 _______________________________________________
 Linux-rockchip mailing list
