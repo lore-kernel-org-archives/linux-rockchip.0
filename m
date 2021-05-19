@@ -2,107 +2,98 @@ Return-Path: <SRS0=17rj=KO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D39D1C433B4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 20:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D91CC433ED
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 23:18:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5CA5C611AE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 20:38:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CA5C611AE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id CA889611AD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 May 2021 23:18:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA889611AD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SEJXI0eY8xfHbfJjkiGwYZTwtvAUSvn9CsXT+Jg7zlI=; b=f1T0Bg7fdeWQBJHL8yrsPo5kY
-	rTsuTAqkURSt/ptw2QxV/+q5Ifj9T/vv5X+PEgR9QgOlbaYiQXcfYQmbAJHDOqh/NAq0gH05RVfEE
-	Lyrl3YXEyTIYFe7fkkgEp0fC+B3jB7aLg32+ONY+AitPpO18lwaAcqXMC1RtL631O6PU772XpqFq2
-	n0HHOY+Tk01LiZn0f1Eina2ihNHe4TvcHS3qyI10JfwJdrrXid5JiJDg4FAAxghqOc4DlaKR+OSc5
-	5G3/ICMYEysAtlOhbw2jY3dE6/ghCC6mOosFGLcsDCOncwG4425Vc/rLkj4yeRfjfnkBWz+vxj0FU
-	o9RpTjIvQ==;
+	 bh=RgNRW1Uh4tlu4Dr+wzTSSRw1z1+LkA11iNAxoF+Asxs=; b=CjQqqCC6dwGVQq31n5wGA4r4Z
+	bHFmaO7IYIc13hdu6r/k5zumS6nBRLaYxXwMYSwhuBXpOQ1bux53xWnv5bsF4xTy8Lo7KTQzPKpyH
+	hT2BoEggQy17tOs8AU2+G3gy/BrBpjXRD0mj8MT2wo+Vw3nHQpH7JtkLivClDj89P3LMKUJzt0qrX
+	SwYszjECI5oVW9HFlD8ZBIgKDFkwqUCifOZbok663G/yDVLPgadtJiU+RWLIls/6rnQ71jJs4c4yQ
+	xr9YkTyb7sMFr/2xpmEIQ1uzXs/4FQl7b2rpuEtBZZwsjo0MGHikOrgHVJrufSvnKeUbiMXoqGibj
+	39AD7i/pg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljSxf-0053Qz-CK; Wed, 19 May 2021 20:38:37 +0000
+	id 1ljVSi-005KCG-O3; Wed, 19 May 2021 23:18:48 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSxH-0053Js-DE
- for linux-rockchip@desiato.infradead.org; Wed, 19 May 2021 20:38:11 +0000
+ id 1ljVSe-005KBn-HS
+ for linux-rockchip@desiato.infradead.org; Wed, 19 May 2021 23:18:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=CtIozg4TyPmaxagSKodE8olnLW3eEIEko3jxzjbTr90=; b=FQiR14JirTQt3o7W52GMfyC4Sw
- 1qBU7RJKzg9bQIfurLjYLgTi4TMe8niy5bsbbbdDlrWEybyllEY3CUKBGN6jeImuPFPqaXcfNQ5Rn
- bylzcDFgY5W9JcvyuzyDJ/4I24IePKEJf3VaBe9cIlNwY2QX9XDpDjO1aRxwDNqX17Fgh/Bp853Oc
- fAwomsqVE0J5SRdoJTmhgN+46zv78BRARoHYeQBudiZuUVKTsLBbaNF9HGhgwPlvwDU+4c1VxXckV
- F/n6YH7lfY9IiWu3xVkceH47t3Pqq5REqsiLhKL9f4s76azq3qi/s37sUHR4bbcKpeza9Jrn5xLwg
- F39PWahQ==;
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=F+8r9AtPlzZj+9/cRqukpg3AdDA3FSYfxc2gkenh29A=; b=QSlhJItMJYBewRpk1ll34jl0Ei
+ /WSq7ERVzaeB4Bf0kNHOzbJhFPUWxzBFV1/DSFj0S2ZDezMScqDT6iVg6076uqGU91zdhb09+t4G+
+ sTS59Bqeni1Ejrm6OeHg7t6/BmF38OWxI/xoXel/L4TsmU35+mIycZ0JYP1Tn6zRY052TjagxXpal
+ W/SXI7xcEu2XzhVKO2tWd3J2eJWh73purmsBZyY0PsxpGuD6LxVolZnR3cuXVyUWmGpbLmf8B4J8q
+ 8lGHNwl5qkmtwimy+QOyzz/AEVLAPXwtYVDkr5uPurI8Aj3zj5ee/W9n3HywzMpuXhXMytclk/RGd
+ glrhgT1w==;
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSxE-00FmGB-Qi
- for linux-rockchip@lists.infradead.org; Wed, 19 May 2021 20:38:10 +0000
-Received: by mail-ot1-x332.google.com with SMTP id
- n32-20020a9d1ea30000b02902a53d6ad4bdso12943261otn.3
- for <linux-rockchip@lists.infradead.org>; Wed, 19 May 2021 13:38:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=CtIozg4TyPmaxagSKodE8olnLW3eEIEko3jxzjbTr90=;
- b=AmHfXcnp1nO4RnOBhOGb34amB7BP00FVaE/uDsHk47L24i3u2FAHIBLSX7vthr1R79
- /zAmGb90klzTJeZepfKBjI6nQFMRKMT5xeDZsfKOEKPOmIgBM4Uhnb/2VUyMnrvvNMsu
- vib5P/C8mAZF2JXd/IzRqep+kz7RFICkqMl8PpXmYBowCzaRvoCdGfEHjq5p61eXPPwN
- LwyirQZPt1DBfhCyvvK+FAw55EqIQOj5d/bLMmbasIdhnsUQ2agryjiIoZoDCemTOJiF
- Q/NjEEviStbjT7mI3UtdYHNfZDbFqQEm0Ocj9Vs2x3NTSg7Sn3IGAbLyEXTtSlAJYVsG
- WKnw==
+ id 1ljVSb-00Fq5n-NS
+ for linux-rockchip@lists.infradead.org; Wed, 19 May 2021 23:18:42 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id z13so21602235lft.1
+ for <linux-rockchip@lists.infradead.org>; Wed, 19 May 2021 16:18:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=F+8r9AtPlzZj+9/cRqukpg3AdDA3FSYfxc2gkenh29A=;
+ b=WvOd79n8o4q0G6YzVMJuOJ+x3g042hRVyBYLTk4sElhutqNTtCy0pl/WC6F1WZ3+jq
+ JDAd9fX6qk4tvQDgR1fWDNUedqEvDqoCqHOClM4vkAbOajn9LRYuMUcSh7hMf6hndhEI
+ bV7KyzRCzLiwhgyjQHbvh2pdZCEeyxg5K2qfAXKQTPYxW+1g4zqoktYgkUvjMkwOyacz
+ +PGs9dW6MoJUhpyN1I9sZ18QcjL6m91zKmwHInSIg2hAZR9E/wJGzyLJJjkmBql7IP3w
+ uWmpzE8h/KL15o/imfoVGTt1QUfyL9rWKb+wwaLdxvk6sQA2f/M7gnpz30Hrj3e4LE7q
+ QpKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=CtIozg4TyPmaxagSKodE8olnLW3eEIEko3jxzjbTr90=;
- b=jcYQQY6jI7sjKErJcUbZrcQWNXYwEvP9j/drNJ0NjeWFrpHTxwFEElFcvT++qecU8i
- QAZTVryJn1FEYKowqzWI1R3RyP0OSPU+cLITmYIJlTJzz3nQCRaZzkjjHt9K99VIjO5o
- sYqamEOzGKdyUjCXuhAMR7ef5OvtBpc7CRfFLYVoT0qAmXO8G2L/ZYve3BQLsXJEpmR5
- O7CUmw6IcFvV3DUEWLqqd8sQARZlGZpseX8UEM86gSH8N5eQSpolGqnGzo+nssPvzMPS
- jnyO7QjgLRLgwfvx8n14QZApsN5p8FXjJftmudrGFWDKTu2Qox2BjxKsfqo+mRIVGAeP
- 1STg==
-X-Gm-Message-State: AOAM5308OS/v42bmS90MtSKNJDdenqH5jhjkQX2ixWXVqLuQmbkR+ygu
- r3KPqZHQgs+HcWd/vvuFa+k=
-X-Google-Smtp-Source: ABdhPJyXXVFDbFRtx4H3uxFZNb1bgErAVsSW/mByBfulGM4AyoCMK2WWgSPI48yeZUGI2NU793iawg==
-X-Received: by 2002:a9d:7049:: with SMTP id x9mr1152728otj.20.1621456687933;
- Wed, 19 May 2021 13:38:07 -0700 (PDT)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
- [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id w6sm189223otj.5.2021.05.19.13.38.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 13:38:07 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: alsa-devel@alsa-project.org
-Cc: broonie@kernel.org, lgirdwood@gmail.com,
- pierre-louis.bossart@linux.intel.com, tiwai@suse.com, heiko@sntech.de,
- lee.jones@linaro.org, robh+dt@kernel.org, perex@perex.cz,
- jbx6244@gmail.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, maccraft123mc@gmail.com,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v12 4/4] arm64: dts: rockchip: add rk817 codec to Odroid Go
-Date: Wed, 19 May 2021 15:37:54 -0500
-Message-Id: <20210519203754.27184-5-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210519203754.27184-1-macroalpha82@gmail.com>
-References: <20210519203754.27184-1-macroalpha82@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=F+8r9AtPlzZj+9/cRqukpg3AdDA3FSYfxc2gkenh29A=;
+ b=lbiLtYFMMoS5GYjlMywfITRZBfmGU11GqCNZJUuOH6JVuXrgcAlMbqR5vrqQIR3ik+
+ wIKaULRTV/PTWk1UJSwXU20t0QHXARLjs2MUlnF84o98YmtsbksuvooMI95HHCbwVe18
+ bcxR7co9+oy2IrwL9NfuCR3tN4syxotUQHYi9deJJMJZkXG/2Y1sp4R/59WR4dhhLQ8t
+ 5wZrrxa48oqSOTNuqRaqd8y9nUfck+BnysKFI7YbCAzlTgC2qY+Zn30K0fqj5KWxOmTc
+ hsY2bCL7hUREMUirZWtBGSFUgADSB14F2U/vpGSiCzyfgJuEXDZm/zSFoT8qoQPFVddf
+ 52ng==
+X-Gm-Message-State: AOAM530F9AQXXD/838Nk2PfY85pwWyCXp+jNefyO5yvS0kvqhQEeWxAw
+ 9EiKK//xtB10hHiJD1CQ5nxrZxx0g6wO+n+1TEy4+Q==
+X-Google-Smtp-Source: ABdhPJwoRGeMvc0HB7Ita61Vbufx14BhMJonsMgYo6AgL9tBerER2OwNehn9mXrmS55JmIhaZwgfna9MnK8gb6f9B0g=
+X-Received: by 2002:a05:6512:1185:: with SMTP id
+ g5mr564130lfr.586.1621466315389; 
+ Wed, 19 May 2021 16:18:35 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210510063602.505829-1-jay.xu@rock-chips.com>
+ <20210510063722.506009-1-jay.xu@rock-chips.com> <7622756.lOV4Wx5bFT@phil>
+In-Reply-To: <7622756.lOV4Wx5bFT@phil>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 20 May 2021 01:18:24 +0200
+Message-ID: <CACRpkdbRONGkiukppCROFFLFkCz+vDJFj_OGC=8MSR4JpZaXrQ@mail.gmail.com>
+Subject: Re: [PATCH 6/7] gpio/rockchip: always enable clock for gpio controller
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_133808_889841_DB2B7C22 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20210519_161841_789751_82CFCB6D 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,83 +111,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On Thu, May 13, 2021 at 10:49 PM Heiko Stuebner <heiko@sntech.de> wrote:
+> Am Montag, 10. Mai 2021, 08:37:22 CEST schrieb Jianqun Xu:
+> > Since gate and ungate pclk of gpio has very litte benifit for system
+> > power consumption, just keep it always ungate.
+> >
+> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+>
+> I do agree with the reasoning and as an added benefit, we
+> also drop all the clk_enable calls that don't do proper error
+> handling right now ;-)
 
-Add the new rk817 codec driver to the Odroid Go Advance.
+Heiko what is your general stance on the rest of the patches?
+I was thinking I should merge them soon if you're not
+against.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Tested-by: Maciej Matuszczyk <maccraft123mc@gmail.com>
----
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 36 +++++++++++++++++--
- 1 file changed, 34 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 49c97f76df77..e8c2b5a817a7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -165,6 +165,31 @@ blue_led: led-0 {
- 		};
- 	};
- 
-+	rk817-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "Analog";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,widgets =
-+			"Microphone", "Mic Jack",
-+			"Headphone", "Headphones",
-+			"Speaker", "Speaker";
-+		simple-audio-card,routing =
-+			"MICL", "Mic Jack",
-+			"Headphones", "HPOL",
-+			"Headphones", "HPOR",
-+			"Speaker", "SPKO";
-+		simple-audio-card,hp-det-gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_2ch>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&rk817>;
-+		};
-+	};
-+
- 	vccsys: vccsys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v8_sys";
-@@ -269,11 +294,14 @@ rk817: pmic@20 {
- 		reg = <0x20>;
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
-+		clock-output-names = "rk808-clkout1", "xin32k";
-+		clock-names = "mclk";
-+		clocks = <&cru SCLK_I2S1_OUT>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int>;
-+		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
- 		wakeup-source;
- 		#clock-cells = <1>;
--		clock-output-names = "rk808-clkout1", "xin32k";
-+		#sound-dai-cells = <0>;
- 
- 		vcc1-supply = <&vccsys>;
- 		vcc2-supply = <&vccsys>;
-@@ -432,6 +460,10 @@ regulator-state-mem {
- 				};
- 			};
- 		};
-+
-+		rk817_codec: codec {
-+			rockchip,mic-in-differential;
-+		};
- 	};
- };
- 
--- 
-2.25.1
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
