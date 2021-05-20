@@ -2,134 +2,103 @@ Return-Path: <SRS0=PymM=KP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22DE3C433ED
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 May 2021 19:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42902C433B4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 May 2021 19:03:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F71C6023E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 May 2021 19:02:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F71C6023E
+	by mail.kernel.org (Postfix) with ESMTPS id B680E60E0B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 May 2021 19:03:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B680E60E0B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UfHDTphyo3tiJVFDdBAFAXvYK+cdUQRgPzxtzrz9Lok=; b=YfPbZ/ljekOHRNAhLtVFi2UYSe
-	aJgvUBjOYlJSBvH4YrhzQUji33s+ZG64JH4Q5gTtINKDwTvgGgc9OXk4IrrfE3m4qEU9IsAlSUyUf
-	M5Lg1gKQNFlu1aSKaoKhztiSu5DmOEdBVSWL4OVD6Pw5RJx8djlhNPe8oMPTimN7dWLbDm4gX5CxP
-	bbagTd9X68dejTn33w7I8HMnckIEom0i/oLYNZjwbnwj/0RQji2go54QqNGANVffvmzrgmBDyzZYy
-	XrgSixIsQr8iWFSsW2q6g3mn9be1rzil4zXME+UPkshoReWJ7NV4iARIk4ylEu6GtyzeQrz+j1F5s
-	9H0dmveQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KEEAbFfHZvhbhO8oINV3c9WAm9g47lALgEWvScPCLjo=; b=BNHeXTNuSrb+hRZtSxmBqqX0bT
+	1MQE4NoPGg9737f97DtcoKpycI1Ti8xUz1ZI4aCWzbz5qW9L2hViJnGCas0s6B8C5GVK/LqXsDWiT
+	5JV6Lz9JKdN/gAQaheOF3gNd78aYn7kCrc+IrJpegVAbg4mW/iDZOL7uag3gzqGBeCps9GOkrZxKc
+	WvjpxOYQms5TOBiCLAWsOn9dctg6WE/I2ewVlDX86lyZ9IeIvKyHYBmqvDovxHrpt/kHiaVkS0rt7
+	AsSYhsL9vzTYaeQy/eb2Jz7EpQBeqn6kAqaqTuDhH938odamY9yRT4MGwwl44SJHbvh6A8hN2UN5Q
+	PdAXDF4A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljnvU-002OjY-5B; Thu, 20 May 2021 19:01:44 +0000
+	id 1ljnxZ-002PMC-DB; Thu, 20 May 2021 19:03:53 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljnv0-002OeJ-CY
- for linux-rockchip@desiato.infradead.org; Thu, 20 May 2021 19:01:14 +0000
+ id 1ljnvD-002Ogj-7D
+ for linux-rockchip@desiato.infradead.org; Thu, 20 May 2021 19:01:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=2DRojMIGvqGqfd6599LIXINUCsrKqBTGuM0HeJNOCqY=; b=f+ZDDSpw91pkj3UxUqQ11qMxj+
- 80Bo4MRhikcWoytvPWbRFLT18VjNxY+ZsdDp6hbeAu9WY1QwMa5E/mD0FW4CvBSMu+dIthjC9e5Qe
- d5iTO2Xx1wMAbD5Sp0JoiaYaeH7V37vD+2DCOTsgp/TXoy/tFLQSCengoeJ8X/osOesfOx/6QqOT5
- ZBpHBMEtWggmzoKfINJhXtsF2EPW1zS+Pur560aGKjxLGJSV+EsBWWIheWgx92IbKd2SQJnVlSSce
- SevFkFYkkfWA+gtq1msINfSmPtHiwzqddXhS9ayBPntsx3x8y32NC9xhvNdyQ3lEzODxFIGmjod3L
- NQjl4M1g==;
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=BZ7o0VkeJdaRCEBQCoylzsFR/PU7XD67806SChIDBfA=; b=3U1n/Q5d8p9fpPmkQIp0L/Q0jl
+ 6wDMG/15mnhUFtk0vPqFIm28qZazjgJf8Ot9KvGNHyBZ5BZpxQgkqPk+1zc+elNhO13CdIJLhtdoH
+ DajQ2lPDpvX8V02g+yIx0hydPZ81ywdfrD8LcomqtBGXXzHEUuFasmlUPJlog+fLxaV1lK949qDoL
+ WQTGJWlVeV8oIkSMPmlhqC1sN3oMJXlKdWVyC0MXWb0NMmNoGL42raxK6mhpiCmH546QwWEhD9yzz
+ TRI2WatAg8x5k5Q4ZYGG8BJpJ+9KdFJDORAXPYJvgEOVFbBuV0ZFH3l86qyXQYM+rASa3rxIipRdL
+ CRrYHYvA==;
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljnux-00Gao1-6T
- for linux-rockchip@lists.infradead.org; Thu, 20 May 2021 19:01:12 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id y14so16635184wrm.13
- for <linux-rockchip@lists.infradead.org>; Thu, 20 May 2021 12:01:10 -0700 (PDT)
+ id 1ljnvA-00Gaqu-Fh
+ for linux-rockchip@lists.infradead.org; Thu, 20 May 2021 19:01:26 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id o127so9796396wmo.4
+ for <linux-rockchip@lists.infradead.org>; Thu, 20 May 2021 12:01:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2DRojMIGvqGqfd6599LIXINUCsrKqBTGuM0HeJNOCqY=;
- b=BhW/gXf8pWSAZIebe6nxATFBDBMilShlmVRZzJL0Z7cmhZ34wH8yiODRYqZmjd0Bbw
- 5FLnj7yUL68hbF/XNuFKxoi0pfP4IxkJ9c+tMdT028yF+NF5NC4AbnGloFwc4U/IgJJb
- HkBmb6/op7D4qo7GUrP+MqqfwZ6YMDM+Oxk8Miamy9HC5vBwZMh5J6OxRXCPhVYondTN
- OQQCjBR3wG190MivkxGFRMZfvJSZhA+Pb19zi5r6dE1ffLHfPQK8OngnGA2VqwGj8doy
- fyt+TWfbk49ktvoZDPBPDYLY6+bP73h8SefLmUIpQlMpElMBtYVTr7MMgHl7IQ2YM0NU
- tiQg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=BZ7o0VkeJdaRCEBQCoylzsFR/PU7XD67806SChIDBfA=;
+ b=wbPg+IuSfX0setQllon8nmJmPS/4cMhSLYh+OMtByDo5xn7lI8FHKHdoVNbV/LGIrP
+ ER51hBIw9kz45SxLR+H4payGvH5vH3Xe2a1B1+JjDCJmCFgUw+a+aBLOG/F4h35D9Mh+
+ lrLdT+ouYR2uAXXht4QXwLI0Vy1CSdH9ZXkxId5A68ASNvuRvGvO+d3PbD8Hfih/eq/1
+ tlFN2dojL9JyyElWP7Ks/N2j2uJe5zaBYsnOJjZGIlBLbwAKGrzlX4Zv5bUpiwLXv4Lm
+ Zhh9rw24DY3J90i4yH04shJ2WWIroytFFauUUHB91/Ib9LM7kHT76rgqfKPHuRgV7t7j
+ K33g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2DRojMIGvqGqfd6599LIXINUCsrKqBTGuM0HeJNOCqY=;
- b=AyxouO/CO9nJpPLFT5bH1VgVG8LwdmpC2sGZ55wIAaGel1tSZs5mLAhidKvVcoG3C5
- QiIkNK10TeGUvZe2/uwmCHsAmLgQvH3Pt2J9MoAm6qEn2ozcjjl8vuK/Z2IHfLlZRt5g
- 0TbsxHaE1Nnc53Q45OyMMnixdacpfRUntC+ReHM1Bm0IolcK/VG5rauFGQGCGv7cn67T
- 3efVJnvIz9OBP5xW7rFqGpE7uf2X9gNlGckuQBvA9y+OP1EZhUicq4ZHZWQSnDaOVnmq
- OUmYnepqAoSq20ZQ/iYenJoh/xOjofKivv1qagkvlpH4dNr7I/yDI3wJp9KV0nCWCrTG
- MMeA==
-X-Gm-Message-State: AOAM531GguOYAZA8vJAHHc1SEOAdBIWK50ksrgqd4nKKU0WQqkoCP8Dx
- wiE+aUceUlvLGbz13DIaFsguTw==
-X-Google-Smtp-Source: ABdhPJyFFyrDcMhhbJFcjr+Bz0N+pSMlyvPDFQtGOrLH3IV1YMX4KzVeEjRTqSnwuhvjNtamRbprxA==
-X-Received: by 2002:adf:f58e:: with SMTP id f14mr5759911wro.258.1621537269261; 
- Thu, 20 May 2021 12:01:09 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=BZ7o0VkeJdaRCEBQCoylzsFR/PU7XD67806SChIDBfA=;
+ b=RiEN5xj0iZIiaEO4MCLD5Qm8Evv+3394Shn7v51Rhsc2/mSRZKoXJIu2yHuLcjDAG8
+ v1bcD3JQ8XWGK5PvckZ0MBImJg9w6Cdsgc9YJjcd8L+Pe/qbrz2fpzC6osmJnrOzbbC3
+ 5lX1MU4lQTGxLRCQqF//1S+rZOzCyvGPlHpelfGUbkPjJkstkdqeafSgZDDdwmKTtdKD
+ i8GcwAhifCjhblryIUYUQ7d/U/DI8LMKR+U0/TOrl1xN+r+NtBa4sLaEdv2bz1DJTE2n
+ a9n09ajtdRtuIBZfHZ18fX/QcO6/e/VfNsrFV9lRBT7Sz4ms9uO2P+WDcWZqaDoQKixa
+ d41Q==
+X-Gm-Message-State: AOAM5331bhaCFXcbAjSvj0aSN/m+shWCfwlc7DJdIPPBHEtHE/LHl9EY
+ YeDw6VjwisrtDU2HWCUZZg3Zdg==
+X-Google-Smtp-Source: ABdhPJzCaBtFp/3KcYEZ8YBWuCPtiaGYbMJURAiEOo9oNOZ0QSrbORhEb5JrppYxCy4bVZwNMF4jzQ==
+X-Received: by 2002:a05:600c:2312:: with SMTP id
+ 18mr5660601wmo.0.1621537283254; 
+ Thu, 20 May 2021 12:01:23 -0700 (PDT)
 Received: from dell.default ([91.110.221.215])
- by smtp.gmail.com with ESMTPSA id p20sm9011899wmq.10.2021.05.20.12.01.07
+ by smtp.gmail.com with ESMTPSA id p20sm9011899wmq.10.2021.05.20.12.01.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 12:01:08 -0700 (PDT)
+ Thu, 20 May 2021 12:01:22 -0700 (PDT)
 From: Lee Jones <lee.jones@linaro.org>
 To: lee.jones@linaro.org
-Cc: linux-kernel@vger.kernel.org, Alain Volmat <alain.volmat@foss.st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Anders Berg <anders.berg@lsi.com>, Andreas Larsson <andreas@gaisler.com>,
- Andrew Lunn <andrew@lunn.ch>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Cedric Madianga <cedric.madianga@gmail.com>,
- Dennis Kovalev <dkovalev@ru.mvista.com>,
- Doug Anderson <dianders@chromium.org>, Fabio Estevam <festevam@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Jarkko Nikula <jarkko.nikula@linux.intel.com>,
- Jean Delvare <jdelvare@suse.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Krzysztof Adamski <krzysztof.adamski@nokia.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
- Marek Vasut <marex@denx.de>, Maxime Coquelin <maxime.coquelin@st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Max Schwarz <max.schwarz@online.de>,
- Michal Simek <michal.simek@xilinx.com>,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- NXP Linux Team <linux-imx@nxp.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Peter Korsgaard <peter@korsgaard.com>, Peter Rosin <peda@axentia.se>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>,
- Rudolf Marek <r.marek@assembler.cz>, Sachin Verma <sachin.verma@st.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shariff Md <smohammed@nvidia.com>,
- Shawn Guo <shawnguo@kernel.org>,
- Srinidhi Kasagar <srinidhi.kasagar@stericsson.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Thor Thayer <thor.thayer@linux.intel.com>,
- Tomoya MORINAGA <tomoya.rohm@gmail.com>,
- Vaibhav Gupta <vaibhavgupta40@gmail.com>,
- Vitaly Wool <vwool@ru.mvista.com>, Vladimir Zapolskiy <vz@mleia.com>,
- Wolfram Sang <wsa@kernel.org>
-Subject: [PATCH 00/16] Rid W=1 warnings from I2C
-Date: Thu, 20 May 2021 20:00:49 +0100
-Message-Id: <20210520190105.3772683-1-lee.jones@linaro.org>
+Cc: linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Max Schwarz <max.schwarz@online.de>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org
+Subject: [PATCH 12/16] i2c: busses: i2c-rk3x: Demote unworthy headers and help
+ more complete ones
+Date: Thu, 20 May 2021 20:01:01 +0100
+Message-Id: <20210520190105.3772683-13-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210520190105.3772683-1-lee.jones@linaro.org>
+References: <20210520190105.3772683-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_120111_296210_96124AA3 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20210520_120124_550233_3020F2F1 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,106 +116,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This set is part of a larger effort attempting to clean-up W=1
-kernel builds, which are currently overwhelmingly riddled with
-niggly little warnings.
+Fixes the following W=1 kernel build warning(s):
 
-Lee Jones (16):
-  i2c: busses: i2c-nomadik: Fix formatting issue pertaining to 'timeout'
-  i2c: muxes: i2c-arb-gpio-challenge: Demote non-conformant kernel-doc
-    headers
-  i2c: busses: i2c-ali1563: File headers are not good candidates for
-    kernel-doc
-  i2c: busses: i2c-altera: Fix formatting issue in struct and demote
-    unworthy kernel-doc headers
-  i2c: busses: i2c-axxia: Fix formatting issue in struct and demote
-    unworthy kernel-doc headers
-  i2c: busses: i2c-cadence: Fix incorrectly documented 'enum
-    cdns_i2c_slave_mode'
-  i2c: busses: i2c-designware-master: Fix misnaming of
-    'i2c_dw_init_master()'
-  i2c: busses: i2c-eg20t: Fix 'bad line' issue and provide description
-    for 'msgs' param
-  i2c: busses: i2c-mxs: Demote barely half complete kernel-doc header
-  i2c: busses: i2c-ocores: Place the expected function names into the
-    documentation headers
-  i2c: busses: i2c-pnx: Provide descriptions for 'alg_data' data
-    structure
-  i2c: busses: i2c-rk3x: Demote unworthy headers and help more complete
-    ones
-  i2c: busses: i2c-st: Fix copy/paste function misnaming issues
-  i2c: busses: i2c-stm32f4: Remove incorrectly placed ' ' from function
-    name
-  i2c: busses: i2c-tegra-bpmp: Demote kernel-doc abuses
-  i2c: busses: i2c-st: trivial: Fix spelling issue 'enmpty => empty'
+ drivers/i2c/busses/i2c-rk3x.c:242: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:261: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:304: warning: Function parameter or member 'i2c' not described in 'rk3x_i2c_prepare_read'
+ drivers/i2c/busses/i2c-rk3x.c:304: warning: expecting prototype for Setup a read according to i2c(). Prototype was for rk3x_i2c_prepare_read() instead
+ drivers/i2c/busses/i2c-rk3x.c:335: warning: Function parameter or member 'i2c' not described in 'rk3x_i2c_fill_transmit_buf'
+ drivers/i2c/busses/i2c-rk3x.c:335: warning: expecting prototype for Fill the transmit buffer with data from i2c(). Prototype was for rk3x_i2c_fill_transmit_buf() instead
+ drivers/i2c/busses/i2c-rk3x.c:535: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:552: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:713: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:963: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+ drivers/i2c/busses/i2c-rk3x.c:973: warning: Function parameter or member 'i2c' not described in 'rk3x_i2c_setup'
 
- drivers/i2c/busses/i2c-ali1563.c           |  2 +-
- drivers/i2c/busses/i2c-altera.c            |  9 ++++-----
- drivers/i2c/busses/i2c-axxia.c             | 11 +++++------
- drivers/i2c/busses/i2c-cadence.c           |  2 +-
- drivers/i2c/busses/i2c-designware-master.c |  2 +-
- drivers/i2c/busses/i2c-eg20t.c             |  3 ++-
- drivers/i2c/busses/i2c-mxs.c               |  2 +-
- drivers/i2c/busses/i2c-nomadik.c           |  2 +-
- drivers/i2c/busses/i2c-ocores.c            |  8 ++++----
- drivers/i2c/busses/i2c-pnx.c               |  8 ++++----
- drivers/i2c/busses/i2c-rk3x.c              | 18 +++++++++---------
- drivers/i2c/busses/i2c-st.c                |  4 ++--
- drivers/i2c/busses/i2c-stm32f4.c           |  2 +-
- drivers/i2c/busses/i2c-tegra-bpmp.c        |  4 ++--
- drivers/i2c/muxes/i2c-arb-gpio-challenge.c |  4 ++--
- 15 files changed, 40 insertions(+), 41 deletions(-)
-
-Cc: Alain Volmat <alain.volmat@foss.st.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: Anders Berg <anders.berg@lsi.com>
-Cc: Andreas Larsson <andreas@gaisler.com>
-Cc: Andrew Lunn <andrew@lunn.ch>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Cedric Madianga <cedric.madianga@gmail.com>
-Cc: Dennis Kovalev <dkovalev@ru.mvista.com>
-Cc: Doug Anderson <dianders@chromium.org>
-Cc: Fabio Estevam <festevam@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Jarkko Nikula <jarkko.nikula@linux.intel.com>
-Cc: Jean Delvare <jdelvare@suse.com>
-Cc: Jonathan Hunter <jonathanh@nvidia.com>
-Cc: Krzysztof Adamski <krzysztof.adamski@nokia.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-i2c@vger.kernel.org
-Cc: linux-riscv@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
-Cc: linux-stm32@st-md-mailman.stormreply.com
-Cc: linux-tegra@vger.kernel.org
-Cc: Marek Vasut <marex@denx.de>
-Cc: Maxime Coquelin <maxime.coquelin@st.com>
-Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
 Cc: Max Schwarz <max.schwarz@online.de>
-Cc: Michal Simek <michal.simek@xilinx.com>
-Cc: Mika Westerberg <mika.westerberg@linux.intel.com>
-Cc: NXP Linux Team <linux-imx@nxp.com>
-Cc: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Patrice Chotard <patrice.chotard@foss.st.com>
-Cc: Paul Walmsley <paul.walmsley@sifive.com>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-Cc: Peter Korsgaard <peter@korsgaard.com>
-Cc: Peter Rosin <peda@axentia.se>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Pierre-Yves MORDRET <pierre-yves.mordret@foss.st.com>
-Cc: Rudolf Marek <r.marek@assembler.cz>
-Cc: Sachin Verma <sachin.verma@st.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Shariff Md <smohammed@nvidia.com>
-Cc: Shawn Guo <shawnguo@kernel.org>
-Cc: Srinidhi Kasagar <srinidhi.kasagar@stericsson.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: Thor Thayer <thor.thayer@linux.intel.com>
-Cc: Tomoya MORINAGA <tomoya.rohm@gmail.com>
-Cc: Vaibhav Gupta <vaibhavgupta40@gmail.com>
-Cc: Vitaly Wool <vwool@ru.mvista.com>
-Cc: Vladimir Zapolskiy <vz@mleia.com>
-Cc: Wolfram Sang <wsa@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-i2c@vger.kernel.org
+Signed-off-by: Lee Jones <lee.jones@linaro.org>
+---
+ drivers/i2c/busses/i2c-rk3x.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 819ab4ee517e1..1dfbd1185aefc 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -238,7 +238,7 @@ static inline void rk3x_i2c_clean_ipd(struct rk3x_i2c *i2c)
+ 	i2c_writel(i2c, REG_INT_ALL, REG_IPD);
+ }
+ 
+-/**
++/*
+  * Generate a START condition, which triggers a REG_INT_START interrupt.
+  */
+ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+@@ -257,7 +257,7 @@ static void rk3x_i2c_start(struct rk3x_i2c *i2c)
+ 	i2c_writel(i2c, val, REG_CON);
+ }
+ 
+-/**
++/*
+  * Generate a STOP condition, which triggers a REG_INT_STOP interrupt.
+  *
+  * @error: Error code to return in rk3x_i2c_xfer
+@@ -297,7 +297,7 @@ static void rk3x_i2c_stop(struct rk3x_i2c *i2c, int error)
+ 	}
+ }
+ 
+-/**
++/*
+  * Setup a read according to i2c->msg
+  */
+ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+@@ -328,7 +328,7 @@ static void rk3x_i2c_prepare_read(struct rk3x_i2c *i2c)
+ 	i2c_writel(i2c, len, REG_MRXCNT);
+ }
+ 
+-/**
++/*
+  * Fill the transmit buffer with data from i2c->msg
+  */
+ static void rk3x_i2c_fill_transmit_buf(struct rk3x_i2c *i2c)
+@@ -532,7 +532,7 @@ static irqreturn_t rk3x_i2c_irq(int irqno, void *dev_id)
+ }
+ 
+ /**
+- * Get timing values of I2C specification
++ * rk3x_i2c_get_spec() - Get timing values of I2C specification
+  *
+  * @speed: Desired SCL frequency
+  *
+@@ -549,7 +549,7 @@ static const struct i2c_spec_values *rk3x_i2c_get_spec(unsigned int speed)
+ }
+ 
+ /**
+- * Calculate divider values for desired SCL frequency
++ * rk3x_i2c_v0_calc_timings() - Calculate divider values for desired SCL frequency
+  *
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+@@ -710,7 +710,7 @@ static int rk3x_i2c_v0_calc_timings(unsigned long clk_rate,
+ }
+ 
+ /**
+- * Calculate timing values for desired SCL frequency
++ * rk3x_i2c_v1_calc_timings() - Calculate timing values for desired SCL frequency
+  *
+  * @clk_rate: I2C input clock rate
+  * @t: Known I2C timing information
+@@ -959,8 +959,8 @@ static int rk3x_i2c_clk_notifier_cb(struct notifier_block *nb, unsigned long
+ 	}
+ }
+ 
+-/**
+- * Setup I2C registers for an I2C operation specified by msgs, num.
++/*
++ * rk3x_i2c_setup() - Setup I2C registers for an I2C operation specified by msgs, num.
+  *
+  * Must be called with i2c->lock held.
+  *
 -- 
 2.31.1
 
