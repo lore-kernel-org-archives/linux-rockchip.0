@@ -2,19 +2,21 @@ Return-Path: <SRS0=9FBq=KS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E661C47080
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 May 2021 12:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0D3BC47080
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 May 2021 12:18:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFCB161166
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 May 2021 12:11:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFCB161166
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3773661159
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 May 2021 12:18:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3773661159
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=googlemail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -22,73 +24,101 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JKr/Yw5wNdYhr6FaNtz1icZSqLTprjy0GddRAqaSuwA=; b=UzuEBZqrUDYOKwjlPzpNrIwZMo
-	OKjipjYcc0dFq8V7duj0455V9KRoMIFILwT2xFHF587MkHD45RdFj7e13gGfrz/o8gHCzef9KDCbo
-	TE6DeZ5hdZfpWVBwWD6zHycnfyh2fSLL4nMd7BaK8xfc26w1+qIPEtql2i2cw+1BZk8DG03AA/IPn
-	hoYmLwopiE49IIrB/QYkC1dibneK6fGKTRKbXPYpSIamCu/cOunf3JUPnIbxAVVXgXJsN9xkMLLMa
-	nXvu43fJuDnwzbCb1IP1u8ZKODublTCMa0U7165kWvCH4+RXGY6NxTVIFXtpu02TnnZptQDi3Htpo
-	CUaO4HNQ==;
+	bh=eXgO0JJ32MpgFkX+1Bcs6ReCap5fX3iiEu6n1TC66l0=; b=DuqKW0sor1e4bAsRO1Ufpw+DN8
+	7mQUBJ58ZXsPbr3IMZm5sxM7iPOO4q4Ji5JsDdbFgqXYhKKFgnG47T0wXfsWPe9ZVGVmD0o6i9j9F
+	89pxV0/3iM2dixEJkYbfXY/vXfM8Phb858IxsLyR0fDeD8pHVTrIkM0nRdc4ONSN+Z6jiXRxJPi/y
+	JdNyhqo8ROPp+B3v+jDk9gSXSOGdA7WondzQy409X5ooEEtWrvfVGN87hI5ehw3ikbW+O/9kVI+bv
+	ShttflGS6MO5lCF+iXsIwmnlqeTjWdsBHIYQ67yKwdHs9T1HerpaAPnkn9FrCbZE/hXfZt+3IiezS
+	Jx7O2J+g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lkmxK-004Md2-J0; Sun, 23 May 2021 12:11:42 +0000
+	id 1lkn3X-004NGk-17; Sun, 23 May 2021 12:18:07 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lkmwf-004MbB-RP; Sun, 23 May 2021 12:11:10 +0000
+ id 1lkn2k-004NAl-7n; Sun, 23 May 2021 12:17:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=NKuVUS9nHRP5pl3s2jWfvUt9T8q8XVawOeSYz0bHfkY=; b=Y2XM0ssmw5ceBgqucKgPMe/YVF
- CZeCkk9VcwtMymGt2UtmEE5B/8FO+8g2htP5MRegnu/Oksl8UWVZbNvkARrVkuSFC2ZyOLxTWF3yw
- c51WMMPWrZi5BJz+xK0n18bkSnkAhjbFyvCMwB6JZH3i4nUldVvz2N25v8Spn9+WgUfBBHX0Es8IF
- w1fUoYPKrP53VpLpbiY54hXrwdK46OL8aOdBdU/k4Y1DNOJ5XOcQF6DgHKgK45q56ubtn1YmX4uwU
- 8ymNfAiWKzSm0jB1cMCyf6K0WTqsefoGJiNDURhu5BxpNobEzsBT5WBtJzdk4GRckfHRH0o6kWEdB
- BTPTO2Cw==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
+ bh=3tzEvnJ635tC2Suexfcwo2/SMYwrMnTRuJbRrXUefrg=; b=Hiv4tcLL+u7Q0sG76H6hmDA9Sr
+ 6Qy46PcVRpzo3XJa/H3Jv28xq1TJ92b3hX2bjsZko1pyCCwEKTh4NlQnxPAHbZjqYUslx6QeqCAjh
+ QEr1CFOm26lkFak9FR3ncuijiyNwammc4gl9k0ZWFYl26ah9IrF+PyBq/8Boitk/53kj4yzTbTPCA
+ caGTeyENY68Jd5T7AZaegmGsQPZNQ8T5zOZmby1HOvokdJatVv61XB9hFgkAu7QHB8+3Q7W1BL7v7
+ HNh/1XzbrM9zDlHcTcrMj4p22zDH4rLUDhUI2ykOLdFq/8cGsRgtvpT7aeAym7WVvQsXk369w1BxI
+ OZ7SGDSg==;
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lkmwc-000QsY-Mx; Sun, 23 May 2021 12:11:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 10B0D61261;
- Sun, 23 May 2021 12:10:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621771857;
- bh=5JO2LxhXrOK58oNJTJ20myWP78aa+/40qU7LRR21u1o=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=t5SuI4C1bEbMv5JvVzfnEYnO4A4hNJmbF6OjzZ0HF70nwmDoSNhIcn1NYWFaKoQa9
- nc333Ar/y/LYf/ZE5IWkO1db4E083oBtG+7UVNY0AObaWHtt5Z/gTeEbmobImYawJt
- 15VlMFQKXq1SoTh2c296tNHR71iPN5sC1Gfjue3p5P9yVEy8CsI7/Bj7HmFgFN98Nm
- GQOWeXG74JwAgxegTMoFLd7Z0GICP9PS1NMJOu5ytYAJVSWz50XzU9pM9Lz+LzoJXL
- x+BIbamcJnxb/DDBbnuoGSin19QHuOFUgWGffbKfqWvQf1jDvLYCNDvo2MUkECTq28
- BwNZLj7+DVX6A==
-Received: by mail-oi1-f172.google.com with SMTP id h9so24521072oih.4;
- Sun, 23 May 2021 05:10:57 -0700 (PDT)
-X-Gm-Message-State: AOAM533ZPkjfeuY68x+52t1H4rTK0e8RwA3UvuJYG4ltACSLcwgT04hU
- 2vI3LuVjvQ39tUcb/syHiLYNBhDy58g0BMzcyq0=
-X-Google-Smtp-Source: ABdhPJyfGAivPerflxqvZ8zeNDpNrnjqzjt21e5mLIM4h6jZ0wAmIa8bbwUDuprzQ4LGeui46DP466uXci66TZQNUYw=
-X-Received: by 2002:aca:4343:: with SMTP id q64mr7777331oia.33.1621771856367; 
- Sun, 23 May 2021 05:10:56 -0700 (PDT)
+ id 1lkn2h-000R1N-Lc; Sun, 23 May 2021 12:17:17 +0000
+Received: by mail-ed1-x534.google.com with SMTP id a25so28636383edr.12;
+ Sun, 23 May 2021 05:17:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=googlemail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=3tzEvnJ635tC2Suexfcwo2/SMYwrMnTRuJbRrXUefrg=;
+ b=qLzt2Q8zgmZbiflD5+5P7ElMN2z5A5uPW8NRXtteO4uyLUUDRrn2IKkRaMvKWKF65W
+ 1cfWZUBsHQFj1InumAA50YINqUE+1gGMQa6vawhc32wnMK1JPFqy+ZWs+yK3N/lhIrZB
+ tFzU7CEWgebc10cYE5ViNhI9KqJ0BhAzNgASIXHqW9Pvbic5Mbf7n+1hTPPnGTy2gyoF
+ KIpNNID+LMnrZr9hOeF1GqZZFlAGZkUq4n5yICVxd5jeKSPa46Y9ikqlIlB9JT7xuTyE
+ P+9+6vpZcRqQG7UUVVCq9WhiE6nWh3BKUbJrAhmJbHLt2xZ+1Xri6sMQDKQymr2NNUCG
+ TF9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=3tzEvnJ635tC2Suexfcwo2/SMYwrMnTRuJbRrXUefrg=;
+ b=jE+qzMz3v9e9kQMqW6QEaABMVHQjW0MWeE7PylhfDahMwH26pHDdla3r2xhpDAH5lH
+ 1nqjutB/yLA/aAML2R0hKnw+/SqpdWZUMvjpZHWNlZcXD+HdVHgCLBznCk3EpMGbLA9e
+ Kkf3fmYvtKYzWFWkImMR99CTrKQAxT4Zg5ypkecWpBtYLtPcNYJldqAky7p/gDgPlYyW
+ X88T6bi187iRh9Tcrs/lEE1tT4UcjwxyWjPmBS0ONV8d3PoSFnNZhe4CDEM4TurCnkM6
+ ekESASnuNIQJiLaGDfYraHIF8Uh/UPL4Vj//zZYgSqeojtHdxtpe+9pmwQtRbkuEtwyh
+ QsYA==
+X-Gm-Message-State: AOAM5327ximwpDMDLEMZApE0X8nRMNfMfeVqz9Z4/vq0p0BuOwgvzRFG
+ xbphB9hJGoJnm/OX52/Z5TxOeLm7EJtOX8mwNcg=
+X-Google-Smtp-Source: ABdhPJwPxmA4JArahzruRum264WKfGGbHUJh6bex9S7VrYwga+yKcdKWZft9UnfQIVsWH4AZBM7E8wWiBet0Lx5Pf5o=
+X-Received: by 2002:a50:fb17:: with SMTP id d23mr19981613edq.338.1621772233437; 
+ Sun, 23 May 2021 05:17:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com>
- <01efd004-1c50-25ca-05e4-7e4ef96232e2@arm.com>
- <87eedxbtkn.fsf@stealth>
-In-Reply-To: <87eedxbtkn.fsf@stealth>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Sun, 23 May 2021 14:10:45 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
-Message-ID: <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
-Subject: Re: [BUG] rockpro64: PCI BAR reassignment broken by commit
- 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit
- memory addresses")
-To: Punit Agrawal <punitagrawal@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
- Alexandru Elisei <alexandru.elisei@arm.com>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-rockchip@lists.infradead.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, leobras.c@gmail.com, 
- Rob Herring <robh@kernel.org>, PCI <linux-pci@vger.kernel.org>
+References: <20210521090959.1663703-1-daniel.vetter@ffwll.ch>
+ <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
+In-Reply-To: <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Sun, 23 May 2021 14:17:02 +0200
+Message-ID: <CAFBinCDXgjevHr9wRn8gQ8pJhiSpZb5A7ChhQqk17yK8Tooa3Q@mail.gmail.com>
+Subject: Re: [PATCH 06/11] drm/<driver>: drm_gem_plane_helper_prepare_fb is
+ now the default
+To: Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@intel.com>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+ Lucas Stach <l.stach@pengutronix.de>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Paul Cercueil <paul@crapouillou.net>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Marek Vasut <marex@denx.de>, 
+ Stefan Agner <stefan@agner.ch>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>,
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jyri Sarha <jyri.sarha@iki.fi>, 
+ Tomi Valkeinen <tomba@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210523_051058_816034_84852829 
-X-CRM114-Status: GOOD (  31.46  )
+X-CRM114-CacheID: sfid-20210523_051715_764830_9A4D9822 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,117 +131,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 23 May 2021 at 13:06, Punit Agrawal <punitagrawal@gmail.com> wrote:
->
-> Robin Murphy <robin.murphy@arm.com> writes:
->
-> > [ +linux-pci for visibility ]
-> >
-> > On 2021-05-18 10:09, Alexandru Elisei wrote:
-> >> After doing a git bisect I was able to trace the following error when booting my
-> >> rockpro64 v2 (rk3399 SoC) with a PCIE NVME expansion card:
-> >> [..]
-> >> [    0.305183] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
-> >> [    0.305248] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbdfffff ->
-> >> 0x00fa000000
-> >> [    0.305285] rockchip-pcie f8000000.pcie:       IO 0x00fbe00000..0x00fbefffff ->
-> >> 0x00fbe00000
-> >> [    0.306201] rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy
-> >> regulator
-> >> [    0.306334] rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy
-> >> regulator
-> >> [    0.373705] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
-> >> [    0.373730] pci_bus 0000:00: root bus resource [bus 00-1f]
-> >> [    0.373751] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-> >> [    0.373777] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus
-> >> address [0xfbe00000-0xfbefffff])
-> >> [    0.373839] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
-> >> [    0.373973] pci 0000:00:00.0: supports D1
-> >> [    0.373992] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-> >> [    0.378518] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]),
-> >> reconfiguring
-> >> [    0.378765] pci 0000:01:00.0: [144d:a808] type 00 class 0x010802
-> >> [    0.378869] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-> >> [    0.379051] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 256)
-> >> [    0.379661] pci 0000:01:00.0: 8.000 Gb/s available PCIe bandwidth, limited by
-> >> 2.5 GT/s PCIe x4 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe
-> >> x4 link)
-> >> [    0.393269] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
-> >> [    0.393311] pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-> >> [    0.393333] pci 0000:00:00.0: BAR 14: failed to assign [mem size 0x00100000]
-> >> [    0.393356] pci 0000:01:00.0: BAR 0: no space for [mem size 0x00004000 64bit]
-> >> [    0.393375] pci 0000:01:00.0: BAR 0: failed to assign [mem size 0x00004000 64bit]
-> >> [    0.393397] pci 0000:00:00.0: PCI bridge to [bus 01]
-> >> [    0.393839] pcieport 0000:00:00.0: PME: Signaling with IRQ 78
-> >> [    0.394165] pcieport 0000:00:00.0: AER: enabled with IRQ 78
-> >> [..]
-> >> to the commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to
-> >> resource flags for
-> >> 64-bit memory addresses").
-> >
-> > FWFW, my hunch is that the host bridge advertising no 32-bit memory
-> > resource, only only a single 64-bit non-prefetchable one (even though
-> > it's entirely below 4GB) might be a bit weird and tripping something
-> > up in the resource assignment code. It certainly seems like the thing
-> > most directly related to the offending commit.
-> >
-> > I'd be tempted to try fiddling with that in the DT (i.e. changing
-> > 0x83000000 to 0x82000000 in the PCIe node's "ranges" property) to see
-> > if it makes any difference. Note that even if it helps, though, I
-> > don't know whether that's the correct fix or just a bodge around a
-> > corner-case bug somewhere in the resource code.
->
-> From digging into this further the failure seems to be due to a mismatch
-> of flags when allocating resources in pci_bus_alloc_from_region() -
->
->     if ((res->flags ^ r->flags) & type_mask)
->             continue;
->
-> Though I am also not sure why the failure is only being reported on
-> RK3399 - does a single 64-bit window have anything to do with it?
->
-
-The NVMe in the example exposes a single 64-bit non-prefetchable BAR.
-Such BARs can not be allocated in a prefetchable host bridge window
-(unlike the converse, i.e., allocating a prefetchable BAR in a
-non-prefetchable host bridge window is fine)
-
-64-bit non-prefetchable host bridge windows cannot be forwarded by PCI
-to PCI bridges, they simply lack the BAR registers to describe them.
-Therefore, non-prefetchable endpoint BARs (even 64-bit ones) need to
-be carved out of a host bridge's non-prefetchable 32-bit window if
-they need to pass through a bridge.
-
-So the error seems to be here that the host bridge's 32-bit
-non-prefetchable window has the 64-bit attribute set, even though it
-resides below 4 GB entirely. I suppose that the resource allocation
-could be made more forgiving (and it was in the past, before commit
-9d57e61bf723 was applied). However, I would strongly recommend not
-deviating from common practice, and just describe the 32-bit
-addressable non-prefetchable resource window as such.
-
-
-
-> Also, I don't understand the motivation for the original commit. It is
-> not clear what problem it is solving and the discussion thread seems to
-> suggest that things work fine without it[0].
->
-> [0] https://lore.kernel.org/linux-devicetree/CAL_JsqJXKVUFh9KrJjobn-jE-PFKN0w-V_i3qkfBrpTah4g8Xw@mail.gmail.com/
->
-> [...]
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBNYXkgMjEsIDIwMjEgYXQgMTE6MTAgQU0gRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZl
+dHRlckBmZndsbC5jaD4gd3JvdGU6Cj4KPiBObyBuZWVkIHRvIHNldCBpdCBleHBsaWNpdGx5Lgo+
+Cj4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRlckBpbnRlbC5jb20+
+Cj4gQ2M6IExhdXJlbnRpdSBQYWxjdSA8bGF1cmVudGl1LnBhbGN1QG9zcy5ueHAuY29tPgo+IENj
+OiBMdWNhcyBTdGFjaCA8bC5zdGFjaEBwZW5ndXRyb25peC5kZT4KPiBDYzogU2hhd24gR3VvIDxz
+aGF3bmd1b0BrZXJuZWwub3JnPgo+IENjOiBTYXNjaGEgSGF1ZXIgPHMuaGF1ZXJAcGVuZ3V0cm9u
+aXguZGU+Cj4gQ2M6IFBlbmd1dHJvbml4IEtlcm5lbCBUZWFtIDxrZXJuZWxAcGVuZ3V0cm9uaXgu
+ZGU+Cj4gQ2M6IEZhYmlvIEVzdGV2YW0gPGZlc3RldmFtQGdtYWlsLmNvbT4KPiBDYzogTlhQIExp
+bnV4IFRlYW0gPGxpbnV4LWlteEBueHAuY29tPgo+IENjOiBQaGlsaXBwIFphYmVsIDxwLnphYmVs
+QHBlbmd1dHJvbml4LmRlPgo+IENjOiBQYXVsIENlcmN1ZWlsIDxwYXVsQGNyYXBvdWlsbG91Lm5l
+dD4KPiBDYzogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cj4gQ2M6IE1h
+dHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+Cj4gQ2M6IE5laWwgQXJtc3Ry
+b25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4KPiBDYzogS2V2aW4gSGlsbWFuIDxraGlsbWFu
+QGJheWxpYnJlLmNvbT4KPiBDYzogSmVyb21lIEJydW5ldCA8amJydW5ldEBiYXlsaWJyZS5jb20+
+Cj4gQ2M6IE1hcnRpbiBCbHVtZW5zdGluZ2wgPG1hcnRpbi5ibHVtZW5zdGluZ2xAZ29vZ2xlbWFp
+bC5jb20+Cj4gQ2M6IE1hcmVrIFZhc3V0IDxtYXJleEBkZW54LmRlPgo+IENjOiBTdGVmYW4gQWdu
+ZXIgPHN0ZWZhbkBhZ25lci5jaD4KPiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNv
+bT4KPiBDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBZYW5uaWNr
+IEZlcnRyZSA8eWFubmljay5mZXJ0cmVAZm9zcy5zdC5jb20+Cj4gQ2M6IFBoaWxpcHBlIENvcm51
+IDxwaGlsaXBwZS5jb3JudUBmb3NzLnN0LmNvbT4KPiBDYzogQmVuamFtaW4gR2FpZ25hcmQgPGJl
+bmphbWluLmdhaWduYXJkQGxpbmFyby5vcmc+Cj4gQ2M6IE1heGltZSBDb3F1ZWxpbiA8bWNvcXVl
+bGluLnN0bTMyQGdtYWlsLmNvbT4KPiBDYzogQWxleGFuZHJlIFRvcmd1ZSA8YWxleGFuZHJlLnRv
+cmd1ZUBmb3NzLnN0LmNvbT4KPiBDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3Jn
+Pgo+IENjOiBDaGVuLVl1IFRzYWkgPHdlbnNAY3NpZS5vcmc+Cj4gQ2M6IEplcm5laiBTa3JhYmVj
+IDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+Cj4gQ2M6IEp5cmkgU2FyaGEgPGp5cmkuc2FyaGFA
+aWtpLmZpPgo+IENjOiBUb21pIFZhbGtlaW5lbiA8dG9tYmFAa2VybmVsLm9yZz4KPiBDYzogbGlu
+dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LW1pcHNAdmdlci5r
+ZXJuZWwub3JnCj4gQ2M6IGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzog
+bGludXgtYW1sb2dpY0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtc3RtMzJAc3QtbWQtbWFpbG1hbi5zdG9ybXJl
+cGx5LmNvbQo+IENjOiBsaW51eC1zdW54aUBsaXN0cy5saW51eC5kZXYKPiAtLS0KPiAgZHJpdmVy
+cy9ncHUvZHJtL2lteC9kY3NzL2Rjc3MtcGxhbmUuYyAgICAgICB8IDEgLQo+ICBkcml2ZXJzL2dw
+dS9kcm0vaW14L2lwdXYzLXBsYW5lLmMgICAgICAgICAgIHwgMSAtCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9pbmdlbmljL2luZ2VuaWMtZHJtLWRydi5jICAgfCAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL2lu
+Z2VuaWMvaW5nZW5pYy1pcHUuYyAgICAgICB8IDEgLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9wbGFuZS5jICAgIHwgMSAtCj4gIGRyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNv
+bl9vdmVybGF5LmMgICAgICAgfCAxIC0KPiAgZHJpdmVycy9ncHUvZHJtL21lc29uL21lc29uX3Bs
+YW5lLmMgICAgICAgICB8IDEgLQpGb3IgZHJpdmVycy9ncHUvZHJtL21lc29uLyo6CkFja2VkLWJ5
+OiBNYXJ0aW4gQmx1bWVuc3RpbmdsIDxtYXJ0aW4uYmx1bWVuc3RpbmdsQGdvb2dsZW1haWwuY29t
+PgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
