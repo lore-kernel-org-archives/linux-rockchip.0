@@ -1,79 +1,61 @@
-Return-Path: <SRS0=SEAf=KT=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A722CC04FF3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 May 2021 22:31:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58A2FC2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 02:11:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A3F9613D6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 May 2021 22:31:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A3F9613D6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 54BAA600D3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 02:11:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54BAA600D3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlyNAnSTT7s5U36iBWA1nD2ojFWf83reH7QkD/aGKtM=; b=DjCmkw1NjKHHHw
-	AhpTRsHGRpuAX35XIccwIoIEhOIXx7N4nQzzcCQ9zSmZhhcrJt/k3MxNsAaemabOJ/cJDsZSA0dwx
-	VgX9pg/A6YA6560fSXPTJB5enhlKR71aRSN5dN1KnKm3m1vAyA614AMyDcSUhI1e8/lv23uB0PW5e
-	lUYPAAFNpLCaQ0+OBNmXWlhu7rIp+nzca7Yi5dKSBvzkK7CqGIQjIQImsDfKhbvxOQdPszN8qmuHG
-	7tMFBFyt3fppnuobv588YpC+4PZgEdlnAyryGykrUp+avilFoMb1nyFOZ475LvCRuxu1WOc+QIc2s
-	TSkxv5UnAC8sY4wtsuxQ==;
+	List-Owner; bh=0mRl1X9LlwBP0l9hP4+87l/2p6DLFT/Jr5cM0CHc7NE=; b=xNEod9IKtsv9ED
+	gfyX8Zfk7OCSGk7x+sNUql3KvAinVSyxPmn7EOkytYYWxm8QkSagoMWLD3GSyM2Px0rBFrE+2It99
+	qRROmzq6dJ7k3GMwWnsaysopt0J3yEfl9HuNOdxqNkCAgjJSkXqFZzY0Xr4UXmYaQDRd6JXlM5Z4o
+	7eOnfi29iFrD3/bQHT+0E1OlZE2ecBgBkcrfmpD+WrQmHLabfybOjK4Z0yV53IEe5f5VWMPhn9TeA
+	p7aPO/k3ews5gFH3lLXoC2ty82c4lWSAoxwuQZdnhBF3DRRHUTl/0aSgsIZoYLby75ZK/WQZ/Or4t
+	GmKQp0Zt5BsqNkIv7JZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llJ6T-0028lt-1A; Mon, 24 May 2021 22:31:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1llMXf-002rpz-T6; Tue, 25 May 2021 02:11:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llCmh-0012w2-02; Mon, 24 May 2021 15:46:28 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9D86461993;
- Mon, 24 May 2021 15:46:26 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1llCme-003GgK-G2; Mon, 24 May 2021 16:46:24 +0100
-Date: Mon, 24 May 2021 16:46:23 +0100
-Message-ID: <87eedww2wg.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Andreas =?UTF-8?B?RsOkcmJlcg==?= <afaerber@suse.de>
+ id 1llHsn-001uK1-2R; Mon, 24 May 2021 21:13:09 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1llHsk-0008Me-To; Mon, 24 May 2021 23:13:02 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andreas =?ISO-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+ Marc Zyngier <maz@kernel.org>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org
-Subject: Re: [PATCH RFC 5/9] arm64: dts: rockchip: rk1808k-toybrick-m0:
- Suppress vGIC interrupt
-In-Reply-To: <f9523a3c-16a7-16d1-4d2e-9994c3fe03d9@suse.de>
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH 3/9] arm64: dts: rockchip: Prepare Rockchip RK1808
+Date: Mon, 24 May 2021 23:13:03 +0200
+Message-ID: <3998020.X9hSmTKtgW@diego>
+In-Reply-To: <87fsycw41m.wl-maz@kernel.org>
 References: <20210516230551.12469-1-afaerber@suse.de>
- <20210516230551.12469-6-afaerber@suse.de>
- <87fsylvhck.wl-maz@kernel.org>
- <f9523a3c-16a7-16d1-4d2e-9994c3fe03d9@suse.de>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: afaerber@suse.de, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- robh+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ <7ef183f1-00f8-13c4-1fd3-eae9e0bbf74c@suse.de> <87fsycw41m.wl-maz@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_084627_101179_8B067BF0 
-X-CRM114-Status: GOOD (  27.04  )
+X-CRM114-CacheID: sfid-20210524_141305_159728_C38A45A1 
+X-CRM114-Status: GOOD (  28.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,74 +68,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyNCBNYXkgMjAyMSAxNTo0MDoyMiArMDEwMCwKQW5kcmVhcyBGw6RyYmVyIDxhZmFl
-cmJlckBzdXNlLmRlPiB3cm90ZToKPiAKPiBPbiAxNy4wNS4yMSAxMToyOSwgTWFyYyBaeW5naWVy
-IHdyb3RlOgo+ID4gT24gTW9uLCAxNyBNYXkgMjAyMSAwMDowNTo0NyArMDEwMCwKPiA+IEFuZHJl
-YXMgRsOkcmJlciA8YWZhZXJiZXJAc3VzZS5kZT4gd3JvdGU6Cj4gPj4KPiA+PiBBdm9pZCB0aGUg
-a2VybmVsIGdldHRpbmcgc3R1Y2sgYWZ0ZXI6Cj4gPj4KPiA+PiBbICAgIDEuMTc1OTU2XSBrdm0g
-WzFdOiBJUEEgU2l6ZSBMaW1pdDogNDAgYml0cwo+ID4+IFsgICAgMS4xNzcxNjRdIGt2bSBbMV06
-IHZnaWMtdjJAZmYzMjAwMDAKPiA+PiBbICAgIDEuMTc3NTQ1XSBrdm0gWzFdOiBHSUMgc3lzdGVt
-IHJlZ2lzdGVyIENQVSBpbnRlcmZhY2UgZW5hYmxlZAo+ID4+Cj4gPj4gb3Igd2hlbiBkcm9wcGlu
-ZyBHSUNWIHJlZyBlbnRyeToKPiA+Pgo+ID4+IFsgICAgMS4xNzYwMDFdIGt2bSBbMV06IElQQSBT
-aXplIExpbWl0OiA0MCBiaXRzCj4gPj4gWyAgICAxLjE3NzE5MV0ga3ZtIFsxXTogR0lDdjM6IG5v
-IEdJQ1YgcmVzb3VyY2UgZW50cnkKPiA+PiBbICAgIDEuMTc3NjY0XSBrdm0gWzFdOiBkaXNhYmxp
-bmcgR0lDdjIgZW11bGF0aW9uCj4gPj4gWyAgICAxLjE3ODExNV0ga3ZtIFsxXTogR0lDIHN5c3Rl
-bSByZWdpc3RlciBDUFUgaW50ZXJmYWNlIGVuYWJsZWQKPiA+Pgo+ID4+IFNpZ25lZC1vZmYtYnk6
-IEFuZHJlYXMgRsOkcmJlciA8YWZhZXJiZXJAc3VzZS5kZT4KPiA+PiAtLS0KPiA+PiAgYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazE4MDhrLXRveWJyaWNrLW0wLmR0cyB8IDQgKysrKwo+
-ID4+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCj4gPj4KPiA+PiBkaWZmIC0tZ2l0
-IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazE4MDhrLXRveWJyaWNrLW0wLmR0cyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsxODA4ay10b3licmljay1tMC5kdHMKPiA+
-PiBpbmRleCAyZjgwNzVkMjM5MWMuLjE1MjkzYTg1NzZjNiAxMDA2NDQKPiA+PiAtLS0gYS9hcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMTgwOGstdG95YnJpY2stbTAuZHRzCj4gPj4gKysr
-IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazE4MDhrLXRveWJyaWNrLW0wLmR0cwo+
-ID4+IEBAIC00OCw2ICs0OCwxMCBAQCAmY3B1MSB7Cj4gPj4gIAljcHUtc3VwcGx5ID0gPCZ2ZGRf
-Y3B1PjsKPiA+PiAgfTsKPiA+PiAgCj4gPj4gKyZnaWMgewo+ID4+ICsJL2RlbGV0ZS1wcm9wZXJ0
-eS8gaW50ZXJydXB0czsKPiA+PiArfTsKPiA+PiArCj4gPj4gICZ1YXJ0MiB7Cj4gPj4gIAlzdGF0
-dXMgPSAib2theSI7Cj4gPj4gIAljbG9ja3MgPSA8JnhpbjI0bT47Cj4gPiAKPiA+IEFzIEkgc2Fp
-ZCBpbiBteSByZXBseSB0byB0aGUgY292ZXIgbGV0dGVyLCB0aGlzIGlzIG5vdCBhbiBhY2NlcHRh
-YmxlCj4gPiBvdXRjb21lLiBQbGVhc2UgYWRkIHNvbWUgZGVidWcgdG8ga3ZtX3ZnaWNfaHlwX2lu
-aXQoKSB0byB1bmRlcnN0YW5kCj4gPiB3aGVyZSB0aGlzIGlzIGhhbmdpbmcgYW5kIHdoeS4KPiAK
-PiBNYW55IHRoYW5rcyBmb3IgdGhhdCBwb2ludGVyLgo+IAo+IFNvLCBhcyBhbHRlcm5hdGl2ZSB0
-byBkcm9wcGluZyB0aGUgRFQgaW50ZXJydXB0cyBwcm9wZXJ0eSBhYm92ZSwgSSBjb3VsZAo+IGFs
-c28gd29yayBhcm91bmQgdGhpcyBpc3N1ZSBieSBjb21tZW50aW5nIG91dAo+IHZnaWMtaW5pdC5j
-OnZnaWNfaW5pdF9jcHVfc3RhcnRpbmcoKSdzIGVuYWJsZV9wZXJjcHVfaXJxKCkgY2FsbC4KPiAK
-PiBPdGhlcndpc2UgSSBhbSBzZWVpbmcgdGhlIGZvbGxvd2luZyBjYWxsIGZsb3c6Cj4gCj4gY3B1
-aHBfc2V0dXBfc3RhdGUoKSAtPiBfX2NwdWhwX3NldHVwX3N0YXRlX2NwdXNsb2NrZWQoKSAtPgo+
-IGNwdWhwX2lzc3VlX2NhbGwoKSAtPiBjcHVocF9pbnZva2VfYXBfY2FsbGJhY2soKSAtPiBfX2Nw
-dWhwX2tpY2tfYXAoKSAtPgo+IHdhaXRfZm9yX2FwX3RocmVhZCgpIC0+IHdhaXRfZm9yX2NvbXBs
-ZXRpb24oKSAtLS0gZG9lc24ndCByZXR1cm4KPiAKPiBXaXRoIGt2bV9pbmZvKCkgLyBwcmludGso
-KToKPiAKPiBbICAgIDEuMjQ0MDc5XSBrdm0gWzFdOiBJUEEgU2l6ZSBMaW1pdDogNDAgYml0cwo+
-IAo+IFsgICAgMS4yNDUyMDVdIGt2bSBbMV06IHZnaWMtdjJAZmYzMjAwMDAKPiAKPiBbICAgIDEu
-MjQ1NTg0XSBrdm0gWzFdOiBHSUMgc3lzdGVtIHJlZ2lzdGVyIENQVSBpbnRlcmZhY2UgZW5hYmxl
-ZAo+IAo+IFsgICAgMS4yNDYxNzddIGt2bSBbMV06IGJlZm9yZSBjcHVocF9zZXR1cF9zdGF0ZQo+
-IAo+IFsgICAgMS4yNDY2MDVdIF9fY3B1aHBfc2V0dXBfc3RhdGVfY3B1c2xvY2tlZDoga3ZtL2Fy
-bS92Z2ljOnN0YXJ0aW5nCj4gCj4gWyAgICAxLjI0NzE5OF0gX19jcHVocF9zZXR1cF9zdGF0ZV9j
-cHVzbG9ja2VkOiBmb3JfZWFjaF9wcmVzZW50X2NwdSAwOgo+IHN0YXRlIDIyNQo+IAo+IFsgICAg
-MS4yNDc5MzNdIF9fY3B1aHBfc2V0dXBfc3RhdGVfY3B1c2xvY2tlZDogZm9yX2VhY2hfcHJlc2Vu
-dF9jcHUgMDoKPiBiZWZvcmUgY3B1aHBfaXNzdWVfY2FsbAo+IAo+IFsgICAgMS4yNDg3NDVdIGNw
-dWhwX2lzc3VlX2NhbGw6IGJlZm9yZSBpbnZva2UKPiAKPiBbICAgIDEuMjQ5MTU0XSBjcHVocF9p
-c3N1ZV9jYWxsOiBiZWZvcmUgQVAgaW52b2tlCj4gCj4gWyAgICAxLjI0OTU4NV0gY3B1aHBfaW52
-b2tlX2FwX2NhbGxiYWNrCj4gCj4gWyAgICAxLjI0OTkzNl0gY3B1aHBfaW52b2tlX2FwX2NhbGxi
-YWNrOiBhZnRlciBjcHVfb25saW5lCj4gCj4gWyAgICAxLjI1MDQzNV0gY3B1aHBfaW52b2tlX2Fw
-X2NhbGxiYWNrOiBiZWZvcmUgc3QtPnRocmVhZAo+IAo+IFsgICAgMS4yNTA5NDRdIGNwdWhwX2lu
-dm9rZV9hcF9jYWxsYmFjazogYWZ0ZXIgc3QtPnRocmVhZAo+IAo+IFsgICAgMS4yNTE0NDVdIF9f
-Y3B1aHBfa2lja19hcAo+IAo+IFsgICAgMS4yNTE3MzFdIF9fY3B1aHBfa2lja19hcDogbm90IHJl
-dHVybmVkCj4gCj4gWyAgICAxLjI1MjE0MF0gdmdpY19pbml0X2NwdV9zdGFydGluZzogOQo+IAo+
-IFsgICAgMS4yNTI1MDddIHZnaWNfaW5pdF9jcHVfc3RhcnRpbmc6IGRvbmUKPiAKPiBbICAgIDEu
-MjU1NTM4XSBfX2NwdWhwX2tpY2tfYXA6IHdhaXRfZm9yX2FwX3RocmVhZAoKQW5kIHlvdSBuZXZl
-ciBzZWUgYW55IFJDVSBzdGFsbCBhZnRlciB0aGF0PyBJdCBsb29rcyBsaWtlIGEgQ1BVIGhhcwpk
-aXNhcHBlYXJlZCBpbiB0aGUgd2VlZHMgYWZ0ZXIgZW5hYmxpbmcgdGhlIHBlci1DUFUgaW50ZXJy
-dXB0LgoKUGxlYXNlIGluc3RydW1lbnQgd2hhdCBoYXBwZW5zIGluCmRyaXZlcnMvaXJxY2hpcC9p
-cnEtZ2ljLXYzLmM6OmdpY191bm1hc2tfaXJxKCkgd2hlbiBkLT5od2lycSA9PSA5LCBhCndlbGwg
-YXMgdmdpY19tYWludGVuYW5jZV9oYW5kbGVyKCksIGp1c3QgaW4gY2FzZSBpdCBnZXRzIGNhbGxl
-ZC4uLgoKVGhhbmtzLAoKCU0uCgotLSAKV2l0aG91dCBkZXZpYXRpb24gZnJvbSB0aGUgbm9ybSwg
-cHJvZ3Jlc3MgaXMgbm90IHBvc3NpYmxlLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Montag, 24. Mai 2021, 17:21:41 CEST schrieb Marc Zyngier:
+> On Mon, 24 May 2021 14:32:41 +0100,
+> Andreas F=E4rber <afaerber@suse.de> wrote:
+> > =
+
+> > On 17.05.21 11:21, Marc Zyngier wrote:
+> > > On Mon, 17 May 2021 00:05:45 +0100,
+> > > Andreas F=E4rber <afaerber@suse.de> wrote:
+> > >>
+> > >> Add an initial Device Tree for Rockchip RK1808 SoC.
+> > >> Based on shipping TB-RK1808M0 DTB.
+> > >>
+> > >> Signed-off-by: Andreas F=E4rber <afaerber@suse.de>
+> > >> ---
+> > >>  arch/arm64/boot/dts/rockchip/rk1808.dtsi | 203 ++++++++++++++++++++=
++++
+> > >>  1 file changed, 203 insertions(+)
+> > >>  create mode 100644 arch/arm64/boot/dts/rockchip/rk1808.dtsi
+> > >>
+> > >> diff --git a/arch/arm64/boot/dts/rockchip/rk1808.dtsi b/arch/arm64/b=
+oot/dts/rockchip/rk1808.dtsi
+> > >> new file mode 100644
+> > >> index 000000000000..af2b51afda7d
+> > >> --- /dev/null
+> > >> +++ b/arch/arm64/boot/dts/rockchip/rk1808.dtsi
+> > [...]
+> > >> +		gic: interrupt-controller@ff100000 {
+> > >> +			compatible =3D "arm,gic-v3";
+> > >> +			reg =3D <0xff100000 0x10000>, /* GICD */
+> > >> +			      <0xff140000 0xc0000>, /* GICR */
+> > > =
+
+> > > This is obviously wrong. You have two CPUs, and yet describe a range
+> > > that spans 6. I guess this is a copy paste from rk3399 again?
+> > =
+
+> > Not on my part at least. As indicated, these numbers are what ships in
+> > the DTB on the RK1808 card, as per dtc -I dtb -O dts. Could be a mistake
+> > by Rockchip, of course.
+> > =
+
+> > Are you suggesting 0xc0000/6*2 =3D 0x40000 for two CPUs here?  Works
+> > as bad as before - investigation still ongoing with latest next.
+> > =
+
+> > As for "obviously": The GICv3 YAML binding has no description for me to
+> > validate those numbers: "GIC Redistributors (GICR), one range per
+> > redistributor region" - says nothing about correlation to number of CPUs
+> > or size per CPU, and the examples are not explaining either: 0x200000
+> > has no number of CPUs associated, and by my calculation 0x800000 for 32
+> > CPUs results in 0x40000 per CPU; but then again the examples also have
+> > GICC etc. at diverging 0x2000 size.
+> =
+
+> The GICv3/v4 architecture spec does apply, and you should really have
+> a look at what these sizes mean. What is the value of copy-pasting
+> things without understanding it the first place?
+> =
+
+> > =
+
+> > >> +			      <0xff300000 0x10000>, /* GICC */
+> > >> +			      <0xff310000 0x10000>, /* GICH */
+> > >> +			      <0xff320000 0x10000>; /* GICV */
+> > >> +			interrupt-controller;
+> > >> +			#interrupt-cells =3D <3>;
+> > >> +			interrupts =3D <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> > >> +			#address-cells =3D <1>;
+> > >> +			#size-cells =3D <1>;
+> > >> +			ranges;
+> > >> +
+> > >> +			gic_its: msi-controller@ff120000 {
+> > >> +				compatible =3D "arm,gic-v3-its";
+> > >> +				reg =3D <0xff120000 0x20000>;
+> > >> +				msi-controller;
+> > >> +				#msi-cells =3D <1>;
+> > >> +			};
+> > > =
+
+> > > What uses the ITS?
+> > =
+
+> > DT-wise seemingly only the __symbols__ table (named just "its" there, I
+> > notice), so we could drop (or rename) the label if you prefer.
+> =
+
+> No, I am asking *what* uses the ITS. Is it just dangling without any
+> user? No PCI bus making use of it?
+
+just 2ct, as far as I remember the rk1808 does have a PCIe controller.
+And the datasheet [0] does agree with my memory it seems
+
+
+Heiko
+
+[0] http://opensource.rock-chips.com/images/4/43/Rockchip_RK1808_Datasheet_=
+V1.2_20190527.pdf
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
