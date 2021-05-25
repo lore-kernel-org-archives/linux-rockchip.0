@@ -2,58 +2,97 @@ Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B687C4707F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 12:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C184CC2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 13:49:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 089C46141B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 12:39:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 089C46141B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7C18A6141B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 13:49:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C18A6141B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dpWdy2hLtp1JISibkqhHrKubtBf50NuqRDLyTEWTScQ=; b=T34ompgZyv5NmQ
-	olJtehHdMcNFLAXDCMgpm5WLgl4qpJt+ZX+8R/mY81578AZ94kBCzmV2CRjG2NjDH9PaYjH+Qfex8
-	fFPL+rPlnpVHQ9AidQk6nUBvNRtyzRZAGuBx1DplVkeAGapQUk2l6mL/rtVyXzKDkvsFFPJLJ9lUd
-	3ruqPGdhHnktgO6PTBErgciCf/ptKHlyRo36Q1XvEZkqJyGVeOjHwOUnhY+6vW+ykvMkKncfoRSFA
-	1vZ8xZxKYkqlfiHAYWxGzO59snJKGwzvOxZt1leb6QWbiZK15L9V0UxLfxdU7YB2des/w/kEUb6xP
-	n9vOU8JXu2xAFA7iLV+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9EZh7mQszCI1Xu9Es3FtmZNAf5K8QMVfXthWrGF67bU=; b=lqeRFjSjSgBWrY
+	2o30n1xNo+EU9XJaK4F0WB6jvsnLS81JlHR+5OCLIztGYL1cZquHcn3Pd4nBFBeCNxbxzHeMi+pbG
+	C+YTnQeGqo1S/S9WLWCNVuE2L1DrFR5UpGLabPNDff4MTPDHVT8YKAMEOArIUbPPYo7fh6mKnR+Fh
+	mA0ISyH3v9zwsjTxD0iCHuSUUp6or6858cevZc/ERY60xO1QDwrO6XMF1hztX98LQ69QwSyAYmD8S
+	OA7mvQjBTPcDkvYc65NhpYeafN8poz4eX5xCOPCUyi8HDw4RAHeVIF8EyQmzmflHJ6GMh1junec5r
+	bFl22yOLB1xN4Trm2oEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llWL7-0055Vb-4i; Tue, 25 May 2021 12:39:17 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1llXQf-005RVw-4D; Tue, 25 May 2021 13:49:05 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llWKs-0055RF-UZ; Tue, 25 May 2021 12:39:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id ED3081F4241D
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
- xxm@rock-chips.com, robin.murphy@arm.com
-Cc: iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 4/4] iommu: rockchip: Add support for iommu v2
-Date: Tue, 25 May 2021 14:38:52 +0200
-Message-Id: <20210525123853.658267-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
+ id 1llXKB-005P9V-R5; Tue, 25 May 2021 13:42:25 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id m190so22780395pga.2;
+ Tue, 25 May 2021 06:42:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:references:date:in-reply-to:message-id
+ :user-agent:mime-version;
+ bh=KzV1tjzOUgr8CAy9Q+eBtOHsfgh/tvsXZP0mQn4wAHI=;
+ b=aFwHKaeGzvWdFXpX6dy0zdDRudK97kH+UcNJL+fipCR5N+3DYpI5NEb/Rrl555PlL0
+ zia9L9dywXKEV8WGtJOZRRUYtY8k4YDVLR6CrVxYm9kFzuFY7RhciV+u8pbbcmishUb6
+ BI+mXdO2FWC6PbaQqcuazXJnLvhUAcsFExbrsRFRtOu2xN/y7Cengwl64vI3MtXc3TkE
+ IXuH6KCUSFunWld8EtDTf+wEdHpYVidkOqFPvQEph2/zQ2uWrBmLICfBvTo3YCrbSztB
+ VOvH0XaJjHPULnm2Eb/7VfZMGyt2XySGq4kilfy0HbOsr/kNHWhYgxT6luzKEreK6YYh
+ gWtw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
+ :message-id:user-agent:mime-version;
+ bh=KzV1tjzOUgr8CAy9Q+eBtOHsfgh/tvsXZP0mQn4wAHI=;
+ b=p1nQOqG/A0tXgLax/FoJxW2d1+VpxAOXEZLPYSM4aC0u4PzEjwFRilHI6HtvKeJJyi
+ csd9ohWje73TnYEaBzaIcZoc/tr9pKTjFdhn365ukFkk/SKEKZXhomcyIPYhTN3SLzgd
+ SoMfPXmt6CPG89aX5xCHiX5sd58VS/IhaaOZEdPP/dlLCKsR+1SWk0nJCt1O09VouLkG
+ VGO76WWMbs8xSdF8sS+gBhHQnPOz5gXKqDCeuy0FVwoey9pUCnruBxVWHFwOny/T0vEy
+ EkHSNqlbSDQSSoel2fMjlzE2+XzM+2J8IEGnS0UkBB/NDqxeWEwh1y4NCqrISeSOYhMJ
+ gMiA==
+X-Gm-Message-State: AOAM531V9HNgTuUmGtKYfoBhGWKewIWsGqFsFtaYLJdbLbxIBWJeE56k
+ Syad07Jjhcojv5wa/YZC6NnOEVsG293btg==
+X-Google-Smtp-Source: ABdhPJztEeVX9onKWXV+RixBkOvzL7igCpbhXFnjY5Th7x7yF4N4Lx3OMN9mV6H0Oqx0O8egXBF94Q==
+X-Received: by 2002:a05:6a00:882:b029:2de:b01d:755a with SMTP id
+ q2-20020a056a000882b02902deb01d755amr30327421pfj.43.1621950141245; 
+ Tue, 25 May 2021 06:42:21 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id x23sm2069983pje.52.2021.05.25.06.42.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 May 2021 06:42:20 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: Ard Biesheuvel <ardb@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>,  Alexandru Elisei
+ <alexandru.elisei@arm.com>,  Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>,  linux-rockchip@lists.infradead.org,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,  Heiko Stuebner
+ <heiko.stuebner@theobroma-systems.com>,  leobras.c@gmail.com,  Rob Herring
+ <robh@kernel.org>,  PCI <linux-pci@vger.kernel.org>
+Subject: Re: [BUG] rockpro64: PCI BAR reassignment broken by commit
+ 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit
+ memory addresses")
+References: <7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com>
+ <01efd004-1c50-25ca-05e4-7e4ef96232e2@arm.com>
+ <87eedxbtkn.fsf@stealth>
+ <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
+Date: Tue, 25 May 2021 22:42:18 +0900
+In-Reply-To: <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
+ (Ard Biesheuvel's message of "Sun, 23 May 2021 14:10:45 +0200")
+Message-ID: <877djnaq11.fsf@stealth>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_053903_133891_A7A8B18A 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20210525_064223_958339_B2FD9224 
+X-CRM114-Status: GOOD (  30.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,160 +110,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This second version of the hardware block has a different bits
-mapping for page table entries.
-Add the ops matching to this new mapping.
-Define a new compatible to distinguish it from the first version.
+Hi Ard,
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
-version 7:
- - Set dma_bit_mask field.
- - Add rk_dma_addr_dte_v2 function
- - Rebased on v5.13-rc3
+Ard Biesheuvel <ardb@kernel.org> writes:
 
-version 5:
- - Use internal ops to support v2 hardware block
- - Use GENMASK macro.
- - Keep rk_dte_pt_address() and rk_dte_pt_address_v2() separated
-   because I believe that is more readable like this.
- - Do not duplicate code.
+> On Sun, 23 May 2021 at 13:06, Punit Agrawal <punitagrawal@gmail.com> wrote:
+>>
+>> Robin Murphy <robin.murphy@arm.com> writes:
+>>
+>> > [ +linux-pci for visibility ]
+>> >
+>> > On 2021-05-18 10:09, Alexandru Elisei wrote:
+>> >> After doing a git bisect I was able to trace the following error when booting my
+>> >> rockpro64 v2 (rk3399 SoC) with a PCIE NVME expansion card:
+>> >> [..]
+>> >> [    0.305183] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
+>> >> [    0.305248] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbdfffff ->
+>> >> 0x00fa000000
+>> >> [    0.305285] rockchip-pcie f8000000.pcie:       IO 0x00fbe00000..0x00fbefffff ->
+>> >> 0x00fbe00000
+>> >> [    0.306201] rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy
+>> >> regulator
+>> >> [    0.306334] rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy
+>> >> regulator
+>> >> [    0.373705] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
+>> >> [    0.373730] pci_bus 0000:00: root bus resource [bus 00-1f]
+>> >> [    0.373751] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
+>> >> [    0.373777] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus
+>> >> address [0xfbe00000-0xfbefffff])
+>> >> [    0.373839] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
+>> >> [    0.373973] pci 0000:00:00.0: supports D1
+>> >> [    0.373992] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+>> >> [    0.378518] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]),
+>> >> reconfiguring
+>> >> [    0.378765] pci 0000:01:00.0: [144d:a808] type 00 class 0x010802
+>> >> [    0.378869] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+>> >> [    0.379051] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 256)
+>> >> [    0.379661] pci 0000:01:00.0: 8.000 Gb/s available PCIe bandwidth, limited by
+>> >> 2.5 GT/s PCIe x4 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe
+>> >> x4 link)
+>> >> [    0.393269] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
+>> >> [    0.393311] pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
+>> >> [    0.393333] pci 0000:00:00.0: BAR 14: failed to assign [mem size 0x00100000]
+>> >> [    0.393356] pci 0000:01:00.0: BAR 0: no space for [mem size 0x00004000 64bit]
+>> >> [    0.393375] pci 0000:01:00.0: BAR 0: failed to assign [mem size 0x00004000 64bit]
+>> >> [    0.393397] pci 0000:00:00.0: PCI bridge to [bus 01]
+>> >> [    0.393839] pcieport 0000:00:00.0: PME: Signaling with IRQ 78
+>> >> [    0.394165] pcieport 0000:00:00.0: AER: enabled with IRQ 78
+>> >> [..]
+>> >> to the commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to
+>> >> resource flags for
+>> >> 64-bit memory addresses").
+>> >
+>> > FWFW, my hunch is that the host bridge advertising no 32-bit memory
+>> > resource, only only a single 64-bit non-prefetchable one (even though
+>> > it's entirely below 4GB) might be a bit weird and tripping something
+>> > up in the resource assignment code. It certainly seems like the thing
+>> > most directly related to the offending commit.
+>> >
+>> > I'd be tempted to try fiddling with that in the DT (i.e. changing
+>> > 0x83000000 to 0x82000000 in the PCIe node's "ranges" property) to see
+>> > if it makes any difference. Note that even if it helps, though, I
+>> > don't know whether that's the correct fix or just a bodge around a
+>> > corner-case bug somewhere in the resource code.
+>>
+>> From digging into this further the failure seems to be due to a mismatch
+>> of flags when allocating resources in pci_bus_alloc_from_region() -
+>>
+>>     if ((res->flags ^ r->flags) & type_mask)
+>>             continue;
+>>
+>> Though I am also not sure why the failure is only being reported on
+>> RK3399 - does a single 64-bit window have anything to do with it?
+>>
+>
+> The NVMe in the example exposes a single 64-bit non-prefetchable BAR.
+> Such BARs can not be allocated in a prefetchable host bridge window
+> (unlike the converse, i.e., allocating a prefetchable BAR in a
+> non-prefetchable host bridge window is fine)
+>
+> 64-bit non-prefetchable host bridge windows cannot be forwarded by PCI
+> to PCI bridges, they simply lack the BAR registers to describe them.
+> Therefore, non-prefetchable endpoint BARs (even 64-bit ones) need to
+> be carved out of a host bridge's non-prefetchable 32-bit window if
+> they need to pass through a bridge.
 
- drivers/iommu/rockchip-iommu.c | 85 ++++++++++++++++++++++++++++++++++
- 1 file changed, 85 insertions(+)
+Thank you for the explanation. I also looked at the PCI-to-PCI Bridge
+spec to understand where some of the limitations are coming from.
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index bd2cf7f08c71..16dd2bf4a859 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -189,6 +189,33 @@ static inline phys_addr_t rk_dte_pt_address(u32 dte)
- 	return (phys_addr_t)dte & RK_DTE_PT_ADDRESS_MASK;
- }
- 
-+/*
-+ * In v2:
-+ * 31:12 - PT address bit 31:0
-+ * 11: 8 - PT address bit 35:32
-+ *  7: 4 - PT address bit 39:36
-+ *  3: 1 - Reserved
-+ *     0 - 1 if PT @ PT address is valid
-+ */
-+#define RK_DTE_PT_ADDRESS_MASK_V2 GENMASK_ULL(31, 4)
-+#define DTE_HI_MASK1	GENMASK(11, 8)
-+#define DTE_HI_MASK2	GENMASK(7, 4)
-+#define DTE_HI_SHIFT1	24 /* shift bit 8 to bit 32 */
-+#define DTE_HI_SHIFT2	32 /* shift bit 4 to bit 36 */
-+#define PAGE_DESC_HI_MASK1	GENMASK_ULL(39, 36)
-+#define PAGE_DESC_HI_MASK2	GENMASK_ULL(35, 32)
-+
-+static inline phys_addr_t rk_dte_pt_address_v2(u32 dte)
-+{
-+	u64 dte_v2 = dte;
-+
-+	dte_v2 = ((dte_v2 & DTE_HI_MASK2) << DTE_HI_SHIFT2) |
-+		 ((dte_v2 & DTE_HI_MASK1) << DTE_HI_SHIFT1) |
-+		 (dte_v2 & RK_DTE_PT_ADDRESS_MASK);
-+
-+	return (phys_addr_t)dte_v2;
-+}
-+
- static inline bool rk_dte_is_pt_valid(u32 dte)
- {
- 	return dte & RK_DTE_PT_VALID;
-@@ -199,6 +226,15 @@ static inline u32 rk_mk_dte(dma_addr_t pt_dma)
- 	return (pt_dma & RK_DTE_PT_ADDRESS_MASK) | RK_DTE_PT_VALID;
- }
- 
-+static inline u32 rk_mk_dte_v2(dma_addr_t pt_dma)
-+{
-+	pt_dma = (pt_dma & RK_DTE_PT_ADDRESS_MASK) |
-+		 ((pt_dma & PAGE_DESC_HI_MASK1) >> DTE_HI_SHIFT1) |
-+		 (pt_dma & PAGE_DESC_HI_MASK2) >> DTE_HI_SHIFT2;
-+
-+	return (pt_dma & RK_DTE_PT_ADDRESS_MASK_V2) | RK_DTE_PT_VALID;
-+}
-+
- /*
-  * Each PTE has a Page address, some flags and a valid bit:
-  * +---------------------+---+-------+-+
-@@ -240,6 +276,29 @@ static u32 rk_mk_pte(phys_addr_t page, int prot)
- 	return page | flags | RK_PTE_PAGE_VALID;
- }
- 
-+/*
-+ * In v2:
-+ * 31:12 - Page address bit 31:0
-+ *  11:9 - Page address bit 34:32
-+ *   8:4 - Page address bit 39:35
-+ *     3 - Security
-+ *     2 - Readable
-+ *     1 - Writable
-+ *     0 - 1 if Page @ Page address is valid
-+ */
-+#define RK_PTE_PAGE_READABLE_V2      BIT(2)
-+#define RK_PTE_PAGE_WRITABLE_V2      BIT(1)
-+
-+static u32 rk_mk_pte_v2(phys_addr_t page, int prot)
-+{
-+	u32 flags = 0;
-+
-+	flags |= (prot & IOMMU_READ) ? RK_PTE_PAGE_READABLE_V2 : 0;
-+	flags |= (prot & IOMMU_WRITE) ? RK_PTE_PAGE_WRITABLE_V2 : 0;
-+
-+	return rk_mk_dte_v2(page) | flags;
-+}
-+
- static u32 rk_mk_pte_invalid(u32 pte)
- {
- 	return pte & ~RK_PTE_PAGE_VALID;
-@@ -485,6 +544,21 @@ static inline u32 rk_dma_addr_dte(dma_addr_t dt_dma)
- 	return dt_dma;
- }
- 
-+#define DT_HI_MASK GENMASK_ULL(39, 32)
-+#define DT_SHIFT   28
-+
-+static inline phys_addr_t rk_dte_addr_phys_v2(u32 addr)
-+{
-+	return (phys_addr_t)(addr & RK_DTE_PT_ADDRESS_MASK) |
-+	       ((addr & DT_HI_MASK) << DT_SHIFT);
-+}
-+
-+static inline u32 rk_dma_addr_dte_v2(dma_addr_t dt_dma)
-+{
-+	return (dt_dma & RK_DTE_PT_ADDRESS_MASK) |
-+	       ((dt_dma & DT_HI_MASK) >> DT_SHIFT);
-+}
-+
- static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
- {
- 	void __iomem *base = iommu->bases[index];
-@@ -1316,11 +1390,22 @@ static struct rk_iommu_ops iommu_data_ops_v1 = {
- 	.dma_bit_mask = DMA_BIT_MASK(32),
- };
- 
-+static struct rk_iommu_ops iommu_data_ops_v2 = {
-+	.pt_address = &rk_dte_pt_address_v2,
-+	.mk_dtentries = &rk_mk_dte_v2,
-+	.mk_ptentries = &rk_mk_pte_v2,
-+	.dte_addr_phys = &rk_dte_addr_phys_v2,
-+	.dma_addr_dte = &rk_dma_addr_dte_v2,
-+	.dma_bit_mask = DMA_BIT_MASK(40),
-+};
- 
- static const struct of_device_id rk_iommu_dt_ids[] = {
- 	{	.compatible = "rockchip,iommu",
- 		.data = &iommu_data_ops_v1,
- 	},
-+	{	.compatible = "rockchip,rk3568-iommu",
-+		.data = &iommu_data_ops_v2,
-+	},
- 	{ /* sentinel */ }
- };
- 
--- 
-2.25.1
+> So the error seems to be here that the host bridge's 32-bit
+> non-prefetchable window has the 64-bit attribute set, even though it
+> resides below 4 GB entirely. I suppose that the resource allocation
+> could be made more forgiving (and it was in the past, before commit
+> 9d57e61bf723 was applied). However, I would strongly recommend not
+> deviating from common practice, and just describe the 32-bit
+> addressable non-prefetchable resource window as such.
+
+IIUC, the host bridge's configuration (64-bit on non-prefetchable
+window) is based on what the hardware advertises.
+
+Can you elaborate on what you have in mind to correct the
+non-prefetchable resource window? Are you thinking of adding a quirk
+somewhere to address this?
+
+I am happy to put something together once I understand the preferred way
+to go about it.
+
+Thanks,
+Punit
+
+[...]
 
 
 _______________________________________________
