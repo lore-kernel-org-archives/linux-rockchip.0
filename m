@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81E35C2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AE74C2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:53:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3CFAA610CB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:50:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CFAA610CB
+	by mail.kernel.org (Postfix) with ESMTPS id C158F613F4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:53:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C158F613F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kO80gAVKcZMRghXjxVXNLS2EcEABVZGshy+5VNZHPsc=; b=rcEI1sbGLB5Thu
-	PNGZZYcQIwkZaPVqdJ7fgTZq8XE+s9dju02CChPdJVYvC71VAroEgx0brU5EdW2rPuBI5Gba+60ks
-	5hlMSU0HYtrBCFJtW9bGpVnz2blD0rYeBbj2bvtzZ7g96oPVX1+nOWL4o8GFogKdoqLmum08YfUmt
-	WaahwiamcN0A07qqH7w5UE6TcrIXb6Z1UNW1Lxc7s4MmX/aMiG14yrfl+zF46AkwipPXlr55B70LO
-	mMDAPa74PQncxm9pExw9DTqLRJArmawsj+49ryjodBwr2NUAYee9Xfl57PN9OaItc1kGxtpdh4TkW
-	qHJWJCA6Lg8BSQj/ktqA==;
+	List-Owner; bh=DV6sI+agdObVsdgYtXOoEKgEpcTBbZ3eg4tLkC/NJAM=; b=ih/mSEBP0GtfTn
+	tG2OBunHmltp76gTa0gqed6LszXOO7otfcAKAYMjfmFB1ucvKZM9CEl+TnkUkM1YrkVrUSZ2K/68Z
+	0IRq0NM9KKHIWjO/sOLfLsSEvATVbFw6fCRAorIkWI01DvTYzWtPkz+I4DysjsVOQJf552r+hb85h
+	o4ZG9VwOsVkCCl9N07gHsOAt8ufEeVrvewNOo0QrRcssyLgnzVJsByD1vdbfvMa/NE2mhfAMv66va
+	gmWS+CdSirlV4XEtFLsXQGy33WAbnoR2cXIBw079IMuVijTfYWHrTNyR/IlBX7uiRrFcseBn7z0i8
+	pK24AHL+PQ4k/7WkEuXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llZK9-0069Qx-HB; Tue, 25 May 2021 15:50:29 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1llZND-006Aie-Id; Tue, 25 May 2021 15:53:39 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llYta-005xWV-Mn; Tue, 25 May 2021 15:23:04 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id df21so36741796edb.3;
- Tue, 25 May 2021 08:23:02 -0700 (PDT)
+ id 1llYtb-005xXW-Sv; Tue, 25 May 2021 15:23:05 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id r11so36649055edt.13;
+ Tue, 25 May 2021 08:23:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6Q58oNfdPoNizxHxGHMRtWsl8A7XLb0YSPcOPFqG+RU=;
- b=Z3B7VRrHXX2mPOIGKlrTfuADjdkWuDL93jq4HIGaHP5DTpqDuGHhRikQHgdzS6pWIQ
- km7HQMDDDA9DPk4ihKVcJ21N501vok9fkw+XU4fvZa7Mo4mnZjPoTlYGgWMygeK7W1/E
- vkGVV1/rneQ7S14fybK2Ce5HtK1oD7v8KDyC8H8pOSqZUolYWSHdQ7jhZV/sVw3RNdGy
- b/AgQqWij6rMVptGIYTehULp8sxawF68dJyNk9AGdfWHkVkgaV3ZI3V2eA4BTLE6TDgj
- gqcFscCMHvR8xDv1jJc6iwMfiu3EITI/K6VRDhWa5pNQPW+cG09wAHRMbb4yJ+q8s3KJ
- FOdQ==
+ bh=Ko27frDbBXLhAvgfacRGRR+4pUjzfALcpf9gK/LPa6o=;
+ b=gvY/8YrnRNatJA/dSudBIKO9l/9Ko2aqFGsWwpgz3p++VlSDxsryN7GZkOcPiScdI5
+ Z8m2KBZhuabszpIvvTI6h67J3ClD8n9hM02W6d5btsuyqRxG/PoaEU7cmyqiIqlB39Al
+ W7aZ0GhMnhfOx86vMJSOswKnGK/r+G1+YS3eJ/QarYCkaRwf7AUGd9DFflMQejQkGllC
+ DwE0+mglMa+g5PMqlsNhRlDuYqkcZL+wtgi5F8UfQd11AAkyxbMah+hpp03xsBMnHm4O
+ xsN0NcV4h1UBlTLwO0vMwO8wL3fLjwUT5NgAwaOkFeRiQwVsLwMJH14dQz88CZR/+Xy9
+ gEfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6Q58oNfdPoNizxHxGHMRtWsl8A7XLb0YSPcOPFqG+RU=;
- b=kIrV0ELpocxiKsY1qb/dnd4JwEbcrKWIkORpyKvOY6RV1XDiVBC2xZINYdcMwnNzPW
- H9ju+o6sVV1rzfA0sDDNWopDSdPPS7g+bPx4lE4QKS8Xsl/a3tVfPHXUW+i46N4jdSHm
- wtCx1kbd74/BZ8acvTsx/ZMWLu0u11hjSVeaMZQLczO59WCtSrDidsXynddiGdjo9HMJ
- ojwlKhK9QA18AreSbTQ5ExCbAdEdRH7MLbw9vEEEmwgmQSU2LpLhCwg8jeHIiXJK+CkL
- 7YzhOYgZGFU4v3wB7+gss1KbXiwNFFRq+H8gTw6nCPNJb88CBdBepDqhox5cMjyVgMPv
- 2gqA==
-X-Gm-Message-State: AOAM531OP+V0GvDUtvGX98tHkzarPFPN/4EHjKwtXtYiPfRTLrCYK4VG
- CJEQpfIqSB35vHvLMtEMqA==
-X-Google-Smtp-Source: ABdhPJxZWLnVQUmpO6P76M2RNI2+XO5GK4VruLUNs1Rnt//H4UHP+sfpl8w/hcaCbSZKi2vZ5B35xA==
-X-Received: by 2002:a05:6402:176b:: with SMTP id
- da11mr32119743edb.234.1621956180881; 
- Tue, 25 May 2021 08:23:00 -0700 (PDT)
+ bh=Ko27frDbBXLhAvgfacRGRR+4pUjzfALcpf9gK/LPa6o=;
+ b=LWeBrMbN2Wo+wJKi5soiTuONow3WKe7qOi4uOYgvv8nl3+w4d5HzTG1jOwQA1p6Mmf
+ xa1keolJEU+/RdaHhpOJN2xF2pQi+UUOd7eZLD5roHdQ7vMG2wGoRze7CQ2b+wRq1/5d
+ 8+BSnayXolrBtfR8D39bhZNAiyaDek+KA5cSxZv9uj5fEfoogrgUC/FzaZUlJo5erm1l
+ LPlDxHSkuD76pF+EyD15FusYHlFxrUeWY0YUHJMpug0XKDZRxAZFzgPI+LFCtkOI5Qqb
+ pcxPxf1JybYKKf8+r/dmRVq3an3IgfIUusGrvNMwn3ahEov2FNFyxijCugzmGteto2Yv
+ +/nw==
+X-Gm-Message-State: AOAM53071KtePv83BIMWkFKKGSQ3dYVcpyQCpwXN9GnN/pLbQD5nr1L/
+ rZZg9JO/L/r3g1ONWbHNbQ==
+X-Google-Smtp-Source: ABdhPJxaOWTiSa4p4wqC2Gva5726GgjctkSJ3UTwEY+X1I0Eb2deWBV7kEuBJcunzKKhyVivrRgjow==
+X-Received: by 2002:a05:6402:1295:: with SMTP id
+ w21mr31060225edv.60.1621956181896; 
+ Tue, 25 May 2021 08:23:01 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:810b:f40:e00:b55:da44:4fe2:2760])
  by smtp.googlemail.com with ESMTPSA id
- e23sm11212945eds.2.2021.05.25.08.23.00
+ e23sm11212945eds.2.2021.05.25.08.23.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 May 2021 08:23:00 -0700 (PDT)
+ Tue, 25 May 2021 08:23:01 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -80,16 +80,17 @@ To: Ezequiel Garcia <ezequiel@collabora.com>,
  devicetree@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH 09/10] ARM: dts: rockchip: add vdec node for RK322x
-Date: Tue, 25 May 2021 17:22:24 +0200
-Message-Id: <20210525152225.154302-10-knaerzche@gmail.com>
+Subject: [PATCH 10/10] media: dt-bindings: media: rockchip-vdec: add RK3228
+ compatible
+Date: Tue, 25 May 2021 17:22:25 +0200
+Message-Id: <20210525152225.154302-11-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
 References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_082302_978442_9A427FD4 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20210525_082304_175854_0F7501CF 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,52 +108,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vdec IP block of RK322x is the same as RK3399 has and the driver can
-be used as-is.
+Document the RK3228 compatible for rockchip-vdec.
+Also add the optional assigned-clocks and assigned-clock-rates
+properties.
 
-Add the respective node to the device tree.
-
-Note: core and cabac clock need to be set to a specific rate which is
-done by using "assigned-clocks" / "assigned-clock-rates" properties
-(axi clock rate is currently set in the driver).
+Checked with:
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip,vdec.yaml
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/media/rockchip,vdec.yaml       | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 62d1113b7804..13c2f92ac013 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -633,6 +633,19 @@ vpu_mmu: iommu@20020800 {
- 		#iommu-cells = <0>;
- 	};
+diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+index 8d35c327018b..fbcbc93dd1bd 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+@@ -15,7 +15,11 @@ description: |-
  
-+	vdec: video-codec@20030000 {
-+		compatible = "rockchip,rk3228-vdec", "rockchip,rk3399-vdec";
-+		reg = <0x20030000 0x480>;
-+		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>,
-+			 <&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>;
-+		clock-names = "axi", "ahb", "cabac", "core";
-+		assigned-clocks = <&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>;
-+		assigned-clock-rates = <300000000>, <300000000>;
-+		power-domains = <&power RK3228_PD_RKVDEC>;
-+		iommus = <&vdec_mmu>;
-+	};
+ properties:
+   compatible:
+-    const: rockchip,rk3399-vdec
++    oneOf:
++      - const: rockchip,rk3399-vdec
++      - items:
++        - const: rockchip,rk3228-vdec
++        - const: rockchip,rk3399-vdec
+ 
+   reg:
+     maxItems: 1
+@@ -37,6 +41,10 @@ properties:
+       - const: cabac
+       - const: core
+ 
++  assigned-clocks: true
 +
- 	vdec_mmu: iommu@20030480 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20030480 0x40>, <0x200304c0 0x40>;
-@@ -641,7 +654,6 @@ vdec_mmu: iommu@20030480 {
- 		clock-names = "aclk", "iface";
- 		power-domains = <&power RK3228_PD_RKVDEC>;
- 		#iommu-cells = <0>;
--		status = "disabled";
- 	};
++  assigned-clock-rates: true
++
+   power-domains:
+     maxItems: 1
  
- 	vop: vop@20050000 {
 -- 
 2.27.0
 
