@@ -2,86 +2,57 @@ Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83300C2B9F7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 02:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EFFBC2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 12:16:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3CC6A61413
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 02:58:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CC6A61413
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1020760FEB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 12:16:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1020760FEB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w1tzw7jIKkVVBZpYRFYqL29HTw9Eh4AzHgvVRVJw/+U=; b=XT8NSqFbrgdsza
-	mryUQoXEeraSH7n4zrDackG0DJ4u1xKD1MGzi3euVdbF+QjnnIb7hViEnKTNExxY7EqvlxnRIEQ0d
-	+btQ6Utt8L+nuoRLgPtqL2VL9EGD9Hh9PiqNDF4bPZpZtO7ztQDFPqJcoewIXDCJzEhoWud8bDgBq
-	A29wZGcVw/Z0faR5JtBNat440Pd56bCl6RqieyB7wQVry+kBXoNy0WtrFYowT+9iEttKBeRS0TRRe
-	35XSj9p6I2uoMpU7wyX+KRvYODS2DyxSeaxhVk9sTKY9CejS17lYUNDUg1x9vDUDWMkppOjp+wpeX
-	nNoiEQXe3rvvKMs5SshQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Y4PftIrj1J4vFKP7V8w93AnW5kkjbqcYi/jPb+XP35g=; b=pJxho0+nzj5WxW
+	nf9IFuV6xfm1/ve27gzimiQlh8D/H3mHdJFZV9ksBm7Zo6Y0Wk35vvXTx+uKRF+gwU18/AqOtYP/T
+	hl7O23lKaHQLEEomdACx1dC+1mr3O8q6cveOHTcS0eHMUgEJSLtI9sCFyn2YdmsbRdugJ5tF3c4ub
+	QraZdusJsknlHpeN8JZtomDi8AP67NjbQalmRhE2PHO7kuzOYzajjHVF7y0shdzbwT7deLP0c5NwT
+	7397xyjxzbasDiM5/YBN8VE/RL3RYDQrOOnloLjZcLyMSdcHoJzHDdJCxi+Q3yYoGgGGMJoMDsL/u
+	jnO/4ZSzSzqxow60y8xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
-	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llNHS-00326l-3a; Tue, 25 May 2021 02:58:54 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llKb1-002TD8-DF
- for linux-rockchip@lists.infradead.org; Tue, 25 May 2021 00:06:56 +0000
-Received: by mail-lf1-x130.google.com with SMTP id i9so43132309lfe.13
- for <linux-rockchip@lists.infradead.org>; Mon, 24 May 2021 17:06:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kMpOljGnfPeM78kPggxibkmCL00Y57PzO5ZmaEV0BXY=;
- b=MewdMHu8pSiz9xtZOKCGO2UN+t5TiiRcBHH1a51nLZOQ930DNpl6gJPaV2XGMGRFVM
- e/50I9+o6cNImkcNqVmAHX1IG1yNlF+DM2eszkohBGYtUWYHCehhn6ipxRJhfR/9wxcu
- yp+JYSiP05pJjGHOkI4oqCGDNxIX+rKjQWIB2oIlP8QoqW7i9RYKKn76Ir0HgL2Vkyol
- qZ8LWSZkflFyvnqM1aEJNpem1C1r3uEIL83lAtsZ+Qs1MafIqT6TVc99DPwYyg6+YxgP
- n9xGP/9mCT8suXOUCn2J9jmJLenG4SLFB9g1rhAIWDXz8kpASz65DzXqXMLjzllemIH9
- menQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kMpOljGnfPeM78kPggxibkmCL00Y57PzO5ZmaEV0BXY=;
- b=rPsfRGHNk80IZlrcyQPPCXOjzhKLegkcNR6UaEbQQ7NtGzZtEOmlrVBs1aBCWR6m2K
- 7My3X2a57LSenVcHVf5snf0tgr6FOPIr99h0x66FEijOHny65IZ/GYm5N/DTrECUpKFl
- Sp28x82Zqmch3dpWeKZYQA6+p4ewyZBnMPr+QY0AtsgMI7UdQatgSDr2B9pFv4++NlWl
- xoXvSdeohwrUh87G9uO/HLd/U9tjcMUc/AYh++BrM17AXZhzte1Hw00iR08YBTmgE4jc
- CyFq1Q67OTMoK2z78RwPEW2oEWoed00j+kL85wj/qqag2LraeX2Wm9yPFtHvaOoVRuk3
- fQcg==
-X-Gm-Message-State: AOAM533QjQoDacoSUYHPUohDQ/5VTJhmSWwNJ50A8BMX5F07+gJcT4M8
- aM5A40WNLF4bqM0d8iTVn1jU2cfkSJeQY9ri3iaukg==
-X-Google-Smtp-Source: ABdhPJx94W96U3rvN6Jk3W8XwfHaYZxs8wqy2iOgobL2N4vLXoIZf9tS5BonEJmR9TdQKSwTD05BGaGxDwMtobVK2RA=
-X-Received: by 2002:a05:6512:1185:: with SMTP id
- g5mr12286057lfr.586.1621901213604; 
- Mon, 24 May 2021 17:06:53 -0700 (PDT)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1llVz6-004wsC-Nw; Tue, 25 May 2021 12:16:32 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1llVyd-004weB-17; Tue, 25 May 2021 12:16:04 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id ECF101F421E6
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org, will@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
+ xxm@rock-chips.com, robin.murphy@arm.com
+Cc: iommu@lists.linux-foundation.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 0/4] Add IOMMU driver for rk356x
+Date: Tue, 25 May 2021 14:15:47 +0200
+Message-Id: <20210525121551.606240-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20210510063602.505829-1-jay.xu@rock-chips.com>
- <20210510063602.505829-4-jay.xu@rock-chips.com>
-In-Reply-To: <20210510063602.505829-4-jay.xu@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 25 May 2021 02:06:43 +0200
-Message-ID: <CACRpkdaZ=3AsT9NiOKrwEDWXReDX0w_PsdgwC6fqSb4Yecry-g@mail.gmail.com>
-Subject: Re: [PATCH 3/7] gpio: separate gpio driver from pinctrl-rockchip
- driver
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Rob Herring <robh+dt@kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_170655_520045_61393618 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20210525_051603_248656_D77CC29E 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,45 +70,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 10, 2021 at 8:36 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+This series adds the IOMMU driver for rk356x SoC.
+Since a new compatible is needed to distinguish this second version of 
+IOMMU hardware block from the first one, it is an opportunity to convert
+the binding to DT schema.
 
-> Separate the gpio driver from the pinctrl driver.
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+version 7:
+ - Set DMA mask
+ - Fix rk_iommu_enable()
+ - rebased on v5.13-rc3 tag
 
-Overall this is very good and should be applied.
+version 6:
+ - Remove #include <module.h>
+ - Remove pt_address_mask field
+ - Only use once of_device_get_match_data
+ - Return an error if ops don't match
 
-> +#include "../pinctrl/core.h"
-> +#include "../pinctrl/pinctrl-rockchip.h"
+version 5:
+ - Add internal ops inside the driver to be able to add variants.
+ - Add support of v2 variant.
+ - Stop using 'version' field
+ - Use GENMASK macro
 
-Please explain in a comment exactly why you need to include
-these files. I think it should be the goal to get rid of this dependency.
+version 4:
+ - Add description for reg items
+ - Remove useless interrupt-names properties
+ - Add description for interrupts items
+ - Remove interrupt-names properties from DST files
 
-It seems that the driver can be further simplified using GPIO_GENERIC
-but we can deal with this later, once it is separate.
+version 3:
+ - Rename compatible with soc prefix
+ - Rebase on v5.12 tag
 
-> +static int rockchip_gpio_set_config(struct gpio_chip *gc, unsigned int offset,
-> +                                 unsigned long config)
-> +{
-> +       enum pin_config_param param = pinconf_to_config_param(config);
-> +
-> +       switch (param) {
-> +       case PIN_CONFIG_INPUT_DEBOUNCE:
-> +               rockchip_gpio_set_debounce(gc, offset, true);
-(...)
-> +       .set_config = rockchip_gpio_set_config,
+version 2:
+ - Fix iommu-cells typo in rk322x.dtsi
+ - Change maintainer
+ - Change reg maxItems
+ - Add power-domains property
+ 
+Benjamin Gaignard (4):
+  dt-bindings: iommu: rockchip: Convert IOMMU to DT schema
+  dt-bindings: iommu: rockchip: Add compatible for v2
+  iommu: rockchip: Add internal ops to handle variants
+  iommu: rockchip: Add support for iommu v2
 
-Can't you just use gpiochip_generic_config() and rely on the pinctrl
-back-end to deal with this?
+ .../bindings/iommu/rockchip,iommu.txt         |  38 ----
+ .../bindings/iommu/rockchip,iommu.yaml        |  85 +++++++++
+ drivers/iommu/rockchip-iommu.c                | 166 +++++++++++++++---
+ 3 files changed, 229 insertions(+), 60 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/iommu/rockchip,iommu.txt
+ create mode 100644 Documentation/devicetree/bindings/iommu/rockchip,iommu.yaml
 
-> +       .to_irq = rockchip_gpio_to_irq,
+-- 
+2.25.1
 
-Normally this should not be needed with GPIOLIB_IRQCHIP but
-since you are refactoring an existing driver it is acceptable to
-keep for now.
-
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
