@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9B09C2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69E1DC2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B695F613E6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:45:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B695F613E6
+	by mail.kernel.org (Postfix) with ESMTPS id 28898610CB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28898610CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DpqPcH2J9C5AKXtbeN/UBPFXZQi0/D/YVda4vP/p+bM=; b=JPwi4BnAT0M39q
-	m2eXkXsWjTIjPbyLhSlj3GX3L7Vn8ZDZhKWidPP2gZA9vtLEQUx2hF+YsrnrCVrAU39UnLHa0hFzq
-	u4vlXNMUU/vTRoSQgIoZcJSXakFUb6DJRkJ3u8gB/G+O4utHysCYUpaSe7DCNnI/jYph7YfxZ/Uy5
-	q+p0O66aedei2VBuTYye/T9j6ZvPD2ZEoj496RNgagVeBpYju3/d9rJ3klWw4AiJOY3AbONH52PPM
-	hm1Xa/RE4r+EJBh5qGeG2a/DP/79qhm8wOKoWoNKVJwbol5prDaAZYQn3nedGZtagycK8Q7CP4Vbp
-	I/E3+/rs6Xrw1tUqYxiQ==;
+	List-Owner; bh=QESD8t4oZMjifktc2lmZgfD05bi2lUBv1jf0odCIDRc=; b=KHFD63mgRJOBJk
+	lVmtnWc1KwPKvq8t9IqwZCwM7S9qLLRYbFdYpvtTMoulVcrTcD1mWgcnercGHK2xFqGadoYd0gYWE
+	pdtj7QGpBGFs3XmqBY7yPN4l8GPEOAa+qjX9I5Tm6VfMqOwcKu+HDRPy4NyMD8BJCIw74QrhejfvT
+	Ucphs7IFSr48Wu+vX/YpZOmnyexJBr9wuQw/zH5fAcoFJ2G0h1RV2gl45O2hHcUge9HD1w05lPN3K
+	u7vW29SqkXxdoWhtZPANbk7Thqs9F2pFTw5WmlLRI53kd3ZiJ6fqhxvJr+MslxE3hk437SMp1ffZr
+	pSzY23cmcuRCm4MQA2AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llZF4-00673r-0q; Tue, 25 May 2021 15:45:14 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1llZI5-0068VG-Ks; Tue, 25 May 2021 15:48:21 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llYtT-005xPV-0W; Tue, 25 May 2021 15:22:57 +0000
-Received: by mail-ej1-x631.google.com with SMTP id s22so47745276ejv.12;
- Tue, 25 May 2021 08:22:54 -0700 (PDT)
+ id 1llYtV-005xRy-Pr; Tue, 25 May 2021 15:23:01 +0000
+Received: by mail-ej1-x629.google.com with SMTP id i7so30116198ejc.5;
+ Tue, 25 May 2021 08:22:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xbjO6MkLDNXminXQSV71qX7NG5pVEmjmWyRuZG5Ty2c=;
- b=llNRDe9RMU29A0NrEoe6BmjikGjL9mkBhGstzytPy/hAU28oKS7ysAUAABvpLc8ozR
- tKcWh1L7/GIbePfJSniDbItGVbJFox4CFA8RCuKuEVinCzMKXWsABN1/2+4lm7SSgS+c
- lzA+g53/kLTElJNsKWZzmecCjWyyteGaJiIFxGaQ+BvxcnwFdaxYIiUl0KDcGMydidUv
- dTRhd8qaJZdUOTtcno/yqvIt2yzvizkWNcUORZHdTJcWu1Pg7+ZIyk27ah8nvan03sBI
- oVMFR3BCvSue1u+WpaDeruVyMMh9A3UtQH4wsqHDyVVBI/VX/F0JJox/EliD02a0oHsQ
- Hb/A==
+ bh=5ixCuhkxgjGYv26vAQhmjGOwIvZpVeA5pt5eYFotcBs=;
+ b=DB8Wur9B3YKbvG95JM5U+vC+Vc6lHhFHFLWiCmKUjyjroTtA22QI/wE0qNw/JjK4D1
+ qbkL5TIOzqNJuksGZ9TmQaMJ4mo5y504eQuUMRcI6qjskGzvSoDd9/CIhEXtzDpchihL
+ FTGCmEgc3ZGpK9SEqkjrcOW+tcsYLtjJjqe3PJSg12failQUsuQKZKOKMcGwT4sLtSn7
+ KCOwrPU8MVou6v5bES9sv+/n8zJqPteBeSgzrVCvO7laRQl4cNKOCbF/MduI/4j8QEJc
+ Adu2hmnYl/i5oO+gsRIokZlk4h7DK69pGI3sZsbwqAs3fYcuzS0/UnapTrkZnPxbRcR4
+ MA8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xbjO6MkLDNXminXQSV71qX7NG5pVEmjmWyRuZG5Ty2c=;
- b=Vm5ERFgIkLDzfzB6pvQa+OLgk+QRflwotqRf5b35euR/iPTo+jsaLJNORGHahyAi6g
- OCb2fKqAUbVSbCy9XE4jxJ4E9ku3C8IFIkXp0teJcSAg2L305+KjdwPKh9OFDrjBAIZA
- 0mQouOZfMxhfUILZVdON6GozSoxtmXljuA/A8Hu4oyoRj88yeQVtTiqIIy4T0Uz3GI71
- RPAkVz8U7DTVSHmvONirLksZEy70rUYzlhbuW/hwf3vdWS9OE2yjinne/2xvXjsOHfbD
- tsnVEYSL+FUXuaPlknRsXtOEiSKeiN896RlZFt/iQwosTqaknxfl/hp6d40iwj3XCijU
- IlOQ==
-X-Gm-Message-State: AOAM533nlreD2G0Fro8mph5j8aTaRp1aYZ8N9k2d7jd+xuy4z9LQeQqe
- hqpoVzbLTk/BzQCd39oItg==
-X-Google-Smtp-Source: ABdhPJyy+8pHf98xy+TmTCBUPyexGSiqfb1hzVkVkL4TPZ6uUr9EzrLC3APYKifcQvsTXrL8S2tWpg==
-X-Received: by 2002:a17:906:1299:: with SMTP id
- k25mr29402657ejb.139.1621956173419; 
- Tue, 25 May 2021 08:22:53 -0700 (PDT)
+ bh=5ixCuhkxgjGYv26vAQhmjGOwIvZpVeA5pt5eYFotcBs=;
+ b=tNrY34sCxb5SDQnLnHB1oRPgOxLB6Dpewv5PzmHAl5XjvnDlcttcUGOcdOLzGsVQEN
+ P7YCRxkLU48NTIBTFiHsEk0m6HrGf1Akjk4KxnvJTkPQWsg6OfYtWUmmhz+wF96cPK3E
+ yabvNeARqY7PhSrbDwxB9mtZkXY3etV4h1JFJ6qpiRfX7yi6OSiYOBSSIWzTxStBFuiT
+ Bd4o5dSQlk7InXwutW43VAfqlenOIDVMb5CU/IW72BXg0D4qPPbtqZsyamvYu+zBCx4C
+ UMF0b0o/58rffY2p0cT0C123TroWi0QrxX43LAa7O+lJ9fUVV8m8tlwLChIpRlPh2+zn
+ RxVQ==
+X-Gm-Message-State: AOAM532JfiUQojZBr1rCQ7zG1pk09k4Rg7kkGw0UTPF61lIMbL4Bx4pI
+ pob+mXr2WvIatzsmP69W4Hp0msfP+sLP
+X-Google-Smtp-Source: ABdhPJxBH9jYjC4YpeA7UcQJQXz/aX6+kXeGggQ/mN6D0rwwD0nlYm7Hts6QL1q2ZG0xKF5BjUGuYA==
+X-Received: by 2002:a17:906:ce49:: with SMTP id
+ se9mr30130211ejb.92.1621956176154; 
+ Tue, 25 May 2021 08:22:56 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:810b:f40:e00:b55:da44:4fe2:2760])
  by smtp.googlemail.com with ESMTPSA id
- e23sm11212945eds.2.2021.05.25.08.22.52
+ e23sm11212945eds.2.2021.05.25.08.22.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 May 2021 08:22:53 -0700 (PDT)
+ Tue, 25 May 2021 08:22:55 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -80,16 +80,16 @@ To: Ezequiel Garcia <ezequiel@collabora.com>,
  devicetree@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH 04/10] media: hantro: add support for Rockchip RK3066
-Date: Tue, 25 May 2021 17:22:19 +0200
-Message-Id: <20210525152225.154302-5-knaerzche@gmail.com>
+Subject: [PATCH 06/10] ARM: dts: rockchip: add vpu nodes for RK3066 and RK3188
+Date: Tue, 25 May 2021 17:22:21 +0200
+Message-Id: <20210525152225.154302-7-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
 References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_082255_138127_79C44D66 
-X-CRM114-Status: GOOD (  21.86  )
+X-CRM114-CacheID: sfid-20210525_082257_895024_E6E47391 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,220 +107,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RK3066's VPU IP block is the predecessor from what RK3288 has.
-The hardware differences are:
-  - supports decoding frame sizes up to 1920x1088 only
-  - doesn't have the 'G1_REG_SOFT_RESET' register
-    (requires another .reset callback for hantro_codec_ops,
-     since writing this register will result in non-working
-     IP block)
-  - has one ACLK/HCLK per vdpu/vepu
-  - ACLKs can be clocked up to 300 MHz only
-  - no MMU
-    (no changes required: CMA will be transparently used)
-
-Add a new RK3066 variant which reflect this differences. This variant
-can be used for RK3188 as well.
+Add the vpu node to the common rk3xxx.dtsi and only the powerdomain
+property to the SoC specific device trees.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c    |   1 +
- drivers/staging/media/hantro/hantro_hw.h     |   1 +
- drivers/staging/media/hantro/rk3288_vpu_hw.c | 116 +++++++++++++++++++
- 3 files changed, 118 insertions(+)
+ arch/arm/boot/dts/rk3066a.dtsi |  4 ++++
+ arch/arm/boot/dts/rk3188.dtsi  |  5 +++++
+ arch/arm/boot/dts/rk3xxx.dtsi  | 12 ++++++++++++
+ 3 files changed, 21 insertions(+)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 2f6b01c7a6a0..38ea7b24036e 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -489,6 +489,7 @@ static const struct of_device_id of_hantro_match[] = {
- 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
- 	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
- 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
-+	{ .compatible = "rockchip,rk3066-vpu", .data = &rk3066_vpu_variant, },
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 3d8b53567f16..de2bc367a15a 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -163,6 +163,7 @@ enum hantro_enc_fmt {
- extern const struct hantro_variant rk3399_vpu_variant;
- extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3288_vpu_variant;
-+extern const struct hantro_variant rk3066_vpu_variant;
- extern const struct hantro_variant imx8mq_vpu_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- 
-diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-index fefd45269e52..29805c4bd92f 100644
---- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-@@ -10,8 +10,10 @@
- 
- #include "hantro.h"
- #include "hantro_jpeg.h"
-+#include "hantro_g1_regs.h"
- #include "hantro_h1_regs.h"
- 
-+#define RK3066_ACLK_MAX_FREQ (300 * 1000 * 1000)
- #define RK3288_ACLK_MAX_FREQ (400 * 1000 * 1000)
- 
- /*
-@@ -62,6 +64,52 @@ static const struct hantro_fmt rk3288_vpu_postproc_fmts[] = {
- 	},
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index 30dcf557ec33..67d54d88fe53 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -869,6 +869,10 @@ &uart3 {
+ 	pinctrl-0 = <&uart3_xfer>;
  };
  
-+static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
-+	{
-+		.fourcc = V4L2_PIX_FMT_NV12,
-+		.codec_mode = HANTRO_MODE_NONE,
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_H264_SLICE,
-+		.codec_mode = HANTRO_MODE_H264_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1920,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 1088,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
-+		.codec_mode = HANTRO_MODE_MPEG2_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1920,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 1088,
-+			.step_height = MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_VP8_FRAME,
-+		.codec_mode = HANTRO_MODE_VP8_DEC,
-+		.max_depth = 2,
-+		.frmsize = {
-+			.min_width = 48,
-+			.max_width = 1920,
-+			.step_width = MB_DIM,
-+			.min_height = 48,
-+			.max_height = 1088,
-+			.step_height = MB_DIM,
-+		},
-+	},
++&vpu {
++	power-domains = <&power RK3066_PD_VIDEO>;
 +};
 +
- static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
-@@ -126,6 +174,14 @@ static irqreturn_t rk3288_vepu_irq(int irq, void *dev_id)
- 	return IRQ_HANDLED;
- }
- 
-+static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
-+{
-+	/* Bump ACLKs to max. possible freq. to improve performance. */
-+	clk_set_rate(vpu->clocks[0].clk, RK3066_ACLK_MAX_FREQ);
-+	clk_set_rate(vpu->clocks[0].clk, RK3066_ACLK_MAX_FREQ);
-+	return 0;
-+}
-+
- static int rk3288_vpu_hw_init(struct hantro_dev *vpu)
- {
- 	/* Bump ACLK to max. possible freq. to improve performance. */
-@@ -133,6 +189,14 @@ static int rk3288_vpu_hw_init(struct hantro_dev *vpu)
- 	return 0;
- }
- 
-+static void rk3066_vpu_dec_reset(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	vdpu_write(vpu, G1_REG_INTERRUPT_DEC_IRQ_DIS, G1_REG_INTERRUPT);
-+	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
-+}
-+
- static void rk3288_vpu_enc_reset(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
-@@ -145,6 +209,33 @@ static void rk3288_vpu_enc_reset(struct hantro_ctx *ctx)
- /*
-  * Supported codec ops.
-  */
-+static const struct hantro_codec_ops rk3066_vpu_codec_ops[] = {
-+	[HANTRO_MODE_JPEG_ENC] = {
-+		.run = hantro_h1_jpeg_enc_run,
-+		.reset = rk3288_vpu_enc_reset,
-+		.init = hantro_jpeg_enc_init,
-+		.done = hantro_jpeg_enc_done,
-+		.exit = hantro_jpeg_enc_exit,
-+	},
-+	[HANTRO_MODE_H264_DEC] = {
-+		.run = hantro_g1_h264_dec_run,
-+		.reset = rk3066_vpu_dec_reset,
-+		.init = hantro_h264_dec_init,
-+		.exit = hantro_h264_dec_exit,
-+	},
-+	[HANTRO_MODE_MPEG2_DEC] = {
-+		.run = hantro_g1_mpeg2_dec_run,
-+		.reset = rk3066_vpu_dec_reset,
-+		.init = hantro_mpeg2_dec_init,
-+		.exit = hantro_mpeg2_dec_exit,
-+	},
-+	[HANTRO_MODE_VP8_DEC] = {
-+		.run = hantro_g1_vp8_dec_run,
-+		.reset = rk3066_vpu_dec_reset,
-+		.init = hantro_vp8_dec_init,
-+		.exit = hantro_vp8_dec_exit,
-+	},
-+};
- 
- static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
- 	[HANTRO_MODE_JPEG_ENC] = {
-@@ -183,10 +274,35 @@ static const struct hantro_irq rk3288_irqs[] = {
- 	{ "vdpu", hantro_g1_irq },
+ &wdt {
+ 	compatible = "rockchip,rk3066-wdt", "snps,dw-wdt";
+ };
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 3a0c50026b07..9d982bc0170e 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -802,6 +802,11 @@ &uart3 {
+ 	pinctrl-0 = <&uart3_xfer>;
  };
  
-+static const char * const rk3066_clk_names[] = {
-+	"aclk_vdpu", "hclk_vdpu",
-+	"aclk_vepu", "hclk_vepu"
++&vpu {
++	compatible = "rockchip,rk3188-vpu", "rockchip,rk3066-vpu";
++	power-domains = <&power RK3188_PD_VIDEO>;
 +};
 +
- static const char * const rk3288_clk_names[] = {
- 	"aclk", "hclk"
+ &wdt {
+ 	compatible = "rockchip,rk3188-wdt", "snps,dw-wdt";
  };
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index d473552e8547..e974b49cff1e 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -50,6 +50,18 @@ gpu: gpu@10090000 {
+ 		status = "disabled";
+ 	};
  
-+const struct hantro_variant rk3066_vpu_variant = {
-+	.enc_offset = 0x0,
-+	.enc_fmts = rk3288_vpu_enc_fmts,
-+	.num_enc_fmts = ARRAY_SIZE(rk3288_vpu_enc_fmts),
-+	.dec_offset = 0x400,
-+	.dec_fmts = rk3066_vpu_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rk3066_vpu_dec_fmts),
-+	.postproc_fmts = rk3288_vpu_postproc_fmts,
-+	.num_postproc_fmts = ARRAY_SIZE(rk3288_vpu_postproc_fmts),
-+	.postproc_regs = &hantro_g1_postproc_regs,
-+	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
-+		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
-+	.codec_ops = rk3066_vpu_codec_ops,
-+	.irqs = rk3288_irqs,
-+	.num_irqs = ARRAY_SIZE(rk3288_irqs),
-+	.init = rk3066_vpu_hw_init,
-+	.clk_names = rk3066_clk_names,
-+	.num_clocks = ARRAY_SIZE(rk3066_clk_names)
-+};
++	vpu: video-codec@10104000 {
++		compatible = "rockchip,rk3066-vpu";
++		reg = <0x10104000 0x800>;
++		interrupts = <GIC_SPI  9 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vepu", "vdpu";
++		clocks = <&cru ACLK_VDPU>, <&cru HCLK_VDPU>,
++			 <&cru ACLK_VEPU>, <&cru HCLK_VEPU>;
++		clock-names = "aclk_vdpu", "hclk_vdpu",
++			      "aclk_vepu", "hclk_vepu";
++	};
 +
- const struct hantro_variant rk3288_vpu_variant = {
- 	.enc_offset = 0x0,
- 	.enc_fmts = rk3288_vpu_enc_fmts,
+ 	L2: cache-controller@10138000 {
+ 		compatible = "arm,pl310-cache";
+ 		reg = <0x10138000 0x1000>;
 -- 
 2.27.0
 
