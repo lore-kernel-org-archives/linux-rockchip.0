@@ -2,83 +2,94 @@ Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 578D7C2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 13:56:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 053E7C2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:42:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCB2A610CE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 13:56:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCB2A610CE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B8619613E6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:42:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8619613E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OXllq98xa9fgLRJFRN57zP2qbdQmyeFz5QVECiWbQFI=; b=4lthDRzFLdM1lv
-	5QA4vLicpjk1X5N3+I06TP5K+PJoJAKCM+Tb9CLL9mP2QqBo4pXUdzPSHf8hmUbbgRrvi69LYqtPG
-	/cpMK3Fz8e5dX5j/n7ov8WCOvhLD396IpGt08fq0Qa7p61cbQ1lcsoKyC1m+jkaeD247vY63Ye1Xh
-	GaI5mDFvQF/qh2nW0HOcSe6QLpi+KA5Yjm2pA3D82O/61tLiB1U3pciW6MI/U3hHy9zaW1Q0ze6S0
-	08dKuKsnDfBQkUwWVx9xlieo+vnecmdfibTeiklrfyPnFqCeASHPNhdtBOYatsk1dv4PJ2w8BlnAi
-	bW5SJuCrUKthadhe0nkw==;
+	List-Owner; bh=qHIEmzX7GU1IScCBM9CHJ8dOcyMX0doGL5G78t4BNfI=; b=cPsqN7R/XwBmTs
+	u693wAT4mEPd9DbCqeKHgGXB6n3E8YNW2HICjEViEFyZp/Xb0ikxMFfSJaZb00IhmQrtBwqa93spy
+	6gMxtoA/LY1NgYtxFWrHf+gOyAxzPweM2tVKAx7nP8RWDCP/vrbcvR0UaFxbfmLCRSJ0hzzfMpNxL
+	TIccO6YmOKWL/od3cPj5fnWxyLFLfsFsm1SoMwd5DgB5DCHsXPZ93zjQ21PN6rZxsoc54egqgUa4/
+	emIXvPRzV0BNj+ayXePxT9Wk3M7v/XP0bgs8dvvSPXwjsWZSpWtTwHYY+cQVCuvdHslDoas/BnkzZ
+	vJIpt2uoW94zSGj+txMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llXXg-005USJ-CK; Tue, 25 May 2021 13:56:20 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1llZCj-00661n-6a; Tue, 25 May 2021 15:42:49 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llXW7-005TwZ-7t; Tue, 25 May 2021 13:54:44 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 863366142C;
- Tue, 25 May 2021 13:54:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621950882;
- bh=6+OOCS9/FVUngfNrY9DQFsy33J0t64Gk5QDDkvoyc/k=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Mukg6E0CnlUp7ZrKD84EhWpwgWdyxScssvs1Msm9G8BQ5bvuB28InjrO+YS+/s/qW
- u2MASZVHCA/Doh6T3iVaujsek5+KQJGgz0nHe/J3pAKQdL5YgoDmyg+6UoTMWEH6yn
- BtsWYHYoUHSB5pH3OE/UqY/g1qL7+TOwm94EUTIdsM0ukCaSfliYrUEjVf7MC1OZoS
- bN8rvaSsFea4B+j9c+mF4s9FcRm07MQOne+zbEZ2k81qsu9/OUZ9c65mszxua4HVkG
- Yzadj4M4MsFbEGDv4uX9PXaKFo1Q0myW1JziiVbqBntbA/kQewWoX3zrhA5rNkc2Ww
- X4PQxIQBKL+vQ==
-Received: by mail-ot1-f52.google.com with SMTP id
- r26-20020a056830121ab02902a5ff1c9b81so28642635otp.11; 
- Tue, 25 May 2021 06:54:42 -0700 (PDT)
-X-Gm-Message-State: AOAM530yy15drfoQ5luHlkgkfPgLfCVmkoqSz+/4oxCRhxUcm3qLhCTJ
- aFQQuYp6Pm0bvZfNy3lPlleGvum7nKHw0xq4s7E=
-X-Google-Smtp-Source: ABdhPJxNQNHEVxXEnKV/+Q0uEZsr1aBEb4OZUGVwpST6TfxxtSNW2dO1sQ8H4CBWOV1b6vx9Ynlzwvg03MMcNf6Z43Q=
-X-Received: by 2002:a9d:7cd8:: with SMTP id r24mr23409093otn.90.1621950881849; 
- Tue, 25 May 2021 06:54:41 -0700 (PDT)
+ id 1llYtP-005xND-W0; Tue, 25 May 2021 15:22:53 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id z12so46506727ejw.0;
+ Tue, 25 May 2021 08:22:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=0dWrSJpZgMpxHVFRG9kZb8CpcNYTDRtnmDZpgsmj8Rc=;
+ b=MdfMs6/dhvVBw49gZTRFiPTStZUqCMgEmt0xtVc7bas1RRaRDs/hRo5f0+d+IYWMpG
+ gsxv9E+3CXuwJ+d2SfKWcxF68ZqFfusNAEaKoqGXqzCSRP6eldxMC6kP/kz6OlSmJe/I
+ BdPOOGaCADR+ZuOzbvuiX7vH6RQExYrQw6upv3qa4X7uzID51quN/Z/dp5DEjEDGas8n
+ +C6MYGK2Js5MaTbrc6CAmnvjpVnp0chuaOH0dzAZKTZb4oW3AiP1gq0iClpstztTFQfs
+ APifNEjBwKdyk+71jw+D9sqxSlCxaSNNiWK31KOMtcOCJ2EJwdvw/0mCu/lilESyf2Yg
+ 79Qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=0dWrSJpZgMpxHVFRG9kZb8CpcNYTDRtnmDZpgsmj8Rc=;
+ b=opjPIPMgPg2RR/3Ax5+DdxsMGnsplrQ7IkA6tEJ8VO57XsTJ394vRf7N8O920HOxiY
+ H7vh4E/GPkRsWkerVDQtvY3hZBUrr9rBSoAqgyNkL87azd9ddxzTgmXE8wk4x2QWY4Go
+ LfJfxfoHvIvNFGrksN3LjYrOKuQ86HqZ6PBxQHwalbWk8w6vT0hn7LyNYbv7EoSFsqYt
+ mBixe8xwHISjX/qQHhOGRVVnxPVEqCPldfZXXZuCd5TaSgTMNcvij14kKKvvg4Az9DWR
+ I6Mf1aIJY3nHTJb/6P1BvDngFG/IuxURNvHHtOcX1Ex7EC3bD1Qm46lKjAUlX2zRZQXz
+ cRCA==
+X-Gm-Message-State: AOAM531/9lbIlOKacbraDcBWwyusxKOIBkrojMb2N3GlQPaAyeQUBwK6
+ PazNUzc0IVPPtdxqAdbT7w==
+X-Google-Smtp-Source: ABdhPJxUmk0NJaqt0+4yPQJO0ZiY/x4r0Cwts2PIsVWDXopMSox53XAdL3PaTtxCFgA5pV3ndUQQpA==
+X-Received: by 2002:a17:906:e08a:: with SMTP id
+ gh10mr29017133ejb.533.1621956170435; 
+ Tue, 25 May 2021 08:22:50 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:810b:f40:e00:b55:da44:4fe2:2760])
+ by smtp.googlemail.com with ESMTPSA id
+ e23sm11212945eds.2.2021.05.25.08.22.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 May 2021 08:22:50 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [PATCH 01/10] ARM: dts: rockchip: add power controller for RK322x
+Date: Tue, 25 May 2021 17:22:16 +0200
+Message-Id: <20210525152225.154302-2-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
+References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
-References: <7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com>
- <01efd004-1c50-25ca-05e4-7e4ef96232e2@arm.com>
- <87eedxbtkn.fsf@stealth>
- <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
- <877djnaq11.fsf@stealth>
-In-Reply-To: <877djnaq11.fsf@stealth>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 25 May 2021 15:54:30 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXFk2u=tbTYpa6Vqz5ihATFq61pCDiEbfRgXL_Rw+q_9Fg@mail.gmail.com>
-Message-ID: <CAMj1kXFk2u=tbTYpa6Vqz5ihATFq61pCDiEbfRgXL_Rw+q_9Fg@mail.gmail.com>
-Subject: Re: [BUG] rockpro64: PCI BAR reassignment broken by commit
- 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit
- memory addresses")
-To: Punit Agrawal <punitagrawal@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>,
- Alexandru Elisei <alexandru.elisei@arm.com>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-rockchip@lists.infradead.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, leobras.c@gmail.com, 
- Rob Herring <robh@kernel.org>, PCI <linux-pci@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_065443_372262_032A5007 
-X-CRM114-Status: GOOD (  40.47  )
+X-CRM114-CacheID: sfid-20210525_082252_082436_3F78B79A 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,128 +107,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 May 2021 at 15:42, Punit Agrawal <punitagrawal@gmail.com> wrote:
->
-> Hi Ard,
->
-> Ard Biesheuvel <ardb@kernel.org> writes:
->
-> > On Sun, 23 May 2021 at 13:06, Punit Agrawal <punitagrawal@gmail.com> wrote:
-> >>
-> >> Robin Murphy <robin.murphy@arm.com> writes:
-> >>
-> >> > [ +linux-pci for visibility ]
-> >> >
-> >> > On 2021-05-18 10:09, Alexandru Elisei wrote:
-> >> >> After doing a git bisect I was able to trace the following error when booting my
-> >> >> rockpro64 v2 (rk3399 SoC) with a PCIE NVME expansion card:
-> >> >> [..]
-> >> >> [    0.305183] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
-> >> >> [    0.305248] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbdfffff ->
-> >> >> 0x00fa000000
-> >> >> [    0.305285] rockchip-pcie f8000000.pcie:       IO 0x00fbe00000..0x00fbefffff ->
-> >> >> 0x00fbe00000
-> >> >> [    0.306201] rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy
-> >> >> regulator
-> >> >> [    0.306334] rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy
-> >> >> regulator
-> >> >> [    0.373705] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
-> >> >> [    0.373730] pci_bus 0000:00: root bus resource [bus 00-1f]
-> >> >> [    0.373751] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-> >> >> [    0.373777] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus
-> >> >> address [0xfbe00000-0xfbefffff])
-> >> >> [    0.373839] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
-> >> >> [    0.373973] pci 0000:00:00.0: supports D1
-> >> >> [    0.373992] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-> >> >> [    0.378518] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]),
-> >> >> reconfiguring
-> >> >> [    0.378765] pci 0000:01:00.0: [144d:a808] type 00 class 0x010802
-> >> >> [    0.378869] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-> >> >> [    0.379051] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 256)
-> >> >> [    0.379661] pci 0000:01:00.0: 8.000 Gb/s available PCIe bandwidth, limited by
-> >> >> 2.5 GT/s PCIe x4 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe
-> >> >> x4 link)
-> >> >> [    0.393269] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
-> >> >> [    0.393311] pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-> >> >> [    0.393333] pci 0000:00:00.0: BAR 14: failed to assign [mem size 0x00100000]
-> >> >> [    0.393356] pci 0000:01:00.0: BAR 0: no space for [mem size 0x00004000 64bit]
-> >> >> [    0.393375] pci 0000:01:00.0: BAR 0: failed to assign [mem size 0x00004000 64bit]
-> >> >> [    0.393397] pci 0000:00:00.0: PCI bridge to [bus 01]
-> >> >> [    0.393839] pcieport 0000:00:00.0: PME: Signaling with IRQ 78
-> >> >> [    0.394165] pcieport 0000:00:00.0: AER: enabled with IRQ 78
-> >> >> [..]
-> >> >> to the commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to
-> >> >> resource flags for
-> >> >> 64-bit memory addresses").
-> >> >
-> >> > FWFW, my hunch is that the host bridge advertising no 32-bit memory
-> >> > resource, only only a single 64-bit non-prefetchable one (even though
-> >> > it's entirely below 4GB) might be a bit weird and tripping something
-> >> > up in the resource assignment code. It certainly seems like the thing
-> >> > most directly related to the offending commit.
-> >> >
-> >> > I'd be tempted to try fiddling with that in the DT (i.e. changing
-> >> > 0x83000000 to 0x82000000 in the PCIe node's "ranges" property) to see
-> >> > if it makes any difference. Note that even if it helps, though, I
-> >> > don't know whether that's the correct fix or just a bodge around a
-> >> > corner-case bug somewhere in the resource code.
-> >>
-> >> From digging into this further the failure seems to be due to a mismatch
-> >> of flags when allocating resources in pci_bus_alloc_from_region() -
-> >>
-> >>     if ((res->flags ^ r->flags) & type_mask)
-> >>             continue;
-> >>
-> >> Though I am also not sure why the failure is only being reported on
-> >> RK3399 - does a single 64-bit window have anything to do with it?
-> >>
-> >
-> > The NVMe in the example exposes a single 64-bit non-prefetchable BAR.
-> > Such BARs can not be allocated in a prefetchable host bridge window
-> > (unlike the converse, i.e., allocating a prefetchable BAR in a
-> > non-prefetchable host bridge window is fine)
-> >
-> > 64-bit non-prefetchable host bridge windows cannot be forwarded by PCI
-> > to PCI bridges, they simply lack the BAR registers to describe them.
-> > Therefore, non-prefetchable endpoint BARs (even 64-bit ones) need to
-> > be carved out of a host bridge's non-prefetchable 32-bit window if
-> > they need to pass through a bridge.
->
-> Thank you for the explanation. I also looked at the PCI-to-PCI Bridge
-> spec to understand where some of the limitations are coming from.
->
-> > So the error seems to be here that the host bridge's 32-bit
-> > non-prefetchable window has the 64-bit attribute set, even though it
-> > resides below 4 GB entirely. I suppose that the resource allocation
-> > could be made more forgiving (and it was in the past, before commit
-> > 9d57e61bf723 was applied). However, I would strongly recommend not
-> > deviating from common practice, and just describe the 32-bit
-> > addressable non-prefetchable resource window as such.
->
-> IIUC, the host bridge's configuration (64-bit on non-prefetchable
-> window) is based on what the hardware advertises.
->
+Add the power controller node and the correspondending qos nodes for
+RK322x.
+Also add the power-domain property to the nodes that are already
+present.
 
-What do you mean by 'what the hardware advertises'? The host bridge is
-apparently configured to decode a 32-bit addressable window as MMIO,
-and the question is why this window has the 64-bit attribute set in
-the DT description.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ arch/arm/boot/dts/rk322x.dtsi | 112 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-> Can you elaborate on what you have in mind to correct the
-> non-prefetchable resource window? Are you thinking of adding a quirk
-> somewhere to address this?
->
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 5774bc309eb7..c8095ede7d7a 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/clock/rk3228-cru.h>
+ #include <dt-bindings/thermal/thermal.h>
++#include <dt-bindings/power/rk3228-power.h>
+ 
+ / {
+ 	#address-cells = <1>;
+@@ -240,6 +241,65 @@ u2phy1_host: host-port {
+ 				status = "disabled";
+ 			};
+ 		};
++
++		power: power-controller {
++			compatible = "rockchip,rk3228-power-controller";
++			#power-domain-cells = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			power-domain@RK3228_PD_VIO {
++				reg = <RK3228_PD_VIO>;
++				clocks = <&cru ACLK_HDCP>,
++					 <&cru SCLK_HDCP>,
++					 <&cru ACLK_IEP>,
++					 <&cru HCLK_IEP>,
++					 <&cru ACLK_RGA>,
++					 <&cru HCLK_RGA>,
++					 <&cru SCLK_RGA>;
++				pm_qos = <&qos_hdcp>,
++					 <&qos_iep>,
++					 <&qos_rga_r>,
++					 <&qos_rga_w>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3228_PD_VOP {
++				reg = <RK3228_PD_VOP>;
++				clocks =<&cru ACLK_VOP>,
++					<&cru DCLK_VOP>,
++					<&cru HCLK_VOP>;
++				pm_qos = <&qos_vop>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3228_PD_VPU {
++				reg = <RK3228_PD_VPU>;
++				clocks = <&cru ACLK_VPU>,
++					 <&cru HCLK_VPU>;
++				pm_qos = <&qos_vpu>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3228_PD_RKVDEC {
++				reg = <RK3228_PD_RKVDEC>;
++				clocks = <&cru ACLK_RKVDEC>,
++					 <&cru HCLK_RKVDEC>,
++					 <&cru SCLK_VDEC_CABAC>,
++					 <&cru SCLK_VDEC_CORE>;
++				pm_qos = <&qos_rkvdec_r>,
++					 <&qos_rkvdec_w>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3228_PD_GPU {
++				reg = <RK3228_PD_GPU>;
++				clocks = <&cru ACLK_GPU>;
++				pm_qos = <&qos_gpu>;
++			};
++
++		};
++
+ 	};
+ 
+ 	uart0: serial@11010000 {
+@@ -546,6 +606,7 @@ gpu: gpu@20000000 {
+ 				  "ppmmu1";
+ 		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
+ 		clock-names = "bus", "core";
++		power-domains = <&power RK3228_PD_GPU>;
+ 		resets = <&cru SRST_GPU_A>;
+ 		status = "disabled";
+ 	};
+@@ -556,6 +617,7 @@ vpu_mmu: iommu@20020800 {
+ 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3228_PD_VPU>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+@@ -566,6 +628,7 @@ vdec_mmu: iommu@20030480 {
+ 		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3228_PD_RKVDEC>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+@@ -576,6 +639,7 @@ vop: vop@20050000 {
+ 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP>, <&cru DCLK_VOP>, <&cru HCLK_VOP>;
+ 		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		power-domains = <&power RK3228_PD_VOP>;
+ 		resets = <&cru SRST_VOP_A>, <&cru SRST_VOP_H>, <&cru SRST_VOP_D>;
+ 		reset-names = "axi", "ahb", "dclk";
+ 		iommus = <&vop_mmu>;
+@@ -598,6 +662,7 @@ vop_mmu: iommu@20053f00 {
+ 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3228_PD_VOP>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+@@ -608,6 +673,7 @@ rga: rga@20060000 {
+ 		interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA>;
+ 		clock-names = "aclk", "hclk", "sclk";
++		power-domains = <&power RK3228_PD_VIO>;
+ 		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
+ 		reset-names = "core", "axi", "ahb";
+ 	};
+@@ -618,6 +684,7 @@ iep_mmu: iommu@20070800 {
+ 		interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3228_PD_VIO>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+@@ -792,6 +859,51 @@ gmac: ethernet@30200000 {
+ 		status = "disabled";
+ 	};
+ 
++	qos_iep: qos@31030080 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31030080 0x20>;
++	};
++
++	qos_rga_w: qos@31030100 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31030100 0x20>;
++	};
++
++	qos_hdcp: qos@31030180 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31030180 0x20>;
++	};
++
++	qos_rga_r: qos@31030200 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31030200 0x20>;
++	};
++
++	qos_vpu: qos@31040000 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31040000 0x20>;
++	};
++
++	qos_gpu: qos@31050000 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31050000 0x20>;
++	};
++
++	qos_vop: qos@31060000 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31060000 0x20>;
++	};
++
++	qos_rkvdec_r: qos@31070000 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31070000 0x20>;
++	};
++
++	qos_rkvdec_w: qos@31070080 {
++		compatible = "rockchip,rk3228-qos", "syscon";
++		reg = <0x31070080 0x20>;
++	};
++
+ 	gic: interrupt-controller@32010000 {
+ 		compatible = "arm,gic-400";
+ 		interrupt-controller;
+-- 
+2.27.0
 
-No. Just fix the DT.
-
-> I am happy to put something together once I understand the preferred way
-> to go about it.
->
-> Thanks,
-> Punit
->
-> [...]
->
 
 _______________________________________________
 Linux-rockchip mailing list
