@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3AE8C2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AD6EC2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:46:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C04D66141C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C04D66141C
+	by mail.kernel.org (Postfix) with ESMTPS id D54A2610A6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:46:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D54A2610A6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,21 +24,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KHXiWkS+e+ZNyINB/tT8K+rmVA9Lo6UyYf+APgbBSu0=; b=Q3adIb4/8uVe7I
-	mBJ6G7GAqu7WeEgnTPL71SYb855wuS9gqFaT8EnMkGBF/7hr7jkKyZAB9jsjeZ+a5QX//DWdXx4NI
-	XoIn3coZzTNcEG28/1njHn8E1E2nPqwLWdVdzkeNBsvD9lsKdm2eMfNEd5S7KA/XCQfXEURvIYlNp
-	cnZV0HZ9NTuMTCailJL/AFh17/bqy29DkBuskA6WNJfDmxybQp+v5Wmiu5AcWx5q+lx15vBy3JmyF
-	2XO+L8jZb9Q/oYoIyG5kthgdgLduXRwzjnWxcW0yK8Hwy1WHYcJFWXJM61cftT8nQaozCxoZokCUA
-	Gg2hTBdMHS5QxU013Pow==;
+	List-Owner; bh=i272iqz+3Eoc7yaHLlCJkA3UkFK6WXX4bDmy41t4d2c=; b=ZY6YJ7085ijKek
+	m7E2vIMXjtsZX9RjFDwnm0KtxT72BRwXAfbG1oXL8aQXPjFt/GgLzPYUH0CLagBd/0FxFY2uN8It+
+	usUj+0IYPzLvX2Ar9BCoXE4KEut1IrxdW728DVD+9U6ckRQWZwAj5vn5TEcGq4GpyjuSAOU9QoH5m
+	ub6lWTfjzQpZL4CC0vPySsq4sVyZvrz8r2fqr27OL010je653bn67EBOjdpM74mhypRgU24FEDBrC
+	GDwZ9VbXBOiJ5kl/Ol5M77oF36IHXlblkxcxvUFfRhIzA/2tVxfc/QaeOo6Yf8bfSKAbg3j/HYRzc
+	pqTjoQTHQErl7btHe0Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llaAo-006XW5-NP; Tue, 25 May 2021 16:44:54 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1llaCe-006YU8-5P; Tue, 25 May 2021 16:46:48 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llZfs-006JNp-RQ; Tue, 25 May 2021 16:13:00 +0000
+ id 1llZfx-006JRN-4J; Tue, 25 May 2021 16:13:04 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 2C18E1F4282D
+ with ESMTPSA id 33B3C1F42828
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
@@ -49,16 +49,16 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 6/9] media: uapi: Add a control for HANTRO driver
-Date: Tue, 25 May 2021 18:12:35 +0200
-Message-Id: <20210525161238.1191168-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 9/9] media: hantro: IMX8M: add variant for G2/HEVC codec
+Date: Tue, 25 May 2021 18:12:38 +0200
+Message-Id: <20210525161238.1191168-10-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525161238.1191168-1-benjamin.gaignard@collabora.com>
 References: <20210525161238.1191168-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_091257_095734_9F6535EB 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20210525_091301_460232_44F7B431 
+X-CRM114-Status: GOOD (  15.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,78 +76,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HEVC HANTRO driver needs to know the number of bits to skip at
-the beginning of the slice header.
-That is a hardware specific requirement so create a dedicated control
-for this purpose.
+Add variant to IMX8M to enable G2/HEVC codec.
+Define the capabilities for the hardware up to 3840x2160.
+G2 doesn't have a postprocessor, uses the same clocks and has it
+own interrupt.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- .../userspace-api/media/drivers/hantro.rst    | 19 +++++++++++++++++++
- .../userspace-api/media/drivers/index.rst     |  1 +
- include/media/hevc-ctrls.h                    | 13 +++++++++++++
- 3 files changed, 33 insertions(+)
- create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+ drivers/staging/media/hantro/hantro_drv.c   |  1 +
+ drivers/staging/media/hantro/hantro_hw.h    |  1 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c | 96 ++++++++++++++++++++-
+ 3 files changed, 96 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/drivers/hantro.rst b/Documentation/userspace-api/media/drivers/hantro.rst
-new file mode 100644
-index 000000000000..cd9754b4e005
---- /dev/null
-+++ b/Documentation/userspace-api/media/drivers/hantro.rst
-@@ -0,0 +1,19 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+Hantro video decoder driver
-+===========================
-+
-+The Hantro video decoder driver implements the following driver-specific controls:
-+
-+``V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP (integer)``
-+    Specifies to Hantro HEVC video decoder driver the number of data (in bits) to
-+    skip in the slice segment header.
-+    If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-+    to before syntax element "slice_temporal_mvp_enabled_flag".
-+    If IDR, the skipped bits are just "pic_output_flag"
-+    (separate_colour_plane_flag is not supported).
-+
-+.. note::
-+
-+        This control is not yet part of the public kernel API and
-+        it is expected to change.
-diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
-index 1a9038f5f9fa..12e3c512d718 100644
---- a/Documentation/userspace-api/media/drivers/index.rst
-+++ b/Documentation/userspace-api/media/drivers/index.rst
-@@ -33,6 +33,7 @@ For more details see the file COPYING in the source distribution of Linux.
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index ae8a0037706f..507cd5b454b3 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -588,6 +588,7 @@ static const struct of_device_id of_hantro_match[] = {
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+ 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
++	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_SAMA5D4
+ 	{ .compatible = "microchip,sama5d4-vdec", .data = &sama5d4_vdec_variant, },
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index b743b255bf32..5cc083112017 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -206,6 +206,7 @@ extern const struct hantro_variant rk3328_vpu_variant;
+ extern const struct hantro_variant rk3288_vpu_variant;
+ extern const struct hantro_variant imx8mq_vpu_variant;
+ extern const struct hantro_variant sama5d4_vdec_variant;
++extern const struct hantro_variant imx8mq_vpu_g2_variant;
  
- 	ccs
- 	cx2341x-uapi
-+        hantro
- 	imx-uapi
- 	max2175
- 	meye-uapi
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index e53666a1127f..dc964ff7cd29 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -225,4 +225,17 @@ struct v4l2_ctrl_hevc_decode_params {
- 	__u64	flags;
+ extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
+ 
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index 9eb556460e52..ea152e1e6514 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -9,6 +9,9 @@
+ #include <linux/delay.h>
+ 
+ #include "hantro.h"
++#include "hantro_jpeg.h"
++#include "hantro_g1_regs.h"
++#include "hantro_g2_regs.h"
+ 
+ #define CTRL_SOFT_RESET		0x00
+ #define RESET_G1		BIT(1)
+@@ -128,6 +131,62 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
+ 	},
  };
  
-+/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
-+#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
-+/*
-+ * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
-+ * the number of data (in bits) to skip in the
-+ * slice segment header.
-+ * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-+ * to before syntax element "slice_temporal_mvp_enabled_flag".
-+ * If IDR, the skipped bits are just "pic_output_flag"
-+ * (separate_colour_plane_flag is not supported).
-+ */
-+#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
++static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12,
++		.codec_mode = HANTRO_MODE_NONE,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
++		.codec_mode = HANTRO_MODE_HEVC_DEC,
++		.max_depth = 2,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = MB_DIM,
++		},
++	},
++};
 +
- #endif
++static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, G1_REG_INTERRUPT);
++	state = (status & G1_REG_INTERRUPT_DEC_RDY_INT) ?
++		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, G1_REG_INTERRUPT);
++	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
++
++	hantro_irq_done(vpu, state);
++
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t imx8m_vpu_g2_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, HEVC_REG_INTERRUPT);
++	state = (status & HEVC_REG_INTERRUPT_DEC_RDY_INT) ?
++		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, HEVC_REG_INTERRUPT);
++	vdpu_write(vpu, HEVC_REG_CONFIG_DEC_CLK_GATE_E, HEVC_REG_CONFIG);
++
++	hantro_irq_done(vpu, state);
++
++	return IRQ_HANDLED;
++}
++
+ static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+ {
+ 	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+@@ -142,6 +201,13 @@ static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
+ 	imx8m_soft_reset(vpu, RESET_G1);
+ }
+ 
++static void imx8m_vpu_g2_reset(struct hantro_ctx *ctx)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	imx8m_soft_reset(vpu, RESET_G2);
++}
++
+ /*
+  * Supported codec ops.
+  */
+@@ -167,13 +233,25 @@ static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+ 	},
+ };
+ 
++static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
++	[HANTRO_MODE_HEVC_DEC] = {
++		.run = hantro_g2_hevc_dec_run,
++		.reset = imx8m_vpu_g2_reset,
++		.init = hantro_hevc_dec_init,
++		.exit = hantro_hevc_dec_exit,
++	},
++};
++
+ /*
+  * VPU variants.
+  */
+ 
+ static const struct hantro_irq imx8mq_irqs[] = {
+-	{ "g1", hantro_g1_irq },
+-	{ "g2", NULL /* TODO: imx8m_vpu_g2_irq */ },
++	{ "g1", imx8m_vpu_g1_irq },
++};
++
++static const struct hantro_irq imx8mq_g2_irqs[] = {
++	{ "g2", imx8m_vpu_g2_irq },
+ };
+ 
+ static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
+@@ -197,3 +275,17 @@ const struct hantro_variant imx8mq_vpu_variant = {
+ 	.reg_names = imx8mq_reg_names,
+ 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
+ };
++
++const struct hantro_variant imx8mq_vpu_g2_variant = {
++	.dec_offset = 0x0,
++	.dec_fmts = imx8m_vpu_g2_dec_fmts,
++	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_g2_dec_fmts),
++	.codec = HANTRO_HEVC_DECODER,
++	.codec_ops = imx8mq_vpu_g2_codec_ops,
++	.init = imx8mq_vpu_hw_init,
++	.runtime_resume = imx8mq_runtime_resume,
++	.irqs = imx8mq_g2_irqs,
++	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
++	.clk_names = imx8mq_clk_names,
++	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
++};
 -- 
 2.25.1
 
