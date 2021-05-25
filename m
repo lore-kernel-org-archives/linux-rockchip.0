@@ -2,74 +2,74 @@ Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B136C2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:43:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96662C47084
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:43:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1709613E6
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:42:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1709613E6
+	by mail.kernel.org (Postfix) with ESMTPS id 5F45860C3D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:43:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F45860C3D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xuRNxSa6b+JoTFmPjVZKX/H7ufvmf4Et1L2cuwsgbO4=; b=QNMLq0IzXX7Pra
-	BGbwRVFouArsLJy+ywIeIa+T1x+BRNPNZezRVWvq+AXusyeL3d8MHva34Lh/aLt6krNOhfwxGPm5H
-	v5SIDlQLFJG37+79yb96GYOLS5MfZW3B7FIvaoQtyiNhPNCVSKdR7VbHYTpm+HFNjaxGBMgx7PNnk
-	GxAF77Mz+R5baawYrXG67+jdlJdCNCE0q/HzqOpyGqkmlpUeWdI6w5gBiUvjpq3uL6a+CRRAL0GWs
-	CIcc65kEDNaDA6cTzXTTwQ52LzTBm89YNVHTuYHiMjjGTUfo1unDT58J7uSEtRTBg8n73K9SFFJoV
-	16lFVnWqma+o2H9C+Q+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tVum6nZAr5cP6mwOMEs4Bv1OIA0aJ3nIlQsMfAbvXNc=; b=mxBnK6E5E6fu7x
+	UCuHRx75vbO/leXXzT9BE/UyCQ2sJCs871oxUMh9NSH2i7OPlGSVXIUuLiK+cFO2An3oVHiGpxWZq
+	lDpJO12HvfLZ62CtBWKJgDn652naZMajxmfUKUk1FmkwejJaa+K0EBkYgeWw3xo2U+HfusBPlhZop
+	jjltEjKdgroEQKKrigHEcvulRrtz9t9H6ZhUv7YNFSXxm0Pr24xSVmxODHsFbDsQnEKNjLGRH4qRA
+	yUWySj1db/HuS5lN8qzoJQClxozw8VXfbBtmIdU5qwPQhKp+In30KmNFfhy4XTszmc6aPmo1eIaOg
+	HuuqL2IcZbOVHo+ZrmIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llZCn-006642-TS; Tue, 25 May 2021 15:42:53 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1llZCq-00665S-SB; Tue, 25 May 2021 15:42:57 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llYtP-005xMd-Kv; Tue, 25 May 2021 15:22:53 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id et19so40920787ejc.4;
- Tue, 25 May 2021 08:22:50 -0700 (PDT)
+ id 1llYtQ-005xNg-UC; Tue, 25 May 2021 15:22:55 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id gb17so29920264ejc.8;
+ Tue, 25 May 2021 08:22:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rJhAY+6M6l3lkNZ5wHTPFgZbqVZ72qbN/7DTJLowWC4=;
- b=D/LO853/p6Nl37MX49Fv/VQHdZCSBjh0mK2hmYEGzTVGI7snRZimKGM834bmy4vYTj
- dZFlcoOPLWyfmzdu3Zqh6IaluSV7CBbOMicdhaqDmjd7J34UUpk2g+IjgpFokjxIDecH
- gF89kI6Q2YpxP7PjrAa81O9MnaZPR8QDCfYxngngpXVO2TjDLUjlDus4+/DcwHh4jO2w
- nV3lxcssUfiUCrYwhWoEPg77KPE/YU27CRg8DRNd2wiPzg2CwokxnwsMLqE4QaCjQ7at
- RFDWwKKhDEjXvladAm3hbPOZkZTZ57qJ8CY6Ck5kfDFel+YVdV/s+O6x9POV53uO2DQQ
- iZag==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+0RnuC0ooSmKbb5ieKew3Le7GefbjO/yixv4+FcIHvM=;
+ b=cxIjQV0zVUw5vf1js/4y83zt1j+6OvDreHZ8pb3YEbmQnA15xZ1ZTT4czXaZqudf4K
+ XR8yP1lZj+JTgWvccj1EzxFyfUOVKkb/lTBMEZ7iK/T4aXBRoDxTL2hvqOylzzXIFCDe
+ qa1WJj64FbTeKjVt2Z9H4GuA+j2oKQrpGlHueLuJ+DePLBaO3EnCLV3JS/jEMac+CXip
+ L52EpI37JtI6i/SumSYQM7+n0rvd9Z1e2VhPkc9eIpexE+Jl+71jVbFEx1kmTwRzZAJT
+ vWKSc0rxiKazkohVWGXDTULu1Q7qQ0WlwA+uFE486o1qqPou30cuLQTJyqnJCckSzjvL
+ UFBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rJhAY+6M6l3lkNZ5wHTPFgZbqVZ72qbN/7DTJLowWC4=;
- b=BWs8AJVNwbesGK1ePuxVrBevDF5Yz/sGDq3EbV1G/auo00qsBe4YSx7Vk5zMDaiVvi
- geQHU7if+81hmj2V9v9zxSCN1fVriaa7zundaewsGpDF1mUUj/5l0Pv5zbS8/L715Qeb
- paDEJTmR7B42g0bnpw8/LeYLXv282xNtrJSqHJ1FEoEpB8TMYx3yDCqnrZ9f3Ca2a/iN
- ooyRHPJfBYonD34S+xl4O6N0G0P+5lap0cRp9z3w9P6Nc4ucuQZN+Dmo8156YjcKEPeU
- 9yj9rLd9L1XRgcjHyo5zlIqkIlIptHxfn5OUGknZIWfe0cXbhxShFzuTTJihza5Zksgt
- LsSQ==
-X-Gm-Message-State: AOAM533jIhdpu8mcGYKz1lnsGOyNE+hDAZurvqr5LqCiCXAxjmgzqSCw
- V4/Bjf+Gy8qjEgohkpk1RA==
-X-Google-Smtp-Source: ABdhPJzn83Td5nrvizOLNmEZVYvMJ+nRANBC4XkmMo16bcPJDx0FE2Y1K6MCW69SZLYQ5kRroa8O8w==
-X-Received: by 2002:a17:906:f20e:: with SMTP id
- gt14mr28847790ejb.368.1621956169435; 
- Tue, 25 May 2021 08:22:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+0RnuC0ooSmKbb5ieKew3Le7GefbjO/yixv4+FcIHvM=;
+ b=MXd2LKCArewS/+SFfVoOQNnBLhBhvmXi7HoGYoxuwHxNhVkLm9VT+6rJGIKj9ZVXHs
+ gKWiiPIavQhUPkfL3LJUgskeHS57c5d1KKKz93KT/2vcNNRT5tMlfbn2I9wCvF47XbHL
+ jqirWmXTHWaIfzadyPRt0QbXCgaw7x6hYvf3Ri9HDdfEv8hUoHz8sQ3twEvSHSLmfgg9
+ lrsIpOpc8uAzoT3IYO9FOplsMHiQ/lgkILNdjH0ttwtY0WxJdE2OQr646bknfBv+VaOy
+ xO0Y8lDpk6bhdLIQ4cLK9C7o81AIeVHrrKQUAVmaSTx7EFBLQIJu/rmJtLyAZXXs1aQS
+ H3gw==
+X-Gm-Message-State: AOAM532nLRV5FfupFxmXpyR3HJTQTdpOTKJzLTJpLwZxQCu6JZKUQhqx
+ eZdVNsMrEXxGAGaTOs3q6A==
+X-Google-Smtp-Source: ABdhPJyzY6ziOl4Z+B6Ig9qAMCAompJ0AbXRnqU9cfG8nRRbiIhL9veqPe0Mx+fa0rpCIP7b8jRWUw==
+X-Received: by 2002:a17:906:c0c6:: with SMTP id
+ bn6mr28208995ejb.436.1621956171343; 
+ Tue, 25 May 2021 08:22:51 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:810b:f40:e00:b55:da44:4fe2:2760])
  by smtp.googlemail.com with ESMTPSA id
- e23sm11212945eds.2.2021.05.25.08.22.48
+ e23sm11212945eds.2.2021.05.25.08.22.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 May 2021 08:22:48 -0700 (PDT)
+ Tue, 25 May 2021 08:22:51 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -80,15 +80,16 @@ To: Ezequiel Garcia <ezequiel@collabora.com>,
  devicetree@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH 00/10] Add support for older Rockchip SoCs to V4L2 hantro and
- rkvdec drivers
-Date: Tue, 25 May 2021 17:22:15 +0200
-Message-Id: <20210525152225.154302-1-knaerzche@gmail.com>
+Subject: [PATCH 02/10] ARM: dts: rockchip: add power controller for RK3036
+Date: Tue, 25 May 2021 17:22:17 +0200
+Message-Id: <20210525152225.154302-3-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
+References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_082251_743436_9C06AC97 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20210525_082253_017862_572B7619 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,48 +107,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi list,
+Add the power controller node and the correspondending qos nodes for
+RK3036.
+Also add the power-domain property to the nodes that are already
+present.
+Note: Since the regiser offsets of the axi interconnect QoS are missing
+in the TRM (RK3036 TRM V1.0), they have been taken from vendor kernel.
 
-this series adds support for older Rockchip SoCs (RK3036, RK3066, RK3188
-and RK322x) to the existing V4L2 video decoder/-encoder drivers - namely
-hantro and rkvdec.
-They can be used as-is or with very little modifications.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ arch/arm/boot/dts/rk3036.dtsi | 51 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-In preparation to that patches 1-3 add power-controller support for RK3036
-and RK322x, since both drivers rely on pm. The drivers for them exist
-already in the common Rockchip pm driver, they just haven't be added to
-the device trees yet.
-
-Thanks for your feedback,
-Alex.
-
-Alex Bee (10):
-  ARM: dts: rockchip: add power controller for RK322x
-  ARM: dts: rockchip: add power controller for RK3036
-  dt-bindings: mfd: syscon: add Rockchip RK3036/RK3228 qos compatibles
-  media: hantro: add support for Rockchip RK3066
-  media: hantro: add support for Rockchip RK3036
-  ARM: dts: rockchip: add vpu nodes for RK3066 and RK3188
-  ARM: dts: rockchip: add vpu node for RK322x
-  media: dt-bindings: media: rockchip-vpu: add new compatibles
-  ARM: dts: rockchip: add vdec node for RK322x
-  media: dt-bindings: media: rockchip-vdec: add RK3228 compatible
-
- .../bindings/media/rockchip,vdec.yaml         |  10 +-
- .../bindings/media/rockchip-vpu.yaml          |  33 +++-
- .../devicetree/bindings/mfd/syscon.yaml       |   2 +
- arch/arm/boot/dts/rk3036.dtsi                 |  51 ++++++
- arch/arm/boot/dts/rk3066a.dtsi                |   4 +
- arch/arm/boot/dts/rk3188.dtsi                 |   5 +
- arch/arm/boot/dts/rk322x.dtsi                 | 139 ++++++++++++++-
- arch/arm/boot/dts/rk3xxx.dtsi                 |  12 ++
- drivers/staging/media/hantro/hantro_drv.c     |   2 +
- drivers/staging/media/hantro/hantro_hw.h      |   2 +
- drivers/staging/media/hantro/rk3288_vpu_hw.c  | 165 ++++++++++++++++++
- 11 files changed, 414 insertions(+), 11 deletions(-)
-
-
-base-commit: 5d765451c2409e63563fa6a3e8005bd03ab9e82f
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 9ccefa8282ba..370dd03939c0 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -6,6 +6,7 @@
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/clock/rk3036-cru.h>
+ #include <dt-bindings/soc/rockchip,boot-mode.h>
++#include <dt-bindings/power/rk3036-power.h>
+ 
+ / {
+ 	#address-cells = <1>;
+@@ -111,6 +112,7 @@ gpu: gpu@10090000 {
+ 		assigned-clock-rates = <100000000>;
+ 		clocks = <&cru SCLK_GPU>, <&cru SCLK_GPU>;
+ 		clock-names = "bus", "core";
++		power-domains = <&power RK3036_PD_GPU>;
+ 		resets = <&cru SRST_GPU>;
+ 		status = "disabled";
+ 	};
+@@ -121,6 +123,7 @@ vop: vop@10118000 {
+ 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_LCDC>, <&cru SCLK_LCDC>, <&cru HCLK_LCDC>;
+ 		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++		power-domains = <&power RK3036_PD_VIO>;
+ 		resets = <&cru SRST_LCDC1_A>, <&cru SRST_LCDC1_H>, <&cru SRST_LCDC1_D>;
+ 		reset-names = "axi", "ahb", "dclk";
+ 		iommus = <&vop_mmu>;
+@@ -142,10 +145,26 @@ vop_mmu: iommu@10118300 {
+ 		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_LCDC>, <&cru HCLK_LCDC>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3036_PD_VIO>;
+ 		#iommu-cells = <0>;
+ 		status = "disabled";
+ 	};
+ 
++	qos_gpu: qos@1012d000 {
++		compatible = "rockchip,rk3036-qos", "syscon";
++		reg = <0x1012d000 0x20>;
++	};
++
++	qos_vpu: qos@1012e000 {
++		compatible = "rockchip,rk3036-qos", "syscon";
++		reg = <0x1012e000 0x20>;
++	};
++
++	qos_vio: qos@1012f000 {
++		compatible = "rockchip,rk3036-qos", "syscon";
++		reg = <0x1012f000 0x20>;
++	};
++
+ 	gic: interrupt-controller@10139000 {
+ 		compatible = "arm,gic-400";
+ 		interrupt-controller;
+@@ -301,6 +320,38 @@ grf: syscon@20008000 {
+ 		compatible = "rockchip,rk3036-grf", "syscon", "simple-mfd";
+ 		reg = <0x20008000 0x1000>;
+ 
++		power: power-controller {
++			compatible = "rockchip,rk3036-power-controller";
++			#power-domain-cells = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			power-domain@RK3036_PD_VIO {
++				reg = <RK3036_PD_VIO>;
++				clocks = <&cru ACLK_LCDC>,
++					 <&cru HCLK_LCDC>,
++					 <&cru SCLK_LCDC>;
++				pm_qos = <&qos_vio>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3036_PD_VPU {
++				reg = <RK3036_PD_VPU>;
++				clocks = <&cru ACLK_VCODEC>,
++					 <&cru HCLK_VCODEC>;
++				pm_qos = <&qos_vpu>;
++				#power-domain-cells = <0>;
++			};
++
++			power-domain@RK3036_PD_GPU {
++				reg = <RK3036_PD_GPU>;
++				clocks = <&cru SCLK_GPU>;
++				pm_qos = <&qos_gpu>;
++				#power-domain-cells = <0>;
++			};
++
++		};
++
+ 		reboot-mode {
+ 			compatible = "syscon-reboot-mode";
+ 			offset = <0x1d8>;
 -- 
 2.27.0
 
