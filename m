@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69E1DC2B9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F322C2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28898610CB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28898610CB
+	by mail.kernel.org (Postfix) with ESMTPS id D288A610CB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 15:48:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D288A610CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QESD8t4oZMjifktc2lmZgfD05bi2lUBv1jf0odCIDRc=; b=KHFD63mgRJOBJk
-	lVmtnWc1KwPKvq8t9IqwZCwM7S9qLLRYbFdYpvtTMoulVcrTcD1mWgcnercGHK2xFqGadoYd0gYWE
-	pdtj7QGpBGFs3XmqBY7yPN4l8GPEOAa+qjX9I5Tm6VfMqOwcKu+HDRPy4NyMD8BJCIw74QrhejfvT
-	Ucphs7IFSr48Wu+vX/YpZOmnyexJBr9wuQw/zH5fAcoFJ2G0h1RV2gl45O2hHcUge9HD1w05lPN3K
-	u7vW29SqkXxdoWhtZPANbk7Thqs9F2pFTw5WmlLRI53kd3ZiJ6fqhxvJr+MslxE3hk437SMp1ffZr
-	pSzY23cmcuRCm4MQA2AQ==;
+	List-Owner; bh=f2uPpQCQxEdFAaGR2niv3Q2IP6pk9MYJhj+IyMBHxyE=; b=il3qfK+KgSpvZB
+	X2/IiHQLzQ91bCRTQfjqMMmlVnnnr+i+xQsf8OMajZPcYspcm2JFDKgNx+3H4+hp/oVlCjiiK7wv9
+	bvyAydGQph3c5VFdnHl1x+FqFhxzMYJje0g/estc+iiuZyq6qa+KzKuECH4aokojFQIRuXfKK4qzV
+	R43GY6C7ehlHox7WFqru+hv05MMPEZUQ0OY20JKRwQaXtg3N8M7xUlIE/2xQmW08cXVOO8E38f1E5
+	jJTtOQNhkGEtUkb90Bq1s2nfx2h2LbWXBu2AjaGn2m29va+RVTWMY5JiH5MHlKKSJNIkZqrJ1+MpR
+	AcJbWh3IJG93UHeCMLxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llZI5-0068VG-Ks; Tue, 25 May 2021 15:48:21 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1llZIC-0068YV-M6; Tue, 25 May 2021 15:48:28 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llYtV-005xRy-Pr; Tue, 25 May 2021 15:23:01 +0000
-Received: by mail-ej1-x629.google.com with SMTP id i7so30116198ejc.5;
- Tue, 25 May 2021 08:22:57 -0700 (PDT)
+ id 1llYtY-005xUH-8Z; Tue, 25 May 2021 15:23:01 +0000
+Received: by mail-ej1-x631.google.com with SMTP id l1so47948999ejb.6;
+ Tue, 25 May 2021 08:22:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5ixCuhkxgjGYv26vAQhmjGOwIvZpVeA5pt5eYFotcBs=;
- b=DB8Wur9B3YKbvG95JM5U+vC+Vc6lHhFHFLWiCmKUjyjroTtA22QI/wE0qNw/JjK4D1
- qbkL5TIOzqNJuksGZ9TmQaMJ4mo5y504eQuUMRcI6qjskGzvSoDd9/CIhEXtzDpchihL
- FTGCmEgc3ZGpK9SEqkjrcOW+tcsYLtjJjqe3PJSg12failQUsuQKZKOKMcGwT4sLtSn7
- KCOwrPU8MVou6v5bES9sv+/n8zJqPteBeSgzrVCvO7laRQl4cNKOCbF/MduI/4j8QEJc
- Adu2hmnYl/i5oO+gsRIokZlk4h7DK69pGI3sZsbwqAs3fYcuzS0/UnapTrkZnPxbRcR4
- MA8g==
+ bh=uUSm89YnVYY5m++JvqU0akupn8UYyGqAiLVhpP+aRLo=;
+ b=cgFhgV1aSQl0X2NElaBOt8i+dOhwIWsRHzkWlleoW7PinBuOKGPhYddsJddOhFcsff
+ +AdMNPK7kwJ6W9DlUsEEh1LrD4kyovlSEMUZokol8/B+UUiAuFHF/j2kJFLlDtkc0tXt
+ TgfEtSYhegH2dTpYcTRwE1EM4dSOifVXdsscwnRB5tHExaM4ffNJopKBJ14yRWr+zFuq
+ 9kFtDtp9eqwS8RnIYqTYjTYlHhNo8MP8l/5CNm6JpHzjjWEp7QhOua5o1T0z//NRA3I2
+ 1MIOM1uGqJeH4GD8yyCPdKNmJ6Y9CZsu5xjmWndXdo39YmesTx8KM0EXT/8zOgTmxHGy
+ loNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5ixCuhkxgjGYv26vAQhmjGOwIvZpVeA5pt5eYFotcBs=;
- b=tNrY34sCxb5SDQnLnHB1oRPgOxLB6Dpewv5PzmHAl5XjvnDlcttcUGOcdOLzGsVQEN
- P7YCRxkLU48NTIBTFiHsEk0m6HrGf1Akjk4KxnvJTkPQWsg6OfYtWUmmhz+wF96cPK3E
- yabvNeARqY7PhSrbDwxB9mtZkXY3etV4h1JFJ6qpiRfX7yi6OSiYOBSSIWzTxStBFuiT
- Bd4o5dSQlk7InXwutW43VAfqlenOIDVMb5CU/IW72BXg0D4qPPbtqZsyamvYu+zBCx4C
- UMF0b0o/58rffY2p0cT0C123TroWi0QrxX43LAa7O+lJ9fUVV8m8tlwLChIpRlPh2+zn
- RxVQ==
-X-Gm-Message-State: AOAM532JfiUQojZBr1rCQ7zG1pk09k4Rg7kkGw0UTPF61lIMbL4Bx4pI
- pob+mXr2WvIatzsmP69W4Hp0msfP+sLP
-X-Google-Smtp-Source: ABdhPJxBH9jYjC4YpeA7UcQJQXz/aX6+kXeGggQ/mN6D0rwwD0nlYm7Hts6QL1q2ZG0xKF5BjUGuYA==
-X-Received: by 2002:a17:906:ce49:: with SMTP id
- se9mr30130211ejb.92.1621956176154; 
- Tue, 25 May 2021 08:22:56 -0700 (PDT)
+ bh=uUSm89YnVYY5m++JvqU0akupn8UYyGqAiLVhpP+aRLo=;
+ b=k/4IE7qBTRJ62/QqzTw6J6PW5SgUvp62BTFnuW+91RtDPEnljV8pKBwnxKSHTL1eo5
+ ymfrijV7L9FXeTR1KwW6KjElM1kgT7EGmyjxlldsgYhq1nAeYr8lWYvO8bwfIPXscql8
+ dCr2I0LgFm7lcxlaAsaIdMh2OPW6BBFwoVvtMxLkodZj5w4GT/OFPKeSGiBeIRpu8oDq
+ ZxxEki7c4eiuh8qgqOu+x/b7Eov9YgG84qkI/eo5UNAcpQnGPlNTuxtnICifPoIfimdD
+ cXG+KLVMYb/kCWqRP+ObJXEjKy7YGQi3FZdV1LXqEQzx/gw9d7nbkGQVLlab6l5b/ssE
+ 8ajg==
+X-Gm-Message-State: AOAM531u9c+Y4IQVodzXBxGK/NU4b0n5+33lcqBLW+qboZTPicFObTRD
+ NsOiAdb2VXDHnLTRoEhnvQ==
+X-Google-Smtp-Source: ABdhPJwA172I/k9A3874kTnCJ0KUPtLokMXnEWzh6Nxw5MSf8VbsUDIQJlCNDQ1BRqaD5Y+/MP1+UA==
+X-Received: by 2002:a17:906:fa90:: with SMTP id
+ lt16mr28818447ejb.411.1621956178206; 
+ Tue, 25 May 2021 08:22:58 -0700 (PDT)
 Received: from localhost.localdomain ([2a02:810b:f40:e00:b55:da44:4fe2:2760])
  by smtp.googlemail.com with ESMTPSA id
- e23sm11212945eds.2.2021.05.25.08.22.54
+ e23sm11212945eds.2.2021.05.25.08.22.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 May 2021 08:22:55 -0700 (PDT)
+ Tue, 25 May 2021 08:22:57 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -80,16 +80,16 @@ To: Ezequiel Garcia <ezequiel@collabora.com>,
  devicetree@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH 06/10] ARM: dts: rockchip: add vpu nodes for RK3066 and RK3188
-Date: Tue, 25 May 2021 17:22:21 +0200
-Message-Id: <20210525152225.154302-7-knaerzche@gmail.com>
+Subject: [PATCH 07/10] ARM: dts: rockchip: add vpu node for RK322x
+Date: Tue, 25 May 2021 17:22:22 +0200
+Message-Id: <20210525152225.154302-8-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
 References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_082257_895024_E6E47391 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20210525_082300_524394_3F2C3929 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,70 +107,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the vpu node to the common rk3xxx.dtsi and only the powerdomain
-property to the SoC specific device trees.
+The VPU IP block of RK322x is the same as RK3399 has and the driver can
+be used as-is.
+
+Add the respective nodes to the device tree.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm/boot/dts/rk3066a.dtsi |  4 ++++
- arch/arm/boot/dts/rk3188.dtsi  |  5 +++++
- arch/arm/boot/dts/rk3xxx.dtsi  | 12 ++++++++++++
- 3 files changed, 21 insertions(+)
+ arch/arm/boot/dts/rk322x.dtsi | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index 30dcf557ec33..67d54d88fe53 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -869,6 +869,10 @@ &uart3 {
- 	pinctrl-0 = <&uart3_xfer>;
- };
- 
-+&vpu {
-+	power-domains = <&power RK3066_PD_VIDEO>;
-+};
-+
- &wdt {
- 	compatible = "rockchip,rk3066-wdt", "snps,dw-wdt";
- };
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 3a0c50026b07..9d982bc0170e 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -802,6 +802,11 @@ &uart3 {
- 	pinctrl-0 = <&uart3_xfer>;
- };
- 
-+&vpu {
-+	compatible = "rockchip,rk3188-vpu", "rockchip,rk3066-vpu";
-+	power-domains = <&power RK3188_PD_VIDEO>;
-+};
-+
- &wdt {
- 	compatible = "rockchip,rk3188-wdt", "snps,dw-wdt";
- };
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index d473552e8547..e974b49cff1e 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -50,6 +50,18 @@ gpu: gpu@10090000 {
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index c8095ede7d7a..62d1113b7804 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -611,6 +611,18 @@ gpu: gpu@20000000 {
  		status = "disabled";
  	};
  
-+	vpu: video-codec@10104000 {
-+		compatible = "rockchip,rk3066-vpu";
-+		reg = <0x10104000 0x800>;
-+		interrupts = <GIC_SPI  9 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
++	vpu: video-codec@20020000 {
++		compatible = "rockchip,rk3228-vpu", "rockchip,rk3399-vpu";
++		reg = <0x20020000 0x800>;
++		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI  9 IRQ_TYPE_LEVEL_HIGH>;
 +		interrupt-names = "vepu", "vdpu";
-+		clocks = <&cru ACLK_VDPU>, <&cru HCLK_VDPU>,
-+			 <&cru ACLK_VEPU>, <&cru HCLK_VEPU>;
-+		clock-names = "aclk_vdpu", "hclk_vdpu",
-+			      "aclk_vepu", "hclk_vepu";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		clock-names = "aclk", "hclk";
++		power-domains = <&power RK3228_PD_VPU>;
++		iommus = <&vpu_mmu>;
 +	};
 +
- 	L2: cache-controller@10138000 {
- 		compatible = "arm,pl310-cache";
- 		reg = <0x10138000 0x1000>;
+ 	vpu_mmu: iommu@20020800 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x20020800 0x100>;
+@@ -619,7 +631,6 @@ vpu_mmu: iommu@20020800 {
+ 		clock-names = "aclk", "iface";
+ 		power-domains = <&power RK3228_PD_VPU>;
+ 		#iommu-cells = <0>;
+-		status = "disabled";
+ 	};
+ 
+ 	vdec_mmu: iommu@20030480 {
 -- 
 2.27.0
 
