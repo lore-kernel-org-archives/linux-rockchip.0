@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 062F7C47084
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3AE8C2B9F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C71B160FF3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C71B160FF3
+	by mail.kernel.org (Postfix) with ESMTPS id C04D66141C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 16:44:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C04D66141C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +24,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2JazeAFSa+3+ROzrm289UWk5EvjMF7OGto8WfkViKUA=; b=Ckyw2VmNnRc72m
-	0F1AIin7tlbnDvKkb0lnNyMujfO1DxlggWT+Cno4S3T3KrmRp+STZgEgB0ajj3zZLXroSw3R7SfU+
-	b+iigAZzjhRYqfckxkxRp5DKrEfisiKXK/Muth/TxeMkiP6f/zuHhs6iiHz/mC8YmMLQbcanEbRy+
-	OdokfTXHSZDvbNRiWvZXyS/a9MAvjIUH6GZPkLqatMPJ0mJCxq9qnJC7arQ7B7i/Q4Z6QU2BrGvnG
-	KeeOYbIlJakpiiaxirhrplAIaAjdLUoP1sacIk+e189OxOR7NxUh7hXenjjG9gvptHxXDGk9LbX1p
-	sNhYV9f82Lvs3rai47Rw==;
+	List-Owner; bh=KHXiWkS+e+ZNyINB/tT8K+rmVA9Lo6UyYf+APgbBSu0=; b=Q3adIb4/8uVe7I
+	mBJ6G7GAqu7WeEgnTPL71SYb855wuS9gqFaT8EnMkGBF/7hr7jkKyZAB9jsjeZ+a5QX//DWdXx4NI
+	XoIn3coZzTNcEG28/1njHn8E1E2nPqwLWdVdzkeNBsvD9lsKdm2eMfNEd5S7KA/XCQfXEURvIYlNp
+	cnZV0HZ9NTuMTCailJL/AFh17/bqy29DkBuskA6WNJfDmxybQp+v5Wmiu5AcWx5q+lx15vBy3JmyF
+	2XO+L8jZb9Q/oYoIyG5kthgdgLduXRwzjnWxcW0yK8Hwy1WHYcJFWXJM61cftT8nQaozCxoZokCUA
+	Gg2hTBdMHS5QxU013Pow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llaAk-006XTP-M7; Tue, 25 May 2021 16:44:50 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1llaAo-006XW5-NP; Tue, 25 May 2021 16:44:54 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llZft-006JOh-T1; Tue, 25 May 2021 16:13:00 +0000
+ id 1llZfs-006JNp-RQ; Tue, 25 May 2021 16:13:00 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 449031F42833
+ with ESMTPSA id 2C18E1F4282D
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
@@ -48,17 +49,16 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 7/9] media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
-Date: Tue, 25 May 2021 18:12:36 +0200
-Message-Id: <20210525161238.1191168-8-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 6/9] media: uapi: Add a control for HANTRO driver
+Date: Tue, 25 May 2021 18:12:35 +0200
+Message-Id: <20210525161238.1191168-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210525161238.1191168-1-benjamin.gaignard@collabora.com>
 References: <20210525161238.1191168-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_091258_144238_27DE47E2 
-X-CRM114-Status: UNSURE (   7.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210525_091257_095734_9F6535EB 
+X-CRM114-Status: GOOD (  17.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +76,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make sure that V4L2_PIX_FMT_HEVC_SLICE is correctly handled by the driver.
+The HEVC HANTRO driver needs to know the number of bits to skip at
+the beginning of the slice header.
+That is a hardware specific requirement so create a dedicated control
+for this purpose.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_v4l2.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../userspace-api/media/drivers/hantro.rst    | 19 +++++++++++++++++++
+ .../userspace-api/media/drivers/index.rst     |  1 +
+ include/media/hevc-ctrls.h                    | 13 +++++++++++++
+ 3 files changed, 33 insertions(+)
+ create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
 
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 77d7fe62ce81..0655324fd0d4 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -392,6 +392,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
- 	case V4L2_PIX_FMT_MPEG2_SLICE:
- 	case V4L2_PIX_FMT_VP8_FRAME:
- 	case V4L2_PIX_FMT_H264_SLICE:
-+	case V4L2_PIX_FMT_HEVC_SLICE:
- 		ctx->fh.m2m_ctx->out_q_ctx.q.requires_requests = true;
- 		break;
- 	default:
+diff --git a/Documentation/userspace-api/media/drivers/hantro.rst b/Documentation/userspace-api/media/drivers/hantro.rst
+new file mode 100644
+index 000000000000..cd9754b4e005
+--- /dev/null
++++ b/Documentation/userspace-api/media/drivers/hantro.rst
+@@ -0,0 +1,19 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++Hantro video decoder driver
++===========================
++
++The Hantro video decoder driver implements the following driver-specific controls:
++
++``V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP (integer)``
++    Specifies to Hantro HEVC video decoder driver the number of data (in bits) to
++    skip in the slice segment header.
++    If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
++    to before syntax element "slice_temporal_mvp_enabled_flag".
++    If IDR, the skipped bits are just "pic_output_flag"
++    (separate_colour_plane_flag is not supported).
++
++.. note::
++
++        This control is not yet part of the public kernel API and
++        it is expected to change.
+diff --git a/Documentation/userspace-api/media/drivers/index.rst b/Documentation/userspace-api/media/drivers/index.rst
+index 1a9038f5f9fa..12e3c512d718 100644
+--- a/Documentation/userspace-api/media/drivers/index.rst
++++ b/Documentation/userspace-api/media/drivers/index.rst
+@@ -33,6 +33,7 @@ For more details see the file COPYING in the source distribution of Linux.
+ 
+ 	ccs
+ 	cx2341x-uapi
++        hantro
+ 	imx-uapi
+ 	max2175
+ 	meye-uapi
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index e53666a1127f..dc964ff7cd29 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -225,4 +225,17 @@ struct v4l2_ctrl_hevc_decode_params {
+ 	__u64	flags;
+ };
+ 
++/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
++#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
++/*
++ * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
++ * the number of data (in bits) to skip in the
++ * slice segment header.
++ * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
++ * to before syntax element "slice_temporal_mvp_enabled_flag".
++ * If IDR, the skipped bits are just "pic_output_flag"
++ * (separate_colour_plane_flag is not supported).
++ */
++#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
++
+ #endif
 -- 
 2.25.1
 
