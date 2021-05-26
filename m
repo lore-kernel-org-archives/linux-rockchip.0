@@ -1,64 +1,114 @@
-Return-Path: <SRS0=lIs5=KU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37677C4707F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 23:06:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63E65C2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 09:12:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9973D61413
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 May 2021 23:06:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9973D61413
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 18CFB61248
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 09:12:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18CFB61248
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=aosc.io
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VZ+YvahB7q5VMZYG0+A4dvuQSVPqzEhjsjrzrf6EJQ8=; b=HA0sMR8hncrk24
-	+tJ8noIE/ckMXnoa8ZbkLFOzk6iEv9wmqX4ydA5SCdZ3vfMsLfBsrSK5+dmx+Il1a8bvfbxxmVnrm
-	0RnB6tVVNTR0z2z1dKBPCHc//0b4nLvKF0k+PcDvXnzBABnNkVabakzZsGPkEcBworM2NzdT8EKT2
-	Z27y+y3RSD3kwvip4DDmLbIGZYma+X4vH3ZGiD3itP/S6z7N/oKovk75Ha9RFhjzPhofxsBFnSVf/
-	jnmZ+khRnEhk3+n1gHymJxyVWC2S9/1gq5BH/uwF/6xXl/QDqUtCeT4sXUjeqC6+CIvx3TWZX3VSd
-	27daSCMmUz2o8OqicIWA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YdpB5D3uhCS6RsiLOHGZSEru93YHwRPxEwIlUrvUyT0=; b=VQE6JAscJU4wr4
+	I5xDiwDCYGKSHQa2fnGEPg4UU8d7G4HF14Po/CGvjIznVrKHeaz/H77hymCVk2meVfE+CJ85PngTL
+	zTptF+ow6Evk+SuHvuqlfgIObfrRF0I/i3T5JarG+MnOpq4y0AfzrSfU14IpfL91Nw7VUWSG4Qs4c
+	SJoxUwm7TArASq3UTFmdmT1rMBYXBEaDhXLGOsJul8zIFH95ECVIk27+Jj+w8TC6HyeGVa+izOD6v
+	RDoKvxpdL87H48uJgGw1P1PtwmuE3WlfC9mIiIUf+DURcl3KNwdibXdWJ4oA705br9ggIbRY5Q1s4
+	2MqKYRSGFdLsbfRxoPbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llg7q-0093pk-D0; Tue, 25 May 2021 23:06:14 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1llpa6-00ClcQ-84; Wed, 26 May 2021 09:12:02 +0000
+Received: from relay1.mymailcheap.com ([144.217.248.102])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llg6q-0093Fm-3r; Tue, 25 May 2021 23:05:13 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1llg6m-00071l-Fk; Wed, 26 May 2021 01:05:08 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Ezequiel Garcia <ezequiel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- Alex Bee <knaerzche@gmail.com>
-Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: Re: [PATCH 07/10] ARM: dts: rockchip: add vpu node for RK322x
-Date: Wed, 26 May 2021 01:05:06 +0200
-Message-ID: <4871345.LM0AJKV5NW@diego>
-In-Reply-To: <20210525152225.154302-8-knaerzche@gmail.com>
-References: <20210525152225.154302-1-knaerzche@gmail.com>
- <20210525152225.154302-8-knaerzche@gmail.com>
+ id 1llpKV-00Cevi-It; Wed, 26 May 2021 08:55:58 +0000
+Received: from filter2.mymailcheap.com (filter2.mymailcheap.com
+ [91.134.140.82])
+ by relay1.mymailcheap.com (Postfix) with ESMTPS id 504BC3F201;
+ Wed, 26 May 2021 08:55:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by filter2.mymailcheap.com (Postfix) with ESMTP id 9958E2A4EA;
+ Wed, 26 May 2021 10:55:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mymailcheap.com;
+ s=default; t=1622019347;
+ bh=HzXnVDL+eq6faYvFYt2GOI6RK0yzFGyo9W7BPLfmG0g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=fSuwiphzZlhL1cMD5Cj3QYTOu+Yvl5iNwj/bSNc3ThmDxCWLv62bw81XxLhAZNrQK
+ s8jMaRuCv6nYAZw4ZyQ0WEUeluvKlgubslfXS918875kZZuOeKQ6TML3EnlZwzr4B/
+ FCInPSiGnguE4uF0hmrqqNiLwn6D/3Vpj2969UE0=
+X-Virus-Scanned: Debian amavisd-new at filter2.mymailcheap.com
+Received: from filter2.mymailcheap.com ([127.0.0.1])
+ by localhost (filter2.mymailcheap.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RewCjoZoBAsj; Wed, 26 May 2021 10:55:46 +0200 (CEST)
+Received: from mail20.mymailcheap.com (mail20.mymailcheap.com [51.83.111.147])
+ (using TLSv1.2 with cipher ADH-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by filter2.mymailcheap.com (Postfix) with ESMTPS;
+ Wed, 26 May 2021 10:55:46 +0200 (CEST)
+Received: from [213.133.102.83] (ml.mymailcheap.com [213.133.102.83])
+ by mail20.mymailcheap.com (Postfix) with ESMTP id 7DFA440C3F;
+ Wed, 26 May 2021 08:55:45 +0000 (UTC)
+Authentication-Results: mail20.mymailcheap.com; dkim=pass (1024-bit key;
+ unprotected) header.d=aosc.io header.i=@aosc.io header.b="P7m6Mg4D"; 
+ dkim-atps=neutral
+AI-Spam-Status: Not processed
+Received: from ice-e5v2.lan (unknown [59.41.160.199])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mail20.mymailcheap.com (Postfix) with ESMTPSA id 2A7E040C3F;
+ Wed, 26 May 2021 08:55:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=aosc.io; s=default;
+ t=1622019339; bh=HzXnVDL+eq6faYvFYt2GOI6RK0yzFGyo9W7BPLfmG0g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=P7m6Mg4DoJv6hY9eNTU3V3cdRyogc9THL/qL9khspBOJmjtaUD+evzBn0U1iS0o+Q
+ xFb8XN/UFmUH4keCbl5S3afkCOLOjOdtwO1VJHXqrOVrQ1Hzp6mXiZE7Q9CILW0JVr
+ uTfMzx7mejTrAACEYw/XP3N2Rvaq6C7zV7tKX5cY=
+From: Icenowy Zheng <icenowy@aosc.io>
+To: Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Icenowy Zheng <icenowy@aosc.io>
+Subject: [PATCH] drm/rockchip: kick firmware-based framebuffer when
+ initializing
+Date: Wed, 26 May 2021 16:55:27 +0800
+Message-Id: <20210526085527.155840-1-icenowy@aosc.io>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
+X-Spamd-Result: default: False [4.90 / 20.00]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ ARC_NA(0.00)[]; R_DKIM_ALLOW(0.00)[aosc.io:s=default];
+ RECEIVED_SPAMHAUS_PBL(0.00)[59.41.160.199:received];
+ FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
+ R_MISSING_CHARSET(2.50)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ MIME_GOOD(-0.10)[text/plain]; DMARC_NA(0.00)[aosc.io];
+ BROKEN_CONTENT_TYPE(1.50)[]; R_SPF_SOFTFAIL(0.00)[~all];
+ ML_SERVERS(-3.10)[213.133.102.83]; DKIM_TRACE(0.00)[aosc.io:+];
+ RCPT_COUNT_SEVEN(0.00)[9]; MID_CONTAINS_FROM(1.00)[];
+ RCVD_NO_TLS_LAST(0.10)[]; FROM_EQ_ENVFROM(0.00)[];
+ MIME_TRACE(0.00)[0:+];
+ ASN(0.00)[asn:24940, ipnet:213.133.96.0/19, country:DE];
+ RCVD_COUNT_TWO(0.00)[2];
+ HFILTER_HELO_BAREIP(3.00)[213.133.102.83,1]
+X-Rspamd-Queue-Id: 7DFA440C3F
+X-Rspamd-Server: mail20.mymailcheap.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_160512_214315_69854F40 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20210526_015556_013767_A6FEC48C 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,56 +126,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 25. Mai 2021, 17:22:22 CEST schrieb Alex Bee:
-> The VPU IP block of RK322x is the same as RK3399 has and the driver can
-> be used as-is.
-> 
-> Add the respective nodes to the device tree.
-> 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> ---
->  arch/arm/boot/dts/rk322x.dtsi | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-> index c8095ede7d7a..62d1113b7804 100644
-> --- a/arch/arm/boot/dts/rk322x.dtsi
-> +++ b/arch/arm/boot/dts/rk322x.dtsi
-> @@ -611,6 +611,18 @@ gpu: gpu@20000000 {
->  		status = "disabled";
->  	};
->  
-> +	vpu: video-codec@20020000 {
-> +		compatible = "rockchip,rk3228-vpu", "rockchip,rk3399-vpu";
-> +		reg = <0x20020000 0x800>;
-> +		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>,
-> +			     <GIC_SPI  9 IRQ_TYPE_LEVEL_HIGH>;
-> +		interrupt-names = "vepu", "vdpu";
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		clock-names = "aclk", "hclk";
-> +		power-domains = <&power RK3228_PD_VPU>;
-> +		iommus = <&vpu_mmu>;
+Since U-Boot now supports EFI and FB passing via EFI GOP, when booting
+rockchip SoCs via EFI, a EFI FB is available. However, currently when
+re-initializing display pipeline, the EFI FB is not removed, lead to
+fbcon not working (because the EFI FB is no longer bound to the display
+pipeline although it's still /dev/fb0 and fbcon is bound to it).
 
-NIT: [if you need to resend for other reasons] iommus before power-domains please
+Add some code for removing firmware-based FB when initializing KMS of
+rockchipdrm.
 
-> +	};
-> +
->  	vpu_mmu: iommu@20020800 {
->  		compatible = "rockchip,iommu";
->  		reg = <0x20020800 0x100>;
-> @@ -619,7 +631,6 @@ vpu_mmu: iommu@20020800 {
->  		clock-names = "aclk", "iface";
->  		power-domains = <&power RK3228_PD_VPU>;
->  		#iommu-cells = <0>;
-> -		status = "disabled";
->  	};
->  
->  	vdec_mmu: iommu@20030480 {
-> 
+Tested on Pinebook Pro (RK3399) with U-Boot patchset for initializing
+eDP display applied.
 
+Signed-off-by: Icenowy Zheng <icenowy@aosc.io>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 212bd87c0c4a..3905fce6ce0b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -158,6 +158,9 @@ static int rockchip_drm_bind(struct device *dev)
+ 	 */
+ 	drm_dev->irq_enabled = true;
+ 
++	/* Remove early framebuffers (ie. efifb) */
++	drm_fb_helper_remove_conflicting_framebuffers(NULL, "rockchipdrmfb", false);
++
+ 	ret = rockchip_drm_fbdev_init(drm_dev);
+ 	if (ret)
+ 		goto err_unbind_all;
+-- 
+2.30.2
 
 _______________________________________________
 Linux-rockchip mailing list
