@@ -2,82 +2,85 @@ Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4481C47088
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 17:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC2D0C47082
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 17:46:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 59983613B9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 17:33:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59983613B9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=heitbaum.com
+	by mail.kernel.org (Postfix) with ESMTPS id AD735613CD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 17:46:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD735613CD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=edHVDH509B6Dn6NTAf/SWe42pHMdOeNCnaNutZ4xroM=; b=YF8JsOxHJCyktb
-	g3BANQiQfjo/CdYzCKsIsP9tu4V8aR5AkRB4wNpce3h2iZNZpDNQ1mLvDUrrHnDmgaGKJ/KYXHxl/
-	XzwrhI5ryHkRTo36d4KxoWBatRXv4mQkV7pP2dHBX9qcsv4mK0OKu7Xj1DcA11P0UUFLoLzyiKQfU
-	ispMLyxDDVcEjFDkB5yEAvrTGyIU2IXwUURGW1aiBH9QAh6wlBA+kd3IxtL3+9f3zcgosXscIh3Cf
-	22fZYhWx7lWKEdDS/NrvtuQakFFrjobpuJMfwiqRUKxt0kpZKvPsESbFSkHJUPnmTyHImhDi5WyeN
-	uUhwMRlD6RD2F6vJRGcw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CGAJTSmGbwxiCh24ziMKQhnGH0NOlLwNjtG0wdXV5fg=; b=Q76TtmZKjyjTI9
+	vBL4xeAdEHaPgtq2Y3nyn9znAZ1gcMSAgJjnePKj1sTTce1t4+Wm+HCpo5iCGSarNZDprg+FoEP6y
+	rqTTh+mevprA5OMplRPn/F9GMh2slcSw7OvEutpfOrYb830H2alhEPhqoh2UlyuP5SZKnrJSvUitv
+	VYVI7925PyU+1+w7F1dtqSshN2pN6L4H5eUH1ikoQEltUlMorwchHpNidg9utC6EJ/Gg6aCXTtxEb
+	WcXyOnHZX2skMxENH4CWYuHJkivPgXxWHFr3zOq2V41YEJT+35B3461u3lJe1nmOCW1GeKk1LweAy
+	IqQ7bB3TqXHWhkJT7PeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llxPc-00G9Lr-16; Wed, 26 May 2021 17:33:44 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1llxbu-00GEUF-IV; Wed, 26 May 2021 17:46:26 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llwK3-00FhqD-GF
- for linux-rockchip@lists.infradead.org; Wed, 26 May 2021 16:23:56 +0000
-Received: by mail-pg1-x533.google.com with SMTP id j12so1368229pgh.7
- for <linux-rockchip@lists.infradead.org>; Wed, 26 May 2021 09:23:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com; s=google;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=3gA9VrOSMoB8ARTOwNzx/FAC2RRzo+UnWgujJ7sE+Vg=;
- b=hw1o6LyKi/Tf03o7XXHTA0hWOc4hDYNPWAW/Qc9380ERy8w49LTljmKfxoB0gWHwzx
- PLa/V3YzSdTLK9MBsm5cNpaqGoraOfte5yuqBcO1qVewABciVG1V86NIsoyOg8d+HRNy
- /iAVcoyyjmEkcsYyYkIpXYiAmeLpWWvW7c1Os=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=3gA9VrOSMoB8ARTOwNzx/FAC2RRzo+UnWgujJ7sE+Vg=;
- b=VacLksgAhJ8Sj+p5vFjYf0xqc/GVRXg29doIpa/FwpGC7Cw9ftj3RMGQYZltqTTayJ
- INhz75rLB6fsYBDmIoyZsH4w+6HFfO31hakONK5erTH7oPgffSTW+yb6H7JkXcJp0VDv
- heZza3+CV//U63S9odONhDZXDs//vMiWw1WpuUGtMTTy2mkvQkAPBBwYv9+UPA3VFuDp
- zykI/N0gYxdmG0Tc0vXBLgaQte7rAMmOwkBqLP5SbiIMa0zGckwKe3hV85sZlswCxuGd
- NIlE7ao4058Ty6Fpnxkx6obGAXajxtN33MOFKoSRYYzfXIdY/HdXNjd1hV3rdLA6UXWB
- +YNw==
-X-Gm-Message-State: AOAM530xuQ8GshhvliyHJQ6cRHZIuXFNSMjBqBvr1XxryrPbf+FgjyWY
- uFx/j5Bty0pOfvqVjp3KmgnN/g==
-X-Google-Smtp-Source: ABdhPJzFZsOE0KGR4DZBTYb44yP9Xh1LSUaSN1gP1C1igJXhUr+iYyvOxYhrBdP+DIoKni43oJxwJw==
-X-Received: by 2002:a63:185c:: with SMTP id 28mr25928416pgy.158.1622046232752; 
- Wed, 26 May 2021 09:23:52 -0700 (PDT)
-Received: from 8bbba9ba63a4 (110-175-118-133.tpgi.com.au. [110.175.118.133])
- by smtp.gmail.com with ESMTPSA id h6sm1046433pjs.15.2021.05.26.09.23.49
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 26 May 2021 09:23:52 -0700 (PDT)
-Date: Wed, 26 May 2021 16:23:46 +0000
-From: Rudi Heitbaum <rudi@heitbaum.com>
-To: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Cc: broonie@kernel.org, ezequiel@collabora.com, chenjh@rock-chips.com,
- pgwipeout@gmail.com
-Subject: [PATCH] regulator: fan53555: add back tcs4526
-Message-ID: <20210526162342.GA20@8bbba9ba63a4>
+ id 1llwVM-00FmZr-M5; Wed, 26 May 2021 16:35:39 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2E9CD6142D;
+ Wed, 26 May 2021 16:35:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1622046936;
+ bh=9ibza90i0mKwGpI52llCPOTKOeODx3lgg2TH7rBcDQI=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Tu46kJLiOnE+0/qmOoWHynF4w9LvnZ2opcqcNtc2vYBc+lf4v0AMBpBeQHJrBeqgG
+ zrrlbKDehxAinRuQk8KTN1f4vdAphO0NjmdXkaIat4v+9jYyouQToAlExZ7qaGWauu
+ N04IC9oBCcaY5Yom3431mJuZCvCGKl6BTvzYw9Gv6078K31ayiLJO5jXF6xyxD8Fpx
+ veivUBQTfr14Ch8eCgrQwgezaM6Gb4iwovhYuL9+MVftHUbx88VrShxhfbuUjo2izO
+ a34FqB+n3YpTtyvrkNesQ15U7Q6m9Kgil25+SzIWqo0jeUIU5fFB7WCUbYxx/pP/Zn
+ AIGAj/8TZhmnA==
+Received: by mail-ot1-f49.google.com with SMTP id
+ r26-20020a056830121ab02902a5ff1c9b81so1559206otp.11; 
+ Wed, 26 May 2021 09:35:36 -0700 (PDT)
+X-Gm-Message-State: AOAM530u+jCNJ95WpY6mL4Wo2T/18jLskdA9KwLL2APiMuOD+I1P6l4s
+ /34fMV6s3LKdX8MUGUmjwyD7YzuWx9hrY3MKuBw=
+X-Google-Smtp-Source: ABdhPJwgf4NXWcpVZaVWKPi3HmJY4JkM78te5LADdxWyP1BGcyxLkjWb3MJiqEMT2sJFfwvntuEL3sxFvW7T9LPHVZ8=
+X-Received: by 2002:a9d:7cd8:: with SMTP id r24mr3103912otn.90.1622046935368; 
+ Wed, 26 May 2021 09:35:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com>
+ <01efd004-1c50-25ca-05e4-7e4ef96232e2@arm.com>
+ <87eedxbtkn.fsf@stealth>
+ <CAMj1kXE3U+16A6bO0UHG8=sx45DE6u0FtdSnoLDvfGnFJYTDrg@mail.gmail.com>
+ <877djnaq11.fsf@stealth>
+ <CAMj1kXFk2u=tbTYpa6Vqz5ihATFq61pCDiEbfRgXL_Rw+q_9Fg@mail.gmail.com>
+ <20210526153757.GA2467427@robh.at.kernel.org>
+In-Reply-To: <20210526153757.GA2467427@robh.at.kernel.org>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 26 May 2021 18:35:23 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXGF_JmuZ+rRA55-NrTQ6f20fhcHc=62AGJ71eHNU8AoBQ@mail.gmail.com>
+Message-ID: <CAMj1kXGF_JmuZ+rRA55-NrTQ6f20fhcHc=62AGJ71eHNU8AoBQ@mail.gmail.com>
+Subject: Re: [BUG] rockpro64: PCI BAR reassignment broken by commit
+ 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit
+ memory addresses")
+To: Rob Herring <robh@kernel.org>
+Cc: Punit Agrawal <punitagrawal@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexandru Elisei <alexandru.elisei@arm.com>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-rockchip@lists.infradead.org, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, leobras.c@gmail.com, 
+ PCI <linux-pci@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_092355_634190_0CD4EF1D 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20210526_093536_838752_8B7921FE 
+X-CRM114-Status: GOOD (  55.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,73 +98,202 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed, 26 May 2021 at 17:38, Rob Herring <robh@kernel.org> wrote:
+>
+> On Tue, May 25, 2021 at 03:54:30PM +0200, Ard Biesheuvel wrote:
+> > On Tue, 25 May 2021 at 15:42, Punit Agrawal <punitagrawal@gmail.com> wrote:
+> > >
+> > > Hi Ard,
+> > >
+> > > Ard Biesheuvel <ardb@kernel.org> writes:
+> > >
+> > > > On Sun, 23 May 2021 at 13:06, Punit Agrawal <punitagrawal@gmail.com> wrote:
+> > > >>
+> > > >> Robin Murphy <robin.murphy@arm.com> writes:
+> > > >>
+> > > >> > [ +linux-pci for visibility ]
+> > > >> >
+> > > >> > On 2021-05-18 10:09, Alexandru Elisei wrote:
+> > > >> >> After doing a git bisect I was able to trace the following error when booting my
+> > > >> >> rockpro64 v2 (rk3399 SoC) with a PCIE NVME expansion card:
+> > > >> >> [..]
+> > > >> >> [    0.305183] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
+> > > >> >> [    0.305248] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbdfffff ->
+> > > >> >> 0x00fa000000
+> > > >> >> [    0.305285] rockchip-pcie f8000000.pcie:       IO 0x00fbe00000..0x00fbefffff ->
+> > > >> >> 0x00fbe00000
+> > > >> >> [    0.306201] rockchip-pcie f8000000.pcie: supply vpcie1v8 not found, using dummy
+> > > >> >> regulator
+> > > >> >> [    0.306334] rockchip-pcie f8000000.pcie: supply vpcie0v9 not found, using dummy
+> > > >> >> regulator
+> > > >> >> [    0.373705] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
+> > > >> >> [    0.373730] pci_bus 0000:00: root bus resource [bus 00-1f]
+> > > >> >> [    0.373751] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
+> > > >> >> [    0.373777] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus
+> > > >> >> address [0xfbe00000-0xfbefffff])
+> > > >> >> [    0.373839] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
+> > > >> >> [    0.373973] pci 0000:00:00.0: supports D1
+> > > >> >> [    0.373992] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+> > > >> >> [    0.378518] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]),
+> > > >> >> reconfiguring
+> > > >> >> [    0.378765] pci 0000:01:00.0: [144d:a808] type 00 class 0x010802
+> > > >> >> [    0.378869] pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+> > > >> >> [    0.379051] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 256)
+> > > >> >> [    0.379661] pci 0000:01:00.0: 8.000 Gb/s available PCIe bandwidth, limited by
+> > > >> >> 2.5 GT/s PCIe x4 link at 0000:00:00.0 (capable of 31.504 Gb/s with 8.0 GT/s PCIe
+> > > >> >> x4 link)
+> > > >> >> [    0.393269] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
+> > > >> >> [    0.393311] pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
+> > > >> >> [    0.393333] pci 0000:00:00.0: BAR 14: failed to assign [mem size 0x00100000]
+> > > >> >> [    0.393356] pci 0000:01:00.0: BAR 0: no space for [mem size 0x00004000 64bit]
+> > > >> >> [    0.393375] pci 0000:01:00.0: BAR 0: failed to assign [mem size 0x00004000 64bit]
+> > > >> >> [    0.393397] pci 0000:00:00.0: PCI bridge to [bus 01]
+> > > >> >> [    0.393839] pcieport 0000:00:00.0: PME: Signaling with IRQ 78
+> > > >> >> [    0.394165] pcieport 0000:00:00.0: AER: enabled with IRQ 78
+> > > >> >> [..]
+> > > >> >> to the commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to
+> > > >> >> resource flags for
+> > > >> >> 64-bit memory addresses").
+> > > >> >
+> > > >> > FWFW, my hunch is that the host bridge advertising no 32-bit memory
+> > > >> > resource, only only a single 64-bit non-prefetchable one (even though
+> > > >> > it's entirely below 4GB) might be a bit weird and tripping something
+> > > >> > up in the resource assignment code. It certainly seems like the thing
+> > > >> > most directly related to the offending commit.
+> > > >> >
+> > > >> > I'd be tempted to try fiddling with that in the DT (i.e. changing
+> > > >> > 0x83000000 to 0x82000000 in the PCIe node's "ranges" property) to see
+> > > >> > if it makes any difference. Note that even if it helps, though, I
+> > > >> > don't know whether that's the correct fix or just a bodge around a
+> > > >> > corner-case bug somewhere in the resource code.
+> > > >>
+> > > >> From digging into this further the failure seems to be due to a mismatch
+> > > >> of flags when allocating resources in pci_bus_alloc_from_region() -
+> > > >>
+> > > >>     if ((res->flags ^ r->flags) & type_mask)
+> > > >>             continue;
+> > > >>
+> > > >> Though I am also not sure why the failure is only being reported on
+> > > >> RK3399 - does a single 64-bit window have anything to do with it?
+> > > >>
+> > > >
+> > > > The NVMe in the example exposes a single 64-bit non-prefetchable BAR.
+> > > > Such BARs can not be allocated in a prefetchable host bridge window
+> > > > (unlike the converse, i.e., allocating a prefetchable BAR in a
+> > > > non-prefetchable host bridge window is fine)
+> > > >
+> > > > 64-bit non-prefetchable host bridge windows cannot be forwarded by PCI
+> > > > to PCI bridges, they simply lack the BAR registers to describe them.
+> > > > Therefore, non-prefetchable endpoint BARs (even 64-bit ones) need to
+> > > > be carved out of a host bridge's non-prefetchable 32-bit window if
+> > > > they need to pass through a bridge.
+> > >
+> > > Thank you for the explanation. I also looked at the PCI-to-PCI Bridge
+> > > spec to understand where some of the limitations are coming from.
+> > >
+> > > > So the error seems to be here that the host bridge's 32-bit
+> > > > non-prefetchable window has the 64-bit attribute set, even though it
+> > > > resides below 4 GB entirely. I suppose that the resource allocation
+> > > > could be made more forgiving (and it was in the past, before commit
+> > > > 9d57e61bf723 was applied). However, I would strongly recommend not
+> > > > deviating from common practice, and just describe the 32-bit
+> > > > addressable non-prefetchable resource window as such.
+> > >
+> > > IIUC, the host bridge's configuration (64-bit on non-prefetchable
+> > > window) is based on what the hardware advertises.
+> > >
+> >
+> > What do you mean by 'what the hardware advertises'? The host bridge is
+> > apparently configured to decode a 32-bit addressable window as MMIO,
+> > and the question is why this window has the 64-bit attribute set in
+> > the DT description.
+> >
+> > > Can you elaborate on what you have in mind to correct the
+> > > non-prefetchable resource window? Are you thinking of adding a quirk
+> > > somewhere to address this?
+> > >
+> >
+> > No. Just fix the DT.
+>
+> We can't only fix the DT as we shouldn't require a DT update due to a
+> kernel change. Especially for RK3399 which is pretty stable and widely
+> used.
+>
+> Do I understand correctly that 64-bit non-prefetchable never correct?
 
-For rk3399pro boards the tcs4526 regulator supports the vdd_gpu
-regulator. The tcs4526 regulator has a chip id of <0>.
-Add the compatibile tcs,tcs4526  
+No. It just makes little sense for PCIe, given that root ports are
+modeled as PCI bridges, which cannot forward non-prefetchable 64-bit
+windows. But a funky root complex with integrated endpoints as well as
+root ports might have some use for it, I suppose, so we cannot rule it
+out.
 
-without this patch, the dmesg output is:
-  fan53555-regulator 0-0010: Chip ID 0 not supported!
-  fan53555-regulator 0-0010: Failed to setup device!
-  fan53555-regulator: probe of 0-0010 failed with error -22
-with this patch, the dmesg output is:
-  vdd_gpu: supplied by vcc5v0_sys
+The bottom line is really that, given that 64-bit BARs can be
+allocated in 32-bit space, and that prefetchable BARs can be allocated
+in non-prefetchable space, a 32-bit non-prefetchable window is the
+bare minimum if you are after compatibility. However, PCIe only
+permits 32-bit BARs for legacy endpoints (which includes most VGA and
+SATA controllers, for instance, but not XHCI or NVMe). So it also does
+not make a lot of sense to complain about the lack of a 32-bit
+non-prefetchable window in the general case, as there are
+embedded/integrated scenarios imaginable where you simply never plug
+such a legacy endpoint in the first place.
 
-The regulators are described as:
-- Dedicated power management IC TCS4525
-- Lithium battery protection chip TCS4526
+Note that having a 32-bit non-prefetchable and a 32-bit prefetchable
+window could also work for PCIe - the prefetchable bridge window does
+not *require* any of the upper bits to be set.
 
-This has been tested with a Radxa Rock Pi N10.
 
-Fixes: f9028dcdf589 ("regulator: fan53555: only bind tcs4525 to correct chip id")
-Signed-off-by: Rudi Heitbaum <rudi@heitbaum.com>
----
- drivers/regulator/fan53555.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/regulator/fan53555.c b/drivers/regulator/fan53555.c
-index 2695be617373..ddab9359ea20 100644
---- a/drivers/regulator/fan53555.c
-+++ b/drivers/regulator/fan53555.c
-@@ -90,6 +90,7 @@ enum {
- };
- 
- enum {
-+	TCS4525_CHIP_ID_00 = 0,
- 	TCS4525_CHIP_ID_12 = 12,
- };
- 
-@@ -373,6 +374,7 @@ static int fan53555_voltages_setup_silergy(struct fan53555_device_info *di)
- static int fan53526_voltages_setup_tcs(struct fan53555_device_info *di)
- {
- 	switch (di->chip_id) {
-+	case TCS4525_CHIP_ID_00:
- 	case TCS4525_CHIP_ID_12:
- 		di->slew_reg = TCS4525_TIME;
- 		di->slew_mask = TCS_SLEW_MASK;
-@@ -564,6 +566,9 @@ static const struct of_device_id __maybe_unused fan53555_dt_ids[] = {
- 	}, {
- 		.compatible = "tcs,tcs4525",
- 		.data = (void *)FAN53526_VENDOR_TCS
-+	}, {
-+		.compatible = "tcs,tcs4526",
-+		.data = (void *)FAN53526_VENDOR_TCS
- 	},
- 	{ }
- };
-@@ -672,6 +677,9 @@ static const struct i2c_device_id fan53555_id[] = {
- 	}, {
- 		.name = "tcs4525",
- 		.driver_data = FAN53526_VENDOR_TCS
-+	}, {
-+		.name = "tcs4526",
-+		.driver_data = FAN53526_VENDOR_TCS
- 	},
- 	{ },
- };
--- 
-2.29.2
+> We
+> recently gained a warning for this in commit fede8526cc48 ("PCI: of:
+> Warn if non-prefetchable memory aperture size is > 32-bit"), but that
+> only looks at addresses, not the 64-bit flag. Can't we just not set
+> the 64-bit flag if non-prefetchable?
+>
 
+No, that may be too restrictive - see the integrated endpoint case above.
+
+But perhaps we could clear the 64-bit flag on the resource window if
+the bus addresses are guaranteed to fit into 32 bits? Because that is
+actually the culprit here.
+
+> BTW, the DT schema is checking ranges hi cell:
+>
+>                 - 0x01000000
+>                 - 0x02000000
+>                 - 0x03000000
+>                 - 0x42000000
+>                 - 0x43000000
+>                 - 0x81000000
+>                 - 0x82000000
+>                 - 0x83000000
+>                 - 0xc2000000
+>                 - 0xc3000000
+>
+> I just went with what I found in dts files. Sounds like 03 and 83 should
+> be removed. (Really, bit 31 or relocatable should probably not be set
+> either.)
+>
+
+I don't think this needs to change.
+
+> There's a number of other cases:
+>
+> Documentation/devicetree/bindings/numa.txt:             ranges = <0x03000000 0x8010 0x00000000 0x8010 0x00000000 0x70 0x00000000>;
+> Documentation/devicetree/bindings/numa.txt:             ranges = <0x03000000 0x9010 0x00000000 0x9010 0x00000000 0x70 0x00000000>;
+> Documentation/devicetree/bindings/pci/mediatek-pcie.txt-                          0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;   /* memory space */
+> Documentation/devicetree/bindings/pci/microchip,pcie-host.yaml:                    ranges = <0x03000000 0x0 0x78000000 0x0 0x78000000 0x0 0x04000000>;
+> Documentation/devicetree/bindings/pci/mobiveil-pcie.txt:                ranges = < 0x83000000 0 0x00000000 0xa8000000 0 0x8000000>;
+> Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt:   ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x600000
+> arch/arm/boot/dts/mt7623.dtsi-                    0x83000000 0 0x60000000 0 0x60000000 0 0x10000000>;
+> arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi:               ranges = <0x83000000 0 0x00000000 0 0x00000000 0 0x20000000>;
+> arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi:               ranges = <0x83000000 0 0x00000000 0 0x30000000 0 0x20000000>;
+> arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi:               ranges = <0x83000000 0 0x00000000 0 0x60000000 0 0x00c00000>;
+> arch/arm64/boot/dts/broadcom/stingray/stingray-pcie.dtsi:       ranges = <0x83000000 0 0x10000000 0 0x10000000 0 0x20000000>;
+> arch/arm64/boot/dts/rockchip/rk3399.dtsi:               ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
+>
+> Rob
+>
 
 _______________________________________________
 Linux-rockchip mailing list
