@@ -2,101 +2,62 @@ Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47D83C47088
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC2BAC47088
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:28:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11890613C9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:08:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11890613C9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id ADEA961028
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:28:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ADEA961028
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1+q1DkZzftZqitI6JC3Y0vaZ4JZkZZywscbNCbaXsTc=; b=qxIMAjhBJLwFCRZdIY5uj201Ht
-	90Jn/Ws8G69ujKV2Svg/FGMIuBxZqeBETY9vwsX0eJFFyh9Uu/V/3YUCgMOJ9Zsa3n8uCrBPTHF5t
-	11LhB4A4YKyPKAboAN/AX7WFvJfg6/jp9nqeP9/3yn3lcw/7RICos4/DUhMpDGl1tV/HIdlLEpyGs
-	K2OVVRQhaJdWj3m6G650JVuQGLrSiM+necKCzlefgvm1pborFwRB1aoWjKChRHaInLyNPqZKMc9q3
-	sKKA3FeyftSmdmTT4TVdRTl8irGZJHYYP+ZJWfYcpd2LIf7jiesX/lTQkcHAeK0Li4pToLJN7OkDK
-	KTyQLoow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9Ll039VtwajVMHDpBDUJUEq4Jt7UeI2IAFE8At+RRsM=; b=1Qd7GZLLJypHjH
+	eu9o3qRug1TYXzcgRTzh0yWZWzySWPfQapPuGd7NCgdlaMifBclqJCKOCnCfvvHlz9WMDugnpDFLr
+	M3cnaL8ox9TXdbWxypWA/pRReSnoldhcqWbEXK+gPkLEPp2N3NNZ8+S2w7jE8petyMtNnOZovZDqN
+	313hurNcQ7/nv5Lj/r5lVkbd0mHeVe/KlN/47UkSubXNgT3CuEmx1PFCPYFNcksnjT79SZvHZp3Fu
+	RqoKiC/EnISJyIvchay2M/mg4fIeuDQUNZ/zANsxCQfFJz6DsQGYePBMqMN6slxhS6cggQS8b095t
+	Ol9grpdCCk561aNhl0ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lluD1-00Ej43-UH; Wed, 26 May 2021 14:08:32 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1lluVs-00EsSS-Lq; Wed, 26 May 2021 14:28:00 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llsl3-00E20w-BZ; Wed, 26 May 2021 12:35:36 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 14QCZGMg006614;
- Wed, 26 May 2021 07:35:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1622032516;
- bh=3bBG8BqrGtdkKHvGc5OmGFJ5N2skyD9sMRW9+N98L+o=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=AQQjUuHvb8tTt9TCk++YgygGukBZ1fpcROn+F1ysRMsZzDJlEX0FrdQbmad2L/qjQ
- 9juB1F7EyXkcx6CWnoRy8xUMOahaq6+yrOb77px7qAdK+hOZ3aDXIzjOkS7fdpnaCm
- Qy8QFYLy2i6fJu4xaJfbryxViplR6b1RVXNC8pho=
-Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 14QCZFBC103444
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 26 May 2021 07:35:15 -0500
-Received: from DLEE115.ent.ti.com (157.170.170.26) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 26
- May 2021 07:35:15 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Wed, 26 May 2021 07:35:15 -0500
-Received: from [10.250.138.168] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 14QCYxVx038658;
- Wed, 26 May 2021 07:35:01 -0500
-Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
- <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
- <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
- <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin
- <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Marek Vasut
- <marek.vasut+renesas@gmail.com>,
- <yoshihiro.shimoda.uh@renesas.com>, <jingoohan1@gmail.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Vidya
- Sagar <vidyas@nvidia.com>, Jesper Nilsson <jesper.nilsson@axis.com>,
- Minghuan Lian <minghuan.Lian@nxp.com>,
- Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>
-CC: Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
-References: <20210517074723.10212-1-kishon@ti.com>
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <11f417e8-6bc5-93dd-f915-04b352bc61d1@ti.com>
-Date: Wed, 26 May 2021 18:04:58 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1llsug-00E85q-AW; Wed, 26 May 2021 12:45:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id C48851F42C34
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com
+Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 2/9] media: hevc: Add decode params control
+Date: Wed, 26 May 2021 14:45:09 +0200
+Message-Id: <20210526124516.2039434-3-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
+References: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20210517074723.10212-1-kishon@ti.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_053534_396539_4D6B96AD 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20210526_054530_676904_9BCEA868 
+X-CRM114-Status: GOOD (  22.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,90 +75,407 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi All,
+Add decode params control and the associated structure to group
+all the information that are needed to decode a reference frame as
+is described in ITU-T Rec. H.265 section "8.3.2 Decoding process
+for reference picture set".
 
-On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
-> Patch series
-> *) Adds support to add virtual functions to enable endpoint controller
->    which supports SR-IOV capability
-> *) Add support in Cadence endpoint driver to configure virtual functions
-> *) Enable pci_endpoint_test driver to create pci_device for virtual
->    functions
-> 
-> v1 of the patch series can be found at [1]
-> v2 of the patch series can be found at [2]
-> v3 of the patch series can be found at [3]
-> v4 of the patch series can be found at [4]
-> v5 of the patch series can be found at [5]
-> 
-> Here both physical functions and virtual functions use the same
-> pci_endpoint_test driver and existing pcitest utility can be used
-> to test virtual functions as well.
+Adapt Cedrus driver to these changes.
 
-I request to help test this series in your platform either with SR-IOV
-capability or without SR-IOV capability to make sure there are no
-regressions.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+version 11:
+ - Split what was done in v4l2-ctrls.c in v4l2-ctrls-core.c and v4l2-ctrls-defs.c
 
-Thanks in advance for the help!
+ .../media/v4l/ext-ctrls-codec.rst             | 94 +++++++++++++++----
+ .../media/v4l/vidioc-queryctrl.rst            |  6 ++
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     | 21 +++--
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  4 +
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  6 ++
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |  2 +
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  | 12 ++-
+ include/media/hevc-ctrls.h                    | 29 ++++--
+ 9 files changed, 136 insertions(+), 39 deletions(-)
 
-Best Regards
-Kishon
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index 9cfb471fc6be..9120c5bcaf90 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -2997,9 +2997,6 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``pic_struct``
+       -
+-    * - __u8
+-      - ``num_active_dpb_entries``
+-      - The number of entries in ``dpb``.
+     * - __u8
+       - ``ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The list of L0 reference elements as indices in the DPB.
+@@ -3007,22 +3004,8 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The list of L1 reference elements as indices in the DPB.
+     * - __u8
+-      - ``num_rps_poc_st_curr_before``
+-      - The number of reference pictures in the short-term set that come before
+-        the current frame.
+-    * - __u8
+-      - ``num_rps_poc_st_curr_after``
+-      - The number of reference pictures in the short-term set that come after
+-        the current frame.
+-    * - __u8
+-      - ``num_rps_poc_lt_curr``
+-      - The number of reference pictures in the long-term set.
+-    * - __u8
+-      - ``padding[7]``
++      - ``padding``
+       - Applications and drivers must set this to zero.
+-    * - struct :c:type:`v4l2_hevc_dpb_entry`
+-      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+-      - The decoded picture buffer, for meta-data about reference frames.
+     * - struct :c:type:`v4l2_hevc_pred_weight_table`
+       - ``pred_weight_table``
+       - The prediction weight coefficients for inter-picture prediction.
+@@ -3278,3 +3261,78 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     encoding the next frame queued after setting this control.
+     This provides a bitmask which consists of bits [0, LTR_COUNT-1].
+     This is applicable to the H264 and HEVC encoders.
++
++``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS (struct)``
++    Specifies various decode parameters, especially the references picture order
++    count (POC) for all the lists (short, long, before, current, after) and the
++    number of entries for each of them.
++    These parameters are defined according to :ref:`hevc`.
++    They are described in section 8.3 "Slice decoding process" of the
++    specification.
++
++.. c:type:: v4l2_ctrl_hevc_decode_params
++
++.. cssclass:: longtable
++
++.. flat-table:: struct v4l2_ctrl_hevc_decode_params
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - __s32
++      - ``pic_order_cnt_val``
++      - PicOrderCntVal as described in section 8.3.1 "Decoding process
++        for picture order count" of the specification.
++    * - __u8
++      - ``num_active_dpb_entries``
++      - The number of entries in ``dpb``.
++    * - struct :c:type:`v4l2_hevc_dpb_entry`
++      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
++      - The decoded picture buffer, for meta-data about reference frames.
++    * - __u8
++      - ``num_poc_st_curr_before``
++      - The number of reference pictures in the short-term set that come before
++        the current frame.
++    * - __u8
++      - ``num_poc_st_curr_after``
++      - The number of reference pictures in the short-term set that come after
++        the current frame.
++    * - __u8
++      - ``num_poc_lt_curr``
++      - The number of reference pictures in the long-term set.
++    * - __u8
++      - ``poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
++      - PocStCurrBefore as described in section 8.3.2 "Decoding process for reference
++        picture set.
++    * - __u8
++      - ``poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
++      - PocStCurrAfter as described in section 8.3.2 "Decoding process for reference
++        picture set.
++    * - __u8
++      - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
++      - PocLtCurr as described in section 8.3.2 "Decoding process for reference
++        picture set.
++    * - __u64
++      - ``flags``
++      - See :ref:`Decode Parameters Flags <hevc_decode_params_flags>`
++
++.. _hevc_decode_params_flags:
++
++``Decode Parameters Flags``
++
++.. cssclass:: longtable
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_IRAP_PIC``
++      - 0x00000001
++      -
++    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC``
++      - 0x00000002
++      -
++    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR``
++      - 0x00000004
++      -
+diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+index 07e54029e1e9..f9ecf6276129 100644
+--- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
++++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+@@ -501,6 +501,12 @@ See also the examples in :ref:`control`.
+       - n/a
+       - A struct :c:type:`v4l2_ctrl_vp8_frame`, containing VP8
+ 	frame parameters for stateless video decoders.
++    * - ``V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS``
++      - n/a
++      - n/a
++      - n/a
++      - A struct :c:type:`v4l2_ctrl_hevc_decode_params`, containing HEVC
++	decoding parameters for stateless video decoders.
+ 
+ .. raw:: latex
+ 
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 081439224357..c4b5082849b6 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -337,6 +337,7 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
+ 	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
+ 	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
++	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
+ 	struct v4l2_area *area;
+ 	void *p = ptr.p + idx * ctrl->elem_size;
+ 	unsigned int i;
+@@ -616,23 +617,26 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+ 		zero_padding(*p_hevc_pps);
+ 		break;
+ 
+-	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+-		p_hevc_slice_params = p;
++	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
++		p_hevc_decode_params = p;
+ 
+-		if (p_hevc_slice_params->num_active_dpb_entries >
++		if (p_hevc_decode_params->num_active_dpb_entries >
+ 		    V4L2_HEVC_DPB_ENTRIES_NUM_MAX)
+ 			return -EINVAL;
+ 
+-		zero_padding(p_hevc_slice_params->pred_weight_table);
+-
+-		for (i = 0; i < p_hevc_slice_params->num_active_dpb_entries;
++		for (i = 0; i < p_hevc_decode_params->num_active_dpb_entries;
+ 		     i++) {
+ 			struct v4l2_hevc_dpb_entry *dpb_entry =
+-				&p_hevc_slice_params->dpb[i];
++				&p_hevc_decode_params->dpb[i];
+ 
+ 			zero_padding(*dpb_entry);
+ 		}
++		break;
+ 
++	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
++		p_hevc_slice_params = p;
++
++		zero_padding(p_hevc_slice_params->pred_weight_table);
+ 		zero_padding(*p_hevc_slice_params);
+ 		break;
+ 
+@@ -1236,6 +1240,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+ 		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
+ 		break;
++	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
++		elem_size = sizeof(struct v4l2_ctrl_hevc_decode_params);
++		break;
+ 	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
+ 		elem_size = sizeof(struct v4l2_ctrl_hdr10_cll_info);
+ 		break;
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+index 7963c7b43450..b6344bbf1e00 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+@@ -996,6 +996,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
++	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
+ 
+@@ -1487,6 +1488,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
+ 		break;
++	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
++		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
++		break;
+ 	case V4L2_CID_UNIT_CELL_SIZE:
+ 		*type = V4L2_CTRL_TYPE_AREA;
+ 		*flags |= V4L2_CTRL_FLAG_READ_ONLY;
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
+index fa348c09f844..c0d005dafc6c 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
+@@ -157,6 +157,12 @@ static const struct cedrus_control cedrus_controls[] = {
+ 		},
+ 		.codec		= CEDRUS_CODEC_VP8,
+ 	},
++	{
++		.cfg = {
++			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
++		},
++		.codec		= CEDRUS_CODEC_H265,
++	},
+ };
+ 
+ #define CEDRUS_CONTROLS_COUNT	ARRAY_SIZE(cedrus_controls)
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
+index bbcdcd0787cf..88afba17b78b 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus.h
++++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+@@ -77,6 +77,7 @@ struct cedrus_h265_run {
+ 	const struct v4l2_ctrl_hevc_sps			*sps;
+ 	const struct v4l2_ctrl_hevc_pps			*pps;
+ 	const struct v4l2_ctrl_hevc_slice_params	*slice_params;
++	const struct v4l2_ctrl_hevc_decode_params	*decode_params;
+ };
+ 
+ struct cedrus_vp8_run {
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+index 97e410d92506..40e8c4123f76 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+@@ -70,6 +70,8 @@ void cedrus_device_run(void *priv)
+ 			V4L2_CID_MPEG_VIDEO_HEVC_PPS);
+ 		run.h265.slice_params = cedrus_find_control_data(ctx,
+ 			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
++		run.h265.decode_params = cedrus_find_control_data(ctx,
++			V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
+ 		break;
+ 
+ 	case V4L2_PIX_FMT_VP8_FRAME:
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+index 10744fab7cea..6821e3d05d34 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+@@ -245,6 +245,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	const struct v4l2_ctrl_hevc_sps *sps;
+ 	const struct v4l2_ctrl_hevc_pps *pps;
+ 	const struct v4l2_ctrl_hevc_slice_params *slice_params;
++	const struct v4l2_ctrl_hevc_decode_params *decode_params;
+ 	const struct v4l2_hevc_pred_weight_table *pred_weight_table;
+ 	dma_addr_t src_buf_addr;
+ 	dma_addr_t src_buf_end_addr;
+@@ -256,6 +257,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	sps = run->h265.sps;
+ 	pps = run->h265.pps;
+ 	slice_params = run->h265.slice_params;
++	decode_params = run->h265.decode_params;
+ 	pred_weight_table = &slice_params->pred_weight_table;
+ 
+ 	/* MV column buffer size and allocation. */
+@@ -487,7 +489,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 
+ 	reg = VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_TC_OFFSET_DIV2(slice_params->slice_tc_offset_div2) |
+ 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_BETA_OFFSET_DIV2(slice_params->slice_beta_offset_div2) |
+-	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_POC_BIGEST_IN_RPS_ST(slice_params->num_rps_poc_st_curr_after == 0) |
++	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_POC_BIGEST_IN_RPS_ST(decode_params->num_poc_st_curr_after == 0) |
+ 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_CR_QP_OFFSET(slice_params->slice_cr_qp_offset) |
+ 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_CB_QP_OFFSET(slice_params->slice_cb_qp_offset) |
+ 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_QP_DELTA(slice_params->slice_qp_delta);
+@@ -527,8 +529,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	cedrus_write(dev, VE_DEC_H265_NEIGHBOR_INFO_ADDR, reg);
+ 
+ 	/* Write decoded picture buffer in pic list. */
+-	cedrus_h265_frame_info_write_dpb(ctx, slice_params->dpb,
+-					 slice_params->num_active_dpb_entries);
++	cedrus_h265_frame_info_write_dpb(ctx, decode_params->dpb,
++					 decode_params->num_active_dpb_entries);
+ 
+ 	/* Output frame. */
+ 
+@@ -545,7 +547,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 
+ 	/* Reference picture list 0 (for P/B frames). */
+ 	if (slice_params->slice_type != V4L2_HEVC_SLICE_TYPE_I) {
+-		cedrus_h265_ref_pic_list_write(dev, slice_params->dpb,
++		cedrus_h265_ref_pic_list_write(dev, decode_params->dpb,
+ 					       slice_params->ref_idx_l0,
+ 					       slice_params->num_ref_idx_l0_active_minus1 + 1,
+ 					       VE_DEC_H265_SRAM_OFFSET_REF_PIC_LIST0);
+@@ -564,7 +566,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 
+ 	/* Reference picture list 1 (for B frames). */
+ 	if (slice_params->slice_type == V4L2_HEVC_SLICE_TYPE_B) {
+-		cedrus_h265_ref_pic_list_write(dev, slice_params->dpb,
++		cedrus_h265_ref_pic_list_write(dev, decode_params->dpb,
+ 					       slice_params->ref_idx_l1,
+ 					       slice_params->num_ref_idx_l1_active_minus1 + 1,
+ 					       VE_DEC_H265_SRAM_OFFSET_REF_PIC_LIST1);
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index 245052c15864..e53666a1127f 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -19,6 +19,7 @@
+ #define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
+ #define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
+ #define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
++#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
+ #define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+ #define V4L2_CID_MPEG_VIDEO_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
+ 
+@@ -26,6 +27,7 @@
+ #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+ #define V4L2_CTRL_TYPE_HEVC_PPS 0x0121
+ #define V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS 0x0122
++#define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
+ 
+ enum v4l2_mpeg_video_hevc_decode_mode {
+ 	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
+@@ -195,18 +197,10 @@ struct v4l2_ctrl_hevc_slice_params {
+ 	__u8	pic_struct;
+ 
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+-	__u8	num_active_dpb_entries;
+ 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 
+-	__u8	num_rps_poc_st_curr_before;
+-	__u8	num_rps_poc_st_curr_after;
+-	__u8	num_rps_poc_lt_curr;
+-
+-	__u8	padding;
+-
+-	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+-	struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
++	__u8	padding[5];
+ 
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+ 	struct v4l2_hevc_pred_weight_table pred_weight_table;
+@@ -214,4 +208,21 @@ struct v4l2_ctrl_hevc_slice_params {
+ 	__u64	flags;
+ };
+ 
++#define V4L2_HEVC_DECODE_PARAM_FLAG_IRAP_PIC		0x1
++#define V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC		0x2
++#define V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR  0x4
++
++struct v4l2_ctrl_hevc_decode_params {
++	__s32	pic_order_cnt_val;
++	__u8	num_active_dpb_entries;
++	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
++	__u8	num_poc_st_curr_before;
++	__u8	num_poc_st_curr_after;
++	__u8	num_poc_lt_curr;
++	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
++	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
++	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
++	__u64	flags;
++};
++
+ #endif
+-- 
+2.25.1
 
-> 
-> Changes from v5:
-> *) Rebased to 5.13-rc1
-> 
-> Changes from v4:
-> *) Added a fix in Cadence driver which was overwriting BAR configuration
->    of physical function.
-> *) Didn't include Tom's Acked-by since Cadence driver is modified in
->    this revision.
-> 
-> Changes from v3:
-> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
-> 
-> Changes from v2:
-> *) Fixed DT binding documentation comment by Rob
-> *) Fixed the error check in pci-epc-core.c
-> 
-> Changes from v1:
-> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
->    binding for EP)
-> 
-> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
-> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
-> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
-> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
-> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
-> 
-> Kishon Vijay Abraham I (7):
->   dt-bindings: PCI: pci-ep: Add binding to specify virtual function
->   PCI: endpoint: Add support to add virtual function in endpoint core
->   PCI: endpoint: Add support to link a physical function to a virtual
->     function
->   PCI: endpoint: Add virtual function number in pci_epc ops
->   PCI: cadence: Add support to configure virtual functions
->   misc: pci_endpoint_test: Populate sriov_configure ops to configure
->     SR-IOV device
->   Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
-> 
->  .../PCI/endpoint/pci-endpoint-cfs.rst         |  12 +-
->  .../devicetree/bindings/pci/pci-ep.yaml       |   7 +
->  drivers/misc/pci_endpoint_test.c              |   1 +
->  .../pci/controller/cadence/pcie-cadence-ep.c  | 285 ++++++++++++++----
->  drivers/pci/controller/cadence/pcie-cadence.h |   7 +
->  .../pci/controller/dwc/pcie-designware-ep.c   |  36 +--
->  drivers/pci/controller/pcie-rcar-ep.c         |  19 +-
->  drivers/pci/controller/pcie-rockchip-ep.c     |  18 +-
->  drivers/pci/endpoint/functions/pci-epf-ntb.c  |  79 +++--
->  drivers/pci/endpoint/functions/pci-epf-test.c |  66 ++--
->  drivers/pci/endpoint/pci-ep-cfs.c             |  24 ++
->  drivers/pci/endpoint/pci-epc-core.c           | 130 +++++---
->  drivers/pci/endpoint/pci-epf-core.c           | 144 ++++++++-
->  include/linux/pci-epc.h                       |  57 ++--
->  include/linux/pci-epf.h                       |  16 +-
->  15 files changed, 684 insertions(+), 217 deletions(-)
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
