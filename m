@@ -2,79 +2,101 @@ Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AF1BC47088
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 13:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47D83C47088
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:08:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD5A5613D3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 13:51:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD5A5613D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 11890613C9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:08:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11890613C9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B/A0JExEZYFNN0bBYyMmLtfdhY6sKJKPtJpueDsnHHY=; b=aoxqbiLfgKXYjiZxzpp5jMm9Lp
-	sBycWFIjxo/tT3xr4AJUxBs0G687/QgtAB/aTEF8V0j7WymMmxPXFuZ1Q0TFeH5ye24ggCEtmu2e1
-	Cmk+Kc80bOIpK9oXMDQYcLv4IdGmlpKI2Co1KTEeyOoXozLqQ1fXU+c9fkUyBOOR5lrclDvB5/M4w
-	ctnwQlIX29p8x1waUptJqmDVfffBacasQ1R3WUmKw9aQ6w9NZvec38y9uungoCBOixhfM67uF6eMq
-	2pKH4GpWqDB/ohWbEJOtJlM56fT8LTFMFV0AMpH1VcCZoYIpVkV5qIBkzCjhwwBLbtSRiIwa4e1m5
-	fW5cixjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=1+q1DkZzftZqitI6JC3Y0vaZ4JZkZZywscbNCbaXsTc=; b=qxIMAjhBJLwFCRZdIY5uj201Ht
+	90Jn/Ws8G69ujKV2Svg/FGMIuBxZqeBETY9vwsX0eJFFyh9Uu/V/3YUCgMOJ9Zsa3n8uCrBPTHF5t
+	11LhB4A4YKyPKAboAN/AX7WFvJfg6/jp9nqeP9/3yn3lcw/7RICos4/DUhMpDGl1tV/HIdlLEpyGs
+	K2OVVRQhaJdWj3m6G650JVuQGLrSiM+necKCzlefgvm1pborFwRB1aoWjKChRHaInLyNPqZKMc9q3
+	sKKA3FeyftSmdmTT4TVdRTl8irGZJHYYP+ZJWfYcpd2LIf7jiesX/lTQkcHAeK0Li4pToLJN7OkDK
+	KTyQLoow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lltwe-00EbJy-GT; Wed, 26 May 2021 13:51:36 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1lluD1-00Ej43-UH; Wed, 26 May 2021 14:08:32 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llsD7-00Dlkg-6R; Wed, 26 May 2021 12:00:31 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by smtp-out2.suse.de (Postfix) with ESMTP id 2D33B1FD2A;
- Wed, 26 May 2021 12:00:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1622030424; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IjDfVNGyLqkqsPwVm25MULiJLzVWqdHHv+ncw0xAGyk=;
- b=UeoYFvN0l10pOObHYxLSXztHiWtXmYwEV18Dfzb26DvzzZSd0DGois5lXazPBpwQSIOoS5
- M3C2BOiJ3IRmdlVN7t61wRROiLWWheuTgPUI5vSAyFNzbyn1Izep3UAH63C+aXNf9s+bHr
- 4fP+d2Y7nJS3PTrpSkjxRy1uqfKTUj8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1622030424;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IjDfVNGyLqkqsPwVm25MULiJLzVWqdHHv+ncw0xAGyk=;
- b=tlTC+ARnM+GuMeOKQJIThyu7MqxL9cgstGXGa4v/zBZ5gfaqKA4+2C/FTzMGc+LOacp2Y2
- MlFneooEigMAzGDw==
-Received: from director2.suse.de (director2.suse-dmz.suse.de [192.168.254.72])
- by imap.suse.de (Postfix) with ESMTPSA id D078711A98;
- Wed, 26 May 2021 12:00:23 +0000 (UTC)
-Subject: Re: [PATCH] drm/rockchip: kick firmware-based framebuffer when
- initializing
-To: Icenowy Zheng <icenowy@aosc.io>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-References: <20210526085527.155840-1-icenowy@aosc.io>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <13c50c42-4f2a-eed3-fc79-cbe6d1e7cae9@suse.de>
-Date: Wed, 26 May 2021 14:00:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ id 1llsl3-00E20w-BZ; Wed, 26 May 2021 12:35:36 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 14QCZGMg006614;
+ Wed, 26 May 2021 07:35:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1622032516;
+ bh=3bBG8BqrGtdkKHvGc5OmGFJ5N2skyD9sMRW9+N98L+o=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=AQQjUuHvb8tTt9TCk++YgygGukBZ1fpcROn+F1ysRMsZzDJlEX0FrdQbmad2L/qjQ
+ 9juB1F7EyXkcx6CWnoRy8xUMOahaq6+yrOb77px7qAdK+hOZ3aDXIzjOkS7fdpnaCm
+ Qy8QFYLy2i6fJu4xaJfbryxViplR6b1RVXNC8pho=
+Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
+ by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 14QCZFBC103444
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 26 May 2021 07:35:15 -0500
+Received: from DLEE115.ent.ti.com (157.170.170.26) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 26
+ May 2021 07:35:15 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE115.ent.ti.com
+ (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Wed, 26 May 2021 07:35:15 -0500
+Received: from [10.250.138.168] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 14QCYxVx038658;
+ Wed, 26 May 2021 07:35:01 -0500
+Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
+ <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
+ <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Shawn Lin
+ <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>,
+ <yoshihiro.shimoda.uh@renesas.com>, <jingoohan1@gmail.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Vidya
+ Sagar <vidyas@nvidia.com>, Jesper Nilsson <jesper.nilsson@axis.com>,
+ Minghuan Lian <minghuan.Lian@nxp.com>,
+ Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>
+CC: Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
+References: <20210517074723.10212-1-kishon@ti.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <11f417e8-6bc5-93dd-f915-04b352bc61d1@ti.com>
+Date: Wed, 26 May 2021 18:04:58 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210526085527.155840-1-icenowy@aosc.io>
+In-Reply-To: <20210517074723.10212-1-kishon@ti.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_050029_438072_1F3AB32E 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20210526_053534_396539_4D6B96AD 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,132 +109,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4939702587570314814=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============4939702587570314814==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="8BYw6q2hiLDaE4D6t7JULaNP7Anat21W2"
+Hi All,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---8BYw6q2hiLDaE4D6t7JULaNP7Anat21W2
-Content-Type: multipart/mixed; boundary="LZzy5vKYeS6aAktdZRJoJ4RLNbvtCfZeM";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Icenowy Zheng <icenowy@aosc.io>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Message-ID: <13c50c42-4f2a-eed3-fc79-cbe6d1e7cae9@suse.de>
-Subject: Re: [PATCH] drm/rockchip: kick firmware-based framebuffer when
- initializing
-References: <20210526085527.155840-1-icenowy@aosc.io>
-In-Reply-To: <20210526085527.155840-1-icenowy@aosc.io>
+On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
+> Patch series
+> *) Adds support to add virtual functions to enable endpoint controller
+>    which supports SR-IOV capability
+> *) Add support in Cadence endpoint driver to configure virtual functions
+> *) Enable pci_endpoint_test driver to create pci_device for virtual
+>    functions
+> 
+> v1 of the patch series can be found at [1]
+> v2 of the patch series can be found at [2]
+> v3 of the patch series can be found at [3]
+> v4 of the patch series can be found at [4]
+> v5 of the patch series can be found at [5]
+> 
+> Here both physical functions and virtual functions use the same
+> pci_endpoint_test driver and existing pcitest utility can be used
+> to test virtual functions as well.
 
---LZzy5vKYeS6aAktdZRJoJ4RLNbvtCfZeM
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+I request to help test this series in your platform either with SR-IOV
+capability or without SR-IOV capability to make sure there are no
+regressions.
 
-Hi
+Thanks in advance for the help!
 
-I think we already fixed this at [1]. Apparently no on epicked it up. If =
+Best Regards
+Kishon
 
-you awant to test, I'll add your Tested-by before merging the patch.
-
-Best regards
-Thomas
-
-[1]=20
-https://lore.kernel.org/dri-devel/20210516074833.451643-1-javierm@redhat.=
-com/
-
-Am 26.05.21 um 10:55 schrieb Icenowy Zheng:
-> Since U-Boot now supports EFI and FB passing via EFI GOP, when booting
-> rockchip SoCs via EFI, a EFI FB is available. However, currently when
-> re-initializing display pipeline, the EFI FB is not removed, lead to
-> fbcon not working (because the EFI FB is no longer bound to the display=
-
-> pipeline although it's still /dev/fb0 and fbcon is bound to it).
->=20
-> Add some code for removing firmware-based FB when initializing KMS of
-> rockchipdrm.
->=20
-> Tested on Pinebook Pro (RK3399) with U-Boot patchset for initializing
-> eDP display applied.
->=20
-> Signed-off-by: Icenowy Zheng <icenowy@aosc.io>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 3 +++
->   1 file changed, 3 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_drv.c
-> index 212bd87c0c4a..3905fce6ce0b 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -158,6 +158,9 @@ static int rockchip_drm_bind(struct device *dev)
->   	 */
->   	drm_dev->irq_enabled =3D true;
->  =20
-> +	/* Remove early framebuffers (ie. efifb) */
-> +	drm_fb_helper_remove_conflicting_framebuffers(NULL, "rockchipdrmfb", =
-false);
-> +
->   	ret =3D rockchip_drm_fbdev_init(drm_dev);
->   	if (ret)
->   		goto err_unbind_all;
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---LZzy5vKYeS6aAktdZRJoJ4RLNbvtCfZeM--
-
---8BYw6q2hiLDaE4D6t7JULaNP7Anat21W2
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmCuOFcFAwAAAAAACgkQlh/E3EQov+CU
-Mg//V2gspuj9JuJo17jjUtDZxGtg0cclw4uF6RWE0TZxjSpREAsLdCEFd9WrxIqgbGTJU+nFVzE1
-wJaL1TfnACOmm/6BYr+xUm4F9ArpMDKbJcLpDzCYJmP+n0u1twXjrVBfE5xoW7ja40Vvx0LcImpb
-/dnWF2xks5dZt0KbaOXAmtySqL1N4wQZr+BKj6T00bXctekhz/Hfgc8FwwQy+gD8ToEBfb46uzuT
-wZGfXMbPPZ5BFvQFj6FwsXfORTpyevyeQGoFruqj6aTDxQpiYXWxtLS9/DzlTmHCPYHXqjxHSltM
-igkb8qVEw7yAsuThVSTPBK6lt1C0YCvFUVpZGHL2LSraDXLna7K3bYvMDqbTNgWnprB0ImaL2RVy
-9+1SYL2MDwBZFle8qsZsUbrG8w6zRZYUUO3H5EjUGC0ZG3dnFvLuH3IS5HUHhu2RPAv8dXfysvc7
-wi3lQ+lNylV6Vt7NbQELWQC5Y8fHp08Un8MCQJFpXbYnQZUr2+ALdUc6RADPcBtuWipWKTkw+HwI
-e5lBnZ9DeHsQkGDq9M0/PJu34NjeyK2vCjvqgsCsI7UrhooJ0ray9h038FNP/h5XA+NULExYIvC6
-SMSAtmLsTjyryAgMHEMpJLaADJG0nr3OE/mReUG6Kn+dsjrSR71y7NOIRMOm5dJ2Z/iiWr/BEWrD
-S84=
-=LAV6
------END PGP SIGNATURE-----
-
---8BYw6q2hiLDaE4D6t7JULaNP7Anat21W2--
-
-
---===============4939702587570314814==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> Changes from v5:
+> *) Rebased to 5.13-rc1
+> 
+> Changes from v4:
+> *) Added a fix in Cadence driver which was overwriting BAR configuration
+>    of physical function.
+> *) Didn't include Tom's Acked-by since Cadence driver is modified in
+>    this revision.
+> 
+> Changes from v3:
+> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
+> 
+> Changes from v2:
+> *) Fixed DT binding documentation comment by Rob
+> *) Fixed the error check in pci-epc-core.c
+> 
+> Changes from v1:
+> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
+>    binding for EP)
+> 
+> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
+> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
+> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
+> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
+> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
+> 
+> Kishon Vijay Abraham I (7):
+>   dt-bindings: PCI: pci-ep: Add binding to specify virtual function
+>   PCI: endpoint: Add support to add virtual function in endpoint core
+>   PCI: endpoint: Add support to link a physical function to a virtual
+>     function
+>   PCI: endpoint: Add virtual function number in pci_epc ops
+>   PCI: cadence: Add support to configure virtual functions
+>   misc: pci_endpoint_test: Populate sriov_configure ops to configure
+>     SR-IOV device
+>   Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
+> 
+>  .../PCI/endpoint/pci-endpoint-cfs.rst         |  12 +-
+>  .../devicetree/bindings/pci/pci-ep.yaml       |   7 +
+>  drivers/misc/pci_endpoint_test.c              |   1 +
+>  .../pci/controller/cadence/pcie-cadence-ep.c  | 285 ++++++++++++++----
+>  drivers/pci/controller/cadence/pcie-cadence.h |   7 +
+>  .../pci/controller/dwc/pcie-designware-ep.c   |  36 +--
+>  drivers/pci/controller/pcie-rcar-ep.c         |  19 +-
+>  drivers/pci/controller/pcie-rockchip-ep.c     |  18 +-
+>  drivers/pci/endpoint/functions/pci-epf-ntb.c  |  79 +++--
+>  drivers/pci/endpoint/functions/pci-epf-test.c |  66 ++--
+>  drivers/pci/endpoint/pci-ep-cfs.c             |  24 ++
+>  drivers/pci/endpoint/pci-epc-core.c           | 130 +++++---
+>  drivers/pci/endpoint/pci-epf-core.c           | 144 ++++++++-
+>  include/linux/pci-epc.h                       |  57 ++--
+>  include/linux/pci-epf.h                       |  16 +-
+>  15 files changed, 684 insertions(+), 217 deletions(-)
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4939702587570314814==--
-
