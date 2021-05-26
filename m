@@ -2,84 +2,91 @@ Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73644C47088
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E1FEC47082
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 15:09:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C4FC60241
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:39:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C4FC60241
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 12105613CA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 15:09:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12105613CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=37xlTU1o61nJrRkDD2BisSjOpIsArW705m3Ybb1Qh80=; b=qV+YlJ5nmycvQy
-	tlYdTrKtBZl3wfg9BiVXHYxbrA2jk/FXhKpULLVpMdPpwEOWVsci3AzNV3GQYbzketk/CnPenco2m
-	HTST8FjvPAwj3ertfB6D9eNoLVD2T4BlF4wmlk+ZcoDCzTVuT2BwiPi9HPmH0Kj7y7M3y4hD8dQb4
-	+N9YexGyyhbFSiFGBo3Yf6t5T4Ua3E52A7hS7zsqEo/XUh12PZKVUeri39D4kFJe+sRcY9rvpB4Qo
-	upXy+lHIXRcDgrJlgMytmmsQIfa1Ll/bMtUBQqpDp2/HArxGe5M6MZ6yvGSqzdO7Radjj8BKa9tpD
-	aVbarIk9oWXXTMPe527w==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6c44WGGnwwibcNAETcdiO7FfOcp5wqkxuvE98CFooG8=; b=YAV94gImQUpTf5
+	dGLHloK6F4kZloBHkOKLXekpJTa5jEO+uMMbkHPEuepBjltKHrp4zeFEMTGosVF94vEYAQo63XjAk
+	aAZtz7wdY8nyV7yFyCpoQJBHo29Hc6SZ82hRmM674g3V8RTEIKDEe4UHZ0+i+k6VHTxUbk7alK0zU
+	C9jBkpsPMeVaH0i0JUkQGE3JpvmglSwy2YH0ypssM8RvkGiCdBwFJTYcIR2PXUeDMQRzaTEkaBJDK
+	jtk/0TFuWyCYbfJPmE9MRglOSF68V0LS4L27501P+WJem6eHY0Nhn7RQL3YYKlnt7BENI3izsH8Rz
+	F0dZEy5+4jBWnZwD7l/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llugd-00EyeB-LB; Wed, 26 May 2021 14:39:07 +0000
-Received: from mail-oo1-f42.google.com ([209.85.161.42])
+	id 1llv9z-00FDZk-RO; Wed, 26 May 2021 15:09:27 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llt50-00ECXF-Mr; Wed, 26 May 2021 12:56:12 +0000
-Received: by mail-oo1-f42.google.com with SMTP id
- r1-20020a4aa2c10000b029023e8c840a7fso258107ool.12; 
- Wed, 26 May 2021 05:56:09 -0700 (PDT)
+ id 1lltgs-00ETtw-OS; Wed, 26 May 2021 13:35:20 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id b7so648116plg.0;
+ Wed, 26 May 2021 06:35:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F8dHlJ0lGaZ4wpJABZ5l0Lg6R0avpm3vrRyQsHumOeE=;
+ b=epsWKguyEB98VsG4g5HiqVtaommrLsZL53nG6q0aN7yF5mJj0B/2cPn15+vS9HLNjQ
+ uOUqzBaCc7DzRcE7UwwD/V8/culypfrKDsM37cyvTgNgbDtzTHWSrL8LDeVtn47gyftE
+ b59vyfNQdRsjnneZWUU6y4Ir9Hy6wXzO8SJ67OX/9D29pXSk+lVJr1XIVZV1cNjh7JTd
+ RfpTFJui1GUXo0nkuVCU250++QamJshEUlf7Ui6ygXT6jX2uu1GAeBscbIARb7uCgr9u
+ +wPwTxWISZlSw0WvqHCFDkMYR1URvacMDOUnalfJ+9bdZU2uexdjI0LWXGoOopYjvD5Z
+ hvXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=5TB/SHe/X+zDtrYw2YxYbY1YRqVP38bTz1Qf4xf36SM=;
- b=SGGHbgKJVJ6m+/voEhBLr4qYCYCRmP79xSSqpLHenIhncNx0xUlmz+ftJQDzh/09Ng
- 5MNL9uv8Ywde5K1a3mOR8uLEWRoGEHgy7YIy9Dy0gdtmeakYKpS34igm9i2OoJsdcow8
- K2WgDpJqrUqjm3QZUWELgtyh9kEmvg5cJjYoWWlxOS8Ld8gBEPDABwEDSdOwPq7p7Azc
- NO22REQctVpYgu/wHX4t2b8uodjMZjq+3A+XiHRcio3Z1oG7LRS5Cm6ncyB4hsF52v7a
- IDRMdrZfhvaT43QYzdFF72s+ihZQReYTLvCMNtdsdA3MD1dyOTGI0j2LuZaWh9IU6wOv
- QfnQ==
-X-Gm-Message-State: AOAM5309BMnGT/Hrv3hIFFk+L9rv66sDf4EhDE5gLPj/oV4MJoeBfNy/
- kfNPEfBRP/VgnJfN9PDU/Q==
-X-Google-Smtp-Source: ABdhPJx/wh7g4D4CYGH7ibtdrflqxgEzKG7CJwLQ7CT974mn8HeUIO7mDRBNtkrVn8LgAfyQ54eYqg==
-X-Received: by 2002:a4a:e715:: with SMTP id y21mr2171382oou.54.1622033769085; 
- Wed, 26 May 2021 05:56:09 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id b19sm3716364oib.46.2021.05.26.05.56.06
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=F8dHlJ0lGaZ4wpJABZ5l0Lg6R0avpm3vrRyQsHumOeE=;
+ b=mBADjygy3Mk4GIjPrghQIX2ei5PzPQGZj1uLfGkdVD0RJH7y6MTtHvUdRq0/1dI8eD
+ /C0QrDWyYqJgldSOLbZYDmpM/9EMDYCu/rYwZpHLkK6hQUqwEv/BNdkzEdBPWspnJqVW
+ ZRzewMIHGyevBSYb54sAuB05+riTi8BktZNAYy22SCm8CYDcK9YpJeZIIQFkZ79fc0TU
+ 62HMrRCfqj2IbBFCi03ggkiLXjzXx1zmkqoFURP6VBidld6wLDEkVmiiWH+bOJqcOTF8
+ M67Moafsk1kAM/3oIV/D605NyK2qTjCqq8wcb//RuoeQXp2nA0Ni/OTjA/g/6sq479GG
+ 197A==
+X-Gm-Message-State: AOAM531jLCO7E/lxW2T5dv0E+4/yebQBBxL9tptBx61e++KaxyGuwioN
+ gvZYP0vpwb2I2+Pxf+DHS2rVLZIP2jJ/Ng==
+X-Google-Smtp-Source: ABdhPJzGn0Ut3JMzBSazvjKb8GN3035Bdop0143PDzTq0qfvM+JMplSl6F492wDKE5+6f14RKy3IsA==
+X-Received: by 2002:a17:90a:9517:: with SMTP id
+ t23mr3913586pjo.130.1622036116987; 
+ Wed, 26 May 2021 06:35:16 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id d18sm9301654pgm.93.2021.05.26.06.35.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 May 2021 05:56:07 -0700 (PDT)
-Received: (nullmailer pid 2377037 invoked by uid 1000);
- Wed, 26 May 2021 12:56:03 -0000
-From: Rob Herring <robh@kernel.org>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Ezequiel Garcia <ezequiel@collabora.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-staging@lists.linux.dev, Philipp Zabel <p.zabel@pengutronix.de>
-In-Reply-To: <20210525152225.154302-11-knaerzche@gmail.com>
-References: <20210525152225.154302-1-knaerzche@gmail.com>
- <20210525152225.154302-11-knaerzche@gmail.com>
-Subject: Re: [PATCH 10/10] media: dt-bindings: media: rockchip-vdec: add
- RK3228 compatible
-Date: Wed, 26 May 2021 07:56:03 -0500
-Message-Id: <1622033763.779031.2377036.nullmailer@robh.at.kernel.org>
+ Wed, 26 May 2021 06:35:16 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ alexandru.elisei@arm.com, wqu@suse.com, robin.murphy@arm.com,
+ pgwipeout@gmail.com, ardb@kernel.org, briannorris@chromium.org,
+ shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
+ Punit Agrawal <punitagrawal@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH] arm64: dts: rockchip: Update PCI host bridge window to 32-bit
+ address memory
+Date: Wed, 26 May 2021 22:34:57 +0900
+Message-Id: <20210526133457.3102393-1-punitagrawal@gmail.com>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_055610_805672_39A3E92F 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20210526_063518_864382_3EA0B836 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,47 +99,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 May 2021 17:22:25 +0200, Alex Bee wrote:
-> Document the RK3228 compatible for rockchip-vdec.
-> Also add the optional assigned-clocks and assigned-clock-rates
-> properties.
-> 
-> Checked with:
-> make ARCH=arm dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> ---
->  .../devicetree/bindings/media/rockchip,vdec.yaml       | 10 +++++++++-
->  1 file changed, 9 insertions(+), 1 deletion(-)
-> 
+The PCIe host bridge on RK3399 advertises a single address range
+marked as 64-bit memory even though it lies entirely below 4GB. While
+previously, the OF PCI range parser treated 64-bit ranges more
+leniently (i.e., as 32-bit), since commit 9d57e61bf723 ("of/pci: Add
+IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses") the
+code takes a stricter view and treats the ranges as advertised in the
+device tree (i.e, as 64-bit).
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+The change in behaviour causes failure when allocating bus addresses
+to devices connected behind a PCI-to-PCI bridge that require
+non-prefetchable memory ranges. The allocation failure was observed
+for certain Samsung NVMe drives connected to RockPro64 boards.
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/media/rockchip,vdec.yaml:21:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
+Update the host bridge window attributes to treat it as 32-bit address
+memory. This fixes the allocation failure observed since commit
+9d57e61bf723.
 
-dtschema/dtc warnings/errors:
+Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>
+---
+Hi,
 
-See https://patchwork.ozlabs.org/patch/1483527
+The patch fixes the failure observed with detecting certain Samsung
+NVMe drives on RK3399 based boards.
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+Hopefully, the folks on this thread can provide some input on the
+reason the host bridge window was originally marked as 64-bit or if
+there are any downsides to applying the patch.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Thanks,
+Punit
 
-pip3 install dtschema --upgrade
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please check and re-submit.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 634a91af8e83..4b854eb21f72 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -227,7 +227,7 @@ pcie0: pcie@f8000000 {
+ 		       <&pcie_phy 2>, <&pcie_phy 3>;
+ 		phy-names = "pcie-phy-0", "pcie-phy-1",
+ 			    "pcie-phy-2", "pcie-phy-3";
+-		ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
++		ranges = <0x82000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
+ 			 <0x81000000 0x0 0xfbe00000 0x0 0xfbe00000 0x0 0x100000>;
+ 		resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
+ 			 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>,
+-- 
+2.30.2
 
 
 _______________________________________________
