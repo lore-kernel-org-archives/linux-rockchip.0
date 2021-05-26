@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC97DC47082
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5907C47088
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:37:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83C28611CD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:36:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83C28611CD
+	by mail.kernel.org (Postfix) with ESMTPS id 61AFB60241
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 14:37:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61AFB60241
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2JazeAFSa+3+ROzrm289UWk5EvjMF7OGto8WfkViKUA=; b=JHGsMKlDVZ2dhF
-	sBSeN8D0Hfef6ij9xuQscCYHzb8SsZCfLTFrzB6xR2YIqysqeOP9Ltdu8lNKVNwQbAYmHjqHxTopk
-	+heLqhzJbzHlbIF/MGnupuIaU+kJAehI9zEISshHLA8UaW0i3Wnx8YX60yOQiWO1J/DDem3Ey9xL/
-	UN0vHzoguhDqrotUwNzERGXJ1V8nNjWHZgOEPgEAsNZx0hRhI0lJo33/edNKuQ1hrKkUqS2yMBc4u
-	EWM8enpn6AknLyPLax2RGsVLA9aMa5CFSRTme55CMXo6+zZ187wTZLx3cu65MfeGBvQsAiQfXVY2a
-	RYsVLfwVl9hG9CozN4ZA==;
+	List-Owner; bh=FEmJ/Zv4lRaJVqQKSpAAii0udmXHldtTRvkyhN6/dSo=; b=cqnVXZh4ECY5rV
+	0234tvVVYC4yB6fYam+LVisG5e3LIh/OhuvE2jbUl0iG+gFcrWoWLqfGiFpCrx75I533vfoIEh4sK
+	nc4dVal5vwrOw2Qa5yVL1Pjq3wVCwNmoj0W320CaJ56IN7hBPOcVH3DHPVJdVfZ12XUuYuxeMuMkd
+	V7RXxqoS1yklswPmS08xi958GbSh/YGm4LJC2aJrGTgLltfN+e+m3GQnlvFlrzkLTLY3ujZ0jarru
+	tcOI9LkJwjoYW21EPNEL3GxGu9t2N7XMrJXTO9ZtU4MaQCS+NdftaYWOQp2iIF1oo86ob4Ne1SQd1
+	eYZG+AgiOqVzDqhDIDTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llue0-00Ewt4-1W; Wed, 26 May 2021 14:36:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1llufI-00ExfS-Cx; Wed, 26 May 2021 14:37:44 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llsum-00E8AJ-8f; Wed, 26 May 2021 12:45:37 +0000
+ id 1llsup-00E8Cf-KP; Wed, 26 May 2021 12:45:41 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 0B2711F42C55
+ with ESMTPSA id 1C39F1F42C28
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
  shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
@@ -48,17 +48,16 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 7/9] media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
-Date: Wed, 26 May 2021 14:45:14 +0200
-Message-Id: <20210526124516.2039434-8-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 9/9] media: hantro: IMX8M: add variant for G2/HEVC codec
+Date: Wed, 26 May 2021 14:45:16 +0200
+Message-Id: <20210526124516.2039434-10-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
 References: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_054536_487743_6B2696AA 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210526_054539_990606_5B50744A 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,26 +75,184 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make sure that V4L2_PIX_FMT_HEVC_SLICE is correctly handled by the driver.
+Add variant to IMX8M to enable G2/HEVC codec.
+Define the capabilities for the hardware up to 3840x2160.
+G2 doesn't have a postprocessor, uses the same clocks and has it
+own interrupt.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_v4l2.c | 1 +
- 1 file changed, 1 insertion(+)
+version 12:
+ - Use G2 named fields
 
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 77d7fe62ce81..0655324fd0d4 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -392,6 +392,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
- 	case V4L2_PIX_FMT_MPEG2_SLICE:
- 	case V4L2_PIX_FMT_VP8_FRAME:
- 	case V4L2_PIX_FMT_H264_SLICE:
-+	case V4L2_PIX_FMT_HEVC_SLICE:
- 		ctx->fh.m2m_ctx->out_q_ctx.q.requires_requests = true;
- 		break;
- 	default:
+ drivers/staging/media/hantro/hantro_drv.c   |  1 +
+ drivers/staging/media/hantro/hantro_hw.h    |  1 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c | 96 ++++++++++++++++++++-
+ 3 files changed, 96 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index ae8a0037706f..507cd5b454b3 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -588,6 +588,7 @@ static const struct of_device_id of_hantro_match[] = {
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+ 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
++	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_SAMA5D4
+ 	{ .compatible = "microchip,sama5d4-vdec", .data = &sama5d4_vdec_variant, },
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index b743b255bf32..5cc083112017 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -206,6 +206,7 @@ extern const struct hantro_variant rk3328_vpu_variant;
+ extern const struct hantro_variant rk3288_vpu_variant;
+ extern const struct hantro_variant imx8mq_vpu_variant;
+ extern const struct hantro_variant sama5d4_vdec_variant;
++extern const struct hantro_variant imx8mq_vpu_g2_variant;
+ 
+ extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
+ 
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index 9eb556460e52..ea919bfb9891 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -9,6 +9,9 @@
+ #include <linux/delay.h>
+ 
+ #include "hantro.h"
++#include "hantro_jpeg.h"
++#include "hantro_g1_regs.h"
++#include "hantro_g2_regs.h"
+ 
+ #define CTRL_SOFT_RESET		0x00
+ #define RESET_G1		BIT(1)
+@@ -128,6 +131,62 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
+ 	},
+ };
+ 
++static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
++	{
++		.fourcc = V4L2_PIX_FMT_NV12,
++		.codec_mode = HANTRO_MODE_NONE,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
++		.codec_mode = HANTRO_MODE_HEVC_DEC,
++		.max_depth = 2,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = MB_DIM,
++		},
++	},
++};
++
++static irqreturn_t imx8m_vpu_g1_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, G1_REG_INTERRUPT);
++	state = (status & G1_REG_INTERRUPT_DEC_RDY_INT) ?
++		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, G1_REG_INTERRUPT);
++	vdpu_write(vpu, G1_REG_CONFIG_DEC_CLK_GATE_E, G1_REG_CONFIG);
++
++	hantro_irq_done(vpu, state);
++
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t imx8m_vpu_g2_irq(int irq, void *dev_id)
++{
++	struct hantro_dev *vpu = dev_id;
++	enum vb2_buffer_state state;
++	u32 status;
++
++	status = vdpu_read(vpu, G2_REG_INTERRUPT);
++	state = (status & G2_REG_INTERRUPT_DEC_RDY_INT) ?
++		 VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
++
++	vdpu_write(vpu, 0, G2_REG_INTERRUPT);
++	vdpu_write(vpu, G2_REG_CONFIG_DEC_CLK_GATE_E, G2_REG_CONFIG);
++
++	hantro_irq_done(vpu, state);
++
++	return IRQ_HANDLED;
++}
++
+ static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+ {
+ 	vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+@@ -142,6 +201,13 @@ static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
+ 	imx8m_soft_reset(vpu, RESET_G1);
+ }
+ 
++static void imx8m_vpu_g2_reset(struct hantro_ctx *ctx)
++{
++	struct hantro_dev *vpu = ctx->dev;
++
++	imx8m_soft_reset(vpu, RESET_G2);
++}
++
+ /*
+  * Supported codec ops.
+  */
+@@ -167,13 +233,25 @@ static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+ 	},
+ };
+ 
++static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
++	[HANTRO_MODE_HEVC_DEC] = {
++		.run = hantro_g2_hevc_dec_run,
++		.reset = imx8m_vpu_g2_reset,
++		.init = hantro_hevc_dec_init,
++		.exit = hantro_hevc_dec_exit,
++	},
++};
++
+ /*
+  * VPU variants.
+  */
+ 
+ static const struct hantro_irq imx8mq_irqs[] = {
+-	{ "g1", hantro_g1_irq },
+-	{ "g2", NULL /* TODO: imx8m_vpu_g2_irq */ },
++	{ "g1", imx8m_vpu_g1_irq },
++};
++
++static const struct hantro_irq imx8mq_g2_irqs[] = {
++	{ "g2", imx8m_vpu_g2_irq },
+ };
+ 
+ static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
+@@ -197,3 +275,17 @@ const struct hantro_variant imx8mq_vpu_variant = {
+ 	.reg_names = imx8mq_reg_names,
+ 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
+ };
++
++const struct hantro_variant imx8mq_vpu_g2_variant = {
++	.dec_offset = 0x0,
++	.dec_fmts = imx8m_vpu_g2_dec_fmts,
++	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_g2_dec_fmts),
++	.codec = HANTRO_HEVC_DECODER,
++	.codec_ops = imx8mq_vpu_g2_codec_ops,
++	.init = imx8mq_vpu_hw_init,
++	.runtime_resume = imx8mq_runtime_resume,
++	.irqs = imx8mq_g2_irqs,
++	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
++	.clk_names = imx8mq_clk_names,
++	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
++};
 -- 
 2.25.1
 
