@@ -2,43 +2,43 @@ Return-Path: <SRS0=Ct0Y=KW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3DA2C4707F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 08:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45DE8C47089
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 08:27:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3D93B6113E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 08:27:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3D93B6113E
+	by mail.kernel.org (Postfix) with ESMTPS id D40FC6113E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 08:27:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D40FC6113E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8UGvkpmjbPMlF9oaKfhdi8RMVpPMfjRiWVPgrgOqdw8=; b=AQfYZar7ZOngpb
-	/+OyN7qJxitVgDczhBdR/TwjLF4Mf+fTR4YktO2Y9Nm8IkgOyzqlS8vPzCzEDYb7FuBaoUILxRFC3
-	dNKlGNJJLVm1drvqgvumu+S1T1aHPiLjpll1xBxBfQs+yP6ox+F9dCZiThUCedbwM1woIQcBo4m8z
-	JpPJK1E7hsId5DuFOyg4f3SttL90oerfdzVm26t8kSDy/Lg4ym4WX2JBT4Jlclx6hrEkA6ATPAbsc
-	zyt/DSPYel/vl6vTmQeZyCWQ6fSZBslKvGacavquSiaShI1p5lgFwUjVUl3Y1cptZMF963iXUIdWv
-	zMkwgCIKcXyzJAUNgTcQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OZIA/ET3+fpsNeFpJf+mnQ8T286Jve/4XBfiTnNN3ok=; b=mdxlxJ/iLO8ZNw
+	BDScRiiCAH5wcWWS0crUJ2svx8XcKCTMFWIAqltV0shnXMSFRUNe5HPOWVMyoP5FB4gR0hXXUlf2e
+	BEqPmLNPyt7wHbbf9/RA1EztspNysEPk0jK6DNo9oUr9uM5f5M7pSbpESw6xxxs32VK4cbtAPOofw
+	PzEb+iUszab5cVJTXxw6Yj71zqTPXJCbJVitqaLLlVPRgMwguNga00YmG1HyL4pfEGhSRAW8lRhFp
+	HSsRYcXhZBtkfc6jg/0YNJfmxMlW92OmvkwBeSqW46NIr//odiDV774RtZSLnLEHsgq4tuIWYL92d
+	sALAi326MnQtwUxVTYAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmBMJ-003rYT-EA; Thu, 27 May 2021 08:27:15 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1lmBMO-003rb4-34; Thu, 27 May 2021 08:27:20 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmBKF-003qb2-52
+ id 1lmBKF-003qak-5Q
  for linux-rockchip@lists.infradead.org; Thu, 27 May 2021 08:25:08 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id CE5A2AC9CC;
- Thu, 27 May 2021 16:25:02 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id C1137BA3FD;
+ Thu, 27 May 2021 16:25:01 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P32529T140357225019136S1622103895766083_; 
- Thu, 27 May 2021 16:25:04 +0800 (CST)
+ Thu, 27 May 2021 16:24:57 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <d3563f4e89431ee75e8e21db20c22762>
+X-UNIQUE-TAG: <e4b221734771537f262c1853334436a9>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -64,17 +64,14 @@ To: heiko@sntech.de, lee.jones@linaro.org, ulf.hansson@linaro.org,
 Cc: devicetree@vger.kernel.org, jbx6244@gmail.com,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v2 3/3] dt-bindings: soc: rockchip: add rk3568-pmu-io-domain
- support
-Date: Thu, 27 May 2021 16:24:53 +0800
-Message-Id: <20210527082453.1447484-4-jay.xu@rock-chips.com>
+Subject: [PATCH v2 0/3] rockchip io domain
+Date: Thu, 27 May 2021 16:24:50 +0800
+Message-Id: <20210527082453.1447484-1-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210527082453.1447484-1-jay.xu@rock-chips.com>
-References: <20210527082453.1447484-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_012507_402148_DC117660 
-X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-CacheID: sfid-20210527_012507_403470_C8489570 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,28 +90,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for rk3568-pmu-io-domain.
+Covert rockchip io domain document to YAML, and add rk3568 support.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
+Jianqun Xu (3):
+  dt-bindings: soc: rockchip: convert io-domain.txt to YAML
+  soc: rockchip: io-domain: add rk3568 support
+  dt-bindings: soc: rockchip: add rk3568-pmu-io-domain support
+
+ .../bindings/power/rockchip-io-domain.txt     | 135 ------------------
+ .../bindings/soc/rockchip/io-domain.yaml      |  46 ++++++
+ drivers/soc/rockchip/io-domain.c              |  88 ++++++++++--
+ 3 files changed, 126 insertions(+), 143 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/power/rockchip-io-domain.txt
+ create mode 100644 Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml
+
+--
 v2:
-- first version
- Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml b/Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml
-index 2931e0ea8fa8..debfcadd3f2f 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/io-domain.yaml
-@@ -24,6 +24,7 @@ properties:
-             - rockchip,rk3368-pmu-io-voltage-domain
-             - rockchip,rk3399-io-voltage-domain
-             - rockchip,rk3399-pmu-io-voltage-domain
-+            - rockchip,rk3568-pmu-io-voltage-domain
-             - rockchip,rv1108-io-voltage-domain
-             - rockchip,rv1108-pmu-io-voltage-domain
- 
--- 
+- add yaml
 2.25.1
 
 
