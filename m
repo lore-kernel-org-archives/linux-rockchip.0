@@ -2,62 +2,86 @@ Return-Path: <SRS0=Ct0Y=KW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1180C4707F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 09:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D957C47089
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 10:16:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 386CA610A0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 09:15:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 386CA610A0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 5A9DE6109F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 10:16:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A9DE6109F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5pHqbdMJvaxKCYmXbyFV27PjLIWtn5WKy+zik4IILnQ=; b=rShAu52XHJQHW3
-	LR5iMwVIwAiLaYj//rZ6OJyZsTLUqHJvK1jay8WY/Cf2xTlYfgbPwqJRSnlQrVUC9xz1oKg25B+Dt
-	vqux/Of+K7hDbpInW3tTxr2CG/HKqPYmW8rT1pSgnLXDWqDKOfg6aecBHhKf8uum6m3E8jLLpEfaH
-	VKCInRighbmM8ezsW8ZEKYcEJP49XhZ0ufEIeCwdcV65ST4qoThTvD1va0n4FOH00j16CCEx8z0cR
-	hYmA5nQaTUa3dXuJ882Az0abJz3MZCuhwORy+a9vdT2enk+dHS6TItUMZSFOmRvHg5pDID5jvShxW
-	nvJWetcWzs1GP2mvv9kA==;
+	List-Owner; bh=pVKJRwEMhi6b1q9JIVqLpTffSvO2YMrMA4NdMw5ixEU=; b=NnZ01D20j84cqA
+	mT4ek7ejlZeD0waZGER89Y7NOOrpDTKz5k3ajuGcrsn/PtAsSIXwvdbDfEeHT5BhgZcXeJxdbxlKG
+	JE6en/Mtt781fvnjekqzJXKxUJ7jJ7hz9dE9THT8iNFWDvM6lLhpFMpFTVPBtsrMJyTetOEbk6Rur
+	cbzhgU1NIhpjfwUC+yeTPp9WpIZOdOWO96KnYdwgS5zlApzxDTznieupWXqhAuLwRKeboMl4tis9f
+	F+SE8O8u1kuYTUsVyzNBOkxcfCcqLYuGrkoTl9Rbjl3vNz8ymHKta4wN/JN5+BzwOWBYRd4gvI5Uk
+	1uOyOOPAVpfhNjbjuqSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmC7L-004E72-QC; Thu, 27 May 2021 09:15:51 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lmD3m-004i5T-CY; Thu, 27 May 2021 10:16:14 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmC6h-004DoZ-7B; Thu, 27 May 2021 09:15:12 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lmC6Y-0006zN-RK; Thu, 27 May 2021 11:15:02 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org, Javier Martinez Canillas <javierm@redhat.com>
-Cc: Peter Robinson <pbrobinson@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Javier Martinez Canillas <javierm@redhat.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] drm/rockchip: remove existing generic drivers to take
- over the device
-Date: Thu, 27 May 2021 11:15:02 +0200
-Message-ID: <4006303.q0ZmV6gNhb@diego>
-In-Reply-To: <20210516074833.451643-1-javierm@redhat.com>
-References: <20210516074833.451643-1-javierm@redhat.com>
+ id 1lmD3j-004i1K-Kt; Thu, 27 May 2021 10:16:12 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 14RAG43G129392;
+ Thu, 27 May 2021 05:16:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1622110564;
+ bh=brCM6veexmGsxjJbq5ECYAme3NvM/lriyvQsSrvoTE4=;
+ h=Date:From:To:CC:Subject:References:In-Reply-To;
+ b=RO06g1mM8RoWLQO23gm/Hin7YS3TZDx6d6uopskVHUBwZOSyjNW4dz5HKqIbXTQHB
+ DtKTa8n2JawSEfIFQYsBIb3i9rlG7F5K/Z/z92Bu8J/oV7bUm6f9bf/mslSP1G9LFT
+ 1r9cCxsZmuX5WgmYuUKlmMtQuh3BeIag+b2HQxSo=
+Received: from DFLE112.ent.ti.com (dfle112.ent.ti.com [10.64.6.33])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 14RAG3A7078327
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 27 May 2021 05:16:04 -0500
+Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE112.ent.ti.com
+ (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 27
+ May 2021 05:16:04 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE113.ent.ti.com
+ (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Thu, 27 May 2021 05:16:04 -0500
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 14RAG30w126589;
+ Thu, 27 May 2021 05:16:03 -0500
+Date: Thu, 27 May 2021 15:46:01 +0530
+From: Pratyush Yadav <p.yadav@ti.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+CC: <linux-mtd@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+ <andy.yan@rock-chips.com>, <yifeng.zhao@rock-chips.com>,
+ <sugar.zhang@rock-chips.com>, <tudor.ambarus@microchip.com>,
+ <michael@walle.cc>, <heiko@sntech.de>, <robh+dt@kernel.org>,
+ <vigneshr@ti.com>, <richard@nod.at>, <miquel.raynal@bootlin.com>, Chris
+ Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/3] mtd: spi-nor: add rockchip serial flash controller
+ driver
+Message-ID: <20210527101601.24qauggye5yzjfad@ti.com>
+References: <20210526181636.1130-1-macroalpha82@gmail.com>
+ <20210526181636.1130-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210526181636.1130-2-macroalpha82@gmail.com>
+User-Agent: NeoMutt/20171215
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_021511_320451_533A1EA8 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20210527_031611_747973_DD4D1807 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,72 +99,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 16. Mai 2021, 09:48:33 CEST schrieb Javier Martinez Canillas:
-> There are drivers that register framebuffer devices very early in the boot
-> process and make use of the existing framebuffer as setup by the firmware.
+On 26/05/21 01:16PM, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> If one of those drivers has registered a fbdev, then the fallback fbdev of
-> the DRM driver won't be bound to the framebuffer console. To avoid that,
-> remove any existing generic driver and take over the graphics device.
+> Add the rockchip serial flash controller (SFC) driver.
 > 
-> By doing that, the fb mapped to the console is switched correctly from the
-> early fbdev to the one registered by the rockchip DRM driver:
-> 
->     [   40.752420] fb0: switching to rockchip-drm-fb from EFI VGA
-> 
-> Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
-
-fwiw, this looks like the right thing to do. I haven't found time to test
-though yet. So anyway
-
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-
-Heiko
-
-
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
-> 
-> Changes in v2:
-> - Move drm_aperture_remove_framebuffers() call to .bind callback (tzimmermann).
-> - Adapt subject line, commit message, etc accordingly.
-> 
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> index 212bd87c0c4..b730b8d5d94 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -16,6 +16,7 @@
->  #include <linux/console.h>
->  #include <linux/iommu.h>
->  
-> +#include <drm/drm_aperture.h>
->  #include <drm/drm_drv.h>
->  #include <drm/drm_fb_helper.h>
->  #include <drm/drm_gem_cma_helper.h>
-> @@ -114,6 +115,15 @@ static int rockchip_drm_bind(struct device *dev)
->  	struct rockchip_drm_private *private;
->  	int ret;
->  
-> +	/* Remove existing drivers that may own the framebuffer memory. */
-> +	ret = drm_aperture_remove_framebuffers(false, "rockchip-drm-fb");
-> +	if (ret) {
-> +		DRM_DEV_ERROR(dev,
-> +			      "Failed to remove existing framebuffers - %d.\n",
-> +			      ret);
-> +		return ret;
-> +	}
-> +
->  	drm_dev = drm_dev_alloc(&rockchip_drm_driver, dev);
->  	if (IS_ERR(drm_dev))
->  		return PTR_ERR(drm_dev);
-> 
+>  drivers/mtd/spi-nor/controllers/Kconfig       |   7 +
+>  drivers/mtd/spi-nor/controllers/Makefile      |   1 +
+>  .../mtd/spi-nor/controllers/rockchip-sfc.c    | 944 ++++++++++++++++++
 
+NACK. Please don't add controller drivers here. Instead use the SPI MEM 
+(drivers/spi/spi-mem.c) framework and put the drivers in drivers/spi/. 
+See the history for drivers/spi/spi-cadence-quadspi.c for an example 
+conversion. I recall mentioning this on IRC as well, but maybe my memory 
+misleads me.
 
-
-
+-- 
+Regards,
+Pratyush Yadav
+Texas Instruments Inc.
 
 _______________________________________________
 Linux-rockchip mailing list
