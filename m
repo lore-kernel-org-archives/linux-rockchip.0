@@ -1,64 +1,98 @@
-Return-Path: <SRS0=5mPC=KV=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Ct0Y=KW=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AD89C47082
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 23:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DAC6C47082
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 00:13:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D95EC613DC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 May 2021 23:59:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D95EC613DC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 3A4E4613B5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 00:13:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A4E4613B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DJj5rVUVxHIgG0pOzJtbVrhQShafUdGFC9o7M346yPc=; b=AlyuNBK6z483pl
-	mRxsw5jeEoR5N9g18zVkK5xaO296cq0885u95vI3VIiRlaGF2ExXfJ+M5d/DHu52w2vIUimrlWpHp
-	XBH06SdV7K4QAp9r5z6hp2i0XJcX08n5fpT5bDpCYcPbo4fec8U1DpW3WGvJuI/vJ9cFNxTL8EtOY
-	omJSGy+P6ZjmnN4LT9Jd0rAbFn0rI7wob3yXbKP5o97lUMiv97+ZG1SiJwfhYv/e9KEk0HuOKyEnz
-	vKDmg6Gi5qz99qA6nKdnygSBBAfP9Hydqnk+pucAE71CfYGtP8zfE3CkU7Ea+LlAsp+PASM707HMd
-	N1xzr4tgqRvsH+FUK9Pw==;
+	List-Owner; bh=PRMusVKP/BJ4wfMTwa5sCgTmvNL5WCfWHlqNLeSqXVI=; b=EiGARGDefCIKhC
+	gx0BoDtx+8uvIQlWwbTDR0zaHVvj9SiSGYegzu+evRLU1v2eGCMjMPN2DhdrbYwQfT30z0NDFeAhV
+	tKokD77nE98Pg4yvHcb8n37z/V5malZ2urQr0fJuw+I+k0PuUWcZaXKhyO2Jkbi3NYOc5Y7wtHOQU
+	Ufef8cNj34cOH+dxbMinH30qoCYK12eX++W0ZLE6tE1Py0i5F9kaE+bIj0sHNX1kJMEiaVchxWO3+
+	BH669I/1THCSFCZlb514NqFaEsXhOT1hR+ClB1nQPhXkMFCyKSe9BLJyG76Rgp94GknM5FuGT9U7L
+	waXg/+15Ll4HL6Cu4BZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lm3Qf-0011DZ-3o; Wed, 26 May 2021 23:59:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lm3eO-0014ri-FR; Thu, 27 May 2021 00:13:24 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lm3QP-001183-Iz; Wed, 26 May 2021 23:58:59 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lm3QE-0004pF-4E; Thu, 27 May 2021 01:58:46 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Ezequiel Garcia <ezequiel@collabora.com>, Alex Bee <knaerzche@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-staging@lists.linux.dev,
- Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lee Jones <lee.jones@linaro.org>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 05/10] media: hantro: add support for Rockchip RK3036
-Date: Thu, 27 May 2021 01:58:45 +0200
-Message-ID: <3559518.1BCLMh4Saa@diego>
-In-Reply-To: <2640d65e-772b-6af4-f4be-8ed090693c22@gmail.com>
-References: <20210525152225.154302-1-knaerzche@gmail.com>
- <b65236f3b8bbf35411b536df8b260d9f8a9dbd80.camel@collabora.com>
- <2640d65e-772b-6af4-f4be-8ed090693c22@gmail.com>
+ id 1lm3eL-0014qM-Rr; Thu, 27 May 2021 00:13:23 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id
+ ep16-20020a17090ae650b029015d00f578a8so1309165pjb.2; 
+ Wed, 26 May 2021 17:13:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:references:date:in-reply-to:message-id
+ :user-agent:mime-version;
+ bh=MK8a+wfYbMpZQpkMTO0OrrMNbE1xthA2KsqFjKZmXxY=;
+ b=lcjllHOuDcrH69QG2w9thgwDkpvfPP8QjTCtnCNQF+bzTG3yyrew7geBnk32udsm7y
+ qN3qkJdKXsmlkpFpF1axvZxCHwQeltQDNtiYuQaYiPctTfJpHI/p1PUuyzwePPmBBXpi
+ 57KHnXuCc5ThYYrDV4T76wFViiGwRo0SDwfpUzHXc0QdN2iqqAWboqMi8RSRhKMsFJnB
+ 4jia+ZmeAg7tFS+h5LWRV3ApWjRGMt+Bh0nc9oQSlpmPFv5bk9nyuzQ0bCy7tTohgn0f
+ 34wcaGpfPYENnBvO2rKU/+gF308QNHL+NOyvQsPKutJHTLceYufM2B9VB6YMwrPooeDM
+ WRoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
+ :message-id:user-agent:mime-version;
+ bh=MK8a+wfYbMpZQpkMTO0OrrMNbE1xthA2KsqFjKZmXxY=;
+ b=rS+EhakAt4MnGIjYJwNzUwpCfHtUw8z9383Ilo4GTzlAF2iBP3JweZnnrwgaGzrS1g
+ UOpeYbU7frRgC4d9L7Bof7q8k+9x+QTCNKm1jVECDvCnQ3s2liGQ+9maBe8Wl5dNPqWB
+ I1uEBBKayQEKDGs9+AeG1qb1tk701quGBXRVQ+1Pcm9c5GAvHxyvMx4/baVHk+laJ82N
+ 5DeHv3YPkOep+nwcoQifqK2a7KnLURdBEIQU7TDA8hph5skMSvL7OSIIfryfu6sh2qkV
+ THM27pbkeMnAbqaZ5hd4jmHJxDvm1GL3L1UOFs3En9eyQdRJeF2kRKjWEm9Ob3l+/yuV
+ nFdQ==
+X-Gm-Message-State: AOAM532fu2swbgNxTHaex2FJDXP+H4eBuryYodDu2KXZsPAd3dHVM9HR
+ l98Xy7j1zvGtpKkWuAFKYPk=
+X-Google-Smtp-Source: ABdhPJzUL5NJM4VTL7cocKg5ZVC2mJ+Wumyfgb51EzO/Yhg59dNUggwYPSJgoIzZDQ/TMAzaGigE1A==
+X-Received: by 2002:a17:90a:8581:: with SMTP id m1mr774224pjn.47.1622074399842; 
+ Wed, 26 May 2021 17:13:19 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id c71sm282310pfc.148.2021.05.26.17.13.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 May 2021 17:13:18 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,  Alexandru
+ Elisei <alexandru.elisei@arm.com>,  wqu@suse.com,  Robin Murphy
+ <robin.murphy@arm.com>,  Peter Geis <pgwipeout@gmail.com>,  Ard Biesheuvel
+ <ardb@kernel.org>,  Brian Norris <briannorris@chromium.org>,  Shawn Lin
+ <shawn.lin@rock-chips.com>,  PCI <linux-pci@vger.kernel.org>,  Heiko
+ Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Update PCI host bridge window to
+ 32-bit address memory
+References: <20210526133457.3102393-1-punitagrawal@gmail.com>
+ <CAL_JsqLYdXFG11oSmrAfcRoCkSPQYY-VvTr=QVOn8DDmDjm-dQ@mail.gmail.com>
+Date: Thu, 27 May 2021 09:13:15 +0900
+In-Reply-To: <CAL_JsqLYdXFG11oSmrAfcRoCkSPQYY-VvTr=QVOn8DDmDjm-dQ@mail.gmail.com>
+ (Rob Herring's message of "Wed, 26 May 2021 09:00:51 -0500")
+Message-ID: <87a6ohniec.fsf@stealth>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_165857_643034_B77A257A 
-X-CRM114-Status: GOOD (  32.74  )
+X-CRM114-CacheID: sfid-20210526_171321_932951_5CF06F2A 
+X-CRM114-Status: GOOD (  25.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,132 +110,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 27. Mai 2021, 01:27:59 CEST schrieb Alex Bee:
-> Hi Ezequiel,
-> 
-> Am 26.05.21 um 12:28 schrieb Ezequiel Garcia:
-> > Hi Alex,
-> >
-> > Thanks a lot for the patch.
-> >
-> > On Tue, 2021-05-25 at 17:22 +0200, Alex Bee wrote:
-> >> RK3036's VPU IP block is the same as RK3288 has, except that it doesn't
-> >> have an encoder, decoding is supported up to 1920x1088 only and the axi
-> >> clock can be set to 300 MHz max.
-> >>
-> >> Add a new RK3036 variant which reflect this differences.
-> >>
-> >> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> >> ---
-> >>   drivers/staging/media/hantro/hantro_drv.c    |  1 +
-> >>   drivers/staging/media/hantro/hantro_hw.h     |  1 +
-> >>   drivers/staging/media/hantro/rk3288_vpu_hw.c | 49 ++++++++++++++++++++
-> >>   3 files changed, 51 insertions(+)
-> >>
-> >> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> >> index 38ea7b24036e..4f3c08e85bb8 100644
-> >> --- a/drivers/staging/media/hantro/hantro_drv.c
-> >> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> >> @@ -490,6 +490,7 @@ static const struct of_device_id of_hantro_match[] = {
-> >>          { .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
-> >>          { .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
-> >>          { .compatible = "rockchip,rk3066-vpu", .data = &rk3066_vpu_variant, },
-> >> +       { .compatible = "rockchip,rk3036-vpu", .data = &rk3036_vpu_variant, },
-> >>   #endif
-> >>   #ifdef CONFIG_VIDEO_HANTRO_IMX8M
-> >>          { .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
-> >> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> >> index de2bc367a15a..d8d6b0d3c3b3 100644
-> >> --- a/drivers/staging/media/hantro/hantro_hw.h
-> >> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> >> @@ -164,6 +164,7 @@ extern const struct hantro_variant rk3399_vpu_variant;
-> >>   extern const struct hantro_variant rk3328_vpu_variant;
-> >>   extern const struct hantro_variant rk3288_vpu_variant;
-> >>   extern const struct hantro_variant rk3066_vpu_variant;
-> >> +extern const struct hantro_variant rk3036_vpu_variant;
-> >>   extern const struct hantro_variant imx8mq_vpu_variant;
-> >>   extern const struct hantro_variant sama5d4_vdec_variant;
-> >>   
-> >> diff --git a/drivers/staging/media/hantro/rk3288_vpu_hw.c b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> index 29805c4bd92f..c4684df4e012 100644
-> >> --- a/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> +++ b/drivers/staging/media/hantro/rk3288_vpu_hw.c
-> >> @@ -174,6 +174,13 @@ static irqreturn_t rk3288_vepu_irq(int irq, void *dev_id)
-> >>          return IRQ_HANDLED;
-> >>   }
-> >>   
-> >> +static int rk3036_vpu_hw_init(struct hantro_dev *vpu)
-> >> +{
-> >> +       /* Bump ACLKs to max. possible freq. to improve performance. */
-> >> +       clk_set_rate(vpu->clocks[0].clk, RK3066_ACLK_MAX_FREQ);
-> >> +       return 0;
-> >> +}
-> >> +
-> >>   static int rk3066_vpu_hw_init(struct hantro_dev *vpu)
-> >>   {
-> >>          /* Bump ACLKs to max. possible freq. to improve performance. */
-> >> @@ -209,6 +216,27 @@ static void rk3288_vpu_enc_reset(struct hantro_ctx *ctx)
-> >>   /*
-> >>    * Supported codec ops.
-> >>    */
-> >> +static const struct hantro_codec_ops rk3036_vpu_codec_ops[] = {
-> >> +       [HANTRO_MODE_H264_DEC] = {
-> >> +               .run = hantro_g1_h264_dec_run,
-> >> +               .reset = hantro_g1_reset,
-> >> +               .init = hantro_h264_dec_init,
-> >> +               .exit = hantro_h264_dec_exit,
-> >> +       },
-> >> +       [HANTRO_MODE_MPEG2_DEC] = {
-> >> +               .run = hantro_g1_mpeg2_dec_run,
-> >> +               .reset = hantro_g1_reset,
-> >> +               .init = hantro_mpeg2_dec_init,
-> >> +               .exit = hantro_mpeg2_dec_exit,
-> >> +       },
-> >> +       [HANTRO_MODE_VP8_DEC] = {
-> >> +               .run = hantro_g1_vp8_dec_run,
-> >> +               .reset = hantro_g1_reset,
-> >> +               .init = hantro_vp8_dec_init,
-> >> +               .exit = hantro_vp8_dec_exit,
-> >> +       },
-> >> +};
-> >> +
-> >>   static const struct hantro_codec_ops rk3066_vpu_codec_ops[] = {
-> >>          [HANTRO_MODE_JPEG_ENC] = {
-> >>                  .run = hantro_h1_jpeg_enc_run,
-> >> @@ -269,6 +297,10 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
-> >>    * VPU variant.
-> >>    */
-> >>   
-> >> +static const struct hantro_irq rk3036_irqs[] = {
-> >> +       { "vdpu", hantro_g1_irq },
-> >> +};
-> >> +
-> >>   static const struct hantro_irq rk3288_irqs[] = {
-> >>          { "vepu", rk3288_vepu_irq },
-> >>          { "vdpu", hantro_g1_irq },
-> >> @@ -283,6 +315,23 @@ static const char * const rk3288_clk_names[] = {
-> >>          "aclk", "hclk"
-> >>   };
-> >>   
-> >> +const struct hantro_variant rk3036_vpu_variant = {
-> >> +       .dec_offset = 0x400,
-> > If it doesn't have an encoder, then you should just
-> > use dec_offset = 0x0.
-> >
-> > Thanks,
-> > Ezequiel
-> >
-> That would mean, I'd have to adapt the register offset in the device 
-> tree - I'd prefer to keep it in line with the TRM. Unless you insist, 
-> I'd like to keep it this way (It's , btw, the very same for RK3328).
+Hi Rob,
 
-I'd agree with Alex ... ideally the devicetree should match the block
-register area from the TRM not some internal offset.
-[DT describes hardware etc etc ;-) ]
+Thanks for taking a look.
 
-Heiko
+Rob Herring <robh+dt@kernel.org> writes:
 
+> On Wed, May 26, 2021 at 8:35 AM Punit Agrawal <punitagrawal@gmail.com> wrote:
+>>
+>> The PCIe host bridge on RK3399 advertises a single address range
+>> marked as 64-bit memory even though it lies entirely below 4GB. While
+>> previously, the OF PCI range parser treated 64-bit ranges more
+>> leniently (i.e., as 32-bit), since commit 9d57e61bf723 ("of/pci: Add
+>> IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses") the
+>> code takes a stricter view and treats the ranges as advertised in the
+>> device tree (i.e, as 64-bit).
+>>
+>> The change in behaviour causes failure when allocating bus addresses
+>> to devices connected behind a PCI-to-PCI bridge that require
+>> non-prefetchable memory ranges. The allocation failure was observed
+>> for certain Samsung NVMe drives connected to RockPro64 boards.
+>>
+>> Update the host bridge window attributes to treat it as 32-bit address
+>> memory. This fixes the allocation failure observed since commit
+>> 9d57e61bf723.
+>>
+>> Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+>> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
+>> Suggested-by: Robin Murphy <robin.murphy@arm.com>
+>> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+>> Cc: Heiko Stuebner <heiko@sntech.de>
+>> Cc: Rob Herring <robh+dt@kernel.org>
+>> ---
+>> Hi,
+>>
+>> The patch fixes the failure observed with detecting certain Samsung
+>> NVMe drives on RK3399 based boards.
+>>
+>> Hopefully, the folks on this thread can provide some input on the
+>> reason the host bridge window was originally marked as 64-bit or if
+>> there are any downsides to applying the patch.
+>
+> We can't require *only* a DT update to fix this. Ideally, the Rockchip
+> PCI driver should clear the 64-bit flag in the resources though I'm
+> not sure if the bridge driver would have access early enough.
 
+Following the discussion in the other thread, I tested the following
+changes to fixup 64-bit flag for non-prefetchable memory resources that
+fit below 4GB.
+
+If the changes look good, I'll send it out as a proper patch later
+today.
+
+---->8----
+diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+index da5b414d585a..b9d0bee5a088 100644
+--- a/drivers/pci/of.c
++++ b/drivers/pci/of.c
+@@ -565,10 +565,14 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
+                case IORESOURCE_MEM:
+                        res_valid |= !(res->flags & IORESOURCE_PREFETCH);
+
+-                       if (!(res->flags & IORESOURCE_PREFETCH))
++                       if (!(res->flags & IORESOURCE_PREFETCH)) {
+                                if (upper_32_bits(resource_size(res)))
+                                        dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
+-
++                               if ((res->flags & IORESOURCE_MEM_64) && !upper_32_bits(res->end)) {
++                                       dev_warn(dev, "Overriding 64-bit flag for non-prefetchable memory below 4GB\n");
++                                       res->flags &= ~IORESOURCE_MEM_64;
++                               }
++                       }
+                        break;
+                }
+        }
 
 _______________________________________________
 Linux-rockchip mailing list
