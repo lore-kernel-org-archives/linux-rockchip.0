@@ -2,90 +2,89 @@ Return-Path: <SRS0=Ct0Y=KW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34C5AC47089
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 12:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35D65C47089
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 13:05:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD5F2613C3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 12:29:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD5F2613C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=heitbaum.com
+	by mail.kernel.org (Postfix) with ESMTPS id ECC8361132
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 13:04:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECC8361132
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4TgvZwxwGqGpnrjMHrqIgnfvEht8CtV0W3g1yl5f1eY=; b=MVzHh/0nWMUpMf
-	BcTbrv1xeGgx9sFdkJoBgpJf05ojA7yn94GjQKXksLSV4nxD3PorjOGz7+wsgTe1WoDpaHKGNi2MB
-	gUN21iaTk4/hSqa+qN5HI7CUgxyLf6YrD3krF8ti0m7ghIHl7R+Emdm2n0tqtw5GfBwYjEe9Me8TN
-	nEa67s9Bwlsb4OsQTjaxxWmf9FcWJcFFlB+d1aZwx3dHp5+2IwvifiRgDA5nxDxQvUv+PymJKZGrp
-	1a7JjLe882EJNUJCpCk4lAu9de4cNKRjwjy6Z3tqTWOLuKxMWMVHqXmqKcSpdBAQ0NlJm+IJ5VbOX
-	2/anOY0Ml6dLglP1xUlQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jKni091XzqamJCb0X8W9UoMmjVIY6AYDzxisbQz+FxE=; b=gWYiTMPGlyZzgyljWsZBSGZdew
+	N9RdstGVx5gTE5NdZpuV2yZrMCR27F1ktZCF4lJHsrDluXS1glTOJ79VWLGlQunDz5GBJuXMHezht
+	m/yI8fuSllQCvc25y98DdRnhcxL5s6jQrrTR/WqxqVPOkRzuZ41F2999WgG3/VC3rRpUtEDeNmKdd
+	NOHjyjfgGI+rzLSaZOwNiulmx+Tq/mVvy9oF9l6Uv2kvAK1HXxbAc4aDbgSmyY6zNZJozvnR+vnhS
+	GG1BUVYK6YfiG+bkHZskgI/mS3j6JstmYZq0KLgN9MpuGzMPgsAR31dViO9A/qH7eQV1sk72RLHkb
+	jYMxD5kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmF8o-005l6k-0W; Thu, 27 May 2021 12:29:34 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1lmFh0-0061Am-H4; Thu, 27 May 2021 13:04:54 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmF8j-005l1S-Vm
- for linux-rockchip@lists.infradead.org; Thu, 27 May 2021 12:29:32 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 27so3586447pgy.3
- for <linux-rockchip@lists.infradead.org>; Thu, 27 May 2021 05:29:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=lzggwkwLPsGkqROCQrFoMo/EvgYIJci/zbm9PeGjIk0=;
- b=EYmigkpQTz9NSx6So1qYsm7RWFpAJD9ork/TZ4owbGAgWg/9D7pft/OiwioWRV1UY/
- 4Pg1cmCoaaqMEPnMB5xnJxM+VImS9+YJqEXgohfTEPseh5vy11mnubEVGyYo5kieIuYF
- JHMW+qzqun0WFNX0q15+sphLQq/NCObdjEM5k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=lzggwkwLPsGkqROCQrFoMo/EvgYIJci/zbm9PeGjIk0=;
- b=WxCt5Kb4ebwr/FnjLKdNnAg4yfpV9+DmvsVEVumaFDY5da39PbHHTF2KgXp3sygWAF
- uLNaxVCUcAHbYD4CGYWpaOt7UCsPSJuVWdgP16h2PX+irs9LszwNXvYIQ5w2AF7AT8oQ
- 9VGwVK+Rhceh8UvRPj9OOWGbWC64IG1M60XJ/hYE8wBi0FVldpx7D6OpozHO0xik0Xul
- CxjNAmI5Cf7uXAvACffCoECxPakrHSrlZrYZNOBBRSxJhyYc4AMv+UQTanPDnq4C+qO+
- 7fgeG8rhdmSIo51iWCuFMDZkVcSI3YZdgApPkHiLH4hbRdF9ANt2LCccYZGyRI5WFmLP
- 24EA==
-X-Gm-Message-State: AOAM53241YCxlfDP7HjJjQClmC66Srv2B5ssmZeHZZPxhMQkV0qEBpzK
- FbMdpNdp4EKKmhfM4ltF4l3wPA==
-X-Google-Smtp-Source: ABdhPJxHlrGNoVThzD9jXDunpAOOoUVlqmsHj782bf3WpYVZpsXhZsPr8L6VnGUc3ZUFw5LcKkXdEw==
-X-Received: by 2002:a05:6a00:1a0f:b029:2dd:823b:3dce with SMTP id
- g15-20020a056a001a0fb02902dd823b3dcemr3487042pfv.35.1622118562288; 
- Thu, 27 May 2021 05:29:22 -0700 (PDT)
-Received: from 7698f5da3a10 ([124.170.34.40])
- by smtp.gmail.com with ESMTPSA id h26sm1946892pfk.19.2021.05.27.05.29.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 27 May 2021 05:29:21 -0700 (PDT)
-Date: Thu, 27 May 2021 12:29:15 +0000
-From: Rudi Heitbaum <rudi@heitbaum.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ id 1lmFgx-00618T-Ml
+ for linux-rockchip@bombadil.infradead.org; Thu, 27 May 2021 13:04:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=IzFJwCBpTBHNAHayZpbaaG+HYYYb9w6NPRI7Eu3O+2Y=; b=Qt3Hsn66k76O7TSrop10l4at8e
+ cpiD7uET4ZW5jgQ68ZgR72vyGyzEDfXXBn2CiUDab7V8gzVm9HAF4kiYKACEAPiWzu6pbkw2JwtjO
+ nXFM/dX4yurz58ZdZctIQk9zww93a4+/QhoTCP6xk3SdhxU1Xhm21nJQEFCXdbzm8lordesxIVWsw
+ BndRJZaKslNUQfSJW+pCL7ey0/IVSzHQz74LbNBqWEZ58EyJJrzTqqUqzeioXCOb6maTvudJolgyi
+ Mdib/1J4CWoifGhiL6q8gLWCjlE+EQfeKL3V9Dqn0Ap1civqZm7BA+r1Mz1hEmCcs5x1rs4ALFrlv
+ +wrx7T4g==;
+Received: from heliosphere.sirena.org.uk ([172.104.155.198])
+ by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lmFfv-005YJ9-W2
+ for linux-rockchip@lists.infradead.org; Thu, 27 May 2021 13:04:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=IzFJwCBpTBHNAHayZpbaaG+HYYYb9w6NPRI7Eu3O+2Y=; b=QYIoOTUC1Uf9t0jIpRtLHdxQtP
+ hf71Z3sVUCWNONwBhD9oT2cretWZl0b0tTem2h43+wRpF6BJgiw3qFjK+PAfF9+XidbBVWSt5Gqf8
+ RL3oxbQT/Lxv+QCO5TzSnZKbqUK6DLt5wCC3byG8n8qmJoDWPor1ClGMAW6UyPm0zM+o=;
+Received: from 94.196.90.140.threembb.co.uk ([94.196.90.140]
+ helo=fitzroy.sirena.org.uk)
+ by heliosphere.sirena.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <broonie@sirena.org.uk>)
+ id 1lmFfi-006O36-7e; Thu, 27 May 2021 13:03:34 +0000
+Received: by fitzroy.sirena.org.uk (Postfix, from userid 1000)
+ id 7FF78D0EA1D; Thu, 27 May 2021 14:03:32 +0100 (BST)
+Date: Thu, 27 May 2021 14:03:32 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Rudi Heitbaum <rudi@heitbaum.com>, devicetree@vger.kernel.org,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Mark Brown <broonie@kernel.org>, chenjh@rock-chips.com
+ Ezequiel Garcia <ezequiel@collabora.com>, chenjh@rock-chips.com
 Subject: Re: [PATCH] regulator: fan53555: add back tcs4526
-Message-ID: <20210527122911.GA1640@7698f5da3a10>
+Message-ID: <YK+YpBm9M2GbFGec@sirena.org.uk>
 References: <20210526162342.GA20@8bbba9ba63a4>
  <CAMdYzYpZoKs3P62j02RW-+5BEpqC9JL3apjucTWLWmvNFrOrCg@mail.gmail.com>
  <20210527105943.GA441@7698f5da3a10>
- <462b8d80447efb6c00e93704914169bceb5adc4d.camel@collabora.com>
+ <CAMdYzYq8c4=D6_LxG2jPfbtPkOp5tN8oRA0zKt_OM6HLbnfFTw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <462b8d80447efb6c00e93704914169bceb5adc4d.camel@collabora.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <CAMdYzYq8c4=D6_LxG2jPfbtPkOp5tN8oRA0zKt_OM6HLbnfFTw@mail.gmail.com>
+X-Cookie: A penny saved has not been spent.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_052930_091453_A935CBE3 
-X-CRM114-Status: GOOD (  29.06  )
+X-CRM114-CacheID: sfid-20210527_140357_204180_EA0DBE40 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,32 +97,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8450625439265115570=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel and Peter,
 
-Thanks for the feedback.
+--===============8450625439265115570==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nVOdrmUDn/PExWf2"
+Content-Disposition: inline
 
-On Thu, May 27, 2021 at 08:51:27AM -0300, Ezequiel Garcia wrote:
-> Hi Rudi,
-> 
-> Thanks for the patch.
-> 
-> On Thu, 2021-05-27 at 10:59 +0000, Rudi Heitbaum wrote:
-> > On Wed, May 26, 2021 at 02:41:00PM -0400, Peter Geis wrote:
-> > > On Wed, May 26, 2021 at 12:23 PM Rudi Heitbaum <rudi@heitbaum.com> wrote:
 
-...
+--nVOdrmUDn/PExWf2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, May 27, 2021 at 07:26:01AM -0400, Peter Geis wrote:
+> On Thu, May 27, 2021 at 6:59 AM Rudi Heitbaum <rudi@heitbaum.com> wrote:
+
+> > > Since you aren't adding any functional code, is there a particular
+> > > reason you can't just add the chip id and simply use the tcs4525
+> > > compatible?
+> > > This will prevent you from needing to modify the dt-bindings as well.
+
+..
 
 > > I chose to follow the example of silergy,syr827 and silergy,syr828 for
 > > tcs4526 (given I made the mistake in assuming that support for tcs4525
-> > meant support for tcs4525.) This would maintain consistency of naming
-> > of
+> > meant support for tcs4525.) This would maintain consistency of naming of
 > > tcs4526 throughout the source. Is that ok?
-> 
+
 > It's fine to have both compatibles (and avoids confusion in
 > device-trees), just remember to update the dt-bindings as well.
 > It's funny to see drivers with both schemes, so we really have to
@@ -131,55 +134,56 @@ On Thu, May 27, 2021 at 08:51:27AM -0300, Ezequiel Garcia wrote:
 > Considering the syr827/syr828 as convention, we should probably just
 > go down that route for consistency within the driver.
 
-Thanks Peter - I will resubmit the tcs4526 patch along these lines.
+It is generally safer for the DT to be explicit about exactly
+what the hardware is and then double check that this matches the
+actual hardware, this gives more room for handling things with
+quirks if needed in future and makes the life of people writing
+DTs for boards easier since they don't need to remap part
+numbers from the schematic to the DT.
 
-> > Removal of the operating points kind of makes the gpu regulator
-> > moot, don't you think?
+> > +&gpu {
+> > +       mali-supply = <&vdd_gpu>;
+> > +       assigned-clocks = <&cru ACLK_GPU>;
+> > +       assigned-clock-rates = <200000000>;
+> > +       status = "okay";
+> > +       /delete-property/ operating-points-v2;
 
-> As Peter rightly said, this will prevent gpu devfreq from working.
+> Removal of the operating points kind of makes the gpu regulator moot,
+> don't you think?
 
-This is the draft that I have been working on within LibreELEC10, still
-a ways to go I'm afraid. Having decided to getting the SBC to run
-mainline kernel and u-boot. The regulator and subsequent regulator fix
-will hopefully address https://bugzilla.kernel.org/show_bug.cgi?id=212917 
-too. As you have identified - it is not ready for upstreaming :-)
+It's still better to say what the supply is even if it can't be
+changed - that stops you getting warnings about substituting in a
+dummy regulator and allows the consumer to read the current state
+of the regulator in case that's useful.
 
-Thank you both for the direction and pointers on the dts. I will get the
-v2 patch going first.
+--nVOdrmUDn/PExWf2
+Content-Type: application/pgp-signature; name="signature.asc"
 
-> Out of curiosity, why disabling the little VOP?
+-----BEGIN PGP SIGNATURE-----
 
-Only disabled within my WIP dts so as to focus my attention on successful 
-running of LE10 on the rk3399pro, before I move to attempting to enable 
-the NPU and the other nodes.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmCvmKAACgkQJNaLcl1U
+h9AS5gf+MyXoR1SRd4piOK0UplV96s3jVB5W+Nu4kZPj7iNbaUP7Mpj/yHR6Bm53
+rjwUbCpnDJpt+Kjf3uJrSTHim8VYXidXiTykeEYyZTX9SFPRELLatDCd+lxyJSBT
+aAGGOMyOX0tQR8+0IqHjS3iFX4/C7KoUcDVeMRILQGJj3x+QGZonSFssqrjjOnbv
+L1LE/qJ/AhA8MNYdh027mDk2GcT6Pkv7nVTrf0qubDJNffLVA6NwjR3/xe4IKBph
+DqWIj4LZeJGGH8XLp5yOab05BOvBQRFE0UX117GRvfvogOuOSmSzS/EeWS5sC9tS
+YLW8k4v4p1yHrpDNwQ4YsE4X6XcorQ==
+=smBU
+-----END PGP SIGNATURE-----
 
-> I can be wrong, but I think regulator-compatible is deprecated.
+--nVOdrmUDn/PExWf2--
 
-I will look it to this. 
 
-Now with the addition of the regulator and Peter's fix I will start
-qualifing each of the dts nodes and the correct options against the
-schematic.
-
-> > +??????????????????????????????vsel-gpios = <&gpio1 RK_PC1 GPIO_ACTIVE_HIGH>;
-> 
-> Is vsel-gpios ever used in the mainline driver?
->
-> > +??????????????????????????????regulator-compatible = "fan53555-reg";
-> 
-> Ditto.
->
-> > +??????????????????????????????vsel-gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_HIGH>;
-> 
-> Ditto.
->
-> > +??????????????????????????????regulator-boot-on;
-> 
-> Just out of curiosity, is regulator-boot-on really needed for the GPU?
-
-Will check.
+--===============8450625439265115570==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8450625439265115570==--
+
