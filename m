@@ -2,20 +2,20 @@ Return-Path: <SRS0=Ct0Y=KW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09B73C4707F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 16:28:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F735C4707F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 17:00:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C616D613C0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 16:28:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C616D613C0
+	by mail.kernel.org (Postfix) with ESMTPS id 4CA1360241
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 May 2021 17:00:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CA1360241
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,72 +24,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a7/LiXw7fqBV4KPHSZs7oTDT7Y2snwow+6CEnSTTvQ0=; b=Rdjt5e4DS8oLeT
-	NnRw1xqH7aPMrajYJdZybDUplyaMHtywO3pFnGtrhL3c1XCvLZYLyJYzn2/CgxpYID5GQO1Q8nEkg
-	5EQH7q1c/3zDXK+ReBWGYhtra3D7F1EetOkJKLyZL+Kc13nuadTUJDrwmJmzUiZWPSgaNvCTs9JUv
-	l21Z4c2ckvAxY1ztv4x4tv7MNJAFWhvYR1UmIlpDensnvsapKrCNkSsQFfsBjAjDNvHgS+ExdBJ13
-	mj8DEX9KywJRyKsDPihVxUnyQLOfioftZh7jr4S+dD9svf7nv5HNo3b+H/xbmIbm1sM7M88ujSCf8
-	XHOZsDJywBf4fXdXF7lg==;
+	List-Owner; bh=TLZnaQDt/gS4FpVt5pv4Y2ZnmfRM6p0KOTeVHwyVtRE=; b=BIQHDfJYW0/u4J
+	3q+U3DtbQzKyK1C/W8gBS56fkqxHkV7Vkg2qh5Cx8Q0al3F4n5vDL6mFvTngGR2UyYE9MeQp9UCD2
+	p9fNSaBsHjQNdGlSi0QNJuWetOfk8k1BWIrEQCDf4jHV6CMuadGtSNZrnPZqRp94kLsnA6JanQsx8
+	TAOZGOrHPnFOytvh5xKqlXqtRKQjBAuo2Rhonn/JWBOLDHEL+nnbWuJ3lcS9+ZFSSS4uBr1dQFW7D
+	IQRQEyOx2G30da16BCMFHhymotkPp1tDsgzMG+0IioRl2/udDY5wcFOxObHRzQA02pdN8rp0zXI4V
+	1R5/3ijaNzbJRclCCHcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmIrw-007cUR-Ps; Thu, 27 May 2021 16:28:24 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1lmJMv-007sTW-PC; Thu, 27 May 2021 17:00:25 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmHbI-0072R1-QH; Thu, 27 May 2021 15:07:10 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id g24so616225pji.4;
- Thu, 27 May 2021 08:07:08 -0700 (PDT)
+ id 1lmIC0-007KAH-Ry; Thu, 27 May 2021 15:45:06 +0000
+Received: by mail-ej1-x630.google.com with SMTP id e12so852125ejt.3;
+ Thu, 27 May 2021 08:45:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=A93D3Jz/qTgixftb1ASsD8T5vX2ZHOxs7SEr20+q3E4=;
- b=MMSdCu4bncyrpLvqO7+fLJ6ChGKSZ5Ya1+Xd4ofCq3UiwKYE+KO+bOl9v8i84CLqC9
- TbLSMWZLbSjywtbwyd37YAUmEn08KrG5xBOS0+P+9r9TrEpulg4E44QJ/XeQ98e0wNoM
- SThgxcuVH5J0CUUz/QKg/8AQ15DK5HiRNZz7EGYH5KcoCF7EV+XicDXTZmHGbs3NWOrY
- 3sULIZxK/fnlEV8zdDiTt3r/lIj/z8m4/v02Jj6Q45sp4aWMr599psEF3y5La/XElZ7k
- X4j5yel/B4Vk9rYcViRqDf5QzMc4fWPK095yJXuPRsptKJ9jw65w7AYQgJdf2goMpURa
- NRAQ==
+ bh=UMiOHR1uiQc7x+1YMV+1TXAaL2wJozSwYNysKOYYojw=;
+ b=hOQxrOhodHvnR2rNflHrUYZZ6TPJDeV7uT8ifxABB2J1lJJHUDuylUHAm+aMdZ2IaG
+ Di8/RvxPf3HJI5mKX0dAAsCM6Ozb9aWy+Cm8SiuriYT0mZ9HXSSkd/+gS83IhNWZdsjS
+ KyPXBwJiJnT6hDIpmTYQGd8R9vRpL1yOmWdUPMPBx1QRNZY/NnQiHx/aEYiNO0fEqEn0
+ bze6ET3GzRMzfHy5UerQoqnf1INuEarHVTPE5JqdvGKypp9fPCIFfjMtGd4kvxVraNd+
+ G8tGI/YPv8jIyquwfCA/I6qXGNaW47Wi8AyFneQ/HkPNatrRhA+5UK06dFJIAZvht5mA
+ 07CA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=A93D3Jz/qTgixftb1ASsD8T5vX2ZHOxs7SEr20+q3E4=;
- b=ubxzZpsia1SX9swT0WTMiejbJMZGYjHAOfsHYrjqb8yNbJIuZeIWGwT2jM+fDN4Hqk
- gBv8KeZ1fjG623c4CqaXLgQZHK/sEtNHQ7adDWI0juCHfluD6sCcPR2zoIkM+covp/Gb
- VdfOGENF2d5zGvrN5Ln8IyW/fn7SVWA2cD4IwkqHURTDg8sBwXT71/fwwwTtO2iUigvf
- a7xSD2JLrpIq1XOhiGoLXA3JcbXVcaZrH5jpyuVRTuVOyM/FfJMjQ8j69VJ/20JG2cKK
- rz3wtI+90wuEw/nAD2jhh1yHHE+5t+QO5/FNtaSucsea3riGmJZAgQFXT+ueI11JKEQw
- On/Q==
-X-Gm-Message-State: AOAM533BCEQXyLGAe/PH1NTRF+DLt5gdDhMjGiPL2lOVhtcbEcIOJUfA
- CoxxGdYg6g0s3Y2g1tuVX74IZPZXy19yiQ==
-X-Google-Smtp-Source: ABdhPJy0RolUbT16u5ASs6Qv4vTKJXckg5XvCboep7q0O8magnGUidJHGWe4kmXXIVxjYqFf+MFpPw==
-X-Received: by 2002:a17:90a:ac12:: with SMTP id
- o18mr9969025pjq.65.1622128027426; 
- Thu, 27 May 2021 08:07:07 -0700 (PDT)
-Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
- [122.211.248.161])
- by smtp.gmail.com with ESMTPSA id t12sm2255790pjw.57.2021.05.27.08.07.06
+ bh=UMiOHR1uiQc7x+1YMV+1TXAaL2wJozSwYNysKOYYojw=;
+ b=IUCpMtZ6hvYijR3YugSNTA2Xh5iZh4HGY+F90tP/wffe36yo1UO3QcW9GzSFukxeSI
+ mBWWS/Lsh2byYPoGSCbpocRN5D99SzXFRcJ/NEI88BAx3HC1miA4Ri8ZMf7bX7Irf5tu
+ mnzDzQWsVeWPJhZD3HmM3VoCtLKyLoFE0F/nsZ6tTGXDq9Siif83YyTUQ6iwOUeTuwQU
+ Mroptub6ryZsiuR1QBgXUGZVef3VAPRknmWNVxMQcsp1q3kQ6/6Z3AJa8KUTL9zjpGlY
+ mRGXheWizjloboOm8CHAwiHQHACbPRcYabyQUQ5dax1Q3T/G/iqozKQU/zb8Ynn2z83f
+ axlg==
+X-Gm-Message-State: AOAM5312ntqNhp4hZpGX/dfnPlkV/I50tKexCH8SA7npk2oIuyexUW/j
+ UGLA5TtVJBCwYWJqmj7cetmpEdNhL7Rz
+X-Google-Smtp-Source: ABdhPJwHWleKrSYu2vhp8oAd6rpoMECMYvmzR3SmWfWw8iqIfZ4V8Ky3PrKEn080sdYKrqP78jvLvg==
+X-Received: by 2002:a17:906:1dd1:: with SMTP id
+ v17mr4491098ejh.31.1622130303091; 
+ Thu, 27 May 2021 08:45:03 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:810b:f40:e00:fefd:4d98:c981:7f97])
+ by smtp.googlemail.com with ESMTPSA id
+ u6sm1178826ejr.55.2021.05.27.08.45.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 May 2021 08:07:06 -0700 (PDT)
-From: Punit Agrawal <punitagrawal@gmail.com>
-To: linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org
-Cc: Punit Agrawal <punitagrawal@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- alexandru.elisei@arm.com, wqu@suse.com, robin.murphy@arm.com,
- pgwipeout@gmail.com, ardb@kernel.org, briannorris@chromium.org,
- shawn.lin@rock-chips.com, helgaas@kernel.org, robh+dt@kernel.org,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Update PCI host bridge window to
- 32-bit address memory
-Date: Fri, 28 May 2021 00:05:42 +0900
-Message-Id: <20210527150541.3130505-3-punitagrawal@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210527150541.3130505-1-punitagrawal@gmail.com>
-References: <20210527150541.3130505-1-punitagrawal@gmail.com>
+ Thu, 27 May 2021 08:45:02 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 00/12] Add support for older Rockchip SoCs to V4L2 hantro
+ and rkvdec drivers
+Date: Thu, 27 May 2021 17:44:43 +0200
+Message-Id: <20210527154455.358869-1-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
+References: <20210525152225.154302-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_080708_932233_242197BD 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20210527_084504_967614_E41BF0AE 
+X-CRM114-Status: GOOD (  20.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,49 +108,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PCIe host bridge on RK3399 advertises a single 64-bit memory
-address range even though it lies entirely below 4GB.
+Hi list,
 
-Previously the OF PCI range parser treated 64-bit ranges more
-leniently (i.e., as 32-bit), but since commit 9d57e61bf723 ("of/pci:
-Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
-the code takes a stricter view and treats the ranges as advertised in
-the device tree (i.e, as 64-bit).
+this series adds support for older Rockchip SoCs (RK3036, RK3066, RK3188
+and RK322x) to the existing V4L2 video decoder/-encoder drivers - namely
+hantro and rkvdec.
+They can be used as-is or with very little modifications.
 
-The change in behaviour causes failure when allocating bus addresses
-to devices connected behind a PCI-to-PCI bridge that require
-non-prefetchable memory ranges. The allocation failure was observed
-for certain Samsung NVMe drives connected to RockPro64 boards.
+In preparation to that patches 1,8 and 9 add power-controller support for
+RK3036 and RK322x, since both drivers rely on pm. The drivers for them 
+exist already in the common Rockchip pm driver, they just haven't be added
+to the device trees yet.
 
-Update the host bridge window attributes to treat it as 32-bit address
-memory. This fixes the allocation failure observed since commit
-9d57e61bf723.
+Changes in v2:
+- reordered patches as suggested by Heiko
+- fixed indentation and order issues in dt-bindings / DT patches
+- added patch to reorder variants in hantro alphanumeric
+- added patch that merges hantro platform drivers for Rockchip in one
+- added missing DT patch for RK3036 (missed to submit with v1)
+See individual patches for details about changes.
 
-Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
-Suggested-by: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for your feedback,
+Alex.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 634a91af8e83..4b854eb21f72 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -227,7 +227,7 @@ pcie0: pcie@f8000000 {
- 		       <&pcie_phy 2>, <&pcie_phy 3>;
- 		phy-names = "pcie-phy-0", "pcie-phy-1",
- 			    "pcie-phy-2", "pcie-phy-3";
--		ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
-+		ranges = <0x82000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
- 			 <0x81000000 0x0 0xfbe00000 0x0 0xfbe00000 0x0 0x100000>;
- 		resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
- 			 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>,
+Alex Bee (12):
+  dt-bindings: mfd: syscon: add Rockchip RK3036/RK3228 qos compatibles
+  dt-bindings: media: rockchip-vpu: add new compatibles
+  dt-bindings: media: rockchip-vdec: add RK3228 compatible
+  media: hantro: reorder variants
+  media: hantro: merge Rockchip platform drivers
+  media: hantro: add support for Rockchip RK3066
+  media: hantro: add support for Rockchip RK3036
+  ARM: dts: rockchip: add power controller for RK3036
+  ARM: dts: rockchip: add power controller for RK322x
+  ARM: dts: rockchip: add vpu node for RK3036
+  ARM: dts: rockchip: add vpu nodes for RK3066 and RK3188
+  ARM: dts: rockchip: add vpu and vdec node for RK322x
+
+ .../bindings/media/rockchip,vdec.yaml         |  10 +-
+ .../bindings/media/rockchip-vpu.yaml          |  33 +-
+ .../devicetree/bindings/mfd/syscon.yaml       |   2 +
+ arch/arm/boot/dts/rk3036.dtsi                 |  72 +++
+ arch/arm/boot/dts/rk3066a.dtsi                |   4 +
+ arch/arm/boot/dts/rk3188.dtsi                 |   5 +
+ arch/arm/boot/dts/rk322x.dtsi                 | 140 ++++-
+ arch/arm/boot/dts/rk3xxx.dtsi                 |  12 +
+ drivers/staging/media/hantro/Makefile         |   9 +-
+ drivers/staging/media/hantro/hantro_drv.c     |   6 +-
+ drivers/staging/media/hantro/hantro_hw.h      |  30 +-
+ drivers/staging/media/hantro/rk3288_vpu_hw.c  | 208 -------
+ drivers/staging/media/hantro/rk3399_vpu_hw.c  | 222 --------
+ ...jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} |  30 +-
+ ...eg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} |  25 +-
+ ...w_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} |   2 +-
+ ...rk3399_vpu_regs.h => rockchip_vpu2_regs.h} |   6 +-
+ .../staging/media/hantro/rockchip_vpu_hw.c    | 526 ++++++++++++++++++
+ 18 files changed, 848 insertions(+), 494 deletions(-)
+ delete mode 100644 drivers/staging/media/hantro/rk3288_vpu_hw.c
+ delete mode 100644 drivers/staging/media/hantro/rk3399_vpu_hw.c
+ rename drivers/staging/media/hantro/{rk3399_vpu_hw_jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} (87%)
+ rename drivers/staging/media/hantro/{rk3399_vpu_hw_mpeg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} (93%)
+ rename drivers/staging/media/hantro/{rk3399_vpu_hw_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} (99%)
+ rename drivers/staging/media/hantro/{rk3399_vpu_regs.h => rockchip_vpu2_regs.h} (99%)
+ create mode 100644 drivers/staging/media/hantro/rockchip_vpu_hw.c
+
+
+base-commit: 5d765451c2409e63563fa6a3e8005bd03ab9e82f
 -- 
-2.30.2
+2.27.0
 
 
 _______________________________________________
