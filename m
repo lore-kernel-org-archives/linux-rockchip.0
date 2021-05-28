@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FFE0C47087
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E44ABC2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:33:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 099CE613B5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:32:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 099CE613B5
+	by mail.kernel.org (Postfix) with ESMTPS id 94664613DA
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:33:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94664613DA
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ux/M0wcKtLYTsVlvUCUoy2ugQECiEg3HFjWGpJTzkl4=; b=beG1sGk8o8Zfv1
-	jY4hvThdgYM+5qNQEA0cfwASRfRT8UJJU8baiTsbQe/xPS3dLtwA4qNgm3Jm/o00alak2jJ1PC52O
-	7obtT+bnYOJzkyRHpD2SzMDWJszL0Z+YtpFNN0bu99bEKzlmaKzsrohhqEVZbt57bUicD7ZZTLcvJ
-	rO7GPlHXRz75I5WYLamtwZyXAzOTuS0pWBFpD4jHIIhaxSsLiKIHzG8MKhJ2ZMQWJIFDIndBmjwpu
-	qC/V6tuLPjTKlXhJ5JZaV5sSu/a8OUZMIKrvLvMKX2A5stjZY0eJwlxYR9p3FGdKOL6y3ENjeHyTq
-	ys1ZSnfUSPWOr/jMRyOA==;
+	List-Owner; bh=xBhSjaFAewRLbNTFBU3VQ5zNJrIAFazgn5lEXOe5esg=; b=i0EoJE0S4BpvKc
+	S7QOJPfL50zEMzCGd5x87W12wZQOHWUBhMBcyo7iaejoeRCCffk1ZWUdCPn7ca3ek8JSDjaOcRv4Y
+	xAs+fWiDvVi6E/hrjyzpzCj73TvIay9XiJMoM3bOUWX2P62y9/2qqhg/z1ukub+8XHHhdLayeg7mR
+	9b7gYls/SaeLH6CuebNnCPm+fJ/rRCKstSu9iCxLJZXtT3lFaB+RH9LgyLFzItnP0qcllBULMkSvh
+	sYYPtf7T9SWcPdi7aASgdIBTkd1wQNhw0uIZRYce+f9n9ZDk83NDoev5R+1DM/7i37959PETSJlMN
+	lyJk93roEBtl2fzU5dbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmgLj-00HTSs-5V; Fri, 28 May 2021 17:32:43 +0000
+	id 1lmgM7-00HTgD-VR; Fri, 28 May 2021 17:33:07 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmgLh-00HTRB-1n; Fri, 28 May 2021 17:32:42 +0000
+ id 1lmgLj-00HTSl-Cz; Fri, 28 May 2021 17:32:44 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lmgLf-0006NM-DL; Fri, 28 May 2021 19:32:39 +0200
+ id 1lmgLf-0006NM-1Z; Fri, 28 May 2021 19:32:39 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-clk@vger.kernel.org, Alex Bee <knaerzche@gmail.com>,
- linux-rockchip@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH] clk: rockchip: export ACLK_VCODEC for RK3036
-Date: Fri, 28 May 2021 19:32:37 +0200
-Message-Id: <162222314613.2865009.9291015386212006336.b4-ty@sntech.de>
+ robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v1] ARM: dts: rockchip: move mmc aliases to board dts on
+ rk3066/rk3188
+Date: Fri, 28 May 2021 19:32:36 +0200
+Message-Id: <162222314614.2865009.9000799386327047041.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210528140736.79686-1-knaerzche@gmail.com>
-References: <20210528140736.79686-1-knaerzche@gmail.com>
+In-Reply-To: <20210520091822.28491-1-jbx6244@gmail.com>
+References: <20210520091822.28491-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_103241_111019_9BE51556 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20210528_103243_460901_100D9F9B 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,17 +74,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 28 May 2021 16:07:36 +0200, Alex Bee wrote:
-> It is required for the series at [1] to let hantro driver aquire the
-> clock and set the rate for RK3036 correctly, but I didn't want to
-> add a patch for yet another subsystem to this series.
-> 
-> [1] https://lore.kernel.org/linux-media/20210525152225.154302-1-knaerzche@gmail.com/
+On Thu, 20 May 2021 11:18:22 +0200, Johan Jonker wrote:
+> As suggested by Arnd Bergmann, the newly added mmc aliases
+> should be board specific, so move them from the general dtsi
+> to the individual boards.
 
 Applied, thanks!
 
-[1/1] clk: rockchip: export ACLK_VCODEC for RK3036
-      commit: 2adafc0512625bbd090dc37a353ddda15d525e9d
+[1/1] ARM: dts: rockchip: move mmc aliases to board dts on rk3066/rk3188
+      commit: d67113c261c196232c96dbed1ff2fbd071c8c457
 
 Best regards,
 -- 
