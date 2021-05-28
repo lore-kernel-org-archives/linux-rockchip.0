@@ -2,63 +2,74 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91B30C4708C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 18:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84587C2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 18:49:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C0D4613B5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 18:11:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C0D4613B5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 372F0613DD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 18:49:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 372F0613DD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=biIVCH1opnI18x/Oz8px3RXglHiIcfeU0swuKFRnhf4=; b=cJ+F/d29pZ6U00
-	YiXZ83Y+HAkMtwVqnF0/VPhotjaaCc3KJo0ezTwgsREvzQuXhPdXpVxeEd8RLX42xpLAuItNYFdmf
-	/aOX7GZM1BLxL0beQ04yOAbVNPUXMON8llAlOOcQGKULkMOUzolUsuQQDix6O1mQXvQCmG0KFi7zq
-	uf5Re8zxdLG8hbMUOwSzFSe8UjPXZOo5mWonnDfJegdUq8Tdbon7WW/IM8qhK6Hmmypohg4PA4GrW
-	bYnLobfbv2qqNfKl6MNhWv2gS7k3w0fOso4Hrr9CGUsBf1WfYD39RwjXa3JgoY3zcAMFCoTlCXx9J
-	3vEZb5zJkJvVzhbmw3rw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SWJoh9dDp0AhqiMd5EZ2vGD+AzpMeNHhQml4xqT0jss=; b=ORju5W1JpQ5ULydZWi7a870p4a
+	4by7Um+bQE0o4aSo2eDXwh6zeed9CHEt8k9lO7FCZbn5cNB78eqhDiBQv6D2EJSkNbU1gFkjeWImL
+	I3XreAQpKe77tda9wMi+T3DcQeZKPy9FoCEmb2YNtaV6koaYuftgAyjSZek0s9owU0MEBVQHT7CKi
+	SqVo0z5MccK6J4a8UDiO929t8cLZwbZrccZLVoq5SL+jjS/8V/XeqnpektwT7yqa0ibzS1B7w8IGv
+	yUwLOEM5mWuhml3GSwEFsUReaXLgrawm9WmlBIceDHarBo8V5hjsWBOaxDmnfCseGTIUQcwUB/25T
+	gBjSH4rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmgwt-0007RQ-Q9; Fri, 28 May 2021 18:11:07 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lmhXn-000PcP-Uh; Fri, 28 May 2021 18:49:15 +0000
+Received: from ssl.serverraum.org ([2a01:4f8:151:8464::1:2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmgvm-0006iK-PZ; Fri, 28 May 2021 18:10:00 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lmgve-0006Ve-Pv; Fri, 28 May 2021 20:09:50 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-kernel@vger.kernel.org, Andrzej Hajda <a.hajda@samsung.com>,
- Nickey Yang <nickey.yang@rock-chips.com>, Thomas Hebb <tommyhebb@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Brian Norris <briannorris@chromium.org>,
- linux-rockchip@lists.infradead.org, Sean Paul <seanpaul@chromium.org>,
- David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [RESEND PATCH] drm/rockchip: dsi: move all lane config except
- LCDC mux to bind()
-Date: Fri, 28 May 2021 20:09:44 +0200
-Message-Id: <162222530163.2887132.15086890641493370565.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <55fe7f3454d8c91dc3837ba5aa741d4a0e67378f.1618797813.git.tommyhebb@gmail.com>
-References: <55fe7f3454d8c91dc3837ba5aa741d4a0e67378f.1618797813.git.tommyhebb@gmail.com>
+ id 1lmhX9-000PCC-CT; Fri, 28 May 2021 18:48:37 +0000
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id 6CBEC22172;
+ Fri, 28 May 2021 20:48:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1622227710;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qtAJQ/fcxCS71m6N6ALuZxLfxWqZYCx6sUGpTsaHeEQ=;
+ b=Uprvdqh3FoGAlb3qQVhpGvpjvviaMA/XxZRNr5ZpEysdvcEWzKVUPJQAXZYtk/UFznhY0V
+ gS9aANEgg44/l2E9+AfOk4zNQPoLb9qvLBNoOkhDwaa4Ds6nRjT+XbzPu71HQZDwwTOgf1
+ 4CcMjqi2us1krJK+BKQsD6owZwlBewE=
 MIME-Version: 1.0
+Date: Fri, 28 May 2021 20:48:29 +0200
+From: Michael Walle <michael@walle.cc>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-mtd@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ andy.yan@rock-chips.com, yifeng.zhao@rock-chips.com,
+ sugar.zhang@rock-chips.com, tudor.ambarus@microchip.com, p.yadav@ti.com,
+ heiko@sntech.de, robh+dt@kernel.org, vigneshr@ti.com, richard@nod.at,
+ miquel.raynal@bootlin.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH v2 2/4] spi: rockchip-sfc: Bindings for Rockchip serial
+ flash controller
+In-Reply-To: <20210528170020.26219-3-macroalpha82@gmail.com>
+References: <20210528170020.26219-1-macroalpha82@gmail.com>
+ <20210528170020.26219-3-macroalpha82@gmail.com>
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <dd44fda9fa4da9cadf55916fdc4410fb@walle.cc>
+X-Sender: michael@walle.cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_110958_879847_4A86F2F6 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210528_114835_824063_F48BE77A 
+X-CRM114-Status: GOOD (  18.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,29 +82,167 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 18 Apr 2021 19:04:10 -0700, Thomas Hebb wrote:
-> When we first enable the DSI encoder, we currently program some per-chip
-> configuration that we look up in rk3399_chip_data based on the device
-> tree compatible we match. This data configures various parameters of the
-> MIPI lanes, including on RK3399 whether DSI1 is slaved to DSI0 in a
-> dual-mode configuration. It also selects which LCDC (i.e. VOP) to scan
-> out from.
+Am 2021-05-28 19:00, schrieb Chris Morgan:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> [...]
+> Add binding document for the Rockchip serial flash controller.
+> New device specific parameter of rockchip,sfc-no-dma included in
+> documentation.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-Applied, thanks!
+The subject for this patch should start with "dt-bindings:". See
+Documentation/devicetree/bindings/submitting-patches.rst
 
-[1/1] drm/rockchip: dsi: move all lane config except LCDC mux to bind()
-      commit: 43c2de1002d2b70fb5941fa14e97a34e3dc214d4
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../spi/rockchip,serialflash-controller.yaml  | 107 ++++++++++++++++++
+>  1 file changed, 107 insertions(+)
+>  create mode 100644
+> Documentation/devicetree/bindings/spi/rockchip,serialflash-controller.yaml
+> 
+> diff --git
+> a/Documentation/devicetree/bindings/spi/rockchip,serialflash-controller.yaml
+> b/Documentation/devicetree/bindings/spi/rockchip,serialflash-controller.yaml
+> new file mode 100644
+> index 000000000000..eb073130e82a
+> --- /dev/null
+> +++ 
+> b/Documentation/devicetree/bindings/spi/rockchip,serialflash-controller.yaml
+> @@ -0,0 +1,107 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: 
+> http://devicetree.org/schemas/spi/rockchip,serialflash-controller.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip SoCs Serial FLASH Controller (SFC)
+> +
+> +maintainers:
+> +  - Andy Yan <andy.yan@rock-chips.com>
+> +
+> +allOf:
+> +  - $ref: spi-controller.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: rockchip,px30-sfc
+> +      - const: rockchip,rv1108-sfc
+> +      - items:
+> +        - const: rockchip,sfc
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 2
+> +    items:
+> +      - description: Module Clock
+> +      - description: Bus Clock
+> +
+> +  clock-names:
+> +    minItems: 2
+> +    items:
+> +      - const: clk-sfc
+> +      - const: clk-hsfc
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  rockchip,sfc-no-dma:
+> +    - descrption: Boolean value for disabling DMA
+> +
+> +patternProperties:
+> +  "^spi-nor@[0-3]$":
+
+I guess this subnode shouldn't be here, because its alread being taken
+care of by the spi-controller.yaml.
+
+> +    type: object
+> +    properties:
+> +      reg:
+> +        minimum: 0
+> +        maximum: 3
+> +
+> +      spi-max-frequency:
+> +        maxItems: 1
+> +	  - description: Maximum frequency for SPI Flash
+> +
+> +      compatible:
+> +        oneOf:
+> +          - const: jedec,spi-nor
+> +
+> +      spi-rx-bus-width:
+> +        maxItems: 1
+> +          - description: RX Bus Width (1x, 2x, or 4x mode)
+> +
+> +      spi-tx-bus-width:
+> +        maxItems: 1
+> +          - description: TX Bus Width (1x, 2x, or 4x mode)
+> +
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/px30-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +sfc: spi@ff3a0000 {
+> +	compatible = "rockchip,px30-sfc","rockchip,sfc";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	reg = <0x0 0xff3a0000 0x0 0x4000>;
+> +	interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+> +	clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+> +	clock-names = "sfc", "hsfc";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sfc_clk &sfc_cs &sfc_bus2>;
+> +	power-domains = <&power PX30_PD_MMC_NAND>;
+> +
+> +	nor_flash: spi-nor@0 {
+flash@0 and the reference could probably be dropped.
+
+> +		reg = <0>;
+> +		compatible = "xtx,xt25f128b","jedec,spi-nor";
+
+This should only be only "jedec,spi-nor".
+
+You can check the schema with dt_bindings_check, see
+Documentation/devicetree/bindings/writing-schema.rst
+
+Otherwise, Rob's bot will likely complain.
+
+Please note, that these review comments are just the obvious
+ones and I don't have much experience with the schemas. Eg.
+the compatible looks fishy, too. But I'm not sure.
+
+-michael
+
+> +		spi-rx-bus-width = <2>;
+> +		spi-tx-bus-width = <2>;
+> +		spi-max-frequency = <108000000>;
+> +	};
+> +};
+> +
+> +...
 
 _______________________________________________
 Linux-rockchip mailing list
