@@ -2,19 +2,19 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26C37C47087
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A34C4708C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:20:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE73B613C9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:16:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE73B613C9
+	by mail.kernel.org (Postfix) with ESMTPS id B3DF8613D1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:20:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3DF8613D1
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=heitbaum.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,66 +23,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+fqcLo5qPYsiGV/rTO7rbuV0h+UWJeoQxWZyeqDTtm8=; b=cApZcdr/8EWapy
-	9xF11KMjrQzAHx2uY7ZKx7mLacbR5t0G+XFS2OVyqV1/m32ifxFduKxxuz+V6Y2TWeRGY6+pNnzMV
-	WZW/LHwZKKBRAmwFXJF1x4+vbUP2a9VDkeUTDemFY6iU8lkXnq4N/tf7btuEeTnf7dIZo7CzzwBbH
-	B2Qmqp4f6blY6lHSARK9gTBF8ViksMtYxkkPDcezNgJRPOgn4W3jJuuT5niTkYiMSSCioYbaHaNzK
-	tUt/Z4A3uCSEUGzSBXARn4xr9rIfWLO3P/Df3IZNyRqzXzvUEnI/YFjHQ6WuToTsgyFcBNLwZ0Qlr
-	IADcSQgy7Y/iHtLnUv9w==;
+	List-Owner; bh=pROksSsNxFxQTeKPuzjiwC2pUtfNZopu9C3qZbZXCtA=; b=1WuEBefBRnXgHh
+	cm2Gk266nyNFfxvfydS1XqfYPFh8l6RK0Hrt5X0Uz831j5ngV4ss7iGePNDYRbJ04e+d3Bwb2vmXn
+	YkuoyEzEFnfYyJeqfhv115LToWREZ0D6C/lm4ND1Vj1KE9PKGIPqJw60s5AYc5feQp+jAJ0ZfAToo
+	j6Lq3leHGhpVA39p5Q+RSPSU2X+ys2laYIw6vsKotbsdYIQBnqgOg/ItyWvQzun9CJ7zGLZ2Bp2hd
+	mOpoKf+FTK7bvELTjt/1NCubzT/nfScPAXKvwMjgleLngvIEy2KpKjlUFC1+xJ4EaxFuFA1p8ahIW
+	tEBxMvE858T7c3CIISqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmaTK-00EjR5-D4; Fri, 28 May 2021 11:16:10 +0000
+	id 1lmaXp-00Elj0-QK; Fri, 28 May 2021 11:20:49 +0000
 Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmZaw-00EKEw-Tt
- for linux-rockchip@lists.infradead.org; Fri, 28 May 2021 10:20:01 +0000
+ id 1lmZiZ-00ENhj-Ju
+ for linux-rockchip@lists.infradead.org; Fri, 28 May 2021 10:27:52 +0000
 Received: by mail-pj1-x1031.google.com with SMTP id
- mp9-20020a17090b1909b029015fd1e3ad5aso4195048pjb.3
- for <linux-rockchip@lists.infradead.org>; Fri, 28 May 2021 03:19:57 -0700 (PDT)
+ v13-20020a17090abb8db029015f9f7d7290so7038892pjr.0
+ for <linux-rockchip@lists.infradead.org>; Fri, 28 May 2021 03:27:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to:user-agent;
- bh=s9ut0Q0wZ8z+hzL9g91MMtw0Pf9H9Qkn8s5w5ouk4Co=;
- b=bVwvDp8MI5Bsa87/BZlORuZ57LNsXo6lrcNekT17GRjXXkBFxPEb95FqL71pnVHYch
- A0W8KEgMHB6L6YEeygYgr0yfm0QR+95TEe97ReaqfyJko8b/PflKbz0M7CTTQD7MYmTF
- Xjo34UaUnY7J9ROKjbAqftZ+OTn5dhvH1Ekc8=
+ bh=hcEHP5lbyUaIDoAJdZRGuAuvH9SN0j6HsI/OD+kTgf8=;
+ b=Ern2TC5DD/zOgm1HTsmKET7+vQygjHf+XZmiWrvA3JZWIP3Gal6cQiZBInx3/enbTB
+ yWRcq0jwzlWK5BS8LBAECwZ9+AH5TJY9l1Z5BeqiLRTdd96BaPkkv6pw7qPw5obglH9A
+ zPaifVDJqu0OlnEt2vciqn7HOESVDgpaefUSo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=s9ut0Q0wZ8z+hzL9g91MMtw0Pf9H9Qkn8s5w5ouk4Co=;
- b=uVhhRPr4zmzVMagUuZi5YgO9QUdzTkw35PTpwoMSdz/gv/7eARpSsNY5VZcjTA7ReD
- LK7ruUuAt28vaHjYajSHnVlgBSYH23Dh+y4cBV7m7OeR4aPd9nVGCvv4Vr/ByL4jtuxC
- 2dRsSTG8AR+7n3JAdhVEq3wUkbT8SUe+qU2gItRuwBE6kv6yRv6Ckz6nml+s87pAYACw
- tIkbWa40Io6IZI65gVHi8tnzrXAGy1RyElace0L1bfXkhnQeCmz56EQJGOWbWknNo2zO
- T/QqDDXVud2Tm74Y5Y7jCGA2s6UZqg+jusg079X7PMp4/AFuqFNb3qzosHGnWZsV1C/S
- vPsg==
-X-Gm-Message-State: AOAM532rVFZDUs1u0Tn5umBIT6RQNE9AZbFP71LusHm0qYt9T2DJry4B
- DQO/LyE8VFoaQ9vNg42uPVL0NA==
-X-Google-Smtp-Source: ABdhPJx0XBIqXipi4VP2x1mHrVD3VHC/t8RpJhO4DusSyfuXOvGtF/jS0MNxbfwBKODs3HsHT7T2Cw==
-X-Received: by 2002:a17:90a:a08c:: with SMTP id
- r12mr3644781pjp.204.1622197197057; 
- Fri, 28 May 2021 03:19:57 -0700 (PDT)
+ bh=hcEHP5lbyUaIDoAJdZRGuAuvH9SN0j6HsI/OD+kTgf8=;
+ b=CIgO9NnGFC/EIA6m4nAJhnbn3VHed01wdNcGsMY6R0xBWVhFbon8H4gvnyf4JiAytV
+ R3N6omGrF9MISaNmDK/SnQ8ZYpkCkyGpkBqh9AICOLaOIAXNF9tnn0fpIBdJifPkdb+Y
+ 4M+hqxJ/iTk9Yo0UCzYwETfRhdNAx4yDKbQP7NSdRJI0HETQOV3qv1d7D1lujTeAD9Dy
+ UFCT87ewc7fU64WhcGWzswl3I0LPR321N4wuzreoTj9wE+85nU9pYe74kZEAAwcww1aN
+ RWB8h4z5G/SqMqk1Rf5nHtI/gHmtvRdqTyERn2ppBhxRXrF36FQI1rfz7cntEunbVqkf
+ s7yg==
+X-Gm-Message-State: AOAM5338OW121gMAXe0TLgjwWaINy670SOnVSXypbNLWQUksZf3dDDtN
+ MywvEF5ie5sVrAPGhSRGKgR8QQ==
+X-Google-Smtp-Source: ABdhPJyrvHQGd03xFvYWWLFEZL7c/6jXwPw7GphxisL5MQyYC79GqmhFLOh0ltDvn6Y6bGidAy+NMA==
+X-Received: by 2002:a17:90a:5b17:: with SMTP id
+ o23mr3578804pji.14.1622197668237; 
+ Fri, 28 May 2021 03:27:48 -0700 (PDT)
 Received: from 96e513df87d1 ([124.170.34.40])
- by smtp.gmail.com with ESMTPSA id w26sm4255796pgl.50.2021.05.28.03.19.53
+ by smtp.gmail.com with ESMTPSA id c16sm3965550pfd.206.2021.05.28.03.27.44
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 28 May 2021 03:19:56 -0700 (PDT)
-Date: Fri, 28 May 2021 10:19:50 +0000
+ Fri, 28 May 2021 03:27:47 -0700 (PDT)
+Date: Fri, 28 May 2021 10:27:41 +0000
 From: Rudi Heitbaum <rudi@heitbaum.com>
-To: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Cc: broonie@kernel.org, ezequiel@collabora.com, chenjh@rock-chips.com,
- pgwipeout@gmail.com
-Subject: [PATCH v2] regulator: fan53555: add tcs4526
-Message-ID: <20210528101946.GA418765@96e513df87d1>
+To: Mark Brown <broonie@kernel.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ chenjh@rock-chips.com
+Subject: Re: [PATCH] regulator: fan53555: add back tcs4526
+Message-ID: <20210528102737.GA418788@96e513df87d1>
 References: <20210526162342.GA20@8bbba9ba63a4>
+ <CAMdYzYpZoKs3P62j02RW-+5BEpqC9JL3apjucTWLWmvNFrOrCg@mail.gmail.com>
+ <20210527105943.GA441@7698f5da3a10>
+ <462b8d80447efb6c00e93704914169bceb5adc4d.camel@collabora.com>
+ <YK+ZMdD+7uqQwCow@sirena.org.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210526162342.GA20@8bbba9ba63a4>
+In-Reply-To: <YK+ZMdD+7uqQwCow@sirena.org.uk>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_031959_848068_100BDF4E 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20210528_032751_723874_B26D412A 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,75 +106,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For rk3399pro boards the tcs4526 regulator supports the vdd_gpu
-regulator. The tcs4526 regulator has a chip id of <0>.
-Add the compatibile tcs,tcs4526  
+Hi Mark,
 
-without this patch, the dmesg output is:
-  fan53555-regulator 0-0010: Chip ID 0 not supported!
-  fan53555-regulator 0-0010: Failed to setup device!
-  fan53555-regulator: probe of 0-0010 failed with error -22
-with this patch, the dmesg output is:
-  vdd_gpu: supplied by vcc5v0_sys
+I have submiited the v2 patch. Thanks for the feedback too.
 
-The regulators are described as:
-- Dedicated power management IC TCS4525
-- Lithium battery protection chip TCS4526
+On Thu, May 27, 2021 at 02:05:53PM +0100, Mark Brown wrote:
+> On Thu, May 27, 2021 at 08:51:27AM -0300, Ezequiel Garcia wrote:
+> > On Thu, 2021-05-27 at 10:59 +0000, Rudi Heitbaum wrote:
 
-This has been tested with a Radxa Rock Pi N10.
+> > > +       /delete-property/ operating-points-v2;
 
-Signed-off-by: Rudi Heitbaum <rudi@heitbaum.com>
----
- drivers/regulator/fan53555.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+> > Removal of the operating points kind of makes the gpu regulator moot,
+> > don't you think?
 
-diff --git a/drivers/regulator/fan53555.c b/drivers/regulator/fan53555.c
-index 2695be617373..ddab9359ea20 100644
---- a/drivers/regulator/fan53555.c
-+++ b/drivers/regulator/fan53555.c
-@@ -93,6 +93,10 @@ enum {
- 	TCS4525_CHIP_ID_12 = 12,
- };
- 
-+enum {
-+	TCS4526_CHIP_ID_00 = 0,
-+};
-+
- /* IC mask revision */
- enum {
- 	FAN53555_CHIP_REV_00 = 0x3,
-@@ -374,6 +375,7 @@ static int fan53555_voltages_setup_silergy(struct fan53555_device_info *di)
- {
- 	switch (di->chip_id) {
- 	case TCS4525_CHIP_ID_12:
-+	case TCS4526_CHIP_ID_00:
- 		di->slew_reg = TCS4525_TIME;
- 		di->slew_mask = TCS_SLEW_MASK;
- 		di->slew_shift = TCS_SLEW_MASK;
-@@ -564,6 +566,9 @@ static const struct of_device_id __maybe_unused fan53555_dt_ids[] = {
- 	}, {
- 		.compatible = "tcs,tcs4525",
- 		.data = (void *)FAN53526_VENDOR_TCS
-+	}, {
-+		.compatible = "tcs,tcs4526",
-+		.data = (void *)FAN53526_VENDOR_TCS
- 	},
- 	{ }
- };
-@@ -672,6 +677,9 @@ static const struct i2c_device_id fan53555_id[] = {
- 	}, {
- 		.name = "tcs4525",
- 		.driver_data = FAN53526_VENDOR_TCS
-+	}, {
-+		.name = "tcs4526",
-+		.driver_data = FAN53526_VENDOR_TCS
- 	},
- 	{ },
- };
--- 
-2.29.2
+> It's still better to say what the supply is even if it can't be
+> changed - that stops you getting warnings about substituting in a
+> dummy regulator and allows the consumer to read the current state
+> of the regulator in case that's useful.
 
+I'll look into this.
+Thank you all for the feedback and direction on the dts.
 
+> > > +???????????????regulator-compatible = "fan53555-reg";
+> 
+> > I can be wrong, but I think regulator-compatible is deprecated.
+> 
+> Yes.
+
+will action
+
+> > > +???????????????regulator-boot-on;
+> 
+> > Just out of curiosity, is regulator-boot-on really needed for the GPU?
+> 
+> It should only be used if it's not possible to read the state of
+> the regulator enable from the hardware.
+
+will do further testing
 
 _______________________________________________
 Linux-rockchip mailing list
