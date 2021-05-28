@@ -2,91 +2,100 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D5ECC2B9F7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40225C2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:47:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 498FC611AB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:25:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 498FC611AB
+	by mail.kernel.org (Postfix) with ESMTPS id DD2C9613B6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:47:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD2C9613B6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GX2IZxRgDp47C0iT2zpDzSv54Bwt/SgEie8L6EkBnAw=; b=JLLdTCZwOrZlC+
-	4odsXPNe8mJxvISZU7iMyqiNWzaOFoe+crmK+c0DLUNjc8Ivz7KRbFgoYaGZnqBcpnZEesLBkJnGS
-	A6NnLHLsq3k+GSJbGSPEmq2ZythgnIM1A2CSZALw8FECesKug5P6EmdwoTmO0YSnByUhygRyocLOJ
-	98BP33wQZp4KXtTGrIYnwQIeNjt6fxiP7HVGwUX25wkaJvXg9SiUG19jLMu0V61iaiUR0GbJAWwaU
-	1xc8R0KoDB65YEQC5PtKj01jZYm1Y2jZtsI1Yz6WxCMxmTr86gkOKAPA0PbaukQpThliCMLljqqc0
-	nfjgmImsCAMmVJwVInVw==;
+	List-Owner; bh=uopwunaulUJ6ih3GWs3eSE0IJABvMbkf3tNfgnrCarQ=; b=KfFVeLgC5Otssv
+	QQC3VNwV3FPZf33IHvU0wwf3ZKPXmfnI5DhAKOezvadK88hBL1Yq2v/Tr7xd8lBIB7usURWRL4AJw
+	r08lMvOLnWSp2Dzo6bbDDwc80JJkq1051MmN7PkW98H/dji2Bu1KYsE86AE4Dhse5/5roDEV7roPl
+	u4UU6R5qsdQwkUaYGrgypvML+pN0kCzc9ec8uDyICC+U76hvJMzG6s8LJB3ejY0xC1JpcQuma1fGT
+	7/lxvRS1qFSM/1A5DG0qjYA24t9Wu1dHYdwhD+BfDsuVkoRLK8XssEZZCQIC1jXIdpHl1jqdR5pvF
+	U5b1JyQTfub1D12C30nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmcUQ-00Fl2a-Ni; Fri, 28 May 2021 13:25:26 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1lmcpZ-00Ft30-Oc; Fri, 28 May 2021 13:47:17 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmcBw-00FdHj-B8; Fri, 28 May 2021 13:06:25 +0000
-Received: by mail-ej1-x629.google.com with SMTP id z12so5365499ejw.0;
- Fri, 28 May 2021 06:06:19 -0700 (PDT)
+ id 1lmcTF-00FkX8-Vh; Fri, 28 May 2021 13:24:15 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id
+ ep16-20020a17090ae650b029015d00f578a8so2524595pjb.2; 
+ Fri, 28 May 2021 06:24:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=hXF0Ts56dwHAndcdIXFBR1E/2W75Wukvn1BbkoOuP3s=;
- b=GIzRpEPP+mEiI+M7ckcQ/slkmUTYqGmhOGTej6PmDuhSzka2kqH41IB1DFJenbMi1c
- 08ibSUvl0mnhV5YWffgTXeQY/b0mHGuEu9whZc1J8WyOhUjtY2A53tENr4RfRImNGeOq
- 2yL9aS0/uLvlnXr360MhMjytDsjv2kx3XiDZyE0BbjV8SfSGEei9HI7z6TzuDZjdPFz9
- QaHGCreUCG2Ux1fw/Rw9V3FnaHFjh2tXXm4HpAX+lyYSiwqwbby+gKK0vbxl4YYkW8+2
- k0HLuqj+NOf746VAW2+sOEsWj2t7Udi/sgeFq1XS3ZMQQSsQtb64NL7bpGRV9vzQ5ZTq
- 0kNw==
+ h=from:to:cc:subject:references:date:in-reply-to:message-id
+ :user-agent:mime-version;
+ bh=XZxKZYYhRdMgsx3AaVQx5MeKzRXu4NQ7JSlA+sHAgEs=;
+ b=mraF9r984dsIkQsxnqkpHQWbcKxx1tEtELRMjGqQfqtAk6RBlxC13YGn+Txg+G1YqV
+ nZxiCy59j+fiJlpYQbRrXUg+RlTxmBkb5JaloSa1rJpqMWntbBnadkhO5JSZIP8NyzXL
+ 3oMjfgDJknWcM5R/QbJAujRH/3WH04xUaxacX4OQwIkTk9kyrdBcGb/nYJjT2YQS0Udy
+ MK3hYsVa0YCyQDYhfWPS6FzNxQmaEtQjw6yzK/gt5+wKXwkbIRhpQFOS9KzJXL3/5wd6
+ DgLWspHyey/dMBdhO6taaK66EM4x4jHqnNPVRiorUcGKBCg85zLc2Or9y6e29MR156No
+ +8gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=hXF0Ts56dwHAndcdIXFBR1E/2W75Wukvn1BbkoOuP3s=;
- b=fFCygxxfM6RT0ZaD8tzm4RxlszxQB5/4hEIh/hKN7hD7SMBQ9xI2ZVvvFvZqYr5l4Q
- K31x8IGShIBgTUD2SwEff7fIVuffNyIqZX4AlY+HI3FhlFEbGPOAi78yqgcnDDuNQF7n
- hvgvn4ml2E+hbXa9Go4SbU7nmx/O0vSm9/K+iuqfmsL4XLEHQoFEwYJ55M31yuMPYpoc
- Ur/H8cidWc4BiRKX+DctA9tpOGcy2+Yu8BhUWmIDvUEU/Kulvzt1TABEfc/7b33WCW+7
- E4wL78bZzbzxaiYWQ4Xsipy3s/wTkJGIoa8Hf6HXARXxeOuGvMjKMQwQcxLH9w4klV4i
- 0R2w==
-X-Gm-Message-State: AOAM531UdIZ0jDJqimNbGHPmEU0xenHDIxhsUpRpiqsKLcu5pcJd6YKV
- BU6MSMhALfHgDeztGsiLaA==
-X-Google-Smtp-Source: ABdhPJybEOzv6Dmyb9n/L+ylVeUxGip+f0N75LsX5IiJGN1MgjT0EIL2I29E+yM3bVVb6uPrQgTgeQ==
-X-Received: by 2002:a17:906:1796:: with SMTP id
- t22mr3529966eje.304.1622207178511; 
- Fri, 28 May 2021 06:06:18 -0700 (PDT)
-Received: from localhost.localdomain (ip4d17b4b8.dynamic.kabel-deutschland.de.
- [77.23.180.184])
- by smtp.googlemail.com with ESMTPSA id u21sm2322778ejg.50.2021.05.28.06.06.17
+ h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
+ :message-id:user-agent:mime-version;
+ bh=XZxKZYYhRdMgsx3AaVQx5MeKzRXu4NQ7JSlA+sHAgEs=;
+ b=BZqzDVO04AUW56RRT4Wr6pg55eIeo4NvWl0kNB3NqJ0UvBL1E/P007rpyki4d95Y/a
+ eLJfhdXjXwYTgkVRdCuynlmnao9Tl2nzi+uUkDUdr3Fpgdwg3oqFfax/Smm5+gHG6B8e
+ pMk+3FqHDLygxscg22bv9B3vHxeQwNfpEJBQVCi+0HVkFBqL+PAR0caD0DMuEV432x3P
+ 7qe5Njrntdy5Y7PIrj6649S16fsx6UIIeAhxMEIRgkXPnyws9wNaBcU1tzHZT8IFybt0
+ 19VHGEhj/8Cn5Bdoo0FrbqY36UgU61S1U5diCMzGkVjSUvz32jNmPEuucNhBanP+PB+u
+ ItHg==
+X-Gm-Message-State: AOAM531t1mSL4bW7L+ljWDOA/pGVOK8Pw3rUlIpW5eqogv4Zqxdi2NH3
+ 6LDE9tXYhMdxSN3ho1S6wzU=
+X-Google-Smtp-Source: ABdhPJxzQnRfEf+8rX9sKKQCix8COHH0CUiOVMrb3LwALp7WjJLs+JHLz2MIpglOh0XUY6iM2HBTxQ==
+X-Received: by 2002:a17:90b:1955:: with SMTP id
+ nk21mr4494591pjb.208.1622208252425; 
+ Fri, 28 May 2021 06:24:12 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id t24sm4397544pji.56.2021.05.28.06.24.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 May 2021 06:06:17 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v3 5/5] drm: rockchip: set alpha_en to 0 if it is not used
-Date: Fri, 28 May 2021 15:05:54 +0200
-Message-Id: <20210528130554.72191-6-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210528130554.72191-1-knaerzche@gmail.com>
-References: <20210528130554.72191-1-knaerzche@gmail.com>
+ Fri, 28 May 2021 06:24:11 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ PCI <linux-pci@vger.kernel.org>,  linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>,  "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>,  Alexandru Elisei
+ <alexandru.elisei@arm.com>,  wqu@suse.com,  Robin Murphy
+ <robin.murphy@arm.com>,  Peter Geis <pgwipeout@gmail.com>,  Ard Biesheuvel
+ <ardb@kernel.org>,  Brian Norris <briannorris@chromium.org>,  Shawn Lin
+ <shawn.lin@rock-chips.com>,  Bjorn Helgaas <helgaas@kernel.org>,  Bjorn
+ Helgaas <bhelgaas@google.com>
+Subject: Re: [PATCH 1/2] PCI: of: Override 64-bit flag for non-prefetchable
+ memory below 4GB
+References: <20210527150541.3130505-1-punitagrawal@gmail.com>
+ <20210527150541.3130505-2-punitagrawal@gmail.com>
+ <CAL_Jsq+Sp_Owe4V4WNh4jnuNJZ5jXxA+j4fW7564oPCy5Lu3ew@mail.gmail.com>
+Date: Fri, 28 May 2021 22:24:06 +0900
+In-Reply-To: <CAL_Jsq+Sp_Owe4V4WNh4jnuNJZ5jXxA+j4fW7564oPCy5Lu3ew@mail.gmail.com>
+ (Rob Herring's message of "Thu, 27 May 2021 11:38:46 -0500")
+Message-ID: <87h7inm1op.fsf@stealth>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_060620_417242_8AF0B9B9 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20210528_062414_099231_852BB720 
+X-CRM114-Status: GOOD (  21.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,35 +113,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-alpha_en should be set to 0 if it is not used, i.e. to disable alpha
-blending if it was enabled before and should be disabled now.
+Rob Herring <robh+dt@kernel.org> writes:
 
-Fixes: 2aae8ed1f390 ("drm/rockchip: Add per-pixel alpha support for the PX30 VOP")
+> On Thu, May 27, 2021 at 10:06 AM Punit Agrawal <punitagrawal@gmail.com> wrote:
+>>
+>> Some host bridges advertise non-prefetable memory windows that are
+>> entirely located below 4GB but are marked as 64-bit address memory.
+>>
+>> Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
+>> flags for 64-bit memory addresses"), the OF PCI range parser takes a
+>> stricter view and treats 64-bit address ranges as advertised while
+>> before such ranges were treated as 32-bit.
+>>
+>> A PCI-to-PCI bridges cannot forward 64-bit non-prefetchable memory
+>> ranges. As a result, the change in behaviour due to the commit causes
+>> allocation failure for devices that are connected behind PCI host
+>> bridges modelled as PCI-to-PCI bridge and require non-prefetchable bus
+>> addresses.
+>>
+>> In order to not break platforms, override the 64-bit flag for
+>> non-prefetchable memory ranges that lie entirely below 4GB.
+>>
+>> Suggested-by: Ard Biesheuvel <ardb@kernel.org>
+>> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
+>> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+>> Cc: Bjorn Helgaas <bhelgaas@google.com>
+>> Cc: Rob Herring <robh+dt@kernel.org>
+>> ---
+>>  drivers/pci/of.c | 8 ++++++--
+>>  1 file changed, 6 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+>> index da5b414d585a..b9d0bee5a088 100644
+>> --- a/drivers/pci/of.c
+>> +++ b/drivers/pci/of.c
+>> @@ -565,10 +565,14 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
+>>                 case IORESOURCE_MEM:
+>>                         res_valid |= !(res->flags & IORESOURCE_PREFETCH);
+>>
+>> -                       if (!(res->flags & IORESOURCE_PREFETCH))
+>> +                       if (!(res->flags & IORESOURCE_PREFETCH)) {
+>>                                 if (upper_32_bits(resource_size(res)))
+>>                                         dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
+>
+> Based on Ard's explanation, doesn't this need to also check for
+> !IORESOURCE_MEM_64?
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
+Right - I was too focussed on the below case.
+>
+>> -
+>> +                               if ((res->flags & IORESOURCE_MEM_64) && !upper_32_bits(res->end)) {
+>
+> res->end is the CPU address space. Isn't it the PCI address space we
+> care about?
 
- Changes in v2:
- - capitalize "F" of "Fixes" in the commit message
+Indeed. I suspect the easiest way to check PCI addresses would be to
+move the check to where the range property is being parsed.
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 1 +
- 1 file changed, 1 insertion(+)
+I'll address both the comments with the next update.
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 64469439ddf2..f5b9028a16a3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1022,6 +1022,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		VOP_WIN_SET(vop, win, alpha_en, 1);
- 	} else {
- 		VOP_WIN_SET(vop, win, src_alpha_ctl, SRC_ALPHA_EN(0));
-+		VOP_WIN_SET(vop, win, alpha_en, 0);
- 	}
- 
- 	VOP_WIN_SET(vop, win, enable, 1);
--- 
-2.27.0
+Thanks,
+Punit
 
+>
+>> +                                       dev_warn(dev, "Overriding 64-bit flag for non-prefetchable memory below 4GB\n");
+>> +                                       res->flags &= ~IORESOURCE_MEM_64;
+>> +                               }
+>> +                       }
+>>                         break;
+>>                 }
+>>         }
+>> --
+>> 2.30.2
+>>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
