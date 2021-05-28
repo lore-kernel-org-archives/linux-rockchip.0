@@ -2,93 +2,92 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A34C4708C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:20:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43B07C47087
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:01:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3DF8613D1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 11:20:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3DF8613D1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=heitbaum.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0F48461001
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:01:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F48461001
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pROksSsNxFxQTeKPuzjiwC2pUtfNZopu9C3qZbZXCtA=; b=1WuEBefBRnXgHh
-	cm2Gk266nyNFfxvfydS1XqfYPFh8l6RK0Hrt5X0Uz831j5ngV4ss7iGePNDYRbJ04e+d3Bwb2vmXn
-	YkuoyEzEFnfYyJeqfhv115LToWREZ0D6C/lm4ND1Vj1KE9PKGIPqJw60s5AYc5feQp+jAJ0ZfAToo
-	j6Lq3leHGhpVA39p5Q+RSPSU2X+ys2laYIw6vsKotbsdYIQBnqgOg/ItyWvQzun9CJ7zGLZ2Bp2hd
-	mOpoKf+FTK7bvELTjt/1NCubzT/nfScPAXKvwMjgleLngvIEy2KpKjlUFC1+xJ4EaxFuFA1p8ahIW
-	tEBxMvE858T7c3CIISqw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=y/Y1FPXCaHdoVQIqKiNlycd/t0opxRmJdi+hSF6c9Q0=; b=iCejfyhi/IOsMm
+	YeCarhX6vtT+rNQP5tXsnktVpNCxc8WwhtzC8W7rJbiFtgTZNHsAXqIhmc40PqiWcmryOo7Gi746D
+	rAVFDwZ2ejXra2PZSM3CnTpslSxm+6+QIP8sirqlFvlFW0pnRJHo/ak9JKM0IjTaXKtw81/NW1XGn
+	LosrYPtepZQxjiOhdSrb0VqZJzWZFGVuzuQgMhQJj2sNew3UHR7jdioFFoZ4S9wv3PGHWD7GZoJPp
+	dHBMJryYeO5Q27x/ZCV1v9ErWXpTKMyq/LnGO2tGLRrjlQg+PCzu4VhS+uSD12sPG6JLVB6Kjr/pl
+	9UAwXF1KEbE0m/9gmIWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmaXp-00Elj0-QK; Fri, 28 May 2021 11:20:49 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1lmc7H-00FbJ8-Go; Fri, 28 May 2021 13:01:31 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmZiZ-00ENhj-Ju
- for linux-rockchip@lists.infradead.org; Fri, 28 May 2021 10:27:52 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id
- v13-20020a17090abb8db029015f9f7d7290so7038892pjr.0
- for <linux-rockchip@lists.infradead.org>; Fri, 28 May 2021 03:27:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=hcEHP5lbyUaIDoAJdZRGuAuvH9SN0j6HsI/OD+kTgf8=;
- b=Ern2TC5DD/zOgm1HTsmKET7+vQygjHf+XZmiWrvA3JZWIP3Gal6cQiZBInx3/enbTB
- yWRcq0jwzlWK5BS8LBAECwZ9+AH5TJY9l1Z5BeqiLRTdd96BaPkkv6pw7qPw5obglH9A
- zPaifVDJqu0OlnEt2vciqn7HOESVDgpaefUSo=
+ id 1lmbog-00FT5r-DW; Fri, 28 May 2021 12:42:20 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id
+ pi6-20020a17090b1e46b029015cec51d7cdso2438598pjb.5; 
+ Fri, 28 May 2021 05:42:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:references:date:message-id:user-agent
+ :mime-version; bh=h7kb/AUKQGRZBz4BjzTEhKlIFz8hYG49Mug/6+/Z8Uo=;
+ b=AdalC0K0UroTAAUP/D2e1VtZe/wl0mmBp6Wd6V0bIkwPgwpaIgMDcIYegZwsVBpquW
+ YM1ymSRlnxohw9XBNoJ9wnYMxEemUDcdlLvMfIcFsvFCWB335uIuLKHqZMlsiIds+bxM
+ kRpwCNvyfGjuDLhi6/ff+Nz6UctS/bJFlUDwqKGuzihm38ngxWFw4JykpgV5Uu9iCkRy
+ UOvFBg8Ne2SRmLQMZhTntBV5oBpdnacznGas5zpRe8yLSJBSy7KKx7WsLyQ+uGTJC6TG
+ f9zaHICAcwz8FRMWFeP13AJS7/qJyeWrvciU+sVUY2HFqnyz8UtvxD9uVIiKxpp518NT
+ /KEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=hcEHP5lbyUaIDoAJdZRGuAuvH9SN0j6HsI/OD+kTgf8=;
- b=CIgO9NnGFC/EIA6m4nAJhnbn3VHed01wdNcGsMY6R0xBWVhFbon8H4gvnyf4JiAytV
- R3N6omGrF9MISaNmDK/SnQ8ZYpkCkyGpkBqh9AICOLaOIAXNF9tnn0fpIBdJifPkdb+Y
- 4M+hqxJ/iTk9Yo0UCzYwETfRhdNAx4yDKbQP7NSdRJI0HETQOV3qv1d7D1lujTeAD9Dy
- UFCT87ewc7fU64WhcGWzswl3I0LPR321N4wuzreoTj9wE+85nU9pYe74kZEAAwcww1aN
- RWB8h4z5G/SqMqk1Rf5nHtI/gHmtvRdqTyERn2ppBhxRXrF36FQI1rfz7cntEunbVqkf
- s7yg==
-X-Gm-Message-State: AOAM5338OW121gMAXe0TLgjwWaINy670SOnVSXypbNLWQUksZf3dDDtN
- MywvEF5ie5sVrAPGhSRGKgR8QQ==
-X-Google-Smtp-Source: ABdhPJyrvHQGd03xFvYWWLFEZL7c/6jXwPw7GphxisL5MQyYC79GqmhFLOh0ltDvn6Y6bGidAy+NMA==
-X-Received: by 2002:a17:90a:5b17:: with SMTP id
- o23mr3578804pji.14.1622197668237; 
- Fri, 28 May 2021 03:27:48 -0700 (PDT)
-Received: from 96e513df87d1 ([124.170.34.40])
- by smtp.gmail.com with ESMTPSA id c16sm3965550pfd.206.2021.05.28.03.27.44
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 28 May 2021 03:27:47 -0700 (PDT)
-Date: Fri, 28 May 2021 10:27:41 +0000
-From: Rudi Heitbaum <rudi@heitbaum.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- chenjh@rock-chips.com
-Subject: Re: [PATCH] regulator: fan53555: add back tcs4526
-Message-ID: <20210528102737.GA418788@96e513df87d1>
-References: <20210526162342.GA20@8bbba9ba63a4>
- <CAMdYzYpZoKs3P62j02RW-+5BEpqC9JL3apjucTWLWmvNFrOrCg@mail.gmail.com>
- <20210527105943.GA441@7698f5da3a10>
- <462b8d80447efb6c00e93704914169bceb5adc4d.camel@collabora.com>
- <YK+ZMdD+7uqQwCow@sirena.org.uk>
+ h=x-gm-message-state:from:to:cc:subject:references:date:message-id
+ :user-agent:mime-version;
+ bh=h7kb/AUKQGRZBz4BjzTEhKlIFz8hYG49Mug/6+/Z8Uo=;
+ b=OJVm2TMcTDyfkMiemxJOkYkrooTrv6YIDNO0MuVES6y+MCOzT8rsMd6jQV6acgQ+0p
+ WbRPXkHLqjtrVKlXiXHDeQzz0ID6QX/+3YKjDlsSAGtjDOo7JSnS+kE0emgV29d+99uF
+ /krsY9nbYjK7CNENWajLqAgi50SN/tbqvJFp0+CY50TrtVJca6TFK5gwGBKXqJ+KinIX
+ MBqraBovriJohmmRrNKNWlUMLqx5HL/GeVq0PGuAtsrOzR3uWbCILydV39LXzWRjOQ24
+ kmC7loWAsvlbsPOvyudav6rgz5wf1rVg31vAYpx+mbYcow7w0sLLowpm4fxugWtbMmi4
+ M6xA==
+X-Gm-Message-State: AOAM531+AR5I1HtgK6ZN59k3sdUgqZLSz6FLY1yoqvXX5FXlUXib8Pzy
+ kKcvm0oiqjCUmnIKdCc7ZpU=
+X-Google-Smtp-Source: ABdhPJykAzgytDlnvZD+DQ65emO1XRGQMzFYlndgWWq0LfFuaDwKlTlclqk2CfzTiJnuy0bGuo1DXQ==
+X-Received: by 2002:a17:90a:e291:: with SMTP id
+ d17mr4266598pjz.42.1622205736205; 
+ Fri, 28 May 2021 05:42:16 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id 63sm4306924pfz.26.2021.05.28.05.42.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 May 2021 05:42:14 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-rockchip@lists.infradead.org,  linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ alexandru.elisei@arm.com,  wqu@suse.com,  robin.murphy@arm.com,
+ pgwipeout@gmail.com,  ardb@kernel.org,  briannorris@chromium.org,
+ shawn.lin@rock-chips.com,  robh+dt@kernel.org,  Bjorn Helgaas
+ <bhelgaas@google.com>
+Subject: Re: [PATCH 1/2] PCI: of: Override 64-bit flag for non-prefetchable
+ memory below 4GB
+References: <20210527162130.GA1401058@bjorn-Precision-5520>
+Date: Fri, 28 May 2021 21:42:12 +0900
+Message-ID: <87o8cvm3mj.fsf@stealth>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YK+ZMdD+7uqQwCow@sirena.org.uk>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_032751_723874_B26D412A 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20210528_054218_518666_E7E7D227 
+X-CRM114-Status: GOOD (  30.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,43 +105,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+Hi Bjorn,
 
-I have submiited the v2 patch. Thanks for the feedback too.
+Thanks for taking a look.
 
-On Thu, May 27, 2021 at 02:05:53PM +0100, Mark Brown wrote:
-> On Thu, May 27, 2021 at 08:51:27AM -0300, Ezequiel Garcia wrote:
-> > On Thu, 2021-05-27 at 10:59 +0000, Rudi Heitbaum wrote:
+Bjorn Helgaas <helgaas@kernel.org> writes:
 
-> > > +       /delete-property/ operating-points-v2;
+> On Fri, May 28, 2021 at 12:05:41AM +0900, Punit Agrawal wrote:
+>> Some host bridges advertise non-prefetable memory windows that are
+>> entirely located below 4GB but are marked as 64-bit address memory.
+>> 
+>> Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
+>> flags for 64-bit memory addresses"), the OF PCI range parser takes a
+>> stricter view and treats 64-bit address ranges as advertised while
+>> before such ranges were treated as 32-bit.
+>
+> Conceptually, I'm not sure why we need IORESOURCE_MEM_64 at all on
+> resources we get from DT.  I think the main point of IORESOURCE_MEM_64
+> is to convey the information that "this register, e.g., a PCI BAR, has
+> space for 64-bit values if you need to write to it."
+>
+> When we're parsing this from DT, I think we're just getting a fixed
+> value and there's no concept of writing anything back, so it doesn't
+> seem like we should need to know how wide the hardware register is, or
+> even whether there *is* a hardware register.
+>
+> But I'm sure the PCI resource allocation code probably depends on
+> IORESOURCE_MEM_64 in those host bridge windows in very ugly ways.
 
-> > Removal of the operating points kind of makes the gpu regulator moot,
-> > don't you think?
+Thanks for the explanation. From what I can tell, the IORESOURCE_MEM_64
+flag is used in pci_bus_alloc_resource() to allocate from high PCI
+addresses. Without the flag allocations above 4GB will fail. Not sure
+that's legitimate use of the flag though.
 
-> It's still better to say what the supply is even if it can't be
-> changed - that stops you getting warnings about substituting in a
-> dummy regulator and allows the consumer to read the current state
-> of the regulator in case that's useful.
+>> A PCI-to-PCI bridges cannot forward 64-bit non-prefetchable memory
+>> ranges. As a result, the change in behaviour due to the commit causes
+>> allocation failure for devices that are connected behind PCI host
+>> bridges modelled as PCI-to-PCI bridge and require non-prefetchable bus
+>> addresses.
+>> 
+>> In order to not break platforms, override the 64-bit flag for
+>> non-prefetchable memory ranges that lie entirely below 4GB.
+>> 
+>> Suggested-by: Ard Biesheuvel <ardb@kernel.org>
+>> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
+>> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+>> Cc: Bjorn Helgaas <bhelgaas@google.com>
+>> Cc: Rob Herring <robh+dt@kernel.org>
+>> ---
+>>  drivers/pci/of.c | 8 ++++++--
+>>  1 file changed, 6 insertions(+), 2 deletions(-)
+>> 
+>> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+>> index da5b414d585a..b9d0bee5a088 100644
+>> --- a/drivers/pci/of.c
+>> +++ b/drivers/pci/of.c
+>> @@ -565,10 +565,14 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
+>>  		case IORESOURCE_MEM:
+>>  			res_valid |= !(res->flags & IORESOURCE_PREFETCH);
+>>  
+>> -			if (!(res->flags & IORESOURCE_PREFETCH))
+>> +			if (!(res->flags & IORESOURCE_PREFETCH)) {
+>>  				if (upper_32_bits(resource_size(res)))
+>>  					dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
+>> -
+>> +				if ((res->flags & IORESOURCE_MEM_64) && !upper_32_bits(res->end)) {
+>> +					dev_warn(dev, "Overriding 64-bit flag for non-prefetchable memory below 4GB\n");
+>
+> Maybe "Clearing 64-bit flag"?
+>
+> Can you include %pR, so we see the resource in question?
 
-I'll look into this.
-Thank you all for the feedback and direction on the dts.
+I'll follow your suggestions in the next update.
 
-> > > +???????????????regulator-compatible = "fan53555-reg";
-> 
-> > I can be wrong, but I think regulator-compatible is deprecated.
-> 
-> Yes.
+>
+> Unrelated but close by, would be nice if the preceding warning ("size
+> exceeds max") also included %pR.
 
-will action
+Makes sense. I'll add the resource print to improve the message.
 
-> > > +???????????????regulator-boot-on;
-> 
-> > Just out of curiosity, is regulator-boot-on really needed for the GPU?
-> 
-> It should only be used if it's not possible to read the state of
-> the regulator enable from the hardware.
+Thanks,
+Punit
 
-will do further testing
+>
+>> +					res->flags &= ~IORESOURCE_MEM_64;
+>> +				}
+>> +			}
+>>  			break;
+>>  		}
+>>  	}
+>> -- 
+>> 2.30.2
+>> 
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
