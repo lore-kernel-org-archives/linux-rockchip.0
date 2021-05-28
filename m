@@ -2,100 +2,85 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40225C2B9F7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:47:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27FA4C2B9F7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 14:01:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD2C9613B6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 13:47:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD2C9613B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id D2B5661355
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 14:01:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2B5661355
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uopwunaulUJ6ih3GWs3eSE0IJABvMbkf3tNfgnrCarQ=; b=KfFVeLgC5Otssv
-	QQC3VNwV3FPZf33IHvU0wwf3ZKPXmfnI5DhAKOezvadK88hBL1Yq2v/Tr7xd8lBIB7usURWRL4AJw
-	r08lMvOLnWSp2Dzo6bbDDwc80JJkq1051MmN7PkW98H/dji2Bu1KYsE86AE4Dhse5/5roDEV7roPl
-	u4UU6R5qsdQwkUaYGrgypvML+pN0kCzc9ec8uDyICC+U76hvJMzG6s8LJB3ejY0xC1JpcQuma1fGT
-	7/lxvRS1qFSM/1A5DG0qjYA24t9Wu1dHYdwhD+BfDsuVkoRLK8XssEZZCQIC1jXIdpHl1jqdR5pvF
-	U5b1JyQTfub1D12C30nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=O4deNK+EIZ/ZZz5YKmOeXeazAzEKSnuI4o+F7KufSHE=; b=R6sp84Ix8FmUWiwyCFwhn/1K3g
+	+EaPIGji74f8xfkuDtsZPm6azOqmpjVOFWFOFhuX6ES/8LxRXadg3P5WXqdZvEPWrjeCXGWvKf9Ko
+	okqa7WJvxClt4OGirttBO0LfV+MuAPoFfhgepdCEAeIzMpAqyG5o2fLjr3ShYSs1LscW8/2+4n/CY
+	B/DPDrkfz05JrqC6TlIVW6GutuRag1CQFADLLuggMEmGkUNxCuf+TEPdIYlCX6HZFoHik8vUHRP8v
+	iU0vPkcWp8UZA/XHkyyG9iQgIbuTN8wahdFed8BPTdZ13LzYruVVpLoTjyM4FgtOok2nEXCBr0Tua
+	84y0OUAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmcpZ-00Ft30-Oc; Fri, 28 May 2021 13:47:17 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1lmd3A-00Fyzz-Q6; Fri, 28 May 2021 14:01:20 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmcTF-00FkX8-Vh; Fri, 28 May 2021 13:24:15 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id
- ep16-20020a17090ae650b029015d00f578a8so2524595pjb.2; 
- Fri, 28 May 2021 06:24:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:references:date:in-reply-to:message-id
- :user-agent:mime-version;
- bh=XZxKZYYhRdMgsx3AaVQx5MeKzRXu4NQ7JSlA+sHAgEs=;
- b=mraF9r984dsIkQsxnqkpHQWbcKxx1tEtELRMjGqQfqtAk6RBlxC13YGn+Txg+G1YqV
- nZxiCy59j+fiJlpYQbRrXUg+RlTxmBkb5JaloSa1rJpqMWntbBnadkhO5JSZIP8NyzXL
- 3oMjfgDJknWcM5R/QbJAujRH/3WH04xUaxacX4OQwIkTk9kyrdBcGb/nYJjT2YQS0Udy
- MK3hYsVa0YCyQDYhfWPS6FzNxQmaEtQjw6yzK/gt5+wKXwkbIRhpQFOS9KzJXL3/5wd6
- DgLWspHyey/dMBdhO6taaK66EM4x4jHqnNPVRiorUcGKBCg85zLc2Or9y6e29MR156No
- +8gA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
- :message-id:user-agent:mime-version;
- bh=XZxKZYYhRdMgsx3AaVQx5MeKzRXu4NQ7JSlA+sHAgEs=;
- b=BZqzDVO04AUW56RRT4Wr6pg55eIeo4NvWl0kNB3NqJ0UvBL1E/P007rpyki4d95Y/a
- eLJfhdXjXwYTgkVRdCuynlmnao9Tl2nzi+uUkDUdr3Fpgdwg3oqFfax/Smm5+gHG6B8e
- pMk+3FqHDLygxscg22bv9B3vHxeQwNfpEJBQVCi+0HVkFBqL+PAR0caD0DMuEV432x3P
- 7qe5Njrntdy5Y7PIrj6649S16fsx6UIIeAhxMEIRgkXPnyws9wNaBcU1tzHZT8IFybt0
- 19VHGEhj/8Cn5Bdoo0FrbqY36UgU61S1U5diCMzGkVjSUvz32jNmPEuucNhBanP+PB+u
- ItHg==
-X-Gm-Message-State: AOAM531t1mSL4bW7L+ljWDOA/pGVOK8Pw3rUlIpW5eqogv4Zqxdi2NH3
- 6LDE9tXYhMdxSN3ho1S6wzU=
-X-Google-Smtp-Source: ABdhPJxzQnRfEf+8rX9sKKQCix8COHH0CUiOVMrb3LwALp7WjJLs+JHLz2MIpglOh0XUY6iM2HBTxQ==
-X-Received: by 2002:a17:90b:1955:: with SMTP id
- nk21mr4494591pjb.208.1622208252425; 
- Fri, 28 May 2021 06:24:12 -0700 (PDT)
-Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
- [122.211.248.161])
- by smtp.gmail.com with ESMTPSA id t24sm4397544pji.56.2021.05.28.06.24.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 May 2021 06:24:11 -0700 (PDT)
-From: Punit Agrawal <punitagrawal@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- PCI <linux-pci@vger.kernel.org>,  linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>,  "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>,  Alexandru Elisei
- <alexandru.elisei@arm.com>,  wqu@suse.com,  Robin Murphy
- <robin.murphy@arm.com>,  Peter Geis <pgwipeout@gmail.com>,  Ard Biesheuvel
- <ardb@kernel.org>,  Brian Norris <briannorris@chromium.org>,  Shawn Lin
- <shawn.lin@rock-chips.com>,  Bjorn Helgaas <helgaas@kernel.org>,  Bjorn
- Helgaas <bhelgaas@google.com>
-Subject: Re: [PATCH 1/2] PCI: of: Override 64-bit flag for non-prefetchable
- memory below 4GB
-References: <20210527150541.3130505-1-punitagrawal@gmail.com>
- <20210527150541.3130505-2-punitagrawal@gmail.com>
- <CAL_Jsq+Sp_Owe4V4WNh4jnuNJZ5jXxA+j4fW7564oPCy5Lu3ew@mail.gmail.com>
-Date: Fri, 28 May 2021 22:24:06 +0900
-In-Reply-To: <CAL_Jsq+Sp_Owe4V4WNh4jnuNJZ5jXxA+j4fW7564oPCy5Lu3ew@mail.gmail.com>
- (Rob Herring's message of "Thu, 27 May 2021 11:38:46 -0500")
-Message-ID: <87h7inm1op.fsf@stealth>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ id 1lmd1G-00FyHr-4C; Fri, 28 May 2021 13:59:23 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 9247D218B3;
+ Fri, 28 May 2021 13:59:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1622210356; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=T1fRGHfHUb7/Zr0qPH9cVl7kztDPoQDyj6xfG+R+RW0=;
+ b=vIZh1t5nZC1e1yj/QtAJ4gOMiA9Zm/bKb92WSOShDnCTQmI61XdQmp7e2kWpHhbxb4ufJL
+ aJZ9AEQblJaTPC2YwP2lixP9P69x/g5foAB4O0tacRJo4ALtXJVwOM3oOG6v+EzigiijAU
+ y47hkE7S4oiwqEAKJOxgbCs3GpuQVfY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1622210356;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=T1fRGHfHUb7/Zr0qPH9cVl7kztDPoQDyj6xfG+R+RW0=;
+ b=S5B32VFqbnt/woUhT0+zWZiuPlskYQVKbKgitfSHioI5fFzQjr73iIg1QH/NTjGiLY4HlP
+ 6y6YoSUurPDyspAQ==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 52AA611A98;
+ Fri, 28 May 2021 13:59:16 +0000 (UTC)
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id EHkXEzT3sGA2WwAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Fri, 28 May 2021 13:59:16 +0000
+Subject: Re: [PATCH v2] drm/rockchip: remove existing generic drivers to take
+ over the device
+To: Javier Martinez Canillas <javierm@redhat.com>, linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ Peter Robinson <pbrobinson@gmail.com>, linux-arm-kernel@lists.infradead.org
+References: <20210516074833.451643-1-javierm@redhat.com>
+ <ef974dd8-5619-35b7-74de-4e270033a3c3@suse.de>
+ <1f781f88-24ff-98b8-9c86-ae4db311843f@redhat.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <bc8ba42b-2fbf-ba95-d7a4-92f789142bd3@suse.de>
+Date: Fri, 28 May 2021 15:59:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
+In-Reply-To: <1f781f88-24ff-98b8-9c86-ae4db311843f@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_062414_099231_852BB720 
-X-CRM114-Status: GOOD (  21.71  )
+X-CRM114-CacheID: sfid-20210528_065922_508438_D5D1A0FE 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,91 +93,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2083608457965620991=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rob Herring <robh+dt@kernel.org> writes:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============2083608457965620991==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="UQrFh0WQs4TtyMcOLbL1G5mbWOEXfTHtQ"
 
-> On Thu, May 27, 2021 at 10:06 AM Punit Agrawal <punitagrawal@gmail.com> wrote:
->>
->> Some host bridges advertise non-prefetable memory windows that are
->> entirely located below 4GB but are marked as 64-bit address memory.
->>
->> Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
->> flags for 64-bit memory addresses"), the OF PCI range parser takes a
->> stricter view and treats 64-bit address ranges as advertised while
->> before such ranges were treated as 32-bit.
->>
->> A PCI-to-PCI bridges cannot forward 64-bit non-prefetchable memory
->> ranges. As a result, the change in behaviour due to the commit causes
->> allocation failure for devices that are connected behind PCI host
->> bridges modelled as PCI-to-PCI bridge and require non-prefetchable bus
->> addresses.
->>
->> In order to not break platforms, override the 64-bit flag for
->> non-prefetchable memory ranges that lie entirely below 4GB.
->>
->> Suggested-by: Ard Biesheuvel <ardb@kernel.org>
->> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
->> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
->> Cc: Bjorn Helgaas <bhelgaas@google.com>
->> Cc: Rob Herring <robh+dt@kernel.org>
->> ---
->>  drivers/pci/of.c | 8 ++++++--
->>  1 file changed, 6 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
->> index da5b414d585a..b9d0bee5a088 100644
->> --- a/drivers/pci/of.c
->> +++ b/drivers/pci/of.c
->> @@ -565,10 +565,14 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
->>                 case IORESOURCE_MEM:
->>                         res_valid |= !(res->flags & IORESOURCE_PREFETCH);
->>
->> -                       if (!(res->flags & IORESOURCE_PREFETCH))
->> +                       if (!(res->flags & IORESOURCE_PREFETCH)) {
->>                                 if (upper_32_bits(resource_size(res)))
->>                                         dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
->
-> Based on Ard's explanation, doesn't this need to also check for
-> !IORESOURCE_MEM_64?
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--UQrFh0WQs4TtyMcOLbL1G5mbWOEXfTHtQ
+Content-Type: multipart/mixed; boundary="7Xhf3qKEvoJB4vdb8HBr3oauPUsd3OcmZ";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Javier Martinez Canillas <javierm@redhat.com>,
+ linux-kernel@vger.kernel.org
+Cc: David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ Peter Robinson <pbrobinson@gmail.com>, linux-arm-kernel@lists.infradead.org
+Message-ID: <bc8ba42b-2fbf-ba95-d7a4-92f789142bd3@suse.de>
+Subject: Re: [PATCH v2] drm/rockchip: remove existing generic drivers to take
+ over the device
+References: <20210516074833.451643-1-javierm@redhat.com>
+ <ef974dd8-5619-35b7-74de-4e270033a3c3@suse.de>
+ <1f781f88-24ff-98b8-9c86-ae4db311843f@redhat.com>
+In-Reply-To: <1f781f88-24ff-98b8-9c86-ae4db311843f@redhat.com>
 
-Right - I was too focussed on the below case.
->
->> -
->> +                               if ((res->flags & IORESOURCE_MEM_64) && !upper_32_bits(res->end)) {
->
-> res->end is the CPU address space. Isn't it the PCI address space we
-> care about?
+--7Xhf3qKEvoJB4vdb8HBr3oauPUsd3OcmZ
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Indeed. I suspect the easiest way to check PCI addresses would be to
-move the check to where the range property is being parsed.
 
-I'll address both the comments with the next update.
 
-Thanks,
-Punit
-
->
->> +                                       dev_warn(dev, "Overriding 64-bit flag for non-prefetchable memory below 4GB\n");
->> +                                       res->flags &= ~IORESOURCE_MEM_64;
->> +                               }
->> +                       }
->>                         break;
->>                 }
->>         }
->> --
->> 2.30.2
+Am 27.05.21 um 09:38 schrieb Javier Martinez Canillas:
+> Hello Thomas,
+>=20
+> On 5/16/21 12:30 PM, Thomas Zimmermann wrote:
 >>
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>>
+>> Am 16.05.21 um 09:48 schrieb Javier Martinez Canillas:
+>>> There are drivers that register framebuffer devices very early in the=
+ boot
+>>> process and make use of the existing framebuffer as setup by the firm=
+ware.
+>>>
+>>> If one of those drivers has registered a fbdev, then the fallback fbd=
+ev
+>> of
+>>> the DRM driver won't be bound to the framebuffer console. To avoid th=
+at,
+>>> remove any existing generic driver and take over the graphics device.=
+
+>>>
+>>> By doing that, the fb mapped to the console is switched correctly fro=
+m the
+>>> early fbdev to the one registered by the rockchip DRM driver:
+>>>
+>>>       [   40.752420] fb0: switching to rockchip-drm-fb from EFI VGA
+>>>
+>>> Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+>>
+>> Acked-by: Thomas Zimmermann <tzimmermann@suse.de>
+>>
+>=20
+> Thanks for the ack.
+>  =20
+>> Ping me if no one else merges the patch.
+>>
+>=20
+> I would really appreciate if you merge this patch.
+
+It's merged now. Thanks for the patch.
+
+Best regards
+Thomas
+
+>  =20
+>> Best regards
+>> Thomas
+>=20
+> Best regards,
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--7Xhf3qKEvoJB4vdb8HBr3oauPUsd3OcmZ--
+
+--UQrFh0WQs4TtyMcOLbL1G5mbWOEXfTHtQ
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmCw9zMFAwAAAAAACgkQlh/E3EQov+DB
+PxAAgQw6Sy8VeAvlmd26pFV2YhWs10y6WMjsg4NvDGqBatXW6P4BuazWX2k9CkhOWs4IUGkAL7KE
+Sbp+iWS4sqjIlTJj26NS36ktC4VluIb9gQhR6eAimuqdUqY3HxMtM4k1txdKtH7IftqNYFh/lY1B
+lORl9390SZrvcrxEhAvWrbffNFasiG4aX2DuRj1wyg1wSecW7VqY2BMFcHDrHSaeg3zlHldj+sn+
+/rTk/iqd+2VdmyoDR1SYxNuNgDku5aS68B6aPYWqXlbMxlwtpQFkc5DSfhr5E8WzG0dSElIrQdcw
++PRrFIDMlWbWZnn/NNn8oXNNM15tXdM6lsT07R4qxbk0CZlyR4MRyGQaK8I/mEsW+FT9FxiOiYvL
+YCPCg/4PaysA9Yq91qO34ASYbO0moP59U7p0NBeWFMFcx8sq1dyLNXUZgctusmkGzLdRCc9tfGzy
+pWzRXYaYSBteuUy5bwGIwVFtQS/CkGQy6uOyaXP979hhW+adJOJjP7IA61TZpee+QUf/izSW0VPt
+xFZ+Ufo14G6bNbmgRagk/dyDSkf/AXZ1GNprKtfWNPiS+TRqbMGERHZlrcChANOIeMi/7s6UMn0i
+UV2fKfOfHoHbZceUbfdIQZxUzWN25nTNyth0MmnO8VYHBJy2WyIG/BltaDX8TtJanq5dlnnlpukT
+YDc=
+=mqhb
+-----END PGP SIGNATURE-----
+
+--UQrFh0WQs4TtyMcOLbL1G5mbWOEXfTHtQ--
+
+
+--===============2083608457965620991==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2083608457965620991==--
+
