@@ -2,21 +2,20 @@ Return-Path: <SRS0=NyFe=KX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D185DC4708C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FFE0C47087
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:32:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9929861163
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:03:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9929861163
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 099CE613B5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 May 2021 17:32:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 099CE613B5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -24,69 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=np+ssKzxOLGdW7yCqqKe8fBtZFvx/2TMQz4HMnjMGCI=; b=wUd3FuRZpADJZ6
-	cMFbqcFcvm9uK6Iyqjn9E0RGzuLFwAxFXEiO+uFPwsJYDr0Ev3meeDKi0bGqZ7gP78BrHd/p2xL8E
-	wcqpDU0UGUWMWf/h+ekuUUa2onZhB/8LI3InyIwjyDzD6vnwdBaMp3NsS0YWLlgvr61WceKQDYpLG
-	JsdJBvWjsmNo/fO44UT4wP/LO8s6mnajPcxYLpRpCihTYukZTDyg/zQ5NmNHUrx2QMCTH0yVeUOQO
-	HtBfrCI98/vUnfsedvi7pW6Z5J3+K8+xEjuovUQFIE1esqi2ILioUzQrYWZ8YKAu0Ptb4InnxnWQp
-	+pcpCUJcdD/Hzinsg3XA==;
+	List-Owner; bh=Ux/M0wcKtLYTsVlvUCUoy2ugQECiEg3HFjWGpJTzkl4=; b=beG1sGk8o8Zfv1
+	jY4hvThdgYM+5qNQEA0cfwASRfRT8UJJU8baiTsbQe/xPS3dLtwA4qNgm3Jm/o00alak2jJ1PC52O
+	7obtT+bnYOJzkyRHpD2SzMDWJszL0Z+YtpFNN0bu99bEKzlmaKzsrohhqEVZbt57bUicD7ZZTLcvJ
+	rO7GPlHXRz75I5WYLamtwZyXAzOTuS0pWBFpD4jHIIhaxSsLiKIHzG8MKhJ2ZMQWJIFDIndBmjwpu
+	qC/V6tuLPjTKlXhJ5JZaV5sSu/a8OUZMIKrvLvMKX2A5stjZY0eJwlxYR9p3FGdKOL6y3ENjeHyTq
+	ys1ZSnfUSPWOr/jMRyOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmftb-00HGav-8o; Fri, 28 May 2021 17:03:39 +0000
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+	id 1lmgLj-00HTSs-5V; Fri, 28 May 2021 17:32:43 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmfqc-00HEnc-Ra; Fri, 28 May 2021 17:00:36 +0000
-Received: by mail-oo1-xc30.google.com with SMTP id
- s20-20020a4ae9940000b02902072d5df239so1089620ood.2; 
- Fri, 28 May 2021 10:00:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=gdTuEFb5W1z98PRYNR4fX6ULPFfnwtTbmcJDxcUqyRo=;
- b=ejXHpqs/6c0eyfNau0jB3gDY/5MxzKBs3Fc10eaE+9QC9BisrD+u82cwzSdwC/IpNS
- IEmGO3/GKRJ1LgOzfGKloYo20NidT6TjQk/HnESsPfrbtsxOpyJja22OTCPzXlgdtM+q
- w2anMhAZMZGvOHRZ9BAmodmhuYezpJRFRVGXlb/spcWsvJHXIVQztBa42IX3iQbKh+0h
- cp2oM/BAT+mr3NtzfeVvWlthASDQaHvzfuju2QLO9Rcin0pE4IXsZBrgdi67mKg26mrl
- s4kgV66t4AOnrFz1XWgyx9v91q7gqQzOEJKCMdmN9WVZn8UDQ3PVCujjoYj0X8+2fr/F
- H/Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gdTuEFb5W1z98PRYNR4fX6ULPFfnwtTbmcJDxcUqyRo=;
- b=GrE/LT+ewqnhYEEZaBRifVa+NGiNRiKHCL/TA4Zn1jHaspBmtpneaEW1M3Ad41R+1K
- uHYqcPobYmAJ9O7KdK9y3JKzZUrIK3bJilLmZKaSXnnsCj0FpktVfrs65IGd1SY4H7nO
- miqpkyrxL1ffrlkMCIUakTKQr7u6FR22b510ApdPuI6oGt+Qu11fcbG3IhClAxhJ6/0f
- nWjEiZnAkbyLayBzCgU9KcWh7PucLuEkqqUrBVXX9JjOxxTdC2DWUrcz67D5TuFF8KrR
- uRGgwHjUa5rR+tbWqdWrisGyPdnivLsT1Wr2EUNfePEBca7jlzHGpRXQKr/kQt85pFRE
- l5SQ==
-X-Gm-Message-State: AOAM530A/5YCncivkYOEm+E+PXxAka+l9ucIMJHCb04uI0ktztQKaqWp
- VMB4PLq6KVrwaAAkNPKvjn6dYN4elt4=
-X-Google-Smtp-Source: ABdhPJxJykkt/yf6uYro0mVaN7rzBIcFcz2Z3G3yrJ/lmFDx1OTRowGG+2Ousg7ahPUmitukIQM+FQ==
-X-Received: by 2002:a4a:94ef:: with SMTP id l44mr7627865ooi.84.1622221233498; 
- Fri, 28 May 2021 10:00:33 -0700 (PDT)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
- [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id r7sm1219084oom.46.2021.05.28.10.00.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 May 2021 10:00:33 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-mtd@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org, andy.yan@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- tudor.ambarus@microchip.com, michael@walle.cc, p.yadav@ti.com,
- heiko@sntech.de, robh+dt@kernel.org, vigneshr@ti.com, richard@nod.at,
- miquel.raynal@bootlin.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: Enable SFC for Odroid Go Advance
-Date: Fri, 28 May 2021 12:00:20 -0500
-Message-Id: <20210528170020.26219-5-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210528170020.26219-1-macroalpha82@gmail.com>
-References: <20210528170020.26219-1-macroalpha82@gmail.com>
+ id 1lmgLh-00HTRB-1n; Fri, 28 May 2021 17:32:42 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lmgLf-0006NM-DL; Fri, 28 May 2021 19:32:39 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-clk@vger.kernel.org, Alex Bee <knaerzche@gmail.com>,
+ linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH] clk: rockchip: export ACLK_VCODEC for RK3036
+Date: Fri, 28 May 2021 19:32:37 +0200
+Message-Id: <162222314613.2865009.9291015386212006336.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210528140736.79686-1-knaerzche@gmail.com>
+References: <20210528140736.79686-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_100034_927506_5FE94468 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20210528_103241_111019_9BE51556 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +73,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+On Fri, 28 May 2021 16:07:36 +0200, Alex Bee wrote:
+> It is required for the series at [1] to let hantro driver aquire the
+> clock and set the rate for RK3036 correctly, but I didn't want to
+> add a patch for yet another subsystem to this series.
+> 
+> [1] https://lore.kernel.org/linux-media/20210525152225.154302-1-knaerzche@gmail.com/
 
-This enables the Rockchip Serial Flash Controller for the Odroid Go
-Advance. Note that while the attached SPI NOR flash and the controller
-both support quad read mode, only 2 of the required 4 pins are present.
-The rx and tx bus width is set to 2 for this reason.
+Applied, thanks!
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+[1/1] clk: rockchip: export ACLK_VCODEC for RK3036
+      commit: 2adafc0512625bbd090dc37a353ddda15d525e9d
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 49c97f76df77..a72506d7c6ee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -484,6 +484,22 @@ &sdmmc {
- 	status = "okay";
- };
- 
-+&sfc {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sfc_clk &sfc_cs &sfc_bus2>;
-+	status = "okay";
-+
-+	nor_flash: xt25f128b@0 {
-+		reg = <0>;
-+		compatible = "xtx,xt25f128b","jedec,spi-nor";
-+		spi-rx-bus-width = <2>;
-+		spi-tx-bus-width = <2>;
-+		spi-max-frequency = <108000000>;
-+	};
-+};
-+
- &tsadc {
- 	status = "okay";
- };
+Best regards,
 -- 
-2.25.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
