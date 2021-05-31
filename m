@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2DD8C47080
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 May 2021 22:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 250D2C47080
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 May 2021 22:12:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EE3760232
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 May 2021 22:11:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EE3760232
+	by mail.kernel.org (Postfix) with ESMTPS id C7E696128A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 May 2021 22:12:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7E696128A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,51 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tmq1emj/+uEPlTgHNRhjRKmi2Ym1HTg9UtJLPlDHcAE=; b=lFLCcJ/VcX2Cqt
-	7zJTHHuGvzAgSFpOjoE+TmrajbpvxUKEJZEXmCyHmH+uQvxMoypUtlF5mFAdCxnPYFXdlrPfQq4Hb
-	CvznyFO3pLu9nOmoYz2OlL4xYxmopEPeDmaXOqZmWST6fyxkjfuS4eoD8Rag5mErUPUMZSSrENd80
-	c1ay16azZJ8+l0X9TLnJKAXaMcPyuKkSbeRcQagrCncvKvKDWTPvSGO7YoQJuoK0joqJN7EEibWAg
-	G4rLgIskqu3S4t09jw4pjp8cSqu7cMSrVi6RUZ0rWwESDfdDqVc7V3gA+CsDPuZW02tV0TJr5BWkn
-	l4UxIZHK8NDY+l4ri5hQ==;
+	List-Owner; bh=ws/kDe/j76lmg7sM42WTwaYaXFC2MG1l0hzNJuqSCOk=; b=J2vGmmhv16hwlH
+	tGm0axDeHCzcAr58Tjro4gaaHzWrUCUnbxZwJfRmEse2gl73r5K/grfquNzhL619iO8SQVscX5Wp0
+	inqBKQqOR8hI8pVf4hCtMwqEwuRApqHrDUH96V9u2Rs9SBJI9QY5Exv1eo4gGn7Xniro4Cw1/aZ6c
+	34OzAXTsVQ0fbVEeCEM8mNOZ81A71h4fJtfXgA4GjECErQHqvZAum23NSabAoAjCIRDgvxIwXLRI/
+	jpwqaUv2tFUt/PSI9XptNfMkpCB914L7AIK3KWWvBxEolHaoAjd7gEQ1yWMFguO+dO85Rj6efQxur
+	7j8XNBq1nV5ig7kM5EmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnq8P-00DadU-Hk; Mon, 31 May 2021 22:11:45 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1lnq8g-00DbBT-9z; Mon, 31 May 2021 22:12:02 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnq8M-00DaXx-EO; Mon, 31 May 2021 22:11:44 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id v14so9225802pgi.6;
- Mon, 31 May 2021 15:11:41 -0700 (PDT)
+ id 1lnq8e-00Db3W-7s; Mon, 31 May 2021 22:12:01 +0000
+Received: by mail-pl1-x636.google.com with SMTP id e15so5837142plh.1;
+ Mon, 31 May 2021 15:11:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ObJnk/4SRS5pFYp9Ryi74xRKcVKBz9rodsuAFbTAcF0=;
- b=NuJwoNvOCmk/TUqCGSOTXCu34DL22xBUfOL8NrOsw1RgI/+bcANwngaNNpF4xJlPXF
- D+PxMKt4B9NxIOiarz7Ot+QbC2klai1lJSIATiUarbkqxsBh520zgml0OBdVrQkoAWO+
- 5vorZt7+wtyWfLVNvxGig+Hv/w/FdEiwBbhSFK7IN7TJPbjYBojzS6Bfrzcqr0iAb18s
- OqH0OJjweH9z00GiMKHC6mi6TMgz68VkYUivsIoHzgFypCRHt88aCFSi+0zMjR07BUmQ
- oO0Eqr7/b5ZdBOKmcxmWt7G0agsGvhKZtrhLdetVWcwPa1m8vOqGV0NinCq/r9no4pRt
- uZnw==
+ bh=gw59jQnc+Uma0baDOULLtxudFXMhd44Brz/fTI3+KK4=;
+ b=h/Gg08nBXnR+NAlEizOR5wFpKHRzB4VnrTv2o7OpQ5UH78vidsV6CfXyQbIhpAx42y
+ wunLHz9/4YRny3R+sFpJ1LWKEg5/YW293+g+r3NICv30Z5h6+CckWjIuI8FKtsPtwlKI
+ 5V7DmdQ2LJd3f78yRAqllGgnCtnhqYxq79ljbICuQgWfsTj4YdOWYDP5q37lTZQrDmgl
+ xZSFRnPs9+Lgz3/7XxCG9ZN96sl18Hv9Gd/UW06yQLBkiourrJg90O3mq/sWEdhoNuHZ
+ /YILnPISLKlvjAuKfpeRs2I2abB4ceWwGe787jvAnSLtb3Af6w/hTlId51dGcjSz72yk
+ GD7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ObJnk/4SRS5pFYp9Ryi74xRKcVKBz9rodsuAFbTAcF0=;
- b=mfvZbstUIOQXhfIGPoUy4AnVIw4UY5UsAZ/K7pRa4D+0M2GWO0K8JN/1Jckn4f1tuO
- TTaJghOSCvJx6DMtOdz61HCrXfnNQCwAQ72TgCSWduZPB/2chV+ddQJRxU1xuhRLgK8g
- r/cy7sMTubaYFex6e1fEy8CpEcG7yE6ADobPtezS08gL9gQ70r/w+Urld5RwnYSWNl8R
- itRfpWgFVGdjfE3FlbAEwCd3Iis1oCuYmtoISXZaLT2xBZTd5aeqFP5lqUgTAiSUTsk2
- GMi5PSS/OzW2f4q8GYmuqLbYeBwY5Ec+BICef/Dxp53uokCAYJ/vqm3aAWx33T7iuCsa
- K3Jg==
-X-Gm-Message-State: AOAM530SXvqrQKPL24GuRTGq16xdukTXLqOx/ZtdAjGGRXwf36qf7YAn
- oPAku+Afoli8JUFnA4rmwe0cLEK9wryVLA==
-X-Google-Smtp-Source: ABdhPJyM6MZ78Cel4rzoNBtZsG5ANMUhigCb2ZFgVsujzRfnVOIzCkaz6aJHGBVbCnCg/2LjYhHZhw==
-X-Received: by 2002:a65:64c8:: with SMTP id t8mr5505003pgv.96.1622499100960;
- Mon, 31 May 2021 15:11:40 -0700 (PDT)
+ bh=gw59jQnc+Uma0baDOULLtxudFXMhd44Brz/fTI3+KK4=;
+ b=JlJa2A1N2usLiY0xPZS8pEkfA32hB/Kstwc4RYZBYvUJ5SjvPUIoRniclOJpk/p6Nu
+ vuWSD8jx5rYxBsVym7I5h/jkbqK7mhJMbK3sJciNzxL1zI8+qB+2nKQIsfHPBbFnN3Ns
+ GLSBOoVXXFIqsIKD+aKQEhLtCaWLS+mvYXZJkMLsble+QWjkYPZYA89DQj634tYfrLmE
+ feNM5UrPu8IaH3xzbHNjI0vdvzFZdnU9E97nKVFTINvp1r11uGAqGNGn5vKwdp94M8EQ
+ 4gK/Soz6a1aTNwozk2MHGmVCBvXK3HJYG6XC8pUm9IlXsoTqS3wdXxdG+x4LwRZwz9sz
+ 6l/A==
+X-Gm-Message-State: AOAM5333r1h28x41O0zRYoC8IKUEgRcGW7srclLiAYXY69mCvGqTJEod
+ jYCsM5cFWrakNqqvgzMExgvJ3g7G6KaJAg==
+X-Google-Smtp-Source: ABdhPJzdE3+QUCC1zBgJEn+QtXIkglsaGTRALpTVjmZGTBM3gLEPvN1m4rll/7NuFhyVg6LvlAT6kA==
+X-Received: by 2002:a17:902:a70f:b029:ea:d4a8:6a84 with SMTP id
+ w15-20020a170902a70fb02900ead4a86a84mr22665442plq.42.1622499118954; 
+ Mon, 31 May 2021 15:11:58 -0700 (PDT)
 Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
  [122.211.248.161])
- by smtp.gmail.com with ESMTPSA id z6sm12604823pgp.89.2021.05.31.15.11.40
+ by smtp.gmail.com with ESMTPSA id gz18sm308809pjb.19.2021.05.31.15.11.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 May 2021 15:11:40 -0700 (PDT)
+ Mon, 31 May 2021 15:11:58 -0700 (PDT)
 From: Punit Agrawal <punitagrawal@gmail.com>
 To: linux-rockchip@lists.infradead.org,
 	linux-pci@vger.kernel.org
@@ -77,18 +78,18 @@ Cc: Punit Agrawal <punitagrawal@gmail.com>,
  alexandru.elisei@arm.com, wqu@suse.com, robin.murphy@arm.com,
  pgwipeout@gmail.com, ardb@kernel.org, briannorris@chromium.org,
  shawn.lin@rock-chips.com, helgaas@kernel.org, robh+dt@kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v2 1/4] PCI: of: Override 64-bit flag for non-prefetchable
- memory below 4GB
-Date: Tue,  1 Jun 2021 07:10:54 +0900
-Message-Id: <20210531221057.3406958-2-punitagrawal@gmail.com>
+ Vidya Sagar <vidyas@nvidia.com>
+Subject: [PATCH v2 2/4] PCI: of: Relax the condition for warning about
+ non-prefetchable memory aperture size
+Date: Tue,  1 Jun 2021 07:10:55 +0900
+Message-Id: <20210531221057.3406958-3-punitagrawal@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210531221057.3406958-1-punitagrawal@gmail.com>
 References: <20210531221057.3406958-1-punitagrawal@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210531_151142_509362_F2F9487B 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20210531_151200_323426_709073CE 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,52 +107,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some host bridges advertise non-prefetable memory windows that are
-entirely located below 4GB but are marked as 64-bit address memory.
+Commit fede8526cc48 ("PCI: of: Warn if non-prefetchable memory
+aperture size is > 32-bit") introduced a warning for non-prefetchable
+resources that need more than 32bits to resolve. It turns out that the
+check is too restrictive and should be applicable to only resources
+that are limited to host bridge windows that don't have the ability to
+map 64-bit address space.
 
-Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-flags for 64-bit memory addresses"), the OF PCI range parser takes a
-stricter view and treats 64-bit address ranges as advertised while
-before such ranges were treated as 32-bit.
+Relax the condition to only warn when the resource size requires >
+32-bits and doesn't allow mapping to 64-bit addresses.
 
-A PCI host bridge that is modelled as PCI-to-PCI bridge cannot forward
-64-bit non-prefetchable memory ranges. As a result, the change in
-behaviour due to the commit causes allocation failure for devices that
-require non-prefetchable bus addresses.
-
-In order to not break platforms, override the 64-bit flag for
-non-prefetchable memory ranges that lie entirely below 4GB.
-
-Suggested-by: Ard Biesheuvel <ardb@kernel.org>
 Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
 Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Rob Herring <robh+dt@kernel.org>
-
-Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+Cc: Vidya Sagar <vidyas@nvidia.com>
 ---
- drivers/pci/of.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/pci/of.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-index da5b414d585a..e2e64c5c55cb 100644
+index e2e64c5c55cb..c2a57c61f1d1 100644
 --- a/drivers/pci/of.c
 +++ b/drivers/pci/of.c
-@@ -346,6 +346,14 @@ static int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 				dev_warn(dev, "More than one I/O resource converted for %pOF. CPU base address for old range lost!\n",
- 					 dev_node);
- 			*io_base = range.cpu_addr;
-+		} else if (resource_type(res) == IORESOURCE_MEM) {
-+			if (!(res->flags & IORESOURCE_PREFETCH)) {
-+				if (res->flags & IORESOURCE_MEM_64)
-+					if (!upper_32_bits(range.pci_addr + range.size - 1)) {
-+						dev_warn(dev, "Clearing 64-bit flag for non-prefetchable memory below 4GB\n");
-+						res->flags &= ~IORESOURCE_MEM_64;
-+					}
-+			}
- 		}
+@@ -574,7 +574,8 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
+ 			res_valid |= !(res->flags & IORESOURCE_PREFETCH);
  
- 		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+ 			if (!(res->flags & IORESOURCE_PREFETCH))
+-				if (upper_32_bits(resource_size(res)))
++				if (!(res->flags & IORESOURCE_MEM_64) &&
++				    upper_32_bits(resource_size(res)))
+ 					dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
+ 
+ 			break;
 -- 
 2.30.2
 
