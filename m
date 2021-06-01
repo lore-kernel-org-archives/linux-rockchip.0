@@ -2,62 +2,66 @@ Return-Path: <SRS0=yzvA=K3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FBBCC47093
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jun 2021 08:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A5DDC47080
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jun 2021 12:52:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 977336128A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jun 2021 08:30:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 977336128A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id D639F6138C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Jun 2021 12:52:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D639F6138C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WTug5+9TzJNWw5sL6fQVFIGqyf807jT1z3RXLiSoRs0=; b=3NP8jGMp2kfhfx
-	UveYU4U9nmpMcxu2WGhtpIZej1AZWUw5QnilXhbQE7qdPOfShgp518yOTuPK6PsjjHFa5SedYPPfz
-	XhX70lrqk8XeccpefPGRgscrVgkNzIGMmN0tpwxjBqwC9h8VTLDGabtM6MlOWr5zJP0n68Xy7CuJf
-	WcmQBPVQuvbu+Lsf1RfwcrYKVVhIOCRvMvI9kvMVuv/RKtd8fG7k50nsTf/WZHY5RK4A4fPedkWRT
-	GC7nQiwWlIeuXrCfR0woLzxgdkJkNzA701ARn93aIkjTw5OuPdFjHkAjpo84+VgCnMbNJA+OCMyan
-	bE1Gda7fPXwQchobFf5g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=S5sjwB1XoPAm3innRw1klzRAGgCJtvsac/GRud3Kz2Q=; b=ijGSqy6y6STkBpklQStNWyHYgR
+	M3RFkNMrSzE75elNih+9asGweTypKgP9bBTbLC5+uN4WuDxCo09P2DNAGgcngfVs51+ko7aps5p2j
+	UwTVN8eP9+zFl+7xKcWUx5Xx+zKTtqGq8lfRni3EsWoD2m0rGjEyeylDJulgyRZfG9indwiIM6XY4
+	7Vng+E41ACW3j++iRkHK1UfDwUMdcYpgvvtdZH98f7qjQDWL3DJ94WutflK3RwBD8dBZoNK5jvARK
+	jvANHrhUY8U9FaM5Bz+I042ati+9WUJiI886VcgHjJmocRx+1IAZ46DfgzMFtGzVqgYW6nk9DxAjr
+	aC3T1KVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnznW-00FLOW-FH; Tue, 01 Jun 2021 08:30:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnzn9-00FLBG-4x; Tue, 01 Jun 2021 08:30:28 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lnzn2-0008O5-Rw; Tue, 01 Jun 2021 10:30:20 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>, Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-mtd@lists.infradead.org, linux-rockchip@lists.infradead.org,
- andy.yan@rock-chips.com, yifeng.zhao@rock-chips.com,
- sugar.zhang@rock-chips.com, tudor.ambarus@microchip.com, michael@walle.cc,
- p.yadav@ti.com, robh+dt@kernel.org, vigneshr@ti.com, richard@nod.at,
- miquel.raynal@bootlin.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v2 2/4] spi: rockchip-sfc: Bindings for Rockchip serial
- flash controller
-Date: Tue, 01 Jun 2021 10:30:18 +0200
-Message-ID: <3698714.BjyWNHgNrj@diego>
-In-Reply-To: <20210531171812.GA1729@wintermute.localdomain>
-References: <20210528170020.26219-1-macroalpha82@gmail.com>
- <d94ddb6c-116d-5119-a731-0b89925505d1@gmail.com>
- <20210531171812.GA1729@wintermute.localdomain>
+	id 1lo3t6-00GcKn-DC; Tue, 01 Jun 2021 12:52:52 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lo3sn-00GcEO-O0; Tue, 01 Jun 2021 12:52:35 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 61F926D;
+ Tue,  1 Jun 2021 05:52:32 -0700 (PDT)
+Received: from [192.168.0.110] (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A6CDB3F719;
+ Tue,  1 Jun 2021 05:52:30 -0700 (PDT)
+Subject: Re: [PATCH v2 0/4] PCI: of: Improvements to handle 64-bit attribute
+ for non-prefetchable ranges
+To: Punit Agrawal <punitagrawal@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wqu@suse.com, robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
+ briannorris@chromium.org, shawn.lin@rock-chips.com, helgaas@kernel.org,
+ robh+dt@kernel.org
+References: <20210531221057.3406958-1-punitagrawal@gmail.com>
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+Message-ID: <75da0524-7588-4ace-a135-69236f2d1d5e@arm.com>
+Date: Tue, 1 Jun 2021 13:53:19 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
+In-Reply-To: <20210531221057.3406958-1-punitagrawal@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210601_013027_271087_8E37B835 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20210601_055233_875906_BBBB387F 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +79,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 31. Mai 2021, 19:18:12 CEST schrieb Chris Morgan:
-> On Sat, May 29, 2021 at 10:45:35AM +0200, Johan Jonker wrote:
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > 
-> > > +title: Rockchip SoCs Serial FLASH Controller (SFC)
-> > 
-> > title: Rockchip Serial Flash Controller (SFC)
-> > 
-> > > +
-> > 
-> > > +maintainers:
-> > 
-> > > +  - Andy Yan <andy.yan@rock-chips.com>
-> > 
-> > This is the original author years ago, but did you ask him to be maintainer?
-> > 
-> >   - Heiko Stuebner <heiko@sntech.de>
-> > 
-> > Add someone who can respond in a short period of time and who knows the
-> > hardware in case rob+dt wants to delete something.
-> 
-> I asked Heiko on IRC if he would be okay with me listing him and myself
-> as maintainers. I'm comfortable enough with the hardware now to be able
-> to respond/fix basic issues with it, though it would also be good to
-> have a veteran of the hardware involved too.
+Hi Punit,
 
-sure that is fine with me :-)
+On 5/31/21 11:10 PM, Punit Agrawal wrote:
+> Hi,
+>
+> Here's an updated version of changes to improve handling of the 64-bit
+> attribute on non-prefetchable host bridge ranges. Previous version can
+> be found at [0].
+>
+> The series addresses Rob and Bjorn's comments on the previous version
+> and updates the checks for 32-bit non-prefetchable window size to only
+> apply to non 64-bit ranges.
 
+Many thanks for the series. I've tested it on my rockpro64, and the NVME works as
+expected:
 
-Heiko
+Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
 
+Thanks,
 
+Alex
+
+>
+> Thanks,
+> Punit
+>
+> Changes:
+> v2:
+> * Check ranges PCI / bus addresses rather than CPU addresses
+> * (new) Restrict 32-bit size warnings on ranges that don't have the 64-bit attribute set
+> * Refactor the 32-bit size warning to the range parsing loop. This
+>   change also prints the warnings right after the window mappings are
+>   logged.
+>
+>
+> [0] https://lore.kernel.org/linux-arm-kernel/20210527150541.3130505-1-punitagrawal@gmail.com/
+>
+> Punit Agrawal (4):
+>   PCI: of: Override 64-bit flag for non-prefetchable memory below 4GB
+>   PCI: of: Relax the condition for warning about non-prefetchable memory
+>     aperture size
+>   PCI: of: Refactor the check for non-prefetchable 32-bit window
+>   arm64: dts: rockchip: Update PCI host bridge window to 32-bit address
+>     memory
+>
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi |  2 +-
+>  drivers/pci/of.c                         | 17 ++++++++++++-----
+>  2 files changed, 13 insertions(+), 6 deletions(-)
+>
 
 _______________________________________________
 Linux-rockchip mailing list
