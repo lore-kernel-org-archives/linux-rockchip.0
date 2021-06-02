@@ -7,77 +7,82 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C1FFC4708F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jun 2021 11:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13BBEC4708F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jun 2021 11:58:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB2D7610A8
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jun 2021 11:46:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB2D7610A8
+	by mail.kernel.org (Postfix) with ESMTPS id B5694613BA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Jun 2021 11:58:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5694613BA
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=heitbaum.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=i6O0GpulIpjomcCWqmoyGvpvFASNuVOgcQ/uLjrRdqI=; b=jmPnE/MZkKBWqu
-	Two0z8552NQDxcPmHzABOUYnEUjxi83/uGHVTedZltKtrr2hrUwSkKHyOxNP95s0Oc0DcZROrQ2zD
-	SjYhf3tuMSXnbzotgggogAnPqv19atq1FYbUBDIDPg/dPY7m56KTK1gRkQNzLdul94qm4JGfulL/l
-	Bx8QPtD36mrxWSQY2rtxo7yAX1zT+jYOT7Igz34yjyQZ3ZfiNkO5/xNu/3XL+VoK+1GMM3mpiVbY7
-	U5vi5gPerNh48jJ5Mn2nE521Y6prEr0QWGuaGmHk7GKZzGQHl7caLL+DSdte9pnQNyhmcLOhbRz14
-	5XgO76vLpuANGiK73HOQ==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+fqcLo5qPYsiGV/rTO7rbuV0h+UWJeoQxWZyeqDTtm8=; b=j3VMijAT902EDh
+	5lpK0cjpIbpFwQg5hAmPrttBGEA0M0Flo1Vulwh0lByUUB8/1X8TlywBN7w5th7e1R74ODOKQLfkC
+	g+wwD7bn74snSYasRoF0vWfzWsyZrNBZvntf53B+EZq7TQAbVwg4m3zXoe2jNQ3UBnAG3pA6GVWop
+	J3AnsvEDpWubEmCfizwut8H5jZDlbtKbmAbiVr9BWml6THIP7+5VaPElETOttB+A1lr6Gs3H4tfCG
+	zPmQ/L1cmq/1f9rH3o5jeZFebLW5HDgr1bnMo5nb/3Tc4dkONZCYo9yBwAKuBOQ4d0VKnttwhTovd
+	JK7hnoAqhygnA2HJmN4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loPKe-003ooP-6I; Wed, 02 Jun 2021 11:46:44 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1loPVX-003rUq-5e; Wed, 02 Jun 2021 11:57:59 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loOzd-003inw-KH
- for linux-rockchip@lists.infradead.org; Wed, 02 Jun 2021 11:25:05 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 6so1972107pgk.5
- for <linux-rockchip@lists.infradead.org>; Wed, 02 Jun 2021 04:24:59 -0700 (PDT)
+ id 1loP4M-003kYk-97
+ for linux-rockchip@lists.infradead.org; Wed, 02 Jun 2021 11:29:58 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id
+ l23-20020a17090a0717b029016ae774f973so941972pjl.1
+ for <linux-rockchip@lists.infradead.org>; Wed, 02 Jun 2021 04:29:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=heitbaum.com; s=google;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=li91TkB8vt4LZTs/ZRDPEkBtTqhmB+m8Wqp+53J3jpY=;
- b=aonkHIp6X5zJfn9dkevz/e7hkCumER3RcmOsiw9du/9D9yv94CjQLo/uYyuC/XvNPf
- SohKN8bPTJ8DIEn3p+38+e/UxffGTjgmc2yVx0mpVd9jw1xOAnvgrFB5P/4IoInc+373
- Yb3dj/a26fUyuxUZC5tisApOpD1X0pSwB1ljE=
+ h=date:from:to:cc:subject:message-id:reply-to:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=s9ut0Q0wZ8z+hzL9g91MMtw0Pf9H9Qkn8s5w5ouk4Co=;
+ b=HbqMhFoDB9o5ql6A94HCPeFWNEzFAaio81BcgTmSk5yu3kWBWsCpNElWsglMyc+8WH
+ FVKqPfyDWUEth9hSxW+8vYySSvftQPHXBOMMPkgFk9BNb3J7TeiWEwJtH1qOTaq5BNWy
+ uSvls9K0LJURCCRfbuutuNKDwIH8AFzhzZASg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=li91TkB8vt4LZTs/ZRDPEkBtTqhmB+m8Wqp+53J3jpY=;
- b=sFDtq9QNLM2fE3Ctnegq9mPOFY348LNOUejXY2UIjQwEJUAXdZaIJItMw837czUsyw
- grI0LtUNnfz90K9hRXb4HlM7/B4pSwxNcfZYRMzPiYxkR5QyCSOBU0EkIyX9d8IPbA8g
- 2C86rCnmuE/78MGPoL9U2CAfv7oVl/UQWqzBv+4z4RaqXITASNSLiy4rHjzaiXBUDZ8B
- PxBXpf+jenu/9WV3gVIUfoLi/GdpofPprfpnOXGt+6DxHdKAmyMN3ePgGgE0R/OxJS/r
- +wKGGn2VtsLA9Un0KGCrNX0LEYYwEKdROuioGk50GrsnCaU7KjIsxo+gm8QIQLuWcpAZ
- vQ9g==
-X-Gm-Message-State: AOAM532+tmw0hb170vz9NXb6DcoBqMkADtFMpuXT4gvBPGH+0zUEiUcB
- N3wyzlzWDqXekEjD/dLrRIiJJjbPmeX/Gfszli0=
-X-Google-Smtp-Source: ABdhPJxpfZpr0xBPXyYNB5hyvH20vouT4QUVROCCeFjRrQPFQFstm2zrwf9q7Ou5UnmCblp40cXiWA==
-X-Received: by 2002:a63:b507:: with SMTP id y7mr33357175pge.74.1622633099202; 
- Wed, 02 Jun 2021 04:24:59 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:reply-to
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=s9ut0Q0wZ8z+hzL9g91MMtw0Pf9H9Qkn8s5w5ouk4Co=;
+ b=QbYAbUx8+ac7mE5+AJp4jFrDynGuMtetq0U7CoSADe5cu+ffa8CeShwY6CnByv/YnC
+ HTvPNM5J8rU40vaSi4P2t06d1aytx2L2oX0ZMrd/79geYfAHJ9KH9+2CdMiPch79Xbn5
+ v5pb0mjx1afaAMrjPUmQl1RBofa9jbR6YXEmey3xnIyD+esDDzRlJkBXoos0AQLAoFqx
+ hOtAhyXD4iTcfmlNiudYsILaayusmT42rIkYjCQ7UMi2t6K8Zx2ckk0EbPiMM7ZKVOT2
+ QzOPZEzyXqvWdcH19F0RrTXxUEG+I4u40UaWIeo+hExA/Cz3XpYtN3bPL7QI+bppwjW5
+ k5Lw==
+X-Gm-Message-State: AOAM531mFZiOSj5C3eyyHEXtnmYqMnFLv8XMDeO8D5MqVdZmX9LoJ21j
+ s+gdfc5PK9FI9IXfMsyUMIIqYg==
+X-Google-Smtp-Source: ABdhPJy5LratcIzMM1/wtvTH7ZK1dsqsXfEOTHho4XhCDhLPd4uo+to8MvlYmGO1Bn7vjmlNM5S5pg==
+X-Received: by 2002:a17:902:8c91:b029:ef:aa9a:af35 with SMTP id
+ t17-20020a1709028c91b02900efaa9aaf35mr30543421plo.24.1622633392911; 
+ Wed, 02 Jun 2021 04:29:52 -0700 (PDT)
 Received: from 5f9be87369f8 ([124.170.34.40])
- by smtp.gmail.com with ESMTPSA id t1sm10568249pfe.61.2021.06.02.04.24.56
+ by smtp.gmail.com with ESMTPSA id w26sm17660269pgl.50.2021.06.02.04.29.50
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 02 Jun 2021 04:24:58 -0700 (PDT)
-Date: Wed, 2 Jun 2021 11:24:53 +0000
+ Wed, 02 Jun 2021 04:29:52 -0700 (PDT)
+Date: Wed, 2 Jun 2021 11:29:47 +0000
 From: Rudi Heitbaum <rudi@heitbaum.com>
 To: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 Cc: broonie@kernel.org, ezequiel@collabora.com, chenjh@rock-chips.com,
  pgwipeout@gmail.com
-Subject: [PATCH 1/2] dt-bindings: regulator: Add support for TCS4526
-Message-ID: <20210602112452.GA98@5f9be87369f8>
+Subject: [PATCH 2/2 v2] regulator: fan53555: add tcs4526
+Message-ID: <20210602112943.GA119@5f9be87369f8>
+References: <20210602112452.GA98@5f9be87369f8>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20210602112452.GA98@5f9be87369f8>
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_042501_759949_21B3EDF7 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20210602_042954_383347_7E8EBD62 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +95,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: 20210602112452.GA98@5f9be87369f8
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a compatible string to support the TCS4526 device,
-which is compatible with Fairchild FAN53555 regulators.
+For rk3399pro boards the tcs4526 regulator supports the vdd_gpu
+regulator. The tcs4526 regulator has a chip id of <0>.
+Add the compatibile tcs,tcs4526  
+
+without this patch, the dmesg output is:
+  fan53555-regulator 0-0010: Chip ID 0 not supported!
+  fan53555-regulator 0-0010: Failed to setup device!
+  fan53555-regulator: probe of 0-0010 failed with error -22
+with this patch, the dmesg output is:
+  vdd_gpu: supplied by vcc5v0_sys
+
+The regulators are described as:
+- Dedicated power management IC TCS4525
+- Lithium battery protection chip TCS4526
+
+This has been tested with a Radxa Rock Pi N10.
 
 Signed-off-by: Rudi Heitbaum <rudi@heitbaum.com>
 ---
- Documentation/devicetree/bindings/regulator/fan53555.txt | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
+ drivers/regulator/fan53555.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/regulator/fan53555.txt b/Documentation/devicetree/bindings/regulator/fan53555.txt
-index e7fc045281d1..013f096ac0aa 100644
---- a/Documentation/devicetree/bindings/regulator/fan53555.txt
-+++ b/Documentation/devicetree/bindings/regulator/fan53555.txt
-@@ -2,7 +2,7 @@
+diff --git a/drivers/regulator/fan53555.c b/drivers/regulator/fan53555.c
+index 2695be617373..ddab9359ea20 100644
+--- a/drivers/regulator/fan53555.c
++++ b/drivers/regulator/fan53555.c
+@@ -93,6 +93,10 @@ enum {
+ 	TCS4525_CHIP_ID_12 = 12,
+ };
  
- Required properties:
-   - compatible: one of "fcs,fan53555", "fcs,fan53526", "silergy,syr827",
--		"silergy,syr828" or "tcs,tcs4525".
-+		"silergy,syr828", "tcs,tcs4525" or "tcs,tcs4526".
-   - reg: I2C address
- 
- Optional properties:
++enum {
++	TCS4526_CHIP_ID_00 = 0,
++};
++
+ /* IC mask revision */
+ enum {
+ 	FAN53555_CHIP_REV_00 = 0x3,
+@@ -374,6 +375,7 @@ static int fan53555_voltages_setup_silergy(struct fan53555_device_info *di)
+ {
+ 	switch (di->chip_id) {
+ 	case TCS4525_CHIP_ID_12:
++	case TCS4526_CHIP_ID_00:
+ 		di->slew_reg = TCS4525_TIME;
+ 		di->slew_mask = TCS_SLEW_MASK;
+ 		di->slew_shift = TCS_SLEW_MASK;
+@@ -564,6 +566,9 @@ static const struct of_device_id __maybe_unused fan53555_dt_ids[] = {
+ 	}, {
+ 		.compatible = "tcs,tcs4525",
+ 		.data = (void *)FAN53526_VENDOR_TCS
++	}, {
++		.compatible = "tcs,tcs4526",
++		.data = (void *)FAN53526_VENDOR_TCS
+ 	},
+ 	{ }
+ };
+@@ -672,6 +677,9 @@ static const struct i2c_device_id fan53555_id[] = {
+ 	}, {
+ 		.name = "tcs4525",
+ 		.driver_data = FAN53526_VENDOR_TCS
++	}, {
++		.name = "tcs4526",
++		.driver_data = FAN53526_VENDOR_TCS
+ 	},
+ 	{ },
+ };
 -- 
 2.29.2
 
