@@ -2,64 +2,60 @@ Return-Path: <SRS0=PA1q=K5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27BD1C47082
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE947C47096
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:50:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CE240613E3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:39:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE240613E3
+	by mail.kernel.org (Postfix) with ESMTPS id A6DB5613E6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:50:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6DB5613E6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=whpX1J939XfSrvAAJlxC3frinjXVh3TsL6uKFbMT76c=; b=UAEUBFvXBj2WWlsbs1pwk7bB/j
-	DUokArQykwrJOAgIJI4JkOWmGvS0u9kc8ysGny7knU6hfGQL6EJVP7vdmduzF5PQG2hcl6jjgoEM2
-	KwPVf6WkBlrT0XFjWp/IdmbY4v2tEhHkUhtytRasraaC9aRzNBwntw3el3kt3cC+9sx/kslNljJa4
-	a/nI3DSkeqkRkjHW8yutrrPY5x9VP0Y2Rm8Ankq51rzz4RZBPeLkZFnxctLfSgbS7zpCBN/SfFX2Z
-	Uv4IcUoFHrElx1IIQebRvF6KjT0G6dBXLnsgpdUsmxKfcqhLXBCGymPIulmsyiHZeXFRPCuqFP2lZ
-	zXyRkQpQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=C/IQ09ANwSb7txDavnJGkyZIVUJTCHDjboC8pg0X1Ic=; b=diBmqOZdEoac1r
+	WPhhcKPQfQxsvL0+Xy+Wo+eWivZHc/BG2G/c1BA37n3jA0RhIncQNn5EO2WAsJFWTKRyz6xLK2G0E
+	mwfE8QhMT9QCr/lJEn5Jjb602dRFYq6huxCoegWADA36b4PBfcxYMOBf47YUibr5Iafe+TNsNJWE5
+	NmI9+V9gFkdQVCTq5nWhgKiLRpF15OKjBuuraK6wLvWN7ga5N7TWv2pdpgva8AFfoDmcizFt3Nhd4
+	xRtCC5uNsrb+v9q4fx7uTlcp3G0/93JCk4wMlH3wThgVqjUAFUJfP8Uqq4Gp/FPAoxlEJBB53RiWW
+	wTs22q6NI+BkO6kcNN+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lolh5-008OAK-5O; Thu, 03 Jun 2021 11:39:23 +0000
+	id 1lolru-008QeH-Ev; Thu, 03 Jun 2021 11:50:34 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lolgr-008O6Y-2S; Thu, 03 Jun 2021 11:39:11 +0000
+ id 1lolrb-008QTI-UG; Thu, 03 Jun 2021 11:50:17 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id BDBAC1F42FE6
-Subject: Re: [PATCH v12 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
-To: Hans Verkuil <hverkuil@xs4all.nl>, ezequiel@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, festevam@gmail.com, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, emil.l.velikov@gmail.com, andrzej.p@collabora.com
+ with ESMTPSA id 5B9571F42FDC
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
+ mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com
 Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
- <1627e9d3-7008-dda5-19d1-251c4715af9e@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <fd6b117b-f662-b448-76d6-66d5c958f1dd@collabora.com>
-Date: Thu, 3 Jun 2021 13:39:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
+Date: Thu,  3 Jun 2021 13:49:55 +0200
+Message-Id: <20210603115004.915294-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <1627e9d3-7008-dda5-19d1-251c4715af9e@xs4all.nl>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_043909_390255_01D9EB92 
-X-CRM114-Status: GOOD (  40.10  )
+X-CRM114-CacheID: sfid-20210603_045016_263042_9633469B 
+X-CRM114-Status: GOOD (  23.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,166 +68,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDAzLzA2LzIwMjEgw6AgMTE6MTksIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IEhpIEJl
-bmphbWluLAo+Cj4gT24gMjYvMDUvMjAyMSAxNDo0NSwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6
-Cj4+IFRoZSBJTVg4TVEgZ290IHR3byBWUFVzIGJ1dCB1bnRpbCBub3cgb25seSBHMSBoYXMgYmVl
-biBlbmFibGVkLgo+PiBUaGlzIHNlcmllcyBhaW0gdG8gYWRkIHRoZSBzZWNvbmQgVlBVIChha2Eg
-RzIpIGFuZCBwcm92aWRlIGJhc2ljCj4+IEhFVkMgZGVjb2Rpbmcgc3VwcG9ydC4KPj4KPj4gVG8g
-YmUgYWJsZSB0byBkZWNvZGUgSEVWQyBpdCBpcyBuZWVkZWQgdG8gYWRkL3VwZGF0ZSBzb21lIG9m
-IHRoZQo+PiBzdHJ1Y3R1cmVzIGluIHRoZSB1YXBpLiBJbiBhZGRpdGlvbiBvZiB0aGVtIG9uZSBI
-QU5UUk8gZGVkaWNhdGVkCj4+IGNvbnRyb2wgaXMgcmVxdWlyZWQgdG8gaW5mb3JtIHRoZSBkcml2
-ZXIgb2YgdGhlIG51bWJlciBvZiBiaXRzIHRvIHNraXAKPj4gYXQgdGhlIGJlZ2lubmluZyBvZiB0
-aGUgc2xpY2UgaGVhZGVyLgo+PiBUaGUgaGFyZHdhcmUgcmVxdWlyZSB0byBhbGxvY2F0ZSBmZXcg
-YXV4aWxpYXJ5IGJ1ZmZlcnMgdG8gc3RvcmUgdGhlCj4+IHJlZmVyZW5jZXMgZnJhbWUgb3IgdGls
-ZSBzaXplIGRhdGEuCj4+Cj4+IFRoZSBkcml2ZXIgaGFzIGJlZW4gdGVzdGVkIHdpdGggZmx1c3Rl
-ciB0ZXN0IHN1aXRlIHN0cmVhbS4KPj4gRm9yIGV4YW1wbGUgd2l0aCB0aGlzIGNvbW1hbmQ6IC4v
-Zmx1c3Rlci5weSBydW4gLXRzIEpDVC1WQy1IRVZDX1YxIC1kIEdTdHJlYW1lci1ILjI2NS1WNEwy
-U0wtR3N0MS4wCj4+Cj4+IHZlcnNpb24gMTI6Cj4+ICAgLSBDaGFuZ2UgbWFjcm8gdG8gYXZvaWQg
-dGhlIGZpbmFsICc7Jwo+PiAgIC0gTWFkZSBhcnJheXMgc3RhdGljIGFuZCBjb25zdAo+PiAgIC0g
-RGlzdGluZ3Vpc2ggRzIgZ2VuZXJpYyBmaWVsZHMgKGkuZSB0aGVzZSB3aG8gY291bGQgYmUgcmV1
-c2VkIGZvciBWUDkpCj4+ICAgICBmcm9tIEhFVkMgZGVkaWNhdGVkIGZpZWxkcy4KPiBJIHJhbiB0
-aGUgbGF0ZXN0IGNoZWNrcGF0Y2gvc21hdGNoL3NwYXJzZSBldGMuIG92ZXIgdGhpcyBzZXJpZXMg
-YW5kIGdvdCBhIGxvdAo+IG9mIGlzc3Vlcy4KPgo+IFRoZSB0cmlja2llc3QgZmlyc3Q6Cj4KPiBJ
-IGdldCBtYW55IHJlcG9ydHMgZm9yIHRoZSByZWdpc3RlciBkZWZpbml0aW9ucyBpbiBoYW50cm9f
-ZzJfcmVncy5oOgo+Cj4gZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfcmVn
-cy5oOjE2OjMzOiB3YXJuaW5nOiAnZzJfc3RybV9zdGFydF9vZmZzZXQnIGRlZmluZWQgYnV0IG5v
-dCB1c2VkIFstV3VudXNlZC1jb25zdC12YXJpYWJsZT1dCj4KPiBJIHRoaW5rIGl0IGlzIGEgYmFk
-IGlkZWEgdG8gZGVjbGFyZSB2YXJpYWJsZXMgaW4gYSBoZWFkZXIsIGFuZCB0aGF0J3MgcmVhbGx5
-Cj4gd2hhdCBpcyBjYXVzaW5nIHRoaXMuCj4KPiBJIHRoaW5rIGl0IHNob3VsZCBiZSBwb3NzaWJs
-ZSB0byByZXdvcmsgdGhpcyB0byBkZWZpbmVzIHN1Y2ggYXM6Cj4KPiAjZGVmaW5lIEcyX0RFQ19S
-RUcoYiwgcywgbSkgXAo+ICAgICAgICAgIChjb25zdCBzdHJ1Y3QgaGFudHJvX3JlZykgeyBcCj4g
-ICAgICAgICAgICAgICAgICAuYmFzZSA9IEcyX1NXUkVHKGIpLCBcCj4gICAgICAgICAgICAgICAg
-ICAuc2hpZnQgPSBzLCBcCj4gICAgICAgICAgICAgICAgICAubWFzayA9IG0sIFwKPiAgICAgICAg
-ICB9CgpjaGVja3BhdGNoIGNvbXBsYWlucyBhYm91dCB0aGUgbWFjcm8gdG8gYmUgY29tcGxleCBz
-byBJIGhhdmUgdG8gYWRkIHBhcmVudGhlc2VzCmJ1dCB0aGF0IHdpbGwgYmUgaW4gdjEyCgo+ICNk
-ZWZpbmUgZzJfc3RybV9zdGFydF9vZmZzZXQgRzJfREVDX1JFRygyNTksIDAsIDB4ZmZmZmZmZmYp
-Cj4KPiBUaGlzIGFsbG93cyB5b3UgdG8gZG86Cj4KPiBoYW50cm9fcmVnX3dyaXRlKHZwdSwgJmcy
-X3N0cm1fc3RhcnRfb2Zmc2V0LCAwKTsKPgo+IHdpdGhvdXQgaGF2aW5nIHRvIGRlY2xhcmUgc3Rh
-dGljIHZhcmlhYmxlcyBpbiBhIGhlYWRlci4KPgo+IE90aGVyIHdhcm5pbmdzOgo+Cj4gIEZyb20g
-dGhlIGNvbXBpbGVyOgo+Cj4gbGludXgtZ2l0LWFybS1tdWx0aTogV0FSTklOR1MKPgo+IGRyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmM6IEluIGZ1bmN0aW9u
-ICdoYW50cm9fd3JpdGVfYWRkcic6Cj4gZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50
-cm9fZzJfaGV2Y19kZWMuYzoyMzoyNDogd2FybmluZzogcmlnaHQgc2hpZnQgY291bnQgPj0gd2lk
-dGggb2YgdHlwZSBbLVdzaGlmdC1jb3VudC1vdmVyZmxvd10KPiAgICAgMjMgfCAgdmRwdV93cml0
-ZSh2cHUsIChhZGRyID4+IDMyKSAmIDB4ZmZmZmZmZmYsIG9mZnNldCArIDQpOwo+ICAgICAgICB8
-ICAgICAgICAgICAgICAgICAgICAgICAgXn4KPgo+IE5vdGU6IHRoaXMgYnVpbGRzIG9uIGEgMzIt
-Yml0IGFybSEKPgo+ICBGcm9tIHNtYXRjaDoKPgo+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaGFudHJvX2hldmMuYzoyMjggdGlsZV9idWZmZXJfcmVhbGxvY2F0ZSgpIGVycm9yOiBkb3Vi
-bGUgZnJlZSBvZiAnaGV2Y19kZWMtPnRpbGVfc2FvLmNwdScKPiBkcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvaGFudHJvL2hhbnRyb19oZXZjLmM6MjM0IHRpbGVfYnVmZmVyX3JlYWxsb2NhdGUoKSBlcnJv
-cjogZG91YmxlIGZyZWUgb2YgJ2hldmNfZGVjLT50aWxlX2JzZC5jcHUnCgpUaGF0IHdpbGwgYmUg
-Zml4ZWQgaW4gdjEyCgo+Cj4gIEZyb20ga2VybmVsZG9jOgo+Cj4gZHJpdmVycy9zdGFnaW5nL21l
-ZGlhL2hhbnRyby9oYW50cm9faHcuaDoxMzY6IHdhcm5pbmc6IEZ1bmN0aW9uIHBhcmFtZXRlciBv
-ciBtZW1iZXIgJ3JlZl9idWZzJyBub3QgZGVzY3JpYmVkIGluICdoYW50cm9faGV2Y19kZWNfaHdf
-Y3R4Jwo+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3Lmg6MTM2OiB3YXJu
-aW5nOiBGdW5jdGlvbiBwYXJhbWV0ZXIgb3IgbWVtYmVyICdyZWZfYnVmc19wb2MnIG5vdCBkZXNj
-cmliZWQgaW4gJ2hhbnRyb19oZXZjX2RlY19od19jdHgnCj4gZHJpdmVycy9zdGFnaW5nL21lZGlh
-L2hhbnRyby9oYW50cm9faHcuaDoxMzY6IHdhcm5pbmc6IEZ1bmN0aW9uIHBhcmFtZXRlciBvciBt
-ZW1iZXIgJ3JlZl9idWZzX3VzZWQnIG5vdCBkZXNjcmliZWQgaW4gJ2hhbnRyb19oZXZjX2RlY19o
-d19jdHgnCj4gZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaDoxMzY6IHdh
-cm5pbmc6IEZ1bmN0aW9uIHBhcmFtZXRlciBvciBtZW1iZXIgJ251bV90aWxlX2NvbHNfYWxsb2Nh
-dGVkJyBub3QgZGVzY3JpYmVkIGluCj4gJ2hhbnRyb19oZXZjX2RlY19od19jdHgnCgpJIGZpeCB0
-aGlzIGFuZCBhbHNvIHJlbW92ZSB0aGUgZGVzY3JpcHRpb24gZm9yIG5vdCBleGlzdGluZyBmaWVs
-ZHMuCgpUaGFua3MgZm9yIHlvdXIgcmV2aWV3LgpCZW5qYW1pbgoKPgo+IFJlZ2FyZHMsCj4KPiAJ
-SGFucwo+Cj4+IHZlcnNpb24gMTE6Cj4+ICAgLSBSZWJhc2VkIG9uIG1lZGlhX3N0YWdlLgo+PiAg
-IC0gRml4IG1pbm9yIHR5cG8vcmVtYXJrcy4KPj4KPj4gdmVyc2lvbiAxMDoKPj4gICAtIFNob3J0
-ZXIgdmVyc2lvbiBvZiB0aGUgcHJldmlvdXMgc2VyaWVzIHdpdGhvdXQgY3RybCBibG9jayBwYXRj
-aGVzCj4+ICAgICBhbmQgbm8gRFQgbW9kaWZpY2F0aW9ucy4KPj4gICAgIFRoZSBzY29wZSBvZiB0
-aGlzIHNlcmllcyBpcyBsaW1pdGVkIHRvIEhFVkMgc3VwcG9ydC4KPj4KPj4gdmVyc2lvbiA5Ogo+
-PiAgIC0gQ29ycmVjdGlvbnMgaW4gY29tbWl0cyBtZXNzYWdlcy4KPj4gICAtIERlZmluZSB0aGUg
-ZGVkaWNhdGVkIGNvbnRyb2wgaW4gaGV2Yy1jb250cm9scy5oCj4+ICAgLSBBZGQgbm90ZSBpbiBk
-b2N1bWVudGF0aW9uLgo+PiAgIC0gQ2hhbmdlIG1heCB2YWx1ZSBvZiB0aGUgZGVkaWNhdGVkIGNv
-bnRyb2wuCj4+ICAgLSBSZWJhc2VkIG9uIG1lZGlhX3RyZWUvbWFzdGVyIGJyYW5jaC4KPj4KPj4g
-dmVyc2lvbiA4Ogo+PiAgIC0gQWRkIHJldmlld2VkLWJ5IGFuZCBhY2stYnkgdGFncwo+PiAgIC0g
-Rml4IHRoZSB3YXJuaW5ncyByZXBvcnRlZCBieSBrZXJuZWwgdGVzdCByb2JvdAo+PiAgIC0gT25s
-eSBwYXRjaCA5IChhZGRpbmcgZGVkaWNhdGVkIGNvbnRyb2wpLCBwYXRjaCAxMSAoSEVWQyBzdXBw
-b3J0KSBhbmQKPj4gICAgIHBhdGNoIDEzIChEVCBjaGFuZ2VzKSBhcmUgc3RpbGwgbWlzc2luZyBv
-ZiByZXZpZXcvYWNrIHRhZy4KPj4KPj4gdmVyc2lvbiA3Ogo+PiAgIC0gUmVtb3ZlICdxJyBmcm9t
-IHN5c2NvbiBwaGFuZGxlIG5hbWUgdG8gbWFrZSB1c2FibGUgZm9yIGlNWDhNTSB0b28uCj4+ICAg
-ICBVcGRhdGUgdGhlIGJpbmRpbmdzIGRvY3VtZW50YXRpb24uCj4+ICAgLSBBZGQgcmV2aWV3L2Fj
-ayB0YWdzLgo+PiAgIC0gUmViYXNlIG9uIHRvcCBvZiBtZWRpYV90cmVlL21hc3Rlcgo+PiAgIC0g
-QmUgbW9yZSBhY2N1cmF0ZSB3aGVuIGNvbXB1dGluZyB0aGUgc2l6ZSBvZiB0aGUgbWVtb3J5IG5l
-ZWRlZCBtb3Rpb24KPj4gICAgIHZlY3RvcnMuCj4+ICAgLSBFeHBsYWluIHdoeSB0aGUgYWxsIGNs
-b2NrcyBuZWVkIHRvIHNldCBpbiB0aGUgYm90aCBEVCBub2RlLgo+Pgo+PiB2ZXJzaW9uIDY6Cj4+
-ICAgLSBmaXggdGhlIGVycm9ycyByZXBvcnRlZCBieSBrZXJuZWwgdGVzdCByb2JvdAo+Pgo+PiB2
-ZXJzaW9uIDU6Cj4+ICAgLSB1c2Ugc3lzY29uIGluc3RlYWQgb2YgVlBVIHJlc2V0IGRyaXZlci4K
-Pj4gICAtIERvIG5vdCBicmVhayBrZXJuZWwvRFQgYmFja3dhcmQgY29tcGF0aWJpbGl0eS4KPj4g
-ICAtIEFkZCBkb2N1bWVudGF0aW9uIGZvciBkZWRpY2F0ZWQgSGFudHJvIGNvbnRyb2wuCj4+ICAg
-LSBGaXggdGhlIHJlbWFya3MgZG9uZSBieSBFemVxdWVpbCAodHlwbywgY29tbWVudHMsIHVudXNl
-ZCBmdW5jdGlvbikKPj4gICAtIFJ1biB2NGwyLWNvbXBsaWFuY2Ugd2l0aG91dCBlcnJvcnMgKHNl
-ZSBiZWxvdykuCj4+ICAgLSBEbyBub3QgYWRkIGZpZWxkIHRvIGRpc3Rpbmd1aXNoIHZlcnNpb24s
-IGNoZWNrIHBvc3Rwcm9jIHJlZyBpbnN0ZWFkCj4+Cj4+IHZlcnNpb24gNDoKPj4gLSBTcGxpdCB0
-aGUgY2hhbmdlcyBpbiBoZXZjIGNvbnRyb2xzIGluIDIgY29tbWl0cyB0byBtYWtlIHRoZW0gZWFz
-aWVyIHRvCj4+ICAgIHJldmlldy4KPj4gLSBDaGFuZ2UgaGFudHJvX2NvZGVjX29wcyBydW4oKSBw
-cm90b3R5cGUgdG8gcmV0dXJuIGVycm9ycwo+PiAtIEhhbnRybyB2NGwyIGRlZGljYXRlZCBjb250
-cm9sIGlzIG5vdyBvbmx5IGFuIGludGVnZXIKPj4gLSByZWJhc2Ugb24gdG9wIG9mIFZQVSByZXNl
-dCBjaGFuZ2VzIHBvc3RlZCBoZXJlOgo+PiAgICBodHRwczovL3d3dy5zcGluaWNzLm5ldC9saXN0
-cy9hcm0ta2VybmVsL21zZzg3ODQ0MC5odG1sCj4+IC0gVmFyaW91cyBmaXggZnJvbSBwcmV2aW91
-cyByZW1hcmtzCj4+IC0gTGltaXQgdGhlIG1vZGlmaWNhdGlvbnMgaW4gQVBJIHRvIHdoYXQgdGhl
-IGRyaXZlciBuZWVkcwo+Pgo+PiB2ZXJzaW9uIDM6Cj4+IC0gRml4IHR5cG8gaW4gSGFudHJvIHY0
-bDIgZGVkaWNhdGVkIGNvbnRyb2wKPj4gLSBBZGQgZG9jdW1lbnRhdGlvbiBmb3IgdGhlIG5ldyBz
-dHJ1Y3R1cmVzIGFuZCBmaWVsZHMKPj4gLSBSZWJhc2VkIG9uIHRvcCBvZiBtZWRpYV90cmVlIGZv
-ci1saW51cy01LjEyLXJjMSB0YWcKPj4KPj4gdmVyc2lvbiAyOgo+PiAtIHJlbW92ZSBhbGwgY2hh
-bmdlIHJlbGF0ZWQgdG8gc2NhbGluZwo+PiAtIHNxdWFzaCBjb21taXRzIHRvIGEgY29oZXJlbnQg
-c3BsaXQKPj4gLSBiZSBtb3JlIHZlcmJvc2UgYWJvdXQgdGhlIGFkZGVkIGZpZWxkcwo+PiAtIGZp
-eCB0aGUgY29tbWVudHMgZG9uZSBieSBFemVxdWllbCBhYm91dCBkbWFfYWxsb2NfY29oZXJlbnQg
-dXNhZ2UKPj4gLSBmaXggRGFuJ3MgY29tbWVudHMgYWJvdXQgY29udHJvbCBjb3B5LCByZXZlcnNl
-IHRoZSB0ZXN0IGxvZ2ljCj4+IGluIHRpbGVfYnVmZmVyX3JlYWxsb2NhdGUsIHJld29yayBzb21l
-IGdvdG8gYW5kIHJldHVybiBjYXNlcy4KPj4gLSBiZSBtb3JlIHZlcmJvc2UgYWJvdXQgd2h5IEkg
-Y2hhbmdlIHRoZSBiaW5kaW5ncwo+PiAtIHJlbW92ZSBhbGwgc2lnbi1vZmYgZXhwZWN0IG1pbWUg
-c2luY2UgaXQgaXMgY29uZnVzaW5nCj4+IC0gcmVtb3ZlIHVzZWxlc3MgY2xvY2tzIGluIFZQVXMg
-bm9kZXMKPj4KPj4gQmVuamFtaW4gR2FpZ25hcmQgKDkpOgo+PiAgICBtZWRpYTogaGV2YzogQWRk
-IGZpZWxkcyBhbmQgZmxhZ3MgZm9yIGhldmMgUFBTCj4+ICAgIG1lZGlhOiBoZXZjOiBBZGQgZGVj
-b2RlIHBhcmFtcyBjb250cm9sCj4+ICAgIG1lZGlhOiBoYW50cm86IGNoYW5nZSBoYW50cm9fY29k
-ZWNfb3BzIHJ1biBwcm90b3R5cGUgdG8gcmV0dXJuIGVycm9ycwo+PiAgICBtZWRpYTogaGFudHJv
-OiBEZWZpbmUgSEVWQyBjb2RlYyBwcm9maWxlcyBhbmQgc3VwcG9ydGVkIGZlYXR1cmVzCj4+ICAg
-IG1lZGlhOiBoYW50cm86IE9ubHkgdXNlIHBvc3Rwcm9jIHdoZW4gcG9zdCBwcm9jZXNzZWQgZm9y
-bWF0cyBhcmUKPj4gICAgICBkZWZpbmVkCj4+ICAgIG1lZGlhOiB1YXBpOiBBZGQgYSBjb250cm9s
-IGZvciBIQU5UUk8gZHJpdmVyCj4+ICAgIG1lZGlhOiBoYW50cm86IGhhbmRsZSBWNEwyX1BJWF9G
-TVRfSEVWQ19TTElDRSBjb250cm9sCj4+ICAgIG1lZGlhOiBoYW50cm86IEludHJvZHVjZSBHMi9I
-RVZDIGRlY29kZXIKPj4gICAgbWVkaWE6IGhhbnRybzogSU1YOE06IGFkZCB2YXJpYW50IGZvciBH
-Mi9IRVZDIGNvZGVjCj4+Cj4+ICAgLi4uL3VzZXJzcGFjZS1hcGkvbWVkaWEvZHJpdmVycy9oYW50
-cm8ucnN0ICAgIHwgIDE5ICsKPj4gICAuLi4vdXNlcnNwYWNlLWFwaS9tZWRpYS9kcml2ZXJzL2lu
-ZGV4LnJzdCAgICAgfCAgIDEgKwo+PiAgIC4uLi9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJz
-dCAgICAgICAgICAgICB8IDEwOCArKystCj4+ICAgLi4uL21lZGlhL3Y0bC92aWRpb2MtcXVlcnlj
-dHJsLnJzdCAgICAgICAgICAgIHwgICA2ICsKPj4gICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
-NGwyLWN0cmxzLWNvcmUuYyAgICAgfCAgMjEgKy0KPj4gICBkcml2ZXJzL21lZGlhL3Y0bDItY29y
-ZS92NGwyLWN0cmxzLWRlZnMuYyAgICAgfCAgIDQgKwo+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vTWFrZWZpbGUgICAgICAgICB8ICAgMiArCj4+ICAgZHJpdmVycy9zdGFnaW5nL21l
-ZGlhL2hhbnRyby9oYW50cm8uaCAgICAgICAgIHwgIDEzICstCj4+ICAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgICAgIHwgIDk5ICsrLQo+PiAgIC4uLi9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9fZzFfaDI2NF9kZWMuYyB8ICAxMCArLQo+PiAgIC4uLi9tZWRp
-YS9oYW50cm8vaGFudHJvX2cxX21wZWcyX2RlYy5jICAgICAgICB8ICAgNCArLQo+PiAgIC4uLi9z
-dGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfdnA4X2RlYy5jICB8ICAgNiArLQo+PiAgIC4u
-Li9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYyB8IDU4NyArKysrKysr
-KysrKysrKysrKysKPj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9y
-ZWdzLmggfCAyMDYgKysrKysrCj4+ICAgLi4uL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19o
-MV9qcGVnX2VuYy5jIHwgICA0ICstCj4+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
-YW50cm9faGV2Yy5jICAgIHwgMzI3ICsrKysrKysrKysKPj4gICBkcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvaGFudHJvL2hhbnRyb19ody5oICAgICAgfCAgNjkgKy0KPj4gICAuLi4vc3RhZ2luZy9tZWRp
-YS9oYW50cm8vaGFudHJvX3Bvc3Rwcm9jLmMgICAgfCAgMTQgKwo+PiAgIGRyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuYyAgICB8ICAgNSArLQo+PiAgIGRyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9oYW50cm8vaW14OG1fdnB1X2h3LmMgICB8ICA5NiArKy0KPj4gICAuLi4vbWVk
-aWEvaGFudHJvL3JrMzM5OV92cHVfaHdfanBlZ19lbmMuYyAgICAgfCAgIDQgKy0KPj4gICAuLi4v
-bWVkaWEvaGFudHJvL3JrMzM5OV92cHVfaHdfbXBlZzJfZGVjLmMgICAgfCAgIDQgKy0KPj4gICAu
-Li4vbWVkaWEvaGFudHJvL3JrMzM5OV92cHVfaHdfdnA4X2RlYy5jICAgICAgfCAgIDYgKy0KPj4g
-ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1cy5jICAgfCAgIDYgKwo+
-PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzLmggICB8ICAgMSAr
-Cj4+ICAgLi4uL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19kZWMuYyAgIHwgICAy
-ICsKPj4gICAuLi4vc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjUuYyAgfCAg
-MTIgKy0KPj4gICBpbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCAgICAgICAgICAgICAgICAgICAg
-fCAgNDYgKy0KPj4gICAyOCBmaWxlcyBjaGFuZ2VkLCAxNjEzIGluc2VydGlvbnMoKyksIDY5IGRl
-bGV0aW9ucygtKQo+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL3VzZXJzcGFj
-ZS1hcGkvbWVkaWEvZHJpdmVycy9oYW50cm8ucnN0Cj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPj4gICBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfcmVn
-cy5oCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
-aGFudHJvX2hldmMuYwo+PgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+The IMX8MQ got two VPUs but until now only G1 has been enabled.
+This series aim to add the second VPU (aka G2) and provide basic 
+HEVC decoding support.
+
+To be able to decode HEVC it is needed to add/update some of the
+structures in the uapi. In addition of them one HANTRO dedicated
+control is required to inform the driver of the number of bits to skip
+at the beginning of the slice header.
+The hardware require to allocate few auxiliary buffers to store the
+references frame or tile size data.
+
+The driver has been tested with fluster test suite stream.
+For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
+
+version 13:
+ - fix warnings from check tools.
+ - Rebased on media_stage.
+ - Compiled with W=1 to find a maximum of warnings
+
+version 11:
+ - Rebased on media_stage.
+ - Fix minor typo/remarks.
+
+version 10:
+ - Shorter version of the previous series without ctrl block patches
+   and no DT modifications.
+   The scope of this series is limited to HEVC support.
+
+version 9:
+ - Corrections in commits messages.
+ - Define the dedicated control in hevc-controls.h
+ - Add note in documentation.
+ - Change max value of the dedicated control.
+ - Rebased on media_tree/master branch.
+
+version 8:
+ - Add reviewed-by and ack-by tags 
+ - Fix the warnings reported by kernel test robot
+ - Only patch 9 (adding dedicated control), patch 11 (HEVC support) and
+   patch 13 (DT changes) are still missing of review/ack tag.
+
+version 7:
+ - Remove 'q' from syscon phandle name to make usable for iMX8MM too.
+   Update the bindings documentation.
+ - Add review/ack tags.
+ - Rebase on top of media_tree/master
+ - Be more accurate when computing the size of the memory needed motion
+   vectors.
+ - Explain why the all clocks need to set in the both DT node.
+
+version 6:
+ - fix the errors reported by kernel test robot
+
+version 5:
+ - use syscon instead of VPU reset driver.
+ - Do not break kernel/DT backward compatibility.
+ - Add documentation for dedicated Hantro control.
+ - Fix the remarks done by Ezequeil (typo, comments, unused function)
+ - Run v4l2-compliance without errors (see below).
+ - Do not add field to distinguish version, check postproc reg instead
+
+version 4:
+- Split the changes in hevc controls in 2 commits to make them easier to
+  review.
+- Change hantro_codec_ops run() prototype to return errors   
+- Hantro v4l2 dedicated control is now only an integer
+- rebase on top of VPU reset changes posted here:
+  https://www.spinics.net/lists/arm-kernel/msg878440.html
+- Various fix from previous remarks
+- Limit the modifications in API to what the driver needs
+
+version 3:
+- Fix typo in Hantro v4l2 dedicated control
+- Add documentation for the new structures and fields
+- Rebased on top of media_tree for-linus-5.12-rc1 tag
+
+version 2:
+- remove all change related to scaling
+- squash commits to a coherent split
+- be more verbose about the added fields
+- fix the comments done by Ezequiel about dma_alloc_coherent usage
+- fix Dan's comments about control copy, reverse the test logic
+in tile_buffer_reallocate, rework some goto and return cases.
+- be more verbose about why I change the bindings
+- remove all sign-off expect mime since it is confusing
+- remove useless clocks in VPUs nodes
+ 
+Benjamin Gaignard (9):
+  media: hevc: Add fields and flags for hevc PPS
+  media: hevc: Add decode params control
+  media: hantro: change hantro_codec_ops run prototype to return errors
+  media: hantro: Define HEVC codec profiles and supported features
+  media: hantro: Only use postproc when post processed formats are
+    defined
+  media: uapi: Add a control for HANTRO driver
+  media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+  media: hantro: Introduce G2/HEVC decoder
+  media: hantro: IMX8M: add variant for G2/HEVC codec
+
+ .../userspace-api/media/drivers/hantro.rst    |  19 +
+ .../userspace-api/media/drivers/index.rst     |   1 +
+ .../media/v4l/ext-ctrls-codec.rst             | 108 +++-
+ .../media/v4l/vidioc-queryctrl.rst            |   6 +
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  21 +-
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |   4 +
+ drivers/staging/media/hantro/Makefile         |   2 +
+ drivers/staging/media/hantro/hantro.h         |  13 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  99 ++-
+ .../staging/media/hantro/hantro_g1_h264_dec.c |  10 +-
+ .../media/hantro/hantro_g1_mpeg2_dec.c        |   4 +-
+ .../staging/media/hantro/hantro_g1_vp8_dec.c  |   6 +-
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 586 ++++++++++++++++++
+ drivers/staging/media/hantro/hantro_g2_regs.h | 198 ++++++
+ .../staging/media/hantro/hantro_h1_jpeg_enc.c |   4 +-
+ drivers/staging/media/hantro/hantro_hevc.c    | 333 ++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  71 ++-
+ .../staging/media/hantro/hantro_postproc.c    |  14 +
+ drivers/staging/media/hantro/hantro_v4l2.c    |   5 +-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   |  96 ++-
+ .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |   4 +-
+ .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   4 +-
+ .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |   6 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
+ drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |  12 +-
+ include/media/hevc-ctrls.h                    |  46 +-
+ 28 files changed, 1612 insertions(+), 69 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
+ create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
+
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
