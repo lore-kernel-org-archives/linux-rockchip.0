@@ -2,61 +2,83 @@ Return-Path: <SRS0=PA1q=K5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61BD9C47082
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 08:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 62B62C47082
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 09:19:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6206661361
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 08:58:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6206661361
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 0133760231
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 09:19:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0133760231
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+p71dRFmKPVW/moqlUti6wP1AFhCBv1w7+a9Lim22/8=; b=IHcdhffNmDZOrE
-	gVPiF7ESACKtWsToMyoDJEcK4oUids467/LLCznGZ/ERvq5/cGULF49klhtBUHmlKbeByNtUPw8PN
-	KuH5EdxVj5DrGankgIqlaVHHNEKu54Q5z40DKomkKlK376vH7OLsQnOAI6dfcB9+DgtfgAvdJX6Q0
-	wYPiWA0f7KBxDOWm8A8Okmj9PeQOthhAD4vlUSwGN7U+FdNDfNyfqS/ixtyTleHRwbrPILBjqUNwL
-	0cSTWPKNqFUT5pUeiHZjYcr3ayRu5/tdNhyPNCfabfS5XdutF4qfLNtAa9nsD2L56++7oq1NQ/nfp
-	3qTPKNmMrWLC/qXyDcdQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=rUlOgXb9Vt32dgvMPzrocN3hi94pClSt8p7KaAiQtJk=; b=0qariM5PDdP/0WSEs335PUQno0
+	adDLmObNSua/BYscDpbliHPNPrLR0mnQnZwBpnc02vBOmmKqQkVFttRp10rXX6oOsG2hUBsYDnICk
+	gw1j+txgHmFuWRdLMlZQixvxuaMepAoFWewLm9kuo3oONhEljzxSDOiBEBeTvPUWNZSIYzjLgLIgs
+	kW5l6xGqL8zJ1rbHlyKl9hLmmixude3sYuuOL76OjYk9SOOnLNNbg++mCBpNbdzMka87D+uB8xZex
+	QoCs6WfPrQyOPx+ow0EuHzTpU0weBvVUtHOeHPZyl76h1SH4DCJK1fuOMQ1qrNpqbBdxUsPjDz7oE
+	BmayGk8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lojBV-007oVp-4Y; Thu, 03 Jun 2021 08:58:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lojVw-007qxt-1T; Thu, 03 Jun 2021 09:19:44 +0000
+Received: from lb3-smtp-cloud8.xs4all.net ([194.109.24.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lojBR-007oU6-MO; Thu, 03 Jun 2021 08:58:34 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lojBL-0004B6-0N; Thu, 03 Jun 2021 10:58:27 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>, Vinod Koul <vkoul@kernel.org>
-Cc: robh+dt@kernel.org, kishon@ti.com, t.schramm@manjaro.org,
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ id 1lojVi-007qvK-5c; Thu, 03 Jun 2021 09:19:32 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id ojVPlaug5IpGyojVTlRARF; Thu, 03 Jun 2021 11:19:21 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1622711961; bh=IXQ3t6qOZzpezRNUQjlBPukx7l+NBDO2OI2DLuH5NWQ=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=Px+Giv7ZPo83csRa5MH1UxYl3oPXVgVE90sNyEJHZL/O8faq+2ecGDFzjbAess3xi
+ oAJ26fAHXnScuVj5rVbPea24SN3qNHR2YS4RUYKXOiMpPS/PvDSce4OgQecBFKr3NQ
+ VotRa+vSvkdsIhk1q1Tfi5FxXj5EgEYSbU/ZamuSL3cJNPKCJzWaQ6pqcMiwzk2nz7
+ h9IvBqDTVJjr1j+csYlFUJQSO4qdb41dAahCxa3mAQzv+zuDTB8pwOS1K9OiwmeZZA
+ 1PDA5oEw3lLx4sl0E2MMifmRkH96/sBQPii+stW5YKJ90hG2/kOjGz6YSa5ylSZUdB
+ mNdzMOAUNIXVw==
+Subject: Re: [PATCH v12 0/9] Add HANTRO G2/HEVC decoder support for IMX8MQ
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com
+Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 1/5] dt-bindings: phy: rename phy nodename in
- phy-rockchip-inno-usb2.yaml
-Date: Thu, 03 Jun 2021 10:58:26 +0200
-Message-ID: <3601774.Dhsi8hcfAM@diego>
-In-Reply-To: <YLhukPL7jSx3+dBj@vkoul-mobl>
-References: <20210601164800.7670-1-jbx6244@gmail.com>
- <20210601164800.7670-2-jbx6244@gmail.com> <YLhukPL7jSx3+dBj@vkoul-mobl>
+References: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <1627e9d3-7008-dda5-19d1-251c4715af9e@xs4all.nl>
+Date: Thu, 3 Jun 2021 11:19:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210526124516.2039434-1-benjamin.gaignard@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfE/5cuyJKGykF94syzgFlWsnr+LsARjE9ELRRtG95HZiIh0Ag90RwkQzWB09PufCUJFZBoKXBgVUVawAzYVNOX//g3wexekpo+CJRRRtNgtzJ7JsNgsb
+ p/h95zHfNC2LMAN2Drdram3powV+ZCLG0sd/aZc8wG3KJ+h67T1Nolfrcb8/kBm/n89d3qsyH4jImzF3M7BW0i0OszWlJ+PgOVTUH+NPN3ojSMtN5Z8xnNdC
+ U3PB39Bmb5/0KjotpCpWcgSaQ00YeSYQ63H1YWTTd32SiXaBczhUNpmz7DZFBlGutgzrEW0PFHjK0Z/PTCraELg7DwNJIt2LVm9J6hhNpwlytOpYYd3onA+S
+ tmCO+uMwJC4DOXVD9mO4ijK0rjjvp9wEr0h5YZs7fPWhF+e/8tEVvovBtNjW+zm+E+E8R10F8Lp70MLu25tDXiV2YRZWoF/F2xMgfNrmzTy+6C/PIc30QMJH
+ SvIcbRuJr/1FuFy6J1yGH3cD+zMTpHHDMLZ7TCnrlx8N69OAGKa977Wr2BXjGXN7CpkgAzlCkfoLK3MeukCk8aKro2rf1VRRUq7ESuA43msWFG9ulYOihG7W
+ XJbedwYF4RtaRRS5Os3bQQiPVf1rfPfB97zFpwgAyMa37c2l7GFW0sLWb75g4geeMIgNJLIdDR3Lgq3hW+xXYKe0wFe+ijjf3zA1HhFdX8LAS6hPmb9wrFA3
+ s1nKP+hwuSgJso+ocw1NlUriBwSAlhDK3DLjXsq5XwC27brTcUJyebHipdxGyDBKlNtb/0847DQX+u4RE9eBH5pFdzl+cP6W2Ybv9RJHEKEsastGV4wM2Xho
+ Faf8G7MkIuhFmjGcmrCxUVDOZ62cRu/cVg7ewsSzfPPZucvdW2JxY9v9nuuj5A==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_015833_770145_B737DA6C 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20210603_021930_374789_734FC024 
+X-CRM114-Status: GOOD (  38.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,38 +96,203 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vinod,
+Hi Benjamin,
 
-Am Donnerstag, 3. Juni 2021, 07:54:24 CEST schrieb Vinod Koul:
-> On 01-06-21, 18:47, Johan Jonker wrote:
-> > The pattern: "^(|usb-|usb2-|usb3-|pci-|pcie-|sata-)phy(@[0-9a-f,]+)*$"
-> > in phy-provider.yaml has required "#phy-cells" for phy nodes.
-> > The "phy-cells" in rockchip-inno-usb2 nodes are located in subnodes.
-> > Rename the nodename to pattern "usb2phy@[0-9a-f]+$" to prevent
-> > notifications. Remove unneeded "#phy-cells" from parent node.
-> > Also sort example.
-> > 
-> > make ARCH=arm dtbs_check
-> > DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/schemas/
-> > phy/phy-provider.yaml
-> > 
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml       | 11 +++--------
-> >  Documentation/devicetree/bindings/soc/rockchip/grf.yaml       |  4 ++--
+On 26/05/2021 14:45, Benjamin Gaignard wrote:
+> The IMX8MQ got two VPUs but until now only G1 has been enabled.
+> This series aim to add the second VPU (aka G2) and provide basic 
+> HEVC decoding support.
 > 
-> I dont have grf.yaml, I guess it would be easier to split this into two
-> or apply this thru rockchip tree. If you prefer latter:
+> To be able to decode HEVC it is needed to add/update some of the
+> structures in the uapi. In addition of them one HANTRO dedicated
+> control is required to inform the driver of the number of bits to skip
+> at the beginning of the slice header.
+> The hardware require to allocate few auxiliary buffers to store the
+> references frame or tile size data.
 > 
-> Acked-By: Vinod Koul <vkoul@kernel.org>
+> The driver has been tested with fluster test suite stream.
+> For example with this command: ./fluster.py run -ts JCT-VC-HEVC_V1 -d GStreamer-H.265-V4L2SL-Gst1.0
+> 
+> version 12:
+>  - Change macro to avoid the final ';'
+>  - Made arrays static and const
+>  - Distinguish G2 generic fields (i.e these who could be reused for VP9)
+>    from HEVC dedicated fields.
 
-before we do any more rounds, I'll just do that with your Ack, thanks :-)
+I ran the latest checkpatch/smatch/sparse etc. over this series and got a lot
+of issues.
 
+The trickiest first:
 
-Heiko
+I get many reports for the register definitions in hantro_g2_regs.h:
 
+drivers/staging/media/hantro/hantro_g2_regs.h:16:33: warning: 'g2_strm_start_offset' defined but not used [-Wunused-const-variable=]
 
+I think it is a bad idea to declare variables in a header, and that's really
+what is causing this.
+
+I think it should be possible to rework this to defines such as:
+
+#define G2_DEC_REG(b, s, m) \
+        (const struct hantro_reg) { \
+                .base = G2_SWREG(b), \
+                .shift = s, \
+                .mask = m, \
+        }
+
+#define g2_strm_start_offset G2_DEC_REG(259, 0, 0xffffffff)
+
+This allows you to do:
+
+hantro_reg_write(vpu, &g2_strm_start_offset, 0);
+
+without having to declare static variables in a header.
+
+Other warnings:
+
+From the compiler:
+
+linux-git-arm-multi: WARNINGS
+
+drivers/staging/media/hantro/hantro_g2_hevc_dec.c: In function 'hantro_write_addr':
+drivers/staging/media/hantro/hantro_g2_hevc_dec.c:23:24: warning: right shift count >= width of type [-Wshift-count-overflow]
+   23 |  vdpu_write(vpu, (addr >> 32) & 0xffffffff, offset + 4);
+      |                        ^~
+
+Note: this builds on a 32-bit arm!
+
+From smatch:
+
+drivers/staging/media/hantro/hantro_hevc.c:228 tile_buffer_reallocate() error: double free of 'hevc_dec->tile_sao.cpu'
+drivers/staging/media/hantro/hantro_hevc.c:234 tile_buffer_reallocate() error: double free of 'hevc_dec->tile_bsd.cpu'
+
+From kerneldoc:
+
+drivers/staging/media/hantro/hantro_hw.h:136: warning: Function parameter or member 'ref_bufs' not described in 'hantro_hevc_dec_hw_ctx'
+drivers/staging/media/hantro/hantro_hw.h:136: warning: Function parameter or member 'ref_bufs_poc' not described in 'hantro_hevc_dec_hw_ctx'
+drivers/staging/media/hantro/hantro_hw.h:136: warning: Function parameter or member 'ref_bufs_used' not described in 'hantro_hevc_dec_hw_ctx'
+drivers/staging/media/hantro/hantro_hw.h:136: warning: Function parameter or member 'num_tile_cols_allocated' not described in
+'hantro_hevc_dec_hw_ctx'
+
+Regards,
+
+	Hans
+
+> 
+> version 11:
+>  - Rebased on media_stage.
+>  - Fix minor typo/remarks.
+> 
+> version 10:
+>  - Shorter version of the previous series without ctrl block patches
+>    and no DT modifications.
+>    The scope of this series is limited to HEVC support.
+> 
+> version 9:
+>  - Corrections in commits messages.
+>  - Define the dedicated control in hevc-controls.h
+>  - Add note in documentation.
+>  - Change max value of the dedicated control.
+>  - Rebased on media_tree/master branch.
+> 
+> version 8:
+>  - Add reviewed-by and ack-by tags 
+>  - Fix the warnings reported by kernel test robot
+>  - Only patch 9 (adding dedicated control), patch 11 (HEVC support) and
+>    patch 13 (DT changes) are still missing of review/ack tag.
+> 
+> version 7:
+>  - Remove 'q' from syscon phandle name to make usable for iMX8MM too.
+>    Update the bindings documentation.
+>  - Add review/ack tags.
+>  - Rebase on top of media_tree/master
+>  - Be more accurate when computing the size of the memory needed motion
+>    vectors.
+>  - Explain why the all clocks need to set in the both DT node.
+> 
+> version 6:
+>  - fix the errors reported by kernel test robot
+> 
+> version 5:
+>  - use syscon instead of VPU reset driver.
+>  - Do not break kernel/DT backward compatibility.
+>  - Add documentation for dedicated Hantro control.
+>  - Fix the remarks done by Ezequeil (typo, comments, unused function)
+>  - Run v4l2-compliance without errors (see below).
+>  - Do not add field to distinguish version, check postproc reg instead
+> 
+> version 4:
+> - Split the changes in hevc controls in 2 commits to make them easier to
+>   review.
+> - Change hantro_codec_ops run() prototype to return errors   
+> - Hantro v4l2 dedicated control is now only an integer
+> - rebase on top of VPU reset changes posted here:
+>   https://www.spinics.net/lists/arm-kernel/msg878440.html
+> - Various fix from previous remarks
+> - Limit the modifications in API to what the driver needs
+> 
+> version 3:
+> - Fix typo in Hantro v4l2 dedicated control
+> - Add documentation for the new structures and fields
+> - Rebased on top of media_tree for-linus-5.12-rc1 tag
+> 
+> version 2:
+> - remove all change related to scaling
+> - squash commits to a coherent split
+> - be more verbose about the added fields
+> - fix the comments done by Ezequiel about dma_alloc_coherent usage
+> - fix Dan's comments about control copy, reverse the test logic
+> in tile_buffer_reallocate, rework some goto and return cases.
+> - be more verbose about why I change the bindings
+> - remove all sign-off expect mime since it is confusing
+> - remove useless clocks in VPUs nodes
+> 
+> Benjamin Gaignard (9):
+>   media: hevc: Add fields and flags for hevc PPS
+>   media: hevc: Add decode params control
+>   media: hantro: change hantro_codec_ops run prototype to return errors
+>   media: hantro: Define HEVC codec profiles and supported features
+>   media: hantro: Only use postproc when post processed formats are
+>     defined
+>   media: uapi: Add a control for HANTRO driver
+>   media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+>   media: hantro: Introduce G2/HEVC decoder
+>   media: hantro: IMX8M: add variant for G2/HEVC codec
+> 
+>  .../userspace-api/media/drivers/hantro.rst    |  19 +
+>  .../userspace-api/media/drivers/index.rst     |   1 +
+>  .../media/v4l/ext-ctrls-codec.rst             | 108 +++-
+>  .../media/v4l/vidioc-queryctrl.rst            |   6 +
+>  drivers/media/v4l2-core/v4l2-ctrls-core.c     |  21 +-
+>  drivers/media/v4l2-core/v4l2-ctrls-defs.c     |   4 +
+>  drivers/staging/media/hantro/Makefile         |   2 +
+>  drivers/staging/media/hantro/hantro.h         |  13 +-
+>  drivers/staging/media/hantro/hantro_drv.c     |  99 ++-
+>  .../staging/media/hantro/hantro_g1_h264_dec.c |  10 +-
+>  .../media/hantro/hantro_g1_mpeg2_dec.c        |   4 +-
+>  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   6 +-
+>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 587 ++++++++++++++++++
+>  drivers/staging/media/hantro/hantro_g2_regs.h | 206 ++++++
+>  .../staging/media/hantro/hantro_h1_jpeg_enc.c |   4 +-
+>  drivers/staging/media/hantro/hantro_hevc.c    | 327 ++++++++++
+>  drivers/staging/media/hantro/hantro_hw.h      |  69 +-
+>  .../staging/media/hantro/hantro_postproc.c    |  14 +
+>  drivers/staging/media/hantro/hantro_v4l2.c    |   5 +-
+>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  96 ++-
+>  .../media/hantro/rk3399_vpu_hw_jpeg_enc.c     |   4 +-
+>  .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   4 +-
+>  .../media/hantro/rk3399_vpu_hw_vp8_dec.c      |   6 +-
+>  drivers/staging/media/sunxi/cedrus/cedrus.c   |   6 +
+>  drivers/staging/media/sunxi/cedrus/cedrus.h   |   1 +
+>  .../staging/media/sunxi/cedrus/cedrus_dec.c   |   2 +
+>  .../staging/media/sunxi/cedrus/cedrus_h265.c  |  12 +-
+>  include/media/hevc-ctrls.h                    |  46 +-
+>  28 files changed, 1613 insertions(+), 69 deletions(-)
+>  create mode 100644 Documentation/userspace-api/media/drivers/hantro.rst
+>  create mode 100644 drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+>  create mode 100644 drivers/staging/media/hantro/hantro_g2_regs.h
+>  create mode 100644 drivers/staging/media/hantro/hantro_hevc.c
+> 
 
 
 _______________________________________________
