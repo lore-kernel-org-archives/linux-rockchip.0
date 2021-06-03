@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E4F7C47097
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FE09C47097
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:53:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0B0760FE9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:52:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0B0760FE9
+	by mail.kernel.org (Postfix) with ESMTPS id F3B08613E3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 11:53:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3B08613E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8r+cjkY6Z244xtSZX/9j/RmGnws79/FKGLU5A8tx6To=; b=u5Riz4EihwMm3i
-	rMN6XgNqVoPq0F+6RzNYFAs2aV/yE2xB1+F56JMb0hVXRX7zYeqLm/DglUZY7yAsZDwIhFRdR9wXe
-	OkuXtMor3REM0RHSyBexPvw2BmsbENBnp7WsRuaOMxSrxCD0gQivXUfpTEWQcdYPG9KAKLzSVPXqv
-	EsMpx68vje3li7M00EWCZOkhDmXhbgXsehZRgZA/RjkmiI0WBUskENDoiPnhlydzkZ646pd0NiN5B
-	YaaoAP2V16YzaHMzdr6t71IlfDIBfJF1A2ip6Jwnbn5X5ilkdqIEnRlp4+WwJPZOHk7/sYS5s0mQ3
-	EqUMsuSmynJXQQNWq+DA==;
+	List-Owner; bh=dQM7soyfrpy66vsWFeUQkN30UGi98AFNSMcY8UEK0KM=; b=uRiKBar2jYIvNb
+	WxA9IsmBTykeF066+2yebGu9YNMVvGu2BD3KvwrSgH3+ABOwUiXIBI086MXzU3lYm5JkjNTq1a2mo
+	MGFM7b8QzJ7CV9IwGUFcoEJOY34KLMJG/r9uff+q96s3QPf5EEXw6EKeTYO6rlYZyrOqLF3XHnYYa
+	u5LsNCoNoNhbFg+rfdtOpYDYC7k9yrb9Df8eeH6pebm8KllXB38BuDI5w70HxlKRI5JnaK+9s6e6O
+	dPU7m1cva3eX0UxpVzSnafYP0EiLrTI3prY4Kpjrli/Dx2QXUwxaHuRIyGqT9465PHc9g4aRdyzQn
+	gW7A+xt5P8tyssjmaW0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loltL-008RMk-Rf; Thu, 03 Jun 2021 11:52:03 +0000
+	id 1loluK-008S10-96; Thu, 03 Jun 2021 11:53:04 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lolrl-008QXy-95; Thu, 03 Jun 2021 11:50:28 +0000
+ id 1lolro-008QaH-84; Thu, 03 Jun 2021 11:50:29 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 859381F42FDC
+ with ESMTPSA id 8F1741F42FDF
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
  mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -48,17 +48,17 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 5/9] media: hantro: Only use postproc when post processed
- formats are defined
-Date: Thu,  3 Jun 2021 13:50:00 +0200
-Message-Id: <20210603115004.915294-6-benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 7/9] media: hantro: handle V4L2_PIX_FMT_HEVC_SLICE control
+Date: Thu,  3 Jun 2021 13:50:02 +0200
+Message-Id: <20210603115004.915294-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210603115004.915294-1-benjamin.gaignard@collabora.com>
 References: <20210603115004.915294-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_045025_471013_F1B7115B 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20210603_045028_565801_47B872EE 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,76 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If the variant doesn't support postprocessed formats make sure it will
-be ok.
+Make sure that V4L2_PIX_FMT_HEVC_SLICE is correctly handled by the driver.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h          |  8 ++------
- drivers/staging/media/hantro/hantro_postproc.c | 14 ++++++++++++++
- drivers/staging/media/hantro/hantro_v4l2.c     |  4 +++-
- 3 files changed, 19 insertions(+), 7 deletions(-)
+ drivers/staging/media/hantro/hantro_v4l2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index 4368c0962768..e50d39b51902 100644
---- a/drivers/staging/media/hantro/hantro.h
-+++ b/drivers/staging/media/hantro/hantro.h
-@@ -413,12 +413,8 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
- 	return v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- }
- 
--static inline bool
--hantro_needs_postproc(const struct hantro_ctx *ctx,
--		      const struct hantro_fmt *fmt)
--{
--	return !ctx->is_encoder && fmt->fourcc != V4L2_PIX_FMT_NV12;
--}
-+bool hantro_needs_postproc(const struct hantro_ctx *ctx,
-+			   const struct hantro_fmt *fmt);
- 
- static inline dma_addr_t
- hantro_get_dec_buf_addr(struct hantro_ctx *ctx, struct vb2_buffer *vb)
-diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index 6d2a8f2a8f0b..ed8916c950a4 100644
---- a/drivers/staging/media/hantro/hantro_postproc.c
-+++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -50,6 +50,20 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
- 	.display_width = {G1_REG_PP_DISPLAY_WIDTH, 0, 0xfff},
- };
- 
-+bool hantro_needs_postproc(const struct hantro_ctx *ctx,
-+			   const struct hantro_fmt *fmt)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	if (ctx->is_encoder)
-+		return false;
-+
-+	if (!vpu->variant->postproc_fmts)
-+		return false;
-+
-+	return fmt->fourcc != V4L2_PIX_FMT_NV12;
-+}
-+
- void hantro_postproc_enable(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
 diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 7ccc6405036a..aca92cebb2af 100644
+index aca92cebb2af..bcb0bdff4a9a 100644
 --- a/drivers/staging/media/hantro/hantro_v4l2.c
 +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -55,7 +55,9 @@ static const struct hantro_fmt *
- hantro_get_postproc_formats(const struct hantro_ctx *ctx,
- 			    unsigned int *num_fmts)
- {
--	if (ctx->is_encoder) {
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	if (ctx->is_encoder || !vpu->variant->postproc_fmts) {
- 		*num_fmts = 0;
- 		return NULL;
- 	}
+@@ -392,6 +392,7 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
+ 	case V4L2_PIX_FMT_MPEG2_SLICE:
+ 	case V4L2_PIX_FMT_VP8_FRAME:
+ 	case V4L2_PIX_FMT_H264_SLICE:
++	case V4L2_PIX_FMT_HEVC_SLICE:
+ 		ctx->fh.m2m_ctx->out_q_ctx.q.requires_requests = true;
+ 		break;
+ 	default:
 -- 
 2.25.1
 
