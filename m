@@ -2,60 +2,66 @@ Return-Path: <SRS0=PA1q=K5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13236C47096
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 12:48:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A41FDC47096
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 12:49:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 771D46139A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 12:48:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 771D46139A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 74ED3613E7
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Jun 2021 12:49:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74ED3613E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fGLiEtVjSVBIzKjO4oQi/LF7/n2Tu0lM+D5zy+rVMVY=; b=uHXY5YuswKRO9e
-	0RMpMt0p4UjrJSP0TQ+JsY/Eeq8MPjWp1GnjpqDeamHlQCJ7oSTbhBqOUyxaxNMU6ZCkkXOLk2kGc
-	xRD+QcDnFn18XXffY2vPBjwSYcDAXeaGUjjMqyrs2XY3WaQGqNxK4XH64W+/ME8hZGhMis8T9geP+
-	paVNqBu4sYfdfZaQtgXTODjZ2Tq1K5hyeRNIkYd1ZLmh06XWLWnuFxWx86/oDHiQ/2YowPxMrrlzk
-	1Fc5QA9/Mrmppq5nSLacIIc7t1vd19dFiv0XVtTBcQvrPG7czEO3mhN3D6HafvhrmNqiV25V+eXNQ
-	FkcpKPfVf5u0JACjQX/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cWGEoRSYoO+Yq217A2MOjiEuMtIW1j0oyTnSAf+VVn8=; b=i9h0GetIVsKQ5aVCdyxyA7l/Us
+	bHv/wLM/IMuaz88X14KDEAZtq2YZFL7UYLWvFRvB44/v5aW+w/Cs4I21Kpmm3R64AndN2jSzs8Nl/
+	JM+Dp224AllQMcpcEvRYUIeNyDBJk8uf+VG+ZKg5NkRrg952SP0X3pV8nOrgRCYgj/M7J+qJdNrN/
+	whAPoS/yy0VdBcANar3LGqSCgmOCbrD1/8E2Pd1aUXi16bfFfa5+MLjXmHvTg9jURiHrykIaZPEed
+	VcMNeywcOUHX9ZLppex00cZ8kQXAEQs0h0/w/I+CL7xPHdi3ogigr7WxTCL1D6J5dmqGEqx9aM5rS
+	9oW/88SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lomm8-008kUx-GU; Thu, 03 Jun 2021 12:48:40 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lomm5-008kU0-Pi; Thu, 03 Jun 2021 12:48:39 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lomm1-0005De-UI; Thu, 03 Jun 2021 14:48:34 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH] ARM: dts: rockchip: remove #phy-cells from usbphy node
- rk3066/rk3188
-Date: Thu,  3 Jun 2021 14:48:32 +0200
-Message-Id: <162272448961.3187654.2931146316551924981.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210603121010.4315-1-jbx6244@gmail.com>
-References: <20210603121010.4315-1-jbx6244@gmail.com>
+	id 1lomn0-008kjW-2B; Thu, 03 Jun 2021 12:49:34 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lommw-008khx-DA
+ for linux-rockchip@lists.infradead.org; Thu, 03 Jun 2021 12:49:32 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5D04D1063;
+ Thu,  3 Jun 2021 05:49:27 -0700 (PDT)
+Received: from [10.57.73.64] (unknown [10.57.73.64])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1ED163F774;
+ Thu,  3 Jun 2021 05:49:25 -0700 (PDT)
+Subject: Re: Different type iommus integrated in a SoC
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: "xxm@rock-chips.com" <xxm@rock-chips.com>, hch <hch@lst.de>,
+ joro <joro@8bytes.org>, will <will@kernel.org>,
+ iommu <iommu@lists.linux-foundation.org>,
+ linux-rockchip <linux-rockchip@lists.infradead.org>
+References: <2021052710373173260118@rock-chips.com>
+ <5d7127d5-b73c-2002-1734-98aab2295c8e@arm.com>
+ <CAMdYzYpiykTtK3CtAN9F4g+f6JasTSsUh54wvAZ_st3C=_LygQ@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <144e1c48-96f2-3596-3354-4c023bf6ccc0@arm.com>
+Date: Thu, 3 Jun 2021 13:49:20 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <CAMdYzYpiykTtK3CtAN9F4g+f6JasTSsUh54wvAZ_st3C=_LygQ@mail.gmail.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_054837_860911_5815CF31 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210603_054930_529396_89BE53BA 
+X-CRM114-Status: GOOD (  20.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,26 +74,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 3 Jun 2021 14:10:10 +0200, Johan Jonker wrote:
-> The review process of rockchip-usb-phy.yaml was not finished
-> when the patch in the link below was already applied.
-> Remove the unneeded #phy-cells property.
+On 2021-06-03 13:24, Peter Geis wrote:
+> On Thu, Jun 3, 2021 at 8:07 AM Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> On 2021-05-27 03:37, xxm@rock-chips.com wrote:
+>>> Hi all,
+>>>
+>>> I have a SoC integrate with two different types of iommus, one is ARM SMMU, serves the PCIe/SATA/USB,
+>>> the others are vendor specific iommus, serves display device and multimedia device.
+>>>
+>>> In the current linux kernel, the iommu framework seems only support one type iommu at runtime, if enable both types iommu, only one type can work.
+>>> Is there any way to support this kind of SoC?
+>>
+>> Hooray! I've been forecasting this for years, but the cases we regularly
+>> hit with internal FPGA prototyping (nor the secret unused MMU-400 I
+>> found on RK3288) have never really been a strong enough argument to
+>> stand behind.
+>>
+>> Based on what I remember from looking into this a few years ago,
+>> converting *most* of the API to per-device ops (now via dev->iommu) is
+>> trivial; the main challenge will be getting the per-device data
+>> bootstrapped in iommu_probe_device(), which would probably need to rely
+>> on the fwspec and/or list of registered IOMMU instances.
+>>
+>> The other notable thing which will need to change is the domain
+>> allocation interface, but in practice I think everyone who calls
+>> iommu_domain_alloc() today is in fact doing so for a specific device, so
+>> I don't think it's as big a problem as it might first appear.
+>>
+>> Robin.
+>>
 > 
-> https://lore.kernel.org/r/20210512122346.9463-4-jbx6244@gmail.com
+> Good Morning Robin,
+> 
+> I think the Tegra group would also be interested in this work.
+> AFAIK they have the smmu and the tegra gart and have been trying to
+> figure out the runtime handover from the bootloader to the kernel
+> without smashing everything and starting over.
 
-Added a Fixes-tag and applied, thanks!
+No, handoff of live DMA from the bootlader is an entirely unrelated 
+issue, and there are already several patchsets in flight to address 
+various parts of that. My understanding of Tegras is that they *either* 
+use tegra-gart, tegra-smmu, or arm-smmu depending on the SoC generation, 
+but they aren't mixed within any single SoC.
 
-[1/1] ARM: dts: rockchip: remove #phy-cells from usbphy node rk3066/rk3188
-      commit: 60fba46d6e7a6e5de4be2ea158aa6134ec7a161e
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
