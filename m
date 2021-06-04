@@ -2,71 +2,87 @@ Return-Path: <SRS0=fkR5=K6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08E63C4743D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jun 2021 17:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34937C4743D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jun 2021 20:24:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C57F6613FA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jun 2021 17:37:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C57F6613FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 062D161242
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Jun 2021 20:24:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 062D161242
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kUv5IKhUJuVv5kvm5Ztb4rhcvO7QxLyMxyUBBmIO1pU=; b=WBQ8vKNiuoF+bT
-	1dRDo8kkUsdGvlxoQv19FclPqjjjwDLE4u7gy/TYPXudum83kfrl4AZvIN05fLSUp4A5QbdfShxqN
-	mJdY8tHYo7v004lpn5GJbJNxDbm8GZbbcqUUIcqBJ/3RCLwkF5yhWafKdWnXD7aVN5+JjtX9ueJ/U
-	uy25/ONwJsjJ4hrVtYCfFHKLj4OJbORrwTnGwILGesQkLeGFK9tIjuLiAqRIFxPEcITfo+Umtfw1f
-	bBLcdRUsWxHQqawdh8KZm5LgHhEFe+7OtdldCk5WUlRb9RiCudw3yG1Z9MlBpPwEPZsMnr7n1d241
-	77OGf+ieVUoyfLWOWJcg==;
+	List-Owner; bh=qVlKxxhtVIPiBIpZjIrUv7V9s3IbVuG9j7cNV6ttCZc=; b=GX3GZAvq7DTb+z
+	MIxZp82bMc7UExzpNxDRlYw3wVe1kNCquxOgfZyXu58gbLwH/IQU6rvWHBiFj27Ng7U4IJAck5nyR
+	54uw1FfDTS//i59MpnqbixjWPti+t1zIf/Ekfy77w3Q0658JTM5KaYPfnezhE1uc1sF/E6CDyNIV8
+	yhX+KO8oYtqpo/tCIN72fE+EsfaCUM5iwNqqwj1AZbzlvDK3ea4xPNPNzVnMH81xh47ezoRmQWh3T
+	wQb6ZI+HBvhX1pRHjDgRFs4XzQ03TriocCAG3r/v3A96B+wJk+idvOsypK6Hyn3WzI45jsCxHkL6j
+	77LZXQpIlB5d7z+jQPLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lpDlC-00EhY0-Uu; Fri, 04 Jun 2021 17:37:30 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lpGMT-00F6Dz-Me; Fri, 04 Jun 2021 20:24:09 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lpDkz-00EhSU-3r; Fri, 04 Jun 2021 17:37:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 65E551F439E4
-Message-ID: <943276000b13f51e0e746b4f29f2a28d7e435622.camel@collabora.com>
-Subject: Re: [PATCH v9 03/13] media: hantro: Use syscon instead of 'ctrl'
- register
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Lucas Stach <l.stach@pengutronix.de>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, p.zabel@pengutronix.de,
- mchehab@kernel.org,  robh+dt@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de,  festevam@gmail.com, lee.jones@linaro.org,
- gregkh@linuxfoundation.org,  mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org,  jernej.skrabec@siol.net,
- hverkuil-cisco@xs4all.nl, emil.l.velikov@gmail.com,  "Peng Fan (OSS)"
- <peng.fan@oss.nxp.com>, Jacky Bai <ping.bai@nxp.com>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-imx@nxp.com, kernel@pengutronix.de, kernel@collabora.com,
- cphealy@gmail.com,  linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Date: Fri, 04 Jun 2021 14:37:02 -0300
-In-Reply-To: <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-4-benjamin.gaignard@collabora.com>
- <7bcbb787d82f21d42563d8fb7e3c2e7d40123932.camel@pengutronix.de>
- <831a59b052df02e9860b9766e631a7ab6a37c46a.camel@collabora.com>
- <72fef3d9f79194876f2035e996bb83f9f8b12902.camel@pengutronix.de>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ id 1lpGMR-00F6CF-Cm; Fri, 04 Jun 2021 20:24:08 +0000
+Received: by mail-ot1-f45.google.com with SMTP id
+ w23-20020a9d5a970000b02903d0ef989477so5868372oth.9; 
+ Fri, 04 Jun 2021 13:24:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=G0QHStQ4MeKyA5yTSpuMKVPFHqDwVDi3XzL9FYi2HRo=;
+ b=pAXbprxthS50uYDzV+L90hmOHBnsGInDAXMDJr4i9osOX10HatDpT+4Bdx//FkH0PE
+ 7n5C5syvD/49us5qVWERJMi5L9oZaKQo8WkYr9W6LVFO95KRinrHTeJIX9JrtaH3D/It
+ weeuuNuhINCs0xc/1tWOhUPgDfXDrBqogkxRA8GjCLrDmwvQvaMXBMPCeUVtBPYytyen
+ vbL7MrcFw+uqxc8Q+aZvcyL7gmTouS1cy/PdJExlzmb/OjldWKrrLQM5Ci45OCT372Iy
+ s9KlM5Tefda8AYMPjjA7gV/SmUkactNGeeBjogSwGHpNzd/Ri7jOmTxBokVA5UrA8Z3v
+ p3IQ==
+X-Gm-Message-State: AOAM532fHmz8/IDX9P9B3GCM1rwn+0kioysCnbo09OjfE3m/QqCWGf03
+ +ijhArZDpUGusiFz/+U+EQ==
+X-Google-Smtp-Source: ABdhPJyDRq8Forpnhpj29V25n4Eu8aizEobJWojsmd+maF+OG8QNBlFlx8255tS9a4i+ZtmpghHtEg==
+X-Received: by 2002:a9d:6016:: with SMTP id h22mr4944272otj.158.1622838246117; 
+ Fri, 04 Jun 2021 13:24:06 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id t26sm705154otc.23.2021.06.04.13.24.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Jun 2021 13:24:05 -0700 (PDT)
+Received: (nullmailer pid 3852121 invoked by uid 1000);
+ Fri, 04 Jun 2021 20:24:04 -0000
+Date: Fri, 4 Jun 2021 15:24:04 -0500
+From: Rob Herring <robh@kernel.org>
+To: Alex Bee <knaerzche@gmail.com>
+Cc: linux-rockchip@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ linux-media@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v2 01/12] dt-bindings: mfd: syscon: add Rockchip
+ RK3036/RK3228 qos compatibles
+Message-ID: <20210604202404.GA3852087@robh.at.kernel.org>
+References: <20210525152225.154302-1-knaerzche@gmail.com>
+ <20210527154455.358869-1-knaerzche@gmail.com>
+ <20210527154455.358869-2-knaerzche@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210527154455.358869-2-knaerzche@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_103717_325960_1D81A856 
-X-CRM114-Status: GOOD (  35.00  )
+X-CRM114-CacheID: sfid-20210604_132407_441577_B818E3C4 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,72 +100,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Lucas,
-
-On Mon, 2021-05-17 at 12:52 +0200, Lucas Stach wrote:
-> Hi Ezequiel,
+On Thu, 27 May 2021 17:44:44 +0200, Alex Bee wrote:
+> Document Rockchip RK3036/RK3228 qos compatibles
 > 
-> Am Sonntag, dem 16.05.2021 um 19:40 -0300 schrieb Ezequiel Garcia:
-> > Hi Lucas,
-> > 
-> > On Fri, 2021-04-16 at 12:54 +0200, Lucas Stach wrote:
-> > > Am Mittwoch, dem 07.04.2021 um 09:35 +0200 schrieb Benjamin Gaignard:
-> > > > In order to be able to share the control hardware block between
-> > > > VPUs use a syscon instead a ioremap it in the driver.
-> > > > To keep the compatibility with older DT if 'nxp,imx8mq-vpu-ctrl'
-> > > > phandle is not found look at 'ctrl' reg-name.
-> > > > With the method it becomes useless to provide a list of register
-> > > > names so remove it.
-> > > 
-> > > Sorry for putting a spoke in the wheel after many iterations of the
-> > > series.
-> > > 
-> > > We just discussed a way forward on how to handle the clocks and resets
-> > > provided by the blkctl block on i.MX8MM and later and it seems there is
-> > > a consensus on trying to provide virtual power domains from a blkctl
-> > > driver, controlling clocks and resets for the devices in the power
-> > > domain. I would like to avoid introducing yet another way of handling
-> > > the blkctl and thus would like to align the i.MX8MQ VPU blkctl with
-> > > what we are planning to do on the later chip generations.
-> > > 
-> > > CC'ing Jacky Bai and Peng Fan from NXP, as they were going to give this
-> > > virtual power domain thing a shot.
-> > > 
-> > 
-> > It seems the i.MX8MM BLK-CTL series are moving forward:
-> > 
-> > https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=479175
-> > 
-> > ... but I'm unable to wrap my head around how this affects the
-> > devicetree VPU modelling for i.MX8MQ (and also i.MX8MM, i.MX8MP, ...).
-> > 
-> > 
-> For the i.MX8MQ we want to have the same virtual power-domains provided
-> by a BLK-CTRL driver for the VPUs, as on i.MX8MM. This way we should be
-> able to use the same DT bindings for the VPUs on i.MX8MQ and i.MX8MM,
-> even though the SoC integration with the blk-ctrl is a little
-> different.
+> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> ---
 > 
-> > Can you clarify that?
-> > 
-> I'm planning on sending some patches adding i.MX8MQ VPU support to the
-> BLK-CTRL driver in the next few days. I guess that should clarify
-> things. :)
+>  Changes in v2:
+>  - collect Reviewed tag
+> 
+>  Documentation/devicetree/bindings/mfd/syscon.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
-As a gentle reminder, Hans sent the i.MX8MQ G2 HEVC support pull request
-and Benjamin just posted a series adding support for more features.
-
-Do you think we could have the blk-ctrl support landing in v5.14?
-
-If you work on the patches, and you happen to test the G1 and G2 on
-i.MX8MM it would be great to add that too.
-
-Meanwhile, our next steps would be to improve the HEVC V4L2 uAPI itself.
-
-Thanks a lot!
-Ezequiel 
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
