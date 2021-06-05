@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC715C47082
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Jun 2021 09:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FCF2C47082
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Jun 2021 09:48:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9CC7661242
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Jun 2021 09:47:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CC7661242
+	by mail.kernel.org (Postfix) with ESMTPS id 27D2B61380
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Jun 2021 09:48:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27D2B61380
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y99jPON63f1ix1+WcdZ25tHt8YOsBGR0VBZY85cOTq4=; b=L4nvMFuAfC+eKL
-	0t16QoMk4DJx8XiaUGil5/w60T8h5TkrCwa2ZDcvxXdq+bit3UpjR605Oe2yCGfem6ZoRFyGMY7yl
-	M5GNCCeGks8J/j2lkwelT27IcK84hvXQgFswquW/g5udl1Z6yMX9UVxYb+3aMb8kGiGg9iVR6wB7I
-	bmXLvR8Bebe/Fk92KHzRts719njxEm6lomO/UijQ+jhq+kISrpoek9P5ctuK4bFqoGl3qQEiLJC1a
-	s7hJWi6HQ9ByHO9gasFrF3aA6bSpyd0tMyiPqMHDUylq6dw7sLJpaeAvpiOyHg4UGB307o9illHgk
-	MeQw/TTOVutMtXllz0jQ==;
+	List-Owner; bh=U76dKvcJNNXaFikVmPJ23wW4aTvZanZK19SbEPo+b1Q=; b=JMLhYgK245W9jQ
+	L/Cps3BYHNvfZDOnWiQQr3ZatcEdopmuzIzJtEDqboBhT07OYcuNTV6dU0DT9JEs5+uH8ffd2XWro
+	ITlQparWLrX9p5fW4o3XWNnKYpjyRuftVbCBnkHxkDL3N+zJIMJuXBZ/f3DYLK1PLXUoIFlpoKbfk
+	OW1v/7aa9S5wijENOxyJ0OdU7MsW6JDXZmJnjZEax1TH0hl8EsPykAA+t+8nsviub7U6IezhpXm0O
+	nB+TvwrM+ZvA826+7Sb4xypDYOa2zvBlKvZ+OcKjvF4StGQew8PnPLZoQpNrGM6/wrhYIaQqK/B8Z
+	N+QvngN5Shmhi9LfVRFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lpSu4-00GLpE-N7; Sat, 05 Jun 2021 09:47:40 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1lpSuU-00GLx3-ML; Sat, 05 Jun 2021 09:48:06 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lpStg-00GLmM-DS; Sat, 05 Jun 2021 09:47:18 +0000
+ id 1lpStg-00GLmN-Gt; Sat, 05 Jun 2021 09:47:19 +0000
 Received: from localhost (unknown [192.168.167.105])
- by lucky1.263xmail.com (Postfix) with ESMTP id 701A4BA2D6;
- Sat,  5 Jun 2021 17:47:07 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id B4AFDC843B;
+ Sat,  5 Jun 2021 17:47:08 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P26721T140686913419008S1622886424373318_; 
- Sat, 05 Jun 2021 17:47:07 +0800 (CST)
+ Sat, 05 Jun 2021 17:47:09 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <adbfd022b643fee383bbe3358d3d3bdb>
+X-UNIQUE-TAG: <d9d6d82aff890b8b5f7743b4a6772f81>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -63,16 +63,16 @@ Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@esmil.dk,
  Jon Lin <jon.lin@rock-chips.com>
-Subject: [PATCH v3 2/8] spi: rockchip: Wait for STB status in slave mode
- tx_xfer
-Date: Sat,  5 Jun 2021 17:46:53 +0800
-Message-Id: <20210605094659.13507-2-jon.lin@rock-chips.com>
+Subject: [PATCH v3 4/8] spi: rockchip: add compatible string for rv1126
+Date: Sat,  5 Jun 2021 17:46:55 +0800
+Message-Id: <20210605094659.13507-4-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210605094659.13507-1-jon.lin@rock-chips.com>
 References: <20210605094659.13507-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210605_024716_702262_17DFB43F 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20210605_024716_806498_3933EDCF 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,77 +91,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After ROCKCHIP_SPI_VER2_TYPE2, SR->STB is a more accurate judgment
-bit for spi slave transmition.
+Add compatible string for rv1126 to applications for potential
+applications.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
- drivers/spi/spi-rockchip.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+ drivers/spi/spi-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 406ea3c6abd9..73b89a7ae69f 100644
+index 73b89a7ae69f..950d3bce443b 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -116,13 +116,14 @@
- #define BAUDR_SCKDV_MIN				2
- #define BAUDR_SCKDV_MAX				65534
- 
--/* Bit fields in SR, 5bit */
--#define SR_MASK						0x1f
-+/* Bit fields in SR, 6bit */
-+#define SR_MASK						0x3f
- #define SR_BUSY						(1 << 0)
- #define SR_TF_FULL					(1 << 1)
- #define SR_TF_EMPTY					(1 << 2)
- #define SR_RF_EMPTY					(1 << 3)
- #define SR_RF_FULL					(1 << 4)
-+#define SR_SLAVE_TX_BUSY				(1 << 5)
- 
- /* Bit fields in ISR, IMR, ISR, RISR, 5bit */
- #define INT_MASK					0x1f
-@@ -197,13 +198,19 @@ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
- 	writel_relaxed((enable ? 1U : 0U), rs->regs + ROCKCHIP_SPI_SSIENR);
- }
- 
--static inline void wait_for_idle(struct rockchip_spi *rs)
-+static inline void wait_for_tx_idle(struct rockchip_spi *rs, bool slave_mode)
- {
- 	unsigned long timeout = jiffies + msecs_to_jiffies(5);
- 
- 	do {
--		if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
--			return;
-+		if (slave_mode) {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_SLAVE_TX_BUSY) &&
-+			    !((readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY)))
-+				return;
-+		} else {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
-+				return;
-+		}
- 	} while (!time_after(jiffies, timeout));
- 
- 	dev_warn(rs->dev, "spi controller is in busy state!\n");
-@@ -383,7 +390,7 @@ static void rockchip_spi_dma_txcb(void *data)
- 		return;
- 
- 	/* Wait until the FIFO data completely. */
--	wait_for_idle(rs);
-+	wait_for_tx_idle(rs, ctlr->slave);
- 
- 	spi_enable_chip(rs, false);
- 	spi_finalize_current_transfer(ctlr);
-@@ -545,7 +552,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	else
- 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 
--	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
-+	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
- 	writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
- 		       rs->regs + ROCKCHIP_SPI_DMARDLR);
- 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+@@ -929,6 +929,7 @@ static const struct of_device_id rockchip_spi_dt_match[] = {
+ 	{ .compatible = "rockchip,rk3368-spi", },
+ 	{ .compatible = "rockchip,rk3399-spi", },
+ 	{ .compatible = "rockchip,rv1108-spi", },
++	{ .compatible = "rockchip,rv1126-spi", },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_spi_dt_match);
 -- 
 2.17.1
 
