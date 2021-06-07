@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 57F0AC47082
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 11:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B95FC47082
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 11:21:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2107961090
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 11:20:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2107961090
+	by mail.kernel.org (Postfix) with ESMTPS id 1E2AF61078
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 11:21:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E2AF61078
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zOyd3Vt70ndXPoVCL7HrdrmOpd+Emv2NZSWSqq+MIJU=; b=2WP4DxswhgrU4H
-	dtDYmLPrg9f3IASiZkDp/NTIBZTHcBcjS4sEn50/WK1o/u9fWKYPWkLc82+cKKASCen8Z9nQsEBpi
-	MknnjIwGVNHAezGjEoLojitGbDpXLdoismZwBM+ALndTTd5uX62ZSq9RQnWA8rq32U2YVqE7FVzwW
-	NsCqcO7GlxiRq/6nlKsC+JHmNUmva2V7AMcEaEnXjw3An73aFtkt2I26Pr4BJYu5m+Jy1DAsv+55n
-	Ah1TXm3wY/il/wqOlXzxkqfMEzHPmukYtvWpbm8I/psZ9R7VVdV/PFxAKrbiJOGzrJ0p2aFUNP5fa
-	48/VyzN3jxcvLFt/fi/A==;
+	List-Owner; bh=wVnQgRRjShLboobnE1e+grZQ55gAWx8ouWHqOuZmdM0=; b=EPZFY++jEx/h7P
+	lTC6aj947mrt2glggsFhWGgbqBzFYHmmyko9UxntdEC/l5ekokyiIvgbHrG/8xXeXcf7cGHXP/4pM
+	gCvqpOup7w7N2ca2t+5CQubz4OLB/442UDhaCB1sx9431A8gryCwUSofHCBTsBYXqZ4wFuqqrtxwW
+	6gipLYYvefb+vw3Jh743X+4RFGATDxhaJlTwk1pqekIOVa5cPU7ZQD17zdRqlHbBIwSlF0633aO7c
+	xSGyq6z2C1J9jZH/96tX6mxsspB75q0TrcOdL5pPv7PlFDWFP4MTojpS0Rk4H1W1HdOTeOgN9RK1B
+	b/QWTtIcKa931OwpiUUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqDIp-003HzH-7z; Mon, 07 Jun 2021 11:20:19 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1lqDJj-003IUZ-4n; Mon, 07 Jun 2021 11:21:15 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqDHL-003HLH-OU; Mon, 07 Jun 2021 11:18:52 +0000
+ id 1lqDHq-003HWN-Gd; Mon, 07 Jun 2021 11:19:20 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 62127AD058;
- Mon,  7 Jun 2021 19:18:45 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 21808C8653;
+ Mon,  7 Jun 2021 19:19:16 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -45,10 +45,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P32529T140357062862592S1623064720154033_; 
- Mon, 07 Jun 2021 19:18:45 +0800 (CST)
+ P32529T140357214529280S1623064756471506_; 
+ Mon, 07 Jun 2021 19:19:17 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <661353a120cc6e92856a94a35ac52a4e>
+X-UNIQUE-TAG: <3239ffb69d74b2da5e48fdac14418c26>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -63,16 +63,15 @@ Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
  linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org
-Subject: [PATCH v6 4/6] spi: rockchip: Wait for STB status in slave mode
- tx_xfer
-Date: Mon,  7 Jun 2021 19:18:35 +0800
-Message-Id: <20210607111837.31074-5-jon.lin@rock-chips.com>
+Subject: [PATCH v6 5/6] spi: rockchip: Support cs-gpio
+Date: Mon,  7 Jun 2021 19:19:13 +0800
+Message-Id: <20210607111914.31376-1-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210607111837.31074-1-jon.lin@rock-chips.com>
 References: <20210607111837.31074-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210607_041848_005249_DCEBDBA2 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210607_041918_909892_4C8F3D5F 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,8 +90,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After ROCKCHIP_SPI_VER2_TYPE2, SR->STB is a more accurate judgment
-bit for spi slave transmition.
+1.Add standard cs-gpio support
+2.Refer to spi-controller.yaml for details
 
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
@@ -102,71 +101,124 @@ Changes in v5: None
 Changes in v4: None
 Changes in v3: None
 
- drivers/spi/spi-rockchip.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+ drivers/spi/spi-rockchip.c | 61 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 56 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 0887b19ef3ad..950d3bce443b 100644
+index 950d3bce443b..48b666d42d8a 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -116,13 +116,14 @@
- #define BAUDR_SCKDV_MIN				2
- #define BAUDR_SCKDV_MAX				65534
+@@ -6,6 +6,7 @@
  
--/* Bit fields in SR, 5bit */
--#define SR_MASK						0x1f
-+/* Bit fields in SR, 6bit */
-+#define SR_MASK						0x3f
- #define SR_BUSY						(1 << 0)
- #define SR_TF_FULL					(1 << 1)
- #define SR_TF_EMPTY					(1 << 2)
- #define SR_RF_EMPTY					(1 << 3)
- #define SR_RF_FULL					(1 << 4)
-+#define SR_SLAVE_TX_BUSY				(1 << 5)
+ #include <linux/clk.h>
+ #include <linux/dmaengine.h>
++#include <linux/gpio.h>
+ #include <linux/interrupt.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+@@ -157,7 +158,8 @@
+  */
+ #define ROCKCHIP_SPI_MAX_TRANLEN		0xffff
  
- /* Bit fields in ISR, IMR, ISR, RISR, 5bit */
- #define INT_MASK					0x1f
-@@ -197,13 +198,19 @@ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
- 	writel_relaxed((enable ? 1U : 0U), rs->regs + ROCKCHIP_SPI_SSIENR);
+-#define ROCKCHIP_SPI_MAX_CS_NUM			2
++/* 2 for native cs, 2 for cs-gpio */
++#define ROCKCHIP_SPI_MAX_CS_NUM			4
+ #define ROCKCHIP_SPI_VER2_TYPE1			0x05EC0002
+ #define ROCKCHIP_SPI_VER2_TYPE2			0x00110002
+ 
+@@ -191,6 +193,7 @@ struct rockchip_spi {
+ 	bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
+ 
+ 	bool slave_abort;
++	bool gpio_requested;
+ };
+ 
+ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
+@@ -245,11 +248,15 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
+ 		/* Keep things powered as long as CS is asserted */
+ 		pm_runtime_get_sync(rs->dev);
+ 
+-		ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER,
+-				      BIT(spi->chip_select));
++		if (gpio_is_valid(spi->cs_gpio))
++			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
++		else
++			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, BIT(spi->chip_select));
+ 	} else {
+-		ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER,
+-				      BIT(spi->chip_select));
++		if (gpio_is_valid(spi->cs_gpio))
++			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
++		else
++			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, BIT(spi->chip_select));
+ 
+ 		/* Drop reference from when we first asserted CS */
+ 		pm_runtime_put(rs->dev);
+@@ -632,6 +639,47 @@ static bool rockchip_spi_can_dma(struct spi_controller *ctlr,
+ 	return xfer->len / bytes_per_word >= rs->fifo_len;
  }
  
--static inline void wait_for_idle(struct rockchip_spi *rs)
-+static inline void wait_for_tx_idle(struct rockchip_spi *rs, bool slave_mode)
- {
- 	unsigned long timeout = jiffies + msecs_to_jiffies(5);
- 
- 	do {
--		if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
--			return;
-+		if (slave_mode) {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_SLAVE_TX_BUSY) &&
-+			    !((readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY)))
-+				return;
-+		} else {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
-+				return;
++static int rockchip_spi_setup(struct spi_device *spi)
++{
++
++	int ret = -EINVAL;
++	struct rockchip_spi *rs = spi_controller_get_devdata(spi->controller);
++
++	if (spi->cs_gpio == -ENOENT)
++		return 0;
++
++	if (!rs->gpio_requested && gpio_is_valid(spi->cs_gpio)) {
++		ret = gpio_request_one(spi->cs_gpio,
++				       (spi->mode & SPI_CS_HIGH) ?
++				       GPIOF_OUT_INIT_LOW : GPIOF_OUT_INIT_HIGH,
++				       dev_name(&spi->dev));
++		if (ret)
++			dev_err(&spi->dev, "can't request chipselect gpio %d\n",
++				spi->cs_gpio);
++		else
++			rs->gpio_requested = true;
++	} else {
++		if (gpio_is_valid(spi->cs_gpio)) {
++			int mode = ((spi->mode & SPI_CS_HIGH) ? 0 : 1);
++
++			ret = gpio_direction_output(spi->cs_gpio, mode);
++			if (ret)
++				dev_err(&spi->dev, "chipselect gpio %d setup failed (%d)\n",
++					spi->cs_gpio, ret);
 +		}
- 	} while (!time_after(jiffies, timeout));
++	}
++
++	return ret;
++}
++
++static void rockchip_spi_cleanup(struct spi_device *spi)
++{
++	struct rockchip_spi *rs = spi_controller_get_devdata(spi->controller);
++
++	if (rs->gpio_requested)
++		gpio_free(spi->cs_gpio);
++}
++
+ static int rockchip_spi_probe(struct platform_device *pdev)
+ {
+ 	int ret;
+@@ -706,6 +754,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
  
- 	dev_warn(rs->dev, "spi controller is in busy state!\n");
-@@ -383,7 +390,7 @@ static void rockchip_spi_dma_txcb(void *data)
- 		return;
+ 	rs->dev = &pdev->dev;
+ 	rs->freq = clk_get_rate(rs->spiclk);
++	rs->gpio_requested = false;
  
- 	/* Wait until the FIFO data completely. */
--	wait_for_idle(rs);
-+	wait_for_tx_idle(rs, ctlr->slave);
+ 	if (!of_property_read_u32(pdev->dev.of_node, "rx-sample-delay-ns",
+ 				  &rsd_nsecs)) {
+@@ -759,6 +808,8 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	ctlr->max_speed_hz = min(rs->freq / BAUDR_SCKDV_MIN, MAX_SCLK_OUT);
  
- 	spi_enable_chip(rs, false);
- 	spi_finalize_current_transfer(ctlr);
-@@ -545,7 +552,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	else
- 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 
--	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
-+	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
- 	writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
- 		       rs->regs + ROCKCHIP_SPI_DMARDLR);
- 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+ 	ctlr->set_cs = rockchip_spi_set_cs;
++	ctlr->setup = rockchip_spi_setup;
++	ctlr->cleanup = rockchip_spi_cleanup;
+ 	ctlr->transfer_one = rockchip_spi_transfer_one;
+ 	ctlr->max_transfer_size = rockchip_spi_max_transfer_size;
+ 	ctlr->handle_err = rockchip_spi_handle_err;
 -- 
 2.17.1
 
