@@ -2,80 +2,85 @@ Return-Path: <SRS0=vLt7=LB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA7C1C47082
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 12:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81BA3C47094
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 13:03:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7941460C41
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 12:59:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7941460C41
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4F07160C41
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Jun 2021 13:03:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F07160C41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cJd2e+crgbAsKtaQrpIS0ZmJLOlfmFX6thXDWLR9bqE=; b=DT1hmu09bSqW7N
-	uNQwEf/t3Ft5nwZfRS+MBJL76fzko3BKfgA0oco/TSPqsR+cq01bgsFGtO/AvGnoxymQqX8H3doAQ
-	rjb5qw1fZ6kxk/grxTVOJpbBZzHy+u6fl/QXLQAOElbuTFOuqoglfNjLg2KySIsTOLsBnL3PEG7D2
-	My7eQJ2dXz7V44raxOh7Dwj9XAltOSucrZ5PPrV/4HvDlLzNiBIsznGw2QU0BveGIQ3edJSeJoGQk
-	KYvJUFxaddUOazVEn3AYl1WbH42ydqTAfLB4AfmkPnUhqvgo509XPlWjaQ4I0nU33zlOH3fWvkL+Z
-	bCHh2YOwRuINDhKlbV5g==;
+	List-Owner; bh=x54q3pQw6K7knCLRAX82y60kHC+P/sK5HQoFjjKTgYM=; b=0VnYdWU4tqvq6h
+	55rHtpjcvu3GEwsnYFJdGuuYDkzBgY7Rf6lQ1N14gY53AyPAvIMMb6iiVBnDCgsiDOmeKAA5R/IUU
+	uQl78F4HR+lFUZV7S0VN4fT4sRHDMsO59hxZGCGUj9g/MZVy/i1TGRTeAIDSZljM0ddFedD04dD4W
+	ZUZuF1MrrLVk9FxvoNJiU0W6QOOOBeHOny1MlgEoK+F5NTYvxxFc/0ZgjDC/ItgJQPaZEaVfKvl0o
+	OwXzAg7nfhpjCXL7ntb0+nduDFhdpE30SPkPY36HYsdtAm3yZEtaBqPkn6qCGp2ptdxnJZxs3pBY+
+	GRa0SORx36yccBomKdcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqEqT-003eRE-H9; Mon, 07 Jun 2021 12:59:09 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1lqEuq-003fZ9-HQ; Mon, 07 Jun 2021 13:03:40 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqEcY-003Zo5-F1; Mon, 07 Jun 2021 12:44:53 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 668ACC8568;
- Mon,  7 Jun 2021 20:44:43 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P32529T140357062862592S1623069879715065_; 
- Mon, 07 Jun 2021 20:44:44 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <94ee27cdbba9c85c87fed9d18aec789d>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-spi@vger.kernel.org
-X-RCPT-COUNT: 17
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: linux-spi@vger.kernel.org
-Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
- heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v5 7/8] arm64: dts: rockchip: Add SFC to RK3308
-Date: Mon,  7 Jun 2021 20:44:36 +0800
-Message-Id: <20210607124437.4143-3-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210607124437.4143-1-jon.lin@rock-chips.com>
-References: <20210607124303.22393-1-jon.lin@rock-chips.com>
- <20210607124437.4143-1-jon.lin@rock-chips.com>
+ id 1lqEgT-003bZt-0u; Mon, 07 Jun 2021 12:48:53 +0000
+Received: by mail-lf1-x132.google.com with SMTP id f11so25954470lfq.4;
+ Mon, 07 Jun 2021 05:48:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YqSp7b2sF5G/FF6lZynv4Wa2NCgdSNo+g2maX/I5cg4=;
+ b=pozxQO3Soc1f0c4FqsKQO2eA/CLdqPKeeIYIWArpk+9A/mym4x8dN7I/j5gGR3eWCA
+ 7+niI5ea+m1cgiXG0rITWVXWlhi9wqIwR+uOMaiyxnAfQVLMmTDlFWNofOaOGNuCaAr3
+ 0PuONwtNf++K6/Ic1rzwBZAHCCUg2yLTaXm4NYBCHfWWt3mggPqlZECDyQFqLHXGKVTL
+ d6IPcVNbhsAGTPFqoD1oUBIZPh2wVxlsLsANH2szOnVKDKbA8vyDlHwfKWAtlfme1sMJ
+ 7LKj4LtX+sYYRL8oQosg4JYmqzo7x4HS2NBKfP7DfECNN2fg9VKQoiEw9uXxyFKOFMdS
+ zFBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YqSp7b2sF5G/FF6lZynv4Wa2NCgdSNo+g2maX/I5cg4=;
+ b=AxR3VvM2CUM4okchqWhZW48n7TwF+4CxHGMeigm5E3jeCJFeYGJfdBo1YgT1dG9F4p
+ 8AUoMV9cbfLSj/02WyciQC2I+1uxjQYVItdbiqBwkYv84tA0NSc3zA721S7mWgGEJFcW
+ N6WucP+lG90j1rTGnmm3wrRDcjmmdoW6Eh9ZHc9dCSYXmaKHGGPyEwSCmvORQn/gvmxB
+ jNKOeip68/Yqfp/9RErb9kglBYtiGX5Ez9+BX5DnORBbvnj4EMMYFiHLP4LN3ejV15OD
+ r9BD26tbgsKOju+KiV8QseUjoAIRAFkJOD1wXRILgL10siQToP8LKES62epuCtG+Zdmq
+ ASNQ==
+X-Gm-Message-State: AOAM531WV7NFMlh9ewIX2dV5EZCxvP9qWCpUJOZPsPDXbk7TIeV/ILHP
+ 8Az2Q8BpQgq6Sntkqp7BoVSxhOfQouVl+efOrRY=
+X-Google-Smtp-Source: ABdhPJwabZWyYF88pXBQ24zGo/RXBDrYpovZ3Uck29FJ5jy9VhDjT86KbW2/5rSd+najOgm/CPFmNxVbSw0A8REqkr4=
+X-Received: by 2002:a19:3846:: with SMTP id d6mr12512848lfj.187.1623070127020; 
+ Mon, 07 Jun 2021 05:48:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210607081727.4723-1-cnsztl@gmail.com>
+ <CAGb2v66GAOtF40o5XoK_K3bWPa2L8jGxH=R-YK8060TGeAKreQ@mail.gmail.com>
+In-Reply-To: <CAGb2v66GAOtF40o5XoK_K3bWPa2L8jGxH=R-YK8060TGeAKreQ@mail.gmail.com>
+From: Tianling Shen <cnsztl@gmail.com>
+Date: Mon, 7 Jun 2021 20:48:34 +0800
+Message-ID: <CAOP2_TiZYXWnDZ1-_K-EvHt3-=sV1k8cRaenW8xqr44KdLCQiw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: add EEPROM node for NanoPi R4S
+To: Chen-Yu Tsai <wens@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Marty Jones <mj8263788@gmail.com>, Pavel Machek <pavel@ucw.cz>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210607_054446_751266_7749E28F 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20210607_054849_128092_D19AE161 
+X-CRM114-Status: GOOD (  27.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,89 +93,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi Chen-Yu,
 
-Add a devicetree entry for the Rockchip SFC for the RK3308 SOC.
+On Mon, Jun 7, 2021 at 4:36 PM Chen-Yu Tsai <wens@kernel.org> wrote:
+>
+> Hi,
+>
+> On Mon, Jun 7, 2021 at 4:19 PM Tianling Shen <cnsztl@gmail.com> wrote:
+> >
+> > NanoPi R4S has a EEPROM attached to the 2nd I2C bus (U92), which
+> > stores the MAC address.
+> >
+> > Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> > index cef4d18b599d..4a82f50a07c5 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> > @@ -68,6 +68,15 @@
+> >         status = "disabled";
+> >  };
+> >
+> > +&i2c2 {
+> > +       eeprom@51 {
+> > +               compatible = "microchip,24c02", "atmel,24c02";
+>
+> The actual part number is Microchip 24AA025E48, but I don't think
+> the way this device splits its storage area is easy to support
+> without additional modifications to the driver.
+>
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+On the face of it, it seems to work fine, and I can read the data correctly.
+(built with at24 eeprom driver)
 
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
+Thanks,
+Tianling.
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 37 ++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 0c5fa9801e6f..2d922b1d51d5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -637,6 +637,17 @@
- 		status = "disabled";
- 	};
- 
-+	sfc: spi@ff4c0000 {
-+		compatible = "rockchip,rk3308-sfc", "rockchip,rk3036-sfc";
-+		reg = <0x0 0xff4c0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_SFC>, <&cru SCLK_SFC>;
-+		clock-names = "ahb", "sfc";
-+		pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus4>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	cru: clock-controller@ff500000 {
- 		compatible = "rockchip,rk3308-cru";
- 		reg = <0x0 0xff500000 0x0 0x1000>;
-@@ -910,6 +921,32 @@
- 			};
- 		};
- 
-+		serial_flash {
-+			sfc_bus4: sfc-bus4 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>,
-+					<3 RK_PA2 3 &pcfg_pull_none>,
-+					<3 RK_PA3 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_bus2: sfc-bus2 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs0: sfc-cs0 {
-+				rockchip,pins =
-+					<3 RK_PA4 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_clk: sfc-clk {
-+				rockchip,pins =
-+					<3 RK_PA5 3 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		gmac {
- 			rmii_pins: rmii-pins {
- 				rockchip,pins =
--- 
-2.17.1
-
-
-
+> > +               reg = <0x51>;
+> > +               pagesize = <16>;
+> > +               read-only; /* This holds our MAC */
+>
+> Please also add the size, as well as a cell defining the offset
+> and length to the MAC address. The gmac node can then reference
+> this with:
+>
+>     nvmem-cells = <&mac_address>;
+>     nvmem-cells-names = "mac-address";
+>
+> which will actually pick up the MAC address.
+>
+>
+> Regards
+> ChenYu
+>
+> > +       };
+> > +};
+> > +
+> >  &i2c4 {
+> >         status = "disabled";
+> >  };
+> > --
+> > 2.17.1
+> >
+> >
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
 _______________________________________________
 Linux-rockchip mailing list
