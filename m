@@ -2,128 +2,83 @@ Return-Path: <SRS0=ZuRO=LC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F92AC47082
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 19:06:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6B78C47082
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 20:51:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33C2C60FEA
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 19:06:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33C2C60FEA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
+	by mail.kernel.org (Postfix) with ESMTPS id A46BB60FEB
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 20:51:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A46BB60FEB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:CC:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8jZP8bVv8M549MsHp3adbYOpxG5HaHSMgl6aV14n6Qo=; b=3cMdGfTRQgR4fbsuSg2EWX7nKg
-	iR96Z6StPwOnQnWCqPAGFttz2bHIp7ergjfI69cWGk3q/YQ/8Od8M2Ms4MyBzQerVCEJ5M9xBnVJJ
-	pT8Y9YiLIEscqcLuzwGyNzJKhI5YmWapD77GCyH3trc7TAda5z95K/8HVDsf7ghtdaFgCgLhZBFkP
-	4L6zJDrZjbQrs8yAK+nUcqN9lfIG4cf1K2Hu96VS6nIkbx/DajkfHXN5vMxFEDwxn+BvFGrkX3GVs
-	8xXrc+K4khaM3MHlqLoUXrmyUrQ820UiZMrce5a5l/2sYunxmVlZIR7sctPpcmzJqoonPr7HdRADM
-	KFehel0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UgVATCtCqAWxL489BKfBxLrI0vi6aMycQBA50lkypMk=; b=Y7DSvompnC5ci4
+	4OcV87eY0vlipiDz+qzi/pvwqtPAgJnj/GIWZuiJkq5tqHuY6W/3YmnwMwKtMNznVcKN6bjg0oDrl
+	yESyIOEcgQM6fNxQM4w11e3Z5cwEHS9+5LMnTC5EL7JGfLge47DXsiE3RvU7SiUSQkQpuFUlZxjne
+	t1hkf+l7aIzzaVhXoQ2ByutEPJEsmQAo38jeVLTIDtUtfaT0yRKuuC1TQQbYqZEd5j3lcHwk9vSev
+	JICso1YLbhJYa+uzZinFLs9rjNym3bWP/SRrozSfNGI4HxymSbi2h3gOqkrWeHrOb3MRnt9S2wHL2
+	CyU65Kzhz2Wsd4SP/zAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqh3c-00ABDa-4s; Tue, 08 Jun 2021 19:06:36 +0000
-Received: from mail-dm6nam08on2084.outbound.protection.outlook.com
- ([40.107.102.84] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+	id 1lqihE-00ATc6-5F; Tue, 08 Jun 2021 20:51:36 +0000
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqh3L-00AB8g-K5; Tue, 08 Jun 2021 19:06:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VNgcqzgHJdpE4/BBwUMUUz163t5f6oE6rcBQ0dHoZaxEff2otJ8ZnsP1DvhQZmJ8uVOrFG/O/FCbQHah1xho33G/WnhbzjoUEeCPtCLcdb0Zngi4ibQGk5brdVt8A1Kh9OgwOaxFsLYAG50Rc3HSPAHO7RBrpIU3u/RPH+uRQbuTV1M92DJB54xnTw6OqsUdvuqRagZ1oGLQJe9o6UF6OxuTkeV/pKuwhBPw1gwLKUEmJNAARkf2ScYsat3tm7g7bDgX4kKLSTeYmXtih75HHcYQndNHKzv13ikpcMo5vpgbfMuaGjFsTf6CFU5D2D+C8s4kIk9qcX/Y+RMuZqwCiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=w5XtHq8GCN9l88qbJNPrfuf54MjUrqp9AiAez3dplrc=;
- b=j4GrKfX3846UQzDHUonTLHsyXGJagdqNYZq0fKpSNdz5xzzR9MCNH0W+z4BxYGNCDEHcmF0D3bhDjkTNsycSpogocy7CymMhqFbf4xV7ejD/e7s5wPd4iaPiYFCMtyLVknx98/mqjfMXjZ19C41AgfVBGqRvGzAlz4dcxdZYDuGPIHch0bDVfKn+wxNVTHR3VU6xVysBBW54Rm1FpZkjxPnHfked2Px0bIvDoCihBBeo+ZkH0S+XFv23L/xOkvrrOwhaqLe6gwnmgRJ6DfVoNr492cltPkpzd7J8nExuagEYN2MonxAN1xFxt9JEy+NfK4IMnxpkK0dK6FiB0hNp1w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=lists.infradead.org
- smtp.mailfrom=nvidia.com; dmarc=pass (p=none sp=none pct=100) action=none
- header.from=nvidia.com; dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=w5XtHq8GCN9l88qbJNPrfuf54MjUrqp9AiAez3dplrc=;
- b=ikT8rhuJzIgo6TP94/eAgLIkKp5NnY0+NbiFp2ExCZy2w/GxOrLDEF7JMXS0JalS0ZkAmBYRVdf7gZ7BKN9M8lBmMWzZcbzJCMwUkGxYyHNLnPXOGokiqZ3Wd5JFL+LEz3rne8YOOSOtoESkf5pBNn4pVQ0ps/TlCVCeZxdacKh4RkxFR8zOtpyEVnPCoP1vn9lNeyDQmPsDO2N6JA7l3K19JfzaklHYUmxJ+/UHwXHqL7TTgAnjFAkYzR7vb5ftjIF7OUs1yNr1tuIAI/iZbPqo5IaqibVFCdKmRfXNbcZ6TxA3hBu/ogl+BPJFQ/N9CVLLxr7hQ3zFs84+pllQDA==
-Received: from BN6PR16CA0021.namprd16.prod.outlook.com (2603:10b6:404:f5::31)
- by MN2PR12MB3757.namprd12.prod.outlook.com (2603:10b6:208:15a::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.22; Tue, 8 Jun
- 2021 19:06:15 +0000
-Received: from BN8NAM11FT011.eop-nam11.prod.protection.outlook.com
- (2603:10b6:404:f5:cafe::34) by BN6PR16CA0021.outlook.office365.com
- (2603:10b6:404:f5::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4219.21 via Frontend
- Transport; Tue, 8 Jun 2021 19:06:15 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; lists.infradead.org; dkim=none (message not signed)
- header.d=none;lists.infradead.org; dmarc=pass action=none
- header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- BN8NAM11FT011.mail.protection.outlook.com (10.13.176.140) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4195.22 via Frontend Transport; Tue, 8 Jun 2021 19:06:14 +0000
-Received: from [10.25.75.134] (172.20.187.6) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 8 Jun
- 2021 19:06:10 +0000
-Subject: Re: [PATCH v3 2/4] PCI: of: Relax the condition for warning about
- non-prefetchable memory aperture size
-To: Punit Agrawal <punitagrawal@gmail.com>, <helgaas@kernel.org>,
- <robh+dt@kernel.org>
-CC: <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-pci@vger.kernel.org>, <alexandru.elisei@arm.com>, <wqu@suse.com>,
- <robin.murphy@arm.com>, <pgwipeout@gmail.com>, <ardb@kernel.org>,
- <briannorris@chromium.org>, <shawn.lin@rock-chips.com>
-References: <20210607112856.3499682-1-punitagrawal@gmail.com>
- <20210607112856.3499682-3-punitagrawal@gmail.com>
-From: Vidya Sagar <vidyas@nvidia.com>
-Message-ID: <ac6bf3c8-fe8e-5897-b225-699a7c46a818@nvidia.com>
-Date: Wed, 9 Jun 2021 00:36:08 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
-MIME-Version: 1.0
-In-Reply-To: <20210607112856.3499682-3-punitagrawal@gmail.com>
-Content-Language: en-US
-X-Originating-IP: [172.20.187.6]
-X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
- HQMAIL107.nvidia.com (172.20.187.13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 69b6990a-2749-4593-7863-08d92ab07d0d
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3757:
-X-Microsoft-Antispam-PRVS: <MN2PR12MB3757BB2FF950C21D874CD7C1B8379@MN2PR12MB3757.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qvYnF2eWSs8fJ+xrJv7oR7Uh00kYJMioes8bV2xb4mZVng6bGquYoJ7sHQ5x5IJN0rgdK00bHWxST8oziSVP3fMzAy/50E9PXkx+0pqA/DlVz2vdfpvc7MKsBoaYXDm6G66Up4QamuLfnync9Q0u3ZmSXEXoRd93E6Zrb1b800KIQyhz1CDg4zzgeBaV3MPC1hUqLZtX8sFMZSokZ6Ccg0CTzBN4M8BnnzeBcQukd1c9QAL0wqp4TGgf+YvQcK6sEKYSW6Hw8Z19/WPggmXiVdk7xYoWwURKRbLXN48CB7WsnIkAKIOQ199n3dCdyznSlgsiqAa/0BXCZXjZQSbL++14978eEUbm1gqhiNvHTpv9sb5MBzL2n8woK2p+BxonKgzn02m/24HHiLHcWLQONhrIvs/kJtVfYmHptZbYMR/tPfwkTq2ht66c5ixNyP5fhw5ePnKckL0+soOuQc556u3tdJUwyisGitE3AVvzNBjex4gM29JABB/rKdOA0SrQZHqeIpBb3mwAZfyWUXjsbYzCtrh0ssuMZpGfCdpt+KhwgN8/B21m+A44rQ8bbCnolM1phjvKqYEFDqP5H4pNfKwcebpaTe7dVM7vCU0NmsO47FWAqaaGtAImAHyH+nEzGnSgtm9/amjuIcgzfzMQCnoH/uGgUmPh/Slt40ZxexhqabNsFkc8XYOAStOYritF6HoEQJAD+WVlE5ldaZ1lzeyMVY79iBqDZxzMnRbCmMQ0onW3vVFoq4p6+C6kKbT+bYiVE9IdPqBdHUMwEh05Uvj8S1B2t8FzNYE280xClv/aidWTNHYvT2Q+MQG7XIvd
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(136003)(346002)(376002)(396003)(39860400002)(36840700001)(46966006)(478600001)(2616005)(36756003)(7636003)(426003)(336012)(36860700001)(966005)(47076005)(82740400003)(26005)(2906002)(31696002)(4326008)(356005)(7416002)(53546011)(31686004)(82310400003)(5660300002)(16576012)(110136005)(86362001)(54906003)(36906005)(316002)(186003)(8936002)(70206006)(70586007)(16526019)(83380400001)(8676002)(43740500002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jun 2021 19:06:14.8599 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 69b6990a-2749-4593-7863-08d92ab07d0d
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT011.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3757
+ id 1lqigg-00ASnO-Rc; Tue, 08 Jun 2021 20:51:07 +0000
+Received: by mail-ot1-f54.google.com with SMTP id
+ v19-20020a0568301413b0290304f00e3d88so21679782otp.4; 
+ Tue, 08 Jun 2021 13:51:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=yiKyoptaaysab5Fo1rGVaoicrRW/xpQQvXSGwjLxWNw=;
+ b=XIUimPvWn9Be2RoObcJ9b6dM5gp/OpK5Kv1fYrgK2MaFLLby18LRdxXjIOOiHFliME
+ rzUDGNr/RHz8qsru0OSlROgyqzhA7ShvdK3m6H3pzxW3ob+DNwFMhjr/FwX8TshBEM5P
+ cfuW1GSzagvaG6+ykGJf44Q+cEtyJItMh8J1ZyOQP/5czHLy40WrfmbIWfPsr1rB6Z/o
+ AKfBwbPESegWkobSYuNhkJGtJ8WuOiHYZXaTuwWglb76RUIQVhFW0/37DtmJTUCApWFS
+ NQpcblVU1zW9nTm+Z775/+ffXvxE0VEXaEkX9H9RG6cR3jiv8XZ+7SIxBY599Gc+PfOg
+ 0SQw==
+X-Gm-Message-State: AOAM5320HzAPrrpXa0eJSQ9SyyJW/Gdela594ggiDZTB4FVVV10RbotO
+ dvhbHnKkTFhuCtQSiQ0deg==
+X-Google-Smtp-Source: ABdhPJy7TQBWX65tHgc+EHrt1j0YQ7W9UDW5Ax7Wb/tf4y/D7lnLWrIHb0ZAuQzJRawt41CRHLK1mA==
+X-Received: by 2002:a9d:6c89:: with SMTP id c9mr16701595otr.163.1623185460131; 
+ Tue, 08 Jun 2021 13:51:00 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id n11sm3008569ooo.12.2021.06.08.13.50.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Jun 2021 13:50:59 -0700 (PDT)
+Received: (nullmailer pid 1556866 invoked by uid 1000);
+ Tue, 08 Jun 2021 20:50:56 -0000
+From: Rob Herring <robh@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: devicetree@vger.kernel.org, Chris Morgan <macromorgan@hotmail.com>,
+ linux-arm-kernel@lists.infradead.org, p.yadav@ti.com, jbx6244@gmail.com,
+ linux-kernel@vger.kernel.org, heiko@sntech.de, macroalpha82@gmail.com,
+ sugar.zhang@rock-chips.com, hjc@rock-chips.com, linux-mtd@lists.infradead.org,
+ robh+dt@kernel.org, linux-spi@vger.kernel.org, broonie@kernel.org,
+ linux-rockchip@lists.infradead.org, yifeng.zhao@rock-chips.com
+In-Reply-To: <20210608022644.21074-2-jon.lin@rock-chips.com>
+References: <20210608022644.21074-1-jon.lin@rock-chips.com>
+ <20210608022644.21074-2-jon.lin@rock-chips.com>
+Subject: Re: [PATCH v6 1/8] dt-bindings: rockchip-sfc: Bindings for Rockchip
+ serial flash controller
+Date: Tue, 08 Jun 2021 15:50:56 -0500
+Message-Id: <1623185456.817255.1556865.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_120619_701144_63273C12 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20210608_135102_930278_A56B79C5 
+X-CRM114-Status: GOOD (  36.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,66 +91,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 6/7/2021 4:58 PM, Punit Agrawal wrote:
-> External email: Use caution opening links or attachments
+On Tue, 08 Jun 2021 10:26:37 +0800, Jon Lin wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
+> Add bindings for the Rockchip serial flash controller. New device
+> specific parameter of rockchip,sfc-no-dma included in documentation.
 > 
-> Commit fede8526cc48 ("PCI: of: Warn if non-prefetchable memory
-> aperture size is > 32-bit") introduced a warning for non-prefetchable
-> resources that need more than 32bits to resolve. It turns out that the
-> check is too restrictive and should be applicable to only resources
-> that are limited to host bridge windows that don't have the ability to
-> map 64-bit address space.
-I think the host bridge windows having the ability to map 64-bit address 
-space is different from restricting the non-prefetchable memory aperture 
-size to 32-bit.
-Whether the host bridge uses internal translations or not to map the 
-non-prefetchable resources to 64-bit space, the size needs to be 
-programmed in the host bridge's 'Memory Limit Register (Offset 22h)' 
-which can represent sizes only fit into 32-bits.
-Host bridges having the ability to map 64-bit address spaces gives 
-flexibility to utilize the vast 64-bit space for the (restrictive) 
-non-prefetchable memory (i.e. mapping non-prefetchable BARs of endpoints 
-to the 64-bit space in CPU's view) and get it translated internally and 
-put a 32-bit address on the PCIe bus finally.
-
-- Vidya Sagar
-> 
-> Relax the condition to only warn when the resource size requires >
-> 32-bits and doesn't allow mapping to 64-bit addresses.
-> 
-> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
-> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-> Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> Cc: Vidya Sagar <vidyas@nvidia.com>
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 > ---
->   drivers/pci/of.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-> index 1e45186a5715..38fe2589beb0 100644
-> --- a/drivers/pci/of.c
-> +++ b/drivers/pci/of.c
-> @@ -581,7 +581,8 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
->                          res_valid |= !(res->flags & IORESOURCE_PREFETCH);
+> Changes in v6:
+> - Add support in device trees for rv1126(Declared in series 5 but not
+>   submitted)
+> - Change to use "clk_sfc" "hclk_sfc" as clock lable, since it does not
+>   affect interpretation and has been widely used
+> - Support sfc tx_dual, tx_quad(Declared in series 5 but not submitted)
+> - Simplify the code, such as remove "rockchip_sfc_register_all"(Declared
+>   in series 5 but not submitted)
+> - Support SFC ver4 ver5(Declared in series 5 but not submitted)
+> - Add author Chris Morgan and Jon Lin to spi-rockchip-sfc.c
+> - Change to use devm_spi_alloc_master and spi_unregister_master
 > 
->                          if (!(res->flags & IORESOURCE_PREFETCH))
-> -                               if (upper_32_bits(resource_size(res)))
-> +                               if (!(res->flags & IORESOURCE_MEM_64) &&
-> +                                   upper_32_bits(resource_size(res)))
->                                          dev_warn(dev, "Memory resource size exceeds max for 32 bits\n");
+> Changes in v5:
+> - Add support in device trees for rv1126
+> - Support sfc tx_dual, tx_quad
+> - Simplify the code, such as remove "rockchip_sfc_register_all"
+> - Support SFC ver4 ver5
 > 
->                          break;
-> --
-> 2.30.2
+> Changes in v4:
+> - Changing patch back to an "RFC". An engineer from Rockchip
+>   reached out to me to let me know they are working on this patch for
+>   upstream, I am submitting this v4 for the community to see however
+>   I expect Jon Lin (jon.lin@rock-chips.com) will submit new patches
+>   soon and these are the ones we should pursue for mainlining. Jon's
+>   patch series should include support for more hardware than this
+>   series.
+> - Clean up documentation more and ensure it is correct per
+>   make dt_binding_check.
+> - Add support in device trees for rk3036, rk3308, and rv1108.
+> - Add ahb clock (hclk_sfc) support for rk3036.
+> - Change rockchip_sfc_wait_fifo_ready() to use a switch statement.
+> - Change IRQ code to only mark IRQ as handled if it handles the
+>   specific IRQ (DMA transfer finish) it is supposed to handle.
 > 
+> Changes in v3:
+> - Changed the name of the clocks to sfc/ahb (from clk-sfc/clk-hsfc).
+> - Changed the compatible string from rockchip,sfc to
+>   rockchip,rk3036-sfc. A quick glance at the datasheets suggests this
+>   driver should work for the PX30, RK180x, RK3036, RK312x, RK3308 and
+>   RV1108 SoCs, and possibly more. However, I am currently only able
+>   to test this on a PX30 (an RK3326). The technical reference manuals
+>   appear to list the same registers for each device.
+> - Corrected devicetree documentation for formatting and to note these
+>   changes.
+> - Replaced the maintainer with Heiko Stuebner and myself, as we will
+>   take ownership of this going forward.
+> - Noted that the device (per the reference manual) supports 4 CS, but
+>   I am only able to test a single CS (CS 0).
+> - Reordered patches to comply with upstream rules.
+> 
+> Changes in v2:
+> - Reimplemented driver using spi-mem subsystem.
+> - Removed power management code as I couldn't get it working properly.
+> - Added device tree bindings for Odroid Go Advance.
+> 
+> Changes in v1:
+> hanges made in this new series versus the v8 of the old series:
+> - Added function to read spi-rx-bus-width from device tree, in the
+>   event that the SPI chip supports 4x mode but only has 2 pins
+>   wired (such as the Odroid Go Advance).
+> - Changed device tree documentation from txt to yaml format.
+> - Made "reset" message a dev_dbg from a dev_info.
+> - Changed read and write fifo functions to remove redundant checks.
+> - Changed the write and read from relaxed to non-relaxed when
+>   starting the DMA transfer or reading the DMA IRQ.
+> - Changed from dma_coerce_mask_and_coherent to just
+>   dma_set_mask_and_coherent.
+> - Changed name of get_if_type to rockchip_sfc_get_if_type.
+> 
+>  .../devicetree/bindings/spi/rockchip-sfc.yaml | 87 +++++++++++++++++++
+>  1 file changed, 87 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+> 
+
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/rockchip-sfc.example.dt.yaml: spi@ff3a0000: clock-names:0: 'hclk_sfc' was expected
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/rockchip-sfc.example.dt.yaml: spi@ff3a0000: clock-names:1: 'clk_sfc' was expected
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+\ndoc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1489062
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-rockchip mailing list
