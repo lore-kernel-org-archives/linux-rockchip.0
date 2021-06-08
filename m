@@ -2,101 +2,98 @@ Return-Path: <SRS0=ZuRO=LC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 398ECC47082
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 08:04:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D274AC47082
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 16:34:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDA9161287
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 08:04:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDA9161287
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9E14361278
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 16:34:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E14361278
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wvc+oDfc8ObL04IjVnzPW95WoDFrm7r62j+yqArteE4=; b=n1Ee6qVFj2IBcv
-	itSa/imEzbnBeJxfAGS83OxvQK9j1EWbOsNJsKTEG0JVwE1Pp9XjC3dZOU2UMfz3+bLPkpVR3yxG/
-	nGcgxYTI2Nn8ynbML9zvHZNrqKEE1NiF/y20VOwMLVfhLS6vNcReZIV+kEpbbK6FRxDK3etYYrJSI
-	MSyA4K+9ypD5CvJKH+yzeDhxRpeDXKOIuTCF2idr2LzwFBXiw9og4V6EYD+IdqgWgPkLgfPzc/JCW
-	pCoizMX8ytGe1yp8bGMVXSyDNXzbHuBvq5pmSL+aMNrC9jFZ2PxNbLRbQDIvL0La1OfQ7z3r3kZn3
-	4W6QkP08qY1up5dHtlFw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=QsbV8wUX+b5CsIm4hnJyUB5yP1l21UWPIpgIvH7gbH0=; b=rczpdSQXD5GqxD79NXTqxoY3yF
+	6mg+I7YjIJ1NMaF8/ZBu9d3z+X3O4IkYD0Ryt4ZyNFdU/nkodtLpD5KgRpQ7GgrTO5XMGneK8JktA
+	4BmNWA0THuoxU5PiN8DJZZoXl5jflP2P19jgm8yq8MB9nxKAnG4dkJg4BEzKqx8GXwjl/2OMfhbqN
+	RVgzdiCaGoFUHh1NER30cZ2CDOqp5/3zgnYTQQA0BXAfoVxYs8g9KvQE7O6QH023KOOSNqiSlTjSE
+	JZsLtH+YmUo1NZkuyLT2RaDghbaOxRd6d/G4DRUlN4KxAjUly+6oY1t5lWF9JXsjzXxUfjXBw2mA0
+	oHjx491A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqWih-006wCW-Ug; Tue, 08 Jun 2021 08:04:19 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqWie-006wAu-Uk
- for linux-rockchip@lists.infradead.org; Tue, 08 Jun 2021 08:04:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623139456;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=eRLfIlExKhLKW3ohxS3QmcrC8PB6Pwunoa93O+xqbII=;
- b=h1P11D0dibi7H1ucSSL+RGF5dvtFe2kb9esmB08rGU92x58G+6oB0elZDP/wmRIjPPHew+
- o4WSvt13l3O2NPZR66PZAgAqPHjSuAHGcdNmWbpzbZvKReQ2dCRmHRXhX/3U2mEKa7+Ab3
- umd6bbBvoBaRJuFhUh36tvVs584r7ow=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-537-V4b8pmL8NhWokWy01lG91g-1; Tue, 08 Jun 2021 04:04:14 -0400
-X-MC-Unique: V4b8pmL8NhWokWy01lG91g-1
-Received: by mail-wm1-f72.google.com with SMTP id
- l18-20020a05600c4f12b02901921c0f2098so287848wmq.0
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Jun 2021 01:04:14 -0700 (PDT)
+	id 1lqefv-009XWC-8W; Tue, 08 Jun 2021 16:33:59 +0000
+Received: from mail-ed1-f46.google.com ([209.85.208.46])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lqeee-009XAu-G2; Tue, 08 Jun 2021 16:32:42 +0000
+Received: by mail-ed1-f46.google.com with SMTP id f5so20236034eds.0;
+ Tue, 08 Jun 2021 09:32:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WUaKdqkyjh6EzjeWuZqdi2dYNMKlRLnh+NM1sHEfuao=;
+ b=X+CfpsFyq5hloeViHoJlyIds19uSTtUIlXAf7k7HrrJUDrSreBvTIyOHADrMjqCAEq
+ No4vVonjSBSX0Ql67lfm9mL8pDnFKjMF3mKZsNVqW/Pq6NBek2wKwW1hxbkgrKzu8tC4
+ 43kO6TYrViuMaxdFjtiwt6J3TA6tHdQywILSow1IEt3NiZeVn2MTqF/aR0fLIxaGrV1w
+ ozG0OpRHBTDGcY06ZL/er2groWt3t9mndbpDjrnFXgIt92u4v22hUGD8Jtr+J3EiYFn7
+ eAPF1kPCdip9/viRZCIxtzLQB8eEnh7syshU+OfZSfYsV+FGiRrIs+VEHhi41s8cQ7hf
+ c1sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=eRLfIlExKhLKW3ohxS3QmcrC8PB6Pwunoa93O+xqbII=;
- b=Eczxgy0+cjHdHv2me++ZqCmjDA294q0aGpDoFAMQZYrJbY1Sgw4CatizfgtG/JnRpL
- hUiGcd3+Txlp3ofPfATydihO5us5D66c+kg9K91hS2VfnjDvSi0TcGbrNL+t3ZnqWrRi
- eRr/ZPzXME/GS9bY7s2R6x2lz3Il0hJxRBsMi6/Au4upcTZVlJA4RfFydlec1e27gx9f
- 3IZ6TJFQptRmG8nJSoYPjfKKG6AJxI80E/K8oF1uT0Ml0O0nfvsRb2OUZOry5N3LQacM
- 2EiOtvOFNVliRPLhYYLX6a2KBLwjDBgPRWT3qUD/UlXfxJGB69wJhDl+GCmEWf2IPcY4
- dypg==
-X-Gm-Message-State: AOAM533VplvNPUk3Z8rQvYMOYYVNAvDnajauTI1aZvnj4V0C+H3/93dI
- lL2RAx6oWkvjVA8ThtaitBf1OAY5XpTVVeS5B03EPhXSN5KXDMwDt3AGhXvVOOHt6A6NKJQiZLo
- itYYz4d8bf9EZfQxn/coEu8Vn7qN5W6IH
-X-Received: by 2002:a5d:5983:: with SMTP id n3mr8801723wri.241.1623139453734; 
- Tue, 08 Jun 2021 01:04:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMZdm0lOV6CTzcaqjiMsts4ZrMuE5GRipe8Uouaz7yC1zHJCdwRHLBh8j5A6Gyo/laf6JPcw==
-X-Received: by 2002:a5d:5983:: with SMTP id n3mr8801701wri.241.1623139453534; 
- Tue, 08 Jun 2021 01:04:13 -0700 (PDT)
-Received: from minerva.redhat.com ([92.176.231.106])
- by smtp.gmail.com with ESMTPSA id q11sm18515680wrx.80.2021.06.08.01.04.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jun 2021 01:04:13 -0700 (PDT)
-From: Javier Martinez Canillas <javierm@redhat.com>
-To: linux-kernel@vger.kernel.org
-Cc: Javier Martinez Canillas <javierm@redhat.com>,
- Peter Robinson <pbrobinson@gmail.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with clocks
- gated
-Date: Tue,  8 Jun 2021 10:04:09 +0200
-Message-Id: <20210608080409.1729276-1-javierm@redhat.com>
-X-Mailer: git-send-email 2.31.1
+ bh=WUaKdqkyjh6EzjeWuZqdi2dYNMKlRLnh+NM1sHEfuao=;
+ b=Q+V25PJiHzF3wIYu7QGp1c4YkNIz4Pu9FIlvDXn9jZovOZC18jMjy2K/luKW9mhd+F
+ Gkx4OaHj9Zo1gp23SXocBK70RphmpX6bU+4FNWqS/PXN2yYEzJDjSFi+XijHoUD5zFOj
+ Is8cOCNSxIc3saSaCXOBtlFlynuEYqaZo57wJKaDHsYd8lboyFdJCO1E13srZHB2fo0j
+ QuGIoX+1ljf9vEXW55/dxCZGDtzWHBCst+d1SCKEAnQcaMYH4q/sSrhSznZzkoKCf4Yc
+ PRXhHS/qX2LtYd4dmoTRzGIA8utURrKXzPft9pNPrh/Mv6Ijgt0xHNvRhwpD3lWKFUF5
+ v+Sw==
+X-Gm-Message-State: AOAM532qPKSpHHbtgsw0z5NSij87f8kTcK04MeZOsME6QSyvEiFpxTkx
+ u3OQ4LYyuOTEPbvK9lt/HxQ=
+X-Google-Smtp-Source: ABdhPJzzR0UxUuKFEEiY/gFD3U2yfUWNfHociiNEWPmaKlEGhRv6BT2dZsFeIRBn1A82AD/+Z6C00Q==
+X-Received: by 2002:a05:6402:1592:: with SMTP id
+ c18mr19539617edv.2.1623169896749; 
+ Tue, 08 Jun 2021 09:31:36 -0700 (PDT)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ f18sm74848ejz.119.2021.06.08.09.31.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Jun 2021 09:31:36 -0700 (PDT)
+Subject: Re: [PATCH v6 4/8] clk: rockchip: Add support for hclk_sfc on rk3036
+To: Jon Lin <jon.lin@rock-chips.com>, linux-spi@vger.kernel.org
+Cc: broonie@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
+ hjc@rock-chips.com, yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20210608022644.21074-1-jon.lin@rock-chips.com>
+ <20210608022644.21074-5-jon.lin@rock-chips.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
+Date: Tue, 8 Jun 2021 18:31:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=javierm@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20210608022644.21074-5-jon.lin@rock-chips.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_010417_100813_3C2363DB 
-X-CRM114-Status: GOOD (  20.28  )
+X-CRM114-CacheID: sfid-20210608_093240_592561_699128F4 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,96 +111,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-IRQ handlers that are registered for shared interrupts can be called at
-any time after have been registered using the request_irq() function.
+Hi Jon,
 
-It's up to drivers to ensure that's always safe for these to be called.
+For rk3036 we might need another fix added to this serie as well.
 
-Both the "pcie-sys" and "pcie-client" interrupts are shared, but since
-their handlers are registered very early in the probe function, an error
-later can lead to these handlers being executed before all the required
-resources have been properly setup.
+clk: rockchip: rk3036: fix up the sclk_sfc parent error
+https://github.com/rockchip-linux/kernel/commit/100718ef0d44872db1672b6a88030374c0d1613b
 
-For example, the rockchip_pcie_read() function used by these IRQ handlers
-expects that some PCIe clocks will already be enabled, otherwise trying
-to access the PCIe registers causes the read to hang and never return.
+===
+Add more people for clk driver changes:
 
-The CONFIG_DEBUG_SHIRQ option tests if drivers are able to cope with their
-shared interrupt handlers being called, by generating a spurious interrupt
-just before a shared interrupt handler is unregistered.
+M:	Michael Turquette <mturquette@baylibre.com>
+M:	Stephen Boyd <sboyd@kernel.org>
+L:	linux-clk@vger.kernel.org
 
-But this means that if the option is enabled, any error in the probe path
-of this driver could lead to one of the IRQ handlers to be executed.
+===
 
-In a rockpro64 board, the following sequence of events happens:
+Johan
 
-  1) "pcie-sys" IRQ is requested and its handler registered.
-  2) "pcie-client" IRQ is requested and its handler registered.
-  3) probe later fails due readl_poll_timeout() returning a timeout.
-  4) the "pcie-sys" IRQ is unregistered.
-  5) CONFIG_DEBUG_SHIRQ triggers a spurious interrupt.
-  6) "pcie-client" IRQ handler is called for this spurious interrupt.
-  7) IRQ handler tries to read PCIE_CLIENT_INT_STATUS with clocks gated.
-  8) the machine hangs because rockchip_pcie_read() call never returns.
+On 6/8/21 4:26 AM, Jon Lin wrote:
 
-To avoid cases like this, the handlers don't have to be registered until
-very late in the probe function, once all the resources have been setup.
+> From: Chris Morgan <macromorgan@hotmail.com>
 
-So let's just move all the IRQ init before the pci_host_probe() call, that
-will prevent issues like this and seems to be the correct thing to do too.
+From: Randy Li <randy.li@rock-chips.com>
 
-Reported-by: Peter Robinson <pbrobinson@gmail.com>
-Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+> 
+> Add support for the bus clock for the serial flash controller on the
+> rk3036. Taken from the Rockchip BSP kernel but not tested on real
+> hardware (as I lack a 3036 based SoC to test).
+> 
 
-Changes in v2:
-- Add missing word in the commit message.
-- Include Shawn Lin's Acked-by tag.
+Signed-off-by: Randy Li <randy.li@rock-chips.com>
 
- drivers/pci/controller/pcie-rockchip-host.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Maybe give credit to the original author?
+clk: rockchip: rk3036: export the sfc clocks
+https://github.com/rockchip-linux/kernel/commit/600925e8ef6edbdda0a4ac6b3c55b0199be1e03e
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index f1d08a1b159..78d04ac29cd 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -592,10 +592,6 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
- 	if (err)
- 		return err;
- 
--	err = rockchip_pcie_setup_irq(rockchip);
--	if (err)
--		return err;
--
- 	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
- 	if (IS_ERR(rockchip->vpcie12v)) {
- 		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
-@@ -973,8 +969,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_vpcie;
- 
--	rockchip_pcie_enable_interrupts(rockchip);
--
- 	err = rockchip_pcie_init_irq_domain(rockchip);
- 	if (err < 0)
- 		goto err_deinit_port;
-@@ -992,6 +986,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	bridge->sysdata = rockchip;
- 	bridge->ops = &rockchip_pcie_ops;
- 
-+	err = rockchip_pcie_setup_irq(rockchip);
-+	if (err)
-+		goto err_remove_irq_domain;
-+
-+	rockchip_pcie_enable_interrupts(rockchip);
-+
- 	err = pci_host_probe(bridge);
- 	if (err < 0)
- 		goto err_remove_irq_domain;
--- 
-2.31.1
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> ---
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> Changes in v1: None
+> 
+>  drivers/clk/rockchip/clk-rk3036.c      | 2 +-
+>  include/dt-bindings/clock/rk3036-cru.h | 1 +
+>  2 files changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+> index 91d56ad45817..ebb628733f6d 100644
+> --- a/drivers/clk/rockchip/clk-rk3036.c
+> +++ b/drivers/clk/rockchip/clk-rk3036.c
+> @@ -403,7 +403,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+>  	GATE(HCLK_OTG0, "hclk_otg0", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 13, GFLAGS),
+>  	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+>  	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
 
+> -	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+> +	GATE(HCLK_SFC, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+
+Maybe CLK_IGNORE_UNUSED should be changed to 0 ?
+
+>  	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
+>  
+>  	/* pclk_peri gates */
+> diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+> index 35a5a01f9697..a96a9870ad59 100644
+> --- a/include/dt-bindings/clock/rk3036-cru.h
+> +++ b/include/dt-bindings/clock/rk3036-cru.h
+> @@ -81,6 +81,7 @@
+>  #define HCLK_OTG0		449
+>  #define HCLK_OTG1		450
+>  #define HCLK_NANDC		453
+> +#define HCLK_SFC		454
+>  #define HCLK_SDMMC		456
+>  #define HCLK_SDIO		457
+>  #define HCLK_EMMC		459
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
