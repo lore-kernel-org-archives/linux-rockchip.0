@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7267FC47094
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 02:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5FD7C47082
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 02:42:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0B3C660FF2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 02:37:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B3C660FF2
+	by mail.kernel.org (Postfix) with ESMTPS id 9AF706120F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Jun 2021 02:42:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9AF706120F
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rJiwkBXQtjTahodBhlfEgXZ/ceBkydqoYn2QC+hIeeE=; b=yZGQSHVbkFXjDA
-	klpc8KnxwhtMo/VGaFmIAwFSkxpxLY7TsaHmS3VTiIg3AoWzTN9ylIizosJ573YPqVg3it1VoRJiw
-	d6EREqPGgeQuAlpj1XD2OWqvnB/SpWLxPaykaLcF1N47aLvXdYggvOEGsccoZO6NbGZU3RcA3ecpO
-	EegFsKzUxI303HqUFKI5bdXFjVpgWZsXTzSFwbuxnJEOzybs3XyaM0VzuWOZEuOA7deXDQt8+q06V
-	Pvm9AZlWxfKeDIAGQNuZh+KuNkpj/A8fEvG+ePcUdg0JfISMEjGHi9Y6IlEjmGxo/QPZJ7iXDtABW
-	q6+j/EeUgfxeMkH5qa7Q==;
+	List-Owner; bh=5svicBtpMfwlQwlJo7nQBAkNZF6ZJgG68YAiEbCEpK0=; b=niGFJxwRZoWIpt
+	1jd1W5NmP1VWeMJaRN5RUbJf4Xp7jXJYAu0hxIh3rRIyGiFAQetsQn3N8QF5dUilkeI03zw2iNtzv
+	wylaeZZQ1nsSZJhuQBRrmaXKM7HCUI+47WjQiPGXtjbQSuVl0U2j10lN+t8WjlYxc3i5tTngQsVm7
+	7vfe1RWi8Ap1EFfX8CSF7pIBX3mkoFpp6qojJgNs99my7kbT9aIcoquOlkCGcZRnwn6KK4W9SO0pn
+	MJVr3sjzpNOuI1ULGS9OjWDALhkven328MEqjqYu7/1jMFECJrGCHM6xJuLapQzOskhGlofyyCChk
+	YkPIeU8MKpxNs7mfeaiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqRc3-006457-5O; Tue, 08 Jun 2021 02:37:07 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1lqRhU-0065f1-HM; Tue, 08 Jun 2021 02:42:44 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqRYH-00630W-Rp; Tue, 08 Jun 2021 02:33:15 +0000
+ id 1lqRab-0063cy-5t; Tue, 08 Jun 2021 02:35:38 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 0D8A2D1DAD;
- Tue,  8 Jun 2021 10:33:12 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 890B4AD378;
+ Tue,  8 Jun 2021 10:33:13 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P32529T140357266978560S1623119587131429_; 
- Tue, 08 Jun 2021 10:33:12 +0800 (CST)
+ Tue, 08 Jun 2021 10:33:13 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <ee7304e3a05c639803f4bb7d41e0cdec>
+X-UNIQUE-TAG: <882c172b6943d99ddd1d475772e7a370>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -66,16 +66,16 @@ Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
  p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v6 7/8] arm64: dts: rockchip: Add SFC to RK3308
-Date: Tue,  8 Jun 2021 10:33:04 +0800
-Message-Id: <20210608023305.25371-3-jon.lin@rock-chips.com>
+Subject: [PATCH v6 8/8] arm64: dts: rockchip: Enable SFC for Odroid Go Advance
+Date: Tue,  8 Jun 2021 10:33:05 +0800
+Message-Id: <20210608023305.25371-4-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210608023305.25371-1-jon.lin@rock-chips.com>
 References: <20210608022644.21074-1-jon.lin@rock-chips.com>
  <20210608023305.25371-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210607_193314_114597_80A34A8F 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20210607_193537_448725_AA488800 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,7 +96,10 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add a devicetree entry for the Rockchip SFC for the RK3308 SOC.
+This enables the Rockchip Serial Flash Controller for the Odroid Go
+Advance. Note that while the attached SPI NOR flash and the controller
+both support quad read mode, only 2 of the required 4 pins are present.
+The rx and tx bus width is set to 2 for this reason.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
@@ -109,64 +112,36 @@ Changes in v3: None
 Changes in v2: None
 Changes in v1: None
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 37 ++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 0c5fa9801e6f..f40feb08f3cf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -637,6 +637,17 @@
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 49c97f76df77..f78e11dd8447 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -484,6 +484,22 @@
+ 	status = "okay";
+ };
  
-+	sfc: spi@ff4c0000 {
-+		compatible = "rockchip,rk3308-sfc", "rockchip,rk3036-sfc";
-+		reg = <0x0 0xff4c0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_SFC>, <&cru SCLK_SFC>;
-+		clock-names = "hclk_sfc", "clk_sfc";
-+		pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus4>;
-+		pinctrl-names = "default";
-+		status = "disabled";
++&sfc {
++	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
++	pinctrl-names = "default";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <108000000>;
++		spi-rx-bus-width = <2>;
++		spi-tx-bus-width = <2>;
 +	};
++};
 +
- 	cru: clock-controller@ff500000 {
- 		compatible = "rockchip,rk3308-cru";
- 		reg = <0x0 0xff500000 0x0 0x1000>;
-@@ -910,6 +921,32 @@
- 			};
- 		};
- 
-+		serial_flash {
-+			sfc_bus4: sfc-bus4 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>,
-+					<3 RK_PA2 3 &pcfg_pull_none>,
-+					<3 RK_PA3 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_bus2: sfc-bus2 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs0: sfc-cs0 {
-+				rockchip,pins =
-+					<3 RK_PA4 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_clk: sfc-clk {
-+				rockchip,pins =
-+					<3 RK_PA5 3 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		gmac {
- 			rmii_pins: rmii-pins {
- 				rockchip,pins =
+ &tsadc {
+ 	status = "okay";
+ };
 -- 
 2.17.1
 
