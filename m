@@ -2,85 +2,81 @@ Return-Path: <SRS0=4kB8=LD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B322DC48BCD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E32B1C48BCD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 17:06:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7DC1B60FEB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:49:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DC1B60FEB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8E6A161287
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 17:06:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E6A161287
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cqfyhcnlc32GQwsrTde9AOYqiT6rOF2UQTe8w7J+i20=; b=vihjCAceQloflk2s9rgG+vMmSc
-	xrHklTZKRo1GxMomyErl0TEYOLH/+jem3XWjJP1tYT43Kqm+eCTwlZqtJMLKl9VAAaiimAFGQgTzU
-	eZ8jjG2EsskY4RKv0Ebw0RM/0KVBnGROvxOUuEFiX3NY0n6mRbqmuCdSJKX0SilxxHgGFsDL0Mwtf
-	EqEHkB/CeiCOQaVQADw1sMzYU5KR+dTCS1EQiOVVWWHohjOOB4xratoWGZ/bi/UsSecusnBTLQOmO
-	KaRvvirYg6VVki4bYqDlYbI1fdPJtfwuIH/ExrWrUtKqO+O+XbP7TmQoPgFelDnheMtK+8Nsi7Xd1
-	QKrMP0eA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dxZ/fjRNWqzdtcXanL68hXqHvGUpuuZsLXWMi/XOea4=; b=Yf3zQEvay5g/8X
+	WaVj06M8YZ9iO8jdo1nzZVOYESXv55vqV5SFXjU4Rz6OCicaTr3bjQYmvUDW6RW/aHeTkyrHFIptr
+	Y/sshb1CaYsrmhrOu22CnVAeaJDgBJhrXrTgv0n5IxtXi4vulIYefyUIjgqu+vSB5GrqnsrTk3yNI
+	VLUEtMkRmuGC/rb+YA88nd1WZghxoq7T16Trsq0BaAkrAih2Fd15+GG3inAC6CE1rI6B0GWPXzHL5
+	nkcoxKkIi5uA8Ot+VmlUCkVWWOMX3/+h2EMgwT7L4ATGGLlrjO/1sET/xjXGm2744OWvE5AvOoaa6
+	Kt6TlL59J372fTQquzDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lr0ST-00EhyY-Vn; Wed, 09 Jun 2021 15:49:34 +0000
-Received: from regular1.263xmail.com ([211.150.70.204])
+	id 1lr1fH-00FBRN-6G; Wed, 09 Jun 2021 17:06:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqz7V-00EHvb-EZ; Wed, 09 Jun 2021 14:23:53 +0000
-Received: from localhost (unknown [192.168.167.69])
- by regular1.263xmail.com (Postfix) with ESMTP id B1F9B3A4;
- Wed,  9 Jun 2021 22:23:45 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from [172.16.12.73] (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P31907T140446225393408S1623248622928502_; 
- Wed, 09 Jun 2021 22:23:44 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <aaef219e8ac562c7c20e5d7e0c19fa90>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: macromorgan@hotmail.com
-X-RCPT-COUNT: 16
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-Subject: Re: [PATCH v6 4/8] clk: rockchip: Add support for hclk_sfc on rk3036
-To: Johan Jonker <jbx6244@gmail.com>, linux-spi@vger.kernel.org
-Cc: broonie@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
- hjc@rock-chips.com, yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
+ id 1lr0kr-00Enk0-0F; Wed, 09 Jun 2021 16:08:34 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8766F60FDC;
+ Wed,  9 Jun 2021 16:08:32 +0000 (UTC)
+Received: from 82-132-232-218.dab.02.net ([82.132.232.218]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1lr0ko-006XcG-GE; Wed, 09 Jun 2021 17:08:30 +0100
+Date: Wed, 09 Jun 2021 17:08:22 +0100
+Message-ID: <87lf7jqavd.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Punit Agrawal <punitagrawal@gmail.com>, helgaas@kernel.org,
+ robh+dt@kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+ alexandru.elisei@arm.com, wqu@suse.com, robin.murphy@arm.com,
+ pgwipeout@gmail.com, ardb@kernel.org, briannorris@chromium.org,
+ shawn.lin@rock-chips.com
+Subject: Re: [PATCH v3 0/4] PCI: of: Improvements to handle 64-bit attribute
+ for non-prefetchable ranges
+In-Reply-To: <20210607112856.3499682-1-punitagrawal@gmail.com>
+References: <20210607112856.3499682-1-punitagrawal@gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 82.132.232.218
+X-SA-Exim-Rcpt-To: punitagrawal@gmail.com, helgaas@kernel.org,
+ robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20210608022644.21074-1-jon.lin@rock-chips.com>
- <20210608022644.21074-5-jon.lin@rock-chips.com>
- <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
-From: Jon Lin <jon.lin@rock-chips.com>
-Message-ID: <90752de9-786d-171c-26a4-ee2851168c11@rock-chips.com>
-Date: Wed, 9 Jun 2021 22:23:44 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
-Content-Language: en-US
+ linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
+ robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
+ briannorris@chromium.org, shawn.lin@rock-chips.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_072351_478280_944DE528 
-X-CRM114-Status: GOOD (  22.89  )
+X-CRM114-CacheID: sfid-20210609_090833_091568_0546A420 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,93 +89,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Punit,
 
-On 6/9/21 12:31 AM, Johan Jonker wrote:
-> Hi Jon,
->
-> For rk3036 we might need another fix added to this serie as well.
->
-> clk: rockchip: rk3036: fix up the sclk_sfc parent error
-> https://github.com/rockchip-linux/kernel/commit/100718ef0d44872db1672b6a88030374c0d1613b
->
-> ===
-> Add more people for clk driver changes:
->
-> M:	Michael Turquette <mturquette@baylibre.com>
-> M:	Stephen Boyd <sboyd@kernel.org>
-> L:	linux-clk@vger.kernel.org
->
-> ===
->
-> Johan
->
-> On 6/8/21 4:26 AM, Jon Lin wrote:
->
->> From: Chris Morgan <macromorgan@hotmail.com>
-> From: Randy Li <randy.li@rock-chips.com>
->
->> Add support for the bus clock for the serial flash controller on the
->> rk3036. Taken from the Rockchip BSP kernel but not tested on real
->> hardware (as I lack a 3036 based SoC to test).
->>
-> Signed-off-by: Randy Li <randy.li@rock-chips.com>
->
-> Maybe give credit to the original author?
-> clk: rockchip: rk3036: export the sfc clocks
-> https://github.com/rockchip-linux/kernel/commit/600925e8ef6edbdda0a4ac6b3c55b0199be1e03e
-Randy Li has resigned from RK
->> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
->> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
->> ---
->>
->> Changes in v6: None
->> Changes in v5: None
->> Changes in v4: None
->> Changes in v3: None
->> Changes in v2: None
->> Changes in v1: None
->>
->>   drivers/clk/rockchip/clk-rk3036.c      | 2 +-
->>   include/dt-bindings/clock/rk3036-cru.h | 1 +
->>   2 files changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
->> index 91d56ad45817..ebb628733f6d 100644
->> --- a/drivers/clk/rockchip/clk-rk3036.c
->> +++ b/drivers/clk/rockchip/clk-rk3036.c
->> @@ -403,7 +403,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
->>   	GATE(HCLK_OTG0, "hclk_otg0", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 13, GFLAGS),
->>   	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
->>   	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
->> -	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
->> +	GATE(HCLK_SFC, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
-> Maybe CLK_IGNORE_UNUSED should be changed to 0 ?
->
->>   	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
->>   
->>   	/* pclk_peri gates */
->> diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
->> index 35a5a01f9697..a96a9870ad59 100644
->> --- a/include/dt-bindings/clock/rk3036-cru.h
->> +++ b/include/dt-bindings/clock/rk3036-cru.h
->> @@ -81,6 +81,7 @@
->>   #define HCLK_OTG0		449
->>   #define HCLK_OTG1		450
->>   #define HCLK_NANDC		453
->> +#define HCLK_SFC		454
->>   #define HCLK_SDMMC		456
->>   #define HCLK_SDIO		457
->>   #define HCLK_EMMC		459
->>
->
->
+On Mon, 07 Jun 2021 12:28:52 +0100,
+Punit Agrawal <punitagrawal@gmail.com> wrote:
+> 
+> Hi,
+> 
+> This is the third iteration to improve handling of the 64-bit
+> attribute on non-prefetchable host bridge ranges. Previous version can
+> be found at [0][1].
+> 
+> This version is a small update over the previous version - changelog
+> below. If there is no futher feedback on the patches, please consider
+> merging them.
 
+Thanks for this. This brings my test machine back to life:
 
+Acked-by: Marc Zyngier <maz@kernel.org>
+Tested-by: Marc Zyngier <maz@kernel.org>
+
+Any chance this could hit upstream shortly? RK3399 is a fairly popular
+SoC, and a number of us are running test boxes based on it.
+
+Thanks,
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
