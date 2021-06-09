@@ -2,81 +2,85 @@ Return-Path: <SRS0=4kB8=LD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4F91C48BCF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7049C48BCD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:34:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E73860E0B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:25:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E73860E0B
+	by mail.kernel.org (Postfix) with ESMTPS id B4B5560FF0
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:34:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4B5560FF0
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bVMl3Dc47V95xI64SBV5Xudl3cnmvxENKc4MHMfGvNE=; b=AkGiz9MGTJ1QhE
-	0eWipURTk4T4bDiA87wJlVuyJSm+nJz+uoY83AEu4UlnU+XAF1VqfGM4TC0Cv0OVukMtCb34LNvJc
-	191Gjmd5QcdhlTU3yV2LVGtup0eF4kDPKmYwAeP8bZdYWavZVKfiYxKXAPdLCSDNUIHdxu2m6YljU
-	PvYWeVWHNTU0xH0aP9SNfYs/cQig+1/CHumttS6SLgEj0mDpx8LIQFeUdyWWgwMzL7tf9E2gB7UsI
-	1Vo3bQ2TLhZJ/RdPunn+4SMnfINDU+JYwfCdBQMHTV6zoY4iQ55LRqvbRCFqJZ8xe1q45EX+VCfSy
-	IlHFwAjRg9iro7qn44hg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/I9oEY2Iixmq1kGPkWH4hP0BBXjhaOIil295+jwpkuY=; b=J5gKGl7N2nqtkEY/EEq6M/DKjw
+	wQNyfmkwIgDToV7qyB4KY2VandlKrcd7X4hCMWPP83puneXSQfbdnNQNJvPVxk9TS7tlLWorig26S
+	wbW8tHsKj1YcbiOO3rTaX6jWDGZ+N4/varcRKliAedlBQLgc3Hj2e9BmRCe53kkdQqyrWrEJK818l
+	UAG2kbNE4z8KL97G79dP/WJ9lvGTA+iXwy0xg7etNGWOmpHMqM0lQKMdYL0n3g5bA5ySxrLhG4D2s
+	+BX1IlfAwWO98tanNVzuCAmXYAZcWO6VigydbbO4dM7j0tXsAdGgu3pNgFCP1lHS8LIolRJ7B5G4d
+	BOZ56vew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lr05W-00EaLR-JZ; Wed, 09 Jun 2021 15:25:50 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1lr0Dg-00EcaN-Vo; Wed, 09 Jun 2021 15:34:17 +0000
+Received: from regular1.263xmail.com ([211.150.70.201])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqyyK-00EEuE-G9; Wed, 09 Jun 2021 14:14:22 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 1B737F4780;
- Wed,  9 Jun 2021 22:14:05 +0800 (CST)
+ id 1lqz2q-00EGOs-Qo; Wed, 09 Jun 2021 14:19:03 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by regular1.263xmail.com (Postfix) with ESMTP id 3BF1BE31;
+ Wed,  9 Jun 2021 22:18:55 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
 X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+Received: from [172.16.12.73] (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P31748T140095021577984S1623248030099962_; 
- Wed, 09 Jun 2021 22:14:04 +0800 (CST)
+ P30810T139673931085568S1623248332896123_; 
+ Wed, 09 Jun 2021 22:18:54 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <01d169ac8a5294d6bfa7521f5b86bbb1>
+X-UNIQUE-TAG: <9bf565096dc6cc666549660df8d44332>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-spi@vger.kernel.org
-X-RCPT-COUNT: 20
+X-FST-TO: macromorgan@hotmail.com
+X-RCPT-COUNT: 16
 X-SENDER-IP: 58.22.7.114
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: linux-spi@vger.kernel.org
-Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
- heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+Subject: Re: [PATCH v6 4/8] clk: rockchip: Add support for hclk_sfc on rk3036
+To: Johan Jonker <jbx6244@gmail.com>, linux-spi@vger.kernel.org
+Cc: broonie@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
+ hjc@rock-chips.com, yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
  linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
  p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v7 9/9] arm64: dts: rockchip: Enable SFC for Odroid Go Advance
-Date: Wed,  9 Jun 2021 22:13:48 +0800
-Message-Id: <20210609141348.19178-5-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210609141348.19178-1-jon.lin@rock-chips.com>
-References: <20210609140412.16058-1-jon.lin@rock-chips.com>
- <20210609141348.19178-1-jon.lin@rock-chips.com>
+References: <20210608022644.21074-1-jon.lin@rock-chips.com>
+ <20210608022644.21074-5-jon.lin@rock-chips.com>
+ <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
+From: Jon Lin <jon.lin@rock-chips.com>
+Message-ID: <d5b4f452-1f76-e82c-42dd-bc6fdf27a59c@rock-chips.com>
+Date: Wed, 9 Jun 2021 22:18:54 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_071421_593365_9E1FFFEE 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20210609_071901_489457_7779FA5E 
+X-CRM114-Status: GOOD (  23.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,64 +93,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
 
-This enables the Rockchip Serial Flash Controller for the Odroid Go
-Advance. Note that while the attached SPI NOR flash and the controller
-both support quad read mode, only 2 of the required 4 pins are present.
-The rx and tx bus width is set to 2 for this reason.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
-
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 49c97f76df77..f78e11dd8447 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -484,6 +484,22 @@
- 	status = "okay";
- };
- 
-+&sfc {
-+	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
-+	pinctrl-names = "default";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <108000000>;
-+		spi-rx-bus-width = <2>;
-+		spi-tx-bus-width = <2>;
-+	};
-+};
-+
- &tsadc {
- 	status = "okay";
- };
--- 
-2.17.1
-
+On 6/9/21 12:31 AM, Johan Jonker wrote:
+> Hi Jon,
+>
+> For rk3036 we might need another fix added to this serie as well.
+>
+> clk: rockchip: rk3036: fix up the sclk_sfc parent error
+> https://github.com/rockchip-linux/kernel/commit/100718ef0d44872db1672b6a88030374c0d1613b
+>
+> ===
+> Add more people for clk driver changes:
+>
+> M:	Michael Turquette <mturquette@baylibre.com>
+> M:	Stephen Boyd <sboyd@kernel.org>
+> L:	linux-clk@vger.kernel.org
+>
+> ===
+>
+> Johan
+>
+> On 6/8/21 4:26 AM, Jon Lin wrote:
+>
+>> From: Chris Morgan <macromorgan@hotmail.com>
+> From: Randy Li <randy.li@rock-chips.com>
+>
+>> Add support for the bus clock for the serial flash controller on the
+>> rk3036. Taken from the Rockchip BSP kernel but not tested on real
+>> hardware (as I lack a 3036 based SoC to test).
+>>
+> Signed-off-by: Randy Li <randy.li@rock-chips.com>
+>
+> Maybe give credit to the original author?
+> clk: rockchip: rk3036: export the sfc clocks
+> https://github.com/rockchip-linux/kernel/commit/600925e8ef6edbdda0a4ac6b3c55b0199be1e03e
+something wrong when I add randy.li@rock-chips.com email, I will make a 
+confirmation with it with him.
+>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+>> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+>> ---
+>>
+>> Changes in v6: None
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>> Changes in v1: None
+>>
+>>   drivers/clk/rockchip/clk-rk3036.c      | 2 +-
+>>   include/dt-bindings/clock/rk3036-cru.h | 1 +
+>>   2 files changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
+>> index 91d56ad45817..ebb628733f6d 100644
+>> --- a/drivers/clk/rockchip/clk-rk3036.c
+>> +++ b/drivers/clk/rockchip/clk-rk3036.c
+>> @@ -403,7 +403,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+>>   	GATE(HCLK_OTG0, "hclk_otg0", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(5), 13, GFLAGS),
+>>   	GATE(HCLK_OTG1, "hclk_otg1", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+>>   	GATE(HCLK_I2S, "hclk_i2s", "hclk_peri", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+>> -	GATE(0, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+>> +	GATE(HCLK_SFC, "hclk_sfc", "hclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(3), 14, GFLAGS),
+> Maybe CLK_IGNORE_UNUSED should be changed to 0 ?
+>
+>>   	GATE(HCLK_MAC, "hclk_mac", "hclk_peri", 0, RK2928_CLKGATE_CON(3), 5, GFLAGS),
+>>   
+>>   	/* pclk_peri gates */
+>> diff --git a/include/dt-bindings/clock/rk3036-cru.h b/include/dt-bindings/clock/rk3036-cru.h
+>> index 35a5a01f9697..a96a9870ad59 100644
+>> --- a/include/dt-bindings/clock/rk3036-cru.h
+>> +++ b/include/dt-bindings/clock/rk3036-cru.h
+>> @@ -81,6 +81,7 @@
+>>   #define HCLK_OTG0		449
+>>   #define HCLK_OTG1		450
+>>   #define HCLK_NANDC		453
+>> +#define HCLK_SFC		454
+>>   #define HCLK_SDMMC		456
+>>   #define HCLK_SDIO		457
+>>   #define HCLK_EMMC		459
+>>
+>
+>
 
 
 
