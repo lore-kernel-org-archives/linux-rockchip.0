@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7049C48BCD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B322DC48BCD
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:49:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4B5560FF0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:34:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B4B5560FF0
+	by mail.kernel.org (Postfix) with ESMTPS id 7DC1B60FEB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 15:49:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DC1B60FEB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,21 +24,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/I9oEY2Iixmq1kGPkWH4hP0BBXjhaOIil295+jwpkuY=; b=J5gKGl7N2nqtkEY/EEq6M/DKjw
-	wQNyfmkwIgDToV7qyB4KY2VandlKrcd7X4hCMWPP83puneXSQfbdnNQNJvPVxk9TS7tlLWorig26S
-	wbW8tHsKj1YcbiOO3rTaX6jWDGZ+N4/varcRKliAedlBQLgc3Hj2e9BmRCe53kkdQqyrWrEJK818l
-	UAG2kbNE4z8KL97G79dP/WJ9lvGTA+iXwy0xg7etNGWOmpHMqM0lQKMdYL0n3g5bA5ySxrLhG4D2s
-	+BX1IlfAwWO98tanNVzuCAmXYAZcWO6VigydbbO4dM7j0tXsAdGgu3pNgFCP1lHS8LIolRJ7B5G4d
-	BOZ56vew==;
+	bh=cqfyhcnlc32GQwsrTde9AOYqiT6rOF2UQTe8w7J+i20=; b=vihjCAceQloflk2s9rgG+vMmSc
+	xrHklTZKRo1GxMomyErl0TEYOLH/+jem3XWjJP1tYT43Kqm+eCTwlZqtJMLKl9VAAaiimAFGQgTzU
+	eZ8jjG2EsskY4RKv0Ebw0RM/0KVBnGROvxOUuEFiX3NY0n6mRbqmuCdSJKX0SilxxHgGFsDL0Mwtf
+	EqEHkB/CeiCOQaVQADw1sMzYU5KR+dTCS1EQiOVVWWHohjOOB4xratoWGZ/bi/UsSecusnBTLQOmO
+	KaRvvirYg6VVki4bYqDlYbI1fdPJtfwuIH/ExrWrUtKqO+O+XbP7TmQoPgFelDnheMtK+8Nsi7Xd1
+	QKrMP0eA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lr0Dg-00EcaN-Vo; Wed, 09 Jun 2021 15:34:17 +0000
-Received: from regular1.263xmail.com ([211.150.70.201])
+	id 1lr0ST-00EhyY-Vn; Wed, 09 Jun 2021 15:49:34 +0000
+Received: from regular1.263xmail.com ([211.150.70.204])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqz2q-00EGOs-Qo; Wed, 09 Jun 2021 14:19:03 +0000
-Received: from localhost (unknown [192.168.167.32])
- by regular1.263xmail.com (Postfix) with ESMTP id 3BF1BE31;
- Wed,  9 Jun 2021 22:18:55 +0800 (CST)
+ id 1lqz7V-00EHvb-EZ; Wed, 09 Jun 2021 14:23:53 +0000
+Received: from localhost (unknown [192.168.167.69])
+ by regular1.263xmail.com (Postfix) with ESMTP id B1F9B3A4;
+ Wed,  9 Jun 2021 22:23:45 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,10 +47,10 @@ X-SKE-CHECKED: 1
 X-ABS-CHECKED: 1
 Received: from [172.16.12.73] (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P30810T139673931085568S1623248332896123_; 
- Wed, 09 Jun 2021 22:18:54 +0800 (CST)
+ P31907T140446225393408S1623248622928502_; 
+ Wed, 09 Jun 2021 22:23:44 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9bf565096dc6cc666549660df8d44332>
+X-UNIQUE-TAG: <aaef219e8ac562c7c20e5d7e0c19fa90>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -71,16 +71,16 @@ References: <20210608022644.21074-1-jon.lin@rock-chips.com>
  <20210608022644.21074-5-jon.lin@rock-chips.com>
  <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
 From: Jon Lin <jon.lin@rock-chips.com>
-Message-ID: <d5b4f452-1f76-e82c-42dd-bc6fdf27a59c@rock-chips.com>
-Date: Wed, 9 Jun 2021 22:18:54 +0800
+Message-ID: <90752de9-786d-171c-26a4-ee2851168c11@rock-chips.com>
+Date: Wed, 9 Jun 2021 22:23:44 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
 In-Reply-To: <4a4524f5-ee85-c7f6-aa95-1df84f2a8a99@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_071901_489457_7779FA5E 
-X-CRM114-Status: GOOD (  23.22  )
+X-CRM114-CacheID: sfid-20210609_072351_478280_944DE528 
+X-CRM114-Status: GOOD (  22.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,8 +132,7 @@ On 6/9/21 12:31 AM, Johan Jonker wrote:
 > Maybe give credit to the original author?
 > clk: rockchip: rk3036: export the sfc clocks
 > https://github.com/rockchip-linux/kernel/commit/600925e8ef6edbdda0a4ac6b3c55b0199be1e03e
-something wrong when I add randy.li@rock-chips.com email, I will make a 
-confirmation with it with him.
+Randy Li has resigned from RK
 >> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 >> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 >> ---
