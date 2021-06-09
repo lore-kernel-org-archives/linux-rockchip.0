@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 147E4C48BCD
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A6A0C48BCF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D8D2D613AE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8D2D613AE
+	by mail.kernel.org (Postfix) with ESMTPS id 0F41A60E0B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F41A60E0B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=90LDfVENx+PxP/Bp1BnV0oTXB7iKB5AmvQAoEWj8Xmw=; b=okMXJ+js7HZxz0
-	9wwJe58ijzO6T6/4J7y/30E0l2dzcRGNpuKI7kcBMJTqdxp2JoRwBC3b6I0bo/JG7UH71PDAU6aIR
-	oADGbMSlNXimdbZr3UPfemaX9HkkY4tSq2tzeBP7GrtP2CQut6nVKn5YUyevmCDtzf6mNm4624udh
-	3G8HQUEZUHh7riwOIRQAn4FCjGXx3UhdXLdEt6qxuMpGZjHn/U5W7g4iSCMIM54C5z7+eM03zFvZU
-	s9DMe3Vvif+TIQ5oydRgx8O/iFW2a/KuRO107mpO4bbqlaGQoFSbmmPSSXugcrQYRKva4nPrqOqIY
-	T48ILO47sTy57JiXec1A==;
+	List-Owner; bh=WvCpUjinlj7c47fJuouQkGyc18fTIdEJ9KOiu94mN3k=; b=qBzp2j6NLYQSuD
+	vDKmcgRo6+Bc3NAmss+LXaQtQCxDb9Ow7EAT80I3vEyz4n71TvGTdGDRKAJ7KGAPP3kRTxID88O4M
+	seXWJCozq8AJ2m2Vr1K8KiGm900uolyk67os5AQYJMacePJFUfNETS3yRqIsZb+Wi4C37RtUqNJ0I
+	0/wHbTAP5TTH9gHg4EhyVkwErSZkzCONFk+LUwOr2MzAK55fLtBtpbf5q/L9JSP9WseXIh5ZEld2K
+	uXovy7OGXJ7+KglXqwxVULzhdL6MmXkb+tat4bDC8wM52WHe1sFEom1YTCGJ1WRnI1xK80Js4wJQD
+	5+p9ty8OHeBP97oRpGdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqwQz-00DLBc-6c; Wed, 09 Jun 2021 11:31:45 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1lqwR4-00DLEG-AD; Wed, 09 Jun 2021 11:31:50 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqwFu-00DHFH-8w; Wed, 09 Jun 2021 11:20:20 +0000
+ id 1lqwFu-00DHGJ-Qh; Wed, 09 Jun 2021 11:20:21 +0000
 Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
  (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id D370E219BC;
- Wed,  9 Jun 2021 11:20:14 +0000 (UTC)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 72A051FD5E;
+ Wed,  9 Jun 2021 11:20:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237614; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237617; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h+ZIKR66Gjb9uIHTGXu21Qs0ridWWVUt4g+4HcSLyfc=;
- b=XnWyLcXU2DzGKjVpWY+v6GsFXDEvAnsTBuiSFsLYtDqOuSuQ24o7BZ7onxGf1xLaPad5mU
- 918hNEVR8evAVRyMQoWrhChlZiOEb+TV/XShyiMhFRl8SP//hv3k9Igf72r/48f0zcqDEc
- MPAr1LiOPOj6guYJivFP9U39T2osWL4=
+ bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
+ b=Rq55TcomPGhMXwpeFyESUm3GDvlg7OmaZX/qRaxtJN732EyZeijE7CTgQQ81HFu+nOAnWo
+ Z+WU7zDsm0G3ahHPlWoKBpb5pqwby6nzNTPZ1PS16fXw3BOYMdf/6A8Nsq4lS+x0+pYTRj
+ GUC+kQK64wYiUp8guoJ8SnsSvgqFYrw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237614;
+ s=susede2_ed25519; t=1623237617;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h+ZIKR66Gjb9uIHTGXu21Qs0ridWWVUt4g+4HcSLyfc=;
- b=3hlvfUg2sc+GZSp3mXVxRN0jtCQ6ZZAWw26CXhEuVMNAOePsQpDVWMJIvwDLKIJh/YG3fs
- M2puEtDQ2CPjnHBg==
+ bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
+ b=UohKZc2F4Ut9lh/4Tyt67jSW7I9hMjqHQGWVvsSXRh0Vw7JlrrpjYo8yCJSaYDQ6uGjzTJ
+ H4WzmfaRgb3bONBg==
 Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id 354B811A98;
- Wed,  9 Jun 2021 11:20:14 +0000 (UTC)
+ by imap.suse.de (Postfix) with ESMTP id C7C0311A98;
+ Wed,  9 Jun 2021 11:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237614; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237617; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h+ZIKR66Gjb9uIHTGXu21Qs0ridWWVUt4g+4HcSLyfc=;
- b=XnWyLcXU2DzGKjVpWY+v6GsFXDEvAnsTBuiSFsLYtDqOuSuQ24o7BZ7onxGf1xLaPad5mU
- 918hNEVR8evAVRyMQoWrhChlZiOEb+TV/XShyiMhFRl8SP//hv3k9Igf72r/48f0zcqDEc
- MPAr1LiOPOj6guYJivFP9U39T2osWL4=
+ bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
+ b=Rq55TcomPGhMXwpeFyESUm3GDvlg7OmaZX/qRaxtJN732EyZeijE7CTgQQ81HFu+nOAnWo
+ Z+WU7zDsm0G3ahHPlWoKBpb5pqwby6nzNTPZ1PS16fXw3BOYMdf/6A8Nsq4lS+x0+pYTRj
+ GUC+kQK64wYiUp8guoJ8SnsSvgqFYrw=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237614;
+ s=susede2_ed25519; t=1623237617;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h+ZIKR66Gjb9uIHTGXu21Qs0ridWWVUt4g+4HcSLyfc=;
- b=3hlvfUg2sc+GZSp3mXVxRN0jtCQ6ZZAWw26CXhEuVMNAOePsQpDVWMJIvwDLKIJh/YG3fs
- M2puEtDQ2CPjnHBg==
+ bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
+ b=UohKZc2F4Ut9lh/4Tyt67jSW7I9hMjqHQGWVvsSXRh0Vw7JlrrpjYo8yCJSaYDQ6uGjzTJ
+ H4WzmfaRgb3bONBg==
 Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id 2DYmDO6jwGBTUgAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:14 +0000
+ id UPnRL/CjwGBTUgAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:16 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
  l.stach@pengutronix.de, linux+etnaviv@armlinux.org.uk,
@@ -99,16 +99,16 @@ Cc: dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
  spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  xen-devel@lists.xenproject.org, linux-media@vger.kernel.org,
  linaro-mm-sig@lists.linaro.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 1/9] drm/etnaviv: Implement mmap as GEM object function
-Date: Wed,  9 Jun 2021 13:20:04 +0200
-Message-Id: <20210609112012.10019-2-tzimmermann@suse.de>
+Subject: [PATCH 5/9] drm/qxl: Remove empty qxl_gem_prime_mmap()
+Date: Wed,  9 Jun 2021 13:20:08 +0200
+Message-Id: <20210609112012.10019-6-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210609112012.10019-1-tzimmermann@suse.de>
 References: <20210609112012.10019-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_042018_648943_41BEA5D6 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20210609_042019_075175_4794A1F0 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,139 +126,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Moving the driver-specific mmap code into a GEM object function allows
-for using DRM helpers for various mmap callbacks.
-
-The respective etnaviv functions are being removed. The file_operations
-structure fops is now being created by the helper macro
-DEFINE_DRM_GEM_FOPS().
+The function qxl_gem_prime_mmap() returns an error. The two callers
+of gem_prime_mmap are drm_fbdev_fb_mmap() and drm_gem_dmabuf_mmap(),
+which both already handle NULL-callbacks with an error code. So clear
+gem_prime_mmap in qxl and remove qxl_gem_prime_mmap().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/etnaviv/etnaviv_drv.c       | 14 ++------------
- drivers/gpu/drm/etnaviv/etnaviv_drv.h       |  3 ---
- drivers/gpu/drm/etnaviv/etnaviv_gem.c       | 18 +++++-------------
- drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c | 13 -------------
- 4 files changed, 7 insertions(+), 41 deletions(-)
+ drivers/gpu/drm/qxl/qxl_drv.c   | 1 -
+ drivers/gpu/drm/qxl/qxl_drv.h   | 2 --
+ drivers/gpu/drm/qxl/qxl_prime.c | 6 ------
+ 3 files changed, 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-index f0a07278ad04..7dcc6392792d 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-@@ -468,17 +468,7 @@ static const struct drm_ioctl_desc etnaviv_ioctls[] = {
- 	ETNA_IOCTL(PM_QUERY_SIG, pm_query_sig, DRM_RENDER_ALLOW),
- };
- 
--static const struct file_operations fops = {
--	.owner              = THIS_MODULE,
--	.open               = drm_open,
--	.release            = drm_release,
--	.unlocked_ioctl     = drm_ioctl,
--	.compat_ioctl       = drm_compat_ioctl,
--	.poll               = drm_poll,
--	.read               = drm_read,
--	.llseek             = no_llseek,
--	.mmap               = etnaviv_gem_mmap,
--};
-+DEFINE_DRM_GEM_FOPS(fops);
- 
- static const struct drm_driver etnaviv_drm_driver = {
- 	.driver_features    = DRIVER_GEM | DRIVER_RENDER,
-@@ -487,7 +477,7 @@ static const struct drm_driver etnaviv_drm_driver = {
+diff --git a/drivers/gpu/drm/qxl/qxl_drv.c b/drivers/gpu/drm/qxl/qxl_drv.c
+index 854e6c5a563f..b3d75ea7e6b3 100644
+--- a/drivers/gpu/drm/qxl/qxl_drv.c
++++ b/drivers/gpu/drm/qxl/qxl_drv.c
+@@ -281,7 +281,6 @@ static struct drm_driver qxl_driver = {
  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import_sg_table = etnaviv_gem_prime_import_sg_table,
--	.gem_prime_mmap     = etnaviv_gem_prime_mmap,
-+	.gem_prime_mmap     = drm_gem_prime_mmap,
- #ifdef CONFIG_DEBUG_FS
- 	.debugfs_init       = etnaviv_debugfs_init,
- #endif
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.h b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-index 003288ebd896..049ae87de9be 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-@@ -47,12 +47,9 @@ struct etnaviv_drm_private {
- int etnaviv_ioctl_gem_submit(struct drm_device *dev, void *data,
- 		struct drm_file *file);
+ 	.gem_prime_import_sg_table = qxl_gem_prime_import_sg_table,
+-	.gem_prime_mmap = qxl_gem_prime_mmap,
+ 	.fops = &qxl_fops,
+ 	.ioctls = qxl_ioctls,
+ 	.irq_handler = qxl_irq_handler,
+diff --git a/drivers/gpu/drm/qxl/qxl_drv.h b/drivers/gpu/drm/qxl/qxl_drv.h
+index dd6abee55f56..f95885a8bd2b 100644
+--- a/drivers/gpu/drm/qxl/qxl_drv.h
++++ b/drivers/gpu/drm/qxl/qxl_drv.h
+@@ -434,8 +434,6 @@ struct drm_gem_object *qxl_gem_prime_import_sg_table(
+ int qxl_gem_prime_vmap(struct drm_gem_object *obj, struct dma_buf_map *map);
+ void qxl_gem_prime_vunmap(struct drm_gem_object *obj,
+ 			  struct dma_buf_map *map);
+-int qxl_gem_prime_mmap(struct drm_gem_object *obj,
+-				struct vm_area_struct *vma);
  
--int etnaviv_gem_mmap(struct file *filp, struct vm_area_struct *vma);
- int etnaviv_gem_mmap_offset(struct drm_gem_object *obj, u64 *offset);
- struct sg_table *etnaviv_gem_prime_get_sg_table(struct drm_gem_object *obj);
- int etnaviv_gem_prime_vmap(struct drm_gem_object *obj, struct dma_buf_map *map);
--int etnaviv_gem_prime_mmap(struct drm_gem_object *obj,
--			   struct vm_area_struct *vma);
- struct drm_gem_object *etnaviv_gem_prime_import_sg_table(struct drm_device *dev,
- 	struct dma_buf_attachment *attach, struct sg_table *sg);
- int etnaviv_gem_prime_pin(struct drm_gem_object *obj);
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem.c b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-index b8fa6ed3dd73..8f1b5af47dd6 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-@@ -130,8 +130,7 @@ static int etnaviv_gem_mmap_obj(struct etnaviv_gem_object *etnaviv_obj,
- {
- 	pgprot_t vm_page_prot;
+ /* qxl_irq.c */
+ int qxl_irq_init(struct qxl_device *qdev);
+diff --git a/drivers/gpu/drm/qxl/qxl_prime.c b/drivers/gpu/drm/qxl/qxl_prime.c
+index 0628d1cc91fe..4a10cb0a413b 100644
+--- a/drivers/gpu/drm/qxl/qxl_prime.c
++++ b/drivers/gpu/drm/qxl/qxl_prime.c
+@@ -73,9 +73,3 @@ void qxl_gem_prime_vunmap(struct drm_gem_object *obj,
  
--	vma->vm_flags &= ~VM_PFNMAP;
--	vma->vm_flags |= VM_MIXEDMAP;
-+	vma->vm_flags |= VM_IO | VM_MIXEDMAP | VM_DONTEXPAND | VM_DONTDUMP;
- 
- 	vm_page_prot = vm_get_page_prot(vma->vm_flags);
- 
-@@ -154,19 +153,11 @@ static int etnaviv_gem_mmap_obj(struct etnaviv_gem_object *etnaviv_obj,
- 	return 0;
+ 	qxl_bo_vunmap(bo);
  }
- 
--int etnaviv_gem_mmap(struct file *filp, struct vm_area_struct *vma)
-+static int etnaviv_gem_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma)
- {
--	struct etnaviv_gem_object *obj;
--	int ret;
 -
--	ret = drm_gem_mmap(filp, vma);
--	if (ret) {
--		DBG("mmap failed: %d", ret);
--		return ret;
--	}
-+	struct etnaviv_gem_object *etnaviv_obj = to_etnaviv_bo(obj);
- 
--	obj = to_etnaviv_bo(vma->vm_private_data);
--	return obj->ops->mmap(obj, vma);
-+	return etnaviv_obj->ops->mmap(etnaviv_obj, vma);
- }
- 
- static vm_fault_t etnaviv_gem_fault(struct vm_fault *vmf)
-@@ -567,6 +558,7 @@ static const struct drm_gem_object_funcs etnaviv_gem_object_funcs = {
- 	.unpin = etnaviv_gem_prime_unpin,
- 	.get_sg_table = etnaviv_gem_prime_get_sg_table,
- 	.vmap = etnaviv_gem_prime_vmap,
-+	.mmap = etnaviv_gem_mmap,
- 	.vm_ops = &vm_ops,
- };
- 
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-index b390dd4d60b7..4d9e8e9b6191 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-@@ -34,19 +34,6 @@ int etnaviv_gem_prime_vmap(struct drm_gem_object *obj, struct dma_buf_map *map)
- 	return 0;
- }
- 
--int etnaviv_gem_prime_mmap(struct drm_gem_object *obj,
--			   struct vm_area_struct *vma)
+-int qxl_gem_prime_mmap(struct drm_gem_object *obj,
+-		       struct vm_area_struct *area)
 -{
--	struct etnaviv_gem_object *etnaviv_obj = to_etnaviv_bo(obj);
--	int ret;
--
--	ret = drm_gem_mmap_obj(obj, obj->size, vma);
--	if (ret < 0)
--		return ret;
--
--	return etnaviv_obj->ops->mmap(etnaviv_obj, vma);
+-	return -ENOSYS;
 -}
--
- int etnaviv_gem_prime_pin(struct drm_gem_object *obj)
- {
- 	if (!obj->import_attach) {
 -- 
 2.31.1
 
