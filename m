@@ -2,62 +2,60 @@ Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4524FC47094
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 07:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD442C47094
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 07:53:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE2CD613F1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 07:31:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE2CD613F1
+	by mail.kernel.org (Postfix) with ESMTPS id 571A9613CB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 07:53:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 571A9613CB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nJqnnaGa0RG0PCKXtTpseN/1SUnQX0zpyZPVZzjL4TE=; b=d6qdX7+7Pf5NPa
-	+s4RK9F7wRRRWdtJ1wxED5v6CJHJ+eWLI0RpAzZVM/0k2qcf7+2IDXIY2sp7esXWLYkVNq0Jgmt0C
-	DIqUgY3G35W8GomBZDELFMgioTwLRNqZym6Zuv0tDtXvMzmjfsOZOpo6YKXpouw90q1Iq9VnwyzjE
-	d1urEsJ1DlOcyVbz151t58jFAycnYJxOJgf6M8l5EM34AKkVfo6U5YSXcAFMVA7xtJ5d8dwqp3BNm
-	GWwjtPi+H0Q1UKT/E9dSLyx4RRkhTsR69ccLY+AQfHd9D96JSmLZOwqq2WV2PZTbAIfCzIks/7rBd
-	8FyehLSfWhql2xOL54ag==;
+	List-Owner; bh=h4qqYzEgnV/Tkc0Y9X2x5QPX/dT6LP4u3lU3j0G/8lY=; b=Q0IEsMlLtU7lhY
+	prcyrItxqLyZnSUPVtPIVcU99wIw9gikuRBfhzHbGLbu3uZWgVrc/n/vN2uQqRmXIwLyBtKIa0rBx
+	25JHZAzYASwk/UDZDq69bspGSoozpbWCDLpgW1X23S+TtPCnQjyjI4sZmCVj2vjchJ0Q1CVB2PgEz
+	dZV5nlcjV5yB5ciVxGts9W0gp6ZkXfm2uW4pQj3sTGeHAkrQtsKqdZzbD8VIw/pxYyerVnMCPn+6a
+	ORqZ1a8xCnMD8RybEAzGjRw9LqlPHJPrOfWVZVlf+Q4VHyGWm603QgA9Ym0ggjA/7qpEd399/uZHd
+	mK3YCVFekVjMEcNFEzKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrF9Y-00HERW-TX; Thu, 10 Jun 2021 07:31:00 +0000
+	id 1lrFVd-00HJg3-UX; Thu, 10 Jun 2021 07:53:49 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrF9W-00HEQi-B5; Thu, 10 Jun 2021 07:30:59 +0000
+ id 1lrFV7-00HJU3-Fc; Thu, 10 Jun 2021 07:53:18 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
+ helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lrF9P-0002mW-8K; Thu, 10 Jun 2021 09:30:51 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+ id 1lrFV5-0002uS-J6; Thu, 10 Jun 2021 09:53:15 +0200
+From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: robh+dt@kernel.org, vkoul@kernel.org, kishon@ti.com, t.schramm@manjaro.org,
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: soc: rockchip: drop unnecessary #phy-cells
- from grf.yaml
-Date: Thu, 10 Jun 2021 09:30:50 +0200
-Message-ID: <11362049.qUNvkh4Gvn@diego>
-In-Reply-To: <46289b3c-f804-624b-3c74-1989e57d0a7c@gmail.com>
-References: <e7e09072-9cac-413e-dca2-e2a668c1807e@gmail.com>
- <20210607141845.3331910-1-heiko@sntech.de>
- <46289b3c-f804-624b-3c74-1989e57d0a7c@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ARM: dts: rockchip: fix supply properties in io-domains
+ nodes
+Date: Thu, 10 Jun 2021 09:53:14 +0200
+Message-Id: <162331157357.3382826.15742943707319190282.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210606181632.13371-1-jbx6244@gmail.com>
+References: <20210606181632.13371-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_003058_413634_30903DA4 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20210610_005317_571563_EFDE1C2B 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +73,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 7. Juni 2021, 17:37:06 CEST schrieb Johan Jonker:
-> 
-> On 6/7/21 4:18 PM, Heiko Stuebner wrote:
-> > The recent yaml conversion of the grf and inno-usb2-phy bindings
-> > left the #phy-cells in place in the main usb2phy node inside the
-> > example in grf.yaml, causing new warnings.
-> > 
-> > Drop it to make the bindingcheck happy.
-> > 
-> > Fixes: e71ccdff376b ("dt-bindings: phy: rename phy nodename in phy-rockchip-inno-usb2.yaml")
-> > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> > ---
-> 
-> > Like this I guess?
-> 
-> Hi Heiko,
-> 
-> When I apply this patch locally and give the command below the
-> notifications are gone.
-> 
-> make ARCH=arm dt_binding_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+On Sun, 6 Jun 2021 20:16:32 +0200, Johan Jonker wrote:
+> A test with rockchip-io-domain.yaml gives notifications
+> for supply properties in io-domains nodes.
+> Fix them all into ".*-supply$" format.
 
-so I've applied the patch on top now in my tree.
+Applied, thanks!
 
-Heiko
+[1/1] ARM: dts: rockchip: fix supply properties in io-domains nodes
+      commit: f07edc41220b14ce057a4e6d7161b30688ddb8a2
 
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
