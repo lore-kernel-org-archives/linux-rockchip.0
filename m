@@ -7,64 +7,81 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC984C48BCF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 00:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1869C48BCF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 02:44:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 776FE613EC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 00:23:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 776FE613EC
+	by mail.kernel.org (Postfix) with ESMTPS id 6AE4461410
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 02:44:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AE4461410
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=S8r400SQ2bMW1okZwbBVGtvPtmT4cSLh04j5icsWBcE=; b=lbo7xxKHSYVIvT
-	8/aSMnV9IE/d0ZlmTRY43URKM6g8yoICbU/mMbod9QwXm70tvlmuh8KuOA6D87QtJlMc3tf8K8rOp
-	mgeFpRAwb6Z5AtCxz65aMPVFMqAap6tFbMVjy0QCNZk57VG6gkxg8yJcjEEY1u3o39AOgGXxLf4dP
-	VrxILMhXKc3gp05ypSdTKOtgmzy4BN391knRjwx4Ph3U4Vx7LvM/acZWmhEm+vf9XCIiFRDV5u4Ht
-	guHtQm+wQ2/Ik0D6OmpxSJuRV7m1vVBtU13mH8uGxykvmflEyml4jEv5VRp+FKcRNs8nV6UnoNvJp
-	dI0ky363eMG/gH1GBQHA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gcEW5m1tpXzjrH5BYBl39Pv8D6QPa0+ErqVq3ZlMoWI=; b=t/uFTpj0RW4D3L
+	AWI6/ZO/S6Nx7KpCaSQ6sBsNoJWfh+beg8m/hAWh59eGP8zTeB0KI5thaez30aTpTDJmY9Lk+oX1a
+	MgA1Yo2XhhBooPj/O6v9FcJsZRDinUD5RWi7XUYLvLp3l3TQwKKdwlssH1Jw7ymeJ9kdLXqdqRfQh
+	OA1xbnNJ4yu6c+Kv//TQDPo3GQCRZl4tD7zFeFZsAc/lsTHyCXj40Vz0jSX7Su+YRghqwqiSup3+/
+	TVfd9RL/avVXPXAqwKtyMbDCOaewhmp9geBqXRpsjdBabfmynrvN2WdbSbdKCIF5DKCookj68zj0U
+	aAjwHJP78/SEUDWt7w0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lr8TY-00G9fb-5m; Thu, 10 Jun 2021 00:23:12 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lrAfk-00GVMe-O5; Thu, 10 Jun 2021 02:43:56 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lr8TK-00G9e9-GT; Thu, 10 Jun 2021 00:23:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8A202613EC;
- Thu, 10 Jun 2021 00:22:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623284577;
- bh=1ou36G5z4ISmBgYTkl+QY1b+Z7f8tmx56db6O6BZH8Y=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=hCUqCStiKTi+c41zEsR2OLq8QrOXGEoOPTv38uAT1iLZdW20i5YPJLmaoum1R40Fa
- JjPYE7SYJrswOPcKfWRp53d7cnspY8PQXIdb7mkFstOhs+5UlJkLT27iYQx1e1tSce
- p4enlJ8nQ1Bus7Cyj2RXNd0N/dTkjrvgke+nllfp56NjeSr7F6z+kpgED9FSCFmeRy
- f3zWJE8+LM0IORF+/Wpy4XcXGJ3RWBKpAFwD5P4uEm818Kz95xATb1h3pQ1hC6AHw8
- lecsdK2j8UWPwnSac/foW+ozyVT3qy1Ue3iTsZssbT5uhQZjytcfq40HtwrMKGntML
- 4JKYEeKA0UJbg==
-Date: Wed, 9 Jun 2021 19:22:56 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Punit Agrawal <punitagrawal@gmail.com>
-Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
- robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
- briannorris@chromium.org, shawn.lin@rock-chips.com,
- Bjorn Helgaas <bhelgaas@google.com>, Leonardo Bras <leobras.c@gmail.com>
-Subject: Re: [PATCH v3 1/4] PCI: of: Clear 64-bit flag for non-prefetchable
- memory below 4GB
-Message-ID: <20210610002256.GA2680171@bjorn-Precision-5520>
+ id 1lrAfh-00GVL7-Jc; Thu, 10 Jun 2021 02:43:55 +0000
+Received: by mail-ot1-f46.google.com with SMTP id
+ 69-20020a9d0a4b0000b02902ed42f141e1so26089862otg.2; 
+ Wed, 09 Jun 2021 19:43:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=dImUtuZhYj/XM6SXnOoPdWYPwbVVRclZFlt4djv5m4I=;
+ b=fvBuWPM8ffu++zSFeYLkGisqDjcNxr1dgXMKq5FHw1Zz36WIhKskqlKrEWFy97mGCX
+ 2VHoc2HdwsdVScjl/GORkG1tU4LspQpxGunKz1YrA4dNUQsyWCcqA5Kh9kCqfjhLWqIk
+ Bp7Y6JENp/mho9RSv9VdxrkbbDUmYVhdzYMwDRWQhnTrzsEZbmZZ1N1qD9r3DVJZS9SK
+ OMWHdV/mxY/aVxSMT134HMpbYSyqckiOAzC/CTOQaTxJY9d7iU9/sErmBiu9VIHt8HyY
+ JoMOIxAttsZ75WDyPlAPz770bkkRlVc5yXdMrYWFCQbdrznw2JvY7m7IpX2cRORVQS7V
+ 6cdw==
+X-Gm-Message-State: AOAM533rdRS1VRWiERQtfpzKmWBb4mm6/HdsllBNQilYg1oi4StxxdWv
+ 3ah9aeFCHAGi33zo/JWPCw==
+X-Google-Smtp-Source: ABdhPJyBbya+zcm+FNUz27ZCbnnVovIW8rnlJgE1oiJjPoTI61rtVEt6hV/gGWqmvF9ZFn0ASOJC/w==
+X-Received: by 2002:a9d:554f:: with SMTP id h15mr534270oti.237.1623293032608; 
+ Wed, 09 Jun 2021 19:43:52 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id q6sm316972oot.40.2021.06.09.19.43.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Jun 2021 19:43:51 -0700 (PDT)
+Received: (nullmailer pid 706007 invoked by uid 1000);
+ Thu, 10 Jun 2021 02:43:50 -0000
+Date: Wed, 9 Jun 2021 21:43:50 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-spi@vger.kernel.org, broonie@kernel.org, heiko@sntech.de,
+ jbx6244@gmail.com, hjc@rock-chips.com, yifeng.zhao@rock-chips.com,
+ sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ linux-mtd@lists.infradead.org, p.yadav@ti.com, macroalpha82@gmail.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, mturquette@baylibre.com, sboyd@kernel.org,
+ linux-clk@vger.kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH v7 1/9] dt-bindings: rockchip-sfc: Bindings for Rockchip
+ serial flash controller
+Message-ID: <20210610024350.GA697147@robh.at.kernel.org>
+References: <20210609140412.16058-1-jon.lin@rock-chips.com>
+ <20210609140412.16058-2-jon.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210607112856.3499682-2-punitagrawal@gmail.com>
+In-Reply-To: <20210609140412.16058-2-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_172258_609487_75AF7E47 
-X-CRM114-Status: GOOD (  24.57  )
+X-CRM114-CacheID: sfid-20210609_194353_710737_7BFB97CA 
+X-CRM114-Status: GOOD (  43.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,113 +99,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-[+cc Leonardo]
-
-On Mon, Jun 07, 2021 at 08:28:53PM +0900, Punit Agrawal wrote:
-> Some host bridges advertise non-prefetchable memory windows that are
-> entirely located below 4GB but are marked as 64-bit address memory.
+On Wed, Jun 09, 2021 at 10:04:04PM +0800, Jon Lin wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-> flags for 64-bit memory addresses"), the OF PCI range parser takes a
-> stricter view and treats 64-bit address ranges as advertised while
-> before such ranges were treated as 32-bit.
+> Add bindings for the Rockchip serial flash controller. New device
+> specific parameter of rockchip,sfc-no-dma included in documentation.
 > 
-> A PCI root port modelled as a PCI-to-PCI bridge cannot forward 64-bit
-> non-prefetchable memory ranges. As a result, the change in behaviour
-> due to the commit causes failure to allocate 32-bit BAR from a 64-bit
-> non-prefetchable window.
-> 
-> In order to not break platforms where non-prefetchable memory ranges
-> lie entirely below 4GB, clear the 64-bit flag.
-
-I don't think we should care about the address width DT supplies for a
-host bridge window.  Prior to 9d57e61bf723, I don't think we *did*
-care because of_bus_pci_get_flags() threw away that information.
-
-My proposal for a commit log, including information about the problem
-report and a "Fixes:" tag:
-
-  Alexandru and Qu reported this resource allocation failure on
-  ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
-
-    pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-    pci 0000:00:00.0: PCI bridge to [bus 01]
-    pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-    pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-
-  "BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
-  PCI allocation code isn't smart enough to allocate it in a host
-  bridge window marked as 64-bit, even though this should work fine.
-
-  A DT host bridge description includes the windows from the CPU
-  address space to the PCI bus space.  On a few architectures
-  (microblaze, powerpc, sparc), the DT may also describe PCI devices
-  themselves, including their BARs.
-
-  Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-  flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
-  the fact that some DT addresses described 64-bit windows and BARs.
-  That was a problem because the virtio virtual NIC has a 32-bit BAR
-  and a 64-bit BAR, and the driver couldn't distinguish them.
-
-  9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
-  fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
-  bridge windows, which exposed the fact that the PCI allocator isn't
-  smart enough to put 32-bit resources in those 64-bit windows.
-
-  Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
-  that information.
-
-  Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
-  Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
-  Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-  Reported-by: Qu Wenruo <wqu@suse.com>
-
-> Suggested-by: Ard Biesheuvel <ardb@kernel.org>
-> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
-> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-> Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Rob Herring <robh+dt@kernel.org>
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 > ---
->  drivers/pci/of.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
 > 
-> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-> index 85dcb7097da4..1e45186a5715 100644
-> --- a/drivers/pci/of.c
-> +++ b/drivers/pci/of.c
-> @@ -353,6 +353,14 @@ static int devm_of_pci_get_host_bridge_resources(struct device *dev,
->  				dev_warn(dev, "More than one I/O resource converted for %pOF. CPU base address for old range lost!\n",
->  					 dev_node);
->  			*io_base = range.cpu_addr;
-> +		} else if (resource_type(res) == IORESOURCE_MEM) {
-> +			if (!(res->flags & IORESOURCE_PREFETCH)) {
-> +				if (res->flags & IORESOURCE_MEM_64)
-> +					if (!upper_32_bits(range.pci_addr + range.size - 1)) {
-> +						dev_warn(dev, "Clearing 64-bit flag for non-prefetchable memory below 4GB\n");
-> +						res->flags &= ~IORESOURCE_MEM_64;
-> +					}
-> +			}
+> Changes in v7:
+> - Fix up the sclk_sfc parent error in rk3036
+> - Unify to "rockchip,sfc" compatible id because all the feature update
+>   will have a new IP version, so the driver is used for the SFC IP in
+>   all SoCs
+> - Change to use node "sfc" to name the SFC pinctrl group
+> - Add subnode reg property check
+> - Add rockchip_sfc_adjust_op_size to workaround in CMD + DUMMY case
+> - Limit max_iosize to 32KB
+> 
+> Changes in v6:
+> - Add support in device trees for rv1126(Declared in series 5 but not
+>   submitted)
+> - Change to use "clk_sfc" "hclk_sfc" as clock lable, since it does not
+>   affect interpretation and has been widely used
+> - Support sfc tx_dual, tx_quad(Declared in series 5 but not submitted)
+> - Simplify the code, such as remove "rockchip_sfc_register_all"(Declared
+>   in series 5 but not submitted)
+> - Support SFC ver4 ver5(Declared in series 5 but not submitted)
+> - Add author Chris Morgan and Jon Lin to spi-rockchip-sfc.c
+> - Change to use devm_spi_alloc_master and spi_unregister_master
+> 
+> Changes in v5:
+> - Add support in device trees for rv1126
+> - Support sfc tx_dual, tx_quad
+> - Simplify the code, such as remove "rockchip_sfc_register_all"
+> - Support SFC ver4 ver5
+> 
+> Changes in v4:
+> - Changing patch back to an "RFC". An engineer from Rockchip
+>   reached out to me to let me know they are working on this patch for
+>   upstream, I am submitting this v4 for the community to see however
+>   I expect Jon Lin (jon.lin@rock-chips.com) will submit new patches
+>   soon and these are the ones we should pursue for mainlining. Jon's
+>   patch series should include support for more hardware than this
+>   series.
+> - Clean up documentation more and ensure it is correct per
+>   make dt_binding_check.
+> - Add support in device trees for rk3036, rk3308, and rv1108.
+> - Add ahb clock (hclk_sfc) support for rk3036.
+> - Change rockchip_sfc_wait_fifo_ready() to use a switch statement.
+> - Change IRQ code to only mark IRQ as handled if it handles the
+>   specific IRQ (DMA transfer finish) it is supposed to handle.
+> 
+> Changes in v3:
+> - Changed the name of the clocks to sfc/ahb (from clk-sfc/clk-hsfc).
+> - Changed the compatible string from rockchip,sfc to
+>   rockchip,rk3036-sfc. A quick glance at the datasheets suggests this
+>   driver should work for the PX30, RK180x, RK3036, RK312x, RK3308 and
+>   RV1108 SoCs, and possibly more. However, I am currently only able
+>   to test this on a PX30 (an RK3326). The technical reference manuals
+>   appear to list the same registers for each device.
+> - Corrected devicetree documentation for formatting and to note these
+>   changes.
+> - Replaced the maintainer with Heiko Stuebner and myself, as we will
+>   take ownership of this going forward.
+> - Noted that the device (per the reference manual) supports 4 CS, but
+>   I am only able to test a single CS (CS 0).
+> - Reordered patches to comply with upstream rules.
+> 
+> Changes in v2:
+> - Reimplemented driver using spi-mem subsystem.
+> - Removed power management code as I couldn't get it working properly.
+> - Added device tree bindings for Odroid Go Advance.
+> 
+> Changes in v1:
+> hanges made in this new series versus the v8 of the old series:
+> - Added function to read spi-rx-bus-width from device tree, in the
+>   event that the SPI chip supports 4x mode but only has 2 pins
+>   wired (such as the Odroid Go Advance).
+> - Changed device tree documentation from txt to yaml format.
+> - Made "reset" message a dev_dbg from a dev_info.
+> - Changed read and write fifo functions to remove redundant checks.
+> - Changed the write and read from relaxed to non-relaxed when
+>   starting the DMA transfer or reading the DMA IRQ.
+> - Changed from dma_coerce_mask_and_coherent to just
+>   dma_set_mask_and_coherent.
+> - Changed name of get_if_type to rockchip_sfc_get_if_type.
+> 
+>  .../devicetree/bindings/spi/rockchip-sfc.yaml | 88 +++++++++++++++++++
+>  1 file changed, 88 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+> new file mode 100644
+> index 000000000000..42e4198e92af
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+> @@ -0,0 +1,88 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/spi/rockchip-sfc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Serial Flash Controller (SFC)
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +
+> +allOf:
+> +  - $ref: spi-controller.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: rockchip,sfc
 
-Why do we need to check IORESOURCE_PREFETCH, IORESOURCE_MEM_64, and
-upper_32_bits()?  If I understand this correctly, prior to
-9d57e61bf723, IORESOURCE_MEM_64 was *never* set here.  Isn't something
-like this sufficient?
+Use 'enum' instead of oneOf+const.
 
-  } else if (resource_type(res) == IORESOURCE_MEM) {
-    res->flags &= ~IORESOURCE_MEM_64;
-  }
+You need an SoC specific compatible.
 
-I'm not sure we need a warning either.  We didn't warn before
-9d57e61bf723, and there's nothing the user needs to do anyway.
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Bus Clock
+> +      - description: Module Clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: clk_sfc
+> +      - const: hclk_sfc
 
->  		}
->  
->  		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+Do you have these backwards? 'hclk' is usually an AHB bus clock.
+
+Also, '_sfc' is redundant.
+
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  rockchip,sfc-no-dma:
+> +    description: Disable DMA and utilize FIFO mode only
+> +    type: boolean
+> +
+> +patternProperties:
+> +    "^flash@[0-3]$":
+> +      type: object
+> +      properties:
+> +        reg:
+> +          minimum: 0
+> +          maximum: 3
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/px30-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/power/px30-power.h>
+> +
+> +    sfc: spi@ff3a0000 {
+> +        compatible = "rockchip,sfc";
+> +        reg = <0xff3a0000 0x4000>;
+> +        interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+> +        clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
+> +        clock-names = "clk_sfc", "hclk_sfc";
+> +        pinctrl-0 = <&sfc_clk &sfc_cs &sfc_bus2>;
+> +        pinctrl-names = "default";
+> +        power-domains = <&power PX30_PD_MMC_NAND>;
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        flash@0 {
+> +            compatible = "jedec,spi-nor";
+> +            reg = <0>;
+> +            spi-max-frequency = <108000000>;
+> +            spi-rx-bus-width = <2>;
+> +            spi-tx-bus-width = <2>;
+> +        };
+> +    };
+> +
+> +...
 > -- 
-> 2.30.2
-> 
+> 2.17.1
 
 _______________________________________________
 Linux-rockchip mailing list
