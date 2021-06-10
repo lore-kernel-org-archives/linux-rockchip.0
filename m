@@ -2,20 +2,21 @@ Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA48EC47094
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 16:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC747C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 17:38:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A148613E3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 16:07:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A148613E3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 67FE1613E1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 17:38:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67FE1613E1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,61 +24,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tfay5fSyc0SuTO2dkY5x8Z/KG1jwNDmSI0koquHAb2k=; b=xSp9u5QdzTWhMm
-	/l9V8VIH6Kpc24Jg/6wTqbp0kzo8spgzltp1oLA2JmVFjZp6IndZJVIbYkn9M5+CZMet9vioO8jIP
-	koHacFxHF3CUbhAuVmMCmwF7DuJ5eHT4sQyVHs3JPyCp3Ae0rGRFfMJcZx/p33VyZJpb14n5p1jDO
-	I2jzCWVNc08ZWpUPBa0K2W89KrxbtPLtq0MgCTgQNs477xy2bC95PShTk/xWaYl/spaeS/Y/PuNQ1
-	kYrXyJilLS9EpriqZF9Cqhkv0XV7mHeX4X+s2k16ZuKFcXX8lxcrGz2NHHmERl6WwqF8ETC5bXJv0
-	r+/m2g1Qx63E71ongHqg==;
+	List-Owner; bh=wS81seTV65j9Kd7BM9g34OhWh8pAahEEI6mbpZvFJiI=; b=3F1YlQ5ovWDwRQ
+	Ce0Ssq/YkKcLbkRfGYE6dvqxcz62tMmhmLoubzNfcHBtG9EMNItf8SqbDGb4m93jlzzGN6LEFGXJQ
+	Dwlu8TDQ9pFkTKGofj6y3amgSxybUXTFEopHY8w9pWv1A+FenBZuuUSAb+p/zQtzGa5l+QwMUd0VU
+	Q4vKpiovRzmblB1mM2KT7dpjCnNeh5D+FMPLr7SJUKyhx32DG/7SctLznOe3gqpOo6c9dWdkWQJ+x
+	nUXT8umww2PJZ0SmuYE/fIBbp95i0OI+A2Z5x7HEKYWeFe6mhMF0fZsxYo/x86T4E5k3Bdlt07fIe
+	rSoEODt6NaI5OXaUqQPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrNDK-001ZlI-DV; Thu, 10 Jun 2021 16:07:26 +0000
-Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	id 1lrOd2-001xA3-SA; Thu, 10 Jun 2021 17:38:04 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrNCY-001ZWQ-LR; Thu, 10 Jun 2021 16:06:39 +0000
-Received: by mail-ot1-f46.google.com with SMTP id
- v27-20020a056830091bb02903cd67d40070so221527ott.1; 
- Thu, 10 Jun 2021 09:06:37 -0700 (PDT)
+ id 1lrOd0-001x9J-KN; Thu, 10 Jun 2021 17:38:04 +0000
+Received: by mail-oi1-f175.google.com with SMTP id r16so2606947oiw.3;
+ Thu, 10 Jun 2021 10:38:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=WxflIbs/48qSISC+lCpr67Z9h2+PanKTJGd2chvt3SQ=;
+ b=sMYeb2dDv0woPkwS8dxtiJAZn5Nngn64wlnDijDEBm0grkbAohUHqruJBngyFaEUOj
+ bPTOw0+aoZDeLZXHUK6VApZGwIGHAzaz6gIKdy1WdAEHtJCy85OVtJo52W3Nicji/7z5
+ ZmLGGFZQZdrLupZ0UNPHHAafJAu5dFcIeQ95BuHviiUF6tkI4TT08A3aHQr9f5cldbt/
+ L9oi88V6lYN3YkzqJYvFkBTYhl6h1yIxzznDU4SLRQPy2tOkQaZ0Xd/C7q0VvQVMOQw+
+ RLSHp6tqNOhU0P7tWoypuHA5dwYkPV5umr7Hi1JWCYuZZMGseduU4YcQK5icTwln/Mac
+ FMVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=rxqQk5aKXfH8UaE4CFyDXn1vUL+w5pv/lwdq0F6kEMY=;
- b=K/uSATypa57p5EMirKPARlwC0f+dlxiMh4bQY/+ZhJ+vFg/533T8VWhQzUv9EqvTP3
- Hsq1A02rBSMF0JNO5rhDw+h+eW3g+ya7qvXDKcWAW4mRh6d7ffhszxe83xK35uEnQdB2
- 3tsVp8nxfFGO/ggIz+/rzTsvVUIeIe9YTLJy3bfO7OF08OltIlejadC2zx/yhYSpqKxZ
- ysoG2FaN/J5EZ28OrrINQtNew+PuxKiihd8RctUjOL7yITVN6KhIUOeCko05sVjHnRnI
- VD5UP1a5dH6snMA9blICpDEzTqkcHZ42+H5RAK1/UHq2qFdovdE73u13UhsTk8KomCUK
- 77Fg==
-X-Gm-Message-State: AOAM532nMwRuED92T4vP9z4tLp8/aagZtKYD3js0DFOOk2bWDL3LGZil
- d0KTFHsVYVX0FV5jnlkG4w==
-X-Google-Smtp-Source: ABdhPJwov5RI4si9eQhd6XsEeuC32d2dIO1xtzkVyC0dJGyD0zJfZ6epsAiDIboK1+FgpVibfS0Llw==
-X-Received: by 2002:a9d:5ccd:: with SMTP id r13mr3027731oti.13.1623341197323; 
- Thu, 10 Jun 2021 09:06:37 -0700 (PDT)
-Received: from robh.at.kernel.org ([172.58.99.113])
- by smtp.gmail.com with ESMTPSA id e29sm622376oiy.53.2021.06.10.09.06.35
+ bh=WxflIbs/48qSISC+lCpr67Z9h2+PanKTJGd2chvt3SQ=;
+ b=A7JKA2dtW2TK/Uawt6HmhInVXXZJwLOg7khbXUxSzB/OjKFMuGBbHsc6edsWippToe
+ 0NzLwatV61GCO853djfIbgElNh5BQYYruyZohBUNVzEFxooOOwl2WY93nNR2gUxKiAM2
+ gN+lUj73quA/MDKGWq8iFMdTtsHunRLbXlQxATy7NPTwsCnXsCgA+2YJTtuTbSImXJ56
+ odDpm66HUSBuzHuZuNg99pJCUKWjUdfAYjVShd8djlkYqMeYW3ooF0T6V7k+wUny74Pw
+ TAdhC8Xmtof59+NaL1I8VCCHsMd3K/oyjufRbvgUUmSv99z1APC+Bq18GKgTH+X8SA9j
+ nykg==
+X-Gm-Message-State: AOAM532t+Y4M0tKzbm+okikKeWQzrZ8RgevJckekgIMTkPzl5RFGDvvZ
+ oOyH16jePvWrdd77dgvyPobjS7dC9Ks=
+X-Google-Smtp-Source: ABdhPJwjCV1uWMlJ9KROgTfw2tgpkPH+P0jRB8KvKDtnhToT/kREHqzL6vWNrdVj3p+6zowc5WIgTw==
+X-Received: by 2002:a05:6808:14e:: with SMTP id
+ h14mr7095904oie.151.1623346619783; 
+ Thu, 10 Jun 2021 10:36:59 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
+ [76.183.134.35])
+ by smtp.gmail.com with ESMTPSA id s15sm686945oih.15.2021.06.10.10.36.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Jun 2021 09:06:36 -0700 (PDT)
-Received: (nullmailer pid 1894616 invoked by uid 1000);
- Thu, 10 Jun 2021 16:06:34 -0000
-Date: Thu, 10 Jun 2021 11:06:34 -0500
-From: Rob Herring <robh@kernel.org>
+ Thu, 10 Jun 2021 10:36:59 -0700 (PDT)
+Date: Thu, 10 Jun 2021 12:36:57 -0500
+From: Chris Morgan <macroalpha82@gmail.com>
 To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, broonie@kernel.org,
- devicetree@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org
-Subject: Re: [PATCH v6 1/6] dt-bindings: spi: spi-rockchip: add description
- for rv1126
-Message-ID: <20210610160634.GA1894512@robh.at.kernel.org>
-References: <20210607111837.31074-1-jon.lin@rock-chips.com>
- <20210607111837.31074-2-jon.lin@rock-chips.com>
+Cc: linux-spi@vger.kernel.org, broonie@kernel.org, robh+dt@kernel.org,
+ heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
+ yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ p.yadav@ti.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ mturquette@baylibre.com, sboyd@kernel.org,
+ linux-clk@vger.kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH v7 9/9] arm64: dts: rockchip: Enable SFC for Odroid Go
+ Advance
+Message-ID: <20210610173657.GA20228@wintermute.localdomain>
+References: <20210609140412.16058-1-jon.lin@rock-chips.com>
+ <20210609141348.19178-1-jon.lin@rock-chips.com>
+ <20210609141348.19178-5-jon.lin@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210607111837.31074-2-jon.lin@rock-chips.com>
+In-Reply-To: <20210609141348.19178-5-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_090638_747571_1E4FF1C0 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20210610_103802_703926_74CFE14C 
+X-CRM114-Status: GOOD (  31.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,34 +110,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 07 Jun 2021 19:18:32 +0800, Jon Lin wrote:
-> The description below will be used for rv1126.dtsi or compatible one in
-> the future
+On Wed, Jun 09, 2021 at 10:13:48PM +0800, Jon Lin wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
+> This enables the Rockchip Serial Flash Controller for the Odroid Go
+> Advance. Note that while the attached SPI NOR flash and the controller
+> both support quad read mode, only 2 of the required 4 pins are present.
+> The rx and tx bus width is set to 2 for this reason.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 > ---
 > 
-> Changes in v6:
-> - Consider to compatibility, the "rockchip,rk3568-spi" is removed in
->   Series-changes v5, so the commit massage should also remove the
->   corresponding information
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> Changes in v1: None
 > 
-> Changes in v5:
-> - Change to leave one compatible id rv1126, and rk3568 is compatible
->   with rv1126
+>  .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
 > 
-> Changes in v4:
-> - Adjust the order patches
-> - Simply commit massage like redundancy "application" content
-> 
-> Changes in v3:
-> - Fix compile error which is find by Sascha in [v2,2/8]
-> 
->  Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> index 49c97f76df77..f78e11dd8447 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> @@ -484,6 +484,22 @@
+>  	status = "okay";
+>  };
+>  
+> +&sfc {
+> +	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
+> +	pinctrl-names = "default";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	status = "okay";
+> +
+> +	flash@0 {
+> +		compatible = "jedec,spi-nor";
+> +		reg = <0>;
+> +		spi-max-frequency = <108000000>;
+> +		spi-rx-bus-width = <2>;
+> +		spi-tx-bus-width = <2>;
 
-Acked-by: Rob Herring <robh@kernel.org>
+Note that I am still working with Jon Lin to research this, but it was
+found in testing that if I set the tx bus width to 1 the problems I
+encountered in earlier are resolved. At this time I do not know if it
+is an issue with the driver for the flash controller, or if the NOR, or
+board itself has some sort of errata which prevent dual tx from working
+correctly. Note that as of right now the flash chip I am using (an
+XTX XT25F128B) is not currently supported in mainline, so it's very
+possible this is some sort of errata with the chip. It's also possible
+that there is something with the board that is interferring with dual
+mode TX.  When Jon comes back that he has tested dual mode on the SFC
+with a different board/chip I will recommend that we change the tx
+bus width here to a 1, and then once the XT25F128B gets mainlined we
+can see if someone else has issues with dual tx mode so we can note
+that as a problem with the chip. Or maybe there is something weird
+with dual tx mode yet on the SFC driver/controller, I don't know yet.
+I'm all too happy to work with a Rockchip engineer so things like
+this can be determined before we hit mainline. :-)
+
+The XTX25F128B driver is currently awaiting a decision on how to handle
+continuation codes, as this chip ID should be using continuation codes,
+but doesn't appear to return them when you query for manufacturer ID.
+So I should also note in the commit here that the SFC will still be
+unusable on the Odroid Go Advance until the XTX25F128B is also
+mainlined.
+
+Thank you.
+
+> +	};
+> +};
+> +
+>  &tsadc {
+>  	status = "okay";
+>  };
+> -- 
+> 2.17.1
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
