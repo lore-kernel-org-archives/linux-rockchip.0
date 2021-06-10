@@ -2,97 +2,68 @@ Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63F70C48BD1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 19:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC214C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 19:58:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F13061376
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 19:39:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F13061376
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5FCF9613F1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 19:58:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FCF9613F1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=SThnUqQ83bhiOGH74tJE+w7l4DmGzwDdS0BKNN7YOpI=; b=Yn3i6pAepRMD0s/Uq21KhUDbWi
-	g67ARz4OR73I7mx1hLe/bPWGiDIF/WzH5BKVZun9MMFOIT5FTiI2X6a2SHbTVQGR0MA+Nnc3IsVwY
-	l6ws3RAZsuTvH6uCv9OrqqM7tMbS9aU7upYLLCuOgFesONyXmvZ8koZ00JVxulULa8RzAgndJPwU7
-	v7bxEEpXHpOOtPw9U59wR8XgDIx2MNa5j7vIPFIg9Zd291TxOmdpbpYhQgtFrOfeCl7Rd5BRWHwd7
-	V1NRZO0AQ8bqMvJ6GMxKiiAX4EuCjE5aP4EHcijm/Pb14wJ6gGnkK5OHNsM7I4fYCvzYIE+q8y8Kx
-	zAlMd7mw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=EN37tapCQmFIofGezl6Re0APFkNVI9yNQcY8hYab5Fg=; b=CyRgfNrGmKCaei
+	FbAHRPS5gImKIrOghUFhDjIGv4uiloR5BaZIei4nBurPXNgyXLJJRdBAcRr+uaUI39RXXOQMoW3ct
+	DirAwLP41wbPXJ/1vVtFpxhMigXEgipSbrIiM5jPwvHb0LQClyDJU+kW4TJyIqZQ5Ntmp5UvYMw54
+	lWrR2GVgnTW6wlNQlDvpDqxQ0CLQSRDB8RrsNNrhN/9l86yVSMxTUHq6QU/GxdnD810kZZVO85fqZ
+	O3yNzCrYEw5VkgUeReCm4gCtzFAoiQJM6/ww+AImhPZWBD9XcbLuNaHEWj0oZRgyiZka79XjJ3ct3
+	eQ04ywzM/L8wbkYNV06Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrQWS-002Fpy-RR; Thu, 10 Jun 2021 19:39:24 +0000
-Received: from mail-ej1-f53.google.com ([209.85.218.53])
+	id 1lrQpK-002JkJ-73; Thu, 10 Jun 2021 19:58:54 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrQWG-002Foy-0s; Thu, 10 Jun 2021 19:39:13 +0000
-Received: by mail-ej1-f53.google.com with SMTP id k25so900946eja.9;
- Thu, 10 Jun 2021 12:39:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CxZFPPf8/Af3IJZUxSvuHpUIlLCprby35hrQY11nLk0=;
- b=BWtEQUN8nf/6VjFK7uhX1RcY5asvzB2UiEbS72Lz0vJtWPA30K4QVKDr6Poc2pDDRe
- sRdWYwKF8HsBo6gKk3HT6GgCsVSXYDKywKq3m02x93ockwiewh/qXh/4UtQAm8fzeCxf
- aMHpeKdJkB431MW04XPNfStFauvgt7cL2szhZCIrWpPmFOpeYHWqtNutYewQnZpWXVe4
- j2CvPpeKXMkT4K2rWmBh0FreOG/A/EX83YXlvalPdxTRUEjX5QrjrcifbA6KRDeBn/zF
- 4suCR09L32ROUOHYS7A8X5VizRrJ5ULkzqV5YxpLTU0Be2MMvmrjn+EVOrTwAV4gMnNb
- M+yQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=CxZFPPf8/Af3IJZUxSvuHpUIlLCprby35hrQY11nLk0=;
- b=TOJ8o5eFpyiy3sdPbvq8cjImv+aGBYJP+8z6TlE0THaZawujLShF1cS/6SZqzEHSzT
- zSd3CO9RH7ruSnfA4hVFeLCRW7RKwhbABDPeH32MWHjvZN4BtLkrLN8ZP1V2XrwBikaS
- Iuoc6zgp9IjnOh/rbL3AiTRZIRjHlrU03e5D+wD416mRHVzW+RxISjf27Nd0AxFb1Lvk
- lC1gVb1S+5NfhCkhGbafBQmiOrqv7RC3uwguHNV1eTGtWe3Bpqjan5d8ljSTEFm7G+Zz
- Fs1KKCGhIhKxzDcojnH7czdBsIv13bwF5d1PxKmmcLousL653nLkgET1O3RCyFckbZwJ
- IH8w==
-X-Gm-Message-State: AOAM53240CyeZleoINkdQZt+lUXF2T6jOcvH/HREMWIuZYPZ3eIuZ6/p
- /oeJ3a6p8kQfGvZ+ubMKMj8=
-X-Google-Smtp-Source: ABdhPJyV9fK6I1s/3kbZNh9kRn5B7l5/zIUTRIqKYyA4U8+9QjxZxRwR6ZMJACtn2u8d3uufYfUE3A==
-X-Received: by 2002:a17:906:2f91:: with SMTP id
- w17mr193983eji.443.1623353889221; 
- Thu, 10 Jun 2021 12:38:09 -0700 (PDT)
-Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- d2sm1105423ejo.13.2021.06.10.12.38.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Jun 2021 12:38:08 -0700 (PDT)
-Subject: Re: [PATCH v6 1/6] dt-bindings: spi: spi-rockchip: add description
- for rv1126
-To: Rob Herring <robh@kernel.org>, Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, broonie@kernel.org,
- devicetree@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org
-References: <20210607111837.31074-1-jon.lin@rock-chips.com>
- <20210607111837.31074-2-jon.lin@rock-chips.com>
- <20210610160634.GA1894512@robh.at.kernel.org>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <e71e9bca-4c30-d155-2beb-cb85a7b3106a@gmail.com>
-Date: Thu, 10 Jun 2021 21:38:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lrQp6-002JjF-VQ; Thu, 10 Jun 2021 19:58:42 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 47300613F1;
+ Thu, 10 Jun 2021 19:58:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623355120;
+ bh=kyGuLMDF162Fna1fj5F+84zmcept7WSNEY+f7MK484o=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=IjPcbRt0GQZMWhtPbUMb8xgQSM+Ne/eCj9jDaMprVwqnCoSXLqvxRninjdI7S19vt
+ 7MTs0MMAQWQ2Nj0z295gOE9LqQD6XLetok1Wm2WXBLBEElgSlyYaDP9zzK/8sz/KMM
+ 0QLGtRKJY7tMXeMPgjKrA71orT4ccuaFcIkUgQjwsChWIFwZA2ojO7idmCQ7ZyLff7
+ ODE4Fe7sVY/p72UUmPGtBCqp6128pP4O5QDqVVLvUoZ1RoFJXCsWVq2p36kQpnVCmi
+ 3uR0DeuTuhiFHnGTtg0usbYvZ7tofQRp2bNv0yQddM2Ma9lSUlmxDyMp5WB4/Jbj+1
+ C7gatqt3P016A==
+Date: Thu, 10 Jun 2021 14:58:38 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Punit Agrawal <punitagrawal@gmail.com>
+Cc: Vidya Sagar <vidyas@nvidia.com>, robh+dt@kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
+ robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
+ briannorris@chromium.org, shawn.lin@rock-chips.com
+Subject: Re: [PATCH v3 2/4] PCI: of: Relax the condition for warning about
+ non-prefetchable memory aperture size
+Message-ID: <20210610195838.GA2763134@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <20210610160634.GA1894512@robh.at.kernel.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <87y2bhkdxd.fsf@stealth>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_123912_105417_59AD136C 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20210610_125841_074765_F6545F4A 
+X-CRM114-Status: GOOD (  42.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,63 +81,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-Similar to the Rockchip SFC discussion this compatible does currently
-not add any data or difference to the driver. Therefore a simple
-fallback string will do for now. That in the past that was not strictly
-enforced, so be it.
-Could you have a look at it?
-
-Kind regards,
-
-Johan Jonker
-
-https://lore.kernel.org/linux-rockchip/20210607063448.29589-1-jon.lin@rock-chips.com/T/#e202225dbe50829069becd2915267124f379bf2fe
-
-               - rockchip,rk3368-spi
-               - rockchip,rk3399-spi
-
-               - rockchip,rv1126-spi
-
-           - const: rockchip,rk3066-spi
-
-
-On 6/10/21 6:06 PM, Rob Herring wrote:
-> On Mon, 07 Jun 2021 19:18:32 +0800, Jon Lin wrote:
->> The description below will be used for rv1126.dtsi or compatible one in
->> the future
->>
->> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
->> ---
->>
->> Changes in v6:
->> - Consider to compatibility, the "rockchip,rk3568-spi" is removed in
->>   Series-changes v5, so the commit massage should also remove the
->>   corresponding information
->>
->> Changes in v5:
->> - Change to leave one compatible id rv1126, and rk3568 is compatible
->>   with rv1126
->>
->> Changes in v4:
->> - Adjust the order patches
->> - Simply commit massage like redundancy "application" content
->>
->> Changes in v3:
->> - Fix compile error which is find by Sascha in [v2,2/8]
->>
->>  Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
->>  1 file changed, 1 insertion(+)
->>
+On Thu, Jun 10, 2021 at 11:11:10PM +0900, Punit Agrawal wrote:
+> Hi Bjorn,
 > 
-> Acked-by: Rob Herring <robh@kernel.org>
+> Bjorn Helgaas <helgaas@kernel.org> writes:
 > 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> > On Wed, Jun 09, 2021 at 12:36:08AM +0530, Vidya Sagar wrote:
+> >> On 6/7/2021 4:58 PM, Punit Agrawal wrote:
+> >> > 
+> >> > Commit fede8526cc48 ("PCI: of: Warn if non-prefetchable memory
+> >> > aperture size is > 32-bit") introduced a warning for non-prefetchable
+> >> > resources that need more than 32bits to resolve. It turns out that the
+> >> > check is too restrictive and should be applicable to only resources
+> >> > that are limited to host bridge windows that don't have the ability to
+> >> > map 64-bit address space.
+> >>
+> >> I think the host bridge windows having the ability to map 64-bit address
+> >> space is different from restricting the non-prefetchable memory aperture
+> >> size to 32-bit.
+> >
+> >> Whether the host bridge uses internal translations or not to map the
+> >> non-prefetchable resources to 64-bit space, the size needs to be programmed
+> >> in the host bridge's 'Memory Limit Register (Offset 22h)' which can
+> >> represent sizes only fit into 32-bits.
+> >
+> >> Host bridges having the ability to map 64-bit address spaces gives
+> >> flexibility to utilize the vast 64-bit space for the (restrictive)
+> >> non-prefetchable memory (i.e. mapping non-prefetchable BARs of endpoints to
+> >> the 64-bit space in CPU's view) and get it translated internally and put a
+> >> 32-bit address on the PCIe bus finally.
+> >
+> > The vastness of the 64-bit space in the CPU view only helps with
+> > non-prefetchable memory if you have multiple host bridges with
+> > different CPU-to-PCI translations.  Each root bus can only carve up
+> > 4GB of PCI memory space for use by its non-prefetchable memory
+> > windows.
+> >
+> > Of course, if we're willing to give up the performance, there's
+> > nothing to prevent us from using non-prefetchable space for
+> > *prefetchable* resources, as in my example below.
+> >
+> > I think the fede8526cc48 commit log is incorrect, or at least
+> > incomplete:
+> >
+> >   As per PCIe spec r5.0, sec 7.5.1.3.8 only 32-bit BAR registers are defined
+> >   for non-prefetchable memory and hence a warning should be reported when
+> >   the size of them go beyond 32-bits.
+> >
+> > 7.5.1.3.8 is talking about non-prefetchable PCI-to-PCI bridge windows,
+> > not BARs.  AFAIK, 64-bit BARs may be non-prefetchable.  The warning is
+> > in pci_parse_request_of_pci_ranges(), which isn't looking at
+> > PCI-to-PCI bridge windows; it's looking at PCI host bridge windows.
+> > It's legal for a host bridge to have only non-prefetchable windows,
+> > and prefetchable PCI BARs can be placed in them.
+> >
+> > For example, we could have the following:
+> >
+> >   pci_bus 0000:00: root bus resource [mem 0x80000000-0x1_ffffffff] (6GB)
+> >   pci 0000:00:00.0: PCI bridge to [bus 01-7f]
+> >   pci 0000:00:00.0:   bridge window [mem 0x80000000-0xbfffffff] (1GB)
+> >   pci 0000:00:00.0:   bridge window [mem 0x1_00000000-0x1_7fffffff 64bit pref] (2GB)
+> >   pci 0000:00:00.1: PCI bridge to [bus 80-ff]
+> >   pci 0000:00:00.1:   bridge window [mem 0xc0000000-0xffffffff] (1GB)
+> >   pci 0000:00:00.1:   bridge window [mem 0x1_80000000-0x1_ffffffff 64bit pref] (2GB)
+> >
+> > Here the host bridge window is 6GB and is not prefetchable.  The
+> > PCI-to-PCI bridge non-prefetchable windows are 1GB each and the bases
+> > and limits fit in 32 bits.  The prefetchable windows are 2GB each, and
+> > we're allowed but not required to put these in prefetchable host
+> > bridge windows.
+> >
+> > So I'm not convinced this warning is valid to begin with.  It may be
+> > that this host bridge configuration isn't optimal, and we might want
+> > an informational message, but I think it's *legal*.
 > 
+> By "optimal" - are you referring to the use of non-prefetchable space
+> for prefetchable window?
+
+Yes.  I just meant that we don't know the specific capabilities of the
+host bridge, and firmware or the native driver may not have configured
+it in the optimal way.
+
+> Also, if the warning doesn't apply to PCI host bridge windows, should I
+> drop it in the next update? Or leave out this and the next patch to be
+> dealt with separately.
+
+I'd like to hear Vidya's thoughts on this first in case I'm
+misinterpreting something.
+
+In the meantime, I think it's not terrible if you leave this as-is for
+now.  Worst-case we'll get some warnings that we might not need, but
+IIUC, patches 2/4 and 3/4 don't fix a functional problem.
+
+I don't know whether the IORESOURCE_PREFETCH bit on host bridge
+windows is important or not.  I *think* it's common for ACPI host
+bridge descriptions to have no windows described as "prefetchable" (at
+least, my garden-variety laptop has none):
+
+  pci_bus 0000:00: root bus resource [mem 0xfd000000-0xfe7fffff window]
+  pci 0000:00:01.0: PCI bridge to [bus 01]
+  pci 0000:00:01.0:   bridge window [mem 0xc0000000-0xd1ffffff 64bit pref]
+  pci 0000:00:1c.1: PCI bridge to [bus 03]
+  pci 0000:00:1c.1:   bridge window [mem 0xd2100000-0xd2afffff 64bit pref]
+  pci 0000:00:1d.6: PCI bridge to [bus 06-3e]
+  pci 0000:00:1d.6:   bridge window [mem 0x90000000-0xb1ffffff 64bit pref]
+
+I guess we must just rely on the fact that BIOS has already programmed
+those prefetchable windows?  I really don't know how this works, to be
+honest.
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
