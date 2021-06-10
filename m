@@ -2,69 +2,88 @@ Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C601FC48BDF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 18:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B57EC48BD1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 18:37:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90E1F6128A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 18:29:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90E1F6128A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id BD553613DD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 18:37:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD553613DD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=nC48iT2BSv9eRGHLa+g7DS8Y0dT9QBikf+PzWabu6iw=; b=EX2CIY4q6NeWQe
-	UQSm3kolPh8jFjo6KmQ5HMpDvGIqQ0AiQq/nlJQ42KelZQRH7M2F/uosd0Dei1iIUCt6FoZo7ufle
-	aW2l85/0GO1OurnHul5YlWPIuuvfEpw/h5EbkXPlBZ1KVJD1Ff4sAXQ2u1tqJAdyjqdtZx3rbfeYR
-	YrSiHrIRhiDOHXxB+iEyGjYfdFnkLss+eOBMx0otUf1hdKta99hb+QLskL8DsIL2otOfcJo3uUNOJ
-	zZhrcwldmBidpkIpz1lywJsB5FfkXyildIMSBI8g5pHdF3mHm4gzeXowrm+6LQZUueKmcrbuXM+GO
-	SoqjRgxUg88+No9ELgVA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mKHaLuvGGxuHCboqUolqIJ4yjHe9ZPp/I6tyAnOrUoI=; b=Z9eKNVWH3cvaN3
+	WoqEizrkdIFjDGAAZPK/V6Kmm+ef5Uy2sbbvbeceF0rKxB4AtpCBH2AIJUXv91WPUwbkEapzddFJy
+	Sfld/flmwUjYXIhmSevl9UUzJNWvhP+LSbqW405Egm0DCHO9aQfx0iQfPLWLvQ3gT/RQzV5AuC7wf
+	YeMNPNlUnl8dJjeljvyo+WjtNP0zCLRFW0RbBm/BVL43VqZZle9RKEH+o3ckSIl/xINqjo3QeqXbU
+	5h1VlvuCAtnBJixLJvZWllDzXGM4xCaHYVcdCjnXrx3O7TdvYe7t9CKbG7K+18ln15UZ7B+vCv8oP
+	Qg0hPOMGumZ/j+72qEgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrPQS-0027ec-Rv; Thu, 10 Jun 2021 18:29:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lrPYf-0029ZF-Uh; Thu, 10 Jun 2021 18:37:37 +0000
+Received: from mail-ej1-f44.google.com ([209.85.218.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrPQ2-0027Z8-Fz; Thu, 10 Jun 2021 18:28:44 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A84466128A;
- Thu, 10 Jun 2021 18:28:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623349722;
- bh=wqLLoq0Rj8LsBDQW7JGx4xJ1bErblXKavjFDE05WbFQ=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=a4yxjoHLHsRy7EDWXZaBby5hDOgQqjThyxXtTa4hruv0HqIR17fQc++HoybVjHgAH
- 3Zf70x4Jlu1+IXCcmYdYFJgdNm9PhXCBgihzd1HQJqRWA58cvOoOjAC1MehhGI/zE8
- bLdpixRKar0nq2IDTOVL0pkuaz8PJPQFsBxJEQG1Bpe6RFwX5MPoGWjEm1mDdiBux0
- wldm+Pm56rE2Zd0uMjfavHk0tyxChFBc2qmCEHzSjAKFRe+FIv1L5VkgMfrgRjTKNW
- 8hfew/FnmoXuTnLmGiAEzTE/wPCJ4TDZn0JeUxZSZy2VgBhn6BrGb398y3NfpnD9LG
- 0gyibgZD3T5kw==
-Date: Thu, 10 Jun 2021 13:28:40 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Punit Agrawal <punitagrawal@gmail.com>
-Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
- robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
- briannorris@chromium.org, shawn.lin@rock-chips.com,
- Bjorn Helgaas <bhelgaas@google.com>, Leonardo Bras <leobras.c@gmail.com>
-Subject: Re: [PATCH v3 1/4] PCI: of: Clear 64-bit flag for non-prefetchable
- memory below 4GB
-Message-ID: <20210610182840.GA2761440@bjorn-Precision-5520>
+ id 1lrPYc-0029Yb-HH; Thu, 10 Jun 2021 18:37:36 +0000
+Received: by mail-ej1-f44.google.com with SMTP id he7so635968ejc.13;
+ Thu, 10 Jun 2021 11:37:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=O5wkxO8QLdK9dzVgaw2Fq3uvrVJfjDhJQZ8ABNe3dZA=;
+ b=vN7Fu29bt1zQOV3TPc1j27nwk6sn9hv5a7UBJu16jqWtV4JCIYbJxfrQ/KUC6r/6DI
+ yNnnUbsO5HTZ2niRWNPKoMvDpcNBIAqaJUxY3LDRmhY8AYLSGmDoZQ2qyjLnuZfL9hnf
+ OnBYs9DkeTQpYythbQWne9XP291VNaYwgpuEfjssX3GDFbnLQTjHlPHau5YzJBY1ddvP
+ 5xbt5/LSYoUWpVN7r+csJm8oP9ZlqXW1/Wo2kgZ6dNph+6c/hu+Skpr6tcnbV4qSnj6M
+ rF75qsb1FwC6DCJ6xxIdZMz9C6raUrcYqz1Fwya4YobPkPIhUHNCqqlmelYY1oZzfJar
+ SacA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=O5wkxO8QLdK9dzVgaw2Fq3uvrVJfjDhJQZ8ABNe3dZA=;
+ b=b8sNyH/XKHgvCt9egMTaLuke2nR0rDVy8d1yb6IYPjiUHvCWt0ZZiP3I2znSqJQ6fO
+ GReHoKodUmWXnZFMaKLDXevsbtApmKZECR/clOa1W7Rc7KokEneJOkkrm0tfgf7bBSfY
+ OBBIw5D8qKiXFO0qhpUztN6HI+FkEd017BLPWYtvGUc8cZuEa5sSMf3vSTERs9DULrbe
+ /JktVieZxHAXOpx8SlQuMHUqqG0pD9A9PZELhapPFwu9hMg6Egy9ws9keHNIPb5BZKqv
+ 226wlu/M8hVrB4OFZdPWXSZhpqqrSjyDdkhR8teudTFiVDkTxWgphHEjh3ig3HsqSd7V
+ OVGg==
+X-Gm-Message-State: AOAM533PoistNWYnoHbrN8VwUacd034YIyULw15Bur9E2mjHapCMI2k0
+ Fv+BSKGMNaweC/XrcCahSQwruPhng3kyJj7Rc5c=
+X-Google-Smtp-Source: ABdhPJwvMCwYQgv/O05nKt7PghNtEBnyNXnfw1qRnTLZG68Z9Hkd5QbXnmNnhsygamLK5pyswux3pyP9mzw/yaYbEHE=
+X-Received: by 2002:a17:906:dd6:: with SMTP id p22mr28995eji.191.1623350192524; 
+ Thu, 10 Jun 2021 11:36:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <875yyllu67.fsf@stealth>
+References: <20210607112856.3499682-1-punitagrawal@gmail.com>
+ <CANAwSgT=SoNbpV7Lx1s=zo+FAOT1yQvT==0p6Mb+Gb4ctQNiJg@mail.gmail.com>
+ <87mtrxkd9l.fsf@stealth>
+In-Reply-To: <87mtrxkd9l.fsf@stealth>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Fri, 11 Jun 2021 00:06:21 +0530
+Message-ID: <CANAwSgSYtS4od3f-nRqi+A7UY9AbkTYmsDhdUPtQQoOLpiPEvg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/4] PCI: of: Improvements to handle 64-bit attribute
+ for non-prefetchable ranges
+To: Punit Agrawal <punitagrawal@gmail.com>
+Cc: helgaas@kernel.org, Rob Herring <robh+dt@kernel.org>, 
+ linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel <linux-kernel@vger.kernel.org>, PCI <linux-pci@vger.kernel.org>, 
+ Alexandru Elisei <alexandru.elisei@arm.com>, wqu@suse.com, 
+ Robin Murphy <robin.murphy@arm.com>, pgwipeout@gmail.com, 
+ Ard Biesheuvel <ardb@kernel.org>, briannorris@chromium.org, 
+ Shawn Lin <shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_112842_611284_61E50F0B 
-X-CRM114-Status: GOOD (  47.90  )
+X-CRM114-CacheID: sfid-20210610_113734_630282_85C78A37 
+X-CRM114-Status: GOOD (  36.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,162 +101,276 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 10, 2021 at 10:34:56PM +0900, Punit Agrawal wrote:
-> Hi Bjorn,
-> 
-> Bjorn Helgaas <helgaas@kernel.org> writes:
-> 
-> > [+cc Leonardo]
-> >
-> > On Mon, Jun 07, 2021 at 08:28:53PM +0900, Punit Agrawal wrote:
-> >> Some host bridges advertise non-prefetchable memory windows that are
-> >> entirely located below 4GB but are marked as 64-bit address memory.
-> >> 
-> >> Since commit 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-> >> flags for 64-bit memory addresses"), the OF PCI range parser takes a
-> >> stricter view and treats 64-bit address ranges as advertised while
-> >> before such ranges were treated as 32-bit.
-> >> 
-> >> A PCI root port modelled as a PCI-to-PCI bridge cannot forward 64-bit
-> >> non-prefetchable memory ranges. As a result, the change in behaviour
-> >> due to the commit causes failure to allocate 32-bit BAR from a 64-bit
-> >> non-prefetchable window.
-> >> 
-> >> In order to not break platforms where non-prefetchable memory ranges
-> >> lie entirely below 4GB, clear the 64-bit flag.
-> >
-> > I don't think we should care about the address width DT supplies for a
-> > host bridge window.  Prior to 9d57e61bf723, I don't think we *did*
-> > care because of_bus_pci_get_flags() threw away that information.
-> >
-> > My proposal for a commit log, including information about the problem
-> > report and a "Fixes:" tag:
-> >
-> >   Alexandru and Qu reported this resource allocation failure on
-> >   ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
-> >
-> >     pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-> >     pci 0000:00:00.0: PCI bridge to [bus 01]
-> >     pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-> >     pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-> >
-> >   "BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
-> >   PCI allocation code isn't smart enough to allocate it in a host
-> >   bridge window marked as 64-bit, even though this should work fine.
-> >
-> >   A DT host bridge description includes the windows from the CPU
-> >   address space to the PCI bus space.  On a few architectures
-> >   (microblaze, powerpc, sparc), the DT may also describe PCI devices
-> >   themselves, including their BARs.
-> >
-> >   Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-> >   flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
-> >   the fact that some DT addresses described 64-bit windows and BARs.
-> >   That was a problem because the virtio virtual NIC has a 32-bit BAR
-> >   and a 64-bit BAR, and the driver couldn't distinguish them.
-> 
-> Many thanks for demystifying the motivation for 9d57e61bf723. Not being
-> familiar with the usage of DT to describe PCI devices I was missing this
-> context.
+Hi Punit,
 
-The use of DT to describe PCI devices is a mystery to me, too.  I'm
-guessing this is related to hypervisors that don't fully virtualize
-PCI devices.  
-
-> >   9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
-> >   fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
-> >   bridge windows, which exposed the fact that the PCI allocator isn't
-> >   smart enough to put 32-bit resources in those 64-bit windows.
+On Thu, 10 Jun 2021 at 19:55, Punit Agrawal <punitagrawal@gmail.com> wrote:
+>
+> Hi Anand,
+>
+> Anand Moon <linux.amoon@gmail.com> writes:
+>
+> > Hi Punit,
 > >
-> >   Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
-> >   that information.
+> > On Mon, 7 Jun 2021 at 17:02, Punit Agrawal <punitagrawal@gmail.com> wrote:
+> >>
+> >> Hi,
+> >>
+> >> This is the third iteration to improve handling of the 64-bit
+> >> attribute on non-prefetchable host bridge ranges. Previous version can
+> >> be found at [0][1].
+> >>
+> >> This version is a small update over the previous version - changelog
+> >> below. If there is no futher feedback on the patches, please consider
+> >> merging them.
+> >>
+> >> Thanks,
+> >> Punit
+> >>
 > >
-> >   Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
-> >   Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
-> >   Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> >   Reported-by: Qu Wenruo <wqu@suse.com>
-> 
-> Thank you for commit log - without all the pieces I was struggling to
-> clearly describe the details. And I missed the appropriate tags as
-> well. I've updated the commit log based on your suggestion.
-> 
-> >> Suggested-by: Ard Biesheuvel <ardb@kernel.org>
-> >> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
-> >> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-> >> Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> >> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> >> Cc: Rob Herring <robh+dt@kernel.org>
-> >> ---
-> >>  drivers/pci/of.c | 8 ++++++++
-> >>  1 file changed, 8 insertions(+)
-> >> 
-> >> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-> >> index 85dcb7097da4..1e45186a5715 100644
-> >> --- a/drivers/pci/of.c
-> >> +++ b/drivers/pci/of.c
-> >> @@ -353,6 +353,14 @@ static int devm_of_pci_get_host_bridge_resources(struct device *dev,
-> >>  				dev_warn(dev, "More than one I/O resource converted for %pOF. CPU base address for old range lost!\n",
-> >>  					 dev_node);
-> >>  			*io_base = range.cpu_addr;
-> >> +		} else if (resource_type(res) == IORESOURCE_MEM) {
-> >> +			if (!(res->flags & IORESOURCE_PREFETCH)) {
-> >> +				if (res->flags & IORESOURCE_MEM_64)
-> >> +					if (!upper_32_bits(range.pci_addr + range.size - 1)) {
-> >> +						dev_warn(dev, "Clearing 64-bit flag for non-prefetchable memory below 4GB\n");
-> >> +						res->flags &= ~IORESOURCE_MEM_64;
-> >> +					}
-> >> +			}
+> > Thanks for your work, I have tested this on my RK3399 (Odroid N1) SBC.
+> > It partially works on this board. So I looked into
+> > RK3399TRM_V1.3_Part2 for more details.
 > >
-> > Why do we need to check IORESOURCE_PREFETCH, IORESOURCE_MEM_64, and
-> > upper_32_bits()?  If I understand this correctly, prior to
-> > 9d57e61bf723, IORESOURCE_MEM_64 was *never* set here.  Isn't something
-> > like this sufficient?
+> > 17.6.7.1.45  Root Complex BAR Configuration Register
+> >    It looks like these config changes are related to the issue you are
+> > trying to solve.
 > >
-> >   } else if (resource_type(res) == IORESOURCE_MEM) {
-> >     res->flags &= ~IORESOURCE_MEM_64;
-> >   }
-> 
-> Based on the discussion in the original thread[0], I was working with
-> the assumption that we don't want to lose the IORESOURCE_MEM_64 flag
-> other than in the problem scenario, i.e., non-prefetchable memory below
-> 4GB.
-> 
-> You suggestion is simpler and also solves the issue by effectively
-> reverting the impact of 9d57e61bf723 on BAR allocation. If there are no
-> objections I will take this approach for the next update.
-> 
-> To aid future readers I will also add the following comment -
-> 
->     /*
->      * PCI allocation cannot correctly allocate 32-bit non-prefetchable BAR
->      * in host bridge windows marked as 64-bit.
->      */
-> 
-> > I'm not sure we need a warning either.  We didn't warn before
-> > 9d57e61bf723, and there's nothing the user needs to do anyway.
-> 
-> The warning was a nudge (probably too subtle) to get the user to upgrade
-> their DT to drop the 64-bit marker on the host bridge window. With your
-> suggestion, the DT change is not needed anymore - though it may still be
-> worth dropping the 64-bit marker.
+> > On this basis here are the code changes I made in the driver for testing.
+> >
+> > [alarm@alarm linux-rockchip-5.y-devel]$ git diff
+> > drivers/pci/controller/pcie-rockchip.h
+> > drivers/pci/controller/pcie-rockchip.c
+> > diff --git a/drivers/pci/controller/pcie-rockchip.c
+> > b/drivers/pci/controller/pcie-rockchip.c
+> > index 990a00e08bc5..18e315de9f04 100644
+> > --- a/drivers/pci/controller/pcie-rockchip.c
+> > +++ b/drivers/pci/controller/pcie-rockchip.c
+> > @@ -405,9 +405,20 @@ void rockchip_pcie_cfg_configuration_accesses(
+> >                 struct rockchip_pcie *rockchip, u32 type)
+> >  {
+> >         u32 ob_desc_0;
+> > +       u32 status;
+> >
+> >         /* Configuration Accesses for region 0 */
+> > -       rockchip_pcie_write(rockchip, 0x0, PCIE_RC_BAR_CONF);
+> > +       status = rockchip_pcie_read(rockchip, PCIE_RC_BAR_CONF);
+> > +       status |= FIELD_PREP(PCIE_RC_BAR_RCBAR0A, 0x14) |
+> > +               FIELD_PREP(PCIE_RC_BAR_RCBAR0C, 0x6) |
+> > +               FIELD_PREP(PCIE_RC_BAR_RCBAR1A, 0x14) |
+> > +               FIELD_PREP(PCIE_RC_BAR_RCBAR1C, 0x4) |
+> > +               PCIE_RC_BAR_RCBARPME |
+> > +               PCIE_RC_BAR_RCBARPMS |
+> > +               PCIE_RC_BAR_RCBARPIE |
+> > +               PCIE_RC_BAR_RCBARPIS |
+> > +               PCIE_RC_BAR_RCBCE;
+> > +       rockchip_pcie_write(rockchip, status, PCIE_RC_BAR_CONF);
+> >
+> >         rockchip_pcie_write(rockchip,
+> >                             (RC_REGION_0_ADDR_TRANS_L + RC_REGION_0_PASS_BITS),
+> > diff --git a/drivers/pci/controller/pcie-rockchip.h
+> > b/drivers/pci/controller/pcie-rockchip.h
+> > index 1650a5087450..a68ca18de4ec 100644
+> > --- a/drivers/pci/controller/pcie-rockchip.h
+> > +++ b/drivers/pci/controller/pcie-rockchip.h
+> > @@ -114,6 +114,16 @@
+> >  #define PCIE_CORE_INT_MASK             (PCIE_CORE_CTRL_MGMT_BASE + 0x210)
+> >  #define PCIE_CORE_PHY_FUNC_CFG         (PCIE_CORE_CTRL_MGMT_BASE + 0x2c0)
+> >  #define PCIE_RC_BAR_CONF               (PCIE_CORE_CTRL_MGMT_BASE + 0x300)
+> > +#define   PCIE_RC_BAR_RCBAR0A           GENMASK(5, 0)
+> > +#define   PCIE_RC_BAR_RCBAR0C           GENMASK(8, 6)
+> > +#define   PCIE_RC_BAR_RCBAR1A           GENMASK(13, 9)
+> > +#define   PCIE_RC_BAR_RCBAR1C           GENMASK(16, 14)
+> > +#define   PCIE_RC_BAR_RCBARPME          BIT(17)
+> > +#define   PCIE_RC_BAR_RCBARPMS          BIT(18)
+> > +#define   PCIE_RC_BAR_RCBARPIE          BIT(19)
+> > +#define   PCIE_RC_BAR_RCBARPIS          BIT(20)
+> > +#define   PCIE_RC_BAR_RCBCE             BIT(31)
+> > +
+> >  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_DISABLED               0x0
+> >  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_IO_32BITS              0x1
+> >  #define ROCKCHIP_PCIE_CORE_BAR_CFG_CTRL_MEM_32BITS             0x4
+> >
+> > But I am getting the following error at my end.
+> > --------------------
+> > [  OK  ] Found device /dev/ttyS2.
+> > [    7.089794] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 ranges:
+> > [    7.092945] rk808-rtc rk808-rtc: registered as rtc0
+> > [    7.103462] rockchip-pcie f8000000.pcie:      MEM
+> > 0x00fa000000..0x00fbdfffff -> 0x00fa000000
+> > [    7.113384] rockchip-pcie f8000000.pcie:       IO
+> > 0x00fbe00000..0x00fbefffff -> 0x00fbe00000
+> > [    7.123294] rockchip-pcie f8000000.pcie: no vpcie12v regulator found
+> > [    7.123524] rk808-rtc rk808-rtc: setting system clock to
+> > 2021-06-10T07:36:35 UTC (1623310595)
+> > [    7.130589] rockchip-pcie f8000000.pcie: no vpcie3v3 regulator found
+> > [    7.187409] mc: Linux media interface: v0.10
+> > [    7.210178] rockchip-pcie f8000000.pcie: PCI host bridge to bus 0000:00
+> > [    7.217643] pci_bus 0000:00: root bus resource [bus 00-1f]
+> > [    7.224126] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff]
+> > [    7.234975] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff]
+> > (bus address [0xfbe00000-0xfbefffff])
+> > [    7.246527] pci 0000:00:00.0: [1d87:0100] type 01 class 0x060400
+> > [    7.264087] pci 0000:00:00.0: reg 0x10: [mem 0x00000000-0x003fffff 64bit]
+> > [    7.271770] pci 0000:00:00.0: supports D1
+> > [    7.276265] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
+> > [    7.284724] pci 0000:00:00.0: bridge configuration invalid ([bus
+> > 00-00]), reconfiguring
+> > [    7.293874] pci 0000:01:00.0: [1b21:0611] type 00 class 0x010185
+> > [    7.300656] pci 0000:01:00.0: reg 0x10: initial BAR value 0x00000000 invalid
+> > [    7.308542] pci 0000:01:00.0: reg 0x10: [io  size 0x0008]
+> > [    7.309498] videodev: Linux video capture interface: v2.00
+> > [    7.314606] pci 0000:01:00.0: reg 0x14: initial BAR value 0x00000000 invalid
+> > [    7.328593] pci 0000:01:00.0: reg 0x14: [io  size 0x0004]
+> > [    7.334661] pci 0000:01:00.0: reg 0x18: initial BAR value 0x00000000 invalid
+> > [    7.342545] pci 0000:01:00.0: reg 0x18: [io  size 0x0008]
+> > [    7.342578] pci 0000:01:00.0: reg 0x1c: initial BAR value 0x00000000 invalid
+> > [    7.342581] pci 0000:01:00.0: reg 0x1c: [io  size 0x0004]
+> > [    7.342609] pci 0000:01:00.0: reg 0x20: initial BAR value 0x00000000 invalid
+> > [    7.342612] pci 0000:01:00.0: reg 0x20: [io  size 0x0010]
+> > [    7.342640] pci 0000:01:00.0: reg 0x24: [mem 0x00000000-0x000001ff]
+> > [    7.383491] pci 0000:01:00.0: reg 0x30: [mem 0x00000000-0x0000ffff pref]
+> > [    7.383533] pci 0000:01:00.0: Max Payload Size set to 256 (was 128, max 512)
+> > [    7.385978] panfrost ff9a0000.gpu: clock rate = 500000000
+> > [    7.387283] rk_gmac-dwmac fe300000.ethernet: IRQ eth_wake_irq not found
+> > [    7.387295] rk_gmac-dwmac fe300000.ethernet: IRQ eth_lpi not found
+> > [    7.387377] rk_gmac-dwmac fe300000.ethernet: PTP uses main clock
+> > [    7.387614] rk_gmac-dwmac fe300000.ethernet: clock input or output? (input).
+> > [    7.387623] rk_gmac-dwmac fe300000.ethernet: TX delay(0x28).
+> > [    7.387631] rk_gmac-dwmac fe300000.ethernet: RX delay(0x11).
+> > [    7.387643] rk_gmac-dwmac fe300000.ethernet: integrated PHY? (no).
+> > [    7.387682] rk_gmac-dwmac fe300000.ethernet: cannot get clock clk_mac_speed
+> > [    7.387688] rk_gmac-dwmac fe300000.ethernet: clock input from PHY
+> > [    7.391688] panfrost ff9a0000.gpu: [drm:panfrost_devfreq_init
+> > [panfrost]] Failed to register cooling device
+> > [    7.392704] rk_gmac-dwmac fe300000.ethernet: init for RGMII
+> > [    7.392908] rk_gmac-dwmac fe300000.ethernet: User ID: 0x10, Synopsys ID: 0x35
+> > [    7.392921] rk_gmac-dwmac fe300000.ethernet:         DWMAC1000
+> > [    7.392926] rk_gmac-dwmac fe300000.ethernet: DMA HW capability
+> > register supported
+> > [    7.392931] rk_gmac-dwmac fe300000.ethernet: RX Checksum Offload
+> > Engine supported
+> > [    7.392935] rk_gmac-dwmac fe300000.ethernet: COE Type 2
+> > [    7.392939] rk_gmac-dwmac fe300000.ethernet: TX Checksum insertion supported
+> > [    7.392943] rk_gmac-dwmac fe300000.ethernet: Wake-Up On Lan supported
+> > [    7.393016] rk_gmac-dwmac fe300000.ethernet: Normal descriptors
+> > [    7.393022] rk_gmac-dwmac fe300000.ethernet: Ring mode enabled
+> > [    7.393026] rk_gmac-dwmac fe300000.ethernet: Enable RX Mitigation
+> > via HW Watchdog Timer
+> > [    7.393070] rk_gmac-dwmac fe300000.ethernet: Unbalanced pm_runtime_enable!
+> > [    7.393421] libphy: stmmac: probed
+> > [    7.399404] rockchip-pcie f8000000.pcie: local interrupt received
+> > [    7.405075] panfrost ff9a0000.gpu: mali-t860 id 0x860 major 0x2
+> > minor 0x0 status 0x0
+> > [    7.412338] rockchip-pcie f8000000.pcie: an error was observed in
+> > the flow control advertisements from the other side
+> > [    7.412377] rockchip-pcie f8000000.pcie: phy link changes
+> > [    7.417620] pci_bus 0000:01: fixups for bus
+> > [    7.417624] pci_bus 0000:01: bus scan returning with max=01
+> > [    7.417628] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
+> > [    7.417637] pci_bus 0000:00: bus scan returning with max=01
+> > [    7.417650] pci 0000:00:00.0: BAR 0: assigned [mem
+> > 0xfa000000-0xfa3fffff 64bit]
+> > [    7.417662] pci 0000:00:00.0: BAR 14: assigned [mem 0xfa400000-0xfa4fffff]
+> > [    7.417666] pci 0000:00:00.0: BAR 13: assigned [io  0x1000-0x1fff]
+> > [    7.417671] pci 0000:01:00.0: BAR 6: assigned [mem
+> > 0xfa400000-0xfa40ffff pref]
+> > [    7.417675] pci 0000:01:00.0: BAR 5: assigned [mem 0xfa410000-0xfa4101ff]
+> > [    7.417689] pci 0000:01:00.0: BAR 4: assigned [io  0x1000-0x100f]
+> > [    7.417702] pci 0000:01:00.0: BAR 0: assigned [io  0x1010-0x1017]
+> > [    7.417715] pci 0000:01:00.0: BAR 2: assigned [io  0x1018-0x101f]
+> > [    7.417729] pci 0000:01:00.0: BAR 1: assigned [io  0x1020-0x1023]
+> > [    7.417742] pci 0000:01:00.0: BAR 3: assigned [io  0x1024-0x1027]
+> > [    7.417756] pci 0000:00:00.0: PCI bridge to [bus 01]
+> > [    7.417760] pci 0000:00:00.0:   bridge window [io  0x1000-0x1fff]
+> > [    7.417766] pci 0000:00:00.0:   bridge window [mem 0xfa400000-0xfa4fffff]
+> > [    7.417872] pcieport 0000:00:00.0: assign IRQ: got 93
+> > [    7.417884] pcieport 0000:00:00.0: enabling device (0000 -> 0003)
+> > [    7.417895] pcieport 0000:00:00.0: enabling bus mastering
+> > [    7.418081] SError Interrupt on CPU5, code 0xbf000002 -- SError
+> > [    7.418084] CPU: 5 PID: 90 Comm: kworker/u12:2 Not tainted
+> > 5.13.0-rc5-xn1ml-00004-g128f93a6219c-dirty #6
+> > [    7.418085] Hardware name: Hardkernel ODROID-N1 (DT)
+> > [    7.418086] Workqueue: events_unbound deferred_probe_work_func
+> > [    7.418089] pstate: 80000005 (Nzcv daif -PAN -UAO -TCO BTYPE=--)
+> > [    7.418091] pc : __pci_enable_msix_range+0x498/0x6b0
+> > [    7.418092] lr : __pci_enable_msix_range+0x44c/0x6b0
+> > [    7.418093] sp : ffff80001249b710
+> > [    7.418094] x29: ffff80001249b710 x28: 0000000000000000 x27: ffff0000059ba000
+> > [    7.418098] x26: ffff0000059ba0c0 x25: 0000000000000001 x24: 0000000000000000
+> > [    7.418102] x23: 000000000000000c x22: 0000000000000000 x21: ffff0000059ba2e8
+> > [    7.418106] x20: 0000000000000001 x19: 0000000000000000 x18: 0000000000000002
+> > [    7.418110] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+> > [    7.418114] x14: 0000000000000001 x13: 00000000000e98d4 x12: 0000000000000040
+> > [    7.418117] x11: ffff00000081afe8 x10: ffff00000081afea x9 : ffff800011d129e0
+> > [    7.418121] x8 : 0000000000000000 x7 : ffff800011fca91c x6 : 0000000000000000
+> > [    7.418125] x5 : 000000000000c011 x4 : ffff8000178000b0 x3 : 0000000000000002
+> > [    7.418128] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff000004efe680
+> > [    7.418132] Kernel panic - not syncing: Asynchronous SError Interrupt
+> > [    7.418134] CPU: 5 PID: 90 Comm: kworker/u12:2 Not tainted
+> > 5.13.0-rc5-xn1ml-00004-g128f93a6219c-dirty #6
+> > [    7.418136] Hardware name: Hardkernel ODROID-N1 (DT)
+> > [    7.418137] Workqueue: events_unbound deferred_probe_work_func
+> > [    7.418139] Call trace:
+> > [    7.418140]  dump_backtrace+0x0/0x1a0
+> > [    7.418141]  show_stack+0x1c/0x70
+> > [    7.418142]  dump_stack+0xd0/0x12c
+> > [    7.418143]  panic+0x16c/0x334
+> > [    7.418145]  add_taint+0x0/0xb0
+> > [    7.418146]  arm64_serror_panic+0x7c/0x88
+> > [    7.418147]  do_serror+0x68/0x70
+> > [    7.418148]  el1_error+0x80/0xf8
+> > [    7.418149]  __pci_enable_msix_range+0x498/0x6b0
+> > [    7.418150]  pci_alloc_irq_vectors_affinity+0xbc/0x13c
+> > [    7.418152]  pcie_port_device_register+0x11c/0x40c
+> > [    7.418153]  pcie_portdrv_probe+0x48/0x100
+> > [    7.418154]  local_pci_probe+0x44/0xb0
+> > [    7.418155]  pci_device_probe+0x114/0x1b0
+> > [    7.418156]  really_probe+0xe4/0x504
+> > [    7.418157]  driver_probe_device+0x64/0xcc
+> > [    7.418158]  __device_attach_driver+0xb8/0x114
+> > [    7.418159]  bus_for_each_drv+0x78/0xd0
+> > [    7.418160]  __device_attach+0xd8/0x180
+> > [    7.418161]  device_attach+0x18/0x24
+> > [    7.418162]  pci_bus_add_device+0x54/0xc0
+> > [    7.418163]  pci_bus_add_devices+0x40/0x90
+> > [    7.418165]  pci_host_probe+0x44/0xc4
+> > [    7.418166]  rockchip_pcie_probe+0x2fc/0x4d4 [pcie_rockchip_host]
+> > [    7.418167]  platform_probe+0x6c/0xdc
+> > [    7.418168]  really_probe+0xe4/0x504
+> > [    7.418169]  driver_probe_device+0x64/0xcc
+> > [    7.418170]  __device_attach_driver+0xb8/0x114
+> > [    7.418171]  bus_for_each_drv+0x78/0xd0
+> > [    7.418172]  __device_attach+0xd8/0x180
+> > [    7.418173]  device_initial_probe+0x18/0x2c
+> > [    7.418174]  bus_probe_device+0xa0/0xac
+> > [    7.418175]  deferred_probe_work_func+0x88/0xc0
+> > [    7.418176]  process_one_work+0x1cc/0x350
+> > [    7.418177]  worker_thread+0x13c/0x470
+> > [    7.418178]  kthread+0x158/0x160
+> > [    7.418179]  ret_from_fork+0x10/0x30
+> > [    8.063493] SMP: stopping secondary CPUs
+> > [    8.063495] Kernel Offset: disabled
+> > [    8.063496] CPU features: 0x10001031,20000846
+> > [    8.063498] Memory Limit: none
+>
+> I am not sure I follow the changes you've made. Also the issue in the
+> bootlog seems to be different (unrelated?) to the one I am looking to
+> fix - failing to allocate non-prefetchable 32-bit BARs from 64-bit
+> resource windows.
+>
+> Not sure how I can help.
 
-I'm certainly not a DT expert, and Rob would know better.
+Ok, no problem.
 
-The doc I'm looking at ([1]), says in sec 2.2.1.1 that for an address
-in 32-bit-address Memory Space, the high-order address bits "hh...hh
-must be zero" and only the 32 bits in "ll...ll" are usable.
+Thanks
+-Anand
 
-That suggests to me that the DT probably *should* use 64-bit-address
-Memory Space for things that don't fit in 32 bits.  But when we use
-such an address for PCI host bridge windows, I don't think the
-distinction is useful, so I think we should just drop the 64-bit
-indication silently.
-
-> [0] https://lore.kernel.org/linux-pci/CAMj1kXGF_JmuZ+rRA55-NrTQ6f20fhcHc=62AGJ71eHNU8AoBQ@mail.gmail.com/
-
-[1] PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
-(Initialization Configuration) Firmware, Revision 2.1 [this is
-ancient, and I would welcome a pointer to something better]
+>
+> Thanks,
+> Punit
+>
+> [...]
+>
 
 _______________________________________________
 Linux-rockchip mailing list
