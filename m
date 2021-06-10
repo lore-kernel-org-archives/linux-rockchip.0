@@ -2,67 +2,82 @@ Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03538C47094
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 15:49:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA48EC47094
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 16:07:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C31E4613D0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 15:49:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C31E4613D0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9A148613E3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 16:07:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A148613E3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G6THVP82dpx1+jia8fE5ZUbZ3m/ZUELgRVjRv0bR1NQ=; b=qx83+kDhd1LFde
-	lbWK5DcKhPZXbt4T7Za0ysANSLpuX5xa/dizGzSsYpvrWL2p7RZRDjjBJ08K2oWaIb7XOXhrivp06
-	tOeiBds6EtqA9Br7p0Iy6AFcH00XcZpISWkg+Jz0X8obeQUKZlqqJ7upTJ49NgN8f02KFIO3QTbvh
-	L58v3Aq9LImCdVPuxQlQZolqT/XKWJ1VeL/9l7o+NVeF4Ldi8b9J9hUa8Kd8FkDW+HgSt5Kf8n8E9
-	oOt2via56V55Ay4ZsjtDFRlGSpUFbkju10ueMd0+jM7qFYxy4RIM2Eb9Cmc4UchSwgVKJDKGnMV5Q
-	EoDT3NVKCNyuKOgvNp+g==;
+	List-Owner; bh=Tfay5fSyc0SuTO2dkY5x8Z/KG1jwNDmSI0koquHAb2k=; b=xSp9u5QdzTWhMm
+	/l9V8VIH6Kpc24Jg/6wTqbp0kzo8spgzltp1oLA2JmVFjZp6IndZJVIbYkn9M5+CZMet9vioO8jIP
+	koHacFxHF3CUbhAuVmMCmwF7DuJ5eHT4sQyVHs3JPyCp3Ae0rGRFfMJcZx/p33VyZJpb14n5p1jDO
+	I2jzCWVNc08ZWpUPBa0K2W89KrxbtPLtq0MgCTgQNs477xy2bC95PShTk/xWaYl/spaeS/Y/PuNQ1
+	kYrXyJilLS9EpriqZF9Cqhkv0XV7mHeX4X+s2k16ZuKFcXX8lxcrGz2NHHmERl6WwqF8ETC5bXJv0
+	r+/m2g1Qx63E71ongHqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrMw0-001SIT-4d; Thu, 10 Jun 2021 15:49:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lrNDK-001ZlI-DV; Thu, 10 Jun 2021 16:07:26 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrMrg-001PXA-5d; Thu, 10 Jun 2021 15:45:06 +0000
-Received: from localhost.localdomain (unknown
- [IPv6:2a01:e0a:4cb:a870:cb4:bb8b:23cb:d0d0])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id ABA261F43E53;
- Thu, 10 Jun 2021 16:45:01 +0100 (BST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
- mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- emil.l.velikov@gmail.com, andrzej.p@collabora.com, jc@kynesim.co.uk,
- jernej.skrabec@gmail.com
-Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 8/8] media: hantro: Add scaling lists feature
-Date: Thu, 10 Jun 2021 17:44:42 +0200
-Message-Id: <20210610154442.806107-9-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210610154442.806107-1-benjamin.gaignard@collabora.com>
-References: <20210610154442.806107-1-benjamin.gaignard@collabora.com>
+ id 1lrNCY-001ZWQ-LR; Thu, 10 Jun 2021 16:06:39 +0000
+Received: by mail-ot1-f46.google.com with SMTP id
+ v27-20020a056830091bb02903cd67d40070so221527ott.1; 
+ Thu, 10 Jun 2021 09:06:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=rxqQk5aKXfH8UaE4CFyDXn1vUL+w5pv/lwdq0F6kEMY=;
+ b=K/uSATypa57p5EMirKPARlwC0f+dlxiMh4bQY/+ZhJ+vFg/533T8VWhQzUv9EqvTP3
+ Hsq1A02rBSMF0JNO5rhDw+h+eW3g+ya7qvXDKcWAW4mRh6d7ffhszxe83xK35uEnQdB2
+ 3tsVp8nxfFGO/ggIz+/rzTsvVUIeIe9YTLJy3bfO7OF08OltIlejadC2zx/yhYSpqKxZ
+ ysoG2FaN/J5EZ28OrrINQtNew+PuxKiihd8RctUjOL7yITVN6KhIUOeCko05sVjHnRnI
+ VD5UP1a5dH6snMA9blICpDEzTqkcHZ42+H5RAK1/UHq2qFdovdE73u13UhsTk8KomCUK
+ 77Fg==
+X-Gm-Message-State: AOAM532nMwRuED92T4vP9z4tLp8/aagZtKYD3js0DFOOk2bWDL3LGZil
+ d0KTFHsVYVX0FV5jnlkG4w==
+X-Google-Smtp-Source: ABdhPJwov5RI4si9eQhd6XsEeuC32d2dIO1xtzkVyC0dJGyD0zJfZ6epsAiDIboK1+FgpVibfS0Llw==
+X-Received: by 2002:a9d:5ccd:: with SMTP id r13mr3027731oti.13.1623341197323; 
+ Thu, 10 Jun 2021 09:06:37 -0700 (PDT)
+Received: from robh.at.kernel.org ([172.58.99.113])
+ by smtp.gmail.com with ESMTPSA id e29sm622376oiy.53.2021.06.10.09.06.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Jun 2021 09:06:36 -0700 (PDT)
+Received: (nullmailer pid 1894616 invoked by uid 1000);
+ Thu, 10 Jun 2021 16:06:34 -0000
+Date: Thu, 10 Jun 2021 11:06:34 -0500
+From: Rob Herring <robh@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ linux-arm-kernel@lists.infradead.org, broonie@kernel.org,
+ devicetree@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org
+Subject: Re: [PATCH v6 1/6] dt-bindings: spi: spi-rockchip: add description
+ for rv1126
+Message-ID: <20210610160634.GA1894512@robh.at.kernel.org>
+References: <20210607111837.31074-1-jon.lin@rock-chips.com>
+ <20210607111837.31074-2-jon.lin@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210607111837.31074-2-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_084504_538302_13476DA0 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20210610_090638_747571_1E4FF1C0 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,200 +95,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If the bitstream embedded scaling lists allow the driver to use
-them for decode the frames.
-The scaling lists are expected to be in raster scan order (i.e. not up
-right diagonal scan order)
-Allocate the memory needed to store lists.
+On Mon, 07 Jun 2021 19:18:32 +0800, Jon Lin wrote:
+> The description below will be used for rv1126.dtsi or compatible one in
+> the future
+> 
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> ---
+> 
+> Changes in v6:
+> - Consider to compatibility, the "rockchip,rk3568-spi" is removed in
+>   Series-changes v5, so the commit massage should also remove the
+>   corresponding information
+> 
+> Changes in v5:
+> - Change to leave one compatible id rv1126, and rk3568 is compatible
+>   with rv1126
+> 
+> Changes in v4:
+> - Adjust the order patches
+> - Simply commit massage like redundancy "application" content
+> 
+> Changes in v3:
+> - Fix compile error which is find by Sascha in [v2,2/8]
+> 
+>  Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
- drivers/staging/media/hantro/hantro_drv.c     |  8 +--
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 52 +++++++++++++++++++
- drivers/staging/media/hantro/hantro_hevc.c    | 21 ++++++++
- drivers/staging/media/hantro/hantro_hw.h      |  3 ++
- 4 files changed, 81 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 5e6609fa4143..324619c78ada 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -281,9 +281,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		    sps->bit_depth_luma_minus8 != 2)
- 			/* Only 8-bit or 10-bit is supported */
- 			return -EINVAL;
--		if (sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED)
--			/* No scaling support */
--			return -EINVAL;
- 		if (sps->bit_depth_luma_minus8 == 0 &&
- 		    hantro_is_10bit_dst_format(ctx)) {
- 			return -EINVAL;
-@@ -469,6 +466,11 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
- 		},
-+	}, {
-+		.codec = HANTRO_HEVC_DECODER,
-+		.cfg = {
-+			.id = V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
-+		},
- 	}, {
- 		.codec = HANTRO_HEVC_DECODER,
- 		.cfg = {
-diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index b3c6e1e50f49..887b13538794 100644
---- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -608,6 +608,56 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	hantro_write_addr(vpu, G2_TILE_BSD, ctx->hevc_dec.tile_bsd.dma);
- }
- 
-+static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-+	const struct v4l2_ctrl_hevc_scaling_matrix *sc = ctrls->scaling;
-+	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	u8 *p = ((u8 *)ctx->hevc_dec.scaling_lists.cpu);
-+	unsigned int scaling_list_enabled;
-+	unsigned int i, j, k;
-+
-+	scaling_list_enabled = !!(sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED);
-+	hantro_reg_write(vpu, &g2_scaling_list_e, scaling_list_enabled);
-+
-+	if (!scaling_list_enabled)
-+		return;
-+
-+	for (i = 0; i < ARRAY_SIZE(sc->scaling_list_dc_coef_16x16); i++)
-+		*p++ = sc->scaling_list_dc_coef_16x16[i];
-+
-+	for (i = 0; i < ARRAY_SIZE(sc->scaling_list_dc_coef_32x32); i++)
-+		*p++ = sc->scaling_list_dc_coef_32x32[i];
-+
-+	/* 128-bit boundary */
-+	p += 8;
-+
-+	/* write scaling lists column by column */
-+
-+	for (i = 0; i < 6; i++)
-+		for (j = 0; j < 4; j++)
-+			for (k = 0; k < 4; k++)
-+				*p++ = sc->scaling_list_4x4[i][4 * k + j];
-+
-+	for (i = 0; i < 6; i++)
-+		for (j = 0; j < 8; j++)
-+			for (k = 0; k < 8; k++)
-+				*p++ = sc->scaling_list_8x8[i][8 * k + j];
-+
-+	for (i = 0; i < 6; i++)
-+		for (j = 0; j < 8; j++)
-+			for (k = 0; k < 8; k++)
-+				*p++ = sc->scaling_list_16x16[i][8 * k + j];
-+
-+	for (i = 0; i < 2; i++)
-+		for (j = 0; j < 8; j++)
-+			for (k = 0; k < 8; k++)
-+				*p++ = sc->scaling_list_32x32[i][8 * k + j];
-+
-+	hantro_write_addr(vpu, HEVC_SCALING_LIST, ctx->hevc_dec.scaling_lists.dma);
-+}
-+
- static void hantro_g2_check_idle(struct hantro_dev *vpu)
- {
- 	int i;
-@@ -668,6 +718,8 @@ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
- 	set_buffers(ctx);
- 	prepare_tile_info_buffer(ctx);
- 
-+	prepare_scaling_list_buffer(ctx);
-+
- 	hantro_end_prepare_run(ctx);
- 
- 	hantro_reg_write(vpu, &g2_mode, HEVC_DEC_MODE);
-diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-index b646bd559ffe..ec1b86e03b83 100644
---- a/drivers/staging/media/hantro/hantro_hevc.c
-+++ b/drivers/staging/media/hantro/hantro_hevc.c
-@@ -20,6 +20,8 @@
- /* tile border coefficients of filter */
- #define VERT_SAO_RAM_SIZE 48 /* bytes per pixel */
- 
-+#define SCALING_LIST_SIZE (16 * 64)
-+
- #define MAX_TILE_COLS 20
- #define MAX_TILE_ROWS 22
- 
-@@ -294,6 +296,11 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
- 	if (WARN_ON(!ctrls->decode_params))
- 		return -EINVAL;
- 
-+	ctrls->scaling =
-+		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
-+	if (WARN_ON(!ctrls->scaling))
-+		return -EINVAL;
-+
- 	ctrls->sps =
- 		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SPS);
- 	if (WARN_ON(!ctrls->sps))
-@@ -322,6 +329,12 @@ void hantro_hevc_dec_exit(struct hantro_ctx *ctx)
- 				  hevc_dec->tile_sizes.dma);
- 	hevc_dec->tile_sizes.cpu = NULL;
- 
-+	if (hevc_dec->scaling_lists.cpu)
-+		dma_free_coherent(vpu->dev, hevc_dec->scaling_lists.size,
-+				  hevc_dec->scaling_lists.cpu,
-+				  hevc_dec->scaling_lists.dma);
-+	hevc_dec->scaling_lists.cpu = NULL;
-+
- 	if (hevc_dec->tile_filter.cpu)
- 		dma_free_coherent(vpu->dev, hevc_dec->tile_filter.size,
- 				  hevc_dec->tile_filter.cpu,
-@@ -365,6 +378,14 @@ int hantro_hevc_dec_init(struct hantro_ctx *ctx)
- 
- 	hevc_dec->tile_sizes.size = size;
- 
-+	hevc_dec->scaling_lists.cpu = dma_alloc_coherent(vpu->dev, SCALING_LIST_SIZE,
-+							 &hevc_dec->scaling_lists.dma,
-+							 GFP_KERNEL);
-+	if (!hevc_dec->scaling_lists.cpu)
-+		return -ENOMEM;
-+
-+	hevc_dec->scaling_lists.size = SCALING_LIST_SIZE;
-+
- 	hantro_hevc_ref_init(ctx);
- 
- 	return 0;
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 2edb890f10af..88add18b1bad 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -108,6 +108,7 @@ struct hantro_h264_dec_hw_ctx {
-  */
- struct hantro_hevc_dec_ctrls {
- 	const struct v4l2_ctrl_hevc_decode_params *decode_params;
-+	const struct v4l2_ctrl_hevc_scaling_matrix *scaling;
- 	const struct v4l2_ctrl_hevc_sps *sps;
- 	const struct v4l2_ctrl_hevc_pps *pps;
- 	u32 hevc_hdr_skip_length;
-@@ -120,6 +121,7 @@ struct hantro_hevc_dec_ctrls {
-  * @tile_sao:		Tile SAO buffer
-  * @tile_bsd:		Tile BSD control buffer
-  * @ref_bufs:		Internal reference buffers
-+ * @scaling_lists:	Scaling lists buffer
-  * @ref_bufs_poc:	Internal reference buffers picture order count
-  * @ref_bufs_used:	Bitfield of used reference buffers
-  * @ctrls:		V4L2 controls attached to a run
-@@ -131,6 +133,7 @@ struct hantro_hevc_dec_hw_ctx {
- 	struct hantro_aux_buf tile_sao;
- 	struct hantro_aux_buf tile_bsd;
- 	struct hantro_aux_buf ref_bufs[NUM_REF_PICTURES];
-+	struct hantro_aux_buf scaling_lists;
- 	int ref_bufs_poc[NUM_REF_PICTURES];
- 	u32 ref_bufs_used;
- 	struct hantro_hevc_dec_ctrls ctrls;
--- 
-2.25.1
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
