@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A32C5C4743D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A103C4743D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:33:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 58486606A5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:28:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 58486606A5
+	by mail.kernel.org (Postfix) with ESMTPS id 1FBB960FF4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:33:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FBB960FF4
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zTe2EaWvdiWwBAwaFlJzeNoUwUoH2nXH5qnpg3lw+bo=; b=kW0rntHgU1l5hf
-	QqsBq5c45QQ+dtSDA/l258UqLHqrlni6YiOxZg99Ub9WnJ0YLq2V9dFV5mXNp2sjuugARwpq8FEVD
-	k+3FjtrEVtJmsk2o8ZV+FZ4zNUxilWPsRLwMN0+iHOnjioPuhkEdg6XmdrUl6dNFJ3gDk00tRYZAV
-	2ugW1WoH+0ekzFkwWBRj9cYiM0JlYJInALDWOHiy/2Rlhj03AvVeYzDUEcD0Pj9SAmqzmxu/MPMtz
-	TqXrJASXLpylHonCYEw/RM27iThGlJPIJYrrVg+aqnUbOnu3Dyah9DTTdvXL/+71v+SHw5g6721VO
-	7YS/SNwgApgNbnjOLG1w==;
+	List-Owner; bh=OayTRkVs7K/T5eqaED+WTSJZBf/7Wtol/Mn6Ugq+5G8=; b=1har9L84eDgZtl
+	6hc906Ed+mx6Bz0u7NUZSV9JtSQMMiW9pSXHDaYv6GzZ8g5jxvr2wFyeANSAzSH3mC+uZsCgxGR5I
+	zdufxhMfF8D+q11+BAQ0up34NKP/35cZGQ12FN1B1vElxSxUSidwh5YP+vARs9I0573mS+nKvnU11
+	kAFnC0LPeIXM3pd7OP/tuGc28CFJLBlwMT7YqhcbGOw5CuGAQwQm2k6GBeH7bk4SwTNdiMMZtCbA4
+	D43t2nlMsdlL64kGik+NO9CUgMMrzyHxC+f8pRWAAzpkCVxKFsW56EidWIzhFTzpJBPiBV5ZuSsZX
+	Z6gNJP6633rJdZD0dRrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lraei-003s8A-JU; Fri, 11 Jun 2021 06:28:36 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1lrajn-003tWM-62; Fri, 11 Jun 2021 06:33:51 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lraP6-003m1I-SO; Fri, 11 Jun 2021 06:12:30 +0000
+ id 1lraPC-003m4A-1X; Fri, 11 Jun 2021 06:12:35 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 34B4FF4D2A;
- Fri, 11 Jun 2021 14:12:27 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id E8C82D1BAE;
+ Fri, 11 Jun 2021 14:12:31 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P16485T139917350926080S1623391944380017_; 
- Fri, 11 Jun 2021 14:12:27 +0800 (CST)
+ Fri, 11 Jun 2021 14:12:31 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <801842c5e17a0b8873085c6c37e86538>
+X-UNIQUE-TAG: <eb56cf92b7c99750e1166489888e9d3d>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -67,16 +67,16 @@ Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v8 6/9] arm: dts: rockchip: Add SFC to RK3036
-Date: Fri, 11 Jun 2021 14:12:19 +0800
-Message-Id: <20210611061222.31644-2-jon.lin@rock-chips.com>
+Subject: [PATCH v8 8/9] arm64: dts: rockchip: Add SFC to RK3308
+Date: Fri, 11 Jun 2021 14:12:21 +0800
+Message-Id: <20210611061222.31644-4-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210611061222.31644-1-jon.lin@rock-chips.com>
 References: <20210611061134.31369-1-jon.lin@rock-chips.com>
  <20210611061222.31644-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_231229_132217_3A5FA935 
-X-CRM114-Status: GOOD (  11.15  )
+X-CRM114-CacheID: sfid-20210610_231234_338179_E5E3C8CB 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,7 +97,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add a devicetree entry for the Rockchip SFC for the RK3036 SOC.
+Add a devicetree entry for the Rockchip SFC for the RK3308 SOC.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
@@ -112,21 +112,21 @@ Changes in v3: None
 Changes in v2: None
 Changes in v1: None
 
- arch/arm/boot/dts/rk3036.dtsi | 42 +++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 37 ++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index e24230d50a78..06e37be81393 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -206,6 +206,17 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 0c5fa9801e6f..cb8d96235986 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -637,6 +637,17 @@
  		status = "disabled";
  	};
  
-+	sfc: spi@10208000 {
++	sfc: spi@ff4c0000 {
 +		compatible = "rockchip,sfc";
-+		reg = <0x10208000 0x4000>;
-+		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
++		reg = <0x0 0xff4c0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
 +		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
 +		clock-names = "clk_sfc", "hclk_sfc";
 +		pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus4>;
@@ -134,47 +134,42 @@ index e24230d50a78..06e37be81393 100644
 +		status = "disabled";
 +	};
 +
- 	sdmmc: mmc@10214000 {
- 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x10214000 0x4000>;
-@@ -684,6 +695,37 @@
+ 	cru: clock-controller@ff500000 {
+ 		compatible = "rockchip,rk3308-cru";
+ 		reg = <0x0 0xff500000 0x0 0x1000>;
+@@ -910,6 +921,32 @@
  			};
  		};
  
 +		sfc {
 +			sfc_bus4: sfc-bus4 {
 +				rockchip,pins =
-+					<1 RK_PD0 3 &pcfg_pull_none>,
-+					<1 RK_PD1 3 &pcfg_pull_none>,
-+					<1 RK_PD2 3 &pcfg_pull_none>,
-+					<1 RK_PD3 3 &pcfg_pull_none>;
++					<3 RK_PA0 3 &pcfg_pull_none>,
++					<3 RK_PA1 3 &pcfg_pull_none>,
++					<3 RK_PA2 3 &pcfg_pull_none>,
++					<3 RK_PA3 3 &pcfg_pull_none>;
 +			};
 +
 +			sfc_bus2: sfc-bus2 {
 +				rockchip,pins =
-+					<1 RK_PD0 3 &pcfg_pull_none>,
-+					<1 RK_PD1 3 &pcfg_pull_none>;
++					<3 RK_PA0 3 &pcfg_pull_none>,
++					<3 RK_PA1 3 &pcfg_pull_none>;
 +			};
 +
 +			sfc_cs0: sfc-cs0 {
 +				rockchip,pins =
-+					<2 RK_PA2 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs1: sfc-cs1 {
-+				rockchip,pins =
-+					<2 RK_PA3 3 &pcfg_pull_none>;
++					<3 RK_PA4 3 &pcfg_pull_none>;
 +			};
 +
 +			sfc_clk: sfc-clk {
 +				rockchip,pins =
-+					<2 RK_PA4 3 &pcfg_pull_none>;
++					<3 RK_PA5 3 &pcfg_pull_none>;
 +			};
 +		};
 +
- 		emac {
- 			emac_xfer: emac-xfer {
- 				rockchip,pins = <2 RK_PB2 1 &pcfg_pull_default>, /* crs_dvalid */
+ 		gmac {
+ 			rmii_pins: rmii-pins {
+ 				rockchip,pins =
 -- 
 2.17.1
 
