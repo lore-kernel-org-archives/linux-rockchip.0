@@ -2,89 +2,77 @@ Return-Path: <SRS0=14fJ=LF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8041AC4743D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 03:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CD5BC4743D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:13:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41111611CD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 03:56:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41111611CD
+	by mail.kernel.org (Postfix) with ESMTPS id 6A97E610A7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:13:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A97E610A7
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QUTq2ZE8UXdVkQg0H45dQuO1IMpAJ15GAA0pCgWJz3Y=; b=IS6DbsCnt5qJJ6sY319+1G1Zz7
-	0UQhS3pUry7jmFZnzHzTkEN+lrVdr6oUJ6tc/lvIhQKW20wxtfgasx7zNH5UiByzVDF6JtF4RQkkV
-	/2IK3Jk46mYgFLWnMma1aWc/p5F8muY9GJHugnESKE2z/4RsmwzhzRt7KnZV+8TAoItMBOyFtMH6s
-	Uo+xscpd3H6VNifF7d0LCKA/qUq29Pfxpw3AP+itAXM+wH48hHY0Dw+MYJbowis3RkDiXDVSY4dcX
-	xc1YM8XGqrddKgcYM+CkOF5OxOAD5r6dSzS/TMtcNkNXQKodHGOIlFgDdAqMFwtD8zJZeDo6SOULQ
-	AoJFWbew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tb3b6cL7T5z8+4xkd19kS9PaCh//TQkuk1RxVS6qgKc=; b=fLDdNKJ3E57Z03
+	gkmW1C7Po50vhKDeI0jyceybyYSLJg/sQkAOQyeYeigTMUrAG200nYzfglvqPEWe0VtnnhFbbpB5R
+	kPE6Je3voiVCmUkJdpmcZYWoWpW/tjUpHxjNK/rOOE8Y9opLpbtPlhROL6z59VuQ+HwF98QmnySbf
+	mrjweGjEsOsxmkbTk6uXpuOxBzI3trSR2IQIpIrKnLPsxkOSLrzh8N3KxXv5fzy+ANNS5XNb2w2z1
+	MNL8vKdYuVaucT1PCk4Yi1oeRJECZMJ/xH+lcz+lHhsECld8e6jESoZfyc47QwSqJ6bDMXo3cZnZ1
+	O1liEcEcgwLemy0q46eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrYFj-003P5Z-VZ; Fri, 11 Jun 2021 03:54:39 +0000
-Received: from regular1.263xmail.com ([211.150.70.200])
+	id 1lraPY-003mGL-El; Fri, 11 Jun 2021 06:12:56 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrYFI-003Ovs-Uf; Fri, 11 Jun 2021 03:54:15 +0000
-Received: from localhost (unknown [192.168.167.235])
- by regular1.263xmail.com (Postfix) with ESMTP id 9B7FA1DB8;
- Fri, 11 Jun 2021 11:54:10 +0800 (CST)
+ id 1lraOM-003lfr-97; Fri, 11 Jun 2021 06:11:44 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id E586FCD8AF;
+ Fri, 11 Jun 2021 14:11:37 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
 X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
 X-ANTISPAM-LEVEL: 2
-Received: from [172.16.12.73] (unknown [58.22.7.114])
+Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P15328T140654309000960S1623383648787942_; 
- Fri, 11 Jun 2021 11:54:10 +0800 (CST)
+ P16485T139919133304576S1623391896460797_; 
+ Fri, 11 Jun 2021 14:11:38 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <70eca2d5e53924834f14eb9922eb0b7d>
+X-UNIQUE-TAG: <40bc6dc8c98316e58bc91f50ef9d625a>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-clk@vger.kernel.org
+X-FST-TO: linux-spi@vger.kernel.org
 X-RCPT-COUNT: 19
 X-SENDER-IP: 58.22.7.114
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
-Subject: Re: [PATCH v7 9/9] arm64: dts: rockchip: Enable SFC for Odroid Go
- Advance
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-spi@vger.kernel.org,
- broonie@kernel.org, robh+dt@kernel.org, heiko@sntech.de, jbx6244@gmail.com,
- hjc@rock-chips.com, yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+From: Jon Lin <jon.lin@rock-chips.com>
+To: linux-spi@vger.kernel.org
+Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
+ heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
+ yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
  linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, devicetree@vger.kernel.org,
+ p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org
-References: <20210609140412.16058-1-jon.lin@rock-chips.com>
- <20210609141348.19178-1-jon.lin@rock-chips.com>
- <20210609141348.19178-5-jon.lin@rock-chips.com>
- <20210610173657.GA20228@wintermute.localdomain>
- <89283da6-b00e-4d0f-5c4a-0169bda101d3@rock-chips.com>
- <SN6PR06MB5342327048383CC3D416C93DA5349@SN6PR06MB5342.namprd06.prod.outlook.com>
-From: Jon Lin <jon.lin@rock-chips.com>
-Message-ID: <19481190-2a28-8602-8f5f-6258a967833d@rock-chips.com>
-Date: Fri, 11 Jun 2021 11:54:09 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <SN6PR06MB5342327048383CC3D416C93DA5349@SN6PR06MB5342.namprd06.prod.outlook.com>
-Content-Language: en-US
+Subject: [PATCH v8 0/9] Add Rockchip SFC(serial flash controller) support
+Date: Fri, 11 Jun 2021 14:11:25 +0800
+Message-Id: <20210611061134.31369-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_205413_348631_9217DB8E 
-X-CRM114-Status: GOOD (  32.38  )
+X-CRM114-CacheID: sfid-20210610_231142_684162_DDDDB7A6 
+X-CRM114-Status: GOOD (  27.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,86 +85,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ck9uIDYvMTEvMjEgMTE6MzggQU0sIENocmlzIE1vcmdhbiB3cm90ZToKPiBPbiBGcmksIEp1biAx
-MSwgMjAyMSBhdCAxMDoyNjozNUFNICswODAwLCBKb24gTGluIHdyb3RlOgo+PiBIaSBDaHJpcwo+
-Pgo+PiBNYXkgeW91IGF0dGFjaCB0aGUgWFQyNUYxMjhCIGRldmljZSBjb2RlIHRvIG1lLCBhbmQg
-SSdsbCB0cnkgdG8gd29yayBpdCBvdXQuCj4gU3VyZSwgaGVyZSBpcyB0aGUgcGF0Y2ggSSBhbSB1
-c2luZzoKPgo+IGh0dHBzOi8vcGF0Y2h3b3JrLm96bGFicy5vcmcvcHJvamVjdC9saW51eC1tdGQv
-cGF0Y2gvU042UFIwNk1CNTM0MkM4MkYzNzJGMzdGQjhFMjFCMzI3QTU3QTlAU042UFIwNk1CNTM0
-Mi5uYW1wcmQwNi5wcm9kLm91dGxvb2suY29tLwoKdGhpcyBwYXRjaCB3b3JrcyB3ZWxsIGluIG15
-IHJrMzMwOCB0eC0yIHJ4LTIgWFQyNUYxMjhCU1NJR1UgY2FzZS4KCiMgZGQgaWY9L3RtcC9yYW5k
-LmltZyBvZj0vZGV2L210ZGJsb2NrMCBicz00MDk2IHNlZWs9MTAyNAoxMDI0KzAgcmVjb3JkcyBp
-bgoxMDI0KzAgcmVjb3JkcyBvdXQKIwojIGRkIGlmPS9kZXYvbXRkMCBvZj0vdG1wL3JhbmQxLmlt
-ZyBicz00MDk2IHNraXA9MTAyNCBjb3VudD0xMDI0CgoxMDI0KzAgcmVjb3JkcyBpbgoxMDI0KzAg
-cmVjb3JkcyBvdXQKIwojCiMgbWQ1c3VtIC90bXAvKi5pbWcKODNlNDVhNTY3NjYxNjhiNDdlNmRi
-MWQ0MWIxYjQwM2TCoCAvdG1wL3JhbmQuaW1nCjgzZTQ1YTU2NzY2MTY4YjQ3ZTZkYjFkNDFiMWI0
-MDNkwqAgL3RtcC9yYW5kMS5pbWcKIwojIGRtZXNnIHwgZ3JlcCBYVDI1RjEyOEJTU0lHVQpbwqDC
-oMKgIDAuMjAwNzM4XSBzcGktbm9yIHNwaTMuMDogWFQyNUYxMjhCU1NJR1UgKDE2Mzg0IEtieXRl
-cykKIwoKPgo+PiBPbiA2LzExLzIxIDE6MzYgQU0sIENocmlzIE1vcmdhbiB3cm90ZToKPj4+IE9u
-IFdlZCwgSnVuIDA5LCAyMDIxIGF0IDEwOjEzOjQ4UE0gKzA4MDAsIEpvbiBMaW4gd3JvdGU6Cj4+
-Pj4gRnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPj4+Pgo+Pj4+
-IFRoaXMgZW5hYmxlcyB0aGUgUm9ja2NoaXAgU2VyaWFsIEZsYXNoIENvbnRyb2xsZXIgZm9yIHRo
-ZSBPZHJvaWQgR28KPj4+PiBBZHZhbmNlLiBOb3RlIHRoYXQgd2hpbGUgdGhlIGF0dGFjaGVkIFNQ
-SSBOT1IgZmxhc2ggYW5kIHRoZSBjb250cm9sbGVyCj4+Pj4gYm90aCBzdXBwb3J0IHF1YWQgcmVh
-ZCBtb2RlLCBvbmx5IDIgb2YgdGhlIHJlcXVpcmVkIDQgcGlucyBhcmUgcHJlc2VudC4KPj4+PiBU
-aGUgcnggYW5kIHR4IGJ1cyB3aWR0aCBpcyBzZXQgdG8gMiBmb3IgdGhpcyByZWFzb24uCj4+Pj4K
-Pj4+PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29t
-Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IEpvbiBMaW4gPGpvbi5saW5Acm9jay1jaGlwcy5jb20+Cj4+
-Pj4gLS0tCj4+Pj4KPj4+PiBDaGFuZ2VzIGluIHY3OiBOb25lCj4+Pj4gQ2hhbmdlcyBpbiB2Njog
-Tm9uZQo+Pj4+IENoYW5nZXMgaW4gdjU6IE5vbmUKPj4+PiBDaGFuZ2VzIGluIHY0OiBOb25lCj4+
-Pj4gQ2hhbmdlcyBpbiB2MzogTm9uZQo+Pj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4+PiBDaGFu
-Z2VzIGluIHYxOiBOb25lCj4+Pj4KPj4+PiAgICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI2
-LW9kcm9pZC1nbzIuZHRzICAgICAgfCAxNiArKysrKysrKysrKysrKysrCj4+Pj4gICAgMSBmaWxl
-IGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKykKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyNi1vZHJvaWQtZ28yLmR0cyBiL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzI2LW9kcm9pZC1nbzIuZHRzCj4+Pj4gaW5kZXggNDljOTdm
-NzZkZjc3Li5mNzhlMTFkZDg0NDcgMTAwNjQ0Cj4+Pj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzMjYtb2Ryb2lkLWdvMi5kdHMKPj4+PiArKysgYi9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzMyNi1vZHJvaWQtZ28yLmR0cwo+Pj4+IEBAIC00ODQsNiArNDg0
-LDIyIEBACj4+Pj4gICAgCXN0YXR1cyA9ICJva2F5IjsKPj4+PiAgICB9Owo+Pj4+ICsmc2ZjIHsK
-Pj4+PiArCXBpbmN0cmwtMCA9IDwmc2ZjX2NsayAmc2ZjX2NzMCAmc2ZjX2J1czI+Owo+Pj4+ICsJ
-cGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPj4+PiArCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+
-Pj4+ICsJI3NpemUtY2VsbHMgPSA8MD47Cj4+Pj4gKwlzdGF0dXMgPSAib2theSI7Cj4+Pj4gKwo+
-Pj4+ICsJZmxhc2hAMCB7Cj4+Pj4gKwkJY29tcGF0aWJsZSA9ICJqZWRlYyxzcGktbm9yIjsKPj4+
-PiArCQlyZWcgPSA8MD47Cj4+Pj4gKwkJc3BpLW1heC1mcmVxdWVuY3kgPSA8MTA4MDAwMDAwPjsK
-Pj4+PiArCQlzcGktcngtYnVzLXdpZHRoID0gPDI+Owo+Pj4+ICsJCXNwaS10eC1idXMtd2lkdGgg
-PSA8Mj47Cj4+PiBOb3RlIHRoYXQgSSBhbSBzdGlsbCB3b3JraW5nIHdpdGggSm9uIExpbiB0byBy
-ZXNlYXJjaCB0aGlzLCBidXQgaXQgd2FzCj4+PiBmb3VuZCBpbiB0ZXN0aW5nIHRoYXQgaWYgSSBz
-ZXQgdGhlIHR4IGJ1cyB3aWR0aCB0byAxIHRoZSBwcm9ibGVtcyBJCj4+PiBlbmNvdW50ZXJlZCBp
-biBlYXJsaWVyIGFyZSByZXNvbHZlZC4gQXQgdGhpcyB0aW1lIEkgZG8gbm90IGtub3cgaWYgaXQK
-Pj4+IGlzIGFuIGlzc3VlIHdpdGggdGhlIGRyaXZlciBmb3IgdGhlIGZsYXNoIGNvbnRyb2xsZXIs
-IG9yIGlmIHRoZSBOT1IsIG9yCj4+PiBib2FyZCBpdHNlbGYgaGFzIHNvbWUgc29ydCBvZiBlcnJh
-dGEgd2hpY2ggcHJldmVudCBkdWFsIHR4IGZyb20gd29ya2luZwo+Pj4gY29ycmVjdGx5LiBOb3Rl
-IHRoYXQgYXMgb2YgcmlnaHQgbm93IHRoZSBmbGFzaCBjaGlwIEkgYW0gdXNpbmcgKGFuCj4+PiBY
-VFggWFQyNUYxMjhCKSBpcyBub3QgY3VycmVudGx5IHN1cHBvcnRlZCBpbiBtYWlubGluZSwgc28g
-aXQncyB2ZXJ5Cj4+PiBwb3NzaWJsZSB0aGlzIGlzIHNvbWUgc29ydCBvZiBlcnJhdGEgd2l0aCB0
-aGUgY2hpcC4gSXQncyBhbHNvIHBvc3NpYmxlCj4+PiB0aGF0IHRoZXJlIGlzIHNvbWV0aGluZyB3
-aXRoIHRoZSBib2FyZCB0aGF0IGlzIGludGVyZmVycmluZyB3aXRoIGR1YWwKPj4+IG1vZGUgVFgu
-ICBXaGVuIEpvbiBjb21lcyBiYWNrIHRoYXQgaGUgaGFzIHRlc3RlZCBkdWFsIG1vZGUgb24gdGhl
-IFNGQwo+Pj4gd2l0aCBhIGRpZmZlcmVudCBib2FyZC9jaGlwIEkgd2lsbCByZWNvbW1lbmQgdGhh
-dCB3ZSBjaGFuZ2UgdGhlIHR4Cj4+PiBidXMgd2lkdGggaGVyZSB0byBhIDEsIGFuZCB0aGVuIG9u
-Y2UgdGhlIFhUMjVGMTI4QiBnZXRzIG1haW5saW5lZCB3ZQo+Pj4gY2FuIHNlZSBpZiBzb21lb25l
-IGVsc2UgaGFzIGlzc3VlcyB3aXRoIGR1YWwgdHggbW9kZSBzbyB3ZSBjYW4gbm90ZQo+Pj4gdGhh
-dCBhcyBhIHByb2JsZW0gd2l0aCB0aGUgY2hpcC4gT3IgbWF5YmUgdGhlcmUgaXMgc29tZXRoaW5n
-IHdlaXJkCj4+PiB3aXRoIGR1YWwgdHggbW9kZSB5ZXQgb24gdGhlIFNGQyBkcml2ZXIvY29udHJv
-bGxlciwgSSBkb24ndCBrbm93IHlldC4KPj4+IEknbSBhbGwgdG9vIGhhcHB5IHRvIHdvcmsgd2l0
-aCBhIFJvY2tjaGlwIGVuZ2luZWVyIHNvIHRoaW5ncyBsaWtlCj4+PiB0aGlzIGNhbiBiZSBkZXRl
-cm1pbmVkIGJlZm9yZSB3ZSBoaXQgbWFpbmxpbmUuIDotKQo+Pj4KPj4+IFRoZSBYVFgyNUYxMjhC
-IGRyaXZlciBpcyBjdXJyZW50bHkgYXdhaXRpbmcgYSBkZWNpc2lvbiBvbiBob3cgdG8gaGFuZGxl
-Cj4+PiBjb250aW51YXRpb24gY29kZXMsIGFzIHRoaXMgY2hpcCBJRCBzaG91bGQgYmUgdXNpbmcg
-Y29udGludWF0aW9uIGNvZGVzLAo+Pj4gYnV0IGRvZXNuJ3QgYXBwZWFyIHRvIHJldHVybiB0aGVt
-IHdoZW4geW91IHF1ZXJ5IGZvciBtYW51ZmFjdHVyZXIgSUQuCj4+PiBTbyBJIHNob3VsZCBhbHNv
-IG5vdGUgaW4gdGhlIGNvbW1pdCBoZXJlIHRoYXQgdGhlIFNGQyB3aWxsIHN0aWxsIGJlCj4+PiB1
-bnVzYWJsZSBvbiB0aGUgT2Ryb2lkIEdvIEFkdmFuY2UgdW50aWwgdGhlIFhUWDI1RjEyOEIgaXMg
-YWxzbwo+Pj4gbWFpbmxpbmVkLgo+Pj4KPj4+IFRoYW5rIHlvdS4KPj4+Cj4+Pj4gKwl9Owo+Pj4+
-ICt9Owo+Pj4+ICsKPj4+PiAgICAmdHNhZGMgewo+Pj4+ICAgIAlzdGF0dXMgPSAib2theSI7Cj4+
-Pj4gICAgfTsKPj4+PiAtLSAKPj4+PiAyLjE3LjEKPj4+Pgo+Pj4+Cj4+Pj4KPj4+Cj4+Cj4KPgoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+
+
+Changes in v8:
+- Fix indent 4 to 2 in yaml
+
+Changes in v7:
+- Fix up the sclk_sfc parent error in rk3036
+- Unify to "rockchip,sfc" compatible id because all the feature update
+  will have a new IP version, so the driver is used for the SFC IP in
+  all SoCs
+- Change to use node "sfc" to name the SFC pinctrl group
+- Add subnode reg property check
+- Add rockchip_sfc_adjust_op_size to workaround in CMD + DUMMY case
+- Limit max_iosize to 32KB
+
+Changes in v6:
+- Add support in device trees for rv1126(Declared in series 5 but not
+  submitted)
+- Change to use "clk_sfc" "hclk_sfc" as clock lable, since it does not
+  affect interpretation and has been widely used
+- Support sfc tx_dual, tx_quad(Declared in series 5 but not submitted)
+- Simplify the code, such as remove "rockchip_sfc_register_all"(Declared
+  in series 5 but not submitted)
+- Support SFC ver4 ver5(Declared in series 5 but not submitted)
+- Add author Chris Morgan and Jon Lin to spi-rockchip-sfc.c
+- Change to use devm_spi_alloc_master and spi_unregister_master
+
+Changes in v5:
+- Add support in device trees for rv1126
+- Support sfc tx_dual, tx_quad
+- Simplify the code, such as remove "rockchip_sfc_register_all"
+- Support SFC ver4 ver5
+
+Changes in v4:
+- Changing patch back to an "RFC". An engineer from Rockchip
+  reached out to me to let me know they are working on this patch for
+  upstream, I am submitting this v4 for the community to see however
+  I expect Jon Lin (jon.lin@rock-chips.com) will submit new patches
+  soon and these are the ones we should pursue for mainlining. Jon's
+  patch series should include support for more hardware than this
+  series.
+- Clean up documentation more and ensure it is correct per
+  make dt_binding_check.
+- Add support in device trees for rk3036, rk3308, and rv1108.
+- Add ahb clock (hclk_sfc) support for rk3036.
+- Change rockchip_sfc_wait_fifo_ready() to use a switch statement.
+- Change IRQ code to only mark IRQ as handled if it handles the
+  specific IRQ (DMA transfer finish) it is supposed to handle.
+
+Changes in v3:
+- Changed the name of the clocks to sfc/ahb (from clk-sfc/clk-hsfc).
+- Changed the compatible string from rockchip,sfc to
+  rockchip,rk3036-sfc. A quick glance at the datasheets suggests this
+  driver should work for the PX30, RK180x, RK3036, RK312x, RK3308 and
+  RV1108 SoCs, and possibly more. However, I am currently only able
+  to test this on a PX30 (an RK3326). The technical reference manuals
+  appear to list the same registers for each device.
+- Corrected devicetree documentation for formatting and to note these
+  changes.
+- Replaced the maintainer with Heiko Stuebner and myself, as we will
+  take ownership of this going forward.
+- Noted that the device (per the reference manual) supports 4 CS, but
+  I am only able to test a single CS (CS 0).
+- Reordered patches to comply with upstream rules.
+
+Changes in v2:
+- Reimplemented driver using spi-mem subsystem.
+- Removed power management code as I couldn't get it working properly.
+- Added device tree bindings for Odroid Go Advance.
+
+Changes in v1:
+hanges made in this new series versus the v8 of the old series:
+- Added function to read spi-rx-bus-width from device tree, in the
+  event that the SPI chip supports 4x mode but only has 2 pins
+  wired (such as the Odroid Go Advance).
+- Changed device tree documentation from txt to yaml format.
+- Made "reset" message a dev_dbg from a dev_info.
+- Changed read and write fifo functions to remove redundant checks.
+- Changed the write and read from relaxed to non-relaxed when
+  starting the DMA transfer or reading the DMA IRQ.
+- Changed from dma_coerce_mask_and_coherent to just
+  dma_set_mask_and_coherent.
+- Changed name of get_if_type to rockchip_sfc_get_if_type.
+
+Chris Morgan (8):
+  dt-bindings: rockchip-sfc: Bindings for Rockchip serial flash
+    controller
+  spi: rockchip-sfc: add rockchip serial flash controller
+  arm64: dts: rockchip: Add SFC to PX30
+  clk: rockchip: Add support for hclk_sfc on rk3036
+  arm: dts: rockchip: Add SFC to RK3036
+  arm: dts: rockchip: Add SFC to RV1108
+  arm64: dts: rockchip: Add SFC to RK3308
+  arm64: dts: rockchip: Enable SFC for Odroid Go Advance
+
+Jon Lin (1):
+  clk: rockchip: rk3036: fix up the sclk_sfc parent error
+
+ .../devicetree/bindings/spi/rockchip-sfc.yaml |  88 +++
+ arch/arm/boot/dts/rk3036.dtsi                 |  42 ++
+ arch/arm/boot/dts/rv1108.dtsi                 |  37 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi        |  38 +
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi      |  37 +
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  16 +
+ drivers/clk/rockchip/clk-rk3036.c             |   5 +-
+ drivers/spi/Kconfig                           |   9 +
+ drivers/spi/Makefile                          |   1 +
+ drivers/spi/spi-rockchip-sfc.c                | 676 ++++++++++++++++++
+ include/dt-bindings/clock/rk3036-cru.h        |   1 +
+ 11 files changed, 948 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/spi/rockchip-sfc.yaml
+ create mode 100644 drivers/spi/spi-rockchip-sfc.c
+
+-- 
+2.17.1
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
