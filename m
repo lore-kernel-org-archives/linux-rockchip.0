@@ -7,76 +7,49 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A4E3C4743D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A3DCC48BE0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 08:14:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F50E61285
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 06:37:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F50E61285
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 117A5613AE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 08:14:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 117A5613AE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kleine-koenig.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mxlpwxdr+YxXzWW12KdzUDYTO3fajvLVq3eLrt+IRxM=; b=2P8QpGxim+GAp0
-	qdpV278h8uZwqBmfSHG1/+znYloBgol4s8xNgJrc84kSCO4947npQBJTKK3QEcJwI3QyDyz79b8Fs
-	+1XJM03GO352RbtAIIM/i2DBEjC2GOVCjLm4XD5oUW48Tzcjll8xLdVMEoiGs4BfZMAXcfv1cwAdZ
-	yv9Czb96q5fkLj0eI7IvStRBYqkXuB9MEsJy5kvF33re5Zi4s+LzReNkFVQdujeOi2Sini9KTT4VW
-	v09pOqWnTOh81QEYFw0/DhDSav6d5iM8DQRZ0zP6ewIQSQQ0LbUuPgd34S5Tz7qG2Azme/p8reh69
-	cbYvO1I2LljiEwnrWCuA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0DS/6I5HNTSG54k8INXIktpXmeLSvFU2b5HcNUyqlbE=; b=3FBiGIi3wze+xT
+	YtwhKhL90tG5x1eZPSfOeFONlQJ2EGoyZQMbKCImN0L/3MzFCBbQ6ZyB72fYxYQQu5zMIqMUgH87M
+	y+7AhcNdiFDMmNNBgF5rmeFlv10+9RDjGGq2hW7TCeP7pkSrHS0EuEql7ffUUQtiGiXzLDgiy9F03
+	iKJ1Ff9l2/ijEnrpU/Ns3NzQxFBtHCjz1mV+qj6FLzHHsN2XuomXgwQdXwGliDVuRve572SMx8Ucb
+	qXGRD/qrs8+uMJVSMuc/ILFcF8PT0AzerG8T/mQUjELXrl/9BKC+02LJJjAbWIt66uHSfFYUx+0Om
+	sIowlgBqVVvk9UdJvrag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lranN-003uVe-93; Fri, 11 Jun 2021 06:37:33 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1lrcJI-004Ier-Ah; Fri, 11 Jun 2021 08:14:36 +0000
+Received: from antares.kleine-koenig.org ([94.130.110.236])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lraPJ-003m8z-2l; Fri, 11 Jun 2021 06:12:42 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 346BEF4DB4;
- Fri, 11 Jun 2021 14:12:39 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P16485T139917350926080S1623391944380017_; 
- Fri, 11 Jun 2021 14:12:29 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <f76b447990ee54f536a633c91d7a125d>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-spi@vger.kernel.org
-X-RCPT-COUNT: 20
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: linux-spi@vger.kernel.org
-Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
- heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v8 7/9] arm: dts: rockchip: Add SFC to RV1108
-Date: Fri, 11 Jun 2021 14:12:20 +0800
-Message-Id: <20210611061222.31644-3-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210611061222.31644-1-jon.lin@rock-chips.com>
-References: <20210611061134.31369-1-jon.lin@rock-chips.com>
- <20210611061222.31644-1-jon.lin@rock-chips.com>
+ id 1lrcJ5-004Icy-AJ; Fri, 11 Jun 2021 08:14:25 +0000
+Received: by antares.kleine-koenig.org (Postfix, from userid 1000)
+ id AD8EBBC7F45; Fri, 11 Jun 2021 10:14:18 +0200 (CEST)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Add support for USB on helios64
+Date: Fri, 11 Jun 2021 10:14:14 +0200
+Message-Id: <20210611081414.1448786-1-uwe@kleine-koenig.org>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_231241_327406_48A804AD 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20210611_011423_533872_F358C876 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,94 +62,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add a devicetree entry for the Rockchip SFC for the RV1108 SOC.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
-
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- arch/arm/boot/dts/rv1108.dtsi | 37 +++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index 884872ca5207..6d4f289aff53 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -536,6 +536,17 @@
- 		status = "disabled";
- 	};
- 
-+	sfc: spi@301c0000 {
-+		compatible = "rockchip,sfc";
-+		reg = <0x301c0000 0x4000>;
-+		interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-+		clock-names = "clk_sfc", "hclk_sfc";
-+		pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus4>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	gmac: eth@30200000 {
- 		compatible = "rockchip,rv1108-gmac";
- 		reg = <0x30200000 0x10000>;
-@@ -704,6 +715,32 @@
- 			};
- 		};
- 
-+		sfc {
-+			sfc_bus4: sfc-bus4 {
-+				rockchip,pins =
-+					<2 RK_PA0 3 &pcfg_pull_none>,
-+					<2 RK_PA1 3 &pcfg_pull_none>,
-+					<2 RK_PA2 3 &pcfg_pull_none>,
-+					<2 RK_PA3 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_bus2: sfc-bus2 {
-+				rockchip,pins =
-+					<2 RK_PA0 3 &pcfg_pull_none>,
-+					<2 RK_PA1 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs0: sfc-cs0 {
-+				rockchip,pins =
-+					<2 RK_PB4 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_clk: sfc-clk {
-+				rockchip,pins =
-+					<2 RK_PB7 2 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		gmac {
- 			rmii_pins: rmii-pins {
- 				rockchip,pins =	<1 RK_PC5 2 &pcfg_pull_none>,
--- 
-2.17.1
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBlbmFibGVzIHRoZSBVU0IgaGFyZHdhcmUgbmVlZGVkIHRvIGFjY2VzcyBkZXZpY2VzIG9u
+IHRoZSBzb2NrZXRzIEoxCmFuZCBKMTMuCgpTaWduZWQtb2ZmLWJ5OiBVd2UgS2xlaW5lLUvDtm5p
+ZyA8dXdlQGtsZWluZS1rb2VuaWcub3JnPgotLS0KIC4uLi9kdHMvcm9ja2NoaXAvcmszMzk5LWtv
+Ym9sLWhlbGlvczY0LmR0cyAgICB8IDQ0ICsrKysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFu
+Z2VkLCA0NCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazMzOTkta29ib2wtaGVsaW9zNjQuZHRzCmluZGV4IDAzN2RjNWNkYzNmMy4uYzE0
+MjY0OWNkMWJkIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5
+OS1rb2JvbC1oZWxpb3M2NC5kdHMKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTkta29ib2wtaGVsaW9zNjQuZHRzCkBAIC0xNTUsNiArMTU1LDIwIEBAIHJlZ3VsYXRvci1z
+dGF0ZS1tZW0gewogCQl9OwogCX07CiAKKwl2Y2M1djBfdXNiOiB2Y2M1djAtdXNiIHsKKwkJY29t
+cGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOworCQllbmFibGUtYWN0aXZlLWhpZ2g7CisJCWdw
+aW8gPSA8JmdwaW8xIFJLX1BDNiBHUElPX0FDVElWRV9ISUdIPjsKKwkJcGluY3RybC1uYW1lcyA9
+ICJkZWZhdWx0IjsKKwkJcGluY3RybC0wID0gPCZ2Y2M1djBfdXNiX2VuPjsKKwkJcmVndWxhdG9y
+LW5hbWUgPSAidmNjNXYwX3VzYiI7CisJCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJlZ3VsYXRv
+ci1ib290LW9uOworCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw1MDAwMDAwPjsKKwkJcmVn
+dWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8NTAwMDAwMD47CisJCXZpbi1zdXBwbHkgPSA8JnZjYzV2
+MF9wZXJkZXY+OworCX07CisKIAl2Y2MxMnZfZGNpbjogdmNjMTJ2LWRjaW4gewogCQljb21wYXRp
+YmxlID0gInJlZ3VsYXRvci1maXhlZCI7CiAJCXJlZ3VsYXRvci1uYW1lID0gInZjYzEydl9kY2lu
+IjsKQEAgLTQwNyw2ICs0MjEsMTIgQEAgcG1pY19pbnRfbDogcG1pYy1pbnQtbCB7CiAJCX07CiAJ
+fTsKIAorCXBvd2VyIHsKKwkJdmNjNXYwX3VzYl9lbjogdmNjNXYwLXVzYi1lbiB7CisJCQlyb2Nr
+Y2hpcCxwaW5zID0gPDEgUktfUEM2IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OworCQl9
+OworCX07CisKIAl2Y2MzdjAtc2QgewogCQlzZG1tYzBfcHdyX2g6IHNkbW1jMC1wd3ItaCB7CiAJ
+CQlyb2NrY2hpcCxwaW5zID0gPDAgUktfUEExIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsK
+QEAgLTQ0OSw2ICs0NjksMzAgQEAgJnNkbW1jIHsKIAlzdGF0dXMgPSAib2theSI7CiB9OwogCism
+dGNwaHkxIHsKKwkvLyBwaHkgZm9yICZ1c2JkcmRfZHdjM18xCisJc3RhdHVzID0gIm9rYXkiOwor
+fTsKKworJnUycGh5MSB7CisJc3RhdHVzID0gIm9rYXkiOworCisJb3RnLXBvcnQgeworCQkvLyBw
+aHkgZm9yICZ1c2JkcmRfZHdjM18xCisJCXBoeS1zdXBwbHkgPSA8JnZjYzV2MF91c2I+CisJCXN0
+YXR1cyA9ICJva2F5IjsKKwl9OworfTsKKwogJnVhcnQyIHsKIAlzdGF0dXMgPSAib2theSI7CiB9
+OworCismdXNiZHJkM18xIHsKKwlzdGF0dXMgPSAib2theSI7CisKKwl1c2JAZmU5MDAwMDAgewor
+CQlkcl9tb2RlID0gImhvc3QiOworCQlzdGF0dXMgPSAib2theSI7CisJfTsKK307Ci0tIAoyLjMw
+LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
