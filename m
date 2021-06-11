@@ -2,19 +2,19 @@ Return-Path: <SRS0=14fJ=LF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96273C48BE0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 15:59:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18C9AC48BD1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 16:03:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 58DC2613EA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 15:59:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 58DC2613EA
+	by mail.kernel.org (Postfix) with ESMTPS id D716A613EE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 16:03:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D716A613EE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,23 +23,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=db0tYWqu/RLS+jy4qM6tiVU7Bk+t6+GiWsIWQhqpNYc=; b=gjgeM5RYdjLLwF
-	ThoDAeQohcHSHpVK7vRkL6GMWi9uCydppQU1KMM6yaae1fWx1XmYEuvpwEU83aWI/m40c0c0FzkES
-	Dsa3Nm4tsnFbvu64tBUf8Ce9eNYQCBE59L3WkKF8wgzR1liMXl8H/RyaPBIiSgy6WVcGNOwUS4qSU
-	hDnaMSKtCSMON6Fycxv/BpI7a9ILe0G8wxmHWoZjLlxTNVg2OPdx7T3X4pg8hqkklM5rmWlSquqBy
-	iDtjnz5SQ9pX2bZiYOiGXJhC+hOVvGYpe6qIaiGmAP6tbSg+/A/iM4zRdw1MJXeFBm5N0hXurjs65
-	M986q7co7cVDRTL7ctsA==;
+	List-Owner; bh=7HNi0yuzmDZSKJ2LcL5ZoJMyamDyXZsScuXrYBlh9MY=; b=KZNKzRJrrzWX3g
+	Uk946LXKnXYe4v9DhFDdqXsB/oxs4LzE0As6HlR7t/zC4jkmmEzMZ5wMxv6E9tDdnqc/qEoxBi2NU
+	5TeZn+J73vHuDStVjdhpLnhSiS/aBqMp9e0RZSzz5zSKcsJggmEKkztp0PkpPcyKBAp1r4IOBimeD
+	dkyfXtHft24s73Q3Kuz/W+d4dmpCVzr4L4hSYa/MuarLixNwUdAX6dYFIj9EwYNDWGCXOX3IjXgZM
+	S1pUqVkHgwVGaBiz4ISAAeD279Lm5Kv2orFGbf1oJupONAI7O7wLBPYs8E3e8mB1wXjlRaRuVXlD+
+	b2xoQuaK34DycgFl8egQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrjZ7-005trx-NO; Fri, 11 Jun 2021 15:59:25 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lrjcv-005uZO-Ir; Fri, 11 Jun 2021 16:03:21 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrjYv-005tpg-2c; Fri, 11 Jun 2021 15:59:14 +0000
+ id 1lrjch-005uXK-3l; Fri, 11 Jun 2021 16:03:09 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 4466C1F44800
-Message-ID: <1dc782cd3956598b2eb5f89ad0680d2ce38ffd54.camel@collabora.com>
-Subject: Re: [PATCH v2 08/12] ARM: dts: rockchip: add power controller for
- RK3036
+ (Authenticated sender: ezequiel) with ESMTPSA id A920E1F44769
+Message-ID: <add0dec64efd2d6d711df3179a88a6857bf4e887.camel@collabora.com>
+Subject: Re: [PATCH v2 07/12] media: hantro: add support for Rockchip RK3036
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: Alex Bee <knaerzche@gmail.com>, Mauro Carvalho Chehab
  <mchehab@kernel.org>,  Rob Herring <robh+dt@kernel.org>, Heiko Stuebner
@@ -48,17 +47,17 @@ To: Alex Bee <knaerzche@gmail.com>, Mauro Carvalho Chehab
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
  devicetree@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Date: Fri, 11 Jun 2021 12:58:58 -0300
-In-Reply-To: <20210527154455.358869-9-knaerzche@gmail.com>
+Date: Fri, 11 Jun 2021 13:02:54 -0300
+In-Reply-To: <20210527154455.358869-8-knaerzche@gmail.com>
 References: <20210525152225.154302-1-knaerzche@gmail.com>
  <20210527154455.358869-1-knaerzche@gmail.com>
- <20210527154455.358869-9-knaerzche@gmail.com>
+ <20210527154455.358869-8-knaerzche@gmail.com>
 Organization: Collabora
 User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_085913_276197_A4E26B2F 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20210611_090307_319289_161645CC 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,20 +75,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
 On Thu, 2021-05-27 at 17:44 +0200, Alex Bee wrote:
-> Add the power controller node and the correspondending qos nodes for
-> RK3036.
-> Also add the power-domain property to the nodes that are already
-> present.
-> Note: Since the regiser offsets of the axi interconnect QoS are missing
-> in the TRM (RK3036 TRM V1.0), they have been taken from vendor kernel.
+> RK3036's VPU IP block is the same as RK3288 has, except that it doesn't
+> have an encoder, decoding is supported up to 1920x1088 only and the axi
+> clock can be set to 300 MHz max.
+> 
+> Add a new RK3036 variant which reflect this differences.
 > 
 
-Can you take care of the device tree changes (patches 8 to 12)?
+Same question here, about testing higher rate than 300 MHz,
+but I suspect you did that already :)
 
-Thanks!
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+
+Thanks,
 Ezequiel
 
 
