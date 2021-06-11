@@ -1,64 +1,89 @@
-Return-Path: <SRS0=8ktI=LE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=14fJ=LF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 505D9C48BD1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 21:59:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF67CC48BD1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 02:27:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D459F613F1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Jun 2021 21:59:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D459F613F1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 7259761364
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 02:27:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7259761364
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zuFEL3psEwqZqq8d6yibMvrVeBXjdB7Kd33qy4FEF44=; b=X6m8hg4sSk5jWw
-	deFNTLAZ48r5XmAIAyYx/w5K/meLoievbKz2pPJYjX+CmL3ebl1RTL3oah9Dhi0tUnM/IfZXD6KdC
-	Yp1C0fAs9adkzNmT4Sg5MnhRjP3MF18Z0r6mze/jbGUZLUvqdyTQiFs1J6uh/rIV5In+wgJmnPn8o
-	sSrNjjDb5hxYunO/bNMQDDLOamddHAVGUeImxaygrNtja8GNxzg4Jd1OSEXzJbzxbPjnGZ72PpJLy
-	6975K8ZbMGv2mhcr8XTgDc6FHkGsJzrrp/Aty/kBPoMbsPG3s4oo3xLofkh2rdepq9Sp6fCLWV7ez
-	mya0W7CBlFhQlUiHwRRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KSCjF8W+H7zDUIT9vn0UGodkEczNPtds2wMZ+MtVXp0=; b=dYW0G6zd2rEHt4/NFxNudTcLDn
+	TELKj9pSscggAI3V07h/D+NRHRJYFF50faNREwyUjVZYSAMZebXdfEumJNnAn4zFN50/ZiumsWog8
+	6xw0wYn5CcBpYfyUB6++Oyo+k+/1hXpBketU1nyB+o5JgQqjYDMaqCoC7DM+qyb5uvCCVysoaoYlI
+	hox2ptvUhSfIUKDeKV6ULlxa38fBUmRgFCGtxj1YXrmAxi8lJdUgxJTltrAB7ikUuOQrqEpQiytBp
+	LsQ4SA89wC2KBibruC2/QUqjJiHOWa8Z3/j98xwDlD9MViiWf1txBMVTJlkTk5TE35qBMcqHViDaw
+	rs9n2b/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrShc-002gqR-HO; Thu, 10 Jun 2021 21:59:04 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1lrWt8-003Esl-Pa; Fri, 11 Jun 2021 02:27:14 +0000
+Received: from regular1.263xmail.com ([211.150.70.195])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrSZZ-002cTf-3j; Thu, 10 Jun 2021 21:50:46 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lrSZV-0006lk-N8; Thu, 10 Jun 2021 23:50:41 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: helgaas@kernel.org, robh+dt@kernel.org,
- Punit Agrawal <punitagrawal@gmail.com>
-Cc: Punit Agrawal <punitagrawal@gmail.com>, linux-rockchip@lists.infradead.org,
+ id 1lrWsh-003EpO-IH; Fri, 11 Jun 2021 02:26:49 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by regular1.263xmail.com (Postfix) with ESMTP id 75F991DAC;
+ Fri, 11 Jun 2021 10:26:37 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from [172.16.12.73] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P24500T139649095816960S1623378394803816_; 
+ Fri, 11 Jun 2021 10:26:36 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <76434981b7eff221154a68cfe3f38365>
+X-RL-SENDER: jon.lin@rock-chips.com
+X-SENDER: jon.lin@rock-chips.com
+X-LOGIN-NAME: jon.lin@rock-chips.com
+X-FST-TO: macromorgan@hotmail.com
+X-RCPT-COUNT: 19
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+Subject: Re: [PATCH v7 9/9] arm64: dts: rockchip: Enable SFC for Odroid Go
+ Advance
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-spi@vger.kernel.org, broonie@kernel.org, robh+dt@kernel.org,
+ heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
+ yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ p.yadav@ti.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
- robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
- briannorris@chromium.org, shawn.lin@rock-chips.com
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Update PCI host bridge
- window to 32-bit address memory
-Date: Thu, 10 Jun 2021 23:50:40 +0200
-Message-ID: <3105233.izSxrag8PF@diego>
-In-Reply-To: <20210607112856.3499682-5-punitagrawal@gmail.com>
-References: <20210607112856.3499682-1-punitagrawal@gmail.com>
- <20210607112856.3499682-5-punitagrawal@gmail.com>
+ mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20210609140412.16058-1-jon.lin@rock-chips.com>
+ <20210609141348.19178-1-jon.lin@rock-chips.com>
+ <20210609141348.19178-5-jon.lin@rock-chips.com>
+ <20210610173657.GA20228@wintermute.localdomain>
+From: Jon Lin <jon.lin@rock-chips.com>
+Message-ID: <89283da6-b00e-4d0f-5c4a-0169bda101d3@rock-chips.com>
+Date: Fri, 11 Jun 2021 10:26:35 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210610173657.GA20228@wintermute.localdomain>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_145045_213214_BECD9D01 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20210610_192647_988963_BA41B1F3 
+X-CRM114-Status: GOOD (  40.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,70 +96,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Chris
 
-Am Montag, 7. Juni 2021, 13:28:56 CEST schrieb Punit Agrawal:
-> The PCIe host bridge on RK3399 advertises a single 64-bit memory
-> address range even though it lies entirely below 4GB.
-> 
-> Previously the OF PCI range parser treated 64-bit ranges more
-> leniently (i.e., as 32-bit), but since commit 9d57e61bf723 ("of/pci:
-> Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
-> the code takes a stricter view and treats the ranges as advertised in
-> the device tree (i.e, as 64-bit).
-> 
-> The change in behaviour causes failure when allocating bus addresses
-> to devices connected behind a PCI-to-PCI bridge that require
-> non-prefetchable memory ranges. The allocation failure was observed
-> for certain Samsung NVMe drives connected to RockPro64 boards.
-> 
-> Update the host bridge window attributes to treat it as 32-bit address
-> memory. This fixes the allocation failure observed since commit
-> 9d57e61bf723.
-> 
-> Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-> Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Rob Herring <robh+dt@kernel.org>
+May you attach the XT25F128B device code to me, and I'll try to work it out.
 
-just for clarity, should I just pick this patch separately for 5.13-rc to
-make it easy for people using current kernel devicetrees, or should
-this wait for the update mentioned in the cover-letter response
-and should go all together through the PCI tree?
-
-If so, I can provide an
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 634a91af8e83..4b854eb21f72 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -227,7 +227,7 @@ pcie0: pcie@f8000000 {
->  		       <&pcie_phy 2>, <&pcie_phy 3>;
->  		phy-names = "pcie-phy-0", "pcie-phy-1",
->  			    "pcie-phy-2", "pcie-phy-3";
-> -		ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
-> +		ranges = <0x82000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
->  			 <0x81000000 0x0 0xfbe00000 0x0 0xfbe00000 0x0 0x100000>;
->  		resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
->  			 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>,
-> 
-
-
+On 6/11/21 1:36 AM, Chris Morgan wrote:
+> On Wed, Jun 09, 2021 at 10:13:48PM +0800, Jon Lin wrote:
+>> From: Chris Morgan <macromorgan@hotmail.com>
+>>
+>> This enables the Rockchip Serial Flash Controller for the Odroid Go
+>> Advance. Note that while the attached SPI NOR flash and the controller
+>> both support quad read mode, only 2 of the required 4 pins are present.
+>> The rx and tx bus width is set to 2 for this reason.
+>>
+>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+>> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+>> ---
+>>
+>> Changes in v7: None
+>> Changes in v6: None
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>> Changes in v1: None
+>>
+>>   .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+>>   1 file changed, 16 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+>> index 49c97f76df77..f78e11dd8447 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+>> @@ -484,6 +484,22 @@
+>>   	status = "okay";
+>>   };
+>>   
+>> +&sfc {
+>> +	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
+>> +	pinctrl-names = "default";
+>> +	#address-cells = <1>;
+>> +	#size-cells = <0>;
+>> +	status = "okay";
+>> +
+>> +	flash@0 {
+>> +		compatible = "jedec,spi-nor";
+>> +		reg = <0>;
+>> +		spi-max-frequency = <108000000>;
+>> +		spi-rx-bus-width = <2>;
+>> +		spi-tx-bus-width = <2>;
+> Note that I am still working with Jon Lin to research this, but it was
+> found in testing that if I set the tx bus width to 1 the problems I
+> encountered in earlier are resolved. At this time I do not know if it
+> is an issue with the driver for the flash controller, or if the NOR, or
+> board itself has some sort of errata which prevent dual tx from working
+> correctly. Note that as of right now the flash chip I am using (an
+> XTX XT25F128B) is not currently supported in mainline, so it's very
+> possible this is some sort of errata with the chip. It's also possible
+> that there is something with the board that is interferring with dual
+> mode TX.  When Jon comes back that he has tested dual mode on the SFC
+> with a different board/chip I will recommend that we change the tx
+> bus width here to a 1, and then once the XT25F128B gets mainlined we
+> can see if someone else has issues with dual tx mode so we can note
+> that as a problem with the chip. Or maybe there is something weird
+> with dual tx mode yet on the SFC driver/controller, I don't know yet.
+> I'm all too happy to work with a Rockchip engineer so things like
+> this can be determined before we hit mainline. :-)
+>
+> The XTX25F128B driver is currently awaiting a decision on how to handle
+> continuation codes, as this chip ID should be using continuation codes,
+> but doesn't appear to return them when you query for manufacturer ID.
+> So I should also note in the commit here that the SFC will still be
+> unusable on the Odroid Go Advance until the XTX25F128B is also
+> mainlined.
+>
+> Thank you.
+>
+>> +	};
+>> +};
+>> +
+>>   &tsadc {
+>>   	status = "okay";
+>>   };
+>> -- 
+>> 2.17.1
+>>
+>>
+>>
+>
+>
 
 
 
