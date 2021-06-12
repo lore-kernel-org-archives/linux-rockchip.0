@@ -1,57 +1,83 @@
-Return-Path: <SRS0=14fJ=LF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=PGv2=LG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D7DBC48BE0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 22:23:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9993C48BCF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jun 2021 18:47:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91E40613D3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Jun 2021 22:23:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91E40613D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 5119561287
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jun 2021 18:47:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5119561287
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lC+xISLTE/rl077oE6ebTjNCBNQZ41IZ/sgydl5yEjk=; b=G8V8KaTPh2v5H7
-	vaN4EsAZuKENPSc0SyoVnLOfHuvBMj745UZ5uCEuol7VRfiIzNt+K+03qhByZwdhkj/SryZGHnucR
-	4y3t3a4PBQBpeHVq3spPjjjzdEgRBoS2yys9FkU35IqlicXJId/zlW+njg93pipmJMhqSynvr3j11
-	uOzhWQvmHaOyzthiTULGnzhXGDHU8vvAYoRs9FqP54DRAw1yT8YWoOHDK+fig5MPUz3vIdXvAZ+3g
-	LqkigLx91Eh/TLAkeFNcEv1imaqdOl5C7gftl7F0tla02bwJAYtH9mEAiX0VJrSB2ZSL98ha8sspj
-	V9rr3ZJ8xqwK0QtI+OHQ==;
+	List-Owner; bh=9tAB42BrpebuPxOhLuUUAN+TJLvr/2pBgfdD9nnd8cI=; b=iZWPR+gkEmG7rM
+	WBx8A7XPub9QX2bT+VAbFP3Lq0LdfBc7WYCdVLnhkF6j3MVoLD82iRtXD79shLDHCBBlHB5G0S2+G
+	RBiUBdGB/nBP8CqyHa8fX6q0vwTpJZbMTqwlUgIJ68Jtpw4G7BjnPVuaeFUsu3txv2MqbyuUIAkF6
+	RAWuN6z0JKiGu/ftqi8n4v8JPfm43eXXKQ7WmPyN/On+YI3x7+mrlGiQiv/QnJROylvoiq81irpB9
+	4GTHcZFeNUsYn6/TLPkwdTJUmMZs1QSK521fpYw8GlHcgkcYyof6TM3GoXcoDQKhK8I+5hfIr/IQb
+	mGNF0CxzxEEcLPbe1BzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrpWD-007IVW-1j; Fri, 11 Jun 2021 22:20:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ls8fc-008xkX-W4; Sat, 12 Jun 2021 18:47:49 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrpW6-007IUy-DC; Fri, 11 Jun 2021 22:20:47 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lrpW5-0004pq-89; Sat, 12 Jun 2021 00:20:41 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: arm@kernel.org
-List-Id: <soc.lore.kernel.org>
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 5.13
-Date: Sat, 12 Jun 2021 00:20:40 +0200
-Message-ID: <3405741.0S5aU1g85B@diego>
-MIME-Version: 1.0
+ id 1ls8fb-008xk2-55; Sat, 12 Jun 2021 18:47:48 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id f5so36041559eds.0;
+ Sat, 12 Jun 2021 11:47:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=AkaLNrdh2vimxp/He0IGozYNrPKG32CCBg/tput8n7s=;
+ b=kY5mGH5jRDZHQ2g+wLpSi3Bjon3oyvrsWySSetNIWyyrpPxFJp8apUqyi/ZyJB9pLB
+ WEnU/1QJ/1okEUnQ5i6Tr5h6GGBV/FWH4ux33OiJqY/4mAve14RFaVWe30oJpy0m1LyQ
+ Sd7X9iBG5ODkIi9T9qOcE7GFtwuc2HP5ZbzyKB4ocT2rt1+GzQtWuqJbBV5WQDrDJcXr
+ bPKhxWt+kfQANCno0rAT4n1blR6vccR/RP4heuWqtPCGSrXZeM6TOzt0tzykJPP+Kl+V
+ bj5VZjF0DV4ltOgb2+A8MIKOYP3NLakiUVW8Zag44fKRtigQVVqCqtKFD8cmfIkdRTGe
+ xJWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=AkaLNrdh2vimxp/He0IGozYNrPKG32CCBg/tput8n7s=;
+ b=hAlZ01st4ESfsJ4FbdYR4Tmo1iNQiPXUnkpKbt+r5XY/KJFvcvS+4dois4fDFtDlrf
+ nv2BgZLDHfJY+xqFgvNuBe1CMQgcOL/IHTVkQq8QdU7H4in+bSvICpX169umtWVy3qT8
+ MwLi0D3owuHOHOMExPRlQexY4uxJXQiLCDz3rlSXHe7g7ux7oIcZ1paUoHnla9t8FWDQ
+ DQXwbKj1qgd7b6Vpxm6ZMWBU0433gOdXSJ8kkyQbgtFAqN4uaZUV6QcvxZywEqHQEkux
+ ZGa37dsMCnHl2VvIGS0AW3SKrLxSBodnA+2ybwDbfVgatWq49pDO4XX6aFrPEKnq5iYq
+ pUmA==
+X-Gm-Message-State: AOAM531Y5iboxSgMcwl2nTd0oR9c+itdrNXT4JkA9PqgTS3MSYVPxb7w
+ dZ4B/Ew2hiEMsWz6inydPo4CXWHR7LY+3Q==
+X-Google-Smtp-Source: ABdhPJw+XKHPcmiUY6C+yc3nz8FUZrfa/fchlm09RALpPMSJdRMusz+2Qe0jzAb25p9Ra/u111b1mw==
+X-Received: by 2002:aa7:ce82:: with SMTP id y2mr9623571edv.264.1623523661655; 
+ Sat, 12 Jun 2021 11:47:41 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id f21sm4309933edr.45.2021.06.12.11.47.40
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 12 Jun 2021 11:47:41 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, paweljarosz3691@gmail.com
+Subject: [PATCH] ARM: dts: rockchip: add labels to the timer nodes on rk3066a
+Date: Sat, 12 Jun 2021 20:47:33 +0200
+Message-Id: <20210612184733.2331-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_152042_482017_9F11388C 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20210612_114747_233272_0E35DC23 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,47 +90,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+While the kernel doesn't care so much right now, boot loaders like
+u-boot need to refine the node on their side, so to make life easier
+for everyone add the labels to the timer nodes on rk3066a.
 
-please find below a patch that unbreaks the PCIe on rk3399 that
-broke in 5.13. As the tag messages states, there are more changes
-pending that handle the backward compatiblity but will go through
-the PCI subsystem.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rk3066a.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Please pull, thanks
-Heiko
-
-The following changes since commit 6efb943b8616ec53a5e444193dccf1af9ad627b5:
-
-  Linux 5.13-rc1 (2021-05-09 14:17:44 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.13-rockchip-dtsfixes1
-
-for you to fetch changes up to 8efe01b4386ab38a36b99cfdc1dc02c38a8898c3:
-
-  arm64: dts: rockchip: Update RK3399 PCI host bridge window to 32-bit address memory (2021-06-11 23:44:00 +0200)
-
-----------------------------------------------------------------
-Fix PCIe address ranges that are affected by recent PCI changes.
-There are 3 additional patches pending that handle the backward
-compatiblity inside the PCI subsystem, but the address ranges
-should be fixed anyway.
-
-----------------------------------------------------------------
-Punit Agrawal (1):
-      arm64: dts: rockchip: Update RK3399 PCI host bridge window to 32-bit address memory
-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index 511311d25..b15cbbe23 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -217,7 +217,7 @@
+ 				       <150000000>, <75000000>;
+ 	};
+ 
+-	timer@2000e000 {
++	timer2: timer@2000e000 {
+ 		compatible = "snps,dw-apb-timer-osc";
+ 		reg = <0x2000e000 0x100>;
+ 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+@@ -238,7 +238,7 @@
+ 		};
+ 	};
+ 
+-	timer@20038000 {
++	timer0: timer@20038000 {
+ 		compatible = "snps,dw-apb-timer-osc";
+ 		reg = <0x20038000 0x100>;
+ 		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+@@ -246,7 +246,7 @@
+ 		clock-names = "timer", "pclk";
+ 	};
+ 
+-	timer@2003a000 {
++	timer1: timer@2003a000 {
+ 		compatible = "snps,dw-apb-timer-osc";
+ 		reg = <0x2003a000 0x100>;
+ 		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+-- 
+2.11.0
 
 
 _______________________________________________
