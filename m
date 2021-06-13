@@ -1,86 +1,86 @@
-Return-Path: <SRS0=PGv2=LG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=g/fF=LH=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4C78C48BCF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jun 2021 22:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5EEBC48BCF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 09:54:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F962610E6
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Jun 2021 22:02:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F962610E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9A52C610C8
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 09:54:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A52C610C8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qnx2rM2i/ycwuCXVcNvZgZ4/JcVNjQNPUpl3RcpYPLE=; b=s25VrCNrmRchEG
-	nr913PI4lB86omyyIskSC+SjkoSCW0Ln7Y9lTAPpb3ArtZjKsgFzTcrtabfxNiL5OgL93hiFZMkTa
-	oeJhVMtLJXjoInW8lN03Ku/56Cd5hkEG7S228eTBCSqUOWo+TZQ/ol0pErnSuGQFbOif9dLEL4/wH
-	yJx+S6yPczPIiR7DbG9HrZHmRMX6MNe6/KSlKB5KFN+0fep88KHz3DlOHzrDePnTFHKAmLX4FPQhx
-	f+RcdgW7M139K9uer6aR5tmTeg6gzkOwXXVpH9ypQmxLIYUDV06/bMEmmFLBimtouSdN7gV7EUgP/
-	Q9FzVPL+9zeY52HI1SHA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=76j+9J1e9+R8ywi5pEU+EHVw6D7x9299Srv4JwruDTI=; b=dz6ikgqg8iUyiCqlo4erLX4uVe
+	gDFDgrU+DKeCeSq2wlf0VL5VO/MX50+omsgvHyX9SALPPPF/4qEr0Kg5WWVM14XO7OE+/E4iT7L6C
+	3KjKoIv58n1a8xb4CaCacvXVo4/JUAVTUrE0X23HscxSucEArOobl0b4LLqWrDUWYseRfz3CsnA42
+	08i+nkmMoLSp1DHKAQG2WHs8ICWEEedS3QZzxee7IlfxCXQy67mVkuQ+HWn3UzZd6nINV3hLf9VyI
+	yht81rm8JH24uIIUh70ho9eQGZa3uw0uHhtN+nt1H7180kVvVpAFreu7wm6Z1+1cTKJHh28GJrjlq
+	LDNj/DLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsBi7-009Dhi-Dk; Sat, 12 Jun 2021 22:02:35 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1lsMp2-00A97A-IC; Sun, 13 Jun 2021 09:54:28 +0000
+Received: from lb2-smtp-cloud8.xs4all.net ([194.109.24.25])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsBhv-009Dge-NV; Sat, 12 Jun 2021 22:02:25 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id s6so41353720edu.10;
- Sat, 12 Jun 2021 15:02:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rEDs96ONr8FmGsjH+zhg8paw9S/VwLylFUAj5qFQW1M=;
- b=kbtIThhn6Eq2Qje5WRWnpASrFaPEFA67EEv9cJxwlGv91wx+pUx0y8AHAeUIMO6l4K
- oMw3YzHzQ4kusadFsvCIuipG5Q0QgqHY+uSCOXxV+5UDjHXE03JmYxGttBTFLQyZeS4D
- BJqkedJlohPXsuZedFQJAHohyT5KO+UoKs4mf+CpoI+ov7OEG9afV3P1CF8SoYqHnrrX
- 0oSBfEWjuM7u2qKWVDK+AvPI2/GZyFDK7rTjwzM2oJ1v2w/veskIa+HvpTEOrdle1ELy
- qRaOx818HzONzHcJ9P1uj1F+KNFKfMg6H1kf0uBK/5LX0pIxLKdfk437EdY+y2Zl6bTo
- Mgwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rEDs96ONr8FmGsjH+zhg8paw9S/VwLylFUAj5qFQW1M=;
- b=PAFG9bNt5YL6Rb2eJ8P18FNSTt8ERnpfd8mXY8xR7dyyXk1r9bietkL15laSPtLqpb
- bZm9lPgWtnFyJkIpWXrinofJsN67fGCsa0CV7i4HGDLV74vUOZhLMx0wJ+Fev74a3oyG
- mVd6cxNA17HEfqzWb4snfkVzD3mb/9qst6SEtz+SrKR85pigqbC2TPpr1P0tX3vpwp6p
- LCZwtPqGJfOYaRUd5fz228UlVrWH+RSa8hBvsjcjAQ4lKd31/joRi/mgkpvGLZJXQWHn
- J8hU06PykezXZxA1O1vmA64zF3e8GZMpGYTQRz0W4hKCzRdeSB6XbpRY8FadOkBkptgz
- RG1g==
-X-Gm-Message-State: AOAM531RyhCFgtFWnDOvaerlDKv12sdmr8+0dH3mgiO9S+MtX3jHL74l
- BMsI88XH65guOyURMrHC0Bt3ZjxUmwX7pmYF8ko=
-X-Google-Smtp-Source: ABdhPJwocf+UkwLvI13sMGMlwzWKxuqsxhrp6exew0/a0z/JV3U5Vu/lylFpX54PhzLJx6f/DRjA7ja7BWxLykoGJrc=
-X-Received: by 2002:a05:6402:3082:: with SMTP id
- de2mr9827627edb.214.1623535337350; 
- Sat, 12 Jun 2021 15:02:17 -0700 (PDT)
+ id 1lsMon-00A93V-1l; Sun, 13 Jun 2021 09:54:15 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id sMoWlTz7BhqltsMoaliukF; Sun, 13 Jun 2021 11:54:06 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1623578046; bh=SQyS+Y3p6UN65qWEUsJs2WXAkTNdt6/vcL+TKRR4/QI=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=NH2lLmGDRpDMHo5GbuZ2dRQ12B9au4vu16j+eqC4lKX7s6sM/rqXScRfwfrSs+2ZO
+ y2G3ioxoRrjosfI6hmcEhbjkeH+DgxmjfI5kUTMw107Gi58My2J6eCBfgHQ0WDqwuM
+ YfM/XARHYk/J0gQJBo+BoLnHYwp6/mwrpszej8cQl0eHG6l8PGOEnZ+EMDLd5JmNk3
+ KzSmnjPwk3uSV6hxmC4+IEbrbVpm1GZa7/p+cAfb6IU3FXGTKuPKeh0eDDovzcdz6E
+ eXFX+MkgSpzj6UFIfEmKOO1bKuIQWty/6msJPybwDmC0Bhx4buiiJs9jXJxSucWCQo
+ ZoRSA9QeWRnpg==
+Subject: Re: [PATCH 1/8] media: hantro: Trace hevc hw cycles performance
+ register
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com, jc@kynesim.co.uk
+Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20210604130619.491200-1-benjamin.gaignard@collabora.com>
+ <20210604130619.491200-2-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <dbf5f5e1-4989-c97d-3679-58af549b5082@xs4all.nl>
+Date: Sun, 13 Jun 2021 11:53:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.10.0
 MIME-Version: 1.0
-References: <20210608080409.1729276-1-javierm@redhat.com>
-In-Reply-To: <20210608080409.1729276-1-javierm@redhat.com>
-From: Peter Robinson <pbrobinson@gmail.com>
-Date: Sat, 12 Jun 2021 23:02:06 +0100
-Message-ID: <CALeDE9PAEArn6zTNkWe+eNomx4f1A2sK=jB+7GzE8MRJo=epAw@mail.gmail.com>
-Subject: Re: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with
- clocks gated
-To: Javier Martinez Canillas <javierm@redhat.com>
-Cc: linux-kernel@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org, 
- linux-rockchip@lists.infradead.org
+In-Reply-To: <20210604130619.491200-2-benjamin.gaignard@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfC+qvsamcgTUEUyTEVHimnw2PMHl0XfEPb1n2rzUK/9wEqbYCo1bpuCq2E/jqEfXyTjejOZ1YLNH+WF3nx/PtNIKT4rrZzLYrtQOxrGrtvUtPd7sG2Aa
+ qjiG1wFH6IO0pmH2R/L0xXwzoWLptRz+VYin8O+BGOMP+3Ox5+1jnR5cOnel2THG2kgzymNq8a3+gpv05HQHLzXo4Gwyi6aRoY8pbKfCFQYkvAr1y8ChzNxx
+ Djt1CCb0B2pRfwFUefbhkjv42efzUogqSeUx5ox8nGXoIfGl/Ab0VTCg5KOSbATFXnB3UZ8uFI3mvc5AhcZzL9f7F72MdUnQziy0ORAbMr4DomY3ZqPJ95Qe
+ vziPNG4mzChT8tAkosQNwDYQ2ILD0lhmYjsaqUyEFPiHBhUsDrZuKJYSEeCOivCEC2ZK7HZ3auwEdjxGOSGkQPT9kYp6Jtbvktb5WgEeuon/mYANfHFwIZG8
+ x7ytrwSqgouOZBb6iVqyvxv1iL6cF78SCagtRtoP23vCy++xDWEmUVnPOxAgJRQfzOLHT8r0RCjVJ0ySjr6KhlF3I892je1kSehV/dkoKU5g3sbOolVORgw3
+ 0Ju0O5CVzo2UR8jo5OYRVPmFYq6g6t5Y+5V+eLC6ByXQvZPNPi2eo00IKL2RkvuwBTFEJ7ErkGNz2LIvcFRew2ZbY4tBV31QwPnX535j2I880Hgtp6mhJYRf
+ YH1qcDjL92GS8JNk7rXDPNp0gcj24//GEfQpzB6o2GquY6wnq73/MG8QKm/ApbfNCpX5rw3PpcDyjTWTuviGNJcPUc/NBtmvslVdsb2DFb61jK/5OGgVjc7j
+ dNjbShTto4ytcCpdoSpdzh1uH51r+0avBnMIuo0CgjMhYn0OpKXpBVHC101ylP7zneV5+kdrU2okqLw/IDDmePkVle9/jCDZ20DOPcW7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210612_150223_822233_D87DBCBE 
-X-CRM114-Status: GOOD (  34.37  )
+X-CRM114-CacheID: sfid-20210613_025413_258197_EDB31C14 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,103 +98,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 8, 2021 at 9:04 AM Javier Martinez Canillas
-<javierm@redhat.com> wrote:
->
-> IRQ handlers that are registered for shared interrupts can be called at
-> any time after have been registered using the request_irq() function.
->
-> It's up to drivers to ensure that's always safe for these to be called.
->
-> Both the "pcie-sys" and "pcie-client" interrupts are shared, but since
-> their handlers are registered very early in the probe function, an error
-> later can lead to these handlers being executed before all the required
-> resources have been properly setup.
->
-> For example, the rockchip_pcie_read() function used by these IRQ handlers
-> expects that some PCIe clocks will already be enabled, otherwise trying
-> to access the PCIe registers causes the read to hang and never return.
->
-> The CONFIG_DEBUG_SHIRQ option tests if drivers are able to cope with their
-> shared interrupt handlers being called, by generating a spurious interrupt
-> just before a shared interrupt handler is unregistered.
->
-> But this means that if the option is enabled, any error in the probe path
-> of this driver could lead to one of the IRQ handlers to be executed.
->
-> In a rockpro64 board, the following sequence of events happens:
->
->   1) "pcie-sys" IRQ is requested and its handler registered.
->   2) "pcie-client" IRQ is requested and its handler registered.
->   3) probe later fails due readl_poll_timeout() returning a timeout.
->   4) the "pcie-sys" IRQ is unregistered.
->   5) CONFIG_DEBUG_SHIRQ triggers a spurious interrupt.
->   6) "pcie-client" IRQ handler is called for this spurious interrupt.
->   7) IRQ handler tries to read PCIE_CLIENT_INT_STATUS with clocks gated.
->   8) the machine hangs because rockchip_pcie_read() call never returns.
->
-> To avoid cases like this, the handlers don't have to be registered until
-> very late in the probe function, once all the resources have been setup.
->
-> So let's just move all the IRQ init before the pci_host_probe() call, that
-> will prevent issues like this and seems to be the correct thing to do too.
->
-> Reported-by: Peter Robinson <pbrobinson@gmail.com>
-> Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
-> Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-Tested-by: Peter Robinson <pbrobinson@gmail.com>
-
-Tested on a Rock960, Firefly3399 and a Pinebook Pro
-
+On 04/06/2021 15:06, Benjamin Gaignard wrote:
+> After each hevc decoded frame trace the hardware performance.
+> It provides the number of hw cycles spend per decoded macroblock.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->
-> Changes in v2:
-> - Add missing word in the commit message.
-> - Include Shawn Lin's Acked-by tag.
->
->  drivers/pci/controller/pcie-rockchip-host.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index f1d08a1b159..78d04ac29cd 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -592,10 +592,6 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
->         if (err)
->                 return err;
->
-> -       err = rockchip_pcie_setup_irq(rockchip);
-> -       if (err)
-> -               return err;
-> -
->         rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
->         if (IS_ERR(rockchip->vpcie12v)) {
->                 if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
-> @@ -973,8 +969,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->         if (err)
->                 goto err_vpcie;
->
-> -       rockchip_pcie_enable_interrupts(rockchip);
-> -
->         err = rockchip_pcie_init_irq_domain(rockchip);
->         if (err < 0)
->                 goto err_deinit_port;
-> @@ -992,6 +986,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->         bridge->sysdata = rockchip;
->         bridge->ops = &rockchip_pcie_ops;
->
-> +       err = rockchip_pcie_setup_irq(rockchip);
-> +       if (err)
-> +               goto err_remove_irq_domain;
+>  drivers/staging/media/hantro/hantro_drv.c     |  3 ++
+>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 16 ++++++++
+>  drivers/staging/media/hantro/hantro_g2_regs.h |  1 +
+>  drivers/staging/media/hantro/hantro_hw.h      |  1 +
+>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  1 +
+>  drivers/staging/media/hantro/trace.h          | 40 +++++++++++++++++++
+
+Can you rename this to hantro_trace.h? I prefer to have the driver prefix in the name.
+
+Regards,
+
+	Hans
+
+>  6 files changed, 62 insertions(+)
+>  create mode 100644 drivers/staging/media/hantro/trace.h
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index dbc69ee0b562..6053c86b1c3f 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -28,6 +28,9 @@
+>  #include "hantro.h"
+>  #include "hantro_hw.h"
+>  
+> +#define CREATE_TRACE_POINTS
+> +#include "trace.h"
 > +
-> +       rockchip_pcie_enable_interrupts(rockchip);
+>  #define DRIVER_NAME "hantro-vpu"
+>  
+>  int hantro_debug;
+> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> index 340efb57fd18..89fac5146433 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> @@ -7,6 +7,7 @@
+>  
+>  #include "hantro_hw.h"
+>  #include "hantro_g2_regs.h"
+> +#include "trace.h"
+>  
+>  #define HEVC_DEC_MODE	0xC
+>  
+> @@ -22,6 +23,21 @@ static inline void hantro_write_addr(struct hantro_dev *vpu,
+>  	vdpu_write(vpu, addr & 0xffffffff, offset);
+>  }
+>  
+> +void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx)
+> +{
+> +	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
+> +	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	u32 hw_cycles = 0;
+> +	u32 mbs = (sps->pic_width_in_luma_samples *
+> +		   sps->pic_height_in_luma_samples) >> 8;
 > +
->         err = pci_host_probe(bridge);
->         if (err < 0)
->                 goto err_remove_irq_domain;
-> --
-> 2.31.1
->
+> +	if (mbs)
+> +		hw_cycles = vdpu_read(vpu, G2_HW_PERFORMANCE) / mbs;
+> +
+> +	trace_hantro_hevc_perf(ctx, hw_cycles);
+> +}
+> +
+>  static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
+>  {
+>  	struct hantro_dev *vpu = ctx->dev;
+> diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
+> index bb22fa921914..17d84ec9c5c2 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_regs.h
+> +++ b/drivers/staging/media/hantro/hantro_g2_regs.h
+> @@ -177,6 +177,7 @@
+>  #define G2_REG_CONFIG_DEC_CLK_GATE_E		BIT(16)
+>  #define G2_REG_CONFIG_DEC_CLK_GATE_IDLE_E	BIT(17)
+>  
+> +#define G2_HW_PERFORMANCE	(G2_SWREG(63))
+>  #define G2_ADDR_DST		(G2_SWREG(65))
+>  #define G2_REG_ADDR_REF(i)	(G2_SWREG(67)  + ((i) * 0x8))
+>  #define G2_ADDR_DST_CHR		(G2_SWREG(99))
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index 5737a7707944..8fa0aacb61cd 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -240,6 +240,7 @@ void hantro_h264_dec_exit(struct hantro_ctx *ctx);
+>  int hantro_hevc_dec_init(struct hantro_ctx *ctx);
+>  void hantro_hevc_dec_exit(struct hantro_ctx *ctx);
+>  int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx);
+> +void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx);
+>  int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
+>  dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, int poc);
+>  void hantro_hevc_ref_remove_unused(struct hantro_ctx *ctx);
+> diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> index ea919bfb9891..7e9e24bb5057 100644
+> --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> @@ -239,6 +239,7 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
+>  		.reset = imx8m_vpu_g2_reset,
+>  		.init = hantro_hevc_dec_init,
+>  		.exit = hantro_hevc_dec_exit,
+> +		.done = hantro_g2_hevc_dec_done,
+>  	},
+>  };
+>  
+> diff --git a/drivers/staging/media/hantro/trace.h b/drivers/staging/media/hantro/trace.h
+> new file mode 100644
+> index 000000000000..8abe5ddb4814
+> --- /dev/null
+> +++ b/drivers/staging/media/hantro/trace.h
+> @@ -0,0 +1,40 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#undef TRACE_SYSTEM
+> +#define TRACE_SYSTEM hantro
+> +
+> +#if !defined(__HANTRO_TRACE_H__) || defined(TRACE_HEADER_MULTI_READ)
+> +#define __HANTRO_TRACE_H__
+> +
+> +#include <linux/tracepoint.h>
+> +#include <media/videobuf2-v4l2.h>
+> +
+> +#include "hantro.h"
+> +
+> +TRACE_EVENT(hantro_hevc_perf,
+> +	TP_PROTO(struct hantro_ctx *ctx, u32 hw_cycles),
+> +
+> +	TP_ARGS(ctx, hw_cycles),
+> +
+> +	TP_STRUCT__entry(
+> +		__field(int, minor)
+> +		__field(u32, hw_cycles)
+> +	),
+> +
+> +	TP_fast_assign(
+> +		__entry->minor = ctx->fh.vdev->minor;
+> +		__entry->hw_cycles = hw_cycles;
+> +	),
+> +
+> +	TP_printk("minor = %d, %8d cycles / mb",
+> +		  __entry->minor, __entry->hw_cycles)
+> +);
+> +
+> +#endif /* __HANTRO_TRACE_H__ */
+> +
+> +#undef TRACE_INCLUDE_PATH
+> +#define TRACE_INCLUDE_PATH ../../drivers/staging/media/hantro
+> +#undef TRACE_INCLUDE_FILE
+> +#define TRACE_INCLUDE_FILE trace
+> +
+> +/* This part must be outside protection */
+> +#include <trace/define_trace.h>
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
