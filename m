@@ -2,86 +2,63 @@ Return-Path: <SRS0=g/fF=LH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86959C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 09:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D89E6C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 16:22:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 45C2E6124B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 09:55:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45C2E6124B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 5E5C5610A0
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Jun 2021 16:22:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E5C5610A0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:Cc:To:From:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/RVKZgwVfnBESmSY72gnS2pxzFxq6G5F4G75AkGC9SQ=; b=OuNG+eNDmHo4ViwoXuxRl4DojW
-	/jsboKWCKmzr2gXAd7WGgGGXTN3VwNqBuPdJ3FObFpuUegKaFGjo60JfLAN2Uo7FfGAJVHK3kpBLl
-	wrJAwxd5FWjT76GJ+e6GPE5Z30qy/gkZkoVTeY6+Kok6mVPT7L5sBeL0oHpdItii/iiZ7eaC5zzLg
-	ntwBv6fWYSRd33paQ+5PRWCyD9GwmBHGNh7WPPqOSa3tAXjZj92bLVDI6QyaaHeHvuF97Lm7t+U1D
-	g4hUkVuX5BJ2mIOEaZSkrcZDFE9gOAnoxJmlWKURPfQtE/ozZ8y5jvbelAAj9Oueirdt520z75uhu
-	JAblF4Yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JkRUYaHyZeDdABub77FuiQio2MkXaMRoTyebxbLa2+A=; b=MgZIki90fPm5bK
+	TgOZoJ9YzgqbD0lzDFXkOivc0ZJVgdANTw8YxTsdSrRudu1Dww7wHV36Tck3Yc5uu68PstAnGDnj3
+	9qPZpsBFLixxAQoro2KR3CykvCxrbHHMaiJ8O4voaIFs/sFqv6Ff+Q++6Nf+KEMgkVu1ACVKfV9Nm
+	seEH4XYxwH+/Zg484prIjeegL757+SilFi32qMESQx1GqxCucDzkaiSBxJETB+FcUGJRzNHK5mYZn
+	XKL/rz7EnRtEvSv8FZrlQCX6/marMeBUFNnsHr/xiAbV4DWmWQH40Z9a6z6YhG7jp7460IxQUdXe6
+	oGY9YUR2SjIvkXqmRVeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsMqO-00AALN-MH; Sun, 13 Jun 2021 09:55:52 +0000
-Received: from lb3-smtp-cloud8.xs4all.net ([194.109.24.29])
+	id 1lsSsE-00AiUj-JW; Sun, 13 Jun 2021 16:22:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsMq8-00AAFo-A8; Sun, 13 Jun 2021 09:55:38 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id sMq2lTzcLhqltsMq5liv08; Sun, 13 Jun 2021 11:55:34 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1623578134; bh=fU8Ot0pWCiMdpCEERBQAaol5IDljg932bwWs+DnoffM=;
- h=Subject:From:To:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=HGCpEjT3M89/xZX8fIyiE1WRi2rsi/soZn1Wwgr2sgw3OvcL2gbHMaSC81fWVzQHS
- GIPTebClviw32DYc8VFkmPql0Cu5RSdjbevUzlod7L/sOiZWw4arOWobW7QfnP+wnF
- NMMlbsE870vranxaJ8XudPfNKGThCcJDdMdNlQrpSOU9oDBsMKdmvCcuxfUG+nuRps
- agy6iIFnKzdcSaWXWYrfC2LKuLUhhe5Nv5xO1A6xrk5HrwQOjSEGmQLCwm9ArSneEH
- /SoNsM97ufoIfrdc6uuV6oeg/oEN1VFuxadCQklY/ncOHkIRQQ+vvuQxNYIslJ38x0
- N+2MoaMMk1P5g==
-Subject: Re: [PATCH 1/8] media: hantro: Trace hevc hw cycles performance
- register
-From: Hans Verkuil <hverkuil@xs4all.nl>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- emil.l.velikov@gmail.com, andrzej.p@collabora.com, jc@kynesim.co.uk
-Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210604130619.491200-1-benjamin.gaignard@collabora.com>
- <20210604130619.491200-2-benjamin.gaignard@collabora.com>
- <dbf5f5e1-4989-c97d-3679-58af549b5082@xs4all.nl>
-Message-ID: <4066d940-4337-0b3d-5329-72c72bc5b623@xs4all.nl>
-Date: Sun, 13 Jun 2021 11:55:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.10.0
+ id 1lsSsC-00AiTW-4z; Sun, 13 Jun 2021 16:22:09 +0000
+Received: from p508fc96c.dip0.t-ipconnect.de ([80.143.201.108]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lsSs4-0005Bk-Sg; Sun, 13 Jun 2021 18:22:00 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Alex Bee <knaerzche@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 08/12] ARM: dts: rockchip: add power controller for
+ RK3036
+Date: Sun, 13 Jun 2021 18:22:00 +0200
+Message-ID: <3783580.yKVeVyVuyW@phil>
+In-Reply-To: <1dc782cd3956598b2eb5f89ad0680d2ce38ffd54.camel@collabora.com>
+References: <20210525152225.154302-1-knaerzche@gmail.com>
+ <20210527154455.358869-9-knaerzche@gmail.com>
+ <1dc782cd3956598b2eb5f89ad0680d2ce38ffd54.camel@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <dbf5f5e1-4989-c97d-3679-58af549b5082@xs4all.nl>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfMjIiihHdO2Qf9nYOiVqZxLKyH3O1UDw/ZPS1CzvLnmWRT7bnH94h0TrskliOdd/PtXSXvaW54EQgmnbDek8D4Ne+v9BewrJ8UMNebIz+TzFmnIBu7dl
- 8t+y5wLIUew/nkC3bhIRrBO//Al/Ebk8osO1XA2o+9qkoq1OHAQ7uSDBy/GbC24wE9dYYhbVBg38ld5hUYtEKpIHhNddIch7hl8ks4ySFUa/0TS5er77dF0o
- DmEM3ef9qv2TgQ2Rii1/jlkp7E2I63INHg40t3MhWBneMpDIpkUK6tJeDnnn5kHySdiH2ViOhywuMcXwAywPkYFyH/SFjWcgRK8OSkNQAEphgqN9vbXfr99K
- daWaUM/B0jwG7/HaRbhDJ1UiH+L6TrSzJrKTzoRkT/KtCyHIEsvsJRj1YyXD7Y5bqcPlMKpqpeDn7oyY4wniS3879tzgcbLrANESql91FvmKz65/L9YFZVPp
- XeFZ9xds75DevZBnc2H1+61PVymPSfbgvEy6f7QWbyomh3Lr1CEtdh7fSF+RLO7XZLVvuLU2hpzouggRLauC7l1e9FeW3+sHXgHk5bk85VIYHsvw06rxQowQ
- BqS6OvxOcQcC/k7/oNd2qk6JbmkMk42YRlIXCEvDmipQ6sGvv/iAHriwiPWrsA7ss+DhLWmXvLXqBLPx6cuXzulIksgyAtrhiXXNNRseK/+7C0Qt/48f2o0K
- +Cd7vtFSD86h1RpCWp5Qsz993F5yMkUkrpKUihQbpbXM3xXSWSO8oRPe7briqGnTm2qoIRLtdNW6xxOWHZq3BakSmPPGuS0/SSs8kkaKS2mjrTtGbUfty9ah
- 4TzQ2hmyK8AnbCZMa9Zm/y23YXxg2vvXZ0Kw4kX/YFGzouzts43lY9bWhwPjWAZv3eQaAGj70zVA7+ENvFqGKTRyyqWHKBjHOPZH0SRl
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210613_025536_560612_68CDCA26 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20210613_092208_218558_58B50035 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,168 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 13/06/2021 11:53, Hans Verkuil wrote:
-> On 04/06/2021 15:06, Benjamin Gaignard wrote:
->> After each hevc decoded frame trace the hardware performance.
->> It provides the number of hw cycles spend per decoded macroblock.
->>
->> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->> ---
->>  drivers/staging/media/hantro/hantro_drv.c     |  3 ++
->>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 16 ++++++++
->>  drivers/staging/media/hantro/hantro_g2_regs.h |  1 +
->>  drivers/staging/media/hantro/hantro_hw.h      |  1 +
->>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |  1 +
->>  drivers/staging/media/hantro/trace.h          | 40 +++++++++++++++++++
+Am Freitag, 11. Juni 2021, 17:58:58 CEST schrieb Ezequiel Garcia:
+> Hi Heiko,
 > 
-> Can you rename this to hantro_trace.h? I prefer to have the driver prefix in the name.
+> On Thu, 2021-05-27 at 17:44 +0200, Alex Bee wrote:
+> > Add the power controller node and the correspondending qos nodes for
+> > RK3036.
+> > Also add the power-domain property to the nodes that are already
+> > present.
+> > Note: Since the regiser offsets of the axi interconnect QoS are missing
+> > in the TRM (RK3036 TRM V1.0), they have been taken from vendor kernel.
+> > 
+> 
+> Can you take care of the device tree changes (patches 8 to 12)?
 
-Ah, I accidentally replied to the v1, but the same comment applies to v2.
+sure, I'll pick the power-domains now but need to wait for
+the vpu nodes for the driver parts to land in the media tree.
 
-Regards,
 
-	Hans
+Heiko
 
-> 
-> Regards,
-> 
-> 	Hans
-> 
->>  6 files changed, 62 insertions(+)
->>  create mode 100644 drivers/staging/media/hantro/trace.h
->>
->> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
->> index dbc69ee0b562..6053c86b1c3f 100644
->> --- a/drivers/staging/media/hantro/hantro_drv.c
->> +++ b/drivers/staging/media/hantro/hantro_drv.c
->> @@ -28,6 +28,9 @@
->>  #include "hantro.h"
->>  #include "hantro_hw.h"
->>  
->> +#define CREATE_TRACE_POINTS
->> +#include "trace.h"
->> +
->>  #define DRIVER_NAME "hantro-vpu"
->>  
->>  int hantro_debug;
->> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->> index 340efb57fd18..89fac5146433 100644
->> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->> @@ -7,6 +7,7 @@
->>  
->>  #include "hantro_hw.h"
->>  #include "hantro_g2_regs.h"
->> +#include "trace.h"
->>  
->>  #define HEVC_DEC_MODE	0xC
->>  
->> @@ -22,6 +23,21 @@ static inline void hantro_write_addr(struct hantro_dev *vpu,
->>  	vdpu_write(vpu, addr & 0xffffffff, offset);
->>  }
->>  
->> +void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx)
->> +{
->> +	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
->> +	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
->> +	struct hantro_dev *vpu = ctx->dev;
->> +	u32 hw_cycles = 0;
->> +	u32 mbs = (sps->pic_width_in_luma_samples *
->> +		   sps->pic_height_in_luma_samples) >> 8;
->> +
->> +	if (mbs)
->> +		hw_cycles = vdpu_read(vpu, G2_HW_PERFORMANCE) / mbs;
->> +
->> +	trace_hantro_hevc_perf(ctx, hw_cycles);
->> +}
->> +
->>  static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
->>  {
->>  	struct hantro_dev *vpu = ctx->dev;
->> diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
->> index bb22fa921914..17d84ec9c5c2 100644
->> --- a/drivers/staging/media/hantro/hantro_g2_regs.h
->> +++ b/drivers/staging/media/hantro/hantro_g2_regs.h
->> @@ -177,6 +177,7 @@
->>  #define G2_REG_CONFIG_DEC_CLK_GATE_E		BIT(16)
->>  #define G2_REG_CONFIG_DEC_CLK_GATE_IDLE_E	BIT(17)
->>  
->> +#define G2_HW_PERFORMANCE	(G2_SWREG(63))
->>  #define G2_ADDR_DST		(G2_SWREG(65))
->>  #define G2_REG_ADDR_REF(i)	(G2_SWREG(67)  + ((i) * 0x8))
->>  #define G2_ADDR_DST_CHR		(G2_SWREG(99))
->> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
->> index 5737a7707944..8fa0aacb61cd 100644
->> --- a/drivers/staging/media/hantro/hantro_hw.h
->> +++ b/drivers/staging/media/hantro/hantro_hw.h
->> @@ -240,6 +240,7 @@ void hantro_h264_dec_exit(struct hantro_ctx *ctx);
->>  int hantro_hevc_dec_init(struct hantro_ctx *ctx);
->>  void hantro_hevc_dec_exit(struct hantro_ctx *ctx);
->>  int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx);
->> +void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx);
->>  int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
->>  dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, int poc);
->>  void hantro_hevc_ref_remove_unused(struct hantro_ctx *ctx);
->> diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
->> index ea919bfb9891..7e9e24bb5057 100644
->> --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
->> +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
->> @@ -239,6 +239,7 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
->>  		.reset = imx8m_vpu_g2_reset,
->>  		.init = hantro_hevc_dec_init,
->>  		.exit = hantro_hevc_dec_exit,
->> +		.done = hantro_g2_hevc_dec_done,
->>  	},
->>  };
->>  
->> diff --git a/drivers/staging/media/hantro/trace.h b/drivers/staging/media/hantro/trace.h
->> new file mode 100644
->> index 000000000000..8abe5ddb4814
->> --- /dev/null
->> +++ b/drivers/staging/media/hantro/trace.h
->> @@ -0,0 +1,40 @@
->> +/* SPDX-License-Identifier: GPL-2.0 */
->> +#undef TRACE_SYSTEM
->> +#define TRACE_SYSTEM hantro
->> +
->> +#if !defined(__HANTRO_TRACE_H__) || defined(TRACE_HEADER_MULTI_READ)
->> +#define __HANTRO_TRACE_H__
->> +
->> +#include <linux/tracepoint.h>
->> +#include <media/videobuf2-v4l2.h>
->> +
->> +#include "hantro.h"
->> +
->> +TRACE_EVENT(hantro_hevc_perf,
->> +	TP_PROTO(struct hantro_ctx *ctx, u32 hw_cycles),
->> +
->> +	TP_ARGS(ctx, hw_cycles),
->> +
->> +	TP_STRUCT__entry(
->> +		__field(int, minor)
->> +		__field(u32, hw_cycles)
->> +	),
->> +
->> +	TP_fast_assign(
->> +		__entry->minor = ctx->fh.vdev->minor;
->> +		__entry->hw_cycles = hw_cycles;
->> +	),
->> +
->> +	TP_printk("minor = %d, %8d cycles / mb",
->> +		  __entry->minor, __entry->hw_cycles)
->> +);
->> +
->> +#endif /* __HANTRO_TRACE_H__ */
->> +
->> +#undef TRACE_INCLUDE_PATH
->> +#define TRACE_INCLUDE_PATH ../../drivers/staging/media/hantro
->> +#undef TRACE_INCLUDE_FILE
->> +#define TRACE_INCLUDE_FILE trace
->> +
->> +/* This part must be outside protection */
->> +#include <trace/define_trace.h>
->>
-> 
 
 
 _______________________________________________
