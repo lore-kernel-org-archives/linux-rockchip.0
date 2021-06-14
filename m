@@ -2,88 +2,93 @@ Return-Path: <SRS0=bEZ5=LI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 322F5C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 22:00:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8D3AC2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 23:05:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EEC78611AB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 22:00:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEC78611AB
+	by mail.kernel.org (Postfix) with ESMTPS id 792CF60FF1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 23:05:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 792CF60FF1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HFz6OfpX/OZ82kaZuPgAtQL0NhzAL5P3vHlI/J1HaWE=; b=QwpHwUBFXb8dCz
-	xKiPuJ2L3U/2Ks5opPhvnTSFhDq1C30+7mslOFQU6ZO5TYNnAIyKxm8g+9VDHRQMYZ7lCaivsa8zq
-	mwY2JrcU1/shfMUlWCMqurgZecwaeHdfzTB73OyN5012hP4OCooMuOn8D7Q6XDujoD3MGBnekCiwS
-	D5wGx1JXszA45U2Cfd8bnm9FmeVfNQ6NPRkqEeASd+NoVQ5QGP8m3Hqj10Ia4esvYGLsKWLjPGo35
-	8xMbD7NqFEEdISQWr+NE1n5tyeFg07GE55KSYPKfki2UTQ57Sz8homHjoXhI67mGZRD3ubgI0SsFR
-	nTau9J/x2xKV1EzCBpDg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vx5tNZH8oSrzCZHMBd2XmlaL0b5kextoWFkVQ5Fs268=; b=RZvWdP+9y4LFRs
+	BEd1uy2A84MKoyNnO3wBEt6zdndmB6uhQr1sGP+GUAAZSm74RD78urk4GMcMoLyMEOOpXocn6aPUV
+	ASYlvuAUjrApVSUlR5tmLjpvWyDpUHVLTe5wtSHhbR4Itu1pGrJ4YeS3GtEjAhzBarbEJDZmKJc2U
+	L223uXjZ6dxUsRDnNHeInOEgTVcyfKfKMHfC5l5VkGHoI0NtyYDSFCRtc6SqD2pytp8yqRTv/e08B
+	oXlN4148hhYhqV/vzSiBnOumkCrQWWEZMcpyPPj0MVvzDFu4zjvAbpSDYhYO5qqM/zUizN24uSAID
+	lsc6T4yoN6dxSnF7xcuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsud6-00GLwe-11; Mon, 14 Jun 2021 22:00:24 +0000
-Received: from mail-yb1-f175.google.com ([209.85.219.175])
+	id 1lsvdk-00GXjk-Lv; Mon, 14 Jun 2021 23:05:08 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsucs-00GLtk-LJ; Mon, 14 Jun 2021 22:00:12 +0000
-Received: by mail-yb1-f175.google.com with SMTP id b13so17565079ybk.4;
- Mon, 14 Jun 2021 15:00:08 -0700 (PDT)
+ id 1lsvdh-00GXjL-MT; Mon, 14 Jun 2021 23:05:07 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id k7so10651318pjf.5;
+ Mon, 14 Jun 2021 16:05:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TZ9IOmDtrZ7ni16mZAp2GrXLaKHRdUgj/PRjU6h2E4g=;
- b=hyJC88zcRBbPbmWSBxuipd4CSWNL1IvjA7MZr+nsTkzyjCH5iRWCnlMNpIRqS9el9c
- XtD8+XTXh5LqEx9SzMAm0LEcwpuklJ/GLTHUD0d1dwzRL0YXJcW6sDmRBZjCpkfb6wmv
- feY+aawuh7VyjZz39qiMoMbW4BzFHVyk6lrUx+HNkXCcjHuQxTgZCo1jE7jjy7F0scQz
- ZkFNTpUmQ61KIWhkjl4KzKvOxgFssx/2eZzBgXnY5jYkF8jKyFJ4MxwRnMu1nCJD8EsW
- zL9xKAm93+/jb6Cu1MinBAUjdETuB1JKJdb/lw6i6Jgmf/RhoOq48OHToUgxlTh7jKKM
- sTdA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uI8GRrOkWXIHHLv8r7qKkxBwgPnYUOcjRvPdHqWD4ps=;
+ b=rIkD169VDnBACSkXPY0G2Zk1l23ZofUXwzC5flEBLONQW4gUDe3lVYa+7ijxkzNgi/
+ LHweR7YNRaOsa/c4wyfVstKtkpt+gT6n2hqAKOO4TyFyHsM6vDFcngbquFQ3bs5Or8K5
+ zZZYGQiY51m3Odu3SdsoffuiUbnmvAUizEM8dBWo/m7Q3G246Fell0rVMcPOE0AxReMr
+ 6MgvJHnXbbt+muUAqZnjP+aeq/snjew6FZMriAYteGHXyG/yuezdZt8l1PHZC7yEefkU
+ 1jFfOufhIOwS/zlV/mH8gCxIjfzWMcLBBUiXDMk56QT9yKfZlC8cfw3ZCQzbRmQ/HM0H
+ qpeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TZ9IOmDtrZ7ni16mZAp2GrXLaKHRdUgj/PRjU6h2E4g=;
- b=eUPAld0jDfbYFgPjE7Q7CF29vTIvzd+d3aMl3Vf/ZjAjc3YkSKorbth2w0JVj0P+/K
- FcVZnRK7tMXfXtNNWSUNMh4Rqc74PCtSvxOEyo010dQyDtMGtjJJLEWH3Ez8l4vKHHMH
- mIC4AmFd9mGb6/2RrJnRLuIkf1U3djUEFFuuDeJxToYuWQ7wBpuTxfHgppKutUztM3cs
- yLWdJmhfhguXxUfK97zLaVz7zz62ZCXexEgOnaXq2FzJSdSdcvXcP9Y1emS+OaEuIrAw
- Tirc+zqlrkk96tGzrLx+m8DO7NAZEvBozMBsAZCgD2/mc8PYnE15mRhO3XnCq2nG5hpW
- Dm5w==
-X-Gm-Message-State: AOAM530ukMysWgTs5GNxBYej9sKwRJ52S81ueI9mzRI49yYSrKOHlXK/
- 33c0tym9Y+xutZPOPwiZ708LmySklU/oM2h8L2s=
-X-Google-Smtp-Source: ABdhPJwM4JriTTGxJctcBS5AHLq3/0YqXry11po9fnxM/+M939A6AkOG4ffHD4uRJYcu+d1NLAf1LXQjWPejUAOxq8E=
-X-Received: by 2002:a25:db93:: with SMTP id
- g141mr28180078ybf.141.1623707944462; 
- Mon, 14 Jun 2021 14:59:04 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uI8GRrOkWXIHHLv8r7qKkxBwgPnYUOcjRvPdHqWD4ps=;
+ b=YGYjC+HbOuX4WKKRS82/1Y4dSbLiQDZEPIzfAk2WO8NM74guoWmF9kOT56XAV5MBqb
+ DM/J6fBdexRjNPDiIpKdXdVLroSUyLESwz3+k+cLjkf3lH4NNp8QwPnxxaKfcZeXlH8Q
+ cpswQ7E43xT+ibfwHOcxvJO6JDxTwxPQkT5vKoNweNZ8BT8i0l8b9Vfbg6NQ9OzwnSmI
+ neoM6AvnXPaGePNeRuQXmCTV6iUvf3n2xzX/aqwM1zHYu+f2VAAJi8Hc+dM/5ftpFcl8
+ ouokN2ChbT7WcpiTYNgL0surGoCh5xiUjBxwcLVuFanmn0WNx6+oKAxa94IZGSn9DChP
+ BXKg==
+X-Gm-Message-State: AOAM533GTR7IAYE7Q5shXL5/lT8VIKjhcMqKrvpckaYGPd034giQ/z4A
+ Jja4RRaais+3b36e4w+tKDU=
+X-Google-Smtp-Source: ABdhPJzg8KsUbzwKhuSnQL4vAg8Cqd9ly/sJEWLKr/f6XxXTEN/bXW0dhln72jFXwqiU8fQp2AR1dw==
+X-Received: by 2002:a17:90a:b284:: with SMTP id
+ c4mr2552593pjr.213.1623711903029; 
+ Mon, 14 Jun 2021 16:05:03 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id v15sm14404504pgf.26.2021.06.14.16.05.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Jun 2021 16:05:01 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: helgaas@kernel.org,
+	robh+dt@kernel.org
+Cc: Punit Agrawal <punitagrawal@gmail.com>, maz@kernel.org,
+ leobras.c@gmail.com, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
+ robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
+ briannorris@chromium.org, shawn.lin@rock-chips.com,
+ Bjorn Helgaas <bhelgaas@google.com>
+Subject: [PATCH v4] PCI: of: Clear 64-bit flag for non-prefetchable memory
+ below 4GB
+Date: Tue, 15 Jun 2021 08:04:57 +0900
+Message-Id: <20210614230457.752811-1-punitagrawal@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20210614154359.805555-1-benjamin.gaignard@collabora.com>
- <20210614154359.805555-4-benjamin.gaignard@collabora.com>
- <19d8cb97-d715-eb5f-5b2c-0c273937fd00@arm.com>
-In-Reply-To: <19d8cb97-d715-eb5f-5b2c-0c273937fd00@arm.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 14 Jun 2021 17:58:52 -0400
-Message-ID: <CAMdYzYrD=qtwAPc8tNRB8Ko-f_zhOVKiOsbgPPqpAi2MrDzSSA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] PHY: rockchip: USB2: Allow 64 bits reg property
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, kishon@ti.com, 
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_150010_727648_7FA67EE0 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20210614_160505_763012_00CAB9BB 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,58 +106,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 14, 2021 at 1:09 PM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 2021-06-14 16:43, Benjamin Gaignard wrote:
-> > In rk356x device-tree "reg" property could be coded on 64 bits.
-> > Change reg type and of_property_read_ to make it works.
->
-> On platforms with #address-cells=1, this isn't going to do what you
-> think. Worse, it's not even going to fail, because you *can* read a
-> 64-bit value from an address cell with a size cell after it...
+Alexandru and Qu reported this resource allocation failure on
+ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
 
-Apologies, this was a hack and in no way ready for submission.
+  pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
+  pci 0000:00:00.0: PCI bridge to [bus 01]
+  pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
+  pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
 
-While I've got you here, what would be the best way to handle this?
-Since previous generations #address-cells=1 and #size-cells=1, where
-the rk356x #address-cells=2 and #size-cells=2 and we need to account
-for both of them.
+"BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
+PCI allocation code isn't smart enough to allocate it in a host
+bridge window marked as 64-bit, even though this should work fine.
+
+A DT host bridge description includes the windows from the CPU
+address space to the PCI bus space.  On a few architectures
+(microblaze, powerpc, sparc), the DT may also describe PCI devices
+themselves, including their BARs.
+
+Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
+flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
+the fact that some DT addresses described 64-bit windows and BARs.
+That was a problem because the virtio virtual NIC has a 32-bit BAR
+and a 64-bit BAR, and the driver couldn't distinguish them.
+
+9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
+fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
+bridge windows, which exposed the fact that the PCI allocator isn't
+smart enough to put 32-bit resources in those 64-bit windows.
+
+Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
+that information.
+
+Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
+Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
+Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+Reported-by: Qu Wenruo <wqu@suse.com>
+Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Rob Herring <robh+dt@kernel.org>
+---
+Hi,
+
+The patch is an updated version to fix the PCI allocation issues on
+RK3399 based platforms. Previous postings can be found at [0][1][2].
+
+The updated patch instead of clearing the 64-bit flag for
+non-prefetchable memory below 4GB does it unconditionally on the basis
+that PCI allocation logic cannot deal with the 64-bit flag (although
+it should be able to). The result is a simpler patch that restores the
+input to the allocation logic to be identical to before 9d57e61bf723.
+
+Tested locally on a RockPro64 on top of v5.13-rc6. Please consider
+merging.
 
 Thanks,
-Peter
+Punit
 
->
-> Robin.
->
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > ---
-> >   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > index 46ebdb1460a3d..45518f96d7217 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > @@ -1068,7 +1068,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
-> >       struct rockchip_usb2phy *rphy;
-> >       const struct rockchip_usb2phy_cfg *phy_cfgs;
-> >       const struct of_device_id *match;
-> > -     unsigned int reg;
-> > +     u64 reg;
-> >       int index, ret;
-> >
-> >       rphy = devm_kzalloc(dev, sizeof(*rphy), GFP_KERNEL);
-> > @@ -1098,7 +1098,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
-> >               rphy->usbgrf = NULL;
-> >       }
-> >
-> > -     if (of_property_read_u32(np, "reg", &reg)) {
-> > +     if (of_property_read_u64(np, "reg", &reg)) {
-> >               dev_err(dev, "the reg property is not assigned in %pOFn node\n",
-> >                       np);
-> >               return -EINVAL;
-> >
+Changes:
+v4:
+
+* Updated Patch 1 based on Bjorn's suggestion. Also dropped the
+  Tested-by tags due to the change of logic
+* Dropped patch 2 and 3 from the series as it's not critical to the
+  series
+* Dropped the device tree changes (Patch 4) as they are already queued
+  in the soc tree
+
+v3:
+* Improved commit log for clarity (Patch 1)
+* Added Tested-by tags
+
+v2:
+* Check ranges PCI / bus addresses rather than CPU addresses
+* (new) Restrict 32-bit size warnings on ranges that don't have the 64-bit attribute set
+* Refactor the 32-bit size warning to the range parsing loop. This
+  change also prints the warnings right after the window mappings are
+  logged.
+
+[0] https://lore.kernel.org/linux-arm-kernel/20210527150541.3130505-1-punitagrawal@gmail.com/
+[1] https://lore.kernel.org/linux-pci/20210531221057.3406958-1-punitagrawal@gmail.com/
+[2] https://lore.kernel.org/linux-pci/20210607112856.3499682-1-punitagrawal@gmail.com/
+
+ drivers/pci/of.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+index 85dcb7097da4..a143b02b2dcd 100644
+--- a/drivers/pci/of.c
++++ b/drivers/pci/of.c
+@@ -353,6 +353,8 @@ static int devm_of_pci_get_host_bridge_resources(struct device *dev,
+ 				dev_warn(dev, "More than one I/O resource converted for %pOF. CPU base address for old range lost!\n",
+ 					 dev_node);
+ 			*io_base = range.cpu_addr;
++		} else if (resource_type(res) == IORESOURCE_MEM) {
++			res->flags &= ~IORESOURCE_MEM_64;
+ 		}
+ 
+ 		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
