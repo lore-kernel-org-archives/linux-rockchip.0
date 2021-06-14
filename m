@@ -5,84 +5,67 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DA89C48BE6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88350C48BE8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:43:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF6CC613C3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:28:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF6CC613C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 39D006124B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:43:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39D006124B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=0fHUuPeBH9hsuMBpIJvp5YPodZ4ajOjUAz0JW0YPR4o=; b=nHLSy8wRLZe/kQwjyRzgIPouI4
-	8TFEuqS+yvfgFPr2Gt5cl/ou/EqYEHWcuU20Ynz2W/4HqKOr9LcDyApLhQMVzZ67SBjr5M61JQI1T
-	T78UNhXn/rEiNQx77trfh4oANRA1cUFuT7GZKtrt0fS9Sv51Q3fa8ZFqvelMDuXG+68wkatffceAf
-	/vfME3Fvs2BAWYZW+6GXUkK5TVjH+D9f8gV5vwca3doaoi89co6uzXPhLhh2aP0hPyrmM2zblgJAG
-	3KarQcudDdPm4oxsRzz0dtVLXZOh6QiBWvW0LdQnlvvjfDribcZsa2islR4Q9f810lBOrSe+pTYXV
-	iXHQRmZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TII/vyz7tr1fhnOvYLXZmUrePvbyxoh9q7gf0oU+8Ww=; b=uKVUt2O9qXPwvN+gGwcyzt5ciF
+	Ly5fc79hM+yWl5ECQ2NII8RfRxK/Dq0KTJ8/D/LnojMYCaYUtJiGexowxOk464wk9AaqlNZFpA0xV
+	jzGEVn/12gO+wmeZPy44WLuG+DDVkdBFlDFft7A/kSwwoEVQOjawwbfSUraY9W2tzmAre0HNCFV+s
+	xGKP9xgaPervHGRuVbniObrLa3Vh3JaodMhFZ2eT41Tgd5+m5EWigszdTfN1qpKiee8+NEdJchfBW
+	FgH/RXS8I5UcZuLT9jeK02rbmoMijRxuLcbLUtxhhYvIPmHrvqbhafxrdPoVkqKz5XzcqcWY+DIIx
+	fDOV85Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsh1G-00CsfM-Ma; Mon, 14 Jun 2021 07:28:26 +0000
-Received: from lb3-smtp-cloud8.xs4all.net ([194.109.24.29])
+	id 1lshFi-00CvZ7-4e; Mon, 14 Jun 2021 07:43:22 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsh0y-00Csby-To; Mon, 14 Jun 2021 07:28:11 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id sh0nlaX5ihqltsh0rllihu; Mon, 14 Jun 2021 09:28:02 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1623655682; bh=4lI4GyL9GH2nvrTQ0o6Wt6NwFx3+9870W0SH7rM1Pog=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=FxhymAtJghFfLbs4vBLozp5YyQlaXt+9hk2xi7PQp1THWvAVw1wvekqw9gbOAxtUR
- nt5hL/FUayClf4wXsEObms+olahY+qVwbxw11pQs6wQPaOPwSWgnAvdRTZFCoId06r
- D54e1xzLU53hDWB0j8+GgfrTqam17JZGuhxYyiv6c1h6IKwfNPNyPJwcAiMEICmYl9
- +TXDNAik5gR3gbg+rgPBXYhNaddcciWHO8g1se0h0+vwFQQr0P0Y9rx+CmGp8f8qB1
- Bfu2ViUisMjG8dILq+HhFV358pYGgAg/3QEGB8Do5lyHa7npHkehOOObrv+4VBTk6h
- GuBQ0lr05e4rg==
+ id 1lshFU-00CvWG-ET; Mon, 14 Jun 2021 07:43:10 +0000
+Received: from [IPv6:2a01:e0a:4cb:a870:b4e0:7e9f:1348:5540] (unknown
+ [IPv6:2a01:e0a:4cb:a870:b4e0:7e9f:1348:5540])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 5D23A1F42376;
+ Mon, 14 Jun 2021 08:43:03 +0100 (BST)
 Subject: Re: [PATCH v2 7/8] media: hevc: Add scaling matrix control
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- ezequiel@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- shawnguo@kernel.org, s.hauer@pengutronix.de, festevam@gmail.com,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
- emil.l.velikov@gmail.com, andrzej.p@collabora.com, jc@kynesim.co.uk,
- jernej.skrabec@gmail.com
+To: Hans Verkuil <hverkuil@xs4all.nl>, ezequiel@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, festevam@gmail.com, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@siol.net, emil.l.velikov@gmail.com, andrzej.p@collabora.com,
+ jc@kynesim.co.uk, jernej.skrabec@gmail.com
 Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20210610154442.806107-1-benjamin.gaignard@collabora.com>
  <20210610154442.806107-8-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <87a1e585-688e-7c4d-b9a9-24f42772a1a8@xs4all.nl>
-Date: Mon, 14 Jun 2021 09:27:57 +0200
+ <87a1e585-688e-7c4d-b9a9-24f42772a1a8@xs4all.nl>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <d5b010c8-c0c5-8800-b2c3-9371923ca10c@collabora.com>
+Date: Mon, 14 Jun 2021 09:43:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.10.0
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210610154442.806107-8-benjamin.gaignard@collabora.com>
+In-Reply-To: <87a1e585-688e-7c4d-b9a9-24f42772a1a8@xs4all.nl>
 Content-Language: en-US
-X-CMAE-Envelope: MS4xfDe2Ij7GluQvLG2QfGzNQyhKNDrRlbl2UUH3ErnB7fmuzSVsHHgozJI325a40B22/ELAxqePFc+7UYHeXwOD8aHQ+hXSeiZrZK0I65CmX3+aYwnhvNEj
- ++n1Ejt18wRP78kREgG39hdNonzCKyj/MLDu3GNWk3QDznBIaVhmZx9eF2WwH2Hv5k1LaJWJfL1YAVMhmZru2YWng3KSmu1aRBxhWU3lOdz2uRbW9uGVLXt+
- AaZlY27U8YuZQ5VRRB7ktXJvQS+5yRKsi7jCBEjWttvSo679sPSjx/LKV+K6bB3LrgySPA9j+vxQxSHWilwv2F9rJwyd6HTcN3J2WuXkfdi69JBBt07DJoee
- GyrQaVFeVw7O7LlDSunzXfmfKRlhvmBILfz4rLayH9evPyLO0SvIrB57UZ2h66b3rVwC1R/WYzCQjD9Ki8BfF7u435M5ODvq0dNKUYocYdje1roLmUkK97S1
- y0+ejr2fWxN2zSXyZ9J5V3iVAFgn0eSLrz0r1snpCDHYSyKACQresRQ5rJVU2fRxGcYLVrs87VwvYsyYgudSfG8gTg5G7i6D1K7b+5RjWGXzRVHe+ZmAXUJ2
- Ys0sjYP/OS6zCqv3fxKQI++87umteMb/wTDV8+M7dBheUz37oZEWr7escZ2j95HLGtg2HfrX/rl1XyXohpckgGGDJP4BUaip0wJbDzffuc5gjg1dxj34/t2H
- kcXz81L0K5Zr8/Os4ZKK5TZioT6gD+btoE+kl1zuiK0QS66ezbs720wZDsO7Y7Y80BlcH94HvBsvcAd/YWOJG4lsPgs4hklYcf61UWUH1nZzAz4tK+SHoQ0+
- hLsny2Bf8ReFUi5QF3gfBeMboUqyebLSF+Fe4pJrMJL2dJVJ5ieSB3l2PDztcJjZozj2CnJzWUXEgz5XFPtAVJthu0rnd5vNDkls+VeJMEyotx6Dy0YHjtq9
- QHIxTw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_002809_145649_AA02379E 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20210614_004308_761843_B2BAA990 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,199 +78,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 10/06/2021 17:44, Benjamin Gaignard wrote:
-> HEVC scaling lists are used for the scaling process for transform
-> coefficients.
-> V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED has to set when they are
-> encoded in the bitstream.
-
-Comparing H264 with HEVC I noticed that the corresponding flag for H264 is
-called V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT.
-
-Should those names be aligned? Also, it is part of PPS for H264 and SPS in HEVC,
-is that difference correct?
-
-Regards,
-
-	Hans
-
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> version 2:
->  - Fix structure name in ext-ctrls-codec.rst
-> 
->  .../media/v4l/ext-ctrls-codec.rst             | 45 +++++++++++++++++++
->  .../media/v4l/vidioc-queryctrl.rst            |  6 +++
->  drivers/media/v4l2-core/v4l2-ctrls-core.c     |  6 +++
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  4 ++
->  include/media/hevc-ctrls.h                    | 11 +++++
->  5 files changed, 72 insertions(+)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> index 8c6e2a11ed95..d4f40bb85263 100644
-> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> @@ -3068,6 +3068,51 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> +``V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX (struct)``
-> +    Specifies the HEVC scaling matrix parameters used for the scaling process
-> +    for transform coefficients.
-> +    These matrix and parameters are defined according to :ref:`hevc`.
-> +    They are described in section 7.4.5 "Scaling list data semantics" of
-> +    the specification.
-> +
-> +.. c:type:: v4l2_ctrl_hevc_scaling_matrix
-> +
-> +.. raw:: latex
-> +
-> +    \scriptsize
-> +
-> +.. tabularcolumns:: |p{5.4cm}|p{6.8cm}|p{5.1cm}|
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table:: struct v4l2_ctrl_hevc_scaling_matrix
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - __u8
-> +      - ``scaling_list_4x4[6][16]``
-> +      -
-> +    * - __u8
-> +      - ``scaling_list_8x8[6][64]``
-> +      -
-> +    * - __u8
-> +      - ``scaling_list_16x16[6][64]``
-> +      -
-> +    * - __u8
-> +      - ``scaling_list_32x32[2][64]``
-> +      -
-> +    * - __u8
-> +      - ``scaling_list_dc_coef_16x16[6]``
-> +      -
-> +    * - __u8
-> +      - ``scaling_list_dc_coef_32x32[2]``
-> +      -
-> +
-> +.. raw:: latex
-> +
-> +    \normalsize
-> +
->  .. c:type:: v4l2_hevc_dpb_entry
->  
->  .. raw:: latex
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-> index f9ecf6276129..2f491c17dd5d 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-> @@ -495,6 +495,12 @@ See also the examples in :ref:`control`.
->        - n/a
->        - A struct :c:type:`v4l2_ctrl_hevc_slice_params`, containing HEVC
->  	slice parameters for stateless video decoders.
-> +    * - ``V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX``
-> +      - n/a
-> +      - n/a
-> +      - n/a
-> +      - A struct :c:type:`v4l2_ctrl_hevc_scaling_matrix`, containing HEVC
-> +	scaling matrix for stateless video decoders.
->      * - ``V4L2_CTRL_TYPE_VP8_FRAME``
->        - n/a
->        - n/a
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> index c4b5082849b6..70adfc1b9c81 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -687,6 +687,9 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  
->  		break;
->  
-> +	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-> +		break;
-> +
->  	case V4L2_CTRL_TYPE_AREA:
->  		area = p;
->  		if (!area->width || !area->height)
-> @@ -1240,6 +1243,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
->  	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
->  		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
->  		break;
-> +	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-> +		elem_size = sizeof(struct v4l2_ctrl_hevc_scaling_matrix);
-> +		break;
->  	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
->  		elem_size = sizeof(struct v4l2_ctrl_hevc_decode_params);
->  		break;
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> index b6344bbf1e00..cb29c2a7fabe 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> @@ -996,6 +996,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
->  	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
->  	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
-> +	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
->  	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
->  	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
->  	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
-> @@ -1488,6 +1489,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
->  		break;
-> +	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:
-> +		*type = V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX;
-> +		break;
->  	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
->  		break;
-> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-> index 53c0038c792b..0e5c4a2eecff 100644
-> --- a/include/media/hevc-ctrls.h
-> +++ b/include/media/hevc-ctrls.h
-> @@ -19,6 +19,7 @@
->  #define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
-> +#define V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX	(V4L2_CID_CODEC_BASE + 1011)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
->  #define V4L2_CID_MPEG_VIDEO_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
-> @@ -27,6 +28,7 @@
->  #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
->  #define V4L2_CTRL_TYPE_HEVC_PPS 0x0121
->  #define V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS 0x0122
-> +#define V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX 0x0123
->  #define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
->  
->  enum v4l2_mpeg_video_hevc_decode_mode {
-> @@ -224,6 +226,15 @@ struct v4l2_ctrl_hevc_decode_params {
->  	__u64	flags;
->  };
->  
-> +struct v4l2_ctrl_hevc_scaling_matrix {
-> +	__u8	scaling_list_4x4[6][16];
-> +	__u8	scaling_list_8x8[6][64];
-> +	__u8	scaling_list_16x16[6][64];
-> +	__u8	scaling_list_32x32[2][64];
-> +	__u8	scaling_list_dc_coef_16x16[6];
-> +	__u8	scaling_list_dc_coef_32x32[2];
-> +};
-> +
->  /*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
->  #define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
->  /*
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDE0LzA2LzIwMjEgw6AgMDk6MjcsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDEw
+LzA2LzIwMjEgMTc6NDQsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+PiBIRVZDIHNjYWxpbmcg
+bGlzdHMgYXJlIHVzZWQgZm9yIHRoZSBzY2FsaW5nIHByb2Nlc3MgZm9yIHRyYW5zZm9ybQo+PiBj
+b2VmZmljaWVudHMuCj4+IFY0TDJfSEVWQ19TUFNfRkxBR19TQ0FMSU5HX0xJU1RfRU5BQkxFRCBo
+YXMgdG8gc2V0IHdoZW4gdGhleSBhcmUKPj4gZW5jb2RlZCBpbiB0aGUgYml0c3RyZWFtLgo+IENv
+bXBhcmluZyBIMjY0IHdpdGggSEVWQyBJIG5vdGljZWQgdGhhdCB0aGUgY29ycmVzcG9uZGluZyBm
+bGFnIGZvciBIMjY0IGlzCj4gY2FsbGVkIFY0TDJfSDI2NF9QUFNfRkxBR19TQ0FMSU5HX01BVFJJ
+WF9QUkVTRU5ULgo+Cj4gU2hvdWxkIHRob3NlIG5hbWVzIGJlIGFsaWduZWQ/IEFsc28sIGl0IGlz
+IHBhcnQgb2YgUFBTIGZvciBIMjY0IGFuZCBTUFMgaW4gSEVWQywKPiBpcyB0aGF0IGRpZmZlcmVu
+Y2UgY29ycmVjdD8KCkluIElUVSBzcGVjaWZpY2F0aW9ucyAoIjcuNC4zLjIuMSBHZW5lcmFsIHNl
+cXVlbmNlIHBhcmFtZXRlciBzZXQgUkJTUCBzZW1hbnRpY3MiKSB0aGlzIGZsYWcgaXMgZGVmaW5l
+IGxpa2UgdGhhdDoKc2NhbGluZ19saXN0X2VuYWJsZWRfZmxhZyBlcXVhbCB0byAxIHNwZWNpZmll
+cyB0aGF0IGEgc2NhbGluZyBsaXN0IGlzIHVzZWQgZm9yIHRoZSBzY2FsaW5nIHByb2Nlc3MgZm9y
+IHRyYW5zZm9ybSBjb2VmZmljaWVudHMuCnNjYWxpbmdfbGlzdF9lbmFibGVkX2ZsYWcgZXF1YWwg
+dG8gMCBzcGVjaWZpZXMgdGhhdCBzY2FsaW5nIGxpc3QgaXMgbm90IHVzZWQgZm9yIHRoZSBzY2Fs
+aW5nIHByb2Nlc3MgZm9yIHRyYW5zZm9ybSBjb2VmZmljaWVudHMuCgpTbyBmb3IgbWUgdGhlIG5h
+bWluZyBpcyBjb3JyZWN0LgoKUmVnYXJkcywKQmVuamFtaW4KCj4KPiBSZWdhcmRzLAo+Cj4gCUhh
+bnMKPgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25h
+cmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+IHZlcnNpb24gMjoKPj4gICAtIEZpeCBzdHJ1Y3R1
+cmUgbmFtZSBpbiBleHQtY3RybHMtY29kZWMucnN0Cj4+Cj4+ICAgLi4uL21lZGlhL3Y0bC9leHQt
+Y3RybHMtY29kZWMucnN0ICAgICAgICAgICAgIHwgNDUgKysrKysrKysrKysrKysrKysrKwo+PiAg
+IC4uLi9tZWRpYS92NGwvdmlkaW9jLXF1ZXJ5Y3RybC5yc3QgICAgICAgICAgICB8ICA2ICsrKwo+
+PiAgIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY3RybHMtY29yZS5jICAgICB8ICA2ICsr
+Kwo+PiAgIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY3RybHMtZGVmcy5jICAgICB8ICA0
+ICsrCj4+ICAgaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmggICAgICAgICAgICAgICAgICAgIHwg
+MTEgKysrKysKPj4gICA1IGZpbGVzIGNoYW5nZWQsIDcyIGluc2VydGlvbnMoKykKPj4KPj4gZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxz
+LWNvZGVjLnJzdCBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0
+cmxzLWNvZGVjLnJzdAo+PiBpbmRleCA4YzZlMmExMWVkOTUuLmQ0ZjQwYmI4NTI2MyAxMDA2NDQK
+Pj4gLS0tIGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMt
+Y29kZWMucnN0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwv
+ZXh0LWN0cmxzLWNvZGVjLnJzdAo+PiBAQCAtMzA2OCw2ICszMDY4LDUxIEBAIGVudW0gdjRsMl9t
+cGVnX3ZpZGVvX2hldmNfc2l6ZV9vZl9sZW5ndGhfZmllbGQgLQo+PiAgIAo+PiAgICAgICBcbm9y
+bWFsc2l6ZQo+PiAgIAo+PiArYGBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfU0NBTElOR19NQVRS
+SVggKHN0cnVjdClgYAo+PiArICAgIFNwZWNpZmllcyB0aGUgSEVWQyBzY2FsaW5nIG1hdHJpeCBw
+YXJhbWV0ZXJzIHVzZWQgZm9yIHRoZSBzY2FsaW5nIHByb2Nlc3MKPj4gKyAgICBmb3IgdHJhbnNm
+b3JtIGNvZWZmaWNpZW50cy4KPj4gKyAgICBUaGVzZSBtYXRyaXggYW5kIHBhcmFtZXRlcnMgYXJl
+IGRlZmluZWQgYWNjb3JkaW5nIHRvIDpyZWY6YGhldmNgLgo+PiArICAgIFRoZXkgYXJlIGRlc2Ny
+aWJlZCBpbiBzZWN0aW9uIDcuNC41ICJTY2FsaW5nIGxpc3QgZGF0YSBzZW1hbnRpY3MiIG9mCj4+
+ICsgICAgdGhlIHNwZWNpZmljYXRpb24uCj4+ICsKPj4gKy4uIGM6dHlwZTo6IHY0bDJfY3RybF9o
+ZXZjX3NjYWxpbmdfbWF0cml4Cj4+ICsKPj4gKy4uIHJhdzo6IGxhdGV4Cj4+ICsKPj4gKyAgICBc
+c2NyaXB0c2l6ZQo+PiArCj4+ICsuLiB0YWJ1bGFyY29sdW1uczo6IHxwezUuNGNtfXxwezYuOGNt
+fXxwezUuMWNtfXwKPj4gKwo+PiArLi4gY3NzY2xhc3M6OiBsb25ndGFibGUKPj4gKwo+PiArLi4g
+ZmxhdC10YWJsZTo6IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zY2FsaW5nX21hdHJpeAo+PiArICAg
+IDpoZWFkZXItcm93czogIDAKPj4gKyAgICA6c3R1Yi1jb2x1bW5zOiAwCj4+ICsgICAgOndpZHRo
+czogICAgICAgMSAxIDIKPj4gKwo+PiArICAgICogLSBfX3U4Cj4+ICsgICAgICAtIGBgc2NhbGlu
+Z19saXN0XzR4NFs2XVsxNl1gYAo+PiArICAgICAgLQo+PiArICAgICogLSBfX3U4Cj4+ICsgICAg
+ICAtIGBgc2NhbGluZ19saXN0Xzh4OFs2XVs2NF1gYAo+PiArICAgICAgLQo+PiArICAgICogLSBf
+X3U4Cj4+ICsgICAgICAtIGBgc2NhbGluZ19saXN0XzE2eDE2WzZdWzY0XWBgCj4+ICsgICAgICAt
+Cj4+ICsgICAgKiAtIF9fdTgKPj4gKyAgICAgIC0gYGBzY2FsaW5nX2xpc3RfMzJ4MzJbMl1bNjRd
+YGAKPj4gKyAgICAgIC0KPj4gKyAgICAqIC0gX191OAo+PiArICAgICAgLSBgYHNjYWxpbmdfbGlz
+dF9kY19jb2VmXzE2eDE2WzZdYGAKPj4gKyAgICAgIC0KPj4gKyAgICAqIC0gX191OAo+PiArICAg
+ICAgLSBgYHNjYWxpbmdfbGlzdF9kY19jb2VmXzMyeDMyWzJdYGAKPj4gKyAgICAgIC0KPj4gKwo+
+PiArLi4gcmF3OjogbGF0ZXgKPj4gKwo+PiArICAgIFxub3JtYWxzaXplCj4+ICsKPj4gICAuLiBj
+OnR5cGU6OiB2NGwyX2hldmNfZHBiX2VudHJ5Cj4+ICAgCj4+ICAgLi4gcmF3OjogbGF0ZXgKPj4g
+ZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvdmlkaW9j
+LXF1ZXJ5Y3RybC5yc3QgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3Zp
+ZGlvYy1xdWVyeWN0cmwucnN0Cj4+IGluZGV4IGY5ZWNmNjI3NjEyOS4uMmY0OTFjMTdkZDVkIDEw
+MDY0NAo+PiAtLS0gYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3ZpZGlv
+Yy1xdWVyeWN0cmwucnN0Cj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRp
+YS92NGwvdmlkaW9jLXF1ZXJ5Y3RybC5yc3QKPj4gQEAgLTQ5NSw2ICs0OTUsMTIgQEAgU2VlIGFs
+c28gdGhlIGV4YW1wbGVzIGluIDpyZWY6YGNvbnRyb2xgLgo+PiAgICAgICAgIC0gbi9hCj4+ICAg
+ICAgICAgLSBBIHN0cnVjdCA6Yzp0eXBlOmB2NGwyX2N0cmxfaGV2Y19zbGljZV9wYXJhbXNgLCBj
+b250YWluaW5nIEhFVkMKPj4gICAJc2xpY2UgcGFyYW1ldGVycyBmb3Igc3RhdGVsZXNzIHZpZGVv
+IGRlY29kZXJzLgo+PiArICAgICogLSBgYFY0TDJfQ1RSTF9UWVBFX0hFVkNfU0NBTElOR19NQVRS
+SVhgYAo+PiArICAgICAgLSBuL2EKPj4gKyAgICAgIC0gbi9hCj4+ICsgICAgICAtIG4vYQo+PiAr
+ICAgICAgLSBBIHN0cnVjdCA6Yzp0eXBlOmB2NGwyX2N0cmxfaGV2Y19zY2FsaW5nX21hdHJpeGAs
+IGNvbnRhaW5pbmcgSEVWQwo+PiArCXNjYWxpbmcgbWF0cml4IGZvciBzdGF0ZWxlc3MgdmlkZW8g
+ZGVjb2RlcnMuCj4+ICAgICAgICogLSBgYFY0TDJfQ1RSTF9UWVBFX1ZQOF9GUkFNRWBgCj4+ICAg
+ICAgICAgLSBuL2EKPj4gICAgICAgICAtIG4vYQo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRp
+YS92NGwyLWNvcmUvdjRsMi1jdHJscy1jb3JlLmMgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
+NGwyLWN0cmxzLWNvcmUuYwo+PiBpbmRleCBjNGI1MDgyODQ5YjYuLjcwYWRmYzFiOWM4MSAxMDA2
+NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1jb3JlLmMKPj4g
+KysrIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1jb3JlLmMKPj4gQEAgLTY4
+Nyw2ICs2ODcsOSBAQCBzdGF0aWMgaW50IHN0ZF92YWxpZGF0ZV9jb21wb3VuZChjb25zdCBzdHJ1
+Y3QgdjRsMl9jdHJsICpjdHJsLCB1MzIgaWR4LAo+PiAgIAo+PiAgIAkJYnJlYWs7Cj4+ICAgCj4+
+ICsJY2FzZSBWNEwyX0NUUkxfVFlQRV9IRVZDX1NDQUxJTkdfTUFUUklYOgo+PiArCQlicmVhazsK
+Pj4gKwo+PiAgIAljYXNlIFY0TDJfQ1RSTF9UWVBFX0FSRUE6Cj4+ICAgCQlhcmVhID0gcDsKPj4g
+ICAJCWlmICghYXJlYS0+d2lkdGggfHwgIWFyZWEtPmhlaWdodCkKPj4gQEAgLTEyNDAsNiArMTI0
+Myw5IEBAIHN0YXRpYyBzdHJ1Y3QgdjRsMl9jdHJsICp2NGwyX2N0cmxfbmV3KHN0cnVjdCB2NGwy
+X2N0cmxfaGFuZGxlciAqaGRsLAo+PiAgIAljYXNlIFY0TDJfQ1RSTF9UWVBFX0hFVkNfU0xJQ0Vf
+UEFSQU1TOgo+PiAgIAkJZWxlbV9zaXplID0gc2l6ZW9mKHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19z
+bGljZV9wYXJhbXMpOwo+PiAgIAkJYnJlYWs7Cj4+ICsJY2FzZSBWNEwyX0NUUkxfVFlQRV9IRVZD
+X1NDQUxJTkdfTUFUUklYOgo+PiArCQllbGVtX3NpemUgPSBzaXplb2Yoc3RydWN0IHY0bDJfY3Ry
+bF9oZXZjX3NjYWxpbmdfbWF0cml4KTsKPj4gKwkJYnJlYWs7Cj4+ICAgCWNhc2UgVjRMMl9DVFJM
+X1RZUEVfSEVWQ19ERUNPREVfUEFSQU1TOgo+PiAgIAkJZWxlbV9zaXplID0gc2l6ZW9mKHN0cnVj
+dCB2NGwyX2N0cmxfaGV2Y19kZWNvZGVfcGFyYW1zKTsKPj4gICAJCWJyZWFrOwo+PiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgYi9kcml2ZXJz
+L21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYwo+PiBpbmRleCBiNjM0NGJiZjFlMDAu
+LmNiMjljMmE3ZmFiZSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRs
+Mi1jdHJscy1kZWZzLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJs
+cy1kZWZzLmMKPj4gQEAgLTk5Niw2ICs5OTYsNyBAQCBjb25zdCBjaGFyICp2NGwyX2N0cmxfZ2V0
+X25hbWUodTMyIGlkKQo+PiAgIAljYXNlIFY0TDJfQ0lEX01QRUdfVklERU9fSEVWQ19TUFM6CQkJ
+cmV0dXJuICJIRVZDIFNlcXVlbmNlIFBhcmFtZXRlciBTZXQiOwo+PiAgIAljYXNlIFY0TDJfQ0lE
+X01QRUdfVklERU9fSEVWQ19QUFM6CQkJcmV0dXJuICJIRVZDIFBpY3R1cmUgUGFyYW1ldGVyIFNl
+dCI7Cj4+ICAgCWNhc2UgVjRMMl9DSURfTVBFR19WSURFT19IRVZDX1NMSUNFX1BBUkFNUzoJCXJl
+dHVybiAiSEVWQyBTbGljZSBQYXJhbWV0ZXJzIjsKPj4gKwljYXNlIFY0TDJfQ0lEX01QRUdfVklE
+RU9fSEVWQ19TQ0FMSU5HX01BVFJJWDoJCXJldHVybiAiSEVWQyBTY2FsaW5nIE1hdHJpeCI7Cj4+
+ICAgCWNhc2UgVjRMMl9DSURfTVBFR19WSURFT19IRVZDX0RFQ09ERV9QQVJBTVM6CQlyZXR1cm4g
+IkhFVkMgRGVjb2RlIFBhcmFtZXRlcnMiOwo+PiAgIAljYXNlIFY0TDJfQ0lEX01QRUdfVklERU9f
+SEVWQ19ERUNPREVfTU9ERToJCXJldHVybiAiSEVWQyBEZWNvZGUgTW9kZSI7Cj4+ICAgCWNhc2Ug
+VjRMMl9DSURfTVBFR19WSURFT19IRVZDX1NUQVJUX0NPREU6CQlyZXR1cm4gIkhFVkMgU3RhcnQg
+Q29kZSI7Cj4+IEBAIC0xNDg4LDYgKzE0ODksOSBAQCB2b2lkIHY0bDJfY3RybF9maWxsKHUzMiBp
+ZCwgY29uc3QgY2hhciAqKm5hbWUsIGVudW0gdjRsMl9jdHJsX3R5cGUgKnR5cGUsCj4+ICAgCWNh
+c2UgVjRMMl9DSURfTVBFR19WSURFT19IRVZDX1NMSUNFX1BBUkFNUzoKPj4gICAJCSp0eXBlID0g
+VjRMMl9DVFJMX1RZUEVfSEVWQ19TTElDRV9QQVJBTVM7Cj4+ICAgCQlicmVhazsKPj4gKwljYXNl
+IFY0TDJfQ0lEX01QRUdfVklERU9fSEVWQ19TQ0FMSU5HX01BVFJJWDoKPj4gKwkJKnR5cGUgPSBW
+NEwyX0NUUkxfVFlQRV9IRVZDX1NDQUxJTkdfTUFUUklYOwo+PiArCQlicmVhazsKPj4gICAJY2Fz
+ZSBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfREVDT0RFX1BBUkFNUzoKPj4gICAJCSp0eXBlID0g
+VjRMMl9DVFJMX1RZUEVfSEVWQ19ERUNPREVfUEFSQU1TOwo+PiAgIAkJYnJlYWs7Cj4+IGRpZmYg
+LS1naXQgYS9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1j
+dHJscy5oCj4+IGluZGV4IDUzYzAwMzhjNzkyYi4uMGU1YzRhMmVlY2ZmIDEwMDY0NAo+PiAtLS0g
+YS9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAo+PiArKysgYi9pbmNsdWRlL21lZGlhL2hldmMt
+Y3RybHMuaAo+PiBAQCAtMTksNiArMTksNyBAQAo+PiAgICNkZWZpbmUgVjRMMl9DSURfTVBFR19W
+SURFT19IRVZDX1NQUwkJKFY0TDJfQ0lEX0NPREVDX0JBU0UgKyAxMDA4KQo+PiAgICNkZWZpbmUg
+VjRMMl9DSURfTVBFR19WSURFT19IRVZDX1BQUwkJKFY0TDJfQ0lEX0NPREVDX0JBU0UgKyAxMDA5
+KQo+PiAgICNkZWZpbmUgVjRMMl9DSURfTVBFR19WSURFT19IRVZDX1NMSUNFX1BBUkFNUwkoVjRM
+Ml9DSURfQ09ERUNfQkFTRSArIDEwMTApCj4+ICsjZGVmaW5lIFY0TDJfQ0lEX01QRUdfVklERU9f
+SEVWQ19TQ0FMSU5HX01BVFJJWAkoVjRMMl9DSURfQ09ERUNfQkFTRSArIDEwMTEpCj4+ICAgI2Rl
+ZmluZSBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfREVDT0RFX1BBUkFNUwkoVjRMMl9DSURfQ09E
+RUNfQkFTRSArIDEwMTIpCj4+ICAgI2RlZmluZSBWNEwyX0NJRF9NUEVHX1ZJREVPX0hFVkNfREVD
+T0RFX01PREUJKFY0TDJfQ0lEX0NPREVDX0JBU0UgKyAxMDE1KQo+PiAgICNkZWZpbmUgVjRMMl9D
+SURfTVBFR19WSURFT19IRVZDX1NUQVJUX0NPREUJKFY0TDJfQ0lEX0NPREVDX0JBU0UgKyAxMDE2
+KQo+PiBAQCAtMjcsNiArMjgsNyBAQAo+PiAgICNkZWZpbmUgVjRMMl9DVFJMX1RZUEVfSEVWQ19T
+UFMgMHgwMTIwCj4+ICAgI2RlZmluZSBWNEwyX0NUUkxfVFlQRV9IRVZDX1BQUyAweDAxMjEKPj4g
+ICAjZGVmaW5lIFY0TDJfQ1RSTF9UWVBFX0hFVkNfU0xJQ0VfUEFSQU1TIDB4MDEyMgo+PiArI2Rl
+ZmluZSBWNEwyX0NUUkxfVFlQRV9IRVZDX1NDQUxJTkdfTUFUUklYIDB4MDEyMwo+PiAgICNkZWZp
+bmUgVjRMMl9DVFJMX1RZUEVfSEVWQ19ERUNPREVfUEFSQU1TIDB4MDEyNAo+PiAgIAo+PiAgIGVu
+dW0gdjRsMl9tcGVnX3ZpZGVvX2hldmNfZGVjb2RlX21vZGUgewo+PiBAQCAtMjI0LDYgKzIyNiwx
+NSBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfZGVjb2RlX3BhcmFtcyB7Cj4+ICAgCV9fdTY0CWZs
+YWdzOwo+PiAgIH07Cj4+ICAgCj4+ICtzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2NhbGluZ19tYXRy
+aXggewo+PiArCV9fdTgJc2NhbGluZ19saXN0XzR4NFs2XVsxNl07Cj4+ICsJX191OAlzY2FsaW5n
+X2xpc3RfOHg4WzZdWzY0XTsKPj4gKwlfX3U4CXNjYWxpbmdfbGlzdF8xNngxNls2XVs2NF07Cj4+
+ICsJX191OAlzY2FsaW5nX2xpc3RfMzJ4MzJbMl1bNjRdOwo+PiArCV9fdTgJc2NhbGluZ19saXN0
+X2RjX2NvZWZfMTZ4MTZbNl07Cj4+ICsJX191OAlzY2FsaW5nX2xpc3RfZGNfY29lZl8zMngzMlsy
+XTsKPj4gK307Cj4+ICsKPj4gICAvKiAgTVBFRy1jbGFzcyBjb250cm9sIElEcyBzcGVjaWZpYyB0
+byB0aGUgSGFudHJvIGRyaXZlciBhcyBkZWZpbmVkIGJ5IFY0TDIgKi8KPj4gICAjZGVmaW5lIFY0
+TDJfQ0lEX0NPREVDX0hBTlRST19CQVNFCQkJCShWNEwyX0NUUkxfQ0xBU1NfQ09ERUMgfCAweDEy
+MDApCj4+ICAgLyoKPj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
