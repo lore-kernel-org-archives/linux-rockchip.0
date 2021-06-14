@@ -2,95 +2,88 @@ Return-Path: <SRS0=bEZ5=LI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B020C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 322F5C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 22:00:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0F3261166
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:36:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0F3261166
+	by mail.kernel.org (Postfix) with ESMTPS id EEC78611AB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 22:00:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEC78611AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ptmqM9hb0W3afKsabzYgHukHz/exviNNGI4H0a24df0=; b=3yYTBSROqzL/2e
-	eYAJOtzFVgmM4ePWEFNS12S43c1MRiEF56535uasT7TxqfF/ufL5xpT54P/olICbnPiTN7iIOYRul
-	gNVP5AeJlDmBdB82FRr+AIGUeWBztMKg9XJKptoISmBvjuh3lALcesSCPtgZAE2NqBDDrR9Eoks3+
-	HMYwFNKGCU1WiEUamtcmqjzX3OOguhtfwzPXkYELL6modAINlEq7tmq7auZtdV7Adzsw1dUs/8Q/Z
-	HpzVCFLxUGm+0Erhx6/7bBRcUf4FLRDxOSwF7RLhgNzMSTam9wfLz70TG00EfM6unm/B/Ej3RMr5L
-	o/BB6fkM4HP/zC/fKgUA==;
+	List-Owner; bh=HFz6OfpX/OZ82kaZuPgAtQL0NhzAL5P3vHlI/J1HaWE=; b=QwpHwUBFXb8dCz
+	xKiPuJ2L3U/2Ks5opPhvnTSFhDq1C30+7mslOFQU6ZO5TYNnAIyKxm8g+9VDHRQMYZ7lCaivsa8zq
+	mwY2JrcU1/shfMUlWCMqurgZecwaeHdfzTB73OyN5012hP4OCooMuOn8D7Q6XDujoD3MGBnekCiwS
+	D5wGx1JXszA45U2Cfd8bnm9FmeVfNQ6NPRkqEeASd+NoVQ5QGP8m3Hqj10Ia4esvYGLsKWLjPGo35
+	8xMbD7NqFEEdISQWr+NE1n5tyeFg07GE55KSYPKfki2UTQ57Sz8homHjoXhI67mGZRD3ubgI0SsFR
+	nTau9J/x2xKV1EzCBpDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsuFY-00GFpn-2F; Mon, 14 Jun 2021 21:36:04 +0000
-Received: from mail-wm1-f49.google.com ([209.85.128.49])
+	id 1lsud6-00GLwe-11; Mon, 14 Jun 2021 22:00:24 +0000
+Received: from mail-yb1-f175.google.com ([209.85.219.175])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsuDS-00GEnq-5b; Mon, 14 Jun 2021 21:33:55 +0000
-Received: by mail-wm1-f49.google.com with SMTP id
- f16-20020a05600c1550b02901b00c1be4abso335060wmg.2; 
- Mon, 14 Jun 2021 14:33:53 -0700 (PDT)
+ id 1lsucs-00GLtk-LJ; Mon, 14 Jun 2021 22:00:12 +0000
+Received: by mail-yb1-f175.google.com with SMTP id b13so17565079ybk.4;
+ Mon, 14 Jun 2021 15:00:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=mSLFpqCFvhFn8KCCGqKAz67zbpuQJXU2DAY29FvcEiI=;
- b=JcqGS/5o2IR20zU/dai2yiHCFg8fo8eaIQzOmhqGqG2IuzmOD1BENSwkGvpIXuqMIS
- RCaKL9BAPoaJOJkfSx2gVL2DKk6W6psnz/HblWMENOhywll6McxJsdRCYgJ88a521qRI
- 1PDE5Wz2z9EXL7iQwmIpU5MIV3+unrWYQ8mgDJp0kSydpBG7E0a1CPQmAmr5NBZWGMmp
- DntGesjULn3FNaGxFxA4XCFJHxHW2XWKKVXJlRuQQlQJCiPTzEsamBlgWfGRt/isjdGP
- SL4K55mH7CHiAXdodZNueITpL3PjJmTQL555vBznN+n1hmiMMvLBG3694NyNhoUFI3Ns
- uXGQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TZ9IOmDtrZ7ni16mZAp2GrXLaKHRdUgj/PRjU6h2E4g=;
+ b=hyJC88zcRBbPbmWSBxuipd4CSWNL1IvjA7MZr+nsTkzyjCH5iRWCnlMNpIRqS9el9c
+ XtD8+XTXh5LqEx9SzMAm0LEcwpuklJ/GLTHUD0d1dwzRL0YXJcW6sDmRBZjCpkfb6wmv
+ feY+aawuh7VyjZz39qiMoMbW4BzFHVyk6lrUx+HNkXCcjHuQxTgZCo1jE7jjy7F0scQz
+ ZkFNTpUmQ61KIWhkjl4KzKvOxgFssx/2eZzBgXnY5jYkF8jKyFJ4MxwRnMu1nCJD8EsW
+ zL9xKAm93+/jb6Cu1MinBAUjdETuB1JKJdb/lw6i6Jgmf/RhoOq48OHToUgxlTh7jKKM
+ sTdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=mSLFpqCFvhFn8KCCGqKAz67zbpuQJXU2DAY29FvcEiI=;
- b=WIZrQ+4lDM/kISnrcn//iKcvg0ZEsNwsIbboSffDS+y0HzvWVFOYrlMml15z1EVSKA
- BWVhIyA5VQKI+OveBinLkCPO6QON8pYw0sZYlHoFtMCGrHGAlneMtLBDri2pMLB3/we4
- hVqHM88kFBPGv7g4nT070nNaCN2Bys6PoMvX8cmQ2P1sy8sKqyaET0F8Q3pKxMHvF3rr
- 71VtYfRKJ9nf78jUo6X+lNW5geUpGz+aO0GMYKGXV4Cuf62S12F1IvGwOmXFP/FcNUs7
- 0mhu0uJRb37jPpWQuru+kv7x9RzKc6cPCvcSl271BJCcpvBSmBtRHbufGLJnBgeaUSKT
- jOJA==
-X-Gm-Message-State: AOAM533DH9boeFmgJ4edB9NL8wTY+piAO95Cesnu5wkuCqriSXJqbl/i
- 9AxGMqggCmj161jUTwcy5g==
-X-Google-Smtp-Source: ABdhPJxoFf74Xcs042qLAxcjBYXgiLQWokLs1r14gREF+IVR+8p4FTNQ2GYH/EHuLNt/doSFg24O2w==
-X-Received: by 2002:a05:600c:a45:: with SMTP id
- c5mr1246082wmq.153.1623706372451; 
- Mon, 14 Jun 2021 14:32:52 -0700 (PDT)
-Received: from localhost.localdomain ([91.67.75.139])
- by smtp.googlemail.com with ESMTPSA id g23sm989525wmk.3.2021.06.14.14.32.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 14:32:51 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v3 0/6] Add support for older Rockchip SoCs to V4L2 hantro and
- rkvdec drivers
-Date: Mon, 14 Jun 2021 23:32:09 +0200
-Message-Id: <20210614213215.99389-1-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210525152225.154302-1-knaerzche@gmail.com>
-References: <20210525152225.154302-1-knaerzche@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TZ9IOmDtrZ7ni16mZAp2GrXLaKHRdUgj/PRjU6h2E4g=;
+ b=eUPAld0jDfbYFgPjE7Q7CF29vTIvzd+d3aMl3Vf/ZjAjc3YkSKorbth2w0JVj0P+/K
+ FcVZnRK7tMXfXtNNWSUNMh4Rqc74PCtSvxOEyo010dQyDtMGtjJJLEWH3Ez8l4vKHHMH
+ mIC4AmFd9mGb6/2RrJnRLuIkf1U3djUEFFuuDeJxToYuWQ7wBpuTxfHgppKutUztM3cs
+ yLWdJmhfhguXxUfK97zLaVz7zz62ZCXexEgOnaXq2FzJSdSdcvXcP9Y1emS+OaEuIrAw
+ Tirc+zqlrkk96tGzrLx+m8DO7NAZEvBozMBsAZCgD2/mc8PYnE15mRhO3XnCq2nG5hpW
+ Dm5w==
+X-Gm-Message-State: AOAM530ukMysWgTs5GNxBYej9sKwRJ52S81ueI9mzRI49yYSrKOHlXK/
+ 33c0tym9Y+xutZPOPwiZ708LmySklU/oM2h8L2s=
+X-Google-Smtp-Source: ABdhPJwM4JriTTGxJctcBS5AHLq3/0YqXry11po9fnxM/+M939A6AkOG4ffHD4uRJYcu+d1NLAf1LXQjWPejUAOxq8E=
+X-Received: by 2002:a25:db93:: with SMTP id
+ g141mr28180078ybf.141.1623707944462; 
+ Mon, 14 Jun 2021 14:59:04 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210614154359.805555-1-benjamin.gaignard@collabora.com>
+ <20210614154359.805555-4-benjamin.gaignard@collabora.com>
+ <19d8cb97-d715-eb5f-5b2c-0c273937fd00@arm.com>
+In-Reply-To: <19d8cb97-d715-eb5f-5b2c-0c273937fd00@arm.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 14 Jun 2021 17:58:52 -0400
+Message-ID: <CAMdYzYrD=qtwAPc8tNRB8Ko-f_zhOVKiOsbgPPqpAi2MrDzSSA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] PHY: rockchip: USB2: Allow 64 bits reg property
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, kishon@ti.com, 
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_143354_229036_462EA5FA 
-X-CRM114-Status: GOOD (  19.34  )
+X-CRM114-CacheID: sfid-20210614_150010_727648_7FA67EE0 
+X-CRM114-Status: GOOD (  21.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,73 +101,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi list,
+On Mon, Jun 14, 2021 at 1:09 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 2021-06-14 16:43, Benjamin Gaignard wrote:
+> > In rk356x device-tree "reg" property could be coded on 64 bits.
+> > Change reg type and of_property_read_ to make it works.
+>
+> On platforms with #address-cells=1, this isn't going to do what you
+> think. Worse, it's not even going to fail, because you *can* read a
+> 64-bit value from an address cell with a size cell after it...
 
-this is v3 of series, that adds support for older Rockchip SoCs (RK3036,
-RK3066, RK3188 and RK322x) to the existing V4L2 video decoder/-encoder
-drivers - namely hantro and rkvdec.
-They can be used as-is or with very little modifications.
+Apologies, this was a hack and in no way ready for submission.
 
-In preparation to that previous versions added power-controller support for
-RK3036 and RK322x, since both drivers rely on pm. The drivers for them
-exist already in the common Rockchip pm driver, they just haven't been
-added to the device trees yet.
-Those patches have been applied already.
+While I've got you here, what would be the best way to handle this?
+Since previous generations #address-cells=1 and #size-cells=1, where
+the rk356x #address-cells=2 and #size-cells=2 and we need to account
+for both of them.
 
-This is a basically a rebase of the patches that should get merged in
-media_tree.
-Please pick the DT patches, which are not applied yet from v2.
+Thanks,
+Peter
 
-Changes in v3:
-- rebased on current media_tree
-- collected Reviewd-tags from v2 
-
-Changes in v2:
-- reordered patches as suggested by Heiko
-- fixed indentation and order issues in dt-bindings / DT patches
-- added patch to reorder variants in hantro alphanumeric
-- added patch that merges hantro platform drivers for Rockchip in one
-- added missing DT patch for RK3036 (missed to submit with v1)
-
-See individual patches for details about changes.
-
-Thanks for your feedback,
-Alex.
-
-Alex Bee (6):
-  dt-bindings: media: rockchip-vpu: add new compatibles
-  dt-bindings: media: rockchip-vdec: add RK3228 compatible
-  media: hantro: reorder variants
-  media: hantro: merge Rockchip platform drivers
-  media: hantro: add support for Rockchip RK3066
-  media: hantro: add support for Rockchip RK3036
-
- .../bindings/media/rockchip,vdec.yaml         |  10 +-
- .../bindings/media/rockchip-vpu.yaml          |  33 +-
- drivers/staging/media/hantro/Makefile         |   9 +-
- drivers/staging/media/hantro/hantro_drv.c     |   6 +-
- drivers/staging/media/hantro/hantro_hw.h      |  32 +-
- drivers/staging/media/hantro/rk3288_vpu_hw.c  | 208 -------
- drivers/staging/media/hantro/rk3399_vpu_hw.c  | 222 --------
- ...jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} |  30 +-
- ...eg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} |  25 +-
- ...w_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} |   2 +-
- ...rk3399_vpu_regs.h => rockchip_vpu2_regs.h} |   6 +-
- .../staging/media/hantro/rockchip_vpu_hw.c    | 526 ++++++++++++++++++
- 12 files changed, 616 insertions(+), 493 deletions(-)
- delete mode 100644 drivers/staging/media/hantro/rk3288_vpu_hw.c
- delete mode 100644 drivers/staging/media/hantro/rk3399_vpu_hw.c
- rename drivers/staging/media/hantro/{rk3399_vpu_hw_jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} (87%)
- rename drivers/staging/media/hantro/{rk3399_vpu_hw_mpeg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} (94%)
- rename drivers/staging/media/hantro/{rk3399_vpu_hw_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} (99%)
- rename drivers/staging/media/hantro/{rk3399_vpu_regs.h => rockchip_vpu2_regs.h} (99%)
- create mode 100644 drivers/staging/media/hantro/rockchip_vpu_hw.c
-
-
-base-commit: 45040f675041956ad763f9ef139ecee3647aa8bb
--- 
-2.27.0
-
+>
+> Robin.
+>
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > ---
+> >   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 ++--
+> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > index 46ebdb1460a3d..45518f96d7217 100644
+> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > @@ -1068,7 +1068,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+> >       struct rockchip_usb2phy *rphy;
+> >       const struct rockchip_usb2phy_cfg *phy_cfgs;
+> >       const struct of_device_id *match;
+> > -     unsigned int reg;
+> > +     u64 reg;
+> >       int index, ret;
+> >
+> >       rphy = devm_kzalloc(dev, sizeof(*rphy), GFP_KERNEL);
+> > @@ -1098,7 +1098,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+> >               rphy->usbgrf = NULL;
+> >       }
+> >
+> > -     if (of_property_read_u32(np, "reg", &reg)) {
+> > +     if (of_property_read_u64(np, "reg", &reg)) {
+> >               dev_err(dev, "the reg property is not assigned in %pOFn node\n",
+> >                       np);
+> >               return -EINVAL;
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
