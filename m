@@ -3,71 +3,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14FA1C48BE6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:46:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA65AC4743C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 11:10:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D498061246
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 07:46:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D498061246
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 343A86109E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 11:10:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 343A86109E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L3Tz3kADL/H8ucCXKPnrDx5/sEYhSAvlUw/tuvZDP+Q=; b=iANpxNpJcB5CFgMbKya6zxJmOR
-	2xMID3Ho4lm13BkqRY6cDsTcW0rwHOiM+KjGhRoUz8IAdFpxflno3YuRC2Mopsd8palWHjdDiAQnF
-	Z18zWGJQIPU4rSmPiQnNpdQHnRB2Mnpyt0pKxwct9LQgGccGMT98viJaKpYKpxPq9+i7cwTzmxuqF
-	tvfaLVjzbID0mURxXtAhHc/icRLo3+rxhLmfDckgbG8Cecgxhb5vEOx8DDHdHAT+lPepu1TUiebv1
-	THXEEGdXHf1YmEqAEUCumCU+HB4iZYC8psMa2GHoPZMDz17pbQSNu/j52ZlIwYSrLtDJlHO3L8ACp
-	bvxf+HaA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:References:Cc:To:Subject:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=cL+Pb9s8TbsY7BbLVrzF7ojxHR501ltcJAVyEXN2aAg=; b=TGtPaiRQkE7bORId+KlWjBQ2oq
+	SHPSw+wjFumP9FanipRPKnaZSKDRD7QqI7pLgydXzVrUqW0HSGrNPzm100Nubgagn4uZAUfRD1n6W
+	5ppIhvrRfxilhu79g+N+ITdPv9izM5XSYcL6+9bwDAQFt4f5nzl4Japl7UAfY0npzhKX3QEEluAAn
+	hqm++Wf7X7C59pIDMQK6e+28RRrvnan7mpQmRgJRxD18rsbVpUXAkq63Y4MmLku/Rek3lvddZttsI
+	5ar0dda+TrHi94SYl+bzAz82rsfbINVKFlHYHNea9yoT4JtRGGCQknjjNETdF9rZzijdyCMqYuTxp
+	rATFYAMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lshIL-00Cw2J-Mb; Mon, 14 Jun 2021 07:46:05 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lskTi-00Dly2-HD; Mon, 14 Jun 2021 11:10:02 +0000
+Received: from lb3-smtp-cloud8.xs4all.net ([194.109.24.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lshI7-00Cvy5-Cf; Mon, 14 Jun 2021 07:45:53 +0000
-Received: from [IPv6:2a01:e0a:4cb:a870:b4e0:7e9f:1348:5540] (unknown
- [IPv6:2a01:e0a:4cb:a870:b4e0:7e9f:1348:5540])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id A90241F42394;
- Mon, 14 Jun 2021 08:45:48 +0100 (BST)
-Subject: Re: [PATCH 1/8] media: hantro: Trace hevc hw cycles performance
- register
-To: Hans Verkuil <hverkuil@xs4all.nl>, ezequiel@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, shawnguo@kernel.org,
- s.hauer@pengutronix.de, festevam@gmail.com, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@siol.net, emil.l.velikov@gmail.com, andrzej.p@collabora.com,
- jc@kynesim.co.uk
-Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210604130619.491200-1-benjamin.gaignard@collabora.com>
- <20210604130619.491200-2-benjamin.gaignard@collabora.com>
- <dbf5f5e1-4989-c97d-3679-58af549b5082@xs4all.nl>
- <4066d940-4337-0b3d-5329-72c72bc5b623@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <d1655a57-1323-f8b9-1896-62bb8bca381f@collabora.com>
-Date: Mon, 14 Jun 2021 09:45:45 +0200
+ id 1lskTU-00DlsE-JP; Mon, 14 Jun 2021 11:09:50 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id skTKlbz73hqltskTOlmht4; Mon, 14 Jun 2021 13:09:42 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1623668982; bh=vddD9ihU2ZPegn37Asrq1n1pbNugCtI3Mvl3vbyY6h8=;
+ h=From:Subject:To:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=Lr2Ea2Nto2lShMCH2S9F4Qy+ZMmP4fHjYWaNzClW178dJRGP54kumaKtjozLg2oLd
+ LQMuiNVGR9I8w5WypJ4YRPdfuowA9aC9QRfMekvPfAau101RZ/J59N1MP8jhmdjU3K
+ OS4v4s8q4i/oESf9z+CqGFOYapY0ti9NtJ2a5xMcs0ZDp2SeH2Lf5ffiLnOA7kjyst
+ ueW+Kl8n7VsJkKpUteqXBAdyJZ95oqNK6y+Bax4i+7COT2dWkIoZ6CaJLnbSK5SJRh
+ LGCZrLW9z4hSugxCMrtavEG/12C4UXL1xJw9PqdDVMoPJOX0kg53FKJcbg/5xOBBQ3
+ 593kZXqao8AGg==
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v2 00/12] Add support for older Rockchip SoCs to V4L2
+ hantro and rkvdec drivers
+To: Alex Bee <knaerzche@gmail.com>, Ezequiel Garcia <ezequiel@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20210525152225.154302-1-knaerzche@gmail.com>
+ <20210527154455.358869-1-knaerzche@gmail.com>
+Message-ID: <562d80eb-92e5-53ff-0a15-182cc7676063@xs4all.nl>
+Date: Mon, 14 Jun 2021 13:09:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Firefox/78.0 Thunderbird/78.10.0
 MIME-Version: 1.0
-In-Reply-To: <4066d940-4337-0b3d-5329-72c72bc5b623@xs4all.nl>
+In-Reply-To: <20210527154455.358869-1-knaerzche@gmail.com>
 Content-Language: en-US
+X-CMAE-Envelope: MS4xfD616eqUHJJQZz5sFByPOsT2nDsyUUckWPOoJiPESgeRGGyqXzoSDTV2d+J5vxBPHFQtCE7ANAWcxFhYOA2b34PGEqUnsnh0BYxT2Y/TDGHWlY35SSlP
+ 5sDVP+cBhS+p4bof0AGFTWLMLb2+szh+3qsh6pfM7nmwYqGhklRnvwUSK0zv3BfDCY5NeVTZ64UubpapoTbeu6hiMuIVlCyNMfY5gWEV9sZeK5RgS9Y2YVVe
+ 1RhaL33Dyo50NUabDEv2s3gJ3caTcFX7FKyrJ8SKjbht8ZKhmP9F0QVbCx8zurQcluEv9iJfZlWM4ZdW7yqihDnr1Q5hJDm32rXciZZE16jvN5f0yX6DqvYt
+ PuWagwZEzgxglTyQSuMHEOJTgYbIjQwCTaM1mv7O/UKwaN5DOhPjz2nspL7qz7pfYIedpiYgBXvA60bPpRR85gnE8BqfHzTTz5gzZE0tF0NRIXp2whb4Mpam
+ wlpeh6OUSzGzv/pShG7G47rDyvF/uLaeHwKNsX0vrPW4QM2UaS69Sw2DQFqCnCrFv1w2GNheGgRZQnLeWoGgoLJqCTkA4r8GgbFqqaryRm2P5ciY9a1EGH3f
+ HFI8Tcqv3xyQUd7XHc5DDckgRCV7DEm/WOnEOAXXZWN3n5wqd/xNwDab5wDOtts+/e0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_004551_722655_D0A1ACB6 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20210614_040948_805418_8C9B59A7 
+X-CRM114-Status: GOOD (  26.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +90,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDEzLzA2LzIwMjEgw6AgMTE6NTUsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IE9uIDEz
-LzA2LzIwMjEgMTE6NTMsIEhhbnMgVmVya3VpbCB3cm90ZToKPj4gT24gMDQvMDYvMjAyMSAxNTow
-NiwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4+PiBBZnRlciBlYWNoIGhldmMgZGVjb2RlZCBm
-cmFtZSB0cmFjZSB0aGUgaGFyZHdhcmUgcGVyZm9ybWFuY2UuCj4+PiBJdCBwcm92aWRlcyB0aGUg
-bnVtYmVyIG9mIGh3IGN5Y2xlcyBzcGVuZCBwZXIgZGVjb2RlZCBtYWNyb2Jsb2NrLgo+Pj4KPj4+
-IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xs
-YWJvcmEuY29tPgo+Pj4gLS0tCj4+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
-dHJvX2Rydi5jICAgICB8ICAzICsrCj4+PiAgIC4uLi9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50
-cm9fZzJfaGV2Y19kZWMuYyB8IDE2ICsrKysrKysrCj4+PiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vaGFudHJvX2cyX3JlZ3MuaCB8ICAxICsKPj4+ICAgZHJpdmVycy9zdGFnaW5nL21l
-ZGlhL2hhbnRyby9oYW50cm9faHcuaCAgICAgIHwgIDEgKwo+Pj4gICBkcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jICAgfCAgMSArCj4+PiAgIGRyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vdHJhY2UuaCAgICAgICAgICB8IDQwICsrKysrKysrKysrKysrKysrKysK
-Pj4gQ2FuIHlvdSByZW5hbWUgdGhpcyB0byBoYW50cm9fdHJhY2UuaD8gSSBwcmVmZXIgdG8gaGF2
-ZSB0aGUgZHJpdmVyIHByZWZpeCBpbiB0aGUgbmFtZS4KPiBBaCwgSSBhY2NpZGVudGFsbHkgcmVw
-bGllZCB0byB0aGUgdjEsIGJ1dCB0aGUgc2FtZSBjb21tZW50IGFwcGxpZXMgdG8gdjIuCgpJIGhh
-dmUgZml4IHRoYXQsIGl0IHdpbGwgYmUgaW4gdjMuCkkganVzdCB3YWl0IGZvciBtb3JlIGZlZWRi
-YWNrIGJlZm9yZSBzZW5kIGl0LgoKVGhhbmtzLApCZW5qYW1pbgoKPgo+IFJlZ2FyZHMsCj4KPiAJ
-SGFucwo+Cj4+IFJlZ2FyZHMsCj4+Cj4+IAlIYW5zCj4+Cj4+PiAgIDYgZmlsZXMgY2hhbmdlZCwg
-NjIgaW5zZXJ0aW9ucygrKQo+Pj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby90cmFjZS5oCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
-by9oYW50cm9fZHJ2LmMKPj4+IGluZGV4IGRiYzY5ZWUwYjU2Mi4uNjA1M2M4NmIxYzNmIDEwMDY0
-NAo+Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMKPj4+
-ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4+PiBAQCAt
-MjgsNiArMjgsOSBAQAo+Pj4gICAjaW5jbHVkZSAiaGFudHJvLmgiCj4+PiAgICNpbmNsdWRlICJo
-YW50cm9faHcuaCIKPj4+ICAgCj4+PiArI2RlZmluZSBDUkVBVEVfVFJBQ0VfUE9JTlRTCj4+PiAr
-I2luY2x1ZGUgInRyYWNlLmgiCj4+PiArCj4+PiAgICNkZWZpbmUgRFJJVkVSX05BTUUgImhhbnRy
-by12cHUiCj4+PiAgIAo+Pj4gICBpbnQgaGFudHJvX2RlYnVnOwo+Pj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgYi9kcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4+PiBpbmRleCAzNDBl
-ZmI1N2ZkMTguLjg5ZmFjNTE0NjQzMyAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPj4+IEBAIC03LDYgKzcsNyBAQAo+
-Pj4gICAKPj4+ICAgI2luY2x1ZGUgImhhbnRyb19ody5oIgo+Pj4gICAjaW5jbHVkZSAiaGFudHJv
-X2cyX3JlZ3MuaCIKPj4+ICsjaW5jbHVkZSAidHJhY2UuaCIKPj4+ICAgCj4+PiAgICNkZWZpbmUg
-SEVWQ19ERUNfTU9ERQkweEMKPj4+ICAgCj4+PiBAQCAtMjIsNiArMjMsMjEgQEAgc3RhdGljIGlu
-bGluZSB2b2lkIGhhbnRyb193cml0ZV9hZGRyKHN0cnVjdCBoYW50cm9fZGV2ICp2cHUsCj4+PiAg
-IAl2ZHB1X3dyaXRlKHZwdSwgYWRkciAmIDB4ZmZmZmZmZmYsIG9mZnNldCk7Cj4+PiAgIH0KPj4+
-ICAgCj4+PiArdm9pZCBoYW50cm9fZzJfaGV2Y19kZWNfZG9uZShzdHJ1Y3QgaGFudHJvX2N0eCAq
-Y3R4KQo+Pj4gK3sKPj4+ICsJY29uc3Qgc3RydWN0IGhhbnRyb19oZXZjX2RlY19jdHJscyAqY3Ry
-bHMgPSAmY3R4LT5oZXZjX2RlYy5jdHJsczsKPj4+ICsJY29uc3Qgc3RydWN0IHY0bDJfY3RybF9o
-ZXZjX3NwcyAqc3BzID0gY3RybHMtPnNwczsKPj4+ICsJc3RydWN0IGhhbnRyb19kZXYgKnZwdSA9
-IGN0eC0+ZGV2Owo+Pj4gKwl1MzIgaHdfY3ljbGVzID0gMDsKPj4+ICsJdTMyIG1icyA9IChzcHMt
-PnBpY193aWR0aF9pbl9sdW1hX3NhbXBsZXMgKgo+Pj4gKwkJICAgc3BzLT5waWNfaGVpZ2h0X2lu
-X2x1bWFfc2FtcGxlcykgPj4gODsKPj4+ICsKPj4+ICsJaWYgKG1icykKPj4+ICsJCWh3X2N5Y2xl
-cyA9IHZkcHVfcmVhZCh2cHUsIEcyX0hXX1BFUkZPUk1BTkNFKSAvIG1iczsKPj4+ICsKPj4+ICsJ
-dHJhY2VfaGFudHJvX2hldmNfcGVyZihjdHgsIGh3X2N5Y2xlcyk7Cj4+PiArfQo+Pj4gKwo+Pj4g
-ICBzdGF0aWMgdm9pZCBwcmVwYXJlX3RpbGVfaW5mb19idWZmZXIoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCkKPj4+ICAgewo+Pj4gICAJc3RydWN0IGhhbnRyb19kZXYgKnZwdSA9IGN0eC0+ZGV2Owo+
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX3Jl
-Z3MuaCBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX3JlZ3MuaAo+Pj4g
-aW5kZXggYmIyMmZhOTIxOTE0Li4xN2Q4NGVjOWM1YzIgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmgKPj4+ICsrKyBiL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX3JlZ3MuaAo+Pj4gQEAgLTE3Nyw2ICsxNzcs
-NyBAQAo+Pj4gICAjZGVmaW5lIEcyX1JFR19DT05GSUdfREVDX0NMS19HQVRFX0UJCUJJVCgxNikK
-Pj4+ICAgI2RlZmluZSBHMl9SRUdfQ09ORklHX0RFQ19DTEtfR0FURV9JRExFX0UJQklUKDE3KQo+
-Pj4gICAKPj4+ICsjZGVmaW5lIEcyX0hXX1BFUkZPUk1BTkNFCShHMl9TV1JFRyg2MykpCj4+PiAg
-ICNkZWZpbmUgRzJfQUREUl9EU1QJCShHMl9TV1JFRyg2NSkpCj4+PiAgICNkZWZpbmUgRzJfUkVH
-X0FERFJfUkVGKGkpCShHMl9TV1JFRyg2NykgICsgKChpKSAqIDB4OCkpCj4+PiAgICNkZWZpbmUg
-RzJfQUREUl9EU1RfQ0hSCQkoRzJfU1dSRUcoOTkpKQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2hhbnRyb19ody5oCj4+PiBpbmRleCA1NzM3YTc3MDc5NDQuLjhmYTBhYWNiNjFjZCAx
-MDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgK
-Pj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPj4+IEBA
-IC0yNDAsNiArMjQwLDcgQEAgdm9pZCBoYW50cm9faDI2NF9kZWNfZXhpdChzdHJ1Y3QgaGFudHJv
-X2N0eCAqY3R4KTsKPj4+ICAgaW50IGhhbnRyb19oZXZjX2RlY19pbml0KHN0cnVjdCBoYW50cm9f
-Y3R4ICpjdHgpOwo+Pj4gICB2b2lkIGhhbnRyb19oZXZjX2RlY19leGl0KHN0cnVjdCBoYW50cm9f
-Y3R4ICpjdHgpOwo+Pj4gICBpbnQgaGFudHJvX2cyX2hldmNfZGVjX3J1bihzdHJ1Y3QgaGFudHJv
-X2N0eCAqY3R4KTsKPj4+ICt2b2lkIGhhbnRyb19nMl9oZXZjX2RlY19kb25lKHN0cnVjdCBoYW50
-cm9fY3R4ICpjdHgpOwo+Pj4gICBpbnQgaGFudHJvX2hldmNfZGVjX3ByZXBhcmVfcnVuKHN0cnVj
-dCBoYW50cm9fY3R4ICpjdHgpOwo+Pj4gICBkbWFfYWRkcl90IGhhbnRyb19oZXZjX2dldF9yZWZf
-YnVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIGludCBwb2MpOwo+Pj4gICB2b2lkIGhhbnRyb19o
-ZXZjX3JlZl9yZW1vdmVfdW51c2VkKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpOwo+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaW14OG1fdnB1X2h3LmMgYi9kcml2
-ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jCj4+PiBpbmRleCBlYTkxOWJm
-Yjk4OTEuLjdlOWUyNGJiNTA1NyAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vaW14OG1fdnB1X2h3LmMKPj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9o
-YW50cm8vaW14OG1fdnB1X2h3LmMKPj4+IEBAIC0yMzksNiArMjM5LDcgQEAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBoYW50cm9fY29kZWNfb3BzIGlteDhtcV92cHVfZzJfY29kZWNfb3BzW10gPSB7Cj4+
-PiAgIAkJLnJlc2V0ID0gaW14OG1fdnB1X2cyX3Jlc2V0LAo+Pj4gICAJCS5pbml0ID0gaGFudHJv
-X2hldmNfZGVjX2luaXQsCj4+PiAgIAkJLmV4aXQgPSBoYW50cm9faGV2Y19kZWNfZXhpdCwKPj4+
-ICsJCS5kb25lID0gaGFudHJvX2cyX2hldmNfZGVjX2RvbmUsCj4+PiAgIAl9LAo+Pj4gICB9Owo+
-Pj4gICAKPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3RyYWNl
-LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3RyYWNlLmgKPj4+IG5ldyBmaWxlIG1v
-ZGUgMTAwNjQ0Cj4+PiBpbmRleCAwMDAwMDAwMDAwMDAuLjhhYmU1ZGRiNDgxNAo+Pj4gLS0tIC9k
-ZXYvbnVsbAo+Pj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby90cmFjZS5oCj4+
-PiBAQCAtMCwwICsxLDQwIEBACj4+PiArLyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0y
-LjAgKi8KPj4+ICsjdW5kZWYgVFJBQ0VfU1lTVEVNCj4+PiArI2RlZmluZSBUUkFDRV9TWVNURU0g
-aGFudHJvCj4+PiArCj4+PiArI2lmICFkZWZpbmVkKF9fSEFOVFJPX1RSQUNFX0hfXykgfHwgZGVm
-aW5lZChUUkFDRV9IRUFERVJfTVVMVElfUkVBRCkKPj4+ICsjZGVmaW5lIF9fSEFOVFJPX1RSQUNF
-X0hfXwo+Pj4gKwo+Pj4gKyNpbmNsdWRlIDxsaW51eC90cmFjZXBvaW50Lmg+Cj4+PiArI2luY2x1
-ZGUgPG1lZGlhL3ZpZGVvYnVmMi12NGwyLmg+Cj4+PiArCj4+PiArI2luY2x1ZGUgImhhbnRyby5o
-Igo+Pj4gKwo+Pj4gK1RSQUNFX0VWRU5UKGhhbnRyb19oZXZjX3BlcmYsCj4+PiArCVRQX1BST1RP
-KHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIHUzMiBod19jeWNsZXMpLAo+Pj4gKwo+Pj4gKwlUUF9B
-UkdTKGN0eCwgaHdfY3ljbGVzKSwKPj4+ICsKPj4+ICsJVFBfU1RSVUNUX19lbnRyeSgKPj4+ICsJ
-CV9fZmllbGQoaW50LCBtaW5vcikKPj4+ICsJCV9fZmllbGQodTMyLCBod19jeWNsZXMpCj4+PiAr
-CSksCj4+PiArCj4+PiArCVRQX2Zhc3RfYXNzaWduKAo+Pj4gKwkJX19lbnRyeS0+bWlub3IgPSBj
-dHgtPmZoLnZkZXYtPm1pbm9yOwo+Pj4gKwkJX19lbnRyeS0+aHdfY3ljbGVzID0gaHdfY3ljbGVz
-Owo+Pj4gKwkpLAo+Pj4gKwo+Pj4gKwlUUF9wcmludGsoIm1pbm9yID0gJWQsICU4ZCBjeWNsZXMg
-LyBtYiIsCj4+PiArCQkgIF9fZW50cnktPm1pbm9yLCBfX2VudHJ5LT5od19jeWNsZXMpCj4+PiAr
-KTsKPj4+ICsKPj4+ICsjZW5kaWYgLyogX19IQU5UUk9fVFJBQ0VfSF9fICovCj4+PiArCj4+PiAr
-I3VuZGVmIFRSQUNFX0lOQ0xVREVfUEFUSAo+Pj4gKyNkZWZpbmUgVFJBQ0VfSU5DTFVERV9QQVRI
-IC4uLy4uL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8KPj4+ICsjdW5kZWYgVFJBQ0VfSU5D
-TFVERV9GSUxFCj4+PiArI2RlZmluZSBUUkFDRV9JTkNMVURFX0ZJTEUgdHJhY2UKPj4+ICsKPj4+
-ICsvKiBUaGlzIHBhcnQgbXVzdCBiZSBvdXRzaWRlIHByb3RlY3Rpb24gKi8KPj4+ICsjaW5jbHVk
-ZSA8dHJhY2UvZGVmaW5lX3RyYWNlLmg+Cj4+PgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Alex,
+
+On 27/05/2021 17:44, Alex Bee wrote:
+> Hi list,
+> 
+> this series adds support for older Rockchip SoCs (RK3036, RK3066, RK3188
+> and RK322x) to the existing V4L2 video decoder/-encoder drivers - namely
+> hantro and rkvdec.
+> They can be used as-is or with very little modifications.
+> 
+> In preparation to that patches 1,8 and 9 add power-controller support for
+> RK3036 and RK322x, since both drivers rely on pm. The drivers for them 
+> exist already in the common Rockchip pm driver, they just haven't be added
+> to the device trees yet.
+> 
+> Changes in v2:
+> - reordered patches as suggested by Heiko
+> - fixed indentation and order issues in dt-bindings / DT patches
+> - added patch to reorder variants in hantro alphanumeric
+> - added patch that merges hantro platform drivers for Rockchip in one
+> - added missing DT patch for RK3036 (missed to submit with v1)
+> See individual patches for details about changes.
+> 
+> Thanks for your feedback,
+> Alex.
+> 
+> Alex Bee (12):
+>   dt-bindings: mfd: syscon: add Rockchip RK3036/RK3228 qos compatibles
+>   dt-bindings: media: rockchip-vpu: add new compatibles
+>   dt-bindings: media: rockchip-vdec: add RK3228 compatible
+>   media: hantro: reorder variants
+>   media: hantro: merge Rockchip platform drivers
+>   media: hantro: add support for Rockchip RK3066
+>   media: hantro: add support for Rockchip RK3036
+>   ARM: dts: rockchip: add power controller for RK3036
+>   ARM: dts: rockchip: add power controller for RK322x
+>   ARM: dts: rockchip: add vpu node for RK3036
+>   ARM: dts: rockchip: add vpu nodes for RK3066 and RK3188
+>   ARM: dts: rockchip: add vpu and vdec node for RK322x
+
+Unfortunately this series no longer applies. Support for the G2/HEVC decoder
+was merged, and that conflicts with this series.
+
+It is best to rebase you series to the master branch of the media_stage
+tree (https://git.linuxtv.org/media_stage.git/log/), which contains that
+series. I expect/hope that this will be merged later this week to the
+regular media_tree master branch, so you can wait for that as well.
+
+Regards,
+
+	Hans
+
+> 
+>  .../bindings/media/rockchip,vdec.yaml         |  10 +-
+>  .../bindings/media/rockchip-vpu.yaml          |  33 +-
+>  .../devicetree/bindings/mfd/syscon.yaml       |   2 +
+>  arch/arm/boot/dts/rk3036.dtsi                 |  72 +++
+>  arch/arm/boot/dts/rk3066a.dtsi                |   4 +
+>  arch/arm/boot/dts/rk3188.dtsi                 |   5 +
+>  arch/arm/boot/dts/rk322x.dtsi                 | 140 ++++-
+>  arch/arm/boot/dts/rk3xxx.dtsi                 |  12 +
+>  drivers/staging/media/hantro/Makefile         |   9 +-
+>  drivers/staging/media/hantro/hantro_drv.c     |   6 +-
+>  drivers/staging/media/hantro/hantro_hw.h      |  30 +-
+>  drivers/staging/media/hantro/rk3288_vpu_hw.c  | 208 -------
+>  drivers/staging/media/hantro/rk3399_vpu_hw.c  | 222 --------
+>  ...jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} |  30 +-
+>  ...eg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} |  25 +-
+>  ...w_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} |   2 +-
+>  ...rk3399_vpu_regs.h => rockchip_vpu2_regs.h} |   6 +-
+>  .../staging/media/hantro/rockchip_vpu_hw.c    | 526 ++++++++++++++++++
+>  18 files changed, 848 insertions(+), 494 deletions(-)
+>  delete mode 100644 drivers/staging/media/hantro/rk3288_vpu_hw.c
+>  delete mode 100644 drivers/staging/media/hantro/rk3399_vpu_hw.c
+>  rename drivers/staging/media/hantro/{rk3399_vpu_hw_jpeg_enc.c => rockchip_vpu2_hw_jpeg_enc.c} (87%)
+>  rename drivers/staging/media/hantro/{rk3399_vpu_hw_mpeg2_dec.c => rockchip_vpu2_hw_mpeg2_dec.c} (93%)
+>  rename drivers/staging/media/hantro/{rk3399_vpu_hw_vp8_dec.c => rockchip_vpu2_hw_vp8_dec.c} (99%)
+>  rename drivers/staging/media/hantro/{rk3399_vpu_regs.h => rockchip_vpu2_regs.h} (99%)
+>  create mode 100644 drivers/staging/media/hantro/rockchip_vpu_hw.c
+> 
+> 
+> base-commit: 5d765451c2409e63563fa6a3e8005bd03ab9e82f
+> 
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
