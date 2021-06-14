@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 282F4C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 16:19:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A010EC4743C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 16:19:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFB3D6128C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 16:19:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFB3D6128C
+	by mail.kernel.org (Postfix) with ESMTPS id 6501661356
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 16:19:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6501661356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,25 +23,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lTEYdtDvNvMf1IwkHQvwexmjL2QA+Fi62EurjMI2M78=; b=Dx0hmbGPYFH2nj
-	9TsIPQ2MrGFTnTZ4uxfXLHVqrK8apo2TN+YXSydE9vbvOenZUDqs+A46ov0BJPnyXB60ye/Qd/cQf
-	798+UO5Mg3cqrEYnh2Y8PEBDUpSvjcUzc9L6QfKx9YmAqD5B88mcZB3wcM3qF2DZ/3IdxYrQKQDWc
-	ZS9ASF+a+0B7t+T+MSLAv0I7DU3XiWsWKaYRp1IadmZvGkjNGzxZ1Yx2NUZJIt3Zj3XzvBO3G8jFM
-	d7xW8/Thw/Psk3aJrCoJLQKdEt/9yePC4FPK9YjMOIuoU/8FUKsK8YU5a3NnvKmQy25vlyIxCFAH/
-	pceCOQ8V5C4+wFJTgn3w==;
+	List-Owner; bh=MxtP71RgY87NaqCWiDruFEkZUsdUzDD+x+QaVdAAlSQ=; b=KWd0k0+0qdWaDJ
+	yk867Yz16mKFwcshY3anCY9+QHSAap/d6R0pR22E36A8CIkmqVD1IsMg71BmKz5WhoLfkS2paDhPk
+	ofVXPQL/nezmouytxSYOAP9orIPTCUIE4Fe7WUDHN1zthay35YHjte0tdDWipkjWJ/dDdUPdFhKmw
+	eDzx+8ETvj4tX+HRhP815DJv5hkLJIJwUQJP3Q49UzkZDh0sL7NrcjHRKrvEZphEUFxpztUO0ybs2
+	SClA5SzQGgjeoP+2Wj6QONOnYKyTbCJkhIMyk4534yCOrGmrMskioT82couWB6x5c3YvHAXti4d2n
+	KcWEct+H9JCXpxx1VPlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lspIl-00F4NM-P3; Mon, 14 Jun 2021 16:19:03 +0000
+	id 1lspIp-00F4Pp-Sx; Mon, 14 Jun 2021 16:19:07 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsol2-00Epjk-EY; Mon, 14 Jun 2021 15:44:16 +0000
+ id 1lsol3-00Epk3-LI; Mon, 14 Jun 2021 15:44:16 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:1f5e:e45f:238:7e73])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id F08BC1F42B19;
- Mon, 14 Jun 2021 16:44:09 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7B8BC1F42B20;
+ Mon, 14 Jun 2021 16:44:11 +0100 (BST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: kishon@ti.com, vkoul@kernel.org, robh+dt@kernel.org, heiko@sntech.de,
  pgwipeout@gmail.com
@@ -49,18 +49,16 @@ Cc: linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH 2/4] dt-bindings: phy: rockchip: USB2: Add compatible for
- rk3568
-Date: Mon, 14 Jun 2021 17:43:57 +0200
-Message-Id: <20210614154359.805555-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH 4/4] phy: rockchip: USB2: Add support for rk3568
+Date: Mon, 14 Jun 2021 17:43:59 +0200
+Message-Id: <20210614154359.805555-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210614154359.805555-1-benjamin.gaignard@collabora.com>
 References: <20210614154359.805555-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_084412_698604_C07362EE 
-X-CRM114-Status: UNSURE (   8.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210614_084413_882997_4B1DBBF9 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +76,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add "rockchip,rk3568-usb2phy" in compatible list of the USB2 phy.
+Add phy configuration for rk3568.
+Unlike previous rk3xxx phy syscon is set in the node and not
+in parent node. Update the syscon lookup to handle this.
 
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml          | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 81 +++++++++++++++++--
+ 1 file changed, 75 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-index b14387a48f6a3..a1420d5e44be7 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-@@ -18,6 +18,7 @@ properties:
-       - rockchip,rk3366-usb2phy
-       - rockchip,rk3399-usb2phy
-       - rockchip,rv1108-usb2phy
-+      - rockchip,rk3568-usb2phy
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 45518f96d7217..7a385ac3e5403 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1081,12 +1081,17 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
  
-   reg:
-     maxItems: 1
+-	if (!dev->parent || !dev->parent->of_node)
+-		return -EINVAL;
+-
+-	rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
+-	if (IS_ERR(rphy->grf))
+-		return PTR_ERR(rphy->grf);
++	if (!dev->parent || !dev->parent->of_node) {
++		rphy->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,usbgrf");
++		if (IS_ERR(rphy->grf)) {
++			dev_err(dev, "failed to locate usbgrf\n");
++			return PTR_ERR(rphy->grf);
++		}
++	} else {
++		rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
++			if (IS_ERR(rphy->grf))
++				return PTR_ERR(rphy->grf);
++	}
+ 
+ 	if (of_device_is_compatible(np, "rockchip,rv1108-usb2phy")) {
+ 		rphy->usbgrf =
+@@ -1422,12 +1427,76 @@ static const struct rockchip_usb2phy_cfg rv1108_phy_cfgs[] = {
+ 	{ /* sentinel */ }
+ };
+ 
++static const struct rockchip_usb2phy_cfg rk3568_phy_cfgs[] = {
++	{
++		.reg = 0xfe8a0000,
++		.num_ports	= 2,
++		.clkout_ctl	= { 0x0008, 4, 4, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x0000, 8, 0, 0, 0x1d1 },
++				.bvalid_det_en	= { 0x0080, 2, 2, 0, 1 },
++				.bvalid_det_st	= { 0x0084, 2, 2, 0, 1 },
++				.bvalid_det_clr = { 0x0088, 2, 2, 0, 1 },
++				.utmi_avalid	= { 0x00c0, 10, 10, 0, 1 },
++				.utmi_bvalid	= { 0x00c0, 9, 9, 0, 1 },
++			},
++			[USB2PHY_PORT_HOST] = {
++				/* Select suspend control from controller */
++				.phy_sus	= { 0x0004, 8, 0, 0x1d2, 0x1d2 },
++				.ls_det_en	= { 0x0080, 1, 1, 0, 1 },
++				.ls_det_st	= { 0x0084, 1, 1, 0, 1 },
++				.ls_det_clr	= { 0x0088, 1, 1, 0, 1 },
++				.utmi_ls	= { 0x00c0, 17, 16, 0, 1 },
++				.utmi_hstdet	= { 0x00c0, 19, 19, 0, 1 }
++			}
++		},
++		.chg_det = {
++			.opmode		= { 0x0000, 3, 0, 5, 1 },
++			.cp_det		= { 0x00c0, 24, 24, 0, 1 },
++			.dcp_det	= { 0x00c0, 23, 23, 0, 1 },
++			.dp_det		= { 0x00c0, 25, 25, 0, 1 },
++			.idm_sink_en	= { 0x0008, 8, 8, 0, 1 },
++			.idp_sink_en	= { 0x0008, 7, 7, 0, 1 },
++			.idp_src_en	= { 0x0008, 9, 9, 0, 1 },
++			.rdm_pdwn_en	= { 0x0008, 10, 10, 0, 1 },
++			.vdm_src_en	= { 0x0008, 12, 12, 0, 1 },
++			.vdp_src_en	= { 0x0008, 11, 11, 0, 1 },
++		},
++	},
++	{
++		.reg = 0xfe8b0000,
++		.num_ports	= 2,
++		.clkout_ctl	= { 0x0008, 4, 4, 1, 0 },
++		.port_cfgs	= {
++			[USB2PHY_PORT_OTG] = {
++				.phy_sus	= { 0x0000, 8, 0, 0x1d2, 0x1d1 },
++				.ls_det_en	= { 0x0080, 0, 0, 0, 1 },
++				.ls_det_st	= { 0x0084, 0, 0, 0, 1 },
++				.ls_det_clr	= { 0x0088, 0, 0, 0, 1 },
++				.utmi_ls	= { 0x00c0, 5, 4, 0, 1 },
++				.utmi_hstdet	= { 0x00c0, 7, 7, 0, 1 }
++			},
++			[USB2PHY_PORT_HOST] = {
++				.phy_sus	= { 0x0004, 8, 0, 0x1d2, 0x1d1 },
++				.ls_det_en	= { 0x0080, 1, 1, 0, 1 },
++				.ls_det_st	= { 0x0084, 1, 1, 0, 1 },
++				.ls_det_clr	= { 0x0088, 1, 1, 0, 1 },
++				.utmi_ls	= { 0x00c0, 17, 16, 0, 1 },
++				.utmi_hstdet	= { 0x00c0, 19, 19, 0, 1 }
++			}
++		},
++	},
++	{ /* sentinel */ }
++};
++
+ static const struct of_device_id rockchip_usb2phy_dt_match[] = {
+ 	{ .compatible = "rockchip,px30-usb2phy", .data = &rk3328_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3228-usb2phy", .data = &rk3228_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3328-usb2phy", .data = &rk3328_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3366-usb2phy", .data = &rk3366_phy_cfgs },
+ 	{ .compatible = "rockchip,rk3399-usb2phy", .data = &rk3399_phy_cfgs },
++	{ .compatible = "rockchip,rk3568-usb2phy", .data = &rk3568_phy_cfgs },
+ 	{ .compatible = "rockchip,rv1108-usb2phy", .data = &rv1108_phy_cfgs },
+ 	{}
+ };
 -- 
 2.25.1
 
