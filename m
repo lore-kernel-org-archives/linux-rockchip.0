@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A22BAC2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 670CBC2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:33:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7297861166
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:33:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7297861166
+	by mail.kernel.org (Postfix) with ESMTPS id 319DF61166
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 21:33:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 319DF61166
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,51 +24,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2xHbDFCdJwpTtAzqYdme+48Smk/XQs4S1tfLvhVwgrk=; b=Mjn3na1EfR7Se6
-	2OXD4Aq2gdvRpn8E8QN3a5iPw3MOyC+p16ghrJFTSd4IRDnOOdj55auvjfxwZyQbd0hgF/GZ4GKRL
-	iSDm5PJx11zznDNUBX4pjFa3X/aMAJjP4Q5iroF0L/ou68mv/C8Obte1wflpq3LxQJ/jVog9TGRLu
-	Ebm44aCY1bM7gof06W9iyOEzwxj1doBqXd+9gHSmTl0ElAzzbgeVD5YnuBiZ8hHzcurOqQOvE9BSe
-	bIlE1WUfG9F4duE5ycta+d3FVPBTIl+MaU6ZKcth2CQZhPllzcXQrBWK45Jrxt//VQ0aXFfTsCWO7
-	qqfAGTBlVNkhSl5iUAag==;
+	List-Owner; bh=nlDMp7HZKUhCKHeOYCF2h9mc1CG2bZ0ovemRaELkxdo=; b=iGLrvl36zIhUMk
+	FUB2BPgEt85RjRUwLZCHfJ5rpdKVFjprrbVXEfA1xfERRb7FlksbM8jeQDafZv0sqxcrK1cB4cptC
+	3N6tilIW9HcvC8GV60Dhr44rNdv+H9C9DhajtPeT3gbEJuHoTLoh+pysrxdoY5quvO/qiV13ijV+W
+	FU2/3ZcTRc9uJfsud58lueGJ8aAYmhv5OQYf9/yMoa54UP1Gl3uFCd1luGD/pYdAojOEpPZadPwir
+	59WvXfALQKlrRQjX+N2D1DxeI2c9krHvgUxZEpV2zuA1VM5p66jVb4DOl1H0plEVAK98eiTvRJpGf
+	1NiLZuOI0uc0zYoeBInA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsuCq-00GEaY-D5; Mon, 14 Jun 2021 21:33:16 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1lsuDB-00GEif-Sw; Mon, 14 Jun 2021 21:33:37 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsuCm-00GEYq-Cp; Mon, 14 Jun 2021 21:33:13 +0000
-Received: by mail-wm1-x330.google.com with SMTP id
- f16-20020a05600c1550b02901b00c1be4abso335485wmg.2; 
- Mon, 14 Jun 2021 14:33:11 -0700 (PDT)
+ id 1lsuCs-00GEb0-PK; Mon, 14 Jun 2021 21:33:20 +0000
+Received: by mail-wr1-x432.google.com with SMTP id r9so16001870wrz.10;
+ Mon, 14 Jun 2021 14:33:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9QHnLBSn4mcNqMxp8QVF3Qao55O3wZp9sNKhBopLdHs=;
- b=osePZG2TUPhPjy+s1iiijkxLLEkZQDWQjQk3reRkWhpjRfTx+hRIBf4JHnt9Vc0Kzb
- wCfmCry582cOJfxH8a2eACcxFDBYdanogP+mq9FNP6MrM32YXpt8IsmH5SJUrT9Z7NxA
- XDeK0ja7TSPLPEixDccyb9vyPmIz/Smm4goVTLzcvE0cBwYgQUh7nnN4HAKszH86nzRX
- akOTGPqnDeF1tLB64frtcmwtRUpQ497jCp+n90XDHpisQFirRu0v0RAtRmOnwjI0qV8I
- 3xektr/s5h0n2IfIKHP099c9w+SXPBBVjjMHfOXZPC91+X799YByM5Pdd7p3x6tGCcU0
- Oo+A==
+ bh=Pl1qnOWWubTC26cB06B87T2plCazXd0mlQJnYZkPgAc=;
+ b=mZQlY5Olju1HaCYf7aG1fVd7kg9HDxwc2X9TrRhOxrgu9HBHfnnvSPPcVQ0KTje1js
+ hGI9V6Q+GiY3ob062t8nTE3TlN4rIgH+cAUDce+HZCNP4d+yeEie5PFM/oUEehHvOWkf
+ 55zzhd2z1LBM0lU1+t8fF0hu6vIZQBZmk0FO3xLsv3XIAsIY0TzCRc+t58FEMmYl7bAY
+ Du0NoyfUETlMwv6FxqdHKuO3RptIM4TWbbxuXzCGJ4aA+knwCUwroP1xuqyw7dTSalC+
+ G/s7HZli5sEjIHykvb69SFRsQg82zGTk3NXgxa7j9X2APZm0XsuY/GZfinPwIiCwaei5
+ 4Bjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9QHnLBSn4mcNqMxp8QVF3Qao55O3wZp9sNKhBopLdHs=;
- b=dictPrD9TKhoOtytkW2jgoxa2J0R+rv8pURT17i51nswkRU/hCguQKj7VFas6dCSR4
- XmYuqFzIp8MBGilUGEloiKWlR6s7l1dfbEQtkzswmAhKFB1eT327dGFWyWZmA0gBbjE/
- dOYTzXORRZ6EEA+mHQCQmOlWFXLmX0bkOGc8TQ25rdnplQkDAocvL2EgyGk/PjhTzzs4
- E2s6k2tgVecnHi/a0NLQMciq0w8rR8ZW+asBn9P2K7s7Em+OD3gglDXUjiT2lppnhIlu
- 5eEfpGb+hrUOLpKlvDJ7jNgqgqANi+WDjk1+1YcmE8hlovhscdz6RKwcRS1o9ShT6MUE
- KEBQ==
-X-Gm-Message-State: AOAM530bCiSeuCPIR15d5ds2ep0SL0y6oroUK0t1x1DGtTGmnFLExhjg
- hsMk/LLzZ8GZ61HkhBcCkQ==
-X-Google-Smtp-Source: ABdhPJyzUezQM2+VdSftiiyJ+qyD+KiSsxxLfOzjfe4ZfZLJuIa9FcvsPSKS8TDgExbBV2uit3eRzg==
-X-Received: by 2002:a1c:2142:: with SMTP id h63mr19097080wmh.84.1623706390660; 
- Mon, 14 Jun 2021 14:33:10 -0700 (PDT)
+ bh=Pl1qnOWWubTC26cB06B87T2plCazXd0mlQJnYZkPgAc=;
+ b=JIN8233T0+rYc2dqoWXhe+SCiEONi7NSafzggSHLBnXAD/GdCZtdEcsRYQih9Bi4NN
+ IrNdDSX2nQjv/jLNVAXm8A3VBb7pQkGnez4utchJIGHEbnde0S1c5hTMSJ2Z1LFeCwad
+ CrsyiYzSawZb2047Z1/XfnuNtrFN+/dustiBls/z5gPMuQhCdE7y8blNGaNtaOiBZARf
+ Q9nQuNODMCXXw4FhMC1ySjlL4TMt1jn6V3xGxew7x/PYtmE+AGAGLFsnIYBFWB4aFevt
+ FiGN6SMrDHzXkxiaMGcMbiedJLGZw3WTGmKaC1HAYHiRRoPCxaFxBjCpM1NpFDZ98oz8
+ 7vpg==
+X-Gm-Message-State: AOAM532UzT01M9zWX2onX8OR56kTvcDXjM2iTflkrHa2+WAHI7XLhHlp
+ DDkLpECfjbUTfIppiZsksA==
+X-Google-Smtp-Source: ABdhPJwvrf/NrlKOGNaR1KB3YfTEDnQY2S/6zmyOXagOaz/D6YTHrokf2DjqhxjqIBgxnVUOxfFhWw==
+X-Received: by 2002:a5d:65cf:: with SMTP id e15mr21659152wrw.310.1623706397004; 
+ Mon, 14 Jun 2021 14:33:17 -0700 (PDT)
 Received: from localhost.localdomain ([91.67.75.139])
- by smtp.googlemail.com with ESMTPSA id g23sm989525wmk.3.2021.06.14.14.33.09
+ by smtp.googlemail.com with ESMTPSA id g23sm989525wmk.3.2021.06.14.14.33.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 14:33:10 -0700 (PDT)
+ Mon, 14 Jun 2021 14:33:16 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -78,19 +77,18 @@ To: Ezequiel Garcia <ezequiel@collabora.com>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
 Cc: Alex Bee <knaerzche@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 2/6] dt-bindings: media: rockchip-vdec: add RK3228
- compatible
-Date: Mon, 14 Jun 2021 23:32:11 +0200
-Message-Id: <20210614213215.99389-3-knaerzche@gmail.com>
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v3 3/6] media: hantro: reorder variants
+Date: Mon, 14 Jun 2021 23:32:12 +0200
+Message-Id: <20210614213215.99389-4-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210614213215.99389-1-knaerzche@gmail.com>
 References: <20210525152225.154302-1-knaerzche@gmail.com>
  <20210614213215.99389-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_143312_478756_965EFA55 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20210614_143318_840148_3CD9DF8E 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,50 +106,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the RK3228 compatible for rockchip-vdec.
-Also add the optional assigned-clocks and assigned-clock-rates
-properties.
+Reorder variants in hantro driver alphanumeric.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
 
  Changes in v3:
- - collect Reviewed-tag
+ - collect Reviewed-Tag
 
  Changes in v2:
- - fix indentation
+ - added patch
 
- .../devicetree/bindings/media/rockchip,vdec.yaml       | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/staging/media/hantro/hantro_drv.c | 4 ++--
+ drivers/staging/media/hantro/hantro_hw.h  | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-index 8d35c327018b..089f11d21b25 100644
---- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-@@ -15,7 +15,11 @@ description: |-
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index dbc69ee0b562..34e778e1cea1 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -582,9 +582,9 @@ static const struct v4l2_file_operations hantro_fops = {
  
- properties:
-   compatible:
--    const: rockchip,rk3399-vdec
-+    oneOf:
-+      - const: rockchip,rk3399-vdec
-+      - items:
-+          - const: rockchip,rk3228-vdec
-+          - const: rockchip,rk3399-vdec
+ static const struct of_device_id of_hantro_match[] = {
+ #ifdef CONFIG_VIDEO_HANTRO_ROCKCHIP
+-	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+-	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
+ 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
++	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
++	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+ #endif
+ #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+ 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 5737a7707944..7fa67d0c7e0f 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -203,12 +203,12 @@ enum hantro_enc_fmt {
+ 	RK3288_VPU_ENC_FMT_UYVY422 = 3,
+ };
  
-   reg:
-     maxItems: 1
-@@ -37,6 +41,10 @@ properties:
-       - const: cabac
-       - const: core
+-extern const struct hantro_variant rk3399_vpu_variant;
+-extern const struct hantro_variant rk3328_vpu_variant;
+-extern const struct hantro_variant rk3288_vpu_variant;
++extern const struct hantro_variant imx8mq_vpu_g2_variant;
+ extern const struct hantro_variant imx8mq_vpu_variant;
++extern const struct hantro_variant rk3288_vpu_variant;
++extern const struct hantro_variant rk3328_vpu_variant;
++extern const struct hantro_variant rk3399_vpu_variant;
+ extern const struct hantro_variant sama5d4_vdec_variant;
+-extern const struct hantro_variant imx8mq_vpu_g2_variant;
  
-+  assigned-clocks: true
-+
-+  assigned-clock-rates: true
-+
-   power-domains:
-     maxItems: 1
+ extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
  
 -- 
 2.27.0
