@@ -1,94 +1,63 @@
-Return-Path: <SRS0=bEZ5=LI=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8D3AC2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 23:05:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FAE8C48BE6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 00:38:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 792CF60FF1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Jun 2021 23:05:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 792CF60FF1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id DD8FD61378
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 00:38:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD8FD61378
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vx5tNZH8oSrzCZHMBd2XmlaL0b5kextoWFkVQ5Fs268=; b=RZvWdP+9y4LFRs
-	BEd1uy2A84MKoyNnO3wBEt6zdndmB6uhQr1sGP+GUAAZSm74RD78urk4GMcMoLyMEOOpXocn6aPUV
-	ASYlvuAUjrApVSUlR5tmLjpvWyDpUHVLTe5wtSHhbR4Itu1pGrJ4YeS3GtEjAhzBarbEJDZmKJc2U
-	L223uXjZ6dxUsRDnNHeInOEgTVcyfKfKMHfC5l5VkGHoI0NtyYDSFCRtc6SqD2pytp8yqRTv/e08B
-	oXlN4148hhYhqV/vzSiBnOumkCrQWWEZMcpyPPj0MVvzDFu4zjvAbpSDYhYO5qqM/zUizN24uSAID
-	lsc6T4yoN6dxSnF7xcuQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=710ty16Hd5wjrDa/XLjZyJSP6b5A+gLs0RrZOr7+T7Q=; b=SkpbBdnA39tVKw
+	Y+aArIjNY2xLxQaJ7EBjLnFYA9l17JtCTQAkBNDgfAao0uUlSYOJfOiE+mPTIBOGBJ1kVkkxtb92x
+	wShWlwoNcjfB46TiV3MkOo5ky/+WYwttPAqhNewRk5FLYVq+a5+ENAHEm3nsuzXwK0pUonyqzJ0nb
+	X44s0ETXyp7XSciXnZHWrmyvpVsFkcAkIbDHCxYffYkeysevg813g04Gfqyfyq4as9cybJiounUGI
+	fLwCsag95MP++5LSAYmuIUUAMLhGZ35TaAHTCcKnmNVaqpkG7S11Z1H0FI6L3tD1Xi6pKfZdSnvAD
+	jtAY38Cg3V2UcCSe07ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsvdk-00GXjk-Lv; Mon, 14 Jun 2021 23:05:08 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1lsx5f-00Ghdp-Q4; Tue, 15 Jun 2021 00:38:03 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsvdh-00GXjL-MT; Mon, 14 Jun 2021 23:05:07 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id k7so10651318pjf.5;
- Mon, 14 Jun 2021 16:05:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uI8GRrOkWXIHHLv8r7qKkxBwgPnYUOcjRvPdHqWD4ps=;
- b=rIkD169VDnBACSkXPY0G2Zk1l23ZofUXwzC5flEBLONQW4gUDe3lVYa+7ijxkzNgi/
- LHweR7YNRaOsa/c4wyfVstKtkpt+gT6n2hqAKOO4TyFyHsM6vDFcngbquFQ3bs5Or8K5
- zZZYGQiY51m3Odu3SdsoffuiUbnmvAUizEM8dBWo/m7Q3G246Fell0rVMcPOE0AxReMr
- 6MgvJHnXbbt+muUAqZnjP+aeq/snjew6FZMriAYteGHXyG/yuezdZt8l1PHZC7yEefkU
- 1jFfOufhIOwS/zlV/mH8gCxIjfzWMcLBBUiXDMk56QT9yKfZlC8cfw3ZCQzbRmQ/HM0H
- qpeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=uI8GRrOkWXIHHLv8r7qKkxBwgPnYUOcjRvPdHqWD4ps=;
- b=YGYjC+HbOuX4WKKRS82/1Y4dSbLiQDZEPIzfAk2WO8NM74guoWmF9kOT56XAV5MBqb
- DM/J6fBdexRjNPDiIpKdXdVLroSUyLESwz3+k+cLjkf3lH4NNp8QwPnxxaKfcZeXlH8Q
- cpswQ7E43xT+ibfwHOcxvJO6JDxTwxPQkT5vKoNweNZ8BT8i0l8b9Vfbg6NQ9OzwnSmI
- neoM6AvnXPaGePNeRuQXmCTV6iUvf3n2xzX/aqwM1zHYu+f2VAAJi8Hc+dM/5ftpFcl8
- ouokN2ChbT7WcpiTYNgL0surGoCh5xiUjBxwcLVuFanmn0WNx6+oKAxa94IZGSn9DChP
- BXKg==
-X-Gm-Message-State: AOAM533GTR7IAYE7Q5shXL5/lT8VIKjhcMqKrvpckaYGPd034giQ/z4A
- Jja4RRaais+3b36e4w+tKDU=
-X-Google-Smtp-Source: ABdhPJzg8KsUbzwKhuSnQL4vAg8Cqd9ly/sJEWLKr/f6XxXTEN/bXW0dhln72jFXwqiU8fQp2AR1dw==
-X-Received: by 2002:a17:90a:b284:: with SMTP id
- c4mr2552593pjr.213.1623711903029; 
- Mon, 14 Jun 2021 16:05:03 -0700 (PDT)
-Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
- [122.211.248.161])
- by smtp.gmail.com with ESMTPSA id v15sm14404504pgf.26.2021.06.14.16.05.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Jun 2021 16:05:01 -0700 (PDT)
-From: Punit Agrawal <punitagrawal@gmail.com>
-To: helgaas@kernel.org,
-	robh+dt@kernel.org
-Cc: Punit Agrawal <punitagrawal@gmail.com>, maz@kernel.org,
- leobras.c@gmail.com, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, alexandru.elisei@arm.com, wqu@suse.com,
- robin.murphy@arm.com, pgwipeout@gmail.com, ardb@kernel.org,
- briannorris@chromium.org, shawn.lin@rock-chips.com,
- Bjorn Helgaas <bhelgaas@google.com>
-Subject: [PATCH v4] PCI: of: Clear 64-bit flag for non-prefetchable memory
- below 4GB
-Date: Tue, 15 Jun 2021 08:04:57 +0900
-Message-Id: <20210614230457.752811-1-punitagrawal@gmail.com>
-X-Mailer: git-send-email 2.30.2
+ id 1lsx5c-00GhYb-5V
+ for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 00:38:02 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lsx5V-0004ks-3L; Tue, 15 Jun 2021 02:37:53 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: mchehab@kernel.org,
+	hverkuil-cisco@xs4all.nl
+Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
+ helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+ heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Subject: [PATCH v2 1/7] media: rockchip: rkisp1: remove unused irq variable
+Date: Tue, 15 Jun 2021 02:37:35 +0200
+Message-Id: <20210615003741.3758316-2-heiko@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210615003741.3758316-1-heiko@sntech.de>
+References: <20210615003741.3758316-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_160505_763012_00CAB9BB 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20210614_173800_289808_5217170D 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,106 +75,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Alexandru and Qu reported this resource allocation failure on
-ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-  pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-  pci 0000:00:00.0: PCI bridge to [bus 01]
-  pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-  pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+The irq variable in struct rkisp1 is unused as it is only used
+to request the irq during probe, so remove it.
 
-"BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
-PCI allocation code isn't smart enough to allocate it in a host
-bridge window marked as 64-bit, even though this should work fine.
-
-A DT host bridge description includes the windows from the CPU
-address space to the PCI bus space.  On a few architectures
-(microblaze, powerpc, sparc), the DT may also describe PCI devices
-themselves, including their BARs.
-
-Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
-the fact that some DT addresses described 64-bit windows and BARs.
-That was a problem because the virtio virtual NIC has a 32-bit BAR
-and a 64-bit BAR, and the driver couldn't distinguish them.
-
-9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
-fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
-bridge windows, which exposed the fact that the PCI allocator isn't
-smart enough to put 32-bit resources in those 64-bit windows.
-
-Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
-that information.
-
-Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
-Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
-Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-Reported-by: Qu Wenruo <wqu@suse.com>
-Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Rob Herring <robh+dt@kernel.org>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
-Hi,
+ drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 -
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 2 --
+ 2 files changed, 3 deletions(-)
 
-The patch is an updated version to fix the PCI allocation issues on
-RK3399 based platforms. Previous postings can be found at [0][1][2].
-
-The updated patch instead of clearing the 64-bit flag for
-non-prefetchable memory below 4GB does it unconditionally on the basis
-that PCI allocation logic cannot deal with the 64-bit flag (although
-it should be able to). The result is a simpler patch that restores the
-input to the allocation logic to be identical to before 9d57e61bf723.
-
-Tested locally on a RockPro64 on top of v5.13-rc6. Please consider
-merging.
-
-Thanks,
-Punit
-
-Changes:
-v4:
-
-* Updated Patch 1 based on Bjorn's suggestion. Also dropped the
-  Tested-by tags due to the change of logic
-* Dropped patch 2 and 3 from the series as it's not critical to the
-  series
-* Dropped the device tree changes (Patch 4) as they are already queued
-  in the soc tree
-
-v3:
-* Improved commit log for clarity (Patch 1)
-* Added Tested-by tags
-
-v2:
-* Check ranges PCI / bus addresses rather than CPU addresses
-* (new) Restrict 32-bit size warnings on ranges that don't have the 64-bit attribute set
-* Refactor the 32-bit size warning to the range parsing loop. This
-  change also prints the warnings right after the window mappings are
-  logged.
-
-[0] https://lore.kernel.org/linux-arm-kernel/20210527150541.3130505-1-punitagrawal@gmail.com/
-[1] https://lore.kernel.org/linux-pci/20210531221057.3406958-1-punitagrawal@gmail.com/
-[2] https://lore.kernel.org/linux-pci/20210607112856.3499682-1-punitagrawal@gmail.com/
-
- drivers/pci/of.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-index 85dcb7097da4..a143b02b2dcd 100644
---- a/drivers/pci/of.c
-+++ b/drivers/pci/of.c
-@@ -353,6 +353,8 @@ static int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 				dev_warn(dev, "More than one I/O resource converted for %pOF. CPU base address for old range lost!\n",
- 					 dev_node);
- 			*io_base = range.cpu_addr;
-+		} else if (resource_type(res) == IORESOURCE_MEM) {
-+			res->flags &= ~IORESOURCE_MEM_64;
- 		}
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 038c303a8aed..be8a350c7527 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -352,7 +352,6 @@ struct rkisp1_debug {
+  */
+ struct rkisp1_device {
+ 	void __iomem *base_addr;
+-	int irq;
+ 	struct device *dev;
+ 	unsigned int clk_size;
+ 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 7474150b94ed..7afa4c123834 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -489,8 +489,6 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
- 		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+-	rkisp1->irq = irq;
+-
+ 	for (i = 0; i < match_data->size; i++)
+ 		rkisp1->clks[i].id = match_data->clks[i];
+ 	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
 -- 
-2.30.2
+2.29.2
 
 
 _______________________________________________
