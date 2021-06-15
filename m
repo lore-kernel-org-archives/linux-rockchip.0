@@ -2,90 +2,77 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E76F6C48BE5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:59:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6F21C48BE5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 18:09:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E2656109E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:59:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E2656109E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9A89B613BF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 18:09:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A89B613BF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KM4rk5oOjUknXRpqY8Fa3O1onnS0Nzm7WcKLWA4KSWw=; b=jXZtzT9HVTCoyk
-	xSxlA8EoaKkpApfCdL9yiBd5svGQZuxAU7lRGC1n94RkjEdeWnh2HfJld7ZH7geC93zTpts/eniKc
-	jBKyugkXBIVnSHGu1u9wEc32m86xxrhLKDQc4zrj9Z4gbWdMltlBvJRDWcJI1zEOnDEgRIBN/U36N
-	hjOxtbXPlGWD9B4TyUj/yJKbn6ziAbrWsbKvZ3tIJ6EDUl3UYXpDOXv5jYwILmVYGvitJ2yIlj58p
-	Hj1UciG78O5f8iWBd/2yrIVNJPLm03R5YuoIFPX8Ir87t+B+jMwevcv4g/p4blUdhGVqyhAOCYhST
-	WylMIf1OMzE/s9biA8lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T27rsFfJ5gg+Aj12+S5e57k5SFo2QDckn1nomFZJlUM=; b=y4+Z06bpDoTNquJeUSNU3NLQw5
+	AJltG2ANbzx1y8AfHmjJlAGOqlZ/sd4K8mGNS8DgaletU27HQuQOiUF8w2yLMNcmwH4M6xFexkV8m
+	MjkHZdRjDWijSllHBvgbMUV6Nb4eIyiIvVnmyUea5StSJnWbhBjGh022B0cR3WVmrtie4LiE5sxSO
+	XE11ukfFOoqpEZN783mBgUJuBpaQ8vS2XVjTUP6G88zcn8A7sVNcMYXMynS6R0zDBrvscJxaUCDLQ
+	6uLOtiCsIooSh+VBIQL7DrZNZhYjPPuutXhlwY5yU68wB0zx5NRvjLT3lEjguVSHQn/nGZfY0g9B9
+	BwHLzhsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltDLG-001vF3-Km; Tue, 15 Jun 2021 17:59:14 +0000
+	id 1ltDVJ-0020ml-OH; Tue, 15 Jun 2021 18:09:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9Nr-000DDm-JZ; Tue, 15 Jun 2021 13:45:40 +0000
+ id 1lt9MO-000E8e-VF
+ for linux-rockchip@bombadil.infradead.org; Tue, 15 Jun 2021 13:44:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
- :Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Z+iTKEjq1aXYq3PDyET5pWKA8RV/dXJ1EbT+k27J/Q0=; b=ouSy8iaORkaYsF0jLsyuOemnzh
- 69lj1cnFvNhGyMwI/RaEU6k+jhjgjPSeWMVgPRFor2G/Lz93NOh+sY2Ph/ni4GZ7peKXk0GX6Okdl
- VwV5BCFDQwFSaKhAOIWOnDCNvT7MP+RozIy3gQpbk7ilR1wcs91AUjCc0SbqSaMAxZUH65ED+asR8
- vRFTElUndUrK0JobZPSQaLT5urZDMB/UumXhjKqV4buw6tfnEovaXhhOdMRmbJyu2cAGHQFyIn/ZI
- AFKiro4yg4UvnWAxYwHJTTexfg4mB9gN7azae1sAZWbB6dg+hqHIAimaSmhcDfzz5EgZOCZ1rHorB
- Xo6axmOg==;
-Received: from lucky1.263xmail.com ([211.157.147.130])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+ :In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=TqENAzXK75gfT3LNPHaoTQR0YOZG0n0MS6BU5dXETjQ=; b=GKvNQs7L13qDJBmxGC8iUCUAVM
+ u5up/nmtCqYdFDO4IHy7NmMF3pHrBLORDqbvkfaSK8SZb1KEwnLcKr/RHcLwOMjYrMUYEXzqxL7TQ
+ KiDAavj5av6wbYiTibRsWbDi10LysXZRO0nhQcsg4bNHQuvnfFEXWyfgTBHvXlloN5uKmFpuy3R5w
+ QREtHzBnH6BXXmTReVX9AtXuNKzrR4OhCrEBPf7/JATSXt7E3z7F8kG7eZawzwQAxu4A87+PmxxfE
+ 2w8YFsM4csh3RvMpZDSWhaaLtOPsX6EpHuoatvqRfMX2DOxZnWJ80djGQQL511Cq1PL44IC3bQOuV
+ 7xrSXo5Q==;
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lszoo-007IYH-UM; Tue, 15 Jun 2021 03:32:59 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 08DE1D1B6F;
- Tue, 15 Jun 2021 11:32:56 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P16485T139918997178112S1623727973863966_; 
- Tue, 15 Jun 2021 11:32:56 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <1cae7781f93ca7962ff2bd83330aa5a9>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: broonie@kernel.org
-X-RCPT-COUNT: 9
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: [PATCH v8 6/6] spi: rockchip: Support SPI_CS_HIGH
-Date: Tue, 15 Jun 2021 11:32:52 +0800
-Message-Id: <20210615033252.14555-2-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210615033252.14555-1-jon.lin@rock-chips.com>
-References: <20210615033213.14241-1-jon.lin@rock-chips.com>
- <20210615033252.14555-1-jon.lin@rock-chips.com>
+ id 1lt1s7-007Nf8-EU
+ for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 05:44:32 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id EAE351F4209E
+Subject: Re: [PATCH v2 1/7] media: rockchip: rkisp1: remove unused irq variable
+To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
+ hverkuil-cisco@xs4all.nl
+Cc: ezequiel@collabora.com, helen.koike@collabora.com,
+ Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+References: <20210615003741.3758316-1-heiko@sntech.de>
+ <20210615003741.3758316-2-heiko@sntech.de>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <2cab11ac-fb57-73fd-7262-70a3636e1253@collabora.com>
+Date: Tue, 15 Jun 2021 08:44:25 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20210615003741.3758316-2-heiko@sntech.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_043258_009509_740FC54B 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20210615_064430_540930_5C5714DA 
+X-CRM114-Status: GOOD (  19.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,73 +85,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1.Add standard spi-cs-high support
-2.Refer to spi-controller.yaml for details
+Hi,
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+On 15.06.21 03:37, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 
+> The irq variable in struct rkisp1 is unused as it is only used
+> to request the irq during probe, so remove it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
- drivers/spi/spi-rockchip.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 48b666d42d8a..d64cca34eef7 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -108,6 +108,8 @@
- #define CR0_OPM_MASTER				0x0
- #define CR0_OPM_SLAVE				0x1
- 
-+#define CR0_SOI_OFFSET				23
-+
- #define CR0_MTM_OFFSET				0x21
- 
- /* Bit fields in SER, 2bit */
-@@ -238,7 +240,7 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
- {
- 	struct spi_controller *ctlr = spi->controller;
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
--	bool cs_asserted = !enable;
-+	bool cs_asserted = spi->mode & SPI_CS_HIGH ? enable : !enable;
- 
- 	/* Return immediately for no-op */
- 	if (cs_asserted == rs->cs_asserted[spi->chip_select])
-@@ -509,6 +511,8 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	cr0 |= (spi->mode & 0x3U) << CR0_SCPH_OFFSET;
- 	if (spi->mode & SPI_LSB_FIRST)
- 		cr0 |= CR0_FBM_LSB << CR0_FBM_OFFSET;
-+	if (spi->mode & SPI_CS_HIGH)
-+		cr0 |= BIT(spi->chip_select) << CR0_SOI_OFFSET;
- 
- 	if (xfer->rx_buf && xfer->tx_buf)
- 		cr0 |= CR0_XFM_TR << CR0_XFM_OFFSET;
-@@ -787,7 +791,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 
- 	ctlr->auto_runtime_pm = true;
- 	ctlr->bus_num = pdev->id;
--	ctlr->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP | SPI_LSB_FIRST;
-+	ctlr->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP | SPI_LSB_FIRST | SPI_CS_HIGH;
- 	if (slave_mode) {
- 		ctlr->mode_bits |= SPI_NO_CS;
- 		ctlr->slave_abort = rockchip_spi_slave_abort;
--- 
-2.17.1
-
-
-
+> ---
+>   drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 -
+>   drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 2 --
+>   2 files changed, 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index 038c303a8aed..be8a350c7527 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -352,7 +352,6 @@ struct rkisp1_debug {
+>    */
+>   struct rkisp1_device {
+>   	void __iomem *base_addr;
+> -	int irq;
+>   	struct device *dev;
+>   	unsigned int clk_size;
+>   	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index 7474150b94ed..7afa4c123834 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -489,8 +489,6 @@ static int rkisp1_probe(struct platform_device *pdev)
+>   		return ret;
+>   	}
+>   
+> -	rkisp1->irq = irq;
+> -
+>   	for (i = 0; i < match_data->size; i++)
+>   		rkisp1->clks[i].id = match_data->clks[i];
+>   	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
