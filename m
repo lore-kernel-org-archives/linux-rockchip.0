@@ -2,91 +2,78 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71FD2C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 15:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4334FC49EA2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 15:47:55 +0000 (UTC)
 Received: from bombadil.infradead.org (unknown [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2695E6145F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 15:37:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2695E6145F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0E0B061483
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 15:47:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E0B061483
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gx9hz5+j06eMCJf3NvPIEooP0Ivnno6JUmX+7YrKhy0=; b=b+fWyC+bAwzf1q
-	mpcerIQ/PQEXjk4Eshwb20zjELRaVY7meVJCqxcSLuIefnNadeQng1J7oINaNeehp6tasPAYT+WfN
-	hHS+WeJSqTT6K29P4MFKOJBC2YYn9Goiulf5/LaSNza88L6mM3DET4uhtRy15oAuj0SaT04xI1Pbz
-	c54rkJw7RhAxuXlatVpiE+9lR8XQBk4kVF+Pd9a5ZYmFrJjr1f+lYZ53JJhzxxMu5lTH3R8EZHHZp
-	gXDHi3uVjUMUNCYEwnqeRB7D1jIjz06/dpOtWz66okazbmBB2ovh5//bcRZFqC/ypIA75M7jxsTNc
-	3T1xnnC4vQiSN0Ayz/sQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kf4FIKiZLj7gfW0rPnVZ5G0EpX9WYdAHQcV26MuG+ok=; b=wj8EWcwyV86ehnjBeG2svKZGYw
+	GhWja9+AgizyR5oyiddXe/vDjHxBPaRhRRBXPi43+6vD2Idw7k1gjwVa/7ZRbM5dSKoUiFSbqlz8q
+	+0z0KahMZkSEzZRBG7b4nJACwu3u0t1wuGoz/zVhvtHvpNLJIUHjKqpoN/3ufBCCrMcvbohjLOo/L
+	5e3RQKlsbih17Ip2+sqfQeWhyUjdRsE3i0CauhzulzFcqLAm1TYT2K0/UsBF+RE5sDBGM/Z4HOW10
+	KkHIktl+4LkcMeYl3kuF4DJDtomxJRRN7ueSredSj+KXSKTAyywzsZslyosmiyp10Qt8M5ZiDuC9G
+	7tdIAMqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltB7M-0011Kq-LC; Tue, 15 Jun 2021 15:36:44 +0000
+	id 1ltBHf-0015Gz-0T; Tue, 15 Jun 2021 15:47:23 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9O7-000DDm-SY; Tue, 15 Jun 2021 13:45:57 +0000
+ id 1lt9MC-000DDm-8h
+ for linux-rockchip@bombadil.infradead.org; Tue, 15 Jun 2021 13:43:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
- :Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=SBuVSvZRtW72BE8Uf4CX66VKW789zjqJLHCVdaBnd2U=; b=JCXFu+EfFFvlfZcWL1c3AHvtZK
- 78INwagGV4qjDxhy639+uzcmP7M7HsFf65j1q5lOqzHlPUh46okSk6+7TauJ4kDMXRiTGoJBK+cAo
- kr+xDTGszV1d4tODQBYayxiETztaRARH1BBVHNHuqPKhIgHDH06TmX60V4aRLH4qTvHkiXaAi9/aS
- E9078AkuWDpkQSRb0OhDPgr08OOGsaq8Tif8zstP6mgvgvh6s/tc7UVo8y0+3frrTpjA0xf78Vzxl
- MCSumb/9CyRvmzC9UI0w0XemH/NoWTc+eP8w5n9n6remqEY33onnVaNP8PfWE/bC7+/1X4zswyoSL
- Mxxswjog==;
-Received: from lucky1.263xmail.com ([211.157.147.134])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+ :In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=AWR7jt7jtR2tEkPf1pUrFNjNpjI8JsxHzlBIuvLRA6A=; b=VyxqGXDdUXGxu46s9WnGYXC4as
+ l4B+Mbg7e/duwV3zB0w4ih2TOQM31lg9y2hOZAOITocYRwunrhCZGx4Ggdq0lEgACZeXKoHo08fab
+ 8dcftml/rjzME6uUvwy9Jxn2PlyBolR3r5/uM3hZQw39EUTvkzi4buwSHPECJyHfpvgIKwctZv8fe
+ aaUPEwPB4gq+pBskh661uz3p9irdgGF7Y5QwwY6xyMcdhDuf67/cZgPARM7GjAdVKaM+6bvgTglRj
+ ywswL80cwPybyOP/Z8hn8KoY0P6an+f3kJrX9nNSRTjy08p051uM9sxEsHIuk6TFudDK7WZ4+PTAf
+ 2Q7k8g/w==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lszie-007IIQ-GQ; Tue, 15 Jun 2021 03:26:37 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 6125CC862F;
- Tue, 15 Jun 2021 11:26:24 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P16485T139919122814720S1623727582436580_; 
- Tue, 15 Jun 2021 11:26:24 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b88894b7c9dab614f426d540f72ef738>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: broonie@kernel.org
-X-RCPT-COUNT: 9
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: [PATCH v7 1/6] dt-bindings: spi: spi-rockchip: add description for
- rv1126
-Date: Tue, 15 Jun 2021 11:26:15 +0800
-Message-Id: <20210615032620.24769-2-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210615032620.24769-1-jon.lin@rock-chips.com>
-References: <20210607111837.31074-1-jon.lin@rock-chips.com>
- <20210615032620.24769-1-jon.lin@rock-chips.com>
+ id 1lt216-007O4J-5y
+ for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 05:53:48 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id E36591F422C6
+Subject: Re: [PATCH v2 3/7] media: rockchip: rkisp1: make some isp-param
+ functions variable
+To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
+ hverkuil-cisco@xs4all.nl
+Cc: ezequiel@collabora.com, helen.koike@collabora.com,
+ Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+References: <20210615003741.3758316-1-heiko@sntech.de>
+ <20210615003741.3758316-4-heiko@sntech.de>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <c0587502-9ee4-69c5-a6ba-75e9a7ec467c@collabora.com>
+Date: Tue, 15 Jun 2021 08:53:19 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20210615003741.3758316-4-heiko@sntech.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_042635_710810_9690A111 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20210615_065347_108882_C2E0B86C 
+X-CRM114-Status: GOOD (  24.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,57 +86,248 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The description below will be used for rv1126.dtsi or compatible one in
-the future
+Hi,
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+On 15.06.21 03:37, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 
+> The isp block evolved in subsequent socs, so some functions
+> will behave differently on newer variants.
+> 
+> Therefore make it possible to override the needed params functions.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> ---
+>   .../platform/rockchip/rkisp1/rkisp1-common.h  | 25 ++++++++
+>   .../platform/rockchip/rkisp1/rkisp1-params.c  | 64 ++++++++++++-------
+>   2 files changed, 65 insertions(+), 24 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index 25dd5c93620e..74ddd8256366 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -254,11 +254,35 @@ struct rkisp1_stats {
+>   	struct v4l2_format vdev_fmt;
+>   };
+>   
+> +struct rkisp1_params;
+> +struct rkisp1_params_ops {
+> +	void (*lsc_matrix_config)(struct rkisp1_params *params,
+> +				  const struct rkisp1_cif_isp_lsc_config *pconfig);
+> +	void (*goc_config)(struct rkisp1_params *params,
+> +			   const struct rkisp1_cif_isp_goc_config *arg);
+> +	void (*awb_meas_config)(struct rkisp1_params *params,
+> +				const struct rkisp1_cif_isp_awb_meas_config *arg);
+> +	void (*awb_meas_enable)(struct rkisp1_params *params,
+> +				const struct rkisp1_cif_isp_awb_meas_config *arg,
+> +				bool en);
+> +	void (*awb_gain_config)(struct rkisp1_params *params,
+> +				const struct rkisp1_cif_isp_awb_gain_config *arg);
+> +	void (*aec_config)(struct rkisp1_params *params,
+> +			   const struct rkisp1_cif_isp_aec_config *arg);
+> +	void (*hst_config)(struct rkisp1_params *params,
+> +			   const struct rkisp1_cif_isp_hst_config *arg);
+> +	void (*hst_enable)(struct rkisp1_params *params,
+> +			   const struct rkisp1_cif_isp_hst_config *arg, bool en);
+> +	void (*afm_config)(struct rkisp1_params *params,
+> +			   const struct rkisp1_cif_isp_afc_config *arg);
+> +};
+> +
+>   /*
+>    * struct rkisp1_params - ISP input parameters device
+>    *
+>    * @vnode:		video node
+>    * @rkisp1:		pointer to the rkisp1 device
+> + * @ops:		pointer to the variant-specific operations
+>    * @config_lock:	locks the buffer list 'params'
+>    * @params:		queue of rkisp1_buffer
+>    * @vdev_fmt:		v4l2_format of the metadata format
+> @@ -268,6 +292,7 @@ struct rkisp1_stats {
+>   struct rkisp1_params {
+>   	struct rkisp1_vdev_node vnode;
+>   	struct rkisp1_device *rkisp1;
+> +	struct rkisp1_params_ops *ops;
+>   
+>   	spinlock_t config_lock; /* locks the buffers list 'params' */
+>   	struct list_head params;
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index b6beddd988d0..a971892ba81d 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -185,8 +185,8 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
+>   
+>   /* ISP LS correction interface function */
+>   static void
+> -rkisp1_lsc_correct_matrix_config(struct rkisp1_params *params,
+> -				 const struct rkisp1_cif_isp_lsc_config *pconfig)
+> +rkisp1_lsc_matrix_config(struct rkisp1_params *params,
+> +			 const struct rkisp1_cif_isp_lsc_config *pconfig)
+>   {
+>   	unsigned int isp_lsc_status, sram_addr, isp_lsc_table_sel, i, j, data;
+>   
+> @@ -265,7 +265,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
+>   	lsc_ctrl = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_LSC_CTRL);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
+>   				RKISP1_CIF_ISP_LSC_CTRL_ENA);
+> -	rkisp1_lsc_correct_matrix_config(params, arg);
+> +	params->ops->lsc_matrix_config(params, arg);
+>   
+>   	for (i = 0; i < RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE / 2; i++) {
+>   		/* program x size tables */
+> @@ -955,7 +955,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+>   
+>   	/* update awb gains */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
+> -		rkisp1_awb_gain_config(params, &new_params->others.awb_gain_config);
+> +		params->ops->awb_gain_config(params, &new_params->others.awb_gain_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
+>   		if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
+> @@ -1010,8 +1010,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+>   
+>   	/* update goc config */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)
+> -		rkisp1_goc_config(params,
+> -				  &new_params->others.goc_config);
+> +		params->ops->goc_config(params, &new_params->others.goc_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
+>   		if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
+> @@ -1081,17 +1080,17 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
+>   
+>   	/* update awb config */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
+> -		rkisp1_awb_meas_config(params, &new_params->meas.awb_meas_config);
+> +		params->ops->awb_meas_config(params, &new_params->meas.awb_meas_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
+> -		rkisp1_awb_meas_enable(params,
+> -				       &new_params->meas.awb_meas_config,
+> -				       !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
+> +		params->ops->awb_meas_enable(params,
+> +					     &new_params->meas.awb_meas_config,
+> +					     !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
+>   
+>   	/* update afc config */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
+> -		rkisp1_afm_config(params,
+> -				  &new_params->meas.afc_config);
+> +		params->ops->afm_config(params,
+> +					&new_params->meas.afc_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
+>   		if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
+> @@ -1106,18 +1105,21 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
+>   
+>   	/* update hst config */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
+> -		rkisp1_hst_config(params,
+> -				  &new_params->meas.hst_config);
+> +		params->ops->hst_config(params,
+> +					&new_params->meas.hst_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
+> +		params->ops->hst_enable(params,
+> +					&new_params->meas.hst_config,
+> +					!!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
+>   		rkisp1_hst_enable(params,
+>   				  &new_params->meas.hst_config,
+>   				  !!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
 
-Changes in v7:
-- Fall back "rockchip,rv1126-spi" to "rockchip,rk3066-spi"
+shouldn't rkisp1_hst_enable call be removed?
 
-Changes in v6:
-- Consider to compatibility, the "rockchip,rk3568-spi" is removed in
-  Series-changes v5, so the commit massage should also remove the
-  corresponding information
+Thanks,
+Dafna
 
-Changes in v5:
-- Change to leave one compatible id rv1126, and rk3568 is compatible
-  with rv1126
-
-Changes in v4:
-- Adjust the order patches
-- Simply commit massage like redundancy "application" content
-
-Changes in v3:
-- Fix compile error which is find by Sascha in [v2,2/8]
-
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 1e6cf29e6388..7f987e79337c 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -33,6 +33,7 @@ properties:
-               - rockchip,rk3328-spi
-               - rockchip,rk3368-spi
-               - rockchip,rk3399-spi
-+              - rockchip,rv1126-spi
-           - const: rockchip,rk3066-spi
- 
-   reg:
--- 
-2.17.1
-
-
-
+>   
+>   	/* update aec config */
+>   	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
+> -		rkisp1_aec_config(params,
+> -				  &new_params->meas.aec_config);
+> +		params->ops->aec_config(params,
+> +					&new_params->meas.aec_config);
+>   
+>   	if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
+>   		if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
+> @@ -1218,20 +1220,20 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
+>   {
+>   	struct rkisp1_cif_isp_hst_config hst = rkisp1_hst_params_default_config;
+>   
+> -	rkisp1_awb_meas_config(params, &rkisp1_awb_params_default_config);
+> -	rkisp1_awb_meas_enable(params, &rkisp1_awb_params_default_config,
+> -			       true);
+> +	params->ops->awb_meas_config(params, &rkisp1_awb_params_default_config);
+> +	params->ops->awb_meas_enable(params, &rkisp1_awb_params_default_config,
+> +				     true);
+>   
+> -	rkisp1_aec_config(params, &rkisp1_aec_params_default_config);
+> +	params->ops->aec_config(params, &rkisp1_aec_params_default_config);
+>   	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_EXP_CTRL,
+>   			      RKISP1_CIF_ISP_EXP_ENA);
+>   
+> -	rkisp1_afm_config(params, &rkisp1_afc_params_default_config);
+> +	params->ops->afm_config(params, &rkisp1_afc_params_default_config);
+>   	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_AFM_CTRL,
+>   			      RKISP1_CIF_ISP_AFM_ENA);
+>   
+>   	memset(hst.hist_weight, 0x01, sizeof(hst.hist_weight));
+> -	rkisp1_hst_config(params, &hst);
+> +	params->ops->hst_config(params, &hst);
+>   	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP,
+>   			      rkisp1_hst_params_default_config.mode);
+>   
+> @@ -1275,7 +1277,7 @@ void rkisp1_params_disable(struct rkisp1_params *params)
+>   				RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_FILT_MODE,
+>   				RKISP1_CIF_ISP_FLT_ENA);
+> -	rkisp1_awb_meas_enable(params, NULL, false);
+> +	params->ops->awb_meas_enable(params, NULL, false);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
+>   				RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_EXP_CTRL,
+> @@ -1283,7 +1285,7 @@ void rkisp1_params_disable(struct rkisp1_params *params)
+>   	rkisp1_ctk_enable(params, false);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_C_PROC_CTRL,
+>   				RKISP1_CIF_C_PROC_CTR_ENABLE);
+> -	rkisp1_hst_enable(params, NULL, false);
+> +	params->ops->hst_enable(params, NULL, false);
+>   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_AFM_CTRL,
+>   				RKISP1_CIF_ISP_AFM_ENA);
+>   	rkisp1_ie_enable(params, false);
+> @@ -1291,6 +1293,18 @@ void rkisp1_params_disable(struct rkisp1_params *params)
+>   				RKISP1_CIF_ISP_DPF_MODE_EN);
+>   }
+>   
+> +static struct rkisp1_params_ops rkisp1_params_ops = {
+> +	.lsc_matrix_config = rkisp1_lsc_matrix_config,
+> +	.goc_config = rkisp1_goc_config,
+> +	.awb_meas_config = rkisp1_awb_meas_config,
+> +	.awb_meas_enable = rkisp1_awb_meas_enable,
+> +	.awb_gain_config = rkisp1_awb_gain_config,
+> +	.aec_config = rkisp1_aec_config,
+> +	.hst_config = rkisp1_hst_config,
+> +	.hst_enable = rkisp1_hst_enable,
+> +	.afm_config = rkisp1_afm_config,
+> +};
+> +
+>   static int rkisp1_params_enum_fmt_meta_out(struct file *file, void *priv,
+>   					   struct v4l2_fmtdesc *f)
+>   {
+> @@ -1457,6 +1471,8 @@ static void rkisp1_init_params(struct rkisp1_params *params)
+>   		V4L2_META_FMT_RK_ISP1_PARAMS;
+>   	params->vdev_fmt.fmt.meta.buffersize =
+>   		sizeof(struct rkisp1_params_cfg);
+> +
+> +	params->ops = &rkisp1_params_ops;
+>   }
+>   
+>   int rkisp1_params_register(struct rkisp1_device *rkisp1)
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
