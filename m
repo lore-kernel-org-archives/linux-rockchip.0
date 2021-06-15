@@ -2,81 +2,66 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B6FFC48BDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 22:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B63C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 23:01:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 311FE61246
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 22:56:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 311FE61246
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5968D611CE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 23:01:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5968D611CE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SsfHtLKkxmWt8xky9K0jl9xxDIKc3kgke3YnIJj/PvM=; b=UAQ1l4iPyL+on7
-	wRdczCXD2wEIAj8A9P8amyZBVYiB8fp6LJ9KE9XUlp0PRcXDG7/MCTjsEpZIBVUHM9nvs/QuehMv5
-	ydqDAlGxq4H5SuA4ESDubXz8zmnDU2L194Tb25In00BUaosB2kkG9QiQt+FslUPXQrnE/R8OkcqMO
-	ft+6C8qNriGfM45LtQmpslQ6UoBP6sinXX1eOUNYLyvEbDJhFmLJrD+w/eBV+i3yxVXcV8BVxeD/A
-	1owvqjZJi3BcD6+snZxqqfn5cJkKu6QDJpPpmQ0Kx2HIATKbvRifkx1gyofz/nTtNw16hNu9GsonP
-	gs68G3PsCtGPvrw4NIsA==;
+	List-Owner; bh=i04Fw/bVeJrWg552VGGnEOTWx47rwNkC/RGBCIc8mJs=; b=MH6Tlw4KRYTwRT
+	gHLGh9U7pe51JMV+h1n5rHW5Vlf1B/9mgc/VvqDgJuDETdG9v+BQBsJC8tK2zC072Yo7La87UXNFv
+	1qnE7vSTOiCNL2w2zhxNCLCFLR7AmD+yKC/lJUIGuZE0A1FJzX4ikTcpazJlT+pgbnRWvhKa2m+dN
+	prVvRBD8Tu9TB2I+Kcnit9rneNUMIOQwCp+sq+Kx+mG1kWbnNEGXAByJ4KyGXlguT1qIyTt/2TRU4
+	fvkJFxfISoMFyQk7q8qi1EvaVD6AhmuVb7WdbIeYw5zwmeM7yX4xhJ8V6h308grJ6IShN2M51VbQc
+	gZvGLd/vhX/WBG7KKibg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltHya-003idt-KV; Tue, 15 Jun 2021 22:56:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ltI46-003kNd-OA; Tue, 15 Jun 2021 23:01:50 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltGcf-0039mA-KQ; Tue, 15 Jun 2021 21:29:27 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E428C6128B;
- Tue, 15 Jun 2021 21:29:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623792564;
- bh=Z8l5pyigZ4sAnWmGuyoEt4UlPIHTvZnCXuw0L/8f19g=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=RpsO5PGxf3xBHgZ4sDaRCA2ZanT82ESrYyoZ7N6rL+dn6XEyJ2svOySpEXAjFWB1K
- F7leu/66O4NtuC87hfOhbo5AO8fGakjkO/DkVWjajpab+XWg/X+I11rzI2p/kjLPKz
- d50fXBB3Uwn9pGBrMtzLINGw/2UnPPCp0DfrbP6ahz4nUu23cieNZpPLvL39vvi+4g
- x4yLcFQvGfJLwwZLcMNyP+tG4szGTLMbfhb+9Bz0JNoFmkHw78uRGx8Trl3xRtz2Ae
- KOf3mZKAagWiYqckdb4N5UEVfU/iQTUc+Q/5nPh6m1tXljoRM49Zp1p89QHXQ9+i1/
- YL7Kh9Qwsnq6g==
-Received: by mail-ej1-f42.google.com with SMTP id g8so156642ejx.1;
- Tue, 15 Jun 2021 14:29:24 -0700 (PDT)
-X-Gm-Message-State: AOAM5311qUCQdGwXHIUAV7MVVprbcbvUZOtoNZoaPseoin13DftyczHZ
- Qgxk6bAF9ONaicy9T5E/zASHpieMy6YHmNz1NA==
-X-Google-Smtp-Source: ABdhPJwVoFobxS8FdlynGYavo4IkXRj2LN6HkJlOKOVRHthoC5S/usa5DZkbknsweAGrYK/QFnylIoeJu0eNrrbuMcQ=
-X-Received: by 2002:a17:907:3da4:: with SMTP id
- he36mr1668881ejc.108.1623792563457; 
- Tue, 15 Jun 2021 14:29:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210607112856.3499682-1-punitagrawal@gmail.com>
- <20210607112856.3499682-5-punitagrawal@gmail.com> <3105233.izSxrag8PF@diego>
-In-Reply-To: <3105233.izSxrag8PF@diego>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Tue, 15 Jun 2021 15:29:12 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqL8iDo5sLmgNVuXs5wt3TpVJbKHfk7gE740DidmvLOwiQ@mail.gmail.com>
-Message-ID: <CAL_JsqL8iDo5sLmgNVuXs5wt3TpVJbKHfk7gE740DidmvLOwiQ@mail.gmail.com>
+ id 1ltGvo-003JIc-SI; Tue, 15 Jun 2021 21:49:14 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1ltGvk-0002Ci-Or; Tue, 15 Jun 2021 23:49:08 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Punit Agrawal <punitagrawal@gmail.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ PCI <linux-pci@vger.kernel.org>, Alexandru Elisei <alexandru.elisei@arm.com>,
+ wqu@suse.com, Robin Murphy <robin.murphy@arm.com>,
+ Peter Geis <pgwipeout@gmail.com>, Ard Biesheuvel <ardb@kernel.org>,
+ Brian Norris <briannorris@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
 Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Update PCI host bridge
  window to 32-bit address memory
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Punit Agrawal <punitagrawal@gmail.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- PCI <linux-pci@vger.kernel.org>, 
- Alexandru Elisei <alexandru.elisei@arm.com>, wqu@suse.com, 
- Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>, 
- Ard Biesheuvel <ardb@kernel.org>, Brian Norris <briannorris@chromium.org>, 
- Shawn Lin <shawn.lin@rock-chips.com>
+Date: Tue, 15 Jun 2021 23:49:07 +0200
+Message-ID: <3238453.R1toDxpfAE@diego>
+In-Reply-To: <CAL_JsqL8iDo5sLmgNVuXs5wt3TpVJbKHfk7gE740DidmvLOwiQ@mail.gmail.com>
+References: <20210607112856.3499682-1-punitagrawal@gmail.com>
+ <3105233.izSxrag8PF@diego>
+ <CAL_JsqL8iDo5sLmgNVuXs5wt3TpVJbKHfk7gE740DidmvLOwiQ@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_142925_786344_F015CA95 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20210615_144912_977620_170BCE3C 
+X-CRM114-Status: GOOD (  22.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +74,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdW4gMTAsIDIwMjEgYXQgMzo1MCBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPgo+IEhpLAo+Cj4gQW0gTW9udGFnLCA3LiBKdW5pIDIwMjEsIDEzOjI4
-OjU2IENFU1Qgc2NocmllYiBQdW5pdCBBZ3Jhd2FsOgo+ID4gVGhlIFBDSWUgaG9zdCBicmlkZ2Ug
-b24gUkszMzk5IGFkdmVydGlzZXMgYSBzaW5nbGUgNjQtYml0IG1lbW9yeQo+ID4gYWRkcmVzcyBy
-YW5nZSBldmVuIHRob3VnaCBpdCBsaWVzIGVudGlyZWx5IGJlbG93IDRHQi4KPiA+Cj4gPiBQcmV2
-aW91c2x5IHRoZSBPRiBQQ0kgcmFuZ2UgcGFyc2VyIHRyZWF0ZWQgNjQtYml0IHJhbmdlcyBtb3Jl
-Cj4gPiBsZW5pZW50bHkgKGkuZS4sIGFzIDMyLWJpdCksIGJ1dCBzaW5jZSBjb21taXQgOWQ1N2U2
-MWJmNzIzICgib2YvcGNpOgo+ID4gQWRkIElPUkVTT1VSQ0VfTUVNXzY0IHRvIHJlc291cmNlIGZs
-YWdzIGZvciA2NC1iaXQgbWVtb3J5IGFkZHJlc3NlcyIpCj4gPiB0aGUgY29kZSB0YWtlcyBhIHN0
-cmljdGVyIHZpZXcgYW5kIHRyZWF0cyB0aGUgcmFuZ2VzIGFzIGFkdmVydGlzZWQgaW4KPiA+IHRo
-ZSBkZXZpY2UgdHJlZSAoaS5lLCBhcyA2NC1iaXQpLgo+ID4KPiA+IFRoZSBjaGFuZ2UgaW4gYmVo
-YXZpb3VyIGNhdXNlcyBmYWlsdXJlIHdoZW4gYWxsb2NhdGluZyBidXMgYWRkcmVzc2VzCj4gPiB0
-byBkZXZpY2VzIGNvbm5lY3RlZCBiZWhpbmQgYSBQQ0ktdG8tUENJIGJyaWRnZSB0aGF0IHJlcXVp
-cmUKPiA+IG5vbi1wcmVmZXRjaGFibGUgbWVtb3J5IHJhbmdlcy4gVGhlIGFsbG9jYXRpb24gZmFp
-bHVyZSB3YXMgb2JzZXJ2ZWQKPiA+IGZvciBjZXJ0YWluIFNhbXN1bmcgTlZNZSBkcml2ZXMgY29u
-bmVjdGVkIHRvIFJvY2tQcm82NCBib2FyZHMuCj4gPgo+ID4gVXBkYXRlIHRoZSBob3N0IGJyaWRn
-ZSB3aW5kb3cgYXR0cmlidXRlcyB0byB0cmVhdCBpdCBhcyAzMi1iaXQgYWRkcmVzcwo+ID4gbWVt
-b3J5LiBUaGlzIGZpeGVzIHRoZSBhbGxvY2F0aW9uIGZhaWx1cmUgb2JzZXJ2ZWQgc2luY2UgY29t
-bWl0Cj4gPiA5ZDU3ZTYxYmY3MjMuCj4gPgo+ID4gUmVwb3J0ZWQtYnk6IEFsZXhhbmRydSBFbGlz
-ZWkgPGFsZXhhbmRydS5lbGlzZWlAYXJtLmNvbT4KPiA+IExpbms6IGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL3IvN2ExZTJlYmMtZjdkOC04NDMxLWQ4NDQtNDFhOWMzNmE4OTExQGFybS5jb20KPiA+
-IFN1Z2dlc3RlZC1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4KPiA+IFNp
-Z25lZC1vZmYtYnk6IFB1bml0IEFncmF3YWwgPHB1bml0YWdyYXdhbEBnbWFpbC5jb20+Cj4gPiBU
-ZXN0ZWQtYnk6IEFsZXhhbmRydSBFbGlzZWkgPGFsZXhhbmRydS5lbGlzZWlAYXJtLmNvbT4KPiA+
-IENjOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gQ2M6IFJvYiBIZXJyaW5n
-IDxyb2JoK2R0QGtlcm5lbC5vcmc+Cj4KPiBqdXN0IGZvciBjbGFyaXR5LCBzaG91bGQgSSBqdXN0
-IHBpY2sgdGhpcyBwYXRjaCBzZXBhcmF0ZWx5IGZvciA1LjEzLXJjIHRvCj4gbWFrZSBpdCBlYXN5
-IGZvciBwZW9wbGUgdXNpbmcgY3VycmVudCBrZXJuZWwgZGV2aWNldHJlZXMsIG9yIHNob3VsZAo+
-IHRoaXMgd2FpdCBmb3IgdGhlIHVwZGF0ZSBtZW50aW9uZWQgaW4gdGhlIGNvdmVyLWxldHRlciBy
-ZXNwb25zZQo+IGFuZCBzaG91bGQgZ28gYWxsIHRvZ2V0aGVyIHRocm91Z2ggdGhlIFBDSSB0cmVl
-PwoKVGhpcyB3YXMgZHJvcHBlZCBmcm9tIHY0LCBidXQgc2hvdWxkIHN0aWxsIGJlIGFwcGxpZWQg
-SU1PLgoKQWNrZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+CgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Dienstag, 15. Juni 2021, 23:29:12 CEST schrieb Rob Herring:
+> On Thu, Jun 10, 2021 at 3:50 PM Heiko St=FCbner <heiko@sntech.de> wrote:
+> >
+> > Hi,
+> >
+> > Am Montag, 7. Juni 2021, 13:28:56 CEST schrieb Punit Agrawal:
+> > > The PCIe host bridge on RK3399 advertises a single 64-bit memory
+> > > address range even though it lies entirely below 4GB.
+> > >
+> > > Previously the OF PCI range parser treated 64-bit ranges more
+> > > leniently (i.e., as 32-bit), but since commit 9d57e61bf723 ("of/pci:
+> > > Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
+> > > the code takes a stricter view and treats the ranges as advertised in
+> > > the device tree (i.e, as 64-bit).
+> > >
+> > > The change in behaviour causes failure when allocating bus addresses
+> > > to devices connected behind a PCI-to-PCI bridge that require
+> > > non-prefetchable memory ranges. The allocation failure was observed
+> > > for certain Samsung NVMe drives connected to RockPro64 boards.
+> > >
+> > > Update the host bridge window attributes to treat it as 32-bit address
+> > > memory. This fixes the allocation failure observed since commit
+> > > 9d57e61bf723.
+> > >
+> > > Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+> > > Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@=
+arm.com
+> > > Suggested-by: Robin Murphy <robin.murphy@arm.com>
+> > > Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+> > > Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
+> > > Cc: Heiko Stuebner <heiko@sntech.de>
+> > > Cc: Rob Herring <robh+dt@kernel.org>
+> >
+> > just for clarity, should I just pick this patch separately for 5.13-rc =
+to
+> > make it easy for people using current kernel devicetrees, or should
+> > this wait for the update mentioned in the cover-letter response
+> > and should go all together through the PCI tree?
+> =
+
+> This was dropped from v4, but should still be applied IMO.
+
+It was probably dropped because I applied it ;-)
+
+It's part of armsoc already [0] and should make its way into
+5.13 shortly.
+
+
+Heiko
+
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/soc/soc.git/commit/?h=
+=3Darm/fixes&id=3D8efe01b4386ab38a36b99cfdc1dc02c38a8898c3
+
+> =
+
+> Acked-by: Rob Herring <robh@kernel.org>
+> =
+
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
