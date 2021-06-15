@@ -2,55 +2,55 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_NONE,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B155C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 18:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBC1DC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 19:02:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0476061241
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 18:43:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0476061241
+	by mail.kernel.org (Postfix) with ESMTPS id 39B8E611EE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 19:02:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39B8E611EE
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dtGRzEfOFsDMxG8sDtHKvL+YTE7KY32qli6cvszjUZw=; b=1JYrN2RNT4u4jz
-	x/zMVcaW6QwHvxQs1FoOVs/LxppEp4Yj4C3KfIDEnUnaSyrddTGskuSoK+zKFjhMriz77+L/rcVKz
-	uvkavcS0UkOqDkNonpJhOsKdd3oxF/0PS+W7Kdjx8LIa+FRFpMSiadYeEScA8Dh1ZNzUPnsYRR/Bg
-	3YUfuADzLJREKTjqa5LaFvuGMVRVIBFMu6IalcI2abV6J6V136h2j8qTFENdXttiQI9WaguXm5Cg8
-	ahdfYZeTLBGPawqZg8/b+tUWvP1y7hsxZ4140ab7LsvRlqiK5CZbV8fFIwXABSYlVwjbpJoZP5aWz
-	YK9z1m8Cf7KzzYQ+LaLw==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qGiG/hoeTL9G5eH11iPpCG4E84ViAGJlaMrHvPd31XY=; b=Fm7p05KaxmURyx
+	xqsLQKyJYPGwD9Mves5P+tv5eKSMnemd5oWEEcMhgnBO+ROUq6Woum2qef2YvU1txod5IlFZA/Yic
+	PW56gFT3/l/VCgqrfaccOR4NGoHcZvhVBlCTdDcKWt127gFn8Oq3vbE5N7HXO564SOeY1PfUgMlJA
+	O7GjPt8Ks7M3FBGkRkiVM20uu5A9blEzXc1VLH2GO1sl4hNVXRXxoUUKC4nXX/vKGSsj7QqlCwF20
+	Ts7YPgg0JAoYPmRVx2wFoT/8uK4OA7GokxaJjst99mSgQ2CwcKYupUtDyalYxH4Uhea/0YhL8JTwi
+	Te5jOXDUvOn7PknUR3Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltE2C-002D0X-Iv; Tue, 15 Jun 2021 18:43:36 +0000
+	id 1ltEK5-002Ie4-53; Tue, 15 Jun 2021 19:02:05 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9O8-000DEY-7o; Tue, 15 Jun 2021 13:45:57 +0000
+ id 1lt9Nw-000DwX-Mq; Tue, 15 Jun 2021 13:45:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
- :Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=4WExPeKBs6Nk0Vr4BVS5j5s1ewzrmPssm/wd781pTpU=; b=gmGwaIfV9igreUyU4+n8wkWWoa
- llyV8iFnn02p939uMGwwvC0OTOVT7p1bHse6syp1leauumjxNFfQwZTFd8aXiyGlEKeMHWWF8woKH
- 01NYr4EI2WALxIXCuJ7gEd0YUhwrW2LhEgDqb1LqSahFDThQy1nwGHIvtsICCaGVDRA5jT1VB+zCE
- yzQV618bsrar+hoV671/43JYgAt0N82X1efYb3JUJNO6bbPqznZRFYLgBz/3ns38EMPFsv/1+3pwo
- 8N2NHi7pu5ruz64Rtkj3fi7SHwXLmDzFoz97VeItT98PeO7vl3dxtD3uuKV6psJH4aLXw5AATcQ/o
- 4AxXZNSw==;
-Received: from lucky1.263xmail.com ([211.157.147.134])
+ d=infradead.org; s=desiato.20200630; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=p0AKM/K8W2F6iWwiMlbHPsIWhUbBpFDlxnvAU/a/ZCQ=; b=NKq6Fs6u/klZkSHbr4R7Vlrj6n
+ mKVQnGEDQV6L2wrWuodpDxC2rpJApzDiqULZildrNalD6U9qivPeatrnh0EwWVqFuY92xxAMPXdLg
+ 6EGfXEJ1SlBNisJGF329yU8iq0Fl74/FOhN1719L3QlBUvQukot99x/afJakusiqgoSlAfN6xBFnt
+ EwRrSSbRpNxxe5Fktk+G5+7oq2hrkRsdzqrGZ3o+nqEEZ89yN0fx1e5be5LVGRWk/2fdL3O4RvXXu
+ BW6K46ZNJsMpdn4n6+u0n0bPSNfqeIDppAuHtsx0+eb+6B6ks7KG5AH/zp5kplvHDOVttJplDFVxa
+ AMZ2jzJg==;
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lszid-007IIT-Tk; Tue, 15 Jun 2021 03:26:37 +0000
+ id 1lszoD-007IUH-8R; Tue, 15 Jun 2021 03:32:22 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 1D3DFC8652;
- Tue, 15 Jun 2021 11:26:29 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id E0BDABA865;
+ Tue, 15 Jun 2021 11:32:16 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -58,10 +58,10 @@ X-SKE-CHECKED: 1
 X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P16485T139919122814720S1623727582436580_; 
- Tue, 15 Jun 2021 11:26:29 +0800 (CST)
+ P16485T139918414178048S1623727934928454_; 
+ Tue, 15 Jun 2021 11:32:16 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9ec2544ef0d85e9a51bed05cb063ab7a>
+X-UNIQUE-TAG: <88ca8b830136884670bdc08239cae3ae>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -76,17 +76,14 @@ Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
  linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  devicetree@vger.kernel.org
-Subject: [PATCH v7 3/6] spi: rockchip: Set rx_fifo interrupt waterline base on
- transfer item
-Date: Tue, 15 Jun 2021 11:26:17 +0800
-Message-Id: <20210615032620.24769-4-jon.lin@rock-chips.com>
+Subject: [PATCH v8 0/6] Support ROCKCHIP SPI new feature
+Date: Tue, 15 Jun 2021 11:32:07 +0800
+Message-Id: <20210615033213.14241-1-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210615032620.24769-1-jon.lin@rock-chips.com>
-References: <20210607111837.31074-1-jon.lin@rock-chips.com>
- <20210615032620.24769-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_042635_294472_0C49CFAB 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20210615_043220_631991_1CD6EF40 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,36 +102,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The error here is to calculate the width as 8 bits. In fact, 16 bits
-should be considered.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
 
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
+Changes in v8:
+- There is a problem with the version 7 mail format. resend it
 
- drivers/spi/spi-rockchip.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changes in v7:
+- Fall back "rockchip,rv1126-spi" to "rockchip,rk3066-spi"
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index bbeed3ae4ee1..0887b19ef3ad 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -540,8 +540,8 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	 * interrupt exactly when the fifo is full doesn't seem to work,
- 	 * so we need the strict inequality here
- 	 */
--	if (xfer->len < rs->fifo_len)
--		writel_relaxed(xfer->len - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
-+	if ((xfer->len / rs->n_bytes) < rs->fifo_len)
-+		writel_relaxed(xfer->len / rs->n_bytes - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 	else
- 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 
+Changes in v6:
+- Consider to compatibility, the "rockchip,rk3568-spi" is removed in
+  Series-changes v5, so the commit massage should also remove the
+  corresponding information
+
+Changes in v5:
+- Change to leave one compatible id rv1126, and rk3568 is compatible
+  with rv1126
+
+Changes in v4:
+- Adjust the order patches
+- Simply commit massage like redundancy "application" content
+
+Changes in v3:
+- Fix compile error which is find by Sascha in [v2,2/8]
+
+Jon Lin (6):
+  dt-bindings: spi: spi-rockchip: add description for rv1126
+  spi: rockchip: add compatible string for rv1126
+  spi: rockchip: Set rx_fifo interrupt waterline base on transfer item
+  spi: rockchip: Wait for STB status in slave mode tx_xfer
+  spi: rockchip: Support cs-gpio
+  spi: rockchip: Support SPI_CS_HIGH
+
+ .../devicetree/bindings/spi/spi-rockchip.yaml |  1 +
+ drivers/spi/spi-rockchip.c                    | 95 +++++++++++++++----
+ 2 files changed, 80 insertions(+), 16 deletions(-)
+
 -- 
 2.17.1
 
