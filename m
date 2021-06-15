@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FAB1C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 00:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F7F0C48BE8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 00:38:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12B0B611CA
+	by mail.kernel.org (Postfix) with ESMTPS id 3AD38613B1
 	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 00:38:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12B0B611CA
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3AD38613B1
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=080W//89ds8CxzwlUPxyrHP8Z7JEnr/W2ZghSa9lhxE=; b=AKrh/QKgHLSRYS
-	WBu7+2mG/KFYDVKWoiSypACGTez/aUeaqpKdb5v1jnYXoNLp3zmH3qFnnu9DrtkZY8pyMxtrUOise
-	psW70hGf3kzoDkwxdlwMNuj1p9r1hc3ofTf+aA0Dhj5FPdzj0sB06PvGsU7oZz4KJ4AMLJPn0eegC
-	APt6/fDaRF7Rt1NV3vQ3rzkr9DnwIcOAIEvMuzAby5tuz4NUbPohvrSCZ//QvmnRcTosMUTH8JvQk
-	iwcsyz0vOjoRSehLGap/X+vzo68oxbCWMSxGUoeJQPUkJ92RgpgVUcSbSGb2mdZwaZo/DaWK9jU8A
-	n/LSIE65Ek9Sx8VC6kwA==;
+	List-Owner; bh=rVRLvh0eBKZARD/wvGc9bmpai/Kg4MGxcY5r1nl/rwI=; b=UqbkWK/J/YT2zV
+	HotvqH6QY0Lfa/z6PCcph8JfZUJF0peoENhurmLYinCtWZlvZybzj4P19NjoCYc0oPGgQMkWBVm/S
+	m4Dje5uxHLSX3tUujnrsWnChEXNgPl8B/Q9Ahhf34o2bWgZZ7IzO0+5P9vF1nGjD+EtCXz5+spol4
+	Z8LhH7sKswek7A+FTUdv4gKFaNjFcc7HDNT+tXFkB2LgMJyJXUCeRiDS0IeptjUoZ7RoAWn0o9mkn
+	3hBm2223uLWbW99VUwXIJ/I82bEk7C1m7XzSQ16kUZ+FpMy97PcG5xlzMZAIXA8rOlvPHM2JMAY7n
+	HavtEZNaBOV8kVaMHhtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsx5f-00GhdP-1l; Tue, 15 Jun 2021 00:38:03 +0000
+	id 1lsx5h-00GheT-KH; Tue, 15 Jun 2021 00:38:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsx5c-00GhYe-4V
- for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 00:38:01 +0000
+ id 1lsx5c-00GhYc-5F
+ for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 00:38:03 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lsx5W-0004ks-PD; Tue, 15 Jun 2021 02:37:54 +0200
+ id 1lsx5V-0004ks-M3; Tue, 15 Jun 2021 02:37:53 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -48,17 +48,16 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v2 4/7] media: rockchip: rkisp1: make some isp-stats functions
- variable
-Date: Tue, 15 Jun 2021 02:37:38 +0200
-Message-Id: <20210615003741.3758316-5-heiko@sntech.de>
+Subject: [PATCH v2 2/7] media: rockchip: rkisp1: allow separate interrupts
+Date: Tue, 15 Jun 2021 02:37:36 +0200
+Message-Id: <20210615003741.3758316-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210615003741.3758316-1-heiko@sntech.de>
 References: <20210615003741.3758316-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_173800_241447_0D9DBDAE 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20210614_173800_394412_D0ABB169 
+X-CRM114-Status: GOOD (  21.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,94 +77,217 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-The isp block evolved in subsequent socs, so some functions
-will behave differently on newer variants.
+Depending on the per-soc implementation there can be one interrupt
+for isp, mipi and capture events or separate per-event interrupts.
 
-Therefore make it possible to override the needed stats functions.
+So simply check for the presence of a named "mi" interrupt
+to differentiate between the two cases.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-common.h | 11 +++++++++++
- .../media/platform/rockchip/rkisp1/rkisp1-stats.c  | 14 +++++++++++---
- 2 files changed, 22 insertions(+), 3 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  9 ++-
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  7 ++-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     | 58 ++++++++++++++-----
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 16 +++--
+ 4 files changed, 69 insertions(+), 21 deletions(-)
 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 5f6c9d1623e4..f70c66c2a1d7 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -685,12 +685,17 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
+ 	spin_unlock(&cap->buf.lock);
+ }
+ 
+-void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
++irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+ {
++	struct device *dev = ctx;
++	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	unsigned int i;
+ 	u32 status;
+ 
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_MI_MIS);
++	if (!status)
++		return IRQ_NONE;
++
+ 	rkisp1_write(rkisp1, status, RKISP1_CIF_MI_ICR);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); ++i) {
+@@ -718,6 +723,8 @@ void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
+ 		cap->is_streaming = false;
+ 		wake_up(&cap->done);
+ 	}
++
++	return IRQ_HANDLED;
+ }
+ 
+ /* ----------------------------------------------------------------------------
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 74ddd8256366..d7f93547fab6 100644
+index be8a350c7527..25dd5c93620e 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -236,6 +236,16 @@ struct rkisp1_capture {
- 	} pix;
- };
+@@ -12,6 +12,7 @@
+ #define _RKISP1_COMMON_H
  
-+struct rkisp1_stats;
-+struct rkisp1_stats_ops {
-+	void (*get_awb_meas)(struct rkisp1_stats *stats,
-+			     struct rkisp1_stat_buffer *pbuf);
-+	void (*get_aec_meas)(struct rkisp1_stats *stats,
-+			     struct rkisp1_stat_buffer *pbuf);
-+	void (*get_hst_meas)(struct rkisp1_stats *stats,
-+			     struct rkisp1_stat_buffer *pbuf);
-+};
-+
- /*
-  * struct rkisp1_stats - ISP Statistics device
-  *
-@@ -248,6 +258,7 @@ struct rkisp1_capture {
- struct rkisp1_stats {
- 	struct rkisp1_vdev_node vnode;
- 	struct rkisp1_device *rkisp1;
-+	struct rkisp1_stats_ops *ops;
+ #include <linux/clk.h>
++#include <linux/interrupt.h>
+ #include <linux/mutex.h>
+ #include <linux/rkisp1-config.h>
+ #include <media/media-device.h>
+@@ -459,9 +460,9 @@ void rkisp1_params_configure(struct rkisp1_params *params,
+ void rkisp1_params_disable(struct rkisp1_params *params);
  
- 	spinlock_t lock; /* locks the buffers list 'stats' */
- 	struct list_head stat;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-index c1d07a2e8839..f68a5e78e54a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-@@ -287,6 +287,12 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
- 	}
- }
+ /* irq handlers */
+-void rkisp1_isp_isr(struct rkisp1_device *rkisp1);
+-void rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
+-void rkisp1_capture_isr(struct rkisp1_device *rkisp1);
++irqreturn_t rkisp1_isp_isr(int irq, void *ctx);
++irqreturn_t rkisp1_mipi_isr(int irq, void *ctx);
++irqreturn_t rkisp1_capture_isr(int irq, void *ctx);
+ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
+ void rkisp1_params_isr(struct rkisp1_device *rkisp1);
  
-+static struct rkisp1_stats_ops rkisp1_stats_ops = {
-+	.get_awb_meas = rkisp1_stats_get_awb_meas,
-+	.get_aec_meas = rkisp1_stats_get_aec_meas,
-+	.get_hst_meas = rkisp1_stats_get_hst_meas,
-+};
-+
- static void
- rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 7afa4c123834..ddc05189c62a 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -385,18 +385,15 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 
+ static irqreturn_t rkisp1_isr(int irq, void *ctx)
  {
-@@ -309,18 +315,18 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
- 		(struct rkisp1_stat_buffer *)(cur_buf->vaddr);
+-	struct device *dev = ctx;
+-	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+-
+ 	/*
+ 	 * Call rkisp1_capture_isr() first to handle the frame that
+ 	 * potentially completed using the current frame_sequence number before
+ 	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
+ 	 * sync.
+ 	 */
+-	rkisp1_capture_isr(rkisp1);
+-	rkisp1_isp_isr(rkisp1);
+-	rkisp1_mipi_isr(rkisp1);
++	rkisp1_capture_isr(irq, ctx);
++	rkisp1_isp_isr(irq, ctx);
++	rkisp1_mipi_isr(irq, ctx);
  
- 	if (isp_ris & RKISP1_CIF_ISP_AWB_DONE)
--		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
-+		stats->ops->get_awb_meas(stats, cur_stat_buf);
+ 	return IRQ_HANDLED;
+ }
+@@ -478,15 +475,50 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 	if (IS_ERR(rkisp1->base_addr))
+ 		return PTR_ERR(rkisp1->base_addr);
  
- 	if (isp_ris & RKISP1_CIF_ISP_AFM_FIN)
- 		rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
+-	irq = platform_get_irq(pdev, 0);
+-	if (irq < 0)
++	irq = platform_get_irq_byname_optional(pdev, "mi");
++	if (irq == -EPROBE_DEFER) {
+ 		return irq;
++	} else if (irq < 0) {
++		irq = platform_get_irq(pdev, 0);
++		if (irq < 0)
++			return irq;
++
++		ret = devm_request_irq(dev, irq, rkisp1_isr, IRQF_SHARED,
++				       dev_driver_string(dev), dev);
++		if (ret) {
++			dev_err(dev, "request irq failed: %d\n", ret);
++			return ret;
++		}
++	} else {
++		/* we test-got the MI (capture) interrupt */
++		ret = devm_request_irq(dev, irq, rkisp1_capture_isr, IRQF_SHARED,
++				       dev_driver_string(dev), dev);
++		if (ret) {
++			dev_err(dev, "request mi irq failed: %d\n", ret);
++			return ret;
++		}
  
- 	if (isp_ris & RKISP1_CIF_ISP_EXP_END) {
--		rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
-+		stats->ops->get_aec_meas(stats, cur_stat_buf);
- 		rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
+-	ret = devm_request_irq(dev, irq, rkisp1_isr, IRQF_SHARED,
+-			       dev_driver_string(dev), dev);
+-	if (ret) {
+-		dev_err(dev, "request irq failed: %d\n", ret);
+-		return ret;
++		irq = platform_get_irq_byname_optional(pdev, "mipi");
++		if (irq < 0)
++			return irq;
++
++		ret = devm_request_irq(dev, irq, rkisp1_mipi_isr, IRQF_SHARED,
++				       dev_driver_string(dev), dev);
++		if (ret) {
++			dev_err(dev, "request mipi irq failed: %d\n", ret);
++			return ret;
++		}
++
++		irq = platform_get_irq_byname_optional(pdev, "isp");
++		if (irq < 0)
++			return irq;
++
++		ret = devm_request_irq(dev, irq, rkisp1_isp_isr, IRQF_SHARED,
++				       dev_driver_string(dev), dev);
++		if (ret) {
++			dev_err(dev, "request isp irq failed: %d\n", ret);
++			return ret;
++		}
  	}
  
- 	if (isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
--		rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
-+		stats->ops->get_hst_meas(stats, cur_stat_buf);
+ 	for (i = 0; i < match_data->size; i++)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 2e5b57e3aedc..1de98e688008 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -1090,13 +1090,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+  * Interrupt handlers
+  */
  
- 	vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
- 			      sizeof(struct rkisp1_stat_buffer));
-@@ -354,6 +360,8 @@ static void rkisp1_init_stats(struct rkisp1_stats *stats)
- 		V4L2_META_FMT_RK_ISP1_STAT_3A;
- 	stats->vdev_fmt.fmt.meta.buffersize =
- 		sizeof(struct rkisp1_stat_buffer);
+-void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
++irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
+ {
++	struct device *dev = ctx;
++	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	u32 val, status;
+ 
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+ 	if (!status)
+-		return;
++		return IRQ_NONE;
+ 
+ 	rkisp1_write(rkisp1, status, RKISP1_CIF_MIPI_ICR);
+ 
+@@ -1131,6 +1133,8 @@ void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
+ 	} else {
+ 		rkisp1->debug.mipi_error++;
+ 	}
 +
-+	stats->ops = &rkisp1_stats_ops;
++	return IRQ_HANDLED;
  }
  
- int rkisp1_stats_register(struct rkisp1_device *rkisp1)
+ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+@@ -1143,13 +1147,15 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+ 	v4l2_event_queue(isp->sd.devnode, &event);
+ }
+ 
+-void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
++irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+ {
++	struct device *dev = ctx;
++	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+ 	u32 status, isp_err;
+ 
+ 	status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
+ 	if (!status)
+-		return;
++		return IRQ_NONE;
+ 
+ 	rkisp1_write(rkisp1, status, RKISP1_CIF_ISP_ICR);
+ 
+@@ -1191,4 +1197,6 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
+ 		 */
+ 		rkisp1_params_isr(rkisp1);
+ 	}
++
++	return IRQ_HANDLED;
+ }
 -- 
 2.29.2
 
