@@ -2,78 +2,91 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67457C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:36:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84157C48BE5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:39:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2674F60698
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:36:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2674F60698
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id D8758611CE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 17:39:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8758611CE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MenulS+wVpC1OyyWdfelQFsjw6rjmsR9hAFwK7LFiPI=; b=WT0x3vdwzf5rnK6LKn7/inH2z7
-	XrvGClCb9Xdl3+G2/1t1qo7JxvXRvHAVzYBIVY/ONQxAvD8hZbhdTXbNQAQCgKtbFFfM9yjXCF4+E
-	Az1IgTmiEf1vAVWwX6rekKM0/OedFadinv0lMyXyu/gx5gnuWBR8nNMY6segmM0mBFGeyxFrEPu2V
-	xXEFZKIZiJd8uNbJNyrkiKW6c2AGRfBmB5AV65SdadF2Tguh0gqtyLraxqWZyL+lK9iOHKpVUz/c0
-	ipLWjprWCaBSNciOcMl6t9GprSpqkJmFNWqVMV/3YhngVbn7Ha5j8titASmyRmv0BCYUtmhTJNhAH
-	K3xj9ZjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JSbpsgw1sZpmz8Ip7FKwpJDmI0brNHANABztXW0bwzc=; b=SnTYBaP3W53QZc
+	U+ilR45yXXLY0uYv9yD5HIZxcCi/NR4QaqE/JPYr/KuCiWRWecz04O8FoboLWFdxvim3EH5MkHSm4
+	OfoLb/xHO2/4XJCVmCddkPYmICxF9msDoU10r3bn7+ch7Yw/Kaj3YGeKmzOaGAGIzI5i/+MzSUgNs
+	jnX65MP93dLr/lPCTQw34V6WkS8L9B7pOdzFJeONeqgijVyKaRWrcOK7ni59DMDT/IAnfiy0sMRxW
+	UAH3LyqhUDudKNOfn02WlAuwBfrqY76+YipRlzuFbjt+w1qAC60ZbPkZMotw70+0CSbq6z0iVdjoI
+	t3TupAeyNCuj/4pzVu/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltCzD-001mnk-Hl; Tue, 15 Jun 2021 17:36:27 +0000
+	id 1ltD2D-001nvR-TI; Tue, 15 Jun 2021 17:39:33 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9M6-000DwX-9j
- for linux-rockchip@bombadil.infradead.org; Tue, 15 Jun 2021 13:43:50 +0000
+ id 1lt9O6-000DEY-Vr; Tue, 15 Jun 2021 13:45:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=peclfFe9tk7M2li7OtH3mK81zgejcuCNtv8VBKaWeZ4=; b=hcFODE4HiW9UTJkD0/GwpcHmEm
- dqcowRtUpv08SLXDMay9ZwLFeP5CJNRiPAdy9yNk3XHeQod34JoZ/oPzy+2K2nkLAxsCFAHhvgKd8
- ZC5ZCUUoFuI5QJYw/Fee78uRLpt4MpCOSe0wLaeR6jhc3EK3/x87uLswHgHvoaUYytHjdtAiPoUuu
- jji1MFcvpw5buFKjlTzPxHUrOYZtWixjUVu0NjbHxAgCcIfPoLZxfC5MxxN4FBD+4k+Pd1Q8bqfCc
- jS47HhF8qss45gjjnkcMV7j0Oo1TYC+shz3bTkA91F8kgtp9Kke2jQTnWuKB/gt7Tt0RgesafiF16
- 0QNGvRBQ==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
+ :Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=zRTQ+LDSf169YaJDFYgUk2G5CFB+CjQPL0/D+HdVp9w=; b=k8YHFRaZkAJN+pGXmLiPa5UP6U
+ xIhwGC2vT18c45hQkU2XNnoc8IwYFlW4ag8JhuJe9+LLsL/dz7+PkeXsMi9dBELXQi6NHo04gbIw9
+ 5WRWtDkpyJxS9HsmvCMwbvi6Jvf/CHLuNNvOTjBuof6RR4kLrUI2PwO0h7S/KaMEMLCbtj5THvm5l
+ K7t2ype1tWEMi7MZtqCqeJTiRRaAD7ClxVMivrJ4hWFEMoauYhWHPFrWXsLfEfiua72y0sDYmm73j
+ L4aCvymCJjS/jAw8YhYSfXsPRY7in0yGKxFtkK8H96zz7wJGPnn7OzfcCgraq4y1cLHiNQ6ZSxUiL
+ p2XnRJew==;
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt2Db-007OTx-Su
- for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 06:06:46 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id EBFB71F42D00
-Subject: Re: [PATCH v2 5/7] media: rockchip: rkisp1: add prefixes for v10
- specific parts
-To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
- hverkuil-cisco@xs4all.nl
-Cc: ezequiel@collabora.com, helen.koike@collabora.com,
- Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
- linux-media@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-References: <20210615003741.3758316-1-heiko@sntech.de>
- <20210615003741.3758316-6-heiko@sntech.de>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <29969c53-12ad-595e-3667-02f29bee8cfe@collabora.com>
-Date: Tue, 15 Jun 2021 09:06:35 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20210615003741.3758316-6-heiko@sntech.de>
-Content-Language: en-US
+ id 1lszif-007IIb-NR; Tue, 15 Jun 2021 03:26:38 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 0DEB4AD16E;
+ Tue, 15 Jun 2021 11:26:30 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P16485T139919122814720S1623727582436580_; 
+ Tue, 15 Jun 2021 11:26:30 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <d29143a024f1d0802144379073477b94>
+X-RL-SENDER: jon.lin@rock-chips.com
+X-SENDER: jon.lin@rock-chips.com
+X-LOGIN-NAME: jon.lin@rock-chips.com
+X-FST-TO: broonie@kernel.org
+X-RCPT-COUNT: 9
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org
+Subject: [PATCH v7 4/6] spi: rockchip: Wait for STB status in slave mode
+ tx_xfer
+Date: Tue, 15 Jun 2021 11:26:18 +0800
+Message-Id: <20210615032620.24769-5-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210615032620.24769-1-jon.lin@rock-chips.com>
+References: <20210607111837.31074-1-jon.lin@rock-chips.com>
+ <20210615032620.24769-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_070642_949508_DF3FF4F3 
-X-CRM114-Status: GOOD (  23.87  )
+X-CRM114-CacheID: sfid-20210615_042637_071214_8B575C58 
+X-CRM114-Status: GOOD (  12.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,873 +99,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+After ROCKCHIP_SPI_VER2_TYPE2, SR->STB is a more accurate judgment
+bit for spi slave transmition.
 
-On 15.06.21 03:37, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> The rkisp1 evolved over soc generations and the rk3326/px30 introduced
-> the so called v12 - probably meaning v1.2.
-> 
-> In a first step adapt the affected v10 parts to give them a
-> matching suffix to enable us to add v12 variants later on.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
->   .../platform/rockchip/rkisp1/rkisp1-params.c  | 180 +++++------
->   .../platform/rockchip/rkisp1/rkisp1-regs.h    | 295 ++++++++++--------
->   .../platform/rockchip/rkisp1/rkisp1-stats.c   |  32 +-
->   3 files changed, 269 insertions(+), 238 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index a971892ba81d..427c7cc400b2 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -185,8 +185,8 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
->   
->   /* ISP LS correction interface function */
->   static void
-> -rkisp1_lsc_matrix_config(struct rkisp1_params *params,
-> -			 const struct rkisp1_cif_isp_lsc_config *pconfig)
-> +rkisp1_lsc_matrix_config_v10(struct rkisp1_params *params,
-> +			     const struct rkisp1_cif_isp_lsc_config *pconfig)
->   {
->   	unsigned int isp_lsc_status, sram_addr, isp_lsc_table_sel, i, j, data;
->   
-> @@ -212,39 +212,39 @@ rkisp1_lsc_matrix_config(struct rkisp1_params *params,
->   		 * DWORDs (2nd value of last DWORD unused)
->   		 */
->   		for (j = 0; j < RKISP1_CIF_ISP_LSC_SAMPLES_MAX - 1; j += 2) {
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j],
-> -							     pconfig->r_data_tbl[i][j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->r_data_tbl[i][j],
-> +								 pconfig->r_data_tbl[i][j + 1]);
->   			rkisp1_write(params->rkisp1, data,
->   				     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
->   
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j],
-> -							     pconfig->gr_data_tbl[i][j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->gr_data_tbl[i][j],
-> +								 pconfig->gr_data_tbl[i][j + 1]);
->   			rkisp1_write(params->rkisp1, data,
->   				     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
->   
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j],
-> -							     pconfig->gb_data_tbl[i][j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->gb_data_tbl[i][j],
-> +								 pconfig->gb_data_tbl[i][j + 1]);
->   			rkisp1_write(params->rkisp1, data,
->   				     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
->   
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j],
-> -							     pconfig->b_data_tbl[i][j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->b_data_tbl[i][j],
-> +								 pconfig->b_data_tbl[i][j + 1]);
->   			rkisp1_write(params->rkisp1, data,
->   				     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
->   		}
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->r_data_tbl[i][j], 0);
->   		rkisp1_write(params->rkisp1, data,
->   			     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
->   
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->gr_data_tbl[i][j], 0);
->   		rkisp1_write(params->rkisp1, data,
->   			     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
->   
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->gb_data_tbl[i][j], 0);
->   		rkisp1_write(params->rkisp1, data,
->   			     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
->   
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(pconfig->b_data_tbl[i][j], 0);
->   		rkisp1_write(params->rkisp1, data,
->   			     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
->   	}
-> @@ -382,18 +382,18 @@ static void rkisp1_sdg_config(struct rkisp1_params *params,
->   }
->   
->   /* ISP GAMMA correction interface function */
-> -static void rkisp1_goc_config(struct rkisp1_params *params,
-> -			      const struct rkisp1_cif_isp_goc_config *arg)
-> +static void rkisp1_goc_config_v10(struct rkisp1_params *params,
-> +				  const struct rkisp1_cif_isp_goc_config *arg)
->   {
->   	unsigned int i;
->   
->   	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
->   				RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
-> -	rkisp1_write(params->rkisp1, arg->mode, RKISP1_CIF_ISP_GAMMA_OUT_MODE);
-> +	rkisp1_write(params->rkisp1, arg->mode, RKISP1_CIF_ISP_GAMMA_OUT_MODE_V10);
->   
->   	for (i = 0; i < RKISP1_CIF_ISP_GAMMA_OUT_MAX_SAMPLES_V10; i++)
->   		rkisp1_write(params->rkisp1, arg->gamma_y[i],
-> -			     RKISP1_CIF_ISP_GAMMA_OUT_Y_0 + i * 4);
-> +			     RKISP1_CIF_ISP_GAMMA_OUT_Y_0_V10 + i * 4);
->   }
->   
->   /* ISP Cross Talk */
-> @@ -433,8 +433,8 @@ static void rkisp1_ctk_enable(struct rkisp1_params *params, bool en)
->   }
->   
->   /* ISP White Balance Mode */
-> -static void rkisp1_awb_meas_config(struct rkisp1_params *params,
-> -				   const struct rkisp1_cif_isp_awb_meas_config *arg)
-> +static void rkisp1_awb_meas_config_v10(struct rkisp1_params *params,
-> +				       const struct rkisp1_cif_isp_awb_meas_config *arg)
->   {
->   	u32 reg_val = 0;
->   	/* based on the mode,configure the awb module */
-> @@ -442,43 +442,43 @@ static void rkisp1_awb_meas_config(struct rkisp1_params *params,
->   		/* Reference Cb and Cr */
->   		rkisp1_write(params->rkisp1,
->   			     RKISP1_CIF_ISP_AWB_REF_CR_SET(arg->awb_ref_cr) |
-> -			     arg->awb_ref_cb, RKISP1_CIF_ISP_AWB_REF);
-> +			     arg->awb_ref_cb, RKISP1_CIF_ISP_AWB_REF_V10);
->   		/* Yc Threshold */
->   		rkisp1_write(params->rkisp1,
->   			     RKISP1_CIF_ISP_AWB_MAX_Y_SET(arg->max_y) |
->   			     RKISP1_CIF_ISP_AWB_MIN_Y_SET(arg->min_y) |
->   			     RKISP1_CIF_ISP_AWB_MAX_CS_SET(arg->max_csum) |
-> -			     arg->min_c, RKISP1_CIF_ISP_AWB_THRESH);
-> +			     arg->min_c, RKISP1_CIF_ISP_AWB_THRESH_V10);
->   	}
->   
-> -	reg_val = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_AWB_PROP);
-> +	reg_val = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_AWB_PROP_V10);
->   	if (arg->enable_ymax_cmp)
->   		reg_val |= RKISP1_CIF_ISP_AWB_YMAX_CMP_EN;
->   	else
->   		reg_val &= ~RKISP1_CIF_ISP_AWB_YMAX_CMP_EN;
-> -	rkisp1_write(params->rkisp1, reg_val, RKISP1_CIF_ISP_AWB_PROP);
-> +	rkisp1_write(params->rkisp1, reg_val, RKISP1_CIF_ISP_AWB_PROP_V10);
->   
->   	/* window offset */
->   	rkisp1_write(params->rkisp1,
-> -		     arg->awb_wnd.v_offs, RKISP1_CIF_ISP_AWB_WND_V_OFFS);
-> +		     arg->awb_wnd.v_offs, RKISP1_CIF_ISP_AWB_WND_V_OFFS_V10);
->   	rkisp1_write(params->rkisp1,
-> -		     arg->awb_wnd.h_offs, RKISP1_CIF_ISP_AWB_WND_H_OFFS);
-> +		     arg->awb_wnd.h_offs, RKISP1_CIF_ISP_AWB_WND_H_OFFS_V10);
->   	/* AWB window size */
->   	rkisp1_write(params->rkisp1,
-> -		     arg->awb_wnd.v_size, RKISP1_CIF_ISP_AWB_WND_V_SIZE);
-> +		     arg->awb_wnd.v_size, RKISP1_CIF_ISP_AWB_WND_V_SIZE_V10);
->   	rkisp1_write(params->rkisp1,
-> -		     arg->awb_wnd.h_size, RKISP1_CIF_ISP_AWB_WND_H_SIZE);
-> +		     arg->awb_wnd.h_size, RKISP1_CIF_ISP_AWB_WND_H_SIZE_V10);
->   	/* Number of frames */
->   	rkisp1_write(params->rkisp1,
-> -		     arg->frames, RKISP1_CIF_ISP_AWB_FRAMES);
-> +		     arg->frames, RKISP1_CIF_ISP_AWB_FRAMES_V10);
->   }
->   
->   static void
-> -rkisp1_awb_meas_enable(struct rkisp1_params *params,
-> -		       const struct rkisp1_cif_isp_awb_meas_config *arg,
-> -		       bool en)
-> +rkisp1_awb_meas_enable_v10(struct rkisp1_params *params,
-> +			   const struct rkisp1_cif_isp_awb_meas_config *arg,
-> +			   bool en)
->   {
-> -	u32 reg_val = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_AWB_PROP);
-> +	u32 reg_val = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_AWB_PROP_V10);
->   
->   	/* switch off */
->   	reg_val &= RKISP1_CIF_ISP_AWB_MODE_MASK_NONE;
-> @@ -489,34 +489,34 @@ rkisp1_awb_meas_enable(struct rkisp1_params *params,
->   		else
->   			reg_val |= RKISP1_CIF_ISP_AWB_MODE_YCBCR_EN;
->   
-> -		rkisp1_write(params->rkisp1, reg_val, RKISP1_CIF_ISP_AWB_PROP);
-> +		rkisp1_write(params->rkisp1, reg_val, RKISP1_CIF_ISP_AWB_PROP_V10);
->   
->   		/* Measurements require AWB block be active. */
->   		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->   				      RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->   	} else {
->   		rkisp1_write(params->rkisp1,
-> -			     reg_val, RKISP1_CIF_ISP_AWB_PROP);
-> +			     reg_val, RKISP1_CIF_ISP_AWB_PROP_V10);
->   		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
->   					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->   	}
->   }
->   
->   static void
-> -rkisp1_awb_gain_config(struct rkisp1_params *params,
-> -		       const struct rkisp1_cif_isp_awb_gain_config *arg)
-> +rkisp1_awb_gain_config_v10(struct rkisp1_params *params,
-> +			   const struct rkisp1_cif_isp_awb_gain_config *arg)
->   {
->   	rkisp1_write(params->rkisp1,
->   		     RKISP1_CIF_ISP_AWB_GAIN_R_SET(arg->gain_green_r) |
-> -		     arg->gain_green_b, RKISP1_CIF_ISP_AWB_GAIN_G);
-> +		     arg->gain_green_b, RKISP1_CIF_ISP_AWB_GAIN_G_V10);
->   
->   	rkisp1_write(params->rkisp1,
->   		     RKISP1_CIF_ISP_AWB_GAIN_R_SET(arg->gain_red) |
-> -		     arg->gain_blue, RKISP1_CIF_ISP_AWB_GAIN_RB);
-> +		     arg->gain_blue, RKISP1_CIF_ISP_AWB_GAIN_RB_V10);
->   }
->   
-> -static void rkisp1_aec_config(struct rkisp1_params *params,
-> -			      const struct rkisp1_cif_isp_aec_config *arg)
-> +static void rkisp1_aec_config_v10(struct rkisp1_params *params,
-> +				  const struct rkisp1_cif_isp_aec_config *arg)
->   {
->   	unsigned int block_hsize, block_vsize;
->   	u32 exp_ctrl;
-> @@ -531,21 +531,21 @@ static void rkisp1_aec_config(struct rkisp1_params *params,
->   	rkisp1_write(params->rkisp1, exp_ctrl, RKISP1_CIF_ISP_EXP_CTRL);
->   
->   	rkisp1_write(params->rkisp1,
-> -		     arg->meas_window.h_offs, RKISP1_CIF_ISP_EXP_H_OFFSET);
-> +		     arg->meas_window.h_offs, RKISP1_CIF_ISP_EXP_H_OFFSET_V10);
->   	rkisp1_write(params->rkisp1,
-> -		     arg->meas_window.v_offs, RKISP1_CIF_ISP_EXP_V_OFFSET);
-> +		     arg->meas_window.v_offs, RKISP1_CIF_ISP_EXP_V_OFFSET_V10);
->   
->   	block_hsize = arg->meas_window.h_size /
-> -		      RKISP1_CIF_ISP_EXP_COLUMN_NUM - 1;
-> +		      RKISP1_CIF_ISP_EXP_COLUMN_NUM_V10 - 1;
->   	block_vsize = arg->meas_window.v_size /
-> -		      RKISP1_CIF_ISP_EXP_ROW_NUM - 1;
-> +		      RKISP1_CIF_ISP_EXP_ROW_NUM_V10 - 1;
->   
->   	rkisp1_write(params->rkisp1,
-> -		     RKISP1_CIF_ISP_EXP_H_SIZE_SET(block_hsize),
-> -		     RKISP1_CIF_ISP_EXP_H_SIZE);
-> +		     RKISP1_CIF_ISP_EXP_H_SIZE_SET_V10(block_hsize),
-> +		     RKISP1_CIF_ISP_EXP_H_SIZE_V10);
->   	rkisp1_write(params->rkisp1,
-> -		     RKISP1_CIF_ISP_EXP_V_SIZE_SET(block_vsize),
-> -		     RKISP1_CIF_ISP_EXP_V_SIZE);
-> +		     RKISP1_CIF_ISP_EXP_V_SIZE_SET_V10(block_vsize),
-> +		     RKISP1_CIF_ISP_EXP_V_SIZE_V10);
->   }
->   
->   static void rkisp1_cproc_config(struct rkisp1_params *params,
-> @@ -578,73 +578,73 @@ static void rkisp1_cproc_config(struct rkisp1_params *params,
->   	}
->   }
->   
-> -static void rkisp1_hst_config(struct rkisp1_params *params,
-> -			      const struct rkisp1_cif_isp_hst_config *arg)
-> +static void rkisp1_hst_config_v10(struct rkisp1_params *params,
-> +				  const struct rkisp1_cif_isp_hst_config *arg)
->   {
->   	unsigned int block_hsize, block_vsize;
->   	static const u32 hist_weight_regs[] = {
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_00TO30,
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_40TO21,
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_31TO12,
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_22TO03,
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_13TO43,
-> -		RKISP1_CIF_ISP_HIST_WEIGHT_04TO34,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_00TO30_V10,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_40TO21_V10,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_31TO12_V10,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_22TO03_V10,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_13TO43_V10,
-> +		RKISP1_CIF_ISP_HIST_WEIGHT_04TO34_V10,
->   	};
->   	const u8 *weight;
->   	unsigned int i;
->   	u32 hist_prop;
->   
->   	/* avoid to override the old enable value */
-> -	hist_prop = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_HIST_PROP);
-> -	hist_prop &= RKISP1_CIF_ISP_HIST_PROP_MODE_MASK;
-> -	hist_prop |= RKISP1_CIF_ISP_HIST_PREDIV_SET(arg->histogram_predivider);
-> -	rkisp1_write(params->rkisp1, hist_prop, RKISP1_CIF_ISP_HIST_PROP);
-> +	hist_prop = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_HIST_PROP_V10);
-> +	hist_prop &= RKISP1_CIF_ISP_HIST_PROP_MODE_MASK_V10;
-> +	hist_prop |= RKISP1_CIF_ISP_HIST_PREDIV_SET_V10(arg->histogram_predivider);
-> +	rkisp1_write(params->rkisp1, hist_prop, RKISP1_CIF_ISP_HIST_PROP_V10);
->   	rkisp1_write(params->rkisp1,
->   		     arg->meas_window.h_offs,
-> -		     RKISP1_CIF_ISP_HIST_H_OFFS);
-> +		     RKISP1_CIF_ISP_HIST_H_OFFS_V10);
->   	rkisp1_write(params->rkisp1,
->   		     arg->meas_window.v_offs,
-> -		     RKISP1_CIF_ISP_HIST_V_OFFS);
-> +		     RKISP1_CIF_ISP_HIST_V_OFFS_V10);
->   
->   	block_hsize = arg->meas_window.h_size /
-> -		      RKISP1_CIF_ISP_HIST_COLUMN_NUM - 1;
-> -	block_vsize = arg->meas_window.v_size / RKISP1_CIF_ISP_HIST_ROW_NUM - 1;
-> +		      RKISP1_CIF_ISP_HIST_COLUMN_NUM_V10 - 1;
-> +	block_vsize = arg->meas_window.v_size / RKISP1_CIF_ISP_HIST_ROW_NUM_V10 - 1;
->   
-> -	rkisp1_write(params->rkisp1, block_hsize, RKISP1_CIF_ISP_HIST_H_SIZE);
-> -	rkisp1_write(params->rkisp1, block_vsize, RKISP1_CIF_ISP_HIST_V_SIZE);
-> +	rkisp1_write(params->rkisp1, block_hsize, RKISP1_CIF_ISP_HIST_H_SIZE_V10);
-> +	rkisp1_write(params->rkisp1, block_vsize, RKISP1_CIF_ISP_HIST_V_SIZE_V10);
->   
->   	weight = arg->hist_weight;
->   	for (i = 0; i < ARRAY_SIZE(hist_weight_regs); ++i, weight += 4)
->   		rkisp1_write(params->rkisp1,
-> -			     RKISP1_CIF_ISP_HIST_WEIGHT_SET(weight[0],
-> +			     RKISP1_CIF_ISP_HIST_WEIGHT_SET_V10(weight[0],
->   							    weight[1],
->   							    weight[2],
->   							    weight[3]),
->   				 hist_weight_regs[i]);
->   
-> -	rkisp1_write(params->rkisp1, weight[0] & 0x1F, RKISP1_CIF_ISP_HIST_WEIGHT_44);
-> +	rkisp1_write(params->rkisp1, weight[0] & 0x1F, RKISP1_CIF_ISP_HIST_WEIGHT_44_V10);
->   }
->   
->   static void
-> -rkisp1_hst_enable(struct rkisp1_params *params,
-> -		  const struct rkisp1_cif_isp_hst_config *arg, bool en)
-> +rkisp1_hst_enable_v10(struct rkisp1_params *params,
-> +		      const struct rkisp1_cif_isp_hst_config *arg, bool en)
->   {
->   	if (en)	{
->   		u32 hist_prop = rkisp1_read(params->rkisp1,
-> -					    RKISP1_CIF_ISP_HIST_PROP);
-> +					    RKISP1_CIF_ISP_HIST_PROP_V10);
->   
-> -		hist_prop &= ~RKISP1_CIF_ISP_HIST_PROP_MODE_MASK;
-> +		hist_prop &= ~RKISP1_CIF_ISP_HIST_PROP_MODE_MASK_V10;
->   		hist_prop |= arg->mode;
-> -		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP,
-> +		rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP_V10,
->   				      hist_prop);
->   	} else {
-> -		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_HIST_PROP,
-> -					RKISP1_CIF_ISP_HIST_PROP_MODE_MASK);
-> +		rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_HIST_PROP_V10,
-> +					RKISP1_CIF_ISP_HIST_PROP_MODE_MASK_V10);
->   	}
->   }
->   
-> -static void rkisp1_afm_config(struct rkisp1_params *params,
-> -			      const struct rkisp1_cif_isp_afc_config *arg)
-> +static void rkisp1_afm_config_v10(struct rkisp1_params *params,
-> +				  const struct rkisp1_cif_isp_afc_config *arg)
->   {
->   	size_t num_of_win = min_t(size_t, ARRAY_SIZE(arg->afm_win),
->   				  arg->num_afm_win);
-> @@ -1234,7 +1234,7 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
->   
->   	memset(hst.hist_weight, 0x01, sizeof(hst.hist_weight));
->   	params->ops->hst_config(params, &hst);
-> -	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP,
-> +	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_HIST_PROP_V10,
->   			      rkisp1_hst_params_default_config.mode);
->   
->   	/* set the  range */
-> @@ -1293,16 +1293,16 @@ void rkisp1_params_disable(struct rkisp1_params *params)
->   				RKISP1_CIF_ISP_DPF_MODE_EN);
->   }
->   
-> -static struct rkisp1_params_ops rkisp1_params_ops = {
-> -	.lsc_matrix_config = rkisp1_lsc_matrix_config,
-> -	.goc_config = rkisp1_goc_config,
-> -	.awb_meas_config = rkisp1_awb_meas_config,
-> -	.awb_meas_enable = rkisp1_awb_meas_enable,
-> -	.awb_gain_config = rkisp1_awb_gain_config,
-> -	.aec_config = rkisp1_aec_config,
-> -	.hst_config = rkisp1_hst_config,
-> -	.hst_enable = rkisp1_hst_enable,
-> -	.afm_config = rkisp1_afm_config,
-> +static struct rkisp1_params_ops rkisp1_v10_params_ops = {
-> +	.lsc_matrix_config = rkisp1_lsc_matrix_config_v10,
-> +	.goc_config = rkisp1_goc_config_v10,
-> +	.awb_meas_config = rkisp1_awb_meas_config_v10,
-> +	.awb_meas_enable = rkisp1_awb_meas_enable_v10,
-> +	.awb_gain_config = rkisp1_awb_gain_config_v10,
-> +	.aec_config = rkisp1_aec_config_v10,
-> +	.hst_config = rkisp1_hst_config_v10,
-> +	.hst_enable = rkisp1_hst_enable_v10,
-> +	.afm_config = rkisp1_afm_config_v10,
->   };
->   
->   static int rkisp1_params_enum_fmt_meta_out(struct file *file, void *priv,
-> @@ -1472,7 +1472,7 @@ static void rkisp1_init_params(struct rkisp1_params *params)
->   	params->vdev_fmt.fmt.meta.buffersize =
->   		sizeof(struct rkisp1_params_cfg);
->   
-> -	params->ops = &rkisp1_params_ops;
-> +	params->ops = &rkisp1_v10_params_ops;
->   }
->   
->   int rkisp1_params_register(struct rkisp1_device *rkisp1)
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index fa33080f51db..c71ccd148bde 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -212,6 +212,35 @@
->   
->   /* CCL */
->   #define RKISP1_CIF_CCL_CIF_CLK_DIS			BIT(2)
-> +/* VI_ISP_CLK_CTRL */
-> +#define RKISP1_CIF_CLK_CTRL_ISP_RAW			BIT(0)
-> +#define RKISP1_CIF_CLK_CTRL_ISP_RGB			BIT(1)
-> +#define RKISP1_CIF_CLK_CTRL_ISP_YUV			BIT(2)
-> +#define RKISP1_CIF_CLK_CTRL_ISP_3A			BIT(3)
-> +#define RKISP1_CIF_CLK_CTRL_MIPI_RAW			BIT(4)
-> +#define RKISP1_CIF_CLK_CTRL_ISP_IE			BIT(5)
-> +#define RKISP1_CIF_CLK_CTRL_RSZ_RAM			BIT(6)
-> +#define RKISP1_CIF_CLK_CTRL_JPEG_RAM			BIT(7)
-> +#define RKISP1_CIF_CLK_CTRL_ACLK_ISP			BIT(8)
-> +#define RKISP1_CIF_CLK_CTRL_MI_IDC			BIT(9)
-> +#define RKISP1_CIF_CLK_CTRL_MI_MP			BIT(10)
-> +#define RKISP1_CIF_CLK_CTRL_MI_JPEG			BIT(11)
-> +#define RKISP1_CIF_CLK_CTRL_MI_DP			BIT(12)
-> +#define RKISP1_CIF_CLK_CTRL_MI_Y12			BIT(13)
-> +#define RKISP1_CIF_CLK_CTRL_MI_SP			BIT(14)
-> +#define RKISP1_CIF_CLK_CTRL_MI_RAW0			BIT(15)
-> +#define RKISP1_CIF_CLK_CTRL_MI_RAW1			BIT(16)
-> +#define RKISP1_CIF_CLK_CTRL_MI_READ			BIT(17)
-> +#define RKISP1_CIF_CLK_CTRL_MI_RAWRD			BIT(18)
-> +#define RKISP1_CIF_CLK_CTRL_CP				BIT(19)
-> +#define RKISP1_CIF_CLK_CTRL_IE				BIT(20)
-> +#define RKISP1_CIF_CLK_CTRL_SI				BIT(21)
-> +#define RKISP1_CIF_CLK_CTRL_RSZM			BIT(22)
-> +#define RKISP1_CIF_CLK_CTRL_DPMUX			BIT(23)
-> +#define RKISP1_CIF_CLK_CTRL_JPEG			BIT(24)
-> +#define RKISP1_CIF_CLK_CTRL_RSZS			BIT(25)
-> +#define RKISP1_CIF_CLK_CTRL_MIPI			BIT(26)
-> +#define RKISP1_CIF_CLK_CTRL_MARVINMI			BIT(27)
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-What are those new registers? I guess they don't belong to this patch.
+Changes in v7: None
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
 
-Thanks,
-Dafna
+ drivers/spi/spi-rockchip.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
->   /* ICCL */
->   #define RKISP1_CIF_ICCL_ISP_CLK				BIT(0)
->   #define RKISP1_CIF_ICCL_CP_CLK				BIT(1)
-> @@ -346,26 +375,26 @@
->   #define RKISP1_CIF_SUPER_IMP_CTRL_TRANSP_DIS		BIT(2)
->   
->   /* ISP HISTOGRAM CALCULATION : ISP_HIST_PROP */
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_DIS		(0 << 0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_RGB		BIT(0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_RED		(2 << 0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_GREEN		(3 << 0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_BLUE		(4 << 0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_LUM		(5 << 0)
-> -#define RKISP1_CIF_ISP_HIST_PROP_MODE_MASK		0x7
-> -#define RKISP1_CIF_ISP_HIST_PREDIV_SET(x)		(((x) & 0x7F) << 3)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_SET(v0, v1, v2, v3)	\
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_DIS_V10		(0 << 0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_RGB_V10		BIT(0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_RED_V10		(2 << 0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_GREEN_V10		(3 << 0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_BLUE_V10		(4 << 0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_LUM_V10		(5 << 0)
-> +#define RKISP1_CIF_ISP_HIST_PROP_MODE_MASK_V10		0x7
-> +#define RKISP1_CIF_ISP_HIST_PREDIV_SET_V10(x)		(((x) & 0x7F) << 3)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_SET_V10(v0, v1, v2, v3)	\
->   				     (((v0) & 0x1F) | (((v1) & 0x1F) << 8)  |\
->   				     (((v2) & 0x1F) << 16) | \
->   				     (((v3) & 0x1F) << 24))
->   
-> -#define RKISP1_CIF_ISP_HIST_WINDOW_OFFSET_RESERVED	0xFFFFF000
-> -#define RKISP1_CIF_ISP_HIST_WINDOW_SIZE_RESERVED	0xFFFFF800
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_RESERVED		0xE0E0E0E0
-> -#define RKISP1_CIF_ISP_MAX_HIST_PREDIVIDER		0x0000007F
-> -#define RKISP1_CIF_ISP_HIST_ROW_NUM			5
-> -#define RKISP1_CIF_ISP_HIST_COLUMN_NUM			5
-> -#define RKISP1_CIF_ISP_HIST_GET_BIN(x)			((x) & 0x000FFFFF)
-> +#define RKISP1_CIF_ISP_HIST_WINDOW_OFFSET_RESERVED_V10	0xFFFFF000
-> +#define RKISP1_CIF_ISP_HIST_WINDOW_SIZE_RESERVED_V10	0xFFFFF800
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_RESERVED_V10		0xE0E0E0E0
-> +#define RKISP1_CIF_ISP_MAX_HIST_PREDIVIDER_V10		0x0000007F
-> +#define RKISP1_CIF_ISP_HIST_ROW_NUM_V10			5
-> +#define RKISP1_CIF_ISP_HIST_COLUMN_NUM_V10		5
-> +#define RKISP1_CIF_ISP_HIST_GET_BIN_V10(x)		((x) & 0x000FFFFF)
->   
->   /* AUTO FOCUS MEASUREMENT:  ISP_AFM_CTRL */
->   #define RKISP1_ISP_AFM_CTRL_ENABLE			BIT(0)
-> @@ -442,41 +471,41 @@
->   #define RKISP1_CIF_ISP_EXP_CTRL_MEASMODE_1		BIT(31)
->   
->   /* ISP_EXP_H_SIZE */
-> -#define RKISP1_CIF_ISP_EXP_H_SIZE_SET(x)		((x) & 0x7FF)
-> -#define RKISP1_CIF_ISP_EXP_HEIGHT_MASK			0x000007FF
-> +#define RKISP1_CIF_ISP_EXP_H_SIZE_SET_V10(x)		((x) & 0x7FF)
-> +#define RKISP1_CIF_ISP_EXP_HEIGHT_MASK_V10			0x000007FF
->   /* ISP_EXP_V_SIZE : vertical size must be a multiple of 2). */
-> -#define RKISP1_CIF_ISP_EXP_V_SIZE_SET(x)		((x) & 0x7FE)
-> +#define RKISP1_CIF_ISP_EXP_V_SIZE_SET_V10(x)		((x) & 0x7FE)
->   
->   /* ISP_EXP_H_OFFSET */
-> -#define RKISP1_CIF_ISP_EXP_H_OFFSET_SET(x)		((x) & 0x1FFF)
-> -#define RKISP1_CIF_ISP_EXP_MAX_HOFFS			2424
-> +#define RKISP1_CIF_ISP_EXP_H_OFFSET_SET_V10(x)		((x) & 0x1FFF)
-> +#define RKISP1_CIF_ISP_EXP_MAX_HOFFS_V10		2424
->   /* ISP_EXP_V_OFFSET */
-> -#define RKISP1_CIF_ISP_EXP_V_OFFSET_SET(x)		((x) & 0x1FFF)
-> -#define RKISP1_CIF_ISP_EXP_MAX_VOFFS			1806
-> -
-> -#define RKISP1_CIF_ISP_EXP_ROW_NUM			5
-> -#define RKISP1_CIF_ISP_EXP_COLUMN_NUM			5
-> -#define RKISP1_CIF_ISP_EXP_NUM_LUMA_REGS \
-> -	(RKISP1_CIF_ISP_EXP_ROW_NUM * RKISP1_CIF_ISP_EXP_COLUMN_NUM)
-> -#define RKISP1_CIF_ISP_EXP_BLOCK_MAX_HSIZE		516
-> -#define RKISP1_CIF_ISP_EXP_BLOCK_MIN_HSIZE		35
-> -#define RKISP1_CIF_ISP_EXP_BLOCK_MAX_VSIZE		390
-> -#define RKISP1_CIF_ISP_EXP_BLOCK_MIN_VSIZE		28
-> -#define RKISP1_CIF_ISP_EXP_MAX_HSIZE	\
-> -	(RKISP1_CIF_ISP_EXP_BLOCK_MAX_HSIZE * RKISP1_CIF_ISP_EXP_COLUMN_NUM + 1)
-> -#define RKISP1_CIF_ISP_EXP_MIN_HSIZE	\
-> -	(RKISP1_CIF_ISP_EXP_BLOCK_MIN_HSIZE * RKISP1_CIF_ISP_EXP_COLUMN_NUM + 1)
-> -#define RKISP1_CIF_ISP_EXP_MAX_VSIZE	\
-> -	(RKISP1_CIF_ISP_EXP_BLOCK_MAX_VSIZE * RKISP1_CIF_ISP_EXP_ROW_NUM + 1)
-> -#define RKISP1_CIF_ISP_EXP_MIN_VSIZE	\
-> -	(RKISP1_CIF_ISP_EXP_BLOCK_MIN_VSIZE * RKISP1_CIF_ISP_EXP_ROW_NUM + 1)
-> +#define RKISP1_CIF_ISP_EXP_V_OFFSET_SET_V10(x)		((x) & 0x1FFF)
-> +#define RKISP1_CIF_ISP_EXP_MAX_VOFFS_V10		1806
-> +
-> +#define RKISP1_CIF_ISP_EXP_ROW_NUM_V10			5
-> +#define RKISP1_CIF_ISP_EXP_COLUMN_NUM_V10			5
-> +#define RKISP1_CIF_ISP_EXP_NUM_LUMA_REGS_V10 \
-> +	(RKISP1_CIF_ISP_EXP_ROW_NUM_V10 * RKISP1_CIF_ISP_EXP_COLUMN_NUM_V10)
-> +#define RKISP1_CIF_ISP_EXP_BLOCK_MAX_HSIZE_V10		516
-> +#define RKISP1_CIF_ISP_EXP_BLOCK_MIN_HSIZE_V10		35
-> +#define RKISP1_CIF_ISP_EXP_BLOCK_MAX_VSIZE_V10		390
-> +#define RKISP1_CIF_ISP_EXP_BLOCK_MIN_VSIZE_V10		28
-> +#define RKISP1_CIF_ISP_EXP_MAX_HSIZE_V10	\
-> +	(RKISP1_CIF_ISP_EXP_BLOCK_MAX_HSIZE_V10 * RKISP1_CIF_ISP_EXP_COLUMN_NUM_V10 + 1)
-> +#define RKISP1_CIF_ISP_EXP_MIN_HSIZE_V10	\
-> +	(RKISP1_CIF_ISP_EXP_BLOCK_MIN_HSIZE_V10 * RKISP1_CIF_ISP_EXP_COLUMN_NUM_V10 + 1)
-> +#define RKISP1_CIF_ISP_EXP_MAX_VSIZE_V10	\
-> +	(RKISP1_CIF_ISP_EXP_BLOCK_MAX_VSIZE_V10 * RKISP1_CIF_ISP_EXP_ROW_NUM_V10 + 1)
-> +#define RKISP1_CIF_ISP_EXP_MIN_VSIZE_V10	\
-> +	(RKISP1_CIF_ISP_EXP_BLOCK_MIN_VSIZE_V10 * RKISP1_CIF_ISP_EXP_ROW_NUM_V10 + 1)
->   
->   /* LSC: ISP_LSC_CTRL */
->   #define RKISP1_CIF_ISP_LSC_CTRL_ENA			BIT(0)
->   #define RKISP1_CIF_ISP_LSC_SECT_SIZE_RESERVED		0xFC00FC00
-> -#define RKISP1_CIF_ISP_LSC_GRAD_RESERVED		0xF000F000
-> -#define RKISP1_CIF_ISP_LSC_SAMPLE_RESERVED		0xF000F000
-> -#define RKISP1_CIF_ISP_LSC_TABLE_DATA(v0, v1)     \
-> +#define RKISP1_CIF_ISP_LSC_GRAD_RESERVED_V10		0xF000F000
-> +#define RKISP1_CIF_ISP_LSC_SAMPLE_RESERVED_V10		0xF000F000
-> +#define RKISP1_CIF_ISP_LSC_TABLE_DATA_V10(v0, v1)     \
->   	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 12))
->   #define RKISP1_CIF_ISP_LSC_SECT_SIZE(v0, v1)      \
->   	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 16))
-> @@ -667,18 +696,18 @@
->   #define RKISP1_CIF_ISP_GAMMA_B_Y14		(RKISP1_CIF_ISP_BASE + 0x000000E4)
->   #define RKISP1_CIF_ISP_GAMMA_B_Y15		(RKISP1_CIF_ISP_BASE + 0x000000E8)
->   #define RKISP1_CIF_ISP_GAMMA_B_Y16		(RKISP1_CIF_ISP_BASE + 0x000000EC)
-> -#define RKISP1_CIF_ISP_AWB_PROP			(RKISP1_CIF_ISP_BASE + 0x00000110)
-> -#define RKISP1_CIF_ISP_AWB_WND_H_OFFS		(RKISP1_CIF_ISP_BASE + 0x00000114)
-> -#define RKISP1_CIF_ISP_AWB_WND_V_OFFS		(RKISP1_CIF_ISP_BASE + 0x00000118)
-> -#define RKISP1_CIF_ISP_AWB_WND_H_SIZE		(RKISP1_CIF_ISP_BASE + 0x0000011C)
-> -#define RKISP1_CIF_ISP_AWB_WND_V_SIZE		(RKISP1_CIF_ISP_BASE + 0x00000120)
-> -#define RKISP1_CIF_ISP_AWB_FRAMES		(RKISP1_CIF_ISP_BASE + 0x00000124)
-> -#define RKISP1_CIF_ISP_AWB_REF			(RKISP1_CIF_ISP_BASE + 0x00000128)
-> -#define RKISP1_CIF_ISP_AWB_THRESH		(RKISP1_CIF_ISP_BASE + 0x0000012C)
-> -#define RKISP1_CIF_ISP_AWB_GAIN_G		(RKISP1_CIF_ISP_BASE + 0x00000138)
-> -#define RKISP1_CIF_ISP_AWB_GAIN_RB		(RKISP1_CIF_ISP_BASE + 0x0000013C)
-> -#define RKISP1_CIF_ISP_AWB_WHITE_CNT		(RKISP1_CIF_ISP_BASE + 0x00000140)
-> -#define RKISP1_CIF_ISP_AWB_MEAN			(RKISP1_CIF_ISP_BASE + 0x00000144)
-> +#define RKISP1_CIF_ISP_AWB_PROP_V10		(RKISP1_CIF_ISP_BASE + 0x00000110)
-> +#define RKISP1_CIF_ISP_AWB_WND_H_OFFS_V10	(RKISP1_CIF_ISP_BASE + 0x00000114)
-> +#define RKISP1_CIF_ISP_AWB_WND_V_OFFS_V10	(RKISP1_CIF_ISP_BASE + 0x00000118)
-> +#define RKISP1_CIF_ISP_AWB_WND_H_SIZE_V10	(RKISP1_CIF_ISP_BASE + 0x0000011C)
-> +#define RKISP1_CIF_ISP_AWB_WND_V_SIZE_V10	(RKISP1_CIF_ISP_BASE + 0x00000120)
-> +#define RKISP1_CIF_ISP_AWB_FRAMES_V10		(RKISP1_CIF_ISP_BASE + 0x00000124)
-> +#define RKISP1_CIF_ISP_AWB_REF_V10		(RKISP1_CIF_ISP_BASE + 0x00000128)
-> +#define RKISP1_CIF_ISP_AWB_THRESH_V10		(RKISP1_CIF_ISP_BASE + 0x0000012C)
-> +#define RKISP1_CIF_ISP_AWB_GAIN_G_V10		(RKISP1_CIF_ISP_BASE + 0x00000138)
-> +#define RKISP1_CIF_ISP_AWB_GAIN_RB_V10		(RKISP1_CIF_ISP_BASE + 0x0000013C)
-> +#define RKISP1_CIF_ISP_AWB_WHITE_CNT_V10	(RKISP1_CIF_ISP_BASE + 0x00000140)
-> +#define RKISP1_CIF_ISP_AWB_MEAN_V10		(RKISP1_CIF_ISP_BASE + 0x00000144)
->   #define RKISP1_CIF_ISP_CC_COEFF_0		(RKISP1_CIF_ISP_BASE + 0x00000170)
->   #define RKISP1_CIF_ISP_CC_COEFF_1		(RKISP1_CIF_ISP_BASE + 0x00000174)
->   #define RKISP1_CIF_ISP_CC_COEFF_2		(RKISP1_CIF_ISP_BASE + 0x00000178)
-> @@ -712,24 +741,24 @@
->   #define RKISP1_CIF_ISP_CT_COEFF_6		(RKISP1_CIF_ISP_BASE + 0x000001E8)
->   #define RKISP1_CIF_ISP_CT_COEFF_7		(RKISP1_CIF_ISP_BASE + 0x000001EC)
->   #define RKISP1_CIF_ISP_CT_COEFF_8		(RKISP1_CIF_ISP_BASE + 0x000001F0)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_MODE		(RKISP1_CIF_ISP_BASE + 0x000001F4)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_0		(RKISP1_CIF_ISP_BASE + 0x000001F8)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_1		(RKISP1_CIF_ISP_BASE + 0x000001FC)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_2		(RKISP1_CIF_ISP_BASE + 0x00000200)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_3		(RKISP1_CIF_ISP_BASE + 0x00000204)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_4		(RKISP1_CIF_ISP_BASE + 0x00000208)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_5		(RKISP1_CIF_ISP_BASE + 0x0000020C)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_6		(RKISP1_CIF_ISP_BASE + 0x00000210)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_7		(RKISP1_CIF_ISP_BASE + 0x00000214)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_8		(RKISP1_CIF_ISP_BASE + 0x00000218)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_9		(RKISP1_CIF_ISP_BASE + 0x0000021C)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_10		(RKISP1_CIF_ISP_BASE + 0x00000220)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_11		(RKISP1_CIF_ISP_BASE + 0x00000224)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_12		(RKISP1_CIF_ISP_BASE + 0x00000228)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_13		(RKISP1_CIF_ISP_BASE + 0x0000022C)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_14		(RKISP1_CIF_ISP_BASE + 0x00000230)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_15		(RKISP1_CIF_ISP_BASE + 0x00000234)
-> -#define RKISP1_CIF_ISP_GAMMA_OUT_Y_16		(RKISP1_CIF_ISP_BASE + 0x00000238)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_MODE_V10	(RKISP1_CIF_ISP_BASE + 0x000001F4)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_0_V10	(RKISP1_CIF_ISP_BASE + 0x000001F8)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_1_V10	(RKISP1_CIF_ISP_BASE + 0x000001FC)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_2_V10	(RKISP1_CIF_ISP_BASE + 0x00000200)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_3_V10	(RKISP1_CIF_ISP_BASE + 0x00000204)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_4_V10	(RKISP1_CIF_ISP_BASE + 0x00000208)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_5_V10	(RKISP1_CIF_ISP_BASE + 0x0000020C)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_6_V10	(RKISP1_CIF_ISP_BASE + 0x00000210)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_7_V10	(RKISP1_CIF_ISP_BASE + 0x00000214)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_8_V10	(RKISP1_CIF_ISP_BASE + 0x00000218)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_9_V10	(RKISP1_CIF_ISP_BASE + 0x0000021C)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_10_V10	(RKISP1_CIF_ISP_BASE + 0x00000220)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_11_V10	(RKISP1_CIF_ISP_BASE + 0x00000224)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_12_V10	(RKISP1_CIF_ISP_BASE + 0x00000228)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_13_V10	(RKISP1_CIF_ISP_BASE + 0x0000022C)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_14_V10	(RKISP1_CIF_ISP_BASE + 0x00000230)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_15_V10	(RKISP1_CIF_ISP_BASE + 0x00000234)
-> +#define RKISP1_CIF_ISP_GAMMA_OUT_Y_16_V10	(RKISP1_CIF_ISP_BASE + 0x00000238)
->   #define RKISP1_CIF_ISP_ERR			(RKISP1_CIF_ISP_BASE + 0x0000023C)
->   #define RKISP1_CIF_ISP_ERR_CLR			(RKISP1_CIF_ISP_BASE + 0x00000240)
->   #define RKISP1_CIF_ISP_FRAME_COUNT		(RKISP1_CIF_ISP_BASE + 0x00000244)
-> @@ -1005,36 +1034,35 @@
->   #define RKISP1_CIF_ISP_IS_H_SIZE_SHD		(RKISP1_CIF_ISP_IS_BASE + 0x0000002C)
->   #define RKISP1_CIF_ISP_IS_V_SIZE_SHD		(RKISP1_CIF_ISP_IS_BASE + 0x00000030)
->   
-> -#define RKISP1_CIF_ISP_HIST_BASE		0x00002400
-> -
-> -#define RKISP1_CIF_ISP_HIST_PROP		(RKISP1_CIF_ISP_HIST_BASE + 0x00000000)
-> -#define RKISP1_CIF_ISP_HIST_H_OFFS		(RKISP1_CIF_ISP_HIST_BASE + 0x00000004)
-> -#define RKISP1_CIF_ISP_HIST_V_OFFS		(RKISP1_CIF_ISP_HIST_BASE + 0x00000008)
-> -#define RKISP1_CIF_ISP_HIST_H_SIZE		(RKISP1_CIF_ISP_HIST_BASE + 0x0000000C)
-> -#define RKISP1_CIF_ISP_HIST_V_SIZE		(RKISP1_CIF_ISP_HIST_BASE + 0x00000010)
-> -#define RKISP1_CIF_ISP_HIST_BIN_0		(RKISP1_CIF_ISP_HIST_BASE + 0x00000014)
-> -#define RKISP1_CIF_ISP_HIST_BIN_1		(RKISP1_CIF_ISP_HIST_BASE + 0x00000018)
-> -#define RKISP1_CIF_ISP_HIST_BIN_2		(RKISP1_CIF_ISP_HIST_BASE + 0x0000001C)
-> -#define RKISP1_CIF_ISP_HIST_BIN_3		(RKISP1_CIF_ISP_HIST_BASE + 0x00000020)
-> -#define RKISP1_CIF_ISP_HIST_BIN_4		(RKISP1_CIF_ISP_HIST_BASE + 0x00000024)
-> -#define RKISP1_CIF_ISP_HIST_BIN_5		(RKISP1_CIF_ISP_HIST_BASE + 0x00000028)
-> -#define RKISP1_CIF_ISP_HIST_BIN_6		(RKISP1_CIF_ISP_HIST_BASE + 0x0000002C)
-> -#define RKISP1_CIF_ISP_HIST_BIN_7		(RKISP1_CIF_ISP_HIST_BASE + 0x00000030)
-> -#define RKISP1_CIF_ISP_HIST_BIN_8		(RKISP1_CIF_ISP_HIST_BASE + 0x00000034)
-> -#define RKISP1_CIF_ISP_HIST_BIN_9		(RKISP1_CIF_ISP_HIST_BASE + 0x00000038)
-> -#define RKISP1_CIF_ISP_HIST_BIN_10		(RKISP1_CIF_ISP_HIST_BASE + 0x0000003C)
-> -#define RKISP1_CIF_ISP_HIST_BIN_11		(RKISP1_CIF_ISP_HIST_BASE + 0x00000040)
-> -#define RKISP1_CIF_ISP_HIST_BIN_12		(RKISP1_CIF_ISP_HIST_BASE + 0x00000044)
-> -#define RKISP1_CIF_ISP_HIST_BIN_13		(RKISP1_CIF_ISP_HIST_BASE + 0x00000048)
-> -#define RKISP1_CIF_ISP_HIST_BIN_14		(RKISP1_CIF_ISP_HIST_BASE + 0x0000004C)
-> -#define RKISP1_CIF_ISP_HIST_BIN_15		(RKISP1_CIF_ISP_HIST_BASE + 0x00000050)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_00TO30	(RKISP1_CIF_ISP_HIST_BASE + 0x00000054)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_40TO21	(RKISP1_CIF_ISP_HIST_BASE + 0x00000058)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_31TO12	(RKISP1_CIF_ISP_HIST_BASE + 0x0000005C)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_22TO03	(RKISP1_CIF_ISP_HIST_BASE + 0x00000060)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_13TO43	(RKISP1_CIF_ISP_HIST_BASE + 0x00000064)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_04TO34	(RKISP1_CIF_ISP_HIST_BASE + 0x00000068)
-> -#define RKISP1_CIF_ISP_HIST_WEIGHT_44		(RKISP1_CIF_ISP_HIST_BASE + 0x0000006C)
-> +#define RKISP1_CIF_ISP_HIST_BASE_V10		0x00002400
-> +#define RKISP1_CIF_ISP_HIST_PROP_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000000)
-> +#define RKISP1_CIF_ISP_HIST_H_OFFS_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000004)
-> +#define RKISP1_CIF_ISP_HIST_V_OFFS_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000008)
-> +#define RKISP1_CIF_ISP_HIST_H_SIZE_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000000C)
-> +#define RKISP1_CIF_ISP_HIST_V_SIZE_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000010)
-> +#define RKISP1_CIF_ISP_HIST_BIN_0_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000014)
-> +#define RKISP1_CIF_ISP_HIST_BIN_1_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000018)
-> +#define RKISP1_CIF_ISP_HIST_BIN_2_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000001C)
-> +#define RKISP1_CIF_ISP_HIST_BIN_3_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000020)
-> +#define RKISP1_CIF_ISP_HIST_BIN_4_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000024)
-> +#define RKISP1_CIF_ISP_HIST_BIN_5_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000028)
-> +#define RKISP1_CIF_ISP_HIST_BIN_6_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000002C)
-> +#define RKISP1_CIF_ISP_HIST_BIN_7_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000030)
-> +#define RKISP1_CIF_ISP_HIST_BIN_8_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000034)
-> +#define RKISP1_CIF_ISP_HIST_BIN_9_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000038)
-> +#define RKISP1_CIF_ISP_HIST_BIN_10_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000003C)
-> +#define RKISP1_CIF_ISP_HIST_BIN_11_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000040)
-> +#define RKISP1_CIF_ISP_HIST_BIN_12_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000044)
-> +#define RKISP1_CIF_ISP_HIST_BIN_13_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000048)
-> +#define RKISP1_CIF_ISP_HIST_BIN_14_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000004C)
-> +#define RKISP1_CIF_ISP_HIST_BIN_15_V10		(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000050)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_00TO30_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000054)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_40TO21_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000058)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_31TO12_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000005C)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_22TO03_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000060)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_13TO43_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000064)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_04TO34_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x00000068)
-> +#define RKISP1_CIF_ISP_HIST_WEIGHT_44_V10	(RKISP1_CIF_ISP_HIST_BASE_V10 + 0x0000006C)
->   
->   #define RKISP1_CIF_ISP_FILT_BASE		0x00002500
->   #define RKISP1_CIF_ISP_FILT_MODE		(RKISP1_CIF_ISP_FILT_BASE + 0x00000000)
-> @@ -1060,35 +1088,35 @@
->   
->   #define RKISP1_CIF_ISP_EXP_BASE			0x00002600
->   #define RKISP1_CIF_ISP_EXP_CTRL			(RKISP1_CIF_ISP_EXP_BASE + 0x00000000)
-> -#define RKISP1_CIF_ISP_EXP_H_OFFSET		(RKISP1_CIF_ISP_EXP_BASE + 0x00000004)
-> -#define RKISP1_CIF_ISP_EXP_V_OFFSET		(RKISP1_CIF_ISP_EXP_BASE + 0x00000008)
-> -#define RKISP1_CIF_ISP_EXP_H_SIZE		(RKISP1_CIF_ISP_EXP_BASE + 0x0000000C)
-> -#define RKISP1_CIF_ISP_EXP_V_SIZE		(RKISP1_CIF_ISP_EXP_BASE + 0x00000010)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_00		(RKISP1_CIF_ISP_EXP_BASE + 0x00000014)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000018)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_20		(RKISP1_CIF_ISP_EXP_BASE + 0x0000001c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_30		(RKISP1_CIF_ISP_EXP_BASE + 0x00000020)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_40		(RKISP1_CIF_ISP_EXP_BASE + 0x00000024)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_01		(RKISP1_CIF_ISP_EXP_BASE + 0x00000028)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_11		(RKISP1_CIF_ISP_EXP_BASE + 0x0000002c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_21		(RKISP1_CIF_ISP_EXP_BASE + 0x00000030)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_31		(RKISP1_CIF_ISP_EXP_BASE + 0x00000034)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_41		(RKISP1_CIF_ISP_EXP_BASE + 0x00000038)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_02		(RKISP1_CIF_ISP_EXP_BASE + 0x0000003c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_12		(RKISP1_CIF_ISP_EXP_BASE + 0x00000040)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_22		(RKISP1_CIF_ISP_EXP_BASE + 0x00000044)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_32		(RKISP1_CIF_ISP_EXP_BASE + 0x00000048)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_42		(RKISP1_CIF_ISP_EXP_BASE + 0x0000004c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_03		(RKISP1_CIF_ISP_EXP_BASE + 0x00000050)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_13		(RKISP1_CIF_ISP_EXP_BASE + 0x00000054)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_23		(RKISP1_CIF_ISP_EXP_BASE + 0x00000058)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_33		(RKISP1_CIF_ISP_EXP_BASE + 0x0000005c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_43		(RKISP1_CIF_ISP_EXP_BASE + 0x00000060)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_04		(RKISP1_CIF_ISP_EXP_BASE + 0x00000064)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_14		(RKISP1_CIF_ISP_EXP_BASE + 0x00000068)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_24		(RKISP1_CIF_ISP_EXP_BASE + 0x0000006c)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_34		(RKISP1_CIF_ISP_EXP_BASE + 0x00000070)
-> -#define RKISP1_CIF_ISP_EXP_MEAN_44		(RKISP1_CIF_ISP_EXP_BASE + 0x00000074)
-> +#define RKISP1_CIF_ISP_EXP_H_OFFSET_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000004)
-> +#define RKISP1_CIF_ISP_EXP_V_OFFSET_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000008)
-> +#define RKISP1_CIF_ISP_EXP_H_SIZE_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000000C)
-> +#define RKISP1_CIF_ISP_EXP_V_SIZE_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000010)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_00_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000014)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_10_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000018)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_20_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000001c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_30_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000020)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_40_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000024)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_01_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000028)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_11_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000002c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_21_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000030)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_31_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000034)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_41_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000038)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_02_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000003c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_12_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000040)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_22_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000044)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_32_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000048)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_42_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000004c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_03_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000050)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_13_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000054)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_23_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000058)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_33_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000005c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_43_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000060)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_04_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000064)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_14_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000068)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_24_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x0000006c)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_34_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000070)
-> +#define RKISP1_CIF_ISP_EXP_MEAN_44_V10		(RKISP1_CIF_ISP_EXP_BASE + 0x00000074)
->   
->   #define RKISP1_CIF_ISP_BLS_BASE			0x00002700
->   #define RKISP1_CIF_ISP_BLS_CTRL			(RKISP1_CIF_ISP_BLS_BASE + 0x00000000)
-> @@ -1260,4 +1288,7 @@
->   #define RKISP1_CIF_ISP_VSM_DELTA_H		(RKISP1_CIF_ISP_VSM_BASE + 0x0000001C)
->   #define RKISP1_CIF_ISP_VSM_DELTA_V		(RKISP1_CIF_ISP_VSM_BASE + 0x00000020)
->   
-> +#define RKISP1_CIF_ISP_CSI0_BASE		0x00007000
-> +#define RKISP1_CIF_ISP_CSI0_CTRL0		(RKISP1_CIF_ISP_CSI0_BASE + 0x00000000)
-> +
->   #endif /* _RKISP1_REGS_H */
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> index f68a5e78e54a..3f286c55ad60 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> @@ -175,18 +175,18 @@ rkisp1_stats_init_vb2_queue(struct vb2_queue *q, struct rkisp1_stats *stats)
->   	return vb2_queue_init(q);
->   }
->   
-> -static void rkisp1_stats_get_awb_meas(struct rkisp1_stats *stats,
-> -				      struct rkisp1_stat_buffer *pbuf)
-> +static void rkisp1_stats_get_awb_meas_v10(struct rkisp1_stats *stats,
-> +					  struct rkisp1_stat_buffer *pbuf)
->   {
->   	/* Protect against concurrent access from ISR? */
->   	struct rkisp1_device *rkisp1 = stats->rkisp1;
->   	u32 reg_val;
->   
->   	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AWB;
-> -	reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AWB_WHITE_CNT);
-> +	reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AWB_WHITE_CNT_V10);
->   	pbuf->params.awb.awb_mean[0].cnt =
->   				RKISP1_CIF_ISP_AWB_GET_PIXEL_CNT(reg_val);
-> -	reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AWB_MEAN);
-> +	reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AWB_MEAN_V10);
->   
->   	pbuf->params.awb.awb_mean[0].mean_cr_or_r =
->   				RKISP1_CIF_ISP_AWB_GET_MEAN_CR_R(reg_val);
-> @@ -196,8 +196,8 @@ static void rkisp1_stats_get_awb_meas(struct rkisp1_stats *stats,
->   				RKISP1_CIF_ISP_AWB_GET_MEAN_Y_G(reg_val);
->   }
->   
-> -static void rkisp1_stats_get_aec_meas(struct rkisp1_stats *stats,
-> -				      struct rkisp1_stat_buffer *pbuf)
-> +static void rkisp1_stats_get_aec_meas_v10(struct rkisp1_stats *stats,
-> +					  struct rkisp1_stat_buffer *pbuf)
->   {
->   	struct rkisp1_device *rkisp1 = stats->rkisp1;
->   	unsigned int i;
-> @@ -206,7 +206,7 @@ static void rkisp1_stats_get_aec_meas(struct rkisp1_stats *stats,
->   	for (i = 0; i < RKISP1_CIF_ISP_AE_MEAN_MAX_V10; i++)
->   		pbuf->params.ae.exp_mean[i] =
->   			(u8)rkisp1_read(rkisp1,
-> -					RKISP1_CIF_ISP_EXP_MEAN_00 + i * 4);
-> +					RKISP1_CIF_ISP_EXP_MEAN_00_V10 + i * 4);
->   }
->   
->   static void rkisp1_stats_get_afc_meas(struct rkisp1_stats *stats,
-> @@ -226,17 +226,17 @@ static void rkisp1_stats_get_afc_meas(struct rkisp1_stats *stats,
->   	af->window[2].lum = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AFM_LUM_C);
->   }
->   
-> -static void rkisp1_stats_get_hst_meas(struct rkisp1_stats *stats,
-> -				      struct rkisp1_stat_buffer *pbuf)
-> +static void rkisp1_stats_get_hst_meas_v10(struct rkisp1_stats *stats,
-> +					  struct rkisp1_stat_buffer *pbuf)
->   {
->   	struct rkisp1_device *rkisp1 = stats->rkisp1;
->   	unsigned int i;
->   
->   	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
->   	for (i = 0; i < RKISP1_CIF_ISP_HIST_BIN_N_MAX_V10; i++) {
-> -		u32 reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_HIST_BIN_0 + i * 4);
-> +		u32 reg_val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_HIST_BIN_0_V10 + i * 4);
->   
-> -		pbuf->params.hist.hist_bins[i] = RKISP1_CIF_ISP_HIST_GET_BIN(reg_val);
-> +		pbuf->params.hist.hist_bins[i] = RKISP1_CIF_ISP_HIST_GET_BIN_V10(reg_val);
->   	}
->   }
->   
-> @@ -287,10 +287,10 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
->   	}
->   }
->   
-> -static struct rkisp1_stats_ops rkisp1_stats_ops = {
-> -	.get_awb_meas = rkisp1_stats_get_awb_meas,
-> -	.get_aec_meas = rkisp1_stats_get_aec_meas,
-> -	.get_hst_meas = rkisp1_stats_get_hst_meas,
-> +static struct rkisp1_stats_ops rkisp1_v10_stats_ops = {
-> +	.get_awb_meas = rkisp1_stats_get_awb_meas_v10,
-> +	.get_aec_meas = rkisp1_stats_get_aec_meas_v10,
-> +	.get_hst_meas = rkisp1_stats_get_hst_meas_v10,
->   };
->   
->   static void
-> @@ -361,7 +361,7 @@ static void rkisp1_init_stats(struct rkisp1_stats *stats)
->   	stats->vdev_fmt.fmt.meta.buffersize =
->   		sizeof(struct rkisp1_stat_buffer);
->   
-> -	stats->ops = &rkisp1_stats_ops;
-> +	stats->ops = &rkisp1_v10_stats_ops;
->   }
->   
->   int rkisp1_stats_register(struct rkisp1_device *rkisp1)
-> 
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 0887b19ef3ad..950d3bce443b 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -116,13 +116,14 @@
+ #define BAUDR_SCKDV_MIN				2
+ #define BAUDR_SCKDV_MAX				65534
+ 
+-/* Bit fields in SR, 5bit */
+-#define SR_MASK						0x1f
++/* Bit fields in SR, 6bit */
++#define SR_MASK						0x3f
+ #define SR_BUSY						(1 << 0)
+ #define SR_TF_FULL					(1 << 1)
+ #define SR_TF_EMPTY					(1 << 2)
+ #define SR_RF_EMPTY					(1 << 3)
+ #define SR_RF_FULL					(1 << 4)
++#define SR_SLAVE_TX_BUSY				(1 << 5)
+ 
+ /* Bit fields in ISR, IMR, ISR, RISR, 5bit */
+ #define INT_MASK					0x1f
+@@ -197,13 +198,19 @@ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
+ 	writel_relaxed((enable ? 1U : 0U), rs->regs + ROCKCHIP_SPI_SSIENR);
+ }
+ 
+-static inline void wait_for_idle(struct rockchip_spi *rs)
++static inline void wait_for_tx_idle(struct rockchip_spi *rs, bool slave_mode)
+ {
+ 	unsigned long timeout = jiffies + msecs_to_jiffies(5);
+ 
+ 	do {
+-		if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
+-			return;
++		if (slave_mode) {
++			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_SLAVE_TX_BUSY) &&
++			    !((readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY)))
++				return;
++		} else {
++			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
++				return;
++		}
+ 	} while (!time_after(jiffies, timeout));
+ 
+ 	dev_warn(rs->dev, "spi controller is in busy state!\n");
+@@ -383,7 +390,7 @@ static void rockchip_spi_dma_txcb(void *data)
+ 		return;
+ 
+ 	/* Wait until the FIFO data completely. */
+-	wait_for_idle(rs);
++	wait_for_tx_idle(rs, ctlr->slave);
+ 
+ 	spi_enable_chip(rs, false);
+ 	spi_finalize_current_transfer(ctlr);
+@@ -545,7 +552,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
+ 	else
+ 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+ 
+-	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
++	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
+ 	writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
+ 		       rs->regs + ROCKCHIP_SPI_DMARDLR);
+ 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+-- 
+2.17.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
