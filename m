@@ -2,90 +2,81 @@ Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63BD0C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 19:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42E6CC48BDF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 22:47:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF10C61105
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 19:39:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF10C61105
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 07DAF61246
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 22:47:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07DAF61246
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fk09t/TAvo1rofcrmbb73aAEF5bd5raLkh1R321NYNM=; b=NHzvmOp0xxx9Vd
-	tFBXdcwK7bqO4i2ufpmaONqxGa9hyh2TlkCANe+dqSnwgsLgAZXEE52jWvMgJPxAn8knoeZ82gaEW
-	H+3eSWeHkmvfRSNMxBu+KzQYydI3qx9qmCypmL5laXrHfifyAyhyyaVMEEI+oD1P1cEBs0pYxnCBx
-	bop9+K6qVt8dL2H3oW9B/4XjECLnkVRZbFt2cYlEjxMHuLgbGGw6SipTTI7C1jIPsgT+MM1Wga5Rr
-	4UFOHr2kyUTQxZKcohvO7WzFpzrsxU+yUHikQ2tG5HfputNLWWh6Qm+FGWqgmoUX1dFVrgR9RiLQa
-	8Uu55oKsStKKOfvf03bQ==;
+	List-Owner; bh=doyBH06s4TDXWg/X3P//7L+SDcMAl6rqs+s4ijGqplU=; b=yiZlDI3sz+FNGZ
+	xdLdfrh5QTEJHgJCldxeGVVKBXPiAzGhz1aiWbt42rHPyjv/+sh50P74NFeiyJBnsH4gaJZCo/s6X
+	+9ghKiba1ZtvhLyfirEHm3PuRA7PnbF8r5timt+q4Ww60U1JkCZdkvEdg99tvu7vL1iChjt/yWfLF
+	tkX+W7D3M1YfXvSs4nnb6ETtcZeNzW97WtqnTvmFOWXt3ThQ/HhhAIpkCa+GjTm5VQIuSIMS5whQP
+	H+hRmgOjDOyjbohUZVrdPY6+smZeHhVNgVGhEzCIh5xxnmgBT7Rz802LQeo8xwzKfdBu7NdePQzlh
+	ARfzarrYTpAMZziUccYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltEu9-002W5x-Uq; Tue, 15 Jun 2021 19:39:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ltHpz-003gPy-1b; Tue, 15 Jun 2021 22:47:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9Nt-000E8e-NV; Tue, 15 Jun 2021 13:45:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=References:In-Reply-To:Message-Id:Date
- :Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=gKhX9cC49WczUWt+H4NeMYIvW7vvxB/hCICm7nJlcpo=; b=NVJ+rMnJ7Yp9Q/J8GiCWFTopqp
- K4YBDF+4Ki5vIQcFRZYvo7WvrkwFs5upCsuc7RUNj5jsjdZZ5LZ0kozdrLEjGcVPiliuiB6tYWckt
- TnB9DLD0RV9jJ4DZpx5rz1x7PAjUprt3wQ8s7aWRn4KkahjAuwg7VH5bfr4fzC/viJ47mP3Ts9qR+
- WA2GwkS2kjEY/UVSp0HlzxyDumwN7b9hNaRQc5YG9JsXyeZCRNkBXmYinjtDzu8TcbuTQwyatYDqi
- WWm86k1rF8Pg5/lVqq4vLw+0D/b7rPff0hFDbAEGtT+QzzlWmEZp2cTxBKhC6K0wvVNaM9DL/70h3
- 9iUopR1A==;
-Received: from lucky1.263xmail.com ([211.157.147.132])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lszoG-007IV7-0M; Tue, 15 Jun 2021 03:32:24 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 87735F4E69;
- Tue, 15 Jun 2021 11:32:20 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P16485T139918414178048S1623727934928454_; 
- Tue, 15 Jun 2021 11:32:20 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <efe39b4914dd38387ca7606caba4bd78>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: broonie@kernel.org
-X-RCPT-COUNT: 9
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: broonie@kernel.org
-Cc: jon.lin@rock-chips.com, heiko@sntech.de, robh+dt@kernel.org,
- linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: [PATCH v8 4/6] spi: rockchip: Wait for STB status in slave mode
- tx_xfer
-Date: Tue, 15 Jun 2021 11:32:11 +0800
-Message-Id: <20210615033213.14241-5-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210615033213.14241-1-jon.lin@rock-chips.com>
-References: <20210615033213.14241-1-jon.lin@rock-chips.com>
+ id 1ltGS6-0035Uz-3f; Tue, 15 Jun 2021 21:18:31 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 3FB7E60FEB;
+ Tue, 15 Jun 2021 21:18:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623791909;
+ bh=HvzPcdHo85fJo2BuQWKIos2eC9Gp+mz4aSYW3NOFLvY=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=iTryfXvN1dqS0YOr65+sQbfAeQ+Hk+TOZQ7ajsfbPem1YDIfNacvRQBtSIW+/EKJF
+ kbYHskVsqrDD45K+xqPXn4UEWPrn8q/VvZFkPh6Swrnc8I0M5ID6LB2ldSL4nI2qFH
+ XcJE506v09LOpTJZyCF1T+Y4Qi4KyTRD+7GHhQhl7dljH2Jt0ZBYleKFIPMVtfNqoK
+ RF8hOkZH+/4ZgeijRy130qy0NGXSF/6pauO4kkbZIyqCtTH6mRBhqM6M9n6JDnMHfR
+ GmDGyISJdX6IPssI5wnCkin5BWgXHYQpp7BojjQoCgv10tzpzrs5ybMGi56sU1iwb8
+ vz0ui0A19SeCQ==
+Received: by mail-ed1-f53.google.com with SMTP id i13so53006738edb.9;
+ Tue, 15 Jun 2021 14:18:29 -0700 (PDT)
+X-Gm-Message-State: AOAM530cPQHFoq1z5AKCDvUnKAwHk8iI1lMXzGpqw7UrYQHxBWtR1W0F
+ ckjxF59h0sQarvR1TeqAxkuX+od1SQ/MgGcDKg==
+X-Google-Smtp-Source: ABdhPJxXvtatFAsBpPXonzYiVjnjQgygge8MCylwXVfui349mdZRVbpYrxDh5A9gZdo3Biv9dVEhLIbhHGduZl6mTuQ=
+X-Received: by 2002:a05:6402:cb0:: with SMTP id
+ cn16mr163687edb.165.1623791907827; 
+ Tue, 15 Jun 2021 14:18:27 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210614230457.752811-1-punitagrawal@gmail.com>
+In-Reply-To: <20210614230457.752811-1-punitagrawal@gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 15 Jun 2021 15:18:15 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLhOFHwBwtMFMnuEaXsDs9sqzUPS=68t+bDnbFsfXgo+Q@mail.gmail.com>
+Message-ID: <CAL_JsqLhOFHwBwtMFMnuEaXsDs9sqzUPS=68t+bDnbFsfXgo+Q@mail.gmail.com>
+Subject: Re: [PATCH v4] PCI: of: Clear 64-bit flag for non-prefetchable memory
+ below 4GB
+To: Punit Agrawal <punitagrawal@gmail.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zyngier <maz@kernel.org>, 
+ Leonardo Bras <leobras.c@gmail.com>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ PCI <linux-pci@vger.kernel.org>, 
+ Alexandru Elisei <alexandru.elisei@arm.com>, wqu@suse.com, 
+ Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>, 
+ Ard Biesheuvel <ardb@kernel.org>, Brian Norris <briannorris@chromium.org>, 
+ Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_043223_186780_C14A8B6C 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20210615_141830_256433_67F93F48 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,95 +89,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-After ROCKCHIP_SPI_VER2_TYPE2, SR->STB is a more accurate judgment
-bit for spi slave transmition.
+On Mon, Jun 14, 2021 at 5:05 PM Punit Agrawal <punitagrawal@gmail.com> wrote:
+>
+> Alexandru and Qu reported this resource allocation failure on
+> ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
+>
+>   pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
+>   pci 0000:00:00.0: PCI bridge to [bus 01]
+>   pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
+>   pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+>
+> "BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
+> PCI allocation code isn't smart enough to allocate it in a host
+> bridge window marked as 64-bit, even though this should work fine.
+>
+> A DT host bridge description includes the windows from the CPU
+> address space to the PCI bus space.  On a few architectures
+> (microblaze, powerpc, sparc), the DT may also describe PCI devices
+> themselves, including their BARs.
+>
+> Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
+> flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
+> the fact that some DT addresses described 64-bit windows and BARs.
+> That was a problem because the virtio virtual NIC has a 32-bit BAR
+> and a 64-bit BAR, and the driver couldn't distinguish them.
+>
+> 9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
+> fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
+> bridge windows, which exposed the fact that the PCI allocator isn't
+> smart enough to put 32-bit resources in those 64-bit windows.
+>
+> Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
+> that information.
+>
+> Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
+> Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
+> Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+> Reported-by: Qu Wenruo <wqu@suse.com>
+> Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+> Cc: Bjorn Helgaas <bhelgaas@google.com>
+> Cc: Rob Herring <robh+dt@kernel.org>
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+I think we've beat this one to death.
 
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-
- drivers/spi/spi-rockchip.c | 21 ++++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 0887b19ef3ad..950d3bce443b 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -116,13 +116,14 @@
- #define BAUDR_SCKDV_MIN				2
- #define BAUDR_SCKDV_MAX				65534
- 
--/* Bit fields in SR, 5bit */
--#define SR_MASK						0x1f
-+/* Bit fields in SR, 6bit */
-+#define SR_MASK						0x3f
- #define SR_BUSY						(1 << 0)
- #define SR_TF_FULL					(1 << 1)
- #define SR_TF_EMPTY					(1 << 2)
- #define SR_RF_EMPTY					(1 << 3)
- #define SR_RF_FULL					(1 << 4)
-+#define SR_SLAVE_TX_BUSY				(1 << 5)
- 
- /* Bit fields in ISR, IMR, ISR, RISR, 5bit */
- #define INT_MASK					0x1f
-@@ -197,13 +198,19 @@ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
- 	writel_relaxed((enable ? 1U : 0U), rs->regs + ROCKCHIP_SPI_SSIENR);
- }
- 
--static inline void wait_for_idle(struct rockchip_spi *rs)
-+static inline void wait_for_tx_idle(struct rockchip_spi *rs, bool slave_mode)
- {
- 	unsigned long timeout = jiffies + msecs_to_jiffies(5);
- 
- 	do {
--		if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
--			return;
-+		if (slave_mode) {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_SLAVE_TX_BUSY) &&
-+			    !((readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY)))
-+				return;
-+		} else {
-+			if (!(readl_relaxed(rs->regs + ROCKCHIP_SPI_SR) & SR_BUSY))
-+				return;
-+		}
- 	} while (!time_after(jiffies, timeout));
- 
- 	dev_warn(rs->dev, "spi controller is in busy state!\n");
-@@ -383,7 +390,7 @@ static void rockchip_spi_dma_txcb(void *data)
- 		return;
- 
- 	/* Wait until the FIFO data completely. */
--	wait_for_idle(rs);
-+	wait_for_tx_idle(rs, ctlr->slave);
- 
- 	spi_enable_chip(rs, false);
- 	spi_finalize_current_transfer(ctlr);
-@@ -545,7 +552,7 @@ static int rockchip_spi_config(struct rockchip_spi *rs,
- 	else
- 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
- 
--	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
-+	writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_DMATDLR);
- 	writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
- 		       rs->regs + ROCKCHIP_SPI_DMARDLR);
- 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
--- 
-2.17.1
-
-
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
