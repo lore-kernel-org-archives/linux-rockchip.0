@@ -1,80 +1,65 @@
-Return-Path: <SRS0=7T5N=LJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=qhcO=LK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AFA4C48BE5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 23:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC46FC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 06:29:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 171CD6023C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Jun 2021 23:53:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 171CD6023C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 64BBC613BF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 06:29:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64BBC613BF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kp8FhT63xinHNX1Ha8MWBaysrn8wjAN3NfCMr/MYy98=; b=mBQAJVy/VuIW5l
-	xh6yFMLB+keEqz9ymfPAZwlIBtOOWD4argBWh45HFIwdpGAekjA3+jR2hGvBxxSCrISlYTIDXfW6c
-	w0X4jLJlur+sskgkBoQjbqDRzKQIFcAbzzdIUvMg5cOKKI7zu7e3BgX/6LlcSGn/XXbZjFJpOfPY3
-	2KxCMZi4IvCxmq+IDfT32M7q8PWzBoV+1YwmZ/xlur59TerNs/GN0w5n0l3uLx0Xal/VgLPC+z9u2
-	ylGD0vLUmO8eVv+BD629N0rNnqQqAj9omdJGtvpBnWhuiBK/xltOP68EWzV3diaZ8auxFPNg4GGX6
-	5MR59CZ75E0mdcemSGww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JzPvkaMrz9jPsmGVR7HXq2jOEZMrIiKA4Nc0RL5AbXw=; b=2lsQu4thT24zgCA0u1tGfHxfbm
+	Ly7Fp22QVSw4/EMXfZAewVJOYACVzWMcM5MMcvzgx3IgTwmpPcDLgI6YTX6KVO+wuxhMYgroxt2Lb
+	uX7FTqQpjOSIJxfxCFy+oMtrGqNKyUGuxqkxZqKu4Iakk+CqHbTa+nbAjmi5mk7JUL25u0HT28STF
+	Bf+o+O7MHdCx30VwR103D86AXCVwpO72Uh5V+/47PEm4I5/j82waKCqssyD3zEjK6ribvzFXWmqqt
+	w4VgmI7Yu7rzG/qePWWgsnwq2NJqv23HAYHS5e2V88T14BUel1LNtZWZ/iYei/xXSemQ27i9TA6a/
+	OyHaBdMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltIs0-00403e-M5; Tue, 15 Jun 2021 23:53:24 +0000
-Received: from mail-il1-f171.google.com ([209.85.166.171])
+	id 1ltP3e-0053UN-B8; Wed, 16 Jun 2021 06:29:50 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltIgK-003w6O-Il
- for linux-rockchip@lists.infradead.org; Tue, 15 Jun 2021 23:41:21 +0000
-Received: by mail-il1-f171.google.com with SMTP id i17so668497ilj.11
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Jun 2021 16:41:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=EWFEdVpcxqJ4YsYToxwDqwB2/ISDZb6lR4H0UELvE1I=;
- b=c0iICMb0ILCtRIwqJnq8lgPL7KLeLETOOwCtWl+wUApywRT9sTpJxaRMV8lLbmN61g
- Wo6EPwOn0GqeXiZqv64TtIB9I1QCPEkNS040OVtjc52HNxLVallZrbJ2K1/6AgUhwTO4
- sK3HopibG9Kx3hMuuYK1YeMTQTZMB08/Xr+T6LX9aS6z7xIwskhVynSbUeOJ46thxVng
- UVR0cJxIQyDh3KO5jSV109IWvkqpc1qYzORqQuX815s7/Z3XkW/sRaz4jbz5UU8Ne2i3
- 3iqpTaGI8BQp/RHEGXajCbXrebplZcguCOxDtd3NlemCNBPQqNYtIhmitDi/bN5eIZNb
- CgQA==
-X-Gm-Message-State: AOAM533tsH+lTUotVKggtW3f0vKAQilJajTwdoDdEFcM+14Rcg9XEbVp
- acMuP+1U08vdiM+geJJ1Do4cG14slg==
-X-Google-Smtp-Source: ABdhPJywlkSMCEA2eP7CvoATeqTddCXProQipK70vaaoS5osZvCNpAL48tCmeZXKTCV2f/VaCSMzEQ==
-X-Received: by 2002:a05:6e02:150:: with SMTP id
- j16mr1282315ilr.95.1623800479860; 
- Tue, 15 Jun 2021 16:41:19 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id k4sm277725ior.55.2021.06.15.16.41.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Jun 2021 16:41:18 -0700 (PDT)
-Received: (nullmailer pid 1681649 invoked by uid 1000);
- Tue, 15 Jun 2021 23:41:15 -0000
-Date: Tue, 15 Jun 2021 17:41:15 -0600
-From: Rob Herring <robh@kernel.org>
-To: Rudi Heitbaum <rudi@heitbaum.com>
-Cc: pgwipeout@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org,
- ezequiel@collabora.com, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, chenjh@rock-chips.com
-Subject: Re: [PATCH 1/2] dt-bindings: regulator: Add support for TCS4526
-Message-ID: <20210615234115.GA1681602@robh.at.kernel.org>
-References: <20210602112452.GA98@5f9be87369f8>
+ id 1ltP3a-0053RU-V2
+ for linux-rockchip@lists.infradead.org; Wed, 16 Jun 2021 06:29:48 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 020571F4326D
+Subject: Re: [PATCH v3 10/10] media: rockchip: rkisp1: add support for px30
+ isp version
+To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
+ hverkuil-cisco@xs4all.nl
+Cc: ezequiel@collabora.com, helen.koike@collabora.com,
+ Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+References: <20210615225023.3929434-1-heiko@sntech.de>
+ <20210615225023.3929434-11-heiko@sntech.de>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <02244fde-011b-6057-311a-7360d689114f@collabora.com>
+Date: Wed, 16 Jun 2021 09:29:14 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210602112452.GA98@5f9be87369f8>
+In-Reply-To: <20210615225023.3929434-11-heiko@sntech.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_164120_674461_4FDDAB26 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20210615_232947_159158_FF30B1B1 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,22 +72,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 02 Jun 2021 11:24:53 +0000, Rudi Heitbaum wrote:
-> Add a compatible string to support the TCS4526 device,
-> which is compatible with Fairchild FAN53555 regulators.
+
+
+On 16.06.21 01:50, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> Signed-off-by: Rudi Heitbaum <rudi@heitbaum.com>
+> The px30 uses a V12 isp block so add compatible and matchdata
+> for it.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > ---
->  Documentation/devicetree/bindings/regulator/fan53555.txt | 2 +-
->  1 file changed, 1 insertions(+), 1 deletions(-)
+>   .../media/platform/rockchip/rkisp1/rkisp1-dev.c | 17 +++++++++++++++++
+>   1 file changed, 17 insertions(+)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index ddc05189c62a..6e4c0710f3a3 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -398,6 +398,19 @@ static irqreturn_t rkisp1_isr(int irq, void *ctx)
+>   	return IRQ_HANDLED;
+>   }
+>   
+> +static const char * const px30_isp_clks[] = {
+> +	"isp",
+> +	"aclk",
+> +	"hclk",
+> +	"pclk",
+> +};
+> +
+> +static const struct rkisp1_match_data px30_isp_match_data = {
+> +	.clks = px30_isp_clks,
+> +	.size = ARRAY_SIZE(px30_isp_clks),
+> +	.isp_ver = RKISP1_V12,
+> +};
+> +
+>   static const char * const rk3399_isp_clks[] = {
+>   	"isp",
+>   	"aclk",
+> @@ -411,6 +424,10 @@ static const struct rkisp1_match_data rk3399_isp_match_data = {
+>   };
+>   
+>   static const struct of_device_id rkisp1_of_match[] = {
+> +	{
+> +		.compatible = "rockchip,px30-cif-isp",
+> +		.data = &px30_isp_match_data,
+> +	},
+>   	{
+>   		.compatible = "rockchip,rk3399-cif-isp",
+>   		.data = &rk3399_isp_match_data,
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Hi, in order to avoid the if-else in patch 4/10 maybe we can do:
+
+```
+struct interrupt_to_isr {
+	char* name;
+	irqreturn_t isr(int irq, void *ctx);
+}
+
+interrupt_to_is px30_isrs[] {
+	{"isp", rkisp1_isp_isr}
+	{"mi",  rkisp1_capture_isr}
+	{"mipi", rkisp1_mipi_isr}
+}
+static const struct rkisp1_match_data px30_isp_match_data = {
+	.clks = px30_isp_clks,
+	.size = ARRAY_SIZE(px30_isp_clks),
+	.isp_ver = RKISP1_V12,
+	.isrs = px30_isrs
+};
+//and similar for rk3399
+```
+
+Then in the probe we just do
+```
+for each (name,isr) in isrs
+	irq = platform_get_irq_byname(name)
+	devm_request_irq(dev, irq, isr,...
+```
+
+
+Thanks,
+Dafna	
+
 
 _______________________________________________
 Linux-rockchip mailing list
