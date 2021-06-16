@@ -2,99 +2,92 @@ Return-Path: <SRS0=qhcO=LK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 154CCC48BE6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 13:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C5B9C48BE5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 14:06:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C220161159
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 13:00:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C220161159
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E7DBA6115B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 14:06:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7DBA6115B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KXcq2phZpV833+cYPVZba/0K/rJF7a0m0wsyEYsQpLs=; b=BoFNseYATWqzP9
-	tzXkM18scAo9f86EsKAr0NRjiNNF8fHd+w6cU3wdPelx4u14wLaSFqe2cAKHd8/uujJQ2lgY1/E8w
-	wclo1yiJaa7wQPS8tjgpiRazX0tm83VS3tsIhNyYZnFoLoFbSiIOBdZvLTxvWQA1OUFYUFI7QP2wM
-	3LyV7aBzC52i9ZyaXaHS37fnnpGgJXkthdwLCbjhn421z4y7MXf+9xvYQt6+zC11EQ26RE3mrrqTW
-	qNmb+9lePoiFMTut3lxBZtgO/EjFQE6KJfsB548KEUgz1XVau9Kyblptb5a2Sk08nCcfGEFpIplhM
-	vbQHT9+mgKgI8V4v91aQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=UzPmQ3yzhcpg/eI5FlOFpoft3pXwYpCTccNdFE7YAGk=; b=oy/NEFL6V7sONBfOkMlQA8SOus
+	TOPunTxIlaPTEvEJQPiI4Axs/feUruRSWsH0Sht5QYWT3o4LUW5HJkzdrhypIbVWNTWuCvswymMU0
+	KXzDD4JUBQjNFM/aK5J3e7pdgsYHBbBQG/BJ0hDoJmUj/+MAQB8UNsC6ExpxIBJug2QW7Ycj66N1W
+	lKmsVCVc1qFkEebPHBx3f8rvttO/03WDqjZBLjkSgsDPxACngO2w8LSXbIDsQkwT6hvDY4oTBOfsT
+	dazpbzSqVMXLBEgm6nMRFOO4EwHiEf+N2ucd8daFa4f+KtPI4ZBmGRBnJDK8vZN/2WOVVqlDe7la7
+	UxyP+Vjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltVA1-006LUI-Jw; Wed, 16 Jun 2021 13:00:49 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1ltWB6-006eBN-Uq; Wed, 16 Jun 2021 14:06:01 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltV9e-006LN8-8R; Wed, 16 Jun 2021 13:00:29 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id e22so1877444pgv.10;
- Wed, 16 Jun 2021 06:00:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:references:date:in-reply-to:message-id
- :user-agent:mime-version:content-transfer-encoding;
- bh=nbiAswAKlZ0y8YPJxSeoqwYopSHf2ViQ7XrbNtGNP7U=;
- b=uXdMqCkrPWNTiKAf7OMydRO333IWQVnoKc7TSmyHW5AYBvNUsSNHX8CKo0EWS6/YaH
- cilJMMRHTtZoK77Rk3pA9OB5r2+C2dSFKrYVFSrvJ/4xLQF9uu9LTvM+mRzB5Rw0iu+h
- 8/qeGU2sQ2XZ4eE0uJgV07fAIW+Gbb+W71HdY4dT1bVxwRar8jpbEwI9nM/KyBxgpfqg
- RQ1+qoMD+Mx5MiBEem6KLuIp5E2Qzff47pZG9iOMLOsdBtLwT1UsPFY31vge55jumMBf
- 7gcYCwkqDUa5eNWwPQisr6w5Q5i9/0iAh3nsxC81jJOG0NB5kpxJR3S6fgnR3u7X8QU3
- chzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
- :message-id:user-agent:mime-version:content-transfer-encoding;
- bh=nbiAswAKlZ0y8YPJxSeoqwYopSHf2ViQ7XrbNtGNP7U=;
- b=rBfVpfo0e2K2g+6jpRaW+YoN5NjGdYIbvfRic+QAJ0pcHuUcaia8i2OX87Yb1Rh/cl
- MjmrXMr7o5phYq2tWllbD88i6zOEy2F3hsfjI4phYOdZSx3zF7a0Tlzf+MKEOlD6XdGG
- Xvi81rvpkwAdaOuHYUiKOl1GaZm5OjBNdJtpZD9gBOhPB3yT9pg7XpRVoXZX/iPZ2rqQ
- R+LuDxvLsiCcs50OMctSBNa0L6M3nsJFmNjfQx0Z2v2y85T9s227mqGD5Bgkt04PMpR3
- BQK9+BznBLE7V0HY/NTzdxLSCIKDV7fRl3V5ubgWR7w8h++b9aGM/o+1TjJYp8ejHICI
- o70Q==
-X-Gm-Message-State: AOAM533Fph5Aq6pgHVmEYSJgpxMbSI2y4tjbh3UqnzHLKeZHO5a7QnC9
- BS0Y/WGD9y61KRCTCMEHbF4=
-X-Google-Smtp-Source: ABdhPJzICrZwP7kf4FTaRUp8e7LF5XaMDQHdJRB1XT5FoGculVj+18BbPpYXhqA4KlHFVFaYJsOlkA==
-X-Received: by 2002:a62:ae03:0:b029:2f8:b04f:c012 with SMTP id
- q3-20020a62ae030000b02902f8b04fc012mr9593948pff.62.1623848424167; 
- Wed, 16 Jun 2021 06:00:24 -0700 (PDT)
-Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
- [122.211.248.161])
- by smtp.gmail.com with ESMTPSA id h18sm2394018pgl.87.2021.06.16.06.00.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 06:00:23 -0700 (PDT)
-From: Punit Agrawal <punitagrawal@gmail.com>
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,  Bjorn Helgaas <helgaas@kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,  PCI
- <linux-pci@vger.kernel.org>,  Alexandru Elisei <alexandru.elisei@arm.com>,
- wqu@suse.com,  Robin Murphy <robin.murphy@arm.com>,  Peter Geis
- <pgwipeout@gmail.com>,  Ard Biesheuvel <ardb@kernel.org>,  Brian Norris
- <briannorris@chromium.org>,  Shawn Lin <shawn.lin@rock-chips.com>
-Subject: Re: [PATCH v3 4/4] arm64: dts: rockchip: Update PCI host bridge
- window to 32-bit address memory
-References: <20210607112856.3499682-1-punitagrawal@gmail.com>
- <3105233.izSxrag8PF@diego>
- <CAL_JsqL8iDo5sLmgNVuXs5wt3TpVJbKHfk7gE740DidmvLOwiQ@mail.gmail.com>
- <3238453.R1toDxpfAE@diego>
-Date: Wed, 16 Jun 2021 22:00:21 +0900
-In-Reply-To: <3238453.R1toDxpfAE@diego> ("Heiko =?utf-8?Q?St=C3=BCbner=22'?=
- =?utf-8?Q?s?= message of "Tue, 15 Jun 2021 23:49:07 +0200")
-Message-ID: <871r92t15m.fsf@stealth>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ id 1ltWB1-006e7k-Tq; Wed, 16 Jun 2021 14:05:59 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 15GE5f8W117835;
+ Wed, 16 Jun 2021 09:05:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1623852341;
+ bh=qJ2GnQxd+yS6ISLDIaGuRDIGnMu21lKltpoDuOcviVs=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=Y9lT3fiGcNzub92cli5OVPZlfJJkKpeM+luPVBsr3MFOO6ZPHHHJVpQ+nkPKYeZGc
+ Oigl/gNPm6mvRw7bjJe5x+TOImMI9XtSlzgnK3dGiblZxaNItnhloXDa+TP398uVTd
+ GrMY0JrzySfFxPP8q/iiHvxNcpR1bO38e/T6BowE=
+Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 15GE5fR8015784
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 16 Jun 2021 09:05:41 -0500
+Received: from DFLE111.ent.ti.com (10.64.6.32) by DFLE103.ent.ti.com
+ (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 16
+ Jun 2021 09:05:40 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE111.ent.ti.com
+ (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Wed, 16 Jun 2021 09:05:40 -0500
+Received: from [10.250.233.239] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 15GE5XZj082268;
+ Wed, 16 Jun 2021 09:05:34 -0500
+Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
+ <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
+ <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+CC: Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
+References: <20210517074723.10212-1-kishon@ti.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <d5bcf443-a0ee-fda5-5c5c-d69d25b53bb9@ti.com>
+Date: Wed, 16 Jun 2021 19:35:33 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210517074723.10212-1-kishon@ti.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_060026_400309_539AFDC6 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20210616_070556_143297_0D5743F0 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,51 +100,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVpa28gU3TDvGJuZXIgPGhlaWtvQHNudGVjaC5kZT4gd3JpdGVzOgoKPiBBbSBEaWVuc3RhZywg
-MTUuIEp1bmkgMjAyMSwgMjM6Mjk6MTIgQ0VTVCBzY2hyaWViIFJvYiBIZXJyaW5nOgo+PiBPbiBU
-aHUsIEp1biAxMCwgMjAyMSBhdCAzOjUwIFBNIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+IHdyb3RlOgo+PiA+Cj4+ID4gSGksCj4+ID4KPj4gPiBBbSBNb250YWcsIDcuIEp1bmkgMjAy
-MSwgMTM6Mjg6NTYgQ0VTVCBzY2hyaWViIFB1bml0IEFncmF3YWw6Cj4+ID4gPiBUaGUgUENJZSBo
-b3N0IGJyaWRnZSBvbiBSSzMzOTkgYWR2ZXJ0aXNlcyBhIHNpbmdsZSA2NC1iaXQgbWVtb3J5Cj4+
-ID4gPiBhZGRyZXNzIHJhbmdlIGV2ZW4gdGhvdWdoIGl0IGxpZXMgZW50aXJlbHkgYmVsb3cgNEdC
-Lgo+PiA+ID4KPj4gPiA+IFByZXZpb3VzbHkgdGhlIE9GIFBDSSByYW5nZSBwYXJzZXIgdHJlYXRl
-ZCA2NC1iaXQgcmFuZ2VzIG1vcmUKPj4gPiA+IGxlbmllbnRseSAoaS5lLiwgYXMgMzItYml0KSwg
-YnV0IHNpbmNlIGNvbW1pdCA5ZDU3ZTYxYmY3MjMgKCJvZi9wY2k6Cj4+ID4gPiBBZGQgSU9SRVNP
-VVJDRV9NRU1fNjQgdG8gcmVzb3VyY2UgZmxhZ3MgZm9yIDY0LWJpdCBtZW1vcnkgYWRkcmVzc2Vz
-IikKPj4gPiA+IHRoZSBjb2RlIHRha2VzIGEgc3RyaWN0ZXIgdmlldyBhbmQgdHJlYXRzIHRoZSBy
-YW5nZXMgYXMgYWR2ZXJ0aXNlZCBpbgo+PiA+ID4gdGhlIGRldmljZSB0cmVlIChpLmUsIGFzIDY0
-LWJpdCkuCj4+ID4gPgo+PiA+ID4gVGhlIGNoYW5nZSBpbiBiZWhhdmlvdXIgY2F1c2VzIGZhaWx1
-cmUgd2hlbiBhbGxvY2F0aW5nIGJ1cyBhZGRyZXNzZXMKPj4gPiA+IHRvIGRldmljZXMgY29ubmVj
-dGVkIGJlaGluZCBhIFBDSS10by1QQ0kgYnJpZGdlIHRoYXQgcmVxdWlyZQo+PiA+ID4gbm9uLXBy
-ZWZldGNoYWJsZSBtZW1vcnkgcmFuZ2VzLiBUaGUgYWxsb2NhdGlvbiBmYWlsdXJlIHdhcyBvYnNl
-cnZlZAo+PiA+ID4gZm9yIGNlcnRhaW4gU2Ftc3VuZyBOVk1lIGRyaXZlcyBjb25uZWN0ZWQgdG8g
-Um9ja1BybzY0IGJvYXJkcy4KPj4gPiA+Cj4+ID4gPiBVcGRhdGUgdGhlIGhvc3QgYnJpZGdlIHdp
-bmRvdyBhdHRyaWJ1dGVzIHRvIHRyZWF0IGl0IGFzIDMyLWJpdCBhZGRyZXNzCj4+ID4gPiBtZW1v
-cnkuIFRoaXMgZml4ZXMgdGhlIGFsbG9jYXRpb24gZmFpbHVyZSBvYnNlcnZlZCBzaW5jZSBjb21t
-aXQKPj4gPiA+IDlkNTdlNjFiZjcyMy4KPj4gPiA+Cj4+ID4gPiBSZXBvcnRlZC1ieTogQWxleGFu
-ZHJ1IEVsaXNlaSA8YWxleGFuZHJ1LmVsaXNlaUBhcm0uY29tPgo+PiA+ID4gTGluazogaHR0cHM6
-Ly9sb3JlLmtlcm5lbC5vcmcvci83YTFlMmViYy1mN2Q4LTg0MzEtZDg0NC00MWE5YzM2YTg5MTFA
-YXJtLmNvbQo+PiA+ID4gU3VnZ2VzdGVkLWJ5OiBSb2JpbiBNdXJwaHkgPHJvYmluLm11cnBoeUBh
-cm0uY29tPgo+PiA+ID4gU2lnbmVkLW9mZi1ieTogUHVuaXQgQWdyYXdhbCA8cHVuaXRhZ3Jhd2Fs
-QGdtYWlsLmNvbT4KPj4gPiA+IFRlc3RlZC1ieTogQWxleGFuZHJ1IEVsaXNlaSA8YWxleGFuZHJ1
-LmVsaXNlaUBhcm0uY29tPgo+PiA+ID4gQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+Cj4+ID4gPiBDYzogUm9iIEhlcnJpbmcgPHJvYmgrZHRAa2VybmVsLm9yZz4KPj4gPgo+PiA+
-IGp1c3QgZm9yIGNsYXJpdHksIHNob3VsZCBJIGp1c3QgcGljayB0aGlzIHBhdGNoIHNlcGFyYXRl
-bHkgZm9yIDUuMTMtcmMgdG8KPj4gPiBtYWtlIGl0IGVhc3kgZm9yIHBlb3BsZSB1c2luZyBjdXJy
-ZW50IGtlcm5lbCBkZXZpY2V0cmVlcywgb3Igc2hvdWxkCj4+ID4gdGhpcyB3YWl0IGZvciB0aGUg
-dXBkYXRlIG1lbnRpb25lZCBpbiB0aGUgY292ZXItbGV0dGVyIHJlc3BvbnNlCj4+ID4gYW5kIHNo
-b3VsZCBnbyBhbGwgdG9nZXRoZXIgdGhyb3VnaCB0aGUgUENJIHRyZWU/Cj4+IAo+PiBUaGlzIHdh
-cyBkcm9wcGVkIGZyb20gdjQsIGJ1dCBzaG91bGQgc3RpbGwgYmUgYXBwbGllZCBJTU8uCj4KPiBJ
-dCB3YXMgcHJvYmFibHkgZHJvcHBlZCBiZWNhdXNlIEkgYXBwbGllZCBpdCA7LSkKPgo+IEl0J3Mg
-cGFydCBvZiBhcm1zb2MgYWxyZWFkeSBbMF0gYW5kIHNob3VsZCBtYWtlIGl0cyB3YXkgaW50bwo+
-IDUuMTMgc2hvcnRseS4KClRoYW5rcyBmb3Igc2VuZGluZyB0aGUgcGF0Y2ggYWxvbmcuIEkgbGVm
-dCBhIG5vdGUgdG8gdGhlIGVmZmVjdCBpbiB2NApidXQgaXQncyBlYXN5IHRvIG1pc3MuCgpIb3Bl
-ZnVsbHkgYWxsIHNvcnRlZCBub3cuCgpbLi4uXQoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Lorenzo, Bjorn,
+
+On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
+> Patch series
+> *) Adds support to add virtual functions to enable endpoint controller
+>    which supports SR-IOV capability
+> *) Add support in Cadence endpoint driver to configure virtual functions
+> *) Enable pci_endpoint_test driver to create pci_device for virtual
+>    functions
+> 
+> v1 of the patch series can be found at [1]
+> v2 of the patch series can be found at [2]
+> v3 of the patch series can be found at [3]
+> v4 of the patch series can be found at [4]
+> v5 of the patch series can be found at [5]
+> 
+> Here both physical functions and virtual functions use the same
+> pci_endpoint_test driver and existing pcitest utility can be used
+> to test virtual functions as well.
+> 
+> Changes from v5:
+> *) Rebased to 5.13-rc1
+> 
+> Changes from v4:
+> *) Added a fix in Cadence driver which was overwriting BAR configuration
+>    of physical function.
+> *) Didn't include Tom's Acked-by since Cadence driver is modified in
+>    this revision.
+> 
+> Changes from v3:
+> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
+> 
+> Changes from v2:
+> *) Fixed DT binding documentation comment by Rob
+> *) Fixed the error check in pci-epc-core.c
+> 
+> Changes from v1:
+> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
+>    binding for EP)
+> 
+> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
+> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
+> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
+> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
+> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
+
+Can this series be merged for 5.14? It already includes Ack from Rob for
+dt-binding changes and Ack from Tom for Cadence driver changes.
+
+Thanks
+Kishon
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
