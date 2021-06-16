@@ -2,64 +2,60 @@ Return-Path: <SRS0=qhcO=LK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C420C48BE6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2410AC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F547613AE
+	by mail.kernel.org (Postfix) with ESMTPS id B1ABD613AE
 	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F547613AE
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1ABD613AE
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GZ8gyqkTXXtNLORGp+0ZnVisoqnn6nlm987qeDYkekU=; b=2+Nn1QQdBiUOq0
-	Wuyu5JxP7tCEr0OfXV1274p5xf+oR2ypXPkdb89voZz5ouUVBTLJBUy5IXS11h0egiJ/aB4qcxg7R
-	Zv5b72QG+pfem+LBjP3i1RagXLp3lMYJ5hwrouFJVuyekTCvCZ2jOctvkoYKG/+FiuPzcOwmqLvI+
-	CuzCgN+685CT2nNMu1KyEcRmeasCEr4zDlnO0ieD8WuydlzpS0+XnQ3zZL60QKyep2n3i/XfzLMyd
-	aW3mSmFm9PWC9s57d8ZgTJ5uBh3s/Gc/i63OpNciYSChc8EYZMCAgFrbzw3YdxQjD3NrrVzzxR8Kz
-	DKDMKWDJQvGa4KxrQvMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ta9x9lK/UaQUjUKocp8D6HzFVzB1EYjLL7LNy0dietk=; b=0KQoZOQDldbckh
+	/48XpFxvFRi05Ctk8LBsTccV1aVPekD3nKk/VAd8LmtO8tAtE5Rtq8+kpt518dfTPPFrQsVaIZNec
+	1XsmFDRFhbESA+I8CzmBGHIjJt9ddlHEJSB2iVgIYX3F904y/+8pr2bpdUy4MYRNV4Q52l7d8kVq8
+	Ve8Cy+lOzsfPcjsGp3FbOOJ45WiOjM8jtJiNYUFSZquhE6F1BudU5GZ8ZeIiswD9iVSEsDxAuHChP
+	VgH7E4WTv9M1IsY7lpBB4jF89Wg1GGAJTtSJXFzJ1FbVHFlxqo3HPL/FdluTHtj0PW8tJDJa5Ont7
+	g3anfFK7Uv3Qn+NDUj3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltdSS-007oSW-Eg; Wed, 16 Jun 2021 21:52:24 +0000
+	id 1ltdSU-007oU8-Qt; Wed, 16 Jun 2021 21:52:26 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltdSM-007oN7-TX
+ id 1ltdSM-007oMg-DG
  for linux-rockchip@lists.infradead.org; Wed, 16 Jun 2021 21:52:21 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1ltdSL-0008QL-3W; Wed, 16 Jun 2021 23:52:17 +0200
+ id 1ltdSH-0008QL-7h; Wed, 16 Jun 2021 23:52:13 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
 Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
- heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v4 09/10] dt-bindings: media: rkisp1: document px30 isp
- compatible
-Date: Wed, 16 Jun 2021 23:52:10 +0200
-Message-Id: <20210616215211.4002992-10-heiko@sntech.de>
+ heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org
+Subject: [PATCH v4 0/7] rkisp1 support for px30
+Date: Wed, 16 Jun 2021 23:52:01 +0200
+Message-Id: <20210616215211.4002992-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210616215211.4002992-1-heiko@sntech.de>
-References: <20210616215211.4002992-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_145218_990266_7E9B2793 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20210616_145218_536008_E7C5DB26 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,30 +73,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+This series adds support for the slightly different v12
+variant of the ISP used for example in the px30 soc.
 
-Add the compatible for the px30-variant of the rkisp
+changes in v4:
+- clean up multi-irq case (Dafna)
+  Now each variant can have a list of interrupts
+  and their respective handlers, with or without
+  interrupt-names
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
- Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+changes in v3:
+- add necessary binding additions
+- fix pclk naming in binding
+- move v12 clk_ctrl register bits to v12 addition patch
+- fix rebase artefact with hst_enable
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 80709a01c6fd..68dc3d76e618 100644
---- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -15,7 +15,9 @@ description: |
- 
- properties:
-   compatible:
--    const: rockchip,rk3399-cif-isp
-+    enum:
-+      - rockchip,px30-cif-isp
-+      - rockchip,rk3399-cif-isp
- 
-   reg:
-     maxItems: 1
+changes in v2 (from rfc):
+- split out phy patch into a separate series
+- drop dts patches for now
+- split v12 addition and v10 prefixes into separate patches
+  to enable easier review (Dafna)
+- remove {stats,params}_config structs, we can just use the
+  correct constant (Dafna)
+- adapt to styling comments from Dafna and Helen
+- add patch to remove the unused irq variable in struct rkisp
+
+Heiko Stuebner (10):
+  media: rockchip: rkisp1: remove unused irq variable
+  dt-bindings: media: rkisp1: fix pclk clock-name
+  dt-bindings: media: rkisp1: document different irq possibilities
+  media: rockchip: rkisp1: allow separate interrupts
+  media: rockchip: rkisp1: make some isp-param functions variable
+  media: rockchip: rkisp1: make some isp-stats functions variable
+  media: rockchip: rkisp1: add prefixes for v10 specific parts
+  media: rockchip: rkisp1: add support for v12 isp variants
+  dt-bindings: media: rkisp1: document px30 isp compatible
+  media: rockchip: rkisp1: add support for px30 isp version
+
+ .../bindings/media/rockchip-isp1.yaml         |  15 +-
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |   9 +-
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  44 +-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     |  71 ++-
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     |  29 +-
+ .../platform/rockchip/rkisp1/rkisp1-params.c  | 557 ++++++++++++++----
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    | 406 ++++++++-----
+ .../platform/rockchip/rkisp1/rkisp1-stats.c   | 107 +++-
+ 8 files changed, 959 insertions(+), 279 deletions(-)
+
 -- 
 2.29.2
 
