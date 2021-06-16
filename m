@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F04EEC49EBD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4776C49EA5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8446261375
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8446261375
+	by mail.kernel.org (Postfix) with ESMTPS id 2ABAD61375
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 21:52:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2ABAD61375
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BDgbruNNZ3HWBmoTRtPavcrVrI3dB1cEg/HNTYRrPHg=; b=kCQG60nqhegF4i
-	VNTCu0IbdhdCO9hvhh7oNsyT5s91hycfmu4SE1/AbIHAsoTUW6a/ee2KEC7nWPucKVWIuqVvhk43i
-	6nVKk46fQDABkthNBER9cxeTmucmo16GARYzf5NORtOiX6qcSsSxfI0E1pKwjG3h7qxkOnx/0u3Ng
-	DFzFfYDFo6DwdoUKBK3YkfS0H5dK55PnxjYC0LjcWrSbsME0NK1mSnOtM0LFFO7u2ld003s0hx8fJ
-	ignr75dB42dGh31oH0vTtgp56G620pNLh+tE7hu2Jc3VbiFHQhqcyK+JDuIL2TyQ/JNwT7E0I2cAA
-	J0ODiOCX4eRDhl1DM4OA==;
+	List-Owner; bh=080W//89ds8CxzwlUPxyrHP8Z7JEnr/W2ZghSa9lhxE=; b=y28UiuySDVB/w/
+	4q73r30qBnOan75ESpVeijyFafND6nT7FuTwVS9iZpGUxg1GRUnW1QmJ4gIj2Oxg9wWoYfQ9OZrNN
+	zLW1HLixJfAgydQZFmN1QxeGHLR03+sEdurMNW1iwsW8ZxQYgYUc3TlLK+fhaMUq2Dm1pQlKrMrC4
+	TapDYhHTLzxTqhWsipA05+pqYoHlNitzCynF+VYZsqpc3svcc5ri2mXWdHGb/+tgs1/hr3uuhdQ7X
+	y9Xa1p8xY2zFW1JmmipqZo42HUJl0b3dPaMVtKx2htj8+67vv8XAroOg33T0HZsG397Z51tZUvwpI
+	KlFeiY65+e7kcvRtd7FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltdST-007oTR-H1; Wed, 16 Jun 2021 21:52:25 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1ltdSZ-007oXM-CC; Wed, 16 Jun 2021 21:52:31 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltdSM-007oMh-Ed
+ id 1ltdSS-007oRZ-2Y
+ for linux-rockchip@bombadil.infradead.org; Wed, 16 Jun 2021 21:52:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=hg0v/uRoVjEGWywHV8bJEnkLIT2O3l11AnZ9AWIUW/g=; b=BgSl8Acmjelq9PkV7qVfPjlRQ+
+ 9AODKTRQvMWoDykdBq1KjD2U2IItL7VQmDSWivwKS0qYCUO+jzFnOu/XaYaJEkUeHSU5CpEGAojOC
+ JkR3A+3vw0CLVyuQ6l3SM0vBKGJhAZNkWUl0uk9QfP11jJrsaqyMD5MV+vZLyBQlRlU66C6KRtrbO
+ Lt16CaUJE15NFzsV8r60ojDV1QA1xzwewNUvqJe7Eyd0UXrmEVs1JFetckm+Qd+NdnyUgyk1vC+1Y
+ anacV+UzzMZQoxUJARuLbTc+aDEPzLopBLwV4J20WrylasQRcPdYhdEKQOcPq1lUum4xFUsQS/XCk
+ /uiaRdIQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1ltdSG-008Rc5-Ae
  for linux-rockchip@lists.infradead.org; Wed, 16 Jun 2021 21:52:21 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1ltdSH-0008QL-Ko; Wed, 16 Jun 2021 23:52:13 +0200
+ id 1ltdSJ-0008QL-KM; Wed, 16 Jun 2021 23:52:15 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -49,16 +63,17 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
  Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v4 01/10] media: rockchip: rkisp1: remove unused irq variable
-Date: Wed, 16 Jun 2021 23:52:02 +0200
-Message-Id: <20210616215211.4002992-2-heiko@sntech.de>
+Subject: [PATCH v4 06/10] media: rockchip: rkisp1: make some isp-stats
+ functions variable
+Date: Wed, 16 Jun 2021 23:52:07 +0200
+Message-Id: <20210616215211.4002992-7-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210616215211.4002992-1-heiko@sntech.de>
 References: <20210616215211.4002992-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_145218_567678_382C0978 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20210616_225219_434710_795E7C8C 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +93,94 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-The irq variable in struct rkisp1 is unused as it is only used
-to request the irq during probe, so remove it.
+The isp block evolved in subsequent socs, so some functions
+will behave differently on newer variants.
+
+Therefore make it possible to override the needed stats functions.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 -
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 2 --
- 2 files changed, 3 deletions(-)
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h | 11 +++++++++++
+ .../media/platform/rockchip/rkisp1/rkisp1-stats.c  | 14 +++++++++++---
+ 2 files changed, 22 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 038c303a8aed..be8a350c7527 100644
+index 74ddd8256366..d7f93547fab6 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -352,7 +352,6 @@ struct rkisp1_debug {
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
--	int irq;
- 	struct device *dev;
- 	unsigned int clk_size;
- 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 7474150b94ed..7afa4c123834 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -489,8 +489,6 @@ static int rkisp1_probe(struct platform_device *pdev)
- 		return ret;
+@@ -236,6 +236,16 @@ struct rkisp1_capture {
+ 	} pix;
+ };
+ 
++struct rkisp1_stats;
++struct rkisp1_stats_ops {
++	void (*get_awb_meas)(struct rkisp1_stats *stats,
++			     struct rkisp1_stat_buffer *pbuf);
++	void (*get_aec_meas)(struct rkisp1_stats *stats,
++			     struct rkisp1_stat_buffer *pbuf);
++	void (*get_hst_meas)(struct rkisp1_stats *stats,
++			     struct rkisp1_stat_buffer *pbuf);
++};
++
+ /*
+  * struct rkisp1_stats - ISP Statistics device
+  *
+@@ -248,6 +258,7 @@ struct rkisp1_capture {
+ struct rkisp1_stats {
+ 	struct rkisp1_vdev_node vnode;
+ 	struct rkisp1_device *rkisp1;
++	struct rkisp1_stats_ops *ops;
+ 
+ 	spinlock_t lock; /* locks the buffers list 'stats' */
+ 	struct list_head stat;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+index c1d07a2e8839..f68a5e78e54a 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+@@ -287,6 +287,12 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
+ 	}
+ }
+ 
++static struct rkisp1_stats_ops rkisp1_stats_ops = {
++	.get_awb_meas = rkisp1_stats_get_awb_meas,
++	.get_aec_meas = rkisp1_stats_get_aec_meas,
++	.get_hst_meas = rkisp1_stats_get_hst_meas,
++};
++
+ static void
+ rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
+ {
+@@ -309,18 +315,18 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
+ 		(struct rkisp1_stat_buffer *)(cur_buf->vaddr);
+ 
+ 	if (isp_ris & RKISP1_CIF_ISP_AWB_DONE)
+-		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
++		stats->ops->get_awb_meas(stats, cur_stat_buf);
+ 
+ 	if (isp_ris & RKISP1_CIF_ISP_AFM_FIN)
+ 		rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
+ 
+ 	if (isp_ris & RKISP1_CIF_ISP_EXP_END) {
+-		rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
++		stats->ops->get_aec_meas(stats, cur_stat_buf);
+ 		rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
  	}
  
--	rkisp1->irq = irq;
--
- 	for (i = 0; i < match_data->size; i++)
- 		rkisp1->clks[i].id = match_data->clks[i];
- 	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+ 	if (isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
+-		rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
++		stats->ops->get_hst_meas(stats, cur_stat_buf);
+ 
+ 	vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
+ 			      sizeof(struct rkisp1_stat_buffer));
+@@ -354,6 +360,8 @@ static void rkisp1_init_stats(struct rkisp1_stats *stats)
+ 		V4L2_META_FMT_RK_ISP1_STAT_3A;
+ 	stats->vdev_fmt.fmt.meta.buffersize =
+ 		sizeof(struct rkisp1_stat_buffer);
++
++	stats->ops = &rkisp1_stats_ops;
+ }
+ 
+ int rkisp1_stats_register(struct rkisp1_device *rkisp1)
 -- 
 2.29.2
 
