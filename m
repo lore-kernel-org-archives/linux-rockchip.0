@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89D24C48BE5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 18:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7D0AC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 19:38:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31944613DF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 18:18:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31944613DF
+	by mail.kernel.org (Postfix) with ESMTPS id 5D396610CA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Jun 2021 19:38:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D396610CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ej+U51XYwsshb4ANTAE/qhDQoQtny1US/0jJrKijzPE=; b=iAhkcyyqw+5TBb0BUVEGmh5+1L
-	E649V8g3OEmz7ITPpYLaEeFyK/5WeXVyOxwu48EB1vA4XQK7w33q93r9iUXwBkzKU16aAXbat3wmD
-	8zRyYuiS8s2RYoJT2IZRwPTH//rLL+lU4UQgYHU9XExAXHrYCLIPu6zueMKXTYwZuuYrvIkXzekJW
-	RfjKWfEr2fOwDmhgCcq5w+PnVH+jlPl3yMPv/+NxNbxyAZk35qhC7ioBAAaaRtsRPFpGSbEI7I8Q0
-	F4qMAZstcI/gvtv2Qk5TyiVYClIJCNq9CI2zYUt0z/2gNyq68l15/q6xP8whgbsouxsHg1oNnQsf9
-	stbqt9Pg==;
+	bh=RfI4PfRAMVepvrQW4ufWvWlcFE+5xxoLA238gxrLAjk=; b=zLDWNrbDLK1sx2dWkF/ZT+aIGj
+	lBsHfu2FAT1YXCAvweymA47YlRTUqL7lybFuFMb6bjMQuervcOadfrECwB60ZU27IMcKgW6egpEPB
+	z5YachUe0t6vqSPo8DEznyo2KaT5TEOBnHTDIEDUheuloFRHbZVKJbQhC/O+B2VWDbYdhGZgq/Puu
+	EFMvE42xVjijZfTMIPSGsttwlOsjYreKEdsyK7KbTlDDCccPDMj71MjCpovz5pMxTWd8FdkkS95s6
+	GTjCA8TxhqYNqqFn9UMDlAb260YyPIyQukzpb9IpguOg5SXmcHrK3B5Zbu8nDNXRwk2I54N7qDYbX
+	5r9UPI9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lta73-007P4X-NU; Wed, 16 Jun 2021 18:18:05 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1ltbMY-007aU8-Ey; Wed, 16 Jun 2021 19:38:10 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lta70-007P3d-2o
- for linux-rockchip@lists.infradead.org; Wed, 16 Jun 2021 18:18:04 +0000
-IronPort-SDR: OFFf2Apg8BYEoiXh1yuGOFWCkC3GSPmjuTmmnxGr5+38U+ccHVaUg5/MQ6hfMrpOdKgVl7t9kw
- +9KsTOlNZjdg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="193543062"
+ id 1ltbMU-007aSz-Qm
+ for linux-rockchip@lists.infradead.org; Wed, 16 Jun 2021 19:38:09 +0000
+IronPort-SDR: ODxfCZFb0m8++EDUZK880W1ZDaQNVmRmKga5AdNYW7C+6Us08y30XC6ECSRiEAaZ0hymWqI/o6
+ EAP/yswaKhkQ==
+X-IronPort-AV: E=McAfee;i="6200,9189,10016"; a="185937577"
 X-IronPort-AV: E=Sophos;i="5.83,278,1616482800"; 
- d="gz'50?scan'50,208,50";a="193543062"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jun 2021 11:17:59 -0700
-IronPort-SDR: RphV/iY7VXrdkzmiOXDZuFcoXFXsaxyS4PABNlBlKmLMjIMlNfUvMHxe3JMLxOi7KxZVdD5K1k
- QB0aiqmypEJw==
+ d="gz'50?scan'50,208,50";a="185937577"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jun 2021 12:38:06 -0700
+IronPort-SDR: UEb4o8JrWA4buN8QhAz+kMoi/1peuwNdnO/fOoHV0LIQgcL2HmIzS9dExtQI5ww92m14divV/7
+ 6C83x1VczllA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.83,278,1616482800"; 
- d="gz'50?scan'50,208,50";a="421584506"
+ d="gz'50?scan'50,208,50";a="554152838"
 Received: from lkp-server01.sh.intel.com (HELO 4aae0cb4f5b5) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 16 Jun 2021 11:17:55 -0700
+ by orsmga004.jf.intel.com with ESMTP; 16 Jun 2021 12:38:02 -0700
 Received: from kbuild by 4aae0cb4f5b5 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1lta6t-0001Pt-7g; Wed, 16 Jun 2021 18:17:55 +0000
-Date: Thu, 17 Jun 2021 02:17:47 +0800
+ id 1ltbMP-0001Ta-At; Wed, 16 Jun 2021 19:38:01 +0000
+Date: Thu, 17 Jun 2021 03:36:59 +0800
 From: kernel test robot <lkp@intel.com>
 To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
  hverkuil-cisco@xs4all.nl
@@ -63,18 +63,18 @@ Cc: kbuild-all@lists.01.org, ezequiel@collabora.com,
  Laurent.pinchart@ideasonboard.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: Re: [PATCH v2 3/7] media: rockchip: rkisp1: make some isp-param
- functions variable
-Message-ID: <202106170257.RrIs5aXy-lkp@intel.com>
-References: <20210615003741.3758316-4-heiko@sntech.de>
+Subject: Re: [PATCH v2 5/7] media: rockchip: rkisp1: add prefixes for v10
+ specific parts
+Message-ID: <202106170328.I5Mp26eB-lkp@intel.com>
+References: <20210615003741.3758316-6-heiko@sntech.de>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="liOOAslEiF7prFVr"
+Content-Type: multipart/mixed; boundary="Nq2Wo0NMKNjxTN9z"
 Content-Disposition: inline
-In-Reply-To: <20210615003741.3758316-4-heiko@sntech.de>
+In-Reply-To: <20210615003741.3758316-6-heiko@sntech.de>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_111802_357763_56F8D466 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20210616_123806_978126_A2DDA2A7 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,16 +91,16 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---liOOAslEiF7prFVr
+--Nq2Wo0NMKNjxTN9z
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Heiko,
 
-I love your patch! Perhaps something to improve:
+I love your patch! Yet something to improve:
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on v5.13-rc6 next-20210616]
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on v5.13-rc6 next-20210616]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch]
@@ -114,105 +114,110 @@ reproduce:
         chmod +x ~/bin/make.cross
         # apt-get install sparse
         # sparse version: v0.6.3-341-g8af24329-dirty
-        # https://github.com/0day-ci/linux/commit/3495922d4cf7d39e4a52d3b8588f8c46ab19e151
+        # https://github.com/0day-ci/linux/commit/346e0127683f58d32c265369f5ec0aa7a984aeb5
         git remote add linux-review https://github.com/0day-ci/linux
         git fetch --no-tags linux-review Heiko-Stuebner/rkisp1-support-for-px30/20210616-201601
-        git checkout 3495922d4cf7d39e4a52d3b8588f8c46ab19e151
+        git checkout 346e0127683f58d32c265369f5ec0aa7a984aeb5
         # save the attached .config to linux build tree
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' W=1 ARCH=ia64 
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
    drivers/media/platform/rockchip/rkisp1/rkisp1-params.c: In function 'rkisp1_isp_isr_meas_config':
->> drivers/media/platform/rockchip/rkisp1/rkisp1-params.c:1111:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   drivers/media/platform/rockchip/rkisp1/rkisp1-params.c:1111:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
     1111 |  if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
          |  ^~
    drivers/media/platform/rockchip/rkisp1/rkisp1-params.c:1115:3: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
     1115 |   rkisp1_hst_enable(params,
          |   ^~~~~~~~~~~~~~~~~
+>> drivers/media/platform/rockchip/rkisp1/rkisp1-params.c:1115:3: error: implicit declaration of function 'rkisp1_hst_enable'; did you mean 'rkisp1_ie_enable'? [-Werror=implicit-function-declaration]
+    1115 |   rkisp1_hst_enable(params,
+         |   ^~~~~~~~~~~~~~~~~
+         |   rkisp1_ie_enable
+   cc1: some warnings being treated as errors
 
 
-vim +/if +1111 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+vim +1115 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
 
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1071  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1072  static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1073  				       struct  rkisp1_params_cfg *new_params)
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1074  {
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1075  	unsigned int module_en_update, module_cfg_update, module_ens;
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1076  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1077  	module_en_update = new_params->module_en_update;
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1078  	module_cfg_update = new_params->module_cfg_update;
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1079  	module_ens = new_params->module_ens;
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1080  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1081  	/* update awb config */
-db1733ce23bd375 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1082  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1083  		params->ops->awb_meas_config(params, &new_params->meas.awb_meas_config);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1084  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1085  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1086  		params->ops->awb_meas_enable(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1087  					     &new_params->meas.awb_meas_config,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1088  					     !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1089  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1090  	/* update afc config */
-db1733ce23bd375 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1091  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1092  		params->ops->afm_config(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1093  					&new_params->meas.afc_config);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1094  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1095  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
-cdda99d70d73d08 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1096  		if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1097  			rkisp1_param_set_bits(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1098  					      RKISP1_CIF_ISP_AFM_CTRL,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1099  					      RKISP1_CIF_ISP_AFM_ENA);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1100  		else
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1101  			rkisp1_param_clear_bits(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1102  						RKISP1_CIF_ISP_AFM_CTRL,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1103  						RKISP1_CIF_ISP_AFM_ENA);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1104  	}
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1105  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1106  	/* update hst config */
-db1733ce23bd375 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1107  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1108  		params->ops->hst_config(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1109  					&new_params->meas.hst_config);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1110  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08 @1111  	if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1112  		params->ops->hst_enable(params,
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1113  					&new_params->meas.hst_config,
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1114  					!!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1115  		rkisp1_hst_enable(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1116  				  &new_params->meas.hst_config,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1117  				  !!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1118  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1119  	/* update aec config */
-db1733ce23bd375 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1120  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
-3495922d4cf7d39 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1121  		params->ops->aec_config(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1122  					&new_params->meas.aec_config);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1123  
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1124  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
-cdda99d70d73d08 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1125  		if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1126  			rkisp1_param_set_bits(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1127  					      RKISP1_CIF_ISP_EXP_CTRL,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1128  					      RKISP1_CIF_ISP_EXP_ENA);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1129  		else
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1130  			rkisp1_param_clear_bits(params,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1131  						RKISP1_CIF_ISP_EXP_CTRL,
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1132  						RKISP1_CIF_ISP_EXP_ENA);
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1133  	}
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1134  }
-bae1155cf5798cc drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1135  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1071  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1072  static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1073  				       struct  rkisp1_params_cfg *new_params)
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1074  {
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1075  	unsigned int module_en_update, module_cfg_update, module_ens;
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1076  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1077  	module_en_update = new_params->module_en_update;
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1078  	module_cfg_update = new_params->module_cfg_update;
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1079  	module_ens = new_params->module_ens;
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1080  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1081  	/* update awb config */
+db1733ce23bd37 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1082  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1083  		params->ops->awb_meas_config(params, &new_params->meas.awb_meas_config);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1084  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1085  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1086  		params->ops->awb_meas_enable(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1087  					     &new_params->meas.awb_meas_config,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1088  					     !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1089  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1090  	/* update afc config */
+db1733ce23bd37 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1091  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1092  		params->ops->afm_config(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1093  					&new_params->meas.afc_config);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1094  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1095  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
+cdda99d70d73d0 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1096  		if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1097  			rkisp1_param_set_bits(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1098  					      RKISP1_CIF_ISP_AFM_CTRL,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1099  					      RKISP1_CIF_ISP_AFM_ENA);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1100  		else
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1101  			rkisp1_param_clear_bits(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1102  						RKISP1_CIF_ISP_AFM_CTRL,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1103  						RKISP1_CIF_ISP_AFM_ENA);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1104  	}
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1105  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1106  	/* update hst config */
+db1733ce23bd37 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1107  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1108  		params->ops->hst_config(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1109  					&new_params->meas.hst_config);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1110  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1111  	if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1112  		params->ops->hst_enable(params,
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1113  					&new_params->meas.hst_config,
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1114  					!!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08 @1115  		rkisp1_hst_enable(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1116  				  &new_params->meas.hst_config,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1117  				  !!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1118  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1119  	/* update aec config */
+db1733ce23bd37 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1120  	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
+3495922d4cf7d3 drivers/media/platform/rockchip/rkisp1/rkisp1-params.c Heiko Stuebner   2021-06-15  1121  		params->ops->aec_config(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1122  					&new_params->meas.aec_config);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1123  
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1124  	if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
+cdda99d70d73d0 drivers/staging/media/rkisp1/rkisp1-params.c           Dafna Hirschfeld 2020-10-19  1125  		if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1126  			rkisp1_param_set_bits(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1127  					      RKISP1_CIF_ISP_EXP_CTRL,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1128  					      RKISP1_CIF_ISP_EXP_ENA);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1129  		else
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1130  			rkisp1_param_clear_bits(params,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1131  						RKISP1_CIF_ISP_EXP_CTRL,
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1132  						RKISP1_CIF_ISP_EXP_ENA);
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1133  	}
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1134  }
+bae1155cf5798c drivers/staging/media/rkisp1/rkisp1-params.c           Jacob Chen       2020-01-08  1135  
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---liOOAslEiF7prFVr
+--Nq2Wo0NMKNjxTN9z
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICH41ymAAAy5jb25maWcAlDzLdts2sPt+hU66aRdt/Ura3Hu8AEFQQkUSNADKsjc8iqOk
+H4sICNJHymAAAy5jb25maWcAlDzLdts2sPt+hU66aRdt/Ura3Hu8AEFQQkUSNADKsjc8iqOk
 PvUjx1ba5u/vDMAHQA7V3k1izQwGg8FgXoD0/XffL9jXw/Pj7nB/t3t4+Lb4vH/av+wO+4+L
 T/cP+/9dpGpRKrsQqbQ/A3F+//T1n1/ud+8uFm9/Pj3/+eSnl7vTxXr/8rR/WPDnp0/3n7/C
 8Pvnp+++/46rMpPLhvNmI7SRqmys2NrLNzj8pwfk9NPnu7vFD0vOf1y8/xm4vQnGSNMA4vJb
@@ -992,7 +997,7 @@ DUROpjSnlXRbXu+OrygoUGME+Iz79seO+Go2YAAQL0r8aeKSafs0YkTMaaTcqCE0p4TOp4r9
 UIbyftzdmsWdsMoJ/0XvCPlQFrU9YmlsOwesmyBfaX5oC+tMtgQuwMsDbBKKebxDZbn31Cg6
 chIs+ArLCvOggfLYyz8tUGex7qilZ51jlP8BmUaTNCeYAgA=
 
---liOOAslEiF7prFVr
+--Nq2Wo0NMKNjxTN9z
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1003,5 +1008,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---liOOAslEiF7prFVr--
+--Nq2Wo0NMKNjxTN9z--
 
