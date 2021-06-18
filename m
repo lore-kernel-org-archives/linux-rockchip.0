@@ -7,94 +7,71 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F05F1C48BE8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 06:42:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36ADFC48BE8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 07:02:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A39D610EA
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 06:42:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A39D610EA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id B68CF6100A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 07:02:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B68CF6100A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=XRTwNx2v0uxC4XhIsb1WhpLsVoLrvbvL29UKgdEIKYo=; b=IOW9gFw3L+ARVv
-	e/NSNmE3lcRCY410Qox94F9Lw/7T9XGa8Wanpic6xCbIJyh+pmUaZBLqoXPLmIy1pn4WbTMgtM2WY
-	4aUJ0e9/qzmn/4bv3qSyH4Q+FGgLaRLAaB3SD/jZ8p8XA5s7ndVG7L0HCpZlixWLiaa8LZblbBBVu
-	/1erMPCOiw3u0BZryr5P8DzyeR6TvvhXFvK7km2EFOMJ3JyTmaqF6dDQlkzXwUHRLkmeYp9M3DC4c
-	/4OUommILA38xyyps6C+/5NWyKySBZmXL6qgtyaPvHkyjR7TJBVv3x4tgv1MPl4rGHSu9uiB4NSE1
-	8hlpPt0HJHRUzOJstsjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=K1v3Z74osIuHNtc9Tx9QwxXO7Vwcb1ZnKv3idWfTvKA=; b=tkPQPAeDiRQJ6J
+	FbJWtNP72J7j0Rflp3Wbx7CQzeNfl61JL1mmTNHLJrwFtB2ItcJT8RoncZsMqpnViJr9n92GqQvZL
+	VU55ERhJ6GNLDSzy8XcVSCfkxMoDGT9jJSY5YmzecmUYw/yO1LgNuBZ+3zMQ+3ntGynzJfciGJijr
+	RFLjMLzFc5wq53EGtlK6o/myMMy/7NRVNmXWvkuMWvA2dMCV5TjrqUIE9+SkKqwsmDieNy5SRy0KC
+	kCFm0Xl9icoeB/dSKPQSpt8Tlk31S2m8KtS5+JBxYUoB+1497HrNDaEgkyd185Z6JGWfPz1ZbdtEw
+	FX5U4fvFh2+68nZsGhWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lu8Cc-00Ct6I-L9; Fri, 18 Jun 2021 06:42:06 +0000
-Received: from regular1.263xmail.com ([211.150.70.206])
+	id 1lu8WX-00D0iP-MH; Fri, 18 Jun 2021 07:02:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lu8CO-00Ct2b-Jb; Fri, 18 Jun 2021 06:41:54 +0000
-Received: from localhost (unknown [192.168.167.16])
- by regular1.263xmail.com (Postfix) with ESMTP id 7FB7B1B47;
- Fri, 18 Jun 2021 14:41:49 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from desktop-sg5v5ea (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P16483T139918862960384S1623998505071549_; 
- Fri, 18 Jun 2021 14:41:47 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9ea1904fb6a8db6a9a01adf5a1436a8f>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-RCPT-COUNT: 29
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-Date: Fri, 18 Jun 2021 14:41:45 +0800
-From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-To: =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, cl <cl@rock-chips.com>
-Cc: robh+dt <robh+dt@kernel.org>, jagan <jagan@amarulasolutions.com>, 
- wens <wens@csie.org>, uwe <uwe@kleine-koenig.org>, 
- mail <mail@david-bauer.net>, "Johan Jonker" <jbx6244@gmail.com>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "Linux Kernel Mailing List" <linux-kernel@vger.kernel.org>, 
- jensenhuang <jensenhuang@friendlyarm.com>, 
- michael <michael@amarulasolutions.com>, cnsztl <cnsztl@gmail.com>, 
- devicetree <devicetree@vger.kernel.org>, 
- ulf.hansson <ulf.hansson@linaro.org>, 
- linux-mmc <linux-mmc@vger.kernel.org>, 
- gregkh <gregkh@linuxfoundation.org>, 
- linux-serial <linux-serial@vger.kernel.org>, 
- linux-i2c <linux-i2c@vger.kernel.org>, 
- =?utf-8?B?5p6X5rabKOW6leWxguW5s+WPsCk=?= <shawn.lin@rock-chips.com>, 
- =?utf-8?B?5ZC06L6+6LaF?= <david.wu@rock-chips.com>, 
- zhangqing <zhangqing@rock-chips.com>, 
- "Tao Huang" <huangtao@rock-chips.com>, cl <cl@rock-chips.com>, 
- wim <wim@linux-watchdog.org>, linux <linux@roeck-us.net>, 
- jamie <jamie@jamieiles.com>, 
+ id 1lu8W5-00D0bt-JG; Fri, 18 Jun 2021 07:02:15 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1lu8Vs-00006s-P5; Fri, 18 Jun 2021 09:02:00 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: cl <cl@rock-chips.com>, "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
+Cc: robh+dt <robh+dt@kernel.org>, jagan <jagan@amarulasolutions.com>,
+ wens <wens@csie.org>, uwe <uwe@kleine-koenig.org>, mail <mail@david-bauer.net>,
+ Johan Jonker <jbx6244@gmail.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ jensenhuang <jensenhuang@friendlyarm.com>,
+ michael <michael@amarulasolutions.com>, cnsztl <cnsztl@gmail.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ "ulf. hansson" <ulf.hansson@linaro.org>, linux-mmc <linux-mmc@vger.kernel.org>,
+ gregkh <gregkh@linuxfoundation.org>,
+ linux-serial <linux-serial@vger.kernel.org>,
+ linux-i2c <linux-i2c@vger.kernel.org>,
+ =?utf-8?B?5p6X5rabKOW6leWxguW5s+WPsCk=?= <shawn.lin@rock-chips.com>,
+ =?utf-8?B?5ZC06L6+6LaF?= <david.wu@rock-chips.com>,
+ zhangqing <zhangqing@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>,
+ cl <cl@rock-chips.com>, wim <wim@linux-watchdog.org>,
+ linux <linux@roeck-us.net>, jamie <jamie@jamieiles.com>,
  linux-watchdog <linux-watchdog@vger.kernel.org>, maz <maz@kernel.org>
-Subject: Re: Re: [RESEND PATCH v4 06/10] dt-bindings: gpio: change items
+Subject: Re: [RESEND PATCH v4 06/10] dt-bindings: gpio: change items
  restriction of clock for rockchip, gpio-bank
-References: <20210429081151.17558-1-cl@rock-chips.com>, 
- <20210513064606.18397-1-cl@rock-chips.com>, 
- <5026524.44csPzL39Z@phil>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.19.158[cn]
-Mime-Version: 1.0
-Message-ID: <2021061814414460293612@rock-chips.com>
+Date: Fri, 18 Jun 2021 09:01:59 +0200
+Message-ID: <3493815.vrqWZg68TM@diego>
+In-Reply-To: <2021061814414460293612@rock-chips.com>
+References: <20210429081151.17558-1-cl@rock-chips.com>
+ <5026524.44csPzL39Z@phil> <2021061814414460293612@rock-chips.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210617_234153_006394_0EE4D7D8 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20210618_000213_716931_F846FFB9 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,38 +84,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28KCi0tLS0tLS0tLS0tLS0tCmpheS54dUByb2NrLWNoaXBzLmNvbQo+SGksCj4KPkFt
-IERvbm5lcnN0YWcsIDEzLiBNYWkgMjAyMSwgMDg6NDY6MDYgQ0VTVCBzY2hyaWViIGNsQHJvY2st
-Y2hpcHMuY29tOgo+PiBGcm9tOiBMaWFuZyBDaGVuIDxjbEByb2NrLWNoaXBzLmNvbT4KPj4KPj4g
-VGhlIGNsb2NrIHByb3BlcnR5IG5lZWQgMiBpdGVtcyBvbiBzb21lIHJvY2tjaGlwIGNoaXBzLgo+
-Pgo+PiBTaWduZWQtb2ZmLWJ5OiBMaWFuZyBDaGVuIDxjbEByb2NrLWNoaXBzLmNvbT4KPgo+dGhp
-cyBwYXRjaCBzaG91bGQgZGVmaW5pdGx5IG1vdmUgb3ZlciB0byBKaWFucXVucyBncGlvIGRyaXZl
-ciBzZXJpZXMsCj5hcyBpdCBpbnRyb2R1Y2VzIHRoZSB1c2FnZSBvZiB0aGVzZSBuZXcgY2xvY2tz
-Lgo+Cj5BbHNvIHdoaWxlIHRoZSBzaW5nbGUtY2xvY2sgdmFyaWFudCBkZWZpbml0bHkgZG9lc24n
-dCBuZWVkIGl0LAo+SSB0aGluayB3ZSBtYXkgd2FudCBjbG9jay1uYW1lcyAiYXBiX3BjbGsiLCAi
-ZGVib3VuY2UtcmVmIiBmb3IgdGhlCj4yLWNsb2NrIHZhcmlhbnRzPwo+IApPa2F5LCBJIHRoaW5r
-IGl0J3MgdmVyeSBnb29kIGlkZWEsIApidXQgaXMgaXQgcG9zc2libGUgdG8gcG9zdCB0aGUgcmVn
-LW5hbWUgcGF0Y2ggYWZ0ZXIgdGhlc2UgZHRzIHNlcmlhbCBhbmQgZ3BpbyBzZXJpYWwgcGF0Y2hl
-cyA/Cgo+Cj5IZWlrbwo+Cj4+IC0tLQo+PsKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9ncGlvL3JvY2tjaGlwLGdwaW8tYmFuay55YW1sIHwgNSArKysrLQo+PsKgIDEgZmlsZSBj
-aGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBh
-L0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9ncGlvL3JvY2tjaGlwLGdwaW8tYmFu
-ay55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwaW8vcm9ja2NoaXAs
-Z3Bpby1iYW5rLnlhbWwKPj4gaW5kZXggZDk5M2UwMC4uMGQ2MmMyOCAxMDA2NDQKPj4gLS0tIGEv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwaW8vcm9ja2NoaXAsZ3Bpby1iYW5r
-LnlhbWwKPj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2dwaW8vcm9j
-a2NoaXAsZ3Bpby1iYW5rLnlhbWwKPj4gQEAgLTIyLDcgKzIyLDEwIEBAIHByb3BlcnRpZXM6Cj4+
-wqDCoMKgwqDCoCBtYXhJdGVtczogMQo+PsKgCj4+wqDCoMKgIGNsb2NrczoKPj4gLcKgwqDCoCBt
-YXhJdGVtczogMQo+PiArwqDCoMKgIG1pbkl0ZW1zOiAxCj4+ICvCoMKgwqAgaXRlbXM6Cj4+ICvC
-oMKgwqDCoMKgIC0gZGVzY3JpcHRpb246IEFQQiBpbnRlcmZhY2UgY2xvY2sgc291cmNlCj4+ICvC
-oMKgwqDCoMKgIC0gZGVzY3JpcHRpb246IEdQSU8gZGVib3VuY2UgcmVmZXJlbmNlIGNsb2NrIHNv
-dXJjZQo+PsKgCj4+wqDCoMKgIGdwaW8tY29udHJvbGxlcjogdHJ1ZQo+PsKgCj4+Cj4KPgo+Cj4K
-Pgo+Cj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Hi Jay,
+
+Am Freitag, 18. Juni 2021, 08:41:45 CEST schrieb jay.xu@rock-chips.com:
+> Hi Heiko
+> 
+> --------------
+> jay.xu@rock-chips.com
+> >Hi,
+> >
+> >Am Donnerstag, 13. Mai 2021, 08:46:06 CEST schrieb cl@rock-chips.com:
+> >> From: Liang Chen <cl@rock-chips.com>
+> >>
+> >> The clock property need 2 items on some rockchip chips.
+> >>
+> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> >
+> >this patch should definitly move over to Jianquns gpio driver series,
+> >as it introduces the usage of these new clocks.
+> >
+> >Also while the single-clock variant definitly doesn't need it,
+> >I think we may want clock-names "apb_pclk", "debounce-ref" for the
+> >2-clock variants?
+> > 
+> Okay, I think it's very good idea, 
+> but is it possible to post the reg-name patch after these dts serial and gpio serial patches ?
+
+You're already creating a new binding when changing the max-items.
+So when we change that again later, in theory you'd need to support both
+cases (with and without clock-names)
+
+So I'd really prefer to get the binding right the first time and
+identifying multiple clocks by clock-names instead of an implicit ordering
+is way better in the long run as well.
+
+Heiko
+
+
+
+
+> 
+> >
+> >Heiko
+> >
+> >> ---
+> >>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 5 ++++-
+> >>  1 file changed, 4 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> >> index d993e00..0d62c28 100644
+> >> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> >> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> >> @@ -22,7 +22,10 @@ properties:
+> >>      maxItems: 1
+> >> 
+> >>    clocks:
+> >> -    maxItems: 1
+> >> +    minItems: 1
+> >> +    items:
+> >> +      - description: APB interface clock source
+> >> +      - description: GPIO debounce reference clock source
+> >> 
+> >>    gpio-controller: true
+> >> 
+> >>
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
