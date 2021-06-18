@@ -2,78 +2,53 @@ Return-Path: <SRS0=89Gv=LM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF4E2C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DA98C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 15:33:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9406A6117A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:55:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9406A6117A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4EDB861205
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 15:33:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EDB861205
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=npPzV0VzDUHfj4SPOCKqqWgWtJu9GIDZVQLvs5K7EvY=; b=mlPtoKFr748BEHnbecCi+oMNGN
-	tHjxcS51ASKGOIoyehNnLXAKgYRSkMuxmEcdC5bBF+0pffujxwXRZ9LevQaqeofH2q8IxmcsioupB
-	WbihgN/zmNeWt7EwUBxRCgfA/cw/Q+zSSOC2nLqhcY2Bgj1jsetbVFcACsa7OBiNc26E6OoU3bb6p
-	+bTUQlXDvruj4jnVAyehe3guSh4sgM2MG5Y8OeJ4ubTyn1xKgSpY1PCMv9AAMdlDvMKFXhgi9LgtE
-	o0u9R+4EmanRUX4zrKaDU1pKyfIP+rXs3DxUIExZQ4VmYKEjYKagJxNguf4zw2PIXzH8UNNRinKFK
-	v3tFfGYA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=IbjsrAubAInO8kgeMv+/qJFOubLwO0k8AIzVTdZYXuI=; b=icpuEi41XlvNbs
+	PM+ZZCnFlGS+QjXQFCBR/0u2BBgqeV+ErZhqNzps7kLrsaKcwKDDkHHFpspwgNKv6wT+zKrK+T6C1
+	YvSGGrMpJ4x/KJ2Dwn2Ez4qVR1LEUioRLHalCXx5FHp8Wqm7NVF9mgcFL5aql4L8PcJPUXZPNMHyA
+	blnmKt0TawSoD10GsSaGYS2uLxPRRZjhEct/RgK16kfzlphl4Iq2XE3rtp+z72nooD9LpryKzV+0U
+	PbuKUfAEK+Bp5R388mURmUzLVcre6xulAPkUsmCDbcolK/c9UKgj/p2H+7iu2U1Z7YVBel8HOInpf
+	lN6H3nD3GWvD6ovh9J3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luEyN-00EN3x-Eg; Fri, 18 Jun 2021 13:55:51 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1luGUt-00ElGd-KB; Fri, 18 Jun 2021 15:33:31 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luEyK-00EN2n-Qp; Fri, 18 Jun 2021 13:55:50 +0000
-Received: by mail-ej1-x635.google.com with SMTP id nd37so16114284ejc.3;
- Fri, 18 Jun 2021 06:55:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=kS7LsTY4eD7PtOoLcWypfb1WOFaf7PfUkRMKOVYnU+8=;
- b=Mp8tuTYLkmhc2aO3txv/mJbnJaHomRPOnKpHFfGlEj0F5FZMWhn/WejQ5nBaAdZXMU
- iMd6s7lxRWbBhfiuKES3JS+NmSeIksru1Xfe2WVkch95GxeeTAkUDNVfte1AfILCP8eT
- rggyQjstzIm+IOaQhxRXwhAVP/xwM/m+dsvWGyLYU0KhsKsg15rteqVvzcRLQHVOGtaw
- tEDvOh5UDjW5f6H3YWsy8vQMl5I1V9cCfMQW0X8KIYEzdLXqyANtNKf0bco7UK3pxuIf
- qERAVUFHuseSd5OE465zS9IlyYu2QN04S4sy4pkM60b75/Nwrb8k2LfOHvACVRh9Y+0A
- 4FiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to;
- bh=kS7LsTY4eD7PtOoLcWypfb1WOFaf7PfUkRMKOVYnU+8=;
- b=Bk/juGBvZbwIXUOOgyvhC/+qucs2zmDXcVmWC8urbG0sbAWnNf/nbin0MdqjHpNgqZ
- c6i1+Bj46Nj3Q5m4hwybibc9Kva6D3umnpyXeOyH2o3g1VBSLfTrKsLhIFt3N3R6w+d8
- SNEQje45fCgoBbMtJsnsNYBA0s2m3qDflufhleLvwYiP3KAmB+EMmz5OPD+ZqeeExAod
- 9jPIEGbdfgjYxZalVU13v6uUf2TER7yE8GZXyTcY/S/1DHiNJkfjhnh4sOFmq5v0vC4a
- HGuh1IA2tYoZ92fmuKPGbpphIXDobqtDVOiQKvieRpkpBbLeaPqidcEi2M03pVAeEX7v
- zASg==
-X-Gm-Message-State: AOAM531MoD/vQqJFcXkVICjjwvpqok7LrJdXKPIomZpXpc7As0FDZqt8
- 9vFU/69FUP//7+2teW8yxeGxReJzvVQYEPFGUBWP7w==
-X-Google-Smtp-Source: ABdhPJwvfW1ZR5K8R4Kq8/9q1FbEYvOuZOvnuZsxlhZRv8R4PJJ7ikwI4mv3rkJsNxtWK/fFG+YAYg==
-X-Received: by 2002:a17:906:6849:: with SMTP id
- a9mr11363699ejs.415.1624024545629; 
- Fri, 18 Jun 2021 06:55:45 -0700 (PDT)
-Received: from m4.home (tor-exit-2.zbau.f3netze.de. [2a0b:f4c0:16c:2::1])
- by smtp.gmail.com with ESMTPSA id gz12sm1091362ejc.36.2021.06.18.06.55.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Jun 2021 06:55:44 -0700 (PDT)
-Received: from cavok by m4.home with local (Exim 4.94.2)
- (envelope-from <cavok@m4>)
- id 1luEyF-0000bC-CI; Fri, 18 Jun 2021 15:55:43 +0200
-Date: Fri, 18 Jun 2021 15:55:43 +0200
-From: Domenico Andreoli <domenico.andreoli@linux.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
+ id 1luGUL-00Ekyv-20; Fri, 18 Jun 2021 15:32:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 00BEB6120A;
+ Fri, 18 Jun 2021 15:32:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1624030376;
+ bh=+FFSC0zj5RwLkGI3nedO+OdvNVE7P5xcolwUD5+csdM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=a91Z9QyM5lf3pO3gumqpUQpzlBcimPsoRvNl9xcT/OkC/UwBLxXD1c2HHJxzwS6xY
+ oyhw7cWJm5svXcpzDDP7gB8cd4Z1XkW1yFeBwK2lRKnqhYGuW6yC4ShbtIqwHNv78k
+ NIqH09prr5+xFH1y2bEE86cnH+yhGXsQjbmauGK/zGjq1HGc/HznLjRKpGs+01bk2n
+ ZHYA40H5k3Fbt+2IDg9Zx0Na1cyUJoBKIqfhtaGu4lPDIzzVnX6brbvkHd8o95WcID
+ 9m00zajpridHKyryJhnyqyDcXMgM3bolfInXjD7PR2zcQgEPf4AeW3Onlur4/KDV/d
+ bPC6DHtn3Fxag==
+Date: Fri, 18 Jun 2021 10:32:54 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Domenico Andreoli <domenico.andreoli@linux.com>
 Cc: Punit Agrawal <punitagrawal@gmail.com>, robh+dt@kernel.org,
  maz@kernel.org, leobras.c@gmail.com, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -83,14 +58,13 @@ Cc: Punit Agrawal <punitagrawal@gmail.com>, robh+dt@kernel.org,
  Bjorn Helgaas <bhelgaas@google.com>
 Subject: Re: [PATCH v4] PCI: of: Clear 64-bit flag for non-prefetchable
  memory below 4GB
-Message-ID: <YMyl31ERhGDE1yGh@m4>
-References: <20210614230457.752811-1-punitagrawal@gmail.com>
- <20210616231234.GA3018015@bjorn-Precision-5520>
+Message-ID: <20210618153254.GA3191723@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <20210616231234.GA3018015@bjorn-Precision-5520>
+Content-Disposition: inline
+In-Reply-To: <YMyl31ERhGDE1yGh@m4>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_065548_958552_D59F70EA 
-X-CRM114-Status: GOOD (  23.26  )
+X-CRM114-CacheID: sfid-20210618_083257_169138_453325BC 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,119 +77,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1959845764635468631=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jun 18, 2021 at 03:55:43PM +0200, Domenico Andreoli wrote:
+> On Wed, Jun 16, 2021 at 06:12:34PM -0500, Bjorn Helgaas wrote:
+> > On Tue, Jun 15, 2021 at 08:04:57AM +0900, Punit Agrawal wrote:
+> > > Alexandru and Qu reported this resource allocation failure on
+> > > ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
+> > > 
+> > >   pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
+> > >   pci 0000:00:00.0: PCI bridge to [bus 01]
+> > >   pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
+> > >   pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
+> > > 
+> > > "BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
+> > > PCI allocation code isn't smart enough to allocate it in a host
+> > > bridge window marked as 64-bit, even though this should work fine.
+> > > 
+> > > A DT host bridge description includes the windows from the CPU
+> > > address space to the PCI bus space.  On a few architectures
+> > > (microblaze, powerpc, sparc), the DT may also describe PCI devices
+> > > themselves, including their BARs.
+> > > 
+> > > Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
+> > > flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
+> > > the fact that some DT addresses described 64-bit windows and BARs.
+> > > That was a problem because the virtio virtual NIC has a 32-bit BAR
+> > > and a 64-bit BAR, and the driver couldn't distinguish them.
+> > > 
+> > > 9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
+> > > fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
+> > > bridge windows, which exposed the fact that the PCI allocator isn't
+> > > smart enough to put 32-bit resources in those 64-bit windows.
+> > > 
+> > > Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
+> > > that information.
+> > > 
+> > > Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
+> > > Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com/
+> > > Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+> > > Reported-by: Qu Wenruo <wqu@suse.com>
+> > > Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> > > Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+> > > Cc: Bjorn Helgaas <bhelgaas@google.com>
+> > > Cc: Rob Herring <robh+dt@kernel.org>
+> > 
+> > Applied with:
+> > 
+> >     Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
+> >     Reviewed-by: Rob Herring <robh@kernel.org>
+> >     Acked-by: Ard Biesheuvel <ardb@kernel.org>
+> > 
+> > to for-linus for v5.13, thanks a lot!
+> 
+> Late-tested-by: Domenico Andreoli <domenico.andreoli@linux.com>
+> 
+> See https://lore.kernel.org/lkml/YMyTUv7Jsd89PGci@m4/T/#u
 
---===============1959845764635468631==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="/GHSmsL4CpCm23nY"
-Content-Disposition: inline
-
-
---/GHSmsL4CpCm23nY
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jun 16, 2021 at 06:12:34PM -0500, Bjorn Helgaas wrote:
-> On Tue, Jun 15, 2021 at 08:04:57AM +0900, Punit Agrawal wrote:
-> > Alexandru and Qu reported this resource allocation failure on
-> > ROCKPro64 v2 and ROCK Pi 4B, both based on the RK3399:
-> >=20
-> >   pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff 64bit]
-> >   pci 0000:00:00.0: PCI bridge to [bus 01]
-> >   pci 0000:00:00.0: BAR 14: no space for [mem size 0x00100000]
-> >   pci 0000:01:00.0: reg 0x10: [mem 0x00000000-0x00003fff 64bit]
-> >=20
-> > "BAR 14" is the PCI bridge's 32-bit non-prefetchable window, and our
-> > PCI allocation code isn't smart enough to allocate it in a host
-> > bridge window marked as 64-bit, even though this should work fine.
-> >=20
-> > A DT host bridge description includes the windows from the CPU
-> > address space to the PCI bus space.  On a few architectures
-> > (microblaze, powerpc, sparc), the DT may also describe PCI devices
-> > themselves, including their BARs.
-> >=20
-> > Before 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource
-> > flags for 64-bit memory addresses"), of_bus_pci_get_flags() ignored
-> > the fact that some DT addresses described 64-bit windows and BARs.
-> > That was a problem because the virtio virtual NIC has a 32-bit BAR
-> > and a 64-bit BAR, and the driver couldn't distinguish them.
-> >=20
-> > 9d57e61bf723 set IORESOURCE_MEM_64 for those 64-bit DT ranges, which
-> > fixed the virtio driver.  But it also set IORESOURCE_MEM_64 for host
-> > bridge windows, which exposed the fact that the PCI allocator isn't
-> > smart enough to put 32-bit resources in those 64-bit windows.
-> >=20
-> > Clear IORESOURCE_MEM_64 from host bridge windows since we don't need
-> > that information.
-> >=20
-> > Fixes: 9d57e61bf723 ("of/pci: Add IORESOURCE_MEM_64 to resource flags f=
-or 64-bit memory addresses")
-> > Reported-at: https://lore.kernel.org/lkml/7a1e2ebc-f7d8-8431-d844-41a9c=
-36a8911@arm.com/
-> > Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> > Reported-by: Qu Wenruo <wqu@suse.com>
-> > Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
-> > Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
-> > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> > Cc: Rob Herring <robh+dt@kernel.org>
->=20
-> Applied with:
->=20
->     Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
->     Reviewed-by: Rob Herring <robh@kernel.org>
->     Acked-by: Ard Biesheuvel <ardb@kernel.org>
->=20
-> to for-linus for v5.13, thanks a lot!
-
-Late-tested-by: Domenico Andreoli <domenico.andreoli@linux.com>
-
-See https://lore.kernel.org/lkml/YMyTUv7Jsd89PGci@m4/T/#u
-
-Thanks!
-
-Dom
-
---=20
-rsa4096: 3B10 0CA1 8674 ACBA B4FE  FCD2 CE5B CF17 9960 DE13
-ed25519: FFB4 0CC3 7F2E 091D F7DA  356E CC79 2832 ED38 CB05
-
---/GHSmsL4CpCm23nY
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE0znebYyV6RAN/q8htwRzp/vsqYEFAmDMpd4ACgkQtwRzp/vs
-qYE8bBAAvdg4Ph1fMCdtPFOlq3OJ4H6H+miCxcsoYKa5hAJmPfNoO11Dl/NDCpPt
-IBHXANLck5mg3h6JchBflok3uciGEoWsuFeOrc0ZfEd4lZxE4/SlL5PgJXKcFnn0
-FepNItnn9UoShx7maGUL+ln0L+ZsPqbVarrKZlisaPOdZWAVEEhvPiZ/nHuc+Ok7
-9X9Ak96OhHkNtJ+PAidSkxJt8L2BchSJbF1bkvUCL2gzdhGcNrqmIUvX3fTtMuUF
-4ErL36lc1FaLCHpmZO5+TEs4THdlYoPJdmTJ4chYnCLi0kW5tw7b2EEtJ9oglih4
-wrxPfuHNheQ+NqXrTGARzuJ9uxuDzE4tbFWd9VDwufuqM5nTyX+UjPHw9UNmrKXx
-nT6AoLRfNk4zBwtwrviXOPTRckDiInBOW8zxdNWs28CvtSEkDjk1oXdBVqdMEFrL
-tGoJZC5hOOzZokHYNUHtemblVbDqwi/5BHIRK/gKs3ym6mUuAX+3C84tXw9OPVH2
-jiJutDbhbqJoqJxdAz9A81CEI5PpHqtkJ+LHcTlGKd+lReb2YafC/GZNGAJK8UEx
-fP/GRfn6YKFoP7YwDnh1lIZ+2ReDA8ObkW4MvrqpvFYlCdGBmM/wOS4MDqr+Jp3u
-Ys5WekD5aeKo7Xt5p0+ZhIx5RUp90rCz8aw6cfN7grk6Bwexw2c=
-=aphM
------END PGP SIGNATURE-----
-
---/GHSmsL4CpCm23nY--
-
-
---===============1959845764635468631==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+I updated the commit to add your report and tested-by, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1959845764635468631==--
-
