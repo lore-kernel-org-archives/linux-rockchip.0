@@ -1,81 +1,65 @@
-Return-Path: <SRS0=O9sg=LL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=89Gv=LM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B293C48BE5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jun 2021 21:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2D65C48BDF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 04:09:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F1AA660E0B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Jun 2021 21:26:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1AA660E0B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 599FF61351
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 04:09:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 599FF61351
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f026iVwaCw2PKFCfRPWy3018wQ7eZCCSLPZNGpNi/1U=; b=gitNWwGyutDlb6
-	v9Fa56Squdmd5w903xRj07rU70MdZ2UVsVkPRCPIDzKRmhonlELtPT8k0hyMZdpnrcnTsA387yetp
-	OGGemLa851AlTjOS0AQea8vkAoss7LNL+kWbXbmEGS0dD10lrJT2naZeEmcTrASVznREE1za+yG5M
-	t93+nEEpj8cph9RWRjMnC3MTMZUPJGuAJ/HwaqNE7Pvdg5tKWHW70KJ4s1L4HfjhqXeeEf/yaJcHZ
-	vYW+a6ffCCA1Da3uJd0gMliVesw6gXahbPhjgLzSl2OtQFGlw22lsiQyjuXak6WDORSw7uPM3Awi3
-	0ZqFvGSLohTSsiFy2DUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eJV1jTAD6D7dpKdgRyrgjWat5zME4ByRu7QTXYjHeCk=; b=gWxM8tjJfnVIlaq2w+5i6Gn4mu
+	gm06yol3KIHyZ2t91cZlUZqMqkATg7clhDqu6p5T4RxnOlsdLGeEtcDrVKXM5Nsazd3ZthjcEzXJi
+	wDpcSPLXekeQ9wxqA6h3ExlymZ0qYL8NCSChNNMarzCQZMaUAWqzqrjlI1jriZwvzXdLcJ45WEGLY
+	l/6z2dZfAEcmNn7TKXr93p4A7f534khWdSkgfu6cJuUUsBpaOwzRHwdoxAcR/fcv+Ciw2E9W1gpMw
+	OMKcvBnlyewU/aT05uGYYYdlFH1VeFREb6m/66vZYDZ7XjgR34PJyTmi6uWk8qlk6MRRhBCLdQF2h
+	4Eu0WyMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltzXA-00BnJF-6K; Thu, 17 Jun 2021 21:26:44 +0000
-Received: from mail-io1-f54.google.com ([209.85.166.54])
+	id 1lu5oN-00CY7e-MI; Fri, 18 Jun 2021 04:08:55 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltzWz-00BnFj-OQ
- for linux-rockchip@lists.infradead.org; Thu, 17 Jun 2021 21:26:35 +0000
-Received: by mail-io1-f54.google.com with SMTP id o5so2962883iob.4
- for <linux-rockchip@lists.infradead.org>; Thu, 17 Jun 2021 14:26:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=BK4/yKFERPq5Q5JT9ah7IGyXargZYodEJ6e9CzGiy3M=;
- b=EgRbwrRdEqQJIwlPJvmSzaDZ/2DF7J6xYprXbvbMK1Mb1Jkb2ELQIXk02/A0sqm55V
- 0o0qGbdbiqfr8bnx4fwMoIyA/KoUZiCY8svadtTajlIh0itOtmO7GwBFQ7/0o3KA9sJE
- TXTRC0K/76EfEGg0+ukBAa/lGawcdvsSXmrbV2DUn7nEQdwHr5Yu7VJHiLiTCxW0bdJK
- /XcrOdcjqOFEQ6unYveUZD2C+y3zrEmi2grt31WGeLhESfOs3f/W59YVb9wx8A2TjPEk
- EeCd9usokpgfNhIxoCJAA2bkd0GLjU8VNNuwXRt6v7rHUNCXN2JbMZuUS181MrXlwC9W
- aEYw==
-X-Gm-Message-State: AOAM530jNDkbTt5SkySPN8HVIcEVtivrTmhmViV1A8sJbUBiptnnwQFI
- niuClmgHa3GMz7xiB/zg9DCwRZR+tg==
-X-Google-Smtp-Source: ABdhPJyJjIjZ7icIf3FV7WOoRfpkfxMCTq875Gptr5kBUuCdwKnKUEr+eYj/VVIB+lEYT3uweNNoOg==
-X-Received: by 2002:a5e:940a:: with SMTP id q10mr5487243ioj.19.1623965192578; 
- Thu, 17 Jun 2021 14:26:32 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id x18sm84588ilm.86.2021.06.17.14.26.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Jun 2021 14:26:31 -0700 (PDT)
-Received: (nullmailer pid 3336123 invoked by uid 1000);
- Thu, 17 Jun 2021 21:26:24 -0000
-From: Rob Herring <robh@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, linux-media@vger.kernel.org,
- mchehab@kernel.org, ezequiel@collabora.com, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- Laurent.pinchart@ideasonboard.com, dafna.hirschfeld@collabora.com,
- helen.koike@collabora.com, linux-rockchip@lists.infradead.org
-In-Reply-To: <20210617162745.4080975-10-heiko@sntech.de>
+ id 1lu5oK-00CY6m-34
+ for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 04:08:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 652561F4466D
+Subject: Re: [PATCH v5 04/10] media: rockchip: rkisp1: allow separate
+ interrupts
+To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
+ hverkuil-cisco@xs4all.nl
+Cc: ezequiel@collabora.com, helen.koike@collabora.com,
+ Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
+ linux-media@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 References: <20210617162745.4080975-1-heiko@sntech.de>
- <20210617162745.4080975-10-heiko@sntech.de>
-Subject: Re: [PATCH v5 09/10] dt-bindings: media: rkisp1: document px30 isp
- compatible
-Date: Thu, 17 Jun 2021 15:26:24 -0600
-Message-Id: <1623965184.614652.3336122.nullmailer@robh.at.kernel.org>
+ <20210617162745.4080975-5-heiko@sntech.de>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <1a9ecd26-e1a4-9ae8-51c8-06664bc45427@collabora.com>
+Date: Fri, 18 Jun 2021 07:08:44 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20210617162745.4080975-5-heiko@sntech.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210617_142633_823686_1251ED5A 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20210617_210852_462632_674AB466 
+X-CRM114-Status: GOOD (  28.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,45 +72,237 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 17 Jun 2021 18:27:44 +0200, Heiko Stuebner wrote:
+
+
+On 17.06.21 19:27, Heiko Stuebner wrote:
 > From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> Add the compatible for the px30-variant of the rkisp
+> Depending on the per-soc implementation there can be one interrupt
+> for isp, mipi and capture events or separate per-event interrupts.
+> 
+> So simply check for the presence of a named "mi" interrupt
+> to differentiate between the two cases.
 > 
 > Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > ---
->  .../bindings/media/rockchip-isp1.yaml         | 66 ++++++++++++++++++-
->  1 file changed, 65 insertions(+), 1 deletion(-)
+>   .../platform/rockchip/rkisp1/rkisp1-capture.c |  9 +++-
+>   .../platform/rockchip/rkisp1/rkisp1-common.h  |  7 +--
+>   .../platform/rockchip/rkisp1/rkisp1-dev.c     | 44 ++++++++++++-------
+>   .../platform/rockchip/rkisp1/rkisp1-isp.c     | 16 +++++--
+>   4 files changed, 53 insertions(+), 23 deletions(-)
 > 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index 5f6c9d1623e4..f70c66c2a1d7 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -685,12 +685,17 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
+>   	spin_unlock(&cap->buf.lock);
+>   }
+>   
+> -void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
+> +irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+>   {
+> +	struct device *dev = ctx;
+> +	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+>   	unsigned int i;
+>   	u32 status;
+>   
+>   	status = rkisp1_read(rkisp1, RKISP1_CIF_MI_MIS);
+> +	if (!status)
+> +		return IRQ_NONE;
+> +
+>   	rkisp1_write(rkisp1, status, RKISP1_CIF_MI_ICR);
+>   
+>   	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); ++i) {
+> @@ -718,6 +723,8 @@ void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
+>   		cap->is_streaming = false;
+>   		wake_up(&cap->done);
+>   	}
+> +
+> +	return IRQ_HANDLED;
+>   }
+>   
+>   /* ----------------------------------------------------------------------------
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index be8a350c7527..25dd5c93620e 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -12,6 +12,7 @@
+>   #define _RKISP1_COMMON_H
+>   
+>   #include <linux/clk.h>
+> +#include <linux/interrupt.h>
+>   #include <linux/mutex.h>
+>   #include <linux/rkisp1-config.h>
+>   #include <media/media-device.h>
+> @@ -459,9 +460,9 @@ void rkisp1_params_configure(struct rkisp1_params *params,
+>   void rkisp1_params_disable(struct rkisp1_params *params);
+>   
+>   /* irq handlers */
+> -void rkisp1_isp_isr(struct rkisp1_device *rkisp1);
+> -void rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
+> -void rkisp1_capture_isr(struct rkisp1_device *rkisp1);
+> +irqreturn_t rkisp1_isp_isr(int irq, void *ctx);
+> +irqreturn_t rkisp1_mipi_isr(int irq, void *ctx);
+> +irqreturn_t rkisp1_capture_isr(int irq, void *ctx);
+>   void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
+>   void rkisp1_params_isr(struct rkisp1_device *rkisp1);
+>   
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index 7afa4c123834..a14a0bc39fb0 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -101,9 +101,16 @@
+>    *  +-----------+    +-----------+
+>    */
+>   
+> +struct rkisp1_isr_data {
+> +	const char *name;
+> +	irqreturn_t (*isr)(int irq, void *ctx);
+> +};
+> +
+>   struct rkisp1_match_data {
+>   	const char * const *clks;
+>   	unsigned int size;
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+now that we have two arrays, maybe rename 'size' to 'clks_size'?
 
-yamllint warnings/errors:
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/media/rockchip-isp1.example.dt.yaml:0:0: /example-1/parent/i2c/camera@36: failed to match any schema with compatible: ['ovti,ov5695']
-\ndoc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1493733
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+> +	const struct rkisp1_isr_data *isrs;
+> +	unsigned int isr_size;
+>   	enum rkisp1_cif_isp_version isp_ver;
+>   };
+>   
+> @@ -385,18 +392,15 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+>   
+>   static irqreturn_t rkisp1_isr(int irq, void *ctx)
+>   {
+> -	struct device *dev = ctx;
+> -	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+> -
+>   	/*
+>   	 * Call rkisp1_capture_isr() first to handle the frame that
+>   	 * potentially completed using the current frame_sequence number before
+>   	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
+>   	 * sync.
+>   	 */
+> -	rkisp1_capture_isr(rkisp1);
+> -	rkisp1_isp_isr(rkisp1);
+> -	rkisp1_mipi_isr(rkisp1);
+> +	rkisp1_capture_isr(irq, ctx);
+> +	rkisp1_isp_isr(irq, ctx);
+> +	rkisp1_mipi_isr(irq, ctx);
+>   
+>   	return IRQ_HANDLED;
+>   }
+> @@ -407,9 +411,15 @@ static const char * const rk3399_isp_clks[] = {
+>   	"hclk",
+>   };
+>   
+> +static const struct rkisp1_isr_data rk3399_isp_isrs[] = {
+> +	{ NULL, rkisp1_isr },
+> +};
+> +
+>   static const struct rkisp1_match_data rk3399_isp_match_data = {
+>   	.clks = rk3399_isp_clks,
+>   	.size = ARRAY_SIZE(rk3399_isp_clks),
+> +	.isrs = rk3399_isp_isrs,
+> +	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
+>   	.isp_ver = RKISP1_V10,
+>   };
+>   
+> @@ -478,15 +488,19 @@ static int rkisp1_probe(struct platform_device *pdev)
+>   	if (IS_ERR(rkisp1->base_addr))
+>   		return PTR_ERR(rkisp1->base_addr);
+>   
+> -	irq = platform_get_irq(pdev, 0);
+> -	if (irq < 0)
+> -		return irq;
+> -
+> -	ret = devm_request_irq(dev, irq, rkisp1_isr, IRQF_SHARED,
+> -			       dev_driver_string(dev), dev);
+> -	if (ret) {
+> -		dev_err(dev, "request irq failed: %d\n", ret);
+> -		return ret;
+> +	for (i = 0; i < match_data->isr_size; i++) {
+> +		irq = (match_data->isrs[i].name) ?
+> +				platform_get_irq_byname(pdev, match_data->isrs[i].name) :
+> +				platform_get_irq(pdev, i);
+> +		if (irq < 0)
+> +			return irq;
+> +
+> +		ret = devm_request_irq(dev, irq, match_data->isrs[i].isr, IRQF_SHARED,
+> +				       dev_driver_string(dev), dev);
+> +		if (ret) {
+> +			dev_err(dev, "request irq failed: %d\n", ret);
+> +			return ret;
+> +		}
+>   	}
+>   
+>   	for (i = 0; i < match_data->size; i++)
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index 2e5b57e3aedc..1de98e688008 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -1090,13 +1090,15 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+>    * Interrupt handlers
+>    */
+>   
+> -void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
+> +irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
+>   {
+> +	struct device *dev = ctx;
+> +	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+>   	u32 val, status;
+>   
+>   	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+>   	if (!status)
+> -		return;
+> +		return IRQ_NONE;
+>   
+>   	rkisp1_write(rkisp1, status, RKISP1_CIF_MIPI_ICR);
+>   
+> @@ -1131,6 +1133,8 @@ void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
+>   	} else {
+>   		rkisp1->debug.mipi_error++;
+>   	}
+> +
+> +	return IRQ_HANDLED;
+>   }
+>   
+>   static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+> @@ -1143,13 +1147,15 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+>   	v4l2_event_queue(isp->sd.devnode, &event);
+>   }
+>   
+> -void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
+> +irqreturn_t rkisp1_isp_isr(int irq, void *ctx)
+>   {
+> +	struct device *dev = ctx;
+> +	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+>   	u32 status, isp_err;
+>   
+>   	status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
+>   	if (!status)
+> -		return;
+> +		return IRQ_NONE;
+>   
+>   	rkisp1_write(rkisp1, status, RKISP1_CIF_ISP_ICR);
+>   
+> @@ -1191,4 +1197,6 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
+>   		 */
+>   		rkisp1_params_isr(rkisp1);
+>   	}
+> +
+> +	return IRQ_HANDLED;
+>   }
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
