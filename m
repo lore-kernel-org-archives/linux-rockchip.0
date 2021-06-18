@@ -2,64 +2,77 @@ Return-Path: <SRS0=89Gv=LM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E68AC48BDF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 04:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 705CEC48BDF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 06:25:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0864A6117A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 04:25:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0864A6117A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id EF920611CE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 06:25:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF920611CE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lbr93M5ORgzzgCcY0z4lsrmnR5I3MhyuO1jI56CMJp0=; b=DrResmEPtqZPk53SjI4pb/B4JX
-	kPS/ix3S4AGaL1UCCuD6YBT1zYvsqpx6xht+6hF5bNj6g/wpRySnoiJ2dlNQp6SheG7QeNetbIVvM
-	Rq9xqSKyJoxnnIv/qAJ5bL8DJkLVP1Jaaao48Fo9Hx94lCoMqh/axlO9xdweR3/n211swcELtPhdq
-	2WoN7vLuenWS8rB9aIMufPdw6yY3uCK9cwzGaOicEmZK0/H2ylN88bq6TGRaej3GGzQV5w9dpACLy
-	ZsHPmcStuYZThvmVLnKkkdCTRCB62CGFHWqApCnHK8ydt7VfuXhWoaHIJldarZNQYrJb3UsZnG3cm
-	AFyAE/mg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8jPTCyBCNSuS413cPRXyP0bswNsnMXAO+bzzGri4+IA=; b=zqNFcgebdzAKde
+	UvCvwuLU9MS/b5wSYaxJYndaVaBMrqQEChXeL0MBjA91FGqmxO8eLM8QMH3pA3cui9dhQU3kCkrCe
+	UqwDLVRq7MtUeBB2tDdqNozpsX9HFGkY0FcmEvzQOVZ8iSfqkZMLJEhOL7Ho9VVX7MdlIgw8mGNYX
+	/kEljiknacbDZCv3DgT8Im7xR9c9Wlk660Jumxivy6xUjCSeAqPSd/DKrE7dI29Ads0efq4kaSYnF
+	Pe81WbHGLKi0NNBK61vpRjOAszcCNudTL82l4phIXsjd29BajirNx8u8e5vc+8xdB4b2f98BPgWrL
+	mC0BvrzJ/j7JHW4AQEOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lu63u-00CZIw-VW; Fri, 18 Jun 2021 04:24:59 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lu7w8-00CpjD-3I; Fri, 18 Jun 2021 06:25:04 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lu63r-00CZI2-MT
- for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 04:24:57 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 710BF1F446D3
-Subject: Re: [PATCH v5 10/10] media: rockchip: rkisp1: add support for px30
- isp version
-To: Heiko Stuebner <heiko@sntech.de>, mchehab@kernel.org,
- hverkuil-cisco@xs4all.nl
-Cc: ezequiel@collabora.com, helen.koike@collabora.com,
- Laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org,
- linux-media@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-References: <20210617162745.4080975-1-heiko@sntech.de>
- <20210617162745.4080975-11-heiko@sntech.de>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <74192794-d153-924f-960f-42d1be88f73b@collabora.com>
-Date: Fri, 18 Jun 2021 07:24:50 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lu7w4-00CpiQ-OK
+ for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 06:25:02 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id BE4B7BA75E;
+ Fri, 18 Jun 2021 14:24:53 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P16485T139919018157824S1623997492865409_; 
+ Fri, 18 Jun 2021 14:24:54 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <2986a4e5241ffa4a8b29372f12dade97>
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-RCPT-COUNT: 7
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: heiko@sntech.de,
+	linus.walleij@linaro.org
+Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, kever.yang@rock-chips.com,
+ Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH v6 0/9] gpio-rockchip driver
+Date: Fri, 18 Jun 2021 14:24:40 +0800
+Message-Id: <20210618062449.1067106-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210617162745.4080975-11-heiko@sntech.de>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210617_212455_915720_CEC7BDB7 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20210617_232500_994158_11CC9759 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,73 +85,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Separate gpio driver from pinctrl driver, and support gpio v2 controller.
+
+Jianqun Xu (8):
+  pinctrl/rockchip: always enable clock for gpio controller
+  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
+  pinctrl/rockchip: add pinctrl device to gpio bank struct
+  gpio/rockchip: add driver for rockchip gpio
+  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
+  gpio/rockchip: support next version gpio controller
+  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
+  pinctrl/rockchip: drop the gpio related codes
+
+Liang Chen (1):
+  dt-bindings: gpio: change items restriction of clock for
+    rockchip,gpio-bank
+
+ .../bindings/gpio/rockchip,gpio-bank.yaml     |   5 +-
+ drivers/gpio/Kconfig                          |   8 +
+ drivers/gpio/Makefile                         |   1 +
+ drivers/gpio/gpio-rockchip.c                  | 766 +++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.c            | 911 +-----------------
+ drivers/pinctrl/pinctrl-rockchip.h            | 287 ++++++
+ 6 files changed, 1085 insertions(+), 893 deletions(-)
+ create mode 100644 drivers/gpio/gpio-rockchip.c
+ create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
+
+-- 
+v6:
+ - new gpio-driver first and then drop gpio from pinctrl
+ - reorder patches
+ - cherry-pick gpio dt-binding from chenliang
+
+v5:
+ - change to devel branch
+
+2.25.1
 
 
 
-On 17.06.21 19:27, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> The px30 uses a V12 isp block so add compatible and matchdata
-> for it.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-
-Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-
-> ---
->   .../platform/rockchip/rkisp1/rkisp1-dev.c     | 25 +++++++++++++++++++
->   1 file changed, 25 insertions(+)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index a14a0bc39fb0..8a9bb97d334a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -405,6 +405,27 @@ static irqreturn_t rkisp1_isr(int irq, void *ctx)
->   	return IRQ_HANDLED;
->   }
->   
-> +static const char * const px30_isp_clks[] = {
-> +	"isp",
-> +	"aclk",
-> +	"hclk",
-> +	"pclk",
-> +};
-> +
-> +static const struct rkisp1_isr_data px30_isp_isrs[] = {
-> +	{ "isp", rkisp1_isp_isr },
-> +	{ "mi", rkisp1_capture_isr },
-> +	{ "mipi", rkisp1_mipi_isr },
-> +};
-> +
-> +static const struct rkisp1_match_data px30_isp_match_data = {
-> +	.clks = px30_isp_clks,
-> +	.size = ARRAY_SIZE(px30_isp_clks),
-> +	.isrs = px30_isp_isrs,
-> +	.isr_size = ARRAY_SIZE(px30_isp_isrs),
-> +	.isp_ver = RKISP1_V12,
-> +};
-> +
->   static const char * const rk3399_isp_clks[] = {
->   	"isp",
->   	"aclk",
-> @@ -424,6 +445,10 @@ static const struct rkisp1_match_data rk3399_isp_match_data = {
->   };
->   
->   static const struct of_device_id rkisp1_of_match[] = {
-> +	{
-> +		.compatible = "rockchip,px30-cif-isp",
-> +		.data = &px30_isp_match_data,
-> +	},
->   	{
->   		.compatible = "rockchip,rk3399-cif-isp",
->   		.data = &rk3399_isp_match_data,
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
