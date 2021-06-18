@@ -2,76 +2,90 @@ Return-Path: <SRS0=89Gv=LM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36ADFC48BE8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 07:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EB9DC48BDF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 09:16:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B68CF6100A
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 07:02:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B68CF6100A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 090AB61175
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 09:16:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 090AB61175
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K1v3Z74osIuHNtc9Tx9QwxXO7Vwcb1ZnKv3idWfTvKA=; b=tkPQPAeDiRQJ6J
-	FbJWtNP72J7j0Rflp3Wbx7CQzeNfl61JL1mmTNHLJrwFtB2ItcJT8RoncZsMqpnViJr9n92GqQvZL
-	VU55ERhJ6GNLDSzy8XcVSCfkxMoDGT9jJSY5YmzecmUYw/yO1LgNuBZ+3zMQ+3ntGynzJfciGJijr
-	RFLjMLzFc5wq53EGtlK6o/myMMy/7NRVNmXWvkuMWvA2dMCV5TjrqUIE9+SkKqwsmDieNy5SRy0KC
-	kCFm0Xl9icoeB/dSKPQSpt8Tlk31S2m8KtS5+JBxYUoB+1497HrNDaEgkyd185Z6JGWfPz1ZbdtEw
-	FX5U4fvFh2+68nZsGhWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5+hIWWkzrliLTYK9ZWPmIUoyRq1aDmAc6CZy/SV1aKc=; b=dXmJt7NNhRRVYP
+	38yI09PSdwGxjIO+IyI/J8wi9PSW2fgWCxYr7GTVO2aO6P0nj5UYwC0TNIzEWran+ogEOrL4gPmWw
+	ESlRnwVLdQyt4gk3VPd1RIdJoZYodMR9EEt2FNgTEJrJ2xJllHVOCvA4Y9Ewum3gfZarYGNPZSJZE
+	+xavta9maaQYsd+Wpx3McjLocLjr9Y+JRbcePuYPlH73xwkRWBvr5r+hBzAolJezVP8DBwIl7lFtz
+	ZzZwNBxip52bUaMvSKyFhuFjuLtPZeOJISMnamUw/fLviAyG8FuhczHWrhpGxwoggKpfgaZE2GTAZ
+	/TYsdFzUYsZUW8dqPxwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lu8WX-00D0iP-MH; Fri, 18 Jun 2021 07:02:41 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1luAbd-00DQqk-MU; Fri, 18 Jun 2021 09:16:05 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lu8W5-00D0bt-JG; Fri, 18 Jun 2021 07:02:15 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1lu8Vs-00006s-P5; Fri, 18 Jun 2021 09:02:00 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: cl <cl@rock-chips.com>, "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: robh+dt <robh+dt@kernel.org>, jagan <jagan@amarulasolutions.com>,
- wens <wens@csie.org>, uwe <uwe@kleine-koenig.org>, mail <mail@david-bauer.net>,
- Johan Jonker <jbx6244@gmail.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- jensenhuang <jensenhuang@friendlyarm.com>,
- michael <michael@amarulasolutions.com>, cnsztl <cnsztl@gmail.com>,
- devicetree <devicetree@vger.kernel.org>,
- "ulf. hansson" <ulf.hansson@linaro.org>, linux-mmc <linux-mmc@vger.kernel.org>,
- gregkh <gregkh@linuxfoundation.org>,
- linux-serial <linux-serial@vger.kernel.org>,
- linux-i2c <linux-i2c@vger.kernel.org>,
- =?utf-8?B?5p6X5rabKOW6leWxguW5s+WPsCk=?= <shawn.lin@rock-chips.com>,
- =?utf-8?B?5ZC06L6+6LaF?= <david.wu@rock-chips.com>,
- zhangqing <zhangqing@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>,
- cl <cl@rock-chips.com>, wim <wim@linux-watchdog.org>,
- linux <linux@roeck-us.net>, jamie <jamie@jamieiles.com>,
- linux-watchdog <linux-watchdog@vger.kernel.org>, maz <maz@kernel.org>
-Subject: Re: [RESEND PATCH v4 06/10] dt-bindings: gpio: change items
- restriction of clock for rockchip, gpio-bank
-Date: Fri, 18 Jun 2021 09:01:59 +0200
-Message-ID: <3493815.vrqWZg68TM@diego>
-In-Reply-To: <2021061814414460293612@rock-chips.com>
-References: <20210429081151.17558-1-cl@rock-chips.com>
- <5026524.44csPzL39Z@phil> <2021061814414460293612@rock-chips.com>
+ id 1luAbZ-00DQpt-B6
+ for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 09:16:04 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15I9BRGg001876; Fri, 18 Jun 2021 09:15:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=YbeHpyoOT7K4RcUxlMs6avWBO+hnKPrOWAYaC678ApQ=;
+ b=DZdZLN+N/AW5ehskDLMIVlJn1zdewlNVbMpWjpeel7e+tUi66RLd7EFPiyLdeHEuMNZi
+ glPD9RMWXcN+CCSN7b9mqpPzpcP5Hd0HtkwWnBNDT7eb3bLIgECN+BL3eJuUNatjxTRR
+ yaY8DAXccAuXgyqtjwkoUioNDTesCY1LyTwIR99PnTWMf3DGnBDrrIckzuwX+sRkQq8m
+ UTwkjk5/RAB24sW0KJHZ01cTt/gJ+eaRH/robWXU+1ZsWlAkYtyTLJddvxXnCMoWGyrq
+ 5QzIzTgxNlKdT6WfO7rgyVYsfTGgghOHCU38F9yRBPST86n84qKIjgPZrzwAN3c1/+49 lw== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 397w1y2urm-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Jun 2021 09:15:58 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 15I9FOXI131060;
+ Fri, 18 Jun 2021 09:15:57 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by aserp3030.oracle.com with ESMTP id 396wawjeva-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Jun 2021 09:15:57 +0000
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 15I9Fu4F132904;
+ Fri, 18 Jun 2021 09:15:56 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 396wawjev0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Jun 2021 09:15:56 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 15I9Ftmr003094;
+ Fri, 18 Jun 2021 09:15:56 GMT
+Received: from mwanda (/102.222.70.252)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 18 Jun 2021 09:15:54 +0000
+Date: Fri, 18 Jun 2021 12:15:47 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: benjamin.gaignard@collabora.com
+Cc: linux-rockchip@lists.infradead.org
+Subject: [bug report] iommu: rockchip: Add support for iommu v2
+Message-ID: <YMxkQ2Xn9g5DSEBO@mwanda>
 MIME-Version: 1.0
+Content-Disposition: inline
+X-Proofpoint-ORIG-GUID: 1epnshyQZTsF7k83-cHAq2lFKJSRyi8f
+X-Proofpoint-GUID: 1epnshyQZTsF7k83-cHAq2lFKJSRyi8f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_000213_716931_F846FFB9 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20210618_021601_541428_8521BE5C 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,82 +103,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jay,
+Hello Benjamin Gaignard,
 
-Am Freitag, 18. Juni 2021, 08:41:45 CEST schrieb jay.xu@rock-chips.com:
-> Hi Heiko
-> 
-> --------------
-> jay.xu@rock-chips.com
-> >Hi,
-> >
-> >Am Donnerstag, 13. Mai 2021, 08:46:06 CEST schrieb cl@rock-chips.com:
-> >> From: Liang Chen <cl@rock-chips.com>
-> >>
-> >> The clock property need 2 items on some rockchip chips.
-> >>
-> >> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> >
-> >this patch should definitly move over to Jianquns gpio driver series,
-> >as it introduces the usage of these new clocks.
-> >
-> >Also while the single-clock variant definitly doesn't need it,
-> >I think we may want clock-names "apb_pclk", "debounce-ref" for the
-> >2-clock variants?
-> > 
-> Okay, I think it's very good idea, 
-> but is it possible to post the reg-name patch after these dts serial and gpio serial patches ?
+The patch c55356c534aa: "iommu: rockchip: Add support for iommu v2"
+from Jun 4, 2021, leads to the following static checker warning:
 
-You're already creating a new binding when changing the max-items.
-So when we change that again later, in theory you'd need to support both
-cases (with and without clock-names)
+	drivers/iommu/rockchip-iommu.c:552 rk_dte_addr_phys_v2()
+	warn: potential shift truncation.  '0xff00000000 (0,4294967296-1095216660480) << 28'
 
-So I'd really prefer to get the binding right the first time and
-identifying multiple clocks by clock-names instead of an implicit ordering
-is way better in the long run as well.
+drivers/iommu/rockchip-iommu.c
+   544  }
+   545  
+   546  #define DT_HI_MASK GENMASK_ULL(39, 32)
+                           ^^^^^^^^^^^^^^^^^^^
 
-Heiko
+   547  #define DT_SHIFT   28
+   548  
+   549  static inline phys_addr_t rk_dte_addr_phys_v2(u32 addr)
+   550  {
+   551          return (phys_addr_t)(addr & RK_DTE_PT_ADDRESS_MASK) |
+   552                 ((addr & DT_HI_MASK) << DT_SHIFT);
+                         ^^^^^^^^^^^^^^^^^
+Is addr supposed to be a u64?
 
+   553  }
 
-
-
-> 
-> >
-> >Heiko
-> >
-> >> ---
-> >>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 5 ++++-
-> >>  1 file changed, 4 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> >> index d993e00..0d62c28 100644
-> >> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> >> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> >> @@ -22,7 +22,10 @@ properties:
-> >>      maxItems: 1
-> >> 
-> >>    clocks:
-> >> -    maxItems: 1
-> >> +    minItems: 1
-> >> +    items:
-> >> +      - description: APB interface clock source
-> >> +      - description: GPIO debounce reference clock source
-> >> 
-> >>    gpio-controller: true
-> >> 
-> >>
-> >
-> >
-> >
-> >
-> >
-> >
-> >
-> 
-
-
-
-
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-rockchip mailing list
