@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A6A2C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 18:14:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CD52C48BE8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 18:14:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7DE06127C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 18:14:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7DE06127C
+	by mail.kernel.org (Postfix) with ESMTPS id CA8A86127C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 18:14:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA8A86127C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,69 +24,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fGD1+Kjze6ZFdlBE5SYQMbkSB0wilhxQzN+4y2hsBSg=; b=zq1ssFeo6Tse35
-	XTukJqhVPbXxWlWowaa5Uic/XYoVT7wWBYuXa01AMAdkezuitaIzjGy+7UWS23mKnDkSaVVTA/xFl
-	g+HTwoS9XIMkV7A5z3sdbD/Uou8JsLiYCpcGmbHhpG0qn0onfdW+pGpc0bQcasoXZgOnTfY54xvzu
-	BorcpZ1+/w8yvFfKsyuYIy6k5l8qrPKJfb0xbU+VqK8zW4Dhx4/su4N+1Tv5w7n3gRkRGDIkJPP/m
-	2qv3xWg77EDl//lla/FLWnCPkJfJ7AY2w/0t5Df3vsdzH5DzEnTRcOEC4WmR5RTqgl3p+AggOCoTL
-	+wKNuefS04C8UOYPxB0A==;
+	List-Owner; bh=iPsj+ZvhB8xGUVuSOn+69KMiSxLCXXys0xE1LZqcUcI=; b=tE0tcULZ89PfEg
+	Bg6jHlZt3aVsPQJRxOeO5mgaH3RgtXjQkZ6GczvxGiDjpYDo2268eOLeRDAjFOhmql9eACG6LpKjs
+	ymMs5AnzyplpqjMiXTFsFpMeo6Wji56uxhpe7Ie9F1MIJjQz0QO43xVuxBOItFbX2/v6GsFoSOPFc
+	OFMdkrvhwI1SVRj99wnSh+pnkqVCuU8pWnImZ5ozeQpNQO6s6hjn+XqbDN4Plyyl5IQ9Xrm6E2YIS
+	c8X75ZOJDo7HgYUPBJ+f6oR+iYVWqp3xtcieD6xSU9ag32ud8lw4HSzknarlmEjU5TxBOQlPxx3OO
+	aThNm36AOYalX0wPbo6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luJ0C-00F8Er-HL; Fri, 18 Jun 2021 18:14:00 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1luJ0U-00F8PP-BG; Fri, 18 Jun 2021 18:14:18 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luIzg-00F819-RI; Fri, 18 Jun 2021 18:13:30 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- h11-20020a05600c350bb02901b59c28e8b4so9278969wmq.1; 
+ id 1luIzh-00F81M-K4; Fri, 18 Jun 2021 18:13:30 +0000
+Received: by mail-wr1-x431.google.com with SMTP id m18so11698968wrv.2;
  Fri, 18 Jun 2021 11:13:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UG1JOqqWkVJ7vxd2JTkW+ImSRr+NkC9K3MMi/AjrjDU=;
- b=Xkzn6Ksrnwia97J/BpCY2xkdPjNlvHd3y9vejcoRWCqvmOR5xUiorCQaI4mZHvnynm
- ndNXHy78Pt50Vj0fpMqY0cKIjesMEhZqGdSCPdM1C33Zrr58lXAs8I1oS3u6d9DnTbdi
- JynaoBGH76QpwwnaPxxjR4OF2Q410iJvw//1dOKAldVJkG8H9hUREd9FvIRu0MVLG3ui
- kHKvmqYumEQR0pk/igFV/JJbUO1msDEZmobaIE68/X4FZOFtoZ5bfYzXXwnP4E1S05PS
- xOiIHCgJ447PcpCF2Ev3DPAD38SX/Q7BQolquiS6nQwo79jFVq916zxilq558Laiwfzo
- B0fQ==
+ bh=FRadAAJthazKXCs3EEyrRLqIIy1SFHZ81iHPWgmnJRI=;
+ b=ny3LB6aXzm8w8C3+A9jf74tf+BJ986neHs79X76TCRusy5yLSp0LO3EWdBMg0srLNh
+ KIeluN/0svlz2LiKKVdBMwWQ2tyMAriywQiW9cqmW/LaGjqjtfbb5d9ECq2MWH2UpXmA
+ mE6DQTzTQIrkOc82FAufn5lZ0UHmzBzzD1yoHZVQcKa45Wx/8lkFLyAy0o/QBW0MQVj0
+ myGns/y4E4h/zzLtvcglLgvzg/Hz2drPsNPJpYYhgYi86j3gEAvx12/a7cnDoZUI+2bT
+ n013PLal7MkOMd3BP6gE7OervN1873OvazXnpI1urafITd3UmANw62uMjEBfKxdlGmwt
+ jWSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UG1JOqqWkVJ7vxd2JTkW+ImSRr+NkC9K3MMi/AjrjDU=;
- b=WHUFug+/n5J2Z+hDJ+45ckz3d4J0ojRfiOG9iGHp/0YOlXgtZrFYLMbDSxoIpeQMwR
- YFyVXUDTlchJBPnMXNrliWB7zJLz/pDYUVmK/jk4ZLmpGZ7Vur6VVP38VafEHny4Ob19
- tyBdcQv6oQVeaprAK9h8eBYP769/HqfgSHhetqhffrrXkVtYEsgzsZiGg87HG+/L6hhB
- g9KZb8t4n06FRfzPlNRAqrWAOm0USztq+iPc0jo4iWjzk2kyuBRvhQhp6/Q6SWtLA4Ca
- CXDCnYiCw85TJKIEDUSQDR8TWUzZce491CfYLeSqSyhxsVFc1mxM50uyuL2bZVBpxMGY
- llPw==
-X-Gm-Message-State: AOAM5327m4OivSw3iCHL5k/k6P16SWkpmR0lUU8Q6ZPQGQo5j8NHwXVV
- qFEwCUiMn3fMVFlgCve6qQ==
-X-Google-Smtp-Source: ABdhPJx+u7DyeUluCInilWHRKBpThJKW9LLFAGMQfBOa+7iNfIt8TIajVsZ3oq20Lw7RsABn3ZHwhA==
-X-Received: by 2002:a05:600c:4f09:: with SMTP id
- l9mr13253406wmq.114.1624040007086; 
+ bh=FRadAAJthazKXCs3EEyrRLqIIy1SFHZ81iHPWgmnJRI=;
+ b=VCVZ3s6UQifCrB5asAc3biEQ1qGP3KxDgIshi0b64K/D3CTqBdVpWw2CIGMtNRGzLa
+ 182CWheEQB/sD6EMrYczkdudjJAaMxQ6EWL5QsGnBD8lnv5SSEHQPloNmY8u8gl8Gggr
+ 3uKwPI8P0k1/QoOMZnL2MXvz/tvSYAgWuyix50nrrqmZcLPjdPXqYVPZ7OSLICWZQcmG
+ fjooMapMGeM73E2FtGhbKHI/bx8eaXlwv+uI1Nr0sVioA21y9kRbHmHkI4aooeP1v26c
+ Fw8yrpBmKNmUMGkrM9TLyJA6a81hmau4G718fc56sRK1l0H7RKOy0bHnmx2X1P2BNIks
+ uWgg==
+X-Gm-Message-State: AOAM5325yy5QUXilLg46r5GIuo9nX5W4iCq/kKnov19o5LYzlAk1CwNR
+ nA7fRNjFYrfgZBikOvaEtDozHHmOJcyg
+X-Google-Smtp-Source: ABdhPJxwYQRQMqECTGWplAPGQubZuPc+DAoMbIBgAWiqVlg7kAw1Gi3FbNatZS9UZrU2FM6mBdz28w==
+X-Received: by 2002:adf:d4cc:: with SMTP id w12mr13871170wrk.216.1624040007816; 
  Fri, 18 Jun 2021 11:13:27 -0700 (PDT)
 Received: from localhost.localdomain (ip5b434b8b.dynamic.kabel-deutschland.de.
  [91.67.75.139])
- by smtp.googlemail.com with ESMTPSA id l10sm9306782wrv.82.2021.06.18.11.13.26
+ by smtp.googlemail.com with ESMTPSA id l10sm9306782wrv.82.2021.06.18.11.13.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Jun 2021 11:13:26 -0700 (PDT)
+ Fri, 18 Jun 2021 11:13:27 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>
 Cc: Johan Jonker <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 4/5] arm64: dts: rockchip: add ES8316 codec for ROCK Pi 4
-Date: Fri, 18 Jun 2021 20:12:55 +0200
-Message-Id: <20210618181256.27992-5-knaerzche@gmail.com>
+Subject: [PATCH v2 5/5] arm64: dts: rockchip: add SPDIF node for ROCK Pi 4
+Date: Fri, 18 Jun 2021 20:12:56 +0200
+Message-Id: <20210618181256.27992-6-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210618181256.27992-1-knaerzche@gmail.com>
 References: <20210618181256.27992-1-knaerzche@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_111328_936240_79815E6D 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20210618_111329_765501_D888146E 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,68 +102,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ROCK Pi 4 boards have the codec connected to i2s0 and it is accessible
-via i2c1 address 0x11.
-Add an audio-graph-card for it.
+Add a SPDIF audio-graph-card to ROCK Pi 4 device tree.
+
+It's not enabled by default since all dma channels are used by
+the (already) enabled i2s0/1/2 and the pin is muxed with GPIO4_C5
+which might be in use already.
+If enabled SPDIF_TX will be available at pin #15.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 28 +++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 7d0a7c697703..80925a58e470 100644
+index 80925a58e470..b5b8a79116fd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -36,6 +36,12 @@ sdio_pwrseq: sdio-pwrseq {
- 		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+@@ -42,6 +42,23 @@ sound {
+ 		dais = <&i2s0_p0>;
  	};
  
-+	sound {
++	sound-dit {
 +		compatible = "audio-graph-card";
-+		label = "Analog";
-+		dais = <&i2s0_p0>;
++		label = "SPDIF";
++		dais = <&spdif_p0>;
++	};
++
++	spdif-dit {
++		compatible = "linux,spdif-dit";
++		#sound-dai-cells = <0>;
++
++		port {
++			dit_p0_0: endpoint {
++				remote-endpoint = <&spdif_p0_0>;
++			};
++		};
 +	};
 +
  	vcc12v_dcin: dc-12v {
  		compatible = "regulator-fixed";
  		regulator-name = "vcc12v_dcin";
-@@ -422,6 +428,20 @@ &i2c1 {
- 	i2c-scl-rising-time-ns = <300>;
- 	i2c-scl-falling-time-ns = <15>;
+@@ -632,6 +649,15 @@ &sdhci {
  	status = "okay";
-+
-+	es8316: codec@11 {
-+		compatible = "everest,es8316";
-+		reg = <0x11>;
-+		clocks = <&cru SCLK_I2S_8CH_OUT>;
-+		clock-names = "mclk";
-+		#sound-dai-cells = <0>;
-+
-+		port {
-+			es8316_p0_0: endpoint {
-+				remote-endpoint = <&i2s0_p0_0>;
-+			};
-+		};
-+	};
  };
  
- &i2c3 {
-@@ -441,6 +461,14 @@ &i2s0 {
- 	rockchip,capture-channels = <2>;
- 	rockchip,playback-channels = <2>;
- 	status = "okay";
++&spdif {
 +
-+	i2s0_p0: port {
-+		i2s0_p0_0: endpoint {
-+			dai-format = "i2s";
-+			mclk-fs = <256>;
-+			remote-endpoint = <&es8316_p0_0>;
++	spdif_p0: port {
++		spdif_p0_0: endpoint {
++			remote-endpoint = <&dit_p0_0>;
 +		};
 +	};
++};
++
+ &tcphy0 {
+ 	status = "okay";
  };
- 
- &i2s1 {
 -- 
 2.27.0
 
