@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2704AC49EB7
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32BEAC48BE8
 	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70AFC61260
+	by mail.kernel.org (Postfix) with ESMTPS id A3CE8613ED
 	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70AFC61260
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3CE8613ED
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S0fy7eicc9dnZuwNoYHaaboCbDtPKUyiHEjSo/YCd0w=; b=2KxR56uR+P4mRw
-	YP2YhBpohlry4/pCN/ZHiE1lUMz51uirCLKRm2blciu8ThshQP3AKKtnBPqMS6uz13a7J6bMO1IUy
-	GgR4/jBx+SEg6Rg72tmhHFIj03FGytcYo1LhdjSibEbLV0Sx2tMRZdjEKRJRcPd4MS4ZfM4GKJX1V
-	JEOa34krupJXZue266J4p965ldjIvvjbleM/Gv3vIKexeEannCkpPB7PXvSjrtkSEVaNhZXi+j/Qu
-	uNftFL0vbaLD2+2LDRehJnVHa7uUR9QZ+CG4v6oG1EzwQcPL3WVNwTOqKPHY14adJP6EUe5V9sjqT
-	1O99dnTa2MNJzougRXcw==;
+	List-Owner; bh=EmZfs56NFZkQKxcleZ804xPaP4G0GZJbeQ1kWV0ioJc=; b=bUei0rINzw068u
+	9AEbbXyWGux05u/tmmC9QSXTr3/SxT3ZE4pbqOI7A8BF3/hGvOBxO8NRveTECGAc+GS8/w+hjHSn8
+	mO5ucHD3AU39hdybrYjmDfBMH+bgbzcCK+ZdQX0ge4nqmbP9OoQnnHxRqouBVKfndlrQtu3KH7x+g
+	ScjMSoE5g5UQUHTdn1jjlEI1qqOpJwIeKNOKw4VjI+A8JyrhPj8Y1setVZgXxFNNkZT5hmGKnf1mT
+	I5zgVQlytbNKq71XXG795JbYPr6tLEIrI3XW9SNz+Mp0mLN3oCS3XmYQWQM6+wEUO+jvL/VsCJCnz
+	ruUV6aqj5FEClBZRjq5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luE93-00E6Zi-0e; Fri, 18 Jun 2021 13:02:49 +0000
+	id 1luE94-00E6aB-L9; Fri, 18 Jun 2021 13:02:50 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luE8w-00E6Uf-Tx
+ id 1luE8x-00E6Ul-5f
  for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 13:02:45 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1luE8u-0001y0-Tu; Fri, 18 Jun 2021 15:02:40 +0200
+ id 1luE8v-0001y0-B0; Fri, 18 Jun 2021 15:02:41 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -49,16 +49,18 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
  Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v6 02/10] dt-bindings: media: rkisp1: fix pclk clock-name
-Date: Fri, 18 Jun 2021 15:02:30 +0200
-Message-Id: <20210618130238.4171196-3-heiko@sntech.de>
+Subject: [PATCH v6 03/10] dt-bindings: media: rkisp1: document different irq
+ possibilities
+Date: Fri, 18 Jun 2021 15:02:31 +0200
+Message-Id: <20210618130238.4171196-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210618130238.4171196-1-heiko@sntech.de>
 References: <20210618130238.4171196-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_060243_057287_F9E42F69 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20210618_060243_269092_3C0F4FDF 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +80,79 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Having a clock name as "pclk_isp" suggests really hard a remnant from
-the vendor kernel.
+Some variants have one irq signaling all of MI, MIPI and ISP events
+while some rkisp1 variants use separate irqs for each.
 
-Right now no driver _and_ no devicetree actually uses this clock name
-so there is still time to fix that naming.
-
-Therefore drop the "_isp" suffix and only name it pclk.
+Adapt the binding to handle both cases.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/media/rockchip-isp1.yaml         | 45 +++++++++++++------
+ 1 file changed, 31 insertions(+), 14 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index a6b1eff879ed..2f8f0625d22e 100644
+index 2f8f0625d22e..14ac5730b377 100644
 --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -41,7 +41,7 @@ properties:
-       - const: aclk
-       - const: hclk
-       # only for isp1
--      - const: pclk_isp
-+      - const: pclk
- 
-   iommus:
+@@ -21,7 +21,14 @@ properties:
      maxItems: 1
+ 
+   interrupts:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 3
++
++  interrupt-names:
++    items:
++      - const: isp
++      - const: mi
++      - const: mipi
+ 
+   clocks:
+     minItems: 3
+@@ -90,19 +97,29 @@ required:
+   - power-domains
+   - ports
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        const: rockchip,rk3399-cif-isp
+-then:
+-  properties:
+-    clocks:
+-      minItems: 3
+-      maxItems: 4
+-    clock-names:
+-      minItems: 3
+-      maxItems: 4
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3399-cif-isp
++    then:
++      properties:
++        clocks:
++          minItems: 3
++          maxItems: 4
++        clock-names:
++          minItems: 3
++          maxItems: 4
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,px30-cif-isp
++    then:
++      required:
++        - interrupt-names
+ 
+ additionalProperties: false
+ 
 -- 
 2.29.2
 
