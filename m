@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED5A0C49EA4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2704AC49EB7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77FFA613F3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77FFA613F3
+	by mail.kernel.org (Postfix) with ESMTPS id 70AFC61260
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Jun 2021 13:02:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70AFC61260
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BDgbruNNZ3HWBmoTRtPavcrVrI3dB1cEg/HNTYRrPHg=; b=faO4ioeJKdDjUG
-	GJYMXgrdnTifchesJBN6SdQM6403InApOX5nLAlOOvEGw6p26OIhC+AF2iIiDywlxFUNVskhlLSd8
-	jqiWEvLE1EVDUYeoMm2OzP0duRbT3YF2gLaxZsWb5lGM5XNmxvqP27YNai37qNiJGbc92N+wpE3gs
-	bV0teLMDIpGZu3k3g2gNcrgqrN2sjXYR1ChQy7/A+l+o8AP7reECXLXwoJiqB7b6UsINNOiJ+JJux
-	ejPfcRlVoiep6NmVZB0KFDextbnvSgA2vi0XyQei/JRlkseRlCu0iUHAhhxTrOhn5+CISgC9mzOEx
-	2mnMOB9JgYnUN0wvvNDg==;
+	List-Owner; bh=S0fy7eicc9dnZuwNoYHaaboCbDtPKUyiHEjSo/YCd0w=; b=2KxR56uR+P4mRw
+	YP2YhBpohlry4/pCN/ZHiE1lUMz51uirCLKRm2blciu8ThshQP3AKKtnBPqMS6uz13a7J6bMO1IUy
+	GgR4/jBx+SEg6Rg72tmhHFIj03FGytcYo1LhdjSibEbLV0Sx2tMRZdjEKRJRcPd4MS4ZfM4GKJX1V
+	JEOa34krupJXZue266J4p965ldjIvvjbleM/Gv3vIKexeEannCkpPB7PXvSjrtkSEVaNhZXi+j/Qu
+	uNftFL0vbaLD2+2LDRehJnVHa7uUR9QZ+CG4v6oG1EzwQcPL3WVNwTOqKPHY14adJP6EUe5V9sjqT
+	1O99dnTa2MNJzougRXcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luE90-00E6XI-Ag; Fri, 18 Jun 2021 13:02:46 +0000
+	id 1luE93-00E6Zi-0e; Fri, 18 Jun 2021 13:02:49 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luE8w-00E6Ud-Tu
- for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 13:02:44 +0000
+ id 1luE8w-00E6Uf-Tx
+ for linux-rockchip@lists.infradead.org; Fri, 18 Jun 2021 13:02:45 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1luE8u-0001y0-Gw; Fri, 18 Jun 2021 15:02:40 +0200
+ id 1luE8u-0001y0-Tu; Fri, 18 Jun 2021 15:02:40 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -49,16 +49,16 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
  Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Subject: [PATCH v6 01/10] media: rockchip: rkisp1: remove unused irq variable
-Date: Fri, 18 Jun 2021 15:02:29 +0200
-Message-Id: <20210618130238.4171196-2-heiko@sntech.de>
+Subject: [PATCH v6 02/10] dt-bindings: media: rkisp1: fix pclk clock-name
+Date: Fri, 18 Jun 2021 15:02:30 +0200
+Message-Id: <20210618130238.4171196-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210618130238.4171196-1-heiko@sntech.de>
 References: <20210618130238.4171196-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_060243_054284_661AAF13 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20210618_060243_057287_F9E42F69 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +78,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-The irq variable in struct rkisp1 is unused as it is only used
-to request the irq during probe, so remove it.
+Having a clock name as "pclk_isp" suggests really hard a remnant from
+the vendor kernel.
+
+Right now no driver _and_ no devicetree actually uses this clock name
+so there is still time to fix that naming.
+
+Therefore drop the "_isp" suffix and only name it pclk.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 -
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 2 --
- 2 files changed, 3 deletions(-)
+ Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 038c303a8aed..be8a350c7527 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -352,7 +352,6 @@ struct rkisp1_debug {
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
--	int irq;
- 	struct device *dev;
- 	unsigned int clk_size;
- 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 7474150b94ed..7afa4c123834 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -489,8 +489,6 @@ static int rkisp1_probe(struct platform_device *pdev)
- 		return ret;
- 	}
+diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+index a6b1eff879ed..2f8f0625d22e 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+@@ -41,7 +41,7 @@ properties:
+       - const: aclk
+       - const: hclk
+       # only for isp1
+-      - const: pclk_isp
++      - const: pclk
  
--	rkisp1->irq = irq;
--
- 	for (i = 0; i < match_data->size; i++)
- 		rkisp1->clks[i].id = match_data->clks[i];
- 	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
+   iommus:
+     maxItems: 1
 -- 
 2.29.2
 
