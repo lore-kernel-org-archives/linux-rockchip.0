@@ -2,86 +2,64 @@ Return-Path: <SRS0=BS4M=LN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4C04C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Jun 2021 12:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1997FC2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Jun 2021 14:26:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B7AC611ED
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Jun 2021 12:17:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B7AC611ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id AA60D610A7
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Jun 2021 14:26:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA60D610A7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r70tUOUXHfDZzw/3vqHOkdJyivuY/Ftr78qI/M3anuM=; b=FkpspPIVwdg04i
-	jDGfZJ9So3YXMNVYXac6E9wsR09vCMJkjaJ65vYhMWETtafn2POcgDzk+UPXHMhG498GJn/x3A1aX
-	jP96KClbvx7FRtySLuCFDIuQfosxQ6dIcpNh5E88hqnUMZd/zSGJ9iTBhVgmloQRRFiz/xZkozeHy
-	/P1w0xS+5l6ax8opS7YitMicBE3bppYYgosmwqDENbguiUyGWhlz7TIuYjmP9grnvzcE4lh2dhOrq
-	2WS/6v4g7wfeJ9RQZ5JG5jdlEWFc/FcP+dv/j07m2VqD7x8LI58stZxluwD8cDWvuc+vjM2Zrx99k
-	/povjSS/HpvDi2vZrlUQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=R3RorClXAbfa/ag/Fj0CaEOSqsj9E+6dID6esEE+1dc=; b=THf64YnsF0+XAl
+	jcmvyzV0DmisK8TnPYACvCInW71UzECXHcPhhStsqz3nC+J/850sOY8iBtpAL1WM7mlVo09W5AgPV
+	pMIQQ4aq/03x+u0yrT83ELKBv9/v5hzqYFuW3ouQBftihxa7UkBMYC5iSM7Q1NbCSPmwbxjs8IN6X
+	NdExiHLRSbFQDICm4JVe1UmxKDtjxnBjSb1C7RWMkqzxlLlztLTwgo5uFgzPC5v8ssmfjAtdYjE3R
+	Sc/YXoC/o3H5XYFr7PvyQ2zNhuDkI3Ds3PdunmvFiKgh4/v7mpZYSX1Z3BlUkOo7ppJ3mugptADjm
+	J2UKyFZ/YSyPEhT3m+gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luZuH-00Gw9n-Vm; Sat, 19 Jun 2021 12:17:02 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1lubv8-00H5tk-AL; Sat, 19 Jun 2021 14:26:02 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luZu4-00Gw6Q-HM; Sat, 19 Jun 2021 12:16:49 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id c5so13892992wrq.9;
- Sat, 19 Jun 2021 05:16:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DQe8YQsStcqk1cD1S28+TTHEdxD2TLqNRW/Z4azWeuk=;
- b=YEGx+e6GRacfbyS8VMptMWtiVxrRFZhzyco6ZXWAMue5SOAHjKrRthBCCiJkdlGhmk
- 9EpFsgPox075qb3KUMBAEgZV52akpFcqSpjIBvQN2LSy5b+Z6nh3/kwLzNvOL/qxrdFm
- lZaZzJt3NId8knxjman5t1NtXAMbMb+OeZ/tsyLgy/HKVFz9XvSWh4/0/4WcH+dmo3Rw
- wg0qdhvwn/b2xXyxjYGBzH91Br22PSCvqvTgW2rvQ+CfRvMK2vNCOLZ/1ELtUoQPZvls
- Er9zIctbuwgH2y9XWK0Dee/0z9wIwq5D5wxRTtPJw7/TW1WA2PO3w5ErtO7Rqcllw31V
- JC5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=DQe8YQsStcqk1cD1S28+TTHEdxD2TLqNRW/Z4azWeuk=;
- b=uSUopNmC9ynJJF77gc5C+j3yzCRpQdPIEMEXWSGpH4Va2wy8bM/8nWvxyyrWf0j9LA
- 9X66aqoLqxQStX3Upeoy9QRJ6AORv7/DaNxIbCHoue6oTfI0XMZUmC3w8LDfXlVq8FbU
- C1kqMY7jZFs0Bw8Uz5RdKTmnyt3AXSLRhVHj5boYqCYfXNnGg9SoXGzVUqxWJNdGX0L7
- FNcCg65N8dK0hYS1KvChD8RNFXl650nGeO2u0LKp8gjbSngn3WTxH3hpZ3blCZJBZhGj
- RjpuMWP8q6acEEIvZfIziTMHPlwWZkd/+u7GuWppZHGv2Wo9VNhQcE8fk0zuIQJ1HIUE
- pv1Q==
-X-Gm-Message-State: AOAM5336PFSBR+BT4WepPx+5kmQKcDhotH+OOlLx9w31ifyoneYEwUYY
- rFA8b2YmkqWHCUwN5rDZwA==
-X-Google-Smtp-Source: ABdhPJzKu0kW9K0mVhxN6vSOZcgtByR6/WHrgGG9wKhpU4Qv7ttMhuYoZL5xGpry0bRusw0fSaZHHQ==
-X-Received: by 2002:adf:9bd0:: with SMTP id e16mr17497735wrc.392.1624105007127; 
- Sat, 19 Jun 2021 05:16:47 -0700 (PDT)
-Received: from localhost.localdomain (ip5b434b8b.dynamic.kabel-deutschland.de.
- [91.67.75.139])
- by smtp.googlemail.com with ESMTPSA id f19sm5249790wmc.16.2021.06.19.05.16.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Jun 2021 05:16:46 -0700 (PDT)
-From: Alex Bee <knaerzche@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: add ir-receiver for rk3399-roc-pc
-Date: Sat, 19 Jun 2021 14:16:42 +0200
-Message-Id: <20210619121642.7892-1-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.27.0
+ id 1lubv6-00H5su-98
+ for linux-rockchip@lists.infradead.org; Sat, 19 Jun 2021 14:26:01 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 3FDE11F4404F
+Message-ID: <308309f81a684928bbed52b6d0ca0b367dcb8bbe.camel@collabora.com>
+Subject: Re: [PATCH v2 3/3] dt-bindings: timer: convert
+ rockchip,rk-timer.txt to YAML
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Heiko
+ =?ISO-8859-1?Q?St=FCbner?=
+ <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org
+Cc: Kever Yang <kever.yang@rock-chips.com>, Rob Herring
+ <robh+dt@kernel.org>,  kernel@collabora.com
+Date: Sat, 19 Jun 2021 11:25:45 -0300
+In-Reply-To: <398f8cd1-59cb-369f-0356-85cc1a64bb28@linaro.org>
+References: <20210506111136.3941-1-ezequiel@collabora.com>
+ <20210506111136.3941-4-ezequiel@collabora.com> <15819722.JCcGWNJJiE@diego>
+ <398f8cd1-59cb-369f-0356-85cc1a64bb28@linaro.org>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210619_051648_607154_DAE2CCD5 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20210619_072600_496226_82F4F4EF 
+X-CRM114-Status: UNSURE (   9.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,55 +72,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Like some other RK3399 boards RK3399-ROC-PC has an ir receiver
-connected to pwm3 which can be used as gpio-ir-receiver.
-
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 8b27ee4be755..d1aaf8e83391 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -63,6 +63,13 @@ power {
- 		};
- 	};
- 
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ir_int>;
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
-@@ -604,6 +611,12 @@ pwr_key_l: pwr-key-l {
- 		};
- 	};
- 
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	lcd-panel {
- 		lcd_panel_reset: lcd-panel-reset {
- 			rockchip,pins = <4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_up>;
--- 
-2.27.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFuaWVsLAoKT24gRnJpLCAyMDIxLTA1LTI4IGF0IDE3OjU3ICswMjAwLCBEYW5pZWwgTGV6
+Y2FubyB3cm90ZToKPiBPbiAyOC8wNS8yMDIxIDE3OjU2LCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+PiA+IEhpIERhbmllbCwKPiA+IAo+ID4gQW0gRG9ubmVyc3RhZywgNi4gTWFpIDIwMjEsIDEzOjEx
+OjM2IENFU1Qgc2NocmllYiBFemVxdWllbCBHYXJjaWE6Cj4gPiA+IENvbnZlcnQgUm9ja2NoaXAg
+VGltZXIgZHQtYmluZGluZ3MgdG8gWUFNTC4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEV6
+ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiA+IAo+ID4gY2FuIHlvdSBh
+cHBseSB0aGlzIHBhdGNoIHRvIHRoZSB0aW1lci10cmVlPwo+IAo+IFllcwo+IAo+IAoKQ2FuJ3Qg
+ZmluZCB0aGlzIG9uZSBhcHBsaWVkIGluIC1uZXh0LCBtYXliZSBpdCBmZWxsIHRocnUgc29tZXdo
+ZXJlIDopID8KClRoYW5rcyEKRXplcXVpZWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
