@@ -2,63 +2,67 @@ Return-Path: <SRS0=N5vj=LP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29C62C48BDF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jun 2021 02:57:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DD3DC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jun 2021 03:56:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E107F6117A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jun 2021 02:57:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E107F6117A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 37F4B60FE6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Jun 2021 03:56:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37F4B60FE6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KPDO7OjBWDbMi6QZdKgHUzXBy99DekYon4Kf9klMa5w=; b=CQwKjlVOuEc0IR
-	Vw5HCeBsgwhIMUjfCUbPSxF9eaTkcuStOrn+zyH0vb8dKWF6uPRlFs9UuywdxiIjaRT8OsRvjnDEd
-	PG0+EPuPD8SkqdB6SRfcQY9Dg+JLR1g9MTvw/U8wU8aVkjBzTJgCJI1+X9woFhrbscaH5cVFkt7PW
-	l5dagQU4jDyqKQsg/UTWuosr/WRm+0QE6D49PoIgk5es+U/oNGpPHV9dmb9glOlPGP4DM418ijMaR
-	PfHIm//e8X4jfi/RQvzaUzcLmzuZyHHn4cTqS9ej85Ljo8KBXsKV2ojM1K3FxlAf/cXQ4CQD4NDh1
-	aHpi/7pJ4IzaLKIlfYLg==;
+	List-Owner; bh=5RlUnYEaMxjLWwZ6T1et9csl6DF4b9tJe4lM2Y9wcFg=; b=RUisY8XBlNs2G4
+	5QjBL2l2raCBjAkla8vGCmQpbd/6GbsoijLctGfVVL188Ujciiqjni4yRT4wiNrachLzh1+u8sY/G
+	pL09MVPXMKk6kNZCn/eidjmCwK55e5IDi9dn62yeAUohziz8RzGQclYddEtb7pXk+5jikCmoFuoYL
+	wKOJTRLU8a5g08KSJ9LOY0O/YXlQOp6vRqOnFOFKljBfOMDn14HERVly/itEoiMZMuGp/fhDcptg8
+	jDOf9eA42ZDyUA9Wj0ORrqC+d9JHbDSqOpn/09adNvGHTOidrhwo34AaWfX1xHfaq20t8Ke3oqmug
+	v/34tkigpdpNBA7BH/Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvA8B-001uyp-Av; Mon, 21 Jun 2021 02:57:47 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lvB2y-0020nu-4Y; Mon, 21 Jun 2021 03:56:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvA7y-001uwt-5r; Mon, 21 Jun 2021 02:57:35 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 496B21F40112
-Message-ID: <62c3e6bccfb3d8c0ef6190861a8608abff34e885.camel@collabora.com>
-Subject: Re: [PATCH 0/5] Rockchip PX30 RGA and VPU support
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-Cc: Jacob Chen <jacob-chen@iotwrt.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>,  Alex Bee <knaerzche@gmail.com>, Chris
- Healy <cphealy@gmail.com>
-Date: Sun, 20 Jun 2021 23:57:14 -0300
-In-Reply-To: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
-References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ id 1lvB2v-0020nD-IC
+ for linux-rockchip@lists.infradead.org; Mon, 21 Jun 2021 03:56:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 55B3660FE6;
+ Mon, 21 Jun 2021 03:56:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1624247785;
+ bh=o+yNEEIyaXKZ/KHvbH8sXE9WCTIGJj1kmH3r6BJ+mDk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=j7xgZp9m9EO2cXxxPGTMsIQJP5CoxEvXneKnIKveLqiy57gakWZmSQZGdV+cRrxSS
+ sMU050PhUUsEtUwC2hMAtJ14auoViTcD5lWQIAPR3DFRBYYELbwLBzImXIoe9ztzwf
+ Kby/xe0aeFHnVpo+KWj57/Izti02MIBIZH/pZxlU1o8sDM0mDNsgp4PP9Fq6U6sRlM
+ 45kD2jZRvWxq8wK7Ltez6DuyMmGgVhirlCMSESTuoubfk6J/7y3PZFiCubyHbkf4pW
+ sHzfYAdm5ofnOkP57WdY2GR6wXujs6GWi0mOTxQf/2RQpP1w/drq5RDuxhgNC2AF3T
+ u75zYtxT9hkhw==
+Date: Mon, 21 Jun 2021 09:26:21 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: kishon@ti.com, robh+dt@kernel.org, ezequiel@collabora.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 0/2] phy: rockchip: add Innosilicon-based CSI DPHY
+Message-ID: <YNAN5eg76VuZdyiq@vkoul-mobl>
+References: <20210610212935.3520341-1-heiko@sntech.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210610212935.3520341-1-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210620_195734_374883_72AAD06A 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20210620_205625_653524_DDB85977 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +80,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
-
-On Thu, 2021-01-07 at 14:40 +0100, Paul Kocialkowski wrote:
-> This series adds the required bits for RGA and VPU support on the
-> Rockchip PX30 SoC.
+On 10-06-21, 23:29, Heiko Stuebner wrote:
+> Newer Rockchip SoCs use a different DPHY for camera operation
+> based on an IP block from Innosilicon.
 > 
+> This adds a driver for it for px30/rk3326/rk3368/rk1808.
 
-Do you plan to resend this series?
+Applied, thanks
 
-Alex recently renamed [1] things so some tweaking will be needed,
-but it shouldn't be complicated.
-
-[1] https://lore.kernel.org/linux-media/20210614213215.99389-1-knaerzche@gmail.com/
-
-It would be great to have support RK3326 and PX30 :)
-
-Kindly,
-Ezequiel
-
-
-
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
