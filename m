@@ -7,15 +7,15 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7899DC2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:24:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FCFFC48BE5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:25:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43E83600D1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:24:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43E83600D1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id C96E6600D1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:25:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C96E6600D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,58 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fnVZeoyNfbnys7vYQ6EYmt+WpeIi6iYELM3pmNSJh/g=; b=2SXi/Ehst2iYXn
-	P3T9fxpwB0JN0Qq9BZAbdx7+1B97VQoAly4DUykqf50ehSizh/gTY9znXQttK8u8QpOSipaXmzxWP
-	4yM1GjfZaeBZU2tH7U57srIWFbIieTAxXvjW8xwvoocH7idMnL1PjS9ronrAp9HdGNxaq3RlLnO3Q
-	5cLeUzSz5XWYNVMk/9DsiBPuA4RHkk6BNcviZroSX/aVr1onwd8hik06wOrqAKyEW2fi8u1vgZkS1
-	CTSiL+rFg7swE+FoBE2AWfyVZlCFYceDFpg7najdh5HYlWW3nLnR2srFptHMJSzw1TP+WjnKFZWJl
-	0QOhZoBUHvB0S0YypjYQ==;
+	List-Owner; bh=rj2hq6ZQCP6T7MiTbunFR9f84N/B2P6jVGtBOOyl3OA=; b=I3LORjnaLlzizW
+	uN2ztUYE9IhlGzASolMjLGUsJ3h1msrIKr25XHaRyZqXkaChKybdUudshAIb9I4ptUxsqJwgKwrmg
+	gAeonyLgz075quo1HnnzPlOqbzXw5zEs5zoKlPaY1kJ6/uUeeAi5E5bkOKvAAaIxt84ozK9vMX4ac
+	E2/mFfdQ6XiYrmCylESo8ua/0NOeUugzK1R6EbB9jDy2+R2qBbjEmuuEotpesYt8/TVw6hMAnJnJ0
+	ceLaBvsl45h6STzBXqu4zwi4rhjF8GIy3o19dxG3vPwYVJxkOVyM0z0LIAwmCZ3XbVapHRRUF3S4Z
+	6TExRmEHID21MzNLZ3bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lviGM-007fv8-OJ; Tue, 22 Jun 2021 15:24:30 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lviGJ-007ftP-Px
- for linux-rockchip@lists.infradead.org; Tue, 22 Jun 2021 15:24:29 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id a11so24147979wrt.13
- for <linux-rockchip@lists.infradead.org>; Tue, 22 Jun 2021 08:24:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ZeqWuXtX2BrYCzJWvhQ3y4KbulOq0QYwwBD94QW58/k=;
- b=ZlqWM+jail8wVe6yddVhoDkll94K1QcrO1qPfcnvA5ZgF7O5UWGiwgAoirgPr5VThQ
- PxLEoFhDthsBu11VLuKNyZ4t3jV2oXfE2AjGKpc2koo0GT0EP0wz7tBbPjapFZRbS4qF
- iL45agNDVjpfa14ecS7F0zPBWAmsGHIs8s5iQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZeqWuXtX2BrYCzJWvhQ3y4KbulOq0QYwwBD94QW58/k=;
- b=m6ZOsHcnNIvDtyJwoPgiXJ/sLlsBBfmxvtXE45S+Vx9KnMMlxXnkdkUenJkz4QW5k7
- 9sWu+qYLe7LCPxgt0raUI0L0572k07QQP1qc9GhgwSGsojYrCjXf77m0oaVz3CMQiR/X
- R4cHe7ZGSzXGR39lN6HsyJUdsMgg9gIzFdg3mAcaITwgpsE4iyhjTvCntOVxlwF2MqyY
- qRIIGDMmmp/+3C5tFIcdFulbw3toB+fyuTKurep9c6hyufUMJc6/6ZRse/uKrHZIpumg
- CmnC9CcEeuUHYNk7jyEtPs/kl5NN6y57egWkz9+FBMhtBFcgg8B++g0irQgOEC1zyUgm
- 3slw==
-X-Gm-Message-State: AOAM5330hkjaWFvMeN/L6tV/QGI9mo3r3DSMB4eZ3FAXUtv7Pu4Bpnzv
- bv7d+2jmwe0qnc9izSHmMqdNdQ==
-X-Google-Smtp-Source: ABdhPJxIsS4KMhI+Y3KiogSWjdDWrVZYSvpp7dXLHAVjT9HzjIzI+eRKdkXYHvp6Rq+N7hy/RDRSKg==
-X-Received: by 2002:a05:6000:128b:: with SMTP id
- f11mr5556353wrx.171.1624375465147; 
- Tue, 22 Jun 2021 08:24:25 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id a24sm2852645wmj.30.2021.06.22.08.24.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Jun 2021 08:24:24 -0700 (PDT)
-Date: Tue, 22 Jun 2021 17:24:21 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
+	id 1lviH4-007g8z-Jz; Tue, 22 Jun 2021 15:25:14 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lviH0-007g6f-D9; Tue, 22 Jun 2021 15:25:12 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0C59731B;
+ Tue, 22 Jun 2021 08:25:06 -0700 (PDT)
+Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C1ECC3F718;
+ Tue, 22 Jun 2021 08:25:05 -0700 (PDT)
+Received: by e110455-lin.cambridge.arm.com (Postfix, from userid 1000)
+ id 7C5A86837C9; Tue, 22 Jun 2021 16:25:04 +0100 (BST)
+Date: Tue, 22 Jun 2021 16:25:04 +0100
+From: Liviu Dudau <liviu.dudau@arm.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
 Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com,
+ james.qian.wang@arm.com, mihail.atanassov@arm.com,
+ brian.starkey@arm.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, inki.dae@samsung.com, jy0922.shim@samsung.com,
  sw0312.kim@samsung.com, kyungmin.park@samsung.com,
  krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
  tiantao6@hisilicon.com, john.stultz@linaro.org,
@@ -98,16 +75,16 @@ Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  linux-rockchip@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
-Message-ID: <YNIApfAnFCsCHoYK@phenom.ffwll.local>
+Subject: Re: [PATCH v2 04/22] drm: Don't test for IRQ support in VBLANK ioctls
+Message-ID: <20210622152504.2sw6khajwydsoaqa@e110455-lin.cambridge.arm.com>
 References: <20210622141002.11590-1-tzimmermann@suse.de>
+ <20210622141002.11590-5-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
-X-Operating-System: Linux phenom 5.10.0-7-amd64 
+In-Reply-To: <20210622141002.11590-5-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_082428_065691_904D2EE6 
-X-CRM114-Status: GOOD (  24.36  )
+X-CRM114-CacheID: sfid-20210622_082510_612235_5A4619D0 
+X-CRM114-Status: GOOD (  28.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,120 +97,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
-> Remove references to struct drm_device.irq_enabled from modern
-> DRM drivers and core.
-> 
-> KMS drivers enable IRQs for their devices internally. They don't
-> have to keep track of the IRQ state via irq_enabled. For vblanking,
-> it's cleaner to test for vblanking support directly than to test
-> for enabled IRQs.
-> 
-> This used to be a single patch, [1] but it's now a full series.
-> 
-> The first 3 patches replace instances of irq_enabled that are not
-> required.
-> 
-> Patch 4 fixes vblank ioctls to actually test for vblank support
-> instead of IRQs.
-> 
-> THe rest of the patchset removes irq_enabled from all non-legacy
-> drivers. The only exception is omapdrm, which has an internal
-> dpendency on the field's value. For this drivers, the state gets
-> duplicated internally.
-> 
-> With the patchset applied, drivers can later switch over to plain
-> Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
-> 
-> v2:
-> 	* keep the original test for legacy drivers in
-> 	  drm_wait_vblank_ioctl() (Daniel)
-> 
-> [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmermann@suse.de/
-
-On the series:
-
-Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-
-But I've only done a very light reading of this, so please wait for driver
-folks to have some time to check their own before merging.
-
-I think a devm_ version of drm_irq_install might be helpful in further
-untangling here, but that's definitely for another series.
--Daniel
-
-> 
-> Thomas Zimmermann (22):
->   drm/amdgpu: Track IRQ state in local device state
->   drm/hibmc: Call drm_irq_uninstall() unconditionally
->   drm/radeon: Track IRQ state in local device state
->   drm: Don't test for IRQ support in VBLANK ioctls
->   drm/komeda: Don't set struct drm_device.irq_enabled
->   drm/malidp: Don't set struct drm_device.irq_enabled
->   drm/exynos: Don't set struct drm_device.irq_enabled
->   drm/kirin: Don't set struct drm_device.irq_enabled
->   drm/imx: Don't set struct drm_device.irq_enabled
->   drm/mediatek: Don't set struct drm_device.irq_enabled
->   drm/nouveau: Don't set struct drm_device.irq_enabled
->   drm/omapdrm: Track IRQ state in local device state
->   drm/rockchip: Don't set struct drm_device.irq_enabled
->   drm/sti: Don't set struct drm_device.irq_enabled
->   drm/stm: Don't set struct drm_device.irq_enabled
->   drm/sun4i: Don't set struct drm_device.irq_enabled
->   drm/tegra: Don't set struct drm_device.irq_enabled
->   drm/tidss: Don't use struct drm_device.irq_enabled
->   drm/vc4: Don't set struct drm_device.irq_enabled
->   drm/vmwgfx: Don't set struct drm_device.irq_enabled
->   drm/xlnx: Don't set struct drm_device.irq_enabled
->   drm/zte: Don't set struct drm_device.irq_enabled
-> 
->  drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
->  drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
->  drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
->  drivers/gpu/drm/drm_irq.c                       | 10 +++-------
->  drivers/gpu/drm/drm_vblank.c                    | 13 +++++++++----
->  drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
->  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
->  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
->  drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
->  drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
->  drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
->  drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
->  drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
->  drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
->  drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
->  drivers/gpu/drm/sti/sti_compositor.c            |  2 --
->  drivers/gpu/drm/stm/ltdc.c                      |  3 ---
->  drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
->  drivers/gpu/drm/tegra/drm.c                     |  7 -------
->  drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
->  drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
->  drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
->  drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
->  drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
->  26 files changed, 30 insertions(+), 111 deletions(-)
-> 
-> 
-> base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
-> prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
-> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
-> --
-> 2.32.0
-> 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGVsbG8sCgpPbiBUdWUsIEp1biAyMiwgMjAyMSBhdCAwNDowOTo0NFBNICswMjAwLCBUaG9tYXMg
+WmltbWVybWFubiB3cm90ZToKPiBGb3IgS01TIGRyaXZlcnMsIHJlcGxhY2UgdGhlIElSUSBjaGVj
+ayBpbiBWQkxBTksgaW9jdGxzIHdpdGggYSBjaGVjayBmb3IKPiB2Ymxhbmsgc3VwcG9ydC4gSVJR
+cyBtaWdodCBiZSBlbmFibGVkIHd0aG91dCB2YmxhbmtpbmcgYmVpbmcgc3VwcG9ydGVkLgo+IAo+
+IFRoaXMgY2hhbmdlIGFsc28gcmVtb3ZlcyB0aGUgRFJNIGZyYW1ld29yaydzIG9ubHkgZGVwZW5k
+ZW5jeSBvbiBJUlEgc3RhdGUKPiBmb3Igbm9uLWxlZ2FjeSBkcml2ZXJzLiBGb3IgbGVnYWN5IGRy
+aXZlcnMgd2l0aCB1c2Vyc3BhY2UgbW9kZXNldHRpbmcsCj4gdGhlIG9yaWdpbmFsIHRlc3QgcmVt
+YWlucyBpbiBkcm1fd2FpdF92YmxhbmtfaW9jdGwoKS4KPiAKPiB2MjoKPiAJKiBrZWVwIHRoZSBv
+bGQgdGVzdCBmb3IgbGVnYWN5IGRyaXZlcnMgaW4KPiAJICBkcm1fd2FpdF92YmxhbmtfaW9jdGwo
+KSAoRGFuaWVsKQo+IAo+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5uIDx0emltbWVy
+bWFubkBzdXNlLmRlPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2lycS5jICAgIHwgMTAg
+KysrLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX3ZibGFuay5jIHwgMTMgKysrKysrKysr
+LS0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDExIGRlbGV0aW9ucygt
+KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2lycS5jIGIvZHJpdmVycy9n
+cHUvZHJtL2RybV9pcnEuYwo+IGluZGV4IGMzYmQ2NjRlYTczMy4uMWQ3Nzg1NzIxMzIzIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1faXJxLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vZHJtX2lycS5jCj4gQEAgLTc0LDEwICs3NCw4IEBACj4gICAqIG9ubHkgc3VwcG9ydHMgZGV2
+aWNlcyB3aXRoIGEgc2luZ2xlIGludGVycnVwdCBvbiB0aGUgbWFpbiBkZXZpY2Ugc3RvcmVkIGlu
+Cj4gICAqICZkcm1fZGV2aWNlLmRldiBhbmQgc2V0IGFzIHRoZSBkZXZpY2UgcGFyYW10ZXIgaW4g
+ZHJtX2Rldl9hbGxvYygpLgo+ICAgKgo+IC0gKiBUaGVzZSBJUlEgaGVscGVycyBhcmUgc3RyaWN0
+bHkgb3B0aW9uYWwuIERyaXZlcnMgd2hpY2ggcm9sbCB0aGVpciBvd24gb25seQo+IC0gKiBuZWVk
+IHRvIHNldCAmZHJtX2RldmljZS5pcnFfZW5hYmxlZCB0byBzaWduYWwgdGhlIERSTSBjb3JlIHRo
+YXQgdmJsYW5rCj4gLSAqIGludGVycnVwdHMgYXJlIHdvcmtpbmcuIFNpbmNlIHRoZXNlIGhlbHBl
+cnMgZG9uJ3QgYXV0b21hdGljYWxseSBjbGVhbiB1cCB0aGUKPiAtICogcmVxdWVzdGVkIGludGVy
+cnVwdCBsaWtlIGUuZy4gZGV2bV9yZXF1ZXN0X2lycSgpIHRoZXkncmUgbm90IHJlYWxseQo+ICsg
+KiBUaGVzZSBJUlEgaGVscGVycyBhcmUgc3RyaWN0bHkgb3B0aW9uYWwuIFNpbmNlIHRoZXNlIGhl
+bHBlcnMgZG9uJ3QgYXV0b21hdGljYWxseQo+ICsgKiBjbGVhbiB1cCB0aGUgcmVxdWVzdGVkIGlu
+dGVycnVwdCBsaWtlIGUuZy4gZGV2bV9yZXF1ZXN0X2lycSgpIHRoZXkncmUgbm90IHJlYWxseQo+
+ICAgKiByZWNvbW1lbmRlZC4KPiAgICovCj4gIAo+IEBAIC05MSw5ICs4OSw3IEBACj4gICAqIGFu
+ZCBhZnRlciB0aGUgaW5zdGFsbGF0aW9uLgo+ICAgKgo+ICAgKiBUaGlzIGlzIHRoZSBzaW1wbGlm
+aWVkIGhlbHBlciBpbnRlcmZhY2UgcHJvdmlkZWQgZm9yIGRyaXZlcnMgd2l0aCBubyBzcGVjaWFs
+Cj4gLSAqIG5lZWRzLiBEcml2ZXJzIHdoaWNoIG5lZWQgdG8gaW5zdGFsbCBpbnRlcnJ1cHQgaGFu
+ZGxlcnMgZm9yIG11bHRpcGxlCj4gLSAqIGludGVycnVwdHMgbXVzdCBpbnN0ZWFkIHNldCAmZHJt
+X2RldmljZS5pcnFfZW5hYmxlZCB0byBzaWduYWwgdGhlIERSTSBjb3JlCj4gLSAqIHRoYXQgdmJs
+YW5rIGludGVycnVwdHMgYXJlIGF2YWlsYWJsZS4KPiArICogbmVlZHMuCj4gICAqCj4gICAqIEBp
+cnEgbXVzdCBtYXRjaCB0aGUgaW50ZXJydXB0IG51bWJlciB0aGF0IHdvdWxkIGJlIHBhc3NlZCB0
+byByZXF1ZXN0X2lycSgpLAo+ICAgKiBpZiBjYWxsZWQgZGlyZWN0bHkgaW5zdGVhZCBvZiB1c2lu
+ZyB0aGlzIGhlbHBlciBmdW5jdGlvbi4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2Ry
+bV92YmxhbmsuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fdmJsYW5rLmMKPiBpbmRleCAzNDE3ZTFh
+Yzc5MTguLmE5OGE0YWFkNTAzNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3Zi
+bGFuay5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV92YmxhbmsuYwo+IEBAIC0xNzQ4LDgg
+KzE3NDgsMTMgQEAgaW50IGRybV93YWl0X3ZibGFua19pb2N0bChzdHJ1Y3QgZHJtX2RldmljZSAq
+ZGV2LCB2b2lkICpkYXRhLAo+ICAJdW5zaWduZWQgaW50IHBpcGVfaW5kZXg7Cj4gIAl1bnNpZ25l
+ZCBpbnQgZmxhZ3MsIHBpcGUsIGhpZ2hfcGlwZTsKPiAgCj4gLQlpZiAoIWRldi0+aXJxX2VuYWJs
+ZWQpCj4gLQkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+ICsJaWYgIChkcm1fY29yZV9jaGVja19mZWF0
+dXJlKGRldiwgRFJJVkVSX01PREVTRVQpKSB7Cj4gKwkJaWYgKCFkcm1fZGV2X2hhc192Ymxhbmso
+ZGV2KSkKPiArCQkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+ICsJfSBlbHNlIHsKPiArCQlpZiAoIWRl
+di0+aXJxX2VuYWJsZWQpCj4gKwkJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCX0KCkZvciBhIHN5
+c3RlbSBjYWxsIHRoYXQgaXMgdXNlZCBxdWl0ZSBhIGxvdCBieSB1c2Vyc3BhY2Ugd2UgaGF2ZSBp
+bmNyZWFzZWQgdGhlIGNvZGUgc2l6ZQppbiBhIG5vdGljZWFibGUgd2F5LiBDYW4gd2Ugbm90IGNh
+Y2hlIGl0IHByaXZhdGVseT8KCkJlc3QgcmVnYXJkcywKTGl2aXUKCj4gIAo+ICAJaWYgKHZibHdh
+aXQtPnJlcXVlc3QudHlwZSAmIF9EUk1fVkJMQU5LX1NJR05BTCkKPiAgCQlyZXR1cm4gLUVJTlZB
+TDsKPiBAQCAtMjAyMyw3ICsyMDI4LDcgQEAgaW50IGRybV9jcnRjX2dldF9zZXF1ZW5jZV9pb2N0
+bChzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LCB2b2lkICpkYXRhLAo+ICAJaWYgKCFkcm1fY29yZV9j
+aGVja19mZWF0dXJlKGRldiwgRFJJVkVSX01PREVTRVQpKQo+ICAJCXJldHVybiAtRU9QTk9UU1VQ
+UDsKPiAgCj4gLQlpZiAoIWRldi0+aXJxX2VuYWJsZWQpCj4gKwlpZiAoIWRybV9kZXZfaGFzX3Zi
+bGFuayhkZXYpKQo+ICAJCXJldHVybiAtRU9QTk9UU1VQUDsKPiAgCj4gIAljcnRjID0gZHJtX2Ny
+dGNfZmluZChkZXYsIGZpbGVfcHJpdiwgZ2V0X3NlcS0+Y3J0Y19pZCk7Cj4gQEAgLTIwODIsNyAr
+MjA4Nyw3IEBAIGludCBkcm1fY3J0Y19xdWV1ZV9zZXF1ZW5jZV9pb2N0bChzdHJ1Y3QgZHJtX2Rl
+dmljZSAqZGV2LCB2b2lkICpkYXRhLAo+ICAJaWYgKCFkcm1fY29yZV9jaGVja19mZWF0dXJlKGRl
+diwgRFJJVkVSX01PREVTRVQpKQo+ICAJCXJldHVybiAtRU9QTk9UU1VQUDsKPiAgCj4gLQlpZiAo
+IWRldi0+aXJxX2VuYWJsZWQpCj4gKwlpZiAoIWRybV9kZXZfaGFzX3ZibGFuayhkZXYpKQo+ICAJ
+CXJldHVybiAtRU9QTk9UU1VQUDsKPiAgCj4gIAljcnRjID0gZHJtX2NydGNfZmluZChkZXYsIGZp
+bGVfcHJpdiwgcXVldWVfc2VxLT5jcnRjX2lkKTsKPiAtLSAKPiAyLjMyLjAKPiAKCi0tIAo9PT09
+PT09PT09PT09PT09PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwK
+fCBidXQgdGhleSdyZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAg
+LwogIC0tLS0tLS0tLS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
