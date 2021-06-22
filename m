@@ -2,20 +2,20 @@ Return-Path: <SRS0=+Xhu=LQ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D127C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:26:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41708C48BE5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BEF9460FEB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 15:26:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BEF9460FEB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0135B6109E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0135B6109E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,35 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HHvgC/RIgn13usHaVSDJT6u4DM1SVyqk536ELamWfp8=; b=UiFSZThEZFyQAI
-	t7Wmv3P+Ek+rlU5K5DFAJA8JV5bj6tA8UV3bRXGxh0TpD2YqUY3x9AduzTLmecxPMn13xQ1cxYVi0
-	8RGwhfy+8s98ygQJRpPJwjACSkB+n8igZsjogXdDzGR3F9wk+Az5FpAuxBYN9TzwJCfQHz3JFrSEZ
-	f2JBQlrRoMluE30aU134Wv8Ze1dZNhXzMQTQz8ua1B22yx1GJOMFFb89FaOZ7U1BI9RgESuD5/KsR
-	dEah/8h77C2dQLcvcu1hkMr+/OYMN9gmYaQByTMu0i2BTSIergQlLuNxaRUNY4Rr/806gw4NX2mjs
-	HQ7XhuLawoKmx6GKILJA==;
+	List-Owner; bh=TwHRpqNrI98PNSfM0MXSZetMAymwzpqX52Z/evYC6bI=; b=pcGjOJkninHU4D
+	OJntpjyQRBxFZf8fPWCPKqzZ0rZvL6ArWlXIBpdSNtz5QgmsLhNXIJenhvgxT0YcE1AiryanjyJsS
+	aWVoRQE8CTtOAh7CW2ao0Gs2NjrocDeRP5Tnvo1klV/+u0PkuBFCU4YDm4/BY8EqJDmxXlbtK2vjd
+	84NwQ0JMz8wqzMm09mViOrO9JPN7ntRMuKGH6IwK9C1d5gdqphfnSci1DD3VdkP5zsVCaLCQSuwMr
+	i8KeMkXxLtlpghIMzPtcDhwcXlZ42mNOVDP9u+DYQ92aqirziVOG6gRGpojSaC2JiilZsBrOaefnp
+	vXgrfU6tSUyaBU4d0bPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lviIR-007gZO-9A; Tue, 22 Jun 2021 15:26:39 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lviIN-007gXF-Id; Tue, 22 Jun 2021 15:26:37 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F2E9031B;
- Tue, 22 Jun 2021 08:26:33 -0700 (PDT)
-Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D102D3F718;
- Tue, 22 Jun 2021 08:26:33 -0700 (PDT)
-Received: by e110455-lin.cambridge.arm.com (Postfix, from userid 1000)
- id 938E46850D7; Tue, 22 Jun 2021 16:26:32 +0100 (BST)
-Date: Tue, 22 Jun 2021 16:26:32 +0100
-From: Liviu Dudau <liviu.dudau@arm.com>
+	id 1lvj0T-007rIn-RL; Tue, 22 Jun 2021 16:12:09 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lvj0P-007rFE-32; Tue, 22 Jun 2021 16:12:07 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82C49FE0;
+ Tue, 22 Jun 2021 18:12:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1624378320;
+ bh=E1KjYBr0PRd//Rh/JFA2D9huXNngtbcIo60EYm6yjcM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hh92VDHFFFuGY+ij89Tk/0LAzaSW+kEr9dWfQrDPQQWsRe5C3zTHMpzJy9EtqmNe7
+ fe8CwxVd7hReruVHlt2Vz9ofcwK7MrKI8+pkmwKvlFlKCjbjB5RjgHD9QUiLCULLa0
+ YjXygLYAAbXJHyKajZ/6zxMhq99nKm9MtdEjklaw=
+Date: Tue, 22 Jun 2021 19:11:32 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
 Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, mihail.atanassov@arm.com,
- brian.starkey@arm.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, inki.dae@samsung.com, jy0922.shim@samsung.com,
+ james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, jy0922.shim@samsung.com,
  sw0312.kim@samsung.com, kyungmin.park@samsung.com,
  krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
  tiantao6@hisilicon.com, john.stultz@linaro.org,
@@ -67,25 +70,22 @@ Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  jernej.skrabec@gmail.com, thierry.reding@gmail.com,
  jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
  linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
+ hyun.kwon@xilinx.com, michal.simek@xilinx.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
  linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 06/22] drm/malidp: Don't set struct
- drm_device.irq_enabled
-Message-ID: <20210622152632.647akpp5nqcdfozk@e110455-lin.cambridge.arm.com>
+Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
+Message-ID: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
 References: <20210622141002.11590-1-tzimmermann@suse.de>
- <20210622141002.11590-7-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210622141002.11590-7-tzimmermann@suse.de>
+In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_082635_754310_4C67726D 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20210622_091205_352755_5B16CDB4 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,40 +98,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBKdW4gMjIsIDIwMjEgYXQgMDQ6MDk6NDZQTSArMDIwMCwgVGhvbWFzIFppbW1lcm1h
-bm4gd3JvdGU6Cj4gVGhlIGZpZWxkIGRybV9kZXZpY2UuaXJxX2VuYWJsZWQgaXMgb25seSB1c2Vk
-IGJ5IGxlZ2FjeSBkcml2ZXJzCj4gd2l0aCB1c2Vyc3BhY2UgbW9kZXNldHRpbmcuIERvbid0IHNl
-dCBpdCBpbiBtYWxpZHAuCj4gCj4gU2lnbmVkLW9mZi1ieTogVGhvbWFzIFppbW1lcm1hbm4gPHR6
-aW1tZXJtYW5uQHN1c2UuZGU+CgpBY2tlZC1ieTogTGl2aXUgRHVkYXUgPGxpdml1LmR1ZGF1QGFy
-bS5jb20+CgpCZXN0IHJlZ2FyZHMsCkxpdml1Cgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJt
-L21hbGlkcF9kcnYuYyB8IDQgLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBkZWxldGlvbnMoLSkK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgYi9kcml2
-ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYuYwo+IGluZGV4IGRlNTlmMzMwMjUxNi4uNzhkMTVi
-MDRiMTA1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiBAQCAtODQ3LDggKzg0Nyw2
-IEBAIHN0YXRpYyBpbnQgbWFsaWRwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICAJaWYgKHJl
-dCA8IDApCj4gIAkJZ290byBpcnFfaW5pdF9mYWlsOwo+ICAKPiAtCWRybS0+aXJxX2VuYWJsZWQg
-PSB0cnVlOwo+IC0KPiAgCXJldCA9IGRybV92YmxhbmtfaW5pdChkcm0sIGRybS0+bW9kZV9jb25m
-aWcubnVtX2NydGMpOwo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlEUk1fRVJST1IoImZhaWxlZCB0
-byBpbml0aWFsaXNlIHZibGFua1xuIik7Cj4gQEAgLTg3NCw3ICs4NzIsNiBAQCBzdGF0aWMgaW50
-IG1hbGlkcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgdmJsYW5rX2ZhaWw6Cj4gIAltYWxp
-ZHBfc2VfaXJxX2ZpbmkoaHdkZXYpOwo+ICAJbWFsaWRwX2RlX2lycV9maW5pKGh3ZGV2KTsKPiAt
-CWRybS0+aXJxX2VuYWJsZWQgPSBmYWxzZTsKPiAgaXJxX2luaXRfZmFpbDoKPiAgCWRybV9hdG9t
-aWNfaGVscGVyX3NodXRkb3duKGRybSk7Cj4gIAljb21wb25lbnRfdW5iaW5kX2FsbChkZXYsIGRy
-bSk7Cj4gQEAgLTkwOSw3ICs5MDYsNiBAQCBzdGF0aWMgdm9pZCBtYWxpZHBfdW5iaW5kKHN0cnVj
-dCBkZXZpY2UgKmRldikKPiAgCWRybV9hdG9taWNfaGVscGVyX3NodXRkb3duKGRybSk7Cj4gIAlt
-YWxpZHBfc2VfaXJxX2ZpbmkoaHdkZXYpOwo+ICAJbWFsaWRwX2RlX2lycV9maW5pKGh3ZGV2KTsK
-PiAtCWRybS0+aXJxX2VuYWJsZWQgPSBmYWxzZTsKPiAgCWNvbXBvbmVudF91bmJpbmRfYWxsKGRl
-diwgZHJtKTsKPiAgCW9mX25vZGVfcHV0KG1hbGlkcC0+Y3J0Yy5wb3J0KTsKPiAgCW1hbGlkcC0+
-Y3J0Yy5wb3J0ID0gTlVMTDsKPiAtLSAKPiAyLjMyLjAKPiAKCi0tIAo9PT09PT09PT09PT09PT09
-PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdy
-ZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0t
-LS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Thomas,
+
+Thank you for the patches.
+
+On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
+> Remove references to struct drm_device.irq_enabled from modern
+> DRM drivers and core.
+> 
+> KMS drivers enable IRQs for their devices internally. They don't
+> have to keep track of the IRQ state via irq_enabled. For vblanking,
+> it's cleaner to test for vblanking support directly than to test
+> for enabled IRQs.
+> 
+> This used to be a single patch, [1] but it's now a full series.
+> 
+> The first 3 patches replace instances of irq_enabled that are not
+> required.
+> 
+> Patch 4 fixes vblank ioctls to actually test for vblank support
+> instead of IRQs.
+> 
+> THe rest of the patchset removes irq_enabled from all non-legacy
+> drivers. The only exception is omapdrm, which has an internal
+> dpendency on the field's value. For this drivers, the state gets
+> duplicated internally.
+> 
+> With the patchset applied, drivers can later switch over to plain
+> Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
+> 
+> v2:
+> 	* keep the original test for legacy drivers in
+> 	  drm_wait_vblank_ioctl() (Daniel)
+> 
+> [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmermann@suse.de/
+> 
+> Thomas Zimmermann (22):
+>   drm/amdgpu: Track IRQ state in local device state
+>   drm/hibmc: Call drm_irq_uninstall() unconditionally
+>   drm/radeon: Track IRQ state in local device state
+>   drm: Don't test for IRQ support in VBLANK ioctls
+>   drm/komeda: Don't set struct drm_device.irq_enabled
+>   drm/malidp: Don't set struct drm_device.irq_enabled
+>   drm/exynos: Don't set struct drm_device.irq_enabled
+>   drm/kirin: Don't set struct drm_device.irq_enabled
+>   drm/imx: Don't set struct drm_device.irq_enabled
+>   drm/mediatek: Don't set struct drm_device.irq_enabled
+>   drm/nouveau: Don't set struct drm_device.irq_enabled
+>   drm/omapdrm: Track IRQ state in local device state
+>   drm/rockchip: Don't set struct drm_device.irq_enabled
+>   drm/sti: Don't set struct drm_device.irq_enabled
+>   drm/stm: Don't set struct drm_device.irq_enabled
+>   drm/sun4i: Don't set struct drm_device.irq_enabled
+>   drm/tegra: Don't set struct drm_device.irq_enabled
+>   drm/tidss: Don't use struct drm_device.irq_enabled
+>   drm/vc4: Don't set struct drm_device.irq_enabled
+>   drm/vmwgfx: Don't set struct drm_device.irq_enabled
+>   drm/xlnx: Don't set struct drm_device.irq_enabled
+>   drm/zte: Don't set struct drm_device.irq_enabled
+
+The list seems to be missing armada, rcar-du and vkms. It would also be
+nice to address i915 if possible.
+
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
+>  drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
+>  drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
+>  drivers/gpu/drm/drm_irq.c                       | 10 +++-------
+>  drivers/gpu/drm/drm_vblank.c                    | 13 +++++++++----
+>  drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
+>  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
+>  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
+>  drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
+>  drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
+>  drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
+>  drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
+>  drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
+>  drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
+>  drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
+>  drivers/gpu/drm/sti/sti_compositor.c            |  2 --
+>  drivers/gpu/drm/stm/ltdc.c                      |  3 ---
+>  drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
+>  drivers/gpu/drm/tegra/drm.c                     |  7 -------
+>  drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
+>  drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
+>  drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
+>  drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
+>  drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
+>  26 files changed, 30 insertions(+), 111 deletions(-)
+> 
+> 
+> base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
+> prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
+> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
