@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD1A5C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 47950C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 837C460238
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 837C460238
+	by mail.kernel.org (Postfix) with ESMTPS id 1D8E461027
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D8E461027
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8hzXMeB8QdD9Zx6AQqgCQ6Z2yNw5BOZvHYN1+NWmm04=; b=KgTsw2c2uAML63
-	P7oGI6hFwoGAbMiilA4oEsg3Rwr26bqDfYjFqE8iStNwDSWMu1drBpJLdc04ZKAZNLaA7wAPZWxHa
-	PNmXLbfVNns9VxkfMKG30NJbY6ETLgMUVnf/GBLQjy2zgyFTV1BBbcDFnm/km3WyIMo660Ww/I1+9
-	XKNV5eU33U6OdDqiaUbkRj0FQwQ9cpAHA5VEtv2KNaT6giXYMZ19wRR9aJO7Rcr0gQ2d5XL5cJwyq
-	2A0V7ANSuJezRq+/MA2zJdLLdBhqSQxt6e5yUmU/DaB0RH305cxgogC5xCxnph6JabTE2gPbBdoMe
-	gnk9KkP+TmWpVVveFevA==;
+	List-Owner; bh=h+NG6bfDS2g7xjxin09fBDwVUwAjUSSGBh9E2zRC9So=; b=xuUlZRcOxT9Z9s
+	+joj0s1aVelrwiCvUTR7qydjf43xUBXRJBy81T7Bdif4kJ2QLNJr8wpyX47C4WVWXhBD7N/N0WERC
+	uvfS9MmmkRYqTaAO40HlgGPz6I7pom7cYu6RywRevZi/a51EUNwFDEUnDST5hn2MQgoP5hCSOir75
+	NB+h6AFyeJWc+A/R21PmJvwcS+K3P3l/rRrOMhFiRFu654E3lOkGodGa7CJWzIU/97RFOe/LuNxR1
+	gi5Z4WBS/882CPkTD6/7x57U4c1E5Zqhynzewb67IgB1ZOVckMwevAo+WF8jr1WVcGlHvPHxNPygm
+	ZrupMoiNGcJ2LmRd/reQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvh6r-007ROw-OC; Tue, 22 Jun 2021 14:10:37 +0000
+	id 1lvh75-007RZk-Mb; Tue, 22 Jun 2021 14:10:51 +0000
 Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvh6Q-007QyP-A8; Tue, 22 Jun 2021 14:10:11 +0000
+ id 1lvh6R-007Qz9-Bw; Tue, 22 Jun 2021 14:10:12 +0000
 Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
  (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id DB0911FD5F;
+ by smtp-out2.suse.de (Postfix) with ESMTPS id E91B51FD65;
+ Tue, 22 Jun 2021 14:10:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624371009; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LmPfb64X8tj/DNKvWm1kt/9W5qYrZUqV8P+ClQ9hd/8=;
+ b=lTUZ8V1oJTHYzc4Ml3xPNwPeZSdgkT8hodxTjoNqOwsNrcoomQSvnNKRCRzl5WA0KAWRe/
+ UTAmw0rVxScvyNG1eW/aWYlJXWOSFzJTXT9SQK5cqpl75TEFbRvpl7jVsaflu2rxa6S6B6
+ Z6905oROH2SSoRHNFsjFCUvQaJUrfQg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624371009;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LmPfb64X8tj/DNKvWm1kt/9W5qYrZUqV8P+ClQ9hd/8=;
+ b=apUm2Sl4mqRTl56/rFzfx09nnvcB8Y78+XRwpJqACmw1MAtl399SzzZyczQT/8o+wcHPKA
+ 485ffWRdIaWi3ZAw==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id E033B11A98;
  Tue, 22 Jun 2021 14:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624371008; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1624371009; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Jbsz5Z/7MtxS9OjGI5STR0UHsiBFksF1O+80zt+6jHQ=;
- b=vPTErzmq3uXIdNA7bDU8wMczxTT7Y13OW2TZRKGt5RrvCY3sP/x2vyL+0GA/wMLIAGZbUd
- A3su6kUyQt1JcO2GFlN+9dWF8PUx5kR9jj9doffTJKEIJ7jlSAThHAQnUgiNj2oq2laQsK
- ttpCpBx4dAeyG3Nn7XdRrxQbkE2+DZU=
+ bh=LmPfb64X8tj/DNKvWm1kt/9W5qYrZUqV8P+ClQ9hd/8=;
+ b=lTUZ8V1oJTHYzc4Ml3xPNwPeZSdgkT8hodxTjoNqOwsNrcoomQSvnNKRCRzl5WA0KAWRe/
+ UTAmw0rVxScvyNG1eW/aWYlJXWOSFzJTXT9SQK5cqpl75TEFbRvpl7jVsaflu2rxa6S6B6
+ Z6905oROH2SSoRHNFsjFCUvQaJUrfQg=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624371008;
+ s=susede2_ed25519; t=1624371009;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Jbsz5Z/7MtxS9OjGI5STR0UHsiBFksF1O+80zt+6jHQ=;
- b=1+C7jgnbuuxxnYtJa61pakqbKOq6sS3CpRhVBN545AkZUJEHUJ1IFNh2lYomw8A31ASY/4
- j/Ts+mkP3YknCUBw==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id C1B1D118DD;
- Tue, 22 Jun 2021 14:10:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624371008; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Jbsz5Z/7MtxS9OjGI5STR0UHsiBFksF1O+80zt+6jHQ=;
- b=vPTErzmq3uXIdNA7bDU8wMczxTT7Y13OW2TZRKGt5RrvCY3sP/x2vyL+0GA/wMLIAGZbUd
- A3su6kUyQt1JcO2GFlN+9dWF8PUx5kR9jj9doffTJKEIJ7jlSAThHAQnUgiNj2oq2laQsK
- ttpCpBx4dAeyG3Nn7XdRrxQbkE2+DZU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624371008;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Jbsz5Z/7MtxS9OjGI5STR0UHsiBFksF1O+80zt+6jHQ=;
- b=1+C7jgnbuuxxnYtJa61pakqbKOq6sS3CpRhVBN545AkZUJEHUJ1IFNh2lYomw8A31ASY/4
- j/Ts+mkP3YknCUBw==
+ bh=LmPfb64X8tj/DNKvWm1kt/9W5qYrZUqV8P+ClQ9hd/8=;
+ b=apUm2Sl4mqRTl56/rFzfx09nnvcB8Y78+XRwpJqACmw1MAtl399SzzZyczQT/8o+wcHPKA
+ 485ffWRdIaWi3ZAw==
 Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id 0FpqLj/v0WD3UAAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Tue, 22 Jun 2021 14:10:07 +0000
+ id qOjeNUDv0WD3UAAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Tue, 22 Jun 2021 14:10:08 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
@@ -109,16 +109,16 @@ Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
  linux-tegra@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v2 04/22] drm: Don't test for IRQ support in VBLANK ioctls
-Date: Tue, 22 Jun 2021 16:09:44 +0200
-Message-Id: <20210622141002.11590-5-tzimmermann@suse.de>
+Subject: [PATCH v2 05/22] drm/komeda: Don't set struct drm_device.irq_enabled
+Date: Tue, 22 Jun 2021 16:09:45 +0200
+Message-Id: <20210622141002.11590-6-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
 References: <20210622141002.11590-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_071010_556008_F68668C1 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20210622_071011_602264_01D738AA 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,89 +136,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For KMS drivers, replace the IRQ check in VBLANK ioctls with a check for
-vblank support. IRQs might be enabled wthout vblanking being supported.
-
-This change also removes the DRM framework's only dependency on IRQ state
-for non-legacy drivers. For legacy drivers with userspace modesetting,
-the original test remains in drm_wait_vblank_ioctl().
-
-v2:
-	* keep the old test for legacy drivers in
-	  drm_wait_vblank_ioctl() (Daniel)
+The field drm_device.irq_enabled is only used by legacy drivers
+with userspace modesetting. Don't set it in komeda.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/drm_irq.c    | 10 +++-------
- drivers/gpu/drm/drm_vblank.c | 13 +++++++++----
- 2 files changed, 12 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/arm/display/komeda/komeda_kms.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_irq.c b/drivers/gpu/drm/drm_irq.c
-index c3bd664ea733..1d7785721323 100644
---- a/drivers/gpu/drm/drm_irq.c
-+++ b/drivers/gpu/drm/drm_irq.c
-@@ -74,10 +74,8 @@
-  * only supports devices with a single interrupt on the main device stored in
-  * &drm_device.dev and set as the device paramter in drm_dev_alloc().
-  *
-- * These IRQ helpers are strictly optional. Drivers which roll their own only
-- * need to set &drm_device.irq_enabled to signal the DRM core that vblank
-- * interrupts are working. Since these helpers don't automatically clean up the
-- * requested interrupt like e.g. devm_request_irq() they're not really
-+ * These IRQ helpers are strictly optional. Since these helpers don't automatically
-+ * clean up the requested interrupt like e.g. devm_request_irq() they're not really
-  * recommended.
-  */
+diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_kms.c b/drivers/gpu/drm/arm/display/komeda/komeda_kms.c
+index ff45f23f3d56..52a6db5707a3 100644
+--- a/drivers/gpu/drm/arm/display/komeda/komeda_kms.c
++++ b/drivers/gpu/drm/arm/display/komeda/komeda_kms.c
+@@ -301,8 +301,6 @@ struct komeda_kms_dev *komeda_kms_attach(struct komeda_dev *mdev)
+ 	if (err)
+ 		goto free_component_binding;
  
-@@ -91,9 +89,7 @@
-  * and after the installation.
-  *
-  * This is the simplified helper interface provided for drivers with no special
-- * needs. Drivers which need to install interrupt handlers for multiple
-- * interrupts must instead set &drm_device.irq_enabled to signal the DRM core
-- * that vblank interrupts are available.
-+ * needs.
-  *
-  * @irq must match the interrupt number that would be passed to request_irq(),
-  * if called directly instead of using this helper function.
-diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank.c
-index 3417e1ac7918..a98a4aad5037 100644
---- a/drivers/gpu/drm/drm_vblank.c
-+++ b/drivers/gpu/drm/drm_vblank.c
-@@ -1748,8 +1748,13 @@ int drm_wait_vblank_ioctl(struct drm_device *dev, void *data,
- 	unsigned int pipe_index;
- 	unsigned int flags, pipe, high_pipe;
+-	drm->irq_enabled = true;
+-
+ 	drm_kms_helper_poll_init(drm);
  
--	if (!dev->irq_enabled)
--		return -EOPNOTSUPP;
-+	if  (drm_core_check_feature(dev, DRIVER_MODESET)) {
-+		if (!drm_dev_has_vblank(dev))
-+			return -EOPNOTSUPP;
-+	} else {
-+		if (!dev->irq_enabled)
-+			return -EOPNOTSUPP;
-+	}
+ 	err = drm_dev_register(drm, 0);
+@@ -313,7 +311,6 @@ struct komeda_kms_dev *komeda_kms_attach(struct komeda_dev *mdev)
  
- 	if (vblwait->request.type & _DRM_VBLANK_SIGNAL)
- 		return -EINVAL;
-@@ -2023,7 +2028,7 @@ int drm_crtc_get_sequence_ioctl(struct drm_device *dev, void *data,
- 	if (!drm_core_check_feature(dev, DRIVER_MODESET))
- 		return -EOPNOTSUPP;
- 
--	if (!dev->irq_enabled)
-+	if (!drm_dev_has_vblank(dev))
- 		return -EOPNOTSUPP;
- 
- 	crtc = drm_crtc_find(dev, file_priv, get_seq->crtc_id);
-@@ -2082,7 +2087,7 @@ int drm_crtc_queue_sequence_ioctl(struct drm_device *dev, void *data,
- 	if (!drm_core_check_feature(dev, DRIVER_MODESET))
- 		return -EOPNOTSUPP;
- 
--	if (!dev->irq_enabled)
-+	if (!drm_dev_has_vblank(dev))
- 		return -EOPNOTSUPP;
- 
- 	crtc = drm_crtc_find(dev, file_priv, queue_seq->crtc_id);
+ free_interrupts:
+ 	drm_kms_helper_poll_fini(drm);
+-	drm->irq_enabled = false;
+ free_component_binding:
+ 	component_unbind_all(mdev->dev, drm);
+ cleanup_mode_config:
+@@ -331,7 +328,6 @@ void komeda_kms_detach(struct komeda_kms_dev *kms)
+ 	drm_dev_unregister(drm);
+ 	drm_kms_helper_poll_fini(drm);
+ 	drm_atomic_helper_shutdown(drm);
+-	drm->irq_enabled = false;
+ 	component_unbind_all(mdev->dev, drm);
+ 	drm_mode_config_cleanup(drm);
+ 	komeda_kms_cleanup_private_objs(kms);
 -- 
 2.32.0
 
