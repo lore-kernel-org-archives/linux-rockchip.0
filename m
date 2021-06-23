@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAE4BC4743C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 11:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05FCEC4743C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 12:00:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7561A61002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 11:59:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7561A61002
+	by mail.kernel.org (Postfix) with ESMTPS id BD14E6102A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 12:00:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD14E6102A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,65 +24,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vqR7yhAbw41AY0yEEjZ+pLL6vvvocElKTXu2j43j4Lo=; b=rKUSwHceWSz7TT
-	3BIOgw3NmtlSZiLrwDHvti4H+sh2+ykCrfQkGmHQmEQIMkMI6fuBcvIbsI7O+343/ju/8sV/l3NPB
-	T2c2z6KJ2o2izuVkJ9bNVJI/qP2sMd+SsRSbb4ylsOiVyDVtM5a7Mb2Vw3Qd4YD/93gH7F6TzfDjS
-	c7wJMMxGDyvFL5cCBMpYj7geIdccAI8fU3YASNXeWhi2xTMhtDfJ7NyUcGKp57bJQHDXnHz+vf812
-	2UztHNC3rS3P689lL+h+kMaLHoU9qhbvMA3XNqzCtWcmu/gY/YC9OWUFkWrmItIYydtxeyiu2TOPH
-	iF1uQ3UGpi0oPzsj6a8Q==;
+	List-Owner; bh=xih6CpXFh+HIwbrSSxk6wT6aUl9DxHxByvHFvTJ7htU=; b=HqkVpK8G4MU2hZ
+	33YniNmj5ZBqn79EA5Ih0tcBz/eqzC0L+bAeO4xlu8u/iugOFGmz39RKaZenurt9v2CcdsYGUTBIz
+	MMGDjRxxFEuu4PP8pL7htez7nDQmmV3nBosUW+TKlUZxtCnVwzUcvMzoWoqRnmTGqyJjv/3HaMjFW
+	ZDvzIowRs8ibiGzW5kCw/r1/CsVVTOb+hxXXAL0coR6hvJu1fbiHte0nRjhcEeTxw07b0WRvWbiWn
+	PJTZmmrSsuofYKdwHiScJuZAOHuHIeMhzbtvhPU5vl7m3vbQClTvnbZHve8/IhmYuneVzbTVwJvqr
+	oFN413pnvz+/RkgFu3iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lw1Xq-00AXjF-De; Wed, 23 Jun 2021 11:59:50 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1lw1YL-00AXte-L5; Wed, 23 Jun 2021 12:00:21 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lw1Xd-00AXgV-W3; Wed, 23 Jun 2021 11:59:39 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso3808730wmh.4; 
- Wed, 23 Jun 2021 04:59:36 -0700 (PDT)
+ id 1lw1Y6-00AXoj-N2; Wed, 23 Jun 2021 12:00:08 +0000
+Received: by mail-wr1-x432.google.com with SMTP id l12so1620994wrt.3;
+ Wed, 23 Jun 2021 05:00:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Xzw/4c3zYIVYrIQdBbMBp4EEh/m3aAvDBYr8K6MbN2U=;
- b=FDdt0PMX1Os97ku1lM/T7xZsc+mCtqRZhdLHnnWOX6Mcu+7YHQ61oZguWkC1ASwsw1
- vgP/GdS60Mv0otXIjYI+11IrHNRwHgSvogVwoXkzZFI4pWHj4XYRtmLb0DOaC7myQHZ3
- dvnzmb2vnxLrvM2L/cKoN16dXdIGgLhUWzU9NasBNFll6ZJ2jaCZjPY1WpNz/fE5jxij
- fQ5xIDr/NONAcdrSxu1QTTRj0V5DOylYeyt/vNWS7yp8SHaDHyPxX8B/2xF94Rt23Nbk
- DL25dX5NipeqRkLBdq1JbekayStncreY4QzOnL/Ik9g0N2HyU+Okgvs2nRzHwB5ZJde5
- w0aA==
+ bh=eJZITneZK2pFfehw2W3mpmQwKfsEafjynuMXLav/Q64=;
+ b=RSRTZL+7yEON+42CSpXCS2ZRdRKBpmmq72uqvVtJBaDX3QuE7tbiRTixuPVK3Q28r3
+ boMLUjmnhkk4HH48WoC6ClKZ/HAhEkVDZkviSYDWnP7KbFHfCMFnm5gDuCSai7a23tzf
+ HsBNDQzfqi5YiwBlOAhjQSbq1gUZmiKzlxaGpsTgGGYiPuw/7+YC4uEnwFtve3FeTdJ6
+ d1OqvQL46F1hB4EGtR66C6BE6hPx948e+WE5i9jXVoGFZflrvO1P1xvnwCGhC4/5eGZi
+ VjxOnG9g0q9yUkv8Tkg7LejN/8ZQAidlLxzSReXTKWpjIQhnar8Kjg65Kfyltm+wLYmQ
+ M9SQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=Xzw/4c3zYIVYrIQdBbMBp4EEh/m3aAvDBYr8K6MbN2U=;
- b=p4z25TvAwxyljuZikfQj5x6xNx7CfQMoCgMhbpQgQ1IE/b3DYB8eHvce6uMI/LZV+f
- pW868EdFHPWG7tiS8JR6T1tmFxiAvvxF2kypNScZ33HLVyBibZwnyeConABdI4hYX26K
- U/sF+mlMCA3vxqVjvxxDUhfhGtEIp3ZWlCs0zm9QHLpEcQTNP8at8RgFDTvwIp0sHRuc
- 70L2AnD1nqj2EpeaC42YprU8qGNM82pyu0BWSvKgnzzgiaoEzvmohp7W/TyYJpZTgy1K
- vw1ke5b08zLcIVyMZOyxNF2JOd7xYP41Hk105QApT9N6VWk44TsKyyzG3UyRAg4LMe+W
- JdfQ==
-X-Gm-Message-State: AOAM533Q6tA1q9RcMuvF0aP9/uEHxi+wjzK/RiUzSF1WETnMztQAu7Zg
- iyML9IF2EsrJN0w7V4sMUtph3RYSWdG9
-X-Google-Smtp-Source: ABdhPJwZuK8Va11JBkM37YotH8BmGlV0DaMaCUiNgAghs6DU2efC15zigmOSaUc5v6PneRTKxNyebg==
-X-Received: by 2002:a7b:ce8e:: with SMTP id q14mr10204347wmj.33.1624449575836; 
- Wed, 23 Jun 2021 04:59:35 -0700 (PDT)
+ bh=eJZITneZK2pFfehw2W3mpmQwKfsEafjynuMXLav/Q64=;
+ b=WD1ezeBtCDXjBHZhPSRzE5zeRVc+Witx6LP5R8ssz0H2CITxIMsVyTTcrj8rcBJSuS
+ /+U2H7zoeDJu8UeLXMSL9IkKsAm9qwy1ENyyykAvKAFUVFz0Z6Qfx0Dzif/5eEijpCGb
+ ufAzEZJhMzbG/ysnFtS+niRIFjZgC4iiaJ6pfAUjKGK/jEQ5/qGB7fKrGH/newPJfO9n
+ YdJi3WAoPzPMzSgZySpwcN6HoXcSec65kzYXTi+MpmeN/OOsDFFOscz5Vdg7/kqgBOzw
+ bfI3uMuNXpRSZkpioDVVycTQRvHHyu9ZU2xMM4l4POm92eaiKViNbBiMqIJ4FlZWJyYU
+ melw==
+X-Gm-Message-State: AOAM533NlP8IyV8dbTOec+ZrDkppbADY0qt6r0YL7VBGzGUnZHB5TGuh
+ 3XQXtLoBP7pTOfmlVqHuVA==
+X-Google-Smtp-Source: ABdhPJxp2pV1Cwiio1m4yUGYVArQ7yQtoI2cifSaqMW73mMQPqvJNyrgsvNNrAOPg4u2yFDam2cYTg==
+X-Received: by 2002:a5d:6502:: with SMTP id x2mr10729320wru.327.1624449605446; 
+ Wed, 23 Jun 2021 05:00:05 -0700 (PDT)
 Received: from localhost.localdomain (ip5b434b8b.dynamic.kabel-deutschland.de.
  [91.67.75.139])
- by smtp.googlemail.com with ESMTPSA id o3sm2661265wrj.94.2021.06.23.04.59.34
+ by smtp.googlemail.com with ESMTPSA id y189sm5666157wmg.6.2021.06.23.05.00.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Jun 2021 04:59:35 -0700 (PDT)
+ Wed, 23 Jun 2021 05:00:05 -0700 (PDT)
 From: Alex Bee <knaerzche@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Fix GPU register width for RK3328
-Date: Wed, 23 Jun 2021 13:59:26 +0200
-Message-Id: <20210623115926.164861-1-knaerzche@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Add sdmmc_ext for RK3328
+Date: Wed, 23 Jun 2021 14:00:01 +0200
+Message-Id: <20210623120001.164920-1-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_045938_071070_FBEFC879 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20210623_050006_799699_707656D3 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,31 +99,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As can be seen in RK3328's TRM the register range for the GPU is
-0xff300000 to 0xff330000.
-It would (and does in vendor kernel) overlap with the registers of
-the HEVC encoder (node/driver do not exist yet in upstream kernel).
-See already existing h265e_mmu node.
+RK3328 SoC has a fourth mmc controller called SDMMC_EXT. Some
+boards have sdio wifi connected to it. In order to use it
+one would have to add the pinctrls from sdmmc0ext group which
+is done on board level.
 
-Fixes: 752fbc0c8da7 ("arm64: dts: rockchip: add rk3328 mali gpu node")
+While at that also add the reset controls for the other mmc
+controllers.
+
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 8c821acb21ff..da84be6f4715 100644
+index da84be6f4715..c13fa2f3f4cd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -599,7 +599,7 @@ saradc: adc@ff280000 {
+@@ -858,6 +858,8 @@ sdmmc: mmc@ff500000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_MMC0>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
  
- 	gpu: gpu@ff300000 {
- 		compatible = "rockchip,rk3328-mali", "arm,mali-450";
--		reg = <0x0 0xff300000 0x0 0x40000>;
-+		reg = <0x0 0xff300000 0x0 0x30000>;
- 		interrupts = <GIC_SPI 90 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 87 IRQ_TYPE_LEVEL_HIGH>,
- 			     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+@@ -870,6 +872,8 @@ sdio: mmc@ff510000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_SDIO>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
+ 
+@@ -882,6 +886,8 @@ emmc: mmc@ff520000 {
+ 		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+ 		fifo-depth = <0x100>;
+ 		max-frequency = <150000000>;
++		resets = <&cru SRST_EMMC>;
++		reset-names = "reset";
+ 		status = "disabled";
+ 	};
+ 
+@@ -980,6 +986,20 @@ usb_host0_ohci: usb@ff5d0000 {
+ 		status = "disabled";
+ 	};
+ 
++	sdmmc_ext: dwmmc@ff5f0000 {
++		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
++		reg = <0x0 0xff5f0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
++			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
++		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++		fifo-depth = <0x100>;
++		max-frequency = <150000000>;
++		resets = <&cru SRST_SDMMCEXT>;
++		reset-names = "reset";
++		status = "disabled";
++	};
++
+ 	usbdrd3: usb@ff600000 {
+ 		compatible = "rockchip,rk3328-dwc3", "snps,dwc3";
+ 		reg = <0x0 0xff600000 0x0 0x100000>;
 -- 
 2.27.0
 
