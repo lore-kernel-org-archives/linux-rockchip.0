@@ -2,116 +2,100 @@ Return-Path: <SRS0=6gll=LR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 570EEC4743C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 06:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7323C4743C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 08:57:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 187046115A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 06:46:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 187046115A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 6B778611AD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 08:57:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B778611AD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=monstr.eu
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PaXrbrm4BTFN+4J0f9JhmE7pZaCXLT8GF+TNdxAkZnQ=; b=JYG0B7ar1gOM22yo1NJosCI/Ih
-	9SxhURwE9NOROpxEhJGyIr33uZRDtvcDKC35SzphW/up3B9EZYzUk6YBINXo+HiDVHUpvdDjxmQUS
-	si3n2vhQYnuWxy1WPln5c2nPBdpVlbKojgU4mDmZP8At77WOETGazMN9b0DfVjdfQ+qgJv4OnyMmR
-	sSJ5IIkeQiIHK+56CU16sJUn7yhERsobB+wd/Dgc/6Ubc95Mh0qKfOwu/Yfrao4dSN/zwVJbAFbe1
-	Fq+Y1i2YY3I9PU3E6DpA1u/F0grfZGvYhNW5r7qmxlyf/Goh9JmSMsoW7YqJsrK9R8NgIzMcjbxbp
-	dh/elmjw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2et1LaocPL5DG0h7UqfAQIwjHkhbUS8nPOUFArvmWpc=; b=EUhwonEZvVa/JV
+	hKRL7xA98DpantAaZI0zIudVX0XDvfn7VeAZCcqFp0xlzKXN+m5HXMW0JC0TsaPTS8ISsRSfjou9l
+	rNT5GQQdHOhVcVdP+2XHU3hB/A/ekOp1luu7ng4exTa3frev2a1bZRAu4SvCi/IH4UICJK5faDgNn
+	aR5Z7uTE0ZQxjRs52A4LXjIGN+zFdtNYTLz7OYKD5+vG8moyH9xwIf/bJVvEHYdJbA0/E5gyUc+A0
+	NLHJDzXD6egl6y/cIse/U/5SxnfL72fGcvVC6Rlm3bCeGFh5IC29S+UGRHRPxYHoBveBG661cU/WK
+	otZ7o6J3Ts60V4U/9cSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvweg-009dvC-VH; Wed, 23 Jun 2021 06:46:35 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1lvyhj-00A0og-M1; Wed, 23 Jun 2021 08:57:51 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvweX-009dtI-Gq; Wed, 23 Jun 2021 06:46:27 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 988EA2197A;
- Wed, 23 Jun 2021 06:46:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624430783; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2ZcrZ8mqlycZCvqIEcHhGpxfIvuTeneHVV1SxihHfFE=;
- b=fysCyX7pl9hwhW7lTzSKgcEjXwuA1hSjnlioc+I+F/kS6sR8x0XrVBlQi9GMrNr+/TTuta
- p08ut3LPD29iy85JVrhF1ATbHuOhPkEUualytbvgfTQ/QUpFQ/Y9FDVhGnQB0hUbv8qUV9
- c369obDXPQ38a1O6O41ciPajyajOOSM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624430783;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2ZcrZ8mqlycZCvqIEcHhGpxfIvuTeneHVV1SxihHfFE=;
- b=4Smgv0UnJNewFhbY+AWKvoKHBM7+sC/qxgajn4EyRdKoRPnbRT113AsH3tdSvhG+pj3ZPg
- x5HowUsIUAhcZ5Dw==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id C397811A97;
- Wed, 23 Jun 2021 06:46:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624430783; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2ZcrZ8mqlycZCvqIEcHhGpxfIvuTeneHVV1SxihHfFE=;
- b=fysCyX7pl9hwhW7lTzSKgcEjXwuA1hSjnlioc+I+F/kS6sR8x0XrVBlQi9GMrNr+/TTuta
- p08ut3LPD29iy85JVrhF1ATbHuOhPkEUualytbvgfTQ/QUpFQ/Y9FDVhGnQB0hUbv8qUV9
- c369obDXPQ38a1O6O41ciPajyajOOSM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624430783;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2ZcrZ8mqlycZCvqIEcHhGpxfIvuTeneHVV1SxihHfFE=;
- b=4Smgv0UnJNewFhbY+AWKvoKHBM7+sC/qxgajn4EyRdKoRPnbRT113AsH3tdSvhG+pj3ZPg
- x5HowUsIUAhcZ5Dw==
-Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id Gn2cLr7Y0mC4bAAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Wed, 23 Jun 2021 06:46:22 +0000
-Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: emma@anholt.net, airlied@linux.ie, nouveau@lists.freedesktop.org,
- liviu.dudau@arm.com, alexandre.torgue@foss.st.com,
- dri-devel@lists.freedesktop.org, michal.simek@xilinx.com,
- linux-tegra@vger.kernel.org, thierry.reding@gmail.com,
- amd-gfx@lists.freedesktop.org, benjamin.gaignard@linaro.org,
- mihail.atanassov@arm.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- krzysztof.kozlowski@canonical.com, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wens@csie.org, jernej.skrabec@gmail.com,
- jonathanh@nvidia.com, xinliang.liu@linaro.org,
- kong.kongxinwei@hisilicon.com, james.qian.wang@arm.com, linux-imx@nxp.com,
- linux-graphics-maintainer@vmware.com, linux-sunxi@lists.linux.dev,
- bskeggs@redhat.com, chunkuang.hu@kernel.org, puck.chen@hisilicon.com,
- s.hauer@pengutronix.de, laurentiu.palcu@oss.nxp.com, matthias.bgg@gmail.com,
- kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- mcoquelin.stm32@gmail.com, hyun.kwon@xilinx.com, tomba@kernel.org,
- jyri.sarha@iki.fi, yannick.fertre@foss.st.com, Xinhui.Pan@amd.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, christian.koenig@amd.com,
- kyungmin.park@samsung.com, philippe.cornu@foss.st.com,
- alexander.deucher@amd.com, tiantao6@hisilicon.com, shawnguo@kernel.org
-References: <20210622141002.11590-1-tzimmermann@suse.de>
- <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <03e349b3-f805-9aa8-14a7-96e674011c3a@suse.de>
-Date: Wed, 23 Jun 2021 08:46:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lvyhg-00A0mo-5l
+ for linux-rockchip@lists.infradead.org; Wed, 23 Jun 2021 08:57:50 +0000
+Received: by mail-ej1-x630.google.com with SMTP id nd37so2862263ejc.3
+ for <linux-rockchip@lists.infradead.org>; Wed, 23 Jun 2021 01:57:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=monstr-eu.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Z6Z3rnoFwy3s+OnHi/sH1rvXTGduUYkOOkAbeaIPw4Q=;
+ b=tdK9uAJWdmT+cTqTX4ozHwlgRi7wW7OUcIGpx+5Br2fodFNa+MnfUQZVAzgz1DMfXp
+ n/6yy9sAzllko9mIwsv87gD1kCOH5+UvzuTO8Ov4YmQvbrKg9vhNxEnX9Bb3xpiNP2fH
+ k9Oyze3A8ShMVN/bVHL82sBkwKgirt++Dw9dhx7H9AShjZynKsDqAx3QjkNyy+S3seYa
+ O7aOzg7Mj0Cm2KxHYiHvi5dJSHR99JkBwPvAeetXr4PIjVliCzIaKYRVlGsyYaoAOytV
+ AXOwIKzGUy2+Qw0GsQqKp2vE+Hbxv9yib/h1U+C6vqKY5DAWNhTnHvHGn5ed0S9mxQ6J
+ iM2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Z6Z3rnoFwy3s+OnHi/sH1rvXTGduUYkOOkAbeaIPw4Q=;
+ b=gfa05KM3UXslv1G8TmGScNRkQ+M5qvDsOLX+62x0c8TsWZXj24IgPhbi0tr907rNRC
+ cQ4G4Dft4s3PVRKFTNCkfR1AcP4x7CK0f6y9q1Df+ou0LbL3ZD5x/Hl8UyUy2rrUjbty
+ GwpjpJmQiUnHWQRfmU1XiGKClyUyX/QxD2ON5CjkohN/pdIQcSN8pqm70eezUypn7htq
+ 2yYpoj99lPtTVyxJ0dWu307p3muuMFv806IMy2siQhTeWvcqRfDFZnXojphpDDY09W9g
+ hqcQmLOnTKQzdfeoqYTPtqGtdiWGWrchM22/BN+jRgCVEHBgYzHJtv0xKn1H/jGFYjtW
+ aGWA==
+X-Gm-Message-State: AOAM5325JhN1Rbb4K+TccPI/HKcIKxFRU/6hCRpJa0gryi/T6MIUDvWG
+ 0jqY1BynBDnqrJPARN0KrLkpHIXUnFxJ5t1JLVb31Q==
+X-Google-Smtp-Source: ABdhPJwy+pM9oZ1iyRoxUOJy65b7IRacVpAEIpAEHz2ud7J2MhpMBy54g7b0sAw4obchFDygfdWC6jUFii9npycxr4w=
+X-Received: by 2002:a17:906:ca4a:: with SMTP id
+ jx10mr8892678ejb.200.1624438666647; 
+ Wed, 23 Jun 2021 01:57:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
+References: <20200902150643.14839-1-krzk@kernel.org>
+ <20200902150643.14839-2-krzk@kernel.org>
+In-Reply-To: <20200902150643.14839-2-krzk@kernel.org>
+From: Michal Simek <monstr@monstr.eu>
+Date: Wed, 23 Jun 2021 10:57:35 +0200
+Message-ID: <CAHTX3dK+M9eg+Xod9tYHiEXY_igjO6iocaO=e1Frqd1kzPKTrw@mail.gmail.com>
+Subject: Re: [PATCH 2/9] i2c: xiic: Simplify with dev_err_probe()
+To: Krzysztof Kozlowski <krzk@kernel.org>, Wolfram Sang <wsa@the-dreams.de>
+Cc: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ bcm-kernel-feedback-list@broadcom.com, Sekhar Nori <nsekhar@ti.com>, 
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Oleksij Rempel <linux@rempel-privat.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Pierre-Yves MORDRET <pierre-yves.mordret@st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@st.com>, Peter Rosin <peda@axentia.se>,
+ Wolfram Sang <wsa@kernel.org>, 
+ linux-i2c@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
+ linux-arm <linux-arm-kernel@lists.infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_234625_770460_170AD725 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20210623_015748_313303_0B58E847 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,174 +108,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6291959293254268052=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============6291959293254268052==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="3WvZxzpHzwDdgKIhf5CsBVuKNwIjhuqGE"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3WvZxzpHzwDdgKIhf5CsBVuKNwIjhuqGE
-Content-Type: multipart/mixed; boundary="VpqofwZZWokdR6MNHNIH0htxV9CnMA5E8";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: emma@anholt.net, airlied@linux.ie, nouveau@lists.freedesktop.org,
- liviu.dudau@arm.com, alexandre.torgue@foss.st.com,
- dri-devel@lists.freedesktop.org, michal.simek@xilinx.com,
- linux-tegra@vger.kernel.org, thierry.reding@gmail.com,
- amd-gfx@lists.freedesktop.org, benjamin.gaignard@linaro.org,
- mihail.atanassov@arm.com, linux-stm32@st-md-mailman.stormreply.com,
- linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- krzysztof.kozlowski@canonical.com, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wens@csie.org, jernej.skrabec@gmail.com,
- jonathanh@nvidia.com, xinliang.liu@linaro.org,
- kong.kongxinwei@hisilicon.com, james.qian.wang@arm.com, linux-imx@nxp.com,
- linux-graphics-maintainer@vmware.com, linux-sunxi@lists.linux.dev,
- bskeggs@redhat.com, chunkuang.hu@kernel.org, puck.chen@hisilicon.com,
- s.hauer@pengutronix.de, laurentiu.palcu@oss.nxp.com, matthias.bgg@gmail.com,
- kernel@pengutronix.de, linux-arm-kernel@lists.infradead.org,
- mcoquelin.stm32@gmail.com, hyun.kwon@xilinx.com, tomba@kernel.org,
- jyri.sarha@iki.fi, yannick.fertre@foss.st.com, Xinhui.Pan@amd.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, christian.koenig@amd.com,
- kyungmin.park@samsung.com, philippe.cornu@foss.st.com,
- alexander.deucher@amd.com, tiantao6@hisilicon.com, shawnguo@kernel.org
-Message-ID: <03e349b3-f805-9aa8-14a7-96e674011c3a@suse.de>
-Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
-References: <20210622141002.11590-1-tzimmermann@suse.de>
- <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
-In-Reply-To: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
-
---VpqofwZZWokdR6MNHNIH0htxV9CnMA5E8
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-
-
-Am 22.06.21 um 18:11 schrieb Laurent Pinchart:
-> Hi Thomas,
->=20
-> Thank you for the patches.
->=20
-> On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
->> Remove references to struct drm_device.irq_enabled from modern
->> DRM drivers and core.
->>
->> KMS drivers enable IRQs for their devices internally. They don't
->> have to keep track of the IRQ state via irq_enabled. For vblanking,
->> it's cleaner to test for vblanking support directly than to test
->> for enabled IRQs.
->>
->> This used to be a single patch, [1] but it's now a full series.
->>
->> The first 3 patches replace instances of irq_enabled that are not
->> required.
->>
->> Patch 4 fixes vblank ioctls to actually test for vblank support
->> instead of IRQs.
->>
->> THe rest of the patchset removes irq_enabled from all non-legacy
->> drivers. The only exception is omapdrm, which has an internal
->> dpendency on the field's value. For this drivers, the state gets
->> duplicated internally.
->>
->> With the patchset applied, drivers can later switch over to plain
->> Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
->>
->> v2:
->> 	* keep the original test for legacy drivers in
->> 	  drm_wait_vblank_ioctl() (Daniel)
->>
->> [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmerman=
-n@suse.de/
->>
->> Thomas Zimmermann (22):
->>    drm/amdgpu: Track IRQ state in local device state
->>    drm/hibmc: Call drm_irq_uninstall() unconditionally
->>    drm/radeon: Track IRQ state in local device state
->>    drm: Don't test for IRQ support in VBLANK ioctls
->>    drm/komeda: Don't set struct drm_device.irq_enabled
->>    drm/malidp: Don't set struct drm_device.irq_enabled
->>    drm/exynos: Don't set struct drm_device.irq_enabled
->>    drm/kirin: Don't set struct drm_device.irq_enabled
->>    drm/imx: Don't set struct drm_device.irq_enabled
->>    drm/mediatek: Don't set struct drm_device.irq_enabled
->>    drm/nouveau: Don't set struct drm_device.irq_enabled
->>    drm/omapdrm: Track IRQ state in local device state
->>    drm/rockchip: Don't set struct drm_device.irq_enabled
->>    drm/sti: Don't set struct drm_device.irq_enabled
->>    drm/stm: Don't set struct drm_device.irq_enabled
->>    drm/sun4i: Don't set struct drm_device.irq_enabled
->>    drm/tegra: Don't set struct drm_device.irq_enabled
->>    drm/tidss: Don't use struct drm_device.irq_enabled
->>    drm/vc4: Don't set struct drm_device.irq_enabled
->>    drm/vmwgfx: Don't set struct drm_device.irq_enabled
->>    drm/xlnx: Don't set struct drm_device.irq_enabled
->>    drm/zte: Don't set struct drm_device.irq_enabled
->=20
-> The list seems to be missing armada, rcar-du and vkms. It would also be=
-
-> nice to address i915 if possible.
-
-Indeed. I grepped for \>irq_enabled. But some few drivers use=20
-=2Eirq_enabled. I'll fix this in the patchset's next iteration. Thanks fo=
-r=20
-double checking.
-
-Best regards
-Thomas
-
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---VpqofwZZWokdR6MNHNIH0htxV9CnMA5E8--
-
---3WvZxzpHzwDdgKIhf5CsBVuKNwIjhuqGE
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDS2L4FAwAAAAAACgkQlh/E3EQov+DU
-wBAAw45Ui6qNyMQ6l7x7FjeKz6BOxeL/3pFiEg6QBuIF3dcF1K/av6JC94zL+kHXKPKf8RL0kK6R
-llSacrxSur3jN59j06sLSWaj+i6zIfcJnZGVC0gc943dR4mqoXM3xY2lbxKjscSbT4ZAnNRAueqe
-aVPvREhaES8K8dUdi1SvXbPGYu0SFpncaamo2SjRwCpsgaBuqR/en65vDdOMMZXF7wvON+UVnLDO
-eNmXxqxe6J4nAaMej8d05VkTFbGjnMQRYFNpml0jme9KeCIidOWuhiTn8B2TfJflgozLDLSuI9Oc
-HrAUMfEi/ylWg3AYV/7kw0sOHPK0u2yPy/o4y5rMkZE0WUC6r0quMB77bAHZvCBtotod2P85oVoY
-6aspu2FDzpID6HrFcsBr9mY/3AVMJD1OFWrK7GvzTfhuY22oEiNr5iE6VccabOn0Sh2UkCU/ZV1u
-NmlpoaRQm1ha7gITQisOwkps5C+gE5Cazo8hFAbJ0kalSzXr7JA2sifCm8GN5qtHnRpFv2UxfceG
-XMbscIhcKgiIDQU4PksI0w4o7/u0pKVfb7JA2NzNqwItMDAITSJk083kJXrNqPXRZZlLTX+U25SN
-rtpXlEe13EoOtMeXDiZP2rn7CZmWoFQrgsmTKOUrBPWMMpfr9PMgakJNUBThOirbykuQ+SrNpYgt
-rgY=
-=zLOG
------END PGP SIGNATURE-----
-
---3WvZxzpHzwDdgKIhf5CsBVuKNwIjhuqGE--
-
-
---===============6291959293254268052==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6291959293254268052==--
-
+c3QgMi4gOS4gMjAyMCB2IDE3OjEwIG9kZXPDrWxhdGVsIEtyenlzenRvZiBLb3psb3dza2kgPGty
+emtAa2VybmVsLm9yZz4gbmFwc2FsOgo+Cj4gQ29tbW9uIHBhdHRlcm4gb2YgaGFuZGxpbmcgZGVm
+ZXJyZWQgcHJvYmUgY2FuIGJlIHNpbXBsaWZpZWQgd2l0aAo+IGRldl9lcnJfcHJvYmUoKS4gIExl
+c3MgY29kZSBhbmQgdGhlIGVycm9yIHZhbHVlIGdldHMgcHJpbnRlZC4KPgo+IFNpZ25lZC1vZmYt
+Ynk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyemtAa2VybmVsLm9yZz4KPiAtLS0KPiAgZHJpdmVy
+cy9pMmMvYnVzc2VzL2kyYy14aWljLmMgfCA5ICsrKystLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwg
+NCBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+aTJjL2J1c3Nlcy9pMmMteGlpYy5jIGIvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy14aWljLmMKPiBp
+bmRleCA5MGMxYzM2MjM5NGQuLmE5NzQzOGYzNWM1ZCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2ky
+Yy9idXNzZXMvaTJjLXhpaWMuYwo+ICsrKyBiL2RyaXZlcnMvaTJjL2J1c3Nlcy9pMmMteGlpYy5j
+Cj4gQEAgLTc4NywxMSArNzg3LDEwIEBAIHN0YXRpYyBpbnQgeGlpY19pMmNfcHJvYmUoc3RydWN0
+IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgICAgICAgIGluaXRfd2FpdHF1ZXVlX2hlYWQoJmky
+Yy0+d2FpdCk7Cj4KPiAgICAgICAgIGkyYy0+Y2xrID0gZGV2bV9jbGtfZ2V0KCZwZGV2LT5kZXYs
+IE5VTEwpOwo+IC0gICAgICAgaWYgKElTX0VSUihpMmMtPmNsaykpIHsKPiAtICAgICAgICAgICAg
+ICAgaWYgKFBUUl9FUlIoaTJjLT5jbGspICE9IC1FUFJPQkVfREVGRVIpCj4gLSAgICAgICAgICAg
+ICAgICAgICAgICAgZGV2X2VycigmcGRldi0+ZGV2LCAiaW5wdXQgY2xvY2sgbm90IGZvdW5kLlxu
+Iik7Cj4gLSAgICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKGkyYy0+Y2xrKTsKPiAtICAgICAg
+IH0KPiArICAgICAgIGlmIChJU19FUlIoaTJjLT5jbGspKQo+ICsgICAgICAgICAgICAgICByZXR1
+cm4gZGV2X2Vycl9wcm9iZSgmcGRldi0+ZGV2LCBQVFJfRVJSKGkyYy0+Y2xrKSwKPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImlucHV0IGNsb2NrIG5vdCBmb3VuZC5cbiIp
+Owo+ICsKPiAgICAgICAgIHJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShpMmMtPmNsayk7Cj4gICAg
+ICAgICBpZiAocmV0KSB7Cj4gICAgICAgICAgICAgICAgIGRldl9lcnIoJnBkZXYtPmRldiwgIlVu
+YWJsZSB0byBlbmFibGUgY2xvY2suXG4iKTsKPiAtLQo+IDIuMTcuMQo+Cj4KPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxpbnV4LWFybS1rZXJuZWwg
+bWFpbGluZyBsaXN0Cj4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVs
+CgpJIHNlZSB0aGF0IHRoaXMgZGlkbid0IGdvIHRocm91Z2guCkFja2VkLWJ5OiBNaWNoYWwgU2lt
+ZWsgPG1pY2hhbC5zaW1la0B4aWxpbnguY29tPgoKV29sZnJhbTogQ2FuIHlvdSBwbGVhc2UgYXBw
+bHk/CgpUaGFua3MsCk1pY2hhbAoKCi0tIApNaWNoYWwgU2ltZWssIEluZy4gKE0uRW5nKSwgT3Bl
+blBHUCAtPiBLZXlJRDogRkUzRDFGOTEKdzogd3d3Lm1vbnN0ci5ldSBwOiArNDItMC03MjE4NDI4
+NTQKTWFpbnRhaW5lciBvZiBMaW51eCBrZXJuZWwgLSBYaWxpbnggTWljcm9ibGF6ZQpNYWludGFp
+bmVyIG9mIExpbnV4IGtlcm5lbCAtIFhpbGlueCBaeW5xIEFSTSBhbmQgWnlucU1QIEFSTTY0IFNv
+Q3MKVS1Cb290IGN1c3RvZGlhbiAtIFhpbGlueCBNaWNyb2JsYXplL1p5bnEvWnlucU1QL1ZlcnNh
+bCBTb0NzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
