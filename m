@@ -2,94 +2,61 @@ Return-Path: <SRS0=6gll=LR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-20.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5D24C4743C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 13:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EC95C4743C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 14:23:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8B5236101D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 13:53:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B5236101D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1D3926101D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Jun 2021 14:23:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D3926101D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=inria.fr
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fm1JqMw7j9PeKYtIuZMw7SkDG9cys2sojuTy7TKrAfU=; b=frlQ3DDSd44xUPtFto6hu99AZc
-	KHMZmcn+4VaiiC+obKf0G1PZzkr9pfy2CtlGWuS04BWCbSHf76fQuiSY/s2h1e2U1Rz2V6e4DoaSp
-	QOaQ9OZOqncZyUWcV8DG8etOwkkDJ8OF+to8UDTznomCwkUEZcfZdMguO7GhphqK2xEOy76t5ZZ8W
-	0knksyv/oKx5j0JcYzJJzfV0bjUkNVYc3yxSq3z8CAJL5ChJuLRIlWysYbZ9oViUqyH3KWg1DoMp9
-	GUFDBbbQjMCTb2pqbw+LXg9AhnrcqVKeKuDUjG3CxZarbUvVh2wJMK44ErUaPsP/0NLHs4UsjkDUo
-	0//myoGQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QUA2zvh/um2q06bSRO7cheIK+nM8gomBMTQZLoU0+kA=; b=J+cEAIYobFyKk6
+	R+EoU/nSdw1fKZwG3owyG0SdqtR6Hn5nm+a2ghdWp90MpUix/hJENpYtRPS6t3YLkIDz78hhbqUeK
+	F8kbQ+L6Hfw91h8ERNrGnmjA8FjdfPDi6KlCpsamhlb6GgqROEaex4KRnukxyWdoyjQHpL4iYZq9V
+	SoTv2Np0LGO9YHZUpa6nXb8U74DJDLRWhuFuVoo/MbxRKDGhcGoSrOVmOWgxGnzhhku+tC6Oh+H6I
+	1/Ob8atWPA+tA+jxzbJqQEALbaUAu414cVUlnPMutJvIuU4TjVafwC8rdMZU67sHAuh+0PiDLnU+/
+	nffItl9Qd0JN77JLUvhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lw3Jl-00As5w-9A; Wed, 23 Jun 2021 13:53:25 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1lw3nE-00AzQT-Lt; Wed, 23 Jun 2021 14:23:52 +0000
+Received: from mail3-relais-sop.national.inria.fr ([192.134.164.104])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lw3Jh-00As3N-57; Wed, 23 Jun 2021 13:53:23 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id
- p8-20020a7bcc880000b02901dbb595a9f1so1415542wma.2; 
- Wed, 23 Jun 2021 06:53:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=pKJo2zfQJAto+H7on6ydNnW2a5qzcSImZ5tu6Hz8SPs=;
- b=Ax5amtes4QHAh5hFHrs1nlkfPyuUGwzzAv1QPZ+CsoH50Xgyw/7JKR+P+GtUWWaSgA
- LiGgeYD93qjaZ9qlcD8BQYq3AbD/B6XtbKuu+CLCzjyKzUbz5/GGDF/zoXXSwVVOGF1y
- UnJBK3s0JXaeEYup+j5MgnOxc5tg5IJ0VSPPiiXkxll3ptUcEABrWbKu+trMyHnvn5SI
- 7aqoE23wqwLp8KgTj4uV3ib+W7KRpVMDmKZeM95amRPuVRWF/NBuQDLqFYnaiJUq5dEu
- N3DNyMno4cj84YUSDj7vdOMlIswvYpmHq6E/6umWyWlzBabP5RLPpcbiwu3SEVLCwLp3
- IWyg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=pKJo2zfQJAto+H7on6ydNnW2a5qzcSImZ5tu6Hz8SPs=;
- b=t5HaVQ40YZNi7crNPb0CIi8RqTpOJ2JB7ja18TDIOsZH+V0niPrOB/KmUs4RtAi54P
- 2O4BEezRpN+o5fo9GVYpoVjU5Rl5+FG3raR+4LYClSq0yqAAcV4obGtrJAaD0KHkAzRD
- zd/ofxYd6D06BRAn2JrpkH4QMZEnwX49mQckmTLzc45kfnBzBKZdN5Cl4UMSLNRejh/G
- oyPJZxbz0vlKFGHTuq53g7CSRh3zASNGjyMSXxVH2mIK1ho/bVjJ2PFFGC5peCnh8Yea
- gH7XC3yJw0/0wnminKHA4nAoFy9b/1zFDLk8KSvZE0XI6h+ZBJhIiaiUE3Dz/69nGy6L
- QM8g==
-X-Gm-Message-State: AOAM533uCPv76cfJlGVNJbzCfuFe58DNcHJ8wA2szerlCYmov2qNLuxd
- etl/OKDrF4nnQzjbr41p0u4CqJYaXdb2
-X-Google-Smtp-Source: ABdhPJx6MegljGgLzjeJ/OV84M5roMM/v+iHCm4FMq3beu+lQ7zyxaZd9zVURsttRoq10p/dwncWrQ==
-X-Received: by 2002:a05:600c:ada:: with SMTP id
- c26mr11165067wmr.189.1624456399786; 
- Wed, 23 Jun 2021 06:53:19 -0700 (PDT)
-Received: from [192.168.200.247] (ip5b434b8b.dynamic.kabel-deutschland.de.
- [91.67.75.139])
- by smtp.gmail.com with ESMTPSA id t82sm36707wmf.22.2021.06.23.06.53.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Jun 2021 06:53:19 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: rockchip: Add sdmmc_ext for RK3328
-To: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210623120001.164920-1-knaerzche@gmail.com>
- <c30377a1-90aa-d79e-a60a-5bc1a8e18c44@gmail.com>
-From: Alex Bee <knaerzche@gmail.com>
-Message-ID: <b534795a-fc1d-3e89-7ea9-0606297cd9b1@gmail.com>
-Date: Wed, 23 Jun 2021 15:53:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ id 1lw3n1-00AzNw-9H; Wed, 23 Jun 2021 14:23:41 +0000
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AmZRX1a4u+U/5/calGgPXwMPXdLJyesId70hD?=
+ =?us-ascii?q?6qkRc202TiX2rauTdZggvyMc6wxhO03I++rgBEDoexq1yXcf2+cs1NmZMDUO9F?=
+ =?us-ascii?q?HJEKhSqbqn+THmFiHkn9Qx6Y5recFFZ+HNMQ=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.83,294,1616454000"; d="scan'208";a="385935401"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+ by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Jun 2021 16:23:31 +0200
+Date: Wed, 23 Jun 2021 16:23:30 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+cc: kbuild-all@lists.01.org, linux-kernel@vger.kernel.org, 
+ Sumera Priyadarsini <sylphrenadin@gmail.com>
+Subject: [PATCH] phy: rockchip-inno-usb2: fix for_each_child.cocci warnings
+Message-ID: <alpine.DEB.2.22.394.2106231617540.99238@hadrien>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-In-Reply-To: <c30377a1-90aa-d79e-a60a-5bc1a8e18c44@gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_065321_234677_CF1BF9C6 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20210623_072339_683876_946705C6 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,93 +69,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan,
+From: kernel test robot <lkp@intel.com>
 
-Am 23.06.21 um 14:53 schrieb Johan Jonker:
-> Hi Alex,
->
-> make ARCH=arm64 dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->
-> On 6/23/21 2:00 PM, Alex Bee wrote:
->> RK3328 SoC has a fourth mmc controller called SDMMC_EXT. Some
->> boards have sdio wifi connected to it. In order to use it
->> one would have to add the pinctrls from sdmmc0ext group which
->> is done on board level.
->>
->> While at that also add the reset controls for the other mmc
->> controllers.
->>
->> Signed-off-by: Alex Bee <knaerzche@gmail.com>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 20 ++++++++++++++++++++
->>   1 file changed, 20 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> index da84be6f4715..c13fa2f3f4cd 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> @@ -858,6 +858,8 @@ sdmmc: mmc@ff500000 {
->>   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
->>   		fifo-depth = <0x100>;
->>   		max-frequency = <150000000>;
->> +		resets = <&cru SRST_MMC0>;
->> +		reset-names = "reset";
->>   		status = "disabled";
->>   	};
->>   
->> @@ -870,6 +872,8 @@ sdio: mmc@ff510000 {
->>   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
->>   		fifo-depth = <0x100>;
->>   		max-frequency = <150000000>;
->> +		resets = <&cru SRST_SDIO>;
->> +		reset-names = "reset";
->>   		status = "disabled";
->>   	};
->>   
->> @@ -882,6 +886,8 @@ emmc: mmc@ff520000 {
->>   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
->>   		fifo-depth = <0x100>;
->>   		max-frequency = <150000000>;
->> +		resets = <&cru SRST_EMMC>;
->> +		reset-names = "reset";
->>   		status = "disabled";
->>   	};
->>   
->> @@ -980,6 +986,20 @@ usb_host0_ohci: usb@ff5d0000 {
->>   		status = "disabled";
->>   	};
->>   
->> +	sdmmc_ext: dwmmc@ff5f0000 {
-> /arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: dwmmc@ff5f0000:
-> $nodename:0: 'dwmmc@ff5f0000' does not match '^mmc(@.*)?$'
+For_each_available_child_of_node should have of_node_put()
+before break around line 1184.  The other jumps out of the
+loop do contain the put.
 
-Argh: I submitted the pre-dtbs_check version. Thanks for checking.
+Generated by: scripts/coccinelle/iterators/for_each_child.cocci
 
-Alex.
+CC: Sumera Priyadarsini <sylphrenadin@gmail.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Julia Lawall <julia.lawall@inria.fr>
+---
 
->> +		compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
->> +		reg = <0x0 0xff5f0000 0x0 0x4000>;
->> +		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
->> +		clocks = <&cru HCLK_SDMMC_EXT>, <&cru SCLK_SDMMC_EXT>,
->> +			 <&cru SCLK_SDMMC_EXT_DRV>, <&cru SCLK_SDMMC_EXT_SAMPLE>;
->> +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
->> +		fifo-depth = <0x100>;
->> +		max-frequency = <150000000>;
->> +		resets = <&cru SRST_SDMMCEXT>;
->> +		reset-names = "reset";
->> +		status = "disabled";
->> +	};
->> +
->>   	usbdrd3: usb@ff600000 {
->>   		compatible = "rockchip,rk3328-dwc3", "snps,dwc3";
->>   		reg = <0x0 0xff600000 0x0 0x100000>;
->>
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git master
+head:   0c18f29aae7ce3dadd26d8ee3505d07cc982df75
+commit: 82c2d81361ecd142a54e84a9da1e287113314a4f coccinelle: iterators: Add for_each_child.cocci script
+:::::: branch date: 20 hours ago
+:::::: commit date: 8 months ago
+
+Please take the patch only if it's a positive warning. Thanks!
+
+ phy-rockchip-inno-usb2.c |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1180,8 +1180,10 @@ static int rockchip_usb2phy_probe(struct
+
+ next_child:
+ 		/* to prevent out of boundary */
+-		if (++index >= rphy->phy_cfg->num_ports)
++		if (++index >= rphy->phy_cfg->num_ports) {
++			of_node_put(child_np);
+ 			break;
++		}
+ 	}
+
+ 	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
 
 _______________________________________________
 Linux-rockchip mailing list
