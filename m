@@ -2,41 +2,41 @@ Return-Path: <SRS0=8D6r=LS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6001FC48BDF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38AD7C49EA5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F122613C7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F122613C7
+	by mail.kernel.org (Postfix) with ESMTPS id 084B2613CC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 084B2613CC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qw2DJW5MiLVtx8QDZW7E+kC8dEcBETp0OvzsM1XiXzk=; b=NF8yKKRTT7EzkZ
-	FyMwQ3pRx+OEKFOy20FwNjGCXU5Yutdo0i9M4pOkCttfaPzPGaoPhL4CirPvUxaQLZKwCSuixymWb
-	Ukh+C9yXcXBrBlKsZsho/y17DG7r2VDPVrN3FkfdvRL422Qpw4lOnQpMvbeZArDq65DiSclnWqzFF
-	hcHGv6JZ80GJ5HYW88amoma3N0CS3Pts1rXYihDGa2BB0fXwGBNuCevGQ/2yiXjjW9wXooRaNVidk
-	gU6nE/QqJG9D1IeB/dOi+6yRmdG6rJAH9Nbjn5z/mQMbOlOSe7Ig4+9Q+/9OcPqiFQK0IQA1ucA40
-	ipKv5A8zavay0g7kovDg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=b8zHZG4Ic6gc7ZM4ghn26O7fVRnZKiBUtzyfkUCuuD0=; b=CZuWGJu/4BomgA
+	XTXx9ZiQR9+qKSAHE7ptJoAf3YO44cIn0jqc3h6B1cyD2MBRMD81Ncm2GkSMd8setX0xLVwMxQSRl
+	/JcoIFUcLIPlMm/FXr7OXLONspQX5Km8AJxha4IVeighqkEr7j+4TJr6af05ctdgv5kqkscRWydnD
+	CY0CqYpzMARPyqbGyDaBS8i6NzelfPwJwKW412vH9TQbNRlwqpj/IITDRQpWKqBHiZ3nbCmuisBX1
+	eNWqpgxFTiasB6RSqe0tT4zH43a+9EIYajJaOdMblkHfDRPf4htfKBblMICAZmOwUdFDA2i3Qw8cV
+	7NVls2iM93nh1gnQ8Ubg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwNpo-00ERQ6-O9; Thu, 24 Jun 2021 11:47:52 +0000
+	id 1lwNpp-00ERQU-Lh; Thu, 24 Jun 2021 11:47:53 +0000
 Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwNpQ-00ERHq-Fk; Thu, 24 Jun 2021 11:47:30 +0000
+ id 1lwNpQ-00ERHo-EU; Thu, 24 Jun 2021 11:47:30 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id ACA82D56BF;
+ by lucky1.263xmail.com (Postfix) with ESMTP id 4939ED56A8;
  Thu, 24 Jun 2021 19:47:22 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
@@ -48,7 +48,7 @@ Received: from localhost.localdomain (unknown [58.22.7.114])
  P1335T140034770458368S1624535240956933_; 
  Thu, 24 Jun 2021 19:47:22 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <fb16b192f82d02a1bda5123360655013>
+X-UNIQUE-TAG: <8a73664a9ad95f5549fa13ac1c89dcab>
 X-RL-SENDER: cl@rock-chips.com
 X-SENDER: cl@rock-chips.com
 X-LOGIN-NAME: cl@rock-chips.com
@@ -63,16 +63,13 @@ Cc: robh+dt@kernel.org, jbx6244@gmail.com, zhangqing@rock-chips.com,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  lee.jones@linaro.org, Liang Chen <cl@rock-chips.com>
-Subject: [PATCH v1 1/3] dt-bindings: arm: rockchip: add rk3568 compatible
- string to pmu.yaml
-Date: Thu, 24 Jun 2021 19:47:17 +0800
-Message-Id: <20210624114719.1685-2-cl@rock-chips.com>
+Subject: [PATCH v1 0/3] arm64: dts: rockchip: add pmu and qos nodes for rk3568
+Date: Thu, 24 Jun 2021 19:47:16 +0800
+Message-Id: <20210624114719.1685-1-cl@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210624114719.1685-1-cl@rock-chips.com>
-References: <20210624114719.1685-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_044728_723607_EEC256B8 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20210624_044728_690166_638438A7 
+X-CRM114-Status: UNSURE (   7.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,34 +91,20 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Liang Chen <cl@rock-chips.com>
 
-add "rockchip,rk3568-pmu", "syscon", "simple-mfd" for pmu nodes on a
-rk3568 platform to pmu.ymal.
+v1:
+1. Document rk3568 compatible for pmu and qos nodes.
+2. Add the power-management and qos nodes to the core rk3568 dtsi.
 
-Signed-off-by: Liang Chen <cl@rock-chips.com>
----
- Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Liang Chen (3):
+  dt-bindings: arm: rockchip: add rk3568 compatible string to pmu.yaml
+  dt-binding: mfd: syscon: add rk3568 QoS register compatible
+  arm64: dts: rockchip: add pmu and qos nodes for rk3568
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-index 53115b92d17f..ceb15cea77e2 100644
---- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
-@@ -23,6 +23,7 @@ select:
-           - rockchip,rk3066-pmu
-           - rockchip,rk3288-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3568-pmu
- 
-   required:
-     - compatible
-@@ -35,6 +36,7 @@ properties:
-           - rockchip,rk3066-pmu
-           - rockchip,rk3288-pmu
-           - rockchip,rk3399-pmu
-+          - rockchip,rk3568-pmu
-       - const: syscon
-       - const: simple-mfd
- 
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |   2 +
+ .../devicetree/bindings/mfd/syscon.yaml       |   1 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 229 ++++++++++++++++++
+ 3 files changed, 232 insertions(+)
+
 -- 
 2.17.1
 
