@@ -2,96 +2,78 @@ Return-Path: <SRS0=8D6r=LS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AE90CC49EA5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6001FC48BDF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43570613FF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43570613FF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2F122613C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 11:47:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F122613C7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vXirERS2FPXCVmwuBl48RX169V4RIQ7khmqUGACTbWM=; b=1zVekp7tzcuovz
-	RNj7+pyktsTS1wfKqOI3jNM0Z1HQ+lLlNwKSVP0NHNccaSXcM0yE0qlhrEuZ8lx/Bj+Nr0ZqdAd26
-	FTdmzzauoPyEUZdXKFu9fe7NiqJf1pvFJ95gTub/llr/9+kbSgdLlPuiBwy5gCjrdTdkn6higxT0d
-	F/cRHX+IRFed9ZyyBH+MnvTO0cz4B6SQdSur+Pzh9TRQRf1xWuPypZ6Hc+jdV0lJjYOWvrCvBwvVz
-	C3joRiOVaUihNVMSvLz4yYRTglq5syxLy5d59mUEW7iVfNEi7zkgews+LutBTnsdeLje3DIl+VUQg
-	dvhZQcYIiK7I+dPFb29Q==;
+	List-Owner; bh=Qw2DJW5MiLVtx8QDZW7E+kC8dEcBETp0OvzsM1XiXzk=; b=NF8yKKRTT7EzkZ
+	FyMwQ3pRx+OEKFOy20FwNjGCXU5Yutdo0i9M4pOkCttfaPzPGaoPhL4CirPvUxaQLZKwCSuixymWb
+	Ukh+C9yXcXBrBlKsZsho/y17DG7r2VDPVrN3FkfdvRL422Qpw4lOnQpMvbeZArDq65DiSclnWqzFF
+	hcHGv6JZ80GJ5HYW88amoma3N0CS3Pts1rXYihDGa2BB0fXwGBNuCevGQ/2yiXjjW9wXooRaNVidk
+	gU6nE/QqJG9D1IeB/dOi+6yRmdG6rJAH9Nbjn5z/mQMbOlOSe7Ig4+9Q+/9OcPqiFQK0IQA1ucA40
+	ipKv5A8zavay0g7kovDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwMuW-00EEXU-Hl; Thu, 24 Jun 2021 10:48:40 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1lwNpo-00ERQ6-O9; Thu, 24 Jun 2021 11:47:52 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwMuQ-00EETa-Se; Thu, 24 Jun 2021 10:48:36 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 571A61254;
- Thu, 24 Jun 2021 12:48:33 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1624531713;
- bh=fIk5wMEN1B7CMPOBGbKPIoyHWGb/NJbW3Q+hz7HFjMM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OoLj5b8l/ofOHdX9hMnRB54xFpHcmL5qCdyqf0btt+Wqy//1J8rGXdoC24H1uq8n1
- 048gJuhXofMiwBWBvQAq72XeLSOhwF8Jn/QOm5PZoqoyR+V/AZX9s6u3YYgXawYOjf
- yqs50G3bJBKCjDvGArnYQnXaHNQWu9PnXSCiArt0=
-Date: Thu, 24 Jun 2021 13:48:03 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, thierry.reding@gmail.com,
- jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
- linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, michal.simek@xilinx.com,
- jani.nikula@linux.intel.com, rodrigo.vivi@intel.com,
- linux@armlinux.org.uk, kieran.bingham+renesas@ideasonboard.com,
- rodrigosiqueiramelo@gmail.com, melissa.srw@gmail.com,
- hamohammed.sa@gmail.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v3 24/27] drm/vkms: Don't set struct drm_device.irq_enabled
-Message-ID: <YNRi4yR6lQTix7ar@pendragon.ideasonboard.com>
-References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-25-tzimmermann@suse.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210624072916.27703-25-tzimmermann@suse.de>
+ id 1lwNpQ-00ERHq-Fk; Thu, 24 Jun 2021 11:47:30 +0000
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id ACA82D56BF;
+ Thu, 24 Jun 2021 19:47:22 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P1335T140034770458368S1624535240956933_; 
+ Thu, 24 Jun 2021 19:47:22 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <fb16b192f82d02a1bda5123360655013>
+X-RL-SENDER: cl@rock-chips.com
+X-SENDER: cl@rock-chips.com
+X-LOGIN-NAME: cl@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-RCPT-COUNT: 10
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: <cl@rock-chips.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, jbx6244@gmail.com, zhangqing@rock-chips.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ lee.jones@linaro.org, Liang Chen <cl@rock-chips.com>
+Subject: [PATCH v1 1/3] dt-bindings: arm: rockchip: add rk3568 compatible
+ string to pmu.yaml
+Date: Thu, 24 Jun 2021 19:47:17 +0800
+Message-Id: <20210624114719.1685-2-cl@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210624114719.1685-1-cl@rock-chips.com>
+References: <20210624114719.1685-1-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_034835_122275_C89342B8 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20210624_044728_723607_EEC256B8 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,45 +86,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
+From: Liang Chen <cl@rock-chips.com>
 
-Thank you for the patch.
+add "rockchip,rk3568-pmu", "syscon", "simple-mfd" for pmu nodes on a
+rk3568 platform to pmu.ymal.
 
-On Thu, Jun 24, 2021 at 09:29:13AM +0200, Thomas Zimmermann wrote:
-> The field drm_device.irq_enabled is only used by legacy drivers
-> with userspace modesetting. Don't set it in vkms.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Signed-off-by: Liang Chen <cl@rock-chips.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> ---
->  drivers/gpu/drm/vkms/vkms_drv.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-> index 027ffe759440..496de38ad983 100644
-> --- a/drivers/gpu/drm/vkms/vkms_drv.c
-> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
-> @@ -163,8 +163,6 @@ static int vkms_create(struct vkms_config *config)
->  		goto out_devres;
->  	}
->  
-> -	vkms_device->drm.irq_enabled = true;
-> -
->  	ret = drm_vblank_init(&vkms_device->drm, 1);
->  	if (ret) {
->  		DRM_ERROR("Failed to vblank\n");
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+index 53115b92d17f..ceb15cea77e2 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+@@ -23,6 +23,7 @@ select:
+           - rockchip,rk3066-pmu
+           - rockchip,rk3288-pmu
+           - rockchip,rk3399-pmu
++          - rockchip,rk3568-pmu
+ 
+   required:
+     - compatible
+@@ -35,6 +36,7 @@ properties:
+           - rockchip,rk3066-pmu
+           - rockchip,rk3288-pmu
+           - rockchip,rk3399-pmu
++          - rockchip,rk3568-pmu
+       - const: syscon
+       - const: simple-mfd
+ 
 -- 
-Regards,
+2.17.1
 
-Laurent Pinchart
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
