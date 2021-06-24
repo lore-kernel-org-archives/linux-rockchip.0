@@ -2,77 +2,94 @@ Return-Path: <SRS0=8D6r=LS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81D6BC48BDF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 13:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49DBAC49EA5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 15:00:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B887A613C3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 13:10:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B887A613C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0D116613C0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 15:00:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D116613C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dCF6AOe6YezSAj7iXh7Tye1xPcEZh4kpq9z48Is+pWI=; b=Wc+syjwaErEZiC
-	BjxVPF/9lBj38U0hvHRsqgJov66/5XcvQltw5Boq7i4XyxhCfc21SO8krYRfk/Zpa3wbxWD35U9Iy
-	80Zv7lP4Pcv4ABNni66hAk/Kk0qZhHhAEl/1/Fj4QjOnEr8Eq0nASmoL+vakenkd5rVGx4vK/4ZYn
-	X2Z/58dkU3b2M8koznteRv2ajoRhRUR1+JSX+zRVk2YYqOSHNXxgrECWkPo9oZCzrmpMryzlK+oYF
-	snStj/q9wUkTFWpNddDDkFDkkvl8JOjD0lcpoTYXp9XRxng/qEW7kRRlCX5xtkvvzqZXq9vqo6z9O
-	+4q+YaZR2gqnXpoM8YuA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=09Drqx/hAK/BdXBr0Acg/zmhtaroczdsT06KB8ed/ps=; b=Ilu0OsoQaych1wJISXOaJbd4XR
+	AujwnyPibZh1LJYzqi9YJKK3DQY4K6Zbd0yMCZLh18eSo99NPwB5EPjmiioEIEM/a+46zoVjHBWGI
+	1IBjJ6fZwtfiIOHzQl3Mzaz8LMXOVlKpNUPQmi2fOOOBEMqIacHhnwLUD44StLwa2OgAeL8TgO0ul
+	eDNABAOmGK90XREAwWsienfYPEtdUwbR2IGCVzBzS+UTdE6PDhSGp+M12ArV5QwzhySe4JWNnNTea
+	fAvAmoyA6hALNIlBxEmOHvhXp/IW6smHQGWIQJxC0sALrjcW0qbWm8fZoHjzLnvOKpcWl+CHjvyRY
+	11WW+d8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwP88-00Ekc5-4I; Thu, 24 Jun 2021 13:10:52 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1lwQqX-00F9LY-Vy; Thu, 24 Jun 2021 15:00:50 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwP7u-00EkZh-Fo; Thu, 24 Jun 2021 13:10:41 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 8A393C09D8;
- Thu, 24 Jun 2021 21:10:30 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P1335T140034512512768S1624540229513361_; 
- Thu, 24 Jun 2021 21:10:30 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <dde917c3c63dee57581db4e4cdf3fa57>
-X-RL-SENDER: cl@rock-chips.com
-X-SENDER: cl@rock-chips.com
-X-LOGIN-NAME: cl@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-RCPT-COUNT: 10
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: <cl@rock-chips.com>
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, jbx6244@gmail.com, zhangqing@rock-chips.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- lee.jones@linaro.org, Liang Chen <cl@rock-chips.com>
-Subject: [RESEND PATCH v1 3/3] arm64: dts: rockchip: add pmu and qos nodes for
- rk3568
-Date: Thu, 24 Jun 2021 21:10:27 +0800
-Message-Id: <20210624131027.3719-1-cl@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210624114719.1685-1-cl@rock-chips.com>
-References: <20210624114719.1685-1-cl@rock-chips.com>
+ id 1lwQqU-00F9Iq-Ej; Thu, 24 Jun 2021 15:00:48 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 15OF0I1n070523;
+ Thu, 24 Jun 2021 10:00:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1624546818;
+ bh=pxpiC6BVI9g4NL2xx5Bt4qIO5YjlhGqvffc+sdE9s40=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=d/BKExzlYgQhjb7mEOLnCHqbh7Jwg0po/7SK2j+9iw8KJTH8zl0YJc2UJRPUhr1pf
+ Xl6h4MelEyxRtlXlI1RmXdNzFEwBoTcsuLTWUdGm16WygZFFLDQjmJBR0WLKAgAR+b
+ KHX17RYAFD3KkF17LFfxfgdPXWdyNAa0Jv13sOYs=
+Received: from DLEE108.ent.ti.com (dlee108.ent.ti.com [157.170.170.38])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 15OF0IEw033674
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 24 Jun 2021 10:00:18 -0500
+Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE108.ent.ti.com
+ (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 24
+ Jun 2021 10:00:17 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Thu, 24 Jun 2021 10:00:17 -0500
+Received: from [10.250.232.28] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 15OF0AKN061030;
+ Thu, 24 Jun 2021 10:00:11 -0500
+Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
+To: Bjorn Helgaas <helgaas@kernel.org>
+CC: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
+ <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
+ <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+ Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>,
+ <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
+References: <20210616211630.GA3007203@bjorn-Precision-5520>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <0fd19e28-e0a6-fd79-672a-b588fb2763ba@ti.com>
+Date: Thu, 24 Jun 2021 20:30:09 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20210616211630.GA3007203@bjorn-Precision-5520>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_061039_142336_488EE534 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20210624_080046_713090_B82E8953 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,280 +102,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Liang Chen <cl@rock-chips.com>
+Hi Lorenzo,
 
-Add the power-management and QoS nodes to the core rk3568 dtsi.
+On 17/06/21 2:46 am, Bjorn Helgaas wrote:
+> On Wed, Jun 16, 2021 at 07:35:33PM +0530, Kishon Vijay Abraham I wrote:
+>> Hi Lorenzo, Bjorn,
+>>
+>> On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
+>>> Patch series
+>>> *) Adds support to add virtual functions to enable endpoint controller
+>>>    which supports SR-IOV capability
+>>> *) Add support in Cadence endpoint driver to configure virtual functions
+>>> *) Enable pci_endpoint_test driver to create pci_device for virtual
+>>>    functions
+>>>
+>>> v1 of the patch series can be found at [1]
+>>> v2 of the patch series can be found at [2]
+>>> v3 of the patch series can be found at [3]
+>>> v4 of the patch series can be found at [4]
+>>> v5 of the patch series can be found at [5]
+>>>
+>>> Here both physical functions and virtual functions use the same
+>>> pci_endpoint_test driver and existing pcitest utility can be used
+>>> to test virtual functions as well.
+>>>
+>>> Changes from v5:
+>>> *) Rebased to 5.13-rc1
+>>>
+>>> Changes from v4:
+>>> *) Added a fix in Cadence driver which was overwriting BAR configuration
+>>>    of physical function.
+>>> *) Didn't include Tom's Acked-by since Cadence driver is modified in
+>>>    this revision.
+>>>
+>>> Changes from v3:
+>>> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
+>>>
+>>> Changes from v2:
+>>> *) Fixed DT binding documentation comment by Rob
+>>> *) Fixed the error check in pci-epc-core.c
+>>>
+>>> Changes from v1:
+>>> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
+>>>    binding for EP)
+>>>
+>>> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
+>>> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
+>>> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
+>>> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
+>>> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
+>>
+>> Can this series be merged for 5.14? It already includes Ack from Rob for
+>> dt-binding changes and Ack from Tom for Cadence driver changes.
+> 
+> Sorry, I think this was assigned to me in patchwork, but Lorenzo
+> usually takes care of the endpoint stuff.  He's away this week, but no
+> doubt will look at it when he returns.
 
-Signed-off-by: Liang Chen <cl@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 229 +++++++++++++++++++++++
- 1 file changed, 229 insertions(+)
+Can you consider merging this series for 5.14?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index d225e6a45d5c..618849186c39 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/power/rk3568-power.h>
- #include <dt-bindings/soc/rockchip,boot-mode.h>
- #include <dt-bindings/thermal/thermal.h>
- 
-@@ -257,6 +258,99 @@
- 		status = "disabled";
- 	};
- 
-+	pmu: power-management@fdd90000 {
-+		compatible = "rockchip,rk3568-pmu", "syscon", "simple-mfd";
-+		reg = <0x0 0xfdd90000 0x0 0x1000>;
-+
-+		power: power-controller {
-+			compatible = "rockchip,rk3568-power-controller";
-+			#power-domain-cells = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			/* These power domains are grouped by VD_GPU */
-+			power-domain@RK3568_PD_GPU {
-+				reg = <RK3568_PD_GPU>;
-+				clocks = <&cru ACLK_GPU_PRE>,
-+					 <&cru PCLK_GPU_PRE>;
-+				pm_qos = <&qos_gpu>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			/* These power domains are grouped by VD_LOGIC */
-+			power-domain@RK3568_PD_VI {
-+				reg = <RK3568_PD_VI>;
-+				clocks = <&cru HCLK_VI>,
-+					 <&cru PCLK_VI>;
-+				pm_qos = <&qos_isp>,
-+					 <&qos_vicap0>,
-+					 <&qos_vicap1>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_VO {
-+				reg = <RK3568_PD_VO>;
-+				clocks = <&cru HCLK_VO>,
-+					 <&cru PCLK_VO>,
-+					 <&cru ACLK_VOP_PRE>;
-+				pm_qos = <&qos_hdcp>,
-+					 <&qos_vop_m0>,
-+					 <&qos_vop_m1>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_RGA {
-+				reg = <RK3568_PD_RGA>;
-+				clocks = <&cru HCLK_RGA_PRE>,
-+					 <&cru PCLK_RGA_PRE>;
-+				pm_qos = <&qos_ebc>,
-+					 <&qos_iep>,
-+					 <&qos_jpeg_dec>,
-+					 <&qos_jpeg_enc>,
-+					 <&qos_rga_rd>,
-+					 <&qos_rga_wr>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_VPU {
-+				reg = <RK3568_PD_VPU>;
-+				clocks = <&cru HCLK_VPU_PRE>;
-+				pm_qos = <&qos_vpu>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_RKVDEC {
-+				clocks = <&cru HCLK_RKVDEC_PRE>;
-+				reg = <RK3568_PD_RKVDEC>;
-+				pm_qos = <&qos_rkvdec>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_RKVENC {
-+				reg = <RK3568_PD_RKVENC>;
-+				clocks = <&cru HCLK_RKVENC_PRE>;
-+				pm_qos = <&qos_rkvenc_rd_m0>,
-+					 <&qos_rkvenc_rd_m1>,
-+					 <&qos_rkvenc_wr_m0>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RK3568_PD_PIPE {
-+				reg = <RK3568_PD_PIPE>;
-+				clocks = <&cru PCLK_PIPE>;
-+				pm_qos = <&qos_pcie2x1>,
-+					 <&qos_pcie3x1>,
-+					 <&qos_pcie3x2>,
-+					 <&qos_sata0>,
-+					 <&qos_sata1>,
-+					 <&qos_sata2>,
-+					 <&qos_usb3_0>,
-+					 <&qos_usb3_1>;
-+				#power-domain-cells = <0>;
-+			};
-+		};
-+	};
-+
- 	sdmmc2: mmc@fe000000 {
- 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe000000 0x0 0x4000>;
-@@ -271,6 +365,141 @@
- 		status = "disabled";
- 	};
- 
-+	qos_gpu: qos@fe128000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe128000 0x0 0x20>;
-+	};
-+
-+	qos_rkvenc_rd_m0: qos@fe138080 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe138080 0x0 0x20>;
-+	};
-+
-+	qos_rkvenc_rd_m1: qos@fe138100 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe138100 0x0 0x20>;
-+	};
-+
-+	qos_rkvenc_wr_m0: qos@fe138180 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe138180 0x0 0x20>;
-+	};
-+
-+	qos_isp: qos@fe148000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe148000 0x0 0x20>;
-+	};
-+
-+	qos_vicap0: qos@fe148080 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe148080 0x0 0x20>;
-+	};
-+
-+	qos_vicap1: qos@fe148100 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe148100 0x0 0x20>;
-+	};
-+
-+	qos_vpu: qos@fe150000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe150000 0x0 0x20>;
-+	};
-+
-+	qos_ebc: qos@fe158000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158000 0x0 0x20>;
-+	};
-+
-+	qos_iep: qos@fe158100 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158100 0x0 0x20>;
-+	};
-+
-+	qos_jpeg_dec: qos@fe158180 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158180 0x0 0x20>;
-+	};
-+
-+	qos_jpeg_enc: qos@fe158200 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158200 0x0 0x20>;
-+	};
-+
-+	qos_rga_rd: qos@fe158280 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158280 0x0 0x20>;
-+	};
-+
-+	qos_rga_wr: qos@fe158300 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe158300 0x0 0x20>;
-+	};
-+
-+	qos_npu: qos@fe180000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe180000 0x0 0x20>;
-+	};
-+
-+	qos_pcie2x1: qos@fe190000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190000 0x0 0x20>;
-+	};
-+
-+	qos_pcie3x1: qos@fe190080 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190080 0x0 0x20>;
-+	};
-+
-+	qos_pcie3x2: qos@fe190100 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190100 0x0 0x20>;
-+	};
-+
-+	qos_sata0: qos@fe190200 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190200 0x0 0x20>;
-+	};
-+
-+	qos_sata1: qos@fe190280 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190280 0x0 0x20>;
-+	};
-+
-+	qos_sata2: qos@fe190300 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190300 0x0 0x20>;
-+	};
-+
-+	qos_usb3_0: qos@fe190380 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190380 0x0 0x20>;
-+	};
-+
-+	qos_usb3_1: qos@fe190400 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe190400 0x0 0x20>;
-+	};
-+
-+	qos_rkvdec: qos@fe198000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe198000 0x0 0x20>;
-+	};
-+
-+	qos_hdcp: qos@fe1a8000 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe1a8000 0x0 0x20>;
-+	};
-+
-+	qos_vop_m0: qos@fe1a8080 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe1a8080 0x0 0x20>;
-+	};
-+
-+	qos_vop_m1: qos@fe1a8100 {
-+		compatible = "rockchip,rk3568-qos", "syscon";
-+		reg = <0x0 0xfe1a8100 0x0 0x20>;
-+	};
-+
- 	sdmmc0: mmc@fe2b0000 {
- 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe2b0000 0x0 0x4000>;
--- 
-2.17.1
-
-
-
+Thank You,
+Kishon
 
 _______________________________________________
 Linux-rockchip mailing list
