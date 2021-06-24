@@ -2,79 +2,68 @@ Return-Path: <SRS0=8D6r=LS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D1D2C49EA6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 19:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEACEC49EA5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 21:58:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2AB4610C7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 19:21:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2AB4610C7
+	by mail.kernel.org (Postfix) with ESMTPS id AC79D613C0
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 21:58:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC79D613C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WNcS9urimKkdQmY5fxTUlNk3m5tsyyp4rC3DabvWgts=; b=aX5dqFZajI8+zJ
-	QccZeA9EQClwoQgcZcRl4aTGilsowMkypS3PaQN0uroWSce6WZXwLS7sxVcEf2MjNwxBS8hL515TS
-	2hkpcgoBAzzRjjRFBJp+pNzP7DGKpVm6hScU7xY+Zw+iECyxyMYzzVuqqft/8J+1do4wJGr7QoTMX
-	f3SX7UH4vj1mXYL5EDhZEYOIoPeRu665jtYu/Tw58UWXiRqOVbN+YMWtX3Q6jemGwbtbg6cIZ3dtP
-	nPhLG5eNkyGpd7OfBZW1YQ8pv+T5Kd7v7NMdLWsqij2YNAT+NQ3ExZn0uQF4bNyyOhz77qy/+MMbA
-	IIv5eslj1CrY+h4oGZBA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=nKbu7VODBJOAdRBcdBckgp/242Kvl4KvaWiYbiJJ8LQ=; b=DpHf63Xf4HFdA6
+	XjWINTW7/XFi94tbfkQZwm6KjDuYhK9on/rGAPWb6l8Rj0ncvk5DRmUj63wYyq+Gm0ohNmBwvAGpQ
+	fCB9xRCwKYZeqkxfZbVY3Gsa5K0cW5hDm7FHSWyORqjYWueO23ke5AOmCVtOEiCVtlFq23rdaahyW
+	dDRG0pEmj+CtfRcAK/gguM4OFUHLK800ak6np1tYyeyiJ7CinJkfncQ/J07mcp8A8ipx73sDOqYmk
+	N4KbzT2RRcNNpqFYvcuqJn54KfngLBFUtY0Eb+p0p4N84gotkCiV5x4HH83Et/pPpNW3OHiZvlZqX
+	lay10pSApsqe7Zv6pBiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwUud-00G195-PS; Thu, 24 Jun 2021 19:21:19 +0000
-Received: from mail-il1-f173.google.com ([209.85.166.173])
+	id 1lwXMT-00GT5h-PV; Thu, 24 Jun 2021 21:58:13 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwUua-00G180-QB; Thu, 24 Jun 2021 19:21:18 +0000
-Received: by mail-il1-f173.google.com with SMTP id i17so7433651ilj.11;
- Thu, 24 Jun 2021 12:21:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=58wH1F55laM3Siizt+/xkUTgmVNr4NpcGQlAWE+BiOc=;
- b=lHVEHhbcT0lktgxNf1jCeb3trELW/qNOn+M265JeVJeJ2Y0IyMnuZlhrLwXK13wpGM
- ZeqrE34w7c5A0Xkq98m/+Wjv60Uy3hYkn9x+OG4/NIq/63g9aecgigSVqFnRARfxW1wr
- dxYqvwwWJufimoMf0h4GVzRrrV4Ev1hHYXB/a4kVG8WMLYFL+xHQxGw0LflNxM+Xgft0
- ZpkCkDlM37Rr90zAludfO3kx59SrNEePTkQU1VmwxXrmpdSuS4vNLd7zD0EA4TGn/7C2
- TJDaZQn9V00cjZqpcBCr+iHghph+HhQbmj2ZwgBqeskGdirJecxFXdeSqFyZrqCkpHa2
- 5Ung==
-X-Gm-Message-State: AOAM532G5UWs7Vy/eZCTFMN2ErwaIe4rfQPQC+sYxhpalHOvyQBBogrj
- Mq8Ak9wQWnhkmp/fX1qxGQ==
-X-Google-Smtp-Source: ABdhPJzXPVo9MVv4SXGFiOsFIlOQNNq0I1CtjwMhlHsZP2/+RncCDBIp9W2bP478YeEBOcsbSAPU3g==
-X-Received: by 2002:a92:d6d2:: with SMTP id z18mr2147763ilp.159.1624562474916; 
- Thu, 24 Jun 2021 12:21:14 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id l11sm2300833ilo.77.2021.06.24.12.21.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Jun 2021 12:21:14 -0700 (PDT)
-Received: (nullmailer pid 1839767 invoked by uid 1000);
- Thu, 24 Jun 2021 19:21:10 -0000
-Date: Thu, 24 Jun 2021 13:21:10 -0600
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v1 1/3] dt-bindings: power: convert
- rockchip-io-domain.txt to YAML
-Message-ID: <20210624192110.GA1822193@robh.at.kernel.org>
-References: <20210611143821.13057-1-jbx6244@gmail.com>
+ id 1lwXMD-00GSzE-Ma; Thu, 24 Jun 2021 21:57:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 00831613B9;
+ Thu, 24 Jun 2021 21:57:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1624571877;
+ bh=yVk9OWhsYOUvvXi+eu9rDTIcKsexzhSWaaaSYGYVEWs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=bHbi53wf4EUCWV/VckTBBkgagYzQIdjlzw3hcwmfMZfsbYZSE4G0Othlk82OPvcZi
+ mTEx1LgDjqNpWsw7u/wWPfhnX171bPwXZlPLByNKd2MAj8OYJctlnftGgyeTNf/vth
+ TQZAgILapC5f3WM5jzMoBYOSMct2ATOCDOPDpXj6uDP1GHbaDHra10TGXLV5cp0eeA
+ 9o3UJCFoK9B2eXWiaufN4zDbHO/7TJ/GUTRU/E6lBcF8YfsNAxN5rNFHLPb3BhYZIL
+ 7RkKaM3A9/4ObdekMM6p0pDuF0bnJ8f3JhCuFhK4V12QZgbyB0Kdjb5i0xSx58rS1e
+ uRlaHLRc8ceiQ==
+Date: Thu, 24 Jun 2021 16:57:50 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Javier Martinez Canillas <javierm@redhat.com>
+Cc: linux-kernel@vger.kernel.org, Peter Robinson <pbrobinson@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with
+ clocks gated
+Message-ID: <20210624215750.GA3556174@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210611143821.13057-1-jbx6244@gmail.com>
+In-Reply-To: <20210608080409.1729276-1-javierm@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_122116_896714_1A872B9A 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20210624_145757_791460_DEC4C87C 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,62 +81,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 11, 2021 at 04:38:19PM +0200, Johan Jonker wrote:
-> Current dts files with 'io-domains' nodes are manually verified.
-> In order to automate this process rockchip-io-domain.txt has to be
-> converted to YAML.
+On Tue, Jun 08, 2021 at 10:04:09AM +0200, Javier Martinez Canillas wrote:
+> IRQ handlers that are registered for shared interrupts can be called at
+> any time after have been registered using the request_irq() function.
 > 
-> Changed:
->   Add supply properties for:
->     rockchip,rk3328-io-voltage-domain
->     rockchip,rv1108-io-voltage-domain
->     rockchip,rv1108-pmu-io-voltage-domain
+> It's up to drivers to ensure that's always safe for these to be called.
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
+> Both the "pcie-sys" and "pcie-client" interrupts are shared, but since
+> their handlers are registered very early in the probe function, an error
+> later can lead to these handlers being executed before all the required
+> resources have been properly setup.
 > 
-> Due to the lack of a rv1108 TRM changes
-> to grf.yaml or rv1108.dtsi not verified.
-> 
-> ---
-> 
-> Note for rob+dt:
-> 
-> The driver is located in:
-> drivers/soc/rockchip/io-domain.c
-> 
-> The document is located in:
-> Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
-> 
-> Is that still OK or should we move to:
-> /Documentation/devicetree/bindings/soc/rockchip/rockchip-io-domain.yaml
+> For example, the rockchip_pcie_read() function used by these IRQ handlers
+> expects that some PCIe clocks will already be enabled, otherwise trying
+> to access the PCIe registers causes the read to hang and never return.
 
-I think the current location is fine. Vendor directories cause other 
-vendors to not look in them.
+The read *never* completes?  That might be a bit problematic because
+it implies that we may not be able to recover from PCIe errors.  Most
+controllers will timeout eventually, log an error, and either
+fabricate some data (typically ~0) to complete the CPU's read or cause
+some kind of abort or machine check.
 
-> 
-> ===
-> 
-> This document is not able to correctly check for bogus properties.
-> Adding more [additionalProperties: false] to [then:] gives warnings like this:
-> ('status', 'compatible', '$nodename' were unexpected)
-> Is there a way to do that in one document?
-
-Drop the *-supply and use 'unevaluatedProperties: false' at the top 
-level. 'unevaluatedProperties' can see into if/then schema. That doesn't 
-do anything yet as unevaluatedProperties support isn't implemented yet 
-(but there's finally some work taking place, so soon).
-
-Otherwise, pretty much looks fine to me. Some of the grf.yaml changes 
-should perhaps be a separate commit.
-
-> ---
->  .../bindings/power/rockchip-io-domain.txt          | 135 ---------
->  .../bindings/power/rockchip-io-domain.yaml         | 307 +++++++++++++++++++++
->  .../devicetree/bindings/soc/rockchip/grf.yaml      |  18 +-
->  3 files changed, 319 insertions(+), 141 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/power/rockchip-io-domain.txt
->  create mode 100644 Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
+Just asking in case there's some controller configuration that should
+be tweaked.
 
 _______________________________________________
 Linux-rockchip mailing list
