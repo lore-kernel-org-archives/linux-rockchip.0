@@ -2,94 +2,71 @@ Return-Path: <SRS0=8D6r=LS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49DBAC49EA5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 15:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42810C49EA7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 18:07:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D116613C0
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 15:00:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D116613C0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id DCAEB613F3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Jun 2021 18:07:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DCAEB613F3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=09Drqx/hAK/BdXBr0Acg/zmhtaroczdsT06KB8ed/ps=; b=Ilu0OsoQaych1wJISXOaJbd4XR
-	AujwnyPibZh1LJYzqi9YJKK3DQY4K6Zbd0yMCZLh18eSo99NPwB5EPjmiioEIEM/a+46zoVjHBWGI
-	1IBjJ6fZwtfiIOHzQl3Mzaz8LMXOVlKpNUPQmi2fOOOBEMqIacHhnwLUD44StLwa2OgAeL8TgO0ul
-	eDNABAOmGK90XREAwWsienfYPEtdUwbR2IGCVzBzS+UTdE6PDhSGp+M12ArV5QwzhySe4JWNnNTea
-	fAvAmoyA6hALNIlBxEmOHvhXp/IW6smHQGWIQJxC0sALrjcW0qbWm8fZoHjzLnvOKpcWl+CHjvyRY
-	11WW+d8g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=AHb5wThHnxKebIfx1GrMqetmfUYJ0HZ+amSkfCn9i8k=; b=F+lzos/wfYbTf9
+	o0r4yew3Y680wInLjf74205ddCE6I/280p4YbMq8N1XYexLkqgPYScOTdsCqifg13dLJO6ugapC+/
+	UCtRnTlC/91UsXAd0jWcIQ3TMBsUKNkqNaxlIkJyFu0m/OmPGCQXc3SZvQzSucHuxUYqJIsfh7vpy
+	UJ1wzWt/PDIhA05E2xEy/y8Ey6vcHB3VnojTS2axu+5kfL6F27sSzDpYy6w1M9v3TAtTvpdRS1waq
+	7CQBmASl4egSM2ErAYgUb0teJ4QIRY6ReWm9zNETvrhHDYMIEJOOzYwyjRZ4ceWgrDt6pOTLn4lKp
+	nkd4JQzXFzH//1P9GSkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwQqX-00F9LY-Vy; Thu, 24 Jun 2021 15:00:50 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1lwTlB-00Fo9W-BA; Thu, 24 Jun 2021 18:07:29 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwQqU-00F9Iq-Ej; Thu, 24 Jun 2021 15:00:48 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 15OF0I1n070523;
- Thu, 24 Jun 2021 10:00:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1624546818;
- bh=pxpiC6BVI9g4NL2xx5Bt4qIO5YjlhGqvffc+sdE9s40=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=d/BKExzlYgQhjb7mEOLnCHqbh7Jwg0po/7SK2j+9iw8KJTH8zl0YJc2UJRPUhr1pf
- Xl6h4MelEyxRtlXlI1RmXdNzFEwBoTcsuLTWUdGm16WygZFFLDQjmJBR0WLKAgAR+b
- KHX17RYAFD3KkF17LFfxfgdPXWdyNAa0Jv13sOYs=
-Received: from DLEE108.ent.ti.com (dlee108.ent.ti.com [157.170.170.38])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 15OF0IEw033674
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 24 Jun 2021 10:00:18 -0500
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE108.ent.ti.com
- (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 24
- Jun 2021 10:00:17 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Thu, 24 Jun 2021 10:00:17 -0500
-Received: from [10.250.232.28] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 15OF0AKN061030;
- Thu, 24 Jun 2021 10:00:11 -0500
-Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
-To: Bjorn Helgaas <helgaas@kernel.org>
-CC: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
- <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
- <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
- <shawn.lin@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
- Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>,
- <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
-References: <20210616211630.GA3007203@bjorn-Precision-5520>
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <0fd19e28-e0a6-fd79-672a-b588fb2763ba@ti.com>
-Date: Thu, 24 Jun 2021 20:30:09 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lwTl8-00Fo83-8y
+ for linux-rockchip@lists.infradead.org; Thu, 24 Jun 2021 18:07:27 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 156DE613C2;
+ Thu, 24 Jun 2021 18:07:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1624558045;
+ bh=pjMUPrrv0IdP4953FNP37zcXZsFA4aLGtJ+obsfpazk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=neRWxIrqAWWOEkcLHfsWvPPyu8qHYf6O9+nesgtq1VQP8radZCRQXZ+6VtdUNm3oM
+ Jp1zCSR/ylOCpKO5BlnlUOIO9weCvaYDoXX3gjSTGd8jp1Sa1D98qOuliarKECNB6+
+ dkHjIORbEU19r8Tu9ljhk7hpIEvvIWVL4ewuBZ/TevsuSdCb22xCwD4RS675vQQmqV
+ vceDnsfcanJD99jLvxstqp93LMtoYINKrJJ+jPhPG53JwJcnx8OiJZmcR8BCVJKJyX
+ R/Ol8oQQwbhgxUsOUYuP7uXFkCyHNCbZd92VHTzEZWd7zXidEx7t7NgzIldikW2ICX
+ KkRRor4L7EWEQ==
+Date: Thu, 24 Jun 2021 13:07:23 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Simon Xue <xxm@rock-chips.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Kever Yang <kever.yang@rock-chips.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>
+Subject: Re: [PATCH v10] PCI: rockchip: Add Rockchip RK356X host controller
+ driver
+Message-ID: <20210624180723.GA3543267@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <20210616211630.GA3007203@bjorn-Precision-5520>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Disposition: inline
+In-Reply-To: <20210624021548.447301-1-xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_080046_713090_B82E8953 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20210624_110726_409203_C974E22B 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,67 +84,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
+This needs a new driver name.  We already have a "rockchip" driver
+(drivers/pci/controller/pcie-rockchip-host.c) and this one needs a
+different name that we can use in the subject line and similar places,
+e.g., something like:
 
-On 17/06/21 2:46 am, Bjorn Helgaas wrote:
-> On Wed, Jun 16, 2021 at 07:35:33PM +0530, Kishon Vijay Abraham I wrote:
->> Hi Lorenzo, Bjorn,
->>
->> On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
->>> Patch series
->>> *) Adds support to add virtual functions to enable endpoint controller
->>>    which supports SR-IOV capability
->>> *) Add support in Cadence endpoint driver to configure virtual functions
->>> *) Enable pci_endpoint_test driver to create pci_device for virtual
->>>    functions
->>>
->>> v1 of the patch series can be found at [1]
->>> v2 of the patch series can be found at [2]
->>> v3 of the patch series can be found at [3]
->>> v4 of the patch series can be found at [4]
->>> v5 of the patch series can be found at [5]
->>>
->>> Here both physical functions and virtual functions use the same
->>> pci_endpoint_test driver and existing pcitest utility can be used
->>> to test virtual functions as well.
->>>
->>> Changes from v5:
->>> *) Rebased to 5.13-rc1
->>>
->>> Changes from v4:
->>> *) Added a fix in Cadence driver which was overwriting BAR configuration
->>>    of physical function.
->>> *) Didn't include Tom's Acked-by since Cadence driver is modified in
->>>    this revision.
->>>
->>> Changes from v3:
->>> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
->>>
->>> Changes from v2:
->>> *) Fixed DT binding documentation comment by Rob
->>> *) Fixed the error check in pci-epc-core.c
->>>
->>> Changes from v1:
->>> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
->>>    binding for EP)
->>>
->>> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
->>> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
->>> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
->>> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
->>> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
->>
->> Can this series be merged for 5.14? It already includes Ack from Rob for
->> dt-binding changes and Ack from Tom for Cadence driver changes.
-> 
-> Sorry, I think this was assigned to me in patchwork, but Lorenzo
-> usually takes care of the endpoint stuff.  He's away this week, but no
-> doubt will look at it when he returns.
+  PCI: rockchip-dwc: 
 
-Can you consider merging this series for 5.14?
+Using "rockchip" for the other driver might have been a mistake.  We
+should probably use something a little more specific for this driver
+to leave room for Rockchip to produce future hardware that may require
+a *third* driver.
 
-Thank You,
-Kishon
+On Thu, Jun 24, 2021 at 10:15:47AM +0800, Simon Xue wrote:
+> Add a driver for the DesignWare-based PCIe controller found on
+> RK356X. The existing pcie-rockchip-host driver is only used for
+> the Rockchip-designed IP found on RK3399.
 
 _______________________________________________
 Linux-rockchip mailing list
