@@ -2,81 +2,88 @@ Return-Path: <SRS0=fNsx=LT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81A32C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 09:51:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D410C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:48:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 213416142B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 09:51:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 213416142B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5BD9F61445
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:48:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BD9F61445
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v7ftwgv7i63Yh7PpFA4SUQfnsqCf1TCbBtSC9u0Pdo0=; b=YzGg5VpsO3UPvj
-	AvcrwZmyGLdxwZFjDzLn4Tglq8t8pSr3XkmByw7KPCUGSTJ6P92GOG+tamEU+IHU2MGhySxXa77Wv
-	lcJki9X6Xj1hof9yMhB4vd+zUsVzSwlYwFOgrGPmuDx/6OzZD5+ZPkXys5lYusdy5I/JQcprMzuG2
-	fV/9AE1dR9Dmx7RdBumqJgmfVBwa2E1/naOWSl2Xe982JjXZ6QBR6KWxBy58CEs+vRvI0ZMMfJGDK
-	aLoB5kz/s5PvDd3EBhsaUFlhr35haBI0ysGDYpCfS2xMdaowQF+Ss61jVEe2HWOyixt7IjZf5W9IF
-	UtqwY5yeKNvhWxhpwXqQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RRejA7dgLmQ4/RpsA5pYOQjsdwF7YyJyLmNskbZj+4Y=; b=be8w2n1dvUILbV
+	v/GgW4AGvouD5f3L/Cxwb3Wfvk77OWQNo6CDjEhgVhTJr1azPnj2CBVYrQw+oJnotB5Qg9sD55Ztp
+	0AS27hU3YtTjy653hi+w3o+AocULUcXfm+idf2m4/t9sU328L93/7deA7hsUuZpdmw7eIi0hI3ejB
+	1Jyx6Gwx0xwo9z2sFAgPWMYmXiPOUT3SjtdIDuLfXkq07SVn6GbBkM58Xc5no7wMb28by0nMUISQG
+	EkyZGGgAHZRK7hdmle3/BPLi9I8gSIAkhJHwfMaKY4jHLpn4hLb+VfFmNr4IWsibf1evkS2/b7/XH
+	qNvCVoK5UCa3d5cLVvZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwiUe-000mKr-ES; Fri, 25 Jun 2021 09:51:24 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1lwjNQ-0016Fs-F2; Fri, 25 Jun 2021 10:48:00 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwhP0-000RuG-Gi; Fri, 25 Jun 2021 08:41:31 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id A8BDCFB012;
- Fri, 25 Jun 2021 16:41:28 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P12363T139709942576896S1624610487434219_; 
- Fri, 25 Jun 2021 16:41:29 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b971f916b4950e33201b82d57e8aa80f>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-spi@vger.kernel.org
-X-RCPT-COUNT: 20
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: linux-spi@vger.kernel.org
-Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
- heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [RFC PATCH v9 10/10] arm64: dts: rockchip: Enable SFC for Odroid Go
- Advance
-Date: Fri, 25 Jun 2021 16:41:25 +0800
-Message-Id: <20210625084125.13685-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210625084036.13464-1-jon.lin@rock-chips.com>
-References: <20210625084036.13464-1-jon.lin@rock-chips.com>
+ id 1lwitX-000ty6-MR; Fri, 25 Jun 2021 10:17:09 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id i94so10010336wri.4;
+ Fri, 25 Jun 2021 03:17:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2OvfRNkgFerBxJwOvZ8T0pE0S1djhbeNLuNpHoiwsBk=;
+ b=TBOUAYHDsTdjFj4ccSIcslmXJabvBi+a4t3FrAt0Y8QVavGiMaXiK6Z5Ddfl7kX8D8
+ DPfCPqPC7c2fmfOlE4UOD1NGbB75jWzWCNuTMcVrni2LFnuop2dfTtIBssNBZCnLLCyn
+ zEB7jbwT0tFJGUmWJuAvYcCu2Qu4Ey9jUc4Zu+iOmg+Uvx25ITMNFsGt5amiQGPJqoGo
+ Nsmqqsqw8R4I4FAj1zDWPF7W7Vw4hXxz4mp7VPlIC+591tSnNI/imA3ZMfQnh5F5cWFU
+ 71dRq35KZ2TSKYQ2awPdq0AhjJX12W/2reMRsq55YQKUf4EHIqRL2/taVCvRmLhj9HDh
+ fylA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2OvfRNkgFerBxJwOvZ8T0pE0S1djhbeNLuNpHoiwsBk=;
+ b=eUfyUEMSoHnYH7gcUhKo01wj6W9biRnLJeViWV8sticwQFfXqnCMG8L4NT+s1VJKqQ
+ yLaEnF/ryydorci2uDgrlVPRzoYmPp0joh5yopXD3+aWF7FBYC50bTIkzduIZfdk9TUU
+ X5G+zjsVP6I6NTekPQKDvv/QfkQaAA95IufQ13XXf/MPoP0d/lHT2tmbhxMo2mTJJEmt
+ cp8Yf/fk1kMeiR4DQN9em3SowI0vP2BRG1QgKAk6htrD62KxSx2T04ZlL/dXHs5VbzFo
+ OJdnWle0LGukne5rnL3fLZE8cyyKBM+F89jwHwMtdDWIFMpxd+aulMgWwY3L8dRwlZtm
+ gZFg==
+X-Gm-Message-State: AOAM5309+Lx94P6dPOXAGydOcRXkvHAgyh+NpWPyxVWv0g45na7AdWQa
+ elIfWn1asumt7qCisElj9XQ=
+X-Google-Smtp-Source: ABdhPJwNCH0VNHLkU+ZWTZajqIw9K2VftYp55n/O1Lj4x6rE77oi50yKHZukZRT5d3bpTtBWTp7NhA==
+X-Received: by 2002:adf:ef92:: with SMTP id d18mr9965242wro.219.1624616225361; 
+ Fri, 25 Jun 2021 03:17:05 -0700 (PDT)
+Received: from morpheus.roving-it.com.com
+ (f.c.9.1.f.e.c.d.1.e.0.0.2.b.5.5.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa.
+ [2001:8b0:fb11:2681:55b2:e1:dcef:19cf])
+ by smtp.googlemail.com with ESMTPSA id 204sm5462736wma.30.2021.06.25.03.17.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Jun 2021 03:17:04 -0700 (PDT)
+From: Peter Robinson <pbrobinson@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>, Tobias Schramm <t.schramm@manjaro.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: Don't enable hdmi_sound on Pinebook
+ Pro
+Date: Fri, 25 Jun 2021 11:17:02 +0100
+Message-Id: <20210625101703.3290934-1-pbrobinson@gmail.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_014130_750380_56A15A05 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20210625_031707_813287_3D378627 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,67 +96,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+The Pinebook Pro doesn't have a HDMI port and neither of the hdmi_sound
+dependencies are enabled so it fails to probe so drop enabling it.
 
-This enables the Rockchip Serial Flash Controller for the Odroid Go
-Advance. Note that while the attached SPI NOR flash and the controller
-both support quad read mode, only 2 of the required 4 pins are present.
-The rx and tx bus width is set to 2 for this reason.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Fixes: 5a65505a6988 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
+Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
 ---
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
-
- .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 49c97f76df77..f78e11dd8447 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -484,6 +484,22 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 2b5f001ff4a6..f584d08a63f0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -442,10 +442,6 @@ &gpu {
  	status = "okay";
  };
  
-+&sfc {
-+	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
-+	pinctrl-names = "default";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <108000000>;
-+		spi-rx-bus-width = <2>;
-+		spi-tx-bus-width = <2>;
-+	};
-+};
-+
- &tsadc {
- 	status = "okay";
- };
+-&hdmi_sound {
+-	status = "okay";
+-};
+-
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	i2c-scl-falling-time-ns = <4>;
 -- 
-2.17.1
-
-
+2.31.1
 
 
 _______________________________________________
