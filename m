@@ -8,82 +8,83 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D410C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BEF8FC2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:49:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BD9F61445
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:48:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BD9F61445
+	by mail.kernel.org (Postfix) with ESMTPS id 89F816144C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:49:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89F816144C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RRejA7dgLmQ4/RpsA5pYOQjsdwF7YyJyLmNskbZj+4Y=; b=be8w2n1dvUILbV
-	v/GgW4AGvouD5f3L/Cxwb3Wfvk77OWQNo6CDjEhgVhTJr1azPnj2CBVYrQw+oJnotB5Qg9sD55Ztp
-	0AS27hU3YtTjy653hi+w3o+AocULUcXfm+idf2m4/t9sU328L93/7deA7hsUuZpdmw7eIi0hI3ejB
-	1Jyx6Gwx0xwo9z2sFAgPWMYmXiPOUT3SjtdIDuLfXkq07SVn6GbBkM58Xc5no7wMb28by0nMUISQG
-	EkyZGGgAHZRK7hdmle3/BPLi9I8gSIAkhJHwfMaKY4jHLpn4hLb+VfFmNr4IWsibf1evkS2/b7/XH
-	qNvCVoK5UCa3d5cLVvZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D29l3vrB4SaI+eBfFSTQ//LFsvTTBd08hxeNil+C0Tg=; b=ovMvfNwEfcOBxm
+	BuQNeQyLGSYaW+ZWKpXkbaRTW9ksU3j98FYmaxk81DhB1zmwm+b1ASOqoEwagl9JaIR/0x1NQgFrj
+	Gc0yxXQfiOI3oVEILoEM5T8AQwJjBMSCGOFfFYzJVlDUq9a24UKGaZ0eJDqYXRLxdQupYQTI98u3w
+	BLdkT1OpWaHKIaijGhWHdGFKPpEe36zp7cB3C4CmOfKQOH0ZdTaN52BLaugsPlVTWiXc8oi2hIqwj
+	k0klI0tk5FcfcEK30IyjVcF3ZYgWYHiB5GY8ccGPj1+cXewWQj81b5Vr+YepTeovFZqnIMWLA0iYU
+	D0lW2hFpOEuPmakDSfwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwjNQ-0016Fs-F2; Fri, 25 Jun 2021 10:48:00 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1lwjOe-0016ew-AH; Fri, 25 Jun 2021 10:49:16 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwitX-000ty6-MR; Fri, 25 Jun 2021 10:17:09 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id i94so10010336wri.4;
- Fri, 25 Jun 2021 03:17:06 -0700 (PDT)
+ id 1lwitY-000tyR-20; Fri, 25 Jun 2021 10:17:09 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id j2so9959439wrs.12;
+ Fri, 25 Jun 2021 03:17:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2OvfRNkgFerBxJwOvZ8T0pE0S1djhbeNLuNpHoiwsBk=;
- b=TBOUAYHDsTdjFj4ccSIcslmXJabvBi+a4t3FrAt0Y8QVavGiMaXiK6Z5Ddfl7kX8D8
- DPfCPqPC7c2fmfOlE4UOD1NGbB75jWzWCNuTMcVrni2LFnuop2dfTtIBssNBZCnLLCyn
- zEB7jbwT0tFJGUmWJuAvYcCu2Qu4Ey9jUc4Zu+iOmg+Uvx25ITMNFsGt5amiQGPJqoGo
- Nsmqqsqw8R4I4FAj1zDWPF7W7Vw4hXxz4mp7VPlIC+591tSnNI/imA3ZMfQnh5F5cWFU
- 71dRq35KZ2TSKYQ2awPdq0AhjJX12W/2reMRsq55YQKUf4EHIqRL2/taVCvRmLhj9HDh
- fylA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=cIJcZ1Hi3DoEF/1CqsW4mJpJl8hECj9iLa8Ln8QVFSo=;
+ b=U7cy1h0cVWptDWWUfpU4ico2RksrM6E1SfL/eAHUZUdgMGsizxx2HClHmoQafPXGG9
+ 3i+jVIgS/hqvcM4onNMG8u4MgqATSVltVqBsprLIgK6Bb9pZ7F3CEz3d4M8Bhkfb/ib4
+ jfUhketbQby9lGJ/zCMVPpTERDPGqR9xDh2wa2s5pvXZ9fzXmVEK2bzct6MWXSD/9P9A
+ 4qhZx90viYFxl60oUkhuMQ0s8IYmsjc76FJHXWbrrgWIT3O1q3wRx00/4LVLStDgOr1h
+ lDPRm8kFzoKLFqq1/1BLDWLNbsAI85izjGDmwUv4crTiELVC13QxKjMVJFccCpEGWv2a
+ BE9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=2OvfRNkgFerBxJwOvZ8T0pE0S1djhbeNLuNpHoiwsBk=;
- b=eUfyUEMSoHnYH7gcUhKo01wj6W9biRnLJeViWV8sticwQFfXqnCMG8L4NT+s1VJKqQ
- yLaEnF/ryydorci2uDgrlVPRzoYmPp0joh5yopXD3+aWF7FBYC50bTIkzduIZfdk9TUU
- X5G+zjsVP6I6NTekPQKDvv/QfkQaAA95IufQ13XXf/MPoP0d/lHT2tmbhxMo2mTJJEmt
- cp8Yf/fk1kMeiR4DQN9em3SowI0vP2BRG1QgKAk6htrD62KxSx2T04ZlL/dXHs5VbzFo
- OJdnWle0LGukne5rnL3fLZE8cyyKBM+F89jwHwMtdDWIFMpxd+aulMgWwY3L8dRwlZtm
- gZFg==
-X-Gm-Message-State: AOAM5309+Lx94P6dPOXAGydOcRXkvHAgyh+NpWPyxVWv0g45na7AdWQa
- elIfWn1asumt7qCisElj9XQ=
-X-Google-Smtp-Source: ABdhPJwNCH0VNHLkU+ZWTZajqIw9K2VftYp55n/O1Lj4x6rE77oi50yKHZukZRT5d3bpTtBWTp7NhA==
-X-Received: by 2002:adf:ef92:: with SMTP id d18mr9965242wro.219.1624616225361; 
- Fri, 25 Jun 2021 03:17:05 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=cIJcZ1Hi3DoEF/1CqsW4mJpJl8hECj9iLa8Ln8QVFSo=;
+ b=N25prJ7DeRAvznyBwKPymkwJrncQtp9F97ES1pQNGnfy0vzzJVRGmNt/E7pMpruEwU
+ 9WwEnSIShtWRwwKqdSvqPn9R3sTMtzuWl1BT/cAI2duiLuW5nqUIB0WKG+xyaBWn2vtx
+ CGk3BQ5wVwwKm/Y3m3WqHW+iB3d6q1BOdTOkiXhjGh5WG156LZ5BDXJ5VRHJiNttXxT9
+ ddBL5sfcD44amvANJYsR5HcR9caK4XJxGfIQ6gxewsnOXaBNy9VdlG4ueXvwPg4CskF+
+ fJqOXutIveffDzVf8vR4uH1xD2f96AeSbFRNZwIY38iWsHE73cKIjZZxIo3mVOGVSVTG
+ IDYQ==
+X-Gm-Message-State: AOAM5313lghIzhEYhnUR+idEUQ1xFpjUYuk20ATexitOlCC1B+SHjnYn
+ +Rid5ZRib9LDghG5LoTwRN8=
+X-Google-Smtp-Source: ABdhPJxeqsKJWHHGkmrWZgB5l5AlihSE0DYgHzBqRaUowI3qYFtG6+88oK9iZhepTpRmQt7/GoCtpA==
+X-Received: by 2002:a5d:4703:: with SMTP id y3mr9720719wrq.321.1624616226487; 
+ Fri, 25 Jun 2021 03:17:06 -0700 (PDT)
 Received: from morpheus.roving-it.com.com
  (f.c.9.1.f.e.c.d.1.e.0.0.2.b.5.5.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa.
  [2001:8b0:fb11:2681:55b2:e1:dcef:19cf])
- by smtp.googlemail.com with ESMTPSA id 204sm5462736wma.30.2021.06.25.03.17.04
+ by smtp.googlemail.com with ESMTPSA id 204sm5462736wma.30.2021.06.25.03.17.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jun 2021 03:17:04 -0700 (PDT)
+ Fri, 25 Jun 2021 03:17:05 -0700 (PDT)
 From: Peter Robinson <pbrobinson@gmail.com>
 To: Heiko Stuebner <heiko@sntech.de>, Tobias Schramm <t.schramm@manjaro.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 Cc: Peter Robinson <pbrobinson@gmail.com>
-Subject: [PATCH 1/2] arm64: dts: rockchip: Don't enable hdmi_sound on Pinebook
- Pro
-Date: Fri, 25 Jun 2021 11:17:02 +0100
-Message-Id: <20210625101703.3290934-1-pbrobinson@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: Don't enable i2c3 on Pinebook Pro
+Date: Fri, 25 Jun 2021 11:17:03 +0100
+Message-Id: <20210625101703.3290934-2-pbrobinson@gmail.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210625101703.3290934-1-pbrobinson@gmail.com>
+References: <20210625101703.3290934-1-pbrobinson@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_031707_813287_3D378627 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20210625_031708_207737_021DE8FD 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +102,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Pinebook Pro doesn't have a HDMI port and neither of the hdmi_sound
-dependencies are enabled so it fails to probe so drop enabling it.
+The Pinebook Pro doesn't have anything connected to the i2c3 interface
+so there's no need to enable it in the device tree.
 
 Fixes: 5a65505a6988 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
 Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
- 1 file changed, 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 6 ------
+ 1 file changed, 6 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 2b5f001ff4a6..f584d08a63f0 100644
+index f584d08a63f0..e02f6b5cc49e 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -442,10 +442,6 @@ &gpu {
- 	status = "okay";
+@@ -685,12 +685,6 @@ es8316: es8316@11 {
+ 	};
  };
  
--&hdmi_sound {
+-&i2c3 {
+-	i2c-scl-falling-time-ns = <15>;
+-	i2c-scl-rising-time-ns = <450>;
 -	status = "okay";
 -};
 -
- &i2c0 {
- 	clock-frequency = <400000>;
- 	i2c-scl-falling-time-ns = <4>;
+ &i2c4 {
+ 	i2c-scl-falling-time-ns = <20>;
+ 	i2c-scl-rising-time-ns = <600>;
 -- 
 2.31.1
 
