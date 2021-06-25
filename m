@@ -8,83 +8,80 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BEF8FC2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8C3CC2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 11:18:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89F816144C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 10:49:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89F816144C
+	by mail.kernel.org (Postfix) with ESMTPS id 7986761477
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 11:18:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7986761477
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D29l3vrB4SaI+eBfFSTQ//LFsvTTBd08hxeNil+C0Tg=; b=ovMvfNwEfcOBxm
-	BuQNeQyLGSYaW+ZWKpXkbaRTW9ksU3j98FYmaxk81DhB1zmwm+b1ASOqoEwagl9JaIR/0x1NQgFrj
-	Gc0yxXQfiOI3oVEILoEM5T8AQwJjBMSCGOFfFYzJVlDUq9a24UKGaZ0eJDqYXRLxdQupYQTI98u3w
-	BLdkT1OpWaHKIaijGhWHdGFKPpEe36zp7cB3C4CmOfKQOH0ZdTaN52BLaugsPlVTWiXc8oi2hIqwj
-	k0klI0tk5FcfcEK30IyjVcF3ZYgWYHiB5GY8ccGPj1+cXewWQj81b5Vr+YepTeovFZqnIMWLA0iYU
-	D0lW2hFpOEuPmakDSfwA==;
+	List-Owner; bh=jnc4EuC3p62crrh1l82u7Ak9NCbUqV8DlYg14sdDIKA=; b=1Qp2vNrfEsGYxT
+	UMnhL9IhhzQ0rt8wWXznoxLKRVyPWKEtE0D/KsjyQZmZ2J6D9U7bnX9OT5poJ0XOpjq8gbLQ4LVJc
+	mOGE8cE/kn8ANLhBWk3+fUC3dzUV1xny7o1hNB7bwjoAt7OwUzVkRGZXVnj2VMhzkPksryqWYyA/K
+	I+IINVIvOr9Cv2/n9FxUhPTOuOiEQY4fn5vR2eYrh+Ivjz4I34cnfzZDWj9HB+uiHzjPdZKZVIuz+
+	1VYj6ejo9Wzp8DppSki3c0XJchzpb6lSt+xXMHIuCm476NE1xB66M8vjuCNKG5hbxlQSiysaz0tSx
+	4s35dQYTjKuX2e5dB0xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwjOe-0016ew-AH; Fri, 25 Jun 2021 10:49:16 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1lwjqR-001H1y-O2; Fri, 25 Jun 2021 11:17:59 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwitY-000tyR-20; Fri, 25 Jun 2021 10:17:09 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id j2so9959439wrs.12;
- Fri, 25 Jun 2021 03:17:07 -0700 (PDT)
+ id 1lwjqO-001GzW-1G; Fri, 25 Jun 2021 11:17:57 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id h2so12928531edt.3;
+ Fri, 25 Jun 2021 04:17:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cIJcZ1Hi3DoEF/1CqsW4mJpJl8hECj9iLa8Ln8QVFSo=;
- b=U7cy1h0cVWptDWWUfpU4ico2RksrM6E1SfL/eAHUZUdgMGsizxx2HClHmoQafPXGG9
- 3i+jVIgS/hqvcM4onNMG8u4MgqATSVltVqBsprLIgK6Bb9pZ7F3CEz3d4M8Bhkfb/ib4
- jfUhketbQby9lGJ/zCMVPpTERDPGqR9xDh2wa2s5pvXZ9fzXmVEK2bzct6MWXSD/9P9A
- 4qhZx90viYFxl60oUkhuMQ0s8IYmsjc76FJHXWbrrgWIT3O1q3wRx00/4LVLStDgOr1h
- lDPRm8kFzoKLFqq1/1BLDWLNbsAI85izjGDmwUv4crTiELVC13QxKjMVJFccCpEGWv2a
- BE9A==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=dE455QnkJy8nl+5re8Lx5rfD/JYfjqvcjK9bczo6FJE=;
+ b=Mw++bRI2fvJIToE3l1vLSDSnUIRZ2OtZ8djFYujC9ikPYvMZJd+v7Wq6zONHxLljX1
+ FJyfgjbsgifse+0hxLz8HPEZILcLc9vpSB10z/mb24Y2uUydrbLgXbjbfzLtlRmWwrtq
+ n5s9Cu2iEtQk62taei/9dv1pDS9yLYHlNPlKIJWuIaKNqpHEGQNlHKnTX3iO7tVLQe/9
+ UVMf78oH9wY32HhNhom8SctA+YxawZEdWaeYCXBTp1zQ4ByFm6s9AZ/Ok71pyItMsWv9
+ UxW5aV3mJ+/BlWdAdjEU4KGq8Zc7VKRCG1kZXemBpoDwZeAU7YXOtd/yev+CV/XE3f1O
+ MwjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=cIJcZ1Hi3DoEF/1CqsW4mJpJl8hECj9iLa8Ln8QVFSo=;
- b=N25prJ7DeRAvznyBwKPymkwJrncQtp9F97ES1pQNGnfy0vzzJVRGmNt/E7pMpruEwU
- 9WwEnSIShtWRwwKqdSvqPn9R3sTMtzuWl1BT/cAI2duiLuW5nqUIB0WKG+xyaBWn2vtx
- CGk3BQ5wVwwKm/Y3m3WqHW+iB3d6q1BOdTOkiXhjGh5WG156LZ5BDXJ5VRHJiNttXxT9
- ddBL5sfcD44amvANJYsR5HcR9caK4XJxGfIQ6gxewsnOXaBNy9VdlG4ueXvwPg4CskF+
- fJqOXutIveffDzVf8vR4uH1xD2f96AeSbFRNZwIY38iWsHE73cKIjZZxIo3mVOGVSVTG
- IDYQ==
-X-Gm-Message-State: AOAM5313lghIzhEYhnUR+idEUQ1xFpjUYuk20ATexitOlCC1B+SHjnYn
- +Rid5ZRib9LDghG5LoTwRN8=
-X-Google-Smtp-Source: ABdhPJxeqsKJWHHGkmrWZgB5l5AlihSE0DYgHzBqRaUowI3qYFtG6+88oK9iZhepTpRmQt7/GoCtpA==
-X-Received: by 2002:a5d:4703:: with SMTP id y3mr9720719wrq.321.1624616226487; 
- Fri, 25 Jun 2021 03:17:06 -0700 (PDT)
-Received: from morpheus.roving-it.com.com
- (f.c.9.1.f.e.c.d.1.e.0.0.2.b.5.5.1.8.6.2.1.1.b.f.0.b.8.0.1.0.0.2.ip6.arpa.
- [2001:8b0:fb11:2681:55b2:e1:dcef:19cf])
- by smtp.googlemail.com with ESMTPSA id 204sm5462736wma.30.2021.06.25.03.17.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Jun 2021 03:17:05 -0700 (PDT)
-From: Peter Robinson <pbrobinson@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>, Tobias Schramm <t.schramm@manjaro.org>,
+ :references;
+ bh=dE455QnkJy8nl+5re8Lx5rfD/JYfjqvcjK9bczo6FJE=;
+ b=kaMiCo1OfGnNHPgaK8aQ6sVyY3urwbgIqNgMzcptf1bdfXNCxGqSgQdsMBDGqafgju
+ He3ApdfB663zxhaRFNOQ16LTTgFZ8nRacDsmEhBS5DdLX+EcnlnrEnd6frbOIiinyBYh
+ Z+nYPsv88y+kkCEAUCN76E7qfIm3Iqx1VdcfRdEBHIh/5KXiGVDaMZGhLQsxlyknBvW7
+ zTv2/prA08TvAB8QEO8ip057qd4sQb69ocLlaODMJ26U97RoxLOII7KQ0/aiKlqYi/s0
+ qNpOJ0uaCpSDOVixDjXGiYKuD/Pwy5MLS2DAMaaLyVdvagMEaBkKYGW3qLL0nFVK1nyu
+ 836w==
+X-Gm-Message-State: AOAM531E/vrhwLVaAtg4MTmXv6B3+YhbcqoHbqcBQOiV4zA8iy7DB2N0
+ WmuTrh3ck8KgSUc+ohelV7s=
+X-Google-Smtp-Source: ABdhPJwlz352IyDwadTZbyzTcYUZMoyv1rX/vKfhC48/zXJ7M8/CSKhNrRhs3Yuk/OfAlxs5AI+wsQ==
+X-Received: by 2002:a05:6402:1d2d:: with SMTP id
+ dh13mr722907edb.282.1624619874547; 
+ Fri, 25 Jun 2021 04:17:54 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id b10sm3731238edx.4.2021.06.25.04.17.54
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 25 Jun 2021 04:17:54 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Cc: Peter Robinson <pbrobinson@gmail.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Don't enable i2c3 on Pinebook Pro
-Date: Fri, 25 Jun 2021 11:17:03 +0100
-Message-Id: <20210625101703.3290934-2-pbrobinson@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210625101703.3290934-1-pbrobinson@gmail.com>
-References: <20210625101703.3290934-1-pbrobinson@gmail.com>
-MIME-Version: 1.0
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 3/4] ARM: dts: rockchip: add io-domains node to rk3188.dtsi
+Date: Fri, 25 Jun 2021 13:17:45 +0200
+Message-Id: <20210625111746.6269-3-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20210625111746.6269-1-jbx6244@gmail.com>
+References: <20210625111746.6269-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_031708_207737_021DE8FD 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20210625_041756_144385_B3DDEDE4 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,39 +94,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Pinebook Pro doesn't have anything connected to the i2c3 interface
-so there's no need to enable it in the device tree.
+The compatible string below was added to
+rockchip-io-domain.txt, but never added to the device tree,
+so add a io-domains node to rk3188.dtsi
 
-Fixes: 5a65505a6988 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
-Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+"rockchip,rk3188-io-voltage-domain"
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 6 ------
- 1 file changed, 6 deletions(-)
+ arch/arm/boot/dts/rk3188.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index f584d08a63f0..e02f6b5cc49e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -685,12 +685,6 @@ es8316: es8316@11 {
- 	};
- };
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index b36fcdd9a..2721b7285 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -641,6 +641,11 @@
+ &grf{
+ 	compatible = "rockchip,rk3188-grf", "syscon", "simple-mfd";
  
--&i2c3 {
--	i2c-scl-falling-time-ns = <15>;
--	i2c-scl-rising-time-ns = <450>;
--	status = "okay";
--};
--
- &i2c4 {
- 	i2c-scl-falling-time-ns = <20>;
- 	i2c-scl-rising-time-ns = <600>;
++	io_domains: io-domains {
++		compatible = "rockchip,rk3188-io-voltage-domain";
++		status = "disabled";
++	};
++
+ 	usbphy: usbphy {
+ 		compatible = "rockchip,rk3188-usb-phy",
+ 			     "rockchip,rk3288-usb-phy";
 -- 
-2.31.1
+2.11.0
 
 
 _______________________________________________
