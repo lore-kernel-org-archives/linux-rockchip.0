@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94F95C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 14:12:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29E22C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 14:13:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 555906197B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 14:12:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 555906197B
+	by mail.kernel.org (Postfix) with ESMTPS id DEE966194D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 14:13:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DEE966194D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,25 +23,25 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bHw/2PDanHepsBLFW+eBTn8xz8nioAekNphpWUOqEEc=; b=Dk5bj2AKe7AH4n
-	oB5TTVAbCh2K1Es2TCjuRs5xVKS7GaOWsskvRQnAAb5klBbVaqBY35CpWe1C+bFjJ8OPIl61mGnJo
-	NiNmCe+LM3GDE2Ox+tyzLOkxprcp6el8Ka70/8fILFeE6N55diNefTMBq8fKfCTVlmS4+ru/f6eyz
-	XjgBUC4CGd2coVDKcvlAoIE/5fkidqyOKlci9UaNdRXzy9AMtCoH3JDXJqBvZpmmuMNgo6otsgerr
-	c0gky5fmasa0JvFFeAwQnCqhoteguP9tgu5Cp7qXfNr+bDzj7AWuFa80XitX8yqmeZi3NZZWxBFkB
-	DJfYf24pYFr6yU3iok5A==;
+	List-Owner; bh=QmrQmsLmmiE7JIk2A53jL7pr9DamoZOmSpQS6deiAw4=; b=27FefNWfyv7zbl
+	kgJvmHeifGLAsWARPZvdoMrey5DY5E29+ocmhBwLZOBG1X7KPbeJ0nxeqM2WRHxUfwpRdY91R3znp
+	xfHZyUHpmfKPHGUddtXIitkmKmQ8kV9YIeM4++WabpUCX9ejBI9klKaSeHRh3s+w8GaTdTOTVDLGK
+	6zWaO2oqfPeFOmrph83XrRnN+eg5UdztU2U9bOvAxx9MvPmj8MV+69Jggroqgj7ikdCpAp/S5oeT1
+	wc6K2eYgyJu/dnNeBRjgoGUqrvZF0b/rDiyyKSGUnGqNCX7ragEIhm/+6E/ntQXKib+9pIxQ6xEnN
+	IwvBTReEaakJ/ek9jHdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwmZe-001q90-86; Fri, 25 Jun 2021 14:12:50 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lwma0-001qJn-MZ; Fri, 25 Jun 2021 14:13:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwmZ0-001pt2-NY; Fri, 25 Jun 2021 14:12:12 +0000
+ id 1lwmYz-001prh-2V; Fri, 25 Jun 2021 14:12:14 +0000
 Received: from localhost.localdomain (unknown
  [IPv6:2a01:e0a:4cb:a870:42b6:51ca:7d52:50ad])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id E8DA01F44754;
- Fri, 25 Jun 2021 15:12:07 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 557F71F4474E;
+ Fri, 25 Jun 2021 15:11:53 +0100 (BST)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
  mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -53,16 +53,17 @@ Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v4 3/9] media: hantro: hevc: Allow 10-bits encoded streams
-Date: Fri, 25 Jun 2021 16:11:37 +0200
-Message-Id: <20210625141143.577998-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v4 1/9] media: hantro: Trace hevc hw cycles performance
+ register
+Date: Fri, 25 Jun 2021 16:11:35 +0200
+Message-Id: <20210625141143.577998-2-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210625141143.577998-1-benjamin.gaignard@collabora.com>
 References: <20210625141143.577998-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_071211_092155_1171566D 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20210625_071209_403724_B241E7EB 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,143 +81,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Allow to use 10-bits encoded streams but force the output
-to remain in 8-bits.
-Add a function to get chroma offset for the output since
-it may now not match with internal reference buffers chroma
-offset.
+After each hevc decoded frame trace the hardware performance.
+It provides the number of hw cycles spend per decoded macroblock.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c     |  5 ++--
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 29 +++++++++++++++----
- drivers/staging/media/hantro/hantro_g2_regs.h |  1 +
- drivers/staging/media/hantro/hantro_hevc.c    |  5 ++--
- 4 files changed, 31 insertions(+), 9 deletions(-)
+version 4:
+ - Log file descriptor in trace point.
+ - Add documentation about how use the trace points in Hantro driver.
 
+version 3:
+ - Change trace file name to hantro_trace.h
+
+ Documentation/admin-guide/media/hantro.rst    | 14 +++++++
+ .../admin-guide/media/v4l-drivers.rst         |  1 +
+ drivers/staging/media/hantro/hantro_drv.c     |  3 ++
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 16 ++++++++
+ drivers/staging/media/hantro/hantro_g2_regs.h |  1 +
+ drivers/staging/media/hantro/hantro_hw.h      |  1 +
+ drivers/staging/media/hantro/hantro_trace.h   | 41 +++++++++++++++++++
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   |  1 +
+ 8 files changed, 78 insertions(+)
+ create mode 100644 Documentation/admin-guide/media/hantro.rst
+ create mode 100644 drivers/staging/media/hantro/hantro_trace.h
+
+diff --git a/Documentation/admin-guide/media/hantro.rst b/Documentation/admin-guide/media/hantro.rst
+new file mode 100644
+index 000000000000..6cb552a5dfcb
+--- /dev/null
++++ b/Documentation/admin-guide/media/hantro.rst
+@@ -0,0 +1,14 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++=================
++The hantro driver
++=================
++
++Trace
++~~~~~
++
++You can trace the hardware decoding performances by using event tracing::
++
++    # echo hantro_hevc_perf >> /sys/kernel/debug/tracing/set_event
++
++That will keep a log of the number of hardware cycles spend per decoded macroblock
+diff --git a/Documentation/admin-guide/media/v4l-drivers.rst b/Documentation/admin-guide/media/v4l-drivers.rst
+index 9c7ebe2ca3bd..4f2f72a2b3b5 100644
+--- a/Documentation/admin-guide/media/v4l-drivers.rst
++++ b/Documentation/admin-guide/media/v4l-drivers.rst
+@@ -15,6 +15,7 @@ Video4Linux (V4L) driver-specific documentation
+ 	cx88
+ 	davinci-vpbe
+ 	fimc
++        hantro
+ 	imx
+ 	imx7
+ 	ipu3
 diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 61c0e9f0a05e..7121e6a6ca5b 100644
+index 31d8449ca1d2..61c0e9f0a05e 100644
 --- a/drivers/staging/media/hantro/hantro_drv.c
 +++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -263,8 +263,9 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
- 			/* Luma and chroma bit depth mismatch */
- 			return -EINVAL;
--		if (sps->bit_depth_luma_minus8 != 0)
--			/* Only 8-bit is supported */
-+		if (sps->bit_depth_luma_minus8 != 0 &&
-+		    sps->bit_depth_luma_minus8 != 2)
-+			/* Only 8-bit or 10-bit is supported */
- 			return -EINVAL;
- 		if (sps->flags & V4L2_HEVC_SPS_FLAG_SCALING_LIST_ENABLED)
- 			/* No scaling support */
+@@ -28,6 +28,9 @@
+ #include "hantro.h"
+ #include "hantro_hw.h"
+ 
++#define CREATE_TRACE_POINTS
++#include "hantro_trace.h"
++
+ #define DRIVER_NAME "hantro-vpu"
+ 
+ int hantro_debug;
 diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index d8c83eb37e64..907e453ac9b2 100644
+index 340efb57fd18..fef16d1724da 100644
 --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
 +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -133,6 +133,16 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
- 		vpu_debug(1, "%s: no chroma!\n", __func__);
+@@ -7,6 +7,7 @@
+ 
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
++#include "hantro_trace.h"
+ 
+ #define HEVC_DEC_MODE	0xC
+ 
+@@ -22,6 +23,21 @@ static inline void hantro_write_addr(struct hantro_dev *vpu,
+ 	vdpu_write(vpu, addr & 0xffffffff, offset);
  }
  
-+static bool is_8bit_dst_format(struct hantro_ctx *ctx)
-+{
-+	switch (ctx->vpu_dst_fmt->fourcc) {
-+	case V4L2_PIX_FMT_NV12:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
- static void set_params(struct hantro_ctx *ctx)
- {
- 	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-@@ -148,7 +158,8 @@ static void set_params(struct hantro_ctx *ctx)
- 	hantro_reg_write(vpu, &g2_bit_depth_y_minus8, sps->bit_depth_luma_minus8);
- 	hantro_reg_write(vpu, &g2_bit_depth_c_minus8, sps->bit_depth_chroma_minus8);
- 
--	hantro_reg_write(vpu, &g2_output_8_bits, 0);
-+	hantro_reg_write(vpu, &g2_output_8_bits, 1);
-+	hantro_reg_write(vpu, &g2_output_format, 0);
- 
- 	hantro_reg_write(vpu, &g2_hdr_skip_length, ctrls->hevc_hdr_skip_length);
- 
-@@ -522,13 +533,21 @@ static int set_ref(struct hantro_ctx *ctx)
- 	return 0;
- }
- 
-+static size_t hantro_hevc_output_chroma_offset(struct hantro_ctx *ctx)
++void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx)
 +{
 +	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
 +	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	int bytes_per_pixel = is_8bit_dst_format(ctx) ? 1 : 2;
++	struct hantro_dev *vpu = ctx->dev;
++	u32 hw_cycles = 0;
++	u32 mbs = (sps->pic_width_in_luma_samples *
++		   sps->pic_height_in_luma_samples) >> 8;
 +
-+	return sps->pic_width_in_luma_samples *
-+		sps->pic_height_in_luma_samples * bytes_per_pixel;
++	if (mbs)
++		hw_cycles = vdpu_read(vpu, G2_HW_PERFORMANCE) / mbs;
++
++	trace_hantro_hevc_perf(ctx, hw_cycles);
 +}
 +
- static void set_buffers(struct hantro_ctx *ctx)
+ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
  {
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
  	struct hantro_dev *vpu = ctx->dev;
--	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
--	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
--	size_t cr_offset = hantro_hevc_chroma_offset(sps);
-+	size_t output_cr_offset = hantro_hevc_output_chroma_offset(ctx);
- 	dma_addr_t src_dma, dst_dma;
- 	u32 src_len, src_buf_len;
- 
-@@ -550,7 +569,7 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	dst_dma = hantro_get_dec_buf_addr(ctx, &dst_buf->vb2_buf);
- 
- 	hantro_write_addr(vpu, G2_RASTER_SCAN, dst_dma);
--	hantro_write_addr(vpu, G2_RASTER_SCAN_CHR, dst_dma + cr_offset);
-+	hantro_write_addr(vpu, G2_RASTER_SCAN_CHR, dst_dma + output_cr_offset);
- 	hantro_write_addr(vpu, G2_ADDR_TILE_SIZE, ctx->hevc_dec.tile_sizes.dma);
- 	hantro_write_addr(vpu, G2_TILE_FILTER, ctx->hevc_dec.tile_filter.dma);
- 	hantro_write_addr(vpu, G2_TILE_SAO, ctx->hevc_dec.tile_sao.dma);
 diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
-index 0414d92e3860..941e5482d27b 100644
+index bb22fa921914..17d84ec9c5c2 100644
 --- a/drivers/staging/media/hantro/hantro_g2_regs.h
 +++ b/drivers/staging/media/hantro/hantro_g2_regs.h
-@@ -77,6 +77,7 @@
- #define g2_bit_depth_y_minus8	G2_DEC_REG(8, 6,  0x3)
- #define g2_bit_depth_c_minus8	G2_DEC_REG(8, 4,  0x3)
- #define g2_output_8_bits	G2_DEC_REG(8, 3,  0x1)
-+#define g2_output_format	G2_DEC_REG(8, 0,  0x7)
+@@ -177,6 +177,7 @@
+ #define G2_REG_CONFIG_DEC_CLK_GATE_E		BIT(16)
+ #define G2_REG_CONFIG_DEC_CLK_GATE_IDLE_E	BIT(17)
  
- #define g2_refidx1_active	G2_DEC_REG(9, 19, 0x1f)
- #define g2_refidx0_active	G2_DEC_REG(9, 14, 0x1f)
-diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-index 78e5ceda520c..3d6606ff3340 100644
---- a/drivers/staging/media/hantro/hantro_hevc.c
-+++ b/drivers/staging/media/hantro/hantro_hevc.c
-@@ -204,6 +204,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
- 	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
- 	unsigned int num_tile_cols = pps->num_tile_columns_minus1 + 1;
- 	unsigned int height64 = (sps->pic_height_in_luma_samples + 63) & ~63;
-+	unsigned int pixel_depth = sps->bit_depth_luma_minus8 == 0 ? 8 : 10;
- 	unsigned int size;
++#define G2_HW_PERFORMANCE	(G2_SWREG(63))
+ #define G2_ADDR_DST		(G2_SWREG(65))
+ #define G2_REG_ADDR_REF(i)	(G2_SWREG(67)  + ((i) * 0x8))
+ #define G2_ADDR_DST_CHR		(G2_SWREG(99))
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 5dcf65805396..5a455dd28aa6 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -242,6 +242,7 @@ void hantro_h264_dec_exit(struct hantro_ctx *ctx);
+ int hantro_hevc_dec_init(struct hantro_ctx *ctx);
+ void hantro_hevc_dec_exit(struct hantro_ctx *ctx);
+ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx);
++void hantro_g2_hevc_dec_done(struct hantro_ctx *ctx);
+ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
+ dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, int poc);
+ void hantro_hevc_ref_remove_unused(struct hantro_ctx *ctx);
+diff --git a/drivers/staging/media/hantro/hantro_trace.h b/drivers/staging/media/hantro/hantro_trace.h
+new file mode 100644
+index 000000000000..fa8fec26fa3c
+--- /dev/null
++++ b/drivers/staging/media/hantro/hantro_trace.h
+@@ -0,0 +1,41 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++#if !defined(__HANTRO_TRACE_H__) || defined(TRACE_HEADER_MULTI_READ)
++#define __HANTRO_TRACE_H__
++
++#include <linux/tracepoint.h>
++#include <media/videobuf2-v4l2.h>
++
++#include "hantro.h"
++
++#undef TRACE_SYSTEM
++#define TRACE_SYSTEM hantro
++#define TRACE_INCLUDE_FILE hantro_trace
++
++TRACE_EVENT(hantro_hevc_perf,
++	TP_PROTO(struct hantro_ctx *ctx, u32 hw_cycles),
++
++	TP_ARGS(ctx, hw_cycles),
++
++	TP_STRUCT__entry(
++		__field(int, minor)
++		__field(struct v4l2_fh *, fh)
++		__field(u32, hw_cycles)
++	),
++
++	TP_fast_assign(
++		__entry->minor = ctx->fh.vdev->minor;
++		__entry->fh = &ctx->fh;
++		__entry->hw_cycles = hw_cycles;
++	),
++
++	TP_printk("minor = %d, fh = %p, %8d cycles / mb",
++		  __entry->minor, __entry->fh, __entry->hw_cycles)
++);
++
++#endif /* __HANTRO_TRACE_H__ */
++
++#undef TRACE_INCLUDE_PATH
++#define TRACE_INCLUDE_PATH ../../drivers/staging/media/hantro
++
++/* This part must be outside protection */
++#include <trace/define_trace.h>
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index c3e616fd4e85..ab6ac620f0d0 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -253,6 +253,7 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
+ 		.reset = imx8m_vpu_g2_reset,
+ 		.init = hantro_hevc_dec_init,
+ 		.exit = hantro_hevc_dec_exit,
++		.done = hantro_g2_hevc_dec_done,
+ 	},
+ };
  
- 	if (num_tile_cols <= 1 ||
-@@ -232,7 +233,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
- 		hevc_dec->tile_bsd.cpu = NULL;
- 	}
- 
--	size = VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1);
-+	size = (VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1) * pixel_depth) / 8;
- 	hevc_dec->tile_filter.cpu = dma_alloc_coherent(vpu->dev, size,
- 						       &hevc_dec->tile_filter.dma,
- 						       GFP_KERNEL);
-@@ -240,7 +241,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
- 		goto err_free_tile_buffers;
- 	hevc_dec->tile_filter.size = size;
- 
--	size = VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1);
-+	size = (VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1) * pixel_depth) / 8;
- 	hevc_dec->tile_sao.cpu = dma_alloc_coherent(vpu->dev, size,
- 						    &hevc_dec->tile_sao.dma,
- 						    GFP_KERNEL);
 -- 
 2.25.1
 
