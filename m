@@ -2,81 +2,78 @@ Return-Path: <SRS0=fNsx=LT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95C38C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 07:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16D50C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 08:14:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 386CD6141B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 07:41:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 386CD6141B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id D439E61426
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Jun 2021 08:14:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D439E61426
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v7ftwgv7i63Yh7PpFA4SUQfnsqCf1TCbBtSC9u0Pdo0=; b=ynqh66xUW1gN1K
-	TSWZ/RpBTvt2x/6khJ0HAaWUGYpZS/rXsk9VaSAaRX3cepGHHahRpmMKkENN0To4WDHutYEBBcLaE
-	vBw0PSwd0e1nVKvm9hk0Hp7vs2jg/OrlN76s0/WfcKvzqTlJY8633K12MTkey8D7PjqwVY8BWiUYe
-	DeRYQ3oMK2nZ1/Jw+7XZ1sUQ/lMfoicaY8RkplZMsK0y7T9OxFBM+Db4Hh2ZFIUeep3jRxFr8Qfdf
-	ur7iSMPoeGDvon4FM83zeNpMD9Lb/gWwPtchaOuH67NzJCmO5hfR+oTv3X7CknCvn/haAawzhjihw
-	nl5yOH75nut3Uqsdmokg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Yh4UCuYC3BXReAXwEXTwjeRYJ2Or3YNRD86HAEWEuKk=; b=Lq7yVBEIGHZrYFTCdf7hwrMt/O
+	8IvPds7Ns7qZKjhvaQ51wYE2JJVUP0TD2CZcJFHmxD6ZZe9FPGGx+1H1pfmYvHrqOsxNd5fQW4Kfy
+	lKU9v/nlb7y5EXI5tcBKZIU03VxZzHitBXglkyn4v1Up6t+pDAkXE/CScN1vJOghK9hEQrwslC3ER
+	hC8SFPkgqszILKJQuUkCKn+QOg/DEvI5ZX2+NLGLloB6LOmYWkdlZmPIX70RnPoyCQYLtXUacvgIA
+	Tw3vT33sMyr6hdwm7Dfo2MV5k/B6SJahUmDzhw6Vnb9aSVBVMBwC7iLu5LpcDeMJxEI52CHY5eBt6
+	gPT57Cxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwgTA-0004JH-Er; Fri, 25 Jun 2021 07:41:44 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1lwgyK-000FIO-3p; Fri, 25 Jun 2021 08:13:56 +0000
+Received: from ssl.serverraum.org ([176.9.125.105])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwg7i-00HWr1-5c; Fri, 25 Jun 2021 07:19:35 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 17BF2CF051;
- Fri, 25 Jun 2021 15:19:32 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P12363T139710624155392S1624605571233266_; 
- Fri, 25 Jun 2021 15:19:32 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <3bef0b5452491ff7d13213441ac6be68>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: linux-spi@vger.kernel.org
-X-RCPT-COUNT: 20
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: linux-spi@vger.kernel.org
-Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
+ id 1lwgZc-0007ac-1I; Fri, 25 Jun 2021 07:48:25 +0000
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id 60A1B22249;
+ Fri, 25 Jun 2021 09:48:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1624607297;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=muVToPjbhEudsJJAmtZrtjaYbzMMnT/oWsAuUQB7DeY=;
+ b=uvpeR03zX5HVoJhVXczBF1935yKR5tSpkMX0iwaXWRRGDNa2bZwkhs7zy9BzCpbThTzfO1
+ 5dCjy86V2SQ2dtSNeluBrmQsAoZv5Hbcn2UlK5Z0Oa2Atyct/f5FYM82KfNKGu9vchjSOE
+ tmOdXknO4aVm/SG5J7TGdxLGQDsBSTk=
+MIME-Version: 1.0
+Date: Fri, 25 Jun 2021 09:48:15 +0200
+From: Michael Walle <michael@walle.cc>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-spi@vger.kernel.org, broonie@kernel.org, robh+dt@kernel.org,
  heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
  yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
  linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
  p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v9 10/10] arm64: dts: rockchip: Enable SFC for Odroid Go
- Advance
-Date: Fri, 25 Jun 2021 15:19:23 +0800
-Message-Id: <20210625071923.11042-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210625071748.10718-1-jon.lin@rock-chips.com>
-References: <20210625071748.10718-1-jon.lin@rock-chips.com>
+ mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, Chris
+ Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH v9 02/10] spi: rockchip-sfc: add rockchip serial flash
+ controller
+In-Reply-To: <20210625071702.10374-3-jon.lin@rock-chips.com>
+References: <20210625071702.10374-1-jon.lin@rock-chips.com>
+ <20210625071702.10374-3-jon.lin@rock-chips.com>
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <118417b6dc18d345a1d1e10efd0c8a1a@walle.cc>
+X-Sender: michael@walle.cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_001934_435534_0BE13AEE 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20210625_004824_272909_1B554ACF 
+X-CRM114-Status: UNSURE (   7.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +86,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi Jon,
 
-This enables the Rockchip Serial Flash Controller for the Odroid Go
-Advance. Note that while the attached SPI NOR flash and the controller
-both support quad read mode, only 2 of the required 4 pins are present.
-The rx and tx bus width is set to 2 for this reason.
+Am 2021-06-25 09:16, schrieb Jon Lin:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add the rockchip serial flash controller (SFC) driver.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> ---
+> 
+> Changes in v9: None
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> Changes in v1: None
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+This look wrong. Wasn't there any changes in any patches but 1/10?
 
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
-Changes in v1: None
+Please include a proper version history instead of putting the
+burden to the reviewer.
 
- .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 49c97f76df77..f78e11dd8447 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -484,6 +484,22 @@
- 	status = "okay";
- };
- 
-+&sfc {
-+	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
-+	pinctrl-names = "default";
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	flash@0 {
-+		compatible = "jedec,spi-nor";
-+		reg = <0>;
-+		spi-max-frequency = <108000000>;
-+		spi-rx-bus-width = <2>;
-+		spi-tx-bus-width = <2>;
-+	};
-+};
-+
- &tsadc {
- 	status = "okay";
- };
--- 
-2.17.1
-
-
-
+-michael
 
 _______________________________________________
 Linux-rockchip mailing list
