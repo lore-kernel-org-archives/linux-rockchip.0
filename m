@@ -1,121 +1,76 @@
-Return-Path: <SRS0=A5oP=LU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=BBFb=LV=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A53BC49EA6
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Jun 2021 08:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3ACEC49EAB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jun 2021 08:48:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFB7C60200
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Jun 2021 08:55:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFB7C60200
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 31CF761C29
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Jun 2021 08:48:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31CF761C29
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8LG0eqdhvxECStKOiKznUECtRB99FtDaiTvS6L1WQlA=; b=1n4p0KE/un0EyW
-	xZj4XgVSX2MkY6fumJCIEd21TO79Uw3UYPkwHHfBki7MkqNjT0HbsC0MISuW5yfnPcYgJzTnyg1ys
-	9m3kTrqSmKAKEssPtdlrfHyWoByjPN3Jtbefr5eaEdBO0wlqcT3CmfnFzb9vvduIH1gQU0kOdMRBf
-	36kVY+tNjPuehzl5FFH868BQ0W0wq1j/wl0cfKiPLZ7S/67VKc2cAt68tt+vcZpEopxEbxdhpwzAM
-	UhiP3LdhIEkUk5OyDtQ5X7u62SJEtWAlFPUERhx+2lNXIIGbPQU+w7Mo2CUkLl2z5PBML6gPs537N
-	P8cm6eWwpL7JllIPGgXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JsaK8FSfUD+kCdzIHaeueL52QRMfptFl7xVf+OBATKQ=; b=o/JbEmLxp7Evjj
+	ZxQIwF+4uUvmyTGtCYS7aPSlKFLFLOVTNHgJEsfqMA2CtiKOToUdGWDZKRloZnMdMwBkuvG4KBgqW
+	1uGQ3VLEgfTG+i6jvo8x7yv8FvmULMCg0i7nU6CYr+H8mo4UWND0JxDTWT8SDhh29JqVv0rQezUYK
+	zpFIu3nUbmAxulVbZ7pwDADlA1FLCnR4oGDzN/X2/fKpN0+U4uu3ZhDUqE5WL5ynmY6VJEjkPu/Q0
+	h/ed/D2IWSi7bbGAWCB8NgVcoV9wdkW9O5RSCB+yxK35H3FXsiXsYm3e7At4KN9QXs43GX/pDuGE2
+	A+ZIBLeZ7LKPvcfu2BRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lx469-003kLG-MR; Sat, 26 Jun 2021 08:55:33 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1lxQSU-005NGI-B2; Sun, 27 Jun 2021 08:48:06 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lx465-003kJx-5y; Sat, 26 Jun 2021 08:55:30 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- u8-20020a7bcb080000b02901e44e9caa2aso7268816wmj.4; 
- Sat, 26 Jun 2021 01:55:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=ptTxiGNRR9tLNMxRNvuOfTEawaDh7PBZAwJYDWExn6A=;
- b=WXZPto5hzmyq5c5odNy0McigPUrb1U8D3ElSea0YA6x/fugujmRnICRwcXvzB0modn
- RFnxjMlR5rE8gEr/sN5IsPfVueKZ85sDhJDqHVQdokVO1mBkU5H75gAJjv02f5wgE+hn
- 9LbJ/Lux2MkBxb4hmXxfyM2A54N/Inefn2dzazJZSSLXMuZel802aLRLHm61C95k4Knf
- Qzq1O1q8UbX4z+Di3lo98MSoo9TmKjBJp0IDDBkY80mplsdN197X8ah2DRZiZXdVKiON
- Ys/9hFDExx35ZaHsv4nZKEgcmZoYISMbZ7YT3aQ1MdLsDQFfdmlLJG04Z4poXicy4dGf
- XV4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=ptTxiGNRR9tLNMxRNvuOfTEawaDh7PBZAwJYDWExn6A=;
- b=PJQxZTyF9h/j0yIPeiIbOc1kxJajF0Jy5tRIGftLtUbr0vpxIdNBm1bdlMDpdGNVwv
- TArcSXU+DqInWtkZgUhs/8EM90v8DlKrOT3VQPj2tGAkvlYCBXcwcoVczXxrdVsQ72jA
- 6I9F5b90x6hYi2N6U+XLWlwZMW7nG85y4F9b09QxpH95OxEcdgFMZ9cg9XHKj4W37Eqp
- 7FJRSaIAJJjAti+/c3f+Eismmj2wkzhB87OFzFT24geHXQF2mEDSveqCl+h2Ndtiec3G
- hCVvFVLC/niY+TnfqBpyY0amfyyg8uL422/+he6jirRzg+JsDqUQ5wpLwpbQdnTHgbOk
- Hf5g==
-X-Gm-Message-State: AOAM532ZHfxJg3QZYM/TSQh93UPkiNNixoj3Ltlf5JjW820eub+94TfR
- LRl0wzqZb92WSQT/ODwvZ/w=
-X-Google-Smtp-Source: ABdhPJw6/VYXiHMo3tYPsIdCX2Czl9c8v5+Wa4nye0fP9/XfYl++WvluOveXRSNeUl+JlD1lODFXkg==
-X-Received: by 2002:a05:600c:2243:: with SMTP id
- a3mr15630087wmm.86.1624697723317; 
- Sat, 26 Jun 2021 01:55:23 -0700 (PDT)
-Received: from smtp.gmail.com (a95-92-181-29.cpe.netcabo.pt. [95.92.181.29])
- by smtp.gmail.com with ESMTPSA id n8sm7967502wrt.95.2021.06.26.01.55.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Jun 2021 01:55:22 -0700 (PDT)
-Date: Sat, 26 Jun 2021 09:55:13 +0100
-From: Melissa Wen <melissa.srw@gmail.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
- mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
- wens@csie.org, jernej.skrabec@gmail.com, thierry.reding@gmail.com,
- jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
- linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, jani.nikula@linux.intel.com,
- rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v4 24/27] drm/vkms: Don't set struct drm_device.irq_enabled
-Message-ID: <20210626085513.akf4cwyqpbchmycf@smtp.gmail.com>
-References: <20210625082222.3845-1-tzimmermann@suse.de>
- <20210625082222.3845-25-tzimmermann@suse.de>
+ id 1lxQSH-005NE9-KY; Sun, 27 Jun 2021 08:47:55 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 0A31ACF056;
+ Sun, 27 Jun 2021 16:47:45 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P12363T139708910794496S1624783659924687_; 
+ Sun, 27 Jun 2021 16:47:46 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <456593cc75213b8b0db436fb9310d05b>
+X-RL-SENDER: andy.yan@rock-chips.com
+X-SENDER: yxj@rock-chips.com
+X-LOGIN-NAME: andy.yan@rock-chips.com
+X-FST-TO: hjc@rock-chips.com
+X-RCPT-COUNT: 7
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Andy Yan <andy.yan@rock-chips.com>
+To: hjc@rock-chips.com, heiko@sntech.de, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: Check iommu itself instead of it's parent for
+ device_is_available
+Date: Sun, 27 Jun 2021 16:47:37 +0800
+Message-Id: <20210627084737.309163-1-andy.yan@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210625082222.3845-25-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210626_015529_324299_869CA9D1 
-X-CRM114-Status: GOOD (  13.27  )
+X-CRM114-CacheID: sfid-20210627_014753_958222_620011F1 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,36 +88,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/25, Thomas Zimmermann wrote:
-> The field drm_device.irq_enabled is only used by legacy drivers
-> with userspace modesetting. Don't set it in vkms.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+When iommu itself is disabled in dts, we should
+fallback to non-iommu buffer, check iommu parent
+is meanless here.
 
-I've also checked here, lgtm.
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+---
 
-Reviewed-by: Melissa Wen <melissa.srw@gmail.com>
-> ---
->  drivers/gpu/drm/vkms/vkms_drv.c | 2 --
->  1 file changed, 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-> index 027ffe759440..496de38ad983 100644
-> --- a/drivers/gpu/drm/vkms/vkms_drv.c
-> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
-> @@ -163,8 +163,6 @@ static int vkms_create(struct vkms_config *config)
->  		goto out_devres;
->  	}
->  
-> -	vkms_device->drm.irq_enabled = true;
-> -
->  	ret = drm_vblank_init(&vkms_device->drm, 1);
->  	if (ret) {
->  		DRM_ERROR("Failed to vblank\n");
-> -- 
-> 2.32.0
-> 
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 212bd87c0c4a..0d20c8cc1ffa 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -366,7 +366,7 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
+ 		}
+ 
+ 		iommu = of_parse_phandle(port->parent, "iommus", 0);
+-		if (!iommu || !of_device_is_available(iommu->parent)) {
++		if (!iommu || !of_device_is_available(iommu)) {
+ 			DRM_DEV_DEBUG(dev,
+ 				      "no iommu attached for %pOF, using non-iommu buffers\n",
+ 				      port->parent);
+-- 
+2.25.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
