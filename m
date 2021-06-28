@@ -2,86 +2,124 @@ Return-Path: <SRS0=Ln7Z=LW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C389C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 05:47:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94781C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3C01613EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 05:47:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3C01613EF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 55AC961466
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55AC961466
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wtAPvtaAtrantRTzhGbA63AJ+1AhPlETrhfKFUx5zh0=; b=X8npwML/rARLkp
-	BaEftGS80SWFNyF1CacUV3A5/+OWN/Lp1axHpiDjI16DomvkO/Y8vNPGZqGIsOh9ElA8xVB3NSDz7
-	X/l+mIRvUxDwQzc8Wxh9gvE+E3/OxoupjqK2DVFMBwREy5r/1pBDNPpxI3LUNDnG94sN9XNdYaARO
-	CtoVtd1RZ/CBkRq3hG4QYUiDoISWp08v4ao2DlE8WdUcymB1WkhOpLmA5MJKs+9dryzkRjTx7pHM2
-	oKe1R3hMv9Jz3cicjhjhkj43zpkL32/GB8UNwbuoWwKddMWyaKYYPULqOpgfl4oz/BCTlS8hjRPpk
-	qHnVM4fW0r+wk+CG7w5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UHEresjkwDb6KlJsbH+OI5FnxNTtIwnytjP5aV4B7c4=; b=KNwYQj6hiNcu3eQ9qic1SpF3A0
+	57F9vlVi0Bw3idezy4muMFaJEiL9BCACiWscUUbbDKawpnX0r8LMTI9ry7nZlPABHFDlugpzawIY9
+	+2NLbuh0LnXwzVcclHOwe7rRIFV+G94QPKqk95C30GVUu7FYPLCVYXVZ53+UUe/0C0pzIy4GJ5pnW
+	FgIj7Ajo3TqnEObWMtE4yn36TG48+ZMvqUcIjcSj6wx/7XBZycMgihpvTRjPrCKun+tD0BCkVcxES
+	Yatk8dQbnlq1P+Wct5S9GZ9FwUkyod8NIflqb1+kG8R4J+lVvPhIZzToF2kvK357NMIU4ZUx3aEnC
+	cEPNsiKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxk6s-006tWU-09; Mon, 28 Jun 2021 05:47:06 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1lxkgL-006yWI-DI; Mon, 28 Jun 2021 06:23:45 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxk6p-006tVa-5w
- for linux-rockchip@lists.infradead.org; Mon, 28 Jun 2021 05:47:04 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id s137so5573547pfc.4
- for <linux-rockchip@lists.infradead.org>; Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=RMUZO1MZSVkGJAqSa1s4TnlYCqt3/jZnu3nahYWbu3g=;
- b=k2CIjsvyYN5k9pNsMxEGqliv8058WhO0Knhi508nW+KT12KiU5Npmu8s2abqNlifaJ
- aYX4PC3Em2m1Xme0o8nXVw1WrV++pYbEyLaHc0dnN8/o3c1ItOuo9ksyu6+kBbQcTBgG
- 94XiuCgobv8u+6gAB37fvpz5H9Uaz3ttJUcDI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=RMUZO1MZSVkGJAqSa1s4TnlYCqt3/jZnu3nahYWbu3g=;
- b=pby3Aic4BQ6w4TtgAs7zBZseJYO8Lm4ZYyIplIk6lwMzSO7E4MVU8OjId9PGPEjiux
- 3KfMy+3yLCdeEfa+RgnHfE0A0pNUCPE4aLRpv0njfIEt8Xc4vVxvDzXFgxXRPg8DXuF8
- gd8cYAKDYM4TXHOwZM7mLplFKgUBxnTD6NYl7laxZ53L+6iZ3T0jOjMn/VWzXjgfScfZ
- CZuCypmt7X+bShxj1c0ogu+NaIQ1IvwfId4cegVD1kjzAG+2Gj3vbIXc66/2jEpczSwy
- EVFkyOfCAmpiCKOX43kH5iuPW36tctOACJBMtDZ6B7oh+aV/+Bg+c1TlVFuGdvBF/i9v
- K1Vg==
-X-Gm-Message-State: AOAM532lssA6m9nP31oxtRoFBWnzVVp7g3RbdttGAal2VexBZHZy7hFO
- IkAmy8orRgKHQOjpayJeuPH5vg==
-X-Google-Smtp-Source: ABdhPJxNUJHxrcKn/WvX+q9OYjEK9tEppfzIrdIPVjkPLN6N75/xZ33e8l6lHWPULQKbAS7w0ATsLA==
-X-Received: by 2002:a63:903:: with SMTP id 3mr21641501pgj.147.1624859221605;
- Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
-Received: from chromium.org ([2401:fa00:8f:203:35c6:3ef6:5ed6:fee])
- by smtp.gmail.com with ESMTPSA id p24sm13405793pfh.17.2021.06.27.22.46.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
-Date: Mon, 28 Jun 2021 14:46:57 +0900
-From: Tomasz Figa <tfiga@chromium.org>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com,
- helen.koike@collabora.com, ezequiel@collabora.com,
- hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com,
- sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org,
- mchehab@kernel.org
-Subject: Re: [PATCH 0/2] rkisp1: Two small fixes
-Message-ID: <YNliUasfxV3XpTKb@chromium.org>
-References: <20210625082309.24944-1-dafna.hirschfeld@collabora.com>
+ id 1lxkgH-006ySs-DI; Mon, 28 Jun 2021 06:23:42 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id A375B22358;
+ Mon, 28 Jun 2021 06:23:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
+ s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
+ ATR41EBppViL088sYF/EuuEt0QBmJHs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624861415;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
+ Iy0+1fzHScVjq3CA==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 73EFC118DD;
+ Mon, 28 Jun 2021 06:23:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
+ s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
+ ATR41EBppViL088sYF/EuuEt0QBmJHs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624861415;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
+ Iy0+1fzHScVjq3CA==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id T4qyGuZq2WDleAAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Mon, 28 Jun 2021 06:23:34 +0000
+Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
+ drm_device.irq_enabled
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-6-tzimmermann@suse.de>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
+Date: Mon, 28 Jun 2021 08:23:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210625082309.24944-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_224703_266510_A3D77FCC 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20210627_232341_665426_A8E0AF89 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,36 +132,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0494233347363284245=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 25, 2021 at 11:23:07AM +0300, Dafna Hirschfeld wrote:
-> Two small fixes to rkisp1
-> 1. remove useless vaddr field
-> 2. set the dma address of the capture buffers only once in 'buf_init' callabck
-> instead of each time the buffer is queued
-> 
-> Dafna Hirschfeld (2):
->   media: rkisp1: remove field 'vaddr' from 'rkisp1_buffer'
->   media: rkisp1: cap: initialize dma buf address in 'buf_init' cb
-> 
->  .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 +++++++++++-
->  .../media/platform/rockchip/rkisp1/rkisp1-common.h   |  6 +-----
->  .../media/platform/rockchip/rkisp1/rkisp1-params.c   |  3 +--
->  .../media/platform/rockchip/rkisp1/rkisp1-stats.c    |  6 ++----
->  4 files changed, 15 insertions(+), 12 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0494233347363284245==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI"
 
-For both patches:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
+Content-Type: multipart/mixed; boundary="ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
+Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
+ drm_device.irq_enabled
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-6-tzimmermann@suse.de>
+In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
 
-Reviewed-by; Tomasz Figa <tfiga@chromium.org>
+--ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Best regards,
-Tomasz
 
+
+Am 25.06.21 um 10:22 schrieb Thomas Zimmermann:
+> The field drm_device.irq_enabled is only used by legacy drivers
+> with userspace modesetting. Don't set it in armada.
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+R-b'ed by Laurent via IRC
+
+> ---
+>   drivers/gpu/drm/armada/armada_drv.c | 2 --
+>   1 file changed, 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/arma=
+da/armada_drv.c
+> index dab0a1f0983b..4a64f1b9ec4d 100644
+> --- a/drivers/gpu/drm/armada/armada_drv.c
+> +++ b/drivers/gpu/drm/armada/armada_drv.c
+> @@ -130,8 +130,6 @@ static int armada_drm_bind(struct device *dev)
+>   	if (ret)
+>   		goto err_comp;
+>  =20
+> -	priv->drm.irq_enabled =3D true;
+> -
+>   	drm_mode_config_reset(&priv->drm);
+>  =20
+>   	ret =3D armada_fbdev_init(&priv->drm);
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX--
+
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDZauUFAwAAAAAACgkQlh/E3EQov+BI
+/hAAwo/d/PjJfngTOTApUkdBmvqLyDR9l5V4s4HUVyGrzgf1k3ANJUoqAEBC0li07IImisiMhKK8
+8wmGPIQHSU3aRLQy+IbasD12kuSAJXTiFc8KZ41WpXafVHPiumFm5LRhKTGDC9jw1NtbjnRpaJLR
+qng3SVUTGFmAcFjzS4rm+eVvFy6d0S667p+A04vRcWLgMkmZJt8l6mM235cyRVKidi1aoejJLVCd
+MgfPBD6QopEOl+KU3aggPK0b+iNk5I8vBTiSGosBFFNF1HAr6YjzyYodpHn1xX7Y9aUIPkoEYmIa
+nhym33NotP/6vZJIedE3tHo92o1oRWlB6k36FdX4fRJBkcPoGVDOnm3Q7xZXDTV+bAEKGO4xy//z
+FUK8NXmy1vNd5aAt7F2cQPNO0vq6pa0Se8GaIGteQqFbd2LfTdHaZHlEmNb6x+NA1r4uMoTKsbHd
+XiGVGBFETOR3ElshkxJGL/aACPeELm/CxMYCCHVYOjakNn7MGDJmQyMlJyzPcEEelXCOOuO7HnOY
+Meb9ovN73XEjZcxq4KzOS/sc5FpDU/Te6DQpjFKxKwudZaZrLMLuUypbmmlMP1o1G0hepbNe3rey
+eFdvCeu1rBsor2Ae6ooTqoc4SdsyqzHnYfAvQuAkeWUBOW3fekUl8r0Viqxkv1BaYBgK4FW4pNLD
+bu8=
+=AJ6t
+-----END PGP SIGNATURE-----
+
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI--
+
+
+--===============0494233347363284245==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0494233347363284245==--
+
