@@ -2,124 +2,71 @@ Return-Path: <SRS0=Ln7Z=LW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94781C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 433F2C49EAB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 07:16:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55AC961466
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55AC961466
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 0C7F660FE9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 07:16:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C7F660FE9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UHEresjkwDb6KlJsbH+OI5FnxNTtIwnytjP5aV4B7c4=; b=KNwYQj6hiNcu3eQ9qic1SpF3A0
-	57F9vlVi0Bw3idezy4muMFaJEiL9BCACiWscUUbbDKawpnX0r8LMTI9ry7nZlPABHFDlugpzawIY9
-	+2NLbuh0LnXwzVcclHOwe7rRIFV+G94QPKqk95C30GVUu7FYPLCVYXVZ53+UUe/0C0pzIy4GJ5pnW
-	FgIj7Ajo3TqnEObWMtE4yn36TG48+ZMvqUcIjcSj6wx/7XBZycMgihpvTRjPrCKun+tD0BCkVcxES
-	Yatk8dQbnlq1P+Wct5S9GZ9FwUkyod8NIflqb1+kG8R4J+lVvPhIZzToF2kvK357NMIU4ZUx3aEnC
-	cEPNsiKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dBj5tXTbfb+Kd1576/VBgJk1mHfEe1JhzDjapo+9Vps=; b=sVFvzY9PCpzMNh
+	+DUpFIVqknW3V0OgdWf/qCI7dCQYtx1dS81Ic2EFse6hXAiOPR2qTuCfEq2CKSlP7ZyQQueCDfvpJ
+	zK5rcvLA2yUdrFPewFAERZYFNBmDeTTZe41HUcYxAh1KdBqJCCwJJVM+kHqYatw31pVoiA5nuV1Sa
+	6zpKyez30CvtlNyfIesYl+lceQdjMFG0eMLB0k7CnksDlP9TyJUlBWYKE78TL2K7hto3lMKjNlDmB
+	kGmWmcU4yXjdFwgx1BMDLLpLCSooPNXmEY5PhjogQCHx3aD94quvqjlDl5cb4TgwRDzMwVLfUZA+V
+	oQacxQ3qRLGOBI7rTl1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxkgL-006yWI-DI; Mon, 28 Jun 2021 06:23:45 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1lxlVV-007D3g-NT; Mon, 28 Jun 2021 07:16:37 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxkgH-006ySs-DI; Mon, 28 Jun 2021 06:23:42 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id A375B22358;
- Mon, 28 Jun 2021 06:23:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
- b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
- s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
- ATR41EBppViL088sYF/EuuEt0QBmJHs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624861415;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
- b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
- Iy0+1fzHScVjq3CA==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id 73EFC118DD;
- Mon, 28 Jun 2021 06:23:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
- b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
- s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
- ATR41EBppViL088sYF/EuuEt0QBmJHs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624861415;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
- b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
- Iy0+1fzHScVjq3CA==
-Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id T4qyGuZq2WDleAAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Mon, 28 Jun 2021 06:23:34 +0000
-Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
- drm_device.irq_enabled
-To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
- liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
- jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
- hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
- emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, jani.nikula@linux.intel.com,
- rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
-References: <20210625082222.3845-1-tzimmermann@suse.de>
- <20210625082222.3845-6-tzimmermann@suse.de>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
-Date: Mon, 28 Jun 2021 08:23:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lxlVS-007D1T-Uc
+ for linux-rockchip@lists.infradead.org; Mon, 28 Jun 2021 07:16:36 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id C995FE1A;
+ Mon, 28 Jun 2021 09:16:29 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1624864590;
+ bh=AIY84fWmOd5/rzOIBI5mmSVxqzuO5GGnEPOiHYOvKs0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=a0OxphVnReTi51rSlRczbNR/4iJ17Q81ZYnsDBGXLmQhyrC1ZhtPNOZBOpNp5xWi6
+ 8zofecBV3GpSxfwv6cg7EBCFp9DbloexEcjgACBsWOwf361fYpTkb7xr8G4NweH/ow
+ JU34ueMlIz4iAIY96cgN73SFOwY8yCWs1C6D2cFs=
+Date: Mon, 28 Jun 2021 10:16:28 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ linux-media@vger.kernel.org, helen.koike@collabora.com,
+ hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com,
+ sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org,
+ mchehab@kernel.org, tfiga@chromium.org
+Subject: Re: [PATCH 2/2] media: rkisp1: cap: initialize dma buf address in
+ 'buf_init' cb
+Message-ID: <YNl3TPzoNhUTpkDO@pendragon.ideasonboard.com>
+References: <20210625082309.24944-1-dafna.hirschfeld@collabora.com>
+ <20210625082309.24944-3-dafna.hirschfeld@collabora.com>
+ <a3144cc37a11e43d984c71aa160079cab65cc335.camel@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
+Content-Disposition: inline
+In-Reply-To: <a3144cc37a11e43d984c71aa160079cab65cc335.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_232341_665426_A8E0AF89 
-X-CRM114-Status: GOOD (  18.38  )
+X-CRM114-CacheID: sfid-20210628_001635_183651_F25B81E0 
+X-CRM114-Status: GOOD (  25.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,136 +79,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0494233347363284245=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0494233347363284245==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
-Content-Type: multipart/mixed; boundary="ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
- liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
- jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
- hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
- emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, jani.nikula@linux.intel.com,
- rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
-Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
-Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
- drm_device.irq_enabled
-References: <20210625082222.3845-1-tzimmermann@suse.de>
- <20210625082222.3845-6-tzimmermann@suse.de>
-In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
-
---ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-
-
-Am 25.06.21 um 10:22 schrieb Thomas Zimmermann:
-> The field drm_device.irq_enabled is only used by legacy drivers
-> with userspace modesetting. Don't set it in armada.
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-R-b'ed by Laurent via IRC
-
-> ---
->   drivers/gpu/drm/armada/armada_drv.c | 2 --
->   1 file changed, 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/arma=
-da/armada_drv.c
-> index dab0a1f0983b..4a64f1b9ec4d 100644
-> --- a/drivers/gpu/drm/armada/armada_drv.c
-> +++ b/drivers/gpu/drm/armada/armada_drv.c
-> @@ -130,8 +130,6 @@ static int armada_drm_bind(struct device *dev)
->   	if (ret)
->   		goto err_comp;
->  =20
-> -	priv->drm.irq_enabled =3D true;
-> -
->   	drm_mode_config_reset(&priv->drm);
->  =20
->   	ret =3D armada_fbdev_init(&priv->drm);
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX--
-
---i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDZauUFAwAAAAAACgkQlh/E3EQov+BI
-/hAAwo/d/PjJfngTOTApUkdBmvqLyDR9l5V4s4HUVyGrzgf1k3ANJUoqAEBC0li07IImisiMhKK8
-8wmGPIQHSU3aRLQy+IbasD12kuSAJXTiFc8KZ41WpXafVHPiumFm5LRhKTGDC9jw1NtbjnRpaJLR
-qng3SVUTGFmAcFjzS4rm+eVvFy6d0S667p+A04vRcWLgMkmZJt8l6mM235cyRVKidi1aoejJLVCd
-MgfPBD6QopEOl+KU3aggPK0b+iNk5I8vBTiSGosBFFNF1HAr6YjzyYodpHn1xX7Y9aUIPkoEYmIa
-nhym33NotP/6vZJIedE3tHo92o1oRWlB6k36FdX4fRJBkcPoGVDOnm3Q7xZXDTV+bAEKGO4xy//z
-FUK8NXmy1vNd5aAt7F2cQPNO0vq6pa0Se8GaIGteQqFbd2LfTdHaZHlEmNb6x+NA1r4uMoTKsbHd
-XiGVGBFETOR3ElshkxJGL/aACPeELm/CxMYCCHVYOjakNn7MGDJmQyMlJyzPcEEelXCOOuO7HnOY
-Meb9ovN73XEjZcxq4KzOS/sc5FpDU/Te6DQpjFKxKwudZaZrLMLuUypbmmlMP1o1G0hepbNe3rey
-eFdvCeu1rBsor2Ae6ooTqoc4SdsyqzHnYfAvQuAkeWUBOW3fekUl8r0Viqxkv1BaYBgK4FW4pNLD
-bu8=
-=AJ6t
------END PGP SIGNATURE-----
-
---i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI--
-
-
---===============0494233347363284245==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0494233347363284245==--
-
+T24gRnJpLCBKdW4gMjUsIDIwMjEgYXQgMTA6MDg6NDRQTSAtMDMwMCwgRXplcXVpZWwgR2FyY2lh
+IHdyb3RlOgo+IE9uIEZyaSwgMjAyMS0wNi0yNSBhdCAxMToyMyArMDMwMCwgRGFmbmEgSGlyc2No
+ZmVsZCB3cm90ZToKPiA+IEluaXRpYWxpemluZyB0aGUgZG1hIGFkZHJlc3NlcyBvZiB0aGUgY2Fw
+dHVyZSBidWZmZXJzIGNhbgo+ID4gbW92ZSB0byB0aGUgJ2J1Zl9pbml0JyBjYWxsYmFjaywgc2lu
+Y2UgaXQgaXMgZW5vdWdoIHRvIGRvCj4gPiBpdCBvbmNlIGZvciBlYWNoIGJ1ZmZlciBhbmQgbm90
+IGV2ZXJ5IHRpbWUgaXQgaXMgcXVldWVkLgo+IAo+IEFyZSB5b3UgYWJsZSB0byBtZWFzdXJlIGFu
+eSBpbXBhY3Qgd2l0aCB0aGlzIGNoYW5nZT8KPiAKPiA+IFNpZ25lZC1vZmYtYnk6IERhZm5hIEhp
+cnNjaGZlbGQgPGRhZm5hLmhpcnNjaGZlbGRAY29sbGFib3JhLmNvbT4KPiA+IC0tLQo+ID4gwqAu
+Li4vbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jYXB0dXJlLmPCoCB8IDEy
+ICsrKysrKysrKysrLQo+ID4gwqAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgMSBk
+ZWxldGlvbigtKQo+ID4gCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9y
+b2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNhcHR1cmUuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
+cm9ja2NoaXAvcmtpc3AxL3JraXNwMS1jYXB0dXJlLmMKPiA+IGluZGV4IDYwY2QyMjAwZTdhZS4u
+NDE5ODhlYjBlYzBhIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2Nr
+Y2hpcC9ya2lzcDEvcmtpc3AxLWNhcHR1cmUuYwo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWNhcHR1cmUuYwo+ID4gQEAgLTc1MCw3ICs3NTAs
+NyBAQCBzdGF0aWMgaW50IHJraXNwMV92YjJfcXVldWVfc2V0dXAoc3RydWN0IHZiMl9xdWV1ZSAq
+cXVldWUsCj4gPiDCoMKgwqDCoMKgwqDCoMKgcmV0dXJuIDA7Cj4gPiDCoH0KPiA+IMKgCj4gPiAt
+c3RhdGljIHZvaWQgcmtpc3AxX3ZiMl9idWZfcXVldWUoc3RydWN0IHZiMl9idWZmZXIgKnZiKQo+
+ID4gK3N0YXRpYyBpbnQgcmtpc3AxX3ZiMl9idWZfaW5pdChzdHJ1Y3QgdmIyX2J1ZmZlciAqdmIp
+Cj4gPiDCoHsKPiA+IMKgwqDCoMKgwqDCoMKgwqBzdHJ1Y3QgdmIyX3Y0bDJfYnVmZmVyICp2YnVm
+ID0gdG9fdmIyX3Y0bDJfYnVmZmVyKHZiKTsKPiA+IMKgwqDCoMKgwqDCoMKgwqBzdHJ1Y3Qgcmtp
+c3AxX2J1ZmZlciAqaXNwYnVmID0KPiAKPiBTaW5jZSB5b3UgYXJlIGludGVyZXN0ZWQgYXQgdGhl
+c2Uga2luZCBvZiBjbGVhbnVwcywgeW91IGNhbgo+IGRvIHNvbWV0aGluZyBsaWtlOgo+IAo+ICtl
+bnVtIHJraXNwMV9wbGFuZSB7Cj4gKyAgICAgICBSS0lTUDFfUExBTkVfWSAgPSAwLAo+ICsgICAg
+ICAgUktJU1AxX1BMQU5FX0NCID0gMSwKPiArICAgICAgIFJLSVNQMV9QTEFORV9DUiA9IDIsCj4g
+KyAgICAgICBSS0lTUDFfTlVNX1BMQU5FUyA9IDMKPiArfTsKPiArCj4gIC8qCj4gICAqIHN0cnVj
+dCBya2lzcDFfYnVmZmVyIC0gQSBjb250YWluZXIgZm9yIHRoZSB2YjIgYnVmZmVycyB1c2VkIGJ5
+IHRoZSB2aWRlbyBkZXZpY2VzOgo+ICAgKiAgICAgICAgICAgICAgICAgICAgICAgcGFyYW1zLCBz
+dGF0cywgbWFpbnBhdGgsIHNlbGZwYXRoCj4gQEAgLTE2MCw3ICsxNjcsNyBAQCBzdHJ1Y3Qgcmtp
+c3AxX3ZkZXZfbm9kZSB7Cj4gIHN0cnVjdCBya2lzcDFfYnVmZmVyIHsKPiAgICAgICAgIHN0cnVj
+dCB2YjJfdjRsMl9idWZmZXIgdmI7Cj4gICAgICAgICBzdHJ1Y3QgbGlzdF9oZWFkIHF1ZXVlOwo+
+IC0gICAgICAgdTMyIGJ1ZmZfYWRkcltWSURFT19NQVhfUExBTkVTXTsKPiArICAgICAgIHUzMiBi
+dWZmX2FkZHJbUktJU1AxX05VTV9QTEFORVNdOwo+ICB9Owo+IAo+IEFuZCB0aGVuIHlvdSBjYW4g
+Z2V0IHJpZCBvZiB0aGUgbWVtc2V0LCBhbmQgcmVseSBvbgo+IHZiMl9kbWFfY29udGlnX3BsYW5l
+X2RtYV9hZGRyIHJldHVybmluZyBOVUxMLgo+IAo+IEBAIC03NTksOCArNzUzLDcgQEAgc3RhdGlj
+IHZvaWQgcmtpc3AxX3ZiMl9idWZfcXVldWUoc3RydWN0IHZiMl9idWZmZXIgKnZiKQo+ICAgICAg
+ICAgY29uc3Qgc3RydWN0IHY0bDJfcGl4X2Zvcm1hdF9tcGxhbmUgKnBpeG0gPSAmY2FwLT5waXgu
+Zm10Owo+ICAgICAgICAgdW5zaWduZWQgaW50IGk7Cj4gIAo+IC0gICAgICAgbWVtc2V0KGlzcGJ1
+Zi0+YnVmZl9hZGRyLCAwLCBzaXplb2YoaXNwYnVmLT5idWZmX2FkZHIpKTsKPiAtICAgICAgIGZv
+ciAoaSA9IDA7IGkgPCBwaXhtLT5udW1fcGxhbmVzOyBpKyspCj4gKyAgICAgICBmb3IgKGkgPSAw
+OyBpIDwgUktJU1AxX05VTV9QTEFORVM7IGkrKykKClRoaXMgc2hvdWxkIHVzZSBBUlJBWV9TSVpF
+KCkuCgo+ICAgICAgICAgICAgICAgICBpc3BidWYtPmJ1ZmZfYWRkcltpXSA9IHZiMl9kbWFfY29u
+dGlnX3BsYW5lX2RtYV9hZGRyKHZiLCBpKTsKCkJ1dCB3aWxsIHZiMl9kbWFfY29udGlnX3BsYW5l
+X2RtYV9hZGRyKCkgYmUgaGFwcHkgd2hlbiBpIGlzIGxhcmdlciB0aGFuCnRoZSBudW1iZXIgb2Yg
+cGxhbmVzID8KCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
