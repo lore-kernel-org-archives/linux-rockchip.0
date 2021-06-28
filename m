@@ -2,95 +2,86 @@ Return-Path: <SRS0=Ln7Z=LW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BD01C2B9F4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 04:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C389C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 05:47:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6046A61C29
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 04:10:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6046A61C29
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id C3C01613EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 05:47:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3C01613EF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=KsYlLf3B+DWiiIkPtXrr7dOnpIBf5x64wKNmSoMMVS0=; b=MLWDabLFUZNYpMJiEGShr4UjmN
-	TqW6BL4ylsddBkwSAq11tAZmlMxLIepSxY6Kd27JBc2roeIBFUfbj5WioW3qfgE78V/PBnFKbQQ3r
-	gXVSrLQ38V434eopk7xlTaL3v1eLWlp43o9BzvTH+RY9Qld8zQ1E5xnQWfYy37aVsWPtIrBQ+ZnxW
-	8MOElfSb1WgS4jMjWFlm+BJrvskFyUuW4tyWyNvKAVMK0JeVsRqwae/cvhPNg+tL+moEUk/iZV7JC
-	6UuI+ta9sJaNCI5efAYyC9sUh1/Zfz75sJfUDkqURzwYf+qh5LjsaNValSC3Nu49kVRqq5dfdHJGI
-	b7N5lEtQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wtAPvtaAtrantRTzhGbA63AJ+1AhPlETrhfKFUx5zh0=; b=X8npwML/rARLkp
+	BaEftGS80SWFNyF1CacUV3A5/+OWN/Lp1axHpiDjI16DomvkO/Y8vNPGZqGIsOh9ElA8xVB3NSDz7
+	X/l+mIRvUxDwQzc8Wxh9gvE+E3/OxoupjqK2DVFMBwREy5r/1pBDNPpxI3LUNDnG94sN9XNdYaARO
+	CtoVtd1RZ/CBkRq3hG4QYUiDoISWp08v4ao2DlE8WdUcymB1WkhOpLmA5MJKs+9dryzkRjTx7pHM2
+	oKe1R3hMv9Jz3cicjhjhkj43zpkL32/GB8UNwbuoWwKddMWyaKYYPULqOpgfl4oz/BCTlS8hjRPpk
+	qHnVM4fW0r+wk+CG7w5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxiar-006guV-0U; Mon, 28 Jun 2021 04:09:57 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1lxk6s-006tWU-09; Mon, 28 Jun 2021 05:47:06 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxian-006gtl-UI; Mon, 28 Jun 2021 04:09:56 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 15S49fKm059338;
- Sun, 27 Jun 2021 23:09:41 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1624853381;
- bh=GNU1vUWoanvJ92XdB4nexwD2JVJqd69WagBGfaf6suA=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=mu5a+hQh7vJ9G0ABfC7bLJiQYRwVGkbagBr2vVw6qNOKFlRlurlvSii0+Fes6CvVQ
- OEOpT6s0KS699UN4t0jZp7N7fmUOsNFB+Gl+PUzpKJm5uSlclhBEYN9/NNoCERVURP
- qodihYQZWDOv6WWRlBehZhmP0K9aWQ5VxULnokmQ=
-Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 15S49fX1100414
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Sun, 27 Jun 2021 23:09:41 -0500
-Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE113.ent.ti.com
- (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Sun, 27
- Jun 2021 23:09:40 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Sun, 27 Jun 2021 23:09:41 -0500
-Received: from [10.250.232.148] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 15S49XI6013993;
- Sun, 27 Jun 2021 23:09:33 -0500
-Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-CC: Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Rob Herring <robh+dt@kernel.org>, Tom Joseph <tjoseph@cadence.com>, Jingoo
- Han <jingoohan1@gmail.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
-References: <20210616211630.GA3007203@bjorn-Precision-5520>
- <0fd19e28-e0a6-fd79-672a-b588fb2763ba@ti.com>
- <20210625161528.GA21595@lpieralisi>
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Message-ID: <8bf024da-d35b-80d5-4351-c1c1d68ef59c@ti.com>
-Date: Mon, 28 Jun 2021 09:39:32 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lxk6p-006tVa-5w
+ for linux-rockchip@lists.infradead.org; Mon, 28 Jun 2021 05:47:04 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id s137so5573547pfc.4
+ for <linux-rockchip@lists.infradead.org>; Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=RMUZO1MZSVkGJAqSa1s4TnlYCqt3/jZnu3nahYWbu3g=;
+ b=k2CIjsvyYN5k9pNsMxEGqliv8058WhO0Knhi508nW+KT12KiU5Npmu8s2abqNlifaJ
+ aYX4PC3Em2m1Xme0o8nXVw1WrV++pYbEyLaHc0dnN8/o3c1ItOuo9ksyu6+kBbQcTBgG
+ 94XiuCgobv8u+6gAB37fvpz5H9Uaz3ttJUcDI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=RMUZO1MZSVkGJAqSa1s4TnlYCqt3/jZnu3nahYWbu3g=;
+ b=pby3Aic4BQ6w4TtgAs7zBZseJYO8Lm4ZYyIplIk6lwMzSO7E4MVU8OjId9PGPEjiux
+ 3KfMy+3yLCdeEfa+RgnHfE0A0pNUCPE4aLRpv0njfIEt8Xc4vVxvDzXFgxXRPg8DXuF8
+ gd8cYAKDYM4TXHOwZM7mLplFKgUBxnTD6NYl7laxZ53L+6iZ3T0jOjMn/VWzXjgfScfZ
+ CZuCypmt7X+bShxj1c0ogu+NaIQ1IvwfId4cegVD1kjzAG+2Gj3vbIXc66/2jEpczSwy
+ EVFkyOfCAmpiCKOX43kH5iuPW36tctOACJBMtDZ6B7oh+aV/+Bg+c1TlVFuGdvBF/i9v
+ K1Vg==
+X-Gm-Message-State: AOAM532lssA6m9nP31oxtRoFBWnzVVp7g3RbdttGAal2VexBZHZy7hFO
+ IkAmy8orRgKHQOjpayJeuPH5vg==
+X-Google-Smtp-Source: ABdhPJxNUJHxrcKn/WvX+q9OYjEK9tEppfzIrdIPVjkPLN6N75/xZ33e8l6lHWPULQKbAS7w0ATsLA==
+X-Received: by 2002:a63:903:: with SMTP id 3mr21641501pgj.147.1624859221605;
+ Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
+Received: from chromium.org ([2401:fa00:8f:203:35c6:3ef6:5ed6:fee])
+ by smtp.gmail.com with ESMTPSA id p24sm13405793pfh.17.2021.06.27.22.46.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Jun 2021 22:47:01 -0700 (PDT)
+Date: Mon, 28 Jun 2021 14:46:57 +0900
+From: Tomasz Figa <tfiga@chromium.org>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com,
+ helen.koike@collabora.com, ezequiel@collabora.com,
+ hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com,
+ sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org,
+ mchehab@kernel.org
+Subject: Re: [PATCH 0/2] rkisp1: Two small fixes
+Message-ID: <YNliUasfxV3XpTKb@chromium.org>
+References: <20210625082309.24944-1-dafna.hirschfeld@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20210625161528.GA21595@lpieralisi>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Content-Disposition: inline
+In-Reply-To: <20210625082309.24944-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_210954_168296_38F7987D 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20210627_224703_266510_A3D77FCC 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,76 +99,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Lorenzo,
-
-On 25/06/21 9:45 pm, Lorenzo Pieralisi wrote:
-> On Thu, Jun 24, 2021 at 08:30:09PM +0530, Kishon Vijay Abraham I wrote:
->> Hi Lorenzo,
->>
->> On 17/06/21 2:46 am, Bjorn Helgaas wrote:
->>> On Wed, Jun 16, 2021 at 07:35:33PM +0530, Kishon Vijay Abraham I wrote:
->>>> Hi Lorenzo, Bjorn,
->>>>
->>>> On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
->>>>> Patch series
->>>>> *) Adds support to add virtual functions to enable endpoint controller
->>>>>    which supports SR-IOV capability
->>>>> *) Add support in Cadence endpoint driver to configure virtual functions
->>>>> *) Enable pci_endpoint_test driver to create pci_device for virtual
->>>>>    functions
->>>>>
->>>>> v1 of the patch series can be found at [1]
->>>>> v2 of the patch series can be found at [2]
->>>>> v3 of the patch series can be found at [3]
->>>>> v4 of the patch series can be found at [4]
->>>>> v5 of the patch series can be found at [5]
->>>>>
->>>>> Here both physical functions and virtual functions use the same
->>>>> pci_endpoint_test driver and existing pcitest utility can be used
->>>>> to test virtual functions as well.
->>>>>
->>>>> Changes from v5:
->>>>> *) Rebased to 5.13-rc1
->>>>>
->>>>> Changes from v4:
->>>>> *) Added a fix in Cadence driver which was overwriting BAR configuration
->>>>>    of physical function.
->>>>> *) Didn't include Tom's Acked-by since Cadence driver is modified in
->>>>>    this revision.
->>>>>
->>>>> Changes from v3:
->>>>> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
->>>>>
->>>>> Changes from v2:
->>>>> *) Fixed DT binding documentation comment by Rob
->>>>> *) Fixed the error check in pci-epc-core.c
->>>>>
->>>>> Changes from v1:
->>>>> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
->>>>>    binding for EP)
->>>>>
->>>>> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
->>>>> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
->>>>> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
->>>>> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
->>>>> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
->>>>
->>>> Can this series be merged for 5.14? It already includes Ack from Rob for
->>>> dt-binding changes and Ack from Tom for Cadence driver changes.
->>>
->>> Sorry, I think this was assigned to me in patchwork, but Lorenzo
->>> usually takes care of the endpoint stuff.  He's away this week, but no
->>> doubt will look at it when he returns.
->>
->> Can you consider merging this series for 5.14?
+On Fri, Jun 25, 2021 at 11:23:07AM +0300, Dafna Hirschfeld wrote:
+> Two small fixes to rkisp1
+> 1. remove useless vaddr field
+> 2. set the dma address of the capture buffers only once in 'buf_init' callabck
+> instead of each time the buffer is queued
 > 
-> I am running late this cycle on reviews and the merge window is about
-> to open, I will review it and queue it first thing for the next cycle.
+> Dafna Hirschfeld (2):
+>   media: rkisp1: remove field 'vaddr' from 'rkisp1_buffer'
+>   media: rkisp1: cap: initialize dma buf address in 'buf_init' cb
+> 
+>  .../media/platform/rockchip/rkisp1/rkisp1-capture.c  | 12 +++++++++++-
+>  .../media/platform/rockchip/rkisp1/rkisp1-common.h   |  6 +-----
+>  .../media/platform/rockchip/rkisp1/rkisp1-params.c   |  3 +--
+>  .../media/platform/rockchip/rkisp1/rkisp1-stats.c    |  6 ++----
+>  4 files changed, 15 insertions(+), 12 deletions(-)
 
-Sure, thanks!
+For both patches:
 
-Best Regards,
-Kishon
+Reviewed-by; Tomasz Figa <tfiga@chromium.org>
+
+Best regards,
+Tomasz
+
 
 _______________________________________________
 Linux-rockchip mailing list
