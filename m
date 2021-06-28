@@ -2,83 +2,95 @@ Return-Path: <SRS0=Ln7Z=LW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55B66C49EA7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 03:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BD01C2B9F4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 04:10:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 163E261C2F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 03:55:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 163E261C2F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=t-chip.com.cn
+	by mail.kernel.org (Postfix) with ESMTPS id 6046A61C29
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Jun 2021 04:10:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6046A61C29
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q9XSMJAzjSQ0v+2d2xrhGbMwNV45ngstTxMRHzA92e0=; b=GlqQtfiyHICUEe
-	gW1wF0ZT+n+7gLL1lConHUHlyfK0rkjSbudlDdrBc6LgsGLVe7ApLFWK0g47Coe5JbpR1KrX0hBuE
-	WB6rOhw5vKVHzfD06KDlXT6iNlRlf2U4Fz+aA/qbCGF8RGExZHdacAGr+OY4PIDVgJdTIFjuXyTZk
-	A1q0N46lyB+KViCxhTa58upWWqgtnP6tHT1Ce9eaZLxJaucL2oWrUxv8sWeG770Y1HX1NOpgWZ3L1
-	MPPxOiiK0Drii8qRmk4pc8AhxRWXGx2DEEM6r7eJ05qhSpv1VZivZ7CmDTWz5nW9b0em3lr5IbZJZ
-	T3uJZqOb37W/Bpt2YfJA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=KsYlLf3B+DWiiIkPtXrr7dOnpIBf5x64wKNmSoMMVS0=; b=MLWDabLFUZNYpMJiEGShr4UjmN
+	TqW6BL4ylsddBkwSAq11tAZmlMxLIepSxY6Kd27JBc2roeIBFUfbj5WioW3qfgE78V/PBnFKbQQ3r
+	gXVSrLQ38V434eopk7xlTaL3v1eLWlp43o9BzvTH+RY9Qld8zQ1E5xnQWfYy37aVsWPtIrBQ+ZnxW
+	8MOElfSb1WgS4jMjWFlm+BJrvskFyUuW4tyWyNvKAVMK0JeVsRqwae/cvhPNg+tL+moEUk/iZV7JC
+	6UuI+ta9sJaNCI5efAYyC9sUh1/Zfz75sJfUDkqURzwYf+qh5LjsaNValSC3Nu49kVRqq5dfdHJGI
+	b7N5lEtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxiMd-006f4c-UI; Mon, 28 Jun 2021 03:55:15 +0000
-Received: from regular1.263xmail.com ([211.150.70.204])
+	id 1lxiar-006guV-0U; Mon, 28 Jun 2021 04:09:57 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxiM7-006f09-Sh; Mon, 28 Jun 2021 03:54:45 +0000
-Received: from localhost (unknown [192.168.167.16])
- by regular1.263xmail.com (Postfix) with ESMTP id 54C3F57E;
- Mon, 28 Jun 2021 11:54:41 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED2: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 1
-Received: from localhost.localdomain (unknown [14.20.131.7])
- by smtp.263.net (postfix) whith ESMTP id
- P12369T139709984536320S1624852472443677_; 
- Mon, 28 Jun 2021 11:54:41 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <451d7a6f36f7fa01453738daed5d5208>
-X-RL-SENDER: djw@t-chip.com.cn
-X-SENDER: djw@t-chip.com.cn
-X-LOGIN-NAME: djw@t-chip.com.cn
-X-FST-TO: linux-rockchip@lists.infradead.org
-X-RCPT-COUNT: 16
-X-SENDER-IP: 14.20.131.7
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: djw@t-chip.com.cn
-To: linux-rockchip@lists.infradead.org
-Cc: Wayne Chou <zxf@t-chip.com.cn>, Kongxin Deng <dkx@t-chip.com.cn>,
- Levin Du <djw@t-chip.com.cn>, Heiko Stuebner <heiko@sntech.de>,
- Chen-Yu Tsai <wens@csie.org>, Jagan Teki <jagan@amarulasolutions.com>,
- Jensen Huang <jensenhuang@friendlyarm.com>,
- Johan Jonker <jbx6244@gmail.com>, Liang Chen <cl@rock-chips.com>,
- Marty Jones <mj8263788@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v0 2/2] arm64: dts: rockchip: add support for Firefly
- ROC-RK3399-PC-PLUS
-Date: Mon, 28 Jun 2021 11:54:02 +0800
-Message-Id: <20210628035402.16812-3-djw@t-chip.com.cn>
-X-Mailer: git-send-email 2.23.0.37.g745f6812895b
-In-Reply-To: <20210628035402.16812-1-djw@t-chip.com.cn>
-References: <20210628035402.16812-1-djw@t-chip.com.cn>
+ id 1lxian-006gtl-UI; Mon, 28 Jun 2021 04:09:56 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 15S49fKm059338;
+ Sun, 27 Jun 2021 23:09:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1624853381;
+ bh=GNU1vUWoanvJ92XdB4nexwD2JVJqd69WagBGfaf6suA=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=mu5a+hQh7vJ9G0ABfC7bLJiQYRwVGkbagBr2vVw6qNOKFlRlurlvSii0+Fes6CvVQ
+ OEOpT6s0KS699UN4t0jZp7N7fmUOsNFB+Gl+PUzpKJm5uSlclhBEYN9/NNoCERVURP
+ qodihYQZWDOv6WWRlBehZhmP0K9aWQ5VxULnokmQ=
+Received: from DLEE113.ent.ti.com (dlee113.ent.ti.com [157.170.170.24])
+ by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 15S49fX1100414
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Sun, 27 Jun 2021 23:09:41 -0500
+Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Sun, 27
+ Jun 2021 23:09:40 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE114.ent.ti.com
+ (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Sun, 27 Jun 2021 23:09:41 -0500
+Received: from [10.250.232.148] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 15S49XI6013993;
+ Sun, 27 Jun 2021 23:09:33 -0500
+Subject: Re: [PATCH v6 0/7] Add SR-IOV support in PCIe Endpoint Core
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+CC: Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>, Tom Joseph <tjoseph@cadence.com>, Jingoo
+ Han <jingoohan1@gmail.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
+References: <20210616211630.GA3007203@bjorn-Precision-5520>
+ <0fd19e28-e0a6-fd79-672a-b588fb2763ba@ti.com>
+ <20210625161528.GA21595@lpieralisi>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <8bf024da-d35b-80d5-4351-c1c1d68ef59c@ti.com>
+Date: Mon, 28 Jun 2021 09:39:32 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210625161528.GA21595@lpieralisi>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_205444_330393_3019A09A 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20210627_210954_168296_38F7987D 
+X-CRM114-Status: GOOD (  20.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,283 +108,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Levin Du <djw@t-chip.com.cn>
+Hi Lorenzo,
 
-ROC-RK3399-PC-PLUS is the board inside the portable Firefly Station P1 Geek
-PC. As a redesign after the ROC-RK3399-PC, it uses DC-12V as power input
-and spares a USB 3 host port. It is also equipped with a USB WiFi chip and
-audio codec without the mezzanine board.
+On 25/06/21 9:45 pm, Lorenzo Pieralisi wrote:
+> On Thu, Jun 24, 2021 at 08:30:09PM +0530, Kishon Vijay Abraham I wrote:
+>> Hi Lorenzo,
+>>
+>> On 17/06/21 2:46 am, Bjorn Helgaas wrote:
+>>> On Wed, Jun 16, 2021 at 07:35:33PM +0530, Kishon Vijay Abraham I wrote:
+>>>> Hi Lorenzo, Bjorn,
+>>>>
+>>>> On 17/05/21 1:17 pm, Kishon Vijay Abraham I wrote:
+>>>>> Patch series
+>>>>> *) Adds support to add virtual functions to enable endpoint controller
+>>>>>    which supports SR-IOV capability
+>>>>> *) Add support in Cadence endpoint driver to configure virtual functions
+>>>>> *) Enable pci_endpoint_test driver to create pci_device for virtual
+>>>>>    functions
+>>>>>
+>>>>> v1 of the patch series can be found at [1]
+>>>>> v2 of the patch series can be found at [2]
+>>>>> v3 of the patch series can be found at [3]
+>>>>> v4 of the patch series can be found at [4]
+>>>>> v5 of the patch series can be found at [5]
+>>>>>
+>>>>> Here both physical functions and virtual functions use the same
+>>>>> pci_endpoint_test driver and existing pcitest utility can be used
+>>>>> to test virtual functions as well.
+>>>>>
+>>>>> Changes from v5:
+>>>>> *) Rebased to 5.13-rc1
+>>>>>
+>>>>> Changes from v4:
+>>>>> *) Added a fix in Cadence driver which was overwriting BAR configuration
+>>>>>    of physical function.
+>>>>> *) Didn't include Tom's Acked-by since Cadence driver is modified in
+>>>>>    this revision.
+>>>>>
+>>>>> Changes from v3:
+>>>>> *) Fixed Rob's comment and added his Reviewed-by as suggested by him.
+>>>>>
+>>>>> Changes from v2:
+>>>>> *) Fixed DT binding documentation comment by Rob
+>>>>> *) Fixed the error check in pci-epc-core.c
+>>>>>
+>>>>> Changes from v1:
+>>>>> *) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
+>>>>>    binding for EP)
+>>>>>
+>>>>> [1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
+>>>>> [2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
+>>>>> [3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
+>>>>> [4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
+>>>>> [5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
+>>>>
+>>>> Can this series be merged for 5.14? It already includes Ack from Rob for
+>>>> dt-binding changes and Ack from Tom for Cadence driver changes.
+>>>
+>>> Sorry, I think this was assigned to me in patchwork, but Lorenzo
+>>> usually takes care of the endpoint stuff.  He's away this week, but no
+>>> doubt will look at it when he returns.
+>>
+>> Can you consider merging this series for 5.14?
+> 
+> I am running late this cycle on reviews and the merge window is about
+> to open, I will review it and queue it first thing for the next cycle.
 
-- Rockchip RK3399 SoC
-- 4GB LPDDR4 RAM
-- 16MB SPI-Flash
-- eMMC slot
-- TF card slot
-- USB 3.0 Port x 1, USB 2.0 Port x 1, TypeC Port x 1
-- HDMI
-- Gigabit Ethernet
-- WiFi: RTL8723DU
-- Audio: ES8388
-- Key: Recovery
-- LED: WORK, DIY
-- IR
+Sure, thanks!
 
-Signed-off-by: Kongxin Deng <dkx@t-chip.com.cn>
-Signed-off-by: Levin Du <djw@t-chip.com.cn>
-
----
-
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3399-roc-pc-plus.dts  | 223 ++++++++++++++++++
- 2 files changed, 224 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 7fdb41de01ec..d6ab171b2522 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -42,6 +42,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4c.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-new file mode 100644
-index 000000000000..370e8bf1b40c
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
-@@ -0,1 +1,223 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2017 T-Chip Intelligent Technology Co., Ltd
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-roc-pc.dtsi"
-+
-+/**
-+ * Notice:
-+ * 1. rk3399-roc-pc-plus is powered by dc_12v directly.
-+ * 2. rk3399-roc-pc-plus has only vcc_bus_typec0 in schematic, which is coresponding
-+ *    to vcc_vbus_typec1 in rk3399-roc-pc.
-+ *    For simplicity, reserve the node name of vcc_vbus_typec1.
-+ * 3. vcc5v0_host is actually 2 regulators (host0, 1) controlled by the same gpio.
-+ */
-+
-+/delete-node/ &fusb1;
-+/delete-node/ &hub_rst;
-+/delete-node/ &mp8859;
-+/delete-node/ &vcc_sys_en;
-+/delete-node/ &vcc_vbus_typec0;
-+/delete-node/ &yellow_led;
-+
-+/ {
-+	model = "Firefly ROC-RK3399-PC-PLUS Board";
-+	compatible = "firefly,roc-rk3399-pc-plus", "rockchip,rk3399";
-+
-+	dc_12v: dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "dc_12v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	gpio-fan {
-+		#cooling-cells = <2>;
-+		compatible = "gpio-fan";
-+		gpio-fan,speed-map = <0 0 3000 1>;
-+		gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_HIGH>;
-+		status = "okay";
-+	};
-+
-+	/delete-node/ gpio-keys;
-+
-+	leds {
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&work_led_pin>, <&diy_led_pin>;
-+	};
-+
-+	es8388-sound {
-+		compatible = "simple-audio-card";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hp_det_pin>;
-+		simple-audio-card,name = "rockchip,es8388-codec";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,widgets =
-+			"Microphone", "Mic Jack",
-+			"Headphone", "Headphones";
-+		simple-audio-card,routing =
-+			"LINPUT1", "Mic Jack",
-+			"Headphone Amp INL", "LOUT2",
-+			"Headphone Amp INR", "ROUT2",
-+			"Headphones", "Headphone Amp OUTL",
-+			"Headphones", "Headphone Amp OUTR";
-+
-+		simple-audio-card,hp-det-gpio = <&gpio2 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		simple-audio-card,aux-devs = <&headphones_amp>;
-+		simple-audio-card,pin-switches = "Headphones";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&es8388>;
-+		};
-+	};
-+
-+	/* not amplifier, used as switcher only */
-+	headphones_amp: headphones-amp {
-+		compatible = "simple-audio-amplifier";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ear_ctl_pin>;
-+		enable-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+		sound-name-prefix = "Headphone Amp";
-+		VCC-supply = <&vcca3v0_codec>;
-+	};
-+
-+	ir-receiver {
-+		linux,rc-map-name = "rc-khadas";
-+	};
-+
-+};
-+
-+&fusb0 {
-+	vbus-supply = <&vcc_vbus_typec1>;
-+};
-+
-+&i2c0 {
-+	hym8563: hym8563@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "xin32k";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA5 IRQ_TYPE_EDGE_FALLING>;
-+	};
-+};
-+
-+&i2c1 {
-+	es8388: es8388@11 {
-+		compatible = "everest,es8388";
-+		reg = <0x11>;
-+		clock-names = "mclk";
-+		clocks = <&cru SCLK_I2S_8CH_OUT>;
-+		#sound-dai-cells = <0>;
-+		status = "okay";
-+	};
-+};
-+
-+// <4 RK_PA0 1 &pcfg_pull_none> is used as i2s_8ch_mclk_pin
-+&i2s0_8ch_bus {
-+	rockchip,pins =
-+		<3 RK_PD0 1 &pcfg_pull_none>,
-+		<3 RK_PD1 1 &pcfg_pull_none>,
-+		<3 RK_PD2 1 &pcfg_pull_none>,
-+		<3 RK_PD3 1 &pcfg_pull_none>,
-+		<3 RK_PD4 1 &pcfg_pull_none>,
-+		<3 RK_PD5 1 &pcfg_pull_none>,
-+		<3 RK_PD6 1 &pcfg_pull_none>,
-+		<3 RK_PD7 1 &pcfg_pull_none>;
-+};
-+
-+&i2s1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s_8ch_mclk_pin>, <&i2s1_2ch_bus>;
-+	rockchip,playback-channels = <2>;
-+	rockchip,capture-channels = <2>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	es8388 {
-+		ear_ctl_pin: ear-ctl-pin {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_output_high>;
-+		};
-+
-+		hp_det_pin: hp-det-pin {
-+			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	i2s1 {
-+		i2s_8ch_mclk_pin: i2s-8ch-mclk-pin {
-+			rockchip,pins = <4 RK_PA0 1 &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&u2phy0 {
-+	status = "okay";
-+
-+	u2phy0_otg: otg-port {
-+		phy-supply = <&vcc_vbus_typec1>;
-+		status = "okay";
-+	};
-+
-+	u2phy0_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+
-+	u2phy1_otg: otg-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+
-+	u2phy1_host: host-port {
-+		phy-supply = <&vcc5v0_host>;
-+		status = "okay";
-+	};
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3_0 {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&vcc_sys {
-+	// vcc_sys is fixed, not controlled by any gpio
-+	/delete-property/ gpio;
-+	/delete-property/ pinctrl-names;
-+	/delete-property/ pinctrl-0;
-+};
-+
-+&vcc5v0_host {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&vcc5v0_host_en>;
-+};
---
-2.23.0.37.g745f6812895b
-
-
-
+Best Regards,
+Kishon
 
 _______________________________________________
 Linux-rockchip mailing list
