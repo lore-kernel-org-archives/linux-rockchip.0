@@ -2,70 +2,74 @@ Return-Path: <SRS0=3Wd+=LX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40390C11F68
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jun 2021 17:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FEDDC11F67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jun 2021 23:14:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F108B61DE3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jun 2021 17:43:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F108B61DE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0535560FEE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Jun 2021 23:14:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0535560FEE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fJMCPHID+WFZZj8FqnR3wgpOhcSo4YOj5sES/YOBqyU=; b=Cg5lxJPZNIKmykDOGnPjKc3QH4
-	pBHWl2EZeL0kRQUCRh7KU2ptfYqGCtjB1ON8+h+dJiHbCoshy0ClKMWsszRvSxkP8oOQQnbM8AMSX
-	kedimIdRfjey3oPnJYYJ+3NHjN9a8kDh0naodaex9FNpGsmGHEZvCNvTs1LIMFQ4pFjQKa45kwCAs
-	zpehbKpB3Ueg3dGqU7tQfiyg5D0c5iMdAlRTJTEgqPH507gqoe0rA81o15d4jFntnxTJcli/c1AaE
-	iET0g+9EeWooUMNMzBX5lwrK1nYRk8uuOeAYlOIEg1XRZ9t4TkAfrk4/92SdGfL2FP1zGysRLS9c4
-	IFXEefhg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=KWyPPMLPk4AcAb0k+YyhzrKXfA6pubBOwM1CUBDpljk=; b=ppM/RxcZNhNE9U
+	kCoLXJziMnmyQEJ/lzOpWAwbdov84WKBc3Ky0GC5Vc8WGd/aLAMWp7bXzSkoiFOb9in3dScmUjkwh
+	QGGOEoe80VvZ1ar+Y4sXGeOGRZywbTuKH7g3Usv83SBF+ChVhrAnIehZ6SPTRLVpkZCF0g7hjchTR
+	NLWevty7XWn11z+FBAFjYe2JRBxlOPHT/Kg1VxQtfNIGEfam34+JGTw22EEWV2XM2KE0ubjGdwp03
+	A/cKJ+qpspTDdpzYeaGIKdivxrN7efEOHV+vmnIbUrd+md5lJi81qlMWUCqyZOiJI6OiGxUhCD9Rs
+	rNU1+GV6uuIKav8t4Qeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyHm0-00BlFi-M6; Tue, 29 Jun 2021 17:43:48 +0000
-Received: from [188.138.10.209] (helo=mx.mrwax.eu)
+	id 1lyMvx-00CCvH-EY; Tue, 29 Jun 2021 23:14:25 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyHlx-00BlEx-1c; Tue, 29 Jun 2021 17:43:46 +0000
-Received: from ip5b434b8b.dynamic.kabel-deutschland.de ([91.67.75.139]
- helo=[192.168.200.247])
- by mx.mrwax.eu with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <knaerzche@gmail.com>)
- id 1lyHAT-0000qv-Nb; Tue, 29 Jun 2021 19:05:04 +0200
-Subject: Re: [PATCH] arm64: dts: rockchip: add rock-pi-4 analog audio
-To: Robin Murphy <robin.murphy@arm.com>,
- Adrian Ratiu <adrian.ratiu@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, jack@radxa.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Rob Herring <robh+dt@kernel.org>
-References: <20210628113033.9145-1-adrian.ratiu@collabora.com>
- <7f806d30-594e-2325-615a-8fee875c83a8@gmail.com>
- <87eeck3e1o.fsf@ryzen9.i-did-not-set--mail-host-address--so-tickle-me>
- <6a9d976e-22fe-2723-9897-da58b3af456a@arm.com>
-From: Alex Bee <knaerzche@gmail.com>
-Message-ID: <e37c4d79-36f9-217e-b6f6-acf1a9e7a63b@gmail.com>
-Date: Tue, 29 Jun 2021 19:04:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lyMvl-00CCuK-0Y; Tue, 29 Jun 2021 23:14:14 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 890A061D16;
+ Tue, 29 Jun 2021 23:14:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625008451;
+ bh=B9niwO40e9W9wr3Oqskh655dcl5dlMNvAjpZ/8BRQaE=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=WKUu6rfYtfCck0isLyJxRq53hVBBHIe9UPk83ec+yu81yY0P1LjgQ4pm51qmoNI7m
+ O2GDQ9/0MNb21bfDfrQzUo7TzG29mohPNwdYxoy5ZW385X+dWsEO/u68aXTphVSmHp
+ LhqzUNqKofRqPONUNzBsHoH8cpB3DEBIW58R/fKRnMR9ebymoCe9vkrGUZE7Qm2fQV
+ +La8XXcOObtRLcgqdDVIOvde+PjxFhOSyyHklgSTUp8wH/oPabZ7C/HDobWhdLsNEI
+ IwX5wl09+G2kodABsPjHtSCH432NRzKSWyZXfCS0KUu9FqiBgaBWgfoqz/H0INYtz2
+ S2mwHscZmOjHg==
+Date: Tue, 29 Jun 2021 18:14:10 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Javier Martinez Canillas <javierm@redhat.com>,
+ linux-kernel@vger.kernel.org, Peter Robinson <pbrobinson@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Michal Simek <michal.simek@xilinx.com>,
+ Ley Foon Tan <ley.foon.tan@intel.com>, rfi@lists.rocketboards.org,
+ Jingoo Han <jingoohan1@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with
+ clocks gated
+Message-ID: <20210629231410.GA4097899@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <6a9d976e-22fe-2723-9897-da58b3af456a@arm.com>
-Content-Language: en-US
-X-MRWX-Virus-Scanned: ClamAV 0.102.3/26216/Tue Jun 29 13:09:49 2021
-X-MRWX-Spam-Scanned: SpamAssassin version 3.4.2
+Content-Disposition: inline
+In-Reply-To: <3d5a983f-bfdd-d79b-4ec9-357ea26dd2c8@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_104345_118906_D3ECEC82 
-X-CRM114-Status: GOOD (  30.90  )
+X-CRM114-CacheID: sfid-20210629_161413_134018_D8DEAB76 
+X-CRM114-Status: GOOD (  35.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,120 +82,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQWRyaWFuLCBIaSBSb2JpbgpBbSAyOS4wNi4yMSB1bSAxNzo0MiBzY2hyaWViIFJvYmluIE11
-cnBoeToKPiBPbiAyMDIxLTA2LTI5IDE2OjA3LCBBZHJpYW4gUmF0aXUgd3JvdGU6Cj4+IEhpIEFs
-ZXgsCj4+Cj4+IE9uIFR1ZSwgMjkgSnVuIDIwMjEsIEFsZXggQmVlIDxrbmFlcnpjaGVAZ21haWwu
-Y29tPiB3cm90ZToKPj4+IEhpIEFkcmlhbiwKPj4+IEkndmUgc3VibWl0dGVkIHNpbWlsYXIgcGF0
-Y2ggYWxyZWFkeS4gSXRzIHBhcnQgb2YgWzFdCj4+Cj4+IFRoYW5rIHlvdSBmb3IgcG9pbnRpbmcg
-b3V0IHlvdXIgcGF0Y2gsIEkgd2FzIG5vdCBhd2FyZSBvZiBpdCBhcyBpdCB3YXMgCj4+IG5vdCBt
-ZXJnZWQgeWV0IChJIHRlc3RlZCBsYXRlc3QgbGludXgtbmV4dCkuCj4+Cj4+IEl0IGlzIGEgZ29v
-ZCBzaWduIHRoYXQgb3VyIGNvZGUgaXMgYWxtb3N0IGlkZW50aWNhbCBleGNlcHQgZm9yIHRoZSAK
-Pj4gaGVhZHBob25lIGRldGVjdCBwaW4gd2hpY2ggeW91IG1lbnRpb24uCj4+Cj4+Pgo+Pj4gVGhl
-cmUgaXMgbm8gaGVhZHBob25lIGRldGVjdGlvbiBwaW4gaW4gdGhlIHNjaGVtYXRpY3MsIGJ0dy4K
-Pj4KPj4gVGhlcmUgYXJlIHR3byByZWFzb25zIEkgYWRkZWQgaXQ6Cj4+Cj4+IDEuIFRoZSBlczgz
-MTYgY29kZWMgZmFpbGVkIHRvIHByb2JlKCkgaW4gbXkgdGVzdGluZyB1bmxlc3MgdGhlIGlycSB3
-YXMgCj4+IGRlZmluZWQuIFRoYXQgbWlnaHQgaGF2ZSBiZWVuIGR1ZSB0byBtZSB0ZXN0aW5nIHRo
-ZSBjb2RlYyBkaXJlY3RseSAKPj4gd2l0aCB0aGUgc2ltcGxlIGNhcmQgZHJpdmVyIGluc3RlYWQg
-b2YgdGhlIGdyYXBoIGRyaXZlci4KPj4KPj4gUG9pbnQgMSBkb2Vzbid0IGFwcGVhciB0byBiZSBh
-biBpc3N1ZSBhbnltb3JlLCB0aGUgY29kZWMgKyBncmFwaCAKPj4gZHJpdmVyIHByb2JlIGNvcnJl
-Y3RseSBhbmQgYXVkaW8gc3VwcG9zZWRseSAoc2VlIGJlbG93KSB3b3JrcyBldmVuIAo+PiB3aXRo
-b3V0IHRoZSBpcnEuCkkgZ3Vlc3MgdGhhdCBqdXN0IGEgIndhcm5pbmciIHRoYXQgZG9lc24ndCBt
-ZWFuIHRoZSBkcml2ZXIgZmFpbGVkIHRvIApwcm9iZS4gKEl0IHRoZSBzYW1lIGZvciBSb2NrUHJv
-NjQsIGZvciBleGFtcGxlIC0gd2hlcmUgdGhlIGludGVycnVwdCAKbGluZSBpc24ndCBjb25uZWN0
-ZWQgYXMgd2VsbCkKPj4KPj4gMi4gSSBnb3QgdGhlIGdwaW8gYmFuayAxIHBpbiAwIGxvY2F0aW9u
-IGZyb20gdmFyaW91cyBoZWFkcGhvbmUgCj4+IGRldGVjdGlvbiBjb21taXRzIGluIHRoZSB2ZW5k
-b3IgdjQuNCBrZXJuZWwsIGxpa2UgZm9yIGV4YW1wbGUgWzFdLgo+Pgo+PiBBcmUgeW91IDEwMCUg
-c3VyZSB0aGVyZSBpcyBubyBocCBkZXRlY3Rpb24gcGluIHdpcmVkIG9uIHRoZSByb2NrLXBpLTQ/
-Cj4+IEV2ZW4gaWYgaXQgbWlnaHQgYmUgbWlzc2luZyBmcm9tIHRoZSBzY2hlbWF0aWNzLCB0aGUg
-dmVuZG9yIGRyaXZlciAKPj4gY29kZSBhcHBhcmVudGx5IGRlZmluZXMgYW5kIHVzZXMgaXQ/Cj4g
-Cj4gRldJVyBhY2NvcmRpbmcgdG8gdGhlIHNjaGVtYXRpY3MgaXQgKmlzKiB3aXJlZCB1cCBvbiB0
-aGUgTW9kZWwgQyBib2FyZCwgCj4gYnV0IG5vdCBvbiB0aGUgTW9kZWwgQSBvciBCLgo+IApUaGFu
-a3MgZm9yIHRoZSBwb2ludGVyLCBJIGRpZCBsb29rIGF0IHYxLjMgb25seSwgdGJoLgoKSSdtIG5v
-dCBzdXJlIEkgdW5kZXJzdGFuZCB3aHkgd2Ugc2hvdWxkIHB1bGwgdXAgdGhpcyBwaW4uCgpTaG91
-bGRuJ3Qgd2UgYmV0dGVyIHVzZSBocC1kZXQtZ3BpbyBwcm9wZXJ0eSBvZiBhdWRpby1ncmFwaC1j
-YXJkIHRvIG1ha2UgCnJlYWwgdXNlIG9mIHRoaXMgcGluPwoKPiBSb2Jpbi4KPiAKPj4gwqBGcm9t
-IGJvb3Rpbmcgd2l0aCB0aGUgaXJxIGRlZmluZWQgSSBnZXQgdGhlIGZvbGxvd2luZyBpbiAKPj4g
-L3Byb2MvaW50ZXJydXB0cyBob3dldmVyIEknbSBoYXZpbmcgYW4gdW5yZWxhdGVkIGRpZmZpY3Vs
-dHkgdGVzdGluZyAKPj4gYmVjYXVzZSB0aGUgYXVkaW8gY29ubmVjdG9yIGxpdGVyYWxseSBicm9r
-ZSBvZmYgdGhlIGJvYXJkIGxpa2UgaW4gWzJdLgo+PiA5MDogMcKgIDDCoCAwwqAgMMKgIDDCoCBy
-b2NrY2hpcF9ncGlvX2lyccKgwqAgMCBMZXZlbMKgwqDCoMKgIGVzODMxNgpBY2NvcmRpbmcgdG8g
-dGhlIE1vZGVsIEMgc2NoZW1hdGljcyB0aGUgY29kZWMgaW50ZXJydXB0IChIUF9JTlQpIGlzIApj
-b25uZWN0ZWQgdG8gR1BJTzFfUEExIChpbiBjb250cmFzdCB0byBHUElPMV9QQTAgd2hpY2ggaXMg
-dXNlZCBmb3IgaHAgCmRldGVjdGlvbikuCgpJZiB5b3UncmUgT0sgSSdsbCB1cGRhdGUgbXkgc2Vy
-aWVzIGFuZCBhZGQgdGhvc2UgcGlucyBmb3IgTW9kZWwgQyBvbmx5IAooYW5kIHdpbGwgcmVxdWVz
-dCB0aGUgc2NoZW1hdGljcyBvZiBBKyBhbmQgQisgd2hpY2ggc2VlbSBub3QgdG8gYmUgCnB1Ymxp
-c2hlZCB5ZXQgdG8gY2hlY2sgb3V0IHdoYXQgdGhlIG1hbnVmYWN0dXJlciBkZWNpZGVkIGZvciB0
-aG9zZSB2YXJpYW50cykKCkFsZXgKPj4KPj4gVGVhbSBSYWR4YSB3YXMgdmVyeSBuaWNlIGluIG9m
-ZmVyaW5nIG1lIGEgcmVwbGFjZW1lbnQgYnV0IHVudGlsIHRoYXQgCj4+IGFycml2ZXMgSSBjYW4n
-dCB0ZXN0IHRoaXMgYW55bW9yZS4KPj4KPj4gWzFdIAo+PiBodHRwczovL2dpdGh1Yi5jb20vcmFk
-eGEva2VybmVsL2NvbW1pdC9lOTQ1Y2FkNWMzZWM4MmQxNzE3NjA0NjVkM2M3YTg0YmIxMGVkMWI3
-IAo+Pgo+Pgo+PiBbMl0gaHR0cHM6Ly9mb3J1bS5yYWR4YS5jb20vdC9hdWRpby1qYWNrLWJyb2tl
-LW9mZi85MzUKPj4KPj4+IFsxXSAKPj4+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJv
-amVjdC9saW51eC1yb2NrY2hpcC9jb3Zlci8yMDIxMDYxODE4MTI1Ni4yNzk5Mi0xLWtuYWVyemNo
-ZUBnbWFpbC5jb20vIAo+Pj4KPj4+Cj4+PiBCZXN0LAo+Pj4KPj4+IEFsZXgKPj4+Cj4+PiBBbSAy
-OC4wNi4yMSB1bSAxMzozMCBzY2hyaWViIEFkcmlhbiBSYXRpdToKPj4+PiBUaGlzIGFkZHMgdGhl
-IG5lY2Vzc2FyeSBwaW5jdHJsIGFuZCBub2RlcyB0byBlbmFibGUgdGhlCj4+Pj4gYW5hbG9nIGF1
-ZGlvIG9uIHJrMzM5OSByb2NrLXBpLTQgU0JDcyB1c2luZyB0aGUgZXM4MzE2Cj4+Pj4gY29kZWMg
-YW5kIHRoZSBhdWRpby1ncmFwaC1jYXJkIGRyaXZlci4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6
-IEFkcmlhbiBSYXRpdSA8YWRyaWFuLnJhdGl1QGNvbGxhYm9yYS5jb20+Cj4+Pj4gLS0tCj4+Pj4g
-wqAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrLXBpLTQuZHRzacKgwqAgfCAzOCAK
-Pj4+PiArKysrKysrKysrKysrKysrKysrCj4+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDM4IGluc2Vy
-dGlvbnMoKykKPj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzM5OS1yb2NrLXBpLTQuZHRzaSAKPj4+PiBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LXJvY2stcGktNC5kdHNpCj4+Pj4gaW5kZXggYjI4ODg4ZWE5MjYyLi43Nzc4
-MWQ5MTUwYWMgMTAwNjQ0Cj4+Pj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
-azMzOTktcm9jay1waS00LmR0c2kKPj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzM5OS1yb2NrLXBpLTQuZHRzaQo+Pj4+IEBAIC0xMjgsNiArMTI4LDEyIEBAIHZkZF9s
-b2c6IHZkZC1sb2cgewo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoCByZWd1bGF0b3ItbWF4LW1pY3Jv
-dm9sdCA9IDwxNDAwMDAwPjsKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgdmluLXN1cHBseSA9IDwm
-dmNjNXYwX3N5cz47Cj4+Pj4gwqDCoMKgwqDCoCB9Owo+Pj4+ICsKPj4+PiArwqDCoMKgIHNvdW5k
-IHsKPj4+PiArwqDCoMKgwqDCoMKgwqAgY29tcGF0aWJsZSA9ICJhdWRpby1ncmFwaC1jYXJkIjsK
-Pj4+PiArwqDCoMKgwqDCoMKgwqAgbGFiZWwgPSAicm9ja2NoaXAscmszMzk5IjsKPj4+PiArwqDC
-oMKgwqDCoMKgwqAgZGFpcyA9IDwmaTJzMF9wMD47Cj4+Pj4gK8KgwqDCoCB9Owo+Pj4+IMKgIH07
-Cj4+Pj4gwqAgJmNwdV9sMCB7Cj4+Pj4gQEAgLTQyMiw2ICs0MjgsMjQgQEAgJmkyYzEgewo+Pj4+
-IMKgwqDCoMKgwqAgaTJjLXNjbC1yaXNpbmctdGltZS1ucyA9IDwzMDA+Owo+Pj4+IMKgwqDCoMKg
-wqAgaTJjLXNjbC1mYWxsaW5nLXRpbWUtbnMgPSA8MTU+Owo+Pj4+IMKgwqDCoMKgwqAgc3RhdHVz
-ID0gIm9rYXkiOwo+Pj4+ICsKPj4+PiArwqDCoMKgIGVzODMxNjogY29kZWNAMTEgewo+Pj4+ICvC
-oMKgwqDCoMKgwqDCoCBjb21wYXRpYmxlID0gImV2ZXJlc3QsZXM4MzE2IjsKPj4+PiArwqDCoMKg
-wqDCoMKgwqAgcmVnID0gPDB4MTE+Owo+Pj4+ICvCoMKgwqDCoMKgwqDCoCBjbG9ja3MgPSA8JmNy
-dSBTQ0xLX0kyU184Q0hfT1VUPjsKPj4+PiArwqDCoMKgwqDCoMKgwqAgY2xvY2stbmFtZXMgPSAi
-bWNsayI7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4+
-Pj4gK8KgwqDCoMKgwqDCoMKgIHBpbmN0cmwtMCA9IDwmaHBfZGV0X3Bpbj47Cj4+Pj4gK8KgwqDC
-oMKgwqDCoMKgIGludGVycnVwdC1wYXJlbnQgPSA8JmdwaW8xPjsKPj4+PiArwqDCoMKgwqDCoMKg
-wqAgaW50ZXJydXB0cyA9IDxSS19QQTAgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4+Pj4gK8KgwqDC
-oMKgwqDCoMKgICNzb3VuZC1kYWktY2VsbHMgPSA8MD47Cj4+Pj4gKwo+Pj4+ICvCoMKgwqDCoMKg
-wqDCoCBwb3J0IHsKPj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlczgzMTZfcDBfMDogZW5k
-cG9pbnQgewo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmVtb3RlLWVuZHBv
-aW50ID0gPCZpMnMwX3AwXzA+Owo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH07Cj4+Pj4g
-K8KgwqDCoMKgwqDCoMKgIH07Cj4+Pj4gK8KgwqDCoCB9Owo+Pj4+IMKgIH07Cj4+Pj4gwqAgJmky
-YzMgewo+Pj4+IEBAIC00NDEsNiArNDY1LDE0IEBAICZpMnMwIHsKPj4+PiDCoMKgwqDCoMKgIHJv
-Y2tjaGlwLGNhcHR1cmUtY2hhbm5lbHMgPSA8Mj47Cj4+Pj4gwqDCoMKgwqDCoCByb2NrY2hpcCxw
-bGF5YmFjay1jaGFubmVscyA9IDwyPjsKPj4+PiDCoMKgwqDCoMKgIHN0YXR1cyA9ICJva2F5IjsK
-Pj4+PiArCj4+Pj4gK8KgwqDCoCBpMnMwX3AwOiBwb3J0IHsKPj4+PiArwqDCoMKgwqDCoMKgwqAg
-aTJzMF9wMF8wOiBlbmRwb2ludCB7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGFpLWZv
-cm1hdCA9ICJpMnMiOwo+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG1jbGstZnMgPSA8MjU2
-PjsKPj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZW1vdGUtZW5kcG9pbnQgPSA8JmVzODMx
-Nl9wMF8wPjsKPj4+PiArwqDCoMKgwqDCoMKgwqAgfTsKPj4+PiArwqDCoMKgIH07Cj4+Pj4gwqAg
-fTsKPj4+PiDCoCAmaTJzMSB7Cj4+Pj4gQEAgLTU1Niw2ICs1ODgsMTIgQEAgd2lmaV9ob3N0X3dh
-a2VfbDogd2lmaS1ob3N0LXdha2UtbCB7Cj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-cm9ja2NoaXAscGlucyA9IDwwIFJLX1BBMyBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsK
-Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfTsKPj4+PiDCoMKgwqDCoMKgIH07Cj4+Pj4gKwo+Pj4+
-ICvCoMKgwqAgZXM4MzE2IHsKPj4+PiArwqDCoMKgwqDCoMKgwqAgaHBfZGV0X3BpbjogaHAtZGV0
-LXBpbiB7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcm9ja2NoaXAscGlucyA9IDwxIFJL
-X1BBMCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIH07
-Cj4+Pj4gK8KgwqDCoCB9Owo+Pj4+IMKgIH07Cj4+Pj4gwqAgJnB3bTIgewo+Pgo+PiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKPj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Tue, Jun 29, 2021 at 11:52:44AM +0100, Robin Murphy wrote:
+> On 2021-06-29 07:17, Javier Martinez Canillas wrote:
+> > On 6/29/21 2:38 AM, Bjorn Helgaas wrote:
+> > > On Thu, Jun 24, 2021 at 05:40:40PM -0500, Bjorn Helgaas wrote:
+> > 
+> > [snip]
+> > 
+> > > > > 
+> > > > > So let's just move all the IRQ init before the pci_host_probe() call, that
+> > > > > will prevent issues like this and seems to be the correct thing to do too.
+> > > > 
+> > > > Previously we registered rockchip_pcie_subsys_irq_handler() and
+> > > > rockchip_pcie_client_irq_handler() before the PCIe clocks were
+> > > > enabled.  That's a problem because they depend on those clocks being
+> > > > enabled, and your patch fixes that.
+> > > > 
+> > > > rockchip_pcie_legacy_int_handler() depends on rockchip->irq_domain,
+> > > > which isn't initialized until rockchip_pcie_init_irq_domain().
+> > > > Previously we registered rockchip_pcie_legacy_int_handler() as the
+> > > > handler for the "legacy" IRQ before rockchip_pcie_init_irq_domain().
+> > > > 
+> > > > I think your patch *also* fixes that problem, right?
+> > > 
+> > > The lack of consistency in how we use
+> > > irq_set_chained_handler_and_data() really bugs me.
+> > > 
+> > > Your patch fixes the ordering issue where we installed
+> > > rockchip_pcie_legacy_int_handler() before initializing data
+> > > (rockchip->irq_domain) that it depends on.
+> > > 
+> > > But AFAICT, rockchip still has the problem that we don't *unregister*
+> > > rockchip_pcie_legacy_int_handler() when the rockchip-pcie module is
+> > > removed.  Doesn't this mean that if we unload the module, then receive
+> > > an interrupt from the device, we'll try to call a function that is no
+> > > longer present?
+> > 
+> > Good question, I don't to be honest. I'll have to dig deeper on this but
+> > my experience is that the module removal (and device unbind) is not that
+> > well tested on ARM device drivers in general.
+> 
+> Well, it does use devm_request_irq() so the handler should be unregistered
+> by devres *after* ->remove has finished, however that does still leave a
+> potential race window in which a pending IRQ could be taken during the later
+> part of rockchip_pcie_remove() after it has started turning off critical
+> things. Unless the clocks and regulators can also be delegated to devres, it
+> might be more robust to explicitly manage the IRQs as well. Mixing the two
+> schemes can be problematic when the exact order of both setup and teardown
+> matters.
+
+I don't understand the devm_request_irq() connection.  I'm looking at
+this irq_set_chained_handler_and_data() call [1]:
+
+  static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
+  {
+    ...
+    irq = platform_get_irq_byname(pdev, "legacy");
+    irq_set_chained_handler_and_data(irq,
+				     rockchip_pcie_legacy_int_handler,
+				     rockchip);
+
+    irq = platform_get_irq_byname(pdev, "client");
+    ...
+
+We look up "irq", pass it to irq_set_chained_handler_and_data(), and
+throw it away without saving it anywhere.  How would anything know how
+to unregister rockchip_pcie_legacy_int_handler()?
+
+I could imagine irq_set_chained_handler_and_data() saving what's
+needed for unregistration, but I would think that would require a
+device pointer, which we don't give it.
+
+I'm IRQ-illiterate, so please educate me!
+
+Bjorn
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/controller/pcie-rockchip-host.c?id=v5.13#n562
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
