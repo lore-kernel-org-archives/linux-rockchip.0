@@ -2,71 +2,84 @@ Return-Path: <SRS0=qNMI=LZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBABEC11F64
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:00:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F9B6C11F64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:41:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 613F3613F8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:00:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 613F3613F8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5C82A6140C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:41:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5C82A6140C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=KhFYEF8ZE5fvAGSy+Ic4y2RLuXhvV1vkl/8AI1Oiu4Q=; b=kNOkYo4iK7+G5n
-	shHbcqfjyjZhg5ja1EXGf5qG31KMG1wThOBKLXMemKt7tPaPwLBQgKiLOxTkzAX9XEWICatgoS+u8
-	vDSQxuGqTMIvI9I0WysYbNksVpGOAgOeQ5Lkny54Bv9eHL3AVzT/TcCwBrjM6IUI7X+ZGudCanQNl
-	PC6usmpj3RtM/WpUZnjt7rP7LI4ywJYcnWdau4R5AH9EgSiA9brYugQXcrIj/hxOQTsdEBS++75Ya
-	YPqQG/JTPE1NH7Rc5TgSbv9Q3Cf7gzNuv733J7YOGLR009KX1vXIfb82GWk467feJD9Ww+QH2RQX9
-	x7PqelK7VGlyO6RZnC7Q==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PxZDN6Hjwlhckf9hH4a2vHjrG0vht+E5Gt/WowHCT4w=; b=i12WP4XTLm+uo8
+	2sfygszM/MYre7litq44lwYUJt5I6JgulAL7FZ3KOPDm6RUnm4CfibDiz6BhVLut5vJlqpqP8v2bS
+	zcYtCA+hG1V8Ogg+ego4IKmq7Jsbv121t1BTiH5gH3vsaSI/wT9No97n/Ei+Qrr9wtqc+qcL9bL/c
+	4z4gZ7Y4D3VoT5WwU31TNrvkSs2UcBvzIxU+vLg68jqXYFSZzaWFH2obc63aeBwNYzs1iwOjOFnlu
+	gxKONudQ4+f3ot2O9svZGyHuHhK7xH9UkeNdMAaR/w9ys4pE5B5Q/wYm//GY2ElHFOGcVXITC8wvK
+	mE+qq1hwi4M8PvN7bO7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyxEZ-00HZF5-Ki; Thu, 01 Jul 2021 14:00:03 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lyxsZ-0005Rc-HL; Thu, 01 Jul 2021 14:41:23 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyxEN-00HZDD-7F; Thu, 01 Jul 2021 13:59:52 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 70AF5613EF;
- Thu,  1 Jul 2021 13:59:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625147990;
- bh=7yIdbx5G0asNF47kyLGub6yCdbe55aWTfmtrPq+WZHw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=KCKxL/USD4qbC3q797R4dfrTjrmgnqjqtI4cG9TGAb7e9udh2QPQifLboVBxJ/swd
- rFJtdJuj9GBU0p3dUCtB/ph+kDMhtfa+wPoaAHerFD/9lgeuL3us5IElOmrcOQyLyY
- wwesIvzNZtIL+6PJt7EkBbxO3lm7vMbtnT+aksVq3vtLxfB8SiOKhNxYun7U8KdRxj
- x54HlAQUVWM/4tUUtthtHuiU+7HPFin12M8FGtyt211TjTd2Wd76VZf9ecBq+eplFE
- UgFua6rQPEg78rLwXg10P7aWJLQAp2/G6aEFC6M6ftCAT/+a1jrMaIn3Cr9FrIkfF2
- xME9arZwlo11w==
-Date: Thu, 1 Jul 2021 08:59:49 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Javier Martinez Canillas <javierm@redhat.com>
-Cc: linux-kernel@vger.kernel.org, Peter Robinson <pbrobinson@gmail.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Michal Simek <michal.simek@xilinx.com>, Jingoo Han <jingoohan1@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with
- clocks gated
-Message-ID: <20210701135949.GA51123@bjorn-Precision-5520>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <51276875-658e-e6fe-5433-b5d795b253ff@redhat.com>
+ id 1lyxsW-0005QX-C9; Thu, 01 Jul 2021 14:41:21 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id w17so8761155edd.10;
+ Thu, 01 Jul 2021 07:41:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=T3GLhCsap0BUzc6paVqHLBwR4VLRpdgqVCUNWRfuD2U=;
+ b=ogi7mio7y2TSxI/Hg2XCaWp7SVTtS6XIGftJzFKTtXA6yvkN2HYgt6PDAbDtukReuj
+ 84WwNepjogw5hQSIyC1hKVx9kdYsAtHkKNOuK/Qh/l9mHlv+4jOBGiNAsUkv5X8sOTBN
+ bp5x68CCGIkCyjW8GR+VG807pKg4rZaD9wvqc/IElICU/2TRasOERpL+I7ckONLWZ9PQ
+ nCD3E+WO3N2+J4GQUy027m/E+k+5PgMjcR21Bki/ykQ2NShtCeQEt+4aI0w4/6GCMBOg
+ iOcptA9EszbCjzdFiI862YW+pB817agUuc404JyVPVui7Sv+QD9JrFYLNojRUOAV/QwJ
+ G3Rg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=T3GLhCsap0BUzc6paVqHLBwR4VLRpdgqVCUNWRfuD2U=;
+ b=LVUQjsqCijf+RqM3RlfWtwyExw9k2xVO/Xmy6VIT/SWwkBwPKQNkl5VMIWN6964BFv
+ pU6ZMVNXxvgfLKadj5CMUU85ijNIfW1MDrqMwzd5KmbxXiTZ8yq3jKCIhqarYii16Ssb
+ S8XwkmFjKS9GjfDRUL/7PEJJ/xedajOH9Btz/wAULU8nlgnWL/urjYhmXMvpw4aKdnHD
+ OIQi+9EXFSgTNovbfcuJ7lvT+we2AglAP3sluGdDxeqp0oRqY/xFq2b9+t2LkQUxY8zL
+ /MH5qvyQvdb0TTOMDVnfWInKNYSYB5FDIcHBAjSD9fXZKl8LAUOHHfI15t2N3ADaZzIF
+ +Ycw==
+X-Gm-Message-State: AOAM531NUVZWpe09QJ4n8iRzW1OPgFx3e7zpXStTDQw8HbOkW2kIwhpO
+ 99HW/ZfvFGHTLdCuHoooLro=
+X-Google-Smtp-Source: ABdhPJw66fAiNBJHazuNQgB9F0NZpfrVEg++UK5mV8IPGX+OCm40VYiiM0EvzzHHCNExdHu5Qm7ulg==
+X-Received: by 2002:a05:6402:42d2:: with SMTP id
+ i18mr247472edc.168.1625150478611; 
+ Thu, 01 Jul 2021 07:41:18 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id a8sm2239ejx.99.2021.07.01.07.41.17
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 01 Jul 2021 07:41:17 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] arm64: dts: rockchip: remove clock_in_out from gmac2phy
+ node in rk3318-a95x-z2.dts
+Date: Thu,  1 Jul 2021 16:41:09 +0200
+Message-Id: <20210701144110.12333-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_065951_324250_D131049F 
-X-CRM114-Status: GOOD (  23.55  )
+X-CRM114-CacheID: sfid-20210701_074120_450590_1B5AEE4F 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,59 +92,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 01, 2021 at 12:09:58AM +0200, Javier Martinez Canillas wrote:
-> On 6/30/21 10:30 PM, Bjorn Helgaas wrote:
-> > On Wed, Jun 30, 2021 at 09:59:58PM +0200, Javier Martinez Canillas wrote:
-> 
-> [snip]
-> 
-> >> But maybe you can also add a paragraph that mentions the
-> >> CONFIG_DEBUG_SHIRQ option and shared interrupts? That way, other
-> >> driver authors could know that by enabling this an underlying
-> >> problem might be exposed for them to fix.
-> > 
-> > Good idea, thanks!  I added this; is it something like what you
-> > had in mind?
-> 
-> Thanks a lot for doing this rewording. I just have a small nit for
-> the text.
-> 
-> >     Found by enabling CONFIG_DEBUG_SHIRQ, which calls the IRQ
-> >     handler when it is being unregistered.  An error during the
-> >     probe path might cause this unregistration and IRQ handler
-> >     execution before the device or data structure init has
-> >     finished.
-> 
-> The IRQ handler is not called when unregistered, but it is called
-> when another handler for the shared IRQ is unregistered. In this
-> particular driver, both a "pcie-sys" and "pcie-client" handlers are
-> registered, then an error leads to "pcie-sys" being unregistered and
-> the handler for "pcie-client" being called.
+Recently a clock_in_out property was added to the gmac2phy node
+in rk3328.dtsi, so now the clock_in_out in rk3318-a95x-z2.dts
+can be removed.
 
-Is this really true?  I think that would mean CONFIG_DEBUG_SHIRQ would
-not find this kind of bug unless we actually registered two or more
-handlers for the shared IRQ, but it's still a bug even only one
-handler is registered.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 1 -
+ 1 file changed, 1 deletion(-)
 
-Looking at __free_irq() [1], my impression is that "action" is what
-we're removing and action->handler() is the IRQ handler we call when
-CONFIG_DEBUG_SHIRQ, so it doesn't look like it's calling the remaining
-handlers after removing one of them.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+index 763cf9b46..d41f786b2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+@@ -185,7 +185,6 @@
+ 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
+ 	assigned-clock-rate = <50000000>;
+ 	assigned-clocks = <&cru SCLK_MAC2PHY>;
+-	clock_in_out = "output";
+ 	status = "okay";
+ };
+ 
+-- 
+2.11.0
 
-> So maybe the following instead?
-> 
->     Found by enabling CONFIG_DEBUG_SHIRQ, which calls the IRQ
->     handlers when a handler for the shared IRQ is unregistered. An
->     error during the probe path might cause this unregistration and
->     handler execution before the device or data structure init has
->     finished.
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/irq/manage.c?id=v5.13#n1805
 
 _______________________________________________
 Linux-rockchip mailing list
