@@ -2,87 +2,110 @@ Return-Path: <SRS0=qNMI=LZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D08AC11F64
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:41:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D013AC11F64
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:59:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 184726140C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:41:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 184726140C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9659761221
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Jul 2021 14:59:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9659761221
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c+LW6y2sF1p1x9KGxSdeklLL59BB2JxCrX/GDW0Ib7E=; b=A+16EzHgIcSsWB
-	6vb94XnjfMR3MkT5U18BFP1Ul04BujnhqXlCq00v5dJx9VK1ycLt7rV8pmsmc/6DArrSrY5lPeAuL
-	hGre4+mGcwN6oYsik49X3sbyGonpsbUAKZ9ctcQscXLM/lBvt6W94X2ks++6+GbA4ru6vvCrZ/fqi
-	9tMjLg5haI2J5S8SwRktGm4cqhaqofdXMOaLUiJog1YLfCte9Gci2DjbqDchrvntCDVLfGQctigMu
-	u/N/uBQxMJQZ9v1E3y+H5cJg70nlw7efYyjfkgGFXl9hdZ/FBL4SLzRUopWa1M9uMbqWgwh8ltPOD
-	DxzmmzxXN2VvuBjrmRJQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=J8ZzVTFOIhdRO08d5scBbOiMgSGc15xYgynRaK557tU=; b=JoBQeVTZF2G3S6LzZ8pJ3xb2kj
+	bKHMS4CXOx1ZSwrGBsPYGITK8PWqZdZPXzFECHZ1W5Al/dQMwdN0R+Iq0MkKz/mgCE/RujqCD9FEq
+	3idokBJfR+IMULIqhXaz2VClJwtEZkg7g7Q6gKMW7zqPpMhgg6O5k7TxTTS9XKv9/DL+jxvu/R6rA
+	2m19NcGsL+PDD5hs0DGwLTthsa1DtbwAZo6PK9hTdH1EFarwpep936KBO2QFTuQSsVxyJtsBdwzcJ
+	D/quEJbrXuz4u6o8MXUsqCTEOBi24reFOKaRAW4aUum0H9GC1wx6WtGyUDsphSwf9bEZB9Bj+SUW4
+	fiehFDaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyxsk-0005Tz-1T; Thu, 01 Jul 2021 14:41:34 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1lyyAL-0008Ln-8t; Thu, 01 Jul 2021 14:59:45 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyxsX-0005QY-2I; Thu, 01 Jul 2021 14:41:22 +0000
-Received: by mail-ed1-x535.google.com with SMTP id n25so8770682edw.9;
- Thu, 01 Jul 2021 07:41:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=AvF+6Thjc7VS3d+lH/xoSpjcWaqN37c3IWH+gDSK5LE=;
- b=b25zxcDyLu1iUJc6dO4ans9rCu/b5OwLrgjWCInEg2cFxRJDk0vwYmxXLiTe0E4zdA
- MJ3wLBe0PRmgqcmjhjolXhI9GoDJrCagKYEm6g1A2Kz7TVOTlCe0VE+C9Z0W9hmKWYEx
- 12MwmnvHKrlJHOaCNNBJAmMMAqMkns+LgZnYOSt7b4zeGt1SSJ1GCg437LqysbDtAbvq
- QH4nvZ4PJdu367gTTj88J1EIJEOVOm1cOtTc9wDSQz/owet6wQSxaH+pW/pF82V5Vuqi
- Mko7+/liayHEcpCg3yYutTAlcaVo7R6bXh+qpjwavy1VkYAippICanszMPLiY6wlRrzb
- xC1A==
+ id 1lyyAH-0008KS-6o
+ for linux-rockchip@lists.infradead.org; Thu, 01 Jul 2021 14:59:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1625151579;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=IVh85kthu0SpW7UY6smgM11I1yNN5lgiNNeNgndC7x4=;
+ b=FnbVaaEUtTxLffeLXdycmyQ0IMLiUFqROzWEVmzdb8ZThmSsN05G/3SIStX9pBi4kQx5FE
+ HbXlB6U82rD/wnlpmqZ5yzou7K232drvaT0gGQP4M9R1avcz5nskClvW9UVWRDSQPTxbWp
+ m9ZWft0A+JLRUQBHPqB7wD1YGwsk5G4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-291-yVaqsDpBOOek_fX3cpI15g-1; Thu, 01 Jul 2021 10:59:38 -0400
+X-MC-Unique: yVaqsDpBOOek_fX3cpI15g-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ g4-20020a5d64e40000b029012469ad3be8so2699570wri.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 01 Jul 2021 07:59:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=AvF+6Thjc7VS3d+lH/xoSpjcWaqN37c3IWH+gDSK5LE=;
- b=makCVolmpxvFf36NJpb3du2dGFpKfQrlhS7B5JqhJQRURExyOK4vtExcHhvWXO29Ay
- yvWqR1uln2NObxu7Gmi1Ymwji89V4D4mG5QjkeJAtk5lSY89zLiD8iwXgg/9N0sV/1XF
- /4NMCeDmlpXUGCldXqgH0r5yAEDVe33V+trytOxuiK71uoMdYEtQ7OH/uolxDgoRh99S
- CmrRGFDqX92L6VugrHMkarj6D+Y3knJjaDxGJ3Bg41GgciqN8RWjomM5loO1a/R6pcSS
- a8AWW7p7EiUUCsBCIm356Ds1CyZvfhtuE8w3k59/CdCKnmlRCqAp//CfR6TycPlXrTwd
- Mtzw==
-X-Gm-Message-State: AOAM533rfr5OrK67KOfgf2HZC9F0Lt56j3EckhoPUSzbpxXw+jpr3Ica
- qm2kOGfDK6wVOwTxi/s4xO4=
-X-Google-Smtp-Source: ABdhPJw+7B3axxOsOx75pV9gDw2Bqed7PttXMKPft6o0SQ5cklKiVayLhjUPf/7+qX9RUvRJzGKFmg==
-X-Received: by 2002:a05:6402:2681:: with SMTP id
- w1mr181454edd.275.1625150479387; 
- Thu, 01 Jul 2021 07:41:19 -0700 (PDT)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id a8sm2239ejx.99.2021.07.01.07.41.18
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 01 Jul 2021 07:41:19 -0700 (PDT)
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: remove ddc-i2c-scl-* properties
- from rk3318-a95x-z2.dts
-Date: Thu,  1 Jul 2021 16:41:10 +0200
-Message-Id: <20210701144110.12333-2-jbx6244@gmail.com>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20210701144110.12333-1-jbx6244@gmail.com>
-References: <20210701144110.12333-1-jbx6244@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IVh85kthu0SpW7UY6smgM11I1yNN5lgiNNeNgndC7x4=;
+ b=JKlAGeGlC3XU4P8muOwySjADxAO+46HExbV0HedUMxCyVUyAnpKb6rfq9iPDZ/wUOB
+ twQ/PqGqkZPIAk1E9Oor/LkdxSZ04al66heLSMI+Lyqy2vqz3FyvSiv9epifa4zSsoS/
+ A1B+wMdemTwfqW86p+8oEcErwYBPxNH30HW1z8X14xIBlK+WeCzR8ceTKfiJTn2Fcejh
+ IqpW9Zlbddlp32LOO8s2+zAC6r7JoBjerMdJqvrVMzWsFHLswifcprSxLI282DJ2iOwJ
+ 9aq4e52c5IZ0S+MbawMS55wwUJ+vAfnRjlsFClh/zUnKiGA+l5mZANImArJM8hxw403K
+ A/yg==
+X-Gm-Message-State: AOAM532xh/VxeWOoQkf81MwUQQ2ZiDzDuvwHPxwNvrhdIdQhqnu7QOhH
+ ifhqY5Q1cRSKTDLhQza1f7AkJm4RCktxfcpcMI8FF5tW/XrLJrgdORHW2E9Daw3gjqeSCN7uokQ
+ e9u++PTvkMitPC5dNrY0IXWA+gne12MCy
+X-Received: by 2002:a7b:c39a:: with SMTP id s26mr123462wmj.115.1625151577094; 
+ Thu, 01 Jul 2021 07:59:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyeHU3WCUYY7UnaCN/G0uYLtwdgKJ2wXf9QG99tZjlIEUdpQJOc/y9rZPsTlaSCWiCikljylg==
+X-Received: by 2002:a7b:c39a:: with SMTP id s26mr123429wmj.115.1625151576888; 
+ Thu, 01 Jul 2021 07:59:36 -0700 (PDT)
+Received: from [192.168.1.101] ([92.176.231.106])
+ by smtp.gmail.com with ESMTPSA id n19sm277863wms.4.2021.07.01.07.59.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Jul 2021 07:59:36 -0700 (PDT)
+Subject: Re: [PATCH v2] PCI: rockchip: Avoid accessing PCIe registers with
+ clocks gated
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Peter Robinson <pbrobinson@gmail.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
+ <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Michal Simek <michal.simek@xilinx.com>, Jingoo Han <jingoohan1@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org
+References: <20210701135949.GA51123@bjorn-Precision-5520>
+From: Javier Martinez Canillas <javierm@redhat.com>
+Message-ID: <747df123-0aa0-7cb7-9fb3-f13c849894e5@redhat.com>
+Date: Thu, 1 Jul 2021 16:59:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <20210701135949.GA51123@bjorn-Precision-5520>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=javierm@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_074121_142926_62724072 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20210701_075941_385286_6BADC6B9 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,36 +118,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ddc-i2c-scl-* properties in the hdmi node are
-not in use in the mainline kernel, so remove them.
+On 7/1/21 3:59 PM, Bjorn Helgaas wrote:
 
-Reported-by: Alex Bee <knaerzche@gmail.com>
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 2 --
- 1 file changed, 2 deletions(-)
+[snip]
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-index d41f786b2..43c928ac9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -193,8 +193,6 @@
- };
- 
- &hdmi {
--	ddc-i2c-scl-high-time-ns = <9625>;
--	ddc-i2c-scl-low-time-ns = <10000>;
- 	status = "okay";
- };
- 
+>> The IRQ handler is not called when unregistered, but it is called
+>> when another handler for the shared IRQ is unregistered. In this
+>> particular driver, both a "pcie-sys" and "pcie-client" handlers are
+>> registered, then an error leads to "pcie-sys" being unregistered and
+>> the handler for "pcie-client" being called.
+> 
+> Is this really true?  I think that would mean CONFIG_DEBUG_SHIRQ would
+> not find this kind of bug unless we actually registered two or more
+> handlers for the shared IRQ, but it's still a bug even only one
+> handler is registered.
+> 
+> Looking at __free_irq() [1], my impression is that "action" is what
+> we're removing and action->handler() is the IRQ handler we call when
+> CONFIG_DEBUG_SHIRQ, so it doesn't look like it's calling the remaining
+> handlers after removing one of them.
+> 
+
+Oh, you are completely right. I wrongly assumed that it was for the other
+registered IRQ handlers but reading the source is clearly how you say it.
+
+I now wonder why when debugging this I saw that the "pcie-client" handler
+was called when "pcie-sys" was unregistered...
+
+But anyways, you are correct and I'm OK with the text you shared.
+
+Best regards,
 -- 
-2.11.0
+Javier Martinez Canillas
+Software Engineer
+New Platform Technologies Enablement team
+RHEL Engineering
 
 
 _______________________________________________
