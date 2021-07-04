@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EED25C07E96
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 772ECC07E95
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:32:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAD8661378
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:21:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAD8661378
+	by mail.kernel.org (Postfix) with ESMTPS id 45BD9613B9
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:32:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45BD9613B9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,43 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OSuqaM9FocHxFKM08OzlmKtJfgQyb6Fwhm9coa4Euus=; b=vc9RIt7t4mLaEv
-	VD46W8+H6tLsIN1qt/zawuCtPaT91jsINDlswCaHolS0eQiFcMvdZIgoAbJHuKBSg8GTCC6KFel5O
-	HdqFlA68c9J/SIrlAtrhQO6DEW2zTzydb8KIPATkzpEq5OSHQkW2q6+Y1mhHdwkTyApJs2/VMxwPC
-	ZArbUpbNGcgkjZKyteG9a1Ldj0Nn73ZfleKHXIpqCAzEwl2vTc+Nt9xfKug0OcViTxhgVbJudY/fI
-	9jvDH6/GOrUuiQ233UMhoCk/pfzwFUKK5+MkbllxT9WANtXTbyhNF2qBslvJIfVeD+egP5eNcWEIs
-	dGRAqjmWWZRooq53VzIA==;
+	List-Owner; bh=Ju0bDbGWlnq9vkiN+E3cfB+SDIHxRhl0NmRSgmK/Fkk=; b=uKjA8XMz7OweKK
+	W8Z6IQZZJtPKm73cfTfFyfDEBr2YYAJhvTQWC6wzwnT+x6dSemmQGIchU0z+T+uLRnYab9KCdv3Du
+	B17FcsVz+Tld0J44WnvN01Odn4r89AJDz3eVCCD0Uk4Z5ujRQQZ4HHlR0iyAj8+VSyUQBmVzr4IGa
+	f/z9gqAFZv3deDZ4PQCh1HtqwanOHtk4eQcButCjSnJoM6w7UCHz5/VzDPcujOThbXE6DsyrmwDAa
+	cT5LIxmzNpw1KnhebnTmsgqxGioRgzfCny/rpGqAJQDlNUcByZTSMwEW3B4M/1ePx1damxKL6aqIJ
+	EYBVhQOEgZb3hoHR8epA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0BQ3-0072Hz-R3; Sun, 04 Jul 2021 23:20:59 +0000
+	id 1m0Bah-0077NW-4t; Sun, 04 Jul 2021 23:31:59 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0BBt-006tdf-Hi
- for linux-rockchip@lists.infradead.org; Sun, 04 Jul 2021 23:06:22 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 493906141C;
- Sun,  4 Jul 2021 23:06:20 +0000 (UTC)
+ id 1m0BCi-006uKw-4c
+ for linux-rockchip@lists.infradead.org; Sun, 04 Jul 2021 23:07:13 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E209C613F3;
+ Sun,  4 Jul 2021 23:07:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625439981;
- bh=HZKz708QQAe/6KtyqJ8F5LJ5x4ZN6OM3xsa305vbhbM=;
+ s=k20201202; t=1625440031;
+ bh=I9lQf2lDW0MnmYwEu18O4W4OVDj02bCrE5JB6PVuLSs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VXaJa0quEppcPLV8gjwJ0TdZeGnEa1SAOe0VTL5jegs5IA4NaIYpRiAmLlmSxN4gB
- a/CNhcBN55+bhOsfFAr8MDlCSKI+/f9irbOEbTv/d00jQRVOH8qyUpFdKDJPJ3fKyU
- mL63gTiTxL1oOna0BWvj6kBfkWjppmh5Nhd9wfJWUnI1Fa5JrgcPzCTiNFOXkg4rdl
- Ro05M8Aot0I/FkyTdBz1WDswhwnrS3gsqPzk9ckgzZRdm7gnTZauHK4rTz+kGjQs/3
- bOF1wUAGDme4W6IKf5Oy/2Le9GbhondJjsHvheLoE5GUeNP7sKl+FZB32NBKv8zD33
- bqAPFPtNPWJ4w==
+ b=EYm41YaPv3RUCmjfu6wRfwXcD872AM1Fw+wIrO/uYFUEcyE9HlngeKVG95ngtGMeb
+ JkPWWPacaQqkkXyvq4RG4aJFIXSie525r1FOIPFlYqk1XmNEELgGh9dvhHvOBXEXi1
+ oeo9i7wyTS1rPLN47zir7wb+PBNlSw0wseYd3jIZ8mWHAfyW48mm391pSeMSCGyu2T
+ 0I19w7Z7ydymvq/wVvJMCzSgwzvGEvVF1mj8DAzZsabC9BRzJFs5+Qw9gFeHzhND1U
+ WuvKzRq4LLSzxhA9HCpB1E43MB1PzDuatqukIZQkkvXaKLUKAum3n+Nz6Qa+1EjXln
+ GWXLJQLfISBhQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
-Subject: [PATCH AUTOSEL 5.12 03/80] staging: media: rkvdec: fix
- pm_runtime_get_sync() usage count
-Date: Sun,  4 Jul 2021 19:04:59 -0400
-Message-Id: <20210704230616.1489200-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.12 40/80] media: hantro: Fix .buf_prepare
+Date: Sun,  4 Jul 2021 19:05:36 -0400
+Message-Id: <20210704230616.1489200-40-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210704230616.1489200-1-sashal@kernel.org>
 References: <20210704230616.1489200-1-sashal@kernel.org>
@@ -67,8 +66,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_160621_638734_B61FA60D 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20210704_160712_283337_AA81FE5F 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,38 +85,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 
-[ Upstream commit e90812c47b958407b54d05780dc483fdc1b57a93 ]
+[ Upstream commit 082aaecff35fbe1937531057911b1dd1fc6b496e ]
 
-The pm_runtime_get_sync() internally increments the
-dev->power.usage_count without decrementing it, even on errors.
-Replace it by the new pm_runtime_resume_and_get(), introduced by:
-commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-in order to properly decrement the usage counter, avoiding
-a potential PM usage counter leak.
+The driver should only set the payload on .buf_prepare if the
+buffer is CAPTURE type. If an OUTPUT buffer has a zero bytesused
+set by userspace then v4l2-core will set it to buffer length.
 
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+If we overwrite bytesused for OUTPUT buffers, too, then
+vb2_get_plane_payload() will return incorrect value which might be then
+written to hw registers by the driver in hantro_g1_h264_dec.c.
+
+Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/hantro/hantro_v4l2.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index d821661d30f3..8c17615f3a7a 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -658,7 +658,7 @@ static void rkvdec_device_run(void *priv)
- 	if (WARN_ON(!desc))
- 		return;
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 1bc118e375a1..7ccc6405036a 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -639,7 +639,14 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
+ 	ret = hantro_buf_plane_check(vb, pix_fmt);
+ 	if (ret)
+ 		return ret;
+-	vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++	/*
++	 * Buffer's bytesused must be written by driver for CAPTURE buffers.
++	 * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
++	 * it to buffer length).
++	 */
++	if (V4L2_TYPE_IS_CAPTURE(vq->type))
++		vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++
+ 	return 0;
+ }
  
--	ret = pm_runtime_get_sync(rkvdec->dev);
-+	ret = pm_runtime_resume_and_get(rkvdec->dev);
- 	if (ret < 0) {
- 		rkvdec_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
- 		return;
 -- 
 2.30.2
 
