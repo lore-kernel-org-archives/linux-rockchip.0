@@ -1,65 +1,74 @@
-Return-Path: <SRS0=5bID=L3=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vlpy=L4=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06568C07E97
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jul 2021 16:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52260C07E96
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:04:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC8D861930
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Jul 2021 16:57:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC8D861930
+	by mail.kernel.org (Postfix) with ESMTPS id F064A61483
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Jul 2021 23:04:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F064A61483
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YhUpvmDZ/AVNF9Fnz5hgN/r+1i1oCvkLovYzVNiHPd0=; b=ZvKYt1RfMqgFj4
-	w1qaBD7CU1EZRDmi3Th/O0imSnwcKyndGFpVWdaq7y1C7zbrJkwjy/BANTc/GYywuKJIUH70F2EWX
-	xX1T/b5qnLx/gVj0NfM8HtwNmL4Fq5Kg0+EGROV/sInQqnjiRxxnoVpIgJHpsRd1UG5Wj4q9cUiui
-	YNL9BpVhR1hxttbb86/0HqVbBxdqSGadLmJqn29keUC4WL89+p6j6M07uinXAzNt5GgDtQhobk1EW
-	xM2fdJ6s48fjg8OP20VQw/UyZSxZ8jWU6rNy1ufFDoqrqeTxfZPH9TPslRbIgO+evvdcSNoT18WCa
-	r/Pf4bCZdT32UlMemA3g==;
+	List-Owner; bh=OSuqaM9FocHxFKM08OzlmKtJfgQyb6Fwhm9coa4Euus=; b=hPSqPXmfSLVBNJ
+	FL8205xmqasWc0mhZz0ihEOgWrZ1gzSN6CKXzTD0CX1vzC8YXG67zbQrXFQNh77J7qKr+/EVLu60g
+	VHik3gj7e6nJ28Bei3vcjXuQ9QasV4z2Gih58/7IHVqnchThxtY31RtrKk/EW9SZhltNUE323Pb7A
+	e9UcOzjoKPV1y4u2sYcPZVCEc09hWS5p6J00e0OWBAIH2v/iYeLPUNYDd3hhfPHmBjkwyjzRLAGOC
+	och5Du51vMXWPA3IYIDW1h5Nwz41Hrfpg2duHFONaBdOpYt9V4IDhwWbG0WS49rb+F4kyK0mLFpl2
+	bGea0g0zB+j+oZt4geYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lzixU-005999-3P; Sat, 03 Jul 2021 16:57:36 +0000
+	id 1m0BA4-006sMT-OV; Sun, 04 Jul 2021 23:04:28 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzixR-00598m-P3
- for linux-rockchip@lists.infradead.org; Sat, 03 Jul 2021 16:57:35 +0000
-Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B9A9561627;
- Sat,  3 Jul 2021 16:57:29 +0000 (UTC)
-Date: Sat, 3 Jul 2021 17:59:52 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Simon Xue <xxm@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter
- Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
-Subject: Re: [PATCH 2/2] iio: adc: rockchip_saradc: add support for rk3568
- saradc
-Message-ID: <20210703175952.238e6218@jic23-huawei>
-In-Reply-To: <20210702021527.146343-1-xxm@rock-chips.com>
-References: <20210702021403.146293-1-xxm@rock-chips.com>
- <20210702021527.146343-1-xxm@rock-chips.com>
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+ id 1m0BA2-006sKk-Ii
+ for linux-rockchip@lists.infradead.org; Sun, 04 Jul 2021 23:04:27 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CBC0D611ED;
+ Sun,  4 Jul 2021 23:04:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625439865;
+ bh=HZKz708QQAe/6KtyqJ8F5LJ5x4ZN6OM3xsa305vbhbM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=LGHZa8bPLqZiNLsIxNIXKndxpcwR2kDs+F2W0hvoFnhoXmAYp9IOOVs7/wouRxcze
+ XQX5HntVzAECi0jFkcDATtV+AQNTrWuhhDgKsiJ+RZFhQXIwRoQ8Ktyi45a9ijJa5o
+ H43+j00KUk1gqQcyVc57oLVapzMTx7oEDwAQGk4VTRJMUmTROvkh2Mbi1iIZ222B/I
+ 61pEKzkqHfT8HAKpwt95S+ez+sFrvUUl5GDyfQakUbcU6ruLTKQnS4qK6YGWwd9GP5
+ hLb1WMn8fOIniUx5mMlar/UvuQcnkf2LoENgo9j/UGTX855B7gcatsvaDXyrqKLX+G
+ mcrT5S6qCrIMw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
+Subject: [PATCH AUTOSEL 5.13 03/85] staging: media: rkvdec: fix
+ pm_runtime_get_sync() usage count
+Date: Sun,  4 Jul 2021 19:02:58 -0400
+Message-Id: <20210704230420.1488358-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210704230420.1488358-1-sashal@kernel.org>
+References: <20210704230420.1488358-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210703_095733_887084_C4FBF03D 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20210704_160426_681709_99AC95BB 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +86,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri,  2 Jul 2021 10:15:27 +0800
-Simon Xue <xxm@rock-chips.com> wrote:
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-A small amount of info on the device is always useful in a commit like this.
-Here, perhaps you could call out that it is similar to some other device, but
-with 8 channels?
+[ Upstream commit e90812c47b958407b54d05780dc483fdc1b57a93 ]
 
-Otherwise, looks good to me.  DT patch is fine as well.  I'll let them sit
-a little longer though to give others time to comment.
+The pm_runtime_get_sync() internally increments the
+dev->power.usage_count without decrementing it, even on errors.
+Replace it by the new pm_runtime_resume_and_get(), introduced by:
+commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+in order to properly decrement the usage counter, avoiding
+a potential PM usage counter leak.
 
-The dtsi change requested by Johan goes via a different tree anyway so doesn't
-need to be part of this series.
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jonathan
-
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> ---
->  drivers/iio/adc/rockchip_saradc.c | 22 +++++++++++++++++++++-
->  1 file changed, 21 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index 12584f1631d8..f3eb8d2e50dc 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -35,7 +35,7 @@
->  #define SARADC_DLY_PU_SOC_MASK		0x3f
->  
->  #define SARADC_TIMEOUT			msecs_to_jiffies(100)
-> -#define SARADC_MAX_CHANNELS		6
-> +#define SARADC_MAX_CHANNELS		8
->  
->  struct rockchip_saradc_data {
->  	const struct iio_chan_spec	*channels;
-> @@ -192,6 +192,23 @@ static const struct rockchip_saradc_data rk3399_saradc_data = {
->  	.clk_rate = 1000000,
->  };
->  
-> +static const struct iio_chan_spec rockchip_rk3568_saradc_iio_channels[] = {
-> +	SARADC_CHANNEL(0, "adc0", 10),
-> +	SARADC_CHANNEL(1, "adc1", 10),
-> +	SARADC_CHANNEL(2, "adc2", 10),
-> +	SARADC_CHANNEL(3, "adc3", 10),
-> +	SARADC_CHANNEL(4, "adc4", 10),
-> +	SARADC_CHANNEL(5, "adc5", 10),
-> +	SARADC_CHANNEL(6, "adc6", 10),
-> +	SARADC_CHANNEL(7, "adc7", 10),
-> +};
-> +
-> +static const struct rockchip_saradc_data rk3568_saradc_data = {
-> +	.channels = rockchip_rk3568_saradc_iio_channels,
-> +	.num_channels = ARRAY_SIZE(rockchip_rk3568_saradc_iio_channels),
-> +	.clk_rate = 1000000,
-> +};
-> +
->  static const struct of_device_id rockchip_saradc_match[] = {
->  	{
->  		.compatible = "rockchip,saradc",
-> @@ -202,6 +219,9 @@ static const struct of_device_id rockchip_saradc_match[] = {
->  	}, {
->  		.compatible = "rockchip,rk3399-saradc",
->  		.data = &rk3399_saradc_data,
-> +	}, {
-> +		.compatible = "rockchip,rk3568-saradc",
-> +		.data = &rk3568_saradc_data,
->  	},
->  	{},
->  };
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index d821661d30f3..8c17615f3a7a 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -658,7 +658,7 @@ static void rkvdec_device_run(void *priv)
+ 	if (WARN_ON(!desc))
+ 		return;
+ 
+-	ret = pm_runtime_get_sync(rkvdec->dev);
++	ret = pm_runtime_resume_and_get(rkvdec->dev);
+ 	if (ret < 0) {
+ 		rkvdec_job_finish_no_pm(ctx, VB2_BUF_STATE_ERROR);
+ 		return;
+-- 
+2.30.2
 
 
 _______________________________________________
