@@ -1,124 +1,84 @@
-Return-Path: <SRS0=gh3A=L6=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=2/VX=L7=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22FACC07E96
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jul 2021 16:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8CC4C07E96
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 01:24:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C57D9613D1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Jul 2021 16:03:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C57D9613D1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 29A5561A0F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 01:24:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29A5561A0F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5aRCOdlJERv/m4Az0XkpRK9F6MP+IJynjimNEWDaySg=; b=OMbbuKMziLtplY
-	/byiSDLLnvabNNsAH0Fxafl6VqwavL9y2XW3aalHmQ+BByfWpIWINAGvi1QfoU07wqw1aKk2jn12r
-	3BZv4Oq+2m2HCVsetN7f6iBkm+KguvexlrCuAcF2t4zO2fXDe2ATlgahkdSELtq4r5HOoYizmfFMs
-	QJu4ss+oyRBCazImSHK/rkzTGaAIFa37TPsH4XL1VcFIbLOJPKeB6C20oyO03We7qule6rNgJV2Fr
-	29x4jUyTCnmucLtiZfCGlRfuOG4GSKOQ9e3DwhqxijFa0AvbryAdMT31wfiO7lJZgIazxA1JfF7P0
-	TU1snwUrYUatD3zzDurg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WlBWFcYzzs/Hyr5A6y8JQzHxLJiRCICgbHFqKBIvFc8=; b=Jcfrg1sxKhO6ZQKQvpYlooH+ET
+	2NPVzIMssZcqPByx51E8MHi80Rysa/Jp2CmxnDlw1RmjQ2OcEO1ZbomdGS3trklek2bWI+igCC4Mp
+	ZixcLhRJ+43x14i08n3uOyPIp2cNOlQI1SGxGnkV62qt++1QZvq3mZR+Upo9ZYSLtj4x7YIqdwwuT
+	x7lPmnsg7OpsFNiSMKfMEAGWwNDIlRt0UbCIN1oAqhMp7pdtokFIVih2OvSsJ/XGUzL/mzJM6SgJF
+	NGZywNB+bz05RFtU8nXmtrX7mALVguiNzxNOewbwf+DqJtFMlnH0jvizyTezk+oFJtAd1IGRDpsQy
+	p3VAX+rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0nXd-00CCVp-Mu; Tue, 06 Jul 2021 16:03:21 +0000
-Received: from mail-bn7nam10olkn2059.outbound.protection.outlook.com
- ([40.92.40.59] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1m0wIT-00D8C0-LZ; Wed, 07 Jul 2021 01:24:17 +0000
+Received: from regular1.263xmail.com ([211.150.70.205])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0nXA-00CCUb-37; Tue, 06 Jul 2021 16:02:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OniGtGfPZ+ANj2XnH0BWiuXxB9aw78GBoroN0nPejGQmK0yJv0rw/1O8FPLxNjGJFtblUXucTiEgZr5O1iRYK88Nh/JIQFDQJCFQmJ7RehUBgZWsUIZa1K3qrF9dxCe/zH6tcyOSXb52ww1GOXq8dPejM1U1zvhZYhtPVKDe0nkXl1uOizC9iiQAbtqzK6ofiDRIqrtXmTHbHlAvPHSp3kmoXmcG4CupnQ2A0dULG/ZbqKBi3sLQroWaxEkBJ9J3rQUjs5WLpS4n/qxwARUw+FwCPjRHuGr3qm+hBCzM6c6u8CDFu8MNvHTnjV3it0vwQ1PZNAl6K5gzjBjSUsqyIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nj8CNucKnxvNTb6De3skuc3O9d7ESrJTnOnd/0ZztGs=;
- b=gSb8ahJ3PBV6kQ17YoKsqALafjKt404pvlJA+mY3CEGGzsWvP+0l2bSYmHMunJ5rW8DvadPnzcdOvRVmIlQS8HuFycYo+QrkE2rf6ME+6ZInS2FuoMp308m5fUMsMn/4NTUS3RCi2+hCJUuVE6/Lxa3we3Odqicj6e436KPRWN/dYhlclSl6hI00MFw9klwjqNIMrNlAKCpoVmHB1eBoi3Nh2bo6d3u2fgyACuoL6DibWEC4HdJH2VjM9Xst3bvvfq+e8bHZKdf6Gv/EO1NHpl/0qdyBC4fWQxmWvdsm2E23SuiWCNitT/JkCnT59+Fg94GtMAdJ48SWJivfQWZ4vA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nj8CNucKnxvNTb6De3skuc3O9d7ESrJTnOnd/0ZztGs=;
- b=Um2e/PS0uvIkXveGoftyl3ebzypRGXBXXTE7cPQAtcSdmGQ0Fh8UUQ+eXfgqO4opKSvAUhwrI8YRbIYoSSCi6oigNRqMgFpb47M0lTt0YCvRchkZ5n9YQUSwOogDP0zMsP1rNxK1WiwiwhfTdlt7SzLKs6MJ+vvQtrWOLD9Em1/mJShQW9SdZJ+ycl1LiQZbj2CmgWjSkUf0F0mhFaI0sO67w+pEwDcf4fu7FObI4VfGnIkgi4duvY/lJXt479FvZPzJ41fgIwt5YK2Oo4eo8itQilOGVrdRY2+6UhN9/vpEo7rHLD4KfwbeNDAbQGnVIQsp89Q7G5yuknP3Hcpr5g==
-Received: from MW2NAM10FT044.eop-nam10.prod.protection.outlook.com
- (2a01:111:e400:7e87::47) by
- MW2NAM10HT194.eop-nam10.prod.protection.outlook.com (2a01:111:e400:7e87::157)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.22; Tue, 6 Jul
- 2021 16:02:48 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- (2a01:111:e400:7e87::46) by MW2NAM10FT044.mail.protection.outlook.com
- (2a01:111:e400:7e87::145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.22 via Frontend
- Transport; Tue, 6 Jul 2021 16:02:47 +0000
-X-IncomingTopHeaderMarker: OriginalChecksum:58FDF37FAADCBA87CB463E08004ADF8DA33BF2D91C36A47AC1686B12A515C5FE;
- UpperCasedChecksum:6D779073AADB5840154A9E0289D4B1A9A20DF83D04C3775CA71253675C17F943;
- SizeAsReceived:7915; Count:46
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::e1f4:5eb1:d552:af43]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::e1f4:5eb1:d552:af43%7]) with mapi id 15.20.4287.033; Tue, 6 Jul 2021
- 16:02:47 +0000
-Date: Tue, 6 Jul 2021 11:02:45 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-spi@vger.kernel.org, broonie@kernel.org, robh+dt@kernel.org,
- heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
- yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v10 10/10] arm64: dts: rockchip: Enable SFC for Odroid Go
- Advance
-Message-ID: <SN6PR06MB5342083A6EF4A591CF076E79A51B9@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20210630134745.7561-1-jon.lin@rock-chips.com>
- <20210630134814.7748-1-jon.lin@rock-chips.com>
-Content-Disposition: inline
-In-Reply-To: <20210630134814.7748-1-jon.lin@rock-chips.com>
-X-TMN: [CaTGh5h2tZ/Nah8ni+jnLhxSYX37e34Z]
-X-ClientProxiedBy: SN7PR04CA0188.namprd04.prod.outlook.com
- (2603:10b6:806:126::13) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <20210706160245.GA13074@wintermute.localdomain>
+ id 1m0wIF-00D8B3-Dl; Wed, 07 Jul 2021 01:24:05 +0000
+Received: from localhost (unknown [192.168.167.13])
+ by regular1.263xmail.com (Postfix) with ESMTP id C2218828;
+ Wed,  7 Jul 2021 09:23:51 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED: 0
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from [172.16.12.39] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P30160T139874211661568S1625621030052233_; 
+ Wed, 07 Jul 2021 09:23:51 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <bf364529817dce1bbbc56a7b0d2126e9>
+X-RL-SENDER: algea.cao@rock-chips.com
+X-SENDER: algea.cao@rock-chips.com
+X-LOGIN-NAME: algea.cao@rock-chips.com
+X-FST-TO: kernel@collabora.com
+X-RCPT-COUNT: 12
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_2/2=5d_drm/rockchip=3a_dw=5fhdmi=3a_add_rk?=
+ =?UTF-8?B?MzU2OCBzdXBwb3J044CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2No?=
+ =?UTF-8?Q?ip-bounces+algea=2ecao=3drock-chips=2ecom=40lists=2einfradead=2eo?=
+ =?UTF-8?B?cmfku6Plj5HjgJE=?=
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, hjc@rock-chips.com,
+ heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20210705140304.652929-1-benjamin.gaignard@collabora.com>
+ <20210705140304.652929-3-benjamin.gaignard@collabora.com>
+From: crj <algea.cao@rock-chips.com>
+Message-ID: <f6d23bb9-fd31-7dd5-e8b9-aa24310e25da@rock-chips.com>
+Date: Wed, 7 Jul 2021 09:23:51 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from wintermute.localdomain (76.183.134.35) by
- SN7PR04CA0188.namprd04.prod.outlook.com (2603:10b6:806:126::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.20 via Frontend
- Transport; Tue, 6 Jul 2021 16:02:46 +0000
-X-MS-PublicTrafficType: Email
-X-IncomingHeaderCount: 46
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-Correlation-Id: b7d259b0-9f56-4872-76af-08d940977f6f
-X-MS-TrafficTypeDiagnostic: MW2NAM10HT194:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: zrAU9f9TWQvc8+4F+RbaDBquOIO8zl5+M0Vtjfd+o4EtmpOgI5xrBcYx1+9PBPLlK4CDwdxEHJM73USdlO6RnkGpBELepQPmLqWB8KmRcSVsgbiz2iQU2hVa4l0hc5/8dGFY5A/3+gtQAWfpto8ZsecYafm9dQZNCL+fsWRzGAlNcvkHxTLbPCmeW/5j5kHXymnAJlZuQUMPhhO2xv8Pr9XNZ3tPw6zW34o9oMOouzpk+Cc7rTwXXqmUGzZSYf4q8WIUlDYL3ABtVMTig77RlvEpLS6m0e6IeQpfymaIpFOxjjqLvf2gEsNG+E+iRrsO/CHYGMa0uWXNIgt+vok5FMk7oM1/mf6h8cPpz7EodYOul0riaMlI5ROL009oyDUYEYxqdCFi7I7VO4Nma70iu95TTTdthw6FvPGgQwyPB5V4w2EKYb0sKLqFVXVeFWrP
-X-MS-Exchange-AntiSpam-MessageData: NoezxMnBVureeRnd7+2FcoGm9s8RrbiTlIt9ACKIQPwiP8HLAGNJ9q22CYh445a3yuOQEHMzvxl45jV+mawk+gUbptp1cYxCj7lxmwOGmM2mKME1jWHCN13CUAkCQBEMeQcBLK4NPrdPjfp1shIViQ==
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b7d259b0-9f56-4872-76af-08d940977f6f
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2021 16:02:47.8512 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-AuthSource: MW2NAM10FT044.eop-nam10.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW2NAM10HT194
+In-Reply-To: <20210705140304.652929-3-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_090252_258034_0A3DD948 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20210706_182403_863529_A10B25DF 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,92 +91,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 09:48:14PM +0800, Jon Lin wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> This enables the Rockchip Serial Flash Controller for the Odroid Go
-> Advance. Note that while the attached SPI NOR flash and the controller
-> both support quad read mode, only 2 of the required 4 pins are present.
-> The rx and tx bus width is set to 2 for this reason.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
-> ---
-> 
-> Changes in v10: None
-> Changes in v9: None
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> Changes in v1: None
-> 
->  .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> index 49c97f76df77..f78e11dd8447 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> @@ -484,6 +484,22 @@
->  	status = "okay";
->  };
->  
-> +&sfc {
-> +	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
-> +	pinctrl-names = "default";
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	status = "okay";
-> +
-> +	flash@0 {
-> +		compatible = "jedec,spi-nor";
-> +		reg = <0>;
-> +		spi-max-frequency = <108000000>;
-> +		spi-rx-bus-width = <2>;
-> +		spi-tx-bus-width = <2>;
-
-Confirmed on the latest patch I still need to set the spi-tx-bus-width
-to 1 otherwise I receive the following errors:
-
-This is when I do the test case of reading 4MB of random data from
-/dev/urandom, then writing it to the last 4MB of the SPI flash,
-then reading it back and comparing the md5sum to see if the data is
-different. I usually get the errors below on the writing stage if the
-spi-tx-bus-width is 2, but if it is 1 things progress as expected and
-the hashes match (which I consider a passing test case). Given you have
-tested this same controller/SPI-NOR combination I'm assuming this is
-a board errata of some kind. Can we change the spi-tx-bus-width to 1
-for this reason?
-
-[  145.863221] mtdblock: erase of region [0xe28000, 0x1000] on "spi2.0" failed
-[  145.871080] blk_update_request: I/O error, dev mtdblock0, sector 29000 op 0x1:(WRITE) flags 0x4800 phys_seg 5 prio class 0
-[  145.883529] Buffer I/O error on dev mtdblock0, logical block 3625, lost async page write
- 
-Sorry I haven't responded to messages lately, I was out of town on
-vacation the last 2 weeks. I'll check the U-boot driver next.
-
-> +	};
-> +};
-> +
->  &tsadc {
->  	status = "okay";
->  };
-> -- 
-> 2.17.1
-> 
-> 
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQmVuamFtaW4sCgogwqDCoMKgIMKgwqDCoCBSSzM1NjggaGRtaSBwaHkgcmVmIGNsb2NrIHNv
+dXJjZSBpcyBIUExMLiBIUExMIG11c3QgYmUgc2V0IHdoZW4gCnN3aXRjaGluZyByZXNvbHV0aW9u
+IG9yIHBsdWdnaW5nLgoKV2hldGhlciB0byBhZGQgdGhlIGNvbmZpZ3VyYXRpb24gZm9yIEhQTEw/
+CgoKIMKgwqDCoCDCoMKgwqAgVGhhbmtzIQoKCuWcqCAyMDIxLzcvNSAyMjowMywgQmVuamFtaW4g
+R2FpZ25hcmQg5YaZ6YGTOgo+IEFkZCBhIG5ldyBkd19oZG1pX3BsYXRfZGF0YSBzdHJ1Y3QgYW5k
+IG5ldyBjb21wYXRpYmxlIGZvciByazM1NjguCj4KPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBH
+YWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgIGRyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgfCAyOCArKysrKysrKysrKysr
+KysrKysrKysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAyOCBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPiBpbmRleCA4MzBiZGQ1ZTli
+N2NlLi41ODE3YzNhOWZlNjRiIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
+cC9kd19oZG1pLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdf
+aGRtaS1yb2NrY2hpcC5jCj4gQEAgLTUwLDYgKzUwLDEwIEBACj4gICAjZGVmaW5lIFJLMzM5OV9H
+UkZfU09DX0NPTjIwCQkweDYyNTAKPiAgICNkZWZpbmUgUkszMzk5X0hETUlfTENEQ19TRUwJCUJJ
+VCg2KQo+ICAgCj4gKyNkZWZpbmUgUkszNTY4X0dSRl9WT19DT04xCQkweDAzNjQKPiArI2RlZmlu
+ZSBSSzM1NjhfSERNSV9TREFJTl9NU0sJCUJJVCgxNSkKPiArI2RlZmluZSBSSzM1NjhfSERNSV9T
+Q0xJTl9NU0sJCUJJVCgxNCkKPiArCj4gICAjZGVmaW5lIEhJV09SRF9VUERBVEUodmFsLCBtYXNr
+KQkodmFsIHwgKG1hc2spIDw8IDE2KQo+ICAgCj4gICAvKioKPiBAQCAtNDY3LDYgKzQ3MSwxOSBA
+QCBzdGF0aWMgY29uc3Qgc3RydWN0IGR3X2hkbWlfcGxhdF9kYXRhIHJrMzM5OV9oZG1pX2Rydl9k
+YXRhID0gewo+ICAgCS51c2VfZHJtX2luZm9mcmFtZSA9IHRydWUsCj4gICB9Owo+ICAgCj4gK3N0
+YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaV9jaGlwX2RhdGEgcmszNTY4X2NoaXBfZGF0YSA9IHsK
+PiArCS5sY2RzZWxfZ3JmX3JlZyA9IC0xLAo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVj
+dCBkd19oZG1pX3BsYXRfZGF0YSByazM1NjhfaGRtaV9kcnZfZGF0YSA9IHsKPiArCS5tb2RlX3Zh
+bGlkID0gZHdfaGRtaV9yb2NrY2hpcF9tb2RlX3ZhbGlkLAo+ICsJLm1wbGxfY2ZnICAgPSByb2Nr
+Y2hpcF9tcGxsX2NmZywKPiArCS5jdXJfY3RyICAgID0gcm9ja2NoaXBfY3VyX2N0ciwKPiArCS5w
+aHlfY29uZmlnID0gcm9ja2NoaXBfcGh5X2NvbmZpZywKPiArCS5waHlfZGF0YSA9ICZyazM1Njhf
+Y2hpcF9kYXRhLAo+ICsJLnVzZV9kcm1faW5mb2ZyYW1lID0gdHJ1ZSwKPiArfTsKPiArCj4gICBz
+dGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBkd19oZG1pX3JvY2tjaGlwX2R0X2lkc1td
+ID0gewo+ICAgCXsgLmNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszMjI4LWR3LWhkbWkiLAo+ICAg
+CSAgLmRhdGEgPSAmcmszMjI4X2hkbWlfZHJ2X2RhdGEKPiBAQCAtNDgwLDYgKzQ5Nyw5IEBAIHN0
+YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGR3X2hkbWlfcm9ja2NoaXBfZHRfaWRzW10g
+PSB7Cj4gICAJeyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktZHctaGRtaSIsCj4gICAJ
+ICAuZGF0YSA9ICZyazMzOTlfaGRtaV9kcnZfZGF0YQo+ICAgCX0sCj4gKwl7IC5jb21wYXRpYmxl
+ID0gInJvY2tjaGlwLHJrMzU2OC1kdy1oZG1pIiwKPiArCSAgLmRhdGEgPSAmcmszNTY4X2hkbWlf
+ZHJ2X2RhdGEKPiArCX0sCj4gICAJe30sCj4gICB9Owo+ICAgTU9EVUxFX0RFVklDRV9UQUJMRShv
+ZiwgZHdfaGRtaV9yb2NrY2hpcF9kdF9pZHMpOwo+IEBAIC01MzYsNiArNTU2LDE0IEBAIHN0YXRp
+YyBpbnQgZHdfaGRtaV9yb2NrY2hpcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRl
+dmljZSAqbWFzdGVyLAo+ICAgCQlyZXR1cm4gcmV0Owo+ICAgCX0KPiAgIAo+ICsJaWYgKGhkbWkt
+PmNoaXBfZGF0YSA9PSAmcmszNTY4X2NoaXBfZGF0YSkgewo+ICsJCXJlZ21hcF93cml0ZShoZG1p
+LT5yZWdtYXAsIFJLMzU2OF9HUkZfVk9fQ09OMSwKPiArCQkJICAgICBISVdPUkRfVVBEQVRFKFJL
+MzU2OF9IRE1JX1NEQUlOX01TSyB8Cj4gKwkJCQkJICAgUkszNTY4X0hETUlfU0NMSU5fTVNLLAo+
+ICsJCQkJCSAgIFJLMzU2OF9IRE1JX1NEQUlOX01TSyB8Cj4gKwkJCQkJICAgUkszNTY4X0hETUlf
+U0NMSU5fTVNLKSk7Cj4gKwl9Cj4gKwo+ICAgCWhkbWktPnBoeSA9IGRldm1fcGh5X29wdGlvbmFs
+X2dldChkZXYsICJoZG1pIik7Cj4gICAJaWYgKElTX0VSUihoZG1pLT5waHkpKSB7Cj4gICAJCXJl
+dCA9IFBUUl9FUlIoaGRtaS0+cGh5KTsKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
