@@ -2,63 +2,123 @@ Return-Path: <SRS0=2/VX=L7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B9F2C07E95
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 12:04:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3354C07E95
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 17:05:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A73A613D1
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 12:04:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A73A613D1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8C36961C7F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Jul 2021 17:05:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C36961C7F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2NJedfvDNp17n/fFkH8v9LarPpvJdhp9yekXnsVO8ps=; b=tqhpqF+EG2t6+G
-	a0JjakV0ew3zgs7RQoLx9nb9VJg6NqR5XBRRG/qSJ484duWPRZBofuRhBouWBbzwtmti1SUcvu905
-	dQY4i2U73JdcfTbotz6ii1LD7i4mM1grrAuNOuijxQyGFInM+KqrCob/L7Gm7YUK+Oh/3EdV6tmjW
-	ws1L26EsduAOP992S4Wpj0HaEFDY7hHNsiJ3iPyXV1SxnytN8XV1Ecz/D/2Q3QXoaN1BclF71S53j
-	PqrirL1Z21pEHowyh4ivpbUSDg6k5bRf8soJrWn0xeHkcZC5I/O5oOE+rFLXXLajy9phA36TwlPnV
-	5dEbTHiI7Mqn75vxUSig==;
+	List-Owner; bh=UwdsGc+njAz12gFi/C1c8Do+65RnrkAoC/v4yQwX5hs=; b=gO4wTIx4+QFuS2
+	gf4UHCD7CRc5zaXdQSe5Vd/sD9q5S51KROn53Pj8KbdqTBuB8emELbEjNh0q076BqWV2RSkcmT70P
+	DS2x96m1NdbeQn/o8fzqCT2K8rdSs+wvYC6w2f2YjeNkmLfTP55E9BLfSt758M+UMnhL12GNJQd+M
+	BU0Ar3z6IpaUnQCehD/SjDpeGjzT7GPd+xx9bipapiuU+mUOiTrFvg8bldBeHjN/PNi1dDWnTFVOt
+	VabRAmk9m9foKdrD5XegSygycWjncD0nTqcIc9uegsqFk0wlL8M7rOR9JEDcO8gIK3m2DwXtQyZgM
+	HLJfjk9mDezI4QUXP8yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m16Hs-00EjI9-Dq; Wed, 07 Jul 2021 12:04:20 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m1Az1-00FLb4-Mb; Wed, 07 Jul 2021 17:05:11 +0000
+Received: from mail-bn8nam11olkn2076.outbound.protection.outlook.com
+ ([40.92.20.76] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m16HH-00Ej5I-Ru; Wed, 07 Jul 2021 12:03:46 +0000
-Received: from localhost.localdomain (unknown
- [IPv6:2a01:e0a:4cb:a870:c375:7561:3857:648])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 3C6231F43284;
- Wed,  7 Jul 2021 13:03:38 +0100 (BST)
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch,
- robh+dt@kernel.org, algea.cao@rock-chips.com, andy.yan@rock-chips.com
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v2 2/2] drm/rockchip: dw_hdmi: add rk3568 support
-Date: Wed,  7 Jul 2021 14:03:23 +0200
-Message-Id: <20210707120323.401785-3-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210707120323.401785-1-benjamin.gaignard@collabora.com>
-References: <20210707120323.401785-1-benjamin.gaignard@collabora.com>
+ id 1m1AyV-00FLUu-W0; Wed, 07 Jul 2021 17:04:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FI4bLPWzE7lATbk5/ACVGoT+bk6qb5TsjIx5CiOdjwSYou99TLuVHYlKIyUwxjJztPcoTIUrtUDvgRsFYOBjh/u2pJ859KGNTXfyO6X8+q6Ls/fc6HxyOD34xRZzsVwtUmoWo8HWpinUfHgdRUGuz+27Js4FX+jWMHYLaaRKZKmyEp5zU0fIBWycliAHtSKwgX30ETgzVw8Y8iVEKCSqiWv+G4J7BixNZfiIswCeuPniyMUdxvmVSNM1QijKkrdRkaHrCQfdEZTtQpwvK/0Rsj31+A7WDu8CHDBGB7dGPIM0voSyiglHRxMYHWp7Di4o8ScO6lQsy0+N6dbDgSpAiA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SAJ/qeCgQFACMwz/KoZbFEZ6IjHBCOOdM82Akdlh5us=;
+ b=WLP2B5U+Aln1N5kKDeN//XCs+tlT0GgPeHS+PcjxybPsuIo1xJOdzIQcfsbjCAXO/RZ6eCTSKHmqAqGbBRxpcEQnxNrjDufdF7qE+XqSKJ2KyIPJWvCnX63Vde0dQwqg+X9VZMvVP+tGq3t37aW63lKDztHu75tAjCOaqd4ZdFpAAxSc1hnnC80a5Tb+XQdldeoMJ5AQn1xiorT9pjEiKL4JGz7wDj1unmLJj28x1YRoX/YUVOT8ZgTj0GssBwD04DXyD2yGoKbpci901zskCfrAXdpm6Ozc9n2HT+A8yTa5RlRtfQ+OxvK1TsxH0KAbHH0tYGgVqbzB+259Wo7tAw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SAJ/qeCgQFACMwz/KoZbFEZ6IjHBCOOdM82Akdlh5us=;
+ b=TkCWyK0qIj7Ob53HVLgw/2DLkZ+xlF1EXcGIYekd515/u9ykw+yqjp8hS02baokGKBSEJE422rzTAFAKZ7n0nKl7zy6Vc447uKtOS35PjnfD82fD2ZPH13bGbYNn/bF5/q30LtqzJgus4Y6S1lg0vJFM/7gZ9DpE++A8dGw+UDhZ1wvLp+RLkoS4EqCMiZeDfsugRwO8hpMBrLcs+Y5Ama9+Z06yTriRA/LvBAncsuZJPXnKHqGnBr2shM8PyCUpdA9asGbqkJDStS9rAUWu8SosW8vtvxEKbhWkzyzj9XGiuBwdOt+14sPOXUhPEjPI0zg8nt7Ii+V1+7Q2nYtLKg==
+Received: from CO1NAM11FT004.eop-nam11.prod.protection.outlook.com
+ (2a01:111:e400:3861::53) by
+ CO1NAM11HT171.eop-nam11.prod.protection.outlook.com (2a01:111:e400:3861::221)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.20; Wed, 7 Jul
+ 2021 17:04:35 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ (2a01:111:e400:3861::4d) by CO1NAM11FT004.mail.protection.outlook.com
+ (2a01:111:e400:3861::345) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.20 via Frontend
+ Transport; Wed, 7 Jul 2021 17:04:35 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:E799ED8E515EB1A4DEE6D8A62ECBEED4EB9B0FD42E473A0C39B31929EA6E94DC;
+ UpperCasedChecksum:370A28CE49271E721BDCB1B72C7489D68B51F31FCC8E12E20794002276E225A8;
+ SizeAsReceived:7919; Count:46
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::e1f4:5eb1:d552:af43]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::e1f4:5eb1:d552:af43%7]) with mapi id 15.20.4287.033; Wed, 7 Jul 2021
+ 17:04:35 +0000
+Date: Wed, 7 Jul 2021 12:04:32 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-spi@vger.kernel.org, broonie@kernel.org, robh+dt@kernel.org,
+ heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
+ yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org
+Subject: Re: [RFC PATCH v11 10/10] arm64: dts: rockchip: Enable SFC for
+ Odroid Go Advance
+Message-ID: <SN6PR06MB534224A3D7A26D2AE5275331A51A9@SN6PR06MB5342.namprd06.prod.outlook.com>
+References: <20210707090843.5959-1-jon.lin@rock-chips.com>
+ <20210707090925.6203-1-jon.lin@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20210707090925.6203-1-jon.lin@rock-chips.com>
+X-TMN: [0gTFhj3i3uKEWtV5qGRcz7DJyhbu43Jm]
+X-ClientProxiedBy: SN4PR0501CA0040.namprd05.prod.outlook.com
+ (2603:10b6:803:41::17) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID: <20210707170432.GA31377@wintermute.localdomain>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from wintermute.localdomain (76.183.134.35) by
+ SN4PR0501CA0040.namprd05.prod.outlook.com (2603:10b6:803:41::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4308.12 via Frontend
+ Transport; Wed, 7 Jul 2021 17:04:34 +0000
+X-MS-PublicTrafficType: Email
+X-IncomingHeaderCount: 46
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-Correlation-Id: 3ea99f44-28d8-43ad-f4aa-08d941694bbb
+X-MS-TrafficTypeDiagnostic: CO1NAM11HT171:
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pOMbKP5LcsIwA90xYhDUAu9/wqsgBhiHiI19yPuKVHSeYWeRzFUy6DLECE2qpN6xER/16x0MB3l50fRD9403Id1KZeW6w7joSFgulWenaRx90U5zeCKt9S7Vpq84ZZW9696iXeZZ8GFPy4aWtTxS5CVzAOTEiuc5Ju1/gfJz+wuqwsc/aEeG4msk70kTo/p2g7Zz9OwMUrkgzwLFf0w+Obe93N/h9nCiF2TsCww/q41nVWyWA9SQ0M6IJhcsqlQ/SaADQSmFEIQEwx0hGipuHSqFuz/pOYEPind22OUjOGy4pADbq0F1yyjn11WM75dDpwR03SRMl2klLIOPvemCwkkZ6PpLazoReILjabmV5K/ofYYbxMjb9dRijA4owD0+NjnkHoSffq3Kh/YU0NA0RkD6Ax2dfZ0AoBD19/7Lbadl6zedQJgpCVGZslz/WEpK
+X-MS-Exchange-AntiSpam-MessageData: sgym3dD09T9DhoxcOQFgckMQe0XolSYvX6CRQ06ytbAW2L6FjMgTaWvE3NnMX4Ns1Q1V9Nvx9DkCSWH2lIzFxFpebWMMuk1HG1f/Bbl4N7mUFdYtjIOj0JLw41BQhqr9LDU01tougUWzLmOZnVshOA==
+X-OriginatorOrg: hotmail.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3ea99f44-28d8-43ad-f4aa-08d941694bbb
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2021 17:04:35.2873 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT004.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1NAM11HT171
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210707_050344_244365_DB831031 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20210707_100440_164892_15D693FE 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,149 +136,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a new dw_hdmi_plat_data struct and new compatible for rk3568.
-This version of the HDMI hardware block need two clocks to provide
-phy reference clock: hclk_vio and hclk.
+On Wed, Jul 07, 2021 at 05:09:25PM +0800, Jon Lin wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> This enables the Rockchip Serial Flash Controller for the Odroid Go
+> Advance. Note that while the attached SPI NOR flash and the controller
+> both support quad read mode, only 2 of the required 4 pins are present.
+> The rx bus width is set to 2 for this reason, and tx bus width is set
+> to 1 for compatibility reasons.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-version 2:
-- Add the clocks needed for the phy.
+Thank you, I just tested this patch again and all seems to be well.
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 68 +++++++++++++++++++++
- 1 file changed, 68 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 830bdd5e9b7ce..dc0e255e45745 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -50,6 +50,10 @@
- #define RK3399_GRF_SOC_CON20		0x6250
- #define RK3399_HDMI_LCDC_SEL		BIT(6)
- 
-+#define RK3568_GRF_VO_CON1		0x0364
-+#define RK3568_HDMI_SDAIN_MSK		BIT(15)
-+#define RK3568_HDMI_SCLIN_MSK		BIT(14)
-+
- #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
- 
- /**
-@@ -71,6 +75,8 @@ struct rockchip_hdmi {
- 	const struct rockchip_hdmi_chip_data *chip_data;
- 	struct clk *vpll_clk;
- 	struct clk *grf_clk;
-+	struct clk *hclk_vio;
-+	struct clk *hclk_vop;
- 	struct dw_hdmi *hdmi;
- 	struct phy *phy;
- };
-@@ -216,6 +222,26 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 		return PTR_ERR(hdmi->grf_clk);
- 	}
- 
-+	hdmi->hclk_vio = devm_clk_get(hdmi->dev, "hclk_vio");
-+	if (PTR_ERR(hdmi->hclk_vio) == -ENOENT) {
-+		hdmi->hclk_vio = NULL;
-+	} else if (PTR_ERR(hdmi->hclk_vio) == -EPROBE_DEFER) {
-+		return -EPROBE_DEFER;
-+	} else if (IS_ERR(hdmi->hclk_vio)) {
-+		dev_err(hdmi->dev, "failed to get hclk_vio clock\n");
-+		return PTR_ERR(hdmi->hclk_vio);
-+	}
-+
-+	hdmi->hclk_vop = devm_clk_get(hdmi->dev, "hclk");
-+	if (PTR_ERR(hdmi->hclk_vop) == -ENOENT) {
-+		hdmi->hclk_vop = NULL;
-+	} else if (PTR_ERR(hdmi->hclk_vop) == -EPROBE_DEFER) {
-+		return -EPROBE_DEFER;
-+	} else if (IS_ERR(hdmi->hclk_vop)) {
-+		dev_err(hdmi->dev, "failed to get hclk_vop clock\n");
-+		return PTR_ERR(hdmi->hclk_vop);
-+	}
-+
- 	return 0;
- }
- 
-@@ -467,6 +493,19 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
- 	.use_drm_infoframe = true,
- };
- 
-+static struct rockchip_hdmi_chip_data rk3568_chip_data = {
-+	.lcdsel_grf_reg = -1,
-+};
-+
-+static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
-+	.mode_valid = dw_hdmi_rockchip_mode_valid,
-+	.mpll_cfg   = rockchip_mpll_cfg,
-+	.cur_ctr    = rockchip_cur_ctr,
-+	.phy_config = rockchip_phy_config,
-+	.phy_data = &rk3568_chip_data,
-+	.use_drm_infoframe = true,
-+};
-+
- static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3228-dw-hdmi",
- 	  .data = &rk3228_hdmi_drv_data
-@@ -480,6 +519,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3399-dw-hdmi",
- 	  .data = &rk3399_hdmi_drv_data
- 	},
-+	{ .compatible = "rockchip,rk3568-dw-hdmi",
-+	  .data = &rk3568_hdmi_drv_data
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, dw_hdmi_rockchip_dt_ids);
-@@ -536,6 +578,28 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 		return ret;
- 	}
- 
-+	ret = clk_prepare_enable(hdmi->hclk_vio);
-+	if (ret) {
-+		dev_err(hdmi->dev, "Failed to enable HDMI hclk_vio: %d\n",
-+			ret);
-+		return ret;
-+	}
-+
-+	ret = clk_prepare_enable(hdmi->hclk_vop);
-+	if (ret) {
-+		dev_err(hdmi->dev, "Failed to enable HDMI hclk_vop: %d\n",
-+			ret);
-+		return ret;
-+	}
-+
-+	if (hdmi->chip_data == &rk3568_chip_data) {
-+		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
-+			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
-+					   RK3568_HDMI_SCLIN_MSK,
-+					   RK3568_HDMI_SDAIN_MSK |
-+					   RK3568_HDMI_SCLIN_MSK));
-+	}
-+
- 	hdmi->phy = devm_phy_optional_get(dev, "hdmi");
- 	if (IS_ERR(hdmi->phy)) {
- 		ret = PTR_ERR(hdmi->phy);
-@@ -559,6 +623,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 		ret = PTR_ERR(hdmi->hdmi);
- 		drm_encoder_cleanup(encoder);
- 		clk_disable_unprepare(hdmi->vpll_clk);
-+		clk_disable_unprepare(hdmi->hclk_vio);
-+		clk_disable_unprepare(hdmi->hclk_vop);
- 	}
- 
- 	return ret;
-@@ -571,6 +637,8 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
- 
- 	dw_hdmi_unbind(hdmi->hdmi);
- 	clk_disable_unprepare(hdmi->vpll_clk);
-+	clk_disable_unprepare(hdmi->hclk_vio);
-+	clk_disable_unprepare(hdmi->hclk_vop);
- }
- 
- static const struct component_ops dw_hdmi_rockchip_ops = {
--- 
-2.25.1
-
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> ---
+> 
+> Changes in v11:
+> - The tx is set to 1 for Odroid Go Advance device
+> 
+> Changes in v10: None
+> Changes in v9: None
+> Changes in v8: None
+> Changes in v7: None
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> Changes in v1: None
+> 
+>  .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> index 49c97f76df77..4410a6ef5ada 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> @@ -484,6 +484,22 @@
+>  	status = "okay";
+>  };
+>  
+> +&sfc {
+> +	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
+> +	pinctrl-names = "default";
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	status = "okay";
+> +
+> +	flash@0 {
+> +		compatible = "jedec,spi-nor";
+> +		reg = <0>;
+> +		spi-max-frequency = <108000000>;
+> +		spi-rx-bus-width = <2>;
+> +		spi-tx-bus-width = <1>;
+> +	};
+> +};
+> +
+>  &tsadc {
+>  	status = "okay";
+>  };
+> -- 
+> 2.17.1
+> 
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
