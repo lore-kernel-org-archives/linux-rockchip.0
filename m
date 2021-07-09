@@ -2,171 +2,81 @@ Return-Path: <SRS0=C1nv=MB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DD08C07E9E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 06:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FC44C07E99
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 08:02:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25A4661407
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 06:39:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25A4661407
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id DC2596124C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 08:02:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC2596124C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=t-chip.com.cn
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CgcIbFMwH5mSUZWQXoxs6VrWkl9ux2Mn8vczMln5NKo=; b=w1qQrp7/Qv5jKf
-	edkJT+2kr3YD0spUegBuI8FWZVJ1tU1n4tA4L1rq8KO383WX0SIs8pcTuCRyejpNupQYfdGGNGOTy
-	9zMD9iSlcjNYOnHEmtE4FTknw1Q99U+0KdXhKXCAJQu8C6hhAXWH/8YExDI9OKHOB43VnUYuQIwBL
-	fKhUluvBSFLIKypuRfRYcP0TAOpqHtj4qZpZfcifaBbc60c27JMVIblrLJw4E1bJ5f5YcP+lwCiYo
-	w/xZOThcC4LPRKjSlaFy/DgHPoOg2voN2ru/nfFMgVLszn6gl5SM5sXSX+BT3Aa1QXDeTgdeBlYaW
-	Z1PzVtVf3Hhq5Aqr//cQ==;
+	List-Owner; bh=sFAwTAJtStSs0yEsmwxKxND9jYicxZ1f6yYI97Nj5Go=; b=NwnsUYwOvFQJqp
+	aKOWbVLEX3qK0l3OceqETvhoqiKOAxRMUovONL4v47j17ifmsh3tUDMeenD43RNCnc+ul4gSNnFqJ
+	OoFoxRBoAMUzRKf2CgZO2aKvnqRC+RAtYPP0xV+yMHcOp1HsdE4j0GCxgXSihz7E3WVgK9M5hx0TU
+	Td+sBLHeDSxp4AfXqplrqcl3ZizAfMXeu08BZQ8CvOqSpzCiTXYMkeiMsMkAUarOyAHoolMayWANv
+	35rtfqxybsoOmnlloPjgM6rhQX7gW08gnivkFfqTVfmZQ+gDxrYA8IPV6Jh1S8DmpR3r100IhvqYA
+	Rc9Hd9LETHGq8zO2Zrvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1kAF-000txw-QA; Fri, 09 Jul 2021 06:39:07 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1m1lSh-0011jF-Ph; Fri, 09 Jul 2021 08:02:15 +0000
+Received: from regular1.263xmail.com ([211.150.70.199])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1kAD-000twD-UE
- for linux-rockchip@lists.infradead.org; Fri, 09 Jul 2021 06:39:07 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 1696Ugnf008109; Fri, 9 Jul 2021 06:38:55 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2020-01-29;
- bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
- b=Spxprx0vihQMWfCjYxAY6+DXeIIdBiRbHvx9wStF1nGVvmKx+fmn/QZyMIHboBkOKtZh
- cGl5hVME6vCdQ9+F7vc87cg7bW4TvLsCIxKtJli36YfjDz/9Dxa6V0rABLHWnMCdaGkN
- huhSW+QpRa6E8N42pk+zZJyTXGU2ZMnLLmrmxhpTnHEPUNwadM1i+t2xN1UyAFjMrX19
- xMx4lhaZGaMmBPu3VAyBRHfZed9NQBvtJdD2vErVJvETUICe6yynEoWcE66J/JfyThaN
- HyJdW5oDzTdDUUCuzh5KKX0S6r26UHPspKC/LYPP2lHGsobPf/fCWfAqQlW81qayHVwv 6g== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 39npbyjn4d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 09 Jul 2021 06:38:54 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1696UYJl139161;
- Fri, 9 Jul 2021 06:38:54 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam11lp2175.outbound.protection.outlook.com [104.47.57.175])
- by aserp3020.oracle.com with ESMTP id 39jfqf4p75-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 09 Jul 2021 06:38:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=oEhjDsQBUDWNvU0npDr/9OMXGsNiOJWlpFhrpFYN8NEtvhVfLjdlobEKG0m6XDbHFtDlGxjP4fAPjHmgKgH4dXuylIFiR6podGja9K1Wpp+xMkc7zHie6HE2ukNm8jNMWzmIOFoi4DvzPshsURfdY0bO9/Kkv+Q6H95bfMBoreUVUtWJvZIRQoQX6urrIUcFtl+Yz4wYRXSUuq+1fFzc5GtCCyXMCcbvOIBBQgfLKI/j8X4JyS2sELZ+EgyBIFeexSqWl4nfNjWDPGNa8ico3AIvSZxCQxU9Gb7wjg16GQe400OetPG4yluMi5fvRTj6xMwlXhGDgEZntA0D0WTGsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
- b=ezu3kh91ubRMa2ZtMBoiRSXVnKyU5zmpkizDfwKdFXKxZf28izRd30syFtCKsrCBRlcFGVy/ML/VB9lnqyXMn3AC4KDXGthKFFR/nU2hlIQraT4wxKBtdZD0bpW2ZN8qZHXLiE1OD2YL0/e6rVNsRFxJQmp0SDsrtjFsjOVagpQ9PEFnxigXnYOQqgGNQ2daF5CG8Sy7DQjodDSFZ/paswrv+0cOJXaxCgKuAf6NYLmacAQ5Z7pARceV8q9LbcZVavrNK9ihLzOsZy+Nj0p8MjvHrM9spqzCIeOwnJ9zTdZuXZquFwNsvQkmZoXBpB8fpciUj5i552eE8iz06Vq9tg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
- b=JLrxJpmZAp3QSNcjaVl3Tolb3xc5cWbRDdlQO7vjUIP1XB3VdBJAqTf6d4Lo1veXKJnqMfVetwGnunZ8ATIY3SWPY9xTa95xh71eYk40dfOGqGFVnkArU7XV1a76mvJ667iUoFH1/8x7DhXy344JmqEjhaS1/FAPOEbBmnDgq/w=
-Authentication-Results: iotwrt.com; dkim=none (message not signed)
- header.d=none;iotwrt.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by CO6PR10MB5411.namprd10.prod.outlook.com
- (2603:10b6:5:35e::5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.27; Fri, 9 Jul
- 2021 06:38:52 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::3413:3c61:5067:ba73]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::3413:3c61:5067:ba73%5]) with mapi id 15.20.4287.033; Fri, 9 Jul 2021
- 06:38:52 +0000
-Date: Fri, 9 Jul 2021 09:38:29 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Dongliang Mu <mudongliangabcd@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH] media: rockchip/rga: fix a use after free in rga_probe()
-Message-ID: <YOfu5Zb2kpN/0Prn@mwanda>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-ClientProxiedBy: JN2P275CA0030.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::18)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1m1lSU-0011gE-Hf; Fri, 09 Jul 2021 08:02:04 +0000
+Received: from localhost (unknown [192.168.167.69])
+ by regular1.263xmail.com (Postfix) with ESMTP id 087BA1310;
+ Fri,  9 Jul 2021 16:01:54 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED2: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 1
+Received: from localhost.localdomain (unknown [183.57.25.242])
+ by smtp.263.net (postfix) whith ESMTP id
+ P12349T139824269707008S1625817711146317_; 
+ Fri, 09 Jul 2021 16:01:52 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <75b8410723c298b4b86f84367f86a160>
+X-RL-SENDER: djw@t-chip.com.cn
+X-SENDER: djw@t-chip.com.cn
+X-LOGIN-NAME: djw@t-chip.com.cn
+X-FST-TO: linux-rockchip@lists.infradead.org
+X-RCPT-COUNT: 16
+X-SENDER-IP: 183.57.25.242
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: djw@t-chip.com.cn
+To: linux-rockchip@lists.infradead.org
+Cc: Wayne Chou <zxf@t-chip.com.cn>, Levin Du <djw@t-chip.com.cn>,
+ Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ David Bauer <mail@david-bauer.net>,
+ Jagan Teki <jagan@amarulasolutions.com>, Johan Jonker <jbx6244@gmail.com>,
+ Liang Chen <cl@rock-chips.com>,
+ Michael Trimarchi <michael@amarulasolutions.com>,
+ Rob Herring <robh+dt@kernel.org>, Tianling Shen <cnsztl@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v0 0/2] Add support for Firefly ROC-RK3328-PC
+Date: Fri,  9 Jul 2021 16:01:24 +0800
+Message-Id: <20210709080126.17045-1-djw@t-chip.com.cn>
+X-Mailer: git-send-email 2.23.0.37.g745f6812895b
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from mwanda (102.222.70.252) by
- JN2P275CA0030.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4308.20 via Frontend Transport; Fri, 9 Jul 2021 06:38:44 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c2dbe30e-af3d-4929-d2fd-08d942a43702
-X-MS-TrafficTypeDiagnostic: CO6PR10MB5411:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <CO6PR10MB54113794E026AB7AD49BAC6F8E189@CO6PR10MB5411.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: C7NKzl2BJNUHOiaOTdrZEsqglYVedwHDPWe/X67m4GepgbvRdCTOYG76C8JVbcFdP1sukp7VgkaVhYsFur95o5n1hgog+OIfqeWhiDvmF2UqQiaKzgHhb3qFslkOv0tr+j/e0lwKFMxvvdki6Q9v7ff5h60LlT0ziFSnorxmbzXl+PQeGUJ2ylFTxxcjLlpzc9eu4AWXkXY3+q/lhwlMogpC6BqSIHx+5C8puPsywHsqo4pf5aXpm+HX8umZr3iWbQqnQVCOMbTUHIsGcw5vgr3m+ipSjrp7Zh/3rDpLNJVvUGGsLmDJFo6awsCwMdvOHDDgOkEwTKEJItgpHH1WdYfit+SCPToUgkeN7a3VJcdXNIpxB9QUNPT4+1Eb9+NV2SUb+GODiMIxpZTLM9cJ1cgs5/7nqmsip8nnZ3mibaaglae4Mvw1eQIeVYaXCYxnfr3NHVZuzl1YB9URO7wbQ4PNvxpvyt6geJlcnxE6Pfs88Tcbbynn6sQ5hPnv3ZNrColtsoMfkh4HFq8bSbSAS8HqgXnknUAF5MRpRDst3rBHsJD9mefsGdEIlMXuOduy40JR7aAbrFCcbe1ivebzbMfNPOrF2h8xc3TJWxrBJJ6iPqapFCRGk0lYmqbuewMcweQXzsdwusubJS5q2ouqW92rAeucCeghkDP52yHFnx5iJsd0MJdJWaul+NUs9jX7xm50NWUeCSMibVHpu+leQA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(39860400002)(396003)(346002)(366004)(136003)(376002)(6666004)(83380400001)(956004)(5660300002)(55016002)(44832011)(86362001)(7416002)(316002)(66946007)(52116002)(66556008)(9686003)(478600001)(66476007)(2906002)(33716001)(26005)(8936002)(6916009)(38350700002)(6496006)(38100700002)(186003)(9576002)(8676002)(54906003)(4326008);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?C0MO/jpgA/8E23BItyS50649V6iBl/W7biryd23O+HJb+bjMNtAzZahK+gf+?=
- =?us-ascii?Q?JoDgGfBEQrhyFl+m2hksuQA9AWNUGbP0k6aDyOyNlNsR0/V3mzp4q7J/kkCP?=
- =?us-ascii?Q?2cWVX5VldaaPGW1mH9SBfvG4yDVLrfS9MQQ7ODkq/e+f7xame64ivQ0Q4pKa?=
- =?us-ascii?Q?/hcxsBpA1kZJm2n+rBeModpaNQAnXL/VN6s4mQriLyZrG8MVVTI3BIPyFlCW?=
- =?us-ascii?Q?Ra8aWoavb+L/V75f5Im5deVD+vw5tHrwiVmDQcJXbQxNKHbuYZ8+cByB5qXp?=
- =?us-ascii?Q?LopsWRjSiyeFaw6B206XpPdE03qv+skenDgissTcOOowzHb7lvGp1zLj9jX+?=
- =?us-ascii?Q?+h1y2Det/2RILPWvF+bTKJ2hiEe4kfRkaShj13Uxoykx5pfRjsKuWKMAt24z?=
- =?us-ascii?Q?o7R0/fRH4CjYgW7qPZ0mToutztD37mtVBWhLghdTRGpedLaGymdoGyIKhKGG?=
- =?us-ascii?Q?G3jKfhHPMeyuLQLJ1sjEBI9tXOx7MR8Kj33Dg7jAI3teNl75jtGLKBdL7Qgl?=
- =?us-ascii?Q?XJkxh+l9dbOyvA/vpOlxpC+5kpUoh7ivJmZt4NiBBN50PL73on17y+OdqAr3?=
- =?us-ascii?Q?s/s8Xi3bP/zpx4EakleapBbCV8UoMK7ZtWTENZapnvHxWlWLP9+QzGZZ3zuW?=
- =?us-ascii?Q?KQR+3zmGoYSc+2IkA2Szhjh4abvL/pNQ4pKZCxPS54UKa5r/+C2zNsBIkHIF?=
- =?us-ascii?Q?H44mFVsrU0qx66MPon6PUVm6rHZGUWxnozRBA6gn1L4WZ2xE5gVMXJlIlttD?=
- =?us-ascii?Q?7DoR+LAFrw+BRpFL+nOn09a/l4/qY4fKfJTeOwhsP18z8rfXntHyGZjKCL1/?=
- =?us-ascii?Q?7irYHfLpZkAqByanTYbylhjfdCjvQatJq75o/Jlk6QFqfZTTICxqksZ2W9rt?=
- =?us-ascii?Q?aZ+LpOBVeiRd4rf2RPMV73//HnLgp6Gf2tkBgbGfYKuaiIA09IlI+H74SPF5?=
- =?us-ascii?Q?nty1Egj/Ubi+hhF/M+AMp14tgHI8cZEJZwjEOl9cnw+NJdVgKe9Two1dAclZ?=
- =?us-ascii?Q?q9ITIo+SQ1Xj7uRVVvMIr7u3+/C6i+2K4j1ucVK/LRhxdxgY6Gu5+F7mAlwP?=
- =?us-ascii?Q?UPS5iWFVB8A4fRFniwWJlGf4VHHMj6ktcvxKyT3ZA6ESCWZA7O27I6p6Nk17?=
- =?us-ascii?Q?cmW+C50cU09bsIbFDtX+mUADkvdlzRUQUF3m5Dhsi5f4djYgI8L3Zbor1zD2?=
- =?us-ascii?Q?D4yMb8OmYMU7rYQ52RnKW9OCS6iPm9MLkqYGo7wbeFP5ULOCFLC49QwJCr2E?=
- =?us-ascii?Q?e7V3OKNanhzTLc5oLJRae0TO8IUZNxTEC4IQnE4gUjCS5zjuKvjArmx681j2?=
- =?us-ascii?Q?RQiEZOTROOmD6WiIK79PQfPu?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c2dbe30e-af3d-4929-d2fd-08d942a43702
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2021 06:38:51.9194 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YRSmWKSZ9DL8PIW3PxgT4Qh/LU9Oo5/UGwI/juvrAp9AZGsVZvc5fRTCwqb7LSQf3Kkpimhsu2JbctqjiIi06359vzacoo01Nk3Uw/AYQTo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR10MB5411
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10039
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0 phishscore=0
- mlxscore=0 bulkscore=0 malwarescore=0 adultscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
- definitions=main-2107090031
-X-Proofpoint-GUID: f0C4woq8qS9bvFqO4heU1otUb9BWvc4l
-X-Proofpoint-ORIG-GUID: f0C4woq8qS9bvFqO4heU1otUb9BWvc4l
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_233906_139504_3836274C 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20210709_010202_892217_5976A819 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,49 +94,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The video_device_release() frees the "vfd" pointer so passing it to
-video_unregister_device() on the next line results in a use after free.
-Calling video_unregister_device() on a device that hasn't been
-registered is supposed to be a no-op so that can be removed.  The paths
-with to goto unreg_video_dev have a memory leak and should be updated to
-goto rel_vdev instead.
+From: Levin Du <djw@t-chip.com.cn>
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/media/platform/rockchip/rga/rga.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index bf3fd71ec3af..37f7fd060c38 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -863,12 +863,12 @@ static int rga_probe(struct platform_device *pdev)
- 	if (IS_ERR(rga->m2m_dev)) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
- 		ret = PTR_ERR(rga->m2m_dev);
--		goto unreg_video_dev;
-+		goto rel_vdev;
- 	}
- 
- 	ret = pm_runtime_resume_and_get(rga->dev);
- 	if (ret < 0)
--		goto unreg_video_dev;
-+		goto rel_vdev;
- 
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
-@@ -904,8 +904,6 @@ static int rga_probe(struct platform_device *pdev)
- 
- rel_vdev:
- 	video_device_release(vfd);
--unreg_video_dev:
--	video_unregister_device(rga->vfd);
- unreg_v4l2_dev:
- 	v4l2_device_unregister(&rga->v4l2_dev);
- err_put_clk:
+Hi all, this is an attemp to add Firefly ROC-RK3328-PC to the mainline
+kernel.
+
+ROC-RK3328-PC is the board inside the portable Firefly Station M1
+Geek PC. As a redesign after the ROC-RK3328-CC, it uses TypeC as
+power input and OTG port, embedded with eMMC 5.1 storage and a
+SDIO WiFi/BT chip (RTL8723DS).
+
+Many thanks to the Linux people!
+
+
+Levin Du (2):
+  dt-bindings: add doc for Firefly ROC-RK3328-PC
+  arm64: dts: rockchip: add support for Firefly ROC-RK3328-PC
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../arm64/boot/dts/rockchip/rk3328-roc-pc.dts | 110 ++++++++++++++++++
+ 3 files changed, 116 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts
+
 -- 
-2.30.2
+2.23.0.37.g745f6812895b
+
+
 
 
 _______________________________________________
