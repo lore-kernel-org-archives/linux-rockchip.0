@@ -1,86 +1,172 @@
-Return-Path: <SRS0=gZV2=MA=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=C1nv=MB=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 413CBC07E96
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jul 2021 12:01:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DD08C07E9E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 06:39:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFF416146B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Jul 2021 12:01:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFF416146B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 25A4661407
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Jul 2021 06:39:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25A4661407
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hQv8ZROdGepxxnlCgGJX1s+UVIGJBwqhCUPVN3ckPTc=; b=MQcfs6qnXzZsn8cbHhcoK8Z+sJ
-	xdFgzBXkZq+OdzkkTeZUv/r8VC1m0Vu/PCYSl7JHUuFuZ89wQZ4a8uN2qrG1fXmYDs1hfFJ6Dv3mX
-	b2D2rGyetFQZ2OygZTCD61/1O+aH7rzsNyBJ55MAye+kvLZCndqeeUmSjetEbRERCe3OQMag4+WNj
-	mThVgyfQERTUHgxA+eqMyClanYZ3QfhbJ7j6r+Sl3KyQPPPeR5AuSFgqp0jBVjbVMVxSqigpKo7+v
-	pkuToHB5GT+nsA1I1aX88AAGdW0OTuRr+aUCRhDXNtaoHb9Zam+MkuwpzDvc1VGwyrevYcOKeZVsi
-	djgxaPQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CgcIbFMwH5mSUZWQXoxs6VrWkl9ux2Mn8vczMln5NKo=; b=w1qQrp7/Qv5jKf
+	edkJT+2kr3YD0spUegBuI8FWZVJ1tU1n4tA4L1rq8KO383WX0SIs8pcTuCRyejpNupQYfdGGNGOTy
+	9zMD9iSlcjNYOnHEmtE4FTknw1Q99U+0KdXhKXCAJQu8C6hhAXWH/8YExDI9OKHOB43VnUYuQIwBL
+	fKhUluvBSFLIKypuRfRYcP0TAOpqHtj4qZpZfcifaBbc60c27JMVIblrLJw4E1bJ5f5YcP+lwCiYo
+	w/xZOThcC4LPRKjSlaFy/DgHPoOg2voN2ru/nfFMgVLszn6gl5SM5sXSX+BT3Aa1QXDeTgdeBlYaW
+	Z1PzVtVf3Hhq5Aqr//cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1Six-00Gozb-90; Thu, 08 Jul 2021 12:01:47 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1m1kAF-000txw-QA; Fri, 09 Jul 2021 06:39:07 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1Sij-00GoxW-5b; Thu, 08 Jul 2021 12:01:34 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id BFBF8201B9;
- Thu,  8 Jul 2021 12:01:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1625745691; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=z/XC84Y8Csxe3fvQCmTMHrEy9tJGik1nSS43Bv0YSE4=;
- b=i1oLh3jlXbaIaof5XFzjQirDKFl4hmbHDxPInh1680+hXGScuAMyq9774ZGf+u/tD6Rxpe
- I3yeCN56GyLO7oEmbOCANKvacgepArNrYPk4brvLN27SudevO+UD9ZHYjFjeISnGQm8TJV
- B6+lvFIFLD7ZK/DZC4JxlO3ZPRJeBx8=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1625745691;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=z/XC84Y8Csxe3fvQCmTMHrEy9tJGik1nSS43Bv0YSE4=;
- b=wbibhFklhb2F197H6w/nIqvAl2ob/HuHrkNuPjL46VRqRgyOV8epQ1ylmrSgGg0qyJlBBY
- eYTs5zxjlsz+MzDQ==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 9338313BDF;
- Thu,  8 Jul 2021 12:01:31 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id ZGp2Ihvp5mAoUAAAMHmgww
- (envelope-from <tzimmermann@suse.de>); Thu, 08 Jul 2021 12:01:31 +0000
-Subject: Re: [PATCH] drm/rockchip: Implement mmap as GEM object function
-To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- dri-devel@lists.freedesktop.org
-References: <20210624095502.8945-1-tzimmermann@suse.de>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <30a0370e-b2b6-9579-7b31-6bc7d68fc8e9@suse.de>
-Date: Thu, 8 Jul 2021 14:01:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m1kAD-000twD-UE
+ for linux-rockchip@lists.infradead.org; Fri, 09 Jul 2021 06:39:07 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 1696Ugnf008109; Fri, 9 Jul 2021 06:38:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2020-01-29;
+ bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
+ b=Spxprx0vihQMWfCjYxAY6+DXeIIdBiRbHvx9wStF1nGVvmKx+fmn/QZyMIHboBkOKtZh
+ cGl5hVME6vCdQ9+F7vc87cg7bW4TvLsCIxKtJli36YfjDz/9Dxa6V0rABLHWnMCdaGkN
+ huhSW+QpRa6E8N42pk+zZJyTXGU2ZMnLLmrmxhpTnHEPUNwadM1i+t2xN1UyAFjMrX19
+ xMx4lhaZGaMmBPu3VAyBRHfZed9NQBvtJdD2vErVJvETUICe6yynEoWcE66J/JfyThaN
+ HyJdW5oDzTdDUUCuzh5KKX0S6r26UHPspKC/LYPP2lHGsobPf/fCWfAqQlW81qayHVwv 6g== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 39npbyjn4d-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 09 Jul 2021 06:38:54 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 1696UYJl139161;
+ Fri, 9 Jul 2021 06:38:54 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11lp2175.outbound.protection.outlook.com [104.47.57.175])
+ by aserp3020.oracle.com with ESMTP id 39jfqf4p75-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 09 Jul 2021 06:38:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oEhjDsQBUDWNvU0npDr/9OMXGsNiOJWlpFhrpFYN8NEtvhVfLjdlobEKG0m6XDbHFtDlGxjP4fAPjHmgKgH4dXuylIFiR6podGja9K1Wpp+xMkc7zHie6HE2ukNm8jNMWzmIOFoi4DvzPshsURfdY0bO9/Kkv+Q6H95bfMBoreUVUtWJvZIRQoQX6urrIUcFtl+Yz4wYRXSUuq+1fFzc5GtCCyXMCcbvOIBBQgfLKI/j8X4JyS2sELZ+EgyBIFeexSqWl4nfNjWDPGNa8ico3AIvSZxCQxU9Gb7wjg16GQe400OetPG4yluMi5fvRTj6xMwlXhGDgEZntA0D0WTGsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
+ b=ezu3kh91ubRMa2ZtMBoiRSXVnKyU5zmpkizDfwKdFXKxZf28izRd30syFtCKsrCBRlcFGVy/ML/VB9lnqyXMn3AC4KDXGthKFFR/nU2hlIQraT4wxKBtdZD0bpW2ZN8qZHXLiE1OD2YL0/e6rVNsRFxJQmp0SDsrtjFsjOVagpQ9PEFnxigXnYOQqgGNQ2daF5CG8Sy7DQjodDSFZ/paswrv+0cOJXaxCgKuAf6NYLmacAQ5Z7pARceV8q9LbcZVavrNK9ihLzOsZy+Nj0p8MjvHrM9spqzCIeOwnJ9zTdZuXZquFwNsvQkmZoXBpB8fpciUj5i552eE8iz06Vq9tg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vO8jfPldb40pnjAxiYQBbUa87S2Vueq33ToRp5mOcKk=;
+ b=JLrxJpmZAp3QSNcjaVl3Tolb3xc5cWbRDdlQO7vjUIP1XB3VdBJAqTf6d4Lo1veXKJnqMfVetwGnunZ8ATIY3SWPY9xTa95xh71eYk40dfOGqGFVnkArU7XV1a76mvJ667iUoFH1/8x7DhXy344JmqEjhaS1/FAPOEbBmnDgq/w=
+Authentication-Results: iotwrt.com; dkim=none (message not signed)
+ header.d=none;iotwrt.com; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by CO6PR10MB5411.namprd10.prod.outlook.com
+ (2603:10b6:5:35e::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4287.27; Fri, 9 Jul
+ 2021 06:38:52 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::3413:3c61:5067:ba73]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::3413:3c61:5067:ba73%5]) with mapi id 15.20.4287.033; Fri, 9 Jul 2021
+ 06:38:52 +0000
+Date: Fri, 9 Jul 2021 09:38:29 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jacob Chen <jacob-chen@iotwrt.com>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>,
+ Dongliang Mu <mudongliangabcd@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] media: rockchip/rga: fix a use after free in rga_probe()
+Message-ID: <YOfu5Zb2kpN/0Prn@mwanda>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-ClientProxiedBy: JN2P275CA0030.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::18)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-In-Reply-To: <20210624095502.8945-1-tzimmermann@suse.de>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from mwanda (102.222.70.252) by
+ JN2P275CA0030.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:2::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4308.20 via Frontend Transport; Fri, 9 Jul 2021 06:38:44 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c2dbe30e-af3d-4929-d2fd-08d942a43702
+X-MS-TrafficTypeDiagnostic: CO6PR10MB5411:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <CO6PR10MB54113794E026AB7AD49BAC6F8E189@CO6PR10MB5411.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: C7NKzl2BJNUHOiaOTdrZEsqglYVedwHDPWe/X67m4GepgbvRdCTOYG76C8JVbcFdP1sukp7VgkaVhYsFur95o5n1hgog+OIfqeWhiDvmF2UqQiaKzgHhb3qFslkOv0tr+j/e0lwKFMxvvdki6Q9v7ff5h60LlT0ziFSnorxmbzXl+PQeGUJ2ylFTxxcjLlpzc9eu4AWXkXY3+q/lhwlMogpC6BqSIHx+5C8puPsywHsqo4pf5aXpm+HX8umZr3iWbQqnQVCOMbTUHIsGcw5vgr3m+ipSjrp7Zh/3rDpLNJVvUGGsLmDJFo6awsCwMdvOHDDgOkEwTKEJItgpHH1WdYfit+SCPToUgkeN7a3VJcdXNIpxB9QUNPT4+1Eb9+NV2SUb+GODiMIxpZTLM9cJ1cgs5/7nqmsip8nnZ3mibaaglae4Mvw1eQIeVYaXCYxnfr3NHVZuzl1YB9URO7wbQ4PNvxpvyt6geJlcnxE6Pfs88Tcbbynn6sQ5hPnv3ZNrColtsoMfkh4HFq8bSbSAS8HqgXnknUAF5MRpRDst3rBHsJD9mefsGdEIlMXuOduy40JR7aAbrFCcbe1ivebzbMfNPOrF2h8xc3TJWxrBJJ6iPqapFCRGk0lYmqbuewMcweQXzsdwusubJS5q2ouqW92rAeucCeghkDP52yHFnx5iJsd0MJdJWaul+NUs9jX7xm50NWUeCSMibVHpu+leQA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(39860400002)(396003)(346002)(366004)(136003)(376002)(6666004)(83380400001)(956004)(5660300002)(55016002)(44832011)(86362001)(7416002)(316002)(66946007)(52116002)(66556008)(9686003)(478600001)(66476007)(2906002)(33716001)(26005)(8936002)(6916009)(38350700002)(6496006)(38100700002)(186003)(9576002)(8676002)(54906003)(4326008);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?C0MO/jpgA/8E23BItyS50649V6iBl/W7biryd23O+HJb+bjMNtAzZahK+gf+?=
+ =?us-ascii?Q?JoDgGfBEQrhyFl+m2hksuQA9AWNUGbP0k6aDyOyNlNsR0/V3mzp4q7J/kkCP?=
+ =?us-ascii?Q?2cWVX5VldaaPGW1mH9SBfvG4yDVLrfS9MQQ7ODkq/e+f7xame64ivQ0Q4pKa?=
+ =?us-ascii?Q?/hcxsBpA1kZJm2n+rBeModpaNQAnXL/VN6s4mQriLyZrG8MVVTI3BIPyFlCW?=
+ =?us-ascii?Q?Ra8aWoavb+L/V75f5Im5deVD+vw5tHrwiVmDQcJXbQxNKHbuYZ8+cByB5qXp?=
+ =?us-ascii?Q?LopsWRjSiyeFaw6B206XpPdE03qv+skenDgissTcOOowzHb7lvGp1zLj9jX+?=
+ =?us-ascii?Q?+h1y2Det/2RILPWvF+bTKJ2hiEe4kfRkaShj13Uxoykx5pfRjsKuWKMAt24z?=
+ =?us-ascii?Q?o7R0/fRH4CjYgW7qPZ0mToutztD37mtVBWhLghdTRGpedLaGymdoGyIKhKGG?=
+ =?us-ascii?Q?G3jKfhHPMeyuLQLJ1sjEBI9tXOx7MR8Kj33Dg7jAI3teNl75jtGLKBdL7Qgl?=
+ =?us-ascii?Q?XJkxh+l9dbOyvA/vpOlxpC+5kpUoh7ivJmZt4NiBBN50PL73on17y+OdqAr3?=
+ =?us-ascii?Q?s/s8Xi3bP/zpx4EakleapBbCV8UoMK7ZtWTENZapnvHxWlWLP9+QzGZZ3zuW?=
+ =?us-ascii?Q?KQR+3zmGoYSc+2IkA2Szhjh4abvL/pNQ4pKZCxPS54UKa5r/+C2zNsBIkHIF?=
+ =?us-ascii?Q?H44mFVsrU0qx66MPon6PUVm6rHZGUWxnozRBA6gn1L4WZ2xE5gVMXJlIlttD?=
+ =?us-ascii?Q?7DoR+LAFrw+BRpFL+nOn09a/l4/qY4fKfJTeOwhsP18z8rfXntHyGZjKCL1/?=
+ =?us-ascii?Q?7irYHfLpZkAqByanTYbylhjfdCjvQatJq75o/Jlk6QFqfZTTICxqksZ2W9rt?=
+ =?us-ascii?Q?aZ+LpOBVeiRd4rf2RPMV73//HnLgp6Gf2tkBgbGfYKuaiIA09IlI+H74SPF5?=
+ =?us-ascii?Q?nty1Egj/Ubi+hhF/M+AMp14tgHI8cZEJZwjEOl9cnw+NJdVgKe9Two1dAclZ?=
+ =?us-ascii?Q?q9ITIo+SQ1Xj7uRVVvMIr7u3+/C6i+2K4j1ucVK/LRhxdxgY6Gu5+F7mAlwP?=
+ =?us-ascii?Q?UPS5iWFVB8A4fRFniwWJlGf4VHHMj6ktcvxKyT3ZA6ESCWZA7O27I6p6Nk17?=
+ =?us-ascii?Q?cmW+C50cU09bsIbFDtX+mUADkvdlzRUQUF3m5Dhsi5f4djYgI8L3Zbor1zD2?=
+ =?us-ascii?Q?D4yMb8OmYMU7rYQ52RnKW9OCS6iPm9MLkqYGo7wbeFP5ULOCFLC49QwJCr2E?=
+ =?us-ascii?Q?e7V3OKNanhzTLc5oLJRae0TO8IUZNxTEC4IQnE4gUjCS5zjuKvjArmx681j2?=
+ =?us-ascii?Q?RQiEZOTROOmD6WiIK79PQfPu?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c2dbe30e-af3d-4929-d2fd-08d942a43702
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2021 06:38:51.9194 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YRSmWKSZ9DL8PIW3PxgT4Qh/LU9Oo5/UGwI/juvrAp9AZGsVZvc5fRTCwqb7LSQf3Kkpimhsu2JbctqjiIi06359vzacoo01Nk3Uw/AYQTo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR10MB5411
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10039
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ spamscore=0 phishscore=0
+ mlxscore=0 bulkscore=0 malwarescore=0 adultscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
+ definitions=main-2107090031
+X-Proofpoint-GUID: f0C4woq8qS9bvFqO4heU1otUb9BWvc4l
+X-Proofpoint-ORIG-GUID: f0C4woq8qS9bvFqO4heU1otUb9BWvc4l
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_050133_421203_C0261816 
-X-CRM114-Status: GOOD (  27.26  )
+X-CRM114-CacheID: sfid-20210708_233906_139504_3836274C 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,264 +179,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7838851487208142098=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============7838851487208142098==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="CTdv7Jmn98K7iDS4AqCQfuaXv0HI4etoz"
+The video_device_release() frees the "vfd" pointer so passing it to
+video_unregister_device() on the next line results in a use after free.
+Calling video_unregister_device() on a device that hasn't been
+registered is supposed to be a no-op so that can be removed.  The paths
+with to goto unreg_video_dev have a memory leak and should be updated to
+goto rel_vdev instead.
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---CTdv7Jmn98K7iDS4AqCQfuaXv0HI4etoz
-Content-Type: multipart/mixed; boundary="bwmEIjXADoZPGnv76DXn81uZ0iTjyK82w";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-Message-ID: <30a0370e-b2b6-9579-7b31-6bc7d68fc8e9@suse.de>
-Subject: Re: [PATCH] drm/rockchip: Implement mmap as GEM object function
-References: <20210624095502.8945-1-tzimmermann@suse.de>
-In-Reply-To: <20210624095502.8945-1-tzimmermann@suse.de>
+Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/media/platform/rockchip/rga/rga.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
---bwmEIjXADoZPGnv76DXn81uZ0iTjyK82w
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index bf3fd71ec3af..37f7fd060c38 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -863,12 +863,12 @@ static int rga_probe(struct platform_device *pdev)
+ 	if (IS_ERR(rga->m2m_dev)) {
+ 		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
+ 		ret = PTR_ERR(rga->m2m_dev);
+-		goto unreg_video_dev;
++		goto rel_vdev;
+ 	}
+ 
+ 	ret = pm_runtime_resume_and_get(rga->dev);
+ 	if (ret < 0)
+-		goto unreg_video_dev;
++		goto rel_vdev;
+ 
+ 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
+ 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+@@ -904,8 +904,6 @@ static int rga_probe(struct platform_device *pdev)
+ 
+ rel_vdev:
+ 	video_device_release(vfd);
+-unreg_video_dev:
+-	video_unregister_device(rga->vfd);
+ unreg_v4l2_dev:
+ 	v4l2_device_unregister(&rga->v4l2_dev);
+ err_put_clk:
+-- 
+2.30.2
 
-ping for review
-
-Am 24.06.21 um 11:55 schrieb Thomas Zimmermann:
-> Moving the driver-specific mmap code into a GEM object function allows
-> for using DRM helpers for various mmap callbacks.
->=20
-> The respective rockchip functions are being removed. The file_operation=
-s
-> structure fops is now being created by the helper macro
-> DEFINE_DRM_GEM_FOPS().
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.c   | 13 +-----
->   drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |  3 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c   | 44 +++++-------------=
--
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |  7 ---
->   4 files changed, 15 insertions(+), 52 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_drv.c
-> index b730b8d5d949..2e3ab573a817 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -208,16 +208,7 @@ static void rockchip_drm_unbind(struct device *dev=
-)
->   	drm_dev_put(drm_dev);
->   }
->  =20
-> -static const struct file_operations rockchip_drm_driver_fops =3D {
-> -	.owner =3D THIS_MODULE,
-> -	.open =3D drm_open,
-> -	.mmap =3D rockchip_gem_mmap,
-> -	.poll =3D drm_poll,
-> -	.read =3D drm_read,
-> -	.unlocked_ioctl =3D drm_ioctl,
-> -	.compat_ioctl =3D drm_compat_ioctl,
-> -	.release =3D drm_release,
-> -};
-> +DEFINE_DRM_GEM_FOPS(rockchip_drm_driver_fops);
->  =20
->   static const struct drm_driver rockchip_drm_driver =3D {
->   	.driver_features	=3D DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
-> @@ -226,7 +217,7 @@ static const struct drm_driver rockchip_drm_driver =
-=3D {
->   	.prime_handle_to_fd	=3D drm_gem_prime_handle_to_fd,
->   	.prime_fd_to_handle	=3D drm_gem_prime_fd_to_handle,
->   	.gem_prime_import_sg_table	=3D rockchip_gem_prime_import_sg_table,
-> -	.gem_prime_mmap		=3D rockchip_gem_mmap_buf,
-> +	.gem_prime_mmap		=3D drm_gem_prime_mmap,
->   	.fops			=3D &rockchip_drm_driver_fops,
->   	.name	=3D DRIVER_NAME,
->   	.desc	=3D DRIVER_DESC,
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gp=
-u/drm/rockchip/rockchip_drm_fbdev.c
-> index 2fdc455c4ad7..d8418dd39d0e 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-> @@ -7,6 +7,7 @@
->   #include <drm/drm.h>
->   #include <drm/drm_fb_helper.h>
->   #include <drm/drm_fourcc.h>
-> +#include <drm/drm_prime.h>
->   #include <drm/drm_probe_helper.h>
->  =20
->   #include "rockchip_drm_drv.h"
-> @@ -24,7 +25,7 @@ static int rockchip_fbdev_mmap(struct fb_info *info,
->   	struct drm_fb_helper *helper =3D info->par;
->   	struct rockchip_drm_private *private =3D to_drm_private(helper);
->  =20
-> -	return rockchip_gem_mmap_buf(private->fbdev_bo, vma);
-> +	return drm_gem_prime_mmap(private->fbdev_bo, vma);
->   }
->  =20
->   static const struct fb_ops rockchip_drm_fbdev_ops =3D {
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_gem.c
-> index 7971f57436dd..63eb73b624aa 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -240,12 +240,22 @@ static int rockchip_drm_gem_object_mmap(struct dr=
-m_gem_object *obj,
->   	int ret;
->   	struct rockchip_gem_object *rk_obj =3D to_rockchip_obj(obj);
->  =20
-> +	/*
-> +	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
-e
-> +	 * whole buffer from the start.
-> +	 */
-> +	vma->vm_pgoff =3D 0;
-> +
->   	/*
->   	 * We allocated a struct page table for rk_obj, so clear
->   	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().=
-
->   	 */
-> +	vma->vm_flags |=3D VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
->   	vma->vm_flags &=3D ~VM_PFNMAP;
->  =20
-> +	vma->vm_page_prot =3D pgprot_writecombine(vm_get_page_prot(vma->vm_fl=
-ags));
-> +	vma->vm_page_prot =3D pgprot_decrypted(vma->vm_page_prot);
-> +
->   	if (rk_obj->pages)
->   		ret =3D rockchip_drm_gem_object_mmap_iommu(obj, vma);
->   	else
-> @@ -257,39 +267,6 @@ static int rockchip_drm_gem_object_mmap(struct drm=
-_gem_object *obj,
->   	return ret;
->   }
->  =20
-> -int rockchip_gem_mmap_buf(struct drm_gem_object *obj,
-> -			  struct vm_area_struct *vma)
-> -{
-> -	int ret;
-> -
-> -	ret =3D drm_gem_mmap_obj(obj, obj->size, vma);
-> -	if (ret)
-> -		return ret;
-> -
-> -	return rockchip_drm_gem_object_mmap(obj, vma);
-> -}
-> -
-> -/* drm driver mmap file operations */
-> -int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma)
-> -{
-> -	struct drm_gem_object *obj;
-> -	int ret;
-> -
-> -	ret =3D drm_gem_mmap(filp, vma);
-> -	if (ret)
-> -		return ret;
-> -
-> -	/*
-> -	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
-e
-> -	 * whole buffer from the start.
-> -	 */
-> -	vma->vm_pgoff =3D 0;
-> -
-> -	obj =3D vma->vm_private_data;
-> -
-> -	return rockchip_drm_gem_object_mmap(obj, vma);
-> -}
-> -
->   static void rockchip_gem_release_object(struct rockchip_gem_object *r=
-k_obj)
->   {
->   	drm_gem_object_release(&rk_obj->base);
-> @@ -301,6 +278,7 @@ static const struct drm_gem_object_funcs rockchip_g=
-em_object_funcs =3D {
->   	.get_sg_table =3D rockchip_gem_prime_get_sg_table,
->   	.vmap =3D rockchip_gem_prime_vmap,
->   	.vunmap	=3D rockchip_gem_prime_vunmap,
-> +	.mmap =3D rockchip_drm_gem_object_mmap,
->   	.vm_ops =3D &drm_gem_cma_vm_ops,
->   };
->  =20
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h b/drivers/gpu/=
-drm/rockchip/rockchip_drm_gem.h
-> index 5a70a56cd406..47c1861eece0 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-> @@ -34,13 +34,6 @@ rockchip_gem_prime_import_sg_table(struct drm_device=
- *dev,
->   int rockchip_gem_prime_vmap(struct drm_gem_object *obj, struct dma_bu=
-f_map *map);
->   void rockchip_gem_prime_vunmap(struct drm_gem_object *obj, struct dma=
-_buf_map *map);
->  =20
-> -/* drm driver mmap file operations */
-> -int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma);
-> -
-> -/* mmap a gem object to userspace. */
-> -int rockchip_gem_mmap_buf(struct drm_gem_object *obj,
-> -			  struct vm_area_struct *vma);
-> -
->   struct rockchip_gem_object *
->   	rockchip_gem_create_object(struct drm_device *drm, unsigned int size=
-,
->   				   bool alloc_kmap);
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---bwmEIjXADoZPGnv76DXn81uZ0iTjyK82w--
-
---CTdv7Jmn98K7iDS4AqCQfuaXv0HI4etoz
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDm6RsFAwAAAAAACgkQlh/E3EQov+AB
-fQ//awAlpYxZCeLpyqjWWOEURZl7agv2KjhOJfTMXo5oGaqxXRf/leTtvf7IVNMfMPFwYegjOt17
-LIuKNy91qXO4ZanI+yuMyMF0nwav7caFB8n5lhocCB9TsnCm3Xr0ciOoVbH6VA+shcjznvXYLjta
-ZfROcyCvDY1/Wfi+EAgtG8wzFzXgJZrXOw/mHjXx26HiXk+EFQ/Gn/ADFGoIp6yz+LFqD5ChSWMq
-4Qflx8pr46PfojV3P3DU0QpNSDClkLnh/5qMr1HOFSyGqcGuw2mf4lxjmfPS3Z2R7YjWtMSAKSXd
-xaWjf789APtN7gVlZm1eOOEx7skYuULK4dJPaoCEZ3oOlW9V8X9AW7qNwBRcE4e1ixG0uoke6/Ok
-Cqmvu2e53P436nOWcNW+CbN/xI2wutkwsJdO3TBKb8csm/Y8xs5yAkrjpPC6HqO+tndWOl8Xa5Pb
-zSRpnvy/6oFa+4Tdp+TMVOHKk0VTjzk7Pred9WP6SKiBC0QSai4hmTA8DltiqqawymWggs9jkHLA
-m2CAfbPuHPpQUdeMX6HaWgYRCk7zg/ldZF6EG7eDouwsiYkrUNs6YZEtZiTupervbjgYZ4vpLDZb
-KLP7cZT0Y3CHWk0vPI7hjYoda5l3THeDodlH8aqG1Mhyqe/21lAGMYHEjAXsPWmjP2DsxFTbDf1M
-rn8=
-=bWCU
------END PGP SIGNATURE-----
-
---CTdv7Jmn98K7iDS4AqCQfuaXv0HI4etoz--
-
-
---===============7838851487208142098==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7838851487208142098==--
-
