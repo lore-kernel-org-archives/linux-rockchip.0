@@ -2,19 +2,19 @@ Return-Path: <SRS0=97ng=MC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 045FEC07E95
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jul 2021 23:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45787C07E9B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jul 2021 23:52:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C32056135E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jul 2021 23:50:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C32056135E
+	by mail.kernel.org (Postfix) with ESMTPS id 1303561416
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Jul 2021 23:52:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1303561416
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IYUfNt+HQKoox/CVNoXyUjQTBn/s/oYyE5FBx4I0WgE=; b=rjloBQaiCqfEAX
-	zb62IHAMeSpVMFMdEVtZ51mc608O9poyTqs5dUEoicwvKgc4p+5Ed1ncLMg2ECOtbzimRLRRher21
-	VscKl9pRk3YfpFc3yXtBHgRN4lKP01Teupz4KMVSs38SBZdlMQAejK258bW9iPGBhyUTqZ2DZwUnK
-	LILbS2tWFP5ejSxGoGFpJfxD/Zho6B6fe91b/AU9NSqpr6+qSE6N4stg0E+UKULRZzCICNY7sTsxB
-	yFzxnSP7DpUBoxH87C7Q2yptktkCzzj5hbnaHrj7D9PzfkTbIsXcuZ22F4dB8kXrnhTYkUJXui5OZ
-	DXaN9PCrQ063+ggIcUSQ==;
+	List-Owner; bh=3eKThJm7tGbEeSukXEJXclkm730Vuk5k6NTaqriAJuc=; b=PwE6pZnOBmTCtl
+	r8oOxLcf/pm+3q+/H8mteKXPvy2EkRy+E97nSSATWpFWCy2vOUtnQtnLxzIIQYOugiOit49WxyXeP
+	S8bF2vpJ1NkO/zLfXgcXxJX4soA0/ps8zkiNph56sLeQmBeOsgIGh1UP+gMzsmQKFM5qdcl3RC3Nu
+	bBIqR/Nlx8DffM6VDlz/txCu6uufxjddaQ8zKwmcX5j8ZkWjgUXHUkyhgWs1XzDGu9swNVNTDopIZ
+	cla6VHqbtnx8l/WKCyYTAp8B00ddd/5jQLyiqvU3dzM0SRe8v3Rei7FyJo3op1UWQftjYQntre5Wn
+	6eN4soMk1bqkOZp5LbMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2Mjo-004Hk9-Q6; Sat, 10 Jul 2021 23:50:24 +0000
+	id 1m2Mlq-004JEX-6c; Sat, 10 Jul 2021 23:52:30 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2MjX-004HYa-SZ; Sat, 10 Jul 2021 23:50:09 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7CFAA60234;
- Sat, 10 Jul 2021 23:50:06 +0000 (UTC)
+ id 1m2MkP-004ICN-Ce; Sat, 10 Jul 2021 23:51:03 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E58D2613E0;
+ Sat, 10 Jul 2021 23:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625961007;
- bh=usjltRtEuFp8h2ICKIOczpm839/NnubVdwqvLBLU3LI=;
+ s=k20201202; t=1625961061;
+ bh=N5eJoTF0ViH2kJuzZiUhRZNc/Voul3eL5qnXxBEUhno=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eBXCZ/3azbVIYV23cyVWDk4EPEiNMJ6pA7qoRoLK3PVvWuFaooMeehHpTuwBq7nCd
- fjJhVhwMTT+Rea+AUBoEk5++CcPAgK9K3LdCISt3r/+uK8YGytjBKRw1lp3RG2HehY
- jNBaSZqVXHzYer+cbRbxmTPJZWC8i4Ux5aaNieE7TOBXH0Rz/0jtiYRVum/9JDQOyf
- gKSaHFmvNHB8S+Nic1I09+A54dk/tLVXyXy5iI6FbLZv3kkzI8jyIcQCqfBRKjc/jr
- d8S3BIjwQsn6rL1qOXkZRoEfH31zKhvrFDu1SanJ4lFydgB+HU1UtyVSElBb7TPZpq
- byfME3y0KOTmw==
+ b=rqpk5y8STynGzkyDnq/K818q/6pHUTB+L4+2sRu+hEGULdjMF2wa1Tmq2ALHgAKZz
+ BaRaEfrrdYn9FHD1UPZuhJfjI1fPvY/6PW1AexgTdmNmlfI1gBZKCulwWjjSbwwYWl
+ +PekKf3KRkEgQUBNDKv+OB2pOYWE29brWpR+xWLqKNOoWxPgbvw04hpmBMLXvDRl+t
+ QRhnDYaW+Z+AO/BBAH48fLzmEKQnxI0N+oS4X84xq2l8uS9wvPZK0ZOqhNJ5DhWZ6m
+ wfZ0cOL8tkt8IsD7TYWclPoTeGRqXisSj7koDW2155NBjvxozZ5WMHULH2tj2obz8p
+ dZie9VwQbI0SA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -56,18 +56,18 @@ Cc: Javier Martinez Canillas <javierm@redhat.com>,
  Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>,
  Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 37/43] PCI: rockchip: Register IRQ handlers after
+Subject: [PATCH AUTOSEL 5.10 33/37] PCI: rockchip: Register IRQ handlers after
  device and data are ready
-Date: Sat, 10 Jul 2021 19:49:09 -0400
-Message-Id: <20210710234915.3220342-37-sashal@kernel.org>
+Date: Sat, 10 Jul 2021 19:50:11 -0400
+Message-Id: <20210710235016.3221124-33-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210710234915.3220342-1-sashal@kernel.org>
-References: <20210710234915.3220342-1-sashal@kernel.org>
+In-Reply-To: <20210710235016.3221124-1-sashal@kernel.org>
+References: <20210710235016.3221124-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210710_165008_055496_1564B56C 
+X-CRM114-CacheID: sfid-20210710_165101_524093_A68A2796 
 X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,10 +123,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index f1d08a1b1591..78d04ac29cd5 100644
+index 9705059523a6..0d6df73bb918 100644
 --- a/drivers/pci/controller/pcie-rockchip-host.c
 +++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -592,10 +592,6 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
+@@ -593,10 +593,6 @@ static int rockchip_pcie_parse_host_dt(struct rockchip_pcie *rockchip)
  	if (err)
  		return err;
  
@@ -137,7 +137,7 @@ index f1d08a1b1591..78d04ac29cd5 100644
  	rockchip->vpcie12v = devm_regulator_get_optional(dev, "vpcie12v");
  	if (IS_ERR(rockchip->vpcie12v)) {
  		if (PTR_ERR(rockchip->vpcie12v) != -ENODEV)
-@@ -973,8 +969,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+@@ -974,8 +970,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  	if (err)
  		goto err_vpcie;
  
@@ -146,7 +146,7 @@ index f1d08a1b1591..78d04ac29cd5 100644
  	err = rockchip_pcie_init_irq_domain(rockchip);
  	if (err < 0)
  		goto err_deinit_port;
-@@ -992,6 +986,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+@@ -993,6 +987,12 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
  	bridge->sysdata = rockchip;
  	bridge->ops = &rockchip_pcie_ops;
  
