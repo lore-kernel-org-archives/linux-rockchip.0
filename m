@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A454C07E99
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jul 2021 16:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 841ADC07E99
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jul 2021 20:05:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BA89611F1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jul 2021 16:22:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BA89611F1
+	by mail.kernel.org (Postfix) with ESMTPS id 49A5A611CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Jul 2021 20:05:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49A5A611CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,62 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2ZWwFt+67MeKZhSNEyC3H59Yw3zJrfj9aWBV5YvlfM=; b=z7AcJY20nyt1eU
-	tqs6SFj75gsOdaPq5aYRdf26lU8it+ZwxBmPVSUbwr26VYFv8zPnLK5NugmyKjE1JC4bojWpPmQSy
-	7Jepa31xlFsl0/4vYiOTy3PN6ISK02GPRNgC2G6kCc0eB7a15T4e0f8FSfyb811WOTQMHMwBVRt3S
-	VojFArvJumoa0hvdznUkIVw+94xW64cnXesZdo/+fenN2kklkCQVKqBX2y5++nDPjFquJlxkaV9R7
-	F9XNsXkTqLszJTqFSHMRx82IdA3t8S2Ru57sy/Gbi2eJnKe58DwdxOQ+PlTyP4uLyHCM153S5dJpa
-	oMUy633pud76TQaDE3pg==;
+	List-Owner; bh=rZ3iTR2y5nKDlyIriAl52zvzJof8g/YlK8Hysb34hY0=; b=0waM5ijlj92t0F
+	Ebvl1UYlUALXNuYQbeXNYKzBWIv9nkbyz/a7lz4Sng7QS2ZN3h2uSDB+B2NsF7+grVdo1JVm9lpsW
+	51ES+ks/J7b4rwZMEf2f/ffse63ujRuvzj982tKrdcvVGGzOk8fHSkuzfKPlh9w4rM5PYTU9Aa48T
+	lc1372UIvu0adwsRQWZDlT+wlWhiPM+5hRqsEUwnwQcwDpQZkLw4kieDQtocfktmHhvR1b+EQUC+a
+	vWl5N2RLcSQKdaCzibRWViIWd14oCtDLslXtcEDHArYTgW4lG9/16mIUagwJtYdGSwHV00BPbmYtm
+	HMgVOnqCZIh8QYXKupNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2yh6-007sAr-ES; Mon, 12 Jul 2021 16:22:08 +0000
-Received: from mail-io1-f51.google.com ([209.85.166.51])
+	id 1m32Aq-008Kz9-1h; Mon, 12 Jul 2021 20:05:04 +0000
+Received: from mail-io1-f41.google.com ([209.85.166.41])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2yh3-007s9P-RT; Mon, 12 Jul 2021 16:22:07 +0000
-Received: by mail-io1-f51.google.com with SMTP id l5so23367678iok.7;
- Mon, 12 Jul 2021 09:22:05 -0700 (PDT)
+ id 1m32An-008KyW-Uj
+ for linux-rockchip@lists.infradead.org; Mon, 12 Jul 2021 20:05:03 +0000
+Received: by mail-io1-f41.google.com with SMTP id y8so24228707iop.13
+ for <linux-rockchip@lists.infradead.org>; Mon, 12 Jul 2021 13:05:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=OQl5lHjb/OmsBGI/gFWR8f+atDzQ3WELfz4e0zefRf0=;
- b=aW9+0M8noBol+kg6zT2TwIuTuy/Q7kWCsVAVxOFz4qsyRDQEQtAwYz7IK0HfsXwMM5
- UpbOl64fB8+kyaZF5cpjrrUxsJdfjXcTE1F96hD32aDq/A9QVcFc86fsJeBW8fAHy/Ix
- hyutOnCIZN4PuN/DdDisFMn8/VRMpGt+kH+td8heNVvbi4it4wALJ+p6vvxXabdX7NZj
- UjJsa7LFRikwgRcZ2LesNtkDKa8gpuHnyPK/XF0MH/gwhkeh9Qqb/T2E9w51cJecUKy6
- Eq+GRzdcYTqjFSWeMKKTNL7E1Dy3VYVAv+7XY4Ds98vdvzjOzEZgqBDTxJ0ele/Pqi68
- YkhA==
-X-Gm-Message-State: AOAM530vyT22ofJf6O5J6bfBu9pIYK580E4TVUlsJSKCE1aopPn8CCv4
- K8c2pHRTKS596wypUF/8RA==
-X-Google-Smtp-Source: ABdhPJyHGSGtKgV06NdfXbbA53qEMa67Bq7B7JXq4S+FQYGqUQKOvc+lJo/dXqUW5FAdXIcYbFJ0/g==
-X-Received: by 2002:a05:6638:348c:: with SMTP id
- t12mr40409897jal.1.1626106924794; 
- Mon, 12 Jul 2021 09:22:04 -0700 (PDT)
+ bh=eU8NZJGeRlOXg3sl+j9LmKuiwWZGjFx2BmOO4WsxHwQ=;
+ b=SFlEKCCYOqN+o1b0j4QsV3MosffhJZtSpDOtGBCGwsaiqRuALW1ckF6NZB+3cR29bE
+ cFOEFzS4JnPQfGrPMaUb5bGQf4mUR6RrR0+RwOewkjYDivKUlQX+U1rrFMlWf02tNbi2
+ 12nj4g0VJtwx/DapMxCWOkHbU8ITJ4oCfMGyJPO+kwZcRYALQ827pNE0jKAk237NNozi
+ LE5YrzKCiJYotsYT525KL0/zrDNJi8tX0nAjQcvUKKWphI6Kvo488n7I1+bSYmbJ+PfW
+ M7uxu50oIHVumxjvLukj8VyAFP/IkRhBW7mF776wnNbWUAu+wyxYynIW9cTIhYXTjG8G
+ lksg==
+X-Gm-Message-State: AOAM532xjf792loxf1gGaCqoNA1fVWhseOGehOEZ8Ov/P6f31SIyF+v5
+ ccs5lgG1ydzrPdEgpHZZDA==
+X-Google-Smtp-Source: ABdhPJzzLX+ZdqoCfmxhhaV8Y94O6v7F+qOxJCcAbfAlxsuTPGYrt9RQmKau2ZsrZtOfICFUSyHGCQ==
+X-Received: by 2002:a5d:83c4:: with SMTP id u4mr469396ior.21.1626120301443;
+ Mon, 12 Jul 2021 13:05:01 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id z7sm2994991iox.4.2021.07.12.09.22.03
+ by smtp.gmail.com with ESMTPSA id n13sm8619755ilq.5.2021.07.12.13.04.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jul 2021 09:22:04 -0700 (PDT)
-Received: (nullmailer pid 2050122 invoked by uid 1000);
- Mon, 12 Jul 2021 16:22:02 -0000
-Date: Mon, 12 Jul 2021 10:22:02 -0600
+ Mon, 12 Jul 2021 13:05:00 -0700 (PDT)
+Received: (nullmailer pid 2397426 invoked by uid 1000);
+ Mon, 12 Jul 2021 20:04:58 -0000
+Date: Mon, 12 Jul 2021 14:04:58 -0600
 From: Rob Herring <robh@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: linux-kernel@vger.kernel.org, airlied@linux.ie, hjc@rock-chips.com,
- heiko@sntech.de, algea.cao@rock-chips.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, andy.yan@rock-chips.com,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org, daniel@ffwll.ch, kernel@collabora.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: display: rockchip: Add compatible
- for rk3568 HDMI
-Message-ID: <20210712162202.GA2050063@robh.at.kernel.org>
-References: <20210707120323.401785-1-benjamin.gaignard@collabora.com>
- <20210707120323.401785-2-benjamin.gaignard@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ dafna.hirschfeld@collabora.com, helen.koike@collabora.com,
+ ezequiel@collabora.com, robh+dt@kernel.org, Laurent.pinchart@ideasonboard.com,
+ linux-media@vger.kernel.org
+Subject: Re: [PATCH v6 02/10] dt-bindings: media: rkisp1: fix pclk clock-name
+Message-ID: <20210712200458.GA2397368@robh.at.kernel.org>
+References: <20210618130238.4171196-1-heiko@sntech.de>
+ <20210618130238.4171196-3-heiko@sntech.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210707120323.401785-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20210618130238.4171196-3-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_092205_931531_FBBAF389 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20210712_130502_036206_C94C1869 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,21 +96,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 07 Jul 2021 14:03:22 +0200, Benjamin Gaignard wrote:
-> Define a new compatible for rk3568 HDMI.
-> This version of HDMI hardware block needs two new clocks hclk_vio and hclk
-> to provide phy reference clocks.
+On Fri, 18 Jun 2021 15:02:30 +0200, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Having a clock name as "pclk_isp" suggests really hard a remnant from
+> the vendor kernel.
+> 
+> Right now no driver _and_ no devicetree actually uses this clock name
+> so there is still time to fix that naming.
+> 
+> Therefore drop the "_isp" suffix and only name it pclk.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > ---
-> version 2:
-> - Add the clocks needed for the phy.
-> 
->  .../bindings/display/rockchip/rockchip,dw-hdmi.yaml         | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
