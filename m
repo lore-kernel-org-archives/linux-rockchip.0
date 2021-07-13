@@ -2,74 +2,93 @@ Return-Path: <SRS0=z+fE=MF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77985C07E95
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 12:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B3F5C11F69
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 22:57:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E406610C7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 12:08:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E406610C7
+	by mail.kernel.org (Postfix) with ESMTPS id E0514613AF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 22:57:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0514613AF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kJUDF2QC9pr4XKsem9teSTs9xqxyQ3nFHZSWzUYYCsk=; b=UeACKvZJEcNV82nLxKUIK/hNgH
-	9TQbqXogMaE6cxU2bXZcZonLBKbmJshfo3enOA25hEVrnseoyoC14oBOMp9wRB338yu+UjCGlHeDb
-	dUDG6AKV360wD0CfBD5+SQDXJ0yhI6oAcFfMt+VwwsH4kXKjId67T4A5PIIMexBTGLqpJZUitnAHw
-	fCWdcrQKj7jdGpU6vqY2YDC7TZPUmXhZTlwMg8ljQS72In5SRgtL7pGLto9lLVij/7Go//o782e8E
-	Sg/0TelIG9k8JqIFBzylAz+caRXVmH6FTaXCMBcNzQowPkgJbRnqIbGk6K20nCStMeftZ7wLKSvSV
-	WqnY/c4Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1IYbNJWY906teAo+5bFlyHdRW+l2LvnuG7u2LJr48xs=; b=Lvc6Gb21huX8ks
+	0ejTNnPLerbo1vcSVTkJRGCAWQENNJWw200xSStPnnXnNZs9Y7/idNQ3jFuRacYHC8ZyRYcRHPVqf
+	cyw3gx8v2Bl4J/FDzBYZwH0MIGMblFWaJpQ5luOUAq0wET+puAmrMb/i5xPYoK59/cNrnpvzzlb01
+	GFgRsoJ2dXc+c0hUvFpBDcLXY6WDI9pSA+h9btjTyrkuiFl1TtfnP+8va0XSh//NvSwOtn+DRomrV
+	jiSZIhIsmyOFQj4kUfB+9x3iXbfjoElxW8qGnpQ1ptpqOQZu3Q+qMUOK8qFSWKUERzhOnyIe5ghXb
+	wQP4ss7SgyvZ1ivwkwig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3HCn-00AJKs-7Y; Tue, 13 Jul 2021 12:08:05 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m3RLH-00BYTq-1R; Tue, 13 Jul 2021 22:57:31 +0000
+Received: from mail-il1-f173.google.com ([209.85.166.173])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3HCL-00AJI1-EB; Tue, 13 Jul 2021 12:07:38 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E8038610C7;
- Tue, 13 Jul 2021 12:07:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626178056;
- bh=veIKrgu4aKMMb8Pa4igOFFjco3WGvRXm9loSYXLs+Lk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=G2Re8vWU1x1K/uW6MuMZnM8fGH+4B6y0hotREznO2jb8/W+nK1rCVDkVuHoXJBJeq
- 3oAqxB8Rx9TKkPMjHAy5dQ2AuLan2c4D3Z8qmd0xvQ0caK+XdS+6ftPNxszQg70ebv
- k9QCnDGMwM2vWwqvIVVXy1ug98AhmiJRZFwMZdOBZsjKt/XYgTXtQ+bbXjP8yUdKTr
- OBiuHL5TxLorQw/+x5oXbo0t8uhOLf/WMkThLUho3lWCiPBUs9dohkTvTOwx2Fx2eA
- L1KSg6XnsxmDO6szZYrZgcFFtyL4yMQABdizxsCy+LNK12IOEWxNlfRM9UB2KWlqNG
- FmCYCq8WZOvVg==
-Date: Tue, 13 Jul 2021 13:07:00 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-spi@vger.kernel.org, robh+dt@kernel.org, heiko@sntech.de,
- jbx6244@gmail.com, hjc@rock-chips.com, yifeng.zhao@rock-chips.com,
- sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org,
- linux-mtd@lists.infradead.org, p.yadav@ti.com,
- macroalpha82@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org,
- linux-clk@vger.kernel.org, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v12 01/10] dt-bindings: rockchip-sfc: Bindings for
- Rockchip serial flash controller
-Message-ID: <20210713120700.GA4098@sirena.org.uk>
-References: <20210713094456.23288-1-jon.lin@rock-chips.com>
- <20210713094456.23288-2-jon.lin@rock-chips.com>
+ id 1m3RL2-00BYQW-PP; Tue, 13 Jul 2021 22:57:18 +0000
+Received: by mail-il1-f173.google.com with SMTP id e13so24904166ilc.1;
+ Tue, 13 Jul 2021 15:57:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=pLqgmA3zxhNncLZSYPNiduirqdJowC5CS/FxB37q7a0=;
+ b=q0qxcrZkb4PKRuAtdWuI1YWm8zv9Yr1HLu913nXWwFEJXOkP1o1a52nX+Zk/y+e5Bk
+ iM7WsxNwiYLSUrDEl6eaCaAEDKaH6Q8KnYO975dxQLIpK8oF+G1J5wPynCxOyguaEnA3
+ EBnEtzBUhTeiDcboP9l4hqmj9tJ3y5o3x36ABhujHRbpri/BUufpk1tf+WaI9afQPWzS
+ PAwFa8LKRmQ7/KisFZCkZj4UHlhhabI1NN5wH+8muZ6gi2FzfNLZRu6SzpEelEdRd/Xj
+ vMStr7rCD2lVoaebznTe7j/kTyz0AQUdeN5KRZB3A1wRKm3bGx6q//1X/z7WD7hzYin3
+ Z2Ug==
+X-Gm-Message-State: AOAM531kHxR0///eApLire0mJuaY8NNgNQbY5qTQvQMpykmDE7E5uP49
+ ST1Ybp03WN0pR2XdvgfM+A==
+X-Google-Smtp-Source: ABdhPJxDX1fh/0j6B2cCSd4v8x4aGdA/5rqK4c3fCxO5I50gLSJPtAzdjVMjSMFPK1gExOJTLlDC3g==
+X-Received: by 2002:a05:6e02:218c:: with SMTP id
+ j12mr4598261ila.32.1626217035898; 
+ Tue, 13 Jul 2021 15:57:15 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id t16sm209462ilp.15.2021.07.13.15.57.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jul 2021 15:57:15 -0700 (PDT)
+Received: (nullmailer pid 1007696 invoked by uid 1000);
+ Tue, 13 Jul 2021 22:57:09 -0000
+Date: Tue, 13 Jul 2021 16:57:09 -0600
+From: Rob Herring <robh@kernel.org>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ cl@rock-chips.com, thierry.reding@gmail.com, heiko@sntech.de,
+ jagan@amarulasolutions.com, wens@csie.org, uwe@kleine-koenig.org,
+ mail@david-bauer.net, jbx6244@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ jensenhuang@friendlyarm.com, michael@amarulasolutions.com, cnsztl@gmail.com,
+ devicetree@vger.kernel.org, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
+ linux-i2c@vger.kernel.org, jay.xu@rock-chips.com, shawn.lin@rock-chips.com,
+ david.wu@rock-chips.com, zhangqing@rock-chips.com, huangtao@rock-chips.com,
+ wim@linux-watchdog.org, linux@roeck-us.net, jamie@jamieiles.com,
+ linux-watchdog@vger.kernel.org, maz@kernel.org, linux-pwm@vger.kernel.org
+Subject: Re: [RESEND PATCH v5 1/4] dt-bindings: pwm: rockchip: add
+ description for rk3568
+Message-ID: <20210713225709.GA987961@robh.at.kernel.org>
+References: <20210622020517.13100-1-cl@rock-chips.com>
+ <20210623021303.28015-1-cl@rock-chips.com>
+ <20210705064914.o2neaiwqndjfdyqd@pengutronix.de>
+ <YOK1+pMy+N64eR75@dell>
 MIME-Version: 1.0
-In-Reply-To: <20210713094456.23288-2-jon.lin@rock-chips.com>
-X-Cookie: Keep away from fire or flame.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Disposition: inline
+In-Reply-To: <YOK1+pMy+N64eR75@dell>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_050737_531344_3B3145DE 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210713_155716_849374_C2326EE4 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,58 +101,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1470779235353428423=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jul 05, 2021 at 08:34:18AM +0100, Lee Jones wrote:
+> On Mon, 05 Jul 2021, Uwe Kleine-K=F6nig wrote:
+> =
 
---===============1470779235353428423==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="IJpNTDwzlM2Ie8A6"
-Content-Disposition: inline
+> > On Wed, Jun 23, 2021 at 10:13:03AM +0800, cl@rock-chips.com wrote:
+> > > From: Liang Chen <cl@rock-chips.com>
+> > > =
 
+> > > add "rockchip,rk3568-pwm", "rockchip,rk3328-pwm" for pwm nodes on
+> > > a rk3568 platform to pwm-rockchip.yaml.
+> > =
 
---IJpNTDwzlM2Ie8A6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> > Looks good to me
+> > =
 
-On Tue, Jul 13, 2021 at 05:44:47PM +0800, Jon Lin wrote:
+> > Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+> > =
 
-> +properties:
-> +  compatible:
-> +    const: rockchip,sfc
+> > Who is supposed to apply this patch? Does this need blessing by Rob?
+> =
 
-Rob has repeatedly queried how generic this compatible is - can you
-please respond to this?
+> There is no standard.  Rob will usually have some kind of arrangement
+> with the associated maintainer(s).  If this is a big functional
+> change, I would suggest letting Rob and his army of bots give it the
+> once over before it is applied in any case.
 
---IJpNTDwzlM2Ie8A6
-Content-Type: application/pgp-signature; name="signature.asc"
+The documented standard[1] is subsystem maintainers take bindings. Are =
 
------BEGIN PGP SIGNATURE-----
+there exceptions? Yes. Usually that's standalone patches (which netdev =
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmDtgeQACgkQJNaLcl1U
-h9Aj+Qf9HQEP3TDGE1oQIqNLlImhDQnaT3hnM3Iy5CN5AFSzz3RoFWud4t5AfnMI
-qKTI9Fs2uk6PR+G/6eC1l0tqcK3K1tCguZG+q6QX7hfqknaA5OTiSGKA+SkflOV+
-FLkrz0jfnx3PsZDPIFo8mom9zKoBu/J9Tx170c2LFu9UV4wAta5ciZYjvi2Qk4Bp
-F4LZ6PMrJEIJia4OeAdJDjezUlaCNQUOMrKdhYLNaxezLSPAqKZ1GFE7SL5/r9mM
-xuD7k3FykkG+XyeAPgClbLM6201FvsM2Jg+lP5mjHYkFudHZ6C6BRC6SMuyxuXNn
-hRrqvW5E2j49VH3K459GsKOmZb5yFw==
-=eWOC
------END PGP SIGNATURE-----
+maintainers just ignore for example).
 
---IJpNTDwzlM2Ie8A6--
+One line compatible string changes don't need to wait for me.
 
+Rob
 
---===============1470779235353428423==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git/tree/Doc=
+umentation/devicetree/bindings/submitting-patches.rst#n67
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1470779235353428423==--
-
