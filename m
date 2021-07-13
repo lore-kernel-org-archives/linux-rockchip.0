@@ -2,171 +2,81 @@ Return-Path: <SRS0=z+fE=MF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45F89C11F67
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 09:24:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B24DAC07E96
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 09:59:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E19E60FF2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 09:24:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E19E60FF2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8800160233
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Jul 2021 09:59:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8800160233
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qCbUX4x+fRjfeJfjYTwiQdTQ/Rzyql9rkGn/+LzfMys=; b=fgM4jso6PAgna6
-	Tvm+y/ypHk3/X/p+zE0KL9ihxqTG/KdlpmMY4WDubY3P3nSY9kNI5v4+Mh5yEuaLL/J/jAc7s94Ob
-	DsezjKRa9wuJtadkGhokCTwy37HteP3x74LdLagrbFHUmm4ILx+x2GttnPTft4ie/eWdPaxrsW46g
-	rW06wnNjbZCBvMvTYzg6rbvYPxMWQCcuSGrIDg7f21gVZ2eLNedv+E6vdUA+jkvc7+zu1ZemQoGpJ
-	93ORlvGe5HJu7iq9x9JSJ2GfMIOF7Mj6LdqH99HQjJzMH/RoDDODEssJ9ROouwlL+rGLTRAMbr4Og
-	bLizmQz1R33WlpX5mGwA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wz8TNgM4+BqzlZJNq753Lq5/KaG7W58lMsRaph7PIHk=; b=x8u/88/cjbqtvr
+	5lOUXzWx85tse2skecxLslNQmwJbtlSVpmtOF1HRahoiHJX8GIJpb4SOQhDnrjlu10aB4RqqYYZpH
+	wY/YVx3u1xma9KlNS27X+zNc9dVLCQYZLRKs2u93iad2Pylx0n967MW1NWBQr+hAPb6bc1z5Iqj78
+	DaCA4lhStVgJeJ09ZGXngMqrOOAQiMfZkS4HnQiEmvb2JC5oA+NPId+ktGMidvmVFVsN2QcG+0Lao
+	Jhl9ZvP6OIr2wqFwH6vPCOSSakttrQgyAH2gq8hM56pg2h8fy52tPORpZf9e8J738fpkj6UDaiBwB
+	UGEEyUnknH2IwN7DviNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3Eed-009cZp-Ot; Tue, 13 Jul 2021 09:24:39 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1m3FCU-009leH-L5; Tue, 13 Jul 2021 09:59:38 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3Eea-009cYQ-A6
- for linux-rockchip@lists.infradead.org; Tue, 13 Jul 2021 09:24:37 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 16D97JLb013915; Tue, 13 Jul 2021 09:24:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2020-01-29;
- bh=L17bwVMs4gzgIH8mx+YPUPVmWaRdar8ujU1PA9RXgM8=;
- b=wcDWCqYaspUCnfNoMaECLfaGhH69HkbvqDReBX30FiK+TB58uFLrbIeVflW08vvhJ9Rc
- ukk/DUlDlaCtKQY/csCQg9Bgtt1pDlHc3+Gp8MT8P+Lgr+b8+OW2SOgp1jIOPzleT6bJ
- pObxKStRd+At17KYx96b7RLxZA0xc69NCqRFkzsrvF/+GhtAk2P7bB+ONklulVoAOFDf
- oEpcmGLNBNs64oVCuVaLPbajmUB+EKZHJR3Op2PUH/pJdguCLlRzqZNwiqLnMohFb6Pz
- rELl2vLQpZ9obprMAK4rLlLR/LVuwivgvF8JFuPyWC4odw3vPBJnWoYLOWM0BZdmK6t1 vQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by mx0b-00069f02.pphosted.com with ESMTP id 39rnxdj3ue-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 13 Jul 2021 09:24:25 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 16D9AsFO151876;
- Tue, 13 Jul 2021 09:24:24 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam10lp2102.outbound.protection.outlook.com [104.47.55.102])
- by userp3020.oracle.com with ESMTP id 39qnaxafkn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 13 Jul 2021 09:24:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bm36Zg+0DbMHAwH7jrm0ggQegnOJCQbuSm5UhT88sOZV1/eb8oQbxADN4SF0KJvtpDrMYFUb6OCgR/gL+vcispSRI0rSnc2LrdJahWY6/8yQZO/Dl0J98rxKtNCTew4UG937uhmr2B+c9T7qdW9GDoFvfZnnky4/OSiZSeJfxxRwWN9cshcY3g0225TjrqfHzmEyNSuX6ng5hqdnw6d9LjWVNp3+EGlun7Tmv5WPiZlvA2Csb0IvCfGNQasideplFV+/8nZNPp53hUmDD8Vw4gJrsqM6oCNbpVZnBuGYcMhXf7YQdMstJGJMBX3kDTUnD50Zz9a6ZJsKMNN4EOpQDA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=L17bwVMs4gzgIH8mx+YPUPVmWaRdar8ujU1PA9RXgM8=;
- b=W1dR2WT4ftNhbKTfWqXeFhvK+ZX+5wVZDdS/I3KNRJwjBwhH5aCmnnQswmz5U9Ot9GPVc8oq0HZQx+HpFrTDJmQayZQ03kD1bSXbpDi2tS4SIFVRgqd2O1gIcimGYUe7smSchLr8uXGvjbHtI3fEMaGR7DkwZSJdjh89vwHlorsJnvje59m8NKurVPyDwUGKsHjsqxhAOWlHHHD1ir+/qwqFc15rQSdzJi25IsQeoUV8xPDMuuo+ot+aRGIsxPKeHJ4Wpgp257ISSTeno9lNegMjqO2wbyOAZ4uKw/FM+3TCD4tS6iS4Hbl+V63h8uS8yvcsS08zlI3ct+mr5YEg9A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=L17bwVMs4gzgIH8mx+YPUPVmWaRdar8ujU1PA9RXgM8=;
- b=rEsGgQkdufft0vq5KfGMwc1MIsQoyEOsmrBPrWGCrpxTaE+VMYMiLAy4NdNem3c7eNjk6c3tBuoMuBpkMYrO4zJ/z6DEIFaqLv9ifhHyGAYvCmKKNWmP/bqCH7xUHkm29eq5vQ0/U0U7xAK5/1099oWnfcsQw5YEVZp0X3gbbhg=
-Authentication-Results: iotwrt.com; dkim=none (message not signed)
- header.d=none;iotwrt.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MWHPR1001MB2159.namprd10.prod.outlook.com
- (2603:10b6:301:2c::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4195.27; Tue, 13 Jul
- 2021 09:24:22 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::3413:3c61:5067:ba73]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::3413:3c61:5067:ba73%5]) with mapi id 15.20.4308.027; Tue, 13 Jul 2021
- 09:24:22 +0000
-Date: Tue, 13 Jul 2021 12:24:10 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jacob Chen <jacob-chen@iotwrt.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org, Dongliang Mu <mudongliangabcd@gmail.com>
-Subject: [PATCH v2] media: rockchip/rga: fix error handling in probe
-Message-ID: <YO1burFzVK+l3JST@mwanda>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-ClientProxiedBy: LO2P265CA0050.GBRP265.PROD.OUTLOOK.COM
- (2603:10a6:600:60::14) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from mwanda (2a02:6900:8208:1848::16ae) by
- LO2P265CA0050.GBRP265.PROD.OUTLOOK.COM (2603:10a6:600:60::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4308.21 via Frontend Transport; Tue, 13 Jul 2021 09:24:17 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 13570910-4a0a-4570-16ad-08d945dfff95
-X-MS-TrafficTypeDiagnostic: MWHPR1001MB2159:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR1001MB2159E45C429400F45068E34C8E149@MWHPR1001MB2159.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1850;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: BpnS7Pn6XEBufSdYBF6vjWlBY4YT0yJ52ld4tIEkn/a+VfTZxZpvmMHGJxOU70PuOVReHKPLRxdMOykw8g6CdvzmC2wMppg1tB4/vtaSHOr25CelCEBPXe2x2Jil4nCeJw6/JKa7Z5kPH63jjrRlryH+ONJTFXg1VjHWNCtJfOS7rbGMkiwrFgfsl1WkjO1poiojmie1aRFdv4aw2GwyG6NE/SMN4g/9HhowROLIgwv0XJX12UQj+UysoOmMJ88gNyaM57iPaG8wBSiKJLh2P5+xOCAJG5x/D3G2jPgKFMieOUnx950AmJAhlP2xzXytu7T68R6Qz6ZWVJt3dcz8AWm2Q/NqnhOmYgy/gaiUrciqK7yfwdvV6YK0BmRO/JCHCZHar0+ZM181chfErbXMiM8uWBfNQ+FwqjS+oAeZW/sPqLZGvs9HhwH3eqmEtuKDD8jVw+zadotogDBvV7DRQul8M0TQcBxQTB3LC7JwrZKDVrlLj8KcTQceDGch8wsiG6lyNfUJ1tTOmOzOFDFk4BxH/PpqITX5Eh4KPjKYtmyuruq3takUAuQkO4LIaZrGeBi23al6ZK0okdAD+qWBcz1g55XPH9bCsfLUqtMCstvFPjwZA6wktrn06Rjet9Zm+PFwPnYFxwzmIdsLeKoXBBNMF5vH0Vu9A7VOzyMNOA70SVzgX0NvYDPafqHf737+GcU2LSzBlgBUHIC6NE/bhg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(396003)(346002)(39860400002)(136003)(366004)(44832011)(38100700002)(83380400001)(9576002)(5660300002)(6666004)(33716001)(316002)(54906003)(86362001)(52116002)(6496006)(9686003)(2906002)(55016002)(6916009)(186003)(8676002)(66556008)(66476007)(66946007)(4326008)(478600001)(8936002)(67856001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?hRDovjINpn75+Ic5O3QmuQN9OMGSKgweBQnH+j6DG1grsMMbeJm6k/1TtFbX?=
- =?us-ascii?Q?+rXjS0vFDE/thfg9klW+w72kpQ55Me940WirCa/TXKYu4HneeV7L0D40c0wG?=
- =?us-ascii?Q?u7FrImz+1ja0ESIBrlm3ZEaoyoxp/pn3p393ldb6R8PcIXrysrp+9M6KVg1n?=
- =?us-ascii?Q?fqqvROTZxicRaI07fie9X+C8W1EiPSvjBjFdWb4649aqOZ4BuQsvvU2VAf56?=
- =?us-ascii?Q?6Kt01gOsfT86bymrAX7Y5Bs6UIjnikFQxx0qcpuafA/Sj+laR9NIsblLd0cb?=
- =?us-ascii?Q?zaaIEOM1Knsea8P4WZA+HJM+6MFYPmqg3NOsMY0LI5wJIauVT41M2bq+Rx0F?=
- =?us-ascii?Q?2KFMZchb+XusP3iQgUpLpHjwTvVTTzBraYrQ5SlS5bBdteM3rpZpb+C9ehiM?=
- =?us-ascii?Q?gi02JJpr8kc/YP4Gv8JpE0Qvx9wJ43upCDKeJWmraIPZbpSPAqCadiW1Sveh?=
- =?us-ascii?Q?5Cnaya3Wrd03fYMRTzt6q13TN97Xbgk4ll5ayuGpvdxeJcMlEmiT1hIBo2ak?=
- =?us-ascii?Q?Yz0xLno87RozuaBIiMlqFJatOtiLaK9oy8ukTKdGRZPu0Ui4eVtXHzJHHV0i?=
- =?us-ascii?Q?VFbjMM93tvIJg54sSFeLJ+7IkfTuR7KAnW3/M2+aq4CTqqpVw6rRojPjp0QE?=
- =?us-ascii?Q?MC41McsTxT25FBypQARNqHOpj0EQrfbftMxmYYrNTj6kAESPdTjgMTrvoCrh?=
- =?us-ascii?Q?gqmgXTIJYH9XKlULdehNy+IaNaIFxx5nVP4CmHqYkhyEGO91aPh3Fg7Yi3Cq?=
- =?us-ascii?Q?Mp870SkXXAy5SVh6BJjBmH+oa13MWJJZRVKkhpDZudU5jNcuRMBKiteCEWNl?=
- =?us-ascii?Q?7EvJN0EmwO7PuQVj8kETjuTqcJH1xM6wio2S6yhmB1pY81fu6CExE/hdbFqh?=
- =?us-ascii?Q?xhMBkhvqfkdlyn2e6/DHbvq9vIGha3d5W6lFlQreiPLTHuEpFPA597aOXOqO?=
- =?us-ascii?Q?yR9rq0KX9ArWKwC6amVp3DYDCG1utUSr8V9fxapCHARW70ibiYGFXrWfZ+gM?=
- =?us-ascii?Q?qDWbPj3k+VfQeq+mRtVuA6hZbuI4Dja3EyTEKk5b1QVJepjnCcekXuCWawoY?=
- =?us-ascii?Q?/oRHKyPlrKzDdVrz0EgpWYMvZyeyYjscAkRxjYaqK8j6qCo7IqXixIV38U7F?=
- =?us-ascii?Q?zslV5pNedUrNYXPB6XvyXUYHXEJBKhpT15q28FL9GPA0Me4Ua13O3lLWFslW?=
- =?us-ascii?Q?Jg3RqyxvQzGdMmAhjoH5bb96Rkr3RKNcp852yihmW6OWC4i783CMGU5HK0Px?=
- =?us-ascii?Q?KZK+umdRsVJl9JF/KDRMwMDiq3HkKHyhiLU8CMMDb8UQ+pgYFMyHbQlgDpRZ?=
- =?us-ascii?Q?udzj09BaruchtxVb6Hmo81eYXIF88neopm98oPqUlVh4xlbUIXM8nMP8iUGd?=
- =?us-ascii?Q?TqHIQAU=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13570910-4a0a-4570-16ad-08d945dfff95
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2021 09:24:22.2587 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: l/SM9UMdUPYK+ROBFthqZi5OZpyyP8yNFIrdjsNhFNpKB/cM3dfj+vfqzV0kuod+xUGwdy7KC5dKZLqj2Oy1tnfx4tqYdzc8XRCSccXazmc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1001MB2159
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10043
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- bulkscore=0 malwarescore=0
- spamscore=0 suspectscore=0 adultscore=0 mlxlogscore=999 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104190000
- definitions=main-2107130058
-X-Proofpoint-GUID: 79YkD6Rc0_MYJBcWtfG0UeIBRmDHBRd5
-X-Proofpoint-ORIG-GUID: 79YkD6Rc0_MYJBcWtfG0UeIBRmDHBRd5
+ id 1m3F7F-009jhM-8N; Tue, 13 Jul 2021 09:54:15 +0000
+Received: from localhost (unknown [192.168.167.13])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 06134D5BD9;
+ Tue, 13 Jul 2021 17:54:09 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P30158T139873832912640S1626170037329023_; 
+ Tue, 13 Jul 2021 17:53:59 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <f4edf0553fb64da733e924475bc5017d>
+X-RL-SENDER: jon.lin@rock-chips.com
+X-SENDER: jon.lin@rock-chips.com
+X-LOGIN-NAME: jon.lin@rock-chips.com
+X-FST-TO: linux-spi@vger.kernel.org
+X-RCPT-COUNT: 20
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jon Lin <jon.lin@rock-chips.com>
+To: linux-spi@vger.kernel.org
+Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
+ heiko@sntech.de, jbx6244@gmail.com, hjc@rock-chips.com,
+ yifeng.zhao@rock-chips.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ p.yadav@ti.com, macroalpha82@gmail.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v12 10/10] arm64: dts: rockchip: Enable SFC for Odroid Go
+ Advance
+Date: Tue, 13 Jul 2021 17:53:55 +0800
+Message-Id: <20210713095355.3249-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210713094718.1709-1-jon.lin@rock-chips.com>
+References: <20210713094718.1709-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_022436_514145_15CEEA33 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20210713_025413_617859_B156C5EC 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,99 +89,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are a few bugs in this code.  1)  No checks for whether
-dma_alloc_attrs() or __get_free_pages() failed.  2)  If
-video_register_device() fails it doesn't clean up the dma attrs or the
-free pages.  3)  The video_device_release() function frees "vfd" which
-leads to a use after free on the next line.  The call to
-video_unregister_device() is not required so I have just removed that.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Reported-by: Dongliang Mu <mudongliangabcd@gmail.com>
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+This enables the Rockchip Serial Flash Controller for the Odroid Go
+Advance. Note that while the attached SPI NOR flash and the controller
+both support quad read mode, only 2 of the required 4 pins are present.
+The rx bus width is set to 2 for this reason, and tx bus width is set
+to 1 for compatibility reasons.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
-v2:  The v1 patch only fixed the use after free and not the other bugs
 
- drivers/media/platform/rockchip/rga/rga.c | 27 ++++++++++++++++++-----
- 1 file changed, 22 insertions(+), 5 deletions(-)
+Changes in v12: None
+Changes in v11:
+- The tx is set to 1 for Odroid Go Advance device
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index bf3fd71ec3af..6759091b15e0 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -863,12 +863,12 @@ static int rga_probe(struct platform_device *pdev)
- 	if (IS_ERR(rga->m2m_dev)) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to init mem2mem device\n");
- 		ret = PTR_ERR(rga->m2m_dev);
--		goto unreg_video_dev;
-+		goto rel_vdev;
- 	}
+Changes in v10: None
+Changes in v9: None
+Changes in v8: None
+Changes in v7: None
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
+Changes in v1: None
+
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 49c97f76df77..4410a6ef5ada 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -484,6 +484,22 @@
+ 	status = "okay";
+ };
  
- 	ret = pm_runtime_resume_and_get(rga->dev);
- 	if (ret < 0)
--		goto unreg_video_dev;
-+		goto rel_vdev;
- 
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
-@@ -882,11 +882,23 @@ static int rga_probe(struct platform_device *pdev)
- 	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
- 					   &rga->cmdbuf_phy, GFP_KERNEL,
- 					   DMA_ATTR_WRITE_COMBINE);
-+	if (!rga->cmdbuf_virt) {
-+		ret = -ENOMEM;
-+		goto rel_vdev;
-+	}
- 
- 	rga->src_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (!rga->src_mmu_pages) {
-+		ret = -ENOMEM;
-+		goto free_dma;
-+	}
- 	rga->dst_mmu_pages =
- 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-+	if (rga->dst_mmu_pages) {
-+		ret = -ENOMEM;
-+		goto free_src_pages;
-+	}
- 
- 	def_frame.stride = (def_frame.width * def_frame.fmt->depth) >> 3;
- 	def_frame.size = def_frame.stride * def_frame.height;
-@@ -894,7 +906,7 @@ static int rga_probe(struct platform_device *pdev)
- 	ret = video_register_device(vfd, VFL_TYPE_VIDEO, -1);
- 	if (ret) {
- 		v4l2_err(&rga->v4l2_dev, "Failed to register video device\n");
--		goto rel_vdev;
-+		goto free_dst_pages;
- 	}
- 
- 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
-@@ -902,10 +914,15 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
-+free_dst_pages:
-+	free_pages((unsigned long)rga->dst_mmu_pages, 3);
-+free_src_pages:
-+	free_pages((unsigned long)rga->src_mmu_pages, 3);
-+free_dma:
-+	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
-+		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
- rel_vdev:
- 	video_device_release(vfd);
--unreg_video_dev:
--	video_unregister_device(rga->vfd);
- unreg_v4l2_dev:
- 	v4l2_device_unregister(&rga->v4l2_dev);
- err_put_clk:
++&sfc {
++	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
++	pinctrl-names = "default";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <108000000>;
++		spi-rx-bus-width = <2>;
++		spi-tx-bus-width = <1>;
++	};
++};
++
+ &tsadc {
+ 	status = "okay";
+ };
 -- 
-2.30.2
+2.17.1
+
+
 
 
 _______________________________________________
