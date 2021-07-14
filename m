@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16FC2C12002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21AB7C12002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:34:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D65C9613B2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:31:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D65C9613B2
+	by mail.kernel.org (Postfix) with ESMTPS id D4C25613B5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:34:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4C25613B5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DKNgdqDVUF6MRQ+I5B4oswZEBX3I92KA+oGgPGAziBI=; b=HyBpN1hfdwmo83
-	Xwxd7dNgk0EQLi8t7h8D7jO7US/VHJdTfDsDgwpiQBxrYjWgL/W72szYCwj3fX8pqgbi43Qne+goU
-	2kpE690Q70JVchjHXk5hTWf5zsg2EKs8aV8MQVDrzyWb3bybjqdreyIYHdsJSKMb4i5mRYh3OqGSw
-	p7agaUPBTGmsc9/kMJdKIeRmwYhF2/ZeI8FQFzH568WWPQUMbyWft5/8dNqigxqdH/3YlglmQkT2g
-	MjuA31fE4LmcqkbKgZ703bMkpJ1v/gykmPOPHVit69vg7wG9dONovRmt/JRRI2wtfbW7aeLI6G2u8
-	7pvNh/FuXcZMAIVROMrw==;
+	List-Owner; bh=mXdP1RayFSWw6SypXp9DkRBrYD9V0A9J2h1U440+Z9E=; b=dAmYGU3WDpUQLX
+	Mb/5H3HPQBskcSGt3f7wLFpjIax+WROpO4j/0NkT1HekBzdxzuOXgnTlF8inC6K78Fqyfbns0rox8
+	bli8HVrxuYsFlCaGH02UX2gnyOrIttOUiBHwEq3QhPTnUm2Ec444PoDpJVrrTTScqwlzC5b7QdsqI
+	+8y6glYPZuJqghgedrva3MgdTjDxSDpyzqSQg4Ytl+aMzvLVIgxA2HtoVpD4VUBn93BUYHT8fsdAi
+	CqXkK5fH9ukeawe1AsUiFKCE8tl+AfCaz+hzghJ2YqEDAp1UmQzzvCBQYtc75kdIufIny/EpQvvdw
+	zTu605VJpGBVBgcZqJgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3mTe-00FQxm-DN; Wed, 14 Jul 2021 21:31:34 +0000
+	id 1m3mVy-00FSdP-0K; Wed, 14 Jul 2021 21:33:58 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kmn-00EeVx-I3; Wed, 14 Jul 2021 19:43:15 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 51BE7613F7;
- Wed, 14 Jul 2021 19:43:12 +0000 (UTC)
+ id 1m3kmp-00EeWw-7s; Wed, 14 Jul 2021 19:43:16 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E7784613FA;
+ Wed, 14 Jul 2021 19:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291793;
- bh=pT7esBQsT/AwV7sJCURNF1Uz2tAgSL8Xdc3fSReQXjI=;
+ s=k20201202; t=1626291794;
+ bh=2uLP6Ymh1+jBNRVHyGPLVQ5zH4+WJDs6Kl7CNJqhE2I=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=npr+OooeIGEQ8sOBldZR7PFRMqheujoNnrrm+yYpf6WqwyaUNjbf+a8QgLVI/n30I
- UjL7l7+OhcR9fR0C/0f5gslc9dCt3fGLOYgbRFI2jXqbPjBagprLmps37cFdTm2gg/
- TGaM1LdEsty7BccyIT6ThIoMeP9rLgDirnmTKI19RQU5mMu0pE2Rncd+YlCKzTxN1x
- 4zdnd36EwVW1hmjWq1WQxGGGVskHszM3UxG3kXoESsyduJCtTofY3MtmZD1fHlWK9p
- LDeSPuE7U+uDYT5/rzpET8SMPbEM6erwJZy80pkm63F34FlvFQW5VsyqBGOkDNGxSC
- 23jBXYSMg+w4Q==
+ b=lIOxcBLlaVdlw1rxJvPGjzhCS0h8XuedJp1CzK2TAR4cBw5bldbk6R0kIvXsdjBYY
+ 5tXZw3vaC5wHNGKizS/QSbedvv3ZEwWWa+f4Ob1ey0Lu2JzKMuMwNR3YAGr5aEeQNs
+ k7AFgFHFNqXmVk+KWQ4Fc+0Syr2XSNPGGaNDGWxTyZe5GFyVtnhk/z3Ai93PZ+6Qmc
+ P7QkZPjoVe+nJRHb173oukqQPZASLLyxmovfOAp3+5oJu5uqdj5E6dr6HI3jIXkoyS
+ 56fp/ZTNnjSitF4mjjPw+lMwv1aX/UA29aEfQPVxliT5xawlcpRiNlBXbElp1OBniB
+ OpUhC7L6+RUTQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 05/88] arm64: dts: rockchip: fix pinctrl sleep
- nodename for rk3399.dtsi
-Date: Wed, 14 Jul 2021 15:41:40 -0400
-Message-Id: <20210714194303.54028-5-sashal@kernel.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.10 06/88] ARM: dts: rockchip: Fix the timer clocks
+ order
+Date: Wed, 14 Jul 2021 15:41:41 -0400
+Message-Id: <20210714194303.54028-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714194303.54028-1-sashal@kernel.org>
 References: <20210714194303.54028-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124313_679021_B2326EF3 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20210714_124315_430184_8F84D7AA 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +83,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
-[ Upstream commit a7ecfad495f8af63a5cb332c91f60ab2018897f5 ]
+[ Upstream commit 7b46d674ac000b101fdad92cf16cc11d90b72f86 ]
 
-A test with the command below aimed at powerpc generates
-notifications in the Rockchip arm64 tree.
+Fixed order is the device-tree convention.
+The timer driver currently gets clocks by name,
+so no changes are needed there.
 
-Fix pinctrl "sleep" nodename by renaming it to "suspend"
-for rk3399.dtsi
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20210126110221.10815-2-jbx6244@gmail.com
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Link: https://lore.kernel.org/r/20210506111136.3941-3-ezequiel@collabora.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3188.dtsi | 8 ++++----
+ arch/arm/boot/dts/rk3288.dtsi | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 7e69603fb41c..ee6287b872db 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2342,7 +2342,7 @@ sdmmc_wp: sdmmc-wp {
- 			};
- 		};
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 2298a8d840ba..2c08ae60e4a1 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -150,16 +150,16 @@ timer3: timer@2000e000 {
+ 		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
+ 		reg = <0x2000e000 0x20>;
+ 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER3>, <&cru SCLK_TIMER3>;
++		clock-names = "pclk", "timer";
+ 	};
  
--		sleep {
-+		suspend {
- 			ap_pwroff: ap-pwroff {
- 				rockchip,pins = <1 RK_PA5 1 &pcfg_pull_none>;
- 			};
+ 	timer6: timer@200380a0 {
+ 		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
+ 		reg = <0x200380a0 0x20>;
+ 		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER6>;
++		clock-names = "pclk", "timer";
+ 	};
+ 
+ 	i2s0: i2s@1011a000 {
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index fb2e89aa71c9..49b196546cdf 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -240,8 +240,8 @@ timer: timer@ff810000 {
+ 		compatible = "rockchip,rk3288-timer";
+ 		reg = <0x0 0xff810000 0x0 0x20>;
+ 		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&xin24m>, <&cru PCLK_TIMER>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER>, <&xin24m>;
++		clock-names = "pclk", "timer";
+ 	};
+ 
+ 	display-subsystem {
 -- 
 2.30.2
 
