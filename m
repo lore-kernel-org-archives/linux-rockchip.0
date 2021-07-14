@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C17E1C47E56
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A288CC47E4D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:43:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9306A6140E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:42:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9306A6140E
+	by mail.kernel.org (Postfix) with ESMTPS id 7616F613E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:43:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7616F613E2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,41 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JX13V3xBWIN/1k69lrtqaPxrnMmelfrEyLWQTc67NhY=; b=UkARzUjll0riLk
-	M4hJMu5JoUsVOQETL71ELEgcXiMHelw+hDxZeMC+qhjstQA6FdrNeU5GqJZI9ZfHT/Rrgj7of2go9
-	tAwi6bt2MzHGx+S6xXcp/ka6rpVhcq/FAU08rilUtTVoeUKIG9MoQzRW70GJMaWIlN10loQ9jlcN4
-	hnLnW7OU+AskBKPxe+EWr4zW6SfQxR4L2FnxfakUV1GV5GCm8jF4PVlabfdN9U6XrwMWI/A52UFRK
-	de5X2jPuhpN/bTa+lzgDzGvxNiafto8USh7USQ0nqHd/YnDz8JvqtR3brQ0yixHkQzNQr3qEUXh0f
-	cPAOEEyFV+gZoNl3W+RA==;
+	List-Owner; bh=JbT+etajZMjDkHsSuPMBXQlIZ+QcxL3vvloLwFYwj/A=; b=qrjMGzQjLXUOBM
+	kpU9YWjgc3G/vQtx0BdMrsfN1+cEl1s9YkbR1FWqkgnIG5hDNGdQoqnM77lpjPOcpUJRS95kA/nuf
+	DmcWkqMWZ1KOHdZJKECtBcAZEXldv7uLYjoA4+kHdZNHxzJCNvNJw+N/GZZ7oMhFqQwPNhEIGfzfH
+	Qpv2yaihjm0QcFqOI2n8TdT6L/vrMTkWCyMj8NZu/cKn+OVtLYH3escF86Y25NcHJJgfRyvXu7aYX
+	e5q/IFe1lnrhMmIqjEwbcttH/jXbE7KT2XslsGdwds8T6PoVylOKCx8FzYEw5DiqY02Mtim2h2mdE
+	U0CtAImF3XYF9MrSIJIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3km3-00Ee7w-Ik; Wed, 14 Jul 2021 19:42:27 +0000
+	id 1m3kms-00EeYj-Go; Wed, 14 Jul 2021 19:43:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3khx-00EbZa-1C; Wed, 14 Jul 2021 19:38:14 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E1342613D0;
- Wed, 14 Jul 2021 19:38:11 +0000 (UTC)
+ id 1m3khy-00EbYN-L0; Wed, 14 Jul 2021 19:38:16 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5C75961370;
+ Wed, 14 Jul 2021 19:38:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291492;
- bh=pnyR6fwBHtFyf6b4xz5/ykwTIcbWbhXNEyqQ/nN1DOY=;
+ s=k20201202; t=1626291494;
+ bh=7WPyDgtLqfpuzV80djq5MmeUFks9fzqefhlXiDzYijQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gY2bZXgnunmKf0g5N328+A3H37+vJpPXI1qaetzytF1TDIQggatwFsVGX0mKk6iW5
- qtd9ZlNinfrxcwJf0/QD8McjoIOh/Ksv8V1ex087iE/eJWTizOYws+jDdDiWRW9rrX
- g78Lwsvpq6j0Mk/BoaiV494sTThLZZ3/PyrAGciNz4CXtp2IZ3Jj/PaSOzExme5AOz
- Vp/ijYQfTr5s8aWvgzWCWNggrO5zTEEZaFpxNnyVYEnlYfODFpS2qKOxT2deFzZi1I
- 1tS8o1EmHBbzv5auMVgU34aRtWYxFdAY+4m2WlXMBiswghncsZQUtFnj6pvyDGdtse
- F4youBTxOwPvA==
+ b=JYQKNLvBKbtGL/Z3e262fYIevAX2mDGgx2lrEQO7oFZnmtWPzeYquAAUmxyn362CS
+ MSmGlDZevBnwGu/WezpWyuEv7EW07KImZmdcWjLasIXezHRPQQLB1lA360uA1WsdF5
+ u02sVbgUfJ0CNHhujQnqo5uhYyD0FW/X+/Bn1xJ7gr1UO/6IyykmHS3LsuWkf98VU+
+ rEv5KVxdulMaPP3SB1DcXAzVX93bLJgvVaqq6bzzeqCH9AR1d6xKYBcgqWeY6KCEn3
+ YXIag41mEqvP1uoshHvqpW54gFfvh0KxhQvwpdfvWwZCLccZv4UXwAvw3qePKG+13g
+ rpiclANj0nk4A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.13 008/108] ARM: dts: rockchip: Fix IOMMU nodes
- properties on rk322x
-Date: Wed, 14 Jul 2021 15:36:20 -0400
-Message-Id: <20210714193800.52097-8-sashal@kernel.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.13 009/108] ARM: dts: rockchip: Fix power-controller
+ node names for rk3066a
+Date: Wed, 14 Jul 2021 15:36:21 -0400
+Message-Id: <20210714193800.52097-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714193800.52097-1-sashal@kernel.org>
 References: <20210714193800.52097-1-sashal@kernel.org>
@@ -65,8 +66,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_123813_151998_20357A22 
-X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-CacheID: sfid-20210714_123814_743438_CC978DCB 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,69 +86,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-[ Upstream commit 6b023929666f0be5df75f5e0278d1b70effadf42 ]
+[ Upstream commit f2948781a72f0d8cf2adf31758c357f2f35e6c79 ]
 
-Add '#" to iommu-cells properties.
-Remove useless interrupt-names properties
+Use more generic names (as recommended in the device tree specification
+or the binding documentation)
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Link: https://lore.kernel.org/r/20210507090232.233049-4-benjamin.gaignard@collabora.com
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/20210417112952.8516-2-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ arch/arm/boot/dts/rk3066a.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 9f02ba7a0cc2..25f83f2f5618 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -558,10 +558,9 @@ vpu_mmu: iommu@20020800 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20020800 0x100>;
- 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "vpu_mmu";
- 		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
- 		clock-names = "aclk", "iface";
--		iommu-cells = <0>;
-+		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index 252750c97f97..bbc3bff50856 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -755,7 +755,7 @@ power: power-controller {
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
  
-@@ -569,10 +568,9 @@ vdec_mmu: iommu@20030480 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20030480 0x40>, <0x200304c0 0x40>;
- 		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "vdec_mmu";
- 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
- 		clock-names = "aclk", "iface";
--		iommu-cells = <0>;
-+		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
+-		pd_vio@RK3066_PD_VIO {
++		power-domain@RK3066_PD_VIO {
+ 			reg = <RK3066_PD_VIO>;
+ 			clocks = <&cru ACLK_LCDC0>,
+ 				 <&cru ACLK_LCDC1>,
+@@ -782,7 +782,7 @@ pd_vio@RK3066_PD_VIO {
+ 				 <&qos_rga>;
+ 		};
  
-@@ -602,7 +600,6 @@ vop_mmu: iommu@20053f00 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20053f00 0x100>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "vop_mmu";
- 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
- 		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
-@@ -623,10 +620,9 @@ iep_mmu: iommu@20070800 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20070800 0x100>;
- 		interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "iep_mmu";
- 		clocks = <&cru ACLK_IEP>, <&cru HCLK_IEP>;
- 		clock-names = "aclk", "iface";
--		iommu-cells = <0>;
-+		#iommu-cells = <0>;
- 		status = "disabled";
- 	};
+-		pd_video@RK3066_PD_VIDEO {
++		power-domain@RK3066_PD_VIDEO {
+ 			reg = <RK3066_PD_VIDEO>;
+ 			clocks = <&cru ACLK_VDPU>,
+ 				 <&cru ACLK_VEPU>,
+@@ -791,7 +791,7 @@ pd_video@RK3066_PD_VIDEO {
+ 			pm_qos = <&qos_vpu>;
+ 		};
  
+-		pd_gpu@RK3066_PD_GPU {
++		power-domain@RK3066_PD_GPU {
+ 			reg = <RK3066_PD_GPU>;
+ 			clocks = <&cru ACLK_GPU>;
+ 			pm_qos = <&qos_gpu>;
 -- 
 2.30.2
 
