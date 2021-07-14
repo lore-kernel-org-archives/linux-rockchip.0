@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AA52C1B08C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 22:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4431C47E48
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 22:57:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEC46613C2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 22:56:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEC46613C2
+	by mail.kernel.org (Postfix) with ESMTPS id 94D6F613CA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 22:57:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94D6F613CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mkn98z6ffi3uqD0KKcJYzjc22W55Vn2lq4pClM65L7o=; b=GkVk8LtAtMIPsp
-	+q/azl49jmcPBLK/e1KJni23RbgDhD7pbsVwtfZLsB0dLD1F9yt7kKynpJSXsSGLpriJZrcwjWBrE
-	5nQkSWlRn6QvTNu87Sdc95NCukYoRu3EGCh9YmPNG6prBy1U5tKlHV00xh489L/t0oQG7rD1US2Tm
-	Zs3umA5QW+np/rz7WsWFkYRC4Ygp8sZw+P3M8ULmYn49e2aeXPknXHg1b0oKa2lVEJuAlQCeWwsQR
-	AyXgOrRo+wHd3bB2B6uFBFTy4d+/jttHsGOzz3iYg1ECiuiSxY5PCZUZIm9bdBTNd5jOXtx6tdovz
-	ze8lmCtUfGgZvekruljw==;
+	List-Owner; bh=bE+lxwHzvKutHXFVvusykfAxCT3MZDaXjOA3+Tg4TAE=; b=e0pZazbLcIEVSb
+	/WR5fS/qaSTGjibfnsfsISO5W/creT6X7m7/XBWJBXBFPpsoEeLrrxCQDtz/mEppu0/MCclK+WyGn
+	+6afScL9lWFalfld8qYk/VqNvkeC4OIQkU1cVUSg9k4kk15huuEibl2RDoHX7slXnccmk5kTybTV8
+	Jsbka3ZdIcZvZO8N75I0doSkeKgNE3Jz/YHWTPi/KqY9uXYkB8OkxVghIyLcwK3DBhEpFmaFhb7yb
+	WpJ4nXTBM/i87UVHAL4O1SUutdlQwYuT0CJeUaWpDu3/6ZQm7DJ0OBTB7tc+y5ckL1M72hGSPRYPo
+	56SRq7GPygWxvPMzGvKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3nnK-00G3Yb-Tw; Wed, 14 Jul 2021 22:55:59 +0000
+	id 1m3noK-00G4HV-Lq; Wed, 14 Jul 2021 22:57:00 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kqt-00Egl9-63; Wed, 14 Jul 2021 19:47:28 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D6E94613F6;
- Wed, 14 Jul 2021 19:47:25 +0000 (UTC)
+ id 1m3kqu-00Eglq-NH; Wed, 14 Jul 2021 19:47:30 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4924A613D9;
+ Wed, 14 Jul 2021 19:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626292046;
- bh=8KSOoFh/pEvGwYuBxTPwz8GoV0hoP/FkpCdxg9hcglU=;
+ s=k20201202; t=1626292048;
+ bh=NdIHzeQ3zfZ7s/XGpHAjHlL7+P7OiFFgtPrjS8pCQxY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Qxjy2ycyGq4tW3uDLsdgwxCK9NrZfuNl4NHE6YijGgq4JiirBaWue04EJ6M9wM/of
- JsYa49+nN6AbE2R5pxADV0DViO7nBv2Y3DfRRU7fUEWI/Ny/YUVpPGPQg6CDcUawU0
- C0fH2iEKAKP8AdXnFrs1QUR3eePXk3aySxV/PA3dKMwwvuTcBDEQACLP3//s798yDM
- PAffSV+SR0C1S0s0fzrJPf1zPLJ+w+PJEMKaGwgf8Uxw0hw30zqxzHOgVCGaZ8Kd6I
- u+N2s8mtJNeT9LLR0blTmsOhbBfFg4rmia4EXqWBZUbZCSyTIWT98slJuln0Niz0U3
- rVCf0N4DqH4qw==
+ b=A5CJfrTxF3wGkYlMbujhVz9P7HtOh3/AS0drOdGHqY6RJMVaUJUNrhBqq4OegrNCf
+ vNXkNZAlVQw6C4jOp/o+YUnGkNlSN4LHPx6j8fJ2ISl3GzAe5odAJi9wCsGyKXI1xY
+ hv3/7YIy6akeMQPW65M3q44GeSUqWNAGbAecd9Wh+xt/KG169dyAkw9ao2Yfufhmyf
+ f1TIkUYvCB0g/5Ih5cfcRBsk5zLNlPf4nQrikzTxeZ+hS+To9jjwsHZ+T8JJaSdqY2
+ h0V5Lk32O3Jwf3kloC0EioHD4kQsqKeJtsQlteB7Ys9cjjWs/MdiNTqwzmV/WoVWiI
+ dAU2MCFOC4chw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 02/28] ARM: dts: rockchip: fix pinctrl sleep
- nodename for rk3036-kylin and rk3288
-Date: Wed, 14 Jul 2021 15:46:57 -0400
-Message-Id: <20210714194723.55677-2-sashal@kernel.org>
+ Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 4.14 03/28] arm64: dts: rockchip: fix pinctrl sleep
+ nodename for rk3399.dtsi
+Date: Wed, 14 Jul 2021 15:46:58 -0400
+Message-Id: <20210714194723.55677-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714194723.55677-1-sashal@kernel.org>
 References: <20210714194723.55677-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124727_311432_105CFB3E 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20210714_124728_914882_39547626 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,51 +85,37 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit dfbfb86a43f9a5bbd166d88bca9e07ee4e1bff31 ]
+[ Upstream commit a7ecfad495f8af63a5cb332c91f60ab2018897f5 ]
 
 A test with the command below aimed at powerpc generates
-notifications in the Rockchip ARM tree.
+notifications in the Rockchip arm64 tree.
 
 Fix pinctrl "sleep" nodename by renaming it to "suspend"
-for rk3036-kylin and rk3288
+for rk3399.dtsi
 
-make ARCH=arm dtbs_check
+make ARCH=arm64 dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20210126110221.10815-1-jbx6244@gmail.com
+Link: https://lore.kernel.org/r/20210126110221.10815-2-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3036-kylin.dts | 2 +-
- arch/arm/boot/dts/rk3288.dtsi      | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
-index fdb1570bc7d3..3371bc921aef 100644
---- a/arch/arm/boot/dts/rk3036-kylin.dts
-+++ b/arch/arm/boot/dts/rk3036-kylin.dts
-@@ -424,7 +424,7 @@ sdmmc_pwr: sdmmc-pwr {
- 		};
- 	};
- 
--	sleep {
-+	suspend {
- 		global_pwroff: global-pwroff {
- 			rockchip,pins = <2 7 RK_FUNC_1 &pcfg_pull_none>;
- 		};
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 23907d9ce89a..5dd37d09c1f1 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -1453,7 +1453,7 @@ pcfg_pull_none_12ma: pcfg-pull-none-12ma {
- 			drive-strength = <12>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 721f4b6b262f..029d4578bca3 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -2074,7 +2074,7 @@ sdmmc_wp: sdmmc-wp {
+ 			};
  		};
  
 -		sleep {
 +		suspend {
- 			global_pwroff: global-pwroff {
- 				rockchip,pins = <0 0 RK_FUNC_1 &pcfg_pull_none>;
+ 			ap_pwroff: ap-pwroff {
+ 				rockchip,pins = <1 5 RK_FUNC_1 &pcfg_pull_none>;
  			};
 -- 
 2.30.2
