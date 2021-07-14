@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C048C1B08C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB3E4C12002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:37:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F44D6101D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:36:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F44D6101D
+	by mail.kernel.org (Postfix) with ESMTPS id 8C11C6101D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 21:37:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C11C6101D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,42 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b64zx3s60hQ3FuvWl0N+JTXFxasF0f+zYt/hsXi+Ghs=; b=nVvgOUwKfkUINy
-	qgl53wffXnnNBIoGFdFLUEP/tZQJURGK2sFDp1ExBZ1Hb+XasFep3ofZyvuf9hxsj8q+EAJlxGL/Q
-	5Jn2ITB/NLWJ8AcI1HkI+jGSCeaYVZVH8uNd3Nyi56QXED7119pFfxUjoio+nwyWi9yDHtNjLM5oC
-	HttxoZhPTnXGzsjYoVDC9b9vmU23B/nypJz9ECOIe6lmzV9fqkuCl7nrp3W9ef1Kw0qIhX9M8ICkl
-	TsC+Utxn5Hb+TZbrvici7u8MzGaat81Y7Tu/QezQtKl0TPxqEeoIgJdZjb7qoCmpdc6yP2IrcvPTu
-	3KYt9rAVWqbXWQSVWR/A==;
+	List-Owner; bh=XDeAiC2BMCsk3vupS7E4UDLdltgC2N3u4NEJU6h5+SQ=; b=u2p4tCRHxQepW4
+	PvIRGYfaUV6L6FR7fyQY1gG96cLnNqgDtzPNkFeczjAwvNw8I0w1iOibkR4OXZZDtu/55oO8AuXmh
+	jmzZ/0UJtHwYSFnT3hHx7Y2lSrZl1oMxmvVZlHwSrg8HJAEUBZEZvR4LGX3rz+MKIn7Snksh0pq7o
+	ikfUF2QBrgORGnXxRac4ZIE8svWu2GLYg7PsuWOUPUU19p5+DNV9EvDTZ+QrMM4GGOTzcSah+vJZG
+	vREdZatac2UmpCMpXN3RVlkon1vrYu/xJAUc15f6evqp34mMSFXifIE/vnnlr++1ZoRqQ5oJlGRKQ
+	RHnJnqdoq6v6RV18d6yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3mYS-00FUCj-4o; Wed, 14 Jul 2021 21:36:32 +0000
+	id 1m3mZA-00FUVk-UR; Wed, 14 Jul 2021 21:37:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kmv-00Eeaa-OT; Wed, 14 Jul 2021 19:43:23 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 38D3B613D1;
- Wed, 14 Jul 2021 19:43:20 +0000 (UTC)
+ id 1m3kmx-00Eebh-An; Wed, 14 Jul 2021 19:43:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D2DA1613ED;
+ Wed, 14 Jul 2021 19:43:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291801;
- bh=NNkoQgcDeENd/sYEIuPZDWRvcjWqqdl5BBNZc4ymEd8=;
+ s=k20201202; t=1626291802;
+ bh=tQ1Lc/Sy26R6S8Clu3GRpWJ0Bn7VN35iO1NW+f5QLNg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZhTgkQFdlz8HyRdVr2XVRMaQ+rX+0xsBivIISTan3LpyRUktlQ5G8Umr7zRBd22wL
- 7oMrcosQpB85nIJnu1pGNLjXrYsEoMK6qm5cwX5dRQZ+frk+5H3uvF8tsPu641Nk4s
- jStX7ZRS/N3rqDD0Ye1XeffNphV8BLC0R865ljRWw5Adr+w/SYYGLbU2sEqhbEQpx6
- 050ISA6jvz6hcvsqMcO0JjFqVAtO5CWZ6GzG4MeWbMPWGOc2U5a2vq++CdQCNWhTnR
- AVjo8Z2kwPjHbXSFgsYWT83SzhE6nvyQausF/0J4Cbi4YtP3YaBVki76EEh3BvI5xQ
- TqPy/kFR/fhWg==
+ b=ZBLGatOU9fx2vcMHED9aZuDFgcCBFGt6lnR8ftbXoEDIS6YrETBkSDl2/yrxDzKWS
+ DM0//qNCVJZzf+G+xuwrncyaghMCmgvwyaaeiJhX9xcmZvyYOE9n8KMw54pe9sF81J
+ 9pEcn65sR/Gs8JIwJrGjWgrFQoNF8UHdNfYcQY95H5mIHCYXihrPjjDj/14gisF8lp
+ feB6eafwUEVO1AwnZUtJaOvlkgAaJfemdWSkADJR1XhxUtkZJYEfizfTPJh+gbe/KL
+ 4glvcRJIMi067tJWhMyp8OZFhUer9Ryh4duZtKgcJs3bQ+5FjXYMSvjSKo2TSNMF4x
+ 7MEASjWUWh+Tg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
 Cc: Elaine Zhang <zhangqing@rock-chips.com>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.10 10/88] ARM: dts: rockchip: Fix power-controller
- node names for rk3288
-Date: Wed, 14 Jul 2021 15:41:45 -0400
-Message-Id: <20210714194303.54028-10-sashal@kernel.org>
+ Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 11/88] arm64: dts: rockchip: Fix power-controller
+ node names for px30
+Date: Wed, 14 Jul 2021 15:41:46 -0400
+Message-Id: <20210714194303.54028-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714194303.54028-1-sashal@kernel.org>
 References: <20210714194303.54028-1-sashal@kernel.org>
@@ -66,9 +66,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124321_854172_6563190D 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210714_124323_530414_4ED3EBEE 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,7 +87,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Elaine Zhang <zhangqing@rock-chips.com>
 
-[ Upstream commit 970cdc53cb1afa73602028c103dbfb6a230080be ]
+[ Upstream commit d5de0d688ac6e0202674577b05d0726b8a6af401 ]
 
 Use more generic names (as recommended in the device tree specification
 or the binding documentation)
@@ -96,53 +95,85 @@ or the binding documentation)
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20210417112952.8516-4-jbx6244@gmail.com
+Link: https://lore.kernel.org/r/20210417112952.8516-6-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 49b196546cdf..0d89ad274268 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -788,7 +788,7 @@ power: power-controller {
- 			 *	*_HDMI		HDMI
- 			 *	*_MIPI_*	MIPI
- 			 */
--			pd_vio@RK3288_PD_VIO {
-+			power-domain@RK3288_PD_VIO {
- 				reg = <RK3288_PD_VIO>;
- 				clocks = <&cru ACLK_IEP>,
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 64193292d26c..0d6761074b11 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -244,20 +244,20 @@ power: power-controller {
+ 			#size-cells = <0>;
+ 
+ 			/* These power domains are grouped by VD_LOGIC */
+-			pd_usb@PX30_PD_USB {
++			power-domain@PX30_PD_USB {
+ 				reg = <PX30_PD_USB>;
+ 				clocks = <&cru HCLK_HOST>,
+ 					 <&cru HCLK_OTG>,
+ 					 <&cru SCLK_OTG_ADP>;
+ 				pm_qos = <&qos_usb_host>, <&qos_usb_otg>;
+ 			};
+-			pd_sdcard@PX30_PD_SDCARD {
++			power-domain@PX30_PD_SDCARD {
+ 				reg = <PX30_PD_SDCARD>;
+ 				clocks = <&cru HCLK_SDMMC>,
+ 					 <&cru SCLK_SDMMC>;
+ 				pm_qos = <&qos_sdmmc>;
+ 			};
+-			pd_gmac@PX30_PD_GMAC {
++			power-domain@PX30_PD_GMAC {
+ 				reg = <PX30_PD_GMAC>;
+ 				clocks = <&cru ACLK_GMAC>,
+ 					 <&cru PCLK_GMAC>,
+@@ -265,7 +265,7 @@ pd_gmac@PX30_PD_GMAC {
+ 					 <&cru SCLK_GMAC_RX_TX>;
+ 				pm_qos = <&qos_gmac>;
+ 			};
+-			pd_mmc_nand@PX30_PD_MMC_NAND {
++			power-domain@PX30_PD_MMC_NAND {
+ 				reg = <PX30_PD_MMC_NAND>;
+ 				clocks =  <&cru HCLK_NANDC>,
+ 					  <&cru HCLK_EMMC>,
+@@ -278,14 +278,14 @@ pd_mmc_nand@PX30_PD_MMC_NAND {
+ 				pm_qos = <&qos_emmc>, <&qos_nand>,
+ 					 <&qos_sdio>, <&qos_sfc>;
+ 			};
+-			pd_vpu@PX30_PD_VPU {
++			power-domain@PX30_PD_VPU {
+ 				reg = <PX30_PD_VPU>;
+ 				clocks = <&cru ACLK_VPU>,
+ 					 <&cru HCLK_VPU>,
+ 					 <&cru SCLK_CORE_VPU>;
+ 				pm_qos = <&qos_vpu>, <&qos_vpu_r128>;
+ 			};
+-			pd_vo@PX30_PD_VO {
++			power-domain@PX30_PD_VO {
+ 				reg = <PX30_PD_VO>;
+ 				clocks = <&cru ACLK_RGA>,
+ 					 <&cru ACLK_VOPB>,
+@@ -301,7 +301,7 @@ pd_vo@PX30_PD_VO {
+ 				pm_qos = <&qos_rga_rd>, <&qos_rga_wr>,
+ 					 <&qos_vop_m0>, <&qos_vop_m1>;
+ 			};
+-			pd_vi@PX30_PD_VI {
++			power-domain@PX30_PD_VI {
+ 				reg = <PX30_PD_VI>;
+ 				clocks = <&cru ACLK_CIF>,
  					 <&cru ACLK_ISP>,
-@@ -830,7 +830,7 @@ pd_vio@RK3288_PD_VIO {
- 			 * Note: The following 3 are HEVC(H.265) clocks,
- 			 * and on the ACLK_HEVC_NIU (NOC).
- 			 */
--			pd_hevc@RK3288_PD_HEVC {
-+			power-domain@RK3288_PD_HEVC {
- 				reg = <RK3288_PD_HEVC>;
- 				clocks = <&cru ACLK_HEVC>,
- 					 <&cru SCLK_HEVC_CABAC>,
-@@ -844,7 +844,7 @@ pd_hevc@RK3288_PD_HEVC {
- 			 * (video endecoder & decoder) clocks that on the
- 			 * ACLK_VCODEC_NIU and HCLK_VCODEC_NIU (NOC).
- 			 */
--			pd_video@RK3288_PD_VIDEO {
-+			power-domain@RK3288_PD_VIDEO {
- 				reg = <RK3288_PD_VIDEO>;
- 				clocks = <&cru ACLK_VCODEC>,
- 					 <&cru HCLK_VCODEC>;
-@@ -855,7 +855,7 @@ pd_video@RK3288_PD_VIDEO {
- 			 * Note: ACLK_GPU is the GPU clock,
- 			 * and on the ACLK_GPU_NIU (NOC).
- 			 */
--			pd_gpu@RK3288_PD_GPU {
-+			power-domain@RK3288_PD_GPU {
- 				reg = <RK3288_PD_GPU>;
- 				clocks = <&cru ACLK_GPU>;
- 				pm_qos = <&qos_gpu_r>,
+@@ -312,7 +312,7 @@ pd_vi@PX30_PD_VI {
+ 					 <&qos_isp_wr>, <&qos_isp_m1>,
+ 					 <&qos_vip>;
+ 			};
+-			pd_gpu@PX30_PD_GPU {
++			power-domain@PX30_PD_GPU {
+ 				reg = <PX30_PD_GPU>;
+ 				clocks = <&cru SCLK_GPU>;
+ 				pm_qos = <&qos_gpu>;
 -- 
 2.30.2
 
