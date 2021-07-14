@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13BE9C12002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C63EC12002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:31:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3FC9613C0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:21:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3FC9613C0
+	by mail.kernel.org (Postfix) with ESMTPS id 25ECA610CB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:31:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25ECA610CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qL9DOfd+8nwElZBY/irbumEG1g4UxTNeZPZMOOE5hNY=; b=vqZ2Z1m6dzp/6g
-	jxeaZrFwZTXvexG8Z7o0pDVw8V7Mmuzk/TG3ljh0vB1xxoyzE8hXRQ/TzqHg7J5fybqH2Grb91XdD
-	Ck+/NpOjCteaP4PffwNIl1q6mERTfq9M/2xQsOHbXu3F4AgQzmqH/EOoDmS09HBay4Sf3cA1Ff57f
-	pb9VfUC6mPwj78JGUMy3DIiCLQ6/m8oJIdTPaCPRgye9ZRV77wVF2IrKPT9FJlStJSG4UAIUsMaJt
-	c0FmqWFSCFO43JAQ6NRX9Q605iV/yMtAx4yyjREbwvJ4bVv2JltR1HYvJTOQaqVWT6oywwUzwH0vL
-	R6PFXv5ABk3Vk8SyK+9g==;
+	List-Owner; bh=U8n7lZN6A4FOmg8bzXODKhpoDyNDLlrwmbGdJKTNNzc=; b=cCjuQFwnh0aWXD
+	M1Z5WVLAKG2EDfsO8gCJ8ZH0seI2rd6W4NPBVt4CICWuxXZt2tEAzfNFZ82jz8IovEvcMGvFlewfi
+	8pqly4UEpK3+AoapmgL7ewuHtYSw8Tc1iE8CdsnsJGIRODdhUKPhfSNeo0Hw7XikAhAiFIEAQsOEN
+	m008YH5nWZeGr9HmmfMYnKLF6ayVGFnb1GCj4ssKV9oWVGbhNE2fMNBhMkmPzvIeR18M5vjc8amLP
+	6tCcljcOSxFDry1xHqO/5iYtAJEDiQol02nJmu/Hf7BS6o8WGEu9qDS7RBe5pyW+xf1Q8pUnQdYou
+	tkEzne5eDlnIncX14NhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3lNU-00EwQS-UQ; Wed, 14 Jul 2021 20:21:08 +0000
+	id 1m3lXo-00F10V-61; Wed, 14 Jul 2021 20:31:48 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kjQ-00EcVG-MF; Wed, 14 Jul 2021 19:39:46 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5F385613D9;
- Wed, 14 Jul 2021 19:39:43 +0000 (UTC)
+ id 1m3kjj-00Eci9-7e; Wed, 14 Jul 2021 19:40:04 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CBD8F613D2;
+ Wed, 14 Jul 2021 19:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291584;
- bh=OlsKuSpdklUjpvAA6bTSRDA+ID/On4uE3M0rjUuFnNE=;
+ s=k20201202; t=1626291602;
+ bh=0GHUhYtQEQPhgCBRMWQ3a48DdpMVw3MIkHFYkZAA91E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=H3iloH8tJyRIFmauITJ85o5bJo9onlGgdryr8Ew5itqs1GUNM6iCZzyWA1D+ZnpeD
- nyqnOU6X8VCIpDWir8UXNB/78LTs59r11x2WApv5IHOBeAGfokaFXgq7gSk0TypPNa
- re+ybpCerwboUw8V8LpU8tKlsReTXC42XijABRf4rWIEf2igl8nzbsPi2Q06WxtBHE
- fgO+fftOd7K6dwzkxmCoEOF0GfUanUuM6omEo6+ZUeTrLA885rxKB/1+oWmOizPuuy
- kq55Nwyr9SbDIifL73p+nBWysNYp/38T5YgnvOC5hasaOaImkP/ahtxmhpt0PMMi3h
- BuBGaojgu4i/Q==
+ b=FQmio5WSNbsLTHI0BkEh8Ph96nwz8VRnV27NZszVSnZoi6Pdno1UO0xhDRhv547RW
+ /xR/yJ8rp8TDOA7WEqAfw0OnW8coZ/fRiP2yWO549bov0AU7ZwyycXdUtGCYmSahbw
+ FkKw9ukDx9On3NRABaRKpVUre3XgHerAiH3u6g494FJMU3jYUCfMo8rj24FKxhB1t+
+ G7kO/5zu3xXUg5nE26TNUwiFIjmIwHuqxsmidSHQaI13xDpLYgWNLFHC/5R5u0lg9o
+ r8/HQHBqN4MKHa/vDo+/v8F/rGzzK3B9PLCe+kpnFJbEuYMC7UR6Rxq6wEjfacniNy
+ T6d02vff8Efsw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.13 071/108] ARM: dts: rockchip: fix supply
- properties in io-domains nodes
-Date: Wed, 14 Jul 2021 15:37:23 -0400
-Message-Id: <20210714193800.52097-71-sashal@kernel.org>
+Cc: Punit Agrawal <punitagrawal@gmail.com>,
+ Alexandru Elisei <alexandru.elisei@arm.com>,
+ Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.13 084/108] arm64: dts: rockchip: Update RK3399 PCI
+ host bridge window to 32-bit address memory
+Date: Wed, 14 Jul 2021 15:37:36 -0400
+Message-Id: <20210714193800.52097-84-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714193800.52097-1-sashal@kernel.org>
 References: <20210714193800.52097-1-sashal@kernel.org>
@@ -64,8 +66,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_123944_793499_891D2ED5 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20210714_124003_371544_A50BCCB8 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +85,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Johan Jonker <jbx6244@gmail.com>
+From: Punit Agrawal <punitagrawal@gmail.com>
 
-[ Upstream commit f07edc41220b14ce057a4e6d7161b30688ddb8a2 ]
+[ Upstream commit 8efe01b4386ab38a36b99cfdc1dc02c38a8898c3 ]
 
-A test with rockchip-io-domain.yaml gives notifications
-for supply properties in io-domains nodes.
-Fix them all into ".*-supply$" format.
+The PCIe host bridge on RK3399 advertises a single 64-bit memory
+address range even though it lies entirely below 4GB.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20210606181632.13371-1-jbx6244@gmail.com
+Previously the OF PCI range parser treated 64-bit ranges more
+leniently (i.e., as 32-bit), but since commit 9d57e61bf723 ("of/pci:
+Add IORESOURCE_MEM_64 to resource flags for 64-bit memory addresses")
+the code takes a stricter view and treats the ranges as advertised in
+the device tree (i.e, as 64-bit).
+
+The change in behaviour causes failure when allocating bus addresses
+to devices connected behind a PCI-to-PCI bridge that require
+non-prefetchable memory ranges. The allocation failure was observed
+for certain Samsung NVMe drives connected to RockPro64 boards.
+
+Update the host bridge window attributes to treat it as 32-bit address
+memory. This fixes the allocation failure observed since commit
+9d57e61bf723.
+
+Reported-by: Alexandru Elisei <alexandru.elisei@arm.com>
+Link: https://lore.kernel.org/r/7a1e2ebc-f7d8-8431-d844-41a9c36a8911@arm.com
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Punit Agrawal <punitagrawal@gmail.com>
+Tested-by: Alexandru Elisei <alexandru.elisei@arm.com>
+Link: https://lore.kernel.org/r/20210607112856.3499682-5-punitagrawal@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3288-rock2-som.dtsi | 2 +-
- arch/arm/boot/dts/rk3288-vyasa.dts      | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk3288-rock2-som.dtsi b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-index 44bb5e6f83b1..76363b8afcb9 100644
---- a/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-+++ b/arch/arm/boot/dts/rk3288-rock2-som.dtsi
-@@ -218,7 +218,7 @@ &io_domains {
- 	flash0-supply = <&vcc_flash>;
- 	flash1-supply = <&vccio_pmu>;
- 	gpio30-supply = <&vccio_pmu>;
--	gpio1830 = <&vcc_io>;
-+	gpio1830-supply = <&vcc_io>;
- 	lcdc-supply = <&vcc_io>;
- 	sdcard-supply = <&vccio_sd>;
- 	wifi-supply = <&vcc_18>;
-diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
-index aa50f8ed4ca0..b156a83eb7d7 100644
---- a/arch/arm/boot/dts/rk3288-vyasa.dts
-+++ b/arch/arm/boot/dts/rk3288-vyasa.dts
-@@ -379,10 +379,10 @@ &io_domains {
- 	audio-supply = <&vcc_18>;
- 	bb-supply = <&vcc_io>;
- 	dvp-supply = <&vcc_io>;
--	flash0-suuply = <&vcc_18>;
-+	flash0-supply = <&vcc_18>;
- 	flash1-supply = <&vcc_lan>;
- 	gpio30-supply = <&vcc_io>;
--	gpio1830 = <&vcc_io>;
-+	gpio1830-supply = <&vcc_io>;
- 	lcdc-supply = <&vcc_io>;
- 	sdcard-supply = <&vccio_sd>;
- 	wifi-supply = <&vcc_18>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 1703817c7354..7f8081f9e30e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -227,7 +227,7 @@ pcie0: pcie@f8000000 {
+ 		       <&pcie_phy 2>, <&pcie_phy 3>;
+ 		phy-names = "pcie-phy-0", "pcie-phy-1",
+ 			    "pcie-phy-2", "pcie-phy-3";
+-		ranges = <0x83000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
++		ranges = <0x82000000 0x0 0xfa000000 0x0 0xfa000000 0x0 0x1e00000>,
+ 			 <0x81000000 0x0 0xfbe00000 0x0 0xfbe00000 0x0 0x100000>;
+ 		resets = <&cru SRST_PCIE_CORE>, <&cru SRST_PCIE_MGMT>,
+ 			 <&cru SRST_PCIE_MGMT_STICKY>, <&cru SRST_PCIE_PIPE>,
 -- 
 2.30.2
 
