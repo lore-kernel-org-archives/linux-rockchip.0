@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DB03C47E50
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03B62C47E48
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:39:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C9EF613E9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:38:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C9EF613E9
+	by mail.kernel.org (Postfix) with ESMTPS id CEDBA613E3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:39:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEDBA613E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nS+VysBAigEzSG0y4ETKnsDuYSOOFIlx8tVFJqzmTn0=; b=cb4l0VXlz6b7Hx
-	ef1OkP65GRnRhtc91mGWLjBP6PbN8Xsl7hthcjPehS6q0dhK8aGzod6YN0aQp3F87tr/DkW0QtrFG
-	wLMBSBHrhVxkTSyaTyUNH4MFOxHvCD/eyWNZdvJqeKeHwRQGUjIr1G0Z9B12i3BAkSAIt9MJ0YQw2
-	prz9A5lusbOqLyI/MHp6cKSu0dU8csw9C2JBSV9TNhANCO8yXN9WEjB0P5QouOpNniDF4QmbyRDcg
-	npe0G2YSVb26snehicvRdQDWFEMPmg5bVjuWvSyDTP/cSY5t4i5snz1Hh98QJ5tplqnk4Aui2uZgr
-	s4lrlZ2haUYKvI0NefCg==;
+	List-Owner; bh=LAizrbe30+y4PsiQMp+OAiKtZjMCTTjHLxKPy6KdGJ8=; b=jpn3GQb5we6RnC
+	VWHuUWDn/aexk47ZP2GdiP3B7r7X2u9EB6E68p3xBriB04Rpx0kopdgdqL0kIwSFIcoTU1oZ/0Ct9
+	r8dRLm4Dpgin0i4M9wPTxd59nMYk/FuxwLT9cK8j6n7u9Q+38gfOeCILKRl8RK2kEf30/JHRkp9kB
+	S2f5Ci9JNRdTVCshlXQZAfJ+gUPR7qDdmwA4NICuj+YDGHBnBTK+Tp9t6MXOloc1Y30gy/ivW30jt
+	reJsgIoGjT9+Ce3+hI6pcs0h4XBipR5hNaRVqJDa0ga+smxOMm2miE8d5KmZQMoFNdJMecCsTsRt9
+	8i71UnVfLYUCuLxBCQKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3kiH-00Ebnf-IV; Wed, 14 Jul 2021 19:38:33 +0000
+	id 1m3kiu-00EcAD-Mn; Wed, 14 Jul 2021 19:39:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3khq-00EbWV-G6; Wed, 14 Jul 2021 19:38:07 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id BBE24613D6;
- Wed, 14 Jul 2021 19:38:04 +0000 (UTC)
+ id 1m3khr-00EbXC-C2; Wed, 14 Jul 2021 19:38:08 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 33757613DA;
+ Wed, 14 Jul 2021 19:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291485;
- bh=fdX3OWonzQBkMm3CKVLceeQ5nc48BR8fbedd/LnPc0Q=;
+ s=k20201202; t=1626291487;
+ bh=VoZEpYPEyyUpMZMwfgNcFoGYGs+3km7Ji+nV5M3jVoQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pLF8YV4IlUqJA5w89aE7ezPwwv+9k4ZlJTdbL9qI2hFKkEhBChK5xOOoX8LMfP5zT
- PUaKSWEzHwPhP5DIxNydqeTKCeyJX5hC+T9KJrsuS40U7XxiVBc2zFpwL50Z/cXQt4
- dUW/jVCzAWd4xq1spC9t3LF4Jljgs/2HTm/TU2e044NmQ4DuHnkG+eMkYdX3OpNk0P
- 3EtdnSMiZ0BVomAzvZPbn+RaJeYcbYgAN513Ogv4zSi6vvFYIg4ci0ivPoEuDlvONf
- +NdLqp624xWe15he1x+VFSOSsxxf2P06gNdQk3eimwBAkwjQ7fhuSPa473HYQ9UbGe
- paoLq2tR3FS/g==
+ b=MOXo40HdzBT34wyU7HbkYyZAy/7HmVl3pE/boqB3k/ptzJn0z7Rhft+xSCzRcaGYG
+ XB8qbs/8pUxhb1/GnmrgILB+GRGSo5LoOE3A0HKDzkRPNBliqWQCvRHR9lxFXKwlTR
+ 0P+lx7wDKouuv5k7NVhOtVuwEHvDoG32E9IoNb0znfTTexkOCPFATbmLVJ32E01aHo
+ bXO0AVeFhesEtKFjJJvQo8YKoFeKG7XGd62XZm40RzptM5efK/wGeGblxQ8MDtgveA
+ zaMk1fx86oJyd1qVg6O63/ZdzORWN8B51uNjN3Y0GGrmjOF5J6chv207jnQQ/PGX/e
+ CJ62k2IFhSkfw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
+Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.13 003/108] ARM: dts: rockchip: Fix thermal sensor
- cells o rk322x
-Date: Wed, 14 Jul 2021 15:36:15 -0400
-Message-Id: <20210714193800.52097-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.13 004/108] ARM: dts: rockchip: fix pinctrl sleep
+ nodename for rk3036-kylin and rk3288
+Date: Wed, 14 Jul 2021 15:36:16 -0400
+Message-Id: <20210714193800.52097-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714193800.52097-1-sashal@kernel.org>
 References: <20210714193800.52097-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_123806_581573_093E4BF3 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20210714_123807_456204_C1E778FA 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +83,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit d5c24e20daf09587cbc221d40be1ba92673e8d94 ]
+[ Upstream commit dfbfb86a43f9a5bbd166d88bca9e07ee4e1bff31 ]
 
-The number of cells to be used with a thermal sensor specifier
-must be "1". Fix this.
+A test with the command below aimed at powerpc generates
+notifications in the Rockchip ARM tree.
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Fix pinctrl "sleep" nodename by renaming it to "suspend"
+for rk3036-kylin and rk3288
+
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/powerpc/sleep.yaml
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/20210126110221.10815-1-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://lore.kernel.org/r/20210506175514.168365-2-ezequiel@collabora.com
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm/boot/dts/rk3036-kylin.dts | 2 +-
+ arch/arm/boot/dts/rk3288.dtsi      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 208f21245095..9f02ba7a0cc2 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -517,7 +517,7 @@ tsadc: tsadc@11150000 {
- 		pinctrl-0 = <&otp_pin>;
- 		pinctrl-1 = <&otp_out>;
- 		pinctrl-2 = <&otp_pin>;
--		#thermal-sensor-cells = <0>;
-+		#thermal-sensor-cells = <1>;
- 		rockchip,hw-tshut-temp = <95000>;
- 		status = "disabled";
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index 7154b827ea2f..e817eba8c622 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -390,7 +390,7 @@ sdmmc_pwr: sdmmc-pwr {
+ 		};
  	};
+ 
+-	sleep {
++	suspend {
+ 		global_pwroff: global-pwroff {
+ 			rockchip,pins = <2 RK_PA7 1 &pcfg_pull_none>;
+ 		};
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 05557ad02b33..24b903240cb3 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -1582,7 +1582,7 @@ pcfg_pull_none_12ma: pcfg-pull-none-12ma {
+ 			drive-strength = <12>;
+ 		};
+ 
+-		sleep {
++		suspend {
+ 			global_pwroff: global-pwroff {
+ 				rockchip,pins = <0 RK_PA0 1 &pcfg_pull_none>;
+ 			};
 -- 
 2.30.2
 
