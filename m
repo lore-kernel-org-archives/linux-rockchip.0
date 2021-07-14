@@ -2,83 +2,70 @@ Return-Path: <SRS0=C1EW=MG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 258A7C1B08C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DB03C47E50
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:38:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D043660698
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:32:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D043660698
+	by mail.kernel.org (Postfix) with ESMTPS id 2C9EF613E9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 19:38:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C9EF613E9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KOgHs5B4L9mbOWSXcx/+9aF6TEhDr9TcbpW82LDz4dM=; b=Sj3ex9jqvN7Ys/
-	0v4IyAplk31Vps7luBosGpXlcpYDKMVCJ7Y0E4UaQP+LIIx+EuuvlrMyWlECuyWT/bHW8PDmsx/Od
-	WnxyYXK35ccgnleeIf81HE4WLVveY/6enyfkuzqK/GEkEt7dFTzyb4oW02wW/JwQTFo/FRNqVPtrr
-	cyzzqrIBH6ObKln2PNAR2bNBEs7wtuYyOC9QJIs+AXe7ScaNlffs9Sa3tHpgwAQBruyq7gSSyev+R
-	46c5H3ko+kg8o4LU7pUme3RSmWlxpt381uNoN9d5DcISdXbBTERoVOPt3K3xfe/p83iCSgzw2OxPF
-	OcqkrA9xXSznLIVlZzrQ==;
+	List-Owner; bh=nS+VysBAigEzSG0y4ETKnsDuYSOOFIlx8tVFJqzmTn0=; b=cb4l0VXlz6b7Hx
+	ef1OkP65GRnRhtc91mGWLjBP6PbN8Xsl7hthcjPehS6q0dhK8aGzod6YN0aQp3F87tr/DkW0QtrFG
+	wLMBSBHrhVxkTSyaTyUNH4MFOxHvCD/eyWNZdvJqeKeHwRQGUjIr1G0Z9B12i3BAkSAIt9MJ0YQw2
+	prz9A5lusbOqLyI/MHp6cKSu0dU8csw9C2JBSV9TNhANCO8yXN9WEjB0P5QouOpNniDF4QmbyRDcg
+	npe0G2YSVb26snehicvRdQDWFEMPmg5bVjuWvSyDTP/cSY5t4i5snz1Hh98QJ5tplqnk4Aui2uZgr
+	s4lrlZ2haUYKvI0NefCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3kc7-00EZd3-9j; Wed, 14 Jul 2021 19:32:11 +0000
-Received: from mail-il1-f179.google.com ([209.85.166.179])
+	id 1m3kiH-00Ebnf-IV; Wed, 14 Jul 2021 19:38:33 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kc4-00EZcU-PL; Wed, 14 Jul 2021 19:32:09 +0000
-Received: by mail-il1-f179.google.com with SMTP id y6so2704059ilj.13;
- Wed, 14 Jul 2021 12:32:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Z54s5QhYSOExzuzpvOFtLoRAPtUfWrEsWWGSgU1PAnE=;
- b=ZAiKJQ9VjbwDf/9oW4BiFI+Fi07U5dBEvkCXw3WdBQdZ7nbcUpk0yfTb0KVWpNfVOE
- U4v0NJM15+LdlkJzEoFE1vw6eTsYxN/JzYVEmnqRp30g0Gd3XffMcKx1Sl3ZeW/Dhorm
- uP9j0kRf8+ez1C21EhrraSEJ/YsagcrtQ2OaKPtQENEBkuaQEdiPnJYNNImPsDwwdQpE
- BamLMvqmSZvx3fOEsrvGgi2Y1uHKlQtndGh3evS+9LsZzptAlj3ZdzP05HlibAfuaL8o
- 1urpPHM25IhN551CGamVATxsE+eaNU9kxyxeC4JfpHZoA6ZbHqnroo4Gf8kYLxNqfGqp
- iDlA==
-X-Gm-Message-State: AOAM5336R54eeyIkzV6M0EcuqIPYgSc1cFlbzPxgJNQ3X9DmVycQnxc/
- aDDRt3ys78/O4xw97Bw5cg==
-X-Google-Smtp-Source: ABdhPJx1+SSjmVRQRaFw07erbQbWbdwhTQo0pfdQDmm2BTFj8K/kX7s0rEeQqYhCGvFqwZrjQfskTg==
-X-Received: by 2002:a05:6e02:106d:: with SMTP id
- q13mr7436201ilj.164.1626291128089; 
- Wed, 14 Jul 2021 12:32:08 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id w10sm1726955ilo.17.2021.07.14.12.32.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Jul 2021 12:32:07 -0700 (PDT)
-Received: (nullmailer pid 3129884 invoked by uid 1000);
- Wed, 14 Jul 2021 19:32:05 -0000
-Date: Wed, 14 Jul 2021 13:32:05 -0600
-From: Rob Herring <robh@kernel.org>
-To: cl@rock-chips.com
-Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- zhangqing@rock-chips.com, jbx6244@gmail.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- heiko@sntech.de, lee.jones@linaro.org
-Subject: Re: [PATCH v1 2/3] dt-binding: mfd: syscon: add rk3568 QoS register
- compatible
-Message-ID: <20210714193205.GA3129835@robh.at.kernel.org>
-References: <20210624114719.1685-1-cl@rock-chips.com>
- <20210624114719.1685-3-cl@rock-chips.com>
+ id 1m3khq-00EbWV-G6; Wed, 14 Jul 2021 19:38:07 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BBE24613D6;
+ Wed, 14 Jul 2021 19:38:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1626291485;
+ bh=fdX3OWonzQBkMm3CKVLceeQ5nc48BR8fbedd/LnPc0Q=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=pLF8YV4IlUqJA5w89aE7ezPwwv+9k4ZlJTdbL9qI2hFKkEhBChK5xOOoX8LMfP5zT
+ PUaKSWEzHwPhP5DIxNydqeTKCeyJX5hC+T9KJrsuS40U7XxiVBc2zFpwL50Z/cXQt4
+ dUW/jVCzAWd4xq1spC9t3LF4Jljgs/2HTm/TU2e044NmQ4DuHnkG+eMkYdX3OpNk0P
+ 3EtdnSMiZ0BVomAzvZPbn+RaJeYcbYgAN513Ogv4zSi6vvFYIg4ci0ivPoEuDlvONf
+ +NdLqp624xWe15he1x+VFSOSsxxf2P06gNdQk3eimwBAkwjQ7fhuSPa473HYQ9UbGe
+ paoLq2tR3FS/g==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.13 003/108] ARM: dts: rockchip: Fix thermal sensor
+ cells o rk322x
+Date: Wed, 14 Jul 2021 15:36:15 -0400
+Message-Id: <20210714193800.52097-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210714193800.52097-1-sashal@kernel.org>
+References: <20210714193800.52097-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210624114719.1685-3-cl@rock-chips.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_123208_871214_65F86C3D 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210714_123806_581573_093E4BF3 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,18 +83,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Jun 2021 19:47:18 +0800, cl@rock-chips.com wrote:
-> From: Liang Chen <cl@rock-chips.com>
-> 
-> Document rk3568 compatible for QoS registers.
-> 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
-> ---
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
-Acked-by: Rob Herring <robh@kernel.org>
+[ Upstream commit d5c24e20daf09587cbc221d40be1ba92673e8d94 ]
+
+The number of cells to be used with a thermal sensor specifier
+must be "1". Fix this.
+
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://lore.kernel.org/r/20210506175514.168365-2-ezequiel@collabora.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ arch/arm/boot/dts/rk322x.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 208f21245095..9f02ba7a0cc2 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -517,7 +517,7 @@ tsadc: tsadc@11150000 {
+ 		pinctrl-0 = <&otp_pin>;
+ 		pinctrl-1 = <&otp_out>;
+ 		pinctrl-2 = <&otp_pin>;
+-		#thermal-sensor-cells = <0>;
++		#thermal-sensor-cells = <1>;
+ 		rockchip,hw-tshut-temp = <95000>;
+ 		status = "disabled";
+ 	};
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
