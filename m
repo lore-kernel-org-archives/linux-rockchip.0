@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D7B1C12002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:40:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C197EC12002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:40:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CBB71613A9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:40:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBB71613A9
+	by mail.kernel.org (Postfix) with ESMTPS id 89B96613AF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:40:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89B96613AF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cc/ZirjnF+gORUkKDVwSl5FPgrKlLyh1rqUyNMhJeGA=; b=cNOds8+eIknw6L
-	AHRnd5+L6rZowv4seIgEbBuvcGT1a4iMKGzzUJTE2eAmrX289j4eTDlX2UpaIzRv7BHJvHYQpfWPg
-	Gk6Rh5W7fJawIyzkJ4j854Cy0phWC7NxIU2ATc6xdli0tiVagH+JJgVsiH/P15nMQI3s8UnB15yPm
-	OPTbhwdzmmFbbvyiJ42g3KTLY3d+ZZKSW/ImS/esRIg7XzvBMBl/xwcKXhWfYO5H6srYgvwSW/PyO
-	Ffnsd9K85I50WDlFUDnsnatjxtw2IxGWy5rCTj1+vkyes72N+H5WhKA6Ja+hiXNtAs5iq62i4tAkB
-	WFnaDCtUwGQnkY8K92Rw==;
+	List-Owner; bh=QaQ0QlFsImQss8O5/0jTPs9XhYTu+zMc/aYD3exzdIM=; b=hqFct7pwo7Bss/
+	t1wXXQvECv2ii0IWalgVC1oxTbcpvhiQeyNtjUEBcIo5OPOhxoGsoXkajtWOnpC4BqYfU8vgLyYcZ
+	DXTj0gAqdc3INqt/UsOgOZGR14S8497fQTGlQbDPG9oJgdvl3vKJjAGayUlVM1JlwggoAedVSdF4G
+	/QjdbmONtAt0/V8eIV2SslC4lnjePqwsblBpBazfqDSY69HYlj5ntK2xZxN2wuQPuzVGt+T45pPft
+	QRHhoVRG+pmCGXVYUCKSul7NiE57JW8KnogtYcJitwZPng8JKbWq4arS7vLntBmxxcvOTizriKYxZ
+	XW+uHQvapGhg/KOAfawA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3lfv-00F5T7-Ro; Wed, 14 Jul 2021 20:40:11 +0000
+	id 1m3lfx-00F5UJ-TJ; Wed, 14 Jul 2021 20:40:14 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kkO-00Ed6I-3h; Wed, 14 Jul 2021 19:40:45 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D5254613E9;
- Wed, 14 Jul 2021 19:40:42 +0000 (UTC)
+ id 1m3kkQ-00Ed6I-Q3; Wed, 14 Jul 2021 19:40:48 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AF847613F6;
+ Wed, 14 Jul 2021 19:40:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291643;
- bh=trteg84HErb6xW1RjbmH17U4+O+oysBVVdFM4E+QcaM=;
+ s=k20201202; t=1626291646;
+ bh=JanKlhLxOgey8MEANzaX4BM9JmhZLXqcjrVIXPwhvVw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mew5LqD8t5v3Q6MjUpe3/j92eMEFvUnLYs0BQj7gX0zs8YmNEJoKMaM3513xJHlyS
- DUcgnyEjWiz+h57dAe+6h2N3EN8sEgQsGJVf7udQxvLDV3kgi4lY2QvnwzUs2bBe16
- 72zPrUvFvsO7aA64hjdQgsDaQwmN1uephMMz5eNx1cz+bsgxYgWJhAr3eFq62tDmq5
- 5I6wbpi8TkI/xsrFMFQQOCCO1sd2YiUYUT9p67D+BfG2iF/xpPTl1UJdvZdTMhsjjo
- 28FkN6/MVArvRZsmuPET5EDZk3rHDh9WQQpwoJ7VFHNT3RbY5I4e6mInbGJtDhGMNq
- xuD70Ue+YDx9A==
+ b=K7CLyUN/3wv5DwhxgGnoSw/8IZB+Yxno21L6SR04jj7GbfIqXBBM8+002RktKT7SA
+ lVjghAC8h/zD1llbVjs4wNamoAN5AeQzz0fm7f3ksgCYPPzP15e31N11J90WVJvHch
+ kx1aTz+N70sBWhrquZ4Ywjn7q+seS0YF23PLXLKtzFqGENypyL5xpp70WazCqr/yfc
+ jTeXEjh3bFMJq9uyGu7bvosc+a9/L2+FgLaNkNERXwuiN0OuAGzWY8fMM2YsntH6tf
+ Nv2FI4QNne/94by7r2iA3qa5zfIniBbId6IlqVUgPk3OXZ0LMF3KFz2UErfBxd4j2/
+ nSCi60RsMmPiQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Peter Robinson <pbrobinson@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 005/102] arm64: dts: rockchip: Use only supported
- PCIe link speed on rk3399
-Date: Wed, 14 Jul 2021 15:38:58 -0400
-Message-Id: <20210714194036.53141-5-sashal@kernel.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.12 007/102] ARM: dts: rockchip: Fix the timer clocks
+ order
+Date: Wed, 14 Jul 2021 15:39:00 -0400
+Message-Id: <20210714194036.53141-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714194036.53141-1-sashal@kernel.org>
 References: <20210714194036.53141-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124044_220011_940F0EA1 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20210714_124046_912585_8E3D9DB3 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,60 +83,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Peter Robinson <pbrobinson@gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
 
-[ Upstream commit 954d5986afa50c178ea7554e6abdd611d08f5ade ]
+[ Upstream commit 7b46d674ac000b101fdad92cf16cc11d90b72f86 ]
 
-The max link speed supported by the rk3399 is already set in the
-rk3399.dtsi file so don't set unsupported link speeds in device
-specific DTs. This is the same fix as 642fb27.
+Fixed order is the device-tree convention.
+The timer driver currently gets clocks by name,
+so no changes are needed there.
 
-Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
-Link: https://lore.kernel.org/r/20210413141709.845592-1-pbrobinson@gmail.com
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Link: https://lore.kernel.org/r/20210506111136.3941-3-ezequiel@collabora.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi      | 1 -
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi    | 1 -
- arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi | 1 -
- 3 files changed, 3 deletions(-)
+ arch/arm/boot/dts/rk3188.dtsi | 8 ++++----
+ arch/arm/boot/dts/rk3288.dtsi | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 48ed4aaa37f3..476787027e03 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -504,7 +504,6 @@ &pcie_phy {
- };
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 2298a8d840ba..2c08ae60e4a1 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -150,16 +150,16 @@ timer3: timer@2000e000 {
+ 		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
+ 		reg = <0x2000e000 0x20>;
+ 		interrupts = <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru SCLK_TIMER3>, <&cru PCLK_TIMER3>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER3>, <&cru SCLK_TIMER3>;
++		clock-names = "pclk", "timer";
+ 	};
  
- &pcie0 {
--	max-link-speed = <2>;
- 	num-lanes = <2>;
- 	vpcie0v9-supply = <&vcca0v9_s3>;
- 	vpcie1v8-supply = <&vcca1v8_s3>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index fb7599f07af4..17ba7c3d9a9c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -469,7 +469,6 @@ &pcie_phy {
+ 	timer6: timer@200380a0 {
+ 		compatible = "rockchip,rk3188-timer", "rockchip,rk3288-timer";
+ 		reg = <0x200380a0 0x20>;
+ 		interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru SCLK_TIMER6>, <&cru PCLK_TIMER0>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER0>, <&cru SCLK_TIMER6>;
++		clock-names = "pclk", "timer";
+ 	};
  
- &pcie0 {
- 	ep-gpios = <&gpio4 RK_PD3 GPIO_ACTIVE_HIGH>;
--	max-link-speed = <2>;
- 	num-lanes = <4>;
- 	pinctrl-0 = <&pcie_clkreqnb_cpm>;
- 	pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-index 7257494d2831..bc385ad45a13 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-@@ -324,7 +324,6 @@ &pcie_phy {
+ 	i2s0: i2s@1011a000 {
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 6f251468fe34..f9ee26e3ca55 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -196,8 +196,8 @@ timer: timer@ff810000 {
+ 		compatible = "rockchip,rk3288-timer";
+ 		reg = <0x0 0xff810000 0x0 0x20>;
+ 		interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&xin24m>, <&cru PCLK_TIMER>;
+-		clock-names = "timer", "pclk";
++		clocks = <&cru PCLK_TIMER>, <&xin24m>;
++		clock-names = "pclk", "timer";
+ 	};
  
- &pcie0 {
- 	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
--	max-link-speed = <2>;
- 	num-lanes = <4>;
- 	pinctrl-0 = <&pcie_clkreqnb_cpm>;
- 	pinctrl-names = "default";
+ 	display-subsystem {
 -- 
 2.30.2
 
