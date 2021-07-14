@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB86FC12002
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:43:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9439EC12002
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:43:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C45C613AF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:43:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C45C613AF
+	by mail.kernel.org (Postfix) with ESMTPS id 5D828613AF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jul 2021 20:43:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D828613AF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JbT+etajZMjDkHsSuPMBXQlIZ+QcxL3vvloLwFYwj/A=; b=0i02r46GqadVLE
-	DyEeA4CtVxkNDH7O1yVgGA1798W/izYKLUsoF9DHZbrGGCIvhJY/SEF+f8VuDqSJZK0iAXRWGREl5
-	K7Bqm7ZCyuyfw4Z/gQKOcuar/bnl0KlCAQkTJg1s+hsGk5RbztYgNambu6DZbKyDX7hNua1PQ3int
-	kB388WWWgTtD1Uz6pYH7WH8FLRhpQ9MZnxjTNrOxou9fTNaM/+tho+xrBPHevkmorLlMIt0kwWW+x
-	9owB0hA04ThfcFzbSze5f1ZPbR9zTs4Nl40WO0sxI8kiXlOgF+8ORqDxmbtDQXJIyfF87nXF5q76Q
-	x0rm5xFqBvJzCQ1mx4gg==;
+	List-Owner; bh=awFqIKUw+6mGko3zGjZoV/HcdW+3/drZ7ZevZnaqXOU=; b=Q6/UXzWfIlEbxf
+	kBeK/3I1SXuecRr1gE/ND//Q1OcXKIq3yMNPGx0GuqIiqX6SKAG9k0N1YPepzp1hAiDEXClOfoSAf
+	QOZ/LmCVvfkUHANI0mzLVz1bKmfHwUw0nxrk7u86swOvuB7GmjfZjsK7K+Q1xhIA5pIMEK3vjeD78
+	bOIJ3zuzZBz1CivuDBbHzUMTYohmKdb+BJ31ofICoxi2uctWDMLloiMd89Fedp3kg96mS7Gk67rCr
+	pMOLq6TcNbe+YyLbh+ZR9xbQ/ReOJWom2vVfJstseGettfE9cZy2AX44m8w29yoT05vDssCPjMzfW
+	2YTSLFU/mAY0Jq3YPwQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3lij-00F6dk-Ka; Wed, 14 Jul 2021 20:43:05 +0000
+	id 1m3lin-00F6fU-MV; Wed, 14 Jul 2021 20:43:09 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kkU-00EdBB-8f; Wed, 14 Jul 2021 19:40:51 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9AAEC613D8;
- Wed, 14 Jul 2021 19:40:48 +0000 (UTC)
+ id 1m3kkV-00EdCa-Py; Wed, 14 Jul 2021 19:40:53 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 33F28613FE;
+ Wed, 14 Jul 2021 19:40:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291649;
- bh=7WPyDgtLqfpuzV80djq5MmeUFks9fzqefhlXiDzYijQ=;
+ s=k20201202; t=1626291651;
+ bh=KZ7qtIBvJQCUHMJ7yqOjOv/AUPX2tA0r9ajKz661kdY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=tLZ0GH6wZhEzIErx9cjoWfoHq6HGTLMEdxNt112b+kqmsw3pWWw4vdzCPEkb1xPnn
- 8fV6+NpY8kEUt79mU9OP9r2H7s3vOsKY3T/kswNHa5RhO0M6OI4wUDWNvlVgiNuZgY
- a+trEwGdNQYqjhY91VztLIvlc3ytgJb6ZWmSXTb4KioRi3iKNAeqI7P1qiYqmpK1rG
- 0pBdNPn1fAEAjXAbxQb/khYAi01+vPp0aJP+1hOBjRqk/46CYY7ZQN96ezs7ROiECH
- km1eExkmhhVBHi1gCyTkcuatihWdmqvCsdGmV212m9kIdBAUyzMlX8kG7Lm7L1+aIh
- hJ3lBwFm0XBDQ==
+ b=R4ncF90+XvpCXnzCvQ6WEVhsmZSr53h7yfz0q1ZWGcEJ2WE/qsjXiIQjmGwnJ3Yg9
+ /z6Zs1Y2VdvxrAuy7Ui8HXluq/PG7X8Z/2Q9I8eZFVKjDV5Ig2BURHxwL0DAavOm7H
+ 2OpXuESonsokqZUF9dU/5Q+cxPYxqiHH5PM0aISQsaX4mnkQJwZLO/IYbDOUBY4h0F
+ glgSpFjxzP18axb3xbFO1g5k4D2KNthiS2NaX7A4OkmADYF0lzxGuBejE4H2KHRp2A
+ ts+/+GdHIDVNx0eF+bzjitiUDTiv0FyaCI5eGafEb8XUyOqgAW3gqWZhg42ygMDkfV
+ /eeDm27nype1g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -55,10 +55,10 @@ Cc: Elaine Zhang <zhangqing@rock-chips.com>,
  Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.12 009/102] ARM: dts: rockchip: Fix power-controller
- node names for rk3066a
-Date: Wed, 14 Jul 2021 15:39:02 -0400
-Message-Id: <20210714194036.53141-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.12 010/102] ARM: dts: rockchip: Fix power-controller
+ node names for rk3188
+Date: Wed, 14 Jul 2021 15:39:03 -0400
+Message-Id: <20210714194036.53141-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210714194036.53141-1-sashal@kernel.org>
 References: <20210714194036.53141-1-sashal@kernel.org>
@@ -66,7 +66,7 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124050_367305_C06550A8 
+X-CRM114-CacheID: sfid-20210714_124051_931410_6FB87FFA 
 X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -88,7 +88,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Elaine Zhang <zhangqing@rock-chips.com>
 
-[ Upstream commit f2948781a72f0d8cf2adf31758c357f2f35e6c79 ]
+[ Upstream commit d3bcbcd396175ac26aa54919c0b31c7d2878fc24 ]
 
 Use more generic names (as recommended in the device tree specification
 or the binding documentation)
@@ -96,42 +96,42 @@ or the binding documentation)
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20210417112952.8516-2-jbx6244@gmail.com
+Link: https://lore.kernel.org/r/20210417112952.8516-3-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3066a.dtsi | 6 +++---
+ arch/arm/boot/dts/rk3188.dtsi | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index 252750c97f97..bbc3bff50856 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -755,7 +755,7 @@ power: power-controller {
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index 2c08ae60e4a1..b6bde9d12c2b 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -699,7 +699,7 @@ power: power-controller {
  		#address-cells = <1>;
  		#size-cells = <0>;
  
--		pd_vio@RK3066_PD_VIO {
-+		power-domain@RK3066_PD_VIO {
- 			reg = <RK3066_PD_VIO>;
+-		pd_vio@RK3188_PD_VIO {
++		power-domain@RK3188_PD_VIO {
+ 			reg = <RK3188_PD_VIO>;
  			clocks = <&cru ACLK_LCDC0>,
  				 <&cru ACLK_LCDC1>,
-@@ -782,7 +782,7 @@ pd_vio@RK3066_PD_VIO {
+@@ -721,7 +721,7 @@ pd_vio@RK3188_PD_VIO {
  				 <&qos_rga>;
  		};
  
--		pd_video@RK3066_PD_VIDEO {
-+		power-domain@RK3066_PD_VIDEO {
- 			reg = <RK3066_PD_VIDEO>;
+-		pd_video@RK3188_PD_VIDEO {
++		power-domain@RK3188_PD_VIDEO {
+ 			reg = <RK3188_PD_VIDEO>;
  			clocks = <&cru ACLK_VDPU>,
  				 <&cru ACLK_VEPU>,
-@@ -791,7 +791,7 @@ pd_video@RK3066_PD_VIDEO {
+@@ -730,7 +730,7 @@ pd_video@RK3188_PD_VIDEO {
  			pm_qos = <&qos_vpu>;
  		};
  
--		pd_gpu@RK3066_PD_GPU {
-+		power-domain@RK3066_PD_GPU {
- 			reg = <RK3066_PD_GPU>;
+-		pd_gpu@RK3188_PD_GPU {
++		power-domain@RK3188_PD_GPU {
+ 			reg = <RK3188_PD_GPU>;
  			clocks = <&cru ACLK_GPU>;
  			pm_qos = <&qos_gpu>;
 -- 
