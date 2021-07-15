@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68B75C636CD
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B70ACC636C8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D98796128D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D98796128D
+	by mail.kernel.org (Postfix) with ESMTPS id 646406128D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 646406128D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,44 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mPzlol7awdRgn0gaQuj8Q4ygvxbTdbCQ+Sju4CrEPPM=; b=e3aMVEUXtCneTp
-	LvV46bV2x7zEj+50VgncECGiVxVcECCeoM9Ik51iXQHwgkUZSlC5NED5zC0Sxf4rEuKdu37U+1YWU
-	sCER7HEKIBKgmemi2pb31zWd7UhzjC9BXhI0gZudfKUPgJfjmrledMG0truyuwUdcprvcgNjLp09Z
-	0qz7/HYXYvKFRnlrZJj1HnbGJcP0SUfhlYzKhiU804LiTv/Gf1JwtRaTghPoMBzsUWogBHG1mvmjv
-	0PoxQkxdMVfS+BNpu86gx17/S2Pp/lagfSn2l51Np5JbnTNlw47Kc3zgcnwvspNFUDnrPu74fpDCC
-	K4dnNJXbYx89lrecrkWA==;
+	List-Owner; bh=S8ympIaFxEKejDADzXjgmEds8yhhFi85Fgi4tGX5fL8=; b=Ue+9LR/dLYi5Fg
+	nepXmX89PLk0p7bB0apoeQKwfZET3Om9idTBfl8tdDMaNeEoLiqdM+VbI2G+mTdfmC2eXvRXcQ9Il
+	TjmbVfHuGTs93CUqVZHSddj7hSxkqzLiT613GSgLpJFSka4XOageS3nCF/uVxLMPzuTF+rdb+pH0d
+	f5SOTQ0WRfQeCGtkupPh9CcX5GJCplYSk0V7rBTwjBq8FrCHgIkoQB73iuxTVeZWJIrQx1Ua549kN
+	lfZXNG9z4zgeFNXKAkRqfuaX2bX0XyxlSYk9kyaT8MKSrDPat9gniROp4QLbxVlPxq6Cn5bebRmVe
+	fvIdxtsLSj3Cmtqpjyig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4A4N-002Unw-Uw; Thu, 15 Jul 2021 22:43:03 +0000
+	id 1m4A4n-002UwY-4A; Thu, 15 Jul 2021 22:43:29 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4A4L-002UlI-Mp; Thu, 15 Jul 2021 22:43:03 +0000
+ id 1m4A4M-002UlS-8P; Thu, 15 Jul 2021 22:43:04 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m4A4H-0005t7-6u; Fri, 16 Jul 2021 00:42:57 +0200
+ id 1m4A4G-0005t7-M8; Fri, 16 Jul 2021 00:42:56 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, "djw@t-chip.com.cn" <djw@t-chip.com.cn>
+To: linux-rockchip@lists.infradead.org,
+	Dennis Gilmore <dgilmore@redhat.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Liang Chen <cl@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org,
- Michael Trimarchi <michael@amarulasolutions.com>,
- Wayne Chou <zxf@t-chip.com.cn>, David Bauer <mail@david-bauer.net>,
- linux-kernel@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
- Johan Jonker <jbx6244@gmail.com>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- Tianling Shen <cnsztl@gmail.com>
-Subject: Re: [PATCH v0 0/2] Add support for Firefly ROC-RK3328-PC
-Date: Fri, 16 Jul 2021 00:42:50 +0200
-Message-Id: <162638886252.651069.17368608559801468213.b4-ty@sntech.de>
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+Subject: Re: [PATCH v2 1/3] arm64: dts: rockchip: helios64: set stdout-path
+Date: Fri, 16 Jul 2021 00:42:49 +0200
+Message-Id: <162638886253.651069.4205401236048151204.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210709080126.17045-1-djw@t-chip.com.cn>
-References: <20210709080126.17045-1-djw@t-chip.com.cn>
+In-Reply-To: <20210715025635.70452-2-dgilmore@redhat.com>
+References: <20210715025635.70452-1-dgilmore@redhat.com>
+ <20210715025635.70452-2-dgilmore@redhat.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_154301_788116_ED71D394 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20210715_154302_334124_3933A6DD 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +79,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 9 Jul 2021 16:01:24 +0800, djw@t-chip.com.cn wrote:
-> 
-> Hi all, this is an attemp to add Firefly ROC-RK3328-PC to the mainline
-> kernel.
-> 
-> ROC-RK3328-PC is the board inside the portable Firefly Station M1
-> Geek PC. As a redesign after the ROC-RK3328-CC, it uses TypeC as
-> power input and OTG port, embedded with eMMC 5.1 storage and a
-> SDIO WiFi/BT chip (RTL8723DS).
-> 
-> [...]
+On Wed, 14 Jul 2021 21:56:29 -0500, Dennis Gilmore wrote:
+> set the default output path to uart2
 
 Applied, thanks!
 
-[1/2] dt-bindings: add doc for Firefly ROC-RK3328-PC
-      commit: 773b358cb274a6cededc1f597ba70e75c0676752
-[2/2] arm64: dts: rockchip: add support for Firefly ROC-RK3328-PC
-      commit: ffe7ee186baafe3855d117a5d6e7183e8e77795d
+[1/3] arm64: dts: rockchip: helios64: set stdout-path
+      commit: a1536b7fd2d75a6836094cfce513807f0b6f8b2c
+[2/3] arm64: dts: rockchip: helios64: add SPI support
+      commit: 0ead44ed102d6391c9535395a99164fe44038b21
+[3/3] arm64: dts: rockchip: helios64: enable tsadc on helios64
+      commit: ae2a8a1ed3283ebb5abe21be04773cebada16b9c
 
 Best regards,
 -- 
