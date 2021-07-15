@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9847FC636C9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 184D4C636CA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:45:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A8DB6128D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:43:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A8DB6128D
+	by mail.kernel.org (Postfix) with ESMTPS id 8E0416128D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 22:45:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E0416128D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LokBuQWE4dcLzrAMq0x3DhJ8Rve9KOET30fCNbWcjbI=; b=B7Csz9rQYk8o+w
-	fqOTDTckssfDXTcWmbZdNpkGvgvAeNrJNLVuPnPAX6oPxF2Q9w27yEiTrZ99y2ux5VpAmfRS8v8mq
-	1vRZBD4rGdhYdM1sHHldePdJJQU2ucQbvk//EwWAI8XZD1STASuLMxjV4ecJk2I/OUYAChQ/DfZSm
-	a+gjY859rIWnwWR+0s2vIstE64xnEIICvzJF8eQTseB20i7Mzb+tYVQkjEE2hAYwQQ1tANldqQm9H
-	OeoMK80W7udDUbbJU7TutT+w/GJ1I9A0wndDxw0qsbOuBUVPuVCN3Vd9cQ+4qqUM/T0mwOxAetpz3
-	PKnXxdfk5cfvmBlKURfw==;
+	List-Owner; bh=tl73LybN+XM6M6UMRXHNu1NDqkbwmKOKDFetfAFAwDo=; b=OwmTvf6bHjFuMo
+	ZuQldOSXZGIpge4k+CMnzgT8xdZ/n3ElqgnucDSxidWgGlKlFWpq552Zi57kWQ+BjZ+AoOMTmiN9g
+	l/xfeN8XI4bmJLxF+CvHa708/c4kdzxJw8Z+OmoSEpJg5+tjdnV4paavKSC8xRe9VfwVT65Uj3JHi
+	UI0zywXeqALrSz3eMR+F6e5H2k+7lb0YJU8LCsxmlzeuO+GqFFekWVfSdfzMcWkQsPAjrEM25uJFc
+	I8kKum7FhtCTaLn8ArdIY5QHZh1hdQmkMAM+Y9alUmcr29DQRhqgVT9o27p4EwXYuohOLs0DJms1F
+	80PRYrNXdtM2NDZwopKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4A52-002V29-VL; Thu, 15 Jul 2021 22:43:45 +0000
+	id 1m4A6M-002Vef-Az; Thu, 15 Jul 2021 22:45:06 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4A4M-002UlT-Aa; Thu, 15 Jul 2021 22:43:04 +0000
+ id 1m4A4M-002UlU-JT; Thu, 15 Jul 2021 22:43:04 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m4A4H-0005t7-Q0; Fri, 16 Jul 2021 00:42:57 +0200
+ id 1m4A4I-0005t7-Bw; Fri, 16 Jul 2021 00:42:58 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, "djw@t-chip.com.cn" <djw@t-chip.com.cn>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Liang Chen <cl@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>, devicetree@vger.kernel.org,
- Wayne Chou <zxf@t-chip.com.cn>, Marty Jones <mj8263788@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, linux-kernel@vger.kernel.org,
- David Bauer <mail@david-bauer.net>, Johan Jonker <jbx6244@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Jensen Huang <jensenhuang@friendlyarm.com>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- Kongxin Deng <dkx@t-chip.com.cn>
-Subject: Re: [PATCH v0 0/2] Add support for Firefly ROC-RK3399-PC-PLUS
-Date: Fri, 16 Jul 2021 00:42:51 +0200
-Message-Id: <162638886252.651069.15126347360852580125.b4-ty@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] dt-bindings: power: convert rockchip-io-domain.txt
+ to YAML
+Date: Fri, 16 Jul 2021 00:42:53 +0200
+Message-Id: <162638886252.651069.5910265386480251787.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210628035402.16812-1-djw@t-chip.com.cn>
-References: <20210628035402.16812-1-djw@t-chip.com.cn>
+In-Reply-To: <20210625111746.6269-1-jbx6244@gmail.com>
+References: <20210625111746.6269-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_154302_405422_4684AA7D 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20210715_154302_677302_6BD072BA 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,24 +73,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 28 Jun 2021 11:54:00 +0800, djw@t-chip.com.cn wrote:
+On Fri, 25 Jun 2021 13:17:43 +0200, Johan Jonker wrote:
+> Current dts files with 'io-domains' nodes are manually verified.
+> In order to automate this process rockchip-io-domain.txt has to be
+> converted to YAML.
 > 
-> Hi all, this is an attemp to add Firefly ROC-RK3399-PC-PLUS to the mainline
-> kernel.
-> 
-> ROC-RK3399-PC-PLUS is the board inside the portable Firefly Station P1 Geek
-> PC. As a redesign after the ROC-RK3399-PC, it uses DC-12V as power input
-> and spares a USB 3 host port. It is also equipped with a USB WiFi chip and
-> audio codec without the mezzanine board.
-> 
-> [...]
+> Changed:
+>   Add supply properties for:
+>     rockchip,rk3328-io-voltage-domain
+>     rockchip,rv1108-io-voltage-domain
+>     rockchip,rv1108-pmu-io-voltage-domain
 
 Applied, thanks!
 
-[1/2] dt-bindings: add doc for Firefly ROC-RK3399-PC-PLUS
-      commit: 4011a797dac7703ecda083b3be25d891f34e9040
-[2/2] arm64: dts: rockchip: add support for Firefly ROC-RK3399-PC-PLUS
-      commit: 95e18f24ab427401b7286d6d24b5a8b0621fab2e
+[1/4] dt-bindings: power: convert rockchip-io-domain.txt to YAML
+      commit: 742f62cb06720c12677f0bb05c64c9eeab34c8ec
+[2/4] dt-bindings: soc: rockchip: add rockchip-io-domain.yaml object to grf.yaml
+      commit: 959e131fb5c3a08293178e94a184b5bf28974bb4
+[3/4] ARM: dts: rockchip: add io-domains node to rk3188.dtsi
+      commit: 453da32aca12d91b096934a4870ec72e34d61447
+[4/4] ARM: dts: rockchip: add io-domains nodes to rv1108.dtsi
+      commit: c0728a2732f0fe2b5e7c57b8c0c170352ace6476
 
 Best regards,
 -- 
