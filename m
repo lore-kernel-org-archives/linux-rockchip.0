@@ -2,92 +2,68 @@ Return-Path: <SRS0=drtE=MH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,FSL_HELO_FAKE,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37836C07E96
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 11:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DD1DC07E96
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F29D8611AB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 11:15:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F29D8611AB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id A7CEE6136E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7CEE6136E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hst1Zqaoc8e3ANk+suGEWxGCNrs6EKzokCvs5PUAgeY=; b=i2uiohCKF40HZW
-	/TfPWvuQeFN+xjKPO3pZwDwXbKtD95Nei5Xp5TYT//QEc2XIk6q8H3UhGXUUMARCRpKUN6gX6+10Q
-	h6wJ0hbSM/52Wm0Rm5HwgL587YWDYAYs1Q6jzS1Sp6g9LW4l7W4xMGNzdGThWEQXfdlVCTvIZ/IK1
-	LIlfPqHdGwoRvwT9TGNKQHSLe3HvO+UQfQn38Tzlfqnch6m/L4xt81ZEqV9EAqeO/J2ei1IGJ4aaE
-	e4a9RBHkz2fS4inUiIAci1Hot27eo7R8V7f1RpyJzrx2BwIRxjgG7hn4hwsKn5enJDkM90aagOh/1
-	8xVsTzDyfbpz/UXo0vgg==;
+	List-Owner; bh=XOsS2e7Z7PaCGz43wXFUgBOumQ/Yi1nALzZJsdKeMI8=; b=zC1i2NvSCoHL2a
+	nx/fE2NBk1MidSYDai/FvsK0K/W5Xfts5qgwzr31mNNVgsdCNsgCCRBevAhSB5zg6IExap/h6j9MM
+	z8B/qmEByZf3H/Wwqj2BJZW4E4rX4uFmi3Cs4S3OFnbd0z5k+gAGmWC+X+t9APDFTyewuXg6CZl1N
+	DVxumcWzFk3nTOfN/hWX6gaLtAcA2aoRuSW7CBoLTdoagyz1aVKkq7/s7nic32B8joQzB0o5YSKJE
+	QeIVLfWBfHbt+CB1NUkXpLmMUyBz0ZDN44fjd8HhHKD2ueStN5KEArBoorTY8zFOaM9jbU6YQHGm5
+	e9gakxAr6ieFmfjbZEBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3zKz-000aE7-5O; Thu, 15 Jul 2021 11:15:29 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1m409k-000hC4-L9; Thu, 15 Jul 2021 12:07:56 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3zKk-000a7y-0e
- for linux-rockchip@lists.infradead.org; Thu, 15 Jul 2021 11:15:15 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id g12so3479580wme.2
- for <linux-rockchip@lists.infradead.org>; Thu, 15 Jul 2021 04:15:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=E8lXG5uhDpqbhPe2W0SRgjhQ8NVXkyqNHQoMYkbY1Us=;
- b=lmoBw7yjPz3iMrmJbpE2rot8f6kj94tx10EOMZ1TtSITYlxrhHsiveAxNN+3mBXKgq
- 8e1JfDDDcMoIVMDbZQJr9GqiTpDcOXfO3u+GAZ8APM6W1VYXP9uwMD/gtUbwDAi9yCgr
- VSrLAh9AQ5OEJVPtsqAgnYliOm8k6j7n8FHGH7YZYQFGwneOHVut/nY9gg5oEuKc5sV4
- snmepxiAzAmftGl1mZAkXVjIyt6K8Ufr7wWWRqOQOoYquEjl6ZIxJw7YTh7c6qz2ZkfM
- 9G2H0zX3wo9gJVCkcSnGs3arYSbLOzf7mNnQbXN1smmZKDOpmR1m4PV3dqSS84Kr9hc2
- WnqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=E8lXG5uhDpqbhPe2W0SRgjhQ8NVXkyqNHQoMYkbY1Us=;
- b=MuI2yczSBXLz+T2635ronhXuA4KUTyjhaRf88eXaswOTtE9bLQ0q00WP6WiULnKFUe
- n/zHGvBP+t89aTrHFGjpyDUrnbpDeOUBzK39+K/6yStmkYqvaHYhq80RJo4PQFTEUyV4
- IUgDy0nZHykz4qPfx9Oj58h8H4ltR4Xt/Zmrbs38OCssGvrbphrHNrgjrSAHoMLGBt43
- KXAz59eoFb55of4RdCffqBcCmNYp0TNNidEaNZy9/5YQgNCk6cpoQMBQ2KOkudlB4jV2
- RCImry5AV15LrxSSA+A/iYoAC/+m5kIMQKRvl+2zqlX/ENS4w5yXmITL79ZPzRPjDIww
- /vsA==
-X-Gm-Message-State: AOAM533TajOOEK/mzr+vMmZVKojTm5N0S+2RG0aHkRfVMdN33NNe9VJz
- crOSOJQhzeR+2PvldB0Y1lOciA==
-X-Google-Smtp-Source: ABdhPJxg23ChCi+hZ3oEn7SX86+gixEJRkb6AlTQocoioEXM/XtfqvhsFlu32Rae2qQ9lqkaaCU3og==
-X-Received: by 2002:a1c:7201:: with SMTP id n1mr10185161wmc.4.1626347712371;
- Thu, 15 Jul 2021 04:15:12 -0700 (PDT)
-Received: from google.com ([109.180.115.218])
- by smtp.gmail.com with ESMTPSA id v11sm5920549wrs.4.2021.07.15.04.15.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jul 2021 04:15:11 -0700 (PDT)
-Date: Thu, 15 Jul 2021 12:15:09 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: cl@rock-chips.com
-Cc: heiko@sntech.de, robh+dt@kernel.org, jbx6244@gmail.com,
- zhangqing@rock-chips.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 2/3] dt-binding: mfd: syscon: add rk3568 QoS register
- compatible
-Message-ID: <YPAYvZjHieZOscMy@google.com>
-References: <20210624114719.1685-1-cl@rock-chips.com>
- <20210624114719.1685-3-cl@rock-chips.com>
+ id 1m409X-000h9f-1g; Thu, 15 Jul 2021 12:07:44 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10045"; a="274358683"
+X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="274358683"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2021 05:07:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="430812515"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga002.jf.intel.com with ESMTP; 15 Jul 2021 05:07:39 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id 03182262; Thu, 15 Jul 2021 15:08:06 +0300 (EEST)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Michael Turquette <mturquette@baylibre.com>, Liu Ying <victor.liu@nxp.com>
+Subject: [PATCH v1 3/3] clk: fractional-divider: Document the arithmetics used
+ behind the code
+Date: Thu, 15 Jul 2021 15:07:52 +0300
+Message-Id: <20210715120752.29174-3-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
+References: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210624114719.1685-3-cl@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_041514_111438_540BC06F 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210715_050743_224649_3F06DA07 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,20 +76,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyNCBKdW4gMjAyMSwgY2xAcm9jay1jaGlwcy5jb20gd3JvdGU6Cgo+IEZyb206IExp
-YW5nIENoZW4gPGNsQHJvY2stY2hpcHMuY29tPgo+IAo+IERvY3VtZW50IHJrMzU2OCBjb21wYXRp
-YmxlIGZvciBRb1MgcmVnaXN0ZXJzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IExpYW5nIENoZW4gPGNs
-QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvbWZkL3N5c2Nvbi55YW1sIHwgMSArCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KQoKQXBwbGllZCwgdGhhbmtzLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVj
-aG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3Vy
-Y2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRl
-ciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+It appears that some code lines raise the question why they are needed
+and how they are participated in the calculus of the resulting values.
+
+Document this in a form of the top comment in the module file.
+
+Reported-by: Liu Ying <victor.liu@nxp.com>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/clk/clk-fractional-divider.c | 34 +++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/clk/clk-fractional-divider.c b/drivers/clk/clk-fractional-divider.c
+index b2f9aae9f172..29b32b51210d 100644
+--- a/drivers/clk/clk-fractional-divider.c
++++ b/drivers/clk/clk-fractional-divider.c
+@@ -3,8 +3,38 @@
+  * Copyright (C) 2014 Intel Corporation
+  *
+  * Adjustable fractional divider clock implementation.
+- * Output rate = (m / n) * parent_rate.
+  * Uses rational best approximation algorithm.
++ *
++ * Output is calculated as
++ *
++ *	rate = (m / n) * parent_rate			(1)
++ *
++ * This is useful when on die we have a prescaler block which asks for
++ * m (numerator) and n (denominator) values to be provided to satisfy
++ * the (1) as much as possible.
++ *
++ * Since m and n have the limitation by a range, e.g.
++ *
++ *	n >= 1, n < N_lim, where N_lim = 2^nlim		(2)
++ *
++ * for some cases the output may be saturated. Hence, from (1) and (2),
++ * assuming the worst case when m = 1, the inequality
++ *
++ *	ln2(parent_rate / rate) <= nlim			(3)
++ *
++ * may be derived. Thus, in cases when
++ *
++ *	(parent_rate / rate) >> N_lim			(4)
++ *
++ * we scale up the rate by 2^scale, where
++ *
++ *	scale = ln2(parent_rate / rate) - nlim		(5)
++ *
++ * and assume that the IP, that needs m and n, has also its own
++ * prescaler, which is capable to divide by 2^scale. In this way
++ * we get the denominator to satisfy the desired range (2) and
++ * at the same time much much better result of m and n than simple
++ * saturated values.
+  */
+ 
+ #include <linux/clk-provider.h>
+@@ -82,6 +112,8 @@ void clk_fractional_divider_general_approximation(struct clk_hw *hw,
+ 	 * Get rate closer to *parent_rate to guarantee there is no overflow
+ 	 * for m and n. In the result it will be the nearest rate left shifted
+ 	 * by (scale - fd->nwidth) bits.
++	 *
++	 * For the detailed explanation see the top comment in this file.
+ 	 */
+ 	scale = fls_long(*parent_rate / rate - 1);
+ 	if (scale > fd->nwidth && !(fd->flags & CLK_FRAC_DIVIDER_NO_PRESCALER))
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
