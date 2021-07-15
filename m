@@ -7,63 +7,61 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DD1DC07E96
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E683EC07E96
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A7CEE6136E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7CEE6136E
+	by mail.kernel.org (Postfix) with ESMTPS id AD98B6136E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 12:08:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD98B6136E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XOsS2e7Z7PaCGz43wXFUgBOumQ/Yi1nALzZJsdKeMI8=; b=zC1i2NvSCoHL2a
-	nx/fE2NBk1MidSYDai/FvsK0K/W5Xfts5qgwzr31mNNVgsdCNsgCCRBevAhSB5zg6IExap/h6j9MM
-	z8B/qmEByZf3H/Wwqj2BJZW4E4rX4uFmi3Cs4S3OFnbd0z5k+gAGmWC+X+t9APDFTyewuXg6CZl1N
-	DVxumcWzFk3nTOfN/hWX6gaLtAcA2aoRuSW7CBoLTdoagyz1aVKkq7/s7nic32B8joQzB0o5YSKJE
-	QeIVLfWBfHbt+CB1NUkXpLmMUyBz0ZDN44fjd8HhHKD2ueStN5KEArBoorTY8zFOaM9jbU6YQHGm5
-	e9gakxAr6ieFmfjbZEBw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=t3JgDdOZ9XdYjm3SGdglRM5GeOof7tzaeJT0foAZciU=; b=D45ZMwyyANfq/O
+	gkrFuLCv+qNQpTZ8vl0iHKLp8N87Wm8xJTtE/q8TAF3qF16QoD8vmDZskeubR55G+cmMYcupuV+0h
+	b6YxpT7TtK47osLpK2l+3aQqs73kR404jGupT0nRQaom7A+fmavJuIktTEh3z/n7Kh/r2d6v7hBqW
+	4SjLw/YnxSFnAvGxM1WiMqGBWUt6xAPotj7fupYPNdpoQSqa3XjDl/EMB6RmXDSimq/k/qedd/iU4
+	9K3cDPzO8jmKGg4oG9n2qy0Ev29r/924BlPd7WtWY5sT0ysIWtuO69L/SvtnJrPX5hp/fOHYAFgfK
+	PPXqpKSAveq7neoJdQKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m409k-000hC4-L9; Thu, 15 Jul 2021 12:07:56 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1m409v-000hDn-Op; Thu, 15 Jul 2021 12:08:07 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m409X-000h9f-1g; Thu, 15 Jul 2021 12:07:44 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10045"; a="274358683"
-X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="274358683"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2021 05:07:42 -0700
+ id 1m409Z-000h9H-Ox; Thu, 15 Jul 2021 12:07:47 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10045"; a="190212616"
+X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="190212616"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2021 05:07:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="430812515"
+X-IronPort-AV: E=Sophos;i="5.84,240,1620716400"; d="scan'208";a="495407872"
 Received: from black.fi.intel.com ([10.237.72.28])
- by orsmga002.jf.intel.com with ESMTP; 15 Jul 2021 05:07:39 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 15 Jul 2021 05:07:35 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 03182262; Thu, 15 Jul 2021 15:08:06 +0300 (EEST)
+ id 4413C262; Thu, 15 Jul 2021 15:08:03 +0300 (EEST)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>,
  Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
  linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
-Cc: Michael Turquette <mturquette@baylibre.com>, Liu Ying <victor.liu@nxp.com>
-Subject: [PATCH v1 3/3] clk: fractional-divider: Document the arithmetics used
- behind the code
-Date: Thu, 15 Jul 2021 15:07:52 +0300
-Message-Id: <20210715120752.29174-3-andriy.shevchenko@linux.intel.com>
+Cc: Michael Turquette <mturquette@baylibre.com>
+Subject: [PATCH v1 1/3] clk: fractional-divider: Export approximation algo to
+ the CCF users
+Date: Thu, 15 Jul 2021 15:07:50 +0300
+Message-Id: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
-References: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_050743_224649_3F06DA07 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20210715_050745_874723_D7C866DC 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +79,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It appears that some code lines raise the question why they are needed
-and how they are participated in the calculus of the resulting values.
+At least one user currently duplicates some functions that are provided
+by fractional divider module. Let's export approximation algo and replace
+the open-coded variant.
 
-Document this in a form of the top comment in the module file.
+As a bonus the exported function will get better documentation in place.
 
-Reported-by: Liu Ying <victor.liu@nxp.com>
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/clk/clk-fractional-divider.c | 34 +++++++++++++++++++++++++++-
- 1 file changed, 33 insertions(+), 1 deletion(-)
+ drivers/clk/clk-fractional-divider.c | 11 +++++++----
+ drivers/clk/clk-fractional-divider.h |  9 +++++++++
+ drivers/clk/rockchip/clk.c           | 17 +++--------------
+ 3 files changed, 19 insertions(+), 18 deletions(-)
+ create mode 100644 drivers/clk/clk-fractional-divider.h
 
 diff --git a/drivers/clk/clk-fractional-divider.c b/drivers/clk/clk-fractional-divider.c
-index b2f9aae9f172..29b32b51210d 100644
+index b1e556f20911..535d299af646 100644
 --- a/drivers/clk/clk-fractional-divider.c
 +++ b/drivers/clk/clk-fractional-divider.c
-@@ -3,8 +3,38 @@
-  * Copyright (C) 2014 Intel Corporation
-  *
-  * Adjustable fractional divider clock implementation.
-- * Output rate = (m / n) * parent_rate.
-  * Uses rational best approximation algorithm.
-+ *
-+ * Output is calculated as
-+ *
-+ *	rate = (m / n) * parent_rate			(1)
-+ *
-+ * This is useful when on die we have a prescaler block which asks for
-+ * m (numerator) and n (denominator) values to be provided to satisfy
-+ * the (1) as much as possible.
-+ *
-+ * Since m and n have the limitation by a range, e.g.
-+ *
-+ *	n >= 1, n < N_lim, where N_lim = 2^nlim		(2)
-+ *
-+ * for some cases the output may be saturated. Hence, from (1) and (2),
-+ * assuming the worst case when m = 1, the inequality
-+ *
-+ *	ln2(parent_rate / rate) <= nlim			(3)
-+ *
-+ * may be derived. Thus, in cases when
-+ *
-+ *	(parent_rate / rate) >> N_lim			(4)
-+ *
-+ * we scale up the rate by 2^scale, where
-+ *
-+ *	scale = ln2(parent_rate / rate) - nlim		(5)
-+ *
-+ * and assume that the IP, that needs m and n, has also its own
-+ * prescaler, which is capable to divide by 2^scale. In this way
-+ * we get the denominator to satisfy the desired range (2) and
-+ * at the same time much much better result of m and n than simple
-+ * saturated values.
-  */
+@@ -14,6 +14,8 @@
+ #include <linux/slab.h>
+ #include <linux/rational.h>
  
- #include <linux/clk-provider.h>
-@@ -82,6 +112,8 @@ void clk_fractional_divider_general_approximation(struct clk_hw *hw,
- 	 * Get rate closer to *parent_rate to guarantee there is no overflow
- 	 * for m and n. In the result it will be the nearest rate left shifted
- 	 * by (scale - fd->nwidth) bits.
-+	 *
-+	 * For the detailed explanation see the top comment in this file.
- 	 */
- 	scale = fls_long(*parent_rate / rate - 1);
- 	if (scale > fd->nwidth && !(fd->flags & CLK_FRAC_DIVIDER_NO_PRESCALER))
++#include "clk-fractional-divider.h"
++
+ static inline u32 clk_fd_readl(struct clk_fractional_divider *fd)
+ {
+ 	if (fd->flags & CLK_FRAC_DIVIDER_BIG_ENDIAN)
+@@ -68,9 +70,10 @@ static unsigned long clk_fd_recalc_rate(struct clk_hw *hw,
+ 	return ret;
+ }
+ 
+-static void clk_fd_general_approximation(struct clk_hw *hw, unsigned long rate,
+-					 unsigned long *parent_rate,
+-					 unsigned long *m, unsigned long *n)
++void clk_fractional_divider_general_approximation(struct clk_hw *hw,
++						  unsigned long rate,
++						  unsigned long *parent_rate,
++						  unsigned long *m, unsigned long *n)
+ {
+ 	struct clk_fractional_divider *fd = to_clk_fd(hw);
+ 	unsigned long scale;
+@@ -102,7 +105,7 @@ static long clk_fd_round_rate(struct clk_hw *hw, unsigned long rate,
+ 	if (fd->approximation)
+ 		fd->approximation(hw, rate, parent_rate, &m, &n);
+ 	else
+-		clk_fd_general_approximation(hw, rate, parent_rate, &m, &n);
++		clk_fractional_divider_general_approximation(hw, rate, parent_rate, &m, &n);
+ 
+ 	ret = (u64)*parent_rate * m;
+ 	do_div(ret, n);
+diff --git a/drivers/clk/clk-fractional-divider.h b/drivers/clk/clk-fractional-divider.h
+new file mode 100644
+index 000000000000..4fa359a12ef4
+--- /dev/null
++++ b/drivers/clk/clk-fractional-divider.h
+@@ -0,0 +1,9 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++struct clk_hw;
++
++void clk_fractional_divider_general_approximation(struct clk_hw *hw,
++						  unsigned long rate,
++						  unsigned long *parent_rate,
++						  unsigned long *m,
++						  unsigned long *n);
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index 049e5e0b64f6..ce7b71594827 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -22,7 +22,9 @@
+ #include <linux/regmap.h>
+ #include <linux/reboot.h>
+ #include <linux/rational.h>
++
+ #include "clk.h"
++#include "clk-fractional-divider.h"
+ 
+ /*
+  * Register a clock branch.
+@@ -178,10 +180,8 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
+ 		unsigned long rate, unsigned long *parent_rate,
+ 		unsigned long *m, unsigned long *n)
+ {
+-	struct clk_fractional_divider *fd = to_clk_fd(hw);
+ 	unsigned long p_rate, p_parent_rate;
+ 	struct clk_hw *p_parent;
+-	unsigned long scale;
+ 
+ 	p_rate = clk_hw_get_rate(clk_hw_get_parent(hw));
+ 	if ((rate * 20 > p_rate) && (p_rate % rate != 0)) {
+@@ -190,18 +190,7 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
+ 		*parent_rate = p_parent_rate;
+ 	}
+ 
+-	/*
+-	 * Get rate closer to *parent_rate to guarantee there is no overflow
+-	 * for m and n. In the result it will be the nearest rate left shifted
+-	 * by (scale - fd->nwidth) bits.
+-	 */
+-	scale = fls_long(*parent_rate / rate - 1);
+-	if (scale > fd->nwidth)
+-		rate <<= scale - fd->nwidth;
+-
+-	rational_best_approximation(rate, *parent_rate,
+-			GENMASK(fd->mwidth - 1, 0), GENMASK(fd->nwidth - 1, 0),
+-			m, n);
++	clk_fractional_divider_general_approximation(hw, rate, parent_rate, m, n);
+ }
+ 
+ static struct clk *rockchip_clk_register_frac_branch(
 -- 
 2.30.2
 
