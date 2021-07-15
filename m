@@ -2,83 +2,78 @@ Return-Path: <SRS0=drtE=MH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26313C12002
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 00:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ED03C12002
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 02:57:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5260613C2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 00:22:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5260613C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CA07B60C40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jul 2021 02:57:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA07B60C40
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yQCq5Zzq2/i27l1UceFPnqWlaO64fu2E8g4mJkeENN0=; b=et24BYEEjmg1CH
-	sFZ97GYT1CM4XpsS6cxO/4tQCFE3RLrK9LFV3ExED7P4AEdqOi8uLNQ6e7JiNwteNPYNiKocpCE9V
-	WyI98ngHqijnJL304QKLOiaJGnzc1F33vgGbnB3068UxPm1IuJwmWS++agmcvtm/YsWqZ5rbdL1Kd
-	QybUneL3ap2rWR4rEozQAaJUSjo6DovvpudwqT3uGbSjhE4iYnUwHy7Fqob8kAlhWNlmRfX5KoAQc
-	36FsV1urci7qXB8Q8SDGomdheUSSOP/0t5+TtYwxeqDS7JDabIjA7dXzsGx8Fpzvfk/GZd2cFh7VH
-	xPu9wjqVdwV89VK1F5xw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iqL229DCIwUKfb5jGUn1whGkY2hlnbS+tucduKGp72M=; b=KeHI78XglmFg6k
+	eY8dMQLWh3dJdn16MJHQxunLtrvqxRmlWN2u8GaodO1wsrGLGLSMxa/M1shHvaKxo44fW9Fo9QcP3
+	NjAJAyQzH2kV3fEODaj5KQrhJhg0NnHz5ptif5aw/UQZu13YSS2Q6MI99A/z1XnxVxr/8gBdid3vN
+	zUJfeCgstVqfSW0ZawRiJ6ZgSn/cOwdJRgju+9pEIimrPTDbmXl2qDJUammMmb5C/t8nC7652HczQ
+	Ja3okd7t5fZBPz7er7yNKE3EqWCPlIkUgX1e4cR34jhaer2V5CZbwNcKDBcJO4UO1DlT0J6IOzDs9
+	OiAvKV4R33z5rIhvVBhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3p8f-00GdkA-0W; Thu, 15 Jul 2021 00:22:05 +0000
-Received: from mail-io1-f48.google.com ([209.85.166.48])
+	id 1m3rYX-00Gwkh-J8; Thu, 15 Jul 2021 02:56:57 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3o70-00GCRN-7m; Wed, 14 Jul 2021 23:16:19 +0000
-Received: by mail-io1-f48.google.com with SMTP id p186so4196996iod.13;
- Wed, 14 Jul 2021 16:16:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=uOGySO5B775xqBKJyV7FjQ7diOPsFl6eDHJ1rU7rF6g=;
- b=ssWmSwhNCRDe9+9kyac2lPvEN6GvAs4D427Kd+Nww4ATokE86xXlx1+yftBRrlmNPL
- fTiaeVV9p7Uxz+r2TgvZNTvM1wQtis+AdsHD4Zpa2UokOGOVYEY1BLAGuRZE2205lEw7
- nUhPS8SSPhRQ7370ldmdKWxTVcevppkt5YWaWzsBl3Sj8s04Y98yJct8FLM4hUFiiCNQ
- gyf4eW/h4lbac65XJLbyRASqGbGyd1rQr0rhaHn+z/PalpCZEldweEp4p3M7iiJFtPnM
- yztx6K0UKYMc8cWe9/S87Eqynn1xlsT6pgNMwwwgjpiD12s2jP4rnxXBCgQLPAiL6xO1
- PNhQ==
-X-Gm-Message-State: AOAM531RvqeGJu9iSOFrNUdrhLNz45ok71Y3fYXvKm9IQxZFQtHeP3cC
- jR4xp1mClAD7jXzmEbjvlw==
-X-Google-Smtp-Source: ABdhPJxpLMV2kkl1j27F3b5jtqtuy1/rscEVt9YI++ng8OF52WRC44YMZOzjVkH91U/Jr9tzCzfR9A==
-X-Received: by 2002:a5d:9396:: with SMTP id c22mr433920iol.204.1626304577478; 
- Wed, 14 Jul 2021 16:16:17 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id c4sm1968039ilq.70.2021.07.14.16.16.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Jul 2021 16:16:16 -0700 (PDT)
-Received: (nullmailer pid 3723842 invoked by uid 1000);
- Wed, 14 Jul 2021 23:16:12 -0000
-Date: Wed, 14 Jul 2021 17:16:12 -0600
-From: Rob Herring <robh@kernel.org>
-To: djw@t-chip.com.cn
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- David Bauer <mail@david-bauer.net>, Tianling Shen <cnsztl@gmail.com>,
- Chen-Yu Tsai <wens@csie.org>, Jagan Teki <jagan@amarulasolutions.com>,
- Liang Chen <cl@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
- devicetree@vger.kernel.org, Wayne Chou <zxf@t-chip.com.cn>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v0 1/2] dt-bindings: add doc for Firefly ROC-RK3328-PC
-Message-ID: <20210714231612.GA3723790@robh.at.kernel.org>
-References: <20210709080126.17045-1-djw@t-chip.com.cn>
- <20210709080126.17045-2-djw@t-chip.com.cn>
+ id 1m3rYU-00Gwjn-9A
+ for linux-rockchip@lists.infradead.org; Thu, 15 Jul 2021 02:56:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1626317810;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=6BpdxiNkUt9kqi7hW+DS0myRIRq5y7TUOmZb/Eo/lOA=;
+ b=GSUOqR6YkkdZ1FQfGsTXB5iE8mHyNSCZ2nWGiRf4YyV7T73atgiPzVW6FZ+YKhAEH0XXa9
+ tVW6LFBBl7iNvfm3z0XCkssX9J2x3fTuh/wVFh9mTMUedfGu/eTCfcefUUVNcwUw7OlDpt
+ YaV3GCH6KD7Jes3QXvnqGZX/WhV8PdI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-315-0IPDXgPqM1K6Y9W8YejNjw-1; Wed, 14 Jul 2021 22:56:47 -0400
+X-MC-Unique: 0IPDXgPqM1K6Y9W8YejNjw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A132636254;
+ Thu, 15 Jul 2021 02:56:45 +0000 (UTC)
+Received: from dreyauc.ausil.us.com (ovpn-112-46.phx2.redhat.com [10.3.112.46])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C2961A872;
+ Thu, 15 Jul 2021 02:56:44 +0000 (UTC)
+From: Dennis Gilmore <dgilmore@redhat.com>
+To: linux-rockchip@lists.infradead.org
+Cc: dgilmore@redhat.com, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), 
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+ linux-kernel@vger.kernel.org (open list)
+Subject: arm64: dts: rockchip: helios64: SPI, tsadc, and stdout-path
+Date: Wed, 14 Jul 2021 21:56:28 -0500
+Message-Id: <20210715025635.70452-1-dgilmore@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210709080126.17045-2-djw@t-chip.com.cn>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_161618_363092_FDEB9FF7 
-X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-CacheID: sfid-20210714_195654_451452_002A53F2 
+X-CRM114-Status: UNSURE (   6.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,19 +92,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 09 Jul 2021 16:01:25 +0800, djw@t-chip.com.cn wrote:
-> From: Levin Du <djw@t-chip.com.cn>
-> 
-> Add devicetree binding documentation for the Firefly ROC-RK3328-PC.
-> 
-> Signed-off-by: Levin Du <djw@t-chip.com.cn>
-> ---
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+Dropped the USB patch from V1, this set enables the SPI flash and sets
+aliases, enables tsadc, and set stdout-path
 
-Acked-by: Rob Herring <robh@kernel.org>
+Dennis
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
