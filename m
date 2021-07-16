@@ -2,75 +2,60 @@ Return-Path: <SRS0=kwzO=MI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56E0CC07E95
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 07:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6C28C12002
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 12:57:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00028613DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 07:15:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00028613DF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	by mail.kernel.org (Postfix) with ESMTPS id B0402613F2
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 12:57:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0402613F2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9b29RJGR2XGvCvBQCnWT1ZwN5MwLYM8Ke3TCtlid7KQ=; b=lHWK/fgERooZvA
-	qQ+NeMw95siSBppmWCx19nsA/ida1Q5zjmz3cZbtg6soWrCqbhfQDgWEwXmEKeFzSpm7jhIA0hKHw
-	76kLWVFQyFZxXjpXBMPMAXMkOtn/KvN/cW24KlvgLs9HXh0zvhmpfxko1JYyOZCjJkXSU2elG1ZoS
-	ybAVkKqHC2GjBO1Ax7WuLeHs9VwShVc29O4M7txaNJ2aU2obEnWrfP+3KobUzHdt2w7wOQ+Kdzpe2
-	bLR8NOkRc6Ph5fJt8WPBIdgfjoVkFtQ758PXhq06aE+XtuqIGqtsWa17v3rkVHLPbopPJnkIUObIo
-	VJzMv9U8liNXed/fTzKw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LJ70ORztjt2CZGmmmw6bQ71P2p69GnLDNbsHbnJTl9I=; b=V/hii7VnfNZqIT
+	Uf/ObaZtSrYP/Lq54NO5Z6JwZAbvDGTgsl+LJ9SLb1ghUHbIeDSUP+1gOkXxS/z5iP9LsqEKi0E3D
+	neCOfGhHzi+AQhlZj5NlGDwL5fSn2Q29eVNnTpSueKdc7jti6RwE8a23fvGDrnTN0VtFSYNBfpmey
+	zC71u80bX3ln9GkAdLPBUP7CH9OoKJbncyYB8KaQip4v/0Cv/M8wG8mqUlyujFjxBz9uT3Q9EccXq
+	ZwlP94NGq6QvhWmxfmXnROlhNtBr8P/jiJRj21xLuh07O3Y8JA8SbYktw2qaDnnkmISl3DjO0RY6W
+	ZrxnxRbxlgY7fKG2zXAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4I4Y-003UJZ-PA; Fri, 16 Jul 2021 07:15:46 +0000
-Received: from mail-vs1-f47.google.com ([209.85.217.47])
+	id 1m4NP3-004PMD-9K; Fri, 16 Jul 2021 12:57:17 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4I4V-003UHK-IJ; Fri, 16 Jul 2021 07:15:44 +0000
-Received: by mail-vs1-f47.google.com with SMTP id r18so4450371vsa.4;
- Fri, 16 Jul 2021 00:15:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tLGLcXHLbLcKs7Bv/yUdoVLSx2l4hTbshPA3ruuQMsI=;
- b=meK10ZVnSq1vga4J4oJPWOzbSxAGg6zGav+N+bftx9R9uskjHfhq1ZRH03j2tiBika
- lpUcOQ/tS8ZgeU8sRRi/oAaaLGfZZVA51vEgcRscBAHGBe9kuUzRVmfNCBrPfY7D4GQT
- OBrNoxRMw8cGGgmSoy08QaQ/rskksE15gaHWQzhQstq6az8CPwCrFgG6qeRVk5N4eMOB
- CiKvQMEHz+FUNpj/vd7E5tVNVSLBix7cWWaJSpvG7B7lauvv2Z5FRtcF7ESosZn4/zc5
- NZrd/Y3EySjjKrLlD/Cs0wsAS4zOFCyW2Av1kRUIg0oFo1xRx1F4iYNIG0ZHr3bXy0v1
- yI0A==
-X-Gm-Message-State: AOAM530WnrpPOUGbD/6oDOgKNv+6I9kN8E2rL2+lhnmGpEZKW9gM47g7
- Dmn+wwM7lm3zj83HH856RfS1jyLhsykz4JUUwyE=
-X-Google-Smtp-Source: ABdhPJxU8C9UjOTZB6uTgOT7x032cUeTIuy215npQXpthcl4cR7amD3NaDh1SQpre3fagltzCSTNTDsojjxlfwMLuiA=
-X-Received: by 2002:a05:6102:2828:: with SMTP id
- ba8mr10966737vsb.18.1626419736162; 
- Fri, 16 Jul 2021 00:15:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210208143855.418374-1-geert+renesas@glider.be>
- <162638886252.651069.16002951650407635275.b4-ty@sntech.de>
-In-Reply-To: <162638886252.651069.16002951650407635275.b4-ty@sntech.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Fri, 16 Jul 2021 09:15:25 +0200
-Message-ID: <CAMuHMdUYLVHwb1EdLO0D-cAyJAvx=pjHHZNg1wDCmVu+nTBVKw@mail.gmail.com>
-Subject: Re: [PATCH] soc: rockchip: ROCKCHIP_GRF should not default to y,
- unconditionally
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Douglas Anderson <dianders@chromium.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ id 1m4NP0-004PJJ-5E
+ for linux-rockchip@lists.infradead.org; Fri, 16 Jul 2021 12:57:15 +0000
+Received: from guri.fritz.box (unknown
+ [IPv6:2a02:810a:880:f54:f07d:7270:7174:27c4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 6A08F1F44041;
+ Fri, 16 Jul 2021 13:57:10 +0100 (BST)
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Cc: laurent.pinchart@ideasonboard.com, dafna.hirschfeld@collabora.com,
+ helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl,
+ kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com,
+ linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Subject: [patch v4l-utils 0/2] Fix bugs found with dmabuf
+Date: Fri, 16 Jul 2021 14:57:01 +0200
+Message-Id: <20210716125703.699-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210716_001543_650115_95552ECF 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20210716_055714_387641_4A9B40C2 
+X-CRM114-Status: UNSURE (   6.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +68,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+1. first patch improve debugging
+2. second patch fixes some bugs found when exporting buffers
+from capture device to output device
 
-On Fri, Jul 16, 2021 at 12:42 AM Heiko Stuebner <heiko@sntech.de> wrote:
-> On Mon, 8 Feb 2021 15:38:55 +0100, Geert Uytterhoeven wrote:
-> > Merely enabling CONFIG_COMPILE_TEST should not enable additional code.
-> > To fix this, restrict the automatic enabling of ROCKCHIP_GRF to
-> > ARCH_ROCKCHIP, and ask the user in case of compile-testing.
->
-> Applied, thanks!
->
-> [1/1] soc: rockchip: ROCKCHIP_GRF should not default to y, unconditionally
->       commit: 2a1c55d4762dd34a8b0f2e36fb01b7b16b60735b
->
-> I actually found the old one deep down in my inbox some days ago,
-> so had applied that one already. Hope nothing changed with your
-> RESEND.
 
-They're identical, thanks!
+Dafna Hirschfeld (2):
+  v4l2-ctl: print specific error upon failure
+  v4l2-ctl: fix bugs found in streaming_set_cap2out
 
-Gr{oetje,eeting}s,
-
-                        Geert
+ utils/v4l2-ctl/v4l2-ctl-streaming.cpp | 40 +++++++++++++++++++++++----
+ 1 file changed, 34 insertions(+), 6 deletions(-)
 
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+2.17.1
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
