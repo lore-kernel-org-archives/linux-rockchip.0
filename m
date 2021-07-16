@@ -2,62 +2,74 @@ Return-Path: <SRS0=kwzO=MI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DF52C07E95
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 12:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1311C12002
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 13:10:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A551613E9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 12:57:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A551613E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 78C8C60C41
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jul 2021 13:10:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78C8C60C41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=le5hpV2AN36TAA3vvfJziKTibgDWv0kXxWZqJTBfcZk=; b=3fr4DAoyrTLGto
-	J7J2eJ71F0k6EdYVXE8CBXuP9qWlor7GLectHPZVYFZYIw/zsuY2VgxMAip72svg27NPT82VqQuMo
-	hapyJnpJA/xZqLPEe+DapaeZOmXUE6xJOnLU0K8swa8HcVolb92kPbSr2WLsnQooyb9F9pR1PxbV8
-	i0Pv4pPm6e9NOgxU7R3QjHIX34Z1w8ssbVw5GBO2jry9L2FMckQD2WVxpnSlPrNzWRSSqKiA5DcXy
-	eNtj1ZYkYNyYcHpPR/QrCI0CtxtFArTigGAsLUk51eF74XOCJivNSePu51uie2CBEIWvrLJRpGAOJ
-	nyhO+sCWrjDu2/8BPBtg==;
+	List-Owner; bh=lEIlRPqYj6DE/8b+4xhgjy8o0+1OjONCTADPrxqptE8=; b=ljaKSEvifoqc3F
+	1VkROuw5JR8EDX+mpztSiTsTZRZFPfMs0rxt3x9YuZnMy+3OjoNGUIAaEt2BXbOpCxVWxRrq459+V
+	cFaBnUoVeElDSKxd+ojDPHwKQ5DehpYH0vtXM+iQyzqxeeFxBTLcv1wjNczeC6FRg5qrjy6lMPO7F
+	ebazcZ1SbjNhMU6i6RF3SI7XF6+3P6FLoPLDNXeIadAp+EousSQUn1Hjqu9eOhvL7TuR3oODWYOLj
+	FbWBIOevK9OyVacUPkSGcMhJm5IMOzk6SxAWR2B46bSli34rnGmxgNCHF/rXRhLLgPF8Dlv8bUKNU
+	RbD0kdgT8q0Q2P8b3/7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4NP7-004POG-Rp; Fri, 16 Jul 2021 12:57:21 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1m4Nbe-004Qb9-TG; Fri, 16 Jul 2021 13:10:18 +0000
+Received: from mga11.intel.com ([192.55.52.93])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4NP1-004PJX-3G
- for linux-rockchip@lists.infradead.org; Fri, 16 Jul 2021 12:57:18 +0000
-Received: from guri.fritz.box (unknown
- [IPv6:2a02:810a:880:f54:f07d:7270:7174:27c4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id BA5451F44084;
- Fri, 16 Jul 2021 13:57:11 +0100 (BST)
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Cc: laurent.pinchart@ideasonboard.com, dafna.hirschfeld@collabora.com,
- helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl,
- kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com,
- linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
-Subject: [patch v4l-utils 2/2] v4l2-ctl: fix bugs found in
- streaming_set_cap2out
-Date: Fri, 16 Jul 2021 14:57:03 +0200
-Message-Id: <20210716125703.699-3-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210716125703.699-1-dafna.hirschfeld@collabora.com>
-References: <20210716125703.699-1-dafna.hirschfeld@collabora.com>
+ id 1m4NbR-004Qa4-1S; Fri, 16 Jul 2021 13:10:07 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10046"; a="207703219"
+X-IronPort-AV: E=Sophos;i="5.84,245,1620716400"; d="scan'208";a="207703219"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2021 06:10:03 -0700
+X-IronPort-AV: E=Sophos;i="5.84,245,1620716400"; d="scan'208";a="413974663"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2021 06:09:59 -0700
+Received: from andy by smile with local (Exim 4.94.2)
+ (envelope-from <andy.shevchenko@gmail.com>)
+ id 1m4NbE-00EEct-3X; Fri, 16 Jul 2021 16:09:52 +0300
+Date: Fri, 16 Jul 2021 16:09:52 +0300
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: kernel test robot <lkp@intel.com>, Heiko Stuebner <heiko@sntech.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kbuild-all@lists.01.org,
+ Michael Turquette <mturquette@baylibre.com>
+Subject: Re: [PATCH v1 1/3] clk: fractional-divider: Export approximation
+ algo to the CCF users
+Message-ID: <YPGFIAiRijr1OMZ2@smile.fi.intel.com>
+References: <20210715120752.29174-1-andriy.shevchenko@linux.intel.com>
+ <202107152356.7gQSC0vc-lkp@intel.com>
+ <CAHp75VcxP6QSoATProqjqJ_kmjXr4FfjijohCyumrw_gmj904w@mail.gmail.com>
+ <9e1c1fde-fbbc-69d4-9273-192844037cd8@arm.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <9e1c1fde-fbbc-69d4-9273-192844037cd8@arm.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210716_055715_277191_536EAAC5 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20210716_061005_147041_029BD48E 
+X-CRM114-Status: GOOD (  18.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,80 +82,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When exporting buffers from a capture device
-to an output device. There are several bugs:
-1. The bytesused are set from the exported buffer,
-the value might be bigger than the length of the output buffer.
-2. The file descriptor field 'm.fd' in 'struct v4l2_buffer' is not set.
+On Thu, Jul 15, 2021 at 06:58:40PM +0100, Robin Murphy wrote:
+> On 2021-07-15 17:51, Andy Shevchenko wrote:
+> > On Thu, Jul 15, 2021 at 7:49 PM kernel test robot <lkp@intel.com> wrote:
+> > > I love your patch! Yet something to improve:
+> > 
+> > Definitely!
+> > 
+> > > All errors (new ones prefixed by >>):
+> > > 
+> > > > > drivers/clk/rockchip/clk.c:27:10: fatal error: clk-fractional-divider.h: No such file or directory
+> > >        27 | #include "clk-fractional-divider.h"
+> > >           |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+> > >     compilation terminated.
+> > 
+> > Indeed. No idea how to compile-test this on x86.
+> > Let me see what I can do to avoid other issues.
+> 
+> Ha, the individual SoC-specific parts have COMPILE_TEST support, but the
+> top-level COMMON_CLK_ROCKCHIP doesn't. That could probably be fixed.
+> 
+> Otherwise, you can always grab a toolchain from [1] (if your distro doesn't
+> offer one already) and cross-compile - defconfig for arm64 or
+> multi_v7_defconfig for arm should cover it.
 
-This patch fix those issues.
+With a hack patch I was able to compile-test.
 
-Testing:
-
-modprobe vimc
-modprobe vivid
-
-//configure vimc pipeline
-media-ctl -d platform:vimc -V '"Sensor A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d platform:vimc -V '"Debayer A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d platform:vimc -V '"Sensor B":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d platform:vimc -V '"Debayer B":0[fmt:SBGGR8_1X8/640x480]'
-
-v4l2-ctl -z platform:vimc -d "RGB/YUV Capture" -v width=1920,height=1440
-v4l2-ctl -z platform:vimc -d "Raw Capture 0" -v pixelformat=BA81
-v4l2-ctl -z platform:vimc -d "Raw Capture 1" -v pixelformat=BA81
-
-// export buffers from vimc capture device (/dev/video2) to vivid output device (/dev/video4)
-v4l2-ctl -d2 --stream-mmap --out-device /dev/video4 --stream-out-dmabuf
-
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- utils/v4l2-ctl/v4l2-ctl-streaming.cpp | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/utils/v4l2-ctl/v4l2-ctl-streaming.cpp b/utils/v4l2-ctl/v4l2-ctl-streaming.cpp
-index 0f28a537..432f1cc6 100644
---- a/utils/v4l2-ctl/v4l2-ctl-streaming.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-streaming.cpp
-@@ -1499,6 +1499,11 @@ static int do_handle_out(cv4l_fd &fd, cv4l_queue &q, FILE *fin, cv4l_buffer *cap
- 	if (cap) {
- 		buf.s_index(cap->g_index());
- 
-+		if (fd.querybuf(buf)) {
-+			fprintf(stderr, "%s fd.querybuf failed\n", __func__);
-+			return QUEUE_ERROR;
-+		}
-+
- 		for (unsigned j = 0; j < buf.g_num_planes(); j++) {
- 			unsigned data_offset = cap->g_data_offset(j);
- 
-@@ -1507,8 +1512,17 @@ static int do_handle_out(cv4l_fd &fd, cv4l_queue &q, FILE *fin, cv4l_buffer *cap
- 				buf.s_bytesused(cap->g_bytesused(j) - data_offset, j);
- 				buf.s_data_offset(0, j);
- 			} else if (q.g_memory() == V4L2_MEMORY_DMABUF) {
--				buf.s_bytesused(cap->g_bytesused(j), j);
-+				__u32 bytesused = cap->g_bytesused(j);
-+				/*
-+				 * bytesused comes from the exported cap buffer
-+				 * but the length of the out buffer might be smaller
-+				 * so take the smaller of the two
-+				 */
-+				if(bytesused > buf.g_length(j))
-+					bytesused = buf.g_length(j);
-+				buf.s_bytesused(bytesused, j);
- 				buf.s_data_offset(data_offset, j);
-+				buf.s_fd(q.g_fd(buf.g_index(), j));
- 			}
- 		}
- 	} else {
 -- 
-2.17.1
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
