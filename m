@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FD6AC07E95
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD7EEC07E9D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:54:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43B666113A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:54:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43B666113A
+	by mail.kernel.org (Postfix) with ESMTPS id 8A30D6113A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:54:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A30D6113A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wu1ptU3Hr1iJu/XubpEFH/LfchH9rYK8SFlt5Z5K0Ds=; b=hp90UP2m6PVQzw
-	o+C0+5yl6h+F5jeE8e9pHzOPgY+wqXK2Sb0VgP0JXCKBlm8zISKH+80T7jhg6tTEZWWQnlDwRuwK2
-	o8hqmda/A3m+GZ1fT9VRQoTcqE+FLJ4eDPHCCSqU5KugYspkq4GO97IELXxUUNjhwaXfCeLvVxS1a
-	GgWRS4xCmLGQcGXD+/P4q+lHPHL9QTn7ONdrPeOIWtn3R1/pvEWloaVHPDzR2r1u2iP27wVLtFpdr
-	wZ5sRNuHcuPbN//UjdVcJKN3hQJ+6Kg629Z2Y/eRo/Y/LYDfi5OngP+gPvKMvoPNFIG1NXsH6El9G
-	7n0ozRub+CO7covtCMXA==;
+	List-Owner; bh=4XfMRV5tFfqNqvymo8XvU5OcQ6Foit3lGKVpU90Mqpg=; b=gpa5hBgZL9z1p0
+	9CVHPM753YPBzTcGUWpRWuEkqGwEz0UuneccqQeb2KpARfYs+UnaYL5COnu4xNWQ1TjAoHZoNxf38
+	qnh9Or81MGxLmb5VfNuXwyxxHj5YxF1VxLdgO9UIoRPKDT622AQH55F0pnAVqXNrrDntH2a6J+YkZ
+	5znMs6PrSAJjQH83JOz51tDRreLSwWlc4t+VEd8PbL8ORYleNDnizOZ7skweMt1BSIPAX+Tm3rTfH
+	MOOwihr4loLsu2dLQKDX7MkqiRSVf7THVKFB4hrezXflFdi0xQLJ5NTSVLHvcrb1uKf6DyCc8XINR
+	H25VV6/AQH9GTrDaKJOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5aH7-00BK5t-2v; Mon, 19 Jul 2021 20:54:05 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m5aH7-00BK6P-VT; Mon, 19 Jul 2021 20:54:05 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5aGg-00BJp2-J4
- for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 20:53:40 +0000
+ id 1m5aGl-00BJsl-BQ
+ for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 20:53:48 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 355E41F42DF6
+ (Authenticated sender: ezequiel) with ESMTPSA id EEF3C1F42DFA
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
@@ -48,16 +48,17 @@ Cc: Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
  Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
  Jonas Karlman <jonas@kwiboo.se>, Kever Yang <kever.yang@rock-chips.com>,
  kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 08/10] media: hantro: Add support for the Rockchip PX30
-Date: Mon, 19 Jul 2021 17:52:40 -0300
-Message-Id: <20210719205242.18807-9-ezequiel@collabora.com>
+Subject: [PATCH v3 09/10] dt-bindings: media: rockchip-vpu: Add PX30 compatible
+Date: Mon, 19 Jul 2021 17:52:41 -0300
+Message-Id: <20210719205242.18807-10-ezequiel@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210719205242.18807-1-ezequiel@collabora.com>
 References: <20210719205242.18807-1-ezequiel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_135338_802247_F81A20E4 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20210719_135343_579783_917604C2 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,66 +78,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 
-The PX30 SoC includes both the VDPU2 and VEPU2 blocks which are similar
-to the RK3399 (Hantro G1/H1 with shuffled registers).
+The Rockchip PX30 SoC has a Hantro VPU that features a decoder (VDPU2)
+and an encoder (VEPU2).
 
+Suggested-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c      |  1 +
- drivers/staging/media/hantro/hantro_hw.h       |  1 +
- drivers/staging/media/hantro/rockchip_vpu_hw.c | 17 +++++++++++++++++
- 3 files changed, 19 insertions(+)
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 9b5415176bfe..8a2edd67f2c6 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -582,6 +582,7 @@ static const struct v4l2_file_operations hantro_fops = {
- 
- static const struct of_device_id of_hantro_match[] = {
- #ifdef CONFIG_VIDEO_HANTRO_ROCKCHIP
-+	{ .compatible = "rockchip,px30-vpu",   .data = &px30_vpu_variant, },
- 	{ .compatible = "rockchip,rk3036-vpu", .data = &rk3036_vpu_variant, },
- 	{ .compatible = "rockchip,rk3066-vpu", .data = &rk3066_vpu_variant, },
- 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 9296624654a6..df7b5e3a57b9 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -209,6 +209,7 @@ enum hantro_enc_fmt {
- 
- extern const struct hantro_variant imx8mq_vpu_g2_variant;
- extern const struct hantro_variant imx8mq_vpu_variant;
-+extern const struct hantro_variant px30_vpu_variant;
- extern const struct hantro_variant rk3036_vpu_variant;
- extern const struct hantro_variant rk3066_vpu_variant;
- extern const struct hantro_variant rk3288_vpu_variant;
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index e4e3b5e7689b..d4f52957cc53 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -548,3 +548,20 @@ const struct hantro_variant rk3399_vpu_variant = {
- 	.clk_names = rockchip_vpu_clk_names,
- 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
- };
-+
-+const struct hantro_variant px30_vpu_variant = {
-+	.enc_offset = 0x0,
-+	.enc_fmts = rockchip_vpu_enc_fmts,
-+	.num_enc_fmts = ARRAY_SIZE(rockchip_vpu_enc_fmts),
-+	.dec_offset = 0x400,
-+	.dec_fmts = rk3399_vpu_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
-+	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
-+		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
-+	.codec_ops = rk3399_vpu_codec_ops,
-+	.irqs = rockchip_vpu2_irqs,
-+	.num_irqs = ARRAY_SIZE(rockchip_vpu2_irqs),
-+	.init = rk3036_vpu_hw_init,
-+	.clk_names = rockchip_vpu_clk_names,
-+	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
-+};
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index b88172a59de7..bacb60a34989 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -22,6 +22,7 @@ properties:
+           - rockchip,rk3288-vpu
+           - rockchip,rk3328-vpu
+           - rockchip,rk3399-vpu
++          - rockchip,px30-vpu
+       - items:
+           - const: rockchip,rk3188-vpu
+           - const: rockchip,rk3066-vpu
 -- 
 2.32.0
 
