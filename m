@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EEE4AC07E9B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B34EC07E9B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:53:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B19B76113A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:53:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B19B76113A
+	by mail.kernel.org (Postfix) with ESMTPS id 67FD7610F7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 20:53:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67FD7610F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YqzGuscHNTKksTqbf7QNxg6IZdEXTxZuYaHBrFp7vV4=; b=rcbGyfRu0MZeAg
-	XJfGFAONEqEHWnNRo1ERrGQpzWsu4EVS0EAfLTs8oSz70YqudaJ2mrzfPkmUF6F60NrkA2WR7IAKB
-	Vt8ubfv0JM6PcrRr3XGoBdHGMeDpyg6nuOLlUTzzgFyDQc2qn6AioFON5lDMwv05+ros5Nw0gIGpl
-	huajvQkV4Y9B2VCMegIKu6Q1b6OHAUW5jxBraVjbDl95Qu6Kdm7pOsORo6at0CflTg3eTbRd4rPKy
-	oFgYivZSOMdbFiT4weunfvvxt7IyLI5Fie3vJ4CxsZvLMhq8iWRBcHVz6ObFjIhbIs0kDyzY+CVX7
-	DAdSUkCN/t416AuuDvwg==;
+	List-Owner; bh=sH/l9bjA9X8nrRfb79O4TWUh7fJMQ4YIVmU99JqdTI0=; b=DVyj+BFEaIvQNl
+	V6z+Bg3xBOYUItFsKwbsqJ791WdQNaLxom5FwjQaidlOfRELMuP3Hhn1cfE8eVulxslI6/O5j7l/4
+	0Sv3LBmGKdGN39pjyJRqdcZ6oV4i6U7vbQaRTwyEbXxv1/r9UQ572FUIXxGNAoOE0d3SlH3gIPeY1
+	C/USaw3p+t3szSQsaAAUd1GWDufx4KVx+EPf4yFnClC1XaPYjdlM6IrlcLXRN1KHO1HDLpg2YyXvH
+	sOXyjSsQxSZRNoWGg/ghbzltl0mnA0+TfrZ9xIarzhYa6oWaEBakHFxP89EjGCz+v/i/QJdCMti6A
+	WjcbuLggOcs4EnivLpZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5aGC-00BJTc-LN; Mon, 19 Jul 2021 20:53:08 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m5aGG-00BJVm-Bd; Mon, 19 Jul 2021 20:53:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5aG8-00BJR8-Vg
- for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 20:53:06 +0000
+ id 1m5aGD-00BJTu-S2
+ for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 20:53:11 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 65BA01F42DDD
+ (Authenticated sender: ezequiel) with ESMTPSA id 774E61F42DE7
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org
@@ -47,18 +47,17 @@ Cc: Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>,
  Chris Healy <cphealy@gmail.com>,
  Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
  Jonas Karlman <jonas@kwiboo.se>, Kever Yang <kever.yang@rock-chips.com>,
- Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v3 01/10] hantro: vp8: Move noisy WARN_ON to vpu_debug
-Date: Mon, 19 Jul 2021 17:52:33 -0300
-Message-Id: <20210719205242.18807-2-ezequiel@collabora.com>
+ Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com
+Subject: [PATCH v3 02/10] hantro: Make struct hantro_variant.init() optional
+Date: Mon, 19 Jul 2021 17:52:34 -0300
+Message-Id: <20210719205242.18807-3-ezequiel@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210719205242.18807-1-ezequiel@collabora.com>
 References: <20210719205242.18807-1-ezequiel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_135305_184492_F9824C59 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20210719_135310_094677_F86ABADE 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,91 +75,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When the VP8 decoders can't find a reference frame,
-the driver falls back to the current output frame.
+The hantro_variant.init() function is there for platforms
+to perform hardware-specific initialization, such as
+clock rate bumping.
 
-This will probably produce some undesirable results,
-leading to frame corruption, but shouldn't cause
-noisy warnings.
+Not all platforms require it, so make it optional.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/staging/media/hantro/hantro_g1_vp8_dec.c    | 13 ++++++++++---
- .../staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c | 13 ++++++++++---
- 2 files changed, 20 insertions(+), 6 deletions(-)
+ drivers/staging/media/hantro/hantro.h          |  4 ++--
+ drivers/staging/media/hantro/hantro_drv.c      | 10 ++++++----
+ drivers/staging/media/hantro/sama5d4_vdec_hw.c |  6 ------
+ 3 files changed, 8 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-index 96622a7f8279..2afd5996d75f 100644
---- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-@@ -376,12 +376,17 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vb2_dst = hantro_get_dst_buf(ctx);
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index a70c386de6f1..c2e2dca38628 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -61,8 +61,8 @@ struct hantro_irq {
+  * @num_postproc_fmts:		Number of post-processor formats.
+  * @codec:			Supported codecs
+  * @codec_ops:			Codec ops.
+- * @init:			Initialize hardware.
+- * @runtime_resume:		reenable hardware after power gating
++ * @init:			Initialize hardware, optional.
++ * @runtime_resume:		reenable hardware after power gating, optional.
+  * @irqs:			array of irq names and interrupt handlers
+  * @num_irqs:			number of irqs in the array
+  * @clk_names:			array of clock names
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 31d8449ca1d2..9b5415176bfe 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -942,10 +942,12 @@ static int hantro_probe(struct platform_device *pdev)
+ 		}
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->last_frame_ts);
--	if (!ref)
-+	if (!ref) {
-+		vpu_debug(0, "failed to find last frame ts=%llu\n",
-+			  hdr->last_frame_ts);
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
-+	}
- 	vdpu_write_relaxed(vpu, ref, G1_REG_ADDR_REF(0));
+-	ret = vpu->variant->init(vpu);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Failed to init VPU hardware\n");
+-		return ret;
++	if (vpu->variant->init) {
++		ret = vpu->variant->init(vpu);
++		if (ret) {
++			dev_err(&pdev->dev, "Failed to init VPU hardware\n");
++			return ret;
++		}
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->golden_frame_ts);
--	WARN_ON(!ref && hdr->golden_frame_ts);
-+	if (!ref && hdr->golden_frame_ts)
-+		vpu_debug(0, "failed to find golden frame ts=%llu\n",
-+			  hdr->golden_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_GOLDEN)
-@@ -389,7 +394,9 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, ref, G1_REG_ADDR_REF(4));
+ 	pm_runtime_set_autosuspend_delay(vpu->dev, 100);
+diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+index 58ae72c2b723..9c3b8cd0b239 100644
+--- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
++++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+@@ -64,11 +64,6 @@ static const struct hantro_fmt sama5d4_vdec_fmts[] = {
+ 	},
+ };
  
- 	ref = hantro_get_ref(ctx, hdr->alt_frame_ts);
--	WARN_ON(!ref && hdr->alt_frame_ts);
-+	if (!ref && hdr->alt_frame_ts)
-+		vpu_debug(0, "failed to find alt frame ts=%llu\n",
-+			  hdr->alt_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT)
-diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-index 951b55f58a61..704607511b57 100644
---- a/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-@@ -453,12 +453,17 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vb2_dst = hantro_get_dst_buf(ctx);
- 
- 	ref = hantro_get_ref(ctx, hdr->last_frame_ts);
--	if (!ref)
-+	if (!ref) {
-+		vpu_debug(0, "failed to find last frame ts=%llu\n",
-+			  hdr->last_frame_ts);
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
-+	}
- 	vdpu_write_relaxed(vpu, ref, VDPU_REG_VP8_ADDR_REF0);
- 
- 	ref = hantro_get_ref(ctx, hdr->golden_frame_ts);
--	WARN_ON(!ref && hdr->golden_frame_ts);
-+	if (!ref && hdr->golden_frame_ts)
-+		vpu_debug(0, "failed to find golden frame ts=%llu\n",
-+			  hdr->golden_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_GOLDEN)
-@@ -466,7 +471,9 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, ref, VDPU_REG_VP8_ADDR_REF2_5(2));
- 
- 	ref = hantro_get_ref(ctx, hdr->alt_frame_ts);
--	WARN_ON(!ref && hdr->alt_frame_ts);
-+	if (!ref && hdr->alt_frame_ts)
-+		vpu_debug(0, "failed to find alt frame ts=%llu\n",
-+			  hdr->alt_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT)
+-static int sama5d4_hw_init(struct hantro_dev *vpu)
+-{
+-	return 0;
+-}
+-
+ /*
+  * Supported codec ops.
+  */
+@@ -109,7 +104,6 @@ const struct hantro_variant sama5d4_vdec_variant = {
+ 	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
+ 		 HANTRO_H264_DECODER,
+ 	.codec_ops = sama5d4_vdec_codec_ops,
+-	.init = sama5d4_hw_init,
+ 	.irqs = sama5d4_irqs,
+ 	.num_irqs = ARRAY_SIZE(sama5d4_irqs),
+ 	.clk_names = sama5d4_clk_names,
 -- 
 2.32.0
 
