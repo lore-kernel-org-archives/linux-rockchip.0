@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23ACDC07E9B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EB7DC12002
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6F02610FB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6F02610FB
+	by mail.kernel.org (Postfix) with ESMTPS id 0D35061107
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D35061107
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wu1ptU3Hr1iJu/XubpEFH/LfchH9rYK8SFlt5Z5K0Ds=; b=bGo5QmhDXwvHGB
-	zdOy4ZNqVC8kJijIRcqit5ut7m3Rh7kO54zkU9zu/lPYutuL5SqYJH/aOw+wiFc4ZBTvZ0gnvsho4
-	54C+zOhn9v6Jm8JrhuYXa6cX7cucGv6Nh4onuDmBv+iljMLOZUTY+OyYKj5y5oy657HljGMn76c99
-	8HBUrmuFtjdAwVglA/MR7TH0lY6nSslsuaW5J0nW+HWIxc73t8RoeKvE/1pEyAF9BrPy/3xnosKE3
-	VCcegGsp24024uzsbI45KWNe3hzq2FqBT94bEMd2L8d/QW+EOKNwYOBT4dn4CLtBBCcehaSV1bHa3
-	DSOJQT9f+MeyHPnGbWjQ==;
+	List-Owner; bh=y34Gs19aPzxkxXQXUfntDhYZ1BljiuHNwi0Z92DmeWA=; b=e/Kwhon3PhjLRr
+	Udkwi+lUBaqaVM4bHcB76fK2ExzPPJe5MVCLZpbeTPdeIvrgjkJBwVRSjLDU0o0y9lbPdVgv2dagu
+	1oyIl8NV9EXw9qjrlEdiUFkyFblIOd5hhPcdJs1ux3+srzodwLgwsTiAitThhDOyI1e+yrmJEx0Va
+	zRW1ntvyT06sIArbHHw1dtlVsCigSnQFULM3SLGSF0g299XIndv13prc5C4NffosPNR82z0d0Xk0S
+	1xqDGmp2pzPtB6d6CLp55RP2tTtVWoXCl0WgMXXAThvOX78V/dbXXa2IAyzhl52Tj0rfhQ3fRpXNS
+	fYOmgmJZ7JmGo032wJ8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5UPu-009uoI-B4; Mon, 19 Jul 2021 14:38:46 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m5UPv-009upN-EI; Mon, 19 Jul 2021 14:38:47 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5UPP-009ua4-R2
- for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 14:38:17 +0000
+ id 1m5UPU-009ubz-CD
+ for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 14:38:21 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id BB4201F42C40
+ (Authenticated sender: ezequiel) with ESMTPSA id A4C4E1F42C35
 From: Ezequiel Garcia <ezequiel@collabora.com>
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org
@@ -50,17 +50,18 @@ Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>,
  Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com,
  Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH RESEND v2 08/10] media: hantro: Add support for the Rockchip
- PX30
-Date: Mon, 19 Jul 2021 11:37:09 -0300
-Message-Id: <20210719143711.55749-9-ezequiel@collabora.com>
+Subject: [PATCH RESEND v2 09/10] dt-bindings: media: rockchip-vpu: Add PX30
+ compatible
+Date: Mon, 19 Jul 2021 11:37:10 -0300
+Message-Id: <20210719143711.55749-10-ezequiel@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210719143711.55749-1-ezequiel@collabora.com>
 References: <20210719143711.55749-1-ezequiel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_073816_061220_E1BB3C20 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20210719_073820_640628_150B9FC9 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,66 +81,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 
-The PX30 SoC includes both the VDPU2 and VEPU2 blocks which are similar
-to the RK3399 (Hantro G1/H1 with shuffled registers).
+The Rockchip PX30 SoC has a Hantro VPU that features a decoder (VDPU2)
+and an encoder (VEPU2).
 
+Suggested-by: Alex Bee <knaerzche@gmail.com>
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c      |  1 +
- drivers/staging/media/hantro/hantro_hw.h       |  1 +
- drivers/staging/media/hantro/rockchip_vpu_hw.c | 17 +++++++++++++++++
- 3 files changed, 19 insertions(+)
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 9b5415176bfe..8a2edd67f2c6 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -582,6 +582,7 @@ static const struct v4l2_file_operations hantro_fops = {
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index b88172a59de7..130d7a0604c5 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -26,7 +26,9 @@ properties:
+           - const: rockchip,rk3188-vpu
+           - const: rockchip,rk3066-vpu
+       - items:
+-          - const: rockchip,rk3228-vpu
++          - enum:
++              - rockchip,px30-vpu
++              - rockchip,rk3228-vpu
+           - const: rockchip,rk3399-vpu
  
- static const struct of_device_id of_hantro_match[] = {
- #ifdef CONFIG_VIDEO_HANTRO_ROCKCHIP
-+	{ .compatible = "rockchip,px30-vpu",   .data = &px30_vpu_variant, },
- 	{ .compatible = "rockchip,rk3036-vpu", .data = &rk3036_vpu_variant, },
- 	{ .compatible = "rockchip,rk3066-vpu", .data = &rk3066_vpu_variant, },
- 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 9296624654a6..df7b5e3a57b9 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -209,6 +209,7 @@ enum hantro_enc_fmt {
- 
- extern const struct hantro_variant imx8mq_vpu_g2_variant;
- extern const struct hantro_variant imx8mq_vpu_variant;
-+extern const struct hantro_variant px30_vpu_variant;
- extern const struct hantro_variant rk3036_vpu_variant;
- extern const struct hantro_variant rk3066_vpu_variant;
- extern const struct hantro_variant rk3288_vpu_variant;
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index e4e3b5e7689b..d4f52957cc53 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -548,3 +548,20 @@ const struct hantro_variant rk3399_vpu_variant = {
- 	.clk_names = rockchip_vpu_clk_names,
- 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
- };
-+
-+const struct hantro_variant px30_vpu_variant = {
-+	.enc_offset = 0x0,
-+	.enc_fmts = rockchip_vpu_enc_fmts,
-+	.num_enc_fmts = ARRAY_SIZE(rockchip_vpu_enc_fmts),
-+	.dec_offset = 0x400,
-+	.dec_fmts = rk3399_vpu_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(rk3399_vpu_dec_fmts),
-+	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
-+		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
-+	.codec_ops = rk3399_vpu_codec_ops,
-+	.irqs = rockchip_vpu2_irqs,
-+	.num_irqs = ARRAY_SIZE(rockchip_vpu2_irqs),
-+	.init = rk3036_vpu_hw_init,
-+	.clk_names = rockchip_vpu_clk_names,
-+	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
-+};
+   reg:
 -- 
 2.32.0
 
