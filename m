@@ -2,66 +2,65 @@ Return-Path: <SRS0=sEzw=ML=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 798B7C07E9B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43753C07E95
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 19:51:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C5C3610FB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 14:38:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C5C3610FB
+	by mail.kernel.org (Postfix) with ESMTPS id 0E8AB610D2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jul 2021 19:51:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E8AB610D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QIMe5WEJoRjN8CSKchstc53yZ3mLFNmTua4IcXgbhJY=; b=wfRGhRFrXIT1l9
-	Acsr/EiJyPO+X89ppYJwFyEARgxgMZr+OeaI8U/Yo4NpxyBsDN8zjTcJzS4xmGeMReo/vQDX+Qywj
-	ND8gybwlnDdjh2KUYBsvHQF12L2tjFJXO11F9gw5pFfZbcmVMfnV0QEWMHuAoF5CVSAUfsxdwST63
-	AWzHR37YktK8d09bYzHFRPETBSSt8g+MAgMCplCToa0N1GZpdWnSIa/fdJRdRzG4lSc2YAkJG5HDP
-	T8wQ24L/DJesWVcqYwrqdx4nhNcfI3COfEIWA5unwpcI7DSc+6GQMYxjI0I3rRMQUUJOjcNMfogle
-	31NqW0EHEqSsDerI9hAA==;
+	List-Owner; bh=oEVm3wEKFrNIXKg23YpQUZbeN9HIpBhepds80c+8EDw=; b=GnLHjj6qkhJag3
+	MOYplM8vkkf+2d6Ho6d/qz45h03PwEWikIcuD5UtnEeY86xRWG9PvbyoAaEZRu6/yU2QqOpQS2oyH
+	1PPjiXX9PgcA+qKsA7MeI+2VUYgXkECEb+ApHz/uQSEhbIAcj/ro/55jbNkNiJAax33WU4EaqflT6
+	0/XMYTLyzNrwu/damf5ZRuYL/fz21yFrZGA0+KERrxIkPXdOF4MnPeLi5HuM7ebAE9f/yWIe5KN5h
+	0B+AOf6Qd2fbj55wzuA83XF/+Uu/E5Ap9ii9KseiFDVTMZDbZLT8US58XO8p314XaUISUFiljApFz
+	HAJ4NkG7rtudkqiwIDMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5UPw-009uqS-Ni; Mon, 19 Jul 2021 14:38:48 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1m5ZIq-00BC1S-70; Mon, 19 Jul 2021 19:51:48 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5UPZ-009ueF-3m
- for linux-rockchip@lists.infradead.org; Mon, 19 Jul 2021 14:38:29 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 90E0D1F42C40
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>,
- Heiko Stuebner <heiko@sntech.de>, Alex Bee <knaerzche@gmail.com>,
- maccraft123mc@gmail.com, Chris Healy <cphealy@gmail.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
- Rob Herring <robh+dt@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com,
- Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH RESEND v2 10/10] arm64: dts: rockchip: Add VPU support for the
- PX30
-Date: Mon, 19 Jul 2021 11:37:11 -0300
-Message-Id: <20210719143711.55749-11-ezequiel@collabora.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210719143711.55749-1-ezequiel@collabora.com>
-References: <20210719143711.55749-1-ezequiel@collabora.com>
+ id 1m5ZIW-00BBw4-3F; Mon, 19 Jul 2021 19:51:29 +0000
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:2434:2e2f:cb19:fca8:1dff])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: nfraprado)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C485E1F42E64;
+ Mon, 19 Jul 2021 20:51:20 +0100 (BST)
+Date: Mon, 19 Jul 2021 16:51:15 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, kernel@collabora.com,
+ Xing Zheng <zhengxing@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Michael Turquette <mturquette@baylibre.com>,
+ linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ linux-clk@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: clk: Convert rockchip,rk3399-cru to DT schema
+Message-ID: <20210719195115.cgh7fh54kwloo4o7@notapiano>
+References: <20210610175613.167601-1-nfraprado@collabora.com>
+ <20210624190041.GA1812802@robh.at.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210624190041.GA1812802@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_073825_336005_871B28F9 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210719_125128_339885_45A5568E 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,59 +73,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+On Thu, Jun 24, 2021 at 01:00:41PM -0600, Rob Herring wrote:
+> On Thu, 10 Jun 2021 14:56:13 -0300, N=EDcolas F. R. A. Prado wrote:
+> > Convert the rockchip,rk3399-cru binding to DT schema format.
+> > Tested with
+> > ARCH=3Darm64 make dt_binding_check DT_SCHEMA_FILES=3DDocumentation/devi=
+cetree/bindings/clock/rockchip,rk3399-cru.yaml
+> > ARCH=3Darm64 make dtbs_check DT_SCHEMA_FILES=3DDocumentation/devicetree=
+/bindings/clock/rockchip,rk3399-cru.yaml
+> > =
 
-The PX30 has a VPU (both decoder and encoder) with a dedicated IOMMU.
-Describe these two entities in device-tree.
+> > Signed-off-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+> > ---
+> > =
 
-Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+> > One caveat is that this node expects certain external clocks, mainly 'x=
+in24m'.
+> > =
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 248ebb61aa79..37e0719c1265 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -1024,6 +1024,29 @@ gpu: gpu@ff400000 {
- 		status = "disabled";
- 	};
- 
-+	vpu: video-codec@ff442000 {
-+		compatible = "rockchip,px30-vpu", "rockchip,rk3399-vpu";
-+		reg = <0x0 0xff442000 0x0 0x800>;
-+		interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "vepu", "vdpu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "hclk";
-+		iommus = <&vpu_mmu>;
-+		power-domains = <&power PX30_PD_VPU>;
-+	};
-+
-+	vpu_mmu: iommu@ff442800 {
-+		compatible = "rockchip,iommu";
-+		reg = <0x0 0xff442800 0x0 0x100>;
-+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "vpu_mmu";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "iface";
-+		#iommu-cells = <0>;
-+		power-domains = <&power PX30_PD_VPU>;
-+	};
-+
- 	dsi: dsi@ff450000 {
- 		compatible = "rockchip,px30-mipi-dsi";
- 		reg = <0x0 0xff450000 0x0 0x10000>;
--- 
-2.32.0
+> =
 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+
+Thanks! Is this blocked on something else?
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-rockchip mailing list
