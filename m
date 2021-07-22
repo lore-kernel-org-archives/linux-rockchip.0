@@ -2,20 +2,21 @@ Return-Path: <SRS0=0DM3=MO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51DE9C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jul 2021 19:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 703DEC4320A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jul 2021 19:15:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1946E60EB5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jul 2021 19:15:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1946E60EB5
+	by mail.kernel.org (Postfix) with ESMTPS id 3479F60EB2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jul 2021 19:15:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3479F60EB2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,69 +25,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Jkklq31OZw088lBDe34OImdt30jn2YhKnj+quQdERU=; b=0df4g5+PGN65fc
-	K5IxSP7141rHHnr/xwv69dQasMwi9NYAmsrY7CyoRrSMtb84nWPBy/qbExPf/rfObgPJ6nej9MydX
-	blWjWvQYV674CEdtpKhVzNf4V3e1cxGcNT5PWvMyZVw6D9uVg1TakhtxkunIf764BJIhAmFT7rGQo
-	+j+u7ykCy1VnTrkFg8ZNuOJdVjOU1RgNB0ZfRP+kVuOx5J2TSBJBf7NGGooAAGs7R+cCWuRu7VFj/
-	6Xb3/CbT0RvYllD+CI3yBDKpjsiQPeOpE1Gz/QySNEJIOE/I4ibz9pKkOI1S37MBt02LaPR22GRtR
-	4u4IY99iC6D9/OwjKhBg==;
+	List-Owner; bh=IauZqybAPUmTF9p/yAql/Vgy+OPXEHnAvTyhn5Ob0K4=; b=XYPn2/FzrE//4W
+	DVZEDyXNMSteL+bo5y0ZFymbYc3QmAkoDvwp4Z60JnOtvTjL+YLvVFxCRzpTfC+9aV1GjplEC5FAI
+	37GmuvLa0DxUUacgu7AMBiSJy001v/HSbMfd4SLUrzBCcKRAY5OUi2LSxXT/UrMj8fUT5rbE9pPLl
+	TfV5jKDqBm95dScuULqlg2TAZGndGPidmi66Ro3FWn6xll9N2iV18je7Hto4j7RaFIR8SN9FfLVqe
+	zxQABQji6Nf+CoyhLfJwQouYJV9VUpLHVLKkfHYkmZ8ZLuqDbmBvXjfh/rkBrAay+rp3NvzqfTPxJ
+	Jg/NHadrZ/UaKwgiVDzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6eAL-002VNi-0z; Thu, 22 Jul 2021 19:15:29 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1m6eAi-002Va7-OT; Thu, 22 Jul 2021 19:15:52 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6e9c-002V8Q-Jx; Thu, 22 Jul 2021 19:14:46 +0000
-Received: by mail-ot1-x331.google.com with SMTP id
- o72-20020a9d224e0000b02904bb9756274cso6309224ota.6; 
- Thu, 22 Jul 2021 12:14:44 -0700 (PDT)
+ id 1m6e9b-002V8H-Uk; Thu, 22 Jul 2021 19:14:47 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id
+ j1-20020a0568302701b02904d1f8b9db81so6265464otu.12; 
+ Thu, 22 Jul 2021 12:14:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=C+oR6jnz6zJn9wlv4NnQHPf10GKECSgTuicsJlMVTSs=;
- b=VsmrZMkAU5l9/HJfKqzIIT4h9n1WOczI9OjnSQdAy2S9imnZyDS+RKZdSw1rCVzAPB
- /eCM8DmtqSmriBcicEkHqDRyRFrdHM24EqvG1FC8G92ZOrOluNa99S16DbfRruEnOJIY
- Re76Ln3CgfyKspCidfhTZBfa0UprN0c3EZvKgE1FPX/6sMsfcGW40qT0brlwKD3Oo314
- YGSX6CDXKFUQrH/d0pkiry/kpRm9nJPvDZdXepFWXyFEHV1Nthx2aO/U2jjkOA6+c/eD
- TPsQUTMrVN78Y2mwVhhj/6BpS61tTBf31eHrs05l4JALg9W7BwHzaqTt4ZlEW6YFybYu
- IKWA==
+ bh=IpPXZ7nUET0H/id0LASVWkP6wOonUDNYbCsBVDBlSjc=;
+ b=EbYnkq68LMMBhIa9RerZx+EgkKEui3oKLcEZGzon/FxV+MtuxPCOc667NTEZHCRNjx
+ MdQnwSTnrvg7z53g2y/OYnqbzK4mSkHEsh0rypwkdWLD5jTIzSPJPDRVTlob7Alzzz5T
+ FJ07rAiHa9KatgStMF6vIaaHBf1AEFQqnSKOIF37wCkPECZNnBkoafJadxPoWATXE1y/
+ syxQHK5IlRKPYKuPboB75GvzKHD0QKqxlBKDJuVsO/+r4YHugWylyYqcdaF3IvOVFWog
+ mERKmRIC8uFmonVcFtm4j3ySpb0Ga01G2z9GwuqZcmhVwLUCxvA2BCvCOF7Be/AcxY74
+ vKrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=C+oR6jnz6zJn9wlv4NnQHPf10GKECSgTuicsJlMVTSs=;
- b=gWqBrlKy0OAiNxwToTzFEgWh2gZYFxX/1evc5Qy2jR0QUTSzG6V8NtrQPl8fBPlaoC
- 3158WDaWqnn5nTM57Aw+JdCAm+7554leoxIBZRXLJ7EO+jMXnfGTfdj7fK6Sifxe3x5w
- SMjLFFbD/RRVyOj+9nza9YRyESKzwUjuuECV/HPmbZzAqhqdzh7VB/GFTqQSrVCHugdJ
- jMBi/lvMlD2v5WVbYM/39sb0t9BZGKVzUAOCuKwtmcT2vGH2RhGdQN4HlyUiOdPVbypk
- tbOf/kpO+EejLlXQPpM1CEvjzF8Z399fW3VEsRFOqMS/fJFVWW5dTQyFMiUPXerdglq8
- VjaA==
-X-Gm-Message-State: AOAM530Etl/K8Wh0IJnjwdeAQFvyIxV2/PVu7ocdYIzpZ2jaa9z1O/VB
- BgfXb2kKpKBlUjgmMW2Hr3pz12+Cfos=
-X-Google-Smtp-Source: ABdhPJwcM8nmEZbO6iWa5H/3D5ddw+glMuUYtSKPzc4KvWY82aGNIIZ3WLZIH/PSG3oLTjKvE2JAeg==
-X-Received: by 2002:a05:6830:18cd:: with SMTP id
- v13mr880898ote.13.1626981283191; 
- Thu, 22 Jul 2021 12:14:43 -0700 (PDT)
+ bh=IpPXZ7nUET0H/id0LASVWkP6wOonUDNYbCsBVDBlSjc=;
+ b=N4uRhL7G/alI+GtQruuzRa/Y0xnr0KsfMZi5gbS4TpJa+rNa59EVWehMs1HBZij2aB
+ KaCtiFynlnBMqYO0GxzAa/yN5GuHwkVagHixPVD761bqqE+UDoHJL0cJ9WM16XEt3pRl
+ NyTbEidL6O6SkDEHOlC/y4A/l7u3axNDm/qqm1vz6DBg/H2DshX/g9/XtUpzhIN12TM8
+ gqjLiY4lCVgCPkga5FupnC2sNrk+4tbepZj2u7slaRj5m02jXENQ+iwHF9tBR00ZeNKr
+ dFu2tDrOnvLYrRNHQQm/nNilVSQutyl+POUyiIaQrxI9ejBGDoirpxeqdgg6O1cn0HiJ
+ ApuQ==
+X-Gm-Message-State: AOAM531DWrj2VjEVaQPiru8ZEwWT2jxZhARUwR9qL90mLU/RbgeO8VAR
+ goozd3mFQzO4oKG0JR91gZasClO1B/E=
+X-Google-Smtp-Source: ABdhPJymIVje3stoZDohPkmOkqlkvuR0ZxmiwqlL0ndkQ6XUB6Pp5JDnrlADNhv7amsMfN1EVzlS8A==
+X-Received: by 2002:a05:6830:208f:: with SMTP id
+ y15mr842352otq.161.1626981282154; 
+ Thu, 22 Jul 2021 12:14:42 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id r26sm3106167ooh.32.2021.07.22.12.14.42
+ by smtp.gmail.com with ESMTPSA id r26sm3106167ooh.32.2021.07.22.12.14.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Jul 2021 12:14:42 -0700 (PDT)
+ Thu, 22 Jul 2021 12:14:41 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
  robh+dt@kernel.org, lee.jones@linaro.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [RFC 4/4] arm64: dts: rockchip: add rk817 charger to Odroid Go Advance
-Date: Thu, 22 Jul 2021 14:14:30 -0500
-Message-Id: <20210722191430.28203-5-macroalpha82@gmail.com>
+Subject: [RFC 3/4] power: supply: Add charger driver for Rockchip RK817
+Date: Thu, 22 Jul 2021 14:14:29 -0500
+Message-Id: <20210722191430.28203-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210722191430.28203-1-macroalpha82@gmail.com>
 References: <20210722191430.28203-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_121444_735614_297E6E46 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20210722_121444_160758_78D0C4A2 
+X-CRM114-Status: GOOD (  26.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,60 +107,979 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the new rk817 charger driver to the Odroid Go Advance. Create a
-monitored battery node as well for the charger to use. All values
-from monitored battery are gathered from the BSP kernel for the
-Odroid Go Advance provided by HardKernel.
+Add support for the Rockchip rk817 battery charger integrated into the
+rk817 PMIC.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ drivers/power/supply/Kconfig         |   6 +
+ drivers/power/supply/Makefile        |   1 +
+ drivers/power/supply/rk817_charger.c | 927 +++++++++++++++++++++++++++
+ 3 files changed, 934 insertions(+)
+ create mode 100644 drivers/power/supply/rk817_charger.c
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 7fc674a99a6c..47bff3f2bd14 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -52,6 +52,25 @@ backlight: backlight {
- 		pwms = <&pwm1 0 25000 0>;
- 	};
+diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
+index 11f5368e810e..311130da36ff 100644
+--- a/drivers/power/supply/Kconfig
++++ b/drivers/power/supply/Kconfig
+@@ -666,6 +666,12 @@ config CHARGER_BQ256XX
+ 	  charge management and system power path management devices for single
+ 	  cell Li-ion and Li-polymer batteries.
  
-+	battery_cell: battery-cell {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3000000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <180000>;
-+		voltage-max-design-microvolt = <4100000>;
-+		voltage-min-design-microvolt = <3500000>;
++config CHARGER_RK817
++	tristate "Rockchip RK817 PMIC Battery Charger"
++	depends on MFD_RK808
++	help
++	  Say Y to include support for Rockchip RK817 Battery Charger.
 +
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =	<4106000 100>, <4071000 95>, <4018000 90>, <3975000 85>,
-+					<3946000 80>, <3908000 75>, <3877000 70>, <3853000 65>,
-+					<3834000 60>, <3816000 55>, <3802000 50>, <3788000 45>,
-+					<3774000 40>, <3760000 35>, <3748000 30>, <3735000 25>,
-+					<3718000 20>, <3697000 15>, <3685000 10>, <3625000 5>,
-+					<3500000 0>;
-+	};
+ config CHARGER_SMB347
+ 	tristate "Summit Microelectronics SMB3XX Battery Charger"
+ 	depends on I2C
+diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
+index 33059a91f60c..9497d2105712 100644
+--- a/drivers/power/supply/Makefile
++++ b/drivers/power/supply/Makefile
+@@ -87,6 +87,7 @@ obj-$(CONFIG_CHARGER_BQ2515X)	+= bq2515x_charger.o
+ obj-$(CONFIG_CHARGER_BQ25890)	+= bq25890_charger.o
+ obj-$(CONFIG_CHARGER_BQ25980)	+= bq25980_charger.o
+ obj-$(CONFIG_CHARGER_BQ256XX)	+= bq256xx_charger.o
++obj-$(CONFIG_CHARGER_RK817)	+= rk817_charger.o
+ obj-$(CONFIG_CHARGER_SMB347)	+= smb347-charger.o
+ obj-$(CONFIG_CHARGER_TPS65090)	+= tps65090-charger.o
+ obj-$(CONFIG_CHARGER_TPS65217)	+= tps65217_charger.o
+diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/rk817_charger.c
+new file mode 100644
+index 000000000000..4a1bbff9c7c1
+--- /dev/null
++++ b/drivers/power/supply/rk817_charger.c
+@@ -0,0 +1,927 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Charger Driver for Rockchip rk817
++ *
++ * Copyright (c) 2021
++ *
++ * Authors: Maya Matuszczyk <maccraft123mc@gmail.com>
++ *	    Chris Morgan <macromorgan@hotmail.com>
++ */
 +
- 	gpio-keys {
- 		compatible = "gpio-keys";
- 		pinctrl-names = "default";
-@@ -462,6 +481,13 @@ regulator-state-mem {
- 			};
- 		};
- 
-+		rk817_battery: battery {
-+			monitored-battery = <&battery_cell>;
-+			rockchip,resistor-sense = <10000>;
-+			rockchip,sleep-enter-current = <300000>;
-+			rockchip,sleep-filter-current = <100000>;
-+		};
++#include <linux/delay.h>
++#include <linux/extcon.h>
++#include <linux/fb.h>
++#include <linux/gpio.h>
++#include <linux/iio/consumer.h>
++#include <linux/iio/iio.h>
++#include <linux/irq.h>
++#include <linux/jiffies.h>
++#include <linux/mfd/rk808.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/of_gpio.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/rtc.h>
++#include <linux/timer.h>
++#include <linux/workqueue.h>
++#include <linux/power_supply.h>
 +
- 		rk817_codec: codec {
- 			rockchip,mic-in-differential;
- 		};
++/* Charging statuses reported by hardware register */
++enum rk817_charge_status {
++	CHRG_OFF,
++	DEAD_CHRG,
++	TRICKLE_CHRG,
++	CC_OR_CV_CHRG,
++	CHARGE_FINISH,
++	USB_OVER_VOL,
++	BAT_TMP_ERR,
++	BAT_TIM_ERR,
++};
++
++/* Max charging current read to/written from hardware register.
++ * Note how highest value corresponding to 0x7 is the lowest
++ * current, this is per the datasheet.
++ */
++enum rk817_chg_cur {
++	CHG_1A,
++	CHG_1_5A,
++	CHG_2A,
++	CHG_2_5A,
++	CHG_2_75A,
++	CHG_3A,
++	CHG_3_5A,
++	CHG_0_5A,
++};
++
++struct rk817_charger {
++	struct device *dev;
++	struct rk808 *rk808;
++
++	struct power_supply *bat_ps;
++	struct power_supply_battery_info bat_info;
++
++	struct power_supply *chg_ps;
++	bool plugged_in;
++
++	uint32_t voltage_k;
++	uint32_t voltage_b;
++
++	/* dsoc seems to be difference between full charge and actual charge in
++	 * BSP stored as a percentage, to the thousandth.
++	 */
++	int dsoc;
++
++	/* Implementation specific properties from device tree */
++	int res_div;
++	int sleep_enter_current;
++	int sleep_filter_current;
++};
++
++/* ADC coefficients extracted from BSP kernel */
++#define ADC_TO_CURRENT(adc_value, res_div)	\
++	(adc_value * 172 / res_div)
++
++#define CURRENT_TO_ADC(current, samp_res)	\
++	(current * samp_res / 172)
++
++#define CHARGE_TO_ADC(capacity, res_div)	\
++	(capacity * res_div * 3600 / 172 * 1000)
++
++#define ADC_TO_CHARGE_UAH(adc_value, res_div)	\
++	(adc_value / 3600 * 172 / res_div)
++
++#define ADC_TO_CAPACITY(adc_value, res_div)	\
++	(adc_value / 1000 * 172 / 3600 / res_div)
++
++static u8 rk817_chg_cur_to_reg(u32 chg_cur_ma)
++{
++	if (chg_cur_ma < 500)
++		return -EINVAL;
++	else if (chg_cur_ma < 1000)
++		return CHG_0_5A;
++	else if (chg_cur_ma < 1500)
++		return CHG_1A;
++	else if (chg_cur_ma < 2000)
++		return CHG_1_5A;
++	else if (chg_cur_ma < 2500)
++		return CHG_2A;
++	else if (chg_cur_ma < 2750)
++		return CHG_2_5A;
++	else if (chg_cur_ma < 3000)
++		return CHG_2_75A;
++	else if (chg_cur_ma < 3500)
++		return CHG_3A;
++	else
++		return CHG_3_5A;
++}
++
++static int rk817_chg_cur_from_reg(u8 reg)
++{
++	switch (reg) {
++	case CHG_0_5A:
++		return 500000;
++	case CHG_1A:
++		return 1000000;
++	case CHG_1_5A:
++		return 1500000;
++	case CHG_2A:
++		return 2000000;
++	case CHG_2_5A:
++		return 2500000;
++	case CHG_2_75A:
++		return 2750000;
++	case CHG_3A:
++		return 3000000;
++	case CHG_3_5A:
++		return 3500000;
++	default:
++		return -EINVAL;
++	}
++}
++
++static int rk817_get_reg_hl(struct rk817_charger *charger, int regH, int regL)
++{
++	int tmp, ret;
++	uint32_t out;
++	struct rk808 *rk808 = charger->rk808;
++
++	ret = regmap_read(rk808->regmap, regL, &tmp);
++	if (ret)
++		return ret;
++	out |= tmp;
++
++	ret = regmap_read(rk808->regmap, regH, &tmp);
++	if (ret)
++		return ret;
++	out |= tmp << 8;
++
++	return out;
++}
++
++static void rk817_write_reg_hl(struct rk817_charger *charger, int regH,
++			       int regL, int val)
++{
++	uint8_t tmp;
++	struct rk808 *rk808 = charger->rk808;
++
++	tmp = val & 0xff;
++	regmap_write(rk808->regmap, regL, tmp);
++	tmp = (val >> 8) & 0xff;
++	regmap_write(rk808->regmap, regH, tmp);
++}
++
++static void rk817_bat_calib_vol(struct rk817_charger *charger)
++{
++	uint32_t vcalib0 = 0;
++	uint32_t vcalib1 = 0;
++
++	/* calibrate voltage */
++	vcalib0 = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_VCALIB0_H,
++				   RK817_GAS_GAUGE_VCALIB0_L);
++	vcalib1 = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_VCALIB1_H,
++				   RK817_GAS_GAUGE_VCALIB1_L);
++
++	/* values were taken from BSP kernel */
++	charger->voltage_k = (4025 - 2300) * 1000 /
++			     ((vcalib1 - vcalib0) ? (vcalib1 - vcalib0) : 1);
++	charger->voltage_b = 4025 - (charger->voltage_k * vcalib1) / 1000;
++}
++
++static void rk817_bat_calib_cur(struct rk817_charger *charger)
++{
++	int ioffset = 0;
++	/* calibrate current */
++	ioffset = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_IOFFSET_H,
++				   RK817_GAS_GAUGE_IOFFSET_L);
++	rk817_write_reg_hl(charger, RK817_GAS_GAUGE_CAL_OFFSET_H,
++			   RK817_GAS_GAUGE_CAL_OFFSET_L, ioffset);
++}
++
++static int rk817_bat_calib_cap(struct rk817_charger *charger)
++{
++	struct rk808 *rk808 = charger->rk808;
++	struct power_supply_battery_info *info = &charger->bat_info;
++	int reg, tmp, charge_now, charge_now_adc, dsoc_value;
++	u8 bulk_reg[4];
++
++	/* Calibrate the capacity on a fully charged battery */
++
++	regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
++	tmp = (reg >> 4) & 0x07;
++	if (tmp == CHARGE_FINISH) {
++		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
++				 bulk_reg, 4);
++		charge_now_adc = (bulk_reg[0] << 24) | (bulk_reg[1] << 16) |
++				 (bulk_reg[2] << 8) | bulk_reg[3];
++		if (charge_now_adc < 0)
++			charge_now_adc = 0;
++		charge_now = ADC_TO_CHARGE_UAH(charge_now_adc, charger->res_div);
++		dsoc_value = ((charge_now * 100) /
++			      (info->charge_full_design_uah / 1000));
++		if (dsoc_value > 100000)
++			charger->dsoc = 100000;
++		if (dsoc_value != charger->dsoc) {
++			charger->dsoc = dsoc_value;
++			bulk_reg[2] = (dsoc_value >> 16) & 0xff;
++			bulk_reg[1] = (dsoc_value >> 8) & 0xff;
++			bulk_reg[0] = dsoc_value & 0xff;
++			regmap_bulk_write(rk808->regmap,
++					  RK817_GAS_GAUGE_BAT_R1, bulk_reg, 3);
++		}
++	}
++
++	return 0;
++
++}
++
++static int rk817_bat_get_prop(struct power_supply *ps,
++		enum power_supply_property prop,
++		union power_supply_propval *val)
++{
++	struct rk817_charger *charger = power_supply_get_drvdata(ps);
++	uint32_t tmp = 0;
++	/* Registers for current is a signed 16bit int */
++	short int cur = 0;
++	/* Registers for capacity-now is a signed 32bit int */
++	int32_t charge_now = 0;
++	int ret = 0;
++	int reg = 0;
++	u8 bulk_reg[4];
++	struct rk808 *rk808 = charger->rk808;
++
++	/* Recalibrate voltage and current readings if we need to BSP does both
++	 * on CUR_CALIB_UPD, ignoring VOL_CALIB_UPD. Curiously enough, both
++	 * documentation and the BSP show that you perform an update if bit 7
++	 * is 1, but you clear the status by writing a 1 to bit 7.
++	 */
++	regmap_read(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG1, &reg);
++	tmp = (reg >> 7) & 0x01;
++	if (tmp) {
++		rk817_bat_calib_cur(charger);
++		rk817_bat_calib_vol(charger);
++		regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG1,
++				   RK817_CUR_CALIB_UPD, (1 << 7));
++	}
++
++	rk817_bat_calib_cap(charger);
++
++	switch (prop) {
++	case POWER_SUPPLY_PROP_PRESENT:
++		regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
++		val->intval = (reg >> 7);
++		break;
++	case POWER_SUPPLY_PROP_STATUS:
++		if (!charger->plugged_in) {
++			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
++			break;
++		}
++		ret = regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
++		if (ret)
++			return ret;
++		tmp = (reg >> 4) & 0x07;
++		switch (tmp) {
++		case CHRG_OFF:
++			val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
++			break;
++		/* Dead charge is documented, but not explained. I never
++		 * observed it but assume it's a pre-charge for a dead
++		 * battery.
++		 */
++		case DEAD_CHRG:
++		case TRICKLE_CHRG:
++		case CC_OR_CV_CHRG:
++			val->intval = POWER_SUPPLY_STATUS_CHARGING;
++			break;
++		case CHARGE_FINISH:
++			val->intval = POWER_SUPPLY_STATUS_FULL;
++			break;
++		default:
++			val->intval = POWER_SUPPLY_STATUS_UNKNOWN;
++			return -EINVAL;
++
++		}
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_TYPE:
++		ret = regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
++		if (ret)
++			return ret;
++		tmp = (reg >> 4) & 0x07;
++		switch (tmp) {
++		case CHRG_OFF:
++		case CHARGE_FINISH:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_NONE;
++			break;
++		case TRICKLE_CHRG:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
++			break;
++		case DEAD_CHRG:
++		case CC_OR_CV_CHRG:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_STANDARD;
++			break;
++		default:
++			val->intval = POWER_SUPPLY_CHARGE_TYPE_UNKNOWN;
++			break;
++		}
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_FULL:
++		val->intval = ((charger->bat_info.charge_full_design_uah /
++			       1000) * charger->dsoc) / 100;
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
++		val->intval = charger->bat_info.charge_full_design_uah;
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN:
++		val->intval = 0;
++		break;
++	case POWER_SUPPLY_PROP_CHARGE_NOW:
++		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
++				 bulk_reg, 4);
++		charge_now = (bulk_reg[0] << 24) | (bulk_reg[1] << 16) |
++			     (bulk_reg[2] << 8) | bulk_reg[3];
++		if (charge_now < 0)
++			charge_now = 0;
++		val->intval = ADC_TO_CHARGE_UAH(charge_now, charger->res_div);
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
++		val->intval = charger->bat_info.voltage_min_design_uv;
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_BOOT:
++		tmp = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_PWRON_VOL_H,
++				       RK817_GAS_GAUGE_PWRON_VOL_L);
++		val->intval = (1000 * (((charger->voltage_k * tmp) / 1000) +
++			       charger->voltage_b));
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
++		tmp = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_BAT_VOL_H,
++				       RK817_GAS_GAUGE_BAT_VOL_L);
++		val->intval = (1000 * (((charger->voltage_k * tmp) / 1000) +
++			       charger->voltage_b));
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_OCV:
++		tmp = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_OCV_VOL_H,
++				       RK817_GAS_GAUGE_OCV_VOL_H);
++		val->intval = (1000 * (((charger->voltage_k * tmp) / 1000) +
++			       charger->voltage_b));
++		break;
++	case POWER_SUPPLY_PROP_CURRENT_BOOT:
++		cur = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_PWRON_CUR_H,
++				       RK817_GAS_GAUGE_PWRON_CUR_H);
++		val->intval = ADC_TO_CURRENT(cur, charger->res_div);
++		break;
++	case POWER_SUPPLY_PROP_CURRENT_AVG:
++		cur = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_BAT_CUR_H,
++				       RK817_GAS_GAUGE_BAT_CUR_L);
++		val->intval = ADC_TO_CURRENT(cur, charger->res_div);
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
++		regmap_read(rk808->regmap, RK817_PMIC_CHRG_OUT, &tmp);
++		val->intval = rk817_chg_cur_from_reg(tmp & RK817_CHRG_CUR_SEL);
++		break;
++	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
++		regmap_read(rk808->regmap, RK817_PMIC_CHRG_OUT, &tmp);
++		val->intval = ((((tmp & RK817_CHRG_VOL_SEL) >> 4) * 50000) +
++			       4100000);
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
++		val->intval = charger->bat_info.voltage_max_design_uv;
++		break;
++	default:
++		return -EINVAL;
++	}
++	return 0;
++}
++
++static int rk817_chg_get_prop(struct power_supply *ps,
++			      enum power_supply_property prop,
++			      union power_supply_propval *val)
++{
++	struct rk817_charger *charger = power_supply_get_drvdata(ps);
++	int vol, tmp = 0;
++
++	switch (prop) {
++	case POWER_SUPPLY_PROP_ONLINE:
++		val->intval = charger->plugged_in;
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
++		/* max voltage from datasheet at 5.5v (default 5.0v) */
++		val->intval = 5500000;
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
++		/* min voltage from datasheet at 3.8v (default 5.0v) */
++		val->intval = 3800000;
++		break;
++	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
++		/* Note that on my example hardware (an Odroid Go Advance) the
++		 * voltage of the power connector is measured on the register
++		 * labelled USB in the datasheet; I don't know if this is how
++		 * it is designed or just a quirk of the implementation. I
++		 * believe this will also measure the voltage of the USB output
++		 * when in OTG mode, if that is the case we may need to change
++		 * this in the future to return 0 if the power supply status
++		 * is offline.
++		 */
++		tmp = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_USB_VOL_H,
++				       RK817_GAS_GAUGE_USB_VOL_L);
++		vol = ((charger->voltage_k * tmp / 1000 + charger->voltage_b) *
++		       60 / 46);
++		val->intval = vol * 1000;
++		break;
++	default:
++		return -EINVAL;
++	}
++	return 0;
++
++}
++
++static irqreturn_t rk817_plug_in_isr(int irq, void *cg)
++{
++	struct rk817_charger *charger;
++
++	charger = (struct rk817_charger *)cg;
++	charger->plugged_in = 1;
++	power_supply_changed(charger->chg_ps);
++	power_supply_changed(charger->bat_ps);
++	dev_dbg(charger->dev, "Power Cord Inserted\n");
++
++	return IRQ_HANDLED;
++}
++
++static irqreturn_t rk817_plug_out_isr(int irq, void *cg)
++{
++	struct rk817_charger *charger;
++	struct rk808 *rk808;
++
++	charger = (struct rk817_charger *)cg;
++	rk808 = charger->rk808;
++	charger->plugged_in = 0;
++	power_supply_changed(charger->bat_ps);
++	power_supply_changed(charger->chg_ps);
++
++	/* For some reason the bits of RK817_PMIC_CHRG_IN reset whenever the
++	 * power cord is unplugged. This was not documented in the BSP kernel
++	 * or the datasheet and only discovered by trial and error. Set minimum
++	 * USB input voltage to 4.5v and enable USB voltage input limit.
++	 */
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
++			  RK817_USB_VLIM_SEL, (0x05 << 4));
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
++			  (0x01 << 7));
++
++	/* Set average USB input current limit to 1.5A and enable USB current
++	 * input limit.
++	 */
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
++			  RK817_USB_ILIM_SEL, 0x03);
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
++			  (0x01 << 3));
++
++	dev_dbg(charger->dev, "Power Cord Removed\n");
++
++	return IRQ_HANDLED;
++}
++
++static enum power_supply_property rk817_bat_props[] = {
++	POWER_SUPPLY_PROP_PRESENT,
++	POWER_SUPPLY_PROP_STATUS,
++	POWER_SUPPLY_PROP_CHARGE_TYPE,
++	POWER_SUPPLY_PROP_CHARGE_FULL,
++	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
++	POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN,
++	POWER_SUPPLY_PROP_CHARGE_NOW,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
++	POWER_SUPPLY_PROP_VOLTAGE_BOOT,
++	POWER_SUPPLY_PROP_VOLTAGE_AVG,
++	POWER_SUPPLY_PROP_VOLTAGE_OCV,
++	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
++	POWER_SUPPLY_PROP_CURRENT_BOOT,
++	POWER_SUPPLY_PROP_CURRENT_AVG,
++	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
++	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
++};
++
++static enum power_supply_property rk817_chg_props[] = {
++	POWER_SUPPLY_PROP_ONLINE,
++	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
++	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
++	POWER_SUPPLY_PROP_VOLTAGE_AVG,
++};
++
++static const struct power_supply_desc rk817_bat_desc = {
++	.name = "rk817-battery",
++	.type = POWER_SUPPLY_TYPE_BATTERY,
++	.properties = rk817_bat_props,
++	.num_properties = ARRAY_SIZE(rk817_bat_props),
++	.get_property = rk817_bat_get_prop,
++};
++
++/* Note that all known existing implementations use a "USB" port that is either
++ * a power only port (no data lines) or use barrel plug to USB cable. Setting
++ * to POWER_SUPPLY_TYPE_USB_DCP.
++ */
++static const struct power_supply_desc rk817_chg_desc = {
++	.name = "rk817-charger",
++	.type = POWER_SUPPLY_TYPE_USB_DCP,
++	.properties = rk817_chg_props,
++	.num_properties = ARRAY_SIZE(rk817_chg_props),
++	.get_property = rk817_chg_get_prop,
++};
++
++static int rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger)
++{
++	struct rk808 *rk808 = charger->rk808;
++	struct power_supply_battery_info *info = &charger->bat_info;
++	u8 reg[4];
++	u32 design_charge_mah = (info->charge_full_design_uah / 1000);
++	u32 boot_voltage, boot_capacity, boot_charge, tmp, full_charge_cap;
++	int ret;
++
++	/* Read DSOC value if pre-existing. If not, initialize at 100%.
++	 * Note endianness, also register says it's for resistance,
++	 * however BSP kernel treats this as an nvram field for the DSOC
++	 * as best I can tell. Doing the same for backwards compatibility.
++	 */
++	ret = regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_BAT_R1, reg, 3);
++	if (ret < 0)
++		return ret;
++
++	charger->dsoc = (reg[2] << 16) | (reg[1] << 8) | (reg[0]);
++	/* If we have an invalid DSOC, write 100 (100000) as default. */
++	if (charger->dsoc < 1000 || charger->dsoc > 100000) {
++		regmap_write(rk808->regmap, RK817_GAS_GAUGE_BAT_R1, 0xa0);
++		regmap_write(rk808->regmap, RK817_GAS_GAUGE_BAT_R2, 0x86);
++		regmap_write(rk808->regmap, RK817_GAS_GAUGE_BAT_R3, 0x01);
++		charger->dsoc = 100000;
++	}
++
++	/* Register appears to be nvram that stores capacity in mAH. Note
++	 * endianness, keeping consistent with BSP kernel, however it looks
++	 * like we can use any arbitrary method to store value if we don't care
++	 * about compatibility. Additionally, it doesn't appear that this value
++	 * is used for anything, so realistically getting it and setting it is
++	 * to ensure backward compatibility with BSP and serves no purpose with
++	 * this driver, and I'm not sure if the BSP driver does anything with
++	 * this value either.
++	 */
++
++	ret = regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_DATA3, reg, 3);
++	if (ret < 0)
++		return ret;
++
++	full_charge_cap = (reg[2] << 16) | (reg[1] << 8) | (reg[0]);
++
++	/* Sanity checking for values equal to zero or less than would be
++	 * practical for this device (BSP Kernel assumes 500mAH or less) for
++	 * practicality purposes.
++	 */
++	if (full_charge_cap < 500) {
++		reg[2] = (design_charge_mah >> 16) & 0xff;
++		reg[1] = (design_charge_mah >> 8) & 0xff;
++		reg[0] = design_charge_mah & 0xff;
++		ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_DATA3, reg, 3);
++		if (ret < 0)
++			return ret;
++		dev_info(charger->dev,
++			 "Invalid NVRAM Data for max charge, setting to design capacity %u uAH\n",
++			 design_charge_mah*1000);
++	}
++
++	/* Capture boot voltage and look up boot capacity from OCV tables. */
++
++	tmp = rk817_get_reg_hl(charger, RK817_GAS_GAUGE_PWRON_VOL_H,
++			       RK817_GAS_GAUGE_PWRON_VOL_L);
++	boot_voltage = (1000 * (((charger->voltage_k * tmp) / 1000) +
++			charger->voltage_b));
++	/* Since only implementation has no working thermistor, assume 20C for
++	 * OCV lookup.
++	 */
++	boot_capacity = power_supply_batinfo_ocv2cap(info, boot_voltage, 20);
++
++	/* Write boot charge to registers, estimate boot charge based on
++	 * capacity and max charge of battery.
++	 */
++	boot_charge = (boot_capacity * info->charge_full_design_uah) / 100;
++	tmp = CHARGE_TO_ADC((boot_charge / 1000), charger->res_div);
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
++		     (tmp >> 24) & 0xFF);
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H2,
++		     (tmp >> 16) & 0xFF);
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_L1,
++		     (tmp >> 8) & 0xFF);
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_L0,
++		     tmp & 0xFF);
++
++	/* Set QMAX value to max design capacity. */
++	tmp = CHARGE_TO_ADC((info->charge_full_design_uah / 1000),
++			    charger->res_div);
++	reg[0] = (tmp >> 24) & 0xff;
++	reg[1] = (tmp >> 16) & 0xff;
++	reg[2] = (tmp >> 8) & 0xff;
++	reg[3] = tmp & 0xff;
++	ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_MAX_H3,
++				reg, 4);
++	if (ret < 0)
++		return ret;
++
++	return 0;
++
++}
++
++static int rk817_battery_init(struct rk817_charger *charger)
++{
++	struct rk808 *rk808 = charger->rk808;
++	struct power_supply_battery_info *info = &charger->bat_info;
++	u32 tmp, max_chg_vol_mv, max_chg_cur_ma;
++	u8 max_chg_vol_reg, chg_term_i_reg, max_chg_cur_reg;
++	int ret, chg_term_ma;
++
++	/* Get initial plug state */
++	regmap_read(rk808->regmap, RK817_SYS_STS, &tmp);
++	charger->plugged_in = (tmp & RK817_PLUG_IN_STS);
++
++	/* Turn on all ADC functions to measure battery, USB, and sys voltage,
++	 * as well as batt temp. Note only tested implementation so far does
++	 * not use a battery with a thermistor.
++	 */
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG0, 0xfc);
++
++	/* Set relax mode voltage sampling interval and ADC offset calibration
++	 * interval to 8 minutes to mirror BSP kernel. Set voltage and current
++	 * modes to average to mirror BSP kernel.
++	 */
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_GG_CON, 0x04);
++
++	/* Write relax threshold, derived from sleep enter current. */
++	tmp = CURRENT_TO_ADC(charger->sleep_enter_current, charger->res_div);
++	rk817_write_reg_hl(charger, RK817_GAS_GAUGE_RELAX_THRE_H,
++			   RK817_GAS_GAUGE_RELAX_THRE_L, tmp);
++
++	/* Write sleep sample current, derived from sleep filter current. */
++	tmp = CURRENT_TO_ADC(charger->sleep_filter_current, charger->res_div);
++	rk817_write_reg_hl(charger, RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_H,
++			   RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_L, tmp);
++
++	/* Restart battery relax voltage */
++	regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_GG_STS,
++			  RK817_RELAX_VOL_UPD, (0x0 << 2));
++
++	/* Set OCV Threshold Voltage to 127.5mV. This was hard coded like this
++	 * in the BSP.
++	 */
++	regmap_write(rk808->regmap, RK817_GAS_GAUGE_OCV_THRE_VOL, 0xff);
++
++	/* Set maximum charging voltage to battery max voltage. Trying to be
++	 * incredibly safe with these value, as setting them wrong could
++	 * overcharge the battery, which would be very bad.
++	 */
++	max_chg_vol_mv = info->constant_charge_voltage_max_uv / 1000;
++	max_chg_cur_ma = info->constant_charge_current_max_ua / 1000;
++
++	if (max_chg_vol_mv < 4100) {
++		dev_emerg(charger->dev,
++			  "Danger, invalid max charger voltage! Value %u unsupported\n",
++			  max_chg_vol_mv * 1000);
++		return -EINVAL;
++	}
++	if (max_chg_vol_mv > 4450) {
++		dev_info(charger->dev,
++			 "Setting max charge voltage to 4450000uv\n");
++		max_chg_vol_mv = 4450;
++	}
++
++	if (max_chg_cur_ma < 500) {
++		dev_emerg(charger->dev,
++			  "Danger, invalid max charger current! Value %u unsupported\n",
++			  max_chg_cur_ma * 1000);
++		return -EINVAL;
++	}
++	if (max_chg_cur_ma > 3500)
++		dev_info(charger->dev,
++			 "Setting max charge current to 3500000ua\n");
++
++	/* Now that the values are sanity checked, if we subtract 4100 from the
++	 * max voltage and divide by 50, we conviently get the exact value for
++	 * the registers, which are 4.1v, 4.15v, 4.2v, 4.25v, 4.3v, 4.35v,
++	 * 4.4v, and 4.45v; these correspond to values 0x00 through 0x07.
++	 */
++	max_chg_vol_reg = (max_chg_vol_mv - 4100) / 50;
++
++	max_chg_cur_reg = rk817_chg_cur_to_reg(max_chg_cur_ma);
++
++	if (max_chg_vol_reg < 0 || max_chg_vol_reg > 7) {
++		dev_emerg(charger->dev,
++			  "Danger, invalid max charger voltage! Value %u unsupported\n",
++			  max_chg_vol_mv * 1000);
++		return -EINVAL;
++	}
++	if (max_chg_cur_reg < 0 || max_chg_cur_reg > 7) {
++		dev_emerg(charger->dev,
++			  "Danger, invalid max charger voltage! Value %u unsupported\n",
++			  max_chg_cur_ma * 1000);
++		return -EINVAL;
++	}
++
++	/* Write the values to the registers, and deliver an emergency warning
++	 * in the event they are not written correctly.
++	 */
++	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
++				RK817_CHRG_VOL_SEL, (max_chg_vol_reg << 4));
++	if (ret) {
++		dev_emerg(charger->dev,
++			  "Danger, unable to set max charger voltage: %u\n",
++			  ret);
++	}
++
++	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
++				RK817_CHRG_CUR_SEL, max_chg_cur_reg);
++	if (ret) {
++		dev_emerg(charger->dev,
++			  "Danger, unable to set max charger current: %u\n",
++			  ret);
++	}
++
++	/* Set charge finishing mode to analog */
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
++			  RK817_CHRG_TERM_ANA_DIG, (0x0 << 2));
++
++	/* Set charge finish current, warn if value not in range and keep
++	 * default.
++	 */
++	chg_term_ma = info->charge_term_current_ua / 1000;
++	if (chg_term_ma < 150 || chg_term_ma > 400) {
++		dev_warn(charger->dev,
++			 "Invalid charge termination value %u, keeping default\n",
++			 chg_term_ma * 1000);
++		chg_term_ma = 200;
++	}
++
++	/* Values of 150ma, 200ma, 300ma, and 400ma correspond to 00, 01, 10,
++	 * and 11.
++	 */
++	chg_term_i_reg = (chg_term_ma - 100) / 100;
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
++			  RK817_CHRG_TERM_ANA_SEL, chg_term_i_reg);
++
++	ret = rk817_read_or_set_full_charge_on_boot(charger);
++	if (ret < 0)
++		return ret;
++
++	/* Set minimum USB input voltage to 4.5v and enable USB voltage input
++	 * limit.
++	 */
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
++			  RK817_USB_VLIM_SEL, (0x05 << 4));
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
++			  (0x01 << 7));
++
++	/* Set average USB input current limit to 1.5A and enable USB current
++	 * input limit.
++	 */
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
++			  RK817_USB_ILIM_SEL, 0x03);
++	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
++			  (0x01 << 3));
++
++	return 0;
++
++}
++
++static int rk817_charger_probe(struct platform_device *pdev)
++{
++	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
++	struct rk817_charger *charger;
++	struct device_node *node;
++	struct power_supply_battery_info *info;
++	struct device *dev = &pdev->dev;
++	struct power_supply_config pscfg = {};
++	int plugin_irq, plugout_irq;
++	int of_value;
++	int ret;
++
++	node = of_get_child_by_name(dev->parent->of_node, "battery");
++	if (!node)
++		return -ENODEV;
++
++	charger = devm_kzalloc(&pdev->dev, sizeof(*charger), GFP_KERNEL);
++	if (!charger)
++		return -ENOMEM;
++
++	charger->rk808 = rk808;
++
++	charger->dev = &pdev->dev;
++	platform_set_drvdata(pdev, charger);
++
++	rk817_bat_calib_vol(charger);
++
++	pscfg.drv_data = charger;
++	pscfg.of_node = node;
++
++	/* Get sample resistor value. Note only values of 10000 or 20000
++	 * microohms are allowed. Schematic for my test implementation (an
++	 * Odroid Go Advance) shows a 10 milliohm resistor for reference.
++	 */
++	ret = of_property_read_u32(node, "rockchip,resistor-sense", &of_value);
++	if (ret < 0) {
++		dev_err(dev, "Error reading sample resistor value: %i\n", ret);
++		return ret;
++	}
++	/* Store as a 1 or a 2, since all we really use the value for is as a
++	 * divisor in some calculations.
++	 */
++	charger->res_div = (of_value == 20000) ? 2 : 1;
++
++	/* Get sleep enter current value. Not sure what this value is for
++	 * other than to help calibrate the relax threshold.
++	 */
++	ret = of_property_read_u32(node, "rockchip,sleep-enter-current",
++				   &of_value);
++	if (ret < 0) {
++		dev_err(dev, "Error reading sleep enter current value: %i\n",
++			ret);
++		return ret;
++	}
++	charger->sleep_enter_current = of_value;
++
++	/* Get sleep filter current value */
++	ret = of_property_read_u32(node, "rockchip,sleep-filter-current",
++				   &of_value);
++	if (ret < 0) {
++		dev_err(dev, "Error reading sleep filter current value: %i\n",
++			ret);
++		return ret;
++	}
++	charger->sleep_filter_current = of_value;
++
++	charger->bat_ps = devm_power_supply_register(&pdev->dev,
++						     &rk817_bat_desc, &pscfg);
++
++	charger->chg_ps = devm_power_supply_register(&pdev->dev,
++						     &rk817_chg_desc, &pscfg);
++
++	ret = power_supply_get_battery_info(charger->bat_ps,
++					    &charger->bat_info);
++	if (ret) {
++		dev_err(dev, "Unable to get battery info: %d\n", ret);
++		return ret;
++	}
++
++	info = &charger->bat_info;
++	if ((!info->charge_full_design_uah) ||
++	    (!info->voltage_min_design_uv) ||
++	    (!info->voltage_max_design_uv) ||
++	    (!info->constant_charge_voltage_max_uv) ||
++	    (!info->constant_charge_current_max_ua) ||
++	    (!info->charge_term_current_ua) ||
++	    (!info->ocv_table)) {
++		dev_err(dev, "Required battery information missing.\n");
++		return -EINVAL;
++	}
++
++	/* Has to run after power_supply_get_battery_info as it depends on some
++	 * values discovered from that routine.
++	 */
++	ret = rk817_battery_init(charger);
++	if (ret)
++		return ret;
++
++	plugin_irq = platform_get_irq(pdev, 0);
++	if (plugin_irq < 0)
++		return plugin_irq;
++
++	plugout_irq = platform_get_irq(pdev, 1);
++	if (plugout_irq < 0)
++		return plugout_irq;
++
++	ret = devm_request_threaded_irq(charger->dev, plugin_irq, NULL,
++					rk817_plug_in_isr,
++					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					"rk817_plug_in", charger);
++	if (ret) {
++		dev_err(&pdev->dev, "plug_in_irq request failed!\n");
++		return ret;
++	}
++
++	ret = devm_request_threaded_irq(charger->dev, plugout_irq, NULL,
++					rk817_plug_out_isr,
++					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
++					"rk817_plug_out", charger);
++	if (ret) {
++		dev_err(&pdev->dev, "plug_out_irq request failed!\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++
++static struct platform_driver rk817_charger_driver = {
++	.probe    = rk817_charger_probe,
++	.driver   = {
++		.name  = "rk817-charger",
++	},
++};
++module_platform_driver(rk817_charger_driver);
++
++MODULE_DESCRIPTION("Battery power supply driver for RK817 PMIC");
++MODULE_AUTHOR("Maya Matuszczyk <maccraft123mc@gmail.com>");
++MODULE_LICENSE("GPL");
 -- 
 2.25.1
 
