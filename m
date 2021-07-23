@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0723C19F34
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78F79C00144
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F14260E8E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F14260E8E
+	by mail.kernel.org (Postfix) with ESMTPS id 07C7560EBD
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 07C7560EBD
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JeWz6JXY3UWSZwncOaVKfTI1E5F5TumjkuJLtkV3/+U=; b=ofmerh0mlkBg9J
-	wMKqVnJ3esjpPLYtzEfkMVRJzW3dvdbBJVGHXKsUjkTH+fktP4ZP8xET5wSCW10cnd6RsvuIT498p
-	kxo6OLwXGIAl1VcLCkdIkoF4jjVq5Mgsv9OXjDxkXHEdruDPZ+hCNuhsMk7sQXBphg7OXL39SKuJQ
-	Xp0NSY5NsJJ2rUo1WkRTVKdG7CCUVyfFn9za5TbmFBVayv7Qm2IZR2rwYslTUzBazUWULYGJ0NP25
-	9oJILF69tnMTorDzXI3+I/rH9zOFN5g93kz3ZlaGIugploZv/pvxJKghbYJR4MPeUkmM4OWaRTM60
-	P0vTEAu2vOuUfFV0Bo2w==;
+	List-Owner; bh=BDgbruNNZ3HWBmoTRtPavcrVrI3dB1cEg/HNTYRrPHg=; b=Sy0idntZf5FOhW
+	XpkuE9MyFhXvhL+owousDOCmqGT+2nu93eRGZAonqyYEtiKwokKINURwFZTi7rhTa1BZHYTx4JWfR
+	DtMhW4IW9RQl+he/UZzkkC+HDQNrExYDAHSTnE/DkfhROvqgKPLn1LpkC2ZdiV/3zUvPcruXBIPh0
+	TacAijQb8E1RSR6QBpB9lnpP/rDofZznjhV2zM77o9Dkn25J2fZspoIKHl8G853R0xJKepvFEt3vG
+	AGjSyUIRuBZJTYbGTCwZIpWLj1yk6tIgX+08s2E9zTDg1RZ9pXlQHcToA6KEqHKiM3z0Dmtdyi7ve
+	teLjIowMcwsNfSZkO0bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6pfe-003hZy-7s; Fri, 23 Jul 2021 07:32:34 +0000
+	id 1m6pfi-003hdL-HZ; Fri, 23 Jul 2021 07:32:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6pfb-003hUv-C6
- for linux-rockchip@lists.infradead.org; Fri, 23 Jul 2021 07:32:33 +0000
+ id 1m6pfb-003hUt-CF
+ for linux-rockchip@lists.infradead.org; Fri, 23 Jul 2021 07:32:34 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m6pfW-0003dj-E0; Fri, 23 Jul 2021 09:32:26 +0200
+ id 1m6pfV-0003dj-Kx; Fri, 23 Jul 2021 09:32:25 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -48,20 +48,17 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
  heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
- Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 03/10] dt-bindings: media: rkisp1: document different irq
- possibilities
-Date: Fri, 23 Jul 2021 09:32:14 +0200
-Message-Id: <20210723073221.1276358-4-heiko@sntech.de>
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Subject: [PATCH v7 01/10] media: rockchip: rkisp1: remove unused irq variable
+Date: Fri, 23 Jul 2021 09:32:12 +0200
+Message-Id: <20210723073221.1276358-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210723073221.1276358-1-heiko@sntech.de>
 References: <20210723073221.1276358-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_003231_462719_AF6AC6DD 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210723_003231_610107_F49693B0 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +78,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Some variants have one irq signaling all of MI, MIPI and ISP events
-while some rkisp1 variants use separate irqs for each.
-
-Adapt the binding to handle both cases.
+The irq variable in struct rkisp1 is unused as it is only used
+to request the irq during probe, so remove it.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- .../bindings/media/rockchip-isp1.yaml         | 45 +++++++++++++------
- 1 file changed, 31 insertions(+), 14 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 1 -
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 2 --
+ 2 files changed, 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 2f8f0625d22e..14ac5730b377 100644
---- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -21,7 +21,14 @@ properties:
-     maxItems: 1
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 038c303a8aed..be8a350c7527 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -352,7 +352,6 @@ struct rkisp1_debug {
+  */
+ struct rkisp1_device {
+ 	void __iomem *base_addr;
+-	int irq;
+ 	struct device *dev;
+ 	unsigned int clk_size;
+ 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 7474150b94ed..7afa4c123834 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -489,8 +489,6 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 3
-+
-+  interrupt-names:
-+    items:
-+      - const: isp
-+      - const: mi
-+      - const: mipi
- 
-   clocks:
-     minItems: 3
-@@ -90,19 +97,29 @@ required:
-   - power-domains
-   - ports
- 
--if:
--  properties:
--    compatible:
--      contains:
--        const: rockchip,rk3399-cif-isp
--then:
--  properties:
--    clocks:
--      minItems: 3
--      maxItems: 4
--    clock-names:
--      minItems: 3
--      maxItems: 4
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3399-cif-isp
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 3
-+          maxItems: 4
-+        clock-names:
-+          minItems: 3
-+          maxItems: 4
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,px30-cif-isp
-+    then:
-+      required:
-+        - interrupt-names
- 
- additionalProperties: false
- 
+-	rkisp1->irq = irq;
+-
+ 	for (i = 0; i < match_data->size; i++)
+ 		rkisp1->clks[i].id = match_data->clks[i];
+ 	ret = devm_clk_bulk_get(dev, match_data->size, rkisp1->clks);
 -- 
 2.29.2
 
