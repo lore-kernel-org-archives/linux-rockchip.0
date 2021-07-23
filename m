@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76CAEC432BE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0F1FC4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13C2A60E8E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 13C2A60E8E
+	by mail.kernel.org (Postfix) with ESMTPS id 7762260E91
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7762260E91
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0qlcKWdyQnWLotJZ2gVYZiUS0j2fP0stfSH5p2EtXZQ=; b=uBydYKCZAGZrMU
-	Gbc8/4pS/OFqJuT6q6ZqRqbFeCb9HEReQHjivZyy5cP/0KCrLoSeuG4RtDFdBUHkic+tl2rxi0gGG
-	VFaoFYAFLJ+fz3pbeF3PMESyRxBCRxYuopPfvpC+PbbDhELdw5kkn32YAh3DQH8mY7yLFED9E1aC0
-	YxKeNgAFUpRDyj0JvnTindCLbv4KZHjPs6s9GlKC0I6TtBr9lc2GUFM4/MOuUWUzQW/gS+Z9vfKsV
-	mInGIiBbfDKWs8o6az9HPwRN1/U5CF8CIPQMiYKF0KjrK4EElb3wGAhUrylQq/ATf/oFLsWsnpjal
-	QXKAkfD7ny8AuAu91feg==;
+	List-Owner; bh=VFkSHu3kOuceZt5bVfUojSRbRQ4pvDGYcNKjZLv6R/8=; b=r8Oz10Mu8pxz3e
+	sZKQ9SjN9KVQOsB45uNSNs0tqQG+VwYS7fnuuZR1qyFnnDxLiy3dnKFvXTZ9NgFNQO1yPEbjE6J0T
+	uxoxhYcZNHhi3weub9TmM2qFZc90L9jFUveGLxu0RpHJ3GBUeeJ8iBqJCsOQSUR+bhpmQe6+v3ZwM
+	/frtwmtePgdQBzMYZ+hXTyRqx/+0e1smRoN27s/beWqVquNr8ZQ6EMorl7IJOFVDOjxXtwJ1eUEZC
+	cDecSCYgSpCJW0IpMuMRd/Xz727Ub6xS7AA3duBd/oyfg9b5jAiSJtiKpX9TJ7Wocw525ZLKELwoM
+	djrt31sdV8A6m+SMIAjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6pfl-003hf6-2b; Fri, 23 Jul 2021 07:32:41 +0000
+	id 1m6pfn-003hgY-Qz; Fri, 23 Jul 2021 07:32:43 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6pfb-003hVI-C9
+ id 1m6pfb-003hUs-CC
  for linux-rockchip@lists.infradead.org; Fri, 23 Jul 2021 07:32:34 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m6pfZ-0003dj-32; Fri, 23 Jul 2021 09:32:29 +0200
+ id 1m6pfW-0003dj-1U; Fri, 23 Jul 2021 09:32:26 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
@@ -50,17 +50,16 @@ Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
  Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
  Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 09/10] dt-bindings: media: rkisp1: document px30 isp
- compatible
-Date: Fri, 23 Jul 2021 09:32:20 +0200
-Message-Id: <20210723073221.1276358-10-heiko@sntech.de>
+Subject: [PATCH v7 02/10] dt-bindings: media: rkisp1: fix pclk clock-name
+Date: Fri, 23 Jul 2021 09:32:13 +0200
+Message-Id: <20210723073221.1276358-3-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210723073221.1276358-1-heiko@sntech.de>
 References: <20210723073221.1276358-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_003231_625086_18A2A4D1 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20210723_003231_631850_72663702 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,96 +79,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Add the compatible for the px30-variant of the rkisp
+Having a clock name as "pclk_isp" suggests really hard a remnant from
+the vendor kernel.
+
+Right now no driver _and_ no devicetree actually uses this clock name
+so there is still time to fix that naming.
+
+Therefore drop the "_isp" suffix and only name it pclk.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/media/rockchip-isp1.yaml         | 67 ++++++++++++++++++-
- 1 file changed, 66 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 14ac5730b377..d1489b177331 100644
+index a6b1eff879ed..2f8f0625d22e 100644
 --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -15,7 +15,9 @@ description: |
+@@ -41,7 +41,7 @@ properties:
+       - const: aclk
+       - const: hclk
+       # only for isp1
+-      - const: pclk_isp
++      - const: pclk
  
- properties:
-   compatible:
--    const: rockchip,rk3399-cif-isp
-+    enum:
-+      - rockchip,px30-cif-isp
-+      - rockchip,rk3399-cif-isp
- 
-   reg:
+   iommus:
      maxItems: 1
-@@ -200,3 +202,66 @@ examples:
-             };
-         };
-     };
-+
-+  - |
-+
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/power/px30-power.h>
-+
-+    parent1: parent {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        isp: isp@ff4a0000 {
-+            compatible = "rockchip,px30-cif-isp";
-+            reg = <0x0 0xff4a0000 0x0 0x8000>;
-+            interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
-+                         <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
-+            interrupt-names = "isp", "mi", "mipi";
-+            clocks = <&cru SCLK_ISP0>,
-+                     <&cru ACLK_ISP0_WRAPPER>,
-+                     <&cru HCLK_ISP0_WRAPPER>,
-+                     <&cru PCLK_ISP1_WRAPPER>;
-+            clock-names = "isp", "aclk", "hclk", "pclk";
-+            iommus = <&isp_mmu>;
-+            phys = <&csi_dphy>;
-+            phy-names = "dphy";
-+            power-domains = <&power PX30_PD_VI>;
-+
-+            ports {
-+                #address-cells = <1>;
-+                #size-cells = <0>;
-+
-+                port@0 {
-+                    reg = <0>;
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+
-+                    mipi_in_ucam1: endpoint@0 {
-+                        reg = <0>;
-+                        remote-endpoint = <&ucam1_out>;
-+                        data-lanes = <1 2>;
-+                    };
-+                };
-+            };
-+        };
-+
-+        i2c2: i2c {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            ov5695: camera@36 {
-+                compatible = "ovti,ov5647";
-+                reg = <0x36>;
-+                clocks = <&cru SCLK_CIF_OUT>;
-+
-+                port {
-+                    ucam1_out: endpoint {
-+                        remote-endpoint = <&mipi_in_ucam1>;
-+                        data-lanes = <1 2>;
-+                    };
-+                };
-+            };
-+        };
-+    };
 -- 
 2.29.2
 
