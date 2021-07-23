@@ -2,60 +2,66 @@ Return-Path: <SRS0=F11g=MP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DA8AC4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0723C19F34
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0F4760EBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F0F4760EBD
+	by mail.kernel.org (Postfix) with ESMTPS id 7F14260E8E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 07:32:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F14260E8E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=agPK/5VQQejYm3kebx9FwzDr7sVE/S3/YurTGXFaYkY=; b=VQjf83iENnttzh
-	PAqJTYmF+wR7AZvXUCdEDZqaOHlh1c8xVgKWjl2gLDEiQdJxz7qqoIs0AdXKN4c03A3owKYYyk+9L
-	gU3Rf4Xt0skbalu4c+II8N7DXJKqbYg1NvhJWoki4V4yxpk8wePvmqg+Bq0owJIlHbZNDwGM59Lnq
-	vZG/H5axDMUmpLDYW99zHdtyRgIbq3I+KsWOm95INWXX3Fh2sU/FU9gjyJWZbcxX5ZD0dNfGS4xVh
-	L+lHkVLhKTcdDUKgvbSZQB+snwLguLWIKTDoHb9CazOe6EATmfB64PJnLl6abUYREp2xbOT4u/VdH
-	iGylC0x79senTZX0HOzQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JeWz6JXY3UWSZwncOaVKfTI1E5F5TumjkuJLtkV3/+U=; b=ofmerh0mlkBg9J
+	wMKqVnJ3esjpPLYtzEfkMVRJzW3dvdbBJVGHXKsUjkTH+fktP4ZP8xET5wSCW10cnd6RsvuIT498p
+	kxo6OLwXGIAl1VcLCkdIkoF4jjVq5Mgsv9OXjDxkXHEdruDPZ+hCNuhsMk7sQXBphg7OXL39SKuJQ
+	Xp0NSY5NsJJ2rUo1WkRTVKdG7CCUVyfFn9za5TbmFBVayv7Qm2IZR2rwYslTUzBazUWULYGJ0NP25
+	9oJILF69tnMTorDzXI3+I/rH9zOFN5g93kz3ZlaGIugploZv/pvxJKghbYJR4MPeUkmM4OWaRTM60
+	P0vTEAu2vOuUfFV0Bo2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6pfh-003hcd-7a; Fri, 23 Jul 2021 07:32:37 +0000
+	id 1m6pfe-003hZy-7s; Fri, 23 Jul 2021 07:32:34 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6pfb-003hUu-CB
+ id 1m6pfb-003hUv-C6
  for linux-rockchip@lists.infradead.org; Fri, 23 Jul 2021 07:32:33 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m6pfV-0003dj-8k; Fri, 23 Jul 2021 09:32:25 +0200
+ id 1m6pfW-0003dj-E0; Fri, 23 Jul 2021 09:32:26 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: mchehab@kernel.org,
 	hverkuil-cisco@xs4all.nl
 Cc: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
- heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org
-Subject: [PATCH v7 0/10] rkisp1 support for px30
-Date: Fri, 23 Jul 2021 09:32:11 +0200
-Message-Id: <20210723073221.1276358-1-heiko@sntech.de>
+ heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ Rob Herring <robh@kernel.org>
+Subject: [PATCH v7 03/10] dt-bindings: media: rkisp1: document different irq
+ possibilities
+Date: Fri, 23 Jul 2021 09:32:14 +0200
+Message-Id: <20210723073221.1276358-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210723073221.1276358-1-heiko@sntech.de>
+References: <20210723073221.1276358-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_003231_524936_EF20A70C 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20210723_003231_462719_AF6AC6DD 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,71 +79,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the slightly different v12
-variant of the ISP used for example in the px30 soc.
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-changes in v7:
-- address comments from Laurent
-  * some constifying
-  * rst document detailing version differences
-- add received Acks/Reviews
+Some variants have one irq signaling all of MI, MIPI and ISP events
+while some rkisp1 variants use separate irqs for each.
 
-changes in v6:
-- camera compatible in px30 binding example (Rob's bot)
-- move a last wrong positionen constant define (a v12 addition
-  should not be added in the v10-prefix change) (Dafna)
-- rename size to clk_size in match-data struct (Dafna)
+Adapt the binding to handle both cases.
 
-changes in v5:
-- handle interrupt-names as conditional required property (Dafna)
-- add second example for showing interrupt-names (Dafna)
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/media/rockchip-isp1.yaml         | 45 +++++++++++++------
+ 1 file changed, 31 insertions(+), 14 deletions(-)
 
-changes in v4:
-- clean up multi-irq case (Dafna)
-  Now each variant can have a list of interrupts
-  and their respective handlers, with or without
-  interrupt-names
-
-changes in v3:
-- add necessary binding additions
-- fix pclk naming in binding
-- move v12 clk_ctrl register bits to v12 addition patch
-- fix rebase artefact with hst_enable
-
-changes in v2 (from rfc):
-- split out phy patch into a separate series
-- drop dts patches for now
-- split v12 addition and v10 prefixes into separate patches
-  to enable easier review (Dafna)
-- remove {stats,params}_config structs, we can just use the
-  correct constant (Dafna)
-- adapt to styling comments from Dafna and Helen
-- add patch to remove the unused irq variable in struct rkisp
-
-Heiko Stuebner (10):
-  media: rockchip: rkisp1: remove unused irq variable
-  dt-bindings: media: rkisp1: fix pclk clock-name
-  dt-bindings: media: rkisp1: document different irq possibilities
-  media: rockchip: rkisp1: allow separate interrupts
-  media: rockchip: rkisp1: make some isp-param functions variable
-  media: rockchip: rkisp1: make some isp-stats functions variable
-  media: rockchip: rkisp1: add prefixes for v10 specific parts
-  media: rockchip: rkisp1: add support for v12 isp variants
-  dt-bindings: media: rkisp1: document px30 isp compatible
-  media: rockchip: rkisp1: add support for px30 isp version
-
- .../bindings/media/rockchip-isp1.yaml         | 114 +++-
- .../driver-api/media/drivers/rkisp1.rst       |  43 ++
- .../platform/rockchip/rkisp1/rkisp1-capture.c |   9 +-
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  44 +-
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  81 ++-
- .../platform/rockchip/rkisp1/rkisp1-isp.c     |  29 +-
- .../platform/rockchip/rkisp1/rkisp1-params.c  | 557 ++++++++++++++----
- .../platform/rockchip/rkisp1/rkisp1-regs.h    | 406 ++++++++-----
- .../platform/rockchip/rkisp1/rkisp1-stats.c   | 107 +++-
- 9 files changed, 1093 insertions(+), 297 deletions(-)
- create mode 100644 Documentation/driver-api/media/drivers/rkisp1.rst
-
+diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+index 2f8f0625d22e..14ac5730b377 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+@@ -21,7 +21,14 @@ properties:
+     maxItems: 1
+ 
+   interrupts:
+-    maxItems: 1
++    minItems: 1
++    maxItems: 3
++
++  interrupt-names:
++    items:
++      - const: isp
++      - const: mi
++      - const: mipi
+ 
+   clocks:
+     minItems: 3
+@@ -90,19 +97,29 @@ required:
+   - power-domains
+   - ports
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        const: rockchip,rk3399-cif-isp
+-then:
+-  properties:
+-    clocks:
+-      minItems: 3
+-      maxItems: 4
+-    clock-names:
+-      minItems: 3
+-      maxItems: 4
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3399-cif-isp
++    then:
++      properties:
++        clocks:
++          minItems: 3
++          maxItems: 4
++        clock-names:
++          minItems: 3
++          maxItems: 4
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,px30-cif-isp
++    then:
++      required:
++        - interrupt-names
+ 
+ additionalProperties: false
+ 
 -- 
 2.29.2
 
