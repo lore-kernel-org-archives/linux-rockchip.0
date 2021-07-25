@@ -1,88 +1,97 @@
-Return-Path: <SRS0=F11g=MP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=01nr=MR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D782FC432BE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 13:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18A4CC4338F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jul 2021 07:18:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9885F60EBD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jul 2021 13:47:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9885F60EBD
+	by mail.kernel.org (Postfix) with ESMTPS id B8B0460F11
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jul 2021 07:18:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B8B0460F11
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yv1TF6spmaiioEYPqTW5G6RR4Tnj9UxjYf+Cj9enwkw=; b=r/MC54Fzz56crE
-	ArK5Jaf//gzHykRrtp8Uml/vtLkco+37GPfNIPp7Un/tQJblaLmazYO8ZyvasFRG4WbDxTA/19UGn
-	fYgueDrbs2L+vrreLQSgTn0x5iNf8oDaDdIgqJnFF3LljLICrkZ17Pp/Ff+yoPn9qDim7fNcySXtm
-	/Qgdwi1viS5MiHghO+WB8EdwRr/rP3b6Wvl0fg6xRIExl3k1x4SEbJ07hqTmS2C+XUFekbtQZ7gdd
-	eSwzXNZt6J/so9DdKS1y7YwMjpjxY97q2dMKfJAwQs1m8g3R4sgQxT/hZDcbordLZV7bhDkmQYweL
-	bTBdPyajCRUotEQn9hKA==;
+	List-Owner; bh=U1BY+HQdUDjrtbzipllXsRSZ1QxnBNJQnZJZtGZ3vVg=; b=dcHnVUY8MtOtuK
+	N+Z5QJtv8X3USs8IkcmKl9b+AupfOLOBqD1Jex3Oqz/znD6Q0lyIgn0Hr3gApq4zhF5CqNLDsEOHu
+	Bg2QVwLpjqi5sZKHEpn4ptYO+wuaLQuBZ/ZQyj+s9aD9hfT0/Wsa9z8DtAJo5KpWUAbcndWlYJMMk
+	qXRaDKuw2VTSfVitQJv71Kbw48FOWGwqKbAs1wpvCJcAMe7Gm6hGt66JqiMrOqYH8MIogqxrXJBQR
+	LPj6QJqV6hY82fHUgeI0BuANXrOGAcBdlzijZ6mNU8itow3loZRQZ3spC9tjllJf3bofTKiuOjoLB
+	PKlU2DYd2ASwS3hqcjjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6vWh-004uSK-E5; Fri, 23 Jul 2021 13:47:43 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1m7YOq-008Kg6-UZ; Sun, 25 Jul 2021 07:18:12 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6vWe-004uQx-Ll
- for linux-rockchip@lists.infradead.org; Fri, 23 Jul 2021 13:47:42 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id w17so2355988ybl.11
- for <linux-rockchip@lists.infradead.org>; Fri, 23 Jul 2021 06:47:40 -0700 (PDT)
+ id 1m7YOn-008KfK-Ot; Sun, 25 Jul 2021 07:18:11 +0000
+Received: by mail-ed1-x534.google.com with SMTP id x14so2370756edr.12;
+ Sun, 25 Jul 2021 00:18:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AclrNr9DriONd9uxnMokdBW1rOGOgyBR/Fi4Kz2y6rY=;
- b=SaV31Lrli/1acnfLkCpI6k9LxZX/0RCIysvoX6qtwA8lSWc1/nbOJ84tgsW/H6qKQY
- N37UjrVL4Z2a/aSoykdxaHZTsI4aEcAVBE1JkDwkphBFEPJFtwEYJA03ZEXjJAxxbISp
- SNVde+TuZexYyp5BgXi5VRs3zfmC15bGC/y2i1iQakMFrhyBrL/HR0r2nFvVH0Dex1Th
- TuImrn70HPSC0BQ7vHPDkSBgqIZEoiaAYJaBV1/5LbBXonuhoTvNUaYW9o+j7mvLzO0A
- oMUyfNOjyrtRYjWNLt7K6e2gdh6y+AMopqOLxrM55HwslDlKObktA5guQlt/iMYt6lJP
- tXsA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=u/kv+qiWF03A7w7M6dF1ZmKxWsFD09boQ1cuGR0P9Tw=;
+ b=IJ0jakbLPBa6zHAcGvf7woKndogt6phHRl9SQRxUZRuBuDScZXtcvf3DqfS8IqEZq/
+ 2HOkVxd6YKuTC+7hRAaonCv3L6h9SbZlPk8WyXLW7t3lpieKqFSTBfrURe7TuOXMyU/A
+ 4wrmtsB6D50hB1lkbbUKOoIQomgjMs1P1AAzn57332uKM853f0fGDKpJRllIidSNjfl8
+ xDQSMT0qaMzBFq8WwsVJloqPBHAWWyh3NqMV0Y88MH1/06P0GNcxaTT5tSRwRMMjBKIN
+ vqeONvEneuLolCL/bJP87bM1Q+WNCVHPQw+rgIkqg1ae9WVs9fxcPgmTsmYY+8C9tv6A
+ fRAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AclrNr9DriONd9uxnMokdBW1rOGOgyBR/Fi4Kz2y6rY=;
- b=p8N4zhDtfUd+MFAzJaleNehd2XXf8XyfxFFHHM40qAbCLn0rQh/29u7cKWMXkQmlb2
- QRmc465Rue/qjkoK+5vYZDuaR9wqCn19gIPOIwznZd983ukGCm1fvHB5b/qX02Y2Ny2V
- IVSCCYaB50+CWEqvHJKlzvS7BI1fFYLr0UNc1B9s0DANVQgDrziv/VbT6ubPMYKWPzM5
- 62T0R/P7bb0Hp4KdSXfbzEW1r0vGBNBMlpU3qsbh8ib6GN9p9ZLFVnBOob6cpVp6y1SU
- m0ATJqoskPI7FuWKPYPRUrdHRRInqIKMXrwCeWsw68QMbsyyE3rI7d4vZ1aaYCnHZLJh
- RypA==
-X-Gm-Message-State: AOAM532BWeBO6giECqxLo/WgeLHMl0rajDvNrKCRYjTefUjOdPRSYkWw
- nByKbRh1N6UAQJVDdnWOHpewhdWQoNo/EOD6PBk=
-X-Google-Smtp-Source: ABdhPJzYZJSPB0k1FaivnOBEYX+lKQSvu0AiuyqhCs6NJX5j7HTyd+efsHOu4YQKP45BUt6yV8tGGtChtcjaoW2EwSs=
-X-Received: by 2002:a25:ad62:: with SMTP id l34mr6580499ybe.457.1627048059209; 
- Fri, 23 Jul 2021 06:47:39 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=u/kv+qiWF03A7w7M6dF1ZmKxWsFD09boQ1cuGR0P9Tw=;
+ b=G04C9voA5GhhPbgg3RcSTJTlDbtCj5W1srOExicOshcH28TclQvjl+88LRUMwVXJcC
+ G82cR88gKAElvzJy+kZSbq7JFPpU/mwglhY2JNvZ3apxVLnoZdq4dFOQQzdlUYwBWP+H
+ kksdQlOshyIHlnbkeEu67mzKoYly2yfenzmvRyZojdMcn2WCPot2sspAO+AfRvxdm2sW
+ tVHx9TCvWuENac/6HX+tClVJw92ZkdvE3eQsZyXHqJThguAFgfQmi4QNIojz+TbaIO+6
+ u2DwXLGEVtQndyKcPQv1gqeHTBbgUsMtzPfNeyMc61hTmlehtlC2O/D2B2JM/zLuiWyR
+ XwGA==
+X-Gm-Message-State: AOAM533g1w7o54HoyzJQwgjxqp8h3j2sOFAwhPjBDzLjlWb5XVrS2+P8
+ /+O/IgcnOC4Jb/h1wnjroMA=
+X-Google-Smtp-Source: ABdhPJw3Na5dUkmVYn4w0+i5JarsE3BXeCTQt7OFRukWTxiF3T7/aECyfnd/lu3p+R8DRy9EnqEjaA==
+X-Received: by 2002:aa7:ccc1:: with SMTP id y1mr14734881edt.321.1627197488366; 
+ Sun, 25 Jul 2021 00:18:08 -0700 (PDT)
+Received: from kista.localnet (cpe-86-58-46-198.static.triera.net.
+ [86.58.46.198])
+ by smtp.gmail.com with ESMTPSA id q8sm13746271edv.95.2021.07.25.00.18.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 25 Jul 2021 00:18:07 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
+ mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com, jc@kynesim.co.uk,
+ nicolas@ndufresne.ca, cphealy@gmail.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: kernel@pengutronix.de, linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v1 1/2] media: hevc: Add scaling matrix control
+Date: Sun, 25 Jul 2021 09:18:06 +0200
+Message-ID: <2286473.lRjZ1T8nZx@kista>
+In-Reply-To: <20210715151223.656453-2-benjamin.gaignard@collabora.com>
+References: <20210715151223.656453-1-benjamin.gaignard@collabora.com>
+ <20210715151223.656453-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20210618062449.1067106-1-jay.xu@rock-chips.com>
- <CACRpkdYGyy+tE4_xddJWxWUQpPea0bc5CUTBfp2RtnJfQ-2t_w@mail.gmail.com>
- <CACRpkdadb0=KD+ZXQGNVDUBDYHUsvP94dSgPzfwhUbwjvw_6Wg@mail.gmail.com>
-In-Reply-To: <CACRpkdadb0=KD+ZXQGNVDUBDYHUsvP94dSgPzfwhUbwjvw_6Wg@mail.gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 23 Jul 2021 09:47:28 -0400
-Message-ID: <CAMdYzYrG0mKJmnox8EK2T=KS2t=V+-LxDCX4rpDF_vkspWingw@mail.gmail.com>
-Subject: Re: [PATCH v6 0/9] gpio-rockchip driver
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Jianqun Xu <jay.xu@rock-chips.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, 
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>, Kever Yang <kever.yang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_064740_754487_E381410C 
-X-CRM114-Status: GOOD (  22.22  )
+X-CRM114-CacheID: sfid-20210725_001809_871231_52985033 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,66 +104,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 23, 2021 at 6:15 AM Linus Walleij <linus.walleij@linaro.org> wrote:
->
-> On Fri, Jul 23, 2021 at 12:07 PM Linus Walleij <linus.walleij@linaro.org> wrote:
-> > On Fri, Jun 18, 2021 at 8:24 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
-> >
-> > > Separate gpio driver from pinctrl driver, and support gpio v2 controller.
-> > >
-> > > Jianqun Xu (8):
-> > >   pinctrl/rockchip: always enable clock for gpio controller
-> > >   pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
-> > >   pinctrl/rockchip: add pinctrl device to gpio bank struct
-> > >   gpio/rockchip: add driver for rockchip gpio
-> > >   gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
-> > >   gpio/rockchip: support next version gpio controller
-> > >   gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
-> > >   pinctrl/rockchip: drop the gpio related codes
-> > >
-> > > Liang Chen (1):
-> > >   dt-bindings: gpio: change items restriction of clock for
-> > >     rockchip,gpio-bank
-> >
-> > I have applied the series to an immutable branch in the pinctrl tree:
-> > https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl.git/log/?h=ib-rockchip-split
-> > Then I pulled that into devel.
-> >
-> > Bartosz: if you want you can pull this into the GPIO tree as well
-> > (makes it possible to continue work on drivers/gpio/gpio-rockchip.c
-> > and avoids clashes in Kconfig and Makefile)
->
-> Oops I saw there is still discussion about some of the patches
-> and found a bug myself. Pulled this out again and deleted the
-> branch.
->
-> See you again in v7 :D
-
-Good Morning,
-
-I have a patch ready to fix loading the new gpio driver with new
-device trees that are missing the named gpio banks.
-This also fixes loading on the rk3568, which need this driver for gpio support.
-I will rebase it to the v7 when it drops (hopefully soon).
-
-Very Respectfully,
-Peter Geis
-
->
-> Yours,
-> Linus Walleij
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RG5lIMSNZXRydGVrLCAxNS4ganVsaWogMjAyMSBvYiAxNzoxMjoyMiBDRVNUIGplIEJlbmphbWlu
+IEdhaWduYXJkIG5hcGlzYWwoYSk6Cj4gSEVWQyBzY2FsaW5nIGxpc3RzIGFyZSB1c2VkIGZvciB0
+aGUgc2NhbGluZyBwcm9jZXNzIGZvciB0cmFuc2Zvcm0KPiBjb2VmZmljaWVudHMuCj4gVjRMMl9I
+RVZDX1NQU19GTEFHX1NDQUxJTkdfTElTVF9FTkFCTEVEIGhhcyB0byBzZXQgd2hlbiB0aGV5IGFy
+ZQo+IGVuY29kZWQgaW4gdGhlIGJpdHN0cmVhbS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1p
+biBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgLi4u
+L21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0ICAgICAgICAgICAgIHwgNTcgKysrKysrKysr
+KysrKysrKysrKwo+ICAuLi4vbWVkaWEvdjRsL3ZpZGlvYy1xdWVyeWN0cmwucnN0ICAgICAgICAg
+ICAgfCAgNiArKwo+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWNvcmUuYyAg
+ICAgfCAgNiArKwo+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYyAg
+ICAgfCAgNCArKwo+ICBpbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCAgICAgICAgICAgICAgICAg
+ICAgfCAxMSArKysrCj4gIDUgZmlsZXMgY2hhbmdlZCwgODQgaW5zZXJ0aW9ucygrKQoKTEdUTSwg
+dGhpcyBpcyBkZXBlbmRlbmN5IGZvciBDZWRydXMgcGF0Y2hlcyBJIHNlbnQgc29tZSB0aW1lIGFn
+by4KClJldmlld2VkLWJ5OiBKZXJuZWogU2tyYWJlYyA8amVybmVqLnNrcmFiZWNAZ21haWwuY29t
+PgoKQmVzdCByZWdhcmRzLApKZXJuZWoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
