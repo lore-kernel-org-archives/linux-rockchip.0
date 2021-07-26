@@ -2,62 +2,57 @@ Return-Path: <SRS0=Sv+h=MS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFABBC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:04:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2C47C4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:05:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 541DC60F38
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:04:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 541DC60F38
+	by mail.kernel.org (Postfix) with ESMTPS id 4ACD260F38
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:05:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4ACD260F38
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c8b+3YftFfg2Sky1+64CLzrJOzj48YzSfghj8WiB768=; b=1do4k4aJTaFlTl
-	tmW4EUsbWRyn+w2bkWEPc4Foj69sAkfuLZk3rdLsvGwx65NGtS41oR/QnYRiWqlFKw8ngjn1dV9Pk
-	XeKso3Evqpdzi2p3iOVeS+JK6voNFISFuXDMWjYHhiQFbuRsMdwrqXAvUw5xinvsQ6ksQlZOjqKbv
-	wKZPGhhSOgqSpWQk9BxfKKmFq2uph8YYOYt9DkIwp7vxpLLnHvLIbvkcglXLi5KVIZzgLyp4NV8y9
-	8Y1O9+PGjgDGDKtW80hS9Omkl8V8oIf2sOXsnybEJQ90G3chvp7aE0HztUetwHRz8WW3hL8yYP4Z6
-	/QneGFw1zea6OP0FrEvw==;
+	List-Owner; bh=bBMM2ON3Edd/DtUAxcz+jXOuhDPqj9QBwUS6muSUXyk=; b=EX+gQ7gjuOpTYD
+	6O0v5KQaBI23RipsF1darc7+IHlN1SWF/lcG9r08dS6oOEe5PXwOlB5ULsXvuomLsyNvdk/vA9JKt
+	YfmzTjChOmfq3DTpqqGrboxNrEuHyYMIgD7qu2UX5NFsdQtVoiXquLT630vDUKUI8CtAIv4WyRsPq
+	/lA3vQdnBL3I9ADnlhImbIs7EaFuKd5AkKw2NtGdVOPKD3j3b9qoWL8E5oyfJKn1cs66qms9RJ9eX
+	/qo8mLDYI/OH4X3kHVhBZXLNgAQV1Ls7/xxT8Df/PxtDzK9lrFiwbTP0Cc6F1ggaLIr8N1pcz5ubd
+	m3VWEzyLOIPRfjhalAzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7wXC-00AL3S-P3; Mon, 26 Jul 2021 09:04:26 +0000
+	id 1m7wYH-00ALNs-1O; Mon, 26 Jul 2021 09:05:33 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7wWp-00AKzB-C3; Mon, 26 Jul 2021 09:04:04 +0000
+ id 1m7wY4-00ALJv-1U; Mon, 26 Jul 2021 09:05:21 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
+ helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m7wWl-0001LU-2a; Mon, 26 Jul 2021 11:03:59 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: thierry.reding@gmail.com,
-	lee.jones@linaro.org
-Cc: u.kleine-koenig@pengutronix.de, robh+dt@kernel.org, cl@rock-chips.com,
- pgwipeout@gmail.com, xxm@rock-chips.com, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 2/2] arm64: dts: rockchip: add pwm nodes for rk3568
-Date: Mon, 26 Jul 2021 11:03:55 +0200
-Message-Id: <20210726090355.1548483-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210726090355.1548483-1-heiko@sntech.de>
-References: <20210726090355.1548483-1-heiko@sntech.de>
+ id 1m7wY2-0001MC-VM; Mon, 26 Jul 2021 11:05:18 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: cl@rock-chips.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kever.yang@rock-chips.com
+Subject: Re: [PATCH 09/10] arm64: dts: rockchip: add pwm nodes for rk3568
+Date: Mon, 26 Jul 2021 11:05:18 +0200
+Message-ID: <5809323.72vocr9iq0@diego>
+In-Reply-To: <20210622102907.99242-1-heiko@sntech.de>
+References: <20210622102907.99242-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_020403_455104_B1F35076 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20210726_020520_187797_4B0D9B48 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,212 +70,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Liang Chen <cl@rock-chips.com>
+Am Dienstag, 22. Juni 2021, 12:29:06 CEST schrieb Heiko Stuebner:
+> From: Liang Chen <cl@rock-chips.com>
+> 
+> Add the pwm controller nodes to the core rk3568 dtsi.
+> 
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Add the pwm controller nodes to the core rk3568 dtsi.
+moved over to
+https://lore.kernel.org/r/20210726090355.1548483-1-heiko@sntech.de
 
-Signed-off-by: Liang Chen <cl@rock-chips.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 176 +++++++++++++++++++++++
- 1 file changed, 176 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 322971318d5a..a424edc81a9e 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -251,6 +251,50 @@ uart0: serial@fdd50000 {
- 		status = "disabled";
- 	};
- 
-+	pwm0: pwm@fdd70000 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfdd70000 0x0 0x10>;
-+		clocks = <&pmucru CLK_PWM0>, <&pmucru PCLK_PWM0>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm0m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm1: pwm@fdd70010 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfdd70010 0x0 0x10>;
-+		clocks = <&pmucru CLK_PWM0>, <&pmucru PCLK_PWM0>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm1m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm2: pwm@fdd70020 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfdd70020 0x0 0x10>;
-+		clocks = <&pmucru CLK_PWM0>, <&pmucru PCLK_PWM0>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm2m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm3: pwm@fdd70030 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfdd70030 0x0 0x10>;
-+		clocks = <&pmucru CLK_PWM0>, <&pmucru PCLK_PWM0>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm3_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
- 	pmu: power-management@fdd90000 {
- 		compatible = "rockchip,rk3568-pmu", "syscon", "simple-mfd";
- 		reg = <0x0 0xfdd90000 0x0 0x1000>;
-@@ -738,6 +782,138 @@ saradc: saradc@fe720000 {
- 		status = "disabled";
- 	};
- 
-+	pwm4: pwm@fe6e0000 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6e0000 0x0 0x10>;
-+		clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm4_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm5: pwm@fe6e0010 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6e0010 0x0 0x10>;
-+		clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm5_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm6: pwm@fe6e0020 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6e0020 0x0 0x10>;
-+		clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm6_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm7: pwm@fe6e0030 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6e0030 0x0 0x10>;
-+		clocks = <&cru CLK_PWM1>, <&cru PCLK_PWM1>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm7_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm8: pwm@fe6f0000 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6f0000 0x0 0x10>;
-+		clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm8m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm9: pwm@fe6f0010 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6f0010 0x0 0x10>;
-+		clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm9m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm10: pwm@fe6f0020 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6f0020 0x0 0x10>;
-+		clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm10m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm11: pwm@fe6f0030 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe6f0030 0x0 0x10>;
-+		clocks = <&cru CLK_PWM2>, <&cru PCLK_PWM2>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm11m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm12: pwm@fe700000 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe700000 0x0 0x10>;
-+		clocks = <&cru CLK_PWM3>, <&cru PCLK_PWM3>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm12m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm13: pwm@fe700010 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe700010 0x0 0x10>;
-+		clocks = <&cru CLK_PWM3>, <&cru PCLK_PWM3>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm13m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm14: pwm@fe700020 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe700020 0x0 0x10>;
-+		clocks = <&cru CLK_PWM3>, <&cru PCLK_PWM3>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm14m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
-+	pwm15: pwm@fe700030 {
-+		compatible = "rockchip,rk3568-pwm", "rockchip,rk3328-pwm";
-+		reg = <0x0 0xfe700030 0x0 0x10>;
-+		clocks = <&cru CLK_PWM3>, <&cru PCLK_PWM3>;
-+		clock-names = "pwm", "pclk";
-+		pinctrl-0 = <&pwm15m0_pins>;
-+		pinctrl-names = "active";
-+		#pwm-cells = <3>;
-+		status = "disabled";
-+	};
-+
- 	pinctrl: pinctrl {
- 		compatible = "rockchip,rk3568-pinctrl";
- 		rockchip,grf = <&grf>;
--- 
-2.29.2
 
 
 _______________________________________________
