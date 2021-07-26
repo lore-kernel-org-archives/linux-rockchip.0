@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71854C4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39BE2C4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:08:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16CC760F22
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:06:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 16CC760F22
+	by mail.kernel.org (Postfix) with ESMTPS id B1CEB60F52
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:08:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B1CEB60F52
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,47 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kwXs11qMmZf2AMiKGT1JaWSHikugCox+rgReNjp1Y4o=; b=isadA1VmUFqgKQ
-	uG2jzSPxGZ8mUI5Y9ZymzMLqZTqlXRBcTKs7XN+mLg4TQLXJrsGDglU7wiijVyqtwMiIngcuR4GPC
-	oM2xRiYTHv2qsoz61DDLpnuEO1FRYy5II/0TdTvMqHf/opKcntEEQ6dEyaALK1ro8KtHRPeYp+fQj
-	jA8w3WhpFgX9uc3rlZltevvQaAcH+EoJ8l9Aj/O4rMCxZnFwHmR6F9t6gtSn+01o/M4H7m8TpRa0n
-	oT7AoZBoxejMTguGk/yyfNihb+etMxhxFD15axfJJ5nd16K09iHg5AiCqKHaMfsO7FykoMnwVBI4N
-	1cip84sfuT8v6AfNELJw==;
+	List-Owner; bh=FIhWqMxwgHkLnczwzjJtH5sgvFBpn6nw/aalLyRPoXM=; b=GnWU+dGB8GL8vO
+	eVqrVuJEaOTXf4Py9s+EJgegknF9CkiXhMlD0gBVV4yraId8lQY+lwv8W7m6eWxwgaLy5nYXsTV3T
+	AqXojAQYXTB93FEw0LXYX6P224Nm7qLGR0S2utdTy6nSJ39cW3VnDrdgOARQUIdykMZPozmIiugTU
+	muinSvFbKGeOH0tcAKf2BxViFb1/CJAjDznctb/cim9xNUX5XXguVXJ1AYnbVEzwoZ5aV04uLZQr0
+	X/SomS+vc/YVzJV6y1kpKwwUCROQuS12wsNxtKHvaeoW4TtrE6/lVxzEq69oQuZbWdg+QaOdMPZq7
+	B0FhpPqxgVSrNuE08DTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7wYf-00ALXi-OI; Mon, 26 Jul 2021 09:05:57 +0000
+	id 1m7wbN-00AMah-Vx; Mon, 26 Jul 2021 09:08:46 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7wYR-00ALSL-Bu; Mon, 26 Jul 2021 09:05:45 +0000
+ id 1m7wbB-00AMXi-AC; Mon, 26 Jul 2021 09:08:34 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m7wYL-0001MM-Tu; Mon, 26 Jul 2021 11:05:37 +0200
+ id 1m7wb8-0001Nq-Qe; Mon, 26 Jul 2021 11:08:30 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: cl@rock-chips.com
-Cc: robh+dt@kernel.org, jagan@amarulasolutions.com, wens@csie.org,
- uwe@kleine-koenig.org, mail@david-bauer.net, jbx6244@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, jensenhuang@friendlyarm.com,
- michael@amarulasolutions.com, cnsztl@gmail.com, devicetree@vger.kernel.org,
- ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, gregkh@linuxfoundation.org,
- linux-serial@vger.kernel.org, linux-i2c@vger.kernel.org, jay.xu@rock-chips.com,
- shawn.lin@rock-chips.com, david.wu@rock-chips.com, zhangqing@rock-chips.com,
- huangtao@rock-chips.com, cl@rock-chips.com, wim@linux-watchdog.org,
- linux@roeck-us.net, jamie@jamieiles.com, linux-watchdog@vger.kernel.org,
- maz@kernel.org
-Subject: Re: [PATCH v5 1/4] dt-bindings: pwm: rockchip: add description for
- rk3568
-Date: Mon, 26 Jul 2021 11:05:36 +0200
-Message-ID: <6196734.7s5MMGUR32@diego>
-In-Reply-To: <20210622020517.13100-2-cl@rock-chips.com>
-References: <20210622020517.13100-1-cl@rock-chips.com>
- <20210622020517.13100-2-cl@rock-chips.com>
+To: thierry.reding@gmail.com, lee.jones@linaro.org
+Cc: u.kleine-koenig@pengutronix.de, robh+dt@kernel.org, cl@rock-chips.com,
+ pgwipeout@gmail.com, xxm@rock-chips.com, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: pwm: rockchip: add description for rk3568
+Date: Mon, 26 Jul 2021 11:08:29 +0200
+Message-ID: <5607670.PIDvDuAF1L@diego>
+In-Reply-To: <20210726090355.1548483-1-heiko@sntech.de>
+References: <20210726090355.1548483-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_020543_449009_4D97947B 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20210726_020833_401152_31FFDC80 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,29 +67,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 22. Juni 2021, 04:05:14 CEST schrieb cl@rock-chips.com:
+Am Montag, 26. Juli 2021, 11:03:54 CEST schrieb Heiko Stuebner:
 > From: Liang Chen <cl@rock-chips.com>
-> 
+> =
+
 > add "rockchip,rk3568-pwm", "rockchip,rk3328-pwm" for pwm nodes on
 > a rk3568 platform to pwm-rockchip.yaml.
-> 
-> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> =
 
-I've picked this for a new separate patch submission to finalize adding pwm
-for rk3568 in
-https://lore.kernel.org/r/20210726090355.1548483-1-heiko@sntech.de
+> Signed-off-by: Liang Chen <cl@rock-chips.com>
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+
+Sorry, forgot to read the slightly longer original reply thread.
+The binding is already:
+
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+Acked-by: Rob Herring <robh@kernel.org>
+
+
+And I guess the pwm maintainers would be responsible for picking
+up the binding addition and I will pick the devicetree addition after that.
+
+
+Heiko
 
 
 > ---
+> The core rk3568 support was mostly applied, leaving out the pwm
+> parts. So I've separated the binding and dtsi patch out
+> into its owm series, so it can be better reviewed.
+> =
+
 >  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
 >  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> =
+
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Do=
+cumentation/devicetree/bindings/pwm/pwm-rockchip.yaml
 > index 5596bee70509..81a54a4e8e3e 100644
 > --- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
 > +++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
@@ -108,9 +118,11 @@ https://lore.kernel.org/r/20210726090355.1548483-1-heiko@sntech.de
 >                - rockchip,rk3308-pwm
 > +              - rockchip,rk3568-pwm
 >            - const: rockchip,rk3328-pwm
->  
+>  =
+
 >    reg:
-> 
+> =
+
 
 
 
