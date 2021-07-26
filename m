@@ -2,61 +2,60 @@ Return-Path: <SRS0=Sv+h=MS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E622CC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 08:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23ECDC4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:04:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8345160720
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 08:39:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8345160720
+	by mail.kernel.org (Postfix) with ESMTPS id 8FCCB60D07
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 09:04:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8FCCB60D07
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TqjCkFfiTcvGLfBffZbNZAGD21r0peixP2/t+x7UZPU=; b=psA7vsGyUvFA/N
-	prAikFtukkWFyf2DiUWHl6sW8kuVLjVtcGkqu5/L59zRcAF1YRKvVbIUiscVxj/hxWFII+ylDns9V
-	5qrSEpcbSoMYjcG/B82hEOZCj4J9D6k3A3MjYxXj0sO55m9ipqPJMjrgX9VT/KKwAZGXQzsw3fIFF
-	5Lv62b0ROWEmypxd5tmDGwGgdWJZ8wOK1Ugb1k0isNUP9zSMC/BD+wkKOusWJ+by7QBTTOX3ZL4zh
-	h2va6ZYuA8Ibl361SOYhKEfV4LJ1Dt5qjC5Gwzn13C6npvo0a0y9TpvxmfEOkOs4xykddMA7QYi0/
-	TTMa7LNDCsNU418zGsSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+fm8M3pdEGMCCAHvQe65MBO6/udeISX6gfD2aF8reXM=; b=0nOschz8SigauK
+	2E7v7n0pJIt93lipWoM6NhyRFKN3nTyK09WmctKffoXJnuecskzzlsw87ShFpB/Nx/KoCYCNcIGpd
+	Ze5D89+rbW+OgEDOehRsJjmq7PTw9j2cl634+yVvMcUviZzq3kKcqbdKuliM3ztoD8CWD2arBQw2M
+	hynWsfXDeJuQE3iZ3sH7j2M7wZ22h1i2oT23UK8c7cXFJdx3gAKwVFTsNle12n17w+zsDMpHSBwtR
+	2+PIlya47IK5sYVjv2eMxzcONnLWuF2o4RscufZrIxqup8G9s76kWvBap4GrViCuRAD0GJcBJdAf5
+	zUNUChl2AdwPErnmeW9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7w9H-00AG18-CU; Mon, 26 Jul 2021 08:39:43 +0000
+	id 1m7wX2-00AL1K-1f; Mon, 26 Jul 2021 09:04:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7w8o-00AFk0-TW; Mon, 26 Jul 2021 08:39:16 +0000
+ id 1m7wWp-00AKzA-2e; Mon, 26 Jul 2021 09:04:04 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m7w8l-0001Fy-Ue; Mon, 26 Jul 2021 10:39:12 +0200
+ id 1m7wWk-0001LU-Lc; Mon, 26 Jul 2021 11:03:58 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>,
-	cl@rock-chips.com
-Cc: linux-arm-kernel@lists.infradead.org, kever.yang@rock-chips.com,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH 09/10] arm64: dts: rockchip: add pwm nodes for
- rk3568
-Date: Mon, 26 Jul 2021 10:39:09 +0200
-Message-Id: <162728868604.1545568.2785277023871790332.b4-ty@sntech.de>
+To: thierry.reding@gmail.com,
+	lee.jones@linaro.org
+Cc: u.kleine-koenig@pengutronix.de, robh+dt@kernel.org, cl@rock-chips.com,
+ pgwipeout@gmail.com, xxm@rock-chips.com, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 1/2] dt-bindings: pwm: rockchip: add description for rk3568
+Date: Mon, 26 Jul 2021 11:03:54 +0200
+Message-Id: <20210726090355.1548483-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210622102907.99242-1-heiko@sntech.de>
-References: <20210622102907.99242-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_013915_045558_1498CDF3 
-X-CRM114-Status: UNSURE (   9.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210726_020403_164032_8DB0BC34 
+X-CRM114-Status: GOOD (  12.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +73,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Jun 2021 12:29:06 +0200, Heiko Stuebner wrote:
-> Add the pwm controller nodes to the core rk3568 dtsi.
+From: Liang Chen <cl@rock-chips.com>
 
-Applied, thanks!
+add "rockchip,rk3568-pwm", "rockchip,rk3328-pwm" for pwm nodes on
+a rk3568 platform to pwm-rockchip.yaml.
 
-[10/10] arm64: dts: rockchip: add watchdog to rk3568
-(->2/2) commit: 7ca30712c3a82ac7517d9fd65aeec4739a463e24
+Signed-off-by: Liang Chen <cl@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+The core rk3568 support was mostly applied, leaving out the pwm
+parts. So I've separated the binding and dtsi patch out
+into its owm series, so it can be better reviewed.
 
-Watchdog binding got applied for 5.14, so adapted the patch
-for the new rk356x.dtsi and applied that one.
+ Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-PWM still seems to need time.
-
-Best regards,
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+index 5596bee70509..81a54a4e8e3e 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
++++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+@@ -29,6 +29,7 @@ properties:
+           - enum:
+               - rockchip,px30-pwm
+               - rockchip,rk3308-pwm
++              - rockchip,rk3568-pwm
+           - const: rockchip,rk3328-pwm
+ 
+   reg:
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.29.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
