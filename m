@@ -1,61 +1,77 @@
-Return-Path: <SRS0=01nr=MR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Sv+h=MS=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 150F2C4338F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jul 2021 22:59:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1B86C432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 01:34:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EB5460E78
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jul 2021 22:59:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8EB5460E78
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 03EF86054F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jul 2021 01:34:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 03EF86054F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ukC5K7rTONjKPd8RF8kdLnxs7fMpP3EVweiV9fGPlGs=; b=MC3L3Qobx7Fq94
-	BI9I/P2JmEaNEGK9Eg7CF4IEV124KXLz3ZO1lBh0nzq/k3gbThj5brVKjer+BFhO2CCmaclOAF55+
-	s3dA9LJkJShfkQjFVZFJ52+cQvkcxJeoPHoDcVF4hyvJWzDIv742+pd/lvg9K7Zu3wni705Hep5cu
-	rEayv8DXvsDvwriQ21Z99grcey+dSeHYnk29G1wGm07NCBh+/lV73C8MNlAFU1dFxm5cVL4A9JAka
-	W/L2xBzWtUd9+FqNs+MN/haNobX2Q3HkPek9ts1S121iuYuhY/vNgooMvjz40htwOvQmr4xqJPlEv
-	e+gspLLXgtOHHhikqUvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6bi0bBauRcFAgcEBURlHeLqcwzsT0wE0ToVEzLDRIdg=; b=TIH8kfqZyrTnNL
+	VGaN7dJE7J+Z8J0oIWRUgr/T7W7D1LSRc3c6Nh+D90UfMTv/b7YlzbTpboCK8A1qjXTgZPaQjbeDo
+	sHytqZ0fj0VOtngc4H5HW6iGZSTJPNH2q809oglEx9rJvuW8Ippe5cKWsNmbPwdwsRE1lh6jQJoN9
+	iI4Z3h36LboGWy+ttuiAthsFUw0q2A0ls4b4tLIxA3l9em44fmzxegKZBT4n46v3tI4eoXJHWlzVg
+	8CZMlKwNc920IwoqaADIWw0023gyeStvvnd0yS87PpHaLMfzEbdlO0HZDUgTb1J7JKnh5BJqMD+fq
+	rELC9SUlgvUy53vjKSxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7n58-009DpN-7a; Sun, 25 Jul 2021 22:58:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1m7pVL-009NqX-IS; Mon, 26 Jul 2021 01:34:03 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7n4u-009Dkr-Tu; Sun, 25 Jul 2021 22:58:38 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m7n4o-0007er-IY; Mon, 26 Jul 2021 00:58:30 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- hjc@rock-chips.com, robh+dt@kernel.org, sebastian.fricke@posteo.net,
- linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com,
- helen.koike@collabora.com, ezequiel@collabora.com, cmuellner@linux.com
-Subject: Re: [PATCH v2 0/6] Support second Image Signal Processor on rk3399
-Date: Mon, 26 Jul 2021 00:58:29 +0200
-Message-ID: <7055305.V25eIC5XRa@diego>
-In-Reply-To: <20210210111020.2476369-1-heiko@sntech.de>
-References: <20210210111020.2476369-1-heiko@sntech.de>
+ id 1m7pVG-009Np4-II
+ for linux-rockchip@lists.infradead.org; Mon, 26 Jul 2021 01:34:00 +0000
+Received: from localhost (unknown [192.168.167.235])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 15574FAFA2;
+ Mon, 26 Jul 2021 09:33:49 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P25117T140689763460864S1627263227474860_; 
+ Mon, 26 Jul 2021 09:33:48 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <209d11b1e1cccf566a31837503ee6a56>
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: linus.walleij@linaro.org
+X-RCPT-COUNT: 9
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: linus.walleij@linaro.org,
+	heiko@sntech.de
+Cc: bgolaszewski@baylibre.com, robh+dt@kernel.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH v7 0/9] gpio-rockchip driver
+Date: Mon, 26 Jul 2021 09:33:36 +0800
+Message-Id: <20210726013345.1634442-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210725_155837_022470_D60D8A7B 
-X-CRM114-Status: GOOD (  22.91  )
+X-CRM114-CacheID: sfid-20210725_183358_889119_B6BC4FA8 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,47 +89,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 10. Februar 2021, 12:10:14 CEST schrieb Heiko Stuebner:
-> The rk3399 has two ISPs and right now only the first one is usable.
-> The second ISP is connected to the TXRX dphy on the soc.
-> 
-> The phy of ISP1 is only accessible through the DSI controller's
-> io-memory, so this series adds support for simply using the dsi
-> controller is a phy if needed.
-> 
-> That solution is needed at least on rk3399 and rk3288 but no-one
-> has looked at camera support on rk3288 at all, so right now
-> only implement the rk3399 specifics.
-> 
-> changes in v2:
-> - enable grf-clock also for init callback
->   to not break if for example hdmi is connected on boot
->   and disabled the grf clock during its probe
-> - add Sebastian's Tested-by
-> - add Rob's Ack for the phy-cells property
+Separate gpio driver from pinctrl driver, and support gpio v2 controller.
 
-finally found the time and applied patches 1-3 to drmmisc-next
-after fixing the alphabetical kconfig ordering Helen pointed out
-and also applied patches 4-6 to my rockchip tree for 5.15
+Jianqun Xu (8):
+  pinctrl/rockchip: always enable clock for gpio controller
+  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
+  pinctrl/rockchip: add pinctrl device to gpio bank struct
+  gpio/rockchip: add driver for rockchip gpio
+  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
+  gpio/rockchip: support next version gpio controller
+  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
+  pinctrl/rockchip: drop the gpio related codes
 
+Liang Chen (1):
+  dt-bindings: gpio: change items restriction of clock for
+    rockchip,gpio-bank
 
-> 
-> Heiko Stuebner (6):
->   drm/rockchip: dsi: add own additional pclk handling
->   dt-bindings: display: rockchip-dsi: add optional #phy-cells property
->   drm/rockchip: dsi: add ability to work as a phy instead of full dsi
->   arm64: dts: rockchip: add #phy-cells to mipi-dsi1
->   arm64: dts: rockchip: add cif clk-control pinctrl for rk3399
->   arm64: dts: rockchip: add isp1 node on rk3399
-> 
->  .../display/rockchip/dw_mipi_dsi_rockchip.txt |   1 +
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  39 ++
->  drivers/gpu/drm/rockchip/Kconfig              |   2 +
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 349 ++++++++++++++++++
->  4 files changed, 391 insertions(+)
-> 
-> 
+ .../bindings/gpio/rockchip,gpio-bank.yaml     |   5 +-
+ drivers/gpio/Kconfig                          |   8 +
+ drivers/gpio/Makefile                         |   1 +
+ drivers/gpio/gpio-rockchip.c                  | 771 +++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.c            | 909 +-----------------
+ drivers/pinctrl/pinctrl-rockchip.h            | 287 ++++++
+ 6 files changed, 1089 insertions(+), 892 deletions(-)
+ create mode 100644 drivers/gpio/gpio-rockchip.c
+ create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
 
+--
+v7:
+ - include <linux/gpio/driver.h> instead of <linux/gpio.h>
+ - use gpio align id instead of gpio-name
+
+v6:
+ - new gpio-driver first and then drop gpio from pinctrl
+ - reorder patches
+ - cherry-pick gpio dt-binding from chenliang
+
+v5:
+ - change to devel branch
+
+2.25.1
 
 
 
