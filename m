@@ -2,67 +2,68 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B471EC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 16:18:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F37E3C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 16:19:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FD1A60F0F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 16:18:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7FD1A60F0F
+	by mail.kernel.org (Postfix) with ESMTPS id B08A660F23
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 16:19:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B08A660F23
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=89SLrXa2yGA6WeZkWkzewVVaUpNS7pXtCCEgN21qz2I=; b=Qxr8vmbe3tRqMu
-	kkPtpxzcqw/r6wTMVv0aKfxLIoTJrpsae9u/8YUaEOGCynUTq3cvhnlE/trqBGQAOE0TBtgS5Dozi
-	NWWuCA3+dUOUOST6DIW5kh2yaiikBNl/+bKX1uHSchYA0yz9wvZtfZk/RZN/CcuK6qBl+yd/Tp/+f
-	NUh9qChCeRl4hTxymdLCrHSqJvT/ACcfggtfZdx1e50WIBwXMpPYd2Mx5wAREVDiIw6ZTH8By/OH9
-	TopojrFEvXHabrPM9jGYRioSWtXLA7q9dGQsEN/hlini+9Wyejg53D2rLMFMdlqh+FemqTDcrvY6/
-	6LJy34rYHmmUSzrmQN+g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N/TG4+Pba1dBa6niC6USHwF117GpYxlrzTOg2DMgQ1c=; b=nvIL5N77CD5THV
+	Iuw0IQWXYVc/dVJbyfBF41yyhoA/yYKvLW/U9imQfhAPxOstbn7ks/JlhiYNaJyXqCg6t1mjjMnZn
+	VBRT3naVsCLAj7IrnPdiBN+uePoLK6DqjxoUkbmXvI/cFo6vKFfKFjv4S5GZzvQm66SvoM4h6PyTe
+	0JafdIPv5EFlb8JaIfcVAnOm+ch/pljmdOoCQor4QGkYiwKSOktvOTZLJfupcG3uFhd6fqc7IKCgo
+	Don5R5L/4XDAx+gLMQHnlVAHvZcTbhr64wNH03ABAsVBXgDVya/5rL15OJ4jwLkDRE1xL8qc1hHpB
+	OXQzy1pKcXzO+SGQc0ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8mGV-001ZMy-BO; Wed, 28 Jul 2021 16:18:39 +0000
-Received: from mail-eopbgr40074.outbound.protection.outlook.com ([40.107.4.74]
- helo=EUR03-DB5-obe.outbound.protection.outlook.com)
+	id 1m8mHZ-001ZoM-1i; Wed, 28 Jul 2021 16:19:45 +0000
+Received: from mail-vi1eur05on2053.outbound.protection.outlook.com
+ ([40.107.21.53] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8m9C-001VsQ-Au; Wed, 28 Jul 2021 16:11:08 +0000
+ id 1m8m9R-001W1i-PL; Wed, 28 Jul 2021 16:11:23 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QCobs78WxTI9lRagfe/95GYp7LtdadkyYWNbV25zvvaBhJE1mzVF8tddqbm917Fy/TNt/nvDZPwSidbQ/ZIxxpW2YMi7F8QFv3ZNvTGRqB4KTxNjExncjwZ49J0t6BmBLTYoCqayBtgHGw2G+ZeFSLHReGlMGM3j5rD8GREHOJXeF4AqJq8k1n2gJQTNwzmhRDC4S37BF1vaJ3PvNMKGiPsQqkieU522hwHKX82BO5dsR1lr3hWS8SufqJex7vlV04fwotXjtCTvYtoGtX2k/a/XKgh3HIyWnGH8C0v0plitS6OmVRkKrDMQ+phX5yzTU1Lf98bKYDTBZ3zxVTNg2g==
+ b=HQsP6M15LmyPXZMAX30UZJ58MwEak9a81hDJKVzkN44qgjGKm0PWuCGoiWzHd6jUfdWornZR3IKBJ+1QU7MWKDEEQQCNoWqnz3SXnKRIofaG58e224Za91MTMGS7NfyjJUN1Up+x5R7/nYHWQ8XpJQRt52ocxFjcVRWX2owsUAfD49jJ/BeKRC8pOaq3LM22iDgOECVJePS80gcVRHZbTSj4VWlxlBDPNQMXaHbPTmt4zoLchG1HcaNvVzl8bjv8Uf6ix04+DOact49vI+Oyl3NHIn+IfrANAbjEi+ew/+e3YieRmErrZJqO7GLbO9aGKaJ9PyxygmK5NW5nAhDsMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=r7vpeveFsvko040aRTqY92mRDEUqHenzQobsA01HLkc=;
- b=Ctswai0KsmlRmaI6Hz/DkF1WU+nKg0pv7zIDzAYbkt2uzFRiezKiBCSdVXqaiw/DhDjQpoQ3+8ptJmBV8hXBSiwqovmzcuD5zCKmqv3A9ROK4BacD6hdv8/tM9VtqI3Ee81/nrvzWi85c1EG1rwYtzqNRsO7DVN2QpP0MTxj+coo6QHR029pqih8XNOPtu83owZLs5PhmrdrIqJS7JIvH75n8v/WC57A+TrsXC3srhhivmc8RFHp8rtaUUFiYQpVtD4iZh3eY1U2fgtpJ6OrYJqf0HXo1gbk/we4wl8pMg1JQF2O7XQY/QzYzL5OEqjvpHTK2MRC8XS9Aq2wxnlWYQ==
+ bh=w4A+99w74vHHvuLhnKCXvOdyjtkacxEou996/BWDRWY=;
+ b=aegnItlx4IRed0ojAx/qcwm5UM4FiLdg6bQmkpWBUooDimO2z8zf1GBMvGMqyk5Qg9wfqqoh35Na/RJfRC0x1vzXY/wrRBheBdDaaIIbeTX0jywnPPKPpEL27SRT5D1oVlM2KXw6TFUvwYA27oS+9gfn9bhfvPaC6c1T4VIrPF64UZ5n3FCIIUxFQ4oAQRCOuCulTLurToYltVc6JRvsGE1TqHHERrSlbt6CdlRcXbex2UML6sKSgGqd9ZqaGgxkBqWRvDi9AoYwkKhNDFZRyY8DiRfEQiSI6nER4S0m9pBeegtwMtfiM6owF/7IN3IJcxFU1nkNBylBP56InIBsWQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=r7vpeveFsvko040aRTqY92mRDEUqHenzQobsA01HLkc=;
- b=bdmMTDcbkRIpJTjs+8y1m/oRDDFtwhQDZvd9si7lRcojuoLMrpvLxOm5irglFaqmVqGHTiJang4evf4wvU1WckNZdD4c4AAnpbrfaQsovq3HwH0YUpr8aMpV8BBAxfdyqfceQkBdbEWl4ZTq86btZpkOvzXoUPwkUuU3Be14ANI=
+ bh=w4A+99w74vHHvuLhnKCXvOdyjtkacxEou996/BWDRWY=;
+ b=Absh6Gi/JQ9FDYu+740hkSlAjuz7S62lNAJEHF1Vi8+R4HF9DEUD3ohra/r9gVrEhci5peUSJJPj0LFOTmKlY0WxBesUlExAKVsd3/x3C3SYMSKBmDYtnz6CM4aywYCSu9KENudXXTdQDg777/ppXMeW1l9bTKs5oxfhmQv+obw=
 Authentication-Results: vger.kernel.org; dkim=none (message not signed)
  header.d=none;vger.kernel.org; dmarc=none action=none
  header.from=wolfvision.net;
 Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
- by DBBPR08MB4268.eurprd08.prod.outlook.com (2603:10a6:10:c3::22) with
+ by DB7PR08MB3195.eurprd08.prod.outlook.com (2603:10a6:5:1e::29) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4352.29; Wed, 28 Jul
- 2021 16:11:01 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4352.28; Wed, 28 Jul
+ 2021 16:11:19 +0000
 Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
  ([fe80::ade3:93e2:735c:c10b]) by DBBPR08MB4523.eurprd08.prod.outlook.com
  ([fe80::ade3:93e2:735c:c10b%7]) with mapi id 15.20.4373.019; Wed, 28 Jul 2021
- 16:11:00 +0000
+ 16:11:19 +0000
 From: Michael Riesch <michael.riesch@wolfvision.net>
 To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -70,10 +71,12 @@ Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Simon Xue <xxm@rock-chips.com>
-Subject: [PATCH 0/2] add ethernet support to rk3568 dts
-Date: Wed, 28 Jul 2021 18:10:18 +0200
-Message-Id: <20210728161020.3905-1-michael.riesch@wolfvision.net>
+Subject: [PATCH 1/2] arm64: dts: rockchip: add gmac0 node to rk3568
+Date: Wed, 28 Jul 2021 18:10:19 +0200
+Message-Id: <20210728161020.3905-2-michael.riesch@wolfvision.net>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210728161020.3905-1-michael.riesch@wolfvision.net>
+References: <20210728161020.3905-1-michael.riesch@wolfvision.net>
 X-ClientProxiedBy: AM6PR0502CA0068.eurprd05.prod.outlook.com
  (2603:10a6:20b:56::45) To DBBPR08MB4523.eurprd08.prod.outlook.com
  (2603:10a6:10:c8::19)
@@ -83,59 +86,58 @@ Received: from carlos.wolfvision-at.intra (91.118.163.37) by
  AM6PR0502CA0068.eurprd05.prod.outlook.com (2603:10a6:20b:56::45) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.18 via Frontend
- Transport; Wed, 28 Jul 2021 16:11:00 +0000
+ Transport; Wed, 28 Jul 2021 16:11:18 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f9629992-950f-4841-7347-08d951e24aad
-X-MS-TrafficTypeDiagnostic: DBBPR08MB4268:
+X-MS-Office365-Filtering-Correlation-Id: ac6a3a32-7d0c-4da7-46d6-08d951e25585
+X-MS-TrafficTypeDiagnostic: DB7PR08MB3195:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DBBPR08MB42680A04405EF78D86D97B0DF2EA9@DBBPR08MB4268.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
+X-Microsoft-Antispam-PRVS: <DB7PR08MB3195633F41DEDC91008A816AF2EA9@DB7PR08MB3195.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1303;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: uZKMBtFkdVvbjXvkn8mxJF2hHf8j5emEKnvSTEvljHDCqO/lTWKhv6EkwzmlwPcjjqRGzF57pTzZdQ3jtsJPPPRM9MZs+lDnGVRJbK3SIAm5eUoAY2ZDQbyhkhFhi4QaVYYmVxu/7KtSNucsLSZqwQw/8KhuszCa1E6hm1ws1eRwTBhPY6IRQeM7kDxKaeBqW4kUXEdmomXoXwS4+tFTvBtavnRHaeWz7go5CCWi/UzkECpW2uRCQlzampvXYgKYnXinmEwMfAEpNb6+zg7DYhVkeI29yAWln8GVSVRaW21EDLqPfpWE0rcxlFE0vP1XoqTZSLNTBLTfIS0S4nR04eCTFzf+5m9zgDTwtlKXhvrqizqP3Sz5OQZUJULUWB09O9j/0QVh6hyEqiG8f4J0pC8QvPI2nO4rg84SYEXwm0+jBYMU5IGn9W0K4eOWsxfzOQ/304uuuwWuqANRQLmYgf2THlwtPBdYrT7novFcAwcbjpz9CVvvce7iDmtbPuwf4okbctzV8aDPQOl+UIx+LS6fFUmLNG/lEAetyVhQYoxnQc7dMA/CUsbpRNWmVEVZkn+gjzCf3+7i7sdDXSTf8HUbdi6fMFCPEUnFAGchgzQfBaudFZjhjyC/XCqXmLImAv62fCQpJLlU7qMiW4EJEqRmkesMcH2NNOUFgH6CgRXAaFvSqLAd9CcN5TiCSgLZAjSCFQu0Cn6sDfq4AdJBEw==
+X-Microsoft-Antispam-Message-Info: AfmMoSzsMzm/0BaTqmXP7H07QKkthxqT0qTSWWXh8tUTqcfokbFcRo8My8lm9/o6NNSvK04x6o4rjroh4thnHwHs37ed+Dr17yFqgiP2sym4vF7W+QWFMCeoTvgYjZtGchHLrwLKBD6SX3w0+L6vNcmCxebfeC9dnC8gl7QBU2/I+PslsFyi+xg848FLRWT75Uh3yx15TdelE1rmKC1VwiNoLV85v56Zq7XeK6TDR9XutxDOj6WU9EoWvhdwo2KPVQetFesbHGP4lNaWdBBQkLfckqOTDf6+eiSk3o3PhtJNbdee+LkNEm6xJZGAhALQMeXtdP0i71c9nV55ZiqS8QCsUHXQ31aCIq6OMITTKOMO6SbLPIlyCSg8mx1Yog3pHs0wdz/g38mIsufh1gPtpYEnP+Q5vub0D6yfxc0sOyIFHrYYUmYcg/C6VZ0Rpph6H1PKqxmvELMT+qOXL1uoWT5TWpCKqFzZnkF+jCGzOgmXdzSvBIVfbu7l5t5SXuD5vbKp3zidqaGK2ZgDhVefoUMtlckQrviUB74mAwuOc4xPWv4hHZb8eEc7jke1pvRunaXX87ioEAQ6MhmtqVEChtgCd5oKTsw+JN7cnBPFKe9VC4l6lhlSDYoxX229xq+mxjBbmlB15OcOl2A6nHB67n1u/LetJQArfPnzoytua8AcApIlPc9v+rWQAMXfW34Y
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(39840400004)(366004)(346002)(136003)(396003)(186003)(956004)(316002)(6486002)(4744005)(38100700002)(2616005)(66946007)(66476007)(478600001)(38350700002)(2906002)(52116002)(26005)(6512007)(6666004)(86362001)(5660300002)(54906003)(44832011)(66556008)(6506007)(8676002)(8936002)(1076003)(36756003)(4326008);
+ SFS:(4636009)(366004)(346002)(136003)(396003)(39840400004)(376002)(86362001)(6506007)(66476007)(66946007)(8676002)(186003)(6512007)(5660300002)(8936002)(6486002)(36756003)(316002)(26005)(4326008)(83380400001)(2906002)(52116002)(54906003)(38100700002)(478600001)(1076003)(44832011)(956004)(66556008)(2616005)(38350700002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?BfBNQ1Ky1gX1PkYXK9nc+dudR/nQa0QBAS+EIQbQjTdHyQXypIru6vxKskEj?=
- =?us-ascii?Q?zCjptxzxdwxVYoQ7vOBogeoCgjU1imP3H5bbIYDx7shHCG8IfPd8GeVeaOI4?=
- =?us-ascii?Q?WGDY9FNRlSwzdpucKPkxtH4eAcrfAdzM1ToJtDtZD1s2TjPCrNJPebg9eoBv?=
- =?us-ascii?Q?raxcvVFiA79RuqHWKV0KCeCXSWEW+BlX9SQW3g97LDPj4k6ogtK2ab6MlcQr?=
- =?us-ascii?Q?ulYQLskzYA6M1KR4A+OqcMlmHbPAPHBjhn2XBn1tUi64j5FXZUYHbQqKxALh?=
- =?us-ascii?Q?eWJrb7j3TivGYc1tmLY64xmmjLhDi78QhZMrefGa7sqHlDFbvfI6UzszmpSI?=
- =?us-ascii?Q?FiRgU0MLhOZduUePiNd6Lx+sANhGiYFvan0KI7G/ZZUCEozzEPvh6CIF9O8d?=
- =?us-ascii?Q?GltGpKa21MwmKPN8+6Vo14yqPLHzbRZWGCNTMdkY+oV03RJf/M8I1kAXJJzp?=
- =?us-ascii?Q?B0G57KGhlf2Ac7N2W8gKwKqiAbZR08WWFIa5fW93+yItIdFSb5m7hQLkceFB?=
- =?us-ascii?Q?/UiaHKdkZfIh6s29crbhXTL+KTcKXgHgt16A/o+Ny2q2hQ3XsRWxAILK05bH?=
- =?us-ascii?Q?xyu42VaDB+yskl9yxfvjoz01eF1wROY4bzCbyqSapADBqf0GD8K96cOEn2xx?=
- =?us-ascii?Q?e11Glrsi3eo+8rVU+3odbDQQzZgwqf/WFLVTjyrEbrYHE7d4iVlNJJUX5QQU?=
- =?us-ascii?Q?+Zq6Rxcl+yurVbmkF44HCi10FH9Su4XXdbiZhO45tcHGcjVaoPkaCDmZ6fgg?=
- =?us-ascii?Q?KiWYXDVjnUAAP7/CJtEf6kdS8znSHRSHGQ3mB0GrKzEr9pVrP1CaaquWc2CH?=
- =?us-ascii?Q?hcCJTMjweLOn4hlejsroBeCOrvgEaY7N0N6ktTMfh3iU8kN4GEIc7j6z+kEJ?=
- =?us-ascii?Q?Ppve4bqqZp7eCGNwReHPcJPT4SY9NLOcO0GTOnwYls4GH58fVfQCnpj4CcOE?=
- =?us-ascii?Q?jW9yM3ZmLLbBIocRJ6PhF3T1Qnnbl9u7Wb8uYY8FwS9f9WSUS1CkVi5Q/S1K?=
- =?us-ascii?Q?19OxcFApbvFG2QvMDR4HLzcpfg7jMe+ESzcfFJDWnlcIdWPJd8aF+6jd/4Ox?=
- =?us-ascii?Q?JumAA4l23uYbyLMQslu70Ol2ptmfOjo+YMx5aQ+jrWt9KnwJcrWuDfEJxdAS?=
- =?us-ascii?Q?SpIigjPpdiR30uibqSzqFsH9GzwP4XTh+AQFdOQiU9kUfToHP5ySdLTfmL1u?=
- =?us-ascii?Q?Gnr0FWdpvM+PM92ujB0/pXtGRBkE8SiXXBp42Vq6/jlNQlLEeFKyL+bbe2po?=
- =?us-ascii?Q?ba1suPs5KWT+GR5FgN7dW+sLtEnNIgDtZtqkyqrdCn5HMKH6itQOx90aiZam?=
- =?us-ascii?Q?Hyf95ADxh5DMXosLdzjB21ZE?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ureM1xIV3aRaK7sHwXE+0OFhxbr1E7tTS2Bp3K3M/ChgzxIlDnDdxYYZkkPW?=
+ =?us-ascii?Q?BxTW9dodpC6/XyPZfFoaCO0uBtlolMYGtgk5Xq/oU2MWnMK23HY2sno19u33?=
+ =?us-ascii?Q?vj2Xgneecz9pBM56aBjpRdROjiODJ4vI4qULux9Dk8M1Mz8gOeYXol5DQZYa?=
+ =?us-ascii?Q?zZgeaSFiAJ2kH5hkQOa9kCu/+TmzxZ/Yw0TexsewMcrltfi6uGf++gozx5VK?=
+ =?us-ascii?Q?wxRv7l8JBet01MgjI95Aq9zvQ5SkginHQuKf9KfXS1Sg1h+43yisPFq6v+wm?=
+ =?us-ascii?Q?81ZK0IRWQU8oPlS2Mbyeal9Tbbj3XrqvedfD8/vnBBCE6OM/wCoM6EQLrHqL?=
+ =?us-ascii?Q?rG7vQeRhd2mJ5CBCrVcQfKlClLtm7AIJwDAZ2Tv5NzQs/kCROe27dFajM2ZK?=
+ =?us-ascii?Q?MjQkkALdpSOTB0BnTEMLTyCOY30p4sIPcHbJeGMvu8rVkka8iQWqyhyAD8aH?=
+ =?us-ascii?Q?MfuRA4Oa2Fh0Z223hlBimRBjbImRQzNhkI39R8nOyRIGyyg7IF0byG8GytCL?=
+ =?us-ascii?Q?Q4Fyqki4stZKOkDvBRcR+E5bh7fAjekvYhixfmRplT8TMNX9zStpWXycjPxW?=
+ =?us-ascii?Q?tkT30D1aytLJvNAevxfHubnFlFLV/GkXMdUSUqssZ4AsoIHh2HwtTFzLIOVm?=
+ =?us-ascii?Q?7KIFj5xnKmAJlmkBdxg2hIMHzpZTzAKthyhvMM9PReTKih3qa5LuZ0FMKCAI?=
+ =?us-ascii?Q?xfdxX1EttOcC1Z8Scj/8pJeMhXrztufvIqM6X1KrCsK/LVBQcYNoDKUkmb88?=
+ =?us-ascii?Q?TN7EQkGqGlk52clnFO2fjJO4nEO1tSXnToHCROqQKb5s+DkmlCsbIM2KzJ4r?=
+ =?us-ascii?Q?asQghptsvV/eXFhxnM2zSWmHSkBHTaVGnCW3tf0oAUJxD++3dSj7HOvkqf5N?=
+ =?us-ascii?Q?Mocypmr1+onfxKAQv2PbgTt073JFpq+fTgrxcyeO9SVzgFVlVIoWAJeKpjqO?=
+ =?us-ascii?Q?/+XI6KvHgm7rGAaA9ssOjfSYfSMkBqWs415lXUKjnfUwkLQNvkRkIGU6oPMv?=
+ =?us-ascii?Q?fvF9wMJv0mQ7sNZzr/u+GfNNgutA8H8VPBpkXW5dYtLeo7kcyCHWpIDBBD6q?=
+ =?us-ascii?Q?BiSizoa2I+eCi4IRp0JhnO7wn6FGUM13ZZDwDvHTlQsUqvHPE1aJ19Lifsw3?=
+ =?us-ascii?Q?n/9VGmLVQgQoNvvkoui8SXerdv6JFSEMT8ubJOCEkir2ygOnc9wXHM1UOdCs?=
+ =?us-ascii?Q?vllNHvX3Blo0qcpsCFnB7rAgFI4YvW2FAS5p1bgMqt8HU7hB+RqmKBBTQ5pd?=
+ =?us-ascii?Q?wF6EssDyPg58okQq7Huk2vzjtCWxVnqC6xkv6CEc64U2p1ztOci7OanrmFTy?=
+ =?us-ascii?Q?YHjPQdZK55srCdq82OsyETUV?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: f9629992-950f-4841-7347-08d951e24aad
+X-MS-Exchange-CrossTenant-Network-Message-Id: ac6a3a32-7d0c-4da7-46d6-08d951e25585
 X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2021 16:11:00.9174 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2021 16:11:19.0271 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZwQL5GXcwzhYFyh2Vl2MBjDYHv0R2u0XDYjaI4b7ldr0bv8ZsiJ8cd10Neq9vMMzaf6FFudPo/LIwvBFjvKI7Hd0gpcV3i2wofXUKfv1byg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB4268
+X-MS-Exchange-CrossTenant-UserPrincipalName: lquMnBzQmWkt3MwKRJSV5o+53mAi4KM2a2tJTLp86rGY2+B3Ck6+Lb9vfbrymfJgeQqvLIHOP3vRosZEjzb09yDl3hlUwbkxa6IiZOgGTiQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB7PR08MB3195
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_091106_545532_D1C020C7 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210728_091121_854892_26FA8EA8 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,25 +155,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+While both RK3566 and RK3568 feature the gmac1 node, the gmac0
+node is exclusive to the RK3568.
 
-these patches should be orthogonal to the ongoing work of Peter Geis
-that aims to introduce the GMAC1 node to the common RK356x dts.
-The GMAC0 node, which is exclusive to the RK3568, and the Ethernet
-phy nodes in the RK3568 EVB1 are introduced in this series.
-The second patch bases on the dts in barebox by Sascha Hauer.
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 51 ++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
 
-Best regards,
-Michael
-
-Michael Riesch (2):
-  arm64: dts: rockchip: add gmac0 node to rk3568
-  arm64: dts: rockchip: rk3568-evb1-v10: add ethernet support
-
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 69 +++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 51 ++++++++++++++
- 2 files changed, 120 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index da01a59f6f26..ec39a2c593b6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -22,6 +22,57 @@
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe190200 0x0 0x20>;
+ 	};
++
++	gmac0: ethernet@fe2a0000 {
++		compatible = "rockchip,rk3568-gmac", "snps,dwmac-4.20a";
++		reg = <0x0 0xfe2a0000 0x0 0x10000>;
++		interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "macirq", "eth_wake_irq";
++		rockchip,grf = <&grf>;
++		clocks = <&cru SCLK_GMAC0>, <&cru SCLK_GMAC0_RX_TX>,
++			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_MAC0_REFOUT>,
++			 <&cru ACLK_GMAC0>, <&cru PCLK_GMAC0>,
++			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_GMAC0_PTP_REF>,
++			 <&cru PCLK_XPCS>;
++		clock-names = "stmmaceth", "mac_clk_rx",
++			      "mac_clk_tx", "clk_mac_refout",
++			      "aclk_mac", "pclk_mac",
++			      "clk_mac_speed", "ptp_ref",
++			      "pclk_xpcs";
++		resets = <&cru SRST_A_GMAC0>;
++		reset-names = "stmmaceth";
++
++		snps,mixed-burst;
++		snps,tso;
++
++		snps,axi-config = <&gmac0_stmmac_axi_setup>;
++		snps,mtl-rx-config = <&gmac0_mtl_rx_setup>;
++		snps,mtl-tx-config = <&gmac0_mtl_tx_setup>;
++		status = "disabled";
++
++		mdio0: mdio {
++			compatible = "snps,dwmac-mdio";
++			#address-cells = <0x1>;
++			#size-cells = <0x0>;
++		};
++
++		gmac0_stmmac_axi_setup: stmmac-axi-config {
++			snps,wr_osr_lmt = <4>;
++			snps,rd_osr_lmt = <8>;
++			snps,blen = <0 0 0 0 16 8 4>;
++		};
++
++		gmac0_mtl_rx_setup: rx-queues-config {
++			snps,rx-queues-to-use = <1>;
++			queue0 {};
++		};
++
++		gmac0_mtl_tx_setup: tx-queues-config {
++			snps,tx-queues-to-use = <1>;
++			queue0 {};
++		};
++	};
+ };
+ 
+ &cpu0_opp_table {
 -- 
 2.20.1
 
