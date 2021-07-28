@@ -2,73 +2,73 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78DA4C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94404C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37B4160F45
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 37B4160F45
+	by mail.kernel.org (Postfix) with ESMTPS id 624EF60EC0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 624EF60EC0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WHBGWC79jccHlaJV7R4ZuLSQ6qWPhGmwZBz4b90vkCs=; b=uaUgYG/aOOzy8m
-	tpH0Gf16N5PmQzd/Sxnf6l4CBKqcB000qZQx+AbZEZsuuOaGBiDZBe/JrM4dXPmbrsGa5v7t8ws75
-	OvTB0d8PgKiIZbKn9JbiC1dwTw/nc+wB4vW5dlN2GXZLSFopT8eIn6HRl0O/tEBunbPri0vRywnTF
-	UBhfcNs9MthtHjz6YOUxo8XUTYKAAaCNp4sOAxGBbBStrDhWRrvrgCZXn/s9kLYdiVLk/0hcuJrFB
-	GN82zeRc4BeLg0vNfhpWODZtsUiTs3p3aGvBpmx6v4215cOxfRtzIsS3C8orHlBfYTynF6J9swEf7
-	sml4HZDCRh7baGtXm9gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jORCWShVZUBwgTV8lL4pa5J2MXtL8epdRAqSSCqT1r8=; b=UvHu530WqlvOkc
+	6SUlgQHVWI4htNZuXIdsrOb4eJBlQBetZII4/meyldJliIuFrAlIF9ob0Ihj7fUt1VsyVO13ShNI4
+	nSCFbR+FN0k02WjqA6O0NY2pz//LICIS0Y1qaDqiVXd7phG2xm937vpkeZ6fvOjrey5/nral5vDZ4
+	DbuhbZSXkTzD4T/LZi/VRjLhm6/0BU8zxBKJj1EDCG5e3j3QpwBKE85mXftsqjD19sxvxnUaYiAyi
+	kOy6KyZc7/rnnmlBwhGIcDrTifLDYyHobtCJqDE3M7gYgmDwoId6AUb9abV0bshG6yfMr6yE/sSCI
+	rJaYA0IRsDdh/APBzo/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8k5c-000tYM-Sc; Wed, 28 Jul 2021 13:59:16 +0000
+	id 1m8k5f-000tZc-GD; Wed, 28 Jul 2021 13:59:19 +0000
 Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8k2L-000rrz-KG; Wed, 28 Jul 2021 13:55:54 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id k7so2213952qki.11;
- Wed, 28 Jul 2021 06:55:53 -0700 (PDT)
+ id 1m8k2M-000rsg-5O; Wed, 28 Jul 2021 13:55:55 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id t66so2304550qkb.0;
+ Wed, 28 Jul 2021 06:55:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pGfwAbdRt78qHTO96TNHse01yCgrSXx0nBQE1K40Z9k=;
- b=oqxg8mVy/V6nu+jVSAFy/QCDzw4popNFWi0oMDsYaEG6drkfVexNbdx+GFQOcSCAgK
- Q4I4iOETyduykRRnpF/1yZQ1S8r0gplh47RkJE8o61uTRV+O0qGHSZqaefM1+kFWwXJr
- 7fw1crb4tbEyYGRNKho8iLHDRLTTEjMVau7riZJi7ulD3ZWPtgh9jyEchpDYCktXY0NQ
- wlX31YlIfnfKq264A0Wjoazr5fvy1CufiUQQ7oPI1IdlWLWCDjkRAZV4cq8vtudg1Med
- hXemtX53BEFNnO34o2AAev56iHoUmsN7Y/zVokRyBFuT05FGteJHS+wpstmNVhCb/16N
- xvuQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=p0c/IyLNYUcFRUNhIkMuU0AI+TpmMpaReD0iwylBw/k=;
+ b=lI4HE7O3xfbrLZHlZEm6CLq8NrFgzrcXzQ+FCqH4bMco4nV+Hvz5agyILutqUHegUn
+ o/Bjv/EaB5qT2qnagUeroiQWSXrMpTP6U12EHVinFY8m8E9ABcYNZlznekse8OFtpNTq
+ t3oFf6NxAUCyBCOUO9UtD+/cJODji4nbwykjNY24dUPxbY/YaTTnjF+r+NTBdziyRRJB
+ M17Q1QZZCJUAOVjylL/t4f4sv19oMepslZ1RZ+xLwjKNl0INSPXFtCRcdXwMKLPB7MnL
+ CBhJ2vQoafmjKj0sqQ2i3HEfknj+CtwZ6pAEAMXJBjTI9Ancuu5gyLgdCAiyevy6lAUf
+ N1ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pGfwAbdRt78qHTO96TNHse01yCgrSXx0nBQE1K40Z9k=;
- b=XUVIWSUV2j8tiWrs8kAFkhdv9606Z+DrCAVqoVDhcxugfsUWHN2QRFK8+qbA5eK3o2
- Oi9PlXPhXyLxd/dZXI9W8mNuMHiz8WASlpQCaZjbiN8bS2xnhlOvXBCP16zGRveijSx+
- S7Igt935lqmDmUf9ayLrsbvKsbVr+YNXx1J9RWc/kTD/P0gOH+0ocZNXADquD2umMAU+
- ZnHX2xW3s6mdKsVJ68uukFCCHfjkvv4lfxLkGwtVhnrLvPingGqblh5zAc/AevH2NSOw
- tKQWrfpWH6OXzQI4+0R6n1ddLRqVADs9Hjq6t/7MXlh4CaV5+r0jECaSvGWr1npR4+Yo
- fThw==
-X-Gm-Message-State: AOAM530zsE/VbsSgdLACF82PrBfofVM2dBnkr7aXxYFSpt4IMKJx4vdO
- EjCr99h/PC9jphcQJNHxVvc=
-X-Google-Smtp-Source: ABdhPJwFOefvh7nvrQLkSCRfqcRb4dWBL8gmNm47o675Elqgo8EaaKtcFOiaHI58yZ4EhsJVPVQQHg==
-X-Received: by 2002:a05:620a:a19:: with SMTP id
- i25mr27119975qka.426.1627480552482; 
- Wed, 28 Jul 2021 06:55:52 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=p0c/IyLNYUcFRUNhIkMuU0AI+TpmMpaReD0iwylBw/k=;
+ b=t+St0L5vFJC6Zq19T1mpNCGSaqds+jIM0bjxJ7555z7YKPS8u+PGNuvdE/Bxq1D4Dh
+ LaOpyjF3mZ4xfL/Rv0TzfdG5wmQJTmlmJSSY1hkb9HCgJEi/iWMHXZhyFbtGRJPseGKp
+ hqNj8DTo9YGcqu964whhAehC6Q3y0AvjmOeav1vSU1skyIvYCSBB2uzjOZZe3tBIalUy
+ IGVtqHlrJP58S+S7H1YKm94+JPI0jiqZIjEms+/iP/mo37sPKO9L+J3SLalgl+VYE5ox
+ 7smE3ESs7VWtkVWPb1iwIil9/5ijhryuF8D04oGF/1kiznti4lJYE+f0KU9T4DcGydYB
+ ADBA==
+X-Gm-Message-State: AOAM533+PQ3XQy7P4WbztWVtvwPLP4i/yqgEXKz4qJCxg3a8xevMf8NO
+ C+yCzIVsEpjVgefw7MrM1fs=
+X-Google-Smtp-Source: ABdhPJzoNpKc+OhcYe2emeCQDQYmrYhrUprg7KEWryMcCF76OXmFd+tXGIlTeIs5GjwINx54kLx8gg==
+X-Received: by 2002:a37:62d2:: with SMTP id
+ w201mr15042275qkb.318.1627480553423; 
+ Wed, 28 Jul 2021 06:55:53 -0700 (PDT)
 Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
- by smtp.gmail.com with ESMTPSA id t64sm27202qkd.71.2021.07.28.06.55.51
+ by smtp.gmail.com with ESMTPSA id t64sm27202qkd.71.2021.07.28.06.55.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 06:55:51 -0700 (PDT)
+ Wed, 28 Jul 2021 06:55:52 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -76,14 +76,17 @@ To: Linus Walleij <linus.walleij@linaro.org>,
 Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH 0/9] fixes and enablement for rk356x
-Date: Wed, 28 Jul 2021 09:55:25 -0400
-Message-Id: <20210728135534.703028-1-pgwipeout@gmail.com>
+Subject: [PATCH 1/9] dt-bindings: gpio: rockchip,
+ gpio-bank: increase max clocks
+Date: Wed, 28 Jul 2021 09:55:26 -0400
+Message-Id: <20210728135534.703028-2-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210728135534.703028-1-pgwipeout@gmail.com>
+References: <20210728135534.703028-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_065553_726721_F6BE94C6 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20210728_065554_259656_AA519217 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +104,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Good Morning,
+The rk356x adds a debounce clock to the gpio devices.
+Increase the maximum clocks to account for it.
 
-This series aims to fix some early issues with the rk356x and enable
-nodes that are currently supported by the available drivers.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-1. increases the max clocks in the dt-bindings to permit patch 3.
-2. fixes the mbi-alias, which points to the wrong location
-3. adds the gpio debounce clocks which are necessary for gpio to bind
-4. adds the common gmac1 node
-5. adds the tsadc nodes
-6. adds the missing cru and pmucru phandles necessary to reclock
-7. adjusts the gpll and ppll clocks to better support hardware
-8. enables the gmac1 on the Quartz64
-9. adds thermal support to the Quartz64
-
-Peter Geis (9):
-  dt-bindings: gpio: rockchip,gpio-bank: increase max clocks
-  arm64: dts: rockchip: fix rk3568 mbi-alias
-  arm64: dts: rockchip: add rk356x gpio debounce clocks
-  arm64: dts: rockchip: add rk356x gmac1 node
-  arm64: dts: rockchip: add rk3568 tsadc nodes
-  arm64: dts: rockchip: add missing rk3568 cru phandles
-  arm64: dts: rockchip: adjust rk3568 pll clocks
-  arm64: dts: rockchip: enable gmac node on quartz64-a
-  arm64: dts: rockchip: add thermal support to Quartz64 Model A
-
- .../bindings/gpio/rockchip,gpio-bank.yaml     |   2 +-
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  66 +++++++++
- .../boot/dts/rockchip/rk3568-pinctrl.dtsi     |   6 +
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 136 +++++++++++++++++-
- 4 files changed, 203 insertions(+), 7 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index d993e002cebe..489a5263a7a1 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -22,7 +22,7 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    maxItems: 1
++    maxItems: 2
+ 
+   gpio-controller: true
+ 
 -- 
 2.25.1
 
