@@ -2,96 +2,64 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06A51C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8193C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:41:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8F0B6054F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:36:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C8F0B6054F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6914B6069E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:41:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6914B6069E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=aANNbT77CzTNgM6xVH1qVV7CU6tcLdf5vGu6f7H17dI=; b=ovoVISjoTLLl3bPT+8FvWKplSh
-	hElprvSsslDHOpZJuGDknocRm+5F1is/LsVxwhU5hnOa+mBPN654RXICsVUWluuED3pOmY6QZH1Qk
-	1ie9pIM48qmchjV7SKbhiQGr0Z37v0mlLcUn0hAEKm3fyO4/RVrnnXSE1dUAFUUtIflWJVS7878Os
-	N9/xWHKMeOdWigXg9BkBL8Xtb8597iHxSzfzJwqeGFLmnVruBkFSGFX7AsA0LmZ6PeZ+D3TpQO23P
-	dwCHeyufRX3q78nvZ6HQhKLiDkW3yXkaCg0QjwS5GV0B54ctmwSVyc27rV4yUOBNFVk5GszyUyVg7
-	GzRXcqjA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=86uDRwwuYHkXMUUgzar1aWEe0IoofT4ZdSWbRBThQgY=; b=G5AO/nA2ODSkKM
+	7CjXUhIoG67BQPvpmE+duea2FXLcX3cuBDC2ytdsRqHuTZpQhk8cFKxXuk0TiN4N4rwHKWbR1SeAU
+	7NM78VEjbuLFp9O0ifGS9Ghofgo4XGercTmPrgw1NUlNWEaOAlVNjGDiN6OkffuM6LxABuZ31Qjx3
+	GmnMWlp0Zvp2jJlJxUKW2dgJGpA7vnAAJBndgLChN7tcOEI8T3IQC7B/El1xjTiM0qZbelANLzoMw
+	Q5n2tFiXlX2IKLYHXbhSbM7Sd2GQhZcbKmCRQChWLjxBUITjg8/bnvXDZZIUfr/1SgrIHTk0rXzvb
+	FYQlAuru/lTEv9swwj8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8kfY-0016qB-U7; Wed, 28 Jul 2021 14:36:24 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1m8kkM-0017dV-Hl; Wed, 28 Jul 2021 14:41:22 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8kfW-0016p2-EQ; Wed, 28 Jul 2021 14:36:23 +0000
-Received: by mail-ej1-x630.google.com with SMTP id qk33so4918950ejc.12;
- Wed, 28 Jul 2021 07:36:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=U9j1VUNwpLjqthf/lcX140LSEyF9Vm2SDMFtz8UeK9Y=;
- b=ixMvR3uPmTOI3ig8cTK9p5JW7g3ktbkYGZ0HehamKHLaBqiINRUHlhYy73M4g7A9is
- 1Cu0CmpA+wzXN5soyIOXxj2Vqu0JsVnRWp/DqnsIm0Mkws9Oa+kkYHsVV3cB4y6+mWET
- Zn2kwkjHIr5uzbXqp4iu/vxI4Edy7M2A9//1eWsHxvp6YWTzoAjRVXXqBG9r0xhaeg+i
- 4ejMOhlBzsH4+4uID0mJlXifXaUUTad7xnfvueNsXlUwW59YTEw6H+9PvGFOJWtbNXl9
- DKiXSHzjAYdGqNlU/oxXs3Ghy+K0P8tXULQnrgGaUD967oM1y7vdcHclAOVIwKgMG6YC
- VOEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=U9j1VUNwpLjqthf/lcX140LSEyF9Vm2SDMFtz8UeK9Y=;
- b=Du2bnb6lX1Jj6aoooPEMbeNpVedHf3hiCdQMplW0+pIPReD9GXpDtKgTiO5eGENord
- gRfIBokqwGR/wMC1CR9yiRb7eBsjgGQm5OUdm0zORQCLywIWEaHN7LKLGlcco8+FPaNx
- Gb/I72gFK6cikg6tW/UuicXeqW3k620yEHkfOPxz04fw+xWnqOLYD6csEhfhEC2e6pUj
- em/VaWTPH3tu1iAtuA/ZBt8O2SFhKsdSUWGzzpko5w5/sUlr3bzUp5jaJQ2+3NxYOI4z
- yijZK7fWisrIeGXk3BykTimK/0V9jW/sFwUyvuvd/k4oFMmnv7NIaw02kcJxykf9ykdD
- eWyA==
-X-Gm-Message-State: AOAM532SBkFCTfKDnVKZHDxOvgNw5qmwwt9Z9u9zNd53LeQ/kpOm4J6b
- gg7JuX893xQa0BZerk1+QcfLeYChqyI=
-X-Google-Smtp-Source: ABdhPJyye5fMTzpPnUMWlW9dAlR8976//YpdeSHIGDi6TZPSCNQnHfH4Nr2GmoUJyASCfmHJGq9rEQ==
-X-Received: by 2002:a17:906:c087:: with SMTP id
- f7mr26707500ejz.487.1627482980043; 
- Wed, 28 Jul 2021 07:36:20 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- og35sm2151108ejc.28.2021.07.28.07.36.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Jul 2021 07:36:19 -0700 (PDT)
-Subject: Re: [RFC PATCH 1/9] dt-bindings: soc: rockchip: add rk3568-usb2phy-grf
-To: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org
-References: <20210728122606.697619-1-pgwipeout@gmail.com>
- <20210728122606.697619-2-pgwipeout@gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <fc6d5b02-707b-aa0e-9ef0-2984bbb1f5b8@gmail.com>
-Date: Wed, 28 Jul 2021 16:36:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m8kk9-0017b1-24; Wed, 28 Jul 2021 14:41:10 +0000
+Received: from [95.90.166.74] (helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1m8kk6-0006AS-UT; Wed, 28 Jul 2021 16:41:06 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ devicetree@vger.kernel.org,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 6/9] arm64: dts: rockchip: add missing rk3568 cru phandles
+Date: Wed, 28 Jul 2021 16:41:06 +0200
+Message-ID: <6063626.MhkbZ0Pkbq@diego>
+In-Reply-To: <CAMdYzYqR+ocrXQi8TOHY0Yd2oULXuPgE_QnbcuQSw=BoaumBKA@mail.gmail.com>
+References: <20210728135534.703028-1-pgwipeout@gmail.com>
+ <13247009.uLZWGnKmhe@diego>
+ <CAMdYzYqR+ocrXQi8TOHY0Yd2oULXuPgE_QnbcuQSw=BoaumBKA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210728122606.697619-2-pgwipeout@gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_073622_548707_A6400E87 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20210728_074109_143119_D7ED5756 
+X-CRM114-Status: GOOD (  27.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,39 +72,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
+Am Mittwoch, 28. Juli 2021, 16:18:49 CEST schrieb Peter Geis:
+> On Wed, Jul 28, 2021 at 10:06 AM Heiko St=FCbner <heiko@sntech.de> wrote:
+> >
+> > Hi Peter,
+> >
+> > Am Mittwoch, 28. Juli 2021, 15:55:31 CEST schrieb Peter Geis:
+> > > The grf and pmugrf phandles are necessary for the pmucru and cru to
+> > > modify clocks. Add these phandles to permit adjusting the clock rates
+> > > and muxes.
+> > >
+> > > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 3 +++
+> > >  1 file changed, 3 insertions(+)
+> > >
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/rk356x.dtsi
+> > > index 0905fac0726a..8ba0516eedd8 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > > @@ -218,6 +218,8 @@ grf: syscon@fdc60000 {
+> > >       pmucru: clock-controller@fdd00000 {
+> > >               compatible =3D "rockchip,rk3568-pmucru";
+> > >               reg =3D <0x0 0xfdd00000 0x0 0x1000>;
+> > > +             rockchip,grf =3D <&grf>;
+> > > +             rockchip,pmugrf =3D <&pmugrf>;
+> >
+> > I don't think the pmucru needs both and in fact the mainline
+> > clock driver should just reference its specific grf at all, i.e.
+> >         pmucru -> pmugrf (via the rockchip,grf handle)
+> >         cru -> grf
+> >
+> > I've not seen anything breaking this scope so far.
+> =
 
-On 7/28/21 2:25 PM, Peter Geis wrote:
-> Add the documentation for the rk3568-usb2phy-grf node, which is separate
-> from the usb2phy node on this chip.
-> 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
->  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> index fa010df51a5c..3b0e06b6ea61 100644
-> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> @@ -16,6 +16,7 @@ properties:
->            - enum:
->                - rockchip,rk3288-sgrf
+> I thought the same thing as well, but for some reason the driver
+> refuses to apply assigned-clocks to the plls unless these are all
+> present.
+> If the driver can get these assignments automatically eventually,
+> perhaps it's a loading order issue?
+> =
 
->                - rockchip,rv1108-usbgrf
-> +              - rockchip,rk3568-usb2phy-grf
+> Thinking about it, it's probably the grf and pmugrf haven't probed
+> when the driver is attempting to assign these, and tying them together
+> forces the probe to happen first.
 
-Could you sort this in alphabetical order?
+though nothing references the regular grf from the pmucru I think.
 
->            - const: syscon
->        - items:
->            - enum:
-> 
+I.e. the pmucru PLL read their lock state from RK3568_PMU_MODE_CON
+
+The rk3568 reuses the pll_rk3328-type which in turn is a modified pll_rk3036
+and uses their ops. Which in turn means the pll shouldn't access the GRF at
+all, as it uses the pll's own register to check the locked state.
+
+Can you try to change clk-pll.c from
+
+	switch (pll_type) {
+	case pll_rk3036:
+	case pll_rk3328:
+		if (!pll->rate_table || IS_ERR(ctx->grf))
+			init.ops =3D &rockchip_rk3036_pll_clk_norate_ops;
+...
+to
+	switch (pll_type) {
+	case pll_rk3036:
+	case pll_rk3328:
+		if (!pll->rate_table)
+			init.ops =3D &rockchip_rk3036_pll_clk_norate_ops;
+
+similar to rk3399?
+
+Heiko
+
+> > >               #clock-cells =3D <1>;
+> > >               #reset-cells =3D <1>;
+> > >       };
+> > > @@ -225,6 +227,7 @@ pmucru: clock-controller@fdd00000 {
+> > >       cru: clock-controller@fdd20000 {
+> > >               compatible =3D "rockchip,rk3568-cru";
+> > >               reg =3D <0x0 0xfdd20000 0x0 0x1000>;
+> > > +             rockchip,grf =3D <&grf>;
+> > >               #clock-cells =3D <1>;
+> > >               #reset-cells =3D <1>;
+> > >       };
+> > >
+> >
+> >
+> >
+> >
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
