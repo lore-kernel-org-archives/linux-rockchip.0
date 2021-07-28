@@ -2,96 +2,80 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DD5EC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:33:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73519C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:51:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA4B060F91
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:33:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CA4B060F91
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3D9B8603E7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:51:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3D9B8603E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=7j/3aozGQ5mDceN6/37bSKqeruMamzVEuF5WavTg39M=; b=Pum2r+fkzgK43zmSPeT0v6F7fw
-	+PPS/7CIMXfGIuWJkGQfIx4y+0pidtwDrZKL3B01f6QkycnikG4rjdWxoSDcoo4LufWYvJ/BiN9vi
-	25LoOWKvN+Cjs2nWOqAqw4M5w7wBz5zSVlv+UVE7GeubeZ7MLhHUuwdjjs37M6bnJZ7Wj6edMTFuq
-	KCEefGZZV9y5jbRrw7yHvxUWLo1fMZM/Og3JfEvUo4BYPHbn/0AcWnUQEeIZdVBr7PR/QIpFPBqBZ
-	OyL9VRpYDME18SGSitXX3Mw9txLYG5+0f1enek+fdKlKl0/XlYxCKkzOTdKZC0xmYzMV6hJ8/9P3u
-	HJEkIxCg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0yjAW8QGWgSrXFpKTGjhoA/EmOJgsSl6NDgWkFz4Lkc=; b=MXG7Cq9NiIVD1d
+	AwEhM3V9o2o819qwYCU25hTScfpB3vvxQBnrsrSHcVbjL3XD+x0lPWIzk0DLohZHlQe8qwGVN06LX
+	TGWNL7kO0Y3xEYgniFlqa0iXYOzleTVR/UsHI27j/zXFCGKqPQnEX6zWHUIGOHKltEWHVRDzKYAXB
+	BLWsRW7B5Q/DuKoZasyIvHCTMGgM1Euo9DQFQ6h7BQ83bq+1+/XQNgECIdCh+CBAX19XbVi1YMFg4
+	bGrcclJoq/8pUUWF39ElyMtIR5DHmzO1I70QvJUIvGyDuwOlB9JRHwTJDKi1yZKF6UCcYvK09+VyC
+	Bx4KQKcRAW0H8A/OUpQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8lZ2-001KMr-Ov; Wed, 28 Jul 2021 15:33:44 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1m8lqQ-001NrN-TU; Wed, 28 Jul 2021 15:51:42 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8lYz-001KKu-Fq; Wed, 28 Jul 2021 15:33:43 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id gn26so5310597ejc.3;
- Wed, 28 Jul 2021 08:33:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=si1mgqR4hY6Vfet+JUR4OQ+XcsaVJnN5eLUW6jCI1H8=;
- b=Yabfn2tEqlcOW2R6zKpzZxhVViW1JCNZDXH4aPGMpZ+9cPDKUySzKe9UlZXhh4hCN3
- bptI/95PoVJdM5dVdW/EsVyxakJ4Ewnj8xO02xKrjbzby9rVkxbR6N5EBpHQkqIhe9JR
- JV4fnkPf0Vx+X1Ek9dWfd2ejsfwFqrL++gt7tAirrryxw5nqPwpNN7+NnJHpS+Uf3de8
- Lx0zgCgsiym6jqaDgRNg99Vjj+WPcJjwKmGyrdBeCkPEiBhEXIiWYr/LPhYennJat054
- jmHlSfmjP6yBjNBGOb4LCkM5wV8FcfQRsGWcvDmIjr0g4VC6eBfpccmf37mhn1zaJnbK
- H50w==
+ id 1m8lqO-001NqV-Ep; Wed, 28 Jul 2021 15:51:41 +0000
+Received: by mail-io1-f42.google.com with SMTP id l126so3476971ioa.12;
+ Wed, 28 Jul 2021 08:51:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=si1mgqR4hY6Vfet+JUR4OQ+XcsaVJnN5eLUW6jCI1H8=;
- b=eDCO7nTz9rJgSvXT+G7JdpCjl+hxfZkqAJxz475yVH4wLfhMK2fUm50/BIq6aRQFKa
- 8TrKPAGUi4QuvpebtnYNGlFjYXzVq/1WaWrXJMoGys5pf16hZAQXIShxPNhChDTA4USk
- 7RgoeVI6K3QSM7NwY9LXKOiCeGOli8yhzpnnRG3tkJwaBBdHGZ0ZaNLDKlgqqY54xdJz
- L1jBRJQfmBVtI3fDpt0G+7ssgZW96K2awcKKgJbihbcx0jqhpQToCEa+GAwrZcnWdUFo
- NpplTsnXAy6gyAP7IF/6UCscmPA5iUpwzr6tlMHpGhdGf5C1X7rEA/C0yjj16WTGnmn1
- 2USQ==
-X-Gm-Message-State: AOAM532vysM7urm4VZ0YwnWvQkNYcL4G8Cyb9qFOdOexKqjoX+qAvRiK
- urUfRel3XrpRp+20dM5T2Fo=
-X-Google-Smtp-Source: ABdhPJzshhdEflocyi4gdgO2oNd2Rd65Idabh0CmlCYsp4GRU1wwosn3cznIEOllvFeWvJxs9NQTpQ==
-X-Received: by 2002:a17:906:a5b:: with SMTP id x27mr108635ejf.18.1627486419760; 
- Wed, 28 Jul 2021 08:33:39 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- dj16sm53392edb.0.2021.07.28.08.33.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Jul 2021 08:33:39 -0700 (PDT)
-Subject: Re: [PATCH 5/9] arm64: dts: rockchip: add rk3568 tsadc nodes
-To: Peter Geis <pgwipeout@gmail.com>, Linus Walleij
- <linus.walleij@linaro.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=QGlRQ7YvLwv8K5AbN7ZnxnSoIhB/O2l82NrH2XfQAws=;
+ b=Kysg/sMDCEMVAWI3f4ALrY8yVDWMYvVL+LNQaQX6OB4Y7sLZ2YIhy/pWTaKrRQMJpj
+ WaO9gMbZjrZ8nnOYX/iSbzQP2dM6GZ8Ef16W3IITcjfTcSemcJUyrUoJ7pkc2eSGCN8s
+ yJxRDhVEoCYdQkKJ9MRoA1DQH/F94aiCDfc69dD+2vjQi7ku8aY1PgiHTF8o38/ngEI7
+ A1Z+/Xvrb0KyOeGF2j8a4g9nf4sgWD4K7sW5u7yiVsDUSkQsyN5oj0c5u/ZVo26c1huc
+ ByrAIxuMTX/nZMUOuVvzSrdm6oHj9LoMIHsT0phfWjfsD73yewfwAeYenV5u8W1kIa/q
+ HFog==
+X-Gm-Message-State: AOAM530cnwUTnYgcmtEADpgRELnbL4xvdS0fFYTZREPVu3fDaIXEbym6
+ LLFQurHTDEBvtFcTG4imrg==
+X-Google-Smtp-Source: ABdhPJzaxRpaGHuNLWhFtE2F69DI0X2Ny22fQs48Z8P6xy+5OSHIaCODrcsxpUgXTInNv5LVA4hffg==
+X-Received: by 2002:a6b:1685:: with SMTP id 127mr99194iow.135.1627487498497;
+ Wed, 28 Jul 2021 08:51:38 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id t15sm238450iog.26.2021.07.28.08.51.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Jul 2021 08:51:37 -0700 (PDT)
+Received: (nullmailer pid 1132983 invoked by uid 1000);
+ Wed, 28 Jul 2021 15:51:35 -0000
+From: Rob Herring <robh@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20210728135534.703028-2-pgwipeout@gmail.com>
 References: <20210728135534.703028-1-pgwipeout@gmail.com>
- <20210728135534.703028-6-pgwipeout@gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <757c6db0-c259-32d8-53c1-c1e31e9cbe8c@gmail.com>
-Date: Wed, 28 Jul 2021 17:33:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <20210728135534.703028-6-pgwipeout@gmail.com>
-Content-Language: en-US
+ <20210728135534.703028-2-pgwipeout@gmail.com>
+Subject: Re: [PATCH 1/9] dt-bindings: gpio: rockchip,
+ gpio-bank: increase max clocks
+Date: Wed, 28 Jul 2021 09:51:35 -0600
+Message-Id: <1627487495.967642.1132982.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_083341_665327_47C0965C 
-X-CRM114-Status: GOOD (  20.35  )
+X-CRM114-CacheID: sfid-20210728_085140_544385_1EA8B3B3 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,163 +88,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
-
-On 7/28/21 3:55 PM, Peter Geis wrote:
-> Add the thermal and tsadc nodes to the rk3568 device tree.
-> There are two sensors, one for the cpu, one for the gpu.
+On Wed, 28 Jul 2021 09:55:26 -0400, Peter Geis wrote:
+> The rk356x adds a debounce clock to the gpio devices.
+> Increase the maximum clocks to account for it.
 > 
 > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 > ---
->  .../boot/dts/rockchip/rk3568-pinctrl.dtsi     |  6 ++
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 71 +++++++++++++++++++
->  2 files changed, 77 insertions(+)
+>  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi
-> index a588ca95ace2..b464c7bda1f7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi
-> @@ -2420,6 +2420,12 @@ spi3m1_cs1: spi3m1-cs1 {
->  	};
->  
->  	tsadc {
-> +		/omit-if-no-ref/
 
-> +		tsadc_gpio: tsadc-gpio {
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-nodenames ending on -gpio -gpios are kind of reserved.
-Maybe use -pin or -pins.
+yamllint warnings/errors:
 
-From  dt-schema/schemas/gpio/gpio-consumer.yaml
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.example.dt.yaml: gpio@2000a000: clocks: [[4294967295, 9]] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.example.dt.yaml: gpio@2003c000: clocks: [[4294967295, 10]] is too short
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+\ndoc reference errors (make refcheckdocs):
 
-patternProperties:
-  "(?<!,nr)-gpios?$":
-    $ref: "/schemas/types.yaml#/definitions/phandle-array"
+See https://patchwork.ozlabs.org/patch/1510854
 
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-> +			rockchip,pins =
-> +				<0 RK_PA1 0 &pcfg_pull_none>;
-> +		};
-> +
->  		/omit-if-no-ref/
->  		tsadcm0_shut: tsadcm0-shut {
->  			rockchip,pins =
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 77c679304916..0905fac0726a 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -51,6 +51,7 @@ cpu0: cpu@0 {
->  			compatible = "arm,cortex-a55";
->  			reg = <0x0 0x0>;
->  			clocks = <&scmi_clk 0>;
-> +			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> @@ -59,6 +60,7 @@ cpu1: cpu@100 {
->  			device_type = "cpu";
->  			compatible = "arm,cortex-a55";
->  			reg = <0x0 0x100>;
-> +			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> @@ -67,6 +69,7 @@ cpu2: cpu@200 {
->  			device_type = "cpu";
->  			compatible = "arm,cortex-a55";
->  			reg = <0x0 0x200>;
-> +			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> @@ -75,6 +78,7 @@ cpu3: cpu@300 {
->  			device_type = "cpu";
->  			compatible = "arm,cortex-a55";
->  			reg = <0x0 0x300>;
-> +			#cooling-cells = <2>;
->  			enable-method = "psci";
->  			operating-points-v2 = <&cpu0_opp_table>;
->  		};
-> @@ -774,6 +778,73 @@ uart9: serial@fe6d0000 {
->  		status = "disabled";
->  	};
->  
-> +	thermal_zones: thermal-zones {
-> +		cpu_thermal: cpu-thermal {
-> +			polling-delay-passive = <100>;
-> +			polling-delay = <1000>;
-> +
-> +			thermal-sensors = <&tsadc 0>;
-> +
-> +			trips {
-> +				cpu_alert0: cpu_alert0 {
-> +					temperature = <70000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				cpu_alert1: cpu_alert1 {
-> +					temperature = <75000>;
-> +					hysteresis = <2000>;
-> +					type = "passive";
-> +				};
-> +				cpu_crit: cpu_crit {
-> +					temperature = <95000>;
-> +					hysteresis = <2000>;
-> +					type = "critical";
-> +				};
-> +			};
-> +
-> +			cooling-maps {
-> +				map0 {
-> +					trip = <&cpu_alert0>;
-> +					cooling-device =
-> +						<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> +						<&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> +				};
-> +			};
-> +		};
-> +
-> +		gpu_thermal: gpu-thermal {
-> +			polling-delay-passive = <20>; /* milliseconds */
-> +			polling-delay = <1000>; /* milliseconds */
-> +
-> +			thermal-sensors = <&tsadc 1>;
-> +		};
-> +	};
-> +
-> +	tsadc: tsadc@fe710000 {
-> +		compatible = "rockchip,rk3568-tsadc";
-> +		reg = <0x0 0xfe710000 0x0 0x100>;
-> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
-> +		assigned-clocks = <&cru CLK_TSADC_TSEN>, <&cru CLK_TSADC>;
-> +		assigned-clock-rates = <17000000>, <700000>;
-> +		clocks = <&cru CLK_TSADC>, <&cru PCLK_TSADC>;
-> +		clock-names = "tsadc", "apb_pclk";
-> +		resets = <&cru SRST_TSADC>, <&cru SRST_P_TSADC>,
-> +			 <&cru SRST_TSADCPHY>;
-> +		reset-names = "tsadc", "tsadc-apb", "tsadc-phy";
-> +		rockchip,grf = <&grf>;
-> +		rockchip,hw-tshut-temp = <95000>;
-> +		rockchip,hw-tshut-mode = <1>; /* tshut mode 0:CRU 1:GPIO */
-> +		rockchip,hw-tshut-polarity = <0>; /* tshut polarity 0:LOW 1:HIGH */
-> +		pinctrl-names = "gpio", "otpout";
-> +		pinctrl-0 = <&tsadc_gpio>;
-> +		pinctrl-1 = <&tsadc_shutorg>;
-> +		#thermal-sensor-cells = <1>;
-> +		status = "disabled";
-> +	};
-> +
->  	saradc: saradc@fe720000 {
->  		compatible = "rockchip,rk3568-saradc", "rockchip,rk3399-saradc";
->  		reg = <0x0 0xfe720000 0x0 0x100>;
-> 
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-rockchip mailing list
