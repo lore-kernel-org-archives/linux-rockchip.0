@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06B1DC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:17:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 65AB3C4320A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:20:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6D006023F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:17:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B6D006023F
+	by mail.kernel.org (Postfix) with ESMTPS id 2E77E60EB9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:20:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2E77E60EB9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,68 +24,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2TeQVZmNu4fA98UiEYmzy5VmfT//AUMsyB+NnfCqkss=; b=q8wj54R2lWTTQr
-	eDlVQycTd7KBIvacV/9+1u9I8avnfh5tx9IDKBb9ztWgFAUHLm/T3imNi7x6iTV6Mh+3ZcbO5Tp0M
-	AEkE1BYyBSMC6v0BC8O5T486uIu4Z5qTNQfmmVfgEJdu7dLIwx+v+7iwsQQFusVS3LV7+ii1wt59n
-	J8Z4v+C60BjIK8C0+VtmfOeuPqtr2aa6/EMgZpC5g/d9Y4pSJUQJ2l8gAhbiZAuG3M0SClM23cq2B
-	MkXyRQbQYEygILWY804RIqxnGEz7yEPKQxPZ5RAko/H40NiosY7sw5o7LuA6vbVQ+8hVB0sUZyAAs
-	fry4PibKi5ojhITmXHhA==;
+	List-Owner; bh=X+VaPvxI4JRfX5oXIrY5xJsZHQl/t5I1ov7EZcycxzA=; b=p201Uq8g4mDd56
+	zGPiiUua3t0AiljFfNDbTihM+IoFSHWycGsS2jWCDjXP9Q8KCyP1tiXUiIkzI3MPIVtAB4qR4qhwy
+	dkX6PCb0grETunFS7ZWlW6Feb7019s6AifX4HHwIeyMfbOaEQctIx55p43duhLiN5miYu7zL69vWY
+	5Bid9F9Aeu/bgtncgrfzbtUXIaaZ+5dq+rYBGJl4A4hdzRx2kc7j+MdvsszvJP5TUPmcCEfPr3+S8
+	DJ495ML9OGVKww895AgIflz48WYAB0yOhesa7VKSOsnmrsgZwgYcDaloiY9E5KUVh0M48K2orHM+z
+	COaOWPVQnzr59UFPnUvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8lJE-001FGA-R3; Wed, 28 Jul 2021 15:17:24 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1m8lMS-001GQQ-1b; Wed, 28 Jul 2021 15:20:44 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8lIy-001FBz-B5; Wed, 28 Jul 2021 15:17:09 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id a93so4568974ybi.1;
- Wed, 28 Jul 2021 08:17:07 -0700 (PDT)
+ id 1m8lL2-001FnD-3P; Wed, 28 Jul 2021 15:19:17 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id w17so4494206ybl.11;
+ Wed, 28 Jul 2021 08:19:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ESrezXcwKkqa6xx20d3Rb22HD68EBnHXQ0zjk4sO7Sk=;
- b=XJZLSfz498/PpYdOyshbjuXRO586ZzyWYWVLc01A2rkLHglPeh5q0WZC1seQeA2hSL
- NC13pCwL7i1Myc6lwlvK/jlZ6EAe6+TAa4rHwXDcwD6w9azITNt6z0qT7IkUeoZTvULk
- PcdnI/Jc7BKmKvS/YieMitzuvDRII0DtmwR39uQjdK1Q3rpn/usFnZbFT+SJYwMvJTOa
- IJP+MTrNs8B/QqjyBYal0hiYq2sxJQJhIcQKxZg/Z4LGRVuiTGpXjAKNfFTjJCjjhTFY
- qDtYyvYCL83aVv+mreQkKUHzv4eZMY96HqAxf6/QSJ8QOfo6vFwRGQpru8QBVlJ83O+m
- xekQ==
+ :cc; bh=/6eWkFQouDwZToZfzqmLvZAa+8eHzBjwiwsCPEZ3T78=;
+ b=oN9p2Q2hKZtCKNVMAT+NVxX1xipwNCvL4SYZ9WviVLfZeJ7CryQ9ipjmT2TDx9uLPZ
+ 1Xm33ENbeoCwWOM5CaEnziOHXZhHlPkfjq/PyX8Om+HUQOvGJgPjJkuxuYaI2zipt3GJ
+ /GMhGb8wYkc2GKJOTVcUSda/yAUyUdgMN9IPEp30RTtQlbNTOyOz4M2JbLyZt4w6jsOI
+ QWSJ/y1bfrjCPBKVSTg/W6U4DdFz+UU2GrgGekos3fTJrDfYcjGOJTG7dn2r5rTE5+qS
+ TvLTgqMgUZkOrT63KGVItxnAlPD/U6VHa+DhdHdUHcuUU87n0M5Qjkz8Vc/eYhM2PyVO
+ MrEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ESrezXcwKkqa6xx20d3Rb22HD68EBnHXQ0zjk4sO7Sk=;
- b=qeYaHW92SEElWYXRrAGw2LHIiDI76IbAdh5eCsQmYSepIaDwfNqpNJOUX9Q7ytVxEd
- SiT+zHY0dxOUpXe6Fb99gnMPrAsl0xg6N41Y8xxHNPnp44fDADETKRIx0oUEdtHeSt8u
- /zYZ8UzCFYRiv7aimdfYqqdENauvv0YuS05U4xnWEYL+W2oYngN8mLVDvKlITx2iKq3k
- YjDSAXe98UEUJFYdnEv7+/9j4kycORn2W7tFk+BKF+Ms4eOa4QFP+qK494u1ibdjM69X
- FizwU55r7QXPrVKkeLcUgDDX3nGfjXgc4OBpM0TM96CZ5a5DviABNdvWrqR1zZJZcKyb
- BBKQ==
-X-Gm-Message-State: AOAM533uYAFbXawkFEVC8JoxD5j4qeBrTD8yI2Zapt+7gUbkiMoEuAqd
- S3NbafkpOr4t3Aj1u5R+dBcb75/k7/f1dNoIiiA=
-X-Google-Smtp-Source: ABdhPJw66uV4pmVHCu4cBfxtOOl41cuXnbEcQs0rCshQ8A82EetArMTQgWhBjTyHiepjqSDensKvqgi0F2KfvBRwC+g=
-X-Received: by 2002:a25:808b:: with SMTP id n11mr272052ybk.141.1627485426763; 
- Wed, 28 Jul 2021 08:17:06 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=/6eWkFQouDwZToZfzqmLvZAa+8eHzBjwiwsCPEZ3T78=;
+ b=cIGos6CbAJAUhy/bLiEWLyoW6GtjFez4aWnLdeg8yAp/Zwwhe5S+HcHPZ8gNPc7/yg
+ og1880fUIvFxbnXm65tG34tObAHlhx8TCncpvqn9GeIxOj3OeQdqrd3bpqiFXgHrdzwH
+ L1dDDhY1dpuPEZuKD9X5AqAjM2WUVbpkhlgL1EJ/wWuwypuBo6pRJOaqpHCuxuIe5WWf
+ 3wILHmn3/uul2EkrPJOBvDJ3AyR7ye2sgp5RPF6cVnTcPIcI/7np83qAav3hDXshLcsJ
+ Gin0iP8f8bFRZnNuEsQw7w1fSabXcs0SuKc06of3HbXH8K9GyCQRQ/Arw6EJ5ULYnIrh
+ xrJg==
+X-Gm-Message-State: AOAM533l5FgG3GuA2QuU+uEJuPhaorCgGkpZh6wg9zhWWS9VKYbYMAWE
+ 3iQEWGOvpzVpT7s70bK+nMyjTnsgKFfLHvnQnoM=
+X-Google-Smtp-Source: ABdhPJycH7ZHcpeF3vjYS1kJ8DHksPXaFAYcATKn9VKTTwqXA64ilzqCFgKdeIJ43KoNBtYwMr8NcyT1fRpGgPY1ZCM=
+X-Received: by 2002:a5b:48f:: with SMTP id n15mr242372ybp.457.1627485554814;
+ Wed, 28 Jul 2021 08:19:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210728135534.703028-1-pgwipeout@gmail.com>
- <13247009.uLZWGnKmhe@diego>
- <CAMdYzYqR+ocrXQi8TOHY0Yd2oULXuPgE_QnbcuQSw=BoaumBKA@mail.gmail.com>
- <6063626.MhkbZ0Pkbq@diego>
-In-Reply-To: <6063626.MhkbZ0Pkbq@diego>
+References: <20210728122606.697619-1-pgwipeout@gmail.com>
+ <20210728122606.697619-3-pgwipeout@gmail.com>
+ <c7ea6f09-bed0-15d2-1124-44cf98898538@gmail.com>
+In-Reply-To: <c7ea6f09-bed0-15d2-1124-44cf98898538@gmail.com>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 28 Jul 2021 11:16:54 -0400
-Message-ID: <CAMdYzYqz-i1X2oORi6SjSqi6_KwRcbt2u04+cVxcSonX9gxOew@mail.gmail.com>
-Subject: Re: [PATCH 6/9] arm64: dts: rockchip: add missing rk3568 cru phandles
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Linus Walleij <linus.walleij@linaro.org>, 
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+Date: Wed, 28 Jul 2021 11:19:02 -0400
+Message-ID: <CAMdYzYoBHZ-8XfcAZ1uGGtT2EEY_wQQoAixhoArsBYVH62pbwA@mail.gmail.com>
+Subject: Re: [RFC PATCH 2/9] dt-bindings: phy: phy-rockchip-inno-usb2: add
+ rk3568 documentation
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
  devicetree@vger.kernel.org, 
  arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-phy@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_081708_446781_0EE487ED 
-X-CRM114-Status: GOOD (  30.06  )
+X-CRM114-CacheID: sfid-20210728_081916_212415_390D70B2 
+X-CRM114-Status: GOOD (  20.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,71 +96,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBKdWwgMjgsIDIwMjEgYXQgMTA6NDEgQU0gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNu
-dGVjaC5kZT4gd3JvdGU6Cj4KPiBBbSBNaXR0d29jaCwgMjguIEp1bGkgMjAyMSwgMTY6MTg6NDkg
-Q0VTVCBzY2hyaWViIFBldGVyIEdlaXM6Cj4gPiBPbiBXZWQsIEp1bCAyOCwgMjAyMSBhdCAxMDow
-NiBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPiA+ID4KPiA+ID4g
-SGkgUGV0ZXIsCj4gPiA+Cj4gPiA+IEFtIE1pdHR3b2NoLCAyOC4gSnVsaSAyMDIxLCAxNTo1NToz
-MSBDRVNUIHNjaHJpZWIgUGV0ZXIgR2VpczoKPiA+ID4gPiBUaGUgZ3JmIGFuZCBwbXVncmYgcGhh
-bmRsZXMgYXJlIG5lY2Vzc2FyeSBmb3IgdGhlIHBtdWNydSBhbmQgY3J1IHRvCj4gPiA+ID4gbW9k
-aWZ5IGNsb2Nrcy4gQWRkIHRoZXNlIHBoYW5kbGVzIHRvIHBlcm1pdCBhZGp1c3RpbmcgdGhlIGNs
-b2NrIHJhdGVzCj4gPiA+ID4gYW5kIG11eGVzLgo+ID4gPiA+Cj4gPiA+ID4gU2lnbmVkLW9mZi1i
-eTogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPiA+ID4gPiAtLS0KPiA+ID4gPiAg
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NnguZHRzaSB8IDMgKysrCj4gPiA+ID4g
-IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKPiA+ID4gPgo+ID4gPiA+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2eC5kdHNpIGIvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NnguZHRzaQo+ID4gPiA+IGluZGV4IDA5MDVmYWMwNzI2
-YS4uOGJhMDUxNmVlZGQ4IDEwMDY0NAo+ID4gPiA+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTZ4LmR0c2kKPiA+ID4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU2eC5kdHNpCj4gPiA+ID4gQEAgLTIxOCw2ICsyMTgsOCBAQCBncmY6IHN5c2Nv
-bkBmZGM2MDAwMCB7Cj4gPiA+ID4gICAgICAgcG11Y3J1OiBjbG9jay1jb250cm9sbGVyQGZkZDAw
-MDAwIHsKPiA+ID4gPiAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicm9ja2NoaXAscmszNTY4
-LXBtdWNydSI7Cj4gPiA+ID4gICAgICAgICAgICAgICByZWcgPSA8MHgwIDB4ZmRkMDAwMDAgMHgw
-IDB4MTAwMD47Cj4gPiA+ID4gKyAgICAgICAgICAgICByb2NrY2hpcCxncmYgPSA8JmdyZj47Cj4g
-PiA+ID4gKyAgICAgICAgICAgICByb2NrY2hpcCxwbXVncmYgPSA8JnBtdWdyZj47Cj4gPiA+Cj4g
-PiA+IEkgZG9uJ3QgdGhpbmsgdGhlIHBtdWNydSBuZWVkcyBib3RoIGFuZCBpbiBmYWN0IHRoZSBt
-YWlubGluZQo+ID4gPiBjbG9jayBkcml2ZXIgc2hvdWxkIGp1c3QgcmVmZXJlbmNlIGl0cyBzcGVj
-aWZpYyBncmYgYXQgYWxsLCBpLmUuCj4gPiA+ICAgICAgICAgcG11Y3J1IC0+IHBtdWdyZiAodmlh
-IHRoZSByb2NrY2hpcCxncmYgaGFuZGxlKQo+ID4gPiAgICAgICAgIGNydSAtPiBncmYKPiA+ID4K
-PiA+ID4gSSd2ZSBub3Qgc2VlbiBhbnl0aGluZyBicmVha2luZyB0aGlzIHNjb3BlIHNvIGZhci4K
-PiA+Cj4gPiBJIHRob3VnaHQgdGhlIHNhbWUgdGhpbmcgYXMgd2VsbCwgYnV0IGZvciBzb21lIHJl
-YXNvbiB0aGUgZHJpdmVyCj4gPiByZWZ1c2VzIHRvIGFwcGx5IGFzc2lnbmVkLWNsb2NrcyB0byB0
-aGUgcGxscyB1bmxlc3MgdGhlc2UgYXJlIGFsbAo+ID4gcHJlc2VudC4KPiA+IElmIHRoZSBkcml2
-ZXIgY2FuIGdldCB0aGVzZSBhc3NpZ25tZW50cyBhdXRvbWF0aWNhbGx5IGV2ZW50dWFsbHksCj4g
-PiBwZXJoYXBzIGl0J3MgYSBsb2FkaW5nIG9yZGVyIGlzc3VlPwo+ID4KPiA+IFRoaW5raW5nIGFi
-b3V0IGl0LCBpdCdzIHByb2JhYmx5IHRoZSBncmYgYW5kIHBtdWdyZiBoYXZlbid0IHByb2JlZAo+
-ID4gd2hlbiB0aGUgZHJpdmVyIGlzIGF0dGVtcHRpbmcgdG8gYXNzaWduIHRoZXNlLCBhbmQgdHlp
-bmcgdGhlbSB0b2dldGhlcgo+ID4gZm9yY2VzIHRoZSBwcm9iZSB0byBoYXBwZW4gZmlyc3QuCj4K
-PiB0aG91Z2ggbm90aGluZyByZWZlcmVuY2VzIHRoZSByZWd1bGFyIGdyZiBmcm9tIHRoZSBwbXVj
-cnUgSSB0aGluay4KPgo+IEkuZS4gdGhlIHBtdWNydSBQTEwgcmVhZCB0aGVpciBsb2NrIHN0YXRl
-IGZyb20gUkszNTY4X1BNVV9NT0RFX0NPTgo+Cj4gVGhlIHJrMzU2OCByZXVzZXMgdGhlIHBsbF9y
-azMzMjgtdHlwZSB3aGljaCBpbiB0dXJuIGlzIGEgbW9kaWZpZWQgcGxsX3JrMzAzNgo+IGFuZCB1
-c2VzIHRoZWlyIG9wcy4gV2hpY2ggaW4gdHVybiBtZWFucyB0aGUgcGxsIHNob3VsZG4ndCBhY2Nl
-c3MgdGhlIEdSRiBhdAo+IGFsbCwgYXMgaXQgdXNlcyB0aGUgcGxsJ3Mgb3duIHJlZ2lzdGVyIHRv
-IGNoZWNrIHRoZSBsb2NrZWQgc3RhdGUuCj4KPiBDYW4geW91IHRyeSB0byBjaGFuZ2UgY2xrLXBs
-bC5jIGZyb20KPgo+ICAgICAgICAgc3dpdGNoIChwbGxfdHlwZSkgewo+ICAgICAgICAgY2FzZSBw
-bGxfcmszMDM2Ogo+ICAgICAgICAgY2FzZSBwbGxfcmszMzI4Ogo+ICAgICAgICAgICAgICAgICBp
-ZiAoIXBsbC0+cmF0ZV90YWJsZSB8fCBJU19FUlIoY3R4LT5ncmYpKQo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgIGluaXQub3BzID0gJnJvY2tjaGlwX3JrMzAzNl9wbGxfY2xrX25vcmF0ZV9vcHM7
-Cj4gLi4uCj4gdG8KPiAgICAgICAgIHN3aXRjaCAocGxsX3R5cGUpIHsKPiAgICAgICAgIGNhc2Ug
-cGxsX3JrMzAzNjoKPiAgICAgICAgIGNhc2UgcGxsX3JrMzMyODoKPiAgICAgICAgICAgICAgICAg
-aWYgKCFwbGwtPnJhdGVfdGFibGUpCj4gICAgICAgICAgICAgICAgICAgICAgICAgaW5pdC5vcHMg
-PSAmcm9ja2NoaXBfcmszMDM2X3BsbF9jbGtfbm9yYXRlX29wczsKPgo+IHNpbWlsYXIgdG8gcmsz
-Mzk5PwoKVGhhbmtzLCBJJ2xsIHRlc3QgdGhpcyEKCj4KPiBIZWlrbwo+Cj4gPiA+ID4gICAgICAg
-ICAgICAgICAjY2xvY2stY2VsbHMgPSA8MT47Cj4gPiA+ID4gICAgICAgICAgICAgICAjcmVzZXQt
-Y2VsbHMgPSA8MT47Cj4gPiA+ID4gICAgICAgfTsKPiA+ID4gPiBAQCAtMjI1LDYgKzIyNyw3IEBA
-IHBtdWNydTogY2xvY2stY29udHJvbGxlckBmZGQwMDAwMCB7Cj4gPiA+ID4gICAgICAgY3J1OiBj
-bG9jay1jb250cm9sbGVyQGZkZDIwMDAwIHsKPiA+ID4gPiAgICAgICAgICAgICAgIGNvbXBhdGli
-bGUgPSAicm9ja2NoaXAscmszNTY4LWNydSI7Cj4gPiA+ID4gICAgICAgICAgICAgICByZWcgPSA8
-MHgwIDB4ZmRkMjAwMDAgMHgwIDB4MTAwMD47Cj4gPiA+ID4gKyAgICAgICAgICAgICByb2NrY2hp
-cCxncmYgPSA8JmdyZj47Cj4gPiA+ID4gICAgICAgICAgICAgICAjY2xvY2stY2VsbHMgPSA8MT47
-Cj4gPiA+ID4gICAgICAgICAgICAgICAjcmVzZXQtY2VsbHMgPSA8MT47Cj4gPiA+ID4gICAgICAg
-fTsKPiA+ID4gPgo+ID4gPgo+ID4gPgo+ID4gPgo+ID4gPgo+ID4KPgo+Cj4KPgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wed, Jul 28, 2021 at 11:14 AM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> Hi Peter,
+>
+> Some comments. Have a look if it's useful.
+>
+> On 7/28/21 2:25 PM, Peter Geis wrote:
+> > The rk3568 usb2phy node is a standalone node with a single muxed
+> > interrupt.
+> > Add documentation for it to phy-rockchip-inno-usb2.
+> >
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > ---
+> >  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml   | 8 ++++----
+> >  1 file changed, 4 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+> > index 5bebd86bf8b6..f16fea5cad1c 100644
+> > --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+> > +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+> > @@ -18,6 +18,7 @@ properties:
+> >        - rockchip,rk3328-usb2phy
+> >        - rockchip,rk3366-usb2phy
+> >        - rockchip,rk3399-usb2phy
+> > +      - rockchip,rk3568-usb2phy
+> >        - rockchip,rv1108-usb2phy
+> >
+> >    reg:
+> > @@ -50,6 +51,9 @@ properties:
+> >      description:
+> >        Phandle to the extcon device providing the cable state for the otg phy.
+> >
+>
+> > +  interrupts:
+>
+> > +    description: Muxed interrupt for both ports
+>
+> My spelling checker suggest: Mixed. Don't know what's correct...
+
+It is muxed, all interrupts come over the single line.
+
+>
+> > +
+>
+> For rk3568 only.
+> Could you test/use something like this?
+>
+> if:
+>   properties:
+>     compatible:
+>       contains:
+>         const: rockchip,rk3568-usb2phy
+>
+> then:
+>   properties:
+>     interrupts:
+>       maxItems: 1
+>
+>   required:
+>        - interrupts
+>
+> >    rockchip,usbgrf:
+> >      $ref: /schemas/types.yaml#/definitions/phandle
+> >      description:
+> > @@ -78,8 +82,6 @@ properties:
+> >
+>
+> >      required:
+> >        - "#phy-cells"
+> > -      - interrupts
+> > -      - interrupt-names
+>
+> These are still required for other Rockchip SoCs.
+> Could you test/use something like this?
+>
+>       if:
+>         properties:
+>           compatible:
+>             contains:
+>               const: rockchip,rk3568-usb2phy
+>
+>       else:
+>         required:
+>           - interrupts
+>           - interrupt-names
+
+This is all sane to me, I'll check to ensure it works.
+
+>
+> >
+> >    otg-port:
+> >      type: object
+> > @@ -109,8 +111,6 @@ properties:
+> >
+>
+> >      required:
+> >        - "#phy-cells"
+> > -      - interrupts
+> > -      - interrupt-names
+>
+> dito
+>
+> >
+> >  required:
+> >    - compatible
+> >
+
+Thank you for the feedback!
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
