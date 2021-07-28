@@ -2,84 +2,88 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5A44C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78DA4C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 94EC360C41
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:58:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94EC360C41
+	by mail.kernel.org (Postfix) with ESMTPS id 37B4160F45
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 13:59:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 37B4160F45
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mEA2braanICvSHIuoy5PC3zDHd6wEIsDonMtgM/jo0k=; b=sshOIeLpBaRdrf
-	dQ+vp34hGFYO8CGU0kRhJ+hVUNCHmNbplOmeqV4Gfc4K6Q6KjbtkR0p/pTu1qf0+hnzp0Km/7FQ/c
-	sphr/+hFcolpbUY/DbIzp844uAu51cU13kX0Xuy4G8sVecFCcBkzqBni9RT3qxsZBdG8mOdZ0rbrs
-	DCEyTzCGeQB1dJjQ0f29u3bfndK7cooKaRE6ZGijWkmOA3obeqLtR5Wl91lcCsMWMLgPb0G+o8c+g
-	jWflD7s0zxDtfcnfpnXs/JeHwxHjRJrhtPnaCIIzqDEOOEb1+OAP6Jr/D8T06caDvhuRb6uMU8s6m
-	I3gEV4ULQbxiBHtx2vdA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WHBGWC79jccHlaJV7R4ZuLSQ6qWPhGmwZBz4b90vkCs=; b=uaUgYG/aOOzy8m
+	tpH0Gf16N5PmQzd/Sxnf6l4CBKqcB000qZQx+AbZEZsuuOaGBiDZBe/JrM4dXPmbrsGa5v7t8ws75
+	OvTB0d8PgKiIZbKn9JbiC1dwTw/nc+wB4vW5dlN2GXZLSFopT8eIn6HRl0O/tEBunbPri0vRywnTF
+	UBhfcNs9MthtHjz6YOUxo8XUTYKAAaCNp4sOAxGBbBStrDhWRrvrgCZXn/s9kLYdiVLk/0hcuJrFB
+	GN82zeRc4BeLg0vNfhpWODZtsUiTs3p3aGvBpmx6v4215cOxfRtzIsS3C8orHlBfYTynF6J9swEf7
+	sml4HZDCRh7baGtXm9gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8j8T-000kOd-71; Wed, 28 Jul 2021 12:58:09 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1m8k5c-000tYM-Sc; Wed, 28 Jul 2021 13:59:16 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8j8P-000kBj-R4; Wed, 28 Jul 2021 12:58:07 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id k65so3672460yba.13;
- Wed, 28 Jul 2021 05:58:05 -0700 (PDT)
+ id 1m8k2L-000rrz-KG; Wed, 28 Jul 2021 13:55:54 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id k7so2213952qki.11;
+ Wed, 28 Jul 2021 06:55:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4bRUEOcKLm4DS4B/jW3feMkPgYheSCRlhCV3QPcIdfM=;
- b=r74xakMZ0GiSUxuVoyqO2APZWeaXmcbQVrXVDiOwVxqOXx9GehIwH9mGx4ycKOytQW
- HnGv1o7MAsiF5djl3nbNAK84t3xUkxmxrOJM4phlolM03We9YVytoRUiie5+/Ypy4woY
- 4sE7Z6pQxSiPHIzdzOAM96SlrxLQT5vbDyuOAvqcyMr6kGKzm4MNt3iMa3aefeXISMpg
- HY+lYyVATYSzUISOzWqbZcZBfZtJePPI5Vy8xfUesSAhbHwc+0KgQwwYuSYdqRiWYfnc
- /oyM3k+Xr2a+7XBIJXAmMigVKATbwnjETeSXsSmxREWe7kaC+hmfbCqKCnCYB2xKlQ+m
- GyKA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pGfwAbdRt78qHTO96TNHse01yCgrSXx0nBQE1K40Z9k=;
+ b=oqxg8mVy/V6nu+jVSAFy/QCDzw4popNFWi0oMDsYaEG6drkfVexNbdx+GFQOcSCAgK
+ Q4I4iOETyduykRRnpF/1yZQ1S8r0gplh47RkJE8o61uTRV+O0qGHSZqaefM1+kFWwXJr
+ 7fw1crb4tbEyYGRNKho8iLHDRLTTEjMVau7riZJi7ulD3ZWPtgh9jyEchpDYCktXY0NQ
+ wlX31YlIfnfKq264A0Wjoazr5fvy1CufiUQQ7oPI1IdlWLWCDjkRAZV4cq8vtudg1Med
+ hXemtX53BEFNnO34o2AAev56iHoUmsN7Y/zVokRyBFuT05FGteJHS+wpstmNVhCb/16N
+ xvuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4bRUEOcKLm4DS4B/jW3feMkPgYheSCRlhCV3QPcIdfM=;
- b=O5xJelNzIctozZC02S6dVgwRSyQGdXFrm4s6koTSXyfFeZqlCPnbl45RooF4RCU1AL
- afu98Gzc4soanEAcQpxluuk+fmMFghsYz6Ia1TZdtnXewEsrRhN47bWp3Cvwx4vRcP4z
- XsPBTfflxCcLJSgyfuPoEZiQ6udh+xBcr5q3SPZ0BeSwQ82vgDDeMNROWzGMj0YM+Wx7
- bR7f8/lK5/O0V9FIHbT9zZeBs0xIDmy7MBuXYGL23MrFrKqgjAXtZz/zwl1DtW/fmGU3
- E2ALNFEJc5M/3qbMVjOPuTPJTPX1SHCYDzwpa1lrl3zGmFxHgKNCmGQcZ8Ts9rDfJ24u
- Y67A==
-X-Gm-Message-State: AOAM533aKjKkSvNh+VIEuJY4VJfhSyMCsceCxVglDtflT2weeHO5+f3J
- LOzYeUrtSn9sd1TRUok9kYR+mnCc18s9XwObCzQ=
-X-Google-Smtp-Source: ABdhPJzmzWvu27COtLqMKKkTMUYpg/RrU2KpvbhDxtRYowsBJyb58EUIfvC1aCTFfcDylioNXM0Vz5iuQoLCN0k9lZk=
-X-Received: by 2002:a25:808b:: with SMTP id n11mr18554881ybk.141.1627477084646; 
- Wed, 28 Jul 2021 05:58:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210726190130.1973-1-macroalpha82@gmail.com>
-In-Reply-To: <20210726190130.1973-1-macroalpha82@gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pGfwAbdRt78qHTO96TNHse01yCgrSXx0nBQE1K40Z9k=;
+ b=XUVIWSUV2j8tiWrs8kAFkhdv9606Z+DrCAVqoVDhcxugfsUWHN2QRFK8+qbA5eK3o2
+ Oi9PlXPhXyLxd/dZXI9W8mNuMHiz8WASlpQCaZjbiN8bS2xnhlOvXBCP16zGRveijSx+
+ S7Igt935lqmDmUf9ayLrsbvKsbVr+YNXx1J9RWc/kTD/P0gOH+0ocZNXADquD2umMAU+
+ ZnHX2xW3s6mdKsVJ68uukFCCHfjkvv4lfxLkGwtVhnrLvPingGqblh5zAc/AevH2NSOw
+ tKQWrfpWH6OXzQI4+0R6n1ddLRqVADs9Hjq6t/7MXlh4CaV5+r0jECaSvGWr1npR4+Yo
+ fThw==
+X-Gm-Message-State: AOAM530zsE/VbsSgdLACF82PrBfofVM2dBnkr7aXxYFSpt4IMKJx4vdO
+ EjCr99h/PC9jphcQJNHxVvc=
+X-Google-Smtp-Source: ABdhPJwFOefvh7nvrQLkSCRfqcRb4dWBL8gmNm47o675Elqgo8EaaKtcFOiaHI58yZ4EhsJVPVQQHg==
+X-Received: by 2002:a05:620a:a19:: with SMTP id
+ i25mr27119975qka.426.1627480552482; 
+ Wed, 28 Jul 2021 06:55:52 -0700 (PDT)
+Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
+ by smtp.gmail.com with ESMTPSA id t64sm27202qkd.71.2021.07.28.06.55.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Jul 2021 06:55:51 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 28 Jul 2021 08:57:52 -0400
-Message-ID: <CAMdYzYqjrReKOWBMsaGpjj-hSvQYap=hMeyvpeggKuz+mVkULw@mail.gmail.com>
-Subject: Re: [RFC v2 0/4] power: supply: Add Support for RK817 Charger
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, maccraft123mc@gmail.com, 
- sre@kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Rob Herring <robh+dt@kernel.org>, 
- Lee Jones <lee.jones@linaro.org>, Chris Morgan <macromorgan@hotmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH 0/9] fixes and enablement for rk356x
+Date: Wed, 28 Jul 2021 09:55:25 -0400
+Message-Id: <20210728135534.703028-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_055805_928960_0A37A5B7 
-X-CRM114-Status: GOOD (  25.69  )
+X-CRM114-CacheID: sfid-20210728_065553_726721_F6BE94C6 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,74 +101,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 26, 2021 at 3:02 PM Chris Morgan <macroalpha82@gmail.com> wrote:
->
-> From: Chris Morgan <macromorgan@hotmail.com>
->
-> As this is my first charger driver, I'm submitting it as an RFC so I
-> can get input from the community on what else is needed to make the
-> driver consistent with the quality upstream expects.
->
-> This series is to add support for the Rockchip rk817 battery charger
-> which is present in all Rockchip RK817 PMICs. The driver was written
-> as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
-> myself Chris Morgan <macromorgan@hotmail.com>.
->
-> The driver requires some basic parameters be described about the
-> battery in the devicetree such as the maximum capacity, the minimum
-> and maximum voltage for the battery, the maximum charge current, the
-> maximum charge voltage, and the value of sample resistors and sleep
-> currents.
->
-> The hardware itself contains an ADC capable of measuring the voltage,
-> current, and temperature of the battery (though my implementation of an
-> Odroid Go Advance lacks a thermistor for temperature). It also contains
-> a columb counter, registers for tracking the measured voltage and
-> current at boot, and a few bytes of nvram for storing data.
+Good Morning,
 
-Feel free to add my Tested-by: Peter Geis <pgwipeout@gmail.com>
+This series aims to fix some early issues with the rk356x and enable
+nodes that are currently supported by the available drivers.
 
-Tested on the Pine64 Quartz64 Model A.
-We can't go as low on the battery voltage, otherwise the SOC becomes
-unstable before it can shut down.
-<3625000 0> seems sufficient for us though (adding this for the
-benefit of anyone else testing).
+1. increases the max clocks in the dt-bindings to permit patch 3.
+2. fixes the mbi-alias, which points to the wrong location
+3. adds the gpio debounce clocks which are necessary for gpio to bind
+4. adds the common gmac1 node
+5. adds the tsadc nodes
+6. adds the missing cru and pmucru phandles necessary to reclock
+7. adjusts the gpll and ppll clocks to better support hardware
+8. enables the gmac1 on the Quartz64
+9. adds thermal support to the Quartz64
 
-Voltages are accurate as measured at the battery.
-Are there plans to expose the thermal sensor (if that's possible)?
+Peter Geis (9):
+  dt-bindings: gpio: rockchip,gpio-bank: increase max clocks
+  arm64: dts: rockchip: fix rk3568 mbi-alias
+  arm64: dts: rockchip: add rk356x gpio debounce clocks
+  arm64: dts: rockchip: add rk356x gmac1 node
+  arm64: dts: rockchip: add rk3568 tsadc nodes
+  arm64: dts: rockchip: add missing rk3568 cru phandles
+  arm64: dts: rockchip: adjust rk3568 pll clocks
+  arm64: dts: rockchip: enable gmac node on quartz64-a
+  arm64: dts: rockchip: add thermal support to Quartz64 Model A
 
->
-> Changes from V1:
->
->  - Fixed a CLANG warning regarding an uninitalized variable.
->  - Fixed a CLANG warning regarding a pointer as a bool value always
->    returning as true.
->  - Added Maya Matuszczyk to the Signed-off-by.
->
-> Chris Morgan (4):
->   [RFC v2 1/4] dt-bindings: Add Rockchip rk817 battery charger support
->   [RFC v2 2/4] mfd: Add Rockchip rk817 battery charger support
->   [RFC v2 3/4] power: supply: Add charger driver for Rockchip RK817
->   [RFC 4/4] arm64: dts: rockchip: add rk817 charger to Odroid Go Advance
->
->  .../devicetree/bindings/mfd/rk808.txt         |  35 +-
->  .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  25 +
->  drivers/mfd/rk808.c                           |  16 +-
->  drivers/power/supply/Kconfig                  |   6 +
->  drivers/power/supply/Makefile                 |   1 +
->  drivers/power/supply/rk817_charger.c          | 932 ++++++++++++++++++
->  include/linux/mfd/rk808.h                     |  87 ++
->  7 files changed, 1099 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/power/supply/rk817_charger.c
->
-> --
-> 2.25.1
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+ .../bindings/gpio/rockchip,gpio-bank.yaml     |   2 +-
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  66 +++++++++
+ .../boot/dts/rockchip/rk3568-pinctrl.dtsi     |   6 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 136 +++++++++++++++++-
+ 4 files changed, 203 insertions(+), 7 deletions(-)
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
