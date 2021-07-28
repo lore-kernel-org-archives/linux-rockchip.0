@@ -2,89 +2,87 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C21DCC432BE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 18:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6E21C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 18:30:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89A8660EE2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 18:05:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 89A8660EE2
+	by mail.kernel.org (Postfix) with ESMTPS id 8A1EC6103B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 18:30:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8A1EC6103B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cQrcylmXBC6Zs8sFNBP+KC6WU9FmG099hOn9lj0bC3M=; b=YE3u3212VCrw2t
-	JXfA2P/2RQNesZ75hDy/wF6VCTP1SRYO7pzlssBdhO948W/Dpme2XunKsiuh4jtbuQ6TTUod+nJNi
-	gYGb6mXGEFmgNuU0lX+pa6p+XJ54+mKF681jierUZFh22o5KDHljOq+/IEOTTv2yTknkif4NydZaw
-	JLwKjAUWUbOl91NLy/v2GR/0RMcpCUDE3T+xUcwBY09EFOjVfDQn5l+GsoKymmwIty2wj2hKDOOG5
-	PwvLSMBg4qKJiliWSm93ms+lmGDCzZc29EXoBBHcNpvtls7v3kJOsTu6b2SrHpOQ6oZ401WNs9G2r
-	0c5hWJZkNDlbwCH7c9xg==;
+	List-Owner; bh=BGd6rZPlEfjKQJpwa5JcWMK6ntHkTs9leqsSm66SW+c=; b=Gr7ogwIgcJdoNz
+	+HQP3SiE3aih5fgmvac6vOvVfLGY+HpVaPOpvMjC5jEtk1JS+HV1eHgwYXj05DobgJeZ9hdhpiRUx
+	wUkK5MbcqWkKZGRtm8B/K3D5A8nrPBrGRtZCsJE4O1v4HVH4aIw174ETMvw+AkbAFCJ4QPp54azwQ
+	8Jy69tRcCcsSHDyfBMzBjPn9sNy5d69QBBdjEi1DvI5GFqVt7+pJn7V1Q4rtQJBuvtq9QvcfccXZV
+	0+HfJaFrfr4clai78t03/DdGSQLsFpYiYbGSCBaUBFuVm7LSuMJh6TPyxWq0GpZRiooQ6G1S4/sru
+	aOx3oIB2W50P0B6tCY1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8nwD-001zm0-Ay; Wed, 28 Jul 2021 18:05:49 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1m8oJt-0025JC-Fw; Wed, 28 Jul 2021 18:30:17 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8nre-001xrk-CG; Wed, 28 Jul 2021 18:01:08 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id t68so3085997qkf.8;
- Wed, 28 Jul 2021 11:01:05 -0700 (PDT)
+ id 1m8oJg-0025Hc-4C; Wed, 28 Jul 2021 18:30:05 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id q15so5555048ybu.2;
+ Wed, 28 Jul 2021 11:30:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=A7JOWTCTU3mD3oDw+k1gzAhKjoRm+3hquu6wc2UO4Yo=;
- b=NhfcLtyU22TcWSCOGXGgpZ+wknGxJBUJ5IiOpFCdLpmp46UYw742rMBwYjXqbZjzw1
- SdxLvYFtMWyj3r3NDGQiApGAVSArPmipjdGr7W7vnGvlZEYFkwguPDrommUZGF//UtGW
- 0sbF2FhEItBqfeeoh+B+wC9+QKKaAxmot5SVomrGF4zhThnE2iXwvzvdDUbmdzpePTI3
- xS5dyhHaBV2oq0AT54Ti8A+g/T9BzEJxFqttkI3QnhOdKw4mQ5pb74XYLc2h3HdHsn9i
- 5T/lISfJUU/zjOEA9lQiRHXkVZ36TUHUrewd0m/dtgLG2CD/SdgZxISNlGHfyPrp9cjP
- frTA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=y95ajZGFXcI2xcNt97PSRH6Nx3noubDMmxeuFO9Gk2o=;
+ b=bNDvnmWEOW5mJA2nX6+TwYm+WfU/8VI/sTK0FcMohSw8ezYb31tiy3T70kSUl334Ry
+ xdeiM/EpCKCyiSFMi0u1Kd+2OZWOal7irKJG+ep4Hq3B2pAdfGd8jzWBHpoPxfxhnG3L
+ LvReE8RPlv9ta5ns0axwZXOeWMyDvKqQWNykLBTW1r0aG3vPCkIMdr2Uj5mug8kuUQJb
+ EptKzl+PZMeRqA1KD4VG6evHWDZ8VxKQ08W6x5iMvu0tLmfMMKMxXC0crResOblZuc+D
+ oB1CgZ/PDqBr3LXRjwIJoN9kV8K+9m9Y4v2F1qQD9LiRgLmN5hp8BY6sVfCAMB5dsOvO
+ JbUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=A7JOWTCTU3mD3oDw+k1gzAhKjoRm+3hquu6wc2UO4Yo=;
- b=AyjFvaWKGz7EOy807Nm++Q/hMELacyyuv2OdpfckYdmwi1vvsvVnfqMRvDbcROea1B
- vfkqt3k2ztr5hLrA+SAVXUGVXa+aDPYV+Wk3HGT5rhCgCnHvcjhm4/vLjm4IqLA/kF+D
- 75ReUFcgKPL1Phv+Hnhs9b2g3SVwm6UVIl72e2Z8EfkPjaD4/vD7B3NXofTv5ViNYWXW
- aBzyA/Z8eZgA0EWMgMdmZdrUs0rEVnlR9f8T+OzczkM9Y5VRpsYvegYVGT212MOsyZQk
- RuS9Awx6MQ4XPEbbnYYStMWuSMcjy6oAuno7qaWrjiWr1Q6R/A8M8GrdUHwrVpl9TYkE
- uB+g==
-X-Gm-Message-State: AOAM531zehUH1RoI/LM8dVnyGon8N7y+55Wr8Ttk+WcYTO+Kro7TKFtx
- XtsAa/IiGdrROc3GZzC1g/c=
-X-Google-Smtp-Source: ABdhPJwAeS8EcjSx8OOrubvq4e88OEay+SE8dd0bRnV9hpQSSmPWnW1xeHm+IBfMailcCNtrvqYvCQ==
-X-Received: by 2002:a37:5d7:: with SMTP id 206mr969388qkf.170.1627495264946;
- Wed, 28 Jul 2021 11:01:04 -0700 (PDT)
-Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
- by smtp.gmail.com with ESMTPSA id r5sm223341qtm.75.2021.07.28.11.01.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 11:01:04 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 8/8] arm64: dts: rockchip: add thermal support to Quartz64
- Model A
-Date: Wed, 28 Jul 2021 14:00:34 -0400
-Message-Id: <20210728180034.717953-9-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210728180034.717953-1-pgwipeout@gmail.com>
-References: <20210728180034.717953-1-pgwipeout@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=y95ajZGFXcI2xcNt97PSRH6Nx3noubDMmxeuFO9Gk2o=;
+ b=txw6RAcaHwKSliqtcHwHxUANZ97hFlvCG3Ng2wV5mmDNoh9lFLgRZKiFAa4okZDkWV
+ JvIN9fWd5C+0d6iKUMOq1SFSOw8bzXH2p53djh11e2RWOHs+UMatUZPhRb4bXmVmZAxb
+ YvnrJWh5z89MRO+mRCT2qgvdjromzg0MuUyLap2ZlSiGw1x2iynZxj6JaVhFG/SzMP/G
+ d1MwngKccXAIHsNvpTGiXHHmutVM1vLJ6ULvTg5ibENRTva/IsIltgZKEx37CG0af7Cs
+ z/atl2pnWX4YFReai9cuhR0bXH7KXsTH3yHaWjQihrYMlaIE2Ugi1Lw20pOR23A9w11F
+ oXdg==
+X-Gm-Message-State: AOAM531sikffe5N8VdQShkiTYMwC94EaA/vv7hHOekSZnXuVyE9C7+gI
+ ToersmMu6nATgqSP1SZm4e1zK0wwZUzkf1aJg7o=
+X-Google-Smtp-Source: ABdhPJz8AaPKzA6NAbKDMFvIaMMGEpaICIrpzm6ZaC0jVYadagMj+meR/xZJdBaq+MGpF5RxyIfm4Ihl6OkuyeK+hrc=
+X-Received: by 2002:a5b:48f:: with SMTP id n15mr1368515ybp.457.1627497002716; 
+ Wed, 28 Jul 2021 11:30:02 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210728161020.3905-1-michael.riesch@wolfvision.net>
+ <20210728161020.3905-3-michael.riesch@wolfvision.net>
+ <YQGaAFvqqc7wXrWD@lunn.ch>
+In-Reply-To: <YQGaAFvqqc7wXrWD@lunn.ch>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Wed, 28 Jul 2021 14:29:50 -0400
+Message-ID: <CAMdYzYo8zf0wjtAxTuYQnZQsBtw38prNuAA0j0sBEamcbzZbfA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rk3568-evb1-v10: add ethernet
+ support
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ Simon Xue <xxm@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_110106_508299_3246EE09 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20210728_113004_231519_16D5EF1A 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,75 +100,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the thermal nodes for the Quartz64 Model A.
-The Model A supports a single speed gpio fan.
+On Wed, Jul 28, 2021 at 1:55 PM Andrew Lunn <andrew@lunn.ch> wrote:
+>
+> On Wed, Jul 28, 2021 at 06:10:20PM +0200, Michael Riesch wrote:
+> > +&gmac0 {
+> > +     phy-mode = "rgmii";
+>
+> ...
+> > +
+> > +     tx_delay = <0x3c>;
+> > +     rx_delay = <0x2f>;
+>
+> Hi Michael
+>
+> In general, we try to have the PHY introduce the RGMII delays, not the
+> MAC. Did you try
+>
+> phy-mode = "rgmii-id";
+>
+> and remove these delay values? It is hard for me to say if that will
+> work because i've no idea what 0x3c and 0x2f means? Are they
+> equivalent to 2ns?
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 33 +++++++++++++++++++
- 1 file changed, 33 insertions(+)
+Unfortunately the driver and TRM are both rather non-specific as to
+how this works.
+The driver sets the tx_delay to 0x30 and rx_delay to 0x10 if these
+values are not defined, or sets them both to 0 in case of rgmii_id.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index b239f314b38a..a244f7b87e38 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -27,6 +27,14 @@ gmac1_clkin: external-gmac1-clock {
- 		#clock-cells = <0>;
- 	};
- 
-+	fan: gpio_fan {
-+		compatible = "gpio-fan";
-+		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		gpio-fan,speed-map = <0    0
-+				      4500 1>;
-+		#cooling-cells = <2>;
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 
-@@ -124,6 +132,23 @@ &cpu3 {
- 	cpu-supply = <&vdd_cpu>;
- };
- 
-+&cpu_thermal {
-+	trips {
-+		cpu_hot: cpu_hot {
-+			temperature = <55000>;
-+			hysteresis = <2000>;
-+			type = "active";
-+		};
-+	};
-+
-+	cooling-maps {
-+		map1 {
-+			trip = <&cpu_hot>;
-+			cooling-device = <&fan THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+		};
-+	};
-+};
-+
- &gmac1 {
- 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>;
- 	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>;
-@@ -433,6 +458,14 @@ &sdmmc0 {
- 	status = "okay";
- };
- 
-+&tsadc {
-+	/* tshut mode 0:CRU 1:GPIO */
-+	rockchip,hw-tshut-mode = <1>;
-+	/* tshut polarity 0:LOW 1:HIGH */
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
- &uart0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer>;
--- 
-2.25.1
+Generally all rockchip boards use this value instead of the rgmii_id,
+I imagine because it's more consistent to tune here than the hit or
+miss support of the phy drivers.
+The usual course of action is to test to find the lowest and highest
+working values and take the median value to plug in here.
 
+>
+>      Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
