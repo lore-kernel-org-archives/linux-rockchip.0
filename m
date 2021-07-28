@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC470C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A05EAC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:07:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BEBC660F45
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:07:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BEBC660F45
+	by mail.kernel.org (Postfix) with ESMTPS id 689A460C3F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 14:07:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 689A460C3F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,51 +24,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5W4NpS/eE3tS14aShdyaSHyphnWGIKEWWRF0+VKWWOo=; b=NmyRtjq34o+0Mk
-	D4NszRQjfnRgKk07QNWfKgk2/KYv5KSYXP6iPgzU+FmAYdRQ1j7ch6/lGMsRPqpjNP258+N/Ja7Xc
-	OxO4uMY1KOFbzweL3z9d3NRFvICkawBSnobRrrOTNW4aA9bLSBaA5jRcQ359ZJhYxFO3Sj0Arstkr
-	HHfdGcHvlSnnFLYedzG66b+rdINFCMJ7C1MBYZwXo46LC3HGk2geGuRxGeIJ02aP1ihRaDf460GX6
-	DGXUruZDzOlCX0HgL4eeE3af8s+1Jvte+FMzQza1U7Le690616/13Qw1LbAlJgxpPXnA65QgGJPJ5
-	tp7nEIqH1fUUI0mMMALw==;
+	List-Owner; bh=O41hG6d8OcYqnq+G0oIdD3dKux0z07pqpANEwSHITgw=; b=a8KNg0MMnim5iA
+	NQsPiXr6YqFjfRD1gwUk5h5VQTTmyoKWs206SnzyytvcUTC9A8gB0T4jg+qGdBsFMLIFxlidAaUgG
+	XX+rIY/ZAiRsHQE7Z6skR5Jt/37kxjIyZvZ/SS2vydPPQDq7rOlTKFZxQrSTJAzIgNjoihxT9HIY/
+	TBvE4OuvnP5LtAcHxW1JhzKz5eK0hs2LExLiJaLn9sv7SZskV606CVpMfqsYGCsmoyrQ+wGrlzJ0X
+	DOnoXYsyeEV8M0kFzIbZ5UDNTZ472RCZXANoHtZOvz2i25AvRjhyCdBraqextEQtTnJgtmulneEYd
+	VHxECLVsLN9zofVNlGag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8kDA-000xIA-JJ; Wed, 28 Jul 2021 14:07:04 +0000
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+	id 1m8kDD-000xJy-Ev; Wed, 28 Jul 2021 14:07:07 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8k2R-000rx1-Oo; Wed, 28 Jul 2021 13:56:01 +0000
-Received: by mail-qv1-xf2b.google.com with SMTP id x12so1524711qvo.12;
+ id 1m8k2S-000rxT-Le; Wed, 28 Jul 2021 13:56:02 +0000
+Received: by mail-qk1-x731.google.com with SMTP id 129so2249429qkg.4;
  Wed, 28 Jul 2021 06:55:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=rg5BgE/uGT7G9Q0TLIac/vS9ZXh8BbNch3GcxmLfwSM=;
- b=KCMf4446wjqkcLAvYc/vbvupqGYrOHZZ1b02HVjhPcRI1c6i7NsQaGzfkq1QnfTT31
- 2YKT54nBCT6qx31A1U62D7cYJLst9iGtgFl6GlTWuuJeR31jSGibVdt0akxtzC+WvfKk
- UMzycK+q3Oj2QCgKtVMCysTOssh9c5XXnbQq4HLgtZpDl80b2IVvGdJ2lYIqMUSA8ijP
- A2owYG8DvECR7B6mux0+ZiX+whWSAm9poS7pQp0++qrg5bXJYdJzIPjMCfI2ChemRP/n
- wQ+0ggx1uDKhckqHt2AT+eXPbFLR9UmMM7MwD8g7ES8/ZHw97N+Y4VMhteaeRBZ+BiW9
- Sd+g==
+ bh=tcKay3c6C9hrMhtn74mlAVcFV1FvG+ErliMHy1IIxoY=;
+ b=darC8OKOI71aM5dPQgy1vXucgnZu/mwcIs2CSjb0RuZr0zGTbHlKIt2BX7Is7PMrFX
+ 4UqWsvhV5M0BqYah3bvjZy0ZuvuFkYDBXv7pxFPY53fGdbZdsPS+l8WI1EaITn53EuKC
+ YLP7OgGg/VlILxz0/jECX3dtntv3/3h/vww1k+6GnusLtR4PTzNk5lbW4jvtqSGDSU7g
+ ReJ3c4koHvqZtVYTV5un+nPy+Dh6JSNQVRE39wkrGWZ6Ws7Th3hXSeyaMrjM1l80O4b0
+ 2rsICw2mYMIR4l+fFhVGi/SPmp19saEGzwNlZlgSGhwNzbFO/JuMbPXKGN+SEco0ph48
+ 5uUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=rg5BgE/uGT7G9Q0TLIac/vS9ZXh8BbNch3GcxmLfwSM=;
- b=tFbCExYuNgiEzqCJRWqQmxSEzLBJ+NRpHfUkfEnLGlTOEYXyLNrG67vGMXT4+9IJ+7
- k6L6fEpLieL7N2fckwhfQKZ8DhdhcBZe4HMsOohv8DOn4bxBNvtGNadXk+9qCk0tFJG/
- Inrb11uNVGuUytMvqnXePpqrF4ISWZD8W+EXwNk8CQfQZDPWg5l2HsOqm2/ZGTx+AedL
- 2nTXhT09vK1Id/9QMAdZ6W/fo1CDw8QwbUKLFUfoPgPEJ4kC8WrtGIhH0TQ0oix6N+cq
- gWNw5UX84doyIILUoH9Z2jiv2tSMIGx9dPv5lPYnktfkTY8z83veUtfrG6qUjDgmAFxP
- dWaQ==
-X-Gm-Message-State: AOAM531D1WHGMhCkPWO9FrK0xZAGdESWieFAoEFNAOt6LqG0OKmwM/fS
- wb/50fPm7nNEll001rA92C4=
-X-Google-Smtp-Source: ABdhPJx8XWhJEjfq2Fvj726/Hw5wJ13Qv7bdtDwqT3fTu3+dsAeyAiYP3xpg2dW5kECYjUuFPVmy1w==
-X-Received: by 2002:a05:6214:188c:: with SMTP id
- cx12mr30649qvb.7.1627480558176; 
+ bh=tcKay3c6C9hrMhtn74mlAVcFV1FvG+ErliMHy1IIxoY=;
+ b=VYC7ejImqWt2lsQKtmtKnNPXx6g79JblzHlQqWz+kkN5NPMRkw4BYe3KLao52i7vyW
+ S7ON/uGCnbcFpok5YrgMirDjH0C006w5kGv62tiOPWjwsBL8KBDNWcRA/VaABplNm7Ht
+ FGwY19aOJ6a8GjHdGSQSx1LjDI9G7L2sR6cz/9SKIikPinekfcuK3SPlYYifX7XpQ2n9
+ BQJF1ac1+Hg5lIcP5APyBHeCiuUX8obTpvzZI6yFxpCNMoOkAgQZsHHps5AWG991d9+h
+ z6F7n+8V8MWQY+q4BEm4TVDiJ36ZMo/MKPrUt8i4glndzt6W9o9KmfrnbYVsPSBCsKyT
+ MAeg==
+X-Gm-Message-State: AOAM531lEAXDTx9Hok5/csy5gK+ufZ5YMqtsfHtnpHNi4dChpkdNj1qC
+ b7drVBERTRQ+dlT8I+nF6G0=
+X-Google-Smtp-Source: ABdhPJw0z8ytX74Ph/kZ+j0zcEFNcYorj+QzIBa5GqZDctfXT7NmKz3XFmKk4Jg/YWnmekqjWstU6A==
+X-Received: by 2002:a37:a04a:: with SMTP id j71mr2805363qke.424.1627480558957; 
  Wed, 28 Jul 2021 06:55:58 -0700 (PDT)
 Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
- by smtp.gmail.com with ESMTPSA id t64sm27202qkd.71.2021.07.28.06.55.57
+ by smtp.gmail.com with ESMTPSA id t64sm27202qkd.71.2021.07.28.06.55.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 06:55:57 -0700 (PDT)
+ Wed, 28 Jul 2021 06:55:58 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Linus Walleij <linus.walleij@linaro.org>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
@@ -76,16 +75,17 @@ To: Linus Walleij <linus.walleij@linaro.org>,
 Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH 8/9] arm64: dts: rockchip: enable gmac node on quartz64-a
-Date: Wed, 28 Jul 2021 09:55:33 -0400
-Message-Id: <20210728135534.703028-9-pgwipeout@gmail.com>
+Subject: [PATCH 9/9] arm64: dts: rockchip: add thermal support to Quartz64
+ Model A
+Date: Wed, 28 Jul 2021 09:55:34 -0400
+Message-Id: <20210728135534.703028-10-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210728135534.703028-1-pgwipeout@gmail.com>
 References: <20210728135534.703028-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_065559_902129_A985ECCA 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20210728_065600_820800_650CEC48 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,75 +103,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the gmac controller on the Pine64 Quartz64 Model A.
+Add the thermal nodes for the Quartz64 Model A.
+The Model A supports a single speed gpio fan.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 37 +++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index a3cdb6c2bec6..90cdabfac86b 100644
+index 90cdabfac86b..eb311ea19f6a 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -19,6 +19,13 @@ chosen: chosen {
- 		stdout-path = "serial2:1500000n8";
+@@ -26,6 +26,14 @@ gmac1_clkin: external-gmac1-clock {
+ 		#clock-cells = <0>;
  	};
  
-+	gmac1_clkin: external-gmac1-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac1_clkin";
-+		#clock-cells = <0>;
++	fan: gpio_fan {
++		compatible = "gpio-fan";
++		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
++		gpio-fan,speed-map = <0    0
++				      4500 1>;
++		#cooling-cells = <2>;
 +	};
 +
  	leds {
  		compatible = "gpio-leds";
  
-@@ -116,6 +123,29 @@ &cpu3 {
+@@ -123,6 +131,23 @@ &cpu3 {
  	cpu-supply = <&vdd_cpu>;
  };
  
-+&gmac1 {
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>;
-+	clock_in_out = "input";
-+	phy-supply = <&vcc_3v3>;
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1m0_miim
-+		     &gmac1m0_tx_bus2
-+		     &gmac1m0_rx_bus2
-+		     &gmac1m0_rgmii_clk
-+		     &gmac1m0_clkinout
-+		     &gmac1m0_rgmii_bus>;
-+	snps,reset-gpio = <&gpio0 RK_PC3 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	/* Reset time is 20ms, 100ms for rtl8211f */
-+	snps,reset-delays-us = <0 20000 100000>;
-+	tx_delay = <0x30>;
-+	rx_delay = <0x10>;
-+	phy-handle = <&rgmii_phy1>;
-+	status = "okay";
-+};
++&cpu_thermal {
++	trips {
++		cpu_hot: cpu_hot {
++			temperature = <55000>;
++			hysteresis = <2000>;
++			type = "active";
++		};
++	};
 +
- &i2c0 {
- 	status = "okay";
- 
-@@ -336,6 +366,13 @@ regulator-state-mem {
- 	};
- };
- 
-+&mdio1 {
-+	rgmii_phy1: ethernet-phy@0 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0>;
++	cooling-maps {
++		map1 {
++			trip = <&cpu_hot>;
++			cooling-device = <&fan THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++		};
 +	};
 +};
 +
- &pinctrl {
- 	bt {
- 		bt_enable_h: bt-enable-h {
+ &gmac1 {
+ 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>;
+ 	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru SCLK_GMAC1>, <&gmac1_clkin>;
+@@ -432,6 +457,10 @@ &sdmmc0 {
+ 	status = "okay";
+ };
+ 
++&tsadc {
++	status = "okay";
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_xfer>;
 -- 
 2.25.1
 
