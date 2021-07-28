@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65AB3C4320A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C68BC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:21:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E77E60EB9
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:20:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2E77E60EB9
+	by mail.kernel.org (Postfix) with ESMTPS id 2AC7060C41
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 15:21:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2AC7060C41
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,66 +24,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X+VaPvxI4JRfX5oXIrY5xJsZHQl/t5I1ov7EZcycxzA=; b=p201Uq8g4mDd56
-	zGPiiUua3t0AiljFfNDbTihM+IoFSHWycGsS2jWCDjXP9Q8KCyP1tiXUiIkzI3MPIVtAB4qR4qhwy
-	dkX6PCb0grETunFS7ZWlW6Feb7019s6AifX4HHwIeyMfbOaEQctIx55p43duhLiN5miYu7zL69vWY
-	5Bid9F9Aeu/bgtncgrfzbtUXIaaZ+5dq+rYBGJl4A4hdzRx2kc7j+MdvsszvJP5TUPmcCEfPr3+S8
-	DJ495ML9OGVKww895AgIflz48WYAB0yOhesa7VKSOsnmrsgZwgYcDaloiY9E5KUVh0M48K2orHM+z
-	COaOWPVQnzr59UFPnUvg==;
+	List-Owner; bh=i8iOS5MjuDHQIqAKUfpVXbc2H75mEgDdF7qfZilZM3U=; b=o9p4hfCQi8xc/x
+	7rl09KPm9S9jXnE3deHS9+uFXqTAmFmPwWdLOKYqSyv2QJqAD2v4Cgt2JeXqPhsMpOinmAmtUlL2+
+	phf6AmX/0RlaqUu5eR88r/XiHX44sXgkXRS7/XyW0qZt9DJbrvNjNZhrfRJmbFnwoW9wUXB8Ey13J
+	J7hZcHa5c4LmjxVEKpoHmaL/JeS6EFSVj76cAFqA6OtCyvN9pmIqmalLXBllEgJHJGr8vhKSUBy8u
+	x6mgSyb+thTzAxARHCvbVvdi7AxhYTLLwYT5VWeJxGAZ6G31DZd3ubknV7MSh6cP1EQble1QqbxMf
+	SiHYrxvsTKfKRIjyeSaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8lMS-001GQQ-1b; Wed, 28 Jul 2021 15:20:44 +0000
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
+	id 1m8lNM-001Gpy-9Q; Wed, 28 Jul 2021 15:21:40 +0000
+Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8lL2-001FnD-3P; Wed, 28 Jul 2021 15:19:17 +0000
-Received: by mail-yb1-xb31.google.com with SMTP id w17so4494206ybl.11;
- Wed, 28 Jul 2021 08:19:15 -0700 (PDT)
+ id 1m8lM1-001GEz-Ak; Wed, 28 Jul 2021 15:20:18 +0000
+Received: by mail-yb1-xb34.google.com with SMTP id j77so2584952ybj.3;
+ Wed, 28 Jul 2021 08:20:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/6eWkFQouDwZToZfzqmLvZAa+8eHzBjwiwsCPEZ3T78=;
- b=oN9p2Q2hKZtCKNVMAT+NVxX1xipwNCvL4SYZ9WviVLfZeJ7CryQ9ipjmT2TDx9uLPZ
- 1Xm33ENbeoCwWOM5CaEnziOHXZhHlPkfjq/PyX8Om+HUQOvGJgPjJkuxuYaI2zipt3GJ
- /GMhGb8wYkc2GKJOTVcUSda/yAUyUdgMN9IPEp30RTtQlbNTOyOz4M2JbLyZt4w6jsOI
- QWSJ/y1bfrjCPBKVSTg/W6U4DdFz+UU2GrgGekos3fTJrDfYcjGOJTG7dn2r5rTE5+qS
- TvLTgqMgUZkOrT63KGVItxnAlPD/U6VHa+DhdHdUHcuUU87n0M5Qjkz8Vc/eYhM2PyVO
- MrEw==
+ :cc:content-transfer-encoding;
+ bh=C9e4N76VZyEvVhCoJ57+DYxJLCF2oxGdBxIJxV6PGVU=;
+ b=CFgFbL44s+UPKBdiA2vhX8GjtA7RaAE2vpOFqAxLycDqjTP64RMRTWR7qrqUNYHiYq
+ DL6eaVMJ1jwNsLi6mS7RhBy0UyU4TNoVwTVZ+uvWpCeCGdgTqkXlN9FePkQ0Lh4/aEBF
+ JWPCx08mcGnGFnVtt3JIGHWEfBFeTlCRM1taZdRyyb81ehxgy1fJ9bdanexy8PtQgurQ
+ 1OMusjT7ycl/Eszzk8ah31ZIqsDCKTSzb/MUWN6oNALiYg+n7WU8IWwn1QKs/80qSAvi
+ 2+TOaMRuVwT+HCX+VDtiRj4Fl3mockQVaNT51tcgE0jFjIliUokh/9z548h1/JFkIOha
+ +eMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/6eWkFQouDwZToZfzqmLvZAa+8eHzBjwiwsCPEZ3T78=;
- b=cIGos6CbAJAUhy/bLiEWLyoW6GtjFez4aWnLdeg8yAp/Zwwhe5S+HcHPZ8gNPc7/yg
- og1880fUIvFxbnXm65tG34tObAHlhx8TCncpvqn9GeIxOj3OeQdqrd3bpqiFXgHrdzwH
- L1dDDhY1dpuPEZuKD9X5AqAjM2WUVbpkhlgL1EJ/wWuwypuBo6pRJOaqpHCuxuIe5WWf
- 3wILHmn3/uul2EkrPJOBvDJ3AyR7ye2sgp5RPF6cVnTcPIcI/7np83qAav3hDXshLcsJ
- Gin0iP8f8bFRZnNuEsQw7w1fSabXcs0SuKc06of3HbXH8K9GyCQRQ/Arw6EJ5ULYnIrh
- xrJg==
-X-Gm-Message-State: AOAM533l5FgG3GuA2QuU+uEJuPhaorCgGkpZh6wg9zhWWS9VKYbYMAWE
- 3iQEWGOvpzVpT7s70bK+nMyjTnsgKFfLHvnQnoM=
-X-Google-Smtp-Source: ABdhPJycH7ZHcpeF3vjYS1kJ8DHksPXaFAYcATKn9VKTTwqXA64ilzqCFgKdeIJ43KoNBtYwMr8NcyT1fRpGgPY1ZCM=
-X-Received: by 2002:a5b:48f:: with SMTP id n15mr242372ybp.457.1627485554814;
- Wed, 28 Jul 2021 08:19:14 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=C9e4N76VZyEvVhCoJ57+DYxJLCF2oxGdBxIJxV6PGVU=;
+ b=AkFRYm2Y7EUqa1Ve+K+ZdDnZyIJtCwuqfiQQp0bAFheEvRoBMxCySkY+Dkn1lJ6MTk
+ VHgOyNRP5HR7tjlt/g8iuiMrxwSGONyEAxfoVBXc1yCm394OD5i88iUbB1jgLkit2dtd
+ dv0wMIi6lGb8Gj9oimbFYaXFid4CWzRFUOxnr4tuTLt9TOJlRQKLTtF8HZLhxuriHWBh
+ 0NXsgiyHKQ1euV/fjMv7o3Q18fC8/YUN5wzcsmT8WFU7jdcU09lZ90aFyABT6QD5Lv5u
+ J/5l1/ULMLszjknIe3ewLM2wrgkK68QMYtXFzZDwyfxF60rAF18Gnyc+UmZgSTav/nwJ
+ nw1A==
+X-Gm-Message-State: AOAM531liDRIq9LSt+Vpy0/3MzyvQ3kejJ8Z8H5q/RZLb8cGyWcEulRX
+ TjJlenrpMTBrVhqnjMOL7/xfaVfUB4/xwoGLR5g=
+X-Google-Smtp-Source: ABdhPJyU3e/C/5c1p9vu84o+w1Z8Xd+bdL5IDbjuLp5JPTUVvRN7Jgosu43o7A0ZYvayBICL1tceMp6z5a5uBGrDI4o=
+X-Received: by 2002:a5b:303:: with SMTP id j3mr227992ybp.433.1627485616549;
+ Wed, 28 Jul 2021 08:20:16 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210728122606.697619-1-pgwipeout@gmail.com>
- <20210728122606.697619-3-pgwipeout@gmail.com>
- <c7ea6f09-bed0-15d2-1124-44cf98898538@gmail.com>
-In-Reply-To: <c7ea6f09-bed0-15d2-1124-44cf98898538@gmail.com>
+ <20210728122606.697619-4-pgwipeout@gmail.com>
+ <3733382.QJadu78ljV@diego>
+In-Reply-To: <3733382.QJadu78ljV@diego>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 28 Jul 2021 11:19:02 -0400
-Message-ID: <CAMdYzYoBHZ-8XfcAZ1uGGtT2EEY_wQQoAixhoArsBYVH62pbwA@mail.gmail.com>
-Subject: Re: [RFC PATCH 2/9] dt-bindings: phy: phy-rockchip-inno-usb2: add
- rk3568 documentation
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- devicetree@vger.kernel.org, 
+Date: Wed, 28 Jul 2021 11:20:03 -0400
+Message-ID: <CAMdYzYpcqJHedu=xBBLC60j1wcFQ9zL1R73ahKy33RjUnw2xKA@mail.gmail.com>
+Subject: Re: [RFC PATCH 3/9] dt-bindings: usb: generic-ohci: increase maximum
+ clocks
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>, devicetree@vger.kernel.org, 
  arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  linux-phy@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_081916_212415_390D70B2 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20210728_082017_412058_3C44BE98 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,121 +96,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 28, 2021 at 11:14 AM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Hi Peter,
->
-> Some comments. Have a look if it's useful.
->
-> On 7/28/21 2:25 PM, Peter Geis wrote:
-> > The rk3568 usb2phy node is a standalone node with a single muxed
-> > interrupt.
-> > Add documentation for it to phy-rockchip-inno-usb2.
-> >
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > ---
-> >  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml   | 8 ++++----
-> >  1 file changed, 4 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-> > index 5bebd86bf8b6..f16fea5cad1c 100644
-> > --- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-> > +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
-> > @@ -18,6 +18,7 @@ properties:
-> >        - rockchip,rk3328-usb2phy
-> >        - rockchip,rk3366-usb2phy
-> >        - rockchip,rk3399-usb2phy
-> > +      - rockchip,rk3568-usb2phy
-> >        - rockchip,rv1108-usb2phy
-> >
-> >    reg:
-> > @@ -50,6 +51,9 @@ properties:
-> >      description:
-> >        Phandle to the extcon device providing the cable state for the otg phy.
-> >
->
-> > +  interrupts:
->
-> > +    description: Muxed interrupt for both ports
->
-> My spelling checker suggest: Mixed. Don't know what's correct...
-
-It is muxed, all interrupts come over the single line.
-
->
-> > +
->
-> For rk3568 only.
-> Could you test/use something like this?
->
-> if:
->   properties:
->     compatible:
->       contains:
->         const: rockchip,rk3568-usb2phy
->
-> then:
->   properties:
->     interrupts:
->       maxItems: 1
->
->   required:
->        - interrupts
->
-> >    rockchip,usbgrf:
-> >      $ref: /schemas/types.yaml#/definitions/phandle
-> >      description:
-> > @@ -78,8 +82,6 @@ properties:
-> >
->
-> >      required:
-> >        - "#phy-cells"
-> > -      - interrupts
-> > -      - interrupt-names
->
-> These are still required for other Rockchip SoCs.
-> Could you test/use something like this?
->
->       if:
->         properties:
->           compatible:
->             contains:
->               const: rockchip,rk3568-usb2phy
->
->       else:
->         required:
->           - interrupts
->           - interrupt-names
-
-This is all sane to me, I'll check to ensure it works.
-
->
-> >
-> >    otg-port:
-> >      type: object
-> > @@ -109,8 +111,6 @@ properties:
-> >
->
-> >      required:
-> >        - "#phy-cells"
-> > -      - interrupts
-> > -      - interrupt-names
->
-> dito
->
-> >
-> >  required:
-> >    - compatible
-> >
-
-Thank you for the feedback!
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBKdWwgMjgsIDIwMjEgYXQgMTA6NTkgQU0gSGVpa28gU3TDvGJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4gd3JvdGU6Cj4KPiBIaSBQZXRlciwKPgo+IEFtIE1pdHR3b2NoLCAyOC4gSnVsaSAy
+MDIxLCAxNDoyNjowMCBDRVNUIHNjaHJpZWIgUGV0ZXIgR2VpczoKPiA+IFRoZSByazM1NjggZ2Vu
+ZXJpYyBvaGNpIGNvbnRyb2xsZXIgaGFzIGZvdXIgY2xvY2tzLgo+ID4gSW5jcmVhc2UgdGhlIG1h
+eGltdW0gY2xvY2tzIGluIHRoZSBkb2N1bWVudGF0aW9uIHRvIGFjY291bnQgZm9yIHRoaXMuCj4g
+Pgo+ID4gU2lnbmVkLW9mZi1ieTogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPiA+
+IC0tLQo+ID4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1v
+aGNpLnlhbWwgfCAyICstCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRl
+bGV0aW9uKC0pCj4gPgo+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy91c2IvZ2VuZXJpYy1vaGNpLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvdXNiL2dlbmVyaWMtb2hjaS55YW1sCj4gPiBpbmRleCA1Njk3NzdhNzZjOTAuLjg1
+MDk5NmU2ZjQ1MSAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy91c2IvZ2VuZXJpYy1vaGNpLnlhbWwKPiA+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy91c2IvZ2VuZXJpYy1vaGNpLnlhbWwKPiA+IEBAIC01OSw3ICs1OSw3IEBA
+IHByb3BlcnRpZXM6Cj4gPgo+ID4gICAgY2xvY2tzOgo+ID4gICAgICBtaW5JdGVtczogMQo+ID4g
+LSAgICBtYXhJdGVtczogMwo+ID4gKyAgICBtYXhJdGVtczogNAo+ID4gICAgICBkZXNjcmlwdGlv
+bjogfAo+ID4gICAgICAgIEluIGNhc2UgdGhlIFJlbmVzYXMgUi1DYXIgR2VuMyBTb0NzOgo+ID4g
+ICAgICAgICAgLSBpZiBhIGhvc3Qgb25seSBjaGFubmVsOiBmaXJzdCBjbG9jayBzaG91bGQgYmUg
+aG9zdC4KPiA+Cj4KPiBJbiB0aGUgcGF0Y2ggYWRkaW5nIHRoZSB1c2Igbm9kZXMsIEkgc2VlIHRo
+YXQgdGhpcyA0dGggY2xvY2sgcmVmZXJlbmNlcwo+IHRoZSBjbG9jayBnZW5lcmF0ZWQgaW5zaWRl
+IHVzYnBoeSBpdHNlbGYuCj4KPiBEb2VzIHRoZSB1c2IgY29udHJvbGxlciBhY3R1YWxseSB1c2Ug
+dGhhdCBvciBpcyB0aGlzIGp1c3QgYSB3YXkgdG8KPiBlbmFibGUgdGhlIHVzYnBoeSBjbG9jaywg
+d2hpY2ggaW4gdGhhdCBjYXNlIHNob3VsZCBtYXliZSBqdXN0IGhhcHBlbgo+IG9uIHBoeS1wb3dl
+ci1vbiBpbiB0aGUgcGh5IGRyaXZlcj8KCkknbGwgY2hlY2sgaWYgaXQgd29ya3Mgd2l0aG91dCBp
+dC4KCj4KPgo+IEhlaWtvCj4KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
