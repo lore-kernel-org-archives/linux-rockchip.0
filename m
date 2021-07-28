@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CDFEC4320E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5945AC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:27:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2533360C3E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:26:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2533360C3E
+	by mail.kernel.org (Postfix) with ESMTPS id 1F35A60C3E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:27:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1F35A60C3E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,67 +24,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JDhjD3PJstPMPYKYy9QEDjpN98PPAHoSELbNOjvMBCw=; b=azIAWsSRMSpD/d
-	ssGrzc1Apoqhkfh8NmywEGCxQDrf9iTJw1ZGtazFTJCkQKsPNuonypcx6iE3uSju8Sh70ZGBVxeAm
-	zDYIxKafZq7kfAjBjTiFVJmHj/8ngNKX6bEdeItwBXNoRgCqNizQjID6f6yLSfnT21oxbiEQ93d0K
-	9/jGHnm5Po+Ok1XAvJ4V5HktPfBSTOPPDGOhQwYyHTHnn3KUW3o3Di+mDl7SK9Nbg7uJH+iAi5sV3
-	S/8nFPOXI+6GST/EaNP96gPIh47AO35nOexwKvbaFBjMNAQLPnUBjEVHkllnbEojIR4mbhmA5E890
-	c5kvVHnJmRkYL0/AyetA==;
+	List-Owner; bh=Su2IJ22tK4QMOQoT18sgha2+MlU5lGW4ZApfOhWaqMQ=; b=uOiRxYzythypPi
+	w2pn/O62G3nbLRbNY800IV+XQTYraJ42syquuZrFJAOSw0n1YIKVWmXwzJTLk1d/t6R/XXNWdDzQ8
+	XbkTEDf85HRQ06MWsEIhshBxxQl9siYrBjnrAUO9QIYTY4clf9tkp/urcjaivadvl8inUv9kE/xte
+	hc0CVDBe+2bzpod8LLWblDxwJRR+TdRStkOzlbwGcqlTKActAZznY1ZSq7BiKFtqkqdNLKpSbDauY
+	0PO9HFLO7EhfMiTgGyRnfHN2PATcebqZ1ffWqr6TEYEFIAvdF/jvz660okVcd1resj2Xk8epd4vv2
+	xpUADhE6JpO2AKCEMsrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8ie6-000cms-WF; Wed, 28 Jul 2021 12:26:47 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1m8ieu-000d2W-Hb; Wed, 28 Jul 2021 12:27:36 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8idh-000ced-HP; Wed, 28 Jul 2021 12:26:22 +0000
-Received: by mail-qt1-x830.google.com with SMTP id g11so1150902qts.11;
- Wed, 28 Jul 2021 05:26:19 -0700 (PDT)
+ id 1m8idi-000cek-99; Wed, 28 Jul 2021 12:26:23 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id c9so1911444qkc.13;
+ Wed, 28 Jul 2021 05:26:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=cqVElBTymsj42U9y84VWCRYbnR5OUCvocbx2B46HwA4=;
- b=lfHZWifbnkRx73BjJ2DdNFoh76LTI/lR/JlGRqXWxJb8VDd5lGQmojCJBJ0S2JOHQA
- DUrgcauL4hNPhsLLPxolrKmT3lZ2aVwln3R6WyPmgqw3ADU2hx6Ie0q1F8vjs47yUUIx
- U6erLvl4z6Wc/te6l/4qlmIkyN7Hn9T26/D6XnHbwHTItUxU5wdQX9cVtf7YVBGGy0WI
- DkXEdn2ucXcIEAVN/POOmw2ylW8NEiqKfjboJwmFtpSBjhf2cHF+hmz8ijGA9fM2Ckrb
- lKB+if/AzXsndXcz9hWPyi95hUu6AkT0VA0gP9gaHifrZhz+mErtN5m81PTSDmk011uw
- W4Tg==
+ bh=0uGMLBbvQN8srNkNvfT+Pk/8+H4pNrxtnpo3vhHBUd8=;
+ b=gNRzuSOY4nKjngNm7Tvd9GEhb9D25zo/YGvVGrukH8YRQNnbe9rvJuobZUu9KW+Uzw
+ v8Aa9Sw21Apf8PnXKfVJ67Os5VGW+rT2TT8NJGYKiHKNjV94h7VQH1J7Th+6/E4MrWQl
+ +YSHUZ0B93JeFMSdVDPpWWeMKBeO/9dFvQkPX/SzazJAazqYA+aywP1D/KaPiq7m3i2O
+ nuO1O8+O/EmsH4J5hhAofTXEp7OGvHKUTxaJofTpvJ4fxlKhkZuUb3pl9w6JfYT5yaZS
+ C2D1ur9LTdqyPc28wVSag3jKx6KcjFASZ1DLj0eGwkapw6+uNz3k+z3pbD00rFiri498
+ EGqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=cqVElBTymsj42U9y84VWCRYbnR5OUCvocbx2B46HwA4=;
- b=c7EPjdk7iGLvqT6afTfzrshUYBYIByEz8Q8Upp+EzOjdMIT3trSDiSg6MvN6NprfAP
- Ni2X8qaRY4of+DUMzPvEUEId/IOq9UnJW7lo/jNmKTLERr/BDp9I4I46TVkOdLBOpguf
- S9jsbp73n4TMdOuO3VmBtDKvJqalS4QbaocNt9FpROSzdEdHisnSJAYRCvLMGmUi/d+d
- KYkzlB6lqDMqe1+kHdVOjNOhk+QwwqKIdZcnvTKamiJKvnId4uook3GDuiXhgNEkJZRa
- VWEysdnQynqslidXhZvJVlQN1FZSV2+905apu72rvP0xAt2+HD6hf2J/LGiecKz/vW4n
- gFyg==
-X-Gm-Message-State: AOAM530lVxscxaOxWJZu2z0G5frI+U8d+7tFhbRkitRRzo9WW0rP8PsR
- yc+EwLHeRvymWgtmrstTvH4=
-X-Google-Smtp-Source: ABdhPJxg8GxOcLAwV95w2hX1hG2TcoDsu76sI3iNr3XLbBM4hoL0FeYRELgeOO/MKNl97IqbmxiNgg==
-X-Received: by 2002:a05:622a:50:: with SMTP id
- y16mr24452703qtw.322.1627475178609; 
- Wed, 28 Jul 2021 05:26:18 -0700 (PDT)
+ bh=0uGMLBbvQN8srNkNvfT+Pk/8+H4pNrxtnpo3vhHBUd8=;
+ b=ZXfMptBAaFEqkS9VbL9vz1GZbVPmDo5hVUxvlsCrpY8A/NR1l7b3AmFqgboJdEycL5
+ c2ZZ3hnhfqpJzhOj/LiN2icMmRCHT8/XpBzD+iu4JVFBwOIX3Nn+4PTZzutm4iD5rbSQ
+ CLf/Bvci1MABhDfvdgx4foTST3TeUvFwDel3/dp8zSnnSk3ldQIwWPQtI2S8yRPEB4h7
+ HkDlbuTlvI9Bd9M1HWjSo0WWeJnQO/UJut3hNXr+qy5ozSSfyVCTRKWo5J8Ih3q19rzd
+ OWbLhkcsgnTSVDjatlOUZLpXWA8p4ZXJZIi5GCMkmHHiv0teLmE5IECcrxwI4HLQPw25
+ mItA==
+X-Gm-Message-State: AOAM533sq9rBVi8+vwYF5mffuyVeKmEO4OJ4osJEwtKjUdYI2rip0cw1
+ frKtChuyaYjjFk/IfC31OqQ=
+X-Google-Smtp-Source: ABdhPJwYGB4iyvpoc8D3mrR5HxybYHOJ0Q1HhDsTfV3Ay9gHOJh3Y3rTnzBm0bWpIYVZZnaWK3Ww1Q==
+X-Received: by 2002:a37:487:: with SMTP id 129mr26373367qke.154.1627475180131; 
+ Wed, 28 Jul 2021 05:26:20 -0700 (PDT)
 Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
- by smtp.gmail.com with ESMTPSA id z9sm2842972qtn.54.2021.07.28.05.26.17
+ by smtp.gmail.com with ESMTPSA id z9sm2842972qtn.54.2021.07.28.05.26.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 05:26:18 -0700 (PDT)
+ Wed, 28 Jul 2021 05:26:19 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-phy@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>
-Subject: [RFC PATCH 1/9] dt-bindings: soc: rockchip: add rk3568-usb2phy-grf
-Date: Wed, 28 Jul 2021 08:25:58 -0400
-Message-Id: <20210728122606.697619-2-pgwipeout@gmail.com>
+Subject: [RFC PATCH 3/9] dt-bindings: usb: generic-ohci: increase maximum
+ clocks
+Date: Wed, 28 Jul 2021 08:26:00 -0400
+Message-Id: <20210728122606.697619-4-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210728122606.697619-1-pgwipeout@gmail.com>
 References: <20210728122606.697619-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_052621_627551_68D3B225 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20210728_052622_359083_41B46B81 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,26 +102,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the documentation for the rk3568-usb2phy-grf node, which is separate
-from the usb2phy node on this chip.
+The rk3568 generic ohci controller has four clocks.
+Increase the maximum clocks in the documentation to account for this.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/usb/generic-ohci.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index fa010df51a5c..3b0e06b6ea61 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -16,6 +16,7 @@ properties:
-           - enum:
-               - rockchip,rk3288-sgrf
-               - rockchip,rv1108-usbgrf
-+              - rockchip,rk3568-usb2phy-grf
-           - const: syscon
-       - items:
-           - enum:
+diff --git a/Documentation/devicetree/bindings/usb/generic-ohci.yaml b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+index 569777a76c90..850996e6f451 100644
+--- a/Documentation/devicetree/bindings/usb/generic-ohci.yaml
++++ b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
+@@ -59,7 +59,7 @@ properties:
+ 
+   clocks:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 4
+     description: |
+       In case the Renesas R-Car Gen3 SoCs:
+         - if a host only channel: first clock should be host.
 -- 
 2.25.1
 
