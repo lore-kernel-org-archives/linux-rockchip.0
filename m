@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CAE3C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 17:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6AEEC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 17:35:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E976B61037
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 17:28:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E976B61037
+	by mail.kernel.org (Postfix) with ESMTPS id 5BD496103E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 17:35:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5BD496103E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,44 +23,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ArNII6xYCO/0XnQHSBLuJPp0B0lIROpl4El2uN38xAU=; b=EgL4RzN91VqxBW
-	gaIcWgnagRfUZYhwah4ym04+bvaHRqvPc0nGyLcE+t9PbGddSnjArgyRGlNeYtb4pNgtmT/Uj4k/g
-	vGH4eNWdoLxez3j+5ff4+zPchkbuWsBl45xaWaK/KoNLw/Si4CubOpq8/ba/A3hCqKTzxBb+cTJnm
-	8KIQtrTqfOceVSY3hqVXbRYhCxLD12qsiplIiNxVjh+X3pYM6pqfjVkKBaWiXSzyrmX/vuvT51pRA
-	FsMwoIHXvO9sSoqWG+7imD1Jp08TpF1y5G+Lmjsgc7MuqdGxwPR3Se6Gnnc/+2unk1sSAmrKepgJ0
-	zfdpaDGUVREUXH6vmrRg==;
+	List-Owner; bh=Ccakmhl9TlhRHECZQjMpwbW3W3iFWhQSa6Ak5BhIdNI=; b=dlIalZDaZwI1j9
+	PtqabTC9RKc0LpLuFFJndtGhXq9jStxRG1dnqSlKRN0LmiS/YhKkem6fo2GA3vFJt++FjWubTspFo
+	geilDepQs7Y3A4Bjuz84wCG+exxHhk0ncpHGsY0AiAtTAOVEX89g9drVMQywHOF2VqEQZSToW4yx7
+	UjdLUvrcNpqqzMscnwwTiO7tdUL6yrRggyZRz9rC5cVtEknIo67Ti6SZlVDXrfFYUupCWQsb/YaMS
+	Ux/j2/5rj0aKRoMqI8nIbIDz7/qJF9YqJhAk1i7b14xSMxWTYlEWnbcl3cTbsO6yuD/1rzttfZDv5
+	yVJjZm7x7H2wErQVPUtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8nMA-001pbo-Ak; Wed, 28 Jul 2021 17:28:34 +0000
+	id 1m8nSP-001qww-7V; Wed, 28 Jul 2021 17:35:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8nLu-001pVk-4W; Wed, 28 Jul 2021 17:28:19 +0000
+ id 1m8nSB-001qv1-Ra; Wed, 28 Jul 2021 17:34:49 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m8nLs-00071K-62; Wed, 28 Jul 2021 19:28:16 +0200
+ id 1m8nS6-000730-28; Wed, 28 Jul 2021 19:34:42 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- devicetree@vger.kernel.org,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 6/9] arm64: dts: rockchip: add missing rk3568 cru phandles
-Date: Wed, 28 Jul 2021 19:28:15 +0200
-Message-ID: <2510732.Icojqenx9y@diego>
-In-Reply-To: <CAMdYzYrj7PdvmfvSNV5B3=aDrAx1VUO2=w8vgVprBE1qiEZP3A@mail.gmail.com>
-References: <20210728135534.703028-1-pgwipeout@gmail.com>
- <CAMdYzYqz-i1X2oORi6SjSqi6_KwRcbt2u04+cVxcSonX9gxOew@mail.gmail.com>
- <CAMdYzYrj7PdvmfvSNV5B3=aDrAx1VUO2=w8vgVprBE1qiEZP3A@mail.gmail.com>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Rob Herring <robh+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>, Simon Xue <xxm@rock-chips.com>
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add gmac0 node to rk3568
+Date: Wed, 28 Jul 2021 19:34:41 +0200
+Message-ID: <814179037.0ifERbkFSE@diego>
+In-Reply-To: <2193550.atdPhlSkOF@diego>
+References: <20210728161020.3905-1-michael.riesch@wolfvision.net>
+ <20210728161020.3905-2-michael.riesch@wolfvision.net>
+ <2193550.atdPhlSkOF@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_102818_228915_FD7415BC 
-X-CRM114-Status: GOOD (  38.83  )
+X-CRM114-CacheID: sfid-20210728_103447_937201_C330FCC5 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,128 +75,112 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 28. Juli 2021, 18:49:47 CEST schrieb Peter Geis:
-> On Wed, Jul 28, 2021 at 11:16 AM Peter Geis <pgwipeout@gmail.com> wrote:
-> >
-> > On Wed, Jul 28, 2021 at 10:41 AM Heiko St=FCbner <heiko@sntech.de> wrot=
-e:
-> > >
-> > > Am Mittwoch, 28. Juli 2021, 16:18:49 CEST schrieb Peter Geis:
-> > > > On Wed, Jul 28, 2021 at 10:06 AM Heiko St=FCbner <heiko@sntech.de> =
-wrote:
-> > > > >
-> > > > > Hi Peter,
-> > > > >
-> > > > > Am Mittwoch, 28. Juli 2021, 15:55:31 CEST schrieb Peter Geis:
-> > > > > > The grf and pmugrf phandles are necessary for the pmucru and cr=
-u to
-> > > > > > modify clocks. Add these phandles to permit adjusting the clock=
- rates
-> > > > > > and muxes.
-> > > > > >
-> > > > > > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > > > > > ---
-> > > > > >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 3 +++
-> > > > > >  1 file changed, 3 insertions(+)
-> > > > > >
-> > > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/ar=
-m64/boot/dts/rockchip/rk356x.dtsi
-> > > > > > index 0905fac0726a..8ba0516eedd8 100644
-> > > > > > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > > > > > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > > > > > @@ -218,6 +218,8 @@ grf: syscon@fdc60000 {
-> > > > > >       pmucru: clock-controller@fdd00000 {
-> > > > > >               compatible =3D "rockchip,rk3568-pmucru";
-> > > > > >               reg =3D <0x0 0xfdd00000 0x0 0x1000>;
-> > > > > > +             rockchip,grf =3D <&grf>;
-> > > > > > +             rockchip,pmugrf =3D <&pmugrf>;
-> > > > >
-> > > > > I don't think the pmucru needs both and in fact the mainline
-> > > > > clock driver should just reference its specific grf at all, i.e.
-> > > > >         pmucru -> pmugrf (via the rockchip,grf handle)
-> > > > >         cru -> grf
-> > > > >
-> > > > > I've not seen anything breaking this scope so far.
-> > > >
-> > > > I thought the same thing as well, but for some reason the driver
-> > > > refuses to apply assigned-clocks to the plls unless these are all
-> > > > present.
-> > > > If the driver can get these assignments automatically eventually,
-> > > > perhaps it's a loading order issue?
-> > > >
-> > > > Thinking about it, it's probably the grf and pmugrf haven't probed
-> > > > when the driver is attempting to assign these, and tying them toget=
-her
-> > > > forces the probe to happen first.
-> > >
-> > > though nothing references the regular grf from the pmucru I think.
-> > >
-> > > I.e. the pmucru PLL read their lock state from RK3568_PMU_MODE_CON
-> > >
-> > > The rk3568 reuses the pll_rk3328-type which in turn is a modified pll=
-_rk3036
-> > > and uses their ops. Which in turn means the pll shouldn't access the =
-GRF at
-> > > all, as it uses the pll's own register to check the locked state.
-> > >
-> > > Can you try to change clk-pll.c from
-> > >
-> > >         switch (pll_type) {
-> > >         case pll_rk3036:
-> > >         case pll_rk3328:
-> > >                 if (!pll->rate_table || IS_ERR(ctx->grf))
-> > >                         init.ops =3D &rockchip_rk3036_pll_clk_norate_=
-ops;
-> > > ...
-> > > to
-> > >         switch (pll_type) {
-> > >         case pll_rk3036:
-> > >         case pll_rk3328:
-> > >                 if (!pll->rate_table)
-> > >                         init.ops =3D &rockchip_rk3036_pll_clk_norate_=
-ops;
-> > >
-> > > similar to rk3399?
-> >
-> > Thanks, I'll test this!
+Am Mittwoch, 28. Juli 2021, 18:43:24 CEST schrieb Heiko St=FCbner:
+> Hi,
 > =
 
-> Confirmed this fixed the issue for the rk3566, so as long as it
-> doesn't break rk3328 this works.
+> Am Mittwoch, 28. Juli 2021, 18:10:19 CEST schrieb Michael Riesch:
+> > While both RK3566 and RK3568 feature the gmac1 node, the gmac0
+> > node is exclusive to the RK3568.
+> > =
 
-It doesn't break anything ... i.e. the change for rk3328/rk3036 plls
-from using the grf register to using the pll-internal lock status is in
-the kernel for quite a while now - januar 2020 to be exact, and nobody
-complained - including me when testing in my boardfarm ;-)
+> > Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 51 ++++++++++++++++++++++++
+> >  1 file changed, 51 insertions(+)
+> > =
 
-> I'll include the patch in the next series.
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot=
+/dts/rockchip/rk3568.dtsi
+> > index da01a59f6f26..ec39a2c593b6 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > @@ -22,6 +22,57 @@
+> >  		compatible =3D "rockchip,rk3568-qos", "syscon";
+> >  		reg =3D <0x0 0xfe190200 0x0 0x20>;
+> >  	};
+> > +
+> > +	gmac0: ethernet@fe2a0000 {
+> > +		compatible =3D "rockchip,rk3568-gmac", "snps,dwmac-4.20a";
+> > +		reg =3D <0x0 0xfe2a0000 0x0 0x10000>;
+> > +		interrupts =3D <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>,
+> > +			     <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+> > +		interrupt-names =3D "macirq", "eth_wake_irq";
+> > +		rockchip,grf =3D <&grf>;
+
+Johan thankfully pointed out that the grf is hiding up here, so this should
+move below reset-names ;-)
+
+
+Heiko
+
+
+> > +		clocks =3D <&cru SCLK_GMAC0>, <&cru SCLK_GMAC0_RX_TX>,
+> > +			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_MAC0_REFOUT>,
+> > +			 <&cru ACLK_GMAC0>, <&cru PCLK_GMAC0>,
+> > +			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_GMAC0_PTP_REF>,
+> > +			 <&cru PCLK_XPCS>;
+> > +		clock-names =3D "stmmaceth", "mac_clk_rx",
+> > +			      "mac_clk_tx", "clk_mac_refout",
+> > +			      "aclk_mac", "pclk_mac",
+> > +			      "clk_mac_speed", "ptp_ref",
+> > +			      "pclk_xpcs";
+> > +		resets =3D <&cru SRST_A_GMAC0>;
+> > +		reset-names =3D "stmmaceth";
+> > +
 > =
 
-> >
-> > >
-> > > Heiko
-> > >
-> > > > > >               #clock-cells =3D <1>;
-> > > > > >               #reset-cells =3D <1>;
-> > > > > >       };
-> > > > > > @@ -225,6 +227,7 @@ pmucru: clock-controller@fdd00000 {
-> > > > > >       cru: clock-controller@fdd20000 {
-> > > > > >               compatible =3D "rockchip,rk3568-cru";
-> > > > > >               reg =3D <0x0 0xfdd20000 0x0 0x1000>;
-> > > > > > +             rockchip,grf =3D <&grf>;
-> > > > > >               #clock-cells =3D <1>;
-> > > > > >               #reset-cells =3D <1>;
-> > > > > >       };
-> > > > > >
-> > > > >
-> > > > >
-> > > > >
-> > > > >
-> > > >
-> > >
-> > >
-> > >
-> > >
+> is this missing a rockchip,grf phandle?
+> =
+
+> gmac1 has one and the driver side also does want to access the grf for bo=
+th
+> controllers.
+> =
+
+> =
+
+> Heiko
+> =
+
+> > +		snps,mixed-burst;
+> > +		snps,tso;
+> > +
+> > +		snps,axi-config =3D <&gmac0_stmmac_axi_setup>;
+> > +		snps,mtl-rx-config =3D <&gmac0_mtl_rx_setup>;
+> > +		snps,mtl-tx-config =3D <&gmac0_mtl_tx_setup>;
+> > +		status =3D "disabled";
+> > +
+> > +		mdio0: mdio {
+> > +			compatible =3D "snps,dwmac-mdio";
+> > +			#address-cells =3D <0x1>;
+> > +			#size-cells =3D <0x0>;
+> > +		};
+> > +
+> > +		gmac0_stmmac_axi_setup: stmmac-axi-config {
+> > +			snps,wr_osr_lmt =3D <4>;
+> > +			snps,rd_osr_lmt =3D <8>;
+> > +			snps,blen =3D <0 0 0 0 16 8 4>;
+> > +		};
+> > +
+> > +		gmac0_mtl_rx_setup: rx-queues-config {
+> > +			snps,rx-queues-to-use =3D <1>;
+> > +			queue0 {};
+> > +		};
+> > +
+> > +		gmac0_mtl_tx_setup: tx-queues-config {
+> > +			snps,tx-queues-to-use =3D <1>;
+> > +			queue0 {};
+> > +		};
+> > +	};
+> >  };
+> >  =
+
+> >  &cpu0_opp_table {
+> > =
+
+> =
+
 > =
 
 
