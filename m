@@ -2,55 +2,48 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB2C3C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:16:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A297BC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:52:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C5C96023F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:16:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6C5C96023F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 411CC60F45
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:52:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 411CC60F45
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q/BetUsSfYSwil9szdjjmKhx2Zizjh4T6+dgaAKDEWc=; b=BJbGGTjcTg7dC1
-	DV2lcdRZ9TlfBtiRIG0WQd3yOKQXhdcNm/EU83VMtirCsHymkIVZOxw1rLqGAPMQIJ9hulFXtjWc0
-	xU5+yDWPB4K9s4TfdVNzxXieKd1ENQP5/TBhR8o1yboZ64uqhMnZRDC0ACO7gIY+sRGmfIzvg+val
-	wZpjtn4adiioik1cgHuSlfWWdHp/mjJfVPoU1ENBlN1PNXHLjh6HIRgdrq2DWY7aug2RoXJo8TnR7
-	kY7QFLmWn5xA6T5dgGwMYsBSrZeoOpmgCyPwLWca8pBLzMCAlVxieM7CVShH0UeG7c+klggDVeH3M
-	AYcfr1xCWgoO7CIkVS1A==;
+	List-Owner; bh=sQnbE0Wbq+Uhx3Z7cH6QsJ0vQKtYNTIm20LBDiXFmtI=; b=eBCcBE+gmuvJx6
+	2Bay2NIe6xKMtm7ZHtsYhXUmb8Hl19u1Rxnh4aZnb+eUm0R3DbhEXaRfwyIGYnmONXHgAj1xp74PF
+	G2+W7wucil2g+fjc802BJH6LY+MafeFN6SBM8MX3ygN4iDVUv/fgQNU4rtaK0gtNpz7HQZ3GsaVew
+	Fdw640Hgjm7Nn/sWZ6DvG9lpnYddPLkrVqCQvT82j1mCfmuuFmSzkybgwFGp2hg6m5DJmAH0RU9YM
+	cMyr4ropN1+yIfQTlcybdFDqrACLQtkswfZuGo3P4UPMi2kExIY8HSLenYgTV/tngGZpXIgYyADGb
+	zjDsX1vbfQA/MdnvOc1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8fg4-0008fS-EO; Wed, 28 Jul 2021 09:16:36 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m8gEg-000GzR-HT; Wed, 28 Jul 2021 09:52:22 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8ffl-0008WQ-Qh; Wed, 28 Jul 2021 09:16:19 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1EC6D6023F;
- Wed, 28 Jul 2021 09:16:17 +0000 (UTC)
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1m8ffj-001Ud6-4P; Wed, 28 Jul 2021 10:16:15 +0100
-Date: Wed, 28 Jul 2021 10:16:14 +0100
-Message-ID: <878s1qer35.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Guillaume Tucker <guillaume.tucker@collabora.com>
+ id 1m8gES-000Gwi-PC; Wed, 28 Jul 2021 09:52:10 +0000
+Received: from [95.90.166.74] (helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1m8gEA-0004pC-76; Wed, 28 Jul 2021 11:51:50 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Guillaume Tucker <guillaume.tucker@collabora.com>,
+ Marc Zyngier <maz@kernel.org>, robh+dt@kernel.org
 Cc: Robin Murphy <robin.murphy@arm.com>, kernelci-results@groups.io,
- Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Johan Jonker <jbx6244@gmail.com>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  Maciej Matuszczyk <maccraft123mc@gmail.com>,
  Jacob Chen <jacob2.chen@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
@@ -60,36 +53,20 @@ Cc: Robin Murphy <robin.murphy@arm.com>, kernelci-results@groups.io,
  Helen Koike <helen.koike@collabora.com>,
  Shunqian Zheng <zhengsq@rock-chips.com>,
  Ezequiel Garcia <ezequiel@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Collabora Kernel ML <kernel@collabora.com>
-Subject: Re: renesas/master bisection:
- baseline-nfs.bootrr.rockchip-usb2phy0-probed on rk3399-gru-kevin
-In-Reply-To: <cff1e2d1-ceee-eee8-de14-a268429acbc3@collabora.com>
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Collabora Kernel ML <kernel@collabora.com>
+Subject: Annotation for dtbscheck to ignore a defect (Was: Re: renesas/master
+ bisection: baseline-nfs.bootrr.rockchip-usb2phy0-probed on rk3399-gru-kevin)
+Date: Wed, 28 Jul 2021 11:51:48 +0200
+Message-ID: <5095423.31r3eYUQgx@diego>
+In-Reply-To: <878s1qer35.wl-maz@kernel.org>
 References: <61002766.1c69fb81.8f53.9f6a@mx.google.com>
- <c52f6cfb-1316-dd6a-46fa-17abfcc4bf18@collabora.com>
- <eb04c12b-414e-70a7-5dff-12da3eb98cd0@arm.com>
  <cff1e2d1-ceee-eee8-de14-a268429acbc3@collabora.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: guillaume.tucker@collabora.com, robin.murphy@arm.com,
- kernelci-results@groups.io, jbx6244@gmail.com, heiko@sntech.de,
- enric.balletbo@collabora.com, maccraft123mc@gmail.com,
- jacob2.chen@rock-chips.com, hjc@rock-chips.com, linux-kernel@vger.kernel.org,
- wens@csie.org, cnemo@tutanota.com, devicetree@vger.kernel.org,
- zhangqing@rock-chips.com, helen.koike@collabora.com, zhengsq@rock-chips.com,
- ezequiel@collabora.com, robh+dt@kernel.org, yifeng.zhao@rock-chips.com,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ <878s1qer35.wl-maz@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_021617_927550_53057019 
-X-CRM114-Status: GOOD (  31.15  )
+X-CRM114-CacheID: sfid-20210728_025208_875649_D9FE4AC5 
+X-CRM114-Status: GOOD (  35.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,61 +79,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyOCBKdWwgMjAyMSAwOTo1OTo0OSArMDEwMCwKR3VpbGxhdW1lIFR1Y2tlciA8Z3Vp
-bGxhdW1lLnR1Y2tlckBjb2xsYWJvcmEuY29tPiB3cm90ZToKPiAKPiBPbiAyOC8wNy8yMDIxIDA5
-OjM5LCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gPiBIaSBHdWlsbGF1bWUsCj4gPiAKPiA+IE5vdCBz
-dXJlIHdoYXQgSSBkaWQgdG8gZ2V0IENDJ2Qgb24gdGhpcywgYnV0IHNpbmNlIEknbSBoZXJlLi4u
-Cj4gCj4gWW91IHdlcmUgbGlzdGVkIGJ5IGdldF9tYWludGFpbmVyLnBsIGZvciB0aGUgcGF0Y2gg
-Zm91bmQgYnkgdGhlCj4gYmlzZWN0aW9uOgo+IAo+ICAgUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJw
-aHlAYXJtLmNvbT4gKGF1dGhvcmVkOjEvOD0xMiUsYWRkZWRfbGluZXM6OS83MT0xMyUscmVtb3Zl
-ZF9saW5lczoxNi80MT0zOSUsYWRkZWRfbGluZXM6MTEvNDU9MjQlLHJlbW92ZWRfbGluZXM6MTgv
-MzI9NTYlLGF1dGhvcmVkOjEvMTI9OCUsYWRkZWRfbGluZXM6MjIvODM9MjclLHJlbW92ZWRfbGlu
-ZXM6MjkvNjk9NDIlKQo+IAo+IE1heWJlIHRoZSBsb2dpYyB0byBhdXRvbWF0aWNhbGx5IGJ1aWxk
-IHRoZSBsaXN0IG9mIHJlY2lwaWVudHMKPiBjb3VsZCBsb29rIGF0IHRob3NlIHN0YXRzIGFuZCBh
-cHBseSBzb21lIHRocmVzaG9sZCBpZiB0b28gbWFueQo+IHBlb3BsZSBnZXQgbGlzdGVkIGJlY2F1
-c2Ugb2Ygc21hbGwgY29udHJpYnV0aW9ucyB0byBzb21lIGZpbGVzLgo+IEl0J3Mgbm90IGEgY29t
-bW9uIGlzc3VlIHRob3VnaCwgdXN1YWxseSB0aGUgcmVjaXBpZW50cyBhcmUgYWxsCj4gcHJldHR5
-IHJlbGV2YW50Lgo+IAo+ID4gT24gMjAyMS0wNy0yOCAwNzowNCwgR3VpbGxhdW1lIFR1Y2tlciB3
-cm90ZToKPiA+PiBQbGVhc2Ugc2VlIHRoZSBiaXNlY3Rpb24gcmVwb3J0IGJlbG93IGFib3V0IHVz
-YjJwaHkgZmFpbGluZyB0bwo+ID4+IHByb2JlIG9uIHJrMzM5OS1ncnUta2V2aW4uCj4gPj4KPiA+
-PiBSZXBvcnRzIGFyZW4ndCBhdXRvbWF0aWNhbGx5IHNlbnQgdG8gdGhlIHB1YmxpYyB3aGlsZSB3
-ZSdyZQo+ID4+IHRyaWFsaW5nIG5ldyBiaXNlY3Rpb24gZmVhdHVyZXMgb24ga2VybmVsY2kub3Jn
-IGJ1dCB0aGlzIG9uZQo+ID4+IGxvb2tzIHZhbGlkLgo+ID4+Cj4gPj4gVGhlIGJpc2VjdGlvbiB3
-YXMgcnVuIGluIHRoZSBSZW5lc2FzIHRyZWUgYnV0IHRoZSBzYW1lIHJlZ3Jlc3Npb24KPiA+PiBp
-cyBwcmVzZW50IGluIG1haW5saW5lIGZvciBib3RoIHVzYjJwaHkwIGFuZCB1c2IycGh5MSBkZXZp
-Y2VzOgo+ID4+Cj4gPj4gwqDCoCBodHRwczovL2xpbnV4Lmtlcm5lbGNpLm9yZy90ZXN0L3BsYW4v
-aWQvNjEwMGFmMDEyMzQ0ZWVmOWI4NTAxOGYzLwo+ID4+IMKgwqAgaHR0cHM6Ly9saW51eC5rZXJu
-ZWxjaS5vcmcvdGVzdC9jYXNlL2lkLzYxMDBhZjAxMjM0NGVlZjliODUwMThmYS8KPiA+Pgo+ID4+
-IEkgZG9uJ3Qgc2VlIGFueSBlcnJvcnMgaW4gdGhlIGxvZ3MsIGl0IGxvb2tzIGxpa2UgdGhlIGRy
-aXZlciBpcwo+ID4+IGp1c3Qgbm90IHByb2JpbmcuCj4gPiAKPiA+IFdoYXQncyB0aGUgYWN0dWFs
-IHRlc3RjYXNlIGZvciAicm9ja2NoaXAtdXNiMnBoeTAtcHJvYmVkIj8gSWYgaXQncyBsb29raW5n
-IGZvciBhIGhhcmQtY29kZWQgcGF0aCBsaWtlICIvc3lzL2J1cy9wbGF0Zm9ybS9kZXZpY2VzL2Zm
-NzcwMDAwLnN5c2Nvbjp1c2IyLXBoeUBlNDUwL2RyaXZlciIgdGhlbiBpdCBjYW4gYmUgZXhwZWN0
-ZWQgdG8gZmFpbCwgc2luY2UgY2hhbmdpbmcgdGhlIG5vZGUgbmFtZSBpcyByZWZsZWN0ZWQgaW4g
-dGhlIGRldmljZSBuYW1lLgo+IAo+IERhbmcsIHlvdSdyZSByaWdodC4gIFRoaXMgaXMgdGhlIHRl
-c3QgY2FzZToKPiAKPiAgIGh0dHBzOi8vZ2l0aHViLmNvbS9rZXJuZWxjaS9ib290cnIvYmxvYi9t
-YWluL2JvYXJkcy9nb29nbGUlMkNrZXZpbiNMMTE5Cj4gCj4gYXNzZXJ0X2RyaXZlcl9wcmVzZW50
-IHJvY2tjaGlwLXVzYjJwaHktZHJpdmVyLXByZXNlbnQgcm9ja2NoaXAtdXNiMnBoeQo+IGFzc2Vy
-dF9kZXZpY2VfcHJlc2VudCByb2NrY2hpcC11c2IycGh5MC1wcm9iZWQgcm9ja2NoaXAtdXNiMnBo
-eSBmZjc3MDAwMC5zeXNjb246dXNiMi1waHlAZTQ1MAo+IGFzc2VydF9kZXZpY2VfcHJlc2VudCBy
-b2NrY2hpcC11c2IycGh5MS1wcm9iZWQgcm9ja2NoaXAtdXNiMnBoeSBmZjc3MDAwMC5zeXNjb246
-dXNiMi1waHlAZTQ2MAo+IAo+IE5vdyB0aGF0IG5lZWRzIGEgY29uZGl0aW9uYWwgZGVwZW5kaW5n
-IG9uIHRoZSBrZXJuZWwgdmVyc2lvbi4gIE9yCj4gd2UgY291bGQgdHJ5IHRvIG1ha2UgaXQgbW9y
-ZSBkeW5hbWljIHJhdGhlciB0aGFuIHdpdGggaGFyZC1jb2RlZAo+IHBhdGhzLCBidXQgZG9pbmcg
-dGhhdCBoYXMgaXRzIG93biBzZXQgb2YgaXNzdWVzIHRvby4KCkFuZCB0aGlzIHNob3dzIG9uY2Ug
-bW9yZSB0aGF0IERUIGNodXJuIGhhcyBjb25zZXF1ZW5jZXM6IGl0IGJyZWFrcyBhCnVzZXJzcGFj
-ZSBBQkkuIENoYW5naW5nIHVzZXJzcGFjZSB2aXNpYmxlIHBhdGhzIGZvciB0aGUgc2FrZSBvZgpr
-ZWVwaW5nIGEgYnVpbGQtdGltZSBjaGVja2VyIHF1aWV0IHNlZW1zIGNvdW50ZXItcHJvZHVjdGl2
-ZS4gTXkKcHJlZmVyZW5jZSB3b3VsZCBiZSB0byBqdXN0IHJldmVydCB0aGlzIHBhdGNoLCBhbmQg
-aW5zdGVhZCBoYXZlIGFuCmFubm90YXRpb24gYWNrbm93bGVkZ2luZyB0aGUgZGV2aWF0aW9uIGZy
-b20gdGhlICdzdGFuZGFyZCcgYW5kIGtlZXBpbmcKdGhlIGNoZWNrZXIgYXQgYmF5LgoKVGhhbmtz
-LAoKCU0uCgotLSAKV2l0aG91dCBkZXZpYXRpb24gZnJvbSB0aGUgbm9ybSwgcHJvZ3Jlc3MgaXMg
-bm90IHBvc3NpYmxlLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+Am Mittwoch, 28. Juli 2021, 11:16:14 CEST schrieb Marc Zyngier:
+> On Wed, 28 Jul 2021 09:59:49 +0100,
+> Guillaume Tucker <guillaume.tucker@collabora.com> wrote:
+> > 
+> > On 28/07/2021 09:39, Robin Murphy wrote:
+> > > Hi Guillaume,
+> > > 
+> > > Not sure what I did to get CC'd on this, but since I'm here...
+> > 
+> > You were listed by get_maintainer.pl for the patch found by the
+> > bisection:
+> > 
+> >   Robin Murphy <robin.murphy@arm.com> (authored:1/8=12%,added_lines:9/71=13%,removed_lines:16/41=39%,added_lines:11/45=24%,removed_lines:18/32=56%,authored:1/12=8%,added_lines:22/83=27%,removed_lines:29/69=42%)
+> > 
+> > Maybe the logic to automatically build the list of recipients
+> > could look at those stats and apply some threshold if too many
+> > people get listed because of small contributions to some files.
+> > It's not a common issue though, usually the recipients are all
+> > pretty relevant.
+> > 
+> > > On 2021-07-28 07:04, Guillaume Tucker wrote:
+> > >> Please see the bisection report below about usb2phy failing to
+> > >> probe on rk3399-gru-kevin.
+> > >>
+> > >> Reports aren't automatically sent to the public while we're
+> > >> trialing new bisection features on kernelci.org but this one
+> > >> looks valid.
+> > >>
+> > >> The bisection was run in the Renesas tree but the same regression
+> > >> is present in mainline for both usb2phy0 and usb2phy1 devices:
+> > >>
+> > >>    https://linux.kernelci.org/test/plan/id/6100af012344eef9b85018f3/
+> > >>    https://linux.kernelci.org/test/case/id/6100af012344eef9b85018fa/
+> > >>
+> > >> I don't see any errors in the logs, it looks like the driver is
+> > >> just not probing.
+> > > 
+> > > What's the actual testcase for "rockchip-usb2phy0-probed"? If it's looking for a hard-coded path like "/sys/bus/platform/devices/ff770000.syscon:usb2-phy@e450/driver" then it can be expected to fail, since changing the node name is reflected in the device name.
+> > 
+> > Dang, you're right.  This is the test case:
+> > 
+> >   https://github.com/kernelci/bootrr/blob/main/boards/google%2Ckevin#L119
+> > 
+> > assert_driver_present rockchip-usb2phy-driver-present rockchip-usb2phy
+> > assert_device_present rockchip-usb2phy0-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e450
+> > assert_device_present rockchip-usb2phy1-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e460
+> > 
+> > Now that needs a conditional depending on the kernel version.  Or
+> > we could try to make it more dynamic rather than with hard-coded
+> > paths, but doing that has its own set of issues too.
+> 
+> And this shows once more that DT churn has consequences: it breaks a
+> userspace ABI. Changing userspace visible paths for the sake of
+> keeping a build-time checker quiet seems counter-productive. My
+> preference would be to just revert this patch, and instead have an
+> annotation acknowledging the deviation from the 'standard' and keeping
+> the checker at bay.
+
+I'd be fine with that, if that is the consensus. And an annotation comment
+would be good in that case, just to keep a similar change  from getting
+submitted.
+
+I guess the interesting question is if dtbscheck has some sort of tooling
+to detect these "this is meant to be that way for backwards compatibility"
+hence adding Rob for that question.
+
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
