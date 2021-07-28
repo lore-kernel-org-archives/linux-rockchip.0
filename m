@@ -2,19 +2,19 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A297BC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:52:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EAC08C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:54:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 411CC60F45
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:52:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 411CC60F45
+	by mail.kernel.org (Postfix) with ESMTPS id 72F1360F45
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:54:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 72F1360F45
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,50 +23,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sQnbE0Wbq+Uhx3Z7cH6QsJ0vQKtYNTIm20LBDiXFmtI=; b=eBCcBE+gmuvJx6
-	2Bay2NIe6xKMtm7ZHtsYhXUmb8Hl19u1Rxnh4aZnb+eUm0R3DbhEXaRfwyIGYnmONXHgAj1xp74PF
-	G2+W7wucil2g+fjc802BJH6LY+MafeFN6SBM8MX3ygN4iDVUv/fgQNU4rtaK0gtNpz7HQZ3GsaVew
-	Fdw640Hgjm7Nn/sWZ6DvG9lpnYddPLkrVqCQvT82j1mCfmuuFmSzkybgwFGp2hg6m5DJmAH0RU9YM
-	cMyr4ropN1+yIfQTlcybdFDqrACLQtkswfZuGo3P4UPMi2kExIY8HSLenYgTV/tngGZpXIgYyADGb
-	zjDsX1vbfQA/MdnvOc1g==;
+	List-Owner; bh=98s78G5Lf011UmHIyyS+UJJtJooLLnAlhJbQvm7L0bE=; b=ICW1pv0ARzF1Bk
+	2+lqykIUU+wVvElw3kUqXzrDaPvxZqLTDZ/QQXZ5pzGSav8ipa3mBZ668olhfF9PTzXQKKXetNBaA
+	19QLX+QH2KQLg5ni2CZmGsTS6ugRdrruJEBenD2Z6BLBkhURCoW3O5IE6BzmI4N3mV15MSYWgGB00
+	LSkph5/P2Jxl0FQfOhHdeZGnZTWY7v90BwiVm1vWRIL5+Gc5R8heazhw/8bPRpxWj7c5t8wY7aiAb
+	09TYTz+Zmt1xe1DGO0rqw6iX3XehzkLxsPDg5darobYoiWasD8ua6jk9wzoyyBlKeJHB4MFVs6Bk7
+	BIPg+LUfBzXuC5DGiqFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8gEg-000GzR-HT; Wed, 28 Jul 2021 09:52:22 +0000
+	id 1m8gGR-000HNu-Ts; Wed, 28 Jul 2021 09:54:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8gES-000Gwi-PC; Wed, 28 Jul 2021 09:52:10 +0000
+ id 1m8gGE-000HLo-Ra; Wed, 28 Jul 2021 09:54:00 +0000
 Received: from [95.90.166.74] (helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m8gEA-0004pC-76; Wed, 28 Jul 2021 11:51:50 +0200
+ id 1m8gGB-0004qG-7D; Wed, 28 Jul 2021 11:53:55 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Guillaume Tucker <guillaume.tucker@collabora.com>,
- Marc Zyngier <maz@kernel.org>, robh+dt@kernel.org
-Cc: Robin Murphy <robin.murphy@arm.com>, kernelci-results@groups.io,
- Johan Jonker <jbx6244@gmail.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Maciej Matuszczyk <maccraft123mc@gmail.com>,
- Jacob Chen <jacob2.chen@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
- linux-kernel@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
- Cameron Nemo <cnemo@tutanota.com>, devicetree@vger.kernel.org,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Helen Koike <helen.koike@collabora.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Ezequiel Garcia <ezequiel@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Collabora Kernel ML <kernel@collabora.com>
-Subject: Annotation for dtbscheck to ignore a defect (Was: Re: renesas/master
- bisection: baseline-nfs.bootrr.rockchip-usb2phy0-probed on rk3399-gru-kevin)
-Date: Wed, 28 Jul 2021 11:51:48 +0200
-Message-ID: <5095423.31r3eYUQgx@diego>
-In-Reply-To: <878s1qer35.wl-maz@kernel.org>
-References: <61002766.1c69fb81.8f53.9f6a@mx.google.com>
- <cff1e2d1-ceee-eee8-de14-a268429acbc3@collabora.com>
- <878s1qer35.wl-maz@kernel.org>
+To: Yunhao Tian <t123yh@outlook.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: t123yh.xyz@gmail.com, Yunhao Tian <t123yh@outlook.com>,
+ Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] clk: rk3308: make ddrphy4x clock critical
+Date: Wed, 28 Jul 2021 11:53:54 +0200
+Message-ID: <2634451.ElGaqSPkdT@diego>
+In-Reply-To: <162734809017.2368309.7901135942001140161@swboyd.mtv.corp.google.com>
+References: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
+ <162734809017.2368309.7901135942001140161@swboyd.mtv.corp.google.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_025208_875649_D9FE4AC5 
-X-CRM114-Status: GOOD (  35.96  )
+X-CRM114-CacheID: sfid-20210728_025358_951994_760A603E 
+X-CRM114-Status: GOOD (  25.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,74 +71,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 28. Juli 2021, 11:16:14 CEST schrieb Marc Zyngier:
-> On Wed, 28 Jul 2021 09:59:49 +0100,
-> Guillaume Tucker <guillaume.tucker@collabora.com> wrote:
+Am Dienstag, 27. Juli 2021, 03:08:10 CEST schrieb Stephen Boyd:
+> Quoting Yunhao Tian (2021-07-21 05:48:16)
+> > Currently, no driver support for DDR memory controller (DMC) is present,
+> > as a result, no driver is explicitly consuming the ddrphy clock. This means
+> > that VPLL1 (parent of ddr clock) will be shutdown if we enable
+> > and then disable any child clock of VPLL1 (e.g. SCLK_I2S0_8CH_TX).
+> > If VPLL1 is disabled, the whole system will freeze, because the DDR
+> > controller will lose its clock. So, it's necessary to prevent VPLL1 from
+> > shutting down, by marking the ddrphy4x CLK_IS_CRITICAL.
 > > 
-> > On 28/07/2021 09:39, Robin Murphy wrote:
-> > > Hi Guillaume,
-> > > 
-> > > Not sure what I did to get CC'd on this, but since I'm here...
+> > This bug was discovered when I was porting rockchip_i2s_tdm driver to
+> > mainline kernel from Rockchip 4.4 kernel. I guess that other Rockchip
+> > SoCs without DMC driver may need the same patch. If this applies to
+> > other devices, please let us know.
 > > 
-> > You were listed by get_maintainer.pl for the patch found by the
-> > bisection:
+> > Signed-off-by: Yunhao Tian <t123yh@outlook.com>
+> > ---
+> >  drivers/clk/rockchip/clk-rk3308.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > > 
-> >   Robin Murphy <robin.murphy@arm.com> (authored:1/8=12%,added_lines:9/71=13%,removed_lines:16/41=39%,added_lines:11/45=24%,removed_lines:18/32=56%,authored:1/12=8%,added_lines:22/83=27%,removed_lines:29/69=42%)
-> > 
-> > Maybe the logic to automatically build the list of recipients
-> > could look at those stats and apply some threshold if too many
-> > people get listed because of small contributions to some files.
-> > It's not a common issue though, usually the recipients are all
-> > pretty relevant.
-> > 
-> > > On 2021-07-28 07:04, Guillaume Tucker wrote:
-> > >> Please see the bisection report below about usb2phy failing to
-> > >> probe on rk3399-gru-kevin.
-> > >>
-> > >> Reports aren't automatically sent to the public while we're
-> > >> trialing new bisection features on kernelci.org but this one
-> > >> looks valid.
-> > >>
-> > >> The bisection was run in the Renesas tree but the same regression
-> > >> is present in mainline for both usb2phy0 and usb2phy1 devices:
-> > >>
-> > >>    https://linux.kernelci.org/test/plan/id/6100af012344eef9b85018f3/
-> > >>    https://linux.kernelci.org/test/case/id/6100af012344eef9b85018fa/
-> > >>
-> > >> I don't see any errors in the logs, it looks like the driver is
-> > >> just not probing.
-> > > 
-> > > What's the actual testcase for "rockchip-usb2phy0-probed"? If it's looking for a hard-coded path like "/sys/bus/platform/devices/ff770000.syscon:usb2-phy@e450/driver" then it can be expected to fail, since changing the node name is reflected in the device name.
-> > 
-> > Dang, you're right.  This is the test case:
-> > 
-> >   https://github.com/kernelci/bootrr/blob/main/boards/google%2Ckevin#L119
-> > 
-> > assert_driver_present rockchip-usb2phy-driver-present rockchip-usb2phy
-> > assert_device_present rockchip-usb2phy0-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e450
-> > assert_device_present rockchip-usb2phy1-probed rockchip-usb2phy ff770000.syscon:usb2-phy@e460
-> > 
-> > Now that needs a conditional depending on the kernel version.  Or
-> > we could try to make it more dynamic rather than with hard-coded
-> > paths, but doing that has its own set of issues too.
+> > diff --git a/drivers/clk/rockchip/clk-rk3308.c b/drivers/clk/rockchip/clk-rk3308.c
+> > index 2c3bd0c749f2..6be077166330 100644
+> > --- a/drivers/clk/rockchip/clk-rk3308.c
+> > +++ b/drivers/clk/rockchip/clk-rk3308.c
+> > @@ -564,7 +564,7 @@ static struct rockchip_clk_branch rk3308_clk_branches[] __initdata = {
+> >         COMPOSITE(SCLK_DDRCLK, "clk_ddrphy4x_src", mux_dpll_vpll0_vpll1_p, CLK_IGNORE_UNUSED,
+> >                         RK3308_CLKSEL_CON(1), 6, 2, MFLAGS, 0, 3, DFLAGS,
+> >                         RK3308_CLKGATE_CON(0), 10, GFLAGS),
+> > -       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UNUSED,
+> > +       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UNUSED | CLK_IS_CRITICAL,
 > 
-> And this shows once more that DT churn has consequences: it breaks a
-> userspace ABI. Changing userspace visible paths for the sake of
-> keeping a build-time checker quiet seems counter-productive. My
-> preference would be to just revert this patch, and instead have an
-> annotation acknowledging the deviation from the 'standard' and keeping
-> the checker at bay.
+> Is it not enabled by default?
 
-I'd be fine with that, if that is the consensus. And an annotation comment
-would be good in that case, just to keep a similar change  from getting
-submitted.
+All gates are enabled by default, but this gate shares a common parent
+tree down to a pll, so if another leaf-user is disabling their part, this
+untracked clock would get disabled as well.
 
-I guess the interesting question is if dtbscheck has some sort of tooling
-to detect these "this is meant to be that way for backwards compatibility"
-hence adding Rob for that question.
-
+On that note, I remember a sort of CLK_HANDOFF was planned way back
+in the past, meaning clock is critical until a driver picks it up, after this the
+driver is responsible for it. Did that get any momentum?
 
 Heiko
+
+
 
 
 
