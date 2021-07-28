@@ -2,58 +2,87 @@ Return-Path: <SRS0=Db5J=MU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAC08C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE822C432BE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:26:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72F1360F45
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 09:54:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 72F1360F45
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id A4B7D60F9C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jul 2021 12:26:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A4B7D60F9C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=98s78G5Lf011UmHIyyS+UJJtJooLLnAlhJbQvm7L0bE=; b=ICW1pv0ARzF1Bk
-	2+lqykIUU+wVvElw3kUqXzrDaPvxZqLTDZ/QQXZ5pzGSav8ipa3mBZ668olhfF9PTzXQKKXetNBaA
-	19QLX+QH2KQLg5ni2CZmGsTS6ugRdrruJEBenD2Z6BLBkhURCoW3O5IE6BzmI4N3mV15MSYWgGB00
-	LSkph5/P2Jxl0FQfOhHdeZGnZTWY7v90BwiVm1vWRIL5+Gc5R8heazhw/8bPRpxWj7c5t8wY7aiAb
-	09TYTz+Zmt1xe1DGO0rqw6iX3XehzkLxsPDg5darobYoiWasD8ua6jk9wzoyyBlKeJHB4MFVs6Bk7
-	BIPg+LUfBzXuC5DGiqFg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c8fr5zr3RcHMCzbUzcS8lL/uutMtbwH8kX4nZ1WJPIc=; b=AR+AFf217QZ0eQ
+	Gbn4sNh/+pjjxxvdFicEHRHQGL6fhC+E9q5UiS16kHmi7TDz608OnAevPKXN/XHeDg012wpYD6WCA
+	RE8rdTe9CRTZlU/ujp+NBUQxOBrGiN/YgWw2xeW6/D6mAE8Dw0daloKbgZVS5rI4bU1GK5Uha7lGT
+	mYAyaycztC24nrr6PhQMrDWbFYgCU3/ISEpXH3XlT8uJ4LY6rezO5WhIX2mfK8/XLGkabih6CWS44
+	0Golm69FCujgfOFkDwci41O0JYA4oyxDD3lgaBVzhkWNKxtNgVm/Hxlxvu0SwnbV93SSUwOoUU0gN
+	cI35ASuGIUuoQcRHj/UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8gGR-000HNu-Ts; Wed, 28 Jul 2021 09:54:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1m8ie6-000cmk-B7; Wed, 28 Jul 2021 12:26:46 +0000
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8gGE-000HLo-Ra; Wed, 28 Jul 2021 09:54:00 +0000
-Received: from [95.90.166.74] (helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m8gGB-0004qG-7D; Wed, 28 Jul 2021 11:53:55 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Yunhao Tian <t123yh@outlook.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: t123yh.xyz@gmail.com, Yunhao Tian <t123yh@outlook.com>,
- Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] clk: rk3308: make ddrphy4x clock critical
-Date: Wed, 28 Jul 2021 11:53:54 +0200
-Message-ID: <2634451.ElGaqSPkdT@diego>
-In-Reply-To: <162734809017.2368309.7901135942001140161@swboyd.mtv.corp.google.com>
-References: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
- <162734809017.2368309.7901135942001140161@swboyd.mtv.corp.google.com>
+ id 1m8idh-000cec-4F; Wed, 28 Jul 2021 12:26:22 +0000
+Received: by mail-qt1-x82b.google.com with SMTP id m11so1161251qtx.7;
+ Wed, 28 Jul 2021 05:26:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1cpOBZXZl+X9zh9reb80OTm+Y4W8Zt/c3AvDZt4KISo=;
+ b=vJXvb2Jmlbm70+yCmjiFIleraKYYYJ+oFk0cRA5lKzzVnAChhB3QFlFl0bUDpkHvfX
+ 53r0RALch+rrgQJM1zkvkguosuCN/W1V2Q9uHeVBjXZD8xK0bO93xihBguGNVexr/Jeh
+ QTCxKj50OMfwF3ak0WF9eXh8Q7RRqC5N+p1zhgGbNU9Bp2WaYBeBsv2EkpyLvdBRsH0W
+ JYino0wZ7Or+Qfw8WYdAnX3tfOVHpjl3rLktWochoOAQovvHx8piGe1m2ESF0ZhDd6gH
+ iMAX7E8FC2NVR9lIfLnEZCboTWg9yatSJoNW85DnzbmYxzlBIKxqtasQKSy/WYXjaFj1
+ huIA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1cpOBZXZl+X9zh9reb80OTm+Y4W8Zt/c3AvDZt4KISo=;
+ b=j36PE+ixWtjm8Z8AW9YvAAyjOBXiJIRjUIwaRWMTUGcpXDkBNO6/UW5QTtu73EPfxE
+ w4UiNHxW5Q0QXYAnoEvyUdAvRlAvwt/vqdYn2A7Kt4905LuualKUoqmfZ9q2WKRndD+7
+ x7EYEAitrqvslVVF8NJo5AGOfgBhsCGqZhG+gig/n4VPssfTVOqEiH2lnlark5v71xzp
+ 05BRhReM3KTJyzPVFkehTikQ4vbC+hmACTA7a8xNBDC6QMEbHk47IGYMRP5BGLC/ghH8
+ ZPO1Cl54FT7l7glj9a9QCGv3pjpj5mPQqxQkTgdgJq0ag8YFLu7lhqU2NIZIb04kCkQg
+ 2PfQ==
+X-Gm-Message-State: AOAM533z+W5jwOR1F9JUgg8wnmM6LkIV5wGe2YdUq/zlmaE9bm5pER7l
+ kGNtkRL3nWkzcJShb2mG0og=
+X-Google-Smtp-Source: ABdhPJxZ0V3Jp5j7jIzfzpXOPbo0SByMp8ZIPkpmvH3SLHeS+IK/TXItGd/fCc0GPVXtnhnIL5OTRw==
+X-Received: by 2002:a05:622a:1828:: with SMTP id
+ t40mr23729089qtc.276.1627475177902; 
+ Wed, 28 Jul 2021 05:26:17 -0700 (PDT)
+Received: from master-laptop.sparksnet ([2601:153:980:85b1:b58:2ae8:d75f:660a])
+ by smtp.gmail.com with ESMTPSA id z9sm2842972qtn.54.2021.07.28.05.26.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 28 Jul 2021 05:26:17 -0700 (PDT)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>
+Subject: [RFC PATCH 0/9] phy-rockchip-inno-usb2: support rk356x usb2phy
+Date: Wed, 28 Jul 2021 08:25:57 -0400
+Message-Id: <20210728122606.697619-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_025358_951994_760A603E 
-X-CRM114-Status: GOOD (  25.65  )
+X-CRM114-CacheID: sfid-20210728_052621_218217_B15ABEA9 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,51 +100,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 27. Juli 2021, 03:08:10 CEST schrieb Stephen Boyd:
-> Quoting Yunhao Tian (2021-07-21 05:48:16)
-> > Currently, no driver support for DDR memory controller (DMC) is present,
-> > as a result, no driver is explicitly consuming the ddrphy clock. This means
-> > that VPLL1 (parent of ddr clock) will be shutdown if we enable
-> > and then disable any child clock of VPLL1 (e.g. SCLK_I2S0_8CH_TX).
-> > If VPLL1 is disabled, the whole system will freeze, because the DDR
-> > controller will lose its clock. So, it's necessary to prevent VPLL1 from
-> > shutting down, by marking the ddrphy4x CLK_IS_CRITICAL.
-> > 
-> > This bug was discovered when I was porting rockchip_i2s_tdm driver to
-> > mainline kernel from Rockchip 4.4 kernel. I guess that other Rockchip
-> > SoCs without DMC driver may need the same patch. If this applies to
-> > other devices, please let us know.
-> > 
-> > Signed-off-by: Yunhao Tian <t123yh@outlook.com>
-> > ---
-> >  drivers/clk/rockchip/clk-rk3308.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/clk/rockchip/clk-rk3308.c b/drivers/clk/rockchip/clk-rk3308.c
-> > index 2c3bd0c749f2..6be077166330 100644
-> > --- a/drivers/clk/rockchip/clk-rk3308.c
-> > +++ b/drivers/clk/rockchip/clk-rk3308.c
-> > @@ -564,7 +564,7 @@ static struct rockchip_clk_branch rk3308_clk_branches[] __initdata = {
-> >         COMPOSITE(SCLK_DDRCLK, "clk_ddrphy4x_src", mux_dpll_vpll0_vpll1_p, CLK_IGNORE_UNUSED,
-> >                         RK3308_CLKSEL_CON(1), 6, 2, MFLAGS, 0, 3, DFLAGS,
-> >                         RK3308_CLKGATE_CON(0), 10, GFLAGS),
-> > -       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UNUSED,
-> > +       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UNUSED | CLK_IS_CRITICAL,
-> 
-> Is it not enabled by default?
+Good Morning,
 
-All gates are enabled by default, but this gate shares a common parent
-tree down to a pll, so if another leaf-user is disabling their part, this
-untracked clock would get disabled as well.
+This is my series to support the usb2 phy devices on the rk356x.
+The rk356x phy has a single muxed interrupt and has moved the usb2phy
+nodes out of the grf and into their own nodes.
+The phy needs to tie back into the grf for register control, similar to
+the rv1108.
+By moving the phys into their own nodes, they now have full
+#address_cells = 2 register addresses, but they still reside below the 32bit
+mmio range.
 
-On that note, I remember a sort of CLK_HANDOFF was planned way back
-in the past, meaning clock is critical until a driver picks it up, after this the
-driver is responsible for it. Did that get any momentum?
+This driver series only supports the host configuration for the rk356x.
+I have have tested it on the following:
+rk3566 - Pine64 Quartz64 Model A
+rk3399 - Pine64 Rockpro64
 
-Heiko
+Please provide feedback and comments as you see fit.
 
+Peter Geis (9):
+  dt-bindings: soc: rockchip: add rk3568-usb2phy-grf
+  dt-bindings: phy: phy-rockchip-inno-usb2: add rk3568 documentation
+  dt-bindings: usb: generic-ohci: increase maximum clocks
+  phy: phy-rockchip-inno-usb2: support #address_cells = 2
+  phy: phy-rockchip-inno-usb2: support standalone phy nodes
+  phy: phy-rockchip-inno-usb2: support muxed interrupts
+  phy: phy-rockchip-inno-usb2: add rk3568 support
+  arm64: dts: rockchip: add usb2 nodes to rk3568 device tree
+  arm64: dts: rockchip: add Quartz64-A usb2 support
 
+ .../bindings/phy/phy-rockchip-inno-usb2.yaml  |   8 +-
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   1 +
+ .../devicetree/bindings/usb/generic-ohci.yaml |   2 +-
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  52 ++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  97 +++++++
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 259 ++++++++++++++----
+ 6 files changed, 360 insertions(+), 59 deletions(-)
 
+-- 
+2.25.1
 
 
 _______________________________________________
