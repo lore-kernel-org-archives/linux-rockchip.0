@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23639C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jul 2021 13:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 92A0AC4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jul 2021 13:19:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B2DA60F23
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jul 2021 13:19:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7B2DA60F23
+	by mail.kernel.org (Postfix) with ESMTPS id 23CE560230
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jul 2021 13:19:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 23CE560230
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jXlHvJVFyKDWjonho/mqD5MhduW/xlpsJtFAu3aMoJQ=; b=S65VFyXkCt/yqV
-	oQ8OPzyn9FewvKhI/LtThxrtjgAgmFgMfFtcgiaVR6Ogbh+jIxPtOqWinBuA/0pMaEMozcIHQGeeG
-	1TgULUFmY+gWEfRDcCNGAlR5rHX0xeZ6ZvyplEFlkffs3Os/B2COWs8jFmIWhuwZHroWGCShblXjW
-	Wzk6WdenxUAsxWod2R/qHAziJpuNQ43lC1JLQMDow+RexFLZPD3mzKq7JIiam+cXVa/pnDKgw6bCp
-	w2LY3TGKG4Oda2NObf1dpWq0jUiiUOUXMqsx2ptLpXkM3p6kCSj85sWo8bMIDdNMPlpHcv24juiCI
-	C7ZLdghQHcjsVbgylyJw==;
+	List-Owner; bh=FKxI4PHF7fDqJZiMTpjrC7fLGJTvCHm8VgzZBHCJEfU=; b=dOmMiw24VSr33H
+	u4uFrRd0TUKtxkQsf1ATLjtMu4SrC8rve7BseUbMMnUKQJFjDSJ5+d9XKAJGtPfT9qIzG3T8RsCNZ
+	lX5rFn/7UKDzmfVS0c3He1wAgc5X3TxKsM8RoaAkHwG621eYOm3VW18/Gx0ZFA19SY00sCj9/WcYa
+	pfmtbm/IoXIpvbYauECdnPiWCL1Jpe1bBHfofOK9Q2mgpe5LoRX3TnRi7xsQDvwAgT6oz4BciSihj
+	0aklg2WIiYjcUu3/dSzf35twx8AoCPyMoZIQwuIxw7uat2ElTYcvH9vhOOpSkgO/vMrSd2EBmhZT3
+	6LfCkpimyAPXvGDd5kcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m95wq-004CJr-0G; Thu, 29 Jul 2021 13:19:40 +0000
+	id 1m95x1-004CN1-B3; Thu, 29 Jul 2021 13:19:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m95wb-004CFh-G1; Thu, 29 Jul 2021 13:19:26 +0000
+ id 1m95wc-004CG2-8N; Thu, 29 Jul 2021 13:19:27 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1m95wW-0003Jt-V3; Thu, 29 Jul 2021 15:19:21 +0200
+ id 1m95wX-0003Jt-Io; Thu, 29 Jul 2021 15:19:21 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Heiko Stuebner <heiko@sntech.de>, Simon Xue <xxm@rock-chips.com>,
- Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>,
- Liang Chen <cl@rock-chips.com>
-Subject: Re: [PATCH v2 0/2] add ethernet support to rk3568 dts
-Date: Thu, 29 Jul 2021 15:19:17 +0200
-Message-Id: <162755606328.1705274.2968176940580223708.b4-ty@sntech.de>
+To: Yunhao Tian <t123yh@outlook.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ t123yh.xyz@gmail.com, Stephen Boyd <sboyd@kernel.org>,
+ linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] clk: rk3308: make ddrphy4x clock critical
+Date: Thu, 29 Jul 2021 15:19:19 +0200
+Message-Id: <162755606328.1705274.2205144584185916023.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210729093913.8917-1-michael.riesch@wolfvision.net>
-References: <20210729093913.8917-1-michael.riesch@wolfvision.net>
+In-Reply-To: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
+References: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_061925_571557_394C0779 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20210729_061926_346655_3530C9C7 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,25 +73,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Jul 2021 11:39:11 +0200, Michael Riesch wrote:
-> these patches should be orthogonal to the ongoing work of Peter Geis
-> that aims to introduce the GMAC1 node to the common RK356x dts.
-> The GMAC0 node, which is exclusive to the RK3568, and the Ethernet
-> phy nodes in the RK3568 EVB1 are introduced by this series.
-> 
-> v2:
-> - sort properties alphabetically
-> - use phy-mode "rgmii-id" without delay properties
-> - rename phy nodes to "ethernet-phy"
+On Wed, 21 Jul 2021 20:48:16 +0800, Yunhao Tian wrote:
+> Currently, no driver support for DDR memory controller (DMC) is present,
+> as a result, no driver is explicitly consuming the ddrphy clock. This means
+> that VPLL1 (parent of ddr clock) will be shutdown if we enable
+> and then disable any child clock of VPLL1 (e.g. SCLK_I2S0_8CH_TX).
+> If VPLL1 is disabled, the whole system will freeze, because the DDR
+> controller will lose its clock. So, it's necessary to prevent VPLL1 from
+> shutting down, by marking the ddrphy4x CLK_IS_CRITICAL.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: add gmac0 node to rk3568
-      commit: 2ff79e4cec9850de4df59e3902197141de7ba9ea
-[2/2] arm64: dts: rockchip: rk3568-evb1-v10: add ethernet support
-      commit: f96f01eb249165631456e1d81aed0e2f3d4e2cea
+[1/1] clk: rk3308: make ddrphy4x clock critical
+      commit: c0c81245dac7caaef4db627fb7043495d1afe662
+
+Though I moved the clock to the pre-existing
+list of critical clocks.
+
+I'm still hoping for that handoff mechanism before
+we sprinkle CLK_IS_CRITICAL throughout the clock trees.
+
 
 Best regards,
 -- 
