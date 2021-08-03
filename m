@@ -1,61 +1,122 @@
-Return-Path: <SRS0=4of/=MZ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=H/Xe=M2=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8CB9C4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Aug 2021 19:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E0E6C4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Aug 2021 02:23:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 448A560EFF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Aug 2021 19:26:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 448A560EFF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 09C746052B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Aug 2021 02:23:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 09C746052B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=outlook.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=krrjGFOGdojyGqVk1AyMlaFheWxnPrBNcyZVwf1n+/c=; b=40V8GVIJiiFXsu
-	8FaQBJgj9Ig5oKPDJAmLhAn+2VVTX/hFRgMGMyKhhWhua3Hv1MCuHbOR5kyPvcOvYPL6x6z+EnsSx
-	7e3GIUcnMqscnu9At1CXvKEYVd7Vt81mSg9znSXoiqyeQjWxpRt1Ua34mjIh089GXPhHbnvdc4TuR
-	j3DHYmoNr2UYtV+nPaigEPA9Lsfooly2SSX9d3dgy7Dg7JCDarM3/sP/I3WjZLJjLgZo1TyJvm49o
-	vK0HcnGxtFqeG5fJEQsQO02m2W0zgo84fDk1ykTB+jk2IHf/ufuK+eWoJkeO4MbBB+uW7e6mexJcX
-	M5KCg7HSWmBA1NhCGlmQ==;
+	List-Owner; bh=glSohvCR4cHw12C/GP7g67hm9xcOx6hqT5jlTNiss60=; b=IUNp7kl/5nqd9n
+	qhjvyDlRp4IEF6Uvwp7/xvyvsIyLdQ6s8YfU34Mnx4nbI5jEkGJtDPEdGcFfM/yI9t6kcD/D3LcJO
+	h340oJt0VJopUv4+fuclqyq0KRctbeTljv5x8A1uIRLLSUCgWbO51yS9P2WwsVSYo1LKTpxARXtEH
+	85YgU2fqv6kcGq+ikF8omZBlL72uh91uRj2RS4S5l8KbmJLnjsUT46t4gsij/F6Hy7KRDMq/LEV0H
+	Zwba1VR0g5bil3KQ9ka4OpR7kkNV43YbQp66M9V6FpLtyNaYqXAwJ00mFDlJHN/X6GeH7p7wIoU0M
+	M6k3vVyTFauaKoAbAfJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAdZs-0001Dm-Be; Mon, 02 Aug 2021 19:26:20 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mAk5r-000nxI-F9; Tue, 03 Aug 2021 02:23:47 +0000
+Received: from mail-dm6nam11olkn2016.outbound.protection.outlook.com
+ ([40.92.19.16] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAdZf-0001Bn-1w; Mon, 02 Aug 2021 19:26:09 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mAdZY-000515-2w; Mon, 02 Aug 2021 21:26:00 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Stephen Boyd <sboyd@kernel.org>, Saravana Kannan <saravanak@google.com>
-Cc: Yunhao Tian <t123yh@outlook.com>, t123yh.xyz@gmail.com,
- Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+ id 1mAk5c-000nt9-LP; Tue, 03 Aug 2021 02:23:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Dw2jjs5osk+LYDFuPAaNXPqmNtweXg9BVi69GJSVm/H/QTdQnns5BbYgG7x7afYFTiNt9GtgBIqn1barNoIl5CrTqUbali3qDlIGBzKspKevjkxeNCzR3xMUj8UhX83BaJ6JaaC9IusrAOEpuSeqT3xL8qTDNmKoxcJrJXRJ88dp0CTjuLy8ka6BTYtTN4nUSubJ0cXZyCHRxD8rAX0WEJi7rAwpyha6PVB9NJfrXI9Ik3q7nWooi5ybEAZsM6TH+M2bD2BwNOUF30g4wDZUFjGjLeJozzs1AccxsheR+d6J0JQwO1yRtCBDpTd7GHm6kAIdkTMvjpZ7CdS1M0ahxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UpVmbBwjsyo2IJZ0d0TSyaKcqTc5U1t+iPTu0ilQPRc=;
+ b=JjUGTL518X9EWOYoVxic2Nm1dLzVnLlP9B6MU5Drd2PBoCS8IIYJHT33PvuBshRIz2iWJk0LFIbP5JUCxRie6dQI1UyHOcUbn7R3+9ia9A1YQQf92Nqm2iOxCWKUDlHHiSrni/yCgBFYK/BOGyrnG6wCp3uXp7ITX4guO69QnqV98St/BueTMHzOXwIJbtcqfvCgEltF+ko1G75osBKJ+I2Qq4KUiS2IhyEpnsu2zzeB1JFIorZQ83ZGApbMp2VOBUAQU7mZyhaD2ZWTbouSDyy58TmKyOQMM+8eyVSw5iuH8oy0fY6jiCGZEVvkGisKs90sS6iKy3wPR48anSjChw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UpVmbBwjsyo2IJZ0d0TSyaKcqTc5U1t+iPTu0ilQPRc=;
+ b=lRNcRoMR7yeQ9qYcTlmpFavbCM99iSRCzUTuKAIcZ+r7DWpjKV7pqOi1TSxlil6hKyPLkLUs/fiJT7zl+kLKL1wpodDvQsusoCftEFsrXiara67XdUsZqCu21TdJXznI1ZZ5IiIuHvokZk7dpc2J09cwhkvYo9NexNTRbZMByYgDjk5S5NRv3kYNBgvnKT13Fp2LniCWNLJaEq5GGc/jfTJM+LvYC/6/yU91y3nVuyXkv0mz7Je43y6tZXx7KX2F5yTnp4OzK+If/k5rW6DNZ1PiLWgnNuDRiQTEC+iQMJwciOR104IoHrqyqeMfF9sTG4OLNgUG35uAY+7TzClbQA==
+Received: from DM6NAM11FT025.eop-nam11.prod.protection.outlook.com
+ (2a01:111:e400:fc4d::4d) by
+ DM6NAM11HT072.eop-nam11.prod.protection.outlook.com (2a01:111:e400:fc4d::480)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.18; Tue, 3 Aug
+ 2021 02:23:29 +0000
+Received: from BYAPR20MB2488.namprd20.prod.outlook.com
+ (2a01:111:e400:fc4d::43) by DM6NAM11FT025.mail.protection.outlook.com
+ (2a01:111:e400:fc4d::197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4373.18 via Frontend
+ Transport; Tue, 3 Aug 2021 02:23:29 +0000
+Received: from BYAPR20MB2488.namprd20.prod.outlook.com
+ ([fe80::c560:d46:6441:fd7f]) by BYAPR20MB2488.namprd20.prod.outlook.com
+ ([fe80::c560:d46:6441:fd7f%7]) with mapi id 15.20.4373.026; Tue, 3 Aug 2021
+ 02:23:29 +0000
+From: Tian Yunhao <t123yh@outlook.com>
+To: Saravana Kannan <saravanak@google.com>, Stephen Boyd <sboyd@kernel.org>
+CC: =?gb2312?B?SGVpa28gU3SouWJuZXI=?= <heiko@sntech.de>,
+ "t123yh.xyz@gmail.com" <t123yh.xyz@gmail.com>, Michael Turquette
+ <mturquette@baylibre.com>, "linux-clk@vger.kernel.org"
+ <linux-clk@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+ <linux-rockchip@lists.infradead.org>
 Subject: Re: [PATCH] clk: rk3308: make ddrphy4x clock critical
-Date: Mon, 02 Aug 2021 21:25:59 +0200
-Message-ID: <16392318.geO5KgaWL5@diego>
-In-Reply-To: <CAGETcx8YYrkCV0UObtOqHUnS29Q-raC54KUh14wqyBDMJ4e46g@mail.gmail.com>
+Thread-Topic: [PATCH] clk: rk3308: make ddrphy4x clock critical
+Thread-Index: AQHXfi68f0VPeurqO02nI5cqXOnZYKtWC10AgAIlOACAAizOgIAGPaIAgACDmhA=
+Date: Tue, 3 Aug 2021 02:23:29 +0000
+Message-ID: <BYAPR20MB24880A45E81C042CD4061C5C89F09@BYAPR20MB2488.namprd20.prod.outlook.com>
 References: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
- <162758560739.714452.5782743329332725952@swboyd.mtv.corp.google.com>
+ <162734809017.2368309.7901135942001140161@swboyd.mtv.corp.google.com>
+ <2634451.ElGaqSPkdT@diego>
+ <162758560739.714452.5782743329332725952@swboyd.mtv.corp.google.com>,
  <CAGETcx8YYrkCV0UObtOqHUnS29Q-raC54KUh14wqyBDMJ4e46g@mail.gmail.com>
+In-Reply-To: <CAGETcx8YYrkCV0UObtOqHUnS29Q-raC54KUh14wqyBDMJ4e46g@mail.gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-incomingtopheadermarker: OriginalChecksum:EF9C9D3E3C82C1E8A0E1D843CDEBB39A84B9E62BC68DFCD3E43256E5D315CAA9;
+ UpperCasedChecksum:288F172A77795D58200C3651DFD03802EFE7E4FC831586A5278BE1B33D03381F;
+ SizeAsReceived:7476; Count:44
+x-tmn: [1XOpPTgNYyO87v4L/5iQYsfC5Jha268z]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 44
+x-eopattributedmessage: 0
+x-ms-office365-filtering-correlation-id: 6358eb15-0bfd-4df6-8d33-08d95625ae85
+x-ms-traffictypediagnostic: DM6NAM11HT072:
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 48bA1/XOGKdxOVQISn7YdYU3rgmhdhAbOPBC0/X5SX/DsjqEAbyrfl/3+QQL9oE08E/yozDeH9zFyZVDh71X5uXgugkqOAuxC8ieN64HSn8HGsg+q50Jh0h5vZVsbvz1dMlJBJ0CsFa6os4doszUdhUMmmB1JB2oIvdc4IApmCGXsXPu90b74aX729xpF3E0HrbA8ITftNjVVD8gwyJVP482l+YbrOMisjajZepneedrHVgM0qK96w3S2nu6aFgQ5C8GKxMXEI41eM1XEnTMWs1ZXBrN9LblsnimJK0XOdBW7OXiJexun+4pXzpKoE3ukZDVY6EKFyC7NGXiRy4vkJcHxm3569KjE3RUQ3oyY+erN6G4uLtEx/FtuSaD5rpool29kKCgz3V8lmzWhL2SDhFk/Yl0tClSWsV2n8LfwoIN7TYMjZDHKRW4pfCfm/9RDUh1y/B4Rcm6DV+PZjAWlOJNa1y2AHLgwWOHCwNc9TQ=
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: Hnet6V4P482MrDUDixjZrFXGubjn4gU8JqSm1wxhwuidASYftppRnSu9Vz7+x+QL26wvxeqWqR/9lGgJG6Wkqbmp3TdiQMEmr9ZZ0pCeEk2JxAKnUbpmGWwFEY0o2X6ukmdDBTpBVnnZT+jGEHjbSg==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT025.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6358eb15-0bfd-4df6-8d33-08d95625ae85
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Aug 2021 02:23:29.0662 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Internet
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6NAM11HT072
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210802_122607_137576_23FE97A4 
-X-CRM114-Status: GOOD (  42.54  )
+X-CRM114-CacheID: sfid-20210802_192332_910691_871AA00C 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,119 +129,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+> Yunhao,
+> 
+> Is there at least some DT device that consumes the DDR phy clock? Can
+you point me to the DT for this board (not the SoC) so I can take a
+look at it later?
+
 Hi Saravana,
 
-Am Montag, 2. August 2021, 20:24:56 CEST schrieb Saravana Kannan:
-> On Thu, Jul 29, 2021 at 12:06 PM Stephen Boyd <sboyd@kernel.org> wrote:
-> >
-> > Quoting Heiko St=FCbner (2021-07-28 02:53:54)
-> > > Am Dienstag, 27. Juli 2021, 03:08:10 CEST schrieb Stephen Boyd:
-> > > > Quoting Yunhao Tian (2021-07-21 05:48:16)
-> > > > > Currently, no driver support for DDR memory controller (DMC) is p=
-resent,
-> > > > > as a result, no driver is explicitly consuming the ddrphy clock. =
-This means
-> > > > > that VPLL1 (parent of ddr clock) will be shutdown if we enable
-> > > > > and then disable any child clock of VPLL1 (e.g. SCLK_I2S0_8CH_TX).
-> > > > > If VPLL1 is disabled, the whole system will freeze, because the D=
-DR
-> > > > > controller will lose its clock. So, it's necessary to prevent VPL=
-L1 from
-> > > > > shutting down, by marking the ddrphy4x CLK_IS_CRITICAL.
-> > > > >
-> > > > > This bug was discovered when I was porting rockchip_i2s_tdm drive=
-r to
-> > > > > mainline kernel from Rockchip 4.4 kernel. I guess that other Rock=
-chip
-> > > > > SoCs without DMC driver may need the same patch. If this applies =
-to
-> > > > > other devices, please let us know.
-> > > > >
-> > > > > Signed-off-by: Yunhao Tian <t123yh@outlook.com>
-> > > > > ---
-> > > > >  drivers/clk/rockchip/clk-rk3308.c | 2 +-
-> > > > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > >
-> > > > > diff --git a/drivers/clk/rockchip/clk-rk3308.c b/drivers/clk/rock=
-chip/clk-rk3308.c
-> > > > > index 2c3bd0c749f2..6be077166330 100644
-> > > > > --- a/drivers/clk/rockchip/clk-rk3308.c
-> > > > > +++ b/drivers/clk/rockchip/clk-rk3308.c
-> > > > > @@ -564,7 +564,7 @@ static struct rockchip_clk_branch rk3308_clk_=
-branches[] __initdata =3D {
-> > > > >         COMPOSITE(SCLK_DDRCLK, "clk_ddrphy4x_src", mux_dpll_vpll0=
-_vpll1_p, CLK_IGNORE_UNUSED,
-> > > > >                         RK3308_CLKSEL_CON(1), 6, 2, MFLAGS, 0, 3,=
- DFLAGS,
-> > > > >                         RK3308_CLKGATE_CON(0), 10, GFLAGS),
-> > > > > -       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UN=
-USED,
-> > > > > +       GATE(0, "clk_ddrphy4x", "clk_ddrphy4x_src", CLK_IGNORE_UN=
-USED | CLK_IS_CRITICAL,
-> > > >
-> > > > Is it not enabled by default?
-> > >
-> > > All gates are enabled by default, but this gate shares a common parent
-> > > tree down to a pll, so if another leaf-user is disabling their part, =
-this
-> > > untracked clock would get disabled as well.
-> >
-> > Right, this problem is cropping up in different places for various
-> > drivers.
-> >
-> > >
-> > > On that note, I remember a sort of CLK_HANDOFF was planned way back
-> > > in the past, meaning clock is critical until a driver picks it up, af=
-ter this the
-> > > driver is responsible for it. Did that get any momentum?
-> > >
-> >
-> > Last I saw Saravana sent a patch to sort of connect CLK_HANDOFF to
-> > device driver sync_state() callback. I think we need to at least stash
-> > away that a clk is enabled at boot and then figure out how to tie in
-> > sync_state and/or something else.
-> =
+If you don't mind, you can refer to 4.4 kernel modified by Rockchip. 
 
-> Yeah, my clk_sync_state() series should do that. I'll get back on that
-> patch this week or next.
-> =
+This is one of a board DTS: [1] (note line 203: &dmc). This is not the board I'm using, but I think specific board is not related to our problem here.
 
-> Yunhao,
-> =
-
-> Is there at least some DT device that consumes the DDR phy clock? Can
-> you point me to the DT for this board (not the SoC) so I can take a
-> look at it later?
-
-Not for the rk3308. If you're looking for live-examples of handoff clocks,
-I can provide another examples though:
-
-
-rockchip/clk-rk3288.c - pclk_rkpwm (in the separate critical clock list) ..=
-. with
-arch/arm/boot/dts/rk3288.dtsi - clock is supplying pwm nodes.
-
-As the comment in the clock driver suggests (line 850), some boards use
-pwm-regulators for central components. The pwm-regulators are configured
-at boot already, so the clock shouldn't be disabled till the pwm-regulator =
-takes
-over.
-
-
-The whole memory handling is a blank slate on the kernel side for Rockchip
-boards still. The bootloader sets up the memory and nobody has found the
-time to modell things like memory scaling in a nice way yet.
-
-
-Heiko
-
-
-
+[1]: https://github.com/rockchip-linux/kernel/blob/develop-4.4/arch/arm64/boot/dts/rockchip/rk3308-ai-va-v10.dts
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
