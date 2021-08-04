@@ -2,100 +2,71 @@ Return-Path: <SRS0=hTL8=M3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30670C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Aug 2021 15:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8561DC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Aug 2021 16:15:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EBACA60F94
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Aug 2021 15:05:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EBACA60F94
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4E22860F35
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Aug 2021 16:15:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4E22860F35
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=yTGzJci+6hN60KnfBlsdcwIHceibwtdA7Q+oTWdegkY=; b=EEY42UIsFDZtjVQU6yFp/r9dtQ
-	UNuGJQ2IVQlHSDFpAnRCq7Dy84bAahDFmy2CsFdCpKSBJ41K2iigE8DRr/ipI8T4HTgOA6w5M5YrR
-	2HJ+B54KTZKIGo8Z6pBc/OKG9CQ8ZHhgODHPUe/nm82Wx019RLehbpwdoJzbBwWEd7JDbEpq9BHg0
-	JoNu/EZpFA/mhmy1dXjXpH04rYWDUKlCXweuIc6Qq/ii/Mw/dTXosAJA35w97otr7AS5xdp8ONcS6
-	dBxkYcrBI0BdnWMMVTdpvgMLklIBu4A4cHcZ0J8wVfvWiGhSnf0rUiQ5UeoWljTawnEgnni30vpQt
-	Q4EnQvqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sQwr253gCNgA+KpDfLvXbddsmiJhSSBVVUZKV5AXeSE=; b=19sqCMdGvx+Lm84w0/YWEVT5q9
+	IQWi/pNeIdamw0DYDspeVyC+mixLFW4d5V2AFCRaoDllZL+P7vYsSFu58Ycn/BcER7HSUmJbnVm7/
+	Zr4SfZ4zqdEHOl8wXVsNWtuDIjCWtLNgjo5krbvZc2/ylmn++0xUMCzZmYlaggA/w7t2pes5/cEc7
+	m/Bm/2mJUiRQ2y18CYxobdNRBsceOmuSQv2KhLwzFzX8f3i7VBBcuKC7//+tX9QTaX0FfAUHLqMFu
+	37Szmy4Xw/0n0xOjKpfn4R0K0EvFwRFrxYKfE7Pnn+bvITLVNAoV/4voAWKfCBSpBlx+B+y+ctlYg
+	xZLbTzXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBISn-006XPA-9a; Wed, 04 Aug 2021 15:05:45 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1mBJY8-006jxa-Rs; Wed, 04 Aug 2021 16:15:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBISk-006XOI-TN; Wed, 04 Aug 2021 15:05:44 +0000
-Received: by mail-ej1-x636.google.com with SMTP id c25so4237960ejb.3;
- Wed, 04 Aug 2021 08:05:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=apXako6tqUazW99r8dSb/XUslxRiTi4p8nrGsfYfU48=;
- b=UgQ6w8r/cPCgyzxk3fq0RxMllPR0/FM6lcrW/uG7TxyIkyfFYfmpcMNiaKQaq6iNqI
- /p94ftzRdCS/WIjtGrBgczmg1N1Lr/jmo8cNLVaWwQ6zqEgEhcVNKJJHvKaVXmImBUaU
- KIjP9O114HdwkyBS0Xo+zYXR3/YEXqiPurlrgfPahK6kMZL3IW99s/3WETsShna2x9Gm
- 3GYpvFrMMkrelXP5zUN/mt8h/QHn/F9iGbS/6rywnPh91KM1M/D8VUuucjaXAj5mp3hP
- IgyCR6GZf1Rm1KxKOytcUiVRUtkMiYV+lxHEvh71H+UMqMDMlLmIEf9xfIZxSOG5s08e
- TOMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=apXako6tqUazW99r8dSb/XUslxRiTi4p8nrGsfYfU48=;
- b=N6jPW4/h9e0upIEq7ZBgAJLRGaF2F4CtwQqf3ODZETg7xVP2PXEVPrNPaqv/T04Qhz
- QdiVNOy4CjY+GbCfN8EBZ+mkDeS0IJU07FHS4T2BELjgpY4+aCsDuDvR3wBnX+9aYdqr
- cJPc6EBQpOhPtZ3yAb4Fry1+rzIHrgB8AtzE0bbmOsj+1OYqXHdxRrgWJZH+6qlr0CgK
- 6BOdHjjcH7UEJSRN3n6TH2QT6x/Tc2p02KdP/B+j1prgy5TRRy4Xj1eODmszmLRFQYod
- OA50HUjmEcU4eQeddwa28Ip2LkiYpw+HT74mDOqQA4vqLHStzeRlNQZvpIPsSw72eNlg
- SJrA==
-X-Gm-Message-State: AOAM532V62w+2Mo08T2KpRvxHBjGZep4OOZCvSqRtGGgJXKlpGLdn5z8
- Xrlz1MDNraKWceHD4NLK7hw=
-X-Google-Smtp-Source: ABdhPJyDlAczSHhxndS5VvIC4kSrfYdJcP9gF+zKKIC0cnlhgK1rvxgZeRGiTG+Mlki6bDtvh1uOEg==
-X-Received: by 2002:a17:906:260e:: with SMTP id
- h14mr26075850ejc.258.1628089541336; 
- Wed, 04 Aug 2021 08:05:41 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- h19sm1074852edt.87.2021.08.04.08.05.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Aug 2021 08:05:41 -0700 (PDT)
-Subject: Re: [PATCH v2 4/7] arm64: dts: rockchip: enable io domains for rk356x
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Simon Xue <xxm@rock-chips.com>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
- Lee Jones <lee.jones@linaro.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Zhang Changzhong <zhangchangzhong@huawei.com>
-References: <20210804130625.15449-1-michael.riesch@wolfvision.net>
- <20210804130625.15449-5-michael.riesch@wolfvision.net>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <6f557e45-075f-9a12-f603-cec8a4dc28a6@gmail.com>
-Date: Wed, 4 Aug 2021 17:05:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ id 1mBJY5-006jwx-Uw
+ for linux-rockchip@lists.infradead.org; Wed, 04 Aug 2021 16:15:19 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8AC5F60F35;
+ Wed,  4 Aug 2021 16:15:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628093717;
+ bh=SU7iytpCAGzQPHujZgCX1j7w+mEyOgO8m5L4Sfkfong=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=c0iuJnE+Iq2qLARWx2kO/wSRb9gScSFH2nSxE+ddHBNkgc+DefJHN4DSiqejGP2/E
+ 4gHjzSW2bJZufF+GODGh0BLiCo8vrStx6Wr2Ikc+kDy/gPKWdX69wjdvTURirYRdQP
+ yCY2AuyK9zN73Zw4glL3i/xCcNy0f80gjzop3EzmqAthLGu/Cz+tnGKkt1eiTrwyRG
+ K8cXR8i87ZRn3/oJtNKkCmeR3IRw5GAE/eGTXrj7z9AZrnuwaaX4hoKsEaLHL6tXQu
+ L67m89axZ3atNglt5rGg0LeIeJMJ97jK3SOy+DmbDdY5sV/RTCrdK40YD4t5iZoxqN
+ wlemh04Wm9Y8g==
+Date: Wed, 4 Aug 2021 17:15:01 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Jaehoon Chung <jh80.chung@samsung.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ devicetree@vger.kernel.org
+Subject: Re: [BUG] mmc_regulator_set_ocr can't cope with regulator-fixed
+Message-ID: <20210804161501.GB26252@sirena.org.uk>
+References: <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210804130625.15449-5-michael.riesch@wolfvision.net>
-Content-Language: en-US
+In-Reply-To: <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
+X-Cookie: MOUNT TAPE U1439 ON B3, NO RING
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_080543_031466_456E9314 
-X-CRM114-Status: GOOD (  16.66  )
+X-CRM114-CacheID: sfid-20210804_091518_058689_518EAD99 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,68 +79,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4523424604418389410=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
 
-pmu_io_domains is a sub node of pmugrf, so add it to grf.yaml as well in
-a separate patch. Place document changes before driver patches for
-checkpatch scripts (undocumented compatible string):
-./scripts/checkpatch.pl --strict <patch1> <patch2>
+--===============4523424604418389410==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="i0/AhcQY5QxfSsSZ"
+Content-Disposition: inline
 
 
-  - if:
-      properties:
-        compatible:
-          contains:
-            enum:
-              - rockchip,px30-pmugrf
-              - rockchip,px30-grf
-              - rockchip,rk3228-grf
-              - rockchip,rk3288-grf
-              - rockchip,rk3328-grf
-              - rockchip,rk3368-pmugrf
-              - rockchip,rk3368-grf
-              - rockchip,rk3399-pmugrf
-              - rockchip,rk3399-grf
-==>
-              - rockchip,rk3568-pmugrf
+--i0/AhcQY5QxfSsSZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-    then:
-      properties:
-        io-domains:
-          type: object
+On Wed, Aug 04, 2021 at 10:32:52AM -0400, Peter Geis wrote:
 
-          $ref: "/schemas/power/rockchip-io-domain.yaml#"
+> Removing the vmmc phandle from the sdio node is an option, but then it
+> doesn't fully describe the hardware (it's also a non-standard 4.4v).
+> I had considered changing the check in dw-mmc.c [1] to continue in the
+> case of -EINVAL, but there are other places in the regulator framework
+> that can also return that and it doesn't address the underlying issue.
 
-On 8/4/21 3:06 PM, Michael Riesch wrote:
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 3e90a8832bb9..834863940eba 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -203,6 +203,11 @@
->  	pmugrf: syscon@fdc20000 {
->  		compatible = "rockchip,rk3568-pmugrf", "syscon", "simple-mfd";
->  		reg = <0x0 0xfdc20000 0x0 0x10000>;
-> +
-> +		pmu_io_domains: io-domains {
-> +			compatible = "rockchip,rk3568-pmu-io-voltage-domain";
-> +			status = "disabled";
-> +		};
->  	};
->  
->  	grf: syscon@fdc60000 {
-> 
+What is the underlying issue that you don't see as being fixed if the
+MMC code is able to cope with not being able to read the voltage?  If we
+don't know what voltage the regulator has then no amount of wishful
+thinking is going to give us that knowledge, if we want to proceed with
+controlling the device then the MMC code is going to need to make some
+decisions about what it's safe to do given the limited information it
+has available to it.  Otherwise there's no option other than providing
+the information about the voltage.
+
+--i0/AhcQY5QxfSsSZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmEKvQQACgkQJNaLcl1U
+h9C12Af8DblVDI9WXSmbrPRXViKHLSNZFzqp2ZuGthopEX5957SrGd87e5iV+I/g
+gre6Jo3qS3dGIailxhWX4Tcyd/OztkwsS4V9ep1FBb3Iqo6qBbByMHwD/w2wF7sw
+zYDzwdN0yUltexPHqnPjxatTxrTL09SM8NnIl0018t1hl5UKtM/KU8YN6nFJEPLH
+4Q2ooIe2pPSz7gsg4fW1xsmxJXCqUulFtoyK59mwoHrvfdrLWWIXvvCh87c7LCxk
+kwhYlg3SbIcZlZvLL1lVcMbPnZj6F3lClwHbzhy8jAP/LXF0rtFjbvDjZJZUImq/
+3BOF/lOC6PcaomF/mguPVTzZj2XXoQ==
+=L2o3
+-----END PGP SIGNATURE-----
+
+--i0/AhcQY5QxfSsSZ--
+
+
+--===============4523424604418389410==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4523424604418389410==--
+
