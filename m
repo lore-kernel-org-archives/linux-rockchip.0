@@ -2,20 +2,20 @@ Return-Path: <SRS0=V4ex=M4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D085C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 12:02:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D69B1C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 12:02:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2815A61152
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 12:02:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2815A61152
+	by mail.kernel.org (Postfix) with ESMTPS id 9BEB46113C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 12:02:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9BEB46113C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,46 +24,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qjRhKfUoIJ1qg2ql8Po5F9EbbH3IQM4AkLjiw1P0POQ=; b=qA3wuuxNAs6u9B
-	P3ObSVDS/XW/3nsQlpIJEVY4In3aeP/QADbVF28cQT3XuKif+81us+7FuIaFzwIYROWMAJLoCumzG
-	29+JEPJ2Xz0kTHQE8cff41DpNwPFhgrG9RjrGKkINDQEGsxHzwszmbr5pP+37WGISf2VqX1E67djP
-	3ZGoDWXHkyOy2oS+e4q7jaBNhjWaEdr5IJH6fNDqggjLvEYjgZTW9fFALFw4x5DW/+jXHZmTaN5Rr
-	6ov/RtUuQZT1fgWEBDJ+9N4HcHnObBvpZAgtz6h31zcT5C/JRJFo1+sSqV6R4MBJEGulZB9wRMGV5
-	95RjB5HVIJ81Ww+yAmKQ==;
+	List-Owner; bh=XSBMI38eSLVQsqXclnMD70E0DCqGznpO3iguBG3SvGU=; b=Qh8RMRcTdhYzsv
+	qNt/TxBFx8t95dLeoAFbNv0xPiZp8l4qnQTIOhtF7pvbVJ9MEjhUQubgtSHaT/dcsZjON37esbrUA
+	rK8cjUNl4CXTDRYW+i2pLfqD5sih9fGAW947IBVpBtHE1LT8KuzewqEEEbAyb79nQTyxQEGtZKngo
+	6zYlvYzKXc2D1TB353t/nJ0jH1hu2pZHlWebLSVn1HNggEEmXPgym/Tfx1739OH0CJ8XXoSwKtLUp
+	3N+jbulWrudDkqZJD2izceEP48oNDZi8GZWfm8j02Doz9YaBEJnRY24qlR+b6Nm1iRQiBYbjsGP/B
+	5K0zlFTrz7LcV7bbBZkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBc4V-009Kj1-IU; Thu, 05 Aug 2021 12:01:59 +0000
-Received: from mail-db8eur05on2078.outbound.protection.outlook.com
- ([40.107.20.78] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1mBc4j-009KqB-Va; Thu, 05 Aug 2021 12:02:13 +0000
+Received: from mail-eopbgr60088.outbound.protection.outlook.com ([40.107.6.88]
+ helo=EUR04-DB3-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBc43-009KVj-Ng; Thu, 05 Aug 2021 12:01:33 +0000
+ id 1mBc44-009KXK-Ln; Thu, 05 Aug 2021 12:01:34 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CDY+nUGfMhkVIGXsu4Vaw7c9ztewz4ZDOpQK/v3+4azY1E7csznX1NV7scJrPSXlH04lc/E2ZLtWxUX1xvXRg7gjR9jmpenr/uAFR76EldNHsTiB7xV7pMa4ASDbZ+t7RqqGY0trEYa1PiCFk9qPZj7/H9ExfJFuWTbPWCk24t5+uF1V4X6bWOrQA2JiE24gm1Fu8Vzsv/uuMSK+SH075LKlehpmIJZ7fKQs1ruOMjvuA0CyalnKCpbe3gIr6X+5VM4Fk8nvmC2VOJ+Z8gQODcTDcyTnYrSfzbxS61qxU19oMJ/RQ9TbnJjI8UWNBTTXjOpAEYfqKDhOosLY+7hgcA==
+ b=GYCdKIgZGomULl8QaRkMJ8s1EHQWvaLqtRrr87hNjLVYnhZASTPVfFnoMnQLaitO0QFWBu2diXvh8kXj2J1AwUtvClKLOWRtU7na1q5IWCLZ55/c8WmbtkFj1jE4sg5CEy/uOtwdrvPdRe4moOvRE0OocLFpxTfV+hRS96VHsNqGILxKVl02NGE1EGLT6pe1X4Uuf1gF4pd+DZIOG9GY8rgoWeLGX1DhGWZkNmt60aItBTMJ9D4nD/sQfAS8IfjqN4c0ceH/Jq1pDvKvPJF3O6HMRaagtQWPu8Pq+zQ97pTAjeWqA1L7AOaBWjUlKuqKZ9IXnYsQcRrCku6kQKQJ7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1VhqnL0+9ZAb95pJ1bIoH40UmTJ/ugiOMIB+fbj/Oso=;
- b=MUFYixeV88XDoWmalmASZdwW7ee/+mJH3V0fG5dRqX/0KGm7CzB6mUGD2N9+zjSJcr6BmzxuPv/WKO+68eBAXcIqCwS8nLJ9GkqaEL6By2TmCHsnTlWPVfn2SIG334Dz6CGu0zJYrR78fA/C/zG4ELE64qkwKs4v0m2b9M3MwX9R7PxviiiEBNEnQuOZ+fPb4cCK5ABVQc19iG2Rmntq5rd23czxwgZkr/RJus2dof2PVFWArltYpPn4BVUQ6bfRyZO8tGRVUmYgAKuU1fISs1xRb1zkdb+Y9VXVZG5ppjZ2H2+Rba0IY7qFIGm6IdkYKMev+w2+zYazZK/6v3dp5w==
+ bh=BeeZSM+62ID7s71q9ZX8TCZxKXSF2l5P9CB2DtqoUjE=;
+ b=MgMVMyulk4iuQSkY5k+Kv/5LHztg2Fqj6kJswYP/n45ooMUIpQYO40bK5zWeO294gaHzJgMfb3JspKRaurGTVC/+X4sgXh/wV85cTQnb2ltDhl8kUOZGDJ236MR73DEFhzrZus6ZK4EBEXllcOnt9qUdzEjnhFrGeqZZs5e3AXsrNxbB8WkYFeZ1bI0HLfyPgMJ/wdZW+OcispowZv12rhKUQoYzNjBJsltGG3fu0Txy8IYkoZluYTqKWQ6JW54/vrqKDMnh8m6QODQp5IGYb3kQbzFkH+Z/8Pcd3PuOJSefSn/CABkk1MDj+nchDonEr4B7yLeAnsu/1NWdGtqD8g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1VhqnL0+9ZAb95pJ1bIoH40UmTJ/ugiOMIB+fbj/Oso=;
- b=vMuW+HT93lxvMmEkX+KWnxlcmtItriGLO1J4V7ZBwIjeo80RY2l6OM05QKSaiHDsLm6INd6j02thwOKphC2YCyhycb7oDlEU6p6ZmyANC2geso6xm9Nmtlcamja2O64lraI26OgEQbT/jHPb7ETBJzHMzc+oCMVg+ErFe6Drglo=
+ bh=BeeZSM+62ID7s71q9ZX8TCZxKXSF2l5P9CB2DtqoUjE=;
+ b=FILqjB1Eywkm8w1KL9qTQsbw7ux08oDrjMYqbDP4XXMi7KZOIpD7rwaxcprgQbsd+hRvu76NYSWdV6wWhRAL8bLya8vRvfXEzyVta+S7ErFO+H/5MC56mqha+aIEeSbi3/9Fkvv2vvD7JYNrA6hu7cLBDTqSXUqX+G4z4a+sxTI=
 Authentication-Results: vger.kernel.org; dkim=none (message not signed)
  header.d=none;vger.kernel.org; dmarc=none action=none
  header.from=wolfvision.net;
 Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
- by DB8PR08MB5419.eurprd08.prod.outlook.com (2603:10a6:10:118::9) with
+ by DB6PR0801MB1847.eurprd08.prod.outlook.com (2603:10a6:4:3c::17) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.15; Thu, 5 Aug
- 2021 12:01:25 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4394.17; Thu, 5 Aug
+ 2021 12:01:28 +0000
 Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
  ([fe80::ade3:93e2:735c:c10b]) by DBBPR08MB4523.eurprd08.prod.outlook.com
  ([fe80::ade3:93e2:735c:c10b%7]) with mapi id 15.20.4394.016; Thu, 5 Aug 2021
- 12:01:25 +0000
+ 12:01:28 +0000
 From: Michael Riesch <michael.riesch@wolfvision.net>
 To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -76,9 +76,10 @@ Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Lee Jones <lee.jones@linaro.org>, Ulf Hansson <ulf.hansson@linaro.org>,
  Zhang Changzhong <zhangchangzhong@huawei.com>,
  Tobias Schramm <t.schramm@manjaro.org>, Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v3 2/7] soc: rockchip: io-domain: add rk3568 support
-Date: Thu,  5 Aug 2021 14:01:02 +0200
-Message-Id: <20210805120107.27007-3-michael.riesch@wolfvision.net>
+Subject: [PATCH v3 4/7] arm64: dts: rockchip: rk3568-evb1-v10: enable io
+ domains
+Date: Thu,  5 Aug 2021 14:01:04 +0200
+Message-Id: <20210805120107.27007-5-michael.riesch@wolfvision.net>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210805120107.27007-1-michael.riesch@wolfvision.net>
 References: <20210805120107.27007-1-michael.riesch@wolfvision.net>
@@ -90,58 +91,59 @@ X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from carlos.wolfvision-at.intra (91.118.163.37) by
  VI1PR04CA0099.eurprd04.prod.outlook.com (2603:10a6:803:64::34) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4394.17 via Frontend Transport; Thu, 5 Aug 2021 12:01:24 +0000
+ 15.20.4394.17 via Frontend Transport; Thu, 5 Aug 2021 12:01:27 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 495dda20-17e0-4d34-62b2-08d95808c006
-X-MS-TrafficTypeDiagnostic: DB8PR08MB5419:
+X-MS-Office365-Filtering-Correlation-Id: 88132d20-9f1c-4fc8-0f08-08d95808c191
+X-MS-TrafficTypeDiagnostic: DB6PR0801MB1847:
 X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DB8PR08MB541912DEB96634B31FE21AF6F2F29@DB8PR08MB5419.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-Microsoft-Antispam-PRVS: <DB6PR0801MB1847ECE477A620510EC47CD4F2F29@DB6PR0801MB1847.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3044;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: i+wHIKnJVS8gE+RFPTpFGGI4PfLuBYoU+uhS7s2yM8QwZstIuKcIKDeDAyl2hILl69+oTt6bqlugaiG15DbrczQLNNIcCPCkryZ4n9cBPDpsV/mFmZlIGXtg6F4v9pH8pSm5Y08QF7/AqgmaZxsbCMt5HGUaeDtfe56KmjYcNsQED6USRchgvs8JyKUx6KWYwglgUB5sT02dybQEBWaoBddXTsHJHtjzY1pcaDhPJ6smsfRod+x9y1HoUXVlYSqfjzcc5To74pW6KlsO4rxFoQgyeWxh5yuG5jjfxop6g1IEJiNUgcmT5VGsg5bbw+pVahUZQdEQvmIJTLTskxh9uJlLSgs6i5/So2IoRKOHEaeKIpqunuZtPHg1tq8rAqcZnTKvGsj04vhQzXc7yxyXscLi9YO44TlAIPaUs4sJlApyJW5AmqAysosM44q8hJ0z1AEz6nbmnDjlGiNgC6+mQkIcQUQLF9vz/gmzjGwwSecznfVBTstSlzHMEv+IXoWxkn/DOgMSLjPL9Xa/bPVZZ1ZBXePzYHnPvOW6qqyZowcFhe89mBB8PFGDTgwYpskxwfExgPfhu3XFNR0oARP/EXX2Gho/orLFymGbiin7W3utD4ybx/v9Zb8W0BNDI2qkRZHOycOw0sY1xpu0oE4HiA3KpZ4+Tj7CunYK8M6H+3M6p2kLKkEzOGr1yoQgcBpEJVLfekN/dm74pnM/vwl2dA==
+X-Microsoft-Antispam-Message-Info: s0SvNRVhzd2J+FcE0Gr0dj8kye1vxYRMQOoS6FIvy+/2Pz6ofN3RIxxaeqRbSOlNv/vx5gvu2OPLQ136dXzQBoNGhSeSCVZaS5qXLYMlWTE6/8dpfw00npM1YvpR+N83X7rD/KXq5gVlS/fDX/OxESQZYMS87NVjlGaI97KtK2734Dl66pYAjQXvRCLyvZGcJjxQP2Wvy92XyauD/FL6vID049JmK1ZOKWkXK8FrRKMjyuqF9HIbxaeivwZQtD9xt5gTYE3Xjo184lzrAaXdyW1BOkYYqGQ8r+nmaAJPf/1NwjNeOhnOXOcAz5iqDjSOmFA/E7e9H/UimO/Ez1w/0WZvhNN3jcqehF4/IzTHdL6DjdQZHbj7/G95JQKWhbEG3qT5nsVJIj6gcjFL5DxZqMVAK8dyV8++AtsmtQYTpur0uqRR45d+YvyyuR8CbfXe1i5wVfW8/CLecTRN4MbgnJHPXejcqCsPvmWdnjf9Bk5YS0iYvQk4rn2VpLS74NKZrxG//sgkGBcqR1Bi4hnZ6VTWdelMXGWtjowpB4aI+MDhvqhSlkpKxT6+n5VvlSD04XDBLiMC1+seFJd6a9Ts+F0OB81qiudZA99qF2xb06SOuC3JCkj506B4L7AMc3A7fQm9T+t3ZUKJ3ErywT5snjSQl2Q5TqCv9lYFPboHTMGcJVSuwGTmesJ82oCy121YpbZIMQWOpSgywEj8vNECgw==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(136003)(366004)(39840400004)(396003)(376002)(346002)(6512007)(8936002)(66946007)(38100700002)(7416002)(66476007)(6486002)(66556008)(52116002)(1076003)(2906002)(8676002)(4326008)(54906003)(478600001)(44832011)(316002)(36756003)(38350700002)(83380400001)(2616005)(6666004)(186003)(6506007)(956004)(86362001)(26005)(5660300002);
+ SFS:(4636009)(376002)(39840400004)(366004)(136003)(346002)(396003)(6486002)(956004)(2616005)(66946007)(8936002)(2906002)(66556008)(8676002)(4326008)(44832011)(26005)(54906003)(6506007)(38100700002)(38350700002)(66476007)(1076003)(4744005)(5660300002)(6512007)(86362001)(7416002)(186003)(6666004)(52116002)(478600001)(36756003)(316002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?I25f8wcwoB9/GbX7TDRx/B6taWAlpN6pJ+MPxlTWoNCkZP31z4TTGirOiIZz?=
- =?us-ascii?Q?Q90ymZHpRAZzbAJZRQwEqBYWVfsJhTPSkUCapFhNeGwIiV8KtFZI+Zdg2wiH?=
- =?us-ascii?Q?eAAM1JnmRLvR2wbteFNsJjyqQgF+LCS+sXaIhWnomgspJ1iOBCqNGIkfy4z1?=
- =?us-ascii?Q?aMPgZRR/Mb4a0XOxB97Qmc8sLqTsHbhy+4n1Bgxl+fLl5vrbnaf5fl7Y3Qm9?=
- =?us-ascii?Q?FQUK1uzS8Om0bKpI1DseX/r5DP3zkHwLdzlppj+Du8V9MAe8CDIOdIXYxDqb?=
- =?us-ascii?Q?U0y2pd1mlgG5bOywepUTjLJykL5L2xgkRzbGGzdlFUOSE0XLI1W/MWlkGHV8?=
- =?us-ascii?Q?qaNOhOK1yXanj/gtx4ktbJri+gzy/im6yeFwn/s8SgCG8tMaAWTKIEe7Gahk?=
- =?us-ascii?Q?0rB0ubMypclC7LNiAHXfNuXqFD6WR82r30FrrNM93Js9XCAPlYh8+OryHiqF?=
- =?us-ascii?Q?w8G2Mk22WeJ5waOJV3jZ31TN7ntawLHhJTCStpJyqeEkMlleFYFD3rYexs5R?=
- =?us-ascii?Q?LbYaiUFmTGcpmpBMrRrrUVKu91hxuGjEZbyBU3vnM1PbYjleHABZnaZp9U9j?=
- =?us-ascii?Q?bO39b0YspcDcVD/bvAVZhw6Vo+6kx2j5y1j0+yiOVERJ4enF+TxzRG2za/9v?=
- =?us-ascii?Q?R67durg3aEOsoqH/3BTlM4pHyc5H3I/S6s9uEwxUKWZFVbGUwiaFeMlbNlY5?=
- =?us-ascii?Q?w655nyI5eUuqVUN0Y8W28PJD9st+7K0l0pKVwvSHJcG25IoEG/QPKx0a+4Yn?=
- =?us-ascii?Q?qo6GYvyNQXv43IvqyoYmDsw7aAZgFJm3JE1ttBUTGuRmUTzce9dmlcztCMlq?=
- =?us-ascii?Q?cLPFlS+V1ab6Zq1y++6gMg+aWuvsOlnb7Liz1I0nG7ADFrl+kFZSC3E/7y00?=
- =?us-ascii?Q?nAJbpKLQLQrtXKDTQ2HsTwRm387jJTiij7onTzrDZThM5g2Twz0O2rz2FJ8/?=
- =?us-ascii?Q?sv+ugzc3WaNRSLOQHtUqCNdLIsVu7p5CTx/dG42hS7/2zUlICqBXZanns+jU?=
- =?us-ascii?Q?3OcGdYskanToNhzBRo42UFI0ppELhl7kLzIf3nva2X3/Z1FSUYtOcMPBHQn5?=
- =?us-ascii?Q?YBl6SL/SA9dq+Hf7Vr7NtwG8psan9WDTTZvXMgh0FEl6RTXZYFbjZPI84K4u?=
- =?us-ascii?Q?CZaCP6y5JA41FqYZqFeyzvCRvo7ZYv9ovKq/vSp2mEjWWBDolZFAnAnbUwAk?=
- =?us-ascii?Q?Y/p2/9TzOi0KeDS4XjwSZCKCyMFQEZ/uFOi/WPs56HsOwig/LasR+Iuf0r/6?=
- =?us-ascii?Q?M5cQa6xdUzxiIddsupYKWystEiB3rECLq/MZKistZvfzC9Ye0Be0oh9RjejE?=
- =?us-ascii?Q?TaYsTfYSTRd8QbvdDC51ZrSi?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vSYRh0s3uAd3vTnAbs2Hnw7gt+e4sA+tMGQkhJ+nMVxD9s1xAAIVakOWxv3W?=
+ =?us-ascii?Q?7o+ikEb9+7QsgcBIRtKMQlW1H/3PaYtyLrLyZCoTGLcqqPoYLaPV/jCg2j0V?=
+ =?us-ascii?Q?sRk1bmCabyScII/57CXfXVhTHggZU56XjS1gpVrbixbFk3548Llcql2oCgh4?=
+ =?us-ascii?Q?a4dJ1NRV4sESx4E1t7ctWNZ98uslhKpq2Luxp9hyiwxQ3ov/vME7lY9UvMQo?=
+ =?us-ascii?Q?fuQ2qKZBSEH7umtHHnktyDh5sXlfnugJI7pLDIYZR+ZKQrZ7+wBYAvHGoxNX?=
+ =?us-ascii?Q?u2G5lsM+7Ai/xHiBqO4dSaZ7x+U0ZQiRcsWl1vcfdMaBTQSGvwTu4pu+WJ0J?=
+ =?us-ascii?Q?CqGn2Jr+cebwtX1sC/R/PWFLGw74jPQRPRTaIvx1LsVKYiN0XCTe6uC5sKYy?=
+ =?us-ascii?Q?vckz+1nShdOa1mnozILpyQ6JhHj3WzLroZIBTgtwYX9xvlYKUHVPa4mDOyaU?=
+ =?us-ascii?Q?Mb1Me2MstSUWHB0ncb5N2xNOkPEXldswUoDSOuYYTZAC5c8MU3otBlT2aaph?=
+ =?us-ascii?Q?S4sVRrL6QC87n5LFqrwNpv08IFi6MC5cxkihJHmJRVaE8D4e08mGwKyCU7o7?=
+ =?us-ascii?Q?MLqymyBJOEt9ifVuT7CzygO3CrybNB60Ffp/YzqqOmVsHvO9whgyuDXeLR8f?=
+ =?us-ascii?Q?M5NKt1RQANvNBGun91s2ztRYxeaKgkxgt07dgo8AWomahbvcCff63aXVVhdX?=
+ =?us-ascii?Q?Lw0WbMS9xsVSlvN0OfHnqEzujXPtO7kc0QJnxLCj7ScfYnOL8JuQO9R6Tqw1?=
+ =?us-ascii?Q?6R2a+FksYv0EGAz8qeGbf67xnf9AhUQ+xIpaLAbnFcMBranx8df+kXMzeA+8?=
+ =?us-ascii?Q?g5N2ULsDPX+rxg6nWUJMm/bNM/njV7YVZZwFaYk6PM9tpn0NoRWZvl2fIfSb?=
+ =?us-ascii?Q?Y1PQf4uHU7NAm0Plxy0K2+DU1isFvEDLL07k6mrW+Zlb3sG+i1NB0UKyB6LL?=
+ =?us-ascii?Q?T+QLWHuxbLZcN9v9QgY9CfNs5SZlfXrDbHBiSViAfqPc4jEvWXInKCeZhVe+?=
+ =?us-ascii?Q?vsYswpjE0Bi5039g6TnHdweCNIw+qiG0in+yvP45PWiJCVZTmnE/ci02OHie?=
+ =?us-ascii?Q?g9I3v4GeiczHLLaZEDjnjUBJObyHevPvhGUkaYhxYrwrKMjMy2IOXZNnXEPt?=
+ =?us-ascii?Q?6PIwzEqSxeTFNO9HpFj3dkotdA3kRMkzJMlYG8suRH65kD4XqmFkh/5s/Lpv?=
+ =?us-ascii?Q?iidMmK9nO7p01FNuZPdfw8qK/Yzja4O/RGYvAXU24H+o7tmLulNp2jIi0YH2?=
+ =?us-ascii?Q?vr8O13tytx2swZ9YJ9Ti9zzRq+GHob42U8Fsy5N4ESGoxHVUQTzub9kxMxaF?=
+ =?us-ascii?Q?L4NsLKCs8wIV4t3ktAiOyEBP?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 495dda20-17e0-4d34-62b2-08d95808c006
+X-MS-Exchange-CrossTenant-Network-Message-Id: 88132d20-9f1c-4fc8-0f08-08d95808c191
 X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2021 12:01:25.5461 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2021 12:01:28.1956 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6cE14FpC7Bo0W4mknNn5mMUO3rRsoXbLdQ9g56Ro7wcdlQtVrjYISGIBITAi125VS7vkGYnkOmrbVT2PSMs/SB+A845MKd1rB6xWjjGUXr8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5419
+X-MS-Exchange-CrossTenant-UserPrincipalName: jcbEs56kaj+YsxLHbAwNkLAVEcfXwDvA1zUZfG90CNsUK4qTRWTFbjiBW7fVsYgRidJLNm3CJJGwlyScZoKFDWZPwkjBBYyC69SpLN2yXmo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0801MB1847
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_050131_814353_40E1D9FB 
-X-CRM114-Status: GOOD (  19.13  )
+X-CRM114-CacheID: sfid-20210805_050132_758775_DF2D6DEE 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,175 +161,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jianqun Xu <jay.xu@rock-chips.com>
+Enable the PMU IO domains in the device tree for the RK3568 EVB1.
 
-The io-domain registers on RK3568 SoCs have three separated bits to
-enable/disable the 1.8v/2.5v/3.3v power.
-
-This patch make the write to be a operation, allow rk3568 uses a private
-register set function.
-
-Since the 2.5v is not used on RK3568, so the driver only set
-1.8v [enable] + 3.3v [disable] for 1.8v mode
-1.8v [disable] + 3.3v [enable] for 3.3v mode
-
-There is not register order requirement which has been cleared by our IC
-team.
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 ---
- drivers/soc/rockchip/io-domain.c | 88 +++++++++++++++++++++++++++++---
- 1 file changed, 80 insertions(+), 8 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/soc/rockchip/io-domain.c b/drivers/soc/rockchip/io-domain.c
-index cf8182fc3642..13c446fd33a9 100644
---- a/drivers/soc/rockchip/io-domain.c
-+++ b/drivers/soc/rockchip/io-domain.c
-@@ -51,13 +51,11 @@
- #define RK3399_PMUGRF_CON0_VSEL		BIT(8)
- #define RK3399_PMUGRF_VSEL_SUPPLY_NUM	9
- 
--struct rockchip_iodomain;
-+#define RK3568_PMU_GRF_IO_VSEL0		(0x0140)
-+#define RK3568_PMU_GRF_IO_VSEL1		(0x0144)
-+#define RK3568_PMU_GRF_IO_VSEL2		(0x0148)
- 
--struct rockchip_iodomain_soc_data {
--	int grf_offset;
--	const char *supply_names[MAX_SUPPLIES];
--	void (*init)(struct rockchip_iodomain *iod);
--};
-+struct rockchip_iodomain;
- 
- struct rockchip_iodomain_supply {
- 	struct rockchip_iodomain *iod;
-@@ -66,13 +64,62 @@ struct rockchip_iodomain_supply {
- 	int idx;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+index 65e536c78d2e..287b58aa6a77 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+@@ -124,6 +124,19 @@
+ 	};
  };
  
-+struct rockchip_iodomain_soc_data {
-+	int grf_offset;
-+	const char *supply_names[MAX_SUPPLIES];
-+	void (*init)(struct rockchip_iodomain *iod);
-+	int (*write)(struct rockchip_iodomain_supply *supply, int uV);
++&pmu_io_domains {
++	pmuio1-supply = <&vcc3v3_pmu>;
++	pmuio2-supply = <&vcc3v3_pmu>;
++	vccio1-supply = <&vccio_acodec>;
++	vccio2-supply = <&vcc_1v8>;
++	vccio3-supply = <&vccio_sd>;
++	vccio4-supply = <&vcc_1v8>;
++	vccio5-supply = <&vcc_3v3>;
++	vccio6-supply = <&vcc_1v8>;
++	vccio7-supply = <&vcc_3v3>;
++	status = "okay";
 +};
 +
- struct rockchip_iodomain {
- 	struct device *dev;
- 	struct regmap *grf;
- 	const struct rockchip_iodomain_soc_data *soc_data;
- 	struct rockchip_iodomain_supply supplies[MAX_SUPPLIES];
-+	int (*write)(struct rockchip_iodomain_supply *supply, int uV);
- };
- 
-+static int rk3568_iodomain_write(struct rockchip_iodomain_supply *supply, int uV)
-+{
-+	struct rockchip_iodomain *iod = supply->iod;
-+	u32 is_3v3 = uV > MAX_VOLTAGE_1_8;
-+	u32 val0, val1;
-+	int b;
-+
-+	switch (supply->idx) {
-+	case 0: /* pmuio1 */
-+		break;
-+	case 1: /* pmuio2 */
-+		b = supply->idx;
-+		val0 = BIT(16 + b) | (is_3v3 ? 0 : BIT(b));
-+		b = supply->idx + 4;
-+		val1 = BIT(16 + b) | (is_3v3 ? BIT(b) : 0);
-+
-+		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL2, val0);
-+		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL2, val1);
-+		break;
-+	case 3: /* vccio2 */
-+		break;
-+	case 2: /* vccio1 */
-+	case 4: /* vccio3 */
-+	case 5: /* vccio4 */
-+	case 6: /* vccio5 */
-+	case 7: /* vccio6 */
-+	case 8: /* vccio7 */
-+		b = supply->idx - 1;
-+		val0 = BIT(16 + b) | (is_3v3 ? 0 : BIT(b));
-+		val1 = BIT(16 + b) | (is_3v3 ? BIT(b) : 0);
-+
-+		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL0, val0);
-+		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL1, val1);
-+		break;
-+	default:
-+		return -EINVAL;
-+	};
-+
-+	return 0;
-+}
-+
- static int rockchip_iodomain_write(struct rockchip_iodomain_supply *supply,
- 				   int uV)
- {
-@@ -136,7 +183,7 @@ static int rockchip_iodomain_notify(struct notifier_block *nb,
- 			return NOTIFY_BAD;
- 	}
- 
--	ret = rockchip_iodomain_write(supply, uV);
-+	ret = supply->iod->write(supply, uV);
- 	if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
- 		return NOTIFY_BAD;
- 
-@@ -398,6 +445,22 @@ static const struct rockchip_iodomain_soc_data soc_data_rk3399_pmu = {
- 	.init = rk3399_pmu_iodomain_init,
- };
- 
-+static const struct rockchip_iodomain_soc_data soc_data_rk3568_pmu = {
-+	.grf_offset = 0x140,
-+	.supply_names = {
-+		"pmuio1",
-+		"pmuio2",
-+		"vccio1",
-+		"vccio2",
-+		"vccio3",
-+		"vccio4",
-+		"vccio5",
-+		"vccio6",
-+		"vccio7",
-+	},
-+	.write = rk3568_iodomain_write,
-+};
-+
- static const struct rockchip_iodomain_soc_data soc_data_rv1108 = {
- 	.grf_offset = 0x404,
- 	.supply_names = {
-@@ -469,6 +532,10 @@ static const struct of_device_id rockchip_iodomain_match[] = {
- 		.compatible = "rockchip,rk3399-pmu-io-voltage-domain",
- 		.data = &soc_data_rk3399_pmu
- 	},
-+	{
-+		.compatible = "rockchip,rk3568-pmu-io-voltage-domain",
-+		.data = &soc_data_rk3568_pmu
-+	},
- 	{
- 		.compatible = "rockchip,rv1108-io-voltage-domain",
- 		.data = &soc_data_rv1108
-@@ -502,6 +569,11 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
- 	match = of_match_node(rockchip_iodomain_match, np);
- 	iod->soc_data = match->data;
- 
-+	if (iod->soc_data->write)
-+		iod->write = iod->soc_data->write;
-+	else
-+		iod->write = rockchip_iodomain_write;
-+
- 	parent = pdev->dev.parent;
- 	if (parent && parent->of_node) {
- 		iod->grf = syscon_node_to_regmap(parent->of_node);
-@@ -562,7 +634,7 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
- 		supply->reg = reg;
- 		supply->nb.notifier_call = rockchip_iodomain_notify;
- 
--		ret = rockchip_iodomain_write(supply, uV);
-+		ret = iod->write(supply, uV);
- 		if (ret) {
- 			supply->reg = NULL;
- 			goto unreg_notify;
+ &sdhci {
+ 	bus-width = <8>;
+ 	max-frequency = <200000000>;
 -- 
 2.17.1
 
