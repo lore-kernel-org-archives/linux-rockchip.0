@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31BC4C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 13:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1CF7C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 13:06:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3B4860525
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 13:02:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E3B4860525
+	by mail.kernel.org (Postfix) with ESMTPS id B721060EE4
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 13:06:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B721060EE4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,63 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q6UeCmxWpDMhkueZVm6A/LJzIG4828CAJPSnw9m9cS8=; b=lktHPhDdfpLwz7
-	xfMjHVTi0fRrr225xO6uPpoE46AxLDAtEUW2M2VaDkQnaT8RWUoxjWgT9ycukRKAT/XmMjg0s9QVl
-	1Lm84WgYgHB33QHdAjwU6P+YxKMlRlwXIwg/H+WkNL123ZtQAICQ/h3v19uRbN8q7lbQurf+I2itI
-	VA62bVriksT0ryVbTs5HzgNN09MMgowm2QwjrcL0jq6S1bub8oYVFwgRg14xc/I405WI92ZNWOU4H
-	EPq71QArlsHfJIJkIcML4Catqn50AoHs3sUu/Q+VwQqhkEI22BWI7ixOEH6mLpi7cC2pX51ZATprt
-	anz5XXKr+WLoe5zrtNyg==;
+	List-Owner; bh=GMFIXut3taEbsI+pUqNfwBxY2eRsPZVyYSJxb2JQ9UM=; b=LzeCsVBp7TEhRi
+	mpMuDvwtcdf64V7+cqZYe4KaJuBvxxilr0DIxAQjXnGQ5HoJpV8c0hPouYcqTVC2/JDmrIjmFtxBp
+	xQ5GHOeNZ774b+H0Y7Eafkt6KjlufWxNz0JTARsT5h5lrK32A3ttwlN67us239XxY7NKffOHHajqh
+	OEfak8O+slO4LP6OPt2195jbHh2TLjeAFRLfSaett8/AJOM/8oFFes5d7QmnWptKu968k86OwNWWE
+	Qpip6BvZibvu+vrkrQrdlU9LNUvm7sK1rCFjTYEJPCkOQfftEJzsJ7R06xOTJ90cmjDFmVqFs6hL7
+	mXL/BwcQX95h9uRcdKdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBd1D-009bGJ-0I; Thu, 05 Aug 2021 13:02:39 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1mBd4l-009cBl-Ge; Thu, 05 Aug 2021 13:06:19 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBd17-009bEQ-UY
- for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 13:02:37 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id p145so8823183ybg.6
- for <linux-rockchip@lists.infradead.org>; Thu, 05 Aug 2021 06:02:33 -0700 (PDT)
+ id 1mBd4X-009c7N-CZ; Thu, 05 Aug 2021 13:06:07 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id w17so8810858ybl.11;
+ Thu, 05 Aug 2021 06:06:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k/SW0jT6wSJBaYFm6P4xqY8rSckS6wlmdeNG9tc9hKU=;
- b=VfGm00bkQAnHpDptX5frFdxF99RwF0aAXCTj4vVJJOk+xPjSa4F8qs3LHx+C6RC5AM
- /0KBAQoXb51c/iHpbzP69sDWMfI9gV7/8s3bUgmKlwplbJuvcGTD7xfVmRQ1D+JLbZAz
- 8zAAgsF/tfD6M29p/EMKbsk/cT7cnvU33F6YfuWYeaXvE7rhpMJEKaz2oBqnT2RjrvCm
- ibb8FGKgmKSbCGJLQUZDwndmpWbxDRGDpWkLXMsckNBEh4cj+Aw780G4Oj3Fvm2qtpaE
- flziK2gQ/Zt2MA04YbwVKXU7dBsk9wEnOnBIf0bnSM2kAes612NaXvO8xehztXYtx11/
- hpsw==
+ :cc; bh=V+3eK9X/+QJLVWMPbMyMuZ4uj6Bn8K4ZuygACC4gU2w=;
+ b=SsSWIi5dsnn/PtYp5CwpZtsi//s0IiXytDajoLF2kL5oNgf95ZPBGHZwHJ0RbvKDzP
+ 4HRQgi0iOYPBWFddL8AnLfFpRLpFzrnZ+AnwVILDpY9fPu8Y6h2MsAKK0tEO2vW8azZW
+ pG8i4WnpnUcrzrrE3d9t0l9suWUaypifa8KXJqL/nVTzvI59J0GbS7Yqc0bZvG0B9uis
+ 3vQ3DNKcSFDU3a9P2EullD1voPK5mBZgv2Vr6k0Rl1IzzlG5gTFJvCLO0Xxqo5iD9ZvB
+ 1hH6uWK1D4K0RD5NOub8OfojITjCU/+J6QB6PYczQmC4oebWmuluyU8q61gEqMpaf7OO
+ Efsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=k/SW0jT6wSJBaYFm6P4xqY8rSckS6wlmdeNG9tc9hKU=;
- b=IQMYPV9SSsXuO5VDoE7cH+Nntd5o3w8fgrEukdtETvdqzNNvlIrH1E7WM+xUsnJyZC
- 7qa9dw7eSHiW2msP26XWZA3TlchgvUJ96kDM4jb4rqy/IZo1XPfruU02yxYwPIjCbly2
- ZKuGfLJKV8Q6dZwh9+0g/kEtCq8Czsvc7dg2C16DFzwJJZhoZTd60c7OEj9OIXZ9YQXF
- wvwyO44574Ob7fkWH3TYMZUK4dQzBzH/36RbLZuA3U5jrn8gpSfhj7TTWRXF96qPCIwb
- 2QevB0sYeBR6UAIBkjQpX5pMg8aDcjP5INROoRqX6dTF+wOAy0SAXGlv5vwlfHZ1txCv
- sTuQ==
-X-Gm-Message-State: AOAM533bBkisfXxAf7R2qI90i7xVZCPndoEFnno/jj3+hDfqdxoiQgOX
- 9oGw2KKpDkwsXlLVd8GcruP2i7oho0tJb8zAv3Q=
-X-Google-Smtp-Source: ABdhPJy4wibB5neuDDeiv4z8apqDeZ4SkMstAanwZFLBBi6Aj5M6WO5fWhdWLudssjvtaB4gLLiv8ij9Bx8JVykrNcY=
-X-Received: by 2002:a5b:48f:: with SMTP id n15mr5953372ybp.457.1628168552519; 
- Thu, 05 Aug 2021 06:02:32 -0700 (PDT)
+ bh=V+3eK9X/+QJLVWMPbMyMuZ4uj6Bn8K4ZuygACC4gU2w=;
+ b=GNjB0XBa1sVzi4FdW7oFMpBOYOUBrObYwqMneSPYritIuwMfuEZiskcYTi9DuXg9RV
+ brActuhnWRQZBL+5wy+9Ix8o/+WCx4SHn1B0Dm+s6HAih3vYamadbzbsEmK+nYSSf1Wk
+ VZ1O/DlAwiLagcIWsxpcMkFt6O1Uw6JSwMl65DB3NKgHOPbqLY7fJoOiprV43LB8gycj
+ 8EWnt+UebD0N424MMZH+P/Qqp0X8DDd9GgJaOj4T1ovXTCYAcy79cu6tJIIoBHqH9zhn
+ b9E2CTzMz1jGXFFKW/Jm197x2EJx6N+0lEU0xan6WX8sa/ZWQeqhyLL6TlwoQn5gWSJY
+ tgpQ==
+X-Gm-Message-State: AOAM530LlZMTh5RiM0OVIUg7gSukDi3bDOXn6iyvalYKsvS4sXb7M6O/
+ e6ezAYhj1CfEIGB9a4DrOBNyigdUYNYR/v+vyTc=
+X-Google-Smtp-Source: ABdhPJwRHXlRjNUCM/b/c/9/JyGupyFhEnzUeywDKVlarAuTiCReDwT++JtsdRC8RlvuLkz3QddBvurArfviIk8kKnM=
+X-Received: by 2002:a5b:303:: with SMTP id j3mr5543580ybp.433.1628168764334;
+ Thu, 05 Aug 2021 06:06:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210527082905.1447591-1-jay.xu@rock-chips.com>
- <20210527082905.1447591-3-jay.xu@rock-chips.com>
-In-Reply-To: <20210527082905.1447591-3-jay.xu@rock-chips.com>
+References: <20210805120107.27007-1-michael.riesch@wolfvision.net>
+ <20210805120107.27007-3-michael.riesch@wolfvision.net>
+In-Reply-To: <20210805120107.27007-3-michael.riesch@wolfvision.net>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 5 Aug 2021 09:02:21 -0400
-Message-ID: <CAMdYzYpxvEbc-gAk6xEkec-bXaqe7wNM0awRVAPV64v0OVcGSg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] soc: rockchip: io-domain: add rk3568 support
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee.jones@linaro.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>, 
+Date: Thu, 5 Aug 2021 09:05:53 -0400
+Message-ID: <CAMdYzYrpXs_vY6OxqL54xFsKu0TJu_G5myTTfOA8nAygkUJN5g@mail.gmail.com>
+Subject: Re: [PATCH v3 2/7] soc: rockchip: io-domain: add rk3568 support
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: devicetree@vger.kernel.org, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Simon Xue <xxm@rock-chips.com>, 
+ Jianqun Xu <jay.xu@rock-chips.com>,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>, 
+ Lee Jones <lee.jones@linaro.org>, Ulf Hansson <ulf.hansson@linaro.org>, 
+ Zhang Changzhong <zhangchangzhong@huawei.com>,
+ Tobias Schramm <t.schramm@manjaro.org>, Johan Jonker <jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_060234_036988_B1876468 
-X-CRM114-Status: GOOD (  33.61  )
+X-CRM114-CacheID: sfid-20210805_060605_480271_419CE33B 
+X-CRM114-Status: GOOD (  31.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,7 +104,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 27, 2021 at 4:31 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+On Thu, Aug 5, 2021 at 8:01 AM Michael Riesch
+<michael.riesch@wolfvision.net> wrote:
+>
+> From: Jianqun Xu <jay.xu@rock-chips.com>
 >
 > The io-domain registers on RK3568 SoCs have three separated bits to
 > enable/disable the 1.8v/2.5v/3.3v power.
@@ -109,24 +118,16 @@ On Thu, May 27, 2021 at 4:31 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 > Since the 2.5v is not used on RK3568, so the driver only set
 > 1.8v [enable] + 3.3v [disable] for 1.8v mode
 > 1.8v [disable] + 3.3v [enable] for 3.3v mode
-
-Good Morning,
-
-I see this still hasn't landed, but for what it's worth I've been
-running it for months and it seems to work well.
-(Also it's necessary for sdio support)
-
-Tested on Quartz64 Model A, Quartz64 Model B.
-So - Tested-by: Peter Geis <pgwipeout@gmail.com>
-
 >
 > There is not register order requirement which has been cleared by our IC
 > team.
+
+Tested on Quartz64 Model A, Quartz64 Model B.
+Tested-by: Peter Geis <pgwipeout@gmail.com>
+
 >
 > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 > ---
-> v2:
-> - none
 >  drivers/soc/rockchip/io-domain.c | 88 +++++++++++++++++++++++++++++---
 >  1 file changed, 80 insertions(+), 8 deletions(-)
 >
@@ -280,15 +281,8 @@ So - Tested-by: Peter Geis <pgwipeout@gmail.com>
 >                         supply->reg = NULL;
 >                         goto unreg_notify;
 > --
-> 2.25.1
+> 2.17.1
 >
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
