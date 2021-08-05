@@ -2,62 +2,138 @@ Return-Path: <SRS0=V4ex=M4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C56DCC4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 03:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D954C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 10:01:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9318C60560
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 03:01:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9318C60560
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 10B3F60560
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 10:01:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 10B3F60560
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9bpTCiO8BlmCZZmz+T0U5scH6xBMTBO4L0PR0dqXQI=; b=WBYYlJzGM0QfiJ
-	P2Px2ID38h/Z9gsNuuTbxtwhAxZLYZKj0tFA6YjQ1gK6Q/vp9zcSveMgZS8qbXs50fSvb4Ty7NHbL
-	CRNlQtIf+GL8ml2hrnzBTfrzFn2Y087agwzfSBlo20bint8b3MTOBJ+jINyvLGyOgFSSa+HnGxC9I
-	bi6tdTZ5ytmAJSIHJy4t6ydBG5q3I51iI/3mH0duvpebw860wps1IoLR84E24grLU6KUJtnEAtIrJ
-	Bo2H4ntUBGXybYC8ybMdzoZ1VD2I2cOhNDcuct0JIcYz740jg1svoMEh63fR4NYD0ww9ICYTY2xnp
-	YUdAUM5gybBO6noXbzaA==;
+	List-Owner; bh=hl7NGWQFaLdU7CmjYOlNrHAUcPfN4gGPaXuFu1y8pO8=; b=cY5Z4mSgyTFi9e
+	PKOJkCmr6+i9VAeTffb7Oynv2CIwsEm8m8FzxF4pWUUb4Cr0Llq6xz+smLbU813DY8YvVVuQmg6WQ
+	Btimj9L4JguO8yuN8fR6AM9/6oNWrLwngpzl8jH8vFmPHYv4ZGxbD9f4h0wjq73WtBu+HJy88bno+
+	0bWxG8gP2V91aR7fCGu6iwTS6HgRdDw2/aW+2nLacKINaB1yzXzucJI/gj4ys0sV4GTz88u8MR51S
+	evehGrTHfAcQI7SOmJ/+pPy0zqjPrsTgYjO2YFdMYfmo7Z2fQviRp3jvNqbkuMWLF0OtKmavK9xHa
+	gr1GwyhoNrW0sTrhkdJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBTdH-007wqp-4d; Thu, 05 Aug 2021 03:01:19 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mBaCF-0092ez-DO; Thu, 05 Aug 2021 10:01:51 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBTdF-007wp6-0e
- for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 03:01:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id B63181F43B34
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@st.com>,
- Peter Geis <pgwipeout@gmail.com>, Johan Jonker <jbx6244@gmail.com>,
- Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 4/4] arm64: dts: rockchip: Enable the GPU on Quartz64 Model
- A
-Date: Wed,  4 Aug 2021 23:59:48 -0300
-Message-Id: <20210805025948.10900-5-ezequiel@collabora.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210805025948.10900-1-ezequiel@collabora.com>
-References: <20210805025948.10900-1-ezequiel@collabora.com>
+ id 1mBaAR-0091lv-3a
+ for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 10:00:01 +0000
+Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
+ by mailout2.samsung.com (KnoxPortal) with ESMTP id
+ 20210805095955epoutp02869a123331b0b4283b05cef9ad8ff549~YYLTVEVAc0120301203epoutp02e
+ for <linux-rockchip@lists.infradead.org>; Thu,  5 Aug 2021 09:59:55 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
+ 20210805095955epoutp02869a123331b0b4283b05cef9ad8ff549~YYLTVEVAc0120301203epoutp02e
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1628157595;
+ bh=hKGUJHkTemhAFwZMYjeCAGwDbXQozBddYvbKPJvRpmY=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=Kl+pLvKkXqzGgTnLAXO+8nxftXiJx8BdZBJPkw09YzhKUfwd86ikHKcMnQ6pn0c3j
+ UUq8jLIgGLe5tOJpL9RU/FiAau1200PbYA3N8ABFpvrE5if6IRSwCZsfW2GBwVWxdN
+ CHYt6g8Kl40TVp33MATNOnVnXDU5CvumzdoELTpo=
+Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
+ epcas1p4.samsung.com (KnoxPortal) with ESMTP id
+ 20210805095954epcas1p445a1edd2535c571ab02988e07ec57c81~YYLSygfRs2402224022epcas1p4W;
+ Thu,  5 Aug 2021 09:59:54 +0000 (GMT)
+Received: from epsmges1p5.samsung.com (unknown [182.195.40.153]) by
+ epsnrtp2.localdomain (Postfix) with ESMTP id 4GgPGv2rdBz4x9Q7; Thu,  5 Aug
+ 2021 09:59:51 +0000 (GMT)
+Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
+ epsmges1p5.samsung.com (Symantec Messaging Gateway) with SMTP id
+ A0.AA.13454.796BB016; Thu,  5 Aug 2021 18:59:51 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
+ 20210805095950epcas1p3cbba5cc9cb6d24d4113669c8703dd56d~YYLOw5VE-2716227162epcas1p3K;
+ Thu,  5 Aug 2021 09:59:50 +0000 (GMT)
+Received: from epsmgms1p2.samsung.com (unknown [182.195.42.42]) by
+ epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20210805095950epsmtrp1cde357331decb9e3dd02d5e0f0b9e569~YYLOwNtSY0150601506epsmtrp1h;
+ Thu,  5 Aug 2021 09:59:50 +0000 (GMT)
+X-AuditID: b6c32a39-16fff7000002348e-b2-610bb6976d01
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 82.B3.08289.696BB016; Thu,  5 Aug 2021 18:59:50 +0900 (KST)
+Received: from [10.113.113.235] (unknown [10.113.113.235]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20210805095949epsmtip1951b53f51b72671ae67f0aab83615341~YYLOf61i-1897718977epsmtip1_;
+ Thu,  5 Aug 2021 09:59:49 +0000 (GMT)
+Subject: Re: [BUG] mmc_regulator_set_ocr can't cope with regulator-fixed
+To: Peter Geis <pgwipeout@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob
+ Herring <robh+dt@kernel.org>
+Cc: linux-mmc@vger.kernel.org, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..."
+ <linux-rockchip@lists.infradead.org>, devicetree@vger.kernel.org
+From: Jaehoon Chung <jh80.chung@samsung.com>
+Message-ID: <a9aa636e-326f-a848-dd69-41df87c013af@samsung.com>
+Date: Thu, 5 Aug 2021 19:00:39 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprNJsWRmVeSWpSXmKPExsWy7bCmru70bdyJBst2ilhMffiEzWL+kXOs
+ Ft+udDBZXN41h83iyP9+RotPD/4zW5x95m3RuvcIu8XxteEOnB47Z91l99i0qpPN4861PWwe
+ m5fUe3zeJBfAGpVtk5GamJJapJCal5yfkpmXbqvkHRzvHG9qZmCoa2hpYa6kkJeYm2qr5OIT
+ oOuWmQN0jZJCWWJOKVAoILG4WEnfzqYov7QkVSEjv7jEVim1ICWnwLJArzgxt7g0L10vOT/X
+ ytDAwMgUqDAhO2PF/6dsBVt5Kh7t3s/WwPiAs4uRg0NCwETi8FeeLkZODiGBHYwSnzbqdTFy
+ AdmfGCUOTt3EBOF8ZpSYu/EyE0gVSMPrBctYIDp2MUo0zCyCKHrPKLHr5GJmkISwgIfEw+8L
+ wYpEBLYxSmxtkAMpYhbYyyjx4P4UsElsAjoS278dB7N5Bewkuv6/YQc5iUVAReL9WTmQsKhA
+ pMT53QtYIEoEJU7OfMICUsIpECixal4xSJhZQFzi1pP5TBC2vMT2t3OYQVZJCMzlkNi7bhcr
+ xJcuEo/bBCHuF5Z4dXwLO4QtJfGyvw3KrpbY1XwGqreDUeLWtiaoh40l9i+dzAQyh1lAU2L9
+ Ln2IsKLEzt9zGSH28km8+9oDtYpXoqNNCKJEReLS65dMMKvuPvnPCmF7SHxdPoVlAqPiLCSP
+ zULyzSwk38xCWLyAkWUVo1hqQXFuemqxYYEpckxvYgSnUi3LHYzT337QO8TIxMF4iFGCg1lJ
+ hDd5MVeiEG9KYmVValF+fFFpTmrxIUZTYEhPZJYSTc4HJvO8knhDUyNjY2MLE0MzU0NDJXHe
+ b7FfE4QE0hNLUrNTUwtSi2D6mDg4pRqYigL7ux9PvJUh0nByYVXV0hPNMxYXLu6M7A1dpD2T
+ YVbQtRT3TQt2e5w0L9ztaqeu2SH7sJ7TSEnu/J7ryavuTulWd18VPq/pt2U6T5jP+QtvdI87
+ udy2s3BlaHQIj8xNmdt4o6m55O/h68liGvOSLasVtuft4fiuUfnglb38DZ2G5PdLWaPVH54u
+ M9BY4LdbwO1M/e8f7ys29AoJP2N2qmvxLTX4JG8vybd6YeBBr8g9wT+uzNnoslPRu+H0+76r
+ cx42CAUUvyrSOt0R+C+QpT/Cg+XGevk9QQGN0TOfbtN+vv5LYc2XbzciHM+ut/5Quk3S4VO8
+ 7EaFamCoHbVPcb5Y5HhvjbPsEp/QKUosxRmJhlrMRcWJAAWd7SQuBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrHLMWRmVeSWpSXmKPExsWy7bCSnO60bdyJBk82s1hMffiEzWL+kXOs
+ Ft+udDBZXN41h83iyP9+RotPD/4zW5x95m3RuvcIu8XxteEOnB47Z91l99i0qpPN4861PWwe
+ m5fUe3zeJBfAGsVlk5Kak1mWWqRvl8CVseL/U7aCrTwVj3bvZ2tgfMDZxcjJISFgIvF6wTKW
+ LkYuDiGBHYwSEz53s0IkpCQ+P53K1sXIAWQLSxw+XAxR85ZR4vCdGWA1wgIeEg+/LwRrFhHY
+ xigxdcZ/MIdZYD+jxMe7/xkhWpYwSlxccBushU1AR2L7t+NMIDavgJ1E1/837CArWARUJN6f
+ lQMJiwpESnxe8IoVokRQ4uTMJywgJZwCgRKr5hWDhJkF1CX+zLvEDGGLS9x6Mp8JwpaX2P52
+ DvMERqFZSLpnIWmZhaRlFpKWBYwsqxglUwuKc9Nziw0LjPJSy/WKE3OLS/PS9ZLzczcxgqNI
+ S2sH455VH/QOMTJxMB5ilOBgVhLhTV7MlSjEm5JYWZValB9fVJqTWnyIUZqDRUmc90LXyXgh
+ gfTEktTs1NSC1CKYLBMHp1QDk/OMU4tFGmPPzjxQcHb6tIWalmns3p+2i6Q/U1JO/Hoqp8RO
+ 5ey/dUmPzhevKv77dtKXW3zPVvz6aXDU7rX8xE/puoe7FD50MNgWOch/6ZMr/CXwN8lNoIDF
+ RuqiwvrghSfm/1WdrpWf3rdeSmjnDcv3q/UOb7nK/fuLX8aRVpPWeu5/vx6t6TRbdzSTjSVo
+ L/tLC4YHojs/1zatF7J/sGGf+emOchvJhOM5M8xS2r1XTqoPXvhC4dm+zK3yqxdNV5seP3tn
+ kKNPWKXbyp3hEXFTf8SfvGYfHaqXnPacc22RotLJ/k27dtzufi+8lHtnTu6Sb2L3FkSX7p4x
+ c9+pK3kJ9S3O1/IPhaZ3z44/mKrEUpyRaKjFXFScCADlIApgEQMAAA==
+X-CMS-MailID: 20210805095950epcas1p3cbba5cc9cb6d24d4113669c8703dd56d
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20210804143357epcas1p1c67eca591d8bb557c11b8175baaa8550
+References: <CGME20210804143357epcas1p1c67eca591d8bb557c11b8175baaa8550@epcas1p1.samsung.com>
+ <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_200117_265922_111F4F17 
-X-CRM114-Status: UNSURE (   7.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210805_025959_578162_D6AE7C4C 
+X-CRM114-Status: GOOD (  27.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,31 +151,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the GPU core on the Pine64 Quartz64 Model A.
+Hi,
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+On 8/4/21 11:32 PM, Peter Geis wrote:
+> Good Morning,
+> 
+> I've encountered a fun issue with the dw-mmc driver while working on
+> enabling support for the Quartz-64 Model A.
+> The regulator-fixed driver supports enabling via a gpio, but does not
+> have the ops to set voltage as it is fixed.
+> The dw-mmc calls mmc_regulator_set_ocr for vmmc, which attempts to set
+> the voltage first but fails due to the lack of the voltage ops. It
+> then bails returning -EINVAL.
+> This leads to the following message :
+> dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index b239f314b38a..2114c7404a07 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -147,6 +147,11 @@ &gmac1m0_clkinout
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
--- 
-2.32.0
+What is vdd value (ocr_avail value) on your target?
+I didn't see its case until now. If there is a real bug, I will try to check again.
+
+Best Regards,
+Jaehoon Chung
+
+> 
+> This can be fixed by switching to regulator-gpio for the vmmc supply
+> to the sdmmc controller, however the sdio controller vmmc is provided
+> by a fixed regulator that is always on. Obviously the regulator-gpio
+> isn't an option, as it has no gpio to enable.
+> 
+> Removing the vmmc phandle from the sdio node is an option, but then it
+> doesn't fully describe the hardware (it's also a non-standard 4.4v).
+> I had considered changing the check in dw-mmc.c [1] to continue in the
+> case of -EINVAL, but there are other places in the regulator framework
+> that can also return that and it doesn't address the underlying issue.
+> 
+> As such I'm reaching out to the experts to see what the best course of
+> action is here.
+> Please weigh in with what you think.
+> 
+> Very Respectfully,
+> Peter Geis
+> 
 
 
 _______________________________________________
