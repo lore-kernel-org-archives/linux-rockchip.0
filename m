@@ -2,86 +2,86 @@ Return-Path: <SRS0=V4ex=M4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64BBDC4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 11:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35D6EC4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 11:56:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24C8160C51
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 11:38:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 24C8160C51
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2A38B610A8
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 11:56:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2A38B610A8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6vtv1HXpPQiG2gPSVr3dtThQEvJd4+t00qvU6T4HSr4=; b=JIA7QUPQFJH6wc
-	pJOMfjlbA6HntthSZAMA1R1Z3CxUz3cccxsLTd5/IFlA/HflOxolkFLSIiWUMKDw+RSThyW7TaivC
-	BmW4gbpSCIbYWsHaf2YQYZ2E3uT+h5TlOSlLtVS5CG8tw8nFtoDrEcQ+dZ0Is4Pwn7elbo5jGk9DJ
-	y4+hxDB880+XFhRCFTJZYPiz99tnTGfNj1KXRasLw5LJkJd+AUDvvkQ1X4DeUglZNO9fioxG80TJo
-	ePlg3FWDW3gJa+AJjKdmbUjEvtS1/m/SuF5daErmczQCweixfrG7GaMwgalyMIm0mFl3D02BTIq/z
-	D54hR2wnkgJakMX/mjDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aVAQ+Xdir/l8PP9oZzlrUG76UwLE8SsrQ5Q5xXEerHc=; b=g9N4QdjDmNQBtDFpW3j5vvxOQf
+	OnbDJ7QcRmgzzxRA3AzOq1Hc+mA01p5HZOWZJuaXntSd+MoxIQ3ndT0WfYG//CMUfRYQDoLOhszJ+
+	DSJtMCIpabR11GMiOfO63BP/gBQxKQ3HjaQAtX+58q0HfciOyetiVt5uQi1Y6sId7aG0a8mbmfIKm
+	vDUQEcwxTRCAm1OxUWYH+1q4L41c//o4wfe1CvxVGGhSU0wGoQZtdxe5pfEN4JfGS/Lmgbmg8E3Vc
+	kRMh34Hz6TYhhFQiOo1c8sJ3iK8EKA/kqHkacwuhdq83rc43guGy6ov1crII1IlTr1DrrngR3F96C
+	rcsA2a7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBbhc-009HlN-Oq; Thu, 05 Aug 2021 11:38:20 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1mBbzG-009J7t-LD; Thu, 05 Aug 2021 11:56:34 +0000
+Received: from regular1.263xmail.com ([211.150.70.201])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBbha-009Hkp-7a
- for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 11:38:19 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id x192so8584947ybe.0
- for <linux-rockchip@lists.infradead.org>; Thu, 05 Aug 2021 04:38:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4sNrBXG3cmsa/j58MXPnQY+ureLEZb7SFaI4axcJxYI=;
- b=H8OXe89Tmp4MidjEkZBmS7XtFY8sjphNOTOYu9/ij5S66Qb3c5KocBgfP01ZQVagyh
- YrrqdxdrFzx0Qarw6B0M/H8U6W90XFtHPJm+7R14WRuhZnFuLVbau51Yf3JGUmZiRA8X
- Ii1eYJof4JY4Ea2+kyrX8z+3hcxUUvY5fX1S04QPozNHNjQ5Txh0XfnIbPgB/04sjk5G
- 3XwB75A4357/Rk3X4oMa8FCNaq+hqukWR/XlDQFtE3AAhKNkb4OECHprlgQENXZs5VIm
- IGQMJSwhWkm6JIv6mlKXTg777F1U3shiJoBNX6at1WMOE2aVZ3s0i9jeY9WRfuP1BXGA
- yZ/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4sNrBXG3cmsa/j58MXPnQY+ureLEZb7SFaI4axcJxYI=;
- b=YSMskhxUqYa2Ya/kQspfKwknyrDYoUs0uVlFTY7I3AyBcCCK7WqeaFaXavp2fUWdGX
- Yd+K4KNOeAdZ5wbGHyQh6jlSSgdSKL6mVTGfiHZraCfcVZkZKJAODV5J3QeKVzMm1kr4
- aS6Vo0NKrSFe+B9QDeDfozp9WqpeSkkJ1yXj05nwFkdDxpAR0+tap5jy7moiI1yOqt4V
- FTL3WBu6gTy9NYw2B5Bbyc9anGHw5PDlmbTeGpl7LAjtcCq4GK7YVH1qowC7SMlQEpDY
- 4HScF4bCuT/xJt6571zAHHKZNyDSCD9lWclzP6XRSTDL7AJZTJr+hRBx+ztPqAFaR92g
- FaSQ==
-X-Gm-Message-State: AOAM532SPfmNngtliNeZCcZ2DkiNJPduIYpxpq54IBFNeKM/tMUSwA7s
- O2QEJCg4+LoGiEVLTi8Bo4YCkdIHM7Z098ppPxE=
-X-Google-Smtp-Source: ABdhPJzNaVthwQzy/5Yu04j/gS54ZLHj33w/D2H88qsv5NOCWA4KIoWAOx6COVtIiUVpXk1pr1ta8u9P0brUJ/vhurE=
-X-Received: by 2002:a5b:108:: with SMTP id 8mr5534615ybx.174.1628163496897;
- Thu, 05 Aug 2021 04:38:16 -0700 (PDT)
+ id 1mBbzD-009J6v-6C
+ for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 11:56:33 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by regular1.263xmail.com (Postfix) with ESMTP id B5E78E57;
+ Thu,  5 Aug 2021 19:56:19 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from [172.16.12.8] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P49150T140468773971712S1628164578421692_; 
+ Thu, 05 Aug 2021 19:56:19 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <d6880ad1a79cbdda5d6582af61c0029c>
+X-RL-SENDER: david.wu@rock-chips.com
+X-SENDER: wdc@rock-chips.com
+X-LOGIN-NAME: david.wu@rock-chips.com
+X-FST-TO: linux-iio@vger.kernel.org
+X-RCPT-COUNT: 11
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: just get referenced voltage
+ once at probe
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: Simon Xue <xxm@rock-chips.com>, Jonathan Cameron <jic23@kernel.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
+References: <20210802090929.37970-1-xxm@rock-chips.com>
+ <20210802114222.00004f3d@Huawei.com>
+ <36f6284f-6bc9-d5a4-aac8-5db8b1ecaae1@rock-chips.com>
+ <20210803135124.000072fe@Huawei.com>
+From: David Wu <david.wu@rock-chips.com>
+Message-ID: <8f5385a1-701c-4446-d238-90bee1c03675@rock-chips.com>
+Date: Thu, 5 Aug 2021 19:56:18 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <CGME20210804143357epcas1p1c67eca591d8bb557c11b8175baaa8550@epcas1p1.samsung.com>
- <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
- <a9aa636e-326f-a848-dd69-41df87c013af@samsung.com>
-In-Reply-To: <a9aa636e-326f-a848-dd69-41df87c013af@samsung.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 5 Aug 2021 07:38:06 -0400
-Message-ID: <CAMdYzYr9PX-9=kkCAfGe8Q0-D+gRo_qCwse8SiGVsmod7fffiA@mail.gmail.com>
-Subject: Re: [BUG] mmc_regulator_set_ocr can't cope with regulator-fixed
-To: Jaehoon Chung <jh80.chung@samsung.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- linux-mmc@vger.kernel.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org
+In-Reply-To: <20210803135124.000072fe@Huawei.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_043818_335460_AEF44B05 
-X-CRM114-Status: GOOD (  38.20  )
+X-CRM114-CacheID: sfid-20210805_045631_721128_ED79A064 
+X-CRM114-Status: GOOD (  32.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,117 +94,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="gbk"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 5, 2021 at 5:59 AM Jaehoon Chung <jh80.chung@samsung.com> wrote:
->
-> Hi,
->
-> On 8/4/21 11:32 PM, Peter Geis wrote:
-> > Good Morning,
-> >
-> > I've encountered a fun issue with the dw-mmc driver while working on
-> > enabling support for the Quartz-64 Model A.
-> > The regulator-fixed driver supports enabling via a gpio, but does not
-> > have the ops to set voltage as it is fixed.
-> > The dw-mmc calls mmc_regulator_set_ocr for vmmc, which attempts to set
-> > the voltage first but fails due to the lack of the voltage ops. It
-> > then bails returning -EINVAL.
-> > This leads to the following message :
-> > dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
->
-> What is vdd value (ocr_avail value) on your target?
-> I didn't see its case until now. If there is a real bug, I will try to check again.
-
-What brought this front and center is actually another bug with the
-dw-mmc-rk driver (I don't know if it affects other dw-mmc drivers)
-vmmc is 3.3v on this board, but with broken-cd set polling causes the
-following splat constantly.
-
-[   30.719846] dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
-[   30.720488] dwmmc_rockchip fe2b0000.mmc: failed to enable vmmc regulator
-[   30.763736] dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
-[   30.764379] dwmmc_rockchip fe2b0000.mmc: failed to enable vmmc regulator
-[   30.778231] dwmmc_rockchip fe2b0000.mmc: failed to set rate 300000Hz
-[   30.795042] dwmmc_rockchip fe2b0000.mmc: failed to set rate 300000Hz
-[   30.798735] dwmmc_rockchip fe2b0000.mmc: failed to set rate 300000Hz
-[   30.816591] dwmmc_rockchip fe2b0000.mmc: failed to set rate 300000Hz
-[   30.820303] dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
-[   30.820944] dwmmc_rockchip fe2b0000.mmc: failed to enable vmmc regulator
-[   30.834794] dwmmc_rockchip fe2b0000.mmc: failed to set rate 200000Hz
-[   30.851606] dwmmc_rockchip fe2b0000.mmc: failed to set rate 200000Hz
-[   30.855264] dwmmc_rockchip fe2b0000.mmc: failed to set rate 200000Hz
-[   30.873197] dwmmc_rockchip fe2b0000.mmc: failed to set rate 200000Hz
-[   30.876908] dwmmc_rockchip fe2b0000.mmc: could not set regulator OCR (-22)
-[   30.877549] dwmmc_rockchip fe2b0000.mmc: failed to enable vmmc regulator
-[   30.891396] dwmmc_rockchip fe2b0000.mmc: failed to set rate 100000Hz
-[   30.911704] dwmmc_rockchip fe2b0000.mmc: failed to set rate 100000Hz
-[   30.915586] dwmmc_rockchip fe2b0000.mmc: failed to set rate 100000Hz
-[   30.948637] dwmmc_rockchip fe2b0000.mmc: failed to set rate 100000Hz
-
-I looked through the code path and if the OCR voltage is set to the
-fixed regulator voltage it should just return success. I think I need
-to change that error to output the voltage it tried to set, just to
-see if something weird is going on.
-
-Also, I've got a possible fix to the dw-mmc issue, the following patch
-changes the behavior to only enable a fixed regulator, not try to set
-the voltage. It's a split between the behavior when vmmc isn't defined
-at all and when its a variable regulator:
-
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index d333130d1531..b30102980261 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -1446,11 +1446,13 @@ static void dw_mci_set_ios(struct mmc_host
-*mmc, struct mmc_ios *ios)
-  switch (ios->power_mode) {
-  case MMC_POWER_UP:
-  if (!IS_ERR(mmc->supply.vmmc)) {
-- ret = mmc_regulator_set_ocr(mmc, mmc->supply.vmmc,
-- ios->vdd);
-+ if (mmc->ocr_avail > 0)
-+ ret = mmc_regulator_set_ocr(mmc, mmc->supply.vmmc, ios->vdd);
-+ else
-+ ret = regulator_enable(mmc->supply.vmmc);
-+
-  if (ret) {
-- dev_err(slot->host->dev,
-- "failed to enable vmmc regulator\n");
-+ dev_err(slot->host->dev, "failed to enable vmmc regulator\n");
-  /*return, if failed turn on vmmc*/
-  return;
-  }
-
->
-> Best Regards,
-> Jaehoon Chung
->
-> >
-> > This can be fixed by switching to regulator-gpio for the vmmc supply
-> > to the sdmmc controller, however the sdio controller vmmc is provided
-> > by a fixed regulator that is always on. Obviously the regulator-gpio
-> > isn't an option, as it has no gpio to enable.
-> >
-> > Removing the vmmc phandle from the sdio node is an option, but then it
-> > doesn't fully describe the hardware (it's also a non-standard 4.4v).
-> > I had considered changing the check in dw-mmc.c [1] to continue in the
-> > case of -EINVAL, but there are other places in the regulator framework
-> > that can also return that and it doesn't address the underlying issue.
-> >
-> > As such I'm reaching out to the experts to see what the best course of
-> > action is here.
-> > Please weigh in with what you think.
-> >
-> > Very Respectfully,
-> > Peter Geis
-> >
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9uYXRoYW4sCgrU2iAyMDIxLzgvMyDPws7nODo1MSwgSm9uYXRoYW4gQ2FtZXJvbiDQtLXA
+Ogo+IE9uIFR1ZSwgMyBBdWcgMjAyMSAxMTowOTo0NyArMDgwMAo+IERhdmlkIFd1IDxkYXZpZC53
+dUByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gCj4+IEhpIEpvbmF0aGFuLAo+Pgo+PiDU2iAyMDIx
+LzgvMiDPws7nNjo0MiwgSm9uYXRoYW4gQ2FtZXJvbiDQtLXAOgo+Pj4gT24gTW9uLCAyIEF1ZyAy
+MDIxIDE3OjA5OjI5ICswODAwCj4+PiBTaW1vbiBYdWUgPHh4bUByb2NrLWNoaXBzLmNvbT4gd3Jv
+dGU6Cj4+PiAgICAKPj4+PiBGcm9tOiBEYXZpZCBXdSA8ZGF2aWQud3VAcm9jay1jaGlwcy5jb20+
+Cj4+Pj4KPj4+PiBUaGUgcmVmZXJlbmNlZCB2b2x0YWdlIGlzIG5vdCBjaGFuZ2VkIGFmdGVyIGlu
+aXRpYXRpb24sIHNvIGp1c3Qgb25seQo+Pj4+IGdldCByZWZlcmVuY2VkIHZvbHRhZ2Ugb25jZS4K
+Pj4+IEhpIERhdmlkLAo+Pj4KPj4+IElzbid0IHRoaXMgYW4gZXh0ZXJuYWwgcmVmZXJlbmNlIHZv
+bHRhZ2U/ICBJZiBzbyBob3cgZG8geW91IGtub3cKPj4+IGl0IGlzIG5vdCBjaGFuZ2VkIGF0IHJ1
+bnRpbWU/ICBJdCBtaWdodCBiZSB1bmxpa2VseSBhbmQgbm90IGhhcHBlbgo+Pj4gb24gcGFydGlj
+dWxhciBwbGF0Zm9ybXMsIGJ1dCB0aGF0J3Mgbm90IGhlIHNhbWUgYXMgc2F5aW5nIGl0IGNhbiBu
+ZXZlcgo+Pj4gaGFwcGVuLiAgQ2xlYXJseSBpdCdzIHJhY2V5IGFueXdheSBpZiB0aGF0IGRvZXMg
+aGFwcGVuLCBidXQgd2UgZGVmaW5pdGVseQo+Pj4gZG9uJ3QgZXhwZWN0IGZyZXF1ZW50IHZvbHRh
+Z2UgY2hhbmdlcy4KPj4+ICAgIAo+Pgo+PiBUaGUgY3VycmVudCByZWd1bGF0b3IgaXMgbm90IGNo
+YW5nZWQgYW5kIG5vdCBzdWJqZWN0IHRvIGV4dGVybmFsCj4+IGNoYW5nZXMsIHRoaXMgY2FuIHJl
+ZHVjZSB0aGUgZ2V0dGluZyB2b2x0YWdlLiBBc3N1bWluZyB0aGF0IHRoZXJlIHdpbGwKPj4gYmUg
+Y2hhbmdlcyBpbiB0aGUgZnV0dXJlLCB3ZSB0aGVuIGFkZCB0aGUgbm90aWZ5IG9mIHRoZSByZWd1
+bGF0b3IsIHNvCj4+IHRoYXQgdGhlIHZvbHRhZ2UgY2hhbmdlIGNhbiBiZSBvYnRhaW5lZC4KPiAK
+PiBJZiB0aGlzIHBhdGNoIGFkZGVkIHRoZSBub3RpZmllciB0aGF0IHdvdWxkIGJlIGEgbmljZSBz
+b2x1dGlvbiwgYnV0Cj4gcmlnaHQgbm93IGl0IHBvdGVudGlhbGx5IGludHJvZHVjZWQgYSByZWdy
+ZXNzaW9uLiBZb3UgaGF2ZSBtYWRlIG1lIGEgbGl0dGxlIGN1cmlvdXMuLi4KPiBBcmUgeW91IHNl
+ZWluZyBhIHNpZ25pZmljYW50IGNvc3QgdG8gcXVlcnlpbmcgdGhhdCByZWd1bGF0b3Igdm9sdGFn
+ZT8KPiBJZiBzbywgSSdkIGltYWdpbmUgaXQncyBhIGxhY2sgb2YgY2FjaGluZyBpbiB0aGUgcmVn
+dWxhdG9yIGRyaXZlciBvciBzaW1pbGFyLgo+IFNjYWxlIHJlYWRiYWNrIHZpYSBzeXNmcyBzaG91
+bGRuJ3QgYmUgaW4gYSBmYXN0IHBhdGggYW55d2F5Lgo+IAo+IFlvdSBjYW4ndCBkZXBlbmQgb24g
+d2hhdCBib2FyZHMgdG9kYXkgZG8sIGJlY2F1c2Ugc29tZW9uZSB3aXRoIGEgYm9hcmQKPiBidWls
+dCB0b21vcnJvdyBtYXkgd2VsbCB1c2UgYW4gb2xkIGtlcm5lbCB3aGljaCBzdXBwb3J0cyB0aGUg
+dm9sdGFnZQo+IGNoYW5naW5nLCBhbmQgdGhlbiBzZWUgYSByZWdyZXNzaW9uIHdoZW4gdGhleSB1
+cGdyYWRlIHRvIHRoZSBrZXJuZWwKPiBjb250YWluaW5nIHRoaXMgcGF0Y2guCj4gCgpGb3IgYWxs
+IGN1cnJlbnQgY2hpcHMsIHRoZSBleHBlY3RlZCB2b2x0YWdlIGlzIGEgZml4ZWQgdm9sdGFnZSwg
+YW5kIApkb24ndCB3YW50IHRvIGNoYW5nZSBpdCBpbiBhbnkgcHJvY2Vzcy46LSkKClNvLCBpZiB0
+aGUgdm9sdGFnZSBoZXJlIGRvZXMgbm90IGNoYW5nZSwgdGhlbiBpdCBjYW4gYmUgb2J0YWluZWQg
+b25jZSBpbiAKcHJvYmUoKSwgd2hpY2ggY2FuIHNhdmUgdGhlIHRpbWUgb2YgZWFjaCBhY3F1aXNp
+dGlvbi4gRm9yIGV4YW1wbGUsIHRoZSAKdm9sdGFnZSBvZiB0aGlzIHJlZ3VsYXRvciBpcyBvYnRh
+aW5lZCB0aHJvdWdoIGkyYywgd2hpY2ggd2lsbCBpbmNyZWFzZSAKc29tZSBjb25zdW1wdGlvbiBl
+dmVyeSB0aW1lLgoKPiBKb25hdGhhbgo+IAo+Pgo+Pj4gSm9uYXRoYW4KPj4+ICAgIAo+Pj4+Cj4+
+Pj4gU2lnbmVkLW9mZi1ieTogU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5jb20+Cj4+Pj4gU2ln
+bmVkLW9mZi1ieTogRGF2aWQgV3UgPGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPgo+Pj4+IC0tLQo+
+Pj4+ICAgIGRyaXZlcnMvaWlvL2FkYy9yb2NrY2hpcF9zYXJhZGMuYyB8IDE2ICsrKysrKysrKy0t
+LS0tLS0KPj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9u
+cygtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2FkYy9yb2NrY2hpcF9zYXJh
+ZGMuYyBiL2RyaXZlcnMvaWlvL2FkYy9yb2NrY2hpcF9zYXJhZGMuYwo+Pj4+IGluZGV4IGYzZWI4
+ZDJlNTBkYy4uY2QzM2MwYjlkM2ViIDEwMDY0NAo+Pj4+IC0tLSBhL2RyaXZlcnMvaWlvL2FkYy9y
+b2NrY2hpcF9zYXJhZGMuYwo+Pj4+ICsrKyBiL2RyaXZlcnMvaWlvL2FkYy9yb2NrY2hpcF9zYXJh
+ZGMuYwo+Pj4+IEBAIC00OSw2ICs0OSw3IEBAIHN0cnVjdCByb2NrY2hpcF9zYXJhZGMgewo+Pj4+
+ICAgIAlzdHJ1Y3QgY2xrCQkqY2xrOwo+Pj4+ICAgIAlzdHJ1Y3QgY29tcGxldGlvbgljb21wbGV0
+aW9uOwo+Pj4+ICAgIAlzdHJ1Y3QgcmVndWxhdG9yCSp2cmVmOwo+Pj4+ICsJaW50CQkJdXZfdnJl
+ZjsKPj4+PiAgICAJc3RydWN0IHJlc2V0X2NvbnRyb2wJKnJlc2V0Owo+Pj4+ICAgIAljb25zdCBz
+dHJ1Y3Qgcm9ja2NoaXBfc2FyYWRjX2RhdGEgKmRhdGE7Cj4+Pj4gICAgCXUxNgkJCWxhc3RfdmFs
+Owo+Pj4+IEBAIC0xMDUsMTMgKzEwNiw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfc2FyYWRjX3Jl
+YWRfcmF3KHN0cnVjdCBpaW9fZGV2ICppbmRpb19kZXYsCj4+Pj4gICAgCQltdXRleF91bmxvY2so
+JmluZGlvX2Rldi0+bWxvY2spOwo+Pj4+ICAgIAkJcmV0dXJuIElJT19WQUxfSU5UOwo+Pj4+ICAg
+IAljYXNlIElJT19DSEFOX0lORk9fU0NBTEU6Cj4+Pj4gLQkJcmV0ID0gcmVndWxhdG9yX2dldF92
+b2x0YWdlKGluZm8tPnZyZWYpOwo+Pj4+IC0JCWlmIChyZXQgPCAwKSB7Cj4+Pj4gLQkJCWRldl9l
+cnIoJmluZGlvX2Rldi0+ZGV2LCAiZmFpbGVkIHRvIGdldCB2b2x0YWdlXG4iKTsKPj4+PiAtCQkJ
+cmV0dXJuIHJldDsKPj4+PiAtCQl9Cj4+Pj4gLQo+Pj4+IC0JCSp2YWwgPSByZXQgLyAxMDAwOwo+
+Pj4+ICsJCSp2YWwgPSBpbmZvLT51dl92cmVmIC8gMTAwMDsKPj4+PiAgICAJCSp2YWwyID0gY2hh
+bi0+c2Nhbl90eXBlLnJlYWxiaXRzOwo+Pj4+ICAgIAkJcmV0dXJuIElJT19WQUxfRlJBQ1RJT05B
+TF9MT0cyOwo+Pj4+ICAgIAlkZWZhdWx0Ogo+Pj4+IEBAIC00MTAsNiArNDA1LDEzIEBAIHN0YXRp
+YyBpbnQgcm9ja2NoaXBfc2FyYWRjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYp
+Cj4+Pj4gICAgCQlyZXR1cm4gcmV0Owo+Pj4+ICAgIAl9Cj4+Pj4gICAgCj4+Pj4gKwlpbmZvLT51
+dl92cmVmID0gcmVndWxhdG9yX2dldF92b2x0YWdlKGluZm8tPnZyZWYpOwo+Pj4+ICsJaWYgKGlu
+Zm8tPnV2X3ZyZWYgPCAwKSB7Cj4+Pj4gKwkJZGV2X2VycigmcGRldi0+ZGV2LCAiZmFpbGVkIHRv
+IGdldCB2b2x0YWdlXG4iKTsKPj4+PiArCQlyZXQgPSBpbmZvLT51dl92cmVmOwo+Pj4+ICsJCXJl
+dHVybiByZXQ7Cj4+Pj4gKwl9Cj4+Pj4gKwo+Pj4+ICAgIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFi
+bGUoaW5mby0+cGNsayk7Cj4+Pj4gICAgCWlmIChyZXQgPCAwKSB7Cj4+Pj4gICAgCQlkZXZfZXJy
+KCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gZW5hYmxlIHBjbGtcbiIpOwo+Pj4KPj4+Cj4+Pgo+Pj4g
+ICAgCj4+Cj4+Cj4gCj4gCj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
