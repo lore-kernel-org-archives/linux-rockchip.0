@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C83F4C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 14:44:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25A61C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 14:44:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9066461102
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 14:44:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9066461102
+	by mail.kernel.org (Postfix) with ESMTPS id CF3DF61102
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 14:44:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CF3DF61102
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,20 +23,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ANlVgHuremx3AN8i9RU/nk6KPn8MrBaVFcDGERjbT0=; b=tSwhiEKydEqf1D
-	ZXkQtuxExJuwcmr3MhSnJjN8F8IcbI5MaXyuJcPtd5lXAEUzDeypjYSSZqwbnH1JMGyDbMwoS3YZK
-	igfDgb3mxkxVR7ap1+sEUL3nMvyloO6p9zE7rh34J3yy72OlVKjy51uU7KtUK2JxWJS7qJS2QNK/+
-	r0CAPt4CeB2nbIZKUFygu9rCM5475AmrLQ3MItogbIaLtvnxPcIWcOxDnn/5ZaL97o3cViOM8L5y2
-	t9NyWCELBsuY8Mq0YJbg8NrO8emtR59NxM6StB6isyzAUNj7DhKLwb58mXJ9oCAAfNXc2fJS53Gzs
-	XRwLB4u4+XiAMW/ge20g==;
+	List-Owner; bh=OXTrbzWqEdO7iuMJp2oZMyTal6b/LjhKB9niHUy4YFA=; b=O0UkRCh7SGg/j5
+	D6z+c0dBt9nzbYsQBbwaa2bL4yg7mEKlRjKhREaMeSDF8yRErvy0KKYlHhse9vjqotI7HKCBn+cSB
+	DW0QE7mrDaMCoHjT6tYU/QyLyBqrzUcBljSmEdalNb7VhKQPHO7z/hKqZgIzrQlRxU7uCzdcIw3I0
+	nl7bgyj9vKbBV8jzbcNeS4leTkmhAXNPNTj4gJlgIdWKgJ4Kq5TgJFjsABxenxW1f6uU/fuC5hCdM
+	vkOTCNIeGE3G+lP3YJuIgEEuaJtoLIndUYVEgEFbDStDB+6DrEZuFkwfK5BX9w0Ro1xOY627qhk6/
+	Y43Kzd5zrXwp20k26GEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBebb-009tY3-6e; Thu, 05 Aug 2021 14:44:19 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mBec5-009trd-CF; Thu, 05 Aug 2021 14:44:49 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBeaJ-009sv1-0l; Thu, 05 Aug 2021 14:43:03 +0000
+ id 1mBeaM-009syg-G4; Thu, 05 Aug 2021 14:43:14 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id 65F421F4409E
+ (Authenticated sender: andrzej.p) with ESMTPSA id 92E6D1F440BE
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -56,17 +55,17 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 02/10] hantro: postproc: Introduce struct
- hantro_postproc_ops
-Date: Thu,  5 Aug 2021 16:42:38 +0200
-Message-Id: <20210805144246.11998-3-andrzej.p@collabora.com>
+ kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
+ Adrian Ratiu <adrian.ratiu@collabora.com>
+Subject: [PATCH v3 07/10] media: rkvdec: Add the VP9 backend
+Date: Thu,  5 Aug 2021 16:42:43 +0200
+Message-Id: <20210805144246.11998-8-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210805144246.11998-1-andrzej.p@collabora.com>
 References: <20210805144246.11998-1-andrzej.p@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_074259_348562_A220EB48 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20210805_074303_034697_5C8D4901 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,229 +84,1250 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Boris Brezillon <boris.brezillon@collabora.com>
 
-Turns out the post-processor block on the G2 core is substantially
-different from the one on the G1 core. Introduce hantro_postproc_ops
-with .enable and .disable methods, which will allow to support
-the G2 post-processor cleanly.
+The Rockchip VDEC supports VP9 profile 0 up to 4096x2304@30fps. Add
+a backend for this new format.
 
+Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+Co-developed-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h         |  5 +--
- drivers/staging/media/hantro/hantro_hw.h      | 13 +++++++-
- .../staging/media/hantro/hantro_postproc.c    | 33 ++++++++++++++-----
- drivers/staging/media/hantro/imx8m_vpu_hw.c   |  2 +-
- .../staging/media/hantro/rockchip_vpu_hw.c    |  6 ++--
- .../staging/media/hantro/sama5d4_vdec_hw.c    |  2 +-
- 6 files changed, 44 insertions(+), 17 deletions(-)
+ drivers/staging/media/rkvdec/Kconfig      |    1 +
+ drivers/staging/media/rkvdec/Makefile     |    2 +-
+ drivers/staging/media/rkvdec/rkvdec-vp9.c | 1078 +++++++++++++++++++++
+ drivers/staging/media/rkvdec/rkvdec.c     |   52 +-
+ drivers/staging/media/rkvdec/rkvdec.h     |   12 +-
+ 5 files changed, 1137 insertions(+), 8 deletions(-)
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
 
-diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index c2e2dca38628..c2e01959dc00 100644
---- a/drivers/staging/media/hantro/hantro.h
-+++ b/drivers/staging/media/hantro/hantro.h
-@@ -28,6 +28,7 @@
+diff --git a/drivers/staging/media/rkvdec/Kconfig b/drivers/staging/media/rkvdec/Kconfig
+index c02199b5e0fd..dc7292f346fa 100644
+--- a/drivers/staging/media/rkvdec/Kconfig
++++ b/drivers/staging/media/rkvdec/Kconfig
+@@ -9,6 +9,7 @@ config VIDEO_ROCKCHIP_VDEC
+ 	select VIDEOBUF2_VMALLOC
+ 	select V4L2_MEM2MEM_DEV
+ 	select V4L2_H264
++	select V4L2_VP9
+ 	help
+ 	  Support for the Rockchip Video Decoder IP present on Rockchip SoCs,
+ 	  which accelerates video decoding.
+diff --git a/drivers/staging/media/rkvdec/Makefile b/drivers/staging/media/rkvdec/Makefile
+index c08fed0a39f9..cb86b429cfaa 100644
+--- a/drivers/staging/media/rkvdec/Makefile
++++ b/drivers/staging/media/rkvdec/Makefile
+@@ -1,3 +1,3 @@
+ obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += rockchip-vdec.o
  
- struct hantro_ctx;
- struct hantro_codec_ops;
-+struct hantro_postproc_ops;
- 
- #define HANTRO_JPEG_ENCODER	BIT(0)
- #define HANTRO_ENCODERS		0x0000ffff
-@@ -59,6 +60,7 @@ struct hantro_irq {
-  * @num_dec_fmts:		Number of decoder formats.
-  * @postproc_fmts:		Post-processor formats.
-  * @num_postproc_fmts:		Number of post-processor formats.
-+ * @postproc_ops:		Post-processor ops.
-  * @codec:			Supported codecs
-  * @codec_ops:			Codec ops.
-  * @init:			Initialize hardware, optional.
-@@ -69,7 +71,6 @@ struct hantro_irq {
-  * @num_clocks:			number of clocks in the array
-  * @reg_names:			array of register range names
-  * @num_regs:			number of register range names in the array
-- * @postproc_regs:		&struct hantro_postproc_regs pointer
-  */
- struct hantro_variant {
- 	unsigned int enc_offset;
-@@ -80,6 +81,7 @@ struct hantro_variant {
- 	unsigned int num_dec_fmts;
- 	const struct hantro_fmt *postproc_fmts;
- 	unsigned int num_postproc_fmts;
-+	const struct hantro_postproc_ops *postproc_ops;
- 	unsigned int codec;
- 	const struct hantro_codec_ops *codec_ops;
- 	int (*init)(struct hantro_dev *vpu);
-@@ -90,7 +92,6 @@ struct hantro_variant {
- 	int num_clocks;
- 	const char * const *reg_names;
- 	int num_regs;
--	const struct hantro_postproc_regs *postproc_regs;
- };
- 
- /**
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index df7b5e3a57b9..4323e63dfbfc 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -170,6 +170,17 @@ struct hantro_postproc_ctx {
- 	struct hantro_aux_buf dec_q[VB2_MAX_FRAME];
- };
- 
-+/**
-+ * struct hantro_postproc_ops - post-processor operations
+-rockchip-vdec-y += rkvdec.o rkvdec-h264.o
++rockchip-vdec-y += rkvdec.o rkvdec-h264.o rkvdec-vp9.o
+diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
+new file mode 100644
+index 000000000000..e8b3a5c3d0f4
+--- /dev/null
++++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
+@@ -0,0 +1,1078 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip Video Decoder VP9 backend
 + *
-+ * @enable:	Enable the post-processor block. Optional.
-+ * @disable:	Disable the post-processor block. Optional.
++ * Copyright (C) 2019 Collabora, Ltd.
++ *	Boris Brezillon <boris.brezillon@collabora.com>
++ * Copyright (C) 2021 Collabora, Ltd.
++ *	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
++ *
++ * Copyright (C) 2016 Rockchip Electronics Co., Ltd.
++ *	Alpha Lin <Alpha.Lin@rock-chips.com>
 + */
-+struct hantro_postproc_ops {
-+	void (*enable)(struct hantro_ctx *ctx);
-+	void (*disable)(struct hantro_ctx *ctx);
++
++/*
++ * For following the vp9 spec please start reading this driver
++ * code from rkvdec_vp9_run() followed by rkvdec_vp9_done().
++ */
++
++#include <linux/kernel.h>
++#include <linux/vmalloc.h>
++#include <media/v4l2-mem2mem.h>
++#include <media/v4l2-vp9.h>
++
++#include "rkvdec.h"
++#include "rkvdec-regs.h"
++
++#define RKVDEC_VP9_PROBE_SIZE		4864
++#define RKVDEC_VP9_COUNT_SIZE		13232
++#define RKVDEC_VP9_MAX_SEGMAP_SIZE	73728
++
++struct rkvdec_vp9_intra_mode_probs {
++	u8 y_mode[105];
++	u8 uv_mode[23];
 +};
 +
- /**
-  * struct hantro_codec_ops - codec mode specific operations
-  *
-@@ -217,7 +228,7 @@ extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3399_vpu_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- 
--extern const struct hantro_postproc_regs hantro_g1_postproc_regs;
-+extern const struct hantro_postproc_ops hantro_g1_postproc_ops;
- 
- extern const u32 hantro_vp8_dec_mc_filter[8][6];
- 
-diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index 07842152003f..882fb8bc5ddd 100644
---- a/drivers/staging/media/hantro/hantro_postproc.c
-+++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -15,14 +15,14 @@
- #define HANTRO_PP_REG_WRITE(vpu, reg_name, val) \
- { \
- 	hantro_reg_write(vpu, \
--			 &(vpu)->variant->postproc_regs->reg_name, \
-+			 &hantro_g1_postproc_regs.reg_name, \
- 			 val); \
- }
- 
- #define HANTRO_PP_REG_WRITE_S(vpu, reg_name, val) \
- { \
- 	hantro_reg_write_s(vpu, \
--			   &(vpu)->variant->postproc_regs->reg_name, \
-+			   &hantro_g1_postproc_regs.reg_name, \
- 			   val); \
- }
- 
-@@ -64,16 +64,13 @@ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
- 	return fmt->fourcc != V4L2_PIX_FMT_NV12;
- }
- 
--void hantro_postproc_enable(struct hantro_ctx *ctx)
-+static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct vb2_v4l2_buffer *dst_buf;
- 	u32 src_pp_fmt, dst_pp_fmt;
- 	dma_addr_t dst_dma;
- 
--	if (!vpu->variant->postproc_regs)
--		return;
--
- 	/* Turn on pipeline mode. Must be done first. */
- 	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x1);
- 
-@@ -154,12 +151,30 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	return 0;
- }
- 
-+static void hantro_postproc_g1_disable(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x0);
-+}
-+
- void hantro_postproc_disable(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 
--	if (!vpu->variant->postproc_regs)
--		return;
-+	if (vpu->variant->postproc_ops && vpu->variant->postproc_ops->disable)
-+		vpu->variant->postproc_ops->disable(ctx);
-+}
- 
--	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x0);
-+void hantro_postproc_enable(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+
-+	if (vpu->variant->postproc_ops && vpu->variant->postproc_ops->enable)
-+		vpu->variant->postproc_ops->enable(ctx);
- }
-+
-+const struct hantro_postproc_ops hantro_g1_postproc_ops = {
-+	.enable = hantro_postproc_g1_enable,
-+	.disable = hantro_postproc_g1_disable,
++struct rkvdec_vp9_intra_only_frame_probs {
++	u8 coef_intra[4][2][128];
++	struct rkvdec_vp9_intra_mode_probs intra_mode[10];
 +};
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index ea919bfb9891..22fa7d2f3b64 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -262,7 +262,7 @@ const struct hantro_variant imx8mq_vpu_variant = {
- 	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
- 	.postproc_fmts = imx8m_vpu_postproc_fmts,
- 	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
--	.postproc_regs = &hantro_g1_postproc_regs,
-+	.postproc_ops = &hantro_g1_postproc_ops,
- 	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
- 		 HANTRO_H264_DECODER,
- 	.codec_ops = imx8mq_vpu_codec_ops,
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index d4f52957cc53..6c1ad5534ce5 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -460,7 +460,7 @@ const struct hantro_variant rk3036_vpu_variant = {
- 	.num_dec_fmts = ARRAY_SIZE(rk3066_vpu_dec_fmts),
- 	.postproc_fmts = rockchip_vpu1_postproc_fmts,
- 	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu1_postproc_fmts),
--	.postproc_regs = &hantro_g1_postproc_regs,
-+	.postproc_ops = &hantro_g1_postproc_ops,
- 	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
- 		 HANTRO_H264_DECODER,
- 	.codec_ops = rk3036_vpu_codec_ops,
-@@ -485,7 +485,7 @@ const struct hantro_variant rk3066_vpu_variant = {
- 	.num_dec_fmts = ARRAY_SIZE(rk3066_vpu_dec_fmts),
- 	.postproc_fmts = rockchip_vpu1_postproc_fmts,
- 	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu1_postproc_fmts),
--	.postproc_regs = &hantro_g1_postproc_regs,
-+	.postproc_ops = &hantro_g1_postproc_ops,
- 	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
- 		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
- 	.codec_ops = rk3066_vpu_codec_ops,
-@@ -505,7 +505,7 @@ const struct hantro_variant rk3288_vpu_variant = {
- 	.num_dec_fmts = ARRAY_SIZE(rk3288_vpu_dec_fmts),
- 	.postproc_fmts = rockchip_vpu1_postproc_fmts,
- 	.num_postproc_fmts = ARRAY_SIZE(rockchip_vpu1_postproc_fmts),
--	.postproc_regs = &hantro_g1_postproc_regs,
-+	.postproc_ops = &hantro_g1_postproc_ops,
- 	.codec = HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
- 		 HANTRO_VP8_DECODER | HANTRO_H264_DECODER,
- 	.codec_ops = rk3288_vpu_codec_ops,
-diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-index 9c3b8cd0b239..f3fecc7248c4 100644
---- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-+++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-@@ -100,7 +100,7 @@ const struct hantro_variant sama5d4_vdec_variant = {
- 	.num_dec_fmts = ARRAY_SIZE(sama5d4_vdec_fmts),
- 	.postproc_fmts = sama5d4_vdec_postproc_fmts,
- 	.num_postproc_fmts = ARRAY_SIZE(sama5d4_vdec_postproc_fmts),
--	.postproc_regs = &hantro_g1_postproc_regs,
-+	.postproc_ops = &hantro_g1_postproc_ops,
- 	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
- 		 HANTRO_H264_DECODER,
- 	.codec_ops = sama5d4_vdec_codec_ops,
++
++struct rkvdec_vp9_inter_frame_probs {
++	u8 y_mode[4][9];
++	u8 comp_mode[5];
++	u8 comp_ref[5];
++	u8 single_ref[5][2];
++	u8 inter_mode[7][3];
++	u8 interp_filter[4][2];
++	u8 padding0[11];
++	u8 coef[2][4][2][128];
++	u8 uv_mode_0_2[3][9];
++	u8 padding1[5];
++	u8 uv_mode_3_5[3][9];
++	u8 padding2[5];
++	u8 uv_mode_6_8[3][9];
++	u8 padding3[5];
++	u8 uv_mode_9[9];
++	u8 padding4[7];
++	u8 padding5[16];
++	struct {
++		u8 joint[3];
++		u8 sign[2];
++		u8 classes[2][10];
++		u8 class0_bit[2];
++		u8 bits[2][10];
++		u8 class0_fr[2][2][3];
++		u8 fr[2][3];
++		u8 class0_hp[2];
++		u8 hp[2];
++	} mv;
++};
++
++struct rkvdec_vp9_probs {
++	u8 partition[16][3];
++	u8 pred[3];
++	u8 tree[7];
++	u8 skip[3];
++	u8 tx32[2][3];
++	u8 tx16[2][2];
++	u8 tx8[2][1];
++	u8 is_inter[4];
++	/* 128 bit alignment */
++	u8 padding0[3];
++	union {
++		struct rkvdec_vp9_inter_frame_probs inter;
++		struct rkvdec_vp9_intra_only_frame_probs intra_only;
++	};
++};
++
++/* Data structure describing auxiliary buffer format. */
++struct rkvdec_vp9_priv_tbl {
++	struct rkvdec_vp9_probs probs;
++	u8 segmap[2][RKVDEC_VP9_MAX_SEGMAP_SIZE];
++};
++
++struct rkvdec_vp9_refs_counts {
++	u32 eob[2];
++	u32 coeff[3];
++};
++
++struct rkvdec_vp9_inter_frame_symbol_counts {
++	u32 partition[16][4];
++	u32 skip[3][2];
++	u32 inter[4][2];
++	u32 tx32p[2][4];
++	u32 tx16p[2][4];
++	u32 tx8p[2][2];
++	u32 y_mode[4][10];
++	u32 uv_mode[10][10];
++	u32 comp[5][2];
++	u32 comp_ref[5][2];
++	u32 single_ref[5][2][2];
++	u32 mv_mode[7][4];
++	u32 filter[4][3];
++	u32 mv_joint[4];
++	u32 sign[2][2];
++	/* add 1 element for align */
++	u32 classes[2][11 + 1];
++	u32 class0[2][2];
++	u32 bits[2][10][2];
++	u32 class0_fp[2][2][4];
++	u32 fp[2][4];
++	u32 class0_hp[2][2];
++	u32 hp[2][2];
++	struct rkvdec_vp9_refs_counts ref_cnt[2][4][2][6][6];
++};
++
++struct rkvdec_vp9_intra_frame_symbol_counts {
++	u32 partition[4][4][4];
++	u32 skip[3][2];
++	u32 intra[4][2];
++	u32 tx32p[2][4];
++	u32 tx16p[2][4];
++	u32 tx8p[2][2];
++	struct rkvdec_vp9_refs_counts ref_cnt[2][4][2][6][6];
++};
++
++struct rkvdec_vp9_run {
++	struct rkvdec_run base;
++	const struct v4l2_ctrl_vp9_frame *decode_params;
++};
++
++struct rkvdec_vp9_frame_info {
++	u32 valid : 1;
++	u32 segmapid : 1;
++	u32 frame_context_idx : 2;
++	u32 reference_mode : 2;
++	u32 tx_mode : 3;
++	u32 interpolation_filter : 3;
++	u32 flags;
++	u64 timestamp;
++	struct v4l2_vp9_segmentation seg;
++	struct v4l2_vp9_loop_filter lf;
++};
++
++struct rkvdec_vp9_ctx {
++	struct rkvdec_aux_buf priv_tbl;
++	struct rkvdec_aux_buf count_tbl;
++	struct v4l2_vp9_frame_symbol_counts inter_cnts;
++	struct v4l2_vp9_frame_symbol_counts intra_cnts;
++	struct v4l2_vp9_frame_context probability_tables;
++	struct v4l2_vp9_frame_context frame_context[4];
++	struct rkvdec_vp9_frame_info cur;
++	struct rkvdec_vp9_frame_info last;
++};
++
++static void write_coeff_plane(const u8 coef[6][6][3], u8 *coeff_plane)
++{
++	unsigned int idx = 0, byte_count = 0;
++	int k, m, n;
++	u8 p;
++
++	for (k = 0; k < 6; k++) {
++		for (m = 0; m < 6; m++) {
++			for (n = 0; n < 3; n++) {
++				p = coef[k][m][n];
++				coeff_plane[idx++] = p;
++				byte_count++;
++				if (byte_count == 27) {
++					idx += 5;
++					byte_count = 0;
++				}
++			}
++		}
++	}
++}
++
++static void init_intra_only_probs(struct rkvdec_ctx *ctx,
++				  const struct rkvdec_vp9_run *run)
++{
++	const struct v4l2_ctrl_vp9_frame *dec_params;
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
++	struct rkvdec_vp9_intra_only_frame_probs *rkprobs;
++	const struct v4l2_vp9_frame_context *probs;
++	unsigned int i, j, k, m;
++
++	rkprobs = &tbl->probs.intra_only;
++	dec_params = run->decode_params;
++	probs = &vp9_ctx->probability_tables;
++
++	/*
++	 * intra only 149 x 128 bits ,aligned to 152 x 128 bits coeff related
++	 * prob 64 x 128 bits
++	 */
++	for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
++		for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++)
++			write_coeff_plane(probs->coef[i][j][0],
++					  rkprobs->coef_intra[i][j]);
++	}
++
++	/* intra mode prob  80 x 128 bits */
++	for (i = 0; i < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob); i++) {
++		unsigned int byte_count = 0;
++		int idx = 0;
++
++		/* vp9_kf_y_mode_prob */
++		for (j = 0; j < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob[0]); j++) {
++			for (k = 0; k < ARRAY_SIZE(v4l2_vp9_kf_y_mode_prob[0][0]);
++			     k++) {
++				u8 val = v4l2_vp9_kf_y_mode_prob[i][j][k];
++
++				rkprobs->intra_mode[i].y_mode[idx++] = val;
++				byte_count++;
++				if (byte_count == 27) {
++					byte_count = 0;
++					idx += 5;
++				}
++			}
++		}
++
++		idx = 0;
++		if (i < 4) {
++			for (m = 0; m < (i < 3 ? 23 : 21); m++) {
++				const u8 *ptr = (const u8 *)v4l2_vp9_kf_uv_mode_prob;
++
++				rkprobs->intra_mode[i].uv_mode[idx++] = ptr[i * 23 + m];
++			}
++		}
++	}
++}
++
++static void init_inter_probs(struct rkvdec_ctx *ctx,
++			     const struct rkvdec_vp9_run *run)
++{
++	const struct v4l2_ctrl_vp9_frame *dec_params;
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
++	struct rkvdec_vp9_inter_frame_probs *rkprobs;
++	const struct v4l2_vp9_frame_context *probs;
++	unsigned int i, j, k;
++
++	rkprobs = &tbl->probs.inter;
++	dec_params = run->decode_params;
++	probs = &vp9_ctx->probability_tables;
++
++	/*
++	 * inter probs
++	 * 151 x 128 bits, aligned to 152 x 128 bits
++	 * inter only
++	 * intra_y_mode & inter_block info 6 x 128 bits
++	 */
++
++	memcpy(rkprobs->y_mode, probs->y_mode, sizeof(rkprobs->y_mode));
++	memcpy(rkprobs->comp_mode, probs->comp_mode,
++	       sizeof(rkprobs->comp_mode));
++	memcpy(rkprobs->comp_ref, probs->comp_ref,
++	       sizeof(rkprobs->comp_ref));
++	memcpy(rkprobs->single_ref, probs->single_ref,
++	       sizeof(rkprobs->single_ref));
++	memcpy(rkprobs->inter_mode, probs->inter_mode,
++	       sizeof(rkprobs->inter_mode));
++	memcpy(rkprobs->interp_filter, probs->interp_filter,
++	       sizeof(rkprobs->interp_filter));
++
++	/* 128 x 128 bits coeff related */
++	for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
++		for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++) {
++			for (k = 0; k < ARRAY_SIZE(probs->coef[0][0]); k++)
++				write_coeff_plane(probs->coef[i][j][k],
++						  rkprobs->coef[k][i][j]);
++		}
++	}
++
++	/* intra uv mode 6 x 128 */
++	memcpy(rkprobs->uv_mode_0_2, &probs->uv_mode[0],
++	       sizeof(rkprobs->uv_mode_0_2));
++	memcpy(rkprobs->uv_mode_3_5, &probs->uv_mode[3],
++	       sizeof(rkprobs->uv_mode_3_5));
++	memcpy(rkprobs->uv_mode_6_8, &probs->uv_mode[6],
++	       sizeof(rkprobs->uv_mode_6_8));
++	memcpy(rkprobs->uv_mode_9, &probs->uv_mode[9],
++	       sizeof(rkprobs->uv_mode_9));
++
++	/* mv related 6 x 128 */
++	memcpy(rkprobs->mv.joint, probs->mv.joint,
++	       sizeof(rkprobs->mv.joint));
++	memcpy(rkprobs->mv.sign, probs->mv.sign,
++	       sizeof(rkprobs->mv.sign));
++	memcpy(rkprobs->mv.classes, probs->mv.classes,
++	       sizeof(rkprobs->mv.classes));
++	memcpy(rkprobs->mv.class0_bit, probs->mv.class0_bit,
++	       sizeof(rkprobs->mv.class0_bit));
++	memcpy(rkprobs->mv.bits, probs->mv.bits,
++	       sizeof(rkprobs->mv.bits));
++	memcpy(rkprobs->mv.class0_fr, probs->mv.class0_fr,
++	       sizeof(rkprobs->mv.class0_fr));
++	memcpy(rkprobs->mv.fr, probs->mv.fr,
++	       sizeof(rkprobs->mv.fr));
++	memcpy(rkprobs->mv.class0_hp, probs->mv.class0_hp,
++	       sizeof(rkprobs->mv.class0_hp));
++	memcpy(rkprobs->mv.hp, probs->mv.hp,
++	       sizeof(rkprobs->mv.hp));
++}
++
++static void init_probs(struct rkvdec_ctx *ctx,
++		       const struct rkvdec_vp9_run *run)
++{
++	const struct v4l2_ctrl_vp9_frame *dec_params;
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
++	struct rkvdec_vp9_probs *rkprobs = &tbl->probs;
++	const struct v4l2_vp9_segmentation *seg;
++	const struct v4l2_vp9_frame_context *probs;
++	bool intra_only;
++
++	dec_params = run->decode_params;
++	probs = &vp9_ctx->probability_tables;
++	seg = &dec_params->seg;
++
++	memset(rkprobs, 0, sizeof(*rkprobs));
++
++	intra_only = !!(dec_params->flags &
++			(V4L2_VP9_FRAME_FLAG_KEY_FRAME |
++			 V4L2_VP9_FRAME_FLAG_INTRA_ONLY));
++
++	/* sb info  5 x 128 bit */
++	memcpy(rkprobs->partition,
++	       intra_only ? v4l2_vp9_kf_partition_probs : probs->partition,
++	       sizeof(rkprobs->partition));
++
++	memcpy(rkprobs->pred, seg->pred_probs, sizeof(rkprobs->pred));
++	memcpy(rkprobs->tree, seg->tree_probs, sizeof(rkprobs->tree));
++	memcpy(rkprobs->skip, probs->skip, sizeof(rkprobs->skip));
++	memcpy(rkprobs->tx32, probs->tx32, sizeof(rkprobs->tx32));
++	memcpy(rkprobs->tx16, probs->tx16, sizeof(rkprobs->tx16));
++	memcpy(rkprobs->tx8, probs->tx8, sizeof(rkprobs->tx8));
++	memcpy(rkprobs->is_inter, probs->is_inter, sizeof(rkprobs->is_inter));
++
++	if (intra_only)
++		init_intra_only_probs(ctx, run);
++	else
++		init_inter_probs(ctx, run);
++}
++
++struct rkvdec_vp9_ref_reg {
++	u32 reg_frm_size;
++	u32 reg_hor_stride;
++	u32 reg_y_stride;
++	u32 reg_yuv_stride;
++	u32 reg_ref_base;
++};
++
++static struct rkvdec_vp9_ref_reg ref_regs[] = {
++	{
++		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(0),
++		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(0),
++		.reg_y_stride = RKVDEC_VP9_LAST_FRAME_YSTRIDE,
++		.reg_yuv_stride = RKVDEC_VP9_LAST_FRAME_YUVSTRIDE,
++		.reg_ref_base = RKVDEC_REG_VP9_LAST_FRAME_BASE,
++	},
++	{
++		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(1),
++		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(1),
++		.reg_y_stride = RKVDEC_VP9_GOLDEN_FRAME_YSTRIDE,
++		.reg_yuv_stride = 0,
++		.reg_ref_base = RKVDEC_REG_VP9_GOLDEN_FRAME_BASE,
++	},
++	{
++		.reg_frm_size = RKVDEC_REG_VP9_FRAME_SIZE(2),
++		.reg_hor_stride = RKVDEC_VP9_HOR_VIRSTRIDE(2),
++		.reg_y_stride = RKVDEC_VP9_ALTREF_FRAME_YSTRIDE,
++		.reg_yuv_stride = 0,
++		.reg_ref_base = RKVDEC_REG_VP9_ALTREF_FRAME_BASE,
++	}
++};
++
++static struct rkvdec_decoded_buffer *
++get_ref_buf(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *dst, u64 timestamp)
++{
++	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
++	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
++	int buf_idx;
++
++	/*
++	 * If a ref is unused or invalid, address of current destination
++	 * buffer is returned.
++	 */
++	buf_idx = vb2_find_timestamp(cap_q, timestamp, 0);
++	if (buf_idx < 0)
++		return vb2_to_rkvdec_decoded_buf(&dst->vb2_buf);
++
++	return vb2_to_rkvdec_decoded_buf(vb2_get_buffer(cap_q, buf_idx));
++}
++
++static dma_addr_t get_mv_base_addr(struct rkvdec_decoded_buffer *buf)
++{
++	unsigned int aligned_pitch, aligned_height, yuv_len;
++
++	aligned_height = round_up(buf->vp9.height, 64);
++	aligned_pitch = round_up(buf->vp9.width * buf->vp9.bit_depth, 512) / 8;
++	yuv_len = (aligned_height * aligned_pitch * 3) / 2;
++
++	return vb2_dma_contig_plane_dma_addr(&buf->base.vb.vb2_buf, 0) +
++	       yuv_len;
++}
++
++static void config_ref_registers(struct rkvdec_ctx *ctx,
++				 const struct rkvdec_vp9_run *run,
++				 struct rkvdec_decoded_buffer *ref_buf,
++				 struct rkvdec_vp9_ref_reg *ref_reg)
++{
++	unsigned int aligned_pitch, aligned_height, y_len, yuv_len;
++	struct rkvdec_dev *rkvdec = ctx->dev;
++
++	aligned_height = round_up(ref_buf->vp9.height, 64);
++	writel_relaxed(RKVDEC_VP9_FRAMEWIDTH(ref_buf->vp9.width) |
++		       RKVDEC_VP9_FRAMEHEIGHT(ref_buf->vp9.height),
++		       rkvdec->regs + ref_reg->reg_frm_size);
++
++	writel_relaxed(vb2_dma_contig_plane_dma_addr(&ref_buf->base.vb.vb2_buf, 0),
++		       rkvdec->regs + ref_reg->reg_ref_base);
++
++	if (&ref_buf->base.vb == run->base.bufs.dst)
++		return;
++
++	aligned_pitch = round_up(ref_buf->vp9.width * ref_buf->vp9.bit_depth, 512) / 8;
++	y_len = aligned_height * aligned_pitch;
++	yuv_len = (y_len * 3) / 2;
++
++	writel_relaxed(RKVDEC_HOR_Y_VIRSTRIDE(aligned_pitch / 16) |
++		       RKVDEC_HOR_UV_VIRSTRIDE(aligned_pitch / 16),
++		       rkvdec->regs + ref_reg->reg_hor_stride);
++	writel_relaxed(RKVDEC_VP9_REF_YSTRIDE(y_len / 16),
++		       rkvdec->regs + ref_reg->reg_y_stride);
++
++	if (!ref_reg->reg_yuv_stride)
++		return;
++
++	writel_relaxed(RKVDEC_VP9_REF_YUVSTRIDE(yuv_len / 16),
++		       rkvdec->regs + ref_reg->reg_yuv_stride);
++}
++
++static void config_seg_registers(struct rkvdec_ctx *ctx, unsigned int segid)
++{
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	const struct v4l2_vp9_segmentation *seg;
++	struct rkvdec_dev *rkvdec = ctx->dev;
++	s16 feature_val;
++	int feature_id;
++	u32 val = 0;
++
++	seg = vp9_ctx->last.valid ? &vp9_ctx->last.seg : &vp9_ctx->cur.seg;
++	feature_id = V4L2_VP9_SEG_LVL_ALT_Q;
++	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
++		feature_val = seg->feature_data[segid][feature_id];
++		val |= RKVDEC_SEGID_FRAME_QP_DELTA_EN(1) |
++		       RKVDEC_SEGID_FRAME_QP_DELTA(feature_val);
++	}
++
++	feature_id = V4L2_VP9_SEG_LVL_ALT_L;
++	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
++		feature_val = seg->feature_data[segid][feature_id];
++		val |= RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE_EN(1) |
++		       RKVDEC_SEGID_FRAME_LOOPFILTER_VALUE(feature_val);
++	}
++
++	feature_id = V4L2_VP9_SEG_LVL_REF_FRAME;
++	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid)) {
++		feature_val = seg->feature_data[segid][feature_id];
++		val |= RKVDEC_SEGID_REFERINFO_EN(1) |
++		       RKVDEC_SEGID_REFERINFO(feature_val);
++	}
++
++	feature_id = V4L2_VP9_SEG_LVL_SKIP;
++	if (v4l2_vp9_seg_feat_enabled(seg->feature_enabled, feature_id, segid))
++		val |= RKVDEC_SEGID_FRAME_SKIP_EN(1);
++
++	if (!segid &&
++	    (seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ABS_OR_DELTA_UPDATE))
++		val |= RKVDEC_SEGID_ABS_DELTA(1);
++
++	writel_relaxed(val, rkvdec->regs + RKVDEC_VP9_SEGID_GRP(segid));
++}
++
++static void update_dec_buf_info(struct rkvdec_decoded_buffer *buf,
++				const struct v4l2_ctrl_vp9_frame *dec_params)
++{
++	buf->vp9.width = dec_params->frame_width_minus_1 + 1;
++	buf->vp9.height = dec_params->frame_height_minus_1 + 1;
++	buf->vp9.bit_depth = dec_params->bit_depth;
++}
++
++static void update_ctx_cur_info(struct rkvdec_vp9_ctx *vp9_ctx,
++				struct rkvdec_decoded_buffer *buf,
++				const struct v4l2_ctrl_vp9_frame *dec_params)
++{
++	vp9_ctx->cur.valid = true;
++	vp9_ctx->cur.reference_mode = dec_params->reference_mode;
++	vp9_ctx->cur.tx_mode = dec_params->tx_mode;
++	vp9_ctx->cur.interpolation_filter = dec_params->interpolation_filter;
++	vp9_ctx->cur.flags = dec_params->flags;
++	vp9_ctx->cur.timestamp = buf->base.vb.vb2_buf.timestamp;
++	vp9_ctx->cur.seg = dec_params->seg;
++	vp9_ctx->cur.lf = dec_params->lf;
++}
++
++static void update_ctx_last_info(struct rkvdec_vp9_ctx *vp9_ctx)
++{
++	vp9_ctx->last = vp9_ctx->cur;
++}
++
++static void config_registers(struct rkvdec_ctx *ctx,
++			     const struct rkvdec_vp9_run *run)
++{
++	unsigned int y_len, uv_len, yuv_len, bit_depth, aligned_height, aligned_pitch, stream_len;
++	const struct v4l2_ctrl_vp9_frame *dec_params;
++	struct rkvdec_decoded_buffer *ref_bufs[3];
++	struct rkvdec_decoded_buffer *dst, *last, *mv_ref;
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	u32 val, last_frame_info = 0;
++	const struct v4l2_vp9_segmentation *seg;
++	struct rkvdec_dev *rkvdec = ctx->dev;
++	dma_addr_t addr;
++	bool intra_only;
++	unsigned int i;
++
++	dec_params = run->decode_params;
++	dst = vb2_to_rkvdec_decoded_buf(&run->base.bufs.dst->vb2_buf);
++	ref_bufs[0] = get_ref_buf(ctx, &dst->base.vb, dec_params->last_frame_ts);
++	ref_bufs[1] = get_ref_buf(ctx, &dst->base.vb, dec_params->golden_frame_ts);
++	ref_bufs[2] = get_ref_buf(ctx, &dst->base.vb, dec_params->alt_frame_ts);
++
++	if (vp9_ctx->last.valid)
++		last = get_ref_buf(ctx, &dst->base.vb, vp9_ctx->last.timestamp);
++	else
++		last = dst;
++
++	update_dec_buf_info(dst, dec_params);
++	update_ctx_cur_info(vp9_ctx, dst, dec_params);
++	seg = &dec_params->seg;
++
++	intra_only = !!(dec_params->flags &
++			(V4L2_VP9_FRAME_FLAG_KEY_FRAME |
++			 V4L2_VP9_FRAME_FLAG_INTRA_ONLY));
++
++	writel_relaxed(RKVDEC_MODE(RKVDEC_MODE_VP9),
++		       rkvdec->regs + RKVDEC_REG_SYSCTRL);
++
++	bit_depth = dec_params->bit_depth;
++	aligned_height = round_up(ctx->decoded_fmt.fmt.pix_mp.height, 64);
++
++	aligned_pitch = round_up(ctx->decoded_fmt.fmt.pix_mp.width *
++				 bit_depth,
++				 512) / 8;
++	y_len = aligned_height * aligned_pitch;
++	uv_len = y_len / 2;
++	yuv_len = y_len + uv_len;
++
++	writel_relaxed(RKVDEC_Y_HOR_VIRSTRIDE(aligned_pitch / 16) |
++		       RKVDEC_UV_HOR_VIRSTRIDE(aligned_pitch / 16),
++		       rkvdec->regs + RKVDEC_REG_PICPAR);
++	writel_relaxed(RKVDEC_Y_VIRSTRIDE(y_len / 16),
++		       rkvdec->regs + RKVDEC_REG_Y_VIRSTRIDE);
++	writel_relaxed(RKVDEC_YUV_VIRSTRIDE(yuv_len / 16),
++		       rkvdec->regs + RKVDEC_REG_YUV_VIRSTRIDE);
++
++	stream_len = vb2_get_plane_payload(&run->base.bufs.src->vb2_buf, 0);
++	writel_relaxed(RKVDEC_STRM_LEN(stream_len),
++		       rkvdec->regs + RKVDEC_REG_STRM_LEN);
++
++	/*
++	 * Reset count buffer, because decoder only output intra related syntax
++	 * counts when decoding intra frame, but update entropy need to update
++	 * all the probabilities.
++	 */
++	if (intra_only)
++		memset(vp9_ctx->count_tbl.cpu, 0, vp9_ctx->count_tbl.size);
++
++	vp9_ctx->cur.segmapid = vp9_ctx->last.segmapid;
++	if (!intra_only &&
++	    !(dec_params->flags & V4L2_VP9_FRAME_FLAG_ERROR_RESILIENT) &&
++	    (!(seg->flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED) ||
++	     (seg->flags & V4L2_VP9_SEGMENTATION_FLAG_UPDATE_MAP)))
++		vp9_ctx->cur.segmapid++;
++
++	for (i = 0; i < ARRAY_SIZE(ref_bufs); i++)
++		config_ref_registers(ctx, run, ref_bufs[i], &ref_regs[i]);
++
++	for (i = 0; i < 8; i++)
++		config_seg_registers(ctx, i);
++
++	writel_relaxed(RKVDEC_VP9_TX_MODE(dec_params->tx_mode) |
++		       RKVDEC_VP9_FRAME_REF_MODE(dec_params->reference_mode),
++		       rkvdec->regs + RKVDEC_VP9_CPRHEADER_CONFIG);
++
++	if (!intra_only) {
++		const struct v4l2_vp9_loop_filter *lf;
++		s8 delta;
++
++		if (vp9_ctx->last.valid)
++			lf = &vp9_ctx->last.lf;
++		else
++			lf = &vp9_ctx->cur.lf;
++
++		val = 0;
++		for (i = 0; i < ARRAY_SIZE(lf->ref_deltas); i++) {
++			delta = lf->ref_deltas[i];
++			val |= RKVDEC_REF_DELTAS_LASTFRAME(i, delta);
++		}
++
++		writel_relaxed(val,
++			       rkvdec->regs + RKVDEC_VP9_REF_DELTAS_LASTFRAME);
++
++		for (i = 0; i < ARRAY_SIZE(lf->mode_deltas); i++) {
++			delta = lf->mode_deltas[i];
++			last_frame_info |= RKVDEC_MODE_DELTAS_LASTFRAME(i,
++									delta);
++		}
++	}
++
++	if (vp9_ctx->last.valid && !intra_only &&
++	    vp9_ctx->last.seg.flags & V4L2_VP9_SEGMENTATION_FLAG_ENABLED)
++		last_frame_info |= RKVDEC_SEG_EN_LASTFRAME;
++
++	if (vp9_ctx->last.valid &&
++	    vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_SHOW_FRAME)
++		last_frame_info |= RKVDEC_LAST_SHOW_FRAME;
++
++	if (vp9_ctx->last.valid &&
++	    vp9_ctx->last.flags &
++	    (V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY))
++		last_frame_info |= RKVDEC_LAST_INTRA_ONLY;
++
++	if (vp9_ctx->last.valid &&
++	    last->vp9.width == dst->vp9.width &&
++	    last->vp9.height == dst->vp9.height)
++		last_frame_info |= RKVDEC_LAST_WIDHHEIGHT_EQCUR;
++
++	writel_relaxed(last_frame_info,
++		       rkvdec->regs + RKVDEC_VP9_INFO_LASTFRAME);
++
++	writel_relaxed(stream_len - dec_params->compressed_header_size -
++		       dec_params->uncompressed_header_size,
++		       rkvdec->regs + RKVDEC_VP9_LASTTILE_SIZE);
++
++	for (i = 0; !intra_only && i < ARRAY_SIZE(ref_bufs); i++) {
++		unsigned int refw = ref_bufs[i]->vp9.width;
++		unsigned int refh = ref_bufs[i]->vp9.height;
++		u32 hscale, vscale;
++
++		hscale = (refw << 14) /	dst->vp9.width;
++		vscale = (refh << 14) / dst->vp9.height;
++		writel_relaxed(RKVDEC_VP9_REF_HOR_SCALE(hscale) |
++			       RKVDEC_VP9_REF_VER_SCALE(vscale),
++			       rkvdec->regs + RKVDEC_VP9_REF_SCALE(i));
++	}
++
++	addr = vb2_dma_contig_plane_dma_addr(&dst->base.vb.vb2_buf, 0);
++	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_DECOUT_BASE);
++	addr = vb2_dma_contig_plane_dma_addr(&run->base.bufs.src->vb2_buf, 0);
++	writel_relaxed(addr, rkvdec->regs + RKVDEC_REG_STRM_RLC_BASE);
++	writel_relaxed(vp9_ctx->priv_tbl.dma +
++		       offsetof(struct rkvdec_vp9_priv_tbl, probs),
++		       rkvdec->regs + RKVDEC_REG_CABACTBL_PROB_BASE);
++	writel_relaxed(vp9_ctx->count_tbl.dma,
++		       rkvdec->regs + RKVDEC_REG_VP9COUNT_BASE);
++
++	writel_relaxed(vp9_ctx->priv_tbl.dma +
++		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
++		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * vp9_ctx->cur.segmapid),
++		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDCUR_BASE);
++	writel_relaxed(vp9_ctx->priv_tbl.dma +
++		       offsetof(struct rkvdec_vp9_priv_tbl, segmap) +
++		       (RKVDEC_VP9_MAX_SEGMAP_SIZE * (!vp9_ctx->cur.segmapid)),
++		       rkvdec->regs + RKVDEC_REG_VP9_SEGIDLAST_BASE);
++
++	if (!intra_only &&
++	    !(dec_params->flags & V4L2_VP9_FRAME_FLAG_ERROR_RESILIENT) &&
++	    vp9_ctx->last.valid)
++		mv_ref = last;
++	else
++		mv_ref = dst;
++
++	writel_relaxed(get_mv_base_addr(mv_ref),
++		       rkvdec->regs + RKVDEC_VP9_REF_COLMV_BASE);
++
++	writel_relaxed(ctx->decoded_fmt.fmt.pix_mp.width |
++		       (ctx->decoded_fmt.fmt.pix_mp.height << 16),
++		       rkvdec->regs + RKVDEC_REG_PERFORMANCE_CYCLE);
++}
++
++static int validate_dec_params(struct rkvdec_ctx *ctx,
++			       const struct v4l2_ctrl_vp9_frame *dec_params)
++{
++	unsigned int aligned_width, aligned_height;
++
++	/* We only support profile 0. */
++	if (dec_params->profile != 0) {
++		dev_err(ctx->dev->dev, "unsupported profile %d\n",
++			dec_params->profile);
++		return -EINVAL;
++	}
++
++	aligned_width = round_up(dec_params->frame_width_minus_1 + 1, 64);
++	aligned_height = round_up(dec_params->frame_height_minus_1 + 1, 64);
++
++	/*
++	 * Userspace should update the capture/decoded format when the
++	 * resolution changes.
++	 */
++	if (aligned_width != ctx->decoded_fmt.fmt.pix_mp.width ||
++	    aligned_height != ctx->decoded_fmt.fmt.pix_mp.height) {
++		dev_err(ctx->dev->dev,
++			"unexpected bitstream resolution %dx%d\n",
++			dec_params->frame_width_minus_1 + 1,
++			dec_params->frame_height_minus_1 + 1);
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static int rkvdec_vp9_run_preamble(struct rkvdec_ctx *ctx,
++				   struct rkvdec_vp9_run *run)
++{
++	const struct v4l2_ctrl_vp9_frame *dec_params;
++	const struct v4l2_ctrl_vp9_compressed_hdr_probs *prob_updates;
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct v4l2_ctrl *ctrl;
++	unsigned int fctx_idx;
++	int ret;
++
++	/* v4l2-specific stuff */
++	rkvdec_run_preamble(ctx, &run->base);
++
++	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
++			      V4L2_CID_STATELESS_VP9_FRAME);
++	if (WARN_ON(!ctrl))
++		return -EINVAL;
++	dec_params = ctrl->p_cur.p;
++
++	ret = validate_dec_params(ctx, dec_params);
++	if (ret)
++		return ret;
++
++	run->decode_params = dec_params;
++
++	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl, V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS);
++	if (WARN_ON(!ctrl))
++		return -EINVAL;
++	prob_updates = ctrl->p_cur.p;
++
++	/*
++	 * vp9 stuff
++	 *
++	 * by this point the userspace has done all parts of 6.2 uncompressed_header()
++	 * except this fragment:
++	 * if ( FrameIsIntra || error_resilient_mode ) {
++	 *	setup_past_independence ( )
++	 *	if ( frame_type == KEY_FRAME || error_resilient_mode == 1 ||
++	 *	     reset_frame_context == 3 ) {
++	 *		for ( i = 0; i < 4; i ++ ) {
++	 *			save_probs( i )
++	 *		}
++	 *	} else if ( reset_frame_context == 2 ) {
++	 *		save_probs( frame_context_idx )
++	 *	}
++	 *	frame_context_idx = 0
++	 * }
++	 */
++	fctx_idx = v4l2_vp9_reset_frame_ctx(dec_params, vp9_ctx->frame_context);
++	vp9_ctx->cur.frame_context_idx = fctx_idx;
++
++	/* 6.1 frame(sz): load_probs() and load_probs2() */
++	vp9_ctx->probability_tables = vp9_ctx->frame_context[fctx_idx];
++
++	/*
++	 * The userspace has also performed 6.3 compressed_header(), but handling the
++	 * probs in a special way. All probs which need updating, except MV-related,
++	 * have been read from the bitstream and translated through inv_map_table[],
++	 * but no 6.3.6 inv_recenter_nonneg(v, m) has been performed. The values passed
++	 * by userspace are either translated values (there are no 0 values in
++	 * inv_map_table[]), or zero to indicate no update. All MV-related probs which need
++	 * updating have been read from the bitstream and (mv_prob << 1) | 1 has been
++	 * performed. The values passed by userspace are either new values
++	 * to replace old ones (the above mentioned shift and bitwise or never result in
++	 * a zero) or zero to indicate no update.
++	 * fw_update_probs() performs actual probs updates or leaves probs as-is
++	 * for values for which a zero was passed from userspace.
++	 */
++	v4l2_vp9_fw_update_probs(&vp9_ctx->probability_tables, prob_updates, dec_params);
++
++	return 0;
++}
++
++static int rkvdec_vp9_run(struct rkvdec_ctx *ctx)
++{
++	struct rkvdec_dev *rkvdec = ctx->dev;
++	struct rkvdec_vp9_run run = { };
++	int ret;
++
++	ret = rkvdec_vp9_run_preamble(ctx, &run);
++	if (ret) {
++		rkvdec_run_postamble(ctx, &run.base);
++		return ret;
++	}
++
++	/* Prepare probs. */
++	init_probs(ctx, &run);
++
++	/* Configure hardware registers. */
++	config_registers(ctx, &run);
++
++	rkvdec_run_postamble(ctx, &run.base);
++
++	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
++
++	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
++	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
++
++	writel(0xe, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
++	/* Start decoding! */
++	writel(RKVDEC_INTERRUPT_DEC_E | RKVDEC_CONFIG_DEC_CLK_GATE_E |
++	       RKVDEC_TIMEOUT_E | RKVDEC_BUF_EMPTY_E,
++	       rkvdec->regs + RKVDEC_REG_INTERRUPT);
++
++	return 0;
++}
++
++#define copy_tx_and_skip(p1, p2)				\
++do {								\
++	memcpy((p1)->tx8, (p2)->tx8, sizeof((p1)->tx8));	\
++	memcpy((p1)->tx16, (p2)->tx16, sizeof((p1)->tx16));	\
++	memcpy((p1)->tx32, (p2)->tx32, sizeof((p1)->tx32));	\
++	memcpy((p1)->skip, (p2)->skip, sizeof((p1)->skip));	\
++} while (0)
++
++static void rkvdec_vp9_done(struct rkvdec_ctx *ctx,
++			    struct vb2_v4l2_buffer *src_buf,
++			    struct vb2_v4l2_buffer *dst_buf,
++			    enum vb2_buffer_state result)
++{
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	unsigned int fctx_idx;
++
++	/* v4l2-specific stuff */
++	if (result == VB2_BUF_STATE_ERROR)
++		goto out_update_last;
++
++	/*
++	 * vp9 stuff
++	 *
++	 * 6.1.2 refresh_probs()
++	 *
++	 * In the spec a complementary condition goes last in 6.1.2 refresh_probs(),
++	 * but it makes no sense to perform all the activities from the first "if"
++	 * there if we actually are not refreshing the frame context. On top of that,
++	 * because of 6.2 uncompressed_header() whenever error_resilient_mode == 1,
++	 * refresh_frame_context == 0. Consequently, if we don't jump to out_update_last
++	 * it means error_resilient_mode must be 0.
++	 */
++	if (!(vp9_ctx->cur.flags & V4L2_VP9_FRAME_FLAG_REFRESH_FRAME_CTX))
++		goto out_update_last;
++
++	fctx_idx = vp9_ctx->cur.frame_context_idx;
++
++	if (!(vp9_ctx->cur.flags & V4L2_VP9_FRAME_FLAG_PARALLEL_DEC_MODE)) {
++		/* error_resilient_mode == 0 && frame_parallel_decoding_mode == 0 */
++		struct v4l2_vp9_frame_context *probs = &vp9_ctx->probability_tables;
++		bool frame_is_intra = vp9_ctx->cur.flags &
++		    (V4L2_VP9_FRAME_FLAG_KEY_FRAME | V4L2_VP9_FRAME_FLAG_INTRA_ONLY);
++		struct tx_and_skip {
++			u8 tx8[2][1];
++			u8 tx16[2][2];
++			u8 tx32[2][3];
++			u8 skip[3];
++		} _tx_skip, *tx_skip = &_tx_skip;
++		struct v4l2_vp9_frame_symbol_counts *counts;
++
++		/* buffer the forward-updated TX and skip probs */
++		if (frame_is_intra)
++			copy_tx_and_skip(tx_skip, probs);
++
++		/* 6.1.2 refresh_probs(): load_probs() and load_probs2() */
++		*probs = vp9_ctx->frame_context[fctx_idx];
++
++		/* if FrameIsIntra then undo the effect of load_probs2() */
++		if (frame_is_intra)
++			copy_tx_and_skip(probs, tx_skip);
++
++		counts = frame_is_intra ? &vp9_ctx->intra_cnts : &vp9_ctx->inter_cnts;
++		v4l2_vp9_adapt_coef_probs(probs, counts,
++					  !vp9_ctx->last.valid ||
++					  vp9_ctx->last.flags & V4L2_VP9_FRAME_FLAG_KEY_FRAME,
++					  frame_is_intra);
++		if (!frame_is_intra) {
++			const struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts;
++			u32 classes[2][11];
++			int i;
++
++			inter_cnts = vp9_ctx->count_tbl.cpu;
++			for (i = 0; i < ARRAY_SIZE(classes); ++i)
++				memcpy(classes[i], inter_cnts->classes[i], sizeof(classes[0]));
++			counts->classes = &classes;
++
++			/* load_probs2() already done */
++			v4l2_vp9_adapt_noncoef_probs(&vp9_ctx->probability_tables, counts,
++						     vp9_ctx->cur.reference_mode,
++						     vp9_ctx->cur.interpolation_filter,
++						     vp9_ctx->cur.tx_mode, vp9_ctx->cur.flags);
++		}
++	}
++
++	/* 6.1.2 refresh_probs(): save_probs(fctx_idx) */
++	vp9_ctx->frame_context[fctx_idx] = vp9_ctx->probability_tables;
++
++out_update_last:
++	update_ctx_last_info(vp9_ctx);
++}
++
++static void rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
++{
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct rkvdec_vp9_intra_frame_symbol_counts *intra_cnts = vp9_ctx->count_tbl.cpu;
++	struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts = vp9_ctx->count_tbl.cpu;
++	int i, j, k, l, m;
++
++	vp9_ctx->inter_cnts.partition = &inter_cnts->partition;
++	vp9_ctx->inter_cnts.skip = &inter_cnts->skip;
++	vp9_ctx->inter_cnts.intra_inter = &inter_cnts->inter;
++	vp9_ctx->inter_cnts.tx32p = &inter_cnts->tx32p;
++	vp9_ctx->inter_cnts.tx16p = &inter_cnts->tx16p;
++	vp9_ctx->inter_cnts.tx8p = &inter_cnts->tx8p;
++
++	vp9_ctx->intra_cnts.partition = (u32 (*)[16][4])(&intra_cnts->partition);
++	vp9_ctx->intra_cnts.skip = &intra_cnts->skip;
++	vp9_ctx->intra_cnts.intra_inter = &intra_cnts->intra;
++	vp9_ctx->intra_cnts.tx32p = &intra_cnts->tx32p;
++	vp9_ctx->intra_cnts.tx16p = &intra_cnts->tx16p;
++	vp9_ctx->intra_cnts.tx8p = &intra_cnts->tx8p;
++
++	vp9_ctx->inter_cnts.y_mode = &inter_cnts->y_mode;
++	vp9_ctx->inter_cnts.uv_mode = &inter_cnts->uv_mode;
++	vp9_ctx->inter_cnts.comp = &inter_cnts->comp;
++	vp9_ctx->inter_cnts.comp_ref = &inter_cnts->comp_ref;
++	vp9_ctx->inter_cnts.single_ref = &inter_cnts->single_ref;
++	vp9_ctx->inter_cnts.mv_mode = &inter_cnts->mv_mode;
++	vp9_ctx->inter_cnts.filter = &inter_cnts->filter;
++	vp9_ctx->inter_cnts.mv_joint = &inter_cnts->mv_joint;
++	vp9_ctx->inter_cnts.sign = &inter_cnts->sign;
++	/*
++	 * rk hardware actually uses "u32 classes[2][11 + 1];"
++	 * instead of "u32 classes[2][11];", so this must be explicitly
++	 * copied into vp9_ctx->classes when passing the data to the
++	 * vp9 library function
++	 */
++	vp9_ctx->inter_cnts.class0 = &inter_cnts->class0;
++	vp9_ctx->inter_cnts.bits = &inter_cnts->bits;
++	vp9_ctx->inter_cnts.class0_fp = &inter_cnts->class0_fp;
++	vp9_ctx->inter_cnts.fp = &inter_cnts->fp;
++	vp9_ctx->inter_cnts.class0_hp = &inter_cnts->class0_hp;
++	vp9_ctx->inter_cnts.hp = &inter_cnts->hp;
++
++#define INNERMOST_LOOP \
++	do {										\
++		for (m = 0; m < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0][0]); ++m) {\
++			vp9_ctx->inter_cnts.coeff[i][j][k][l][m] =			\
++				&inter_cnts->ref_cnt[k][i][j][l][m].coeff;		\
++			vp9_ctx->inter_cnts.eob[i][j][k][l][m][0] =			\
++				&inter_cnts->ref_cnt[k][i][j][l][m].eob[0];		\
++			vp9_ctx->inter_cnts.eob[i][j][k][l][m][1] =			\
++				&inter_cnts->ref_cnt[k][i][j][l][m].eob[1];		\
++											\
++			vp9_ctx->intra_cnts.coeff[i][j][k][l][m] =			\
++				&intra_cnts->ref_cnt[k][i][j][l][m].coeff;		\
++			vp9_ctx->intra_cnts.eob[i][j][k][l][m][0] =			\
++				&intra_cnts->ref_cnt[k][i][j][l][m].eob[0];		\
++			vp9_ctx->intra_cnts.eob[i][j][k][l][m][1] =			\
++				&intra_cnts->ref_cnt[k][i][j][l][m].eob[1];		\
++		}									\
++	} while (0)
++
++	for (i = 0; i < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff); ++i)
++		for (j = 0; j < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0]); ++j)
++			for (k = 0; k < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0]); ++k)
++				for (l = 0; l < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0]); ++l)
++					INNERMOST_LOOP;
++#undef INNERMOST_LOOP
++}
++
++static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
++{
++	struct rkvdec_dev *rkvdec = ctx->dev;
++	struct rkvdec_vp9_priv_tbl *priv_tbl;
++	struct rkvdec_vp9_ctx *vp9_ctx;
++	unsigned char *count_tbl;
++	int ret;
++
++	vp9_ctx = kzalloc(sizeof(*vp9_ctx), GFP_KERNEL);
++	if (!vp9_ctx)
++		return -ENOMEM;
++
++	ctx->priv = vp9_ctx;
++
++	priv_tbl = dma_alloc_coherent(rkvdec->dev, sizeof(*priv_tbl),
++				      &vp9_ctx->priv_tbl.dma, GFP_KERNEL);
++	if (!priv_tbl) {
++		ret = -ENOMEM;
++		goto err_free_ctx;
++	}
++
++	vp9_ctx->priv_tbl.size = sizeof(*priv_tbl);
++	vp9_ctx->priv_tbl.cpu = priv_tbl;
++	memset(priv_tbl, 0, sizeof(*priv_tbl));
++
++	count_tbl = dma_alloc_coherent(rkvdec->dev, RKVDEC_VP9_COUNT_SIZE,
++				       &vp9_ctx->count_tbl.dma, GFP_KERNEL);
++	if (!count_tbl) {
++		ret = -ENOMEM;
++		goto err_free_priv_tbl;
++	}
++
++	vp9_ctx->count_tbl.size = RKVDEC_VP9_COUNT_SIZE;
++	vp9_ctx->count_tbl.cpu = count_tbl;
++	memset(count_tbl, 0, sizeof(*count_tbl));
++	rkvdec_init_v4l2_vp9_count_tbl(ctx);
++
++	return 0;
++
++err_free_priv_tbl:
++	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
++			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
++
++err_free_ctx:
++	kfree(vp9_ctx);
++	return ret;
++}
++
++static void rkvdec_vp9_stop(struct rkvdec_ctx *ctx)
++{
++	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
++	struct rkvdec_dev *rkvdec = ctx->dev;
++
++	dma_free_coherent(rkvdec->dev, vp9_ctx->count_tbl.size,
++			  vp9_ctx->count_tbl.cpu, vp9_ctx->count_tbl.dma);
++	dma_free_coherent(rkvdec->dev, vp9_ctx->priv_tbl.size,
++			  vp9_ctx->priv_tbl.cpu, vp9_ctx->priv_tbl.dma);
++	kfree(vp9_ctx);
++}
++
++static int rkvdec_vp9_adjust_fmt(struct rkvdec_ctx *ctx,
++				 struct v4l2_format *f)
++{
++	struct v4l2_pix_format_mplane *fmt = &f->fmt.pix_mp;
++
++	fmt->num_planes = 1;
++	if (!fmt->plane_fmt[0].sizeimage)
++		fmt->plane_fmt[0].sizeimage = fmt->width * fmt->height * 2;
++	return 0;
++}
++
++const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops = {
++	.adjust_fmt = rkvdec_vp9_adjust_fmt,
++	.start = rkvdec_vp9_start,
++	.stop = rkvdec_vp9_stop,
++	.run = rkvdec_vp9_run,
++	.done = rkvdec_vp9_done,
++};
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 7131156c1f2c..9553d66e6325 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -99,10 +99,30 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+ 	.num_ctrls = ARRAY_SIZE(rkvdec_h264_ctrl_descs),
+ };
+ 
+-static const u32 rkvdec_h264_decoded_fmts[] = {
++static const u32 rkvdec_h264_vp9_decoded_fmts[] = {
+ 	V4L2_PIX_FMT_NV12,
+ };
+ 
++static const struct rkvdec_ctrl_desc rkvdec_vp9_ctrl_descs[] = {
++	{
++		.cfg.id = V4L2_CID_STATELESS_VP9_FRAME,
++	},
++	{
++		.cfg.id = V4L2_CID_STATELESS_VP9_COMPRESSED_HDR_PROBS,
++	},
++	{
++		.cfg.id = V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
++		.cfg.min = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
++		.cfg.max = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
++		.cfg.def = V4L2_MPEG_VIDEO_VP9_PROFILE_0,
++	},
++};
++
++static const struct rkvdec_ctrls rkvdec_vp9_ctrls = {
++	.ctrls = rkvdec_vp9_ctrl_descs,
++	.num_ctrls = ARRAY_SIZE(rkvdec_vp9_ctrl_descs),
++};
++
+ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+@@ -116,8 +136,23 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+ 		},
+ 		.ctrls = &rkvdec_h264_ctrls,
+ 		.ops = &rkvdec_h264_fmt_ops,
+-		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_decoded_fmts),
+-		.decoded_fmts = rkvdec_h264_decoded_fmts,
++		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
++		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
++	},
++	{
++		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
++		.frmsize = {
++			.min_width = 64,
++			.max_width = 4096,
++			.step_width = 64,
++			.min_height = 64,
++			.max_height = 2304,
++			.step_height = 64,
++		},
++		.ctrls = &rkvdec_vp9_ctrls,
++		.ops = &rkvdec_vp9_fmt_ops,
++		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
++		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
+ 	}
+ };
+ 
+@@ -319,7 +354,7 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+ 	const struct rkvdec_coded_fmt_desc *desc;
+ 	struct v4l2_format *cap_fmt;
+-	struct vb2_queue *peer_vq;
++	struct vb2_queue *peer_vq, *vq;
+ 	int ret;
+ 
+ 	/*
+@@ -331,6 +366,15 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ 	if (vb2_is_busy(peer_vq))
+ 		return -EBUSY;
+ 
++	/*
++	 * Some codecs like VP9 can contain dynamic resolution changes which
++	 * are currently not supported by the V4L2 API or driver, so return
++	 * an error if userspace tries to reconfigure the output format.
++	 */
++	vq = v4l2_m2m_get_vq(m2m_ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
++	if (vb2_is_busy(vq))
++		return -EINVAL;
++
+ 	ret = rkvdec_s_fmt(file, priv, f, rkvdec_try_output_fmt);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index 52ac3874c5e5..2f4ea1786b93 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -42,14 +42,18 @@ struct rkvdec_run {
+ 
+ struct rkvdec_vp9_decoded_buffer_info {
+ 	/* Info needed when the decoded frame serves as a reference frame. */
+-	u16 width;
+-	u16 height;
+-	u32 bit_depth : 4;
++	unsigned short width;
++	unsigned short height;
++	unsigned int bit_depth : 4;
+ };
+ 
+ struct rkvdec_decoded_buffer {
+ 	/* Must be the first field in this struct. */
+ 	struct v4l2_m2m_buffer base;
++
++	union {
++		struct rkvdec_vp9_decoded_buffer_info vp9;
++	};
+ };
+ 
+ static inline struct rkvdec_decoded_buffer *
+@@ -116,4 +120,6 @@ void rkvdec_run_preamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
+ void rkvdec_run_postamble(struct rkvdec_ctx *ctx, struct rkvdec_run *run);
+ 
+ extern const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops;
++extern const struct rkvdec_coded_fmt_ops rkvdec_vp9_fmt_ops;
++
+ #endif /* RKVDEC_H_ */
 -- 
 2.17.1
 
