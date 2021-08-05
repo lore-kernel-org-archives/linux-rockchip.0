@@ -2,96 +2,86 @@ Return-Path: <SRS0=V4ex=M4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E28DDC4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 20:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11D67C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 21:52:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1EBE660BD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 20:37:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1EBE660BD3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id BE12760F38
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Aug 2021 21:52:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BE12760F38
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hZaf7glHiH5eYgMaAb+spOrclen/eCYmWwGyQC4d6Po=; b=X+CzZF+NG4vt57ZLVifSvD0+ZO
-	bi594MxQXfxkF1TO4p70hNUmyoB1Ywg4Kd4RWTt+xkvcGfHQGQLqH98YPrz1XsLOBeLyZSPwy1YHW
-	lDJDWa+YBktx+tL0bOnMgvG9ydw800HVun6PGUYieCbXz4bPcGzQUPQtmlfk3ZxZLgd0cfV1kEUeq
-	i8BgKLlaaGrlR+SHuSV6AUcx/OWs3yQjPb5OUE17t6RXr+mJtJ5jDEWAlx2ypw+QRBhwQQZnGe6rM
-	bIuR7w5BqdeFyuvH3mfl6lOFNUrPN9q92oXg+eVnndVk8XQcn+otd8rBk/oLhpWZ5K7/6rye2oirb
-	KgTzxv7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GWmJ1x+El9taEk9oEgdnP4PUAMuJHPjzntWHtcKcbk8=; b=fjtkohHKIix5CJ
+	F6nfA2bvnafLB+3riHbrQYfFc8/uM1V8t2vwly63z+PfjgiL9Sf1hcvOcz78ykqmfAxwf5e//Dd1K
+	auDZMiR37YFrP5EDYXJ6na/91rVXkOX1+j8wwEJb8lNgg3T1PYJIa/jYWULvvrsBOimyU7PwTpBpi
+	wzsu+k4gHoyg9S64J+iyLmI0dzmEG1V8m9j7/C8/GQHY5Ar73xd+PBQnu01OTGCIcKXnfPkVDJli0
+	47qxDkGaZ9/21LHH82OPVjqmxwYeBprZtU2Fk2RtU5zcW3qS6aiCNuWfOsi5N18Ph/+FZB5zQDqym
+	qw9KV5sVjzftmzJ+jpMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBk7j-00AjSk-Lv; Thu, 05 Aug 2021 20:37:51 +0000
-Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+	id 1mBlI4-00Atl6-5f; Thu, 05 Aug 2021 21:52:36 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBk7U-00AjPs-Ic
- for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 20:37:39 +0000
-Received: by mail-lj1-x233.google.com with SMTP id m18so8824337ljo.1
- for <linux-rockchip@lists.infradead.org>; Thu, 05 Aug 2021 13:37:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PCb9Vg4MNIfx8MIl3EhLdxWgZVaYvDp4QlXHnDYweSM=;
- b=tQmVbTGrDgseUjOuhUpIYNpimj6wcV2Vq0Kb0Wc6BstUtDzG+/1xhTafWKhC0DglsI
- z/dJdpxxaQoGg8VHB41YpVNWY4ahIGQewaFM+X3M02qdYW2a1vAPQK6012TLFmpWGbPL
- wMyMGVYwXlXdvFc5mIwzkVLotbPufmDGrwEiu7F6GuneoqNrLa57ts0CcLPsGG2uR3Iq
- rKzl8EfIFUt8K/x8Rkz5JmY6l1RSXwBGlhS6MOb0A/5UfYuzvxtnyqyJRwuwK//L6cG8
- kSdyiN66qxjHPegov9rWzlwSWCMSB2sNir8Q6gTJymKDwmTYn+QJZLQUVkUaMS5XBlXl
- gq4w==
+ id 1mBlI0-00AtkF-IQ
+ for linux-rockchip@lists.infradead.org; Thu, 05 Aug 2021 21:52:34 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id z5so9759512ybj.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 05 Aug 2021 14:52:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=/UQ/XHaeIooFE6LdVCRHH8ogFbxbCCOS2tpf69zhkNE=;
+ b=dwukpaJ0801S19b/iRaXaWXKAHkyOED36pnTpyc8AjYSHmgJMLD+aMktnliUWW6rEq
+ PppEKZ3M+Dnqt2a39XTo24QWO38mo+zFGiBtzu/Ya/9iMFW9XCvTesRkEvPbt3/hx4sZ
+ gm0lAKM/sF1MzN1zXeTZSCT5vU5JFyWeSom0wrUD/1pv12A8DvN4VZDtud9Ostr0i9aW
+ CSx32++0/FvTz25+HsAFJfAmx7e7VwK+C+akrPRr/iwLbheFfOZToJWOkz32pVyXSbUA
+ exM9/ZWaqnBhQJ9LegvH4umDa3j74KhKywouLmYMwAAdch1XWVl9aP+9NqSUZveFmqNR
+ w9zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PCb9Vg4MNIfx8MIl3EhLdxWgZVaYvDp4QlXHnDYweSM=;
- b=jy9qhV845Iu3SalNP1LLz8DBH2bQlHxRrVj8je652ASgSEqCkAQoQMrQDQoSv/lbet
- 7TFR2BEtqLYzLPeagH3Iesd2VSOb5FEnC0nCRn0wjB+CeT9GO0kl1r2wK9qdu+mq3cLe
- MEyOZ1vkhU8aimrP2AE50ajwrQI8f7IMbgLfcg0nCebadAd15C3d/Tfi6NJAlnj4Mn9i
- a+EC0KJAPzBLBh0tTV9EGypBVtP9FF5shwpmBHGNnZ03D93ISOdjOalGEIeqgin/grbw
- p1lpGPk+kt1sad+Y6iwCJ0nvNzHtWOXbTjDvjCQDYVvBOvKaKJdVzWA5eQ+ydWxhma8X
- fPzQ==
-X-Gm-Message-State: AOAM531N4rdh6BGna4M9OmkZhtbrSwA68dO86tP3Aylo3FoslVGCy22F
- rem1phEmoNI0ekSEN8BXmRHEww==
-X-Google-Smtp-Source: ABdhPJxFiXjhta4Jq9uuEp6GCTVIh+qj58FU/VuJ36KUv+PjNPN9FiopMbZltk87/KNmzaxNXkhmOg==
-X-Received: by 2002:a2e:a906:: with SMTP id j6mr4329253ljq.292.1628195853878; 
- Thu, 05 Aug 2021 13:37:33 -0700 (PDT)
-Received: from [192.168.1.211] ([37.153.55.125])
- by smtp.gmail.com with ESMTPSA id j16sm282693ljc.71.2021.08.05.13.37.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Aug 2021 13:37:33 -0700 (PDT)
-Subject: Re: [PATCH] drm/aperture: Pass DRM driver structure instead of driver
- name
-To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
- airlied@redhat.com
-Cc: dri-devel@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- spice-devel@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- freedreno@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linux-hyperv@vger.kernel.org, amd-gfx@lists.freedesktop.org
-References: <20210629135833.22679-1-tzimmermann@suse.de>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Message-ID: <ba6a19fb-2d52-340a-649f-211e4cf7c8fb@linaro.org>
-Date: Thu, 5 Aug 2021 23:37:32 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=/UQ/XHaeIooFE6LdVCRHH8ogFbxbCCOS2tpf69zhkNE=;
+ b=tXLtXURuYnpBKaLxmbDbfvBeOCJPZxO/HlqIa1XjplWRvn/H9XaQd8UgBvwjqykGJt
+ JhVyQSSDgtiSTmuFIZNG6KBkuRVnzA41GeIB7belsB5OvWSlzwxkGa+AxR9BMfnMMXZT
+ RrHpUc2hgiY6EyPrBX0Fm1zm2/gk/xq9LNjrezVGsYUxjO7+0Vu4enAO4pPx7Idr7x+y
+ dYDGjc3uHEc9HDi7VY9ASaMwKgemKiTMMk6/ChHba6gAdLawaUuHkIMxXIAZ3lzFewWp
+ DUsX66nFGQI3NcUgabjIbqQkgPonJfBOAHeK2qqtlFhviY7DbwpJCd1cX9scq+PAUPjs
+ XVKQ==
+X-Gm-Message-State: AOAM532LPxQvBihPx3ugnpC3ValroK1Ntfntv157j3DcjbKuvu6ExjUW
+ rIYq4eRwEs6qfUk8ixMCpqwpelAG8vsBYx+cd/3g2w==
+X-Google-Smtp-Source: ABdhPJw2QbmHUiI/GwToKTEaqQh0Zuz+Twwt1bbE9HNroKUywRwDzkiE+5/3vMcFtQ03MmF306AtYkLK232VndIfrlc=
+X-Received: by 2002:a25:8b91:: with SMTP id j17mr8337744ybl.228.1628200348144; 
+ Thu, 05 Aug 2021 14:52:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210629135833.22679-1-tzimmermann@suse.de>
-Content-Language: en-GB
+References: <BYAPR20MB24886765F888A9705CBEB70789E39@BYAPR20MB2488.namprd20.prod.outlook.com>
+ <162758560739.714452.5782743329332725952@swboyd.mtv.corp.google.com>
+ <CAGETcx8YYrkCV0UObtOqHUnS29Q-raC54KUh14wqyBDMJ4e46g@mail.gmail.com>
+ <16392318.geO5KgaWL5@diego>
+In-Reply-To: <16392318.geO5KgaWL5@diego>
+From: Saravana Kannan <saravanak@google.com>
+Date: Thu, 5 Aug 2021 14:51:52 -0700
+Message-ID: <CAGETcx-H1U3YPq+Uh4PuKygTut3n0V4Y_YNSdr4JoJexA+KrtA@mail.gmail.com>
+Subject: Re: [PATCH] clk: rk3308: make ddrphy4x clock critical
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Stephen Boyd <sboyd@kernel.org>, Yunhao Tian <t123yh@outlook.com>,
+ t123yh.xyz@gmail.com, 
+ Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_133736_754353_217883BC 
-X-CRM114-Status: GOOD (  30.67  )
+X-CRM114-CacheID: sfid-20210805_145232_642535_B524332D 
+X-CRM114-Status: GOOD (  45.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,453 +94,89 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/06/2021 16:58, Thomas Zimmermann wrote:
-> Print the name of the DRM driver when taking over fbdev devices. Makes
-> the output to dmesg more consistent. Note that the driver name is only
-> used for printing a string to the kernel log. No UAPI is affected by this
-> change.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
-
-[...]
-
->   drivers/gpu/drm/msm/msm_fbdev.c               |  2 +-
-
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-
->   drivers/gpu/drm/nouveau/nouveau_drm.c         |  2 +-
->   drivers/gpu/drm/qxl/qxl_drv.c                 |  2 +-
->   drivers/gpu/drm/radeon/radeon_drv.c           |  2 +-
->   drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  2 +-
->   drivers/gpu/drm/sun4i/sun4i_drv.c             |  2 +-
->   drivers/gpu/drm/tegra/drm.c                   |  2 +-
->   drivers/gpu/drm/tiny/cirrus.c                 |  2 +-
->   drivers/gpu/drm/vboxvideo/vbox_drv.c          |  2 +-
->   drivers/gpu/drm/vc4/vc4_drv.c                 |  2 +-
->   drivers/gpu/drm/virtio/virtgpu_drv.c          |  2 +-
->   drivers/gpu/drm/vmwgfx/vmwgfx_drv.c           |  2 +-
->   include/drm/drm_aperture.h                    | 14 +++++++++-----
->   23 files changed, 43 insertions(+), 34 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> index 6f30c525caac..accf9c1b967a 100644
-> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-> @@ -1278,7 +1278,7 @@ static int amdgpu_pci_probe(struct pci_dev *pdev,
->   #endif
->   
->   	/* Get rid of things like offb */
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "amdgpudrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &amdgpu_kms_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/armada/armada_drv.c
-> index dab0a1f0983b..31925ae3ab72 100644
-> --- a/drivers/gpu/drm/armada/armada_drv.c
-> +++ b/drivers/gpu/drm/armada/armada_drv.c
-> @@ -95,7 +95,7 @@ static int armada_drm_bind(struct device *dev)
->   	}
->   
->   	/* Remove early framebuffers */
-> -	ret = drm_aperture_remove_framebuffers(false, "armada-drm-fb");
-> +	ret = drm_aperture_remove_framebuffers(false, &armada_drm_driver);
->   	if (ret) {
->   		dev_err(dev, "[" DRM_NAME ":%s] can't kick out simple-fb: %d\n",
->   			__func__, ret);
-> diff --git a/drivers/gpu/drm/ast/ast_drv.c b/drivers/gpu/drm/ast/ast_drv.c
-> index 5aa452b4efe6..86d5cd7b6318 100644
-> --- a/drivers/gpu/drm/ast/ast_drv.c
-> +++ b/drivers/gpu/drm/ast/ast_drv.c
-> @@ -100,7 +100,7 @@ static int ast_remove_conflicting_framebuffers(struct pci_dev *pdev)
->   	primary = pdev->resource[PCI_ROM_RESOURCE].flags & IORESOURCE_ROM_SHADOW;
->   #endif
->   
-> -	return drm_aperture_remove_conflicting_framebuffers(base, size, primary, "astdrmfb");
-> +	return drm_aperture_remove_conflicting_framebuffers(base, size, primary, &ast_driver);
->   }
->   
->   static int ast_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-> diff --git a/drivers/gpu/drm/bochs/bochs_drv.c b/drivers/gpu/drm/bochs/bochs_drv.c
-> index c828cadbabff..0d232b44ecd7 100644
-> --- a/drivers/gpu/drm/bochs/bochs_drv.c
-> +++ b/drivers/gpu/drm/bochs/bochs_drv.c
-> @@ -110,7 +110,7 @@ static int bochs_pci_probe(struct pci_dev *pdev,
->   		return -ENOMEM;
->   	}
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "bochsdrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &bochs_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/drm_aperture.c b/drivers/gpu/drm/drm_aperture.c
-> index 9335d9d6cf9a..9ac39cf11694 100644
-> --- a/drivers/gpu/drm/drm_aperture.c
-> +++ b/drivers/gpu/drm/drm_aperture.c
-> @@ -33,6 +33,10 @@
->    *
->    * .. code-block:: c
->    *
-> + *	static const struct drm_driver example_driver = {
-> + *		...
-> + *	};
-> + *
->    *	static int remove_conflicting_framebuffers(struct pci_dev *pdev)
->    *	{
->    *		bool primary = false;
-> @@ -46,7 +50,7 @@
->    *	#endif
->    *
->    *		return drm_aperture_remove_conflicting_framebuffers(base, size, primary,
-> - *		                                                    "example driver");
-> + *		                                                    &example_driver);
->    *	}
->    *
->    *	static int probe(struct pci_dev *pdev)
-> @@ -274,7 +278,7 @@ static void drm_aperture_detach_drivers(resource_size_t base, resource_size_t si
->    * @base: the aperture's base address in physical memory
->    * @size: aperture size in bytes
->    * @primary: also kick vga16fb if present
-> - * @name: requesting driver name
-> + * @req_driver: requesting DRM driver
->    *
->    * This function removes graphics device drivers which use memory range described by
->    * @base and @size.
-> @@ -283,7 +287,7 @@ static void drm_aperture_detach_drivers(resource_size_t base, resource_size_t si
->    * 0 on success, or a negative errno code otherwise
->    */
->   int drm_aperture_remove_conflicting_framebuffers(resource_size_t base, resource_size_t size,
-> -						 bool primary, const char *name)
-> +						 bool primary, const struct drm_driver *req_driver)
->   {
->   #if IS_REACHABLE(CONFIG_FB)
->   	struct apertures_struct *a;
-> @@ -296,7 +300,7 @@ int drm_aperture_remove_conflicting_framebuffers(resource_size_t base, resource_
->   	a->ranges[0].base = base;
->   	a->ranges[0].size = size;
->   
-> -	ret = remove_conflicting_framebuffers(a, name, primary);
-> +	ret = remove_conflicting_framebuffers(a, req_driver->name, primary);
->   	kfree(a);
->   
->   	if (ret)
-> @@ -312,7 +316,7 @@ EXPORT_SYMBOL(drm_aperture_remove_conflicting_framebuffers);
->   /**
->    * drm_aperture_remove_conflicting_pci_framebuffers - remove existing framebuffers for PCI devices
->    * @pdev: PCI device
-> - * @name: requesting driver name
-> + * @req_driver: requesting DRM driver
->    *
->    * This function removes graphics device drivers using memory range configured
->    * for any of @pdev's memory bars. The function assumes that PCI device with
-> @@ -321,7 +325,8 @@ EXPORT_SYMBOL(drm_aperture_remove_conflicting_framebuffers);
->    * Returns:
->    * 0 on success, or a negative errno code otherwise
->    */
-> -int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev, const char *name)
-> +int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev,
-> +						     const struct drm_driver *req_driver)
->   {
->   	resource_size_t base, size;
->   	int bar, ret = 0;
-> @@ -339,7 +344,7 @@ int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev, const
->   	 * otherwise the vga fbdev driver falls over.
->   	 */
->   #if IS_REACHABLE(CONFIG_FB)
-> -	ret = remove_conflicting_pci_framebuffers(pdev, name);
-> +	ret = remove_conflicting_pci_framebuffers(pdev, req_driver->name);
->   #endif
->   	if (ret == 0)
->   		ret = vga_remove_vgacon(pdev);
-> diff --git a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-> index f4bc5386574a..6f0297b854f2 100644
-> --- a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-> +++ b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
-> @@ -314,7 +314,7 @@ static int hibmc_pci_probe(struct pci_dev *pdev,
->   	struct drm_device *dev;
->   	int ret;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "hibmcdrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &hibmc_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/hyperv/hyperv_drm_drv.c b/drivers/gpu/drm/hyperv/hyperv_drm_drv.c
-> index eb06c92c4bfd..cd818a629183 100644
-> --- a/drivers/gpu/drm/hyperv/hyperv_drm_drv.c
-> +++ b/drivers/gpu/drm/hyperv/hyperv_drm_drv.c
-> @@ -82,7 +82,7 @@ static int hyperv_setup_gen1(struct hyperv_drm_device *hv)
->   		return -ENODEV;
->   	}
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "hypervdrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &hyperv_driver);
->   	if (ret) {
->   		drm_err(dev, "Not able to remove boot fb\n");
->   		return ret;
-> @@ -127,7 +127,7 @@ static int hyperv_setup_gen2(struct hyperv_drm_device *hv,
->   	drm_aperture_remove_conflicting_framebuffers(screen_info.lfb_base,
->   						     screen_info.lfb_size,
->   						     false,
-> -						     "hypervdrmfb");
-> +						     &hyperv_driver);
->   
->   	hv->fb_size = (unsigned long)hv->mmio_megabytes * 1024 * 1024;
->   
-> diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
-> index 850b499c71c8..62327c15f457 100644
-> --- a/drivers/gpu/drm/i915/i915_drv.c
-> +++ b/drivers/gpu/drm/i915/i915_drv.c
-> @@ -562,7 +562,7 @@ static int i915_driver_hw_probe(struct drm_i915_private *dev_priv)
->   	if (ret)
->   		goto err_perf;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "inteldrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, dev_priv->drm.driver);
->   	if (ret)
->   		goto err_ggtt;
->   
-> diff --git a/drivers/gpu/drm/meson/meson_drv.c b/drivers/gpu/drm/meson/meson_drv.c
-> index a7388bf7c838..3d0ccc7eef1b 100644
-> --- a/drivers/gpu/drm/meson/meson_drv.c
-> +++ b/drivers/gpu/drm/meson/meson_drv.c
-> @@ -285,7 +285,7 @@ static int meson_drv_bind_master(struct device *dev, bool has_components)
->   	 * Remove early framebuffers (ie. simplefb). The framebuffer can be
->   	 * located anywhere in RAM
->   	 */
-> -	ret = drm_aperture_remove_framebuffers(false, "meson-drm-fb");
-> +	ret = drm_aperture_remove_framebuffers(false, &meson_driver);
->   	if (ret)
->   		goto free_drm;
->   
-> diff --git a/drivers/gpu/drm/mgag200/mgag200_drv.c b/drivers/gpu/drm/mgag200/mgag200_drv.c
-> index a701d9563257..36d1bfb3213f 100644
-> --- a/drivers/gpu/drm/mgag200/mgag200_drv.c
-> +++ b/drivers/gpu/drm/mgag200/mgag200_drv.c
-> @@ -342,7 +342,7 @@ mgag200_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	struct drm_device *dev;
->   	int ret;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "mgag200drmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &mgag200_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/msm/msm_fbdev.c b/drivers/gpu/drm/msm/msm_fbdev.c
-> index 227404077e39..67fae60f2fa5 100644
-> --- a/drivers/gpu/drm/msm/msm_fbdev.c
-> +++ b/drivers/gpu/drm/msm/msm_fbdev.c
-> @@ -169,7 +169,7 @@ struct drm_fb_helper *msm_fbdev_init(struct drm_device *dev)
->   	}
->   
->   	/* the fw fb could be anywhere in memory */
-> -	ret = drm_aperture_remove_framebuffers(false, "msm");
-> +	ret = drm_aperture_remove_framebuffers(false, dev->driver);
->   	if (ret)
->   		goto fini;
->   
-> diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
-> index a616cf4573b8..df8a2d92f473 100644
-> --- a/drivers/gpu/drm/nouveau/nouveau_drm.c
-> +++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
-> @@ -738,7 +738,7 @@ static int nouveau_drm_probe(struct pci_dev *pdev,
->   	nvkm_device_del(&device);
->   
->   	/* Remove conflicting drivers (vesafb, efifb etc). */
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "nouveaufb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &driver_pci);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/qxl/qxl_drv.c b/drivers/gpu/drm/qxl/qxl_drv.c
-> index 854e6c5a563f..31f4c86ceb99 100644
-> --- a/drivers/gpu/drm/qxl/qxl_drv.c
-> +++ b/drivers/gpu/drm/qxl/qxl_drv.c
-> @@ -95,7 +95,7 @@ qxl_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	if (ret)
->   		return ret;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "qxl");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &qxl_driver);
->   	if (ret)
->   		goto disable_pci;
->   
-> diff --git a/drivers/gpu/drm/radeon/radeon_drv.c b/drivers/gpu/drm/radeon/radeon_drv.c
-> index 8cd135fa6dcd..82ee8244c9b3 100644
-> --- a/drivers/gpu/drm/radeon/radeon_drv.c
-> +++ b/drivers/gpu/drm/radeon/radeon_drv.c
-> @@ -330,7 +330,7 @@ static int radeon_pci_probe(struct pci_dev *pdev,
->   		return -EPROBE_DEFER;
->   
->   	/* Get rid of things like offb */
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "radeondrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &kms_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> index b730b8d5d949..17a189bb6bbc 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -116,7 +116,7 @@ static int rockchip_drm_bind(struct device *dev)
->   	int ret;
->   
->   	/* Remove existing drivers that may own the framebuffer memory. */
-> -	ret = drm_aperture_remove_framebuffers(false, "rockchip-drm-fb");
-> +	ret = drm_aperture_remove_framebuffers(false, &rockchip_drm_driver);
->   	if (ret) {
->   		DRM_DEV_ERROR(dev,
->   			      "Failed to remove existing framebuffers - %d.\n",
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> index af335f58bdfc..6bc1c8d6d43b 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> @@ -100,7 +100,7 @@ static int sun4i_drv_bind(struct device *dev)
->   	drm->irq_enabled = true;
->   
->   	/* Remove early framebuffers (ie. simplefb) */
-> -	ret = drm_aperture_remove_framebuffers(false, "sun4i-drm-fb");
-> +	ret = drm_aperture_remove_framebuffers(false, &sun4i_drv_driver);
->   	if (ret)
->   		goto cleanup_mode_config;
->   
-> diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
-> index f96c237b2242..2c8fc14bba1f 100644
-> --- a/drivers/gpu/drm/tegra/drm.c
-> +++ b/drivers/gpu/drm/tegra/drm.c
-> @@ -1204,7 +1204,7 @@ static int host1x_drm_probe(struct host1x_device *dev)
->   
->   	drm_mode_config_reset(drm);
->   
-> -	err = drm_aperture_remove_framebuffers(false, "tegradrmfb");
-> +	err = drm_aperture_remove_framebuffers(false, &tegra_drm_driver);
->   	if (err < 0)
->   		goto hub;
->   
-> diff --git a/drivers/gpu/drm/tiny/cirrus.c b/drivers/gpu/drm/tiny/cirrus.c
-> index 42611dacde88..a8b476a59c0d 100644
-> --- a/drivers/gpu/drm/tiny/cirrus.c
-> +++ b/drivers/gpu/drm/tiny/cirrus.c
-> @@ -550,7 +550,7 @@ static int cirrus_pci_probe(struct pci_dev *pdev,
->   	struct cirrus_device *cirrus;
->   	int ret;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "cirrusdrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &cirrus_driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/vboxvideo/vbox_drv.c b/drivers/gpu/drm/vboxvideo/vbox_drv.c
-> index 6d4b32da9866..879a2445cc44 100644
-> --- a/drivers/gpu/drm/vboxvideo/vbox_drv.c
-> +++ b/drivers/gpu/drm/vboxvideo/vbox_drv.c
-> @@ -43,7 +43,7 @@ static int vbox_pci_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	if (!vbox_check_supported(VBE_DISPI_ID_HGSMI))
->   		return -ENODEV;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "vboxvideodrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/drivers/gpu/drm/vc4/vc4_drv.c b/drivers/gpu/drm/vc4/vc4_drv.c
-> index 8a60fb8ad370..73335feb712f 100644
-> --- a/drivers/gpu/drm/vc4/vc4_drv.c
-> +++ b/drivers/gpu/drm/vc4/vc4_drv.c
-> @@ -265,7 +265,7 @@ static int vc4_drm_bind(struct device *dev)
->   	if (ret)
->   		goto unbind_all;
->   
-> -	ret = drm_aperture_remove_framebuffers(false, "vc4drmfb");
-> +	ret = drm_aperture_remove_framebuffers(false, &vc4_drm_driver);
->   	if (ret)
->   		goto unbind_all;
->   
-> diff --git a/drivers/gpu/drm/virtio/virtgpu_drv.c b/drivers/gpu/drm/virtio/virtgpu_drv.c
-> index ca77edbc5ea0..ed85a7863256 100644
-> --- a/drivers/gpu/drm/virtio/virtgpu_drv.c
-> +++ b/drivers/gpu/drm/virtio/virtgpu_drv.c
-> @@ -57,7 +57,7 @@ static int virtio_gpu_pci_quirk(struct drm_device *dev, struct virtio_device *vd
->   		 vga ? "virtio-vga" : "virtio-gpu-pci",
->   		 pname);
->   	if (vga) {
-> -		ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "virtiodrmfb");
-> +		ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &driver);
->   		if (ret)
->   			return ret;
->   	}
-> diff --git a/drivers/gpu/drm/vmwgfx/vmwgfx_drv.c b/drivers/gpu/drm/vmwgfx/vmwgfx_drv.c
-> index 086dc75e7b42..40864ce19ae1 100644
-> --- a/drivers/gpu/drm/vmwgfx/vmwgfx_drv.c
-> +++ b/drivers/gpu/drm/vmwgfx/vmwgfx_drv.c
-> @@ -1574,7 +1574,7 @@ static int vmw_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	struct vmw_private *vmw;
->   	int ret;
->   
-> -	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, "svgadrmfb");
-> +	ret = drm_aperture_remove_conflicting_pci_framebuffers(pdev, &driver);
->   	if (ret)
->   		return ret;
->   
-> diff --git a/include/drm/drm_aperture.h b/include/drm/drm_aperture.h
-> index 6c148078780c..7096703c3949 100644
-> --- a/include/drm/drm_aperture.h
-> +++ b/include/drm/drm_aperture.h
-> @@ -6,20 +6,22 @@
->   #include <linux/types.h>
->   
->   struct drm_device;
-> +struct drm_driver;
->   struct pci_dev;
->   
->   int devm_aperture_acquire_from_firmware(struct drm_device *dev, resource_size_t base,
->   					resource_size_t size);
->   
->   int drm_aperture_remove_conflicting_framebuffers(resource_size_t base, resource_size_t size,
-> -						 bool primary, const char *name);
-> +						 bool primary, const struct drm_driver *req_driver);
->   
-> -int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev, const char *name);
-> +int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev,
-> +						     const struct drm_driver *req_driver);
->   
->   /**
->    * drm_aperture_remove_framebuffers - remove all existing framebuffers
->    * @primary: also kick vga16fb if present
-> - * @name: requesting driver name
-> + * @req_driver: requesting DRM driver
->    *
->    * This function removes all graphics device drivers. Use this function on systems
->    * that can have their framebuffer located anywhere in memory.
-> @@ -27,9 +29,11 @@ int drm_aperture_remove_conflicting_pci_framebuffers(struct pci_dev *pdev, const
->    * Returns:
->    * 0 on success, or a negative errno code otherwise
->    */
-> -static inline int drm_aperture_remove_framebuffers(bool primary, const char *name)
-> +static inline int
-> +drm_aperture_remove_framebuffers(bool primary, const struct drm_driver *req_driver)
->   {
-> -	return drm_aperture_remove_conflicting_framebuffers(0, (resource_size_t)-1, primary, name);
-> +	return drm_aperture_remove_conflicting_framebuffers(0, (resource_size_t)-1, primary,
-> +							    req_driver);
->   }
->   
->   #endif
-> 
-
-
--- 
-With best wishes
-Dmitry
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBBdWcgMiwgMjAyMSBhdCAxMjoyNiBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPiB3cm90ZToKPgo+IEhpIFNhcmF2YW5hLAo+Cj4gQW0gTW9udGFnLCAyLiBBdWd1c3Qg
+MjAyMSwgMjA6MjQ6NTYgQ0VTVCBzY2hyaWViIFNhcmF2YW5hIEthbm5hbjoKPiA+IE9uIFRodSwg
+SnVsIDI5LCAyMDIxIGF0IDEyOjA2IFBNIFN0ZXBoZW4gQm95ZCA8c2JveWRAa2VybmVsLm9yZz4g
+d3JvdGU6Cj4gPiA+Cj4gPiA+IFF1b3RpbmcgSGVpa28gU3TDvGJuZXIgKDIwMjEtMDctMjggMDI6
+NTM6NTQpCj4gPiA+ID4gQW0gRGllbnN0YWcsIDI3LiBKdWxpIDIwMjEsIDAzOjA4OjEwIENFU1Qg
+c2NocmllYiBTdGVwaGVuIEJveWQ6Cj4gPiA+ID4gPiBRdW90aW5nIFl1bmhhbyBUaWFuICgyMDIx
+LTA3LTIxIDA1OjQ4OjE2KQo+ID4gPiA+ID4gPiBDdXJyZW50bHksIG5vIGRyaXZlciBzdXBwb3J0
+IGZvciBERFIgbWVtb3J5IGNvbnRyb2xsZXIgKERNQykgaXMgcHJlc2VudCwKPiA+ID4gPiA+ID4g
+YXMgYSByZXN1bHQsIG5vIGRyaXZlciBpcyBleHBsaWNpdGx5IGNvbnN1bWluZyB0aGUgZGRycGh5
+IGNsb2NrLiBUaGlzIG1lYW5zCj4gPiA+ID4gPiA+IHRoYXQgVlBMTDEgKHBhcmVudCBvZiBkZHIg
+Y2xvY2spIHdpbGwgYmUgc2h1dGRvd24gaWYgd2UgZW5hYmxlCj4gPiA+ID4gPiA+IGFuZCB0aGVu
+IGRpc2FibGUgYW55IGNoaWxkIGNsb2NrIG9mIFZQTEwxIChlLmcuIFNDTEtfSTJTMF84Q0hfVFgp
+Lgo+ID4gPiA+ID4gPiBJZiBWUExMMSBpcyBkaXNhYmxlZCwgdGhlIHdob2xlIHN5c3RlbSB3aWxs
+IGZyZWV6ZSwgYmVjYXVzZSB0aGUgRERSCj4gPiA+ID4gPiA+IGNvbnRyb2xsZXIgd2lsbCBsb3Nl
+IGl0cyBjbG9jay4gU28sIGl0J3MgbmVjZXNzYXJ5IHRvIHByZXZlbnQgVlBMTDEgZnJvbQo+ID4g
+PiA+ID4gPiBzaHV0dGluZyBkb3duLCBieSBtYXJraW5nIHRoZSBkZHJwaHk0eCBDTEtfSVNfQ1JJ
+VElDQUwuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFRoaXMgYnVnIHdhcyBkaXNjb3ZlcmVkIHdo
+ZW4gSSB3YXMgcG9ydGluZyByb2NrY2hpcF9pMnNfdGRtIGRyaXZlciB0bwo+ID4gPiA+ID4gPiBt
+YWlubGluZSBrZXJuZWwgZnJvbSBSb2NrY2hpcCA0LjQga2VybmVsLiBJIGd1ZXNzIHRoYXQgb3Ro
+ZXIgUm9ja2NoaXAKPiA+ID4gPiA+ID4gU29DcyB3aXRob3V0IERNQyBkcml2ZXIgbWF5IG5lZWQg
+dGhlIHNhbWUgcGF0Y2guIElmIHRoaXMgYXBwbGllcyB0bwo+ID4gPiA+ID4gPiBvdGhlciBkZXZp
+Y2VzLCBwbGVhc2UgbGV0IHVzIGtub3cuCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFNpZ25lZC1v
+ZmYtYnk6IFl1bmhhbyBUaWFuIDx0MTIzeWhAb3V0bG9vay5jb20+Cj4gPiA+ID4gPiA+IC0tLQo+
+ID4gPiA+ID4gPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXJrMzMwOC5jIHwgMiArLQo+ID4g
+PiA+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4g
+PiA+ID4gPiA+Cj4gPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9j
+bGstcmszMzA4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzA4LmMKPiA+ID4gPiA+
+ID4gaW5kZXggMmMzYmQwYzc0OWYyLi42YmUwNzcxNjYzMzAgMTAwNjQ0Cj4gPiA+ID4gPiA+IC0t
+LSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzMDguYwo+ID4gPiA+ID4gPiArKysgYi9k
+cml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzA4LmMKPiA+ID4gPiA+ID4gQEAgLTU2NCw3ICs1
+NjQsNyBAQCBzdGF0aWMgc3RydWN0IHJvY2tjaGlwX2Nsa19icmFuY2ggcmszMzA4X2Nsa19icmFu
+Y2hlc1tdIF9faW5pdGRhdGEgPSB7Cj4gPiA+ID4gPiA+ICAgICAgICAgQ09NUE9TSVRFKFNDTEtf
+RERSQ0xLLCAiY2xrX2RkcnBoeTR4X3NyYyIsIG11eF9kcGxsX3ZwbGwwX3ZwbGwxX3AsIENMS19J
+R05PUkVfVU5VU0VELAo+ID4gPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICBSSzMzMDhf
+Q0xLU0VMX0NPTigxKSwgNiwgMiwgTUZMQUdTLCAwLCAzLCBERkxBR1MsCj4gPiA+ID4gPiA+ICAg
+ICAgICAgICAgICAgICAgICAgICAgIFJLMzMwOF9DTEtHQVRFX0NPTigwKSwgMTAsIEdGTEFHUyks
+Cj4gPiA+ID4gPiA+IC0gICAgICAgR0FURSgwLCAiY2xrX2RkcnBoeTR4IiwgImNsa19kZHJwaHk0
+eF9zcmMiLCBDTEtfSUdOT1JFX1VOVVNFRCwKPiA+ID4gPiA+ID4gKyAgICAgICBHQVRFKDAsICJj
+bGtfZGRycGh5NHgiLCAiY2xrX2RkcnBoeTR4X3NyYyIsIENMS19JR05PUkVfVU5VU0VEIHwgQ0xL
+X0lTX0NSSVRJQ0FMLAo+ID4gPiA+ID4KPiA+ID4gPiA+IElzIGl0IG5vdCBlbmFibGVkIGJ5IGRl
+ZmF1bHQ/Cj4gPiA+ID4KPiA+ID4gPiBBbGwgZ2F0ZXMgYXJlIGVuYWJsZWQgYnkgZGVmYXVsdCwg
+YnV0IHRoaXMgZ2F0ZSBzaGFyZXMgYSBjb21tb24gcGFyZW50Cj4gPiA+ID4gdHJlZSBkb3duIHRv
+IGEgcGxsLCBzbyBpZiBhbm90aGVyIGxlYWYtdXNlciBpcyBkaXNhYmxpbmcgdGhlaXIgcGFydCwg
+dGhpcwo+ID4gPiA+IHVudHJhY2tlZCBjbG9jayB3b3VsZCBnZXQgZGlzYWJsZWQgYXMgd2VsbC4K
+PiA+ID4KPiA+ID4gUmlnaHQsIHRoaXMgcHJvYmxlbSBpcyBjcm9wcGluZyB1cCBpbiBkaWZmZXJl
+bnQgcGxhY2VzIGZvciB2YXJpb3VzCj4gPiA+IGRyaXZlcnMuCj4gPiA+Cj4gPiA+ID4KPiA+ID4g
+PiBPbiB0aGF0IG5vdGUsIEkgcmVtZW1iZXIgYSBzb3J0IG9mIENMS19IQU5ET0ZGIHdhcyBwbGFu
+bmVkIHdheSBiYWNrCj4gPiA+ID4gaW4gdGhlIHBhc3QsIG1lYW5pbmcgY2xvY2sgaXMgY3JpdGlj
+YWwgdW50aWwgYSBkcml2ZXIgcGlja3MgaXQgdXAsIGFmdGVyIHRoaXMgdGhlCj4gPiA+ID4gZHJp
+dmVyIGlzIHJlc3BvbnNpYmxlIGZvciBpdC4gRGlkIHRoYXQgZ2V0IGFueSBtb21lbnR1bT8KPiA+
+ID4gPgo+ID4gPgo+ID4gPiBMYXN0IEkgc2F3IFNhcmF2YW5hIHNlbnQgYSBwYXRjaCB0byBzb3J0
+IG9mIGNvbm5lY3QgQ0xLX0hBTkRPRkYgdG8KPiA+ID4gZGV2aWNlIGRyaXZlciBzeW5jX3N0YXRl
+KCkgY2FsbGJhY2suIEkgdGhpbmsgd2UgbmVlZCB0byBhdCBsZWFzdCBzdGFzaAo+ID4gPiBhd2F5
+IHRoYXQgYSBjbGsgaXMgZW5hYmxlZCBhdCBib290IGFuZCB0aGVuIGZpZ3VyZSBvdXQgaG93IHRv
+IHRpZSBpbgo+ID4gPiBzeW5jX3N0YXRlIGFuZC9vciBzb21ldGhpbmcgZWxzZS4KPiA+Cj4gPiBZ
+ZWFoLCBteSBjbGtfc3luY19zdGF0ZSgpIHNlcmllcyBzaG91bGQgZG8gdGhhdC4gSSdsbCBnZXQg
+YmFjayBvbiB0aGF0Cj4gPiBwYXRjaCB0aGlzIHdlZWsgb3IgbmV4dC4KPiA+Cj4gPiBZdW5oYW8s
+Cj4gPgo+ID4gSXMgdGhlcmUgYXQgbGVhc3Qgc29tZSBEVCBkZXZpY2UgdGhhdCBjb25zdW1lcyB0
+aGUgRERSIHBoeSBjbG9jaz8gQ2FuCj4gPiB5b3UgcG9pbnQgbWUgdG8gdGhlIERUIGZvciB0aGlz
+IGJvYXJkIChub3QgdGhlIFNvQykgc28gSSBjYW4gdGFrZSBhCj4gPiBsb29rIGF0IGl0IGxhdGVy
+Pwo+Cj4gTm90IGZvciB0aGUgcmszMzA4LiBJZiB5b3UncmUgbG9va2luZyBmb3IgbGl2ZS1leGFt
+cGxlcyBvZiBoYW5kb2ZmIGNsb2NrcywKPiBJIGNhbiBwcm92aWRlIGFub3RoZXIgZXhhbXBsZXMg
+dGhvdWdoOgo+Cj4KPiByb2NrY2hpcC9jbGstcmszMjg4LmMgLSBwY2xrX3JrcHdtIChpbiB0aGUg
+c2VwYXJhdGUgY3JpdGljYWwgY2xvY2sgbGlzdCkgLi4uIHdpdGgKPiBhcmNoL2FybS9ib290L2R0
+cy9yazMyODguZHRzaSAtIGNsb2NrIGlzIHN1cHBseWluZyBwd20gbm9kZXMuCj4KPiBBcyB0aGUg
+Y29tbWVudCBpbiB0aGUgY2xvY2sgZHJpdmVyIHN1Z2dlc3RzIChsaW5lIDg1MCksIHNvbWUgYm9h
+cmRzIHVzZQo+IHB3bS1yZWd1bGF0b3JzIGZvciBjZW50cmFsIGNvbXBvbmVudHMuIFRoZSBwd20t
+cmVndWxhdG9ycyBhcmUgY29uZmlndXJlZAo+IGF0IGJvb3QgYWxyZWFkeSwgc28gdGhlIGNsb2Nr
+IHNob3VsZG4ndCBiZSBkaXNhYmxlZCB0aWxsIHRoZSBwd20tcmVndWxhdG9yIHRha2VzCj4gb3Zl
+ci4KCklmIHlvdSBjYW4gcmVwcm9kdWNlIHRoZSBpc3N1ZSBvbiB5b3VyIGVuZCBpZiB5b3UgcmVt
+b3ZlIHRoZQpwY2xrX3JrcHdtIGNsb2NrIGZyb20gdGhlIGNyaXRpY2FsIGNsb2NrIGxpc3QsIHRo
+ZW4gY2FuIHlvdSB0cnkgdGhpcwpzZXJpZXM/Cmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwv
+MjAyMTA0MDcwMzQ0NTYuNTE2MjA0LTEtc2FyYXZhbmFrQGdvb2dsZS5jb20vCgpJdCBzaG91bGQg
+a2VlcCB0aGUgcGNsa19ya3B3bSBjbG9jayBvbiB0aWxsIGFsbCB0aGUgY29uc3VtZXJzIG9mIHRo
+ZQpjbG9jayBoYXZlIHByb2JlZC4gQW5kIGFmdGVyIHRoYXQgaXQnbGwgYWN0dWFsbHkgYWxsb3cg
+dGhlIGNsb2NrIHRvIGJlCnR1cm5lZCBvZmYgaW5zdGVhZCBvZiBrZWVwaW5nIGl0IG9uIGZvcmV2
+ZXIuCgotU2FyYXZhbmEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
