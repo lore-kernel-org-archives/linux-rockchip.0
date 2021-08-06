@@ -2,90 +2,87 @@ Return-Path: <SRS0=27lq=M5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3E78C432BE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 04:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C43CC4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 07:09:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEE60611C9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 04:44:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AEE60611C9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 76610611C9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 07:09:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 76610611C9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2xXy6/Zzgb1cZycQA3Eh3k3QvxJ8daM+rEJenaHmTcU=; b=MY6sjShsG1XEXk
-	8GarDzPvwYJsduSV8pK6G6MoxRpKPMzTAWa5A1I4EdWQ5Fpr27Ql9ceuXaxhdXt+hv7/qB23YJ+Fa
-	PyBw7QIWSaJcT+umM5PVpgRX7lcsoCyZtqjacyAe72JXf5Ti6+Z2AfGYZ7EdeWDQ0ahv55A2RfHcW
-	LlKGyYXiMxRHxE1t7TvznfUXqDqFlz4FQlU9n+Oo1DITk+IVtoIuvdg7ch+GiZoT8NnlOEK506rvO
-	BwCJbbcCqqRzz8IAZN0xwTbE+A9yoSgCCZogAJw049mTHqBUDsxGXPS+1dF6cYJbiD1bmVkmcrqVM
-	sa4feATl45NQa9+VVQOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+wRXgsetXximxIZdl8oKT6uzNHD7ErbrMBhABl0Im0Q=; b=C+/zB8uU0jITiov1jXnZNBQJl6
+	xY1ZIOVSXY1hTQAlZx9p5k9Q3yeWFjpqCkFLvmhgyD7v8WFe8vHWXZ2g0+gUdMP7aibA/d6rSp21W
+	Rnq+U6b8+11AnGydDhdxqvC1YbYhZunGRwO7VF3svDVK2+06Hr9MaKwYHiPbI152vBcyrGBylc0V6
+	KK658bHOl/DxVrF7U/XHD4r0F320jBju1giK6sPHXCb91bhUcWnUDX7DgMcphwHH/dgyD5JxemWrQ
+	w+kMCSZlnPDK1wC5cENF3vHkhC3hXhnLR1pVCaDSyQHqt+NugamCiPPt6FDKJRNILuQmeBIqV7zID
+	Ra/nr5bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBris-00BbZL-AN; Fri, 06 Aug 2021 04:44:42 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1mBtzA-00Bkyx-7E; Fri, 06 Aug 2021 07:09:40 +0000
+Received: from regular1.263xmail.com ([211.150.70.195])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBrip-00BbYQ-88
- for linux-rockchip@lists.infradead.org; Fri, 06 Aug 2021 04:44:40 +0000
-Received: by mail-wm1-x330.google.com with SMTP id m19so4784507wms.0
- for <linux-rockchip@lists.infradead.org>; Thu, 05 Aug 2021 21:44:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=E0jyHp/rsGyUBSc/zm3UYnSO11nUqZFB/b8HFTileso=;
- b=ZaKaUNq4AgYnG4GdQ5eqSLqVW/wDX1bizpgI8lyRUVfSefWJR4gnOKcxUs4jO3WwR2
- 8cWBh/lUuQADuFIiTYe19Pcp+2haBCGqJPhEW1kDuZXuIOboKM8et3RREU0J0Rge3BE0
- G2u9uF3iUEZ+s66H5z1skSMHc967llUi5zguD/vSEwG64XVsAjhyEfOil4/Myp5ziefK
- XmExXLvlOUJJlBo+EGSsyTcgrEUOckBJNRYvLMiWuxIHLkovGMsxjPmfVhuFYS5ZZHFW
- NeGk/Ewlr3op9jNz/21XH0REmy+elmcafRcoqQFGc3LhWPS1JE8s/ze8JrjRo0Yegc4u
- BfGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=E0jyHp/rsGyUBSc/zm3UYnSO11nUqZFB/b8HFTileso=;
- b=kbRAja+vZ0hpAkuyW/SGmmoJpqxw79U7vqStd72qWfL9oOlN/zsfVbuTOjLTz6kAFk
- aGcOvYbUsE7OwFnHprjtSqmOByVYWEsOjFRoAgaT+7syCtqDKik89t0RvFFHAiIc4JRL
- BpYWz4PstiPKj+DZRU8zr7xeDlDytKVNOst2QKoYx55ALpdr9sBGrohPp/wuvuFHRREu
- ui5WrOW048EQ9nc4CZ7/YrQqmfLn4dywTsd1D3AZSNScYSBWesrpSB6V67BmBu8MLBE9
- 0szZIW2YN56P4L5cG0GldRffMTMB05mHYmXGxOgXEvWIPlHV8JTOU6eCsv+XSKGEBMcN
- td1w==
-X-Gm-Message-State: AOAM5310N/uz56WkpE/b19oN31A5Gr0/pgIWiLo58CVCR3zzcQEUEhGF
- SQs9ZnXL8Ep00ng3b4UkfUs=
-X-Google-Smtp-Source: ABdhPJxKDTpXqvSGlHpDAJS36fz0bWT2b7ZusMwx5tRfozqoV+Pq4PjSyJaVLySbfv23BEGZP0dJ2Q==
-X-Received: by 2002:a7b:c8d9:: with SMTP id f25mr1217959wml.40.1628225077496; 
- Thu, 05 Aug 2021 21:44:37 -0700 (PDT)
-Received: from jernej-laptop.localnet (cpe-86-58-46-198.static.triera.net.
- [86.58.46.198])
- by smtp.gmail.com with ESMTPSA id n11sm9766446wrs.81.2021.08.05.21.44.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Aug 2021 21:44:36 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: p.zabel@pengutronix.de, Ezequiel Garcia <ezequiel@collabora.com>
-Cc: mchehab@kernel.org, gregkh@linuxfoundation.org, hverkuil-cisco@xs4all.nl,
- emil.velikov@collabora.com, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: hantro: Fix check for single irq
-Date: Fri, 06 Aug 2021 06:44:35 +0200
-Message-ID: <8101406.vZ8PxZ7URt@jernej-laptop>
-In-Reply-To: <6761bb11f4554e9f9cbe468b5ff8f851c57515ef.camel@collabora.com>
-References: <20210805190416.332563-1-jernej.skrabec@gmail.com>
- <6761bb11f4554e9f9cbe468b5ff8f851c57515ef.camel@collabora.com>
+ id 1mBtz7-00BkyT-5o
+ for linux-rockchip@lists.infradead.org; Fri, 06 Aug 2021 07:09:39 +0000
+Received: from localhost (unknown [192.168.167.13])
+ by regular1.263xmail.com (Postfix) with ESMTP id 202D91CDF;
+ Fri,  6 Aug 2021 15:09:26 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from [172.16.12.8] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P22194T140002758489856S1628233765777467_; 
+ Fri, 06 Aug 2021 15:09:26 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <ee26124f85b846229d6d28b4186f93ec>
+X-RL-SENDER: david.wu@rock-chips.com
+X-SENDER: wdc@rock-chips.com
+X-LOGIN-NAME: david.wu@rock-chips.com
+X-FST-TO: linux-iio@vger.kernel.org
+X-RCPT-COUNT: 11
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-System-Flag: 0
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: just get referenced voltage
+ once at probe
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Simon Xue <xxm@rock-chips.com>, Jonathan Cameron <jic23@kernel.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org
+References: <20210802090929.37970-1-xxm@rock-chips.com>
+ <20210803135124.000072fe@Huawei.com>
+ <8f5385a1-701c-4446-d238-90bee1c03675@rock-chips.com>
+ <8912224.VV5PYv0bhD@diego>
+From: David Wu <david.wu@rock-chips.com>
+Message-ID: <51525056-ee43-1880-5a5b-547decd904f4@rock-chips.com>
+Date: Fri, 6 Aug 2021 15:09:25 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <8912224.VV5PYv0bhD@diego>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_214439_366949_E327DBA6 
-X-CRM114-Status: GOOD (  28.54  )
+X-CRM114-CacheID: sfid-20210806_000937_788719_42B25953 
+X-CRM114-Status: GOOD (  32.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,87 +95,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 06. avgust 2021 ob 00:03:36 CEST je Ezequiel Garcia napisal(a):
-> Hi Jernej,
-> 
-> On Thu, 2021-08-05 at 21:04 +0200, Jernej Skrabec wrote:
-> > Some cores use only one interrupt and in such case interrupt name in DT
-> > is not needed. Driver supposedly accounted that, but due to the wrong
-> > field check it never worked. Fix that.
-> > 
-> > Fixes: 18d6c8b7b4c9 ("media: hantro: add fallback handling for single
-> > irq/clk") Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-> > ---
-> >  drivers/staging/media/hantro/hantro_drv.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro_drv.c
-> > b/drivers/staging/media/hantro/hantro_drv.c index
-> > 8a2edd67f2c6..20e508158871 100644
-> > --- a/drivers/staging/media/hantro/hantro_drv.c
-> > +++ b/drivers/staging/media/hantro/hantro_drv.c
-> > @@ -919,7 +919,7 @@ static int hantro_probe(struct platform_device *pdev)
-> >                 if (!vpu->variant->irqs[i].handler)
-> >                         continue;
-> >  
-> > -               if (vpu->variant->num_clocks > 1) {
-> > +               if (vpu->variant->num_irqs > 1) {
-> 
-> Oops, thanks for spotting this.
-> 
-> How about this instead?
-
-No, original solution is more robust. With solution below, you're assuming 
-that irq order in driver array is same as in DT. That doesn't matter if there 
-is only one name or if names match. However, if there is a typo, either in DT 
-node or in driver, driver will still happily assign clock based on index and 
-that might not be correct one. Even if it works out, you can easily miss that 
-you have a typo. Driver doesn't tell you which irq is used, if it is 
-successfully acquired.
-
-Best regards,
-Jernej
-
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c
-> b/drivers/staging/media/hantro/hantro_drv.c index
-> 31d8449ca1d2..af7054b04155 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -918,16 +918,15 @@ static int hantro_probe(struct platform_device *pdev)
->                 if (!vpu->variant->irqs[i].handler)
->                         continue;
-> 
-> -               if (vpu->variant->num_clocks > 1) {
-> -                       irq_name = vpu->variant->irqs[i].name;
-> -                       irq = platform_get_irq_byname(vpu->pdev, irq_name);
-> -               } else {
-> +               irq_name = vpu->variant->irqs[i].name;
-> +               irq = platform_get_irq_byname(vpu->pdev, irq_name);
-> +               if (irq <= 0) {
->                         /*
-> -                        * If the driver has a single IRQ, chances are there
-> -                        * will be no actual name in the DT bindings. +    
->                    * Missing interrupt-names property in device tree, +    
->                    * looking up interrupts by index.
->                          */
->                         irq_name = "default";
-> -                       irq = platform_get_irq(vpu->pdev, 0);
-> +                       irq = platform_get_irq(vpu->pdev, i);
->                 }
->                 if (irq <= 0)
->                         return -ENXIO;
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGVpa28sIEpvbmF0aGFuCgp3ZSBhcmUgYWRkaW5nIHRoZSBub3RpZmllciBmb3IgdGhpcyBw
+YXRjaCwgaW5kZWVkIGZvciBmdXR1cmUgY29uc2lkZXJhdGlvbi4KClRoYW5rcy4KCuWcqCAyMDIx
+LzgvNSDkuIvljYg4OjA3LCBIZWlrbyBTdMO8Ym5lciDlhpnpgZM6Cj4gSGkgRGF2aWQsCj4gCj4g
+QW0gRG9ubmVyc3RhZywgNS4gQXVndXN0IDIwMjEsIDEzOjU2OjE4IENFU1Qgc2NocmllYiBEYXZp
+ZCBXdToKPj4gSGkgSm9uYXRoYW4sCj4+Cj4+IOWcqCAyMDIxLzgvMyDkuIvljYg4OjUxLCBKb25h
+dGhhbiBDYW1lcm9uIOWGmemBkzoKPj4+IE9uIFR1ZSwgMyBBdWcgMjAyMSAxMTowOTo0NyArMDgw
+MAo+Pj4gRGF2aWQgV3UgPGRhdmlkLnd1QHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+Pj4g
+SGkgSm9uYXRoYW4sCj4+Pj4KPj4+PiDlnKggMjAyMS84LzIg5LiL5Y2INjo0MiwgSm9uYXRoYW4g
+Q2FtZXJvbiDlhpnpgZM6Cj4+Pj4+IE9uIE1vbiwgMiBBdWcgMjAyMSAxNzowOToyOSArMDgwMAo+
+Pj4+PiBTaW1vbiBYdWUgPHh4bUByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pj4+ICAgICAKPj4+
+Pj4+IEZyb206IERhdmlkIFd1IDxkYXZpZC53dUByb2NrLWNoaXBzLmNvbT4KPj4+Pj4+Cj4+Pj4+
+PiBUaGUgcmVmZXJlbmNlZCB2b2x0YWdlIGlzIG5vdCBjaGFuZ2VkIGFmdGVyIGluaXRpYXRpb24s
+IHNvIGp1c3Qgb25seQo+Pj4+Pj4gZ2V0IHJlZmVyZW5jZWQgdm9sdGFnZSBvbmNlLgo+Pj4+PiBI
+aSBEYXZpZCwKPj4+Pj4KPj4+Pj4gSXNuJ3QgdGhpcyBhbiBleHRlcm5hbCByZWZlcmVuY2Ugdm9s
+dGFnZT8gIElmIHNvIGhvdyBkbyB5b3Uga25vdwo+Pj4+PiBpdCBpcyBub3QgY2hhbmdlZCBhdCBy
+dW50aW1lPyAgSXQgbWlnaHQgYmUgdW5saWtlbHkgYW5kIG5vdCBoYXBwZW4KPj4+Pj4gb24gcGFy
+dGljdWxhciBwbGF0Zm9ybXMsIGJ1dCB0aGF0J3Mgbm90IGhlIHNhbWUgYXMgc2F5aW5nIGl0IGNh
+biBuZXZlcgo+Pj4+PiBoYXBwZW4uICBDbGVhcmx5IGl0J3MgcmFjZXkgYW55d2F5IGlmIHRoYXQg
+ZG9lcyBoYXBwZW4sIGJ1dCB3ZSBkZWZpbml0ZWx5Cj4+Pj4+IGRvbid0IGV4cGVjdCBmcmVxdWVu
+dCB2b2x0YWdlIGNoYW5nZXMuCj4+Pj4+ICAgICAKPj4+Pgo+Pj4+IFRoZSBjdXJyZW50IHJlZ3Vs
+YXRvciBpcyBub3QgY2hhbmdlZCBhbmQgbm90IHN1YmplY3QgdG8gZXh0ZXJuYWwKPj4+PiBjaGFu
+Z2VzLCB0aGlzIGNhbiByZWR1Y2UgdGhlIGdldHRpbmcgdm9sdGFnZS4gQXNzdW1pbmcgdGhhdCB0
+aGVyZSB3aWxsCj4+Pj4gYmUgY2hhbmdlcyBpbiB0aGUgZnV0dXJlLCB3ZSB0aGVuIGFkZCB0aGUg
+bm90aWZ5IG9mIHRoZSByZWd1bGF0b3IsIHNvCj4+Pj4gdGhhdCB0aGUgdm9sdGFnZSBjaGFuZ2Ug
+Y2FuIGJlIG9idGFpbmVkLgo+Pj4KPj4+IElmIHRoaXMgcGF0Y2ggYWRkZWQgdGhlIG5vdGlmaWVy
+IHRoYXQgd291bGQgYmUgYSBuaWNlIHNvbHV0aW9uLCBidXQKPj4+IHJpZ2h0IG5vdyBpdCBwb3Rl
+bnRpYWxseSBpbnRyb2R1Y2VkIGEgcmVncmVzc2lvbi4gWW91IGhhdmUgbWFkZSBtZSBhIGxpdHRs
+ZSBjdXJpb3VzLi4uCj4+PiBBcmUgeW91IHNlZWluZyBhIHNpZ25pZmljYW50IGNvc3QgdG8gcXVl
+cnlpbmcgdGhhdCByZWd1bGF0b3Igdm9sdGFnZT8KPj4+IElmIHNvLCBJJ2QgaW1hZ2luZSBpdCdz
+IGEgbGFjayBvZiBjYWNoaW5nIGluIHRoZSByZWd1bGF0b3IgZHJpdmVyIG9yIHNpbWlsYXIuCj4+
+PiBTY2FsZSByZWFkYmFjayB2aWEgc3lzZnMgc2hvdWxkbid0IGJlIGluIGEgZmFzdCBwYXRoIGFu
+eXdheS4KPj4+Cj4+PiBZb3UgY2FuJ3QgZGVwZW5kIG9uIHdoYXQgYm9hcmRzIHRvZGF5IGRvLCBi
+ZWNhdXNlIHNvbWVvbmUgd2l0aCBhIGJvYXJkCj4+PiBidWlsdCB0b21vcnJvdyBtYXkgd2VsbCB1
+c2UgYW4gb2xkIGtlcm5lbCB3aGljaCBzdXBwb3J0cyB0aGUgdm9sdGFnZQo+Pj4gY2hhbmdpbmcs
+IGFuZCB0aGVuIHNlZSBhIHJlZ3Jlc3Npb24gd2hlbiB0aGV5IHVwZ3JhZGUgdG8gdGhlIGtlcm5l
+bAo+Pj4gY29udGFpbmluZyB0aGlzIHBhdGNoLgo+Pj4KPj4KPj4gRm9yIGFsbCBjdXJyZW50IGNo
+aXBzLCB0aGUgZXhwZWN0ZWQgdm9sdGFnZSBpcyBhIGZpeGVkIHZvbHRhZ2UsIGFuZAo+PiBkb24n
+dCB3YW50IHRvIGNoYW5nZSBpdCBpbiBhbnkgcHJvY2Vzcy46LSkKPj4KPj4gU28sIGlmIHRoZSB2
+b2x0YWdlIGhlcmUgZG9lcyBub3QgY2hhbmdlLCB0aGVuIGl0IGNhbiBiZSBvYnRhaW5lZCBvbmNl
+IGluCj4+IHByb2JlKCksIHdoaWNoIGNhbiBzYXZlIHRoZSB0aW1lIG9mIGVhY2ggYWNxdWlzaXRp
+b24uIEZvciBleGFtcGxlLCB0aGUKPj4gdm9sdGFnZSBvZiB0aGlzIHJlZ3VsYXRvciBpcyBvYnRh
+aW5lZCB0aHJvdWdoIGkyYywgd2hpY2ggd2lsbCBpbmNyZWFzZQo+PiBzb21lIGNvbnN1bXB0aW9u
+IGV2ZXJ5IHRpbWUuCj4gCj4gSm9uYXRoYW5zIHJlcXVlc3Qgd2FzIHRvIG5vdCB0aGluayBhYm91
+dCAiYWxsIGN1cnJlbnQgY2hpcHMiIGJ1dCB0aGUKPiBnZW5lcmFsIGNhc2UsIGFuZCBhcyBKb25h
+dGhhbiBzYWlkLCBhZGRpbmcgdGhhdCByZWd1bGF0b3Igbm90aWZpZXIgeW91Cj4gYWxyZWFkeSBt
+ZW50aW9uZWQgd291bGQgYmUgdGhlIG5pY2VzdCBzb2x1dGlvbi4KPiAKPiBTbyBJIHRoaW5rIHRo
+ZSBlYXNpZXN0IHdheSBpcyB0byBqdXN0IGFkZCB0aGUgdm9sdGFnZSBub3RpZmllciB0byB5b3Vy
+IHBhdGNoCj4gdG8gbWFrZSBldmVyeW9uZSBoYXBweSA7LSkgLgo+IAo+IAo+IEhlaWtvCj4gCj4+
+Cj4+PiBKb25hdGhhbgo+Pj4KPj4+Pgo+Pj4+PiBKb25hdGhhbgo+Pj4+PiAgICAgCj4+Pj4+Pgo+
+Pj4+Pj4gU2lnbmVkLW9mZi1ieTogU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5jb20+Cj4+Pj4+
+PiBTaWduZWQtb2ZmLWJ5OiBEYXZpZCBXdSA8ZGF2aWQud3VAcm9jay1jaGlwcy5jb20+Cj4+Pj4+
+PiAtLS0KPj4+Pj4+ICAgICBkcml2ZXJzL2lpby9hZGMvcm9ja2NoaXBfc2FyYWRjLmMgfCAxNiAr
+KysrKysrKystLS0tLS0tCj4+Pj4+PiAgICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygr
+KSwgNyBkZWxldGlvbnMoLSkKPj4+Pj4+Cj4+Pj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8v
+YWRjL3JvY2tjaGlwX3NhcmFkYy5jIGIvZHJpdmVycy9paW8vYWRjL3JvY2tjaGlwX3NhcmFkYy5j
+Cj4+Pj4+PiBpbmRleCBmM2ViOGQyZTUwZGMuLmNkMzNjMGI5ZDNlYiAxMDA2NDQKPj4+Pj4+IC0t
+LSBhL2RyaXZlcnMvaWlvL2FkYy9yb2NrY2hpcF9zYXJhZGMuYwo+Pj4+Pj4gKysrIGIvZHJpdmVy
+cy9paW8vYWRjL3JvY2tjaGlwX3NhcmFkYy5jCj4+Pj4+PiBAQCAtNDksNiArNDksNyBAQCBzdHJ1
+Y3Qgcm9ja2NoaXBfc2FyYWRjIHsKPj4+Pj4+ICAgICAJc3RydWN0IGNsawkJKmNsazsKPj4+Pj4+
+ICAgICAJc3RydWN0IGNvbXBsZXRpb24JY29tcGxldGlvbjsKPj4+Pj4+ICAgICAJc3RydWN0IHJl
+Z3VsYXRvcgkqdnJlZjsKPj4+Pj4+ICsJaW50CQkJdXZfdnJlZjsKPj4+Pj4+ICAgICAJc3RydWN0
+IHJlc2V0X2NvbnRyb2wJKnJlc2V0Owo+Pj4+Pj4gICAgIAljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBf
+c2FyYWRjX2RhdGEgKmRhdGE7Cj4+Pj4+PiAgICAgCXUxNgkJCWxhc3RfdmFsOwo+Pj4+Pj4gQEAg
+LTEwNSwxMyArMTA2LDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9zYXJhZGNfcmVhZF9yYXcoc3Ry
+dWN0IGlpb19kZXYgKmluZGlvX2RldiwKPj4+Pj4+ICAgICAJCW11dGV4X3VubG9jaygmaW5kaW9f
+ZGV2LT5tbG9jayk7Cj4+Pj4+PiAgICAgCQlyZXR1cm4gSUlPX1ZBTF9JTlQ7Cj4+Pj4+PiAgICAg
+CWNhc2UgSUlPX0NIQU5fSU5GT19TQ0FMRToKPj4+Pj4+IC0JCXJldCA9IHJlZ3VsYXRvcl9nZXRf
+dm9sdGFnZShpbmZvLT52cmVmKTsKPj4+Pj4+IC0JCWlmIChyZXQgPCAwKSB7Cj4+Pj4+PiAtCQkJ
+ZGV2X2VycigmaW5kaW9fZGV2LT5kZXYsICJmYWlsZWQgdG8gZ2V0IHZvbHRhZ2VcbiIpOwo+Pj4+
+Pj4gLQkJCXJldHVybiByZXQ7Cj4+Pj4+PiAtCQl9Cj4+Pj4+PiAtCj4+Pj4+PiAtCQkqdmFsID0g
+cmV0IC8gMTAwMDsKPj4+Pj4+ICsJCSp2YWwgPSBpbmZvLT51dl92cmVmIC8gMTAwMDsKPj4+Pj4+
+ICAgICAJCSp2YWwyID0gY2hhbi0+c2Nhbl90eXBlLnJlYWxiaXRzOwo+Pj4+Pj4gICAgIAkJcmV0
+dXJuIElJT19WQUxfRlJBQ1RJT05BTF9MT0cyOwo+Pj4+Pj4gICAgIAlkZWZhdWx0Ogo+Pj4+Pj4g
+QEAgLTQxMCw2ICs0MDUsMTMgQEAgc3RhdGljIGludCByb2NrY2hpcF9zYXJhZGNfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4+Pj4+ICAgICAJCXJldHVybiByZXQ7Cj4+Pj4+
+PiAgICAgCX0KPj4+Pj4+ICAgICAKPj4+Pj4+ICsJaW5mby0+dXZfdnJlZiA9IHJlZ3VsYXRvcl9n
+ZXRfdm9sdGFnZShpbmZvLT52cmVmKTsKPj4+Pj4+ICsJaWYgKGluZm8tPnV2X3ZyZWYgPCAwKSB7
+Cj4+Pj4+PiArCQlkZXZfZXJyKCZwZGV2LT5kZXYsICJmYWlsZWQgdG8gZ2V0IHZvbHRhZ2VcbiIp
+Owo+Pj4+Pj4gKwkJcmV0ID0gaW5mby0+dXZfdnJlZjsKPj4+Pj4+ICsJCXJldHVybiByZXQ7Cj4+
+Pj4+PiArCX0KPj4+Pj4+ICsKPj4+Pj4+ICAgICAJcmV0ID0gY2xrX3ByZXBhcmVfZW5hYmxlKGlu
+Zm8tPnBjbGspOwo+Pj4+Pj4gICAgIAlpZiAocmV0IDwgMCkgewo+Pj4+Pj4gICAgIAkJZGV2X2Vy
+cigmcGRldi0+ZGV2LCAiZmFpbGVkIHRvIGVuYWJsZSBwY2xrXG4iKTsKPj4+Pj4KPj4+Pj4KPj4+
+Pj4KPj4+Pj4gICAgIAo+Pj4+Cj4+Pj4KPj4+Cj4+Pgo+Pj4KPj4+Cj4+Cj4+Cj4+Cj4gCj4gCj4g
+Cj4gCj4gCj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
