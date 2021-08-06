@@ -2,78 +2,62 @@ Return-Path: <SRS0=27lq=M5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0053C4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 11:02:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C3F1C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 11:06:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6B8EE61181
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 11:02:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6B8EE61181
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 24EFF6105A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 11:06:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 24EFF6105A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g6VqOu9Nft2AAZQVhrj+EwfHRPQKOo0Iq1tyLjmb62A=; b=KPaVZHvedtOy7Yx+X1wZU8SX5h
-	GgLzd/53mMqsXSdbltls7DLSmuSuvSkjSxoinDh9HdlqPqVFnM8T8dyDSpMqzIBR51MV/9otaH0+N
-	88Xgsyqus3KhsRobMMeKp6B5zj1fD3DeD2zUC5vtRHk+N43GxbRFsQ+r5l4JlpfWFUrBolxsxJ4vY
-	FzJbkdHd4KW6VfQMWFf0DEJbyVRaJ+J01q+v4Zf05VzwwKYZILtM4mFXm1jOOlb810kb93YqVQnnd
-	KsYZCmdGtrKkSlb3nxode/Loz4MGgNOyyPiAT9kinKgI1NOmUh+gNu+SCKpoa4gYuYPURk+8qxu2F
-	iUMZ0DIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=QoTDbiVHhvJWHqpnN4I2UbChqVJL7iEY/NStIyr0a8Q=; b=NPa5yowJcpn8Nk
+	D0ljBI13Y9Mdv177D5d9uf+3eE/450mp3BmcFADHD/zVLAmVUbmrPHsSrNjCf8ppFPlyeeJqsuMrY
+	NNEWK4CgDi/V6g5ZRZ8GVvKOBQuwnnUsEldmoXKX3DnGtlgd6X1UsP2kcA4BQL4Kur7yuZEXu7UTF
+	HjHA8VnjR1hydbsGNEkPvqlvlwvAX5k/1ymE8qjqjNF6inngLOF1nMU3zGAmBQ2I0tOCPjS0YJWw6
+	w8MVAhVRFkXAAfk8smnZJpaatoASxP90zpuLUhU3pZfVhuUjYobzvzwZS1rrkdYv6Ek3jdpHt9AeD
+	KOD3i6SrUPyC3JcXishA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBxc9-00CC5X-Pt; Fri, 06 Aug 2021 11:02:09 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mBxgL-00CDRM-TQ; Fri, 06 Aug 2021 11:06:29 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBxaF-00CBWr-G6
- for linux-rockchip@lists.infradead.org; Fri, 06 Aug 2021 11:00:12 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5056B61181;
- Fri,  6 Aug 2021 11:00:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628247610;
- bh=QpcuE6Xf3nDEPx4ouJJKA1Lw/VkQU5tSiR6QM0SDGjs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TGxIvA1adK17UB8Pb8OpkZJguwjCWUPpcMIbWJ55Hj2Gn/epB/L6shK2tky7YwjGq
- zFnBiULVRqq8kU2wGF/m7I3DIIriIh+wHmBQdfFXuwPcXyPmsvDJhKA8nCCCnVDvQ/
- EhEQ+aBwQTMgrHmLrCjEJKSbw7bQz3QCT9Q3x9C7VKPygtqaw2DZZvIgi3cZFg6iYl
- gXYbLYPL+6JsKYte4VMdPhu4btEmIPpEF0xwZRYMGk0csA6RLr3qlpJDDPB9o/dYza
- FiqJSghtKO29O4rRJtWx8y5TJUst/caNVm30P9AqnkkPqa91iiqdgY6Fgc/yZHitvw
- dzv43fOo3x37g==
-Date: Fri, 6 Aug 2021 11:59:54 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Ravikumar Kattekola <callmerk1986@gmail.com>
-Cc: Peter Geis <pgwipeout@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org
-Subject: Re: [BUG] mmc_regulator_set_ocr can't cope with regulator-fixed
-Message-ID: <20210806105954.GV26252@sirena.org.uk>
-References: <CGME20210804143357epcas1p1c67eca591d8bb557c11b8175baaa8550@epcas1p1.samsung.com>
- <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
- <a9aa636e-326f-a848-dd69-41df87c013af@samsung.com>
- <CAMdYzYr9PX-9=kkCAfGe8Q0-D+gRo_qCwse8SiGVsmod7fffiA@mail.gmail.com>
- <20210805124650.GM26252@sirena.org.uk>
- <CAMdYzYpR6br7s1RD2ze92WzJjtEDZwy9qS6YhghgXy7F91keFg@mail.gmail.com>
- <20210805130842.GO26252@sirena.org.uk>
- <81006771-99bf-a5f9-4001-2cf3dc84f69d@gmail.com>
+ id 1mBxgI-00CDQD-Fb
+ for linux-rockchip@lists.infradead.org; Fri, 06 Aug 2021 11:06:27 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mBxgG-0003m7-EB; Fri, 06 Aug 2021 13:06:24 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jonathan Cameron <jic23@kernel.org>, Simon Xue <xxm@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org,
+ David Wu <david.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>
+Subject: Re: [PATCH v2] iio: adc: rockchip_saradc: add voltage notifier so get
+ referenced voltage once at probe
+Date: Fri, 06 Aug 2021 13:06:23 +0200
+Message-ID: <5442190.6fTUFtlzNn@diego>
+In-Reply-To: <20210806105524.231838-1-xxm@rock-chips.com>
+References: <20210806105524.231838-1-xxm@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <81006771-99bf-a5f9-4001-2cf3dc84f69d@gmail.com>
-X-Cookie: MOUNT TAPE U1439 ON B3, NO RING
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210806_040011_614016_1D4EAF0C 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210806_040626_591676_2BDB3DFA 
+X-CRM114-Status: GOOD (  24.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,58 +70,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8547399407104360368=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Freitag, 6. August 2021, 12:55:24 CEST schrieb Simon Xue:
+> From: David Wu <david.wu@rock-chips.com>
+> 
+> Add voltage notifier, no need to query regulator voltage for
+> every saradc read, just get regulator voltage once at probe.
+> 
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
---===============8547399407104360368==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zvmqw4jX2vbPsMQB"
-Content-Disposition: inline
-
-
---zvmqw4jX2vbPsMQB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Aug 06, 2021 at 01:44:45PM +0530, Ravikumar Kattekola wrote:
-
-> But, IMO mmc core should check if the voltage can be changed or not
->=20
-> before trying to do regulator_set_voltage() in mmc_regulator_set_ocr().
-
-It does exactly that in mmc_regulator_get_ocrmask().
-
---zvmqw4jX2vbPsMQB
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmENFikACgkQJNaLcl1U
-h9CJcAf/dMneLY3//GjYvaXP4Dl2LqP/fc83WqO6E4dJf+Q9FzvqkBneamuQfUYH
-QpjYRGO3aTuTAdw5sLmDfsZVMgbcMkQMumppkrTKP1QVWOSwHkMCLYeb061mmp5i
-Uf+FG0NaQ8HGEN/wk6ac3BuDntvg8tj5pPGu3RDU474sIzXDZb0q2FqCMyYlC3dp
-78ueiE8XQg4CMrcnwVfZ5nbmB1kM1t83UmkO8N8ZDLpwAWFbtwDm5NzaPSFVhWJV
-M7hYPYTOW6I+apyCHwArzVNMPMJEV8B5nQm92V6F5AQzqU0s529DKNPjv9YnSnP6
-DWoW7yM+miX/2so5WGlNRcexznpX8A==
-=a6Wc
------END PGP SIGNATURE-----
-
---zvmqw4jX2vbPsMQB--
+patch looks great to me now :-)
 
 
---===============8547399407104360368==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks
+Heiko
+
+> ---
+>  drivers/iio/adc/rockchip_saradc.c | 47 ++++++++++++++++++++++++++-----
+>  1 file changed, 40 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index f3eb8d2e50dc..295da1ad6edb 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -49,10 +49,12 @@ struct rockchip_saradc {
+>  	struct clk		*clk;
+>  	struct completion	completion;
+>  	struct regulator	*vref;
+> +	int			uv_vref;
+>  	struct reset_control	*reset;
+>  	const struct rockchip_saradc_data *data;
+>  	u16			last_val;
+>  	const struct iio_chan_spec *last_chan;
+> +	struct notifier_block nb;
+>  };
+>  
+>  static void rockchip_saradc_power_down(struct rockchip_saradc *info)
+> @@ -105,13 +107,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+>  		mutex_unlock(&indio_dev->mlock);
+>  		return IIO_VAL_INT;
+>  	case IIO_CHAN_INFO_SCALE:
+> -		ret = regulator_get_voltage(info->vref);
+> -		if (ret < 0) {
+> -			dev_err(&indio_dev->dev, "failed to get voltage\n");
+> -			return ret;
+> -		}
+> -
+> -		*val = ret / 1000;
+> +		*val = info->uv_vref / 1000;
+>  		*val2 = chan->scan_type.realbits;
+>  		return IIO_VAL_FRACTIONAL_LOG2;
+>  	default:
+> @@ -298,6 +294,26 @@ static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
+>  	return IRQ_HANDLED;
+>  }
+>  
+> +static int rockchip_saradc_volt_notify(struct notifier_block *nb,
+> +						   unsigned long event,
+> +						   void *data)
+> +{
+> +	struct rockchip_saradc *info =
+> +			container_of(nb, struct rockchip_saradc, nb);
+> +
+> +	if (event & REGULATOR_EVENT_VOLTAGE_CHANGE)
+> +		info->uv_vref = (unsigned long)data;
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+> +static void rockchip_saradc_regulator_action(void *data)
+> +{
+> +	struct rockchip_saradc *info = data;
+> +
+> +	regulator_unregister_notifier(info->vref, &info->nb);
+> +}
+> +
+>  static int rockchip_saradc_probe(struct platform_device *pdev)
+>  {
+>  	struct rockchip_saradc *info = NULL;
+> @@ -410,6 +426,13 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	info->uv_vref = regulator_get_voltage(info->vref);
+> +	if (info->uv_vref < 0) {
+> +		dev_err(&pdev->dev, "failed to get voltage\n");
+> +		ret = info->uv_vref;
+> +		return ret;
+> +	}
+> +
+>  	ret = clk_prepare_enable(info->pclk);
+>  	if (ret < 0) {
+>  		dev_err(&pdev->dev, "failed to enable pclk\n");
+> @@ -450,6 +473,16 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	info->nb.notifier_call = rockchip_saradc_volt_notify;
+> +	ret = regulator_register_notifier(info->vref, &info->nb);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(&pdev->dev,
+> +				       rockchip_saradc_regulator_action, info);
+> +	if (ret)
+> +		return ret;
+> +
+>  	return devm_iio_device_register(&pdev->dev, indio_dev);
+>  }
+>  
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8547399407104360368==--
-
