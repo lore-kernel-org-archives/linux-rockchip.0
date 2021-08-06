@@ -2,102 +2,67 @@ Return-Path: <SRS0=27lq=M5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.9 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 324B7C4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 08:15:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3C04C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 09:18:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E241560238
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 08:15:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E241560238
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 00A5260EE9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Aug 2021 09:18:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 00A5260EE9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bjBe7YOpNQ40wOxm4H8triIM//JKldFTBZCrCHVinIo=; b=sy17pszuUGcfETbqVHk8I2olNk
-	rGKr71KN8+WvUgzFgvaB1kySoBrP3SwicFHy6lqlXgIHHxayNbY131QnrFB62VkmoEljN0qps1Fzx
-	qnSBWGdHpFsddzdwUDUUwiZ2px5Y+yxQrZcNP3uWEt6CuhwXIrBOC/F4B1auxHzkCHSK93UMerb+U
-	PwZ1Y6+P2XmxkCoKueTknoOMB/R9KTnZ3qCXd1aJXtMx9jFx9+KUS9aNolsTrJbvzvEWSjdQYZv37
-	62jkyEq68RcsgJPBM/BF+pCg5w2050ln4YuqH8IvDcZT5hIpxc3k+iv+xOMuagZIw3k/vJUsIuEJt
-	tC5f1hHA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=K7ElS4UwFf9OksVs5YwjwpU4AwOpiga6Y9RDhY670hE=; b=mJaf8dc72T2zQH
+	GJoErUfeG1mEx+ktTzC/F+j5qK35W9vCf1GuIvo68iQGP6w/hLd4ZYyJRweFAY+5Km10Mf8Po20J9
+	u8RdZ5hv9G+1mWc6f+jfv8JsFo5D8alnQB9RkS1LooZcpzqobXWSWWDiZCMfDkvq0Wjxm+pxB33XX
+	kecBM8g+agmDN49ghiyIEfiYiyD7ttQRmtdHoP6vmp+RJvYbZ78FBJ/iOwfl3PiXTMf0DV5WlHwAX
+	/jbZochPYhrP2nL1PR3d2jpOWWpkRo/+jm5arwZoURQeWLWkhHK1Uid6QVKUxRymzKbUkDJgXmi2+
+	U1PCYnBSHSlC4T6VFOBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBv0I-00BpFR-DU; Fri, 06 Aug 2021 08:14:54 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1mBvzp-00Byxt-28; Fri, 06 Aug 2021 09:18:29 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBv0F-00BpET-HJ
- for linux-rockchip@lists.infradead.org; Fri, 06 Aug 2021 08:14:52 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- dw2-20020a17090b0942b0290177cb475142so21549185pjb.2
- for <linux-rockchip@lists.infradead.org>; Fri, 06 Aug 2021 01:14:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EA8/NMEQ1/xPrB1n9sMj1XYF0fWKh0U0LaqEd2bvscI=;
- b=IVThQKyvn2gxNJXnpFLRy2/6zL46SUnW9e68RZRuqE0OJSSzaeKQCfdAaCrcwSefTV
- 9mXe3B/Hsky78FMQ7M5DXshJVKO176KLEh2fqyi72GPa3f0qvamAIdR5IlxaBbVuuosz
- yOTQthryqUIGVGGXuVGZGAlRp2iPuXSGySJcw+JD+3FoeQiBgVQf5j5fnuOD+b4OUZsU
- XZ3kgOlzGypYT8bCQ7giTdHs+DjDCWTZEX+TV0pgVYkrDi6+iqz69fwXmtvgEA/kyded
- RnqD6PtrgKyOheu/asqpIq4ddrKVzakkLAeVe0SiCc3qSlde04Orp4+i/yXSWjU9rRmh
- naxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EA8/NMEQ1/xPrB1n9sMj1XYF0fWKh0U0LaqEd2bvscI=;
- b=bWjuCAiA0rQkhbPI2Z5yO9sZlcyUyD779Mzuy2ZT/1qYbygxYxixWA1Zo/+avZrT8a
- yvaX/ZpcTql5saJMiakD4eNx7+b2LlHepXXw/Y1ePewLnKjOUclhC2TzAKBBcqcsC82d
- +EN3SwHiD+NhPruIHYLB1CWVsE5Y3Nip6apSLkw1QURRF1tegoU2znBjRvCiHLILhRPJ
- i9g8wYCAiudv2w/Sywl+0BCmP5s3BCuoIFykN5saMZwMNnW4fQDqjLOG6O3dlxhefoV2
- jxjPj0dtlKMd9y0kdvhgaOtqveH/mMNyyrBVmz5HR+Woefcui0fBbey4RwNxfCrSKL/v
- V9vQ==
-X-Gm-Message-State: AOAM5324+WcnNfvx8QbkYxRLBhjHDVU2NtdfSGtJI87oLqEQCab9rokV
- LRXyPxGxfNev2ebl40xPXxo=
-X-Google-Smtp-Source: ABdhPJydzGuINtfzjJ4rc0aYtY1YDr0eByVPskQaH4/Cy/8RSUEwiYmxXRgr1K8xjCX86Q9WHlu6Og==
-X-Received: by 2002:a62:b414:0:b029:317:52d:7fd5 with SMTP id
- h20-20020a62b4140000b0290317052d7fd5mr9568253pfn.30.1628237690428; 
- Fri, 06 Aug 2021 01:14:50 -0700 (PDT)
-Received: from [192.168.0.104] ([122.187.88.150])
- by smtp.gmail.com with ESMTPSA id k200sm9829958pfd.46.2021.08.06.01.14.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Aug 2021 01:14:50 -0700 (PDT)
-Subject: Re: [BUG] mmc_regulator_set_ocr can't cope with regulator-fixed
-To: Mark Brown <broonie@kernel.org>, Peter Geis <pgwipeout@gmail.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org
-References: <CGME20210804143357epcas1p1c67eca591d8bb557c11b8175baaa8550@epcas1p1.samsung.com>
- <CAMdYzYrx8pgeyK7u=kcopZ+Wae+fQdr_uM4AuVjqWKfZYikgcA@mail.gmail.com>
- <a9aa636e-326f-a848-dd69-41df87c013af@samsung.com>
- <CAMdYzYr9PX-9=kkCAfGe8Q0-D+gRo_qCwse8SiGVsmod7fffiA@mail.gmail.com>
- <20210805124650.GM26252@sirena.org.uk>
- <CAMdYzYpR6br7s1RD2ze92WzJjtEDZwy9qS6YhghgXy7F91keFg@mail.gmail.com>
- <20210805130842.GO26252@sirena.org.uk>
-From: Ravikumar Kattekola <callmerk1986@gmail.com>
-Message-ID: <81006771-99bf-a5f9-4001-2cf3dc84f69d@gmail.com>
-Date: Fri, 6 Aug 2021 13:44:45 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1mBvza-00ByvI-QK; Fri, 06 Aug 2021 09:18:17 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mBvzT-0003IF-71; Fri, 06 Aug 2021 11:18:07 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ Jianqun Xu <jay.xu@rock-chips.com>, kever.yang@rock-chips.com
+Cc: Rob Herring <robh+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Simon Xue <xxm@rock-chips.com>,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ Lee Jones <lee.jones@linaro.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Zhang Changzhong <zhangchangzhong@huawei.com>,
+ Tobias Schramm <t.schramm@manjaro.org>, Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v3 2/7] soc: rockchip: io-domain: add rk3568 support
+Date: Fri, 06 Aug 2021 11:18:06 +0200
+Message-ID: <3206032.SvYEEZNnvj@diego>
+In-Reply-To: <8008800c-c518-30d4-edcf-57566e7a1251@arm.com>
+References: <20210805120107.27007-1-michael.riesch@wolfvision.net>
+ <20210805120107.27007-3-michael.riesch@wolfvision.net>
+ <8008800c-c518-30d4-edcf-57566e7a1251@arm.com>
 MIME-Version: 1.0
-In-Reply-To: <20210805130842.GO26252@sirena.org.uk>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210806_011451_653829_1EE2C944 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20210806_021815_068304_EEC3604A 
+X-CRM114-Status: GOOD (  42.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,68 +75,234 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-Resending my reply as my Mail client settings prevented delivery
+Hi Robin,
 
-On 05/08/21 6:38 pm, Mark Brown wrote:
-> On Thu, Aug 05, 2021 at 08:58:58AM -0400, Peter Geis wrote:
->> On Thu, Aug 5, 2021 at 8:47 AM Mark Brown <broonie@kernel.org> wrote:
+Am Donnerstag, 5. August 2021, 18:27:36 CEST schrieb Robin Murphy:
+> On 2021-08-05 13:01, Michael Riesch wrote:
+> > From: Jianqun Xu <jay.xu@rock-chips.com>
+> > 
+> > The io-domain registers on RK3568 SoCs have three separated bits to
+> > enable/disable the 1.8v/2.5v/3.3v power.
+> > 
+> > This patch make the write to be a operation, allow rk3568 uses a private
+> > register set function.
+> > 
+> > Since the 2.5v is not used on RK3568, so the driver only set
 > 
->>> One thing to watch out for with this approach is if there's things that
->>> really need a specific voltage to be set then you'll have to stop those
->>> things happening if you've got a voltage regulator that can't deliver a
->>> voltage in the required range.  I don't know if this affects MMC or not,
->>> if it's just a case of being less efficient it's not such an issue.
+> FWIW, this seems at odds with what the first paragraph says - can anyone 
+> clarify what exactly "not used" means here? Is it that the I/O domain 
+> controller has been redesigned to support more than two logic levels on 
+> the new generation of SoCs, but RK3568's I/O pads still only physically 
+> support 1.8v and 3.3v; or is it that it *can* support 2.5v as well but 
+> no currently-known RK3568-based designs use that?
 > 
->> Yeah, but if this is a fixed regulator and it's a problem, then the
->> hardware is screwed anyways.
+> In the former case it's just a wording issue in the commit message, but 
+> in the latter it's arguably worth implementing support now for the sake 
+> of future compatibility.
+
+I hadn't looked that deeply into the rk356x io-domain config, but at least
+on a register level in the TRM it seems there are separate bits for
+"3.3V control", "2.5V control", "1.8V control" [0] for each io-domain.
+
+Of course the documentation is otherwise somewhat sparse.
+
+Maybe Jay or Kever [added] can explain a bit more about the 3 voltage
+levels.
+
+
+In general though, I tend to find the approach good enough for now.
+
+Especially as the io-domain stuff is always said to "can cause damage
+to the soc if used incorrectly" and it looks like nobody (including
+Rockchip) seems to have actual hardware using these 2.5V levels right now.
+
+So having code in there that no-one ever tested doesn't feel too good ;-)
+
+Adding this later when needed should be somewhat easy, as it really only
+needs adding of handling that 3rd control bit per domain.
+
+
+Heiko
+
+
+
+[0] what happens if none of the 3 is active? ;-)
+
+
 > 
-> Well, the fact that the voltage is being changed at runtime indicates
-> that we're changing something from whatever was in the fixed setup - it
-> can sometimes be that we don't have access to some higher performance or
-> lower power features for example.  That's not ideal but works perfectly
-> safely.
+> Robin.
 > 
-Suggested approach of checking "mmc->ocr_avail" might work.
+> > 1.8v [enable] + 3.3v [disable] for 1.8v mode
+> > 1.8v [disable] + 3.3v [enable] for 3.3v mode
+> > 
+> > There is not register order requirement which has been cleared by our IC
+> > team.
+> > 
+> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> > ---
+> >   drivers/soc/rockchip/io-domain.c | 88 +++++++++++++++++++++++++++++---
+> >   1 file changed, 80 insertions(+), 8 deletions(-)
+> > 
+> > diff --git a/drivers/soc/rockchip/io-domain.c b/drivers/soc/rockchip/io-domain.c
+> > index cf8182fc3642..13c446fd33a9 100644
+> > --- a/drivers/soc/rockchip/io-domain.c
+> > +++ b/drivers/soc/rockchip/io-domain.c
+> > @@ -51,13 +51,11 @@
+> >   #define RK3399_PMUGRF_CON0_VSEL		BIT(8)
+> >   #define RK3399_PMUGRF_VSEL_SUPPLY_NUM	9
+> >   
+> > -struct rockchip_iodomain;
+> > +#define RK3568_PMU_GRF_IO_VSEL0		(0x0140)
+> > +#define RK3568_PMU_GRF_IO_VSEL1		(0x0144)
+> > +#define RK3568_PMU_GRF_IO_VSEL2		(0x0148)
+> >   
+> > -struct rockchip_iodomain_soc_data {
+> > -	int grf_offset;
+> > -	const char *supply_names[MAX_SUPPLIES];
+> > -	void (*init)(struct rockchip_iodomain *iod);
+> > -};
+> > +struct rockchip_iodomain;
+> >   
+> >   struct rockchip_iodomain_supply {
+> >   	struct rockchip_iodomain *iod;
+> > @@ -66,13 +64,62 @@ struct rockchip_iodomain_supply {
+> >   	int idx;
+> >   };
+> >   
+> > +struct rockchip_iodomain_soc_data {
+> > +	int grf_offset;
+> > +	const char *supply_names[MAX_SUPPLIES];
+> > +	void (*init)(struct rockchip_iodomain *iod);
+> > +	int (*write)(struct rockchip_iodomain_supply *supply, int uV);
+> > +};
+> > +
+> >   struct rockchip_iodomain {
+> >   	struct device *dev;
+> >   	struct regmap *grf;
+> >   	const struct rockchip_iodomain_soc_data *soc_data;
+> >   	struct rockchip_iodomain_supply supplies[MAX_SUPPLIES];
+> > +	int (*write)(struct rockchip_iodomain_supply *supply, int uV);
+> >   };
+> >   
+> > +static int rk3568_iodomain_write(struct rockchip_iodomain_supply *supply, int uV)
+> > +{
+> > +	struct rockchip_iodomain *iod = supply->iod;
+> > +	u32 is_3v3 = uV > MAX_VOLTAGE_1_8;
+> > +	u32 val0, val1;
+> > +	int b;
+> > +
+> > +	switch (supply->idx) {
+> > +	case 0: /* pmuio1 */
+> > +		break;
+> > +	case 1: /* pmuio2 */
+> > +		b = supply->idx;
+> > +		val0 = BIT(16 + b) | (is_3v3 ? 0 : BIT(b));
+> > +		b = supply->idx + 4;
+> > +		val1 = BIT(16 + b) | (is_3v3 ? BIT(b) : 0);
+> > +
+> > +		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL2, val0);
+> > +		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL2, val1);
+> > +		break;
+> > +	case 3: /* vccio2 */
+> > +		break;
+> > +	case 2: /* vccio1 */
+> > +	case 4: /* vccio3 */
+> > +	case 5: /* vccio4 */
+> > +	case 6: /* vccio5 */
+> > +	case 7: /* vccio6 */
+> > +	case 8: /* vccio7 */
+> > +		b = supply->idx - 1;
+> > +		val0 = BIT(16 + b) | (is_3v3 ? 0 : BIT(b));
+> > +		val1 = BIT(16 + b) | (is_3v3 ? BIT(b) : 0);
+> > +
+> > +		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL0, val0);
+> > +		regmap_write(iod->grf, RK3568_PMU_GRF_IO_VSEL1, val1);
+> > +		break;
+> > +	default:
+> > +		return -EINVAL;
+> > +	};
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >   static int rockchip_iodomain_write(struct rockchip_iodomain_supply *supply,
+> >   				   int uV)
+> >   {
+> > @@ -136,7 +183,7 @@ static int rockchip_iodomain_notify(struct notifier_block *nb,
+> >   			return NOTIFY_BAD;
+> >   	}
+> >   
+> > -	ret = rockchip_iodomain_write(supply, uV);
+> > +	ret = supply->iod->write(supply, uV);
+> >   	if (ret && event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE)
+> >   		return NOTIFY_BAD;
+> >   
+> > @@ -398,6 +445,22 @@ static const struct rockchip_iodomain_soc_data soc_data_rk3399_pmu = {
+> >   	.init = rk3399_pmu_iodomain_init,
+> >   };
+> >   
+> > +static const struct rockchip_iodomain_soc_data soc_data_rk3568_pmu = {
+> > +	.grf_offset = 0x140,
+> > +	.supply_names = {
+> > +		"pmuio1",
+> > +		"pmuio2",
+> > +		"vccio1",
+> > +		"vccio2",
+> > +		"vccio3",
+> > +		"vccio4",
+> > +		"vccio5",
+> > +		"vccio6",
+> > +		"vccio7",
+> > +	},
+> > +	.write = rk3568_iodomain_write,
+> > +};
+> > +
+> >   static const struct rockchip_iodomain_soc_data soc_data_rv1108 = {
+> >   	.grf_offset = 0x404,
+> >   	.supply_names = {
+> > @@ -469,6 +532,10 @@ static const struct of_device_id rockchip_iodomain_match[] = {
+> >   		.compatible = "rockchip,rk3399-pmu-io-voltage-domain",
+> >   		.data = &soc_data_rk3399_pmu
+> >   	},
+> > +	{
+> > +		.compatible = "rockchip,rk3568-pmu-io-voltage-domain",
+> > +		.data = &soc_data_rk3568_pmu
+> > +	},
+> >   	{
+> >   		.compatible = "rockchip,rv1108-io-voltage-domain",
+> >   		.data = &soc_data_rv1108
+> > @@ -502,6 +569,11 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
+> >   	match = of_match_node(rockchip_iodomain_match, np);
+> >   	iod->soc_data = match->data;
+> >   
+> > +	if (iod->soc_data->write)
+> > +		iod->write = iod->soc_data->write;
+> > +	else
+> > +		iod->write = rockchip_iodomain_write;
+> > +
+> >   	parent = pdev->dev.parent;
+> >   	if (parent && parent->of_node) {
+> >   		iod->grf = syscon_node_to_regmap(parent->of_node);
+> > @@ -562,7 +634,7 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
+> >   		supply->reg = reg;
+> >   		supply->nb.notifier_call = rockchip_iodomain_notify;
+> >   
+> > -		ret = rockchip_iodomain_write(supply, uV);
+> > +		ret = iod->write(supply, uV);
+> >   		if (ret) {
+> >   			supply->reg = NULL;
+> >   			goto unreg_notify;
+> > 
+> 
 
-But, IMO mmc core should check if the voltage can be changed or not
 
-before trying to do regulator_set_voltage() in mmc_regulator_set_ocr().
 
-Wouldn't that be better and solve this issue for other hosts as well.
 
-Something like below in mmc_regulator_set_ocr ():
-
-+               result = regulator_check_voltage_constraints(supply,
-+                       min_uV, max_uV);
-+               if(!result) {
-+                       result = regulator_set_voltage(supply, min_uV, 
-max_uV);
-+                       if (result != -EINVAL && !mmc->regulator_enabled) {
-+                               result = regulator_enable(supply);
-+                               if (!result)
-+                                       mmc->regulator_enabled = true;
-+                       }
-
-We could wrap the existing check_voltage function
-
-+/* Check voltage constraints helper function */
-+int regulator_check_voltage_constraints(struct regulator *regulator,
-+                                       int min_uV, int max_uV)
-+{
-+       return regulator_check_voltage(regulator->rdev, &min_uV, &max_uV);
-+}
-+EXPORT_SYMBOL_GPL(regulator_check_voltage_constraints);
-
-I hope this makes sense.
-
-Regards,
-RK
 
 _______________________________________________
 Linux-rockchip mailing list
