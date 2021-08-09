@@ -2,75 +2,64 @@ Return-Path: <SRS0=9QTE=NA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC9BEC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 18:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE48CC4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 19:37:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F3136101D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 18:36:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5F3136101D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6C8BB60EB5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 19:37:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6C8BB60EB5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=awy6+lvHF++PkpLAWoPZn+Khu7VhWcuCUJSVX6NzLtY=; b=qi4TyGn9/bKVLB
-	PFGdu9S26OBM1AyF9hdfdpWzGOZIKYk0vILzBGzTlYWIU2UAODB4a4DiY9XuC72dKJkZbpZl9QXR+
-	nRL3Sm6RPjc+kfEbeMcsEdEB0TSqOwQzrSi5sL4dOcUcCgDCtw+JwXIfpTByxH14d8RkveWB8UPSL
-	nU7Gqywlmae/zAs5ydBPD5JmA94trftK1BvNFxrQpEJmvv5WnMXz17XUhzJtheUgdLTON7Ncon1ru
-	7v6zwOinLR5VHERAeRci7VxNzZMaCnYoM+Rr8ztfwi0FQor2IKzU7H/he8M3F0QGV+a4tUOLInTDx
-	KrlSDd3GVlgF39VehCmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cxCYZK7YXiFfEbPIp8GY6d15qaj2D+Hmx4mgpZmWSIc=; b=QebxT9n9fLIxFg
+	Y3aC3Vo1RkT2UIftZLiXMRVxND8Xou55C4UxnMJdiWlsBzSYGtvZ6w+MRek3xv7dAcZdXXdF5GNSy
+	KiMfh+At2WzDn9tnwd3NHjtJXi/8ux1KYTFPIwyfYydOwQ0qMrsABZcKRs24UZMaxlgUEnOYY+okp
+	DjF4v8f/GwDdqkw8swlRj4QS3op9MnYpJcr94tS52Tl3D3fR+JH6ekeyD+q5/8KgdPochR4cjaL36
+	S6wLNo7hXgvSEbs33Pd0CBXguRWDK6jl8HBvkzNlU/AxVHfmnTb8PEPeLRkELhZ8yskFfr087bMo/
+	LQ5urYIYeZ/pc4mQOhRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDA8m-001jb6-Em; Mon, 09 Aug 2021 18:36:48 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mDB5J-001rkR-Vm; Mon, 09 Aug 2021 19:37:18 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDA8Z-001jXx-PX; Mon, 09 Aug 2021 18:36:37 +0000
-Received: from chickenburger.collabora.co.uk (chickenburger.collabora.co.uk
- [46.235.227.242])
- by bhuna.collabora.co.uk (Postfix) with ESMTP id 139CC1F42E7E;
- Mon,  9 Aug 2021 19:36:31 +0100 (BST)
-From: "Ezequiel Garcia" <ezequiel.garcia@collabora.com>
-In-Reply-To: <5154683.x8GX3iSW2O@kista>
-X-Forward: 181.95.8.213
-Date: Mon, 09 Aug 2021 19:36:30 +0100
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev,
- "Andrzej Pietrasiewicz" <andrzej.p@collabora.com>,
- "Benjamin Gaignard" <benjamin.gaignard@collabora.com>,
- "Boris Brezillon" <boris.brezillon@collabora.com>,
- "Ezequiel Garcia" <elezegarcia@gmail.com>,
- "Fabio Estevam" <festevam@gmail.com>,
- "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>,
- "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, "Heiko Stuebner" <heiko@sntech.de>,
- "Mauro Carvalho Chehab" <mchehab@kernel.org>,
- "Nicolas Dufresne" <nicolas.dufresne@collabora.com>,
- "NXP Linux Team" <linux-imx@nxp.com>,
- "Pengutronix Kernel Team" <kernel@pengutronix.de>,
- "Philipp Zabel" <p.zabel@pengutronix.de>,
- "Sascha Hauer" <s.hauer@pengutronix.de>, "Shawn Guo" <shawnguo@kernel.org>,
- kernel@collabora.com, "Adrian Ratiu" <adrian.ratiu@collabora.com>,
- "Daniel Almeida" <daniel.almeida@collabora.com>
-To: =?utf-8?q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>
+ id 1mDB5H-001rjy-Dq
+ for linux-rockchip@lists.infradead.org; Mon, 09 Aug 2021 19:37:16 +0000
+Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
+ [81.101.6.87])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5187960C51;
+ Mon,  9 Aug 2021 19:37:12 +0000 (UTC)
+Date: Mon, 9 Aug 2021 20:40:04 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Simon Xue <xxm@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner
+ <heiko@sntech.de>, Lars-Peter Clausen <lars@metafoo.de>, Peter
+ Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org, David Wu
+ <david.wu@rock-chips.com>
+Subject: Re: [PATCH v3] iio: adc: rockchip_saradc: add voltage notifier so
+ get referenced voltage once at probe
+Message-ID: <20210809203952.08d9acec@jic23-huawei>
+In-Reply-To: <20210809011517.6374-1-xxm@rock-chips.com>
+References: <20210809011517.6374-1-xxm@rock-chips.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Message-ID: <3ce7-61117580-f1-4ae96900@79504131>
-Subject: =?utf-8?q?Re=3A?= [PATCH v3 05/10]
- =?utf-8?q?media=3A?==?utf-8?q?_uapi=3A?= 
- Add VP9 stateless decoder controls
-User-Agent: SOGoMail 5.0.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_113636_139084_8E132028 
-X-CRM114-Status: GOOD (  28.53  )
+X-CRM114-CacheID: sfid-20210809_123715_553031_B4A407B0 
+X-CRM114-Status: GOOD (  25.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,135 +72,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSmVybmVqLAoKT24gTW9uZGF5LCBBdWd1c3QgMDksIDIwMjEgMTU6MDQgLTAzLCBKZXJuZWog
-xaBrcmFiZWMgPGplcm5lai5za3JhYmVjQGdtYWlsLmNvbT4gd3JvdGU6IAogCj4gSGkgQW5kcnpl
-aiEKPiAKPiBEbmUgxI1ldHJ0ZWssIDA1LiBhdmd1c3QgMjAyMSBvYiAxNjo0Mjo0MSBDRVNUIGpl
-IEFuZHJ6ZWogUGlldHJhc2lld2ljeiAKPiBuYXBpc2FsKGEpOgo+ID4gQWRkIHRoZSBWUDkgc3Rh
-dGVsZXNzIGRlY29kZXIgY29udHJvbHMgcGx1cyB0aGUgZG9jdW1lbnRhdGlvbiB0aGF0IGdvZXMK
-PiA+IHdpdGggaXQuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEJvcmlzIEJyZXppbGxvbiA8Ym9y
-aXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+Cj4gPiBDby1kZXZlbG9wZWQtYnk6IEV6ZXF1aWVs
-IEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEV6ZXF1
-aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEFk
-cmlhbiBSYXRpdSA8YWRyaWFuLnJhdGl1QGNvbGxhYm9yYS5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5
-OiBBbmRyemVqIFBpZXRyYXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+ID4gQ28t
-ZGV2ZWxvcGVkLWJ5OiBEYW5pZWwgQWxtZWlkYSA8ZGFuaWVsLmFsbWVpZGFAY29sbGFib3JhLmNv
-bT4KPiA+IFNpZ25lZC1vZmYtYnk6IERhbmllbCBBbG1laWRhIDxkYW5pZWwuYWxtZWlkYUBjb2xs
-YWJvcmEuY29tPgo+ID4gLS0tCj4gPiAgLi4uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2JpYmxp
-by5yc3QgICAgICAgIHwgIDEwICsKPiA+ICAuLi4vbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy1z
-dGF0ZWxlc3MucnN0ICAgfCA1NDUgKysrKysrKysrKysrKysrKysrCj4gPiAgLi4uL21lZGlhL3Y0
-bC9waXhmbXQtY29tcHJlc3NlZC5yc3QgICAgICAgICAgIHwgIDE1ICsKPiA+ICAuLi4vbWVkaWEv
-djRsL3ZpZGlvYy1nLWV4dC1jdHJscy5yc3QgICAgICAgICAgfCAgIDggKwo+ID4gIC4uLi9tZWRp
-YS92NGwvdmlkaW9jLXF1ZXJ5Y3RybC5yc3QgICAgICAgICAgICB8ICAxMiArCj4gPiAgLi4uL21l
-ZGlhL3ZpZGVvZGV2Mi5oLnJzdC5leGNlcHRpb25zICAgICAgICAgIHwgICAyICsKPiA+ICBkcml2
-ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWNvcmUuYyAgICAgfCAxNzQgKysrKysrCj4g
-PiAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgICAgIHwgICA4ICsK
-PiA+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMgICAgICAgICAgfCAgIDEg
-Kwo+ID4gIGluY2x1ZGUvbWVkaWEvdjRsMi1jdHJscy5oICAgICAgICAgICAgICAgICAgICB8ICAg
-NCArCj4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3Y0bDItY29udHJvbHMuaCAgICAgICAgICAgIHwg
-NDMzICsrKysrKysrKysrKysrCj4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAg
-ICAgICAgICAgICAgIHwgICA2ICsKPiA+ICAxMiBmaWxlcyBjaGFuZ2VkLCAxMjE4IGluc2VydGlv
-bnMoKykKPiA+IAo+IAo+IDxzbmlwPgo+IAo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9s
-aW51eC92NGwyLWNvbnRyb2xzLmggYi9pbmNsdWRlL3VhcGkvbGludXgvdjRsMi0KPiBjb250cm9s
-cy5oCj4gPiBpbmRleCA1NTMyYjVmNjg0OTMuLjhmOGMzYzFhZDg4NSAxMDA2NDQKPiA+IC0tLSBh
-L2luY2x1ZGUvdWFwaS9saW51eC92NGwyLWNvbnRyb2xzLmgKPiA+ICsrKyBiL2luY2x1ZGUvdWFw
-aS9saW51eC92NGwyLWNvbnRyb2xzLmgKPiA+IEBAIC0yMDEwLDYgKzIwMTAsNDM5IEBAIHN0cnVj
-dCB2NGwyX2N0cmxfaGRyMTBfbWFzdGVyaW5nX2Rpc3BsYXkgewo+ID4gIAlfX3UzMiBtaW5fZGlz
-cGxheV9tYXN0ZXJpbmdfbHVtaW5hbmNlOwo+ID4gIH07Cj4gPiAgCj4gPiArLyogU3RhdGVsZXNz
-IFZQOSBjb250cm9scyAqLwo+ID4gKwo+ID4gKy8qKgo+ID4gKyAqIGVudW0gdjRsMl92cDlfbG9v
-cF9maWx0ZXJfZmxhZ3MgLSBWUDkgbG9vcCBmaWx0ZXIgZmxhZ3MKPiA+ICsgKgo+ID4gKyAqIEBW
-NEwyX1ZQOV9MT09QX0ZJTFRFUl9GTEFHX0RFTFRBX0VOQUJMRUQ6IHRoZSBmaWx0ZXIgbGV2ZWwg
-ZGVwZW5kcyBvbgo+ID4gKyAqCXRoZSBtb2RlIGFuZCByZWZlcmVuY2UgZnJhbWUgdXNlZCB0byBw
-cmVkaWN0IGEgYmxvY2sKPiA+ICsgKiBAVjRMMl9WUDlfTE9PUF9GSUxURVJfRkxBR19ERUxUQV9V
-UERBVEU6IHRoZSBiaXRzdHJlYW0gY29udGFpbnMgCj4gYWRkaXRpb25hbAo+ID4gKyAqCXN5bnRh
-eCBlbGVtZW50cyB0aGF0IHNwZWNpZnkgd2hpY2ggbW9kZSBhbmQgcmVmZXJlbmNlIGZyYW1lIGRl
-bHRhcyAKPiBhcmUgdG8gYmUgdXBkYXRlZAo+ID4gKyAqCj4gPiArICogVGhvc2UgYXJlIHRoZSBm
-bGFncyB0aGF0IG1heSBiZSBwYXNzZWQgdG8gJnY0bDJfdnA5X2xvb3BfZmlsdGVyLmZsYWdzLiBT
-ZWUKPiA+ICsgKiBzZWN0aW9uICc3LjIuOCBMb29wIGZpbHRlciBzZW1hbnRpY3MnIG9mIHRoZSBW
-UDkgc3BlY2lmaWNhdGlvbiBmb3IgbW9yZQo+ID4gKyAqIGRldGFpbHMuCj4gPiArICovCj4gPiAr
-ZW51bSB2NGwyX3ZwOV9sb29wX2ZpbHRlcl9mbGFncyB7Cj4gPiArCVY0TDJfVlA5X0xPT1BfRklM
-VEVSX0ZMQUdfREVMVEFfRU5BQkxFRCA9IDEgPDwgMCwKPiA+ICsJVjRMMl9WUDlfTE9PUF9GSUxU
-RVJfRkxBR19ERUxUQV9VUERBVEUgPSAxIDw8IDEsCj4gPiArfTsKPiA+ICsKPiA+ICsvKioKPiA+
-ICsgKiBzdHJ1Y3QgdjRsMl92cDlfbG9vcF9maWx0ZXIgLSBWUDkgbG9vcCBmaWx0ZXIgcGFyYW1l
-dGVycwo+ID4gKyAqCj4gPiArICogQHJlZl9kZWx0YXM6IGNvbnRhaW5zIHRoZSBhZGp1c3RtZW50
-IG5lZWRlZCBmb3IgdGhlIGZpbHRlciBsZXZlbCBiYXNlZCBvbiAKPiB0aGUgY2hvc2VuCj4gPiAr
-ICoJcmVmZXJlbmNlIGZyYW1lLiBJZiB0aGlzIHN5bnRheCBlbGVtZW50IGlzIG5vdCBwcmVzZW50
-IGluIHRoZSAKPiBiaXRzdHJlYW0sIHVzZXJzCj4gPiArICoJc2hvdWxkIHBhc3MgaXRzIGxhc3Qg
-dmFsdWUuCj4gPiArICogQG1vZGVfZGVsdGFzOiBjb250YWlucyB0aGUgYWRqdXN0bWVudCBuZWVk
-ZWQgZm9yIHRoZSBmaWx0ZXIgbGV2ZWwgYmFzZWQgCj4gb24gdGhlIGNob3NlbiBtb2RlLgo+ID4g
-KyAqCUlmIHRoaXMgc3ludGF4IGVsZW1lbnQgaXMgbm90IHByZXNlbnQgaW4gdGhlIGJpdHN0cmVh
-bSwgdXNlcnMKPiA+ICsgKglzaG91bGQgcGFzcyBpdHMgbGFzdCB2YWx1ZS4KPiA+ICsgKiBAbGV2
-ZWw6IGluZGljYXRlcyB0aGUgbG9vcCBmaWx0ZXIgc3RyZW5ndGgKPiA+ICsgKiBAc2hhcnBuZXNz
-OiBpbmRpY2F0ZXMgdGhlIHNoYXJwbmVzcyBsZXZlbAo+ID4gKyAqIEBmbGFnczogY29tYmluYXRp
-b24gb2YgVjRMMl9WUDlfTE9PUF9GSUxURVJfRkxBR18qIGZsYWdzCj4gPiArICogQHJlc2VydmVk
-OiBwYWRkaW5nIGZpZWxkLiBTaG91bGQgYmUgemVyb2VkIGJ5IGFwcGxpY2F0aW9ucy4KPiA+ICsg
-Kgo+ID4gKyAqIFRoaXMgc3RydWN0dXJlIGNvbnRhaW5zIGFsbCBsb29wIGZpbHRlciByZWxhdGVk
-IHBhcmFtZXRlcnMuIFNlZSBzZWN0aW9ucwo+ID4gKyAqICc3LjIuOCBMb29wIGZpbHRlciBzZW1h
-bnRpY3MnIG9mIHRoZSBWUDkgc3BlY2lmaWNhdGlvbiBmb3IgbW9yZSBkZXRhaWxzLgo+ID4gKyAq
-Lwo+ID4gK3N0cnVjdCB2NGwyX3ZwOV9sb29wX2ZpbHRlciB7Cj4gPiArCV9fczggcmVmX2RlbHRh
-c1s0XTsKPiA+ICsJX19zOCBtb2RlX2RlbHRhc1syXTsKPiA+ICsJX191OCBsZXZlbDsKPiA+ICsJ
-X191OCBzaGFycG5lc3M7Cj4gPiArCV9fdTggZmxhZ3M7Cj4gPiArCV9fdTggcmVzZXJ2ZWRbN107
-Cj4gPiArfTsKPiA+ICsKPiA+ICsvKioKPiA+ICsgKiBzdHJ1Y3QgdjRsMl92cDlfcXVhbnRpemF0
-aW9uIC0gVlA5IHF1YW50aXphdGlvbiBwYXJhbWV0ZXJzCj4gPiArICoKPiA+ICsgKiBAYmFzZV9x
-X2lkeDogaW5kaWNhdGVzIHRoZSBiYXNlIGZyYW1lIHFpbmRleAo+ID4gKyAqIEBkZWx0YV9xX3lf
-ZGM6IGluZGljYXRlcyB0aGUgWSBEQyBxdWFudGl6ZXIgcmVsYXRpdmUgdG8gYmFzZV9xX2lkeAo+
-ID4gKyAqIEBkZWx0YV9xX3V2X2RjOiBpbmRpY2F0ZXMgdGhlIFVWIERDIHF1YW50aXplciByZWxh
-dGl2ZSB0byBiYXNlX3FfaWR4Cj4gPiArICogQGRlbHRhX3FfdXZfYWM6IGluZGljYXRlcyB0aGUg
-VVYgQUMgcXVhbnRpemVyIHJlbGF0aXZlIHRvIGJhc2VfcV9pZHgKPiA+ICsgKiBAcmVzZXJ2ZWQ6
-IHBhZGRpbmcgZmllbGQuIFNob3VsZCBiZSB6ZXJvZWQgYnkgYXBwbGljYXRpb25zLgo+ID4gKyAq
-Cj4gPiArICogRW5jb2RlcyB0aGUgcXVhbnRpemF0aW9uIHBhcmFtZXRlcnMuIFNlZSBzZWN0aW9u
-ICc3LjIuOSBRdWFudGl6YXRpb24gCj4gcGFyYW1zCj4gPiArICogc3ludGF4JyBvZiB0aGUgVlA5
-IHNwZWNpZmljYXRpb24gZm9yIG1vcmUgZGV0YWlscy4KPiA+ICsgKi8KPiA+ICtzdHJ1Y3QgdjRs
-Ml92cDlfcXVhbnRpemF0aW9uIHsKPiA+ICsJX191OCBiYXNlX3FfaWR4Owo+ID4gKwlfX3M4IGRl
-bHRhX3FfeV9kYzsKPiA+ICsJX19zOCBkZWx0YV9xX3V2X2RjOwo+ID4gKwlfX3M4IGRlbHRhX3Ff
-dXZfYWM7Cj4gPiArCV9fdTggcmVzZXJ2ZWRbNF07Cj4gPiArfTsKPiA+ICsKPiA+ICsvKioKPiA+
-ICsgKiBlbnVtIHY0bDJfdnA5X3NlZ21lbnRhdGlvbl9mbGFncyAtIFZQOSBzZWdtZW50YXRpb24g
-ZmxhZ3MKPiA+ICsgKgo+ID4gKyAqIEBWNEwyX1ZQOV9TRUdNRU5UQVRJT05fRkxBR19FTkFCTEVE
-OiBpbmRpY2F0ZXMgdGhhdCB0aGlzIGZyYW1lIG1ha2VzIHVzZSAKPiBvZgo+ID4gKyAqCXRoZSBz
-ZWdtZW50YXRpb24gdG9vbAo+ID4gKyAqIEBWNEwyX1ZQOV9TRUdNRU5UQVRJT05fRkxBR19VUERB
-VEVfTUFQOiBpbmRpY2F0ZXMgdGhhdCB0aGUgc2VnbWVudGF0aW9uIAo+IG1hcAo+ID4gKyAqCXNo
-b3VsZCBiZSB1cGRhdGVkIGR1cmluZyB0aGUgZGVjb2Rpbmcgb2YgdGhpcyBmcmFtZQo+ID4gKyAq
-IEBWNEwyX1ZQOV9TRUdNRU5UQVRJT05fRkxBR19URU1QT1JBTF9VUERBVEU6IGluZGljYXRlcyB0
-aGF0IHRoZSB1cGRhdGVzIAo+IHRvCj4gPiArICoJdGhlIHNlZ21lbnRhdGlvbiBtYXAgYXJlIGNv
-ZGVkIHJlbGF0aXZlIHRvIHRoZSBleGlzdGluZyAKPiBzZWdtZW50YXRpb24gbWFwCj4gPiArICog
-QFY0TDJfVlA5X1NFR01FTlRBVElPTl9GTEFHX1VQREFURV9EQVRBOiBpbmRpY2F0ZXMgdGhhdCBu
-ZXcgcGFyYW1ldGVycyAKPiBhcmUKPiA+ICsgKglhYm91dCB0byBiZSBzcGVjaWZpZWQgZm9yIGVh
-Y2ggc2VnbWVudAo+ID4gKyAqIEBWNEwyX1ZQOV9TRUdNRU5UQVRJT05fRkxBR19BQlNfT1JfREVM
-VEFfVVBEQVRFOiBpbmRpY2F0ZXMgdGhhdCB0aGUKPiA+ICsgKglzZWdtZW50YXRpb24gcGFyYW1l
-dGVycyByZXByZXNlbnQgdGhlIGFjdHVhbCB2YWx1ZXMgdG8gYmUgdXNlZAo+ID4gKyAqCj4gPiAr
-ICogVGhvc2UgYXJlIHRoZSBmbGFncyB0aGF0IG1heSBiZSBwYXNzZWQgdG8gJnY0bDJfdnA5X3Nl
-Z21lbnRhdGlvbi5mbGFncy4gCj4gU2VlCj4gPiArICogc2VjdGlvbiAnNy4yLjEwIFNlZ21lbnRh
-dGlvbiBwYXJhbXMgc3ludGF4JyBvZiB0aGUgVlA5IHNwZWNpZmljYXRpb24gZm9yCj4gPiArICog
-bW9yZSBkZXRhaWxzLgo+ID4gKyAqLwo+ID4gK2VudW0gdjRsMl92cDlfc2VnbWVudGF0aW9uX2Zs
-YWdzIHsKPiA+ICsJVjRMMl9WUDlfU0VHTUVOVEFUSU9OX0ZMQUdfRU5BQkxFRCA9IDEgPDwgMCwK
-PiA+ICsJVjRMMl9WUDlfU0VHTUVOVEFUSU9OX0ZMQUdfVVBEQVRFX01BUCA9IDEgPDwgMSwKPiA+
-ICsJVjRMMl9WUDlfU0VHTUVOVEFUSU9OX0ZMQUdfVEVNUE9SQUxfVVBEQVRFID0gMSA8PCAyLAo+
-ID4gKwlWNEwyX1ZQOV9TRUdNRU5UQVRJT05fRkxBR19VUERBVEVfREFUQSA9IDEgPDwgMywKPiA+
-ICsJVjRMMl9WUDlfU0VHTUVOVEFUSU9OX0ZMQUdfQUJTX09SX0RFTFRBX1VQREFURSA9IDEgPDwg
-NCwKPiA+ICt9Owo+ID4gKwo+ID4gKyNkZWZpbmUgVjRMMl9WUDlfU0VHTUVOVF9GRUFUVVJFX0VO
-QUJMRUQoaWQpCSgxIDw8IChpZCkpCj4gPiArI2RlZmluZSBWNEwyX1ZQOV9TRUdNRU5UX0ZFQVRV
-UkVfRU5BQkxFRF9NQVNLCTB4Zgo+ID4gKwo+ID4gKy8qKgo+ID4gKyAqIGVudW0gdjRsMl92cDlf
-c2VnbWVudF9mZWF0dXJlIC0gVlA5IHNlZ21lbnQgZmVhdHVyZSBJRHMKPiA+ICsgKgo+ID4gKyAq
-IEBWNEwyX1ZQOV9TRUdfTFZMX0FMVF9ROiBxdWFudGl6ZXIgc2VnbWVudCBmZWF0dXJlCj4gPiAr
-ICogQFY0TDJfVlA5X1NFR19MVkxfQUxUX0w6IGxvb3AgZmlsdGVyIHNlZ21lbnQgZmVhdHVyZQo+
-ID4gKyAqIEBWNEwyX1ZQOV9TRUdfTFZMX1JFRl9GUkFNRSByZWZlcmVuY2UgZnJhbWUgc2VnbWVu
-dCBmZWF0dXJlCj4gPiArICogQFY0TDJfVlA5X1NFR19MVkxfU0tJUDogc2tpcCBzZWdtZW50IGZl
-YXR1cmUKPiA+ICsgKiBAVjRMMl9WUDlfU0VHX0xWVl9NQVg6IG51bWJlciBvZiBzZWdtZW50IGZl
-YXR1cmVzCj4gPiArICoKPiA+ICsgKiBTZWdtZW50IGZlYXR1cmUgSURzLiBTZWUgc2VjdGlvbiAn
-Ny4yLjEwIFNlZ21lbnRhdGlvbiBwYXJhbXMgc3ludGF4JyBvZiAKPiB0aGUKPiA+ICsgKiBWUDkg
-c3BlY2lmaWNhdGlvbiBmb3IgbW9yZSBkZXRhaWxzLgo+ID4gKyAqLwo+ID4gK2VudW0gdjRsMl92
-cDlfc2VnbWVudF9mZWF0dXJlIHsKPiA+ICsJVjRMMl9WUDlfU0VHX0xWTF9BTFRfUSwKPiA+ICsJ
-VjRMMl9WUDlfU0VHX0xWTF9BTFRfTCwKPiA+ICsJVjRMMl9WUDlfU0VHX0xWTF9SRUZfRlJBTUUs
-Cj4gPiArCVY0TDJfVlA5X1NFR19MVkxfU0tJUCwKPiA+ICsJVjRMMl9WUDlfU0VHX0xWTF9NQVgs
-Cj4gPiArfTsKPiAKPiBXaGF0IGlzIHRoZSByZWFzb24gbm90IHRvIGFzc2lnbiB2YWx1ZXMgbGlr
-ZSAxIDw8IDAsIDEgPDwgMSwgZXRjLiBhbmQgaW5zdGVhZCAKPiBwcm92aWRlIHNlcGFyYXRlIG1h
-Y3JvIFY0TDJfVlA5X1NFR01FTlRfRkVBVFVSRV9FTkFCTEVEKCk/IFRoaXMgaXMgYSBkZXBhcnR1
-cmUgCj4gZnJvbSBjdXJyZW50IHByYWN0aWNlLgo+IAoKRnVsbHkgYWdyZWVkLgoKVGhhbmtzLApF
-emVxdWllbAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+On Mon,  9 Aug 2021 09:15:17 +0800
+Simon Xue <xxm@rock-chips.com> wrote:
+
+> From: David Wu <david.wu@rock-chips.com>
+> 
+> Add voltage notifier, no need to query regulator voltage for
+> every saradc read, just get regulator voltage once at probe.
+> 
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+Was just about to apply this, but noticed one last thing :( 
+See inline.
+
+> ---
+>  drivers/iio/adc/rockchip_saradc.c | 46 ++++++++++++++++++++++++++-----
+>  1 file changed, 39 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index f3eb8d2e50dc..33c7dd635eb9 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -49,10 +49,12 @@ struct rockchip_saradc {
+>  	struct clk		*clk;
+>  	struct completion	completion;
+>  	struct regulator	*vref;
+> +	int			uv_vref;
+>  	struct reset_control	*reset;
+>  	const struct rockchip_saradc_data *data;
+>  	u16			last_val;
+>  	const struct iio_chan_spec *last_chan;
+> +	struct notifier_block nb;
+>  };
+>  
+>  static void rockchip_saradc_power_down(struct rockchip_saradc *info)
+> @@ -105,13 +107,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+>  		mutex_unlock(&indio_dev->mlock);
+>  		return IIO_VAL_INT;
+>  	case IIO_CHAN_INFO_SCALE:
+> -		ret = regulator_get_voltage(info->vref);
+> -		if (ret < 0) {
+> -			dev_err(&indio_dev->dev, "failed to get voltage\n");
+> -			return ret;
+> -		}
+> -
+> -		*val = ret / 1000;
+> +		*val = info->uv_vref / 1000;
+>  		*val2 = chan->scan_type.realbits;
+>  		return IIO_VAL_FRACTIONAL_LOG2;
+>  	default:
+> @@ -298,6 +294,26 @@ static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
+>  	return IRQ_HANDLED;
+>  }
+>  
+> +static int rockchip_saradc_volt_notify(struct notifier_block *nb,
+> +						   unsigned long event,
+> +						   void *data)
+> +{
+> +	struct rockchip_saradc *info =
+> +			container_of(nb, struct rockchip_saradc, nb);
+> +
+> +	if (event & REGULATOR_EVENT_VOLTAGE_CHANGE)
+> +		info->uv_vref = (unsigned long)data;
+> +
+> +	return NOTIFY_OK;
+> +}
+> +
+> +static void rockchip_saradc_regulator_action(void *data)
+
+This is not a well named function.  What is 'action'?
+Perhaps
+rockchip_saradc_reg_unreg_notifier() or something along those lines?
+
+> +{
+> +	struct rockchip_saradc *info = data;
+> +
+> +	regulator_unregister_notifier(info->vref, &info->nb);
+> +}
+> +
+>  static int rockchip_saradc_probe(struct platform_device *pdev)
+>  {
+>  	struct rockchip_saradc *info = NULL;
+> @@ -410,6 +426,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
+>  
+> +	ret = regulator_get_voltage(info->vref);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	info->uv_vref = ret;
+> +
+>  	ret = clk_prepare_enable(info->pclk);
+>  	if (ret < 0) {
+>  		dev_err(&pdev->dev, "failed to enable pclk\n");
+> @@ -450,6 +472,16 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	info->nb.notifier_call = rockchip_saradc_volt_notify;
+> +	ret = regulator_register_notifier(info->vref, &info->nb);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(&pdev->dev,
+> +				       rockchip_saradc_regulator_action, info);
+> +	if (ret)
+> +		return ret;
+> +
+>  	return devm_iio_device_register(&pdev->dev, indio_dev);
+>  }
+>  
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
