@@ -2,90 +2,98 @@ Return-Path: <SRS0=9QTE=NA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 340E6C4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 10:58:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B961C432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 14:29:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D30EF60EE9
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 10:58:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D30EF60EE9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E8EEA61002
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Aug 2021 14:29:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E8EEA61002
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kynesim.co.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tD52tK/XaDie5lIVtZKeUucmQTIcgZln6bhVcCOizaQ=; b=uGTzKkkTAzlwyy
-	6UIZcEVSfvENAFbHDk4+eI1c7auAb3l5ubcucGB2nxSvez0U2oJtyfvh9CU8kB0gwFS96D8DgSZlR
-	tJRbR820zy1eBEIGGTWu2E2hTUzoHjhNVU4lH8BhdUHBcG8EQdeW15Jx9InjB99fM2CEKUqrNAk3b
-	R/w0rtb4KMhrvyw3ytnegSyP8ugg7us6e0CmTAhJLfBjN0ipaDZtUc28hzMwThWkZYSLgzipHeo3L
-	5O0xLIkDjj+8BbNpOWw6jq9Qkep0TUPZ6FuqzrA3vniXPM5yMESTmmTqV375HuyxRwPHCVndJOnjR
-	cXaxDsyRWmiMtNq6qyyw==;
+	List-Owner; bh=+Glri5R8pVPS0h1WNtQTBqmn7m128Dn1eAOn/oXLiLg=; b=dj2o/lg6Pl2KLf
+	3nVq0EfBNuoF24dbuZ6keISz44i5LR4sEa4UsfpxmLxD/FPFa8IPElYp5PHF5SSq+ZUmy3L/92sga
+	5suizR/9IrWq4q3oMnLp+m1NcB494d+MAh6PwPq60eCSOFlphsFOyEZVGwLWS/7/lJNgrQTIwjcwx
+	Hkm5xsyJoyOG3hHHxNhb+pFrJ9ofstLc9vXv9HoqmgXusvMABeEQqfJLFkzldUqtOrMbBjeRwIBlo
+	lFMI7zW2tGGS2Tvl2JSmIeXyybzQUd2fEYCvV1d9FlLpcRKqi9vRQ5UeuwhUlY0nq08wxfKmN3li8
+	IKLA0FpWJ2yEi9sCWYEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD2yh-000Ge0-CO; Mon, 09 Aug 2021 10:57:55 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1mD6Hj-000uaY-Sd; Mon, 09 Aug 2021 14:29:47 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mD2yd-000Gcf-3a
- for linux-rockchip@lists.infradead.org; Mon, 09 Aug 2021 10:57:53 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id a93so28688871ybi.1
- for <linux-rockchip@lists.infradead.org>; Mon, 09 Aug 2021 03:57:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=29y/iLxNFNnvLYgOgqntrEvNskLkzb3T+cHZyF7bUPo=;
- b=Abm0cm6I/+CyTKXMwu6hEStFtMK0RXqgvqMbDOU/bH56Ibe53b1hnHrCED8JjLC51E
- FuEsvn9kUgt7XKG2dGVuq0RFAivZ3D8b/WEMs30oyTvoCZN8vkxzcSXzzxZ8d3Qo++Au
- znyFDhAK2894pPpwut/GtMhzTJTCfM08naRZMqmAW+0QXj+s511h06x48j7oFq8GKTT0
- 3HlzxlTe8RpL55FsYZyNR0/kpfW4F6qHG9BNc5P6uvui74Cfulrj77qQi2CzO3Mj9vIC
- QGk+kN7D2AmTLvjikUV4Uf+PwYfbYrNESCZWBc/fAX1WYFJMe2r49iEGnj2BEIDJE6Zx
- 9SRA==
+ id 1mD6HV-000uYz-Lc
+ for linux-rockchip@lists.infradead.org; Mon, 09 Aug 2021 14:29:37 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id
+ q11-20020a7bce8b0000b02902e6880d0accso2995223wmj.0
+ for <linux-rockchip@lists.infradead.org>; Mon, 09 Aug 2021 07:29:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kynesim-co-uk.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:references:in-reply-to
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=L999Yib9z6H/0B0JYuNS69UkBVl7RBvK1NmqkaAvqbc=;
+ b=aMh55qQH3CSm6IHOwLSyWPTlMpgFW1ioRLjQrChb7QwPGAMH14PTonvsmfYzwWVoNW
+ JFnAaSZ7ckp+5eBKlBHEN69wSkvYBwruriQ02uw/S8PxPYO6yOesROGVtWeaxyyXvsl6
+ JTEECDcddSLwvF90ohli+Pfo1vikDXvCmirOIA1M0CoJ/an/BNby5abH0NS8kl1gQFTk
+ zfCtL+PEmqP2ZEwJ2DfFNq55VipsbGv5YKFmx0CbwMogRUmAYdOSc6T6Y0LVFFbL/4sR
+ CDz2IN3/aDOfbnejllJbl/8oHqH3arIzPhKscEyqtKuMC2GtMX5yWlzZQIUt5noKB6Sy
+ sU5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=29y/iLxNFNnvLYgOgqntrEvNskLkzb3T+cHZyF7bUPo=;
- b=hEYzsQ97U88NJv3pB24G+dFqCX4Pv2589Wjj7X2J/kBmXL3yoLeebCuiGqtq6HULVK
- WfV+dDvs4cja2Xx2d0YCWGB2ReRPlnYreARdIyDGCt/KnT1YUQwKXBwfOPSO8WH2hFxM
- 0sRSkXIM048y6DyC6AxW8ZIDLpapGJJARcUxLDOcX5xszJorEDZwhiAbYjmgN7H15OPC
- YNqFLaxxgGmkvIRHPJNZbQpcmsqiFjgOGrtoh/3FM7pL7QPDETNiIxLdWCLE1uO9Ehzx
- 9BvF32erfQ9Iv2t0TeWH0lNisCWmuWfzWfR72jE8uuLimKKZ0VMN//matCCrtQ1KzGlY
- zGhg==
-X-Gm-Message-State: AOAM530K+anFFgZTreWiWKf4V43/aKXIDg/Qc3z2n3FSCMGrLYP0iRT/
- biM2w58j48I7NE4+3GNSRN6B196VU/kb/eMwryU=
-X-Google-Smtp-Source: ABdhPJyIaGIL719GmPBLn0xZ+eSUsLKZMW2KPqAsrxqSHsss+LR1j4yGTNSE/bVQW/GmAV7DPoLWWnaPvdWwoWs45oY=
-X-Received: by 2002:a25:3c5:: with SMTP id 188mr28131568ybd.437.1628506669209; 
- Mon, 09 Aug 2021 03:57:49 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:references
+ :in-reply-to:user-agent:mime-version:content-transfer-encoding;
+ bh=L999Yib9z6H/0B0JYuNS69UkBVl7RBvK1NmqkaAvqbc=;
+ b=cihHLL1qnUHYi5YXKTQ+/Awc8JnKWsKJPk4v4CHhP1VOcsV9pRs/PAOztK2nTUghbu
+ WLaQOnPnY0iLTDXHo8ZKx+qh2Qq8AIDHRgOh6JRRZYOBXWrLa9c4vGfQYqiyz3tRV0/q
+ hI+g2JynC2ZDDyOdy3YLnP04fSpNqiBzT6NthtYun8lQ8PCpG9egZqkwuUkynOA9r86f
+ SJ0jglLzQjZfU2AD+yAljv/lOH7IjYbtkQs7KgfnpINYamSViCjk4XpV44NneU/TgvX+
+ Ohc7+kvEGavK6hetRQEkEDyaDN6dC44ywqQ1n14kzN71sVlTGDK7pGD497HZLfP6U7rc
+ CWiQ==
+X-Gm-Message-State: AOAM531bgGQhTtXkizM6tmtCiCEDokDQktc2Ea+sqT5Ovu+NNMXp55++
+ I6NkUWEiDKh+jMMbikQf4No6RkYTI1TpY9nETHc=
+X-Google-Smtp-Source: ABdhPJzJQKZXaUTHo0dgxyBYN3G9VHHriB7v/onpxEw6Bg2btBanvR7MJ+MH/AmIO2DeJ7LR9B/t6A==
+X-Received: by 2002:a05:600c:2242:: with SMTP id
+ a2mr17243784wmm.180.1628519371129; 
+ Mon, 09 Aug 2021 07:29:31 -0700 (PDT)
+Received: from CTHALPA.outer.uphall.net
+ (cpc1-cmbg20-2-0-cust759.5-4.cable.virginm.net. [86.21.218.248])
+ by smtp.gmail.com with ESMTPSA id j19sm206203wmi.3.2021.08.09.07.29.29
+ (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+ Mon, 09 Aug 2021 07:29:30 -0700 (PDT)
+From: John Cox <jc@kynesim.co.uk>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: hverkuil@xs4all.nl, ezequiel@collabora.com, p.zabel@pengutronix.de,
+ mchehab@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@siol.net,
+ emil.l.velikov@gmail.com, andrzej.p@collabora.com, kernel@pengutronix.de,
+ linux-imx@nxp.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v13 2/9] media: hevc: Add decode params control
+Date: Mon, 09 Aug 2021 15:29:29 +0100
+Message-ID: <h8e2hgh73r8lqgr8lgmuobubj2jcdg6mv5@4ax.com>
+References: <20210603115004.915294-1-benjamin.gaignard@collabora.com>
+ <20210603115004.915294-3-benjamin.gaignard@collabora.com>
+In-Reply-To: <20210603115004.915294-3-benjamin.gaignard@collabora.com>
+User-Agent: ForteAgent/8.00.32.1272
 MIME-Version: 1.0
-References: <20210625065511.1096935-1-xxm@rock-chips.com>
- <202108091743281185811@rock-chips.com>
-In-Reply-To: <202108091743281185811@rock-chips.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 9 Aug 2021 06:57:38 -0400
-Message-ID: <CAMdYzYqX-3BVqiyZycWFixQhUiNT5hg3SZvid8s=+mjGs06KkQ@mail.gmail.com>
-Subject: Re: [PATCH v11] PCI: rockchip-dwc: Add Rockchip RK356X host
- controller driver
-To: "xxm@rock-chips.com" <xxm@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
- linux-pci <linux-pci@vger.kernel.org>, 
- linux-rockchip <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, "robh+dt" <robh+dt@kernel.org>, 
- jbx6244 <jbx6244@gmail.com>, heiko <heiko@sntech.de>, 
- "kever.yang" <kever.yang@rock-chips.com>, 
- =?UTF-8?B?5p6X5rabKOW6leWxguW5s+WPsCk=?= <shawn.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_035751_222898_C6A52599 
-X-CRM114-Status: GOOD (  30.29  )
+X-CRM114-CacheID: sfid-20210809_072933_746273_8463D770 
+X-CRM114-Status: GOOD (  21.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,232 +106,433 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBBdWcgOSwgMjAyMSBhdCA1OjQzIEFNIHh4bUByb2NrLWNoaXBzLmNvbSA8eHhtQHJv
-Y2stY2hpcHMuY29tPiB3cm90ZToKPgo+IEhpIGFsbCwKPgo+IElmIGFueSBuZXcgY29tbWVudHMg
-YWJvdXQgdGhpcyBwYXRjaD8KCkdvb2QgTW9ybmluZywKCk5vdCBhIGRpcmVjdCBjb21tZW50LCBi
-dXQgY2VydGFpbmx5IGFkamFjZW50LgpJcyB0aGVyZSBhbnkgc3RhdHVzIG9uIHRoZSBJVFMgZXJy
-YXRhPwoKTXkgcmVhc29uaW5nIGlzIHRoZSBtYmktYWxpYXMgbWV0aG9kIGlzbid0IHBlcmZlY3Qs
-IGZvciBleGFtcGxlIHRoZQpmb2xsb3dpbmcgZXJyb3IgaXMgY29uc3RhbnRseXNlZW4gdXNpbmcg
-aXQ6ClszOTkxMC40NTg1MzFdIGl4Z2JlIDAwMDA6MDE6MDAuMSBlbnAxczBmMTogTklDIExpbmsg
-aXMgVXAgMTAgR2JwcywKRmxvdyBDb250cm9sOiBSWC9UWApbNDAwNDkuMTk1NTc5XSBpeGdiZSAw
-MDAwOjAxOjAwLjEgZW5wMXMwZjE6IE5JQyBMaW5rIGlzIERvd24KWzQwMDQ5Ljc4MzAxMF0gaXhn
-YmUgMDAwMDowMTowMC4xIGVucDFzMGYxOiBOSUMgTGluayBpcyBVcCAxMCBHYnBzLApGbG93IENv
-bnRyb2w6IFJYL1RYCls0MDExMC41OTc0MjFdIGl4Z2JlIDAwMDA6MDE6MDAuMSBlbnAxczBmMTog
-TklDIExpbmsgaXMgRG93bgoKVGhpcyBpc3N1ZSBkb2Vzbid0IG9jY3VyIHdoZW4gdXNpbmcgbGVn
-YWN5IGludGVycnVwdHMgbm9yIHByb3BlciBJVFMgc2VydmljZXMuCgpUaGUgb25seSBvdGhlciBp
-c3N1ZSBJIGhhdmUgZW5jb3VudGVyZWQgaXMgZEdQVXMgZG8gbm90IGZ1bmN0aW9uLgpJIHN1c3Bl
-Y3QgdGhlIFBDSWUgY29udHJvbGxlciBpcyBhZmZlY3RlZCBieSB0aGUgc2FtZSBjYWNoZSBjb2hl
-cmVuY3kKaXNzdWUgYXMgdGhlIElUUyB0cmFuc2xhdG9yIGlzLCBpcyB0aGF0IGNvcnJlY3Q/CgpP
-dGhlcndpc2UsIEkndmUgaGFkIGdyZWF0IHN1Y2Nlc3Mgd2l0aCB0aGlzIGRyaXZlci4KClZlcnkg
-UmVzcGVjdGZ1bGx5LApQZXRlciBHZWlzCgo+ID5BZGQgYSBkcml2ZXIgZm9yIHRoZSBEZXNpZ25X
-YXJlLWJhc2VkIFBDSWUgY29udHJvbGxlciBmb3VuZCBvbgo+ID5SSzM1NlguIFRoZSBleGlzdGlu
-ZyBwY2llLXJvY2tjaGlwLWhvc3QgZHJpdmVyIGlzIG9ubHkgdXNlZCBmb3IKPiA+dGhlIFJvY2tj
-aGlwLWRlc2lnbmVkIElQIGZvdW5kIG9uIFJLMzM5OS4KPiA+Cj4gPlRlc3RlZC1ieTogUGV0ZXIg
-R2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPiA+UmV2aWV3ZWQtYnk6IEtldmVyIFlhbmcgPGtl
-dmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPlNpZ25lZC1vZmYtYnk6IFNpbW9uIFh1ZSA8eHht
-QHJvY2stY2hpcHMuY29tPgo+ID5TaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkBy
-b2NrLWNoaXBzLmNvbT4KPiA+LS0tCj4gPiBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9LY29u
-ZmlnICAgICAgICAgICAgfCAgMTEgKwo+ID4gZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvTWFr
-ZWZpbGUgICAgICAgICAgIHwgICAxICsKPiA+IGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3Bj
-aWUtZHctcm9ja2NoaXAuYyB8IDI3NiArKysrKysrKysrKysrKysrKysKPiA+IDMgZmlsZXMgY2hh
-bmdlZCwgMjg4IGluc2VydGlvbnMoKykKPiA+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3Bj
-aS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlwLmMKPiA+Cj4gPmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9LY29uZmlnIGIvZHJpdmVycy9wY2kvY29udHJvbGxl
-ci9kd2MvS2NvbmZpZwo+ID5pbmRleCA0MjNkMzU4NzJjZTQuLjYwZDNkZGU5Y2EzOSAxMDA2NDQK
-PiA+LS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvS2NvbmZpZwo+ID4rKysgYi9kcml2
-ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9LY29uZmlnCj4gPkBAIC0yMTQsNiArMjE0LDE3IEBAIGNv
-bmZpZyBQQ0lFX0FSVFBFQzZfRVAKPiA+ICAgRW5hYmxlcyBzdXBwb3J0IGZvciB0aGUgUENJZSBj
-b250cm9sbGVyIGluIHRoZSBBUlRQRUMtNiBTb0MgdG8gd29yayBpbgo+ID4gICBlbmRwb2ludCBt
-b2RlLiBUaGlzIHVzZXMgdGhlIERlc2lnbldhcmUgY29yZS4KPiA+Cj4gPitjb25maWcgUENJRV9S
-T0NLQ0hJUF9EV19IT1NUCj4gPisgICAgICBib29sICJSb2NrY2hpcCBEZXNpZ25XYXJlIFBDSWUg
-Y29udHJvbGxlciIKPiA+KyAgICAgIHNlbGVjdCBQQ0lFX0RXCj4gPisgICAgICBzZWxlY3QgUENJ
-RV9EV19IT1NUCj4gPisgICAgICBkZXBlbmRzIG9uIFBDSV9NU0lfSVJRX0RPTUFJTgo+ID4rICAg
-ICAgZGVwZW5kcyBvbiBBUkNIX1JPQ0tDSElQIHx8IENPTVBJTEVfVEVTVAo+ID4rICAgICAgZGVw
-ZW5kcyBvbiBPRgo+ID4rICAgICAgaGVscAo+ID4rICAgICAgICBFbmFibGVzIHN1cHBvcnQgZm9y
-IHRoZSBEZXNpZ25XYXJlIFBDSWUgY29udHJvbGxlciBpbiB0aGUKPiA+KyAgICAgICAgUm9ja2No
-aXAgU29DIGV4Y2VwdCBSSzMzOTkuCj4gPisKPiA+IGNvbmZpZyBQQ0lFX0lOVEVMX0dXCj4gPiBi
-b29sICJJbnRlbCBHYXRld2F5IFBDSWUgaG9zdCBjb250cm9sbGVyIHN1cHBvcnQiCj4gPiBkZXBl
-bmRzIG9uIE9GICYmIChYODYgfHwgQ09NUElMRV9URVNUKQo+ID5kaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9kd2MvTWFrZWZpbGUgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3
-Yy9NYWtlZmlsZQo+ID5pbmRleCA5ZTZjZTBkYzJmNTMuLjM3MTBlOTE0NzFmNyAxMDA2NDQKPiA+
-LS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvTWFrZWZpbGUKPiA+KysrIGIvZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9kd2MvTWFrZWZpbGUKPiA+QEAgLTE0LDYgKzE0LDcgQEAgb2JqLSQo
-Q09ORklHX1BDSV9MQVlFUlNDQVBFX0VQKSArPSBwY2ktbGF5ZXJzY2FwZS1lcC5vCj4gPiBvYmot
-JChDT05GSUdfUENJRV9RQ09NKSArPSBwY2llLXFjb20ubwo+ID4gb2JqLSQoQ09ORklHX1BDSUVf
-QVJNQURBXzhLKSArPSBwY2llLWFybWFkYThrLm8KPiA+IG9iai0kKENPTkZJR19QQ0lFX0FSVFBF
-QzYpICs9IHBjaWUtYXJ0cGVjNi5vCj4gPitvYmotJChDT05GSUdfUENJRV9ST0NLQ0hJUF9EV19I
-T1NUKSArPSBwY2llLWR3LXJvY2tjaGlwLm8KPiA+IG9iai0kKENPTkZJR19QQ0lFX0lOVEVMX0dX
-KSArPSBwY2llLWludGVsLWd3Lm8KPiA+IG9iai0kKENPTkZJR19QQ0lFX0tJUklOKSArPSBwY2ll
-LWtpcmluLm8KPiA+IG9iai0kKENPTkZJR19QQ0lFX0hJU0lfU1RCKSArPSBwY2llLWhpc3RiLm8K
-PiA+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2No
-aXAuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+ID5u
-ZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID5pbmRleCAwMDAwMDAwMDAwMDAuLjIwY2VmMmUwNmY2Ngo+
-ID4tLS0gL2Rldi9udWxsCj4gPisrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUt
-ZHctcm9ja2NoaXAuYwo+ID5AQCAtMCwwICsxLDI3NiBAQAo+ID4rLy8gU1BEWC1MaWNlbnNlLUlk
-ZW50aWZpZXI6IEdQTC0yLjAKPiA+Ky8qCj4gPisgKiBQQ0llIGhvc3QgY29udHJvbGxlciBkcml2
-ZXIgZm9yIFJvY2tjaGlwIFNvQ3MuCj4gPisgKgo+ID4rICogQ29weXJpZ2h0IChDKSAyMDIxIFJv
-Y2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRkLgo+ID4rICogICAgaHR0cDovL3d3dy5yb2NrLWNo
-aXBzLmNvbQo+ID4rICoKPiA+KyAqIEF1dGhvcjogU2ltb24gWHVlIDx4eG1Acm9jay1jaGlwcy5j
-b20+Cj4gPisgKi8KPiA+Kwo+ID4rI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ID4rI2luY2x1ZGUg
-PGxpbnV4L2dwaW8vY29uc3VtZXIuaD4KPiA+KyNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+
-Cj4gPisjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPisjaW5jbHVkZSA8bGludXgvb2ZfZGV2
-aWNlLmg+Cj4gPisjaW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPgo+ID4rI2luY2x1ZGUgPGxpbnV4
-L3BsYXRmb3JtX2RldmljZS5oPgo+ID4rI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+ID4rI2lu
-Y2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+Cj4gPisKPiA+KyNpbmNsdWRlICJwY2llLWRlc2lnbndhcmUu
-aCIKPiA+Kwo+ID4rLyoKPiA+KyAqIFRoZSB1cHBlciAxNiBiaXRzIG9mIFBDSUVfQ0xJRU5UX0NP
-TkZJRyBhcmUgYSB3cml0ZQo+ID4rICogbWFzayBmb3IgdGhlIGxvd2VyIDE2IGJpdHMuCj4gPisg
-Ki8KPiA+KyNkZWZpbmUgSElXT1JEX1VQREFURShtYXNrLCB2YWwpICgoKG1hc2spIDw8IDE2KSB8
-ICh2YWwpKQo+ID4rI2RlZmluZSBISVdPUkRfVVBEQVRFX0JJVCh2YWwpICAgICAgICBISVdPUkRf
-VVBEQVRFKHZhbCwgdmFsKQo+ID4rCj4gPisjZGVmaW5lIHRvX3JvY2tjaGlwX3BjaWUoeCkgZGV2
-X2dldF9kcnZkYXRhKCh4KS0+ZGV2KQo+ID4rCj4gPisjZGVmaW5lIFBDSUVfQ0xJRU5UX1JDX01P
-REUgICBISVdPUkRfVVBEQVRFX0JJVCgweDQwKQo+ID4rI2RlZmluZSBQQ0lFX0NMSUVOVF9FTkFC
-TEVfTFRTU00gICAgICBISVdPUkRfVVBEQVRFX0JJVCgweGMpCj4gPisjZGVmaW5lIFBDSUVfU01M
-SF9MSU5LVVAgICAgICBCSVQoMTYpCj4gPisjZGVmaW5lIFBDSUVfUkRMSF9MSU5LVVAgICAgICBC
-SVQoMTcpCj4gPisjZGVmaW5lIFBDSUVfTElOS1VQICAgKFBDSUVfU01MSF9MSU5LVVAgfCBQQ0lF
-X1JETEhfTElOS1VQKQo+ID4rI2RlZmluZSBQQ0lFX0wwU19FTlRSWSAgICAgICAgMHgxMQo+ID4r
-I2RlZmluZSBQQ0lFX0NMSUVOVF9HRU5FUkFMX0NPTlRST0wgICAweDAKPiA+KyNkZWZpbmUgUENJ
-RV9DTElFTlRfR0VORVJBTF9ERUJVRyAgICAgMHgxMDQKPiA+KyNkZWZpbmUgUENJRV9DTElFTlRf
-SE9UX1JFU0VUX0NUUkwgICAgICAweDE4MAo+ID4rI2RlZmluZSBQQ0lFX0NMSUVOVF9MVFNTTV9T
-VEFUVVMgICAgICAweDMwMAo+ID4rI2RlZmluZSBQQ0lFX0xUU1NNX0VOQUJMRV9FTkhBTkNFICAg
-ICAgIEJJVCg0KQo+ID4rI2RlZmluZSBQQ0lFX0xUU1NNX1NUQVRVU19NQVNLICAgICAgICBHRU5N
-QVNLKDUsIDApCj4gPisKPiA+K3N0cnVjdCByb2NrY2hpcF9wY2llIHsKPiA+KyAgICAgIHN0cnVj
-dCBkd19wY2llICBwY2k7Cj4gPisgICAgICB2b2lkIF9faW9tZW0gICAgKmFwYl9iYXNlOwo+ID4r
-ICAgICAgc3RydWN0IHBoeSAgICAgICpwaHk7Cj4gPisgICAgICBzdHJ1Y3QgY2xrX2J1bGtfZGF0
-YSAgICAqY2xrczsKPiA+KyAgICAgIHVuc2lnbmVkIGludCAgICBjbGtfY250Owo+ID4rICAgICAg
-c3RydWN0IHJlc2V0X2NvbnRyb2wgICAgKnJzdDsKPiA+KyAgICAgIHN0cnVjdCBncGlvX2Rlc2Mg
-ICAgICAgICpyc3RfZ3BpbzsKPiA+KyAgICAgIHN0cnVjdCByZWd1bGF0b3IgICAgICAgICAgICAg
-ICAgKnZwY2llM3YzOwo+ID4rfTsKPiA+Kwo+ID4rc3RhdGljIGludCByb2NrY2hpcF9wY2llX3Jl
-YWRsX2FwYihzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXAsCj4gPisgICAgICAgICAgIHUz
-MiByZWcpCj4gPit7Cj4gPisgICAgICByZXR1cm4gcmVhZGxfcmVsYXhlZChyb2NrY2hpcC0+YXBi
-X2Jhc2UgKyByZWcpOwo+ID4rfQo+ID4rCj4gPitzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX3dy
-aXRlbF9hcGIoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwLAo+ID4rICAgICAgdTMyIHZh
-bCwgdTMyIHJlZykKPiA+K3sKPiA+KyAgICAgIHdyaXRlbF9yZWxheGVkKHZhbCwgcm9ja2NoaXAt
-PmFwYl9iYXNlICsgcmVnKTsKPiA+K30KPiA+Kwo+ID4rc3RhdGljIHZvaWQgcm9ja2NoaXBfcGNp
-ZV9lbmFibGVfbHRzc20oc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+ID4rewo+ID4r
-ICAgICAgcm9ja2NoaXBfcGNpZV93cml0ZWxfYXBiKHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9FTkFC
-TEVfTFRTU00sCj4gPisgICAgICBQQ0lFX0NMSUVOVF9HRU5FUkFMX0NPTlRST0wpOwo+ID4rfQo+
-ID4rCj4gPitzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfbGlua191cChzdHJ1Y3QgZHdfcGNpZSAq
-cGNpKQo+ID4rewo+ID4rICAgICAgc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwID0gdG9f
-cm9ja2NoaXBfcGNpZShwY2kpOwo+ID4rICAgICAgdTMyIHZhbCA9IHJvY2tjaGlwX3BjaWVfcmVh
-ZGxfYXBiKHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9MVFNTTV9TVEFUVVMpOwo+ID4rCj4gPisgICAg
-ICBpZiAoKHZhbCAmIFBDSUVfTElOS1VQKSA9PSBQQ0lFX0xJTktVUCAmJgo+ID4rICAgICAgICAg
-ICh2YWwgJiBQQ0lFX0xUU1NNX1NUQVRVU19NQVNLKSA9PSBQQ0lFX0wwU19FTlRSWSkKPiA+KyAg
-ICAgIHJldHVybiAxOwo+ID4rCj4gPisgICAgICByZXR1cm4gMDsKPiA+K30KPiA+Kwo+ID4rc3Rh
-dGljIGludCByb2NrY2hpcF9wY2llX3N0YXJ0X2xpbmsoc3RydWN0IGR3X3BjaWUgKnBjaSkKPiA+
-K3sKPiA+KyAgICAgIHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9IHRvX3JvY2tjaGlw
-X3BjaWUocGNpKTsKPiA+Kwo+ID4rICAgICAgLyogUmVzZXQgZGV2aWNlICovCj4gPisgICAgICBn
-cGlvZF9zZXRfdmFsdWVfY2Fuc2xlZXAocm9ja2NoaXAtPnJzdF9ncGlvLCAwKTsKPiA+Kwo+ID4r
-ICAgICAgcm9ja2NoaXBfcGNpZV9lbmFibGVfbHRzc20ocm9ja2NoaXApOwo+ID4rCj4gPisgICAg
-ICAvKgo+ID4rICAgICAgKiBQQ0llIHJlcXVpcmVzIHRoZSByZWZjbGsgdG8gYmUgc3RhYmxlIGZv
-ciAxMDDCtXMgcHJpb3IgdG8gcmVsZWFzaW5nCj4gPisgICAgICAqIFBFUlNULiBTZWUgdGFibGUg
-Mi00IGluIHNlY3Rpb24gMi42LjIgQUMgU3BlY2lmaWNhdGlvbnMgb2YgdGhlIFBDSQo+ID4rICAg
-ICAgKiBFeHByZXNzIENhcmQgRWxlY3Ryb21lY2hhbmljYWwgU3BlY2lmaWNhdGlvbiwgMS4xLiBI
-b3dldmVyLCB3ZSBkb24ndAo+ID4rICAgICAgKiBrbm93IGlmIHRoZSByZWZjbGsgaXMgY29taW5n
-IGZyb20gUkMncyBQSFkgb3IgZXh0ZXJuYWwgT1NDLiBJZiBpdCdzCj4gPisgICAgICAqIGZyb20g
-UkMsIHNvIGVuYWJsaW5nIExUU1NNIGlzIHRoZSBqdXN0IHJpZ2h0IHBsYWNlIHRvIHJlbGVhc2Ug
-I1BFUlNULgo+ID4rICAgICAgKiBXZSBuZWVkIG1vcmUgZXh0cmEgdGltZSBhcyBiZWZvcmUsIHJh
-dGhlciB0aGFuIHNldHRpbmcganVzdAo+ID4rICAgICAgKiAxMDB1cyBhcyB3ZSBkb24ndCBrbm93
-IGhvdyBsb25nIHNob3VsZCB0aGUgZGV2aWNlIG5lZWQgdG8gcmVzZXQuCj4gPisgICAgICAqLwo+
-ID4rICAgICAgbXNsZWVwKDEwMCk7Cj4gPisgICAgICBncGlvZF9zZXRfdmFsdWVfY2Fuc2xlZXAo
-cm9ja2NoaXAtPnJzdF9ncGlvLCAxKTsKPiA+Kwo+ID4rICAgICAgcmV0dXJuIDA7Cj4gPit9Cj4g
-PisKPiA+K3N0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9ob3N0X2luaXQoc3RydWN0IHBjaWVfcG9y
-dCAqcHApCj4gPit7Cj4gPisgICAgICBzdHJ1Y3QgZHdfcGNpZSAqcGNpID0gdG9fZHdfcGNpZV9m
-cm9tX3BwKHBwKTsKPiA+KyAgICAgIHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCA9IHRv
-X3JvY2tjaGlwX3BjaWUocGNpKTsKPiA+KyAgICAgIHUzMiB2YWwgPSBISVdPUkRfVVBEQVRFX0JJ
-VChQQ0lFX0xUU1NNX0VOQUJMRV9FTkhBTkNFKTsKPiA+Kwo+ID4rICAgICAgLyogTFRTU00gZW5h
-YmxlIGNvbnRyb2wgbW9kZSAqLwo+ID4rICAgICAgcm9ja2NoaXBfcGNpZV93cml0ZWxfYXBiKHJv
-Y2tjaGlwLCB2YWwsIFBDSUVfQ0xJRU5UX0hPVF9SRVNFVF9DVFJMKTsKPiA+Kwo+ID4rICAgICAg
-cm9ja2NoaXBfcGNpZV93cml0ZWxfYXBiKHJvY2tjaGlwLCBQQ0lFX0NMSUVOVF9SQ19NT0RFLAo+
-ID4rICAgICAgUENJRV9DTElFTlRfR0VORVJBTF9DT05UUk9MKTsKPiA+Kwo+ID4rICAgICAgcmV0
-dXJuIDA7Cj4gPit9Cj4gPisKPiA+K3N0YXRpYyBjb25zdCBzdHJ1Y3QgZHdfcGNpZV9ob3N0X29w
-cyByb2NrY2hpcF9wY2llX2hvc3Rfb3BzID0gewo+ID4rICAgICAgLmhvc3RfaW5pdCA9IHJvY2tj
-aGlwX3BjaWVfaG9zdF9pbml0LAo+ID4rfTsKPiA+Kwo+ID4rc3RhdGljIGludCByb2NrY2hpcF9w
-Y2llX2Nsa19pbml0KHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCkKPiA+K3sKPiA+KyAg
-ICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IHJvY2tjaGlwLT5wY2kuZGV2Owo+ID4rICAgICAgaW50
-IHJldDsKPiA+Kwo+ID4rICAgICAgcmV0ID0gZGV2bV9jbGtfYnVsa19nZXRfYWxsKGRldiwgJnJv
-Y2tjaGlwLT5jbGtzKTsKPiA+KyAgICAgIGlmIChyZXQgPCAwKQo+ID4rICAgICAgcmV0dXJuIHJl
-dDsKPiA+Kwo+ID4rICAgICAgcm9ja2NoaXAtPmNsa19jbnQgPSByZXQ7Cj4gPisKPiA+KyAgICAg
-IHJldHVybiBjbGtfYnVsa19wcmVwYXJlX2VuYWJsZShyb2NrY2hpcC0+Y2xrX2NudCwgcm9ja2No
-aXAtPmNsa3MpOwo+ID4rfQo+ID4rCj4gPitzdGF0aWMgaW50IHJvY2tjaGlwX3BjaWVfcmVzb3Vy
-Y2VfZ2V0KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gPisgICAgICAgICAgICBzdHJ1
-Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXApCj4gPit7Cj4gPisgICAgICByb2NrY2hpcC0+YXBi
-X2Jhc2UgPSBkZXZtX3BsYXRmb3JtX2lvcmVtYXBfcmVzb3VyY2VfYnluYW1lKHBkZXYsICJhcGIi
-KTsKPiA+KyAgICAgIGlmIChJU19FUlIocm9ja2NoaXAtPmFwYl9iYXNlKSkKPiA+KyAgICAgIHJl
-dHVybiBQVFJfRVJSKHJvY2tjaGlwLT5hcGJfYmFzZSk7Cj4gPisKPiA+KyAgICAgIHJvY2tjaGlw
-LT5yc3RfZ3BpbyA9IGRldm1fZ3Bpb2RfZ2V0X29wdGlvbmFsKCZwZGV2LT5kZXYsICJyZXNldCIs
-Cj4gPisgICAgICAgICAgIEdQSU9EX09VVF9ISUdIKTsKPiA+KyAgICAgIGlmIChJU19FUlIocm9j
-a2NoaXAtPnJzdF9ncGlvKSkKPiA+KyAgICAgIHJldHVybiBQVFJfRVJSKHJvY2tjaGlwLT5yc3Rf
-Z3Bpbyk7Cj4gPisKPiA+KyAgICAgIHJldHVybiAwOwo+ID4rfQo+ID4rCj4gPitzdGF0aWMgaW50
-IHJvY2tjaGlwX3BjaWVfcGh5X2luaXQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+
-ID4rewo+ID4rICAgICAgc3RydWN0IGRldmljZSAqZGV2ID0gcm9ja2NoaXAtPnBjaS5kZXY7Cj4g
-PisgICAgICBpbnQgcmV0Owo+ID4rCj4gPisgICAgICByb2NrY2hpcC0+cGh5ID0gZGV2bV9waHlf
-Z2V0KGRldiwgInBjaWUtcGh5Iik7Cj4gPisgICAgICBpZiAoSVNfRVJSKHJvY2tjaGlwLT5waHkp
-KQo+ID4rICAgICAgcmV0dXJuIGRldl9lcnJfcHJvYmUoZGV2LCBQVFJfRVJSKHJvY2tjaGlwLT5w
-aHkpLAo+ID4rICAgICAgICAgICAibWlzc2luZyBQSFlcbiIpOwo+ID4rCj4gPisgICAgICByZXQg
-PSBwaHlfaW5pdChyb2NrY2hpcC0+cGh5KTsKPiA+KyAgICAgIGlmIChyZXQgPCAwKQo+ID4rICAg
-ICAgcmV0dXJuIHJldDsKPiA+Kwo+ID4rICAgICAgcmV0ID0gcGh5X3Bvd2VyX29uKHJvY2tjaGlw
-LT5waHkpOwo+ID4rICAgICAgaWYgKHJldCkKPiA+KyAgICAgIHBoeV9leGl0KHJvY2tjaGlwLT5w
-aHkpOwo+ID4rCj4gPisgICAgICByZXR1cm4gcmV0Owo+ID4rfQo+ID4rCj4gPitzdGF0aWMgdm9p
-ZCByb2NrY2hpcF9wY2llX3BoeV9kZWluaXQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlw
-KQo+ID4rewo+ID4rICAgICAgcGh5X2V4aXQocm9ja2NoaXAtPnBoeSk7Cj4gPisgICAgICBwaHlf
-cG93ZXJfb2ZmKHJvY2tjaGlwLT5waHkpOwo+ID4rfQo+ID4rCj4gPitzdGF0aWMgaW50IHJvY2tj
-aGlwX3BjaWVfcmVzZXRfY29udHJvbF9yZWxlYXNlKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2Nr
-Y2hpcCkKPiA+K3sKPiA+KyAgICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9IHJvY2tjaGlwLT5wY2ku
-ZGV2Owo+ID4rCj4gPisgICAgICByb2NrY2hpcC0+cnN0ID0gZGV2bV9yZXNldF9jb250cm9sX2Fy
-cmF5X2dldF9leGNsdXNpdmUoZGV2KTsKPiA+KyAgICAgIGlmIChJU19FUlIocm9ja2NoaXAtPnJz
-dCkpCj4gPisgICAgICByZXR1cm4gZGV2X2Vycl9wcm9iZShkZXYsIFBUUl9FUlIocm9ja2NoaXAt
-PnJzdCksCj4gPisgICAgICAgICAgICJmYWlsZWQgdG8gZ2V0IHJlc2V0IGxpbmVzXG4iKTsKPiA+
-Kwo+ID4rICAgICAgcmV0dXJuIHJlc2V0X2NvbnRyb2xfZGVhc3NlcnQocm9ja2NoaXAtPnJzdCk7
-Cj4gPit9Cj4gPisKPiA+K3N0YXRpYyBjb25zdCBzdHJ1Y3QgZHdfcGNpZV9vcHMgZHdfcGNpZV9v
-cHMgPSB7Cj4gPisgICAgICAubGlua191cCA9IHJvY2tjaGlwX3BjaWVfbGlua191cCwKPiA+KyAg
-ICAgIC5zdGFydF9saW5rID0gcm9ja2NoaXBfcGNpZV9zdGFydF9saW5rLAo+ID4rfTsKPiA+Kwo+
-ID4rc3RhdGljIGludCByb2NrY2hpcF9wY2llX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2Ug
-KnBkZXYpCj4gPit7Cj4gPisgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+
-ID4rICAgICAgc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwOwo+ID4rICAgICAgc3RydWN0
-IHBjaWVfcG9ydCAqcHA7Cj4gPisgICAgICBpbnQgcmV0Owo+ID4rCj4gPisgICAgICByb2NrY2hp
-cCA9IGRldm1fa3phbGxvYyhkZXYsIHNpemVvZigqcm9ja2NoaXApLCBHRlBfS0VSTkVMKTsKPiA+
-KyAgICAgIGlmICghcm9ja2NoaXApCj4gPisgICAgICByZXR1cm4gLUVOT01FTTsKPiA+Kwo+ID4r
-ICAgICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgcm9ja2NoaXApOwo+ID4rCj4gPisgICAg
-ICByb2NrY2hpcC0+cGNpLmRldiA9IGRldjsKPiA+KyAgICAgIHJvY2tjaGlwLT5wY2kub3BzID0g
-JmR3X3BjaWVfb3BzOwo+ID4rCj4gPisgICAgICBwcCA9ICZyb2NrY2hpcC0+cGNpLnBwOwo+ID4r
-ICAgICAgcHAtPm9wcyA9ICZyb2NrY2hpcF9wY2llX2hvc3Rfb3BzOwo+ID4rCj4gPisgICAgICBy
-ZXQgPSByb2NrY2hpcF9wY2llX3Jlc291cmNlX2dldChwZGV2LCByb2NrY2hpcCk7Cj4gPisgICAg
-ICBpZiAocmV0KQo+ID4rICAgICAgcmV0dXJuIHJldDsKPiA+Kwo+ID4rICAgICAgLyogRE9OJ1Qg
-TU9WRSBNRTogbXVzdCBiZSBlbmFibGUgYmVmb3JlIFBIWSBpbml0ICovCj4gPisgICAgICByb2Nr
-Y2hpcC0+dnBjaWUzdjMgPSBkZXZtX3JlZ3VsYXRvcl9nZXRfb3B0aW9uYWwoZGV2LCAidnBjaWUz
-djMiKTsKPiA+KyAgICAgIGlmIChJU19FUlIocm9ja2NoaXAtPnZwY2llM3YzKSkKPiA+KyAgICAg
-IGlmIChQVFJfRVJSKHJvY2tjaGlwLT52cGNpZTN2MykgIT0gLUVOT0RFVikKPiA+KyAgICAgIHJl
-dHVybiBkZXZfZXJyX3Byb2JlKGRldiwgUFRSX0VSUihyb2NrY2hpcC0+dnBjaWUzdjMpLAo+ID4r
-ICAgICAgImZhaWxlZCB0byBnZXQgdnBjaWUzdjMgcmVndWxhdG9yXG4iKTsKPiA+Kwo+ID4rICAg
-ICAgcmV0ID0gcmVndWxhdG9yX2VuYWJsZShyb2NrY2hpcC0+dnBjaWUzdjMpOwo+ID4rICAgICAg
-aWYgKHJldCkgewo+ID4rICAgICAgZGV2X2VycihkZXYsICJmYWlsZWQgdG8gZW5hYmxlIHZwY2ll
-M3YzIHJlZ3VsYXRvclxuIik7Cj4gPisgICAgICByZXR1cm4gcmV0Owo+ID4rICAgICAgfQo+ID4r
-Cj4gPisgICAgICByZXQgPSByb2NrY2hpcF9wY2llX3BoeV9pbml0KHJvY2tjaGlwKTsKPiA+KyAg
-ICAgIGlmIChyZXQpCj4gPisgICAgICBnb3RvIGRpc2FibGVfcmVndWxhdG9yOwo+ID4rCj4gPisg
-ICAgICByZXQgPSByb2NrY2hpcF9wY2llX3Jlc2V0X2NvbnRyb2xfcmVsZWFzZShyb2NrY2hpcCk7
-Cj4gPisgICAgICBpZiAocmV0KQo+ID4rICAgICAgZ290byBkZWluaXRfcGh5Owo+ID4rCj4gPisg
-ICAgICByZXQgPSByb2NrY2hpcF9wY2llX2Nsa19pbml0KHJvY2tjaGlwKTsKPiA+KyAgICAgIGlm
-IChyZXQpCj4gPisgICAgICBnb3RvIGRlaW5pdF9waHk7Cj4gPisKPiA+KyAgICAgIHJldCA9IGR3
-X3BjaWVfaG9zdF9pbml0KHBwKTsKPiA+KyAgICAgIGlmICghcmV0KQo+ID4rICAgICAgcmV0dXJu
-IDA7Cj4gPisKPiA+KyAgICAgIGNsa19idWxrX2Rpc2FibGVfdW5wcmVwYXJlKHJvY2tjaGlwLT5j
-bGtfY250LCByb2NrY2hpcC0+Y2xrcyk7Cj4gPitkZWluaXRfcGh5Ogo+ID4rICAgICAgcm9ja2No
-aXBfcGNpZV9waHlfZGVpbml0KHJvY2tjaGlwKTsKPiA+K2Rpc2FibGVfcmVndWxhdG9yOgo+ID4r
-ICAgICAgcmVndWxhdG9yX2Rpc2FibGUocm9ja2NoaXAtPnZwY2llM3YzKTsKPiA+Kwo+ID4rICAg
-ICAgcmV0dXJuIHJldDsKPiA+K30KPiA+Kwo+ID4rc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZp
-Y2VfaWQgcm9ja2NoaXBfcGNpZV9vZl9tYXRjaFtdID0gewo+ID4rICAgICAgeyAuY29tcGF0aWJs
-ZSA9ICJyb2NrY2hpcCxyazM1NjgtcGNpZSIsIH0sCj4gPisgICAgICB7fSwKPiA+K307Cj4gPisK
-PiA+K3N0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIHJvY2tjaGlwX3BjaWVfZHJpdmVyID0g
-ewo+ID4rICAgICAgLmRyaXZlciA9IHsKPiA+KyAgICAgIC5uYW1lICAgPSAicm9ja2NoaXAtZHct
-cGNpZSIsCj4gPisgICAgICAub2ZfbWF0Y2hfdGFibGUgPSByb2NrY2hpcF9wY2llX29mX21hdGNo
-LAo+ID4rICAgICAgLnN1cHByZXNzX2JpbmRfYXR0cnMgPSB0cnVlLAo+ID4rICAgICAgfSwKPiA+
-KyAgICAgIC5wcm9iZSA9IHJvY2tjaGlwX3BjaWVfcHJvYmUsCj4gPit9Owo+ID4rYnVpbHRpbl9w
-bGF0Zm9ybV9kcml2ZXIocm9ja2NoaXBfcGNpZV9kcml2ZXIpOwo+ID4tLQo+ID4yLjI1LjEKPiA+
-Cj4gPgo+ID4KPiA+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+Hi
+
+>Add decode params control and the associated structure to group
+>all the information that are needed to decode a reference frame as
+>is described in ITU-T Rec. H.265 section "8.3.2 Decoding process
+>for reference picture set".
+
+I'm sorry I'm commenting late but I've only just got round to
+implementing code based on this.
+
+>Adapt Cedrus driver to these changes.
+>
+>Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+>---
+>version 11:
+> - Split what was done in v4l2-ctrls.c in v4l2-ctrls-core.c and v4l2-ctrls-defs.c
+>
+> .../media/v4l/ext-ctrls-codec.rst             | 94 +++++++++++++++----
+> .../media/v4l/vidioc-queryctrl.rst            |  6 ++
+> drivers/media/v4l2-core/v4l2-ctrls-core.c     | 21 +++--
+> drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  4 +
+> drivers/staging/media/sunxi/cedrus/cedrus.c   |  6 ++
+> drivers/staging/media/sunxi/cedrus/cedrus.h   |  1 +
+> .../staging/media/sunxi/cedrus/cedrus_dec.c   |  2 +
+> .../staging/media/sunxi/cedrus/cedrus_h265.c  | 12 ++-
+> include/media/hevc-ctrls.h                    | 29 ++++--
+> 9 files changed, 136 insertions(+), 39 deletions(-)
+>
+>diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>index 9cfb471fc6be..9120c5bcaf90 100644
+>--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>@@ -2997,9 +2997,6 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>     * - __u8
+>       - ``pic_struct``
+>       -
+>-    * - __u8
+>-      - ``num_active_dpb_entries``
+>-      - The number of entries in ``dpb``.
+>     * - __u8
+>       - ``ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>       - The list of L0 reference elements as indices in the DPB.
+>@@ -3007,22 +3004,8 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>       - The list of L1 reference elements as indices in the DPB.
+>     * - __u8
+>-      - ``num_rps_poc_st_curr_before``
+>-      - The number of reference pictures in the short-term set that come before
+>-        the current frame.
+>-    * - __u8
+>-      - ``num_rps_poc_st_curr_after``
+>-      - The number of reference pictures in the short-term set that come after
+>-        the current frame.
+>-    * - __u8
+>-      - ``num_rps_poc_lt_curr``
+>-      - The number of reference pictures in the long-term set.
+>-    * - __u8
+>-      - ``padding[7]``
+>+      - ``padding``
+>       - Applications and drivers must set this to zero.
+>-    * - struct :c:type:`v4l2_hevc_dpb_entry`
+>-      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>-      - The decoded picture buffer, for meta-data about reference frames.
+>     * - struct :c:type:`v4l2_hevc_pred_weight_table`
+>       - ``pred_weight_table``
+>       - The prediction weight coefficients for inter-picture prediction.
+>@@ -3278,3 +3261,78 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>     encoding the next frame queued after setting this control.
+>     This provides a bitmask which consists of bits [0, LTR_COUNT-1].
+>     This is applicable to the H264 and HEVC encoders.
+>+
+>+``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS (struct)``
+>+    Specifies various decode parameters, especially the references picture order
+>+    count (POC) for all the lists (short, long, before, current, after) and the
+>+    number of entries for each of them.
+>+    These parameters are defined according to :ref:`hevc`.
+>+    They are described in section 8.3 "Slice decoding process" of the
+>+    specification.
+>+
+>+.. c:type:: v4l2_ctrl_hevc_decode_params
+>+
+>+.. cssclass:: longtable
+>+
+>+.. flat-table:: struct v4l2_ctrl_hevc_decode_params
+>+    :header-rows:  0
+>+    :stub-columns: 0
+>+    :widths:       1 1 2
+>+
+>+    * - __s32
+>+      - ``pic_order_cnt_val``
+>+      - PicOrderCntVal as described in section 8.3.1 "Decoding process
+>+        for picture order count" of the specification.
+>+    * - __u8
+>+      - ``num_active_dpb_entries``
+>+      - The number of entries in ``dpb``.
+>+    * - struct :c:type:`v4l2_hevc_dpb_entry`
+>+      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>+      - The decoded picture buffer, for meta-data about reference frames.
+>+    * - __u8
+>+      - ``num_poc_st_curr_before``
+>+      - The number of reference pictures in the short-term set that come before
+>+        the current frame.
+>+    * - __u8
+>+      - ``num_poc_st_curr_after``
+>+      - The number of reference pictures in the short-term set that come after
+>+        the current frame.
+>+    * - __u8
+>+      - ``num_poc_lt_curr``
+>+      - The number of reference pictures in the long-term set.
+>+    * - __u8
+>+      - ``poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>+      - PocStCurrBefore as described in section 8.3.2 "Decoding process for reference
+>+        picture set.
+>+    * - __u8
+>+      - ``poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>+      - PocStCurrAfter as described in section 8.3.2 "Decoding process for reference
+>+        picture set.
+>+    * - __u8
+>+      - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>+      - PocLtCurr as described in section 8.3.2 "Decoding process for reference
+>+        picture set.
+
+Two things here
+
+1) By my understanding poc_st_curr_before/after & poc_lt_curr attempt to
+hold a POC (as per 8.3.2). That is a 32bit signed value not U8.  You can
+get away with U16 if you mask & sign extend your comparisions but U8 I'm
+pretty sure is too small.
+
+2) I think you can calculate these list from the info in the DPB
+structure. Certainly v4l2_hevc_dpb_entry.rps contains which list every
+entry is in.
+
+Regards
+
+John Cox
+
+
+>+    * - __u64
+>+      - ``flags``
+>+      - See :ref:`Decode Parameters Flags <hevc_decode_params_flags>`
+>+
+>+.. _hevc_decode_params_flags:
+>+
+>+``Decode Parameters Flags``
+>+
+>+.. cssclass:: longtable
+>+
+>+.. flat-table::
+>+    :header-rows:  0
+>+    :stub-columns: 0
+>+    :widths:       1 1 2
+>+
+>+    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_IRAP_PIC``
+>+      - 0x00000001
+>+      -
+>+    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC``
+>+      - 0x00000002
+>+      -
+>+    * - ``V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR``
+>+      - 0x00000004
+>+      -
+>diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+>index 07e54029e1e9..f9ecf6276129 100644
+>--- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+>+++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
+>@@ -501,6 +501,12 @@ See also the examples in :ref:`control`.
+>       - n/a
+>       - A struct :c:type:`v4l2_ctrl_vp8_frame`, containing VP8
+> 	frame parameters for stateless video decoders.
+>+    * - ``V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS``
+>+      - n/a
+>+      - n/a
+>+      - n/a
+>+      - A struct :c:type:`v4l2_ctrl_hevc_decode_params`, containing HEVC
+>+	decoding parameters for stateless video decoders.
+> 
+> .. raw:: latex
+> 
+>diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>index 081439224357..c4b5082849b6 100644
+>--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+>@@ -337,6 +337,7 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+> 	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
+> 	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
+> 	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
+>+	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
+> 	struct v4l2_area *area;
+> 	void *p = ptr.p + idx * ctrl->elem_size;
+> 	unsigned int i;
+>@@ -616,23 +617,26 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+> 		zero_padding(*p_hevc_pps);
+> 		break;
+> 
+>-	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+>-		p_hevc_slice_params = p;
+>+	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
+>+		p_hevc_decode_params = p;
+> 
+>-		if (p_hevc_slice_params->num_active_dpb_entries >
+>+		if (p_hevc_decode_params->num_active_dpb_entries >
+> 		    V4L2_HEVC_DPB_ENTRIES_NUM_MAX)
+> 			return -EINVAL;
+> 
+>-		zero_padding(p_hevc_slice_params->pred_weight_table);
+>-
+>-		for (i = 0; i < p_hevc_slice_params->num_active_dpb_entries;
+>+		for (i = 0; i < p_hevc_decode_params->num_active_dpb_entries;
+> 		     i++) {
+> 			struct v4l2_hevc_dpb_entry *dpb_entry =
+>-				&p_hevc_slice_params->dpb[i];
+>+				&p_hevc_decode_params->dpb[i];
+> 
+> 			zero_padding(*dpb_entry);
+> 		}
+>+		break;
+> 
+>+	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+>+		p_hevc_slice_params = p;
+>+
+>+		zero_padding(p_hevc_slice_params->pred_weight_table);
+> 		zero_padding(*p_hevc_slice_params);
+> 		break;
+> 
+>@@ -1236,6 +1240,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+> 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
+> 		elem_size = sizeof(struct v4l2_ctrl_hevc_slice_params);
+> 		break;
+>+	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
+>+		elem_size = sizeof(struct v4l2_ctrl_hevc_decode_params);
+>+		break;
+> 	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
+> 		elem_size = sizeof(struct v4l2_ctrl_hdr10_cll_info);
+> 		break;
+>diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>index 7963c7b43450..b6344bbf1e00 100644
+>--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>+++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>@@ -996,6 +996,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
+>+	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
+> 
+>@@ -1487,6 +1488,9 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+> 	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
+> 		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
+> 		break;
+>+	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
+>+		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
+>+		break;
+> 	case V4L2_CID_UNIT_CELL_SIZE:
+> 		*type = V4L2_CTRL_TYPE_AREA;
+> 		*flags |= V4L2_CTRL_FLAG_READ_ONLY;
+>diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
+>index fa348c09f844..c0d005dafc6c 100644
+>--- a/drivers/staging/media/sunxi/cedrus/cedrus.c
+>+++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
+>@@ -157,6 +157,12 @@ static const struct cedrus_control cedrus_controls[] = {
+> 		},
+> 		.codec		= CEDRUS_CODEC_VP8,
+> 	},
+>+	{
+>+		.cfg = {
+>+			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
+>+		},
+>+		.codec		= CEDRUS_CODEC_H265,
+>+	},
+> };
+> 
+> #define CEDRUS_CONTROLS_COUNT	ARRAY_SIZE(cedrus_controls)
+>diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.h b/drivers/staging/media/sunxi/cedrus/cedrus.h
+>index bbcdcd0787cf..88afba17b78b 100644
+>--- a/drivers/staging/media/sunxi/cedrus/cedrus.h
+>+++ b/drivers/staging/media/sunxi/cedrus/cedrus.h
+>@@ -77,6 +77,7 @@ struct cedrus_h265_run {
+> 	const struct v4l2_ctrl_hevc_sps			*sps;
+> 	const struct v4l2_ctrl_hevc_pps			*pps;
+> 	const struct v4l2_ctrl_hevc_slice_params	*slice_params;
+>+	const struct v4l2_ctrl_hevc_decode_params	*decode_params;
+> };
+> 
+> struct cedrus_vp8_run {
+>diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>index 97e410d92506..40e8c4123f76 100644
+>--- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>+++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+>@@ -70,6 +70,8 @@ void cedrus_device_run(void *priv)
+> 			V4L2_CID_MPEG_VIDEO_HEVC_PPS);
+> 		run.h265.slice_params = cedrus_find_control_data(ctx,
+> 			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
+>+		run.h265.decode_params = cedrus_find_control_data(ctx,
+>+			V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
+> 		break;
+> 
+> 	case V4L2_PIX_FMT_VP8_FRAME:
+>diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>index 10744fab7cea..6821e3d05d34 100644
+>--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>+++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+>@@ -245,6 +245,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 	const struct v4l2_ctrl_hevc_sps *sps;
+> 	const struct v4l2_ctrl_hevc_pps *pps;
+> 	const struct v4l2_ctrl_hevc_slice_params *slice_params;
+>+	const struct v4l2_ctrl_hevc_decode_params *decode_params;
+> 	const struct v4l2_hevc_pred_weight_table *pred_weight_table;
+> 	dma_addr_t src_buf_addr;
+> 	dma_addr_t src_buf_end_addr;
+>@@ -256,6 +257,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 	sps = run->h265.sps;
+> 	pps = run->h265.pps;
+> 	slice_params = run->h265.slice_params;
+>+	decode_params = run->h265.decode_params;
+> 	pred_weight_table = &slice_params->pred_weight_table;
+> 
+> 	/* MV column buffer size and allocation. */
+>@@ -487,7 +489,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 
+> 	reg = VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_TC_OFFSET_DIV2(slice_params->slice_tc_offset_div2) |
+> 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_BETA_OFFSET_DIV2(slice_params->slice_beta_offset_div2) |
+>-	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_POC_BIGEST_IN_RPS_ST(slice_params->num_rps_poc_st_curr_after == 0) |
+>+	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_POC_BIGEST_IN_RPS_ST(decode_params->num_poc_st_curr_after == 0) |
+> 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_CR_QP_OFFSET(slice_params->slice_cr_qp_offset) |
+> 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_CB_QP_OFFSET(slice_params->slice_cb_qp_offset) |
+> 	      VE_DEC_H265_DEC_SLICE_HDR_INFO1_SLICE_QP_DELTA(slice_params->slice_qp_delta);
+>@@ -527,8 +529,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 	cedrus_write(dev, VE_DEC_H265_NEIGHBOR_INFO_ADDR, reg);
+> 
+> 	/* Write decoded picture buffer in pic list. */
+>-	cedrus_h265_frame_info_write_dpb(ctx, slice_params->dpb,
+>-					 slice_params->num_active_dpb_entries);
+>+	cedrus_h265_frame_info_write_dpb(ctx, decode_params->dpb,
+>+					 decode_params->num_active_dpb_entries);
+> 
+> 	/* Output frame. */
+> 
+>@@ -545,7 +547,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 
+> 	/* Reference picture list 0 (for P/B frames). */
+> 	if (slice_params->slice_type != V4L2_HEVC_SLICE_TYPE_I) {
+>-		cedrus_h265_ref_pic_list_write(dev, slice_params->dpb,
+>+		cedrus_h265_ref_pic_list_write(dev, decode_params->dpb,
+> 					       slice_params->ref_idx_l0,
+> 					       slice_params->num_ref_idx_l0_active_minus1 + 1,
+> 					       VE_DEC_H265_SRAM_OFFSET_REF_PIC_LIST0);
+>@@ -564,7 +566,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+> 
+> 	/* Reference picture list 1 (for B frames). */
+> 	if (slice_params->slice_type == V4L2_HEVC_SLICE_TYPE_B) {
+>-		cedrus_h265_ref_pic_list_write(dev, slice_params->dpb,
+>+		cedrus_h265_ref_pic_list_write(dev, decode_params->dpb,
+> 					       slice_params->ref_idx_l1,
+> 					       slice_params->num_ref_idx_l1_active_minus1 + 1,
+> 					       VE_DEC_H265_SRAM_OFFSET_REF_PIC_LIST1);
+>diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+>index 245052c15864..e53666a1127f 100644
+>--- a/include/media/hevc-ctrls.h
+>+++ b/include/media/hevc-ctrls.h
+>@@ -19,6 +19,7 @@
+> #define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
+> #define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
+> #define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
+>+#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
+> #define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+> #define V4L2_CID_MPEG_VIDEO_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
+> 
+>@@ -26,6 +27,7 @@
+> #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+> #define V4L2_CTRL_TYPE_HEVC_PPS 0x0121
+> #define V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS 0x0122
+>+#define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
+> 
+> enum v4l2_mpeg_video_hevc_decode_mode {
+> 	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
+>@@ -195,18 +197,10 @@ struct v4l2_ctrl_hevc_slice_params {
+> 	__u8	pic_struct;
+> 
+> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+>-	__u8	num_active_dpb_entries;
+> 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> 
+>-	__u8	num_rps_poc_st_curr_before;
+>-	__u8	num_rps_poc_st_curr_after;
+>-	__u8	num_rps_poc_lt_curr;
+>-
+>-	__u8	padding;
+>-
+>-	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
+>-	struct v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>+	__u8	padding[5];
+> 
+> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+> 	struct v4l2_hevc_pred_weight_table pred_weight_table;
+>@@ -214,4 +208,21 @@ struct v4l2_ctrl_hevc_slice_params {
+> 	__u64	flags;
+> };
+> 
+>+#define V4L2_HEVC_DECODE_PARAM_FLAG_IRAP_PIC		0x1
+>+#define V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC		0x2
+>+#define V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR  0x4
+>+
+>+struct v4l2_ctrl_hevc_decode_params {
+>+	__s32	pic_order_cnt_val;
+>+	__u8	num_active_dpb_entries;
+>+	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>+	__u8	num_poc_st_curr_before;
+>+	__u8	num_poc_st_curr_after;
+>+	__u8	num_poc_lt_curr;
+>+	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>+	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>+	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>+	__u64	flags;
+>+};
+>+
+> #endif
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
