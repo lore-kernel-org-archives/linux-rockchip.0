@@ -2,60 +2,85 @@ Return-Path: <SRS0=Jt5i=NB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6633C4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 23:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A1DCC4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 23:47:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0952E60F13
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 23:12:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0952E60F13
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id B7C4460F38
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 23:47:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B7C4460F38
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F4M7JCELy7rDYO5d9+45wzT5CTEedxAwjiNzxHLWCIw=; b=gSaxpZe65IJUGy
-	88zK9X3FtabPtST+fHOLlo/IFH1z1GT7MCP3ui0pPXlePc2Qi90/xGg7zHI1R9mFe4sud0DCPpGmO
-	XooBOWaX0IPbtJLLdclHbkumAE7P28bzdCyaqpbl5Yf/4Fv4azQJOxVS0eDKbXle8k2xjPewGNK7s
-	K2K54A1QAIygUbbrpldmXiqeijcbSQgNq+9K9B2lEpRMnXJvnAE1B+2u37aXlSu87QhfF7ePwpte+
-	YNPMrgQ8a/1xbHGasV7qHWcF0yGt6JJz9fC1F/MmaKG42qpcb7TfpYH7k1jdKjzPMgnLHrbxvVPDL
-	O0X+FNCk35UhO117lDbw==;
+	List-Owner; bh=AvV0y7exDnAk16UH7fwUlBCjCXEc3YfEzmhLbTyO+sc=; b=muXG5c3Pn+zxay
+	dfyXQePa2h5IuNPHSMiwmYwzacPQYx1hSB8xgNgRgLOpC5hzSP3RPuXBxBCJkVeCZdgjvq0RHz6KR
+	DrklD3qMQddHzfS+a8OHTPg7EFfGbygIcu8LWdSDnPhlfPQo+wt9k5CBnx/U+cn1/btmSgyM0iQZC
+	MG+fY2fPndUVtyiicMBMoq/mCzNzL1+oRTF/tIxkq0cs11bBg78HzkEF+3RwsDkHIdQRCU/RiznEP
+	9GI9y42qyExL194CAMj2TIOfsZL4lDDoYdrC5QwOJrU4sEpZEZd/P6pF4v6GDcHUnfsIbNJa1UfW+
+	CPTBVg10Y3cgd1nI6xOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDaua-0050RW-Tg; Tue, 10 Aug 2021 23:11:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mDbSn-0052t2-S0; Tue, 10 Aug 2021 23:47:17 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDauO-0050Pk-LK; Tue, 10 Aug 2021 23:11:46 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mDauC-0002FT-8x; Wed, 11 Aug 2021 01:11:32 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Jagan Teki <jagan@amarulasolutions.com>,
- Thierry Reding <thierry.reding@gmail.com>, Peter Geis <pgwipeout@gmail.com>
-Cc: Peter Geis <pgwipeout@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [BUG] dw-mipi-dsi-rockchip display corruption with dsi panel
-Date: Wed, 11 Aug 2021 01:11:29 +0200
-Message-ID: <3455830.ypAZr3mf50@diego>
-In-Reply-To: <20210810223123.2174596-1-pgwipeout@gmail.com>
-References: <20210810223123.2174596-1-pgwipeout@gmail.com>
+ id 1mDbSZ-0052qY-BC; Tue, 10 Aug 2021 23:47:05 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id e186so1054668ybf.5;
+ Tue, 10 Aug 2021 16:47:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=VMZc2dJG0IVvDii0ju/5gk9CLgIViJqtLaSJR0JaFr4=;
+ b=tsObyjyGNKaaWd/XQtMX2ikFBbCOkak2xZoV4i5q9X/iLIajvaWzO3zjheULnyCF/F
+ upR6zOg+WFekaC3TVEH0RRiFXqViDdtRu+yJ3N6pHZdQQD2mFwuBTAG/Hst/DZ+txfOr
+ HzZvbnURCbGQs7/65nW2lKNMxdwP1DZrBDuIv1MVH5pxKXELQcsAbBJ1s1voaf/yuBzW
+ BbBduIsSRWHGw09nKRDh1GWCmhxmX7IRYZjYsTqJRGo31iMUTvLWldThb9q7KOREd06z
+ OxFATCOI+AstmwInuZXhrmmPHqPFVgIk3aB6tUITeHwYFTz+krFoIRNrbeCrH+MI8vEW
+ +ffw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=VMZc2dJG0IVvDii0ju/5gk9CLgIViJqtLaSJR0JaFr4=;
+ b=eLKM6Kay5Z7bcBJw1//7zRJCXeckXICv1hce26Wx989d7hAcjK55FqJn668pnykLsi
+ MxD4kPMH9nRnkbW7K8LbyX92GOSGcPb3WlL0kx+JzRYVfRtdo0rA7zFo+QmfEqwveEIW
+ mLjZoGEL46pDGHI1xfm040TklYq7KliaSumyjh6zDyhHGB5Vvf99CLSEIA68XKlBPlEu
+ ZVfV40S3+OvqT5VPxdVRx5XlVU5SOjs4Tb4BkGIMJmyz7X4f2+Oxt90ud9k337bDmiL+
+ m6PM/Odwrh7iecbe85VfMpPpzJwGdUYoBEi/RL3gKVqlR5S74k5YCOwbDvBFax0uWOKo
+ fZgg==
+X-Gm-Message-State: AOAM531wpbMvrjRPg8Ttj0F7Qvamuaqe7pO1kUMifTUXzhDvEpsJ8xUU
+ 5hVhIKjT63xGPi1tqLXa+dXZ/pNUnloddA0OoWM=
+X-Google-Smtp-Source: ABdhPJz2jGiRfVs3tdMPjobotXKYCEf+KoQRuTVyKQHORzgudkLGxDROD/H42cfwDts5PBgsM8hLM6XMZ/+XSqyLWCE=
+X-Received: by 2002:a25:d113:: with SMTP id i19mr41191742ybg.39.1628639221313; 
+ Tue, 10 Aug 2021 16:47:01 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210810223123.2174596-1-pgwipeout@gmail.com>
+ <3455830.ypAZr3mf50@diego>
+In-Reply-To: <3455830.ypAZr3mf50@diego>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Tue, 10 Aug 2021 19:46:50 -0400
+Message-ID: <CAMdYzYp7FvkOt3u+UJfTep1qb5Vs_ynv4tLVyWbzmXtD+Bvo5w@mail.gmail.com>
+Subject: Re: [BUG] dw-mipi-dsi-rockchip display corruption with dsi panel
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Jagan Teki <jagan@amarulasolutions.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, dri-devel@lists.freedesktop.org, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_161144_731912_2EC8A113 
-X-CRM114-Status: GOOD (  29.88  )
+X-CRM114-CacheID: sfid-20210810_164703_465955_747297D0 
+X-CRM114-Status: GOOD (  34.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,244 +93,171 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
-
-Am Mittwoch, 11. August 2021, 00:31:24 CEST schrieb Peter Geis:
-> Good Evening,
-> 
-> I've been attempting to light off the feiyang fy07024di26a30d panel on
-> the rockpro64. This is the official panel from the Pine64 store.
-> I've confirmed it works with the downstream kernel on both the rk3399
-> and rk3566, but on the mainline driver the display is partially
-> corrupted (see attached photo: [1]).
-> 
-> As you can see, the left half of the display is fine, but the right half
-> of the display is corrupted with the pixels smearing horizontally.
-> 
-> I saw when the panel was added, some additional code was added to
-> handle burst mode in the sun6_mipi_dsi driver [2].
-> I've seen that the dw-mipi-dsi driver appears to already support burst
-> mode and I can't find anything out of place there.
-> I also haven't had much success finding anything obviously different in
-> the downstream driver vs the upstream driver that would explain this.
-> 
-> Attached below is the in-progress dts changes for an example of how the
-> panel is plugged in.
-
-is that really a dual-dsi panel needing two dsi controllers to drive it?
-
-With that tiny resultion of 1024x600 I definitly wouldn't expect this,
-in contrast to say the 2048x1536 dual-dsi displays used in the
-Gru-Scarlet ChromeOS tablets.
-
-So maybe just drop the 2nd dsi controller connection in a first step?
-Because I really don't think that is the case on the hardware.
-
-The dual-dsi setup means that you have one vop supplying half of its
-display data to each of the 2 involved dsi controllers. And you're missing
-in fact half of your display data.
-
-
-Heiko
-
-
-
-> I admit, I have little understanding of the mipi-dsi internal workings,
-> so I'm reaching out to the experts on how to correct this.
-> 
-> Thank you for your time,
-> Peter Geis
-> 
-> [1] https://photos.app.goo.gl/LBA9M2WcweGaEb4cA
-> [2] https://patchwork.kernel.org/project/linux-arm-kernel/cover/20181116163916.29621-1-jagan@amarulasolutions.com/
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> index 687a5afa5d2c..af55a30297ae 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> @@ -20,6 +20,13 @@ chosen {
->  		stdout-path = "serial2:1500000n8";
->  	};
->  
-> +	backlight: backlight {
-> +		compatible = "pwm-backlight";
-> +		pwms = <&pwm0 0 1000000 0>;
-> +		brightness-levels = <0 4 8 16 32 64 128 255>;
-> +		default-brightness-level = <128>;
-> +	};
-> +
->  	clkin_gmac: external-gmac-clock {
->  		compatible = "fixed-clock";
->  		clock-frequency = <125000000>;
-> @@ -69,7 +76,7 @@ diy_led: led-1 {
->  
->  	fan: pwm-fan {
->  		compatible = "pwm-fan";
-> -		cooling-levels = <0 150 200 255>;
-> +		cooling-levels = <0 100 150 255>;
->  		#cooling-cells = <2>;
->  		fan-supply = <&vcc12v_dcin>;
->  		pwms = <&pwm1 0 50000 0>;
-> @@ -220,6 +227,16 @@ vdd_log: vdd-log {
->  		regulator-max-microvolt = <1700000>;
->  		vin-supply = <&vcc5v0_sys>;
->  	};
-> +
-> +	avdd: avdd {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "avdd";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <11000000>;
-> +		regulator-max-microvolt = <11000000>;
-> +		vin-supply = <&vcc3v3_s0>;
-> +	};
->  };
->  
->  &cpu_l0 {
-> @@ -428,8 +445,8 @@ regulator-state-mem {
->  
->  			vcc3v0_touch: LDO_REG2 {
->  				regulator-name = "vcc3v0_touch";
-> -				regulator-always-on;
-> -				regulator-boot-on;
-> +//				regulator-always-on;
-> +//				regulator-boot-on;
->  				regulator-min-microvolt = <3000000>;
->  				regulator-max-microvolt = <3000000>;
->  				regulator-state-mem {
-> @@ -518,8 +535,8 @@ regulator-state-mem {
->  
->  			vcc3v3_s0: SWITCH_REG2 {
->  				regulator-name = "vcc3v3_s0";
-> -				regulator-always-on;
-> -				regulator-boot-on;
-> +//				regulator-always-on;
-> +//				regulator-boot-on;
->  				regulator-state-mem {
->  					regulator-off-in-suspend;
->  				};
-> @@ -593,6 +610,19 @@ fusb0: typec-portc@22 {
->  		vbus-supply = <&vcc5v0_typec>;
->  		status = "okay";
->  	};
-> +
-> +	touch: touchscreen@5d {
-> +		compatible = "goodix,gt911";
-> +		reg = <0x5d>;
-> +		AVDD28-supply = <&vcc3v0_touch>;
-> +		VDDIO-supply = <&vcc3v0_touch>;
-> +		interrupt-parent = <&gpio4>;
-> +		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
-> +		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
-> +		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
-> +//		touchscreen-inverted-x;
-> +//		touchscreen-inverted-y;
-> +	};
->  };
->  
->  &i2s0 {
-> @@ -628,6 +658,88 @@ &io_domains {
->  	gpio1830-supply = <&vcc_3v0>;
->  };
->  
-> +&mipi_dsi {
-> +	status = "okay";
-> +	clock-master;
-> +
-> +	ports {
-> +		mipi_out: port@1 {
-> +			reg = <1>;
-> +
-> +			mipi_out_panel: endpoint {
-> +				remote-endpoint = <&mipi_in_panel>;
-> +			};
-> +		};
-> +	};
-> +
-> +	mipi_panel: panel@0 {
-> +		compatible = "feiyang,fy07024di26a30d";
-> +		reg = <0>;
-> +		backlight = <&backlight>;
-> +		reset-gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>;
-> +//		enable-gpios = <&gpio4 25 GPIO_ACTIVE_HIGH>;
-> +		width-mm = <154>;
-> +		height-mm = <86>;
-> +		rotation = <0>;
-> +		avdd-supply = <&avdd>;
-> +		dvdd-supply = <&vcc3v3_s0>;
-> +
-> +		display-timings {
-> +			native-mode = <&timing0>;
-> +			timing0: timing0 {
-> +				clock-frequency = <50000000>;
-> +				hactive = <1024>;
-> +				vactive = <600>;
-> +				hfront-porch = <160>;
-> +				hback-porch = <160>;
-> +				hsync-len = <10>;
-> +				vback-porch = <23>;
-> +				vfront-porch = <12>;
-> +				vsync-len = <1>;
-> +				hsync-active = <0>;
-> +				vsync-active = <0>;
-> +				pixelclk-active = <0>;
-> +				de-active = <0>;
-> +			};
-> +		};
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
-> +				reg = <0>;
-> +
-> +				mipi_in_panel: endpoint {
-> +					remote-endpoint = <&mipi_out_panel>;
-> +				};
-> +			};
-> +
-> +			port@1 {
-> +				reg = <1>;
-> +
-> +				mipi1_in_panel: endpoint@1 {
-> +					remote-endpoint = <&mipi1_out_panel>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&mipi_dsi1 {
-> +	status = "okay";
-> +
-> +	ports {
-> +		mipi1_out: port@1 {
-> +			reg = <1>;
-> +
-> +			mipi1_out_panel: endpoint {
-> +				remote-endpoint = <&mipi1_in_panel>;
-> +			};
-> +		};
-> +	};
-> +};
-> +
->  &pcie0 {
->  	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
->  	num-lanes = <4>;
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBBdWcgMTAsIDIwMjEgYXQgNzoxMSBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPiB3cm90ZToKPgo+IEhpIFBldGVyLAo+Cj4gQW0gTWl0dHdvY2gsIDExLiBBdWd1c3Qg
+MjAyMSwgMDA6MzE6MjQgQ0VTVCBzY2hyaWViIFBldGVyIEdlaXM6Cj4gPiBHb29kIEV2ZW5pbmcs
+Cj4gPgo+ID4gSSd2ZSBiZWVuIGF0dGVtcHRpbmcgdG8gbGlnaHQgb2ZmIHRoZSBmZWl5YW5nIGZ5
+MDcwMjRkaTI2YTMwZCBwYW5lbCBvbgo+ID4gdGhlIHJvY2twcm82NC4gVGhpcyBpcyB0aGUgb2Zm
+aWNpYWwgcGFuZWwgZnJvbSB0aGUgUGluZTY0IHN0b3JlLgo+ID4gSSd2ZSBjb25maXJtZWQgaXQg
+d29ya3Mgd2l0aCB0aGUgZG93bnN0cmVhbSBrZXJuZWwgb24gYm90aCB0aGUgcmszMzk5Cj4gPiBh
+bmQgcmszNTY2LCBidXQgb24gdGhlIG1haW5saW5lIGRyaXZlciB0aGUgZGlzcGxheSBpcyBwYXJ0
+aWFsbHkKPiA+IGNvcnJ1cHRlZCAoc2VlIGF0dGFjaGVkIHBob3RvOiBbMV0pLgo+ID4KPiA+IEFz
+IHlvdSBjYW4gc2VlLCB0aGUgbGVmdCBoYWxmIG9mIHRoZSBkaXNwbGF5IGlzIGZpbmUsIGJ1dCB0
+aGUgcmlnaHQgaGFsZgo+ID4gb2YgdGhlIGRpc3BsYXkgaXMgY29ycnVwdGVkIHdpdGggdGhlIHBp
+eGVscyBzbWVhcmluZyBob3Jpem9udGFsbHkuCj4gPgo+ID4gSSBzYXcgd2hlbiB0aGUgcGFuZWwg
+d2FzIGFkZGVkLCBzb21lIGFkZGl0aW9uYWwgY29kZSB3YXMgYWRkZWQgdG8KPiA+IGhhbmRsZSBi
+dXJzdCBtb2RlIGluIHRoZSBzdW42X21pcGlfZHNpIGRyaXZlciBbMl0uCj4gPiBJJ3ZlIHNlZW4g
+dGhhdCB0aGUgZHctbWlwaS1kc2kgZHJpdmVyIGFwcGVhcnMgdG8gYWxyZWFkeSBzdXBwb3J0IGJ1
+cnN0Cj4gPiBtb2RlIGFuZCBJIGNhbid0IGZpbmQgYW55dGhpbmcgb3V0IG9mIHBsYWNlIHRoZXJl
+Lgo+ID4gSSBhbHNvIGhhdmVuJ3QgaGFkIG11Y2ggc3VjY2VzcyBmaW5kaW5nIGFueXRoaW5nIG9i
+dmlvdXNseSBkaWZmZXJlbnQgaW4KPiA+IHRoZSBkb3duc3RyZWFtIGRyaXZlciB2cyB0aGUgdXBz
+dHJlYW0gZHJpdmVyIHRoYXQgd291bGQgZXhwbGFpbiB0aGlzLgo+ID4KPiA+IEF0dGFjaGVkIGJl
+bG93IGlzIHRoZSBpbi1wcm9ncmVzcyBkdHMgY2hhbmdlcyBmb3IgYW4gZXhhbXBsZSBvZiBob3cg
+dGhlCj4gPiBwYW5lbCBpcyBwbHVnZ2VkIGluLgo+Cj4gaXMgdGhhdCByZWFsbHkgYSBkdWFsLWRz
+aSBwYW5lbCBuZWVkaW5nIHR3byBkc2kgY29udHJvbGxlcnMgdG8gZHJpdmUgaXQ/Cj4KPiBXaXRo
+IHRoYXQgdGlueSByZXN1bHRpb24gb2YgMTAyNHg2MDAgSSBkZWZpbml0bHkgd291bGRuJ3QgZXhw
+ZWN0IHRoaXMsCj4gaW4gY29udHJhc3QgdG8gc2F5IHRoZSAyMDQ4eDE1MzYgZHVhbC1kc2kgZGlz
+cGxheXMgdXNlZCBpbiB0aGUKPiBHcnUtU2NhcmxldCBDaHJvbWVPUyB0YWJsZXRzLgo+Cj4gU28g
+bWF5YmUganVzdCBkcm9wIHRoZSAybmQgZHNpIGNvbnRyb2xsZXIgY29ubmVjdGlvbiBpbiBhIGZp
+cnN0IHN0ZXA/Cj4gQmVjYXVzZSBJIHJlYWxseSBkb24ndCB0aGluayB0aGF0IGlzIHRoZSBjYXNl
+IG9uIHRoZSBoYXJkd2FyZS4KPgo+IFRoZSBkdWFsLWRzaSBzZXR1cCBtZWFucyB0aGF0IHlvdSBo
+YXZlIG9uZSB2b3Agc3VwcGx5aW5nIGhhbGYgb2YgaXRzCj4gZGlzcGxheSBkYXRhIHRvIGVhY2gg
+b2YgdGhlIDIgaW52b2x2ZWQgZHNpIGNvbnRyb2xsZXJzLiBBbmQgeW91J3JlIG1pc3NpbmcKPiBp
+biBmYWN0IGhhbGYgb2YgeW91ciBkaXNwbGF5IGRhdGEuCgpUaGFua3MsIHRoYXQgd2FzIGl0LgpJ
+IGhhZCB0cmllZCByZW1vdmluZyB0aGUgbGluayBwcmV2aW91c2x5LCBidXQgSSBoYWQgdG8gYWxz
+byBkaXNhYmxlCnRoYXQgY29udHJvbGxlciBhbHRvZ2V0aGVyIG9yIHRoZSB2b3AgZmFpbHMgdG8g
+cHJvYmUgc2lsZW50bHkuCgpUaGF0IGlzIGEgY29tbW9uIGlzc3VlIEkgcmFuIGludG8gd2hlbiBn
+ZXR0aW5nIHRoaXMgYWxsIHNldCB1cCwKYW55dGhpbmcgZmFpbGVkIHRvIHByb2JlIGZvciB0aGUg
+ZHNpIHBhbmVsIHRoZSB2b3AganVzdCBzaWxlbnRseSBkaWVzCmluIHRoZSBiYWNrZ3JvdW5kIGFu
+ZCBncmFwaGljcyBmYWlsIGV2ZXJ5d2hlcmUuCgo+Cj4KPiBIZWlrbwo+Cj4KPgo+ID4gSSBhZG1p
+dCwgSSBoYXZlIGxpdHRsZSB1bmRlcnN0YW5kaW5nIG9mIHRoZSBtaXBpLWRzaSBpbnRlcm5hbCB3
+b3JraW5ncywKPiA+IHNvIEknbSByZWFjaGluZyBvdXQgdG8gdGhlIGV4cGVydHMgb24gaG93IHRv
+IGNvcnJlY3QgdGhpcy4KPiA+Cj4gPiBUaGFuayB5b3UgZm9yIHlvdXIgdGltZSwKPiA+IFBldGVy
+IEdlaXMKPiA+Cj4gPiBbMV0gaHR0cHM6Ly9waG90b3MuYXBwLmdvby5nbC9MQkE5TTJXY3dlR2FF
+YjRjQQo+ID4gWzJdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1h
+cm0ta2VybmVsL2NvdmVyLzIwMTgxMTE2MTYzOTE2LjI5NjIxLTEtamFnYW5AYW1hcnVsYXNvbHV0
+aW9ucy5jb20vCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LXJvY2twcm82NC5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9y
+azMzOTktcm9ja3BybzY0LmR0c2kKPiA+IGluZGV4IDY4N2E1YWZhNWQyYy4uYWY1NWEzMDI5N2Fl
+IDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9j
+a3BybzY0LmR0c2kKPiA+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
+LXJvY2twcm82NC5kdHNpCj4gPiBAQCAtMjAsNiArMjAsMTMgQEAgY2hvc2VuIHsKPiA+ICAgICAg
+ICAgICAgICAgc3Rkb3V0LXBhdGggPSAic2VyaWFsMjoxNTAwMDAwbjgiOwo+ID4gICAgICAgfTsK
+PiA+Cj4gPiArICAgICBiYWNrbGlnaHQ6IGJhY2tsaWdodCB7Cj4gPiArICAgICAgICAgICAgIGNv
+bXBhdGlibGUgPSAicHdtLWJhY2tsaWdodCI7Cj4gPiArICAgICAgICAgICAgIHB3bXMgPSA8JnB3
+bTAgMCAxMDAwMDAwIDA+Owo+ID4gKyAgICAgICAgICAgICBicmlnaHRuZXNzLWxldmVscyA9IDww
+IDQgOCAxNiAzMiA2NCAxMjggMjU1PjsKPiA+ICsgICAgICAgICAgICAgZGVmYXVsdC1icmlnaHRu
+ZXNzLWxldmVsID0gPDEyOD47Cj4gPiArICAgICB9Owo+ID4gKwo+ID4gICAgICAgY2xraW5fZ21h
+YzogZXh0ZXJuYWwtZ21hYy1jbG9jayB7Cj4gPiAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAi
+Zml4ZWQtY2xvY2siOwo+ID4gICAgICAgICAgICAgICBjbG9jay1mcmVxdWVuY3kgPSA8MTI1MDAw
+MDAwPjsKPiA+IEBAIC02OSw3ICs3Niw3IEBAIGRpeV9sZWQ6IGxlZC0xIHsKPiA+Cj4gPiAgICAg
+ICBmYW46IHB3bS1mYW4gewo+ID4gICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInB3bS1mYW4i
+Owo+ID4gLSAgICAgICAgICAgICBjb29saW5nLWxldmVscyA9IDwwIDE1MCAyMDAgMjU1PjsKPiA+
+ICsgICAgICAgICAgICAgY29vbGluZy1sZXZlbHMgPSA8MCAxMDAgMTUwIDI1NT47Cj4gPiAgICAg
+ICAgICAgICAgICNjb29saW5nLWNlbGxzID0gPDI+Owo+ID4gICAgICAgICAgICAgICBmYW4tc3Vw
+cGx5ID0gPCZ2Y2MxMnZfZGNpbj47Cj4gPiAgICAgICAgICAgICAgIHB3bXMgPSA8JnB3bTEgMCA1
+MDAwMCAwPjsKPiA+IEBAIC0yMjAsNiArMjI3LDE2IEBAIHZkZF9sb2c6IHZkZC1sb2cgewo+ID4g
+ICAgICAgICAgICAgICByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxNzAwMDAwPjsKPiA+ICAg
+ICAgICAgICAgICAgdmluLXN1cHBseSA9IDwmdmNjNXYwX3N5cz47Cj4gPiAgICAgICB9Owo+ID4g
+Kwo+ID4gKyAgICAgYXZkZDogYXZkZCB7Cj4gPiArICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAi
+cmVndWxhdG9yLWZpeGVkIjsKPiA+ICsgICAgICAgICAgICAgcmVndWxhdG9yLW5hbWUgPSAiYXZk
+ZCI7Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1hbHdheXMtb247Cj4gPiArICAgICAgICAg
+ICAgIHJlZ3VsYXRvci1ib290LW9uOwo+ID4gKyAgICAgICAgICAgICByZWd1bGF0b3ItbWluLW1p
+Y3Jvdm9sdCA9IDwxMTAwMDAwMD47Cj4gPiArICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWlj
+cm92b2x0ID0gPDExMDAwMDAwPjsKPiA+ICsgICAgICAgICAgICAgdmluLXN1cHBseSA9IDwmdmNj
+M3YzX3MwPjsKPiA+ICsgICAgIH07Cj4gPiAgfTsKPiA+Cj4gPiAgJmNwdV9sMCB7Cj4gPiBAQCAt
+NDI4LDggKzQ0NSw4IEBAIHJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+ID4KPiA+ICAgICAgICAgICAg
+ICAgICAgICAgICB2Y2MzdjBfdG91Y2g6IExET19SRUcyIHsKPiA+ICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZjYzN2MF90b3VjaCI7Cj4gPiAtICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4gLSAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiArLy8gICAgICAgICAg
+ICAgICAgICAgICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4gKy8vICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICByZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMDAwMDAwPjsKPiA+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMwMDAw
+MDA+Owo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLXN0YXRlLW1l
+bSB7Cj4gPiBAQCAtNTE4LDggKzUzNSw4IEBAIHJlZ3VsYXRvci1zdGF0ZS1tZW0gewo+ID4KPiA+
+ICAgICAgICAgICAgICAgICAgICAgICB2Y2MzdjNfczA6IFNXSVRDSF9SRUcyIHsKPiA+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZjYzN2M19zMCI7Cj4g
+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4g
+LSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiArLy8g
+ICAgICAgICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3ItYWx3YXlzLW9uOwo+ID4gKy8vICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLWJvb3Qtb247Cj4gPiAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICByZWd1bGF0b3Itc3RhdGUtbWVtIHsKPiA+ICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVndWxhdG9yLW9mZi1pbi1zdXNwZW5kOwo+ID4g
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsKPiA+IEBAIC01OTMsNiArNjEwLDE5IEBA
+IGZ1c2IwOiB0eXBlYy1wb3J0Y0AyMiB7Cj4gPiAgICAgICAgICAgICAgIHZidXMtc3VwcGx5ID0g
+PCZ2Y2M1djBfdHlwZWM+Owo+ID4gICAgICAgICAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gPiAg
+ICAgICB9Owo+ID4gKwo+ID4gKyAgICAgdG91Y2g6IHRvdWNoc2NyZWVuQDVkIHsKPiA+ICsgICAg
+ICAgICAgICAgY29tcGF0aWJsZSA9ICJnb29kaXgsZ3Q5MTEiOwo+ID4gKyAgICAgICAgICAgICBy
+ZWcgPSA8MHg1ZD47Cj4gPiArICAgICAgICAgICAgIEFWREQyOC1zdXBwbHkgPSA8JnZjYzN2MF90
+b3VjaD47Cj4gPiArICAgICAgICAgICAgIFZERElPLXN1cHBseSA9IDwmdmNjM3YwX3RvdWNoPjsK
+PiA+ICsgICAgICAgICAgICAgaW50ZXJydXB0LXBhcmVudCA9IDwmZ3BpbzQ+Owo+ID4gKyAgICAg
+ICAgICAgICBpbnRlcnJ1cHRzID0gPFJLX1BENSBJUlFfVFlQRV9FREdFX0ZBTExJTkc+Owo+ID4g
+KyAgICAgICAgICAgICBpcnEtZ3Bpb3MgPSA8JmdwaW80IFJLX1BENSBHUElPX0FDVElWRV9ISUdI
+PjsKPiA+ICsgICAgICAgICAgICAgcmVzZXQtZ3Bpb3MgPSA8JmdwaW80IFJLX1BENiBHUElPX0FD
+VElWRV9ISUdIPjsKPiA+ICsvLyAgICAgICAgICAgdG91Y2hzY3JlZW4taW52ZXJ0ZWQteDsKPiA+
+ICsvLyAgICAgICAgICAgdG91Y2hzY3JlZW4taW52ZXJ0ZWQteTsKPiA+ICsgICAgIH07Cj4gPiAg
+fTsKPiA+Cj4gPiAgJmkyczAgewo+ID4gQEAgLTYyOCw2ICs2NTgsODggQEAgJmlvX2RvbWFpbnMg
+ewo+ID4gICAgICAgZ3BpbzE4MzAtc3VwcGx5ID0gPCZ2Y2NfM3YwPjsKPiA+ICB9Owo+ID4KPiA+
+ICsmbWlwaV9kc2kgewo+ID4gKyAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gKyAgICAgY2xvY2st
+bWFzdGVyOwo+ID4gKwo+ID4gKyAgICAgcG9ydHMgewo+ID4gKyAgICAgICAgICAgICBtaXBpX291
+dDogcG9ydEAxIHsKPiA+ICsgICAgICAgICAgICAgICAgICAgICByZWcgPSA8MT47Cj4gPiArCj4g
+PiArICAgICAgICAgICAgICAgICAgICAgbWlwaV9vdXRfcGFuZWw6IGVuZHBvaW50IHsKPiA+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmbWlwaV9pbl9w
+YW5lbD47Cj4gPiArICAgICAgICAgICAgICAgICAgICAgfTsKPiA+ICsgICAgICAgICAgICAgfTsK
+PiA+ICsgICAgIH07Cj4gPiArCj4gPiArICAgICBtaXBpX3BhbmVsOiBwYW5lbEAwIHsKPiA+ICsg
+ICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJmZWl5YW5nLGZ5MDcwMjRkaTI2YTMwZCI7Cj4gPiAr
+ICAgICAgICAgICAgIHJlZyA9IDwwPjsKPiA+ICsgICAgICAgICAgICAgYmFja2xpZ2h0ID0gPCZi
+YWNrbGlnaHQ+Owo+ID4gKyAgICAgICAgICAgICByZXNldC1ncGlvcyA9IDwmZ3BpbzQgMjUgR1BJ
+T19BQ1RJVkVfSElHSD47Cj4gPiArLy8gICAgICAgICAgIGVuYWJsZS1ncGlvcyA9IDwmZ3BpbzQg
+MjUgR1BJT19BQ1RJVkVfSElHSD47Cj4gPiArICAgICAgICAgICAgIHdpZHRoLW1tID0gPDE1ND47
+Cj4gPiArICAgICAgICAgICAgIGhlaWdodC1tbSA9IDw4Nj47Cj4gPiArICAgICAgICAgICAgIHJv
+dGF0aW9uID0gPDA+Owo+ID4gKyAgICAgICAgICAgICBhdmRkLXN1cHBseSA9IDwmYXZkZD47Cj4g
+PiArICAgICAgICAgICAgIGR2ZGQtc3VwcGx5ID0gPCZ2Y2MzdjNfczA+Owo+ID4gKwo+ID4gKyAg
+ICAgICAgICAgICBkaXNwbGF5LXRpbWluZ3Mgewo+ID4gKyAgICAgICAgICAgICAgICAgICAgIG5h
+dGl2ZS1tb2RlID0gPCZ0aW1pbmcwPjsKPiA+ICsgICAgICAgICAgICAgICAgICAgICB0aW1pbmcw
+OiB0aW1pbmcwIHsKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrLWZyZXF1
+ZW5jeSA9IDw1MDAwMDAwMD47Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoYWN0
+aXZlID0gPDEwMjQ+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmFjdGl2ZSA9
+IDw2MDA+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGZyb250LXBvcmNoID0g
+PDE2MD47Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBoYmFjay1wb3JjaCA9IDwx
+NjA+Owo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaHN5bmMtbGVuID0gPDEwPjsK
+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZiYWNrLXBvcmNoID0gPDIzPjsKPiA+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZmcm9udC1wb3JjaCA9IDwxMj47Cj4gPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2c3luYy1sZW4gPSA8MT47Cj4gPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBoc3luYy1hY3RpdmUgPSA8MD47Cj4gPiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB2c3luYy1hY3RpdmUgPSA8MD47Cj4gPiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBwaXhlbGNsay1hY3RpdmUgPSA8MD47Cj4gPiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBkZS1hY3RpdmUgPSA8MD47Cj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgfTsKPiA+ICsgICAgICAgICAgICAgfTsKPiA+ICsKPiA+ICsgICAgICAgICAgICAgcG9ydHMg
+ewo+ID4gKyAgICAgICAgICAgICAgICAgICAgICNhZGRyZXNzLWNlbGxzID0gPDE+Owo+ID4gKyAg
+ICAgICAgICAgICAgICAgICAgICNzaXplLWNlbGxzID0gPDA+Owo+ID4gKwo+ID4gKyAgICAgICAg
+ICAgICAgICAgICAgIHBvcnRAMCB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBy
+ZWcgPSA8MD47Cj4gPiArCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaXBpX2lu
+X3BhbmVsOiBlbmRwb2ludCB7Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmbWlwaV9vdXRfcGFuZWw+Owo+ID4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfTsKPiA+ICsgICAgICAgICAgICAgICAgICAgICB9Owo+ID4gKwo+
+ID4gKyAgICAgICAgICAgICAgICAgICAgIHBvcnRAMSB7Cj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICByZWcgPSA8MT47Cj4gPiArCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBtaXBpMV9pbl9wYW5lbDogZW5kcG9pbnRAMSB7Cj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmbWlwaTFfb3V0X3BhbmVsPjsK
+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH07Cj4gPiArICAgICAgICAgICAgICAg
+ICAgICAgfTsKPiA+ICsgICAgICAgICAgICAgfTsKPiA+ICsgICAgIH07Cj4gPiArfTsKPiA+ICsK
+PiA+ICsmbWlwaV9kc2kxIHsKPiA+ICsgICAgIHN0YXR1cyA9ICJva2F5IjsKPiA+ICsKPiA+ICsg
+ICAgIHBvcnRzIHsKPiA+ICsgICAgICAgICAgICAgbWlwaTFfb3V0OiBwb3J0QDEgewo+ID4gKyAg
+ICAgICAgICAgICAgICAgICAgIHJlZyA9IDwxPjsKPiA+ICsKPiA+ICsgICAgICAgICAgICAgICAg
+ICAgICBtaXBpMV9vdXRfcGFuZWw6IGVuZHBvaW50IHsKPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHJlbW90ZS1lbmRwb2ludCA9IDwmbWlwaTFfaW5fcGFuZWw+Owo+ID4gKyAgICAg
+ICAgICAgICAgICAgICAgIH07Cj4gPiArICAgICAgICAgICAgIH07Cj4gPiArICAgICB9Owo+ID4g
+K307Cj4gPiArCj4gPiAgJnBjaWUwIHsKPiA+ICAgICAgIGVwLWdwaW9zID0gPCZncGlvMiBSS19Q
+RDQgR1BJT19BQ1RJVkVfSElHSD47Cj4gPiAgICAgICBudW0tbGFuZXMgPSA8ND47Cj4gPgo+Cj4K
+Pgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
