@@ -2,78 +2,92 @@ Return-Path: <SRS0=Jt5i=NB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 390F8C4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 01:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70870C4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 02:55:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78E5360F8F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 01:10:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78E5360F8F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1C45760F11
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Aug 2021 02:55:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1C45760F11
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qHhSp5fs08PAwAqQaRcP3n2vn0BQIK7h67WJBPh5YBA=; b=0aIUR2RZQ44Shz
-	OZh4PtiUe+eiUBisLRc3Mj++AGVTFx8/rC/UR/Irle0KpMcv9bVtTd0l/76/MrM0uZCcTZlUTE59E
-	LGVU3d9ocm7+BK50hs8zR8Nn8ogd3nUrCiVci1i9hOmdrgCSEAZ6ya0yeBWzo/ksgzJX62WdXPOgb
-	Ajo46yekZCczv8e5b/JlSz8DbFYFG6XfUqvFaWeStCNvIrFHX0Ck+wBBweifeT53sJ9DzwVsaN2Pg
-	xQMmlr6kxfawmSQ+MKHCXtbR0oYnuSAWb8DoRJp55HrOt769C4tprouFPNC7BeyuDXSZdYq1eXoV6
-	JDVMJXE7+kZGhz+EZugA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8hvQJIdXDL63JUMF+XNdmyYSOWuYFLS9REIM+GtgK0o=; b=dLeuqAlb9z+J7/
+	mGZVmySss/StEWa0u3reZs4IcoVrfMDHtDFDLEwr4QGjkcrWq5AjSKWFP7HgwCrc4C6URIpfgOPOC
+	e8SeDNyfncclid7C6c6kSrDl00QKy/+0rPtm0tPhIZFHcfqaJa59apLeydcoJ4NXOMzSM6LZfV0co
+	TvB3rYAgHnIk6Zj6zMop6V9njBgL29aw1f79OLtGHeH/TxL/bQdnX1rUOmgdJt7tNLP7PIe1YGcCL
+	ozG9pmBDt//q3DQzpaKPIJeY7eJQu8owIQat2akDqu8blLdkKJzt31JBP7V90tyxuZjLkfEOb8ESu
+	yI2ubfxau7ByD68reZmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDGI0-002CYG-6m; Tue, 10 Aug 2021 01:10:44 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1mDHuq-002J0U-Av; Tue, 10 Aug 2021 02:54:56 +0000
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDGHw-002CXc-BY
- for linux-rockchip@lists.infradead.org; Tue, 10 Aug 2021 01:10:43 +0000
-Received: from localhost (unknown [192.168.167.32])
- by lucky1.263xmail.com (Postfix) with ESMTP id 36D7CD6179;
- Tue, 10 Aug 2021 09:10:33 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from xxm-vm.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P49146T140469470209792S1628557815809840_; 
- Tue, 10 Aug 2021 09:10:19 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <edc5533435c7c5301041dd3fb0d9e71b>
-X-RL-SENDER: xxm@rock-chips.com
-X-SENDER: xxm@rock-chips.com
-X-LOGIN-NAME: xxm@rock-chips.com
-X-FST-TO: jic23@kernel.org
-X-RCPT-COUNT: 11
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Simon Xue <xxm@rock-chips.com>
-To: Jonathan Cameron <jic23@kernel.org>
+ id 1mDHun-002Iyd-4D
+ for linux-rockchip@lists.infradead.org; Tue, 10 Aug 2021 02:54:54 +0000
+Received: by mail-ot1-x329.google.com with SMTP id
+ r19-20020a0568301353b029050aa53c3801so3467095otq.2
+ for <linux-rockchip@lists.infradead.org>; Mon, 09 Aug 2021 19:54:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=AXpc99n4MUgAooECetaziYMLNx4QWnC4XCxkO2+s1cU=;
+ b=JE+3dodsleEaqADGGlbjnZthv7gZfg+EBun52/Qc1VojEGuv0XrF0qqNTJCSlg6oV9
+ uxZA/YJPO+XBxymoZLVltefPd99EQfDV+XZAAxYh8tqd7yXt00nV5CwP1eTWmXGHBoxf
+ KDyJAFGG5hk5/y+CGC2eIp2VEt1E9NO6gSxI+cODaWusb0gD9KYj5o4mDvtlHI04WoSd
+ 1KlfyBEvb/Cvke+gX1aIIsn8BAzdQZHhyk8guIbjdIfKk33JD5OywmPA2OyQCrsIo5qN
+ Pps4IKzO56bK8YuIMOWNXtrvS7TutnhOhnTOb5xIO9DRDcFvLj7UYqgYIcJ+gfM6jqkq
+ 9YyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=AXpc99n4MUgAooECetaziYMLNx4QWnC4XCxkO2+s1cU=;
+ b=XVe098b28RJTfAWzodNLGr5dCZb95CdRfCbUofepw6QgqRwbRU8iHMywqwH5vVKe4C
+ oc3Vonis58KDSuJileV/aDFW+hQcQICd6v+ZQxA2Hk4psDls6erv5a9iTijRTrYQSIo5
+ i32xcfXyP2nFJ3fb5tO4YpcZOTQqEg2FC7FDx/BKKvDT/EpWtD/byTRJxQ0OXXjfk+zU
+ zmhvhQsgvXj3SOC2Bj4X9a2ZP29jzQ/VzkaOX7849AqHk8Tkyd0SJafIx6MzXm1cPD97
+ C06sg3sOuiOkQB5t+ERh3wGbvl4KGw3tuT4kO1R6YdFs5U5/M0mOvKP0dcDcwRD2mm5I
+ tnIQ==
+X-Gm-Message-State: AOAM531SpS6EeYUHmdeGPPD6w16wBULqEQYI5PbyQvCbJYh+BOb7Np4C
+ FGKIAT7t1dWdss3AJkwQC6Y=
+X-Google-Smtp-Source: ABdhPJw8yhd/QMz8mC1JOUkbfGSmv8jJhlEP0HqaeySBW/7k27lvYpjSdJzO9dRbcxg8tNgoVTkhLw==
+X-Received: by 2002:a05:6830:43ac:: with SMTP id
+ s44mr19084601otv.74.1628564091566; 
+ Mon, 09 Aug 2021 19:54:51 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
+ [76.183.134.35])
+ by smtp.gmail.com with ESMTPSA id h187sm3654898oif.48.2021.08.09.19.54.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Aug 2021 19:54:51 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-pm@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- robh+dt@kernel.org, Johan Jonker <jbx6244@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Lars-Peter Clausen <lars@metafoo.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, linux-iio@vger.kernel.org,
- David Wu <david.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>
-Subject: [PATCH v4] iio: adc: rockchip_saradc: add voltage notifier so get
- referenced voltage once at probe
-Date: Tue, 10 Aug 2021 09:10:07 +0800
-Message-Id: <20210810011007.54066-1-xxm@rock-chips.com>
+ maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
+ robh+dt@kernel.org, lee.jones@linaro.org, pgwipeout@gmail.com,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v3 1/4] dt-bindings: Add Rockchip rk817 battery charger support
+Date: Mon,  9 Aug 2021 21:54:33 -0500
+Message-Id: <20210810025436.23367-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210810025436.23367-1-macroalpha82@gmail.com>
+References: <20210810025436.23367-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_181040_969394_80193A6E 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20210809_195453_214189_78613167 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,112 +105,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: David Wu <david.wu@rock-chips.com>
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Add voltage notifier, no need to query regulator voltage for
-every saradc read, just get regulator voltage once at probe.
+Create dt-binding documentation to document rk817 battery and charger
+usage. New device-tree properties have been added.
 
-Signed-off-by: David Wu <david.wu@rock-chips.com>
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+- rockchip,resistor-sense-micro-ohms: The value in microohms of the
+				      sample resistor.
+- rockchip,sleep-enter-current-microamp: The value in microamps of the
+					 sleep enter current.
+- rockchip,sleep-filter-current: The value in microamps of the sleep
+				 filter current.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 ---
- drivers/iio/adc/rockchip_saradc.c | 47 ++++++++++++++++++++++++++-----
- 1 file changed, 40 insertions(+), 7 deletions(-)
+ .../devicetree/bindings/mfd/rk808.txt         | 36 ++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index f3eb8d2e50dc..a237fe469a30 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -49,10 +49,12 @@ struct rockchip_saradc {
- 	struct clk		*clk;
- 	struct completion	completion;
- 	struct regulator	*vref;
-+	int			uv_vref;
- 	struct reset_control	*reset;
- 	const struct rockchip_saradc_data *data;
- 	u16			last_val;
- 	const struct iio_chan_spec *last_chan;
-+	struct notifier_block nb;
- };
+diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
+index 23a17a6663ec..89b9fa7e10b5 100644
+--- a/Documentation/devicetree/bindings/mfd/rk808.txt
++++ b/Documentation/devicetree/bindings/mfd/rk808.txt
+@@ -70,13 +70,40 @@ Optional RK817 properties:
  
- static void rockchip_saradc_power_down(struct rockchip_saradc *info)
-@@ -105,13 +107,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
- 		mutex_unlock(&indio_dev->mlock);
- 		return IIO_VAL_INT;
- 	case IIO_CHAN_INFO_SCALE:
--		ret = regulator_get_voltage(info->vref);
--		if (ret < 0) {
--			dev_err(&indio_dev->dev, "failed to get voltage\n");
--			return ret;
--		}
+ - vcc8-supply:  The input supply for BOOST
+ - vcc9-supply:  The input supply for OTG_SWITCH
++
+ - codec:	The child node for the codec to hold additional properties.
+ 		If no additional properties are required for the codec, this
+ 		node can be omitted.
 -
--		*val = ret / 1000;
-+		*val = info->uv_vref / 1000;
- 		*val2 = chan->scan_type.realbits;
- 		return IIO_VAL_FRACTIONAL_LOG2;
- 	default:
-@@ -298,6 +294,26 @@ static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
- 	return IRQ_HANDLED;
- }
+ - rockchip,mic-in-differential: Telling if the microphone uses differential
+ 				mode. Should be under the codec child node.
  
-+static int rockchip_saradc_volt_notify(struct notifier_block *nb,
-+						   unsigned long event,
-+						   void *data)
-+{
-+	struct rockchip_saradc *info =
-+			container_of(nb, struct rockchip_saradc, nb);
++- battery:	The child node for the charger to hold additional properties.
++		If a battery is not in use, this node can be omitted. If a
++		battery node is used, the following values are required:
++		rockchip,resistor-sense, rockchip,sleep-enter-current,
++		rockchip,sleep-filter-current, and a phandle to a
++		monitored-battery node that contains a valid value for
++		charge-full-design-microamp-hours,
++		charge-term-current-microamp,
++		constant-charge-current-max-microamp,
++		constant-charge-voltage-max-microvolt,
++		voltage-max-design-microvolt, voltage-min-design-microvolt,
++		and a valid ocv-capacity table.
++- rockchip,resistor-sense-micro-ohms: Value in microohms of the battery sense
++				      resistor. The PMIC only supports values
++				      of either 10000 or 20000. This value is
++				      used by the driver to set the correct
++				      divisor value to translate ADC readings
++				      into the proper units of measure.
++- rockchip,sleep-enter-current-microamp: Value in microamps of the sleep enter
++					 current for the charger. Value is used
++					 by the driver to calibrate the relax
++					 threshold.
++- rockchip,sleep-filter-current-microamp: Value in microamps of the sleep
++					  filter current for the charger.
++					  Value is used by the driver to derive
++					  the sleep sample current.
 +
-+	if (event & REGULATOR_EVENT_VOLTAGE_CHANGE)
-+		info->uv_vref = (unsigned long)data;
-+
-+	return NOTIFY_OK;
-+}
-+
-+static void rockchip_saradc_regulator_unreg_notifier(void *data)
-+{
-+	struct rockchip_saradc *info = data;
-+
-+	regulator_unregister_notifier(info->vref, &info->nb);
-+}
-+
- static int rockchip_saradc_probe(struct platform_device *pdev)
- {
- 	struct rockchip_saradc *info = NULL;
-@@ -410,6 +426,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 		return ret;
- 	}
+ Optional RK818 properties:
+ - vcc1-supply:  The input supply for DCDC_REG1
+ - vcc2-supply:  The input supply for DCDC_REG2
+@@ -459,6 +486,13 @@ Example:
+ 			};
+ 		};
  
-+	ret = regulator_get_voltage(info->vref);
-+	if (ret < 0)
-+		return ret;
++		rk817_battery: battery {
++			monitored-battery = <&battery_cell>;
++			rockchip,resistor-sense-micro-ohms = <10000>;
++			rockchip,sleep-enter-current-microamp = <300000>;
++			rockchip,sleep-filter-current-microamp = <100000>;
++		};
 +
-+	info->uv_vref = ret;
-+
- 	ret = clk_prepare_enable(info->pclk);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "failed to enable pclk\n");
-@@ -450,6 +472,17 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
-+	info->nb.notifier_call = rockchip_saradc_volt_notify;
-+	ret = regulator_register_notifier(info->vref, &info->nb);
-+	if (ret)
-+		return ret;
-+
-+	ret = devm_add_action_or_reset(&pdev->dev,
-+				       rockchip_saradc_regulator_unreg_notifier,
-+				       info);
-+	if (ret)
-+		return ret;
-+
- 	return devm_iio_device_register(&pdev->dev, indio_dev);
- }
- 
+ 		rk817_codec: codec {
+ 			rockchip,mic-in-differential;
+ 		};
 -- 
 2.25.1
-
-
 
 
 _______________________________________________
