@@ -2,92 +2,88 @@ Return-Path: <SRS0=ncim=NC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E5BAC432BE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Aug 2021 06:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 856C8C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Aug 2021 08:32:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3703F60E09
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Aug 2021 06:52:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3703F60E09
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id 46D0C60F41
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Aug 2021 08:32:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 46D0C60F41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dklUPerQW/PRDvds6eliz/tUCfALB/S+KzDzh8ctg5o=; b=FxFx6ZOsWqmaMB
-	UgcRtNvLkQZ2gTpPQ0T0QzJesPKoZ+kfcxS1a2587yWa1HAkd1HKduCtvdulRYE0jd71OoiL0ruMK
-	21iGPMlip2px70550GNuw2M6u1Z3iNagozUjptJYx6Z+xK5Iy6ty/e8YiWD90viAyAA1Dd6u6rAaw
-	bCA+6Rw5rGg15wqR96ZYuDUZDN6xP1dExY7EM0AfrNgdWMq8X2033AeFJw1Al449vTy8ud8N9Z/on
-	Vs232N5/qD5qQg1W/aPKcSuByVyxJR5Uu4D2H6xGeD2N5PQNw8YaXJXNyuqNI4gwFH146BRDkzf5r
-	p3VrpgLP5byQFqa4Btzg==;
+	List-Owner; bh=ZPd4wGf3JE9Wm799duU4YGk/dpHku5Gd4/qWIXLLnKo=; b=aGQ0zg8AcNHoUp
+	yF5QlulbLNKYMrCsHmQFfSjCCxh3eockcK9lhE82PGZFZRkp+5vB5S4FVkUCb5VZM3Cn2juSMPdsX
+	xWJDcJZM5yaQNO4ekRtTt7FEBg64Ow/wrK+luVluGXNTWw/R8NMBQh0KFcQnCdEQ+XeOGwlpaK2Aa
+	GvR7XJ/koqBZApKE5zLEWzc/hDChpbSg2WgpGfj54SgKPuWPwCublSMHgh4t0UT+pKkONP0zx16EZ
+	IpglbHU+namo3dyT3L0GJSZN8pdvjhWjpasGnM/bBPhUa79cl25NX/yfgOvD0KkzlWaRD2MDaPmLP
+	b3X9Xii5xlkEkT8JUvcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDi60-005njP-1f; Wed, 11 Aug 2021 06:52:12 +0000
-Received: from fllv0015.ext.ti.com ([198.47.19.141])
+	id 1mDjev-0062K6-Ao; Wed, 11 Aug 2021 08:32:21 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDi28-005llO-1N; Wed, 11 Aug 2021 06:48:14 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 17B6m3oE026588;
- Wed, 11 Aug 2021 01:48:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1628664483;
- bh=poueu/euKtfcqbr8LzsTcjIQ1wgv6v/lzsChvHScOeU=;
- h=From:To:CC:Subject:Date:In-Reply-To:References;
- b=YJ4wM9L3VEJmYH2KJBKukyKV33WYLZuiUi/z2m4KlsPYdbuurecgPUgfG9Ll1Wzue
- JUpLXuH8RiZU/cYqCesDw37rQ4NtA+d4wwvfl0TVmHCCoIq7BaKzrf7K3JaFI3kQpN
- JlD0qjWHNlL346IFMqKjrgv76D42uX8Ro39p6MXE=
-Received: from DLEE103.ent.ti.com (dlee103.ent.ti.com [157.170.170.33])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 17B6m3CT078454
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Wed, 11 Aug 2021 01:48:03 -0500
-Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE103.ent.ti.com
- (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 11
- Aug 2021 01:48:02 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE103.ent.ti.com
- (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Wed, 11 Aug 2021 01:48:02 -0500
-Received: from a0393678-ssd.dal.design.ti.com (ileax41-snat.itg.ti.com
- [10.172.224.153])
- by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 17B6kvu9013269;
- Wed, 11 Aug 2021 01:47:56 -0500
-From: Kishon Vijay Abraham I <kishon@ti.com>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
- <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
- <gustavo.pimentel@synopsys.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
- <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-CC: Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>,
- Lokesh Vutla <lokeshvutla@ti.com>, <kishon@ti.com>
-Subject: [PATCH v8 8/8] Documentation: PCI: endpoint/pci-endpoint-cfs: Guide
- to use SR-IOV
-Date: Wed, 11 Aug 2021 12:16:56 +0530
-Message-ID: <20210811064656.15399-9-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210811064656.15399-1-kishon@ti.com>
-References: <20210811064656.15399-1-kishon@ti.com>
+ id 1mDjeq-0062J6-A3
+ for linux-rockchip@lists.infradead.org; Wed, 11 Aug 2021 08:32:20 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id p38so4178905lfa.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 11 Aug 2021 01:32:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=T9aF/gnHHaozYj2J+OBaspaiiV6uiEkY/GBIP7m0gEg=;
+ b=z4zPOj2oXB+m27UeJcQn5BVLsxsB4z1KOcQYkV7Zp4KvMRcbXTwGaQYgvfjzMX/nBU
+ +zmL0eQOyKOXcbZUzpKCJJfPmbA62iwzKwBm+4YtiuzZjzMDYUtdFO0Mz87QkQPr38YJ
+ fggNcHhRGF/BagSG37jlWaIkXwYqR0dnF13GLl5azCiqyXmrLFlj3Tzz5mag8r20A6HE
+ pZ7rAO2PUBHurc0seOXsZIH1lLrsbGPHPpF9eFSVOwVG8GzQQjJDJ79SKGk+YdBFO9Gx
+ 3MZeVhJt+5R2p2mJ8v9vcjavRhrjmWHrZ+uhVc8cVKFVyzaTQfCwk2AHhFi9e1n9y8UE
+ jwsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=T9aF/gnHHaozYj2J+OBaspaiiV6uiEkY/GBIP7m0gEg=;
+ b=tXks/9CLBhHt4f03gftEPSMSwASCpERxRWW7xiKIxJroKMr2xoSrhBz/BH018h9lks
+ 9sTObBRAQKMxy1ySn91CxovqPl0syltCtcTktt/HO1GMWW3hhEj0hy+hovFTs2E5JkQ7
+ /X6A1vE7MfNgC/U06mAZ+27RvWlhccD1hfpExgTDI7YvTGSUhNntl8R5rL3d0aXlZ/iA
+ TYkKBuJn8AJoAW44wM89TEW2oJBeSw6DMqnV9BvVh5BNArCfIDKICEtbIFJ3zIVKl4Ov
+ 7AKnHfCt+Szq/Zhj4EMlkFA5bo6ntOm8vH/VxgLem817p6nxvV4747mltucO/jzpClTZ
+ 5Ykg==
+X-Gm-Message-State: AOAM533zHjWSGs414+sEiYTcgR7J0PkgU5+wWGlvZWu2pntVBDA7qpof
+ OQvYN+Mi1kqXs42bWmzRiOZ6+8qaWPlM4CDUJPqgpQ==
+X-Google-Smtp-Source: ABdhPJx8KOnvL7KNjPPz1PGddRFRscqa0/aQu7hNC6SM9IIiyOqA7hHEP9AiCoar+a37Et8CsHj/YEfe9PFf6cIfeKQ=
+X-Received: by 2002:a19:c7cd:: with SMTP id
+ x196mr24373795lff.465.1628670734307; 
+ Wed, 11 Aug 2021 01:32:14 -0700 (PDT)
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+References: <20210726013345.1634442-1-jay.xu@rock-chips.com>
+In-Reply-To: <20210726013345.1634442-1-jay.xu@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 11 Aug 2021 10:32:03 +0200
+Message-ID: <CACRpkdbU+SXCaJ5N65zKw-btn_CQisp+rhozjtCaZ7y59mvTtQ@mail.gmail.com>
+Subject: Re: [PATCH v7 0/9] gpio-rockchip driver
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_234812_232089_4CAF8C48 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20210811_013216_457773_D2C86645 
+X-CRM114-Status: UNSURE (   6.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,63 +101,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Documentation to help users use PCI endpoint to create virtual
-functions using configfs. An endpoint function is designated as a
-virtual endpoint function device when it is linked to a physical
-endpoint function device (instead of a endpoint controller).
+On Mon, Jul 26, 2021 at 3:34 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- Documentation/PCI/endpoint/pci-endpoint-cfs.rst | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+> Separate gpio driver from pinctrl driver, and support gpio v2 controller.
 
-diff --git a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-index db609b97ad58..fb73345cfb8a 100644
---- a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-+++ b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-@@ -43,6 +43,7 @@ entries corresponding to EPF driver will be created by the EPF core.
- 		.. <EPF Driver1>/
- 			... <EPF Device 11>/
- 			... <EPF Device 21>/
-+			... <EPF Device 31>/
- 		.. <EPF Driver2>/
- 			... <EPF Device 12>/
- 			... <EPF Device 22>/
-@@ -68,6 +69,7 @@ created)
- 				... subsys_vendor_id
- 				... subsys_id
- 				... interrupt_pin
-+			        ... <Symlink EPF Device 31>/
-                                 ... primary/
- 			                ... <Symlink EPC Device1>/
-                                 ... secondary/
-@@ -79,6 +81,13 @@ interface should be added in 'primary' directory and symlink of endpoint
- controller connected to secondary interface should be added in 'secondary'
- directory.
- 
-+The <EPF Device> directory can have a list of symbolic links
-+(<Symlink EPF Device 31>) to other <EPF Device>. These symbolic links should
-+be created by the user to represent the virtual functions that are bound to
-+the physical function. In the above directory structure <EPF Device 11> is a
-+physical function and <EPF Device 31> is a virtual function. An EPF device once
-+it's linked to another EPF device, cannot be linked to a EPC device.
-+
- EPC Device
- ==========
- 
-@@ -98,7 +107,8 @@ entries corresponding to EPC device will be created by the EPC core.
- 
- The <EPC Device> directory will have a list of symbolic links to
- <EPF Device>. These symbolic links should be created by the user to
--represent the functions present in the endpoint device.
-+represent the functions present in the endpoint device. Only <EPF Device>
-+that represents a physical function can be linked to a EPC device.
- 
- The <EPC Device> directory will also have a *start* field. Once
- "1" is written to this field, the endpoint device will be ready to
--- 
-2.17.1
+Mostly looks good, but waiting for a respin to address Bartosz
+comments on patch 5.
 
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
