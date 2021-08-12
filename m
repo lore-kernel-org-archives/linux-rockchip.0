@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09711C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 13:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 04417C432BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 13:56:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C367060FD7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 13:56:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C367060FD7
+	by mail.kernel.org (Postfix) with ESMTPS id C088260FD7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 13:56:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C088260FD7
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eD3aLFcMazHQ1tE4ryE5S4zy+rqRST06O6Nh8oPJ+6I=; b=oGhUbNvHuoKzNc
-	cCfo8OKgIBRyUd397qbvRW9OjB1hY/Zcrz860077rRWUKBx5rkxkIjxXpIwdoHwlQzU4KishP8DQ7
-	4hNRnjuJ+ffIquH0G+oyLmFCqD1eOPlcwmuo9DqGukD6efeEjhYeefyXxc9HSslptdadEyytB5ZO1
-	mmM4lUDTPNoj284FKaDtE46/2nNw+KryPOYkBWBKIUpum12agdUmf+6Y8pQ2P4nnr84GBX3Uuf4XH
-	NRrcC4EA9Vh0sE1RcWb0BPS461PAVVdv7gSzvmszTj++ZstaaOmz5D1OijThlK/4MK+d6w3SbXvUS
-	NahHZvyA7vsiWc63Tqkg==;
+	List-Owner; bh=3jhxG3XUbw+9BM9/rSsikd2ym1Lh+i2aOG0Ah5tXWAs=; b=L4puhZwqIiShPx
+	6pU6eF0ShB+9Sqx8gJNzWTDzjYsHJr5szs1tdyuNHbzhXhmtlSBWlmuhImrlZqf1/hEeZPhuYA0aT
+	JhwBR9FF8dvj9avOknbxASxh0wwI2Dmk74awh4iBCqAcUDHVlXEeOCGxYTooW8wUq/0Y0K2veTZn1
+	zFT2ON4idYKeQ+fv4p1q2qcwaJOIqgfcEA2fXhXqmWP/GzA5nO+WLznOcNdljAH4Rrciz3aVudj76
+	KhOdoKf+EMYsSqzjFKS8cGsczVQbBeeGlMCjH71bbhgbye3ERRRV0okIWwftM+JGvYeC1L2opgFVj
+	KrLZf63fv9DUkIMJy9/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEBBi-00ALXu-6Y; Thu, 12 Aug 2021 13:56:02 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1mEBBk-00ALYd-BR; Thu, 12 Aug 2021 13:56:04 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEB2t-00AI9G-4a; Thu, 12 Aug 2021 13:46:57 +0000
+ id 1mEB2t-00AI9j-QR; Thu, 12 Aug 2021 13:46:57 +0000
 Received: from localhost (unknown [192.168.167.70])
- by lucky1.263xmail.com (Postfix) with ESMTP id 6DC82C285B;
- Thu, 12 Aug 2021 21:46:49 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 4849AD652A;
+ Thu, 12 Aug 2021 21:46:52 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P4989T139771043112704S1628776006486981_; 
- Thu, 12 Aug 2021 21:46:48 +0800 (CST)
+ Thu, 12 Aug 2021 21:46:50 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <a56e99efda023e8b911ea052f72f0d7c>
+X-UNIQUE-TAG: <8dcded2026158dda55856874c75d1131>
 X-RL-SENDER: jon.lin@rock-chips.com
 X-SENDER: jon.lin@rock-chips.com
 X-LOGIN-NAME: jon.lin@rock-chips.com
@@ -67,15 +67,16 @@ Cc: jon.lin@rock-chips.com, broonie@kernel.org, robh+dt@kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v13 5/6] arm64: dts: rockchip: Add SFC to RK3308
-Date: Thu, 12 Aug 2021 21:46:38 +0800
-Message-Id: <20210812134639.31586-1-jon.lin@rock-chips.com>
+Subject: [PATCH v13 6/6] arm64: dts: rockchip: Enable SFC for Odroid Go Advance
+Date: Thu, 12 Aug 2021 21:46:39 +0800
+Message-Id: <20210812134639.31586-2-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210812134546.31340-1-jon.lin@rock-chips.com>
+In-Reply-To: <20210812134639.31586-1-jon.lin@rock-chips.com>
 References: <20210812134546.31340-1-jon.lin@rock-chips.com>
+ <20210812134639.31586-1-jon.lin@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_064656_099341_50D4DB06 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20210812_064656_175143_0F9EDF3E 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,7 +97,11 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add a devicetree entry for the Rockchip SFC for the RK3308 SOC.
+This enables the Rockchip Serial Flash Controller for the Odroid Go
+Advance. Note that while the attached SPI NOR flash and the controller
+both support quad read mode, only 2 of the required 4 pins are present.
+The rx bus width is set to 2 for this reason, and tx bus width is set
+to 1 for compatibility reasons.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
@@ -104,7 +109,9 @@ Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 
 Changes in v13: None
 Changes in v12: None
-Changes in v11: None
+Changes in v11:
+- The tx is set to 1 for Odroid Go Advance device
+
 Changes in v10: None
 Changes in v9: None
 Changes in v8: None
@@ -116,64 +123,36 @@ Changes in v3: None
 Changes in v2: None
 Changes in v1: None
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 37 ++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts      | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index a185901aba9a..ce6f4a28d169 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -731,6 +731,17 @@
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 7fc674a99a6c..35218c2771a2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -517,6 +517,22 @@
+ 	status = "okay";
+ };
  
-+	sfc: spi@ff4c0000 {
-+		compatible = "rockchip,sfc";
-+		reg = <0x0 0xff4c0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
-+		clock-names = "clk_sfc", "hclk_sfc";
-+		pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus4>;
-+		pinctrl-names = "default";
-+		status = "disabled";
++&sfc {
++	pinctrl-0 = <&sfc_clk &sfc_cs0 &sfc_bus2>;
++	pinctrl-names = "default";
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <108000000>;
++		spi-rx-bus-width = <2>;
++		spi-tx-bus-width = <1>;
 +	};
++};
 +
- 	cru: clock-controller@ff500000 {
- 		compatible = "rockchip,rk3308-cru";
- 		reg = <0x0 0xff500000 0x0 0x1000>;
-@@ -1004,6 +1015,32 @@
- 			};
- 		};
- 
-+		sfc {
-+			sfc_bus4: sfc-bus4 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>,
-+					<3 RK_PA2 3 &pcfg_pull_none>,
-+					<3 RK_PA3 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_bus2: sfc-bus2 {
-+				rockchip,pins =
-+					<3 RK_PA0 3 &pcfg_pull_none>,
-+					<3 RK_PA1 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_cs0: sfc-cs0 {
-+				rockchip,pins =
-+					<3 RK_PA4 3 &pcfg_pull_none>;
-+			};
-+
-+			sfc_clk: sfc-clk {
-+				rockchip,pins =
-+					<3 RK_PA5 3 &pcfg_pull_none>;
-+			};
-+		};
-+
- 		gmac {
- 			rmii_pins: rmii-pins {
- 				rockchip,pins =
+ &tsadc {
+ 	status = "okay";
+ };
 -- 
 2.17.1
 
