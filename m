@@ -2,77 +2,186 @@ Return-Path: <SRS0=gOg0=NE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E85AC4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 09:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D4D1C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 11:34:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 364C560F00
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 09:43:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 364C560F00
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 58CDF61038
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 11:34:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 58CDF61038
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/nMYWVWwt57HD5h+OWPQD+fxns7R2FDXw9CZDA+qolo=; b=lHa1kJ7c/qrPUf
-	jt0Zr1CDhaa/k6RQSp2OIYKHNXK5jnPjeAMTP/g1EEEP496CGWIYoZhnDbsKAIX+/WBkaLfbvJ7Km
-	Q7O0Q9mLtXYMqCli3Xj6ZuLlBTmdnjnB8JSJsWBZZv7HNGGmWK6p1xU+v9q8zP06d2Dm7GEw3vPHw
-	ztn4uwJMsifZio/HbSL9ScnS2GRPIe399NfdPevJF19u/6xkiKjlYQ47fy5IoN2eK6uIO8p+uK6Dz
-	tpPh/L2BZvSNigZLXXZBaL8F0ItMcLule5eFsc82Bqz+NjNr2rFde76wtSRgU8wElnvvG44R32lnh
-	RCbjg7LFNMHNHdXLiJeA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T7AmR/u0IOYVPMFf6js71cMbdiWOBJ8DzQh5PKBj5jQ=; b=ZLkIrVxDdcTa8U
+	FYy9DZ2KxmigHh0hbrs9LW/MRIMyV/f5KGIWgG9QWTsEBeQJzZGFnjm5L8UE5k+A9S9BzLpYaVMm5
+	1bKk0mAuG6WwPTIBHG2LrSZlVOAfExa6DLfKX+CASSQ5A1KQ+bg7KNPJqwlKBaokTpciFgFHre7D4
+	nbSpSftYuqySQwrOGwvWH5XD4RzZtM+ohpX5MYG+XZIhc5SsZ1iFLIIBhpEu/4yTGqtaxv4Qkqzig
+	UFmTN/99hg+w8n9w4zTs/e9gJx5zsB8B523mqWYfOU+PR4oYjJfH+QCjpMFxDrrhdiS6VDPly45Xg
+	gZ57pNisOVSqYDvQ+NNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mETj9-00CMnk-Ff; Fri, 13 Aug 2021 09:43:47 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1mEVSC-00CWxv-EX; Fri, 13 Aug 2021 11:34:24 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mETix-00CMmF-4C; Fri, 13 Aug 2021 09:43:36 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10074"; a="215263013"
-X-IronPort-AV: E=Sophos;i="5.84,318,1620716400"; d="scan'208";a="215263013"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2021 02:43:34 -0700
-X-IronPort-AV: E=Sophos;i="5.84,318,1620716400"; d="scan'208";a="470040425"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2021 02:43:29 -0700
-Received: from andy by smile with local (Exim 4.94.2)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1mETik-0091Jx-R2; Fri, 13 Aug 2021 12:43:22 +0300
-Date: Fri, 13 Aug 2021 12:43:22 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Stephen Boyd <sboyd@kernel.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-imx@nxp.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>,
- Michael Turquette <mturquette@baylibre.com>,
- Abel Vesa <abel.vesa@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v4 1/4] clk: fractional-divider: Export approximation
- algorithm to the CCF users
-Message-ID: <YRY+uoTrBjkdh4Zj@smile.fi.intel.com>
-References: <20210812170025.67074-1-andriy.shevchenko@linux.intel.com>
- <162879819529.19113.6409882476721828944@swboyd.mtv.corp.google.com>
-MIME-Version: 1.0
+ id 1mEVRy-00CWwV-4q; Fri, 13 Aug 2021 11:34:11 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 17DBVbQ7015352; Fri, 13 Aug 2021 11:33:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=sJTDWx+xA2qNub2NudQZ+e+xDSGMnmFYCjt8d9XClIw=;
+ b=y9ENvXJCjMGUU0RKQ00TOFX4SnV8n1EEeqEmdU7z2Cg2bFV+HpvMCEzC4809Kr5Q/wDk
+ syfmiXmdZM3ABnrxbiV4M5LB381n822SeHnNRw2HFc8fW9EoP+uLfcMRHOxIgwanAI9T
+ sUsDdLI38dumBRzA6BZ8iWRhuCYPSbtj2xqug7VvJdrHFX/XlHP0S2jaIAlV6lAvKp0k
+ xA6u84/HGHMxXlVKQDcUrBcDS1I0VdHmFjtR0O7CLmbKekDDXAwWoP+D2mYfZ19IDEqY
+ QOCU/YUqrwPe3e3y+Cxc1qgkNGvVwFPzmFlMb4qKMeogy3iYM+qReXwqXNr3YdJQJIkq 9Q== 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2020-01-29;
+ bh=sJTDWx+xA2qNub2NudQZ+e+xDSGMnmFYCjt8d9XClIw=;
+ b=uPLKc0xm7OAf9eAx/EKKuoeQUefD3CDhduejg9qGu6G3vLR+I+7+mG0uwtVHVnwlEFit
+ hOQTqWYItQxwfDVOdr3Cy9PxmidqMt4AYo+8q3mD7Zh/bArdBUxIOG2/xVQDXvjLMK05
+ 27MZOAAJN/WUZTs8lpWYOuSxoGA4lDw1LO222bUIrbGeMCB51TxQ32fUK4/9nN1sFvTv
+ PxAKNJGKOqZNba1ZJH06diUpqXTDvFBWVj05BacaCmIvbxal5dreoxeDwbt6fqYWSeF6
+ qBEC53cXwPaLEUSili92Vqnd/HFyHhVss030M+e+4ljZ8Lbf5f7ogm6lhbvXwpdQsbw4 Rw== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3ad13vaqrx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Aug 2021 11:33:59 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 17DBUgAo148703;
+ Fri, 13 Aug 2021 11:33:58 GMT
+Received: from nam11-co1-obe.outbound.protection.outlook.com
+ (mail-co1nam11lp2175.outbound.protection.outlook.com [104.47.56.175])
+ by aserp3030.oracle.com with ESMTP id 3abx40jhrk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 13 Aug 2021 11:33:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dCTSJUmFc/m0CXvIQS3+tM13tsmUuqHCZ/wxJBep8tXyEy8c06YaqXC0r+yx1ckBCzxW4kG4g00sgLWz9yb/ueImb+dHkWqnLFoBQUK7ikLWbuodsHG80+hiGSW1KgowjXzunEV7BHjdrsokHyqN0V5RJr91HKaLN/1S/qMEbPIkb7hg1ah1bO/q8+ZQ1Xn00kQt2nz7GrwODzxMnJSewWGS/aNwUcVtAfswEVVIQ1k70699XP4KiHYIwN+GsCpFMI4xITx45jxeT0vjzRGf/VnYyk7kmQh4Kai7hKN83uWTueWnyVL+nDiEoATVqqfsvt8WiP0vDq131nYkPd6BnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sJTDWx+xA2qNub2NudQZ+e+xDSGMnmFYCjt8d9XClIw=;
+ b=h2HB2kQafCbLcUyxnqHvxijOCTtgnjiPaghTx6kpYuE8cEecIFTlJhH2PWre3tdr9bZp2MzpdUcZlgzXjy9w/Z9/v7IOrTcdPvpHsZesHF0Yf1b+Wg02ZtLrAKIznh5zbQNV59dGLGJQt0r42He95Ay9MC95TsZBhnjg3AdFbA5O4wNwMTK2f6CWAvy3xAPWAyNwf4KwkBN65rukwuJly7Vh1/e7pdhxktF6/rZriVUigHNGNXO5Rv8UOLNEStNb7+EXPp1Xz709Mw4weG4d85j9IXW+sMMXe36fsyOpIsiIrLP1J4T36LGIu1UtBOu7Y8SZ/9noXyrfR1nCo8vB6g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sJTDWx+xA2qNub2NudQZ+e+xDSGMnmFYCjt8d9XClIw=;
+ b=dBm2EOiWSKqum3SVdDHScvnpwqsioBPbdyyUxJuKrVU6GqFrYiFs9/BjEcjgBHcglMvX3DEkarh4zL4UC9qGr3TnwveRygXMiGm6sL968/R3XhES/s5OsdVF5i7zPdGFPG5ZXdSVHLXybFWU7d0MWNv20yElAac1Gk/wISbpgls=
+Authentication-Results: arm.com; dkim=none (message not signed)
+ header.d=none;arm.com; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by CO6PR10MB5569.namprd10.prod.outlook.com
+ (2603:10b6:303:144::5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.15; Fri, 13 Aug
+ 2021 11:33:56 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::5820:e42b:73d7:4268%7]) with mapi id 15.20.4415.019; Fri, 13 Aug 2021
+ 11:33:56 +0000
+Date: Fri, 13 Aug 2021 14:33:38 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Simon Xue <xxm@rock-chips.com>
+Cc: Rob Herring <robh@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Shawn Lin <shawn.lin@rock-chips.com>, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] PCI: rockchip-dwc: Potential error pointer dereference in
+ probe
+Message-ID: <20210813113338.GA30697@kili>
 Content-Disposition: inline
-In-Reply-To: <162879819529.19113.6409882476721828944@swboyd.mtv.corp.google.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ClientProxiedBy: ZR0P278CA0124.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:20::21) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from kili (62.8.83.99) by ZR0P278CA0124.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:20::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.16 via Frontend
+ Transport; Fri, 13 Aug 2021 11:33:48 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a3f86535-adb3-47c0-1331-08d95e4e3c43
+X-MS-TrafficTypeDiagnostic: CO6PR10MB5569:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <CO6PR10MB55691F536FC7F31A9716BA788EFA9@CO6PR10MB5569.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1850;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 8TgI9tXdB7812nt8nzQK1bzWOorHa8gfdLfD0davSUmEqP1kONy8bSjLPwyAv9232fZCasK3r+zsv7ME7wvjQwd3BrYEsOmxK5xvy2KeIN+UUzjABYmODS5ZNzsOdJlmE3l5S9btAtpOSD7ywCoDRLJdXwUP6l1xfDFDX6m03znivf+wRbNt8QCiS15ym8EIa35lLiTW+/s5vugOXCn3eG2TOHpdsOyXtGcZKVlXvKVykurN9vMJVh/XXe8kWUL9GXFlOCNuZh9CdfFk1ZAMITFYwecTVjx4WCsUk89QPZaIfVaqWxXZdPRAnbm//LfgkBGyzRI1K0q/QCRuDPhCWGkjetOEOT4V9Lgo7Bu0a+9ugxgkza8dM92peUS7ZrmIh8lMMlEYjzLyPikthPNt+TRlX0DneGgU/3S+qtGb5Y4PQ7fayZfDbVxogzNmq6i1dj+uF5s+WpSjD6faEd6qKQOOh4emQmcyNwVizmnPV5xBnTXa60+oihZTiIBoemslW9aXdC8PH+ic5LnYkQXnEg4vuJAPslZ3qBmEhe2dEtklGUUb50iXdGm5D2AOqCU+WZjKVRhJTXR/n3wTDNHephQuQXJalSvpuuXLt/9ilFhEegtJ5xslFg7l7Qx/FtLvr5AT8QgAgiUQ7eyhRH9xUvnS5y5FCTV3a5qGjV070VdoAbyxyFq+sVAbzBYhurZT4vH1AXGudQJH/jSIXFzElA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(39860400002)(136003)(346002)(366004)(396003)(376002)(9576002)(55016002)(44832011)(86362001)(9686003)(5660300002)(316002)(4326008)(110136005)(2906002)(33656002)(6496006)(52116002)(54906003)(38100700002)(38350700002)(7416002)(6666004)(186003)(83380400001)(8676002)(33716001)(66946007)(66476007)(66556008)(956004)(26005)(8936002)(1076003)(478600001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8NrAswdHuvEQfo+zCO0XB2my7PfGh3qvf1GtnbiRo+cF1osVn2IElNAYZN1w?=
+ =?us-ascii?Q?lkGC8PZ2q+HPBaKOUVPUmlDWdpzmw9u3wx+jy8f1zHapTdJsAmCSoj/j/dQI?=
+ =?us-ascii?Q?xtRKa5yNpv9nBT/YnZGWWB0+30ovar+BJ2hOKk0qA1LNgsiFgT8Ax5H64EcD?=
+ =?us-ascii?Q?gXCctKvO0uEnWAft1P0bdRQ1VoLSDf2+N+yjy4BGvekUp83FUzYAGMw0D58p?=
+ =?us-ascii?Q?JNiZ9RsWfYRtpbRYKWjPoERT4R7PhY+WAxY/RAWGMtnav/gTj5+G0HKC6wF2?=
+ =?us-ascii?Q?4zghMUGmO7SNlgNayx/Ay4QeNPeIYwllaXng2nW9OSpILKDyDaGAzS/qdEoo?=
+ =?us-ascii?Q?4MJMJE4HbvsXt49Vl26c58v016PgAdqOp3TuevJybpAdppLdW68nmjQG2wMu?=
+ =?us-ascii?Q?ON0EKpDKN5Lt/GxbFtnQ2Ke52WtexLkQhwXhXchUtuhPcaJzj9oGN/RiMs9M?=
+ =?us-ascii?Q?TipJLrk2RpXG0JEcLI3E/zW75poVYI8Kix1aJwQE1siYX99LCZW1dOVN+DXY?=
+ =?us-ascii?Q?8+RN/dSsgvjwd4bW5u8AQ/Ry4Met766u6gMJuO0Jm6Y8a/Oh5zk72ZGq82AY?=
+ =?us-ascii?Q?nPv0RgtKe9mRCRaHQXORREkgn7JFDOaQ1kM2PkBVpgTxfQXF7usemxuw8xxi?=
+ =?us-ascii?Q?Kz8liuRK1dBb7gEIGSI1IxKT2m3TLtU04GoE1asq6RMbz/liHnsh8o3i/5Om?=
+ =?us-ascii?Q?ekNyqULFQZ8tRZgfsqUUQVuTXFha+/ujuK8hAOIPTY52iiH+F4d4YonZc/b1?=
+ =?us-ascii?Q?ucsv69ruC7fNR1+fYXpUWiqLTZQ8g3SSg0WdflMhi/4PhD+y89nzaiV6tlTk?=
+ =?us-ascii?Q?fB89e4u9mpGVu1ge3FBrpXYLazJCxGQtkxs4sWAlR35ZmbXdhLy1tee2ZNNr?=
+ =?us-ascii?Q?pn8uhAZcv/F+op1zV3X0FAnIUXHHMhGLTjgQxOMr02lEOkAvsAnrfyE/L6uE?=
+ =?us-ascii?Q?k/iJBVmlkLPfXg6/+inFnX1etrdUadcO2F9Qtv7S/Drf2ns2CzydhMcvXiuR?=
+ =?us-ascii?Q?2zYe8jdwhNpYw3nQERobSaCFrGwiVqGu8yND152byq259IRDcagv7VVUqPx0?=
+ =?us-ascii?Q?YUQeHZfSs/TVZBg6Fcw8+zF5LPb3E25x5Umie2m4JuJowrOAMQ55wgWfpEg8?=
+ =?us-ascii?Q?qLZdRKjmP5NItfKaLXXFFPjrLtrRZA7D+vmqwQbIgnr9LPylrsNtDRWgA80c?=
+ =?us-ascii?Q?vQ+N9b9zmdba9w7uWpL3OUb8IM+MMc5Ti9WKVH4ZBzNAxnEZ52GWQ2P5xV8Q?=
+ =?us-ascii?Q?Cm3cHO9xGz5NO1BQ9fEBcTEaDzCtaB8CDISVn+ZmuHaKUsSSLgwUKIu0CMWy?=
+ =?us-ascii?Q?/nTyIsT/sSDPsZIzXsIPStcj?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a3f86535-adb3-47c0-1331-08d95e4e3c43
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2021 11:33:56.2264 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AuBa7BQIG3XADTPxut4g2axYbQyiZMQ6FV1TR6CRfyA3dCmWeykGMZLuN8OVHQfym16uymaJexpdHFRsfAEBK0erzHrYGjiPw8xftSik23o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR10MB5569
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10074
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ mlxscore=0 bulkscore=0
+ spamscore=0 phishscore=0 mlxlogscore=999 suspectscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2107140000
+ definitions=main-2108130069
+X-Proofpoint-ORIG-GUID: f-Y_XSSciaU7WKLhTKjobwnU8n5Mk_hr
+X-Proofpoint-GUID: f-Y_XSSciaU7WKLhTKjobwnU8n5Mk_hr
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_024335_223063_A8883E1D 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20210813_043410_360102_71023555 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +199,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 12, 2021 at 12:56:35PM -0700, Stephen Boyd wrote:
-> Quoting Andy Shevchenko (2021-08-12 10:00:22)
-> > At least one user currently duplicates some functions that are provided
-> > by fractional divider module. Let's export approximation algorithm and
-> > replace the open-coded variant.
-> > 
-> > As a bonus the exported function will get better documentation in place.
-> Applied to clk-next
+If devm_regulator_get_optional() returns an error pointer, then we
+should return it to the user.  The current code makes an exception
+for -ENODEV that will result in an error pointer dereference on the
+next line when it calls regulator_enable().  Remove the exception.
 
-Thank you, Stephen!
+Fixes: e1229e884e19 ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 20cef2e06f66..2d0ffd3c4e16 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -225,9 +225,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	/* DON'T MOVE ME: must be enable before PHY init */
+ 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+ 	if (IS_ERR(rockchip->vpcie3v3))
+-		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
+-			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
+-					"failed to get vpcie3v3 regulator\n");
++		return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
++				     "failed to get vpcie3v3 regulator\n");
+ 
+ 	ret = regulator_enable(rockchip->vpcie3v3);
+ 	if (ret) {
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.20.1
 
 
 _______________________________________________
