@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E15FC4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 17:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CEE9C4320A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 18:55:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AF1960F51
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 17:45:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6AF1960F51
+	by mail.kernel.org (Postfix) with ESMTPS id CE64861038
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 18:55:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CE64861038
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,64 +23,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HYs26xPvW4s6XoRXAlcXcmEyHtc08BrdjLdk2/GncKE=; b=UC4y1YD5DyzJjR
-	iA8L1es0ej3RWWvQV901AL/V+z1XBBx2I+2+J20h2BVbIbtybO8heNyu+YMdCbazJszuGr9CD7AWz
-	y3Vjh2q5k6I/KZQ1SsogsBDRVF6B5U/5kqZtOLzA+EPgp17iyfSCgP/QO8l+0f7zwOPfohqWpyVuB
-	Nj8bSwf2Q4NgjpbNNqiJan8SalpJjTMGmYCA9Rs5inUS5mpAdLJdH2e2wnYqvnvLJrWbjotqntjrW
-	XCdx22pCmwjDgzQ2agvr04lyLaeNGkZRs0UbD//3KzHXLS6vq+Urjpp13RQObPglGLKRFy1sWsgER
-	yP6AFPDJpdrmkHbbd3yQ==;
+	List-Owner; bh=6Blh6LK37bzWlSSjW2wpgzbM7bfkrejQUo6MXtE762I=; b=VLhth3+9raz3VE
+	ebBPL6zRf2QI9qobd4/rRoc3Bhfi7YFEPaiPtLUjJenJ1VXGpyfZHdTYA7TWySRgl/h8PZuZBHkCY
+	+v9IOnYDlcwFuNAEXNcYzt4s9PbUrU6xR8V8PW3cImu0EQb2VBv4OTgfegbdfKjsgdSrMZ1L0nYvL
+	JLQbLUMZlRJVkW65DyI2q52mWOJvimFWysbk9r1/K18h68sZ7BFjfqEczXojosS0H44vMhdOA8jjb
+	9ZrSwCNu6GPlmRHz31gNitpeBI7ODoNH8QNCTB24yynpZS0jiVTupgCCBY+NUsMK7VED0hzWY9VqG
+	QOlS5NYcJgbvUqPWqzPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEbFC-00DI0M-Pd; Fri, 13 Aug 2021 17:45:22 +0000
-Received: from mail-ot1-f45.google.com ([209.85.210.45])
+	id 1mEcKg-00DNyt-0N; Fri, 13 Aug 2021 18:55:06 +0000
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEbFA-00DHzr-Ey
- for linux-rockchip@lists.infradead.org; Fri, 13 Aug 2021 17:45:21 +0000
-Received: by mail-ot1-f45.google.com with SMTP id
- u13-20020a9d4d8d0000b02905177c9e0a4aso2368033otk.3
- for <linux-rockchip@lists.infradead.org>; Fri, 13 Aug 2021 10:45:18 -0700 (PDT)
+ id 1mEcKT-00DNy7-2V; Fri, 13 Aug 2021 18:54:54 +0000
+Received: by mail-ot1-f49.google.com with SMTP id
+ u13-20020a9d4d8d0000b02905177c9e0a4aso2591148otk.3; 
+ Fri, 13 Aug 2021 11:54:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=/tRJJqRyWJqAafGX76y4iwOE1vDparJzpmZe1NF8mMQ=;
- b=j128c/7OUpFvx8iKD+nWdMCC9+8MzJTNSAaU+fUjx6LHV8wKCpsHF0neF6i+g1yuoZ
- CraR1K2OPXbJOE9dfh1xZ7wDFfRKy7gATTE445FLk+rdr6i+BDGL8a+WApDIybP7bZdb
- efLBrgBzZKMcbNKA7nowb1+6GzLNsTzQKPpvI2DV622SEmqRlMsozH3ayhIHHJumFsrI
- 2zJLfm08IQevoPLZJGXmCAAuaRxS0awzyjQl73nBIH2A4D55O9ehaoOJF/vMxd3KzZuC
- QmdybzJYwB4Lxcs4tdbeVc3jV0TspERGlbblATcgF/iED2Ogx67io8lw5GykNWrUkd69
- rQNQ==
-X-Gm-Message-State: AOAM531NteW7YUP9a5bkiGsch8RHS+yLamRv5EIuJGlWf+Lt6vrd2+rW
- 1gOEXCWMWxiSI+qvEmrwzBvYVqhS1w==
-X-Google-Smtp-Source: ABdhPJyovJzS1FxaUL0k/lw2dKsfYXld3XGCueBU0/vxcNy8I2elUWEkepjsmVlUmRqcFvjcJHv7rg==
-X-Received: by 2002:a9d:5f0e:: with SMTP id f14mr3008794oti.107.1628876718430; 
- Fri, 13 Aug 2021 10:45:18 -0700 (PDT)
+ bh=zgYDaCCAVB+2In14a1kG5iiSGAnj8Z0BlZoSrQOooJs=;
+ b=TKkfcBNhigLG20cJ0+UnpMFhEpohXiSGDNBj1RLaI8Y3vuN+1piul1D2QgUTB3JBJx
+ RTaNXUDfbky2Dj88LzSJ8XPY4hBi9w3oHeKxDDDImzzuzU3651wpOgff3YZ5VcUKhFwe
+ PRSlv27Qhgjmhv7+BQFslQIe+iW5YToo4k3toITWfW7ALGlTYbjzAys7Weec+qSnVfKg
+ y6wIP/qO2FRkClcgY0ah8ckvND1pmcoQcW3Z/wjHXSl1QQGuzw1Ovo40N4K1poybr4sg
+ xsqnIPJf6xnAx4jg9LwesaBK4IWsV8FSB1WfVFb4EZMAt7UHaUokUra1MsyrTjmDyA45
+ ZUFw==
+X-Gm-Message-State: AOAM533dgz9mIwvugbDVHSZBgOvR4BoipoK7KIa1+OPxH6mQRSAKrv9S
+ uV3O3tgE5WEa/zKEkpsyrQ==
+X-Google-Smtp-Source: ABdhPJwxmdmo6xRjRihAW2AtHQF9dDvG9ZJaa+9boQ+XVewLk7MSFFS49dAeSXvzPiaFF5dc7aHLPg==
+X-Received: by 2002:a05:6830:1f54:: with SMTP id
+ u20mr3256501oth.320.1628880892451; 
+ Fri, 13 Aug 2021 11:54:52 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id z12sm434094otj.1.2021.08.13.10.45.17
+ by smtp.gmail.com with ESMTPSA id r2sm522068oig.1.2021.08.13.11.54.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Aug 2021 10:45:17 -0700 (PDT)
-Received: (nullmailer pid 3743626 invoked by uid 1000);
- Fri, 13 Aug 2021 17:45:16 -0000
-Date: Fri, 13 Aug 2021 12:45:16 -0500
+ Fri, 13 Aug 2021 11:54:51 -0700 (PDT)
+Received: (nullmailer pid 3858276 invoked by uid 1000);
+ Fri, 13 Aug 2021 18:54:50 -0000
+Date: Fri, 13 Aug 2021 13:54:50 -0500
 From: Rob Herring <robh@kernel.org>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>,
- linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
- Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, Benjamin Gaignard <benjamin.gaignard@st.com>
-Subject: Re: [PATCH v3 2/4] dt-bindings: gpu: mali-bifrost: Add RK3568
- compatible
-Message-ID: <YRavrOQTnvU5amqZ@robh.at.kernel.org>
-References: <20210805025948.10900-1-ezequiel@collabora.com>
- <20210805025948.10900-3-ezequiel@collabora.com>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, Lee Jones <lee.jones@linaro.org>,
+ linux-kernel@vger.kernel.org, Tobias Schramm <t.schramm@manjaro.org>,
+ Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Simon Xue <xxm@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Zhang Changzhong <zhangchangzhong@huawei.com>,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Liang Chen <cl@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ Jianqun Xu <jay.xu@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v3 1/7] dt-bindings: power: add rk3568-pmu-io-domain
+ support
+Message-ID: <YRa/+rrW3ciW/tJf@robh.at.kernel.org>
+References: <20210805120107.27007-1-michael.riesch@wolfvision.net>
+ <20210805120107.27007-2-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210805025948.10900-3-ezequiel@collabora.com>
+In-Reply-To: <20210805120107.27007-2-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_104520_546882_C3666308 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210813_115453_158410_6227587B 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,17 +103,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 04 Aug 2021 23:59:46 -0300, Ezequiel Garcia wrote:
-> The Rockchip RK3568 SoC has a Bifrost Mali-G52 GPU,
-> add a compatible string for it.
+On Thu, 05 Aug 2021 14:01:01 +0200, Michael Riesch wrote:
+> Add binding for the RK3568 along a SoC-specific description of
+> voltage supplies.
 > 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> [add soc-specific section]
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 > ---
->  Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml | 1 +
->  1 file changed, 1 insertion(+)
+> v3:
+> - add missing compatible for the rk3568 to grf.yaml
+> 
+>  .../bindings/power/rockchip-io-domain.yaml    | 30 +++++++++++++++++++
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |  1 +
+>  2 files changed, 31 insertions(+)
 > 
 
-Applied, thanks!
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
