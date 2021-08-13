@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B475C432BE
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EA73C4338F
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 08:52:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EDC56103E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 08:52:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6EDC56103E
+	by mail.kernel.org (Postfix) with ESMTPS id D12366104F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 08:52:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D12366104F
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pGGBqa31Vb6uxgkpdJpJoB0HjQOOlMTuCiuoPSfSmls=; b=NoR6a9YAKl5S4l
-	epDuG50QjWTKHqWjB6Q3i+j2g7WslQm3Z9wIU/wRLnYOlEe5tS+O5zBpgj/+4RXOuqRoocJKcOSWx
-	tq0tdT+BugWrecq37lFuL2scUiPhD3ammUPrbUmM4Cc9FoF8LyxaImUjm7lN30geHC62j14DSKExn
-	Hq7Y/1ypV7Uae6ccx4ObROa+2LAIm5LM/aSXUaK/mTH5R6l/xJjK6vRfrI2LqTQrmRz7eIRLNXKBM
-	N3AtSv1KO1qxpW1/AOM2McvENkXCS3UqofDWDEb/XOVXM9XKQyFxOcYeMLu/u8IOoTPqTXg9ifhmj
-	EpVYpYmDq8SYqQqxGQfw==;
+	List-Owner; bh=9HEmTc0AvHjTzaqgPkLyChRGr9LQ6hLPCnXhJd0Erwg=; b=wtYy7ONFIq7EDp
+	6Cv+6aX8SJQ5Prun5uHsRlSEy3erNZ8yBNeDRbhwcqXVI2ky776y11OEBGnx+aX/FPtMBPh8sHTFh
+	MUmv33r8Ai9T2iQsfFLUOS1R1NCxY/flfMgTN5jNsSyUhhAjdc4qee8VD1+0gTqdwhd/1fVSI9R8V
+	gw4yssXsIO9yh3ANnAmmL6WKY/nXQ7vz8yfl54pEaMFvhV34pIEkm+3yrsPeedKtD4UEj3+qc2HxO
+	EHBEKmI8CjeEzjK4KtwnxNl1df74lXhJzPT6qqyddYm+e9lxqc4+RQ8UzPd53BayUAWjvz/aYpXXi
+	ePis2EQcF3h0CtZTKcrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mESvJ-00CG06-P4; Fri, 13 Aug 2021 08:52:17 +0000
+	id 1mESvJ-00CFzs-5b; Fri, 13 Aug 2021 08:52:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mESuv-00CFtt-5c; Fri, 13 Aug 2021 08:51:54 +0000
+ id 1mESuu-00CFte-Hw; Fri, 13 Aug 2021 08:51:53 +0000
 Received: from 82-99-180-238.static.bluetone.cz ([82.99.180.238]
  helo=phil.sntech)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mESuo-00077D-9Y; Fri, 13 Aug 2021 10:51:46 +0200
+ id 1mESun-00077D-Tt; Fri, 13 Aug 2021 10:51:46 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh+dt@kernel.org,
-	Dan Johansen <strit@manjaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Setup USB typec port as datarole on
-Date: Fri, 13 Aug 2021 10:51:40 +0200
-Message-Id: <162884469491.2596417.6630020779304962035.b4-ty@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>,
+	Peter Geis <pgwipeout@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ Robin Murphy <robin.murphy@arm.com>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] arm64: dts: rockchip: add thermal fan control to
+ rockpro64
+Date: Fri, 13 Aug 2021 10:51:39 +0200
+Message-Id: <162884469492.2596417.6101553398444696759.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210805220426.2693062-1-strit@manjaro.org>
-References: <20210805220426.2693062-1-strit@manjaro.org>
+In-Reply-To: <20210730151727.729822-1-pgwipeout@gmail.com>
+References: <20210730151727.729822-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_015153_252399_13CCE92F 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20210813_015152_662148_398CF463 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,15 +74,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 6 Aug 2021 00:04:27 +0200, Dan Johansen wrote:
-> Some chargers try to put the charged device into device data
-> role. Before this commit this condition caused the tcpm state machine to
-> issue a hard reset due to a capability missmatch.
+On Fri, 30 Jul 2021 11:17:27 -0400, Peter Geis wrote:
+> The rockpro64 had a fan node since
+> commit 5882d65c1691 ("arm64: dts: rockchip: Add PWM fan for RockPro64")
+> however it was never tied into the thermal driver for automatic control.
+> 
+> Add the links to the thermal node to permit the kernel to handle this
+> automatically.
+> Borrowed from the (rk3399-khadas-edge.dtsi).
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Setup USB typec port as datarole on
-      commit: d34a2131ab59c8bb0786de693729fbd1aeef1049
+[1/1] arm64: dts: rockchip: add thermal fan control to rockpro64
+      commit: 440f361af90acff36eb3d89c1f03debeab7b3fb8
 
 Best regards,
 -- 
