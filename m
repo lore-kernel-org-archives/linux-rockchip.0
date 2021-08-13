@@ -1,22 +1,21 @@
-Return-Path: <SRS0=p67a=ND=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=gOg0=NE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87078C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 20:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AF99C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 08:52:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A4266103E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Aug 2021 20:46:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3A4266103E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2D00F6103A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Aug 2021 08:52:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2D00F6103A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -24,68 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Te7s78S6NBSrpUJXlAqw5Yu20mPJtToi1PYpz4Pzc8=; b=YiZCLRTFovh4j7
-	lHE+IUz+3EJ4M6m+oYV6jiKYMsb938JtjUTUJdGIHUldUUJkFmBWo+r2psiLBXW28JCcj6Aw6KWWc
-	BiJt3P2IN3uFqtY3j43QmC5cBSp2WB4o9Acs6IuuB9O2PbMNCN/fLb6vcmQkMKgwzLMjKkse8LIav
-	DXLUt6Fm0B9Iz19703vWTjBFuyruVBi1fYAgpOx9kAlRnHWt4IpbQAx7JCrb15ejHMAsgTyh/+o0A
-	NphCZ/jZHXnsRId038uaVgWaylnT/x9lTBuNXEWg6HHHJzhlkpRD7bYi/YRTei3AYtqvfkYFVexoz
-	O9qsFjIVMsRE4mHuxH+w==;
+	List-Owner; bh=W5CpI/gNqJO+Fg9H1bVGCBKfYYseOIkSM+zlUZnDhMg=; b=472E13gk1TeREP
+	lVNJyURTwKH9tHZvauTr3OT3N2SvteALlKjEBmMx1sUtNy5YFhtKnSiRZFP3CX12vTZfmw4DnzwL8
+	WvNA4TZKbIkOKDGmkS7jYdTPObkJ52HxjQjlI224MCj1Ecnpu4rxNqGNeByITuwj99Py2SZ+2goXR
+	lvFIHst3utKX5GaAGKub2+CC3bAfLvOwCxA/D0IohWcAmZQ3HdBEwZwnnIyCQzf56mMTICKc8cJFm
+	smiW1RcJxeIWAPIdi/49PceQ3N4zmSsPkw47MzY2yAM1WJUJz228oQ7AlQnkCHCIM7Z1TNKN5J5jC
+	6RoL2fViM3XjPbocr2tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEHbD-00BDik-B4; Thu, 12 Aug 2021 20:46:47 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1mESux-00CFva-5t; Fri, 13 Aug 2021 08:51:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEHWg-00BBST-9G; Thu, 12 Aug 2021 20:42:07 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id c130so8236747qkg.7;
- Thu, 12 Aug 2021 13:42:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0vSamTyccptzOdkOr+v7GJn23T5SHRt0Wd7iQnG52jY=;
- b=WsddWCX2bH0za7uq6RXsMB/yT5Y5kXw5Dfi4StrzwM6j9+0IbgfdtWevLRetgVsmcq
- FY9rZ8rN7XopwA3C2iMrRvd2jmPgW4oMLutiEKRAntdFlcfMA/c1lxG04WyoA7LKTg7l
- JydE/tfQVnOAaC6f5uAKubOjH/kQYZUOHPgmanqwU0A/VBdRoloHkxJhutB6Npl+6/79
- zkQVpKT/QllZZzFCvA2S+DG2b/klg3GgsSxrvHQf6pd6lrqIGEQeer1L0sikZv4Fba/l
- enEfwf/qF4NpYUxz2D0hDf3N7elMXpKuKG3D1Jw24k7VBZsX24xzKjbg49QUNj4IQBEH
- jzfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0vSamTyccptzOdkOr+v7GJn23T5SHRt0Wd7iQnG52jY=;
- b=LbxiHnjFqGa+Lvppex6OKdjdGdf4kaDJypjOwE0YSyOTVzWHUFTeJyuTZhaX9Ye/Zd
- btamJcYFPcLZJiHg5w7J1/zr8TXxMxnyttqRLOy2siY3PYctLTvboxwoIwvii8haVSiP
- 9nTJ6T/RYpxxij8477WMu7kkd+ehCHP4JED9EklLNp3UoLEGPwQeQv80dXzDj50c2vl5
- UALxE4iKOlc+6Ut5ztDWUcIfg1KYzwrSu8KBcHHnxOuwhJ8jX6af2E4d953FJjO4aSo4
- R6hFHFwKBIGMZ0DP7kcAcJhfdAENdTK9kRVIs7DUI4QECRZal+4DJf/OZ2gFztqZKh3z
- ekzA==
-X-Gm-Message-State: AOAM532V2Jmd4Whbbj3QACAFG6D/lJv385WOppyQ5wzpRq6UQRjptWVO
- xToio6oxD4UCscHlLUtn8xg=
-X-Google-Smtp-Source: ABdhPJw/1/MKI/+YdMlNsbB9IH09a4UY8r9lfrOqTmOPC3J4ZFt6cYVEJKpp1D5Peg1nmERqRT4y+g==
-X-Received: by 2002:a05:620a:cea:: with SMTP id
- c10mr6698474qkj.238.1628800925058; 
- Thu, 12 Aug 2021 13:42:05 -0700 (PDT)
-Received: from master-laptop.sparksnet
- ([2601:153:980:85b1:e89f:d077:9161:1bd7])
- by smtp.gmail.com with ESMTPSA id m16sm1940361qki.19.2021.08.12.13.42.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Aug 2021 13:42:04 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
+ id 1mESuu-00CFtf-I3; Fri, 13 Aug 2021 08:51:53 +0000
+Received: from 82-99-180-238.static.bluetone.cz ([82.99.180.238]
+ helo=phil.sntech)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mESuo-00077D-Kb; Fri, 13 Aug 2021 10:51:46 +0200
+From: Heiko Stuebner <heiko@sntech.de>
 To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 8/8] arm64: dts: rockchip: add Quartz64-A usb2 support
-Date: Thu, 12 Aug 2021 16:41:16 -0400
-Message-Id: <20210812204116.2303617-9-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210812204116.2303617-1-pgwipeout@gmail.com>
-References: <20210812204116.2303617-1-pgwipeout@gmail.com>
+	Chen-Yu Tsai <wenst@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 0/2] arm64: dts: rockchip: Add Scarlet Dumo Variant
+Date: Fri, 13 Aug 2021 10:51:41 +0200
+Message-Id: <162884469491.2596417.3007403443594611487.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20210812094753.2359087-1-wenst@chromium.org>
+References: <20210812094753.2359087-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_134206_384457_00D49D7D 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20210813_015152_661761_6F1B14D0 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,91 +73,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the nodes and regulators to enable usb2 support on the Quartz64
-Model A.
+On Thu, 12 Aug 2021 17:47:51 +0800, Chen-Yu Tsai wrote:
+> A variant of the Chrome OS Gru-Scarlet device is missing in upstream.
+> This variant, dumo, is the same as the Innolux display panel variant,
+> but requires a specific calibration variant for its WiFi module.
+> 
+> I'm not sure if it's better to inherit from gru-scarlet-innolux. I kept
+> them separate from now, like in downstream ChromeOS kernel v4.4.
+> 
+> [...]
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index a3cdb6c2bec6..53ea5c13076b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -75,6 +75,22 @@ vcc5v0_usb: vcc5v0_usb {
- 		vin-supply = <&vcc12v_dcin>;
- 	};
- 
-+	/* all four ports are controlled by one gpio
-+	 * the host ports are sourced from vcc5v0_usb
-+	 * the otg port is sourced from vcc5v0_midu
-+	 */
-+	vcc5v0_usb20_host: vcc5v0_usb20_host {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb20_host";
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb20_host_en>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
- 	vcc3v3_sd: vcc3v3_sd {
- 		compatible = "regulator-fixed";
- 		enable-active-low;
-@@ -367,6 +383,12 @@ pmic_int_l: pmic-int-l {
- 		};
- 	};
- 
-+	usb2 {
-+		vcc5v0_usb20_host_en: vcc5v0-usb20-host-en {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	vcc_sd {
- 		vcc_sd_h: vcc-sd-h {
- 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -424,3 +446,33 @@ bluetooth {
- &uart2 {
- 	status = "okay";
- };
-+
-+&u2phy1_host {
-+	phy-supply = <&vcc5v0_usb20_host>;
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc5v0_usb20_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy1 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
+[1/2] dt-bindings: arm: rockchip: Add gru-scarlet-dumo board
+      commit: 1aec043e2bcfc28a7b3946c852c89c008cfceb30
+[2/2] arm64: dts: rockchip: rk3399: Add gru-scarlet-dumo board
+      commit: ae328485ba0d5e2e0ff058438afbd8371badbc19
+
+Best regards,
 -- 
-2.25.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
