@@ -2,43 +2,43 @@ Return-Path: <SRS0=fzRm=NH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D899C4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74550C432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0B0C613D0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E0B0C613D0
+	by mail.kernel.org (Postfix) with ESMTPS id 175D4613AC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 175D4613AC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wfZSdNTPOLYzXPlHUUqyLI3O5hyMf2fxNnnFigMwTRE=; b=A5dr0RQbRzHkR1
-	vPnJn7UnXPc2FaghT4z62RtTjbNTBtSpnOpm8gUowrQLW/X23gUq9Z2jf0Og3WccNJ/0EwmtC8QnH
-	LZTInVET1RK979tRr0U7xA2dv3fQ7mZyZXBDqaJXyFQpRvYLvyNzihSeAt0ZXZ3HNKDQg5IabYSo9
-	OKOvs4ajw0LlhI0OUegcd4AMK9OSGkeWxrcqgs3jYPOeVNtz+TakfZqfRe9VrmdAM4Fr8IJD/wmdM
-	UQxu/tWmuuVSSx5h48OlfHH/Byq1GvqDwWtpCHg3Tri0dy0ePdxgQJ09+XuKSMnyr157oC8w9vBQ2
-	3V/q1tan4v9afQpWDOOg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CSfJkC72ArvLwAgqya4bUn6YpJIwGOCovv/Njq9dGFI=; b=K9DVQfu1pe7cmT
+	zQrOws/oMLFCtnw6CEJODUZHzyxrX70umo3C9Hg6aXibUHUxmfP8fA0/Ib676Yl8ZFIt0HYDbSibK
+	5sAVtkD7/mnro1Qxj12kX7IG9OgGxmhB2HsnOBUY2zdnbcTbnBsCslz5KzFwcQ9Sok/YGOfv5BtW7
+	7R3P+KWmj1psrUDkk6ln6qDiyt4J0ES64zdP4PTvgrRlfvQSt7HhYA0LhA+K+557qlfPrAK1Fpb9l
+	6KF4dlZ33tZVXQukFAgJNwfbLeA9UdJ2UMZ0LkLtPJn7el9Sq3K9Vo0yOjw7E4Jwp1yXFNWsUkEOu
+	V/HDByVD0IV4vZutAdFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFRIJ-00Fws2-GZ; Mon, 16 Aug 2021 01:20:03 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1mFRIK-00Fwsa-Oq; Mon, 16 Aug 2021 01:20:04 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFRIG-00Fwpr-NT
- for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 01:20:02 +0000
+ id 1mFRIH-00Fwps-3E
+ for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 01:20:03 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 4843BD7662;
- Mon, 16 Aug 2021 09:19:54 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id CB635D63BE;
+ Mon, 16 Aug 2021 09:19:51 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P26933T140041269528320S1629076790609014_; 
- Mon, 16 Aug 2021 09:19:53 +0800 (CST)
+ Mon, 16 Aug 2021 09:19:51 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9b3da95c0ae359f5c5a3a1f3f3eac345>
+X-UNIQUE-TAG: <2bb0cc66aeba7389703dedd80a74259f>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -64,17 +64,14 @@ To: linus.walleij@linaro.org,
 Cc: bgolaszewski@baylibre.com, robh+dt@kernel.org, linux-gpio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v8 3/9] pinctrl/rockchip: add pinctrl device to gpio bank
- struct
-Date: Mon, 16 Aug 2021 09:19:42 +0800
-Message-Id: <20210816011948.1118959-4-jay.xu@rock-chips.com>
+Subject: [PATCH v8 0/9] gpio-rockchip driver
+Date: Mon, 16 Aug 2021 09:19:39 +0800
+Message-Id: <20210816011948.1118959-1-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210816011948.1118959-1-jay.xu@rock-chips.com>
-References: <20210816011948.1118959-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210815_182001_056265_A03EB15B 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20210815_182001_393983_C3298256 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,39 +89,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Store a pointer from the pinctrl device for the gpio bank.
+Separate gpio driver from pinctrl driver, and support gpio v2 controller.
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
+Jianqun Xu (9):
+  pinctrl/rockchip: always enable clock for gpio controller
+  pinctrl/rockchip: separate struct rockchip_pin_bank to a head file
+  pinctrl/rockchip: add pinctrl device to gpio bank struct
+  dt-bindings: gpio: change items restriction of clock for
+    rockchip,gpio-bank
+  gpio/rockchip: add driver for rockchip gpio
+  gpio/rockchip: use struct rockchip_gpio_regs for gpio controller
+  gpio/rockchip: support next version gpio controller
+  gpio/rockchip: drop irq_gc_lock/irq_gc_unlock for irq set type
+  pinctrl/rockchip: drop the gpio related codes
+
+ .../bindings/gpio/rockchip,gpio-bank.yaml     |   5 +-
+ drivers/gpio/Kconfig                          |   8 +
+ drivers/gpio/Makefile                         |   1 +
+ drivers/gpio/gpio-rockchip.c                  | 771 +++++++++++++++
+ drivers/pinctrl/pinctrl-rockchip.c            | 909 +-----------------
+ drivers/pinctrl/pinctrl-rockchip.h            | 287 ++++++
+ 6 files changed, 1089 insertions(+), 892 deletions(-)
+ create mode 100644 drivers/gpio/gpio-rockchip.c
+ create mode 100644 drivers/pinctrl/pinctrl-rockchip.h
+
+--
 v8:
- - none
+ - fix rockchip,gpio-bank.yaml about clocks and clock-names
+ - fix commit author of rockchip,gpio-bank.yaml patch to me
+
 v7:
- - none, keep from v1
+ - include <linux/gpio/driver.h> instead of <linux/gpio.h>
+ - use gpio align id instead of gpio-name
 
- drivers/pinctrl/pinctrl-rockchip.h | 2 ++
- 1 file changed, 2 insertions(+)
+v6:
+ - new gpio-driver first and then drop gpio from pinctrl
+ - reorder patches
+ - cherry-pick gpio dt-binding from chenliang
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index dba9e9540633..4aa3d2f1fa67 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -81,6 +81,7 @@ struct rockchip_drv {
- 
- /**
-  * struct rockchip_pin_bank
-+ * @dev: the pinctrl device bind to the bank
-  * @reg_base: register base of the gpio bank
-  * @regmap_pull: optional separate register for additional pull settings
-  * @clk: clock of the gpio bank
-@@ -105,6 +106,7 @@ struct rockchip_drv {
-  * @route_mask: bits describing the routing pins of per bank
-  */
- struct rockchip_pin_bank {
-+	struct device			*dev;
- 	void __iomem			*reg_base;
- 	struct regmap			*regmap_pull;
- 	struct clk			*clk;
--- 
+v5:
+ - change to devel branch
+
 2.25.1
 
 
