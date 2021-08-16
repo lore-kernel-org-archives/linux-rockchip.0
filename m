@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26026C432BE
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25FF9C4338F
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 03:20:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9C2A617E6
+	by mail.kernel.org (Postfix) with ESMTPS id DA7AE617E3
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 03:20:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D9C2A617E6
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DA7AE617E3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aXhCI1jmGoPaJpcVUXEaf/vrpp8MJeKUVcIo5FlfDKU=; b=SsgzYh/Vm3Gk8A
-	9mDElxk5Nkhw1WlS1N1C2XBaqOnnGON8hsoyLMNrNlZiomxvu8LeQVW0rtV104thvvvdjvveTtQpe
-	qkkG0tFT9aq8MXWnjmsHymWqv9N5F5Ih1lAwswbmH6hWvTvgmz75seULDxiz6SC5kRs7MXwz0l8Yq
-	2CyOJlB0Q15PCVJtbwU7gxGnS9xHwpDppJf8O0i6RQLx5kiffoLp5JpXt+zDOW0Ub7aT1o51LNJDH
-	b+zGmr+nF4wRZMMqtdWSPw8ERD6rQnl2DStruP9v8SkfqTbyWkXheSI11Q45gFGfh63tXPaU/qjbp
-	jz9I+3CWZ0x9Lz1mXW4A==;
+	List-Owner; bh=CDB/v+ajOTYA0i76qK1ZhSIWSM4glg31ZAOPIgm2jZs=; b=iEk11bfS4OUybz
+	5/jpNuM3YqmI+49aikJHsMCVmmqyXZCEiymiZ1k1U/PdWhXloRZ8BvCQD79l1pYY11s6uNE0VjoDS
+	oWta0dfAB0rYQhv6cghtK2OsxKosQmgqxGHB57gcuTc2g7VtShrZIaYxsJdBNYe6ZlLkzEPlZeFY1
+	6OuV5WYiCMj/5KozQs329eqV1ak6IcUG26t/hb5kFKlGxDKcHxsdhaQnIwQz7JNgW4ODH6OUkBull
+	Luw65VS8In/kkO6Ux88BJS88GB1fMXykB8+/ryKsDVHijWysIn4Zvae0bFD4ozTYVgGMtdACiPAbk
+	kznTIhInLIzTF8RLzIQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFTAd-00G3VW-QT; Mon, 16 Aug 2021 03:20:15 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1mFTAf-00G3Vx-0f; Mon, 16 Aug 2021 03:20:17 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFTAZ-00G3Tm-Qo
- for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 03:20:13 +0000
+ id 1mFTAb-00G3U2-VB
+ for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 03:20:15 +0000
 Received: from localhost (unknown [192.168.167.70])
- by lucky1.263xmail.com (Postfix) with ESMTP id 30A04CF700;
+ by lucky1.263xmail.com (Postfix) with ESMTP id CA67AB2B78;
  Mon, 16 Aug 2021 11:20:08 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
@@ -47,9 +47,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P4989T139770959193856S1629084004780123_; 
- Mon, 16 Aug 2021 11:20:07 +0800 (CST)
+ Mon, 16 Aug 2021 11:20:08 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <c4f8c53f758bc9d3c8598cc53bfcec66>
+X-UNIQUE-TAG: <0892698090bf98ad3edcbbcd00073b7d>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -63,17 +63,16 @@ To: lgirdwood@gmail.com, broonie@kernel.org, ulf.hansson@linaro.org,
  lee.jones@linaro.org, zhangchangzhong@huawei.com, heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 2/4] regulator: core: notify regulator enable with the voltage
- value
-Date: Mon, 16 Aug 2021 11:20:01 +0800
-Message-Id: <20210816032003.1162779-3-jay.xu@rock-chips.com>
+Subject: [PATCH 3/4] regulator: core: add pre-enable event notify to regulator
+Date: Mon, 16 Aug 2021 11:20:02 +0800
+Message-Id: <20210816032003.1162779-4-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210816032003.1162779-1-jay.xu@rock-chips.com>
 References: <20210816032003.1162779-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210815_202012_147237_B5882FBE 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20210815_202014_256143_88C1BB25 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,35 +90,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Get the voltage of regulator and then pass it as the parameter of
-notify, the driver could take it.
+Notify the event about regulator to be enabled to driver.
 
-The origin parameter for notify is NULL, so this patch do nothing effect
-to other driver who not care about the voltage value.
+The IO-DOMAIN driver on Rockchip SoCs will take this event and then to
+configure the io-domain mode before regualtor_enable.
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- drivers/regulator/core.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ drivers/regulator/core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index f192bf19492e..a53f1644a6f4 100644
+index a53f1644a6f4..0eb7af487931 100644
 --- a/drivers/regulator/core.c
 +++ b/drivers/regulator/core.c
-@@ -2658,8 +2658,12 @@ static int _regulator_enable(struct regulator *regulator)
+@@ -2654,6 +2654,9 @@ static int _regulator_enable(struct regulator *regulator)
+ 				goto err_consumer_disable;
+ 			}
+ 
++			_notifier_call_chain(rdev, REGULATOR_EVENT_PRE_ENABLE,
++					     NULL);
++
+ 			ret = _regulator_do_enable(rdev);
  			if (ret < 0)
  				goto err_consumer_disable;
- 
-+			ret = _regulator_get_voltage(rdev);
-+			if (ret < 0)
-+				ret = 0;
-+
- 			_notifier_call_chain(rdev, REGULATOR_EVENT_ENABLE,
--					     NULL);
-+					     &ret);
- 		} else if (ret < 0) {
- 			rdev_err(rdev, "is_enabled() failed: %pe\n", ERR_PTR(ret));
- 			goto err_consumer_disable;
 -- 
 2.25.1
 
