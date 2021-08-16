@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F94C4338F
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDF02C43216
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AAD8A613AC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AAD8A613AC
+	by mail.kernel.org (Postfix) with ESMTPS id 95E7F613D0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Aug 2021 01:20:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 95E7F613D0
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,22 +23,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TyhDfaMVsoZSFk2JMsgDhejV683V9vomPvZbUVgGGek=; b=eiceYmKbRZFO42
-	M7auBn2+YFaSkpeFRqedImxJMsgdR0WCCtEiAIZD3jFDPredniU4GzF2H9ZoJ7ujc6MZKB90BwWM0
-	bjUcIb4Hetf2Lz0oImHLs/cJmhd6aLYQ/W0Srz6KtNmULjjJ50jtV1TybF/Z2xec1d+d333OJkZTs
-	1MGWLz7NZgg32TUeX1coAHSQ7F8ztA1QXmz21Jp9n6mqvOpS97moC/zWxX0GfaqYpUsAYrmrIL6xP
-	NSC7fPW8sReZW3l5MFfhAbsuV8IEF3FJHkmsMvb0wk628z0yEXpBptPs9zH97kEPpxvBaEC7T2ekL
-	5/w9rL3fclcKqu2hNVCw==;
+	List-Owner; bh=n5aeZ78Xk3VioA5lqixpgZJNU0rv9BS16BCM+/xe7js=; b=Wf68KqDTa3KWMB
+	a8bVuBp34qjNs/17QyrIOVIvOSpl3s++44+10e+/cVYnDN0OuGVur14JPuNDx9RtVQFYp63Si7Q+m
+	+e6vpOZvF3w+2KjopxnqICTM2XKBEVg5u6J8vhT3cWORQTjbNzmjrzO+121y7qSSdn6n2wgDM4kIP
+	c7hU7Nf/F680zbbRJzHL5lPNPyRvisoNHMI8GCuiEPY2n39tIGBgiJoenVA843rVKSrnAMCP1v7VK
+	C5nlxOMX4AW82g4CSrT23Zuz78J+WTHqk9dUf4pDcTdyEJhGy7gH/VgcihAPde3e6xux/SHoD0I+c
+	KULyee/Q/epmmwB2pXVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFRIK-00FwsK-5H; Mon, 16 Aug 2021 01:20:04 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1mFRIP-00FwuN-6A; Mon, 16 Aug 2021 01:20:09 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFRIF-00Fwpm-Un
- for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 01:20:02 +0000
+ id 1mFRIM-00Fwpt-Ns
+ for linux-rockchip@lists.infradead.org; Mon, 16 Aug 2021 01:20:08 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id C0066D7667;
- Mon, 16 Aug 2021 09:19:52 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 468FFFB822;
+ Mon, 16 Aug 2021 09:19:54 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P26933T140041269528320S1629076790609014_; 
- Mon, 16 Aug 2021 09:19:52 +0800 (CST)
+ Mon, 16 Aug 2021 09:19:54 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <53da73447cd9545b7f4d5df918c82f82>
+X-UNIQUE-TAG: <73d3c2060501bc2f209333a4d959d242>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -64,17 +64,17 @@ To: linus.walleij@linaro.org,
 Cc: bgolaszewski@baylibre.com, robh+dt@kernel.org, linux-gpio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v8 1/9] pinctrl/rockchip: always enable clock for gpio
- controller
-Date: Mon, 16 Aug 2021 09:19:40 +0800
-Message-Id: <20210816011948.1118959-2-jay.xu@rock-chips.com>
+Subject: [PATCH v8 4/9] dt-bindings: gpio: change items restriction of clock
+ for rockchip, gpio-bank
+Date: Mon, 16 Aug 2021 09:19:43 +0800
+Message-Id: <20210816011948.1118959-5-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210816011948.1118959-1-jay.xu@rock-chips.com>
 References: <20210816011948.1118959-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210815_182000_535285_A9AFF193 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20210815_182007_077991_8FEAEFF2 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,215 +92,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since gate and ungate pclk of gpio has very litte benifit for system
-power consumption, just keep it always ungate.
+In the past we only need on clock which name "pclk" for a gpio controller.
+In the new version gpio controller, there add some register to change
+debounce clock dynamic, so the dt node needs to add the second clock, we
+call it "dbclk".
+
+The clock property need 2 items on some rockchip chips such as RK3568
+SoCs.
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
 v8:
- - none
+ - fix commit author to me
+ - add clock-names property but not require
 v7:
  - none
+v6:
+ - add to this serials
 
- drivers/pinctrl/pinctrl-rockchip.c | 40 +-----------------------------
- 1 file changed, 1 insertion(+), 39 deletions(-)
+ .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml         | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 067fc4208de4..650c71c740f0 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2299,17 +2299,8 @@ static int rockchip_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
- {
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(chip);
- 	u32 data;
--	int ret;
+diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+index d993e002cebe..0d62c28fb58d 100644
+--- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
++++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+@@ -22,7 +22,10 @@ properties:
+     maxItems: 1
  
--	ret = clk_enable(bank->clk);
--	if (ret < 0) {
--		dev_err(bank->drvdata->dev,
--			"failed to enable clock for bank %s\n", bank->name);
--		return ret;
--	}
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
--	clk_disable(bank->clk);
--
- 	if (data & BIT(offset))
- 		return GPIO_LINE_DIRECTION_OUT;
+   clocks:
+-    maxItems: 1
++    minItems: 1
++    items:
++      - description: APB interface clock source
++      - description: GPIO debounce reference clock source
  
-@@ -2335,7 +2326,6 @@ static int _rockchip_pmx_gpio_set_direction(struct gpio_chip *chip,
- 	if (ret < 0)
- 		return ret;
+   gpio-controller: true
  
--	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-@@ -2347,7 +2337,6 @@ static int _rockchip_pmx_gpio_set_direction(struct gpio_chip *chip,
- 	writel_relaxed(data, bank->reg_base + GPIO_SWPORT_DDR);
- 
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--	clk_disable(bank->clk);
- 
- 	return 0;
- }
-@@ -2798,7 +2787,6 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned offset, int value)
- 	unsigned long flags;
- 	u32 data;
- 
--	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl(reg);
-@@ -2808,7 +2796,6 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned offset, int value)
- 	writel(data, reg);
- 
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--	clk_disable(bank->clk);
- }
- 
- /*
-@@ -2820,9 +2807,7 @@ static int rockchip_gpio_get(struct gpio_chip *gc, unsigned offset)
- 	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
- 	u32 data;
- 
--	clk_enable(bank->clk);
- 	data = readl(bank->reg_base + GPIO_EXT_PORT);
--	clk_disable(bank->clk);
- 	data >>= offset;
- 	data &= 1;
- 	return data;
-@@ -2858,7 +2843,6 @@ static void rockchip_gpio_set_debounce(struct gpio_chip *gc,
- 	unsigned long flags;
- 	u32 data;
- 
--	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl(reg);
-@@ -2869,7 +2853,6 @@ static void rockchip_gpio_set_debounce(struct gpio_chip *gc,
- 	writel(data, reg);
- 
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--	clk_disable(bank->clk);
- }
- 
- /*
-@@ -2914,9 +2897,7 @@ static int rockchip_gpio_to_irq(struct gpio_chip *gc, unsigned offset)
- 	if (!bank->domain)
- 		return -ENXIO;
- 
--	clk_enable(bank->clk);
- 	virq = irq_create_mapping(bank->domain, offset);
--	clk_disable(bank->clk);
- 
- 	return (virq) ? : -ENXIO;
- }
-@@ -3015,7 +2996,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	if (ret < 0)
- 		return ret;
- 
--	clk_enable(bank->clk);
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 
- 	data = readl_relaxed(bank->reg_base + GPIO_SWPORT_DDR);
-@@ -3073,7 +3053,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 	default:
- 		irq_gc_unlock(gc);
- 		raw_spin_unlock_irqrestore(&bank->slock, flags);
--		clk_disable(bank->clk);
- 		return -EINVAL;
- 	}
- 
-@@ -3082,7 +3061,6 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- 
- 	irq_gc_unlock(gc);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--	clk_disable(bank->clk);
- 
- 	return 0;
- }
-@@ -3092,10 +3070,8 @@ static void rockchip_irq_suspend(struct irq_data *d)
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
- 
--	clk_enable(bank->clk);
- 	bank->saved_masks = irq_reg_readl(gc, GPIO_INTMASK);
- 	irq_reg_writel(gc, ~gc->wake_active, GPIO_INTMASK);
--	clk_disable(bank->clk);
- }
- 
- static void rockchip_irq_resume(struct irq_data *d)
-@@ -3103,9 +3079,7 @@ static void rockchip_irq_resume(struct irq_data *d)
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
- 
--	clk_enable(bank->clk);
- 	irq_reg_writel(gc, bank->saved_masks, GPIO_INTMASK);
--	clk_disable(bank->clk);
- }
- 
- static void rockchip_irq_enable(struct irq_data *d)
-@@ -3113,7 +3087,6 @@ static void rockchip_irq_enable(struct irq_data *d)
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
- 	struct rockchip_pin_bank *bank = gc->private;
- 
--	clk_enable(bank->clk);
- 	irq_gc_mask_clr_bit(d);
- }
- 
-@@ -3123,7 +3096,6 @@ static void rockchip_irq_disable(struct irq_data *d)
- 	struct rockchip_pin_bank *bank = gc->private;
- 
- 	irq_gc_mask_set_bit(d);
--	clk_disable(bank->clk);
- }
- 
- static int rockchip_interrupts_register(struct platform_device *pdev,
-@@ -3143,19 +3115,11 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
- 			continue;
- 		}
- 
--		ret = clk_enable(bank->clk);
--		if (ret) {
--			dev_err(&pdev->dev, "failed to enable clock for bank %s\n",
--				bank->name);
--			continue;
--		}
--
- 		bank->domain = irq_domain_add_linear(bank->of_node, 32,
- 						&irq_generic_chip_ops, NULL);
- 		if (!bank->domain) {
- 			dev_warn(&pdev->dev, "could not initialize irq domain for bank %s\n",
- 				 bank->name);
--			clk_disable(bank->clk);
- 			continue;
- 		}
- 
-@@ -3166,7 +3130,6 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
- 			dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
- 				bank->name);
- 			irq_domain_remove(bank->domain);
--			clk_disable(bank->clk);
- 			continue;
- 		}
- 
-@@ -3198,7 +3161,6 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
- 
- 		irq_set_chained_handler_and_data(bank->irq,
- 						 rockchip_irq_demux, bank);
--		clk_disable(bank->clk);
- 	}
- 
- 	return 0;
-@@ -3317,7 +3279,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank,
- 	if (IS_ERR(bank->clk))
- 		return PTR_ERR(bank->clk);
- 
--	return clk_prepare(bank->clk);
-+	return clk_prepare_enable(bank->clk);
- }
- 
- static const struct of_device_id rockchip_pinctrl_dt_match[];
 -- 
 2.25.1
 
