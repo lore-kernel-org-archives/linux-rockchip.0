@@ -2,88 +2,77 @@ Return-Path: <SRS0=qLnh=NI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5780C4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 03:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1972C4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 03:41:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 502CB600D3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 03:40:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 502CB600D3
+	by mail.kernel.org (Postfix) with ESMTPS id BA14A60EB5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 03:41:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BA14A60EB5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=OJKgEnET8++MVk3AIAeS5a452mgxRWf2FUVDsLiH3r4=; b=1vR6qGInMRcqNZ
-	3yrNguMnd4E/DuL6VfOfZJ6V+2s9cfvNJaIoHDABz3aqneFVw5wjlJNXrytSXO5t1Lu4MYGkHCSwH
-	cUefnjtqjuwYWxKQJ0ipUe0mJEALeHBTsIpTW1GO81fmkBq6PHmOhTEzsfkvZQZ8WJySf1mBS5PDO
-	xPwv2VCQNjEAahVWlFWv44IEnilsK6EFroDORclYB/Lo2ZnhbVn8uNBQqYnQcwozfkt/gGPLNFn5F
-	uRmNWUfGBDzlrzKGCotmrdW/J5QbC78475mcXB2vlNvs8XwFfYFYbWVjb2Rs1BmJlktILUAoX7Kne
-	vtHUsA0UAf5/KwjIcfPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NAbcsfMe7OB5RN+UitXSnWNMRfQHhBmE/24C260XaNI=; b=zalPAI2QsN5Ds6
+	1BGpmerRhRet3Z1LXIRh7A50YCzxk0bwfGbRt2mlgq8tvee0dSbAWxl4lRtdRb7QVEnUc88rIoJAD
+	qFDCTRbFHYwypxGEQIKbKeag0t4KZTKBmqiuv78VugrBvI+gnZUxZ3I2pD9Ri/jbxzBIqwNyUgKyM
+	4WZBVjy7UucLeXBFhS05/CvWAN5ipxCPqnF9IQ4IU4YElPNBJJTey2d9JAJDmqakcuGPbxvzRdTaI
+	GP7jlxgC2dSHaQ3lbZ20WoY3pl8/M22/SuD4rzOuMKOA7L62v8ztuOpTNgXyGjGVfYYfcknY3Byfw
+	Fdc5l2kuInlxPiuYTX2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFpxH-000yix-0Q; Tue, 17 Aug 2021 03:39:59 +0000
-Received: from regular1.263xmail.com ([211.150.70.200])
+	id 1mFpyk-000zIQ-4o; Tue, 17 Aug 2021 03:41:30 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFphJ-000w0F-4D
- for linux-rockchip@lists.infradead.org; Tue, 17 Aug 2021 03:23:30 +0000
+ id 1mFpwF-000yQv-MC
+ for linux-rockchip@lists.infradead.org; Tue, 17 Aug 2021 03:38:57 +0000
 Received: from localhost (unknown [192.168.167.16])
- by regular1.263xmail.com (Postfix) with ESMTP id 370241E1F;
- Tue, 17 Aug 2021 11:23:18 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 36BE8D6578;
+ Tue, 17 Aug 2021 11:38:52 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
 X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
 X-ANTISPAM-LEVEL: 2
-Received: from desktop-sg5v5ea (unknown [58.22.7.114])
+Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P26932T140041694418688S1629170584977385_; 
- Tue, 17 Aug 2021 11:23:06 +0800 (CST)
+ P26933T140041124820736S1629171530026669_; 
+ Tue, 17 Aug 2021 11:38:52 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <3aa60112dad9a86c21af1330bc0cf243>
+X-UNIQUE-TAG: <f3f9d8ee7b06ccff04482f6e72f2692e>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: jay.xu@rock-chips.com
+X-FST-TO: lgirdwood@gmail.com
 X-RCPT-COUNT: 9
 X-SENDER-IP: 58.22.7.114
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
-Date: Tue, 17 Aug 2021 11:23:04 +0800
-From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-To: =?UTF-8?B?6K645YmR576k?= <jay.xu@rock-chips.com>, 
- "Mark Brown" <broonie@kernel.org>
-Cc: lgirdwood <lgirdwood@gmail.com>, ulf.hansson <ulf.hansson@linaro.org>, 
- "Lee Jones" <lee.jones@linaro.org>, 
- "Zhang Changzhong" <zhangchangzhong@huawei.com>, 
- =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "Linux Kernel Mailing List" <linux-kernel@vger.kernel.org>
-Subject: Re: Re: [PATCH 2/4] regulator: core: notify regulator enable with the
- voltage value
-References: <20210816032003.1162779-1-jay.xu@rock-chips.com>, 
- <20210816032003.1162779-3-jay.xu@rock-chips.com>, 
- <20210816120059.GA4253@sirena.org.uk>, 
- <202108171117556125066@rock-chips.com>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.19.158[cn]
-Mime-Version: 1.0
-Message-ID: <2021081711230440061610@rock-chips.com>
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: lgirdwood@gmail.com, broonie@kernel.org, ulf.hansson@linaro.org,
+ lee.jones@linaro.org, zhangchangzhong@huawei.com, heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH v2 1/3] regulator: add PRE_ENABLE event define
+Date: Tue, 17 Aug 2021 11:38:46 +0800
+Message-Id: <20210817033848.1396749-2-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210817033848.1396749-1-jay.xu@rock-chips.com>
+References: <20210817033848.1396749-1-jay.xu@rock-chips.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_202329_502649_EC62957D 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210816_203856_053559_263ABCA3 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,24 +85,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ci0tLS0tLS0tLS0tLS0tCmpheS54dUByb2NrLWNoaXBzLmNvbQo+SGksIE1hcmsKPi0tLS0tLS0t
-LS0tLS0tCj5qYXkueHVAcm9jay1jaGlwcy5jb20KPj5PbiBNb24sIEF1ZyAxNiwgMjAyMSBhdCAx
-MToyMDowMUFNICswODAwLCBKaWFucXVuIFh1IHdyb3RlOgo+Pgo+Pj4gKwlyZXQgPSBfcmVndWxh
-dG9yX2dldF92b2x0YWdlKHJkZXYpOwo+Pj4gKwlpZiAocmV0IDwgMCkKPj4+ICsJcmV0ID0gMDsK
-Pj4+ICsKPj4+wqAgX25vdGlmaWVyX2NhbGxfY2hhaW4ocmRldiwgUkVHVUxBVE9SX0VWRU5UX0VO
-QUJMRSwKPj4+IC0JwqDCoMKgwqAgTlVMTCk7Cj4+PiArCcKgwqDCoMKgICZyZXQpOwo+Pgo+PlRo
-aXMgaXMgZ29pbmcgdG8gYmUgcmVhbGx5IGV4cGVuc2l2ZSBmb3IgZGV2aWNlcyB3aXRob3V0IGEg
-Y2FjaGUgYW5kCj4+aXQncyBnb2luZyB0byBiZSAqdmVyeSogcmFyZWx5IHVzZWQgaWYgZXZlci4K
-Pgo+SG93IGFib3V0IHRvIG9ubHkgdG8gbm90aWZ5IHRoZSBFVkVOVF9FTkFCTEUgd2l0aG91dCBn
-ZXQgdm9sdGFnZSwgdGhlbiBkcml2ZXIgd2hvIGNhcmUgYWJvdXQgdGhpcyBldmVudAo+Y291bGQg
-Z2V0IHRoZSB2b2x0YWdlIGl0c2VsZiA/IAoKaWdub3JlIG15IHJlcGx5IGhlcmUgYWJvdXQgRVZF
-TlRfRU5BQkxFLCBzb3JyeQoKSG93IGFib3V0IHRoZSBuZXh0IHBhdGNoIGFib3V0IFBSRV9FTkFC
-TEUgPyBBdCBsZWFzdCBJIG5lZWQgYSBub3RpZnkgd2l0aG91dCB2b2x0YWdlCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Add REGULATOR_EVENT_PRE_ENABLE to allow to notify driver that the
+regulator is about to enabled.
+
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+v2: none
+
+ include/linux/regulator/consumer.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/linux/regulator/consumer.h b/include/linux/regulator/consumer.h
+index 20e84a84fb77..edd31f0dad17 100644
+--- a/include/linux/regulator/consumer.h
++++ b/include/linux/regulator/consumer.h
+@@ -102,6 +102,7 @@ struct regulator_dev;
+  *                      Data passed is old voltage cast to (void *).
+  * PRE_DISABLE    Regulator is about to be disabled
+  * ABORT_DISABLE  Regulator disable failed for some reason
++ * PRE_ENABLE     Regulator is about to be enabled
+  *
+  * NOTE: These events can be OR'ed together when passed into handler.
+  */
+@@ -119,6 +120,7 @@ struct regulator_dev;
+ #define REGULATOR_EVENT_PRE_DISABLE		0x400
+ #define REGULATOR_EVENT_ABORT_DISABLE		0x800
+ #define REGULATOR_EVENT_ENABLE			0x1000
++#define REGULATOR_EVENT_PRE_ENABLE		0x2000
+ 
+ /*
+  * Regulator errors that can be queried using regulator_get_error_flags
+-- 
+2.25.1
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
