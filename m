@@ -2,89 +2,78 @@ Return-Path: <SRS0=qLnh=NI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BF82C432BE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 10:17:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1159C4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 12:45:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6FEF60F58
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 10:17:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E6FEF60F58
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 91DD460EBD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 12:45:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 91DD460EBD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aOBuOwXQHbvfm0wN1NJu+z2QkTYLp+nF44xcO3WSP4g=; b=eHPA5X+gYFNuhc
-	yVhARRkWD6f6M+bO0Pa7yuobImSfoVkCOeZf+PvE3fYoDrN4Z8ry1IveCeAc6AwTFer38VHSfxbDc
-	prWCil/MwiXsPjM581wnqSykG97omHOZFsQewlvDlZzPtzosabRW/qoUjEkTi8r6mwJbJPWjT/Vri
-	jLTnDIjDQIoTZRVdIcgYtv6RF9RWZzdwCTbwj31qUDQN9xbfxHAP3ZP17vI5lSJIkHnEecXhCYSQ4
-	BMv7Vv/0bq6QV0a2AJulUsfNWfgHHxxeB7MZA+vX0Dtyddo/J7+voEphLZgn9mvfa5u3D30psv58F
-	GB6gCmK3OFEO9oqbp53w==;
+	List-Owner; bh=arjpDBjsVxFwCkgIqyr/1CvOTXRpxsb7bHN24bli6qk=; b=BsGpPzoBVmIBWX
+	7YTyYcbGtg8P8RalWg84//rt++g60OMXgRUQzsSNTQXaPpFpvnkSYh9Y/7yKYky96K4+5NUUyUHCT
+	QmJBYLqRABo4lmMxMsQHNsfki0Ql9CSxJQYTj9YOXxSttf2E3gE+mzMBcstHShjpkTb7+tLYnuakH
+	ZeTFUxXLm7jv6sIuVsaNhNRp6Kq4cBBxX/JyGNrkHTqIYpiTigHfEOrnzBMZZDbDA91/SbC43H5n3
+	MY4IsX95o38itemqmGAne2qKiCgB2h8onJMyoDWx+yKPkz5obBCDmDuaZ0ihbRSaNcRrjpASpFviD
+	nHwggdvHS0mYa+dt/aew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFw9R-0024ID-OF; Tue, 17 Aug 2021 10:16:57 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1mFyTN-002VEP-SN; Tue, 17 Aug 2021 12:45:41 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFw5M-0022J8-93; Tue, 17 Aug 2021 10:12:45 +0000
-Received: by mail-ej1-x644.google.com with SMTP id gr13so8458953ejb.6;
- Tue, 17 Aug 2021 03:12:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/WAfNuRfJO7LeOVVvDRI/y8LyLau5VABNm838AmnyFo=;
- b=sFILswKo5rBl8VwdDLoIIvAVcnob6dPfqeX2siC87rmtwvaCx7LtTVboU2RXnjg1ts
- hijTkqlQytVV7Uq90+qwGvPZrAlrNDcoKa/VzcwtBhm/+Paw/Z7unj27SDKrLQanlrGq
- 7OeCDfx3EBYZB3dJvi+W63IHIir6GmqTgO1QoXRhcPGt72+ec2CpQaKLUjgqMIi+lnJE
- j+bh6jMz/zBK5PbX4FLPGUXP22EWibpTRbMGYgi9kKa1dBMnxmGj5ccV35Re2p65FuxQ
- yCPNM1cJcn8mLwNYS/f4KyYP1ZT+bNELlwgVaAwdBtx5leqHoLt5AXlnsXgU/mrfuMqp
- RWrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/WAfNuRfJO7LeOVVvDRI/y8LyLau5VABNm838AmnyFo=;
- b=ONuBNmy8HfgnfXXtdRNaYGsJ95663qkiVJQg2Z5fYuHBFVi2gioEjBUyKZFkquErxm
- eaS6+EJIpWIzj9+tkq1gGD/iuqKHX2OpVMiFEFyW0gQrwQN/RFWFn8wU1/WqooQ+SYbJ
- YBubn+QfaZIkzyNy8Q+jQwXwB1fADFgTzpC1sMkZIArd6QrTYo5rYWJnZtWLw2+flFVO
- xYT+tGUNsBcJmNiMgfcMxk0RD4qQgbh2gASAXRPEVHB9JUGIqxL8cnyy99cwO1qIwr7K
- NS1lvqoMyngIJ4OBrDvUM08eNaRl7aBU6AH+uvzru8NrK1ECIgTGLRgiMxlj2lK/Dym9
- ufrw==
-X-Gm-Message-State: AOAM532wLNgb1KqfuISyUCl+uiUQlS+EtHMcBrl/0WLTP87XJTnfqaRY
- qOL5LHodtEOK+VI3Xqzh5TA=
-X-Google-Smtp-Source: ABdhPJz/ptHl1gRntKfY8he/WLyUVFrDG6r1VcZrRTjoEkImPkiQEAGArE18Td5ZEvY1tX4N9i/utA==
-X-Received: by 2002:a17:906:6815:: with SMTP id
- k21mr3131060ejr.371.1629195161808; 
- Tue, 17 Aug 2021 03:12:41 -0700 (PDT)
-Received: from localhost.localdomain ([185.213.155.232])
- by smtp.gmail.com with ESMTPSA id m6sm822920edq.22.2021.08.17.03.12.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Aug 2021 03:12:41 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] arm64: dts: rockchip: add analog audio on Quartz64
-Date: Tue, 17 Aug 2021 12:11:19 +0200
-Message-Id: <20210817101119.423853-5-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20210817101119.423853-1-frattaroli.nicolas@gmail.com>
-References: <20210817101119.423853-1-frattaroli.nicolas@gmail.com>
+ id 1mFyTA-002VCb-ST; Tue, 17 Aug 2021 12:45:30 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10078"; a="215797611"
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="215797611"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Aug 2021 05:45:25 -0700
+X-IronPort-AV: E=Sophos;i="5.84,328,1620716400"; d="scan'208";a="449256501"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Aug 2021 05:45:20 -0700
+Received: from andy by smile with local (Exim 4.94.2)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1mFySv-00Ak6X-9i; Tue, 17 Aug 2021 15:45:13 +0300
+Date: Tue, 17 Aug 2021 15:45:13 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+ linux-acpi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-imx@nxp.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Abel Vesa <abel.vesa@nxp.com>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v4 1/4] clk: fractional-divider: Export approximation
+ algorithm to the CCF users
+Message-ID: <YRuvWdI+M7JuKCPC@smile.fi.intel.com>
+References: <20210812170025.67074-1-andriy.shevchenko@linux.intel.com>
+ <162879819529.19113.6409882476721828944@swboyd.mtv.corp.google.com>
+ <YRY+uoTrBjkdh4Zj@smile.fi.intel.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YRY+uoTrBjkdh4Zj@smile.fi.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_031244_373784_5F1FAD71 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20210817_054528_979595_30F01C07 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,90 +91,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On the Quartz64 Model A, the I2S1 TDM controller is connected
-to the rk817 codec in I2S mode. Enabling it and adding the
-necessary simple-sound-card and codec nodes allows for analog
-audio output on the PINE64 Quartz64 Model A SBC.
+On Fri, Aug 13, 2021 at 12:43:22PM +0300, Andy Shevchenko wrote:
+> On Thu, Aug 12, 2021 at 12:56:35PM -0700, Stephen Boyd wrote:
+> > Quoting Andy Shevchenko (2021-08-12 10:00:22)
+> > > At least one user currently duplicates some functions that are provided
+> > > by fractional divider module. Let's export approximation algorithm and
+> > > replace the open-coded variant.
+> > > 
+> > > As a bonus the exported function will get better documentation in place.
+> > Applied to clk-next
+> 
+> Thank you, Stephen!
 
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 36 ++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
+When they are expected to be visible in Linux Next?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index b239f314b38a..8da4d1f600c3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -4,6 +4,7 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/sound/rockchip,i2s-tdm.h>
- #include "rk3566.dtsi"
- 
- / {
-@@ -50,6 +51,20 @@ led-diy {
- 		};
- 	};
- 
-+	rk817-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Analog RK817";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_8ch>;
-+		};
-+		simple-audio-card,codec {
-+			sound-dai = <&rk817>;
-+		};
-+	};
-+
- 	vcc12v_dcin: vcc12v_dcin {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc12v_dcin";
-@@ -174,8 +189,13 @@ rk817: pmic@20 {
- 		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
- 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
- 
-+		#sound-dai-cells = <0>;
-+		clock-names = "mclk";
-+		clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int_l>;
-+		pinctrl-0 = <&pmic_int_l>, <&i2s1m0_mclk>;
- 		rockchip,system-power-controller;
- 		wakeup-source;
- 		#clock-cells = <1>;
-@@ -364,9 +384,23 @@ regulator-state-mem {
- 				};
- 			};
- 		};
-+
-+		rk817_codec: codec {
-+		};
-+
- 	};
- };
- 
-+&i2s1_8ch {
-+	status = "okay";
-+	rockchip,trcm-sync = <RK_TRCM_TX>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s1m0_sclktx
-+		     &i2s1m0_lrcktx
-+		     &i2s1m0_sdi0
-+		     &i2s1m0_sdo0>;
-+};
-+
- &mdio1 {
- 	rgmii_phy1: ethernet-phy@0 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
-2.32.0
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
