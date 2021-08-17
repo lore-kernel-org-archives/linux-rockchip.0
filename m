@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7972AC4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 19:12:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EF6DC4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 21:32:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E4CC60FC3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 19:12:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3E4CC60FC3
+	by mail.kernel.org (Postfix) with ESMTPS id CEF99600D4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Aug 2021 21:32:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CEF99600D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gbeu4MPne4eJUyugcl5l/+sKapNPLhFh4AUOfjdcyC8=; b=oiRlUBDGy3kzBU
-	q9puYrIaPw/WurgAOn+oSOsDZorXab2vDcSBkrmQ0utAjuVk5GnaD29CLHvMev4vgHDL5SEImnpSO
-	pt+ywiskv6eqn2t96JYt6/PePEO8ySFRSLXjvjDwfHkajeBRHassgBNur9d88Z3NFLEvvR6sz9tpB
-	3QWMa0B2XuS07A7R5Q/FwKXLFr67wC459+s8uYwhOWh2L4tfFLBHyfZBBZZa08NbuVVfJdA2kq3Ti
-	qo6TpBUwneXjQcGP4ZdZo1sUciV3YV9z05og4trOymLjz1rqyU25HIxOozFVN62TEVzAMGP9gQYJo
-	H4CoXAvoRKbaT+Qoaodg==;
+	List-Owner; bh=bVfcY9yC/mXaUYZyZUUQVG1R5wuIK1Y3BKxnKQTne24=; b=JUfAfW9dKnaCer
+	XFC2D6pgJNwz9rzicNQLi8+pf3kQ/4UfL6IEoziezl97Hk9oG9Nu0ojZv8Dz1JjSDFcMuLXrDhGWi
+	HwUIzi2/Qc8PGHrftZZh6OXCSLp1DitS4GPxZaNUkEQScoVF7HI3cnC4yimi5Uv87msj4zpt+ue0r
+	l+rSlAncg+YNA02xKO6xxfCgbOoq5C4nubtKBFQgSfJt8Eqc+hWd7dK+K5LFTFkdS3/CDkK1vmOfC
+	G3MCQtaXpQM7e7Q/Tacbcp9hzLphIv3O8X9M7eU0UZaD2IQNX7Du1e+cj9Zgum5EBO1y7BJamPXyF
+	jQ3zpTDRojYR9S3YnZQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mG4VI-003IYP-Ny; Tue, 17 Aug 2021 19:12:04 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1mG6gi-003Yan-Kg; Tue, 17 Aug 2021 21:32:00 +0000
+Received: from mail-oi1-f169.google.com ([209.85.167.169])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mG4VF-003IXt-Si
- for linux-rockchip@lists.infradead.org; Tue, 17 Aug 2021 19:12:03 +0000
-Received: by mail-ot1-f52.google.com with SMTP id
- l36-20020a0568302b24b0290517526ce5e3so18689896otv.11
- for <linux-rockchip@lists.infradead.org>; Tue, 17 Aug 2021 12:12:00 -0700 (PDT)
+ id 1mG6gg-003YZP-83; Tue, 17 Aug 2021 21:31:59 +0000
+Received: by mail-oi1-f169.google.com with SMTP id u10so1274381oiw.4;
+ Tue, 17 Aug 2021 14:31:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=uXzO0y9o8PUx9fCL1+Vgb1TmRusWXk/oMxy31KXHS88=;
- b=drswKZEy/6Mau/UROAiolP4SLa3BaxF1Qw/sTzIsF6Oz7X+sMP+mtiR7MtBZwTIgc5
- /L8c18mW/aJ0DT6zd6uB8XWoGhmlyxd/XzSDCdPKzce4E/wX2lH9iJRtTSIpU6/TRU54
- AOkoAN2ckDBtPJhT4yp62pUDW9soA9tOgjOrBOH+3LgoZp+4bjWYdplnjJ7gabFALeQp
- LU4S42ZgouDrOdfORGZCH4iBlk/Ud9fTmYHzRepTD2BzLcOozHMAJoRMW+Hm1Fx6yQSz
- UEhWigvDgQTiucDUJaDwDj5MXXt3dS4xGA5vTR8HJqwyK2stYkAtE/9cnslpreJjAfwb
- bj0g==
-X-Gm-Message-State: AOAM533mDSUAONqE5mrjQOSCA81/+6hr9PMiToqLB9XDfqxtJPubdPUc
- ITK6JGtV7avw7Ib8ZtyDOQ==
-X-Google-Smtp-Source: ABdhPJwxMPZIWpFXp2HS41uTczOJje8tNeXb6wBw+I9J9V0Fx8Q0OIrqbLkFuz1cy2yMkusuoy1i9A==
-X-Received: by 2002:a9d:19d1:: with SMTP id k75mr3727316otk.355.1629227520380; 
- Tue, 17 Aug 2021 12:12:00 -0700 (PDT)
+ bh=kt2Fk44GF+8/cRJD0+ngwDqElp7+xnXStRJ3VhNJcN8=;
+ b=U1JvtvwRyIVioQuqYAWLoWam1w7CqlOExssr/2GflpHk6U88Heaug4sYWZJ/sGppTS
+ TlZpR7tg/rFcC3s0IspJmVs7EeCDQe6c4gLwbzpBC/KLpiacjKwixol9/4meknj1GvUT
+ aa4q18ngxQfC22sDaLhIOYvsaaESJg19l2IsdPGT2zhb1yW1KFyIKtf7c3vHmTkIGqnm
+ NpUHCeWJXlODVnPtGLhaRraYGa1L8gOVJ4qbbFGaFlIVOwy5E9WMlz+NoIUgvD0pA6Ya
+ yjPGfSvGYaIiAqUJhHb8X9fXe1FdhCUEF6xs7K9P0RIrZ9NEbpZ2FxFHEdnc3TASmEM8
+ gcoA==
+X-Gm-Message-State: AOAM531CvSq2h375vnkX4nN12d5BIxipublbdB3cGqZFKZm1kkzWCICx
+ XUMREOoMzRUDT+1oX2Rz2w==
+X-Google-Smtp-Source: ABdhPJyY88kwSF6xqTb7bptyaFXmhl8XLJolHuRR2HVS2XGv120oK5kfJ2J1hPSymvlFnYjSS7HwQg==
+X-Received: by 2002:aca:ac13:: with SMTP id v19mr4280919oie.93.1629235914630; 
+ Tue, 17 Aug 2021 14:31:54 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id q20sm651386oiw.58.2021.08.17.12.11.58
+ by smtp.gmail.com with ESMTPSA id z7sm625148oti.65.2021.08.17.14.31.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Aug 2021 12:11:59 -0700 (PDT)
-Received: (nullmailer pid 681816 invoked by uid 1000);
- Tue, 17 Aug 2021 19:11:58 -0000
-Date: Tue, 17 Aug 2021 14:11:58 -0500
+ Tue, 17 Aug 2021 14:31:54 -0700 (PDT)
+Received: (nullmailer pid 877188 invoked by uid 1000);
+ Tue, 17 Aug 2021 21:31:53 -0000
+Date: Tue, 17 Aug 2021 16:31:53 -0500
 From: Rob Herring <robh@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, maccraft123mc@gmail.com, sre@kernel.org,
- heiko@sntech.de, lee.jones@linaro.org, pgwipeout@gmail.com,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v3 1/4] dt-bindings: Add Rockchip rk817 battery charger
- support
-Message-ID: <YRwJ/riSIGfNu64B@robh.at.kernel.org>
-References: <20210810025436.23367-1-macroalpha82@gmail.com>
- <20210810025436.23367-2-macroalpha82@gmail.com>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 1/8] dt-bindings: soc: rockchip: add rk3568-usb2phy-grf
+Message-ID: <YRwqyZEF6FRpkdHQ@robh.at.kernel.org>
+References: <20210812204116.2303617-1-pgwipeout@gmail.com>
+ <20210812204116.2303617-2-pgwipeout@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210810025436.23367-2-macroalpha82@gmail.com>
+In-Reply-To: <20210812204116.2303617-2-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_121201_972843_574DD3A5 
-X-CRM114-Status: GOOD (  27.71  )
+X-CRM114-CacheID: sfid-20210817_143158_340259_FEC66512 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,102 +93,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 09, 2021 at 09:54:33PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Thu, 12 Aug 2021 16:41:09 -0400, Peter Geis wrote:
+> Add the documentation for the rk3568-usb2phy-grf node, which is separate
+> from the usb2phy node on this chip.
 > 
-> Create dt-binding documentation to document rk817 battery and charger
-> usage. New device-tree properties have been added.
-> 
-> - rockchip,resistor-sense-micro-ohms: The value in microohms of the
-> 				      sample resistor.
-> - rockchip,sleep-enter-current-microamp: The value in microamps of the
-> 					 sleep enter current.
-> - rockchip,sleep-filter-current: The value in microamps of the sleep
-> 				 filter current.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 > ---
->  .../devicetree/bindings/mfd/rk808.txt         | 36 ++++++++++++++++++-
->  1 file changed, 35 insertions(+), 1 deletion(-)
-
-Kind of a big change without converting this binding to DT schema first. 
-
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
-> index 23a17a6663ec..89b9fa7e10b5 100644
-> --- a/Documentation/devicetree/bindings/mfd/rk808.txt
-> +++ b/Documentation/devicetree/bindings/mfd/rk808.txt
-> @@ -70,13 +70,40 @@ Optional RK817 properties:
->  
->  - vcc8-supply:  The input supply for BOOST
->  - vcc9-supply:  The input supply for OTG_SWITCH
-> +
->  - codec:	The child node for the codec to hold additional properties.
->  		If no additional properties are required for the codec, this
->  		node can be omitted.
-> -
 
-Unrelated whitespace changes.
-
->  - rockchip,mic-in-differential: Telling if the microphone uses differential
->  				mode. Should be under the codec child node.
->  
-> +- battery:	The child node for the charger to hold additional properties.
-> +		If a battery is not in use, this node can be omitted. If a
-> +		battery node is used, the following values are required:
-> +		rockchip,resistor-sense, rockchip,sleep-enter-current,
-> +		rockchip,sleep-filter-current, and a phandle to a
-
-Property names are out of date...
-
-> +		monitored-battery node that contains a valid value for
-> +		charge-full-design-microamp-hours,
-> +		charge-term-current-microamp,
-> +		constant-charge-current-max-microamp,
-> +		constant-charge-voltage-max-microvolt,
-> +		voltage-max-design-microvolt, voltage-min-design-microvolt,
-> +		and a valid ocv-capacity table.
-
-Please list these 1 per line and make it clearer this is the list of 
-properties for the battery node.
-
-> +- rockchip,resistor-sense-micro-ohms: Value in microohms of the battery sense
-> +				      resistor. The PMIC only supports values
-> +				      of either 10000 or 20000. This value is
-> +				      used by the driver to set the correct
-> +				      divisor value to translate ADC readings
-> +				      into the proper units of measure.
-> +- rockchip,sleep-enter-current-microamp: Value in microamps of the sleep enter
-> +					 current for the charger. Value is used
-> +					 by the driver to calibrate the relax
-> +					 threshold.
-> +- rockchip,sleep-filter-current-microamp: Value in microamps of the sleep
-> +					  filter current for the charger.
-> +					  Value is used by the driver to derive
-> +					  the sleep sample current.
-> +
->  Optional RK818 properties:
->  - vcc1-supply:  The input supply for DCDC_REG1
->  - vcc2-supply:  The input supply for DCDC_REG2
-> @@ -459,6 +486,13 @@ Example:
->  			};
->  		};
->  
-> +		rk817_battery: battery {
-> +			monitored-battery = <&battery_cell>;
-> +			rockchip,resistor-sense-micro-ohms = <10000>;
-> +			rockchip,sleep-enter-current-microamp = <300000>;
-> +			rockchip,sleep-filter-current-microamp = <100000>;
-> +		};
-> +
->  		rk817_codec: codec {
->  			rockchip,mic-in-differential;
->  		};
-> -- 
-> 2.25.1
-> 
-> 
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
