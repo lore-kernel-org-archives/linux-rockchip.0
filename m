@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6937FC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:41:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CF92C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D12A61042
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:41:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2D12A61042
+	by mail.kernel.org (Postfix) with ESMTPS id 3944F61051
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3944F61051
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aX674k6DUO04vzmzQcOvCELC7OovrDW823gEps7Z+iM=; b=iOSnmJeOyLBBjH
-	aaDptYSwyPNCLa+7QInJHW48pA6JvC2wVWerP8rpjUA2toCi2BkrQi1ZY0tS1VrRyFD29GYoB365J
-	ln0fxNcVi2AVpI9/IwVVcW224P0P6psV1b/uuNKL6exssaKfwy8I5CAN2BhqCrxEk4vNQJ4lowZ0r
-	l1ixkwGmg7LwB+VS9Nsga2ucd/+sg+XVgG2iIkJ/3634b1mPjRsp4bGSwAesb+S82i86zEblP7o4+
-	FOeqNx3/BUdF2ZWL3q5cFZZn4+7BBbZrlSIiI5POcfQWKFkX/4bWzxUzZ8wNGrPWngPYHocUm9q1J
-	qbKDE2cLEjmN1c4KiJIQ==;
+	List-Owner; bh=4/wp+xKrj/WdmQ5kTEMxHRSTgvIanp8Bl2Ds3KAVYtA=; b=vHBkF/FgiuA2un
+	jtF5jDWAyv+20/eNBXnN/sBisFi/ON601+ykS+pC2g5unU51oPcWzpIWxRkc2oG4RniGvOhd1Nrhi
+	VFRJHl7BaiMqAzVixrnRj5JOydcpnG5KmAzLAR42i3TLdDfTN+EpSlQjwDw2maO7mlNXNlOIVGk22
+	2EK0vn2qMmmwgBzZeA+DRH1hWUuRwcJy1o1N+/aEwkaUp1IkPjBM08h5LGpGpb97ng6JWx1NVsAMe
+	97Qk2BI3efYgK6puma67cUiXu0bUk0yVNxnzjUpULGwoR1FhGOy0quSZQ3xhmKoRjGufBf15qLaR8
+	ZTXKN4A078/xMrKFadJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGKtC-005XH2-Cu; Wed, 18 Aug 2021 12:41:50 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1mGKtO-005XKg-FT; Wed, 18 Aug 2021 12:42:02 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGKsi-005X6m-Ds; Wed, 18 Aug 2021 12:41:24 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id
- w21-20020a7bc1150000b02902e69ba66ce6so1700482wmi.1; 
- Wed, 18 Aug 2021 05:41:20 -0700 (PDT)
+ id 1mGKsl-005X7R-7s; Wed, 18 Aug 2021 12:41:25 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id
+ a201-20020a1c7fd2000000b002e6d33447f9so3488776wmd.0; 
+ Wed, 18 Aug 2021 05:41:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LKHb4NbS7zSt/cAMTh5zeYF+NOqO7vbF0bCJdamG5w8=;
- b=ja/16Vr9ki6o1rA6ri6QHlVCzMftWzn+OYFQapVIpbv257k3j7V/fjkHafTOT0nGvf
- i6LABOswPGff+2sGLiMXYL+ApmjSBkeyENpajzTX60EcQBA+92QWzWvYnt8rwSuZLWmy
- qCZTc2tlCyn8x9qxTf9znRysZ0LpPAHS/wzxql08x5bEGnbAfvBq6lnIkD8LcmpQntez
- nlzC2m9JvqCuRiVd4RB3t689UDLbFPGMEZfwOJ4Q8sTmducPGwC8J2yE2c9zUT6YFxc1
- xyzoEacrxeRt2pKRV+58wzHQKK0wJkivPxWsrpGWZ7AH0CGbvpavv6t2LADyXhHzX9WQ
- 8UEQ==
+ bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
+ b=c1GxZdd+2+kkeJZ4syYgj51Zg98RTZjLY/Z4IwPBEdIzTt49XtuWKeCb1bcCrVU4oN
+ Izk9NWmOwP7kkaXp/2Mn53YkQfR/7fHJVcp92ZTDesjLkyO/DRCwZPWJ/yByOLYJPR1+
+ zm3svX0pIC64LD+lGZ/dry6ECz8aimrYj58KwAVIIrG/NcA68jPJnvyNefOs93CZBhJV
+ XRtCybrx9SAedtP7wZC98ZPPZw/S3G7fWok4s3NPfPyIVxnVtcL1R8XkAMXU6YiC+k1r
+ Cng2mo0cabsYhxGtZHOCTmTKdD8C4WsukMjHHdCZOaziFfCFM3uJVRmet9G6TQB/MB6H
+ FsZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=LKHb4NbS7zSt/cAMTh5zeYF+NOqO7vbF0bCJdamG5w8=;
- b=K++AWfh2HYAxA/dtPhvaO73wy9X5FXZVqNfoYgz3sYJV7iyNlPRFVPOYd5JWpLbfpG
- ClpWYvFFIFPBu4atD5/5ctX5alqsj81rzfmjyrerlzz7i5jJ3SuykUFszOI0/xm2YYl9
- 17rp+mU6UVzbtYTfluSniOqIlrkC5gcqs3Wi0MybUEYOsGW3TXhaCO1SzqMd6S+YAAsa
- pLsH1/TH0DtMN3DBwVETp4lNTICHnNY0NlXx0McwoEAd1B3UEAtyoJniS3FUhb/kkJ3S
- 3kQFlgVcw3SCslhXDRF5RnZvQJ/vXEv3QqDtN1D7MUbgADasckf30HXlO0WYGLq2PZWX
- vbaQ==
-X-Gm-Message-State: AOAM533k9ApLUmFBPPkrvq7wCseNyOOB/iCkfgi+PQOH0ROUfVlIcPwG
- J+cyo6g458lSAW3HXYN30qs=
-X-Google-Smtp-Source: ABdhPJw7gq+uZcEL/myC5985B59dRsdZKI1OrUOlw2agxfZ4Cwb3rYGc90xQ/81U/eABQrJtLqfQFg==
-X-Received: by 2002:a1c:440a:: with SMTP id r10mr8334657wma.8.1629290478949;
- Wed, 18 Aug 2021 05:41:18 -0700 (PDT)
+ bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
+ b=IBq4JxmzG/Wx8oZzzbmDXl0mG2oSMlN7jots3eMMV7KEk7I18mqlgI1PACQb8oRiaU
+ D/khP75gIIKPPwyY+wDsmL4emkuwQ5NTbx4VeK42jDlzZuaJCOWPyzpt0TQntZBAuHzT
+ sJF84CT/U9q2+l0FcZDMZnx93xbEhy8cYD84LaGA/hzpaYAhdm/2WD3Loe3Vy75X/ynG
+ IQRk/9Iu35d/yzaoyQXyFLqKP4/a4n1oV4LlVdsdkUykVzru0KwsLRC5QNSZ5jch7Hco
+ FHReob5OZC68+9GifG9m29LMnIaTaZN7dTV1sOzGly3L22UfOcbtxf6MXK+YRfSKzp3Q
+ dxbQ==
+X-Gm-Message-State: AOAM531aT6+elyFcsgkmKsitRTUdBW7f4UQaq3MPduhtEcm04jd4/Own
+ LoZz7USLWt8rSoBJ1U+Eg+I=
+X-Google-Smtp-Source: ABdhPJyQ1VzwCaTRFpydCdrpCWhltvqmLieDWRpbd4w6l19jVmVkcZ/Q2gsXj0wLcwh21T24m+Fr8A==
+X-Received: by 2002:a1c:1dc4:: with SMTP id d187mr8462745wmd.1.1629290481835; 
+ Wed, 18 Aug 2021 05:41:21 -0700 (PDT)
 Received: from localhost.localdomain (arl-84-90-178-246.netvisao.pt.
  [84.90.178.246])
- by smtp.gmail.com with ESMTPSA id a11sm5720454wrq.6.2021.08.18.05.41.17
+ by smtp.gmail.com with ESMTPSA id a11sm5720454wrq.6.2021.08.18.05.41.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Aug 2021 05:41:18 -0700 (PDT)
+ Wed, 18 Aug 2021 05:41:21 -0700 (PDT)
 From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>,
@@ -83,17 +83,16 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
  Lukas Bulwahn <lukas.bulwahn@gmail.com>
-Subject: [PATCH 1/5] drm: rockchip: remove reference to non-existing config
- DRM_RGB
-Date: Wed, 18 Aug 2021 14:41:10 +0200
-Message-Id: <20210818124114.28545-2-lukas.bulwahn@gmail.com>
+Subject: [PATCH 2/5] drm: amdgpu: remove obsolete reference to config CHASH
+Date: Wed, 18 Aug 2021 14:41:11 +0200
+Message-Id: <20210818124114.28545-3-lukas.bulwahn@gmail.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210818124114.28545-1-lukas.bulwahn@gmail.com>
 References: <20210818124114.28545-1-lukas.bulwahn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_054120_521463_114880B0 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20210818_054123_343181_397ACFCD 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,34 +110,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-commit 1f0f01515172 ("drm/rockchip: Add support for Rockchip Soc RGB
-output interface") accidently adds to select the non-existing config
-DRM_RGB in ./drivers/gpu/drm/rockchip/Kconfig.
+Commit 04ed8459f334 ("drm/amdgpu: remove chash") removes the chash
+architecture and its corresponding config CHASH.
 
-Luckily, ./scripts/checkkconfigsymbols.py warns on non-existing configs:
+There is still a reference to CHASH in the config DRM_AMDGPU in
+./drivers/gpu/drm/Kconfig.
 
-DRM_RGB
-Referencing files: drivers/gpu/drm/rockchip/Kconfig
-
-So, remove the reference to the non-existing config DRM_RGB.
+Remove this obsolete reference to config CHASH.
 
 Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 ---
- drivers/gpu/drm/rockchip/Kconfig | 1 -
+ drivers/gpu/drm/Kconfig | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 558f1b58bd69..9f1ecefc3933 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -9,7 +9,6 @@ config DRM_ROCKCHIP
- 	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
- 	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
- 	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
--	select DRM_RGB if ROCKCHIP_RGB
- 	select GENERIC_PHY if ROCKCHIP_DW_MIPI_DSI
- 	select GENERIC_PHY_MIPI_DPHY if ROCKCHIP_DW_MIPI_DSI
- 	select SND_SOC_HDMI_CODEC if ROCKCHIP_CDN_DP && SND_SOC
+diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
+index f3bc90baca61..8fc40317f2b7 100644
+--- a/drivers/gpu/drm/Kconfig
++++ b/drivers/gpu/drm/Kconfig
+@@ -257,7 +257,6 @@ config DRM_AMDGPU
+ 	select HWMON
+ 	select BACKLIGHT_CLASS_DEVICE
+ 	select INTERVAL_TREE
+-	select CHASH
+ 	help
+ 	  Choose this option if you have a recent AMD Radeon graphics card.
+ 
 -- 
 2.26.2
 
