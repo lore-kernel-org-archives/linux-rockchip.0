@@ -2,69 +2,95 @@ Return-Path: <SRS0=TfDj=NJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FFBAC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C547C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 13:55:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 632F06102A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:57:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 632F06102A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2F480601FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 13:55:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2F480601FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h66g/aLMv9bdQGmmwMOignmfHBgS0lr/sUevn+1JrU0=; b=JiqfshpnGdLxKR9vNagsak7Vii
-	ivDScpyS3G5St8CuEYHEmEqA2K71o+67DsW5iyJimZmIImdcxmoPR+F09oTUF+zEu87RUHYZkAdcZ
-	wcLQVUZwtF0DgJBrYazXOp4iIHEJA75gNi6bTYqsGaPkQTLXWDh/xt2t1t0gh8dBFlMxZVWrT/GBA
-	YI7Kjjlp5KiuxxbQozzNQ76S60oyyHHgMI8qMxiCmzxHrCenkc3MKOA7vq3kRLn7REfKmqKvSreFm
-	+mhho/OpDCP7LdbMx8NXuoVFAHy3J1pAOf8rx+jjJWmsvFpzXYsLq/pIXDqh+8No1ptrwq3fmBWUh
-	mtydPyYw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=RNLL2EIsAgSKYC4JURoX2sJFW9rs7pBbGcpK17JBVR0=; b=b/fe8GjUbzTQe0B+/uSEglhb4f
+	FRsT+tQN7G2vPW/Ae+lMugVdOrS37HHPk43jLEs3O77umU/5wynEDuh1tx0NLgkBiAl45qh1co0DK
+	TLUHDeXVvggknKyQcd22SKGSvYEZ30i/sgrXkdzkM3KRo8csk8sxctT9hbm/ja00C2DDtp1PsIIic
+	2c8yPjw7rcZ9dxmo+yRaK9Z1bL7ffuz0+a/pS2i7cY5M4AJHg5UYWg+mxQJaUWQJKPQn+W491sX+X
+	xcbhu9SjhYW9PKcFrpu4GGi3/ynrNvgnHgHnjAjFglzwnf485EtAQHoHxQzJsFLFrd9Dz6rS9e9oI
+	tQn/Ha7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGL7q-005asF-OH; Wed, 18 Aug 2021 12:56:58 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mGM2n-005mNx-Mc; Wed, 18 Aug 2021 13:55:49 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGL7o-005arr-Ko
- for linux-rockchip@lists.infradead.org; Wed, 18 Aug 2021 12:56:57 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F33B661053;
- Wed, 18 Aug 2021 12:56:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629291416;
- bh=oUNMZ3N3BnzZiuVDegJM0Y3OIg2AOXjLtpwnoWnPOcA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IGPmsKA0z6tyfzG8q5As0YJjUf/y6AFPeJtlhlXeg8477075l4+6AP/DThInqBqyl
- 20JGpTLPBW34foVHKMvkf0IqeD0o0GCBlFKkkITtddJlw/AVTSuvqJrLjaZ2KPSN8E
- 32iEXxalcAGPGIB7ecFGB39Fu+cj8NmBz9B0b8EGYmeENi/+fxkzmkW9RbmGjcUdBs
- WbeFslXQodgSA2kNzST2Oo/8+/YK6ETq3SCjRlIRDZckW0g5VEXHnbLcT1W257Vnru
- H1iyCe6ReS+xtSQwHyEhQ3+jgbVP6wgNYD854MWZ1VFo5/FeycTkMsWU0+3+IJ3vbv
- p8N30s61nLvSA==
-Date: Wed, 18 Aug 2021 13:56:31 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: lgirdwood@gmail.com, ulf.hansson@linaro.org, lee.jones@linaro.org,
- zhangchangzhong@huawei.com, heiko@sntech.de,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] regulator: add PRE_ENABLE event define
-Message-ID: <20210818125631.GA17664@sirena.org.uk>
-References: <20210817033848.1396749-1-jay.xu@rock-chips.com>
- <20210817033848.1396749-2-jay.xu@rock-chips.com>
+ id 1mGM2i-005mLv-CV; Wed, 18 Aug 2021 13:55:48 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 17IDtUbX104904;
+ Wed, 18 Aug 2021 08:55:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1629294930;
+ bh=/SM7hS5s/+pWFzi30GOYLIjoFM9YcVwy3bRzaQGqTvo=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=ghTl1mD69mVfxcDyDXbA11WBlA0PvG3TwRD4Lj544RjjKOkst9FqCPvdpP2lpf4uz
+ K5+8MwEElG/B4NPLRfTzovEBVKee7w0+G5wrG3f6BVaFxzwovH4JD9ak6DG0ryVDrY
+ SwOBE1LDTWYJrJX2PMbbTx2o6OP15YhLcpvUd6kM=
+Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 17IDtUGN116309
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 18 Aug 2021 08:55:30 -0500
+Received: from DFLE110.ent.ti.com (10.64.6.31) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Wed, 18
+ Aug 2021 08:55:30 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE110.ent.ti.com
+ (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Wed, 18 Aug 2021 08:55:30 -0500
+Received: from [10.250.232.133] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 17IDtK7Q105937;
+ Wed, 18 Aug 2021 08:55:22 -0500
+Subject: Re: [PATCH v8 6/8] PCI: cadence: Add support to configure virtual
+ functions
+To: Bjorn Helgaas <helgaas@kernel.org>
+CC: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Tom Joseph
+ <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
+ <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jonathan Corbet <corbet@lwn.net>,
+ Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>,
+ <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Lokesh Vutla <lokeshvutla@ti.com>
+References: <20210817153852.GA3016660@bjorn-Precision-5520>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Message-ID: <ce380e6f-d10a-4db2-9bde-82615cfbe4db@ti.com>
+Date: Wed, 18 Aug 2021 19:25:09 +0530
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20210817033848.1396749-2-jay.xu@rock-chips.com>
-X-Cookie: Save the Whales -- Harpoon a Honda.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210817153852.GA3016660@bjorn-Precision-5520>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_055656_741262_E6D37AA7 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210818_065544_561770_04353DE2 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,55 +103,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2501297699688232854=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Bjorn,
 
---===============2501297699688232854==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8t9RHnE3ZwKMSgU+"
-Content-Disposition: inline
+On 17/08/21 9:08 pm, Bjorn Helgaas wrote:
+> On Wed, Aug 11, 2021 at 12:16:54PM +0530, Kishon Vijay Abraham I wrote:
+>> Now that support for SR-IOV is added in PCIe endpoint core, add support
+>> to configure virtual functions in the Cadence PCIe EP driver.
+>>
+>> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+>> ---
+>>  .../pci/controller/cadence/pcie-cadence-ep.c  | 136 +++++++++++++++---
+>>  drivers/pci/controller/cadence/pcie-cadence.h |   9 ++
+>>  2 files changed, 125 insertions(+), 20 deletions(-)
+> 
+>> @@ -92,21 +118,29 @@ static int cdns_pcie_ep_set_bar(struct pci_epc *epc, u8 fn, u8 vfn,
+>>  
+>>  	addr0 = lower_32_bits(bar_phys);
+>>  	addr1 = upper_32_bits(bar_phys);
+>> -	cdns_pcie_writel(pcie, CDNS_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar),
+>> -			 addr0);
+>> -	cdns_pcie_writel(pcie, CDNS_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar),
+>> -			 addr1);
+>>  
+>>  	reg = CDNS_PCIE_LM_EP_FUNC_BAR_CFG(bar, fn);
+>> +	if (vfn == 1)
+>> +		reg = CDNS_PCIE_LM_EP_VFUNC_BAR_CFG(bar, fn);
+> 
+> Seems sort of weird to compute "reg", then sometimes overwrite it, as
+> opposed to:
+> 
+>   if (vfn == 1)
+>     reg = CDNS_PCIE_LM_EP_VFUNC_BAR_CFG(bar, fn);
+>   else
+>     reg = CDNS_PCIE_LM_EP_FUNC_BAR_CFG(bar, fn);
 
+I tried to write it without "else". But I can change it back.
+> 
+> Also slightly weird that "vfn" is basically used as a boolean, but
+> it's actually a u8 virtual function number.  I guess VF 1 is special
+> and not like the other VFs?
 
---8t9RHnE3ZwKMSgU+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+VF1 is special in that it's enough for configuring the SR-IOV capability
+but below the "vfn" is used for configuring inbound window.
 
-On Tue, Aug 17, 2021 at 11:38:46AM +0800, Jianqun Xu wrote:
-> Add REGULATOR_EVENT_PRE_ENABLE to allow to notify driver that the
-> regulator is about to enabled.
-
-This doesn't apply against current code, please check and resend.
-
---8t9RHnE3ZwKMSgU+
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmEdA34ACgkQJNaLcl1U
-h9AnWAf/U/DuYbgl0iPGbSpeyY8l4hRw+vanENiMTm2Q1gbrFsFWVh6ldSMuDHT4
-0NB0J/k+zBhMthcnjR3C38hBMXZZY3ruYzeTtAK33RJDBQv5gF7x1RWGmDwxnMQI
-mEo8pOimdDhCSqpcomIuv05W+Fplq0zowOXbhjmQRHwZOyTgyLUX89b0cOeDV+Cb
-6UQC2R/C8LSrURUtLyFFqvb37Q7MfIT4MTD+8BaO+fGOrvPJXKICsbpjZ4ow7UPV
-C6S+4fAoMZGimeXxWLHsvtE7ErDdyPUR4aTBJL9vNwwWERswEOntlL0e0+YpYUCt
-C+cuyIbh0V6AfIypW7Gv8uFXnWrwmw==
-=5oQy
------END PGP SIGNATURE-----
-
---8t9RHnE3ZwKMSgU+--
-
-
---===============2501297699688232854==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks
+Kishon
+> 
+>>  	b = (bar < BAR_4) ? bar : bar - BAR_4;
+>>  
+>> -	cfg = cdns_pcie_readl(pcie, reg);
+>> -	cfg &= ~(CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(b) |
+>> -		 CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b));
+>> -	cfg |= (CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE(b, aperture) |
+>> -		CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL(b, ctrl));
+>> -	cdns_pcie_writel(pcie, reg, cfg);
+>> +	if (vfn == 0 || vfn == 1) {
+>> +		cfg = cdns_pcie_readl(pcie, reg);
+>> +		cfg &= ~(CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(b) |
+>> +			 CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b));
+>> +		cfg |= (CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE(b, aperture) |
+>> +			CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL(b, ctrl));
+>> +		cdns_pcie_writel(pcie, reg, cfg);
+>> +	}
+>>  
+>> +	fn = cdns_pcie_get_fn_from_vfn(pcie, fn, vfn);
+>> +	cdns_pcie_writel(pcie, CDNS_PCIE_AT_IB_EP_FUNC_BAR_ADDR0(fn, bar),
+>> +			 addr0);
+>> +	cdns_pcie_writel(pcie, CDNS_PCIE_AT_IB_EP_FUNC_BAR_ADDR1(fn, bar),
+>> +			 addr1);
+>> +
+>> +	if (vfn > 0)
+>> +		epf = &epf->epf[vfn - 1];
+>>  	epf->epf_bar[bar] = epf_bar;
+>>  
+>>  	return 0;
+>> @@ -122,18 +156,25 @@ static void cdns_pcie_ep_clear_bar(struct pci_epc *epc, u8 fn, u8 vfn,
+>>  	u32 reg, cfg, b, ctrl;
+>>  
+>>  	reg = CDNS_PCIE_LM_EP_FUNC_BAR_CFG(bar, fn);
+>> +	if (vfn == 1)
+>> +		reg = CDNS_PCIE_LM_EP_VFUNC_BAR_CFG(bar, fn);
+> 
+> Similar recomputation of "reg".
+> 
+>>  	b = (bar < BAR_4) ? bar : bar - BAR_4;
+>>  
+>> -	ctrl = CDNS_PCIE_LM_BAR_CFG_CTRL_DISABLED;
+>> -	cfg = cdns_pcie_readl(pcie, reg);
+>> -	cfg &= ~(CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(b) |
+>> -		 CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b));
+>> -	cfg |= CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL(b, ctrl);
+>> -	cdns_pcie_writel(pcie, reg, cfg);
+>> +	if (vfn == 0 || vfn == 1) {
+>> +		ctrl = CDNS_PCIE_LM_BAR_CFG_CTRL_DISABLED;
+>> +		cfg = cdns_pcie_readl(pcie, reg);
+>> +		cfg &= ~(CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_APERTURE_MASK(b) |
+>> +			 CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL_MASK(b));
+>> +		cfg |= CDNS_PCIE_LM_EP_FUNC_BAR_CFG_BAR_CTRL(b, ctrl);
+>> +		cdns_pcie_writel(pcie, reg, cfg);
+>> +	}
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2501297699688232854==--
-
