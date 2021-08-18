@@ -2,110 +2,81 @@ Return-Path: <SRS0=TfDj=NJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 645ECC4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 15:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3930C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 16:45:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BD03604D7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 15:03:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1BD03604D7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 929FC610CB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 16:45:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 929FC610CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=prGx0qdn0CKgvUJh7NBmDBU5Tc3BywzW9Hk5MuwJT8A=; b=yNtopVU1W0UlmH
-	8OJ5sJaflu6I4LDhZn/2epCl46zEpsuKuu4/2fcZfSbNj2bzNPWkcoVgaRoLS1VfgbT0KAZYPJsTF
-	l+zFYVzwCQ14tbe0vqHobZyDTUP+vGBCJa9nDGYsROtC+R2BwUJseaOTWfnRIWAlQBk2hfC02kk8z
-	ctuN+PY8uPW8mu6vvzpDX5YoNh8fSzWmQmiGb0NKlnesAM3b6BNOZQncLZ3zzBWf+SqLozZ3ARt1Z
-	0zoKEPIBmcEnNa4RQeDlm3jgV6Kp135PxQgUv1z6keVuKpY2Q4P2IDVOMOHHgXh0CIYyzqsVaSwXL
-	9brGb1EbMpA7tFCqZ++w==;
+	List-Owner; bh=jsa7LNSgolcq7ZSVkOzJx1E4ylUE1B9UAX+v6u+qD4c=; b=oddsp2pxYTCI6P
+	a1jYNH4QkLChXQOUa/XOKbGjBgrbByTWU9kuZrssQk6piv6sjXL1jXQk2nnz3e/DMZILZoDkuZrIK
+	+4g0YbOxfb2tI08JolOBunCWYR1+TIiwq/2msvza0AUDZF6NeyhLuzXJRcBF2Siy8c0iaiwhFYLlC
+	kyhQInyarBDcPnufREx6JpHMx7rvHIjtiLPTgDknyUHlyOcssvMawcR82jWZ4FODP6zvAf4ITrg/9
+	mXOrfr2joGYszG2M8ZWTZc+iD512Wk/zesi0oUFUV5xfRaz65aN+2J4un3Bhgz/D584G3byu1bJqN
+	n3laOk/AJZ28C6JaxHRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGN66-005yYa-HW; Wed, 18 Aug 2021 15:03:18 +0000
-Received: from mail-dm6nam10olkn2108.outbound.protection.outlook.com
- ([40.92.41.108] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
+	id 1mGOgm-006D0W-OJ; Wed, 18 Aug 2021 16:45:16 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGN63-005yY5-7S
- for linux-rockchip@lists.infradead.org; Wed, 18 Aug 2021 15:03:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=d9QfGAWTTBxjtIMov2qRJLXAJFaH0ahUzpI5n271GmBhICKbyL0qv0ET0/M00ZjOgimI1p+R6I2kJ/pjLrCl3DdoOAE5GfVFSw8UET6j4mc8GkdHq0yOJwfxcNz4mXcBz0mKBjX+m3Tb1YkRnaOdtPzy3bAVVL+yCp+PsUCG99O/+AKwOMJBuKO+OGVb9BAanpv6RcagO2jNrn9rA+ou6Y2+2fD29qiPQ8ZzhNumLTm59rJCptVYID/sDnfcmvtBfcWhABg4WxgfDvyGT2gdckGgvlapP5O43cQGBALvtY9/BSeOAypuyIYDzEb0+QtINhr5HtjqtnHvEva0Tvz9jQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UipzoYRTl0IDixYh2fP07dt6oUJ3cVPpzQNrI4QhZHY=;
- b=R6siMkXikISXVk8NCELHFW/k1VlzOvcg5tJy39vFHXvtl8ERhGTjzkpX7cB4pAYRv5rnMgpGbKMagVKYDh06nKtpdeC4gaJiodMJuM1MU3rWtPlJAm0Z96mIdRLVhZPuRl6jzjLFZtuCLkKafH/baJq8bPY/I8E9z8ICL4PagtzqpX89RY/McEywkqz16Xo34dT+2m3ESAx37UhjzFUkxtkBu2phX0rlEOPn1ejrCAfozuqpMt+bCjyF6UI11SzZ9nvXG+9HTHczcNEaFG5G5ubliMSiC+yG80ZECuXiXpDN9otaGhFT7iXuNU1FJFCSwoCDKOAhUcacpnmxH3wymQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UipzoYRTl0IDixYh2fP07dt6oUJ3cVPpzQNrI4QhZHY=;
- b=gBwbLkFk/KY+PPhHlf/t3vDHM3XaoClyfmqZtuWAcI385XGgMx/qLC7nmUtwWF3dyN2ghk0E6gK7TBX+aqprWzEiYLP8oIKk0uE06gSJJg5A68NYu9CRJRYjo/G+KiedslyNYg6g3BsubcsUYUqHyBmBJ8h9p1BBiQJxKwoxUjtY4tyQyO9JkeaZuKGaPUGb2gdsueyNp3/b6aLlEIAIn1gCzmRnBopFAsggP4v7kjMKElD6JlrlDBZQ2FvFWPOrMjktzEVzF7HmGci41ZSGQFicsnvCd189sizf2OCGVKmppWw07jOZ5y/6ozoVVhURRHhmVsaAARikALbkccRTaQ==
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
- by SN7PR06MB7183.namprd06.prod.outlook.com (2603:10b6:806:105::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.15; Wed, 18 Aug
- 2021 15:03:10 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::e1f4:5eb1:d552:af43]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::e1f4:5eb1:d552:af43%7]) with mapi id 15.20.4415.024; Wed, 18 Aug 2021
- 15:03:10 +0000
-Date: Wed, 18 Aug 2021 10:03:09 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
- lee.jones@linaro.org, pgwipeout@gmail.com
-Subject: Re: [PATCH v3 1/4] dt-bindings: Add Rockchip rk817 battery charger
- support
-Message-ID: <SN6PR06MB534295DCDF84CEA9D33535CEA5FF9@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20210810025436.23367-1-macroalpha82@gmail.com>
- <20210810025436.23367-2-macroalpha82@gmail.com>
- <YRwJ/riSIGfNu64B@robh.at.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <YRwJ/riSIGfNu64B@robh.at.kernel.org>
-X-TMN: [EZjovhsy9nkEFL7Bo3r3K1gCzIxvc+PX]
-X-ClientProxiedBy: SN1PR12CA0048.namprd12.prod.outlook.com
- (2603:10b6:802:20::19) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID: <20210818150309.GA29044@wintermute.localdomain>
+ id 1mGOgX-006Cxv-9x; Wed, 18 Aug 2021 16:45:05 +0000
+Received: by mail-oi1-f174.google.com with SMTP id u25so4204043oiv.5;
+ Wed, 18 Aug 2021 09:45:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=j4p+QzPcxX1KO6/vzInX+XzVndfnvWYW6jLDLoMv7Jc=;
+ b=Ush3XxZaZTxHlNzI2FCo99umentL4C82CFBIkSiAstVOxvjkTNLCv2Z3ctpMAZUGvT
+ Gt+5fq5HeKgR82zpDVUr1i6crpUVcEDP2EQJuU/LRcgx38DVWFPib8WApz08CekkgFce
+ ZMVXnVLzzNUcDEclyDgx1hT2MkPH8lstw8IOONU2PuMyRNT8F7g+iaKA4ZRfC0aTVHHa
+ nsEK5YTL5FKvXeYm+Skh3MNpgaR07Gn06zdrsWaXnll3S1vip98+syZxhSRb5HkdYU16
+ CLlyZzRHJwsSTGpcJxqiSxnQ0il3un5HpgZMj9Xwp35gWrqa6N4FQ7WixMntrdfi+Bpn
+ TTJw==
+X-Gm-Message-State: AOAM532M4WYM91YSmQRJyfm6LfWmCEDZeVdukZYQ/nV7NLRA6l8klOMj
+ ud87ICrlZFqeYAfquLFk3A==
+X-Google-Smtp-Source: ABdhPJyGMOqRAF2+mTS589CkuekxoogzJnDR4EgPb4SQF+GAKHmsmrRL11YaskqHDxMRmr0Id2Y32A==
+X-Received: by 2002:aca:2b05:: with SMTP id i5mr7870896oik.55.1629305100437;
+ Wed, 18 Aug 2021 09:45:00 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id k24sm102593otp.31.2021.08.18.09.44.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 Aug 2021 09:44:59 -0700 (PDT)
+Received: (nullmailer pid 2737924 invoked by uid 1000);
+ Wed, 18 Aug 2021 16:44:58 -0000
+Date: Wed, 18 Aug 2021 11:44:58 -0500
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/4] dt-bindings: sound: add rockchip i2s-tdm binding
+Message-ID: <YR05Cj5R3cH+rTMx@robh.at.kernel.org>
+References: <20210817101119.423853-1-frattaroli.nicolas@gmail.com>
+ <20210817101119.423853-3-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from wintermute.localdomain (76.183.134.35) by
- SN1PR12CA0048.namprd12.prod.outlook.com (2603:10b6:802:20::19) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4436.19 via Frontend Transport; Wed, 18 Aug 2021 15:03:09 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ee124fa4-6d0d-4030-7ea7-08d962594b33
-X-MS-TrafficTypeDiagnostic: SN7PR06MB7183:
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: fWTu9PxHgmPlE424qD8ickJDzGqsCoashfVSqFmTLir6IVRw5fnwW3QCQejEf2iFDsi6ah1LUsVOEO/qEA/rnAsCiiHX9FLGnKERxzKN8iJo0JxHjJpKoj+tPQuC9EHZwuu3ULxJ9lnMFxcb2oBU+qVkyCgq/utUoSXuwgbcYnnIDr2gQ4CXzT0Ss5A2BFkb+p1+0sliZbtWNTZgrTdx0z88jPK28dX3yL2stPmTNKwZlAXDpxmbArSTidx8k3GvkR4cHPtLKEY4ddxm1ZgI8a9p4Gx124yxbFNl3HR6vXNLKJzW7qNVGgeU7MJSFHQ/RcbeLj47sKVM7IhZd1+zbLoCI8kkiTDugqwFLLBAehzcbMRuf91STw6HeVXLbmmIZH9citVPH9Pi7n5L3eWt/PiC597UqDGH2svOU06diGKzmew6y9xBsIn32Y5WFbvQ
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: c958OyZQQHkKUgExIY5waRKRSbE3jb0wws9VZq603ekw0ghZa8A9CIhqqITOZbZTsCFKpGueLmNmRw4fizmvyXlNBJJjsiZtWQW+ppLc5s2u8gKAToDbII+LY2ObfaI2Tzscmro8dKqLedJlUFCTCA==
-X-OriginatorOrg: sct-15-20-3174-20-msonline-outlook-94543.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: ee124fa4-6d0d-4030-7ea7-08d962594b33
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Aug 2021 15:03:10.8669 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR06MB7183
+Content-Disposition: inline
+In-Reply-To: <20210817101119.423853-3-frattaroli.nicolas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_080315_506151_1F0ABFA4 
-X-CRM114-Status: GOOD (  35.59  )
+X-CRM114-CacheID: sfid-20210818_094501_396161_E1567A89 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,91 +89,290 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgMTcsIDIwMjEgYXQgMDI6MTE6NThQTSAtMDUwMCwgUm9iIEhlcnJpbmcgd3Jv
-dGU6Cj4gT24gTW9uLCBBdWcgMDksIDIwMjEgYXQgMDk6NTQ6MzNQTSAtMDUwMCwgQ2hyaXMgTW9y
-Z2FuIHdyb3RlOgo+ID4gRnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNv
-bT4KPiA+IAo+ID4gQ3JlYXRlIGR0LWJpbmRpbmcgZG9jdW1lbnRhdGlvbiB0byBkb2N1bWVudCBy
-azgxNyBiYXR0ZXJ5IGFuZCBjaGFyZ2VyCj4gPiB1c2FnZS4gTmV3IGRldmljZS10cmVlIHByb3Bl
-cnRpZXMgaGF2ZSBiZWVuIGFkZGVkLgo+ID4gCj4gPiAtIHJvY2tjaGlwLHJlc2lzdG9yLXNlbnNl
-LW1pY3JvLW9obXM6IFRoZSB2YWx1ZSBpbiBtaWNyb29obXMgb2YgdGhlCj4gPiAJCQkJICAgICAg
-c2FtcGxlIHJlc2lzdG9yLgo+ID4gLSByb2NrY2hpcCxzbGVlcC1lbnRlci1jdXJyZW50LW1pY3Jv
-YW1wOiBUaGUgdmFsdWUgaW4gbWljcm9hbXBzIG9mIHRoZQo+ID4gCQkJCQkgc2xlZXAgZW50ZXIg
-Y3VycmVudC4KPiA+IC0gcm9ja2NoaXAsc2xlZXAtZmlsdGVyLWN1cnJlbnQ6IFRoZSB2YWx1ZSBp
-biBtaWNyb2FtcHMgb2YgdGhlIHNsZWVwCj4gPiAJCQkJIGZpbHRlciBjdXJyZW50Lgo+ID4gCj4g
-PiBTaWduZWQtb2ZmLWJ5OiBDaHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgo+
-ID4gU2lnbmVkLW9mZi1ieTogTWF5YSBNYXR1c3pjenlrIDxtYWNjcmFmdDEyM21jQGdtYWlsLmNv
-bT4KPiA+IC0tLQo+ID4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9yazgwOC50eHQgICAg
-ICAgICB8IDM2ICsrKysrKysrKysrKysrKysrKy0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMzUgaW5z
-ZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+IAo+IEtpbmQgb2YgYSBiaWcgY2hhbmdlIHdpdGhv
-dXQgY29udmVydGluZyB0aGlzIGJpbmRpbmcgdG8gRFQgc2NoZW1hIGZpcnN0LiAKCkkgY2FuIHRy
-eSB0byBjb252ZXJ0IHRoZSBiaW5kaW5ncyB0byB5YW1sLCBidXQgSSBtaWdodCBuZWVkIHNvbWUg
-aGVscC4KSXTigJlzIGEgcHJldHR5IGJpZyBmaWxlIGFuZCB0aGVyZeKAmXMgbG90cyBvZiBydWxl
-cyBmb3IgZWFjaCBvZiB0aGUKZGlmZmVyZW50IGNvbXBhdGlibGVzLiBEbyB5b3Uga25vdyBvZiBh
-IGdvb2QgZXhhbXBsZSB3aGVyZSBJIGNhbiBmaW5kCm9uZSB3aXRoIGNvbXBhdGlibGUgc3BlY2lm
-aWMgcnVsZXM/IEFsbCBvZiB0aGUgbWZkIG9uZXMgSSBsb29rZWQgYXQKZG9u4oCZdCBzZWVtIHRv
-IGhhdmUgbXVjaCAoYW5kIG15IGF0dGVtcHQgaXMgdHJpZ2dlcmluZyB5YW1sbGludCBhYm91dApk
-dXBsaWNhdGUgaWYvdGhlbiBrZXlzKS4KClRoYW5rIHlvdS4KCj4gCj4gPiAKPiA+IGRpZmYgLS1n
-aXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JrODA4LnR4dCBiL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcms4MDgudHh0Cj4gPiBpbmRleCAy
-M2ExN2E2NjYzZWMuLjg5YjlmYTdlMTBiNSAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvcms4MDgudHh0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3JrODA4LnR4dAo+ID4gQEAgLTcwLDEzICs3MCw0MCBA
-QCBPcHRpb25hbCBSSzgxNyBwcm9wZXJ0aWVzOgo+ID4gIAo+ID4gIC0gdmNjOC1zdXBwbHk6ICBU
-aGUgaW5wdXQgc3VwcGx5IGZvciBCT09TVAo+ID4gIC0gdmNjOS1zdXBwbHk6ICBUaGUgaW5wdXQg
-c3VwcGx5IGZvciBPVEdfU1dJVENICj4gPiArCj4gPiAgLSBjb2RlYzoJVGhlIGNoaWxkIG5vZGUg
-Zm9yIHRoZSBjb2RlYyB0byBob2xkIGFkZGl0aW9uYWwgcHJvcGVydGllcy4KPiA+ICAJCUlmIG5v
-IGFkZGl0aW9uYWwgcHJvcGVydGllcyBhcmUgcmVxdWlyZWQgZm9yIHRoZSBjb2RlYywgdGhpcwo+
-ID4gIAkJbm9kZSBjYW4gYmUgb21pdHRlZC4KPiA+IC0KPiAKPiBVbnJlbGF0ZWQgd2hpdGVzcGFj
-ZSBjaGFuZ2VzLgoKSSB0aG91Z2h0IHRoZSB3aGl0ZXNwYWNlIGhlbHBlZCBzZXBlcmF0ZSB0aGUg
-c3VwcGxpZXMgZnJvbSB0aGUgY29kZWMsCmFuZCBkaWQgdGhlIHNhbWUgdGhpbmcgd2l0aCB3aGl0
-ZXNwYWNlIHRvIHNlcGVyYXRlIHRoZSBiYXR0ZXJ5IGZyb20KdGhlIGNvZGVjLiBJIGNhbiBjaGFu
-Z2UgaXQgYmFjayBpZiBuZWVkIGJlLgoKPiAKPiA+ICAtIHJvY2tjaGlwLG1pYy1pbi1kaWZmZXJl
-bnRpYWw6IFRlbGxpbmcgaWYgdGhlIG1pY3JvcGhvbmUgdXNlcyBkaWZmZXJlbnRpYWwKPiA+ICAJ
-CQkJbW9kZS4gU2hvdWxkIGJlIHVuZGVyIHRoZSBjb2RlYyBjaGlsZCBub2RlLgo+ID4gIAo+ID4g
-Ky0gYmF0dGVyeToJVGhlIGNoaWxkIG5vZGUgZm9yIHRoZSBjaGFyZ2VyIHRvIGhvbGQgYWRkaXRp
-b25hbCBwcm9wZXJ0aWVzLgo+ID4gKwkJSWYgYSBiYXR0ZXJ5IGlzIG5vdCBpbiB1c2UsIHRoaXMg
-bm9kZSBjYW4gYmUgb21pdHRlZC4gSWYgYQo+ID4gKwkJYmF0dGVyeSBub2RlIGlzIHVzZWQsIHRo
-ZSBmb2xsb3dpbmcgdmFsdWVzIGFyZSByZXF1aXJlZDoKPiA+ICsJCXJvY2tjaGlwLHJlc2lzdG9y
-LXNlbnNlLCByb2NrY2hpcCxzbGVlcC1lbnRlci1jdXJyZW50LAo+ID4gKwkJcm9ja2NoaXAsc2xl
-ZXAtZmlsdGVyLWN1cnJlbnQsIGFuZCBhIHBoYW5kbGUgdG8gYQo+IAo+IFByb3BlcnR5IG5hbWVz
-IGFyZSBvdXQgb2YgZGF0ZS4uLgo+IAoKR29vZCBjYXRjaCwgc29ycnkgYWJvdXQgdGhhdC4KCj4g
-PiArCQltb25pdG9yZWQtYmF0dGVyeSBub2RlIHRoYXQgY29udGFpbnMgYSB2YWxpZCB2YWx1ZSBm
-b3IKPiA+ICsJCWNoYXJnZS1mdWxsLWRlc2lnbi1taWNyb2FtcC1ob3VycywKPiA+ICsJCWNoYXJn
-ZS10ZXJtLWN1cnJlbnQtbWljcm9hbXAsCj4gPiArCQljb25zdGFudC1jaGFyZ2UtY3VycmVudC1t
-YXgtbWljcm9hbXAsCj4gPiArCQljb25zdGFudC1jaGFyZ2Utdm9sdGFnZS1tYXgtbWljcm92b2x0
-LAo+ID4gKwkJdm9sdGFnZS1tYXgtZGVzaWduLW1pY3Jvdm9sdCwgdm9sdGFnZS1taW4tZGVzaWdu
-LW1pY3Jvdm9sdCwKPiA+ICsJCWFuZCBhIHZhbGlkIG9jdi1jYXBhY2l0eSB0YWJsZS4KPiAKPiBQ
-bGVhc2UgbGlzdCB0aGVzZSAxIHBlciBsaW5lIGFuZCBtYWtlIGl0IGNsZWFyZXIgdGhpcyBpcyB0
-aGUgbGlzdCBvZiAKPiBwcm9wZXJ0aWVzIGZvciB0aGUgYmF0dGVyeSBub2RlLgoKV2lsbCBkbywg
-dGhhbmsgeW91LgoKPiAKPiA+ICstIHJvY2tjaGlwLHJlc2lzdG9yLXNlbnNlLW1pY3JvLW9obXM6
-IFZhbHVlIGluIG1pY3Jvb2htcyBvZiB0aGUgYmF0dGVyeSBzZW5zZQo+ID4gKwkJCQkgICAgICBy
-ZXNpc3Rvci4gVGhlIFBNSUMgb25seSBzdXBwb3J0cyB2YWx1ZXMKPiA+ICsJCQkJICAgICAgb2Yg
-ZWl0aGVyIDEwMDAwIG9yIDIwMDAwLiBUaGlzIHZhbHVlIGlzCj4gPiArCQkJCSAgICAgIHVzZWQg
-YnkgdGhlIGRyaXZlciB0byBzZXQgdGhlIGNvcnJlY3QKPiA+ICsJCQkJICAgICAgZGl2aXNvciB2
-YWx1ZSB0byB0cmFuc2xhdGUgQURDIHJlYWRpbmdzCj4gPiArCQkJCSAgICAgIGludG8gdGhlIHBy
-b3BlciB1bml0cyBvZiBtZWFzdXJlLgo+ID4gKy0gcm9ja2NoaXAsc2xlZXAtZW50ZXItY3VycmVu
-dC1taWNyb2FtcDogVmFsdWUgaW4gbWljcm9hbXBzIG9mIHRoZSBzbGVlcCBlbnRlcgo+ID4gKwkJ
-CQkJIGN1cnJlbnQgZm9yIHRoZSBjaGFyZ2VyLiBWYWx1ZSBpcyB1c2VkCj4gPiArCQkJCQkgYnkg
-dGhlIGRyaXZlciB0byBjYWxpYnJhdGUgdGhlIHJlbGF4Cj4gPiArCQkJCQkgdGhyZXNob2xkLgo+
-ID4gKy0gcm9ja2NoaXAsc2xlZXAtZmlsdGVyLWN1cnJlbnQtbWljcm9hbXA6IFZhbHVlIGluIG1p
-Y3JvYW1wcyBvZiB0aGUgc2xlZXAKPiA+ICsJCQkJCSAgZmlsdGVyIGN1cnJlbnQgZm9yIHRoZSBj
-aGFyZ2VyLgo+ID4gKwkJCQkJICBWYWx1ZSBpcyB1c2VkIGJ5IHRoZSBkcml2ZXIgdG8gZGVyaXZl
-Cj4gPiArCQkJCQkgIHRoZSBzbGVlcCBzYW1wbGUgY3VycmVudC4KPiA+ICsKPiA+ICBPcHRpb25h
-bCBSSzgxOCBwcm9wZXJ0aWVzOgo+ID4gIC0gdmNjMS1zdXBwbHk6ICBUaGUgaW5wdXQgc3VwcGx5
-IGZvciBEQ0RDX1JFRzEKPiA+ICAtIHZjYzItc3VwcGx5OiAgVGhlIGlucHV0IHN1cHBseSBmb3Ig
-RENEQ19SRUcyCj4gPiBAQCAtNDU5LDYgKzQ4NiwxMyBAQCBFeGFtcGxlOgo+ID4gIAkJCX07Cj4g
-PiAgCQl9Owo+ID4gIAo+ID4gKwkJcms4MTdfYmF0dGVyeTogYmF0dGVyeSB7Cj4gPiArCQkJbW9u
-aXRvcmVkLWJhdHRlcnkgPSA8JmJhdHRlcnlfY2VsbD47Cj4gPiArCQkJcm9ja2NoaXAscmVzaXN0
-b3Itc2Vuc2UtbWljcm8tb2htcyA9IDwxMDAwMD47Cj4gPiArCQkJcm9ja2NoaXAsc2xlZXAtZW50
-ZXItY3VycmVudC1taWNyb2FtcCA9IDwzMDAwMDA+Owo+ID4gKwkJCXJvY2tjaGlwLHNsZWVwLWZp
-bHRlci1jdXJyZW50LW1pY3JvYW1wID0gPDEwMDAwMD47Cj4gPiArCQl9Owo+ID4gKwo+ID4gIAkJ
-cms4MTdfY29kZWM6IGNvZGVjIHsKPiA+ICAJCQlyb2NrY2hpcCxtaWMtaW4tZGlmZmVyZW50aWFs
-Owo+ID4gIAkJfTsKPiA+IC0tIAo+ID4gMi4yNS4xCj4gPiAKPiA+IAoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Tue, Aug 17, 2021 at 12:11:17PM +0200, Nicolas Frattaroli wrote:
+> This adds the YAML bindings for the Rockchip I2S/TDM audio driver.
+> 
+> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> ---
+>  .../bindings/sound/rockchip,i2s-tdm.yaml      | 221 ++++++++++++++++++
+>  include/dt-bindings/sound/rockchip,i2s-tdm.h  |   9 +
+>  2 files changed, 230 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
+>  create mode 100644 include/dt-bindings/sound/rockchip,i2s-tdm.h
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml b/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
+> new file mode 100644
+> index 000000000000..c3022620b47f
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
+> @@ -0,0 +1,221 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/rockchip,i2s-tdm.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip I2S/TDM Controller
+> +
+> +description:
+> +  The Rockchip I2S/TDM Controller is a Time Division Multiplexed
+> +  audio interface found in various Rockchip SoCs, allowing up
+> +  to 8 channels of audio over a serial interface.
+> +
+> +maintainers:
+> +  - Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,px30-i2s-tdm
+> +      - rockchip,rk1808-i2s-tdm
+> +      - rockchip,rk3308-i2s-tdm
+> +      - rockchip,rk3568-i2s-tdm
+> +      - rockchip,rv1126-i2s-tdm
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  dmas:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  dma-names:
+> +    oneOf:
+> +      - const: rx
+> +      - items:
+> +          - const: tx
+> +          - const: rx
+
+If 'rx' is always present, then make it first:
+
+minItems: 1
+items:
+  - const: rx
+  - const: tx
+
+> +
+> +  clocks:
+> +    items:
+> +      - description: clock for TX
+> +      - description: clock for RX
+> +      - description: clock for I2S bus
+> +
+> +  clock-names:
+> +    items:
+> +      - const: mclk_tx
+> +      - const: mclk_rx
+> +      - const: hclk
+> +
+> +  rockchip,frame-width:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    default: 64
+> +    minimum: 32
+> +    maximum: 512
+> +    description:
+> +      Width of a frame, usually slot width multiplied by number of slots.
+> +      Must be even.
+> +
+> +  resets:
+> +    items:
+> +      - description: reset for TX
+> +      - description: reset for RX
+> +
+> +  reset-names:
+> +    items:
+> +      - const: tx-m
+> +      - const: rx-m
+> +
+> +  rockchip,cru:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of the cru.
+> +      Required if both playback and capture are used, i.e. if rockchip,clk-trcm
+> +      is 0.
+> +
+> +  rockchip,grf:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      The phandle of the syscon node for the GRF register.
+> +
+> +  rockchip,mclk-calibrate:
+> +    description:
+> +      Enable mclk source calibration.
+> +    type: boolean
+> +
+> +  rockchip,trcm-sync:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Which lrck/bclk clocks each direction will sync to. You should use the
+> +      constants in <dt-bindings/sound/rockchip,i2s-tdm.h>
+> +    oneOf:
+> +      - const: 0
+> +        description:
+> +          RK_TRCM_TXRX. Use both the TX and the RX clock for TX and RX.
+> +      - const: 1
+> +        description:
+> +          RK_TRCM_TX. Use only the TX clock for TX and RX.
+> +      - const: 2
+> +        description:
+> +          RK_TRCM_RX. Use only the RX clock for TX and RX.
+> +
+> +  "#sound-dai-cells":
+> +    const: 0
+> +
+> +  rockchip,no-dmaengine:
+> +    description:
+> +      If present, driver will not register a pcm dmaengine, only the dai.
+> +      If the dai is part of multi-dais, the property should be present.
+> +    type: boolean
+> +
+> +  rockchip,playback-only:
+> +    description: Specify that the controller only has playback capability.
+> +    type: boolean
+> +
+> +  rockchip,capture-only:
+> +    description: Specify that the controller only has capture capability.
+> +    type: boolean
+> +
+> +  rockchip,i2s-rx-route:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+
+A single uint32 or
+
+> +    description:
+> +      Defines the mapping of I2S RX sdis to I2S data bus lines.
+> +      By default, they are mapped one-to-one.
+> +    items:
+> +      - description: which sdi to connect to data line 0
+> +      - description: which sdi to connect to data line 1
+> +      - description: which sdi to connect to data line 2
+> +      - description: which sdi to connect to data line 3
+
+An array of 4 uint32s?
+
+> +
+> +  rockchip,i2s-tx-route:
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    description:
+> +      Defines the mapping of I2S TX sdos to I2S data bus lines.
+> +      By default, they are mapped one-to-one.
+> +    items:
+> +      - description: which sdo to connect to data line 0
+> +      - description: which sdo to connect to data line 1
+> +      - description: which sdo to connect to data line 2
+> +      - description: which sdo to connect to data line 3
+> +
+> +  rockchip,tdm-fsync-half-frame:
+> +    description: Whether to use half frame fsync.
+> +    type: boolean
+> +
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - dmas
+> +  - dma-names
+> +  - clocks
+> +  - clock-names
+> +  - resets
+> +  - reset-names
+> +  - rockchip,grf
+> +  - "#sound-dai-cells"
+> +  - rockchip,trcm-sync
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        rockchip,clk-trcm:
+
+This property doesn't exist.
+
+> +          contains:
+> +            enum: [0]
+> +    then:
+> +      required:
+> +        - rockchip,cru
+> +
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3568-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+> +    #include <dt-bindings/sound/rockchip,i2s-tdm.h>
+> +
+> +
+> +    foo {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +        i2s@fe410000 {
+> +            compatible = "rockchip,rk3568-i2s-tdm";
+> +            reg = <0x0 0xfe410000 0x0 0x1000>;
+> +            interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+> +            clocks = <&cru MCLK_I2S1_8CH_TX>, <&cru MCLK_I2S1_8CH_RX>,
+> +                     <&cru HCLK_I2S1_8CH>;
+> +            clock-names = "mclk_tx", "mclk_rx", "hclk";
+> +            dmas = <&dmac1 2>, <&dmac1 3>;
+> +            dma-names = "tx", "rx";
+> +            resets = <&cru SRST_M_I2S1_8CH_TX>, <&cru SRST_M_I2S1_8CH_RX>;
+> +            reset-names = "tx-m", "rx-m";
+> +            rockchip,trcm-sync = <RK_TRCM_TX>;
+> +            rockchip,cru = <&cru>;
+> +            rockchip,grf = <&grf>;
+> +            #sound-dai-cells = <0>;
+> +            pinctrl-names = "default";
+> +            pinctrl-0 =
+> +                <&i2s1m0_sclktx
+> +                &i2s1m0_sclkrx
+> +                &i2s1m0_lrcktx
+> +                &i2s1m0_lrckrx
+> +                &i2s1m0_sdi0
+> +                &i2s1m0_sdi1
+> +                &i2s1m0_sdi2
+> +                &i2s1m0_sdi3
+> +                &i2s1m0_sdo0
+> +                &i2s1m0_sdo1
+> +                &i2s1m0_sdo2
+> +                &i2s1m0_sdo3>;
+> +            status = "disabled";
+
+Why is the example disabled?
+
+> +        };
+> +    };
+> diff --git a/include/dt-bindings/sound/rockchip,i2s-tdm.h b/include/dt-bindings/sound/rockchip,i2s-tdm.h
+> new file mode 100644
+> index 000000000000..32494d64cf33
+> --- /dev/null
+> +++ b/include/dt-bindings/sound/rockchip,i2s-tdm.h
+> @@ -0,0 +1,9 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#ifndef _DT_BINDINGS_ROCKCHIP_I2S_TDM_H
+> +#define _DT_BINDINGS_ROCKCHIP_I2S_TDM_H
+> +
+> +#define RK_TRCM_TXRX 0
+> +#define RK_TRCM_TX 1
+> +#define RK_TRCM_RX 2
+> +
+> +#endif /* _DT_BINDINGS_ROCKCHIP_I2S_TDM_H */
+> -- 
+> 2.32.0
+> 
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
