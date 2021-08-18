@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CF92C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F7EBC4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3944F61051
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3944F61051
+	by mail.kernel.org (Postfix) with ESMTPS id F1A8D61051
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Aug 2021 12:42:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F1A8D61051
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4/wp+xKrj/WdmQ5kTEMxHRSTgvIanp8Bl2Ds3KAVYtA=; b=vHBkF/FgiuA2un
-	jtF5jDWAyv+20/eNBXnN/sBisFi/ON601+ykS+pC2g5unU51oPcWzpIWxRkc2oG4RniGvOhd1Nrhi
-	VFRJHl7BaiMqAzVixrnRj5JOydcpnG5KmAzLAR42i3TLdDfTN+EpSlQjwDw2maO7mlNXNlOIVGk22
-	2EK0vn2qMmmwgBzZeA+DRH1hWUuRwcJy1o1N+/aEwkaUp1IkPjBM08h5LGpGpb97ng6JWx1NVsAMe
-	97Qk2BI3efYgK6puma67cUiXu0bUk0yVNxnzjUpULGwoR1FhGOy0quSZQ3xhmKoRjGufBf15qLaR8
-	ZTXKN4A078/xMrKFadJg==;
+	List-Owner; bh=tEjNWX9/wgFG3DWqrhT3o0ImUxLGjGZul/iMcutwwxU=; b=pxEGWGMH3oY+c+
+	LVvjCB8p1l6L8Fip6FEfGS1jfB25WK9y5EmG5oE6OYWPQsoDVJwzIt83uJxcdCz/CNp+k/FUDkWXr
+	Od8WAG1oTBrolrF57U3axgdcm4nGPuANf/GeOWz1WJD/DMvkti+W9nXYujx4hYctpjobZEVhARk+a
+	eiry5NMydDkDxKyCtIUDlR6pkeYywmyYKiGjVj1c2h9mMqQufxkCmoq1c75peAs+3ekaxwSSPorXQ
+	+DGDO5c7HcQv1g9PU961fiMcP7eXGZGyrYWXoNiXSR0sE1c/jW1BbO/HFXY1+KaXmJ7VlsZeVK0SU
+	11O13LXRnVzCoiD5ttGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGKtO-005XKg-FT; Wed, 18 Aug 2021 12:42:02 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1mGKtc-005XRP-V7; Wed, 18 Aug 2021 12:42:17 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGKsl-005X7R-7s; Wed, 18 Aug 2021 12:41:25 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id
- a201-20020a1c7fd2000000b002e6d33447f9so3488776wmd.0; 
- Wed, 18 Aug 2021 05:41:22 -0700 (PDT)
+ id 1mGKsq-005X97-7X; Wed, 18 Aug 2021 12:41:29 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id f10so1550516wml.2;
+ Wed, 18 Aug 2021 05:41:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
- b=c1GxZdd+2+kkeJZ4syYgj51Zg98RTZjLY/Z4IwPBEdIzTt49XtuWKeCb1bcCrVU4oN
- Izk9NWmOwP7kkaXp/2Mn53YkQfR/7fHJVcp92ZTDesjLkyO/DRCwZPWJ/yByOLYJPR1+
- zm3svX0pIC64LD+lGZ/dry6ECz8aimrYj58KwAVIIrG/NcA68jPJnvyNefOs93CZBhJV
- XRtCybrx9SAedtP7wZC98ZPPZw/S3G7fWok4s3NPfPyIVxnVtcL1R8XkAMXU6YiC+k1r
- Cng2mo0cabsYhxGtZHOCTmTKdD8C4WsukMjHHdCZOaziFfCFM3uJVRmet9G6TQB/MB6H
- FsZQ==
+ bh=REhMgVT+6ZjXEXXRs/yP5w88X232Fgpi2cGGVzDaXxE=;
+ b=AdNRdIv77OE3YAdMkK2k6amx6PN8Ganr5o8QZM+19FIK6391iIU8yVSNCBUdp527hp
+ 4iGc0rBpFLJg8fw+C62V7NW1pxlL7O4a3r0TEqppoBxEPD4Pu5Z6ytnAGbol2UnsI/Wr
+ vS5q54Zp69IB/88rn0zq8NOTbDUmFN1ns0oe5daUrJXIpKc0qDWOjrq+xCytz3le/3eX
+ tiSOZRWS0maQC6YR/CfoWE1ytIJ2nnpsv/faO4q9BzpzeZ1wjTPdkwZB4Amj5Akc6r4O
+ u5EpOe5I2ibte9oHuOPMCLKZ1+WBpDBGszOhkO/5x4yr2EJi6repnf0SjYsRMQI6tHuJ
+ AlJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
- b=IBq4JxmzG/Wx8oZzzbmDXl0mG2oSMlN7jots3eMMV7KEk7I18mqlgI1PACQb8oRiaU
- D/khP75gIIKPPwyY+wDsmL4emkuwQ5NTbx4VeK42jDlzZuaJCOWPyzpt0TQntZBAuHzT
- sJF84CT/U9q2+l0FcZDMZnx93xbEhy8cYD84LaGA/hzpaYAhdm/2WD3Loe3Vy75X/ynG
- IQRk/9Iu35d/yzaoyQXyFLqKP4/a4n1oV4LlVdsdkUykVzru0KwsLRC5QNSZ5jch7Hco
- FHReob5OZC68+9GifG9m29LMnIaTaZN7dTV1sOzGly3L22UfOcbtxf6MXK+YRfSKzp3Q
- dxbQ==
-X-Gm-Message-State: AOAM531aT6+elyFcsgkmKsitRTUdBW7f4UQaq3MPduhtEcm04jd4/Own
- LoZz7USLWt8rSoBJ1U+Eg+I=
-X-Google-Smtp-Source: ABdhPJyQ1VzwCaTRFpydCdrpCWhltvqmLieDWRpbd4w6l19jVmVkcZ/Q2gsXj0wLcwh21T24m+Fr8A==
-X-Received: by 2002:a1c:1dc4:: with SMTP id d187mr8462745wmd.1.1629290481835; 
- Wed, 18 Aug 2021 05:41:21 -0700 (PDT)
+ bh=REhMgVT+6ZjXEXXRs/yP5w88X232Fgpi2cGGVzDaXxE=;
+ b=V0ulJKQ33xteVDGbb4hih0byPCTvd+81PTtxEjpdeFJzH5OkKyvc5FKzpxnVO6VC0k
+ MxOCfsVTfziHe90p5+zDgrLsxK1MTjGg27w9r11AA4eg8D9s3Uep5ZFqdnnALg3U7Gzb
+ 19HDwdb0IMmaoxLmKvaArKiFH+kM5bu2SbR2mPfkXHqEcRjU+xklKqUyIgBWUW43WZci
+ zJPD4eA3sWu3tqV24o8gRU8FIpSctZAYDRYiFxLorT2evLDgy+J4Uv5dYXNoti020rx3
+ PlGfZBf75sv8Q6LxYyUPfpiK8KC/KvIFsUoLmFJew1rAph74f/FwQM67sAmXV09tzMF3
+ gkmg==
+X-Gm-Message-State: AOAM531IQLg8dDwi+/a4MOVxlnCYshyu0LIJQnJEJHU/WY9f+MFTtrcj
+ lJRwil/M9Rqs6Oo/6/+7Y6c=
+X-Google-Smtp-Source: ABdhPJyLjuqtTOZTR24aWisJ8tiRhVF/w2xm59RHeKTRwyZmJd/LAAzH/sJIPkjeU3aMqeJSdVDmGQ==
+X-Received: by 2002:a05:600c:2147:: with SMTP id
+ v7mr8099425wml.124.1629290486739; 
+ Wed, 18 Aug 2021 05:41:26 -0700 (PDT)
 Received: from localhost.localdomain (arl-84-90-178-246.netvisao.pt.
  [84.90.178.246])
- by smtp.gmail.com with ESMTPSA id a11sm5720454wrq.6.2021.08.18.05.41.20
+ by smtp.gmail.com with ESMTPSA id a11sm5720454wrq.6.2021.08.18.05.41.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Aug 2021 05:41:21 -0700 (PDT)
+ Wed, 18 Aug 2021 05:41:26 -0700 (PDT)
 From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>,
@@ -83,16 +83,16 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
  Lukas Bulwahn <lukas.bulwahn@gmail.com>
-Subject: [PATCH 2/5] drm: amdgpu: remove obsolete reference to config CHASH
-Date: Wed, 18 Aug 2021 14:41:11 +0200
-Message-Id: <20210818124114.28545-3-lukas.bulwahn@gmail.com>
+Subject: [PATCH 3/5] drm: v3d: correct reference to config ARCH_BRCMSTB
+Date: Wed, 18 Aug 2021 14:41:12 +0200
+Message-Id: <20210818124114.28545-4-lukas.bulwahn@gmail.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20210818124114.28545-1-lukas.bulwahn@gmail.com>
 References: <20210818124114.28545-1-lukas.bulwahn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_054123_343181_397ACFCD 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20210818_054128_321187_BD0094EA 
+X-CRM114-Status: GOOD (  13.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,31 +110,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 04ed8459f334 ("drm/amdgpu: remove chash") removes the chash
-architecture and its corresponding config CHASH.
+Commit 57692c94dcbe ("drm/v3d: Introduce a new DRM driver for Broadcom V3D
+V3.x+") adds the config DRM_V3D, which depends on "ARCH_BCMSTB".
 
-There is still a reference to CHASH in the config DRM_AMDGPU in
-./drivers/gpu/drm/Kconfig.
+Although, a bit confusing: all Broadcom architectures in
+./arch/arm/mach-bcm/Kconfig have the prefix "ARCH_BCM", except for
+ARCH_BRCMSTB, i.e., the config for Broadcom BCM7XXX based boards.
 
-Remove this obsolete reference to config CHASH.
+So, correct the reference ARCH_BCMSTB to the intended ARCH_BRCMSTB.
 
 Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 ---
- drivers/gpu/drm/Kconfig | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/v3d/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
-index f3bc90baca61..8fc40317f2b7 100644
---- a/drivers/gpu/drm/Kconfig
-+++ b/drivers/gpu/drm/Kconfig
-@@ -257,7 +257,6 @@ config DRM_AMDGPU
- 	select HWMON
- 	select BACKLIGHT_CLASS_DEVICE
- 	select INTERVAL_TREE
--	select CHASH
- 	help
- 	  Choose this option if you have a recent AMD Radeon graphics card.
- 
+diff --git a/drivers/gpu/drm/v3d/Kconfig b/drivers/gpu/drm/v3d/Kconfig
+index 9a5c44606337..e973ec487484 100644
+--- a/drivers/gpu/drm/v3d/Kconfig
++++ b/drivers/gpu/drm/v3d/Kconfig
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ config DRM_V3D
+ 	tristate "Broadcom V3D 3.x and newer"
+-	depends on ARCH_BCM || ARCH_BCMSTB || COMPILE_TEST
++	depends on ARCH_BCM || ARCH_BRCMSTB || COMPILE_TEST
+ 	depends on DRM
+ 	depends on COMMON_CLK
+ 	depends on MMU
 -- 
 2.26.2
 
