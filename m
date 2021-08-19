@@ -2,65 +2,90 @@ Return-Path: <SRS0=Qwjt=NK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73093C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A45CFC4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:34:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3243661152
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:09:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3243661152
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 65B4E6113B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:34:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 65B4E6113B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=moUwYtD5D9/h70iN5yLgKzWyoeaAIPYlFqCFNsr4sGg=; b=uLbbqSLV+D55OHO4RdkbyMHwCB
-	5/m4QmpA4kez8BDVXwEFC/7wW/mVUgZdvc723Oeag9gE87QbZe6U165YdhxIvIvztaRqGzdSL/7iI
-	f2e0/zn9autwyqXICXF5wSk+xwz7y+gOyeRJr2kNRyhNPJxa74Ike/TsOP8+8RVq0nW9J9U0P81e/
-	DcoXUimWmjx04haz/2E7KxQMxjnF1R9gU/PQJQ2XsXoAjorgjR0+7Ig/wEDs9ciNuLdDO70Nd8pud
-	I7kwgqXl7CnDKtFzH7d9bnB3Bg4Zvp0k7fIfNE0MDymMX469HrGGymp1iSSusfQW5xQ77v0yPiOav
-	aJQ97oBQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pOInmZ0mqlULAl4Xt0adOPMXNm+NlV6wDaOc4tK+Cbs=; b=Zzh1dL4k4F6KKS
+	oz0SwrSe+v4V0bzO+djw1HEyAM/sm07+yAFyjf/L+bV1jiebYT2y0CL93M8Vu+/kP7cYulJpoouIY
+	5SHuiqSz6SRlayM0iWkqf8+yrU5DrpMcMloxjix6crwQqCR4+0HjIrKKWQBeH9rr6j+xMaf6du8pS
+	LTJ/VWuFapCVm8wkxjgp1UgX8jtBPRautOVBblyMAoScdVUH16bVZTvBJaI4yyiNaLe32CldzCf3d
+	wV272cQIqq3ikhYOjrCMqerduqvlm7Z8hLu1yIe0K5bIwMQ5b37+QycOHHE7th/+QoO+kwwQgzSOY
+	hc026ykbDhEgJ17IoEgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGgqz-008For-DT; Thu, 19 Aug 2021 12:09:01 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGgqk-008FnU-3X; Thu, 19 Aug 2021 12:08:50 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44D5A31B;
- Thu, 19 Aug 2021 05:08:43 -0700 (PDT)
-Received: from [10.57.36.146] (unknown [10.57.36.146])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id AC2A13F70D;
- Thu, 19 Aug 2021 05:08:41 -0700 (PDT)
-Subject: Re: [PATCH 2/4] dt-bindings: sound: add rockchip i2s-tdm binding
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210817101119.423853-1-frattaroli.nicolas@gmail.com>
- <20210817101119.423853-3-frattaroli.nicolas@gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <deb50900-fcfd-23d0-ab8a-0e64b2abb063@arm.com>
-Date: Thu, 19 Aug 2021 13:08:36 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+	id 1mGhFO-008JLV-PR; Thu, 19 Aug 2021 12:34:14 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mGhFJ-008JKb-Mv; Thu, 19 Aug 2021 12:34:13 +0000
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 17JCXtus105081;
+ Thu, 19 Aug 2021 07:33:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1629376435;
+ bh=uIdqzpeb6rsr/wPaBaqhSb1jIF6z59bQ7qEZwC/9NPk=;
+ h=From:To:CC:Subject:Date;
+ b=TMNvhldexbHQQJ2i+PQC9/mdoCg/F4vESuBTMcgWDUp7RCZFNg/qYmZhhAtVE332J
+ bcR6a60OmrV52UKcZhDeLX+XO12ut5Oak/6zZmOHjRv8xdbC4PvYAvft2vWrOJhW8T
+ Tat9cmSjeSrD6LDHPP4AjiUrh8cJvZoVUUGflIeE=
+Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
+ by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 17JCXtJa093161
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 19 Aug 2021 07:33:55 -0500
+Received: from DLEE100.ent.ti.com (157.170.170.30) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 19
+ Aug 2021 07:33:54 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE100.ent.ti.com
+ (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
+ Frontend Transport; Thu, 19 Aug 2021 07:33:54 -0500
+Received: from a0393678-ssd.dal.design.ti.com (ileax41-snat.itg.ti.com
+ [10.172.224.153])
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 17JCXlZO035715;
+ Thu, 19 Aug 2021 07:33:48 -0500
+From: Kishon Vijay Abraham I <kishon@ti.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>, Rob Herring
+ <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Tom Joseph
+ <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
+ <gustavo.pimentel@synopsys.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
+ <shawn.lin@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>, <linux-pci@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
+ <linux-rockchip@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, Kishon Vijay Abraham I
+ <kishon@ti.com>
+Subject: [PATCH v9 0/8] Add SR-IOV support in PCIe Endpoint Core
+Date: Thu, 19 Aug 2021 18:03:35 +0530
+Message-ID: <20210819123343.1951-1-kishon@ti.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <20210817101119.423853-3-frattaroli.nicolas@gmail.com>
-Content-Language: en-GB
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_050846_302248_CB645E3B 
-X-CRM114-Status: GOOD (  33.89  )
+X-CRM114-CacheID: sfid-20210819_053409_930093_A8E2E352 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,294 +98,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2021-08-17 11:11, Nicolas Frattaroli wrote:
-> This adds the YAML bindings for the Rockchip I2S/TDM audio driver.
-> 
-> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> ---
->   .../bindings/sound/rockchip,i2s-tdm.yaml      | 221 ++++++++++++++++++
->   include/dt-bindings/sound/rockchip,i2s-tdm.h  |   9 +
->   2 files changed, 230 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
->   create mode 100644 include/dt-bindings/sound/rockchip,i2s-tdm.h
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml b/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
-> new file mode 100644
-> index 000000000000..c3022620b47f
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
-> @@ -0,0 +1,221 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/rockchip,i2s-tdm.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip I2S/TDM Controller
-> +
-> +description:
-> +  The Rockchip I2S/TDM Controller is a Time Division Multiplexed
-> +  audio interface found in various Rockchip SoCs, allowing up
-> +  to 8 channels of audio over a serial interface.
-> +
-> +maintainers:
-> +  - Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,px30-i2s-tdm
-> +      - rockchip,rk1808-i2s-tdm
-> +      - rockchip,rk3308-i2s-tdm
-> +      - rockchip,rk3568-i2s-tdm
-> +      - rockchip,rv1126-i2s-tdm
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  dmas:
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  dma-names:
-> +    oneOf:
-> +      - const: rx
-> +      - items:
-> +          - const: tx
-> +          - const: rx
+Patch series
+*) Adds support to add virtual functions to enable endpoint controller
+   which supports SR-IOV capability
+*) Add support in Cadence endpoint driver to configure virtual functions
+*) Enable pci_endpoint_test driver to create pci_device for virtual
+   functions
 
-It seems a bit weird for Rx DMA to be mandatory when other things imply 
-that some interfaces may only be used for Tx.
+v1 of the patch series can be found at [1]
+v2 of the patch series can be found at [2]
+v3 of the patch series can be found at [3]
+v4 of the patch series can be found at [4]
+v5 of the patch series can be found at [5]
+v6 of the patch series can be found at [6]
+v7 of the patch series can be found at [7]
+v8 of the patch series can be found at [8]
 
-> +
-> +  clocks:
-> +    items:
-> +      - description: clock for TX
-> +      - description: clock for RX
-> +      - description: clock for I2S bus
+Here both physical functions and virtual functions use the same
+pci_endpoint_test driver and existing pcitest utility can be used
+to test virtual functions as well.
 
-Nit: "hclk" normally means the AHB clock driving the bus interface which 
-connects to the rest of the SoC (and often doubling up as the core clock 
-for the IP block itself) - AIUI the Tx and Rx represent the I2S bus(es).
+Changes from v8:
+1) Include pci-epf.h in pcie-cadence.h and use BAR_4 instead of 4
+2) Get reg for configuring BAR using if..else.. for physical function
+and virtual function instead of over-writing reg for virtual function.
 
-> +
-> +  clock-names:
-> +    items:
-> +      - const: mclk_tx
-> +      - const: mclk_rx
-> +      - const: hclk
-> +
-> +  rockchip,frame-width:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    default: 64
-> +    minimum: 32
-> +    maximum: 512
-> +    description:
-> +      Width of a frame, usually slot width multiplied by number of slots.
-> +      Must be even.
-> +
-> +  resets:
-> +    items:
-> +      - description: reset for TX
-> +      - description: reset for RX
-> +
-> +  reset-names:
-> +    items:
-> +      - const: tx-m
-> +      - const: rx-m
-> +
-> +  rockchip,cru:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      The phandle of the cru.
-> +      Required if both playback and capture are used, i.e. if rockchip,clk-trcm
-> +      is 0.
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      The phandle of the syscon node for the GRF register.
-> +
-> +  rockchip,mclk-calibrate:
-> +    description:
-> +      Enable mclk source calibration.
-> +    type: boolean
-> +
-> +  rockchip,trcm-sync:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Which lrck/bclk clocks each direction will sync to. You should use the
-> +      constants in <dt-bindings/sound/rockchip,i2s-tdm.h>
-> +    oneOf:
-> +      - const: 0
-> +        description:
-> +          RK_TRCM_TXRX. Use both the TX and the RX clock for TX and RX.
-> +      - const: 1
-> +        description:
-> +          RK_TRCM_TX. Use only the TX clock for TX and RX.
-> +      - const: 2
-> +        description:
-> +          RK_TRCM_RX. Use only the RX clock for TX and RX.
+Changes from v7:
+1) Added conditional operator to consicely write code to configure BAR
+   (Added a new patch to first simplify configuring BAR for physical
+    function)
+2) Return error if virtual function number is > 1 for configuring config
+   space header
 
-I wonder if that might make sense to have boolean properties to describe 
-the latter two cases (which would effectively be mutually-exclusive), 
-rather than a magic number? Or possibly even just make the respective 
-clocks optional, if this is something which would be done per-SoC rather 
-than per-board?
+Changes from v6:
+*) Rebased to 5.14-rc4
 
-> +
-> +  "#sound-dai-cells":
-> +    const: 0
-> +
-> +  rockchip,no-dmaengine:
-> +    description:
-> +      If present, driver will not register a pcm dmaengine, only the dai.
-> +      If the dai is part of multi-dais, the property should be present.
-> +    type: boolean
+Changes from v5:
+*) Rebased to 5.13-rc1
 
-That sounds a lot more like a policy decision specific to the Linux 
-driver implementation, than something which really belongs in DT as a 
-description of the platform.
+Changes from v4:
+*) Added a fix in Cadence driver which was overwriting BAR configuration
+   of physical function.
+*) Didn't include Tom's Acked-by since Cadence driver is modified in
+   this revision.
 
-> +
-> +  rockchip,playback-only:
-> +    description: Specify that the controller only has playback capability.
-> +    type: boolean
-> +
-> +  rockchip,capture-only:
-> +    description: Specify that the controller only has capture capability.
-> +    type: boolean
+Changes from v3:
+*) Fixed Rob's comment and added his Reviewed-by as suggested by him.
 
-Could those be inferred from the compatible string, or are there cases 
-where you have multiple instances of the IP block in different 
-configurations within the same SoC? (Or if it's merely reflecting 
-whether the respective interface is actually wired up externally, could 
-that be inferred from the attached codec?)
+Changes from v2:
+*) Fixed DT binding documentation comment by Rob
+*) Fixed the error check in pci-epc-core.c
 
-Robin.
+Changes from v1:
+*) Re-based and Re-worked to latest kernel 5.10.0-rc2+ (now has generic
+   binding for EP)
 
-> +  rockchip,i2s-rx-route:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the mapping of I2S RX sdis to I2S data bus lines.
-> +      By default, they are mapped one-to-one.
-> +    items:
-> +      - description: which sdi to connect to data line 0
-> +      - description: which sdi to connect to data line 1
-> +      - description: which sdi to connect to data line 2
-> +      - description: which sdi to connect to data line 3
-> +
-> +  rockchip,i2s-tx-route:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the mapping of I2S TX sdos to I2S data bus lines.
-> +      By default, they are mapped one-to-one.
-> +    items:
-> +      - description: which sdo to connect to data line 0
-> +      - description: which sdo to connect to data line 1
-> +      - description: which sdo to connect to data line 2
-> +      - description: which sdo to connect to data line 3
-> +
-> +  rockchip,tdm-fsync-half-frame:
-> +    description: Whether to use half frame fsync.
-> +    type: boolean
-> +
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - dmas
-> +  - dma-names
-> +  - clocks
-> +  - clock-names
-> +  - resets
-> +  - reset-names
-> +  - rockchip,grf
-> +  - "#sound-dai-cells"
-> +  - rockchip,trcm-sync
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        rockchip,clk-trcm:
-> +          contains:
-> +            enum: [0]
-> +    then:
-> +      required:
-> +        - rockchip,cru
-> +
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3568-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    #include <dt-bindings/pinctrl/rockchip.h>
-> +    #include <dt-bindings/sound/rockchip,i2s-tdm.h>
-> +
-> +
-> +    foo {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +        i2s@fe410000 {
-> +            compatible = "rockchip,rk3568-i2s-tdm";
-> +            reg = <0x0 0xfe410000 0x0 0x1000>;
-> +            interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
-> +            clocks = <&cru MCLK_I2S1_8CH_TX>, <&cru MCLK_I2S1_8CH_RX>,
-> +                     <&cru HCLK_I2S1_8CH>;
-> +            clock-names = "mclk_tx", "mclk_rx", "hclk";
-> +            dmas = <&dmac1 2>, <&dmac1 3>;
-> +            dma-names = "tx", "rx";
-> +            resets = <&cru SRST_M_I2S1_8CH_TX>, <&cru SRST_M_I2S1_8CH_RX>;
-> +            reset-names = "tx-m", "rx-m";
-> +            rockchip,trcm-sync = <RK_TRCM_TX>;
-> +            rockchip,cru = <&cru>;
-> +            rockchip,grf = <&grf>;
-> +            #sound-dai-cells = <0>;
-> +            pinctrl-names = "default";
-> +            pinctrl-0 =
-> +                <&i2s1m0_sclktx
-> +                &i2s1m0_sclkrx
-> +                &i2s1m0_lrcktx
-> +                &i2s1m0_lrckrx
-> +                &i2s1m0_sdi0
-> +                &i2s1m0_sdi1
-> +                &i2s1m0_sdi2
-> +                &i2s1m0_sdi3
-> +                &i2s1m0_sdo0
-> +                &i2s1m0_sdo1
-> +                &i2s1m0_sdo2
-> +                &i2s1m0_sdo3>;
-> +            status = "disabled";
-> +        };
-> +    };
-> diff --git a/include/dt-bindings/sound/rockchip,i2s-tdm.h b/include/dt-bindings/sound/rockchip,i2s-tdm.h
-> new file mode 100644
-> index 000000000000..32494d64cf33
-> --- /dev/null
-> +++ b/include/dt-bindings/sound/rockchip,i2s-tdm.h
-> @@ -0,0 +1,9 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +#ifndef _DT_BINDINGS_ROCKCHIP_I2S_TDM_H
-> +#define _DT_BINDINGS_ROCKCHIP_I2S_TDM_H
-> +
-> +#define RK_TRCM_TXRX 0
-> +#define RK_TRCM_TX 1
-> +#define RK_TRCM_RX 2
-> +
-> +#endif /* _DT_BINDINGS_ROCKCHIP_I2S_TDM_H */
-> 
+[1] -> http://lore.kernel.org/r/20191231113534.30405-1-kishon@ti.com
+[2] -> http://lore.kernel.org/r/20201112175358.2653-1-kishon@ti.com
+[3] -> https://lore.kernel.org/r/20210305050410.9201-1-kishon@ti.com
+[4] -> http://lore.kernel.org/r/20210310160943.7606-1-kishon@ti.com
+[5] -> https://lore.kernel.org/r/20210419083401.31628-1-kishon@ti.com
+[6] -> http://lore.kernel.org/r/20210517074723.10212-1-kishon@ti.com
+[7] -> https://lore.kernel.org/r/20210803050310.27122-1-kishon@ti.com
+[8] -> https://lore.kernel.org/r/20210811064656.15399-1-kishon@ti.com
+
+Kishon Vijay Abraham I (8):
+  dt-bindings: PCI: pci-ep: Add binding to specify virtual function
+  PCI: endpoint: Add support to add virtual function in endpoint core
+  PCI: endpoint: Add support to link a physical function to a virtual
+    function
+  PCI: endpoint: Add virtual function number in pci_epc ops
+  PCI: cadence: Simplify code to get register base address for
+    configuring BAR
+  PCI: cadence: Add support to configure virtual functions
+  misc: pci_endpoint_test: Populate sriov_configure ops to configure
+    SR-IOV device
+  Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
+
+ .../PCI/endpoint/pci-endpoint-cfs.rst         |  12 +-
+ .../devicetree/bindings/pci/pci-ep.yaml       |   7 +
+ drivers/misc/pci_endpoint_test.c              |   1 +
+ .../pci/controller/cadence/pcie-cadence-ep.c  | 196 +++++++++++++-----
+ drivers/pci/controller/cadence/pcie-cadence.h |  12 ++
+ .../pci/controller/dwc/pcie-designware-ep.c   |  36 ++--
+ drivers/pci/controller/pcie-rcar-ep.c         |  19 +-
+ drivers/pci/controller/pcie-rockchip-ep.c     |  18 +-
+ drivers/pci/endpoint/functions/pci-epf-ntb.c  |  89 ++++----
+ drivers/pci/endpoint/functions/pci-epf-test.c |  74 ++++---
+ drivers/pci/endpoint/pci-ep-cfs.c             |  24 +++
+ drivers/pci/endpoint/pci-epc-core.c           | 134 ++++++++----
+ drivers/pci/endpoint/pci-epf-core.c           | 146 ++++++++++++-
+ include/linux/pci-epc.h                       |  57 ++---
+ include/linux/pci-epf.h                       |  16 +-
+ 15 files changed, 616 insertions(+), 225 deletions(-)
+
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
