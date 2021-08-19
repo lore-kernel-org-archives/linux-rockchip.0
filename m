@@ -2,72 +2,73 @@ Return-Path: <SRS0=Qwjt=NK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AF93C4320A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 11:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C11ECC4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 11:23:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11EC7610E6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 11:23:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 11EC7610E6
+	by mail.kernel.org (Postfix) with ESMTPS id 92B8D610E6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 11:23:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 92B8D610E6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/DYS9d7/ZnvnubFlxOeuw3ryU4KLMYj6gbIczuLWM3U=; b=GsVqppmXed6PmS
-	+5yOY8ZhrJgPtCQqstSLGYT9YGu4VtMIvz/levVSqUHMpFLqSea8lWiaWbS1436kFe/Mpq8tjEuUV
-	bB51urALdq+pJbPlfP42xR4z9WIHrI0UnnugDybzYAj9eZFbWNgSVfaIUpdfic9JAePo1gzUHi+3L
-	RiRmSg6Do6M9naye4VU3xbNsM2s71ZtgyoeRrnpQ8vXZoaNvgY08nCJfeQYibdMSzrTJ7S2GGAXVm
-	hE2fL3IQnUigidSXdx6hYU05BeKy0/3hPsR4kM8k2UbKMutvoyPe4mlgeSZ/pGhCA+ygqxxLBTe7q
-	u2UoGemSdMIAT1RgauqQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4/wp+xKrj/WdmQ5kTEMxHRSTgvIanp8Bl2Ds3KAVYtA=; b=OzDiqBUTVh/mB0
+	+z9880Wrd5rVvdU16cASQcGUCR0a8g4fALFNRRJBCH9I+V91ECG6AQdOcfY0SUV70+otrc5KoiwJa
+	WrNcw9qLCWRWulHyOrpqEUZEoxa9u8yxhphJ69PPaFejwhdB3+7FfpGnQIZELah9zUygsM/9SYH5V
+	vtN2r/vqVnMR7XMzZVfi/bCV7ypla8Yr9Hf2+zj7pIvPXr7dz79AzubBH39lirmg0iqYtsy8Len/a
+	N8d3E71ptE0dz3m0NJ0+QBgzlwFs4OSOtzhC9EWvKzoOz8gKiF4soVZg1RyT1zoEQ3p36gHJtLUhU
+	HPlfENwhfwDmpi7SyIhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGg8p-0089jv-QU; Thu, 19 Aug 2021 11:23:23 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1mGg93-0089od-DD; Thu, 19 Aug 2021 11:23:37 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGg8T-0089ZO-72; Thu, 19 Aug 2021 11:23:05 +0000
-Received: by mail-wr1-x435.google.com with SMTP id u16so8562987wrn.5;
- Thu, 19 Aug 2021 04:23:00 -0700 (PDT)
+ id 1mGg8Y-0089b7-55; Thu, 19 Aug 2021 11:23:07 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id r7so8646250wrs.0;
+ Thu, 19 Aug 2021 04:23:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WjTJOgCdzC+bVFkjZUwWVYccWLPGIUqJi3/PQBH4ta8=;
- b=jvA4K6Nv3O6kYGKlKKtJGIAiE+/5+sWVSiNC/50CPrzaMgOumHT1yIYGK/zVFjlC0c
- n9c3wStWlgUUjQkFM2lhvjzh2Z0JLXquPnD0J+CeOeeyeGZ+XcTI9zbK2t9QkoRjcpdK
- q/w9kUc6gnDYpQ0LosSXKiSiDPBN8VodkDmKrBof9nOpqq8T1eAd/H7OazdUclgeAnJO
- O/IFe2IyH5hZB1Yl3bHxNeqCiY/IRoDT0T5VIwRJIrpmwdXS7CGeQ5fmWEhd1JUFD1RD
- pT9WGq2bj53qg2SZxZ5s68eRU7AGlbuRCUff5OOFjwWBpJYw6AORMYLJPTTnqpj05lBC
- xVig==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
+ b=MUGcj75NEruHQKoBHz6y3OzpZz+BnR4yeHn9iw9hVQF+5QKA22Ax4jGzhSCjKWQZmU
+ JCqJWdm0fJ1TpTcsxzq8ODuzKQfBnu4bjP5VmU3wQ0+eY3+s8Kmhl1Fnh/ybmxE9WZv6
+ yRvy5pqgh+gByvZQAlcEpBSmos89dHhWFWuShAAk+8V5QBLUuMfBwhqFVYsRa4V5bKoG
+ eW1bqhoTLvLFhqlUQqaevytmmneBtdL22N380k2YWHP2/zgPp4TefhOOYuSaYS7AM33H
+ 4FZ6Q+8xREiYgbE1O6W2ClldA55GyAq+ar2DZDLfmNjrbPFdjPhQiCln5P96FwMxLyKm
+ Q7FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WjTJOgCdzC+bVFkjZUwWVYccWLPGIUqJi3/PQBH4ta8=;
- b=V8kRbeJntJzI1VnFwzS5AZkg75L0crIge2QwitsFi93ykyE2oNd78hkm0vGafhQrZu
- D+4HlSdFxWlNoKjblhtj8kXtd4zqOoE5skUTOmyNGSY+HHb8xALyLyBCZUZb8TPi3tZx
- rp2UBJ58j25/cDo1Gz9hkZegDBAsPlWrB8zTHQ0Xzs8lRZ76ZkuCNAWWJAIijzl0F7Do
- 1liZt3+osIA70Febn/vQ+ZTqzGWYk20exwZvVB7BzsJy9X+gatZ+0gC4wuSBGuBwaOwW
- 3EMDFTGjE+pCCkgsLmvf494ucxTQW+SB5poJWbg7JEezuB2CziEhpjGjazLXz6h/NUu6
- 4iYQ==
-X-Gm-Message-State: AOAM533LjAwuGbR8FzNNAm4PaqRb7HQ0OZGgJsH7QeazWxiEH52mxL07
- UhVNZP9EpmBwixLV7+BoyZk=
-X-Google-Smtp-Source: ABdhPJzkLVRzWMM2qILDBAW8Loz1YtMs6+zELMJEWlLoRoCVJ82OjYvdpz/rYq8FkdoDfigz+ey/yA==
-X-Received: by 2002:adf:ba01:: with SMTP id o1mr3215167wrg.419.1629372179251; 
- Thu, 19 Aug 2021 04:22:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=7PolFHl4BCa4E4HG380dOZoCiWwe/gYoL591bvSVGBo=;
+ b=ddrbxw1kj02KjvcaAfaVOstHHyN6IOMXPid104VvOotXbcR4wQxXuE2JqkwUVlp2+p
+ SlXHw3gWmpJum7MtVcQBXA+Eua8YJyzSe81ErG6X5RsDhHidt7N5VRcgcUW8E0MmgBGg
+ IvfSCH8xuRYsZaU+UUE74sIDz46riWttp386Pcdg+dK7t9NkcSxfx7J6T+MPFdJzZULk
+ DrdkZ8rx7ZueBMhGV70ZdPnBxcvx05l1nm4ob+5ieIZn7+qa1QKrWl/EFv63sbXSzgjj
+ ZY7Vc3GYDNDrhZ6vu3VDay5CQvQpjL7BS1SoN3/eYlIH6Nmhg3V9X5+2HGH/FekL+Rdf
+ E9rQ==
+X-Gm-Message-State: AOAM533Jq/WWdMBO6sCNxc6X21e9LLdSDyxwDuC02I0tsETerYPXDQ64
+ t0U8Mq7cFDMKm0hOaa4KfbU=
+X-Google-Smtp-Source: ABdhPJz8CDAX5l4BP2wfFbZ6AML0Lin/n32NRpAJOPfTlU/1JgLGC2q8ibTlyRKz9oat+Y1Iv8DnGQ==
+X-Received: by 2002:adf:f288:: with SMTP id k8mr3162716wro.350.1629372184426; 
+ Thu, 19 Aug 2021 04:23:04 -0700 (PDT)
 Received: from localhost.localdomain (arl-84-90-178-246.netvisao.pt.
  [84.90.178.246])
- by smtp.gmail.com with ESMTPSA id r1sm2700388wrt.24.2021.08.19.04.22.57
+ by smtp.gmail.com with ESMTPSA id r1sm2700388wrt.24.2021.08.19.04.23.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 04:22:58 -0700 (PDT)
+ Thu, 19 Aug 2021 04:23:04 -0700 (PDT)
 From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>,
@@ -80,14 +81,16 @@ Cc: Sandy Huang <hjc@rock-chips.com>,
  Arnd Bergmann <arnd@arndb.de>, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org,
  linux-kernel@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@gmail.com>
-Subject: [PATCH v2 0/5] Kconfig symbol clean-up on gpu
-Date: Thu, 19 Aug 2021 13:22:48 +0200
-Message-Id: <20210819112253.16484-1-lukas.bulwahn@gmail.com>
+Subject: [PATCH v2 2/5] drm: amdgpu: remove obsolete reference to config CHASH
+Date: Thu, 19 Aug 2021 13:22:50 +0200
+Message-Id: <20210819112253.16484-3-lukas.bulwahn@gmail.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20210819112253.16484-1-lukas.bulwahn@gmail.com>
+References: <20210819112253.16484-1-lukas.bulwahn@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_042301_315538_F18AE01C 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20210819_042306_218901_EC0633BF 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,96 +108,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dear DRM maintainers,
+Commit 04ed8459f334 ("drm/amdgpu: remove chash") removes the chash
+architecture and its corresponding config CHASH.
 
-The script ./scripts/checkkconfigsymbols.py warns on invalid references to
-Kconfig symbols (often, minor typos, name confusions or outdated references).
+There is still a reference to CHASH in the config DRM_AMDGPU in
+./drivers/gpu/drm/Kconfig.
 
-This patch series addresses all issues reported by ./scripts/checkkconfigsymbols.py
-in ./drivers/gpu/ for Kconfig and Makefile files. Issues in the Kconfig and
-Makefile files indicate some shortcomings in the overall build definitions, and
-often are true actionable issues to address.
+Remove this obsolete reference to config CHASH.
 
-These issues can be identified and filtered by:
+Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+---
+ drivers/gpu/drm/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
 
-  ./scripts/checkkconfigsymbols.py | grep -E "drivers/gpu/.*(Kconfig|Makefile)" -B 1 -A 1
-
-After applying this patch series on linux-next (next-20210817), the command
-above yields just one further issues to address:
-
-DRM_AMD_DC_DCE11_0
-Referencing files: drivers/gpu/drm/amd/display/dc/dce100/Makefile
-
-  Conclusion: No action required.
-  Rationale:
-    drivers/gpu/drm/amd/display/dc/dce100/Makefile refers to
-    DRM_AMD_DC_DCE11_0 in a comment, after an "ifdef 0".
-
-
-Please pick this patch series into your drm-next tree.
-
-Note that patch "drm: amdgpu: remove obsolete reference to config CHASH"
-was already picked and applied by Alex Deucher.
-
-
-Best regards,
-
-Lukas
-
-v1 -> v2:
-  - adjusted sources in drivers/gpu/drm/Kconfig
-    for drm: zte: remove obsolete DRM Support for ZTE SoCs
-    after report by kernel test robot
-  - removed Tomi from recipient list as email is unreachable.
-
-Lukas Bulwahn (5):
-  drm: rockchip: remove reference to non-existing config DRM_RGB
-  drm: amdgpu: remove obsolete reference to config CHASH
-  drm: v3d: correct reference to config ARCH_BRCMSTB
-  drm: zte: remove obsolete DRM Support for ZTE SoCs
-  drm: omap: remove obsolete selection of OMAP2_DSS in config DRM_OMAP
-
- drivers/gpu/drm/Kconfig              |   3 -
- drivers/gpu/drm/Makefile             |   1 -
- drivers/gpu/drm/omapdrm/Kconfig      |   1 -
- drivers/gpu/drm/rockchip/Kconfig     |   1 -
- drivers/gpu/drm/v3d/Kconfig          |   2 +-
- drivers/gpu/drm/zte/Kconfig          |  10 -
- drivers/gpu/drm/zte/Makefile         |  10 -
- drivers/gpu/drm/zte/zx_common_regs.h |  28 -
- drivers/gpu/drm/zte/zx_drm_drv.c     | 184 ------
- drivers/gpu/drm/zte/zx_drm_drv.h     |  34 -
- drivers/gpu/drm/zte/zx_hdmi.c        | 760 ----------------------
- drivers/gpu/drm/zte/zx_hdmi_regs.h   |  66 --
- drivers/gpu/drm/zte/zx_plane.c       | 537 ----------------
- drivers/gpu/drm/zte/zx_plane.h       |  26 -
- drivers/gpu/drm/zte/zx_plane_regs.h  | 120 ----
- drivers/gpu/drm/zte/zx_tvenc.c       | 400 ------------
- drivers/gpu/drm/zte/zx_tvenc_regs.h  |  27 -
- drivers/gpu/drm/zte/zx_vga.c         | 527 ---------------
- drivers/gpu/drm/zte/zx_vga_regs.h    |  33 -
- drivers/gpu/drm/zte/zx_vou.c         | 921 ---------------------------
- drivers/gpu/drm/zte/zx_vou.h         |  64 --
- drivers/gpu/drm/zte/zx_vou_regs.h    | 212 ------
- 22 files changed, 1 insertion(+), 3966 deletions(-)
- delete mode 100644 drivers/gpu/drm/zte/Kconfig
- delete mode 100644 drivers/gpu/drm/zte/Makefile
- delete mode 100644 drivers/gpu/drm/zte/zx_common_regs.h
- delete mode 100644 drivers/gpu/drm/zte/zx_drm_drv.c
- delete mode 100644 drivers/gpu/drm/zte/zx_drm_drv.h
- delete mode 100644 drivers/gpu/drm/zte/zx_hdmi.c
- delete mode 100644 drivers/gpu/drm/zte/zx_hdmi_regs.h
- delete mode 100644 drivers/gpu/drm/zte/zx_plane.c
- delete mode 100644 drivers/gpu/drm/zte/zx_plane.h
- delete mode 100644 drivers/gpu/drm/zte/zx_plane_regs.h
- delete mode 100644 drivers/gpu/drm/zte/zx_tvenc.c
- delete mode 100644 drivers/gpu/drm/zte/zx_tvenc_regs.h
- delete mode 100644 drivers/gpu/drm/zte/zx_vga.c
- delete mode 100644 drivers/gpu/drm/zte/zx_vga_regs.h
- delete mode 100644 drivers/gpu/drm/zte/zx_vou.c
- delete mode 100644 drivers/gpu/drm/zte/zx_vou.h
- delete mode 100644 drivers/gpu/drm/zte/zx_vou_regs.h
-
+diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
+index f3bc90baca61..8fc40317f2b7 100644
+--- a/drivers/gpu/drm/Kconfig
++++ b/drivers/gpu/drm/Kconfig
+@@ -257,7 +257,6 @@ config DRM_AMDGPU
+ 	select HWMON
+ 	select BACKLIGHT_CLASS_DEVICE
+ 	select INTERVAL_TREE
+-	select CHASH
+ 	help
+ 	  Choose this option if you have a recent AMD Radeon graphics card.
+ 
 -- 
 2.26.2
 
