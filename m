@@ -2,66 +2,101 @@ Return-Path: <SRS0=Qwjt=NK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90D7CC4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 17:05:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0999C4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 18:23:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 535D56101A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 17:05:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 535D56101A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id C29AD610A5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 18:23:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C29AD610A5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dzew+EMR5yu9eMVVfp0ifRUhSLLAJlNh4eP25hZc37s=; b=xmdMei39Viw84s9tXm4GGUxFom
-	T6DONk2Tpwp6w/tKADQJiUBOcu8DhO3ekyE3gWzi3MaarBaABOaB9eQUmqwla/jPMwrFThP3NlWEZ
-	70eG6r/hI7kZzjO8IcXDlcDhqVsunvlFpskCM+QwBMANS515lzHl204dUrCgJkoUYcP8KpxXrSIT7
-	C1gIc504ySmTF150voUgz8q8O6c/rb0z4grq/zkBVu9FzMia6FE/ujkWSU/TYDmxwjSwTfm/CNpe3
-	qgt1ny3PWESRcXFS5Kh3+q971I7k6ERg2v6uHJh8/KYa74MbKtZLDfG3BArU1QoK+VXsDRgEwtRRe
-	KsjzgMfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FRDQzO1GTnY39SBN9freTbnkI8k2tyiTpvs2SiqW00w=; b=X/fvukIvcL5ojl
+	9pnEN6buMW9JNwhjXtbVQIPMGhpJG/qnzIrzZfVAgy7DurUIWkc0sr88lgYVX+Foe8OKLSpAv29Eo
+	RnWC7XbxCU4zECrGMO6zwZ8Wny71IenCj9hH0KO+LK4TuYlMXuWHj064doa7u6WE1isw3erKQlogY
+	EWB/eBBBzDw7kGVAiYeYUQZmNdNtyLp/2rwek58KJojp2s+brWcWXdKyktRSh9lAz3A17b0wnz/Su
+	iSbdXfKujFbSuC9/mTkqGJmv3rYjB0C+iNlcAFyWy9UOx4XaG0xEAoBEPSzo7h0FfXyDXBN1Fo3VE
+	zURJwZ5kWuD7AMmPqRNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGlTe-0093Cw-P5; Thu, 19 Aug 2021 17:05:14 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGlQh-0092An-Fb; Thu, 19 Aug 2021 17:02:13 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 684C51042;
- Thu, 19 Aug 2021 10:02:08 -0700 (PDT)
-Received: from [10.57.36.146] (unknown [10.57.36.146])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7017E3F70D;
- Thu, 19 Aug 2021 10:02:06 -0700 (PDT)
-Subject: Re: [PATCH 2/4] dt-bindings: sound: add rockchip i2s-tdm binding
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210817101119.423853-1-frattaroli.nicolas@gmail.com>
- <20210817101119.423853-3-frattaroli.nicolas@gmail.com>
- <deb50900-fcfd-23d0-ab8a-0e64b2abb063@arm.com> <2412250.zZEsDtmPgG@archbook>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <70cb1e4b-ecb7-2a4b-ee35-02f5a6b8a986@arm.com>
-Date: Thu, 19 Aug 2021 18:02:01 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+	id 1mGmhY-009EAe-8d; Thu, 19 Aug 2021 18:23:40 +0000
+Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mGmhJ-009E75-4E
+ for linux-rockchip@lists.infradead.org; Thu, 19 Aug 2021 18:23:29 +0000
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPS id 23B2F411C6
+ for <linux-rockchip@lists.infradead.org>; Thu, 19 Aug 2021 18:23:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1629397398;
+ bh=wXv+g9MByShu0tv6L5ordxjhpc+MsSSwpZ4DgfMhl7E=;
+ h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+ b=Tw/6DYmDUAqjWQoln6W/lijlr4fSV11mi5RSxq0YJxy0pf2MChX2rXYBko45p6zM+
+ h8YlUWkFf7VmcCUEvvU5BkNt+yzxoB0K/7lp0Weitx8YCuaunM6ZGrHknWeiKpkVZV
+ vclaqR3a31eU3zxBZOfJ8QFT+8HAdCFbr8vvVBf2cFCXhV9djWBVM1XE6xHS9ODUqc
+ 5ujGYPoIfdXuJG9Sx2AhHcQFfqEULuWr3UOOR5Rxhg10GKvRvaEO4u3Gkpuo34jVoE
+ yfGzv/BkhrWG4toapGNI4OWbZfbmnBngzCzO7y016rOUqoCBnhFNxZXnQfyDSw1Znc
+ bYpe5/Zfh+nXg==
+Received: by mail-ej1-f70.google.com with SMTP id
+ e1-20020a170906c001b02905b53c2f6542so2599230ejz.7
+ for <linux-rockchip@lists.infradead.org>; Thu, 19 Aug 2021 11:23:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wXv+g9MByShu0tv6L5ordxjhpc+MsSSwpZ4DgfMhl7E=;
+ b=tLjZD81IIbFqfZ1xURG7krH1fq+k69NX2hddVnPmBpeVneTAzkIJal7TwEKncDaoVt
+ 5zLSv49wk3K+ZesJXqmaGlxXWt4pWVqlBZIzpU8XSyyMo8JIwgqf0MB36icAfAkwamFS
+ wS692ICGdgKA/nDy4klCyPoRNWLgXOkT64Cy7TtdL91XJGHzDhL7FfBalCrBGKOO5MAd
+ mkVTzW/CdcXpl2D9rbAOqtnWBatOnfaRw2U8TYQM48oAcfMD3Ds6wCwjUL0YHdyg1jkr
+ E24Rvz+gGoZLViD5Gz5kfzJwJfAISqqJ9EQnuk/WRcDO0S5BC1TiDx6LwamSCGOjCa7p
+ GElA==
+X-Gm-Message-State: AOAM533cQR58gQ2OkHt5U/MlC8MM1AiOmAhi8Ex1+B/geTfW81pN/Pex
+ X8RLOd0yF9AvByA1OzZKGqLmEEqnpojHkUcYkrcJzomycebho/aTuTKrlm5AOKDTiT2jjRr50Em
+ O7/wF6UZhNnv1LJdKrFViHSzx2Orl1ewZNEgI3eG+fddGy32+Jg==
+X-Received: by 2002:a17:906:b286:: with SMTP id
+ q6mr17000401ejz.120.1629397397850; 
+ Thu, 19 Aug 2021 11:23:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrG9+2tCoz8kPE9jEeoLuD0BBvKPHrr35QvvOIc37v4HQRU5a/njfqp1KeCSZm/azbfQSHeg==
+X-Received: by 2002:a17:906:b286:: with SMTP id
+ q6mr17000377ejz.120.1629397397609; 
+ Thu, 19 Aug 2021 11:23:17 -0700 (PDT)
+Received: from localhost.localdomain ([86.32.42.198])
+ by smtp.gmail.com with ESMTPSA id c28sm1602113ejc.102.2021.08.19.11.23.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Aug 2021 11:23:17 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+To: Rob Herring <robh+dt@kernel.org>, Maxime Ripard <mripard@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Subject: [PATCH 1/2] arm64: dts: allwinner: a64: align operating-points table
+ name with dtschema
+Date: Thu, 19 Aug 2021 20:23:10 +0200
+Message-Id: <20210819182311.223443-1-krzysztof.kozlowski@canonical.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <2412250.zZEsDtmPgG@archbook>
-Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_100211_680709_170E32D7 
-X-CRM114-Status: GOOD (  44.24  )
+X-CRM114-CacheID: sfid-20210819_112325_395999_751ED177 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,149 +109,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2021-08-19 14:52, Nicolas Frattaroli wrote:
-> On Donnerstag, 19. August 2021 14:08:36 CEST Robin Murphy wrote:
->> On 2021-08-17 11:11, Nicolas Frattaroli wrote:
->>> +  rockchip,trcm-sync:
->>> +    $ref: /schemas/types.yaml#/definitions/uint32
->>> +    description:
->>> +      Which lrck/bclk clocks each direction will sync to. You should use
->>> the +      constants in <dt-bindings/sound/rockchip,i2s-tdm.h>
->>> +    oneOf:
->>> +      - const: 0
->>> +        description:
->>> +          RK_TRCM_TXRX. Use both the TX and the RX clock for TX and RX.
->>> +      - const: 1
->>> +        description:
->>> +          RK_TRCM_TX. Use only the TX clock for TX and RX.
->>> +      - const: 2
->>> +        description:
->>> +          RK_TRCM_RX. Use only the RX clock for TX and RX.
->>
->> I wonder if that might make sense to have boolean properties to describe
->> the latter two cases (which would effectively be mutually-exclusive),
->> rather than a magic number? Or possibly even just make the respective
->> clocks optional, if this is something which would be done per-SoC rather
->> than per-board?
->>
-> 
->  From what I know from downstream vendor device trees, these are per
-> board, not for the SoC as a whole. There are I2S/TDM controllers on the
-> SoC which I think are hardwired to certain other IP blocks, such as I2S0
-> being connected to HDMI, but I2S1 can be routed outside of the SoC where
-> these come into play I believe.
+Align the name of operating-points node to dtschema to fix warnings like:
 
-That's fair enough. I know a lot more about DT bindings than I do about 
-I2S, but I did guess it might be related to clocking requirements of the 
-connected codec rather than a constraint of the I2S block itself.
+  arch/arm64/boot/dts/allwinner/sun50i-a64-bananapi-m64.dt.yaml:
+    opp_table0: $nodename:0: 'opp_table0' does not match '^opp-table(-[a-z0-9]+)?$'
 
-> As for making them boolean properties, I'd rather not. If I were to make it
-> two mutually exclusive booleans, this would result in 4 possible states
-> rather than 3, and require complexity to check it both in the schema and
-> in the probe function. Like this, I can get away with a switch case that
-> has a fallthrough, and a list of consts in the schema.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+---
+ arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Complexity?
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+index 578c37490d90..d55248bb8ddd 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-cpu-opp.dtsi
+@@ -4,7 +4,7 @@
+  */
+ 
+ / {
+-	cpu0_opp_table: opp_table0 {
++	cpu0_opp_table: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-- 
+2.30.2
 
-
-	if (of_property_read_bool(node, "rockchip,trcm-sync-tx-only"))
-		i2s_tdm->clk_trcm = RK_TRCM_TX;
-	if (of_property_read_bool(node, "rockchip,trcm-sync-rx-only")) {
-		if (i2s_td->clk_trcm) {
-			dev_err(i2s_tdm->dev, "invalid trcm-sync configuration\n");
-			return -EINVAL;
-		}
-		i2s_tdm->clk_trcm = RK_TRCM_RX;
-	}
-	if (i2s_td->clk_trcm)
-		i2s_tdm_dai.symmetric_rate = 1;
-
-
-If I'm counting correctly, that off-the-top-of-my-head example is a mere 
-58% of the size of your switch statement ;)
-
-The usual aim in designing bindings to robustly abstract the underlying 
-features, not to be easy to implement. That's why the "put this magic 
-value in this register" style of property is generally frowned upon.
-
-As for the schema, it doesn't necessarily have to try to exhaustively 
-catch every possible usage error - if a combination of properties is so 
-obviously nonsensical that a driver shouldn't accept it anyway, I'd 
-imagine it's unlikely to slip through testing.
-
->>> +
->>> +  "#sound-dai-cells":
->>> +    const: 0
->>> +
->>> +  rockchip,no-dmaengine:
->>> +    description:
->>> +      If present, driver will not register a pcm dmaengine, only the dai.
->>> +      If the dai is part of multi-dais, the property should be present.
->>> +    type: boolean
->>
->> That sounds a lot more like a policy decision specific to the Linux
->> driver implementation, than something which really belongs in DT as a
->> description of the platform.
-> 
-> I agree. Should I be refactoring this into a module parameter or
-> something along those lines? I'm unsure of where this goes.
-
-Depends on what it actually means, and whether that's something the 
-driver can figure out for itself. I just see a DT property based around 
-a particular Linux API call as a big red flag :)
-
->>> +
->>> +  rockchip,playback-only:
->>> +    description: Specify that the controller only has playback
->>> capability.
->>> +    type: boolean
->>> +
->>> +  rockchip,capture-only:
->>> +    description: Specify that the controller only has capture capability.
->>> +    type: boolean
->>
->> Could those be inferred from the compatible string, or are there cases
->> where you have multiple instances of the IP block in different
->> configurations within the same SoC? (Or if it's merely reflecting
->> whether the respective interface is actually wired up externally, could
->> that be inferred from the attached codec?)
->>
->> Robin.
->>
-> 
-> They can't be inferred from the SoC because there are indeed multiple
-> instances of this IP block in different configurations on the same SoC.
-> The RK3566 and RK3568 have four in total, of two different categories,
-> each being able to be configured for a different format (though the
-> number of channels and available formats vary for the two categories,
-> one group only supports I2S and PCM with two channels)
-> 
-> The particular configuration may even vary per-board; an I2S/TDM
-> controller may be connected to an external codec which does not
-> support capture, whereas on another board it may be connected to
-> one that does.
-
-Fair enough again, but surely if the codec doesn't support capture then 
-in the end no capture interface is going to be exposed anyway - does the 
-low-level transport need to care?
-
-> As an example, if I understand it correctly, I2S3 on the RK3566 and
-> RK3568 can do 2 channels RX and TX in I2S mode, but only 2 channels
-> either RX or TX in PCM mode, but I'm unsure of the language in the
-> (still not public) documentation I have.
-
-And that starts to sound like something the driver should probably be 
-aware of anyway, but at very least only casts more doubt on these 
-particular properties - even if an interface to a stereo PCM codec 
-couldn't support simultaneous playback and recording, couldn't it still 
-support doing either, separately?
-
-Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
