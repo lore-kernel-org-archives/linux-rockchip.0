@@ -2,93 +2,69 @@ Return-Path: <SRS0=Qwjt=NK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 337C8C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D599BC4338F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 13:14:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EC8266023D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 12:37:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EC8266023D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9E2ED6108E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 13:14:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9E2ED6108E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dklUPerQW/PRDvds6eliz/tUCfALB/S+KzDzh8ctg5o=; b=2vQ0cFXM/kitAq
-	JhWtTFsDKGpIfvuAufOO9sKEuz6GTgbfmMyRU159jxZJEgFjouuXeQG84fFXvL5WGQqXOuxq5CJbC
-	vebTqNRWMAsi/6xayWTicwSHZHK+WuHTQ+StWFmDHGxbtm3+QTVfLnqG62gEaHna8wSdXCKW1n6y4
-	L4PsH9DV6aPvDiqU+JO7rzTbkI4fnAGpk4yimDz3MQHqJXttXinQU1E9God1JsHAcK8R3XnV2E+xM
-	+2nmYt3FJFl/2llg+LAV8qH69BCidxwEqan8lzGeKvV3UEjFFgJYFYrtyy+M+OYN+i+XWE3BV8ScW
-	UjPOLv0cR3p+1chdklGg==;
+	List-Owner; bh=DMn4dh+lmKKxT+UP0BzsmEv1jpEj/2DcfvzhJR3QH4g=; b=TevcRw8ShiS47R
+	TgGQsAePBsGAGXE0J5AW06BG0xIYQiQ/hjbyAN2nfFLadsgAHrmqcPaydbUiOJZgzi+4s0pctGSXg
+	YPKJ7virG3cxgkuKVdz+8qYxFOLa/2aKDe4+aoYQebaoBDo3GpGBtL/+sJD6D7eGEwjfuJ/OX3v7O
+	PAkWN3KZ4MiF9M4UmkCeiuCBU5bF6QSAa1GI74qOg4RGWjC6b8CgrKdHbDC/VnsUmUwmNB63QekON
+	ikdG0JOIY1zNrkCFNdyWcWC+Doh5tTR+XX7Iu65pnqCeATltR1hXxJxRc+4ZQwIn0Q+IpszEHcBFm
+	Ri4xjotuDV3T0TOQEZMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGhIr-008LAl-GR; Thu, 19 Aug 2021 12:37:49 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGhGD-008Jgh-B8; Thu, 19 Aug 2021 12:35:07 +0000
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
- by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 17JCYqMd032825;
- Thu, 19 Aug 2021 07:34:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1629376492;
- bh=poueu/euKtfcqbr8LzsTcjIQ1wgv6v/lzsChvHScOeU=;
- h=From:To:CC:Subject:Date:In-Reply-To:References;
- b=ZO3lyeAp/+ym6hviOL+iomxGGyQI32S9tJNCKz70lGObJ05m3i051CPdwOBtpOSzH
- oCrtIw/S/Omrt8DwCOyIGLZFO8tZv4lezJ0u0tZ16nNWnS2NAFCfTV/VXwJ1AZbTll
- 0y93YdwVt9YFrEiKU0nccDh8JxtoiOupvRIDO62c=
-Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
- by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 17JCYqkM057235
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 19 Aug 2021 07:34:52 -0500
-Received: from DFLE110.ent.ti.com (10.64.6.31) by DFLE104.ent.ti.com
- (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 19
- Aug 2021 07:34:51 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE110.ent.ti.com
- (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2 via
- Frontend Transport; Thu, 19 Aug 2021 07:34:52 -0500
-Received: from a0393678-ssd.dal.design.ti.com (ileax41-snat.itg.ti.com
- [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 17JCXlZW035715;
- Thu, 19 Aug 2021 07:34:45 -0500
-From: Kishon Vijay Abraham I <kishon@ti.com>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
- <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>, Rob Herring
- <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Tom Joseph
- <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel
- <gustavo.pimentel@synopsys.com>,
+	id 1mGhsm-008Qyu-Jn; Thu, 19 Aug 2021 13:14:56 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mGhsW-008Qwi-7V; Thu, 19 Aug 2021 13:14:44 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D490031B;
+ Thu, 19 Aug 2021 06:14:31 -0700 (PDT)
+Received: from e123427-lin.arm.com (unknown [10.57.42.121])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1104C3F70D;
+ Thu, 19 Aug 2021 06:14:28 -0700 (PDT)
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Arnd Bergmann <arnd@arndb.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Rob Herring <robh+dt@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Bjorn Helgaas <bhelgaas@google.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ linux-renesas-soc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-pci@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Jingoo Han <jingoohan1@gmail.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ linux-doc@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin
- <shawn.lin@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>, <linux-pci@vger.kernel.org>,
- <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, Kishon Vijay Abraham I
- <kishon@ti.com>
-Subject: [PATCH v9 8/8] Documentation: PCI: endpoint/pci-endpoint-cfs: Guide
- to use SR-IOV
-Date: Thu, 19 Aug 2021 18:03:43 +0530
-Message-ID: <20210819123343.1951-9-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
+ Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Tom Joseph <tjoseph@cadence.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v9 0/8] Add SR-IOV support in PCIe Endpoint Core
+Date: Thu, 19 Aug 2021 14:14:24 +0100
+Message-Id: <162937885162.23420.11118528020954705739.b4-ty@arm.com>
+X-Mailer: git-send-email 2.31.0
 In-Reply-To: <20210819123343.1951-1-kishon@ti.com>
 References: <20210819123343.1951-1-kishon@ti.com>
 MIME-Version: 1.0
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_053505_534052_168FF2BC 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20210819_061440_360361_8AE0160D 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,63 +82,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Documentation to help users use PCI endpoint to create virtual
-functions using configfs. An endpoint function is designated as a
-virtual endpoint function device when it is linked to a physical
-endpoint function device (instead of a endpoint controller).
+On Thu, 19 Aug 2021 18:03:35 +0530, Kishon Vijay Abraham I wrote:
+> Patch series
+> *) Adds support to add virtual functions to enable endpoint controller
+>    which supports SR-IOV capability
+> *) Add support in Cadence endpoint driver to configure virtual functions
+> *) Enable pci_endpoint_test driver to create pci_device for virtual
+>    functions
+> 
+> [...]
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- Documentation/PCI/endpoint/pci-endpoint-cfs.rst | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+Applied to pci/endpoint, thanks!
 
-diff --git a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-index db609b97ad58..fb73345cfb8a 100644
---- a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-+++ b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-@@ -43,6 +43,7 @@ entries corresponding to EPF driver will be created by the EPF core.
- 		.. <EPF Driver1>/
- 			... <EPF Device 11>/
- 			... <EPF Device 21>/
-+			... <EPF Device 31>/
- 		.. <EPF Driver2>/
- 			... <EPF Device 12>/
- 			... <EPF Device 22>/
-@@ -68,6 +69,7 @@ created)
- 				... subsys_vendor_id
- 				... subsys_id
- 				... interrupt_pin
-+			        ... <Symlink EPF Device 31>/
-                                 ... primary/
- 			                ... <Symlink EPC Device1>/
-                                 ... secondary/
-@@ -79,6 +81,13 @@ interface should be added in 'primary' directory and symlink of endpoint
- controller connected to secondary interface should be added in 'secondary'
- directory.
- 
-+The <EPF Device> directory can have a list of symbolic links
-+(<Symlink EPF Device 31>) to other <EPF Device>. These symbolic links should
-+be created by the user to represent the virtual functions that are bound to
-+the physical function. In the above directory structure <EPF Device 11> is a
-+physical function and <EPF Device 31> is a virtual function. An EPF device once
-+it's linked to another EPF device, cannot be linked to a EPC device.
-+
- EPC Device
- ==========
- 
-@@ -98,7 +107,8 @@ entries corresponding to EPC device will be created by the EPC core.
- 
- The <EPC Device> directory will have a list of symbolic links to
- <EPF Device>. These symbolic links should be created by the user to
--represent the functions present in the endpoint device.
-+represent the functions present in the endpoint device. Only <EPF Device>
-+that represents a physical function can be linked to a EPC device.
- 
- The <EPC Device> directory will also have a *start* field. Once
- "1" is written to this field, the endpoint device will be ready to
--- 
-2.17.1
+[1/8] dt-bindings: PCI: pci-ep: Add binding to specify virtual function
+      https://git.kernel.org/lpieralisi/pci/c/f00bfc6489
+[2/8] PCI: endpoint: Add support to add virtual function in endpoint core
+      https://git.kernel.org/lpieralisi/pci/c/1cf362e907
+[3/8] PCI: endpoint: Add support to link a physical function to a virtual function
+      https://git.kernel.org/lpieralisi/pci/c/101600e790
+[4/8] PCI: endpoint: Add virtual function number in pci_epc ops
+      https://git.kernel.org/lpieralisi/pci/c/53fd3cbe5e
+[5/8] PCI: cadence: Simplify code to get register base address for configuring BAR
+      https://git.kernel.org/lpieralisi/pci/c/0cf985d611
+[6/8] PCI: cadence: Add support to configure virtual functions
+      https://git.kernel.org/lpieralisi/pci/c/e19a0adf6e
+[7/8] misc: pci_endpoint_test: Populate sriov_configure ops to configure SR-IOV device
+      https://git.kernel.org/lpieralisi/pci/c/489b1f41e5
+[8/8] Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
+      https://git.kernel.org/lpieralisi/pci/c/0c84f5bf3e
 
+Thanks,
+Lorenzo
 
 _______________________________________________
 Linux-rockchip mailing list
