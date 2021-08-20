@@ -2,70 +2,85 @@ Return-Path: <SRS0=iF3C=NL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UPPERCASE_50_75,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F627C4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 19:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5097C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 20:39:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4DC83610FF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 19:02:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4DC83610FF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7C5456113B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 20:39:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C5456113B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jfSTbQyKPLbULnA2Ta7TiNYoW6P/MNAFB1pL5ViNgYw=; b=PawJcWQmVTwzlBzZUQ7CbVrqb1
-	G64bQVtn2JupVi22wfZtxlZnHe9Re9GSQIURovus6+9C+tVLV6HFF3uKjq/RiLbZK99rgQafqDmT8
-	qfMQuUyNPgCdY7YJ9QEGOokVt7P2FePAFL70mhqjdUzhQd+BhjNd9Jb4EHEDQ//bLmKbllHyyqRF8
-	L3gjxlmtWbjxRZeF00dZIkNqTDE4bICXhipSLTfEkXykE63TzngcNlq4O/WqEAployxDJ5RrVVC4r
-	wi75Fy69tAjYp8m1tE8kwpOW6ds0l8FG7wlaaLSwk16L9JCoS24jC+AQUuKyU/qSnd1TgWI3KCQQK
-	Yi/xEfWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qMcwq9FoP8R6lPenetRWowkMRKBAlVEMezdcS2Q5jGw=; b=bxARH+idVVnWQ+
+	7ZG+820mmQP9S/4A+ZitRUpwTckYt1tNVyApzG+ODnmHL85qKBX/LeWHg8mVdAZqK0xMSqhr6t4YX
+	F1RoEZijRBR1SQL7sIZlzuIJzcGRMaabLB9lSeWUeGT00W794lCzobKVmWCMcpVjZiBR25HGBUmnh
+	j/ygOOim5rP00SOZlpBsdUfx6AAS5IqeqgfYSB4+MrJUQgqaG8APk9Qu12NqXBRq+5X57XFp1PLxy
+	nY/bQlfq8H5dIMNxF1emuM9t/D0q8K3p+Tw35cbWDRHwZbaJ03+0DavOz//gbZbdswpdE4x8ipbt7
+	ILjYD9mtHj0l2wOVB0+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mH9n4-00BxW7-8c; Fri, 20 Aug 2021 19:02:54 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1mHBIF-00C5Ft-49; Fri, 20 Aug 2021 20:39:11 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mH9mr-00BxUE-Bt; Fri, 20 Aug 2021 19:02:43 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10082"; a="216860949"
-X-IronPort-AV: E=Sophos;i="5.84,338,1620716400"; d="scan'208";a="216860949"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2021 12:02:21 -0700
-X-IronPort-AV: E=Sophos;i="5.84,338,1620716400"; d="scan'208";a="425117963"
-Received: from mchombea-mobl.amr.corp.intel.com (HELO [10.212.9.172])
- ([10.212.9.172])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2021 12:02:19 -0700
-Subject: Re: [PATCH v2 1/4] ASoC: rockchip: add support for i2s-tdm controller
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20210820182731.29370-1-frattaroli.nicolas@gmail.com>
- <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Message-ID: <66d6bd43-ee43-eff4-7a68-333fbb996787@linux.intel.com>
-Date: Fri, 20 Aug 2021 14:02:16 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.11.0
+ id 1mHBHz-00C5E3-CH
+ for linux-rockchip@lists.infradead.org; Fri, 20 Aug 2021 20:38:59 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id
+ qe12-20020a17090b4f8c00b00179321cbae7so8117008pjb.2
+ for <linux-rockchip@lists.infradead.org>; Fri, 20 Aug 2021 13:38:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3Y3InmxhpoYm0EqzJmyqf4YlfP1zDRs0XYYkt2TgkvM=;
+ b=hv4DtvS/OHwCV6bvqRoipVam5+aL/92SEmRA16aPth6cOL+Pm3gdWuNUbsCg0nKGeI
+ Y8T0wh1aW5WX54zH9pDZHGh2IdM7u6FPC8XaTzM8GD2ARnd+9uQ8tAfVPtwPp/8SaxcH
+ d5vHqs1FmqnKPPiLNLAc50w95TmxKyPzZZkPs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3Y3InmxhpoYm0EqzJmyqf4YlfP1zDRs0XYYkt2TgkvM=;
+ b=B/oYM/7i3VHbG0EicoBWOtKcPJqmNyFmM+RcXRHbeqCahVZaAxtfAIL4GLe8bXBMb/
+ LXmTKRI3VpNIxNIdTDSiI4XkuISiZfK0FUkbublmvJB1uzcFfLV9YfuKkFEM5V8LVB3C
+ x2wINvtdm9e00ktgKT0MlxcXpxog/FZ09NrKyjHKaELEPjtlK/TS6RQxUhaV+m71h19Y
+ UHIlIb538INv3Om332Q4ATfRse0s4u0zTwHql4xSCBcdnJ22a7ZT1XFfdKhYsINbvqh0
+ jHtIxqQOW/DQw/9WdB8cEGwz907elKFrHAGLq6Tx9RrUUx0zfJnUfKh8X8i5YIv4g9VY
+ G/9Q==
+X-Gm-Message-State: AOAM532AtrGcQwPN96ZVJ1PdSTA7mZYemkSVxkfBrx11TJ3wC45Nb+dC
+ n4PI9bspgr+1VwkOnrBQw/H6MA==
+X-Google-Smtp-Source: ABdhPJxrQzbsRBaNc9QyvYCGYzZnK/vRO7AW7HVMqxcDBV6N96brDzCEUE7I1E7nfkqN9IDBarsdIQ==
+X-Received: by 2002:a17:90a:8b81:: with SMTP id
+ z1mr6382419pjn.82.1629491933445; 
+ Fri, 20 Aug 2021 13:38:53 -0700 (PDT)
+Received: from smtp.gmail.com ([2620:15c:202:201:b547:9806:eff8:54ae])
+ by smtp.gmail.com with ESMTPSA id b1sm7749715pfv.151.2021.08.20.13.38.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Aug 2021 13:38:52 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Brian Norris <briannorris@chromium.org>
+Subject: [PATCH] arm64: dts: rockchip: add RK3399 Gru gpio-line-names
+Date: Fri, 20 Aug 2021 13:38:35 -0700
+Message-Id: <20210820133829.1.Ica46f428de8c3beb600760dbcd63cf879ec24baf@changeid>
+X-Mailer: git-send-email 2.33.0.rc2.250.ged5fa647cd-goog
 MIME-Version: 1.0
-In-Reply-To: <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210820_120241_660414_7CD7600B 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20210820_133855_447899_3B39232C 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,501 +98,402 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+It's convenient to get nice names for GPIOs. In particular, Chrome OS
+tooling looks for "AP_FLASH_WP" and "AP_FLASH_WP_L". The rest are
+provided for convenience.
 
-> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> new file mode 100644
-> index 000000000000..c02b66f3c913
-> --- /dev/null
-> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> @@ -0,0 +1,1737 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * ALSA SoC Audio Layer - Rockchip I2S/TDM Controller driver
-> + *
-> + * Copyright (c) 2018 Rockchip Electronics Co. Ltd.
-> + * Author: Sugar Zhang <sugar.zhang@rock-chips.com>
-> + * Author: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> + *
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <linux/mfd/syscon.h>
-> +#include <linux/delay.h>
-> +#include <linux/of_gpio.h>
-> +#include <linux/of_device.h>
-> +#include <linux/of_address.h>
-> +#include <linux/clk.h>
-> +#include <linux/clk-provider.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +#include <linux/reset.h>
-> +#include <linux/spinlock.h>
-> +#include <sound/pcm_params.h>
-> +#include <sound/dmaengine_pcm.h>
+Gru-Bob and Gru-Kevin share the gru-chromebook.dtsi, and for the most
+part they share pin meanings. I omitted a few areas where components
+were available only on one or the other.
 
-alphabetical order?
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
 
-> +static void rockchip_snd_xfer_clear(struct rk_i2s_tdm_dev *i2s_tdm,
-> +				    unsigned int clr)
-> +{
-> +	unsigned int xfer_mask;
-> +	unsigned int xfer_val;
-> +	unsigned int val;
-> +	int retry = 10;
-> +	bool tx = clr & I2S_CLR_TXC;
-> +	bool rx = clr & I2S_CLR_RXC;
-> +
-> +	if (!(rx || tx))
-> +		return;
-> +
-> +	xfer_mask = (tx ? I2S_XFER_TXS_START : 0) |
-> +		    (rx ? I2S_XFER_RXS_START : 0);
-> +	xfer_val = (tx ? I2S_XFER_TXS_STOP : 0) |
-> +		   (rx ? I2S_XFER_RXS_STOP : 0);
-> +
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_XFER, xfer_mask, xfer_val);
-> +	udelay(150);
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_CLR, clr, clr);
-> +
-> +	regmap_read(i2s_tdm->regmap, I2S_CLR, &val);
-> +	/* Wait on the clear operation to finish */
-> +	while (val) {
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   | 176 +++++++++++++++++
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 180 ++++++++++++++++++
+ 2 files changed, 356 insertions(+)
 
-delay needed here?
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 1384dabbdf40..9b2c679f5eca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -251,6 +251,182 @@ edp_out_panel: endpoint@0 {
+ 	};
+ };
+ 
++&gpio0 {
++	gpio-line-names = /* GPIO0 A 0-7 */
++			  "AP_RTC_CLK_IN",
++			  "EC_AP_INT_L",
++			  "PP1800_AUDIO_EN",
++			  "BT_HOST_WAKE_L",
++			  "WLAN_MODULE_PD_L",
++			  "H1_INT_OD_L",
++			  "CENTERLOGIC_DVS_PWM",
++			  "",
++
++			  /* GPIO0 B 0-4 */
++			  "WIFI_HOST_WAKE_L",
++			  "PMUIO2_33_18_L",
++			  "PP1500_EN",
++			  "AP_EC_WARM_RESET_REQ",
++			  "PP3000_EN";
++};
++
++&gpio1 {
++	gpio-line-names = /* GPIO1 A 0-7 */
++			  "",
++			  "",
++			  "SPK_PA_EN",
++			  "",
++			  "TRACKPAD_INT_L",
++			  "AP_EC_S3_S0_L",
++			  "AP_EC_OVERTEMP",
++			  "AP_SPI_FLASH_MISO",
++
++			  /* GPIO1 B 0-7 */
++			  "AP_SPI_FLASH_MOSI_R",
++			  "AP_SPI_FLASH_CLK_R",
++			  "AP_SPI_FLASH_CS_L_R",
++			  "WLAN_MODULE_RESET_L",
++			  "WIFI_DISABLE_L",
++			  "MIC_INT",
++			  "",
++			  "AP_I2C_DVS_SDA",
++
++			  /* GPIO1 C 0-7 */
++			  "AP_I2C_DVS_SCL",
++			  "AP_BL_EN",
++			  /*
++			   * AP_FLASH_WP is crossystem ABI. Schematics call it
++			   * AP_FW_WP or CPU1_FW_WP, depending on the variant.
++			   */
++			  "AP_FLASH_WP",
++			  "LITCPU_DVS_PWM",
++			  "AP_I2C_AUDIO_SDA",
++			  "AP_I2C_AUDIO_SCL",
++			  "",
++			  "HEADSET_INT_L";
++};
++
++&gpio2 {
++	gpio-line-names = /* GPIO2 A 0-7 */
++			  "",
++			  "",
++			  "SD_IO_PWR_EN",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO2 B 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO2 C 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "AP_SPI_EC_MISO",
++			  "AP_SPI_EC_MOSI",
++			  "AP_SPI_EC_CLK",
++			  "AP_SPI_EC_CS_L",
++
++			  /* GPIO2 D 0-4 */
++			  "BT_DEV_WAKE_L",
++			  "",
++			  "WIFI_PCIE_CLKREQ_L",
++			  "WIFI_PERST_L",
++			  "SD_PWR_3000_1800_L";
++};
++
++&gpio3 {
++	gpio-line-names = /* GPIO3 A 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "AP_SPI_TPM_MISO",
++			  "AP_SPI_TPM_MOSI_R",
++			  "AP_SPI_TPM_CLK_R",
++			  "AP_SPI_TPM_CS_L_R",
++
++			  /* GPIO3 B 0-7 */
++			  "EC_IN_RW",
++			  "",
++			  "AP_I2C_TP_SDA",
++			  "AP_I2C_TP_SCL",
++			  "AP_I2C_TP_PU_EN",
++			  "TOUCH_INT_L",
++			  "",
++			  "",
++
++			  /* GPIO3 C 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO3 D 0-7 */
++			  "I2S0_SCLK",
++			  "I2S0_LRCK_RX",
++			  "I2S0_LRCK_TX",
++			  "I2S0_SDI_0",
++			  "I2S0_SDI_1",
++			  "",
++			  "I2S0_SDO_1",
++			  "I2S0_SDO_0";
++};
++
++&gpio4 {
++	gpio-line-names = /* GPIO4 A 0-7 */
++			  "I2S_MCLK",
++			  "AP_I2C_MIC_SDA",
++			  "AP_I2C_MIC_SCL",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO4 B 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO4 C 0-7 */
++			  "AP_I2C_TS_SDA",
++			  "AP_I2C_TS_SCL",
++			  "GPU_DVS_PWM",
++			  "UART_DBG_TX_AP_RX",
++			  "UART_AP_TX_DBG_RX",
++			  "",
++			  "BIGCPU_DVS_PWM",
++			  "EDP_HPD_3V0",
++
++			  /* GPIO4 D 0-5 */
++			  "SD_CARD_DET_L",
++			  "USB_DP_HPD",
++			  "TOUCH_RESET_L",
++			  "PP3300_DISP_EN",
++			  "",
++			  "SD_SLOT_PWR_EN";
++};
++
+ ap_i2c_mic: &i2c1 {
+ 	status = "okay";
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index 5d7a9d96d163..61afb5f0f15b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -389,6 +389,186 @@ &cru {
+ 		<400000000>;
+ };
+ 
++&gpio0 {
++	gpio-line-names = /* GPIO0 A 0-7 */
++			  "CLK_32K_AP",
++			  "EC_IN_RW_OD",
++			  "SPK_PA_EN",
++			  "WLAN_PERST_1V8_L",
++			  "WLAN_PD_1V8_L",
++			  "WLAN_RF_KILL_1V8_L",
++			  "BIGCPU_DVS_PWM",
++			  "SD_CD_L_JTAG_EN",
++
++			  /* GPIO0 B 0-5 */
++			  "BT_EN_BT_RF_KILL_1V8_L",
++			  "PMUIO2_33_18_L_PP3300_S0_EN",
++			  "TOUCH_RESET_L",
++			  "AP_EC_WARM_RESET_REQ",
++			  "PEN_RESET_L",
++			  /*
++			   * AP_FLASH_WP_L is crossystem ABI. Schematics call
++			   * it AP_FLASH_WP_R_ODL.
++			   */
++			  "AP_FLASH_WP_L";
++};
++
++&gpio1 {
++	gpio-line-names = /* GPIO1 A 0-7 */
++			  "PEN_INT_ODL",
++			  "PEN_EJECT_ODL",
++			  "BT_HOST_WAKE_1V8_L",
++			  "WLAN_HOST_WAKE_1V8_L",
++			  "TOUCH_INT_ODL",
++			  "AP_EC_S3_S0_L",
++			  "AP_EC_OVERTEMP",
++			  "AP_SPI_FLASH_MISO",
++
++			  /* GPIO1 B 0-7 */
++			  "AP_SPI_FLASH_MOSI_R",
++			  "AP_SPI_FLASH_CLK_R",
++			  "AP_SPI_FLASH_CS_L_R",
++			  "SD_CARD_DET_ODL",
++			  "",
++			  "AP_EXPANSION_IO1",
++			  "AP_EXPANSION_IO2",
++			  "AP_I2C_DISP_SDA",
++
++			  /* GPIO1 C 0-7 */
++			  "AP_I2C_DISP_SCL",
++			  "H1_INT_ODL",
++			  "EC_AP_INT_ODL",
++			  "LITCPU_DVS_PWM",
++			  "AP_I2C_AUDIO_SDA",
++			  "AP_I2C_AUDIO_SCL",
++			  "AP_EXPANSION_IO3",
++			  "HEADSET_INT_ODL",
++
++			  /* GPIO1 D0 */
++			  "AP_EXPANSION_IO4";
++};
++
++&gpio2 {
++	gpio-line-names = /* GPIO2 A 0-7 */
++			  "AP_I2C_PEN_SDA",
++			  "AP_I2C_PEN_SCL",
++			  "SD_IO_PWR_EN",
++			  "UCAM_RST_L",
++			  "PP1250_CAM_EN",
++			  "WCAM_RST_L",
++			  "AP_EXPANSION_IO5",
++			  "AP_I2C_CAM_SDA",
++
++			  /* GPIO2 B 0-7 */
++			  "AP_I2C_CAM_SCL",
++			  "AP_H1_SPI_MISO",
++			  "AP_H1_SPI_MOSI",
++			  "AP_H1_SPI_CLK",
++			  "AP_H1_SPI_CS_L",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO2 C 0-7 */
++			  "UART_EXPANSION_TX_AP_RX",
++			  "UART_AP_TX_EXPANSION_RX",
++			  "UART_EXPANSION_RTS_AP_CTS",
++			  "UART_AP_RTS_EXPANSION_CTS",
++			  "AP_SPI_EC_MISO",
++			  "AP_SPI_EC_MOSI",
++			  "AP_SPI_EC_CLK",
++			  "AP_SPI_EC_CS_L",
++
++			  /* GPIO2 D 0-4 */
++			  "PP2800_CAM_EN",
++			  "CLK_24M_CAM",
++			  "WLAN_PCIE_CLKREQ_1V8_L",
++			  "",
++			  "SD_PWR_3000_1800_L";
++};
++
++&gpio3 {
++	gpio-line-names = /* GPIO3 A 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO3 B 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO3 C 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO3 D 0-7 */
++			  "I2S0_SCLK",
++			  "I2S0_LRCK_RX",
++			  "I2S0_LRCK_TX",
++			  "I2S0_SDI_0",
++			  "STRAP_LCDBIAS_L",
++			  "STRAP_FEATURE_1",
++			  "STRAP_FEATURE_2",
++			  "I2S0_SDO_0";
++};
++
++&gpio4 {
++	gpio-line-names = /* GPIO4 A 0-7 */
++			  "I2S_MCLK",
++			  "AP_I2C_EXPANSION_SDA",
++			  "AP_I2C_EXPANSION_SCL",
++			  "DMIC_EN",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO4 B 0-7 */
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++			  "",
++
++			  /* GPIO4 C 0-7 */
++			  "AP_I2C_TS_SDA",
++			  "AP_I2C_TS_SCL",
++			  "GPU_DVS_PWM",
++			  "UART_DBG_TX_AP_RX",
++			  "UART_AP_TX_DBG_RX",
++			  "BL_EN",
++			  "BL_PWM",
++			  "",
++
++			  /* GPIO4 D 0-5 */
++			  "",
++			  "DISPLAY_RST_L",
++			  "",
++			  "PPVARP_LCD_EN",
++			  "PPVARN_LCD_EN",
++			  "SD_SLOT_PWR_EN";
++};
++
+ &i2c_tunnel {
+ 	google,remote-bus = <0>;
+ };
+-- 
+2.33.0.rc2.250.ged5fa647cd-goog
 
-> +		regmap_read(i2s_tdm->regmap, I2S_CLR, &val);
-> +		retry--;
-> +		if (!retry) {
-> +			dev_warn(i2s_tdm->dev, "clear failed, reset %s%s\n",
-> +				 tx ? "tx" : "", rx ? "rx" : "");
-> +			if (rx && tx)
-> +				rockchip_snd_xfer_sync_reset(i2s_tdm);
-> +			else if (tx)
-> +				rockchip_snd_reset(i2s_tdm->tx_reset);
-> +			else if (rx)
-> +				rockchip_snd_reset(i2s_tdm->rx_reset);
-> +			break;
-> +		}
-> +	}
-> +}
-
-> +static int rockchip_i2s_tdm_set_fmt(struct snd_soc_dai *cpu_dai,
-> +				    unsigned int fmt)
-> +{
-> +	struct rk_i2s_tdm_dev *i2s_tdm = to_info(cpu_dai);
-> +	unsigned int mask = 0, val = 0, tdm_val = 0, txcr_val = 0, rxcr_val = 0;
-
-not all initializations are required. Run e.g. cppcheck.
-
-> +	int ret = 0;
-> +	bool is_tdm = i2s_tdm->tdm_mode;
-> +
-> +	pm_runtime_get_sync(cpu_dai->dev);
-
-test if this worked?
-
-Also if this fails you need to call pm_runtime_put_noidle()
-
-this is what we use.
-
-ret = pm_runtime_get_sync(dev);
-if (ret < 0 && ret != -EACCES) {
-      pm_runtime_put_noidle(dev);
-      return ret;
-}
-
-
-> +	mask = I2S_CKR_MSS_MASK;
-> +	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> +	case SND_SOC_DAIFMT_CBS_CFS:
-> +		val = I2S_CKR_MSS_MASTER;
-> +		i2s_tdm->is_master_mode = true;
-> +		break;
-> +	case SND_SOC_DAIFMT_CBM_CFM:
-> +		val = I2S_CKR_MSS_SLAVE;
-> +		i2s_tdm->is_master_mode = false;
-> +		break;
-> +	default:
-> +		ret = -EINVAL;
-> +		goto err_pm_put;
-> +	}
-> +
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_CKR, mask, val);
-> +
-> +	mask = I2S_CKR_CKP_MASK | I2S_CKR_TLP_MASK | I2S_CKR_RLP_MASK;
-> +	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-> +	case SND_SOC_DAIFMT_NB_NF:
-> +		val = I2S_CKR_CKP_NORMAL |
-> +		      I2S_CKR_TLP_NORMAL |
-> +		      I2S_CKR_RLP_NORMAL;
-> +		break;
-> +	case SND_SOC_DAIFMT_NB_IF:
-> +		val = I2S_CKR_CKP_NORMAL |
-> +		      I2S_CKR_TLP_INVERTED |
-> +		      I2S_CKR_RLP_INVERTED;
-> +		break;
-> +	case SND_SOC_DAIFMT_IB_NF:
-> +		val = I2S_CKR_CKP_INVERTED |
-> +		      I2S_CKR_TLP_NORMAL |
-> +		      I2S_CKR_RLP_NORMAL;
-> +		break;
-> +	case SND_SOC_DAIFMT_IB_IF:
-> +		val = I2S_CKR_CKP_INVERTED |
-> +		      I2S_CKR_TLP_INVERTED |
-> +		      I2S_CKR_RLP_INVERTED;
-> +		break;
-> +	default:
-> +		ret = -EINVAL;
-> +		goto err_pm_put;
-> +	}
-> +
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_CKR, mask, val);
-> +
-> +	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-> +	case SND_SOC_DAIFMT_RIGHT_J:
-> +		txcr_val = I2S_TXCR_IBM_RSJM;
-> +		rxcr_val = I2S_RXCR_IBM_RSJM;
-> +		break;
-> +	case SND_SOC_DAIFMT_LEFT_J:
-> +		txcr_val = I2S_TXCR_IBM_LSJM;
-> +		rxcr_val = I2S_RXCR_IBM_LSJM;
-> +		break;
-> +	case SND_SOC_DAIFMT_I2S:
-> +		txcr_val = I2S_TXCR_IBM_NORMAL;
-> +		rxcr_val = I2S_RXCR_IBM_NORMAL;
-> +		break;
-> +	case SND_SOC_DAIFMT_DSP_A: /* PCM no delay mode */
-> +		txcr_val = I2S_TXCR_TFS_PCM;
-> +		rxcr_val = I2S_RXCR_TFS_PCM;
-> +		break;
-> +	case SND_SOC_DAIFMT_DSP_B: /* PCM delay 1 mode */
-> +		txcr_val = I2S_TXCR_TFS_PCM | I2S_TXCR_PBM_MODE(1);
-> +		rxcr_val = I2S_RXCR_TFS_PCM | I2S_RXCR_PBM_MODE(1);
-> +		break;
-> +	default:
-> +		ret = -EINVAL;
-> +		goto err_pm_put;
-> +	}
-> +
-> +	mask = I2S_TXCR_IBM_MASK | I2S_TXCR_TFS_MASK | I2S_TXCR_PBM_MASK;
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_TXCR, mask, txcr_val);
-> +
-> +	mask = I2S_RXCR_IBM_MASK | I2S_RXCR_TFS_MASK | I2S_RXCR_PBM_MASK;
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_RXCR, mask, rxcr_val);
-> +
-> +	if (is_tdm) {
-> +		switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-> +		case SND_SOC_DAIFMT_RIGHT_J:
-> +			val = I2S_TXCR_TFS_TDM_I2S;
-> +			tdm_val = TDM_SHIFT_CTRL(2);
-> +			break;
-> +		case SND_SOC_DAIFMT_LEFT_J:
-> +			val = I2S_TXCR_TFS_TDM_I2S;
-> +			tdm_val = TDM_SHIFT_CTRL(1);
-> +			break;
-> +		case SND_SOC_DAIFMT_I2S:
-> +			val = I2S_TXCR_TFS_TDM_I2S;
-> +			tdm_val = TDM_SHIFT_CTRL(0);
-> +			break;
-> +		case SND_SOC_DAIFMT_DSP_A:
-> +			val = I2S_TXCR_TFS_TDM_PCM;
-> +			tdm_val = TDM_SHIFT_CTRL(0);
-> +			break;
-> +		case SND_SOC_DAIFMT_DSP_B:
-> +			val = I2S_TXCR_TFS_TDM_PCM;
-> +			tdm_val = TDM_SHIFT_CTRL(2);
-> +			break;
-> +		default:
-> +			ret = -EINVAL;
-> +			goto err_pm_put;
-> +		}
-> +
-> +		tdm_val |= TDM_FSYNC_WIDTH_SEL1(1);
-> +		if (i2s_tdm->tdm_fsync_half_frame)
-> +			tdm_val |= TDM_FSYNC_WIDTH_HALF_FRAME;
-> +		else
-> +			tdm_val |= TDM_FSYNC_WIDTH_ONE_FRAME;
-> +
-> +		mask = I2S_TXCR_TFS_MASK;
-> +		regmap_update_bits(i2s_tdm->regmap, I2S_TXCR, mask, val);
-> +		regmap_update_bits(i2s_tdm->regmap, I2S_RXCR, mask, val);
-> +
-> +		mask = TDM_FSYNC_WIDTH_SEL1_MSK | TDM_FSYNC_WIDTH_SEL0_MSK |
-> +		       TDM_SHIFT_CTRL_MSK;
-> +		regmap_update_bits(i2s_tdm->regmap, I2S_TDM_TXCR,
-> +				   mask, tdm_val);
-> +		regmap_update_bits(i2s_tdm->regmap, I2S_TDM_RXCR,
-> +				   mask, tdm_val);
-> +	}
-> +
-> +err_pm_put:
-> +	pm_runtime_put(cpu_dai->dev);
-> +
-> +	return ret;
-> +}
-> +
-
-> +static int rockchip_i2s_tdm_clk_set_rate(struct rk_i2s_tdm_dev *i2s_tdm,
-> +					 struct clk *clk, unsigned long rate,
-> +					 int ppm)
-> +{
-> +	unsigned long rate_target;
-> +	int delta, ret;
-> +
-> +	if (ppm == i2s_tdm->clk_ppm)
-> +		return 0;
-> +
-> +	delta = (ppm < 0) ? -1 : 1;
-> +	delta *= (int)div64_u64((u64)rate * (u64)abs(ppm) + 500000,
-> +				1000000);
-
-formula looks odd? looks like you are implementing a round to nearest
-operation, but that shouldn't require this multiplication?
-
-> +
-> +	rate_target = rate + delta;
-> +
-> +	if (!rate_target)
-> +		return -EINVAL;
-> +
-> +	ret = clk_set_rate(clk, rate_target);
-> +	if (ret)
-> +		return ret;
-> +
-> +	i2s_tdm->clk_ppm = ppm;
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_i2s_tdm_calibrate_mclk(struct rk_i2s_tdm_dev *i2s_tdm,
-> +					   struct snd_pcm_substream *substream,
-> +					   unsigned int lrck_freq)
-> +{
-> +	struct clk *mclk_root;
-> +	struct clk *mclk_parent;
-> +	unsigned int mclk_root_freq;
-> +	unsigned int mclk_root_initial_freq;
-> +	unsigned int mclk_parent_freq;
-> +	unsigned int div, delta;
-> +	u64 ppm;
-> +	int ret;
-> +
-> +	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
-> +		mclk_parent = i2s_tdm->mclk_tx_src;
-> +	else
-> +		mclk_parent = i2s_tdm->mclk_rx_src;
-> +
-> +	switch (lrck_freq) {
-> +	case 8000:
-> +	case 16000:
-> +	case 24000:
-> +	case 32000:
-> +	case 48000:
-> +	case 64000:
-> +	case 96000:
-> +	case 192000:
-> +		mclk_root = i2s_tdm->mclk_root0;
-> +		mclk_root_freq = i2s_tdm->mclk_root0_freq;
-> +		mclk_root_initial_freq = i2s_tdm->mclk_root0_initial_freq;
-> +		mclk_parent_freq = DEFAULT_MCLK_FS * 192000;
-> +		break;
-> +	case 11025:
-> +	case 22050:
-> +	case 44100:
-> +	case 88200:
-> +	case 176400:
-> +		mclk_root = i2s_tdm->mclk_root1;
-> +		mclk_root_freq = i2s_tdm->mclk_root1_freq;
-> +		mclk_root_initial_freq = i2s_tdm->mclk_root1_initial_freq;
-> +		mclk_parent_freq = DEFAULT_MCLK_FS * 176400;
-> +		break;
-> +	default:
-> +		dev_err(i2s_tdm->dev, "Invalid LRCK freq: %u Hz\n",
-> +			lrck_freq);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = clk_set_parent(mclk_parent, mclk_root);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = rockchip_i2s_tdm_clk_set_rate(i2s_tdm, mclk_root,
-> +					    mclk_root_freq, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	delta = abs(mclk_root_freq % mclk_parent_freq - mclk_parent_freq);
-> +	ppm = div64_u64((uint64_t)delta * 1000000, (uint64_t)mclk_root_freq);
-> +
-> +	if (ppm) {
-> +		div = DIV_ROUND_CLOSEST(mclk_root_initial_freq, mclk_parent_freq);
-> +		if (!div)
-> +			return -EINVAL;
-> +
-> +		mclk_root_freq = mclk_parent_freq * round_up(div, 2);
-> +
-> +		ret = clk_set_rate(mclk_root, mclk_root_freq);
-> +		if (ret)
-> +			return ret;
-> +
-> +		i2s_tdm->mclk_root0_freq = clk_get_rate(i2s_tdm->mclk_root0);
-> +		i2s_tdm->mclk_root1_freq = clk_get_rate(i2s_tdm->mclk_root1);
-> +	}
-> +
-> +	ret = clk_set_rate(mclk_parent, mclk_parent_freq);
-> +
-> +	return ret;
-
-return clk_set_rate(mclk_parent, mclk_parent_freq); ?
-
-> +}
-> +
-> +static int rockchip_i2s_tdm_set_mclk(struct rk_i2s_tdm_dev *i2s_tdm,
-> +				     struct snd_pcm_substream *substream,
-> +				     struct clk **mclk)
-> +{
-> +	unsigned int mclk_freq;
-> +	int ret;
-> +
-> +	if (i2s_tdm->clk_trcm) {
-> +		if (i2s_tdm->mclk_tx_freq != i2s_tdm->mclk_rx_freq) {
-> +			dev_err(i2s_tdm->dev,
-> +				"clk_trcm, tx: %d and rx: %d should be same\n",
-> +				i2s_tdm->mclk_tx_freq,
-> +				i2s_tdm->mclk_rx_freq);
-> +			ret = -EINVAL;
-> +			return ret;
-
-return -EINVAL?
-
-> +		}
-> +
-> +		ret = clk_set_rate(i2s_tdm->mclk_tx, i2s_tdm->mclk_tx_freq);
-> +		if (ret)
-> +			return ret;
-> +
-> +		ret = clk_set_rate(i2s_tdm->mclk_rx, i2s_tdm->mclk_rx_freq);
-> +		if (ret)
-> +			return ret;
-> +
-> +		/* mclk_rx is also ok. */
-> +		*mclk = i2s_tdm->mclk_tx;
-> +	} else {
-> +		if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> +			*mclk = i2s_tdm->mclk_tx;
-> +			mclk_freq = i2s_tdm->mclk_tx_freq;
-> +		} else {
-> +			*mclk = i2s_tdm->mclk_rx;
-> +			mclk_freq = i2s_tdm->mclk_rx_freq;
-> +		}
-> +
-> +		ret = clk_set_rate(*mclk, mclk_freq);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-
-> +	pm_runtime_enable(&pdev->dev);
-> +	if (!pm_runtime_enabled(&pdev->dev)) {
-> +		ret = i2s_tdm_runtime_resume(&pdev->dev);
-
-that looks like dead code? you've just enabled pm_runtime, why would
-this fail?
-
-> +		if (ret)
-> +			goto err_pm_disable;
-> +	}
-> +
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_DMACR, I2S_DMACR_TDL_MASK,
-> +			   I2S_DMACR_TDL(16));
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_DMACR, I2S_DMACR_RDL_MASK,
-> +			   I2S_DMACR_RDL(16));
-> +	regmap_update_bits(i2s_tdm->regmap, I2S_CKR, I2S_CKR_TRCM_MASK,
-> +			   i2s_tdm->clk_trcm << I2S_CKR_TRCM_SHIFT);
-> +
-> +	if (i2s_tdm->soc_data && i2s_tdm->soc_data->init)
-> +		i2s_tdm->soc_data->init(&pdev->dev, res->start);
-> +
-> +	ret = devm_snd_soc_register_component(&pdev->dev,
-> +					      &rockchip_i2s_tdm_component,
-> +					      &i2s_tdm_dai, 1);
-> +
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Could not register DAI\n");
-> +		goto err_suspend;
-> +	}
-> +
-> +	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Could not register PCM\n");
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_suspend:
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		i2s_tdm_runtime_suspend(&pdev->dev);
-
-why is this necessary?
-
-> +err_pm_disable:
-> +	pm_runtime_disable(&pdev->dev);
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_i2s_tdm_remove(struct platform_device *pdev)
-> +{
-> +	struct rk_i2s_tdm_dev *i2s_tdm = dev_get_drvdata(&pdev->dev);
-> +
-> +	pm_runtime_disable(&pdev->dev);
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		i2s_tdm_runtime_suspend(&pdev->dev);
-
-this looks backwards, if you disable pm_runtime first what is the
-expectation for the rest.
-> +
-> +	if (!IS_ERR(i2s_tdm->mclk_tx))
-> +		clk_prepare_enable(i2s_tdm->mclk_tx);
-> +	if (!IS_ERR(i2s_tdm->mclk_rx))
-> +		clk_prepare_enable(i2s_tdm->mclk_rx);
-> +	if (!IS_ERR(i2s_tdm->hclk))
-> +		clk_disable_unprepare(i2s_tdm->hclk);
-> +
-> +	return 0;
-> +}
-> +
-> +#ifdef CONFIG_PM_SLEEP
-
-use __maybe_unused
-
-> +static int rockchip_i2s_tdm_suspend(struct device *dev)
-> +{
-> +	struct rk_i2s_tdm_dev *i2s_tdm = dev_get_drvdata(dev);
-> +
-> +	regcache_mark_dirty(i2s_tdm->regmap);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_i2s_tdm_resume(struct device *dev)
-> +{
-> +	struct rk_i2s_tdm_dev *i2s_tdm = dev_get_drvdata(dev);
-> +	int ret;
-> +
-> +	ret = pm_runtime_get_sync(dev);
-> +	if (ret < 0)
-> +		return ret;
-> +	ret = regcache_sync(i2s_tdm->regmap);
-> +	pm_runtime_put(dev);
-> +
-> +	return ret;
-> +}
-> +#endif
 
 _______________________________________________
 Linux-rockchip mailing list
