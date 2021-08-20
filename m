@@ -1,59 +1,61 @@
-Return-Path: <SRS0=Qwjt=NK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=iF3C=NL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23E69C4338F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 23:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1064C4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 10:19:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 52A2F6101A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Aug 2021 23:04:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 52A2F6101A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id ABFA061037
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 10:19:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ABFA061037
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ypElNHBS61TlVKGqBBdms5q+fWQDnddK8vjnsGjKGrk=; b=XKThEKwugnQ5Wg
-	30LDuCUxs+J5TfJ6kbYnooc1fN3/OWwKwB75MIi2MrKRGa8CpMUKit+jDy2PPB1L58pRQwlZnZKb0
-	HKTKTIavTWgYD4ny/wwqxmrtls3qN3TtVo+CWASPfv9Le2QxASm8D7ZsLrhYI4RAkgPbeLyoEDosM
-	RR+aa6l6zktfuJp2C9+VsLkr4hwTS9QXUer+b7tBZL3DQgFGNUCe3iMgHs/Ad/NW4tUqVmrmVXvZd
-	jBiIE6dGNGXdHfjs5AgovWdbsZQmrWvCMuxwOxkHdyrGgSbPfK9zMDQfWIWVdlhTE3gpE2RU28oAZ
-	/TCgWdFe2A2RnKJiAcSA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=omySoQHyYwJhcAb9elsE5TjJoXHqkrQ6ajk1rrkS7aM=; b=UcVFnCtpWGkiAZ
+	PTLtcJY0sJKhElNy9tvNgOj3ZsIvqA5KigbRYL+U0WtyforK2S4h4hpj+mFyl/0g1YAd/FYoZIRda
+	AocKBmJsIG91l5CvS6jXfQpRlxvXpjDHghWMmczakmxhNQR0WuN3CZ2KtlW2V5LadM11ymRhw4yFv
+	a70GTUPFeDeQeRxqHL8d+MfXUTYQMzmONKWrv3yYooU/V4rM5zI4Ly6j/VYhqAGDsCeX1nQGTMNWJ
+	v6q7xzS4FeMrianHKsIZ3Z+2buSKjrQIET+VSNRYFoSlNAHDIaDfATOV36RpmgVXdus+cyPaTrnGi
+	JS0umf6CITIVFZmFgsLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGr5K-009hKG-8F; Thu, 19 Aug 2021 23:04:30 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mH1cY-00AdjX-C7; Fri, 20 Aug 2021 10:19:30 +0000
+Received: from out30-45.freemail.mail.aliyun.com ([115.124.30.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGr5H-009hGh-VM; Thu, 19 Aug 2021 23:04:29 +0000
-Received: from [212.185.68.41] (helo=phil.client.m3-hotspots.de)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mGr4y-00005w-2K; Fri, 20 Aug 2021 01:04:08 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- jay.xu@rock-chips.com, linux-kernel@vger.kernel.org, lgirdwood@gmail.com,
- linux-arm-kernel@lists.infradead.org, broonie@kernel.org
-Subject: Re: [PATCH] soc: rockchip: io-domain: Remove unneeded semicolon
-Date: Fri, 20 Aug 2021 01:04:06 +0200
-Message-Id: <162941424101.2925714.5080372869374112327.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <1629361749-97977-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-References: <1629361749-97977-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-MIME-Version: 1.0
+ id 1mH1cK-00Adi9-Uj; Fri, 20 Aug 2021 10:19:18 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R201e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04395;
+ MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=9; SR=0;
+ TI=SMTPD_---0UkL.qN1_1629454749; 
+Received: from
+ j63c13417.sqa.eu95.tbsite.net(mailfrom:jiapeng.chong@linux.alibaba.com
+ fp:SMTPD_---0UkL.qN1_1629454749) by smtp.aliyun-inc.com(127.0.0.1);
+ Fri, 20 Aug 2021 18:19:12 +0800
+From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+To: hjc@rock-chips.com
+Cc: heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Subject: [PATCH] drm/rockchip: dsi: Fix duplicate included linux/phy/phy.h
+Date: Fri, 20 Aug 2021 18:18:49 +0800
+Message-Id: <1629454729-108701-1-git-send-email-jiapeng.chong@linux.alibaba.com>
+X-Mailer: git-send-email 1.8.3.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_160428_047862_D3417783 
-X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-CacheID: sfid-20210820_031917_201410_98960496 
+X-CRM114-Status: UNSURE (   6.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,24 +69,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Aug 2021 16:29:09 +0800, Jiapeng Chong wrote:
-> Fix the following coccicheck warnings:
-> 
-> ./drivers/soc/rockchip/io-domain.c:118:2-3: Unneeded semicolon.
+Clean up the following includecheck warning:
 
-Applied, thanks!
+./drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c: linux/phy/phy.h is
+included more than once.
 
-[1/1] soc: rockchip: io-domain: Remove unneeded semicolon
-      commit: 9e5747c57807ad8a04c356340190cfdd0bd54111
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Fixes: 71f68fe7f121 ("drm/rockchip: dsi: add ability to work as a phy instead of full dsi")
+Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+---
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Best regards,
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index a2262be..4a6c100 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -14,7 +14,6 @@
+ #include <linux/of_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/pm_runtime.h>
+-#include <linux/phy/phy.h>
+ #include <linux/regmap.h>
+ 
+ #include <video/mipi_display.h>
 -- 
-Heiko Stuebner <heiko@sntech.de>
+1.8.3.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
