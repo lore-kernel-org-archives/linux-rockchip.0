@@ -2,19 +2,19 @@ Return-Path: <SRS0=iF3C=NL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED0FEC4338F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 21:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B1FEC4338F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 21:16:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82D4E610CC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 21:05:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 82D4E610CC
+	by mail.kernel.org (Postfix) with ESMTPS id F2ED761102
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Aug 2021 21:16:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F2ED761102
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,62 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3ykGklTBPOp/cvIUdtZQ1AOpYqmGzTX/1BQTyz5nLFI=; b=ifs+bym9jK//ni
-	sBdrqdGgLaGME6zUXHx++YEcNXciWJ3ge5iHkbxhy+eXqNqRzPQCy2D8UUnGMp0nqt3/0g4hQd42G
-	miWc96z9icBqNEfCctDQoAC8GSzz261I+kQxwTBhvBfm0jsAAzYZ8j1QxYdCiOb2LIvHT9h4lNcHQ
-	cJkBejUDMYYGwfAlTTHBZUjbvPJzeiFSmVEY0c26kjLuAu5RerYx63lYrRQWVskkvcDaxkqyh/zkz
-	FzKJ8Qf5qyTJzRIFbzaa61nJUtEAl1ENZ6XNR/kYbTbocBkfC2MdGl1liLP1kCbwlYJhsGzh+2hu9
-	aEYzfiHp7x1wXbOegaPQ==;
+	List-Owner; bh=cWIhX0QDXiUKTOd8p/4EvmD5GEtHYtOR8xjwTaSdSXU=; b=zDtEfVFK6Ev+B7
+	UHO6gN3rwyRKZXPeOBueGbg1VGd2IwfzPWmR+pBVoXfEgg/2JJ5OO1Q5l/WhQZ5RU3FCfHPswxNjT
+	oGj7wPKb8BTCClnp8ty54Bc6aLvFHb2gAMGzEhtrRbYjQUEU9rt5hm9kJmlHTQAZodtIubU/ssqEs
+	bFZv7P4mb3r8yppwb3PWxaErMG9sMzX2zK/jHa2qXy+EqqDoANRVcFzqvECjVmpHOq0FMc5e78ayF
+	9EYMcwpaDX5T4EB1G5FPSLqqJb+pdeRPEcVWsIXZu7wVxFwgusW0fc+XT+SRlk/H8+cJc69RmX2EK
+	gT4t0/GzJJhC/9Ta0v1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHBhP-00C76q-Rh; Fri, 20 Aug 2021 21:05:11 +0000
-Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
+	id 1mHBsZ-00C7r2-A1; Fri, 20 Aug 2021 21:16:43 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHBhK-00C75n-PD
- for linux-rockchip@lists.infradead.org; Fri, 20 Aug 2021 21:05:10 +0000
-Received: by mail-il1-x130.google.com with SMTP id j18so10794212ile.8
- for <linux-rockchip@lists.infradead.org>; Fri, 20 Aug 2021 14:05:05 -0700 (PDT)
+ id 1mHBsT-00C7pv-S9
+ for linux-rockchip@lists.infradead.org; Fri, 20 Aug 2021 21:16:41 +0000
+Received: by mail-ot1-x336.google.com with SMTP id
+ g66-20020a9d12c8000000b0051aeba607f1so8521126otg.11
+ for <linux-rockchip@lists.infradead.org>; Fri, 20 Aug 2021 14:16:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AHuE68SZeZJgo+ZJ5047NRixzSrlnFN0gqAr82i7YR8=;
- b=mn6E6ELoWiFgPJPOOfbw3ckSVf0xoK3tXZ1RucjWFtWtIdk6bbX+bhVl69KHevLS6o
- 5eT2qowd6SG4JEwqxjmWQcE+aL1SElXiJ+ofmGEyhpny9Fr8O6OEd3blMOBTfn4xPnFj
- Y0EcBTzvH76uzG2rh5QuY6BYihUcoEm2QMrQs=
+ :cc; bh=JK5qp9aGPwlk30xRI3qcWwl4gv4KOP1fwY03JpC1sQc=;
+ b=JybGeEAWGaaSntO3R2lT7WUj35AygFj+itlN16mJYpO0OvjZL4KqEBkfiQp4PGz5Mh
+ IrMNHPoa3RsBgJOm5bzBRMyg06657LdqdM3qiOSs3QY6vOx/NvESZuyoce2FByz4HnNL
+ 1gZiAXesklldc7Jy2N/XS7I1aWhbJKnHGm2DE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=AHuE68SZeZJgo+ZJ5047NRixzSrlnFN0gqAr82i7YR8=;
- b=bJ4XZdwbqNuCrVEdRGgJj9ZE6gjhejInwaKF5ioX8hLI1s+lf+sQoQeA6PA6vWX8Jq
- XI6rBQPKrXg480ZkD3TfnksO82SyQ4UUYnN25QSPC3BE6PynXS4Z/Zhv6sIjI/Rd3Z4O
- yR9+ys6WQBaeB7S8IxtnEBdm2WbGR517QAuwDdeXZzpEKL1v1C8x6kSGWLiPPFpJEyF4
- ueUf/AK6JnOTHMaFygoTJ+aSR52Iyjj6T0YEHC/OvtWeqW2g22yo9NudI77lC0WgkLIF
- ApxuktMKsHOjLITXva52c/J54Dozx1LGwp8bc+AQZOFgHwURJR56/wUrNX6D+TsiIwz6
- 1MHg==
-X-Gm-Message-State: AOAM532NcBV0XpYaf4dpZvgvtfWq3aFzCQGqEgqv/2hWbuzNlBD0nCJR
- Jz8RipWYOJFfF7Tyza4EHRJm6aoFuOXFnQ==
-X-Google-Smtp-Source: ABdhPJwL5Tf6mPmnKICH1knSxNNe+3JpT1Gh0cY7TS/XOPmPvRkodqlrmhQHCFXPDbYszRVbLUuR4w==
-X-Received: by 2002:a92:870b:: with SMTP id m11mr14239716ild.132.1629493504516; 
- Fri, 20 Aug 2021 14:05:04 -0700 (PDT)
-Received: from mail-il1-f176.google.com (mail-il1-f176.google.com.
- [209.85.166.176])
- by smtp.gmail.com with ESMTPSA id s5sm553824iol.33.2021.08.20.14.05.04
+ bh=JK5qp9aGPwlk30xRI3qcWwl4gv4KOP1fwY03JpC1sQc=;
+ b=df3LSe6f5ttY88j+0nQvKrg89nZzoLHhCisCH3V6ZrnIh9oE/kD+vlwJXPkPhS1ayY
+ 0xLILA3G3PwtbL1OzBt7e7aZBlQndfGxD8M4jiCaveLUI8rdZ3mvqk2FRf1QuKWojEBA
+ WNq6QvTdux9Dmf0xv4XIdDkw2xRfvQIz7egLL7LAnup4izR/rK4oKSt/EY+E5eChAE/d
+ 84x3l+GkYDYOt34imDFqBkKu7t/scianUR49HmkER9WrW9Ou42bhcKrwG7MtNtqzthb+
+ zimu7BQMZtWhNSNQVCeXnDeXPaIly0H9e2u4Vd4S+kbCASLP4LtbgZE+dT/44V039bBJ
+ TZng==
+X-Gm-Message-State: AOAM530G9ew9yxvJ++svhX8P0hgnC2WfYhBp+vZ5QfR4HnboPrsG+9Z8
+ pgNNW5Vd+48rPU82h6IzVowK7br4n6NNrw==
+X-Google-Smtp-Source: ABdhPJwZQZybD6+/hUy7hqdtE+4M47ySUmdZfLjT1bqQm611c/X9grjI99mY0IefW0ex1CzhR3HKxg==
+X-Received: by 2002:aca:1c13:: with SMTP id c19mr4233532oic.93.1629494195270; 
+ Fri, 20 Aug 2021 14:16:35 -0700 (PDT)
+Received: from mail-ot1-f50.google.com (mail-ot1-f50.google.com.
+ [209.85.210.50])
+ by smtp.gmail.com with ESMTPSA id x198sm1540475ooa.43.2021.08.20.14.16.34
  for <linux-rockchip@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Aug 2021 14:05:04 -0700 (PDT)
-Received: by mail-il1-f176.google.com with SMTP id s16so10772416ilo.9
- for <linux-rockchip@lists.infradead.org>; Fri, 20 Aug 2021 14:05:04 -0700 (PDT)
-X-Received: by 2002:a92:d304:: with SMTP id x4mr15198676ila.82.1629493503689; 
- Fri, 20 Aug 2021 14:05:03 -0700 (PDT)
+ Fri, 20 Aug 2021 14:16:34 -0700 (PDT)
+Received: by mail-ot1-f50.google.com with SMTP id
+ r38-20020a05683044a600b0051a2c6dd421so17013754otv.3
+ for <linux-rockchip@lists.infradead.org>; Fri, 20 Aug 2021 14:16:34 -0700 (PDT)
+X-Received: by 2002:a9d:309:: with SMTP id 9mr18770960otv.365.1629494194200;
+ Fri, 20 Aug 2021 14:16:34 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210820133829.1.Ica46f428de8c3beb600760dbcd63cf879ec24baf@changeid>
-In-Reply-To: <20210820133829.1.Ica46f428de8c3beb600760dbcd63cf879ec24baf@changeid>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 20 Aug 2021 14:04:51 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=UwAcJEDE3BQYuCDq4kRKPFAsuzPOseGY66wfXcW8Wn7A@mail.gmail.com>
-Message-ID: <CAD=FV=UwAcJEDE3BQYuCDq4kRKPFAsuzPOseGY66wfXcW8Wn7A@mail.gmail.com>
+ <CAD=FV=UwAcJEDE3BQYuCDq4kRKPFAsuzPOseGY66wfXcW8Wn7A@mail.gmail.com>
+In-Reply-To: <CAD=FV=UwAcJEDE3BQYuCDq4kRKPFAsuzPOseGY66wfXcW8Wn7A@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Date: Fri, 20 Aug 2021 14:16:23 -0700
+X-Gmail-Original-Message-ID: <CA+ASDXO=Bjr+f4mtXwt7vtiTz6tSw7SPuY1RvNWMp6-43Baqfg@mail.gmail.com>
+Message-ID: <CA+ASDXO=Bjr+f4mtXwt7vtiTz6tSw7SPuY1RvNWMp6-43Baqfg@mail.gmail.com>
 Subject: Re: [PATCH] arm64: dts: rockchip: add RK3399 Gru gpio-line-names
-To: Brian Norris <briannorris@chromium.org>
+To: Doug Anderson <dianders@chromium.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>, 
  LKML <linux-kernel@vger.kernel.org>, 
@@ -86,8 +89,8 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
  <devicetree@vger.kernel.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210820_140506_898515_68AC74AD 
-X-CRM114-Status: GOOD (  18.36  )
+X-CRM114-CacheID: sfid-20210820_141637_960665_11946BCD 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,48 +108,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Fri, Aug 20, 2021 at 2:05 PM Doug Anderson <dianders@chromium.org> wrote:
+> I guess one minor nit (now that I look back on the veyron patch where
+> I mentioned it explicitly in the commit message) is that on the veyron
+> ones we sorted this down at the bottom with the other pinctrl stuff
+> instead of sorting it alphabetically with everything else. I'll let
+> Heiko say which he likes better.
 
-On Fri, Aug 20, 2021 at 1:38 PM Brian Norris <briannorris@chromium.org> wrote:
+Huh, didn't notice that semi-convention. I can sort it however Heiko prefers.
+
+> I also notice for veyron that we had a second "ABI" exception for the
+> recovery mode pin, but I believe that goes through a different
+> mechanism now so we're good there.
+
+I believe the recovery mode pin is dropped from recent designs (don't
+quote me in general on that), and there's a different mechanism used
+just to get the at-boot-time "recovery mode" state directly from the
+firmware.
+
+> Even though I didn't do a line-by-line review, I'll still give:
 >
-> It's convenient to get nice names for GPIOs. In particular, Chrome OS
-> tooling looks for "AP_FLASH_WP" and "AP_FLASH_WP_L". The rest are
-> provided for convenience.
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 >
-> Gru-Bob and Gru-Kevin share the gru-chromebook.dtsi, and for the most
-> part they share pin meanings. I omitted a few areas where components
-> were available only on one or the other.
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->
->  .../dts/rockchip/rk3399-gru-chromebook.dtsi   | 176 +++++++++++++++++
->  .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 180 ++++++++++++++++++
->  2 files changed, 356 insertions(+)
+> ...though it's possible an "Acked-by" would be more in the spirit of
+> that? Not sure...
 
-I didn't walk through the schematics and double-check the rails
-personally, but the idea here is right. This matches the type of thing
-we did for veyron, like in commit ca3516b32cd9 ("ARM: dts: rockchip:
-Add pin names for rk3288-veyron-minnie")
+Thanks!
 
-I guess one minor nit (now that I look back on the veyron patch where
-I mentioned it explicitly in the commit message) is that on the veyron
-ones we sorted this down at the bottom with the other pinctrl stuff
-instead of sorting it alphabetically with everything else. I'll let
-Heiko say which he likes better.
-
-I also notice for veyron that we had a second "ABI" exception for the
-recovery mode pin, but I believe that goes through a different
-mechanism now so we're good there.
-
-Even though I didn't do a line-by-line review, I'll still give:
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-
-...though it's possible an "Acked-by" would be more in the spirit of
-that? Not sure...
-
--Doug
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
