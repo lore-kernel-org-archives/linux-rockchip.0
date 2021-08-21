@@ -2,72 +2,63 @@ Return-Path: <SRS0=bXWU=NM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96321C4338F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Aug 2021 12:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8391C4338F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Aug 2021 15:29:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1ED261242
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Aug 2021 12:50:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C1ED261242
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id 758AB61212
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Aug 2021 15:29:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 758AB61212
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jECSBnJT6eb/cYBxp2SiOs76cWRTSuz5RIbZjMO04/8=; b=L6V+JiDlfnZWNs
-	LHZg4/N01un+HqOM6n+KDTs+0+5muQxTzmuYka0SG74zvzyenpidVddAiolJ0q8B+4Z/rK9pn7Rum
-	NoTJXWpsLMegbqJQGP/UAnj9C+jfUnzgfzas1io3zXOkRWZpKnieq0XAwYJdOAJFD5D/NegRn1xGJ
-	u1m8cZ92NHgg+/cj4Cb2aD0DkTfo0BFL6/2QEOArrXKXkp7L//kbuZiz0sXR6uLaS5e3ieS4iYNv2
-	YJ/fg/MZd6wmCsK/Xs5UQCuMY54mpBRH1RMIkYwZNn2pSPv486KYGOsagfUWYcI25kRTEjh/XK18m
-	hsxWgDd9l3+gZsECb1Sg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tDSQTkTCMclpjN2rsnP4rloAvcBt17+lnDWN8s+Szec=; b=wXN87Ysz/tD0Ai
+	4cTEm5p3O+L+6USjDZvhv8DzESi7e4/CQE12jGLVNCKKPdh0OmgIIevbC11voUsG2ZWbqrmcD2y30
+	I+fqqAHJ2V7pjTISFwcPaOZmi1JphGen7WNasmkg1GyuO1NSF6h1PtgycAPHUxR4Y+GSUcWKy+qzZ
+	/BhXvYtaSqkcVDB4jvtuGe7z6InSzYm6R0dO+mS8vsDS2YUE40qn/RVLPz68DKOIM0gRLkh3e6eL7
+	PWKT4f0FWgMfJJKKuwc0bI3D9scxvnbC8jsC8qcCvSbOTohOLO2HsSLOAYWv3SYL/4BHoZw4Vxou+
+	dFif5R+qwxiUzdGEWPOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHQRo-00CoD0-0d; Sat, 21 Aug 2021 12:50:04 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1mHSvb-00CvJS-9n; Sat, 21 Aug 2021 15:28:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHQRa-00CoBR-TI; Sat, 21 Aug 2021 12:49:52 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id C3B4BD772A;
- Sat, 21 Aug 2021 20:49:43 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P704T139881080669952S1629550173496538_; 
- Sat, 21 Aug 2021 20:49:34 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <c71ec8a5484971490f56a865178e1d83>
-X-RL-SENDER: jon.lin@rock-chips.com
-X-SENDER: jon.lin@rock-chips.com
-X-LOGIN-NAME: jon.lin@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-RCPT-COUNT: 7
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Jon Lin <jon.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jon Lin <jon.lin@rock-chips.com>, Mark Brown <broonie@kernel.org>,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] spi: rockchip-sfc: Remove redundant IO operations
-Date: Sat, 21 Aug 2021 20:49:25 +0800
-Message-Id: <20210821124925.6066-1-jon.lin@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
+ id 1mHSvO-00CvIW-HN; Sat, 21 Aug 2021 15:28:47 +0000
+Received: from p5b3b3c9d.dip0.t-ipconnect.de ([91.59.60.157]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mHSvK-0000I5-5o; Sat, 21 Aug 2021 17:28:42 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Doug Anderson <dianders@chromium.org>,
+ Brian Norris <briannorris@chromium.org>
+Cc: Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add RK3399 Gru gpio-line-names
+Date: Sat, 21 Aug 2021 17:28:40 +0200
+Message-ID: <10392569.T7Z3S40VBb@phil>
+In-Reply-To: <CA+ASDXO=Bjr+f4mtXwt7vtiTz6tSw7SPuY1RvNWMp6-43Baqfg@mail.gmail.com>
+References: <20210820133829.1.Ica46f428de8c3beb600760dbcd63cf879ec24baf@changeid>
+ <CAD=FV=UwAcJEDE3BQYuCDq4kRKPFAsuzPOseGY66wfXcW8Wn7A@mail.gmail.com>
+ <CA+ASDXO=Bjr+f4mtXwt7vtiTz6tSw7SPuY1RvNWMp6-43Baqfg@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210821_054951_265271_AC82C0A0 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20210821_082846_634291_66161457 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +71,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Coherent dma buffer is uncached and memcpy is enough.
+Am Freitag, 20. August 2021, 23:16:23 CEST schrieb Brian Norris:
+> On Fri, Aug 20, 2021 at 2:05 PM Doug Anderson <dianders@chromium.org> wrote:
+> > I guess one minor nit (now that I look back on the veyron patch where
+> > I mentioned it explicitly in the commit message) is that on the veyron
+> > ones we sorted this down at the bottom with the other pinctrl stuff
+> > instead of sorting it alphabetically with everything else. I'll let
+> > Heiko say which he likes better.
+> 
+> Huh, didn't notice that semi-convention. I can sort it however Heiko prefers.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
----
+Hmm, I wouldn't call it a semi-convention ... it was more an idea of
+getting all the longer pages of "stuff" out of the way.
 
- drivers/spi/spi-rockchip-sfc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I don't think I have a real hard preference for the gpioX nodes
+and I guess in the long run it might be helpful to try to limit the
+number of "semi-conventions" .
 
-diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
-index 7c4d47fe80c2..81154a8836fc 100644
---- a/drivers/spi/spi-rockchip-sfc.c
-+++ b/drivers/spi/spi-rockchip-sfc.c
-@@ -453,7 +453,7 @@ static int rockchip_sfc_xfer_data_dma(struct rockchip_sfc *sfc,
- 	dev_dbg(sfc->dev, "sfc xfer_dma len=%x\n", len);
- 
- 	if (op->data.dir == SPI_MEM_DATA_OUT)
--		memcpy_toio(sfc->buffer, op->data.buf.out, len);
-+		memcpy(sfc->buffer, op->data.buf.out, len);
- 
- 	ret = rockchip_sfc_fifo_transfer_dma(sfc, sfc->dma_buffer, len);
- 	if (!wait_for_completion_timeout(&sfc->cp, msecs_to_jiffies(2000))) {
-@@ -462,7 +462,7 @@ static int rockchip_sfc_xfer_data_dma(struct rockchip_sfc *sfc,
- 	}
- 	rockchip_sfc_irq_mask(sfc, SFC_IMR_DMA);
- 	if (op->data.dir == SPI_MEM_DATA_IN)
--		memcpy_fromio(op->data.buf.in, sfc->buffer, len);
-+		memcpy(op->data.buf.in, sfc->buffer, len);
- 
- 	return ret;
- }
--- 
-2.17.1
+I still like "pinctrl at the bottom", but I guess it might be easier to
+with alphabetical for nodes with the rest :-) .
+
+
+Heiko
+
+
+
+> > I also notice for veyron that we had a second "ABI" exception for the
+> > recovery mode pin, but I believe that goes through a different
+> > mechanism now so we're good there.
+> 
+> I believe the recovery mode pin is dropped from recent designs (don't
+> quote me in general on that), and there's a different mechanism used
+> just to get the at-boot-time "recovery mode" state directly from the
+> firmware.
+> 
+> > Even though I didn't do a line-by-line review, I'll still give:
+> >
+> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
+> >
+> > ...though it's possible an "Acked-by" would be more in the spirit of
+> > that? Not sure...
+> 
+> Thanks!
+> 
+> Brian
+> 
+
 
 
 
