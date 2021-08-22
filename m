@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-19.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 356EAC4338F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:15:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FA64C4338F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:16:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E5C161214
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:15:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E5C161214
+	by mail.kernel.org (Postfix) with ESMTPS id 26BBC61040
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:16:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 26BBC61040
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P71Ig6XkEvmV8kzlG5inK58zq12EsWOkuYIn1VdDmvw=; b=3jjfIasaURE78C
-	ErYIE+brGXYPrNquPcZ5r/gaJEFtVwVJvUtAwgSW++QlGrASm6t8JVVL5KCP3KehCcrENoqk9vjEA
-	kl4hPmaidDERvrwDpNixPCu81b5d+OLsmGyve3EApOiakr3iI4fyLjgSabTL6pJItEnRU/1EuwRYb
-	ZaGommv93K3VFnZBSDkkCtKCpRUI1kmFDR5DvNv6da7sHkDC8RZs/rr1ritKnTGLKt0zvQsjUSoc1
-	n2cCMQy6EpX+P7OHUurZyeCrV5bcZeTVbYQrABEmbcqEVA2BNCS1PtPhe/bmYaCKQfsdls9DsTy0r
-	u59x3gSt6xDauRKZMusg==;
+	List-Owner; bh=ZgSPUj2FPRrKhpvfr5FE3feShDvZTYOk7VpjwqXsdg0=; b=s0R8HAKOUWcKHj
+	ImCopXGTAoG82AFhdnWsTLvMVcDe9Aiqm2qcGY1ra7jbiK0yo9Fkj4/VUfMNotUZaYyU1N7YiHpVc
+	7f+qwrOhVY+JPauNekykXywEcNgdC5ETd0Hxos9kCkH449Hb44ZN10+7xgH/RzY0YIoXNjna3HF7o
+	wFyprbZNfSZSmgDO1akFHsps89rjc2mgVn3SNaaCywxJDqFbVuFhtiWqXOuBGpPdcg5taZqgMmmub
+	Vo2CfIoCpcfvkM03EJRmID4w/GyKM4Dws5Z8p0gMn6YE1VHRsekRYw40Vseia+3gaEREd+YwP1wSG
+	a0LL2g1lEqlx4kywrGDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHkW3-00Doph-Ug; Sun, 22 Aug 2021 10:15:47 +0000
+	id 1mHkWX-00Dotf-L3; Sun, 22 Aug 2021 10:16:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHkW1-00Dop9-JU; Sun, 22 Aug 2021 10:15:46 +0000
+ id 1mHkWU-00Dot3-89; Sun, 22 Aug 2021 10:16:15 +0000
 Received: from p5b3b3c9d.dip0.t-ipconnect.de ([91.59.60.157]
  helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mHkW0-0003pW-HP; Sun, 22 Aug 2021 12:15:44 +0200
+ id 1mHkWT-0003pn-5Y; Sun, 22 Aug 2021 12:16:13 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 List-Id: <soc.lore.kernel.org>
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip driver changes for 5.15
-Date: Sun, 22 Aug 2021 12:15:43 +0200
-Message-ID: <9718620.EvYhyI6sBW@phil>
+Subject: [GIT PULL] Rockchip dts32 changes for 5.14
+Date: Sun, 22 Aug 2021 12:16:12 +0200
+Message-ID: <5824467.iIbC2pHGDl@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210822_031545_716972_8BF2D0DE 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20210822_031614_341475_5FC5E835 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,58 +70,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
-
-please find below (and in the next mails) changes for
-Rockchip platforms for 5.15.
-
-Please pull
-
-Thanks
-Heiko
-
-
 The following changes since commit e73f0f0ee7541171d89f2e2491130c7771ba58d3:
 
   Linux 5.14-rc1 (2021-07-11 15:07:40 -0700)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.15-rockchip-driver1
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.15-rockchip-dts32-1
 
-for you to fetch changes up to 9e5747c57807ad8a04c356340190cfdd0bd54111:
+for you to fetch changes up to 9d508827c7939242e8ed6b06f66aa87d9f7ea832:
 
-  soc: rockchip: io-domain: Remove unneeded semicolon (2021-08-19 23:56:38 +0200)
-
-----------------------------------------------------------------
-Yaml conversion of io-domain bindings and addition of
-rk3568 io domains.
+  ARM: dts: rockchip: Add SFC to RV1108 (2021-08-18 23:48:35 +0200)
 
 ----------------------------------------------------------------
-Geert Uytterhoeven (1):
-      soc: rockchip: ROCKCHIP_GRF should not default to y, unconditionally
+io-domains for rk3188 and rv1108, sfc (flash) support fpr rv1108
+and some cleanups.
 
-Jianqun Xu (1):
-      soc: rockchip: io-domain: add rk3568 support
+----------------------------------------------------------------
+Chris Morgan (1):
+      ARM: dts: rockchip: Add SFC to RV1108
 
-Jiapeng Chong (1):
-      soc: rockchip: io-domain: Remove unneeded semicolon
+Johan Jonker (6):
+      ARM: dts: rockchip: rename pcfg_* nodenames for rk3066/rk3188
+      ARM: dts: rockchip: add space after &grf on rk3188
+      ARM: dts: rockchip: rename timer compatible strings for rk3066a
+      ARM: dts: rockchip: remove interrupt-names from iommu nodes
+      ARM: dts: rockchip: add io-domains node to rk3188.dtsi
+      ARM: dts: rockchip: add io-domains nodes to rv1108.dtsi
 
-Johan Jonker (2):
-      dt-bindings: power: convert rockchip-io-domain.txt to YAML
-      dt-bindings: soc: rockchip: add rockchip-io-domain.yaml object to grf.yaml
-
-Michael Riesch (1):
-      dt-bindings: power: add rk3568-pmu-io-domain support
-
- .../bindings/power/rockchip-io-domain.txt          | 135 --------
- .../bindings/power/rockchip-io-domain.yaml         | 360 +++++++++++++++++++++
- .../devicetree/bindings/soc/rockchip/grf.yaml      |  19 +-
- drivers/soc/rockchip/Kconfig                       |   4 +-
- drivers/soc/rockchip/io-domain.c                   |  88 ++++-
- 5 files changed, 455 insertions(+), 151 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/power/rockchip-io-domain.txt
- create mode 100644 Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
+ arch/arm/boot/dts/rk3066a.dtsi | 10 ++++-----
+ arch/arm/boot/dts/rk3188.dtsi  | 13 +++++++----
+ arch/arm/boot/dts/rk3288.dtsi  |  6 ------
+ arch/arm/boot/dts/rv1108.dtsi  | 49 +++++++++++++++++++++++++++++++++++++++++-
+ 4 files changed, 62 insertions(+), 16 deletions(-)
 
 
 
