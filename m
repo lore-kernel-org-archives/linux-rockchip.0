@@ -2,56 +2,87 @@ Return-Path: <SRS0=1QWa=NN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2EA8C4338F
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:18:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CC47C4338F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 11:58:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E79C61214
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 10:18:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7E79C61214
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 070376126A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Aug 2021 11:58:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 070376126A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4R8o7+CzraELNY8siLirnF1jr5t4hCYGSZ0TAOEdS7A=; b=My33k6z2IO5xn7
-	447G3j65zpaJr0rjDfsv1/ld+vhIN+Gpd0bjh0jSx8l9tXyoJHXhnQDOa3jEUj/g+7x5nDMKc9IL5
-	6ha96DBL+NqPS24NrzwLzm4cUCzHbWbGQWKNmdRc6MiGGJlVI9Y2/KdklS3lq+GeJ6mAo4C06cq0h
-	/uwwpmVNpfhCItGIPQBHo8zrbwvWOueOgF5tKjCZLe8NQtmkl2G1hRHSz+odl7zMLedq2E1aTmhy7
-	ZA86+37BcrVjbFlamloQeEmTEUWbuvLgX/AGAtibXquj5OsuE9D6qhbrWbnbrk+Jip18TWwPUl0/G
-	sblGxaMhWBQJXvyuzDRg==;
+	List-Owner; bh=v+RX2qvoz63dhPM0f0Y4YMWuQDZU/Uq7LzAjQQ3SgOA=; b=WCmBvipP/0cABQ
+	TxLAT4oNyTaOaxP1uLgCMlP7k6g6wFnrwZrZlbE1fUfRNZaWNKlXVwcoZSusumROuv1gFPwGEflpG
+	0VPolwmXHYlMM/ZbrqZCvgODM0BHImRU3kRJjtEVlV0r3a8Rb93htXIpq+slViOu0Nw8uZIv8Mx9W
+	GRcu2yZSR6I2lGUpNaEttLJLm8Jm7jmRMFmbZYSEJlNORQtpwEfkO3zTwKC3HJTrFMU3F+T2Nyw3m
+	XgH4QpN8KpmbzJKADIBFi7N2QdWYgbZasdNquyD9EnYurqidjjUAdCG4Nw7YSYJalS58ILjHJ/84h
+	Fb1Hu4RfNBRI/4W6maNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHkYN-00DpOV-KQ; Sun, 22 Aug 2021 10:18:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mHm7H-00DxaU-2r; Sun, 22 Aug 2021 11:58:19 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHkYK-00DpMr-CQ; Sun, 22 Aug 2021 10:18:10 +0000
-Received: from p5b3b3c9d.dip0.t-ipconnect.de ([91.59.60.157]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mHkYJ-0003qs-7l; Sun, 22 Aug 2021 12:18:07 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-List-Id: <soc.lore.kernel.org>
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 5.15
-Date: Sun, 22 Aug 2021 12:18:06 +0200
-Message-ID: <4327460.usQuhbGJ8B@phil>
+ id 1mHm73-00DxYJ-L7; Sun, 22 Aug 2021 11:58:07 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id q11so21665458wrr.9;
+ Sun, 22 Aug 2021 04:58:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4j6NCEA2JsSzQ2QsfgWgHDpNcyrom07JcEHXpRwvQ14=;
+ b=aojctXTp9BeGs075gGnP60Pb0/CqIhoBf7WWZx1f3Qk4xIvD2dSjNWonXwAVEIfBh/
+ 4H76ff14KgN5KLmvPR4Suj8+3ZeAjXM1p5iajIcZ5aGGmTimRAZ5gp31VTyxSJ1utlHH
+ Ht8tu41WQKznENCSRDhJLnsiTGgHoyD0Crp6tEg/TqR/8+bnd1J2CTlIcwHUqi8DLfhG
+ l8he16ClLwmKCYcuVO9ZOxV98bgv7kQA/2GmjMQj1uoR7seRwyF9bHmsuKqdOF3SZBA5
+ W2zmVQ/7Ms0Iz2+eGoiyXo8E8WK8hR5Y2UQpTJA5/e3XrOcAOWanl1AW3gy1k9HdWvdR
+ onXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=4j6NCEA2JsSzQ2QsfgWgHDpNcyrom07JcEHXpRwvQ14=;
+ b=pRKfe8bNIZgTZV5rOw6Bus1xPkpgGfMsFFvQ36CwXpRS9YOJ4e1uqezoHU1lL5ATJG
+ 8fLBzW8z5dsTQyyj6WxxV2lJkrkFW9/i3kIYSzIAR+mZtBBWwvE80+8094kK6pxE598n
+ Q40ecmo8Hm5dNHpKpquQxrZ7iCBY8+RtH09uAVhwGDi0FXfUWgDBRjugxsb0aom3A086
+ 2NQmo7ePRLf5NLV0OggfWZnnasd5cMagkMagwzt5n308TmvnvSnhnPeksjz0fMPIjW08
+ jCFAd/4udf2LhGnbFYIOQrWgp61PHzOGhQ1nM/EayBcWM5tMFgEqcvXIeGaWiZZcJZ2A
+ 1GQA==
+X-Gm-Message-State: AOAM531WtLw5B/9tQhFOwHeLa7GI3+/VhZo+HnJAFpy9Tw4rBbzkUOk8
+ 1QbHLRrYWZJw4HZEviS95A==
+X-Google-Smtp-Source: ABdhPJzMnOC33dq2VZnwECdAtqdJtIWt0/HDpXCZlRyZcQAcpER+Z3PxsOIn5IU1WqY6q3wU9q/x6Q==
+X-Received: by 2002:a5d:4bca:: with SMTP id l10mr8251436wrt.187.1629633483471; 
+ Sun, 22 Aug 2021 04:58:03 -0700 (PDT)
+Received: from alex-ThinkPad-E480.. ([2a02:810b:f40:4200:97f6:a4b1:c76e:8844])
+ by smtp.googlemail.com with ESMTPSA id
+ k16sm1597965wrx.87.2021.08.22.04.58.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 22 Aug 2021 04:58:03 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Re-add interrupt-names for RK3399's vpu
+Date: Sun, 22 Aug 2021 13:57:55 +0200
+Message-Id: <20210822115755.3171937-1-knaerzche@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210822_031808_504726_745F964D 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20210822_045805_740281_17F46903 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,159 +100,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit e73f0f0ee7541171d89f2e2491130c7771ba58d3:
+Commit a728c10dd62a ("arm64: dts: rockchip: remove interrupt-names from iommu nodes")
+intended to remove the interrupt-names property for mmu nodes, but it
+also removed it for the vpu node in rk3399.dtsi. That makes the driver
+fail probing currently.
+Fix this by re-adding the property for this node.
 
-  Linux 5.14-rc1 (2021-07-11 15:07:40 -0700)
+Fixes: a728c10dd62a ("arm64: dts: rockchip: remove interrupt-names from iommu nodes")
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-are available in the Git repository at:
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 9db9484ca38f..44def886b391 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1240,6 +1240,7 @@ vpu: video-codec@ff650000 {
+ 		reg = <0x0 0xff650000 0x0 0x800>;
+ 		interrupts = <GIC_SPI 114 IRQ_TYPE_LEVEL_HIGH 0>,
+ 			     <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vepu", "vdpu";
+ 		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+ 		clock-names = "aclk", "hclk";
+ 		iommus = <&vpu_mmu>;
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.15-rockchip-dts64-1
-
-for you to fetch changes up to 9a35fd01f4abc3974e12539448038307acf27f16:
-
-  arm64: dts: rockchip: add RK3399 Gru gpio-line-names (2021-08-21 18:18:50 +0200)
-
-----------------------------------------------------------------
-New boards: Firefly roc-rk3399-pc-pls and rk3328-pc; Scarlet-Dumo
-tablet variant; Rock Pi 4 A+, B+; Pine64 Quartz64-A (rk3566-based)
-
-Big additions for the rk3568: tsadc; saradc; gpio-support; gmac 1+2;
-watchdog; pmu; io-domains and enabling these new things on the
-rk3568-evb.
-
-Addition of the rk3566 - a variant of the rk3568 with slightly less
-peripherals.
-
-SFC (serial flash controller) for rk3308 and px30 (including the
-Odroid Go2)
-
-Support for the rk3399's second image signal processor and vpu on px30
-A number of smaller additions to multiple boards (Rock Pi 4, Pinebook Pro
-and helios64) and cleanups in some parts.
-
-----------------------------------------------------------------
-Alex Bee (5):
-      dt-bindings: Add doc for ROCK Pi 4 A+ and B+
-      arm64: dts: rockchip: Add RK3399 ROCK Pi 4A+ board
-      arm64: dts: rockchip: Add RK3399 ROCK Pi 4B+ board
-      arm64: dts: rockchip: add ES8316 codec for ROCK Pi 4
-      arm64: dts: rockchip: add SPDIF node for ROCK Pi 4
-
-Brian Norris (1):
-      arm64: dts: rockchip: add RK3399 Gru gpio-line-names
-
-Chen-Yu Tsai (2):
-      dt-bindings: arm: rockchip: Add gru-scarlet-dumo board
-      arm64: dts: rockchip: Add gru-scarlet-dumo board
-
-Chris Morgan (3):
-      arm64: dts: rockchip: Add SFC to PX30
-      arm64: dts: rockchip: Add SFC to RK3308
-      arm64: dts: rockchip: Enable SFC for Odroid Go Advance
-
-Dan Johansen (1):
-      arm64: dts: rockchip: Setup USB typec port as datarole on for Pinebook Pro
-
-Dennis Gilmore (3):
-      arm64: dts: rockchip: set stdout-path on helios64
-      arm64: dts: rockchip: add SPI support to helios64
-      arm64: dts: rockchip: enable tsadc on helios64
-
-Heiko Stuebner (4):
-      arm64: dts: rockchip: add csi-dphy to px30
-      arm64: dts: rockchip: add #phy-cells to mipi-dsi1 on rk3399
-      arm64: dts: rockchip: add cif clk-control pinctrl for rk3399
-      arm64: dts: rockchip: add isp1 node on rk3399
-
-Johan Jonker (4):
-      arm64: dts: rockchip: remove interrupt-names from iommu nodes
-      arm64: dts: rockchip: rename flash nodenames
-      arm64: dts: rockchip: remove clock_in_out from gmac2phy node in rk3318-a95x-z2.dts
-      arm64: dts: rockchip: remove ddc-i2c-scl-* properties from rk3318-a95x-z2.dts
-
-Levin Du (4):
-      dt-bindings: add doc for Firefly ROC-RK3328-PC
-      arm64: dts: rockchip: add support for Firefly ROC-RK3328-PC
-      dt-bindings: add doc for Firefly ROC-RK3399-PC-PLUS
-      arm64: dts: rockchip: add support for Firefly ROC-RK3399-PC-PLUS
-
-Liang Chen (3):
-      dt-bindings: arm: rockchip: add rk3568 compatible string to pmu.yaml
-      arm64: dts: rockchip: add pmu and qos nodes for rk3568
-      arm64: dts: rockchip: add watchdog to rk3568
-
-Matthias Brugger (1):
-      arm64: dts: rockchip: Disable CDN DP on Pinebook Pro
-
-Michael Riesch (7):
-      arm64: dts: rockchip: add gmac0 node to rk3568
-      arm64: dts: rockchip: rk3568-evb1-v10: add ethernet support
-      arm64: dts: rockchip: add core io domains node for rk356x
-      arm64: dts: rockchip: enable io domains on rk3568-evb1-v10
-      arm64: dts: rockchip: add regulators of rk809 pmic to rk3568-evb1-v10
-      arm64: dts: rockchip: add node for sd card to rk3568-evb1-v10
-      arm64: dts: rockchip: add pinctrl and alias to emmc node to rk3568-evb1-v10
-
-Paul Kocialkowski (1):
-      arm64: dts: rockchip: Add VPU support for the PX30
-
-Peter Geis (12):
-      arm64: dts: rockchip: move rk3568 dtsi to rk356x dtsi
-      arm64: dts: rockchip: split rk3568 device tree
-      arm64: dts: rockchip: add rk3566 dtsi
-      arm64: dts: rockchip: add basic dts for Pine64 Quartz64-A
-      arm64: dts: rockchip: fix rk3568 mbi-alias
-      arm64: dts: rockchip: add rk356x gmac1 node
-      arm64: dts: rockchip: adjust rk3568 pll clocks
-      arm64: dts: rockchip: enable gmac node on quartz64-a
-      arm64: dts: rockchip: add thermal fan control to rockpro64
-      arm64: dts: rockchip: add rk356x gpio debounce clocks
-      arm64: dts: rockchip: add rk3568 tsadc nodes
-      arm64: dts: rockchip: add thermal support to Quartz64 Model A
-
-Simon Xue (1):
-      arm64: dts: rockchip: add saradc node for rk3568
-
- .../devicetree/bindings/arm/rockchip.yaml          |  48 +-
- .../devicetree/bindings/arm/rockchip/pmu.yaml      |   2 +
- arch/arm64/boot/dts/rockchip/Makefile              |   6 +
- arch/arm64/boot/dts/rockchip/px30.dtsi             |  73 ++
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           |  37 +
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    |   3 -
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts |  16 +
- arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts     | 110 +++
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |   2 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |   5 -
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   5 -
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   | 176 ++++
- .../boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts  |  41 +
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi      | 180 ++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |   2 +-
- .../boot/dts/rockchip/rk3399-kobol-helios64.dts    |  36 +
- .../boot/dts/rockchip/rk3399-pinebook-pro.dts      |   6 +-
- .../arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts | 218 +++++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi |  54 ++
- .../boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts   |  14 +
- .../boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts   |  47 ++
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi |  29 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  47 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 497 +++++++++++
- arch/arm64/boot/dts/rockchip/rk3566.dtsi           |  20 +
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts   | 308 +++++++
- arch/arm64/boot/dts/rockchip/rk3568-pinctrl.dtsi   |   9 +
- arch/arm64/boot/dts/rockchip/rk3568.dtsi           | 644 ++------------
- arch/arm64/boot/dts/rockchip/rk356x.dtsi           | 930 +++++++++++++++++++++
- 29 files changed, 2966 insertions(+), 599 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk356x.dtsi
-
-
+base-commit: 5936c9eb785b46fdc5563d1c5c34b5558e3fa156
+-- 
+2.30.2
 
 
 _______________________________________________
