@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 178DCC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 10:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 402E1C4320A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 10:54:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DED5D6137F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 10:53:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DED5D6137F
+	by mail.kernel.org (Postfix) with ESMTPS id 144E161391
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 10:54:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 144E161391
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,32 +23,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Krg1+moC/Ji1g57raTRSYGJGAIv1rwcORcigdrlCFus=; b=opLo+aZxcXQMQa
-	pHxISd8bN5B/+zDdZ9vkG3oJJOrsJyNlM0K3Tl7laW79MPpPGPdTEaaTJaM2YHj8ppTmM15JRCmy/
-	yNBxEBUBE0kssyTl4mz/d1p/+nk0tTpgAWoKytD5i29htGJXfk1TM/5rYnCH1hLhOI96fSC5yB/Y7
-	ThnE2kHlKuwTCChs/gMyOIQ1UxZdIFOXXgTgtRjxHX9ncsj8pQl6108AiaTvk5FgkI6HUmrLDM+ss
-	WDpSz4YXH651CIVjpGKqjt16hWQpnp4jyM24GXqghbB3tVhNyYw0BxRr6Z6VH7z/bt+aF+bMqc69p
-	QDGnK16QVmOpt4U6L3FA==;
+	List-Owner; bh=kCYge7EHSSL+Ai76zaROtaTohZi4ZsWQ0khNOW4oTn8=; b=KkuarBe8U4rSPg
+	u0S+qE2e6ZaZtMPJKQ3BlNbVD9Hu+Ow30SI5gY0xauE9K3BJYb3VUn2t3tzVqFh+nv6Oowkx2A/v+
+	CB+dK0cN6d0fuPkq0dtVTUvIHiVzoBJwbQz0oOnwXBGar49oxqT9eWLrqiKxmjDnTiNIKiiw0Be0c
+	Ig9f85Vsb/OIvwD4smr3vZ6svH26ySofUELC1AXkNNjYXtlkwT+QGpN8g9fQfylhBxF0HOwZOSN4a
+	AtpQjrCm1hmd3Q20On5Y7rzaH2mzdze63/FbtSojiIyYtxrxNxvLhCwIrqQWJ6r02WBiSJpUPsO9Q
+	GLEgRD4vngX9CHTRWyRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI7a3-00GRM8-32; Mon, 23 Aug 2021 10:53:27 +0000
+	id 1mI7bJ-00GRzX-69; Mon, 23 Aug 2021 10:54:45 +0000
 Received: from lucky1.263xmail.com ([211.157.147.132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI7Zz-00GRJU-SO
- for linux-rockchip@lists.infradead.org; Mon, 23 Aug 2021 10:53:25 +0000
-Received: from localhost (unknown [192.168.167.224])
- by lucky1.263xmail.com (Postfix) with ESMTP id 89B59FB6AB;
- Mon, 23 Aug 2021 18:53:21 +0800 (CST)
+ id 1mI7bG-00GRww-4U
+ for linux-rockchip@lists.infradead.org; Mon, 23 Aug 2021 10:54:43 +0000
+Received: from localhost (unknown [192.168.167.225])
+ by lucky1.263xmail.com (Postfix) with ESMTP id F36DBFB5F6;
+ Mon, 23 Aug 2021 18:54:38 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
 X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P22031T140205908551424S1629715992162978_; 
- Mon, 23 Aug 2021 18:53:15 +0800 (CST)
+ P10596T140297356953344S1629716077595046_; 
+ Mon, 23 Aug 2021 18:54:39 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <a83add3348000e17268c56254b1406d0>
+X-UNIQUE-TAG: <7744b2575fba8ab9f2f9be421384bba5>
 X-RL-SENDER: sugar.zhang@rock-chips.com
 X-SENDER: zxg@rock-chips.com
 X-LOGIN-NAME: sugar.zhang@rock-chips.com
@@ -62,16 +63,15 @@ To: broonie@kernel.org,
 	heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  alsa-devel@alsa-project.org, Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH 09/15] ASoC: rockchip: i2s: Add property to specify play/cap
- capability
-Date: Mon, 23 Aug 2021 18:53:04 +0800
-Message-Id: <1629715990-21372-5-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH 11/15] ASoC: rockchip: i2s: Add compatible for more SoCs
+Date: Mon, 23 Aug 2021 18:54:32 +0800
+Message-Id: <1629716076-21465-2-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1629715710-21137-1-git-send-email-sugar.zhang@rock-chips.com>
 References: <1629715710-21137-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_035324_213251_5CB8CA20 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20210823_035442_472241_4F0D2C0E 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,31 +90,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-- 'rockchip,playback-only': support playback only.
-- 'rockchip,capture-only': support capture only.
+This patch adds more compatible strings for SoCs.
 
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-Change-Id: Ie022214de4e42bba5ba898ea39a4e39807e8d4ab
+Change-Id: I980a7c34a7f6c82a066a37e7f97fa4e69cbae583
 ---
- sound/soc/rockchip/rockchip_i2s.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ sound/soc/rockchip/rockchip_i2s.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 8a432ae..cedfe47 100644
+index cedfe47..a0f2778 100644
 --- a/sound/soc/rockchip/rockchip_i2s.c
 +++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -721,6 +721,11 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 			soc_dai->capture.channels_max = val;
- 	}
+@@ -613,10 +613,20 @@ static const struct rk_i2s_pins rk3399_i2s_pins = {
+ };
  
-+	if (of_property_read_bool(node, "rockchip,playback-only"))
-+		soc_dai->capture.channels_min = 0;
-+	else if (of_property_read_bool(node, "rockchip,capture-only"))
-+		soc_dai->playback.channels_min = 0;
-+
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rockchip_i2s_component,
- 					      soc_dai, 1);
+ static const struct of_device_id rockchip_i2s_match[] __maybe_unused = {
++	{ .compatible = "rockchip,px30-i2s", },
++	{ .compatible = "rockchip,rk1808-i2s", },
++	{ .compatible = "rockchip,rk3036-i2s", },
+ 	{ .compatible = "rockchip,rk3066-i2s", },
++	{ .compatible = "rockchip,rk3128-i2s", },
+ 	{ .compatible = "rockchip,rk3188-i2s", },
++	{ .compatible = "rockchip,rk3228-i2s", },
+ 	{ .compatible = "rockchip,rk3288-i2s", },
++	{ .compatible = "rockchip,rk3308-i2s", },
++	{ .compatible = "rockchip,rk3328-i2s", },
++	{ .compatible = "rockchip,rk3366-i2s", },
++	{ .compatible = "rockchip,rk3368-i2s", },
+ 	{ .compatible = "rockchip,rk3399-i2s", .data = &rk3399_i2s_pins },
++	{ .compatible = "rockchip,rv1126-i2s", },
+ 	{},
+ };
+ 
 -- 
 2.7.4
 
