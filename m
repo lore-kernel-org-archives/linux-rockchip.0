@@ -2,73 +2,69 @@ Return-Path: <SRS0=s7m+=NO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F34EC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 16:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDB9AC4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 16:16:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A94A1613D0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 16:04:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A94A1613D0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 7E81C60FDA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 16:16:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7E81C60FDA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=exE9iIgc/3tl1GfpVpWGJe2qcnwBgbuuWOUgXZnSiuQ=; b=eKCPPBYBEiI/PY
-	dUT84YGH+rfkoZKdjGyM63P3FYdpFG8Mg1hhfq24gYskJBEq0BpfuvNGN+EuA5m5gFXrszn0knGQH
-	EvkIua8scQsqiJzD08YBPm8WG572rXN0TyI4TAKQlhAl+76Gz7+ji+H+F45AVW8d3cWKLt4YnWHe0
-	dNGTKDftOiBs74Xlje48brZPSBkG4mFv0gad0jmkrRyVVzrY4vDlBf+mJ2CEnFamS9gkblfcMaZQp
-	wP+kVILOwS+DBbfZiThuk/KZYcJevxV6bp5M12Vqh3JbfzzLZwOIF2nfjOMoZYN8rLVVd9+z+rsdp
-	fgDZiJNS3S/+CQ1Hypqw==;
+	List-Owner; bh=huwsZ17lNko27ni7ocIs4ZRgUUo3hQhfRNlTGj18EDY=; b=2bII/i8hCIsknT
+	hxz5u58DoexpMg8WVruocSNvwDp7OdlGzvjWBcoFG+ntZmYR9hFd/bipOEb1AjPuVSdBtUqgPdLDR
+	9mSbWllbhPikPz6DXT31/zPgFjaJvuzfy0OwmCSBMDSfdnRSFG0zO9ioFBpKFSw3dVoQBW1B3iYED
+	3EQEI5Kc3BYj73EJxxcrL3qzg88OsgASJvmBi4Zsfh0ARS7cpbgI3/A/DT3padapBv6qJw4YPV3zp
+	mT3LIpXKAqohLi9QF1MM5q6M5l4ajBwL0iY7uCLCOiSBw+4ac4tlGo9GK8Fmt3Kuy0mKBU5M1U/mu
+	rgD3ZaYLe0oQYVRT9rCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mICR6-00HWSP-Sy; Mon, 23 Aug 2021 16:04:32 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mICQm-00HWOq-6j
- for linux-rockchip@lists.infradead.org; Mon, 23 Aug 2021 16:04:13 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mICQ9-0007C2-Dr; Mon, 23 Aug 2021 18:03:33 +0200
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mICQ7-0002Gk-Rt; Mon, 23 Aug 2021 18:03:31 +0200
-Message-ID: <b596373b280dfe23a7e932b84ce31a2dbb806912.camel@pengutronix.de>
-Subject: Re: [PATCH v2 1/4] ASoC: rockchip: add support for i2s-tdm controller
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner
- <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Date: Mon, 23 Aug 2021 18:03:31 +0200
-In-Reply-To: <9368735.gdWEK3B62L@archbook>
-References: <20210820182731.29370-1-frattaroli.nicolas@gmail.com>
- <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
- <6bc6330215980f10853a2dac69f0bdfd9c8fb303.camel@pengutronix.de>
- <9368735.gdWEK3B62L@archbook>
-User-Agent: Evolution 3.30.5-1.1 
+	id 1mICc9-00HYpF-RH; Mon, 23 Aug 2021 16:15:57 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mICbp-00HYhV-NL; Mon, 23 Aug 2021 16:15:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BBB9F11D4;
+ Mon, 23 Aug 2021 09:15:34 -0700 (PDT)
+Received: from lpieralisi (e121166-lin.cambridge.arm.com [10.1.196.255])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F313E3F5A1;
+ Mon, 23 Aug 2021 09:15:32 -0700 (PDT)
+Date: Mon, 23 Aug 2021 17:15:27 +0100
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Rob Herring <robh@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Simon Xue <xxm@rock-chips.com>, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: rockchip-dwc: Potential error pointer
+ dereference in probe
+Message-ID: <20210823161527.GA8289@lpieralisi>
+References: <20210813141257.GB7722@kadam>
+ <20210813142648.GA12057@kili>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20210813142648.GA12057@kili>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_090412_290131_4925612D 
-X-CRM114-Status: GOOD (  31.38  )
+X-CRM114-CacheID: sfid-20210823_091537_838917_5FDFCF9C 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,70 +82,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
-
-On Mon, 2021-08-23 at 16:35 +0200, Nicolas Frattaroli wrote:
-[...]
-> > I'm not too fond of reimplementing half a reset controller in here.
-> > The reset framework does not support synchronized (de)assertion of
-> > multiple reset controls, I wonder if this would be useful to add.
-> > Without having thought about this too hard, I could imagine this as an
-> > extension to the bulk API, or possibly a call to join multiple reset
-> > controls into a reset control array.
+On Fri, Aug 13, 2021 at 05:26:48PM +0300, Dan Carpenter wrote:
+> If devm_regulator_get_optional() returns -ENODEV then it would lead
+> to an error pointer dereference on the next line and in the error
+> handling code.
 > 
-> I agree, the code required for synchronised reset seems to be a good
-> candidate for a generalised solution elsewhere.
-> However, I'm not sure if I'm the right candidate to design this API
-> as my first kernel contribution when the board I'm currently testing
-> this with doesn't even utilise the synchronized reset.
+> Fixes: e1229e884e19 ("PCI: rockchip-dwc: Add Rockchip RK356X host controller driver")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> ---
+> v2: The -ENODEV from devm_regulator_get_optional() has to be handled
+>     specially.
 > 
-> If I come across an opportunity to test synchronised resets, I'll
-> definitely look into refactoring this. I'd also be happy to hear of
-> any other driver which is currently implementing its own synchronised
-> reset.
-[...] 
-> > What is the reason for the different delays in
-> > rockchip_snd_xfer_sync_reset() and rockchip_snd_reset()?
-> > 
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 17 ++++++++++-------
+>  1 file changed, 10 insertions(+), 7 deletions(-)
+
+I squashed it in with the patch that is fixing, thanks a lot.
+
+Lorenzo
+
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 20cef2e06f66..c9b341e55cbb 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -224,15 +224,17 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  
+>  	/* DON'T MOVE ME: must be enable before PHY init */
+>  	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+> -	if (IS_ERR(rockchip->vpcie3v3))
+> +	if (IS_ERR(rockchip->vpcie3v3)) {
+>  		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
+>  			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
+>  					"failed to get vpcie3v3 regulator\n");
+> -
+> -	ret = regulator_enable(rockchip->vpcie3v3);
+> -	if (ret) {
+> -		dev_err(dev, "failed to enable vpcie3v3 regulator\n");
+> -		return ret;
+> +		rockchip->vpcie3v3 = NULL;
+> +	} else {
+> +		ret = regulator_enable(rockchip->vpcie3v3);
+> +		if (ret) {
+> +			dev_err(dev, "failed to enable vpcie3v3 regulator\n");
+> +			return ret;
+> +		}
+>  	}
+>  
+>  	ret = rockchip_pcie_phy_init(rockchip);
+> @@ -255,7 +257,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  deinit_phy:
+>  	rockchip_pcie_phy_deinit(rockchip);
+>  disable_regulator:
+> -	regulator_disable(rockchip->vpcie3v3);
+> +	if (rockchip->vpcie3v3)
+> +		regulator_disable(rockchip->vpcie3v3);
+>  
+>  	return ret;
+>  }
+> -- 
+> 2.20.1
 > 
-> Simply put: I have no idea. This is what downstream does, and it
-> appears to work for me. The git history of the downstream kernel
-> also doesn't tell me anything about why the sync reset is 150
-> and this one is 1.
-> 
-> I've got no device to test the sync reset with at the moment so
-> I'm wary of playing with the delay value.
-
-Fair points. You could remove the untested synchronized reset support
-for now; that would allow to get rid of the rockchip,cru device tree
-property, which is only required to let this driver access the CRU
-registers behind the clock/reset controller driver's back.
-
-[...]
-> > > +	if (i2s_tdm->clk_trcm != TRCM_TXRX) {
-> > > +		cru_node = of_parse_phandle(node, "rockchip,cru", 0);
-> > > +		i2s_tdm->cru_base = of_iomap(cru_node, 0);
-> > 
-> > This is a bit ugly if there is another driver sitting on the
-> > rockchip,cru compatible node. Which reset controller driver is backing
-> > the reset controls below?
-> 
-> I'm not sure if I understand the question (I only just today learned that
-> reset controls have drivers) but I think the reset it is using in the
-> Quartz64 dts is backed by rk3568-cru. Let me know if I misunderstood you.
-
-That's the one, thanks.
-
-The devm_reset_control_get() calls below follow the "reset-names"
-and "resets" device tree properties. Those point (&cru) to a
-clock-controller node with compatible = "rockchip,rk3568-cru".
-
-The corresponding driver is drivers/clk/rockchip/clk-rk3568.c,
-so the reset controller is provided by the reset_controller_register()
-call in drivers/clk/rockchip/softrst.c.
-
-regards
-Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
