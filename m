@@ -2,90 +2,143 @@ Return-Path: <SRS0=s7m+=NO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D77BCC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 14:36:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60CAFC4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 14:38:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 86F7A60F11
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 14:36:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 86F7A60F11
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2C37260FDC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 14:38:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C37260FDC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KTnUQ6QlJC2efyCdUb6Ef80K2ytBwpUlrYSf2wuRtkQ=; b=TxeGjlZXZQbvxM
-	lJFVAcssBA7HuRP3CFSV3b6U5UGD0hNDio1TcCMXbmq3BHoT10LfbLxeQd6CP6ND/+ZhXb3R7uKc8
-	BdaScMPMySEdIxb7ZYAPTlGPkg0A3/fVvaqGbep530OFGLHsMEXTuLetWeELvOpP1XPKFLkEittaW
-	hkpudCzszXXUlQVK3XNMT7Bimw0lNvhWnOr/0/STBlMZY+l9EtnUJPisFsWeoaBqfp7by1J3I9XDn
-	EhHTkoHLk7FSHwyNqLHe51Kj/Z8ehJHCCGDioukRLc7JNPHbVyRJ1IDt03eZmsQij1D//5gCORveZ
-	m/XW/C8lT007y/H346xw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=i9Tynn8OPz0qupg2EDoziKnDs3RlAyQM1zPQDnXjevw=; b=PQNunijHfIvZz/
+	oxEP6WqJhDe1vk5JspHE0k7LvIaFDPrEh2lx0+hElhMF9Ns+SPYhJ1bceT/bxIvql5OtH3Tp2yynt
+	fFzWbx4JbqfyA4J1JnCB60k/1s5tyxl/shl+/YC8gnn2G0DezqnMkSQEUcGnM3tZxoMYesdXfMOZQ
+	kxiw5c0pDXNEnTo+IxKkWyr/+Bdl8F1eI7fG1cQiKAnKMy9I90c4+OqXFwzdE3VEnNtZLEb3TtdD2
+	6kaAvX3praJDb0g4ioI7gFl6KztCLITPpZ799SGLTEI/P1DYdkj84PSJgNx1wOdNee9txlJVYZwoo
+	ziWHc/47/9fsVXBeIsGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIB3Q-00HG8L-5I; Mon, 23 Aug 2021 14:36:00 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1mIB5b-00HGa1-IY; Mon, 23 Aug 2021 14:38:15 +0000
+Received: from mail-eopbgr140050.outbound.protection.outlook.com
+ ([40.107.14.50] helo=EUR01-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIB3C-00HG6F-FL; Mon, 23 Aug 2021 14:35:48 +0000
-Received: by mail-ej1-x629.google.com with SMTP id lc21so5094819ejc.7;
- Mon, 23 Aug 2021 07:35:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=A/qpH7CHD7FrWhnDUzTDDpyv/YS2OHRtYJYQQQB8Bp0=;
- b=G2x4IudVbwj0h29Njt8qBea5uCly45QDU9MDGzl31TzJSEXii6ONJUQ6Nbt7C3ChxQ
- 6pEaEHbsMI0pglxcjgqifB//U0wAdinpI54yIYl8juKBX6iP0nX643S6OS5ndcMd9NeC
- tpSyyWHm0j1dw+V1thewBfZpWS/ajS1+CpBwkrfdPPTn8NR4gjUe5DSgMWRRCAsVr0Mt
- lf5r5pqz0vfojJHVevUnO56cFrujMM06WZ0blKYYjTZqnwbg/K5JP3ehtaq8PwIyGFC+
- rS8l1qiaLn6YV5wVSb9wEHjUz+UzqJfoC9X/t3MBlFOP3XcN5wTOsd7NbnypoCrEgdT5
- USnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=A/qpH7CHD7FrWhnDUzTDDpyv/YS2OHRtYJYQQQB8Bp0=;
- b=ar9zzuFZZfc0WYyIfC4HOIZ+NJpTvwLWmahq4d2Dsj6HKrl8DQwJ5nX0kESPqFMumZ
- ZODzBn+0SPB9zMCMmPifXASqwYYWi22RkzqqVSec2sN/P3Nyxdzk5+98X7WEzOqPoDPY
- q3Dh+UEUb+hViAWbqFLH0fjoNsx/gFBxMvO8eWoObT+YM4PAlV50qVg5dUlG1yU+R+6K
- K2V73tmGfl9TqwVNqQCTQFGpXNqwW0xJBeqNi0u0KHpkzv+ujsCicEMCe806CsWvprEg
- hKrDOV14wc7NKsz7BXy46l/OK2EpqPGhFxreEAiNUL4GMxMut0ZTW8l4UbkQx8/+Mga9
- US9g==
-X-Gm-Message-State: AOAM531hELzc1PJJVcTLfzFOvMzixdImXYVyujXGa1sEMMcRz1NzCktJ
- VwXHlIQsG/RS1DkjtIIuj+w=
-X-Google-Smtp-Source: ABdhPJwdnaw/EdMkrg8xWrBajtpxxxxkkGbtYreheU70ZtNV+/K1xEPOqF5L5uIjDWko8VGQeXIr/g==
-X-Received: by 2002:a17:906:444:: with SMTP id
- e4mr35265682eja.255.1629729344685; 
- Mon, 23 Aug 2021 07:35:44 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id d3sm4901155ejw.18.2021.08.23.07.35.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Aug 2021 07:35:44 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 1/4] ASoC: rockchip: add support for i2s-tdm controller
-Date: Mon, 23 Aug 2021 16:35:42 +0200
-Message-ID: <9368735.gdWEK3B62L@archbook>
-In-Reply-To: <6bc6330215980f10853a2dac69f0bdfd9c8fb303.camel@pengutronix.de>
-References: <20210820182731.29370-1-frattaroli.nicolas@gmail.com>
- <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
- <6bc6330215980f10853a2dac69f0bdfd9c8fb303.camel@pengutronix.de>
+ id 1mIB5W-00HGXy-Id; Mon, 23 Aug 2021 14:38:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=nQ/bc0bT7sFG848lQ9zrb2GYGABu/wkPtU39SUADNiD0KRegQNe58pBVOdB95CsuFBEH8GE/MSGrHUx130GtdKSUPb6zmllxY6JP8E/inc+gb0Jj11SB84/pjnK3qxuwnB0lAzv4rHR+ETuGmW5wlGIUT1EuyE4SALJTPu6BQLRw7r8cUGEqDc3z6rMPWLEg7R5wexahjGylCZbgntRO/kGSYkoo39E2/qAashxBiP7b88knx/0jhBU2FQudM+bgu+nbiso2O91Kja4eprBLd9zrFe/G5Ta96n/FuX9RifkKTGldtUScYM54kjy0fM6ZYpf4Z/pKSE3S6wmDPYlTKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R8cpMIoWHwSDzb4iIqYAoq5D5VsP30B/G1kHippQ/vA=;
+ b=kwxmKiuYgbwm6/RHPyTl5LHuDDY0KdS4EoBK5MyhVcVAeY762b7IOZQmsf0bgWj6RYinr5KO1CAUnKX4fl1kF8YO2nzlcSNunU+GBp7GGFFNo6AP1XRfoVTJD7hM178Cbc1buvqps08vE+QHRcrARkgtdY3JeY7oPFJzsRKUNo0KdNNME1W6NapLxeePMu521YsHCmK25XOhDHbneboZ1Uhr26vbxQjegUQfgI2giJJpOigu8Q7QCqESMiyoDguREujTxLRyvGNHWFZKMDTX85TcxJwjuyzT2QOun2As4B+fKqpcQglpdawUBkm9Q9N4GbO0LRVLSqq8XR4sAfxlWQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R8cpMIoWHwSDzb4iIqYAoq5D5VsP30B/G1kHippQ/vA=;
+ b=yrAVXQdUbRGB7LT0yWV1h6WMe9Ls4YHZtqQi+oKDeX32NAzAbOGuxMHcnkXYPx9v93+lZXO3pr16mebgl1d3SG9elNtMCtrhruKsxz46pJK1eaYo/BXG0IoFWjuF/91XoxsfAtqaWQlgBTrqEU4dVroMCiTvlojKk2yBoLcU9to=
+Authentication-Results: vger.kernel.org; dkim=none (message not signed)
+ header.d=none;vger.kernel.org; dmarc=none action=none
+ header.from=wolfvision.net;
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
+ by DB6PR0801MB1942.eurprd08.prod.outlook.com (2603:10a6:4:75::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.22; Mon, 23 Aug
+ 2021 14:38:06 +0000
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b]) by DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b%7]) with mapi id 15.20.4436.024; Mon, 23 Aug 2021
+ 14:38:06 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH] net: stmmac: dwmac-rk: fix unbalanced pm_runtime_enable
+ warnings
+Date: Mon, 23 Aug 2021 16:37:54 +0200
+Message-Id: <20210823143754.14294-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.20.1
+X-ClientProxiedBy: VI1P18901CA0009.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:801::19) To DBBPR08MB4523.eurprd08.prod.outlook.com
+ (2603:10a6:10:c8::19)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from carlos.wolfvision-at.intra (91.118.163.37) by
+ VI1P18901CA0009.EURP189.PROD.OUTLOOK.COM (2603:10a6:801::19) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 14:38:05 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: b8155f33-7fd3-4e40-d0c2-08d966439e85
+X-MS-TrafficTypeDiagnostic: DB6PR0801MB1942:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <DB6PR0801MB19420633FCE4C1C531F81CCCF2C49@DB6PR0801MB1942.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1775;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: flD+FgqoLMgLGBC/FSRxPEOFy0eoMhoPE7IP+jqwFgTHmyUJlb5OV7MjtNpNf3hrLg98ZDDhOFbeKQT/VmV2XZj8K92m3zW03R6uXbRMdDH0ImBVcXAKxwc1o6T1ebvXdq7EMxjc3iTRJxwreH+BN2ip8TIyeeuCGEVGqxuq2IoCWBGAtY9cur3TX9BPqNFveYL3cmgXbtSGBf7Pan8TYW8XuvXUobqmMNeKAiZF56cCgKd8Ta+VZaiDOcyFf0kwCYZ8NXmY4TwIH63lyQmQP7bLIlV/c9xbLBkq1cH0zVfw6+0Wufxo2JAO0TkSErfkPUpn/vegwrFBB7FjF9lanc75SRMk3mpki9r53o+ArIBOjOcyyTsrZ3KaMLduqaQ8LbmTpNe2JHnl3BtS8EorbiVvoCFzwlaDEIY+sk0JAxkoI7hfQPL4MV06FqrSXBcjaL5eMuEQsNxXhNfoJlze2fGIfloHXp6Bn3/YZZIk3UBjKFkVAyIIud+iZ3Jnpu4yoEX2GvAEiRz7sVzyktg8dkI3XH3ARUpGer+A4Ns/vRF9SsUKmat3/MSgFLW6tO2NuhkR+dwXwNmpxD3ZlXgd7Q50nKz6utNE+z6BJWBfQ4pRyMC0tfFjSodJCxv/OUMaYOIKWqU6BxoYtwH2WNX3fJ0yQqiZOkK+H87qG2Ns6wx+4Kmhif7NPChR8iZ4G46dHQVNyk0bEqNp1zYIXKBTwQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(366004)(396003)(136003)(39840400004)(346002)(107886003)(44832011)(5660300002)(6666004)(4326008)(83380400001)(6506007)(6486002)(8936002)(956004)(2616005)(2906002)(66946007)(66556008)(66476007)(8676002)(36756003)(26005)(186003)(478600001)(316002)(86362001)(52116002)(38100700002)(38350700002)(1076003)(54906003)(7416002)(6512007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?s4zJOn4uBWQEpx6uqDLMRXUGzDtFaYWxpCggpO0X3WgqdQbPhTj66HgIMpiQ?=
+ =?us-ascii?Q?EKCsxmPJspcUEv8VOc4B5AQuouARoG1EtzGbyeDlatNpQdfpTF8JGZVsU3tB?=
+ =?us-ascii?Q?v5EyZxEhJhmiAN9AeibMzwaxG/Bl13OgxHUihG/ERy/ANfWjBuLQEp/7TC4C?=
+ =?us-ascii?Q?MmwSEjSiNeX5zsuSU2P+pKnnTNSxQ/OMABzffS497dbcO5juIHkHoaXtFL2+?=
+ =?us-ascii?Q?xSoxNReffsuTYJGCHaGyevkucmgQ/XwAKvCxx9K5DFb6r4LcHIl0ygISu+8E?=
+ =?us-ascii?Q?mEmS9n2o8pRumjDOqrI0NN1BWvewhB0hFFTLtXCsKP9XLEWziL/OhcBYGMaU?=
+ =?us-ascii?Q?mte+P7yc69iRo/t4CqfY6eMW9APyGyB573SYL6DXXp9sBvmaBypl5hnhMK5A?=
+ =?us-ascii?Q?WF/zKMKOHotbg3fKGvo6VGhByUtmgY4iHQ9b1SCdeL87LylGlnrDZyrN6uQy?=
+ =?us-ascii?Q?/JPpymfxrR4wFxLQQ9MfaFCcoYHrCxdBejxXmLCzUF9PJo7LtdV7ao1BkC8c?=
+ =?us-ascii?Q?++qSS3ew1rYQeH3Nl4MHxYV3As4ztVkesBn6Np9X64XKOFSPgCAG8MVPJBam?=
+ =?us-ascii?Q?BenCIApe2ARmae6u9Si+b6L27rPIsKbmcu27SnjHVgKDgtPe0N60t8NN1JJu?=
+ =?us-ascii?Q?XORCqbtoiKA+i9CTib3zmR68ONCS6iVB5pzwRUhaXipCjdnd38TCXuu4yqPG?=
+ =?us-ascii?Q?XB5seYxEhaDWK0uITadLv7c/vCf9Vcz2zUbjgxVb57YRatglQtW0pgTB8R7j?=
+ =?us-ascii?Q?oLwHZ16UWIc4/Q4WXChXdWps2Or+TNljJOfMM1xdzZEygiHVGUfVdH+GPL4O?=
+ =?us-ascii?Q?+EVumfCfrfbS4q1kIIz3GXa9YBg4vzUslXkyAYeqtzmNPo1pw0Bp002zSUdd?=
+ =?us-ascii?Q?7NZ8qJmOI02WNWvRVT5OToeKIw5UCquXkbOknCe4yB5EeM55v3M+TSlIPNIL?=
+ =?us-ascii?Q?AQGqrzIndKV3awsHHlBJT3oOUcI4rV7pkSUKgvoK77DnYQJ9Z4PgblXU0RX6?=
+ =?us-ascii?Q?m9cGBe8V7x4R9JkiG5+5tON/db7Y+MnNoTIrjOijLsrSYbeoj9ezhx2SG/v7?=
+ =?us-ascii?Q?q0kJkWE1odLt/nBUDagmtj5T+TFlWJSiG94qhxNNNAxggJOlqRgt/xk/VB/W?=
+ =?us-ascii?Q?05hT1DdGHkKUtEoIOW+jwMYlNOIkJfGfpLBsqIheOxePlrsqXlaoZDeQ5Ffx?=
+ =?us-ascii?Q?gnfoe7USbKBLwwGq06SAk6v1y/v/IRlCgyHyrLMolhulp8qiI519Mbp7J93Z?=
+ =?us-ascii?Q?KQ7NXFFNs6XZsyL5LvHH6fmu64J8EamyGMJ8S46sdUOBHL8MGbqBOiEiYTkn?=
+ =?us-ascii?Q?Zky1w6Cq21JnnYcj3vwSDhNn?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: b8155f33-7fd3-4e40-d0c2-08d966439e85
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 14:38:05.9526 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zPVRJdB/gC3dH8isJrlJliw+tLmKxTBi1lEpauM/1sNn9/HSbJzSzis5GqSxMLRKWSomRDj3em99Rt/Zt7BptxTSyaNhSBS67rKBiTcGtLs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0801MB1942
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_073546_583781_418D2405 
-X-CRM114-Status: GOOD (  44.95  )
+X-CRM114-CacheID: sfid-20210823_073810_665440_584284A8 
+X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,257 +156,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Philipp,
+This reverts commit 2c896fb02e7f65299646f295a007bda043e0f382
+"net: stmmac: dwmac-rk: add pd_gmac support for rk3399" and fixes
+unbalanced pm_runtime_enable warnings.
 
-On Montag, 23. August 2021 14:03:25 CEST Philipp Zabel wrote:
-> Hi Nicolas,
-> 
-> On Fri, 2021-08-20 at 20:27 +0200, Nicolas Frattaroli wrote:
-> [...]
-> 
-> > diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c
-> > b/sound/soc/rockchip/rockchip_i2s_tdm.c new file mode 100644
-> > index 000000000000..c02b66f3c913
-> > --- /dev/null
-> > +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> > @@ -0,0 +1,1737 @@
-> 
-> [...]
-> 
-> > +static void rockchip_snd_xfer_reset_assert(struct rk_i2s_tdm_dev
-> > *i2s_tdm,
-> > +					   int tx_bank, int tx_offset,
-> > +					   int rx_bank, int rx_offset)
-> > +{
-> > +	void __iomem *cru_reset;
-> > +	unsigned long flags;
-> > +
-> > +	cru_reset = i2s_tdm->cru_base + i2s_tdm->soc_data->softrst_offset;
-> > +
-> > +	if (tx_bank == rx_bank) {
-> > +		writel(BIT(tx_offset) | BIT(rx_offset) |
-> > +		       (BIT(tx_offset) << 16) | (BIT(rx_offset) << 16),
-> > +		       cru_reset + (tx_bank * 4));
-> > +	} else {
-> > +		local_irq_save(flags);
-> > +		writel(BIT(tx_offset) | (BIT(tx_offset) << 16),
-> > +		       cru_reset + (tx_bank * 4));
-> > +		writel(BIT(rx_offset) | (BIT(rx_offset) << 16),
-> > +		       cru_reset + (rx_bank * 4));
-> > +		local_irq_restore(flags);
-> > +	}
-> > +}
-> > +
-> > +static void rockchip_snd_xfer_reset_deassert(struct rk_i2s_tdm_dev
-> > *i2s_tdm, +					     int tx_bank, int 
-tx_offset,
-> > +					     int rx_bank, int rx_offset)
-> > +{
-> > +	void __iomem *cru_reset;
-> > +	unsigned long flags;
-> > +
-> > +	cru_reset = i2s_tdm->cru_base + i2s_tdm->soc_data->softrst_offset;
-> > +
-> > +	if (tx_bank == rx_bank) {
-> > +		writel((BIT(tx_offset) << 16) | (BIT(rx_offset) << 16),
-> > +		       cru_reset + (tx_bank * 4));
-> > +	} else {
-> > +		local_irq_save(flags);
-> > +		writel((BIT(tx_offset) << 16),
-> > +		       cru_reset + (tx_bank * 4));
-> > +		writel((BIT(rx_offset) << 16),
-> > +		       cru_reset + (rx_bank * 4));
-> > +		local_irq_restore(flags);
-> > +	}
-> > +}
-> > +
-> > +/*
-> > + * Makes sure that both tx and rx are reset at the same time to sync lrck
-> > + * when clk_trcm > 0.
-> > + */
-> > +static void rockchip_snd_xfer_sync_reset(struct rk_i2s_tdm_dev *i2s_tdm)
-> > +{
-> > +	int tx_id, rx_id;
-> > +	int tx_bank, rx_bank, tx_offset, rx_offset;
-> > +
-> > +	if (!i2s_tdm->cru_base || !i2s_tdm->soc_data)
-> > +		return;
-> > +
-> > +	tx_id = i2s_tdm->tx_reset_id;
-> > +	rx_id = i2s_tdm->rx_reset_id;
-> > +	if (tx_id < 0 || rx_id < 0)
-> > +		return;
-> > +
-> > +	tx_bank = tx_id / 16;
-> > +	tx_offset = tx_id % 16;
-> > +	rx_bank = rx_id / 16;
-> > +	rx_offset = rx_id % 16;
-> > +	dev_dbg(i2s_tdm->dev,
-> > +		"tx_bank: %d, rx_bank: %d, tx_offset: %d, rx_offset: %d\n",
-> > +		tx_bank, rx_bank, tx_offset, rx_offset);
-> > +
-> > +	rockchip_snd_xfer_reset_assert(i2s_tdm, tx_bank, tx_offset,
-> > +				       rx_bank, rx_offset);
-> > +
-> > +	udelay(150);
-> > +
-> > +	rockchip_snd_xfer_reset_deassert(i2s_tdm, tx_bank, tx_offset,
-> > +					 rx_bank, rx_offset);
-> > +}
-> 
-> I'm not too fond of reimplementing half a reset controller in here.
-> The reset framework does not support synchronized (de)assertion of
-> multiple reset controls, I wonder if this would be useful to add.
-> Without having thought about this too hard, I could imagine this as an
-> extension to the bulk API, or possibly a call to join multiple reset
-> controls into a reset control array.
+In the commit to be reverted, support for power management was
+introduced to the Rockchip glue code. Later, power management support
+was introduced to the stmmac core code, resulting in multiple
+invocations of pm_runtime_{enable,disable,get_sync,put_sync}.
 
-I agree, the code required for synchronised reset seems to be a good
-candidate for a generalised solution elsewhere.
-However, I'm not sure if I'm the right candidate to design this API
-as my first kernel contribution when the board I'm currently testing
-this with doesn't even utilise the synchronized reset.
+The multiple invocations happen in rk_gmac_powerup and
+stmmac_{dvr_probe, resume} as well as in rk_gmac_powerdown and
+stmmac_{dvr_remove, suspend}, respectively, which are always called
+in conjunction.
 
-If I come across an opportunity to test synchronised resets, I'll
-definitely look into refactoring this. I'd also be happy to hear of
-any other driver which is currently implementing its own synchronised
-reset.
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-[...]
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 280ac0129572..ed817011a94a 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -21,7 +21,6 @@
+ #include <linux/delay.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/regmap.h>
+-#include <linux/pm_runtime.h>
  
-> > +
-> > +	reset_control_assert(rc);
-> > +	udelay(1);
-> 
-> What is the reason for the different delays in
-> rockchip_snd_xfer_sync_reset() and rockchip_snd_reset()?
-> 
-
-Simply put: I have no idea. This is what downstream does, and it
-appears to work for me. The git history of the downstream kernel
-also doesn't tell me anything about why the sync reset is 150
-and this one is 1.
-
-I've got no device to test the sync reset with at the moment so
-I'm wary of playing with the delay value.
-
-> > +	reset_control_deassert(rc);
-> > +}
-> 
-> [...]
-> 
-> > +static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device_node *node = pdev->dev.of_node;
-> > +	struct device_node *cru_node;
-> > +	const struct of_device_id *of_id;
-> > +	struct rk_i2s_tdm_dev *i2s_tdm;
-> > +	struct resource *res;
-> > +	void __iomem *regs;
-> > +	int ret;
-> > +	int val;
-> > +
-> > +	i2s_tdm = devm_kzalloc(&pdev->dev, sizeof(*i2s_tdm), GFP_KERNEL);
-> > +	if (!i2s_tdm)
-> > +		return -ENOMEM;
-> > +
-> > +	i2s_tdm->dev = &pdev->dev;
-> > +
-> > +	of_id = of_match_device(rockchip_i2s_tdm_match, &pdev->dev);
-> > +	if (!of_id || !of_id->data)
-> > +		return -EINVAL;
-> > +
-> > +	spin_lock_init(&i2s_tdm->lock);
-> > +	i2s_tdm->soc_data = (struct rk_i2s_soc_data *)of_id->data;
-> > +
-> > +	i2s_tdm->frame_width = 64;
-> > +	if (!of_property_read_u32(node, "rockchip,frame-width", &val)) {
-> > +		if (val >= 32 && (val % 2 == 0) && val <= 512) {
-> > +			i2s_tdm->frame_width = val;
-> > +		} else {
-> > +			dev_err(i2s_tdm->dev, "unsupported frame width: 
-'%d'\n",
-> > +				val);
-> > +			return -EINVAL;
-> > +		}
-> > +	}
-> > +
-> > +	i2s_tdm->clk_trcm = TRCM_TXRX;
-> > +	if (of_property_read_bool(node, "rockchip,trcm-sync-tx-only"))
-> > +		i2s_tdm->clk_trcm = TRCM_TX;
-> > +	if (of_property_read_bool(node, "rockchip,trcm-sync-rx-only")) {
-> > +		if (i2s_tdm->clk_trcm) {
-> > +			dev_err(i2s_tdm->dev, "invalid trcm-sync 
-configuration\n");
-> > +			return -EINVAL;
-> > +		}
-> > +		i2s_tdm->clk_trcm = TRCM_RX;
-> > +	}
-> > +	if (i2s_tdm->clk_trcm != TRCM_TXRX)
-> > +		i2s_tdm_dai.symmetric_rate = 1;
-> > +
-> > +	i2s_tdm->tdm_fsync_half_frame =
-> > +		of_property_read_bool(node, "rockchip,tdm-fsync-half-frame");
-> > +
-> > +	i2s_tdm->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
-> > +	if (IS_ERR(i2s_tdm->grf))
-> > +		return dev_err_probe(i2s_tdm->dev, PTR_ERR(i2s_tdm->grf),
-> > +				     "Error in rockchip,grf\n");
-> > +
-> > +	if (i2s_tdm->clk_trcm != TRCM_TXRX) {
-> > +		cru_node = of_parse_phandle(node, "rockchip,cru", 0);
-> > +		i2s_tdm->cru_base = of_iomap(cru_node, 0);
-> 
-> This is a bit ugly if there is another driver sitting on the
-> rockchip,cru compatible node. Which reset controller driver is backing
-> the reset controls below?
-
-I'm not sure if I understand the question (I only just today learned that
-reset controls have drivers) but I think the reset it is using in the
-Quartz64 dts is backed by rk3568-cru. Let me know if I misunderstood you.
-
-[...]
-
-> > +static int rockchip_i2s_tdm_remove(struct platform_device *pdev)
-> > +{
-> > +	struct rk_i2s_tdm_dev *i2s_tdm = dev_get_drvdata(&pdev->dev);
-> > +
-> > +	pm_runtime_disable(&pdev->dev);
-> > +	if (!pm_runtime_status_suspended(&pdev->dev))
-> > +		i2s_tdm_runtime_suspend(&pdev->dev);
-> > +
-> > +	if (!IS_ERR(i2s_tdm->mclk_tx))
-> > +		clk_prepare_enable(i2s_tdm->mclk_tx);
-> > +	if (!IS_ERR(i2s_tdm->mclk_rx))
-> > +		clk_prepare_enable(i2s_tdm->mclk_rx);
-> 
-> Why are we enabling these clocks now?
-> 
-
-I wondered that too while I was looking into the pm_runtime stuff,
-and decided to just throw these two calls out. They don't seem to
-make sense to me, and nothing I tested broke when I removed them.
-
-If left in (and the code works as I hypothesise it works) then
-this would simply re-enable clocks we have just disabled, which
-would make the number of enable and disable calls unbalanced.
-Highly sus, as the kids would say, and completely omits the other
-mclk_tx_src etc. clocks. (Though those are forgotten elsewhere in
-the code as well, which I have since fixed, along with any of the
-review points I don't directly respond to.)
-
-> > +	if (!IS_ERR(i2s_tdm->hclk))
-> > +		clk_disable_unprepare(i2s_tdm->hclk);
-> > +
-> > +	return 0;
-> > +}
-> 
-> regards
-> Philipp
-
-Regards,
-Nicolas Frattaroli
-
+ #include "stmmac_platform.h"
+ 
+@@ -1529,9 +1528,6 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+ 		return ret;
+ 	}
+ 
+-	pm_runtime_enable(dev);
+-	pm_runtime_get_sync(dev);
+-
+ 	if (bsp_priv->integrated_phy)
+ 		rk_gmac_integrated_phy_powerup(bsp_priv);
+ 
+@@ -1540,14 +1536,9 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+ 
+ static void rk_gmac_powerdown(struct rk_priv_data *gmac)
+ {
+-	struct device *dev = &gmac->pdev->dev;
+-
+ 	if (gmac->integrated_phy)
+ 		rk_gmac_integrated_phy_powerdown(gmac);
+ 
+-	pm_runtime_put_sync(dev);
+-	pm_runtime_disable(dev);
+-
+ 	phy_power_on(gmac, false);
+ 	gmac_clk_enable(gmac, false);
+ }
+-- 
+2.17.1
 
 
 _______________________________________________
