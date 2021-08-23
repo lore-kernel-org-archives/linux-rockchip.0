@@ -2,72 +2,140 @@ Return-Path: <SRS0=s7m+=NO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F98CC4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 12:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24783C4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 12:39:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C65996127B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 12:03:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C65996127B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id CA42B6137D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 12:39:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CA42B6137D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gmncOIJRp6UYEI249M2PuDcoXxK4XlUFxwruPlPN4Ow=; b=XZX0lUQ1jwq1la
-	WUJ0t/JK+M7AVsSBcYvpTahBHQ0hKRLLcndoq5PJz6VyefKVyQD9F2osz+NyuKg2Rj3CDzZq++iUu
-	VNZbYWr3UXac7J16ICoGVzpLNf3ZUdZ4q9GYIP+QLSJFgABl/FlanGegVhD7K3QXboWdm5tdKGLaG
-	9LqeBxsVg9P8V0UwI5RUctLk8bhYaF4vdoYcTcroncJT026Iw7xpdSHDxrML7ZhYwNOqnA6Ir0Gzx
-	pAXIS5A/bUzXWeOJEr2rbh+xLxcNFMx7g4gavkSt+/BYeE756YbWWj3duopH6Umua2szAP3qJ0i9P
-	lp7AnbZrMqo9mxdOD8vA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1JcJCyWnwDpPsCO5nKy9/USAHY0vdVX14QwKiXyU81w=; b=xMaF4xOJ0uzKF0
+	f2RzV5Q/rYzY5TofAnGu7leBGtUVYVr+osvF8C87evQTkIQyTK1VLwrhCOqB0Gw2OGec/pcC7WcXW
+	V4BIXxkyqUVELBddUoPGlwnjwnD0GrmUgjVV7NnO9vgLIA5NjL88Dd8i7VgC3z19PvH8XK00UeFng
+	9ErnQ/Qehx4vCMhdNRbRScTofiZO94KjXN1lWQSfnF1FAAAzkJmIVZk2y7/pQzCcZWoPdM86b507n
+	x6RR7jOZRPBkaX4S8Uvd0tXmPECK0MHXGKo/LLLwqNk+IRqUfxXSom769ZZLlckyPTA/bYfFtmRQ0
+	/H0mqMIX484LkhoE9Dmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI8gC-00GfKE-10; Mon, 23 Aug 2021 12:03:52 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mI9Ey-00Go0P-B4; Mon, 23 Aug 2021 12:39:48 +0000
+Received: from [40.107.7.72]
+ (helo=EUR04-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI8fz-00GfFF-H0
- for linux-rockchip@lists.infradead.org; Mon, 23 Aug 2021 12:03:41 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mI8fm-0002zi-Gm; Mon, 23 Aug 2021 14:03:26 +0200
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mI8fl-0007z7-8e; Mon, 23 Aug 2021 14:03:25 +0200
-Message-ID: <6bc6330215980f10853a2dac69f0bdfd9c8fb303.camel@pengutronix.de>
-Subject: Re: [PATCH v2 1/4] ASoC: rockchip: add support for i2s-tdm controller
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner
- <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Date: Mon, 23 Aug 2021 14:03:25 +0200
-In-Reply-To: <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
-References: <20210820182731.29370-1-frattaroli.nicolas@gmail.com>
- <20210820182731.29370-2-frattaroli.nicolas@gmail.com>
-User-Agent: Evolution 3.30.5-1.1 
+ id 1mI9Ei-00GnwO-3M; Mon, 23 Aug 2021 12:39:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H88ZUmiD329olGpm4K53lvlLeRyF8lSZikwcm5TnA+wTq6w50vDQW3CrVCtBQpYDOf5ztijlkk+IKohpRM4U+F5wy7joqv472uFZyNMwhiYEh9gNt5IKgHt/Mh1ZUXf9sFO/p7PaiDPX7OdFWVjX/EMLzPIjrwbWkbhJjnFs6RTqFZ1pgLa9C/KchOvqKMZZ3xJTn3WatFaGnfB/ECwMKXXUSBffr/UpEENhG+eQ50Kr8+kE3K59II4u2e0zyavqhdF4niGTv2GW2xcXuSbQLIbsm3coQqMfoRdzk/GSPWuxxNf3Ukqww0d+VxAYLFfL25J4Z8gi5Cjwcd/as1z7Ew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tmhcYDkeTejcm+fcNbkzYJSAGFxot3s2Bu/OZyCAWPs=;
+ b=DT+lzrIDwyIS6FFK3nQxcI/mt+asXQ13xsSNf5R9ycQ5H7PUKBwN7M9AT6fqpiKi1aZ55vQBQCCpbCSoXQ93OXBKVc7iE4oxud2G4d47igipfb4fid0kz1Dv/vhYVkgXrnqxln95j30g7PT9Yva6XpH8eBz9SQxeKAhBRPPORpGN9upDw9B9wlsk7Swuk0fcZi4a5zHiVA4AXu48wsKpACnqcevEcFRdM3EpUbUSAjofbx4aAjE3BTILXIVcEH7CXwjUyhI9hU72EMNbhHlBmRD0HbQf+A/avmEP+09fgZRD9Q53qEJX8we72ARzgWJSAPs0Z6xcYgbkN0y4gZFJzA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tmhcYDkeTejcm+fcNbkzYJSAGFxot3s2Bu/OZyCAWPs=;
+ b=L+RPYq30Bj2i89RidIggA7SZmfre6pZsipoiWBPVpaddZWggvPxXBIXiEMx7KqilzIo9cBiAiM1qgvq7RqFO8V+pfZ8/1Fvm1oKo7kIkqnJC+5EFTP2ifHquP8gEbMbMAE4i/OJC3fK3IjWRYau0ZHAeacvVTDjJzJnvS99IAfw=
+Authentication-Results: vger.kernel.org; dkim=none (message not signed)
+ header.d=none;vger.kernel.org; dmarc=none action=none
+ header.from=wolfvision.net;
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
+ by DB6PR0802MB2213.eurprd08.prod.outlook.com (2603:10a6:4:84::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.19; Mon, 23 Aug
+ 2021 12:39:24 +0000
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b]) by DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b%7]) with mapi id 15.20.4436.024; Mon, 23 Aug 2021
+ 12:39:24 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Simon Xue <xxm@rock-chips.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH 0/1] arm64: dts: rockchip: add missing rockchip,
+ grf property to rk356x
+Date: Mon, 23 Aug 2021 14:39:10 +0200
+Message-Id: <20210823123911.12095-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.20.1
+X-ClientProxiedBy: VI1PR06CA0177.eurprd06.prod.outlook.com
+ (2603:10a6:803:c8::34) To DBBPR08MB4523.eurprd08.prod.outlook.com
+ (2603:10a6:10:c8::19)
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from carlos.wolfvision-at.intra (91.118.163.37) by
+ VI1PR06CA0177.eurprd06.prod.outlook.com (2603:10a6:803:c8::34) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4436.19 via Frontend Transport; Mon, 23 Aug 2021 12:39:23 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 26aa1b7a-67b4-410c-b9d4-08d9663309d0
+X-MS-TrafficTypeDiagnostic: DB6PR0802MB2213:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <DB6PR0802MB2213DB86471CBDB8E9EA0C89F2C49@DB6PR0802MB2213.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Fl84yByOpKlB3LKTjw6voI5DJOmzIIGX0CmGsOl2qNCk5+9CO3zm1oemvj34LeW9otSDdv6hiK6SV3alibZq/NMCi6Jl3wLip9qQNZ3QjlH62eh98nM698xTZRmkPEx0cSkbC246QE61H7ma9amhzBUkMchH5z83M73ezb/FFo5r6TYL4AsjsIh/gBZtiolbWIOb6SBTOI0uXNo0A1HHdgnOAJmsq3A7agM6qgBvwaIudaBmKoAfjZdlPS243ahOGw7EQ0K+0BRphF0NUymkZUsE1OoTjGrJ1FkSQGhZ/wUfN2NHrm5Lv83rLmzkIdj/G94edvsO7YmWa4yUidv0VfH2VnrmbhFRUeEMA+2tHNEjAU69+4IyJIfqMXvEao8sQEiopF5z27ie54lqoTFKYqlx11fZBIR/3Ibhnn8Wvlopmka33Z8tW8TR/600QH8MoMnYp5pp0bxON0I7kUYRCfkWJ2lSRuuqHrfTriyFaQr8TI6tsr6uUB7jRo2etghiy2CeOIkXhNMUojC2+4T0MfX+/okLKpK2eOuADu4UwFsuoNjhs4HsD6XmUGe6F8fqGhctoCpkuobgDLql2kACLtnaxII4AWddiVmi/ZzsWYIIMBOojtYnz0vbTYNjaxyL6/+MGQ9r0mhCBckLaS6CgGDf3xQtPTnvACAfxfrYtI+iPD5Eglfo0BGTxHpqS1oa6HjO1ZxYdWGBdng2NdmBrg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(396003)(136003)(376002)(366004)(39840400004)(8936002)(38350700002)(956004)(6506007)(83380400001)(2616005)(186003)(38100700002)(26005)(8676002)(5660300002)(6486002)(36756003)(4744005)(86362001)(7416002)(1076003)(107886003)(66556008)(66946007)(316002)(66476007)(4326008)(6666004)(52116002)(6512007)(478600001)(54906003)(44832011)(2906002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?L7GURSolHeiGS3EXqeyNYTc4YgBDXY+uO+ZKkvqsA8WI39nfA84eB5rOIGIp?=
+ =?us-ascii?Q?TNHGrVJP7gG3eP/vzxVchz36M3N/ZiFpWsM75iOoySIL+W73xhRhqJCEnBE8?=
+ =?us-ascii?Q?OkZ1IoCkwyxOAeSFiYF+Fj4ZF2gQP++PFxVb+fPaqprc+eu00Kak162F2Mgx?=
+ =?us-ascii?Q?REIK5Bhxa5Wk6xtH/qtX5JKe+Fs3IFFexri8R7RkPoU0Po1YNUgL4X/5KG3r?=
+ =?us-ascii?Q?FijKm2ur7wb90CSHdHw2yw49CoPdUEfSQKP9IQrJDlupgQohfSWunkXkOJnI?=
+ =?us-ascii?Q?t0Zp09vxylKjVUWQbjxPe7qHVXURPyD+WF9imw2+iqAt6eP/cU1lsevnwTjY?=
+ =?us-ascii?Q?nco22bxQcRs7x4dG7NeJMIfovIuHt+7RGJsTf8SZi1ctrhGOLg1qWFKufnSC?=
+ =?us-ascii?Q?erFvMSJuOZ4KNe/g3iCe2877HJ09GMYMEVCzhEbhy4zqM+u2JnQPeyFCT6JR?=
+ =?us-ascii?Q?IXDiI9GKhP3vq1GTT6tiL3v5/K+B8GP1ceQHDUq72GYwPiEdIC6Sto05cmVx?=
+ =?us-ascii?Q?KPVZbMXd+lLY0Ud+AY9VfixHLPqIdywsGY8DaSfL073kCe26Ggrgg/19UiJS?=
+ =?us-ascii?Q?fCZ8H3oLw2b5Gdb1H2/gb3HSZXoyItl5l7e0R2yVhCb6uHd0wTpD6GVmneNT?=
+ =?us-ascii?Q?Rs5Er/Bd7i6DZpNvv9QeK8kmmEmWGDZQbIvVapGEmtSjTExctmy/k0IYQDtm?=
+ =?us-ascii?Q?O8laiv2RPFgQW6RDxINNPm5qluKXeUCgowg5s9OxrZWNLAkgXqUbu1tKBRPP?=
+ =?us-ascii?Q?6f3wySiGT6Ff9FHJds9ZvsM/iYk+QaiksQqwoVZGNzJwJXtJkZPU0gPSDLrW?=
+ =?us-ascii?Q?TShGV6Xfk4lssja+0Cox/mqVEXAnGlmEa1km/V68Hvd0M11AfMmOJjbz+w0O?=
+ =?us-ascii?Q?eGeSi+6Rn04cQLWt9Wozt+AFXpUKFsXoxTsFoDdGjurZJoYoDO5v2UG9K9Om?=
+ =?us-ascii?Q?8ZiufAf81hDQ+kpBRMgEjmy/SkToDisO6Tn/89VrTpOnm3DD4/Djj6KQwopH?=
+ =?us-ascii?Q?ES8aZ0G/N3vLS84LbqlsaSptNQL7lp9TIlXc5Sw4Cc137TvoATqtJ72M9k/f?=
+ =?us-ascii?Q?072dA7a42o/g64epOChMqc/HGxti7juvpqAh353zoTO7ijdeXlmo6vnYst9K?=
+ =?us-ascii?Q?1v95U1a0V7dsQpMQduzEmdrelom9qnzeVqWABIZUH4HSSd8i3RDL0DASxKLZ?=
+ =?us-ascii?Q?cAJ+vG2InxdcxhgMA5YobNQoKVZtD5dQqBv9HRwgvDvX5BPzmhlryDzQKALr?=
+ =?us-ascii?Q?GcQTECEYge3zEoH4uD46L/76NuwVBxotbbruAV9L0LRYwr9j5J0SIPifhQ2u?=
+ =?us-ascii?Q?Q0fMb4yZA3owBmq894jZemSk?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26aa1b7a-67b4-410c-b9d4-08d9663309d0
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2021 12:39:24.5923 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: CNoANVecGuu3ptDk58ZATsKYxilGN0sOrMps6PgkFHANK6HgG9uwOgO9jPfyAoTke/onnzWbta/noFK34fIjPkSpKCYoeo8kS4tUdS/pfyQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0802MB2213
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_050339_758639_AFDEE491 
-X-CRM114-Status: GOOD (  29.75  )
+X-CRM114-CacheID: sfid-20210823_053932_193548_3C31DC8A 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,264 +153,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+Hi all,
 
-On Fri, 2021-08-20 at 20:27 +0200, Nicolas Frattaroli wrote:
-[...]
-> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> new file mode 100644
-> index 000000000000..c02b66f3c913
-> --- /dev/null
-> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> @@ -0,0 +1,1737 @@
-[...]
-> +static void rockchip_snd_xfer_reset_assert(struct rk_i2s_tdm_dev *i2s_tdm,
-> +					   int tx_bank, int tx_offset,
-> +					   int rx_bank, int rx_offset)
-> +{
-> +	void __iomem *cru_reset;
-> +	unsigned long flags;
-> +
-> +	cru_reset = i2s_tdm->cru_base + i2s_tdm->soc_data->softrst_offset;
-> +
-> +	if (tx_bank == rx_bank) {
-> +		writel(BIT(tx_offset) | BIT(rx_offset) |
-> +		       (BIT(tx_offset) << 16) | (BIT(rx_offset) << 16),
-> +		       cru_reset + (tx_bank * 4));
-> +	} else {
-> +		local_irq_save(flags);
-> +		writel(BIT(tx_offset) | (BIT(tx_offset) << 16),
-> +		       cru_reset + (tx_bank * 4));
-> +		writel(BIT(rx_offset) | (BIT(rx_offset) << 16),
-> +		       cru_reset + (rx_bank * 4));
-> +		local_irq_restore(flags);
-> +	}
-> +}
-> +
-> +static void rockchip_snd_xfer_reset_deassert(struct rk_i2s_tdm_dev *i2s_tdm,
-> +					     int tx_bank, int tx_offset,
-> +					     int rx_bank, int rx_offset)
-> +{
-> +	void __iomem *cru_reset;
-> +	unsigned long flags;
-> +
-> +	cru_reset = i2s_tdm->cru_base + i2s_tdm->soc_data->softrst_offset;
-> +
-> +	if (tx_bank == rx_bank) {
-> +		writel((BIT(tx_offset) << 16) | (BIT(rx_offset) << 16),
-> +		       cru_reset + (tx_bank * 4));
-> +	} else {
-> +		local_irq_save(flags);
-> +		writel((BIT(tx_offset) << 16),
-> +		       cru_reset + (tx_bank * 4));
-> +		writel((BIT(rx_offset) << 16),
-> +		       cru_reset + (rx_bank * 4));
-> +		local_irq_restore(flags);
-> +	}
-> +}
-> +
-> +/*
-> + * Makes sure that both tx and rx are reset at the same time to sync lrck
-> + * when clk_trcm > 0.
-> + */
-> +static void rockchip_snd_xfer_sync_reset(struct rk_i2s_tdm_dev *i2s_tdm)
-> +{
-> +	int tx_id, rx_id;
-> +	int tx_bank, rx_bank, tx_offset, rx_offset;
-> +
-> +	if (!i2s_tdm->cru_base || !i2s_tdm->soc_data)
-> +		return;
-> +
-> +	tx_id = i2s_tdm->tx_reset_id;
-> +	rx_id = i2s_tdm->rx_reset_id;
-> +	if (tx_id < 0 || rx_id < 0)
-> +		return;
-> +
-> +	tx_bank = tx_id / 16;
-> +	tx_offset = tx_id % 16;
-> +	rx_bank = rx_id / 16;
-> +	rx_offset = rx_id % 16;
-> +	dev_dbg(i2s_tdm->dev,
-> +		"tx_bank: %d, rx_bank: %d, tx_offset: %d, rx_offset: %d\n",
-> +		tx_bank, rx_bank, tx_offset, rx_offset);
-> +
-> +	rockchip_snd_xfer_reset_assert(i2s_tdm, tx_bank, tx_offset,
-> +				       rx_bank, rx_offset);
-> +
-> +	udelay(150);
-> +
-> +	rockchip_snd_xfer_reset_deassert(i2s_tdm, tx_bank, tx_offset,
-> +					 rx_bank, rx_offset);
-> +}
+The following error messages appear on my RK3568 EVB1 board during boot:
 
-I'm not too fond of reimplementing half a reset controller in here.
-The reset framework does not support synchronized (de)assertion of
-multiple reset controls, I wonder if this would be useful to add.
-Without having thought about this too hard, I could imagine this as an
-extension to the bulk API, or possibly a call to join multiple reset
-controls into a reset control array.
+  rockchip_clk_register_muxgrf: regmap not available
+  rockchip_clk_register_branches: failed to register clock clk_ddr1x: -524
 
-> +static void rockchip_snd_reset(struct reset_control *rc)
-> +{
-> +	if (IS_ERR(rc))
-> +		return;
+These can be fixed by providing the missing rockchip,grf property to the
+device tree (similar to other Rockchip SoCs, such as the RK3399).
 
-This shouldn't be called with an error code, see the comment about
-optional reset controls below.
+However, the rockchip,rk3568-cru bindings do not specify a property of that
+name. Am I missing something or should this property be added to the bindings?
 
-> +
-> +	reset_control_assert(rc);
-> +	udelay(1);
+Best regards,
+Michael
 
-What is the reason for the different delays in
-rockchip_snd_xfer_sync_reset() and rockchip_snd_reset()?
+Michael Riesch (1):
+  arm64: dts: rockchip: add missing rockchip,grf property to rk356x
 
-> +	reset_control_deassert(rc);
-> +}
-[...]
-> +static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
-> +{
-> +	struct device_node *node = pdev->dev.of_node;
-> +	struct device_node *cru_node;
-> +	const struct of_device_id *of_id;
-> +	struct rk_i2s_tdm_dev *i2s_tdm;
-> +	struct resource *res;
-> +	void __iomem *regs;
-> +	int ret;
-> +	int val;
-> +
-> +	i2s_tdm = devm_kzalloc(&pdev->dev, sizeof(*i2s_tdm), GFP_KERNEL);
-> +	if (!i2s_tdm)
-> +		return -ENOMEM;
-> +
-> +	i2s_tdm->dev = &pdev->dev;
-> +
-> +	of_id = of_match_device(rockchip_i2s_tdm_match, &pdev->dev);
-> +	if (!of_id || !of_id->data)
-> +		return -EINVAL;
-> +
-> +	spin_lock_init(&i2s_tdm->lock);
-> +	i2s_tdm->soc_data = (struct rk_i2s_soc_data *)of_id->data;
-> +
-> +	i2s_tdm->frame_width = 64;
-> +	if (!of_property_read_u32(node, "rockchip,frame-width", &val)) {
-> +		if (val >= 32 && (val % 2 == 0) && val <= 512) {
-> +			i2s_tdm->frame_width = val;
-> +		} else {
-> +			dev_err(i2s_tdm->dev, "unsupported frame width: '%d'\n",
-> +				val);
-> +			return -EINVAL;
-> +		}
-> +	}
-> +
-> +	i2s_tdm->clk_trcm = TRCM_TXRX;
-> +	if (of_property_read_bool(node, "rockchip,trcm-sync-tx-only"))
-> +		i2s_tdm->clk_trcm = TRCM_TX;
-> +	if (of_property_read_bool(node, "rockchip,trcm-sync-rx-only")) {
-> +		if (i2s_tdm->clk_trcm) {
-> +			dev_err(i2s_tdm->dev, "invalid trcm-sync configuration\n");
-> +			return -EINVAL;
-> +		}
-> +		i2s_tdm->clk_trcm = TRCM_RX;
-> +	}
-> +	if (i2s_tdm->clk_trcm != TRCM_TXRX)
-> +		i2s_tdm_dai.symmetric_rate = 1;
-> +
-> +	i2s_tdm->tdm_fsync_half_frame =
-> +		of_property_read_bool(node, "rockchip,tdm-fsync-half-frame");
-> +
-> +	i2s_tdm->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
-> +	if (IS_ERR(i2s_tdm->grf))
-> +		return dev_err_probe(i2s_tdm->dev, PTR_ERR(i2s_tdm->grf),
-> +				     "Error in rockchip,grf\n");
-> +
-> +	if (i2s_tdm->clk_trcm != TRCM_TXRX) {
-> +		cru_node = of_parse_phandle(node, "rockchip,cru", 0);
-> +		i2s_tdm->cru_base = of_iomap(cru_node, 0);
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-This is a bit ugly if there is another driver sitting on the
-rockchip,cru compatible node. Which reset controller driver is backing
-the reset controls below?
+-- 
+2.17.1
 
-> +		of_node_put(cru_node);
-> +		if (!i2s_tdm->cru_base) {
-> +			dev_err(i2s_tdm->dev,
-> +				"Missing or unsupported rockchip,cru node\n");
-> +			return -ENOENT;
-> +		}
-> +
-> +		i2s_tdm->tx_reset_id = of_i2s_resetid_get(node, "tx-m");
-> +		i2s_tdm->rx_reset_id = of_i2s_resetid_get(node, "rx-m");
-> +	}
-> +
-> +	i2s_tdm->tx_reset = devm_reset_control_get(&pdev->dev, "tx-m");
-
-Please use devm_reset_control_get_exclusive() instead.
-
-> +	if (IS_ERR(i2s_tdm->tx_reset)) {
-> +		ret = PTR_ERR(i2s_tdm->tx_reset);
-> +		if (ret != -ENOENT)
-> +			return dev_err_probe(i2s_tdm->dev, ret,
-> +					     "Error in tx-m reset control\n");
-> +	}
-> +
-> +	i2s_tdm->rx_reset = devm_reset_control_get(&pdev->dev, "rx-m");
-> +	if (IS_ERR(i2s_tdm->rx_reset)) {
-> +		ret = PTR_ERR(i2s_tdm->rx_reset);
-> +		if (ret != -ENOENT)
-
-Why is -ENOENT acceptable? If you want these to be optional, use
-devm_reset_control_get_optional_exclusive() [1] instead. That will
-return NULL if the reset is not specified in the device tree, which will
-be ignored by reset_control_(de)assert().
-
-[1] https://www.kernel.org/doc/html/latest/driver-api/reset.html#c.devm_reset_control_get_optional_exclusive
-
-> +			return dev_err_probe(i2s_tdm->dev, ret,
-> +					     "Error in rx-m reset control\n");
-> +	}
-> +
-> +	i2s_tdm->hclk = devm_clk_get(&pdev->dev, "hclk");
-> +	if (IS_ERR(i2s_tdm->hclk)) {
-> +		return dev_err_probe(i2s_tdm->dev, PTR_ERR(i2s_tdm->hclk),
-> +				     "Failed to get clock hclk\n");
-> +	}
-> +
-> +	ret = clk_prepare_enable(i2s_tdm->hclk);
-> +	if (ret) {
-> +		return dev_err_probe(i2s_tdm->dev, ret,
-> +				     "Failed to enable clock hclk\n");
-> +	}
-
-This clock is left enabled in all the error paths below. You could
-install a cleanup action with devm_add_action_or_reset(), or better
-start enabling the hardware only after acquisition of all required
-resources has succeeded.
-
-[...]
-> +static int rockchip_i2s_tdm_remove(struct platform_device *pdev)
-> +{
-> +	struct rk_i2s_tdm_dev *i2s_tdm = dev_get_drvdata(&pdev->dev);
-> +
-> +	pm_runtime_disable(&pdev->dev);
-> +	if (!pm_runtime_status_suspended(&pdev->dev))
-> +		i2s_tdm_runtime_suspend(&pdev->dev);
-> +
-> +	if (!IS_ERR(i2s_tdm->mclk_tx))
-> +		clk_prepare_enable(i2s_tdm->mclk_tx);
-> +	if (!IS_ERR(i2s_tdm->mclk_rx))
-> +		clk_prepare_enable(i2s_tdm->mclk_rx);
-
-Why are we enabling these clocks now?
-
-> +	if (!IS_ERR(i2s_tdm->hclk))
-> +		clk_disable_unprepare(i2s_tdm->hclk);
-> +
-> +	return 0;
-> +}
-
-regards
-Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
