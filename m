@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C9E3C4338F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 17:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA587C4338F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 17:38:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D38F961374
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 17:38:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D38F961374
+	by mail.kernel.org (Postfix) with ESMTPS id A15AE610C7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Aug 2021 17:38:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A15AE610C7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,48 +22,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+/ca5TaCMXkeNunE05tRPd/mrg49JpwKzkRVA5ES57U=; b=KtBV/hasy3IOt6
-	b9VmpUErqtgpyAg4a6npY0zw3SvwogrNJQY4KV5/lsx4vVtBDm2OkZux4Dzf1xloc0ZS1U+qFO/th
-	GJb5XGRzmWr7fxjJsfFLGTQDZlmpqg9V5qicr7UdaIJ9bj8fBYQcC0R3JaDPKuNk/9x7Tzx1kCoMD
-	6EvPp/5J5L2NeLQOniNQTrfWa9rp7NIhVwIONA08T9xAWl93h2x4jxFgKoMF+q0jqN/FrpekAhN8X
-	Ec/dTU6CrZhi1NqTV+yBX27MW4qU1Qlu3mdiv7LA3/2KaMHlkgbOI3G3Ua5jTC9R0Ay2pUf9nMJHP
-	IM9ELe5HXz/FLxGckj4g==;
+	List-Owner; bh=1eQweTyjOP0v4vGpOmaOq4g4lnWdjknwSyUOrbGHhmM=; b=W7nDRV71UnotD3
+	yYtBBq6x0zeFvImLFFG48jXhycgK+DrRFPaFYpzj2N0dhIPw4bmKUh/TQudyFrGI2tw47vwVoLSw9
+	uwOHkvZI6mbMIeuKHVSWJmO1Q4NYTGkvKZmBpqMX+rITVZ01GcBsyWWuV8qiiv94s45FRDnFDvaES
+	VU0e4QtH8Y/McjPuVJMY4cbzqkuYFpAWHL03lf+VCbW47ThTP1HaRjKC6aXcHQpZEl/QR9Kk7v+vI
+	/o9LMHqvTBnli42wVTCg3/zzbxRNOLjITRSHbAQJkCJYgtrm29tCfiBZmgnNrJCy3E51noSO2Wy71
+	hkOB/C8GGQVsbQA1RFpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIDu8-000CG6-8F; Mon, 23 Aug 2021 17:38:36 +0000
+	id 1mIDuJ-000CJc-JB; Mon, 23 Aug 2021 17:38:47 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIDtu-000CE8-W3; Mon, 23 Aug 2021 17:38:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2662B6136F;
- Mon, 23 Aug 2021 17:38:21 +0000 (UTC)
+ id 1mIDtx-000CEi-ID; Mon, 23 Aug 2021 17:38:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C65BB61378;
+ Mon, 23 Aug 2021 17:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629740302;
- bh=00YwudNE7MR/TP/XvuAZxtNITWiXbC+Ci4XZyCUewy0=;
+ s=k20201202; t=1629740305;
+ bh=ugd2XJQ8HC698Lo5FzAAM8u1s8A3IJx0MWF/1OqrKIs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=X8icCSmOFJ5Pw98KDv4nkG7yd5EuXm0NfskwmHuTJWGvSuh1k+oEnRXKO53hdiduf
- yHLo+WCWt2rJmDidJL6T42lKNArYegyF6Jjsv8sHA+A8QHABxxtvNMUD8fbwOs9STN
- eGQVYNGrWuTwB0LT8U9Q7Nf3QSVr0kiHyCRztFRMBiY4559LVVMNqgbAJDojwqyygr
- vUJuR9T0vONXL8zIdnR4E8vqJu/+7L5ebQnK4ZdA7EzMnQIPUeAuUMnP35SliqnLma
- rO0BMZEl4SQdyqot6XJXmHGrnhm3bNR+xgFjbMssZV1+bUEwWomgnNNfpYaH19lVbm
- yhFXTSIruTyYg==
+ b=iNkcNxjQZiq2NevldjYN9wHhKP3ebqdUG0iSjAdQt6Sc95AA73baqcuH5dazzdh5M
+ 1+W3RSf0cCaqS/U9vWtgp5xLqmZprDKl1IqJ1NK8jg8LGPDU/ov5cHWaVHLYXDaJUg
+ xhV+Vl3A8piyvoK6rtl1XdWYh2YkhcdjO0sU5Jucz2XARITkL1kOCAdnFndupiv2mA
+ nFAn47ebtS+3fLrCQgUa1bwOL47bFoj7VhWeEQS3kgKVBCVgNF/T2XfEsKLt+zyOU+
+ 5I8daYiSjfeh3/6X81s6jo4vptRzwMuIALDEHc7Tm54SE2XmtRo9ng3Gh/u9HF3Jv2
+ 4TIzDlsYTAgWw==
 From: Mark Brown <broonie@kernel.org>
-To: linux-arm-kernel@lists.infradead.org, Jon Lin <jon.lin@rock-chips.com>,
- Chris Morgan <macromorgan@hotmail.com>, linux-rockchip@lists.infradead.org,
- linux-spi@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Colin King <colin.king@canonical.com>
-Cc: Mark Brown <broonie@kernel.org>, kernel-janitors@vger.kernel.org,
+To: Heiko Stuebner <heiko@sntech.de>,
+	Jon Lin <jon.lin@rock-chips.com>
+Cc: Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH][next] spi: rockchip-sfc: Fix assigned but never used
- return error codes
-Date: Mon, 23 Aug 2021 18:37:50 +0100
-Message-Id: <162974017516.3286.9365314960815127788.b4-ty@kernel.org>
+Subject: Re: [PATCH] spi: rockchip-sfc: Remove redundant IO operations
+Date: Mon, 23 Aug 2021 18:37:51 +0100
+Message-Id: <162974017517.3286.666459658265810667.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210818141051.36320-1-colin.king@canonical.com>
-References: <20210818141051.36320-1-colin.king@canonical.com>
+In-Reply-To: <20210821124925.6066-1-jon.lin@rock-chips.com>
+References: <20210821124925.6066-1-jon.lin@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_103823_090992_73CF142E 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20210823_103825_657909_833CFCFD 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,15 +79,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Aug 2021 15:10:51 +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
+On Sat, 21 Aug 2021 20:49:25 +0800, Jon Lin wrote:
+> Coherent dma buffer is uncached and memcpy is enough.
 > 
-> Currently there are two places where the error return variable ret is
-> being assigned -ETIMEDOUT on timeout errors and this value is not
-> being returned. Fix this by returning -ETIMEDOUT rather than redundantly
-> assiging it to ret.
 > 
-> [...]
+> 
+> 
 
 Applied to
 
@@ -97,8 +92,8 @@ Applied to
 
 Thanks!
 
-[1/1] spi: rockchip-sfc: Fix assigned but never used return error codes
-      commit: 745649c59a0d1fde9dcc02286f23f8c78a1f724d
+[1/1] spi: rockchip-sfc: Remove redundant IO operations
+      commit: 8d00f9819458b95301e274c6df705df2963ba34f
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
