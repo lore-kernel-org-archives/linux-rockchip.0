@@ -2,82 +2,88 @@ Return-Path: <SRS0=/gBD=NP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 570C1C4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 02:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F2FAC4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:10:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E549860FDA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 02:48:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E549860FDA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id EE67E6125F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:10:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EE67E6125F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q8KSiAqP77R3wrKH61DtyUJ9x5seUKLJUYaB8bz44wU=; b=2holw3aGVt6lSfibTxeAnytBdQ
-	24uLzwfjCqH83BeajwbJyWBCTMwncuQDdYCakyb2SZblV6MmF1BiMrrcevMGFdt1DHzIYRRsZ2SDt
-	7rPXQ4hmTx3+2oO1czp30Cf2t/GR6FjYfQya/L1wAodFKR18pBbG2EVH3bpBx8iXVQYT3ORZ2Oo5N
-	PKwnE0IqklpV6RrltmyB6lrhh9InEm0Clh2WWr4HITXiBU/kKDIpnpyGaAnCDoqUP2/PgPI5vaW8K
-	ObH87X0peJLiOnWgjS0APBGwQ0ZABSDNDNqJb10EaCBg4ZoHj8VRrh/a4RZ52fTzNOZIyDp8QZhao
-	udFOcERw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lBvG0R6xUWeBVMAHV3IWiR8S89KHQj8q4kJ0gJglJ3o=; b=fLwYNbpj2FIG3R
+	cTYXU0smqGQFEsvqXIKQXe2FhcCtsM/hhHtPBl7g/ISXakPyNvIJvYJFYBtnexOOCh0mGdNXO/Hem
+	ibC5hTa5nxDUyQrIxygDfkYyPPcVdwEtb12ONqrpmG12s06AGH5W+qBYLfCyRk1UDbHhiiA9b+R8H
+	ia/aW5WruLFTlRe+gvWTM0+32wdmDm9mnEMwo151ZKwLnQWIvePrVFEUicUqDvC3HfcPxCHArBlyf
+	puDT8ylpIfV4F5ANZKzKxk7cEbz8K26i9WaVfVxweMDz9Hi9Yi1CEvKCVacgwXf4tPyQbYtYLk1vk
+	KmNsAJi9gXUaDOXzAdqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIMU7-001Hww-Ae; Tue, 24 Aug 2021 02:48:19 +0000
-Received: from regular1.263xmail.com ([211.150.70.202])
+	id 1mINlL-001UeH-AA; Tue, 24 Aug 2021 04:10:11 +0000
+Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIMU4-001HvU-En
- for linux-rockchip@lists.infradead.org; Tue, 24 Aug 2021 02:48:17 +0000
-Received: from localhost (unknown [192.168.167.235])
- by regular1.263xmail.com (Postfix) with ESMTP id EE3B6808;
- Tue, 24 Aug 2021 10:48:08 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from [172.16.12.19] (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P32762T139760316184320S1629773288152537_; 
- Tue, 24 Aug 2021 10:48:08 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <d93d28eb9fc7cd6118c5e0f95ce892d3>
-X-RL-SENDER: sugar.zhang@rock-chips.com
-X-SENDER: zxg@rock-chips.com
-X-LOGIN-NAME: sugar.zhang@rock-chips.com
-X-FST-TO: alsa-devel@alsa-project.org
-X-RCPT-COUNT: 6
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_15/15=5d_ASoC=3a_dt-bindings=3a_rockchip?=
- =?UTF-8?B?OiBpMnM6IERvY3VtZW50IHByb3BlcnR5ICdjbGstdHJjbSfjgJDor7fms6jmhI8=?=
- =?UTF-8?B?77yM6YKu5Lu255Sxcm9iaGVycmluZzJAZ21haWwuY29t5Luj5Y+R44CR?=
-To: Rob Herring <robh@kernel.org>
-Cc: broonie@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, alsa-devel@alsa-project.org
-References: <1629715710-21137-1-git-send-email-sugar.zhang@rock-chips.com>
- <1629716132-21544-1-git-send-email-sugar.zhang@rock-chips.com>
- <YSPckWacS4kk270r@robh.at.kernel.org>
-From: sugar zhang <sugar.zhang@rock-chips.com>
-Message-ID: <068b1fdc-3f93-6bcd-247b-95e68e1ba8e7@rock-chips.com>
-Date: Tue, 24 Aug 2021 10:48:07 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1mINlI-001Ubt-CA; Tue, 24 Aug 2021 04:10:09 +0000
+Received: by mail-oo1-xc31.google.com with SMTP id
+ o17-20020a4a64110000b0290263e1ba7ff9so6089742ooc.2; 
+ Mon, 23 Aug 2021 21:10:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=v7s0jc31HPLAs0gXkmeRMnAPIKh72hl0mqHTuEnX+aY=;
+ b=GGBV6KeWVbtgT6Mm6iQM27J2B036M/xQ9+GGgBC8Ru/8KZuIgTnoGtcmkUpZvpKDUk
+ MY7xk5FDUfSWmdhgiCTKSFtVbK+UuvSV8wW3w7sIjYUK4YVRcZbli7PS4qIQzpXhNHFZ
+ ZsXR0kXo6SVDk7Fqdb7kAw32MdGSe6MdoFBT47WCEvWd7v+7ajknW6q8P3vo5E7B0kqw
+ r1huv6Te0ajpcW95LLyb0oBDyEd44jE4GKnOGWbXZNP/70d0DHxjXR6qHy0CzDImkST6
+ SdwbQhYPvWu9WFLa4bLumCYJMboK9z3UmOKxbhl7j46GbibsPENkzb0P2HCyRa0Lz1oj
+ G5Bg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=v7s0jc31HPLAs0gXkmeRMnAPIKh72hl0mqHTuEnX+aY=;
+ b=h80BnNzTGSbprkrsbyiy7cxoF/Eu1Nk4UjURGWvvmYFu0qPKLBql3DhKKWOZ3fuUbi
+ TpnVNsl8S/UsM3vjbc0q65EuyvrSNQxwtN3IM+P6/tLqvqM62+qEAG5St3KTDqIRxzfP
+ 2Iv2hg7EB0r4Vy70wh8cCfbQl2R+KTx9/VQaOunskTlQ3a8e56a3X3GaU8M7NrzrbOmC
+ 7VAl5yQ3/cy4/jXeBqzZBGCR+WnFHhjRNdmK4fREULJLDVJxqcSGTte/8HzHycK5YAyS
+ pd0mpEu1PtyKPanNTf/V+KdChQINmnyGrYLOybuxxhUJTRWg3Cl63cNq/cGI4LPBhich
+ pnEg==
+X-Gm-Message-State: AOAM531ypcqv+g9oILxaRBi5hsvulIhQlA8Ao2DzXZMelbB7BPhbqJXj
+ nEWNAkZa9LRz3A+bI4YzmDwUF7aaDiI=
+X-Google-Smtp-Source: ABdhPJxDcvzCfgf6iqIMItm82HL8VmZJ9GdO4AcSWiZgXL4fvrSMaJlYxIM5/kSCe+gZgYmouKRVng==
+X-Received: by 2002:a4a:4484:: with SMTP id o126mr5055737ooa.90.1629778202181; 
+ Mon, 23 Aug 2021 21:10:02 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
+ [76.183.134.35])
+ by smtp.gmail.com with ESMTPSA id i19sm3922818ooe.44.2021.08.23.21.10.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Aug 2021 21:10:01 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ lee.jones@linaro.org, robh+dt@kernel.org, heiko@sntech.de, sre@kernel.org,
+ maccraft123mc@gmail.com, devicetree@vger.kernel.org,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v4 0/4] power: supply: Add Support for RK817 Charger
+Date: Mon, 23 Aug 2021 23:09:51 -0500
+Message-Id: <20210824040955.29112-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <YSPckWacS4kk270r@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_194816_803517_92B22A5C 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20210823_211008_467067_B428D534 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +96,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Ck9uIDIwMjEvOC8yNCAxOjM2LCBSb2IgSGVycmluZyB3cm90ZToKPiBPbiBNb24sIEF1ZyAyMywg
-MjAyMSBhdCAwNjo1NTozMlBNICswODAwLCBTdWdhciBaaGFuZyB3cm90ZToKPj4gVGhpcyBwYXRj
-aCBkb2N1bWVudHMgcHJvcGVydHkgJ3JvY2tjaGlwLGNsay10cmNtJyB3aGljaCBpcyB1c2VkCj4+
-IHRvIHNwZWNpZnkgdGhlIGxyY2suCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFN1Z2FyIFpoYW5nIDxz
-dWdhci56aGFuZ0Byb2NrLWNoaXBzLmNvbT4KPj4gQ2hhbmdlLUlkOiBJNjQ4MTQyYzU3YzU2OGJi
-ZWQyMDlmMmI5MTg4YjFmNTM5YTMyODViMgo+IERyb3AgdGhpcy4Kb2theSwgd2lsbCBkbyBpbiB2
-Mi4KPj4gLS0tCj4+ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5kL3Jv
-Y2tjaGlwLWkycy55YW1sIHwgOSArKysrKysrKysKPj4gICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNl
-cnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3Mvc291bmQvcm9ja2NoaXAtaTJzLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3Mvc291bmQvcm9ja2NoaXAtaTJzLnlhbWwKPj4gaW5kZXggMTFlOTExYS4uOGQ5ZGZl
-ZCAxMDA2NDQKPj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3NvdW5k
-L3JvY2tjaGlwLWkycy55YW1sCj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9zb3VuZC9yb2NrY2hpcC1pMnMueWFtbAo+PiBAQCAtNzIsNiArNzIsMTUgQEAgcHJvcGVy
-dGllczoKPj4gICAgIHJlc2V0czoKPj4gICAgICAgbWF4SXRlbXM6IDIKPj4gICAKPj4gKyAgcm9j
-a2NoaXAsY2xrLXRyY206Cj4+ICsgICAgJHJlZjogL3NjaGVtYXMvdHlwZXMueWFtbCMvZGVmaW5p
-dGlvbnMvdWludDMyCj4+ICsgICAgZGVmYXVsdDogMAo+PiArICAgIGRlc2NyaXB0aW9uOgo+PiAr
-ICAgICAgdHggYW5kIHJ4IGxyY2svYmNsayBjb21tb24gdXNlLgo+PiArICAgICAgMDogYm90aCB0
-eF9scmNrL2JjbGsgYW5kIHJ4X2xyY2svYmNsayBhcmUgdXNlZAo+PiArICAgICAgMTogb25seSB0
-eF9scmNrL2JjbGsgaXMgdXNlZAo+PiArICAgICAgMjogb25seSByeF9scmNrL2JjbGsgaXMgdXNl
-ZAo+IFNvdW5kcyBsaWtlIGNvbnN0cmFpbnRzLiBNYWtlIGEgc2NoZW1hLgp3aWxsIHNwbGl0IGlu
-dG8gdHdvIHByb3BlcnRpZXM6IHJvY2tjaGlwLHRyY20tc3luYy10eC1vbmx5LCAKcm9ja2NoaXAs
-dHJjbS1zeW5jLXJ4LW9ubHkuCj4+ICsKPj4gICAgIHJvY2tjaGlwLGNhcHR1cmUtY2hhbm5lbHM6
-Cj4+ICAgICAgICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3VpbnQzMgo+
-PiAgICAgICBkZWZhdWx0OiAyCj4+IC0tIAo+PiAyLjcuNAo+Pgo+Pgo+Pgo+Pgo+Cj4KLS0gCkJl
-c3QgUmVnYXJkcyEK5byg5a2m5bm/L1N1Z2FyCueRnuiKr+W+rueUteWtkOiCoeS7veaciemZkOWF
-rOWPuApSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZC4KCgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Chris Morgan <macromorgan@hotmail.com>
+
+This series is to add support for the Rockchip rk817 battery charger
+which is present in all Rockchip RK817 PMICs. The driver was written
+as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
+myself Chris Morgan <macromorgan@hotmail.com>.
+
+The driver requires some basic parameters be described about the
+battery in the devicetree such as the maximum capacity, the minimum
+and maximum voltage for the battery, the maximum charge current, the
+maximum charge voltage, and the value of sample resistors and sleep
+currents.
+
+The hardware itself contains an ADC capable of measuring the voltage,
+current, and temperature of the battery (though my implementation of an
+Odroid Go Advance lacks a thermistor for temperature). It also contains
+a columb counter, registers for tracking the measured voltage and
+current at boot, and a few bytes of nvram for storing data.
+
+Changes from V3:
+
+ - Corrected issues in device tree documentation.
+ - Added additional logic to battery to correct for columb counter
+   drift when the device stays plugged in at a full charge state.
+
+Changes from V2:
+
+ - Updated devicetree bindings to use common property units.
+ - Removed unneeded includes.
+ - Updated rk817_chg_cur_to_reg to make more legible.
+ - Simplified formula for displaying calibrated voltage.
+ - Updated power supply type to POWER_SUPPLY_TYPE_USB.
+ - Implemented get/put_unaligned macros for bulk reads and writes.
+ - Changed numerous dev_err() to dev_err_probe().
+ - Call power_supply_put_battery_info() at end of probe function.
+ - Removed unneeded whitespace.
+
+Changes from V1:
+
+ - Fixed a CLANG warning regarding an uninitalized variable.
+ - Fixed a CLANG warning regarding a pointer as a bool value always
+   returning as true.
+ - Added Maya Matuszczyk to the Signed-off-by.
+
+Chris Morgan (4):
+  dt-bindings: Add Rockchip rk817 battery charger support
+  mfd: Add Rockchip rk817 battery charger support
+  power: supply: Add charger driver for Rockchip RK817
+  arm64: dts: rockchip: add rk817 charger to Odroid Go Advance
+
+ .../devicetree/bindings/mfd/rk808.txt         |  38 +
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  26 +
+ drivers/mfd/rk808.c                           |  16 +-
+ drivers/power/supply/Kconfig                  |   6 +
+ drivers/power/supply/Makefile                 |   1 +
+ drivers/power/supply/rk817_charger.c          | 959 ++++++++++++++++++
+ include/linux/mfd/rk808.h                     |  87 ++
+ 7 files changed, 1132 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/power/supply/rk817_charger.c
+
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
