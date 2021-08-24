@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E65FC4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 17:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C3A2C432BE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 17:21:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D871A619E4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 17:08:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D871A619E4
+	by mail.kernel.org (Postfix) with ESMTPS id 53E8961357
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 17:21:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 53E8961357
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,61 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=epYumHmmBxraMuben+iL2okgfe802IjfK0VNC71b2ew=; b=ncq/03UFyQ32T/
-	q1HdYwXYLMgf1bEneG1/vK0w1qKb9Z58PZ6axObvakiwhfJmqs71JlfEiJK4F89UaqqIdcwXXDWmb
-	7VRqEKAConFzaqhvWHFjYV/Kirkz64ChiIDGr9wSSgO4qDHgSA+eA2QLko1NiUwv5RUqs4XkFHfsY
-	Vx36lAcXIphqSbikbv9/IZFzvnThwZnwJOjIurszAt3DEb/DEQMmahW4+sZiadkcG2oJ1Dfc4fXQQ
-	OJxcYo7FGhPlkcQbGNl5v1EcLNAoOBJHRNBHQmADAR80dmEE9Z/iKZGIyXS8m1QlOKETSfjkyC+nk
-	z83ySh81wcwQa/NWrmRA==;
+	List-Owner; bh=LpnqB2uEJDuzEOegZqN8g7ZX6iRirZb+GWNlyxXhCJA=; b=jjay7eJn2qZWz2
+	AFCYdQtOKvnADgxQn6j2T6x0XPQbuuLND37kUESJV8RdN7m9OX1hCWhGjnlJRbm4BXMpzXPA2C8bn
+	AIoITXrH4D4EcJ9gFVUFaf5wwtsSRT3gaCAIbv3DncBxJI+qFkmpbXPV8fHBqs1IRurJO1WJQd/AZ
+	oF1VfmmtNUxLk7JG42FoHEk0/9Z1TY+Q/36PyvW8srRStYMMXfWTYKR2BhMzzE+KqaCe29m9Lr2t+
+	peNr9YKDx0km9KvmW61wbf3CsV9UAPinWu6l7OBhZqjT0MVQMD2sDWYdT9qIke+o+joxKQ3NcJu6k
+	iy/xkTTO3ywev964/dJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIZuc-00469j-88; Tue, 24 Aug 2021 17:08:34 +0000
-Received: from mail-oo1-f45.google.com ([209.85.161.45])
+	id 1mIa76-0048Kd-TQ; Tue, 24 Aug 2021 17:21:28 +0000
+Received: from mail-ot1-f47.google.com ([209.85.210.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIZuZ-00468z-Cr
- for linux-rockchip@lists.infradead.org; Tue, 24 Aug 2021 17:08:32 +0000
-Received: by mail-oo1-f45.google.com with SMTP id
- z3-20020a4a98430000b029025f4693434bso6736702ooi.3
- for <linux-rockchip@lists.infradead.org>; Tue, 24 Aug 2021 10:08:30 -0700 (PDT)
+ id 1mIa74-0048Jt-GQ; Tue, 24 Aug 2021 17:21:27 +0000
+Received: by mail-ot1-f47.google.com with SMTP id
+ x9-20020a056830278900b0051b8be1192fso27345343otu.7; 
+ Tue, 24 Aug 2021 10:21:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=zwubaYFj/lvlyUUP+l/btChNzFkq5suM9jrCNFdviZc=;
- b=DrYKKWwG18aRfZzxxtSFSk9GqZzVrBhCwGI6C5i1esCV0VobIqVOfqd+dw+hfzhobY
- CDC6XC/1zX9T7Qee2FViM46dQqQECQ+26EWEC5GiP0t2jrsoy9pzaz52Tnm5YjyvgBXL
- OzpZ+QPJF7oI4i7/bteM7vvoL6i+Af0iV6RB6yIK1fv54WffYWuEc0k0EBXHhSBiBHxI
- /9OJKRCYj5MpcijAz/+0gO8uvLsx9nVCXT/WnVZFZm6HCRRuSszF25WnCKbdZgifL+AT
- WfC3N9w7C+nZHybc+gEFZoBKavWTM/xURf464VK1n+HHmg06MyUOYQqBnIJR5KAaIVFK
- bjKw==
-X-Gm-Message-State: AOAM53057OT7WudxitISleBT4yRkPzhkJZoQ7isFZCLki5oWgkPAMlbm
- wnWRDLHBZcos4T+Xw4fCiA==
-X-Google-Smtp-Source: ABdhPJzLMc7ooV0oFHNXxw248f+31EgtiyHafVjQcBW9XOazHhf59JoPDr8NJbnlA1QzydJ7uQsjNQ==
-X-Received: by 2002:a4a:5592:: with SMTP id e140mr20076850oob.59.1629824910169; 
- Tue, 24 Aug 2021 10:08:30 -0700 (PDT)
+ bh=hlWC9+vUVVELeqKVJ2DC9hi41GL/e4i4yVESIWR4T5A=;
+ b=ef4v/3dgV7rpaeqhs/wJBc3+GHkQFBnarRoJurtW7l3Ploqgg/AhjQnpyTF6G/X3Qe
+ mEYEY1qLcTDyihF0eJu6To4xpA0bkRpGEoG60RL7IpPUekpxlpM4PD4CEubPxwxOyqX9
+ UzvLRiXqkuEkbRi8n1gRbvb1An6xw4jxLLJn3FJySoVEqxOddsdJATJVCIOr10Kz1+ki
+ A0GSr74/a9FcGEMv1rbIy4HHiE6VRY41TLHRMXgL7JEt+YWf1Hjw6K30busg7ap9xNVr
+ jIHR/FbeMn6t5BW/CfqatpsAHqjj4i3GpWrEF3VWQNcUb1EKzE19ug+FqJRHwAezszQX
+ KDiQ==
+X-Gm-Message-State: AOAM532sFAsnVxPw/+VdiXmHyU42ReKUrgBbedc/CaY7IA+1JwKn8EbN
+ WNGGkIhU9A/uTIkFVDF4/VsXdj0TnA==
+X-Google-Smtp-Source: ABdhPJxMsPbj7DqNPHORp0UDP+Z9S7EF7aFEMtnEsKD4R7HA5m8wOSCsNcw49YJJoVL/sV4Edu7h6A==
+X-Received: by 2002:aca:2305:: with SMTP id e5mr3642749oie.36.1629825685671;
+ Tue, 24 Aug 2021 10:21:25 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id z26sm4515905oih.3.2021.08.24.10.08.28
+ by smtp.gmail.com with ESMTPSA id p4sm4149663ooa.35.2021.08.24.10.21.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Aug 2021 10:08:29 -0700 (PDT)
-Received: (nullmailer pid 641467 invoked by uid 1000);
- Tue, 24 Aug 2021 17:08:28 -0000
-Date: Tue, 24 Aug 2021 12:08:28 -0500
+ Tue, 24 Aug 2021 10:21:25 -0700 (PDT)
+Received: (nullmailer pid 661564 invoked by uid 1000);
+ Tue, 24 Aug 2021 17:21:24 -0000
+Date: Tue, 24 Aug 2021 12:21:24 -0500
 From: Rob Herring <robh@kernel.org>
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: broonie@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org
-Subject: Re: [PATCH v2 15/15] ASoC: dt-bindings: rockchip: i2s: Document
- property TRCM
-Message-ID: <YSUnjLfcntDob/sT@robh.at.kernel.org>
-References: <1629796561-4025-1-git-send-email-sugar.zhang@rock-chips.com>
- <1629796734-4243-5-git-send-email-sugar.zhang@rock-chips.com>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: tglx@linutronix.de, linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, heiko@sntech.de,
+ linux-kernel@vger.kernel.org, daniel.lezcano@linaro.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v1] dt-bindings: timer: remove rockchip,rk3066-timer
+ compatible string from rockchip,rk-timer.yaml
+Message-ID: <YSUqlE2S+YGR6680@robh.at.kernel.org>
+References: <20210824095637.2547-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1629796734-4243-5-git-send-email-sugar.zhang@rock-chips.com>
+In-Reply-To: <20210824095637.2547-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_100831_479284_DFD085B5 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20210824_102126_590677_2CE359E0 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,23 +95,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Aug 2021 17:18:54 +0800, Sugar Zhang wrote:
-> This patch documents property 'rockchip,trcm-sync-tx-only/rx-only'
-> which is used to specify the lrck.
+On Tue, 24 Aug 2021 11:56:37 +0200, Johan Jonker wrote:
+> The Rockchip rk3066 timers have a different register layout then rk3288
+> with only a 32 vs 64 bits timer channel. The timers in rk3066a.dtsi have
+> "snps,dw-apb-timer" as compatible string, so remove the
+> "rockchip,rk3066-timer" from rockchip,rk-timer.yaml
 > 
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
-> 
-> Changes in v2:
-> - split property trcm into single 'trcm-sync-tx-only' and
->   'trcm-sync-rx-only' suggested by Nicolas.
-> - drop change-id
-> 
->  Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  Documentation/devicetree/bindings/timer/rockchip,rk-timer.yaml | 1 -
+>  1 file changed, 1 deletion(-)
 > 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
