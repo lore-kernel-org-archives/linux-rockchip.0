@@ -8,84 +8,81 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C3BEC4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A660EC4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:19:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B585D610C9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:11:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B585D610C9
+	by mail.kernel.org (Postfix) with ESMTPS id 61F1561357
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 04:19:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 61F1561357
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wloqDflNVcdOnTr1hzrqmDLVdCMJg/9zYuMzgEnMmQQ=; b=LQ2nBLueknFCCl
-	EaC8UoSzYi9WHshBz4bSlsOoyJA67bNWH/r4DaPWEXEe6XLFLgWjivO8vkXZGCSgCLCeQiyHoN0Dr
-	8mes5apQOsoyw8qD31ziWHjfz23pwZ1I2/KbhzPpwYA9fPtVQ+cUtmAT4fO7y8YDC0Ua3/mf5FhHp
-	XzWiCPyRrEcLOBnt1E3HX0cPgY0zdh3YSAX09TQLuHwUEemdjM1UFQTx3iGtobab1cMAZjTN7rce+
-	IhBRSXVm++dkDFBnQN9duodVJZ/poo6mvlScuRacO5tlscOZilrGBiNqHO3KuNrLHF7VUlvmPKW1g
-	7TtnRHxWtyu1b+SgCD7g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LWBE/oxjhWcl2WAWzWKviNXH35K90HaHNf3ssKnQEdY=; b=x91n82+0XAzsIA
+	1IGM0wsfHEhhYuOJZlwxys4wUqAHHlw9nH+BEHl4A1SCY89ddmEf0rVlyJv91QpRGYBCQfyS2YiBk
+	wsjQTCGub/8bEvlbYXfLqqf+/ShGv0LnBmx/yDa5NjQkxxn01kr8ZXWvQAC5tyDohJ+Oq65m/lKJv
+	zV7hcsK7HJEsq63EtvPVVQjlWEcQ0V9Qxi0KxVLnC0tMk7g0FNJU5wxT38v4QbsMcNmlGOafKTpsA
+	JOMIX68dANYKTHJnd02OD7W6jjKNXHxZKenu6XihGpbkA0DQ4mi+HS79yX+NqESko1CgWix2sT6fs
+	n2F7haUDoNUIRF4Hl05A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mINmF-001V1j-Mg; Tue, 24 Aug 2021 04:11:07 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1mINuX-001XlF-MM; Tue, 24 Aug 2021 04:19:41 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mINlK-001UcY-7g; Tue, 24 Aug 2021 04:10:13 +0000
-Received: by mail-ot1-x333.google.com with SMTP id
- g66-20020a9d12c8000000b0051aeba607f1so33940116otg.11; 
- Mon, 23 Aug 2021 21:10:07 -0700 (PDT)
+ id 1mINuR-001XkN-Kz
+ for linux-rockchip@lists.infradead.org; Tue, 24 Aug 2021 04:19:40 +0000
+Received: by mail-ot1-x336.google.com with SMTP id
+ a20-20020a0568300b9400b0051b8ca82dfcso21546216otv.3
+ for <linux-rockchip@lists.infradead.org>; Mon, 23 Aug 2021 21:19:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=WIzwwdumZIj3S6iB9QndiUcRz80rhlBBl00XcXos3Ys=;
- b=qKoaL5YjrBTalgYR05RdldrNINBD23cDqmWmZnanE8NgXynEiO2rsPClo+2Gn83pfU
- YuwN8qpkXqaiHPCbbbUkBHAA6MIx/w4cauWMHRVVMgJIJqBUZIEgUkyK5+vLPylEJdzc
- qD8opv+oSH/3sb69Eew1QkTjiPCIkI+/Xwo89RTjKCBFbMcLD2y4hIau51bdQTlWopRc
- uUyO1kiLKS2lawgBgV4jDCmBoE3GSEbVprZZs9F+NlSDFeCXYw/0K8LdOVX/Dvhbe/Rn
- ugaz46cW09ExMqeBxwB8j5W+lijl71inyR8nIxKH8qHyGkIYg70vnD8Y5C4kgKsQZOqe
- S+Nw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lkZAR+eg7jmGXXWvcyf1ZW3AO9gqSJvHMR+SZpM6B3Q=;
+ b=OjFg7uA8q9xBVril12OT+a2OhCtxDBOAv4+8f+8eiK71wBMs9aF7wHThDjAo/RAqtz
+ P+oeq8Tz3fdiQB7obl3/oTFpyG21OEc/F7OgRJwM2c7dK36V32+dwIZIZH2ILKO+Lptf
+ 1BEXzi48RUVd5p2pFE6nEhPxU+j1BSTWayHskJuR16kozjl/SLItFh716XIMT5z3NzKC
+ eEMoXkWNOnPwG68Lr3uS9VcYNJ8F020hPdyC9KOEYEwvG+Y7qP1H0H6rUyv17No8qpPK
+ Z+Ft6JOHroTXTgH47onKIFFDCYSX0TVpQ61dqKL/+ZUtqx96IsqQmRrgAJyhIivIYGjH
+ aVqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WIzwwdumZIj3S6iB9QndiUcRz80rhlBBl00XcXos3Ys=;
- b=YsWpP9/oUMAx0979yDFBYOKKEsjdEFDsWjcMS8SP635w1fPQ27OeQ2xSGpCpiOb2y5
- +OgL8+ql0J0LR4aTLQjPwtbno0PGf00s7M+JwtGtEinA+9kMWVMQzwl99oTJJIxmDVk9
- y1ft6ZAuQ8Qji+GDaOld7e+Jk5b8BhcO1hLwaWa0zg8BrYrtU+VItlmrxELDDvVnRsJH
- 2b7u5vgXDzkX7o36f5s7yxLI3eP+EiXpjaL0gA6ziaOntT8FKKYW5Q20/ZGUh9Cj52A6
- 7FJSjCY05yCHtFAtIJkiLGFZ8l0oGv8gJtHK3ERCZbHTY03Qh3Y7scNBH2WtRIjR8YB3
- 56Lg==
-X-Gm-Message-State: AOAM531KsHW/FoeTsgkE2gK/9kL1ffkyEqB7bUShQm18O7vkKvEUmfbb
- Nl5z2k+TTvzeT10VheS5AdH+9VbTWYA=
-X-Google-Smtp-Source: ABdhPJzo3+Milzzyq9575OFXASqug34gWmt2Lc+E/uut6j016Wfy9TAfGt2JidUTauRmymS6roTopA==
-X-Received: by 2002:aca:1815:: with SMTP id h21mr1451390oih.128.1629778205577; 
- Mon, 23 Aug 2021 21:10:05 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lkZAR+eg7jmGXXWvcyf1ZW3AO9gqSJvHMR+SZpM6B3Q=;
+ b=e9ruEFfpfOQIILIrhrzzSTZ6fvIeM5B2FnxstkuuUFdjvsUpl8q4bEC6Pm2k6Drq0t
+ WqTWZnReNbKNpbhyTN6hjEZZ4CSp0xruYL+DHkXNoRefSLv4sE2EgMVzOKfWu+36O6Hz
+ 4R3vC5yTFJmdCQYf2k9aIq4Eie9UX7D9rIz20RXzc3gW+fDecBtAlD2dOF4rCk24Cyk1
+ yxqXyNGovmW+N4gyKEBnRu54FoEimDG2QteJl6nkJVwjvZvBT/uuT8B9rDrWaaJbF+Eb
+ 2iBheY4f3vVf83TnrkQqUYxqmUKfNNHk4edD8XkdT1PjHvEYDuo691CoijP44tMOambR
+ a9Sg==
+X-Gm-Message-State: AOAM5312lS6pYIAwLehPdNLwK6/Vm9SAaYte2x46SZTIJi3+czYlPyfY
+ bfAwYyH9QdwVl20OrImVveQ=
+X-Google-Smtp-Source: ABdhPJx3s8HWA2U7YeGUsLVa356cj4eqRnrdb08eVxQHWllZh8YWfl/FBittX/r9zCLrrYt1j3hVLQ==
+X-Received: by 2002:a9d:6c19:: with SMTP id f25mr29784922otq.192.1629778772868; 
+ Mon, 23 Aug 2021 21:19:32 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id i19sm3922818ooe.44.2021.08.23.21.10.04
+ by smtp.gmail.com with ESMTPSA id h14sm4339570otm.5.2021.08.23.21.19.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Aug 2021 21:10:05 -0700 (PDT)
+ Mon, 23 Aug 2021 21:19:32 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- lee.jones@linaro.org, robh+dt@kernel.org, heiko@sntech.de, sre@kernel.org,
- maccraft123mc@gmail.com, devicetree@vger.kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v4 3/4] power: supply: Add charger driver for Rockchip RK817
-Date: Mon, 23 Aug 2021 23:09:54 -0500
-Message-Id: <20210824040955.29112-4-macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, lee.jones@linaro.org,
+ robh+dt@kernel.org, heiko@sntech.de, Chris Morgan <macromorgan@hotmail.com>
+Subject: [RFC] dt-bindings: mfd: rk808: Convert bindings to yaml
+Date: Mon, 23 Aug 2021 23:19:22 -0500
+Message-Id: <20210824041922.30586-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210824040955.29112-1-macroalpha82@gmail.com>
-References: <20210824040955.29112-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_211010_350339_543E4C16 
-X-CRM114-Status: GOOD (  28.19  )
+X-CRM114-CacheID: sfid-20210823_211935_836392_0F22C7B5 
+X-CRM114-Status: GOOD (  24.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,1012 +102,1489 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Rockchip rk817 battery charger integrated into the
-rk817 PMIC.
+This is an RFC to convert the rk808 bindings into yaml format. Please
+note that currently there are a few errors that appear when performing
+a make dtbs_check. However, after looking at the errors it appears
+in most cases it occurs on device trees which are not following
+the current rk808.txt document today. For example for the rk808
+there are multiple errors regarding vcc13-supply, vcc14-supply, and
+vddio-supply; however these supplies are not listed in the current
+driver or cared for in any way.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 ---
- drivers/power/supply/Kconfig         |   6 +
- drivers/power/supply/Makefile        |   1 +
- drivers/power/supply/rk817_charger.c | 959 +++++++++++++++++++++++++++
- 3 files changed, 966 insertions(+)
- create mode 100644 drivers/power/supply/rk817_charger.c
+ .../devicetree/bindings/mfd/rk808.txt         | 503 ------------------
+ .../bindings/mfd/rockchip,rk805.yaml          |  89 ++++
+ .../bindings/mfd/rockchip,rk808.yaml          | 255 +++++++++
+ .../bindings/mfd/rockchip,rk809.yaml          | 101 ++++
+ .../bindings/mfd/rockchip,rk817.yaml          | 365 +++++++++++++
+ .../bindings/mfd/rockchip,rk818.yaml          | 109 ++++
+ 6 files changed, 919 insertions(+), 503 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/mfd/rk808.txt
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
 
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 11f5368e810e..311130da36ff 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -666,6 +666,12 @@ config CHARGER_BQ256XX
- 	  charge management and system power path management devices for single
- 	  cell Li-ion and Li-polymer batteries.
- 
-+config CHARGER_RK817
-+	tristate "Rockchip RK817 PMIC Battery Charger"
-+	depends on MFD_RK808
-+	help
-+	  Say Y to include support for Rockchip RK817 Battery Charger.
-+
- config CHARGER_SMB347
- 	tristate "Summit Microelectronics SMB3XX Battery Charger"
- 	depends on I2C
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index 33059a91f60c..9497d2105712 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -87,6 +87,7 @@ obj-$(CONFIG_CHARGER_BQ2515X)	+= bq2515x_charger.o
- obj-$(CONFIG_CHARGER_BQ25890)	+= bq25890_charger.o
- obj-$(CONFIG_CHARGER_BQ25980)	+= bq25980_charger.o
- obj-$(CONFIG_CHARGER_BQ256XX)	+= bq256xx_charger.o
-+obj-$(CONFIG_CHARGER_RK817)	+= rk817_charger.o
- obj-$(CONFIG_CHARGER_SMB347)	+= smb347-charger.o
- obj-$(CONFIG_CHARGER_TPS65090)	+= tps65090-charger.o
- obj-$(CONFIG_CHARGER_TPS65217)	+= tps65217_charger.o
-diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/rk817_charger.c
+diff --git a/Documentation/devicetree/bindings/mfd/rk808.txt b/Documentation/devicetree/bindings/mfd/rk808.txt
+deleted file mode 100644
+index 6e1b9fb1f64a..000000000000
+--- a/Documentation/devicetree/bindings/mfd/rk808.txt
++++ /dev/null
+@@ -1,503 +0,0 @@
+-RK8XX Power Management Integrated Circuit
+-
+-The rk8xx family current members:
+-rk805
+-rk808
+-rk809
+-rk817
+-rk818
+-
+-Required properties:
+-- compatible: "rockchip,rk805"
+-- compatible: "rockchip,rk808"
+-- compatible: "rockchip,rk809"
+-- compatible: "rockchip,rk817"
+-- compatible: "rockchip,rk818"
+-- reg: I2C slave address
+-- interrupts: the interrupt outputs of the controller.
+-- #clock-cells: from common clock binding; shall be set to 1 (multiple clock
+-  outputs). See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+-
+-Optional properties:
+-- clock-output-names: From common clock binding to override the
+-  default output clock name
+-- rockchip,system-power-controller: Telling whether or not this pmic is controlling
+-  the system power.
+-- wakeup-source: Device can be used as a wakeup source.
+-
+-Optional RK805 properties:
+-- vcc1-supply:  The input supply for DCDC_REG1
+-- vcc2-supply:  The input supply for DCDC_REG2
+-- vcc3-supply:  The input supply for DCDC_REG3
+-- vcc4-supply:  The input supply for DCDC_REG4
+-- vcc5-supply:  The input supply for LDO_REG1 and LDO_REG2
+-- vcc6-supply:  The input supply for LDO_REG3
+-
+-Optional RK808 properties:
+-- vcc1-supply:  The input supply for DCDC_REG1
+-- vcc2-supply:  The input supply for DCDC_REG2
+-- vcc3-supply:  The input supply for DCDC_REG3
+-- vcc4-supply:  The input supply for DCDC_REG4
+-- vcc6-supply:  The input supply for LDO_REG1 and LDO_REG2
+-- vcc7-supply:  The input supply for LDO_REG3 and LDO_REG7
+-- vcc8-supply:  The input supply for SWITCH_REG1
+-- vcc9-supply:  The input supply for LDO_REG4 and LDO_REG5
+-- vcc10-supply: The input supply for LDO_REG6
+-- vcc11-supply: The input supply for LDO_REG8
+-- vcc12-supply: The input supply for SWITCH_REG2
+-- dvs-gpios:  buck1/2 can be controlled by gpio dvs, this is GPIO specifiers
+-  for 2 host gpio's used for dvs. The format of the gpio specifier depends in
+-  the gpio controller. If DVS GPIOs aren't present, voltage changes will happen
+-  very quickly with no slow ramp time.
+-
+-Optional shared RK809 and RK817 properties:
+-- vcc1-supply:  The input supply for DCDC_REG1
+-- vcc2-supply:  The input supply for DCDC_REG2
+-- vcc3-supply:  The input supply for DCDC_REG3
+-- vcc4-supply:  The input supply for DCDC_REG4
+-- vcc5-supply:  The input supply for LDO_REG1, LDO_REG2, LDO_REG3
+-- vcc6-supply:  The input supply for LDO_REG4, LDO_REG5, LDO_REG6
+-- vcc7-supply:  The input supply for LDO_REG7, LDO_REG8, LDO_REG9
+-
+-Optional RK809 properties:
+-- vcc8-supply:  The input supply for SWITCH_REG1
+-- vcc9-supply:  The input supply for DCDC_REG5, SWITCH_REG2
+-
+-Optional RK817 properties:
+-- clocks:	The input clock for the audio codec
+-- clock-names:	The clock name for the codec clock. Should be "mclk".
+-- #sound-dai-cells: Needed for the interpretation of sound dais. Should be 0.
+-
+-- vcc8-supply:  The input supply for BOOST
+-- vcc9-supply:  The input supply for OTG_SWITCH
+-- codec:	The child node for the codec to hold additional properties.
+-		If no additional properties are required for the codec, this
+-		node can be omitted.
+-
+-- rockchip,mic-in-differential: Telling if the microphone uses differential
+-				mode. Should be under the codec child node.
+-
+-- battery:	The child node for the charger to hold additional properties.
+-		If a battery is not in use, this node can be omitted. If a
+-		battery node is used, the following values are required in the
+-		battery node itself:
+-		rockchip,resistor-sense-micro-ohms,
+-		rockchip,sleep-enter-current-microamp,
+-		rockchip,sleep-filter-current-microamp,
+-		Additionally, a phandle to a monitored-battery node that
+-		contains the following is also required:
+-		charge-full-design-microamp-hours,
+-		charge-term-current-microamp,
+-		constant-charge-current-max-microamp,
+-		constant-charge-voltage-max-microvolt,
+-		voltage-max-design-microvolt,
+-		voltage-min-design-microvolt,
+-		and a valid ocv-capacity table.
+-- rockchip,resistor-sense-micro-ohms: Value in microohms of the battery sense
+-				      resistor. The PMIC only supports values
+-				      of either 10000 or 20000. This value is
+-				      used by the driver to set the correct
+-				      divisor value to translate ADC readings
+-				      into the proper units of measure.
+-- rockchip,sleep-enter-current-microamp: Value in microamps of the sleep enter
+-					 current for the charger. Value is used
+-					 by the driver to calibrate the relax
+-					 threshold.
+-- rockchip,sleep-filter-current-microamp: Value in microamps of the sleep
+-					  filter current for the charger.
+-					  Value is used by the driver to derive
+-					  the sleep sample current.
+-
+-Optional RK818 properties:
+-- vcc1-supply:  The input supply for DCDC_REG1
+-- vcc2-supply:  The input supply for DCDC_REG2
+-- vcc3-supply:  The input supply for DCDC_REG3
+-- vcc4-supply:  The input supply for DCDC_REG4
+-- boost-supply: The input supply for DCDC_BOOST
+-- vcc6-supply:  The input supply for LDO_REG1 and LDO_REG2
+-- vcc7-supply:  The input supply for LDO_REG3, LDO_REG5 and LDO_REG7
+-- vcc8-supply:  The input supply for LDO_REG4, LDO_REG6 and LDO_REG8
+-- vcc9-supply:  The input supply for LDO_REG9 and SWITCH_REG
+-- h_5v-supply:  The input supply for HDMI_SWITCH
+-- usb-supply:   The input supply for OTG_SWITCH
+-
+-Regulators: All the regulators of RK8XX to be instantiated shall be
+-listed in a child node named 'regulators'. Each regulator is represented
+-by a child node of the 'regulators' node.
+-
+-	regulator-name {
+-		/* standard regulator bindings here */
+-	};
+-
+-Following regulators of the RK805 PMIC regulators are supported. Note that
+-the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
+-number as described in RK805 datasheet.
+-
+-	- DCDC_REGn
+-		- valid values for n are 1 to 4.
+-	- LDO_REGn
+-		- valid values for n are 1 to 3
+-
+-Following regulators of the RK808 PMIC block are supported. Note that
+-the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
+-number as described in RK808 datasheet.
+-
+-	- DCDC_REGn
+-		- valid values for n are 1 to 4.
+-	- LDO_REGn
+-		- valid values for n are 1 to 8.
+-	- SWITCH_REGn
+-		- valid values for n are 1 to 2
+-
+-Following regulators of the RK809 and RK817 PMIC blocks are supported. Note that
+-the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
+-number as described in RK809 and RK817 datasheets.
+-
+-	- DCDC_REGn
+-		- valid values for n are 1 to 5 for RK809.
+-		- valid values for n are 1 to 4 for RK817.
+-	- LDO_REGn
+-		- valid values for n are 1 to 9 for RK809.
+-		- valid values for n are 1 to 9 for RK817.
+-	- SWITCH_REGn
+-		- valid values for n are 1 to 2 for RK809.
+-	- BOOST for RK817
+-	- OTG_SWITCH for RK817
+-
+-Following regulators of the RK818 PMIC block are supported. Note that
+-the 'n' in regulator name, as in DCDC_REGn or LDOn, represents the DCDC or LDO
+-number as described in RK818 datasheet.
+-
+-	- DCDC_REGn
+-		- valid values for n are 1 to 4.
+-	- LDO_REGn
+-		- valid values for n are 1 to 9.
+-	- SWITCH_REG
+-	- HDMI_SWITCH
+-	- OTG_SWITCH
+-
+-It is necessary to configure three pins for both the RK809 and RK817, the three
+-pins are "gpio_ts" "gpio_gt" "gpio_slp".
+-	The gpio_gt and gpio_ts pins support the gpio function.
+-	The gpio_slp pin is for controlling the pmic states, as below:
+-		- reset
+-		- power down
+-		- sleep
+-
+-Standard regulator bindings are used inside regulator subnodes. Check
+-  Documentation/devicetree/bindings/regulator/regulator.txt
+-for more details
+-
+-Example:
+-	rk808: pmic@1b {
+-		compatible = "rockchip,rk808";
+-		clock-output-names = "xin32k", "rk808-clkout2";
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&pmic_int &dvs_1 &dvs_2>;
+-		dvs-gpios = <&gpio7 11 GPIO_ACTIVE_HIGH>,
+-			    <&gpio7 15 GPIO_ACTIVE_HIGH>;
+-		reg = <0x1b>;
+-		rockchip,system-power-controller;
+-		wakeup-source;
+-		#clock-cells = <1>;
+-
+-		vcc8-supply = <&vcc_18>;
+-		vcc9-supply = <&vcc_io>;
+-		vcc10-supply = <&vcc_io>;
+-		vcc12-supply = <&vcc_io>;
+-		vddio-supply = <&vccio_pmu>;
+-
+-		regulators {
+-			vdd_cpu: DCDC_REG1 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <750000>;
+-				regulator-max-microvolt = <1300000>;
+-				regulator-name = "vdd_arm";
+-			};
+-
+-			vdd_gpu: DCDC_REG2 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <850000>;
+-				regulator-max-microvolt = <1250000>;
+-				regulator-name = "vdd_gpu";
+-			};
+-
+-			vcc_ddr: DCDC_REG3 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-name = "vcc_ddr";
+-			};
+-
+-			vcc_io: DCDC_REG4 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-name = "vcc_io";
+-			};
+-
+-			vccio_pmu: LDO_REG1 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-name = "vccio_pmu";
+-			};
+-
+-			vcc_tp: LDO_REG2 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-name = "vcc_tp";
+-			};
+-
+-			vdd_10: LDO_REG3 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <1000000>;
+-				regulator-max-microvolt = <1000000>;
+-				regulator-name = "vdd_10";
+-			};
+-
+-			vcc18_lcd: LDO_REG4 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <1800000>;
+-				regulator-name = "vcc18_lcd";
+-			};
+-
+-			vccio_sd: LDO_REG5 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-name = "vccio_sd";
+-			};
+-
+-			vdd10_lcd: LDO_REG6 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <1000000>;
+-				regulator-max-microvolt = <1000000>;
+-				regulator-name = "vdd10_lcd";
+-			};
+-
+-			vcc_18: LDO_REG7 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <1800000>;
+-				regulator-name = "vcc_18";
+-			};
+-
+-			vcca_codec: LDO_REG8 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-name = "vcca_codec";
+-			};
+-
+-			vcc_wl: SWITCH_REG1 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-name = "vcc_wl";
+-			};
+-
+-			vcc_lcd: SWITCH_REG2 {
+-				regulator-always-on;
+-				regulator-boot-on;
+-				regulator-name = "vcc_lcd";
+-			};
+-		};
+-	};
+-
+-	rk817: pmic@20 {
+-		compatible = "rockchip,rk817";
+-		reg = <0x20>;
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+-		clock-output-names = "rk808-clkout1", "xin32k";
+-		clock-names = "mclk";
+-		clocks = <&cru SCLK_I2S1_OUT>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
+-		wakeup-source;
+-		#clock-cells = <1>;
+-		#sound-dai-cells = <0>;
+-
+-		vcc1-supply = <&vccsys>;
+-		vcc2-supply = <&vccsys>;
+-		vcc3-supply = <&vccsys>;
+-		vcc4-supply = <&vccsys>;
+-		vcc5-supply = <&vccsys>;
+-		vcc6-supply = <&vccsys>;
+-		vcc7-supply = <&vccsys>;
+-
+-		regulators {
+-			vdd_logic: DCDC_REG1 {
+-				regulator-name = "vdd_logic";
+-				regulator-min-microvolt = <950000>;
+-				regulator-max-microvolt = <1150000>;
+-				regulator-ramp-delay = <6001>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <950000>;
+-				};
+-			};
+-
+-			vdd_arm: DCDC_REG2 {
+-				regulator-name = "vdd_arm";
+-				regulator-min-microvolt = <950000>;
+-				regulator-max-microvolt = <1350000>;
+-				regulator-ramp-delay = <6001>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-off-in-suspend;
+-					regulator-suspend-microvolt = <950000>;
+-				};
+-			};
+-
+-			vcc_ddr: DCDC_REG3 {
+-				regulator-name = "vcc_ddr";
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-				};
+-			};
+-
+-			vcc_3v3: DCDC_REG4 {
+-				regulator-name = "vcc_3v3";
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-off-in-suspend;
+-					regulator-suspend-microvolt = <3300000>;
+-				};
+-			};
+-
+-			vcc_1v8: LDO_REG2 {
+-				regulator-name = "vcc_1v8";
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <1800000>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <1800000>;
+-				};
+-			};
+-
+-			vdd_1v0: LDO_REG3 {
+-				regulator-name = "vdd_1v0";
+-				regulator-min-microvolt = <1000000>;
+-				regulator-max-microvolt = <1000000>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <1000000>;
+-				};
+-			};
+-
+-			vcc3v3_pmu: LDO_REG4 {
+-				regulator-name = "vcc3v3_pmu";
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <3300000>;
+-				};
+-			};
+-
+-			vccio_sd: LDO_REG5 {
+-				regulator-name = "vccio_sd";
+-				regulator-min-microvolt = <1800000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-always-on;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <3300000>;
+-				};
+-			};
+-
+-			vcc_sd: LDO_REG6 {
+-				regulator-name = "vcc_sd";
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-				regulator-boot-on;
+-
+-				regulator-state-mem {
+-					regulator-on-in-suspend;
+-					regulator-suspend-microvolt = <3300000>;
+-				};
+-			};
+-
+-			vcc_bl: LDO_REG7 {
+-				regulator-name = "vcc_bl";
+-				regulator-min-microvolt = <3300000>;
+-				regulator-max-microvolt = <3300000>;
+-
+-				regulator-state-mem {
+-					regulator-off-in-suspend;
+-					regulator-suspend-microvolt = <3300000>;
+-				};
+-			};
+-
+-			vcc_lcd: LDO_REG8 {
+-				regulator-name = "vcc_lcd";
+-				regulator-min-microvolt = <2800000>;
+-				regulator-max-microvolt = <2800000>;
+-
+-				regulator-state-mem {
+-					regulator-off-in-suspend;
+-					regulator-suspend-microvolt = <2800000>;
+-				};
+-			};
+-
+-			vcc_cam: LDO_REG9 {
+-				regulator-name = "vcc_cam";
+-				regulator-min-microvolt = <3000000>;
+-				regulator-max-microvolt = <3000000>;
+-
+-				regulator-state-mem {
+-					regulator-off-in-suspend;
+-					regulator-suspend-microvolt = <3000000>;
+-				};
+-			};
+-		};
+-
+-		rk817_battery: battery {
+-			monitored-battery = <&battery_cell>;
+-			rockchip,resistor-sense-micro-ohms = <10000>;
+-			rockchip,sleep-enter-current-microamp = <300000>;
+-			rockchip,sleep-filter-current-microamp = <100000>;
+-		};
+-
+-		rk817_codec: codec {
+-			rockchip,mic-in-differential;
+-		};
+-	};
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
 new file mode 100644
-index 000000000000..34338aebe269
+index 000000000000..347696f1709c
 --- /dev/null
-+++ b/drivers/power/supply/rk817_charger.c
-@@ -0,0 +1,959 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Charger Driver for Rockchip rk817
-+ *
-+ * Copyright (c) 2021
-+ *
-+ * Authors: Maya Matuszczyk <maccraft123mc@gmail.com>
-+ *	    Chris Morgan <macromorgan@hotmail.com>
-+ */
-+
-+#include <linux/mfd/rk808.h>
-+#include <linux/irq.h>
-+#include <linux/of_gpio.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/power_supply.h>
-+#include <asm/unaligned.h>
-+
-+/* Charging statuses reported by hardware register */
-+enum rk817_charge_status {
-+	CHRG_OFF,
-+	DEAD_CHRG,
-+	TRICKLE_CHRG,
-+	CC_OR_CV_CHRG,
-+	CHARGE_FINISH,
-+	USB_OVER_VOL,
-+	BAT_TMP_ERR,
-+	BAT_TIM_ERR,
-+};
-+
-+/* Max charging current read to/written from hardware register.
-+ * Note how highest value corresponding to 0x7 is the lowest
-+ * current, this is per the datasheet.
-+ */
-+enum rk817_chg_cur {
-+	CHG_1A,
-+	CHG_1_5A,
-+	CHG_2A,
-+	CHG_2_5A,
-+	CHG_2_75A,
-+	CHG_3A,
-+	CHG_3_5A,
-+	CHG_0_5A,
-+};
-+
-+struct rk817_charger {
-+	struct device *dev;
-+	struct rk808 *rk808;
-+
-+	struct power_supply *bat_ps;
-+	struct power_supply *chg_ps;
-+	bool plugged_in;
-+
-+	/* The voltage_k and voltage_b values are used to calibrate the ADC
-+	 * voltage readings. While they are documented in the BSP kernel and
-+	 * datasheet as voltage_k and voltage_b, there is no further
-+	 * information explaining them in more detail.
-+	 */
-+
-+	uint32_t voltage_k;
-+	uint32_t voltage_b;
-+
-+	/* Storing immutable values of battery here so we can release
-+	 * get_battery_info after the probe and use these values.
-+	 */
-+	int bat_charge_full_design_uah;
-+	int bat_voltage_min_design_uv;
-+	int bat_voltage_max_design_uv;
-+
-+	/* dsoc seems to be difference between full charge and actual charge in
-+	 * BSP stored as a percentage, to the thousandth.
-+	 */
-+	int dsoc;
-+
-+	/* Calibrate the DSOC on a fully charged battery, this way we can use
-+	 * the calibrated DSOC value to correct for columb counter drift.
-+	 */
-+	bool dsoc_cal;
-+
-+	/* Implementation specific properties from device tree */
-+	int res_div;
-+	int sleep_enter_current;
-+	int sleep_filter_current;
-+};
-+
-+/* ADC coefficients extracted from BSP kernel */
-+#define ADC_TO_CURRENT(adc_value, res_div)	\
-+	(adc_value * 172 / res_div)
-+
-+#define CURRENT_TO_ADC(current, samp_res)	\
-+	(current * samp_res / 172)
-+
-+#define CHARGE_TO_ADC(capacity, res_div)	\
-+	(capacity * res_div * 3600 / 172 * 1000)
-+
-+#define ADC_TO_CHARGE_UAH(adc_value, res_div)	\
-+	(adc_value / 3600 * 172 / res_div)
-+
-+#define ADC_TO_CAPACITY(adc_value, res_div)	\
-+	(adc_value / 1000 * 172 / 3600 / res_div)
-+
-+static u8 rk817_chg_cur_to_reg(u32 chg_cur_ma)
-+{
-+	if (chg_cur_ma > 3500)
-+		return CHG_3_5A;
-+	else if (chg_cur_ma > 3000)
-+		return CHG_3A;
-+	else if (chg_cur_ma > 2750)
-+		return CHG_2_75A;
-+	else if (chg_cur_ma > 2500)
-+		return CHG_2_5A;
-+	else if (chg_cur_ma > 2000)
-+		return CHG_2A;
-+	else if (chg_cur_ma > 1500)
-+		return CHG_1_5A;
-+	else if (chg_cur_ma > 1000)
-+		return CHG_1A;
-+	else if (chg_cur_ma > 500)
-+		return CHG_0_5A;
-+	else
-+		return -EINVAL;
-+}
-+
-+static int rk817_chg_cur_from_reg(u8 reg)
-+{
-+	switch (reg) {
-+	case CHG_0_5A:
-+		return 500000;
-+	case CHG_1A:
-+		return 1000000;
-+	case CHG_1_5A:
-+		return 1500000;
-+	case CHG_2A:
-+		return 2000000;
-+	case CHG_2_5A:
-+		return 2500000;
-+	case CHG_2_75A:
-+		return 2750000;
-+	case CHG_3A:
-+		return 3000000;
-+	case CHG_3_5A:
-+		return 3500000;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static void rk817_bat_calib_vol(struct rk817_charger *charger)
-+{
-+	uint32_t vcalib0 = 0;
-+	uint32_t vcalib1 = 0;
-+	u8 bulk_reg[2];
-+
-+	/* calibrate voltage */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_VCALIB0_H,
-+			 bulk_reg, 2);
-+	vcalib0 = get_unaligned_be16(bulk_reg);
-+
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_VCALIB1_H,
-+			 bulk_reg, 2);
-+	vcalib1 = get_unaligned_be16(bulk_reg);
-+
-+	/* values were taken from BSP kernel */
-+	charger->voltage_k = (4025 - 2300) * 1000 /
-+			     ((vcalib1 - vcalib0) ? (vcalib1 - vcalib0) : 1);
-+	charger->voltage_b = 4025 - (charger->voltage_k * vcalib1) / 1000;
-+}
-+
-+static void rk817_bat_calib_cur(struct rk817_charger *charger)
-+{
-+	u8 bulk_reg[2];
-+
-+	/* calibrate current */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_IOFFSET_H,
-+			 bulk_reg, 2);
-+	regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_CAL_OFFSET_H,
-+			  bulk_reg, 2);
-+}
-+
-+static int rk817_bat_calib_cap(struct rk817_charger *charger)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	int reg, tmp, charge_now, charge_now_adc, dsoc_value;
-+	u8 bulk_reg[4];
-+
-+	/* Calibrate the dsoc on a fully charged battery */
-+
-+	regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+	tmp = (reg >> 4) & 0x07;
-+	if (tmp == CHARGE_FINISH) {
-+		/* Read the columb counter */
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+				 bulk_reg, 4);
-+		charge_now_adc = get_unaligned_be32(bulk_reg);
-+		if (charge_now_adc < 0)
-+			charge_now_adc = 0;
-+		charge_now = ADC_TO_CHARGE_UAH(charge_now_adc, charger->res_div);
-+
-+		/* Get and set our DSOC value with a full charge */
-+
-+		dsoc_value = ((charge_now * 100) /
-+			      (charger->bat_charge_full_design_uah / 1000));
-+
-+		if (!charger->dsoc_cal) {
-+			if (dsoc_value > 100000)
-+				charger->dsoc = 100000;
-+			if (dsoc_value != charger->dsoc) {
-+				charger->dsoc = dsoc_value;
-+				put_unaligned_le24(dsoc_value, bulk_reg);
-+				regmap_bulk_write(rk808->regmap,
-+						  RK817_GAS_GAUGE_BAT_R1,
-+						  bulk_reg, 3);
-+			}
-+			/* Mark our dsoc as calibrated. */
-+			charger->dsoc_cal = 1;
-+		}
-+
-+		/* In the event our columb counter has drifted over the
-+		 * calibrated dsoc of the battery, adjust the columb counter
-+		 * to correct the drift. Don't do this unless we already
-+		 * calibrated our dsoc at a fully charged state.
-+		 */
-+
-+		if (dsoc_value > charger->dsoc && charger->dsoc_cal) {
-+			/* Order of operations matters here to ensure we keep
-+			 * enough precision until the last step to keep from
-+			 * making needless updates to columb counter.
-+			 */
-+			charge_now = charger->dsoc *
-+				     (charger->bat_charge_full_design_uah
-+				     / 1000) / 100;
-+			charge_now_adc = CHARGE_TO_ADC((charge_now / 1000),
-+					 charger->res_div);
-+
-+			put_unaligned_be32(charge_now_adc, bulk_reg);
-+			regmap_bulk_write(rk808->regmap,
-+					  RK817_GAS_GAUGE_Q_INIT_H3,
-+					  bulk_reg, 4);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static int rk817_bat_get_prop(struct power_supply *ps,
-+		enum power_supply_property prop,
-+		union power_supply_propval *val)
-+{
-+	struct rk817_charger *charger = power_supply_get_drvdata(ps);
-+	uint32_t tmp = 0;
-+	/* Registers for current is a signed 16bit int */
-+	short int cur = 0;
-+	/* Registers for capacity-now is a signed 32bit int */
-+	int32_t charge_now = 0;
-+	int ret = 0;
-+	int reg = 0;
-+	u8 bulk_reg[4];
-+	struct rk808 *rk808 = charger->rk808;
-+
-+	/* Recalibrate voltage and current readings if we need to BSP does both
-+	 * on CUR_CALIB_UPD, ignoring VOL_CALIB_UPD. Curiously enough, both
-+	 * documentation and the BSP show that you perform an update if bit 7
-+	 * is 1, but you clear the status by writing a 1 to bit 7.
-+	 */
-+	regmap_read(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG1, &reg);
-+	tmp = (reg >> 7) & 0x01;
-+	if (tmp) {
-+		rk817_bat_calib_cur(charger);
-+		rk817_bat_calib_vol(charger);
-+		regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG1,
-+				   RK817_CUR_CALIB_UPD, (1 << 7));
-+	}
-+
-+	rk817_bat_calib_cap(charger);
-+
-+	switch (prop) {
-+	case POWER_SUPPLY_PROP_PRESENT:
-+		regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+		val->intval = (reg >> 7);
-+		break;
-+	case POWER_SUPPLY_PROP_STATUS:
-+		if (!charger->plugged_in) {
-+			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-+			break;
-+		}
-+		ret = regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+		if (ret)
-+			return ret;
-+		tmp = (reg >> 4) & 0x07;
-+		switch (tmp) {
-+		case CHRG_OFF:
-+			val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
-+			break;
-+		/* Dead charge is documented, but not explained. I never
-+		 * observed it but assume it's a pre-charge for a dead
-+		 * battery.
-+		 */
-+		case DEAD_CHRG:
-+		case TRICKLE_CHRG:
-+		case CC_OR_CV_CHRG:
-+			val->intval = POWER_SUPPLY_STATUS_CHARGING;
-+			break;
-+		case CHARGE_FINISH:
-+			val->intval = POWER_SUPPLY_STATUS_FULL;
-+			break;
-+		default:
-+			val->intval = POWER_SUPPLY_STATUS_UNKNOWN;
-+			return -EINVAL;
-+
-+		}
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_TYPE:
-+		ret = regmap_read(rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+		if (ret)
-+			return ret;
-+		tmp = (reg >> 4) & 0x07;
-+		switch (tmp) {
-+		case CHRG_OFF:
-+		case CHARGE_FINISH:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_NONE;
-+			break;
-+		case TRICKLE_CHRG:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
-+			break;
-+		case DEAD_CHRG:
-+		case CC_OR_CV_CHRG:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_STANDARD;
-+			break;
-+		default:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_UNKNOWN;
-+			break;
-+		}
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_FULL:
-+		val->intval = ((charger->bat_charge_full_design_uah /
-+			       1000) * charger->dsoc) / 100;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
-+		val->intval = charger->bat_charge_full_design_uah;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN:
-+		val->intval = 0;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_NOW:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+				 bulk_reg, 4);
-+		charge_now = get_unaligned_be32(bulk_reg);
-+		if (charge_now < 0)
-+			charge_now = 0;
-+		val->intval = ADC_TO_CHARGE_UAH(charge_now, charger->res_div);
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-+		val->intval = charger->bat_voltage_min_design_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_BOOT:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_VOL_H,
-+				 bulk_reg, 2);
-+		tmp = get_unaligned_be16(bulk_reg);
-+		val->intval = (charger->voltage_k * tmp) +
-+			       1000 * charger->voltage_b;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_BAT_VOL_H,
-+				 bulk_reg, 2);
-+		tmp = get_unaligned_be16(bulk_reg);
-+		val->intval = (charger->voltage_k * tmp) +
-+			       1000 * charger->voltage_b;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_OCV:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_OCV_VOL_H,
-+				 bulk_reg, 2);
-+		tmp = get_unaligned_be16(bulk_reg);
-+		val->intval = (charger->voltage_k * tmp) +
-+			       1000 * charger->voltage_b;
-+		break;
-+	case POWER_SUPPLY_PROP_CURRENT_BOOT:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_CUR_H,
-+				 bulk_reg, 2);
-+		cur = get_unaligned_be16(bulk_reg);
-+		val->intval = ADC_TO_CURRENT(cur, charger->res_div);
-+		break;
-+	case POWER_SUPPLY_PROP_CURRENT_AVG:
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_BAT_CUR_H,
-+				 bulk_reg, 2);
-+		cur = get_unaligned_be16(bulk_reg);
-+		val->intval = ADC_TO_CURRENT(cur, charger->res_div);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-+		regmap_read(rk808->regmap, RK817_PMIC_CHRG_OUT, &tmp);
-+		val->intval = rk817_chg_cur_from_reg(tmp & RK817_CHRG_CUR_SEL);
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-+		regmap_read(rk808->regmap, RK817_PMIC_CHRG_OUT, &tmp);
-+		val->intval = ((((tmp & RK817_CHRG_VOL_SEL) >> 4) * 50000) +
-+			       4100000);
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
-+		val->intval = charger->bat_voltage_max_design_uv;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+static int rk817_chg_get_prop(struct power_supply *ps,
-+			      enum power_supply_property prop,
-+			      union power_supply_propval *val)
-+{
-+	struct rk817_charger *charger = power_supply_get_drvdata(ps);
-+	int vol, tmp = 0;
-+	u8 bulk_reg[2];
-+
-+	switch (prop) {
-+	case POWER_SUPPLY_PROP_ONLINE:
-+		val->intval = charger->plugged_in;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
-+		/* max voltage from datasheet at 5.5v (default 5.0v) */
-+		val->intval = 5500000;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-+		/* min voltage from datasheet at 3.8v (default 5.0v) */
-+		val->intval = 3800000;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
-+		/* Note that on my example hardware (an Odroid Go Advance) the
-+		 * voltage of the power connector is measured on the register
-+		 * labelled USB in the datasheet; I don't know if this is how
-+		 * it is designed or just a quirk of the implementation. I
-+		 * believe this will also measure the voltage of the USB output
-+		 * when in OTG mode, if that is the case we may need to change
-+		 * this in the future to return 0 if the power supply status
-+		 * is offline.
-+		 */
-+		regmap_bulk_read(charger->rk808->regmap,
-+				 RK817_GAS_GAUGE_USB_VOL_H,
-+				 bulk_reg, 2);
-+		tmp = get_unaligned_be16(bulk_reg);
-+		vol = ((charger->voltage_k * tmp / 1000 + charger->voltage_b) *
-+		       60 / 46);
-+		val->intval = vol * 1000;
-+		break;
-+	/* While it's possible that other implementations could use different
-+	 * USB types, the current implementation for this PMIC (the Odroid Go
-+	 * Advance) only uses a dedicated charging port with no rx/tx lines.
-+	 */
-+	case POWER_SUPPLY_PROP_USB_TYPE:
-+		val->intval = POWER_SUPPLY_USB_TYPE_DCP;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+
-+}
-+
-+static irqreturn_t rk817_plug_in_isr(int irq, void *cg)
-+{
-+	struct rk817_charger *charger;
-+
-+	charger = (struct rk817_charger *)cg;
-+	charger->plugged_in = 1;
-+	power_supply_changed(charger->chg_ps);
-+	power_supply_changed(charger->bat_ps);
-+	dev_dbg(charger->dev, "Power Cord Inserted\n");
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t rk817_plug_out_isr(int irq, void *cg)
-+{
-+	struct rk817_charger *charger;
-+	struct rk808 *rk808;
-+
-+	charger = (struct rk817_charger *)cg;
-+	rk808 = charger->rk808;
-+	charger->plugged_in = 0;
-+	power_supply_changed(charger->bat_ps);
-+	power_supply_changed(charger->chg_ps);
-+
-+	/* For some reason the bits of RK817_PMIC_CHRG_IN reset whenever the
-+	 * power cord is unplugged. This was not documented in the BSP kernel
-+	 * or the datasheet and only discovered by trial and error. Set minimum
-+	 * USB input voltage to 4.5v and enable USB voltage input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_VLIM_SEL, (0x05 << 4));
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
-+			  (0x01 << 7));
-+
-+	/* Set average USB input current limit to 1.5A and enable USB current
-+	 * input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_ILIM_SEL, 0x03);
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
-+			  (0x01 << 3));
-+
-+	dev_dbg(charger->dev, "Power Cord Removed\n");
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static enum power_supply_property rk817_bat_props[] = {
-+	POWER_SUPPLY_PROP_PRESENT,
-+	POWER_SUPPLY_PROP_STATUS,
-+	POWER_SUPPLY_PROP_CHARGE_TYPE,
-+	POWER_SUPPLY_PROP_CHARGE_FULL,
-+	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
-+	POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN,
-+	POWER_SUPPLY_PROP_CHARGE_NOW,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
-+	POWER_SUPPLY_PROP_VOLTAGE_BOOT,
-+	POWER_SUPPLY_PROP_VOLTAGE_AVG,
-+	POWER_SUPPLY_PROP_VOLTAGE_OCV,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
-+	POWER_SUPPLY_PROP_CURRENT_BOOT,
-+	POWER_SUPPLY_PROP_CURRENT_AVG,
-+	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
-+	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
-+};
-+
-+static enum power_supply_property rk817_chg_props[] = {
-+	POWER_SUPPLY_PROP_ONLINE,
-+	POWER_SUPPLY_PROP_USB_TYPE,
-+	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
-+	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
-+	POWER_SUPPLY_PROP_VOLTAGE_AVG,
-+};
-+
-+static enum power_supply_usb_type rk817_usb_type[] = {
-+	POWER_SUPPLY_USB_TYPE_DCP,
-+	POWER_SUPPLY_USB_TYPE_UNKNOWN,
-+};
-+
-+static const struct power_supply_desc rk817_bat_desc = {
-+	.name = "rk817-battery",
-+	.type = POWER_SUPPLY_TYPE_BATTERY,
-+	.properties = rk817_bat_props,
-+	.num_properties = ARRAY_SIZE(rk817_bat_props),
-+	.get_property = rk817_bat_get_prop,
-+};
-+
-+static const struct power_supply_desc rk817_chg_desc = {
-+	.name = "rk817-charger",
-+	.type = POWER_SUPPLY_TYPE_USB,
-+	.usb_types = rk817_usb_type,
-+	.num_usb_types = ARRAY_SIZE(rk817_usb_type),
-+	.properties = rk817_chg_props,
-+	.num_properties = ARRAY_SIZE(rk817_chg_props),
-+	.get_property = rk817_chg_get_prop,
-+};
-+
-+static int
-+rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
-+				      struct power_supply_battery_info *bat_info)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	u8 bulk_reg[4];
-+	u32 design_charge_mah = (charger->bat_charge_full_design_uah / 1000);
-+	u32 boot_voltage, boot_charge, tmp, full_charge_cap;
-+	int ret, boot_capacity;
-+
-+	/* Read DSOC value if pre-existing. If not, initialize at 100%.
-+	 * Note endianness, also register says it's for resistance,
-+	 * however BSP kernel treats this as an nvram field for the DSOC
-+	 * as best I can tell. Doing the same for backwards compatibility.
-+	 */
-+	ret = regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_BAT_R1, bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+	charger->dsoc = get_unaligned_le24(bulk_reg);
-+	/* If we have an invalid DSOC, write 100 (100000) as default. */
-+	if (charger->dsoc < 1000 || charger->dsoc > 100000) {
-+		charger->dsoc = 100000;
-+		put_unaligned_le24(charger->dsoc, bulk_reg);
-+		regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_BAT_R1,
-+				  bulk_reg, 3);
-+	}
-+
-+	/* Register appears to be nvram that stores capacity in mAH. Note
-+	 * endianness, keeping consistent with BSP kernel, however it looks
-+	 * like we can use any arbitrary method to store value if we don't care
-+	 * about compatibility. Additionally, it doesn't appear that this value
-+	 * is used for anything, so realistically getting it and setting it is
-+	 * to ensure backward compatibility with BSP and serves no purpose with
-+	 * this driver, and I'm not sure if the BSP driver does anything with
-+	 * this value either.
-+	 */
-+
-+	ret = regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_DATA3, bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+
-+	full_charge_cap = get_unaligned_le24(bulk_reg);
-+
-+	/* Sanity checking for values equal to zero or less than would be
-+	 * practical for this device (BSP Kernel assumes 500mAH or less) for
-+	 * practicality purposes.
-+	 */
-+	if (full_charge_cap < 500) {
-+		put_unaligned_le24(design_charge_mah, bulk_reg);
-+		ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_DATA3, bulk_reg, 3);
-+		if (ret < 0)
-+			return ret;
-+		dev_info(charger->dev,
-+			 "Invalid NVRAM Data for max charge, setting to design capacity %u uAH\n",
-+			 design_charge_mah*1000);
-+	}
-+
-+	/* Capture boot voltage and look up boot capacity from OCV tables. */
-+
-+	regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_VOL_H,
-+			 bulk_reg, 2);
-+	tmp = get_unaligned_be16(bulk_reg);
-+	boot_voltage = (charger->voltage_k * tmp) + 1000 * charger->voltage_b;
-+	/* Since only implementation has no working thermistor, assume 20C for
-+	 * OCV lookup. If lookup fails, report error with OCV table.
-+	 */
-+	boot_capacity = power_supply_batinfo_ocv2cap(bat_info, boot_voltage, 20);
-+	if (boot_capacity < 0) {
-+		return dev_err_probe(charger->dev,
-+				     boot_capacity,
-+				     "Unable to read boot charge from OCV table: %i\n",
-+				     boot_capacity);
-+	}
-+
-+	/* Write boot charge to registers, estimate boot charge based on
-+	 * capacity and max charge of battery.
-+	 */
-+	boot_charge = (boot_capacity * charger->bat_charge_full_design_uah) / 100;
-+	tmp = CHARGE_TO_ADC((boot_charge / 1000), charger->res_div);
-+	put_unaligned_be32(tmp, bulk_reg);
-+	regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
-+			  bulk_reg, 4);
-+
-+	/* Set QMAX value to max design capacity. */
-+	tmp = CHARGE_TO_ADC((charger->bat_charge_full_design_uah / 1000),
-+			    charger->res_div);
-+	put_unaligned_be32(tmp, bulk_reg);
-+	ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_MAX_H3,
-+				bulk_reg, 4);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rk817_battery_init(struct rk817_charger *charger,
-+			      struct power_supply_battery_info *bat_info)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	u32 tmp, max_chg_vol_mv, max_chg_cur_ma;
-+	u8 max_chg_vol_reg, chg_term_i_reg, max_chg_cur_reg;
-+	int ret, chg_term_ma;
-+	u8 bulk_reg[2];
-+
-+	/* Get initial plug state */
-+	regmap_read(rk808->regmap, RK817_SYS_STS, &tmp);
-+	charger->plugged_in = (tmp & RK817_PLUG_IN_STS);
-+
-+	/* Turn on all ADC functions to measure battery, USB, and sys voltage,
-+	 * as well as batt temp. Note only tested implementation so far does
-+	 * not use a battery with a thermistor.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG0, 0xfc);
-+
-+	/* Set relax mode voltage sampling interval and ADC offset calibration
-+	 * interval to 8 minutes to mirror BSP kernel. Set voltage and current
-+	 * modes to average to mirror BSP kernel.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_GG_CON, 0x04);
-+
-+	/* Write relax threshold, derived from sleep enter current. */
-+	tmp = CURRENT_TO_ADC(charger->sleep_enter_current, charger->res_div);
-+	put_unaligned_be16(tmp, bulk_reg);
-+	regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_RELAX_THRE_H,
-+			  bulk_reg, 2);
-+
-+	/* Write sleep sample current, derived from sleep filter current. */
-+	tmp = CURRENT_TO_ADC(charger->sleep_filter_current, charger->res_div);
-+	put_unaligned_be16(tmp, bulk_reg);
-+	regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_H,
-+			  bulk_reg, 2);
-+
-+	/* Restart battery relax voltage */
-+	regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_GG_STS,
-+			  RK817_RELAX_VOL_UPD, (0x0 << 2));
-+
-+	/* Set OCV Threshold Voltage to 127.5mV. This was hard coded like this
-+	 * in the BSP.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_OCV_THRE_VOL, 0xff);
-+
-+	/* Set maximum charging voltage to battery max voltage. Trying to be
-+	 * incredibly safe with these value, as setting them wrong could
-+	 * overcharge the battery, which would be very bad.
-+	 */
-+	max_chg_vol_mv = bat_info->constant_charge_voltage_max_uv / 1000;
-+	max_chg_cur_ma = bat_info->constant_charge_current_max_ua / 1000;
-+
-+	if (max_chg_vol_mv < 4100) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger voltage, value %u unsupported\n",
-+			max_chg_vol_mv * 1000);
-+	}
-+	if (max_chg_vol_mv > 4450) {
-+		dev_info(charger->dev,
-+			 "Setting max charge voltage to 4450000uv\n");
-+		max_chg_vol_mv = 4450;
-+	}
-+
-+	if (max_chg_cur_ma < 500) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger current, value %u unsupported\n",
-+		       max_chg_cur_ma * 1000);
-+	}
-+	if (max_chg_cur_ma > 3500)
-+		dev_info(charger->dev,
-+			 "Setting max charge current to 3500000ua\n");
-+
-+	/* Now that the values are sanity checked, if we subtract 4100 from the
-+	 * max voltage and divide by 50, we conviently get the exact value for
-+	 * the registers, which are 4.1v, 4.15v, 4.2v, 4.25v, 4.3v, 4.35v,
-+	 * 4.4v, and 4.45v; these correspond to values 0x00 through 0x07.
-+	 */
-+	max_chg_vol_reg = (max_chg_vol_mv - 4100) / 50;
-+
-+	max_chg_cur_reg = rk817_chg_cur_to_reg(max_chg_cur_ma);
-+
-+	if (max_chg_vol_reg < 0 || max_chg_vol_reg > 7) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger voltage, value %u unsupported\n",
-+		       max_chg_vol_mv * 1000);
-+	}
-+	if (max_chg_cur_reg < 0 || max_chg_cur_reg > 7) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger current, value %u unsupported\n",
-+		       max_chg_cur_ma * 1000);
-+	}
-+
-+	/* Write the values to the registers, and deliver an emergency warning
-+	 * in the event they are not written correctly.
-+	 */
-+	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
-+				RK817_CHRG_VOL_SEL, (max_chg_vol_reg << 4));
-+	if (ret) {
-+		dev_emerg(charger->dev,
-+			  "Danger, unable to set max charger voltage: %u\n",
-+			  ret);
-+	}
-+
-+	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
-+				RK817_CHRG_CUR_SEL, max_chg_cur_reg);
-+	if (ret) {
-+		dev_emerg(charger->dev,
-+			  "Danger, unable to set max charger current: %u\n",
-+			  ret);
-+	}
-+
-+	/* Set charge finishing mode to analog */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
-+			  RK817_CHRG_TERM_ANA_DIG, (0x0 << 2));
-+
-+	/* Set charge finish current, warn if value not in range and keep
-+	 * default.
-+	 */
-+	chg_term_ma = bat_info->charge_term_current_ua / 1000;
-+	if (chg_term_ma < 150 || chg_term_ma > 400) {
-+		dev_warn(charger->dev,
-+			 "Invalid charge termination value %u, keeping default\n",
-+			 chg_term_ma * 1000);
-+		chg_term_ma = 200;
-+	}
-+
-+	/* Values of 150ma, 200ma, 300ma, and 400ma correspond to 00, 01, 10,
-+	 * and 11.
-+	 */
-+	chg_term_i_reg = (chg_term_ma - 100) / 100;
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
-+			  RK817_CHRG_TERM_ANA_SEL, chg_term_i_reg);
-+
-+	ret = rk817_read_or_set_full_charge_on_boot(charger, bat_info);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Set minimum USB input voltage to 4.5v and enable USB voltage input
-+	 * limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_VLIM_SEL, (0x05 << 4));
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
-+			  (0x01 << 7));
-+
-+	/* Set average USB input current limit to 1.5A and enable USB current
-+	 * input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_ILIM_SEL, 0x03);
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
-+			  (0x01 << 3));
-+
-+	return 0;
-+}
-+
-+static int rk817_charger_probe(struct platform_device *pdev)
-+{
-+	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
-+	struct rk817_charger *charger;
-+	struct device_node *node;
-+	struct power_supply_battery_info bat_info = { };
-+	struct device *dev = &pdev->dev;
-+	struct power_supply_config pscfg = {};
-+	int plugin_irq, plugout_irq;
-+	int of_value;
-+	int ret;
-+
-+	node = of_get_child_by_name(dev->parent->of_node, "battery");
-+	if (!node)
-+		return -ENODEV;
-+
-+	charger = devm_kzalloc(&pdev->dev, sizeof(*charger), GFP_KERNEL);
-+	if (!charger)
-+		return -ENOMEM;
-+
-+	charger->rk808 = rk808;
-+
-+	charger->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, charger);
-+
-+	rk817_bat_calib_vol(charger);
-+
-+	pscfg.drv_data = charger;
-+	pscfg.of_node = node;
-+
-+	/* Get sample resistor value. Note only values of 10000 or 20000
-+	 * microohms are allowed. Schematic for my test implementation (an
-+	 * Odroid Go Advance) shows a 10 milliohm resistor for reference.
-+	 */
-+	ret = of_property_read_u32(node, "rockchip,resistor-sense-micro-ohms",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sample resistor value\n");
-+	}
-+	/* Store as a 1 or a 2, since all we really use the value for is as a
-+	 * divisor in some calculations.
-+	 */
-+	charger->res_div = (of_value == 20000) ? 2 : 1;
-+
-+	/* Get sleep enter current value. Not sure what this value is for
-+	 * other than to help calibrate the relax threshold.
-+	 */
-+	ret = of_property_read_u32(node,
-+				   "rockchip,sleep-enter-current-microamp",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sleep enter cur value\n");
-+	}
-+	charger->sleep_enter_current = of_value;
-+
-+	/* Get sleep filter current value */
-+	ret = of_property_read_u32(node,
-+				   "rockchip,sleep-filter-current-microamp",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sleep filter cur value\n");
-+	}
-+
-+	charger->sleep_filter_current = of_value;
-+
-+	charger->bat_ps = devm_power_supply_register(&pdev->dev,
-+						     &rk817_bat_desc, &pscfg);
-+
-+	charger->chg_ps = devm_power_supply_register(&pdev->dev,
-+						     &rk817_chg_desc, &pscfg);
-+
-+	if (IS_ERR(charger->chg_ps))
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Battery failed to probe\n");
-+
-+	if (IS_ERR(charger->chg_ps))
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Charger failed to probe\n");
-+
-+	ret = power_supply_get_battery_info(charger->bat_ps,
-+					    &bat_info);
-+	if (ret) {
-+		return dev_err_probe(dev, ret,
-+				     "Unable to get battery info: %d\n", ret);
-+	}
-+
-+	if ((!bat_info.charge_full_design_uah) ||
-+	    (!bat_info.voltage_min_design_uv) ||
-+	    (!bat_info.voltage_max_design_uv) ||
-+	    (!bat_info.constant_charge_voltage_max_uv) ||
-+	    (!bat_info.constant_charge_current_max_ua) ||
-+	    (!bat_info.charge_term_current_ua)) {
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Required battery info missing.\n");
-+	}
-+
-+	charger->bat_charge_full_design_uah = bat_info.charge_full_design_uah;
-+	charger->bat_voltage_min_design_uv = bat_info.voltage_min_design_uv;
-+	charger->bat_voltage_max_design_uv = bat_info.voltage_max_design_uv;
-+
-+	/* Has to run after power_supply_get_battery_info as it depends on some
-+	 * values discovered from that routine.
-+	 */
-+	ret = rk817_battery_init(charger, &bat_info);
-+	if (ret)
-+		return ret;
-+
-+	power_supply_put_battery_info(charger->bat_ps, &bat_info);
-+
-+	plugin_irq = platform_get_irq(pdev, 0);
-+	if (plugin_irq < 0)
-+		return plugin_irq;
-+
-+	plugout_irq = platform_get_irq(pdev, 1);
-+	if (plugout_irq < 0)
-+		return plugout_irq;
-+
-+	ret = devm_request_threaded_irq(charger->dev, plugin_irq, NULL,
-+					rk817_plug_in_isr,
-+					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
-+					"rk817_plug_in", charger);
-+	if (ret) {
-+		return dev_err_probe(&pdev->dev, ret,
-+				      "plug_in_irq request failed!\n");
-+	}
-+
-+	ret = devm_request_threaded_irq(charger->dev, plugout_irq, NULL,
-+					rk817_plug_out_isr,
-+					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
-+					"rk817_plug_out", charger);
-+	if (ret) {
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "plug_out_irq request failed!\n");
-+	}
-+
-+	return 0;
-+}
-+
-+
-+static struct platform_driver rk817_charger_driver = {
-+	.probe    = rk817_charger_probe,
-+	.driver   = {
-+		.name  = "rk817-charger",
-+	},
-+};
-+module_platform_driver(rk817_charger_driver);
-+
-+MODULE_DESCRIPTION("Battery power supply driver for RK817 PMIC");
-+MODULE_AUTHOR("Maya Matuszczyk <maccraft123mc@gmail.com>");
-+MODULE_LICENSE("GPL");
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+@@ -0,0 +1,89 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk805.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK808 Power Management Integrated Circuit
++
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
++
++description: |
++  Rockchip RK805 series PMIC. This device consists of an i2c controlled MFD
++  that includes multiple switchable regulators.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk805
++
++  reg:
++    maxItems: 1
++    description:
++      The I2C slave address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The interrupt output of the controller.
++
++  '#clock-cells':
++    description: |
++      From common clock binding; shall be set to 1 (multiple clock outputs).
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
++
++  clock-output-names:
++    description:
++      From common clock binding to override the default output clock name.
++
++  rockchip,system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for DCDC_REG1.
++
++  vcc2-supply:
++    description:
++      The input supply for DCDC_REG2.
++
++  vcc3-supply:
++    description:
++      The input supply for DCDC_REG3.
++
++  vcc4-supply:
++    description:
++      The input supply for DCDC_REG4.
++
++  vcc5-supply:
++    description:
++      The input supply for LDO_REG1 and LDO_REG2.
++
++  vcc6-supply:
++    description:
++      The input supply for LDO_REG3.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(DCDC_REG[1-4]|LDO_REG[1-3])$":
++        type: object
++        $ref: ../regulator/regulator.yaml#
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+new file mode 100644
+index 000000000000..6bec1d9e4640
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+@@ -0,0 +1,255 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk808.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK808 Power Management Integrated Circuit
++
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
++
++description: |
++  Rockchip RK808 series PMIC. This device consists of an i2c controlled MFD
++  that includes regulators, an RTC, and a power button.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk808
++
++  reg:
++    maxItems: 1
++    description:
++      The I2C slave address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The interrupt output of the controller.
++
++  '#clock-cells':
++    description: |
++      From common clock binding; shall be set to 1 (multiple clock outputs).
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
++
++  clock-output-names:
++    description:
++      From common clock binding to override the default output clock name.
++
++  rockchip,system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for DCDC_REG1.
++
++  vcc2-supply:
++    description:
++      The input supply for DCDC_REG2.
++
++  vcc3-supply:
++    description:
++      The input supply for DCDC_REG3.
++
++  vcc4-supply:
++    description:
++      The input supply for DCDC_REG4.
++
++  vcc6-supply:
++    description:
++      The input supply for LDO_REG1 and LDO_REG2.
++
++  vcc7-supply:
++    description:
++      The input supply for LDO_REG3 and LDO_REG7.
++
++  vcc8-supply:
++    description:
++      The input supply for SWITCH_REG1.
++
++  vcc9-supply:
++    description:
++      The input supply for LDO_REG4 and LDO_REG5.
++
++  vcc10-supply:
++    description:
++      The input supply for LDO_REG6.
++
++  vcc11-supply:
++    description:
++      The input supply for LDO_REG8.
++
++  vcc12-supply:
++    description:
++      The input supply for SWITCH_REG2.
++
++  dvs-gpios:
++    description: |
++      buck1/2 can be controlled by gpio dvs, this is GPIO specifiers for
++      2 host gpio's used for dvs. The format of the gpio specifier
++      depends in the gpio controller. If DVS GPIOs aren't present,
++      voltage changes will happen very quickly with no slow ramp time.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
++        type: object
++        $ref: ../regulator/regulator.yaml#
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/pinctrl/rockchip.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/gpio/gpio.h>
++    i2c0 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        rk808: pmic@1b {
++            compatible = "rockchip,rk808";
++            clock-output-names = "xin32k", "rk808-clkout2";
++            interrupt-parent = <&gpio0>;
++            interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
++            pinctrl-names = "default";
++            pinctrl-0 = <&pmic_int &dvs_1 &dvs_2>;
++            dvs-gpios = <&gpio7 11 GPIO_ACTIVE_HIGH>,
++                <&gpio7 15 GPIO_ACTIVE_HIGH>;
++            reg = <0x1b>;
++            rockchip,system-power-controller;
++            wakeup-source;
++            #clock-cells = <1>;
++
++            vcc8-supply = <&vcc_18>;
++            vcc9-supply = <&vcc_io>;
++            vcc10-supply = <&vcc_io>;
++            vcc12-supply = <&vcc_io>;
++            vddio-supply = <&vccio_pmu>;
++
++            regulators {
++                vdd_cpu: DCDC_REG1 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <750000>;
++                    regulator-max-microvolt = <1300000>;
++                    regulator-name = "vdd_arm";
++                };
++
++                vdd_gpu: DCDC_REG2 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <850000>;
++                    regulator-max-microvolt = <1250000>;
++                    regulator-name = "vdd_gpu";
++                };
++
++                vcc_ddr: DCDC_REG3 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-name = "vcc_ddr";
++                };
++
++                vcc_io: DCDC_REG4 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vcc_io";
++                };
++
++                vccio_pmu: LDO_REG1 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vccio_pmu";
++                };
++
++                vcc_tp: LDO_REG2 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vcc_tp";
++                };
++
++                vdd_10: LDO_REG3 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <1000000>;
++                    regulator-max-microvolt = <1000000>;
++                    regulator-name = "vdd_10";
++                };
++
++                vcc18_lcd: LDO_REG4 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <1800000>;
++                    regulator-name = "vcc18_lcd";
++                };
++
++                vccio_sd: LDO_REG5 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vccio_sd";
++                };
++
++                vdd10_lcd: LDO_REG6 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <1000000>;
++                    regulator-max-microvolt = <1000000>;
++                    regulator-name = "vdd10_lcd";
++                };
++
++                vcc_18: LDO_REG7 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <1800000>;
++                    regulator-name = "vcc_18";
++                };
++
++                vcca_codec: LDO_REG8 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-name = "vcca_codec";
++                };
++
++                vcc_wl: SWITCH_REG1 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-name = "vcc_wl";
++                };
++
++                vcc_lcd: SWITCH_REG2 {
++                    regulator-always-on;
++                    regulator-boot-on;
++                    regulator-name = "vcc_lcd";
++                };
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+new file mode 100644
+index 000000000000..6d509e863da3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+@@ -0,0 +1,101 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK817 Power Management Integrated Circuit
++
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
++
++description: |
++  Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
++  that includes regulators, an RTC, and power button.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk809
++
++  reg:
++    maxItems: 1
++    description:
++      The I2C slave address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The interrupt output of the controller.
++
++  '#clock-cells':
++    description: |
++      From common clock binding; shall be set to 1 (multiple clock outputs).
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
++
++  clock-output-names:
++    description:
++      From common clock binding to override the default output clock name.
++
++  rockchip,system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for DCDC_REG1.
++
++  vcc2-supply:
++    description:
++      The input supply for DCDC_REG2.
++
++  vcc3-supply:
++    description:
++      The input supply for DCDC_REG3.
++
++  vcc4-supply:
++    description:
++      The input supply for DCDC_REG4.
++
++  vcc5-supply:
++    description:
++      The input supply for LDO_REG1, LDO_REG2, and LDO_REG3.
++
++  vcc6-supply:
++    description:
++      The input supply for LDO_REG4, LDO_REG5, and LDO_REG6.
++
++  vcc7-supply:
++    description:
++      The input supply for LDO_REG7, LDO_REG8, and LDO_REG9.
++
++  vcc8-supply:
++    description:
++      The input supply for SWITCH_REG1.
++
++  vcc9-supply:
++    description:
++      The input supply for DCDC_REG5 and SWITCH_REG2.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(LDO_REG[1-9]|DCDC_REG[1-5]|SWITCH_REG[1-2])$":
++        type: object
++        $ref: ../regulator/regulator.yaml#
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+new file mode 100644
+index 000000000000..cbe6c2a9f254
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+@@ -0,0 +1,365 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk817.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK817 Power Management Integrated Circuit
++
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
++
++description: |
++  Rockchip RK817 series PMIC. This device consists of an i2c controlled MFD
++  that includes regulators, an RTC, a power button, an audio codec, and a
++  battery charger manager.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk817
++
++  reg:
++    maxItems: 1
++    description:
++      The I2C slave address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The interrupt output of the controller.
++
++  '#clock-cells':
++    description: |
++      From common clock binding; shall be set to 1 (multiple clock outputs).
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
++
++  clock-output-names:
++    description:
++      From common clock binding to override the default output clock name.
++
++  rockchip,system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for DCDC_REG1.
++
++  vcc2-supply:
++    description:
++      The input supply for DCDC_REG2.
++
++  vcc3-supply:
++    description:
++      The input supply for DCDC_REG3.
++
++  vcc4-supply:
++    description:
++      The input supply for DCDC_REG4.
++
++  vcc5-supply:
++    description:
++      The input supply for LDO_REG1, LDO_REG2, and LDO_REG3.
++
++  vcc6-supply:
++    description:
++      The input supply for LDO_REG4, LDO_REG5, and LDO_REG6.
++
++  vcc7-supply:
++    description:
++      The input supply for LDO_REG7, LDO_REG8, and LDO_REG9.
++
++  vcc8-supply:
++    description:
++      The input supply for BOOST.
++
++  vcc9-supply:
++    description:
++      The input supply for OTG_SWITCH.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(LDO_REG[1-9]|DCDC_REG[1-4]|BOOST|OTG_SWITCH)$":
++        type: object
++        $ref: ../regulator/regulator.yaml#
++
++  clocks:
++    description:
++      The input clock for the audio codec.
++
++  clock-names:
++    description:
++      The clock name for the codec clock.
++    items:
++      - const: mclk
++
++  '#sound-dai-cells':
++    description:
++      Needed for the interpretation of sound dais.
++    const: 0
++
++  codec:
++    description: |
++      The child node for the codec to hold additional properties. If no
++      additional properties are required for the codec, this node can be
++      omitted.
++    type: object
++    properties:
++      rockchip,mic-in-differential:
++        type: boolean
++        description:
++          Describes if the microphone uses differential mode.
++
++  battery:
++    description: |
++      The child node for the charger to hold additional properties. If a
++      battery is not in use, this node can be omitted.
++    type: object
++    properties:
++      monitored-battery:
++        description: |
++          A phandle to a monitored battery node that contains a valid
++          value for:
++          charge-full-design-microamp-hours,
++          charge-term-current-microamp,
++          constant-charge-current-max-microamp,
++          constant-charge-voltage-max-microvolt,
++          voltage-max-design-microvolt,
++          voltage-min-design-microvolt,
++          and a valid ocv-capacity table.
++
++      rockchip,resistor-sense-micro-ohms:
++        description: |
++          Value in microohms of the battery sense resistor. This value is
++          used by the driver to set the correct divisor value to translate
++          ADC readings into the proper units of measure.
++        enum: [10000, 20000]
++
++      rockchip,sleep-enter-current-microamp:
++        description: |
++          Value in microamps of the sleep enter current for the charger.
++          Value is used by the driver to calibrate the relax threshold.
++
++      rockchip,sleep-filter-current-microamp:
++        description:
++          Value in microamps of the sleep filter current for the charger.
++          Value is used by the driver to derive the sleep sample current.
++
++    required:
++      - monitored-battery
++      - rockchip,resistor-sense-micro-ohms
++      - rockchip,sleep-enter-current-microamp
++      - rockchip,sleep-filter-current-microamp
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/px30-cru.h>
++    #include <dt-bindings/pinctrl/rockchip.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/gpio/gpio.h>
++    i2c0 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        rk817: pmic@20 {
++            compatible = "rockchip,rk817";
++            reg = <0x20>;
++            interrupt-parent = <&gpio0>;
++            interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++            clock-output-names = "rk808-clkout1", "xin32k";
++            clock-names = "mclk";
++            clocks = <&cru SCLK_I2S1_OUT>;
++            pinctrl-names = "default";
++            pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
++            wakeup-source;
++            #clock-cells = <1>;
++            #sound-dai-cells = <0>;
++
++            vcc1-supply = <&vccsys>;
++            vcc2-supply = <&vccsys>;
++            vcc3-supply = <&vccsys>;
++            vcc4-supply = <&vccsys>;
++            vcc5-supply = <&vccsys>;
++            vcc6-supply = <&vccsys>;
++            vcc7-supply = <&vccsys>;
++
++            regulators {
++                vdd_logic: DCDC_REG1 {
++                    regulator-name = "vdd_logic";
++                    regulator-min-microvolt = <950000>;
++                    regulator-max-microvolt = <1150000>;
++                    regulator-ramp-delay = <6001>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <950000>;
++                    };
++                };
++
++                vdd_arm: DCDC_REG2 {
++                    regulator-name = "vdd_arm";
++                    regulator-min-microvolt = <950000>;
++                    regulator-max-microvolt = <1350000>;
++                    regulator-ramp-delay = <6001>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <950000>;
++                    };
++                };
++
++                vcc_ddr: DCDC_REG3 {
++                    regulator-name = "vcc_ddr";
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                    };
++                };
++
++                vcc_3v3: DCDC_REG4 {
++                    regulator-name = "vcc_3v3";
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_1v8: LDO_REG2 {
++                    regulator-name = "vcc_1v8";
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <1800000>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1800000>;
++                    };
++                };
++
++                vdd_1v0: LDO_REG3 {
++                    regulator-name = "vdd_1v0";
++                    regulator-min-microvolt = <1000000>;
++                    regulator-max-microvolt = <1000000>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <1000000>;
++                    };
++                };
++
++                vcc3v3_pmu: LDO_REG4 {
++                    regulator-name = "vcc3v3_pmu";
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vccio_sd: LDO_REG5 {
++                    regulator-name = "vccio_sd";
++                    regulator-min-microvolt = <1800000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-always-on;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_sd: LDO_REG6 {
++                    regulator-name = "vcc_sd";
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++                    regulator-boot-on;
++
++                    regulator-state-mem {
++                        regulator-on-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_bl: LDO_REG7 {
++                    regulator-name = "vcc_bl";
++                    regulator-min-microvolt = <3300000>;
++                    regulator-max-microvolt = <3300000>;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <3300000>;
++                    };
++                };
++
++                vcc_lcd: LDO_REG8 {
++                    regulator-name = "vcc_lcd";
++                    regulator-min-microvolt = <2800000>;
++                    regulator-max-microvolt = <2800000>;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <2800000>;
++                    };
++                };
++
++                vcc_cam: LDO_REG9 {
++                    regulator-name = "vcc_cam";
++                    regulator-min-microvolt = <3000000>;
++                    regulator-max-microvolt = <3000000>;
++
++                    regulator-state-mem {
++                        regulator-off-in-suspend;
++                        regulator-suspend-microvolt = <3000000>;
++                    };
++                };
++            };
++
++            rk817_battery: battery {
++                monitored-battery = <&battery_cell>;
++                rockchip,resistor-sense-micro-ohms = <10000>;
++                rockchip,sleep-enter-current-microamp = <300000>;
++                rockchip,sleep-filter-current-microamp = <100000>;
++            };
++
++            rk817_codec: codec {
++                rockchip,mic-in-differential;
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+new file mode 100644
+index 000000000000..8440353e5dbf
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+@@ -0,0 +1,109 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/rockchip,rk818.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: RK818 Power Management Integrated Circuit
++
++maintainers:
++  - Chris Zhong <zyw@rock-chips.com>
++  - Zhang Qing <zhangqing@rock-chips.com>
++
++description: |
++  Rockchip RK818 series PMIC. This device consists of an i2c controlled MFD
++  that includes regulators, an RTC, and a power button.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk818
++
++  reg:
++    maxItems: 1
++    description:
++      The I2C slave address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The interrupt output of the controller.
++
++  '#clock-cells':
++    description: |
++      From common clock binding; shall be set to 1 (multiple clock outputs).
++      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
++    const: 1
++
++  clock-output-names:
++    description:
++      From common clock binding to override the default output clock name.
++
++  rockchip,system-power-controller:
++    type: boolean
++    description:
++      Telling whether or not this PMIC is controlling the system power.
++
++  wakeup-source:
++    type: boolean
++    description:
++      Device can be used as a wakeup source.
++
++  vcc1-supply:
++    description:
++      The input supply for DCDC_REG1.
++
++  vcc2-supply:
++    description:
++      The input supply for DCDC_REG2.
++
++  vcc3-supply:
++    description:
++      The input supply for DCDC_REG3.
++
++  vcc4-supply:
++    description:
++      The input supply for DCDC_REG4.
++
++  boost-supply:
++    description:
++      The input supply for DCDC_BOOST
++
++  vcc6-supply:
++    description:
++      The input supply for LDO_REG1 and LDO_REG2.
++
++  vcc7-supply:
++    description:
++      The input supply for LDO_REG3, LDO_REG5, and LDO_REG7.
++
++  vcc8-supply:
++    description:
++      The input supply for LDO_REG4, LDO_REG6, and LDO_REG8.
++
++  vcc9-supply:
++    description:
++      The input supply for LDO_REG9 and SWITCH_REG.
++
++  h_5v-supply:
++    description:
++      The input supply for HDMI_SWITCH.
++
++  usb-supply:
++    description:
++      The input supply for OTG_SWITCH.
++
++  regulators:
++    type: object
++    patternProperties:
++      "^(DCDC_REG[1-4]|LDO_REG[1-9]|SWITCH_REG|HDMI_SWITCH|OTG_SWITCH)$":
++        type: object
++        $ref: ../regulator/regulator.yaml#
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - "#clock-cells"
++
++additionalProperties: false
 -- 
 2.25.1
 
