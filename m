@@ -2,42 +2,42 @@ Return-Path: <SRS0=/gBD=NP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 077ADC4338F
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A857C432BE
 	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:16:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E384611CB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:16:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9E384611CB
+	by mail.kernel.org (Postfix) with ESMTPS id 3B9E8611CB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:16:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3B9E8611CB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9P7BCSUoOUhRKicVfT2iyTaNaQ2FEs1mVpjHnoUmTaA=; b=PI9Gv7Owfkz2tj
-	3GJ8qN8Ry4/XpPagvxUyKvPSqSS5qeEAEE3FUhJ36kmIwSNVQZgEcNuF+soPmeXV8PtCAGxdSl0GJ
-	2cEhPpsKYA1upCG2Avvltlmsku2HjJw3+0E++1cBP99Yu+wL6gwEx+FbwS2b+2pvsnMiqgZMvvGDG
-	egHOcT/uFRzAkdK+mY322BGvmTsJHP6LyvrqhnzKa1iV/uW7Sb2gqkMqeOPRSuWn6/RFKbOmiK8fG
-	afX8iQPbLY3pjd0F9DF6BaszLXdl/WFxBuR+AWIMaA6k4IraMraP8lq6f2T2feNuMGTkYsOK+uKlz
-	OjkHsl9e/eNN9yIHgsLw==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=eC2Vv73jiZnIEEMb0DYq8Vb3HxvKavLasGXqkylcMpw=; b=Kd7+DPr2JztMYt
+	hDbpDRGPdXjhQdHevWrmYyaiJlsrRAxm/mQMjkARnZjuDnA+hyEc9WSdSIbIVkXOm5xHRIDijkFil
+	SVIoUKkd0Yztee7u4H9VqRK4DCxPqzR752XMV57y5FBBDQoBVZTet9pB7/CZx7NwhaOPgUX+jcOvT
+	/75SMXUbD54chDM2/EJhMoTDDIBz3xm73kppyA2MEyJtUPcQVWnw3uNtp63gmICDVbdzpp6Uexw06
+	Xm0WNLGZBrPhpNchwYzOhLX6ziZn4nd3HU17e9GpcshpXkD7l/HotfJDgv609RJ54yM7svdHtGC/O
+	XKWpME0aYQoJmHQhL1Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mITU5-002Ssv-6O; Tue, 24 Aug 2021 10:16:45 +0000
+	id 1mITU4-002Ssi-BC; Tue, 24 Aug 2021 10:16:44 +0000
 Received: from lucky1.263xmail.com ([211.157.147.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mITTe-002SlQ-P8; Tue, 24 Aug 2021 10:16:20 +0000
+ id 1mITTe-002SlJ-PA; Tue, 24 Aug 2021 10:16:20 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 7E506D76D2;
- Tue, 24 Aug 2021 18:16:16 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 7F7F6D76C1;
+ Tue, 24 Aug 2021 18:16:15 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,14 +46,14 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P32763T139760989173504S1629800174340042_; 
- Tue, 24 Aug 2021 18:16:16 +0800 (CST)
+ Tue, 24 Aug 2021 18:16:15 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <c20bd0ea4a871a28783e80ec160bcf30>
+X-UNIQUE-TAG: <83b4d9d0a8e50b7218a52c85de53c1b2>
 X-RL-SENDER: sugar.zhang@rock-chips.com
 X-SENDER: zxg@rock-chips.com
 X-LOGIN-NAME: sugar.zhang@rock-chips.com
 X-FST-TO: broonie@kernel.org
-X-RCPT-COUNT: 10
+X-RCPT-COUNT: 12
 X-SENDER-IP: 58.22.7.114
 X-ATTACHMENT-NUM: 0
 X-System-Flag: 0
@@ -61,19 +61,19 @@ From: Sugar Zhang <sugar.zhang@rock-chips.com>
 To: broonie@kernel.org,
 	heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
- Sugar Zhang <sugar.zhang@rock-chips.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v1 1/4] ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
-Date: Tue, 24 Aug 2021 18:15:59 +0800
-Message-Id: <1629800162-12824-2-git-send-email-sugar.zhang@rock-chips.com>
+ Sugar Zhang <sugar.zhang@rock-chips.com>, Jaroslav Kysela <perex@perex.cz>,
+ devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v1 0/4] Patches to update for rockchip spdif
+Date: Tue, 24 Aug 2021 18:15:58 +0800
+Message-Id: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
-References: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_031619_110021_57056591 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20210824_031619_098168_094B59FA 
+X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,35 +92,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch marks SPDIF_SMPDR as volatile to make it resaonable,
-which also requires marking it as readable, even though it isn't.
+These patches fixup or update for rockchip spdif.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
 
- sound/soc/rockchip/rockchip_spdif.c | 2 ++
- 1 file changed, 2 insertions(+)
+Sugar Zhang (4):
+  ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
+  ASoC: rockchip: spdif: Fix some coding style
+  ASoC: rockchip: spdif: Add support for rk3568 spdif
+  ASoC: dt-bindings: rockchip: Add compatible for rk3568 spdif
 
-diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 73226a4..8baa473 100644
---- a/sound/soc/rockchip/rockchip_spdif.c
-+++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -247,6 +247,7 @@ static bool rk_spdif_rd_reg(struct device *dev, unsigned int reg)
- 	case SPDIF_INTCR:
- 	case SPDIF_INTSR:
- 	case SPDIF_XFER:
-+	case SPDIF_SMPDR:
- 		return true;
- 	default:
- 		return false;
-@@ -258,6 +259,7 @@ static bool rk_spdif_volatile_reg(struct device *dev, unsigned int reg)
- 	switch (reg) {
- 	case SPDIF_INTSR:
- 	case SPDIF_SDBLR:
-+	case SPDIF_SMPDR:
- 		return true;
- 	default:
- 		return false;
+ .../devicetree/bindings/sound/rockchip-spdif.yaml  |  1 +
+ sound/soc/rockchip/rockchip_spdif.c                | 38 ++++++++++++----------
+ 2 files changed, 22 insertions(+), 17 deletions(-)
+
 -- 
 2.7.4
 
