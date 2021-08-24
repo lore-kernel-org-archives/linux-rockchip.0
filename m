@@ -2,75 +2,80 @@ Return-Path: <SRS0=/gBD=NP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0CEDC4338F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 12:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFD2BC4338F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 13:14:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A8A8610FD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 12:36:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6A8A8610FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9464A60F8F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 13:14:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9464A60F8F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ldxCzljjdkeKTeWsBM2ztjJdBgK6tHk+cv17IufFNxk=; b=K0Aa1iuH80JSoK4S6rKEiIo7wy
-	wHB08peybvSf3hForS/ivRcGR2Abr8uvuLkI7QRczATfqkqSsnxz34Z1vLLW/KuiRNfsZ41cmvitL
-	Rm9EAeABcn0AUzXmqDBc5z+LRa1KzC3ffqkY372UlQO6yH2G8qMdyE3grl5BnZkObIsHuwmH6cKL+
-	tG5xeVUvxszkbyquC3l61SOirvFB9hAHGkFlky2Vu1+njosgZKeHhpNnGaLxoniIg7SF7F8EV4rAA
-	RBwNFa8DFT37Aw9kfOhc7PiwxYIl1sMnEGFYx5ao6BAHMHJp9wQ0EK1WuUAmCtbHsKKTsqwq0t6HC
-	HiM/FAMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HCsrllkbA/0CsBxGa8at4+OwHcFa2WIJAUmlqvBq5Gg=; b=VyMrMIoNQPeVff
+	3N+CoqfX/VpttkCcOGj4YLoiZaq4/Pu/Fl1EtsN8wMl7JYGqeoDX3HBUcSZSn3kQ25P7LPHD1EIdE
+	NEC0Yrzt6YBLjpVs+hAT096f5PMDzU4Jou38YpJVb1MMmgZ1/I4FRsPmiEusqTkKbkf+W6qxyKzsI
+	zgILArhR5ZMZ3aTulKs028aa3SQGENwiafS3yJ187B21FpsZISECc6q+cbTt05fYN1YCqUfh/WhC2
+	x5p6OTH3dwNy1kfLt+HDKp/XFxs00DkGlY2q7lU93gn1DqMQ3T+5r2ynafrHmlLvvUGD3SKjV9wRB
+	7BoKz59mdyHVxKRJKG2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIVew-0034Cf-8d; Tue, 24 Aug 2021 12:36:06 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mIWGG-003BRk-2D; Tue, 24 Aug 2021 13:14:40 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIVeg-00347B-Da; Tue, 24 Aug 2021 12:35:54 +0000
-Received: from [IPv6:2a01:e0a:4cb:a870:9cd0:b46:4954:d5f7] (unknown
- [IPv6:2a01:e0a:4cb:a870:9cd0:b46:4954:d5f7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id CE3F91F42719;
- Tue, 24 Aug 2021 13:35:35 +0100 (BST)
-Subject: Re: [PATCH] media: hantro: Add support of compressed reference buffers
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Greg KH
- <gregkh@linuxfoundation.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Chris Healy <cphealy@gmail.com>, linux-media <linux-media@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-staging@lists.linux.dev,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Collabora Kernel ML <kernel@collabora.com>,
- Lucas Stach <l.stach@pengutronix.de>, Hans Verkuil <hverkuil@xs4all.nl>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-References: <20210823162916.824336-1-benjamin.gaignard@collabora.com>
- <CAAEAJfCxhe8EubESc4HnO63JnOqVCRTNU62Qrm8wX+Rsc_tSUg@mail.gmail.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <541e9ace-3b54-b46d-30ef-c01afc84fc41@collabora.com>
-Date: Tue, 24 Aug 2021 14:35:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1mIWFi-003BNq-I7
+ for linux-rockchip@lists.infradead.org; Tue, 24 Aug 2021 13:14:11 +0000
+Received: by mail-ot1-f52.google.com with SMTP id
+ x9-20020a056830278900b0051b8be1192fso25170990otu.7
+ for <linux-rockchip@lists.infradead.org>; Tue, 24 Aug 2021 06:14:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Zr3BcHUyxibPN+ApMMdJs2vTxDa8LN9oiNR6W9SoGBg=;
+ b=dqKFPOs7w/4oq3elILG8pVsfwRBZCmu3GkAF1RLw/A/mYWaTb0cCItos2Odehx0gVE
+ sdJ31c3HhSlCl7h3s2nlSrqAgzC9E0lH5XsTqMl/J6zPwWGhLiOxsOLZACCAx+MmrIqC
+ dg0P35oddVJunkUy1PqCPhHDEMNjc8w5vmN+XUEM/o8m7Xy60pGev7G2Jq5yf6TuNQJC
+ sA8ZWYPeN3zT2qFFwi/Y7ETzCsoyD5sNhQpezAmPP44Y1bj5CMkcPY9ZBEGZro8/c0ZT
+ o/OT8toOA96LxhEJJ6E2G8WsPBc2m+wyR0HnNsP/PcirSOPMRo2dJI73CtxMevCkeFzw
+ uplg==
+X-Gm-Message-State: AOAM533bQjFxkcSdKao2dksbPjAiYwAS1Djyd7rG9c/3x2zSzM+r25J+
+ jOE9r+dIBxnF+hfPX7It7g==
+X-Google-Smtp-Source: ABdhPJyLWOe2CKyxAb1poukDtW4ZoAyxGXUP7NKsV18xKcKsa7QoctCY3A8MEDEliv/l0MB3SFZfaw==
+X-Received: by 2002:a9d:7742:: with SMTP id t2mr5226926otl.202.1629810843838; 
+ Tue, 24 Aug 2021 06:14:03 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id 97sm4582185otv.26.2021.08.24.06.14.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Aug 2021 06:14:03 -0700 (PDT)
+Received: (nullmailer pid 137569 invoked by uid 1000);
+ Tue, 24 Aug 2021 13:14:02 -0000
+Date: Tue, 24 Aug 2021 08:14:02 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ lee.jones@linaro.org, heiko@sntech.de, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [RFC] dt-bindings: mfd: rk808: Convert bindings to yaml
+Message-ID: <YSTwms6+17fw8bcN@robh.at.kernel.org>
+References: <20210824041922.30586-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAEAJfCxhe8EubESc4HnO63JnOqVCRTNU62Qrm8wX+Rsc_tSUg@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210824041922.30586-1-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_053550_753902_9505C02F 
-X-CRM114-Status: GOOD (  37.44  )
+X-CRM114-CacheID: sfid-20210824_061406_700154_25C8245B 
+X-CRM114-Status: GOOD (  28.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,235 +88,1025 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDI0LzA4LzIwMjEgw6AgMTM6MjIsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IEhp
-IEJlbmphbWluLAo+Cj4gT24gTW9uLCAyMyBBdWcgMjAyMSBhdCAxMzoyOSwgQmVuamFtaW4gR2Fp
-Z25hcmQKPiA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj4+IFJlZmVy
-ZW5jZSBmcmFtZSBjb21wcmVzc2lvbiBpcyBhIGZlYXR1cmUgYWRkZWQgaW4gRzIgZGVjb2RlciB0
-byBjb21wcmVzcwo+PiBmcmFtZSBidWZmZXJzIHNvIHRoYXQgdGhlIGJhbmR3aWR0aCBvZiBzdG9y
-aW5nL2xvYWRpbmcgcmVmZXJlbmNlIGZyYW1lcwo+PiBjYW4gYmUgcmVkdWNlZCwgZXNwZWNpYWxs
-eSB3aGVuIHRoZSByZXNvbHV0aW9uIG9mIGRlY29kZWQgc3RyZWFtIGlzIG9mCj4+IGhpZ2ggZGVm
-aW5pdGlvbi4KPj4KPj4gQ29tcHJlc3NlZCBoZWxwIHRvIGluY3JlYXNlIHRoZSBwZXJmb3JtYW5j
-ZSBvZiB0aGUgd2hvbGUgc3RhY2ssIGl0IGNvdWxkCj4+IGJlIHVwIHRvIDUwIGZwcyAoYWdhaW5z
-dCA0NSBmcHMpIG9uIElNWDhNUS4KPj4gVGhlIGltcGFjdCBvZiBjb21wcmVzc2VkIGZyYW1lcyBp
-cyBjb25maXJtZWQgd2hlbiB1c2luZyBwZXJmIHRvIG1vbml0b3IKPj4gdGhlIG51bWJlciBvZiBt
-ZW1vcnkgYWNjZXNzZXMgd2l0aCBvciB3aXRob3V0IGNvbXByZXNzaW9uIGZlYXR1cmUuCj4+IFRo
-ZSBmb2xsb3dpbmcgY29tbWFuZAo+PiBwZXJmIHN0YXQgLWEgLWUgaW14OF9kZHIwL2N5Y2xlcy8s
-aW14OF9kZHIwL3JlYWQtY3ljbGVzLyxpbXg4X2RkcjAvd3JpdGUtY3ljbGVzLyBnc3QtbGF1bmNo
-LTEuMCBmaWxlc3JjIGxvY2F0aW9uPUpvY2tleV8zODQweDIxNjBfMTIwZnBzXzQyMF84Yml0X0hF
-VkNfUkFXLmhldmMgISBxdWV1ZSAhIGgyNjVwYXJzZSAhIHY0bDJzbGgyNjVkZWMgISBmYWtlc2lu
-awo+Pgo+PiBnaXZlIHVzIHRoZXNlIHJlc3VsdHMKPj4gd2l0aG91dCBjb21wcmVzc2lvbiBmZWF0
-dXJlOgo+PiAgIFBlcmZvcm1hbmNlIGNvdW50ZXIgc3RhdHMgZm9yICdzeXN0ZW0gd2lkZSc6Cj4+
-Cj4+ICAgICAgICAgMTQ5NjU4MTY3NDMgICAgICBpbXg4X2RkcjAvY3ljbGVzLwo+PiAgICAgICAg
-ICAgODg5MTk3MzEyICAgICAgaW14OF9kZHIwL3JlYWQtY3ljbGVzLwo+PiAgICAgICAgICAxODE5
-MzQ4ODYyICAgICAgaW14OF9kZHIwL3dyaXRlLWN5Y2xlcy8KPj4KPj4gICAgICAgIDE4LjcwNzM3
-MzAwMSBzZWNvbmRzIHRpbWUgZWxhcHNlZAo+Pgo+PiB3aXRoIGNvbXByZXNzaW9uIGZlYXR1cmU6
-Cj4+IFBlcmZvcm1hbmNlIGNvdW50ZXIgc3RhdHMgZm9yICdzeXN0ZW0gd2lkZSc6Cj4+Cj4+ICAg
-ICAgICAgMTM3NTAyMTgyNDMgICAgICBpbXg4X2RkcjAvY3ljbGVzLwo+PiAgICAgICAgICAgNDAy
-NDI4NzQ0ICAgICAgaW14OF9kZHIwL3JlYWQtY3ljbGVzLwo+PiAgICAgICAgICAxMjU1Njc2Njkz
-ICAgICAgaW14OF9kZHIwL3dyaXRlLWN5Y2xlcy8KPj4KPj4gICAgICAgIDE3LjE4ODMyMDA2MSBz
-ZWNvbmRzIHRpbWUgZWxhcHNlZAo+Pgo+PiBBcyBleHBlY3RlZCB0aGUgbnVtYmVyIG9mIHJlYWQv
-d3JpdGUgY3ljbGVzIGFyZSByZWFsbHkgbG93ZXIgd2hlbiBjb21wcmVzc2lvbgo+PiBpcyB1c2Vk
-Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25h
-cmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICAgLi4uL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hh
-bnRyb19nMl9oZXZjX2RlYy5jIHwgMzEgKysrKysrKysrKysrLS0KPj4gICBkcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmggfCAgNCArKwo+PiAgIGRyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hldmMuYyAgICB8IDQxICsrKysrKysrKysrKysrKysr
-Ky0KPj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oICAgICAgfCAg
-MiArCj4+ICAgNCBmaWxlcyBjaGFuZ2VkLCA3NCBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygt
-KQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9f
-ZzJfaGV2Y19kZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hl
-dmNfZGVjLmMKPj4gaW5kZXggMzQwZWZiNTdmZDE4Li5kYTkwYWNkOTIyZjcgMTAwNjQ0Cj4+IC0t
-LSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYwo+
-PiBAQCAtMzY2LDEwICszNjYsMTIgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9f
-Y3R4ICpjdHgpCj4+ICAgICAgICAgIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19wcHMgKnBw
-cyA9IGN0cmxzLT5wcHM7Cj4+ICAgICAgICAgIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19k
-ZWNvZGVfcGFyYW1zICpkZWNvZGVfcGFyYW1zID0gY3RybHMtPmRlY29kZV9wYXJhbXM7Cj4+ICAg
-ICAgICAgIGNvbnN0IHN0cnVjdCB2NGwyX2hldmNfZHBiX2VudHJ5ICpkcGIgPSBkZWNvZGVfcGFy
-YW1zLT5kcGI7Cj4+IC0gICAgICAgZG1hX2FkZHJfdCBsdW1hX2FkZHIsIGNocm9tYV9hZGRyLCBt
-dl9hZGRyID0gMDsKPj4gKyAgICAgICBkbWFfYWRkcl90IGx1bWFfYWRkciwgY2hyb21hX2FkZHIs
-IG12X2FkZHIsIGNvbXByZXNzX2x1bWFfYWRkciwgY29tcHJlc3NfY2hyb21hX2FkZHIgPSAwOwo+
-PiAgICAgICAgICBzdHJ1Y3QgaGFudHJvX2RldiAqdnB1ID0gY3R4LT5kZXY7Cj4+ICAgICAgICAg
-IHNpemVfdCBjcl9vZmZzZXQgPSBoYW50cm9faGV2Y19jaHJvbWFfb2Zmc2V0KHNwcyk7Cj4+ICAg
-ICAgICAgIHNpemVfdCBtdl9vZmZzZXQgPSBoYW50cm9faGV2Y19tb3Rpb25fdmVjdG9yc19vZmZz
-ZXQoc3BzKTsKPj4gKyAgICAgICBzaXplX3QgY29tcHJlc3NfbHVtYV9vZmZzZXQgPSBoYW50cm9f
-aGV2Y19sdW1hX2NvbXByZXNzX29mZnNldChzcHMpOwo+PiArICAgICAgIHNpemVfdCBjb21wcmVz
-c19jaHJvbWFfb2Zmc2V0ID0gaGFudHJvX2hldmNfY2hyb21hX2NvbXByZXNzX29mZnNldChzcHMp
-Owo+PiAgICAgICAgICB1MzIgbWF4X3JlZl9mcmFtZXM7Cj4+ICAgICAgICAgIHUxNiBkcGJfbG9u
-Z3Rlcm1fZTsKPj4gICAgICAgICAgc3RhdGljIGNvbnN0IHN0cnVjdCBoYW50cm9fcmVnIGN1cl9w
-b2NbXSA9IHsKPj4gQEAgLTQ0MiwxNSArNDQ0LDI4IEBAIHN0YXRpYyBpbnQgc2V0X3JlZihzdHJ1
-Y3QgaGFudHJvX2N0eCAqY3R4KQo+PiAgICAgICAgICAgICAgICAgIGlmICghbHVtYV9hZGRyKQo+
-PiAgICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FTk9NRU07Cj4+Cj4+ICsgICAgICAg
-ICAgICAgICAvKgo+PiArICAgICAgICAgICAgICAgICogQW4gYWxsb2NhdGVkIGZyYW1lIHN0b3Jl
-cyBZIGFuZCBVViBwbGFuZXMsIG1vdGlvbiB2ZWN0b3JzIGFuZAo+PiArICAgICAgICAgICAgICAg
-ICogY29tcHJlc3NlZCBZIGFuZCBVViBwbGFuZXMuIENvbXB1dGUgYWxsIHRoZXNlIG9mZnNldHMg
-Z2l2ZW4KPj4gKyAgICAgICAgICAgICAgICAqIHRoZSBmcmFtZSByZXNvbHV0aW9uIGFuZCB0aGUg
-cGl4ZWwgZm9ybWF0Lgo+PiArICAgICAgICAgICAgICAgICovCj4gVGhlIHBhdGNoIGxvb2tzIGdv
-b2QsIGJ1dCBJIGZlZWwgd2Ugc3RpbGwgbmVlZCB0byBhbnN3ZXIgc29tZSBxdWVzdGlvbnMKPiBi
-ZWZvcmUgaXQgY2FuIGJlIG1lcmdlZC4KPgo+ICogSXMgdGhpcyBhIEcyIGZlYXR1cmU/IElmIHNv
-LCBjYW4gaXQgYmUgdXNlZCBvbiBWUDk/CgpJdCBpc24ndCB0YWdnZWQgYXMgSEVWQyBmZWF0dXJl
-IGluIHRoZSBoYXJkd2FyZSBzcGVjIHNvIEkgZ3Vlc3MgaXQgY291bGQKYmUgdXNlZCBmb3IgVlA5
-IHRvby4KCj4KPiAqIEVuYWJsaW5nIGNvbXByZXNzaW9uIG5lZWRzIG1vcmUgbWVtb3J5LiBZb3Ug
-YXJlIHByb3Bvc2luZwo+IHRvIGFsbG9jYXRlIGZyYW1lcyBhbmQgY29tcHJlc3NlZCBmcmFtZXMg
-Y29udGlndW91c2x5LAo+IGJ1dCBzbyB3ZSBuZWVkIHRvIG1lYXN1cmUgdGhlIGltcGFjdCBvZiB0
-aGF0LiBQZXJoYXBzIHNlcGFyYXRlCj4gYnVmZmVycyB3aWxsIGJlIGJldHRlciB0byBhdm9pZCBD
-TUEgcHJlc3N1cmU/IFBlcmhhcHMgYSBnaXZlbgo+IHVzZXIgd2lsbCB3YW50IHRvIHR1cm4gdGhp
-cyBvZmYgdG8gcmVkdWNlIG1lbW9yeSB1c2FnZT8KCkkgY291bGQgYWRkIGEgbW9kdWxlIHBhcmFt
-ZXRlciB0byB0dXJuIG9uL29mZiB0aGlzIGZlYXR1cmUgYnV0IHRoZSBhbW9uZwpvZiBhZGRpdGlv
-bmFsIG1lbW9yeSB1c2VkIGlzIHZlcnkgbGltaXRlZCBjb21wYXJlIHRvIGZyYW1lIHNpemUuCkZv
-ciBleGFtcGxlIGZvciBhIDM4NDB4MjE2MCB2aWRlbyBpdCBhZGRzIDY4S0Igd2hpbGUgdGhlIGZy
-YW1lIGl0c2VsZiBpcyBhcm91bmQgMTIxNTBLQi4KCj4KPiBNb3JlIGltcG9ydGFudGx5LCBJJ20g
-d2FyeSBvZiBhZGRpbmcgSEVWQyBmZWF0dXJlcwo+IHdpdGhvdXQgYmVpbmcgYWJsZSB0byB0ZXN0
-IGFueXRoaW5nLgo+Cj4gQ2FuIHlvdSB3b3JrIHdpdGggTlhQIG1haW50YWluZXJzIHRvIGdldCB0
-aGUgR1BDL0JMSy1DVFJMIFsxXSBzb3J0ZWQgb3V0PwoKWWVzLCBJIGhhdmUgYWxyZWFkeSBnaXZl
-IGEgdHJ5OgpodHRwczovL2xrbWwub3JnL2xrbWwvMjAyMS83LzcvODM2CgpCZW5qYW1pbgoKPgo+
-IFRoZW4sIHdlIGhhdmUgdGhlIGlzc3VlIG9mIG1pc3NpbmcgbWFpbmxpbmVkIHVzZXJzcGFjZSBh
-cyB3ZWxsLAo+IGJ1dCBJIHN1cHBvc2UgdGhhdCdzIHdlbGwgdW5kZXJ3YXkgOi0pCj4KPiBbMV0g
-aHR0cHM6Ly93d3cuc3Bpbmljcy5uZXQvbGlzdHMvYXJtLWtlcm5lbC9tc2c5MTM4ODEuaHRtbAo+
-Cj4gQ2hlZXJzLAo+IEV6ZQo+Cj4+ICAgICAgICAgICAgICAgICAgY2hyb21hX2FkZHIgPSBsdW1h
-X2FkZHIgKyBjcl9vZmZzZXQ7Cj4+ICAgICAgICAgICAgICAgICAgbXZfYWRkciA9IGx1bWFfYWRk
-ciArIG12X29mZnNldDsKPj4gKyAgICAgICAgICAgICAgIGNvbXByZXNzX2x1bWFfYWRkciA9IGx1
-bWFfYWRkciArIGNvbXByZXNzX2x1bWFfb2Zmc2V0Owo+PiArICAgICAgICAgICAgICAgY29tcHJl
-c3NfY2hyb21hX2FkZHIgPSBsdW1hX2FkZHIgKyBjb21wcmVzc19jaHJvbWFfb2Zmc2V0Owo+Pgo+
-PiAgICAgICAgICAgICAgICAgIGlmIChkcGJbaV0ucnBzID09IFY0TDJfSEVWQ19EUEJfRU5UUllf
-UlBTX0xUX0NVUlIpCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICBkcGJfbG9uZ3Rlcm1fZSB8
-PSBCSVQoVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVggLSAxIC0gaSk7Cj4+Cj4+ICsgICAg
-ICAgICAgICAgICAvKgo+PiArICAgICAgICAgICAgICAgICogRm9yIGVhY2ggcmVmZXJlbmNlIGZy
-YW1lIFksIFVWLCBtb3Rpb24gdmVjdG9yIGFuZAo+PiArICAgICAgICAgICAgICAgICogY29tcHJl
-c3NlZCBZLCBVViBidWZmZXJzIGFkZHJlc3NlcyBtdXN0IGJlIHNldC4KPj4gKyAgICAgICAgICAg
-ICAgICAqLwo+PiAgICAgICAgICAgICAgICAgIGhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJfUkVH
-X0FERFJfUkVGKGkpLCBsdW1hX2FkZHIpOwo+PiAgICAgICAgICAgICAgICAgIGhhbnRyb193cml0
-ZV9hZGRyKHZwdSwgRzJfUkVHX0NIUl9SRUYoaSksIGNocm9tYV9hZGRyKTsKPj4gICAgICAgICAg
-ICAgICAgICBoYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFR19ETVZfUkVGKGkpLCBtdl9hZGRy
-KTsKPj4gKyAgICAgICAgICAgICAgIGhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJfQ09NUF9BRERS
-X1JFRihpKSwgY29tcHJlc3NfbHVtYV9hZGRyKTsKPj4gKyAgICAgICAgICAgICAgIGhhbnRyb193
-cml0ZV9hZGRyKHZwdSwgRzJfQ09NUF9DSFJfUkVGKGkpLCBjb21wcmVzc19jaHJvbWFfYWRkcik7
-Cj4+ICAgICAgICAgIH0KPj4KPj4gICAgICAgICAgbHVtYV9hZGRyID0gaGFudHJvX2hldmNfZ2V0
-X3JlZl9idWYoY3R4LCBkZWNvZGVfcGFyYW1zLT5waWNfb3JkZXJfY250X3ZhbCk7Cj4+IEBAIC00
-NTksNyArNDc0LDEyIEBAIHN0YXRpYyBpbnQgc2V0X3JlZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4
-KQo+Pgo+PiAgICAgICAgICBjaHJvbWFfYWRkciA9IGx1bWFfYWRkciArIGNyX29mZnNldDsKPj4g
-ICAgICAgICAgbXZfYWRkciA9IGx1bWFfYWRkciArIG12X29mZnNldDsKPj4gKyAgICAgICBjb21w
-cmVzc19sdW1hX2FkZHIgPSBsdW1hX2FkZHIgKyBjb21wcmVzc19sdW1hX29mZnNldDsKPj4gKyAg
-ICAgICBjb21wcmVzc19jaHJvbWFfYWRkciA9IGx1bWFfYWRkciArIGNvbXByZXNzX2Nocm9tYV9v
-ZmZzZXQ7Cj4+Cj4+ICsgICAgICAgLyogVGhlIG5leHQgZGVjb2RlZCBmcmFtZSBhcyB0byBiZSBw
-dXQgYXMgdGhlIGxhc3QgcmVmZXJlbmNlIGZyYW1lIGVudHJ5ICovCj4+ICsgICAgICAgaGFudHJv
-X3dyaXRlX2FkZHIodnB1LCBHMl9DT01QX0FERFJfUkVGKGkpLCBjb21wcmVzc19sdW1hX2FkZHIp
-Owo+PiArICAgICAgIGhhbnRyb193cml0ZV9hZGRyKHZwdSwgRzJfQ09NUF9DSFJfUkVGKGkpLCBj
-b21wcmVzc19jaHJvbWFfYWRkcik7Cj4+ICAgICAgICAgIGhhbnRyb193cml0ZV9hZGRyKHZwdSwg
-RzJfUkVHX0FERFJfUkVGKGkpLCBsdW1hX2FkZHIpOwo+PiAgICAgICAgICBoYW50cm9fd3JpdGVf
-YWRkcih2cHUsIEcyX1JFR19DSFJfUkVGKGkpLCBjaHJvbWFfYWRkcik7Cj4+ICAgICAgICAgIGhh
-bnRyb193cml0ZV9hZGRyKHZwdSwgRzJfUkVHX0RNVl9SRUYoaSsrKSwgbXZfYWRkcik7Cj4+IEBA
-IC00NjcsMTMgKzQ4NywxOCBAQCBzdGF0aWMgaW50IHNldF9yZWYoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCkKPj4gICAgICAgICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9BRERSX0RTVCwgbHVt
-YV9hZGRyKTsKPj4gICAgICAgICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9BRERSX0RTVF9D
-SFIsIGNocm9tYV9hZGRyKTsKPj4gICAgICAgICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9B
-RERSX0RTVF9NViwgbXZfYWRkcik7Cj4+ICsgICAgICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9DT01QX0FERFJfRFNULCBjb21wcmVzc19sdW1hX2FkZHIpOwo+PiArICAgICAgIGhhbnRyb193
-cml0ZV9hZGRyKHZwdSwgRzJfQ09NUF9DSFIsIGNvbXByZXNzX2Nocm9tYV9hZGRyKTsKPj4KPj4g
-ICAgICAgICAgaGFudHJvX2hldmNfcmVmX3JlbW92ZV91bnVzZWQoY3R4KTsKPj4KPj4gKyAgICAg
-ICAvKiBVbnVzZWQgcmVmZXJlbmNlIGZyYW1lcyBlbnRyaWVzIG1vc3QgYmUgY2xlYXJlZCAqLwo+
-PiAgICAgICAgICBmb3IgKDsgaSA8IFY0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYOyBpKysp
-IHsKPj4gICAgICAgICAgICAgICAgICBoYW50cm9fd3JpdGVfYWRkcih2cHUsIEcyX1JFR19BRERS
-X1JFRihpKSwgMCk7Cj4+ICAgICAgICAgICAgICAgICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBH
-Ml9SRUdfQ0hSX1JFRihpKSwgMCk7Cj4+ICAgICAgICAgICAgICAgICAgaGFudHJvX3dyaXRlX2Fk
-ZHIodnB1LCBHMl9SRUdfRE1WX1JFRihpKSwgMCk7Cj4+ICsgICAgICAgICAgICAgICBoYW50cm9f
-d3JpdGVfYWRkcih2cHUsIEcyX0NPTVBfQUREUl9SRUYoaSksIDApOwo+PiArICAgICAgICAgICAg
-ICAgaGFudHJvX3dyaXRlX2FkZHIodnB1LCBHMl9DT01QX0NIUl9SRUYoaSksIDApOwo+PiAgICAg
-ICAgICB9Cj4+Cj4+ICAgICAgICAgIGhhbnRyb19yZWdfd3JpdGUodnB1LCAmZzJfcmVmZXJfbHRl
-cm1fZSwgZHBiX2xvbmd0ZXJtX2UpOwo+PiBAQCAtNTY0LDggKzU4OSw4IEBAIGludCBoYW50cm9f
-ZzJfaGV2Y19kZWNfcnVuKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4+ICAgICAgICAgIC8qIERv
-bid0IGRpc2FibGUgb3V0cHV0ICovCj4+ICAgICAgICAgIGhhbnRyb19yZWdfd3JpdGUodnB1LCAm
-ZzJfb3V0X2RpcywgMCk7Cj4+Cj4+IC0gICAgICAgLyogRG9uJ3QgY29tcHJlc3MgYnVmZmVycyAq
-Lwo+PiAtICAgICAgIGhhbnRyb19yZWdfd3JpdGUodnB1LCAmZzJfcmVmX2NvbXByZXNzX2J5cGFz
-cywgMSk7Cj4+ICsgICAgICAgLyogQ29tcHJlc3MgYnVmZmVycyAqLwo+PiArICAgICAgIGhhbnRy
-b19yZWdfd3JpdGUodnB1LCAmZzJfcmVmX2NvbXByZXNzX2J5cGFzcywgMCk7Cj4+Cj4+ICAgICAg
-ICAgIC8qIHVzZSBOVjEyIGFzIG91dHB1dCBmb3JtYXQgKi8KPj4gICAgICAgICAgaGFudHJvX3Jl
-Z193cml0ZSh2cHUsICZnMl9vdXRfcnNfZSwgMSk7Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0
-YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmggYi9kcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvaGFudHJvL2hhbnRyb19nMl9yZWdzLmgKPj4gaW5kZXggYmIyMmZhOTIxOTE0Li4yYTIzZTg2
-NTdkYjEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
-X2cyX3JlZ3MuaAo+PiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19n
-Ml9yZWdzLmgKPj4gQEAgLTE5MSw2ICsxOTEsMTAgQEAKPj4gICAjZGVmaW5lIEcyX1RJTEVfRklM
-VEVSICAgICAgICAgKEcyX1NXUkVHKDE3OSkpCj4+ICAgI2RlZmluZSBHMl9USUxFX1NBTyAgICAg
-ICAgICAgIChHMl9TV1JFRygxODEpKQo+PiAgICNkZWZpbmUgRzJfVElMRV9CU0QgICAgICAgICAg
-ICAoRzJfU1dSRUcoMTgzKSkKPj4gKyNkZWZpbmUgRzJfQ09NUF9BRERSX0RTVCAgICAgICAoRzJf
-U1dSRUcoMTkwKSkKPj4gKyNkZWZpbmUgRzJfQ09NUF9BRERSX1JFRihpKSAgICAoRzJfU1dSRUco
-MTkyKSArICgoaSkgKiAweDgpKQo+PiArI2RlZmluZSBHMl9DT01QX0NIUiAgICAgICAgICAgIChH
-Ml9TV1JFRygyMjQpKQo+PiArI2RlZmluZSBHMl9DT01QX0NIUl9SRUYoaSkgICAgIChHMl9TV1JF
-RygyMjYpICsgKChpKSAqIDB4OCkpCj4+Cj4+ICAgI2RlZmluZSBnMl9zdHJtX2J1ZmZlcl9sZW4g
-ICAgIEcyX0RFQ19SRUcoMjU4LCAwLCAweGZmZmZmZmZmKQo+PiAgICNkZWZpbmUgZzJfc3RybV9z
-dGFydF9vZmZzZXQgICBHMl9ERUNfUkVHKDI1OSwgMCwgMHhmZmZmZmZmZikKPj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hldmMuYyBiL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hldmMuYwo+PiBpbmRleCA1MzQ3ZjVhNDFjMmEu
-Ljc4ZTVjZWRhNTIwYyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
-by9oYW50cm9faGV2Yy5jCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
-dHJvX2hldmMuYwo+PiBAQCAtMjcsNiArMjcsMTMgQEAKPj4KPj4gICAjZGVmaW5lIEcyX0FMSUdO
-ICAgICAgICAgICAgICAgMTYKPj4KPj4gKyNkZWZpbmUgQ0JTX1NJWkUgICAgICAgMTYgICAgICAv
-KiBjb21wcmVzc2lvbiB0YWJsZSBzaXplIGluIGJ5dGVzICovCj4+ICsjZGVmaW5lIENCU19MVU1B
-ICAgICAgIDggICAgICAgLyogbHVtaW5hbmNlIENCUyBpcyBjb21wb3NlZCBvZiAxIDh4OCBjb2Rl
-ZCBibG9jayAqLwo+PiArI2RlZmluZSBDQlNfQ0hST01BX1cgICAoOCAqIDIpIC8qIGNocm9taW5h
-bmNlIENCUyBpcyBjb21wb3NlZCBvZiB0d28gOHg0IGNvZGVkCj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICogYmxvY2tzLCB3aXRoIENiIENCIGZpcnN0IHRoZW4gQ3IgQ0IgZm9s
-bG93aW5nCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICovCj4+ICsjZGVmaW5l
-IENCU19DSFJPTUFfSCAgIDQKPj4gKwo+PiAgIHNpemVfdCBoYW50cm9faGV2Y19jaHJvbWFfb2Zm
-c2V0KGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcykKPj4gICB7Cj4+ICAgICAg
-ICAgIGludCBieXRlc19wZXJfcGl4ZWwgPSBzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCA9PSAw
-ID8gMSA6IDI7Cj4+IEBAIC02MSwxMiArNjgsNDQgQEAgc3RhdGljIHNpemVfdCBoYW50cm9faGV2
-Y19tdl9zaXplKGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcykKPj4gICAgICAg
-ICAgcmV0dXJuIG12X3NpemU7Cj4+ICAgfQo+Pgo+PiArc2l6ZV90IGhhbnRyb19oZXZjX2x1bWFf
-Y29tcHJlc3Nfb2Zmc2V0KGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcykKPj4g
-K3sKPj4gKyAgICAgICByZXR1cm4gaGFudHJvX2hldmNfbW90aW9uX3ZlY3RvcnNfb2Zmc2V0KHNw
-cykgKyBoYW50cm9faGV2Y19tdl9zaXplKHNwcyk7Cj4+ICt9Cj4+ICsKPj4gK3N0YXRpYyBzaXpl
-X3QgaGFudHJvX2hldmNfbHVtYV9jb21wcmVzc19zaXplKGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxf
-aGV2Y19zcHMgKnNwcykKPj4gK3sKPj4gKyAgICAgICB1MzIgcGljX3dpZHRoX2luX2Nic3kgPQo+
-PiArICAgICAgICAgICAgICAgcm91bmRfdXAoKHNwcy0+cGljX3dpZHRoX2luX2x1bWFfc2FtcGxl
-cyArIENCU19MVU1BIC0gMSkgLyBDQlNfTFVNQSwgQ0JTX1NJWkUpOwo+PiArICAgICAgIHUzMiBw
-aWNfaGVpZ2h0X2luX2Nic3kgPSAoc3BzLT5waWNfaGVpZ2h0X2luX2x1bWFfc2FtcGxlcyArIENC
-U19MVU1BIC0gMSkgLyBDQlNfTFVNQTsKPj4gKwo+PiArICAgICAgIHJldHVybiByb3VuZF91cChw
-aWNfd2lkdGhfaW5fY2JzeSAqIHBpY19oZWlnaHRfaW5fY2JzeSwgQ0JTX1NJWkUpOwo+PiArfQo+
-PiArCj4+ICtzaXplX3QgaGFudHJvX2hldmNfY2hyb21hX2NvbXByZXNzX29mZnNldChjb25zdCBz
-dHJ1Y3QgdjRsMl9jdHJsX2hldmNfc3BzICpzcHMpCj4+ICt7Cj4+ICsgICAgICAgcmV0dXJuIGhh
-bnRyb19oZXZjX2x1bWFfY29tcHJlc3Nfb2Zmc2V0KHNwcykgKyBoYW50cm9faGV2Y19sdW1hX2Nv
-bXByZXNzX3NpemUoc3BzKTsKPj4gK30KPj4gKwo+PiArc3RhdGljIHNpemVfdCBoYW50cm9faGV2
-Y19jaHJvbWFfY29tcHJlc3Nfc2l6ZShjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc3BzICpz
-cHMpCj4+ICt7Cj4+ICsgICAgICAgdTMyIHBpY193aWR0aF9pbl9jYnNjID0KPj4gKyAgICAgICAg
-ICAgICAgIHJvdW5kX3VwKChzcHMtPnBpY193aWR0aF9pbl9sdW1hX3NhbXBsZXMgKyBDQlNfQ0hS
-T01BX1cgLSAxKQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgLyBDQlNfQ0hST01BX1csIENC
-U19TSVpFKTsKPj4gKyAgICAgICB1MzIgcGljX2hlaWdodF9pbl9jYnNjID0gKHNwcy0+cGljX2hl
-aWdodF9pbl9sdW1hX3NhbXBsZXMgLyAyICsgQ0JTX0NIUk9NQV9IIC0gMSkKPj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgLyBDQlNfQ0hST01BX0g7Cj4+ICsKPj4gKyAgICAgICBy
-ZXR1cm4gcm91bmRfdXAocGljX3dpZHRoX2luX2Nic2MgKiBwaWNfaGVpZ2h0X2luX2Nic2MsIENC
-U19TSVpFKTsKPj4gK30KPj4gKwo+PiAgIHN0YXRpYyBzaXplX3QgaGFudHJvX2hldmNfcmVmX3Np
-emUoc3RydWN0IGhhbnRyb19jdHggKmN0eCkKPj4gICB7Cj4+ICAgICAgICAgIGNvbnN0IHN0cnVj
-dCBoYW50cm9faGV2Y19kZWNfY3RybHMgKmN0cmxzID0gJmN0eC0+aGV2Y19kZWMuY3RybHM7Cj4+
-ICAgICAgICAgIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcyA9IGN0cmxzLT5z
-cHM7Cj4+Cj4+IC0gICAgICAgcmV0dXJuIGhhbnRyb19oZXZjX21vdGlvbl92ZWN0b3JzX29mZnNl
-dChzcHMpICsgaGFudHJvX2hldmNfbXZfc2l6ZShzcHMpOwo+PiArICAgICAgIHJldHVybiBoYW50
-cm9faGV2Y19tb3Rpb25fdmVjdG9yc19vZmZzZXQoc3BzKSArIGhhbnRyb19oZXZjX212X3NpemUo
-c3BzKSArCj4+ICsgICAgICAgICAgICAgIGhhbnRyb19oZXZjX2x1bWFfY29tcHJlc3Nfc2l6ZShz
-cHMpICsKPj4gKyAgICAgICAgICAgICAgaGFudHJvX2hldmNfY2hyb21hX2NvbXByZXNzX3NpemUo
-c3BzKTsKPj4gICB9Cj4+Cj4+ICAgc3RhdGljIHZvaWQgaGFudHJvX2hldmNfcmVmX2ZyZWUoc3Ry
-dWN0IGhhbnRyb19jdHggKmN0eCkKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
-b19ody5oCj4+IGluZGV4IGRmN2I1ZTNhNTdiOS4uZDVjMDAyZDBlNzY1IDEwMDY0NAo+PiAtLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oCj4+ICsrKyBiL2RyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPj4gQEAgLTI1NSw2ICsyNTUsOCBA
-QCBkbWFfYWRkcl90IGhhbnRyb19oZXZjX2dldF9yZWZfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpj
-dHgsIGludCBwb2MpOwo+PiAgIHZvaWQgaGFudHJvX2hldmNfcmVmX3JlbW92ZV91bnVzZWQoc3Ry
-dWN0IGhhbnRyb19jdHggKmN0eCk7Cj4+ICAgc2l6ZV90IGhhbnRyb19oZXZjX2Nocm9tYV9vZmZz
-ZXQoY29uc3Qgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NwcyAqc3BzKTsKPj4gICBzaXplX3QgaGFu
-dHJvX2hldmNfbW90aW9uX3ZlY3RvcnNfb2Zmc2V0KGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2
-Y19zcHMgKnNwcyk7Cj4+ICtzaXplX3QgaGFudHJvX2hldmNfbHVtYV9jb21wcmVzc19vZmZzZXQo
-Y29uc3Qgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NwcyAqc3BzKTsKPj4gK3NpemVfdCBoYW50cm9f
-aGV2Y19jaHJvbWFfY29tcHJlc3Nfb2Zmc2V0KGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19z
-cHMgKnNwcyk7Cj4+Cj4+ICAgc3RhdGljIGlubGluZSBzaXplX3QKPj4gICBoYW50cm9faDI2NF9t
-dl9zaXplKHVuc2lnbmVkIGludCB3aWR0aCwgdW5zaWduZWQgaW50IGhlaWdodCkKPj4gLS0KPj4g
-Mi4yNS4xCj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+On Mon, Aug 23, 2021 at 11:19:22PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> This is an RFC to convert the rk808 bindings into yaml format. Please
+> note that currently there are a few errors that appear when performing
+> a make dtbs_check. However, after looking at the errors it appears
+> in most cases it occurs on device trees which are not following
+> the current rk808.txt document today. For example for the rk808
+> there are multiple errors regarding vcc13-supply, vcc14-supply, and
+> vddio-supply; however these supplies are not listed in the current
+> driver or cared for in any way.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../devicetree/bindings/mfd/rk808.txt         | 503 ------------------
+>  .../bindings/mfd/rockchip,rk805.yaml          |  89 ++++
+>  .../bindings/mfd/rockchip,rk808.yaml          | 255 +++++++++
+>  .../bindings/mfd/rockchip,rk809.yaml          | 101 ++++
+>  .../bindings/mfd/rockchip,rk817.yaml          | 365 +++++++++++++
+>  .../bindings/mfd/rockchip,rk818.yaml          | 109 ++++
+>  6 files changed, 919 insertions(+), 503 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/mfd/rk808.txt
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+
+Most of the comments below apply to all the files...
+
+
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+> new file mode 100644
+> index 000000000000..347696f1709c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+> @@ -0,0 +1,89 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk805.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK808 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Chris Zhong <zyw@rock-chips.com>
+> +  - Zhang Qing <zhangqing@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK805 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes multiple switchable regulators.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk805
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description:
+> +      The I2C slave address.
+
+Don't need generic descriptions. Drop
+
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description:
+> +      The interrupt output of the controller.
+
+Drop.
+
+> +
+> +  '#clock-cells':
+> +    description: |
+> +      From common clock binding; shall be set to 1 (multiple clock outputs).
+
+Drop.
+
+> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    description:
+> +      From common clock binding to override the default output clock name.
+
+maxItems: ?
+
+(and minItems if it is a range, but I think this is all clocks or none)
+
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  vcc5-supply:
+> +    description:
+> +      The input supply for LDO_REG1 and LDO_REG2.
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG3.
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(DCDC_REG[1-4]|LDO_REG[1-3])$":
+> +        type: object
+> +        $ref: ../regulator/regulator.yaml#
+
+           unevaluatedProperties: false
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+> new file mode 100644
+> index 000000000000..6bec1d9e4640
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+> @@ -0,0 +1,255 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk808.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK808 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Chris Zhong <zyw@rock-chips.com>
+> +  - Zhang Qing <zhangqing@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK808 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes regulators, an RTC, and a power button.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk808
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description:
+> +      The I2C slave address.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description:
+> +      The interrupt output of the controller.
+> +
+> +  '#clock-cells':
+> +    description: |
+> +      From common clock binding; shall be set to 1 (multiple clock outputs).
+> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    description:
+> +      From common clock binding to override the default output clock name.
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG1 and LDO_REG2.
+> +
+> +  vcc7-supply:
+> +    description:
+> +      The input supply for LDO_REG3 and LDO_REG7.
+> +
+> +  vcc8-supply:
+> +    description:
+> +      The input supply for SWITCH_REG1.
+> +
+> +  vcc9-supply:
+> +    description:
+> +      The input supply for LDO_REG4 and LDO_REG5.
+> +
+> +  vcc10-supply:
+> +    description:
+> +      The input supply for LDO_REG6.
+> +
+> +  vcc11-supply:
+> +    description:
+> +      The input supply for LDO_REG8.
+> +
+> +  vcc12-supply:
+> +    description:
+> +      The input supply for SWITCH_REG2.
+> +
+> +  dvs-gpios:
+> +    description: |
+> +      buck1/2 can be controlled by gpio dvs, this is GPIO specifiers for
+> +      2 host gpio's used for dvs. The format of the gpio specifier
+> +      depends in the gpio controller. If DVS GPIOs aren't present,
+> +      voltage changes will happen very quickly with no slow ramp time.
+
+maxItems: 2
+
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
+> +        type: object
+> +        $ref: ../regulator/regulator.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    i2c0 {
+
+i2c {
+
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        rk808: pmic@1b {
+> +            compatible = "rockchip,rk808";
+> +            clock-output-names = "xin32k", "rk808-clkout2";
+> +            interrupt-parent = <&gpio0>;
+> +            interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
+> +            pinctrl-names = "default";
+> +            pinctrl-0 = <&pmic_int &dvs_1 &dvs_2>;
+> +            dvs-gpios = <&gpio7 11 GPIO_ACTIVE_HIGH>,
+> +                <&gpio7 15 GPIO_ACTIVE_HIGH>;
+> +            reg = <0x1b>;
+> +            rockchip,system-power-controller;
+> +            wakeup-source;
+> +            #clock-cells = <1>;
+> +
+> +            vcc8-supply = <&vcc_18>;
+> +            vcc9-supply = <&vcc_io>;
+> +            vcc10-supply = <&vcc_io>;
+> +            vcc12-supply = <&vcc_io>;
+> +            vddio-supply = <&vccio_pmu>;
+> +
+> +            regulators {
+> +                vdd_cpu: DCDC_REG1 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <750000>;
+> +                    regulator-max-microvolt = <1300000>;
+> +                    regulator-name = "vdd_arm";
+> +                };
+> +
+> +                vdd_gpu: DCDC_REG2 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <850000>;
+> +                    regulator-max-microvolt = <1250000>;
+> +                    regulator-name = "vdd_gpu";
+> +                };
+> +
+> +                vcc_ddr: DCDC_REG3 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-name = "vcc_ddr";
+> +                };
+> +
+> +                vcc_io: DCDC_REG4 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-name = "vcc_io";
+> +                };
+> +
+> +                vccio_pmu: LDO_REG1 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-name = "vccio_pmu";
+> +                };
+> +
+> +                vcc_tp: LDO_REG2 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-name = "vcc_tp";
+> +                };
+> +
+> +                vdd_10: LDO_REG3 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <1000000>;
+> +                    regulator-max-microvolt = <1000000>;
+> +                    regulator-name = "vdd_10";
+> +                };
+> +
+> +                vcc18_lcd: LDO_REG4 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <1800000>;
+> +                    regulator-name = "vcc18_lcd";
+> +                };
+> +
+> +                vccio_sd: LDO_REG5 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-name = "vccio_sd";
+> +                };
+> +
+> +                vdd10_lcd: LDO_REG6 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <1000000>;
+> +                    regulator-max-microvolt = <1000000>;
+> +                    regulator-name = "vdd10_lcd";
+> +                };
+> +
+> +                vcc_18: LDO_REG7 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <1800000>;
+> +                    regulator-name = "vcc_18";
+> +                };
+> +
+> +                vcca_codec: LDO_REG8 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-name = "vcca_codec";
+> +                };
+> +
+> +                vcc_wl: SWITCH_REG1 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-name = "vcc_wl";
+> +                };
+> +
+> +                vcc_lcd: SWITCH_REG2 {
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +                    regulator-name = "vcc_lcd";
+> +                };
+> +            };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+> new file mode 100644
+> index 000000000000..6d509e863da3
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+> @@ -0,0 +1,101 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk809.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK817 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Chris Zhong <zyw@rock-chips.com>
+> +  - Zhang Qing <zhangqing@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK809 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes regulators, an RTC, and power button.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk809
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description:
+> +      The I2C slave address.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description:
+> +      The interrupt output of the controller.
+> +
+> +  '#clock-cells':
+> +    description: |
+> +      From common clock binding; shall be set to 1 (multiple clock outputs).
+> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    description:
+> +      From common clock binding to override the default output clock name.
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  vcc5-supply:
+> +    description:
+> +      The input supply for LDO_REG1, LDO_REG2, and LDO_REG3.
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG4, LDO_REG5, and LDO_REG6.
+> +
+> +  vcc7-supply:
+> +    description:
+> +      The input supply for LDO_REG7, LDO_REG8, and LDO_REG9.
+> +
+> +  vcc8-supply:
+> +    description:
+> +      The input supply for SWITCH_REG1.
+> +
+> +  vcc9-supply:
+> +    description:
+> +      The input supply for DCDC_REG5 and SWITCH_REG2.
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(LDO_REG[1-9]|DCDC_REG[1-5]|SWITCH_REG[1-2])$":
+> +        type: object
+> +        $ref: ../regulator/regulator.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+> new file mode 100644
+> index 000000000000..cbe6c2a9f254
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+> @@ -0,0 +1,365 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk817.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK817 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Chris Zhong <zyw@rock-chips.com>
+> +  - Zhang Qing <zhangqing@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK817 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes regulators, an RTC, a power button, an audio codec, and a
+> +  battery charger manager.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk817
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description:
+> +      The I2C slave address.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description:
+> +      The interrupt output of the controller.
+> +
+> +  '#clock-cells':
+> +    description: |
+> +      From common clock binding; shall be set to 1 (multiple clock outputs).
+> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    description:
+> +      From common clock binding to override the default output clock name.
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  vcc5-supply:
+> +    description:
+> +      The input supply for LDO_REG1, LDO_REG2, and LDO_REG3.
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG4, LDO_REG5, and LDO_REG6.
+> +
+> +  vcc7-supply:
+> +    description:
+> +      The input supply for LDO_REG7, LDO_REG8, and LDO_REG9.
+> +
+> +  vcc8-supply:
+> +    description:
+> +      The input supply for BOOST.
+> +
+> +  vcc9-supply:
+> +    description:
+> +      The input supply for OTG_SWITCH.
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(LDO_REG[1-9]|DCDC_REG[1-4]|BOOST|OTG_SWITCH)$":
+> +        type: object
+> +        $ref: ../regulator/regulator.yaml#
+> +
+> +  clocks:
+> +    description:
+> +      The input clock for the audio codec.
+> +
+> +  clock-names:
+> +    description:
+> +      The clock name for the codec clock.
+> +    items:
+> +      - const: mclk
+> +
+> +  '#sound-dai-cells':
+> +    description:
+> +      Needed for the interpretation of sound dais.
+> +    const: 0
+> +
+> +  codec:
+> +    description: |
+> +      The child node for the codec to hold additional properties. If no
+> +      additional properties are required for the codec, this node can be
+> +      omitted.
+> +    type: object
+> +    properties:
+> +      rockchip,mic-in-differential:
+> +        type: boolean
+> +        description:
+> +          Describes if the microphone uses differential mode.
+> +
+> +  battery:
+
+Is this the only PMIC with the battery monitoring? If not and the node 
+is the same on others (or will be), you should make this a separate 
+schema file and reference it.
+
+> +    description: |
+> +      The child node for the charger to hold additional properties. If a
+> +      battery is not in use, this node can be omitted.
+> +    type: object
+> +    properties:
+> +      monitored-battery:
+> +        description: |
+> +          A phandle to a monitored battery node that contains a valid
+> +          value for:
+> +          charge-full-design-microamp-hours,
+> +          charge-term-current-microamp,
+> +          constant-charge-current-max-microamp,
+> +          constant-charge-voltage-max-microvolt,
+> +          voltage-max-design-microvolt,
+> +          voltage-min-design-microvolt,
+> +          and a valid ocv-capacity table.
+> +
+> +      rockchip,resistor-sense-micro-ohms:
+> +        description: |
+> +          Value in microohms of the battery sense resistor. This value is
+> +          used by the driver to set the correct divisor value to translate
+> +          ADC readings into the proper units of measure.
+> +        enum: [10000, 20000]
+> +
+> +      rockchip,sleep-enter-current-microamp:
+> +        description: |
+> +          Value in microamps of the sleep enter current for the charger.
+> +          Value is used by the driver to calibrate the relax threshold.
+> +
+> +      rockchip,sleep-filter-current-microamp:
+> +        description:
+> +          Value in microamps of the sleep filter current for the charger.
+> +          Value is used by the driver to derive the sleep sample current.
+> +
+> +    required:
+> +      - monitored-battery
+> +      - rockchip,resistor-sense-micro-ohms
+> +      - rockchip,sleep-enter-current-microamp
+> +      - rockchip,sleep-filter-current-microamp
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/px30-cru.h>
+> +    #include <dt-bindings/pinctrl/rockchip.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    i2c0 {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        rk817: pmic@20 {
+> +            compatible = "rockchip,rk817";
+> +            reg = <0x20>;
+> +            interrupt-parent = <&gpio0>;
+> +            interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+> +            clock-output-names = "rk808-clkout1", "xin32k";
+> +            clock-names = "mclk";
+> +            clocks = <&cru SCLK_I2S1_OUT>;
+> +            pinctrl-names = "default";
+> +            pinctrl-0 = <&pmic_int>, <&i2s1_2ch_mclk>;
+> +            wakeup-source;
+> +            #clock-cells = <1>;
+> +            #sound-dai-cells = <0>;
+> +
+> +            vcc1-supply = <&vccsys>;
+> +            vcc2-supply = <&vccsys>;
+> +            vcc3-supply = <&vccsys>;
+> +            vcc4-supply = <&vccsys>;
+> +            vcc5-supply = <&vccsys>;
+> +            vcc6-supply = <&vccsys>;
+> +            vcc7-supply = <&vccsys>;
+> +
+> +            regulators {
+> +                vdd_logic: DCDC_REG1 {
+> +                    regulator-name = "vdd_logic";
+> +                    regulator-min-microvolt = <950000>;
+> +                    regulator-max-microvolt = <1150000>;
+> +                    regulator-ramp-delay = <6001>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <950000>;
+> +                    };
+> +                };
+> +
+> +                vdd_arm: DCDC_REG2 {
+> +                    regulator-name = "vdd_arm";
+> +                    regulator-min-microvolt = <950000>;
+> +                    regulator-max-microvolt = <1350000>;
+> +                    regulator-ramp-delay = <6001>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <950000>;
+> +                    };
+> +                };
+> +
+> +                vcc_ddr: DCDC_REG3 {
+> +                    regulator-name = "vcc_ddr";
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                    };
+> +                };
+> +
+> +                vcc_3v3: DCDC_REG4 {
+> +                    regulator-name = "vcc_3v3";
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vcc_1v8: LDO_REG2 {
+> +                    regulator-name = "vcc_1v8";
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <1800000>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <1800000>;
+> +                    };
+> +                };
+> +
+> +                vdd_1v0: LDO_REG3 {
+> +                    regulator-name = "vdd_1v0";
+> +                    regulator-min-microvolt = <1000000>;
+> +                    regulator-max-microvolt = <1000000>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <1000000>;
+> +                    };
+> +                };
+> +
+> +                vcc3v3_pmu: LDO_REG4 {
+> +                    regulator-name = "vcc3v3_pmu";
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vccio_sd: LDO_REG5 {
+> +                    regulator-name = "vccio_sd";
+> +                    regulator-min-microvolt = <1800000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-always-on;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vcc_sd: LDO_REG6 {
+> +                    regulator-name = "vcc_sd";
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +                    regulator-boot-on;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-on-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vcc_bl: LDO_REG7 {
+> +                    regulator-name = "vcc_bl";
+> +                    regulator-min-microvolt = <3300000>;
+> +                    regulator-max-microvolt = <3300000>;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <3300000>;
+> +                    };
+> +                };
+> +
+> +                vcc_lcd: LDO_REG8 {
+> +                    regulator-name = "vcc_lcd";
+> +                    regulator-min-microvolt = <2800000>;
+> +                    regulator-max-microvolt = <2800000>;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <2800000>;
+> +                    };
+> +                };
+> +
+> +                vcc_cam: LDO_REG9 {
+> +                    regulator-name = "vcc_cam";
+> +                    regulator-min-microvolt = <3000000>;
+> +                    regulator-max-microvolt = <3000000>;
+> +
+> +                    regulator-state-mem {
+> +                        regulator-off-in-suspend;
+> +                        regulator-suspend-microvolt = <3000000>;
+> +                    };
+> +                };
+> +            };
+> +
+> +            rk817_battery: battery {
+> +                monitored-battery = <&battery_cell>;
+> +                rockchip,resistor-sense-micro-ohms = <10000>;
+> +                rockchip,sleep-enter-current-microamp = <300000>;
+> +                rockchip,sleep-filter-current-microamp = <100000>;
+> +            };
+> +
+> +            rk817_codec: codec {
+> +                rockchip,mic-in-differential;
+> +            };
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+> new file mode 100644
+> index 000000000000..8440353e5dbf
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+> @@ -0,0 +1,109 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/rockchip,rk818.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: RK818 Power Management Integrated Circuit
+> +
+> +maintainers:
+> +  - Chris Zhong <zyw@rock-chips.com>
+> +  - Zhang Qing <zhangqing@rock-chips.com>
+> +
+> +description: |
+> +  Rockchip RK818 series PMIC. This device consists of an i2c controlled MFD
+> +  that includes regulators, an RTC, and a power button.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk818
+> +
+> +  reg:
+> +    maxItems: 1
+> +    description:
+> +      The I2C slave address.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +    description:
+> +      The interrupt output of the controller.
+> +
+> +  '#clock-cells':
+> +    description: |
+> +      From common clock binding; shall be set to 1 (multiple clock outputs).
+> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> +    const: 1
+> +
+> +  clock-output-names:
+> +    description:
+> +      From common clock binding to override the default output clock name.
+> +
+> +  rockchip,system-power-controller:
+> +    type: boolean
+> +    description:
+> +      Telling whether or not this PMIC is controlling the system power.
+> +
+> +  wakeup-source:
+> +    type: boolean
+> +    description:
+> +      Device can be used as a wakeup source.
+> +
+> +  vcc1-supply:
+> +    description:
+> +      The input supply for DCDC_REG1.
+> +
+> +  vcc2-supply:
+> +    description:
+> +      The input supply for DCDC_REG2.
+> +
+> +  vcc3-supply:
+> +    description:
+> +      The input supply for DCDC_REG3.
+> +
+> +  vcc4-supply:
+> +    description:
+> +      The input supply for DCDC_REG4.
+> +
+> +  boost-supply:
+> +    description:
+> +      The input supply for DCDC_BOOST
+> +
+> +  vcc6-supply:
+> +    description:
+> +      The input supply for LDO_REG1 and LDO_REG2.
+> +
+> +  vcc7-supply:
+> +    description:
+> +      The input supply for LDO_REG3, LDO_REG5, and LDO_REG7.
+> +
+> +  vcc8-supply:
+> +    description:
+> +      The input supply for LDO_REG4, LDO_REG6, and LDO_REG8.
+> +
+> +  vcc9-supply:
+> +    description:
+> +      The input supply for LDO_REG9 and SWITCH_REG.
+> +
+> +  h_5v-supply:
+> +    description:
+> +      The input supply for HDMI_SWITCH.
+> +
+> +  usb-supply:
+> +    description:
+> +      The input supply for OTG_SWITCH.
+> +
+> +  regulators:
+> +    type: object
+> +    patternProperties:
+> +      "^(DCDC_REG[1-4]|LDO_REG[1-9]|SWITCH_REG|HDMI_SWITCH|OTG_SWITCH)$":
+> +        type: object
+> +        $ref: ../regulator/regulator.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - "#clock-cells"
+> +
+> +additionalProperties: false
+> -- 
+> 2.25.1
+> 
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
