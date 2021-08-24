@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28C34C432BE
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C924C4320E
 	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 09:17:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC34561360
+	by mail.kernel.org (Postfix) with ESMTPS id CFCED61374
 	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 09:17:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CC34561360
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CFCED61374
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,22 +23,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zHSszB4AKE+UZJDgmwcRpD7vip92cR7On9ig54E7ois=; b=ikPM1uf++Wb4KU
-	+1utKmA+Fydcyu/VG9Y8UEApDw0mM4v0kuktx4QPa7Qgb7PKuvs8FWwChWOx7kPTINK+VN9+UQ1T0
-	Wt1goCFz6w+5iaGmzy5YqVGSgY5BdS41DvRQdpOnXz/QCik3Bq8ySeP9QkFR0Aks/a76iW/X48ciL
-	tNPXJybgVIK/577jtkz/S6a+/0wfuXQnmizjBaWo/FxPPTF7Vvsy6Xuq4PQrcJusEjcMP/egiF3wF
-	BWukUazhDj0e6GvzF0HmKuuty79crBhi1FcnHe6vHJtbi/heetRHf1kXVSTQMo5lRPw+BCZ2RqBAy
-	hQXTpJlP7DrIOY5w/aAA==;
+	List-Owner; bh=qa8KTutsVtvl0Sji/fPN9abaCjFjc3pqkyBfi7a1XIU=; b=WqQdfK2r80GpcJ
+	lZWiOxnsnLWi1OyGyl5XM24z6fE6fUXZkk4n3C+0FMSvxh9tCe41uzWhNHOdo6LE8TxxbUzIDwUSJ
+	FnMgLoHxoxCZD4tnGodRUNGBQKSUQ6VYzyoMJ37rshgb/KKui7rw8TeuBG6GpEUw1Iws4BDzrQGZk
+	UwgJ8Rju2Do1lRAptkyjp1bUP+BLo0XeLnzAWR8+2oge6HrLmMeMQK5ZwdbUphWFznV46O7MxlTea
+	xV7CTQK93oF4ajjRSghKOGztbixILDqMZ0nNOgoKYQBf8lFY/pVugqrlRUZrAja8hs26DspFb0F2z
+	r2fqX7uWMeRRt3mI8LKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mISYm-002H0m-K1; Tue, 24 Aug 2021 09:17:32 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1mISYl-002H0P-UA; Tue, 24 Aug 2021 09:17:31 +0000
+Received: from lucky1.263xmail.com ([211.157.147.133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mISYi-002GyL-JU
+ id 1mISYi-002Gxx-5a
  for linux-rockchip@lists.infradead.org; Tue, 24 Aug 2021 09:17:30 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 34615C2AA7;
- Tue, 24 Aug 2021 17:17:26 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 15333D6553;
+ Tue, 24 Aug 2021 17:17:25 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P704T139881235867392S1629796642328500_; 
- Tue, 24 Aug 2021 17:17:26 +0800 (CST)
+ Tue, 24 Aug 2021 17:17:25 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <af4460724b95081a2b81cecafd31b63f>
+X-UNIQUE-TAG: <31e5bd207ea9b661c96e060db7880688>
 X-RL-SENDER: sugar.zhang@rock-chips.com
 X-SENDER: zxg@rock-chips.com
 X-LOGIN-NAME: sugar.zhang@rock-chips.com
@@ -63,16 +63,15 @@ To: broonie@kernel.org,
 	heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  alsa-devel@alsa-project.org, Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v2 03/15] ASoC: rockchip: i2s: Improve dma data transfer
- efficiency
-Date: Tue, 24 Aug 2021 17:17:02 +0800
-Message-Id: <1629796634-4095-3-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v2 02/15] ASoC: rockchip: i2s: Fixup clk div error
+Date: Tue, 24 Aug 2021 17:17:01 +0800
+Message-Id: <1629796634-4095-2-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1629796561-4025-1-git-send-email-sugar.zhang@rock-chips.com>
 References: <1629796561-4025-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_021728_877921_17637D13 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20210824_021728_500363_AA051E20 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,8 +90,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch changes dma data burst from 4 to 8 to improve
-data transfer efficiency.
+MCLK maybe not precise as required because of PLL,
+but which still can be used and no side effect. so,
+using DIV_ROUND_CLOSEST instead div.
+
+e.g.
+
+set mclk to 11289600 Hz, but get 11289598 Hz.
 
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 ---
@@ -103,23 +107,22 @@ Changes in v2: None
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 05fce2c..2e0047d 100644
+index c9d5c52..05fce2c 100644
 --- a/sound/soc/rockchip/rockchip_i2s.c
 +++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -644,11 +644,11 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+@@ -280,10 +280,10 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 	if (i2s->is_master_mode) {
+ 		mclk_rate = clk_get_rate(i2s->mclk);
+ 		bclk_rate = i2s->bclk_ratio * params_rate(params);
+-		if (bclk_rate == 0 || mclk_rate % bclk_rate)
++		if (!bclk_rate)
+ 			return -EINVAL;
  
- 	i2s->playback_dma_data.addr = res->start + I2S_TXDR;
- 	i2s->playback_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->playback_dma_data.maxburst = 4;
-+	i2s->playback_dma_data.maxburst = 8;
- 
- 	i2s->capture_dma_data.addr = res->start + I2S_RXDR;
- 	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->capture_dma_data.maxburst = 4;
-+	i2s->capture_dma_data.maxburst = 8;
- 
- 	i2s->bclk_ratio = 64;
- 
+-		div_bclk = mclk_rate / bclk_rate;
++		div_bclk = DIV_ROUND_CLOSEST(mclk_rate, bclk_rate);
+ 		div_lrck = bclk_rate / params_rate(params);
+ 		regmap_update_bits(i2s->regmap, I2S_CKR,
+ 				   I2S_CKR_MDIV_MASK,
 -- 
 2.7.4
 
