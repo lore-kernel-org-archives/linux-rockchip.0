@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06820C4320E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43BAFC432BE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:17:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD56B60238
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:17:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CD56B60238
+	by mail.kernel.org (Postfix) with ESMTPS id 1A15E60238
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Aug 2021 10:17:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1A15E60238
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2wfoiHZ1nweaExpXRr6FWDikrYE1Co9ifQyx1ol4P40=; b=Odn0WFJhnW6TsZ
-	LYCsKtidL0R/YwQbYkVKyRvFu0hGIXXSkOUBhnPqlqcskY6oKGiuTDufcJXH4U/6WytYQu/3uPcVI
-	x+NqFqzxnig5jiCcb+EXRmE3vP9S3IFWFrmcy2vZvf5YGlkrAsd5xvakDEWEKUMNNT/8SMQDIS9uS
-	bnJj6Q517uiV9kgUrOJRmNUZtj5Mi2ObxtUPPm3zmMZs7nGhzkasbCihFoTHUMyos5mEshLmLdXem
-	mUKRBPB0A7wrOrtdOulm6LJsX/cI9DY5TtSFQPn7vVoVqFz9zBAHZveWEtubcbfjVywwpTRKL0EJG
-	mDCh0fPBsVOd/h9P4+uw==;
+	List-Owner; bh=BKCNLZoDOtWLdQVBFnqavx7otCkbZgR2QyQGrX831Is=; b=o//Zr8a1f4TMq6
+	OfbqrK0mor1V+ujfhJtAqwjII4RqIwsL0hW87LjKpTxxKmYM75Rc4AQ/xqbv4X24UM2Pu2xkEMQBC
+	dmJ/JtnSNL0ogBudrF5sFViUfjx/3QPsTGawPI8ZNPqQhRCQeNPn4QnWJo4vqeBlSUKpSLeYFiQEY
+	3+GHkZv3xMWt2r+EC4XBy8UkrkbM+uqb/eo+sPCGhL+KSDU0rE3SZb2DDTeJB9sAyzQf+cGbZI5uY
+	YxtuJ2PHcyx8k13b2YAcPTgLSMtUCgTLPTd7R6e5AopG/JZhvyuywnDkfPuu7YXRLt+5+EXzUTLid
+	Dm40cSV4Vst1PEtnTu0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mITUJ-002Szz-9x; Tue, 24 Aug 2021 10:16:59 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1mITUb-002TAp-Um; Tue, 24 Aug 2021 10:17:17 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mITTg-002Slh-BE; Tue, 24 Aug 2021 10:16:21 +0000
+ id 1mITTj-002Smc-26; Tue, 24 Aug 2021 10:16:24 +0000
 Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 4DA19B3110;
- Tue, 24 Aug 2021 18:16:17 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id D07D5FB5F3;
+ Tue, 24 Aug 2021 18:16:19 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -46,9 +46,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P32763T139760989173504S1629800174340042_; 
- Tue, 24 Aug 2021 18:16:17 +0800 (CST)
+ Tue, 24 Aug 2021 18:16:19 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <df41ce893a7ede958890638194f6bd1b>
+X-UNIQUE-TAG: <01cb3dbea37a988ba109527237458575>
 X-RL-SENDER: sugar.zhang@rock-chips.com
 X-SENDER: zxg@rock-chips.com
 X-LOGIN-NAME: sugar.zhang@rock-chips.com
@@ -62,18 +62,19 @@ To: broonie@kernel.org,
 	heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
  Sugar Zhang <sugar.zhang@rock-chips.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v1 3/4] ASoC: rockchip: spdif: Add support for rk3568 spdif
-Date: Tue, 24 Aug 2021 18:16:01 +0800
-Message-Id: <1629800162-12824-4-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v1 4/4] ASoC: dt-bindings: rockchip: Add compatible for rk3568
+ spdif
+Date: Tue, 24 Aug 2021 18:16:02 +0800
+Message-Id: <1629800162-12824-5-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
 References: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_031620_694248_2B90369C 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20210824_031623_398285_4B25A06E 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +93,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds support for rk3568 spdif which is the same
-with rk3366.
+This patch adds compatible string for rk3568 spdif.
 
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 ---
 
- sound/soc/rockchip/rockchip_spdif.c | 2 ++
- 1 file changed, 2 insertions(+)
+ Documentation/devicetree/bindings/sound/rockchip-spdif.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 92b27b6..d027ca4 100644
---- a/sound/soc/rockchip/rockchip_spdif.c
-+++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -58,6 +58,8 @@ static const struct of_device_id rk_spdif_match[] __maybe_unused = {
- 	  .data = (void *)RK_SPDIF_RK3366 },
- 	{ .compatible = "rockchip,rk3399-spdif",
- 	  .data = (void *)RK_SPDIF_RK3366 },
-+	{ .compatible = "rockchip,rk3568-spdif",
-+	  .data = (void *)RK_SPDIF_RK3366 },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, rk_spdif_match);
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+index 62a61b6..d0a24bf 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+@@ -23,6 +23,7 @@ properties:
+       - const: rockchip,rk3366-spdif
+       - const: rockchip,rk3368-spdif
+       - const: rockchip,rk3399-spdif
++      - const: rockchip,rk3568-spdif
+       - items:
+           - enum:
+               - rockchip,rk3188-spdif
 -- 
 2.7.4
 
