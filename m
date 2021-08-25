@@ -2,88 +2,153 @@ Return-Path: <SRS0=zXd4=NQ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E9C1C4338F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Aug 2021 03:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 145B4C4338F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Aug 2021 08:08:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9E0E61058
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Aug 2021 03:37:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B9E0E61058
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id C142461214
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Aug 2021 08:08:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C142461214
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f5uqcArbZYUKtOrT2EAnCZkVsWrHMwOtK1s8GAJFJ34=; b=zUMESvvcThFuEg
-	fsTgL6sps1rUot8BLKDnlOUnZuAr0BQS7OV+us50SdJijuVSXsswcI7g9h3VeDtLn+Lp6Gebqft6R
-	tLUrNo81SFUiGgprsHYTY2fZznKsLlMmWZKUtI8sK0lUWCgiXnqfg6EaAHZkuk72MCHfFWbTHJ4ad
-	101AMU7uTJktsEM14yE51bS4xTGUmLRs+L++nQ0CnWOjNSfipcRP0HK6aMAOip2GShkcw38jJEVuZ
-	ZE2BP9wyVhXuLctQycHq37NliFGYlX+y7Y01Hhz39S99aB4TA3A7LVnxlO8SowadokppKoMy0POkw
-	oJjtlfXx/tsEFdi2Sezg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=ZkZ7rvuUjuAzQKUtdwfMR0YmbX93zFlm1+45o1vjdz8=; b=zFNu80kRZU6Onyb5OQ1yRqf/fZ
+	e3/FCVvakshN+JDhtwvnHZ0gpTdGmQOX05o5TF2POTjzZxmUktRhAnopIkxebuWbBd/6jDSvKLN37
+	OqmIQM3bike5YoUjv1MZAp6YgozTD+iTFu6JGck7ubc/+ymtDFo+KUsJIRlNBLkYwQB3uZzP1Ezy3
+	WkBxkasOVTYSKYU269Fp47F8Our2nVp/c5lyACFyXD8XHI/kIQYukH+ENyDQQX8dT+H/eGRo7ZBgY
+	Z1N83cpnPOKYgy/hxIay/aW85J4KT0JT7u2j48ff8+H31zBvnultMgdGsPKVFZ2/mRDIe43kU3QFx
+	ibJZdplg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIjjc-005Mjr-39; Wed, 25 Aug 2021 03:37:52 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1mInxi-005s6w-48; Wed, 25 Aug 2021 08:08:42 +0000
+Received: from mail-eopbgr20056.outbound.protection.outlook.com ([40.107.2.56]
+ helo=EUR02-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIjjC-005Mei-4e
- for linux-rockchip@lists.infradead.org; Wed, 25 Aug 2021 03:37:32 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id h1so9791822pjs.2
- for <linux-rockchip@lists.infradead.org>; Tue, 24 Aug 2021 20:37:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=q0osrLQRGYm4Vz0vBnUh204LWkZlcWqm9+4G0jRh2r4=;
- b=cm+7OY5PrUzXxQzmgUzHVcJpuqhuCN96Etlchoc8KlOZeRCnpO/BZBJWl4OXQGWW9z
- /WfKuqN2SN96zaSJ2EV3ZYQ/zvC12oZKbrUiS1lbm/+YCJVtesKujD0roCKuF5H3jIK4
- XMONAvB05LsDiQ11+NSdwGfFdqTs01YFUTAbE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=q0osrLQRGYm4Vz0vBnUh204LWkZlcWqm9+4G0jRh2r4=;
- b=rOonR4UPqid12ctUeUyRNWjieDLjkbcooTUfwA2edUw66EAign9COIFBuLBMAIAV4k
- rh8yGtlFj/GM1doFUAHVB9QkUZ7EQTxa/34kvukHedqfBVoEYcbyDEUlKQSzLNkKscFI
- Zf1lAiDY1qhXOC3YuEGuaHv4SfU/Ni425rz4heSt+z25mHpZBYRMoRhADoOS93cDkfWC
- NMaEpJw1IW5K6bGGeOsRN0e2lTxM4K1Dz/8cr9bGWM7AtwrtowvCzEgFJYJMZkpsyvzf
- QjC+QKYRncf00MbgR/3RJ7VgzKVqb0Qhnv7rHcZVc3tQ4mPBnJxOIuJY+MElEBwfC75b
- kfYQ==
-X-Gm-Message-State: AOAM532A1wt5x4Iv0QKOUyLk9jX6xgUcfSQi7kFXnkz7d3UwL/uOhr3P
- HnvcBcGGYxoAzRbs8eN22X0TeLkH7FO31w==
-X-Google-Smtp-Source: ABdhPJzZpuaw15dsq6mbPtNWoaGiH5OE3VTghxOEKzbAliLMD+KN8Yx/HkuuY0QD5o3g/NSTT/Q7jg==
-X-Received: by 2002:a17:90b:33d1:: with SMTP id
- lk17mr8081418pjb.83.1629862645563; 
- Tue, 24 Aug 2021 20:37:25 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com
- ([2401:fa00:1:10:629f:4b05:2c88:776d])
- by smtp.gmail.com with ESMTPSA id l10sm3902149pgn.22.2021.08.24.20.37.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Aug 2021 20:37:25 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Brian Norris <briannorris@chromium.org>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/2] regulator: vctrl: Avoid lockdep warning in enable/disable
- ops
-Date: Wed, 25 Aug 2021 11:37:04 +0800
-Message-Id: <20210825033704.3307263-3-wenst@chromium.org>
-X-Mailer: git-send-email 2.33.0.rc2.250.ged5fa647cd-goog
-In-Reply-To: <20210825033704.3307263-1-wenst@chromium.org>
-References: <20210825033704.3307263-1-wenst@chromium.org>
+ id 1mInx7-005s0B-2Z; Wed, 25 Aug 2021 08:08:09 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oe4w2+7RZ8rg7C5Rv15m2cfHjcbA8lwh2YCDDm8soDrSZIJM89VPXqNWlzNiSq6rwkhOC5LR79gQRfOKINbphfIKOvIpwrcwrCVH74F2yiuzAVD2svG3skBf9a4RRwR+McWD0lGSWl3O6ra19UR7zOrJOhTaAMaGUSy/6lxMnbZKgvXRnCk9SGFn13ERwVCjN3VkyVDaYYwciI9v10gw/rXfGiGZsYFQd9I2NWzuJeZ+RJzqynLSBMR3Rl1BXsfJYkTCWEVwpGg7pDkGORo6idZn2v+sPoCWXomA0LMphT9rF64xGVPq8hb1IOyinqeDAzIICP5GpZvXd6QqC1ty9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CGWth44mKFJt21SCGPMhP25wyv6Uvt0M0rD7ferGNJU=;
+ b=NvstFEVN3sAGKKefG2Q3I4x8J2tZBsnm2qUSbkFqseZWPVb5q7KBl53B5tZnPrG3RShU57Ia/JxbnnYjqVGGrS9QPbcZs25G5KJ+pQV6ObBC0u5OikIn3rkw5aq1bM4g53/ePLxo2D6Xh2x+HMGIFheSxYqd5d/t49/ASX85Bgx6k3BcspTmwFUt4//FzilmEXRhGTOcpPNGC/VNXXPWICxK4O2D9zgNfkOkEr8X5TizNq054UlHa1/sAR5139k9uxX9pN4r3k07xIewbfI3csyzj1Rwg0EYjzOYGjX7QeEFZ6fg7Dk6ia1W0LDfbQLJaxNQ4mldHF9fFUWfp1/WXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CGWth44mKFJt21SCGPMhP25wyv6Uvt0M0rD7ferGNJU=;
+ b=clYrMj1dNVTo3+uZf44DtPWjrX7Q0s6rZ3vn74KBwzae1QMJli+dhXmDebob/Y64Q4h0H5tBr3MzPRZ/9jK7H9yTFKl6QxCRnBZGukhXGx6prRyV3zTMlxu+mlSp4FSiSEd7rm3ewsAnBrnGj9gdTWhRUqqMKozaodBgtPrTtGE=
+Authentication-Results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=wolfvision.net;
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
+ by DB9PR08MB6795.eurprd08.prod.outlook.com (2603:10a6:10:2af::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.17; Wed, 25 Aug
+ 2021 08:07:49 +0000
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b]) by DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::ade3:93e2:735c:c10b%7]) with mapi id 15.20.4436.025; Wed, 25 Aug 2021
+ 08:07:49 +0000
+Subject: Re: [PATCH] net: stmmac: dwmac-rk: fix unbalanced pm_runtime_enable
+ warnings
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, "David S . Miller" <davem@davemloft.net>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>
+References: <20210823143754.14294-1-michael.riesch@wolfvision.net>
+ <20210823094425.78d7a73e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+Message-ID: <60b707af-b138-3c31-726d-d78ac0e1c5f4@wolfvision.net>
+Date: Wed, 25 Aug 2021 10:07:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
+In-Reply-To: <20210823094425.78d7a73e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Content-Language: en-US
+X-ClientProxiedBy: VI1PR0302CA0001.eurprd03.prod.outlook.com
+ (2603:10a6:800:e9::11) To DBBPR08MB4523.eurprd08.prod.outlook.com
+ (2603:10a6:10:c8::19)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.100.125] (91.118.163.37) by
+ VI1PR0302CA0001.eurprd03.prod.outlook.com (2603:10a6:800:e9::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.17 via Frontend
+ Transport; Wed, 25 Aug 2021 08:07:48 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c455afb6-f8d0-4b12-a243-08d9679f6e43
+X-MS-TrafficTypeDiagnostic: DB9PR08MB6795:
+X-Microsoft-Antispam-PRVS: <DB9PR08MB6795BA1EFEA5AAC620D76942F2C69@DB9PR08MB6795.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2657;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 41FcsKWz01u8s5NxeuotwKIklKtgvBPlPxUx0PnD3Uu+zfYrKnCt5V5cGjSolE1hDPA/ZQcdpaZIx1DqbBDlqCOhjHigvXUe2uouUYRrTTB67oqhGu9C3wDdV00RScMSBq78W/LUSX0l+wGY6Nz3FtyfUnT5IbA0c74n6bEaFo3C4n34wN4gv03lHhILnxlcR3TBsjR3yZLDuuTC1+vysvq6CJBusKAb8TlTjuFBzaG+LO2FSS1Vfr/mJMp7h9c3ziOHTAWO0Tjas4/FWSAuqKiiwR7VHbF3bexu2ytFW/EaLkIV3qIOxGCd9fXJW5eUzARIE4zlW5KZx2puc8G2L7ON6g+FTNf7GiN4r+6YuqXEcACj9h5+TAwL0m3U5Luwm9htSPfeQSAz+KuYQyfrcop2KeBF6EZQJL8uweL7HS4B57RpkS/uq/JLbLXaNauFhQi05dyk0/FxRtXAKVeZZc3UerkKAJye1u295simrhmWkB+QR2VcQkTAqzQEEO7SVyL5NUYcTs/b4CottsEAws2Duxo2ZaQiU41YOdc46dOCcftZ61SDgkcSHJtSBzDeEcs0/+/3CsPia0NavDKb48+jemfcaraxiXCLRhTjW0TEpUTNBwzA81eFMysP6cSQuTjz4HfH6VrQGG+Hq3lWAR+OfTVplLZoX2QMKe5WGlBOuhXlQ9LRR2ZOCEWvtYOYLk/hphKmUUdOr0it3jCL60A+IizlmiqHFvrjkRr22lW5bpjjiXd6phyCQpUvDj3GvpyeV6BHawrK/ff8sUV7QQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39840400004)(396003)(376002)(366004)(136003)(346002)(6486002)(66476007)(54906003)(26005)(2906002)(16576012)(4744005)(83380400001)(52116002)(4326008)(66946007)(316002)(31686004)(8936002)(478600001)(186003)(44832011)(956004)(2616005)(5660300002)(31696002)(7416002)(38350700002)(38100700002)(8676002)(6916009)(86362001)(36756003)(53546011)(66556008)(36916002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RUlLQzRLYXZYVG9zTzhHN1FnWG1lV3p2U3llaUg4RlAzUnR2ckowU2ZxV0J2?=
+ =?utf-8?B?NEkxZTVvVVNWMUpjYmFSNmZvZnlVc1lkYUdPMW5EQ01wTkxnMzE4RUFvUGNY?=
+ =?utf-8?B?L2VTbFh0ekVIZWNPaXFERmI4aGQxaWsrK1lNbDhES0ZvYURHQm9aOS9sQjhz?=
+ =?utf-8?B?eEswYmpKaFZVa3RaaGlTRm5iRlFyZDNXdzRFWlAwK0VtOG10dytyNlI4aWtk?=
+ =?utf-8?B?blVXQitwNzd5TjZQaHpxcFp1M0JLRkZxQ2ZNVlhWRjZ2TVdZeElXbk5BV2lN?=
+ =?utf-8?B?ZmZNVzFURFRlWDdJbWRIakYvQys0Wi9aVnYxYVh1U3F3MDhlTEVlRUVyeEZZ?=
+ =?utf-8?B?ZEo5T01BVGl0OGoyc0QyUUVuM21YR0xkZFRsdzE0dWtJTVR5bm9VQ3lvYWVz?=
+ =?utf-8?B?L1hNa01xME5MZGFtWnVUMkJQdDQ2RDBtV2lndWdnQnRuLzBnMUM4VUdjZmY5?=
+ =?utf-8?B?aG1sS3VPZXF3QzAwdGc5VjVLejdOdEEwTzVwd3lQcDBXejZIbFlRUnA5UnpT?=
+ =?utf-8?B?N3VhQVRxZDc2cXFzdldmaUJrWlIvVEp0TVVSdjVhZ0RsZ01BTlZudkVNb29w?=
+ =?utf-8?B?V1R3RGNwUFVBYWJkWFlkRStuWjU1ZU1Yb0ZGYlZhNUdGQ0ZNMXRuLzRsb1FE?=
+ =?utf-8?B?UTZDeTRiQ2MvVk9Uc0p6cmtJOXhXZlArbDZ3V2dYQkcwdS9Db3k1WngzYlVM?=
+ =?utf-8?B?NHZvK2RaQ2ExY0N5Y2JoMDVZRlh0WGtsbm1pV0FrS0pmSTd0bXJqRnJtOXdS?=
+ =?utf-8?B?bG54MkVkSzhiT2xNOXNKOUlYazZPQ1I5c3oycHVsbVRXQVpCSGgvT3E4VkN1?=
+ =?utf-8?B?bkZ2b044MG9YeFFzaFIzV1RJZmcxQTZ4UTY2VVdQWjB6Ti8yWEVKN0Q5ZXNG?=
+ =?utf-8?B?VXpablJmdm40R05jdHF4c2NBUHNTWmFDUEpXNDc4ZEM2aXEwUHR6b2hCVVo4?=
+ =?utf-8?B?dUVmUERSUVdiOFFqbks4bFhTbXl1NEx0RnBwTysyMjI1T0JkVXB4eUhUbFN5?=
+ =?utf-8?B?WFJuOEp4U3FBdzc0RmpyZFNzaHY5WDYwcG5rTTFzK2xLL1pZdE9VcGZLTElk?=
+ =?utf-8?B?eXZySk4vZjNPd2ZWdXlwRzVIREdLMThxbXpsZ3EySmJmWW02YWlKVGJqOVRT?=
+ =?utf-8?B?MUV2Sll5VFp3WjZkNUNSMENHYStrcDJUMnl2QzBwNEVDeDdNSXM1Rk5FcmhE?=
+ =?utf-8?B?em1mK1FNdmRiNHBOZDNoUzFyVjVLc1Z2cmtuMFlCeGFkS2hyRFJGSjI2ZDRT?=
+ =?utf-8?B?bHoyOWFLbjJzTTRkWVdHNkNXcnR6MEtsczBXR3EvUmZIeWtjRnlEMVlIYTZz?=
+ =?utf-8?B?L2tPRmZIYVVpYjZGTC94ajN0TVpEczBDRS9IcVRuMUk5ZFAvTldyTVI5NWFj?=
+ =?utf-8?B?Qnd3OUJ2YlZGdWU3T2QzSmdrZ0RHL3AxTUN5d0ZuZ3J1TmRYVTB5NURUQ0pk?=
+ =?utf-8?B?MldMcnUxMjBHWUE2MXd5c0luTUdjdG8zWkZVZXphWktXZHZwaGVpZG5SaERm?=
+ =?utf-8?B?VHk1a0hZTzg1ajgyOUpjUDdrU0pLUE9Ia0tJNzRUWTRJdE9GRTJ0NmpwZjAr?=
+ =?utf-8?B?TjZNTHo4aE01bktTVEFOdXNIMEFBVTZGTzhqQ3I5MTdSeHBUODFTY3V6VG5O?=
+ =?utf-8?B?dXJLbjUraTIwNytFMVRFVUNJQ1pldzEzYU8xbWJNTzA3MzdyK2VXWEVML3pw?=
+ =?utf-8?B?dGRkYm1ZaGEza3Y4d3pKLytXM1BCakUraElDTVFQSFBMV2NhcUhmZ2dydFJi?=
+ =?utf-8?Q?a4Erum7QcXKO73yOT7BckIRq7Y/oOydPUyZwD6q?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: c455afb6-f8d0-4b12-a243-08d9679f6e43
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2021 08:07:49.8012 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uDdDwTFGNW2NxNqNhg5oDnISnwGphNKGHrpQZKw1xjoYumV1sZZW/2liOnvh/GQSp+7niSJOPCkGsKWupdgASUBfHUKGyEmO93euz6GJRGg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR08MB6795
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_203726_236033_61EFFB96 
-X-CRM114-Status: GOOD (  22.10  )
+X-CRM114-CacheID: sfid-20210825_010805_206567_719470EE 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,422 +166,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-vctrl_enable() and vctrl_disable() call regulator_enable() and
-regulator_disable(), respectively. However, vctrl_* are regulator ops
-and should not be calling the locked regulator APIs. Doing so results in
-a lockdep warning.
+Hi Jakub,
 
-Instead of exporting more internal regulator ops, model the ctrl supply
-as an actual supply to vctrl-regulator. At probe time this driver still
-needs to use the consumer API to fetch its constraints, but otherwise
-lets the regulator core handle the upstream supply for it.
+On 8/23/21 6:44 PM, Jakub Kicinski wrote:
+> On Mon, 23 Aug 2021 16:37:54 +0200 Michael Riesch wrote:
+>> In the commit to be reverted, support for power management was
+>> introduced to the Rockchip glue code. Later, power management support
+>> was introduced to the stmmac core code, resulting in multiple
+>> invocations of pm_runtime_{enable,disable,get_sync,put_sync}.
+> 
+> Can we get a Fixes tag? I.e. reference to the earliest commit where 
+> the warning can be triggered?
 
-The enable/disable/is_enabled ops are not removed, but now only track
-state internally. This preserves the original behavior with the ops
-being available, but one could argue that the original behavior was
-already incorrect: the internal state would not match the upstream
-supply if that supply had another consumer that enabled the supply,
-while vctrl-regulator was not enabled.
+Of course :-)
 
-The lockdep warning is as follows:
+Fixes: 5ec55823438e850c91c6b92aec93fb04ebde29e2 ("net: stmmac: add
+clocks management for gmac driver")
 
-	WARNING: possible circular locking dependency detected
-	5.14.0-rc6 #2 Not tainted
-	------------------------------------------------------
-	swapper/0/1 is trying to acquire lock:
-	ffffffc011306d00 (regulator_list_mutex){+.+.}-{3:3}, at:
-		regulator_lock_dependent (arch/arm64/include/asm/current.h:19
-					  include/linux/ww_mutex.h:111
-					  drivers/regulator/core.c:329)
+This commit introduces power management support to the stmmac core
+(stmmac_{dvr_probe, dvr_remove, suspend, resume}).
 
-	but task is already holding lock:
-	ffffff8004a77160 (regulator_ww_class_mutex){+.+.}-{3:3}, at:
-		regulator_lock_recursive (drivers/regulator/core.c:156
-					  drivers/regulator/core.c:263)
+Best regards,
+Michael
 
-	which lock already depends on the new lock.
-
-	the existing dependency chain (in reverse order) is:
-
-	-> #2 (regulator_ww_class_mutex){+.+.}-{3:3}:
-	__mutex_lock_common (include/asm-generic/atomic-instrumented.h:606
-			     include/asm-generic/atomic-long.h:29
-			     kernel/locking/mutex.c:103
-			     kernel/locking/mutex.c:144
-			     kernel/locking/mutex.c:963)
-	ww_mutex_lock (kernel/locking/mutex.c:1199)
-	regulator_lock_recursive (drivers/regulator/core.c:156
-				  drivers/regulator/core.c:263)
-	regulator_lock_dependent (drivers/regulator/core.c:343)
-	regulator_enable (drivers/regulator/core.c:2808)
-	set_machine_constraints (drivers/regulator/core.c:1536)
-	regulator_register (drivers/regulator/core.c:5486)
-	devm_regulator_register (drivers/regulator/devres.c:196)
-	reg_fixed_voltage_probe (drivers/regulator/fixed.c:289)
-	platform_probe (drivers/base/platform.c:1427)
-	[...]
-
-	-> #1 (regulator_ww_class_acquire){+.+.}-{0:0}:
-	regulator_lock_dependent (include/linux/ww_mutex.h:129
-				  drivers/regulator/core.c:329)
-	regulator_enable (drivers/regulator/core.c:2808)
-	set_machine_constraints (drivers/regulator/core.c:1536)
-	regulator_register (drivers/regulator/core.c:5486)
-	devm_regulator_register (drivers/regulator/devres.c:196)
-	reg_fixed_voltage_probe (drivers/regulator/fixed.c:289)
-	[...]
-
-	-> #0 (regulator_list_mutex){+.+.}-{3:3}:
-	__lock_acquire (kernel/locking/lockdep.c:3052 (discriminator 4)
-			kernel/locking/lockdep.c:3174 (discriminator 4)
-			kernel/locking/lockdep.c:3789 (discriminator 4)
-			kernel/locking/lockdep.c:5015 (discriminator 4))
-	lock_acquire (arch/arm64/include/asm/percpu.h:39
-		      kernel/locking/lockdep.c:438
-		      kernel/locking/lockdep.c:5627)
-	__mutex_lock_common (include/asm-generic/atomic-instrumented.h:606
-			     include/asm-generic/atomic-long.h:29
-			     kernel/locking/mutex.c:103
-			     kernel/locking/mutex.c:144
-			     kernel/locking/mutex.c:963)
-	mutex_lock_nested (kernel/locking/mutex.c:1125)
-	regulator_lock_dependent (arch/arm64/include/asm/current.h:19
-				  include/linux/ww_mutex.h:111
-				  drivers/regulator/core.c:329)
-	regulator_enable (drivers/regulator/core.c:2808)
-	vctrl_enable (drivers/regulator/vctrl-regulator.c:400)
-	_regulator_do_enable (drivers/regulator/core.c:2617)
-	_regulator_enable (drivers/regulator/core.c:2764)
-	regulator_enable (drivers/regulator/core.c:308
-			  drivers/regulator/core.c:2809)
-	_set_opp (drivers/opp/core.c:819 drivers/opp/core.c:1072)
-	dev_pm_opp_set_rate (drivers/opp/core.c:1164)
-	set_target (drivers/cpufreq/cpufreq-dt.c:62)
-	__cpufreq_driver_target (drivers/cpufreq/cpufreq.c:2216
-				 drivers/cpufreq/cpufreq.c:2271)
-	cpufreq_online (drivers/cpufreq/cpufreq.c:1488 (discriminator 2))
-	cpufreq_add_dev (drivers/cpufreq/cpufreq.c:1563)
-	subsys_interface_register (drivers/base/bus.c:?)
-	cpufreq_register_driver (drivers/cpufreq/cpufreq.c:2819)
-	dt_cpufreq_probe (drivers/cpufreq/cpufreq-dt.c:344)
-	[...]
-
-	other info that might help us debug this:
-
-	Chain exists of:
-	  regulator_list_mutex --> regulator_ww_class_acquire --> regulator_ww_class_mutex
-
-	 Possible unsafe locking scenario:
-
-	       CPU0                    CPU1
-	       ----                    ----
-	  lock(regulator_ww_class_mutex);
-				       lock(regulator_ww_class_acquire);
-				       lock(regulator_ww_class_mutex);
-	  lock(regulator_list_mutex);
-
-	 *** DEADLOCK ***
-
-	6 locks held by swapper/0/1:
-	#0: ffffff8002d32188 (&dev->mutex){....}-{3:3}, at:
-		__device_driver_lock (drivers/base/dd.c:1030)
-	#1: ffffffc0111a0520 (cpu_hotplug_lock){++++}-{0:0}, at:
-		cpufreq_register_driver (drivers/cpufreq/cpufreq.c:2792 (discriminator 2))
-	#2: ffffff8002a8d918 (subsys mutex#9){+.+.}-{3:3}, at:
-		subsys_interface_register (drivers/base/bus.c:1033)
-	#3: ffffff800341bb90 (&policy->rwsem){+.+.}-{3:3}, at:
-		cpufreq_online (include/linux/bitmap.h:285
-				include/linux/cpumask.h:405
-				drivers/cpufreq/cpufreq.c:1399)
-	#4: ffffffc011f0b7b8 (regulator_ww_class_acquire){+.+.}-{0:0}, at:
-		regulator_enable (drivers/regulator/core.c:2808)
-	#5: ffffff8004a77160 (regulator_ww_class_mutex){+.+.}-{3:3}, at:
-		regulator_lock_recursive (drivers/regulator/core.c:156
-		drivers/regulator/core.c:263)
-
-	stack backtrace:
-	CPU: 1 PID: 1 Comm: swapper/0 Not tainted 5.14.0-rc6 #2 7c8f8996d021ed0f65271e6aeebf7999de74a9fa
-	Hardware name: Google Scarlet (DT)
-	Call trace:
-	dump_backtrace (arch/arm64/kernel/stacktrace.c:161)
-	show_stack (arch/arm64/kernel/stacktrace.c:218)
-	dump_stack_lvl (lib/dump_stack.c:106 (discriminator 2))
-	dump_stack (lib/dump_stack.c:113)
-	print_circular_bug (kernel/locking/lockdep.c:?)
-	check_noncircular (kernel/locking/lockdep.c:?)
-	__lock_acquire (kernel/locking/lockdep.c:3052 (discriminator 4)
-			kernel/locking/lockdep.c:3174 (discriminator 4)
-			kernel/locking/lockdep.c:3789 (discriminator 4)
-			kernel/locking/lockdep.c:5015 (discriminator 4))
-	lock_acquire (arch/arm64/include/asm/percpu.h:39
-		      kernel/locking/lockdep.c:438
-		      kernel/locking/lockdep.c:5627)
-	__mutex_lock_common (include/asm-generic/atomic-instrumented.h:606
-			     include/asm-generic/atomic-long.h:29
-			     kernel/locking/mutex.c:103
-			     kernel/locking/mutex.c:144
-			     kernel/locking/mutex.c:963)
-	mutex_lock_nested (kernel/locking/mutex.c:1125)
-	regulator_lock_dependent (arch/arm64/include/asm/current.h:19
-				  include/linux/ww_mutex.h:111
-				  drivers/regulator/core.c:329)
-	regulator_enable (drivers/regulator/core.c:2808)
-	vctrl_enable (drivers/regulator/vctrl-regulator.c:400)
-	_regulator_do_enable (drivers/regulator/core.c:2617)
-	_regulator_enable (drivers/regulator/core.c:2764)
-	regulator_enable (drivers/regulator/core.c:308
-			  drivers/regulator/core.c:2809)
-	_set_opp (drivers/opp/core.c:819 drivers/opp/core.c:1072)
-	dev_pm_opp_set_rate (drivers/opp/core.c:1164)
-	set_target (drivers/cpufreq/cpufreq-dt.c:62)
-	__cpufreq_driver_target (drivers/cpufreq/cpufreq.c:2216
-				 drivers/cpufreq/cpufreq.c:2271)
-	cpufreq_online (drivers/cpufreq/cpufreq.c:1488 (discriminator 2))
-	cpufreq_add_dev (drivers/cpufreq/cpufreq.c:1563)
-	subsys_interface_register (drivers/base/bus.c:?)
-	cpufreq_register_driver (drivers/cpufreq/cpufreq.c:2819)
-	dt_cpufreq_probe (drivers/cpufreq/cpufreq-dt.c:344)
-	[...]
-
-Reported-by: Brian Norris <briannorris@chromium.org>
-Fixes: f8702f9e4aa7 ("regulator: core: Use ww_mutex for regulators locking")
-Fixes: e9153311491d ("regulator: vctrl-regulator: Avoid deadlock getting and setting the voltage")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-
-Mark,
-
-checkpatch.pl gives a few style check issues about parenthesis alighment
-around regulator_set_voltage_rdev() invocations, which were the result of
-the previous switch over from regulator_set_voltage() to
-regulator_set_voltage_rdev().
-
-Not sure if you want those fixed up in the same patch, or maybe in a
-followup one?
-
----
- drivers/regulator/vctrl-regulator.c | 72 +++++++++++++++++------------
- 1 file changed, 42 insertions(+), 30 deletions(-)
-
-diff --git a/drivers/regulator/vctrl-regulator.c b/drivers/regulator/vctrl-regulator.c
-index 93d33201ffe0..d2a37978fc3a 100644
---- a/drivers/regulator/vctrl-regulator.c
-+++ b/drivers/regulator/vctrl-regulator.c
-@@ -37,7 +37,6 @@ struct vctrl_voltage_table {
- struct vctrl_data {
- 	struct regulator_dev *rdev;
- 	struct regulator_desc desc;
--	struct regulator *ctrl_reg;
- 	bool enabled;
- 	unsigned int min_slew_down_rate;
- 	unsigned int ovp_threshold;
-@@ -82,7 +81,12 @@ static int vctrl_calc_output_voltage(struct vctrl_data *vctrl, int ctrl_uV)
- static int vctrl_get_voltage(struct regulator_dev *rdev)
- {
- 	struct vctrl_data *vctrl = rdev_get_drvdata(rdev);
--	int ctrl_uV = regulator_get_voltage_rdev(vctrl->ctrl_reg->rdev);
-+	int ctrl_uV;
-+
-+	if (!rdev->supply)
-+		return -EPROBE_DEFER;
-+
-+	ctrl_uV = regulator_get_voltage_rdev(rdev->supply->rdev);
- 
- 	return vctrl_calc_output_voltage(vctrl, ctrl_uV);
- }
-@@ -92,14 +96,19 @@ static int vctrl_set_voltage(struct regulator_dev *rdev,
- 			     unsigned int *selector)
- {
- 	struct vctrl_data *vctrl = rdev_get_drvdata(rdev);
--	struct regulator *ctrl_reg = vctrl->ctrl_reg;
--	int orig_ctrl_uV = regulator_get_voltage_rdev(ctrl_reg->rdev);
--	int uV = vctrl_calc_output_voltage(vctrl, orig_ctrl_uV);
-+	int orig_ctrl_uV;
-+	int uV;
- 	int ret;
- 
-+	if (!rdev->supply)
-+		return -EPROBE_DEFER;
-+
-+	orig_ctrl_uV = regulator_get_voltage_rdev(rdev->supply->rdev);
-+	uV = vctrl_calc_output_voltage(vctrl, orig_ctrl_uV);
-+
- 	if (req_min_uV >= uV || !vctrl->ovp_threshold)
- 		/* voltage rising or no OVP */
--		return regulator_set_voltage_rdev(ctrl_reg->rdev,
-+		return regulator_set_voltage_rdev(rdev->supply->rdev,
- 			vctrl_calc_ctrl_voltage(vctrl, req_min_uV),
- 			vctrl_calc_ctrl_voltage(vctrl, req_max_uV),
- 			PM_SUSPEND_ON);
-@@ -117,7 +126,7 @@ static int vctrl_set_voltage(struct regulator_dev *rdev,
- 		next_uV = max_t(int, req_min_uV, uV - max_drop_uV);
- 		next_ctrl_uV = vctrl_calc_ctrl_voltage(vctrl, next_uV);
- 
--		ret = regulator_set_voltage_rdev(ctrl_reg->rdev,
-+		ret = regulator_set_voltage_rdev(rdev->supply->rdev,
- 					    next_ctrl_uV,
- 					    next_ctrl_uV,
- 					    PM_SUSPEND_ON);
-@@ -134,7 +143,7 @@ static int vctrl_set_voltage(struct regulator_dev *rdev,
- 
- err:
- 	/* Try to go back to original voltage */
--	regulator_set_voltage_rdev(ctrl_reg->rdev, orig_ctrl_uV, orig_ctrl_uV,
-+	regulator_set_voltage_rdev(rdev->supply->rdev, orig_ctrl_uV, orig_ctrl_uV,
- 				   PM_SUSPEND_ON);
- 
- 	return ret;
-@@ -151,16 +160,18 @@ static int vctrl_set_voltage_sel(struct regulator_dev *rdev,
- 				 unsigned int selector)
- {
- 	struct vctrl_data *vctrl = rdev_get_drvdata(rdev);
--	struct regulator *ctrl_reg = vctrl->ctrl_reg;
- 	unsigned int orig_sel = vctrl->sel;
- 	int ret;
- 
-+	if (!rdev->supply)
-+		return -EPROBE_DEFER;
-+
- 	if (selector >= rdev->desc->n_voltages)
- 		return -EINVAL;
- 
- 	if (selector >= vctrl->sel || !vctrl->ovp_threshold) {
- 		/* voltage rising or no OVP */
--		ret = regulator_set_voltage_rdev(ctrl_reg->rdev,
-+		ret = regulator_set_voltage_rdev(rdev->supply->rdev,
- 					    vctrl->vtable[selector].ctrl,
- 					    vctrl->vtable[selector].ctrl,
- 					    PM_SUSPEND_ON);
-@@ -179,7 +190,7 @@ static int vctrl_set_voltage_sel(struct regulator_dev *rdev,
- 		else
- 			next_sel = vctrl->vtable[vctrl->sel].ovp_min_sel;
- 
--		ret = regulator_set_voltage_rdev(ctrl_reg->rdev,
-+		ret = regulator_set_voltage_rdev(rdev->supply->rdev,
- 					    vctrl->vtable[next_sel].ctrl,
- 					    vctrl->vtable[next_sel].ctrl,
- 					    PM_SUSPEND_ON);
-@@ -202,7 +213,7 @@ static int vctrl_set_voltage_sel(struct regulator_dev *rdev,
- err:
- 	if (vctrl->sel != orig_sel) {
- 		/* Try to go back to original voltage */
--		if (!regulator_set_voltage_rdev(ctrl_reg->rdev,
-+		if (!regulator_set_voltage_rdev(rdev->supply->rdev,
- 					   vctrl->vtable[orig_sel].ctrl,
- 					   vctrl->vtable[orig_sel].ctrl,
- 					   PM_SUSPEND_ON))
-@@ -234,10 +245,6 @@ static int vctrl_parse_dt(struct platform_device *pdev,
- 	u32 pval;
- 	u32 vrange_ctrl[2];
- 
--	vctrl->ctrl_reg = devm_regulator_get(&pdev->dev, "ctrl");
--	if (IS_ERR(vctrl->ctrl_reg))
--		return PTR_ERR(vctrl->ctrl_reg);
--
- 	ret = of_property_read_u32(np, "ovp-threshold-percent", &pval);
- 	if (!ret) {
- 		vctrl->ovp_threshold = pval;
-@@ -315,11 +322,11 @@ static int vctrl_cmp_ctrl_uV(const void *a, const void *b)
- 	return at->ctrl - bt->ctrl;
- }
- 
--static int vctrl_init_vtable(struct platform_device *pdev)
-+static int vctrl_init_vtable(struct platform_device *pdev,
-+			     struct regulator *ctrl_reg)
- {
- 	struct vctrl_data *vctrl = platform_get_drvdata(pdev);
- 	struct regulator_desc *rdesc = &vctrl->desc;
--	struct regulator *ctrl_reg = vctrl->ctrl_reg;
- 	struct vctrl_voltage_range *vrange_ctrl = &vctrl->vrange.ctrl;
- 	int n_voltages;
- 	int ctrl_uV;
-@@ -395,23 +402,19 @@ static int vctrl_init_vtable(struct platform_device *pdev)
- static int vctrl_enable(struct regulator_dev *rdev)
- {
- 	struct vctrl_data *vctrl = rdev_get_drvdata(rdev);
--	int ret = regulator_enable(vctrl->ctrl_reg);
- 
--	if (!ret)
--		vctrl->enabled = true;
-+	vctrl->enabled = true;
- 
--	return ret;
-+	return 0;
- }
- 
- static int vctrl_disable(struct regulator_dev *rdev)
- {
- 	struct vctrl_data *vctrl = rdev_get_drvdata(rdev);
--	int ret = regulator_disable(vctrl->ctrl_reg);
- 
--	if (!ret)
--		vctrl->enabled = false;
-+	vctrl->enabled = false;
- 
--	return ret;
-+	return 0;
- }
- 
- static int vctrl_is_enabled(struct regulator_dev *rdev)
-@@ -447,6 +450,7 @@ static int vctrl_probe(struct platform_device *pdev)
- 	struct regulator_desc *rdesc;
- 	struct regulator_config cfg = { };
- 	struct vctrl_voltage_range *vrange_ctrl;
-+	struct regulator *ctrl_reg;
- 	int ctrl_uV;
- 	int ret;
- 
-@@ -461,15 +465,20 @@ static int vctrl_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
-+	ctrl_reg = devm_regulator_get(&pdev->dev, "ctrl");
-+	if (IS_ERR(ctrl_reg))
-+		return PTR_ERR(ctrl_reg);
-+
- 	vrange_ctrl = &vctrl->vrange.ctrl;
- 
- 	rdesc = &vctrl->desc;
- 	rdesc->name = "vctrl";
- 	rdesc->type = REGULATOR_VOLTAGE;
- 	rdesc->owner = THIS_MODULE;
-+	rdesc->supply_name = "ctrl";
- 
--	if ((regulator_get_linear_step(vctrl->ctrl_reg) == 1) ||
--	    (regulator_count_voltages(vctrl->ctrl_reg) == -EINVAL)) {
-+	if ((regulator_get_linear_step(ctrl_reg) == 1) ||
-+	    (regulator_count_voltages(ctrl_reg) == -EINVAL)) {
- 		rdesc->continuous_voltage_range = true;
- 		rdesc->ops = &vctrl_ops_cont;
- 	} else {
-@@ -486,12 +495,12 @@ static int vctrl_probe(struct platform_device *pdev)
- 	cfg.init_data = init_data;
- 
- 	if (!rdesc->continuous_voltage_range) {
--		ret = vctrl_init_vtable(pdev);
-+		ret = vctrl_init_vtable(pdev, ctrl_reg);
- 		if (ret)
- 			return ret;
- 
- 		/* Use locked consumer API when not in regulator framework */
--		ctrl_uV = regulator_get_voltage(vctrl->ctrl_reg);
-+		ctrl_uV = regulator_get_voltage(ctrl_reg);
- 		if (ctrl_uV < 0) {
- 			dev_err(&pdev->dev, "failed to get control voltage\n");
- 			return ctrl_uV;
-@@ -514,6 +523,9 @@ static int vctrl_probe(struct platform_device *pdev)
- 		}
- 	}
- 
-+	/* Drop ctrl-supply here in favor of regulator core managed supply */
-+	devm_regulator_put(ctrl_reg);
-+
- 	vctrl->rdev = devm_regulator_register(&pdev->dev, rdesc, &cfg);
- 	if (IS_ERR(vctrl->rdev)) {
- 		ret = PTR_ERR(vctrl->rdev);
--- 
-2.33.0.rc2.250.ged5fa647cd-goog
-
+>> The multiple invocations happen in rk_gmac_powerup and
+>> stmmac_{dvr_probe, resume} as well as in rk_gmac_powerdown and
+>> stmmac_{dvr_remove, suspend}, respectively, which are always called
+>> in conjunction.
 
 _______________________________________________
 Linux-rockchip mailing list
