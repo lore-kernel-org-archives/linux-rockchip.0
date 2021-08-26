@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21710C43214
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B188CC432BE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E823060698
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E823060698
+	by mail.kernel.org (Postfix) with ESMTPS id 7F4B560698
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F4B560698
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,48 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bhfZ8ceKqi4R4yZqEe7eAXwmQzTgXKdEW/nBwixumYk=; b=02yV019Z4JrT0m
-	GhD8W/vc65DBJ0Rv2I1UO/Lu6cAYFjVbiS41YoQ7GMVjTownQi7dvsaaqt+pgjS7X2Zlb38AV3G54
-	L7CHCd8F7SAsDOKFb2uHhLRTSiuHN0SUv0IGYI7BAu/6Db9uUSevQC39epjgcG7/BaU8cOnjb6YLq
-	kbNs1yo33FjnR/Nf4JFcUZqPLXea2Vf7TzQpawNxL5hDmG/X8xgmR3+prRyJGM1M+8q5WrA2NtQKd
-	74L56dBP+lBwIVVld9PZ4lTHcpNrIK/mWfv2H/ddh5o1KxpXyGJDBcWTWgD7f53mFMY0oO+Exw4YV
-	PLt2mEgim5vYWvoJ57Nw==;
+	List-Owner; bh=NGoYWEGVGuCKCwUC/QsA5byzFAz8BJG4d3fREAujKdg=; b=SDFvN8QuEf+O81
+	8s8JlXa+BmquPxb9Xtk9wpYvPfmobiS73/xQYv8+Pi7UARymTnY+lj8wrfBpQq0f7+1QcUh/ZjLxv
+	q5CYOrtazajZG0c7PQ1gEfEGQGFZ0f95vT26lFDpi2Gpe2iqScTfEYBV1JqLKxYrtj2tzP7UPg3RN
+	IKiVM3tCKGXNj80uOudgMac4bLiTm2EyAnsZ70XSP+Nsh6HpY5gDd1D1jZL+2FWUI0W5gaDlJSlQF
+	492xhgsN8edPxHvU+cfWH2rlxyOejFSnNbgqpPmWV1vJF3df8FMxAmWRUDn4GbAQouPh6GmmtAxqv
+	MpBeyCyLhxxG95Jf8JaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJGBP-00ALHJ-Pk; Thu, 26 Aug 2021 14:16:43 +0000
+	id 1mJGBQ-00ALHY-FL; Thu, 26 Aug 2021 14:16:44 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJGAz-00AL97-Dr; Thu, 26 Aug 2021 14:16:18 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9776660698;
- Thu, 26 Aug 2021 14:16:16 +0000 (UTC)
+ id 1mJGB2-00ALA5-6T
+ for linux-rockchip@lists.infradead.org; Thu, 26 Aug 2021 14:16:21 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4CAF560E90;
+ Thu, 26 Aug 2021 14:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629987377;
- bh=19+SFriioNrfn3fwOrICbeSKe/bS5e7OWPAEUGfvvhY=;
+ s=k20201202; t=1629987379;
+ bh=7pq1u4/Atbx0cmAC/gh6HFySRRvxLwwcOzRTNjLv0PE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MiooJBf9vLHfA09AxSvssoyn5b3Bc2xmYjYaAxykMO2iKnb2iN9ekqCwAlZxQHzEK
- uLLysvFtjaJz84LAO+B2tysgq/eWeVtlYPJQWV5FmVRl2hcavEa2U9T8t+r3DD20BY
- mGbPAbnc2UoF6ISLRcF5HDPi4g8AYCPTOyQgUjDG0vULCorsXNgbJsMoNBliliFYPg
- gkREbGYP1VB/nBgfTH3RRipsuUJ/+qM72Ar8Nu2v0LV97tN/2u/6vtTsAsDtg+GgVI
- m5VSOy9qqqn8E42UYKYiXKQ7QqozvBfuN6QmgNHqc47ozhekbZwfIXUN8CUTyNMCbN
- iKagMWY1z60Jw==
+ b=VkOpy1kKEPF/UBvPPeB+yv01g2UJY/wDAVuji11aEf7mpMt8W6UDJRoT7rxwuVHaM
+ /t38hFwkjrxE62uhQRV/x7wxTzW9hZT5hinC6LHJ/rDX/nU7h1weK17+DovH9pGcBn
+ L8HohFabGcJIOCqzNlCyiUdyYQQzKFOTHunwIFWc5CQdbtZSM5zGf5V86nkEMMWmZk
+ vujYdzln/ialJhvXIaxQDWBE8bEBEXir8zUlXzPHWsSXR0wPYE31LHAtABL1UEeu1X
+ gc5AH8Mjl55ML3WOqrM8OmOe4vBnQMKbPRGevWIBITBlkOX900Hlib4/ozK5Wv3YGj
+ uCs2FdSdZ7QdA==
 From: Mark Brown <broonie@kernel.org>
 To: heiko@sntech.de,
 	Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
- Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org,
- Jaroslav Kysela <perex@perex.cz>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 0/4] Patches to update for rockchip spdif
-Date: Thu, 26 Aug 2021 15:15:43 +0100
-Message-Id: <162998707937.5647.10936208575135633257.b4-ty@kernel.org>
+Cc: Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org,
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v3 0/14] Patches to update for rockchip i2s
+Date: Thu, 26 Aug 2021 15:15:44 +0100
+Message-Id: <162998707937.5647.16412877707086770642.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
-References: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
+In-Reply-To: <1629950441-14118-1-git-send-email-sugar.zhang@rock-chips.com>
+References: <1629950441-14118-1-git-send-email-sugar.zhang@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210826_071617_526435_1A6827B0 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20210826_071620_303638_EA4EF003 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,15 +80,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Aug 2021 18:15:58 +0800, Sugar Zhang wrote:
-> These patches fixup or update for rockchip spdif.
+On Thu, 26 Aug 2021 12:00:41 +0800, Sugar Zhang wrote:
+> These patches fixup or update for rockchip i2s.
 > 
+> Changes in v3:
+> - Drop property 'rockchip,playback-only', 'rockchip,capture-only'.
+>   Implement it by 'dma-names' of DT instead.
 > 
-> Sugar Zhang (4):
->   ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
->   ASoC: rockchip: spdif: Fix some coding style
->   ASoC: rockchip: spdif: Add support for rk3568 spdif
->   ASoC: dt-bindings: rockchip: Add compatible for rk3568 spdif
+> Changes in v2:
+> - split property trcm into single 'trcm-sync-tx-only' and
+>   'trcm-sync-rx-only' suggested by Nicolas.
+> - split property trcm into single 'trcm-sync-tx-only' and
+>   'trcm-sync-rx-only' suggested by Nicolas.
+> - drop change-id
 > 
 > [...]
 
@@ -100,14 +102,28 @@ Applied to
 
 Thanks!
 
-[1/4] ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
-      commit: 023a3f3a1c4f9be9cc1ae92579ba816120fb5807
-[2/4] ASoC: rockchip: spdif: Fix some coding style
-      commit: acc8b9d117912c2d5952868fba0d4fca49cde3c8
-[3/4] ASoC: rockchip: spdif: Add support for rk3568 spdif
-      commit: c5d4f09feb9f74e704d87a304f0c20001488fe10
-[4/4] ASoC: dt-bindings: rockchip: Add compatible for rk3568 spdif
-      commit: e79ef3c2cfe0b39878496eac87450698a2e84e3f
+[01/14] ASoC: rockchip: i2s: Add support for set bclk ratio
+        commit: ebfea67125767a779af63ae6de176709713c8826
+[02/14] ASoC: rockchip: i2s: Fixup clk div error
+        commit: 6b76bcc004b046ea3c8eb66bbc6954f1d23cc2af
+[03/14] ASoC: rockchip: i2s: Improve dma data transfer efficiency
+        commit: 7a2df53bc090a161713da057df7455b39f6cd00d
+[04/14] ASoC: rockchip: i2s: Fix regmap_ops hang
+        commit: 53ca9b9777b95cdd689181d7c547e38dc79adad0
+[06/14] ASoC: rockchip: i2s: Reset the controller if soft reset failed
+        (no commit info)
+[07/14] ASoC: dt-bindings: rockchip: Document reset property for i2s
+        commit: 296713a3609deaf4ad2c460ffe196c09084792e0
+[08/14] ASoC: rockchip: i2s: Fixup config for DAIFMT_DSP_A/B
+        commit: 1bf56843e664eef2525bdbfae6a561e98910f676
+[09/14] ASoC: rockchip: i2s: Make playback/capture optional
+        commit: 4455f26a551c86e31c7d27495903a11c3d660034
+[10/14] ASoC: rockchip: i2s: Add compatible for more SoCs
+        commit: f005dc6db136a477166dd86e983351fec9129cce
+[11/14] ASoC: dt-bindings: rockchip: Add compatible strings for more SoCs
+        commit: d5ceed036f7cde29bf17173e9a9c8bbde0a70389
+[12/14] ASoC: rockchip: i2s: Add support for frame inversion
+        commit: 917f07719b133093680ed57dd7b5bc30b6a5b45d
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
