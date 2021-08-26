@@ -2,69 +2,81 @@ Return-Path: <SRS0=LXKC=NR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D66E8C432BE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 12:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56316C41537
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 13:26:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A4AF360F5C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 12:52:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A4AF360F5C
+	by mail.kernel.org (Postfix) with ESMTPS id 289F1608FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 13:26:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 289F1608FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NQ1PRgqC8Lw1ZaQlEhBonhqcES1FoyVq7Kgxqq/8oCM=; b=mB2tMRARrC6suJJ/mqXxjeqhN5
-	WUEEMjdjy7biORAUOf1KNXJKOicLY5ztasnRNaHOYqQ8XZSW3JNDZ+0fxne0+UoOKmUCWopZNDZ0U
-	dkvI3F1oGU6qGr2F87loJ05wrXEcanNwBmyNTatUgufw4FecQOJSUhAhMNLqDtVchHVJiSJ59M2ng
-	NIQPXkGGsCgzXtFHrajwqWz79ePkOBL3fzezXt9dkKO95r6JlOCX8lQtvNniD6GXl2P5nvRpexmK/
-	R0fmRLXMWw4kF4fzp3ujdUK09MqGNKcYv6XeHGqUMsboPhvjToiOnLzG92LTa4zNgkbxmc0ILDP4U
-	wHZbruJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mby3MdReAP7ZYbimJEWKmBm0s/ulPG6Lp3zIg/lrSUo=; b=N2NaPQs88i5657
+	E4IEZVBYNcBcuCsjNmoz0jvy6t+3YDWXkp5pWz86eBfgq+VhyWHyiJlGwFaSko1vWfn9u1Yg/5C4j
+	z/xO4By3zwQi+X3GIkDxMjcV6CxRt2jW7im4D33Cv3eXBfFz6CdpokFq/QeEdHfFdIlQF1Dy1aMoj
+	wlD4DSt34MO26Js3VhpZjAk8LYyySRWNBKVgUXgjUJVKol/CijHuJFLQ/CjkglYISK9jGdVMvAFlp
+	8b5qbo3v0yF4wwvsdunxcffXdJ179fIi/rEEV3ouWLXzRnUFoS7NskvHiil3NJOaPvMV8BM2Df6Ep
+	yt77lFjfLc4kEVVw+4sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJEs1-00AAV4-LW; Thu, 26 Aug 2021 12:52:37 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mJFOf-00AEti-Ay; Thu, 26 Aug 2021 13:26:21 +0000
+Received: from mail-oi1-f181.google.com ([209.85.167.181])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJErz-00AAUY-Bg
- for linux-rockchip@lists.infradead.org; Thu, 26 Aug 2021 12:52:36 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7A07E60E0B;
- Thu, 26 Aug 2021 12:52:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629982355;
- bh=k+jKDPMkrQDoBPL6bBTji+fg/yJH4WCO5skRGfORL90=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=R5ii20vj8IZkbZ2ySUYS1CHi5JAfY0HZFhupeuFGb6R8VxaE+14Didhpc0zKN8Mh6
- S0XUSNNx/0d/ALp90WOgZre9BuUtOk/HErVQd2Fa500wynIxd48Yx0mn0bdiPjmCe7
- DNJ0YSiKNKqqF6UQ1iqvuuadEQqASkrYYjNXnsAdiWG35aNNqWkZeGY4zCn9CBJXAg
- XvZIE77Wtw82mJz43QDq4vfYJCjkpr2HwpnUTGY1C+lIHlOurrlLaRC+9Uuef/UKJw
- eO+AuCuiUnnRA2xYBgnoLnr1t9afSlhm0auWKCGuT3zGf3kgdzhjtMmCbgQHEwhQlO
- CsZkFkBWO86hQ==
-Date: Thu, 26 Aug 2021 13:52:06 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, alsa-devel@alsa-project.org
-Subject: Re: [PATCH v3 05/14] ASoC: rockchip: i2s: Fix concurrency between
- tx/rx
-Message-ID: <20210826125206.GD4148@sirena.org.uk>
-References: <1629950441-14118-1-git-send-email-sugar.zhang@rock-chips.com>
- <1629950520-14190-5-git-send-email-sugar.zhang@rock-chips.com>
-MIME-Version: 1.0
-In-Reply-To: <1629950520-14190-5-git-send-email-sugar.zhang@rock-chips.com>
-X-Cookie: /earth: file system full.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1mJFOT-00AEqo-Qf; Thu, 26 Aug 2021 13:26:13 +0000
+Received: by mail-oi1-f181.google.com with SMTP id 6so4498830oiy.8;
+ Thu, 26 Aug 2021 06:26:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=MVwvIDZK2/7Y4951WHMhhdQzU7LUf/3BWIAcj7PEAtg=;
+ b=fykYuwSaNSOsTdE+CES+oENQRTIKPH8u4nOHIbwG9swzMmhcxyDPBAHpfhDXI4+Rxa
+ JFb4jYKUYAsnMPCzlwZ6Msxz548Vdh8qFH86bf/mEk0Le2o+Dwx3KvZcGQIunbG7EK7c
+ vmG6fmfUf4Zu6LmmvU2fOsXFdhC4hNplk6k+T1Dm4tfpYn4filxUSX0hFVhRKxIqMcXN
+ S40fjvdv2akn7H8UoKGDQX2Qetc70GZ/Th0U907pwS8YjlEo6QMn8uRgd/Xsw5czSW34
+ uKbwLysZ++27IIBH64rgHM7QHqhh43Yc+rjgAca1UFI+TScxILC7Rw4TGUGInGfyaIcP
+ xJOA==
+X-Gm-Message-State: AOAM531dW/maTztuDa0kvwRNBOg2WdBQAfHXA8bYgTxd6ttsqVUQkV03
+ tL1XQ0jjCwhmqqOd0N/uUw==
+X-Google-Smtp-Source: ABdhPJxQgh36d/Z8oPQJ2kZdPSroKU7uJI2G1etE76FJfI7pF24X/EZtJ5/N57d2bHja0Z6MHeT+MA==
+X-Received: by 2002:aca:b808:: with SMTP id i8mr10141154oif.62.1629984368953; 
+ Thu, 26 Aug 2021 06:26:08 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id x1sm554628otu.8.2021.08.26.06.26.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Aug 2021 06:26:07 -0700 (PDT)
+Received: (nullmailer pid 1033392 invoked by uid 1000);
+ Thu, 26 Aug 2021 13:26:01 -0000
+From: Rob Herring <robh@kernel.org>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Cc: linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ linux-phy@lists.infradead.org, vkoul@kernel.org, heiko@sntech.de,
+ michael.riesch@wolfvision.net, kishon@ti.com, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, p.zabel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20210826123844.8464-2-yifeng.zhao@rock-chips.com>
+References: <20210826123844.8464-1-yifeng.zhao@rock-chips.com>
+ <20210826123844.8464-2-yifeng.zhao@rock-chips.com>
+Subject: Re: [PATCH v1 1/3] dt-bindings: phy: rockchip: Add Naneng combo PHY
+ bindings
+Date: Thu, 26 Aug 2021 08:26:01 -0500
+Message-Id: <1629984361.449016.1033391.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210826_055235_462219_3648448B 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210826_062609_952166_D4E4CA98 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,58 +89,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1931086424165098318=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, 26 Aug 2021 20:38:42 +0800, Yifeng Zhao wrote:
+> Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> ---
+> 
+>  .../phy/phy-rockchip-naneng-combphy.yaml      | 100 ++++++++++++++++++
+>  1 file changed, 100 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+> 
 
---===============1931086424165098318==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sgneBHv3152wZ8jf"
-Content-Disposition: inline
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
+yamllint warnings/errors:
 
---sgneBHv3152wZ8jf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:0:0: /example-0/syscon@fdc50000: failed to match any schema with compatible: ['rockchip,rk3568-pipegrf', 'syscon']
+Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:0:0: /example-0/syscon@fdc70000: failed to match any schema with compatible: ['rockchip,pipe-phy-grf', 'syscon']
 
-On Thu, Aug 26, 2021 at 12:01:51PM +0800, Sugar Zhang wrote:
+doc reference errors (make refcheckdocs):
 
-> +/* tx/rx ctrl lock */
-> +static DEFINE_SPINLOCK(lock);
-> +
+See https://patchwork.ozlabs.org/patch/1521096
 
-Why is this a global and not part of the driver data?  It's also not
-clear to me why this is a spinlock and not a mutex.
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
---sgneBHv3152wZ8jf
-Content-Type: application/pgp-signature; name="signature.asc"
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
------BEGIN PGP SIGNATURE-----
+pip3 install dtschema --upgrade
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmEnjnUACgkQJNaLcl1U
-h9DhSgf+MgL/IQ9Mq6omKDRWYltsw14qyPu33shx7ZijOx+Opu9cYlPB75kmxRWv
-ylkwSG6o1RVEmHD/Y7XifgmrS7/pk9aqxCYTF7fdgfzA6Vj20AwJxcdRq5hXtGXg
-3rCgH6yqOL3qysd2VYiNOTO8jPNaq9wzeB4kwS8HC8DtBNvXXCtgID85w6Ihmqd+
-FNm9G7td36rGQWX2OFy/pGWAo77ZR55VtaLM/7WWBeC0oxZ6QXO/3xwFvbFqgXF/
-gLWxHGW5siQgtzqk1NDS/fmSjlQtQgTjKY3PxawKGwtTW/smMt6mp+Jz94YvbT8J
-JaZ90zWGfcxu9o8JkUqGN8YIbk8k/Q==
-=FFmq
------END PGP SIGNATURE-----
+Please check and re-submit.
 
---sgneBHv3152wZ8jf--
-
-
---===============1931086424165098318==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1931086424165098318==--
-
