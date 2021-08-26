@@ -2,81 +2,69 @@ Return-Path: <SRS0=LXKC=NR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56316C41537
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 13:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21710C43214
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 289F1608FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 13:26:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 289F1608FE
+	by mail.kernel.org (Postfix) with ESMTPS id E823060698
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Aug 2021 14:16:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E823060698
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mby3MdReAP7ZYbimJEWKmBm0s/ulPG6Lp3zIg/lrSUo=; b=N2NaPQs88i5657
-	E4IEZVBYNcBcuCsjNmoz0jvy6t+3YDWXkp5pWz86eBfgq+VhyWHyiJlGwFaSko1vWfn9u1Yg/5C4j
-	z/xO4By3zwQi+X3GIkDxMjcV6CxRt2jW7im4D33Cv3eXBfFz6CdpokFq/QeEdHfFdIlQF1Dy1aMoj
-	wlD4DSt34MO26Js3VhpZjAk8LYyySRWNBKVgUXgjUJVKol/CijHuJFLQ/CjkglYISK9jGdVMvAFlp
-	8b5qbo3v0yF4wwvsdunxcffXdJ179fIi/rEEV3ouWLXzRnUFoS7NskvHiil3NJOaPvMV8BM2Df6Ep
-	yt77lFjfLc4kEVVw+4sg==;
+	List-Owner; bh=bhfZ8ceKqi4R4yZqEe7eAXwmQzTgXKdEW/nBwixumYk=; b=02yV019Z4JrT0m
+	GhD8W/vc65DBJ0Rv2I1UO/Lu6cAYFjVbiS41YoQ7GMVjTownQi7dvsaaqt+pgjS7X2Zlb38AV3G54
+	L7CHCd8F7SAsDOKFb2uHhLRTSiuHN0SUv0IGYI7BAu/6Db9uUSevQC39epjgcG7/BaU8cOnjb6YLq
+	kbNs1yo33FjnR/Nf4JFcUZqPLXea2Vf7TzQpawNxL5hDmG/X8xgmR3+prRyJGM1M+8q5WrA2NtQKd
+	74L56dBP+lBwIVVld9PZ4lTHcpNrIK/mWfv2H/ddh5o1KxpXyGJDBcWTWgD7f53mFMY0oO+Exw4YV
+	PLt2mEgim5vYWvoJ57Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJFOf-00AEti-Ay; Thu, 26 Aug 2021 13:26:21 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1mJGBP-00ALHJ-Pk; Thu, 26 Aug 2021 14:16:43 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJFOT-00AEqo-Qf; Thu, 26 Aug 2021 13:26:13 +0000
-Received: by mail-oi1-f181.google.com with SMTP id 6so4498830oiy.8;
- Thu, 26 Aug 2021 06:26:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=MVwvIDZK2/7Y4951WHMhhdQzU7LUf/3BWIAcj7PEAtg=;
- b=fykYuwSaNSOsTdE+CES+oENQRTIKPH8u4nOHIbwG9swzMmhcxyDPBAHpfhDXI4+Rxa
- JFb4jYKUYAsnMPCzlwZ6Msxz548Vdh8qFH86bf/mEk0Le2o+Dwx3KvZcGQIunbG7EK7c
- vmG6fmfUf4Zu6LmmvU2fOsXFdhC4hNplk6k+T1Dm4tfpYn4filxUSX0hFVhRKxIqMcXN
- S40fjvdv2akn7H8UoKGDQX2Qetc70GZ/Th0U907pwS8YjlEo6QMn8uRgd/Xsw5czSW34
- uKbwLysZ++27IIBH64rgHM7QHqhh43Yc+rjgAca1UFI+TScxILC7Rw4TGUGInGfyaIcP
- xJOA==
-X-Gm-Message-State: AOAM531dW/maTztuDa0kvwRNBOg2WdBQAfHXA8bYgTxd6ttsqVUQkV03
- tL1XQ0jjCwhmqqOd0N/uUw==
-X-Google-Smtp-Source: ABdhPJxQgh36d/Z8oPQJ2kZdPSroKU7uJI2G1etE76FJfI7pF24X/EZtJ5/N57d2bHja0Z6MHeT+MA==
-X-Received: by 2002:aca:b808:: with SMTP id i8mr10141154oif.62.1629984368953; 
- Thu, 26 Aug 2021 06:26:08 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id x1sm554628otu.8.2021.08.26.06.26.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Aug 2021 06:26:07 -0700 (PDT)
-Received: (nullmailer pid 1033392 invoked by uid 1000);
- Thu, 26 Aug 2021 13:26:01 -0000
-From: Rob Herring <robh@kernel.org>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Cc: linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-phy@lists.infradead.org, vkoul@kernel.org, heiko@sntech.de,
- michael.riesch@wolfvision.net, kishon@ti.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, p.zabel@pengutronix.de,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20210826123844.8464-2-yifeng.zhao@rock-chips.com>
-References: <20210826123844.8464-1-yifeng.zhao@rock-chips.com>
- <20210826123844.8464-2-yifeng.zhao@rock-chips.com>
-Subject: Re: [PATCH v1 1/3] dt-bindings: phy: rockchip: Add Naneng combo PHY
- bindings
-Date: Thu, 26 Aug 2021 08:26:01 -0500
-Message-Id: <1629984361.449016.1033391.nullmailer@robh.at.kernel.org>
+ id 1mJGAz-00AL97-Dr; Thu, 26 Aug 2021 14:16:18 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9776660698;
+ Thu, 26 Aug 2021 14:16:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1629987377;
+ bh=19+SFriioNrfn3fwOrICbeSKe/bS5e7OWPAEUGfvvhY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=MiooJBf9vLHfA09AxSvssoyn5b3Bc2xmYjYaAxykMO2iKnb2iN9ekqCwAlZxQHzEK
+ uLLysvFtjaJz84LAO+B2tysgq/eWeVtlYPJQWV5FmVRl2hcavEa2U9T8t+r3DD20BY
+ mGbPAbnc2UoF6ISLRcF5HDPi4g8AYCPTOyQgUjDG0vULCorsXNgbJsMoNBliliFYPg
+ gkREbGYP1VB/nBgfTH3RRipsuUJ/+qM72Ar8Nu2v0LV97tN/2u/6vtTsAsDtg+GgVI
+ m5VSOy9qqqn8E42UYKYiXKQ7QqozvBfuN6QmgNHqc47ozhekbZwfIXUN8CUTyNMCbN
+ iKagMWY1z60Jw==
+From: Mark Brown <broonie@kernel.org>
+To: heiko@sntech.de,
+	Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: Mark Brown <broonie@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, linux-rockchip@lists.infradead.org,
+ Jaroslav Kysela <perex@perex.cz>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 0/4] Patches to update for rockchip spdif
+Date: Thu, 26 Aug 2021 15:15:43 +0100
+Message-Id: <162998707937.5647.10936208575135633257.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
+References: <1629800162-12824-1-git-send-email-sugar.zhang@rock-chips.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210826_062609_952166_D4E4CA98 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20210826_071617_526435_1A6827B0 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +77,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 26 Aug 2021 20:38:42 +0800, Yifeng Zhao wrote:
-> Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
+On Tue, 24 Aug 2021 18:15:58 +0800, Sugar Zhang wrote:
+> These patches fixup or update for rockchip spdif.
 > 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> ---
 > 
->  .../phy/phy-rockchip-naneng-combphy.yaml      | 100 ++++++++++++++++++
->  1 file changed, 100 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+> Sugar Zhang (4):
+>   ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
+>   ASoC: rockchip: spdif: Fix some coding style
+>   ASoC: rockchip: spdif: Add support for rk3568 spdif
+>   ASoC: dt-bindings: rockchip: Add compatible for rk3568 spdif
 > 
+> [...]
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Applied to
 
-yamllint warnings/errors:
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:0:0: /example-0/syscon@fdc50000: failed to match any schema with compatible: ['rockchip,rk3568-pipegrf', 'syscon']
-Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:0:0: /example-0/syscon@fdc70000: failed to match any schema with compatible: ['rockchip,pipe-phy-grf', 'syscon']
+Thanks!
 
-doc reference errors (make refcheckdocs):
+[1/4] ASoC: rockchip: spdif: Mark SPDIF_SMPDR as volatile
+      commit: 023a3f3a1c4f9be9cc1ae92579ba816120fb5807
+[2/4] ASoC: rockchip: spdif: Fix some coding style
+      commit: acc8b9d117912c2d5952868fba0d4fca49cde3c8
+[3/4] ASoC: rockchip: spdif: Add support for rk3568 spdif
+      commit: c5d4f09feb9f74e704d87a304f0c20001488fe10
+[4/4] ASoC: dt-bindings: rockchip: Add compatible for rk3568 spdif
+      commit: e79ef3c2cfe0b39878496eac87450698a2e84e3f
 
-See https://patchwork.ozlabs.org/patch/1521096
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-pip3 install dtschema --upgrade
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-Please check and re-submit.
-
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
