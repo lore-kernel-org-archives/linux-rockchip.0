@@ -2,76 +2,62 @@ Return-Path: <SRS0=TPHQ=NV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4003C432BE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 19:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9C84C432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 20:45:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9EC5F60F3A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 19:22:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9EC5F60F3A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5792360FC0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 20:45:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5792360FC0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5RoG9crpD0F90ozvcwrPiXq9G6pkLxSQQmNtuJBUl2g=; b=x/70OhNgmxwtjhRlC8ho01oKQQ
-	rNKf0+w6z6GEZ9BvrIpfRw5JUNHgGurhrhBH/LhSY+9Aiqc6AV6Y7RIo3Tv+stmGMP6Q9Qk61AWRu
-	x/c2EeM15tOc5+xGuDGMTjTZW1qphTp20nUcGnMpRzK/eZ6RYe391rWH3eVZpwoo1kU+uJCeUsRrZ
-	91xC6nc32oMHzowDLpNpt4/NgzLbb9YMZQsQ7A8XBHW5G7VpVoRu243bwSUahL33QJqv+1nY20+NA
-	BbMgt7c9bvV6cqCMV4pUndgpTxwF1hXeqzNWBcAJVtzaW1y8PifOyPOZ2Dmv6os4dtYXv5DsSVe2M
-	wuB1BTbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jbYSjaY3arq++LfSP3Z4ZUCTz4oaibpN7ZqCw/Ik1Mg=; b=uMibz/4/s2RaLg
+	QfUwWcDUluJaVBIePcfu4utc171DVRQfFTOcPrD+dQKPYpi9Pd8fjpbrdxJoXwLc7orDOxFYdTYSQ
+	THD0OqMTdrUO1y9gqYHJRZQi4QqPhFQfTFYkt0zWzf3hC1o1efOXBpeV9IEYo1FIRnGl7CZPNPLOf
+	9qe8e0AnnD+LZpvjcXD4XUzAZZYNpY9WCK78wbb2qdj09Nx7NJ8PJExE9No3H9UQdajXe6m94kgk2
+	63cbH/PA2+HjHfqYBzSr5hK6b6hxW1HlhAWfJcSojRAAHPcB27EQ23J7p85zs0SW6woFS8I6cmR7p
+	lweDiMcCZjOnO3oCMTMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKmrl-000QiI-JO; Mon, 30 Aug 2021 19:22:45 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mKo9l-000XTY-6e; Mon, 30 Aug 2021 20:45:25 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKmrX-000QgY-Hg; Mon, 30 Aug 2021 19:22:32 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A2D0A60ED6;
- Mon, 30 Aug 2021 19:22:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630351350;
- bh=bD/PRX2r6uMy0nvYwzbiesOU91GqKICjrpxoivduALw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=T19AiTfTnKyfwpgvpfv9IKG7CwFyVDnmV/mPUC0e6TOvWEVKVJ2wDB87Y1OSsUyfp
- KC0MT9n/MLMFT5iuHKDdyH/VntBfk1Jg5XJPrY0Jqz9VxRx2/HKQr7OmSRlCfjDqu0
- EmDjt9STRLwjYp4e9OssvkLkc5066zWAv58kfEt5NbMFmDshc7TJQjCBRHy0rOYc/t
- VgbS7EXNoOCRPvoJE8BAXvc2vkcdFwDkMDeQjovoP2al0ihfkyj48q6/OM78wjy8km
- SDqeV1LuqJ57ECSpg9ZCWsGehI/lfAYSC/s7DY5rIax/0tgbyi0Z2jHbAZm+jpfKzt
- cdwLBElFdT3Hw==
-Date: Mon, 30 Aug 2021 15:22:29 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: wens@kernel.org, netdev <netdev@vger.kernel.org>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-Subject: Re: [PATCH] net: stmmac: dwmac-rk: fix unbalanced pm_runtime_enable
- warnings
-Message-ID: <YS0v9UbzoHkiU9om@sashalap>
-References: <20210823143754.14294-1-michael.riesch@wolfvision.net>
- <CAGb2v67Duk_56fOKVwZsYn2HKJ99o8WJ+d4jetD2UjDsAt9BcA@mail.gmail.com>
- <568a0825-ed65-58d7-9c9c-cecb481cf9d9@wolfvision.net>
+ id 1mKo9X-000XQV-Cs; Mon, 30 Aug 2021 20:45:13 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mKo9Q-0001Q1-8y; Mon, 30 Aug 2021 22:45:04 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-phy@lists.infradead.org, Mikhail Rudenko <mike.rudenko@gmail.com>
+Cc: linux-media@vger.kernel.org, Mikhail Rudenko <mike.rudenko@gmail.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 1/5] phy: phy-rockchip-dphy-rx0: refactor for tx1rx1
+ addition
+Date: Mon, 30 Aug 2021 22:45:03 +0200
+Message-ID: <6474995.6kXVAnRFRJ@diego>
+In-Reply-To: <20210830180758.251390-2-mike.rudenko@gmail.com>
+References: <20210830180758.251390-1-mike.rudenko@gmail.com>
+ <20210830180758.251390-2-mike.rudenko@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <568a0825-ed65-58d7-9c9c-cecb481cf9d9@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_122231_649486_FE2AF8C1 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20210830_134511_499108_30C45FAA 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,49 +70,160 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 30, 2021 at 09:57:51AM +0200, Michael Riesch wrote:
->Hi ChenYu,
->
->On 8/29/21 7:48 PM, Chen-Yu Tsai wrote:
->> Hi,
->>
->> On Mon, Aug 23, 2021 at 10:39 PM Michael Riesch
->> <michael.riesch@wolfvision.net> wrote:
->>>
->>> This reverts commit 2c896fb02e7f65299646f295a007bda043e0f382
->>> "net: stmmac: dwmac-rk: add pd_gmac support for rk3399" and fixes
->>> unbalanced pm_runtime_enable warnings.
->>>
->>> In the commit to be reverted, support for power management was
->>> introduced to the Rockchip glue code. Later, power management support
->>> was introduced to the stmmac core code, resulting in multiple
->>> invocations of pm_runtime_{enable,disable,get_sync,put_sync}.
->>>
->>> The multiple invocations happen in rk_gmac_powerup and
->>> stmmac_{dvr_probe, resume} as well as in rk_gmac_powerdown and
->>> stmmac_{dvr_remove, suspend}, respectively, which are always called
->>> in conjunction.
->>>
->>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
->>
->> I just found that Ethernet stopped working on my RK3399 devices,
->> and I bisected it down to this patch.
->
->Oh dear. First patch in a kernel release for a while and I already break
->things.
->
->Cc: Sasha as this patch has just been applied to 5.13-stable.
+Hi Mikhail,
 
-I'll drop it for now, thanks for letting me know!
+Am Montag, 30. August 2021, 20:07:50 CEST schrieb Mikhail Rudenko:
+> In order to accommodate for rk3399 tx1rx1 addition, make
+> enable/disable function calls indirect via function pointers in
+> rk_dphy_drv_data. Also rename rk_dphy_write and rk_dphy_enable to
+> avoid naming clashes.
 
--- 
-Thanks,
-Sasha
+You're a bit too late to the party :-( .
+
+The tx1rx1 dphy is living _inside_ the 2nd DSI controller and is
+configured through it. 
+
+So having the same peripheral in the dts with different compatibles
+does break the devicetree-describes-hardware-not-Linux-implementation-details
+paradigm.
+
+Therefore my approach was to handle the switch between tx and rx modes
+inside the dsi driver. This got merged for 5.15 as well, see [0] [1].
+
+So sadly this series is somewhat obsolete, but you should find the
+building blocks for camera support in linux-next already.
+
+
+Regards
+Heiko
+
+
+
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=71f68fe7f12182ed968cfbbd1ef018721e4dee30
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/?id=68e0277204c733dff19073686e2ac48239b06fbc
+
+
+> 
+> Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
+> ---
+>  drivers/phy/rockchip/phy-rockchip-dphy-rx0.c | 38 +++++++++++++-------
+>  1 file changed, 25 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
+> index 4df9476ef2a9..72145cdfb036 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
+> @@ -138,12 +138,17 @@ static const struct dphy_reg rk3399_grf_dphy_regs[] = {
+>  	[GRF_DPHY_RX0_TESTDOUT] = PHY_REG(RK3399_GRF_SOC_STATUS1, 8, 0),
+>  };
+>  
+> +struct rk_dphy;
+> +
+>  struct rk_dphy_drv_data {
+>  	const char * const *clks;
+>  	unsigned int num_clks;
+>  	const struct hsfreq_range *hsfreq_ranges;
+>  	unsigned int num_hsfreq_ranges;
+>  	const struct dphy_reg *regs;
+> +
+> +	void (*enable)(struct rk_dphy *priv);
+> +	void (*disable)(struct rk_dphy *priv);
+>  };
+>  
+>  struct rk_dphy {
+> @@ -170,7 +175,7 @@ static inline void rk_dphy_write_grf(struct rk_dphy *priv,
+>  	regmap_write(priv->grf, reg->offset, val);
+>  }
+>  
+> -static void rk_dphy_write(struct rk_dphy *priv, u8 test_code, u8 test_data)
+> +static void rk_dphy_write_mipi_rx(struct rk_dphy *priv, u8 test_code, u8 test_data)
+>  {
+>  	rk_dphy_write_grf(priv, GRF_DPHY_RX0_TESTDIN, test_code);
+>  	rk_dphy_write_grf(priv, GRF_DPHY_RX0_TESTEN, 1);
+> @@ -186,7 +191,7 @@ static void rk_dphy_write(struct rk_dphy *priv, u8 test_code, u8 test_data)
+>  	rk_dphy_write_grf(priv, GRF_DPHY_RX0_TESTCLK, 1);
+>  }
+>  
+> -static void rk_dphy_enable(struct rk_dphy *priv)
+> +static void rk_dphy_enable_rx(struct rk_dphy *priv)
+>  {
+>  	rk_dphy_write_grf(priv, GRF_DPHY_RX0_FORCERXMODE, 0);
+>  	rk_dphy_write_grf(priv, GRF_DPHY_RX0_FORCETXSTOPMODE, 0);
+> @@ -206,22 +211,27 @@ static void rk_dphy_enable(struct rk_dphy *priv)
+>  	usleep_range(100, 150);
+>  
+>  	/* set clock lane */
+> -	/* HS hsfreq_range & lane 0  settle bypass */
+> -	rk_dphy_write(priv, CLOCK_LANE_HS_RX_CONTROL, 0);
+> +	/* HS hsfreq_range & lane 0	 settle bypass */
+> +	rk_dphy_write_mipi_rx(priv, CLOCK_LANE_HS_RX_CONTROL, 0);
+>  	/* HS RX Control of lane0 */
+> -	rk_dphy_write(priv, LANE0_HS_RX_CONTROL, priv->hsfreq << 1);
+> +	rk_dphy_write_mipi_rx(priv, LANE0_HS_RX_CONTROL, priv->hsfreq << 1);
+>  	/* HS RX Control of lane1 */
+> -	rk_dphy_write(priv, LANE1_HS_RX_CONTROL, priv->hsfreq << 1);
+> +	rk_dphy_write_mipi_rx(priv, LANE1_HS_RX_CONTROL, priv->hsfreq << 1);
+>  	/* HS RX Control of lane2 */
+> -	rk_dphy_write(priv, LANE2_HS_RX_CONTROL, priv->hsfreq << 1);
+> +	rk_dphy_write_mipi_rx(priv, LANE2_HS_RX_CONTROL, priv->hsfreq << 1);
+>  	/* HS RX Control of lane3 */
+> -	rk_dphy_write(priv, LANE3_HS_RX_CONTROL, priv->hsfreq << 1);
+> +	rk_dphy_write_mipi_rx(priv, LANE3_HS_RX_CONTROL, priv->hsfreq << 1);
+>  	/* HS RX Data Lanes Settle State Time Control */
+> -	rk_dphy_write(priv, LANES_THS_SETTLE_CONTROL,
+> -		      THS_SETTLE_COUNTER_THRESHOLD);
+> +	rk_dphy_write_mipi_rx(priv, LANES_THS_SETTLE_CONTROL,
+> +			  THS_SETTLE_COUNTER_THRESHOLD);
+>  
+>  	/* Normal operation */
+> -	rk_dphy_write(priv, 0x0, 0);
+> +	rk_dphy_write_mipi_rx(priv, 0x0, 0);
+> +}
+> +
+> +static void rk_dphy_disable_rx(struct rk_dphy *priv)
+> +{
+> +	rk_dphy_write_grf(priv, GRF_DPHY_RX0_ENABLE, 0);
+>  }
+>  
+>  static int rk_dphy_configure(struct phy *phy, union phy_configure_opts *opts)
+> @@ -266,7 +276,7 @@ static int rk_dphy_power_on(struct phy *phy)
+>  	if (ret)
+>  		return ret;
+>  
+> -	rk_dphy_enable(priv);
+> +	priv->drv_data->enable(priv);
+>  
+>  	return 0;
+>  }
+> @@ -275,7 +285,7 @@ static int rk_dphy_power_off(struct phy *phy)
+>  {
+>  	struct rk_dphy *priv = phy_get_drvdata(phy);
+>  
+> -	rk_dphy_write_grf(priv, GRF_DPHY_RX0_ENABLE, 0);
+> +	priv->drv_data->disable(priv);
+>  	clk_bulk_disable(priv->drv_data->num_clks, priv->clks);
+>  	return 0;
+>  }
+> @@ -310,6 +320,8 @@ static const struct rk_dphy_drv_data rk3399_mipidphy_drv_data = {
+>  	.hsfreq_ranges = rk3399_mipidphy_hsfreq_ranges,
+>  	.num_hsfreq_ranges = ARRAY_SIZE(rk3399_mipidphy_hsfreq_ranges),
+>  	.regs = rk3399_grf_dphy_regs,
+> +	.enable = rk_dphy_enable_rx,
+> +	.disable = rk_dphy_disable_rx,
+>  };
+>  
+>  static const struct of_device_id rk_dphy_dt_ids[] = {
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
