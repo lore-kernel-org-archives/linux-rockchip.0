@@ -2,77 +2,157 @@ Return-Path: <SRS0=TPHQ=NV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E68CC432BE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 06:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 069FAC432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 07:58:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2DE8600CD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 06:39:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C2DE8600CD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id BC07C61027
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 07:58:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BC07C61027
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=wolfvision.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bBbSKd6W5vwA4kgO4/ngMTD3b0CI9Cz4jqFRSHoja2o=; b=OFUOyQkMPaZnXE
-	B8zh//mmvLA7dD/OyhM0wLI2SP8YqcCOM4B/BrN4l7BSZ+/9ODOqL1+jZajyUZYFWCEd61MvbBeSL
-	NdfkF3fvkX5smj8EkzOzfF+bB/3YbxSEEh4/E5fqZuMWXiMOHr+ZLPQ7OrQUw0ScBbC+Jc/FllOMg
-	GGg7G+uZxpQfKQkz+0J6BwDWvTkmM2lhZvhpbkuqj4tkImx+mMfm/crSHCtkG3OL61pRyhIFY6Aty
-	Om+k5AGOzYB4ANAMfOYn09cWXXLODqC6pPGwMHEvP7y9w+nMns2TxsyLuRrlbhD68RrfZ8H8BJYeT
-	MLjWXgCfTxDx/MZFtjbw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=CcHuhro44UXwBnGnNZDLo1+YeO998GVq/O0rgAKB+G0=; b=IpiZkNFQbZ98d1g2xpXAj9YWbK
+	lzwJ+1emX2ja34ZlLjNr+aB2qyRWZkAlScU/EfgJtclfxjIp3p2fF+8g3+bQYR9NYK/1zEAL4Msrf
+	HT1BLCs39BpAZYBPg2B+JZRC0ZhrKQy5WdtjfDRyIuH2O1tuD61Pau6mpalEA/FL9tljQijz6zVs+
+	kv1FBAhSLGSIrcOx1ZXyKhAxguJaRA69bg5rDR1VLmMws6M3TkUKPesmkTRZJHBDCx5nJq4QRgX/7
+	va1ESScAApWyKpl7rdJ+AZ92NCVxfTtPcuHqL0rv6S5k0/Hi9x1UyTmeiVJ7HQX3sNXEZthnBbgVC
+	IyO1MYLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKawr-00GXsa-CV; Mon, 30 Aug 2021 06:39:13 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1mKcBP-00GfvH-90; Mon, 30 Aug 2021 07:58:19 +0000
+Received: from mail-am6eur05on2056.outbound.protection.outlook.com
+ ([40.107.22.56] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKawd-00GXrL-3m; Mon, 30 Aug 2021 06:39:01 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 20F3CD5E13;
- Mon, 30 Aug 2021 14:38:49 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P704T139881204397824S1630305528227144_; 
- Mon, 30 Aug 2021 14:38:49 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <7b7901ce8f4b6bf32dce0f979db0edb9>
-X-RL-SENDER: sugar.zhang@rock-chips.com
-X-SENDER: zxg@rock-chips.com
-X-LOGIN-NAME: sugar.zhang@rock-chips.com
-X-FST-TO: broonie@kernel.org
-X-RCPT-COUNT: 10
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-System-Flag: 0
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-To: broonie@kernel.org,
-	heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
- Sugar Zhang <sugar.zhang@rock-chips.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] ASoC: rockchip: i2s: Fix concurrency between tx/rx
-Date: Mon, 30 Aug 2021 14:38:45 +0800
-Message-Id: <1630305525-65759-1-git-send-email-sugar.zhang@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
+ id 1mKcB6-00GfoL-1Z; Mon, 30 Aug 2021 07:58:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=E1pM6bj8GqP6EiklQ2LjNfavMPA0oTByk53Q1cqbdVyFLxSgbVr3YoQt4ymEp1dT/WY+zPPiatEr1R0EhV1Z4fjuuwKdoyuPGPOonFAYh8tHxwZrS8ZbMtCMvdodhTAQQzwjrLZow5i5ydlNvf0WA8f3AzTApRrSegCQBZVvJCFldf8dXmqMpPNpKJjBMCX+Q/8yRVEzWF8NXI8P1BcT+5UEO3RaS4NTrt384mxhoKA9JuOzZRGMlnKNhw6XAPb+D3/cNIgBbyC6iU6NC8DW4K57rXTodEF4MoRQ5bx3KgH0gtEMqdWA0JZA0hpTdpd1zmK/KtFV4PZgslXtDMMEOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=f9YdD9gY+9K6fTDZDrlpA5kut8UQlcHwnjC8MH8K63U=;
+ b=RF9LoKiIAh33kvFr4AltGS2Y76e7tcEAY5eLYHMIICbdYku16VIcYtoyDJFcAUDmDrPCTi1tUooyvbP25i9YlMlFaZXoGNhGO6+xB1jxMBs2CCF1SNtRUS1jPNKkx+rPf10PPHJtgqgmsP0C6rURzX1H84xGzA1lVJVXL+JqVXF1Xmlj5NC1TEBQk4/bFwIbeB2ciJGNqR1uZjUtBeZLzsETNpjemXW+fPutjcpiayW0JtyKomxOwg8a/ldezFskuDa0azmrkPutKrDRhug6dIXSS6MPBybi93nhIU+yhrJ+JTjDEIIhGSJmmYVBj2AZqnAxN29C8Gi+eqQMiDtPIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=f9YdD9gY+9K6fTDZDrlpA5kut8UQlcHwnjC8MH8K63U=;
+ b=bfyMczhj/TWNwcn220DRcz4xIOkBasVa9HRZ37pWzAJZhH3ZYkyDkfnsL2Z1lKSOENIv8Z3znOyUDhI3yCPcQFTtqwcjiaMBmHNgIQx9rtgv3JxisTegKZu7lgucMi5YLke757vOKTPTntcOz8TIXyhxdHlCJW+BMJB9m1V1McY=
+Authentication-Results: kernel.org; dkim=none (message not signed)
+ header.d=none;kernel.org; dmarc=none action=none header.from=wolfvision.net;
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com (2603:10a6:10:c8::19)
+ by DB8PR08MB5403.eurprd08.prod.outlook.com (2603:10a6:10:116::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.23; Mon, 30 Aug
+ 2021 07:57:53 +0000
+Received: from DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::452b:e508:9c57:a6e3]) by DBBPR08MB4523.eurprd08.prod.outlook.com
+ ([fe80::452b:e508:9c57:a6e3%7]) with mapi id 15.20.4457.024; Mon, 30 Aug 2021
+ 07:57:53 +0000
+Subject: Re: [PATCH] net: stmmac: dwmac-rk: fix unbalanced pm_runtime_enable
+ warnings
+To: wens@kernel.org
+Cc: netdev <netdev@vger.kernel.org>, "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, "David S . Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, sashal@kernel.org
+References: <20210823143754.14294-1-michael.riesch@wolfvision.net>
+ <CAGb2v67Duk_56fOKVwZsYn2HKJ99o8WJ+d4jetD2UjDsAt9BcA@mail.gmail.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+Message-ID: <568a0825-ed65-58d7-9c9c-cecb481cf9d9@wolfvision.net>
+Date: Mon, 30 Aug 2021 09:57:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
+In-Reply-To: <CAGb2v67Duk_56fOKVwZsYn2HKJ99o8WJ+d4jetD2UjDsAt9BcA@mail.gmail.com>
+Content-Language: en-US
+X-ClientProxiedBy: VE1PR08CA0018.eurprd08.prod.outlook.com
+ (2603:10a6:803:104::31) To DBBPR08MB4523.eurprd08.prod.outlook.com
+ (2603:10a6:10:c8::19)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.100.125] (91.118.163.37) by
+ VE1PR08CA0018.eurprd08.prod.outlook.com (2603:10a6:803:104::31) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.20 via Frontend
+ Transport; Mon, 30 Aug 2021 07:57:52 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: b3d7b0fc-cda4-4180-5c98-08d96b8bdeef
+X-MS-TrafficTypeDiagnostic: DB8PR08MB5403:
+X-Microsoft-Antispam-PRVS: <DB8PR08MB540335F04BE834C588F6F4D4F2CB9@DB8PR08MB5403.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: w6VbOm9IPMva7dJqci06vf0xdRitW4whEQsGiFk40rPBSe5ow10T+RuOFGx1bh3OFSM1bh9ut669cRGAySfaBCnSjVK0Z1XDGPZVcTnMkrp9pQW8C7O0FsO4ulzPYT+XFFA9C+PQB1qcKgdZZXy89OzubGxHHCAT13Mz5ADIa7cUdM6V807Jqke3B61QUEa7Qu7iiv2enQrvK+MdQe0eYre6yYMMpqI2HNIufx2wSkzgBRP0wL2EjlFBeigUdq4YWvvK/HD8NT7b72O+DZJDzSjVOuYiA08i/W+srBsMuE11VTUHdFYetrasBVWYbIsWHrKTFeGgKOBdEQCZ+0y+wGHaY6YuCP1g645BjG1UHBKLL0cFwp+1L0dcC7U5KLbsVnDPfGZ3AekyeoFmEZJp7oM0VOBpJqKQlDnBoZIAdwzB/d77PSLr9zsW+2AGHosnAcmzggUZDwg0Ho6o1Re/z28Ilyx4MGJtRORQQEKlHjQaAKNs66q0uqpRLcUY9lQrtbIpShT5CcsBFL6Nsz5hCYTmaS50aVq7gYsC5NPAUSpHHPHx/h+j2zQsKFA5t9HLtwHTPT2Zvk/DjiE4jnLWO5JiAaPteJwTSl3zK+DNeaCWpXZJWn7zak+xfVI5/uyW6tCtit98AraaoTM6/tGcWhP8j6t+9zWG4OZs1kN99b8Hkelof6pMHB5shNeFeNgaIimve1whXzfDzKg2BWTiLzty04hhNKZbXrcTnh/5zcJwyvA/gOt1JYp/JMmPeNP7U3O+iiRnFNWQEqBIv9y6uQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4523.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(136003)(39840400004)(396003)(366004)(346002)(316002)(7416002)(186003)(53546011)(16576012)(31696002)(8936002)(5660300002)(956004)(26005)(52116002)(38350700002)(54906003)(8676002)(36756003)(44832011)(66946007)(86362001)(4326008)(2616005)(83380400001)(6916009)(66556008)(66476007)(6486002)(2906002)(36916002)(38100700002)(31686004)(478600001)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c2QxNm5ocmJDR05MenR0SHhudW45eEJzbzRXL1ZYNGltV2NQdDlWbVlMRzRH?=
+ =?utf-8?B?TllJWDVpclJkWWx2NVU3UmFiUERVc29pYjNIVHJ2KytXZEV0QmN3V0pvbXBy?=
+ =?utf-8?B?b2JKVDhZT0lrN0F3SW5wNnlXQTZzVnljcENJTjIveVc1RGNxOVV6ZFZ2WkhV?=
+ =?utf-8?B?ZUpIU2ZPU2V0b2tsS1pLY0F6bFdUNHRXeUJNRXdReUh6RVlSRXA0UHptbXdD?=
+ =?utf-8?B?Z1Vwdm5GcVBnZThuZ05OZEtuRzB0MHF5bzhicUpUU2s2UHhBVEVlVHYvMEl4?=
+ =?utf-8?B?d08zdU1BaFcyTUcyNlk4VlBVVm1aVFh3TEpqdGIxeFhqd05KakMrdXUxaXRX?=
+ =?utf-8?B?aFhuTVRyVWxqYlN0ZmRoNWJGeG5JcUlaWWh5Uk9jbnZ5MmJBUWFiVXJqY0d5?=
+ =?utf-8?B?QWhBNWI5MUJpcnY5VURwa0N3eURjcEJLNTVyQ1ZQVXVlSTVxa1RhdmVLWmxz?=
+ =?utf-8?B?UFpFRWE5U3RNMm9nQ1J0QXNVTXZYUnlpaUhTZkw3RUdHSFBGQVdSNkUvQjdG?=
+ =?utf-8?B?WGFwMys2bUtKM2dFQ1owUzRqSUFxMU1KRzljeFdteVpac1ovbzdZWEtpczZ3?=
+ =?utf-8?B?NzhIZ0h5WHlTMDY0NkJBTndvd0JYaVVwQmRqd0paRGNyQWMydmdISnBHUWlT?=
+ =?utf-8?B?L0gzZm1qVjhNVWpLVDJ5UERhVnNZK0JUVW1mSXY2Q2U5NFU5aDk1NVFKY25p?=
+ =?utf-8?B?TEMydTgvTG9Sdlh3QVVET01VU2VGaWczMDRkcU9nelBzRzFDNVhTWUdkSVRO?=
+ =?utf-8?B?ai9kQjNkRkZLNW5UNDArcEU1Z2FwckhFZDNYVi9IVS9nUnhjR0lURDNPaGx0?=
+ =?utf-8?B?VXdLNkwyZWRkcExXcFd2dmwzbll4cnRCNUFxckJBWHBZNkppczFmZkZwdk1E?=
+ =?utf-8?B?TWxGR3Z6ZXpJaHplNld4a2ROWi9XSDNHb3dTZlkycmd1dHNpdkxLUlR5NUxu?=
+ =?utf-8?B?VGhHTkUxemVLTXEwcTFSVVd4Z0dpNGFUSWJrWEZCaWJ5dUZVZWJzcDlPZEJC?=
+ =?utf-8?B?SEViNXVCUHJ4bWJWc0gvREkxTU5Wclo5SVIvNzFIaS9waDF4VXJONUFycm1O?=
+ =?utf-8?B?N3poWDh0cVZaN3ZRNzJyeFFaSjcxVnZSTDdOYU84aTVSeTNtaHljb1BBMWV2?=
+ =?utf-8?B?NGVQbG1OQ1M4OFV3ZUhvbTVBT2ZRbkY2d3NHZTZoS2tzcGFxd0RQSlB2WG1H?=
+ =?utf-8?B?Z1FJMFhGNnptS0J5cXZqR0VSNVR5TCtZTThoYXlUUWJheWtqUC8yUmdKVmF1?=
+ =?utf-8?B?N3l3bUdrNFlETlRVTlVPbjVvU01WeDdIL1g2LzMvSmFsTWxnd2pxOWJqMm5L?=
+ =?utf-8?B?anZJdjZUQUpNQUlXcUJCM1h3VDRvQUlWbjRSbW1pVXE0SGVHRms3SDVuVmxK?=
+ =?utf-8?B?V0Y1MFZqMFNvcjJaVDVVR1VjKzAvWm8wZlZwRjBHZ0VSeUhycWxIQ050TVQ4?=
+ =?utf-8?B?M2Z2SC9LRFJiaFFFQWR6RExjUno0Sk5UcGd1NVl4S2FHaUZSMHhmS29RalY0?=
+ =?utf-8?B?WWlzOFJqTHhYRy9vcVgrYVRmWW9NQit4cElYZ3ZycHhha2pnQ0JKOGtudkRJ?=
+ =?utf-8?B?a0RtazZJUy9wYVdhRFFKbUUyVy9vM2RJeWhzOTV4VDVpTDc2cmxRT3dPMXda?=
+ =?utf-8?B?S29XSWRoaTdIS2U2VDJEbnhQV1NOR1NDYjBvdzdOTlAwY3NBNTl4bFk3ZStn?=
+ =?utf-8?B?bEh2RXA4WmxNaW9adkZKdVZPdkJoWjh5YndhTi9ibmFwUmxTVkdFUDYzaUxE?=
+ =?utf-8?Q?XDBQltbd9T3dfnSUd/C5GLpwCE2ue96jSOjXYBg?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: b3d7b0fc-cda4-4180-5c98-08d96b8bdeef
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4523.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Aug 2021 07:57:53.6269 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uCBUP923q+53Y2CyqjXHXxIBZpE1BFWhNLxYb5xJ8jykhbBAs5RUZ0xo1jx7fMik47fHqPCbHqle/We+0f3BzkKcuyQu/shdI+tNWHK3JYk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5403
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210829_233859_722875_00000247 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20210830_005800_214085_3D0CF526 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,117 +165,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds lock to fix comcurrency between tx/rx
-to fix 'rockchip-i2s ff070000.i2s; fail to clear'
+Hi ChenYu,
 
-Considering the situation;
+On 8/29/21 7:48 PM, Chen-Yu Tsai wrote:
+> Hi,
+> 
+> On Mon, Aug 23, 2021 at 10:39 PM Michael Riesch
+> <michael.riesch@wolfvision.net> wrote:
+>>
+>> This reverts commit 2c896fb02e7f65299646f295a007bda043e0f382
+>> "net: stmmac: dwmac-rk: add pd_gmac support for rk3399" and fixes
+>> unbalanced pm_runtime_enable warnings.
+>>
+>> In the commit to be reverted, support for power management was
+>> introduced to the Rockchip glue code. Later, power management support
+>> was introduced to the stmmac core code, resulting in multiple
+>> invocations of pm_runtime_{enable,disable,get_sync,put_sync}.
+>>
+>> The multiple invocations happen in rk_gmac_powerup and
+>> stmmac_{dvr_probe, resume} as well as in rk_gmac_powerdown and
+>> stmmac_{dvr_remove, suspend}, respectively, which are always called
+>> in conjunction.
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> 
+> I just found that Ethernet stopped working on my RK3399 devices,
+> and I bisected it down to this patch.
 
-       tx stream              rx stream
-           |                      |
-           |                   disable
-         enable                   |
-           |                    reset
+Oh dear. First patch in a kernel release for a while and I already break
+things.
 
-After this patch:
+Cc: Sasha as this patch has just been applied to 5.13-stable.
 
-         lock
-           |
-       tx stream
-           |
-         enable
-           |
-        unlock
-       --------               ---------
-                                lock
-                                  |
-                              rx stream
-                                  |
-                               disable
-                                  |
-                                reset
-                                  |
-                               unlock
+> The symptom I see is no DHCP responses, either because the request
+> isn't getting sent over the wire, or the response isn't getting
+> received. The PHY seems to be working correctly.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
+Unfortunately I don't have any RK3399 hardware. Is this a custom
+board/special hardware or something that is readily available in the
+shops? Maybe this is a good reason to buy a RK3399 based single-board
+computer :-)
 
-Changes in v2:
-- Fix compile error.
+I am working on the RK3568 EVB1 and have not encountered faulty
+behavior. DHCP works fine and I can boot via NFS. Therefore, not sure
+whether I can be much of help in this matter, but in case you want to
+discuss this further please do not hesitate to contact me off-list.
 
- sound/soc/rockchip/rockchip_i2s.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+> ChenYu
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index c7dc350..88e340f 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -15,6 +15,7 @@
- #include <linux/clk.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-+#include <linux/spinlock.h>
- #include <sound/pcm_params.h>
- #include <sound/dmaengine_pcm.h>
- 
-@@ -49,6 +50,7 @@ struct rk_i2s_dev {
- 	bool rx_start;
- 	bool is_master_mode;
- 	const struct rk_i2s_pins *pins;
-+	spinlock_t lock; /* tx/rx lock */
- };
- 
- static int i2s_runtime_suspend(struct device *dev)
-@@ -92,6 +94,7 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 	unsigned int val = 0;
- 	int retry = 10;
- 
-+	spin_lock(&i2s->lock);
- 	if (on) {
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
-@@ -132,6 +135,7 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 			}
- 		}
- 	}
-+	spin_unlock(&i2s->lock);
- }
- 
- static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
-@@ -139,6 +143,7 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 	unsigned int val = 0;
- 	int retry = 10;
- 
-+	spin_lock(&i2s->lock);
- 	if (on) {
- 		regmap_update_bits(i2s->regmap, I2S_DMACR,
- 				   I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
-@@ -179,6 +184,7 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 			}
- 		}
- 	}
-+	spin_unlock(&i2s->lock);
- }
- 
- static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
-@@ -589,6 +595,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 	if (!i2s)
- 		return -ENOMEM;
- 
-+	spin_lock_init(&i2s->lock);
- 	i2s->dev = &pdev->dev;
- 
- 	i2s->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
--- 
-2.7.4
-
-
-
+Best regards,
+Michael
 
 _______________________________________________
 Linux-rockchip mailing list
