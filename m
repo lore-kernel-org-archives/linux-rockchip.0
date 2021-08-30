@@ -6,17 +6,16 @@ X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9D3AC432BE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 21:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A7F3C432BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 21:12:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A56AA60F6C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 21:00:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A56AA60F6C
+	by mail.kernel.org (Postfix) with ESMTPS id 34D3960F12
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 21:12:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 34D3960F12
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,75 +25,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=y2sVrIQOFeHsd66OVrv2APozxtKiY7A+MQ1eeHNhqOE=; b=3JjWdF1CgtAe4EqqUpCn2jrGaE
-	/mE/sckbsCY67sIJg+L6FnpnHS7V3T2Rojh5nYC8nVpmXXycv+gwp4nn8MEkU5UrA/f5LzhADkiP7
-	LFtwCSZGWDlaI4hgub3/brff5XIc3BxSTyxDQTmGPzLci+blE3M5V0zfeymbZWqTJ1QJi/k99Ybq6
-	1KCqu/GjGyhInDFLrPcVH10x500H5dtdWU/eenLEogHDO43xS3V/ALIyQq+TATx0ZrgD4K/AMVstz
-	ZIO0GDMflfVoq39w9EGkOHZPEXL3kP1ne0xcVp8SSJFhBcOUFS7bsutGRJOIx+5XJ1BL8quD6W9c0
-	kajlGwPw==;
+	bh=zfwnxa2/KnJULEu+KACxIbwP+IASqVf3iv62lzv4xD8=; b=gNzhOeX2d/QrmB7Aa2bZwPZwqA
+	5yoRy4/JpWKvrRg1cjrAm2iaxxbWnwSXzNqjXKxd+J8EkJGXPmiGngKisrkCpq38LnQM8wZI3c+Rv
+	3YIxRu7bBCZCIgrrV8Qa0c5hwG5UYGRV09v+s/hr8xugBHwSfnvmWPIN0+9OH3ztEwr9CZT5kv9H9
+	dfol7ITvGcsO/ZiKNOHbyy8mmcDeQEJkD5AGg3W+sKwRyqy7eewtoeAmErPKwbhpWne3H2QqC3ltZ
+	rq7zks+UKrdJE630O9aG1mrXPGHjeWNiRuBVciHjnnycVhFLzESMIdW6IMEcoPjlcAzqiUaLMCPOK
+	ODv3fvcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKoOP-000ZCq-0K; Mon, 30 Aug 2021 21:00:33 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1mKoZa-000bhL-L2; Mon, 30 Aug 2021 21:12:06 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKoOK-000ZAo-1s; Mon, 30 Aug 2021 21:00:31 +0000
-Received: by mail-ej1-x634.google.com with SMTP id me10so33952461ejb.11;
- Mon, 30 Aug 2021 14:00:20 -0700 (PDT)
+ id 1mKoZX-000bgU-NM; Mon, 30 Aug 2021 21:12:05 +0000
+Received: by mail-ej1-x636.google.com with SMTP id x11so34178993ejv.0;
+ Mon, 30 Aug 2021 14:12:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=KWiHNXS+3DcOlsVpnDVjQ/m3C1IyjZ5owtbI17urlSs=;
- b=bls3vPsE9/mpAehw9h8f0bfIKo/ur5D3gapsk6ABlwMpjeNlxnNftLg5NnlgKbrS4J
- /sKHmCpb2siio/kdCeNycUZ/YaVbk+xwo5ZfnVTuL1OsnztQ4y3HVsto7kYb0mDWWMfq
- 8WvxYIJTIg9sE0Cfxp8919Ne5mZ0AxMthoZinPZFWWUC00ZrTYoNt8QeXuqlqGirttHG
- k+ZwbnF6G40YvyJTJXblgBwpSjnNY3tWBrKGzhYGJRP8X2ebVIFiUH+zW4cD75T377Xz
- la5A1p6W1yPx/RLEbxQqKeK2sbulJg1f+x+IjRuzhp187q928KQ6NyqQGyxu+URoxBD7
- Su9g==
+ bh=r14IiUeFZsOa+p44jC0mJ6Q1pyznNHnGwx/JXCHjfMU=;
+ b=U9eeA+tpY9hAdaxImu/QageaS5SOYiXQ0IClfAZDAQ9YmF/AVksSLDwVIcGUYtLfV2
+ 9UgHpkNh3bLECyFovm+bzkkRyizWNofxP/KKyhQFohWoY4QXbxiYUftmcxbrXuCkP3Yc
+ HeMI8Pz8a7gdORWLHcmDnNMQF4QJ4CxRz4QPlzHF7W8RLHbnwv7K3kXVfNeTgt6i5Xsc
+ onQq/dTvuYn6Pqps01hbfwnQF++BUO0SizEY+SpAkJoO/YVeMh0BaN2vXk0RmMJpwemV
+ Nxcufx7sgM6IJD1Feob/2Zhr1ciXAhBg7CWdpYUSHjUiRdxEKRPTExSlTjFepP005nKG
+ vCxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=KWiHNXS+3DcOlsVpnDVjQ/m3C1IyjZ5owtbI17urlSs=;
- b=NKwP5j4h9MIWfuSKAxnHYV0YgcYOLuxwbpYH+7gI0G0ldFAT9kGx9dCGGRDpRK1B8u
- +Gzj3SHursvoBDT/F9+UwhdkRwkwoDB0lnrVZYF67L3K1DnizKGAc0AkQCYauRBMM6G8
- JFbraC4s2SItkpifE2bFQBc1FqDT2kCnSbuciRNiueWrA4f8aUr8FEBptUR8pP2fpnyf
- 1isCfRySS7i6wM4XNGnesNK5gb8hW4FOX2kfGSVMNdY67+LxLcPSt9ntN0A+KRcfTsXZ
- 3cpffvPWWbcK0Pk+0NJfA27+4DLYWhfkTL5srBmWtIjXBd3dA5L94MhqBwjjvoKIYb7l
- 7RDQ==
-X-Gm-Message-State: AOAM5328NfRHHgwD5EBAnN6puJbV7cwywQSQCOJSK8CrQRta3Cp3l/rV
- lkf+ZyPzk5o6kCo/aLUYiNEt0v3xoQ+AX7wL
-X-Google-Smtp-Source: ABdhPJwhD4PkYb6968XTC6ESe+L5tvt2UaX2SD+FMpytvd38l0rgpOZLeQtVZrtL5iuFcKST3zh7Iw==
-X-Received: by 2002:a17:906:1451:: with SMTP id
- q17mr27376832ejc.214.1630357219217; 
- Mon, 30 Aug 2021 14:00:19 -0700 (PDT)
+ bh=r14IiUeFZsOa+p44jC0mJ6Q1pyznNHnGwx/JXCHjfMU=;
+ b=oC2vgzJbbFpg/CNbAwNcqBSJLZLrKOLxkk2iu5i8Rzw3lYu36Z41IypzABjGfiYOE3
+ vaXmeHG7lVnV4yK81LoEA9Y+9rBeyKcqU6ngLqH3w5nz9Lgh7/Skv24wTgbjQKZLK+eI
+ d6HBK5OX+k8/p+8/CBL7XaybYbxJlXOUlSg3L/j4h9Fvg1bFlkFQ941mRwPYjF2onS9s
+ Daadet6XwxHV9/YMPzJImj0cIexuY1tqcO+XhjUW4c+/+tJl0aMun+vY4P2vuvb5w+4N
+ zKHVLIJd6IYWtGQHQik8JoTCbUB4IeVIdR8SekIgb4B33MBqjdUSUoxZsCy1F3TUDPKN
+ NgOA==
+X-Gm-Message-State: AOAM530RZ4vI8f4uc9s+5T1AXQvy4jdWH7/FkJfMJ5mnijvgEsxZOWFk
+ lmW15wdQxxy7NGcsycNQnakKUud+BDjfHx5x
+X-Google-Smtp-Source: ABdhPJwYEmJoPiRFTWYAuDsvHNKG/YGAhFBEJdj8AsW1rXIr/Au3+LJksV7du9M4yA9hD0PBaeNBdw==
+X-Received: by 2002:a17:906:a044:: with SMTP id
+ bg4mr27248742ejb.312.1630357922315; 
+ Mon, 30 Aug 2021 14:12:02 -0700 (PDT)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- dk6sm8164992edb.14.2021.08.30.14.00.18
+ p8sm7215142ejo.2.2021.08.30.14.12.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Aug 2021 14:00:18 -0700 (PDT)
-Subject: Re: [PATCH v1 4/5] dt-bindings: phy: phy-rockchip-dphy-rx0: add
- support for tx1rx1 phy
+ Mon, 30 Aug 2021 14:12:01 -0700 (PDT)
+Subject: Re: [PATCH v1 5/5] arm64: dts: rockchip: add mipi-dphy-tx1rx1 for
+ rk3399
 To: Mikhail Rudenko <mike.rudenko@gmail.com>, linux-phy@lists.infradead.org
-Cc: linux-media@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>,
- Ezequiel Garcia <ezequiel@collabora.com>, devicetree@vger.kernel.org,
+Cc: linux-media@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Marc Zyngier <maz@kernel.org>,
+ Helen Koike <helen.koike@collabora.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>, Robin Murphy
+ <robin.murphy@arm.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20210830180758.251390-1-mike.rudenko@gmail.com>
- <20210830180758.251390-5-mike.rudenko@gmail.com>
+ <20210830180758.251390-6-mike.rudenko@gmail.com>
 From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <60aa055c-d872-3e5c-3c85-09300215a60e@gmail.com>
-Date: Mon, 30 Aug 2021 23:00:17 +0200
+Message-ID: <ac38a6ce-19f6-8d30-6070-55b78cc082e2@gmail.com>
+Date: Mon, 30 Aug 2021 23:12:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210830180758.251390-5-mike.rudenko@gmail.com>
+In-Reply-To: <20210830180758.251390-6-mike.rudenko@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_140028_161100_ABFF9BFB 
-X-CRM114-Status: GOOD (  20.05  )
+X-CRM114-CacheID: sfid-20210830_141203_834182_38A9E71D 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,133 +115,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Mikhail,
 
-Some comments below. Have a look if it is useful.
-
 On 8/30/21 8:07 PM, Mikhail Rudenko wrote:
-> RK3399 TX1RX1 D-PHY is not a child of GRF and uses reg, thus add
-> corresponding properties conditionally. It also requires DSI clock to
-> operate, so check for it. Since we now support both rx0 and tx1rx1,
-> rename the schema to rockchip-mipi-dphy-rx.yaml.
+> Add DT node for RX mode of RK3399 TX1RX1 D-PHY.
 > 
 > Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
 > ---
->  ...hy-rx0.yaml => rockchip-mipi-dphy-rx.yaml} | 39 +++++++++++++++++--
->  1 file changed, 35 insertions(+), 4 deletions(-)
->  rename Documentation/devicetree/bindings/phy/{rockchip-mipi-dphy-rx0.yaml => rockchip-mipi-dphy-rx.yaml} (65%)
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml b/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx.yaml
-> similarity index 65%
-> rename from Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> rename to Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx.yaml
-> index 7d888d358823..f42319448fc9 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx.yaml
-> @@ -1,10 +1,10 @@
->  # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->  %YAML 1.2
->  ---
-> -$id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx0.yaml#
-> +$id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx.yaml#
->  $schema: http://devicetree.org/meta-schemas/core.yaml#
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 3871c7fd83b0..2e4513275a87 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1902,6 +1902,21 @@ mipi1_in_vopl: endpoint@1 {
+>  		};
+>  	};
 >  
-> -title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
-> +title: Rockchip SoC MIPI RX0/TX1RX1 D-PHY Device Tree Bindings
->  
->  maintainers:
->    - Helen Koike <helen.koike@collabora.com>
-> @@ -16,19 +16,28 @@ description: |
->  
->  properties:
->    compatible:
-> -    const: rockchip,rk3399-mipi-dphy-rx0
-> +    enum:
-> +      - rockchip,rk3399-mipi-dphy-rx0
-> +      - rockchip,rk3399-mipi-dphy-tx1rx1
+> +	mipi_dphy_tx1rx1: mipi-dphy-tx1rx1@ff968000 {
+> +		compatible = "rockchip,rk3399-mipi-dphy-tx1rx1";
+> +		reg = <0x0 0xff968000 0x0 0x8000>;
+
+> +		clocks = <&cru SCLK_MIPIDPHY_REF>,
+> +			<&cru SCLK_DPHY_TX1RX1_CFG>,
+> +			<&cru PCLK_VIO_GRF>,
+> +			<&cru PCLK_MIPI_DSI1>;
+> +		clock-names = "dphy-ref", "dphy-cfg",
+> +			"grf", "dsi";
+
+Could you fix the alignment a bit with extra spaces?
+
+> +		rockchip,grf = <&grf>;
+> +		power-domains = <&power RK3399_PD_VIO>;
+
+Sort in alphabetical order.
+
+> +		#phy-cells = <0>;
+> +		status = "disabled";
+> +	};
 > +
-
-> +  reg:
-> +    maxItems: 1
-
-This allows every node to have a reg property.
-
->  
->    clocks:
-> +    minItems: 3
->      items:
->        - description: MIPI D-PHY ref clock
-> -      - description: MIPI D-PHY RX0 cfg clock
-> +      - description: MIPI D-PHY RX0/TX1RX1 cfg clock
->        - description: Video in/out general register file clock
-> +      - description: MIPI D-PHY DSI clock
->  
->    clock-names:
-> +    minItems: 3
->      items:
->        - const: dphy-ref
->        - const: dphy-cfg
->        - const: grf
-> +      - const: dsi
->  
->    '#phy-cells':
->      const: 0
-> @@ -37,6 +46,12 @@ properties:
->      description: Video in/out power domain.
->      maxItems: 1
->  
-
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      The phandle of the syscon node for the general register file
-> +      (GRF), required for TX1RX1 MIPI D-PHY on RK3399.
-
-This allows every node to have a rockchip,grf property.
-
-> +
->  required:
->    - compatible
->    - clocks
-> @@ -44,6 +59,22 @@ required:
->    - '#phy-cells'
->    - power-domains
->  
-> +if:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +          const: rockchip,rk3399-mipi-dphy-tx1rx1
-> +then:
-
-> +  required:
-
-Move/swap the properties section above the required section.
-
-> +    - reg
-> +    - rockchip,grf
-> +
-> +  properties:
-
-  reg:
-    maxItems: 1
-
-> +    clocks:
-> +      minItems: 4
-> +    clock-names:
-> +      minItems: 4
-
-  rockchip,grf:
-    $ref: /schemas/types.yaml#/definitions/phandle
-    description:
-      The phandle of the syscon node for the general register file(GRF).
-
-
-", required for TX1RX1 MIPI D-PHY on RK3399."
-
-This phrase is already said/done with the "required:" section above
-
->  additionalProperties: false
->  
->  examples:
+>  	edp: edp@ff970000 {
+>  		compatible = "rockchip,rk3399-edp";
+>  		reg = <0x0 0xff970000 0x0 0x8000>;
 > 
 
 _______________________________________________
