@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F612C4320A
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CBB2C432BE
 	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 01:10:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 469F560F9B
+	by mail.kernel.org (Postfix) with ESMTPS id 468C260F91
 	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Aug 2021 01:10:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 469F560F9B
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 468C260F91
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,22 +23,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BxLWPKKVdZaSRVvJQi/B3mznzp5DdzA//nfVJVTzjPc=; b=afMM+0cN+sBa+9
-	uPo9usJO7RRrlfe7rnxup4+dP/DYKE+dILkULGc0YVnjfzQPdyc7RpXo0XEOPUE0COBOL1/rVjkYP
-	GYYi6XWjru5t5isoCMRCBJdGivtIlg63iD1h3xxGeerczKVRhDGWnPYfxJ4QwcwcLzNlVGHMd6IyM
-	hZ5wd4vxcpcXl+prvZMwNhJ2GchbzTGQRdQiFNE6BDo4f7C8OKs6YH8b9UfA9P9RkC6rhO+9CCRwS
-	6/JQilLXC8J1G9oTO+a0KNKGpmuygujybfMirwqajyjk4V6R2P3/2aDye6vFhH8tyCccqlIy3yOnn
-	SXoKURAjIdok9zAqVXMw==;
+	List-Owner; bh=OswU51qWB1zNpo1VrNvYt0KY3MoC4VlZgcWSY07ITmA=; b=kekmimLhDnU+1d
+	+LPXObJLylfsJ8oL89YVqH7iSfg3NwNtk0weSw6J0nFB5qjaDwcF5ggIOJo+HxRK9YEXPjK7GdF9M
+	zHkF8kA1OcQsoLcHAsKBwxpeiD2coANa0tl5xNYb9tKXF0a+/BQILqMg44VJgUHd4/sW6KOQBLKy+
+	fYy69ibiqTAJhaJ6xVB/Z3UBftqXq4tkoF0MyAE6vh534eVfhmGBClvE/oyFyeUqUsmuVmBM7d2KF
+	O+XbdTolMcQe92qRcOLth8vBbvk7dFkKqKXJ2FhK8NLhWf/+oD/m8k4Z08f7KM9IUoq9/RWOaZA78
+	zXPBXchrsaDevL9eSAMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKVoy-00GEYi-Pm; Mon, 30 Aug 2021 01:10:44 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1mKVoz-00GEZ0-FJ; Mon, 30 Aug 2021 01:10:45 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKVow-00GEXM-3p
+ id 1mKVow-00GEXF-Ap
  for linux-rockchip@lists.infradead.org; Mon, 30 Aug 2021 01:10:43 +0000
 Received: from localhost (unknown [192.168.167.224])
- by lucky1.263xmail.com (Postfix) with ESMTP id AC273B2E55;
- Mon, 30 Aug 2021 09:10:39 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id E00AFC2385;
+ Mon, 30 Aug 2021 09:10:36 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,9 +47,9 @@ X-ANTISPAM-LEVEL: 2
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P22031T140205919041280S1630285834273010_; 
- Mon, 30 Aug 2021 09:10:38 +0800 (CST)
+ Mon, 30 Aug 2021 09:10:36 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <1ffff40bd4e8d67e921aa133994d4695>
+X-UNIQUE-TAG: <d68898a29938f1758e087ab661f172f0>
 X-RL-SENDER: sugar.zhang@rock-chips.com
 X-SENDER: zxg@rock-chips.com
 X-LOGIN-NAME: sugar.zhang@rock-chips.com
@@ -63,15 +63,15 @@ To: broonie@kernel.org,
 	heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  alsa-devel@alsa-project.org, Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v2 4/7] ASoC: dt-bindings: rockchip: Add binding for rk3568 pdm
-Date: Mon, 30 Aug 2021 09:10:29 +0800
-Message-Id: <1630285832-28079-4-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v2 2/7] ASoC: dt-bindings: rockchip: Add binding for rv1126 pdm
+Date: Mon, 30 Aug 2021 09:10:27 +0800
+Message-Id: <1630285832-28079-2-git-send-email-sugar.zhang@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1630285788-28002-1-git-send-email-sugar.zhang@rock-chips.com>
 References: <1630285788-28002-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210829_181042_391689_D01F8FF1 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20210829_181042_605000_214B02C0 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,7 +90,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch documents for rk3568 pdm.
+This patch documents for rv1126 pdm.
 
 Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 ---
@@ -101,17 +101,17 @@ Changes in v2: None
  1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/sound/rockchip,pdm.txt b/Documentation/devicetree/bindings/sound/rockchip,pdm.txt
-index 60e8630..54d94438 100644
+index 98572a2..60e8630 100644
 --- a/Documentation/devicetree/bindings/sound/rockchip,pdm.txt
 +++ b/Documentation/devicetree/bindings/sound/rockchip,pdm.txt
 @@ -6,6 +6,7 @@ Required properties:
    - "rockchip,px30-pdm"
    - "rockchip,rk1808-pdm"
    - "rockchip,rk3308-pdm"
-+  - "rockchip,rk3568-pdm"
-   - "rockchip,rv1126-pdm"
++  - "rockchip,rv1126-pdm"
  - reg: physical base address of the controller and length of memory mapped
    region.
+ - dmas: DMA specifiers for rx dma. See the DMA client binding,
 -- 
 2.7.4
 
