@@ -2,88 +2,64 @@ Return-Path: <SRS0=VuRY=NW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3815C432BE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Aug 2021 00:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82D8BC432BE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Aug 2021 09:49:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E81460F5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Aug 2021 00:42:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7E81460F5B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id 2B2F060249
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Aug 2021 09:49:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2B2F060249
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R63VXw0ZmswrsAuBVe3UFkWOKVuTdFCMJelADjJGh9g=; b=RNt/s3FBUegLqP
-	kwu3hqEBDUIXat1Sc+SyXw6/TRqJtMpMwBf8ecadMQlgKbzg9CHUxAByu6TzqPW+5CWwHHCJyEA1Q
-	2k82sN0SAjDNK8AxRNN8anS9abwHkOwnCCV2gc06vkNoysIqPNbj4TRfezaC7CepoVO6o4QMUY7ca
-	dyl0BAoSDI9gneZY/ihYp1oXRhrB5mQQ3HK9HpJeDHabgtb592+RTnPpN/AxdwvLn1mFvy6xhoKIR
-	JMsoOmE2XDCUXgctPOg4cZy5cmAMnZqV3Te4EoN/omdtyzhnHwWqZm7p5NKVRGV4eGm3NESFGQs8c
-	26Sj6Bjk9BCIm+Hc0T9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Oz6V2DrUZvZOWNYKqopvc0HIgYgcB9t3WGptc2iDe6s=; b=P289xKs5mLbrSj
+	UEh1BjmZDbYLHcRQ9uM+Qre67nee8+nvEDz2oWYAIieja45++YelVT8KUFXv1jBfCMCO96gmRnY2q
+	A1nQhmiBIPq5JB6kMY5xSvgilMPgZTT8p+yqjzUXKJwDkZ0GQ1Q6fQq9PJ1zYU1WZHWp2thaUF4zu
+	WyjS+8aMSl+rlYeP3MtGP2glF0M77hydjHjT45bG010XQlnv5eDn7d6yfFdJVRFMiMH5dOO3OtgJU
+	GJV3vHFu0s42VQwRiPECItENiYtPXKncCv0Lbxsw4zSYxXqaYc1ERkydHlwp3N/3qKL8UUyPaKCc4
+	y7SmJtxAztFEd8IFOdKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKrqm-000u4g-5S; Tue, 31 Aug 2021 00:42:04 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1mL0OX-001xmz-35; Tue, 31 Aug 2021 09:49:29 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKrqY-000u2x-SW
- for linux-rockchip@lists.infradead.org; Tue, 31 Aug 2021 00:41:53 +0000
-Received: by mail-ej1-x635.google.com with SMTP id t19so34884185ejr.8
- for <linux-rockchip@lists.infradead.org>; Mon, 30 Aug 2021 17:41:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=t6EgJ/pBlXGjmQW+1kycNPH7wqBqGocIxe5B3vOVKdg=;
- b=ozqNjl0qJHwzCO4kLeRZtdKmVX6r37wi9a6tbMXD6kiNe89XfkdS2y1o/bSVxH2TB/
- kZZBD0cHymA0yyOmQyVDhSJ+oP/i6Faea7bdcgRwqRdX/5kGuH6qkyqN3AobnaWQxJcq
- Q/H5HFeNijuHcbSL5AYcJsE5vedAxWkGqU+/RPjCyM47uVUeg3N1i1Z3ZEOSCiXC4vTm
- 56dUDooSPjrnIiRUPmKYf2ZWXS1gRvo/YbD0LTCA+nMrqprAvDc26WMudYtoz9BWzpIG
- z4H+/CullndzRIrgzLgm6xlJ78L8eiOHxSCSUXwCdBPHo0dWFuPVlP0Q7Br6L5OYcxn1
- VDzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=t6EgJ/pBlXGjmQW+1kycNPH7wqBqGocIxe5B3vOVKdg=;
- b=WBQshJJkfXSdt+Lgiu7QTxiriY1Hy0VGDMcBtx1o3J8ObzCkV4/TtzVEGPlTGZpBjw
- KabzgnBwNE7cdPdLpwix0Frh3ow4+pXwcu7ecpTA/F7aB2MMh0AMa/Lk8xgxTHAxoKVG
- LJYuTQiUpGwMaLs8d69YJQHZjcHWAXXJHLroo/RBfgCK2SYbHjDZ0t4cPV+4XITtF4U5
- sZ4eqsRYiUG5dCbcpJv1I95BqQfE6TgICNQTTo5sJulAyje8UM+bxp7/f400Y8LEkfJZ
- YnocXek3lrvuxE/LGtMX62xhDGvdMEhiQomxHqPEq8N/FPdCzQiR1F/kCUJal2vvFvyT
- p+1Q==
-X-Gm-Message-State: AOAM531dujmLF9F+zpWUzl3mwNL8pZLBOTskopi7X637eX/AeORjrrVC
- +8VViSNqAo+H8J4+i98nZRRx7LNv51GWhmHp26vh7Q==
-X-Google-Smtp-Source: ABdhPJwfDEapt8mz+NTo0uJkU3v5YR5ufjt/WlrI5Z+Q8KSQPjbjAOUEvNuF9+JEMzyiUG+AY7eqBrSXjXnTKMn6BMw=
-X-Received: by 2002:a17:906:7749:: with SMTP id
- o9mr28291109ejn.141.1630370508559; 
- Mon, 30 Aug 2021 17:41:48 -0700 (PDT)
+ id 1mL0OJ-001xiL-VT; Tue, 31 Aug 2021 09:49:17 +0000
+Received: from localhost.localdomain (unknown
+ [IPv6:2a01:e0a:4cb:a870:2d6:5982:f5be:998c])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 268E21F42FC8;
+ Tue, 31 Aug 2021 10:49:09 +0100 (BST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org, p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@gmail.com, hverkuil-cisco@xs4all.nl, jc@kynesim.co.uk,
+ ezequiel@vanguardiasur.com.ar
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH 0/2] media: HEVC: RPS clean up
+Date: Tue, 31 Aug 2021 11:48:58 +0200
+Message-Id: <20210831094900.203283-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20210830180758.251390-1-mike.rudenko@gmail.com>
- <20210830180758.251390-2-mike.rudenko@gmail.com> <6474995.6kXVAnRFRJ@diego>
-In-Reply-To: <6474995.6kXVAnRFRJ@diego>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 30 Aug 2021 21:41:36 -0300
-Message-ID: <CAAEAJfB6FBbeEPuzirP2nuU_J9nLFSrczgXYVfNQUZbEJrbc7Q@mail.gmail.com>
-Subject: Re: [PATCH v1 1/5] phy: phy-rockchip-dphy-rx0: refactor for tx1rx1
- addition
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: linux-phy@lists.infradead.org, Mikhail Rudenko <mike.rudenko@gmail.com>, 
- linux-media <linux-media@vger.kernel.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_174151_126320_075D320D 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20210831_024916_169176_1EFD45A3 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,23 +72,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiBNb24sIDMwIEF1ZyAyMDIxIGF0IDE3OjQ2LCBIZWlrbyBTdMO8Ym5lciA8
-aGVpa29Ac250ZWNoLmRlPiB3cm90ZToKPgo+IEhpIE1pa2hhaWwsCj4KPiBBbSBNb250YWcsIDMw
-LiBBdWd1c3QgMjAyMSwgMjA6MDc6NTAgQ0VTVCBzY2hyaWViIE1pa2hhaWwgUnVkZW5rbzoKPiA+
-IEluIG9yZGVyIHRvIGFjY29tbW9kYXRlIGZvciByazMzOTkgdHgxcngxIGFkZGl0aW9uLCBtYWtl
-Cj4gPiBlbmFibGUvZGlzYWJsZSBmdW5jdGlvbiBjYWxscyBpbmRpcmVjdCB2aWEgZnVuY3Rpb24g
-cG9pbnRlcnMgaW4KPiA+IHJrX2RwaHlfZHJ2X2RhdGEuIEFsc28gcmVuYW1lIHJrX2RwaHlfd3Jp
-dGUgYW5kIHJrX2RwaHlfZW5hYmxlIHRvCj4gPiBhdm9pZCBuYW1pbmcgY2xhc2hlcy4KPgo+IFlv
-dSdyZSBhIGJpdCB0b28gbGF0ZSB0byB0aGUgcGFydHkgOi0oIC4KPgo+IFRoZSB0eDFyeDEgZHBo
-eSBpcyBsaXZpbmcgX2luc2lkZV8gdGhlIDJuZCBEU0kgY29udHJvbGxlciBhbmQgaXMKPiBjb25m
-aWd1cmVkIHRocm91Z2ggaXQuCj4KCldvdWxkIHlvdSBiZSBzbyBraW5kIHRvIHB1c2ggYSBwYXRj
-aCBhZGRpbmcgc29tZSBjb21tZW50cyB0bwpkcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2No
-aXAtZHBoeS1yeDAuYyB3aXRoIHRoaXMgaW5mb3JtYXRpb24/CgpUaGFua3MsCkV6ZXF1aWVsCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series aims to clean up Reference Picture Set usage and flags.
+
+Long term flag was named with RPS prefix while it is not used for RPS
+but for mark long term references in DBP. Remane it and remove the two
+other useless RPS flags.
+
+Clarify documentation about RPS lists content and make sure that Hantro
+driver use them correctly (i.e without look up in DBP).
+
+Benjamin
+
+Benjamin Gaignard (2):
+  media: hevc: Remove RPS named flags
+  media: hevc: Embedded indexes in RPS
+
+ .../media/v4l/ext-ctrls-codec.rst             | 12 ++++-----
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 27 +++++--------------
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |  2 +-
+ include/media/hevc-ctrls.h                    |  4 +--
+ 4 files changed, 14 insertions(+), 31 deletions(-)
+
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
