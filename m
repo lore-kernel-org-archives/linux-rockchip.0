@@ -2,60 +2,88 @@ Return-Path: <SRS0=3Vai=NZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8D2FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 21:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BFDEAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 23:16:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 44196610FD
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 21:00:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 44196610FD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 80DA46056C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 23:16:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 80DA46056C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jLWpgFAl/3YA2N5PBsGP4u3uX72sdM7nFGSN/2Lfw5w=; b=cosXFJG/7513JN
-	PtnEnPGnynn8UAzzjU4UjSweSqajeVjuCjLtLER4lt3hxMXqVyg12Wk2RT5nhDtYfVgQiz8RLoqnM
-	GNtTRuDdstnOIJI+NR3I+m0cw1CvOUFP4vC3shYqyWlZAqVWzs5HhHEKmcsjHjXG5tzGrJhu/646z
-	2Sk0ODoMQeQI2AnCUpfa0fPdaiu4VE/bK+9J9KI92zlwm8khRkgNsAW4RgzGm8gRenZDDtADUJqRf
-	Hv6YVnsOysadWfyMKGtCHX8ewT5Fva9WH/d+PvEwM39Xe36YumUhGMzVvY2vfSBCX9mo6C8mCzcv6
-	ILOdTjQCyG22Zh20Mj4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+RvRz1Dz9jZygc3b10bQKKlPfpGLoBCT8b3DOpx674c=; b=XGXsJ/nGGw7G7j
+	hSoR6Ywr3oMJSj6UD2GMB906+KrnaoZL6IIune0gN2S9rHgpAR4m3T7ppAEBAhTg0ul84Q6+kJzAE
+	gaREZ4lWFmbzYMdwefewmTFzlrHWDGJoPeTR2JSBtL2EsDKrEsM50s6CtT62Ny+DjANN4FtCTMBvB
+	w9mnZNS9KLelmo8FysdWmTPHfJ8/+gA5vwiyy/RaXqBsO0bJKAl8Fm458Qp/8l2zRuN4xA0ASodAh
+	Huw/YtkBAePpwhv88wpDZlwZQ8h1tlyrgrdoHt3VGXQkpBky/AN1AMsqjPUHynE9vvnLvYhlhdKCq
+	MEATL417xL0SI4hG1NZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMGIM-00Cy9f-5z; Fri, 03 Sep 2021 21:00:18 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mMIPi-00D9GR-8a; Fri, 03 Sep 2021 23:16:02 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMGI8-00Cy6T-Rd; Fri, 03 Sep 2021 21:00:06 +0000
-Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mMGI2-0007Iw-D3; Fri, 03 Sep 2021 22:59:58 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Miles Chen <miles.chen@mediatek.com>
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
- Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH] clk: rockchip: use module_platform_driver_probe
-Date: Fri, 03 Sep 2021 22:59:57 +0200
-Message-ID: <1764446.vrLGdHa7mH@diego>
-In-Reply-To: <20210902075713.7563-1-miles.chen@mediatek.com>
-References: <20210902075713.7563-1-miles.chen@mediatek.com>
+ id 1mMIPf-00D9Fg-Gh; Fri, 03 Sep 2021 23:16:01 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id s25so1037682edw.0;
+ Fri, 03 Sep 2021 16:15:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jmzC+5W6PuoiEpav3LGA2I32fo489OxZqYaZooLG7lc=;
+ b=JW9vigKQ9309eJ+4y0IuwAsEGHtBo0JNhyp6fuYUHUT5VzmDppgkuFLZY9CskFv3Nn
+ D9Xvg+z9cCH516mv5CxaYqAuffRObxMfD/dmf3Lq0g8409t8Qx9CLn/+iwOHqSnHUyMH
+ D81K+B9bzIRu7FWG6z4aURM0KwnMfzhcb69HmmCnoVFPEO26g/Fpu0DmE9zjZrmoDrcK
+ Mo6nBezyBIzCDkKLQoeMw+50JO33I7LUH8u+wiqGJp2vz4LzQVp3kMPiZFUfCt9MmBjt
+ s5C+1jbesgw8GOWIBClSlh7Y+VCFmB5KylowId03JBvKT8Jk728apL9jZj7imQfvqCfr
+ rDig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jmzC+5W6PuoiEpav3LGA2I32fo489OxZqYaZooLG7lc=;
+ b=oE3D7ynI7cbD/gKKtROYsWbea7ffoalkomAhXZi2cdRI7bG9dxd7zwAMkMjHzUdXcl
+ DXe0WAlcxy1/CG0V69sWmdrAT1ouE98e57PmJGx9pSvYV/hbFgvneYxKsy4k+b1asHae
+ 52tgCcE49B74yGQjdieZnUVIpg4rctpD//a6hPoobpXBv0+6VgBiRdLhNpyXtDzzHrQ5
+ qbwLUf0Q03zo+onQqPqAl0j3SV7raUrUyulUFHi2+9uE+fduMg/3N1xXGOC9K5VaYekD
+ FFmNJLggW6Pu2R1orrkQ/uL+tUgx4rd05IRK9ijD715CySVhQeRXcvX9imdCn+b55QOJ
+ hg0A==
+X-Gm-Message-State: AOAM5310oRttQ8vLakUtdxpIurPBmNE965vUnHekU2vPZD9UACF6dYRr
+ RoXLVEletAuDz7NM6hpsMl4=
+X-Google-Smtp-Source: ABdhPJyuRQaZGIsIbO9A9TerzEbIgATo1E295j/y36AwMPBpvYThnT+om998V6J+4YfapTYZekoU0A==
+X-Received: by 2002:a05:6402:4cb:: with SMTP id
+ n11mr1413449edw.292.1630710957408; 
+ Fri, 03 Sep 2021 16:15:57 -0700 (PDT)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id r11sm214068ejy.71.2021.09.03.16.15.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Sep 2021 16:15:56 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: 
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v4 0/4] Rockchip I2S/TDM controller
+Date: Sat,  4 Sep 2021 01:15:32 +0200
+Message-Id: <20210903231536.225540-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_140004_950806_B1274FAE 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20210903_161559_607402_7BC782BB 
+X-CRM114-Status: GOOD (  27.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,57 +101,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Donnerstag, 2. September 2021, 09:57:13 CEST schrieb Miles Chen:
-> Replace builtin_platform_driver_probe with module_platform_driver_probe
-> because that rk3399 and rk3568 can be built as kernel modules.
-> 
-> Cc: Stephen Boyd <sboyd@kernel.org>
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+Hello,
 
-on both rk3399 and rk3568:
-Tested-by: Heiko Stuebner <heiko@sntech.de>
+this is version 4 of the I2S/TDM driver patchset. A big thanks
+to everyone who has provided their valuable feedback so far.
 
-and also
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Changes in v4:
+ driver:
+ - factor TDE/RDE enable/disable into their own inlined functions
+ - add an RDE disable in a location where it looks like it was
+   forgotten (rxctrl else), judging by corresponding TDE code
+ - remove parentheses around CLK_PPM_MIN/MAX values
+ - wording + titlecasing in the clock compensation control
+ - use if statement in precious_reg instead
+ - refactor rockchip_i2s_io_multiplex to have the switch statements
+   in a function call to make the function less unwieldy
+ - get rid of IS_ERR checks around clk enable/disable calls where
+   already checked before by the probe
+ - reworded some error message strings
+ - fix potential deadlock in txrxctrl found by Sugar Zhang
+   using spin_lock_irqsave
+ - fix potential deadlock in trcm_mode found by Sugar Zhang
+   using spin_lock_irqsave
+ - use devm_platform_get_and_ioremap_resource in probe
+ - only set DMA things if controller has capture/playback ability.
+   Did not move this into init_dai because I'd then need to pass in
+   the res and probe it earlier in the function, and it's also used
+   elsewhere in the probe function
+ - use _get_optional_exclusive for reset controls, as some controllers
+   only have capture or playback capability
+ bindings:
+ - remove status = "okay" since that's the default
+ - change the path configs to be an enum
+ - rename "foo" to "bus"
+ - make resets optional as controller may lack either playback or
+   capture capability, and therefore also doesn't have a reset.
+   At least one reset is still required, because a controller with
+   no playback and no capture is not very useful
 
+Changes in v3:
+ driver:
+ - alphabetically sort includes
+ - check pm_runtime_get_sync return value, act on it
+ - remove unnecessary initialisers in set_fmt
+ - use udelay(15) in retry code: 10 retries * 15 = 150, so at worst
+   we wait the full i2s register access delay
+ - fix some weird returns to return directly
+ - use __maybe_unused instead of #ifdef CONFIG_PM_SLEEP, also put
+   __maybe_unused on the runtime callbacks
+ - use (foo) instead of foo in header macros for precedence reasons
+ - when using mclk-calibrate, also turn off/on those clocks during
+   suspend and resume operations
+ - remove mclk_tx and mclk_rx reenablement code in remove
+ - move hclk enablement further down the probe, and disable it
+   on probe failure
+ - make reset controls mandatory, since the bindings state this too
+ - use _exclusive for getting the reset controls
+ - change reset assert/deassert delays to both be 10 usec
+   (thank you Sugar Zhang!)
+ - properly prepare and enable all mclks in probe, especially before
+   calling clk_get_rate on them
+ - if registering PCM fails, also use the cleanup error path instead of
+   returning directly
+ - bring back playback and capture only but in the way Sugar Zhang
+   suggested it: set those modes depending on dma-names
+ - rework clock enablement in general. Probe now always enables these,
+   instead of relying on the pm resume thing
+ - add myself to MAINTAINERS for this driver
+ dt bindings:
+ - fix a description still mentioning clk-trcm in the schema
+ - document rockchip,io-multiplex, a property that describes the
+   hardware as having multiplexed I2S GPIOs so direction needs to
+   be changed dynamically
+ - document rockchip,mclk-calibrate, which allows specifying
+   different clocks for the two sample rate bases and switch between
+   them as needed
+ - dma-names now doesn't have a set order and items can be absent to
+   indicate that the controller doesn't support this mode
+ - add myself to MAINTAINERS for these bindings
 
-Heiko
+Changes in v2:
+ - remove ad-hoc writeq and needless (and broken) optimisation in
+   reset assert/deassert. This wouldn't have worked on Big Endian,
+   and would've been pointless on any other platform, as the
+   overhead for saving one write was comparatively big
+ - fix various checkpatch issues
+ - get rid of leftover clk-trcm in schema
+ - set status = "okay" in example in schema instead of "disabled"
+ - change dma-names so rx is first, adjust device trees as necessary
+ - properly reference uint32-array for rx-route and tx-route
+   instead of uint32
+ - replace trcm-sync with two boolean properties, adjust DT changes
+   accordingly and also get rid of the header file
+ - get rid of rockchip,no-dmaengine. This was only needed for
+   some downstream driver and shouldn't be in the DT
+ - get rid of rockchip,capture-only/playback-only. Rationale being
+   that I have no way to test whether they're needed, and
+   unconditionally setting channels_min to 0 breaks everything
+ - change hclk description in "clocks"
 
-> ---
->  drivers/clk/rockchip/clk-rk3399.c | 2 +-
->  drivers/clk/rockchip/clk-rk3568.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-> index 62a4f2543960..a5169156f1d2 100644
-> --- a/drivers/clk/rockchip/clk-rk3399.c
-> +++ b/drivers/clk/rockchip/clk-rk3399.c
-> @@ -1653,7 +1653,7 @@ static struct platform_driver clk_rk3399_driver = {
->  		.suppress_bind_attrs = true,
->  	},
->  };
-> -builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
-> +module_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
->  
->  MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
->  MODULE_LICENSE("GPL");
-> diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-> index 75ca855e720d..939e7079c334 100644
-> --- a/drivers/clk/rockchip/clk-rk3568.c
-> +++ b/drivers/clk/rockchip/clk-rk3568.c
-> @@ -1719,7 +1719,7 @@ static struct platform_driver clk_rk3568_driver = {
->  		.suppress_bind_attrs = true,
->  	},
->  };
-> -builtin_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
-> +module_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
->  
->  MODULE_DESCRIPTION("Rockchip RK3568 Clock Driver");
->  MODULE_LICENSE("GPL");
-> 
+Nicolas Frattaroli (4):
+  ASoC: rockchip: add support for i2s-tdm controller
+  dt-bindings: sound: add rockchip i2s-tdm binding
+  arm64: dts: rockchip: add i2s1 on rk356x
+  arm64: dts: rockchip: add analog audio on Quartz64
 
+ .../bindings/sound/rockchip,i2s-tdm.yaml      |  218 ++
+ MAINTAINERS                                   |    7 +
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |   35 +-
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   26 +
+ sound/soc/rockchip/Kconfig                    |   11 +
+ sound/soc/rockchip/Makefile                   |    2 +
+ sound/soc/rockchip/rockchip_i2s_tdm.c         | 1832 +++++++++++++++++
+ sound/soc/rockchip/rockchip_i2s_tdm.h         |  398 ++++
+ 8 files changed, 2528 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,i2s-tdm.yaml
+ create mode 100644 sound/soc/rockchip/rockchip_i2s_tdm.c
+ create mode 100644 sound/soc/rockchip/rockchip_i2s_tdm.h
 
-
+-- 
+2.33.0
 
 
 _______________________________________________
