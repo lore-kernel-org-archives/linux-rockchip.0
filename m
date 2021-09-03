@@ -2,68 +2,69 @@ Return-Path: <SRS0=3Vai=NZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 593C1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB24BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:33:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B06960F90
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:05:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B06960F90
+	by mail.kernel.org (Postfix) with ESMTPS id 7A7C360724
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:33:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7A7C360724
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cvOCTmW6sW7908wRPH2GGo7IFnuLzPEQZGPgk2HBafM=; b=hXuGZU2RcNQG1Z
-	vWRQB2yYmf8pU7kCdgbGTRdpjFlZQf7O32JEk3Zgv2AlRbdAfmFi4lt2K9mXDJC5GPRkyDX3UnotO
-	jdGYEVXnwwBkMMhr5VBiDVRWJlcFKWHkGQzQK7RKfwiSioiGGEKeLO/rcQvOzREVIQUQ0WYkJy88W
-	YxpM5LB38nfUjsrA20sNVY7B1mc00Ul/z9R9jbXK4Lqu+Gz/kF7O703BL7+4OrC7DziVVhTE5xtMP
-	I28QC2wE5rDICRQCGlOk/230+cnoFInOORxt2U6SYidvNdYYzOV0Rra75ZOXyArOPBc/aClA+Pxt4
-	Q6Gn9H7N/Ti2A3tLmooA==;
+	List-Owner; bh=Rg93V+UUMznc7Qp24y/0R87eUlnLMdp87wAvkKGlBTM=; b=iWPMSG8bVrEOAD
+	uVssjpPwvo5oMa0q+HR7iQqOW3VM/9k0Yk3P/T5mFIEWZ7wPBc6sF8rT828GUbqQqJnAJnnwmd/oC
+	2/nydh6Ep78CKWagqlrWd1ddXLhTfSIpliNed0qtLV2mRzc373uqgUzD15sXmegq/17zS3zzQutnS
+	ULZ5eG4DfwqpbILW+R/mxnVZ7U4RyTA2cQzs2GTl0YHcVMEhreuHJ1ePdsjKw6EJHT8+Pw3eadSjy
+	vMSiYNFPOeSIbnhDqHc8dzZDjnwY5xYsVXQ8HX5UgsvXI6/3eRdXw6/Cw4GYl/BULNjqMe5KUxyP/
+	WxFXWUNdgGOOZ6fHlVLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMDZ1-00CX4N-Cf; Fri, 03 Sep 2021 18:05:19 +0000
+	id 1mME05-00CbDi-L0; Fri, 03 Sep 2021 18:33:17 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMDYe-00CWzo-3W; Fri, 03 Sep 2021 18:04:57 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 54E91610A1;
- Fri,  3 Sep 2021 18:04:55 +0000 (UTC)
+ id 1mMDzi-00Cb2q-DG; Fri, 03 Sep 2021 18:32:55 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9CF3960724;
+ Fri,  3 Sep 2021 18:32:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630692295;
- bh=AYCTypw36ptHgabLcJlokFD5oklyEoCNON6TkiELR0c=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lk9RGXY9AVswYmZWtt1rE1/CavCQsvnNbMv2JGR71HazCSpK4RiR0+haWbqts9/D1
- LO7x2ocAa8NFCqGVcy8WNXRs4q+vF4tB6DOzUhT7e1pPRKCnmdDhNo44WgYPyGowvA
- md5bT1JflLrXWSLUOBJ1vGD/21QUtrd7Cc2hKdet7pTvzhT7Hu87DBjaIgFOk9YKU+
- tslioRp3Kd/ws5LH/SvYxfcWmH2I5k6EMLDNz5YwHlVs0vn4bQelO8W5FKuKzCS/8j
- ki7168sdJs86xPhj/sWdICaLo7VSDwqupNWXrNknBvJawC3UnXqufthq4KV6HeY73X
- ybTNrX1qPjUZg==
-From: Mark Brown <broonie@kernel.org>
-To: Sugar Zhang <sugar.zhang@rock-chips.com>,
-	heiko@sntech.de
-Cc: Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
- Takashi Iwai <tiwai@suse.com>, alsa-devel@alsa-project.org
-Subject: Re: [PATCH v3] ASoC: rockchip: i2s: Fix concurrency between tx/rx
-Date: Fri,  3 Sep 2021 19:04:19 +0100
-Message-Id: <163069197835.35101.4150427867250097515.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <1630674434-650-1-git-send-email-sugar.zhang@rock-chips.com>
-References: <1630674434-650-1-git-send-email-sugar.zhang@rock-chips.com>
+ s=k20201202; t=1630693973;
+ bh=l/p1Mt+6Buj3XpMkEakyWxymjCSxUxk4W1rvVC61s4Y=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=f6KdmLDyoCj8nHr/oc0jQe6KrKWlhQDDVs0k69X/d/+YOu36J8pL16GkpIePEoFjj
+ u/qOlKoRY0cVmbGT9yvRyGYZ41rg40sccPGZ2ndVD27M4QscQf1FBeNRbzxgsf4a41
+ 7csNMyf4kyuMlZDDj5FihxoxaX20rC1U+hBKVA9mEeAFZG8gbNpFnDdXlZtOz0SBk3
+ 6y8mu6y19xaSgY0g2B1YQWPPhTsU+jMoMC1X7cQ9CNgBi3yaSh7LBwpDpVwUXeV3Pl
+ nR7/DtbxWjs0C7eetEn5gHwFCyrPf5kA7u48hBscwDwT/0bpUhaiarDMhCVKAKGXdR
+ kYsRB9HijTGhA==
 MIME-Version: 1.0
+In-Reply-To: <20210902075713.7563-1-miles.chen@mediatek.com>
+References: <20210902075713.7563-1-miles.chen@mediatek.com>
+Subject: Re: [PATCH] clk: rockchip: use module_platform_driver_probe
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ Miles Chen <miles.chen@mediatek.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Miles Chen <miles.chen@mediatek.com>
+Date: Fri, 03 Sep 2021 11:32:52 -0700
+Message-ID: <163069397238.405991.15295469394989512619@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_110456_204798_F4ABA5BB 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20210903_113254_513711_37F5C14C 
+X-CRM114-Status: UNSURE (   5.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +82,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 3 Sep 2021 21:07:14 +0800, Sugar Zhang wrote:
-> This patch adds lock to fix comcurrency between tx/rx
-> to fix 'rockchip-i2s ff070000.i2s; fail to clear'
+Quoting Miles Chen (2021-09-02 00:57:13)
+> Replace builtin_platform_driver_probe with module_platform_driver_probe
+> because that rk3399 and rk3568 can be built as kernel modules.
 > 
-> Considering the situation;
-> 
->        tx stream              rx stream
->            |                      |
->            |                   disable
->          enable                   |
->            |                    reset
-> 
-> [...]
+> Cc: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: rockchip: i2s: Fix concurrency between tx/rx
-      commit: fcb958ee8e832e9cdf43408535207e15f14af755
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Should it have a fixes tag?
 
 _______________________________________________
 Linux-rockchip mailing list
