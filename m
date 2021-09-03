@@ -2,69 +2,60 @@ Return-Path: <SRS0=3Vai=NZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB24BC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8D2FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 21:00:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A7C360724
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 18:33:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7A7C360724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 44196610FD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Sep 2021 21:00:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 44196610FD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rg93V+UUMznc7Qp24y/0R87eUlnLMdp87wAvkKGlBTM=; b=iWPMSG8bVrEOAD
-	uVssjpPwvo5oMa0q+HR7iQqOW3VM/9k0Yk3P/T5mFIEWZ7wPBc6sF8rT828GUbqQqJnAJnnwmd/oC
-	2/nydh6Ep78CKWagqlrWd1ddXLhTfSIpliNed0qtLV2mRzc373uqgUzD15sXmegq/17zS3zzQutnS
-	ULZ5eG4DfwqpbILW+R/mxnVZ7U4RyTA2cQzs2GTl0YHcVMEhreuHJ1ePdsjKw6EJHT8+Pw3eadSjy
-	vMSiYNFPOeSIbnhDqHc8dzZDjnwY5xYsVXQ8HX5UgsvXI6/3eRdXw6/Cw4GYl/BULNjqMe5KUxyP/
-	WxFXWUNdgGOOZ6fHlVLA==;
+	List-Owner; bh=jLWpgFAl/3YA2N5PBsGP4u3uX72sdM7nFGSN/2Lfw5w=; b=cosXFJG/7513JN
+	PtnEnPGnynn8UAzzjU4UjSweSqajeVjuCjLtLER4lt3hxMXqVyg12Wk2RT5nhDtYfVgQiz8RLoqnM
+	GNtTRuDdstnOIJI+NR3I+m0cw1CvOUFP4vC3shYqyWlZAqVWzs5HhHEKmcsjHjXG5tzGrJhu/646z
+	2Sk0ODoMQeQI2AnCUpfa0fPdaiu4VE/bK+9J9KI92zlwm8khRkgNsAW4RgzGm8gRenZDDtADUJqRf
+	Hv6YVnsOysadWfyMKGtCHX8ewT5Fva9WH/d+PvEwM39Xe36YumUhGMzVvY2vfSBCX9mo6C8mCzcv6
+	ILOdTjQCyG22Zh20Mj4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mME05-00CbDi-L0; Fri, 03 Sep 2021 18:33:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mMGIM-00Cy9f-5z; Fri, 03 Sep 2021 21:00:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMDzi-00Cb2q-DG; Fri, 03 Sep 2021 18:32:55 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9CF3960724;
- Fri,  3 Sep 2021 18:32:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630693973;
- bh=l/p1Mt+6Buj3XpMkEakyWxymjCSxUxk4W1rvVC61s4Y=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=f6KdmLDyoCj8nHr/oc0jQe6KrKWlhQDDVs0k69X/d/+YOu36J8pL16GkpIePEoFjj
- u/qOlKoRY0cVmbGT9yvRyGYZ41rg40sccPGZ2ndVD27M4QscQf1FBeNRbzxgsf4a41
- 7csNMyf4kyuMlZDDj5FihxoxaX20rC1U+hBKVA9mEeAFZG8gbNpFnDdXlZtOz0SBk3
- 6y8mu6y19xaSgY0g2B1YQWPPhTsU+jMoMC1X7cQ9CNgBi3yaSh7LBwpDpVwUXeV3Pl
- nR7/DtbxWjs0C7eetEn5gHwFCyrPf5kA7u48hBscwDwT/0bpUhaiarDMhCVKAKGXdR
- kYsRB9HijTGhA==
-MIME-Version: 1.0
-In-Reply-To: <20210902075713.7563-1-miles.chen@mediatek.com>
-References: <20210902075713.7563-1-miles.chen@mediatek.com>
-Subject: Re: [PATCH] clk: rockchip: use module_platform_driver_probe
-From: Stephen Boyd <sboyd@kernel.org>
+ id 1mMGI8-00Cy6T-Rd; Fri, 03 Sep 2021 21:00:06 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mMGI2-0007Iw-D3; Fri, 03 Sep 2021 22:59:58 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Miles Chen <miles.chen@mediatek.com>
 Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
  Miles Chen <miles.chen@mediatek.com>
-To: Heiko Stuebner <heiko@sntech.de>,
- Michael Turquette <mturquette@baylibre.com>,
- Miles Chen <miles.chen@mediatek.com>
-Date: Fri, 03 Sep 2021 11:32:52 -0700
-Message-ID: <163069397238.405991.15295469394989512619@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+Subject: Re: [PATCH] clk: rockchip: use module_platform_driver_probe
+Date: Fri, 03 Sep 2021 22:59:57 +0200
+Message-ID: <1764446.vrLGdHa7mH@diego>
+In-Reply-To: <20210902075713.7563-1-miles.chen@mediatek.com>
+References: <20210902075713.7563-1-miles.chen@mediatek.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_113254_513711_37F5C14C 
-X-CRM114-Status: UNSURE (   5.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210903_140004_950806_B1274FAE 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,14 +73,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Miles Chen (2021-09-02 00:57:13)
+Am Donnerstag, 2. September 2021, 09:57:13 CEST schrieb Miles Chen:
 > Replace builtin_platform_driver_probe with module_platform_driver_probe
 > because that rk3399 and rk3568 can be built as kernel modules.
 > 
 > Cc: Stephen Boyd <sboyd@kernel.org>
 > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 
-Should it have a fixes tag?
+on both rk3399 and rk3568:
+Tested-by: Heiko Stuebner <heiko@sntech.de>
+
+and also
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+
+Heiko
+
+> ---
+>  drivers/clk/rockchip/clk-rk3399.c | 2 +-
+>  drivers/clk/rockchip/clk-rk3568.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
+> index 62a4f2543960..a5169156f1d2 100644
+> --- a/drivers/clk/rockchip/clk-rk3399.c
+> +++ b/drivers/clk/rockchip/clk-rk3399.c
+> @@ -1653,7 +1653,7 @@ static struct platform_driver clk_rk3399_driver = {
+>  		.suppress_bind_attrs = true,
+>  	},
+>  };
+> -builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
+> +module_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
+>  
+>  MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
+>  MODULE_LICENSE("GPL");
+> diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+> index 75ca855e720d..939e7079c334 100644
+> --- a/drivers/clk/rockchip/clk-rk3568.c
+> +++ b/drivers/clk/rockchip/clk-rk3568.c
+> @@ -1719,7 +1719,7 @@ static struct platform_driver clk_rk3568_driver = {
+>  		.suppress_bind_attrs = true,
+>  	},
+>  };
+> -builtin_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
+> +module_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
+>  
+>  MODULE_DESCRIPTION("Rockchip RK3568 Clock Driver");
+>  MODULE_LICENSE("GPL");
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
