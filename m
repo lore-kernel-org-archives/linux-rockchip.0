@@ -2,20 +2,20 @@ Return-Path: <SRS0=zMH+=N5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E358C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 07:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1179C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 08:18:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43F316103E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 07:03:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 43F316103E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9CD8C6108E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 08:18:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9CD8C6108E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,56 +23,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3e9ls7mKXS3FCVAKDppzkA5SIxOHdpSZRu8HVKjG+JE=; b=rKuC7hPOJxWb5Z
-	1n6pK967Wf9l+XfSdUeYOljgbpqrbuZ4aUaqJ70upQK/fDBpVNFz/8LFWt0FAAfIHGC8z5TJ0FG06
-	/KkhDC9f6lOxAyJZDCnFz1IVLrCv9A2dQx/5gxFJGWJ2yX/zVzlxqXtLc8DHfVE8mFN12UPPxVvoF
-	ZlU7FKnI/i4e6i2rrRDntEAbJcThVMRhDaJNT+cnQxmvP4+LwWsM8nVTRkSmiXkeGnUB31hWO2Uif
-	B7RgklPn8r/fmF3meBD2gHBICssOl/aDImfiiPb4SLr/aJLZhiyxqrzuzhlZbgWDktaGgRfnWwjPX
-	mHiOQvEGg/S263/bTyYg==;
+	List-Owner; bh=Jrw7ScYdAdVGAwZgNgbQm9bV4F65e9jbBBai86Dmf/Q=; b=N62VY9fMmLgVwo
+	ra0wjl4VrezRTBmMKaRZiXnXjMDU3xO9CQRuAP+1EPxdGxr5z56BkHcQQ6BE9eVxN70kvSkeUt/PF
+	oPtxRYK4jU9ZPBrknEYOzmpwH3NRpZKSoZnpkbbQ5jOGh9qPt0jk8k6eYGQmGr/iXeUJ9bAVquJDY
+	REjtAjst5sd0CMn4z2YB6ZQBh3svUidzcKt5RyUTWizBZMwiWp6Xo9hDzQv20+DsPm+x4bPjlW4ej
+	iPyOyFmirk7RLR1xE3VO6zdH4Y9GmOHaEy4GHUvOPKedcaj8ZPkogw/antsHoJVn+qHMYpoByNQDk
+	n/e2SJNyICD9x9TrxMUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNV8b-002eAZ-QA; Tue, 07 Sep 2021 07:03:21 +0000
-Received: from mail-ua1-f46.google.com ([209.85.222.46])
+	id 1mNWIu-002qjs-Gd; Tue, 07 Sep 2021 08:18:04 +0000
+Received: from mout.kundenserver.de ([217.72.192.74])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNV8M-002e5I-M8; Tue, 07 Sep 2021 07:03:08 +0000
-Received: by mail-ua1-f46.google.com with SMTP id g16so5014503uam.7;
- Tue, 07 Sep 2021 00:03:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=RnzOQ0rKdquIXLN6HTpR8yt5pLvPfBFYXKRIuAB1ab0=;
- b=ohdu6pj/D53LyFuUnmpsbLigM+9KROya6ksIcNj7OZbWcWksFpyXyRhe87oeOo22He
- Ui7gBQo9MnhBZzlV2n1d0ykv8ivDaZx1YfZK+ERE/atdYvDmVflqdvZBdB5Wp6fxmI68
- l73APUX+ApORMNXNOqZAL0b2LhCVMtgYpd/z0xYjRdsUjhc62voGzipEiIW0L5l3gLd7
- tHtoOAVwyaBJe4gD8QpVIZELu5r+qSr5MijNcTouKWsS1M68z8PVTlJd2/JTqMSq690W
- PtQvBn7/7Vwr71w4G1+ZQfcKTpwxEjYArG4AbyTGwZayZmsBGxnWivX1a0oFtezWgNF5
- 1Maw==
-X-Gm-Message-State: AOAM533Uc1KhVSiakcyUA+pRrZ2ao4AIfFngusG+Pma0mP/T5lv3HLko
- p/8YaQ9Rg2IDxsUepZPLM7Q+/pQMJgxEjACgpyw=
-X-Google-Smtp-Source: ABdhPJw7bE6+/3En0eoolnWevATWF39/p5nYQ/eGyl8MjEBtehFgXksrlK6Bp+Q+vuDVQFYZfg/6LgZg/grUFjA7IxE=
-X-Received: by 2002:a9f:35aa:: with SMTP id t39mr7415384uad.89.1630998185101; 
- Tue, 07 Sep 2021 00:03:05 -0700 (PDT)
+ id 1mNWIh-002qgK-GE; Tue, 07 Sep 2021 08:17:53 +0000
+Received: from mail-wr1-f43.google.com ([209.85.221.43]) by
+ mrelayeu.kundenserver.de (mreue108 [213.165.67.113]) with ESMTPSA (Nemesis)
+ id 1Mhl8Y-1msTPA4A2C-00dqOm; Tue, 07 Sep 2021 10:17:49 +0200
+Received: by mail-wr1-f43.google.com with SMTP id q26so12197094wrc.7;
+ Tue, 07 Sep 2021 01:17:48 -0700 (PDT)
+X-Gm-Message-State: AOAM533aOzncR9XFpmftJIq0b0fMhuTjV89StLV2iliM6pKuKXtwHBIb
+ 7z82gN3HhqOSQzILrWxKEMuL+R4xPbmeoNn9GVw=
+X-Google-Smtp-Source: ABdhPJyiTwB42Ik9Nd62RhRczNyAg0nbb/ltMSwY4nNsSbCmZOvOZpJebJwSFy4ShYpdcFJayx1+05VvpIVcJPUKXQE=
+X-Received: by 2002:a5d:4ed0:: with SMTP id s16mr17191037wrv.71.1631002668640; 
+ Tue, 07 Sep 2021 01:17:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210906194917.376116-1-palmer@dabbelt.com>
-In-Reply-To: <20210906194917.376116-1-palmer@dabbelt.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 7 Sep 2021 09:02:53 +0200
-Message-ID: <CAMuHMdUtg1qA7hx-QGGwd6nfe_vDEzoH95732T736FPH0Jb5dA@mail.gmail.com>
+ <CAMuHMdUtg1qA7hx-QGGwd6nfe_vDEzoH95732T736FPH0Jb5dA@mail.gmail.com>
+In-Reply-To: <CAMuHMdUtg1qA7hx-QGGwd6nfe_vDEzoH95732T736FPH0Jb5dA@mail.gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Tue, 7 Sep 2021 10:17:32 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a2R=GhAjBNjKk7hs6E7Fr6j3yAbSvf29+TdiZtpsSgisQ@mail.gmail.com>
+Message-ID: <CAK8P3a2R=GhAjBNjKk7hs6E7Fr6j3yAbSvf29+TdiZtpsSgisQ@mail.gmail.com>
 Subject: Re: [PATCH RESEND] drm/rockchip: cdn-dp-core: Fix cdn_dp_resume
  unused warning
-To: Palmer Dabbelt <palmer@dabbelt.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>, Sandy Huang <hjc@rock-chips.com>, 
+ Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, 
  DRI Development <dri-devel@lists.freedesktop.org>, 
  Linux ARM <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
  Android Kernel Team <kernel-team@android.com>,
  Palmer Dabbelt <palmerdabbelt@google.com>, Arnd Bergmann <arnd@arndb.de>
+X-Provags-ID: V03:K1:62IdxJ4MuculL6GaB/Jzh7vI1oeuvDRwL5FHvx0ZXnQqz0ji8CW
+ qTAc7D8pZYK4My+CMnA3yTLdgnQ6qHy4jtUXKxztWbT3aY/vmJdryiqN4dOqRxGFfpRdQ3v
+ 3nwhWQiNkxfD5wrxyb39iNmDa7bt6wazSbBY9e1+Aotmk9LPDeBDgwjO9U6fDIqS4hfr5Fo
+ 56/p0L2JJ7CuNdu363Ifw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:7TIM/lv7R/c=:Lz3keaH9o1ORB4kqhfu+Ck
+ TTmrZRfLp4VXd3NFnr7UZKr/2VGzUBXD2HO9rNVKnB94YTa7keV10YYVgRZH0FtxxfQcDMHLn
+ 2e2oNcjBEa8GcjwE7AmmXJiiHjaDSc7HkOAvscPB3U/8j110WmrCRWGPNKGGa6+F/YczT4nI0
+ GF6hXEmpFuhtxPF5xQD2MHYuwbAPOeBfoRjJfQTpGtoBzc6up9sm/gdGGI3p5JfoMbs0hXZaJ
+ JF6EGGYtMrHW7WNoKl9oEO7cP/8yyzOJY7XT5X7vERhC3U5d0ZpQ2AWts3t1+4E897KEAA7As
+ 8oj63Qpo/+yjLqjFu6bYUkCpUQ/HqDcd11mZQIt4ZOkxSJil98n6t0/2RuVvDX7ggGVFA6QvP
+ P1nznEmMto4NBymC121NGpnV2CjL8Ni6aIMV4bdSZobjHxINZoggvX9gNfeReoO5MiYAipScC
+ LdFrU9njEzXkwCEZ2pyCQL6K4NfPQS5cmW9ces2a715za7z8PC4UnQSmIk4QwYNDCYce5kc0Y
+ ///lEQ+hMR6vKwGq7Z1KQTKblWJ+uqPjWypyMdnRLLITM1dBW2Mz/J3DWUJXlplgaKuDl6U6m
+ E2ZdKu0Wz/+2DACQ53YsCJdkZW8kFwTN/31VqXnfUtuoGZUWcljysTDo+97BVs9CGrxht9pi4
+ g/gB8LLJM/5qbg/GOrqub34N2xA3Dg9ZYfc0vL8tjjvUpsozaZZ5cw2yKGMZYFVmf7h8IsTuf
+ 4O3+b4ggq1sFH8tvgc1aIYUrx/b6/Q45gTgwuQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210907_000306_795468_D3E99322 
-X-CRM114-Status: GOOD (  30.31  )
+X-CRM114-CacheID: sfid-20210907_011751_885736_15C00BEE 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,60 +101,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 6, 2021 at 9:58 PM Palmer Dabbelt <palmer@dabbelt.com> wrote:
-> From: Palmer Dabbelt <palmerdabbelt@google.com>
+On Tue, Sep 7, 2021 at 9:02 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> On Mon, Sep 6, 2021 at 9:58 PM Palmer Dabbelt <palmer@dabbelt.com> wrote:
+> > From: Palmer Dabbelt <palmerdabbelt@google.com>
+
+> >
+> > +#ifdef CONFIG_PM_SLEEP
+> >  static int cdn_dp_resume(struct device *dev)
 >
-> cdn_dp_resume is only used under PM_SLEEP, and now that it's static an
-> unused function warning is triggered undner !PM_SLEEP.  This
-> conditionally enables the function to avoid the warning.
->
-> Fixes: 7c49abb4c2f8 ("drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static")
-> Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> An alternative solution would be to tag the function with
+> __maybe_unused.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Right. In this case, both are correct, but generally speaking I tend to use the
+__maybe_unused variant because it's more reliable at fixing the warning for
+good when there are additional functions called by the suspend/resume
+helpers that now become unused in some configurations, or when you pick
+the wrong set of #ifdefs.
 
-> ---
-> I sent this one out in January, but it looks like it got lost in the shuffle.
-> I'm getting this on a RISC-V allmodconfig now.
-> ---
->  drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-> index 8ab3247dbc4a..bee0f2d2a9be 100644
-> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-> @@ -1123,6 +1123,7 @@ static int cdn_dp_suspend(struct device *dev)
->         return ret;
->  }
->
-> +#ifdef CONFIG_PM_SLEEP
->  static int cdn_dp_resume(struct device *dev)
+Having fewer #ifdef checks also helps with build coverage testing when there
+is a warning inside of an #ifdef.
 
-An alternative solution would be to tag the function with
-__maybe_unused.
-
->  {
->         struct cdn_dp_device *dp = dev_get_drvdata(dev);
-> @@ -1135,6 +1136,7 @@ static int cdn_dp_resume(struct device *dev)
->
->         return 0;
->  }
-> +#endif
->
->  static int cdn_dp_probe(struct platform_device *pdev)
->  {
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+       Arnd
 
 _______________________________________________
 Linux-rockchip mailing list
