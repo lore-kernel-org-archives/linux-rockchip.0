@@ -1,57 +1,80 @@
-Return-Path: <SRS0=zMH+=N5=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=E4Dv=N6=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85746C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 19:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CD22C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 01:01:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 326A0610C8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Sep 2021 19:23:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 326A0610C8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=web.de
+	by mail.kernel.org (Postfix) with ESMTPS id C7DB661132
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 01:01:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C7DB661132
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1YWBvzzlEBw4NWAJLFL+ICnkbQZaOvP3cbAjLdVU0qg=; b=AGAJkX2e8lZJnKheAS96i539V1
-	n5ryWa8MeOsXyUSAKBGjKDcb7Z2GC5Pw3o5hdSGXiHMHClWk+nDuW934sbJRunUKeyD1LtZy4SIyN
-	wjj2guaWjjs+gQaJoy5jiuqVi4F0Hm4uUD/Nil+eL5AkPU7D2AFqAfU1zInl1zzImCB1Pwt7lUqeB
-	p3iqDvwBlU4B5cXUMNcCjO17qBJQ/W49QQVIqN2ubHyE1v6EcREQDUMwJkJer7Yn455POh2L3sGc2
-	T3mFAfOt8ZvAGLVTOv5jLZyIT1ZGOMxZn8x8BdEzSUi0yDiqVtfVdCxhzM/m9vuQ4Hb+Mz0tXdKJV
-	zptjCz5Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=68FgZ+5THOyfBGcPlF2AOW0WvYT/FCtN+dtT3alssEk=; b=TrgIgrirbgHT6h
+	/sUJNS2uj8xvNNS2HcjG7bfvVdA4ApRfq0jT/1OGJKQj1COOrvQUqdTWDISnJmaLsdeYFWa2SsCrw
+	IpJYNF4S7B34MVTaSNB0/wRwQFvV9JqBm4KfxpJaNEZ9wNIxZgmfBmxfCd51FcJmS9JIZCEwdLoQ4
+	RvI+MCO6cSe7NEmSiGkS1dycv00SwFS9uM742d17KB2zQqO29b4H9n4lWMmdgxMYZZ5RmhgFgaquo
+	jg0ZxHkE2LS4+KPfokQEnto+E4oMIOz2F5UKIL7f2jmgVSHU3v34C6SMNKv3pqFQgFXrCLhqpT7VB
+	W0MA04LVhfptPu/391VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNggt-004YRQ-9V; Tue, 07 Sep 2021 19:23:31 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1mNlxq-0056tR-R6; Wed, 08 Sep 2021 01:01:22 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNggf-004YOq-Nk; Tue, 07 Sep 2021 19:23:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1631042581;
- bh=C3Kava3hgepg/XaIDROu8dHiXBxSSlrzwnw2BXTTxu8=;
- h=X-UI-Sender-Class:Subject:To:Cc:References:From:Date:In-Reply-To;
- b=F34+gslEYeoBXcN3bghzku+i7clvDzh2RBQ/M9jbz3bg03teZgpsI4NW81YdcuyJq
- x4PhmsRc9ZlbTjbgWwetsSS8H67vwHi4EXSBk8FFm1x5IxabxDT49WtY+jtxR+bha6
- A7n6Kkda9oCzBMhyGdsAJgV7wu5onSx+PNC5xqpc=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.27] ([89.12.22.161]) by smtp.web.de (mrweb004
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0MLUDi-1mN8ic3ogc-000aA6; Tue, 07
- Sep 2021 21:23:01 +0200
-Subject: [BUG] Re: [PATCH] brcmfmac: use ISO3166 country code and 0 rev as
- fallback
-To: Shawn Guo <shawn.guo@linaro.org>, Kalle Valo <kvalo@codeaurora.org>
-Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
+ id 1mNlxg-0056sX-TQ
+ for linux-rockchip@lists.infradead.org; Wed, 08 Sep 2021 01:01:14 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id k23so529605pji.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 07 Sep 2021 18:01:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=fL7IHHdZ/gzoOTGUPxPDxAU1KAMX+gAeeQ7IEIgS92I=;
+ b=fUGYNrjWnrb3I1eaPcRpBHa5uCveys5QZgedEq6FkqjUD4OZbSwa4C3wVTN3Ea0J1E
+ NEeFEDtPtBpxrAKvOWTnaDwo2B2v/P/5kd5YLX/XwbKcaO8nplHt67j6ZHZVQpMteY+4
+ 0eAtp+P3YO9W747F5K61gMUrXOoE1IA72GO8EM4UhZ02fP45WR68o9G/TsFy4xh+tT6j
+ 8Gh/i3SW9y/vNeQtT6qSMbCQ9H+zzZF6E2bhHT6OyoUZ3m6dfTL3zikE4O0/Fj8Ue6Rj
+ Bh5cOEbzVLnmPBaFdSs4A1+vikjxpd4fQt9bHyJ402yyWqWjZTTapx4aTi1GtG/PfSRF
+ MbAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=fL7IHHdZ/gzoOTGUPxPDxAU1KAMX+gAeeQ7IEIgS92I=;
+ b=UsonHQSNxBnyFkOMFIemZJev9oSmlYa/h+U3cDjUYrIKfCY3ZVTd4LKWD59GeUJmIK
+ uWOq0shGobwIHIygYumoHYJUrzouBdd44puNW/XuVoojOHmYypNNFQJc9V9OKauUIezi
+ FJXfvzvzfOIKClUyVD+9wAVcXeGVY5GhnHUWwnjicq7AYD7uEUdAztrqO6YV8ziPcuDS
+ +o+rZGOIZDL6qklsTxeLZtw5GGV9Foo5kuNhYTGTiJAay6UESjQQJ1paGAw8ILdAIiTi
+ pfBcT2t5rKTYjdaDv6M86DS1gH9O96PRKEopvdoO4htbbx26wD/KvlQqd8xh3eNvPku3
+ Ui+g==
+X-Gm-Message-State: AOAM532mCFm9IXE8i0xi1lHRM0OKXYo5XpaES9Pfjr2ry9vTUH+jQ9jq
+ KgJXY89y8SHzpIRrvekjAiy2IA==
+X-Google-Smtp-Source: ABdhPJzn6dDaPFPvD6xD3dX6BMiDBYlT3VapdFvc9aR8lJIc1mWPZRw21Ia813useTb+MqcxrF740A==
+X-Received: by 2002:a17:90b:33c8:: with SMTP id
+ lk8mr1221312pjb.241.1631062867247; 
+ Tue, 07 Sep 2021 18:01:07 -0700 (PDT)
+Received: from dragon (80.251.214.228.16clouds.com. [80.251.214.228])
+ by smtp.gmail.com with ESMTPSA id g2sm239957pfo.154.2021.09.07.18.01.03
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Tue, 07 Sep 2021 18:01:06 -0700 (PDT)
+Date: Wed, 8 Sep 2021 09:00:58 +0800
+From: Shawn Guo <shawn.guo@linaro.org>
+To: Soeren Moch <smoch@web.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>,
+ =?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
  Arend van Spriel <aspriel@gmail.com>, Franky Lin <franky.lin@broadcom.com>,
  Hante Meuleman <hante.meuleman@broadcom.com>,
  Chi-hsien Lin <chi-hsien.lin@infineon.com>,
@@ -60,42 +83,20 @@ Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>,
  linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
  brcm80211-dev-list.pdl@broadcom.com, SHA-cyfmac-dev-list@infineon.com,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
  "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Subject: Re: [BUG] Re: [PATCH] brcmfmac: use ISO3166 country code and 0 rev
+ as fallback
+Message-ID: <20210908010057.GB25255@dragon>
 References: <20210425110200.3050-1-shawn.guo@linaro.org>
-From: Soeren Moch <smoch@web.de>
-Message-ID: <cb7ac252-3356-8ef7-fcf9-eb017f5f161f@web.de>
-Date: Tue, 7 Sep 2021 21:22:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ <cb7ac252-3356-8ef7-fcf9-eb017f5f161f@web.de>
 MIME-Version: 1.0
-In-Reply-To: <20210425110200.3050-1-shawn.guo@linaro.org>
-Content-Language: en-GB
-X-Provags-ID: V03:K1:slohztXf3BTkkoBYuYLA1V9JVQKp3w602USBrAoPIC4BUO/YYP+
- hWpggc/Wu4nzDjc19d/6TODSknsPsfXprnkl0AzalPdCdzyTA7uIXePKNmM7F8GcqwPxNEK
- cfAr9EY79iuOr1onVlEU5TWlPVawIrX1VV9fBBw3tjBZXMm8SacELYdtKlxbq5GXpfss8Q8
- KE924fHKVxJVVFjoHrwng==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ExnSiwBjD2s=:IA5XJh8uKbl+uI+OZe3887
- DbkIFzvC2TdLGsbchBIXFrCH4Oaz6fvoE8KuiltMJ/vVCXrxDo3qzWRab41lOIqwH4lNJN289
- q+gnRP+OcQPOAj6A6IYwGBxzomSK2vvnP53zlNMq60Nf3OEmKfYR2F0XU6sM6/7DIC0YBbLyV
- MX5QFbLCyDudiLvss8fGCQD32CXo8e4nYfx1JBumTV/w/X77mfbY6UyebZYNi21m08QE64l3U
- VTdgBtblvLXtu4TWaZqj6Y/q4LZXbpPUgphps4vK/BEMjrS4LW+anUKD29c0yS8NC3AHHm3KR
- xzTHFGU/Q4VvyKRKaONJffM3AxNmFjBoUH5v2apmiwjF7iXDm5ypXC/Rn2onUU8rXAEkwVrbT
- Fbm/Ex9TppX/xuEMOb9VFYOIqMTJ8QcRvoGjWq0/dsWFxgcdasmTX73ucPPiZ2Vsy8y1iCS0Z
- 1fll7/6xnuYB4FKgGBhSMK+XcnVWrNcaN4pROPoA7HGlQwnCPTKzWpkNtKs+/FtdY8rjGWvTG
- avYXyV269I85+BT2ZyM33gQBOw25Syf0G/bAyj+z2hawZjQvWG+fQ6Lc3xl0ZStjE5hgLiQHa
- qM8hElmc+rcefhEiYv9JQTyF9jgSNYfxa05pWhDX0qc03YCm8td/EbgiUwrB7MAc2/RdPq/on
- 9F7zWNixLWmoXLusSuGUNzIbNKoPxRzbOKVOQ+IVgEPq9aqofQ2+EGn9e71hwg9/zFqXdTaod
- JOg7s/YiRKOh2BxzY/F8dTRk3JeKyju1gHBPgd3BIPJ4huuC4y6xM+BNjPRpzBnIn3+Pee1Wa
- YzNxaz0TH+L7VUl1DUVQtcdbtJahFyA4c3778PlMNy/ktkM/NRHs2KWfAYz+sOflJkOMGuuQa
- iQxZHFVdN5nzTqQfLE27ES4cLDV/d0soNsopLAYSqlyeuvtrqm3YMdp8cbKjhYykbzOk0XCkP
- yvjHyS9n0YDH0FBMHDB6zA5eLh1UGRf0qxGZZvg9SioQuXGO6sFrEd2sa9wcspeUIsN6aUYNC
- tIEevqAgNLcN6oyVuRMhy07phv5JAfz3fp4ZUQ9EpGLd8DiKlGO0z20IhizluBxMhJmAPFR62
- fqYJnRwJCy6P4Q=
+Content-Disposition: inline
+In-Reply-To: <cb7ac252-3356-8ef7-fcf9-eb017f5f161f@web.de>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210907_122318_159392_296FFBCF 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20210907_180112_991007_6356ED07 
+X-CRM114-Status: GOOD (  27.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,50 +109,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjUuMDQuMjEgMTM6MDIsIFNoYXduIEd1byB3cm90ZToKPiBJbnN0ZWFkIG9mIGFib3J0aW5n
-IGNvdW50cnkgY29kZSBzZXR1cCBpbiBmaXJtd2FyZSwgdXNlIElTTzMxNjYgY291bnRyeQo+IGNv
-ZGUgYW5kIDAgcmV2IGFzIGZhbGxiYWNrLCB3aGVuIGNvdW50cnlfY29kZXMgbWFwcGluZyB0YWJs
-ZSBpcyBub3QKPiBjb25maWd1cmVkLiAgVGhpcyBmYWxsYmFjayBzYXZlcyB0aGUgY291bnRyeV9j
-b2RlcyB0YWJsZSBzZXR1cCBmb3IgcmVjZW50Cj4gYnJjbWZtYWMgY2hpcHNldHMvZmlybXdhcmVz
-LCB3aGljaCBqdXN0IHVzZSBJU08zMTY2IGNvZGUgYW5kIHJlcXVpcmUgbm8KPiByZXZpc2lvbiBu
-dW1iZXIuClRoaXMgcGF0Y2ggYnJlYWtzIHdpcmVsZXNzIHN1cHBvcnQgb24gUm9ja1BybzY0LiBB
-dCBsZWFzdCB0aGUgYWNjZXNzCnBvaW50IGlzIG5vdCB1c2FibGUsIHN0YXRpb24gbW9kZSBub3Qg
-dGVzdGVkLgoKYnJjbWZtYWM6IGJyY21mX2NfcHJlaW5pdF9kY21kczogRmlybXdhcmU6IEJDTTQz
-NTkvOSB3bDA6IE1hcsKgIDYgMjAxNwoxMDoxNjowNiB2ZXJzaW9uIDkuODcuNTEuNyAocjY4NjMx
-MikgRldJRCAwMS00ZGNjNzVkOQoKUmV2ZXJ0aW5nIHRoaXMgcGF0Y2ggbWFrZXMgdGhlIGFjY2Vz
-cyBwb2ludCBzaG93IHVwIGFnYWluIHdpdGggbGludXgtNS4xNCAuCgpSZWdhcmRzLApTb2VyZW4K
-PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBHdW8gPHNoYXduLmd1b0BsaW5hcm8ub3JnPgo+IC0tLQo+
-ICAuLi4vYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NmZzgwMjExLmMgICAgICB8IDE3ICsr
-KysrKysrKysrLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspLCA2IGRl
-bGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL2Jyb2FkY29t
-L2JyY204MDIxMS9icmNtZm1hYy9jZmc4MDIxMS5jIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvYnJv
-YWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NmZzgwMjExLmMKPiBpbmRleCBmNDQwNWQ3ODYxYjYu
-LjZjYjA5YzdjMzdiNiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNv
-bS9icmNtODAyMTEvYnJjbWZtYWMvY2ZnODAyMTEuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L3dpcmVs
-ZXNzL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9jZmc4MDIxMS5jCj4gQEAgLTc0NDIsMTgg
-Kzc0NDIsMjMgQEAgc3RhdGljIHMzMiBicmNtZl90cmFuc2xhdGVfY291bnRyeV9jb2RlKHN0cnVj
-dCBicmNtZl9wdWIgKmRydnIsIGNoYXIgYWxwaGEyWzJdLAo+ICAJczMyIGZvdW5kX2luZGV4Owo+
-ICAJaW50IGk7Cj4KPiAtCWNvdW50cnlfY29kZXMgPSBkcnZyLT5zZXR0aW5ncy0+Y291bnRyeV9j
-b2RlczsKPiAtCWlmICghY291bnRyeV9jb2Rlcykgewo+IC0JCWJyY21mX2RiZyhUUkFDRSwgIk5v
-IGNvdW50cnkgY29kZXMgY29uZmlndXJlZCBmb3IgZGV2aWNlXG4iKTsKPiAtCQlyZXR1cm4gLUVJ
-TlZBTDsKPiAtCX0KPiAtCj4gIAlpZiAoKGFscGhhMlswXSA9PSBjY3JlcS0+Y291bnRyeV9hYmJy
-ZXZbMF0pICYmCj4gIAkgICAgKGFscGhhMlsxXSA9PSBjY3JlcS0+Y291bnRyeV9hYmJyZXZbMV0p
-KSB7Cj4gIAkJYnJjbWZfZGJnKFRSQUNFLCAiQ291bnRyeSBjb2RlIGFscmVhZHkgc2V0XG4iKTsK
-PiAgCQlyZXR1cm4gLUVBR0FJTjsKPiAgCX0KPgo+ICsJY291bnRyeV9jb2RlcyA9IGRydnItPnNl
-dHRpbmdzLT5jb3VudHJ5X2NvZGVzOwo+ICsJaWYgKCFjb3VudHJ5X2NvZGVzKSB7Cj4gKwkJYnJj
-bWZfZGJnKFRSQUNFLCAiTm8gY291bnRyeSBjb2RlcyBjb25maWd1cmVkIGZvciBkZXZpY2UsIHVz
-aW5nIElTTzMxNjYgY29kZSBhbmQgMCByZXZcbiIpOwo+ICsJCW1lbXNldChjY3JlcSwgMCwgc2l6
-ZW9mKCpjY3JlcSkpOwo+ICsJCWNjcmVxLT5jb3VudHJ5X2FiYnJldlswXSA9IGFscGhhMlswXTsK
-PiArCQljY3JlcS0+Y291bnRyeV9hYmJyZXZbMV0gPSBhbHBoYTJbMV07Cj4gKwkJY2NyZXEtPmNj
-b2RlWzBdID0gYWxwaGEyWzBdOwo+ICsJCWNjcmVxLT5jY29kZVsxXSA9IGFscGhhMlsxXTsKPiAr
-CQlyZXR1cm4gMDsKPiArCX0KPiArCj4gIAlmb3VuZF9pbmRleCA9IC0xOwo+ICAJZm9yIChpID0g
-MDsgaSA8IGNvdW50cnlfY29kZXMtPnRhYmxlX3NpemU7IGkrKykgewo+ICAJCWNjID0gJmNvdW50
-cnlfY29kZXMtPnRhYmxlW2ldOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Soeren,
+
+On Tue, Sep 07, 2021 at 09:22:52PM +0200, Soeren Moch wrote:
+> On 25.04.21 13:02, Shawn Guo wrote:
+> > Instead of aborting country code setup in firmware, use ISO3166 country
+> > code and 0 rev as fallback, when country_codes mapping table is not
+> > configured.  This fallback saves the country_codes table setup for rece=
+nt
+> > brcmfmac chipsets/firmwares, which just use ISO3166 code and require no
+> > revision number.
+> This patch breaks wireless support on RockPro64. At least the access
+> point is not usable, station mode not tested.
+> =
+
+> brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4359/9 wl0: Mar=A0 6 2017
+> 10:16:06 version 9.87.51.7 (r686312) FWID 01-4dcc75d9
+> =
+
+> Reverting this patch makes the access point show up again with linux-5.14=
+ .
+
+Sorry for breaking your device!
+
+So it sounds like you do not have country_codes configured for your
+BCM4359/9 device, while it needs particular `rev` setup for the ccode
+you are testing with.  It was "working" likely because you have a static
+`ccode` and `regrev` setting in nvram file.  But roaming to a different
+region will mostly get you a broken WiFi support.  Is it possible to set
+up the country_codes for your device to get it work properly?
+
+Shawn
+
+> =
+
+> Regards,
+> Soeren
+> > Signed-off-by: Shawn Guo <shawn.guo@linaro.org>
+> > ---
+> >  .../broadcom/brcm80211/brcmfmac/cfg80211.c      | 17 +++++++++++------
+> >  1 file changed, 11 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.=
+c b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
+> > index f4405d7861b6..6cb09c7c37b6 100644
+> > --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
+> > +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cfg80211.c
+> > @@ -7442,18 +7442,23 @@ static s32 brcmf_translate_country_code(struct =
+brcmf_pub *drvr, char alpha2[2],
+> >  	s32 found_index;
+> >  	int i;
+> >
+> > -	country_codes =3D drvr->settings->country_codes;
+> > -	if (!country_codes) {
+> > -		brcmf_dbg(TRACE, "No country codes configured for device\n");
+> > -		return -EINVAL;
+> > -	}
+> > -
+> >  	if ((alpha2[0] =3D=3D ccreq->country_abbrev[0]) &&
+> >  	    (alpha2[1] =3D=3D ccreq->country_abbrev[1])) {
+> >  		brcmf_dbg(TRACE, "Country code already set\n");
+> >  		return -EAGAIN;
+> >  	}
+> >
+> > +	country_codes =3D drvr->settings->country_codes;
+> > +	if (!country_codes) {
+> > +		brcmf_dbg(TRACE, "No country codes configured for device, using ISO3=
+166 code and 0 rev\n");
+> > +		memset(ccreq, 0, sizeof(*ccreq));
+> > +		ccreq->country_abbrev[0] =3D alpha2[0];
+> > +		ccreq->country_abbrev[1] =3D alpha2[1];
+> > +		ccreq->ccode[0] =3D alpha2[0];
+> > +		ccreq->ccode[1] =3D alpha2[1];
+> > +		return 0;
+> > +	}
+> > +
+> >  	found_index =3D -1;
+> >  	for (i =3D 0; i < country_codes->table_size; i++) {
+> >  		cc =3D &country_codes->table[i];
+> =
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
