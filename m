@@ -2,95 +2,86 @@ Return-Path: <SRS0=E4Dv=N6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AADF0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 15:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E965C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 15:13:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 632BA611C7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 15:10:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 632BA611C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 16AE960F6C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 15:13:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 16AE960F6C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CJbuw49fDvhQkJh6BtW8BGcPpQ3l5igggN/yTPMgWrs=; b=2R7e+/hmtkzP15
-	MkGT431qoZE/o50qn+8jeEC29U8MtDaavqBol5laLju6IgDB4HFdEJw833Nt75NpduaXYf1yF3Hjo
-	RGZ9nrUiraT+ymejhqXnTCtaxXkGXc7UeyCBzF9SYveG/Sh9U/+8MzxTSCX8JT4DMb7XxH6ycGyxu
-	dqDSGdNVirbf1wMMuRVpZhq2SHJiUVv5EuAm3iZHffTBLX5hob2DZEGKNubXCOPXdDFgRsJ5FQ7IP
-	iUDvb6NwmiQh99brFkH5SYUo7tEgOprskGGEwMJrc1MHWO5J1oZU+j5L+bKZnmfoKTFwkgwsUWyJf
-	hIlyJaLpyzx2YyuHJtGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=U7pVwb26cPEXDOCfHn+ek6uMz7GntG1AcqQK5tQ1ymM=; b=zCxAimOvVfavBv
+	BuL9uMXwcGFIura9PQO+18hNXapDDE8HhZVL0Z340zTE+JoLHzXyGwzhAhkDEx2XcP+Sas2xXSUsK
+	LcTWl3cnqKHP3WRYHRUjwgmRv7fMHYvmPSsoLnkSx/UlUDOdJu0mNLQgeWRgb/L8wDh/p9Pgu9e3s
+	QZEA+rm8ZFivE2IKjKVGSgeeqR/GiQNR1bFkyy8wnZ7W1/0x03Sp59jYaCepFXqUUDYBDpMlds/iv
+	s68T+Mg56UILqm3SgT3P6EndCDEV3XCxYccjnkrBhLNc/OM8iJGWxNPfudgUC0K5WRfGhvn2WazyH
+	Q9Gz9n0jZlK5xTaiHrjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNzDH-0071TW-TR; Wed, 08 Sep 2021 15:10:11 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1mNzGA-0072S1-NQ; Wed, 08 Sep 2021 15:13:10 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNzD5-0071S6-Ft
- for linux-rockchip@lists.infradead.org; Wed, 08 Sep 2021 15:10:00 +0000
-Received: by mail-io1-xd36.google.com with SMTP id g9so3662136ioq.11
- for <linux-rockchip@lists.infradead.org>; Wed, 08 Sep 2021 08:09:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yRPp5IHtHZbh2VaC3A/pPLLamUQg+uMH0n8xJchofN8=;
- b=I2IrUovC0NAik8gQxEeKQbBh/+E3r1Ftc2iriNrtCYRmaOT/WfeH2y3O4YSWdUy8sq
- 6jAWU0V6WXZyy9beh89xVm0hzWeWloejNkfBnlYCfYncR05Lt/w1j02hKERMBtQ0dJe9
- 1rPWIKVprNObr/nlryClStiA51vf+aQWK6+as=
+ id 1mNzFw-0072OD-E3; Wed, 08 Sep 2021 15:12:58 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id me10so4877927ejb.11;
+ Wed, 08 Sep 2021 08:12:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1zuBZfV6vJZPKFQy+aOoidKoUi1hB6Ie2mFXF0yWb9E=;
+ b=XwBfxrfLvJRx1zSmVgSjmjc7MXhXeB/o8oVLu+4GrfwzRSIYleKnvY18cJ3gUtwVGG
+ rWS8akLqmO5IfhsEny85syBcLIOJiXYbdgr5W5XOiRn5jiIuITROmgo5xVC4Z4R3VNKa
+ /rEcXDF6B8YP+LEpkFgf9QEG67/UEA0GncQ5fhttM8KD2GvZ8aSDCPBUeEx2qMy+dsuU
+ RO1kYb2kSvfE597joKJlCE1k2TaUHmv1MlCFzruIAIPVSdJujLWZbIWPyEa3Pt2gN4Ut
+ EolUiJpLt3ZoTo2J775vrjFwECdqysuD/RCcgQ/lLDDWs3Qfuh8FOUyeVUpDIlcyrX/r
+ S5aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yRPp5IHtHZbh2VaC3A/pPLLamUQg+uMH0n8xJchofN8=;
- b=68u6n4H5XmKwc4aaNG/R9tA7Nv4vvSGtbmApTCItstxrVg8YvcIFMCtK+/U2HjHW3D
- c/czSI+VWLtKL9qq/mZyPJef5JxmaM/7ySzf4xWU6z2XNJ+SwKxoP1sSg89I0Ag4zUV0
- lM+dvfmssI+VvPXhmmeseXDX/8m4KvmnzdWiR51hUtj0ZSF7ijNIYI6vbWjEuQz8I+X7
- 16VVtBcIRael5BZIyfeoPYseaFW2Pl4bmcxoHoNRbRvW2u3QmjtTlDx7nvO48IEW1Tzh
- PFNVA2JyzolZV9/DxbHgTknZORXR71bA4F8yOZcmcuk8jhQ2p/RGQTEk6zC33cBVYNd1
- X64Q==
-X-Gm-Message-State: AOAM531v/eByAVOmkgGl65a/XhZa8bACiuPjA29OzSpSijQLO9qbiafs
- ECXLBWdQzs7lWaEIqvmTlEuEZO9RH8AuoQ==
-X-Google-Smtp-Source: ABdhPJywP4DfNGSg1x4Zc49K7K0F83xsye+R+TKAv1GfIH37OSk8VT1+G2brm26IjmDVlwfV+8N0Bw==
-X-Received: by 2002:a05:6638:59:: with SMTP id
- a25mr4158343jap.111.1631113797306; 
- Wed, 08 Sep 2021 08:09:57 -0700 (PDT)
-Received: from mail-il1-f169.google.com (mail-il1-f169.google.com.
- [209.85.166.169])
- by smtp.gmail.com with ESMTPSA id e13sm1279982iod.36.2021.09.08.08.09.56
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Sep 2021 08:09:56 -0700 (PDT)
-Received: by mail-il1-f169.google.com with SMTP id b4so2646554ilr.11
- for <linux-rockchip@lists.infradead.org>; Wed, 08 Sep 2021 08:09:56 -0700 (PDT)
-X-Received: by 2002:a92:cb52:: with SMTP id f18mr274812ilq.120.1631113795742; 
- Wed, 08 Sep 2021 08:09:55 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1zuBZfV6vJZPKFQy+aOoidKoUi1hB6Ie2mFXF0yWb9E=;
+ b=fo8LTGTfV6pqmwCeD2e4bLLmSDTVfv3TO2TrZ4SBRBwilmLas0YL3H7Zfw8QJLYz9a
+ JVZ6Twl/1CCTJ8WyiHY4TyVejLdwfvw0kmmszZM9mPhH/6zEDS805DaO+6Zi98QFmwKl
+ rZO26kLO+rWm5zEcULGhJ6C6x5d6oQV8QwEuCHHC8Lx5QqRtusLaCv/SJgDDT3dPRu4v
+ 7EVm9jUJTzvwgIX20PRNKFUFMw9LuvpOh2c3/rXq7WX6CpdZjhIdABGZXH1HgYn4gW1k
+ krg08hNJDGwkeCcmIBF4VpTcbjnXnAH4TrJMfOhqD4KLNUrlkdZ9mw0JhUfZsm/+sDfH
+ Zlzg==
+X-Gm-Message-State: AOAM530iyiquQImEdc7k+8cEP5ABLTJrvzL5UTLCBpyRkMmaJsnjZSIG
+ XgezcYLUOxiIfx8PAMrEzZ4=
+X-Google-Smtp-Source: ABdhPJy7uPhEJ8ZZaTsOcD7JZOytjwzAR96Z2kL/GA1SJmvsqZrRMgnynl20JsdJcuUO8AbXxUFEUg==
+X-Received: by 2002:a17:907:4ce:: with SMTP id
+ vz14mr365602ejb.552.1631113973914; 
+ Wed, 08 Sep 2021 08:12:53 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id h22sm1171110eji.112.2021.09.08.08.12.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Sep 2021 08:12:53 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, linus.walleij@linaro.org, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v1] dt-bindings: pinctrl: convert rockchip, pinctrl.txt to YAML
+Date: Wed,  8 Sep 2021 17:12:46 +0200
+Message-Id: <20210908151246.8781-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20210907094628.RESEND.1.If29cd838efbcee4450a62b8d84a99b23c86e0a3f@changeid>
- <20210907094628.RESEND.2.Ibc87b4785709543c998cc852c1edaeb7a08edf5c@changeid>
-In-Reply-To: <20210907094628.RESEND.2.Ibc87b4785709543c998cc852c1edaeb7a08edf5c@changeid>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 8 Sep 2021 08:09:44 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Uo7oK6a8X69KGneP8CvXE127ZxU7U59Rrz+_Dv6D5t3g@mail.gmail.com>
-Message-ID: <CAD=FV=Uo7oK6a8X69KGneP8CvXE127ZxU7U59Rrz+_Dv6D5t3g@mail.gmail.com>
-Subject: Re: [RESEND PATCH 2/2] arm64: dts: rockchip: add Coresight debug
- range for RK3399
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, linux-clk <linux-clk@vger.kernel.org>, 
- Chen-Yu Tsai <wenst@chromium.org>, LKML <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210908_080959_558096_D6AB9D4B 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20210908_081256_525602_B4BEA2B5 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,37 +99,335 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Convert rockchip,pinctrl.txt to YAML
 
-On Tue, Sep 7, 2021 at 9:46 AM Brian Norris <briannorris@chromium.org> wrote:
->
-> Per Documentation/devicetree/bindings/arm/coresight-cpu-debug.txt.
->
-> This IP block can be used for sampling the PC of any given CPU, which is
-> useful in certain panic scenarios where you can't get the CPU to stop
-> cleanly (e.g., hard lockup).
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 48 ++++++++++++++++++++++++
->  1 file changed, 48 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 3871c7fd83b0..c8c62637b600 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -433,6 +433,54 @@ usbdrd_dwc3_1: usb@fe900000 {
->                 };
->         };
->
-> +       debug@fe430000 {
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
-I think your sort order is wrong? 0xfe430000 comes before 0xfe900000?
+Note for rob+dt:
 
-Other than that this looks good to me.
+To reduce notifications and to support legacy DT the patternProperties
+regex is:
+"gpio[0-8]?@[0-9a-f]+$"
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+or should we move to:
+"gpio@[0-9a-f]+$"
+and change all Rockchip pinctrl DT nodes?
+Is the Linux driver / U-boot ready for it now?
+---
+ .../bindings/pinctrl/rockchip,pinctrl.txt     | 114 -----------
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    | 178 ++++++++++++++++++
+ 2 files changed, 178 insertions(+), 114 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
+deleted file mode 100644
+index 84c411129..000000000
+--- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.txt
++++ /dev/null
+@@ -1,114 +0,0 @@
+-* Rockchip Pinmux Controller
+-
+-The Rockchip Pinmux Controller, enables the IC
+-to share one PAD to several functional blocks. The sharing is done by
+-multiplexing the PAD input/output signals. For each PAD there are several
+-muxing options with option 0 being the use as a GPIO.
+-
+-Please refer to pinctrl-bindings.txt in this directory for details of the
+-common pinctrl bindings used by client devices, including the meaning of the
+-phrase "pin configuration node".
+-
+-The Rockchip pin configuration node is a node of a group of pins which can be
+-used for a specific device or function. This node represents both mux and
+-config of the pins in that group. The 'pins' selects the function mode(also
+-named pin mode) this pin can work on and the 'config' configures various pad
+-settings such as pull-up, etc.
+-
+-The pins are grouped into up to 5 individual pin banks which need to be
+-defined as gpio sub-nodes of the pinmux controller.
+-
+-Required properties for iomux controller:
+-  - compatible: should be
+-		"rockchip,px30-pinctrl":    for Rockchip PX30
+-		"rockchip,rv1108-pinctrl":  for Rockchip RV1108
+-		"rockchip,rk2928-pinctrl":  for Rockchip RK2928
+-		"rockchip,rk3066a-pinctrl": for Rockchip RK3066a
+-		"rockchip,rk3066b-pinctrl": for Rockchip RK3066b
+-		"rockchip,rk3128-pinctrl":  for Rockchip RK3128
+-		"rockchip,rk3188-pinctrl":  for Rockchip RK3188
+-		"rockchip,rk3228-pinctrl":  for Rockchip RK3228
+-		"rockchip,rk3288-pinctrl":  for Rockchip RK3288
+-		"rockchip,rk3308-pinctrl":  for Rockchip RK3308
+-		"rockchip,rk3328-pinctrl":  for Rockchip RK3328
+-		"rockchip,rk3368-pinctrl":  for Rockchip RK3368
+-		"rockchip,rk3399-pinctrl":  for Rockchip RK3399
+-		"rockchip,rk3568-pinctrl":  for Rockchip RK3568
+-
+-  - rockchip,grf: phandle referencing a syscon providing the
+-	 "general register files"
+-
+-Optional properties for iomux controller:
+-  - rockchip,pmu: phandle referencing a syscon providing the pmu registers
+-	 as some SoCs carry parts of the iomux controller registers there.
+-	 Required for at least rk3188 and rk3288. On the rk3368 this should
+-	 point to the PMUGRF syscon.
+-
+-Deprecated properties for iomux controller:
+-  - reg: first element is the general register space of the iomux controller
+-	 It should be large enough to contain also separate pull registers.
+-	 second element is the separate pull register space of the rk3188.
+-	 Use rockchip,grf and rockchip,pmu described above instead.
+-
+-Required properties for gpio sub nodes:
+-See rockchip,gpio-bank.yaml
+-
+-Required properties for pin configuration node:
+-  - rockchip,pins: 3 integers array, represents a group of pins mux and config
+-    setting. The format is rockchip,pins = <PIN_BANK PIN_BANK_IDX MUX &phandle>.
+-    The MUX 0 means gpio and MUX 1 to N mean the specific device function.
+-    The phandle of a node containing the generic pinconfig options
+-    to use, as described in pinctrl-bindings.txt in this directory.
+-
+-Examples:
+-
+-#include <dt-bindings/pinctrl/rockchip.h>
+-
+-...
+-
+-pinctrl@20008000 {
+-	compatible = "rockchip,rk3066a-pinctrl";
+-	rockchip,grf = <&grf>;
+-
+-	#address-cells = <1>;
+-	#size-cells = <1>;
+-	ranges;
+-
+-	gpio0: gpio0@20034000 {
+-		compatible = "rockchip,gpio-bank";
+-		reg = <0x20034000 0x100>;
+-		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&clk_gates8 9>;
+-
+-		gpio-controller;
+-		#gpio-cells = <2>;
+-
+-		interrupt-controller;
+-		#interrupt-cells = <2>;
+-	};
+-
+-	...
+-
+-	pcfg_pull_default: pcfg_pull_default {
+-		bias-pull-pin-default
+-	};
+-
+-	uart2 {
+-		uart2_xfer: uart2-xfer {
+-			rockchip,pins = <1 RK_PB0 1 &pcfg_pull_default>,
+-					<1 RK_PB1 1 &pcfg_pull_default>;
+-		};
+-	};
+-};
+-
+-uart2: serial@20064000 {
+-	compatible = "snps,dw-apb-uart";
+-	reg = <0x20064000 0x400>;
+-	interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
+-	reg-shift = <2>;
+-	reg-io-width = <1>;
+-	clocks = <&mux_uart2>;
+-
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&uart2_xfer>;
+-};
+diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+new file mode 100644
+index 000000000..7c45122d3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
+@@ -0,0 +1,178 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pinctrl/rockchip,pinctrl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Pinmux Controller
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++description:
++  The Rockchip Pinmux Controller enables the IC to share one PAD
++  to several functional blocks. The sharing is done by multiplexing
++  the PAD input/output signals. For each PAD there are several muxing
++  options with option 0 being the use as a GPIO.
++
++  Please refer to pinctrl-bindings.txt in this directory for details of the
++  common pinctrl bindings used by client devices, including the meaning of the
++  phrase "pin configuration node".
++
++  The Rockchip pin configuration node is a node of a group of pins which can be
++  used for a specific device or function. This node represents both mux and
++  config of the pins in that group. The 'pins' selects the function mode(also
++  named pin mode) this pin can work on and the 'config' configures various pad
++  settings such as pull-up, etc.
++
++  The pins are grouped into up to 9 individual pin banks which need to be
++  defined as gpio sub-nodes of the pinmux controller.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,px30-pinctrl
++      - rockchip,rk2928-pinctrl
++      - rockchip,rk3066a-pinctrl
++      - rockchip,rk3066b-pinctrl
++      - rockchip,rk3128-pinctrl
++      - rockchip,rk3188-pinctrl
++      - rockchip,rk3228-pinctrl
++      - rockchip,rk3288-pinctrl
++      - rockchip,rk3308-pinctrl
++      - rockchip,rk3328-pinctrl
++      - rockchip,rk3368-pinctrl
++      - rockchip,rk3399-pinctrl
++      - rockchip,rk3568-pinctrl
++      - rockchip,rv1108-pinctrl
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle of the syscon node for the GRF registers.
++
++  rockchip,pmu:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle of the syscon node for the PMU registers,
++      as some SoCs carry parts of the iomux controller registers there.
++      Required for at least rk3188 and rk3288. On the rk3368 this should
++      point to the PMUGRF syscon.
++
++  "#address-cells":
++    enum: [1, 2]
++
++  "#size-cells":
++    enum: [1, 2]
++
++  ranges: true
++
++patternProperties:
++  "gpio[0-8]?@[0-9a-f]+$":
++    type: object
++
++    $ref: "/schemas/gpio/rockchip,gpio-bank.yaml#"
++
++    unevaluatedProperties: false
++
++  "pcfg-[a-z0-9-]+$":
++    type: object
++    properties:
++      bias-disable: true
++
++      bias-pull-down: true
++
++      bias-pull-pin-default: true
++
++      bias-pull-up: true
++
++      drive-strength:
++        minimum: 0
++        maximum: 20
++
++      input-enable: true
++
++      input-schmitt-enable: true
++
++      output-high: true
++
++      output-low: true
++
++    additionalProperties: false
++
++additionalProperties:
++  type: object
++  additionalProperties:
++    type: object
++    properties:
++      rockchip,pins:
++        type: array
++        minItems: 1
++        items:
++          items:
++            - minimum: 0
++              maximum: 8
++            - minimum: 0
++              maximum: 31
++            - minimum: 0
++              maximum: 6
++            - maximum: 0xffffffff
++        description:
++          A 3 integers array represents a group of pins mux and
++          config setting. The format is
++
++          rockchip,pins = <PIN_BANK PIN_BANK_IDX MUX &phandle>
++
++          The MUX 0 means gpio and MUX 1 to N mean the specific
++          device function. The phandle of a node contains the
++          generic pinconfig options to use, as described in
++          pinctrl-bindings.txt in this directory.
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/pinctrl/rockchip.h>
++
++    pinctrl: pinctrl {
++      compatible = "rockchip,rk3066a-pinctrl";
++      rockchip,grf = <&grf>;
++
++      #address-cells = <1>;
++      #size-cells = <1>;
++      ranges;
++
++      gpio0: gpio@20034000 {
++        compatible = "rockchip,gpio-bank";
++        reg = <0x20034000 0x100>;
++        interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
++        clocks = <&clk_gates8 9>;
++
++        gpio-controller;
++        #gpio-cells = <2>;
++
++        interrupt-controller;
++        #interrupt-cells = <2>;
++      };
++
++      pcfg_pull_default: pcfg-pull-default {
++        bias-pull-pin-default;
++      };
++
++      uart2 {
++        uart2_xfer: uart2-xfer {
++          rockchip,pins = <1 RK_PB0 1 &pcfg_pull_default>,
++                          <1 RK_PB1 1 &pcfg_pull_default>;
++        };
++      };
++    };
++
++    uart2: serial@20064000 {
++      compatible = "snps,dw-apb-uart";
++      reg = <0x20064000 0x400>;
++      interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&mux_uart2>;
++      pinctrl-0 = <&uart2_xfer>;
++      pinctrl-names = "default";
++      reg-io-width = <1>;
++      reg-shift = <2>;
++    };
+-- 
+2.20.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
