@@ -2,70 +2,96 @@ Return-Path: <SRS0=E4Dv=N6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 379B8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 18:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6135C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 18:09:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C89E3610FF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 18:06:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C89E3610FF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 681EE61179
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Sep 2021 18:09:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 681EE61179
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q8hTrFK5edlE2HMUZq+WQHpOR0WEBNclX5QbgPYx1qE=; b=Hj38netTIxuy2V
-	AUh1qE+Om76D8+LvWYrzj8dSSOXxJTyWhy0WoKWaWjyOy5DiL3E3DPSz1ThBo6/V2RJ0pIsZV6plb
-	9TOckJg5wbemGscYWlkX9lNI40vdgJ8ISVD6e2SbCfgDtvmbyz2zRz2KHdpSmtoDYiwLaZqDJ03MZ
-	t/RuVEMBxb5oxafshRp9VmHgnvB1etak7rVXG6Z498I3Bp5kyBcAepSSt6TUulWEfCeUJhrrQmL1n
-	D3EMKnYCwDXlRFxkWJTLs26C5LWmCesnlzkkjRMEqCRrh/Iw4DKtg4CZ8KJ6GvxZhJpCJMTuSUDXa
-	vLwSiYC6yslC419NUmuQ==;
+	List-Owner; bh=A6TV4egdU9KhPBL2wWY3TbO1QY4My9EbEq3eua8OcXw=; b=Fk7ZoFKemYsciM
+	GbyazF/mkb0F+9c9LdCugO24KfkjOlTtiO5Xsjuaxu28CEi8sVpD8leOul/xom7L8HlU1GVmmcpIX
+	XKdD1jzhDOxUVov1W5y0x1NV1rN5P8VqxijNN3ssbYHZyOmvsfvoNWq0ruf8Dx/Yp5zsW1tk4vFs6
+	qOwNZ1LCEzM6oCN6bbcr8Nk8RJw3OXl+GUxSIFVja6HmJDdFMaenHuTOxZ58ikMTkSM9tMDp0Aed1
+	JdE+zvXia7cMlmd95D6/I9yI1yuGHY2H+CSulcAouBD3pfUNPSv+JT6IrCt6uFCOHPebojZK/B4Xm
+	aZr782IuKqXB8YgI0YrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mO1xS-007MZr-8e; Wed, 08 Sep 2021 18:06:02 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1mO20t-007Mik-B3; Wed, 08 Sep 2021 18:09:35 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mO1xP-007MZW-KY
- for linux-rockchip@lists.infradead.org; Wed, 08 Sep 2021 18:06:01 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10101"; a="200759710"
-X-IronPort-AV: E=Sophos;i="5.85,278,1624345200"; d="scan'208";a="200759710"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2021 11:05:58 -0700
-X-IronPort-AV: E=Sophos;i="5.85,278,1624345200"; d="scan'208";a="479275700"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Sep 2021 11:05:56 -0700
-Received: from andy by smile with local (Exim 4.95-RC2)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1mO1xI-001KkT-RU; Wed, 08 Sep 2021 21:05:52 +0300
-Date: Wed, 8 Sep 2021 21:05:52 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- daniel@ffwll.ch, airlied@linux.ie, heiko@sntech.de,
- hjc@rock-chips.com, zhangqing@rock-chips.com,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH] drm/rockchip: Update crtc fixup to account for
- fractional clk change
-Message-ID: <YTj7gE0CQ9ASeBVF@smile.fi.intel.com>
-References: <20210908135356.18689-1-macroalpha82@gmail.com>
+ id 1mO20q-007MiQ-KX
+ for linux-rockchip@lists.infradead.org; Wed, 08 Sep 2021 18:09:33 +0000
+Received: by mail-oi1-x230.google.com with SMTP id w19so4159148oik.10
+ for <linux-rockchip@lists.infradead.org>; Wed, 08 Sep 2021 11:09:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BHTh1HO906gMjGsq/6c8x/AFAmsBhynFAoihw7tpJW4=;
+ b=MlZxyo+1q1YTDCfKyB+mJppyYe+4VNRTPxxVr4MozOrje+oXFksFm6Q5vI0DvrHgmH
+ lOgCE+iwZ640bunqIRN5j9A2mTl9AmFDjnQAtRHfma976UHd787FrR8RXpjWndw/RNUi
+ zXK9niUZmv+A4Rxrv5pzbbTBVlCvolUMm7DKM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BHTh1HO906gMjGsq/6c8x/AFAmsBhynFAoihw7tpJW4=;
+ b=c7gh/oZjkczSNG6FijXHrjmp1rCTgeGU2eAVGVGnd87jvj8zHMgTtealhhqypOYdpm
+ w/+xhqLeYvBriDkED0+YwML/Cs7/J89i/8D1hatT2ZtvQe43Rq0ssAuObibkY/NMzpkA
+ 7SeEMppSHaRn2VpmVssgrfufxLN2kf/BTZDtdilyyp+La/u25vLr6VWdzcbGMNi2pu+e
+ f6iDI4CKQN0IT00KMv3rMEMAbskVmDNua5UHabr+54Dv7l5P7jwjfSzy6QObPhrpaiGs
+ sUO4DWoSKZdD6N7j32YWUBL6J1SgxIPKflq1VhK8JOwzCiqXOOWUebFwPyiEFCXnrJoE
+ a4dw==
+X-Gm-Message-State: AOAM532KvcFbbEfk7P4Letfsxi+dHso7MgIAaJJVqeRsxk1sfo/vehyA
+ hsNfMVwF/b5vO37ROqKHl66HlbuKA75UCw==
+X-Google-Smtp-Source: ABdhPJzj7R3a4Q3LwaylvWowGfq/ioeuKu8dN9BzXIJLqimI8e5ehj2oz+lGry3wNhAwWaKbOOwTpA==
+X-Received: by 2002:a05:6808:118:: with SMTP id
+ b24mr3451187oie.0.1631124570529; 
+ Wed, 08 Sep 2021 11:09:30 -0700 (PDT)
+Received: from mail-oi1-f181.google.com (mail-oi1-f181.google.com.
+ [209.85.167.181])
+ by smtp.gmail.com with ESMTPSA id c16sm593451otp.59.2021.09.08.11.09.29
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Sep 2021 11:09:29 -0700 (PDT)
+Received: by mail-oi1-f181.google.com with SMTP id h133so4179540oib.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 08 Sep 2021 11:09:29 -0700 (PDT)
+X-Received: by 2002:aca:4557:: with SMTP id s84mr3270975oia.77.1631124568911; 
+ Wed, 08 Sep 2021 11:09:28 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210908135356.18689-1-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20210907094628.RESEND.1.If29cd838efbcee4450a62b8d84a99b23c86e0a3f@changeid>
+ <20210907094628.RESEND.2.Ibc87b4785709543c998cc852c1edaeb7a08edf5c@changeid>
+ <CAD=FV=Uo7oK6a8X69KGneP8CvXE127ZxU7U59Rrz+_Dv6D5t3g@mail.gmail.com>
+In-Reply-To: <CAD=FV=Uo7oK6a8X69KGneP8CvXE127ZxU7U59Rrz+_Dv6D5t3g@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Date: Wed, 8 Sep 2021 11:09:17 -0700
+X-Gmail-Original-Message-ID: <CA+ASDXPLrpfnm70RLDD+c8Df8X3-q5FaOjCDWFSbzNwim1MisA@mail.gmail.com>
+Message-ID: <CA+ASDXPLrpfnm70RLDD+c8Df8X3-q5FaOjCDWFSbzNwim1MisA@mail.gmail.com>
+Subject: Re: [RESEND PATCH 2/2] arm64: dts: rockchip: add Coresight debug
+ range for RK3399
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, linux-clk <linux-clk@vger.kernel.org>, 
+ Chen-Yu Tsai <wenst@chromium.org>, LKML <linux-kernel@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210908_110559_741786_984B1346 
-X-CRM114-Status: GOOD (  42.92  )
+X-CRM114-CacheID: sfid-20210908_110932_727863_04DF9EDF 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,138 +109,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 08, 2021 at 08:53:56AM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> After commit 928f9e268611 ("clk: fractional-divider: Hide
-> clk_fractional_divider_ops from wide audience") was merged it appears
-> that the DSI panel on my Odroid Go Advance stopped working. Upon closer
-> examination of the problem, it looks like it was the fixup in the
-> rockchip_drm_vop.c file was causing the issue. The changes made to the
-> clk driver appear to change some assumptions made in the fixup.
-> 
-> After debugging the working 5.14 kernel and the no-longer working
-> 5.15 kernel, it looks like this was broken all along but still
-> worked, whereas after the fractional clock change it stopped
-> working despite the issue (it went from sort-of broken to very broken).
-> 
-> In the 5.14 kernel the dclk_vopb_frac was being requested to be set to
-> 17000999 on my board. The clock driver was taking the value of the
-> parent clock and attempting to divide the requested value from it
-> (17000000/17000999 = 0), then subtracting 1 from it (making it -1),
-> and running it through fls_long to get 64. It would then subtract
-> the value of fd->mwidth from it to get 48, and then bit shift
-> 17000999 to the left by 48, coming up with a very large number of
-> 7649082492112076800. This resulted in a numerator of 65535 and a
-> denominator of 1 from the clk driver. The driver seemingly would
-> try again and get a correct 1:1 value later, and then move on.
-> 
-> Output from my 5.14 kernel (with some printfs for good measure):
-> [    2.830066] rockchip-drm display-subsystem: bound ff460000.vop (ops vop_component_ops)
-> [    2.839431] rockchip-drm display-subsystem: bound ff450000.dsi (ops dw_mipi_dsi_rockchip_ops)
-> [    2.855980] Clock is dclk_vopb_frac
-> [    2.856004] Scale 64, Rate 7649082492112076800, Oldrate 17000999, Parent Rate 17000000, Best Numerator 65535, Best Denominator 1, fd->mwidth 16
-> [    2.903529] Clock is dclk_vopb_frac
-> [    2.903556] Scale 0, Rate 17000000, Oldrate 17000000, Parent Rate 17000000, Best Numerator 1, Best Denominator 1, fd->mwidth 16
-> [    2.903579] Clock is dclk_vopb_frac
-> [    2.903583] Scale 0, Rate 17000000, Oldrate 17000000, Parent Rate 17000000, Best Numerator 1, Best Denominator 1, fd->mwidth 16
-> 
-> Contrast this with 5.15 after the clk change where the rate of 17000999
-> was getting passed and resulted in numerators/denomiators of 17001/
-> 17000.
-> 
-> Output from my 5.15 kernel (with some printfs added for good measure):
-> [    2.817571] rockchip-drm display-subsystem: bound ff460000.vop (ops vop_component_ops)
-> [    2.826975] rockchip-drm display-subsystem: bound ff450000.dsi (ops dw_mipi_dsi_rockchip_ops)
-> [    2.843430] Rate 17000999, Parent Rate 17000000, Best Numerator 17018, Best Denominator 17017
-> [    2.891073] Rate 17001000, Parent Rate 17000000, Best Numerator 17001, Best Denominator 17000
-> [    2.891269] Rate 17001000, Parent Rate 17000000, Best Numerator 17001, Best Denominator 17000
-> [    2.891281] Rate 17001000, Parent Rate 17000000, Best Numerator 17001, Best Denominator 17000
-> 
-> After tracing through the code it appeared that this function here was
-> adding a 999 to the requested frequency because of how the clk driver
-> was rounding/accepting those frequencies. I believe after the changes
-> made in the commit listed above the assumptions listed in this driver
-> are no longer true. When I remove the + 999 from the driver the DSI
-> panel begins to work again.
-> 
-> Output from my 5.15 kernel with 999 removed (printfs added):
-> [    2.852054] rockchip-drm display-subsystem: bound ff460000.vop (ops vop_component_ops)
-> [    2.864483] rockchip-drm display-subsystem: bound ff450000.dsi (ops dw_mipi_dsi_rockchip_ops)
-> [    2.880869] Clock is dclk_vopb_frac
-> [    2.880892] Rate 17000000, Parent Rate 17000000, Best Numerator 1, Best Denominator 1
-> [    2.928521] Clock is dclk_vopb_frac
-> [    2.928551] Rate 17000000, Parent Rate 17000000, Best Numerator 1, Best Denominator 1
-> [    2.928570] Clock is dclk_vopb_frac
-> [    2.928574] Rate 17000000, Parent Rate 17000000, Best Numerator 1, Best Denominator 1
-> 
-> I have tested the change extensively on my Odroid Go Advance (Rockchip
-> RK3326) and it appears to work well. However, this change will affect
-> all Rockchip SoCs that use this driver so I believe further testing
-> is warranted. Please note that without this change I can confirm
-> at least all PX30s with DSI panels will stop working with the 5.15
-> kernel.
+On Wed, Sep 8, 2021 at 8:10 AM Doug Anderson <dianders@chromium.org> wrote:
+> On Tue, Sep 7, 2021 at 9:46 AM Brian Norris <briannorris@chromium.org> wrote:
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > @@ -433,6 +433,54 @@ usbdrd_dwc3_1: usb@fe900000 {
+> >                 };
+> >         };
+> >
+> > +       debug@fe430000 {
+>
+> I think your sort order is wrong? 0xfe430000 comes before 0xfe900000?
 
-To me it all makes a lot of sense, thank you for deep analysis of the issue!
-In any case I think we will need a Fixes tag to something (either one of
-clk-fractional-divider.c series or preexisted).
+Yep... In attempt to explain my own brain: perhaps I assumed the
+USB-related nodes must be uninterrupted, which caused my sorting eyes
+to skip over.
 
-Anyway, FWIW,
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+v2 is coming.
 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 21 +++------------------
->  1 file changed, 3 insertions(+), 18 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index ba9e14da41b4..bfef4f52dce6 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1169,31 +1169,16 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
->  	 *
->  	 * - DRM works in in kHz.
->  	 * - Clock framework works in Hz.
-> -	 * - Rockchip's clock driver picks the clock rate that is the
-> -	 *   same _OR LOWER_ than the one requested.
->  	 *
->  	 * Action plan:
->  	 *
-> -	 * 1. When DRM gives us a mode, we should add 999 Hz to it.  That way
-> -	 *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tells us to
-> -	 *    make 60000 kHz then the clock framework will actually give us
-> -	 *    the right clock.
-> -	 *
-> -	 *    NOTE: if the PLL (maybe through a divider) could actually make
-> -	 *    a clock rate 999 Hz higher instead of the one we want then this
-> -	 *    could be a problem.  Unfortunately there's not much we can do
-> -	 *    since it's baked into DRM to use kHz.  It shouldn't matter in
-> -	 *    practice since Rockchip PLLs are controlled by tables and
-> -	 *    even if there is a divider in the middle I wouldn't expect PLL
-> -	 *    rates in the table that are just a few kHz different.
-> -	 *
-> -	 * 2. Get the clock framework to round the rate for us to tell us
-> +	 * 1. Get the clock framework to round the rate for us to tell us
->  	 *    what it will actually make.
->  	 *
-> -	 * 3. Store the rounded up rate so that we don't need to worry about
-> +	 * 2. Store the rounded up rate so that we don't need to worry about
->  	 *    this in the actual clk_set_rate().
->  	 */
-> -	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
-> +	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000);
->  	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
->  
->  	return true;
-> -- 
-> 2.25.1
-> 
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Thanks,
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
