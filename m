@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 734E4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Sep 2021 11:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35C69C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Sep 2021 12:08:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4246D611CA
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Sep 2021 11:42:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4246D611CA
+	by mail.kernel.org (Postfix) with ESMTPS id 065786113E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Sep 2021 12:08:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 065786113E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,44 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4OCx6rNm7hDlusPKgSy6+Jk0wkDyGsh8Zgrnhvwaf9U=; b=RdG8WOwNfsCT7F
-	seaSGy0Gu5y5T09gsVxrofp9Df85btQPm0rg/3Cd2E7li5vKawlZGBnZvCq83EnY6Qm9UoUcD3Ago
-	uNB/mUPUW8gmiVlWECffDAeiYfQdxdsLcor7L5xt/lYA07icdMKkMgaon1tytup+9HPku9abfKhiH
-	hhHra8mxWKB1RAN8FaTPokemPyD2WSneMt6Xo+4yky8lA6rCX52OOKnseH4OILm+PzzJFD7IZkt5x
-	H9/ScSuWyiQra5BK0WmiYSMDv59me/amcxt4ttT0GEGtvyY4lbIWIimmky/jzKJLoXjhTrQgNl3XT
-	AHBso725hcTbG2gnuO6w==;
+	List-Owner; bh=LmBwDNnobw4RxJ4Ba0Ysa82yTJ9xKVAWO9mYzwg0bYY=; b=AWVYsyRcPCtBoY
+	2Na6vNCuZV6SB68kS05UiUtDN37DIKop4lbDS1G9phSDYQsJ2CaSOgbbwaKSQB5yO5qpzaFgeoPaN
+	rhTWZgBj7Bx7r5qm935JelNhjLF0JXVch3oU+R1f7aQQBM48hdb4/XsF2cG9HuAWjqNoOUg+zhAlV
+	gLVH0EaL4ppl+KNMry6C6insWPvGoTbCMgZLsMxzgbivDZ1gNq47fSD5qjFpHvhcLxRsyxGSnianT
+	wdaHqOXCSr3LS857BtDom2lPinxCDr9yPnSI87DygtvprL18q201hemeSvsMQLT0BOcCn/yfPKHsd
+	YQ7UQX00kOPB0AyQz1Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOIRr-0093WP-Jx; Thu, 09 Sep 2021 11:42:31 +0000
+	id 1mOIqu-009HiT-HU; Thu, 09 Sep 2021 12:08:24 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOIRa-0093Mg-KW; Thu, 09 Sep 2021 11:42:16 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 20DD761100;
- Thu,  9 Sep 2021 11:42:13 +0000 (UTC)
+ id 1mOIV9-0095nQ-Vv; Thu, 09 Sep 2021 11:45:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AEE87613A9;
+ Thu,  9 Sep 2021 11:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631187734;
- bh=uDKUJYqqIqQdZRhp/mjQ+sG7ZBn9+fzahbqiKun/kV8=;
+ s=k20201202; t=1631187955;
+ bh=VXGuYL61ANt4FhnQuzUI9Qfv/IaOG8jtek1j0NNjLsY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BUb2NKu5cgiJoO75FNgDqU9WtHUCLLPGcbw8wKXx4TsOIeNJaouw4AYIONfQictLq
- MYjbafevJzokRviSDKoJNP8fKqo9YSIDM8SWaP1xE+8DGO1jvFL0HXIN83j2qnJhxa
- FEI459ETxxsKidfVFYLfJPxyoTs/Ngkvzk84EShankcr0T3nfEuJxZPUUGpLz1hdTG
- csN3jJhGO0rtwTQvxL3If7dOCnPB8pQCn8vjGVXiaZa/EgzQ/oxImPBTQVfbDtnnVS
- s5a2JcH67R+OJ48A/LRMCtI0UGTCVaF4Yunh5Mk6ggR/ZwZdBMm4LSn3+SFf9IMeci
- 2jS+l9UsrAzEw==
+ b=D6JeJooMnmOChYDQi689bkMC6YAs5AlqnZRy3M2vTZFDboBveZho/R9CRMaMqhGz/
+ F+rZsOu4tLco3WUrdQuQ+nrPd9p1LN5ohHedlmH++sNf4fDH+4kZyOWnSeRmOKeBgV
+ zKnyTgVjWXvtcd+mPxShIxH1oPfMyw/R5JM6CXkmPkVdn7OSx9+S2UqiREiBKLJ5yX
+ FnniTLWs/qi6gwDDjom4DgA8GVqsQ7ve6NH5x3byDbKUG0DUqzNJ2oL8DgIiEX3uK7
+ 5cI0MRurZOeVg0aj7zwtTUGGqtB+e48gRR6yOk3HXzEvayReKe4RERV3oG/6ZbOo8a
+ IUG5XYP8yxdCQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Alex Bee <knaerzche@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.14 053/252] media: hantro: vp8: Move noisy WARN_ON
- to vpu_debug
-Date: Thu,  9 Sep 2021 07:37:47 -0400
-Message-Id: <20210909114106.141462-53-sashal@kernel.org>
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>, Mark Brown <broonie@kernel.org>,
+ Sasha Levin <sashal@kernel.org>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.14 222/252] ASoC: rockchip: i2s: Fix regmap_ops hang
+Date: Thu,  9 Sep 2021 07:40:36 -0400
+Message-Id: <20210909114106.141462-222-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210909114106.141462-1-sashal@kernel.org>
 References: <20210909114106.141462-1-sashal@kernel.org>
@@ -68,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_044214_794241_505629D4 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20210909_044556_132342_561A7AB8 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,98 +82,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-[ Upstream commit 6ad61a7847da09b6261824accb539d05bcdfef65 ]
+[ Upstream commit 53ca9b9777b95cdd689181d7c547e38dc79adad0 ]
 
-When the VP8 decoders can't find a reference frame,
-the driver falls back to the current output frame.
+API 'set_fmt' maybe called when PD is off, in the situation,
+any register access will hang the system. so, enable PD
+before r/w register.
 
-This will probably produce some undesirable results,
-leading to frame corruption, but shouldn't cause
-noisy warnings.
-
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Alex Bee <knaerzche@gmail.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Link: https://lore.kernel.org/r/1629950520-14190-4-git-send-email-sugar.zhang@rock-chips.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/hantro/hantro_g1_vp8_dec.c    | 13 ++++++++++---
- .../staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c | 13 ++++++++++---
- 2 files changed, 20 insertions(+), 6 deletions(-)
+ sound/soc/rockchip/rockchip_i2s.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-index 96622a7f8279..2afd5996d75f 100644
---- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
-@@ -376,12 +376,17 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vb2_dst = hantro_get_dst_buf(ctx);
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index c7dc3509bceb..1fd47e56c77f 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -186,7 +186,9 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ {
+ 	struct rk_i2s_dev *i2s = to_info(cpu_dai);
+ 	unsigned int mask = 0, val = 0;
++	int ret = 0;
  
- 	ref = hantro_get_ref(ctx, hdr->last_frame_ts);
--	if (!ref)
-+	if (!ref) {
-+		vpu_debug(0, "failed to find last frame ts=%llu\n",
-+			  hdr->last_frame_ts);
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
-+	}
- 	vdpu_write_relaxed(vpu, ref, G1_REG_ADDR_REF(0));
++	pm_runtime_get_sync(cpu_dai->dev);
+ 	mask = I2S_CKR_MSS_MASK;
+ 	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+ 	case SND_SOC_DAIFMT_CBS_CFS:
+@@ -199,7 +201,8 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ 		i2s->is_master_mode = false;
+ 		break;
+ 	default:
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm_put;
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->golden_frame_ts);
--	WARN_ON(!ref && hdr->golden_frame_ts);
-+	if (!ref && hdr->golden_frame_ts)
-+		vpu_debug(0, "failed to find golden frame ts=%llu\n",
-+			  hdr->golden_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_GOLDEN)
-@@ -389,7 +394,9 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, ref, G1_REG_ADDR_REF(4));
+ 	regmap_update_bits(i2s->regmap, I2S_CKR, mask, val);
+@@ -213,7 +216,8 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ 		val = I2S_CKR_CKP_POS;
+ 		break;
+ 	default:
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm_put;
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->alt_frame_ts);
--	WARN_ON(!ref && hdr->alt_frame_ts);
-+	if (!ref && hdr->alt_frame_ts)
-+		vpu_debug(0, "failed to find alt frame ts=%llu\n",
-+			  hdr->alt_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT)
-diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-index 951b55f58a61..704607511b57 100644
---- a/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_vp8_dec.c
-@@ -453,12 +453,17 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vb2_dst = hantro_get_dst_buf(ctx);
+ 	regmap_update_bits(i2s->regmap, I2S_CKR, mask, val);
+@@ -236,7 +240,8 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ 		val = I2S_TXCR_TFS_PCM | I2S_TXCR_PBM_MODE(1);
+ 		break;
+ 	default:
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm_put;
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->last_frame_ts);
--	if (!ref)
-+	if (!ref) {
-+		vpu_debug(0, "failed to find last frame ts=%llu\n",
-+			  hdr->last_frame_ts);
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
-+	}
- 	vdpu_write_relaxed(vpu, ref, VDPU_REG_VP8_ADDR_REF0);
+ 	regmap_update_bits(i2s->regmap, I2S_TXCR, mask, val);
+@@ -259,12 +264,16 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+ 		val = I2S_RXCR_TFS_PCM | I2S_RXCR_PBM_MODE(1);
+ 		break;
+ 	default:
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_pm_put;
+ 	}
  
- 	ref = hantro_get_ref(ctx, hdr->golden_frame_ts);
--	WARN_ON(!ref && hdr->golden_frame_ts);
-+	if (!ref && hdr->golden_frame_ts)
-+		vpu_debug(0, "failed to find golden frame ts=%llu\n",
-+			  hdr->golden_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_GOLDEN)
-@@ -466,7 +471,9 @@ static void cfg_ref(struct hantro_ctx *ctx,
- 	vdpu_write_relaxed(vpu, ref, VDPU_REG_VP8_ADDR_REF2_5(2));
+ 	regmap_update_bits(i2s->regmap, I2S_RXCR, mask, val);
  
- 	ref = hantro_get_ref(ctx, hdr->alt_frame_ts);
--	WARN_ON(!ref && hdr->alt_frame_ts);
-+	if (!ref && hdr->alt_frame_ts)
-+		vpu_debug(0, "failed to find alt frame ts=%llu\n",
-+			  hdr->alt_frame_ts);
- 	if (!ref)
- 		ref = vb2_dma_contig_plane_dma_addr(&vb2_dst->vb2_buf, 0);
- 	if (hdr->flags & V4L2_VP8_FRAME_FLAG_SIGN_BIAS_ALT)
+-	return 0;
++err_pm_put:
++	pm_runtime_put(cpu_dai->dev);
++
++	return ret;
+ }
+ 
+ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
 -- 
 2.30.2
 
