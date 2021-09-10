@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AF2DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Sep 2021 00:35:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21B85C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Sep 2021 00:38:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5C666103E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Sep 2021 00:35:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E5C666103E
+	by mail.kernel.org (Postfix) with ESMTPS id DB8646109F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Sep 2021 00:38:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DB8646109F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VCdW9m+gk5hyowDQUwyAUcDdI222X6IiGw6KRPKIVvI=; b=Sn4IbEydNG7aR4
-	M0msCiUk7Sg5MfRU06568wRSbxH8/a6gjUyyFdUXjp2t6tJdU+haRXaGJ91K3rgTDpFPBY4DdkF9U
-	aNshX3nrdo0bD30GxUykwoO0gpipO3gdb5EQwHojZoZlfzhRA14XjaGt9SvIgNJ6UA/yQ/y7zuKm+
-	RoLrtbv/OrpFOWYeLgSy7qhLgL4bvgdcbFp3P6YquRN0LE/WdpXM3jnvEVXmJc0oWekSs++5lf1mq
-	gb6u/CuyhQY4+KVSSRIdJcMyVhYGpiehY/DQ5ab6BT/+kypbbi4a/ZQc/Ux9VTrRMcJzbwM1eNPZx
-	+bEZNrpIm2zAhQZtO4Bg==;
+	List-Owner; bh=kmr1i3DTiiHdNTjU/HotXhkSBGROEtpQoKXZMJLI23c=; b=xqY1Kh0Uwo2ohB
+	GJ3ePQO9UAuNTm7AUhGmy1Q3qyMa4fcLgsSXtUfSNDQUaCeFD2aIddYEAnDjPuID8wKthkLu6N/fj
+	sPtX9HBSkDB8GSaoARZbDdCqzEU8VkSoj5rODE3EyKKX2flR7DxbBI1pNmIu1D4jv0VbVTqUDavEd
+	VUJn4FpFRIKSDv+H5lD8md0m9OM60s2AGN4Hhbcd+RLcLxALKgxnnLpQY9O/kRD6IAjyEHLVVgEJH
+	m6eNRbJzWnf/5mjdz17zxb6k9U0ZPPUzMjaZ2qUbrOwtnRKkeMvpwOfLXPWfXW3ObGlovexpdTl8i
+	n9yiMWhw0i3T1LVtrxfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOUVO-00BLuE-Fk; Fri, 10 Sep 2021 00:34:58 +0000
+	id 1mOUYh-00BNWj-Rk; Fri, 10 Sep 2021 00:38:23 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOUIb-00BFvL-Ib; Fri, 10 Sep 2021 00:21:49 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3AF0360F6C;
- Fri, 10 Sep 2021 00:21:44 +0000 (UTC)
+ id 1mOUJQ-00BGNp-Fm; Fri, 10 Sep 2021 00:22:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E516604DC;
+ Fri, 10 Sep 2021 00:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631233305;
- bh=zUwheBrgiTwOErnoc8EJwk/XxzAdHk58Wtva3bRQ2a4=;
+ s=k20201202; t=1631233356;
+ bh=W1W9y/9p0SOx2kGkEmxow82SYjxCXKtIlDxwA6pa9Hs=;
  h=From:To:Cc:Subject:Date:From;
- b=FGJHptyUWzMnG9ay86gtvN+e9VSyEx91bbAalKDKgNF+vWfJAmHsWyQelp0M5lKMf
- DNxx2fNTvX3bR73QBM7WspR3IaoR5n6lhe2qXf6dUTKziHYsWQvLJpbK9tWX3xiOZW
- EfmcQVuGGM+A7rpo+IU937lhSHHa4muTnM1wNJ41od9i4I6jR9qYaM4FaH5HfKB0ao
- FnfIlUH1YqixZY0yGjaHWjjczlq+QP0YeG0kZHTECRUUCtFVjm9nzOOWTAZ0GUYD5U
- e+wjBdWfR6GHn+pobtQAHOnDSIUP2bB8Ody5PApuaWS7pTvOzFXlJJnn5CCdjydFGn
- xE5v/Hdm9ETyg==
+ b=MgzXHlifNV3avtliZGx1s+v9c/huoaKb1BIvr7IWeHABlB4Sd1+fxqtV/V8dmQFuz
+ FP5SP1dDMw2MmVE/FV+2PBdagJisXlckBz308NIOaTVed2sojvOWiL6zySIii9aC3F
+ SHMoeo99LS4yGo+qePX/P71OQMFfMejgGmmbsU+OVYoNi419rRfQHRn6iTF/Gx0bap
+ aHUWwpQFt6cmhj64KqhIyImh+hpoAMAd7NGExUWdovyA1uattXeZxa84FI1P8dGzoN
+ elSzcjMEl8thswmdX5loZtuOoOPeghJrSJ3ok3SmnR00kLZXZ1ddlshGWa4mCmj2IF
+ /hdYXNxsUEL5g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,16 +54,16 @@ Cc: Jon Lin <jon.lin@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>,
  Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Sasha Levin <sashal@kernel.org>, linux-clk@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 01/37] clk: rockchip: rk3036: fix up the sclk_sfc
+Subject: [PATCH AUTOSEL 4.19 01/25] clk: rockchip: rk3036: fix up the sclk_sfc
  parent error
-Date: Thu,  9 Sep 2021 20:21:06 -0400
-Message-Id: <20210910002143.175731-1-sashal@kernel.org>
+Date: Thu,  9 Sep 2021 20:22:09 -0400
+Message-Id: <20210910002234.176125-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_172147_841912_F486F6C3 
+X-CRM114-CacheID: sfid-20210909_172236_628118_95B28F2B 
 X-CRM114-Status: UNSURE (   9.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -100,10 +100,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/clk/rockchip/clk-rk3036.c b/drivers/clk/rockchip/clk-rk3036.c
-index 6a46f85ad837..1814be5ef574 100644
+index c3001980dbdc..ee3f6462620f 100644
 --- a/drivers/clk/rockchip/clk-rk3036.c
 +++ b/drivers/clk/rockchip/clk-rk3036.c
-@@ -120,6 +120,7 @@ PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
+@@ -128,6 +128,7 @@ PNAME(mux_pll_src_3plls_p)	= { "apll", "dpll", "gpll" };
  PNAME(mux_timer_p)		= { "xin24m", "pclk_peri_src" };
  
  PNAME(mux_pll_src_apll_dpll_gpll_usb480m_p)	= { "apll", "dpll", "gpll", "usb480m" };
@@ -111,7 +111,7 @@ index 6a46f85ad837..1814be5ef574 100644
  
  PNAME(mux_mmc_src_p)	= { "apll", "dpll", "gpll", "xin24m" };
  PNAME(mux_i2s_pre_p)	= { "i2s_src", "i2s_frac", "ext_i2s", "xin12m" };
-@@ -339,7 +340,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
+@@ -347,7 +348,7 @@ static struct rockchip_clk_branch rk3036_clk_branches[] __initdata = {
  			RK2928_CLKSEL_CON(16), 8, 2, MFLAGS, 10, 5, DFLAGS,
  			RK2928_CLKGATE_CON(10), 4, GFLAGS),
  
