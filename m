@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92735C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC3A5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FC4F610E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5FC4F610E6
+	by mail.kernel.org (Postfix) with ESMTPS id B52AB60FC1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B52AB60FC1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,20 +24,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qOmmuzwNse6eNQwqqhVDxbhwk1qOqT7r3i32WZL03cg=; b=OibX7hblp53tse
-	IKaiSOVtdQ3dlcBTYDqEgD4pIxL96g8rWOafd6kO2kYH9FM6Ged1L241z+tbgVEWosehYo3kknlsj
-	iqfU4WvioNfejyPEmr4cKF6erOvdH8pFQCgW2VXnwhuErNzBLmLEprx9j0OLKXoObIo42uKZr0/Yc
-	27rDGnB3dN6UFy3sRYQFRbizWGXhpRqpgOsxXDEF1pE7V3b4X0qp8pSEj2KEevWNwyH91YXcKmvda
-	RIBJBrRT3OiGdmhtTUMAFUD1RkVYFOgOBPPjlBIWxokRo6F5LUz9A1Z13aAKPfubm6GVRNirWtvk4
-	2iTa83cIUeLaXXDvcRuA==;
+	List-Owner; bh=0TUG5syPA7efF5S1rCTmPx2atvHeE16WOXiOvMCARAs=; b=e0W5efVxFBDVhk
+	8FOAJpKQYGLjdWopb4YuxVU6GEuoC+YcDdlnN1D+lh4NTzJc/RAxB5wq/8MdvGQYcnWlC1eNEx5EO
+	UyDSFBDwTTIYTDwSVC7FGXr177tr8oNYDTpG2eC7UfAKPCKKBORG+M62DNkwWk7jFX6Ca9DUl2N0M
+	YpjFoG9QatZNoYhakMGXSsFHn+ujynZKbGdRhcT8xrm9fIS3Cl1RnLaNZPtM/UgsbGJU9ymHxElkI
+	yD3DaxH/bP7YyyeANq6VytQDSKMgOk+/De4Fbi5ydyX5e3pCQ4m3r5STOj3yF1x1aCDs5KACsmFey
+	339pQkxXaKr80RhXW64Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPqjk-002vuS-Q2; Mon, 13 Sep 2021 18:31:24 +0000
+	id 1mPqk0-002w2t-TW; Mon, 13 Sep 2021 18:31:40 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPqio-002vV7-Ia; Mon, 13 Sep 2021 18:30:28 +0000
+ id 1mPqio-002vUc-Vr; Mon, 13 Sep 2021 18:30:29 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id 6B3161F42482
+ (Authenticated sender: andrzej.p) with ESMTPSA id 8EFDB1F4246D
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -57,15 +57,15 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
  kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v4 04/10] hantro: Add quirk for NV12/NV12_4L4 capture format
-Date: Mon, 13 Sep 2021 20:30:07 +0200
-Message-Id: <20210913183013.19616-5-andrzej.p@collabora.com>
+Subject: [PATCH v4 03/10] hantro: Simplify postprocessor
+Date: Mon, 13 Sep 2021 20:30:06 +0200
+Message-Id: <20210913183013.19616-4-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210913183013.19616-1-andrzej.p@collabora.com>
 References: <20210913183013.19616-1-andrzej.p@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210913_113026_828802_127AFE85 
-X-CRM114-Status: GOOD (  18.38  )
+X-CRM114-CacheID: sfid-20210913_113027_181763_D202C9F8 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +86,97 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ezequiel Garcia <ezequiel@collabora.com>
 
-The G2 core decoder engine produces NV12_4L4 format,
-which is a simple NV12 4x4 tiled format. The driver currently
-hides this format by always enabling the post-processor engine,
-and therefore offering NV12 directly.
-
-This is done without using the logic in hantro_postproc.c
-and therefore makes it difficult to add VP9 cleanly.
-
-Since fixing this is not easy, add a small quirk to force
-NV12 if HEVC was configured, but otherwise declare NV12_4L4
-as the pixel format in imx8mq_vpu_g2_variant.dec_fmts.
-
-This will be used by the VP9 decoder which will be added soon.
+Add a 'postprocessed' boolean property to struct hantro_fmt
+to signal that a format is produced by the post-processor.
+This will allow to introduce the G2 post-processor in a simple way.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_v4l2.c  | 14 ++++++++++++++
- drivers/staging/media/hantro/imx8m_vpu_hw.c |  2 +-
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ drivers/staging/media/hantro/hantro.h          | 2 ++
+ drivers/staging/media/hantro/hantro_postproc.c | 8 +-------
+ drivers/staging/media/hantro/imx8m_vpu_hw.c    | 1 +
+ drivers/staging/media/hantro/rockchip_vpu_hw.c | 1 +
+ drivers/staging/media/hantro/sama5d4_vdec_hw.c | 1 +
+ 5 files changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index bcb0bdff4a9a..d1f060c55fed 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -150,6 +150,20 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
- 	unsigned int num_fmts, i, j = 0;
- 	bool skip_mode_none;
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index c2e01959dc00..dd5e56765d4e 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -263,6 +263,7 @@ struct hantro_ctx {
+  * @max_depth:	Maximum depth, for bitstream formats
+  * @enc_fmt:	Format identifier for encoder registers.
+  * @frmsize:	Supported range of frame sizes (only for bitstream formats).
++ * @postprocessed: Indicates if this format needs the post-processor.
+  */
+ struct hantro_fmt {
+ 	char *name;
+@@ -272,6 +273,7 @@ struct hantro_fmt {
+ 	int max_depth;
+ 	enum hantro_enc_fmt enc_fmt;
+ 	struct v4l2_frmsize_stepwise frmsize;
++	bool postprocessed;
+ };
  
-+	/*
-+	 * The HEVC decoder on the G2 core needs a little quirk to offer NV12
-+	 * only on the capture side. Once the post-processor logic is used,
-+	 * we will be able to expose NV12_4L4 and NV12 as the other cases,
-+	 * and therefore remove this quirk.
-+	 */
-+	if (capture && ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE) {
-+		if (f->index == 0) {
-+			f->pixelformat = V4L2_PIX_FMT_NV12;
-+			return 0;
-+		}
-+		return -EINVAL;
-+	}
-+
- 	/*
- 	 * When dealing with an encoder:
- 	 *  - on the capture side we want to filter out all MODE_NONE formats.
+ struct hantro_reg {
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index 882fb8bc5ddd..4549aec08feb 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -53,15 +53,9 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
+ 			   const struct hantro_fmt *fmt)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
+-
+ 	if (ctx->is_encoder)
+ 		return false;
+-
+-	if (!vpu->variant->postproc_fmts)
+-		return false;
+-
+-	return fmt->fourcc != V4L2_PIX_FMT_NV12;
++	return fmt->postprocessed;
+ }
+ 
+ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
 diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index 02e61438220a..a40b161e5956 100644
+index 22fa7d2f3b64..02e61438220a 100644
 --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
 +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -134,7 +134,7 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 
- static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+@@ -82,6 +82,7 @@ static const struct hantro_fmt imx8m_vpu_postproc_fmts[] = {
  	{
--		.fourcc = V4L2_PIX_FMT_NV12,
-+		.fourcc = V4L2_PIX_FMT_NV12_4L4,
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
  		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
  	},
+ };
+ 
+diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+index 6c1ad5534ce5..f372f767d4ff 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
++++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+@@ -62,6 +62,7 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
  	{
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
+ 	},
+ };
+ 
+diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+index f3fecc7248c4..b2fc1c5613e1 100644
+--- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
++++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+@@ -15,6 +15,7 @@ static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
+ 	},
+ };
+ 
 -- 
 2.17.1
 
