@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC3A5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11613C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:32:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B52AB60FC1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:31:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B52AB60FC1
+	by mail.kernel.org (Postfix) with ESMTPS id CB63E610D2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 18:32:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CB63E610D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,20 +24,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0TUG5syPA7efF5S1rCTmPx2atvHeE16WOXiOvMCARAs=; b=e0W5efVxFBDVhk
-	8FOAJpKQYGLjdWopb4YuxVU6GEuoC+YcDdlnN1D+lh4NTzJc/RAxB5wq/8MdvGQYcnWlC1eNEx5EO
-	UyDSFBDwTTIYTDwSVC7FGXr177tr8oNYDTpG2eC7UfAKPCKKBORG+M62DNkwWk7jFX6Ca9DUl2N0M
-	YpjFoG9QatZNoYhakMGXSsFHn+ujynZKbGdRhcT8xrm9fIS3Cl1RnLaNZPtM/UgsbGJU9ymHxElkI
-	yD3DaxH/bP7YyyeANq6VytQDSKMgOk+/De4Fbi5ydyX5e3pCQ4m3r5STOj3yF1x1aCDs5KACsmFey
-	339pQkxXaKr80RhXW64Q==;
+	List-Owner; bh=DOxJufi7TdmeB5Jajvtr195wjBc5n/6mDb7Du604iME=; b=yd631KfxhD6rEc
+	Vak4QR3zLE2ivirCrBKSqgPJ88C4/tn09uOrLrJPrgckiNQjeBMJ3hjLDCZL4TTcFS2f2SDS2V8w4
+	icNT+MGjPbo/6jI7aviEgjq/L16RP5UWCK99xNSDPz9tx47BygSRb+Yjr8TCtzB9PXIIiIuQ8wRN6
+	Q2snyANkv3ytOi7q4ynDY+Bj8decZuxN+umXYtRIzi/h2vjDVVgkTPWEFbG8mTqIn5JFJSnL8PQRY
+	5Q1fBpXkmuGV9qBclg5y/SWBKBEBlbnAwzEyOVdd1I2wOtAL0pu4ElOCo/4t96UeplgZap4P/823A
+	CDrqz4JZ5Y10PDnU4Nfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPqk0-002w2t-TW; Mon, 13 Sep 2021 18:31:40 +0000
+	id 1mPqkS-002wJl-Bk; Mon, 13 Sep 2021 18:32:08 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPqio-002vUc-Vr; Mon, 13 Sep 2021 18:30:29 +0000
+ id 1mPqiu-002vZL-I6; Mon, 13 Sep 2021 18:30:38 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id 8EFDB1F4246D
+ (Authenticated sender: andrzej.p) with ESMTPSA id 2E28E1F42B15
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -56,16 +56,16 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v4 03/10] hantro: Simplify postprocessor
-Date: Mon, 13 Sep 2021 20:30:06 +0200
-Message-Id: <20210913183013.19616-4-andrzej.p@collabora.com>
+ kernel@collabora.com
+Subject: [PATCH v4 08/10] media: hantro: Prepare for other G2 codecs
+Date: Mon, 13 Sep 2021 20:30:11 +0200
+Message-Id: <20210913183013.19616-9-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210913183013.19616-1-andrzej.p@collabora.com>
 References: <20210913183013.19616-1-andrzej.p@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210913_113027_181763_D202C9F8 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20210913_113032_914371_5131E44C 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,99 +84,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ezequiel Garcia <ezequiel@collabora.com>
+VeriSilicon Hantro G2 core supports other codecs besides hevc.
+Factor out some common code in preparation for vp9 support.
 
-Add a 'postprocessed' boolean property to struct hantro_fmt
-to signal that a format is produced by the post-processor.
-This will allow to introduce the G2 post-processor in a simple way.
-
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/staging/media/hantro/hantro.h          | 2 ++
- drivers/staging/media/hantro/hantro_postproc.c | 8 +-------
- drivers/staging/media/hantro/imx8m_vpu_hw.c    | 1 +
- drivers/staging/media/hantro/rockchip_vpu_hw.c | 1 +
- drivers/staging/media/hantro/sama5d4_vdec_hw.c | 1 +
- 5 files changed, 6 insertions(+), 7 deletions(-)
+ drivers/staging/media/hantro/Makefile         |  1 +
+ drivers/staging/media/hantro/hantro.h         |  7 +++++
+ drivers/staging/media/hantro/hantro_g2.c      | 27 ++++++++++++++++
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 31 -------------------
+ drivers/staging/media/hantro/hantro_g2_regs.h |  7 +++++
+ drivers/staging/media/hantro/hantro_hw.h      |  2 ++
+ 6 files changed, 44 insertions(+), 31 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g2.c
 
+diff --git a/drivers/staging/media/hantro/Makefile b/drivers/staging/media/hantro/Makefile
+index 90036831fec4..fe6d84871d07 100644
+--- a/drivers/staging/media/hantro/Makefile
++++ b/drivers/staging/media/hantro/Makefile
+@@ -12,6 +12,7 @@ hantro-vpu-y += \
+ 		hantro_g1_mpeg2_dec.o \
+ 		hantro_g2_hevc_dec.o \
+ 		hantro_g1_vp8_dec.o \
++		hantro_g2.o \
+ 		rockchip_vpu2_hw_jpeg_enc.o \
+ 		rockchip_vpu2_hw_h264_dec.o \
+ 		rockchip_vpu2_hw_mpeg2_dec.o \
 diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index c2e01959dc00..dd5e56765d4e 100644
+index dd5e56765d4e..d91eb2b1c509 100644
 --- a/drivers/staging/media/hantro/hantro.h
 +++ b/drivers/staging/media/hantro/hantro.h
-@@ -263,6 +263,7 @@ struct hantro_ctx {
-  * @max_depth:	Maximum depth, for bitstream formats
-  * @enc_fmt:	Format identifier for encoder registers.
-  * @frmsize:	Supported range of frame sizes (only for bitstream formats).
-+ * @postprocessed: Indicates if this format needs the post-processor.
-  */
- struct hantro_fmt {
- 	char *name;
-@@ -272,6 +273,7 @@ struct hantro_fmt {
- 	int max_depth;
- 	enum hantro_enc_fmt enc_fmt;
- 	struct v4l2_frmsize_stepwise frmsize;
-+	bool postprocessed;
- };
- 
- struct hantro_reg {
-diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index 882fb8bc5ddd..4549aec08feb 100644
---- a/drivers/staging/media/hantro/hantro_postproc.c
-+++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -53,15 +53,9 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
- bool hantro_needs_postproc(const struct hantro_ctx *ctx,
- 			   const struct hantro_fmt *fmt)
- {
--	struct hantro_dev *vpu = ctx->dev;
--
- 	if (ctx->is_encoder)
- 		return false;
--
--	if (!vpu->variant->postproc_fmts)
--		return false;
--
--	return fmt->fourcc != V4L2_PIX_FMT_NV12;
-+	return fmt->postprocessed;
+@@ -369,6 +369,13 @@ static inline void vdpu_write(struct hantro_dev *vpu, u32 val, u32 reg)
+ 	writel(val, vpu->dec_base + reg);
  }
  
- static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index 22fa7d2f3b64..02e61438220a 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -82,6 +82,7 @@ static const struct hantro_fmt imx8m_vpu_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
- 	},
- };
++static inline void hantro_write_addr(struct hantro_dev *vpu,
++				     unsigned long offset,
++				     dma_addr_t addr)
++{
++	vdpu_write(vpu, addr & 0xffffffff, offset);
++}
++
+ static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
+ {
+ 	u32 val = readl(vpu->dec_base + reg);
+diff --git a/drivers/staging/media/hantro/hantro_g2.c b/drivers/staging/media/hantro/hantro_g2.c
+new file mode 100644
+index 000000000000..5f7bb27913de
+--- /dev/null
++++ b/drivers/staging/media/hantro/hantro_g2.c
+@@ -0,0 +1,27 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Hantro VPU codec driver
++ *
++ * Copyright (C) 2021 Collabora Ltd, Andrzej Pietrasiewicz <andrzej.p@collabora.com>
++ */
++
++#include "hantro_hw.h"
++#include "hantro_g2_regs.h"
++
++void hantro_g2_check_idle(struct hantro_dev *vpu)
++{
++	int i;
++
++	for (i = 0; i < 3; i++) {
++		u32 status;
++
++		/* Make sure the VPU is idle */
++		status = vdpu_read(vpu, G2_REG_INTERRUPT);
++		if (status & G2_REG_INTERRUPT_DEC_E) {
++			dev_warn(vpu->dev, "device still running, aborting");
++			status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
++			vdpu_write(vpu, status, G2_REG_INTERRUPT);
++		}
++	}
++}
++
+diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+index 340efb57fd18..226cecda9495 100644
+--- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
++++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+@@ -8,20 +8,6 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
  
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index 6c1ad5534ce5..f372f767d4ff 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -62,6 +62,7 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
- 	},
- };
+-#define HEVC_DEC_MODE	0xC
+-
+-#define BUS_WIDTH_32		0
+-#define BUS_WIDTH_64		1
+-#define BUS_WIDTH_128		2
+-#define BUS_WIDTH_256		3
+-
+-static inline void hantro_write_addr(struct hantro_dev *vpu,
+-				     unsigned long offset,
+-				     dma_addr_t addr)
+-{
+-	vdpu_write(vpu, addr & 0xffffffff, offset);
+-}
+-
+ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+@@ -516,23 +502,6 @@ static void set_buffers(struct hantro_ctx *ctx)
+ 	hantro_write_addr(vpu, G2_TILE_BSD, ctx->hevc_dec.tile_bsd.dma);
+ }
  
-diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-index f3fecc7248c4..b2fc1c5613e1 100644
---- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-+++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-@@ -15,6 +15,7 @@ static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
- 	},
- };
+-static void hantro_g2_check_idle(struct hantro_dev *vpu)
+-{
+-	int i;
+-
+-	for (i = 0; i < 3; i++) {
+-		u32 status;
+-
+-		/* Make sure the VPU is idle */
+-		status = vdpu_read(vpu, G2_REG_INTERRUPT);
+-		if (status & G2_REG_INTERRUPT_DEC_E) {
+-			dev_warn(vpu->dev, "device still running, aborting");
+-			status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
+-			vdpu_write(vpu, status, G2_REG_INTERRUPT);
+-		}
+-	}
+-}
+-
+ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
+index bb22fa921914..0ac0ba375e80 100644
+--- a/drivers/staging/media/hantro/hantro_g2_regs.h
++++ b/drivers/staging/media/hantro/hantro_g2_regs.h
+@@ -27,6 +27,13 @@
+ #define G2_REG_INTERRUPT_DEC_IRQ_DIS	BIT(4)
+ #define G2_REG_INTERRUPT_DEC_E		BIT(0)
  
++#define HEVC_DEC_MODE			0xc
++
++#define BUS_WIDTH_32			0
++#define BUS_WIDTH_64			1
++#define BUS_WIDTH_128			2
++#define BUS_WIDTH_256			3
++
+ #define g2_strm_swap		G2_DEC_REG(2, 28, 0xf)
+ #define g2_dirmv_swap		G2_DEC_REG(2, 20, 0xf)
+ 
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 4323e63dfbfc..42b3f3961f75 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -308,4 +308,6 @@ void hantro_vp8_dec_exit(struct hantro_ctx *ctx);
+ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
+ 			    const struct v4l2_ctrl_vp8_frame *hdr);
+ 
++void hantro_g2_check_idle(struct hantro_dev *vpu);
++
+ #endif /* HANTRO_HW_H_ */
 -- 
 2.17.1
 
