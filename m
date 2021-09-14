@@ -1,62 +1,56 @@
-Return-Path: <SRS0=UDy9=OD=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=UDvA=OE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87C1DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 22:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 067AEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Sep 2021 04:15:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0B4660F3A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Sep 2021 22:50:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E0B4660F3A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 5FC786103B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Sep 2021 04:15:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5FC786103B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g227Wyv1rfCL7ebc6l/woKIlCHYbZvX4psse+LxdZ9c=; b=DgNg2/WxdswUyE
-	9nCnPkilzgs96LCX/EI9+ofDWMUQbQhOjHGNe5yEbHvmtUPKeFRkvz/V2KZXzR8sWoXNGcU9YEX1w
-	rRAihs34Ki8TfnY+jBum8a7nJPzi2KqDbIggueuYEw6uVXTjqiESIa9yrcPYIQJ8nHXxICXd7bVe1
-	TUef1i+oIH1htqlZ8zI4dHbrwQw8lU+J/nD3YkgY2eyF7okcDNEIE0wrwksFayuA74WoKI5c7Yt+p
-	5EKx4ztvUtiKoo087qGViQAIzxIK+dqLeDNe89lX5A01tOHiwa0oH5cPE84hM56M6G/qN86dR/evh
-	aN79XhZddfGx9I5EK07g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cXFmrXwFRcMXQKI+RoCoxbuKqKYFBfi3UstiLNqQqck=; b=wVaqu7wmMUrK93HU97YpALgEm+
+	mocg5OvM7o4gp4cl94ZdS06v57xHPllsGTS80bq93FtUAoiSSsX87vC2Un5zvcbSleL5beFfMnYda
+	P7dnkVhHuYkZu6EL6WatFVpJxIonOdbmCTAI/xO1ZNPLwx+JyQKj2+nzOHGguI3/qLgr5LQxu+TbZ
+	dXGNexn2Eg6Gri2eIZF5uJN69/4ow4UYLFgVU6UFzXrD/ULehqUod8d2fL15XWjH+w7LtpGs1zP2i
+	D4wB+wEMf4YMKmkZjMmTbMQ6xhubadGzvRZF7oY0K9koRtk964lxbUdCdxdR68x3pRPz7n+INvAzh
+	DRcwqc4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPumi-003Uoo-TO; Mon, 13 Sep 2021 22:50:44 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPula-003ULL-Ry; Mon, 13 Sep 2021 22:49:37 +0000
-Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=localhost.localdomain)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mPulW-0003SX-LR; Tue, 14 Sep 2021 00:49:30 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: linus.walleij@linaro.org,
-	bgolaszewski@baylibre.com
-Cc: heiko@sntech.de, jay.xu@rock-chips.com, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] pinctrl/rockchip: add a queue for deferred pin output
- settings on probe
-Date: Tue, 14 Sep 2021 00:49:25 +0200
-Message-Id: <20210913224926.1260726-4-heiko@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210913224926.1260726-1-heiko@sntech.de>
-References: <20210913224926.1260726-1-heiko@sntech.de>
+	id 1mPzr1-0049qE-PY; Tue, 14 Sep 2021 04:15:31 +0000
+Received: from [2601:1c0:6280:3f0::aa0b]
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mPzqz-0049pw-Pq; Tue, 14 Sep 2021 04:15:29 +0000
+Subject: Re: [PATCH] drm/rockchip: cdn-dp-core: Fix cdn_dp_resume unused
+ warning
+To: Palmer Dabbelt <palmer@dabbelt.com>, heiko@sntech.de
+Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel-team@android.com, Palmer Dabbelt <palmerdabbelt@google.com>
+References: <20210115074043.2944-1-palmer@dabbelt.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <36ff9f69-2c77-90ca-e2b5-f237f94a95a0@infradead.org>
+Date: Mon, 13 Sep 2021 21:15:29 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210913_154935_003399_61106432 
-X-CRM114-Status: GOOD (  26.89  )
+In-Reply-To: <20210115074043.2944-1-palmer@dabbelt.com>
+Content-Language: en-US
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,188 +63,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The separation of pinctrl and gpio drivers created a tiny window where
-a pinconfig setting might produce a null-pointer dereference.
+On 1/14/21 11:40 PM, Palmer Dabbelt wrote:
+> From: Palmer Dabbelt <palmerdabbelt@google.com>
+> 
+> cdn_dp_resume is only used under PM_SLEEP, and now that it's static an
+> unused function warning is triggered undner !PM_SLEEP.  This
+> conditionally enables the function to avoid the warning.
+> 
+> Fixes: 7c49abb4c2f8 ("drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static")
+> Signed-off-by: Palmer Dabbelt <palmerdabbelt@google.com>
+> ---
+>   drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> index a4a45daf93f2..063a60d213ba 100644
+> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+> @@ -1121,6 +1121,7 @@ static int cdn_dp_suspend(struct device *dev)
+>   	return ret;
+>   }
+>   
+> +#ifdef CONFIG_PM_SLEEP
+>   static int cdn_dp_resume(struct device *dev)
+>   {
+>   	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+> @@ -1133,6 +1134,7 @@ static int cdn_dp_resume(struct device *dev)
+>   
+>   	return 0;
+>   }
+> +#endif
+>   
+>   static int cdn_dp_probe(struct platform_device *pdev)
+>   {
+> 
 
-The affected device were rk3288-veyron devices in this case.
+Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
 
-Pinctrl-hogs are claimed when the pinctrl driver is registered,
-at which point their pinconfig settings will be applied.
-At this time the now separate gpio devices will not have been created
-yet and the matching driver won't have probed yet, making the gpio->foo()
-call run into a null-ptr.
 
-As probing is not really guaranteed to have been completed at a specific
-time, introduce a queue that can hold the output settings until the gpio
-driver has probed and will (in a separate patch) fetch the elements
-of the list.
+Is someone going to merge this patch from January?
 
-We expect the gpio driver to empty the list, but will nevertheless empty
-it ourself on remove if that didn't happen.
-
-Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/pinctrl/pinctrl-rockchip.c | 67 ++++++++++++++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h | 10 +++++
- 2 files changed, 77 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index ae33e376695f..5ce260f152ce 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2092,6 +2092,23 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	return false;
- }
- 
-+static int rockchip_pinconf_defer_output(struct rockchip_pin_bank *bank,
-+					 unsigned int pin, u32 arg)
-+{
-+	struct rockchip_pin_output_deferred *cfg;
-+
-+	cfg = kzalloc(sizeof(*cfg), GFP_KERNEL);
-+	if (!cfg)
-+		return -ENOMEM;
-+
-+	cfg->pin = pin;
-+	cfg->arg = arg;
-+
-+	list_add_tail(&cfg->head, &bank->deferred_output);
-+
-+	return 0;
-+}
-+
- /* set the pin config settings for a specified pin */
- static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 				unsigned long *configs, unsigned num_configs)
-@@ -2136,6 +2153,22 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 			if (rc != RK_FUNC_GPIO)
- 				return -EINVAL;
- 
-+			/*
-+			 * Check for gpio driver not being probed yet.
-+			 * The lock makes sure that either gpio-probe has completed
-+			 * or the gpio driver hasn't probed yet.
-+			 */
-+			mutex_lock(&bank->deferred_lock);
-+			if (!gpio || !gpio->direction_output) {
-+				rc = rockchip_pinconf_defer_output(bank, pin - bank->pin_base, arg);
-+				mutex_unlock(&bank->deferred_lock);
-+				if (rc)
-+					return rc;
-+
-+				break;
-+			}
-+			mutex_unlock(&bank->deferred_lock);
-+
- 			rc = gpio->direction_output(gpio, pin - bank->pin_base,
- 						    arg);
- 			if (rc)
-@@ -2204,6 +2237,11 @@ static int rockchip_pinconf_get(struct pinctrl_dev *pctldev, unsigned int pin,
- 		if (rc != RK_FUNC_GPIO)
- 			return -EINVAL;
- 
-+		if (!gpio || !gpio->get) {
-+			arg = 0;
-+			break;
-+		}
-+
- 		rc = gpio->get(gpio, pin - bank->pin_base);
- 		if (rc < 0)
- 			return rc;
-@@ -2450,6 +2488,9 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
- 						pin_bank->name, pin);
- 			pdesc++;
- 		}
-+
-+		INIT_LIST_HEAD(&pin_bank->deferred_output);
-+		mutex_init(&pin_bank->deferred_lock);
- 	}
- 
- 	ret = rockchip_pinctrl_parse_dt(pdev, info);
-@@ -2716,6 +2757,31 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
-+static int rockchip_pinctrl_remove(struct platform_device *pdev)
-+{
-+	struct rockchip_pinctrl *info = platform_get_drvdata(pdev);
-+	struct rockchip_pin_bank *bank;
-+	struct rockchip_pin_output_deferred *cfg;
-+	int i;
-+
-+	of_platform_depopulate(&pdev->dev);
-+
-+	for (i = 0; i < info->ctrl->nr_banks; i++) {
-+		bank = &info->ctrl->pin_banks[i];
-+
-+		mutex_lock(&bank->deferred_lock);
-+		while (!list_empty(&bank->deferred_output)) {
-+			cfg = list_first_entry(&bank->deferred_output,
-+					       struct rockchip_pin_output_deferred, head);
-+			list_del(&cfg->head);
-+			kfree(cfg);
-+		}
-+		mutex_unlock(&bank->deferred_lock);
-+	}
-+
-+	return 0;
-+}
-+
- static struct rockchip_pin_bank px30_pin_banks[] = {
- 	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
- 					     IOMUX_SOURCE_PMU,
-@@ -3175,6 +3241,7 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 
- static struct platform_driver rockchip_pinctrl_driver = {
- 	.probe		= rockchip_pinctrl_probe,
-+	.remove		= rockchip_pinctrl_remove,
- 	.driver = {
- 		.name	= "rockchip-pinctrl",
- 		.pm = &rockchip_pinctrl_dev_pm_ops,
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 589d4d2a98c9..91f10279d084 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -141,6 +141,8 @@ struct rockchip_drv {
-  * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
-  * @recalced_mask: bit mask to indicate a need to recalulate the mask
-  * @route_mask: bits describing the routing pins of per bank
-+ * @deferred_output: gpio output settings to be done after gpio bank probed
-+ * @deferred_lock: mutex for the deferred_output shared btw gpio and pinctrl
-  */
- struct rockchip_pin_bank {
- 	struct device			*dev;
-@@ -169,6 +171,8 @@ struct rockchip_pin_bank {
- 	u32				toggle_edge_mode;
- 	u32				recalced_mask;
- 	u32				route_mask;
-+	struct list_head		deferred_output;
-+	struct mutex			deferred_lock;
- };
- 
- /**
-@@ -243,6 +247,12 @@ struct rockchip_pin_config {
- 	unsigned int		nconfigs;
- };
- 
-+struct rockchip_pin_output_deferred {
-+	struct list_head head;
-+	unsigned int pin;
-+	u32 arg;
-+};
-+
- /**
-  * struct rockchip_pin_group: represent group of pins of a pinmux function.
-  * @name: name of the pin group, used to lookup the group.
+thanks.
 -- 
-2.29.2
-
+~Randy
 
 _______________________________________________
 Linux-rockchip mailing list
