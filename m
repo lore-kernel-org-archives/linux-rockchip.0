@@ -2,99 +2,115 @@ Return-Path: <SRS0=2I9J=OG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FORGED_HOTMAIL_RCVD2,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F30EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Sep 2021 17:08:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1456C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Sep 2021 18:45:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 317306103C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Sep 2021 17:08:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 317306103C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5CA81610A6
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Sep 2021 18:45:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5CA81610A6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=hotmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kx1MMFATtZiKf3nsufss6iwSHM7xo7TNOtO0EXVlW9k=; b=Vday5u+tbtnE5Y
-	JpVT7NYvU3mizGHHRBYP43GQgu4RLy4CV72tEHstPicKFm5qoVPkbIOyJq77To7quoz90TxEK4waN
-	/sBOYoSLQ+DSFZ/w3WoMBGXEKEbOphUfzGce7i3fLGISIBtss7bo10xcc0jEP7c1jmhQIl9kPjDhq
-	39/4eNehLsyHOHhlDjDZy5/DaiHHG84Pw0OvDCkAumAcItmQEEKV5u/znKU6XfT6OiTZc/QOZcjPX
-	mdsVetRs4k/ufz3KkV0K/V9qYoMTr7S4wG6mQNp03KMIvPBsxVv3xoJNZ78+qh4w4ZXgnHZI7Janu
-	lxCbJT28FqF/Sf3jHkCA==;
+	List-Owner; bh=Q/xulCRGTGpiydzUqpx5BKSBWzit4tsIj8tV+lwNkRc=; b=KhMczOmvZyqwYo
+	e2BAgyX0H4c/WWwLtbCSdGVYveYkYwPToooqKttmkEGcalf8O72kvFs0J4NPLd/LCjFYX2bOWVGH3
+	3f3jSt5m8PR7hFJ+BXKMIZp6Td3Z7KGKLaGcOHsWbJb5Z4ORET8i+J5u00HkqQc7igdFa+ziLySXi
+	zgOFZzb4773a0L8VXvrRGEvtrjMTwiinv5W+exI7LLL1ssnVdG4ffwZmrp8/AEfkyLnTeA8snLzxK
+	J59PkucqZKXwdcHf2Zfk2liqRI1rDLBgeehuh2AEKRC9ZLQkEtl/1DQWMD4+gFC0YG0Uci+WuV3Cm
+	y6VTCixxtVgBJsNdz7AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQus5-00BqCn-U8; Thu, 16 Sep 2021 17:08:25 +0000
-Received: from mail-il1-x132.google.com ([2607:f8b0:4864:20::132])
+	id 1mQwO6-00CD19-4n; Thu, 16 Sep 2021 18:45:34 +0000
+Received: from mail-mw2nam12olkn2097.outbound.protection.outlook.com
+ ([40.92.23.97] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQus1-00BqAv-GO
- for linux-rockchip@lists.infradead.org; Thu, 16 Sep 2021 17:08:23 +0000
-Received: by mail-il1-x132.google.com with SMTP id a20so7317539ilq.7
- for <linux-rockchip@lists.infradead.org>; Thu, 16 Sep 2021 10:08:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=kYMlWhMWuy4ezwiyEISjGOPG2Tpg02MXtGhpcC6x5jo=;
- b=Bjxl2kjQCmg31G/NCUver1eYiLHkGB/1Y1w9waW7LSegF9Z14kd+xODw3WPIMAO+Ey
- qBbY3WC0dJdZxz9noKgAgH98Cnhd9dtdTCjlejvY04B54CJHEu7WwrFAZ70dkwUeObeH
- 6ocuojYwUz03+nMzS0NxUmRVIghZ7nj1WWnGE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=kYMlWhMWuy4ezwiyEISjGOPG2Tpg02MXtGhpcC6x5jo=;
- b=j/OQmSrfouSt7Mwbfqt8Btfzx0pA5aGFebd6rBXbe01ECcujdEzYzLfbZ6/k0fd1/Q
- Rww8pgzm9+OFbsXgsmaDngF+Q2c01l2IX4Tj2walq8Y9epmcv1zJvbAqGXTxCKecxpgG
- zeKuwYFayqnxXN0uEgEBXpzx+TzFV/tS5qlGGKvhFzxFgS7FAtOMqXE8M5N9lt5OSTMI
- prkvWeZ6xOg9xrBgn+0zUAHglyfJ+lMDy5B8uaDK3Tc4kzvqFldI4jnpRWbHr/oDqyyX
- nJzODeaWYOfmvGEw3R/7DucbV/5aGAP/3vjvRL6g+M/jg31v0ntRXoNzu/B/L66ezKQN
- gIPQ==
-X-Gm-Message-State: AOAM533MeLrl5/1JDTrhB0Q45lfihVqKXriCMLng4FbVQBufEgSwx2Ug
- r3VQWk2AK2w5g31uz8JF/50fqjLpiR4gxA==
-X-Google-Smtp-Source: ABdhPJyR9FiKk7HHVPdRhveAH1SWxS6CyggEjUIHLGtftRrypn2uYlAh+Yb88X1803R9GBg5RZcSKQ==
-X-Received: by 2002:a05:6e02:1a23:: with SMTP id
- g3mr4689470ile.139.1631812098519; 
- Thu, 16 Sep 2021 10:08:18 -0700 (PDT)
-Received: from mail-io1-f45.google.com (mail-io1-f45.google.com.
- [209.85.166.45])
- by smtp.gmail.com with ESMTPSA id e15sm1995079ilu.29.2021.09.16.10.08.16
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Sep 2021 10:08:17 -0700 (PDT)
-Received: by mail-io1-f45.google.com with SMTP id a22so8757178iok.12
- for <linux-rockchip@lists.infradead.org>; Thu, 16 Sep 2021 10:08:16 -0700 (PDT)
-X-Received: by 2002:a6b:6a14:: with SMTP id x20mr5042916iog.177.1631812096362; 
- Thu, 16 Sep 2021 10:08:16 -0700 (PDT)
-MIME-Version: 1.0
+ id 1mQwO1-00CCzr-D6
+ for linux-rockchip@lists.infradead.org; Thu, 16 Sep 2021 18:45:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cE3ZTFKbvtmU5+rts6PWL2y9vydgO2CxlisZa6DkKDE0tVwrpqB3eJSkD8Sjp90drBRUZjpQRO7BiU+QGLAxCsMMpO4S66Z/dJuNk9yWJi5OeaYh9rKrGMpCeyKTSnqVdHKQdSCaGSFGN8FJBTtsFeGNeqqA2nDu0zjE0kWQKhpuQsfZTkwNftJG9digVVAUcw1E/ACv5gCqu5+gL0TgkjkFF2qdJYdmLYxYOiU8CTebZd52BI4Mt2NcNQOYzN4RR5INYT0JPZNALx0NLnR9bMaRAsBVZN0GUvtK5ndHaADAlgykbWh1PIVdSJ2GHC6zCLQQncuay9YHtYp34h3KbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
+ bh=Ob71cYrmJVFDSdYAeCu1Y6n3ATv49Wql8gz/khVa6Sg=;
+ b=L2bmxgAbtp3xCCrhTieZOZscRssPANsBpeIdLnzwgHZQZek345vldcAiBgi7HpMLO+JsBCeeYPH8KJbr7yDE1FZkVfEP7xm/jlJ4pR0hBWd4gapgblfLWfuA2Jttinf54uZgTFRgKqGo04Q5W4W07PcoV9sNmgGp2xs7RUroR5PVIoP1trqQj2H62VwpTL6F5dHvlC3AhWUtF3duEHzB32yttG/DDlp0iknEeN0QjBF6USgI8lCyOfyqFNShSobuz83jrvbx/NfLAUKI6ZRc532L/hkGipDLzJ1+z/clfdOaNoOJ+y2Nid2VqZGnzYLjBaDhSrzm1wjKluHrhus6yQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ob71cYrmJVFDSdYAeCu1Y6n3ATv49Wql8gz/khVa6Sg=;
+ b=t3RhUuMTbq28yCXIVGcf+QkFUdSIo2zRX1Dx61Wq068+mp0JwbdR1bVE+KC0mXHMFJYQysHC2/HjOMdJ/wQ0rKRzXz9ooycwso3kCWKnRyun+Bxb2rnO/YeCv7QMWCqhTHnN0q94L/nlDX9yrB061OCtBGGr+tZQf5iOFGFA9hf9EvMTCd/4xbO+Acw+8KrNP+MxQoXadizM5n23Adpr1Nr5QGzmOYbJIkplT4Ni8k3J/4CQlBn/Btgkwsyf9/18nXW+HfKGrjVnx6CvI7D+fo0gKy4KQ1/HGL94ry5b0njFygaqG8LE73g+B52ai/QN6jvwG+6FKHZJq7fTLieamQ==
+Received: from DM6PR06MB5337.namprd06.prod.outlook.com (2603:10b6:5:102::19)
+ by DM6PR06MB4058.namprd06.prod.outlook.com (2603:10b6:5:87::28) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.16; Thu, 16 Sep
+ 2021 18:45:21 +0000
+Received: from DM6PR06MB5337.namprd06.prod.outlook.com
+ ([fe80::6517:cc73:9b9f:845a]) by DM6PR06MB5337.namprd06.prod.outlook.com
+ ([fe80::6517:cc73:9b9f:845a%5]) with mapi id 15.20.4523.015; Thu, 16 Sep 2021
+ 18:45:21 +0000
+Date: Thu, 16 Sep 2021 13:45:17 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Chris Morgan <macroalpha82@gmail.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ zhangqing <zhangqing@rock-chips.com>,
+ Brian Norris <briannorris@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH] drm/rockchip: Update crtc fixup to account for
+ fractional clk change
+Message-ID: <DM6PR06MB53373EF39F1686647BA503F3A5DC9@DM6PR06MB5337.namprd06.prod.outlook.com>
 References: <20210908135356.18689-1-macroalpha82@gmail.com>
  <2719341.5nTrVeAVQv@diego>
-In-Reply-To: <2719341.5nTrVeAVQv@diego>
-From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 16 Sep 2021 10:08:05 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=VhOu7v5s0Jx1ATA62LJbFJgtpHNiPUDo9+sxarsef3dw@mail.gmail.com>
-Message-ID: <CAD=FV=VhOu7v5s0Jx1ATA62LJbFJgtpHNiPUDo9+sxarsef3dw@mail.gmail.com>
-Subject: Re: [PATCH] drm/rockchip: Update crtc fixup to account for fractional
- clk change
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Chris Morgan <macroalpha82@gmail.com>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- Sandy Huang <hjc@rock-chips.com>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- zhangqing <zhangqing@rock-chips.com>, 
- Chris Morgan <macromorgan@hotmail.com>, Brian Norris <briannorris@chromium.org>,
- Chen-Yu Tsai <wenst@chromium.org>
+ <CAD=FV=VhOu7v5s0Jx1ATA62LJbFJgtpHNiPUDo9+sxarsef3dw@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=VhOu7v5s0Jx1ATA62LJbFJgtpHNiPUDo9+sxarsef3dw@mail.gmail.com>
+X-TMN: [meGjtpQycxzV0jikX/fEHyLlVaSwxDYN]
+X-ClientProxiedBy: SN7PR04CA0016.namprd04.prod.outlook.com
+ (2603:10b6:806:f2::21) To DM6PR06MB5337.namprd06.prod.outlook.com
+ (2603:10b6:5:102::19)
+X-Microsoft-Original-Message-ID: <20210916184517.GA5968@wintermute.localdomain>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from wintermute.localdomain (76.183.134.35) by
+ SN7PR04CA0016.namprd04.prod.outlook.com (2603:10b6:806:f2::21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4523.14 via Frontend Transport; Thu, 16 Sep 2021 18:45:19 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ea38d77d-c63f-4bfd-8c88-08d979422278
+X-MS-TrafficTypeDiagnostic: DM6PR06MB4058:
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 2J25FdgsDNaE/iETEHfIDidwGvXOvqpZWgsfxBRr2fIzIR8T0TO/7N+OQU7FnGQ4o1sAKqkNkuaS7CDWBG4FQN5prLWoSj2JMqMWS+B8A6UoHWQh//tvUYvS+npDnaKsQH1T5Njsi9H8Cc5YVIBWDDwQyIBRvPvf3xUy0dOvelTBN+XYAVJyv8/ct4p0CUAWTPBUj90dXk5i4okzxNzSdXhJPimXF9xC64KwbjG29mLRmWuON4dFFm6kPT1J2GXHrp9thtpls1+eWrUw6DZBnEPiyjpHTAfg42cSh2w847EBmNa62yRctwn9+URcfkYTxVAa7btLHSBIrTiizsgJ/0lPRNt4rDn+msa5cP81ctNRodOS+hNrZgkg0BQSy5vp0NHqZ8TTisaGeSz4QlehMsYzHIS+dUzR9kjbel5C4JL3VZP5gqlVJyxrIdaHFGG7
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 7+Mj39l9SokQwJiI2sdLEp6Ckvvi+JI10+TxSQm8TRHK3PYW1fURNp76eyXJu0hQ16DXXBtMIQ/qCaBgXxnG0rKsNGgya6WK8tl0Yft+BIEgdmWilqi61eWRz4WraEmcL8yXpHCjj0bdA4YR5ixiCw==
+X-OriginatorOrg: sct-15-20-3174-20-msonline-outlook-94543.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea38d77d-c63f-4bfd-8c88-08d979422278
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR06MB5337.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2021 18:45:21.0989 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR06MB4058
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210916_100821_643465_9BA22EF5 
-X-CRM114-Status: GOOD (  61.50  )
+X-CRM114-CacheID: sfid-20210916_114529_503651_D7EC3A07 
+X-CRM114-Status: GOOD (  68.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,180 +123,249 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBUdWUsIFNlcCAxNCwgMjAyMSBhdCA0OjE0IEFNIEhlaWtvIFN0w7xibmVyIDxoZWlr
-b0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4gSGksCj4KPiBBbSBNaXR0d29jaCwgOC4gU2VwdGVtYmVy
-IDIwMjEsIDE1OjUzOjU2IENFU1Qgc2NocmllYiBDaHJpcyBNb3JnYW46Cj4gPiBGcm9tOiBDaHJp
-cyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgo+ID4KPiA+IEFmdGVyIGNvbW1pdCA5
-MjhmOWUyNjg2MTEgKCJjbGs6IGZyYWN0aW9uYWwtZGl2aWRlcjogSGlkZQo+ID4gY2xrX2ZyYWN0
-aW9uYWxfZGl2aWRlcl9vcHMgZnJvbSB3aWRlIGF1ZGllbmNlIikgd2FzIG1lcmdlZCBpdCBhcHBl
-YXJzCj4gPiB0aGF0IHRoZSBEU0kgcGFuZWwgb24gbXkgT2Ryb2lkIEdvIEFkdmFuY2Ugc3RvcHBl
-ZCB3b3JraW5nLiBVcG9uIGNsb3Nlcgo+ID4gZXhhbWluYXRpb24gb2YgdGhlIHByb2JsZW0sIGl0
-IGxvb2tzIGxpa2UgaXQgd2FzIHRoZSBmaXh1cCBpbiB0aGUKPiA+IHJvY2tjaGlwX2RybV92b3Au
-YyBmaWxlIHdhcyBjYXVzaW5nIHRoZSBpc3N1ZS4gVGhlIGNoYW5nZXMgbWFkZSB0byB0aGUKPiA+
-IGNsayBkcml2ZXIgYXBwZWFyIHRvIGNoYW5nZSBzb21lIGFzc3VtcHRpb25zIG1hZGUgaW4gdGhl
-IGZpeHVwLgo+ID4KPiA+IEFmdGVyIGRlYnVnZ2luZyB0aGUgd29ya2luZyA1LjE0IGtlcm5lbCBh
-bmQgdGhlIG5vLWxvbmdlciB3b3JraW5nCj4gPiA1LjE1IGtlcm5lbCwgaXQgbG9va3MgbGlrZSB0
-aGlzIHdhcyBicm9rZW4gYWxsIGFsb25nIGJ1dCBzdGlsbAo+ID4gd29ya2VkLCB3aGVyZWFzIGFm
-dGVyIHRoZSBmcmFjdGlvbmFsIGNsb2NrIGNoYW5nZSBpdCBzdG9wcGVkCj4gPiB3b3JraW5nIGRl
-c3BpdGUgdGhlIGlzc3VlIChpdCB3ZW50IGZyb20gc29ydC1vZiBicm9rZW4gdG8gdmVyeSBicm9r
-ZW4pLgo+ID4KPiA+IEluIHRoZSA1LjE0IGtlcm5lbCB0aGUgZGNsa192b3BiX2ZyYWMgd2FzIGJl
-aW5nIHJlcXVlc3RlZCB0byBiZSBzZXQgdG8KPiA+IDE3MDAwOTk5IG9uIG15IGJvYXJkLiBUaGUg
-Y2xvY2sgZHJpdmVyIHdhcyB0YWtpbmcgdGhlIHZhbHVlIG9mIHRoZQo+ID4gcGFyZW50IGNsb2Nr
-IGFuZCBhdHRlbXB0aW5nIHRvIGRpdmlkZSB0aGUgcmVxdWVzdGVkIHZhbHVlIGZyb20gaXQKPiA+
-ICgxNzAwMDAwMC8xNzAwMDk5OSA9IDApLCB0aGVuIHN1YnRyYWN0aW5nIDEgZnJvbSBpdCAobWFr
-aW5nIGl0IC0xKSwKPiA+IGFuZCBydW5uaW5nIGl0IHRocm91Z2ggZmxzX2xvbmcgdG8gZ2V0IDY0
-LiBJdCB3b3VsZCB0aGVuIHN1YnRyYWN0Cj4gPiB0aGUgdmFsdWUgb2YgZmQtPm13aWR0aCBmcm9t
-IGl0IHRvIGdldCA0OCwgYW5kIHRoZW4gYml0IHNoaWZ0Cj4gPiAxNzAwMDk5OSB0byB0aGUgbGVm
-dCBieSA0OCwgY29taW5nIHVwIHdpdGggYSB2ZXJ5IGxhcmdlIG51bWJlciBvZgo+ID4gNzY0OTA4
-MjQ5MjExMjA3NjgwMC4gVGhpcyByZXN1bHRlZCBpbiBhIG51bWVyYXRvciBvZiA2NTUzNSBhbmQg
-YQo+ID4gZGVub21pbmF0b3Igb2YgMSBmcm9tIHRoZSBjbGsgZHJpdmVyLiBUaGUgZHJpdmVyIHNl
-ZW1pbmdseSB3b3VsZAo+ID4gdHJ5IGFnYWluIGFuZCBnZXQgYSBjb3JyZWN0IDE6MSB2YWx1ZSBs
-YXRlciwgYW5kIHRoZW4gbW92ZSBvbi4KPiA+Cj4gPiBPdXRwdXQgZnJvbSBteSA1LjE0IGtlcm5l
-bCAod2l0aCBzb21lIHByaW50ZnMgZm9yIGdvb2QgbWVhc3VyZSk6Cj4gPiBbICAgIDIuODMwMDY2
-XSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmNDYwMDAwLnZvcCAob3Bz
-IHZvcF9jb21wb25lbnRfb3BzKQo+ID4gWyAgICAyLjgzOTQzMV0gcm9ja2NoaXAtZHJtIGRpc3Bs
-YXktc3Vic3lzdGVtOiBib3VuZCBmZjQ1MDAwMC5kc2kgKG9wcyBkd19taXBpX2RzaV9yb2NrY2hp
-cF9vcHMpCj4gPiBbICAgIDIuODU1OTgwXSBDbG9jayBpcyBkY2xrX3ZvcGJfZnJhYwo+ID4gWyAg
-ICAyLjg1NjAwNF0gU2NhbGUgNjQsIFJhdGUgNzY0OTA4MjQ5MjExMjA3NjgwMCwgT2xkcmF0ZSAx
-NzAwMDk5OSwgUGFyZW50IFJhdGUgMTcwMDAwMDAsIEJlc3QgTnVtZXJhdG9yIDY1NTM1LCBCZXN0
-IERlbm9taW5hdG9yIDEsIGZkLT5td2lkdGggMTYKPiA+IFsgICAgMi45MDM1MjldIENsb2NrIGlz
-IGRjbGtfdm9wYl9mcmFjCj4gPiBbICAgIDIuOTAzNTU2XSBTY2FsZSAwLCBSYXRlIDE3MDAwMDAw
-LCBPbGRyYXRlIDE3MDAwMDAwLCBQYXJlbnQgUmF0ZSAxNzAwMDAwMCwgQmVzdCBOdW1lcmF0b3Ig
-MSwgQmVzdCBEZW5vbWluYXRvciAxLCBmZC0+bXdpZHRoIDE2Cj4gPiBbICAgIDIuOTAzNTc5XSBD
-bG9jayBpcyBkY2xrX3ZvcGJfZnJhYwo+ID4gWyAgICAyLjkwMzU4M10gU2NhbGUgMCwgUmF0ZSAx
-NzAwMDAwMCwgT2xkcmF0ZSAxNzAwMDAwMCwgUGFyZW50IFJhdGUgMTcwMDAwMDAsIEJlc3QgTnVt
-ZXJhdG9yIDEsIEJlc3QgRGVub21pbmF0b3IgMSwgZmQtPm13aWR0aCAxNgo+ID4KPiA+IENvbnRy
-YXN0IHRoaXMgd2l0aCA1LjE1IGFmdGVyIHRoZSBjbGsgY2hhbmdlIHdoZXJlIHRoZSByYXRlIG9m
-IDE3MDAwOTk5Cj4gPiB3YXMgZ2V0dGluZyBwYXNzZWQgYW5kIHJlc3VsdGVkIGluIG51bWVyYXRv
-cnMvZGVub21pYXRvcnMgb2YgMTcwMDEvCj4gPiAxNzAwMC4KPiA+Cj4gPiBPdXRwdXQgZnJvbSBt
-eSA1LjE1IGtlcm5lbCAod2l0aCBzb21lIHByaW50ZnMgYWRkZWQgZm9yIGdvb2QgbWVhc3VyZSk6
-Cj4gPiBbICAgIDIuODE3NTcxXSByb2NrY2hpcC1kcm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5k
-IGZmNDYwMDAwLnZvcCAob3BzIHZvcF9jb21wb25lbnRfb3BzKQo+ID4gWyAgICAyLjgyNjk3NV0g
-cm9ja2NoaXAtZHJtIGRpc3BsYXktc3Vic3lzdGVtOiBib3VuZCBmZjQ1MDAwMC5kc2kgKG9wcyBk
-d19taXBpX2RzaV9yb2NrY2hpcF9vcHMpCj4gPiBbICAgIDIuODQzNDMwXSBSYXRlIDE3MDAwOTk5
-LCBQYXJlbnQgUmF0ZSAxNzAwMDAwMCwgQmVzdCBOdW1lcmF0b3IgMTcwMTgsIEJlc3QgRGVub21p
-bmF0b3IgMTcwMTcKPiA+IFsgICAgMi44OTEwNzNdIFJhdGUgMTcwMDEwMDAsIFBhcmVudCBSYXRl
-IDE3MDAwMDAwLCBCZXN0IE51bWVyYXRvciAxNzAwMSwgQmVzdCBEZW5vbWluYXRvciAxNzAwMAo+
-ID4gWyAgICAyLjg5MTI2OV0gUmF0ZSAxNzAwMTAwMCwgUGFyZW50IFJhdGUgMTcwMDAwMDAsIEJl
-c3QgTnVtZXJhdG9yIDE3MDAxLCBCZXN0IERlbm9taW5hdG9yIDE3MDAwCj4gPiBbICAgIDIuODkx
-MjgxXSBSYXRlIDE3MDAxMDAwLCBQYXJlbnQgUmF0ZSAxNzAwMDAwMCwgQmVzdCBOdW1lcmF0b3Ig
-MTcwMDEsIEJlc3QgRGVub21pbmF0b3IgMTcwMDAKPiA+Cj4gPiBBZnRlciB0cmFjaW5nIHRocm91
-Z2ggdGhlIGNvZGUgaXQgYXBwZWFyZWQgdGhhdCB0aGlzIGZ1bmN0aW9uIGhlcmUgd2FzCj4gPiBh
-ZGRpbmcgYSA5OTkgdG8gdGhlIHJlcXVlc3RlZCBmcmVxdWVuY3kgYmVjYXVzZSBvZiBob3cgdGhl
-IGNsayBkcml2ZXIKPiA+IHdhcyByb3VuZGluZy9hY2NlcHRpbmcgdGhvc2UgZnJlcXVlbmNpZXMu
-IEkgYmVsaWV2ZSBhZnRlciB0aGUgY2hhbmdlcwo+ID4gbWFkZSBpbiB0aGUgY29tbWl0IGxpc3Rl
-ZCBhYm92ZSB0aGUgYXNzdW1wdGlvbnMgbGlzdGVkIGluIHRoaXMgZHJpdmVyCj4gPiBhcmUgbm8g
-bG9uZ2VyIHRydWUuIFdoZW4gSSByZW1vdmUgdGhlICsgOTk5IGZyb20gdGhlIGRyaXZlciB0aGUg
-RFNJCj4gPiBwYW5lbCBiZWdpbnMgdG8gd29yayBhZ2Fpbi4KPiA+Cj4gPiBPdXRwdXQgZnJvbSBt
-eSA1LjE1IGtlcm5lbCB3aXRoIDk5OSByZW1vdmVkIChwcmludGZzIGFkZGVkKToKPiA+IFsgICAg
-Mi44NTIwNTRdIHJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogYm91bmQgZmY0NjAwMDAu
-dm9wIChvcHMgdm9wX2NvbXBvbmVudF9vcHMpCj4gPiBbICAgIDIuODY0NDgzXSByb2NrY2hpcC1k
-cm0gZGlzcGxheS1zdWJzeXN0ZW06IGJvdW5kIGZmNDUwMDAwLmRzaSAob3BzIGR3X21pcGlfZHNp
-X3JvY2tjaGlwX29wcykKPiA+IFsgICAgMi44ODA4NjldIENsb2NrIGlzIGRjbGtfdm9wYl9mcmFj
-Cj4gPiBbICAgIDIuODgwODkyXSBSYXRlIDE3MDAwMDAwLCBQYXJlbnQgUmF0ZSAxNzAwMDAwMCwg
-QmVzdCBOdW1lcmF0b3IgMSwgQmVzdCBEZW5vbWluYXRvciAxCj4gPiBbICAgIDIuOTI4NTIxXSBD
-bG9jayBpcyBkY2xrX3ZvcGJfZnJhYwo+ID4gWyAgICAyLjkyODU1MV0gUmF0ZSAxNzAwMDAwMCwg
-UGFyZW50IFJhdGUgMTcwMDAwMDAsIEJlc3QgTnVtZXJhdG9yIDEsIEJlc3QgRGVub21pbmF0b3Ig
-MQo+ID4gWyAgICAyLjkyODU3MF0gQ2xvY2sgaXMgZGNsa192b3BiX2ZyYWMKPiA+IFsgICAgMi45
-Mjg1NzRdIFJhdGUgMTcwMDAwMDAsIFBhcmVudCBSYXRlIDE3MDAwMDAwLCBCZXN0IE51bWVyYXRv
-ciAxLCBCZXN0IERlbm9taW5hdG9yIDEKPiA+Cj4gPiBJIGhhdmUgdGVzdGVkIHRoZSBjaGFuZ2Ug
-ZXh0ZW5zaXZlbHkgb24gbXkgT2Ryb2lkIEdvIEFkdmFuY2UgKFJvY2tjaGlwCj4gPiBSSzMzMjYp
-IGFuZCBpdCBhcHBlYXJzIHRvIHdvcmsgd2VsbC4gSG93ZXZlciwgdGhpcyBjaGFuZ2Ugd2lsbCBh
-ZmZlY3QKPiA+IGFsbCBSb2NrY2hpcCBTb0NzIHRoYXQgdXNlIHRoaXMgZHJpdmVyIHNvIEkgYmVs
-aWV2ZSBmdXJ0aGVyIHRlc3RpbmcKPiA+IGlzIHdhcnJhbnRlZC4gUGxlYXNlIG5vdGUgdGhhdCB3
-aXRob3V0IHRoaXMgY2hhbmdlIEkgY2FuIGNvbmZpcm0KPiA+IGF0IGxlYXN0IGFsbCBQWDMwcyB3
-aXRoIERTSSBwYW5lbHMgd2lsbCBzdG9wIHdvcmtpbmcgd2l0aCB0aGUgNS4xNQo+ID4ga2VybmVs
-Lgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IENocmlzIE1vcmdhbiA8bWFjcm9tb3JnYW5AaG90bWFp
-bC5jb20+Cj4KPiBXaXRoIDUuMTUtcmMxIG9uOgo+IC0gcmszMjg4LXBpbmt5K2VEUCAod2FzIHdv
-cmtpbmcgLT4gc3RpbGwgd29ya2luZykKPiAtIHJrMzM5OS1rZXZpbitlRFAgKHdhcyB3b3JraW5n
-IC0+IHN0aWxsIHdvcmtpbmcpCj4gLSBweDMwLW1pbmlldmIgKHdhcyBicm9rZW4gLT4gd29ya2lu
-ZyBhZ2FpbikKPgo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4K
-Pgo+Cj4gSSd2ZSBhbHNvIGFkZGVkIERvdWcsIG1heWJlIGhlIHJlbWVtYmVycyBzb21lIGhpc3Rv
-cmljIGFydGlmYWN0Cj4gdG8ga2VlcCBpbiBtaW5kIGFib3V0IHRoZSBvcmlnaW5hbCBwYXRjaC4K
-ClNvIHdoZW4geW91IHNheSAid2FzIHdvcmtpbmciIC0+ICJzdGlsbCB3b3JraW5nIiwgaG93IGRp
-ZCB5b3UgdGVzdAp0aGF0PyBEaWQgeW91IGp1c3QgY29uZmlybSB0aGF0IHNvbWV0aGluZyB3YXMg
-c2hvd2luZyB1cCBvbiB0aGUKc2NyZWVuLCBvciBkaWQgeW91IGNoZWNrIGRlYnVnZnMgYW5kIG1h
-a2Ugc3VyZSB0aGF0IHRoZSBQTExzIHdlcmUgYWxsCmJlaW5nIHNldCBjb3JyZWN0bHk/IEFsc28s
-IEkgY2FuJ3QgcXVpdGUgcmVtZW1iZXIgaWYgdGhlIHByb2JsZW1zIGhlcmUKd2VyZSByZWxhdGVk
-IHRvIHRoZSBpbnRlcm5hbCBkaXNwbGF5IChhbmQgb24gd2hpY2ggcm9ja2NoaXAgZGV2aWNlKSBv
-cgpIRE1JIHdoZXJlIHdlIGNvdWxkIGhhdmUgYSB3aG9sZSBsb3QgbW9yZSBwb3NzaWJsZSBwaXhl
-bCBjbG9ja3MuIEkgY2FuCmRpZyBpZiBuZWVkIGJlLiAuLi5idXQgSSdtIGZhaXJseSBjZXJ0YWlu
-IHRoYXQgd2UgY2FuJ3QganVzdCBkZWxldGUKdGhlICIrIDk5OSIgYW5kIGV4cGVjdCBldmVyeXRo
-aW5nIHRvIHdvcmsuIEFsbCBvZiB0aGUgc3R1ZmYgaW4gdGhlCmNvbW1lbnQgYWJvdmUgdGhlICIr
-IDk5OSIgaXMgc3RpbGwgYXMgdHJ1ZSB0b2RheSBhcyBpdCB3YXMgd2hlbiBJCndyb3RlIGl0LiBE
-Uk0gaXMgc3RpbGwgaW4ga0h6IGFuZCB0aGUgUm9ja2NoaXAgY2xvY2sgZHJpdmVyIHN0aWxsCnJv
-dW5kcyBkb3duLgoKSSBzdXNwZWN0IHRoYXQgdGhlIHByb2JsZW0gaGVyZSBpcyB0aGF0IHRoZSBs
-b2dpYyBJIHdyb3RlIHVwIGp1c3QKZG9lc24ndCB3b3JrIGdyZWF0IGlmIHlvdXIgZGlzcGxheSBj
-bG9jayBpcyBtYWRlIGJ5IGEgImZyYWMiIGNsb2NrLgpUaGF0J3MgcHJldHR5IG11Y2ggd2hhdCBJ
-IHdhcyBzYXlpbmcgd2hlbiBJIHdyb3RlIHRoZSBjb21tZW50OgoKPiBOT1RFOiBpZiB0aGUgUExM
-IChtYXliZSB0aHJvdWdoIGEgZGl2aWRlcikgY291bGQgYWN0dWFsbHkgbWFrZQo+IGEgY2xvY2sg
-cmF0ZSA5OTkgSHogaGlnaGVyIGluc3RlYWQgb2YgdGhlIG9uZSB3ZSB3YW50IHRoZW4gdGhpcwo+
-IGNvdWxkIGJlIGEgcHJvYmxlbS4KCk1heWJlIHdlIGNhbiBjb21lIHVwIHdpdGggYSBzb2x1dGlv
-biwgdGhvdWdoLgoKU28gb25lIHRoaW5nIGlzIHRoYXQgSSdkIHN1c3BlY3QgdGhhdCB0aGUgcHJv
-YmxlbSBpcyBhY3R1YWxseSBhIGJ1Zwp3aXRoIHRoZSBmcmFjdGlvbmFsIGNsb2NrIGRyaXZlci4g
-IkJlc3QgTnVtZXJhdG9yIDE3MDAxLCBCZXN0CkRlbm9taW5hdG9yIDE3MDAwIiBpcyBwcm9iYWJs
-eSBub3QgYSB2YWxpZCB0aGluZyB0byBzZXQgYW5kIHRoZSBjbG9jawpkcml2ZXIgc2hvdWxkIGtu
-b3cgdGhpcyBhbmQgc2VlayBvdXQgYSBkaWZmZXJlbnQgcmF0ZS4gSSBoYXZlbid0IGR1Zwp0aHJv
-dWdoIHlvdXIgY29kZSBwYXRocyBidXQsIGZvciBpbnN0YW5jZSwgdGhlIGNvbW1lbnRzIGFib3Zl
-CnJvY2tjaGlwX2ZyYWN0aW9uYWxfYXBwcm94aW1hdGlvbigpIHNheSB0aGF0IGRlbm9taW5hdG9y
-IG11c3QgYmUgMjB4CnRoZSBudW1lcmF0b3IgaWYgeW91IHdhbnQgYSBnb29kIGNsb2NrLiBUaGF0
-J3MgY2xlYXJseSBub3QgdGhlIGNhc2UKaGVyZS4gVGhlcmUgY291bGQgYWxzbyBiZSBtYXhpbXVt
-IHZhbHVlcyBvZiB0aGUgbnVtZXJhdG9yIC8KZGVub21pbmF0b3IgdGhhdCBhcmUgYmVpbmcgaWdu
-b3JlZC4gSSB3b3VsZCBzb3J0YSBiZXQgdGhhdCBpZiB0aGUgZnJhYwpjbG9jayBkcml2ZXIgd2Fz
-IGZpeGVkIHRoYXQgYSBjbG9jayBhbnl3aGVyZSBiZXR3ZWVuIDE3MDAwMDAwIGFuZAoxNzAwMDk5
-OSB3b3VsZCB3b3JrIGp1c3QgZmluZSBmb3IgeW91LgoKSW4gYW55IGNhc2UsIGRlc3BpdGUgdGhl
-IGNsb2NrIGRyaXZlciBiZWluZyBzY3Jld3ksIHByb2JhYmx5IHRoaXMKd291bGQgZml4IGl0IGZv
-ciB5b3UgKHVudGVzdGVkKSBhbmQgaXMgYSBiZXR0ZXIgc29sdXRpb24gSSB0aGluazoKCnJhdGUg
-PSBjbGtfcm91bmRfcmF0ZSh2b3AtPmRjbGssIGFkanVzdGVkX21vZGUtPmNsb2NrICogMTAwMCk7
-CmlmIChyYXRlIC8gMTAwMCAhPSBhZGp1c3RlZF9tb2RlLT5jbG9jaykKICByYXRlID0gY2xrX3Jv
-dW5kX3JhdGUodm9wLT5kY2xrLCBhZGp1c3RlZF9tb2RlLT5jbG9jayAqIDEwMDAgKyA5OTkpOwoK
-QmFzaWNhbGx5OiBpZiB3ZSBjYW4gaGFwcGVuIHRvIG1ha2UgdGhlIHJhdGUgZXhhY3RseSB0aGVu
-IHdlJ3JlIGdvb2QuCk90aGVyd2lzZSB0aGVuIHRyeSBidW1waW5nIHVwIGJ5IDk5OS4KCgo+ID4g
-LS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AuYyB8IDIx
-ICsrKy0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMo
-KyksIDE4IGRlbGV0aW9ucygtKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3Jv
-Y2tjaGlwX2RybV92b3AuYwo+ID4gaW5kZXggYmE5ZTE0ZGE0MWI0Li5iZmVmNGY1MmRjZTYgMTAw
-NjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5j
-Cj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4g
-PiBAQCAtMTE2OSwzMSArMTE2OSwxNiBAQCBzdGF0aWMgYm9vbCB2b3BfY3J0Y19tb2RlX2ZpeHVw
-KHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiA+ICAgICAgICAqCj4gPiAgICAgICAgKiAtIERSTSB3
-b3JrcyBpbiBpbiBrSHouCj4gPiAgICAgICAgKiAtIENsb2NrIGZyYW1ld29yayB3b3JrcyBpbiBI
-ei4KPiA+IC0gICAgICAqIC0gUm9ja2NoaXAncyBjbG9jayBkcml2ZXIgcGlja3MgdGhlIGNsb2Nr
-IHJhdGUgdGhhdCBpcyB0aGUKPiA+IC0gICAgICAqICAgc2FtZSBfT1IgTE9XRVJfIHRoYW4gdGhl
-IG9uZSByZXF1ZXN0ZWQuCj4gPiAgICAgICAgKgo+ID4gICAgICAgICogQWN0aW9uIHBsYW46Cj4g
-PiAgICAgICAgKgo+ID4gLSAgICAgICogMS4gV2hlbiBEUk0gZ2l2ZXMgdXMgYSBtb2RlLCB3ZSBz
-aG91bGQgYWRkIDk5OSBIeiB0byBpdC4gIFRoYXQgd2F5Cj4gPiAtICAgICAgKiAgICBpZiB0aGUg
-Y2xvY2sgd2UgbmVlZCBpcyA2MDAwMDAwMSBIeiAofjYwIE1IeikgYW5kIERSTSB0ZWxscyB1cyB0
-bwo+ID4gLSAgICAgICogICAgbWFrZSA2MDAwMCBrSHogdGhlbiB0aGUgY2xvY2sgZnJhbWV3b3Jr
-IHdpbGwgYWN0dWFsbHkgZ2l2ZSB1cwo+ID4gLSAgICAgICogICAgdGhlIHJpZ2h0IGNsb2NrLgo+
-ID4gLSAgICAgICoKPiA+IC0gICAgICAqICAgIE5PVEU6IGlmIHRoZSBQTEwgKG1heWJlIHRocm91
-Z2ggYSBkaXZpZGVyKSBjb3VsZCBhY3R1YWxseSBtYWtlCj4gPiAtICAgICAgKiAgICBhIGNsb2Nr
-IHJhdGUgOTk5IEh6IGhpZ2hlciBpbnN0ZWFkIG9mIHRoZSBvbmUgd2Ugd2FudCB0aGVuIHRoaXMK
-PiA+IC0gICAgICAqICAgIGNvdWxkIGJlIGEgcHJvYmxlbS4gIFVuZm9ydHVuYXRlbHkgdGhlcmUn
-cyBub3QgbXVjaCB3ZSBjYW4gZG8KPiA+IC0gICAgICAqICAgIHNpbmNlIGl0J3MgYmFrZWQgaW50
-byBEUk0gdG8gdXNlIGtIei4gIEl0IHNob3VsZG4ndCBtYXR0ZXIgaW4KPiA+IC0gICAgICAqICAg
-IHByYWN0aWNlIHNpbmNlIFJvY2tjaGlwIFBMTHMgYXJlIGNvbnRyb2xsZWQgYnkgdGFibGVzIGFu
-ZAo+ID4gLSAgICAgICogICAgZXZlbiBpZiB0aGVyZSBpcyBhIGRpdmlkZXIgaW4gdGhlIG1pZGRs
-ZSBJIHdvdWxkbid0IGV4cGVjdCBQTEwKPiA+IC0gICAgICAqICAgIHJhdGVzIGluIHRoZSB0YWJs
-ZSB0aGF0IGFyZSBqdXN0IGEgZmV3IGtIeiBkaWZmZXJlbnQuCj4gPiAtICAgICAgKgo+ID4gLSAg
-ICAgICogMi4gR2V0IHRoZSBjbG9jayBmcmFtZXdvcmsgdG8gcm91bmQgdGhlIHJhdGUgZm9yIHVz
-IHRvIHRlbGwgdXMKPiA+ICsgICAgICAqIDEuIEdldCB0aGUgY2xvY2sgZnJhbWV3b3JrIHRvIHJv
-dW5kIHRoZSByYXRlIGZvciB1cyB0byB0ZWxsIHVzCj4gPiAgICAgICAgKiAgICB3aGF0IGl0IHdp
-bGwgYWN0dWFsbHkgbWFrZS4KPiA+ICAgICAgICAqCj4gPiAtICAgICAgKiAzLiBTdG9yZSB0aGUg
-cm91bmRlZCB1cCByYXRlIHNvIHRoYXQgd2UgZG9uJ3QgbmVlZCB0byB3b3JyeSBhYm91dAo+ID4g
-KyAgICAgICogMi4gU3RvcmUgdGhlIHJvdW5kZWQgdXAgcmF0ZSBzbyB0aGF0IHdlIGRvbid0IG5l
-ZWQgdG8gd29ycnkgYWJvdXQKPiA+ICAgICAgICAqICAgIHRoaXMgaW4gdGhlIGFjdHVhbCBjbGtf
-c2V0X3JhdGUoKS4KPiA+ICAgICAgICAqLwo+ID4gLSAgICAgcmF0ZSA9IGNsa19yb3VuZF9yYXRl
-KHZvcC0+ZGNsaywgYWRqdXN0ZWRfbW9kZS0+Y2xvY2sgKiAxMDAwICsgOTk5KTsKPiA+ICsgICAg
-IHJhdGUgPSBjbGtfcm91bmRfcmF0ZSh2b3AtPmRjbGssIGFkanVzdGVkX21vZGUtPmNsb2NrICog
-MTAwMCk7Cj4gPiAgICAgICBhZGp1c3RlZF9tb2RlLT5jbG9jayA9IERJVl9ST1VORF9VUChyYXRl
-LCAxMDAwKTsKPiA+Cj4gPiAgICAgICByZXR1cm4gdHJ1ZTsKPiA+Cj4KPgo+Cj4KCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thu, Sep 16, 2021 at 10:08:05AM -0700, Doug Anderson wrote:
+> Hi,
+> =
+
+> On Tue, Sep 14, 2021 at 4:14 AM Heiko St=FCbner <heiko@sntech.de> wrote:
+> >
+> > Hi,
+> >
+> > Am Mittwoch, 8. September 2021, 15:53:56 CEST schrieb Chris Morgan:
+> > > From: Chris Morgan <macromorgan@hotmail.com>
+> > >
+> > > After commit 928f9e268611 ("clk: fractional-divider: Hide
+> > > clk_fractional_divider_ops from wide audience") was merged it appears
+> > > that the DSI panel on my Odroid Go Advance stopped working. Upon clos=
+er
+> > > examination of the problem, it looks like it was the fixup in the
+> > > rockchip_drm_vop.c file was causing the issue. The changes made to the
+> > > clk driver appear to change some assumptions made in the fixup.
+> > >
+> > > After debugging the working 5.14 kernel and the no-longer working
+> > > 5.15 kernel, it looks like this was broken all along but still
+> > > worked, whereas after the fractional clock change it stopped
+> > > working despite the issue (it went from sort-of broken to very broken=
+).
+> > >
+> > > In the 5.14 kernel the dclk_vopb_frac was being requested to be set to
+> > > 17000999 on my board. The clock driver was taking the value of the
+> > > parent clock and attempting to divide the requested value from it
+> > > (17000000/17000999 =3D 0), then subtracting 1 from it (making it -1),
+> > > and running it through fls_long to get 64. It would then subtract
+> > > the value of fd->mwidth from it to get 48, and then bit shift
+> > > 17000999 to the left by 48, coming up with a very large number of
+> > > 7649082492112076800. This resulted in a numerator of 65535 and a
+> > > denominator of 1 from the clk driver. The driver seemingly would
+> > > try again and get a correct 1:1 value later, and then move on.
+> > >
+> > > Output from my 5.14 kernel (with some printfs for good measure):
+> > > [    2.830066] rockchip-drm display-subsystem: bound ff460000.vop (op=
+s vop_component_ops)
+> > > [    2.839431] rockchip-drm display-subsystem: bound ff450000.dsi (op=
+s dw_mipi_dsi_rockchip_ops)
+> > > [    2.855980] Clock is dclk_vopb_frac
+> > > [    2.856004] Scale 64, Rate 7649082492112076800, Oldrate 17000999, =
+Parent Rate 17000000, Best Numerator 65535, Best Denominator 1, fd->mwidth =
+16
+> > > [    2.903529] Clock is dclk_vopb_frac
+> > > [    2.903556] Scale 0, Rate 17000000, Oldrate 17000000, Parent Rate =
+17000000, Best Numerator 1, Best Denominator 1, fd->mwidth 16
+> > > [    2.903579] Clock is dclk_vopb_frac
+> > > [    2.903583] Scale 0, Rate 17000000, Oldrate 17000000, Parent Rate =
+17000000, Best Numerator 1, Best Denominator 1, fd->mwidth 16
+> > >
+> > > Contrast this with 5.15 after the clk change where the rate of 170009=
+99
+> > > was getting passed and resulted in numerators/denomiators of 17001/
+> > > 17000.
+> > >
+> > > Output from my 5.15 kernel (with some printfs added for good measure):
+> > > [    2.817571] rockchip-drm display-subsystem: bound ff460000.vop (op=
+s vop_component_ops)
+> > > [    2.826975] rockchip-drm display-subsystem: bound ff450000.dsi (op=
+s dw_mipi_dsi_rockchip_ops)
+> > > [    2.843430] Rate 17000999, Parent Rate 17000000, Best Numerator 17=
+018, Best Denominator 17017
+> > > [    2.891073] Rate 17001000, Parent Rate 17000000, Best Numerator 17=
+001, Best Denominator 17000
+> > > [    2.891269] Rate 17001000, Parent Rate 17000000, Best Numerator 17=
+001, Best Denominator 17000
+> > > [    2.891281] Rate 17001000, Parent Rate 17000000, Best Numerator 17=
+001, Best Denominator 17000
+> > >
+> > > After tracing through the code it appeared that this function here was
+> > > adding a 999 to the requested frequency because of how the clk driver
+> > > was rounding/accepting those frequencies. I believe after the changes
+> > > made in the commit listed above the assumptions listed in this driver
+> > > are no longer true. When I remove the + 999 from the driver the DSI
+> > > panel begins to work again.
+> > >
+> > > Output from my 5.15 kernel with 999 removed (printfs added):
+> > > [    2.852054] rockchip-drm display-subsystem: bound ff460000.vop (op=
+s vop_component_ops)
+> > > [    2.864483] rockchip-drm display-subsystem: bound ff450000.dsi (op=
+s dw_mipi_dsi_rockchip_ops)
+> > > [    2.880869] Clock is dclk_vopb_frac
+> > > [    2.880892] Rate 17000000, Parent Rate 17000000, Best Numerator 1,=
+ Best Denominator 1
+> > > [    2.928521] Clock is dclk_vopb_frac
+> > > [    2.928551] Rate 17000000, Parent Rate 17000000, Best Numerator 1,=
+ Best Denominator 1
+> > > [    2.928570] Clock is dclk_vopb_frac
+> > > [    2.928574] Rate 17000000, Parent Rate 17000000, Best Numerator 1,=
+ Best Denominator 1
+> > >
+> > > I have tested the change extensively on my Odroid Go Advance (Rockchip
+> > > RK3326) and it appears to work well. However, this change will affect
+> > > all Rockchip SoCs that use this driver so I believe further testing
+> > > is warranted. Please note that without this change I can confirm
+> > > at least all PX30s with DSI panels will stop working with the 5.15
+> > > kernel.
+> > >
+> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> >
+> > With 5.15-rc1 on:
+> > - rk3288-pinky+eDP (was working -> still working)
+> > - rk3399-kevin+eDP (was working -> still working)
+> > - px30-minievb (was broken -> working again)
+> >
+> > Tested-by: Heiko Stuebner <heiko@sntech.de>
+> >
+> >
+> > I've also added Doug, maybe he remembers some historic artifact
+> > to keep in mind about the original patch.
+> =
+
+> So when you say "was working" -> "still working", how did you test
+> that? Did you just confirm that something was showing up on the
+> screen, or did you check debugfs and make sure that the PLLs were all
+> being set correctly? Also, I can't quite remember if the problems here
+> were related to the internal display (and on which rockchip device) or
+> HDMI where we could have a whole lot more possible pixel clocks. I can
+> dig if need be. ...but I'm fairly certain that we can't just delete
+> the "+ 999" and expect everything to work. All of the stuff in the
+> comment above the "+ 999" is still as true today as it was when I
+> wrote it. DRM is still in kHz and the Rockchip clock driver still
+> rounds down.
+> =
+
+> I suspect that the problem here is that the logic I wrote up just
+> doesn't work great if your display clock is made by a "frac" clock.
+> That's pretty much what I was saying when I wrote the comment:
+> =
+
+> > NOTE: if the PLL (maybe through a divider) could actually make
+> > a clock rate 999 Hz higher instead of the one we want then this
+> > could be a problem.
+> =
+
+> Maybe we can come up with a solution, though.
+> =
+
+> So one thing is that I'd suspect that the problem is actually a bug
+> with the fractional clock driver. "Best Numerator 17001, Best
+> Denominator 17000" is probably not a valid thing to set and the clock
+> driver should know this and seek out a different rate. I haven't dug
+> through your code paths but, for instance, the comments above
+> rockchip_fractional_approximation() say that denominator must be 20x
+> the numerator if you want a good clock. That's clearly not the case
+> here. There could also be maximum values of the numerator /
+> denominator that are being ignored. I would sorta bet that if the frac
+> clock driver was fixed that a clock anywhere between 17000000 and
+> 17000999 would work just fine for you.
+> =
+
+> In any case, despite the clock driver being screwy, probably this
+> would fix it for you (untested) and is a better solution I think:
+> =
+
+> rate =3D clk_round_rate(vop->dclk, adjusted_mode->clock * 1000);
+> if (rate / 1000 !=3D adjusted_mode->clock)
+>   rate =3D clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
+
+This appears to work for me at least. I'll resubmit a patch with this
+as the solution. Thank you.
+
+> =
+
+> Basically: if we can happen to make the rate exactly then we're good.
+> Otherwise then try bumping up by 999.
+> =
+
+> =
+
+> > > ---
+> > >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 21 +++----------------=
+--
+> > >  1 file changed, 3 insertions(+), 18 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gp=
+u/drm/rockchip/rockchip_drm_vop.c
+> > > index ba9e14da41b4..bfef4f52dce6 100644
+> > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> > > @@ -1169,31 +1169,16 @@ static bool vop_crtc_mode_fixup(struct drm_cr=
+tc *crtc,
+> > >        *
+> > >        * - DRM works in in kHz.
+> > >        * - Clock framework works in Hz.
+> > > -      * - Rockchip's clock driver picks the clock rate that is the
+> > > -      *   same _OR LOWER_ than the one requested.
+> > >        *
+> > >        * Action plan:
+> > >        *
+> > > -      * 1. When DRM gives us a mode, we should add 999 Hz to it.  Th=
+at way
+> > > -      *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tel=
+ls us to
+> > > -      *    make 60000 kHz then the clock framework will actually giv=
+e us
+> > > -      *    the right clock.
+> > > -      *
+> > > -      *    NOTE: if the PLL (maybe through a divider) could actually=
+ make
+> > > -      *    a clock rate 999 Hz higher instead of the one we want the=
+n this
+> > > -      *    could be a problem.  Unfortunately there's not much we ca=
+n do
+> > > -      *    since it's baked into DRM to use kHz.  It shouldn't matte=
+r in
+> > > -      *    practice since Rockchip PLLs are controlled by tables and
+> > > -      *    even if there is a divider in the middle I wouldn't expec=
+t PLL
+> > > -      *    rates in the table that are just a few kHz different.
+> > > -      *
+> > > -      * 2. Get the clock framework to round the rate for us to tell =
+us
+> > > +      * 1. Get the clock framework to round the rate for us to tell =
+us
+> > >        *    what it will actually make.
+> > >        *
+> > > -      * 3. Store the rounded up rate so that we don't need to worry =
+about
+> > > +      * 2. Store the rounded up rate so that we don't need to worry =
+about
+> > >        *    this in the actual clk_set_rate().
+> > >        */
+> > > -     rate =3D clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 =
++ 999);
+> > > +     rate =3D clk_round_rate(vop->dclk, adjusted_mode->clock * 1000);
+> > >       adjusted_mode->clock =3D DIV_ROUND_UP(rate, 1000);
+> > >
+> > >       return true;
+> > >
+> >
+> >
+> >
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
