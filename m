@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C69C8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 23:35:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FBBEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 23:38:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DD4960F6D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 23:35:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DD4960F6D
+	by mail.kernel.org (Postfix) with ESMTPS id 2A56661130
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 23:38:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2A56661130
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oSCirfT9GNqHO/VeRjEXezPwDQHp2SuxEILmAqwQ6iY=; b=e8/rTdk0fk7WGA
-	RZqW4xemdVTVAZYUMehDwu+ieNJXWpao19sjruRESg54fbJ2M+5kkdB+c2EKDvhaA0fmDC6SvVOKn
-	2sWvE7wydUg6IE4ocF44yhn5/YxGH+4cKD27eiyJ2GCvPh16G4SYvZafqAZ2UJeyCLiL8qYDWclwf
-	+PvnyAVCQKJPvjIRPb1UDrLdOTqOQQSnvkKWEsbRMaFT12GcxUICCyklWjyyIVIPtaCejX9OHggRb
-	QIU4FbawOdMd2S/loV1eGmlcPKk4uOmiO8bJVkMhoIvSO/9pCL5zolD6eukS2urqsjzJsAWm6iU5J
-	aDVyV68lIfs+i6UsMNyQ==;
+	List-Owner; bh=H7KUSnRFNE4wN0vEnDWJajW6Qdm91OVg3GsQjXpjKO8=; b=PT4VMrkBH5E+45
+	0yyDewINvZEGE5wPJlH3T4mLNzSnE5sk1IPXp1rEURJ9M9zIB+Usp7M6YfDDEBbi5627PjNGRgt5Q
+	GUjiP+Axq2gkRa2bILQ32yYVNZiuVrAYWzq3SR2GS0DivZ9jNmgcrL/nfm2hDi/EY8YgfK8zh7SJD
+	UvLuMAWc5axpJe1D6w5UkVlKdJKZ9p+2HB7rpLH9u0IyUw5wXTKhGEOPO1/ZHVMTV7y9owVwnLYyp
+	AFtgw/7kVTeyqx2rbsLkxFFd1cp11PXW2YYaNfYABni0TsaE/wI4qLVLsllwvKRd8Q/yfSkIIJG2M
+	iUwl1lU+DDGsUtyHU7Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mRNOI-00F8TV-2F; Fri, 17 Sep 2021 23:35:34 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1mRNR1-00F8qT-4x; Fri, 17 Sep 2021 23:38:23 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mRNO6-00F8RD-F0
- for linux-rockchip@lists.infradead.org; Fri, 17 Sep 2021 23:35:23 +0000
-Received: by mail-lf1-x131.google.com with SMTP id b15so20934455lfe.7
- for <linux-rockchip@lists.infradead.org>; Fri, 17 Sep 2021 16:35:21 -0700 (PDT)
+ id 1mRNQy-00F8px-Oz
+ for linux-rockchip@lists.infradead.org; Fri, 17 Sep 2021 23:38:22 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id e15so967159lfr.10
+ for <linux-rockchip@lists.infradead.org>; Fri, 17 Sep 2021 16:38:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PkDGmP0aGYLJS6/pcxej119Ez5GceZ/Qr9wqpNPM2Hg=;
- b=iRflbXUDbQwR8fPuqpGMIZRh5d5XJIBmq1xET2tbgxzSe+8GcHffEhQyAF9XeGYfA1
- l4zVOrlw8Z1Hdpl4/B223pyke78E3D/9CDXOR3ZENcxqmdg4OvgJtr/u8yq3EQXYk6sk
- T7r2o+56gRd5mBmTSwiicZgiyQtw86FFhemFN4LWj0ksot3wSIO4QvNDpuKbIU56ykjC
- T1vggMUqdATSRQnUtCDMnp6Th5CAN+cSR2G3pP1FLHRPaEJlPaJnkbEYGjMGy9Xak558
- kMUztiwqCtIb43GpMoSgmMzVc1IeWXBXaL8dZDHpr2m06b3AjpBbYtLZ9fHOYIfa7uTX
- cC/w==
+ :cc; bh=KeHzeB7io94eA/ZJSHL1lXdfmPLUOLShSlChdwb/4UM=;
+ b=dy9OzlFOrhnl1DS8/X+L7nE1kMFKgnlxfciOEhe+x+cltD1TM7SnASV0vjMxXR/urJ
+ kIkBxfeK5sxCQgMft8Yyfukwk5oiWkXaZVJzhT0fhd4TdKGiDkPn/M7WUZkjn8dIH2cK
+ sCGAXski8FM3PPJ0AsCsv7dSz8+bad5pHjO2gPuYTY8kwb6dAvj6HRvj1Z3HWi7eN9u+
+ C5aOzaMx7T9W6JVKIifyQEGb8tHMb2R2Y5aGafrOp4Biu6oWNeZTAxtLM2fdWh5kx2l1
+ bUd1fQfkYn7tmjFQWZ4gp3ARCgd7YoLuubNMaNgsjcTE8KD3mEneFcX4pktxKupTJ9FZ
+ d0XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=PkDGmP0aGYLJS6/pcxej119Ez5GceZ/Qr9wqpNPM2Hg=;
- b=5asjVvQ0BDtjYpvThfQjnZupiiSP7XE5zz4Vl4nwJtVan3Bk1zReSQfaKWnsg6TJAv
- h8am27ttY8uv/ZypRcceh6Io43QpGbYDwhXoppRsw9g0Rc7d/FPSX1a/woKb4+9S+jUF
- RBClW52GWUZdbSSRsTzW5+cc4yxXbTZo79F+Ghckt9UB7KLQClAP/8YfUAQLK1wvVr4q
- kUo3hOkCfTLzndgPA5L0Kdw8y+WFkh6J/r6n2TssYMs51IcQtj/zAWRhtIBObVPsB0Qh
- 2BJLBGbvyhZhB8o33985np0J7hdr/BIL3wKjP9qUT6erjcsLjtI1ZvzA4EfAWpoJ49ar
- JSbw==
-X-Gm-Message-State: AOAM531vRaSh1sQvPqKU4I5p4Yl63TgBYggep8g4SvTL7W84DYJnO/J6
- OR7gS2RT16ZsXTpHND18eFsBgY5x8EwHGVwX9399CA==
-X-Google-Smtp-Source: ABdhPJwCbWUAYcAMUm1bFcDDe3zwixhPDj6NEeY3En+++VFztG2zcjFpXcFPx6/FTV0ZDCyJo9XMKU7O4NzvBvTy9cg=
-X-Received: by 2002:ac2:4d03:: with SMTP id r3mr10251096lfi.339.1631921719948; 
- Fri, 17 Sep 2021 16:35:19 -0700 (PDT)
+ bh=KeHzeB7io94eA/ZJSHL1lXdfmPLUOLShSlChdwb/4UM=;
+ b=1L5FimFsnqzzzZfUxk7vKK8IN9z7DzlZFGJnoKNFRq1+jo5Zgp7vF8+RSN27BDkNSX
+ kDzrr11hC/qQrcOonR5bFiftGzkg/kcyEjL3pG2FuP+dLj8OmT+i1KDdnFsVrc/zpnEa
+ 2TRF32b+oCGNeyW8tsydIDIm64oGA2gPpmyKHRPjPhl1UN6SF52RBj719jWGQrrciYKg
+ liXzMIqoJqwV4152SsL1RxX1oZZTX17Cm958LTeny7pPx4cWs3KA57gkHgXutOSMOydf
+ xDEjvizRBxbnNQgn4+HtJUF+KJhzaZRRCJ5K13oTn+cze6nz/oLB8EQvFNHdkbtbvxbP
+ WwzQ==
+X-Gm-Message-State: AOAM531C8cOR7rOP33ZRVbcQ+G5xDkKnwIqwEbuYk0mlmTIw47U+EIe5
+ vKYgPWWLHCzpP9eZF3cz0T+MAgvR6adCc8W+bxGVpQ==
+X-Google-Smtp-Source: ABdhPJw4EoEAssdj+o8H6LXsDHc8O7NrGufrLKeqnpYTgwFQ5ZKpgVAqKHY0OKYZbCBYW1+1Ss4+AJAaLD2tWKh8CwU=
+X-Received: by 2002:a2e:b5a7:: with SMTP id f7mr11859236ljn.19.1631921899350; 
+ Fri, 17 Sep 2021 16:38:19 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210913224926.1260726-1-heiko@sntech.de>
- <20210913224926.1260726-4-heiko@sntech.de>
-In-Reply-To: <20210913224926.1260726-4-heiko@sntech.de>
+ <20210913224926.1260726-5-heiko@sntech.de>
+In-Reply-To: <20210913224926.1260726-5-heiko@sntech.de>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sat, 18 Sep 2021 01:35:09 +0200
-Message-ID: <CACRpkdbWR68xv6a96Nt6mXhrMZaEVT=ejMvqm=TPYngEo6C3RA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] pinctrl/rockchip: add a queue for deferred pin output
- settings on probe
+Date: Sat, 18 Sep 2021 01:38:08 +0200
+Message-ID: <CACRpkda2Hc6E27LK=vH_qKkTayG3qP=BGdqBKyLR2dMhekyWTw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] gpio/rockchip: fetch deferred output settings on probe
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>,
  Jianqun Xu <jay.xu@rock-chips.com>, 
@@ -80,8 +79,8 @@ Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
  linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210917_163522_531563_DA8E8AFC 
-X-CRM114-Status: GOOD (  17.86  )
+X-CRM114-CacheID: sfid-20210917_163820_859680_5F3D0A07 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,32 +100,19 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Tue, Sep 14, 2021 at 12:49 AM Heiko Stuebner <heiko@sntech.de> wrote:
 
-> The separation of pinctrl and gpio drivers created a tiny window where
-> a pinconfig setting might produce a null-pointer dereference.
->
-> The affected device were rk3288-veyron devices in this case.
->
-> Pinctrl-hogs are claimed when the pinctrl driver is registered,
-> at which point their pinconfig settings will be applied.
-> At this time the now separate gpio devices will not have been created
-> yet and the matching driver won't have probed yet, making the gpio->foo()
-> call run into a null-ptr.
->
-> As probing is not really guaranteed to have been completed at a specific
-> time, introduce a queue that can hold the output settings until the gpio
-> driver has probed and will (in a separate patch) fetch the elements
-> of the list.
->
-> We expect the gpio driver to empty the list, but will nevertheless empty
-> it ourself on remove if that didn't happen.
+> Fetch the output settings the pinctrl driver may have created
+> for pinctrl hogs and set the relevant pins as requested.
 >
 > Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 
-Hm this is not very elegant but what can we do.
-Tentatively applied for fixes.
+Since this patch depends on patch 4/4 I applied this to the pinctrl
+tree as well.
 
-Can we not use device links to get around this?
+I still think this looks a bit kludgy but can't think of anything better
+right now and we need a fix for the problem so this goes in.
+
+But we need to think of something better,
 
 Yours,
 Linus Walleij
