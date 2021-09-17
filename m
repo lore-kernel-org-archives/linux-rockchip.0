@@ -7,46 +7,46 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E3BDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 02:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7533FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 02:37:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03108606A5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 02:36:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 03108606A5
+	by mail.kernel.org (Postfix) with ESMTPS id 4141461108
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Sep 2021 02:37:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4141461108
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zk6A/C/x9T/AK8rSU2E8+LpJgLwqm258qwUTwS7i+rk=; b=ih3UlS1/PqkpJc
-	vzNsoEcqVCcdMkDiqZj/SxMVSQflW8UPH6azkLJkHIACxxkljANxugAGpbrHySIU8NAkIUm8wu3k+
-	/kC32SMTxopejDfYxRtAQ3YrmTCgnMIYZtPjoObXL5LUsP05dwYoe4jy6bYKg6G1QO8BoeWlCUWDS
-	Xd4mHkmmLnLkUJDmiEi+NQQU/CWEi4xFaFSoTY4k/1VSUuCmy7YO/Vjxh5j9fJVeJO7fsmT1cMHHp
-	CAcyeniSSlO0uQZTIVolOOMTwjyXoOOk0KLDPDkoxHa6WtfZv+HtS3yV3h6nGp6qazR6HrjOR0a8s
-	mvDyJ2MKA9KG+IM/0B5Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zk6A/C/x9T/AK8rSU2E8+LpJgLwqm258qwUTwS7i+rk=; b=vQxvStMaXbuO71
+	Q8m8JtE79PAsmAIUcdbPzL1hoKcsvgzXacPq3v3YSRr7JD+dHJG3ZY7zgSFru3GaHZVoBUrfx+926
+	AzLtfIsr+M5o7yPzhI/UhKSxyHbnrbACjsYUUXqNk6mfV/5DI1lLxE2qIXkbzgp/4i13JmFPU4eH8
+	LMJ0bBqkLQHMjgm2V0P/ul+9eT5tBm8ZT6Js4ihpm8VtWI+lHtcB1Eehw2SDFe4LQPTnB9bgYJMnY
+	gRKbdmGXOyKQnAz7KPlgwSMPKqyWbWSipRHmKr7p1OIQIVjL/DCvesSYYZtJxurvB868uh+NdFqnW
+	+r7SKdX2N0JBB1zJYPLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mR3jq-00CyTl-T7; Fri, 17 Sep 2021 02:36:30 +0000
+	id 1mR3l5-00CzAR-JF; Fri, 17 Sep 2021 02:37:47 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mR3iO-00CxY1-W1; Fri, 17 Sep 2021 02:35:02 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B3E5761152;
- Fri, 17 Sep 2021 02:34:59 +0000 (UTC)
+ id 1mR3iU-00Cxbq-ID; Fri, 17 Sep 2021 02:35:08 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4D95F610C8;
+ Fri, 17 Sep 2021 02:35:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631846100;
+ s=k20201202; t=1631846106;
  bh=vZCh2ARLYcUt3OW6Md53MKI/zGAahzNzswRDFu8Ueb0=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZXkMuEf4vxRtb/YIBFQp+/FS21WYnlz6StBg5582gkp7Hgx8RnH4w1T+dlatsmKiN
- lba1+O8pwp8UNnqGYmzMuTwiioQkUwCIZikljx1v1Hhqk63bmrAGxKgu+EwguUICs3
- NRoh6wcEodqmX9AsP09nM61WiaZF4CpK+mQxiKLW3+qrVfn9Kz5PaVK1KsDGnVmsY5
- Fp7vHskSIlvp8QNHMyrYktzkO4gLrTQ7E8Rh22oJ4y1Ap7G7ZdYXuuKvx3ykM/EM4t
- jPypxluywhbBTl/r9sDnEIqubryC1Vpm7Hl73FYlprgVjYsegrLUEqMtAnpv7MySQz
- NEg3xhkEDIZUg==
+ h=From:To:Cc:Subject:Date:From;
+ b=XsL2Jo+cgXzhhxsy6AhCH2j4fjDvmbauSIW8G59vB8sLmaUXUz+MATKOZsdE+Q0C1
+ NQOJjnBlEy54SqEorbpJhss25xEOZPKh2X0gztKfPIm2PrDKLXOh+ORStBH9vRE5qg
+ YdLDrELMF21gOxr/dyNP7EiMnly2NqedjDkz1BvF/KnY07Pnj3Ab58V4VVX1A5HDxd
+ gWKJh7JYGl9Pi+Jbc/Fna66rswrjUWY8Wy/ZmfDu/2NbJQ5UDbQWdfTNy93Al/4j7U
+ 6nhPB2cU0MKTB8b4M5mstmKkrui6cRE6B1iHboQUqlcYOyMkY51CvnMFxyC+pxfeIC
+ lcy8rdMIqrRpQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,19 +54,17 @@ Cc: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
  Thierry Reding <thierry.reding@gmail.com>, Sasha Levin <sashal@kernel.org>,
  lee.jones@linaro.org, heiko@sntech.de, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 2/4] pwm: rockchip: Don't modify HW state in
+Subject: [PATCH AUTOSEL 4.14 1/2] pwm: rockchip: Don't modify HW state in
  .remove() callback
-Date: Thu, 16 Sep 2021 22:34:55 -0400
-Message-Id: <20210917023457.816816-2-sashal@kernel.org>
+Date: Thu, 16 Sep 2021 22:35:03 -0400
+Message-Id: <20210917023504.816909-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210917023457.816816-1-sashal@kernel.org>
-References: <20210917023457.816816-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210916_193501_107734_E9FEADD5 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20210916_193506_722392_4FC6B2D2 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
