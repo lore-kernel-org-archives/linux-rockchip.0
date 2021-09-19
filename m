@@ -2,89 +2,61 @@ Return-Path: <SRS0=i330=OJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2D26C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Sep 2021 14:47:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 62C36C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Sep 2021 17:31:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ABEBA6126A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Sep 2021 14:47:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ABEBA6126A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 28BD66101C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Sep 2021 17:31:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 28BD66101C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RaciqUmEyZUWs8NSj1KaaGReT8C+ytkhJFHsmJkLA7w=; b=Kk+vSMY9VCzmYQ
-	mmxWJ7URD8ShcrkOceEZB2BPEnKE+j4SMdXNdtsDnbhSIoSl8iCL/MlkFtCUn7MMRNxroHgjAy1eF
-	7/FY8AL4rFgcj9ST2DJsqO8uEfBn0/ssQBANYfwv1QazTHBjtz5MIKwl4TueUOREvxTBj86oLU+rv
-	AkA1vxQO+WS3Cw1mNWFyKI0HBJSoUrIvmC+EM+sh6wL2DOuOXjE18Ecg6WRj0HMRcIo55r0/GKgjP
-	Mdu9gnzjWKU5hWXZNkcW7vRadz7DbEhv9ImECKRsalaYZK+kgzo77D6X2KimPcZWa9JIckTfazZFl
-	tiIHI4kct2E4gbLc3e7Q==;
+	List-Owner; bh=Yw1zuluZcM3g2Ak9AIBkkc9Ya8pkBw77HQIvBRl160Q=; b=n4cgeFOYHvtLFA
+	rscKU/Wi0fI9D536E3PuQA1FOluCe59dr58sdShnbPyDrD3tl5fkyClOeGP7DVj1dExd3Oprb+ERi
+	GL4cgyIXlL/bqOAtuZ15fB2XAYUyoLZTBF6RfxJM+h5kNZlqN1TSLZO4ZDSSE0TSY6s3ionKFmhFP
+	aarU/2XGbat9YCW8kJyXG4GCjejbrNqV6Q6+dHUsF95ee+EgHiqa4cAcqvFbfU5XrDGUOu2KobIcX
+	6HDezR6+ao27s4VxOVbRxNO3zrr0CG9ebZT0vDrZMytfhbPB7ZPW7EowxeblMAlfANxef+ItIsXJJ
+	ZP4Mu06EoKw6Rbyht8EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mRy6U-00HPjW-0R; Sun, 19 Sep 2021 14:47:38 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1mS0et-00HZer-WD; Sun, 19 Sep 2021 17:31:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mRy6R-00HPih-6s
- for linux-rockchip@lists.infradead.org; Sun, 19 Sep 2021 14:47:36 +0000
-Received: by mail-lf1-x129.google.com with SMTP id z24so29425136lfu.13
- for <linux-rockchip@lists.infradead.org>; Sun, 19 Sep 2021 07:47:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=lmDmi4ftibwcwvQEbdJqNW7006uN+Sn0ovT9xUpowbg=;
- b=n7L0J9pPStqtmw9pJSM4IYMMGi2K9h8R0s8soWPd7QUE6OYVsQlwZZkeR6yHOQO8OC
- 8TSo0XugMgqobFzoL0iQo19lJm7TBB+dZZym756y/Nb0pX0/ftTfpPnVaDudGWQWhWof
- D8WrVCCXydGQXup/Z/u3tB3sMrAaKAJv6kqh2ka5aFrJ0xBsvfgD3APBhlRPirqbVVAo
- XZEJNarW8ldkljJ4349eSFvKfU28GIjx/PghKlXYOu+ID5HycZahCTd0kHog3QQAHu1C
- u6FjRpVxKY8yacZ0CdaaghgJrM3c420Ct/h9QEEK0gjaEpTayKiTRg1Ce6An73C4vS4j
- Uz+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=lmDmi4ftibwcwvQEbdJqNW7006uN+Sn0ovT9xUpowbg=;
- b=nvJ7bOrfzKPpC2XfVK+5EiZXSnsCKa9xIAZcfri3Ax14esq75zY1hcn8fL1LsINGa0
- 7PjZfE7QCSQfGZJy+mgTBgrWahVD33/kCwS8lMEuCrzdt/mQXsk0zZ9wQDRGtA4p40RE
- TbuSN0uVxhV82Py2O60OsnMeHatGhXCMXyEmlYJIoITAtOHqpjPR3uSj1M/rQjwu21p0
- 9lKs/aqP0aIqkCjOWug+UoCi9+VgbOTyS7R4Wd72NVvcvb40X9gB5nLu+DckiEVKFEMZ
- /ylW/usUNg+z0WX073j5XG6k1QfSybTT1BTFr/S0h5PEwgWaL7mbD18WbvUPc95EGkNM
- csfw==
-X-Gm-Message-State: AOAM532wO1NxI3lNjwrrJZbM3883cBlN3peHR4EvrMpQ946ZC0DPhVKQ
- ou2Vw5FrHHNuGHoTJyTMLWvf65yZBFdo4MM+XglowQ==
-X-Google-Smtp-Source: ABdhPJwXnTjXl0i8JlJQlNjJu8tA3ja58MlRNxYCL22486ltOyGOxvhIR5XFzp5T4vRuXB22kODXEPpoqdt/anIjpJ0=
-X-Received: by 2002:a05:6512:3c92:: with SMTP id
- h18mr15315667lfv.656.1632062852495; 
- Sun, 19 Sep 2021 07:47:32 -0700 (PDT)
+ id 1mS0ei-00HZcT-Cj; Sun, 19 Sep 2021 17:31:09 +0000
+Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
+ [81.101.6.87])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1502F6101C;
+ Sun, 19 Sep 2021 17:31:05 +0000 (UTC)
+Date: Sun, 19 Sep 2021 18:34:47 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Cai Huoqing <caihuoqing@baidu.com>
+Cc: Lars-Peter Clausen <lars@metafoo.de>, Heiko Stuebner <heiko@sntech.de>,
+ <linux-iio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: Make use of the helper
+ function devm_platform_ioremap_resource()
+Message-ID: <20210919183447.33adf804@jic23-huawei>
+In-Reply-To: <20210908105631.1474-1-caihuoqing@baidu.com>
+References: <20210908105631.1474-1-caihuoqing@baidu.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <20210913224926.1260726-1-heiko@sntech.de>
- <20210913224926.1260726-5-heiko@sntech.de>
- <CACRpkda2Hc6E27LK=vH_qKkTayG3qP=BGdqBKyLR2dMhekyWTw@mail.gmail.com>
- <1992229.jx4eJSTThl@diego>
-In-Reply-To: <1992229.jx4eJSTThl@diego>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 19 Sep 2021 16:47:21 +0200
-Message-ID: <CACRpkdYmfYmQpc6+bnpqaiQGrgH7gcBK-fgZ7VjTHGwPHULyCQ@mail.gmail.com>
-Subject: Re: [PATCH 4/4] gpio/rockchip: fetch deferred output settings on probe
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Jianqun Xu <jay.xu@rock-chips.com>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210919_074735_319270_D1D88946 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20210919_103108_507538_A795F6AB 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +69,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBTZXAgMTgsIDIwMjEgYXQgMjowMCBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKCj4gVGhlIGlzc3VlIGlzIHRoYXQgdGhlIHBpbmNvbmYgcGFydCBmb3Ig
-UElOX0NPTkZJR19PVVRQVVQgaXMgYWN0dWFsbHkKPiB1c2luZyB0aGUgZ3BpbyBjb250cm9sbGVy
-IHRvIHJlYWxpemUgdGhpcyBzZXR0aW5nLiBTbyB3aGVuIHRoaXMgZW5kcyB1cAo+IGluIGEgcGlu
-Y3RybC1ob2csIHN0dWZmIGV4cGxvZGVzIHdoaWxlIHByb2JpbmcgdGhlIGZpcnN0IHBpbmN0cmwg
-cGFydC4KClRoZSBOb21hZGlrIGRyaXZlciBoYXMgc29tZXRoaW5nIHNpbWlsYXIsIEkgY2FtZSB1
-cCB3aXRoIGEgc29sdXRpb24KYWdlcyBhZ28gd2hpY2ggaXNuJ3QgZWxlZ2FudCBlaXRoZXIsIHNv
-IGl0J3Mgbm90IGxpa2UgSSdtIGFueSBiZXR0ZXIgOi8KCmNvbW1pdCBhYjRhOTM2MjQ3NTYxY2Q5
-OTg5MTNiYWI1ZjE1ZTNkM2VhZWQxZjllCiJwaW5jdHJsOiBub21hZGlrOiBhc3N1cmUgR1BJTyBj
-aGlwcyBhcmUgcG9wdWxhdGVkIgoKPiBUaGlua2luZyBhYm91dCB0aGlzLCB0aGUgY29tcG9uZW50
-IGZyYW1ld29yayBtYXkgYmUgb25lIG9wdGlvbj8KPiBBbmQgdGhlbiBhZGRpbmcgYSBwaW5jdHIt
-cmVnaXN0ZXIgLyBpbml0K2VuYWJsZSB2YXJpYW50IHdoZXJlIHRoZQo+IHBpbmN0cmwgaG9ncyBj
-YW4gYmUgYXF1aXJlZCBzZXBhcmF0ZWx5LCBub3QgYXMgcGFydCBvZiBwaW5jdHJsX2VuYWJsZT8K
-CkNoZWNrIG91dCBteSBjb21taXQsIGJ1dCB0aGUgY29tcG9uZW50IGZyYW1ld29yayBpcyB3aGF0
-IHdlCnNob3VsZCBpZGVhbGx5IHVzZSAoSU1PKSB3aGVuIGRyaXZlcnMgZGVwZW5kIG9uIGVhY2gg
-b3RoZXIKc28gSSB0aGluayB5b3UgYXJlIHJpZ2h0LgoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Wed, 8 Sep 2021 18:56:30 +0800
+Cai Huoqing <caihuoqing@baidu.com> wrote:
+
+> Use the devm_platform_ioremap_resource() helper instead of
+> calling platform_get_resource() and devm_ioremap_resource()
+> separately
+> 
+> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
+
+Hi Cai,
+
+Applied to the togreg branch of iio.git and pushed out as testing for 0-day to
+see if it can find anything we missed.
+
+Thanks,
+
+Jonathan
+
+> ---
+>  drivers/iio/adc/rockchip_saradc.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index a237fe469a30..a56a0d7337ca 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -319,7 +319,6 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  	struct rockchip_saradc *info = NULL;
+>  	struct device_node *np = pdev->dev.of_node;
+>  	struct iio_dev *indio_dev = NULL;
+> -	struct resource	*mem;
+>  	const struct of_device_id *match;
+>  	int ret;
+>  	int irq;
+> @@ -348,8 +347,7 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+>  		return -EINVAL;
+>  	}
+>  
+> -	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	info->regs = devm_ioremap_resource(&pdev->dev, mem);
+> +	info->regs = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(info->regs))
+>  		return PTR_ERR(info->regs);
+>  
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
