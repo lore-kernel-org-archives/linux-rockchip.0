@@ -2,20 +2,20 @@ Return-Path: <SRS0=3gvV=OK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D5BCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 14:37:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27709C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 17:57:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA68460F5D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 14:37:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AA68460F5D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id EE6B96115B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 17:57:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EE6B96115B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,41 +23,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RXSBPDQRvH65IHZGMo9Rr/3IVhBRWVGi8N6seTtcCrg=; b=qaI39KuA0j/CGw
-	szZFGvb+R1FVb8Ye0cV2CEl1+4qD7gaT5ykM5rGDUu+U60vhjPS5kp0vJHbI/jxe5ehSJKQ6j6LrX
-	+i99pszHZbp7YXx8XV8Eh/7f70Bf+ayBgdVSewntYNJQm9P1ooWEPCAYXsXqJ7YVGP+U1ASp2ZxY2
-	zIJdNILnttJhCPZZkahbCKtW6ufVYD3TN6KnGLtHB+75f1aDc/U1aFL1clIez0BsnSIxuzeXWnJpq
-	YAYiEqF44W7JqE1FjF8ZLGjSUUy482UTdSlq9YUqjAgxB8xI5BIp3a11FOXHamT8YBtltcmi/rRqe
-	JG9IptbT7vI8pGEWbLPg==;
+	List-Owner; bh=tv+ohQgmt1nxrJpVlg0LomX5YThx0rV+wSCR6gY94Qs=; b=i/hFd9P2uH1fav
+	qyDIcnS3cfGvKeUv15cKinzC8WfZjqrkuiLabRcLzR2rtJ8B1A1AJSmG/NqDnt9ykvJtJv9fJUKLs
+	HMAfjHh2Fm345arvOMdbW38H4nG0VZ81wVrvuSFJsN9klie92lBiHI0WWpzsl0cV+6Xv/fF17yyvL
+	c0iWvqMuvTE6v1Wi3c9FQE83ZfvKla1CxpiBj6sgK0kF3qQ2bMNsCiCuitsAMyR8RNlk1cfYEtTF7
+	ZChIL0Uczg319Ivt/CQpWViAIFWumaiH6eXjGDjdDGU3bLIVJh4goWOZPJSqrTq1ViSDowfUq8GDa
+	g2saoxO9OOH38u24+1rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSKPf-001yOO-Ny; Mon, 20 Sep 2021 14:36:55 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mSNXZ-002hFG-DR; Mon, 20 Sep 2021 17:57:17 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSKMD-001wqO-4C; Mon, 20 Sep 2021 14:33:22 +0000
-Received: from wf0416.dip.tu-dresden.de ([141.76.181.160]
- helo=phil.dip.tu-dresden.de)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mSKHs-0005O5-PI; Mon, 20 Sep 2021 16:28:52 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Tommaso Merciai <tomm.merciai@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix: PCI reg address is not
- configuration space
-Date: Mon, 20 Sep 2021 16:28:48 +0200
-Message-Id: <163214478702.1547258.5943542169692932677.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210918164153.207146-1-tomm.merciai@gmail.com>
-References: <20210918164153.207146-1-tomm.merciai@gmail.com>
+ id 1mSNXC-002hBg-Ll; Mon, 20 Sep 2021 17:56:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AC4C761184;
+ Mon, 20 Sep 2021 17:56:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632160613;
+ bh=SvqoDHMQRz9kNEKqEJuI5cMDNIKcZUTM+5LaGIm43aw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=NVdm+/LKQlTGEHyX0fU9o8EU/2zTZA9yoVMdjCwO5MVyBKTT/bxst7vcB8eHYWpEb
+ jiWvS9yzOihUo+kHuBIPFMrD25tkcPn73rhT7aNM13OAJ6JR93e2Xz1vhwsDMEMmMg
+ nUKcY/B5OV3kQm96oVt0snDc+MWe0/JQ7Io6ER16GACH+AlJU7qoXLAMplrSYGiHs1
+ S3gdq24MrIKsJmBVfJJnySQENUyiCtrVyfpnK8YmM6FaIUV7npA7n8PE5mPVjmAFQf
+ 6G4rccr0xv1k+cRHkF2EMNhRwsjnST6cEnhxBmbFHxMS6lxOB4AhRnBufXZZKCjqVB
+ 52tHbnpcZpdKQ==
+Received: by wens.tw (Postfix, from userid 1000)
+ id 857095F861; Tue, 21 Sep 2021 01:56:51 +0800 (CST)
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@csie.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: rk3399: Hook up DMA for UARTs
+Date: Tue, 21 Sep 2021 01:56:47 +0800
+Message-Id: <20210920175647.13008-2-wens@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210920175647.13008-1-wens@kernel.org>
+References: <20210920175647.13008-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_073321_211227_CDEEBB29 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210920_105654_775362_BBEC4281 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,17 +81,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 18 Sep 2021 18:41:51 +0200, Tommaso Merciai wrote:
-> Warning (pci_device_reg): /pcie@f8000000/pcie@0,0:reg: PCI reg address is not configuration space
+From: Chen-Yu Tsai <wens@csie.org>
 
-Applied, thanks!
+The RK3399 has two DMA controllers, one of which is wired up to work
+with the SPI controllers and UARTs. The SPI controllers are already
+hooked up, but the UARTs aren't.
 
-[1/1] arm64: dts: rockchip: fix: PCI reg address is not configuration space
-      commit: d146198a858ac54653be6d90e3282a7f788c1960
+Add the "dmas" and "dma-names" to the UART device nodes to hook up DMA.
 
-Best regards,
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 3871c7fd83b0..87d6e4eb1337 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -608,6 +608,8 @@ uart0: serial@ff180000 {
+ 		reg = <0x0 0xff180000 0x0 0x100>;
+ 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 0>, <&dmac_peri 1>;
++		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+@@ -621,6 +623,8 @@ uart1: serial@ff190000 {
+ 		reg = <0x0 0xff190000 0x0 0x100>;
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 2>, <&dmac_peri 3>;
++		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+@@ -634,6 +638,8 @@ uart2: serial@ff1a0000 {
+ 		reg = <0x0 0xff1a0000 0x0 0x100>;
+ 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 4>, <&dmac_peri 5>;
++		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+@@ -647,6 +653,8 @@ uart3: serial@ff1b0000 {
+ 		reg = <0x0 0xff1b0000 0x0 0x100>;
+ 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 6>, <&dmac_peri 7>;
++		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
+@@ -1142,6 +1150,8 @@ uart4: serial@ff370000 {
+ 		reg = <0x0 0xff370000 0x0 0x100>;
+ 		clocks = <&pmucru SCLK_UART4_PMU>, <&pmucru PCLK_UART4_PMU>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 8>, <&dmac_peri 9>;
++		dma-names = "tx", "rx";
+ 		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		reg-shift = <2>;
+ 		reg-io-width = <4>;
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
