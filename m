@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2DC4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 14:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16AA7C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 14:29:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 112FF60E76
+	by mail.kernel.org (Postfix) with ESMTPS id 884DA610A3
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 14:29:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 112FF60E76
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 884DA610A3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C6BvNLJhgF5io61FiAo5s7QfKiDmT1gtWkrhkaPUhX0=; b=BX1PhHNb2oObAd
-	aARZiCT/KYvMLeJZEhDAA1B9tH5gKoVEtGzQdP41xGtFWrWYBmUAm8MdBME3T+7IeYlBHQbg7iCaB
-	w7mf8sV+0864EGc/uw78ijueemsaCeYwp+8IclOg330v79X4IW22ALnndyY5ITWebK6gkIQqbqg5q
-	MqutZofHf2LQvP0gNwDzMuxU3Z3PXbbkqwi2QMBWNJ8dnkRYYUqHez1yJwD8E7ggzN+yuCIQSMHme
-	G8pMaOeEXwHdmUZctWLtpGRzh5bV/30NK9XxFrbCe+/6HcXwm+yKBby7OAioMrqvkYH88X0C9+Wye
-	6Tzo+Mr5QNH91spU3qiQ==;
+	List-Owner; bh=G4OVNoKGQtIYMajlAH8Nsq518kKD6ACL+igSS5jQAxg=; b=3dgyzXT+ZKCS0y
+	MeK+d2CN+XJva1uPRg+yaydwbTtqTZRbPaTupkz+lYiF7C5kIiDB7TNyGr4U8u3EFF5zM0wzEdwHs
+	qfJDhrFF0PV1r7zHXzaXs/h5bUXLxjbQUIwVBL6H3YeNb6/KVIo01XJJ60UqCJtkkNi6glYGyxXwP
+	eZZMZ4jhoCcf9X3mLvT7AJImgCbZJjLee8vNZNj9UjkPcIlwlz26skvA9HmPqqQgrlPzzhoqsWxzH
+	0ECNZulCbqqBmFfC18+ZoBKDPd0cF8kjjLUlYOEBU61qWPH2/PaXO94umyBg6IwElX5Ed73uyCn3A
+	JhsCvVZ0zeYEr/MIz1QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSKHy-001uih-KB; Mon, 20 Sep 2021 14:28:58 +0000
+	id 1mSKI1-001uk8-4l; Mon, 20 Sep 2021 14:29:01 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSKHu-001ued-DO; Mon, 20 Sep 2021 14:28:55 +0000
+ id 1mSKHu-001uet-CD; Mon, 20 Sep 2021 14:28:56 +0000
 Received: from wf0416.dip.tu-dresden.de ([141.76.181.160]
  helo=phil.dip.tu-dresden.de)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mSKHq-0005O5-9R; Mon, 20 Sep 2021 16:28:50 +0200
+ id 1mSKHq-0005O5-QG; Mon, 20 Sep 2021 16:28:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org,
- Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, jacopo@jmondi.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add isp node for px30
-Date: Mon, 20 Sep 2021 16:28:39 +0200
-Message-Id: <163214478704.1547258.2589966466040582287.b4-ty@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ARM: dts: rockchip: change rv1108 gmac nodename
+Date: Mon, 20 Sep 2021 16:28:41 +0200
+Message-Id: <163214478704.1547258.6180917983443491780.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210830141318.66744-1-heiko@sntech.de>
-References: <20210830141318.66744-1-heiko@sntech.de>
+In-Reply-To: <20210828114240.12231-1-jbx6244@gmail.com>
+References: <20210828114240.12231-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_072854_527213_BB1EE41F 
-X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-CacheID: sfid-20210920_072854_511786_B4315523 
+X-CRM114-Status: UNSURE (   9.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,15 +73,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 30 Aug 2021 16:13:17 +0200, Heiko Stuebner wrote:
-> Add the rkisp1 node and iommu for the px30 soc.
+On Sat, 28 Aug 2021 13:42:40 +0200, Johan Jonker wrote:
+> The rv1108 gmac node is checked with rockchip-dwmac.yaml,
+> snps,dwmac.yaml and ethernet-controller.yaml.
+> The nodename should have a pattern: "^ethernet(@.*)?$",
+> so change to nodename.
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: add isp node for px30
-      commit: 8df7b4537dfb4c0a2a42de603927f5818cee0274
-[2/2] arm64: dts: rockchip: hook up camera on px30-evb
-      commit: 474a77395be201c80925efb7a0425fb28b0ba60b
+[1/1] ARM: dts: rockchip: change rv1108 gmac nodename
+      commit: f0f56c11447b7c77ba07f05fb07ddb00c3ae42b1
 
 Best regards,
 -- 
