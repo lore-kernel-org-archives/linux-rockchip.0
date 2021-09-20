@@ -7,63 +7,62 @@ X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27709C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD13BC433FE
 	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 17:57:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE6B96115B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 17:57:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EE6B96115B
+	by mail.kernel.org (Postfix) with ESMTPS id 8226F6115B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Sep 2021 17:57:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8226F6115B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tv+ohQgmt1nxrJpVlg0LomX5YThx0rV+wSCR6gY94Qs=; b=i/hFd9P2uH1fav
-	qyDIcnS3cfGvKeUv15cKinzC8WfZjqrkuiLabRcLzR2rtJ8B1A1AJSmG/NqDnt9ykvJtJv9fJUKLs
-	HMAfjHh2Fm345arvOMdbW38H4nG0VZ81wVrvuSFJsN9klie92lBiHI0WWpzsl0cV+6Xv/fF17yyvL
-	c0iWvqMuvTE6v1Wi3c9FQE83ZfvKla1CxpiBj6sgK0kF3qQ2bMNsCiCuitsAMyR8RNlk1cfYEtTF7
-	ZChIL0Uczg319Ivt/CQpWViAIFWumaiH6eXjGDjdDGU3bLIVJh4goWOZPJSqrTq1ViSDowfUq8GDa
-	g2saoxO9OOH38u24+1rA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TjHk0Ma1XpAABZ+6GHojfScao4c/bm82rq8Na4mb7a8=; b=QPITscnWAZR6FH
+	3lZMHz+NB4USaXpgI0Rhw1EizJ2zSRSL080BEWZNoi9MC11EWCVQ/okIKAcEpDnOL/NGiJKCwKAeU
+	iJ7/hTvJjKrM2g5nu2efDarQmEfusNUUvtkfClGO3tEsO3Oqu+kd5+jYUs21NAru7eHOsCghbVxMg
+	j80+piM/4f/foG9buyCf8dJGQe2YuOS6zUSYhBy8XEj5yitGX85FnaOFsqMC7Pc/kuejJNaQGeAD5
+	stNhPGji1xDG4FlDL3it2IDJ/cNhBEFW8IhUpBv6REAr+3dYAunrSnti9DfgXr/CCyLfIDbMAUWrP
+	VpfMbsEO4khjUXAffJIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSNXZ-002hFG-DR; Mon, 20 Sep 2021 17:57:17 +0000
+	id 1mSNXY-002hF9-Qm; Mon, 20 Sep 2021 17:57:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSNXC-002hBg-Ll; Mon, 20 Sep 2021 17:56:56 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id AC4C761184;
+ id 1mSNXC-002hBh-Lf; Mon, 20 Sep 2021 17:56:55 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B4B0361264;
  Mon, 20 Sep 2021 17:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1632160613;
- bh=SvqoDHMQRz9kNEKqEJuI5cMDNIKcZUTM+5LaGIm43aw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=NVdm+/LKQlTGEHyX0fU9o8EU/2zTZA9yoVMdjCwO5MVyBKTT/bxst7vcB8eHYWpEb
- jiWvS9yzOihUo+kHuBIPFMrD25tkcPn73rhT7aNM13OAJ6JR93e2Xz1vhwsDMEMmMg
- nUKcY/B5OV3kQm96oVt0snDc+MWe0/JQ7Io6ER16GACH+AlJU7qoXLAMplrSYGiHs1
- S3gdq24MrIKsJmBVfJJnySQENUyiCtrVyfpnK8YmM6FaIUV7npA7n8PE5mPVjmAFQf
- 6G4rccr0xv1k+cRHkF2EMNhRwsjnST6cEnhxBmbFHxMS6lxOB4AhRnBufXZZKCjqVB
- 52tHbnpcZpdKQ==
+ bh=WosCvV1JmUK5ETxM63LC5LHc9UhJvmkbOb6SQ9HQRCY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Lp3JnVDw1ie0nEvoc6RjCG3ZSX8FmUH9p/imspF1stYQX8HxyIHinKZctWOAswonx
+ YiM07jJiuAEwguX0rlonIvqyGRHPjDwOndVZZ7GA6aq3+fkEOHHieDzUOYXoUBpNEf
+ T+aujHdp+VYjuxI3pQpw/An5IEAywA9OqGsLow3R/bkqbovuQSNxSrI5FtFZXzTJpx
+ U3h8J9HwRn5dnGsmHq2ptSIbJv4zsPc73BnIvELmPDZae6+E1VQnlj/MI9940LHJ8V
+ QiHAv+gxwpM4r3bNTYUzeTaB3tSOcJwBR+CrSBLYAp5t8Vj6tHyizdMwUGE1HR52JP
+ Bw1bCeX2qSEyQ==
 Received: by wens.tw (Postfix, from userid 1000)
- id 857095F861; Tue, 21 Sep 2021 01:56:51 +0800 (CST)
+ id 73B285FC6F; Tue, 21 Sep 2021 01:56:51 +0800 (CST)
 From: Chen-Yu Tsai <wens@kernel.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Chen-Yu Tsai <wens@csie.org>, Robin Murphy <robin.murphy@arm.com>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: rk3399: Hook up DMA for UARTs
-Date: Tue, 21 Sep 2021 01:56:47 +0800
-Message-Id: <20210920175647.13008-2-wens@kernel.org>
+Subject: [PATCH] arm64: dts: rockchip: nanopi4: decrease Bluetooth UART baud
+ rate
+Date: Tue, 21 Sep 2021 01:56:46 +0800
+Message-Id: <20210920175647.13008-1-wens@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210920175647.13008-1-wens@kernel.org>
-References: <20210920175647.13008-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_105654_775362_BBEC4281 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20210920_105654_774983_8D439608 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,66 +82,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chen-Yu Tsai <wens@csie.org>
 
-The RK3399 has two DMA controllers, one of which is wired up to work
-with the SPI controllers and UARTs. The SPI controllers are already
-hooked up, but the UARTs aren't.
+The RK3399 does not seem to be able to properly generate the required
+64 MHz clock for the UART to operate at 4MBd.
 
-Add the "dmas" and "dma-names" to the UART device nodes to hook up DMA.
+Drop the baud rate down to 3MBd, which can be used as the clock
+controller is able to produce a 48 MHz clock.
 
+Fixes: 3e2f0bb72be3 ("arm64: dts: rockchip: Add nanopi4 bluetooth")
 Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 3871c7fd83b0..87d6e4eb1337 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -608,6 +608,8 @@ uart0: serial@ff180000 {
- 		reg = <0x0 0xff180000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
- 		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac_peri 0>, <&dmac_peri 1>;
-+		dma-names = "tx", "rx";
- 		interrupts = <GIC_SPI 99 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
-@@ -621,6 +623,8 @@ uart1: serial@ff190000 {
- 		reg = <0x0 0xff190000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
- 		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac_peri 2>, <&dmac_peri 3>;
-+		dma-names = "tx", "rx";
- 		interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
-@@ -634,6 +638,8 @@ uart2: serial@ff1a0000 {
- 		reg = <0x0 0xff1a0000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
- 		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac_peri 4>, <&dmac_peri 5>;
-+		dma-names = "tx", "rx";
- 		interrupts = <GIC_SPI 100 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
-@@ -647,6 +653,8 @@ uart3: serial@ff1b0000 {
- 		reg = <0x0 0xff1b0000 0x0 0x100>;
- 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
- 		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac_peri 6>, <&dmac_peri 7>;
-+		dma-names = "tx", "rx";
- 		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
-@@ -1142,6 +1150,8 @@ uart4: serial@ff370000 {
- 		reg = <0x0 0xff370000 0x0 0x100>;
- 		clocks = <&pmucru SCLK_UART4_PMU>, <&pmucru PCLK_UART4_PMU>;
- 		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac_peri 8>, <&dmac_peri 9>;
-+		dma-names = "tx", "rx";
- 		interrupts = <GIC_SPI 102 IRQ_TYPE_LEVEL_HIGH 0>;
- 		reg-shift = <2>;
- 		reg-io-width = <4>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+index 8c0ff6c96e03..45ff053b119d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
+@@ -699,7 +699,7 @@ bluetooth {
+ 		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
+ 		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+ 		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+-		max-speed = <4000000>;
++		max-speed = <3000000>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bt_reg_on_h &bt_host_wake_l &bt_wake_l>;
+ 		vbat-supply = <&vcc3v3_sys>;
 -- 
 2.30.2
 
