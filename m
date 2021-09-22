@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DBA49C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 16:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C0BFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 16:51:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D55360F70
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 16:45:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2D55360F70
+	by mail.kernel.org (Postfix) with ESMTPS id 7CBA960F70
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 16:51:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7CBA960F70
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=npc5AjyirARSPUi1RYSn5ZmeNQWqHRWmZ/mjFTmaMUM=; b=a1uRdNJsdPfrRo
-	C86XzJn8G/gqHhzIcC5KMr9tk1Wjh18a48CuLduCjBT4AXNKGSsPKoWb2gawuKqAecsxa/EBZH/SS
-	ohwZyM2SljdMg2JjQnJh2mnjiGboa/gNsOXOhfb9AURKGssiU+tTOaHR9Wtrza02X7gXiNDUyHxd7
-	K1jBYnd/PNA2XJK3RDOXokPkDlSDNOrAS/8RIelEM5jRYsFuICWxrXDdNVIje4k0PyKpKHycWSGPL
-	wf4qhAoAegfPt4QbYsyP1x+Igrhqv3p8mdHCf/eH8H1I6Bc1ZjTalIA4wCzJj9jVyu0qjzsRghpY2
-	yZrJVZwvF3L/ubjpGq5A==;
+	List-Owner; bh=fb6e0OcsZJd5dbglFPS6PHqjs/uXW5eQXY06EF64Wgg=; b=mlYJ7Z3wPTkFVi
+	sSXp9x/Ux2aM4uv4zhLWFtnxks6qlUBvSOoTU7WTZ/bu4xuiCK+xMmw/XxZjrT9ArCveprFdpBTZ5
+	nZq3MyDOQEwZwWKrVIrJRmshQmCM9d8ouvsZGic49OlPnCVgRFjtGHUVMhFdJMsmW7KbdmynYqkYa
+	9DDL38yt6p/BJBFQCwMXbRB49dETch8NzLT5FF247TLXRrljwtP68XPP8e0Q8jXbQBdEhtdKE+WtH
+	pda55oFp66kjyv9LJp+AQRWOWCD080qIjZ8SVtVaz4mshV82rJ9oeQL14d9HIRUQC3XVB2Pej8rUk
+	vMSewQZP7SNzomrIMp8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mT5NS-009AMF-FK; Wed, 22 Sep 2021 16:45:46 +0000
+	id 1mT5St-009Atc-7i; Wed, 22 Sep 2021 16:51:23 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mT5NG-009AKR-CI; Wed, 22 Sep 2021 16:45:35 +0000
+ id 1mT5Sg-009ArA-K7; Wed, 22 Sep 2021 16:51:12 +0000
 Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mT5N7-0001Oz-HF; Wed, 22 Sep 2021 18:45:25 +0200
+ id 1mT5Sf-0001QK-8r; Wed, 22 Sep 2021 18:51:09 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Colin King <colin.king@canonical.com>, Sandy Huang <hjc@rock-chips.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Alex Bee <knaerzche@gmail.com>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH][next] drm/rockchip: Remove redundant assignment of
- pointer connector
-Date: Wed, 22 Sep 2021 18:45:24 +0200
-Message-ID: <22365175.EbdSka62eY@diego>
-In-Reply-To: <27c79f7a-8e4c-fad8-c6cf-a89793f2e3c6@gmail.com>
-References: <20210922112416.182134-1-colin.king@canonical.com>
- <27c79f7a-8e4c-fad8-c6cf-a89793f2e3c6@gmail.com>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Arnd Bergmann <arnd@kernel.org>, Ahmad Fatoum <a.fatoum@pengutronix.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>, Simon Xue <xxm@rock-chips.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: move aliases to rk356x dtsi
+Date: Wed, 22 Sep 2021 18:51:08 +0200
+Message-ID: <8375423.X1v87zm6sT@diego>
+In-Reply-To: <ce3f2ece-4c30-ad01-fd51-8a3e46297234@pengutronix.de>
+References: <20210917110528.24454-1-michael.riesch@wolfvision.net>
+ <2397289.mVTDCA6dLn@diego>
+ <ce3f2ece-4c30-ad01-fd51-8a3e46297234@pengutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210922_094534_449399_D228043E 
-X-CRM114-Status: GOOD (  24.57  )
+X-CRM114-CacheID: sfid-20210922_095110_704637_2A381B51 
+X-CRM114-Status: GOOD (  30.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,74 +71,182 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+Hi Ahmad,
 
-Am Mittwoch, 22. September 2021, 18:35:38 CEST schrieb Alex Bee:
-> Hi Colin,
-> Am 22.09.21 um 13:24 schrieb Colin King:
-> > From: Colin Ian King <colin.king@canonical.com>
-> > 
-> > The pointer connector is being assigned a value that is never
-> > read, it is being updated immediately afterwards. The assignment
-> > is redundant and can be removed.
-> 
-> The pointer to the connector is used in rockchip_rgb_fini for 
-> drm_connector_cleanup.
-> It's pretty much the same for the encoder, btw.
+Am Mittwoch, 22. September 2021, 15:40:33 CEST schrieb Ahmad Fatoum:
+> Hello Heiko,
+> =
 
-I think the issue is more the two lines
+> On 17.09.21 14:01, Heiko St=FCbner wrote:
+> > Hi Michael,
+> > =
 
-	connector = &rgb->connector;
- 	connector = drm_bridge_connector_init(rgb->drm_dev, encoder);
+> > Am Freitag, 17. September 2021, 13:05:28 CEST schrieb Michael Riesch:
+> >> In order to ensure deterministic probe order over different boards,
+> >> move the aliases of on-SoC components to the corresponding dtsi
+> >> files.
+> > =
 
-hence the connector = &rgb->connector being overwritten immediately after
+> > please read the git history on the other Rockchip SoCs. We just moved
+> > the aliases on them _to_ the board-files, as requested by
+> > arm-soc maintainers ;-)
+> =
 
-Now that I look at it again, the whole approach looks strange.
-drm_bridge_connector_init() creates the connector structure and
-returns a pointer to it.
+> [Adding Arnd to CC]
+> =
 
-So the first line below sets the connector pointer to point to the
-&rgb->connector element and the second line then set a completely
-different address into it.
+> For old boards, changing the aliases may introduce breakage that outweighs
+> the benefit of having consistent numbering. This doesn't seem to apply he=
+re:
+> rk3566.dtsi is a new device tree not yet in v5.15-rc2 and rk3568 is new in
+> v5.14 and has only one board partially supported, so if we were to do this
+> change we should do it now. Boards will still be free to override the ali=
+ases,
+> but those that don't will have consistent numbering regardless of whether
+> nodes are enabled, cards are detected or probe order.
 
-So the connector element in rockchip_lvds and rockchip_rgb should actually
-become a pointer itself to hold the connector element returned from
-drm_bridge_connector_init() .
+the request from Arnd was actually to move things like mmc aliases _to_
+board files away from the soc-level dtsi. Supposedly to prevent holes in
+the numbering for example if the sdmmc is mmc0, emmc is mmc1,
+but sdmmc not used on a board, which would then leave mmc0 empty .
 
 
 Heiko
 
-> 
-> Regards,
-> 
-> Alex
-> > 
-> > Addresses-Coverity: ("Unused value")
-> > Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> > ---
-> >   drivers/gpu/drm/rockchip/rockchip_rgb.c | 1 -
-> >   1 file changed, 1 deletion(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> > index 09be9678f2bd..18fb84068a64 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> > @@ -150,7 +150,6 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
-> >   	if (ret)
-> >   		goto err_free_encoder;
-> >   
-> > -	connector = &rgb->connector;
-> >   	connector = drm_bridge_connector_init(rgb->drm_dev, encoder);
-> >   	if (IS_ERR(connector)) {
-> >   		DRM_DEV_ERROR(drm_dev->dev,
-> > 
-> 
-> 
+
+
+> > Heiko
+> > =
+
+> > =
+
+> >>
+> >> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> >> ---
+> >>  arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 6 ------
+> >>  arch/arm64/boot/dts/rockchip/rk3566.dtsi           | 4 ++++
+> >>  arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts   | 7 -------
+> >>  arch/arm64/boot/dts/rockchip/rk3568.dtsi           | 5 +++++
+> >>  arch/arm64/boot/dts/rockchip/rk356x.dtsi           | 2 ++
+> >>  5 files changed, 11 insertions(+), 13 deletions(-)
+> >>
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch=
+/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> >> index a244f7b87e38..156bbb8aa4c4 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+> >> @@ -10,12 +10,6 @@
+> >>  	model =3D "Pine64 RK3566 Quartz64-A Board";
+> >>  	compatible =3D "pine64,quartz64-a", "rockchip,rk3566";
+> >>  =
+
+> >> -	aliases {
+> >> -		ethernet0 =3D &gmac1;
+> >> -		mmc0 =3D &sdmmc0;
+> >> -		mmc1 =3D &sdhci;
+> >> -	};
+> >> -
+> >>  	chosen: chosen {
+> >>  		stdout-path =3D "serial2:1500000n8";
+> >>  	};
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boo=
+t/dts/rockchip/rk3566.dtsi
+> >> index 3839eef5e4f7..c1b3841caa77 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> >> @@ -4,6 +4,10 @@
+> >>  =
+
+> >>  / {
+> >>  	compatible =3D "rockchip,rk3566";
+> >> +
+> >> +	aliases {
+> >> +		ethernet0 =3D &gmac1;
+> >> +	};
+> >>  };
+> >>  =
+
+> >>  &power {
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/a=
+rm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> >> index 184e2aa2416a..218f85af730c 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> >> @@ -13,13 +13,6 @@
+> >>  	model =3D "Rockchip RK3568 EVB1 DDR4 V10 Board";
+> >>  	compatible =3D "rockchip,rk3568-evb1-v10", "rockchip,rk3568";
+> >>  =
+
+> >> -	aliases {
+> >> -		ethernet0 =3D &gmac0;
+> >> -		ethernet1 =3D &gmac1;
+> >> -		mmc0 =3D &sdmmc0;
+> >> -		mmc1 =3D &sdhci;
+> >> -	};
+> >> -
+> >>  	chosen: chosen {
+> >>  		stdout-path =3D "serial2:1500000n8";
+> >>  	};
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boo=
+t/dts/rockchip/rk3568.dtsi
+> >> index 2fd313a295f8..dd0e800cf752 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> >> @@ -8,6 +8,11 @@
+> >>  / {
+> >>  	compatible =3D "rockchip,rk3568";
+> >>  =
+
+> >> +	aliases {
+> >> +		ethernet0 =3D &gmac0;
+> >> +		ethernet1 =3D &gmac1;
+> >> +	};
+> >> +
+> >>  	qos_pcie3x1: qos@fe190080 {
+> >>  		compatible =3D "rockchip,rk3568-qos", "syscon";
+> >>  		reg =3D <0x0 0xfe190080 0x0 0x20>;
+> >> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boo=
+t/dts/rockchip/rk356x.dtsi
+> >> index e42fbac6147b..bb0540d3008c 100644
+> >> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> >> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> >> @@ -29,6 +29,8 @@
+> >>  		i2c3 =3D &i2c3;
+> >>  		i2c4 =3D &i2c4;
+> >>  		i2c5 =3D &i2c5;
+> >> +		mmc0 =3D &sdmmc0;
+> >> +		mmc1 =3D &sdhci;
+> >>  		serial0 =3D &uart0;
+> >>  		serial1 =3D &uart1;
+> >>  		serial2 =3D &uart2;
+> >>
+> > =
+
+> > =
+
+> > =
+
+> > =
+
+> > =
+
+> > _______________________________________________
+> > linux-arm-kernel mailing list
+> > linux-arm-kernel@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+> > =
+
+> =
+
+> =
+
+> =
+
 
 
 
