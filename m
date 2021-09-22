@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6A4AC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7E1FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 668E1610D1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 668E1610D1
+	by mail.kernel.org (Postfix) with ESMTPS id 78C52610D1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78C52610D1
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FdwmpGpyXFXx+CHm1ZQznIMMiqu3IgiVZaAY+iYWnyo=; b=LbXYehkqsDvW/W
-	hPUwz/SyWsLRtahzGHl+I0BKwmLpL0ObXkmLsllbjOFzdk446D+1LqwO0kKf9mKk+MICbLueRAHoG
-	6rCXzU/WSUm3arZR38VHc894cMQrF99kynZeM2k/5w2Amsi/qrGS9ZWd+mztZjUdFA5o1WgLYvrWB
-	pciiLRrrrBkgyZhWIgCZEW5Y92MN6pdPO3ySYAfYoZCWMB3btZ2DOCEH76vsMTteXyWqM7KS2X95L
-	aLQKUdFGDy/F1ioN7sL9HyxU1Vmb5pjYHVtrK8fHhrVScal7jiMJiMgMjPO1r4Ji0gbhSlCmUsQ0s
-	ZrsDB7ZoLhAamfyKZrXQ==;
+	List-Owner; bh=jpYNyuseMGKOCMorLo6YEw1+9QW3mU9IlIXAM8vgtlg=; b=BAwWAuBYXzi2OM
+	jwCvEI07sRno+iEcujQ4G1AlXy2ZvgjfE86++zmE6ok6aGT2/0nQWsIrgoqaA9VkZ54AEVCSlxc2l
+	ztgsTOR+IcQe4WGgiTGqxgPcysoDwKIO7zYUJq4IAEEyKVOQoSWauXlEOcggxJvJMbpzNAsQnC3ar
+	y4jnk2v3lhxX9Wum6heMYZvsI/AirccKCIlWA2q60ZZlSc77Og0Vv1w1nQDxTQedkKTAioQso+3UU
+	xjyzBDuHpE7Y3PxUoym4ZI6fkzLVtlGrBrLIiXEWn87mvxCRSv0TyS8leU+4rXZywSs5nMMvEW7rD
+	DTZd84c5E15OVzWzRhGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSypR-007clw-9K; Wed, 22 Sep 2021 09:46:13 +0000
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+	id 1mSypW-007coS-VQ; Wed, 22 Sep 2021 09:46:19 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSypD-007cht-J6
- for linux-rockchip@lists.infradead.org; Wed, 22 Sep 2021 09:46:01 +0000
-Received: by mail-qk1-x735.google.com with SMTP id 194so7296614qkj.11
- for <linux-rockchip@lists.infradead.org>; Wed, 22 Sep 2021 02:45:58 -0700 (PDT)
+ id 1mSypT-007cmL-Of
+ for linux-rockchip@lists.infradead.org; Wed, 22 Sep 2021 09:46:17 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id c7so7777790qka.2
+ for <linux-rockchip@lists.infradead.org>; Wed, 22 Sep 2021 02:46:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bTthP8lbagoNgD4znkkkPcaT2q+h8fGmYWbFuWXoDrQ=;
- b=IWHUjcdXwzYzIZEw0LJMOVNcxFzxts7J5SwUd4EoNozkeV9qZ4BmaoI2p4SW6AVAIv
- pLx/v01w2QMqzU9DQegqZZ7VaYeBr8oN5Yj90pYLRrlIUouBY6EDACJVwIoTv/04mH6C
- dduy5DsXXdVgwah75k/WJzgJLoCbrGdPowzKhaLgT0eJtIMmAgEVoElmpvJqTB1GNrmh
- gMxbm6gGc1R2hNP/fQXCDqVBGrq3GM6kT+ccApCizLZL5rDuAAUaDmtmoY6mX0DWeIMX
- 5z9Mps2n/SaMjCT/qYLVY0DFTLYpMBxO1yb76Z0FnotqC9ITeXUxvtjatVbqRKLZp2Bt
- QxdA==
+ :cc; bh=x4q1zxIuVhedHp6MaKOmCNyuAc8NXI5z0ykLN2TcSPw=;
+ b=d3h8EJ+7mUYPJ8Z7QMYRNGyR4gJ7Rsu9S4NOQ0Q+n+DBQw03lIIG5Jp0IGuCAD4/Az
+ XYnXKP0NPP6I53EEQUAwILRM+a2Kl8f9Y1Skwe4A/nSTkehhxTebRxXCe54AQ4AmJsWe
+ A+uKFm0sMneN9XFHAUhlKbGXXKrkFQiwdJmdNm059wmUiVG+WOi8QeL1E6aZqSw2gC8v
+ FHsAuvXa8ZYPbXOSeot+JJlvB7xCKDbJf79nN/JD5MbgW1JKnQ34LZoB+w9VTwMxv9PI
+ K6vp48mtaE1pqsl/61aSwfnnfmWHGlmbFqojpoigPT5feXoTd2exKQ7uixFNNF3QajKV
+ Zk6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=bTthP8lbagoNgD4znkkkPcaT2q+h8fGmYWbFuWXoDrQ=;
- b=xwFWURvu4o2IhRiIM3YI4fBSf/+kt1cs7Cl91OLrfYZULiiDpJehQOD7qQhGX4NgoE
- UqhlwIH7n2ewF9lYvDBhihb9WWJVBwU2Rp5WTUU6ICllMWxU1CKuntu3Q/vNx/95ZPGB
- 8TlTlx33/67tkdzjrU9tU+RDk1E3dNyR11sCGkMCCrUboKz5EPTBwcw+B0efvrdvtWaZ
- v33bzyZdoMd08UcZljGL6VrfOHHw/ipO1IxBUwAk0EoaU/mFQlqqjgpNNi5pPD9mTj2j
- AvqjGqAnN68QRNAIuxzKFQFCbDl7p5s6EwiTFqakeznELKJKloUSqbNjBxkfB3UKRvtp
- u+pA==
-X-Gm-Message-State: AOAM530gt3ARbRM6X64dgmviTBcGYWX9jOauqe6Zymow9jrVYD53yLHt
- OFCQUjFpC0tIlwU6jtKJBzD8UqEzwzbYJ1SMBKlu0w==
-X-Google-Smtp-Source: ABdhPJz1dWLmkTK19qnONV6Gew86lZTBWocxC61DECZPcAD2oPCv39vXAZxXVu5i/CJbZwh1QCWRFftDyNRigk96mqo=
-X-Received: by 2002:a25:7146:: with SMTP id m67mr43663441ybc.353.1632303958187; 
- Wed, 22 Sep 2021 02:45:58 -0700 (PDT)
+ bh=x4q1zxIuVhedHp6MaKOmCNyuAc8NXI5z0ykLN2TcSPw=;
+ b=rljDoK1+U3v2uj7gjZoE96w2Irs2NKkJS0PekAnknxy3OES35SF91vzLwcl0DnLv8a
+ XKXDWaqerPalC3lOyGs5vIOkp69/M0rTWPXj8Vu2dE9H+ns96pQYosqAW/9hG+EvDmnE
+ nZFyX/EQ+3DVuAsnIWh+WYaTzoY9uAQCw+0L4wUO2oEMb0YrNpcgT+BOgGGTGmNUQWZG
+ +Kry6rXdITK3OE9/XfUtbw9iobG+3rp1LC8TFrF5Nip4h4fC16TaXbWWduuIPPUMdA3U
+ nhzGdHj7nnP1IR6S4g4K9uqwOg2oaoYEbHUzC+ju9cKsXwgP4S5sAyLaymvBwiIIzlEg
+ mVMw==
+X-Gm-Message-State: AOAM530nYnr0Jl49trLBpOD9hdVMMZJJYJuHwKcomj9GJKovBJnZ/ZsH
+ OXG8aR6ykq+PEklVQkXsy/lIwj0PhzpS6BvIxFR7cg==
+X-Google-Smtp-Source: ABdhPJwuJo+CQrlxjfmYaZEDq/Kd/ZVERj4tt1Le63TAlWMISPWNd2Vc1plyXiv3nR0JB7c4tQXS1ZRo8CWVaazxQW0=
+X-Received: by 2002:a5b:783:: with SMTP id b3mr40177499ybq.328.1632303974160; 
+ Wed, 22 Sep 2021 02:46:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210913224926.1260726-1-heiko@sntech.de>
- <20210913224926.1260726-2-heiko@sntech.de>
-In-Reply-To: <20210913224926.1260726-2-heiko@sntech.de>
+ <20210913224926.1260726-3-heiko@sntech.de>
+In-Reply-To: <20210913224926.1260726-3-heiko@sntech.de>
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Wed, 22 Sep 2021 11:45:47 +0200
-Message-ID: <CAMpxmJWHoEP923iJr8WxN+oQ6ffQgyCZj7bwNDcR=j9T_Ngb1g@mail.gmail.com>
-Subject: Re: [PATCH 1/4] gpio/rockchip: extended debounce support is only
- available on v2
+Date: Wed, 22 Sep 2021 11:46:03 +0200
+Message-ID: <CAMpxmJWbdb+v6An6b-cYOJEbkCRC0=Khw4VjH4T=9_V+9j3Xmg@mail.gmail.com>
+Subject: Re: [PATCH 2/4] gpio/rockchip: fix get_direction value handling
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Linus Walleij <linus.walleij@linaro.org>,
  Jianqun Xu <jay.xu@rock-chips.com>, 
@@ -81,8 +80,8 @@ Cc: Linus Walleij <linus.walleij@linaro.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
  LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210922_024559_720147_FD00DEE2 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20210922_024615_826943_DF113DFB 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,16 +101,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 On Tue, Sep 14, 2021 at 12:49 AM Heiko Stuebner <heiko@sntech.de> wrote:
 >
-> The gpio driver runs into issues on v1 gpio blocks, as the db_clk
-> and the whole extended debounce support is only ever defined on v2.
-> So checking for the IS_ERR on the db_clk is not enough, as it will
-> be NULL on v1.
+> The function uses the newly introduced rockchip_gpio_readl_bit()
+> which directly returns the actual value of the requeste bit.
+> So using the existing bit-wise check for the bit inside the value
+> will always return 0.
 >
-> Fix this by adding the needed condition for v2 first before checking
-> the existence of the db_clk.
->
-> This caused my rk3288-veyron-pinky to enter a reboot loop when it
-> tried to enable the power-key as adc-key device.
+> Fix this by dropping the bit manipulation on the result.
 >
 > Fixes: 3bcbd1a85b68 ("gpio/rockchip: support next version gpio controller")
 > Signed-off-by: Heiko Stuebner <heiko@sntech.de>
