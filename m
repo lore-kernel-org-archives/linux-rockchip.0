@@ -2,86 +2,68 @@ Return-Path: <SRS0=qd64=OM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7E1FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B56FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 10:12:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78C52610D1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 09:46:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78C52610D1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6435E60F11
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Sep 2021 10:12:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6435E60F11
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jpYNyuseMGKOCMorLo6YEw1+9QW3mU9IlIXAM8vgtlg=; b=BAwWAuBYXzi2OM
-	jwCvEI07sRno+iEcujQ4G1AlXy2ZvgjfE86++zmE6ok6aGT2/0nQWsIrgoqaA9VkZ54AEVCSlxc2l
-	ztgsTOR+IcQe4WGgiTGqxgPcysoDwKIO7zYUJq4IAEEyKVOQoSWauXlEOcggxJvJMbpzNAsQnC3ar
-	y4jnk2v3lhxX9Wum6heMYZvsI/AirccKCIlWA2q60ZZlSc77Og0Vv1w1nQDxTQedkKTAioQso+3UU
-	xjyzBDuHpE7Y3PxUoym4ZI6fkzLVtlGrBrLIiXEWn87mvxCRSv0TyS8leU+4rXZywSs5nMMvEW7rD
-	DTZd84c5E15OVzWzRhGw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CIu2EthdJCGBwrWcPfC5ppO9rmErEvcNiPBGxHMxTuw=; b=Pt9dMjjdnx4mqL
+	aaN8zGDUdqHK2pJxFurpDHMUvudx20ochNT3XSCJbeJ8HSKe0DUTd1U/Ty/URe9rrxAI/a4VG4Wo9
+	g8ZgQI8UronVYd3fhxyLESc1HyyJC41LHO4O4nfzRYqcnlnxmz3VItW7XgpWUHj4nyftPmCdn5sti
+	OmiGk6v/Lky9wAMt1DigJ2zd4mohsTFWbDs/mKpgXXIIPge8N5WKjEjpTIfsf88hAc2BwTV2TIzDU
+	/DqEljaRy6e+KOUKXO4KQvxdnZVtylz9ctY0UK4EaIiWDGnNpuAw7OwJ+6yKnqO2VcNWjbrrqtfEl
+	DqEWepNGfye2owr+XD9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSypW-007coS-VQ; Wed, 22 Sep 2021 09:46:19 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1mSzEh-007hJF-73; Wed, 22 Sep 2021 10:12:19 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSypT-007cmL-Of
- for linux-rockchip@lists.infradead.org; Wed, 22 Sep 2021 09:46:17 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id c7so7777790qka.2
- for <linux-rockchip@lists.infradead.org>; Wed, 22 Sep 2021 02:46:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=x4q1zxIuVhedHp6MaKOmCNyuAc8NXI5z0ykLN2TcSPw=;
- b=d3h8EJ+7mUYPJ8Z7QMYRNGyR4gJ7Rsu9S4NOQ0Q+n+DBQw03lIIG5Jp0IGuCAD4/Az
- XYnXKP0NPP6I53EEQUAwILRM+a2Kl8f9Y1Skwe4A/nSTkehhxTebRxXCe54AQ4AmJsWe
- A+uKFm0sMneN9XFHAUhlKbGXXKrkFQiwdJmdNm059wmUiVG+WOi8QeL1E6aZqSw2gC8v
- FHsAuvXa8ZYPbXOSeot+JJlvB7xCKDbJf79nN/JD5MbgW1JKnQ34LZoB+w9VTwMxv9PI
- K6vp48mtaE1pqsl/61aSwfnnfmWHGlmbFqojpoigPT5feXoTd2exKQ7uixFNNF3QajKV
- Zk6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=x4q1zxIuVhedHp6MaKOmCNyuAc8NXI5z0ykLN2TcSPw=;
- b=rljDoK1+U3v2uj7gjZoE96w2Irs2NKkJS0PekAnknxy3OES35SF91vzLwcl0DnLv8a
- XKXDWaqerPalC3lOyGs5vIOkp69/M0rTWPXj8Vu2dE9H+ns96pQYosqAW/9hG+EvDmnE
- nZFyX/EQ+3DVuAsnIWh+WYaTzoY9uAQCw+0L4wUO2oEMb0YrNpcgT+BOgGGTGmNUQWZG
- +Kry6rXdITK3OE9/XfUtbw9iobG+3rp1LC8TFrF5Nip4h4fC16TaXbWWduuIPPUMdA3U
- nhzGdHj7nnP1IR6S4g4K9uqwOg2oaoYEbHUzC+ju9cKsXwgP4S5sAyLaymvBwiIIzlEg
- mVMw==
-X-Gm-Message-State: AOAM530nYnr0Jl49trLBpOD9hdVMMZJJYJuHwKcomj9GJKovBJnZ/ZsH
- OXG8aR6ykq+PEklVQkXsy/lIwj0PhzpS6BvIxFR7cg==
-X-Google-Smtp-Source: ABdhPJwuJo+CQrlxjfmYaZEDq/Kd/ZVERj4tt1Le63TAlWMISPWNd2Vc1plyXiv3nR0JB7c4tQXS1ZRo8CWVaazxQW0=
-X-Received: by 2002:a5b:783:: with SMTP id b3mr40177499ybq.328.1632303974160; 
- Wed, 22 Sep 2021 02:46:14 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210913224926.1260726-1-heiko@sntech.de>
- <20210913224926.1260726-3-heiko@sntech.de>
-In-Reply-To: <20210913224926.1260726-3-heiko@sntech.de>
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Date: Wed, 22 Sep 2021 11:46:03 +0200
-Message-ID: <CAMpxmJWbdb+v6An6b-cYOJEbkCRC0=Khw4VjH4T=9_V+9j3Xmg@mail.gmail.com>
-Subject: Re: [PATCH 2/4] gpio/rockchip: fix get_direction value handling
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>, 
- linux-gpio <linux-gpio@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>
+ id 1mSzEN-007h8k-Nc; Wed, 22 Sep 2021 10:12:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: andrzej.p) with ESMTPSA id CAC131F437DE
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev
+Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Fabio Estevam <festevam@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ kernel@collabora.com
+Subject: [PATCH v5 00/10] VP9 codec V4L2 control interface
+Date: Wed, 22 Sep 2021 12:11:36 +0200
+Message-Id: <20210922101146.13762-1-andrzej.p@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210922_024615_826943_DF113DFB 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20210922_031200_060634_9CA6B0F1 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,27 +76,156 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 14, 2021 at 12:49 AM Heiko Stuebner <heiko@sntech.de> wrote:
->
-> The function uses the newly introduced rockchip_gpio_readl_bit()
-> which directly returns the actual value of the requeste bit.
-> So using the existing bit-wise check for the bit inside the value
-> will always return 0.
->
-> Fix this by dropping the bit manipulation on the result.
->
-> Fixes: 3bcbd1a85b68 ("gpio/rockchip: support next version gpio controller")
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
+Dear all,
 
-Queued for fixes. Thanks!
+This patch series adds VP9 codec V4L2 control interface and two drivers
+using the new controls. It is a follow-up of previous v4 series [1]
+and is a result of irc discussions.
 
-Bart
+In this new iteration, we've implemented VP9 hardware decoding on two devices:
+Rockchip VDEC and Hantro G2, and tested on RK3399, i.MX8MQ and i.MX8MP.
+The i.MX8M driver needs proper power domains support, though, which is a
+subject of a different effort, but in all 3 cases we were able to run the
+drivers.
+
+GStreamer support is also available, the needed changes have been submitted
+by Daniel Almeida [2]. This MR is ready to be merged, and just needs the
+VP9 V4L2 controls to be merged and released.
+
+Both rkvdec and hantro drivers are passing a significant number of VP9 tests
+using Fluster[3]. There are still a few tests that are not passing, due to
+dynamic frame resize (not yet supported by V4L2) and small size videos
+(due to IP block limitations).
+
+The series adds the VP9 codec V4L2 control API as uAPI, so it aims at being
+merged without passing through staging, as agreed[4]. The ABI has been checked
+for padding and verified to contain no holes.
+
+[1] https://patchwork.linuxtv.org/project/linux-media/list/?series=6308
+[2] https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/merge_requests/2144
+[3] https://github.com/fluendo/fluster
+[4] https://lore.kernel.org/linux-media/b8f83c93-67fd-09f5-9314-15746cbfdc61@xs4all.nl/
+
+Changes related to v4:
+- removed unused enum v4l2_vp9_intra_prediction_mode
+- converted remaining enums to defines to follow the convention
+- improved the documentation, in particular better documented how to use segmentation 
+features
+
+Changes related to v3:
+
+Apply suggestions from Jernej's review (thanks, Jernej):
+- renamed a control and two structs:
+	V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR_PROBS =>
+		V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR
+	v4l2_ctrl_vp9_compressed_hdr_probs =>
+		v4l2_ctrl_vp9_compressed_hdr
+	v4l2_vp9_mv_compressed_hdr_probs => v4l2_vp9_mv_probs
+- moved tx_mode to v4l2_ctrl_vp9_compressed_hdr
+- fixed enum v4l2_vp9_ref_frame_sign_bias values (which are used to test a bitfield)
+- explicitly assigned values to all other vp9 enums
+
+Apply suggestion from Nicolas's review (thanks, Nicolas):
+- explicitly stated that the v4l2_ctrl_vp9_compressed_hdr control is optional
+and implemented only by drivers which need it
+
+Changes related to the RFC v2:
+
+- added another driver including a postprocessor to de-tile
+        codec-specific tiling
+- reworked uAPI structs layout to follow VP8 style
+- changed validation of loop filter params
+- changed validation of segmentation params
+- changed validation of VP9 frame params
+- removed level lookup array from loop filter struct
+        (can be computed by drivers)
+- renamed some enum values to match the spec more closely
+- V4L2 VP9 library changed the 'eob' member of
+        'struct v4l2_vp9_frame_symbol_counts' so that it is an array
+        of pointers instead of an array of pointers to arrays
+        (IPs such as g2 creatively pass parts of the 'eob' counts in
+        the 'coeff' counts)
+- factored out several repeated portions of code
+- minor nitpicks and cleanups
+
+The series depends on the YUV tiled format support prepared by Ezequiel:
+https://www.spinics.net/lists/linux-media/msg197047.html
+
+Rebased onto latest media_tree.
+
+Andrzej Pietrasiewicz (4):
+  media: uapi: Add VP9 stateless decoder controls
+  media: Add VP9 v4l2 library
+  media: hantro: Prepare for other G2 codecs
+  media: hantro: Support VP9 on the G2 core
+
+Boris Brezillon (1):
+  media: rkvdec: Add the VP9 backend
+
+Ezequiel Garcia (5):
+  hantro: postproc: Fix motion vector space size
+  hantro: postproc: Introduce struct hantro_postproc_ops
+  hantro: Simplify postprocessor
+  hantro: Add quirk for NV12/NV12_4L4 capture format
+  media: hantro: Support NV12 on the G2 core
+
+ .../userspace-api/media/v4l/biblio.rst        |   10 +
+ .../media/v4l/ext-ctrls-codec-stateless.rst   |  565 +++++
+ .../media/v4l/pixfmt-compressed.rst           |   15 +
+ .../media/v4l/vidioc-g-ext-ctrls.rst          |    8 +
+ .../media/v4l/vidioc-queryctrl.rst            |   12 +
+ .../media/videodev2.h.rst.exceptions          |    2 +
+ drivers/media/v4l2-core/Kconfig               |    4 +
+ drivers/media/v4l2-core/Makefile              |    1 +
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  180 ++
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |    8 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
+ drivers/media/v4l2-core/v4l2-vp9.c            | 1850 +++++++++++++++++
+ drivers/staging/media/hantro/Kconfig          |    1 +
+ drivers/staging/media/hantro/Makefile         |    7 +-
+ drivers/staging/media/hantro/hantro.h         |   40 +-
+ drivers/staging/media/hantro/hantro_drv.c     |   18 +-
+ drivers/staging/media/hantro/hantro_g2.c      |   27 +
+ .../staging/media/hantro/hantro_g2_hevc_dec.c |   31 -
+ drivers/staging/media/hantro/hantro_g2_regs.h |  104 +
+ .../staging/media/hantro/hantro_g2_vp9_dec.c  |  978 +++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |   83 +-
+ .../staging/media/hantro/hantro_postproc.c    |   79 +-
+ drivers/staging/media/hantro/hantro_v4l2.c    |   20 +
+ drivers/staging/media/hantro/hantro_vp9.c     |  240 +++
+ drivers/staging/media/hantro/hantro_vp9.h     |  103 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   |   38 +-
+ .../staging/media/hantro/rockchip_vpu_hw.c    |    7 +-
+ .../staging/media/hantro/sama5d4_vdec_hw.c    |    3 +-
+ drivers/staging/media/rkvdec/Kconfig          |    1 +
+ drivers/staging/media/rkvdec/Makefile         |    2 +-
+ drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1078 ++++++++++
+ drivers/staging/media/rkvdec/rkvdec.c         |   52 +-
+ drivers/staging/media/rkvdec/rkvdec.h         |   12 +-
+ include/media/v4l2-ctrls.h                    |    4 +
+ include/media/v4l2-vp9.h                      |  182 ++
+ include/uapi/linux/v4l2-controls.h            |  284 +++
+ include/uapi/linux/videodev2.h                |    6 +
+ 37 files changed, 5985 insertions(+), 71 deletions(-)
+ create mode 100644 drivers/media/v4l2-core/v4l2-vp9.c
+ create mode 100644 drivers/staging/media/hantro/hantro_g2.c
+ create mode 100644 drivers/staging/media/hantro/hantro_g2_vp9_dec.c
+ create mode 100644 drivers/staging/media/hantro/hantro_vp9.c
+ create mode 100644 drivers/staging/media/hantro/hantro_vp9.h
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
+ create mode 100644 include/media/v4l2-vp9.h
+
+
+base-commit: e4e737bb5c170df6135a127739a9e6148ee3da82
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
