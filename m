@@ -2,60 +2,63 @@ Return-Path: <SRS0=mPt0=OO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_ALL,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07452C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 11:16:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5A3AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 13:26:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6BF106103C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 11:16:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6BF106103C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=megous.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5760260BD3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 13:26:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5760260BD3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EyiMHOFx4E7clMu7fHao/54m5l6CIDf9kpW+F+jWvms=; b=yCEAN5mVbE/qxT
-	XKpcaeiSAJvpkXNB6X0Vwtf1TkygJtdDDtwfahMIq4gKlHDfkcOEMLTwFW0h7hW/UMCDe+y3KwoTu
-	MlVzPBFbTRIiE1ELBIaMuVKv7cr0EYjzuuhRCDqZP+DY/P6/ZG9fac9QaOXjrt+pz+GtoYivSCepv
-	OCyStoNy9U5zig3n22bIxhPL4SHzyFDIzergtEBhpeQwsXt4fFtF2g5CWQr9GbSwS4DGf3rAaQtl1
-	Q0wX5ZNY8f9A+RchyZduCH7PKP7EZbaQRB1JLiwnYUzyMPuQp99JTlfUuLFXLz08Rzv9bWmkKI3GS
-	7RYJTcbkMnbSLntQ3slQ==;
+	List-Owner; bh=I6/UAcz+azALBUYfcXIfuPtDRDgh9+Gn5yaYlijSXgk=; b=nHDFHsdONsntSL
+	HHhrL0vSo87/l8vPFMjbz8Ll3u96buSSQxczNRHvrloyt1SKB0TVmNV7PCuyvDb+Y9ryO1N3oj4nb
+	BCs30aqEY1NbQZHBX+R4Onh5579Lx+Ob73YXOWmY9LhmoA0j6mUsqRPi+YH8EJAea2OSS6SoKhtpv
+	f2y/0V18Q3ehfaFeY25qiZ3LYlCyxqKJLY56b3scLBx6aBnC8ujSZObHCKmXaT9qJ1GFhYueNkxVn
+	m1jeSxouo8Ni6zQVc/lKhLUEyyp4aj/6UnfExfinDc/jN7ososoXcZqvdxFAE7eSgbCqq8CVrDziN
+	MS9o098D+BTj4MSJU7aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTjBh-00E9K5-7a; Fri, 24 Sep 2021 11:16:17 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1mTlDu-00EZfu-Hu; Fri, 24 Sep 2021 13:26:42 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTjBS-00E9J8-Vs; Fri, 24 Sep 2021 11:16:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=megous.com; s=mail;
- t=1632482157; bh=34Gdmo0642tbeuZPW9xMHWN5BVp3DeIPofJxo02CEC4=;
- h=From:To:Subject:Date:From;
- b=jQokJeTan2xkic0EAF1IeKF14DZmV7zjr4hNZFk1T6rBw8XSKtUGEPAlS79EUSQrc
- OZ9A4xtrYQpuiReKJp2o2NoBOMJIxlTWuZ1DwiCOi4JTQvmdc33rImPQqXDIoasBGf
- d5R698DmaF140KY0y+FGkxOZTnFZ1ukzvhBJtaKc=
-From: Ondrej Jirman <megous@megous.com>
-To: Heiko Stuebner <heiko@sntech.de>, Wolfram Sang <wsa@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Ondrej Jirman <megous@megous.com>,
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
- linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
- linux-i2c@vger.kernel.org (open list:I2C SUBSYSTEM HOST DRIVERS),
- linux-kernel@vger.kernel.org (open list)
-Subject: [RESEND PATCH] i2c: rk3x: Handle a spurious start completion
- interrupt flag
-Date: Fri, 24 Sep 2021 13:15:27 +0200
-Message-Id: <20210924111528.2924251-1-megous@megous.com>
+ id 1mTlCK-00EYyN-Tf
+ for linux-rockchip@lists.infradead.org; Fri, 24 Sep 2021 13:25:06 +0000
+Received: from benjamin-XPS-13-9310.. (unknown
+ [IPv6:2a01:e0a:4cb:a870:60fa:cb2f:7fe1:65a3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 88A751F44B7C;
+ Fri, 24 Sep 2021 14:25:02 +0100 (BST)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: p.zabel@pengutronix.de,
+	mchehab@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH v2] media: hantro: Auto generate the AXI ID to avoid conflicts
+Date: Fri, 24 Sep 2021 15:24:47 +0200
+Message-Id: <20210924132447.2288167-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_041603_379210_DBBF8B75 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20210924_062505_130489_DB20995F 
+X-CRM114-Status: GOOD (  15.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,62 +76,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In a typical read transfer, start completion flag is being set after
-read finishes (notice ipd bit 4 being set):
+The AXI ID is an AXI bus configuration for improve bus performance. 
+If read and write operations use different ID the operations can be paralleled,
+whereas when they have the same ID the operations will be serialized. 
+Right now, the write ID is fixed to 0 but we can set it to 0xff to get auto
+generated ID to avoid possible conflicts.
 
-trasnfer poll=0
-i2c start
-rk3x-i2c fdd40000.i2c: IRQ: state 1, ipd: 10
-i2c read
-rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 1b
-i2c stop
-rk3x-i2c fdd40000.i2c: IRQ: state 4, ipd: 33
+This change has no functional changes, but seems reasonable to let the
+hardware to autogenerate the ID instead of hardcoding in software.
 
-This causes I2C transfer being aborted in polled mode from a stop completion
-handler:
-
-trasnfer poll=1
-i2c start
-rk3x-i2c fdd40000.i2c: IRQ: state 1, ipd: 10
-i2c read
-rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 0
-rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 1b
-i2c stop
-rk3x-i2c fdd40000.i2c: IRQ: state 4, ipd: 13
-i2c stop
-rk3x-i2c fdd40000.i2c: unexpected irq in STOP: 0x10
-
-Clearing the START flag after read fixes the issue without any obvious
-side effects.
-
-This issue was dicovered on RK3566 when adding support for powering
-off the RK817 PMIC.
-
-Signed-off-by: Ondrej Jirman <megous@megous.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
-Re-sending, because originally, maintainers script did not pick up rockchip
-mailing list, to send this patch to.
+changes in version 2:
+- Add a macro with comment about the value.
+- Make VP8 and H264 codecs use the macro.
+- fluster tests on the both codecs show no regressions.
+  ./fluster.py run -ts VP8-TEST-VECTORS -d GStreamer-VP8-V4L2SL-Gst1.0
+  ./fluster.py run -ts JVT-AVC_V1 -d GStreamer-H.264-V4L2SL-Gst1.0
+- The both codec write other bits in the same configuration register
+  so the simplest solution is to use the macro in the both cases.
 
- drivers/i2c/busses/i2c-rk3x.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/hantro/hantro_g1_h264_dec.c | 2 +-
+ drivers/staging/media/hantro/hantro_g1_regs.h     | 2 ++
+ drivers/staging/media/hantro/hantro_g1_vp8_dec.c  | 3 ++-
+ 3 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 819ab4ee517e..02ddb237f69a 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -423,8 +423,8 @@ static void rk3x_i2c_handle_read(struct rk3x_i2c *i2c, unsigned int ipd)
- 	if (!(ipd & REG_INT_MBRF))
- 		return;
+diff --git a/drivers/staging/media/hantro/hantro_g1_h264_dec.c b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+index 236ce24ca00c..f49dbfb8a843 100644
+--- a/drivers/staging/media/hantro/hantro_g1_h264_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_h264_dec.c
+@@ -29,7 +29,7 @@ static void set_params(struct hantro_ctx *ctx, struct vb2_v4l2_buffer *src_buf)
+ 	u32 reg;
  
--	/* ack interrupt */
--	i2c_writel(i2c, REG_INT_MBRF, REG_IPD);
-+	/* ack interrupt (read also produces a spurious START flag, clear it too) */
-+	i2c_writel(i2c, REG_INT_MBRF | REG_INT_START, REG_IPD);
+ 	/* Decoder control register 0. */
+-	reg = G1_REG_DEC_CTRL0_DEC_AXI_WR_ID(0x0);
++	reg = G1_REG_DEC_CTRL0_DEC_AXI_AUTO;
+ 	if (sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)
+ 		reg |= G1_REG_DEC_CTRL0_SEQ_MBAFF_E;
+ 	if (sps->profile_idc > 66) {
+diff --git a/drivers/staging/media/hantro/hantro_g1_regs.h b/drivers/staging/media/hantro/hantro_g1_regs.h
+index c1756e3d5391..c623b3b0be18 100644
+--- a/drivers/staging/media/hantro/hantro_g1_regs.h
++++ b/drivers/staging/media/hantro/hantro_g1_regs.h
+@@ -68,6 +68,8 @@
+ #define     G1_REG_DEC_CTRL0_PICORD_COUNT_E		BIT(9)
+ #define     G1_REG_DEC_CTRL0_DEC_AHB_HLOCK_E		BIT(8)
+ #define     G1_REG_DEC_CTRL0_DEC_AXI_WR_ID(x)		(((x) & 0xff) << 0)
++/* Setting AXI ID to 0xff to get auto generated ID to avoid possible conflicts */
++#define     G1_REG_DEC_CTRL0_DEC_AXI_AUTO		G1_REG_DEC_CTRL0_DEC_AXI_WR_ID(0xff)
+ #define G1_REG_DEC_CTRL1				0x010
+ #define     G1_REG_DEC_CTRL1_PIC_MB_WIDTH(x)		(((x) & 0x1ff) << 23)
+ #define     G1_REG_DEC_CTRL1_MB_WIDTH_OFF(x)		(((x) & 0xf) << 19)
+diff --git a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+index 6180b23e7d94..851eb67f19f5 100644
+--- a/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
++++ b/drivers/staging/media/hantro/hantro_g1_vp8_dec.c
+@@ -463,7 +463,8 @@ int hantro_g1_vp8_dec_run(struct hantro_ctx *ctx)
+ 	      G1_REG_CONFIG_DEC_MAX_BURST(16);
+ 	vdpu_write_relaxed(vpu, reg, G1_REG_CONFIG);
  
- 	/* Can only handle a maximum of 32 bytes at a time */
- 	if (len > 32)
+-	reg = G1_REG_DEC_CTRL0_DEC_MODE(10);
++	reg = G1_REG_DEC_CTRL0_DEC_MODE(10) |
++	      G1_REG_DEC_CTRL0_DEC_AXI_AUTO;
+ 	if (!V4L2_VP8_FRAME_IS_KEY_FRAME(hdr))
+ 		reg |= G1_REG_DEC_CTRL0_PIC_INTER_E;
+ 	if (!(hdr->flags & V4L2_VP8_FRAME_FLAG_MB_NO_SKIP_COEFF))
 -- 
-2.33.0
+2.30.2
 
 
 _______________________________________________
