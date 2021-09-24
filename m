@@ -2,86 +2,79 @@ Return-Path: <SRS0=mPt0=OO=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C2D6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 19:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CBBBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 23:24:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 480D461039
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 19:49:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 480D461039
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 081D060F11
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Sep 2021 23:24:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 081D060F11
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FesQ9VOR8sDMycu0JwL3xxhUiLtKJW59Pfliytbx8pg=; b=EKYNNCc6JXq+aR
-	D+sm4Ur7TNmzAhlsNnX11SpSj0w0cV2QxgzjkbZSNbf+vcM5vSSTFIkaSkSXonuWxmC+nXBQwdtoO
-	6X8VlikQth2TKsRQ6VJ89ryhJwe50/h/Ews3V4CQOT8n7uoGHNHpFIscPcSsDl7nHSluR20QOXGEZ
-	aTqSSsls+/ov1FMTIg3Lf8ClyDZo/qmEaHjcCRci2P78PcZojtQmT1cnHPaPHbt8iUCbOHMHkUuJ+
-	nEgs+DrPeKW+Slvs00Be6p0b6WVB4Dm6TFjnJ7j1c1xFHHtNN1GHOEc9kicqxN62KiogrHFZkNJup
-	N8yTVIL6u1b1vKqSZxMg==;
+	List-Owner; bh=0xTVnZgzbzRS2uWdOsE5XI9rrqBjopsWAsiktTc/HjM=; b=nSxeko1u8ik6sJ
+	OePpcWYulGpORso1sPdmIJoA7fEQQfSc8pLPtas9N29T1a96Z/asex2taWTAX35PzdoWSP3DU1bfM
+	zjzPRxhYnJarh7L+0WmKpP2Tpqls/nkVnYZUex1IMDnSJsAgZPjAh+amguPe/0OJxH4GSD/gjw6Rj
+	anpWCaZhvuOYGG/3thC8muDNqPAIbc1WfR9RgZ6/CUOG9In0pGDF7FaRx0O3wfsP4XoUj6bnhoFQi
+	VkDCTWb3PnOxLMyS3WnMrut5YBt1giPfYt+cdaI8NfgJz4RD15Dl3tyPOndYEpfwsbu9zWVrJPnLO
+	wW3hXtIr9kkoxmi4cm8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTrC3-00FPG9-NB; Fri, 24 Sep 2021 19:49:11 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1mTuXz-00FkGW-45; Fri, 24 Sep 2021 23:24:03 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTrC0-00FPFR-Uu; Fri, 24 Sep 2021 19:49:10 +0000
-Received: by mail-ed1-x530.google.com with SMTP id y12so4062021edo.9;
- Fri, 24 Sep 2021 12:49:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=QW92Qv4SFz+xJLwMpitNeGeXSEO3iCzliN7CNcfcGjQ=;
- b=kW5TWvYFOIDlox9qryStTHaG6TKCh1jV7oeBP7mFypDNlqoXoZZ5YNPWK/7WB8MjNO
- kedSkgmIGfnPOH8P1zcoMBkjZBQEU2qlDcHnDujwPGu5VEWQsOoxNbWZAB3Z4R4H8yV6
- JwXTBr1zcML/Guk7pJFDMwDGG/TrUTrDy7YeKvjaun8j1Pc2YZ7oTTo5xDTikU2+R6ra
- nTFtjQQpqajFIxcHgBY1IS/Lnd0qdJm08bqKScONTo/gHSaBMj0G0P2ShJePmwMOvWS0
- C2hmDkHQXT+6hULa4FRf3xTnrxYjMMnWlIfbWqKqYV5AAsjkC3k8mHSrzS6+s49UaEnC
- qfew==
+ id 1mTuXw-00FkFg-Fl
+ for linux-rockchip@lists.infradead.org; Fri, 24 Sep 2021 23:24:01 +0000
+Received: by mail-pf1-x436.google.com with SMTP id n23so7364794pfv.4
+ for <linux-rockchip@lists.infradead.org>; Fri, 24 Sep 2021 16:24:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=1xurLATt1ex61qvV7KZiCU51/9V6GkfxwxIS9VeD8VA=;
+ b=M0iBjYKc31rwburlfMZhx8Oipce7pYY2b5Wpof8qmfYNDOvUxojzCbPVRom/Yf98BS
+ U2aMO7VEjPmHKfCPKRqp6w1QdDDg/lnJZL7ZZEi2aaExAU7LgRYJwhNBFrc6Qvq3CExX
+ nLwe3BAxUsOGADFUJj40SReGj/U7+suX8cfR8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=QW92Qv4SFz+xJLwMpitNeGeXSEO3iCzliN7CNcfcGjQ=;
- b=5HycCPHK+0ENbQ2iFBcusjrDx/OKdLHdDuB/VDhjwNPNwSOOvdGYPsOuRHAVjesc/x
- mhj2bPrYsMuE0rjkF+ObTFQCCFfSCCud+B8Vc5lLIvT+FQxlu0e3lPHDczr4nfHf4Qad
- Hv+dFEupg5Q7GQl7hr/bW/1c48Ks0sr6MwieD4c643xLN0yNLgJRO7opSgXzzZ3xnRJq
- hdjs0FV3FbWZdB966GikMdth/7Wc+7pu7MH1WR7xqgAazVnOy88XAUmp+vk4UPNNKX8j
- D/65szGQnNoH/aeDtJiy6Zryiijb1D2Qt+kPdLonxDcKzZ0r1LHojmHTwqgOyeUkMAo+
- e9fQ==
-X-Gm-Message-State: AOAM532P0+yzXQALEYmp6cQNWv4iCHIHdnAQNBSJRzisItNqLvUdZrgd
- vUGklR3dG8DvWZYb9Nc0L+oNUTEzN9Y=
-X-Google-Smtp-Source: ABdhPJzYofOMU3LuxBg3WTEPoVXRm3su2KB2lGTTymDEMccd1unXUv1Mx+hLdCM2QYORTyM7LmzQcA==
-X-Received: by 2002:a17:906:25db:: with SMTP id
- n27mr13301176ejb.108.1632512946568; 
- Fri, 24 Sep 2021 12:49:06 -0700 (PDT)
-Received: from tom-desktop (net-93-71-218-228.cust.vodafonedsl.it.
- [93.71.218.228])
- by smtp.gmail.com with ESMTPSA id r23sm5885384edw.39.2021.09.24.12.49.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Sep 2021 12:49:06 -0700 (PDT)
-Date: Fri, 24 Sep 2021 21:49:03 +0200
-From: Tommaso Merciai <tomm.merciai@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Johan Jonker <jbx6244@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix: PCI reg address is not
- configuration space
-Message-ID: <20210924194903.GA4836@tom-desktop>
-References: <20210918164153.207146-1-tomm.merciai@gmail.com>
- <163214478702.1547258.5943542169692932677.b4-ty@sntech.de>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=1xurLATt1ex61qvV7KZiCU51/9V6GkfxwxIS9VeD8VA=;
+ b=5zv+dwNssIbHVAVX3YrHVc5jnYnwDImqsLihB+/B7GcEkJpf+Zj44G1L8SclL+N+k3
+ pHRbnI7tWSKitHZu4ziRSXBrHRqmKN8rzJUT0bFa3xEAW4U/40iYYUrKxBUwS3lcvm6s
+ uu1smFDVMuhuZ3lKvizuC9i5LhJ4g+2k9meyc0o1D/j0Sllm4TUAgR9bVxe266j4EeWh
+ AtDOHmA+XRh/wMNb5M9GZbhFkELeJuMfeyvNnsMx2OwMEDHxevPfL6AmKkiDAsLsyiaq
+ cxC0MYOEMleqt2h1x6ysz/t24vFxmEToxZ2Jw9g3soDTrNDOYkNe+ZpklIdt8udtbt1t
+ MByQ==
+X-Gm-Message-State: AOAM5329m16dFfkz+jWJyyYCTkUMUcO1Po2uTirMhMxNdQmuDGDeBXU6
+ OmJCdHZ7R7zeP1kOBZV1OOTLr/713YCVzw==
+X-Google-Smtp-Source: ABdhPJxSkNCeRzwyQ3fSmMMMaH7U8DCIuSFSDDP6SFmH8mr0k4mDFzipSj7Tc0UW0PwqVpy2bX58+Q==
+X-Received: by 2002:a63:555d:: with SMTP id f29mr5911472pgm.33.1632525839778; 
+ Fri, 24 Sep 2021 16:23:59 -0700 (PDT)
+Received: from localhost ([2620:15c:202:201:74de:c8b7:3a35:1063])
+ by smtp.gmail.com with UTF8SMTPSA id 18sm9916476pfh.115.2021.09.24.16.23.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Sep 2021 16:23:59 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ Thomas Hebb <tommyhebb@gmail.com>, Brian Norris <briannorris@chromium.org>
+Subject: [PATCH 2/2] drm/rockchip: dsi: Fix unbalanced clock on probe error
+Date: Fri, 24 Sep 2021 16:23:46 -0700
+Message-Id: <20210924162321.2.Ie8ceefb51ab6065a1151869b6fcda41a467d4d2c@changeid>
+X-Mailer: git-send-email 2.33.0.685.g46640cef36-goog
+In-Reply-To: <20210924162321.1.Ic2904d37f30013a7f3d8476203ad3733c186827e@changeid>
+References: <20210924162321.1.Ic2904d37f30013a7f3d8476203ad3733c186827e@changeid>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <163214478702.1547258.5943542169692932677.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_124909_038587_D1718CED 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20210924_162400_544101_F33D82E7 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,24 +92,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 20, 2021 at 04:28:48PM +0200, Heiko Stuebner wrote:
-> On Sat, 18 Sep 2021 18:41:51 +0200, Tommaso Merciai wrote:
-> > Warning (pci_device_reg): /pcie@f8000000/pcie@0,0:reg: PCI reg address is not configuration space
-> 
-> Applied, thanks!
+Our probe() function never enabled this clock, so we shouldn't disable
+it if we fail to probe the bridge.
 
-  Hi Heiko,
-  It's a pleasure. If you need an help on other stuff let me know.
-  
-  Regards.
-  Tommaso Merciai
-> 
-> [1/1] arm64: dts: rockchip: fix: PCI reg address is not configuration space
->       commit: d146198a858ac54653be6d90e3282a7f788c1960
-> 
-> Best regards,
-> -- 
-> Heiko Stuebner <heiko@sntech.de>
+Noted by inspection.
+
+Fixes: 2d4f7bdafd70 ("drm/rockchip: dsi: migrate to use dw-mipi-dsi bridge driver")
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 4340a99edb97..0886a5dee58c 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -1391,14 +1391,10 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+ 		if (ret != -EPROBE_DEFER)
+ 			DRM_DEV_ERROR(dev,
+ 				      "Failed to probe dw_mipi_dsi: %d\n", ret);
+-		goto err_clkdisable;
++		return ret;
+ 	}
+ 
+ 	return 0;
+-
+-err_clkdisable:
+-	clk_disable_unprepare(dsi->pllref_clk);
+-	return ret;
+ }
+ 
+ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
+-- 
+2.33.0.685.g46640cef36-goog
+
 
 _______________________________________________
 Linux-rockchip mailing list
