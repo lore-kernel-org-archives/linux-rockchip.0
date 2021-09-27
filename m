@@ -2,66 +2,80 @@ Return-Path: <SRS0=jpTb=OR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3613C43219
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 17:47:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 66E6AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 18:00:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 801A56101A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 17:47:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 801A56101A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2C69F604E9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 18:00:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C69F604E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lFmh9HmtYW0846447DGzILJBBOwtUOdBcc0RlOrXaBs=; b=JxoDn0H6drVM6M
-	COoFwRiVq2rfFVpR82sAYJoMsWXayyZVQIEbu3WCoWyA5rX9mGgnJxcMy1EcYfRPNNwokPUAz/lEf
-	M5csbz3su2GbXRj1QT049O4nbmuhwZwf2SJb+Davg/yu8EpgamSnidmbnOCV4E9QLBqx7JwxzhXkz
-	POl31Rm1ZT+KdsxYiYIWxA/R9XpMfqzqcW2uMEtFiOzOj7VQv5NPeGILJxxav1tdWSklWDsupIhuO
-	NIEuBx/lX2XKnVIRkMl+tDRKYSjP39RULYrzp6NC40sXl2hF5IUP/Th4FB+AbIHLIBTja1QnSFkKM
-	zgtwR1KqHtdjhaOk1nww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ytoPIESpW0QwKgV8bRXXJkeMwUvEgCXQeW6OUpTRf24=; b=hIT35Uz1q93ssh
+	Bx4tP+bUVtZHeKOdHDoEwsuLrnL9QqWyU/C9JcfgeLBK23U64uswFe/mpGSOvMgdX8Jzai/vik7Cr
+	NvK/31GuewYn16EvM+OHKTXbmUIlg7ZNljCqM5QpcuHkse9CipM+CDc++YuMn6tiUCq0+0S/fJi82
+	DVOlYC0HTQG6frmH/B5DxLgm/h+4fu0CFtxiLlhCTnbdPlI/XXVWR+2jVfdOOc9biIr4Ry4M9nyJO
+	qdZFcXBazAoJ8+v1GPgyh+XlUqugvsyrtyTKo9nHXdvIxI38Wm1RQNn2urMZKmioud9CqMC5os5Dj
+	vcRlbBkj5RcpyC9oVbXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUuj1-003fYs-Kg; Mon, 27 Sep 2021 17:47:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mUuvY-003i9A-7s; Mon, 27 Sep 2021 18:00:32 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUuiy-003fWp-4K
- for linux-rockchip@lists.infradead.org; Mon, 27 Sep 2021 17:47:33 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4C3A260FF2;
- Mon, 27 Sep 2021 17:47:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632764851;
- bh=S9lPj7S6AtX8lgkNXK2TH/P606+dWXlaJ6v6Z9fSAFY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kYIzxkh3O1AON1PzqSy8BJwjZnoSXGhgyw8GrBDEmRvWBDMc8xx20gGFKic0wswfF
- K60u/4taBh4ZXRWKkUdOBWZsrDctzoXXB/ba6ra3N/NvifCxxqnGVN686hXvo1puId
- hwVMrV8vqUChDExnBkep9C8L8X0+Tqob1KDwPEZi759xHZduHQGVPBSf+EzKVhZXUv
- ACV5KUdzNfpzxZtY1NEy37N0PGQQO4SFqHhPMzNIaOHRp0f1AqIkadSsiuRs36Zrqk
- UfwQyVKDqhkjoCqQkl6AX+JWRgHYRgytWpQWUvTdoM83+aSWRD7LVcu5Q4/uCJFTqJ
- pT/kNYGhhuljg==
-From: Mark Brown <broonie@kernel.org>
-To: Sugar Zhang <sugar.zhang@rock-chips.com>,
-	heiko@sntech.de
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- alsa-devel@alsa-project.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, Lars-Peter Clausen <lars@metafoo.de>,
- Takashi Iwai <tiwai@suse.com>, Jonathan Corbet <corbet@lwn.net>,
- linux-rockchip@lists.infradead.org, Jaroslav Kysela <perex@perex.cz>
-Subject: Re: [PATCH] ASoC: dmaengine: Introduce module option
- prealloc_buffer_size_kbytes
-Date: Mon, 27 Sep 2021 18:45:34 +0100
-Message-Id: <163276442023.18200.4927438084255861267.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <1632394246-59341-1-git-send-email-sugar.zhang@rock-chips.com>
-References: <1632394246-59341-1-git-send-email-sugar.zhang@rock-chips.com>
+ id 1mUuvV-003i4V-9L
+ for linux-rockchip@lists.infradead.org; Mon, 27 Sep 2021 18:00:30 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id n18so18489466pgm.12
+ for <linux-rockchip@lists.infradead.org>; Mon, 27 Sep 2021 11:00:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6PbJI/NGQNYdtwQzX1JrUbqIFsSdwzRguepeO6Wp4No=;
+ b=Pz6y/M5hn8b92RZGVzmR+TkkhbEStVLovKP2oxkVOGpyYnQ+BvBPGDBKKrbaCJ+ATV
+ 4+DMtH7ssQsSjC7SRGOiOOPo3nrn5wDM4yaVLSaCIA9GSP7vTLyEt+NV9JgXXwuB/MR0
+ UWDNF+nUhFT5ny6ZVEVDwFMFCDkaOW4msrPHo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6PbJI/NGQNYdtwQzX1JrUbqIFsSdwzRguepeO6Wp4No=;
+ b=QJsUq6fVOp5rxqr+Qzo7co5LaD6dryQmjw/biibt4utL7/pTz3iTDiXzhEF26E/XQC
+ MQEmnAsOQFLRi8TmlD+x7DSkkUGLXKn/BguOt7s5e7G4TRjx+lRdnU8ieHZojGGDtWam
+ 8q1oFdFTFcu9hp+Y//cww9NZXpqKGBSWLTiQksC/bR2k5ibqCXBFMYhD9ywpDXveNJZW
+ TgEMrVmrWS5sFEskmk2wds9feFaewtsbmRcyIZUh7wYUK7WQGfLQ9hIdh44e2cpnfG+s
+ k/I9xFXsuLfdrf7anw9yei/TywuiTSGfs49+cnU5bRoXUQynpcLQEi5kHoXa5pcABBfF
+ 6H4g==
+X-Gm-Message-State: AOAM533XsxtyIgbFl+TmrfRFSfJYQ5rQiHxkE6Mot3QNy/Kn2pcgqN8V
+ w6f/ukTFrpsXViz2sQSGT97gZA==
+X-Google-Smtp-Source: ABdhPJwLp0SdiYhLnw613zBO3yuNqwAhDyhZ0EPM2HnxJTM/+CQ0S55JBw+qQ66o5PleLMz8Jw3fxA==
+X-Received: by 2002:a62:1b08:0:b0:43e:88f8:8f5e with SMTP id
+ b8-20020a621b08000000b0043e88f88f5emr1169552pfb.41.1632765619293; 
+ Mon, 27 Sep 2021 11:00:19 -0700 (PDT)
+Received: from localhost ([2620:15c:202:201:82d7:f099:76bc:7017])
+ by smtp.gmail.com with UTF8SMTPSA id a10sm17521756pfn.48.2021.09.27.11.00.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Sep 2021 11:00:18 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
+Cc: Thomas Hebb <tommyhebb@gmail.com>, dri-devel@lists.freedesktop.org,
+ Chen-Yu Tsai <wenst@chromium.org>, linux-rockchip@lists.infradead.org,
+ Sandy Huang <hjc@rock-chips.com>, linux-kernel@vger.kernel.org,
+ Brian Norris <briannorris@chromium.org>, aleksandr.o.makarov@gmail.com
+Subject: [PATCH v2 0/3] Fix Rockchip MIPI DSI display init timeouts
+Date: Mon, 27 Sep 2021 10:59:41 -0700
+Message-Id: <20210927175944.3381314-1-briannorris@chromium.org>
+X-Mailer: git-send-email 2.33.0.685.g46640cef36-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_104732_221329_F3C0BF5B 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20210927_110029_339542_E87B5FB7 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +93,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Sep 2021 18:50:46 +0800, Sugar Zhang wrote:
-> Currently, The fixed 512KB prealloc buffer size is too larger for
-> tiny memory kernel (such as 16MB memory). This patch adds the module
-> option "prealloc_buffer_size_kbytes" to specify prealloc buffer size.
-> 
-> It's suitable for cards which use the generic dmaengine pcm driver
-> with no config.
-> 
-> [...]
+The Rockchip DSI driver has had a number of bugs over time and has
+usually only worked by chance. A number of users have noticed that
+things regressed with commit 43c2de1002d2 ("drm/rockchip: dsi: move all
+lane config except LCDC mux to bind()"), although it was fixing several
+real issues of its own that had been present forever in the upstream
+driver (but notably, not in the downstream/BSP driver).
 
-Applied to
+Patch 1 is the most important fix here. See its description for more
+info.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+While I'm at it, fix a few error handling and cleanup issues too.
 
-Thanks!
+Changes in v2:
+- Clean up pm-runtime state in error cases.
+- Correct git hash for Fixes.
 
-[1/1] ASoC: dmaengine: Introduce module option prealloc_buffer_size_kbytes
-      commit: b0e3b0a7078d71455747025e7deee766d4d43432
+Brian Norris (3):
+  drm/rockchip: dsi: Hold pm-runtime across bind/unbind
+  drm/rockchip: dsi: Fix unbalanced clock on probe error
+  drm/rockchip: dsi: Disable PLL clock on bind error
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 45 +++++++++----------
+ 1 file changed, 22 insertions(+), 23 deletions(-)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+-- 
+2.33.0.685.g46640cef36-goog
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-rockchip mailing list
