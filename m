@@ -2,60 +2,69 @@ Return-Path: <SRS0=jpTb=OR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 210E5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 10:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 200D8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 11:20:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD4F060F6C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 10:18:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BD4F060F6C
+	by mail.kernel.org (Postfix) with ESMTPS id B680C60F4B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 11:20:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B680C60F4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=96JInnWYY8rkAztXkGSIacvJcwtWVO8D7S7KWYLmadM=; b=gXe2nkYTgr9EBrJKpi4IjkVRxX
-	DMsR/Lwsom/ruiMbK9kxOxo+1iDjSSWQ4mqG9MYzq1sKHrKyRsuP+2BAEZnYpSBStW6/I9pLK6kD9
-	vEpOkMK/0APt1q1YUhyvHLXwQwTfqjYKTlLaO7Czu5TXMexJRcIjN5h2XvB3BLGRFrf/Zqmx8/pvF
-	w/6qe4UCQEv4A9K+IK9yYg6kM4C7YLybaaXVigR+aeGzuquE3zKWFpS4xGgOcmOL27GDzT2slCV67
-	ipM1t4nhU4Z+667YLmYY+620I/TorXjwWK7fNZhbKFlk0+JlEH8QdyeTMUq7DHmTqC3SE0b4BaNPD
-	AaZJk7Xw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4ByUv/Zbzxoiyrhobsz5elZPTc9NCWlNUbRMeTF1Yrc=; b=hQDwZmjSqbHAaOApyVfwpFfMlD
+	hOAdJW+uJ8dlh8S+Cc218VDHhxwVJMgdhGb0dsbeTh98qFUEGJ0KJE3QpLWYOwXB4p6fZPa6zu4Nq
+	P2/cyZ7Pk1ruF1tpNYS5oy3S4OL3FqFdLs5SkXeVpQkGaPdJYM+1dJSRvtHeT2gpc+lHFppZ1mpjb
+	hCvqP/S7jLMO1R3RHg6EJdRr71GOBak9llItfJ4bGL1BbOjCesFTxiZkszbhoheC/6TLLzblMjvA4
+	TTCx4mWosfzR0SAKRSFRyBqxTSxCjf7bE4TD5tOMb6fkSG47PHgfDBzfQTWB1EeKy9hzwNKvv3rw2
+	bdeUL98g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUniJ-002Gl5-L5; Mon, 27 Sep 2021 10:18:23 +0000
+	id 1mUogP-002Pxy-TQ; Mon, 27 Sep 2021 11:20:29 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUni7-002Gjw-EA; Mon, 27 Sep 2021 10:18:13 +0000
+ id 1mUogC-002PvL-I0; Mon, 27 Sep 2021 11:20:18 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: gtucker) with ESMTPSA id B21C91F427CE
-Subject: Re: [PATCH v8 9/9] pinctrl/rockchip: drop the gpio related codes
-To: Jianqun Xu <jay.xu@rock-chips.com>,
- Linus Walleij <linus.walleij@linaro.org>
-Cc: bgolaszewski@baylibre.com, robh+dt@kernel.org,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- Collabora Kernel ML <kernel@collabora.com>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>
-References: <20210816011948.1118959-1-jay.xu@rock-chips.com>
- <20210816012146.1119289-1-jay.xu@rock-chips.com>
-From: Guillaume Tucker <guillaume.tucker@collabora.com>
-Message-ID: <f13ff971-8af2-be9b-fa5d-7913c0ff1351@collabora.com>
-Date: Mon, 27 Sep 2021 12:18:04 +0200
+ (Authenticated sender: andrzej.p) with ESMTPSA id C678E1F42393
+Subject: Re: [PATCH v5 05/10] media: uapi: Add VP9 stateless decoder controls
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
+ Adrian Ratiu <adrian.ratiu@collabora.com>,
+ Daniel Almeida <daniel.almeida@collabora.com>
+References: <20210922101146.13762-1-andrzej.p@collabora.com>
+ <20210922101146.13762-6-andrzej.p@collabora.com> <YU37e90gldL7zHke@fedora>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Message-ID: <e7f228bc-d8d5-5857-a892-df1deee4be3e@collabora.com>
+Date: Mon, 27 Sep 2021 13:20:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210816012146.1119289-1-jay.xu@rock-chips.com>
+In-Reply-To: <YU37e90gldL7zHke@fedora>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_031811_670618_BFBBCA20 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20210927_042016_890067_5A858661 
+X-CRM114-Status: GOOD (  27.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,105 +77,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jianqun,
-
-On 16/08/2021 02:21, Jianqun Xu wrote:
-> With the patch to separate the gpio driver from the pinctrl driver, now
-> the pinctrl-rockchip can drop the gpio related codes now.
-> 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
-> v8:
->  - none
-> v7:
->  - none, from v1
-> 
->  drivers/pinctrl/pinctrl-rockchip.c | 645 +----------------------------
->  1 file changed, 17 insertions(+), 628 deletions(-)
-
-[...]
-
-Please see the bisection report below about a boot failure on
-rk3288-veyron-jaq which is pointing to this patch.  The issue
-appears to be present on mainline but not on linux-next as of
-next-20210924.
-
-Reports aren't automatically sent to the public while we're
-trialing new bisection features on kernelci.org but this one
-looks valid.
-
-Some more details can be found here:
-
-  https://linux.kernelci.org/test/case/id/614f19a33f5497c2bc99a2df/
-
-Please let us know if you need help debugging the issue or if you
-have a fix to try.
-
-Best wishes,
-Guillaume
-
-
-GitHub: https://github.com/kernelci/kernelci-project/issues/58
-
--------------------------------------------------------------------------------
-
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-* This automated bisection report was sent to you on the basis  *
-* that you may be involved with the breaking commit it has      *
-* found.  No manual investigation has been done to verify it,   *
-* and the root cause of the problem may be somewhere else.      *
-*                                                               *
-* If you do send a fix, please include this trailer:            *
-*   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
-*                                                               *
-* Hope this helps!                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-mainline/master bisection: baseline.login on rk3288-veyron-jaq
-
-Summary:
-  Start:      7d42e9818258 Merge tag 'gpio-fixes-for-v5.15-rc3' of git://git.kernel.org/pub/scm/linux/kernel/git/brgl/linux
-  Plain log:  https://storage.kernelci.org/mainline/master/v5.15-rc2-159-g7d42e9818258/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/baseline-rk3288-veyron-jaq.txt
-  HTML log:   https://storage.kernelci.org/mainline/master/v5.15-rc2-159-g7d42e9818258/arm/multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y/gcc-8/lab-collabora/baseline-rk3288-veyron-jaq.html
-  Result:     9ce9a02039de pinctrl/rockchip: drop the gpio related codes
-
-Checks:
-  revert:     PASS
-  verify:     PASS
-
-Parameters:
-  Tree:       mainline
-  URL:        https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
-  Branch:     master
-  Target:     rk3288-veyron-jaq
-  CPU arch:   arm
-  Lab:        lab-collabora
-  Compiler:   gcc-8
-  Config:     multi_v7_defconfig+CONFIG_EFI=y+CONFIG_ARM_LPAE=y
-  Test case:  baseline.login
-
-Breaking commit found:
-
--------------------------------------------------------------------------------
-commit 9ce9a02039de72ec8af1bd4bff14f1780337ffcc
-Author: Jianqun Xu <jay.xu@rock-chips.com>
-Date:   Mon Aug 16 09:21:46 2021 +0800
-
-    pinctrl/rockchip: drop the gpio related codes
-    
-    With the patch to separate the gpio driver from the pinctrl driver, now
-    the pinctrl-rockchip can drop the gpio related codes now.
-    
-    Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-    Link: https://lore.kernel.org/r/20210816012146.1119289-1-jay.xu@rock-chips.com
-    Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRXplcXVpZWwsCgpUaGFuayB5b3UgZm9yIGxvb2tpbmcgaW50byB0aGUgcGF0Y2guCgpXIGRu
+aXUgMjQuMDkuMjAyMSBvwqAxODoyMywgRXplcXVpZWwgR2FyY2lhIHBpc3plOgo+IEhpIEFuZHJ6
+ZWosCj4gCj4gT24gV2VkLCBTZXAgMjIsIDIwMjEgYXQgMTI6MTE6NDFQTSArMDIwMCwgQW5kcnpl
+aiBQaWV0cmFzaWV3aWN6IHdyb3RlOgo+PiBBZGQgdGhlIFZQOSBzdGF0ZWxlc3MgZGVjb2RlciBj
+b250cm9scyBwbHVzIHRoZSBkb2N1bWVudGF0aW9uIHRoYXQgZ29lcwo+PiB3aXRoIGl0Lgo+Pgo+
+PiBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJv
+cmEuY29tPgo+PiBDby1kZXZlbG9wZWQtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29s
+bGFib3JhLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBj
+b2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBBZHJpYW4gUmF0aXUgPGFkcmlhbi5yYXRp
+dUBjb2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3og
+PGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+PiBDby1kZXZlbG9wZWQtYnk6IERhbmllbCBBbG1l
+aWRhIDxkYW5pZWwuYWxtZWlkYUBjb2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBEYW5p
+ZWwgQWxtZWlkYSA8ZGFuaWVsLmFsbWVpZGFAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4gW3NuaXBd
+Cj4+ICsKPj4gKyNkZWZpbmUgVjRMMl9WUDlfRlJBTUVfRkxBR19LRVlfRlJBTUUJCQkweDAwMQo+
+PiArI2RlZmluZSBWNEwyX1ZQOV9GUkFNRV9GTEFHX1NIT1dfRlJBTUUJCQkweDAwMgo+PiArI2Rl
+ZmluZSBWNEwyX1ZQOV9GUkFNRV9GTEFHX0VSUk9SX1JFU0lMSUVOVAkJMHgwMDQKPj4gKyNkZWZp
+bmUgVjRMMl9WUDlfRlJBTUVfRkxBR19JTlRSQV9PTkxZCQkJMHgwMDgKPj4gKyNkZWZpbmUgVjRM
+Ml9WUDlfRlJBTUVfRkxBR19BTExPV19ISUdIX1BSRUNfTVYJCTB4MDEwCj4+ICsjZGVmaW5lIFY0
+TDJfVlA5X0ZSQU1FX0ZMQUdfUkVGUkVTSF9GUkFNRV9DVFgJCTB4MDIwCj4+ICsjZGVmaW5lIFY0
+TDJfVlA5X0ZSQU1FX0ZMQUdfUEFSQUxMRUxfREVDX01PREUJCTB4MDQwCj4+ICsjZGVmaW5lIFY0
+TDJfVlA5X0ZSQU1FX0ZMQUdfWF9TVUJTQU1QTElORwkJMHgwODAKPj4gKyNkZWZpbmUgVjRMMl9W
+UDlfRlJBTUVfRkxBR19ZX1NVQlNBTVBMSU5HCQkweDEwMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9G
+UkFNRV9GTEFHX0NPTE9SX1JBTkdFX0ZVTExfU1dJTkcJMHgyMDAKPj4gKwo+PiArI2RlZmluZSBW
+NEwyX1ZQOV9TSUdOX0JJQVNfTEFTVAkJCQkweDEKPj4gKyNkZWZpbmUgVjRMMl9WUDlfU0lHTl9C
+SUFTX0dPTERFTgkJCTB4Mgo+PiArI2RlZmluZSBWNEwyX1ZQOV9TSUdOX0JJQVNfQUxUCQkJCTB4
+NAo+PiArCj4+ICsjZGVmaW5lIFY0TDJfVlA5X1JFU0VUX0ZSQU1FX0NUWF9OT05FCQkJMAo+PiAr
+I2RlZmluZSBWNEwyX1ZQOV9SRVNFVF9GUkFNRV9DVFhfU1BFQwkJCTEKPj4gKyNkZWZpbmUgVjRM
+Ml9WUDlfUkVTRVRfRlJBTUVfQ1RYX0FMTAkJCTIKPj4gKwo+PiArI2RlZmluZSBWNEwyX1ZQOV9J
+TlRFUlBfRklMVEVSX0VJR0hUVEFQCQkJMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9JTlRFUlBfRklM
+VEVSX0VJR0hUVEFQX1NNT09USAkJMQo+PiArI2RlZmluZSBWNEwyX1ZQOV9JTlRFUlBfRklMVEVS
+X0VJR0hUVEFQX1NIQVJQCQkyCj4+ICsjZGVmaW5lIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfQklM
+SU5FQVIJCQkzCj4+ICsjZGVmaW5lIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfU1dJVENIQUJMRQkJ
+NAo+PiArCj4+ICsjZGVmaW5lIFY0TDJfVlA5X1JFRkVSRU5DRV9NT0RFX1NJTkdMRV9SRUZFUkVO
+Q0UJMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV9DT01QT1VORF9SRUZFUkVO
+Q0UJMQo+PiArI2RlZmluZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV9TRUxFQ1QJCQkyCj4+ICsK
+Pj4gKyNkZWZpbmUgVjRMMl9WUDlfUFJPRklMRV9NQVgJCQkJMwo+PiArCj4+ICsjZGVmaW5lIFY0
+TDJfQ0lEX1NUQVRFTEVTU19WUDlfRlJBTUUJKFY0TDJfQ0lEX0NPREVDX1NUQVRFTEVTU19CQVNF
+ICsgMzAwKQo+PiArLyoqCj4+ICsgKiBzdHJ1Y3QgdjRsMl9jdHJsX3ZwOV9mcmFtZSAtIFZQOSBm
+cmFtZSBkZWNvZGluZyBjb250cm9sCj4+ICsgKgo+PiArICogQGxmOiBsb29wIGZpbHRlciBwYXJh
+bWV0ZXJzLiBTZWUgJnY0bDJfdnA5X2xvb3BfZmlsdGVyIGZvciBtb3JlIGRldGFpbHMKPiAKPiBT
+ZWVtcyB0aGVzZSBkb2N1bWVudGF0aW9uIGlzIG1pc3NpbmcgYW4gZW5kaW5nIHBlcmlvZCBmb3Ig
+bWFueSBmaWVsZHMuCgpUaGFua3MgZm9yIGNhdGNoaW5nIHB1bmN0dWF0aW9uIG1pc3Rha2VzIDop
+Cgo+IAo+PiArICogQHF1YW50OiBxdWFudGl6YXRpb24gcGFyYW1ldGVycy4gU2VlICZ2NGwyX3Zw
+OV9xdWFudGl6YXRpb24gZm9yIG1vcmUgZGV0YWlscwo+PiArICogQHNlZzogc2VnbWVudGF0aW9u
+IHBhcmFtZXRlcnMuIFNlZSAmdjRsMl92cDlfc2VnbWVudGF0aW9uIGZvciBtb3JlIGRldGFpbHMK
+Pj4gKyAqIEBmbGFnczogY29tYmluYXRpb24gb2YgVjRMMl9WUDlfRlJBTUVfRkxBR18qIGZsYWdz
+Cj4+ICsgKiBAY29tcHJlc3NlZF9oZWFkZXJfc2l6ZTogY29tcHJlc3NlZCBoZWFkZXIgc2l6ZSBp
+biBieXRlcwo+PiArICogQHVuY29tcHJlc3NlZF9oZWFkZXJfc2l6ZTogdW5jb21wcmVzc2VkIGhl
+YWRlciBzaXplIGluIGJ5dGVzCj4+ICsgKiBAZnJhbWVfd2lkdGhfbWludXNfMTogYWRkIDEgdG8g
+aXQgYW5kIHlvdSdsbCBnZXQgdGhlIGZyYW1lIHdpZHRoIGV4cHJlc3NlZCBpbiBwaXhlbHMKPj4g
+KyAqIEBmcmFtZV9oZWlnaHRfbWludXNfMTogYWRkIDEgdG8gaXQgYW5kIHlvdSdsbCBnZXQgdGhl
+IGZyYW1lIGhlaWdodCBleHByZXNzZWQgaW4gcGl4ZWxzCj4+ICsgKiBAcmVuZGVyX3dpZHRoX21p
+bnVzXzE6IGFkZCAxIHRvIGl0IGFuZCB5b3UnbGwgZ2V0IHRoZSBleHBlY3RlZCByZW5kZXIgd2lk
+dGggZXhwcmVzc2VkIGluCj4+ICsgKglwaXhlbHMuIFRoaXMgaXMgbm90IHVzZWQgZHVyaW5nIHRo
+ZSBkZWNvZGluZyBwcm9jZXNzIGJ1dCBtaWdodCBiZSB1c2VkIGJ5IEhXIHNjYWxlcnMKPj4gKyAq
+CXRvIHByZXBhcmUgYSBmcmFtZSB0aGF0J3MgcmVhZHkgZm9yIHNjYW5vdXQKPj4gKyAqIEByZW5k
+ZXJfaGVpZ2h0X21pbnVzXzE6IGFkZCAxIHRvIGl0IGFuZCB5b3UnbGwgZ2V0IHRoZSBleHBlY3Rl
+ZCByZW5kZXIgaGVpZ2h0IGV4cHJlc3NlZCBpbgo+PiArICoJcGl4ZWxzLiBUaGlzIGlzIG5vdCB1
+c2VkIGR1cmluZyB0aGUgZGVjb2RpbmcgcHJvY2VzcyBidXQgbWlnaHQgYmUgdXNlZCBieSBIVyBz
+Y2FsZXJzCj4+ICsgKgl0byBwcmVwYXJlIGEgZnJhbWUgdGhhdCdzIHJlYWR5IGZvciBzY2Fub3V0
+Cj4+ICsgKiBAbGFzdF9mcmFtZV90czogImxhc3QiIHJlZmVyZW5jZSBidWZmZXIgdGltZXN0YW1w
+Lgo+PiArICogVGhlIHRpbWVzdGFtcCByZWZlcnMgdG8gdGhlIHRpbWVzdGFtcCBmaWVsZCBpbiBz
+dHJ1Y3QgdjRsMl9idWZmZXIuCj4+ICsgKiBVc2UgdjRsMl90aW1ldmFsX3RvX25zKCkgdG8gY29u
+dmVydCB0aGUgc3RydWN0IHRpbWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAqIEBnb2xkZW5fZnJhbWVf
+dHM6ICJnb2xkZW4iIHJlZmVyZW5jZSBidWZmZXIgdGltZXN0YW1wLgo+PiArICogVGhlIHRpbWVz
+dGFtcCByZWZlcnMgdG8gdGhlIHRpbWVzdGFtcCBmaWVsZCBpbiBzdHJ1Y3QgdjRsMl9idWZmZXIu
+Cj4+ICsgKiBVc2UgdjRsMl90aW1ldmFsX3RvX25zKCkgdG8gY29udmVydCB0aGUgc3RydWN0IHRp
+bWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAqIEBhbHRfZnJhbWVfdHM6ICJhbHQiIHJlZmVyZW5jZSBi
+dWZmZXIgdGltZXN0YW1wLgo+PiArICogVGhlIHRpbWVzdGFtcCByZWZlcnMgdG8gdGhlIHRpbWVz
+dGFtcCBmaWVsZCBpbiBzdHJ1Y3QgdjRsMl9idWZmZXIuCj4+ICsgKiBVc2UgdjRsMl90aW1ldmFs
+X3RvX25zKCkgdG8gY29udmVydCB0aGUgc3RydWN0IHRpbWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAq
+IEByZWZfZnJhbWVfc2lnbl9iaWFzOiBhIGJpdGZpZWxkIHNwZWNpZnlpbmcgd2hldGhlciB0aGUg
+c2lnbiBiaWFzIGlzIHNldCBmb3IgYSBnaXZlbgo+PiArICoJcmVmZXJlbmNlIGZyYW1lLiBFaXRo
+ZXIgb2YgVjRMMl9WUDlfU0lHTl9CSUFTXyouCj4+ICsgKiBAcmVzZXRfZnJhbWVfY29udGV4dDog
+c3BlY2lmaWVzIHdoZXRoZXIgdGhlIGZyYW1lIGNvbnRleHQgc2hvdWxkIGJlIHJlc2V0IHRvIGRl
+ZmF1bHQgdmFsdWVzLgo+PiArICoJRWl0aGVyIG9mIFY0TDJfVlA5X1JFU0VUX0ZSQU1FX0NUWF8q
+Lgo+PiArICogQGZyYW1lX2NvbnRleHRfaWR4OiBmcmFtZSBjb250ZXh0IHRoYXQgc2hvdWxkIGJl
+IHVzZWQvdXBkYXRlZAo+PiArICogQHByb2ZpbGU6IFZQOSBwcm9maWxlLiBDYW4gYmUgMCwgMSwg
+MiBvciAzCj4+ICsgKiBAYml0X2RlcHRoOiBiaXRzIHBlciBjb21wb25lbnRzLiBDYW4gYmUgOCwg
+MTAgb3IgMTIuIE5vdGUgdGhhdCBub3QgYWxsIHByb2ZpbGVzIHN1cHBvcnQKPj4gKyAqCTEwIGFu
+ZC9vciAxMiBiaXRzIGRlcHRocwo+PiArICogQGludGVycG9sYXRpb25fZmlsdGVyOiBzcGVjaWZp
+ZXMgdGhlIGZpbHRlciBzZWxlY3Rpb24gdXNlZCBmb3IgcGVyZm9ybWluZyBpbnRlciBwcmVkaWN0
+aW9uLgo+PiArICoJRWl0aGVyIG9mIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfKgo+PiArICogQHRp
+bGVfY29sc19sb2cyOiBzcGVjaWZpZXMgdGhlIGJhc2UgMiBsb2dhcml0aG0gb2YgdGhlIHdpZHRo
+IG9mIGVhY2ggdGlsZSAod2hlcmUgdGhlIHdpZHRoCj4+ICsgKglpcyBtZWFzdXJlZCBpbiB1bml0
+cyBvZiA4eDggYmxvY2tzKS4gU2hhbGwgYmUgbGVzcyB0aGFuIG9yIGVxdWFsIHRvIDYKPj4gKyAq
+IEB0aWxlX3Jvd3NfbG9nMjogc3BlY2lmaWVzIHRoZSBiYXNlIDIgbG9nYXJpdGhtIG9mIHRoZSBo
+ZWlnaHQgb2YgZWFjaCB0aWxlICh3aGVyZSB0aGUgaGVpZ2h0Cj4+ICsgKglpcyBtZWFzdXJlZCBp
+biB1bml0cyBvZiA4eDggYmxvY2tzKQo+PiArICogQHJlZmVyZW5jZV9tb2RlOiBzcGVjaWZpZXMg
+dGhlIHR5cGUgb2YgaW50ZXIgcHJlZGljdGlvbiB0byBiZSB1c2VkLiBTZWUKPiAKPiBTZWUgd2hh
+dD8gOi0pCj4gCj4+ICsgKglFaXRoZXIgb2YgVjRMMl9WUDlfUkVGRVJFTkNFX01PREVfKgo+IAo+
+IE90aGVyIGNvbnRyb2xzIHVzZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV97fSwge30gaW5zdGVh
+ZCBvZiAqLgo+IFRoZSBzYW1lIGFwcGxpZXMgdG8gYWxsIHRoZSBkb2N1bWVudGF0aW9uLgoKV2ls
+bCB1cGRhdGUgaW4gdjYuCgo+IAo+PiArICogQHJlc2VydmVkOiBwYWRkaW5nIGZpZWxkLiBTaG91
+bGQgYmUgemVyb2VkIGJ5IGFwcGxpY2F0aW9ucy4KPj4gKyAqLwo+PiArc3RydWN0IHY0bDJfY3Ry
+bF92cDlfZnJhbWUgewo+PiArCXN0cnVjdCB2NGwyX3ZwOV9sb29wX2ZpbHRlciBsZjsKPj4gKwlz
+dHJ1Y3QgdjRsMl92cDlfcXVhbnRpemF0aW9uIHF1YW50Owo+PiArCXN0cnVjdCB2NGwyX3ZwOV9z
+ZWdtZW50YXRpb24gc2VnOwo+PiArCV9fdTMyIGZsYWdzOwo+PiArCV9fdTE2IGNvbXByZXNzZWRf
+aGVhZGVyX3NpemU7Cj4+ICsJX191MTYgdW5jb21wcmVzc2VkX2hlYWRlcl9zaXplOwo+PiArCV9f
+dTE2IGZyYW1lX3dpZHRoX21pbnVzXzE7Cj4+ICsJX191MTYgZnJhbWVfaGVpZ2h0X21pbnVzXzE7
+Cj4+ICsJX191MTYgcmVuZGVyX3dpZHRoX21pbnVzXzE7Cj4+ICsJX191MTYgcmVuZGVyX2hlaWdo
+dF9taW51c18xOwo+PiArCV9fdTY0IGxhc3RfZnJhbWVfdHM7Cj4+ICsJX191NjQgZ29sZGVuX2Zy
+YW1lX3RzOwo+PiArCV9fdTY0IGFsdF9mcmFtZV90czsKPj4gKwlfX3U4IHJlZl9mcmFtZV9zaWdu
+X2JpYXM7Cj4+ICsJX191OCByZXNldF9mcmFtZV9jb250ZXh0Owo+PiArCV9fdTggZnJhbWVfY29u
+dGV4dF9pZHg7Cj4+ICsJX191OCBwcm9maWxlOwo+PiArCV9fdTggYml0X2RlcHRoOwo+PiArCV9f
+dTggaW50ZXJwb2xhdGlvbl9maWx0ZXI7Cj4+ICsJX191OCB0aWxlX2NvbHNfbG9nMjsKPj4gKwlf
+X3U4IHRpbGVfcm93c19sb2cyOwo+PiArCV9fdTggcmVmZXJlbmNlX21vZGU7Cj4+ICsJX191OCBy
+ZXNlcnZlZFs3XTsKPj4gK307Cj4+ICsKPiAKPiBBbHNvLCBoYXZlIHlvdSBjaGVja2VkIGh0bWwg
+YW5kIHBkZiBkb2NzIGFuZCBtYWtlIHN1cmUKPiBpdCBsb29rcyBhcyB5b3UgZXhwZWN0Pwo+IAoK
+WWVzIEkgZGlkIGFuZCBpdCBsb29rcyBhcyBJIGV4cGVjdGVkLgoKPiBUaGFua3MsCj4gRXplcXVp
+ZWwKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
