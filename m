@@ -2,14 +2,14 @@ Return-Path: <SRS0=jpTb=OR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20BFFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 15:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ABEEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 15:21:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DC0D760EE2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 15:21:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DC0D760EE2
+	by mail.kernel.org (Postfix) with ESMTPS id E6B7660F44
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 15:21:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E6B7660F44
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,20 +18,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OaVe1rFHec2JXJgLMlvGIMJsRYdpLbUPpTs6PdGZQo4=; b=vpDoMhFZioOKrP
-	6ELsQcNtUU+tyM0GSQpKX/OD+IBnRrAkbIJCj01w4CmkxpC+W812r0MOIlckNk2cA4UF8fzl5In9n
-	tUeZLQ/7RDVJ078Wwcn+fO5oVku/4jcy+PixmbBiRhVXzhnkMOEzAeBwgy90gtPqGWydpMZm9q7rH
-	/+tTepTCBCPITWrGW/oJ1bBZWZiWrHHT3tDwkp9RnOoBIXLnv0L4y2Bus9+EQBwFmYrQTyJiK9Nit
-	gUPsIBLLOlfehxrjdeapKtDAWDIrXyNecAXPLrqp2vCzAy3+OdUX0uc7lZLmW1719tKXpT8JzzNDF
-	iN/Dqyc1ZS6nIZnQ+1bw==;
+	List-Owner; bh=0TUG5syPA7efF5S1rCTmPx2atvHeE16WOXiOvMCARAs=; b=k6Erexe9cJEgCH
+	8fcMPhv+0MClUBl+bVKdmDfznV0mq4b5BeSu8KTL33YwF1UoVKrpg+S4CUqsYZFpmiEPwnDFAj49I
+	ZDKKHKbRxd8he94QaA2m5m8lvZPjJrokOG7QwPv7UadkJM7CUuL3FnCFTiMb7BbxrWkCpcLNH8wya
+	oWPVuoyIynbXWQuIeLVBHrvx4wj7yreCjHvL5/0EZneZ50GUj8ONLbpV7exsL0IYgcNKFMHBoZ2mZ
+	LwSHOXMLzeRktDyEx9N93aIXVWWVrpgRLgsJOQUmeSeeSpRRj0g6cLGeHMN7KDybTHHwphbvXXZQO
+	ZzlexuioZV+qDQonGWzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUsRI-0036Bi-Kr; Mon, 27 Sep 2021 15:21:08 +0000
+	id 1mUsRl-0036O4-KI; Mon, 27 Sep 2021 15:21:37 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUsQJ-0035kX-5G; Mon, 27 Sep 2021 15:20:09 +0000
+ id 1mUsQK-0035lv-Dx; Mon, 27 Sep 2021 15:20:10 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id A03EC1F42DB8
+ (Authenticated sender: andrzej.p) with ESMTPSA id 818E01F42E29
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -51,15 +51,15 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
  kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v6 01/10] hantro: postproc: Fix motion vector space size
-Date: Mon, 27 Sep 2021 17:19:49 +0200
-Message-Id: <20210927151958.24426-2-andrzej.p@collabora.com>
+Subject: [PATCH v6 03/10] hantro: Simplify postprocessor
+Date: Mon, 27 Sep 2021 17:19:51 +0200
+Message-Id: <20210927151958.24426-4-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210927151958.24426-1-andrzej.p@collabora.com>
 References: <20210927151958.24426-1-andrzej.p@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_082007_365638_9CAA1D51 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20210927_082008_632844_FC1A4950 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +80,97 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ezequiel Garcia <ezequiel@collabora.com>
 
-When the post-processor hardware block is enabled, the driver
-allocates an internal queue of buffers for the decoder enginer,
-and uses the vb2 queue for the post-processor engine.
-
-For instance, on a G1 core, the decoder engine produces NV12 buffers
-and the post-processor engine can produce YUY2 buffers. The decoder
-engine expects motion vectors to be appended to the NV12 buffers,
-but this is only required for CODECs that need motion vectors,
-such as H.264.
-
-Fix the post-processor logic accordingly.
+Add a 'postprocessed' boolean property to struct hantro_fmt
+to signal that a format is produced by the post-processor.
+This will allow to introduce the G2 post-processor in a simple way.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_postproc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/media/hantro/hantro.h          | 2 ++
+ drivers/staging/media/hantro/hantro_postproc.c | 8 +-------
+ drivers/staging/media/hantro/imx8m_vpu_hw.c    | 1 +
+ drivers/staging/media/hantro/rockchip_vpu_hw.c | 1 +
+ drivers/staging/media/hantro/sama5d4_vdec_hw.c | 1 +
+ 5 files changed, 6 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index c2e01959dc00..dd5e56765d4e 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -263,6 +263,7 @@ struct hantro_ctx {
+  * @max_depth:	Maximum depth, for bitstream formats
+  * @enc_fmt:	Format identifier for encoder registers.
+  * @frmsize:	Supported range of frame sizes (only for bitstream formats).
++ * @postprocessed: Indicates if this format needs the post-processor.
+  */
+ struct hantro_fmt {
+ 	char *name;
+@@ -272,6 +273,7 @@ struct hantro_fmt {
+ 	int max_depth;
+ 	enum hantro_enc_fmt enc_fmt;
+ 	struct v4l2_frmsize_stepwise frmsize;
++	bool postprocessed;
+ };
+ 
+ struct hantro_reg {
 diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index ed8916c950a4..07842152003f 100644
+index 882fb8bc5ddd..4549aec08feb 100644
 --- a/drivers/staging/media/hantro/hantro_postproc.c
 +++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -132,9 +132,10 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	unsigned int num_buffers = cap_queue->num_buffers;
- 	unsigned int i, buf_size;
+@@ -53,15 +53,9 @@ const struct hantro_postproc_regs hantro_g1_postproc_regs = {
+ bool hantro_needs_postproc(const struct hantro_ctx *ctx,
+ 			   const struct hantro_fmt *fmt)
+ {
+-	struct hantro_dev *vpu = ctx->dev;
+-
+ 	if (ctx->is_encoder)
+ 		return false;
+-
+-	if (!vpu->variant->postproc_fmts)
+-		return false;
+-
+-	return fmt->fourcc != V4L2_PIX_FMT_NV12;
++	return fmt->postprocessed;
+ }
  
--	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage +
--		   hantro_h264_mv_size(ctx->dst_fmt.width,
--				       ctx->dst_fmt.height);
-+	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage;
-+	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE)
-+		buf_size += hantro_h264_mv_size(ctx->dst_fmt.width,
-+						ctx->dst_fmt.height);
+ static void hantro_postproc_g1_enable(struct hantro_ctx *ctx)
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index 22fa7d2f3b64..02e61438220a 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -82,6 +82,7 @@ static const struct hantro_fmt imx8m_vpu_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
+ 	},
+ };
  
- 	for (i = 0; i < num_buffers; ++i) {
- 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+index 6c1ad5534ce5..f372f767d4ff 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
++++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+@@ -62,6 +62,7 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
+ 	},
+ };
+ 
+diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+index f3fecc7248c4..b2fc1c5613e1 100644
+--- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
++++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+@@ -15,6 +15,7 @@ static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.postprocessed = true,
+ 	},
+ };
+ 
 -- 
 2.17.1
 
