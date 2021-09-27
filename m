@@ -2,69 +2,54 @@ Return-Path: <SRS0=jpTb=OR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 200D8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 11:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1311C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 13:40:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B680C60F4B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 11:20:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B680C60F4B
+	by mail.kernel.org (Postfix) with ESMTPS id 62FE460230
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Sep 2021 13:40:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 62FE460230
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ByUv/Zbzxoiyrhobsz5elZPTc9NCWlNUbRMeTF1Yrc=; b=hQDwZmjSqbHAaOApyVfwpFfMlD
-	hOAdJW+uJ8dlh8S+Cc218VDHhxwVJMgdhGb0dsbeTh98qFUEGJ0KJE3QpLWYOwXB4p6fZPa6zu4Nq
-	P2/cyZ7Pk1ruF1tpNYS5oy3S4OL3FqFdLs5SkXeVpQkGaPdJYM+1dJSRvtHeT2gpc+lHFppZ1mpjb
-	hCvqP/S7jLMO1R3RHg6EJdRr71GOBak9llItfJ4bGL1BbOjCesFTxiZkszbhoheC/6TLLzblMjvA4
-	TTCx4mWosfzR0SAKRSFRyBqxTSxCjf7bE4TD5tOMb6fkSG47PHgfDBzfQTWB1EeKy9hzwNKvv3rw2
-	bdeUL98g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ij82+33NWXMREjOhBwYzrNl2VTUI6MyoisS6agFEWlU=; b=HYwW2AGhkNH1M/
+	D22CXM7Ut0DyyuxU+4AuD69v8cas2IOB0Wb2r7gKN6jf4AZzKlM9yKKK/aHvWpUMvqZYO2ZPGJxBI
+	eJlBCUbCGaDfUBXImti77X9wRfYQvzJsy5SncNz2Iijzdp9aT0R6f75/sdakxyf5a9M0kLF2HZSpM
+	MBk/h8+6SvfN5sB+kOxSU73UHP5+4qlCuZbcah0zAri9i4GnNwQ9g9Q8ocWLzr2eSL/4XvUxCIil2
+	fmmlEGkl0Y4WTJMtka5u7d3r0UbM5qwv49SyigQg018qRVSN0q0DwcNQQx0FygPbGjMNJfebTKWxx
+	DV+ODT3Ej+2NcekYYVog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUogP-002Pxy-TQ; Mon, 27 Sep 2021 11:20:29 +0000
+	id 1mUqs5-002mdM-Re; Mon, 27 Sep 2021 13:40:41 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUogC-002PvL-I0; Mon, 27 Sep 2021 11:20:18 +0000
+ id 1mUqs2-002mbp-Ba
+ for linux-rockchip@lists.infradead.org; Mon, 27 Sep 2021 13:40:40 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id C678E1F42393
-Subject: Re: [PATCH v5 05/10] media: uapi: Add VP9 stateless decoder controls
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Fabio Estevam <festevam@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer
- <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
- Adrian Ratiu <adrian.ratiu@collabora.com>,
- Daniel Almeida <daniel.almeida@collabora.com>
-References: <20210922101146.13762-1-andrzej.p@collabora.com>
- <20210922101146.13762-6-andrzej.p@collabora.com> <YU37e90gldL7zHke@fedora>
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Message-ID: <e7f228bc-d8d5-5857-a892-df1deee4be3e@collabora.com>
-Date: Mon, 27 Sep 2021 13:20:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ (Authenticated sender: nfraprado) with ESMTPSA id AE8C11F42BCD
+Date: Mon, 27 Sep 2021 10:40:26 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ Thomas Hebb <tommyhebb@gmail.com>, aleksandr.o.makarov@gmail.com,
+ stable@vger.kernel.org
+Subject: Re: [PATCH 1/2] drm/rockchip: dsi: hold pm-runtime across bind/unbind
+Message-ID: <20210927134026.kijmgp3fuopt6ajh@notapiano>
+References: <20210924162321.1.Ic2904d37f30013a7f3d8476203ad3733c186827e@changeid>
 MIME-Version: 1.0
-In-Reply-To: <YU37e90gldL7zHke@fedora>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210924162321.1.Ic2904d37f30013a7f3d8476203ad3733c186827e@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_042016_890067_5A858661 
-X-CRM114-Status: GOOD (  27.19  )
+X-CRM114-CacheID: sfid-20210927_064038_578552_6281CE82 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,122 +62,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRXplcXVpZWwsCgpUaGFuayB5b3UgZm9yIGxvb2tpbmcgaW50byB0aGUgcGF0Y2guCgpXIGRu
-aXUgMjQuMDkuMjAyMSBvwqAxODoyMywgRXplcXVpZWwgR2FyY2lhIHBpc3plOgo+IEhpIEFuZHJ6
-ZWosCj4gCj4gT24gV2VkLCBTZXAgMjIsIDIwMjEgYXQgMTI6MTE6NDFQTSArMDIwMCwgQW5kcnpl
-aiBQaWV0cmFzaWV3aWN6IHdyb3RlOgo+PiBBZGQgdGhlIFZQOSBzdGF0ZWxlc3MgZGVjb2RlciBj
-b250cm9scyBwbHVzIHRoZSBkb2N1bWVudGF0aW9uIHRoYXQgZ29lcwo+PiB3aXRoIGl0Lgo+Pgo+
-PiBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxsb24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJv
-cmEuY29tPgo+PiBDby1kZXZlbG9wZWQtYnk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29s
-bGFib3JhLmNvbT4KPj4gU2lnbmVkLW9mZi1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEBj
-b2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBBZHJpYW4gUmF0aXUgPGFkcmlhbi5yYXRp
-dUBjb2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBBbmRyemVqIFBpZXRyYXNpZXdpY3og
-PGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+PiBDby1kZXZlbG9wZWQtYnk6IERhbmllbCBBbG1l
-aWRhIDxkYW5pZWwuYWxtZWlkYUBjb2xsYWJvcmEuY29tPgo+PiBTaWduZWQtb2ZmLWJ5OiBEYW5p
-ZWwgQWxtZWlkYSA8ZGFuaWVsLmFsbWVpZGFAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4gW3NuaXBd
-Cj4+ICsKPj4gKyNkZWZpbmUgVjRMMl9WUDlfRlJBTUVfRkxBR19LRVlfRlJBTUUJCQkweDAwMQo+
-PiArI2RlZmluZSBWNEwyX1ZQOV9GUkFNRV9GTEFHX1NIT1dfRlJBTUUJCQkweDAwMgo+PiArI2Rl
-ZmluZSBWNEwyX1ZQOV9GUkFNRV9GTEFHX0VSUk9SX1JFU0lMSUVOVAkJMHgwMDQKPj4gKyNkZWZp
-bmUgVjRMMl9WUDlfRlJBTUVfRkxBR19JTlRSQV9PTkxZCQkJMHgwMDgKPj4gKyNkZWZpbmUgVjRM
-Ml9WUDlfRlJBTUVfRkxBR19BTExPV19ISUdIX1BSRUNfTVYJCTB4MDEwCj4+ICsjZGVmaW5lIFY0
-TDJfVlA5X0ZSQU1FX0ZMQUdfUkVGUkVTSF9GUkFNRV9DVFgJCTB4MDIwCj4+ICsjZGVmaW5lIFY0
-TDJfVlA5X0ZSQU1FX0ZMQUdfUEFSQUxMRUxfREVDX01PREUJCTB4MDQwCj4+ICsjZGVmaW5lIFY0
-TDJfVlA5X0ZSQU1FX0ZMQUdfWF9TVUJTQU1QTElORwkJMHgwODAKPj4gKyNkZWZpbmUgVjRMMl9W
-UDlfRlJBTUVfRkxBR19ZX1NVQlNBTVBMSU5HCQkweDEwMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9G
-UkFNRV9GTEFHX0NPTE9SX1JBTkdFX0ZVTExfU1dJTkcJMHgyMDAKPj4gKwo+PiArI2RlZmluZSBW
-NEwyX1ZQOV9TSUdOX0JJQVNfTEFTVAkJCQkweDEKPj4gKyNkZWZpbmUgVjRMMl9WUDlfU0lHTl9C
-SUFTX0dPTERFTgkJCTB4Mgo+PiArI2RlZmluZSBWNEwyX1ZQOV9TSUdOX0JJQVNfQUxUCQkJCTB4
-NAo+PiArCj4+ICsjZGVmaW5lIFY0TDJfVlA5X1JFU0VUX0ZSQU1FX0NUWF9OT05FCQkJMAo+PiAr
-I2RlZmluZSBWNEwyX1ZQOV9SRVNFVF9GUkFNRV9DVFhfU1BFQwkJCTEKPj4gKyNkZWZpbmUgVjRM
-Ml9WUDlfUkVTRVRfRlJBTUVfQ1RYX0FMTAkJCTIKPj4gKwo+PiArI2RlZmluZSBWNEwyX1ZQOV9J
-TlRFUlBfRklMVEVSX0VJR0hUVEFQCQkJMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9JTlRFUlBfRklM
-VEVSX0VJR0hUVEFQX1NNT09USAkJMQo+PiArI2RlZmluZSBWNEwyX1ZQOV9JTlRFUlBfRklMVEVS
-X0VJR0hUVEFQX1NIQVJQCQkyCj4+ICsjZGVmaW5lIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfQklM
-SU5FQVIJCQkzCj4+ICsjZGVmaW5lIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfU1dJVENIQUJMRQkJ
-NAo+PiArCj4+ICsjZGVmaW5lIFY0TDJfVlA5X1JFRkVSRU5DRV9NT0RFX1NJTkdMRV9SRUZFUkVO
-Q0UJMAo+PiArI2RlZmluZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV9DT01QT1VORF9SRUZFUkVO
-Q0UJMQo+PiArI2RlZmluZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV9TRUxFQ1QJCQkyCj4+ICsK
-Pj4gKyNkZWZpbmUgVjRMMl9WUDlfUFJPRklMRV9NQVgJCQkJMwo+PiArCj4+ICsjZGVmaW5lIFY0
-TDJfQ0lEX1NUQVRFTEVTU19WUDlfRlJBTUUJKFY0TDJfQ0lEX0NPREVDX1NUQVRFTEVTU19CQVNF
-ICsgMzAwKQo+PiArLyoqCj4+ICsgKiBzdHJ1Y3QgdjRsMl9jdHJsX3ZwOV9mcmFtZSAtIFZQOSBm
-cmFtZSBkZWNvZGluZyBjb250cm9sCj4+ICsgKgo+PiArICogQGxmOiBsb29wIGZpbHRlciBwYXJh
-bWV0ZXJzLiBTZWUgJnY0bDJfdnA5X2xvb3BfZmlsdGVyIGZvciBtb3JlIGRldGFpbHMKPiAKPiBT
-ZWVtcyB0aGVzZSBkb2N1bWVudGF0aW9uIGlzIG1pc3NpbmcgYW4gZW5kaW5nIHBlcmlvZCBmb3Ig
-bWFueSBmaWVsZHMuCgpUaGFua3MgZm9yIGNhdGNoaW5nIHB1bmN0dWF0aW9uIG1pc3Rha2VzIDop
-Cgo+IAo+PiArICogQHF1YW50OiBxdWFudGl6YXRpb24gcGFyYW1ldGVycy4gU2VlICZ2NGwyX3Zw
-OV9xdWFudGl6YXRpb24gZm9yIG1vcmUgZGV0YWlscwo+PiArICogQHNlZzogc2VnbWVudGF0aW9u
-IHBhcmFtZXRlcnMuIFNlZSAmdjRsMl92cDlfc2VnbWVudGF0aW9uIGZvciBtb3JlIGRldGFpbHMK
-Pj4gKyAqIEBmbGFnczogY29tYmluYXRpb24gb2YgVjRMMl9WUDlfRlJBTUVfRkxBR18qIGZsYWdz
-Cj4+ICsgKiBAY29tcHJlc3NlZF9oZWFkZXJfc2l6ZTogY29tcHJlc3NlZCBoZWFkZXIgc2l6ZSBp
-biBieXRlcwo+PiArICogQHVuY29tcHJlc3NlZF9oZWFkZXJfc2l6ZTogdW5jb21wcmVzc2VkIGhl
-YWRlciBzaXplIGluIGJ5dGVzCj4+ICsgKiBAZnJhbWVfd2lkdGhfbWludXNfMTogYWRkIDEgdG8g
-aXQgYW5kIHlvdSdsbCBnZXQgdGhlIGZyYW1lIHdpZHRoIGV4cHJlc3NlZCBpbiBwaXhlbHMKPj4g
-KyAqIEBmcmFtZV9oZWlnaHRfbWludXNfMTogYWRkIDEgdG8gaXQgYW5kIHlvdSdsbCBnZXQgdGhl
-IGZyYW1lIGhlaWdodCBleHByZXNzZWQgaW4gcGl4ZWxzCj4+ICsgKiBAcmVuZGVyX3dpZHRoX21p
-bnVzXzE6IGFkZCAxIHRvIGl0IGFuZCB5b3UnbGwgZ2V0IHRoZSBleHBlY3RlZCByZW5kZXIgd2lk
-dGggZXhwcmVzc2VkIGluCj4+ICsgKglwaXhlbHMuIFRoaXMgaXMgbm90IHVzZWQgZHVyaW5nIHRo
-ZSBkZWNvZGluZyBwcm9jZXNzIGJ1dCBtaWdodCBiZSB1c2VkIGJ5IEhXIHNjYWxlcnMKPj4gKyAq
-CXRvIHByZXBhcmUgYSBmcmFtZSB0aGF0J3MgcmVhZHkgZm9yIHNjYW5vdXQKPj4gKyAqIEByZW5k
-ZXJfaGVpZ2h0X21pbnVzXzE6IGFkZCAxIHRvIGl0IGFuZCB5b3UnbGwgZ2V0IHRoZSBleHBlY3Rl
-ZCByZW5kZXIgaGVpZ2h0IGV4cHJlc3NlZCBpbgo+PiArICoJcGl4ZWxzLiBUaGlzIGlzIG5vdCB1
-c2VkIGR1cmluZyB0aGUgZGVjb2RpbmcgcHJvY2VzcyBidXQgbWlnaHQgYmUgdXNlZCBieSBIVyBz
-Y2FsZXJzCj4+ICsgKgl0byBwcmVwYXJlIGEgZnJhbWUgdGhhdCdzIHJlYWR5IGZvciBzY2Fub3V0
-Cj4+ICsgKiBAbGFzdF9mcmFtZV90czogImxhc3QiIHJlZmVyZW5jZSBidWZmZXIgdGltZXN0YW1w
-Lgo+PiArICogVGhlIHRpbWVzdGFtcCByZWZlcnMgdG8gdGhlIHRpbWVzdGFtcCBmaWVsZCBpbiBz
-dHJ1Y3QgdjRsMl9idWZmZXIuCj4+ICsgKiBVc2UgdjRsMl90aW1ldmFsX3RvX25zKCkgdG8gY29u
-dmVydCB0aGUgc3RydWN0IHRpbWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAqIEBnb2xkZW5fZnJhbWVf
-dHM6ICJnb2xkZW4iIHJlZmVyZW5jZSBidWZmZXIgdGltZXN0YW1wLgo+PiArICogVGhlIHRpbWVz
-dGFtcCByZWZlcnMgdG8gdGhlIHRpbWVzdGFtcCBmaWVsZCBpbiBzdHJ1Y3QgdjRsMl9idWZmZXIu
-Cj4+ICsgKiBVc2UgdjRsMl90aW1ldmFsX3RvX25zKCkgdG8gY29udmVydCB0aGUgc3RydWN0IHRp
-bWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAqIEBhbHRfZnJhbWVfdHM6ICJhbHQiIHJlZmVyZW5jZSBi
-dWZmZXIgdGltZXN0YW1wLgo+PiArICogVGhlIHRpbWVzdGFtcCByZWZlcnMgdG8gdGhlIHRpbWVz
-dGFtcCBmaWVsZCBpbiBzdHJ1Y3QgdjRsMl9idWZmZXIuCj4+ICsgKiBVc2UgdjRsMl90aW1ldmFs
-X3RvX25zKCkgdG8gY29udmVydCB0aGUgc3RydWN0IHRpbWV2YWwgdG8gYSBfX3U2NC4KPj4gKyAq
-IEByZWZfZnJhbWVfc2lnbl9iaWFzOiBhIGJpdGZpZWxkIHNwZWNpZnlpbmcgd2hldGhlciB0aGUg
-c2lnbiBiaWFzIGlzIHNldCBmb3IgYSBnaXZlbgo+PiArICoJcmVmZXJlbmNlIGZyYW1lLiBFaXRo
-ZXIgb2YgVjRMMl9WUDlfU0lHTl9CSUFTXyouCj4+ICsgKiBAcmVzZXRfZnJhbWVfY29udGV4dDog
-c3BlY2lmaWVzIHdoZXRoZXIgdGhlIGZyYW1lIGNvbnRleHQgc2hvdWxkIGJlIHJlc2V0IHRvIGRl
-ZmF1bHQgdmFsdWVzLgo+PiArICoJRWl0aGVyIG9mIFY0TDJfVlA5X1JFU0VUX0ZSQU1FX0NUWF8q
-Lgo+PiArICogQGZyYW1lX2NvbnRleHRfaWR4OiBmcmFtZSBjb250ZXh0IHRoYXQgc2hvdWxkIGJl
-IHVzZWQvdXBkYXRlZAo+PiArICogQHByb2ZpbGU6IFZQOSBwcm9maWxlLiBDYW4gYmUgMCwgMSwg
-MiBvciAzCj4+ICsgKiBAYml0X2RlcHRoOiBiaXRzIHBlciBjb21wb25lbnRzLiBDYW4gYmUgOCwg
-MTAgb3IgMTIuIE5vdGUgdGhhdCBub3QgYWxsIHByb2ZpbGVzIHN1cHBvcnQKPj4gKyAqCTEwIGFu
-ZC9vciAxMiBiaXRzIGRlcHRocwo+PiArICogQGludGVycG9sYXRpb25fZmlsdGVyOiBzcGVjaWZp
-ZXMgdGhlIGZpbHRlciBzZWxlY3Rpb24gdXNlZCBmb3IgcGVyZm9ybWluZyBpbnRlciBwcmVkaWN0
-aW9uLgo+PiArICoJRWl0aGVyIG9mIFY0TDJfVlA5X0lOVEVSUF9GSUxURVJfKgo+PiArICogQHRp
-bGVfY29sc19sb2cyOiBzcGVjaWZpZXMgdGhlIGJhc2UgMiBsb2dhcml0aG0gb2YgdGhlIHdpZHRo
-IG9mIGVhY2ggdGlsZSAod2hlcmUgdGhlIHdpZHRoCj4+ICsgKglpcyBtZWFzdXJlZCBpbiB1bml0
-cyBvZiA4eDggYmxvY2tzKS4gU2hhbGwgYmUgbGVzcyB0aGFuIG9yIGVxdWFsIHRvIDYKPj4gKyAq
-IEB0aWxlX3Jvd3NfbG9nMjogc3BlY2lmaWVzIHRoZSBiYXNlIDIgbG9nYXJpdGhtIG9mIHRoZSBo
-ZWlnaHQgb2YgZWFjaCB0aWxlICh3aGVyZSB0aGUgaGVpZ2h0Cj4+ICsgKglpcyBtZWFzdXJlZCBp
-biB1bml0cyBvZiA4eDggYmxvY2tzKQo+PiArICogQHJlZmVyZW5jZV9tb2RlOiBzcGVjaWZpZXMg
-dGhlIHR5cGUgb2YgaW50ZXIgcHJlZGljdGlvbiB0byBiZSB1c2VkLiBTZWUKPiAKPiBTZWUgd2hh
-dD8gOi0pCj4gCj4+ICsgKglFaXRoZXIgb2YgVjRMMl9WUDlfUkVGRVJFTkNFX01PREVfKgo+IAo+
-IE90aGVyIGNvbnRyb2xzIHVzZSBWNEwyX1ZQOV9SRUZFUkVOQ0VfTU9ERV97fSwge30gaW5zdGVh
-ZCBvZiAqLgo+IFRoZSBzYW1lIGFwcGxpZXMgdG8gYWxsIHRoZSBkb2N1bWVudGF0aW9uLgoKV2ls
-bCB1cGRhdGUgaW4gdjYuCgo+IAo+PiArICogQHJlc2VydmVkOiBwYWRkaW5nIGZpZWxkLiBTaG91
-bGQgYmUgemVyb2VkIGJ5IGFwcGxpY2F0aW9ucy4KPj4gKyAqLwo+PiArc3RydWN0IHY0bDJfY3Ry
-bF92cDlfZnJhbWUgewo+PiArCXN0cnVjdCB2NGwyX3ZwOV9sb29wX2ZpbHRlciBsZjsKPj4gKwlz
-dHJ1Y3QgdjRsMl92cDlfcXVhbnRpemF0aW9uIHF1YW50Owo+PiArCXN0cnVjdCB2NGwyX3ZwOV9z
-ZWdtZW50YXRpb24gc2VnOwo+PiArCV9fdTMyIGZsYWdzOwo+PiArCV9fdTE2IGNvbXByZXNzZWRf
-aGVhZGVyX3NpemU7Cj4+ICsJX191MTYgdW5jb21wcmVzc2VkX2hlYWRlcl9zaXplOwo+PiArCV9f
-dTE2IGZyYW1lX3dpZHRoX21pbnVzXzE7Cj4+ICsJX191MTYgZnJhbWVfaGVpZ2h0X21pbnVzXzE7
-Cj4+ICsJX191MTYgcmVuZGVyX3dpZHRoX21pbnVzXzE7Cj4+ICsJX191MTYgcmVuZGVyX2hlaWdo
-dF9taW51c18xOwo+PiArCV9fdTY0IGxhc3RfZnJhbWVfdHM7Cj4+ICsJX191NjQgZ29sZGVuX2Zy
-YW1lX3RzOwo+PiArCV9fdTY0IGFsdF9mcmFtZV90czsKPj4gKwlfX3U4IHJlZl9mcmFtZV9zaWdu
-X2JpYXM7Cj4+ICsJX191OCByZXNldF9mcmFtZV9jb250ZXh0Owo+PiArCV9fdTggZnJhbWVfY29u
-dGV4dF9pZHg7Cj4+ICsJX191OCBwcm9maWxlOwo+PiArCV9fdTggYml0X2RlcHRoOwo+PiArCV9f
-dTggaW50ZXJwb2xhdGlvbl9maWx0ZXI7Cj4+ICsJX191OCB0aWxlX2NvbHNfbG9nMjsKPj4gKwlf
-X3U4IHRpbGVfcm93c19sb2cyOwo+PiArCV9fdTggcmVmZXJlbmNlX21vZGU7Cj4+ICsJX191OCBy
-ZXNlcnZlZFs3XTsKPj4gK307Cj4+ICsKPiAKPiBBbHNvLCBoYXZlIHlvdSBjaGVja2VkIGh0bWwg
-YW5kIHBkZiBkb2NzIGFuZCBtYWtlIHN1cmUKPiBpdCBsb29rcyBhcyB5b3UgZXhwZWN0Pwo+IAoK
-WWVzIEkgZGlkIGFuZCBpdCBsb29rcyBhcyBJIGV4cGVjdGVkLgoKPiBUaGFua3MsCj4gRXplcXVp
-ZWwKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+On Fri, Sep 24, 2021 at 04:23:45PM -0700, Brian Norris wrote:
+> In commit 59eb7193bef2, we moved most HW configuration to bind(), but we
+> didn't move the runtime PM management. Therefore, depending on initial
+> boot state, runtime-PM workqueue delays, and other timing factors, we
+> may disable our power domain in between the hardware configuration
+> (bind()) and when we enable the display. This can cause us to lose
+> hardware state and fail to configure our display. For example:
+> =
+
+>   dw-mipi-dsi-rockchip ff968000.mipi: failed to write command FIFO
+>   panel-innolux-p079zca ff960000.mipi.0: failed to write command 0
+> =
+
+> or:
+> =
+
+>   dw-mipi-dsi-rockchip ff968000.mipi: failed to write command FIFO
+>   panel-kingdisplay-kd097d04 ff960000.mipi.0: failed write init cmds: -110
+> =
+
+> We should match the runtime PM to the lifetime of the bind()/unbind()
+> cycle.
+> =
+
+> Tested on Acer Chrometab 10 (RK3399 Gru-Scarlet), with panel drivers
+> built either as modules or built-in.
+> =
+
+> Side notes: it seems one is more likely to see this problem when the
+> panel driver is built into the kernel. I've also seen this problem
+> bisect down to commits that simply changed Kconfig dependencies, because
+> it changed the order in which driver init functions were compiled into
+> the kernel, and therefore the ordering and timing of built-in device
+> probe.
+> =
+
+> Fixes: 59eb7193bef2 ("drm/rockchip: dsi: move all lane config except LCDC=
+ mux to bind()")
+> Link: https://lore.kernel.org/linux-rockchip/9aedfb528600ecf871885f7293ca=
+4207c84d16c1.camel@gmail.com/
+> Reported-by: <aleksandr.o.makarov@gmail.com>
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+
+This fixes the display enablement issue in Acer Chrometab 10 (RK3399
+Gru-Scarlet) indeed.
+
+Tested-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+N=EDcolas
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
