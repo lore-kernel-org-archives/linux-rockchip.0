@@ -2,74 +2,75 @@ Return-Path: <SRS0=31Gl=OS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F487C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12D77C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 04:16:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07BE661213
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:41:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 07BE661213
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
+	by mail.kernel.org (Postfix) with ESMTPS id BC7CA60F24
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 04:16:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BC7CA60F24
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q/Au2a+nowDyPPofrCKXuFJno1Qt7Zp8uX0x8yRvHJA=; b=1Fm2MJY6HycjGE
-	KsyNvpGaAO/4s43lyRkfBQauf0XFh/4sONoHKcrYci1Hq7MkyZ35BUUcsiQn9ZCRHkkwqhDyPFPZk
-	uuAkuilh8aU7bD6WP82vaJBjE1iQchqo/Mn/F39I1Xd8BI/3g7kuXZWE6KXejI4vdCaj+C3tYZCXo
-	BinEVy5F7IQTZXkR48VXQI5bJqtQeWP+lUKZhzJrkZ2Q6BAIe+NVqpQ8rPmWYHMxdtYZ72DrSBhYE
-	EHPRRB+mSqWXNEgssLmzv0E+XrlPI2c/HFGGMtqkpeSUn0dh6GaqACSZJCDrH2wOu+W1v5cWAJbdt
-	yrLbMKf1KkNK8LBedJJA==;
+	List-Owner; bh=6D7sYEvnkECvh78TRsZDYvPrwZ6iM82OZ8pz+5pW5ns=; b=v5xgH7ld/ksPYZ
+	uh8DTmdmtAkCNd6hgotcxEns9+qYyKXrQWsLDAhWdfgLAw7vVOIDs1MkDXSDSGFrY6rtbiJjZSDdx
+	ruHM/D1N1lbEHsCXlINYwYjnjXGw61THwGiXypaqNhzIpuspRblOEKqgQfGI4I4GiuSFqQJiu/na+
+	gYgaliFWPQ9Uef1uRN9hHmU9HPZoUB3G8sBwLZdAbOyz4eqbyB7xLNbovpUmJWjq4/ebvWam7GKzj
+	hkX+PJBScBhT7IfHwkmDHK8UxOjoh7SwqsBpWuYKfv+45WuTY/unfkmgS7AdQz56lTGl7jebzmEvR
+	24GUQotmU9w7XMD9Frzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mV27f-0057zf-Gs; Tue, 28 Sep 2021 01:41:31 +0000
-Received: from mx24.baidu.com ([111.206.215.185] helo=baidu.com)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mV23R-0055WO-W4; Tue, 28 Sep 2021 01:37:11 +0000
-Received: from BC-Mail-HQEX01.internal.baidu.com (unknown [172.31.51.57])
- by Forcepoint Email with ESMTPS id 6CA739BC34D210442B7C;
- Tue, 28 Sep 2021 09:37:08 +0800 (CST)
-Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- BC-Mail-HQEX01.internal.baidu.com (172.31.51.57) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2242.12; Tue, 28 Sep 2021 09:37:08 +0800
-Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Tue, 28 Sep 2021 09:37:06 +0800
-From: Cai Huoqing <caihuoqing@baidu.com>
-To: <caihuoqing@baidu.com>
-CC: Linus Walleij <linus.walleij@linaro.org>, Jonathan Cameron
- <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- "NXP Linux Team" <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>,
- "Neil Armstrong" <narmstrong@baylibre.com>, Kevin Hilman
- <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Andy Gross
- <agross@kernel.org>, "Bjorn Andersson" <bjorn.andersson@linaro.org>, Heiko
- Stuebner <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
- <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-amlogic@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: [PATCH v2 9/9] iio: adc: ti-ads7950: Make use of the helper function
- dev_err_probe()
-Date: Tue, 28 Sep 2021 09:36:20 +0800
-Message-ID: <20210928013621.1245-9-caihuoqing@baidu.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210928013621.1245-1-caihuoqing@baidu.com>
-References: <20210928013621.1245-1-caihuoqing@baidu.com>
+	id 1mV4Xx-005Vhd-En; Tue, 28 Sep 2021 04:16:49 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mV4Xv-005Vgc-G1
+ for linux-rockchip@lists.infradead.org; Tue, 28 Sep 2021 04:16:48 +0000
+Received: by mail-lf1-x135.google.com with SMTP id g41so86645958lfv.1
+ for <linux-rockchip@lists.infradead.org>; Mon, 27 Sep 2021 21:16:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eL8IYhkBbLYcNm7LWC+avj2icvoXrApd/DMgvG7Twyg=;
+ b=Eg8E7WnVcCUfLf8Ic979XRm2k2bRRRS5cfcByGjlYk3mZw++clN8E9Mu0gCn2g6jlc
+ DvNLz5lv3HRmcDkWz/2pi56Sq9GD884uDlV0wwmN8zU1fcmA/urMrQR6/KXxqYfP7/v0
+ mQoGiTMoWWRKzKyYckYDAauVPWpN/zkm1al4k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eL8IYhkBbLYcNm7LWC+avj2icvoXrApd/DMgvG7Twyg=;
+ b=YG1UkMWXcKsSPrrh0Wxrp3c7vixMCuuNBOQOH+8BoIKltVL/bfMd20FuL1mYGXwRCF
+ c6hBXUp6blreuUSd/B4PGVGZFIy5VuOk1+c0uK9hqt0378+wtIn3lNtQuieInp1XO7Oc
+ 0PiavaPFWSnTlh2bC8+ajW+7JjRj6OT0HB65TK/sLwcsLzDp400MZd7ns4XhmhMNK6cz
+ vvpbqyCTE4H4ClLHfkH8qIz79d1O8AhiCjbtd9QwrWLH5uqreh4p9ocKsB7Oro7EK08C
+ AoUTtXMD3K8iQsCf+Phgyxv/X2JBl6zqDG4r6O4LySnMkTbABkKvd+TjusybNlqkk6GS
+ Ruow==
+X-Gm-Message-State: AOAM531sQPseEn9UtbHhJBzJbMRVmS48+S8rgQ98FuKnvnBjkg464Mhn
+ cOv+zpuL+Fq9DiKMM8RYR6MTdx9fz9lDWA/qJkAj8g==
+X-Google-Smtp-Source: ABdhPJx8KGnrGRNzuf6NG48x9cD+ZD+NRNaWIdRd4p9u7i9UtAdmAM8/xxrYlRzBWfIl36gUQk5oYDUYQcbS4fqjI5U=
+X-Received: by 2002:ac2:4bc1:: with SMTP id o1mr3397436lfq.597.1632802602866; 
+ Mon, 27 Sep 2021 21:16:42 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [172.31.63.8]
-X-ClientProxiedBy: BC-Mail-Ex24.internal.baidu.com (172.31.51.18) To
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
+References: <20210927175944.3381314-1-briannorris@chromium.org>
+ <20210927105928.v2.3.I8bb7a91ecc411d56bc155763faa15f289d7fc074@changeid>
+In-Reply-To: <20210927105928.v2.3.I8bb7a91ecc411d56bc155763faa15f289d7fc074@changeid>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 28 Sep 2021 12:16:31 +0800
+Message-ID: <CAGXv+5GxCHJM_CewS8dPTLc7NPC6jcKZvrUFat0nemzZpu8PUQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] drm/rockchip: dsi: Disable PLL clock on bind error
+To: Brian Norris <briannorris@chromium.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Thomas Hebb <tommyhebb@gmail.com>, dri-devel <dri-devel@lists.freedesktop.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Sandy Huang <hjc@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_183710_314090_CD56BB15 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20210927_211647_599510_10BA2974 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,35 +88,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When possible use dev_err_probe help to properly deal with the
-PROBE_DEFER error, the benefit is that DEFER issue will be logged
-in the devices_deferred debugfs file.
-Using dev_err_probe() can reduce code size, and the error value
-gets printed.
+On Tue, Sep 28, 2021 at 2:00 AM Brian Norris <briannorris@chromium.org> wrote:
+>
+> Fix some error handling here noticed in review of other changes.
+>
+> Reported-by: Chen-Yu Tsai <wenst@chromium.org>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
----
- drivers/iio/adc/ti-ads7950.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Fixes: 2d4f7bdafd70 ("drm/rockchip: dsi: migrate to use dw-mipi-dsi
+bridge driver")
 
-diff --git a/drivers/iio/adc/ti-ads7950.c b/drivers/iio/adc/ti-ads7950.c
-index a2b83f0bd526..a7efa3eada2c 100644
---- a/drivers/iio/adc/ti-ads7950.c
-+++ b/drivers/iio/adc/ti-ads7950.c
-@@ -600,8 +600,8 @@ static int ti_ads7950_probe(struct spi_device *spi)
- 
- 	st->reg = devm_regulator_get(&spi->dev, "vref");
- 	if (IS_ERR(st->reg)) {
--		dev_err(&spi->dev, "Failed to get regulator \"vref\"\n");
--		ret = PTR_ERR(st->reg);
-+		ret = dev_err_probe(&spi->dev, PTR_ERR(st->reg),
-+				     "Failed to get regulator \"vref\"\n");
- 		goto error_destroy_mutex;
- 	}
- 
--- 
-2.25.1
+Otherwise,
 
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Additionally, I would move patch 2 and this patch before the first patch,
+as these two fix a commit introduced in v5.0, while the first patch fixes
+something introduced in v5.14. This would make automatic backporting cleaner.
+
+> ---
+>
+> Changes in v2:
+> - New
+>
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index fa4080176719..0ed13d81fe60 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -943,7 +943,7 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+>         ret = clk_prepare_enable(dsi->grf_clk);
+>         if (ret) {
+>                 DRM_DEV_ERROR(dsi->dev, "Failed to enable grf_clk: %d\n", ret);
+> -               goto out_pm_runtime;
+> +               goto out_pll_clk;
+>         }
+>
+>         dw_mipi_dsi_rockchip_config(dsi);
+> @@ -955,17 +955,19 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+>         ret = rockchip_dsi_drm_create_encoder(dsi, drm_dev);
+>         if (ret) {
+>                 DRM_DEV_ERROR(dev, "Failed to create drm encoder\n");
+> -               goto out_pm_runtime;
+> +               goto out_pll_clk;
+>         }
+>
+>         ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder);
+>         if (ret) {
+>                 DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
+> -               goto out_pm_runtime;
+> +               goto out_pll_clk;
+>         }
+>
+>         return 0;
+>
+> +out_pll_clk:
+> +       clk_disable_unprepare(dsi->pllref_clk);
+>  out_pm_runtime:
+>         pm_runtime_put(dsi->dev);
+>         if (dsi->slave)
+> --
+> 2.33.0.685.g46640cef36-goog
+>
 
 _______________________________________________
 Linux-rockchip mailing list
