@@ -2,14 +2,14 @@ Return-Path: <SRS0=31Gl=OS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 358F2C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 05:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FAD2C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 05:57:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED3EA611CA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 05:55:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ED3EA611CA
+	by mail.kernel.org (Postfix) with ESMTPS id ECAEB611CC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 05:57:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ECAEB611CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,30 +18,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yEHHLGZ53XGIs4UH23sKrqyPAb8dc/TXyRUdbMhXaXg=; b=iX9qeGtMmyy0ZZ
-	0Yu3z1wh8ZLpAURubJIAWMDB2cmlOKdwa8XjRHQWFM0HTDKNspCCVwZ6paI1WrPdsbvo8xm3fv3jW
-	0+Y2GpyRl+7uuXW9UGoOXNFwEcVYUQ0Cr2tKp1hCAOUHZw8OMtpA6jFxSBglmLMy3UOw/4hCsVa38
-	Nq0c47BN8BpXGj3tfNPFhsgiQrcgLZan6sY4t/lbHZcSN+xmr+XzR8TUU6W5HulvlIooaaOG0hHU1
-	ONlM7nDLkcwi5LrmYOPUEmuA0+jw1GmiTaEg/+p7Bscec/7sr4dXyGg/houzeJyx1qVXqIqtP/Cx5
-	Ff3YK1pbtOosTHCRcg7g==;
+	List-Owner; bh=92CmkWitiARJpFuxAKbeCKf/MQeVwF4CjkDcU01UmSI=; b=dOHNOnb31AH1MJ
+	GYUp3BRh9W+MJxbHa8dycfyEAgCncnQzP5DL4jUT58e+Ww8lbQyCasaR7EJEDi0PZelKuHyOZo/mB
+	ttE7QKfYeeWOdpjXlIEy4PYiC8ABf84otV3p7fswwRsGGojh+SiO0hag4tRCe5EAGZZ1cUCOA0Eno
+	LhiLMrLPGZ0sYALz909LB8kCon9zn+81edFYXy+k9qjzWAx/HH9gdCjcFETOJ1quCVJ8EJVrvgF0/
+	Z79sHVdxVgZ0yumIovL8H9tF/gOpxYGQTXCuHWSmll6SN8UMSMWl6V2PGmmgUEgg+ONnuZrvVf3z/
+	z/4R/JOcwap+OYsaNsVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mV65a-005iWl-EK; Tue, 28 Sep 2021 05:55:38 +0000
+	id 1mV66s-005iqS-Co; Tue, 28 Sep 2021 05:56:58 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mV65O-005iUZ-DU; Tue, 28 Sep 2021 05:55:27 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5C03A611C3;
- Tue, 28 Sep 2021 05:55:25 +0000 (UTC)
+ id 1mV66f-005ioe-UU; Tue, 28 Sep 2021 05:56:47 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8D6366127C;
+ Tue, 28 Sep 2021 05:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632808525;
- bh=kE7fRXuUwpMLCFyX72ic6RwxCWG3c0BVu7eSXiZ6SEc=;
+ s=k20201202; t=1632808605;
+ bh=mUgukess8O9s+KgtEGp2K/ZCeaegdNTLZV51hG4FIk8=;
  h=From:To:Cc:Subject:Date:From;
- b=RxrSidJOgdvWwU4pQTgqC5Xeh/XsaYaTtI47Y37PxSocqNcwL0GfH6gUKk9CYPtiY
- +lzC2AffIVF2M3J6PNW7ZF/3nZxAi8NJKJ8suoxb/hjJ2iJa6sdIwxQnh2myNSQQLF
- woQPhH8MIz5SdvHLg9fu8lJofcJ6lL41Iv+c8fATLIa75NFqfzW2EpAcBeHGeqnlvX
- OpkxsBjVFAirmdzXzDKih/+Yw4UQNI/a+b2L/4S1yTxVMsUQBHmNTM9Nv+eF+x7EJ4
- LSA2t9kgeQPO39edV/9gnJ23CF8fOAZu7TopMfqHoVhBPIwC69qZUhOQACT+UbilSP
- 9VoB8r0DCU2sg==
+ b=RKNMLXMJdQSLwZfJmTa0NwBQXb9+d24I/74wNXbfBD34PAvSCfF2Bx8LPIin6GNGj
+ HPluCpMfQgYkaSLZdSHsILGH91/1ObdZ2qRLUOSuu4+6NXqB0xzXYwtMnuwHFbVlI6
+ CBNIk3cgD3KxOMXtXoVcdjMYSPy0ZPB89KS9fDbi/3kJ35zMK2t/RZl71x7PBYBhwL
+ L/fj8jZ5uN/a7vgOJEy+Ove9biZGiEYtXBEXIUQSXeUkn9wdKjutRRauaYaunKL09H
+ MH2hKYAAcZ5mdTR6zkwg3YE/vTEqxoLpnGKFIkhwIOxFNl/+cezNbiGG2wRj6i3Rc5
+ HEuyBZLkJYqvw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,16 +49,16 @@ Cc: Tobias Schramm <t.schramm@manjaro.org>, Mark Brown <broonie@kernel.org>,
  Sasha Levin <sashal@kernel.org>, heiko@sntech.de,
  linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.14 01/40] spi: rockchip: handle zero length
+Subject: [PATCH AUTOSEL 5.10 01/23] spi: rockchip: handle zero length
  transfers without timing out
-Date: Tue, 28 Sep 2021 01:54:45 -0400
-Message-Id: <20210928055524.172051-1-sashal@kernel.org>
+Date: Tue, 28 Sep 2021 01:56:22 -0400
+Message-Id: <20210928055645.172544-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_225526_520589_96687846 
+X-CRM114-CacheID: sfid-20210927_225646_023246_A19A5A7B 
 X-CRM114-Status: UNSURE (   9.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -98,10 +98,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 6 insertions(+)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 540861ca2ba3..553b6b9d0222 100644
+index 0aab37cd64e7..624273d0e727 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -600,6 +600,12 @@ static int rockchip_spi_transfer_one(
+@@ -582,6 +582,12 @@ static int rockchip_spi_transfer_one(
  	int ret;
  	bool use_dma;
  
