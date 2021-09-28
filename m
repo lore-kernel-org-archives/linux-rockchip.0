@@ -2,14 +2,14 @@ Return-Path: <SRS0=31Gl=OS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AD32C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 21:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7801C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 21:36:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF12461361
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 21:36:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CF12461361
+	by mail.kernel.org (Postfix) with ESMTPS id 8BED161361
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 21:36:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8BED161361
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,68 +18,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Udm3a/1I3sv28quexNdxjL57TG2ezFOu7rZ5sV51rDw=; b=octh184IDmemdR
-	JbiZt53YVhTlqQ+4aQixrRzEAfFIfKm041ROCXCZC8JYIpzsKrAnp0RRLzqa0AVTajLrvaSPfLLjv
-	pT+43yO/7U9fKGVMslW00f1TiPif1IBEQMxV6upJ+l26z2sxIYRqYlRmF87JNJq8kZDbJRpXFhd3R
-	wB61ZSJ5DeTmxQS4HPC+m/aCPEmNEjtJjcB3TtRMzNZOIRW8WcTU+1SpOIGPruzDjYMXAob1KrvRo
-	CrhdouQOYt/ygkLtrnKvyOLoj4ovdcD0MySPS2dK4pW1yVUYvENscANKHofRPiOTLc5mi5ii3wmcw
-	fSLcGxZaCCwt3+0cNd9A==;
+	List-Owner; bh=9PRGuIk88JDdsuKq4QOlqKx5pPakXmbD5h9Vc9T5gIA=; b=T8V4xxctVK1g0s
+	IEDvLyboIfOeGOcJdMni0IE3T4ca5ASj+/EUlqrhYm1r2J2jBMZ9ujkl8j+khDB8x3HlQJTOKCcBV
+	K6IV0Dy1zD+JTuUJRYF7jBK0bkAeg+7rdgU4MortcgLowNXKKpna/IJz04QjnorgJoNZWydFEIM9d
+	3z8VHzXHOQ3KOTXsrg3UpOlYTievYXX1zztmXvPBAdIlXGOWZi2aI0/0ENo/C5pDiUfZ+IkRGaSI4
+	tX/7oaTeh3P8FjgClPHQKeK9trH3WSP3nU4zg4KLspNUJ6fiX0t+1RC67BdYae1eVCuPOf6Oxq9xs
+	hmX0MrBklCJI6c2cI5DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVKlq-008t1z-MQ; Tue, 28 Sep 2021 21:36:14 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1mVKls-008t34-Qa; Tue, 28 Sep 2021 21:36:16 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVKll-008sxj-VA
- for linux-rockchip@lists.infradead.org; Tue, 28 Sep 2021 21:36:11 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id u7so114223pfg.13
- for <linux-rockchip@lists.infradead.org>; Tue, 28 Sep 2021 14:36:06 -0700 (PDT)
+ id 1mVKln-008syd-R2
+ for linux-rockchip@lists.infradead.org; Tue, 28 Sep 2021 21:36:13 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id v19so62072pjh.2
+ for <linux-rockchip@lists.infradead.org>; Tue, 28 Sep 2021 14:36:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=BvgM4m2pXG/PIUkUjK73FJ7j4ardNCogAkvXuK07AJc=;
- b=PeeFov8qVje38hwQE1/feYtxaMpRkaXGWrx5zgYmfRhTQa8AbjATUWcYuE4sNTy0jc
- NzTMXMdnRkmlW7O8FqV/jpXabij0r1eBzE1+47CCs2eRykDvxNMvVT62RAW5lSmIO8de
- qpcOP5VzseHI2aOAYmtEvQyxXOcmwqewSG+gs=
+ bh=BvF8KK2WJfnodz32WDGFF00fES1dwKaygVo7KmPDeNE=;
+ b=ltFqLngXnk/KSMYdiA5CGoaX3k59QOKwxat6vmMM2pAWH6+Q3LJfk/6+VxFg0c/qkN
+ Md9QPCNWyFB+kKVl5PNqk6rmOS7Cjm8Jep3xZyUhAElR1CELLhltrMCBtmakLZiFaoVU
+ ZujTXQJAJyz1kPLYxSlCuHd6sqVv4xme2WaWo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=BvgM4m2pXG/PIUkUjK73FJ7j4ardNCogAkvXuK07AJc=;
- b=5DTv1RMJlg3Oo5t2gzOszihi4JEOHD6CexxStpPbu9ShhIgTrdM1u78W4n3vToBi75
- zP/Jmy1HxeVyygoav3tN1yQm+oi2JcehTIy+ITJ7YamFDX3/QfJpZWLNBjAcoDFkI+rH
- lsgLIseKzFEcmjjSS4Rnk/i6zISBQHnrpQUpgydNiuxNTi2oH02RwQ09RQ7xlt4Fzn6w
- 9tMyOG5y74ltTcF2RAlEX2vVD/VKcsLn9oyygvVSJRPULx9ElZsgD1kvbEf2pdEp+kfA
- S+11AutbteX12izZOBPWwXAfauEj68zaH6p5rNEdiVhQPVgzWmbxkE6fYPw/DnrZuuuj
- RByw==
-X-Gm-Message-State: AOAM532wy5VCGCqCZXBVi07mdMvyjDj6wwG7aVnS+O/zlZdSVGakSG3A
- Id5hzoKHd2dU6JykL/U7TidQaQ==
-X-Google-Smtp-Source: ABdhPJy7hthTjTmdF7Zg1yCAFxkJ0NU3YER4rdGOklhBmFktJSD3x8/bYr7IvIK0Q4BJbFDVzPRKnw==
-X-Received: by 2002:a62:7a4f:0:b0:448:6a41:14bb with SMTP id
- v76-20020a627a4f000000b004486a4114bbmr7479777pfc.31.1632864966354; 
- Tue, 28 Sep 2021 14:36:06 -0700 (PDT)
+ bh=BvF8KK2WJfnodz32WDGFF00fES1dwKaygVo7KmPDeNE=;
+ b=hP8tT6x90MrDHXcJ6VFCNg5o1nBN5FuDWhNIKnEn2CwGoMJZMwknBmNpeUI5tGoMiB
+ ooruahfN4f4Ml2bPKNY9JGrk0tAJtDd/aoCsi83KcLu8xNU1oTooqls2fdkigG+q2zWx
+ gEHxbUZS/AV+bF7I86rWWtATqm/EZtJJOC6QUUQEP5ebfsCnVHGOvWW+UCv0WT6sL8QP
+ Vg4ZeRmOWwBf0SWrcSZG6kpNLfDnsXno9Z2zRpzBRYJFQFBlkR56DXjAJGaXlj7/LFeZ
+ 4hIkD3B9KFRwonAjEUr/3U5YcB5FeK1vk3ezc+qxX52HZGQSWncFDaroDc+HSYjgznGd
+ JpDg==
+X-Gm-Message-State: AOAM532kw2UaJnMiyf0qvqCAhNE1unPb/GKEkEE3wLnKzzGFEkaEaFoL
+ KJP6y7syBL1/TZLDEmFCNiX9ew==
+X-Google-Smtp-Source: ABdhPJzvggZ9gBKEuPs9zideFUu63Vp+I+f6NqeBAH2GCiY2gg26v07OXL/8k0pHgvYTC/VEpQwCAw==
+X-Received: by 2002:a17:90b:4ac3:: with SMTP id
+ mh3mr2378205pjb.29.1632864968273; 
+ Tue, 28 Sep 2021 14:36:08 -0700 (PDT)
 Received: from localhost ([2620:15c:202:201:d7ca:580:94ab:8af8])
- by smtp.gmail.com with UTF8SMTPSA id q19sm105131pgn.81.2021.09.28.14.36.05
+ by smtp.gmail.com with UTF8SMTPSA id mn22sm2796646pjb.11.2021.09.28.14.36.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Sep 2021 14:36:05 -0700 (PDT)
+ Tue, 28 Sep 2021 14:36:07 -0700 (PDT)
 From: Brian Norris <briannorris@chromium.org>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
  Chen-Yu Tsai <wenst@chromium.org>, Thomas Hebb <tommyhebb@gmail.com>,
- Brian Norris <briannorris@chromium.org>, aleksandr.o.makarov@gmail.com,
- stable@vger.kernel.org,
- =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
- <nfraprado@collabora.com>
-Subject: [PATCH v3 1/4] drm/rockchip: dsi: Hold pm-runtime across bind/unbind
-Date: Tue, 28 Sep 2021 14:35:49 -0700
-Message-Id: <20210928143413.v3.1.Ic2904d37f30013a7f3d8476203ad3733c186827e@changeid>
+ Brian Norris <briannorris@chromium.org>, stable@vger.kernel.org
+Subject: [PATCH v3 2/4] drm/rockchip: dsi: Reconfigure hardware on resume()
+Date: Tue, 28 Sep 2021 14:35:50 -0700
+Message-Id: <20210928143413.v3.2.I4e9d93aadb00b1ffc7d506e3186a25492bf0b732@changeid>
 X-Mailer: git-send-email 2.33.0.685.g46640cef36-goog
 In-Reply-To: <20210928213552.1001939-1-briannorris@chromium.org>
 References: <20210928213552.1001939-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210928_143610_128449_7B8E0C43 
-X-CRM114-Status: GOOD (  20.47  )
+X-CRM114-CacheID: sfid-20210928_143611_925456_59143C36 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,95 +89,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SW4gY29tbWl0IDQzYzJkZTEwMDJkMiwgd2UgbW92ZWQgbW9zdCBIVyBjb25maWd1cmF0aW9uIHRv
-IGJpbmQoKSwgYnV0IHdlCmRpZG4ndCBtb3ZlIHRoZSBydW50aW1lIFBNIG1hbmFnZW1lbnQuIFRo
-ZXJlZm9yZSwgZGVwZW5kaW5nIG9uIGluaXRpYWwKYm9vdCBzdGF0ZSwgcnVudGltZS1QTSB3b3Jr
-cXVldWUgZGVsYXlzLCBhbmQgb3RoZXIgdGltaW5nIGZhY3RvcnMsIHdlCm1heSBkaXNhYmxlIG91
-ciBwb3dlciBkb21haW4gaW4gYmV0d2VlbiB0aGUgaGFyZHdhcmUgY29uZmlndXJhdGlvbgooYmlu
-ZCgpKSBhbmQgd2hlbiB3ZSBlbmFibGUgdGhlIGRpc3BsYXkuIFRoaXMgY2FuIGNhdXNlIHVzIHRv
-IGxvc2UKaGFyZHdhcmUgc3RhdGUgYW5kIGZhaWwgdG8gY29uZmlndXJlIG91ciBkaXNwbGF5LiBG
-b3IgZXhhbXBsZToKCiAgZHctbWlwaS1kc2ktcm9ja2NoaXAgZmY5NjgwMDAubWlwaTogZmFpbGVk
-IHRvIHdyaXRlIGNvbW1hbmQgRklGTwogIHBhbmVsLWlubm9sdXgtcDA3OXpjYSBmZjk2MDAwMC5t
-aXBpLjA6IGZhaWxlZCB0byB3cml0ZSBjb21tYW5kIDAKCm9yOgoKICBkdy1taXBpLWRzaS1yb2Nr
-Y2hpcCBmZjk2ODAwMC5taXBpOiBmYWlsZWQgdG8gd3JpdGUgY29tbWFuZCBGSUZPCiAgcGFuZWwt
-a2luZ2Rpc3BsYXkta2QwOTdkMDQgZmY5NjAwMDAubWlwaS4wOiBmYWlsZWQgd3JpdGUgaW5pdCBj
-bWRzOiAtMTEwCgpXZSBzaG91bGQgbWF0Y2ggdGhlIHJ1bnRpbWUgUE0gdG8gdGhlIGxpZmV0aW1l
-IG9mIHRoZSBiaW5kKCkvdW5iaW5kKCkKY3ljbGUuCgpUZXN0ZWQgb24gQWNlciBDaHJvbWV0YWIg
-MTAgKFJLMzM5OSBHcnUtU2NhcmxldCksIHdpdGggcGFuZWwgZHJpdmVycwpidWlsdCBlaXRoZXIg
-YXMgbW9kdWxlcyBvciBidWlsdC1pbi4KClNpZGUgbm90ZXM6IGl0IHNlZW1zIG9uZSBpcyBtb3Jl
-IGxpa2VseSB0byBzZWUgdGhpcyBwcm9ibGVtIHdoZW4gdGhlCnBhbmVsIGRyaXZlciBpcyBidWls
-dCBpbnRvIHRoZSBrZXJuZWwuIEkndmUgYWxzbyBzZWVuIHRoaXMgcHJvYmxlbQpiaXNlY3QgZG93
-biB0byBjb21taXRzIHRoYXQgc2ltcGx5IGNoYW5nZWQgS2NvbmZpZyBkZXBlbmRlbmNpZXMsIGJl
-Y2F1c2UKaXQgY2hhbmdlZCB0aGUgb3JkZXIgaW4gd2hpY2ggZHJpdmVyIGluaXQgZnVuY3Rpb25z
-IHdlcmUgY29tcGlsZWQgaW50bwp0aGUga2VybmVsLCBhbmQgdGhlcmVmb3JlIHRoZSBvcmRlcmlu
-ZyBhbmQgdGltaW5nIG9mIGJ1aWx0LWluIGRldmljZQpwcm9iZS4KCkZpeGVzOiA0M2MyZGUxMDAy
-ZDIgKCJkcm0vcm9ja2NoaXA6IGRzaTogbW92ZSBhbGwgbGFuZSBjb25maWcgZXhjZXB0IExDREMg
-bXV4IHRvIGJpbmQoKSIpCkxpbms6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tj
-aGlwLzlhZWRmYjUyODYwMGVjZjg3MTg4NWY3MjkzY2E0MjA3Yzg0ZDE2YzEuY2FtZWxAZ21haWwu
-Y29tLwpSZXBvcnRlZC1ieTogPGFsZWtzYW5kci5vLm1ha2Fyb3ZAZ21haWwuY29tPgpDYzogPHN0
-YWJsZUB2Z2VyLmtlcm5lbC5vcmc+ClNpZ25lZC1vZmYtYnk6IEJyaWFuIE5vcnJpcyA8YnJpYW5u
-b3JyaXNAY2hyb21pdW0ub3JnPgpUZXN0ZWQtYnk6IE7DrWNvbGFzIEYuIFIuIEEuIFByYWRvIDxu
-ZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KLS0tCgoobm8gY2hhbmdlcyBzaW5jZSB2MikKCkNoYW5n
-ZXMgaW4gdjI6Ci0gQ2xlYW4gdXAgcG0tcnVudGltZSBzdGF0ZSBpbiBlcnJvciBjYXNlcy4KLSBD
-b3JyZWN0IGdpdCBoYXNoIGZvciBGaXhlcy4KCiAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBp
-LWRzaS1yb2NrY2hpcC5jICAgfCAzNyArKysrKysrKysrLS0tLS0tLS0tCiAxIGZpbGUgY2hhbmdl
-ZCwgMTkgaW5zZXJ0aW9ucygrKSwgMTggZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNpLXJvY2tjaGlwLmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAuYwppbmRleCBhMjI2MmJlZTVhYTQuLjQ1
-Njc2YjIzYzAxOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
-ZHNpLXJvY2tjaGlwLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGktZHNp
-LXJvY2tjaGlwLmMKQEAgLTc3MywxMCArNzczLDYgQEAgc3RhdGljIHZvaWQgZHdfbWlwaV9kc2lf
-ZW5jb2Rlcl9lbmFibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQogCWlmIChtdXggPCAw
-KQogCQlyZXR1cm47CiAKLQlwbV9ydW50aW1lX2dldF9zeW5jKGRzaS0+ZGV2KTsKLQlpZiAoZHNp
-LT5zbGF2ZSkKLQkJcG1fcnVudGltZV9nZXRfc3luYyhkc2ktPnNsYXZlLT5kZXYpOwotCiAJLyoK
-IAkgKiBGb3IgdGhlIFJLMzM5OSwgdGhlIGNsayBvZiBncmYgbXVzdCBiZSBlbmFibGVkIGJlZm9y
-ZSB3cml0aW5nIGdyZgogCSAqIHJlZ2lzdGVyLiBBbmQgZm9yIFJLMzI4OCBvciBvdGhlciBzb2Ms
-IHRoaXMgZ3JmX2NsayBtdXN0IGJlIE5VTEwsCkBAIC03OTUsMjAgKzc5MSwxMCBAQCBzdGF0aWMg
-dm9pZCBkd19taXBpX2RzaV9lbmNvZGVyX2VuYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29k
-ZXIpCiAJY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGRzaS0+Z3JmX2Nsayk7CiB9CiAKLXN0YXRpYyB2
-b2lkIGR3X21pcGlfZHNpX2VuY29kZXJfZGlzYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29k
-ZXIpCi17Ci0Jc3RydWN0IGR3X21pcGlfZHNpX3JvY2tjaGlwICpkc2kgPSB0b19kc2koZW5jb2Rl
-cik7Ci0KLQlpZiAoZHNpLT5zbGF2ZSkKLQkJcG1fcnVudGltZV9wdXQoZHNpLT5zbGF2ZS0+ZGV2
-KTsKLQlwbV9ydW50aW1lX3B1dChkc2ktPmRldik7Ci19Ci0KIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-ZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzCiBkd19taXBpX2RzaV9lbmNvZGVyX2hlbHBlcl9mdW5j
-cyA9IHsKIAkuYXRvbWljX2NoZWNrID0gZHdfbWlwaV9kc2lfZW5jb2Rlcl9hdG9taWNfY2hlY2ss
-CiAJLmVuYWJsZSA9IGR3X21pcGlfZHNpX2VuY29kZXJfZW5hYmxlLAotCS5kaXNhYmxlID0gZHdf
-bWlwaV9kc2lfZW5jb2Rlcl9kaXNhYmxlLAogfTsKIAogc3RhdGljIGludCByb2NrY2hpcF9kc2lf
-ZHJtX2NyZWF0ZV9lbmNvZGVyKHN0cnVjdCBkd19taXBpX2RzaV9yb2NrY2hpcCAqZHNpLApAQCAt
-OTM4LDEwICs5MjQsMTQgQEAgc3RhdGljIGludCBkd19taXBpX2RzaV9yb2NrY2hpcF9iaW5kKHN0
-cnVjdCBkZXZpY2UgKmRldiwKIAkJcHV0X2RldmljZShzZWNvbmQpOwogCX0KIAorCXBtX3J1bnRp
-bWVfZ2V0X3N5bmMoZHNpLT5kZXYpOworCWlmIChkc2ktPnNsYXZlKQorCQlwbV9ydW50aW1lX2dl
-dF9zeW5jKGRzaS0+c2xhdmUtPmRldik7CisKIAlyZXQgPSBjbGtfcHJlcGFyZV9lbmFibGUoZHNp
-LT5wbGxyZWZfY2xrKTsKIAlpZiAocmV0KSB7CiAJCURSTV9ERVZfRVJST1IoZGV2LCAiRmFpbGVk
-IHRvIGVuYWJsZSBwbGxyZWZfY2xrOiAlZFxuIiwgcmV0KTsKLQkJcmV0dXJuIHJldDsKKwkJZ290
-byBvdXRfcG1fcnVudGltZTsKIAl9CiAKIAkvKgpAQCAtOTUzLDcgKzk0Myw3IEBAIHN0YXRpYyBp
-bnQgZHdfbWlwaV9kc2lfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsCiAJcmV0ID0g
-Y2xrX3ByZXBhcmVfZW5hYmxlKGRzaS0+Z3JmX2Nsayk7CiAJaWYgKHJldCkgewogCQlEUk1fREVW
-X0VSUk9SKGRzaS0+ZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBncmZfY2xrOiAlZFxuIiwgcmV0KTsK
-LQkJcmV0dXJuIHJldDsKKwkJZ290byBvdXRfcG1fcnVudGltZTsKIAl9CiAKIAlkd19taXBpX2Rz
-aV9yb2NrY2hpcF9jb25maWcoZHNpKTsKQEAgLTk2NSwxNiArOTU1LDIzIEBAIHN0YXRpYyBpbnQg
-ZHdfbWlwaV9kc2lfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsCiAJcmV0ID0gcm9j
-a2NoaXBfZHNpX2RybV9jcmVhdGVfZW5jb2Rlcihkc2ksIGRybV9kZXYpOwogCWlmIChyZXQpIHsK
-IAkJRFJNX0RFVl9FUlJPUihkZXYsICJGYWlsZWQgdG8gY3JlYXRlIGRybSBlbmNvZGVyXG4iKTsK
-LQkJcmV0dXJuIHJldDsKKwkJZ290byBvdXRfcG1fcnVudGltZTsKIAl9CiAKIAlyZXQgPSBkd19t
-aXBpX2RzaV9iaW5kKGRzaS0+ZG1kLCAmZHNpLT5lbmNvZGVyKTsKIAlpZiAocmV0KSB7CiAJCURS
-TV9ERVZfRVJST1IoZGV2LCAiRmFpbGVkIHRvIGJpbmQ6ICVkXG4iLCByZXQpOwotCQlyZXR1cm4g
-cmV0OworCQlnb3RvIG91dF9wbV9ydW50aW1lOwogCX0KIAogCXJldHVybiAwOworCitvdXRfcG1f
-cnVudGltZToKKwlwbV9ydW50aW1lX3B1dChkc2ktPmRldik7CisJaWYgKGRzaS0+c2xhdmUpCisJ
-CXBtX3J1bnRpbWVfcHV0KGRzaS0+c2xhdmUtPmRldik7CisKKwlyZXR1cm4gcmV0OwogfQogCiBz
-dGF0aWMgdm9pZCBkd19taXBpX2RzaV9yb2NrY2hpcF91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2
-LApAQCAtOTg5LDYgKzk4NiwxMCBAQCBzdGF0aWMgdm9pZCBkd19taXBpX2RzaV9yb2NrY2hpcF91
-bmJpbmQoc3RydWN0IGRldmljZSAqZGV2LAogCWR3X21pcGlfZHNpX3VuYmluZChkc2ktPmRtZCk7
-CiAKIAljbGtfZGlzYWJsZV91bnByZXBhcmUoZHNpLT5wbGxyZWZfY2xrKTsKKworCXBtX3J1bnRp
-bWVfcHV0KGRzaS0+ZGV2KTsKKwlpZiAoZHNpLT5zbGF2ZSkKKwkJcG1fcnVudGltZV9wdXQoZHNp
-LT5zbGF2ZS0+ZGV2KTsKIH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBjb21wb25lbnRfb3BzIGR3
-X21pcGlfZHNpX3JvY2tjaGlwX29wcyA9IHsKLS0gCjIuMzMuMC42ODUuZzQ2NjQwY2VmMzYtZ29v
-ZwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Since commit 43c2de1002d2, we perform most HW configuration in the
+bind() function. This configuration may be lost on suspend/resume, so we
+need to call it again. That may lead to errors like this after system
+suspend/resume:
+
+  dw-mipi-dsi-rockchip ff968000.mipi: failed to write command FIFO
+  panel-kingdisplay-kd097d04 ff960000.mipi.0: failed write init cmds: -110
+
+Tested on Acer Chromebook Tab 10 (RK3399 Gru-Scarlet).
+
+Note that early mailing list versions of this driver borrowed Rockchip's
+downstream/BSP solution, to do HW configuration in mode_set() (which
+*is* called at the appropriate pre-enable() times), but that was
+discarded along the way. I've avoided that still, because mode_set()
+documentation doesn't suggest this kind of purpose as far as I can tell.
+
+Fixes: 43c2de1002d2 ("drm/rockchip: dsi: move all lane config except LCDC mux to bind()")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
+
+Changes in v3:
+ - New patch, to fix related PM issue discovered after patch 1
+
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 37 +++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 45676b23c019..21c67343cc6c 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -268,6 +268,8 @@ struct dw_mipi_dsi_rockchip {
+ 	struct dw_mipi_dsi *dmd;
+ 	const struct rockchip_dw_dsi_chip_data *cdata;
+ 	struct dw_mipi_dsi_plat_data pdata;
++
++	bool dsi_bound;
+ };
+ 
+ struct dphy_pll_parameter_map {
+@@ -964,6 +966,8 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+ 		goto out_pm_runtime;
+ 	}
+ 
++	dsi->dsi_bound = true;
++
+ 	return 0;
+ 
+ out_pm_runtime:
+@@ -983,6 +987,8 @@ static void dw_mipi_dsi_rockchip_unbind(struct device *dev,
+ 	if (dsi->is_slave)
+ 		return;
+ 
++	dsi->dsi_bound = false;
++
+ 	dw_mipi_dsi_unbind(dsi->dmd);
+ 
+ 	clk_disable_unprepare(dsi->pllref_clk);
+@@ -1277,6 +1283,36 @@ static const struct phy_ops dw_mipi_dsi_dphy_ops = {
+ 	.exit		= dw_mipi_dsi_dphy_exit,
+ };
+ 
++static int __maybe_unused dw_mipi_dsi_rockchip_resume(struct device *dev)
++{
++	struct dw_mipi_dsi_rockchip *dsi = dev_get_drvdata(dev);
++	int ret;
++
++	/*
++	 * Re-configure DSI state, if we were previously initialized. We need
++	 * to do this before rockchip_drm_drv tries to re-enable() any panels.
++	 */
++	if (dsi->dsi_bound) {
++		ret = clk_prepare_enable(dsi->grf_clk);
++		if (ret) {
++			DRM_DEV_ERROR(dsi->dev, "Failed to enable grf_clk: %d\n", ret);
++			return ret;
++		}
++
++		dw_mipi_dsi_rockchip_config(dsi);
++		if (dsi->slave)
++			dw_mipi_dsi_rockchip_config(dsi->slave);
++
++		clk_disable_unprepare(dsi->grf_clk);
++	}
++
++	return 0;
++}
++
++static const struct dev_pm_ops dw_mipi_dsi_rockchip_pm_ops = {
++	SET_LATE_SYSTEM_SLEEP_PM_OPS(NULL, dw_mipi_dsi_rockchip_resume)
++};
++
+ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -1594,6 +1630,7 @@ struct platform_driver dw_mipi_dsi_rockchip_driver = {
+ 	.remove		= dw_mipi_dsi_rockchip_remove,
+ 	.driver		= {
+ 		.of_match_table = dw_mipi_dsi_rockchip_dt_ids,
++		.pm	= &dw_mipi_dsi_rockchip_pm_ops,
+ 		.name	= "dw-mipi-dsi-rockchip",
+ 	},
+ };
+-- 
+2.33.0.685.g46640cef36-goog
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
