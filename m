@@ -2,14 +2,14 @@ Return-Path: <SRS0=31Gl=OS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95AC0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:38:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E99BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:38:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6487260234
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:38:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6487260234
+	by mail.kernel.org (Postfix) with ESMTPS id 35A2B61260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Sep 2021 01:38:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 35A2B61260
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/J5TIoeT0UcUrKxNJW/psE7+QwR9+QVjOAz23C99grM=; b=mcTFtjWheNpEgM
-	LIl3b37u7G+l7oIF0J1YA7ZGvCZkODnW52h2aHlb8RKCqiVgF/PLtx0LlpI6t4gn97qi7/oj/qEcO
-	amA/QPHvHOsMF97WekyQ3XPwSFv0781bfoQ4wm8R7LVatsz5TRV9KTHPo5VfkpS4udw5nngQck3oR
-	9byyROV0Ti7L4tw4wy+GcXdFmNPhg8WUeIZ8mDILbcuE7U/NNvw6hweXPB9PPa9/ZzkFD3AZRy6NU
-	+I6ImtYR+j9xcn7Mo9N52cUa27j9lZ4zPi53TmfslXHXUq/YlfZVhfNabP8Mfh9qFPKZUKX6CJLCK
-	waOVa1u35Qy2eX+m+VYA==;
+	List-Owner; bh=Xvsjhvmtw/sTCQ2Nr5ZqzppTtc1M501hUnd+7heFfOg=; b=e8R7I4GqRpV2XU
+	QpaqIwaBwQ1EaosgsWYO04fyyEG2Hp6iUZ0v7ydy0Och06sDvIDWqXdb/EbsqlO4zSyhV012Ekjgs
+	Vx9+xtw+Ui/wCrAAlxh+kc1rwCiXOvMKfBAIr1r8Wn/ezcDOc+OGOsgUhvamraulMB2GHZ64L5T4E
+	lzvoh/tsd2uRWqYBrZdWnScfsTHcFZgkpBj6gQ7RpEMsCSuZTp+MPqZ6xnK3XFJl8KL6cHSfqxLas
+	epUkX4C1hGuk5lS6PFsAA1kJzRJCZfsEnFvaSA7TdwUSzitVp6FU/0jSr7vpf7fR1ol+4C/Vbqr69
+	INnUPcZD00QoMghaqiLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mV24L-0055zs-Ex; Tue, 28 Sep 2021 01:38:05 +0000
-Received: from mx24.baidu.com ([111.206.215.185] helo=baidu.com)
+	id 1mV24o-0056JA-ST; Tue, 28 Sep 2021 01:38:34 +0000
+Received: from mx22.baidu.com ([220.181.50.185] helo=baidu.com)
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mV234-0055Id-0I; Tue, 28 Sep 2021 01:36:47 +0000
-Received: from BJHW-Mail-Ex12.internal.baidu.com (unknown [10.127.64.35])
- by Forcepoint Email with ESMTPS id 9DBDD7062CF43DDFDA95;
- Tue, 28 Sep 2021 09:36:44 +0800 (CST)
+ id 1mV239-0055LE-5o; Tue, 28 Sep 2021 01:36:52 +0000
+Received: from BJHW-Mail-Ex09.internal.baidu.com (unknown [10.127.64.32])
+ by Forcepoint Email with ESMTPS id E9E892C1BC5E2CA2B252;
+ Tue, 28 Sep 2021 09:36:49 +0800 (CST)
 Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- BJHW-Mail-Ex12.internal.baidu.com (10.127.64.35) with Microsoft SMTP Server
+ BJHW-Mail-Ex09.internal.baidu.com (10.127.64.32) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Tue, 28 Sep 2021 09:36:44 +0800
+ 15.1.2308.14; Tue, 28 Sep 2021 09:36:49 +0800
 Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
  BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Tue, 28 Sep 2021 09:36:43 +0800
+ 15.1.2308.14; Tue, 28 Sep 2021 09:36:48 +0800
 From: Cai Huoqing <caihuoqing@baidu.com>
 To: <caihuoqing@baidu.com>
 CC: Linus Walleij <linus.walleij@linaro.org>, Jonathan Cameron
@@ -56,10 +56,10 @@ CC: Linus Walleij <linus.walleij@linaro.org>, Jonathan Cameron
  <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-amlogic@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
  <linux-rockchip@lists.infradead.org>
-Subject: [PATCH v2 4/9] iio: adc: max1118: Make use of the helper function
+Subject: [PATCH v2 5/9] iio: adc: max1241: Make use of the helper function
  dev_err_probe()
-Date: Tue, 28 Sep 2021 09:36:15 +0800
-Message-ID: <20210928013621.1245-4-caihuoqing@baidu.com>
+Date: Tue, 28 Sep 2021 09:36:16 +0800
+Message-ID: <20210928013621.1245-5-caihuoqing@baidu.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210928013621.1245-1-caihuoqing@baidu.com>
 References: <20210928013621.1245-1-caihuoqing@baidu.com>
@@ -67,10 +67,11 @@ MIME-Version: 1.0
 X-Originating-IP: [172.31.63.8]
 X-ClientProxiedBy: BC-Mail-Ex24.internal.baidu.com (172.31.51.18) To
  BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
-X-Baidu-BdMsfe-DateCheck: 1_BJHW-Mail-Ex12_2021-09-28 09:36:44:629
+X-Baidu-BdMsfe-DateCheck: 1_BJHW-Mail-Ex09_2021-09-28 09:36:49:944
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_183646_284118_23C2C1CF 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20210927_183651_429964_B9298133 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,27 +97,41 @@ gets printed.
 
 Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
 ---
- drivers/iio/adc/max1118.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/iio/adc/max1241.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/iio/adc/max1118.c b/drivers/iio/adc/max1118.c
-index 8cec9d949083..a41bc570be21 100644
---- a/drivers/iio/adc/max1118.c
-+++ b/drivers/iio/adc/max1118.c
-@@ -221,10 +221,9 @@ static int max1118_probe(struct spi_device *spi)
+diff --git a/drivers/iio/adc/max1241.c b/drivers/iio/adc/max1241.c
+index b60f8448f21a..130ca8dc6fa0 100644
+--- a/drivers/iio/adc/max1241.c
++++ b/drivers/iio/adc/max1241.c
+@@ -148,10 +148,9 @@ static int max1241_probe(struct spi_device *spi)
+ 	mutex_init(&adc->lock);
  
- 	if (id->driver_data == max1118) {
- 		adc->reg = devm_regulator_get(&spi->dev, "vref");
--		if (IS_ERR(adc->reg)) {
--			dev_err(&spi->dev, "failed to get vref regulator\n");
--			return PTR_ERR(adc->reg);
--		}
-+		if (IS_ERR(adc->reg))
-+			return dev_err_probe(&spi->dev, PTR_ERR(adc->reg),
-+					     "failed to get vref regulator\n");
- 		ret = regulator_enable(adc->reg);
- 		if (ret)
- 			return ret;
+ 	adc->vdd = devm_regulator_get(dev, "vdd");
+-	if (IS_ERR(adc->vdd)) {
+-		dev_err(dev, "failed to get vdd regulator\n");
+-		return PTR_ERR(adc->vdd);
+-	}
++	if (IS_ERR(adc->vdd))
++		return dev_err_probe(dev, PTR_ERR(adc->vdd),
++				     "failed to get vdd regulator\n");
+ 
+ 	ret = regulator_enable(adc->vdd);
+ 	if (ret)
+@@ -164,10 +163,9 @@ static int max1241_probe(struct spi_device *spi)
+ 	}
+ 
+ 	adc->vref = devm_regulator_get(dev, "vref");
+-	if (IS_ERR(adc->vref)) {
+-		dev_err(dev, "failed to get vref regulator\n");
+-		return PTR_ERR(adc->vref);
+-	}
++	if (IS_ERR(adc->vref))
++		return dev_err_probe(dev, PTR_ERR(adc->vref),
++				     "failed to get vref regulator\n");
+ 
+ 	ret = regulator_enable(adc->vref);
+ 	if (ret)
 -- 
 2.25.1
 
