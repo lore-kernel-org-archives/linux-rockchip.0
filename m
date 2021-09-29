@@ -2,67 +2,59 @@ Return-Path: <SRS0=t/9b=OT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28033C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C82F0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 18:05:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E786E610A2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:52:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E786E610A2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9113461465
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 18:05:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9113461465
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T1QseOY+8GZvNLS9WnCChW+7ykvEleqKWTEkfEn4ClY=; b=339o1GhlKgyzM1
-	NFCq64083+UnuZ0ghA4WOUuvqmRG8DyKyL3XCilSxZXNDzBDDGw9Jg1fSHTDhLkFmTbUrv49tYymC
-	ljwhp9o3W9WHvbZRGqVxjX01svWIqFOAiER2XVzzVpXzqH/RuO5Y/doHw5qtF7YgmyuT4klJ/CLST
-	JMVgRTJ31MKr2OggRi0Yj04LKfXFhvnPmt/Kh2UwCrvYA+feQAweYV4P2/0ZwLxOCucMbl9k4C95J
-	rldASevidu5ASQg+oPENSC+ftfO8hNb8j1J8B5grePY2En6b/iY3mZTZPvtoqFUC+WRf8AmQCpTSm
-	pAKXa8oo20toqki7l0Qw==;
+	List-Owner; bh=gSDMmscGWGAXsFb6oFWk4dxnMDkHccX+gSIXQLwWYJg=; b=02sgkhF/f3e/Hk
+	lW3Z2bA+OJ7MYSeevvtUZzeLHIZZZTan2nrlFxcyfvheu7IMfTrSol8TaRoRczh9Z2gsNCgm01jCA
+	BCweglV7dNZ88uA45L036bGibTDfyTrG6saXiJZYHl8PzrSSQp1Rt1AJjffcuIAg8/G9af1HDZAK+
+	DgXCxAVnIRrhRItVlp1u/pG7uZxOiJDD/B0AyUsb2SFMJwmr2J+WIQ/xsoEgTTRPCEl7PZN/6sWgk
+	d9SXGNgT3k7oaAdXQGz/nUyNgJ/w6KV1eEsjKprI8mFbfZriKPlQDxsFXxUBEUYzQefiFbgEVIuCA
+	GSlx0zB535LmrgKZC4lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVcob-00BsS5-SK; Wed, 29 Sep 2021 16:52:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mVdxZ-00C1c3-5I; Wed, 29 Sep 2021 18:05:37 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVcoO-00BsOf-UR; Wed, 29 Sep 2021 16:52:06 +0000
-Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 37C1361411;
- Wed, 29 Sep 2021 16:51:57 +0000 (UTC)
-Date: Wed, 29 Sep 2021 17:55:51 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Cai Huoqing <caihuoqing@baidu.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Lars-Peter Clausen
- <lars@metafoo.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, "NXP Linux
- Team" <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, "Neil
- Armstrong" <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Andy Gross <agross@kernel.org>,
- "Bjorn Andersson" <bjorn.andersson@linaro.org>, Heiko Stuebner
- <heiko@sntech.de>, <linux-arm-kernel@lists.infradead.org>,
- <linux-iio@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-amlogic@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v3 8/9] iio: adc: rockchip_saradc: Make use of the
- helper function dev_err_probe()
-Message-ID: <20210929175551.7517b018@jic23-huawei>
-In-Reply-To: <20210928141956.2148-8-caihuoqing@baidu.com>
-References: <20210928141956.2148-1-caihuoqing@baidu.com>
- <20210928141956.2148-8-caihuoqing@baidu.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
+ id 1mVdxV-00C1aH-Iw
+ for linux-rockchip@lists.infradead.org; Wed, 29 Sep 2021 18:05:35 +0000
+Received: from notapiano (unknown [IPv6:2804:14c:1a9:2434:b693:c9:5cb6:b688])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ (Authenticated sender: nfraprado)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 9C0951F44850;
+ Wed, 29 Sep 2021 19:05:27 +0100 (BST)
+Date: Wed, 29 Sep 2021 15:05:22 -0300
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ Sandy Huang <hjc@rock-chips.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Thomas Hebb <tommyhebb@gmail.com>, stable@vger.kernel.org
+Subject: Re: [PATCH v3 2/4] drm/rockchip: dsi: Reconfigure hardware on resume()
+Message-ID: <20210929180522.3zksg7mpwdut7tra@notapiano>
+References: <20210928213552.1001939-1-briannorris@chromium.org>
+ <20210928143413.v3.2.I4e9d93aadb00b1ffc7d506e3186a25492bf0b732@changeid>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210928143413.v3.2.I4e9d93aadb00b1ffc7d506e3186a25492bf0b732@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210929_095205_053550_9FEA99F7 
-X-CRM114-Status: GOOD (  24.37  )
+X-CRM114-CacheID: sfid-20210929_110533_800065_51449117 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,63 +67,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Sep 2021 22:19:54 +0800
-Cai Huoqing <caihuoqing@baidu.com> wrote:
+On Tue, Sep 28, 2021 at 02:35:50PM -0700, Brian Norris wrote:
+> Since commit 43c2de1002d2, we perform most HW configuration in the
+> bind() function. This configuration may be lost on suspend/resume, so we
+> need to call it again. That may lead to errors like this after system
+> suspend/resume:
+> =
 
-> When possible use dev_err_probe help to properly deal with the
-> PROBE_DEFER error, the benefit is that DEFER issue will be logged
-> in the devices_deferred debugfs file.
-> Using dev_err_probe() can reduce code size, and the error value
-> gets printed.
-> 
-> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
+>   dw-mipi-dsi-rockchip ff968000.mipi: failed to write command FIFO
+>   panel-kingdisplay-kd097d04 ff960000.mipi.0: failed write init cmds: -110
+> =
 
-In this driver, there is also a call to
-devm_reset_control_get_exclusive() which I think can return
--EPROBE_DEFER
+> Tested on Acer Chromebook Tab 10 (RK3399 Gru-Scarlet).
+> =
 
-There isn't a message printed on that particular patch, but it would
-be good to add something generic. Same for platform_get_irq()
+> Note that early mailing list versions of this driver borrowed Rockchip's
+> downstream/BSP solution, to do HW configuration in mode_set() (which
+> *is* called at the appropriate pre-enable() times), but that was
+> discarded along the way. I've avoided that still, because mode_set()
+> documentation doesn't suggest this kind of purpose as far as I can tell.
+> =
 
-There are some devm_clk_get() calls as well which likewise probably
-want handling in a similar fashion as you have done in other patches.
+> Fixes: 43c2de1002d2 ("drm/rockchip: dsi: move all lane config except LCDC=
+ mux to bind()")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-Thanks,
-
-Jonathan
-
-
-> ---
-> v1->v2: Remove the separate line of PTR_ERR().
-> 
->  drivers/iio/adc/rockchip_saradc.c | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> index a56a0d7337ca..57419ccb3c70 100644
-> --- a/drivers/iio/adc/rockchip_saradc.c
-> +++ b/drivers/iio/adc/rockchip_saradc.c
-> @@ -392,11 +392,9 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
->  	}
->  
->  	info->vref = devm_regulator_get(&pdev->dev, "vref");
-> -	if (IS_ERR(info->vref)) {
-> -		dev_err(&pdev->dev, "failed to get regulator, %ld\n",
-> -			PTR_ERR(info->vref));
-> -		return PTR_ERR(info->vref);
-> -	}
-> +	if (IS_ERR(info->vref))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(info->vref),
-> +				     "failed to get regulator\n");
->  
->  	if (info->reset)
->  		rockchip_saradc_reset_controller(info->reset);
-
+Tested-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
