@@ -2,14 +2,14 @@ Return-Path: <SRS0=t/9b=OT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D965C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0CB2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:05:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D8B9615E4
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:05:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6D8B9615E4
+	by mail.kernel.org (Postfix) with ESMTPS id 9EB6161216
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Sep 2021 16:05:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9EB6161216
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,20 +18,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OaVe1rFHec2JXJgLMlvGIMJsRYdpLbUPpTs6PdGZQo4=; b=iwE0DrAQS6N9Mv
-	tjVZgB9CclluhfxVY77iX6LH1gEvSnTTlNi+zCjmLJdASrNm9xat4zeuNEUp+EpN3mlX5wA0XgXDo
-	5Ppm1DnZQNODn0T2OxQdD3JpqxjoK9JebfSth+/VulEN7v0vF6/mwAn6LFgfRcr6KM1iS7VhD3Ns2
-	bOweRwVEC2Q9gRJhTGWDtPtSQMkUGjbkarXXXYrLc5+f67VuBKkDL2kgtTDrV6sZ5rmRqdnjWD9HZ
-	I93RQPw7gXmvwgjP5iN4CtvDt8X4K64Bn5n1+ESn4s0To2hrZSwS22hOBqkc2JyoswBr6sb+2aDm3
-	W9izOBgB5xJJ6wQ5H3Cg==;
+	List-Owner; bh=qOmmuzwNse6eNQwqqhVDxbhwk1qOqT7r3i32WZL03cg=; b=0YhN7AaqLns5kG
+	auOpkG2dFyMlBgPkB3wTSOLbnqGXNkKdfYFqB4o3F5ruwPP+R+qJxZlKZl+PvBIKHdtvJT/TafvUr
+	pI0dsE8j/ATR7Km4djLrMwLl70PiMbrnN7oPuw3WZaEmeAkIigM51qknkIM2afrv4AqM+Ev0Gnudg
+	bcFP18DDOfPuNWIUrTFkwBr+6EGshjZetO/kklRweWP2aH9fEUkqv+xY3qs1me6aLm0iNAJCYZrG6
+	N1frmmZH1bLBAt101S9ld0FO+hubsUuDMNwhuOE/5RI/QLFxyffo4rty+AzI30CNo81RZ3YVk5xCW
+	YSp7p3vdzjrsFZVGdEoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVc56-00BfY9-EQ; Wed, 29 Sep 2021 16:05:16 +0000
+	id 1mVc5N-00BfeM-5Q; Wed, 29 Sep 2021 16:05:33 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVc4g-00BfIE-LW; Wed, 29 Sep 2021 16:04:53 +0000
+ id 1mVc4h-00BfJI-Hr; Wed, 29 Sep 2021 16:04:53 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id 6ACC71F4466C
+ (Authenticated sender: andrzej.p) with ESMTPSA id 871131F44676
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -51,15 +51,15 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
  kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v7 01/11] hantro: postproc: Fix motion vector space size
-Date: Wed, 29 Sep 2021 18:04:29 +0200
-Message-Id: <20210929160439.6601-2-andrzej.p@collabora.com>
+Subject: [PATCH v7 04/11] hantro: Add quirk for NV12/NV12_4L4 capture format
+Date: Wed, 29 Sep 2021 18:04:32 +0200
+Message-Id: <20210929160439.6601-5-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210929160439.6601-1-andrzej.p@collabora.com>
 References: <20210929160439.6601-1-andrzej.p@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210929_090450_846933_1A31A16F 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20210929_090451_746582_EBB02228 
+X-CRM114-Status: GOOD (  18.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +80,65 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Ezequiel Garcia <ezequiel@collabora.com>
 
-When the post-processor hardware block is enabled, the driver
-allocates an internal queue of buffers for the decoder enginer,
-and uses the vb2 queue for the post-processor engine.
+The G2 core decoder engine produces NV12_4L4 format,
+which is a simple NV12 4x4 tiled format. The driver currently
+hides this format by always enabling the post-processor engine,
+and therefore offering NV12 directly.
 
-For instance, on a G1 core, the decoder engine produces NV12 buffers
-and the post-processor engine can produce YUY2 buffers. The decoder
-engine expects motion vectors to be appended to the NV12 buffers,
-but this is only required for CODECs that need motion vectors,
-such as H.264.
+This is done without using the logic in hantro_postproc.c
+and therefore makes it difficult to add VP9 cleanly.
 
-Fix the post-processor logic accordingly.
+Since fixing this is not easy, add a small quirk to force
+NV12 if HEVC was configured, but otherwise declare NV12_4L4
+as the pixel format in imx8mq_vpu_g2_variant.dec_fmts.
+
+This will be used by the VP9 decoder which will be added soon.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_postproc.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/staging/media/hantro/hantro_v4l2.c  | 14 ++++++++++++++
+ drivers/staging/media/hantro/imx8m_vpu_hw.c |  2 +-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index ed8916c950a4..07842152003f 100644
---- a/drivers/staging/media/hantro/hantro_postproc.c
-+++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -132,9 +132,10 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
- 	unsigned int num_buffers = cap_queue->num_buffers;
- 	unsigned int i, buf_size;
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index bcb0bdff4a9a..d1f060c55fed 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -150,6 +150,20 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 	unsigned int num_fmts, i, j = 0;
+ 	bool skip_mode_none;
  
--	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage +
--		   hantro_h264_mv_size(ctx->dst_fmt.width,
--				       ctx->dst_fmt.height);
-+	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage;
-+	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE)
-+		buf_size += hantro_h264_mv_size(ctx->dst_fmt.width,
-+						ctx->dst_fmt.height);
++	/*
++	 * The HEVC decoder on the G2 core needs a little quirk to offer NV12
++	 * only on the capture side. Once the post-processor logic is used,
++	 * we will be able to expose NV12_4L4 and NV12 as the other cases,
++	 * and therefore remove this quirk.
++	 */
++	if (capture && ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE) {
++		if (f->index == 0) {
++			f->pixelformat = V4L2_PIX_FMT_NV12;
++			return 0;
++		}
++		return -EINVAL;
++	}
++
+ 	/*
+ 	 * When dealing with an encoder:
+ 	 *  - on the capture side we want to filter out all MODE_NONE formats.
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index 02e61438220a..a40b161e5956 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -134,7 +134,7 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
  
- 	for (i = 0; i < num_buffers; ++i) {
- 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+ 	{
+-		.fourcc = V4L2_PIX_FMT_NV12,
++		.fourcc = V4L2_PIX_FMT_NV12_4L4,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 	},
+ 	{
 -- 
 2.17.1
 
