@@ -2,14 +2,14 @@ Return-Path: <SRS0=3LcM=OU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59D1FC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Sep 2021 11:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35A8EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Sep 2021 11:06:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 272FE619A6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Sep 2021 11:05:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 272FE619A6
+	by mail.kernel.org (Postfix) with ESMTPS id 08677615E5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Sep 2021 11:06:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 08677615E5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,69 +18,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LK6BmSWT7EWxzLx7hyrOFm4Jt5BLxwLNp7JhSVOZIOo=; b=OjkynS5YeUFnXu
-	Lc7NRlCx/zFV7nl8pwW2AgpaOzzBDmIz3/ewBui0lQAGgiOoiFLJSL6CLVYraw21gEzKOX77PZF8i
-	AHBFkUMUPh+WO63uDx3j5JwoiFX2yRBSTrR9WbZVhLNFRVeNvoVXH4kdbCHd7g+kUCwiXu6qEbCS9
-	WO7ePif9QrniXJIeWM/gaVBUNoL6XOeOz8SpYeMe62dYaOL1eMPdHpRtRxF5EiYOAN9wx6w39EAN1
-	ycoIU6jhvRJXtTtx/T4K+NSqT49kUT/yGJ6p+59/HAGhwnNzRYDj+/2bkBR2LUAGFpHI5Zy2hXTzW
-	UcYP+CrtS8BUU6PLyPbg==;
+	List-Owner; bh=8D0xBGFqNOYezyoV4ZIwrHBXnoCO3/kTqoh9nbQo5Og=; b=ZKrTn5sd/hRePK
+	9ULeA2EGf6at24jaxesS/TWafk4iU29nDZwPiKi+PrYKjIuprbr9oQbnjm55NPK1DKvrPVsRAYKjz
+	DLG0/p25xYOAim2OoPAL8P3WkkmKJkeb97H8D6kylt9+8+vm8azquj/Lu5lBixLI1oVeAV8Cg5Boc
+	p8JswLETUxMGJ2V4VyHC9lIdHshBOej3pZ7Lnj8Xiv/DzxSs64YRKcFRWFIRpUIpBT1PcOHXxEwbW
+	p7VjiIs0jmF6ydnJzAQ7Mm44FMDRAIX4wlnz1N7jX0YNFJ4UxMX9ua82suTxW7Mc/hEjEBHR/gUj7
+	w0xtncNaDUK+Ujw5JZVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVtsh-00Dyz2-6W; Thu, 30 Sep 2021 11:05:39 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1mVtt7-00Dz5V-KH; Thu, 30 Sep 2021 11:06:05 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVtsU-00Dyvp-J7; Thu, 30 Sep 2021 11:05:27 +0000
-Received: by mail-ed1-x535.google.com with SMTP id r18so20352087edv.12;
- Thu, 30 Sep 2021 04:05:25 -0700 (PDT)
+ id 1mVtsW-00Dyvu-Ma; Thu, 30 Sep 2021 11:05:30 +0000
+Received: by mail-ed1-x534.google.com with SMTP id dj4so21007115edb.5;
+ Thu, 30 Sep 2021 04:05:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=YBgiYM1YMUTaur/C3QVNo5tGNXLvclq4l1ZtgjUpd4g=;
- b=YBqn7GnDNNqpPZm/pAsrfEWR6oNufq3gED9cMWzTOQCUB+JOr2+U09kMI4xKWxRnz8
- TUE5Nf/xPHO58TzitUkyR1OQFJhhofIcsT9WSupMX4hnXBFc+MkEsZxX7bd2JEBzvx4p
- vYniaazUeh33JUWXas+vd/VGfciosUEiWR+tDQMbx+P55FZKBBL1MKpxyCIDwaCFRK5D
- VOSaLqQ816WFVm3HV6mZ6VaRIJn3dyprPKNJyYtwpY24Q9mwNBoOtPdzzNqMJSRCBXDr
- 5P/MD57OedkY+KxKMJdRP2EqZyuybxESuY9B9LhoaBHaY67qB6hNYIlPwNyJgXpqS07L
- de9Q==
+ bh=J5rWzfawpu0XOsLyVwwYFgYCCr8KgHSAplCrfWcEUCc=;
+ b=YIAyiuXj/TtHZgfD2uNj3qmZAlvslgwfgTNImQjcTdmg+Y0ntcaFbzPyE9bkbxkgAN
+ M1ASIms+oiGJu6DgPXnYDYGFcGuhw7XKUf/d8oW8XpG/uj+r23Klbf55Ztl73wo08hoT
+ U72PM3uKbn25ZloGgWDhNv6s1jnsujztSXFgPaxIhjHWwkFwfLSSyY+VYTKsYm1YFXsT
+ soB47kM8dNuT5XZaQzy1oP6v2YzhJtjW6ei2LLj71QUvIkxzfF1QOtqOLuR7m5hPmGNv
+ +rREb7AzVX29OMe3HXeg0CnDZ2ZYHHMBau41t9PJiLNu+Zr67jCrfAGBWbMii0HYO2h3
+ +p9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=YBgiYM1YMUTaur/C3QVNo5tGNXLvclq4l1ZtgjUpd4g=;
- b=Z14WTOQHjiGpgLal/Ops/6OM3Xx8w2+Vd5Kc6iC1pAALO7R1zssZ9wlhT3gJESfbWq
- AHgo6AFP0+hlrkuKiDQKlp9aN6A0uCkqfMyOse0+pmgz6+dVqsnzKuMThtHkoM5Q4/iK
- IoTcuFe7Q5dLpzHzJhsjBn2F3CqjVCGjz259TtTwgGeTpFsJGzwNpp+2S+mW0Ai4tbVe
- w+qlgeq+XXYF675C5b5c4uQm0ZlSbmSCHdgNDE/4fBArLLapvuhvs4TyK5WnkPM8oh2u
- XKD9va+WaEyPd7r8YjKGW1tHfemzQNgMm/b78TLuiMQWdSrKIlmSo69Q8VVJ+AiR7zaa
- /o7w==
-X-Gm-Message-State: AOAM532Uva01RXhRj5eWlqjtMCO0a+SyzMmrqY1eOLLV/0xA85kpxDf7
- bhVQ8ScxK+4dJ/9AywExwZg=
-X-Google-Smtp-Source: ABdhPJxQcP1chqO/WvyPc81rUAxaSYZBidr29l5CD+EWy0vjVJQ+473yq6yGDaVGnNZoGeer4Kzi9w==
-X-Received: by 2002:a05:6402:1d9c:: with SMTP id
- dk28mr1144800edb.241.1632999924775; 
- Thu, 30 Sep 2021 04:05:24 -0700 (PDT)
+ bh=J5rWzfawpu0XOsLyVwwYFgYCCr8KgHSAplCrfWcEUCc=;
+ b=2u3UGd0OffIFNTdvBEiwHlvSn2ar7KEXyiodtoqm1H9c8jlxLQ5OV4v8A7CKizle0r
+ YsiRzGIJAC59WXw8p15NzYj+2lzc7up3Q+iTWPMIAo1GzuMdUBgYx31l71tprZfuvO8X
+ lrguHtZEX+N/1QLubp3a4Tz54XMwYmSFv3Fe9RaBY/IjTI700dubLNpguUNiYuc9REZ8
+ vhHwGgcGP1TjvZJtQ6Hx56ujN2Tt7KMK0sBouDyHhC9vNDNJmzmANytP6Ufb/nefFwpP
+ 5FbCFskjfCn9xwd9i+NBGxWaF3b8ir6h3r1Awj6PxhuUOddG2XaTqUDV6eLfBkT36AC/
+ 1HdA==
+X-Gm-Message-State: AOAM532wAMfkoYgLtAcRMQ95Yer0yt7ic0p2g7f++56udanW0ke8kTni
+ 1ITcGn+P/YHNG4Nds7omQKw=
+X-Google-Smtp-Source: ABdhPJys89Pj1f3j26d8H23T31HD0TxjB/nOFlM2aklDPRJ+eXJfAdNX+76pkVAgrcgwul3T4YRm/Q==
+X-Received: by 2002:a05:6402:203:: with SMTP id
+ t3mr6332502edv.69.1632999925589; 
+ Thu, 30 Sep 2021 04:05:25 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id i2sm1305158edv.7.2021.09.30.04.05.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Sep 2021 04:05:24 -0700 (PDT)
+ Thu, 30 Sep 2021 04:05:25 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, rui.zhang@intel.com, daniel.lezcano@linaro.org,
  amitk@kernel.org, p.zabel@pengutronix.de, linux-pm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/4] dt-bindings: thermal: remove redundant comments from
- rockchip-thermal.yaml
-Date: Thu, 30 Sep 2021 13:05:15 +0200
-Message-Id: <20210930110517.14323-2-jbx6244@gmail.com>
+Subject: [PATCH v2 3/4] thermal: rockchip_thermal: allow more resets for tsadc
+ node
+Date: Thu, 30 Sep 2021 13:05:16 +0200
+Message-Id: <20210930110517.14323-3-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210930110517.14323-1-jbx6244@gmail.com>
 References: <20210930110517.14323-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_040526_672596_90E36744 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210930_040528_797596_99394DF9 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +97,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove redundent comments from rockchip-thermal.yaml
-Sort compatibles in alphabetical order.
+The tsadc node in rk356x.dtsi has more resets then currently
+supported by the rockchip_thermal.c driver, so use
+devm_reset_control_array_get() to reset them all.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/thermal/rockchip-thermal.yaml       | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/thermal/rockchip_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-index 3c074706e..f6c1be226 100644
---- a/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-+++ b/Documentation/devicetree/bindings/thermal/rockchip-thermal.yaml
-@@ -12,14 +12,14 @@ maintainers:
- properties:
-   compatible:
-     enum:
--      - rockchip,px30-tsadc # PX30 SoCs
--      - rockchip,rv1108-tsadc # RV1108 SoCs
--      - rockchip,rk3228-tsadc # RK3228 SoCs
--      - rockchip,rk3288-tsadc # RK3288 SoCs
--      - rockchip,rk3328-tsadc # RK3328 SoCs
--      - rockchip,rk3368-tsadc # RK3368 SoCs
--      - rockchip,rk3399-tsadc # RK3399 SoCs
--      - rockchip,rk3568-tsadc # RK3568 SoCs
-+      - rockchip,px30-tsadc
-+      - rockchip,rk3228-tsadc
-+      - rockchip,rk3288-tsadc
-+      - rockchip,rk3328-tsadc
-+      - rockchip,rk3368-tsadc
-+      - rockchip,rk3399-tsadc
-+      - rockchip,rk3568-tsadc
-+      - rockchip,rv1108-tsadc
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index 657d84b99..dc3a9c276 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1383,7 +1383,7 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
+ 	if (IS_ERR(thermal->regs))
+ 		return PTR_ERR(thermal->regs);
  
-   reg:
-     maxItems: 1
+-	thermal->reset = devm_reset_control_get(&pdev->dev, "tsadc-apb");
++	thermal->reset = devm_reset_control_array_get(&pdev->dev, false, false);
+ 	if (IS_ERR(thermal->reset)) {
+ 		error = PTR_ERR(thermal->reset);
+ 		dev_err(&pdev->dev, "failed to get tsadc reset: %d\n", error);
 -- 
 2.20.1
 
