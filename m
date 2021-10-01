@@ -2,83 +2,63 @@ Return-Path: <SRS0=ewtI=OV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0488EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Oct 2021 21:50:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09C22C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Oct 2021 23:02:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C181261A56
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Oct 2021 21:50:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C181261A56
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id CE55661AAB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Oct 2021 23:02:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CE55661AAB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aNJgIqV0cJKDr1sR9CHfrPWaBz5VIO4d1LvMhqYFNg0=; b=vMLbMByRSGsQ6U
-	fzldA27yOtXM/siUcFc2kBXNYxEiOaGqhwCv7sbNazja4zEWYSAIuCmCW45VvHaZ28h9oAaZjKdpF
-	DGTCDPymoVR1e7b5NRw3WRChWWoOecmEOXqS62M5aR/2RreZX7fHdqt2z20dOmHzfRva9QQGkhCcA
-	v6Bh22O++xR9wXecdk3KmSGZmFCJJKSRDfy6Gm71PzBEscU2/DUE0Iyd0WAfaYAYsUhnfWu7WF9wE
-	WTu+6kgpdNQJXW8W4S2rgZg1aJxZTHm7z+ZOVaXiK47qxnkHdlQbkFhmKXaNRj1lfi/BUFvVxZDsH
-	Dp1uD85Q8nSRbdYHcOxA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LjqKi4xng59A10JXIcMf+Z6SsKRbc/bGjenIddfdIRs=; b=FzYPUYT90IhOQj
+	iwAxXPYovVpGBjVjmV/vsE1kQMl6ECDEwX0R/+MAEEjfA/sEqt5nleZVJjAVuwa806jVJaqICHi4O
+	tPiWVAbytuDKrfpWCzrlNG6ZNZPQxDUyAmySW2k/K+IeBkuv4Dz2WKyTvEIDSJO/F4ESyUcObZAMR
+	NAkUB+g05uQjeWiO9l2+lh/YPaVPdW8yygveUn2l2mJFCQJcYsmmRnuu86lRYreqwC8gGuZ8OVtgu
+	KB7NlcZKfFEtT0o77DWYvX0Rs3bYiLWvSpcxkTtlxgEITwjS8QrrMdvPJjkuyykavv1e6URqnqod7
+	xMpAkTIM8AYoNUIToTBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mWQQA-001MDi-Ch; Fri, 01 Oct 2021 21:50:22 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1mWRYK-001Qa9-Mc; Fri, 01 Oct 2021 23:02:52 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mWQQ7-001MCu-RT
- for linux-rockchip@lists.infradead.org; Fri, 01 Oct 2021 21:50:21 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id
- na16-20020a17090b4c1000b0019f5bb661f9so4287021pjb.0
- for <linux-rockchip@lists.infradead.org>; Fri, 01 Oct 2021 14:50:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NL7Ui4pDzKD6Cqfc/rSld3tguEIwYPG7fUSYDal4DEY=;
- b=m5z3+8aUGB1/aVqhdvcvLjWaweeugGKaJ2xm3YgW2o29YhTbamwXAXZg7cLIQD1tCZ
- fvN2Q8ZX5iSk4zKhCdWb49sctlPcBg+q1vWgc1vYwKqU9r/8vkuzpBrHdzDf921Ezfiv
- q5Lh1OIAONXX9dSbdT7CpFkVidsPqatUSsulg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NL7Ui4pDzKD6Cqfc/rSld3tguEIwYPG7fUSYDal4DEY=;
- b=cXLg/eMW2OpxJK0x2j0BXcuTCEk4wTQ8qyvRlsszDjdNbjIU8E+wlXwZbkcQRXTbd6
- IUjfxBeXz9akOTh/4cABlGcUXHFq8/j7/5JMINWrHsxsyh6S72/Yb0B96PYiTfWRtfeq
- iSzA86qvyXwa4VrclT2rFHWdkyLkD9gt6PmECbzd56K1a1NKMt5XkgXy0APh2FX7x0jQ
- wcSTpTGYNwUFbmVuRsDBOSpdy7mnghlp0ZeLHBu2gLws+k76kNGTzD6uPPGe9LOIHVnJ
- 5q4w60x+1wr43wh3zv6p4/xQntvyvV+V5N/0oDmutlFI5vGVR+OpP2HcUYoP1IGB5tf7
- bNrw==
-X-Gm-Message-State: AOAM532YZTsABL5X0hyGmahkOslczwz/LoxoZHPG+dDzkN23vTATw6Wr
- xAI135DDzsYf7XuVSiCTyQW5hlVYGGXumQ==
-X-Google-Smtp-Source: ABdhPJxAa+ytqGV91qQywYgHfFgfudFxi7R0Gdv7bI8eSjvNvxkJPbbYbO5+jovj0Lp9k88a23k6hA==
-X-Received: by 2002:a17:90a:16:: with SMTP id 22mr22720079pja.25.1633125017619; 
- Fri, 01 Oct 2021 14:50:17 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:1e7d:5e91:4390:d04b])
- by smtp.gmail.com with UTF8SMTPSA id d5sm6405749pjs.53.2021.10.01.14.50.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 01 Oct 2021 14:50:17 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>
-Cc: Sean Paul <sean@poorly.run>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Brian Norris <briannorris@chromium.org>, stable@vger.kernel.org,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v2] drm/bridge: analogix_dp: Grab runtime PM reference for
- DP-AUX
-Date: Fri,  1 Oct 2021 14:42:55 -0700
-Message-Id: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
-X-Mailer: git-send-email 2.33.0.800.g4c38ced690-goog
+ id 1mWRY8-001QZ5-CX; Fri, 01 Oct 2021 23:02:41 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DD37661AAB;
+ Fri,  1 Oct 2021 23:02:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1633129359;
+ bh=Et1vBAzzXp38/cf+29ag0WERSDPG0JukGE/4eE9eArw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=sup5I6n2GufZT9C0pd+8i1mSTb1yX8W7QsogbRBHs01r0s0b1OnqXbVnjyvTGS2IF
+ Cmg8+tZYI/7GS0weqKJYeuLjPvNA2ho0UKt6ueGQaXqN41N56RdfwUQXwcJbg8mz3c
+ XTiUCodhw54UEl+AoYwHILR/f4H7EPbH/0tk5Dvd7QUktfCHZJUrqHH7xRp73/RgZ0
+ uzFZuA/uzdPRk+Y0ROC2xykjaaMNJsPbUUaU/lZM1vZBfh7JL/PBIGHNnF+JcaZQyZ
+ CO0cMXfdfWmQbQJx6jtK90Ag4V5MKcZlHt5F+elmDjOp0FhsDnyNYM+SHBCXuPJxKw
+ yzMi22MTjinEQ==
+Date: Fri, 1 Oct 2021 16:02:38 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+Cc: netdev@vger.kernel.org, Punit Agrawal <punitagrawal@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ davem@davemloft.net, peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH] net: stmmac: dwmac-rk: Fix ethernet on rk3399 based
+ devices
+Message-ID: <20211001160238.4335a83d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <12744188.XEzkDOsqEc@diego>
+References: <20210929135049.3426058-1-punitagrawal@gmail.com>
+ <12744188.XEzkDOsqEc@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211001_145019_976974_CBFFAB8D 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20211001_160240_483454_4F1928B5 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,69 +71,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If the display is not enable()d, then we aren't holding a runtime PM
-reference here. Thus, it's easy to accidentally cause a hang, if user
-space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
-
-Let's get the panel and PM state right before trying to talk AUX.
-
-Fixes: 0d97ad03f422 ("drm/bridge: analogix_dp: Remove duplicated code")
-Cc: <stable@vger.kernel.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v2:
-- Fix spelling in Subject
-- DRM_DEV_ERROR() -> drm_err()
-- Propagate errors from un-analogix_dp_prepare_panel()
-
- .../drm/bridge/analogix/analogix_dp_core.c    | 21 ++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index b7d2e4449cfa..6fc46ac93ef8 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1632,8 +1632,27 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
- 				       struct drm_dp_aux_msg *msg)
- {
- 	struct analogix_dp_device *dp = to_dp(aux);
-+	int ret, ret2;
- 
--	return analogix_dp_transfer(dp, msg);
-+	ret = analogix_dp_prepare_panel(dp, true, false);
-+	if (ret) {
-+		drm_err(dp->drm_dev, "Failed to prepare panel (%d)\n", ret);
-+		return ret;
-+	}
-+
-+	pm_runtime_get_sync(dp->dev);
-+	ret = analogix_dp_transfer(dp, msg);
-+	pm_runtime_put(dp->dev);
-+
-+	ret2 = analogix_dp_prepare_panel(dp, false, false);
-+	if (ret2) {
-+		drm_err(dp->drm_dev, "Failed to unprepare panel (%d)\n", ret2);
-+		/* Prefer the analogix_dp_transfer() error, if it exists. */
-+		if (!ret)
-+			ret = ret2;
-+	}
-+
-+	return ret;
- }
- 
- struct analogix_dp_device *
--- 
-2.33.0.800.g4c38ced690-goog
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAyOSBTZXAgMjAyMSAyMzowMjozNSArMDIwMCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+PiBBbSBNaXR0d29jaCwgMjkuIFNlcHRlbWJlciAyMDIxLCAxNTo1MDo0OSBDRVNUIHNjaHJpZWIg
+UHVuaXQgQWdyYXdhbDoKPiA+IENvbW1pdCAyZDI2ZjZlMzlhZmIgKCJuZXQ6IHN0bW1hYzogZHdt
+YWMtcms6IGZpeCB1bmJhbGFuY2VkIHBtX3J1bnRpbWVfZW5hYmxlIHdhcm5pbmdzIikKPiA+IHdo
+aWxlIGdldHRpbmcgcmlkIG9mIGEgcnVudGltZSBQTSB3YXJuaW5nIGVuZGVkIHVwIGJyZWFraW5n
+IGV0aGVybmV0Cj4gPiBvbiByazMzOTkgYmFzZWQgZGV2aWNlcy4gQnkgZHJvcHBpbmcgYW4gZXh0
+cmEgcmVmZXJlbmNlIHRvIHRoZSBkZXZpY2UsCj4gPiB0aGUgY29tbWl0IGVuZHMgdXAgZW5hYmxp
+bmcgc3VzcGVuZCAvIHJlc3VtZSBvZiB0aGUgZXRoZXJuZXQgZGV2aWNlIC0KPiA+IHdoaWNoIGFw
+cGVhcnMgdG8gYmUgYnJva2VuLgo+ID4gCj4gPiBXaGlsZSB0aGUgaXNzdWUgd2l0aCBydW50aW1l
+IHBtIGlzIGJlaW5nIGludmVzdGlnYXRlZCwgcGFydGlhbGx5Cj4gPiByZXZlcnQgY29tbWl0IDJk
+MjZmNmUzOWFmYiB0byByZXN0b3JlIHRoZSBuZXR3b3JrIG9uIHJrMzM5OS4KPiA+IAo+ID4gRml4
+ZXM6IDJkMjZmNmUzOWFmYiAoIm5ldDogc3RtbWFjOiBkd21hYy1yazogZml4IHVuYmFsYW5jZWQg
+cG1fcnVudGltZV9lbmFibGUgd2FybmluZ3MiKQo+ID4gU3VnZ2VzdGVkLWJ5OiBIZWlrbyBTdHVl
+Ym5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gU2lnbmVkLW9mZi1ieTogUHVuaXQgQWdyYXdhbCA8
+cHVuaXRhZ3Jhd2FsQGdtYWlsLmNvbT4KPiA+IENjOiBNaWNoYWVsIFJpZXNjaCA8bWljaGFlbC5y
+aWVzY2hAd29sZnZpc2lvbi5uZXQ+ICAKPiAKPiBPbiBhIHJrMzM5OS1wdW1hIHdoaWNoIGhhcyB0
+aGUgZGVzY3JpYmVkIGlzc3VlLAo+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNu
+dGVjaC5kZT4KCkFwcGxpZWQsIHRoYW5rcyEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
