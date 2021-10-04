@@ -1,58 +1,95 @@
-Return-Path: <SRS0=83oW=OX=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=REIB=OY=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08C34C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Oct 2021 09:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FC8EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Oct 2021 12:06:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FB7F61B3E
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Oct 2021 09:15:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6FB7F61B3E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id E4E7D613A2
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Oct 2021 12:06:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E4E7D613A2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KzcVprOVfinHtluERdcdctLzr7D7gMhDi0Q4e7Ovo68=; b=T7odpyyd4e47/i
-	XLY0E515FX7BIAlB5LLmh1WXmxJcNJg3RtDnn8ZjICRlO5OpbJS9xmmWnUZlqqLJ4J4pwCKWYLLlf
-	lC5M5aglvXU5fwtzgQVGeIxYqbddnWi//RGH84GJG2sGgENEPl1Fnw13IK48PDSIVHub96RfbMcIY
-	8bITXMU69UwqwhDG5Waboc8tpI9C4H7TgzHi6tTO1kQ+OnVRRj7XCgQok/DSjrTu/CKNP9E9X5k0o
-	KAU5yjUAAG8mrKnUw9Fes80KyD5ginvB69a2OJ44Bv8IYrzFsLTGbNIzrECjZBNOkht0F/y6b14KO
-	fmP/FyxwFkdMEy8BVylA==;
+	List-Owner; bh=rEbdfjHTJa8dSHAvmmWhWiA5BmQsfzBysUKTQmNExWI=; b=Wh14TQHEOVuhwz
+	Tjrk5bqsh6tZVIbnvZ4LMDXyo6XUprbhg2iaoE7W3Ue8I+koCguz2S+KzGWd3y/NvXlC6uXKFOdsp
+	7qYx926K1OXI+4m9afxV8a5gl7NK/j3y6BDNvn3mOop0MveqUoLlwjV38xh41/QA9idCjNKdIq3Ju
+	EF2jpU7gK8LfaBfcdrbpMMW067gFhmmb/31shE7aMTCpycb/JpfpGZWDZvNGf59unrJyFxnbY4ZcP
+	s2YBcnQjOcAGpin2WRyZMpMadPRYcBD1BPO8rgD1InU33GTqElb3ana+UStXPFfQcG3oJcpYGyxiB
+	PxGvzag6oYqJAI7E7pmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mWxb2-003TRp-Jy; Sun, 03 Oct 2021 09:15:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mXMje-006MP3-LS; Mon, 04 Oct 2021 12:06:22 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mWxaz-003TR8-Pu; Sun, 03 Oct 2021 09:15:46 +0000
-Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mWxar-0003m9-17; Sun, 03 Oct 2021 11:15:37 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Jakub Kicinski <kuba@kernel.org>, Andreas Rammhold <andreas@rammhold.de>
-Cc: netdev@vger.kernel.org, Punit Agrawal <punitagrawal@gmail.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- davem@davemloft.net, peppe.cavallaro@st.com, alexandre.torgue@foss.st.com,
- Michael Riesch <michael.riesch@wolfvision.net>
+ id 1mXMjZ-006MLz-KQ; Mon, 04 Oct 2021 12:06:21 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id
+ on12-20020a17090b1d0c00b001997c60aa29so7217162pjb.1; 
+ Mon, 04 Oct 2021 05:06:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:references:date:in-reply-to:message-id
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=WcogweAVLTrIN04rrhEeTekXTpfk+1n7tDhYxqZpBuA=;
+ b=mMLpMzzogxwRDIg/wN7qg34fV9mBis7EQLWTl6Gzml4R3nNYBF1ZTVw5hLCvUac/Yb
+ q0Ofz5Zu7V9Yh39LuasvwKJZhwYTO4lCDYoEOsnSJkWHbHuzS/5k9BRVNb+CSqLVdYU7
+ FSPGzGTQOYvuloxeIgSKZJ9/XF+8whbW3OCgtpt7g+NjsRPM3Fmd7Ewud232klZ9bLsY
+ ySJKkvbbbH94zZyXJsHbNreftfqvW+ilbBr49VbPueqy8q9ysp2cE1heI8hrI4SbO/o8
+ LH6U5x7Xtzv5WbRJe2uhNiDIDYNBjeBFx5FuO5ZzSHvZLEf0G5C+SWiOCo+ic3D6dqks
+ zbkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
+ :message-id:user-agent:mime-version:content-transfer-encoding;
+ bh=WcogweAVLTrIN04rrhEeTekXTpfk+1n7tDhYxqZpBuA=;
+ b=PZG9ThF/zcEx1CH63Oa7L/yNj+ZKVXR+dbDm3AZcG4HwNkjBI1r32ALYFvNF7fO/9V
+ Ea70MkXko2py7Uf6Rx26706Pq3GXVlym86J6/6EP9TDG+19wgnV+p8hVNbDjCg+DnNQ9
+ RSRvRc9li81tVcnd9qdZPwaKu4yqrFXHaUDXsRNBhVOYgmGgM8o+6NeNg4/J4SpGM/Sw
+ RkNZyfL1Ljyd13upz3Qb1aag6rTMGDpsl9pKplsX3FSCTeNfIFLBUCvyNNJtUuaE9DvT
+ azjBKk9xLai+90syvGjhO9ueLwXR0VrQSE1nIaLJLQdZOmMXyzPN86rvfuEWJq+rdLK3
+ NtuA==
+X-Gm-Message-State: AOAM5318ahPc5beqkIsYczwnhdUGDRq826k+Tpri7mETDNjDeXGBE4zE
+ HGQ5O0okVOuuvkSniyXGz7sH3SKzFzT6uw==
+X-Google-Smtp-Source: ABdhPJz1oc5M5VRmTqleIcETJMQ8el0V/OzP/JOb2W60UjMw+YIKbDmOtWgIU5o4Jh3PWjR168vOsw==
+X-Received: by 2002:a17:90a:ab90:: with SMTP id
+ n16mr29728436pjq.157.1633349175589; 
+ Mon, 04 Oct 2021 05:06:15 -0700 (PDT)
+Received: from localhost (122x211x248x161.ap122.ftth.ucom.ne.jp.
+ [122.211.248.161])
+ by smtp.gmail.com with ESMTPSA id fh3sm15469299pjb.8.2021.10.04.05.06.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Oct 2021 05:06:14 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: Andreas Rammhold <andreas@rammhold.de>
+Cc: Jakub Kicinski <kuba@kernel.org>,  Heiko =?utf-8?Q?St=C3=BCbner?=
+ <heiko@sntech.de>,
+ netdev@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  davem@davemloft.net,
+ peppe.cavallaro@st.com,  alexandre.torgue@foss.st.com,  Michael Riesch
+ <michael.riesch@wolfvision.net>
 Subject: Re: [PATCH] net: stmmac: dwmac-rk: Fix ethernet on rk3399 based
  devices
-Date: Sun, 03 Oct 2021 11:15:35 +0200
-Message-ID: <2664637.bMcS0GE8HR@diego>
-In-Reply-To: <20211003004103.6jdl2v6udxgl5ivx@wrt>
 References: <20210929135049.3426058-1-punitagrawal@gmail.com>
+ <12744188.XEzkDOsqEc@diego>
+ <20211001160238.4335a83d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20211002213303.bofdao6ar7wvodka@wrt>
  <20211002172056.76c6c2d9@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <20211003004103.6jdl2v6udxgl5ivx@wrt>
+Date: Mon, 04 Oct 2021 21:06:12 +0900
+In-Reply-To: <20211003004103.6jdl2v6udxgl5ivx@wrt> (Andreas Rammhold's message
+ of "Sun, 3 Oct 2021 02:41:03 +0200")
+Message-ID: <87h7dx2dvv.fsf@stealth>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211003_021545_861319_7C5BAF23 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20211004_050617_720257_FD989C99 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,56 +102,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 3. Oktober 2021, 02:41:03 CEST schrieb Andreas Rammhold:
-> On 17:20 02.10.21, Jakub Kicinski wrote:
-> > On Sat, 2 Oct 2021 23:33:03 +0200 Andreas Rammhold wrote:
-> > > On 16:02 01.10.21, Jakub Kicinski wrote:
-> > > > On Wed, 29 Sep 2021 23:02:35 +0200 Heiko St=FCbner wrote:  =
-
-> > > > > On a rk3399-puma which has the described issue,
-> > > > > Tested-by: Heiko Stuebner <heiko@sntech.de>  =
-
-> > > > =
-
-> > > > Applied, thanks!  =
-
-> > > =
-
-> > > This also fixed the issue on a RockPi4.
-> > > =
-
-> > > Will any of you submit this to the stable kernels (as this broke with=
-in
-> > > 3.13 for me) or shall I do that?
-> > =
-
-> > I won't. The patch should be in Linus's tree in around 1 week - at which
-> > point anyone can request the backport.
-> > =
-
-> > That said, as you probably know, 4.4 is the oldest active stable branch,
-> > the ship has sailed for anything 3.x.
-> =
-
-> I am sorry. I meant 5.13.
-> =
-
-
-As the commit has "fixes" tag, it should be picked up automatically
-for stable kernels that include the original commit.
-
-
-Heiko
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW5kcmVhcyBSYW1taG9sZCA8YW5kcmVhc0ByYW1taG9sZC5kZT4gd3JpdGVzOgoKPiBPbiAxNzoy
+MCAwMi4xMC4yMSwgSmFrdWIgS2ljaW5za2kgd3JvdGU6Cj4+IE9uIFNhdCwgMiBPY3QgMjAyMSAy
+MzozMzowMyArMDIwMCBBbmRyZWFzIFJhbW1ob2xkIHdyb3RlOgo+PiA+IE9uIDE2OjAyIDAxLjEw
+LjIxLCBKYWt1YiBLaWNpbnNraSB3cm90ZToKPj4gPiA+IE9uIFdlZCwgMjkgU2VwIDIwMjEgMjM6
+MDI6MzUgKzAyMDAgSGVpa28gU3TDvGJuZXIgd3JvdGU6ICAKPj4gPiA+ID4gT24gYSByazMzOTkt
+cHVtYSB3aGljaCBoYXMgdGhlIGRlc2NyaWJlZCBpc3N1ZSwKPj4gPiA+ID4gVGVzdGVkLWJ5OiBI
+ZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiAgCj4+ID4gPiAKPj4gPiA+IEFwcGxpZWQs
+IHRoYW5rcyEgIAo+PiA+IAo+PiA+IFRoaXMgYWxzbyBmaXhlZCB0aGUgaXNzdWUgb24gYSBSb2Nr
+UGk0Lgo+PiA+IAo+PiA+IFdpbGwgYW55IG9mIHlvdSBzdWJtaXQgdGhpcyB0byB0aGUgc3RhYmxl
+IGtlcm5lbHMgKGFzIHRoaXMgYnJva2Ugd2l0aGluCj4+ID4gMy4xMyBmb3IgbWUpIG9yIHNoYWxs
+IEkgZG8gdGhhdD8KPj4gCj4+IEkgd29uJ3QuIFRoZSBwYXRjaCBzaG91bGQgYmUgaW4gTGludXMn
+cyB0cmVlIGluIGFyb3VuZCAxIHdlZWsgLSBhdCB3aGljaAo+PiBwb2ludCBhbnlvbmUgY2FuIHJl
+cXVlc3QgdGhlIGJhY2twb3J0Lgo+PiAKPj4gVGhhdCBzYWlkLCBhcyB5b3UgcHJvYmFibHkga25v
+dywgNC40IGlzIHRoZSBvbGRlc3QgYWN0aXZlIHN0YWJsZSBicmFuY2gsCj4+IHRoZSBzaGlwIGhh
+cyBzYWlsZWQgZm9yIGFueXRoaW5nIDMueC4KPgo+IEkgYW0gc29ycnkuIEkgbWVhbnQgNS4xMy4K
+CkFGQUlDVCwgMmQyNmY2ZTM5YWZiICgibmV0OiBzdG1tYWM6IGR3bWFjLXJrOiBmaXggdW5iYWxh
+bmNlZApwbV9ydW50aW1lX2VuYWJsZSB3YXJuaW5ncyIpIGlzIG5vdCBpbiA1LjEzIHN0YWJsZS4K
+CkVpdGhlciB5b3UncmUgbm90IHVzaW5nIHRoZSBzdGFibGUga2VybmVsIG9yIHRoZXJlJ3MgYW5v
+dGhlciBpc3N1ZQpicmVha2luZyB0aGluZ3Mgb24gdGhlIFJvY2tQaTQuCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
