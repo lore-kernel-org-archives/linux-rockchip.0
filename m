@@ -2,67 +2,85 @@ Return-Path: <SRS0=F4g8=O6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E75CEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Oct 2021 16:01:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D396C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Oct 2021 17:55:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A282360231
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Oct 2021 16:01:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A282360231
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0CFDF60F24
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Oct 2021 17:55:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0CFDF60F24
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZNpx6azw8jcVYN3ccVHJYMr/vGOsvrMA6VnsCZOxgBY=; b=VnyV1XFGIcNvVp
-	CTkpWD5kM7lXjycPEZDcuWaaI85s2FmOGaJ5y3TjVuFPzLUX4x7WBj8NRJtFP6/wGVxCb8ySJa6He
-	yAeCedAXkFa1EK1MEYHrQFoY+2+kjY2V/UlPGAqC0xgQacbqlsnTXEFhkqA0hsv4t8Za/w3iZN2Ih
-	p/lpkCx0mMX5DUh8KTkYM0R5Q2id4uXiSQOS91NtVVe2gfypI1PIGhNAH/6ji7Q3/9jd96xpohV3h
-	HKLq8b3F8H+lKU0ajFDMtDN91HQHgQ0hjbNIT9tmpdO0NwNrD7nTaeCQLq2LedmSGO0bA+ngPGhwi
-	hR7PxgcHDq6CkCGAcItQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XLez5sEZ+D3d2WRtrrQLjQD4W1PE56vhuNMoof6tLiw=; b=yraDIdnKip0Sk/
+	sZB7wDr4MC7U2wuNAcP30XP1BPx9FgzBqu9ScgBi5zJM3OrTsutzZRsaegYkQ2XRCmtliQOOiTz1C
+	gBbSgm+1oM6skFoRDG0B3HIMRzlc9hG95j6CwSQRT6YQKROHTdjaZ4onx8OUkTMcJp/8D8YgGDcMY
+	WOoa/c6pODrRlCHu3DTOdkc/2/Hoto93MMB+/k+p6012rO4ksCLoN5XZMguP4SloqZueUQ93UVkiT
+	0A7V6pXhemWBMujPzUSb0nqwHMMZEv4MD5VPMeZ6WQ3uKiBxYy8fSLed/IhBeYPnhGFJ5z9N2YYd+
+	uAK9tmNq8Y6VBb8kKJ/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZbGf-0077yo-K4; Sun, 10 Oct 2021 16:01:41 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mZd2T-007Eof-7a; Sun, 10 Oct 2021 17:55:09 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZbGS-0077wn-Gk; Sun, 10 Oct 2021 16:01:29 +0000
-Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6337460F5B;
- Sun, 10 Oct 2021 16:01:21 +0000 (UTC)
-Date: Sun, 10 Oct 2021 17:05:27 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Cai Huoqing <caihuoqing@baidu.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Lars-Peter Clausen
- <lars@metafoo.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, "NXP Linux
- Team" <linux-imx@nxp.com>, Vladimir Zapolskiy <vz@mleia.com>, "Neil
- Armstrong" <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Andy Gross <agross@kernel.org>,
- "Bjorn Andersson" <bjorn.andersson@linaro.org>, Heiko Stuebner
- <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
- <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
- <linux-arm-msm@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v4 6/9] iio: adc: meson_saradc: Make use of the helper
- function dev_err_probe()
-Message-ID: <20211010170527.13547811@jic23-huawei>
-In-Reply-To: <20211008092858.495-6-caihuoqing@baidu.com>
-References: <20211008092858.495-1-caihuoqing@baidu.com>
- <20211008092858.495-6-caihuoqing@baidu.com>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
+ id 1mZd2R-007Enm-DK; Sun, 10 Oct 2021 17:55:08 +0000
+Received: by mail-lf1-x129.google.com with SMTP id j21so45601477lfe.0;
+ Sun, 10 Oct 2021 10:55:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ydAC66omwb1n8JzeihR606o2VoQwnojRyDJQl+M5oM=;
+ b=UJ93bh4pdIRSVY7Hax/KViCfkdhDkcsNNlpzVwYW9CQIPNLd/UawcgYsU72qsqkFtY
+ zgT34v77cDenF/Hmb2JFJ2EyKv9qk/4+14jIJgy8Mng2cXrUSX0J4AxaIOcV6LKdgn0b
+ qsgOJrI14CMQyRVJ+5XXR0uWCRwxjtOW3L+7d/Q1BafBCV7ZzWuzz2NxPIXCoJEW5NZN
+ xz7C5ya3cA09rLbCtq9dJpHSMBMjVvYy6DNIj8g5hEBpLkcbs0G9OLLChh1vjOA5BwAI
+ RLlChiP4duKlszzdEKnQw3CphjhKia952+Jrn8YjbshQTk5zvTZ6e8imgAkjXhBf6AnC
+ exHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ydAC66omwb1n8JzeihR606o2VoQwnojRyDJQl+M5oM=;
+ b=v3uRLQbmV7KAefrr30UPcGWbwxOIaceobugmf1K5BZlZW51pQz/98jDYpUQ/Hz1FpD
+ oW65rRuMaM45ayg5r+fDTGViwwLCuMS5SwMNDa2Kxy5SbtD8hdsDaNY7wRi646PpgfFA
+ B8P0XzOptWL60rKYoho4zJOoOdFJNwe5V2g+Kfs3hbZ6lGLv8tlMMbrtXdbykX1JQuNw
+ lfHE1v4areJAAvI3Qh12ruwyqYZo16OlYCAMV1UFKYkvRTQJo4+R998ZFWSvgVRTKy0k
+ 4XrWdp9YiwuOxxZQLF8tRuZ8q8W+2LT1zrgbVF7cQyQf7j5qvipEnG1MFtxuNffjrGU1
+ legw==
+X-Gm-Message-State: AOAM532tSWbv1lNLUQVa7MXnLnZRKA0BXda24Il1rZ3P7Q7k7WVDSUca
+ /7YwXNnXAIsyBEB3diXaW9IG2btjaWq9xQ==
+X-Google-Smtp-Source: ABdhPJytIFiRW7vug7rXrjFy2fWR+VAQPQZHZxnJgAxhmQ4pktSZp3NIk3wzeKCdSWr7zhP9mqKMJw==
+X-Received: by 2002:a05:6512:33c9:: with SMTP id
+ d9mr22726278lfg.18.1633888504907; 
+ Sun, 10 Oct 2021 10:55:04 -0700 (PDT)
+Received: from localhost (37-145-209-168.broadband.corbina.ru.
+ [37.145.209.168])
+ by smtp.gmail.com with ESMTPSA id u3sm550824lfr.130.2021.10.10.10.55.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 10 Oct 2021 10:55:04 -0700 (PDT)
+From: Mikhail Rudenko <mike.rudenko@gmail.com>
+To: linux-media@vger.kernel.org
+Cc: Mikhail Rudenko <mike.rudenko@gmail.com>,
+ Helen Koike <helen.koike@collabora.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] media: rockchip: rkisp1: use device name for debugfs subdir
+ name
+Date: Sun, 10 Oct 2021 20:54:57 +0300
+Message-Id: <20211010175457.438627-1-mike.rudenko@gmail.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211010_090128_647399_EA04DE20 
-X-CRM114-Status: GOOD (  21.76  )
+X-CRM114-CacheID: sfid-20211010_105507_492263_865EDB49 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,95 +98,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 8 Oct 2021 17:28:54 +0800
-Cai Huoqing <caihuoqing@baidu.com> wrote:
+While testing Rockchip RK3399 with both ISPs enabled, a dmesg error
+was observed:
+```
+[   15.559141] debugfs: Directory 'rkisp1' with parent '/' already present!
+```
 
-> When possible use dev_err_probe help to properly deal with the
-> PROBE_DEFER error, the benefit is that DEFER issue will be logged
-> in the devices_deferred debugfs file.
-> Using dev_err_probe() can reduce code size, and the error value
-> gets printed.
-> 
-> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
-Make sure you don't miss any tags on previous versions.  This had:
+Fix it by using the device name for the debugfs subdirectory name
+instead of the driver name, thus preventing name collision.
 
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Tested-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com> #Meson8b Odroid-C1
+Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-
-> v1->v2: Remove the separate line of PTR_ERR().
-> 
->  drivers/iio/adc/meson_saradc.c | 39 +++++++++++++++-------------------
->  1 file changed, 17 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/iio/adc/meson_saradc.c b/drivers/iio/adc/meson_saradc.c
-> index 705d5e11a54b..62cc6fb0ef85 100644
-> --- a/drivers/iio/adc/meson_saradc.c
-> +++ b/drivers/iio/adc/meson_saradc.c
-> @@ -1230,35 +1230,31 @@ static int meson_sar_adc_probe(struct platform_device *pdev)
->  		return ret;
->  
->  	priv->clkin = devm_clk_get(&pdev->dev, "clkin");
-> -	if (IS_ERR(priv->clkin)) {
-> -		dev_err(&pdev->dev, "failed to get clkin\n");
-> -		return PTR_ERR(priv->clkin);
-> -	}
-> +	if (IS_ERR(priv->clkin))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(priv->clkin),
-> +				     "failed to get clkin\n");
->  
->  	priv->core_clk = devm_clk_get(&pdev->dev, "core");
-> -	if (IS_ERR(priv->core_clk)) {
-> -		dev_err(&pdev->dev, "failed to get core clk\n");
-> -		return PTR_ERR(priv->core_clk);
-> -	}
-> +	if (IS_ERR(priv->core_clk))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(priv->core_clk),
-> +				     "failed to get core clk\n");
->  
->  	priv->adc_clk = devm_clk_get(&pdev->dev, "adc_clk");
->  	if (IS_ERR(priv->adc_clk)) {
-> -		if (PTR_ERR(priv->adc_clk) == -ENOENT) {
-> +		if (PTR_ERR(priv->adc_clk) == -ENOENT)
->  			priv->adc_clk = NULL;
-> -		} else {
-> -			dev_err(&pdev->dev, "failed to get adc clk\n");
-> -			return PTR_ERR(priv->adc_clk);
-> -		}
-> +		else
-> +			return dev_err_probe(&pdev->dev, PTR_ERR(priv->adc_clk),
-> +					     "failed to get adc clk\n");
->  	}
->  
->  	priv->adc_sel_clk = devm_clk_get(&pdev->dev, "adc_sel");
->  	if (IS_ERR(priv->adc_sel_clk)) {
-> -		if (PTR_ERR(priv->adc_sel_clk) == -ENOENT) {
-> +		if (PTR_ERR(priv->adc_sel_clk) == -ENOENT)
->  			priv->adc_sel_clk = NULL;
-> -		} else {
-> -			dev_err(&pdev->dev, "failed to get adc_sel clk\n");
-> -			return PTR_ERR(priv->adc_sel_clk);
-> -		}
-> +		else
-> +			return dev_err_probe(&pdev->dev, PTR_ERR(priv->adc_sel_clk),
-> +					     "failed to get adc_sel clk\n");
->  	}
->  
->  	/* on pre-GXBB SoCs the SAR ADC itself provides the ADC clock: */
-> @@ -1269,10 +1265,9 @@ static int meson_sar_adc_probe(struct platform_device *pdev)
->  	}
->  
->  	priv->vref = devm_regulator_get(&pdev->dev, "vref");
-> -	if (IS_ERR(priv->vref)) {
-> -		dev_err(&pdev->dev, "failed to get vref regulator\n");
-> -		return PTR_ERR(priv->vref);
-> -	}
-> +	if (IS_ERR(priv->vref))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(priv->vref),
-> +				     "failed to get vref regulator\n");
->  
->  	priv->calibscale = MILLION;
->  
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 7474150b94ed..560f928c3752 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -426,7 +426,7 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+ {
+ 	struct rkisp1_debug *debug = &rkisp1->debug;
+ 
+-	debug->debugfs_dir = debugfs_create_dir(RKISP1_DRIVER_NAME, NULL);
++	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
+ 	debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
+ 			     &debug->data_loss);
+ 	debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
+-- 
+2.33.0
 
 
 _______________________________________________
