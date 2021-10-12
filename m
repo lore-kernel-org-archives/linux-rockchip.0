@@ -2,86 +2,86 @@ Return-Path: <SRS0=t7eY=PA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AE0F0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EC65C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:26:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 763436023F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:17:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 763436023F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1C1DF6101D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:26:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1C1DF6101D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zYCkC+r0wCDcvMUXi75aBUW9oZUtSM1t0CAmLnufm7w=; b=KiVcmIVgelgPuS
-	1EKquXuUUAA2U/VK/+C7IyaNxdh3AGtbYO3jAtfoyjWbfNlEUg8joYFz8s+PKn/qEokDtcdHE4bXH
-	dkWlHl1ZbihXFxEEVr1ysGkaD66CVUTB54TugZMLKBwAOQMXg1rKHCfzLh70w0naXIhZMPzB3ZBHL
-	uMZMfJT3UflD3Nz90XGcJ1M6LZiZyk0kV5n9Epr403G4hRm/J6RBytP8NTRLTrOhIEtJOeqSGPu/K
-	55gO5TJ15n1+OV9VfR37JLcw3jXEohsFhjNkyrKtRyvu+vHJRbi0mQN9ZbErdb1CNnE7ChVIujW/Z
-	BtsMJ91E15FO5jllCO5g==;
+	List-Owner; bh=ehdjHGNtFhRgabp1BGwDQbMTLraljhflzNReRoFwmhk=; b=3/1VnmSRirXOHC
+	JeEEmGvl3bHW9eLpo7hzhksRDpV+K29iLpqGrOMG+M5jz42O3BMOm/8C0uxa8ZxXuVIiyECC1x0xY
+	ebJ8w/fD0htqZb5BBXVRlxsMZuaTeRto3bL8YMzVaavy281UTWZv2oZiajuz1WWhQbbfb9gsc1L9A
+	ztXi5cMWv5s44x4K9OnalkaQE4SNfL4MZr/xsfUnZMhHBhPtSLkaLFZYnv+t12QPwuwW+iOZKFwUP
+	+HLWoq1iLDCr0fsuDDvgDYzAb1alTBWjD81YsWQOSFfTKaszgFhIECX2n55O7PevJoGiaLVATVxDK
+	v67y4OvveXI8l32JLVzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maFmh-00CXQn-D9; Tue, 12 Oct 2021 11:17:27 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1maFvJ-00CaxA-0I; Tue, 12 Oct 2021 11:26:21 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maFmU-00CXNY-G6
- for linux-rockchip@lists.infradead.org; Tue, 12 Oct 2021 11:17:15 +0000
-Received: by mail-wr1-x431.google.com with SMTP id m22so65975877wrb.0
- for <linux-rockchip@lists.infradead.org>; Tue, 12 Oct 2021 04:17:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=lL1m8ubOE4rJ9x4Cnwu+s3E9xFxm3dGNjo3CZSr7LdI=;
- b=snB8vHN4P3c/+1If++iQbj27PlHrmOwweXgC6HkVm3Yb8os74JgB8kB/1HbieZiyON
- UtO/6l3zjWtO/Btya7tN0aemUEsauX0+4hlrT2ByaBl3YZSeo2HJY3KF888KNmfbCNby
- 2vTVEEZlnsQ1FAfa+qEivWj3wP7JT+XMl5e+4XIyStq/5TgI/yJay0TB7GS+G/dHhlwR
- whjPEHdrYS+UNu26JQkoKPmK6DCVf2Wae706XLa2gBYgt3Myjzec7/BSZYogmbAzJ/5A
- +hBMf16fY6lufyaOJYS06XbWz7ug4WK++sTYD+3hGQr1e9SrwPgiy9vjiqqKSPg8yFXl
- ZwYg==
+ id 1maFtX-00CaKD-TX; Tue, 12 Oct 2021 11:24:33 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id r19so83714956lfe.10;
+ Tue, 12 Oct 2021 04:24:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=XVOm5FGSYg3Wq94ChxX1Do2Ep5eV8n1vjTJF2QVl0/0=;
+ b=BWZ+p8qDQDxGbNrPcN16gX5ktfYM5CuLC9Yl7J9QByxYXfR9WKt69BG9hhcogYnIB4
+ ds+KDyyHEAaeP4dnmIxfDKyYfB5I3DpcyH4hxOamp8KzS79SQuKO8hFnUzGZM4C4YqS1
+ wLK8yANYm2DetRPmP22pYyNOi61V1SagzxWblNXKTPkSrnu+YdgP1e8s2sjeIv/c7uGy
+ gcJ5ZEZpkcQnomPsmexcxqb4peUv12VVCf6Hfb77i/czvGtUzGe+TVKuOCS3AacNsYdc
+ p2aBWMKkn3NkzQlXUI8LZGWGBK2OFQSSWo4VlSFjNq+LP1Q8I+C1VIZHujCb9hyZYx72
+ G0EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=lL1m8ubOE4rJ9x4Cnwu+s3E9xFxm3dGNjo3CZSr7LdI=;
- b=AZpHn8RdRLpZ6eOdd2xwzcaVcGPOjwwtb7r1iIniCeB1MO3VivaGBmpf079NrdlAxd
- p/No/U6upiIxyZq3ZopqN98SdQFNckrBqB7P/1KXOQ/9DBxhwZOPAW/iOlR/uOSCNbxE
- V1hQkaNc3f5UfpgAdSCj9TagtgjFgYBglmzuG6du+68Yjss2kmoZq5rMRsbYFi2nAJEv
- Lm2ClqL63ertoHAu40769xkXEutr3axf5vb8ay/VjtFE5ygE+praPCSGauv6QJNoInGu
- KJ/IIQMbE8t6PR/2dn6hcqyvfn9RqNh75plSrLJeWTDpWr6ZAjlxuvBPEZ8hSJL4zyNo
- edtQ==
-X-Gm-Message-State: AOAM533KsTu/U09DsSvOuSt4szyCu3pcML4ewSTk8Nsk7bl2x9H8GMvj
- NMuxSE+IDa8AcnTAWNw6WaYucg==
-X-Google-Smtp-Source: ABdhPJwwgGCTLSD2FwWK23w/DgmWmq2KbPBQiBQLf7DRHtZSbPuxVoje3euWrasIyd3G8poK6PSQEw==
-X-Received: by 2002:adf:a745:: with SMTP id e5mr30974809wrd.406.1634037432625; 
- Tue, 12 Oct 2021 04:17:12 -0700 (PDT)
-Received: from google.com ([95.148.6.175])
- by smtp.gmail.com with ESMTPSA id v10sm10955743wri.29.2021.10.12.04.17.11
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=XVOm5FGSYg3Wq94ChxX1Do2Ep5eV8n1vjTJF2QVl0/0=;
+ b=Q9iEVGp+/QaxWQ1pff+RuEc7IrkHqDht2vrAoeW4VumPtmMH9R3B9h2Q8lM3FYVtf/
+ NiZtNNwDSVsYe4Mt/oACnqzwGw2/LcGNM7so2TfEgaGB6at+unS9Qtf9N6ryAVR6MAAj
+ iDnodWSnoB9nt3BVeZt48m8oxr7mwpeUGYCwOY4celi2pf9NJwtZ0qNx01dd8TxuoArr
+ zpcpUvzr76o7c6fXA5LamahbW71pDIT1SxmUaM+x+7GMtUaNaOfYDP2Q2JjFthv4WqSU
+ GMJtEzqczksA1p3IkiozFyIhwYDmniO+URUxqp0+/TJqPQVnkpPGF4vJW8VIauADfVbM
+ VRfA==
+X-Gm-Message-State: AOAM530yxhtKGtHGh0v3yu0MU9cDlIKy2bpN9VOsf9tjn2/TMufQIGxS
+ 8bcIp4gOQi/Sv+QC5nzkRAE=
+X-Google-Smtp-Source: ABdhPJzcjto+YCbFvFXmN/xZUnyBv5qEou5lZu159EZ2ncRvDB3X9yyFRAhPMnFi5b6nrSOvNQ9DYg==
+X-Received: by 2002:a05:651c:1615:: with SMTP id
+ f21mr28174162ljq.318.1634037870108; 
+ Tue, 12 Oct 2021 04:24:30 -0700 (PDT)
+Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id o6sm157218lfr.19.2021.10.12.04.24.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Oct 2021 04:17:11 -0700 (PDT)
-Date: Tue, 12 Oct 2021 12:17:10 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: robh+dt@kernel.org, jbx6244@gmail.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: mfd: syscon: Add rk3368 QoS register
- compatible
-Message-ID: <YWVutkR1lHe7DEy9@google.com>
-References: <20210925090405.2601792-1-heiko@sntech.de>
- <20210925090405.2601792-2-heiko@sntech.de>
+ Tue, 12 Oct 2021 04:24:29 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, vkoul@kernel.org, michael.riesch@wolfvision.net,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, kishon@ti.com,
+ p.zabel@pengutronix.de
+Subject: Re: [PATCH v1 3/3] arm64: dts: rockchip: add naneng combo phy nodes
+ for rk3568
+Date: Tue, 12 Oct 2021 13:24:27 +0200
+Message-ID: <13667811.Il6DKqvvJ9@archbook>
+In-Reply-To: <20210826123844.8464-4-yifeng.zhao@rock-chips.com>
+References: <20210826123844.8464-1-yifeng.zhao@rock-chips.com>
+ <20210826123844.8464-4-yifeng.zhao@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210925090405.2601792-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211012_041714_551750_4590F84F 
-X-CRM114-Status: UNSURE (   9.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211012_042432_039362_87F32D37 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,19 +94,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAyNSBTZXAgMjAyMSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cgo+IERvY3VtZW50IHJr
-MzM2OCBjb21wYXRpYmxlIGZvciBRb1MgcmVnaXN0ZXJzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEhl
-aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hhbmdlcyBpbiB2MjoKPiAt
-IG5ldyBwYXRjaAo+IAo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3N5
-c2Nvbi55YW1sIHwgMSArCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKQXBwbGll
-ZCwgdGhhbmtzLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVjaG5pY2FsIExl
-YWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
-cmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Thursday, 26. August 2021 14:38:44 CEST Yifeng Zhao wrote:
+> Add the core dt-node for the rk3568's naneng combo phys.
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> ---
+> 
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 68 ++++++++++++++++++++++++
+>  1 file changed, 68 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> b/arch/arm64/boot/dts/rockchip/rk356x.dtsi index d89831bee1eb..b421e3d52412
+> 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -214,11 +214,31 @@
+>  		};
+>  	};
+> 
+> [...]
+> 
+> +	combphy0_us: phy@fe820000 {
+> +		compatible = "rockchip,rk3568-naneng-combphy";
+> +		reg = <0x0 0xfe820000 0x0 0x100>;
+> +		#phy-cells = <1>;
+> +		clocks = <&pmucru CLK_PCIEPHY0_REF>, <&cru PCLK_PIPEPHY0>,
+> +			 <&cru PCLK_PIPE>;
+> +		clock-names = "ref", "apb", "pipe";
+> +		assigned-clocks = <&pmucru CLK_PCIEPHY0_REF>;
+> +		assigned-clock-rates = <100000000>;
+> +		resets = <&cru SRST_P_PIPEPHY0>, <&cru SRST_PIPEPHY0>;
+> +		reset-names = "combphy-apb", "combphy";
+> +		rockchip,pipe-grf = <&pipegrf>;
+> +		rockchip,pipe-phy-grf = <&pipe_phy_grf0>;
+> +		status = "disabled";
+> +	};
+
+RK3566 doesn't have this PHY I believe so it shouldn't be in the
+rk356x.dtsi file. It needs to be moved to rk3568.dtsi.
+
+The other two combphy nodes are shared between the two SoCs so
+they can stay here.
+
+> +
+> +	combphy1_usq: phy@fe830000 {
+> +		compatible = "rockchip,rk3568-naneng-combphy";
+> +		reg = <0x0 0xfe830000 0x0 0x100>;
+> +		#phy-cells = <1>;
+> +		clocks = <&pmucru CLK_PCIEPHY1_REF>, <&cru PCLK_PIPEPHY1>,
+> +			 <&cru PCLK_PIPE>;
+> +		clock-names = "ref", "apb", "pipe";
+> +		assigned-clocks = <&pmucru CLK_PCIEPHY1_REF>;
+> +		assigned-clock-rates = <100000000>;
+> +		resets = <&cru SRST_P_PIPEPHY1>, <&cru SRST_PIPEPHY1>;
+> +		reset-names = "combphy-apb", "combphy";
+> +		rockchip,pipe-grf = <&pipegrf>;
+> +		rockchip,pipe-phy-grf = <&pipe_phy_grf1>;
+> +		status = "disabled";
+> +	};
+> +
+> +	combphy2_psq: phy@fe840000 {
+> +		compatible = "rockchip,rk3568-naneng-combphy";
+> +		reg = <0x0 0xfe840000 0x0 0x100>;
+> +		#phy-cells = <1>;
+> +		clocks = <&pmucru CLK_PCIEPHY2_REF>, <&cru PCLK_PIPEPHY2>,
+> +			 <&cru PCLK_PIPE>;
+> +		clock-names = "ref", "apb", "pipe";
+> +		assigned-clocks = <&pmucru CLK_PCIEPHY2_REF>;
+> +		assigned-clock-rates = <100000000>;
+> +		resets = <&cru SRST_P_PIPEPHY2>, <&cru SRST_PIPEPHY2>;
+> +		reset-names = "combphy-apb", "combphy";
+> +		rockchip,pipe-grf = <&pipegrf>;
+> +		rockchip,pipe-phy-grf = <&pipe_phy_grf2>;
+> +		status = "disabled";
+> +	};
+> +
+>  	pinctrl: pinctrl {
+>  		compatible = "rockchip,rk3568-pinctrl";
+>  		rockchip,grf = <&grf>;
+
+
+Regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
