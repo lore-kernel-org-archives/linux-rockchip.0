@@ -2,84 +2,86 @@ Return-Path: <SRS0=t7eY=PA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75523C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 07:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE0F0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:17:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A40460ED4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 07:37:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3A40460ED4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 763436023F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Oct 2021 11:17:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 763436023F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Ssvk9GAw2gic0f/XkicxZEDaTN6H4bjaLwPo6lYbyE=; b=FwiF4+Cpg8h1ai
-	mAT0HLUZ0PMDa58p2Zf86QFb9yEBw/K8Qv94RtVuKZJ3nwsB3Myi0WXLZy1WnZgTQxQEssbZ5oT9X
-	NN4wz+y7QGsG9TZ7qIMrAZaZWkBDx2SbZCjdzboZ5GdtAefyGLW6+PIZ2KsXeMBnwWp354OL0Ye26
-	FQWpbay0QKKsA6C7Bp6LAqZ/PXidkLYDZAuKwT3GllqapvpPnZKT/BjbRrRpTOJghy+yjXqFO6vEg
-	ceXhjcsBiXnXeZAsdO4x8xJzqIb6o54ZTbgUjtna5bkyA6sGhP1KnnZHp6Z2cdZzipdJoxUqCVLEL
-	+g541FGOOBxTjqV4b8bA==;
+	List-Owner; bh=zYCkC+r0wCDcvMUXi75aBUW9oZUtSM1t0CAmLnufm7w=; b=KiVcmIVgelgPuS
+	1EKquXuUUAA2U/VK/+C7IyaNxdh3AGtbYO3jAtfoyjWbfNlEUg8joYFz8s+PKn/qEokDtcdHE4bXH
+	dkWlHl1ZbihXFxEEVr1ysGkaD66CVUTB54TugZMLKBwAOQMXg1rKHCfzLh70w0naXIhZMPzB3ZBHL
+	uMZMfJT3UflD3Nz90XGcJ1M6LZiZyk0kV5n9Epr403G4hRm/J6RBytP8NTRLTrOhIEtJOeqSGPu/K
+	55gO5TJ15n1+OV9VfR37JLcw3jXEohsFhjNkyrKtRyvu+vHJRbi0mQN9ZbErdb1CNnE7ChVIujW/Z
+	BtsMJ91E15FO5jllCO5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maCLK-00BoKP-WA; Tue, 12 Oct 2021 07:36:59 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1maFmh-00CXQn-D9; Tue, 12 Oct 2021 11:17:27 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maCLI-00BoHe-5q; Tue, 12 Oct 2021 07:36:57 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id u18so83753671lfd.12;
- Tue, 12 Oct 2021 00:36:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vB9uYdJsN7HfFIh1EPeV/AmLli9Pcmu7LFRCY4ZOmhM=;
- b=hbUYGPANbCGobhRYJTcf/mlq+dyADWC7z6fvhcM3ER2+BCPyQcaZToBU/wADPB7b0N
- 0prHdPAExgBgj1pER9QInpPSAuoEgDCa7xC2H3SEsAY5MXpdzdzFeb6SY7ChaH4S20ep
- MzDiYLrS8OUmL6hL0iVsjVkBb6BfYMX4gPwmr70cr4ozpt075mUoH7ZJEwfhVEpeF/cL
- d8o1FxWcmqIlzLLM5VqhPeYdj2Tet+fPZL13gz/S6PMzU7YUD+3vwawjczx6tKABZ0VV
- WMjxuQkuqMBjcwQtkFXHdfhpZlt0aOfD1zfmOg8xoEpv3TELSYQYi0rL22J95y4Ccw5L
- ugRQ==
+ id 1maFmU-00CXNY-G6
+ for linux-rockchip@lists.infradead.org; Tue, 12 Oct 2021 11:17:15 +0000
+Received: by mail-wr1-x431.google.com with SMTP id m22so65975877wrb.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 12 Oct 2021 04:17:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=lL1m8ubOE4rJ9x4Cnwu+s3E9xFxm3dGNjo3CZSr7LdI=;
+ b=snB8vHN4P3c/+1If++iQbj27PlHrmOwweXgC6HkVm3Yb8os74JgB8kB/1HbieZiyON
+ UtO/6l3zjWtO/Btya7tN0aemUEsauX0+4hlrT2ByaBl3YZSeo2HJY3KF888KNmfbCNby
+ 2vTVEEZlnsQ1FAfa+qEivWj3wP7JT+XMl5e+4XIyStq/5TgI/yJay0TB7GS+G/dHhlwR
+ whjPEHdrYS+UNu26JQkoKPmK6DCVf2Wae706XLa2gBYgt3Myjzec7/BSZYogmbAzJ/5A
+ +hBMf16fY6lufyaOJYS06XbWz7ug4WK++sTYD+3hGQr1e9SrwPgiy9vjiqqKSPg8yFXl
+ ZwYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=vB9uYdJsN7HfFIh1EPeV/AmLli9Pcmu7LFRCY4ZOmhM=;
- b=HgvfiVorItQz6wA+f2vxOUGN80GqUisn5aHPieIo60krOGZ+vTOVDGM8IymGM1nojw
- iKYJS0dYDe+faTJU+yW/Qe5LWKMw4mG+xc6vk7Ij1bl0fANDCc1QbpP49rjrbpFuSo1E
- 80jstfIvAKL/jTdYQcTfF9JieKDGHD+2hLoclUrn/0HOm75u2ibKr+K9mEVdWbH00Uzb
- 01Ln0WUJHi9UWAZsb/wZLuhAORtcIZynwbpofli2uzQtNwD/ZFuf1vBONNO+b4xiCzRd
- Xvck1+mua81sPgHPX0AcOrX3CtOVOSGotpJoj9VGniklDAusqMpeiAeZIKn3sp7Igr9I
- zhRA==
-X-Gm-Message-State: AOAM531YpbtgY4wVrzLgdtxi5VrwfsyKTNBMIYBkRSR7sseluasbUHl1
- ALV5XTi2EbPwWlgWC5GRnlg=
-X-Google-Smtp-Source: ABdhPJxmsAtVWTmIwhXUKqHrj680l/Z9xEbT0Q5zkjpkJtxYwr/pmbkLLqsNA5Vua7Wdkm6x2zYrAw==
-X-Received: by 2002:a05:6512:1595:: with SMTP id
- bp21mr7199977lfb.188.1634024213565; 
- Tue, 12 Oct 2021 00:36:53 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id a14sm951376lfs.26.2021.10.12.00.36.52
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=lL1m8ubOE4rJ9x4Cnwu+s3E9xFxm3dGNjo3CZSr7LdI=;
+ b=AZpHn8RdRLpZ6eOdd2xwzcaVcGPOjwwtb7r1iIniCeB1MO3VivaGBmpf079NrdlAxd
+ p/No/U6upiIxyZq3ZopqN98SdQFNckrBqB7P/1KXOQ/9DBxhwZOPAW/iOlR/uOSCNbxE
+ V1hQkaNc3f5UfpgAdSCj9TagtgjFgYBglmzuG6du+68Yjss2kmoZq5rMRsbYFi2nAJEv
+ Lm2ClqL63ertoHAu40769xkXEutr3axf5vb8ay/VjtFE5ygE+praPCSGauv6QJNoInGu
+ KJ/IIQMbE8t6PR/2dn6hcqyvfn9RqNh75plSrLJeWTDpWr6ZAjlxuvBPEZ8hSJL4zyNo
+ edtQ==
+X-Gm-Message-State: AOAM533KsTu/U09DsSvOuSt4szyCu3pcML4ewSTk8Nsk7bl2x9H8GMvj
+ NMuxSE+IDa8AcnTAWNw6WaYucg==
+X-Google-Smtp-Source: ABdhPJwwgGCTLSD2FwWK23w/DgmWmq2KbPBQiBQLf7DRHtZSbPuxVoje3euWrasIyd3G8poK6PSQEw==
+X-Received: by 2002:adf:a745:: with SMTP id e5mr30974809wrd.406.1634037432625; 
+ Tue, 12 Oct 2021 04:17:12 -0700 (PDT)
+Received: from google.com ([95.148.6.175])
+ by smtp.gmail.com with ESMTPSA id v10sm10955743wri.29.2021.10.12.04.17.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Oct 2021 00:36:53 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Cc: heiko@sntech.de, robh+dt@kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, vkoul@kernel.org, michael.riesch@wolfvision.net,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, kishon@ti.com, p.zabel@pengutronix.de
-Subject: Re: [PATCH v1 2/3] phy/rockchip: add naneng combo phy for RK3568
-Date: Tue, 12 Oct 2021 09:36:51 +0200
-Message-ID: <1807525.kHsN9XgAzY@archbook>
-In-Reply-To: <20210826123844.8464-3-yifeng.zhao@rock-chips.com>
-References: <20210826123844.8464-1-yifeng.zhao@rock-chips.com>
- <20210826123844.8464-3-yifeng.zhao@rock-chips.com>
+ Tue, 12 Oct 2021 04:17:11 -0700 (PDT)
+Date: Tue, 12 Oct 2021 12:17:10 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: robh+dt@kernel.org, jbx6244@gmail.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/3] dt-bindings: mfd: syscon: Add rk3368 QoS register
+ compatible
+Message-ID: <YWVutkR1lHe7DEy9@google.com>
+References: <20210925090405.2601792-1-heiko@sntech.de>
+ <20210925090405.2601792-2-heiko@sntech.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210925090405.2601792-2-heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211012_003656_291670_388012EA 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20211012_041714_551750_4590F84F 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,153 +94,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Donnerstag, 26. August 2021 14:38:43 CEST Yifeng Zhao wrote:
-> This patch implements a combo phy driver for Rockchip SoCs
-> with NaNeng IP block. This phy can be used as pcie-phy, usb3-phy,
-> sata-phy or sgmii-phy.
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> ---
-> [...]
-> +static int rockchip_combphy_pcie_init(struct rockchip_combphy_priv *priv)
-> +{
-> +	int ret = 0;
-> +
-> +	if (priv->cfg->combphy_cfg) {
-> +		ret = priv->cfg->combphy_cfg(priv);
-> +		if (ret) {
-> +			dev_err(priv->dev, "failed to init phy for 
-pcie\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_combphy_usb3_init(struct rockchip_combphy_priv *priv)
-> +{
-> +	int ret = 0;
-> +
-> +	if (priv->cfg->combphy_cfg) {
-> +		ret = priv->cfg->combphy_cfg(priv);
-> +		if (ret) {
-> +			dev_err(priv->dev, "failed to init phy for 
-usb3\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_combphy_sata_init(struct rockchip_combphy_priv *priv)
-> +{
-> +	int ret = 0;
-> +
-> +	if (priv->cfg->combphy_cfg) {
-> +		ret = priv->cfg->combphy_cfg(priv);
-> +		if (ret) {
-> +			dev_err(priv->dev, "failed to init phy for 
-sata\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_combphy_sgmii_init(struct rockchip_combphy_priv *priv)
-> +{
-> +	int ret = 0;
-> +
-> +	if (priv->cfg->combphy_cfg) {
-> +		ret = priv->cfg->combphy_cfg(priv);
-> +		if (ret) {
-> +			dev_err(priv->dev, "failed to init phy for 
-sgmii\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int rockchip_combphy_set_mode(struct rockchip_combphy_priv *priv)
-> +{
-> +	switch (priv->mode) {
-> +	case PHY_TYPE_PCIE:
-> +		rockchip_combphy_pcie_init(priv);
-> +		break;
-> +	case PHY_TYPE_USB3:
-> +		rockchip_combphy_usb3_init(priv);
-> +		break;
-> +	case PHY_TYPE_SATA:
-> +		rockchip_combphy_sata_init(priv);
-> +		break;
-> +	case PHY_TYPE_SGMII:
-> +	case PHY_TYPE_QSGMII:
-> +		return rockchip_combphy_sgmii_init(priv);
-> +	default:
-> +		dev_err(priv->dev, "incompatible PHY type\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-
-All of the _init functions appear to be the same except for the error
-string.
-
-I think it would be better to just have the init done in _set_mode,
-and then use the switch case statement to show the right error
-message on if (ret).
-
-> [...]
-> +
-> +static int rockchip_combphy_probe(struct platform_device *pdev)
-> +{
-> +	struct phy_provider *phy_provider;
-> +	struct device *dev = &pdev->dev;
-> +	struct rockchip_combphy_priv *priv;
-> +	const struct rockchip_combphy_cfg *phy_cfg;
-> +	struct resource *res;
-> +	int ret;
-> +
-> +	phy_cfg = of_device_get_match_data(dev);
-> +	if (!phy_cfg) {
-> +		dev_err(dev, "No OF match data provided\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	priv->mmio = devm_ioremap_resource(dev, res);
-
-I think devm_platform_get_and_ioremap_resource is preferred here,
-using it also means you can get rid of res.
-
-> +	if (IS_ERR(priv->mmio)) {
-> +		ret = PTR_ERR(priv->mmio);
-> +		return ret;
-> +	}
-> +
-> [...]
-
-Regards,
-Nicolas Frattaroli
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCAyNSBTZXAgMjAyMSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cgo+IERvY3VtZW50IHJr
+MzM2OCBjb21wYXRpYmxlIGZvciBRb1MgcmVnaXN0ZXJzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+Cj4gLS0tCj4gY2hhbmdlcyBpbiB2MjoKPiAt
+IG5ldyBwYXRjaAo+IAo+ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWZkL3N5
+c2Nvbi55YW1sIHwgMSArCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQoKQXBwbGll
+ZCwgdGhhbmtzLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVjaG5pY2FsIExl
+YWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
+cmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
