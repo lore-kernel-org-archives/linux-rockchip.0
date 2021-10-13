@@ -2,61 +2,87 @@ Return-Path: <SRS0=uHDa=PB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75043C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 14:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18954C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 14:23:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 275AE60E97
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 14:01:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 275AE60E97
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id D1CBB60E96
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 14:23:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D1CBB60E96
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YIrR037CxRWMRO4CsLzvbvQOEdxo+YLVP/nZ1A2LzeM=; b=k4EWcuaFLcNyNk
-	td+aODE92Eeuok0wsFZH6coFohyfQy78fwR7il64111gWDThf6onX550jr5bW7orZVVe/wFeT3UFs
-	+UsfNMTVtCrErNcsdgsK0IpKVtXudk3opDqYB3M3AD8Hytc99lUDvZ9eLvGYcWe8+ShqvVzB0WAlU
-	qRaITL0MMSuFjsFoHLj2Iq2ZjMZuFG3Mu+DlAfTABvXmqBWDPlALtFanjSrn47ICr97JRFkgIaGNr
-	93HwMfxsFodQ90WVRfrKCSslzNmvez2jumq9nYwC3xKbHpJMFlUMpaPO1GIGbdApZsqixcLfJNiX2
-	BnAaBvaIjJWgwnCUXMJA==;
+	List-Owner; bh=9Yo6ZrnwUW6+A/SSFiENxO1vcoPWOUcr2MdM9T+s0Sw=; b=zRG1JIfCYGFvkK
+	JylFj5r7Hr60wC3WgRy6pxglRSuPtHguIdzEIE3Sfwqz6Gg+Hdq4nHS3qyDTWUOLaJ2RvU0NUo8MP
+	BZc1yKKE+NcLpM7oGutylF9xjYRxNX2SynyJerN7GVzSvNYaq9eor3ib9hzy6kEzWnDk/aPsrSrhB
+	VFC4n4mPYkHkUZ2NH/NGVBJoXPqsccSVUKbFkDl1Km/2kw5gUZkKy4OZbrbqyRPOO/ObqcMLMT+SV
+	F/1dWvvsVD9POSSDTGsUuamYMCHYXtQJ9SHlFBB67QJGf5cLxKGjZDkWxPI1/vT43MJwZZtL9WRKp
+	C7m0uDMiCWI9pZ/md6Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maeoR-00H398-8L; Wed, 13 Oct 2021 14:00:55 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maeoN-00H38A-Kp
- for linux-rockchip@lists.infradead.org; Wed, 13 Oct 2021 14:00:53 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4C866D6E;
- Wed, 13 Oct 2021 07:00:49 -0700 (PDT)
-Received: from e123427-lin.arm.com (unknown [10.57.53.207])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id ABE123F694;
- Wed, 13 Oct 2021 07:00:47 -0700 (PDT)
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Simon Xue <xxm@rock-chips.com>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Kever Yang <kever.yang@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
- linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
- robh+dt@kernel.org, devicetree@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org
-Subject: Re: [PATCH v9] dt-bindings: rockchip: Add DesignWare based PCIe
- controller
-Date: Wed, 13 Oct 2021 15:00:42 +0100
-Message-Id: <163413363029.8588.8606291946135635809.b4-ty@arm.com>
-X-Mailer: git-send-email 2.31.0
-In-Reply-To: <20210818093406.157788-1-xxm@rock-chips.com>
-References: <20210818093406.157788-1-xxm@rock-chips.com>
+	id 1mafAD-00H86C-Ja; Wed, 13 Oct 2021 14:23:25 +0000
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mafA6-00H80r-NN
+ for linux-rockchip@lists.infradead.org; Wed, 13 Oct 2021 14:23:21 +0000
+Received: by mail-ua1-x92d.google.com with SMTP id i15so4957605uap.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 13 Oct 2021 07:23:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=7w/SpwqUg1NtXlESs19PovhWHJiT5rNlJWgKAzuzlAE=;
+ b=NXN3/6opbxMONUbmwhMTGJ45Wx47wxNTSTy8tiZ9DEIwTDESJrVNdX3Ebsqu+YcY6M
+ D0gmdJ0nCNdGbmaNxXCMbvk3Kk1gkte52sQG2mM9czGZejuGOUgWpz60bd7Rs7OLIicG
+ a3I8ARXHglmgKNd+4AB/JAQi4+1GPYohAzugS953pzmSHoOKXqjbmsTHEenoc4XJr91J
+ cCPmlhJaFaMZD3T5b3CoV8/bu3jWISwQhGhRc5zi4dBudCBs+efvkphULFwtNhrgA2Jx
+ muPKfNAzyCGOmCyvzG0tTgYeBcMycflCLzXfCHRm9SsMsGbjvwLB7sFlDqJAZ6EdMk92
+ dAuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=7w/SpwqUg1NtXlESs19PovhWHJiT5rNlJWgKAzuzlAE=;
+ b=4Cfto7QybSx1AMXBIupTLpbPzTPu2c/5O1ySm+VfmHNzbpiZkGoGtIPf3EZJjjSRuZ
+ pTFmeaRMjFOMxU+gTGCQIDV8nTJGJneF7sMAHxxCJLJ84fHq6ixNewTyYeNsbrm82WWe
+ weMQgkaFJwXzZDHBP0Rbt/Y36ocLpPU44HitBfLzhPC650UrmK9SwVad5/WDSgHDoRyz
+ ARUUzwYMmoyxGRhyjtyTPdzcxGVA+/T0z8qPriLxpuLkNJieHnoJk5HCJPMDMZfJ1fgx
+ ux1jaB6rN7yQjquUBNpuLMksoyDoRzmBEqVeSrMcjp6k9zpbGjAGG1QVi4st8MrsUwmQ
+ vUWA==
+X-Gm-Message-State: AOAM530PlNPw+6cMG7CDD4myw+ulEPcdAuxryPnSsFvQFt02eiR4Z0hd
+ 47Mbnel1wivk8UTNAjS41OlkwA==
+X-Google-Smtp-Source: ABdhPJwTqgTV9HIXGGN+anjhVzoBSubJf8so1ONfQF8nBDLgW3FrUf6as8wCjY9HYniJ1jC0Ebnrvw==
+X-Received: by 2002:a67:d189:: with SMTP id w9mr38724521vsi.55.1634134996280; 
+ Wed, 13 Oct 2021 07:23:16 -0700 (PDT)
+Received: from fedora ([196.32.91.248])
+ by smtp.gmail.com with ESMTPSA id q26sm6243875vkn.40.2021.10.13.07.23.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Oct 2021 07:23:15 -0700 (PDT)
+Date: Wed, 13 Oct 2021 11:23:11 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>, stable@vger.kernel.org
+Subject: Re: [PATCH 1/2] media: rkvdec: Do not override sizeimage for output
+ format
+Message-ID: <YWbrz/+gZE7z+Ab5@fedora>
+References: <20211008100423.739462-1-wenst@chromium.org>
+ <20211008100423.739462-2-wenst@chromium.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211008100423.739462-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_070051_790345_DBEB2418 
-X-CRM114-Status: UNSURE (   5.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211013_072319_019542_EB04B5C7 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,18 +100,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Aug 2021 17:34:06 +0800, Simon Xue wrote:
-> Document DT bindings for PCIe controller found on Rockchip SoC.
+Hi Chen-Yu,
+
+On Fri, Oct 08, 2021 at 06:04:22PM +0800, Chen-Yu Tsai wrote:
+> The rkvdec H.264 decoder currently overrides sizeimage for the output
+> format. This causes issues when userspace requires and requests a larger
+> buffer, but ends up with one of insufficient size.
 > 
+> Instead, only provide a default size if none was requested. This fixes
+> the video_decode_accelerator_tests from Chromium failing on the first
+> frame due to insufficient buffer space. It also aligns the behavior
+> of the rkvdec driver with the Hantro and Cedrus drivers.
 > 
+> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Applied to pci/dt, thanks!
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-[1/1] dt-bindings: rockchip: Add DesignWare based PCIe controller
-      https://git.kernel.org/lpieralisi/pci/c/af7cda832f
+Thanks for taking care of this!
 
-Thanks,
-Lorenzo
+Ezequiel
+
+> ---
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> index 76e97cbe2512..951e19231da2 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> @@ -1015,8 +1015,9 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
+>  	struct v4l2_pix_format_mplane *fmt = &f->fmt.pix_mp;
+>  
+>  	fmt->num_planes = 1;
+> -	fmt->plane_fmt[0].sizeimage = fmt->width * fmt->height *
+> -				      RKVDEC_H264_MAX_DEPTH_IN_BYTES;
+> +	if (!fmt->plane_fmt[0].sizeimage)
+> +		fmt->plane_fmt[0].sizeimage = fmt->width * fmt->height *
+> +					      RKVDEC_H264_MAX_DEPTH_IN_BYTES;
+>  	return 0;
+>  }
+>  
+> -- 
+> 2.33.0.882.g93a45727a2-goog
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
