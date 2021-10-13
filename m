@@ -2,84 +2,85 @@ Return-Path: <SRS0=uHDa=PB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB692C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 22:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A29DCC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 22:50:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96E5160F11
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 22:32:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 96E5160F11
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4EDA661105
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Oct 2021 22:50:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4EDA661105
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1OcwGky3X0DMPYM/i+qxpfRUiB0Z11cHIv4ljMp6wIE=; b=IRnVJqPv2VhF79
-	/ZJ0v5EXl5iuKRPIHlA7sPWnn+f+Wdb4Eo+HVFJSm5IoX+3e707Yj3RbEOlfoG6mKzwwHgfcJlPeM
-	LH2dIGuf1jsVLrNbnMfXo1Zp2H+5Tu/uAFNHUoU/kDWETE0H/NcZ5epV8erUjPZqd7f/PaSrQ2s8C
-	Sbs29EbmbiG2eyQMW5VX6NRXQGmU2Fa4AdFMZ+vQCYx43fyc7MItukeRknq9dJOnJnWNftvh5k2a3
-	UHLsw7YsMxK3abTUv6ZlWIz5Q+vpYmC1zrntBoW7be83L1mPfy9larHYDe3fPr8mEskg3ajR1ViJD
-	tWu78bV1GMaabGzlOQnw==;
+	List-Owner; bh=Dk128lyTHTBg8n67y/OSUXT58Mmr+UhdlugkhXoRR1E=; b=IGI94z/15tVs7E
+	5eEx/Y8KsQd7/1wCbH/IksrupJ/9nvLNffqD58RwVxIj9d0uxszpAu7PknPw1lHf5TkCT3FwFB+EW
+	QO1j5UqorvjsVlwjNu7tMdRjWiHxHlkm0BD5+JZANJPhzaHXFepyoLCJ1w5Sd1auLETrCsMf7bLGs
+	J20UG31gUJGILB7jZiXdn4oFRRViFd2IHynRvzlzDYjmus/nvwDsffFYJmE8ycQOZi0+mxyDIf21Y
+	GdSvSbjmIPA3QQ/MKkU2qx90brwoZO4h4U45/bPD09LhYBfhjk/wmpvYnWmqTa2xkPApwrfYI+wN/
+	gSZ0yJmZPwvoA4Se/cEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mamnJ-000sFX-0X; Wed, 13 Oct 2021 22:32:17 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1man54-000w9b-Hq; Wed, 13 Oct 2021 22:50:38 +0000
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mamnG-000sDV-0t
- for linux-rockchip@lists.infradead.org; Wed, 13 Oct 2021 22:32:15 +0000
-Received: by mail-lf1-x132.google.com with SMTP id x27so18156860lfa.9
- for <linux-rockchip@lists.infradead.org>; Wed, 13 Oct 2021 15:32:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=T/OomM9w2GusTbCVdWitYQJgC9/Z986cg3wMugLDkCc=;
- b=iIn8C5md7RBiGzfnw2bAipABPt+03zPtv/DOq/HLswL8ElO65blVWNj9Xi0OdYbSVO
- Eo4zFMFHuevfXEK92pXYjENk6eY1NWcLNe4lFjx75z+2MjgoQUkSqqpAoqRYLhfEJddo
- 5uMzn/mOrXGlBg75XlWecvyBlqKFxEusfRgLWijGHPegycDKaFJbFlOBnqxtQXv31lGb
- d0X+r94JhCIkuxRKm6yBj/ouq7toJNfJ9SkyJwwK87fhNSxEja+J8JtvsDm5t5fZlr3/
- 8tCIWi0WipX/kw0TTbIFGX0BTole/YW5bn6Vf3U8qbZhUTt3MFm/9LjEEtqjcFKoV/sP
- +PfA==
+ id 1man50-000w8c-Fa
+ for linux-rockchip@lists.infradead.org; Wed, 13 Oct 2021 22:50:36 +0000
+Received: by mail-qt1-x836.google.com with SMTP id r1so4139922qta.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 13 Oct 2021 15:50:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=xM1fMd37P0GkH+ZlVvAIHq/XlgyRCHndX09GA3o6I2w=;
+ b=sV74+qP2MQF6w9NmafHoTpTolVfVwa0rljewKiYT94oDqfz0A5uHEVwWv2+SmELSHc
+ tWi6VdT69T4pL6mhUtsPnJwakwfrCd8tASkny/rtRx3bV5bZnliB+S91yJtXbcd4cJsP
+ CEhnBkaQthmsfom4VTyB5PDG8CoKhTHAi0ufvApv/LElVrWx/9vAwQnuQ4FIx80EIjgr
+ yeORRy5s1q4pLKS0K3IRbLLUlzgFwOrD4yiBCTNTw7+G6ykXocghAiFCj3U3+GBI2e/7
+ 5awydk+SNqULo5yRmsVegI6pH+Cn83rFSzSS36NqX0k3ET+lDcgZ6BH/8i5vOlv2eUAo
+ Kakw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=T/OomM9w2GusTbCVdWitYQJgC9/Z986cg3wMugLDkCc=;
- b=MVUiUsMo4o7FSwHUBHPeWunFeknOyy6LLwhAj5abmTnZh7zKGRj4yaGukhU85GDK4I
- j/D2NPG4eidF7en2a28i/GVdxQHgSglOR/+yLWJJGCvYzdU4A3eDVOb1RUQ1I5wg3Rc5
- k4exFHnCRK8iFRjW+RtCbK4wuP+3SDxLZp0G6cNXlhbPGavCLZQf3CKo+yUtr93D5mup
- 1PdTR72nqvKws2k5v7sOxEPeZl2LLlb11HviyAQmc2oS7ErVltsoJ3r55cZFVZCCMxND
- ufGXO+5K46uhN/g7r0ymUTzazoXyJhQj0UR5pfxFH46eWBAtOZF60F9LEZhgwiqlm8E4
- ueKg==
-X-Gm-Message-State: AOAM532ZtpmRKVRlmCD2Rj6t83h81r8mwRS34SGZqCA+5soXg34On3c2
- qNHbgl/YT8QDdfymo34RmHnztE9HkzzvLrnu2wjyTg==
-X-Google-Smtp-Source: ABdhPJxBSo+RJ+XSsLVvldxL70PplGkXVK8P4+WfUMNkYtB7Bu45xbhCyoL5p3gR6ii06cEdUwToJESL+JN7cP8U8Pk=
-X-Received: by 2002:a19:c10d:: with SMTP id r13mr1679243lff.339.1634164331067; 
- Wed, 13 Oct 2021 15:32:11 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=xM1fMd37P0GkH+ZlVvAIHq/XlgyRCHndX09GA3o6I2w=;
+ b=t5C2615ALCKsl9OrPYP5SLDqIfU1cvo0t8C858KeL/zbiqLPOiEZZ1KZ/PvywCwwJY
+ OiEMUGEYtiO+xiUtelH4gpJewqmFaIxw3+RyTLyZC+RuVL5dizvEa7fu6dLXTapGnPtP
+ id/fpx1Djx5IOPOhdNmPAK9xyon8L9zdh7GvndjGFNqLSrvNyHmSQtEmhgQ+x4xTujCF
+ m7him7x5GEAYa25RIWRm8ZEn1oOZTZBHUQOEnQni4cYnMFZuJyq+7EjEWzfC/Hr8aXwf
+ VdhdF+3ZJajAglshNOE+qfwxPUwQj3iNqV9n7hQc0KyhrpwePhlNAPgeKho/CSsUuxN/
+ tLPA==
+X-Gm-Message-State: AOAM533F5l2HDcDf9dZiBYjVNUAvHF9SwX7MsRWknYQdZ61KsRCVja5O
+ c0eEuoBg4X5C0HkQRIbizgodFg==
+X-Google-Smtp-Source: ABdhPJyMyktfWBfUtcNLXQN+ND/84ayn5d3dsHNkBD7ZxYgHVbjL6ZghrpM+UN8x+hQpM+G+IwpnBw==
+X-Received: by 2002:ac8:7f44:: with SMTP id g4mr2516291qtk.130.1634165432864; 
+ Wed, 13 Oct 2021 15:50:32 -0700 (PDT)
+Received: from fedora ([196.32.91.248])
+ by smtp.gmail.com with ESMTPSA id g11sm606454qko.31.2021.10.13.15.50.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Oct 2021 15:50:31 -0700 (PDT)
+Date: Wed, 13 Oct 2021 19:50:27 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Rikard Falkeborn <rikard.falkeborn@gmail.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: media: rkvdec: Constify static struct
+ v4l2_m2m_ops
+Message-ID: <YWdis9cj3OyLFNaR@fedora>
+References: <20211012221144.30638-1-rikard.falkeborn@gmail.com>
 MIME-Version: 1.0
-References: <20211007144019.7461-1-jbx6244@gmail.com>
- <1633661172.660863.1409603.nullmailer@robh.at.kernel.org>
-In-Reply-To: <1633661172.660863.1409603.nullmailer@robh.at.kernel.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 14 Oct 2021 00:31:59 +0200
-Message-ID: <CACRpkdYArdPwEVf_5pwsROKPjbnVAtU3mf9v1z6WXGPoBb=SZg@mail.gmail.com>
-Subject: Re: [PATCH v3 1/3] dt-bindings: pinctrl: convert rockchip, pinctrl.txt
- to YAML
-To: Rob Herring <robh@kernel.org>
-Cc: Johan Jonker <jbx6244@gmail.com>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Rob Herring <robh+dt@kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20211012221144.30638-1-rikard.falkeborn@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_153214_096084_001FAD9E 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20211013_155034_789164_404AC25B 
+X-CRM114-Status: GOOD (  18.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +98,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 8, 2021 at 4:46 AM Rob Herring <robh@kernel.org> wrote:
+On Wed, Oct 13, 2021 at 12:11:44AM +0200, Rikard Falkeborn wrote:
+> The only usage of rkvdec_m2m_ops is to pass its address to v4l2_m2m_init(),
+> which takes a pointer to const v4l2_m2m_ops as argument. Make it const
+> to allow the compiler to put it in read-only memory.
+> 
+> Signed-off-by: Rikard Falkeborn <rikard.falkeborn@gmail.com>
 
-> On Thu, 07 Oct 2021 16:40:17 +0200, Johan Jonker wrote:
-> > Convert rockchip,pinctrl.txt to YAML
-> >
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > ---
-> >
-> > Changed V3:
-(...)
-> Running 'make dtbs_check' with the schema in this patch gives the
-> following warnings. Consider if they are expected or the schema is
-> incorrect. These may not be new warnings.
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-Rob can you tell me how you like me to handle this?
-Do we merge the nice new bindings and deal with the
-aftermath or do we need to fix the DTS files in the same
-patch series?
-
-Thanks,
-Linus Walleij
+> ---
+>  drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> index bf00fe6534a3..28aab5c7fe33 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -677,7 +677,7 @@ static void rkvdec_device_run(void *priv)
+>  		rkvdec_job_finish(ctx, VB2_BUF_STATE_ERROR);
+>  }
+>  
+> -static struct v4l2_m2m_ops rkvdec_m2m_ops = {
+> +static const struct v4l2_m2m_ops rkvdec_m2m_ops = {
+>  	.device_run = rkvdec_device_run,
+>  };
+>  
+> -- 
+> 2.33.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
