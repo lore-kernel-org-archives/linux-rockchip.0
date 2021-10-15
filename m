@@ -2,82 +2,63 @@ Return-Path: <SRS0=wP8P=PD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF510C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Oct 2021 21:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 08B09C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Oct 2021 21:27:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 79FBD611C8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Oct 2021 21:07:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 79FBD611C8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id B362260EFF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Oct 2021 21:27:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B362260EFF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GG0X4qK3LVBgBFFeexnaXjhZ5RR2mKG681Papl16jcg=; b=rZ5fi8+9vi0S3P
-	7nPsitEdYb8R3Oh57jvRVRq8XhR8gIXEnLOTkkM4QyqKex1ihnOjnJkdQSV+xhXgRxpfGBSMKxAjj
-	GGRRJin7J0xMGnq0djoLJ0hSXfE5ND/o8ur9vkbJFBie/mvv3ozvr8l+xoP7OPF3HHYLHxjnlRolo
-	Z19VFOGbEIfmIP32XNh/8kamoT7sTrDhLqNNGKEB/mwzOfk16vGmF+jzPmN/paJIg/9NWFQSqf/Ri
-	5+OY7yY2yRmxNxHQBgZoFslIsjni0p9FoKj7q42rNcYjNCAzYIf/jlxnQbLJzo5thIv23MZf/Twbk
-	nbTbipsJPEdVos6qhe4w==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bx9ZVpou21vr7xS/shBAjm+6WaPNNhIr3ZbeSkBBNck=; b=UCgC90rO/o3xO1
+	5A5HzODo5d6FhGLMfIFrEJptYAeUKuPTWhcoUs48ut6rWZHOw1tgPUy2ByWBemaGftJJOCFctLwEb
+	Sbt6ELXnrOdnSyYxCvag4LtTIGeJ42lnaLjcKh3/DuCv5OtwZujZTV8VafDmyMIVEMLS+ynSV0lTh
+	BnnSMTDcL2kuaZKHY+9MAxxCj5eZ+mMKonRm0DiJdkVdYbuPXonXamsK/ry33VwhVa2udMFKwSIMQ
+	U6JmGwlwwcmGzXttafFetXUgagDqGIbYWosPOPjY0joRHmMR/JbkWx6qrzEOI3Zqb3QOgJ/MDVcpB
+	Nyz1pUeV+xqU7u7FhehA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbUQf-008m15-23; Fri, 15 Oct 2021 21:07:49 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1mbUjY-008oag-Nd; Fri, 15 Oct 2021 21:27:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbUQc-008m04-74; Fri, 15 Oct 2021 21:07:47 +0000
-Received: by mail-lf1-x133.google.com with SMTP id n8so46586111lfk.6;
- Fri, 15 Oct 2021 14:07:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bC5/do6YaE4lPDo0l97sBVrMnwWkBfvui2f3ar33Hc4=;
- b=eYZpMby4iGA+yh0NGF+8l+PJgizeDoLcmjeHyV4wtpwUUMvIQ3AXzmd7sgsMKFaAEZ
- HGwEWFsnA97BC5nK+vWjNWmsqMZ1Im1rXEY1pB+nOsZ6WjOO8J5sIu6bld0z5TfTDJp4
- nW8LdiaYhaDDgRW3w1oYL3q+CgM6oBiybdB+JAvQLP5CDM1kzoLNiqOdZ5+q9aUqW5Fh
- LjA+irP2bBP9CUjvT5nVex/k8Ng3w7CGm6lIea3dkjWeVYyIajfpVaz4erDghnSWB9QH
- 1MWXfqPPPWTdbi+W92psmMlulWP2oV2+G6KaHPsRCyKzXxGhzPE7WaF0VB4CIkc9zhv7
- 9yUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bC5/do6YaE4lPDo0l97sBVrMnwWkBfvui2f3ar33Hc4=;
- b=HLaGKyhTlA63QZJT/HwCR3A7xis9HGOq+5dsG6V9CUdcYg0h/JfUqb1i2aTqMVIhk2
- SEiNWM24gFCoRXD9UO0QT677mrD+qlA0eP2F482w4MCRMi2aTa8NZ8WGua4GvcZ2yWcu
- c6H8PRE9mK+9nBLfzRrXr0T5FuYpW/JhCqRkWQJAtJXh1+/LbuzfnK4imcbCpxiv2ekv
- WZmM6or8txTG04E/goVg0fp0N27JqBatXd7xEN/vIJpOq86WzmRkjXK4r3rabhlBeeyu
- iA3App6q3mcl8FrrOnu1zGJfxv2mCGUF8MI3sMC3e7ol13a4UFD6CmcxtIwGqt1VlalS
- F0RQ==
-X-Gm-Message-State: AOAM533alQC3FUDNBbGG1BSjBFsZLZDQU0cU4U0VfJwBg/MFfrG2PZGF
- vJsPVMsEojCKpPzoF7Khm1M=
-X-Google-Smtp-Source: ABdhPJwkecQzQcx4sJp1365mMubW5NhJvbb3QNHQkc1WY9qZz7N2viBUYDjQts57NocZZ1Q8Ya36dg==
-X-Received: by 2002:a2e:bc03:: with SMTP id b3mr15169664ljf.54.1634332063982; 
- Fri, 15 Oct 2021 14:07:43 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id a29sm125876ljq.37.2021.10.15.14.07.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 14:07:43 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] ASoC: rockchip: i2s-tdm: Fix refcount test
-Date: Fri, 15 Oct 2021 23:07:29 +0200
-Message-Id: <20211015210730.308946-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.33.1
+ id 1mbUjM-008oYl-0V; Fri, 15 Oct 2021 21:27:09 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 04C9660F36;
+ Fri, 15 Oct 2021 21:27:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1634333227;
+ bh=dMAxjYXYMkKaHmAh6bSmJDsaAoZcAPf9FXj9DHK0xGc=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=qevXXEhpqVyvZ/n/fO7P9cQEp8zXn69UkBOSGTXaFmLGGCNwJqhxfW9luairtbPo6
+ L2jZg5RgwFC5du9ZEUkPvLOJI7MyoduVbFl/fe1zOShqWbj4NxLS/ZSXZ3xOSuvhGF
+ jVBWw5OTOd6bLOzQletvvUQf4gwRl24C4Li0D24XE1AVMCKUEmP4heSEVA+3Ldb/eo
+ DIkR25++Uf64xWP2empoxfkpqu5p84U1acVIayy89C0uH/AxFwwRk4lhgh6znkKjOJ
+ wyIQ0uGfuVvDKvJcJvitJpJU90yGMne/EkN75oKILmqkxWdRQAucWBlk0kYKi3qBIe
+ aaWmzcyeJfo3w==
 MIME-Version: 1.0
+In-Reply-To: <20211015120559.3515645-1-martin.blumenstingl@googlemail.com>
+References: <163425193558.1688384.15520943968787313145@swboyd.mtv.corp.google.com>
+ <20211015120559.3515645-1-martin.blumenstingl@googlemail.com>
+Subject: Re: [PATCH] clk: composite: Also consider .determine_rate for rate +
+ mux composites
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: heiko@sntech.de, knaerzche@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, martin.blumenstingl@googlemail.com
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Fri, 15 Oct 2021 14:27:05 -0700
+Message-ID: <163433322577.1688384.5988903670868801272@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211015_140746_296783_825AF1A0 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20211015_142708_116071_76DBC940 
+X-CRM114-Status: GOOD (  25.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,42 +76,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During development of V5 of the i2s-tdm patch series, I replaced
-the atomic refcount with a regular integer, as it was only ever
-accessed within a spinlock.
+Quoting Martin Blumenstingl (2021-10-15 05:05:59)
+> Commit 69a00fb3d69706 ("clk: divider: Implement and wire up
+> .determine_rate by default") switches clk_divider_ops to implement
+> .determine_rate by default. This breaks composite clocks with multiple
+> parents because clk-composite.c does not use the special handling for
+> mux + divider combinations anymore (that was restricted to rate clocks
+> which only implement .round_rate, but not .determine_rate).
+> 
+> Alex reports:
+>   This breaks lot of clocks for Rockchip which intensively uses
+>   composites,  i.e. those clocks will always stay at the initial parent,
+>   which in some cases  is the XTAL clock and I strongly guess it is the
+>   same for other platforms,  which use composite clocks having more than
+>   one parent (e.g. mediatek, ti ...)
+> 
+>   Example (RK3399)
+>   clk_sdio is set (initialized) with XTAL (24 MHz) as parent in u-boot.
+>   It will always stay at this parent, even if the mmc driver sets a rate
+>   of  200 MHz (fails, as the nature of things), which should switch it
+>   to   any of its possible parent PLLs defined in
+>   mux_pll_src_cpll_gpll_npll_ppll_upll_24m_p (see clk-rk3399.c)  - which
+>   never happens.
+> 
+> Restore the original behavior by changing the priority of the conditions
+> inside clk-composite.c. Now the special rate + mux case (with rate_ops
+> having a .round_rate - which is still the case for the default
+> clk_divider_ops) is preferred over rate_ops which have .determine_rate
+> defined (and not further considering the mux).
+> 
+> Fixes: 69a00fb3d69706 ("clk: divider: Implement and wire up .determine_rate by default")
+> Reported-by: Alex Bee <knaerzche@gmail.com>
+> Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> ---
+> Re-sending this as inline patch instead of attaching it.
+> 
+>  drivers/clk/clk-composite.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/clk/clk-composite.c b/drivers/clk/clk-composite.c
+> index 0506046a5f4b..510a9965633b 100644
+> --- a/drivers/clk/clk-composite.c
+> +++ b/drivers/clk/clk-composite.c
+> @@ -58,11 +58,8 @@ static int clk_composite_determine_rate(struct clk_hw *hw,
+>         long rate;
+>         int i;
+>  
+> -       if (rate_hw && rate_ops && rate_ops->determine_rate) {
+> -               __clk_hw_set_clk(rate_hw, hw);
+> -               return rate_ops->determine_rate(rate_hw, req);
+> -       } else if (rate_hw && rate_ops && rate_ops->round_rate &&
+> -                  mux_hw && mux_ops && mux_ops->set_parent) {
+> +       if (rate_hw && rate_ops && rate_ops->round_rate &&
+> +           mux_hw && mux_ops && mux_ops->set_parent) {
 
-Foolishly, I got the semantics of atomic_dec_and_test wrong, which
-resulted in a test for 0 actually becoming a test for >0.
+What do we do if rate_ops and mux_ops only implement determine_rate? It
+will fail right? We can't mesh them together in function. We should
+probably fail to let the composite clk be registered if that happens.
 
-The result was that setting the audio frequency broke; switching
-from 44100 Hz audio playback to 96000 Hz audio playback would
-garble the sound most unpleasantly.
-
-Fix this by checking for --refcount == 0, which is what it should
-have been all along.
-
-Fixes: 081068fd6414 ("ASoC: rockchip: add support for i2s-tdm controller")
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- sound/soc/rockchip/rockchip_i2s_tdm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index 396277eaa417..5d3abbada72a 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -408,7 +408,7 @@ static void rockchip_snd_txrxctrl(struct snd_pcm_substream *substream,
- 		else
- 			rockchip_disable_rde(i2s_tdm->regmap);
- 
--		if (--i2s_tdm->refcount) {
-+		if (--i2s_tdm->refcount == 0) {
- 			rockchip_snd_xfer_clear(i2s_tdm,
- 						I2S_CLR_TXC | I2S_CLR_RXC);
- 		}
--- 
-2.33.1
-
+>                 req->best_parent_hw = NULL;
+>  
+>                 if (clk_hw_get_flags(hw) & CLK_SET_RATE_NO_REPARENT) {
+> @@ -107,6 +104,9 @@ static int clk_composite_determine_rate(struct clk_hw *hw,
+>  
+>                 req->rate = best_rate;
+>                 return 0;
+> +       } else if (rate_hw && rate_ops && rate_ops->determine_rate) {
+> +               __clk_hw_set_clk(rate_hw, hw);
+> +               return rate_ops->determine_rate(rate_hw, req);
+>         } else if (mux_hw && mux_ops && mux_ops->determine_rate) {
+>                 __clk_hw_set_clk(mux_hw, hw);
+>                 return mux_ops->determine_rate(mux_hw, req);
+> -- 
+> 2.33.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
