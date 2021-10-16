@@ -2,84 +2,85 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C88EEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:56:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD792C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 12:16:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C6676108E
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:56:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C6676108E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5D8EF61164
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 12:16:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5D8EF61164
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gerhold.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oHLAadoyy1C6Pif+kz0rtLaxa8zG0NYZUQnuay0abJY=; b=mLPvlbGtMSCHDQ
-	8mCCQHRkKU5X/7dCB1+4Lri+70mtuDQZqtByRY0JaNqvmzHrhffRsyfjNS/iblZZ2xTQPjYk6dEs2
-	SBG9gAXLtqAM78Baxot01rKRL3E+a6OIeaA1Wzg/LXmWvEWk3Icbs3BOnrzKUMIiiEmdVQTEph7+g
-	CxER7LyCO8XJAJyulyEq4uOOM+LoUHBq3XrLYlT1YPgtpBk9yaEtVoc3MgNV4RJIdEF26QKOZ6fRU
-	R24u+jMO3JA+kF/X7t6jaO2OJxnpAHRBsWcA7Z+u2SfX7cN+0P99K7ttuUBv4FyAcq6CPpKX0Barc
-	5uVkXJoHFgixbcMNgcqA==;
+	List-Owner; bh=i2geBgSgfjxU87Cf9Nxbf/hgIBykSc4HBI06qSpcCq4=; b=2k3GXGp6msQtYz
+	pH/wOfzWvh1CZkOUVlq/6RwmM2su6qRixOiVw5gIhWpxrbAt5t8LA6aXHnmfhoQ5G6fwLYvABnOoM
+	ue9mmfTy66vFS9O0QNep5xFBMNQt8zWs9rSxGwZK4qXKPo91XEvDsQp3CIjwZAOe9QQpP5yZ6IXOL
+	raYonjXqipyAJZ+2KGag84bOPvksDa1wHOuNCuZVKyTxva62z9GqST5fkE7N6kWHykag6NFxGI9WQ
+	TIxXR5Oy5cYPEWcIFKeZeIAzaOylgJJlbShKPwPh+HSzbPTSPFsTZb2w205n/6sN0t2IMH4etttv9
+	9i34TV4GJiiA4C0684Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbhML-00APi9-Pt; Sat, 16 Oct 2021 10:56:13 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1mbic6-00AYov-Oy; Sat, 16 Oct 2021 12:16:34 +0000
+Received: from mo4-p02-ob.smtp.rzone.de ([85.215.255.83])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbhL1-00AP1R-FH; Sat, 16 Oct 2021 10:54:52 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id r19so52066304lfe.10;
- Sat, 16 Oct 2021 03:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wi/go2f54ZbFfXhsHlUc3orIWIsyjFbHjZPbW+7SsAo=;
- b=mm0NoWBd/yh40pLFmYxh4KC3h1iEnZuhD97go3OXuJu2tfNMkRp5zufOro5MtTKo80
- IVk5sOPQKgMaIKtZQk7xQJ88+qGdfeXuMI/RRN0qoZ5qhl1i6h82btNMHwV1KHpYvQX1
- sFY1Rniuur2YtuXXrWx4n3jC47xoEv9ff/N+ZFRqyRMmUrOD4pDSxU8XYXz9JCpDdBiU
- 2XObNpz9YGikcj3ilQxdfJhpBsI4JIfNkYAI+d86XrJV55EL6fzBJr7iWAet/pIxJr19
- /G8iZUMFuEAYuCiX0n7GoimqD75H6Lm+afrUBznQmO6M+zdsPNgjGA5M6U3Af/Uufb3l
- 9QZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wi/go2f54ZbFfXhsHlUc3orIWIsyjFbHjZPbW+7SsAo=;
- b=CyXL82S2kSkKzCI/PZ+ZZX5kLgWgQvMIYzGHSDWnxdI2XfYUuEHDPIG6KMSj65nA6c
- 0JC1NCEjdAOacsiPKH5Q2X94iSaqCm88GVRS83KOHeC332hQu4dwnfQd8IzJw9W1Rrug
- veCgSlfM9yWFtDjlhH0zj59gA7sE4ESgyU8o0Tbxl3Fbu8rg+qy8zA+QOEoS3lOiwO39
- KsWxtBxXxYT4V3kLMzIpeA9uwwMujRVJ6RiWkAM9aAAohQb4EV9JTsUimxIjQhXyQkza
- YtwHxucJX8q6E2PB5VQfnoJPEgWd3iAAWSdKK/vZ2CJfWasNbsqQsWat1JHY3qYhHyhw
- NamQ==
-X-Gm-Message-State: AOAM532PpODVlHrmF7pKaEusM0H7WYiKYqUsQxffB+CdmRqvN7Dtnlnz
- BzofNOFwca9q8spPw9vS8rg=
-X-Google-Smtp-Source: ABdhPJx0lDdpb3RXSHcHSQ++uPgL5lbFYzlr1mpV7ObRZ57GyoodD3AUn7zkOb63SBfoN/XoNEbOdw==
-X-Received: by 2002:a05:6512:150:: with SMTP id
- m16mr16762581lfo.331.1634381689825; 
- Sat, 16 Oct 2021 03:54:49 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id r3sm814224lfc.131.2021.10.16.03.54.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Oct 2021 03:54:49 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] arm64: dts: rockchip: Add analog audio on Quartz64
-Date: Sat, 16 Oct 2021 12:53:53 +0200
-Message-Id: <20211016105354.116513-5-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.33.1
-In-Reply-To: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
-References: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
+ id 1mbic3-00AYn1-JQ; Sat, 16 Oct 2021 12:16:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1634386534;
+ s=strato-dkim-0002; d=gerhold.net;
+ h=In-Reply-To:References:Message-ID:Subject:Cc:To:From:Date:Cc:Date:
+ From:Subject:Sender;
+ bh=FUfmuNlYDkfLlY4FpNd9yLg46kksRppBVzaePpjIQL8=;
+ b=oWOlFdOcdV5JBy2m8+oaiX1xjaeRqb2ZLH3x8YQhlSkx8dkCBpPfCXqXBe1ZU8cAp6
+ 8I07K9jJiKRVP7R+xo4/BgJWtX6t43a1Lo5BgbxmeSRMkmYoUilTaV1HIyKUWe7zpB+b
+ h/RfH5cuqmSvwISnkfI4+EPdcnv/LCCh9itNnGn9nrATAIl/JaacTeTM+O9qVcWkMGMs
+ tQGiHUXi6QWT+TMVDRL3fv/E1e0/z1S0itqaHP7/fufwCmeU4sW0lvDlp77gYucjTfJf
+ KXqOW6vhVVqicTjONVuCPmUbrsmw+L1Szd8UHg1AVdL2kXKrlmCh5FQxG5j0jJRgWOo1
+ wa2w==
+Authentication-Results: strato.com;
+    dkim=none
+X-RZG-AUTH: ":P3gBZUipdd93FF5ZZvYFPugejmSTVR2nRPhVOQ/OcYgojyw4j34+u267FZF9PwpcNKLUrK85/aY="
+X-RZG-CLASS-ID: mo00
+Received: from gerhold.net by smtp.strato.de (RZmta 47.33.8 AUTH)
+ with ESMTPSA id 301038x9GCFWNO7
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+ (Client did not present a certificate);
+ Sat, 16 Oct 2021 14:15:32 +0200 (CEST)
+Date: Sat, 16 Oct 2021 14:15:26 +0200
+From: Stephan Gerhold <stephan@gerhold.net>
+To: Arnaud Ferraris <arnaud.ferraris@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Martin Kepplinger <martink@posteo.de>, Heiko Stuebner <heiko@sntech.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Andy Gross <agross@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Chen-Yu Tsai <wens@csie.org>, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Lucas Stach <dev@lynxeye.de>, Angus Ainslie <angus@akkea.ca>,
+ Guido Gunther <agx@sigxcpu.org>, Tomasz Figa <tfiga@chromium.org>,
+ Johan Jonker <jbx6244@gmail.com>, Eddie Cai <eddie.cai.linux@gmail.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>,
+ Brian Norris <briannorris@chromium.org>, Dan Johansen <strit@manjaro.org>,
+ Simon South <simon@simonsouth.net>, Matthias Brugger <mbrugger@suse.com>
+Subject: Re: [PATCH 3/4] arm64: dts: qcom: add 'chassis-type' property
+Message-ID: <YWrCXnQ3XNocqXhz@gerhold.net>
+References: <20211016102025.23346-1-arnaud.ferraris@collabora.com>
+ <20211016102025.23346-4-arnaud.ferraris@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211016102025.23346-4-arnaud.ferraris@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_035451_587558_BCE42861 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20211016_051631_884911_E3C6DF56 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,76 +98,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On the Quartz64 Model A, the I2S1 TDM controller is connected
-to the rk817 codec in I2S mode. Enabling it and adding the
-necessary simple-sound-card and codec nodes allows for analog
-audio output on the PINE64 Quartz64 Model A SBC.
+On Sat, Oct 16, 2021 at 12:20:24PM +0200, Arnaud Ferraris wrote:
+> A new 'chassis-type' root node property has recently been approved for
+> the device-tree specification, in order to provide a simple way for
+> userspace to detect the device form factor and adjust their behavior
+> accordingly.
+> 
+> This patch fills in this property for end-user devices (such as laptops,
+> smartphones and tablets) based on Qualcomm ARM64 processors.
+> 
+> Signed-off-by: Arnaud Ferraris <arnaud.ferraris@collabora.com>
+> ---
+>  arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts            | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-asus-z00l.dts                  | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts                  | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-longcheer-l8150.dts            | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts            | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-samsung-a3u-eur.dts            | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-samsung-a5u-eur.dts            | 1 +
+>  arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts           | 1 +
+> [...]
+> 
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
+> index 670bd1bebd73..265e539e7e99 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-alcatel-idol347.dts
+> @@ -9,6 +9,7 @@
+>  / {
+>  	model = "Alcatel OneTouch Idol 3 (4.7)";
+>  	compatible = "alcatel,idol347", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-asus-z00l.dts b/arch/arm64/boot/dts/qcom/msm8916-asus-z00l.dts
+> index cee451e59385..6bc0a29d4b4f 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-asus-z00l.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-asus-z00l.dts
+> @@ -8,6 +8,7 @@
+>  / {
+>  	model = "Asus Zenfone 2 Laser";
+>  	compatible = "asus,z00l", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
+> index e0075b574190..42d93d3fba36 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-huawei-g7.dts
+> @@ -25,6 +25,7 @@
+>  / {
+>  	model = "Huawei Ascend G7";
+>  	compatible = "huawei,g7", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8150.dts b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8150.dts
+> index 30716eb8fb2d..9c83c96d2c8a 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8150.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8150.dts
+> @@ -11,6 +11,7 @@
+>  / {
+>  	model = "Longcheer L8150";
+>  	compatible = "longcheer,l8150", "qcom,msm8916-v1-qrd/9-v1", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
+> index 27845189ac2b..f9ce123471d4 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-longcheer-l8910.dts
+> @@ -10,6 +10,7 @@
+>  / {
+>  	model = "BQ Aquaris X5 (Longcheer L8910)";
+>  	compatible = "longcheer,l8910", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-samsung-a3u-eur.dts b/arch/arm64/boot/dts/qcom/msm8916-samsung-a3u-eur.dts
+> index 6cc2eaeb1d33..4ba11b020f9b 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-samsung-a3u-eur.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-samsung-a3u-eur.dts
+> @@ -7,6 +7,7 @@
+>  / {
+>  	model = "Samsung Galaxy A3U (EUR)";
+>  	compatible = "samsung,a3u-eur", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	reg_panel_vdd3: regulator-panel-vdd3 {
+>  		compatible = "regulator-fixed";
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-samsung-a5u-eur.dts b/arch/arm64/boot/dts/qcom/msm8916-samsung-a5u-eur.dts
+> index c2eff5aebf85..d978c9ac179d 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-samsung-a5u-eur.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-samsung-a5u-eur.dts
+> @@ -7,6 +7,7 @@
+>  / {
+>  	model = "Samsung Galaxy A5U (EUR)";
+>  	compatible = "samsung,a5u-eur", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	reg_touch_key: regulator-touch-key {
+>  		compatible = "regulator-fixed";
+> diff --git a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
+> index 4e20cc0008f7..69a44c6f57fc 100644
+> --- a/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
+> +++ b/arch/arm64/boot/dts/qcom/msm8916-wingtech-wt88047.dts
+> @@ -11,6 +11,7 @@
+>  / {
+>  	model = "Xiaomi Redmi 2 (Wingtech WT88047)";
+>  	compatible = "wingtech,wt88047", "qcom,msm8916";
+> +	chassis-type = "handset";
+>  
+>  	aliases {
+>  		serial0 = &blsp1_uart2;
 
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 31 ++++++++++++++++++-
- 1 file changed, 30 insertions(+), 1 deletion(-)
+FWIW:
+Reviewed-by: Stephan Gerhold <stephan@gerhold.net> # msm8916
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index a244f7b87e38..f1261f25cb35 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -58,6 +58,20 @@ led-diy {
- 		};
- 	};
- 
-+	rk817-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Analog RK817";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_8ch>;
-+		};
-+		simple-audio-card,codec {
-+			sound-dai = <&rk817>;
-+		};
-+	};
-+
- 	vcc12v_dcin: vcc12v_dcin {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc12v_dcin";
-@@ -199,8 +213,13 @@ rk817: pmic@20 {
- 		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
- 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
- 
-+		#sound-dai-cells = <0>;
-+		clock-names = "mclk";
-+		clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int_l>;
-+		pinctrl-0 = <&pmic_int_l>, <&i2s1m0_mclk>;
- 		rockchip,system-power-controller;
- 		wakeup-source;
- 		#clock-cells = <1>;
-@@ -392,6 +411,16 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2s1_8ch {
-+	status = "okay";
-+	rockchip,trcm-sync-tx-only;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s1m0_sclktx
-+		     &i2s1m0_lrcktx
-+		     &i2s1m0_sdi0
-+		     &i2s1m0_sdo0>;
-+};
-+
- &mdio1 {
- 	rgmii_phy1: ethernet-phy@0 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
--- 
-2.33.1
-
+Thanks for going through the work to add it to so many devices! :)
+Stephan
 
 _______________________________________________
 Linux-rockchip mailing list
