@@ -2,84 +2,88 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF3CDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94AC6C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 877B061163
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:15:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 877B061163
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4FEAF60E97
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4FEAF60E97
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3gT6WVwetkA8Yi7vOr52Td/iZoK/9suzc7oC+sQq2Cs=; b=ilPqm+xsWA8qBs
-	t8Kjv8C4AzAc84cpioPfy951vjcFy+393RAIMAlR32WMlutvLS8EzkyupFYfShL7eOBkg/eXZbRRT
-	2Kwu0JV6bIWG7WRNc3C+5ThXlmv+k69xSGnl8FN198/dJfEtOos7pLvp5UPyXakblht34Ipe0vhcA
-	s9uPQBMqe2Zhkr5GFjrODiLczDcCw9FGb4geXDKp8gy9rZ9zwI+Teft/5Gmn1k5oX4wDzKJPcOY8M
-	B9keuL0ngMTq4N0wmM4p5cwu8rX0TR9J1OOvOeliY2QnkuZiTHeiNH7MnaqP2R0hLBi8YXW8y86eT
-	mRJwSBpVX0CXvgMu8dxw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AqZLZYd7v2H6wfdoLCoxCsoCZcRbVNF6VCuG8uUkMI0=; b=M33jhQuK8UMZar
+	ekkLh7l1jKbQo4LROMGpaJiX/Tp7KjuUOlL1wc4spJObIL226KG4ci/xuPp4ZT1fhiJk1FGgx7ww8
+	yW6kwjGTJv8aqdFmWPyaAxNdqusgmNKz4NFR2F13PbeuemPYsnzJ69m6dioWcWRSWO6F9is3lc5/U
+	ot/HlZjvV5CBhpowPd8LklE4yKzy0STnIEL7OH/uHT0/JS7zaLX2EWt7L5YJG1ChogFFOiGrRbv+I
+	B5aMRoAB3uLX6HfovXbdCnmuZF+6Xat07sZbB8ZQ1u8VYnGg1ZzKb5T2vDTJQWoVs2sZCMQcykm1a
+	NcLnKfclcJQ7t4fSK/9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mblPB-00ArYl-Eh; Sat, 16 Oct 2021 15:15:25 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1mblt3-00AtOg-7T; Sat, 16 Oct 2021 15:46:17 +0000
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mblP8-00ArXI-Ah
- for linux-rockchip@lists.infradead.org; Sat, 16 Oct 2021 15:15:24 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id f11so7118954pfc.12
- for <linux-rockchip@lists.infradead.org>; Sat, 16 Oct 2021 08:15:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=54yvKUvR70e1EUwEjIQrkBtCHRmu0YRGTVj0j6VpK3k=;
- b=IysGORiq0W50u0akiTJ9sGN7Z9uuIDcmR686khN26vdHXQFuJn55dgb+npETZ86Uoh
- djy/tOVziUjsSsKRmrcVh3O6JPhchV2oc/0PetyLF3E0f189sqsTWlvfb+7gmXEM9HRn
- nKNZGUYgziwq6GFnJBUW0dl8FEC9IWAc9B3GQ=
+ id 1mblsr-00AtM5-1G; Sat, 16 Oct 2021 15:46:06 +0000
+Received: by mail-qt1-x834.google.com with SMTP id c20so11586047qtb.2;
+ Sat, 16 Oct 2021 08:46:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VxKkdzMBTPnwglERy6orEJxvMW5PnT3lhdonviWbxrA=;
+ b=jxAQLXRtafzAK2KPr8cXtf7HWx+MOpOfHAqdaFpBrvpRbFa6gmcD1nO7Rde/qXkcuq
+ 6+7laDGEiCNZJ1N/tdjHoyMlF7Mv+V2P8LqUT4hHYgWUQO/Fpr/0sWlTIQBTc8b02fC0
+ JY8tzTZjsBEGK6OUzb/01ra4NfypDVJAbBN3Fd+o18iYDvr7x3+xpEWB0brozXHlMq3k
+ KKGL1LCxcuMel0u7mQz8zHgCtEttsXQzJG0u9ayT9VyxNQHyL7677oyewGRRxkw4OikX
+ mZHzrX7vHKS75AW34mOM6mNbmjZs5O7eEh8b0gXbwU7nwf+q4vUYw7Q9oF05Gn+vQZnk
+ AyOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=54yvKUvR70e1EUwEjIQrkBtCHRmu0YRGTVj0j6VpK3k=;
- b=O2ChczjLBjy2IjNnKCLr/PRG01Aj9/UZEOTFMZ7Y3/Wdm0YoKfMfYAH3IprfpL7p2F
- WYh9GE83+mxC3b3IW/YWVDHc3EJYPxO3QNlCdZaKD6Ceb8Z/FeRpReIX0E1YYzw6MCoK
- 1VTgSbSWQUUSz75XJ2hDy9gQunVjcVptV9uTV2H+cxgJcP62QV7Q8yDkhedbHlnXAgVq
- 1hjy4e4QVreJ5piz3IpfkJB6vVHiteYrbROXxokod+NYaVBXUjhw01XCPc+RxsDiEeQW
- wHUtBy+hLfbPXzT94raqanN8yHGz+oYRhmzbDw5X7Ho/HOLJEMwjq9IKcu0pUlUbWCHm
- rjog==
-X-Gm-Message-State: AOAM533myD73FnyeHYtt+it72qhyataAJjCg7gXJMci7N2lQ6fe+01CQ
- esP3gl9ceines8x0EkY59s9hnmg9E7JI4FIEPGg4cQ==
-X-Google-Smtp-Source: ABdhPJy/nsmwbNl980n8mO/eYo1HFVH3q5bZkzrm1syD7NgEFUwCZ6QMxfbKqYniPiykBAAfioXb3n3ioZcUYQ8uhes=
-X-Received: by 2002:a63:334c:: with SMTP id z73mr14603487pgz.160.1634397320877; 
- Sat, 16 Oct 2021 08:15:20 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VxKkdzMBTPnwglERy6orEJxvMW5PnT3lhdonviWbxrA=;
+ b=4toE+BaIIpjpIj0fWpwFWa9lXLXYIB2bSNUNMn0Ez2PLEFIlGa1f5Ua8iwG891tGcr
+ TkSC5zacyAUlcTGxFPqF5Sq+a5gJX9wV9uyBMT8vL5/RTKJIgcTt3HOos9XTm5U0GGzU
+ vFabekgu/O8NXbCybUzFjK+UvWEFZekTgFG01syAg7zmx1ELvknP6IU5lJdG+E4Sfd+W
+ HBlzTVsGUA0JowtFg5iUlSltjwAejOCgG4ULpE7kHwQZD6BaTkAGmweppNKk3O/JlhEx
+ Wh9c0qw7jzrG4fRcQhEgEfcUyTuTHk04pV/fT+XqUq9eP1q4uzR66nUqeyp2TIJXTKjk
+ n8ow==
+X-Gm-Message-State: AOAM533QXcaZOV4dLcnL/RMGv38csLL33dBZFgwgH2ULsuBlqeo2uhxg
+ ojcbUXYgz9eYsr0KRnq8o5A=
+X-Google-Smtp-Source: ABdhPJwKvMVm20Ye1VKw6BXYU2GSQWOw8DtwpsyBUc49NqOoOizAZ5LoeP1JiQEFvAzhy2VJvCx1Sg==
+X-Received: by 2002:a05:622a:20d:: with SMTP id
+ b13mr10337813qtx.117.1634399163014; 
+ Sat, 16 Oct 2021 08:46:03 -0700 (PDT)
+Received: from localhost.localdomain (pppoe-209-91-167-254.vianet.ca.
+ [209.91.167.254])
+ by smtp.gmail.com with ESMTPSA id i13sm4047978qtp.87.2021.10.16.08.46.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 16 Oct 2021 08:46:02 -0700 (PDT)
+From: Trevor Woerner <twoerner@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
+ David Wu <david.wu@rock-chips.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Cameron Nemo <cnemo@tutanota.com>, Robin Murphy <robin.murphy@arm.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS), 
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+ linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH 1/2] arm64: dts: rk3328: add gpu opp table
+Date: Sat, 16 Oct 2021 11:45:44 -0400
+Message-Id: <20211016154548.29555-1-twoerner@gmail.com>
+X-Mailer: git-send-email 2.30.0.rc0
 MIME-Version: 1.0
-References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
- <62c3e6bccfb3d8c0ef6190861a8608abff34e885.camel@collabora.com>
-In-Reply-To: <62c3e6bccfb3d8c0ef6190861a8608abff34e885.camel@collabora.com>
-From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Date: Sat, 16 Oct 2021 17:15:09 +0200
-Message-ID: <CAOf5uwkuBYuFaoakiBvPb9eomSDdPWOL01w0=-e4Ud-h8QafbQ@mail.gmail.com>
-Subject: Re: [PATCH 0/5] Rockchip PX30 RGA and VPU support
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
- linux-media <linux-media@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- Jacob Chen <jacob-chen@iotwrt.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Alex Bee <knaerzche@gmail.com>,
- Chris Healy <cphealy@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_081522_542192_0546A501 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20211016_084605_115042_6DABB548 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,56 +101,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all
+Add an operating-points table and cooling entry to the GPU on the
+RK3328 SoC to improve its performance. According to its datasheet[1]
+the maximum frequency of the Mali-450 MP2 GPU found on the RK3328 SoC
+is 500MHz.
 
-On Mon, Jun 21, 2021 at 5:00 AM Ezequiel Garcia <ezequiel@collabora.com> wrote:
->
-> Hi Paul,
->
-> On Thu, 2021-01-07 at 14:40 +0100, Paul Kocialkowski wrote:
-> > This series adds the required bits for RGA and VPU support on the
-> > Rockchip PX30 SoC.
-> >
->
-> Do you plan to resend this series?
->
-> Alex recently renamed [1] things so some tweaking will be needed,
-> but it shouldn't be complicated.
->
-> [1] https://lore.kernel.org/linux-media/20210614213215.99389-1-knaerzche@gmail.com/
->
-> It would be great to have support RK3326 and PX30 :)
+On my rock64 device, under x11, glmark2-es2 performance increased from
+around 60 to just over 100. Same device running glmark2-es2 under
+wayland/weston improved from just over 100 to just over 200.
 
-I can re-spin and test it, but I don't find the whole thread
+[1] https://rockchip.fr/RK3328%20datasheet%20V1.2.pdf
 
-Michael
+Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 26 +++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
 
->
-> Kindly,
-> Ezequiel
->
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 8c821acb21ff..5e1dcf71e414 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -532,7 +532,8 @@ map0 {
+ 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+ 							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+-							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+ 					contribution = <4096>;
+ 				};
+ 			};
+@@ -617,6 +618,29 @@ gpu: gpu@ff300000 {
+ 		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
+ 		clock-names = "bus", "core";
+ 		resets = <&cru SRST_GPU_A>;
++		operating-points-v2 = <&gpu_opp_table>;
++		#cooling-cells = <2>;
++	};
++
++	gpu_opp_table: gpu-opp-table {
++		compatible = "operating-points-v2";
++
++		opp-200000000 {
++			opp-hz = /bits/ 64 <200000000>;
++			opp-microvolt = <1100000>;
++		};
++		opp-300000000 {
++			opp-hz = /bits/ 64 <300000000>;
++			opp-microvolt = <1100000>;
++		};
++		opp-400000000 {
++			opp-hz = /bits/ 64 <400000000>;
++			opp-microvolt = <1100000>;
++		};
++		opp-500000000 {
++			opp-hz = /bits/ 64 <500000000>;
++			opp-microvolt = <1100000>;
++		};
+ 	};
+ 
+ 	h265e_mmu: iommu@ff330200 {
 -- 
-Michael Nazzareno Trimarchi
-Co-Founder & Chief Executive Officer
-M. +39 347 913 2170
-michael@amarulasolutions.com
-__________________________________
+2.30.0.rc0
 
-Amarula Solutions BV
-Joop Geesinkweg 125, 1114 AB, Amsterdam, NL
-T. +31 (0)85 111 9172
-info@amarulasolutions.com
-www.amarulasolutions.com
 
 _______________________________________________
 Linux-rockchip mailing list
