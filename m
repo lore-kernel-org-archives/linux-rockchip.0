@@ -2,14 +2,14 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADF09C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:55:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C88EEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:56:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78C0B611C3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:55:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78C0B611C3
+	by mail.kernel.org (Postfix) with ESMTPS id 8C6676108E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 10:56:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C6676108E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,67 +18,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UXViivBM/j99BABDBvWQKuwCMNbJuckR8/bQxnhhv10=; b=MzvcHHxhj/tj+m
-	6V2HpqZqqa5hzhBhYzcJWXVdr+YzS63cCjVwhWIenvfjokQtM/KdwtIrgQEP2VhRCXGAtFzYwpT+j
-	U5hZShO/viZRMuSYTb5Zb3iXtDn710qG1AILkwr2dydaMNlYKm7MVWC7B8IdkDd8G1uS1ScmClX3B
-	TVph4mTjCchJb2ol6gM5tmssA5IA9Ct+oUQ61ZZ7dOOdGNZNMM/F68rYlGnFhSNTMTxHN52yRacKr
-	Ar8yE1prU5ZZSd93/LGib3T91/53SexpPEFLkFop3UprTiGki1tLVQ6b68uki8D/jn/cI78EE/xl4
-	EdCNj4d8YCZmLUklPamg==;
+	List-Owner; bh=oHLAadoyy1C6Pif+kz0rtLaxa8zG0NYZUQnuay0abJY=; b=mLPvlbGtMSCHDQ
+	8mCCQHRkKU5X/7dCB1+4Lri+70mtuDQZqtByRY0JaNqvmzHrhffRsyfjNS/iblZZ2xTQPjYk6dEs2
+	SBG9gAXLtqAM78Baxot01rKRL3E+a6OIeaA1Wzg/LXmWvEWk3Icbs3BOnrzKUMIiiEmdVQTEph7+g
+	CxER7LyCO8XJAJyulyEq4uOOM+LoUHBq3XrLYlT1YPgtpBk9yaEtVoc3MgNV4RJIdEF26QKOZ6fRU
+	R24u+jMO3JA+kF/X7t6jaO2OJxnpAHRBsWcA7Z+u2SfX7cN+0P99K7ttuUBv4FyAcq6CPpKX0Barc
+	5uVkXJoHFgixbcMNgcqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbhLt-00APR9-F0; Sat, 16 Oct 2021 10:55:45 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1mbhML-00APi9-Pt; Sat, 16 Oct 2021 10:56:13 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbhKu-00AOy9-Ug; Sat, 16 Oct 2021 10:54:46 +0000
-Received: by mail-lf1-x129.google.com with SMTP id u21so50043088lff.8;
- Sat, 16 Oct 2021 03:54:44 -0700 (PDT)
+ id 1mbhL1-00AP1R-FH; Sat, 16 Oct 2021 10:54:52 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id r19so52066304lfe.10;
+ Sat, 16 Oct 2021 03:54:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mlMdlKBxKYJqrC47Y5BkYGrC93FP3AcHRCKSFGPfaNk=;
- b=jal6pSrzEiKWtd3gwJbzAyVpbwT54fcFA0tyX+Z7NG8h1poK9FZy0NOagT8pyK92Jq
- yvCN1lmTEGOl7nXvRRC2BEAfTPYURqZVJQlGW9yaPd17VqZl85r0Kab8ZWOsSccxEG13
- /wQPBcx/4+pW4KZoATEEqcJL0bCgle21lfzv2YMl9DsDm1iLiwK3tBxKF7ls2bzKtLPY
- J4PHcnKkETud9wMVMZazarhv7vgtWHRdgLqCR6Hwf07W6k3dkXYcjFDbzFKzOB2tQcMB
- VRvS/AzEvpPoMOqLrq9RqFfk0DYcxrwtnvVXYD79ii14bUP4DiJL9gncGPij5GzdWkxs
- lPCA==
+ bh=wi/go2f54ZbFfXhsHlUc3orIWIsyjFbHjZPbW+7SsAo=;
+ b=mm0NoWBd/yh40pLFmYxh4KC3h1iEnZuhD97go3OXuJu2tfNMkRp5zufOro5MtTKo80
+ IVk5sOPQKgMaIKtZQk7xQJ88+qGdfeXuMI/RRN0qoZ5qhl1i6h82btNMHwV1KHpYvQX1
+ sFY1Rniuur2YtuXXrWx4n3jC47xoEv9ff/N+ZFRqyRMmUrOD4pDSxU8XYXz9JCpDdBiU
+ 2XObNpz9YGikcj3ilQxdfJhpBsI4JIfNkYAI+d86XrJV55EL6fzBJr7iWAet/pIxJr19
+ /G8iZUMFuEAYuCiX0n7GoimqD75H6Lm+afrUBznQmO6M+zdsPNgjGA5M6U3Af/Uufb3l
+ 9QZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=mlMdlKBxKYJqrC47Y5BkYGrC93FP3AcHRCKSFGPfaNk=;
- b=x4ZR4cu3vaMesCGKrUIY2LhBENrVFbhdkzeS9kUalUhOid3sTd47edjmnS3878+lop
- s+0WvnX+TFqrDpEVmDCEFNqSsLvRgQk8peDx3lfpupd/apX/tX2vLgXhwAfsS2XcOz22
- XlvqlWQqZqB6WtIq4a6GOJ8H9O+huQer4EAis5aAuvPOMD3xCxG6KYgT6/CoQX1IFFtP
- jTwqPWp2xASXAKDAo+r1GQX0KZnErYIT0D2urVzV+mjQIur7YT4fWMMIGkknyYWhNEOc
- nIdw/OMbRKZdI9vPnOB/DlKyBl5wYkVB6hHD5N+6zdts0qc9rjSFgEfFvXdUZxPRhdwA
- pmEw==
-X-Gm-Message-State: AOAM532dGhCVsYpYTRKhXKzQobtwFFoARlWs9gWsZvXXbHO7Tx2+sY0h
- RkIBQZLvXpTfOUXAZfqgL5k=
-X-Google-Smtp-Source: ABdhPJxDd7IkXDDhRM+GlrOeQ0wUjy0PbUZHpC3Dk6SdPq8OdfcDc7aYIFIAv7CV7o/cMD23qGCxkA==
-X-Received: by 2002:a2e:9c49:: with SMTP id t9mr19193186ljj.86.1634381683146; 
- Sat, 16 Oct 2021 03:54:43 -0700 (PDT)
+ bh=wi/go2f54ZbFfXhsHlUc3orIWIsyjFbHjZPbW+7SsAo=;
+ b=CyXL82S2kSkKzCI/PZ+ZZX5kLgWgQvMIYzGHSDWnxdI2XfYUuEHDPIG6KMSj65nA6c
+ 0JC1NCEjdAOacsiPKH5Q2X94iSaqCm88GVRS83KOHeC332hQu4dwnfQd8IzJw9W1Rrug
+ veCgSlfM9yWFtDjlhH0zj59gA7sE4ESgyU8o0Tbxl3Fbu8rg+qy8zA+QOEoS3lOiwO39
+ KsWxtBxXxYT4V3kLMzIpeA9uwwMujRVJ6RiWkAM9aAAohQb4EV9JTsUimxIjQhXyQkza
+ YtwHxucJX8q6E2PB5VQfnoJPEgWd3iAAWSdKK/vZ2CJfWasNbsqQsWat1JHY3qYhHyhw
+ NamQ==
+X-Gm-Message-State: AOAM532PpODVlHrmF7pKaEusM0H7WYiKYqUsQxffB+CdmRqvN7Dtnlnz
+ BzofNOFwca9q8spPw9vS8rg=
+X-Google-Smtp-Source: ABdhPJx0lDdpb3RXSHcHSQ++uPgL5lbFYzlr1mpV7ObRZ57GyoodD3AUn7zkOb63SBfoN/XoNEbOdw==
+X-Received: by 2002:a05:6512:150:: with SMTP id
+ m16mr16762581lfo.331.1634381689825; 
+ Sat, 16 Oct 2021 03:54:49 -0700 (PDT)
 Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
  [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id r3sm814224lfc.131.2021.10.16.03.54.42
+ by smtp.gmail.com with ESMTPSA id r3sm814224lfc.131.2021.10.16.03.54.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Oct 2021 03:54:42 -0700 (PDT)
+ Sat, 16 Oct 2021 03:54:49 -0700 (PDT)
 From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] arm64: dts: rockchip: Add i2s1 on rk356x
-Date: Sat, 16 Oct 2021 12:53:52 +0200
-Message-Id: <20211016105354.116513-4-frattaroli.nicolas@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: Add analog audio on Quartz64
+Date: Sat, 16 Oct 2021 12:53:53 +0200
+Message-Id: <20211016105354.116513-5-frattaroli.nicolas@gmail.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
 References: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_035445_026939_ADD990D9 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20211016_035451_587558_BCE42861 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,54 +97,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the necessary device tree node on rk3566 and rk3568
-to enable the I2S1 TDM audio controller.
-
-I2S0 has not been added, as it is connected to HDMI and there is
-no way to test that it's working without a functioning video
-clock (read: VOP2 driver).
+On the Quartz64 Model A, the I2S1 TDM controller is connected
+to the rk817 codec in I2S mode. Enabling it and adding the
+necessary simple-sound-card and codec nodes allows for analog
+audio output on the PINE64 Quartz64 Model A SBC.
 
 Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 25 ++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 31 ++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index b721a34ffa8c..dbe0123e74e8 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -608,6 +608,31 @@ sdhci: mmc@fe310000 {
- 		status = "disabled";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index a244f7b87e38..f1261f25cb35 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -58,6 +58,20 @@ led-diy {
+ 		};
  	};
  
-+	i2s1_8ch: i2s@fe410000 {
-+		compatible = "rockchip,rk3568-i2s-tdm";
-+		reg = <0x0 0xfe410000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
-+		assigned-clocks = <&cru CLK_I2S1_8CH_TX_SRC>, <&cru CLK_I2S1_8CH_RX_SRC>;
-+		assigned-clock-rates = <1188000000>, <1188000000>;
-+		clocks = <&cru MCLK_I2S1_8CH_TX>, <&cru MCLK_I2S1_8CH_RX>,
-+		<&cru HCLK_I2S1_8CH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk";
-+		dmas = <&dmac1 3>, <&dmac1 2>;
-+		dma-names = "rx", "tx";
-+		resets = <&cru SRST_M_I2S1_8CH_TX>, <&cru SRST_M_I2S1_8CH_RX>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2s1m0_sclktx &i2s1m0_sclkrx
-+			     &i2s1m0_lrcktx &i2s1m0_lrckrx
-+			     &i2s1m0_sdi0   &i2s1m0_sdi1
-+			     &i2s1m0_sdi2   &i2s1m0_sdi3
-+			     &i2s1m0_sdo0   &i2s1m0_sdo1
-+			     &i2s1m0_sdo2   &i2s1m0_sdo3>;
-+		status = "disabled";
++	rk817-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,name = "Analog RK817";
++		simple-audio-card,mclk-fs = <256>;
++
++		simple-audio-card,cpu {
++			sound-dai = <&i2s1_8ch>;
++		};
++		simple-audio-card,codec {
++			sound-dai = <&rk817>;
++		};
 +	};
 +
- 	dmac0: dmac@fe530000 {
- 		compatible = "arm,pl330", "arm,primecell";
- 		reg = <0x0 0xfe530000 0x0 0x4000>;
+ 	vcc12v_dcin: vcc12v_dcin {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc12v_dcin";
+@@ -199,8 +213,13 @@ rk817: pmic@20 {
+ 		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
+ 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
+ 
++		#sound-dai-cells = <0>;
++		clock-names = "mclk";
++		clocks = <&cru I2S1_MCLKOUT_TX>;
++		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
++		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&pmic_int_l>;
++		pinctrl-0 = <&pmic_int_l>, <&i2s1m0_mclk>;
+ 		rockchip,system-power-controller;
+ 		wakeup-source;
+ 		#clock-cells = <1>;
+@@ -392,6 +411,16 @@ regulator-state-mem {
+ 	};
+ };
+ 
++&i2s1_8ch {
++	status = "okay";
++	rockchip,trcm-sync-tx-only;
++	pinctrl-names = "default";
++	pinctrl-0 = <&i2s1m0_sclktx
++		     &i2s1m0_lrcktx
++		     &i2s1m0_sdi0
++		     &i2s1m0_sdo0>;
++};
++
+ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@0 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
 2.33.1
 
