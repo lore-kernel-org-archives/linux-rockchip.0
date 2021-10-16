@@ -2,88 +2,86 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94AC6C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83F4DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4FEAF60E97
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4FEAF60E97
+	by mail.kernel.org (Postfix) with ESMTPS id 438C260F70
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 15:46:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 438C260F70
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AqZLZYd7v2H6wfdoLCoxCsoCZcRbVNF6VCuG8uUkMI0=; b=M33jhQuK8UMZar
-	ekkLh7l1jKbQo4LROMGpaJiX/Tp7KjuUOlL1wc4spJObIL226KG4ci/xuPp4ZT1fhiJk1FGgx7ww8
-	yW6kwjGTJv8aqdFmWPyaAxNdqusgmNKz4NFR2F13PbeuemPYsnzJ69m6dioWcWRSWO6F9is3lc5/U
-	ot/HlZjvV5CBhpowPd8LklE4yKzy0STnIEL7OH/uHT0/JS7zaLX2EWt7L5YJG1ChogFFOiGrRbv+I
-	B5aMRoAB3uLX6HfovXbdCnmuZF+6Xat07sZbB8ZQ1u8VYnGg1ZzKb5T2vDTJQWoVs2sZCMQcykm1a
-	NcLnKfclcJQ7t4fSK/9g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Mi1R2QladhBEuGUwC4bP50g10YM+JfJOO6L8E7y1sAA=; b=2mfVy/6CuUQAKe
+	NGdFGlq9MnyhZrhshJqr52FVDLXJ0L8Bporz+eoSz4DQJRAitHwtOZp2a/Ka/578iEFV7pgwO6e2m
+	HV0AleLL8QMKuaveuZdMHj+gFipKoBzgJrY6qzHYg4XeKniRDnVafxte34a7D/NyIOT7ZxLPJbAfZ
+	ZJho3otLilV4pQa5uv1oOaSFaXK2lSogda7mUPbq6Oi71elZTJf2Ll9jjb+v0a+gm8XFDm7qlEbwX
+	alGpNAkCLlhzg/pvXhOQv4zslrRXZ2knOzf3wSrGBVAmJbrgVV6JMkheluYHuVU1VGpuyNW2pRs4/
+	J0Bid5hDTWEOwMrz0CsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mblt3-00AtOg-7T; Sat, 16 Oct 2021 15:46:17 +0000
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+	id 1mbltD-00AtRM-6z; Sat, 16 Oct 2021 15:46:27 +0000
+Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mblsr-00AtM5-1G; Sat, 16 Oct 2021 15:46:06 +0000
-Received: by mail-qt1-x834.google.com with SMTP id c20so11586047qtb.2;
- Sat, 16 Oct 2021 08:46:04 -0700 (PDT)
+ id 1mblst-00AtMt-Ol; Sat, 16 Oct 2021 15:46:08 +0000
+Received: by mail-qk1-x72e.google.com with SMTP id a13so1625473qkg.11;
+ Sat, 16 Oct 2021 08:46:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VxKkdzMBTPnwglERy6orEJxvMW5PnT3lhdonviWbxrA=;
- b=jxAQLXRtafzAK2KPr8cXtf7HWx+MOpOfHAqdaFpBrvpRbFa6gmcD1nO7Rde/qXkcuq
- 6+7laDGEiCNZJ1N/tdjHoyMlF7Mv+V2P8LqUT4hHYgWUQO/Fpr/0sWlTIQBTc8b02fC0
- JY8tzTZjsBEGK6OUzb/01ra4NfypDVJAbBN3Fd+o18iYDvr7x3+xpEWB0brozXHlMq3k
- KKGL1LCxcuMel0u7mQz8zHgCtEttsXQzJG0u9ayT9VyxNQHyL7677oyewGRRxkw4OikX
- mZHzrX7vHKS75AW34mOM6mNbmjZs5O7eEh8b0gXbwU7nwf+q4vUYw7Q9oF05Gn+vQZnk
- AyOQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=NJw7aF7DxG9NnVA6g34yZ865pnpXfhLPwQt1JZttLHs=;
+ b=nSufe+7arm6icB5EEbIr121817RNffkcgx+AQmFpYuKTO3aikT4ueYPebn3ZFOxxiW
+ mG6KUJgSOx3RDjzP+jyLVSUKfuZz8ea7WXfRj8pLCHP6BNYA2X1aG4vjdI+3wt1MpZU3
+ XXaOBgViUkIX9QpXx6hmGYrkHzwKcO76ipcp7Fwdr/MuTIcePtkMSpeMgH1SIm+xUn1c
+ EJfejFPIDA1tp7R92Z7vW0uHb5h9bBhcHubNe4YrS+VNJb5ANxzjDAS457f51NYKyOBd
+ UUjvCL9irESOLxFmI0VRjRSlFXWfULZTMEKfYcy8AKtk8AxaIcUYy/T8ck6NNqGMthk6
+ ATjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=VxKkdzMBTPnwglERy6orEJxvMW5PnT3lhdonviWbxrA=;
- b=4toE+BaIIpjpIj0fWpwFWa9lXLXYIB2bSNUNMn0Ez2PLEFIlGa1f5Ua8iwG891tGcr
- TkSC5zacyAUlcTGxFPqF5Sq+a5gJX9wV9uyBMT8vL5/RTKJIgcTt3HOos9XTm5U0GGzU
- vFabekgu/O8NXbCybUzFjK+UvWEFZekTgFG01syAg7zmx1ELvknP6IU5lJdG+E4Sfd+W
- HBlzTVsGUA0JowtFg5iUlSltjwAejOCgG4ULpE7kHwQZD6BaTkAGmweppNKk3O/JlhEx
- Wh9c0qw7jzrG4fRcQhEgEfcUyTuTHk04pV/fT+XqUq9eP1q4uzR66nUqeyp2TIJXTKjk
- n8ow==
-X-Gm-Message-State: AOAM533QXcaZOV4dLcnL/RMGv38csLL33dBZFgwgH2ULsuBlqeo2uhxg
- ojcbUXYgz9eYsr0KRnq8o5A=
-X-Google-Smtp-Source: ABdhPJwKvMVm20Ye1VKw6BXYU2GSQWOw8DtwpsyBUc49NqOoOizAZ5LoeP1JiQEFvAzhy2VJvCx1Sg==
-X-Received: by 2002:a05:622a:20d:: with SMTP id
- b13mr10337813qtx.117.1634399163014; 
- Sat, 16 Oct 2021 08:46:03 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=NJw7aF7DxG9NnVA6g34yZ865pnpXfhLPwQt1JZttLHs=;
+ b=u9fHH4bFepKr26h2BndpsMqIZCx10PoMSooWVSnZUEuIGdzaFDPgi5SXgqz7w7Y7d2
+ tTJ84v6cWWBav/70h3EYRQ6aJJ0YbxLFY5p2JiCbrbBZF3WeBRJUXxePm9rAusN5YS/T
+ RSA+qL1O31eyu2yuCXA37NmV3OoRyt72r0HMftGMPDLwL8xpGPkBZnn2uiMH4sUymqCi
+ Tr1iwEdChlIKbF74cpW+ybzoxAPOoy6QOTM5Sd+qQwObJqNXAmrZhllebIdJhmvjCi5q
+ m8c3iZffCgtuVOvlG9WHPRER1Wc++yEHN9b8qRsPRbfrt1n00gpuSooe9Y4kt6TT6uku
+ peYw==
+X-Gm-Message-State: AOAM531Hr1w85MAynZXpqwKXyVfW/o9sLgRgn+1EL3NaxbwkLNr945kS
+ iKNvAF9S8ghN1eJeRZPcz8s=
+X-Google-Smtp-Source: ABdhPJzwHdseQdrE783rhDJjxBOWvnkcfPzKhbI8sgu8Ytmb+boDfLWyTDwEIjUoJ7HydBCy8oAoKA==
+X-Received: by 2002:a37:aa07:: with SMTP id t7mr14980731qke.158.1634399166625; 
+ Sat, 16 Oct 2021 08:46:06 -0700 (PDT)
 Received: from localhost.localdomain (pppoe-209-91-167-254.vianet.ca.
  [209.91.167.254])
- by smtp.gmail.com with ESMTPSA id i13sm4047978qtp.87.2021.10.16.08.46.01
+ by smtp.gmail.com with ESMTPSA id i13sm4047978qtp.87.2021.10.16.08.46.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Oct 2021 08:46:02 -0700 (PDT)
+ Sat, 16 Oct 2021 08:46:06 -0700 (PDT)
 From: Trevor Woerner <twoerner@gmail.com>
 To: linux-kernel@vger.kernel.org
 Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@csie.org>,
- David Wu <david.wu@rock-chips.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Cameron Nemo <cnemo@tutanota.com>, Robin Murphy <robin.murphy@arm.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
+ Katsuhiro Suzuki <katsuhiro@katsuster.net>, Chen-Yu Tsai <wens@csie.org>,
+ Cameron Nemo <cnemo@tutanota.com>,
  devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
  BINDINGS), 
  linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
  linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
-Subject: [PATCH 1/2] arm64: dts: rk3328: add gpu opp table
-Date: Sat, 16 Oct 2021 11:45:44 -0400
-Message-Id: <20211016154548.29555-1-twoerner@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rock64: add gpu regulator
+Date: Sat, 16 Oct 2021 11:45:45 -0400
+Message-Id: <20211016154548.29555-2-twoerner@gmail.com>
 X-Mailer: git-send-email 2.30.0.rc0
+In-Reply-To: <20211016154548.29555-1-twoerner@gmail.com>
+References: <20211016154548.29555-1-twoerner@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_084605_115042_6DABB548 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20211016_084607_826702_54766BF0 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,66 +99,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add an operating-points table and cooling entry to the GPU on the
-RK3328 SoC to improve its performance. According to its datasheet[1]
-the maximum frequency of the Mali-450 MP2 GPU found on the RK3328 SoC
-is 500MHz.
-
-On my rock64 device, under x11, glmark2-es2 performance increased from
-around 60 to just over 100. Same device running glmark2-es2 under
-wayland/weston improved from just over 100 to just over 200.
-
-[1] https://rockchip.fr/RK3328%20datasheet%20V1.2.pdf
+Add a regulator for the GPU in order to properly make use of the newly added
+operations-table.
 
 Signed-off-by: Trevor Woerner <twoerner@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 26 +++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 8c821acb21ff..5e1dcf71e414 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -532,7 +532,8 @@ map0 {
- 					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
- 							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
--							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-+							 <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
- 					contribution = <4096>;
- 				};
- 			};
-@@ -617,6 +618,29 @@ gpu: gpu@ff300000 {
- 		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
- 		clock-names = "bus", "core";
- 		resets = <&cru SRST_GPU_A>;
-+		operating-points-v2 = <&gpu_opp_table>;
-+		#cooling-cells = <2>;
-+	};
-+
-+	gpu_opp_table: gpu-opp-table {
-+		compatible = "operating-points-v2";
-+
-+		opp-200000000 {
-+			opp-hz = /bits/ 64 <200000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+		opp-300000000 {
-+			opp-hz = /bits/ 64 <300000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+		opp-400000000 {
-+			opp-hz = /bits/ 64 <400000000>;
-+			opp-microvolt = <1100000>;
-+		};
-+		opp-500000000 {
-+			opp-hz = /bits/ 64 <500000000>;
-+			opp-microvolt = <1100000>;
-+		};
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index 1b0f7e4551ea..e76673d5fdc5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -133,6 +133,10 @@ &cpu3 {
+ 	cpu-supply = <&vdd_arm>;
+ };
  
- 	h265e_mmu: iommu@ff330200 {
++&gpu {
++	mali-supply = <&vdd_logic>;
++};
++
+ &emmc {
+ 	bus-width = <8>;
+ 	cap-mmc-highspeed;
 -- 
 2.30.0.rc0
 
