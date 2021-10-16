@@ -2,14 +2,14 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1620C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3A00C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4824261040
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4824261040
+	by mail.kernel.org (Postfix) with ESMTPS id 5FDD860F11
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5FDD860F11
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,40 +18,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a85rapoJYE6Q7lvS2SchQrkcI0IIUmsCE2tOsZWOp/A=; b=1N6coFaZRkpeLu
-	sBS0NxU/LQWbNZZQP+1LzfX/qGHm81VrkbRqF0LeHL9O5VyjgpHlkhobvDUT96mL0aOPLpPk9HeEe
-	+sTZDOD2EQxlFj8v8+FUlFrzNpojIOtoqYii6pl3l04XT2sG6PCpbWx0bw0lIPlhYUzPffUqG7pSA
-	iztvKFjUCVgZFMtQ8eBMK4mQbhEdRU5KmJ24bUYJhpzxBbaCddC6DNDPDTBfPXjhIfVeS2CD5TNJV
-	zwTveoO7uNYVRbhNx8CEqFfIXWxWNQSegND+ciFNCATRhLmwu7gJH+m1jXz63RDhSCwul3Vx33ZVA
-	CU/QEDHLRRaq7oITqCvw==;
+	List-Owner; bh=/uGvRR1jJyF5LhkaqYd1azcyly7CP2vDhLeViAZ3lWI=; b=t0Ujdq8bF50R77
+	N1d/94U9C8ejmRWYZZo6Iz+PEK7ibo9U5EdXRwOpbQfJdfxHeMUiBfdv50nx9nL4yqdkEH1Zjp9kA
+	xYhYruw66k5JEkvYbRodd+zzAIMdnnLPf79f6wxX5qmRtqGLHR1F1VAp59mQKO0rE+5FyaoEJ3IqO
+	lekYi+nnCu7L7rKLMkofmWm0fHOtLR+IC+hJ6YI2Iebpt1xiBI62s0hCtz3pWraEv4FhcmdsAM9G8
+	cUSYP4eqn9QMAXbKXDfNmFnk3TJKndNxhPiYWH0vDhlQCOiBWdGVjIWapGdFZtvWGn538/AGgK+1q
+	FO9vLpGRjEz2beOL2U+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbpey-00BDH0-KE; Sat, 16 Oct 2021 19:48:00 +0000
+	id 1mbpfS-00BDQb-Ho; Sat, 16 Oct 2021 19:48:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbpew-00BDFy-73; Sat, 16 Oct 2021 19:47:59 +0000
+ id 1mbpfA-00BDKB-8H; Sat, 16 Oct 2021 19:48:13 +0000
 Received: from p508fce7c.dip0.t-ipconnect.de ([80.143.206.124]
  helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mbpes-0008HL-Gg; Sat, 16 Oct 2021 21:47:54 +0200
+ id 1mbpes-0008HL-7N; Sat, 16 Oct 2021 21:47:54 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add spdif node to rk356x
-Date: Sat, 16 Oct 2021 21:47:50 +0200
-Message-Id: <163441361289.438137.17829234976642322429.b4-ty@sntech.de>
+To: Arnaud Ferraris <arnaud.ferraris@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
+ Shunqian Zheng <zhengsq@rock-chips.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Andy Gross <agross@kernel.org>, Guido Gunther <agx@sigxcpu.org>,
+ Chen-Yu Tsai <wens@csie.org>, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Dan Johansen <strit@manjaro.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Tomasz Figa <tfiga@chromium.org>, linux-sunxi@lists.linux.dev,
+ Lucas Stach <dev@lynxeye.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Brian Norris <briannorris@chromium.org>,
+ Maxime Ripard <mripard@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>,
+ Angus Ainslie <angus@akkea.ca>, Martin Kepplinger <martink@posteo.de>,
+ Shawn Guo <shawnguo@kernel.org>, linux-arm-msm@vger.kernel.org,
+ Simon South <simon@simonsouth.net>, Eddie Cai <eddie.cai.linux@gmail.com>
+Subject: Re: (subset) [PATCH 0/4] arm64: dts: add 'chassis-type' property
+Date: Sat, 16 Oct 2021 21:47:49 +0200
+Message-Id: <163441361289.438137.290850544419428228.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211015111303.1365328-1-frattaroli.nicolas@gmail.com>
-References: <20211015111303.1365328-1-frattaroli.nicolas@gmail.com>
+In-Reply-To: <20211016102025.23346-1-arnaud.ferraris@collabora.com>
+References: <20211016102025.23346-1-arnaud.ferraris@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_124758_294877_6A37008B 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211016_124812_318199_824F7D41 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,18 +84,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Oct 2021 13:13:01 +0200, Nicolas Frattaroli wrote:
-> This adds the spdif node to the rk356x device tree.
+On Sat, 16 Oct 2021 12:20:21 +0200, Arnaud Ferraris wrote:
+> A new root node property named 'chassis-type' has recently been approved
+> added to the device tree specification[1]. This will allow userspace to
+> easily detect the device form factor on DT-based devices, and act
+> accordingly.
+> 
+> This patchset fills in this property for existing ARM64 consumer
+> devices (laptops, phones, tablets...).
+> 
+> [...]
 
 Applied, thanks!
 
-I did a tiny bit of (alphabetical) sorting
-(clocks about dma)
-
-[1/2] arm64: dts: rockchip: add spdif node to rk356x
-      commit: a65e6523e6dcf1dc4ea167ab78ca6fad01f16d91
-[2/2] arm64: dts: rockchip: enable spdif on Quartz64 A
-      commit: 7ab91acd3624de261d785e94cdfc01a703786e7a
+[4/4] arm64: dts: rockchip: add 'chassis-type' property
+      commit: 263b39bce2fbcd3531163300cb9663a4a9517dde
 
 Best regards,
 -- 
