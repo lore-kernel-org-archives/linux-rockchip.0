@@ -2,14 +2,14 @@ Return-Path: <SRS0=5kjD=PE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62B5CC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1620C433F5
 	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDE2A6115C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EDE2A6115C
+	by mail.kernel.org (Postfix) with ESMTPS id 4824261040
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Oct 2021 19:48:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4824261040
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,39 +18,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MyKvZTyhayCcPlDpiv6zf+5GcZqLW17Y9BEGaxTWmU=; b=YGbeQD0+CV+LjB
-	CBTgwknJ+Gh1TqmTfXbIKNE4nQADnPKYBB1iTGtE/wtvO0OFKLpvnQane7ebl3OmtwKWEbonIaAvP
-	q0/Qlcn5x39T/g8YuYY6syup8/D058jVAko572rxGkjY4w1ucPYSuiVsFY6AbQ3s++RdZFf+pvZOS
-	WZczqOpWL+R8v+do1U3PSBSe3ug/cfdZYdcA5olBZdA6qmM85EpeRYYtbeIuARKIQiha/EgpJBRkh
-	hXQEsEOiR90jfwXYIeCR4XXmPDruS7U9yiEVg3oevKmmAKeaGPMp+1v8eDFPNRVtfTnGOtdzTC+BA
-	BuG5EU5fUbAc4pxEwbUA==;
+	List-Owner; bh=a85rapoJYE6Q7lvS2SchQrkcI0IIUmsCE2tOsZWOp/A=; b=1N6coFaZRkpeLu
+	sBS0NxU/LQWbNZZQP+1LzfX/qGHm81VrkbRqF0LeHL9O5VyjgpHlkhobvDUT96mL0aOPLpPk9HeEe
+	+sTZDOD2EQxlFj8v8+FUlFrzNpojIOtoqYii6pl3l04XT2sG6PCpbWx0bw0lIPlhYUzPffUqG7pSA
+	iztvKFjUCVgZFMtQ8eBMK4mQbhEdRU5KmJ24bUYJhpzxBbaCddC6DNDPDTBfPXjhIfVeS2CD5TNJV
+	zwTveoO7uNYVRbhNx8CEqFfIXWxWNQSegND+ciFNCATRhLmwu7gJH+m1jXz63RDhSCwul3Vx33ZVA
+	CU/QEDHLRRaq7oITqCvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbpey-00BDGv-3t; Sat, 16 Oct 2021 19:48:00 +0000
+	id 1mbpey-00BDH0-KE; Sat, 16 Oct 2021 19:48:00 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbpew-00BDFz-6z; Sat, 16 Oct 2021 19:47:59 +0000
+ id 1mbpew-00BDFy-73; Sat, 16 Oct 2021 19:47:59 +0000
 Received: from p508fce7c.dip0.t-ipconnect.de ([80.143.206.124]
  helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mbpes-0008HL-Q4; Sat, 16 Oct 2021 21:47:54 +0200
+ id 1mbpes-0008HL-Gg; Sat, 16 Oct 2021 21:47:54 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>, lee.jones@linaro.org, robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- jbx6244@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH v2 1/3] dt-bindings: arm: rockchip: add rk3368
- compatible string to pmu.yaml
-Date: Sat, 16 Oct 2021 21:47:51 +0200
-Message-Id: <163441361289.438137.1214531874214547127.b4-ty@sntech.de>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add spdif node to rk356x
+Date: Sat, 16 Oct 2021 21:47:50 +0200
+Message-Id: <163441361289.438137.17829234976642322429.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210925090405.2601792-1-heiko@sntech.de>
-References: <20210925090405.2601792-1-heiko@sntech.de>
+In-Reply-To: <20211015111303.1365328-1-frattaroli.nicolas@gmail.com>
+References: <20211015111303.1365328-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_124758_295450_D3C3A129 
-X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-CacheID: sfid-20211016_124758_294877_6A37008B 
+X-CRM114-Status: UNSURE (   9.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,15 +69,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 25 Sep 2021 11:04:03 +0200, Heiko Stuebner wrote:
-> Add the compatible for the pmu mfd on rk3368.
+On Fri, 15 Oct 2021 13:13:01 +0200, Nicolas Frattaroli wrote:
+> This adds the spdif node to the rk356x device tree.
 
 Applied, thanks!
 
-[1/3] dt-bindings: arm: rockchip: add rk3368 compatible string to pmu.yaml
-      commit: fff963f4ec42ae78ae03aae4bab9c709460bdf36
-[3/3] arm64: dts: rockchip: add powerdomains to rk3368
-      commit: b394e70cdcabec1249db3555779c890456ee7ce5
+I did a tiny bit of (alphabetical) sorting
+(clocks about dma)
+
+[1/2] arm64: dts: rockchip: add spdif node to rk356x
+      commit: a65e6523e6dcf1dc4ea167ab78ca6fad01f16d91
+[2/2] arm64: dts: rockchip: enable spdif on Quartz64 A
+      commit: 7ab91acd3624de261d785e94cdfc01a703786e7a
 
 Best regards,
 -- 
