@@ -2,58 +2,90 @@ Return-Path: <SRS0=g7df=PF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31103C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Oct 2021 12:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 004D5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Oct 2021 15:30:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9915D60EC0
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Oct 2021 12:36:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9915D60EC0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id 9181F60FE3
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Oct 2021 15:30:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9181F60FE3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iD2yAUW8X6xiMn2f5qzFucpRLj2MoawkDOLAsOgbwbc=; b=NalwP4x1sFRWxD
-	aIMOnnz6i5uSH3lq0KdLn51yaetWdKpCjKoPMGbC6zzX4CiSdDeLT3Z6uKLvq4go64EWeHK00ja9h
-	OOk43OjNEz4U+uVbwlZn+AXvrn+dO+kXrvzt/xttiTdPrmkWR7YjshGVUfNJ2i5Jx4yOK+K0Rmlad
-	5/71Y534DrNuZrZuvdDp0vfX/mFsNnwthekr2O7/ofPF7d2ldpvezklkdAv65PkpO4qevFOjswHxC
-	dWu2CQ0yf7+xJaw3VdY+J8D+1ddEWmufnKkxInkLWnHBZR120nP5IB1WCjWADQP93pWu1Vbc35Upt
-	fLPXc5uLp2QonZ0o60Dw==;
+	List-Owner; bh=xrkhBmK+kj4ZMeZ0eeUeRGAD7iEPpkO8TjKwLcnMGmQ=; b=aFWtX+XJKMNzNH
+	waWQte6lI9H+CCUf0B+XIrjbe6mrb4lUOMJ2aDm89Ely+cHIplPqfM4/in1FK9RUYiMoWJoqNXW4J
+	M5YzywJDmn1A6j+zm3fUR9f2ZydAEou4nlb3Y2voivxIExXSAbkrPnM0Oe5RS6+jkZ3AyZHsRTkwW
+	CccrxEilbCLCByTPDiBLlCU2aOjzYhTIjD+0b9jH2qWgclIvK9zmT2K0R14SbYpOz5H74+qB/4E0N
+	kfl4YhLmlbSfC6XrZWdEln8ifhuboaOL4fPabTjbcalD03YXYdvHNCLNflzSt25zkxvFZ+V/+LzEC
+	ij8PaKG2QOgl59lDll+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mc5PA-00COUb-Pv; Sun, 17 Oct 2021 12:36:44 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mc86z-00CrU6-Bd; Sun, 17 Oct 2021 15:30:09 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mc5P7-00CORz-0j; Sun, 17 Oct 2021 12:36:43 +0000
-Received: from p508fd4f7.dip0.t-ipconnect.de ([80.143.212.247]
- helo=phil.fritz.box)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mc5Oy-0002zk-CQ; Sun, 17 Oct 2021 14:36:32 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: Re: (subset) [PATCH 0/4] Getting rid of the reset controller in
- i2s-tdm
-Date: Sun, 17 Oct 2021 14:36:30 +0200
-Message-Id: <163447418314.467969.12281084994764198106.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
-References: <20211016105354.116513-1-frattaroli.nicolas@gmail.com>
+ id 1mc86b-00CrNu-R4; Sun, 17 Oct 2021 15:29:47 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id 77so13171405qkh.6;
+ Sun, 17 Oct 2021 08:29:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=aLWe12uJoW6Tr5t0/eOb90iUkYk4LWBq+lz5QePH0ZA=;
+ b=lW5kUj1LCQPu2V3bcYvjd95sC8TGGgImzX4v4V/tyjO5APgC38CtSXtQ+XU/JT2jss
+ HWelOjDgxa7CnQvveWUOzL+8H/nSbMN7f4ej9CANeej3XhT5s5wagSev5IIv0ViVF9+b
+ nV9Fk/RBIpp12PD/bOZPaKj4V9VEYp7Njq4O4Ehc1fk3EWBrr7NbGmqVMu5mSbpld32i
+ /8SWYp/EglZ4eChS07/GNIrZK55lJxXmmPK9WlAcqQuOysP4Xx4zrtFAXAHXqWR/nY+a
+ bZbatphFvicregPmC5JCOvLmO8Xk4QLBGSyE0tn/xK9AEfsQ8x/cQmnIKdsuXprXaW6u
+ swDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=aLWe12uJoW6Tr5t0/eOb90iUkYk4LWBq+lz5QePH0ZA=;
+ b=iFyFytDpSPYBzDS2L/5QZUfyLnSb7lmBWlWrGRkinrtE2Nh/Kx9a3IQtaoZ4SeBhWj
+ P5O+/DeLBTsJOn0ZD3KJoO5/odZZuMktU4t+DDt0unOv9ggqa8SfzSgZpJeVUajgXfux
+ VxlLyqxTF3ozy9f9YKeFgEHIr54Cq6Zm67GqV/Zl7Gtq42UkWqRFq3/bGN3HoNg1n5C9
+ gDQpEly8IbkjpguTd6pzi7s9CYs3L1bymUNSufppxM2FtyKqT9b6fAWY8KzpCDZmUa/5
+ XkU2tnsQ/nwV3wtfaQLpHS7VTwfoIEABW8+ZXgC+jRrKXCs/SWBoEOd6CJYY7s6xnELH
+ ROJQ==
+X-Gm-Message-State: AOAM533wYEv+mJvJ1jmhqHfLUPZ5A5Omwc/TSHwEhuaOy/EWkI+tLN1y
+ QDqLrwcVQpLbGBhmxv7UHHw=
+X-Google-Smtp-Source: ABdhPJxqdMeMcw+CKtvbbjwvd/DudRlYdHzlDWFzGekL9ySOs+WuDB4kjdWIfextDpic29N24Hx0nQ==
+X-Received: by 2002:a37:ae43:: with SMTP id x64mr18843402qke.55.1634484584758; 
+ Sun, 17 Oct 2021 08:29:44 -0700 (PDT)
+Received: from localhost (pppoe-209-91-167-254.vianet.ca. [209.91.167.254])
+ by smtp.gmail.com with ESMTPSA id o130sm5256949qke.123.2021.10.17.08.29.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 17 Oct 2021 08:29:44 -0700 (PDT)
+Date: Sun, 17 Oct 2021 11:29:41 -0400
+From: Trevor Woerner <twoerner@gmail.com>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
+ David Wu <david.wu@rock-chips.com>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Cameron Nemo <cnemo@tutanota.com>, Robin Murphy <robin.murphy@arm.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH 1/2] arm64: dts: rk3328: add gpu opp table
+Message-ID: <20211017152941.GA33697@localhost>
+References: <20211016154548.29555-1-twoerner@gmail.com>
+ <67c7c3c6-b946-a6bc-24fd-85f56bcec7f3@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <67c7c3c6-b946-a6bc-24fd-85f56bcec7f3@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211017_053641_079690_249CD6B4 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20211017_082945_918675_F5E7D6A1 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,28 +103,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 16 Oct 2021 12:53:49 +0200, Nicolas Frattaroli wrote:
-> after some discussion with Heiko on IRC, he has admitted to me
-> that the rockchip,cru property, and its corresponding half a reset
-> controller in the driver, is weighing heavily on his mind.
+On Sat 2021-10-16 @ 10:45:04 PM, Johan Jonker wrote:
+> On 10/16/21 5:45 PM, Trevor Woerner wrote:
+> > Add an operating-points table and cooling entry to the GPU on the
+> > RK3328 SoC to improve its performance. According to its datasheet[1]
+> > the maximum frequency of the Mali-450 MP2 GPU found on the RK3328 SoC
+> > is 500MHz.
+> > 
+> > On my rock64 device, under x11, glmark2-es2 performance increased from
+> > around 60 to just over 100. Same device running glmark2-es2 under
+> > wayland/weston improved from just over 100 to just over 200.
+> > 
+> > [1] https://rockchip.fr/RK3328%20datasheet%20V1.2.pdf
+> > 
+> > Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 26 +++++++++++++++++++++++-
+> >  1 file changed, 25 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > index 8c821acb21ff..5e1dcf71e414 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> > @@ -532,7 +532,8 @@ map0 {
+> >  					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> >  							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> >  							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> > -							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> > +							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> > +							 <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> >  					contribution = <4096>;
+> >  				};
+> >  			};
+> > @@ -617,6 +618,29 @@ gpu: gpu@ff300000 {
+> >  		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
+> >  		clock-names = "bus", "core";
+> >  		resets = <&cru SRST_GPU_A>;
+> > +		operating-points-v2 = <&gpu_opp_table>;
+> > +		#cooling-cells = <2>;
+> > +	};
+> > +
 > 
-> The background is that if the lrck only uses one clock for both rx
-> and tx direction, then according to the downstream driver, the rx
-> and tx resets should be asserted at roughly the same time to keep
-> things in sync.
+> > +	gpu_opp_table: gpu-opp-table {
 > 
-> [...]
+> After the conversion to YAML of the Operating Performance Points(OPP)
+> binding the operating-points-v2 property expects the nodename to have
+> the '^opp-table(-[a-z0-9]+)?$' format.
+> 
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/opp/opp-v2.yaml
 
-Applied, thanks!
+Thanks, I wasn't aware.
 
-[3/4] arm64: dts: rockchip: Add i2s1 on rk356x
-      commit: ef5c913570040df1955dd49cea221783468faeaf
-[4/4] arm64: dts: rockchip: Add analog audio on Quartz64
-      commit: 1938b585ed19bb01969b4e923664db88c5ee8798
+> > +		compatible = "operating-points-v2";
+> > +
+> > +		opp-200000000 {
+> > +			opp-hz = /bits/ 64 <200000000>;
+> > +			opp-microvolt = <1100000>;
+> > +		};
+> > +		opp-300000000 {
+> > +			opp-hz = /bits/ 64 <300000000>;
+> > +			opp-microvolt = <1100000>;
+> > +		};
+> > +		opp-400000000 {
+> > +			opp-hz = /bits/ 64 <400000000>;
+> > +			opp-microvolt = <1100000>;
+> > +		};
+> > +		opp-500000000 {
+> > +			opp-hz = /bits/ 64 <500000000>;
+> > +			opp-microvolt = <1100000>;
+> > +		};
+> >  	};
+> 
+> opp-microvolt has the same value for every node vs. table below?
+
+On page 1 of the schematic for the rock64
+https://files.pine64.org/doc/rock64/ROCK64_Schematic_v3.0_20181105.pdf is a
+table ("Power Timing") showing BUCK1 at 1.1V. I interpreted this to mean that
+VDD_LOG should always be at 1.1V, regardless of frequency.
+
+> See also previous discussion:
+> 
+> https://lore.kernel.org/linux-rockchip/3c95c29b-6c07-5945-ac22-d683997e1ca0@arm.com/
+> 
+> Is that now fixed/checked?
+
+I wasn't aware of the previous/on-going discussion regarding a gpu opp table
+for this SoC. Perhaps that explains my suspicions? I couldn't help wonder why
+the frequency is always reported as 163840000 even when I have an opp table
+that only has the 500MHz entry?
+
+I'll investigate whether I can prove or disprove the scaling is actually
+occurring?
 
 Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+	Trevor
 
 _______________________________________________
 Linux-rockchip mailing list
