@@ -2,65 +2,57 @@ Return-Path: <SRS0=X3cf=PG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 096FFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:09:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E3A6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:21:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD8726126A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:09:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BD8726126A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 580B160F44
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:21:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 580B160F44
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mmC0BApr3DHavmUATglUMqHmMiRQXELCzb6zE47Eh5Y=; b=GHGgeii4oW/Evs3B9I8sAyqDA6
-	Zipcdw7tnl0n3IVsH+WtN7nt4cgA9TZH4Z7idZkOXvGsURH5mVzFy4nal8AAo3qzRjMJL1pT/gWB8
-	3bn8C4X/kQNokjmm/LgUPjPAOxy3RQFw2b9JZOmeMnq2YexqgOVqsauDi7O0bINJ9kqhY6t1sZnkQ
-	/9PijDIbMYkXtCnOKf9kCas5vS6M1G+Cd8CIe64jeGsECXxZnLweWl5HpVYfmU04Zw4yga8hAl9o5
-	d2kKSDMIvo4y677xqIGKVvhJhSMe5FDb8JNEM1fGaq3sR3o38B2126Uj6SfT5gMnyv14vSsKH5+Mo
-	rWa5GEJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=O4kD7zGlT7ELamI30R5CMepShiZYMVTObwRwCiQ6ASg=; b=Zll4bXGOxF4BUV
+	p7DcbjDBf5KG9w2gun/NhokEM0eKmLXqXUCbxuM9iBWju2DrdXDubjQdJ/qpSNyldhCoAG2+Osbif
+	OWX8C8axB9p1N4v73ye3tTGYGwyq3dDGo9hwdJKLchJgX2sKIe1Mn9WCzOYLEXMKdDYLhu3zrlLH/
+	2LFPn/s2Q4hA3UsCQqRRXX5pVnbk/AY4FpoiSA9upmbhmcgK5IiL/wGxYtDcbfeK+NqIJJymuT+nQ
+	xf9fpJfst/1TBozdK/fne/bLKUWgKDPDxaaKPCjokMunFMmBwdzWzyWgjiB6PTMyFxOhTfWXJeZ4S
+	hAq1C/p3vtGwqKrP7F6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcX55-00Gl2b-T8; Mon, 18 Oct 2021 18:09:51 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcX4s-00Gkyc-Vm; Mon, 18 Oct 2021 18:09:40 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 090BCD6E;
- Mon, 18 Oct 2021 11:09:33 -0700 (PDT)
-Received: from [10.57.27.231] (unknown [10.57.27.231])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1835D3F694;
- Mon, 18 Oct 2021 11:09:30 -0700 (PDT)
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 1/2] arm64: dts: rk3328: add gpu opp table
-To: Trevor Woerner <twoerner@gmail.com>, Johan Jonker <jbx6244@gmail.com>
-Cc: linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Chen-Yu Tsai <wens@csie.org>,
- David Wu <david.wu@rock-chips.com>, Ezequiel Garcia
- <ezequiel@collabora.com>, Cameron Nemo <cnemo@tutanota.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
-References: <20211016154548.29555-1-twoerner@gmail.com>
- <67c7c3c6-b946-a6bc-24fd-85f56bcec7f3@gmail.com>
- <20211017152941.GA33697@localhost>
-Message-ID: <ecdce799-5b03-9c6b-6a98-e6a893b15900@arm.com>
-Date: Mon, 18 Oct 2021 19:09:25 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+	id 1mcXG9-00GmCc-Fl; Mon, 18 Oct 2021 18:21:17 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mcXFx-00GmBU-7D; Mon, 18 Oct 2021 18:21:06 +0000
+Received: from p508fdda9.dip0.t-ipconnect.de ([80.143.221.169]
+ helo=phil.fritz.box)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mcXFo-0001cz-Ne; Mon, 18 Oct 2021 20:20:56 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de,
+ amitk@kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
+ rui.zhang@intel.com, linux-rockchip@lists.infradead.org,
+ daniel.lezcano@linaro.org, linux-pm@vger.kernel.org
+Subject: Re: (subset) [PATCH v2 1/4] dt-bindings: thermal: allow more resets
+ for tsadc node in rockchip-thermal.yaml
+Date: Mon, 18 Oct 2021 20:20:55 +0200
+Message-Id: <163458113680.651054.7196028816120992133.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210930110517.14323-1-jbx6244@gmail.com>
+References: <20210930110517.14323-1-jbx6244@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20211017152941.GA33697@localhost>
-Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_110939_178601_C7415985 
-X-CRM114-Status: GOOD (  29.73  )
+X-CRM114-CacheID: sfid-20211018_112105_280247_C0BF6E88 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,130 +65,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2021-10-17 16:29, Trevor Woerner wrote:
-> On Sat 2021-10-16 @ 10:45:04 PM, Johan Jonker wrote:
->> On 10/16/21 5:45 PM, Trevor Woerner wrote:
->>> Add an operating-points table and cooling entry to the GPU on the
->>> RK3328 SoC to improve its performance. According to its datasheet[1]
->>> the maximum frequency of the Mali-450 MP2 GPU found on the RK3328 SoC
->>> is 500MHz.
->>>
->>> On my rock64 device, under x11, glmark2-es2 performance increased from
->>> around 60 to just over 100. Same device running glmark2-es2 under
->>> wayland/weston improved from just over 100 to just over 200.
->>>
->>> [1] https://rockchip.fr/RK3328%20datasheet%20V1.2.pdf
->>>
->>> Signed-off-by: Trevor Woerner <twoerner@gmail.com>
->>> ---
->>>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 26 +++++++++++++++++++++++-
->>>   1 file changed, 25 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->>> index 8c821acb21ff..5e1dcf71e414 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->>> @@ -532,7 +532,8 @@ map0 {
->>>   					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->>>   							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->>>   							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->>> -							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>> +							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
->>> +							 <&gpu THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
->>>   					contribution = <4096>;
->>>   				};
->>>   			};
->>> @@ -617,6 +618,29 @@ gpu: gpu@ff300000 {
->>>   		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
->>>   		clock-names = "bus", "core";
->>>   		resets = <&cru SRST_GPU_A>;
->>> +		operating-points-v2 = <&gpu_opp_table>;
->>> +		#cooling-cells = <2>;
->>> +	};
->>> +
->>
->>> +	gpu_opp_table: gpu-opp-table {
->>
->> After the conversion to YAML of the Operating Performance Points(OPP)
->> binding the operating-points-v2 property expects the nodename to have
->> the '^opp-table(-[a-z0-9]+)?$' format.
->>
->> make ARCH=arm64 dtbs_check
->> DT_SCHEMA_FILES=Documentation/devicetree/bindings/opp/opp-v2.yaml
-> 
-> Thanks, I wasn't aware.
-> 
->>> +		compatible = "operating-points-v2";
->>> +
->>> +		opp-200000000 {
->>> +			opp-hz = /bits/ 64 <200000000>;
->>> +			opp-microvolt = <1100000>;
->>> +		};
->>> +		opp-300000000 {
->>> +			opp-hz = /bits/ 64 <300000000>;
->>> +			opp-microvolt = <1100000>;
->>> +		};
->>> +		opp-400000000 {
->>> +			opp-hz = /bits/ 64 <400000000>;
->>> +			opp-microvolt = <1100000>;
->>> +		};
->>> +		opp-500000000 {
->>> +			opp-hz = /bits/ 64 <500000000>;
->>> +			opp-microvolt = <1100000>;
->>> +		};
->>>   	};
->>
->> opp-microvolt has the same value for every node vs. table below?
-> 
-> On page 1 of the schematic for the rock64
-> https://files.pine64.org/doc/rock64/ROCK64_Schematic_v3.0_20181105.pdf is a
-> table ("Power Timing") showing BUCK1 at 1.1V. I interpreted this to mean that
-> VDD_LOG should always be at 1.1V, regardless of frequency.
+On Thu, 30 Sep 2021 13:05:14 +0200, Johan Jonker wrote:
+> The tsadc node in rk356x.dtsi has more resets defined then currently
+> allowed by rockchip-thermal.yaml, so fix that in the documentation.
+> The driver now uses the devm_reset_control_array_get() function,
+> so reset-names is no longer required, but keep it for legacy reasons.
 
-No, that's just the default voltage that BUCK1 itself starts up at - 
-looks like that table is an unfinished attempt to summarise the Power 
-Sequence section from the RK805 datasheet.
+Applied, thanks!
 
->> See also previous discussion:
->>
->> https://lore.kernel.org/linux-rockchip/3c95c29b-6c07-5945-ac22-d683997e1ca0@arm.com/
->>
->> Is that now fixed/checked?
-> 
-> I wasn't aware of the previous/on-going discussion regarding a gpu opp table
-> for this SoC. Perhaps that explains my suspicions? I couldn't help wonder why
-> the frequency is always reported as 163840000 even when I have an opp table
-> that only has the 500MHz entry?
+Fixed the patch subject to the regular prefixes.
 
-FWIW the usual culprit for clocks not changing is inadvertently not 
-having devfreq and/or the simple_ondemand governor enabled. However, I 
-do seem to recall that devfreq doesn't explicitly fix up an out-of-spec 
-clock to a known OPP on startup like cpufreq does - I think it only 
-actually touches the clocks and regulators when transitioning between 
-OPPs, so if it only has one it might possibly end up in a pathological 
-state where that effectively never happens; I don't remember exactly. 
-Unfortunately all my boards are out of action for various reasons at the 
-moment so I can't readily check how I was running mine, but from memory 
-I think I ended up with slightly tweaked voltages based on a survey of 
-several other BSP kernels, and the 200-300MHz points just disabled to 
-avoid undervolting the memory controller once lima voltage scaling was 
-working properly.
+[4/4] arm64: dts: fix resets in tsadc node for rk356x.dtsi
+      commit: 5c9e66c6b75a754025c74bde7b7a6c52674d8aa1
 
-Cheers,
-Robin.
-
-> 
-> I'll investigate whether I can prove or disprove the scaling is actually
-> occurring?
-> 
-> Best regards,
-> 	Trevor
-> 
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
