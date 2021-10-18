@@ -2,63 +2,114 @@ Return-Path: <SRS0=X3cf=PG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1EADC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 12:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84F57C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 15:21:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 765A060E8C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 12:47:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 765A060E8C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4791F60720
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 15:21:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4791F60720
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=exFYmQuczC/IhrntGirVlX6+aAAvn80khNvgHF4U6VU=; b=G9DZbDXX++zj+MT2Q0SeKOlvc0
-	vRxDbXkn3c/K7ISnTVDeUNMINxUKnNKgKCGNFBETV5cz3YwL9Po6o5JdRo/xupGHDciGJbaACkhvs
-	pfD3m1suuxF+1U11KkXSTeOSn2nWzlzveBh0/7LEfrhy3fm178fGUj3n+zzva1nU+hE/12aBUk+Fj
-	MypWHEfvA9HrFXdEMMXl4BiJsv7ezhUe5ZKGrJ65es9yDu535/ZWIh6Xy77aIj7LQArham+U0OySN
-	gIGKApT4t1Y8NQtnJm+98FHvrqmydCKahNg91tWGE7HMnWEZlPfIvBZiH/cdkNZ5T3G1mgIc8Sl1y
-	Qr96QNMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=i8ZUS326Rh63UGCI3e4IKszitps897n4dc5lUGCAXQE=; b=x0NNCGmPhNaJn6
+	LeJryubwg0omD9muo4fZepFJBzjH4cYBuRI11A2cs8KDwVTm54veQhYj+P0qqiHSpgZl8OMFpu0Dn
+	8XJ2vYJd834F+T5yQkAwCuKjUYsy/fUNlJsMT/URRqkdYexaki7H+kcVM3QNhpcieFXfHEdYjVXfp
+	Z9Ewu/RQRP/Z1AmzDlESTQY8rBhyqL1oXhrqZlbRPU6YUM8DOisAxAoZdRnhJZfvb0zcyt6qmTvNO
+	lOkdKcY2DX5u//RVkAKzIpuXsZ1aRPFj5J3z4Uhly3WGYJfkOIsYw2aRn9wPNSYe+Y35ywTyxXOM/
+	nrx7g5aOC7w6FK5S0A+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcS2l-00Fga3-DW; Mon, 18 Oct 2021 12:47:07 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mcUSC-00GHdH-RA; Mon, 18 Oct 2021 15:21:32 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcS2Z-00FgXM-9i; Mon, 18 Oct 2021 12:46:56 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6A48160F8F;
- Mon, 18 Oct 2021 12:46:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634561214;
- bh=G+OtVSihKHgS3rS/qDD5HXpv3eDV+Hn9lxSng8pjIB0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dkUwXAuB5mLgOixx5LY7oUOpM2KezFLhdaVcdBsGeHANlA3B9aAqlsN0S/cfbvBVf
- kuHSG8felsWBIwwuC5kRgDHgN6oAbjuCVgBM5Ugb6wZrEdXieWp9GRqluj9kF5WM3u
- hXcKkyjgyize8KNVfyrekZ9FHrPNBFJn7E4OIXq71AyvIERRk9czHV7FB1I3fErZeU
- CklDxxcChO8YiQHdos/MqrmUgsLtYIOxZrqA8tI+JnLRB1+fxL+URqlXsOH/5s1pWI
- EV+uM/NfVqmc3RWYAa4bNLNR22jUQun+VaJGc5AYeCNk8K4/kJT2qSVLavuLkvg7SA
- CMvK31BQlzWRw==
-Date: Mon, 18 Oct 2021 13:46:52 +0100
-From: Mark Brown <broonie@kernel.org>
-To: John Keeping <john@metanate.com>
-Cc: alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH] ASoC: rockchip: use generic DMA engine configuration
-Message-ID: <YW1svMVSgBJygfpV@sirena.org.uk>
-References: <20211018114844.1746351-1-john@metanate.com>
+ id 1mcUS0-00GHag-7R; Mon, 18 Oct 2021 15:21:21 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 5BBA3580B22;
+ Mon, 18 Oct 2021 11:21:16 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute1.internal (MEProxy); Mon, 18 Oct 2021 11:21:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-type:content-transfer-encoding; s=fm1; bh=
+ CGCHnQh8YfsDbNmhWqbZpULcIeaSOSKYfULNXySwmlk=; b=faJlnAxBWFPKhHS0
+ FOLGZX6QFb7LE/iIHc9Vwie9La5cfIHcjzGnty1lxbfkJbwvEGi229gvVkztyQn7
+ EtZ9UlVZjmGKuM9daN+I1wdxjHkujzgMr2VHmzx97MdkiMX4RPZK5uIQRqxwe2Yz
+ U8SPfNXDm7O8KVw63ZV8VBsIv/4Hbio9D/xj1WIezh6Gng5W5hXPiZ68E1g8TCiE
+ ehMzdo38VoRtbAB775MLVTTw3LCzc+Uo2Peb1qOGdWIyONqXpBNKbp7HU6aYbyZc
+ 6ZEkwd8mD5n1vz1/uNXh8i3+LOV90r4asZ9YaYICDwE+qLNSwGgcc/iPlViaP5QQ
+ u5lx9w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=CGCHnQh8YfsDbNmhWqbZpULcIeaSOSKYfULNXySwm
+ lk=; b=EJXXByRwYNJKyuZp8Fv1JrVK0kbg8+koFVIewVimO2jjO9pkPhuFzygQz
+ 5PxuL2DI8YYT3fkVn9mMpP58MHW5nxnsnwlopmdBNH19jq8V718VAQL1qLXzxM4S
+ +omS+SIZWK6Yjw20zM8DR3lq0UswVE6Pq/966ODWNRgQz7Om1vOamTAZs1PAaBag
+ rpv2f4ITVmfg4KKhw5hNkwXmmLB+As6ZUWzAx63cSjULOdGQE2gJCX6l00SEmd3T
+ qIJS5jN93OCh1F72y+75JOKTRGqGOpnf1yT9iVJ2ryZR8BrnLx9hUe7UokZRun3M
+ Ae3LooVBP9v7fnY479BLFzZifi+Bg==
+X-ME-Sender: <xms:6pBtYc54dO3NJRE5nNjAfZs8FjKpm0aK18j9rgS38YsWIPq5y4hZDQ>
+ <xme:6pBtYd6f_giIuzB_Qv6PmMJyKKBc-gG6ATWqmsz9EDjxfiT1di8mFpQBmgRIb3X1O
+ hb0gGerLn69Icf3ySI>
+X-ME-Received: <xmr:6pBtYbfdE3T88CMPoA3TaHGpBkEYofDpH-SS9VWbp1HnCKGFGBIkEy6JqWVKgbkbz1LDw60fz-hVYYqXzpnITNtTuTEMRRlRqHiixOCr>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrvddvtddgkeegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepofgrgihi
+ mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+ htthgvrhhnpeejuefggeekfffgueevtddvudffhfejffejjedvvdduudethefhfefhfeeg
+ ieekkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:6pBtYRI9P6GXidggW157octoSwj5AXLhP05YWq10_TDxKwDKr1vi9g>
+ <xmx:6pBtYQLxpp08AfCEp31VSH_90uxpKxg9XNMW7tWyVAa0u9dEDSejKA>
+ <xmx:6pBtYSwGW4dnCXd-Xc_faVs53Y2VgyWnRoA0Mdc4bkkZxaIixNNvkw>
+ <xmx:7JBtYfUAnag_ZqFjB8_cDQ8ZRd7q8mX2wC9y9fgVN7X8s2vC1tE79g>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 18 Oct 2021 11:21:13 -0400 (EDT)
+From: Maxime Ripard <maxime@cerno.tech>
+To: linux-kernel@vger.kernel.org,
+ Arnaud Ferraris <arnaud.ferraris@collabora.com>
+Cc: Maxime Ripard <maxime@cerno.tech>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Andy Gross <agross@kernel.org>,	linux-arm-msm@vger.kernel.org,
+ Chen-Yu Tsai <wens@csie.org>,	Brian Norris <briannorris@chromium.org>,
+ Shawn Guo <shawnguo@kernel.org>,	Dan Johansen <strit@manjaro.org>,
+ devicetree@vger.kernel.org,	Fabio Estevam <festevam@gmail.com>,
+ Johan Jonker <jbx6244@gmail.com>,	Eddie Cai <eddie.cai.linux@gmail.com>,
+ Martin Kepplinger <martink@posteo.de>,	Lucas Stach <dev@lynxeye.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>,	linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>,	Angus Ainslie <angus@akkea.ca>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Shunqian Zheng <zhengsq@rock-chips.com>,
+ Maxime Ripard <mripard@kernel.org>,	linux-sunxi@lists.linux.dev,
+ Matthias Brugger <mbrugger@suse.com>,
+ linux-arm-kernel@lists.infradead.org,	Simon South <simon@simonsouth.net>,
+ Guido Gunther <agx@sigxcpu.org>
+Subject: Re: (subset) [PATCH 1/4] arm64: dts: allwinner: add 'chassis-type'
+ property
+Date: Mon, 18 Oct 2021 17:21:11 +0200
+Message-Id: <163457046206.219378.2737975440418368271.b4-ty@cerno.tech>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20211016102025.23346-2-arnaud.ferraris@collabora.com>
+References: <20211016102025.23346-1-arnaud.ferraris@collabora.com>
+ <20211016102025.23346-2-arnaud.ferraris@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20211018114844.1746351-1-john@metanate.com>
-X-Cookie: Here there be tygers.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_054655_404978_789D9248 
-X-CRM114-Status: GOOD (  25.21  )
+X-CRM114-CacheID: sfid-20211018_082120_358564_E652B693 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,191 +122,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1726339738481940652=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Sat, 16 Oct 2021 12:20:22 +0200, Arnaud Ferraris wrote:
+> A new 'chassis-type' root node property has recently been approved for
+> the device-tree specification, in order to provide a simple way for
+> userspace to detect the device form factor and adjust their behavior
+> accordingly.
+> 
+> This patch fills in this property for end-user devices (such as laptops,
+> smartphones and tablets) based on Allwinner ARM64 processors.
+> 
+> [...]
 
---===============1726339738481940652==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="LLIdPGt+BVjw3+wI"
-Content-Disposition: inline
+Applied to local tree (sunxi/dt-for-5.17).
 
-
---LLIdPGt+BVjw3+wI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Oct 18, 2021 at 12:48:44PM +0100, John Keeping wrote:
-> This effectively reverts commit 75b31192fe6a ("ASoC: rockchip: add
-> config for rockchip dmaengine pcm register").
-
-> There doesn't seem to be any rationale given for why these specific
-> values are helpful.  The generic DMA engine provides sensible defaults
-> here and works well with Rockchip I2S.
-
-> In fact the period size here is really quite restrictive when dealing
-> with 8 channels of 32-bit data as the effective period size is just 256
-> frames.
-
-Copying in Jianqun who wrote that patch.  If you're reverting a patch
-it's generally good to make sure the original author is aware,
-particularly if you're unsure as to why the patch does what it does.
-
-> Signed-off-by: John Keeping <john@metanate.com>
-> ---
->  sound/soc/rockchip/Makefile       |  3 +--
->  sound/soc/rockchip/rockchip_i2s.c |  3 +--
->  sound/soc/rockchip/rockchip_pcm.c | 44 -------------------------------
->  sound/soc/rockchip/rockchip_pcm.h | 11 --------
->  4 files changed, 2 insertions(+), 59 deletions(-)
->  delete mode 100644 sound/soc/rockchip/rockchip_pcm.c
->  delete mode 100644 sound/soc/rockchip/rockchip_pcm.h
->=20
-> diff --git a/sound/soc/rockchip/Makefile b/sound/soc/rockchip/Makefile
-> index b10f5e7b136d..6a3e61178152 100644
-> --- a/sound/soc/rockchip/Makefile
-> +++ b/sound/soc/rockchip/Makefile
-> @@ -2,11 +2,10 @@
->  # ROCKCHIP Platform Support
->  snd-soc-rockchip-i2s-objs :=3D rockchip_i2s.o
->  snd-soc-rockchip-i2s-tdm-objs :=3D rockchip_i2s_tdm.o
-> -snd-soc-rockchip-pcm-objs :=3D rockchip_pcm.o
->  snd-soc-rockchip-pdm-objs :=3D rockchip_pdm.o
->  snd-soc-rockchip-spdif-objs :=3D rockchip_spdif.o
-> =20
-> -obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) +=3D snd-soc-rockchip-i2s.o snd-soc-r=
-ockchip-pcm.o
-> +obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S) +=3D snd-soc-rockchip-i2s.o
->  obj-$(CONFIG_SND_SOC_ROCKCHIP_I2S_TDM) +=3D snd-soc-rockchip-i2s-tdm.o
->  obj-$(CONFIG_SND_SOC_ROCKCHIP_PDM) +=3D snd-soc-rockchip-pdm.o
->  obj-$(CONFIG_SND_SOC_ROCKCHIP_SPDIF) +=3D snd-soc-rockchip-spdif.o
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockc=
-hip_i2s.c
-> index 7e89f5b0c237..a6d7656c206e 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -20,7 +20,6 @@
->  #include <sound/dmaengine_pcm.h>
-> =20
->  #include "rockchip_i2s.h"
-> -#include "rockchip_pcm.h"
-> =20
->  #define DRV_NAME "rockchip-i2s"
-> =20
-> @@ -756,7 +755,7 @@ static int rockchip_i2s_probe(struct platform_device =
-*pdev)
->  		goto err_suspend;
->  	}
-> =20
-> -	ret =3D rockchip_pcm_platform_register(&pdev->dev);
-> +	ret =3D devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
->  	if (ret) {
->  		dev_err(&pdev->dev, "Could not register PCM\n");
->  		goto err_suspend;
-> diff --git a/sound/soc/rockchip/rockchip_pcm.c b/sound/soc/rockchip/rockc=
-hip_pcm.c
-> deleted file mode 100644
-> index 02254e42135e..000000000000
-> --- a/sound/soc/rockchip/rockchip_pcm.c
-> +++ /dev/null
-> @@ -1,44 +0,0 @@
-> -// SPDX-License-Identifier: GPL-2.0-only
-> -/*
-> - * Copyright (c) 2018 Rockchip Electronics Co. Ltd.
-> - */
-> -
-> -#include <linux/device.h>
-> -#include <linux/init.h>
-> -#include <linux/module.h>
-> -
-> -#include <sound/core.h>
-> -#include <sound/pcm.h>
-> -#include <sound/soc.h>
-> -#include <sound/dmaengine_pcm.h>
-> -
-> -#include "rockchip_pcm.h"
-> -
-> -static const struct snd_pcm_hardware snd_rockchip_hardware =3D {
-> -	.info			=3D SNDRV_PCM_INFO_MMAP |
-> -				  SNDRV_PCM_INFO_MMAP_VALID |
-> -				  SNDRV_PCM_INFO_PAUSE |
-> -				  SNDRV_PCM_INFO_RESUME |
-> -				  SNDRV_PCM_INFO_INTERLEAVED,
-> -	.period_bytes_min	=3D 32,
-> -	.period_bytes_max	=3D 8192,
-> -	.periods_min		=3D 1,
-> -	.periods_max		=3D 52,
-> -	.buffer_bytes_max	=3D 64 * 1024,
-> -	.fifo_size		=3D 32,
-> -};
-> -
-> -static const struct snd_dmaengine_pcm_config rk_dmaengine_pcm_config =3D=
- {
-> -	.pcm_hardware =3D &snd_rockchip_hardware,
-> -	.prepare_slave_config =3D snd_dmaengine_pcm_prepare_slave_config,
-> -	.prealloc_buffer_size =3D 32 * 1024,
-> -};
-> -
-> -int rockchip_pcm_platform_register(struct device *dev)
-> -{
-> -	return devm_snd_dmaengine_pcm_register(dev, &rk_dmaengine_pcm_config,
-> -		SND_DMAENGINE_PCM_FLAG_COMPAT);
-> -}
-> -EXPORT_SYMBOL_GPL(rockchip_pcm_platform_register);
-> -
-> -MODULE_LICENSE("GPL v2");
-> diff --git a/sound/soc/rockchip/rockchip_pcm.h b/sound/soc/rockchip/rockc=
-hip_pcm.h
-> deleted file mode 100644
-> index 7f00e2ce3603..000000000000
-> --- a/sound/soc/rockchip/rockchip_pcm.h
-> +++ /dev/null
-> @@ -1,11 +0,0 @@
-> -/* SPDX-License-Identifier: GPL-2.0-only */
-> -/*
-> - * Copyright (c) 2018 Rockchip Electronics Co. Ltd.
-> - */
-> -
-> -#ifndef _ROCKCHIP_PCM_H
-> -#define _ROCKCHIP_PCM_H
-> -
-> -int rockchip_pcm_platform_register(struct device *dev);
-> -
-> -#endif
-> --=20
-> 2.33.1
->=20
-
---LLIdPGt+BVjw3+wI
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmFtbLsACgkQJNaLcl1U
-h9CjRgf9F+1fSarPqDt2LrsQCEJcgFE78KkSwsP7XCT32GaDY2NnjgXK+nVA67eD
-VD1St/hwPnZEeVfebQ8xA/koS9D3KVThkt6UEpoD1XOI3BIBhc2pFMCifaZC+rFX
-IO8CV0Uh/AEIR8rjjnvXp1UfAHJcwhh9bNuveQKrIksLn0ugcGam0PauIYHpIgQU
-6hunuhaO7qH9lwW2Ba5mRB3/+q5bvKIL/6yBmAqLIxBpitqrTaLsTBr2J1D7mFJU
-yHkdigqW5y05+RMkJ/csW/ile0qeWQZ9fMSN5epOVpkMob7nuO37gXcfze5Lq0AY
-elcIUkNlkR+iYcbu0ruxERwy9tjq6Q==
-=ej6A
------END PGP SIGNATURE-----
-
---LLIdPGt+BVjw3+wI--
-
-
---===============1726339738481940652==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks!
+Maxime
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1726339738481940652==--
-
