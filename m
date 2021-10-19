@@ -2,14 +2,14 @@ Return-Path: <SRS0=otL+=PH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F95EC4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B97BC433EF
 	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 10:00:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B41F46135F
+	by mail.kernel.org (Postfix) with ESMTPS id D4C2461212
 	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 10:00:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B41F46135F
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D4C2461212
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=cmss.chinamobile.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,28 +18,28 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HO2P+dSfkiezaMSL1h+TzC4/fPYqfWjtlKh39eRQsXo=; b=Wy1WzUmhZuOP5C
-	TfL6s/Cy8yOW7p/k9amZp2aTvGJ0gk1c9adE7B9lkmDOtHSP6EnDAJryM6+ypS27pqqswvRNxSGcq
-	2OAIXrPojtzku0quGHyT4r3bu5EfyYRTWMzIgvaYCnSq0ytVkZPE9g3logpJzEoLWvUYv0wk/WpEs
-	1rPtm3UgSf0GeAzcs66fZR6eGd0mwiRzrvybudroJ713jl0sIoL1PSMaY41YjJ8jNnJq21FqjFA4w
-	VgRZRyMAJO3ILEb6JOrrmt0FQs8k6Q64czPKE1GMUEEFfDU9y/y/NrK/oaZX1uTqc/81CePUjVwjb
-	RJHG9qJMWOisFU1ZR/nQ==;
+	List-Owner; bh=4pzy7txwdMMkaAA0VU78ASIAbn6XsR2u0H0VYoBjlkE=; b=JNVxwOQylcxRIz
+	8jWijeDgSBoyFRivRDGqWp7X2l4XbogXuJZudIX4aUP3ZvOWBMFeP5sMzn8DDXa+LlOlKKNFsaKWP
+	8irR8zDfb1BqU7Z1pztmqW/GgwEQQw1W3w8sOupu6uQFKbANrISshSm4O6Bg+50zb7roH+Rh6YkAQ
+	uw3q0gmJF/59NJcwVeUfbbemeKiPKXhQPbPdFtfNbIPexowOAtkfyNGqS1e1FcK6PltUaCExcgghn
+	vTD9UxJi/XlvI2v2I3TD0EOVSLQpJABVtPQBjCCb/CIbuhCP0YYK8tWAaXQjXT7IAKGGNM9hKfhsP
+	jdToxjlIHPDA2mLPFS2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mclvP-000k25-FI; Tue, 19 Oct 2021 10:00:51 +0000
+	id 1mclvO-000k1z-U6; Tue, 19 Oct 2021 10:00:50 +0000
 Received: from cmccmta1.chinamobile.com ([221.176.66.79])
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mclv0-000jxw-6N; Tue, 19 Oct 2021 10:00:30 +0000
+ id 1mclv0-000jy8-A6; Tue, 19 Oct 2021 10:00:30 +0000
 Received: from spf.mail.chinamobile.com (unknown[172.16.121.5]) by
- rmmx-syy-dmz-app02-12002 (RichMail) with SMTP id 2ee2616e972dcc0-fb04b;
- Tue, 19 Oct 2021 18:00:15 +0800 (CST)
-X-RM-TRANSID: 2ee2616e972dcc0-fb04b
+ rmmx-syy-dmz-app02-12002 (RichMail) with SMTP id 2ee2616e9736ccd-fb058;
+ Tue, 19 Oct 2021 18:00:23 +0800 (CST)
+X-RM-TRANSID: 2ee2616e9736ccd-fb058
 X-RM-TagInfo: emlType=0                                       
 X-RM-SPAM-FLAG: 00000000
 Received: from localhost.localdomain (unknown[223.112.105.130])
- by rmsmtp-syy-appsvr03-12003 (RichMail) with SMTP id 2ee3616e97244be-dc5f9;
- Tue, 19 Oct 2021 18:00:15 +0800 (CST)
-X-RM-TRANSID: 2ee3616e97244be-dc5f9
+ by rmsmtp-syy-appsvr03-12003 (RichMail) with SMTP id 2ee3616e97244be-dc621;
+ Tue, 19 Oct 2021 18:00:23 +0800 (CST)
+X-RM-TRANSID: 2ee3616e97244be-dc621
 From: Tang Bin <tangbin@cmss.chinamobile.com>
 To: jic23@kernel.org,
 	lars@metafoo.de,
@@ -47,17 +47,18 @@ To: jic23@kernel.org,
 Cc: linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Tang Bin <tangbin@cmss.chinamobile.com>
-Subject: [PATCH 1/3] iio: adc: rockchip_saradc: Use of_device_get_match_data
- to simplify code
-Date: Tue, 19 Oct 2021 18:00:11 +0800
-Message-Id: <20211019100013.27312-2-tangbin@cmss.chinamobile.com>
+Subject: [PATCH 2/3] iio: adc: max9611: Use of_device_get_match_data to
+ simplify code
+Date: Tue, 19 Oct 2021 18:00:12 +0800
+Message-Id: <20211019100013.27312-3-tangbin@cmss.chinamobile.com>
 X-Mailer: git-send-email 2.20.1.windows.1
 In-Reply-To: <20211019100013.27312-1-tangbin@cmss.chinamobile.com>
 References: <20211019100013.27312-1-tangbin@cmss.chinamobile.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_030026_756585_41AAA87A 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20211019_030026_963459_0EAA1F85 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,38 +81,31 @@ Retrieve OF match data, it's better and cleaner to use
 
 Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
 ---
- drivers/iio/adc/rockchip_saradc.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/iio/adc/max9611.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index f3eb8d2e5..e221e7aaa 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -304,7 +304,6 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	struct device_node *np = pdev->dev.of_node;
- 	struct iio_dev *indio_dev = NULL;
- 	struct resource	*mem;
--	const struct of_device_id *match;
- 	int ret;
- 	int irq;
+diff --git a/drivers/iio/adc/max9611.c b/drivers/iio/adc/max9611.c
+index 052ab23f1..4e754c072 100644
+--- a/drivers/iio/adc/max9611.c
++++ b/drivers/iio/adc/max9611.c
+@@ -514,8 +514,6 @@ static int max9611_probe(struct i2c_client *client,
+ {
+ 	const char * const shunt_res_prop = "shunt-resistor-micro-ohms";
+ 	const struct device_node *of_node = client->dev.of_node;
+-	const struct of_device_id *of_id =
+-		of_match_device(max9611_of_table, &client->dev);
+ 	struct max9611_dev *max9611;
+ 	struct iio_dev *indio_dev;
+ 	unsigned int of_shunt;
+@@ -545,7 +543,7 @@ static int max9611_probe(struct i2c_client *client,
+ 	if (ret)
+ 		return ret;
  
-@@ -318,14 +317,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	}
- 	info = iio_priv(indio_dev);
- 
--	match = of_match_device(rockchip_saradc_match, &pdev->dev);
--	if (!match) {
-+	info->data = of_device_get_match_data(&pdev->dev);
-+	if (!info->data) {
- 		dev_err(&pdev->dev, "failed to match device\n");
- 		return -ENODEV;
- 	}
- 
--	info->data = match->data;
--
- 	/* Sanity check for possible later IP variants with more channels */
- 	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
- 		dev_err(&pdev->dev, "max channels exceeded");
+-	indio_dev->name		= of_id->data;
++	indio_dev->name		= of_device_get_match_data(&client->dev);
+ 	indio_dev->modes	= INDIO_DIRECT_MODE;
+ 	indio_dev->info		= &indio_info;
+ 	indio_dev->channels	= max9611_channels;
 -- 
 2.20.1.windows.1
 
