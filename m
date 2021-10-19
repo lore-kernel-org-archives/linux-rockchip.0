@@ -1,16 +1,16 @@
-Return-Path: <SRS0=X3cf=PG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=otL+=PH=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E3A6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:21:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F95EC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 10:00:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 580B160F44
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Oct 2021 18:21:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 580B160F44
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id B41F46135F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 10:00:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B41F46135F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=cmss.chinamobile.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,41 +18,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O4kD7zGlT7ELamI30R5CMepShiZYMVTObwRwCiQ6ASg=; b=Zll4bXGOxF4BUV
-	p7DcbjDBf5KG9w2gun/NhokEM0eKmLXqXUCbxuM9iBWju2DrdXDubjQdJ/qpSNyldhCoAG2+Osbif
-	OWX8C8axB9p1N4v73ye3tTGYGwyq3dDGo9hwdJKLchJgX2sKIe1Mn9WCzOYLEXMKdDYLhu3zrlLH/
-	2LFPn/s2Q4hA3UsCQqRRXX5pVnbk/AY4FpoiSA9upmbhmcgK5IiL/wGxYtDcbfeK+NqIJJymuT+nQ
-	xf9fpJfst/1TBozdK/fne/bLKUWgKDPDxaaKPCjokMunFMmBwdzWzyWgjiB6PTMyFxOhTfWXJeZ4S
-	hAq1C/p3vtGwqKrP7F6g==;
+	List-Owner; bh=HO2P+dSfkiezaMSL1h+TzC4/fPYqfWjtlKh39eRQsXo=; b=Wy1WzUmhZuOP5C
+	TfL6s/Cy8yOW7p/k9amZp2aTvGJ0gk1c9adE7B9lkmDOtHSP6EnDAJryM6+ypS27pqqswvRNxSGcq
+	2OAIXrPojtzku0quGHyT4r3bu5EfyYRTWMzIgvaYCnSq0ytVkZPE9g3logpJzEoLWvUYv0wk/WpEs
+	1rPtm3UgSf0GeAzcs66fZR6eGd0mwiRzrvybudroJ713jl0sIoL1PSMaY41YjJ8jNnJq21FqjFA4w
+	VgRZRyMAJO3ILEb6JOrrmt0FQs8k6Q64czPKE1GMUEEFfDU9y/y/NrK/oaZX1uTqc/81CePUjVwjb
+	RJHG9qJMWOisFU1ZR/nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcXG9-00GmCc-Fl; Mon, 18 Oct 2021 18:21:17 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcXFx-00GmBU-7D; Mon, 18 Oct 2021 18:21:06 +0000
-Received: from p508fdda9.dip0.t-ipconnect.de ([80.143.221.169]
- helo=phil.fritz.box)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mcXFo-0001cz-Ne; Mon, 18 Oct 2021 20:20:56 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de,
- amitk@kernel.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- rui.zhang@intel.com, linux-rockchip@lists.infradead.org,
- daniel.lezcano@linaro.org, linux-pm@vger.kernel.org
-Subject: Re: (subset) [PATCH v2 1/4] dt-bindings: thermal: allow more resets
- for tsadc node in rockchip-thermal.yaml
-Date: Mon, 18 Oct 2021 20:20:55 +0200
-Message-Id: <163458113680.651054.7196028816120992133.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210930110517.14323-1-jbx6244@gmail.com>
-References: <20210930110517.14323-1-jbx6244@gmail.com>
+	id 1mclvP-000k25-FI; Tue, 19 Oct 2021 10:00:51 +0000
+Received: from cmccmta1.chinamobile.com ([221.176.66.79])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mclv0-000jxw-6N; Tue, 19 Oct 2021 10:00:30 +0000
+Received: from spf.mail.chinamobile.com (unknown[172.16.121.5]) by
+ rmmx-syy-dmz-app02-12002 (RichMail) with SMTP id 2ee2616e972dcc0-fb04b;
+ Tue, 19 Oct 2021 18:00:15 +0800 (CST)
+X-RM-TRANSID: 2ee2616e972dcc0-fb04b
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from localhost.localdomain (unknown[223.112.105.130])
+ by rmsmtp-syy-appsvr03-12003 (RichMail) with SMTP id 2ee3616e97244be-dc5f9;
+ Tue, 19 Oct 2021 18:00:15 +0800 (CST)
+X-RM-TRANSID: 2ee3616e97244be-dc5f9
+From: Tang Bin <tangbin@cmss.chinamobile.com>
+To: jic23@kernel.org,
+	lars@metafoo.de,
+	heiko@sntech.de
+Cc: linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Tang Bin <tangbin@cmss.chinamobile.com>
+Subject: [PATCH 1/3] iio: adc: rockchip_saradc: Use of_device_get_match_data
+ to simplify code
+Date: Tue, 19 Oct 2021 18:00:11 +0800
+Message-Id: <20211019100013.27312-2-tangbin@cmss.chinamobile.com>
+X-Mailer: git-send-email 2.20.1.windows.1
+In-Reply-To: <20211019100013.27312-1-tangbin@cmss.chinamobile.com>
+References: <20211019100013.27312-1-tangbin@cmss.chinamobile.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_112105_280247_C0BF6E88 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20211019_030026_756585_41AAA87A 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,22 +75,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 30 Sep 2021 13:05:14 +0200, Johan Jonker wrote:
-> The tsadc node in rk356x.dtsi has more resets defined then currently
-> allowed by rockchip-thermal.yaml, so fix that in the documentation.
-> The driver now uses the devm_reset_control_array_get() function,
-> so reset-names is no longer required, but keep it for legacy reasons.
+Retrieve OF match data, it's better and cleaner to use
+'of_device_get_match_data' over 'of_match_device'.
 
-Applied, thanks!
+Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
+---
+ drivers/iio/adc/rockchip_saradc.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-Fixed the patch subject to the regular prefixes.
-
-[4/4] arm64: dts: fix resets in tsadc node for rk356x.dtsi
-      commit: 5c9e66c6b75a754025c74bde7b7a6c52674d8aa1
-
-Best regards,
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index f3eb8d2e5..e221e7aaa 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -304,7 +304,6 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	struct device_node *np = pdev->dev.of_node;
+ 	struct iio_dev *indio_dev = NULL;
+ 	struct resource	*mem;
+-	const struct of_device_id *match;
+ 	int ret;
+ 	int irq;
+ 
+@@ -318,14 +317,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	}
+ 	info = iio_priv(indio_dev);
+ 
+-	match = of_match_device(rockchip_saradc_match, &pdev->dev);
+-	if (!match) {
++	info->data = of_device_get_match_data(&pdev->dev);
++	if (!info->data) {
+ 		dev_err(&pdev->dev, "failed to match device\n");
+ 		return -ENODEV;
+ 	}
+ 
+-	info->data = match->data;
+-
+ 	/* Sanity check for possible later IP variants with more channels */
+ 	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
+ 		dev_err(&pdev->dev, "max channels exceeded");
 -- 
-Heiko Stuebner <heiko@sntech.de>
+2.20.1.windows.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
