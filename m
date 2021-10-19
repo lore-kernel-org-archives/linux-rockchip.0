@@ -2,14 +2,14 @@ Return-Path: <SRS0=otL+=PH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85B47C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 21:59:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D49BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 22:00:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 595856113D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 21:59:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 595856113D
+	by mail.kernel.org (Postfix) with ESMTPS id 2FA4660FDA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Oct 2021 22:00:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2FA4660FDA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,68 +18,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tHyvTqRKxrtKIbj34MYknHzX+yLAnQqh47VxQue4tCk=; b=jZnpTJ3DoyBMFy
-	53BFSj7Q2F7I6UvGzGrARdwtdy/GdZOQriN9rtqp0Jw6BHj/n2ercvi7m71vOUSovvx5MTV4NmCHa
-	UDHYDeQJSdRDxwq86bhU3kAZWb4EPkIrrXqZ0uEhA0f5w7dEwSw3r+3PpE15K6XFrVytUJNtcOxmZ
-	LUmJC4Q/ngOkxLB5um91h4YwdKXvfQkioiuaDwY49q0TzExLe5l9Ujt3HYxIvs1DcKJkbP+PtKO5W
-	K7osyX7sJvMa1NDDZf3Od/aDgOx0wAeiSetnxvN5vEdcirsNTfBcizUMdSrJMJOX+6rl1qKXe+MDu
-	1q72eLFjWmMphhJFlPGg==;
+	List-Owner; bh=x6/d2diqqgTC0AwbnyEkOK36w4vwRzp43AaTU68aj5M=; b=wkiGia5/EwS6cQ
+	SuVhyaTwREo92OuMyUFAEaHlaZXJMke3RttvX7iZ6ppbhCetp+wP0NzQTHAgryAGolioWpRPr8Bqa
+	yjYRAS/Lt6PEyPQAWwK8AgGZTi+ZjtP+eJiH4GMdXd/D0puZXnwfWZK/HvZDtTk882s6clzgQylG5
+	nzNX86FCOLlAsuwNDZ6nOLDw3W+A2X5Ii++oF/gAjegyzYxXoton/PnPqq4eLXggmefeHypIfo4Sk
+	HzWEL/d4eWtI2Jwyi+q8LkuTKcnhdYhDlDcvdX771PJCkq/YhcpC+i65AWiL5hB2opn5q/Z6FozHW
+	7viWXFDhM90u9a/5zWJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcx8r-002j2z-88; Tue, 19 Oct 2021 21:59:29 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1mcx9I-002jH5-CN; Tue, 19 Oct 2021 21:59:56 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcx8P-002ikY-5a; Tue, 19 Oct 2021 21:59:03 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- n40-20020a05600c3ba800b0030da2439b21so5894295wms.0; 
- Tue, 19 Oct 2021 14:59:01 -0700 (PDT)
+ id 1mcx8P-002ikX-LK; Tue, 19 Oct 2021 21:59:04 +0000
+Received: by mail-wm1-x332.google.com with SMTP id
+ a140-20020a1c7f92000000b0030d8315b593so5820655wmd.5; 
+ Tue, 19 Oct 2021 14:59:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Q2/puQXisdIHy96scnY39dLOhAgOrf8qFIVS4zmDucw=;
- b=mdJBK7nOU5EfOez2g0KuQcjPX1mqo1Yu1pyUoN+Yonchoy51OiK+gS5SHgjrEoxpOG
- sDimMoXQXXfpFuyMt5InbeCA1ma78VxZZywXFdfahXW4HKbUjs2tnVUa+itAc40a/Lut
- NxF/KtplJGjsU6gnEIouvEaFfzpcZMzpxv8D9kRUTed0sDtlerGTRROHvnHK6Pw2okZY
- QRFluqjW3Vn4uKF7VXKbxGVFIj+s47JoFGFp45q5EuEIhsZUbBnh5vSeuhbfmUIGk//P
- gFNhLcrUXRMbHK5TsyZLzZ7hZifip4eO5zDxP0adM8Pl2bLFIKMZ31phyOxVwysjxCxu
- PDWg==
+ bh=uCZAM1vvyZIsuTswhisB5UCt6gNS7FCdaVGaaFS3YV4=;
+ b=N9x2DcoC3Zq7l+EXYxzzDvYTGb6e0oKBL/owgOeCIM34js4lC6qA/TCA1k1opUXEUK
+ iJyLxAfyGd/1irS6OFaK6/VaWbkuhUSrXcg5VejFWZOTCNEheBAERgim9vZebgpODSTB
+ 0zfpE8VREGwYumyR5wQB7OI+ZVttjvlGw4zUdGt1trfhORiUkTkmFI/a6PYbJB9TlFRb
+ I4/WknNvC/do0cuW/idOQdbadmwvcobJTrlHbgf+cZmrX4RxL7vwtJjMvYku0e8WGnjY
+ iS38SlU6UOMwxnLaCRBqu8RVDT19yUl9mcbSU9vrJpfbI91HZeeKpD3RKOsshqR4E+dm
+ lwBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Q2/puQXisdIHy96scnY39dLOhAgOrf8qFIVS4zmDucw=;
- b=jn+JsIGvDA601iU5jMDQWABrrTP4pgk3O2OZBgof0QYw8ggY8zxTe/efUUPyXJIGTE
- 2m3iE3Pcv5gj7Dcj4PIhzOg8zqSe1DU6P0hNO2BUxjZtLbEFis1NIct0ETnSFadB1BQB
- ysjv58mVj+CNTkOB4SC7pZG3YnB9kiALfn5srFP5QIZbH7zEkUmlcC68MCiTovkam5VZ
- edpald9X31meuqO248k3kWflmGaPoFpYgKDGHB1+gHVwrz/zdHEOfyW+ywMCqhAz9Ips
- bHdQrFXJhfBm73e/YpzMo+CGW2pKgwVwKvgfaYk70AaV21ZQwmVchdrKL+JbaqB3Pb8M
- q98A==
-X-Gm-Message-State: AOAM5310Qyqstssdsu0x76uWY5DcBoeRppvU7QgcaPxDqN1ox6+rbUCB
- 8ZjpkAW88saV2ZLk3LFE/SY=
-X-Google-Smtp-Source: ABdhPJyH6EYKD5Zz7cAvlgR25QY6isGkEOndRqrg115y3IbztxMbNkQ417bBT6OIYq5kolH2WJ4Otw==
-X-Received: by 2002:a05:600c:1d05:: with SMTP id
- l5mr7158510wms.97.1634680737804; 
- Tue, 19 Oct 2021 14:58:57 -0700 (PDT)
+ bh=uCZAM1vvyZIsuTswhisB5UCt6gNS7FCdaVGaaFS3YV4=;
+ b=ZtozeJ/Sb8WHJMd0KU8pz9+jU0TGMxtub9urEkLpu0peP+z2iuJ2IC1R1fHuveNHM9
+ qHCTWYIko+2U8h6BiSzTBkwKYqtNCH+3e85ImJhtwyX6QbEcNfwrOrShf+PSsYkfunx1
+ 0CBcvHQB3SMQ983RS4X8YXtjeKYhUhJtCq45tsXs2DiMPP1/NiiNRQvqFnX+mlbRos0f
+ 1XrbESWVB/tYzAtCRK2IIyD7dtp8BYkhoudKR0Z0Hc1Q6BomDWFG9H0VV3yNWRgHwdp3
+ FN+/YFLCLWmVhGZclMvqFYxIKZpr9nWPpTx6TYTWKFpPCTm4wtv3+U6EakPiCKZdZ84f
+ SKJw==
+X-Gm-Message-State: AOAM532tmkKpoFPpmG1bg92UfYgCYfs57494dXW9qNEbXkobGNhzn4uH
+ U3AFIO+Y+oMp3e1o2nrxeyTtLUEVnPd/ho9y
+X-Google-Smtp-Source: ABdhPJxx3QAL6lyP35xXPqTB47LPyaFAa19cRinJBEnDBpBQBMv+2xmSW5ECPRIbVOY9Eer57KphDw==
+X-Received: by 2002:adf:a413:: with SMTP id d19mr48203915wra.246.1634680739774; 
+ Tue, 19 Oct 2021 14:58:59 -0700 (PDT)
 Received: from apple.sigmaris.info (ebrouter.sigmaris.info. [82.69.107.165])
- by smtp.gmail.com with ESMTPSA id s3sm178540wrm.40.2021.10.19.14.58.57
+ by smtp.gmail.com with ESMTPSA id s3sm178540wrm.40.2021.10.19.14.58.59
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 19 Oct 2021 14:58:57 -0700 (PDT)
+ Tue, 19 Oct 2021 14:58:59 -0700 (PDT)
 From: Hugh Cole-Baker <sigmaris@gmail.com>
 To: heiko@sntech.de,
 	hjc@rock-chips.com
 Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, ezequiel@collabora.com,
  Hugh Cole-Baker <sigmaris@gmail.com>
-Subject: [PATCH v2 2/3] drm/rockchip: support gamma control on RK3399
-Date: Tue, 19 Oct 2021 22:58:42 +0100
-Message-Id: <20211019215843.42718-3-sigmaris@gmail.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: enable gamma control on RK3399
+Date: Tue, 19 Oct 2021 22:58:43 +0100
+Message-Id: <20211019215843.42718-4-sigmaris@gmail.com>
 X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 In-Reply-To: <20211019215843.42718-1-sigmaris@gmail.com>
 References: <20211019215843.42718-1-sigmaris@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_145901_258532_1013C062 
-X-CRM114-Status: GOOD (  23.54  )
+X-CRM114-CacheID: sfid-20211019_145901_757551_331C36C9 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,200 +96,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3399 has a 1024-entry gamma LUT with 10 bits per component on its
-"big" VOP and a 256-entry, 8 bit per component LUT on the "little" VOP.
-Compared to the RK3288, it no longer requires disabling gamma while
-updating the LUT. On the RK3399, the LUT can be updated at any time as
-the hardware has two LUT buffers, one can be written while the other is
-in use. A swap of the buffers is triggered by writing 1 to the
-update_gamma_lut register.
+Define the memory region on RK3399 VOPs containing the gamma LUT at
+base+0x2000.
 
 Signed-off-by: Hugh Cole-Baker <sigmaris@gmail.com>
 ---
 
-Changes from v1: Moved the vop_crtc_gamma_set call to the end of
-vop_crtc_atomic_enable after the clocks and CRTC are enabled.
+Changes from v1: no changes in this patch
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 105 +++++++++++++-------
- 1 file changed, 71 insertions(+), 34 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index ba9e14da41b4..e2c97f1b26da 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -9,6 +9,7 @@
- #include <linux/delay.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-+#include <linux/log2.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-@@ -66,6 +67,9 @@
- #define VOP_REG_SET(vop, group, name, v) \
- 		    vop_reg_set(vop, &vop->data->group->name, 0, ~0, v, #name)
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 3871c7fd83b0..9cbf6ccdd256 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1619,7 +1619,7 @@ i2s2: i2s@ff8a0000 {
  
-+#define VOP_HAS_REG(vop, group, name) \
-+		(!!(vop->data->group->name.mask))
-+
- #define VOP_INTR_SET_TYPE(vop, name, type, v) \
- 	do { \
- 		int i, reg = 0, mask = 0; \
-@@ -1204,17 +1208,22 @@ static bool vop_dsp_lut_is_enabled(struct vop *vop)
- 	return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
- }
+ 	vopl: vop@ff8f0000 {
+ 		compatible = "rockchip,rk3399-vop-lit";
+-		reg = <0x0 0xff8f0000 0x0 0x3efc>;
++		reg = <0x0 0xff8f0000 0x0 0x2000>, <0x0 0xff8f2000 0x0 0x400>;
+ 		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		assigned-clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+ 		assigned-clock-rates = <400000000>, <100000000>;
+@@ -1676,7 +1676,7 @@ vopl_mmu: iommu@ff8f3f00 {
  
-+static u32 vop_lut_buffer_index(struct vop *vop)
-+{
-+	return vop_read_reg(vop, 0, &vop->data->common->lut_buffer_index);
-+}
-+
- static void vop_crtc_write_gamma_lut(struct vop *vop, struct drm_crtc *crtc)
- {
- 	struct drm_color_lut *lut = crtc->state->gamma_lut->data;
--	unsigned int i;
-+	unsigned int i, bpc = ilog2(vop->data->lut_size);
- 
- 	for (i = 0; i < crtc->gamma_size; i++) {
- 		u32 word;
- 
--		word = (drm_color_lut_extract(lut[i].red, 10) << 20) |
--		       (drm_color_lut_extract(lut[i].green, 10) << 10) |
--			drm_color_lut_extract(lut[i].blue, 10);
-+		word = (drm_color_lut_extract(lut[i].red, bpc) << (2 * bpc)) |
-+		       (drm_color_lut_extract(lut[i].green, bpc) << bpc) |
-+			drm_color_lut_extract(lut[i].blue, bpc);
- 		writel(word, vop->lut_regs + i * 4);
- 	}
- }
-@@ -1224,38 +1233,66 @@ static void vop_crtc_gamma_set(struct vop *vop, struct drm_crtc *crtc,
- {
- 	struct drm_crtc_state *state = crtc->state;
- 	unsigned int idle;
-+	u32 lut_idx, old_idx;
- 	int ret;
- 
- 	if (!vop->lut_regs)
- 		return;
--	/*
--	 * To disable gamma (gamma_lut is null) or to write
--	 * an update to the LUT, clear dsp_lut_en.
--	 */
--	spin_lock(&vop->reg_lock);
--	VOP_REG_SET(vop, common, dsp_lut_en, 0);
--	vop_cfg_done(vop);
--	spin_unlock(&vop->reg_lock);
- 
--	/*
--	 * In order to write the LUT to the internal memory,
--	 * we need to first make sure the dsp_lut_en bit is cleared.
--	 */
--	ret = readx_poll_timeout(vop_dsp_lut_is_enabled, vop,
--				 idle, !idle, 5, 30 * 1000);
--	if (ret) {
--		DRM_DEV_ERROR(vop->dev, "display LUT RAM enable timeout!\n");
--		return;
--	}
-+	if (!state->gamma_lut || !VOP_HAS_REG(vop, common, update_gamma_lut)) {
-+		/*
-+		 * To disable gamma (gamma_lut is null) or to write
-+		 * an update to the LUT, clear dsp_lut_en.
-+		 */
-+		spin_lock(&vop->reg_lock);
-+		VOP_REG_SET(vop, common, dsp_lut_en, 0);
-+		vop_cfg_done(vop);
-+		spin_unlock(&vop->reg_lock);
- 
--	if (!state->gamma_lut)
--		return;
-+		/*
-+		 * In order to write the LUT to the internal memory,
-+		 * we need to first make sure the dsp_lut_en bit is cleared.
-+		 */
-+		ret = readx_poll_timeout(vop_dsp_lut_is_enabled, vop,
-+					 idle, !idle, 5, 30 * 1000);
-+		if (ret) {
-+			DRM_DEV_ERROR(vop->dev, "display LUT RAM enable timeout!\n");
-+			return;
-+		}
-+
-+		if (!state->gamma_lut)
-+			return;
-+	} else {
-+		/*
-+		 * On RK3399 the gamma LUT can updated without clearing dsp_lut_en,
-+		 * by setting update_gamma_lut then waiting for lut_buffer_index change
-+		 */
-+		old_idx = vop_lut_buffer_index(vop);
-+	}
- 
- 	spin_lock(&vop->reg_lock);
- 	vop_crtc_write_gamma_lut(vop, crtc);
- 	VOP_REG_SET(vop, common, dsp_lut_en, 1);
-+	VOP_REG_SET(vop, common, update_gamma_lut, 1);
- 	vop_cfg_done(vop);
- 	spin_unlock(&vop->reg_lock);
-+
-+	if (VOP_HAS_REG(vop, common, update_gamma_lut)) {
-+		ret = readx_poll_timeout(vop_lut_buffer_index, vop,
-+					 lut_idx, lut_idx != old_idx, 5, 30 * 1000);
-+		if (ret) {
-+			DRM_DEV_ERROR(vop->dev, "gamma LUT update timeout!\n");
-+			return;
-+		}
-+
-+		/*
-+		 * update_gamma_lut is auto cleared by HW, but write 0 to clear the bit
-+		 * in our backup of the regs.
-+		 */
-+		spin_lock(&vop->reg_lock);
-+		VOP_REG_SET(vop, common, update_gamma_lut, 0);
-+		spin_unlock(&vop->reg_lock);
-+	}
- }
- 
- static void vop_crtc_atomic_begin(struct drm_crtc *crtc,
-@@ -1305,14 +1342,6 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 		return;
- 	}
- 
--	/*
--	 * If we have a GAMMA LUT in the state, then let's make sure
--	 * it's updated. We might be coming out of suspend,
--	 * which means the LUT internal memory needs to be re-written.
--	 */
--	if (crtc->state->gamma_lut)
--		vop_crtc_gamma_set(vop, crtc, old_state);
--
- 	mutex_lock(&vop->vop_lock);
- 
- 	WARN_ON(vop->event);
-@@ -1403,6 +1432,14 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	VOP_REG_SET(vop, common, standby, 0);
- 	mutex_unlock(&vop->vop_lock);
-+
-+	/*
-+	 * If we have a GAMMA LUT in the state, then let's make sure
-+	 * it's updated. We might be coming out of suspend,
-+	 * which means the LUT internal memory needs to be re-written.
-+	 */
-+	if (crtc->state->gamma_lut)
-+		vop_crtc_gamma_set(vop, crtc, old_state);
- }
- 
- static bool vop_fs_irq_is_pending(struct vop *vop)
-@@ -2125,8 +2162,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
- 	if (res) {
--		if (!vop_data->lut_size) {
--			DRM_DEV_ERROR(dev, "no gamma LUT size defined\n");
-+		if (vop_data->lut_size != 1024 && vop_data->lut_size != 256) {
-+			DRM_DEV_ERROR(dev, "unsupported gamma LUT size %d\n", vop_data->lut_size);
- 			return -EINVAL;
- 		}
- 		vop->lut_regs = devm_ioremap_resource(dev, res);
+ 	vopb: vop@ff900000 {
+ 		compatible = "rockchip,rk3399-vop-big";
+-		reg = <0x0 0xff900000 0x0 0x3efc>;
++		reg = <0x0 0xff900000 0x0 0x2000>, <0x0 0xff902000 0x0 0x1000>;
+ 		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		assigned-clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+ 		assigned-clock-rates = <400000000>, <100000000>;
 -- 
 2.24.3 (Apple Git-128)
 
