@@ -2,14 +2,14 @@ Return-Path: <SRS0=Zsw1=PI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A30FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Oct 2021 08:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EED5C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Oct 2021 08:07:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13C5D6115A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Oct 2021 08:07:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 13C5D6115A
+	by mail.kernel.org (Postfix) with ESMTPS id EB90061038
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Oct 2021 08:07:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EB90061038
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,37 +18,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Klhl6/piwtBB8lEyRFMwfSxYQ6FxiEUR5O7BodZ2uk=; b=PYcLjgLI92/547
-	Y1q7aXUsnAKfVJurRlF5eTh+8C1bxxXuLl1EGn1AorjnxazxizFpPGwH3yRuaNZ8lcR1l45Vkmb69
-	RUsRvDbthtO6phFuWXTb8/EciE4RgBBikwpK4e9pXXJQ5IwF/qfeMPfb+/tZ12hVcQ/s9m6ShK1J/
-	v55KrcA8btTSa6qgMJmnZY6VpRR3Dagoa55Hjzohz2eH8sW/5LGwiqa1Y0N6cHRVoRD8Zp1VvawQO
-	nLzAZb3EHFvv5zBEhuvEBwmDKzvBZVbQiVqVTmseqma5q1JnM4jL4kLGjcuOTp76joNd0UXglApjV
-	zpv2v4zjzsnk9PJP1h5A==;
+	List-Owner; bh=D0stV4z0l4Barl167TQZRZ5DACQCYbjghRkVlAOR9Ys=; b=XZNCkQMF4t2+gt
+	o5Arguz4QzsYK/svP0XsdFIJlA8cb2YUpKJYczAZbr0Wfnb3IABHGTSOyX6dvZHzmssFdWEp/t7VS
+	6yInEszJ7+6f6/xVOkXn0iYhTtijbnjVeLmeVoO9Xbb+r75WVP0Pw1J40lGAPCZK6oExV0h6chnod
+	fjAl0jVRlcQC43M6xdqCJiDpBkSd4O6YKGeVgWGIcWa2V2pyzh7JJ9/meC99ZACPmgIWmg/r6/XoT
+	KWbGohyDZdVvaK9ovTpSq56OEtUumXy3T7YaIiwVFcjWlzNGbDw+KIgQA6tfD1SC19Q5xq1xyZXw2
+	T9t9sTd3aLpc/ekbuOBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1md6Xn-003m0i-50; Wed, 20 Oct 2021 08:01:51 +0000
+	id 1md6IX-003her-NN; Wed, 20 Oct 2021 07:46:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1md6XZ-003lzB-JQ; Wed, 20 Oct 2021 08:01:38 +0000
+ id 1md6IE-003hYL-SC; Wed, 20 Oct 2021 07:45:48 +0000
 Received: from [213.208.157.36] (helo=phil.sntech)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1md6XX-0002Hv-PZ; Wed, 20 Oct 2021 10:01:35 +0200
+ id 1md6IA-0002EF-W5; Wed, 20 Oct 2021 09:45:43 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, robh+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Add idle cooling devices
-Date: Wed, 20 Oct 2021 10:01:32 +0200
-Message-Id: <163471688410.692684.11557412132014625068.b4-ty@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, vkoul@kernel.org, kishon@ti.com
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: phy: rockchip: remove usb-phy
+ fallback string for rk3066a/rk3188
+Date: Wed, 20 Oct 2021 09:45:31 +0200
+Message-Id: <163471592707.690007.3298750911238930727.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211001161728.1729664-1-daniel.lezcano@linaro.org>
-References: <20211001161728.1729664-1-daniel.lezcano@linaro.org>
+In-Reply-To: <20210828111218.10026-1-jbx6244@gmail.com>
+References: <20210828111218.10026-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_010137_656165_977538DB 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20211020_004546_939279_6AF2C8E9 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,17 +68,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 1 Oct 2021 18:17:28 +0200, Daniel Lezcano wrote:
-> The thermal framework accepts now the cpu idle cooling device as an
-> alternative when the cpufreq cooling device fails.
-> 
-> Add the node in the DT so the cooling devices will be present and the
-> platforms can extend the thermal zone definition to add them.
+On Sat, 28 Aug 2021 13:12:17 +0200, Johan Jonker wrote:
+> With the conversion of rockchip-usb-phy.yaml a long time used fallback
+> string for rk3066a/rk3188 was added. The linux driver doesn't do much with
+> the GRF phy address range, however the u-boot driver rockchip_usb2_phy.c
+> does. The bits in GRF_UOC0_CON2 for rk3066a/rk3188 and rk3288 for example
+> don't match. Remove the usb-phy fallback string for rk3066a/rk3188
+> to prevent possible strange side effects.
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add idle cooling devices
-      commit: 43f9699b0c12d4e50b66723213cef456c52254f3
+[2/2] ARM: dts: rockchip: remove usb-phy fallback string for rk3066a/rk3188
+      commit: 97ef6931208f7ab09f52dd291320aa53878aaa53
 
 Best regards,
 -- 
