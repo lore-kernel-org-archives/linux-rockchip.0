@@ -2,14 +2,14 @@ Return-Path: <SRS0=g3xy=PJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 925D5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 15:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73DC0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 15:17:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61ECA611C7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 15:09:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 61ECA611C7
+	by mail.kernel.org (Postfix) with ESMTPS id 43EA861052
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 15:17:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 43EA861052
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,101 +18,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WSk6pqltSy2xOY/yhy1I9gidEs3ghWo9Pq4JXX2XeTI=; b=h/pc8FfjsV70e8
-	OusC602O7kdFBGd22w8U06J27GEo1fM3He02+RkPtFKig7uN/jUC5AeweBoEohu+BHD3Cvn2JCOkz
-	JWL1Pzbbc34yY2YQ1l5aoY+rmjKHcCSAxGgH6RhgXJlfbfOrcNKTPc9yQYJMHg8kcVyNC/658HX1i
-	JmIru9KmfR8Q+wnn3KhLnlt7RrFT51OkKToqTkvLqlWPMF/5yiSMGYIwREoramHgFUUJVu5EKaK+8
-	w4yjxQkfIuYVF1VrHYY5mQ2mcFAno1RyRcIqkQSgLcqJMksLdqzeqFRnG7I/a5yitOTXZ1mzLnUB3
-	ec4XH8TSrXhX+tVEiZmQ==;
+	List-Owner; bh=XOVSrVTxCKJ0BxyP8yhWliZRhi95tWQKe515HcbGhmY=; b=Tdvz0XIB3CWrwa
+	RtlGy1n634MRXZkQYWUxpjxnmeSG6vegerfdwQ6WtyMybvtzlLhjsOtLXkstA/RTGfigwbhR11a2S
+	KStRlQTxnz6vfbvrGE4Sx78K+z4cJKxuN2ILJUfGBdZzGfp7qNVRBeg3GHv5yVEuCJF5Xo0QdBJXY
+	CQluCQ4tPuX8Gjyhz7jp7wqdzDm1t97i6yVH5VFXaKudkNn8zgS03XSKxyiz/Ua9acjLlw7IgMuG5
+	OWWP/xVVYkCWxHUX9R8omclgh9RdHTv3HEPaxGIgMZSbJKuSapqUe323KK6wiLcFP9/u7DiSHHAxM
+	t8qNVSOHP8B6WAuzf+Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdZhb-007zJd-RD; Thu, 21 Oct 2021 15:09:55 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1mdZp7-0083FF-HG; Thu, 21 Oct 2021 15:17:41 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdZhV-007zG5-7m; Thu, 21 Oct 2021 15:09:50 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- q10-20020a17090a1b0a00b001a076a59640so5972772pjq.0; 
- Thu, 21 Oct 2021 08:09:48 -0700 (PDT)
+ id 1mdZko-0080yH-8E; Thu, 21 Oct 2021 15:13:15 +0000
+Received: by mail-pl1-x635.google.com with SMTP id t21so632313plr.6;
+ Thu, 21 Oct 2021 08:13:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TfHsGP2yi6lWLecTIcZVrIhetTubqUKD7yLErDw3x2w=;
- b=EUZaSbSsvxfgQPDyiZv6K9FvbiaFo8lnIoEmpC0ubPuoqxNOuIOf4K8ZsIh578ws0Z
- 2EDdrEbYHum8lqROFe1C/onYlVaB50CDb5AwppL0LpxiFNIEWdnc8cQjEFdXeAobfidj
- x8qfJAw0gdtPVdlvPc21q9Yxry610dr7WFKlVHFUO1eyzNlo/F03H3hyjJckpZwfON5S
- b21ly6HIsBApY6VwbYgoI1P/Fu0X1AZm7c/Cai3cT3TlLzr9REQ44ISEUK3PawQUbAVm
- ZC1Qe6WDuHchsm5VVBggdsA8zJ1Xgd6h2KTs8gi19LGsz2M2EyYOMMdey6IAUQiBbt/o
- +Ubw==
+ bh=g4G4Yffk64HxtbjZzw9/E8PSnsLTvUujtQvSwE3J4gU=;
+ b=cI4maM6sHC3cIMldIjQc1WksuleNIofwFqWYF4hgi1mSUPjEGy/WmXoWahcRKKe5+w
+ j+zLwnck9MFzmr8MftgklxRZ5wNxIbu4G2AheKg9ZMv2lHgNNhGgL2J7UsV3l6gjZExb
+ H4tZgM8wyBorCpeRi921+Tm3u0WVTydBr3Tj3cAhZ9aNPzvoqZ4hpLqS+KH5vxfSS8kl
+ RuDF/0hlWT9G4JzVK0afVRra+EpY2rFrGAa9crTmNU2ssX8sWEbik9C86qDFbaKzhp+l
+ Qiuu1E0eKf6ZEerz3y53kIBw8RH87UqQ0r1zBn0XyLQryf6q11P3qfumh997IU+rjQxH
+ 8n1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TfHsGP2yi6lWLecTIcZVrIhetTubqUKD7yLErDw3x2w=;
- b=CyQewIMIcX4q4S5ATHJD3FHrYIJtlD5AKNU+AcQByVyHTvretGyJtoJFv7SGu1WXIU
- sHn45XqbH/31uKmDn712s2Eu7bbJU2JR+OzYFFPq059ruxI8T8Y0ecX7fxBSsoBQm4gK
- ToyTXJ5dPcuaZ1WTL1RjyAuVI47GnPLPoHaluhwHKcI7xTAwByLBdfDEObZbnefpqhFP
- OecxNc03Qfmqrot6WBd9pfAEeFoxL/N6lpEtUQrUl/8+sNgtl7pGDA4981SyI5vSxXBC
- wzcTSD0jbz/RD2jnLw1pjC3JcBE9ggslHH8KfYA08wVNT4sahSbQU/epBV3mnPzx+eRd
- aUWQ==
-X-Gm-Message-State: AOAM5308bSrHpor0w6rIhcX0nXlcyrjzGO1iuiL6rFSirlFLRwVgrYOZ
- F/VLExlLExrrRhoQ/R/j2Bw=
-X-Google-Smtp-Source: ABdhPJxCZzHdSx53dvdDywLg2snzLq3kKzeBkBrose+fBiquWSSELbthuFAJlsRxyfUjW/fn7V8LMg==
-X-Received: by 2002:a17:902:d4d1:b0:13f:af7:9068 with SMTP id
- o17-20020a170902d4d100b0013f0af79068mr5714981plg.20.1634828988016; 
- Thu, 21 Oct 2021 08:09:48 -0700 (PDT)
+ bh=g4G4Yffk64HxtbjZzw9/E8PSnsLTvUujtQvSwE3J4gU=;
+ b=TbvFPqtk/F4o6VMvJ52QYOZShut5M8dXVHZSZi/ihDnOdQdcGJGJB/jeLS8wD8NXyo
+ NiCCMMn7U+UHeJ9Ukk76z2Y0G/U9uxxFOMYLPmcRcj2VAh1n7PGS4FbdyJ1P1x0D+4dB
+ oZ5Ch3RxHeIBoB0zB7SF3o0g4RUoQ1n866GkYPHhQ4n1HNPSkFVOUgNWGoklFcjTxqsZ
+ kZB2H1EQ84wR05SCL671jqfKdm86Z8TsyPlOxd9vrZbilbNfTntImB26P7/5nvEwXCmv
+ iAx3uZkd2DqJ5FFOLKHaA6QgzHNvxMUpAzebj/dGfWk8WgjS98vyfN5RIGWTZcR7Z9Sx
+ dlPg==
+X-Gm-Message-State: AOAM530I3P6TRh/CDt9hN5X28BLbUL9rNO9yt4+u0m+bqattZRRO4s97
+ db5AA3oEiioqvXVPS/2nOwr3zqz3RmBY7+N0
+X-Google-Smtp-Source: ABdhPJwuN72upSJVb5RV31HWJ0Rk/DS/k3MWELCcfxWrH5dP6+GQCb3WOGhj7YB/ramfc8/eTUFdtQ==
+X-Received: by 2002:a17:90b:1a87:: with SMTP id
+ ng7mr7478114pjb.69.1634829192977; 
+ Thu, 21 Oct 2021 08:13:12 -0700 (PDT)
 Received: from localhost.localdomain ([2406:7400:63:29a4:d874:a949:6890:f95f])
  by smtp.gmail.com with ESMTPSA id
- c9sm5508027pgq.58.2021.10.21.08.09.30
+ c9sm5508027pgq.58.2021.10.21.08.13.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Oct 2021 08:09:47 -0700 (PDT)
+ Thu, 21 Oct 2021 08:13:12 -0700 (PDT)
 From: Naveen Naidu <naveennaidu479@gmail.com>
 To: bhelgaas@google.com
 Cc: Naveen Naidu <naveennaidu479@gmail.com>,
  linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>, skhan@linuxfoundation.org,
- Robert Richter <rric@kernel.org>,
+ linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
+ Shawn Lin <shawn.lin@rock-chips.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
  =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com (maintainer:BROADCOM IPROC ARM
- ARCHITECTURE), Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Shawn Guo <shawn.guo@linaro.org>, Xiaowei Song <songxiaowei@hisilicon.com>,
- Binghui Wang <wangbinghui@hisilicon.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Joyce Ooi <joyce.ooi@intel.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Nirmal Patel <nirmal.patel@linux.intel.com>,
- Jonathan Derrick <jonathan.derrick@linux.dev>,
- Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
- Lukas Wunner <lukas@wunner.de>, Amey Narkhede <ameynarkhede03@gmail.com>,
- Russell Currey <ruscur@russell.cc>, "Oliver O'Halloran" <oohall@gmail.com>,
- Sean V Kelley <sean.v.kelley@intel.com>, Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
- Marc Zyngier <maz@kernel.org>, "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Dexuan Cui <decui@microsoft.com>, Toan Le <toan@os.amperecomputing.com>
-Subject: [PATCH v3 02/25] PCI: Set error response in config access defines
- when ops->read() fails
-Date: Thu, 21 Oct 2021 20:37:27 +0530
-Message-Id: <56642edd0d6bf8a8e3d20b5fcc088fd6389b827f.1634825082.git.naveennaidu479@gmail.com>
+ Heiko Stuebner <heiko@sntech.de>,
+ linux-rockchip@lists.infradead.org (open list:PCIE DRIVER FOR ROCKCHIP),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support)
+Subject: [PATCH v3 15/25] PCI: rockchip: Remove redundant error fabrication
+ when device read fails
+Date: Thu, 21 Oct 2021 20:37:40 +0530
+Message-Id: <59113f443210c0c4d9d7696b22274c21ec2b7276.1634825082.git.naveennaidu479@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1634825082.git.naveennaidu479@gmail.com>
 References: <cover.1634825082.git.naveennaidu479@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_080949_314321_99A0CB1E 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20211021_081314_351926_DA4AA763 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,52 +104,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make PCI_OP_READ and PCI_USER_READ_CONFIG set the data value with error
-response (~0), when the PCI device read by a host controller fails.
+An MMIO read from a PCI device that doesn't exist or doesn't respond
+causes a PCI error. There's no real data to return to satisfy the
+CPU read, so most hardware fabricates ~0 data.
 
-This ensures that the controller drivers no longer need to fabricate
-(~0) value when they detect error. It also  gurantees that the error
-response (~0) is always set when the controller drivers fails to read a
-config register from a device.
+The host controller drivers sets the error response values (~0) and
+returns an error when faulty hardware read occurs. But the error
+response value (~0) is already being set in PCI_OP_READ and
+PCI_USER_READ_CONFIG whenever a read by host controller driver fails.
 
-This makes error response fabrication consistent and helps in removal of
-a lot of repeated code.
+Thus, it's no longer necessary for the host controller drivers to
+fabricate any error response.
 
-Suggested-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
+This helps unify PCI error response checking and make error check
+consistent and easier to find.
+
 Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
 ---
- drivers/pci/access.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/pci/controller/pcie-rockchip-host.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index 46935695cfb9..0f732ba2f71a 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -42,7 +42,10 @@ int noinline pci_bus_read_config_##size \
- 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
- 	pci_lock_config(flags);						\
- 	res = bus->ops->read(bus, devfn, pos, len, &data);		\
--	*value = (type)data;						\
-+	if (res)							\
-+		SET_PCI_ERROR_RESPONSE(value);				\
-+	else								\
-+		*value = (type)data;					\
- 	pci_unlock_config(flags);					\
- 	return res;							\
- }
-@@ -228,7 +231,10 @@ int pci_user_read_config_##size						\
- 	ret = dev->bus->ops->read(dev->bus, dev->devfn,			\
- 					pos, sizeof(type), &data);	\
- 	raw_spin_unlock_irq(&pci_lock);				\
--	*val = (type)data;						\
-+	if (ret)							\
-+		SET_PCI_ERROR_RESPONSE(val);				\
-+	else								\
-+		*val = (type)data;					\
- 	return pcibios_err_to_errno(ret);				\
- }									\
- EXPORT_SYMBOL_GPL(pci_user_read_config_##size);
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index c52316d0bfd2..45a28880f322 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -221,10 +221,8 @@ static int rockchip_pcie_rd_conf(struct pci_bus *bus, u32 devfn, int where,
+ {
+ 	struct rockchip_pcie *rockchip = bus->sysdata;
+ 
+-	if (!rockchip_pcie_valid_device(rockchip, bus, PCI_SLOT(devfn))) {
+-		*val = 0xffffffff;
++	if (!rockchip_pcie_valid_device(rockchip, bus, PCI_SLOT(devfn)))
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+-	}
+ 
+ 	if (pci_is_root_bus(bus))
+ 		return rockchip_pcie_rd_own_conf(rockchip, where, size, val);
 -- 
 2.25.1
 
