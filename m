@@ -1,15 +1,15 @@
-Return-Path: <SRS0=g3xy=PJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ACC0=PK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06265C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 16:08:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71B9DC433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Oct 2021 10:50:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6AED611CE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Oct 2021 16:08:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B6AED611CE
+	by mail.kernel.org (Postfix) with ESMTPS id 2EAAD60560
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Oct 2021 10:50:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2EAAD60560
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,83 +18,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZBX1xzjkK5GQBXxdguy4qw7f4G5tjnwDaYo5g5F/+TU=; b=1MBtfGQ3iaPUGW
-	xrrzmpFIb2izUuV6M2c++/Te19+xgvd63dSrRb6n7t397NeBZ9yJy/UJ2fCO2OVixsmaZPl/fjECK
-	zPBFVqi5L8ugzLTEfbv/V2q6oCcfTGR8Xy4un8MaqLHD2cxBD7gLcIryHNAURaDSQzLPNqLcDe6zf
-	Vvn9m8BqjsFakOa8U9elm+QXvhEuf7HzscCKueOD149/T/0UglsJ40noe9dNrvks81/auGOBFGtOu
-	NlQV6dhrB6F2SOYvEfbdsJNrhf8+rcfJTXV5bMBldjvr55Lpa6Tj+U55rgN3sSqCgyMSFc7yQIIgA
-	VySxAfyJMX3dfPIFjBjA==;
+	List-Owner; bh=nid1WjmBoDWTJEc+8QU8eUydj7BOktAuCwYlId9weq8=; b=IMMum1dtbMfH3u
+	j29JIjsxamk/+Mh8ahLx1MvAoGMwpmEByi08CqW5CahT9kzZt+AcYkbcWkRDaCjEv9f61x6egrVRj
+	EanCjKG52V9EWwcujhVB5cXsr2EIctkkK9FtogxcOX3Z6DRdxt9EeWKLbctBJHlAopf8ou/gxjZT7
+	1zKGqghy4FGnEqh8L8Z3zOJuVHUFr+uspyz7sJYdtrUW5DKZ5ikBqSXTKjSG5AM5Cs0sK4/VTdwz1
+	AHhOjsH67W2TxSg1vUuwoqyE0ETTZYSQyBpvFuPzIqLwobsPoYL8x8BLhddscDTDuS4auJ4QiuOaa
+	wPCHzcJ520tiYyFSprcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdacX-008Iol-QW; Thu, 21 Oct 2021 16:08:45 +0000
+	id 1mds7m-00Aa5w-1d; Fri, 22 Oct 2021 10:50:10 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdacT-008InG-Rk; Thu, 21 Oct 2021 16:08:43 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1AEFD611CB;
- Thu, 21 Oct 2021 16:08:41 +0000 (UTC)
+ id 1mds7Z-00Aa45-NN; Fri, 22 Oct 2021 10:49:59 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DE77460560;
+ Fri, 22 Oct 2021 10:49:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634832521;
- bh=3wcwNbtDNknQedZoy24cZfK1CiOqshIYIk3e2c4B9Rw=;
+ s=k20201202; t=1634899796;
+ bh=0N9euYvolHICbMqCsFL6zp/Zm/NyWT3YNUnL9sLoKA4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XWhJ08GGIqTZw+TvT/nMCDAy7quf2FJv33jj0Ily06vxkI8rUxTQELDkeHb0u+NFl
- MD0Lx9+x7lhMM3GIAZfA1T2u0eNmQAG1bqpXTvz67evSI6p28cRymuvwfzx0MmCdPZ
- Eu9kyx0IRx+BQHrjfg6pUkXIBKHVfUT3rJ6PyHjkKsGXSiMQ2s0MWrlq5f/6WPUXfA
- 12KC4ZTUvETH0cKn32kcKsPv7RGUIftWATLF8XYn+cHxWi3nvl7PC2jb98L+8EJMFN
- xtCzC0AmpDoL2r37xWXDC3EUt/EyyEmL8iLEASXb2kkCdjx5XS/xqqOzJAGW3sGtIs
- FzUF2rqmMe78Q==
-Received: by pali.im (Postfix)
- id D8DB085E; Thu, 21 Oct 2021 18:08:38 +0200 (CEST)
-Date: Thu, 21 Oct 2021 18:08:38 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Naveen Naidu <naveennaidu479@gmail.com>
-Cc: bhelgaas@google.com, linux-kernel-mentees@lists.linuxfoundation.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, Rob Herring <robh@kernel.org>,
- skhan@linuxfoundation.org, Robert Richter <rric@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- "maintainer:BROADCOM IPROC ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, 
- Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Shawn Guo <shawn.guo@linaro.org>, Xiaowei Song <songxiaowei@hisilicon.com>,
- Binghui Wang <wangbinghui@hisilicon.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Joyce Ooi <joyce.ooi@intel.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Nirmal Patel <nirmal.patel@linux.intel.com>,
- Jonathan Derrick <jonathan.derrick@linux.dev>,
- Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
- Lukas Wunner <lukas@wunner.de>, Amey Narkhede <ameynarkhede03@gmail.com>,
- Russell Currey <ruscur@russell.cc>, Oliver O'Halloran <oohall@gmail.com>,
- Sean V Kelley <sean.v.kelley@intel.com>,
- Qiuxu Zhuo <qiuxu.zhuo@intel.com>, Marc Zyngier <maz@kernel.org>,
- "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
- Toan Le <toan@os.amperecomputing.com>
-Subject: Re: [PATCH v3 01/25] PCI: Add PCI_ERROR_RESPONSE and it's related
- definitions
-Message-ID: <20211021160838.r7t7fmmeseaecfac@pali>
-References: <cover.1634825082.git.naveennaidu479@gmail.com>
- <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
+ b=i71yzpodiCIsPew+jgWa539RfutcCEYWttPcVFJURi2rFo+r9ed5mHxFdp9tu3r9Y
+ fRVM8VIes1lw6JlL6X7ssvAkzKHRcOc4ZdqJtOFlD1qlv5+AMFaKQWsaXT+x5+vb0V
+ S7WcCrJ4HYNKMXTjAgMAxl0NaQzjAI0TkFusLc2JdhL1fVcsbBuI8ujEA9cQX7VwK+
+ t5c+Mg5VtvnB2N5gKVEizfvesHU1jTtRUfKbsr/CJJ23DGeS91oij5EK8jMB1To/dk
+ QR2KISQa9hPHcDomS+2MS8fZyTBOE0pfRoorhbuht0CCuZGDfBdAqdCtsHt88ZK2ae
+ D7HFqsdQoJFwg==
+Date: Fri, 22 Oct 2021 16:19:52 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ michael.riesch@wolfvision.net, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, kishon@ti.com, p.zabel@pengutronix.de
+Subject: Re: [PATCH v2 2/3] phy/rockchip: add naneng combo phy for RK3568
+Message-ID: <YXKXULdyPuv1BirB@matsya>
+References: <20211013101938.28061-1-yifeng.zhao@rock-chips.com>
+ <20211013101938.28061-3-yifeng.zhao@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <20211013101938.28061-3-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_090841_964582_5996BEF2 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20211022_034957_845477_87707326 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,40 +71,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1cnNkYXkgMjEgT2N0b2JlciAyMDIxIDIwOjM3OjI2IE5hdmVlbiBOYWlkdSB3cm90ZToK
-PiBBbiBNTUlPIHJlYWQgZnJvbSBhIFBDSSBkZXZpY2UgdGhhdCBkb2Vzbid0IGV4aXN0IG9yIGRv
-ZXNuJ3QgcmVzcG9uZAo+IGNhdXNlcyBhIFBDSSBlcnJvci4gIFRoZXJlJ3Mgbm8gcmVhbCBkYXRh
-IHRvIHJldHVybiB0byBzYXRpc2Z5IHRoZQo+IENQVSByZWFkLCBzbyBtb3N0IGhhcmR3YXJlIGZh
-YnJpY2F0ZXMgfjAgZGF0YS4KPiAKPiBBZGQgYSBQQ0lfRVJST1JfUkVTUE9OU0UgZGVmaW5pdGlv
-biBmb3IgdGhhdCBhbmQgdXNlIGl0IHdoZXJlCj4gYXBwcm9wcmlhdGUgdG8gbWFrZSB0aGVzZSBj
-aGVja3MgY29uc2lzdGVudCBhbmQgZWFzaWVyIHRvIGZpbmQuCj4gCj4gQWxzbyBhZGQgaGVscGVy
-IGRlZmluaXRpb25zIFNFVF9QQ0lfRVJST1JfUkVTUE9OU0UgYW5kCj4gUkVTUE9OU0VfSVNfUENJ
-X0VSUk9SIHRvIG1ha2UgdGhlIGNvZGUgbW9yZSByZWFkYWJsZS4KPiAKPiBTdWdnZXN0ZWQtYnk6
-IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2dsZS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogTmF2
-ZWVuIE5haWR1IDxuYXZlZW5uYWlkdTQ3OUBnbWFpbC5jb20+CgpSZXZpZXdlZC1ieTogUGFsaSBS
-b2jDoXIgPHBhbGlAa2VybmVsLm9yZz4KCj4gLS0tCj4gIGluY2x1ZGUvbGludXgvcGNpLmggfCA5
-ICsrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAt
-LWdpdCBhL2luY2x1ZGUvbGludXgvcGNpLmggYi9pbmNsdWRlL2xpbnV4L3BjaS5oCj4gaW5kZXgg
-Y2Q4YWE2ZmNlMjA0Li42ODljODI3N2M1ODQgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9saW51eC9w
-Y2kuaAo+ICsrKyBiL2luY2x1ZGUvbGludXgvcGNpLmgKPiBAQCAtMTU0LDYgKzE1NCwxNSBAQCBl
-bnVtIHBjaV9pbnRlcnJ1cHRfcGluIHsKPiAgLyogVGhlIG51bWJlciBvZiBsZWdhY3kgUENJIElO
-VHggaW50ZXJydXB0cyAqLwo+ICAjZGVmaW5lIFBDSV9OVU1fSU5UWAk0Cj4gIAo+ICsvKgo+ICsg
-KiBSZWFkaW5nIGZyb20gYSBkZXZpY2UgdGhhdCBkb2Vzbid0IHJlc3BvbmQgdHlwaWNhbGx5IHJl
-dHVybnMgfjAuICBBCj4gKyAqIHN1Y2Nlc3NmdWwgcmVhZCBmcm9tIGEgZGV2aWNlIG1heSBhbHNv
-IHJldHVybiB+MCwgc28geW91IG5lZWQgYWRkaXRpb25hbAo+ICsgKiBpbmZvcm1hdGlvbiB0byBy
-ZWxpYWJseSBpZGVudGlmeSBlcnJvcnMuCj4gKyAqLwo+ICsjZGVmaW5lIFBDSV9FUlJPUl9SRVNQ
-T05TRSAgICAgKH4wVUxMKQo+ICsjZGVmaW5lIFNFVF9QQ0lfRVJST1JfUkVTUE9OU0UodmFsKSAg
-ICAoKih2YWwpID0gKCh0eXBlb2YoKih2YWwpKSkgUENJX0VSUk9SX1JFU1BPTlNFKSkKPiArI2Rl
-ZmluZSBSRVNQT05TRV9JU19QQ0lfRVJST1IodmFsKSAoKHZhbCkgPT0gKCh0eXBlb2YodmFsKSkg
-UENJX0VSUk9SX1JFU1BPTlNFKSkKPiArCj4gIC8qCj4gICAqIHBjaV9wb3dlcl90IHZhbHVlcyBt
-dXN0IG1hdGNoIHRoZSBiaXRzIGluIHRoZSBDYXBhYmlsaXRpZXMgUE1FX1N1cHBvcnQKPiAgICog
-YW5kIENvbnRyb2wvU3RhdHVzIFBvd2VyU3RhdGUgZmllbGRzIGluIHRoZSBQb3dlciBNYW5hZ2Vt
-ZW50IGNhcGFiaWxpdHkuCj4gLS0gCj4gMi4yNS4xCj4gCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 13-10-21, 18:19, Yifeng Zhao wrote:
+> This patch implements a combo phy driver for Rockchip SoCs
+> with NaNeng IP block. This phy can be used as pcie-phy, usb3-phy,
+> sata-phy or sgmii-phy.
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - Using api devm_platform_get_and_ioremap_resource.
+> - Modify rockchip_combphy_set_Mode.
+> - Add some PHY registers definition.
+> 
+>  drivers/phy/rockchip/Kconfig                  |   8 +
+>  drivers/phy/rockchip/Makefile                 |   1 +
+>  .../rockchip/phy-rockchip-naneng-combphy.c    | 650 ++++++++++++++++++
+>  3 files changed, 659 insertions(+)
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> 
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index e812adad7242..9022e395c056 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -66,6 +66,14 @@ config PHY_ROCKCHIP_INNO_DSIDPHY
+>  	  Enable this to support the Rockchip MIPI/LVDS/TTL PHY with
+>  	  Innosilicon IP block.
+>  
+> +config PHY_ROCKCHIP_NANENG_COMBO_PHY
+> +	tristate "Rockchip NANENG COMBO PHY Driver"
+> +	depends on ARCH_ROCKCHIP && OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Enable this to support the Rockchip PCIe/USB3.0/SATA/QSGMII
+> +	  combo PHY with NaNeng IP block.
+> +
+>  config PHY_ROCKCHIP_PCIE
+>  	tristate "Rockchip PCIe PHY Driver"
+>  	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+> index f0eec212b2aa..a5041efb5b8f 100644
+> --- a/drivers/phy/rockchip/Makefile
+> +++ b/drivers/phy/rockchip/Makefile
+> @@ -6,6 +6,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_INNO_CSIDPHY)	+= phy-rockchip-inno-csidphy.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+= phy-rockchip-inno-dsidphy.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY)	+= phy-rockchip-naneng-combphy.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
+> diff --git a/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> new file mode 100644
+> index 000000000000..fbfc5fbbd5b8
+> --- /dev/null
+> +++ b/drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
+> @@ -0,0 +1,650 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Rockchip PIPE USB3.0 PCIE SATA combphy driver
+> + *
+> + * Copyright (C) 2021 Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +#include <dt-bindings/phy/phy.h>
+> +
+> +#define BIT_WRITEABLE_SHIFT		16
+> +#define REF_CLOCK_24MHz			24000000
+> +#define REF_CLOCK_25MHz			25000000
+> +#define REF_CLOCK_100MHz		100000000
+> +/* RK3568 T22 COMBO PHY REG */
+> +#define RK3568_T22_PHYREG5		(0x5 << 2)
+> +#define T22_PHYREG5_PLL_DIV_MASK	GENMASK(7, 6)
+> +#define T22_PHYREG5_PLL_DIV_SHIFT	6
+> +#define T22_PHYREG5_PLL_DIV_2		1
+> +
+> +#define RK3568_T22_PHYREG6		(0x6 << 2)
+> +#define T22_PHYREG6_TX_RTERM_MASK	GENMASK(7, 4)
+> +#define T22_PHYREG6_TX_RTERM_SHIFT	4
+> +#define T22_PHYREG6_TX_RTERM_50OHM	0x8
+> +#define T22_PHYREG6_RX_RTERM_MASK	GENMASK(3, 0)
+> +#define T22_PHYREG6_RX_RTERM_SHIFT	0
+> +#define T22_PHYREG6_RX_RTERM_44OHM	0xF
+> +
+> +#define RK3568_T22_PHYREG7		(0x7 << 2)
+
+Pls use GENMASK for these?
+
+> +#define T22_PHYREG7_SSC_EN		BIT(4)
+> +
+> +#define RK3568_T22_PHYREG10		(0xA << 2)
+> +#define T22_PHYREG10_SU_TRIM_0_7	0xF0
+> +
+> +#define RK3568_T22_PHYREG11		(0xB << 2)
+> +#define T22_PHYREG11_PLL_LPF_ADJ	0x4
+> +
+> +#define RK3568_T22_PHYREG12		(0xC << 2)
+> +#define T22_PHYREG12_RESISTER_MASK	GENMASK(5, 4)
+> +#define T22_PHYREG12_RESISTER_SHIFT	0x4
+
+bitfield.h has nice helpers which can extract/program values and avoid
+one to define these shifts
+-- 
+~Vinod
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
