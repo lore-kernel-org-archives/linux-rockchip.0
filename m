@@ -1,67 +1,59 @@
-Return-Path: <SRS0=D5mo=PM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=GaOA=PN=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55FADC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Oct 2021 21:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B78C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Oct 2021 01:58:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2042160E0C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 24 Oct 2021 21:18:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2042160E0C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=svmhdvn.name
+	by mail.kernel.org (Postfix) with ESMTPS id B351061029
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Oct 2021 01:58:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B351061029
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9NMD1Hd+LOlZ3aKyPGJm9X3/Jy8hZsLbOfVQBQDfoik=; b=a7LPilraP23dPi
-	2vh/FEh24NnbEj5RH2dyq0h7y+Bs8mQwEW5/aahTf1LbSCc77JcVy81Z49m810/H1phfC9w8pNQwb
-	kY/IVQIAL6X71Eotz5orW8RzNAdYISV7e26aQyjyFNrI+A/2dFYO1kV5BJQPjRrCARFfedvmM5AKV
-	6t6GgydyCmvd8Z8lrcvyLqijV8SxNv+vWzRfU1lQZhNp4gPy9ws9K/hitnU6no2vSnd+sPDLNH4ji
-	S7DITFRulhfppT5WqTBM78aEoc/hGapdUeE5yUicc2Yxh796wpczv1x6AHuUmOk2SbwSjNA3O9ZCr
-	/c6VzgtAUk8GYv9F3ymQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NQ8B2poFLRO/UjvVqZN7N9jLH8mOOOeGnnue7WVCIVA=; b=MgcxdPC875FKhn
+	Fqni4rEBASIXXLN0FKCh70CbMMFtxF73Mp2+SYExIdktvlduL2Ai4Axh15jwSgpUIpIGPjbsRRa42
+	bRNAkU1SWAwKYjPAFUOyR1HUIZKZw0way3TF6XZVtF99CRB4t0uCZYBfDwIozg4HQK1Mk5ZI73uC/
+	wrVSLCLfPy9hYynk47K4EqbJF7mIHYmuqmE9VEsCMLgkmtk4pIKyfUQKrgVbdW2IKBKFMEWA4QU7u
+	pWNfNqsHnwlJMsYRVp4EgrA5QG3IWnCVVVm6mQSHt/XwY0yDzoqr/Sde2hHO1gL7l2SCTI4370/nN
+	fP1Qx48LUIAIiwhfX0/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mekse-00Ecor-SL; Sun, 24 Oct 2021 21:18:12 +0000
-Received: from out10.migadu.com ([46.105.121.227])
+	id 1mepFg-00ExDZ-P3; Mon, 25 Oct 2021 01:58:16 +0000
+Received: from szxga03-in.huawei.com ([45.249.212.189])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meksR-00Ecnb-UM; Sun, 24 Oct 2021 21:18:01 +0000
-Date: Sun, 24 Oct 2021 17:18:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=svmhdvn.name;
- s=key1; t=1635110273;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=I2srHi4l+H7WQZ20ytbQbEmN/fUPwHrv/T99xatcrc8=;
- b=oGg/e+7NARwmp+9bAIj/kFpilrzhd/lH2Pc9AhD56Uva/Oo77Yx9/5fR3AWu7+nzT7rm6K
- ElqfCXl7dcsYQ51E5Zx03TCHmYIsAP7L8Tw7FNrROCPrK3OjaLAiAH0o0I00zwTeUYxE3N
- Uaa7doxGpM2LpkE+V/8nY7ZznQ3ltQA=
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Siva Mahadevan <me@svmhdvn.name>
-To: Jian-Hong Pan <jhp@endlessos.org>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Soeren Moch <smoch@web.de>,
- Tobias Schramm <t.schramm@manjaro.org>, Johan Jonker <jbx6244@gmail.com>,
- Katsuhiro Suzuki <katsuhiro@katsuster.net>,
- Hugh Cole-Baker <sigmaris@gmail.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux@endlessm.com
-Subject: Re: [PATCH] arm64: dts: rockchip: disable USB type-c DisplayPort
-Message-ID: <YXXNsdVTo8pVfs4/@think.localdomain>
-References: <20200924063042.41545-1-jhp@endlessos.org>
+ id 1mepBj-00Ev9X-Rm; Mon, 25 Oct 2021 01:54:13 +0000
+Received: from dggeme755-chm.china.huawei.com (unknown [172.30.72.53])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4HcydP53Rfz8tt5;
+ Mon, 25 Oct 2021 09:52:41 +0800 (CST)
+Received: from huawei.com (10.67.174.47) by dggeme755-chm.china.huawei.com
+ (10.3.19.101) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2308.15; Mon, 25
+ Oct 2021 09:54:00 +0800
+From: He Ying <heying24@huawei.com>
+To: <hjc@rock-chips.com>, <heiko@sntech.de>, <airlied@linux.ie>,
+ <daniel@ffwll.ch>, <seanpaul@chromium.org>, <gustavo.padovan@collabora.com>
+CC: <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH] drm: Fix wrong use of connector in vop_get_edp_connector
+Date: Sun, 24 Oct 2021 21:55:50 -0400
+Message-ID: <20211025015550.66500-1-heying24@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200924063042.41545-1-jhp@endlessos.org>
-X-Migadu-Flow: FLOW_OUT
-X-Migadu-Auth-User: mbsync-msmtp@svmhdvn.name
+X-Originating-IP: [10.67.174.47]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggeme755-chm.china.huawei.com (10.3.19.101)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_141800_167441_31C645DD 
-X-CRM114-Status: GOOD (  20.95  )
+X-CRM114-CacheID: sfid-20211024_185412_191077_82CD2C06 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +71,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Jian-Hong Pan wrote:
-> The cdn-dp sub driver probes the device failed on PINEBOOK Pro.
-> 
-> kernel: cdn-dp fec00000.dp: [drm:cdn_dp_probe [rockchipdrm]] *ERROR* missing extcon or phy
-> kernel: cdn-dp: probe of fec00000.dp failed with error -22
-> 
-> Then, the device halts all of the DRM related device jobs. For example,
-> the operations: vop_component_ops, vop_component_ops and
-> rockchip_dp_component_ops cannot be bound to corresponding devices. So,
-> Xorg cannot find the correct DRM device.
-> 
-> The USB type-C DisplayPort does not work for now. So, disable the
-> DisplayPort node until the type-C phy work has been done.
-> 
-> Link: https://patchwork.kernel.org/patch/11794141/#23639877
-> Signed-off-by: Jian-Hong Pan <jhp@endlessos.org>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> index 06d48338c836..d624c595c533 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-> @@ -380,7 +380,7 @@ mains_charger: dc-charger {
->  };
->  
->  &cdn_dp {
-> -	status = "okay";
-> +	status = "disabled";
->  };
->  
->  &cpu_b0 {
-> -- 
-> 2.28.0
+From the comments of drm_for_each_connector_iter(), we know
+that "connector is only valid within the list body, if you
+want to use connector after calling drm_connector_list_iter_end()
+then you need to grab your own reference first using
+drm_connector_get()". So fix the wrong use of connector
+according to the comments and then call drm_connector_put()
+after using connector finishes.
 
-I saw a similar patch posted at https://lkml.org/lkml/2021/7/15/752. I
-was wondering if one of these patches will be submitted to mainline, or
-what the status on this patch is. I can confirm that this does solve
-the issue on my Pinebook Pro. Will this go forward?
+Signed-off-by: He Ying <heying24@huawei.com>
+Fixes: 2cbeb64f6c70 ("drm/rockchip: use drm_for_each_connector_iter()")
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index a25b98b7f5bd..469922ad29fa 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1581,19 +1581,19 @@ static void vop_crtc_reset(struct drm_crtc *crtc)
+ #ifdef CONFIG_DRM_ANALOGIX_DP
+ static struct drm_connector *vop_get_edp_connector(struct vop *vop)
+ {
+-	struct drm_connector *connector;
++	struct drm_connector *connector = NULL;
+ 	struct drm_connector_list_iter conn_iter;
+ 
+ 	drm_connector_list_iter_begin(vop->drm_dev, &conn_iter);
+ 	drm_for_each_connector_iter(connector, &conn_iter) {
+ 		if (connector->connector_type == DRM_MODE_CONNECTOR_eDP) {
+-			drm_connector_list_iter_end(&conn_iter);
+-			return connector;
++			drm_connector_get(connector);
++			break;
+ 		}
+ 	}
+ 	drm_connector_list_iter_end(&conn_iter);
+ 
+-	return NULL;
++	return connector;
+ }
+ 
+ static int vop_crtc_set_crc_source(struct drm_crtc *crtc,
+@@ -1614,6 +1614,7 @@ static int vop_crtc_set_crc_source(struct drm_crtc *crtc,
+ 	else
+ 		ret = -EINVAL;
+ 
++	drm_connector_put(connector);
+ 	return ret;
+ }
+ 
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
