@@ -2,79 +2,54 @@ Return-Path: <SRS0=/XqT=PP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 66A08C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 22:04:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CF68C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 23:20:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3718161052
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 22:04:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3718161052
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 559A561039
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 23:20:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 559A561039
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+JYCgpwOYfiVmKomuU0+P5ON9ZXVGbkod9/8VTnSmUg=; b=jlSg264SdJYGj2
-	LP00pXtvmeC+nrH5RqGUquF14jBDbOcoAcHi3cKrUwOsv+aJRUlBhsI7niGx8GFwKEu874eHLQgee
-	nFKj/8od4B3+sZeCyKk2PpBbLn/phz5ANKWHLpSzPpNXVgu1rZH4WSiQV78BH1DfXOGLa1/foB0KT
-	olDE6fO2A6dnVua5/7eqd5sipY5M2RLTqt2cZ8QPVeLXB55FVpVsqWNRorb5ceZ9BEZOA58kXZm4a
-	cTLWYDFxs/D+gwUeSA7Q1RP+kk2xbISIziegtU3pw14wvi+wk/w6SqK1lOVH3IVm34cOQczVtI9nW
-	yQTugK1ekeQbKxQWcxgw==;
+	List-Owner; bh=1TISPlDEyk1TOO+NsGz3U3S5cpMscd7FzkpvmBeKvoo=; b=wUyj2dZiEEQ4rw
+	aktW0R3eZam/ewYTgpeGlPeaCo7K+WSBgMW5+KV+pu3ds56o8AcQjoakxA9ol1PzlyB4h9Hrom1+9
+	s/OclseAP1awAAC9ZtDCRbXkMupccZp8tVZLhb/7KTn2pko3oEDJID228PdebXqGqtWJgTsu50mZQ
+	Q0OfcrVDaYXoWYOSot2qZ2EQbAvXIFAaodRWJcLK9lfhqKAVvcNpQF3lAyeq3+c3jDNqDJ+9r8UgP
+	6h8HbcPE4heSsvgVOKsmyrrl0wDC2pArJwD+c5BisA1n0qh0HMkLisdKB2m5mZ/WGD+SKjl2Lm2zy
+	n57Sx4nbldBoES4jxM7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfr1k-006Mib-Gh; Wed, 27 Oct 2021 22:04:08 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1mfsDX-006U5W-6x; Wed, 27 Oct 2021 23:20:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfr1X-006MeO-1z; Wed, 27 Oct 2021 22:03:56 +0000
-Received: by mail-oi1-f173.google.com with SMTP id z126so5439470oiz.12;
- Wed, 27 Oct 2021 15:03:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=HwCdZSodtvLkyfWWv4aoM6TtcXNL3x8BBvrixERndQI=;
- b=N1ovI4X+hG79dtK7/t908TnGR9NtAwwlMDquPKX9+Ef7JUgYjLX5cOAs1CdgYALSKL
- wCPeEODM8t9z/tZ8ivyd5jNDWfYyERxpw+n1uNpRPQkXYQWtnxtUFH90ctZPrnN5tiaD
- DoZ1FvUy4arPXrlyd/cEuXnxdU6c8EFoKmzLIStFqQ+MbyLz4JTF11ZQXj2jzcZZw1Am
- ZnGX5jaQTRWNv2yUChtyye1NNAjAbCsPiNBtWLjDT5yrsMj0RrepLdkT5feCvQhc1Nug
- adUkNXpUD6kzDwlp1CWMZrraydHeuhsU3OaPXqVQ4OmcBNacWoON5bD7cz2pfqTAQqA3
- 1tVA==
-X-Gm-Message-State: AOAM532IMrOGjsna031NpdnSAnyCUXD3LPpVN73cDr3IOOD7kcn1cYeS
- xaK2QzN9CUEb6/mITonFlg==
-X-Google-Smtp-Source: ABdhPJwhAqhMiSOGICDeao9e3Uvovr/4CVgqZChnKufwCP091o04QifT1B/0u7uUX+ckIH+hwm1Nnw==
-X-Received: by 2002:a05:6808:17a7:: with SMTP id
- bg39mr180967oib.70.1635372233675; 
- Wed, 27 Oct 2021 15:03:53 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id j15sm469441ots.58.2021.10.27.15.03.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Oct 2021 15:03:52 -0700 (PDT)
-Received: (nullmailer pid 2256435 invoked by uid 1000);
- Wed, 27 Oct 2021 22:03:51 -0000
-Date: Wed, 27 Oct 2021 17:03:51 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Cc: devicetree@vger.kernel.org, kishon@ti.com, heiko@sntech.de,
- linux-arm-kernel@lists.infradead.org, vkoul@kernel.org, cl@rock-chips.com,
- linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, p.zabel@pengutronix.de, linux-kernel@vger.kernel.org,
- michael.riesch@wolfvision.net
-Subject: Re: [PATCH v3 1/3] dt-bindings: phy: rockchip: Add Naneng combo PHY
- bindings
-Message-ID: <YXnMxyuH/aGAvYAY@robh.at.kernel.org>
-References: <20211025080632.32063-1-yifeng.zhao@rock-chips.com>
- <20211025080632.32063-2-yifeng.zhao@rock-chips.com>
+ id 1mfsDU-006U56-2U
+ for linux-rockchip@lists.infradead.org; Wed, 27 Oct 2021 23:20:21 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mfsDR-0000HR-UR; Thu, 28 Oct 2021 01:20:17 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>
+Cc: kernel@esmil.dk, linux-clk@vger.kernel.org, mturquette@baylibre.com
+Subject: Re: [PATCH 0/2] clk: rockchip: cleanup errors in (module-)driver
+ handling
+Date: Thu, 28 Oct 2021 01:20:17 +0200
+Message-ID: <5381956.U9aoDET0nm@diego>
+In-Reply-To: <163536646616.15791.10163287623335903483@swboyd.mtv.corp.google.com>
+References: <20211027132616.1039814-1-heiko@sntech.de>
+ <163536646616.15791.10163287623335903483@swboyd.mtv.corp.google.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211025080632.32063-2-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_150355_118046_B1481A54 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20211027_162020_155467_D8C1A140 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,22 +67,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 Oct 2021 16:06:30 +0800, Yifeng Zhao wrote:
-> Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
+Am Mittwoch, 27. Oktober 2021, 22:27:46 CEST schrieb Stephen Boyd:
+> Quoting Heiko Stuebner (2021-10-27 06:26:14)
+> > Recent conversions or inclusions of rk3399 and rk3568 as platform-drivers
+> > and subsequently allowing them to be built as modules introduced some
+> > problems.
+> > 
+> > These two patches try to correct them.
 > 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> ---
-> 
-> Changes in v3: None
-> Changes in v2:
-> - Fix dtschema/dtc warnings/errors
-> 
->  .../phy/phy-rockchip-naneng-combphy.yaml      | 98 +++++++++++++++++++
->  1 file changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-> 
+> By removing modular support? Ok.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+It looked like the easiest way to go for now.
+
+With all the clock-definitions as init-data still in both drivers, I don't think
+anybody ever tested running this as a real module.
+
+We could of course also remove all the __init + __initdata attributes, but
+still wouldn't know if it actually runs as a module, without someone
+building a real test environment for it.
+
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
