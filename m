@@ -2,55 +2,81 @@ Return-Path: <SRS0=/XqT=PP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76CD8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 13:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA7EFC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 14:37:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2ECC610A0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 13:26:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E2ECC610A0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id BC2FF60720
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Oct 2021 14:37:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BC2FF60720
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xshfT9Wx631fM0w7YgSCgT0sHTXl3U3LDBj2268oMV4=; b=25eUlLKY7Vorjt
-	CUbIRz2CrwOvWJn4nyiXY0P+qcYONSWV1Rze+Fc7WdaGDS5av2yTT1Fm8wOLJLdo6vgdP7HXtyxjx
-	qRJnkY0iIVHqxqJynulGnZb6+ityhs+r2kPFh8t/Av8MEB4XyBFjCbaVRaxBgvy9ABnkFAZkV5gtQ
-	WYiQp4p7kJiDFVRrDMwd3iKr5sWZ1/4Go2KjtF/TB4MRCW0VKvlgyNnndki3dIcYyfMb6oC/WNGAc
-	gW6U44MKIOjsJGYXitlcIYokGG7msLMacoroDJtgdb3FyGytzLw6mGnB4h0elDx+YwoYSwh1RyRbG
-	YuIpsilElOlbfDmErH9A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wSO+6BXoksUiu+38M+wXLLH3w/8ugpaQq6R1wDX4L/o=; b=uE3c6VOrj198oF
+	LsrdLMJDH0HwZENs1ODeXjVpYiz24mN+aAYWhKCz4zFgf//bxUBcMi963XZ+6d9gX99AqUU3S3pKv
+	VBAxUIdBAjxbfhuDbE21Z4qxaJs+XNDPyZBbR0clQfJ+vMmSrk62vOPNEOa4aCoIiKFhUznFb53vX
+	nKfk2YraVxaZcg/IvkzXEhXnHmsBHPjSnvguXSKDJEdNGLOocYP4MsSFlb/G3m2/Sa3Tc1g0oPs60
+	lAQ+KkHbgKpQylHC5yStOkmHt/z7DzQ3UqqE8TJmQjAPzO75itAsYH3+SWCBEggF1qakt5uwKw4sK
+	tU6FaCFBgoEF4KKETjiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfiwm-004yJy-HU; Wed, 27 Oct 2021 13:26:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mfk3t-0058nj-Tl; Wed, 27 Oct 2021 14:37:53 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfiwh-004yIG-34
- for linux-rockchip@lists.infradead.org; Wed, 27 Oct 2021 13:26:25 +0000
-Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mfiwf-0003TD-EJ; Wed, 27 Oct 2021 15:26:21 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org
-Cc: sboyd@kernel.org, kernel@esmil.dk, linux-clk@vger.kernel.org,
- mturquette@baylibre.com, heiko@sntech.de
-Subject: [PATCH 2/2] clk: rockchip: drop module parts from rk3399 and rk3568
- drivers
-Date: Wed, 27 Oct 2021 15:26:16 +0200
-Message-Id: <20211027132616.1039814-3-heiko@sntech.de>
+ id 1mfk3f-0058il-Js; Wed, 27 Oct 2021 14:37:41 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id e4so4548501wrc.7;
+ Wed, 27 Oct 2021 07:37:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TGWbt0DaQKCswEBt0ArwqQnvqc41g6JU5zhKYrPiWaQ=;
+ b=pDTwVgBFo87UyDGWShmU8Dtev0ZcRzpYvlQV7kt71SdaMb+m9heGBhDyFk+2SBwRU3
+ DwfKkUXyW/mCm399z0UXEV8CmFcsM8Hy9CmvXzQDispnVGrO7MVgyy2TR6N3D2Vx5LpQ
+ puLeSWTY65hXS8VRkPCtnK6iqDKBwGEBghH9fvn5AAvK9OM0ODR7PK+Xaj2y9Wolb62H
+ Q92o7tCS67mWgTPJlp8krqQhrxXBXqIVyh8735JbAq8G2Usb8CNup0wXntvUgfJFI4aS
+ LGWimyCP1Uc+kdMGOHCAqLC6It7D1b+yCKiS1R/y+M+JZx1SdMYBXETyo/muHZ6XVFtU
+ iu1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TGWbt0DaQKCswEBt0ArwqQnvqc41g6JU5zhKYrPiWaQ=;
+ b=jJOuznXtli5Q4BYWIopgd16tS6Nb0jfKf/PVacrReYaLN8dol4AQrSkJmVp1G5mxjJ
+ iVnFnRTJA5G9sQ5Y2F9PNVgzWqBOoa2nvcPhDXiNYET+X6S5zgSwRvW1M4pm3wuUvRWh
+ MLhgXf0u92Y8cDTXct1rlkPXsaYJ43IwZWzGOm5TbeuTMJvYsFk6avpoUWrqQX3Io8kV
+ OVjrprIqZ62DhEVeJX2SVR5oICzm23wxun3KWJ52F0DsLYZYNZHg+21N/692XWeEWvri
+ t/U439NqX+ZT6AtvL8dQs2SrckqClcLktwt+WV+SWEqiBc1NXb5oTLNYBwt9X43bytHv
+ JsPA==
+X-Gm-Message-State: AOAM531fCvrjhikyJQdQUgYdkVrYmvKWXcbbl/AZrxx0a8Ma05qCnBGN
+ oIhD+2aqhHRu6HgbSV4L4w==
+X-Google-Smtp-Source: ABdhPJwbUhkqT+wluf90XToU2xknGoyv3gvSKRYquezS11x9eVlIvfNpBcu0LsM7zKblTtfbIPXdkA==
+X-Received: by 2002:adf:f50f:: with SMTP id q15mr42084157wro.324.1635345457284; 
+ Wed, 27 Oct 2021 07:37:37 -0700 (PDT)
+Received: from alex-ThinkPad-E480.. ([2a02:810b:f40:4200:8072:4c96:3e48:9ebf])
+ by smtp.googlemail.com with ESMTPSA id
+ p21sm25866wmc.11.2021.10.27.07.37.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Oct 2021 07:37:37 -0700 (PDT)
+From: Alex Bee <knaerzche@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: fix audio-supply for Rock Pi 4
+Date: Wed, 27 Oct 2021 16:37:25 +0200
+Message-Id: <20211027143726.165809-1-knaerzche@gmail.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211027132616.1039814-1-heiko@sntech.de>
-References: <20211027132616.1039814-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_062623_159576_4327B11F 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20211027_073739_684308_71C72073 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,78 +94,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Both of these drivers were converted to real drivers and got a tristate
-build option. But them being builtin_platform_drivers, they only ever
-should be build-in - as the name suggests.
+As stated in the schematics [1] and [2] P5 the APIO5 domain is supplied
+by RK808-D Buck4, which in our case vcc1v8_codec - i.e. a 1.8 V regulator.
 
-So adapt the Kconfig symbol and drop the MODULE_* parts from the drivers.
+Currently only white noise comes from the ES8316's output, which - for
+whatever reason - came up only after the the correct switch from i2s0_8ch_bus
+to i2s0_2ch_bus for i2s0's pinctrl was done.
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Fix this by setting the correct regulator for audio-supply.
+
+[1] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.pdf
+[2] https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi_4c_v12_sch_20200620.pdf
+
+Fixes: 1b5715c602fd ("arm64: dts: rockchip: add ROCK Pi 4 DTS support")
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
- drivers/clk/rockchip/Kconfig      | 4 ++--
- drivers/clk/rockchip/clk-rk3399.c | 4 ----
- drivers/clk/rockchip/clk-rk3568.c | 4 ----
- 3 files changed, 2 insertions(+), 10 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/Kconfig b/drivers/clk/rockchip/Kconfig
-index 2dfd6a383393..3067bdb6e119 100644
---- a/drivers/clk/rockchip/Kconfig
-+++ b/drivers/clk/rockchip/Kconfig
-@@ -80,14 +80,14 @@ config CLK_RK3368
- 	  Build the driver for RK3368 Clock Driver.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index 98136c88fa49..6a434be62819 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -502,7 +502,7 @@ &io_domains {
+ 	status = "okay";
  
- config CLK_RK3399
--	tristate "Rockchip RK3399 clock controller support"
-+	bool "Rockchip RK3399 clock controller support"
- 	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
- 	  Build the driver for RK3399 Clock Driver.
- 
- config CLK_RK3568
--	tristate "Rockchip RK3568 clock controller support"
-+	bool "Rockchip RK3568 clock controller support"
- 	depends on ARM64 || COMPILE_TEST
- 	default y
- 	help
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 53ed5cca335b..306910a3a0d3 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1630,7 +1630,6 @@ static const struct of_device_id clk_rk3399_match_table[] = {
- 	},
- 	{ }
+ 	bt656-supply = <&vcc_3v0>;
+-	audio-supply = <&vcc_3v0>;
++	audio-supply = <&vcc1v8_codec>;
+ 	sdmmc-supply = <&vcc_sdio>;
+ 	gpio1830-supply = <&vcc_3v0>;
  };
--MODULE_DEVICE_TABLE(of, clk_rk3399_match_table);
- 
- static int __init clk_rk3399_probe(struct platform_device *pdev)
- {
-@@ -1657,6 +1656,3 @@ static struct platform_driver clk_rk3399_driver = {
- 	},
- };
- builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
--
--MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
--MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-index 75ca855e720d..69a9e8069a48 100644
---- a/drivers/clk/rockchip/clk-rk3568.c
-+++ b/drivers/clk/rockchip/clk-rk3568.c
-@@ -1693,7 +1693,6 @@ static const struct of_device_id clk_rk3568_match_table[] = {
- 	},
- 	{ }
- };
--MODULE_DEVICE_TABLE(of, clk_rk3568_match_table);
- 
- static int __init clk_rk3568_probe(struct platform_device *pdev)
- {
-@@ -1720,6 +1719,3 @@ static struct platform_driver clk_rk3568_driver = {
- 	},
- };
- builtin_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
--
--MODULE_DESCRIPTION("Rockchip RK3568 Clock Driver");
--MODULE_LICENSE("GPL");
 -- 
 2.30.2
 
