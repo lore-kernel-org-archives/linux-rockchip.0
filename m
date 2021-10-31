@@ -2,85 +2,86 @@ Return-Path: <SRS0=beqN=PT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78AEFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 18:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43D76C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 19:40:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33B1560FD9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 18:10:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 33B1560FD9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id D5BC1608FE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 19:40:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D5BC1608FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=googlemail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NYp0Zaq1AiRS8V4IhzCvN1dkuOsP/MKrprQe5s/dlYc=; b=3IC4TddWtyyUB7YJYzzOUr7clE
-	QksDA0Rnhz169u7O3J0Wky21oEVp/XmHQn3mzeGWp7H3mI4IAcu+gYEJehcognTE3F/swq71ymBhC
-	nIyNoXWjHaX4dZ3eWGsfqhESytV0or4yuwEAKvMmvl7bATQzdOu9bhLpI39yH9sROmQ1cgO5YlUAI
-	BeJkguChGOm4RjHX/vXbIkfQt5h0Au9U8RPttn+86Os07uJGOu6EtpLZEo/Nt+ZB2kCQzXHWrZy/s
-	eb90g9Rj25atY0tIX+XDvyqCbstJexjGkn3mknU0Eg3xvqNzu3H/X4b1jjCcAkIBpJnniDphbtIPJ
-	yCVNznJw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AiDtnZSZ+yEey8BSeRFmEpp2exZCWn+Eu9llTZ/joS8=; b=GYgm6cxcpd2/LZ
+	ih4Lo6FtdddkhxR+KO3XjVrOPFW0uHa5ZvSfmvnN9DlqbmnraqItJv1ZqxUymdAc1CyXY3fz+4kxz
+	SNqp/1xZb/Dk11ZS7dvtHUJo7OacABTavxj0hTYZfnyXRZdswQ9pJFwxjYRryXdH4kXR9N6RtE+x9
+	z5ZLMI1BFUNAXiYPXZejsjwmAVHhdy95J9NQN4mUTWexTn2Ui1z69JatTTWRx78190TTxLWxrLYZT
+	FhzN6kPIeWRQCQ5oOeljSC1f4nU8XscMFK4JjzjBsNZF2hoZy7q6jtHLrT/WKjlOw7MmcEkg2eErM
+	nrYScis9HMYEZSmTzAhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhFHK-00EWWi-K1; Sun, 31 Oct 2021 18:09:58 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1mhGgV-00EdfB-VY; Sun, 31 Oct 2021 19:40:03 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhFH7-00EWTe-Ia; Sun, 31 Oct 2021 18:09:47 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id A955D1F770;
- Sun, 31 Oct 2021 18:09:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1635703780; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zTqvJIRVz+IJNaKULRHWkBFfeKqgj42o1KcagqhmWY4=;
- b=PejakCDq5Xx0sBmwKQ/Ew7Q9IYRGWEOD+T/TAZSqa1kcQ9DwLLBV932bDz4vwMkXB0O/OO
- Kmku1mh+bykrW1Kb0gYrhXar/58G4dd7kCQ1uW9t6lil9s8MDcKTYGaBkLFKVZI+qeMmpZ
- aOCOf3q27YOYgJu/QoqnW48CEfYncdc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1635703780;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zTqvJIRVz+IJNaKULRHWkBFfeKqgj42o1KcagqhmWY4=;
- b=2cbT/0Zz5sO/ILj6A/0jCWqa/JudYD+Gd64+CRV5W2cpppUXpcK99L+GBBKsKp+M49LmOS
- h/I7+zbSJEa6M8Ag==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6D1C91323E;
- Sun, 31 Oct 2021 18:09:40 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id EiQSGeTbfmHXVAAAMHmgww
- (envelope-from <tzimmermann@suse.de>); Sun, 31 Oct 2021 18:09:40 +0000
-Message-ID: <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
-Date: Sun, 31 Oct 2021 19:09:39 +0100
+ id 1mhGgJ-00Edcu-Mt; Sun, 31 Oct 2021 19:39:53 +0000
+Received: by mail-ed1-x531.google.com with SMTP id z20so57826900edc.13;
+ Sun, 31 Oct 2021 12:39:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=googlemail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=L7Um4mUV79LuOrqozwijQdh04ZeZMr8lNOl1Ry7Klkc=;
+ b=JBmPnOGFYpfbPwmjvMZ4yx4s6/ckgRAi2dKY5isYV+ClnaBBViS5BJ29bmz7iPqdbO
+ DnUd+xlIjWZvYCE5Bv67PU5hRIo2ulTAMJ/8Azo6A17TKXd6Wpvq6mrqGT2mPNemm/T3
+ Afl/zmDHNsHjBWTRCSC0C7MjR+fo2JyKgb9SG8y8oDYDa0YNUEQt0Sp8xJSIT4jJz63+
+ 8Khlw0kMKmCtka19DRKq/2Fld0194KQQk2MaRZfSYydEyiikr21CQvyG7gRaPnWirnHe
+ PMYFs+xBe1mbUvhrYKI3VJvDQ9jUbRO6OXVjxgLk3GyBhpGyC2u5iqOFeKVswbjgpKer
+ 1r4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=L7Um4mUV79LuOrqozwijQdh04ZeZMr8lNOl1Ry7Klkc=;
+ b=VLorP2bbtp6f+SMja5vlmFAb6tRFBpMfffZBLzddwmba6SfRa/N6YlL+8ODFYsyCTh
+ obaVKMHPOyhoRIygNUvCKm4P82VUM7WfEn8D++vIWEvDefBaThmoTlL6USvAYwhqzQSE
+ lepg0tapt3KVO83zGqvQYyzXE3Czx74my/Cpf1beauJ/uNbWn8yT8VnPA26quQwHh8q/
+ OHW6yQF7WvEsZ2DDxEhRhOkQTAE3GDQZOLBRaCSNvd8oRsibg/8Het6JzdcVI7H0DEgZ
+ Z1PiKBenD8A5FSEiP7lzr6JUpD2P75YD1XEFl8FgCoQQWyXaensvSWY/Lqicu5o8CR1h
+ y8og==
+X-Gm-Message-State: AOAM533vAaRA5F9Cmcsnfx7LZ3rwskFytShLitS3Ci+8d4xHgLAtIb+r
+ +uAScv3SYHqqBXlzeWlveONxHu/CdVCjw8+QJ6U=
+X-Google-Smtp-Source: ABdhPJzZRpzEZC58TA6BZt5J3AJla2LE886DnrZUGf+xPMtbZrcWc5+cvzmXAdYOLXVy5P3t9lPPq4NCKMpEhMPm0dk=
+X-Received: by 2002:a50:da0a:: with SMTP id z10mr33926433edj.298.1635709190027; 
+ Sun, 31 Oct 2021 12:39:50 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
-Content-Language: en-US
-To: John Keeping <john@metanate.com>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20211029115014.264084-1-john@metanate.com>
- <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-In-Reply-To: <YX01C6l93I2YPgku@donbot>
+References: <20211029114948.41841-1-david@ixit.cz>
+ <20211029114948.41841-2-david@ixit.cz>
+In-Reply-To: <20211029114948.41841-2-david@ixit.cz>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Sun, 31 Oct 2021 20:39:39 +0100
+Message-ID: <CAFBinCBVXNYG62jKABhJJt0m61+vQKqEyC4Mk5Ljg7htN-brTA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/3] arm64: dts: make dts use gpio-fan matrix instead
+ of array
+To: David Heidelberg <david@ixit.cz>
+Cc: Rob Herring <robh+dt@kernel.org>, Neil Armstrong <narmstrong@baylibre.com>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Heiko Stuebner <heiko@sntech.de>,
+ ~okias/devicetree@lists.sr.ht, 
+ phone-devel@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211031_110945_816449_21BE4845 
-X-CRM114-Status: GOOD (  23.66  )
+X-CRM114-CacheID: sfid-20211031_123951_865056_1AE431A2 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,138 +94,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1170288982900645947=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1170288982900645947==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------qv0emOEtdJF4vygXj03v61OU"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------qv0emOEtdJF4vygXj03v61OU
-Content-Type: multipart/mixed; boundary="------------0glOOvkbn2FeyB0F4Gj3rKnM";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: John Keeping <john@metanate.com>
-Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Message-ID: <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
-Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
-References: <20211029115014.264084-1-john@metanate.com>
- <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
-In-Reply-To: <YX01C6l93I2YPgku@donbot>
-
---------------0glOOvkbn2FeyB0F4Gj3rKnM
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-
-SGkNCg0KQW0gMzAuMTAuMjEgdW0gMTQ6MDUgc2NocmllYiBKb2huIEtlZXBpbmc6DQo+IEhp
-IFRob21hcywNCj4gDQo+IE9uIEZyaSwgT2N0IDI5LCAyMDIxIGF0IDA5OjAwOjA4UE0gKzAy
-MDAsIFRob21hcyBaaW1tZXJtYW5uIHdyb3RlOg0KPj4gQW0gMjkuMTAuMjEgdW0gMTM6NTAg
-c2NocmllYiBKb2huIEtlZXBpbmc6DQo+Pj4gVGhlIFJvY2tjaGlwIGZiZGV2IGNvZGUgZG9l
-cyBub3QgYWRkIGFueXRoaW5nIGNvbXBhcmVkIHRvDQo+Pj4gZHJtX2ZiZGV2X2dlbmVyaWNf
-c2V0dXAoKTsgdGhlIG9uZSBjdXN0b20gZnVuY3Rpb24gZm9yIC5mYl9tbWFwIGRvZXMgdGhl
-DQo+Pj4gc2FtZSB0aGluZyBhcyBnZW1fcHJpbWVfbW1hcCB3aGljaCBpcyBjYWxsZWQgYnkg
-dGhlIGhlbHBlci4NCj4+Pg0KPj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9o
-bkBtZXRhbmF0ZS5jb20+DQo+Pj4gLS0tDQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL01ha2VmaWxlICAgICAgICAgICAgIHwgICAxIC0NCj4+PiAgICBkcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgfCAgMTAgKy0NCj4+PiAgICBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgfCAgIDIgLQ0KPj4+
-ICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyB8IDE2
-NCAtLS0tLS0tLS0tLS0tLS0tLS0NCj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
-cm9ja2NoaXBfZHJtX2ZiZGV2LmggfCAgMjQgLS0tDQo+Pj4gICAgNSBmaWxlcyBjaGFuZ2Vk
-LCAyIGluc2VydGlvbnMoKyksIDE5OSBkZWxldGlvbnMoLSkNCj4+PiAgICBkZWxldGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5j
-DQo+Pj4gICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
-b2NrY2hpcF9kcm1fZmJkZXYuaA0KPj4+DQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9yb2NrY2hpcC9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtl
-ZmlsZQ0KPj4+IGluZGV4IDE3YTllN2ViMjEzMC4uMWE1NmY2OTY1NThjIDEwMDY0NA0KPj4+
-IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQ0KPj4+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQ0KPj4+IEBAIC01LDcgKzUsNiBAQA0K
-Pj4+ICAgIHJvY2tjaGlwZHJtLXkgOj0gcm9ja2NoaXBfZHJtX2Rydi5vIHJvY2tjaGlwX2Ry
-bV9mYi5vIFwNCj4+PiAgICAJCXJvY2tjaGlwX2RybV9nZW0ubyByb2NrY2hpcF9kcm1fdm9w
-Lm8gcm9ja2NoaXBfdm9wX3JlZy5vDQo+Pj4gLXJvY2tjaGlwZHJtLSQoQ09ORklHX0RSTV9G
-QkRFVl9FTVVMQVRJT04pICs9IHJvY2tjaGlwX2RybV9mYmRldi5vDQo+Pj4gICAgcm9ja2No
-aXBkcm0tJChDT05GSUdfUk9DS0NISVBfQU5BTE9HSVhfRFApICs9IGFuYWxvZ2l4X2RwLXJv
-Y2tjaGlwLm8NCj4+PiAgICByb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9DRE5fRFAp
-ICs9IGNkbi1kcC1jb3JlLm8gY2RuLWRwLXJlZy5vDQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jDQo+Pj4gaW5kZXggNjljNjk5NDU5ZGNl
-Li4yMGQ4MWFlNjk4MjggMTAwNjQ0DQo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
-aGlwL3JvY2tjaGlwX2RybV9kcnYuYw0KPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMNCj4+PiBAQCAtMjYsNyArMjYsNiBAQA0KPj4+ICAg
-ICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiDQo+Pj4gICAgI2luY2x1ZGUgInJvY2tj
-aGlwX2RybV9mYi5oIg0KPj4+IC0jaW5jbHVkZSAicm9ja2NoaXBfZHJtX2ZiZGV2LmgiDQo+
-Pj4gICAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0uaCINCj4+PiAgICAjZGVmaW5lIERS
-SVZFUl9OQU1FCSJyb2NrY2hpcCINCj4+PiBAQCAtMTU5LDEwICsxNTgsNiBAQCBzdGF0aWMg
-aW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikNCj4+PiAgICAJZHJt
-X21vZGVfY29uZmlnX3Jlc2V0KGRybV9kZXYpOw0KPj4+IC0JcmV0ID0gcm9ja2NoaXBfZHJt
-X2ZiZGV2X2luaXQoZHJtX2Rldik7DQo+Pj4gLQlpZiAocmV0KQ0KPj4+IC0JCWdvdG8gZXJy
-X3VuYmluZF9hbGw7DQo+Pj4gLQ0KPj4+ICAgIAkvKiBpbml0IGttcyBwb2xsIGZvciBoYW5k
-bGluZyBocGQgKi8NCj4+PiAgICAJZHJtX2ttc19oZWxwZXJfcG9sbF9pbml0KGRybV9kZXYp
-Ow0KPj4+IEBAIC0xNzAsMTAgKzE2NSwxMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9i
-aW5kKHN0cnVjdCBkZXZpY2UgKmRldikNCj4+PiAgICAJaWYgKHJldCkNCj4+PiAgICAJCWdv
-dG8gZXJyX2ttc19oZWxwZXJfcG9sbF9maW5pOw0KPj4+ICsJZHJtX2ZiZGV2X2dlbmVyaWNf
-c2V0dXAoZHJtX2RldiwgMzIpOw0KPj4NCj4+IFBsZWFzZSBwYXNzIDAgZm9yIHRoZSBmaW5h
-bCBhcmd1bWVudC4gVGhlIGZiZGV2IGhlbHBlcnMgcGljayAzMiBieSBkZWZhdWx0Lg0KPj4g
-TWF5YmUgbGVhdmUgYSBjb21tZW50IGlmIHlvdSByZXF1aXJlIDMyIGhlcmUuDQo+IA0KPiBJ
-IHdhbnRlZCB0byBtaW5pbWlzZSB0aGUgY2hhbmdlcyBpbnRyb2R1Y2VkIGhlcmUgLSBwYXNz
-aW5nIDMyIG1hdGNoZXMNCj4gdGhlIHZhbHVlIHBhc3NlZCB0byBkcm1fZmJfaGVscGVyX2lu
-aXRpYWxfY29uZmlnKCkgaW4gdGhlIGRlbGV0ZWQgY29kZQ0KPiBmcm9tIHJvY2tjaGlwX2Ry
-bV9mYmRldi5jLg0KDQpJbiB0aGF0IGNhc2UNCg0KQWNrZWQtYnk6IFRob21hcyBaaW1tZXJt
-YW5uIDx0emltbWVybWFubkBzdXNlLmRlPg0KDQo+IA0KPiBXaGF0IGRvIHlvdSB0aGluayBh
-Ym91dCBjaGFuZ2luZyB0aGlzIHRvIDAgaW4gYSBmb2xsb3ctdXAgcGF0Y2g/DQo+IA0KDQpZ
-ZXMuIElmIHBvc3NpYmxlLCBwbGVhc2UgcHJvdmlkZSBhIGZvbGxvdy11cCBwYXRjaCBmb3Ig
-dGhpcyBhbmQgc2V0IA0KbW9kZWNvbmZpZy5wcmVmZXJlZF9kZXB0aCB0byAyNC4NCg0KQmVz
-dCByZWdhcmRzDQpUaG9tYXMNCg0KDQotLSANClRob21hcyBaaW1tZXJtYW5uDQpHcmFwaGlj
-cyBEcml2ZXIgRGV2ZWxvcGVyDQpTVVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHZXJtYW55IEdt
-YkgNCk1heGZlbGRzdHIuIDUsIDkwNDA5IE7DvHJuYmVyZywgR2VybWFueQ0KKEhSQiAzNjgw
-OSwgQUcgTsO8cm5iZXJnKQ0KR2VzY2jDpGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7ZyZmZl
-cg0K
-
---------------0glOOvkbn2FeyB0F4Gj3rKnM--
-
---------------qv0emOEtdJF4vygXj03v61OU
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmF+2+MFAwAAAAAACgkQlh/E3EQov+DH
-eA/+NrOz2Db7B97Bma1+KljnCw5VmiU5/TQeM0bCXL8lxCbwTACpu2UWrNab0Knb0wlIA+LtGnHh
-yghYGwZEpqpcXYn83H/GeZih9U/CtevVM3uXPTxSAHg/AZYKt0AGNRHkGO/rZ6jZgkDTBJKJCTgH
-V9tyCXiOzjcakCUCqLQmvIQ6pfdP7golKJ1YBWqZ5BKXRQaDk5116Om9NUrNojqBQ9X8vTS7rZaZ
-goX9RgqYq/f9hc4KtIdo8ULiYab4qpuABfzcaLVGK1+sfPwB6RBB7zcdGLhehucctImoNLhGj/28
-TX6DLqhV6tSdsJGXSdITKswxx2e5CKdOZrdJcS+A5j8BhO3xLQqHwRiTtLmNnWBxt0Z1MZlGUAF3
-h0y/Uhh9NUuB5wOjqOf3jvesEVHU7/nXc3k5G1PGU0H6ERP1sypEYlzITPkOLSbLR62JATAFpgxS
-Ci31qfQ8dNEOYjg700kDF+IsF0mRcm5mCVHYUNSWcDxnurZmvWZWJTM2GuLx1okT12HyD7AP2I3b
-6m1AO+0dFrgjrv4lyuS6+iB4nwGl4xmSuWgAAEQtPCmF2sIAcCO4CsHe0MZDVUHnQo3H4Gj8OdL0
-+3osN8v3FvDzbWyeqI/HiVXyaS0wUNtd/x5kq13LuopnvOoQGtOOLdwkjD1k/VmiJpZSzl/zheg5
-0C4=
-=XT9P
------END PGP SIGNATURE-----
-
---------------qv0emOEtdJF4vygXj03v61OU--
-
-
---===============1170288982900645947==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+On Sun, Oct 31, 2021 at 5:51 PM David Heidelberg <david@ixit.cz> wrote:
+>
+> No functional changes.
+>
+> Adjust to comply with dt-schema requirements
+> and make possible to validate values.
+>
+> Signed-off-by: David Heidelberg <david@ixit.cz>
+> ---
+>  arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts | 9 +++++----
+for meson-gxm-khadas-vim2.dts:
+Acked-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1170288982900645947==--
-
