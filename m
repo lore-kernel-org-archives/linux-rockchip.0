@@ -2,74 +2,85 @@ Return-Path: <SRS0=beqN=PT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E6E0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 16:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78AEFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 18:10:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA4E160F58
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 16:51:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EA4E160F58
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=ixit.cz
+	by mail.kernel.org (Postfix) with ESMTPS id 33B1560FD9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Oct 2021 18:10:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 33B1560FD9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cGGLUfFlCh4ovX77Ll5YMfdQbuP4Mbtndk9E8ov90I8=; b=JWLz0k+m9fVwr5
-	s+HsosI/38mluuGKGd+fVGfYqNA23FvzeUTa/sTqc7UoQiJs8UEDiozDCiEHjxh8bXFutjKWIg638
-	8AzjyQIvf1GSZG2STbZWRiw8saZXdAXNfXJup/HVB53edXgfsZ669pOWjuHTiLSpQgUR8hzDSsCrl
-	D+oiDM8IAgXZ9Hf24aPQy68/Ot5+SjNIkf1JfWkLwJ676I93CxUSWIFA4BBIMW+IYV4iEjdczvvun
-	v85GCjtE5cWT58DLMzQ5zcf8c7VTW5zwSUIlg5lMrGlOkDM5DBelpLeRQbbcRgTGoN16LyGXw3ObM
-	txQk+xxRRasQSZ/B+FFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NYp0Zaq1AiRS8V4IhzCvN1dkuOsP/MKrprQe5s/dlYc=; b=3IC4TddWtyyUB7YJYzzOUr7clE
+	QksDA0Rnhz169u7O3J0Wky21oEVp/XmHQn3mzeGWp7H3mI4IAcu+gYEJehcognTE3F/swq71ymBhC
+	nIyNoXWjHaX4dZ3eWGsfqhESytV0or4yuwEAKvMmvl7bATQzdOu9bhLpI39yH9sROmQ1cgO5YlUAI
+	BeJkguChGOm4RjHX/vXbIkfQt5h0Au9U8RPttn+86Os07uJGOu6EtpLZEo/Nt+ZB2kCQzXHWrZy/s
+	eb90g9Rj25atY0tIX+XDvyqCbstJexjGkn3mknU0Eg3xvqNzu3H/X4b1jjCcAkIBpJnniDphbtIPJ
+	yCVNznJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhE3J-00EOU1-8T; Sun, 31 Oct 2021 16:51:25 +0000
-Received: from ixit.cz ([94.230.151.217])
+	id 1mhFHK-00EWWi-K1; Sun, 31 Oct 2021 18:09:58 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhE33-00EOMM-4m; Sun, 31 Oct 2021 16:51:11 +0000
-Received: from localhost.localdomain (ip-89-176-96-70.net.upcbroadband.cz
- [89.176.96.70])
+ id 1mhFH7-00EWTe-Ia; Sun, 31 Oct 2021 18:09:47 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
  (No client certificate requested)
- by ixit.cz (Postfix) with ESMTPSA id 745DF236BE;
- Fri, 29 Oct 2021 13:49:56 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
- t=1635508196;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
+ by smtp-out2.suse.de (Postfix) with ESMTPS id A955D1F770;
+ Sun, 31 Oct 2021 18:09:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1635703780; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=5E4M99vMPTvOFmcUC+iHe20MffqlLM2e2yyycVCMrFc=;
- b=x/6JTSGL7EvLUnu1jDXAHmvK0BgihWBaAzBpLB5VseZ4ZQW7DAFaDLwJIOWrMW6d7EmXJO
- 7rkL/Qe3/FDJH3twa56e+yWRj1QEjVucJD97hW1MV4EYbyy6Xa9USQ2JA75Kblxpjr1mo6
- Zdk0xio1jfVXFgkgJXwpowKavksrYvs=
-From: David Heidelberg <david@ixit.cz>
-To: Rob Herring <robh+dt@kernel.org>, Neil Armstrong <narmstrong@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: ~okias/devicetree@lists.sr.ht, phone-devel@vger.kernel.org,
- David Heidelberg <david@ixit.cz>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 2/3] arm64: dts: make dts use gpio-fan matrix instead of
- array
-Date: Fri, 29 Oct 2021 13:49:45 +0200
-Message-Id: <20211029114948.41841-2-david@ixit.cz>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211029114948.41841-1-david@ixit.cz>
-References: <20211029114948.41841-1-david@ixit.cz>
+ bh=zTqvJIRVz+IJNaKULRHWkBFfeKqgj42o1KcagqhmWY4=;
+ b=PejakCDq5Xx0sBmwKQ/Ew7Q9IYRGWEOD+T/TAZSqa1kcQ9DwLLBV932bDz4vwMkXB0O/OO
+ Kmku1mh+bykrW1Kb0gYrhXar/58G4dd7kCQ1uW9t6lil9s8MDcKTYGaBkLFKVZI+qeMmpZ
+ aOCOf3q27YOYgJu/QoqnW48CEfYncdc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1635703780;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zTqvJIRVz+IJNaKULRHWkBFfeKqgj42o1KcagqhmWY4=;
+ b=2cbT/0Zz5sO/ILj6A/0jCWqa/JudYD+Gd64+CRV5W2cpppUXpcK99L+GBBKsKp+M49LmOS
+ h/I7+zbSJEa6M8Ag==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 6D1C91323E;
+ Sun, 31 Oct 2021 18:09:40 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id EiQSGeTbfmHXVAAAMHmgww
+ (envelope-from <tzimmermann@suse.de>); Sun, 31 Oct 2021 18:09:40 +0000
+Message-ID: <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
+Date: Sun, 31 Oct 2021 19:09:39 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
+Content-Language: en-US
+To: John Keeping <john@metanate.com>
+Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20211029115014.264084-1-john@metanate.com>
+ <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+In-Reply-To: <YX01C6l93I2YPgku@donbot>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211031_095109_508449_438D8463 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20211031_110945_816449_21BE4845 
+X-CRM114-Status: GOOD (  23.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,91 +93,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1170288982900645947=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-No functional changes.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============1170288982900645947==
+Content-Language: en-US
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------qv0emOEtdJF4vygXj03v61OU"
 
-Adjust to comply with dt-schema requirements
-and make possible to validate values.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------qv0emOEtdJF4vygXj03v61OU
+Content-Type: multipart/mixed; boundary="------------0glOOvkbn2FeyB0F4Gj3rKnM";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: John Keeping <john@metanate.com>
+Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Message-ID: <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
+Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
+References: <20211029115014.264084-1-john@metanate.com>
+ <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
+In-Reply-To: <YX01C6l93I2YPgku@donbot>
 
-Signed-off-by: David Heidelberg <david@ixit.cz>
----
- arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts | 9 +++++----
- arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts     | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi     | 2 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts    | 5 +++--
- 4 files changed, 10 insertions(+), 8 deletions(-)
+--------------0glOOvkbn2FeyB0F4Gj3rKnM
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-index 86bdc0baf032..fbbcacf24f2e 100644
---- a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-+++ b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-@@ -52,10 +52,11 @@ gpio_fan: gpio-fan {
- 		gpios = <&gpio GPIODV_14 GPIO_ACTIVE_HIGH
- 			 &gpio GPIODV_15 GPIO_ACTIVE_HIGH>;
- 		/* Dummy RPM values since fan is optional */
--		gpio-fan,speed-map = <0 0
--				      1 1
--				      2 2
--				      3 3>;
-+		gpio-fan,speed-map =
-+				<0 0>,
-+				<1 1>,
-+				<2 2>,
-+				<3 3>;
- 		#cooling-cells = <2>;
- 	};
- 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts b/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-index a3b9d615a3b4..e34045d10a12 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-+++ b/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-@@ -39,7 +39,7 @@ reg_usdhc2_vmmc: regulator-usdhc2-vmmc {
- 
- 	fan: gpio-fan {
- 		compatible = "gpio-fan";
--		gpio-fan,speed-map = <0 0 8600 1>;
-+		gpio-fan,speed-map = <0 0>, <8600 1>;
- 		gpios = <&gpio3 5 GPIO_ACTIVE_HIGH>;
- 		#cooling-cells = <2>;
- 		pinctrl-names = "default";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 46b0f97a0b1c..4af535866d1f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -44,7 +44,7 @@ dc_12v: dc-12v {
- 	fan0: gpio-fan {
- 		#cooling-cells = <2>;
- 		compatible = "gpio-fan";
--		gpio-fan,speed-map = <0 0 3000 1>;
-+		gpio-fan,speed-map = <0 0>, <3000 1>;
- 		gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
- 		status = "okay";
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 4d4b2a301b1a..8af3763daaba 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -30,8 +30,9 @@ gmac1_clkin: external-gmac1-clock {
- 	fan: gpio_fan {
- 		compatible = "gpio-fan";
- 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
--		gpio-fan,speed-map = <0    0
--				      4500 1>;
-+		gpio-fan,speed-map =
-+				<   0 0>,
-+				<4500 1>;
- 		#cooling-cells = <2>;
- 	};
- 
--- 
-2.33.0
+SGkNCg0KQW0gMzAuMTAuMjEgdW0gMTQ6MDUgc2NocmllYiBKb2huIEtlZXBpbmc6DQo+IEhp
+IFRob21hcywNCj4gDQo+IE9uIEZyaSwgT2N0IDI5LCAyMDIxIGF0IDA5OjAwOjA4UE0gKzAy
+MDAsIFRob21hcyBaaW1tZXJtYW5uIHdyb3RlOg0KPj4gQW0gMjkuMTAuMjEgdW0gMTM6NTAg
+c2NocmllYiBKb2huIEtlZXBpbmc6DQo+Pj4gVGhlIFJvY2tjaGlwIGZiZGV2IGNvZGUgZG9l
+cyBub3QgYWRkIGFueXRoaW5nIGNvbXBhcmVkIHRvDQo+Pj4gZHJtX2ZiZGV2X2dlbmVyaWNf
+c2V0dXAoKTsgdGhlIG9uZSBjdXN0b20gZnVuY3Rpb24gZm9yIC5mYl9tbWFwIGRvZXMgdGhl
+DQo+Pj4gc2FtZSB0aGluZyBhcyBnZW1fcHJpbWVfbW1hcCB3aGljaCBpcyBjYWxsZWQgYnkg
+dGhlIGhlbHBlci4NCj4+Pg0KPj4+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2VlcGluZyA8am9o
+bkBtZXRhbmF0ZS5jb20+DQo+Pj4gLS0tDQo+Pj4gICAgZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL01ha2VmaWxlICAgICAgICAgICAgIHwgICAxIC0NCj4+PiAgICBkcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jICAgfCAgMTAgKy0NCj4+PiAgICBkcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5oICAgfCAgIDIgLQ0KPj4+
+ICAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZmJkZXYuYyB8IDE2
+NCAtLS0tLS0tLS0tLS0tLS0tLS0NCj4+PiAgICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2ZiZGV2LmggfCAgMjQgLS0tDQo+Pj4gICAgNSBmaWxlcyBjaGFuZ2Vk
+LCAyIGluc2VydGlvbnMoKyksIDE5OSBkZWxldGlvbnMoLSkNCj4+PiAgICBkZWxldGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9mYmRldi5j
+DQo+Pj4gICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9y
+b2NrY2hpcF9kcm1fZmJkZXYuaA0KPj4+DQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9NYWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtl
+ZmlsZQ0KPj4+IGluZGV4IDE3YTllN2ViMjEzMC4uMWE1NmY2OTY1NThjIDEwMDY0NA0KPj4+
+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQ0KPj4+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9NYWtlZmlsZQ0KPj4+IEBAIC01LDcgKzUsNiBAQA0K
+Pj4+ICAgIHJvY2tjaGlwZHJtLXkgOj0gcm9ja2NoaXBfZHJtX2Rydi5vIHJvY2tjaGlwX2Ry
+bV9mYi5vIFwNCj4+PiAgICAJCXJvY2tjaGlwX2RybV9nZW0ubyByb2NrY2hpcF9kcm1fdm9w
+Lm8gcm9ja2NoaXBfdm9wX3JlZy5vDQo+Pj4gLXJvY2tjaGlwZHJtLSQoQ09ORklHX0RSTV9G
+QkRFVl9FTVVMQVRJT04pICs9IHJvY2tjaGlwX2RybV9mYmRldi5vDQo+Pj4gICAgcm9ja2No
+aXBkcm0tJChDT05GSUdfUk9DS0NISVBfQU5BTE9HSVhfRFApICs9IGFuYWxvZ2l4X2RwLXJv
+Y2tjaGlwLm8NCj4+PiAgICByb2NrY2hpcGRybS0kKENPTkZJR19ST0NLQ0hJUF9DRE5fRFAp
+ICs9IGNkbi1kcC1jb3JlLm8gY2RuLWRwLXJlZy5vDQo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jDQo+Pj4gaW5kZXggNjljNjk5NDU5ZGNl
+Li4yMGQ4MWFlNjk4MjggMTAwNjQ0DQo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tj
+aGlwL3JvY2tjaGlwX2RybV9kcnYuYw0KPj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMNCj4+PiBAQCAtMjYsNyArMjYsNiBAQA0KPj4+ICAg
+ICNpbmNsdWRlICJyb2NrY2hpcF9kcm1fZHJ2LmgiDQo+Pj4gICAgI2luY2x1ZGUgInJvY2tj
+aGlwX2RybV9mYi5oIg0KPj4+IC0jaW5jbHVkZSAicm9ja2NoaXBfZHJtX2ZiZGV2LmgiDQo+
+Pj4gICAgI2luY2x1ZGUgInJvY2tjaGlwX2RybV9nZW0uaCINCj4+PiAgICAjZGVmaW5lIERS
+SVZFUl9OQU1FCSJyb2NrY2hpcCINCj4+PiBAQCAtMTU5LDEwICsxNTgsNiBAQCBzdGF0aWMg
+aW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikNCj4+PiAgICAJZHJt
+X21vZGVfY29uZmlnX3Jlc2V0KGRybV9kZXYpOw0KPj4+IC0JcmV0ID0gcm9ja2NoaXBfZHJt
+X2ZiZGV2X2luaXQoZHJtX2Rldik7DQo+Pj4gLQlpZiAocmV0KQ0KPj4+IC0JCWdvdG8gZXJy
+X3VuYmluZF9hbGw7DQo+Pj4gLQ0KPj4+ICAgIAkvKiBpbml0IGttcyBwb2xsIGZvciBoYW5k
+bGluZyBocGQgKi8NCj4+PiAgICAJZHJtX2ttc19oZWxwZXJfcG9sbF9pbml0KGRybV9kZXYp
+Ow0KPj4+IEBAIC0xNzAsMTAgKzE2NSwxMSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9i
+aW5kKHN0cnVjdCBkZXZpY2UgKmRldikNCj4+PiAgICAJaWYgKHJldCkNCj4+PiAgICAJCWdv
+dG8gZXJyX2ttc19oZWxwZXJfcG9sbF9maW5pOw0KPj4+ICsJZHJtX2ZiZGV2X2dlbmVyaWNf
+c2V0dXAoZHJtX2RldiwgMzIpOw0KPj4NCj4+IFBsZWFzZSBwYXNzIDAgZm9yIHRoZSBmaW5h
+bCBhcmd1bWVudC4gVGhlIGZiZGV2IGhlbHBlcnMgcGljayAzMiBieSBkZWZhdWx0Lg0KPj4g
+TWF5YmUgbGVhdmUgYSBjb21tZW50IGlmIHlvdSByZXF1aXJlIDMyIGhlcmUuDQo+IA0KPiBJ
+IHdhbnRlZCB0byBtaW5pbWlzZSB0aGUgY2hhbmdlcyBpbnRyb2R1Y2VkIGhlcmUgLSBwYXNz
+aW5nIDMyIG1hdGNoZXMNCj4gdGhlIHZhbHVlIHBhc3NlZCB0byBkcm1fZmJfaGVscGVyX2lu
+aXRpYWxfY29uZmlnKCkgaW4gdGhlIGRlbGV0ZWQgY29kZQ0KPiBmcm9tIHJvY2tjaGlwX2Ry
+bV9mYmRldi5jLg0KDQpJbiB0aGF0IGNhc2UNCg0KQWNrZWQtYnk6IFRob21hcyBaaW1tZXJt
+YW5uIDx0emltbWVybWFubkBzdXNlLmRlPg0KDQo+IA0KPiBXaGF0IGRvIHlvdSB0aGluayBh
+Ym91dCBjaGFuZ2luZyB0aGlzIHRvIDAgaW4gYSBmb2xsb3ctdXAgcGF0Y2g/DQo+IA0KDQpZ
+ZXMuIElmIHBvc3NpYmxlLCBwbGVhc2UgcHJvdmlkZSBhIGZvbGxvdy11cCBwYXRjaCBmb3Ig
+dGhpcyBhbmQgc2V0IA0KbW9kZWNvbmZpZy5wcmVmZXJlZF9kZXB0aCB0byAyNC4NCg0KQmVz
+dCByZWdhcmRzDQpUaG9tYXMNCg0KDQotLSANClRob21hcyBaaW1tZXJtYW5uDQpHcmFwaGlj
+cyBEcml2ZXIgRGV2ZWxvcGVyDQpTVVNFIFNvZnR3YXJlIFNvbHV0aW9ucyBHZXJtYW55IEdt
+YkgNCk1heGZlbGRzdHIuIDUsIDkwNDA5IE7DvHJuYmVyZywgR2VybWFueQ0KKEhSQiAzNjgw
+OSwgQUcgTsO8cm5iZXJnKQ0KR2VzY2jDpGZ0c2bDvGhyZXI6IEZlbGl4IEltZW5kw7ZyZmZl
+cg0K
 
+--------------0glOOvkbn2FeyB0F4Gj3rKnM--
+
+--------------qv0emOEtdJF4vygXj03v61OU
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmF+2+MFAwAAAAAACgkQlh/E3EQov+DH
+eA/+NrOz2Db7B97Bma1+KljnCw5VmiU5/TQeM0bCXL8lxCbwTACpu2UWrNab0Knb0wlIA+LtGnHh
+yghYGwZEpqpcXYn83H/GeZih9U/CtevVM3uXPTxSAHg/AZYKt0AGNRHkGO/rZ6jZgkDTBJKJCTgH
+V9tyCXiOzjcakCUCqLQmvIQ6pfdP7golKJ1YBWqZ5BKXRQaDk5116Om9NUrNojqBQ9X8vTS7rZaZ
+goX9RgqYq/f9hc4KtIdo8ULiYab4qpuABfzcaLVGK1+sfPwB6RBB7zcdGLhehucctImoNLhGj/28
+TX6DLqhV6tSdsJGXSdITKswxx2e5CKdOZrdJcS+A5j8BhO3xLQqHwRiTtLmNnWBxt0Z1MZlGUAF3
+h0y/Uhh9NUuB5wOjqOf3jvesEVHU7/nXc3k5G1PGU0H6ERP1sypEYlzITPkOLSbLR62JATAFpgxS
+Ci31qfQ8dNEOYjg700kDF+IsF0mRcm5mCVHYUNSWcDxnurZmvWZWJTM2GuLx1okT12HyD7AP2I3b
+6m1AO+0dFrgjrv4lyuS6+iB4nwGl4xmSuWgAAEQtPCmF2sIAcCO4CsHe0MZDVUHnQo3H4Gj8OdL0
++3osN8v3FvDzbWyeqI/HiVXyaS0wUNtd/x5kq13LuopnvOoQGtOOLdwkjD1k/VmiJpZSzl/zheg5
+0C4=
+=XT9P
+-----END PGP SIGNATURE-----
+
+--------------qv0emOEtdJF4vygXj03v61OU--
+
+
+--===============1170288982900645947==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1170288982900645947==--
+
