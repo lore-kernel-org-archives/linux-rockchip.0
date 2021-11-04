@@ -1,87 +1,85 @@
-Return-Path: <SRS0=9dgF=PW=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Uz4W=PX=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 264D3C43217
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Nov 2021 23:40:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C78FFC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Nov 2021 07:53:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E186A61053
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Nov 2021 23:40:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E186A61053
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7D168611C3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Nov 2021 07:53:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7D168611C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b8Hwg1F8nDTFyfn6c8fIMhyYqIDcWZUT/4eXtzrpHow=; b=fQuHUWHfBE6JLt
-	vxZ1hUxixwPyzO361a5MtQnsBBLAzMkpOYwla5dron3nZ8+ZFzxEzmjfQnRAfibckaUfaseqOnVgE
-	4nFQ41FmFb4jdIBXOqqqd17JMGbj4qwTit+3zaNImM/pI9aL+f4SrFEMfa8UHG1VU32H/I8tsUg/f
-	bAYz6x7XCK6mlp4dHK9ZRBZQiIhEhNypRRGWxijIAzRS0UGWKQ41xsf4GX6Yau3Iiou1N1gNlfKNX
-	+F/mD+48CWx52QP0noOjL7oAkNvVI9QXsKLRDw5D8peElEonZhAuEhgiA6d7Tv2H60MF9pUWN5xl/
-	dcrO1TuQ08m2KCD39z9w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bB/39nO2rwNj3MjYg1UbOF98iGNrSZlHvP3uWrTWmh4=; b=3A4ozGbCshTc+E
+	kXGyKyfAxqeQRnbUX+TwjVrP3sJhX5v2rtNWY7LpgFo+dkL1/w77ycS7KHlZBQH5HbbEK4Gx6+d8t
+	UApSXINGbAJJx/aiMZc5h7SBqNc/A6P0Fm7HWNm5wylkQWXjGUshkapudqFygzWTF73yKK14chdjM
+	vkHlm+doEEOavKj71xuICnnzWTTCkN+JGq2SwiOPjXQt66QuIhpRSjtfEJryfE4uDnGtsvQU73tIa
+	7AlM5rT4cTRvwuZ0GD4bihbL+RnFQlfqOs7vbO6MGN8kjF+jUOKPmP1KlbklBgQF5UZp6iFPHKE7U
+	zamNFun+26R+ED1ajo0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miPrw-0075t3-2k; Wed, 03 Nov 2021 23:40:36 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1miXZK-008FBi-J4; Thu, 04 Nov 2021 07:53:54 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miPrs-0075rd-Kf
- for linux-rockchip@lists.infradead.org; Wed, 03 Nov 2021 23:40:34 +0000
-Received: by mail-pl1-x632.google.com with SMTP id u17so4175048plg.9
- for <linux-rockchip@lists.infradead.org>; Wed, 03 Nov 2021 16:40:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Fvdv9qSjYcr4vPXhlPONLjBsydnb58oCITwHeQtG2OU=;
- b=MO3krVRdTJELDUh0mqjI1Pfg521osGeQFg24altVUYAZw6vrTtbg1dfsV8smssBd/o
- mTej0wBkgiszcZAKfslHnwT+0r38dkHVOKk7wGzSFG70i05Pb4JOuDbk0GEOfDOzA4WL
- fq99zZDZP6YaseBcXJcojV9cBhtD+NenbMg/8=
+ id 1miXZ7-008F9D-OH; Thu, 04 Nov 2021 07:53:43 +0000
+Received: by mail-pf1-x436.google.com with SMTP id h74so5088487pfe.0;
+ Thu, 04 Nov 2021 00:53:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KFt8vOR5PcOQxZqEaXiJAr36Fhw+XePEv/9I5/7P28k=;
+ b=mB8ABYX0Z87neudHf96FuvP9XWcGFr64ZLdauSeHEY/FG2m3oTmzt9/x8kDiGx+vWg
+ ZczVX/UWVZ8AOgIaaZO24huSL+czCD973pexG1ahj0hOfwEF+eKVr6ojPildW70olzcX
+ xjKReMggJfbgwNm4RVFlxm7Llk+FfWbV1JwtfNGekq6+BJlQvgf52WsGGNhRwf4Eeeui
+ m8Mf31tR8tvFdJTN7aYfnor9QzUGSrpFGI5Ib5jsK4blDBRbwU/fbhvcvYgtBPW5Sd2j
+ e3N0Xzlwp6FDHETF0PpXES9OIPuErFRrH1CLe9R+H0UyNiD7WaSTcu4Xi0erKxIJcQFl
+ gW4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Fvdv9qSjYcr4vPXhlPONLjBsydnb58oCITwHeQtG2OU=;
- b=7PUqrjoDRsBoYcjDyx7bowAZZPsudpxx8XuFUha3XSQWxWZw3uhrU2cY9ZZ1ckdpUc
- aM07z9DDEJHGSeo5r+E9sHRCR7OaVEcvcBPN43Hcf+/84WvOBEdUJlQHB2XeDSnkBXNS
- 4xrL0E3uylPHOBXxyCPmz8AL13ySFIlWkhqNrJc9Hk8kDthPzgU7L5rc3CJr2hH2kQ8Y
- +P483xMvq8qq3oiVaBNTyfUC7Oom3MoLTP7+64RS2z9ZXUaZMkk1tnT5HRVESVjsMhy0
- Ygv/I3aaj4V4sdBNmvC3NWUbdOePLtlEkY6lv5tI8Uwc+yIwoOb7Cxp7lodKG7RmdqHZ
- qqcQ==
-X-Gm-Message-State: AOAM530R8Pvvh7imWUQ+1So1IWSGeTCRtlf742a9ee8hkuGc/6qAOsiw
- qPj98imH5lc3H6DaZciWrszyGg==
-X-Google-Smtp-Source: ABdhPJwPVsz03tLONdef1f7X7daj00VlFBvZVhrh3qwJU9AViI2taK7DEGUQEi3DELwP5YgAhnrrvA==
-X-Received: by 2002:a17:902:ec8e:b0:141:da55:6158 with SMTP id
- x14-20020a170902ec8e00b00141da556158mr25304626plg.7.1635982831457; 
- Wed, 03 Nov 2021 16:40:31 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:49a7:f0ba:24b0:bc39])
- by smtp.gmail.com with UTF8SMTPSA id hk18sm1224684pjb.20.2021.11.03.16.40.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 03 Nov 2021 16:40:30 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, David Airlie <airlied@linux.ie>,
- linux-rockchip@lists.infradead.org,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- Doug Anderson <dianders@chromium.org>, Rob Clark <robdclark@chromium.org>,
- Rob Clark <robdclark@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Brian Norris <briannorris@chromium.org>
-Subject: [PATCH 2/2] drm/self_refresh: Disable self-refresh on input events
-Date: Wed,  3 Nov 2021 16:40:18 -0700
-Message-Id: <20211103164002.2.Ie6c485320b35b89fd49e15a73f0a68e3bb49eef9@changeid>
-X-Mailer: git-send-email 2.34.0.rc0.344.g81b53c2807-goog
-In-Reply-To: <20211103234018.4009771-1-briannorris@chromium.org>
-References: <20211103234018.4009771-1-briannorris@chromium.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KFt8vOR5PcOQxZqEaXiJAr36Fhw+XePEv/9I5/7P28k=;
+ b=cqs8MGX+T/rzT02qRAzVA/ARdeFWz3gv29KV70NAUpvIFeC4BAkqDlJb5MXWCHZy1F
+ VF/gkVv84q7rE4o6rsHWWbaBMGMrufScudNqirAGSwmznHZ+edDvUNIh6bwCaZaZhbM+
+ RjXL2tuCQcniMzD9MYsT8LoOjz+RCfwBO54PJPsmAyrq8nntzGdRy11M6Ig5dzyMRi3k
+ crWRztRYZLypNHCRkjdMkk85ZNwzVoYQROQnaxyJ+wA9D+hLKERMVjks/gbQzF9bIZSu
+ 1+jVgu4Cacy3j3wcfHN+YvhNSAspTzOKlToR/bYVUBJY7LQ/8OeT8GyaJ8pgpaU+vyDL
+ D4pQ==
+X-Gm-Message-State: AOAM530Rxm2IV4J4f23c/QBKAF5GNWr7GiJpLeidlFpHSv0wXIKn7XKC
+ XGCAhsCYMkufAWNyCCT/VAE=
+X-Google-Smtp-Source: ABdhPJz6fl/WOzPmL6SEqZJTfIDxVheThEdA5y4VvVpiQSvpOSKSu2blFah3LAF2+vNEMR1umDn/ug==
+X-Received: by 2002:a65:648b:: with SMTP id e11mr37566650pgv.138.1636012420252; 
+ Thu, 04 Nov 2021 00:53:40 -0700 (PDT)
+Received: from localhost.localdomain ([103.161.98.162])
+ by smtp.gmail.com with ESMTPSA id nv5sm3769627pjb.10.2021.11.04.00.53.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Nov 2021 00:53:39 -0700 (PDT)
+From: Akash Gajjar <gajjar04akash@gmail.com>
+To: heiko@sntech.de
+Cc: Akash Gajjar <gajjar04akash@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Chen-Yu Tsai <wenst@chromium.org>, Jagan Teki <jagan@amarulasolutions.com>,
+ Levin Du <djw@t-chip.com.cn>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
+ Alex Bee <knaerzche@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+ Liang Chen <cl@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Add rock pi s dts support
+Date: Thu,  4 Nov 2021 13:22:24 +0530
+Message-Id: <20211104075234.8020-1-gajjar04akash@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211103_164032_714962_7AA6B751 
-X-CRM114-Status: GOOD (  20.27  )
+X-CRM114-CacheID: sfid-20211104_005341_863154_65002362 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,182 +97,275 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-To improve panel self-refresh exit latency, we speculatively start
-exiting when we
-receive input events. Occasionally, this may lead to false positives,
-but most of the time we get a head start on coming out of PSR. Depending
-on how userspace takes to produce a new frame in response to the event,
-this can completely hide the exit latency.
+Rock pi s is RK3308 SBC from radxa. Rock pi s has a,
+- 256MB/512MB DDR3 RAM
+- micro sd, sd nand flash (optional on board 1/2/4/8Gb)
+- 100MB ethernet, PoE (optional)
+- onboard RTL8723DS 802.11 b/g/n wifi + Bluetooth 4.0 Module
+- 26-pin expansion header
+- USB2.0 Type-A HOST x1
+- USB Type-C DC 5V Power Supply
+- 2 LEDS, 2 Keys
 
-In local tests on Chrome OS (Rockchip RK3399 eDP), we've found that the
-input notifier gives us about a 50ms head start over the
-fb-update-initiated exit.
+This patch enables
+- console on UART-2
+- nand flash
+- sd card
+- 100Mbps ethernet
+- USB2.0
 
-Leverage a new drm_input_helper library to get easy access to
-likely-relevant input event callbacks.
-
-Inspired-by: Kristian H. Kristensen <hoegsberg@google.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
+Signed-off-by: Akash Gajjar <gajjar04akash@gmail.com>
 ---
-This was in part picked up from:
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 208 ++++++++++++++++++
+ 3 files changed, 214 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
 
-  https://lore.kernel.org/all/20180405095000.9756-25-enric.balletbo@collabora.com/
-  [PATCH v6 24/30] drm/rockchip: Disable PSR on input events
-
-with significant rewrites/reworks:
-
- - moved to common drm_input_helper and drm_self_refresh_helper
-   implementation
- - track state only through crtc->state->self_refresh_active
-
-Note that I'm relatively unfamiliar with DRM locking expectations, but I
-believe access to drm_crtc->state (which helps us track redundant
-transitions) is OK under the locking provided by
-drm_atomic_get_crtc_state().
-
- drivers/gpu/drm/drm_self_refresh_helper.c | 54 ++++++++++++++++++++---
- 1 file changed, 48 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/drm_self_refresh_helper.c b/drivers/gpu/drm/drm_self_refresh_helper.c
-index dd33fec5aabd..dcab061cc90a 100644
---- a/drivers/gpu/drm/drm_self_refresh_helper.c
-+++ b/drivers/gpu/drm/drm_self_refresh_helper.c
-@@ -15,6 +15,7 @@
- #include <drm/drm_connector.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_device.h>
-+#include <drm/drm_input_helper.h>
- #include <drm/drm_mode_config.h>
- #include <drm/drm_modeset_lock.h>
- #include <drm/drm_print.h>
-@@ -58,17 +59,17 @@ DECLARE_EWMA(psr_time, 4, 4)
- struct drm_self_refresh_data {
- 	struct drm_crtc *crtc;
- 	struct delayed_work entry_work;
-+	struct work_struct exit_work;
-+	struct drm_input_handler input_handler;
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 4aed16176434..69072db24cd6 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -515,6 +515,11 @@ properties:
+           - const: radxa,rockpi4
+           - const: rockchip,rk3399
  
- 	struct mutex avg_mutex;
- 	struct ewma_psr_time entry_avg_ms;
- 	struct ewma_psr_time exit_avg_ms;
- };
- 
--static void drm_self_refresh_helper_entry_work(struct work_struct *work)
-+static void drm_self_refresh_transition(struct drm_self_refresh_data *sr_data,
-+					bool enable)
- {
--	struct drm_self_refresh_data *sr_data = container_of(
--				to_delayed_work(work),
--				struct drm_self_refresh_data, entry_work);
- 	struct drm_crtc *crtc = sr_data->crtc;
- 	struct drm_device *dev = crtc->dev;
- 	struct drm_modeset_acquire_ctx ctx;
-@@ -95,6 +96,9 @@ static void drm_self_refresh_helper_entry_work(struct work_struct *work)
- 		goto out;
- 	}
- 
-+	if (crtc->state->self_refresh_active == enable)
-+		goto out;
++      - description: Radxa ROCK Pi S
++	items:
++          - const: radxa,rockpis
++          - const: rockchip,rk3308
 +
- 	if (!crtc_state->enable)
- 		goto out;
- 
-@@ -107,8 +111,8 @@ static void drm_self_refresh_helper_entry_work(struct work_struct *work)
- 			goto out;
- 	}
- 
--	crtc_state->active = false;
--	crtc_state->self_refresh_active = true;
-+	crtc_state->active = !enable;
-+	crtc_state->self_refresh_active = enable;
- 
- 	ret = drm_atomic_commit(state);
- 	if (ret)
-@@ -129,6 +133,15 @@ static void drm_self_refresh_helper_entry_work(struct work_struct *work)
- 	drm_modeset_acquire_fini(&ctx);
- }
- 
-+static void drm_self_refresh_helper_entry_work(struct work_struct *work)
-+{
-+	struct drm_self_refresh_data *sr_data = container_of(
-+				to_delayed_work(work),
-+				struct drm_self_refresh_data, entry_work);
+       - description: Radxa ROCK Pi E
+         items:
+           - const: radxa,rockpi-e
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 479906f3ad7b..c852bfb35387 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -5,6 +5,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-ctouch2-of10.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-engicam-px30-core-edimm2.2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+new file mode 100644
+index 000000000000..0a8736de3fb3
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -0,0 +1,208 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <gajjar04akash@gmail.com>
++ */
 +
-+	drm_self_refresh_transition(sr_data, true);
-+}
++/dts-v1/;
++#include "rk3308.dtsi"
 +
- /**
-  * drm_self_refresh_helper_update_avg_times - Updates a crtc's SR time averages
-  * @state: the state which has just been applied to hardware
-@@ -223,6 +236,20 @@ void drm_self_refresh_helper_alter_state(struct drm_atomic_state *state)
- }
- EXPORT_SYMBOL(drm_self_refresh_helper_alter_state);
- 
-+static void drm_self_refresh_helper_exit_work(struct work_struct *work)
-+{
-+	struct drm_self_refresh_data *sr_data = container_of(
-+			work, struct drm_self_refresh_data, exit_work);
++/ {
++	model = "Radxa ROCK Pi S";
++	compatible = "radxa,rockpis", "rockchip,rk3308";
 +
-+	drm_self_refresh_transition(sr_data, false);
-+}
++	aliases {
++		ethernet0 = &gmac;
++		mmc0 = &sdmmc;
++		mmc1 = &emmc;
++	};
 +
-+static void drm_self_refresh_input_event(void *data)
-+{
-+	struct drm_self_refresh_data *sr_data = data;
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
 +
-+	schedule_work(&sr_data->exit_work);
-+}
- /**
-  * drm_self_refresh_helper_init - Initializes self refresh helpers for a crtc
-  * @crtc: the crtc which supports self refresh supported displays
-@@ -232,6 +259,7 @@ EXPORT_SYMBOL(drm_self_refresh_helper_alter_state);
- int drm_self_refresh_helper_init(struct drm_crtc *crtc)
- {
- 	struct drm_self_refresh_data *sr_data = crtc->self_refresh_data;
-+	int ret;
- 
- 	/* Helper is already initialized */
- 	if (WARN_ON(sr_data))
-@@ -243,6 +271,7 @@ int drm_self_refresh_helper_init(struct drm_crtc *crtc)
- 
- 	INIT_DELAYED_WORK(&sr_data->entry_work,
- 			  drm_self_refresh_helper_entry_work);
-+	INIT_WORK(&sr_data->exit_work, drm_self_refresh_helper_exit_work);
- 	sr_data->crtc = crtc;
- 	mutex_init(&sr_data->avg_mutex);
- 	ewma_psr_time_init(&sr_data->entry_avg_ms);
-@@ -256,8 +285,19 @@ int drm_self_refresh_helper_init(struct drm_crtc *crtc)
- 	ewma_psr_time_add(&sr_data->entry_avg_ms, SELF_REFRESH_AVG_SEED_MS);
- 	ewma_psr_time_add(&sr_data->exit_avg_ms, SELF_REFRESH_AVG_SEED_MS);
- 
-+	sr_data->input_handler.callback = drm_self_refresh_input_event;
-+	sr_data->input_handler.priv = sr_data;
-+	ret = drm_input_handle_register(crtc->dev, &sr_data->input_handler);
-+	if (ret)
-+		goto err;
++	leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&green_led_gio>, <&heartbeat_led_gpio>;
 +
- 	crtc->self_refresh_data = sr_data;
++		green-led {
++			label = "rockpis:green:power";
++			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "default-on";
++			default-state = "on";
++		};
 +
- 	return 0;
++		blue-led {
++			label = "rockpis:blue:user";
++			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
++			default-state = "on";
++			linux,default-trigger = "heartbeat";
++		};
++	};
 +
-+err:
-+	kfree(sr_data);
-+	return ret;
- }
- EXPORT_SYMBOL(drm_self_refresh_helper_init);
- 
-@@ -275,7 +315,9 @@ void drm_self_refresh_helper_cleanup(struct drm_crtc *crtc)
- 
- 	crtc->self_refresh_data = NULL;
- 
-+	drm_input_handle_unregister(&sr_data->input_handler);
- 	cancel_delayed_work_sync(&sr_data->entry_work);
-+	cancel_work_sync(&sr_data->exit_work);
- 	kfree(sr_data);
- }
- EXPORT_SYMBOL(drm_self_refresh_helper_cleanup);
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vdd_core: vdd-core {
++		compatible = "pwm-regulator";
++		pwms = <&pwm0 0 5000 1>;
++		regulator-name = "vdd_core";
++		regulator-min-microvolt = <827000>;
++		regulator-max-microvolt = <1340000>;
++		regulator-init-microvolt = <1015000>;
++		regulator-settling-time-up-us = <250>;
++		regulator-always-on;
++		regulator-boot-on;
++		pwm-supply = <&vcc5v0_sys>;
++	};
++
++	vdd_log: vdd-log {
++		compatible = "regulator-fixed";
++		regulator-name = "vdd_log";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1050000>;
++		regulator-max-microvolt = <1050000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc_ddr: vcc-ddr {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_ddr";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1500000>;
++		regulator-max-microvolt = <1500000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc_1v8: vcc-1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_io>;
++	};
++
++	vcc_io: vcc-io {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_io";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_otg: vcc5v0-otg {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_otg";
++		regulator-always-on;
++		enable-active-high;
++		pinctrl-names = "default";
++		pinctrl-0 = <&otg_vbus_drv>;
++		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_core>;
++};
++
++&emmc {
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	non-removable;
++	status = "okay";
++};
++
++&gmac {
++	phy-supply = <&vcc_io>;
++	clock_in_out = "input";
++	snps,reset-gpio = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	tx_delay = <0x28>;
++	rx_delay = <0x11>;
++	status = "okay";
++};
++
++&i2c1 {
++	status = "okay";
++};
++
++&pinctrl {
++	pinctrl-names = "default";
++	pinctrl-0 = <&rtc_32k>;
++
++	leds {
++		green_led_gio: green-led-gpio {
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		heartbeat_led_gpio: heartbeat-led-gpio {
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	usb {
++		otg_vbus_drv: otg-vbus-drv {
++			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&pwm0 {
++	status = "okay";
++	pinctrl-0 = <&pwm0_pin_pull_down>;
++};
++
++&saradc {
++	vref-supply = <&vcc_1v8>;
++	status = "okay";
++};
++
++&sdmmc {
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	card-detect-delay = <300>;
++	sd-uhs-sdr25;
++	sd-uhs-sdr50;
++	sd-uhs-sdr104;
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&uart4 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart4_xfer &uart4_rts &uart4_cts>;
++	status = "okay";
++};
++
++&u2phy {
++	status = "okay";
++
++	u2phy_host: host-port {
++		status = "okay";
++	};
++};
++
++&usb_host_ehci {
++	status = "okay";
++};
++
++&usb_host_ohci {
++	status = "okay";
++};
 -- 
-2.34.0.rc0.344.g81b53c2807-goog
+2.25.1
 
 
 _______________________________________________
