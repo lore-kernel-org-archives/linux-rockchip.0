@@ -2,14 +2,14 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3046C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4298DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DF8C611EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DF8C611EF
+	by mail.kernel.org (Postfix) with ESMTPS id 1308B60F21
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1308B60F21
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lni9IM/Bn3qA10qrc7JlQWnYxNjAJ0K1N9FpUtfYHEQ=; b=Dq7ANMKS/8mimC
-	0C9Tg/9TPeSML6Z8rx5yaLBJbNEDAYzls3/JzOB5qTEOqV23hVwI0PGwUo2OoWUBFQu7mOYrJxjtK
-	k2mUi03Ys/XIS0+9eJmtDeoI+yJ5d3HE6LAfL8MUKWAx6Oblx80sm6KguoaYgzgHMUvwH4mdObSNI
-	tIOOAMFjL0R7yNUQPOVqIZq9rcB+UggTdErSlfsII3Wd5vV+En+hP1ZIQrzsdM9Nz1wJF7NeCKqbv
-	gS9l6MSBQ4VHiTeXu83DQZJuuMQIiCDE2onjUGo/aIgQ4Zq21oCwe8kAiLU8YsZeIAxi6thqhFCsw
-	VjHC2BkAsPTa89wMF99g==;
+	List-Owner; bh=o81ta9oVaF2cSKKVRsY2AmVa0hYxAtoCxH+i7dmZ9vI=; b=KZ0FD5QmLRlgnx
+	AryjWBmAP09yQwuaap7edWXd2nVSEnGGqhNMUqKhChUDYOAILp7XNiVnRnFGv5zuomxQNJOieeX/D
+	53stzfyPpgCuyuH3qthRLpksJJ0hGl3sn6iCrMJbWCG1FB2ZvhvkUbrX41Gity/TVVLoofy/Y5rcJ
+	3ASO9nScHvXsEqTmmlFbYJH+hgBgetVzohX7TlPdCsqlZKq/gJAm6yOLvFhlNmndV9m8nfkc00y0n
+	OuKQz3Xoyueanc7yJl4wx0zAFeNlJhYVk9tYfGi5ase9+XHDdHMmPYRH0ZMpGZAnCiKMPKNQAkYc+
+	HZAzV3yLS89LZvbBMZdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miyaZ-00BHVw-Rt; Fri, 05 Nov 2021 12:44:59 +0000
+	id 1miybJ-00BI2p-TG; Fri, 05 Nov 2021 12:45:45 +0000
 Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miyYo-00BGUD-Es; Fri, 05 Nov 2021 12:43:11 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="255539415"
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="255539415"
+ id 1miyYo-00BGWo-Rj; Fri, 05 Nov 2021 12:43:12 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="255539419"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="255539419"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  05 Nov 2021 05:43:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="501921085"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="501921083"
 Received: from black.fi.intel.com ([10.237.72.28])
  by orsmga008.jf.intel.com with ESMTP; 05 Nov 2021 05:43:05 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
- id C9C8D904; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
+ id 970FE74D; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
@@ -55,17 +55,16 @@ Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  Heiko Stuebner <heiko@sntech.de>,
  Patrice Chotard <patrice.chotard@foss.st.com>,
  Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: [PATCH v1 15/19] pinctrl: st: Make use of the
- devm_platform_ioremap_resource_byname()
-Date: Fri,  5 Nov 2021 14:42:38 +0200
-Message-Id: <20211105124242.27288-15-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 11/19] pinctrl: armada-37xx: Convert to use dev_err_probe()
+Date: Fri,  5 Nov 2021 14:42:34 +0200
+Message-Id: <20211105124242.27288-11-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_054310_547555_CEDC61B9 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20211105_054310_945159_0B2C3E47 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,45 +82,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use the devm_platform_ioremap_resource_byname() helper instead of
-calling platform_get_resource_byname() and devm_ioremap_resource()
-separately.
+It's fine to call dev_err_probe() in ->probe() when error code is known.
+Convert the driver to use dev_err_probe().
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/pinctrl-st.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/pinctrl/mvebu/pinctrl-armada-37xx.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
-index f592e9ad93fc..bccde0b8f012 100644
---- a/drivers/pinctrl/pinctrl-st.c
-+++ b/drivers/pinctrl/pinctrl-st.c
-@@ -1583,7 +1583,6 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
- 	struct device_node *child;
- 	int grp_index = 0;
- 	int irq = 0;
--	struct resource *res;
- 
- 	st_pctl_dt_child_count(info, np);
- 	if (!info->nbanks) {
-@@ -1614,16 +1613,12 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
- 	irq = platform_get_irq(pdev, 0);
- 
- 	if (irq > 0) {
--		res = platform_get_resource_byname(pdev,
--					IORESOURCE_MEM, "irqmux");
--		info->irqmux_base = devm_ioremap_resource(dev, res);
--
-+		info->irqmux_base = devm_platform_ioremap_resource_byname(pdev, "irqmux");
- 		if (IS_ERR(info->irqmux_base))
- 			return PTR_ERR(info->irqmux_base);
- 
- 		irq_set_chained_handler_and_data(irq, st_gpio_irqmux_handler,
- 						 info);
--
+diff --git a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
+index 282b3fac3bec..f48745c43419 100644
+--- a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
++++ b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
+@@ -736,10 +736,8 @@ static int armada_37xx_irqchip_register(struct platform_device *pdev,
+ 			break;
+ 		}
  	}
+-	if (ret) {
+-		dev_err(dev, "no gpio-controller child node\n");
+-		return ret;
+-	}
++	if (ret)
++		return dev_err_probe(dev, ret, "no gpio-controller child node\n");
  
- 	pctl_desc->npins = info->nbanks * ST_GPIO_PINS_PER_BANK;
+ 	nr_irq_parent = of_irq_count(np);
+ 	spin_lock_init(&info->irq_lock);
+@@ -996,10 +994,8 @@ static int armada_37xx_pinctrl_register(struct platform_device *pdev,
+ 		return ret;
+ 
+ 	info->pctl_dev = devm_pinctrl_register(dev, ctrldesc, info);
+-	if (IS_ERR(info->pctl_dev)) {
+-		dev_err(dev, "could not register pinctrl driver\n");
+-		return PTR_ERR(info->pctl_dev);
+-	}
++	if (IS_ERR(info->pctl_dev))
++		return dev_err_probe(dev, PTR_ERR(info->pctl_dev), "could not register pinctrl driver\n");
+ 
+ 	return 0;
+ }
+@@ -1135,10 +1131,8 @@ static int __init armada_37xx_pinctrl_probe(struct platform_device *pdev)
+ 	info->dev = dev;
+ 
+ 	regmap = syscon_node_to_regmap(np);
+-	if (IS_ERR(regmap)) {
+-		dev_err(dev, "cannot get regmap\n");
+-		return PTR_ERR(regmap);
+-	}
++	if (IS_ERR(regmap))
++		return dev_err_probe(dev, PTR_ERR(regmap), "cannot get regmap\n");
+ 	info->regmap = regmap;
+ 
+ 	info->data = of_device_get_match_data(dev);
 -- 
 2.33.0
 
