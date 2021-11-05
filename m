@@ -2,14 +2,14 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32AB4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3046C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E788D61212
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:44:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E788D61212
+	by mail.kernel.org (Postfix) with ESMTPS id 8DF8C611EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:45:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DF8C611EF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wx3Sc9me2HyJM90KqXesQHfzFVLloAck0rM4RlQAmPE=; b=qllEbMcX1rrJYG
-	XtVBmALwLJjqP50zleA48sebH7q9E4UHOVHRkMQEOtXzLhO7P7cnLSwjYbwLeyojbBwzuEi4Ts8+z
-	ZlP3+B9Muuyi4p0ZIo/YRSJa0zTjJVBrhdAsPZenA/af/VIcCdYecwiKOLAC2P7vLWFWovrQ84PGS
-	SzOUtJBP6c8nzq9JkvRYFMv3sCIVaYpqxKwP4ll0E8EblDURSmIyrIR6m14Kt/IZTYhph/QEBNRjo
-	Dg+enTmEk/RmafpBNrkl920rYQH8Li8+xX9akS0WrG3QLZaTtECaoND0Z+QTk4rc47Kg6dBGjqtVI
-	f08BqunWdy48mqSoUBKw==;
+	List-Owner; bh=lni9IM/Bn3qA10qrc7JlQWnYxNjAJ0K1N9FpUtfYHEQ=; b=Dq7ANMKS/8mimC
+	0C9Tg/9TPeSML6Z8rx5yaLBJbNEDAYzls3/JzOB5qTEOqV23hVwI0PGwUo2OoWUBFQu7mOYrJxjtK
+	k2mUi03Ys/XIS0+9eJmtDeoI+yJ5d3HE6LAfL8MUKWAx6Oblx80sm6KguoaYgzgHMUvwH4mdObSNI
+	tIOOAMFjL0R7yNUQPOVqIZq9rcB+UggTdErSlfsII3Wd5vV+En+hP1ZIQrzsdM9Nz1wJF7NeCKqbv
+	gS9l6MSBQ4VHiTeXu83DQZJuuMQIiCDE2onjUGo/aIgQ4Zq21oCwe8kAiLU8YsZeIAxi6thqhFCsw
+	VjHC2BkAsPTa89wMF99g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miya9-00BHFg-QY; Fri, 05 Nov 2021 12:44:33 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1miyaZ-00BHVw-Rt; Fri, 05 Nov 2021 12:44:59 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miyYn-00BGW6-Vw; Fri, 05 Nov 2021 12:43:11 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="211941076"
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="211941076"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 05:43:09 -0700
+ id 1miyYo-00BGUD-Es; Fri, 05 Nov 2021 12:43:11 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="255539415"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="255539415"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2021 05:43:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="730520446"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="501921085"
 Received: from black.fi.intel.com ([10.237.72.28])
- by fmsmga005.fm.intel.com with ESMTP; 05 Nov 2021 05:43:04 -0700
+ by orsmga008.jf.intel.com with ESMTP; 05 Nov 2021 05:43:05 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 64BAB512; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
+ id C9C8D904; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
@@ -55,17 +55,17 @@ Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  Heiko Stuebner <heiko@sntech.de>,
  Patrice Chotard <patrice.chotard@foss.st.com>,
  Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: [PATCH v1 07/19] pinctrl/rockchip: Switch to use
- devm_kasprintf_strarray()
-Date: Fri,  5 Nov 2021 14:42:30 +0200
-Message-Id: <20211105124242.27288-7-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 15/19] pinctrl: st: Make use of the
+ devm_platform_ioremap_resource_byname()
+Date: Fri,  5 Nov 2021 14:42:38 +0200
+Message-Id: <20211105124242.27288-15-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_054310_055280_7AA9D81C 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20211105_054310_547555_CEDC61B9 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +83,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since we have a generic helper, switch the module to use it.
-
-As a side effect, add check for the memory allocation failures and
-cleanup it either in error case or when driver is unloading.
+Use the devm_platform_ioremap_resource_byname() helper instead of
+calling platform_get_resource_byname() and devm_ioremap_resource()
+separately.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/pinctrl/pinctrl-st.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 929c96ea621a..438808a867cf 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -33,6 +33,8 @@
- #include <linux/clk.h>
- #include <linux/regmap.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/string_helpers.h>
-+
- #include <dt-bindings/pinctrl/rockchip.h>
+diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
+index f592e9ad93fc..bccde0b8f012 100644
+--- a/drivers/pinctrl/pinctrl-st.c
++++ b/drivers/pinctrl/pinctrl-st.c
+@@ -1583,7 +1583,6 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
+ 	struct device_node *child;
+ 	int grp_index = 0;
+ 	int irq = 0;
+-	struct resource *res;
  
- #include "core.h"
-@@ -2452,6 +2454,7 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
- 	struct pinctrl_pin_desc *pindesc, *pdesc;
- 	struct rockchip_pin_bank *pin_bank;
- 	struct device *dev = &pdev->dev;
-+	char **pin_names;
- 	int pin, bank, ret;
- 	int k;
+ 	st_pctl_dt_child_count(info, np);
+ 	if (!info->nbanks) {
+@@ -1614,16 +1613,12 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
+ 	irq = platform_get_irq(pdev, 0);
  
-@@ -2471,10 +2474,14 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
- 	pdesc = pindesc;
- 	for (bank = 0, k = 0; bank < info->ctrl->nr_banks; bank++) {
- 		pin_bank = &info->ctrl->pin_banks[bank];
-+
-+		pin_names = devm_kasprintf_strarray(dev, pin_bank->name, pin_bank->nr_pins);
-+		if (IS_ERR(pin_names))
-+			return PTR_ERR(pin_names);
-+
- 		for (pin = 0; pin < pin_bank->nr_pins; pin++, k++) {
- 			pdesc->number = k;
--			pdesc->name = kasprintf(GFP_KERNEL, "%s-%d",
--						pin_bank->name, pin);
-+			pdesc->name = pin_names[pin];
- 			pdesc++;
- 		}
+ 	if (irq > 0) {
+-		res = platform_get_resource_byname(pdev,
+-					IORESOURCE_MEM, "irqmux");
+-		info->irqmux_base = devm_ioremap_resource(dev, res);
+-
++		info->irqmux_base = devm_platform_ioremap_resource_byname(pdev, "irqmux");
+ 		if (IS_ERR(info->irqmux_base))
+ 			return PTR_ERR(info->irqmux_base);
  
+ 		irq_set_chained_handler_and_data(irq, st_gpio_irqmux_handler,
+ 						 info);
+-
+ 	}
+ 
+ 	pctl_desc->npins = info->nbanks * ST_GPIO_PINS_PER_BANK;
 -- 
 2.33.0
 
