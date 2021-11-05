@@ -2,69 +2,90 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D2E8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:54:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 441F5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 23:11:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E878560EE9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:54:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E878560EE9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 05363611C1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 23:11:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 05363611C1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mbq+q1AHFdJjk7shscXpC4k8aJPi5fT9UQYipWAIScQ=; b=HY4zvsfWdKUVWq
-	aIhigt94PVLSsCCTH67r84VN1HsVaH3hSGwAG08wDTcx/REdVW/V011jsiN02u9YZfZBzodVdJNBZ
-	EazK0ZonpfhzyEURidyhZpVjQDS0m7ab86B2L0nU2DbQsF6Bo8gPLUUKZZ3a0nazeSPqEZ6gvA6FC
-	HCdN8AvI73XHkFgpvaC5HfWYA9EwnBkhYZkK8Q1QZ5SVbkYnhyJP3pN2wC2hB69QCGX6NAqLMvvfY
-	zuG0k3+Z3JejwuNXMTFp/0/taHS+1WbzWb59frRP20P/CkBRkUWYi8e15GXo1VxXbb44V7oArdvQ4
-	t2d16wQrKkBNtUvaLH8A==;
+	List-Owner; bh=7buX6TEsrPOcjMeB/tPQccvohW2qE5CBjNURC6RnY/Y=; b=n1xzTeS2kqxTb1
+	L8/pJRHeF63r04tUPqWo6Jw66sH88xTKpjOaw4fETdsuEURdtxFCIDNmtERzYbqZNIwz6p4LLjHOG
+	sK6BAj2jqPy2YTN9PsTMmcvIwqbmDADHM/hAuTKzUoBUUcakV+CUSIMk573+kedX6hsm979B/cvwK
+	t4viLvSVoUVCqiGDTs9xXdhRfUyc9TX5rk5zI3GSpIJbD/E0xrQB/UwEonr6kRpWECNIViPlnFYX4
+	PjLThxwJhJt181lyfFrcHcXVK8NpJtiIRLZDhvCDYQ3FMesnLFSUrK/u59my7mXcUPZz9MnWClU3/
+	lqH28/XYlAbAmoRzE2QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miyjc-00BMLG-CY; Fri, 05 Nov 2021 12:54:20 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1mj8Mo-00CRTB-Di; Fri, 05 Nov 2021 23:11:26 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miyag-00BGUE-E3; Fri, 05 Nov 2021 12:45:07 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="318091777"
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="318091777"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 05:43:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="490310777"
-Received: from black.fi.intel.com ([10.237.72.28])
- by orsmga007.jf.intel.com with ESMTP; 05 Nov 2021 05:42:59 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 315D6436; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>,
- Andrew Morton <akpm@linux-foundation.org>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: [PATCH v1 03/19] pinctrl/rockchip: Drop wrong kernel doc annotation
-Date: Fri,  5 Nov 2021 14:42:26 +0200
-Message-Id: <20211105124242.27288-3-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
-References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
+ id 1mj8Mm-00CRSd-3S
+ for linux-rockchip@lists.infradead.org; Fri, 05 Nov 2021 23:11:25 +0000
+Received: by mail-pf1-x430.google.com with SMTP id k2so10129717pff.11
+ for <linux-rockchip@lists.infradead.org>; Fri, 05 Nov 2021 16:11:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=fe30gTf1JSH+qni1elDo831NVGG1lJluzq3OLW/dWIM=;
+ b=p5sJJOrDEYqV2YTQNzrstft63jCJWAaO8A+cosJrR/IlYDqk32+qiBb8ydvv9Sf/u6
+ ztJ+Zv8n16UP7+B1acBMOC36VXH3xt5G9G4ePa2+gxgDVbK593fo3+vwUdkR6xGuVOD5
+ pkVsFhBeVvMRFm3rAzAHuZYUDPIhzGKsjYrLn69dvTa9TeHgRomfF6sIljreV+xUTAqh
+ ivqy2YdZA5VwG93YrS3mG4HK9tTAwo5HeygmnUA4GlgBklx0TsR2hVxtMC+ClzvWZz6Y
+ IkZAy8wrUw0WstgzVJ/I0U7naYXGjdloseWwDUcIZoshEo1ceW3nOA7FWx+jIIgpLBnt
+ 7Fzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fe30gTf1JSH+qni1elDo831NVGG1lJluzq3OLW/dWIM=;
+ b=z8yOICYwHrPiJ0kvk5l1EZe8ijb22b+ScR4Etl0zSkPyoKctE/JrBEzU3cUBwiLz1i
+ B32R0JX9KLa5Tv2UgXwxmxzw8uMRjtpOpshNVhmR4MfvMY+PY1GpemVEHYoxrT9aDeBt
+ LKTdtiqAgeORJKD78Z9LJKOP6aJjPyJwZOfMgRNg+Wp+ZLsYQftMLJOAjyCLTBU/Ov/9
+ Z6aS/LOLC8V2fPBGuM4ncUs44l11xyGZ4GMJCaduhQVGrnvN42Dma9tc/8NiMSrxhyI3
+ 39x+5JRxFFhdpb/MBuzLTw++t6Mycq2bsquznZjh6NIeWr9NlGjOnfQPnfCgCikZ1OK7
+ C3Ew==
+X-Gm-Message-State: AOAM532qL46pJ6ky4R+yE9jHrzv673LqglbpHZXANlaNqrxTeaOElrSw
+ S+jTiovrXUsVSlntiSrXuXq5GiQ86wc=
+X-Google-Smtp-Source: ABdhPJxHEL9UfKqPpufsLjZ2IJT4l8QtchzUvFFL1+WAcE+uvhlq2IyLoqu4RJJf9RwCHrHW6clN+g==
+X-Received: by 2002:a63:b957:: with SMTP id v23mr45380131pgo.74.1636153882737; 
+ Fri, 05 Nov 2021 16:11:22 -0700 (PDT)
+Received: from google.com ([2620:15c:202:201:837c:e765:475f:22d3])
+ by smtp.gmail.com with ESMTPSA id c3sm8479607pfv.25.2021.11.05.16.11.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Nov 2021 16:11:21 -0700 (PDT)
+Date: Fri, 5 Nov 2021 16:11:19 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ Doug Anderson <dianders@chromium.org>,
+ Rob Clark <robdclark@chromium.org>, Rob Clark <robdclark@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <YYW6FwSeNMK25ENm@google.com>
+References: <20211103234018.4009771-1-briannorris@chromium.org>
+ <20211103164002.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211103164002.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_054506_530320_2BB59A5F 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20211105_161124_191702_BE887581 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +103,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Kernel doc validator is not happy:
+On Wed, Nov 03, 2021 at 04:40:17PM -0700, Brian Norris wrote:
+> A variety of applications have found it useful to listen to
+> user-initiated input events to make decisions within a DRM driver, given
+> that input events are often the first sign that we're going to start
+> doing latency-sensitive activities:
+> 
+>  * Panel self-refresh: software-directed self-refresh (e.g., with
+>    Rockchip eDP) is especially latency sensitive. In some cases, it can
+>    take 10s of milliseconds for a panel to exit self-refresh, which can
+>    be noticeable. Rockchip RK3399 Chrome OS systems have always shipped
+>    with an input_handler boost, that preemptively exits self-refresh
+>    whenever there is input activity.
+> 
+>  * GPU drivers: on GPU-accelerated desktop systems, we may need to
+>    render new frames immediately after user activity. Powering up the
+>    GPU can take enough time that it is worthwhile to start this process
+>    as soon as there is input activity. Many Chrome OS systems also ship
+>    with an input_handler boost that powers up the GPU.
+> 
+> This patch provides a small helper library that abstracts some of the
+> input-subsystem details around picking which devices to listen to, and
+> some other boilerplate. This will be used in the next patch to implement
+> the first bullet: preemptive exit for panel self-refresh.
+> 
+> Bits of this are adapted from code the Android and/or Chrome OS kernels
+> have been carrying for a while.
 
-  .../pinctrl-rockchip.c:45: warning: This comment starts with '/**', but isn't a kernel-doc comment.
+If this is acceptable to DRM folks I am OK with this from input POV. The
+only think I would call out that the callback is executed in atomic
+context with interrupts disabled.
 
-Drop it as it's indeed not a kernel doc comment.
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/pinctrl-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks.
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 5ce260f152ce..6031d98d9849 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -39,7 +39,7 @@
- #include "pinconf.h"
- #include "pinctrl-rockchip.h"
- 
--/**
-+/*
-  * Generate a bitmask for setting a value (v) with a write mask bit in hiword
-  * register 31:16 area.
-  */
 -- 
-2.33.0
-
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
