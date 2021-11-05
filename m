@@ -2,14 +2,14 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97090C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCEF4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:44:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6007761212
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:43:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6007761212
+	by mail.kernel.org (Postfix) with ESMTPS id 8E668611EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:44:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8E668611EF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/GS4eLHzCdUolPi8hAw6EBtLGmSGc+GkxbtcJ4IqFf0=; b=OBjG/WOBjR35OD
-	rcRpqSPkaCD869r9Kywl+SrSThmkaREaVR/bQc6R6PNahWq50wIOEuYHVEPvByipAhkmwtdOrnYCz
-	Wnp8PtUvHMjnmH6PhKCEapZcSaV2wfl2S2soz0NI2N53q6+wkhpJIMEQ+XPJuu52z46+fCUVpdec+
-	PW4oDkYoBUfdlwB/8vxXQzYn1gBh3glMVJhDwuSqL0E+F+QO66QsGazRPHKvKbsE0k52wCgwFTkEG
-	TGKbFbTbkbwHnOyg2QSMo0x4Abo8gscOZ9yFnIqDar4YrnRaTHF/CFmV3QwLFz/suRMbtkMmNjVkC
-	seum+T+j0x290vqt8DDw==;
+	List-Owner; bh=ja0BVLIQuBfw0YVnkFOa5cWgB5DT0MnlSCzo81JuVHk=; b=cio+DwJwJSHJJN
+	pr1jYROLUiZSCrwAs4YKlSPnfbt9wiNyk8w2uvKkvZrxpOpTZleOZivGh5D4qHG/6PWlNUcoImXyv
+	xqZZG5MFCbahlK+9w07ynnQgYAXnf9BREobU4i9Dn4bv6DwQlwLwzebccOt2ytebOOOzw0wruUJgL
+	4f+tHJZC8cPkC8qZgXzvUK7mbVFjpoZR3oS/1OouOZqU4MS/diKrc3tT+HkmTQxUm3+1k51ApaVej
+	YU3QxbaZGg2thMkPEHrZdMW923qBPmNbGejx4PyGXVt7KM5/OhxG86b0so6kzPyVQuUuKfB2tfoNh
+	/44xEu31cBU4JVlI09rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miyZM-00BGkr-KT; Fri, 05 Nov 2021 12:43:44 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1miyZZ-00BGsF-BY; Fri, 05 Nov 2021 12:43:57 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miyYl-00BGUF-W1; Fri, 05 Nov 2021 12:43:09 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="218789408"
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="218789408"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 05:43:05 -0700
+ id 1miyYk-00BGUD-Nn; Fri, 05 Nov 2021 12:43:10 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="255539401"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="255539401"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2021 05:43:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="579644106"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="450560674"
 Received: from black.fi.intel.com ([10.237.72.28])
- by FMSMGA003.fm.intel.com with ESMTP; 05 Nov 2021 05:42:59 -0700
+ by orsmga006.jf.intel.com with ESMTP; 05 Nov 2021 05:43:00 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 1BE5C11E; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
+ id 3EA0843A; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
@@ -55,17 +55,17 @@ Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  Heiko Stuebner <heiko@sntech.de>,
  Patrice Chotard <patrice.chotard@foss.st.com>,
  Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: [PATCH v1 02/19] lib/string_helpers: Introduce managed variant of
- kasprintf_strarray()
-Date: Fri,  5 Nov 2021 14:42:25 +0200
-Message-Id: <20211105124242.27288-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 04/19] pinctrl/rockchip: Use temporary variable for struct
+ device
+Date: Fri,  5 Nov 2021 14:42:27 +0200
+Message-Id: <20211105124242.27288-4-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_054308_115425_D4D26880 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20211105_054306_825082_B3F517E7 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,85 +83,435 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some of the users want to have easy way to allocate array of strings
-that will be automatically cleaned when associated device is gone.
-
-Introduce managed variant of kasprintf_strarray() for such use cases.
+Use temporary variable for struct device to make code neater.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- include/linux/string_helpers.h |  3 +++
- lib/string_helpers.c           | 31 +++++++++++++++++++++++++++++++
- 2 files changed, 34 insertions(+)
+ drivers/pinctrl/pinctrl-rockchip.c | 116 +++++++++++++----------------
+ 1 file changed, 53 insertions(+), 63 deletions(-)
 
-diff --git a/include/linux/string_helpers.h b/include/linux/string_helpers.h
-index f67a94013c87..7a22921c9db7 100644
---- a/include/linux/string_helpers.h
-+++ b/include/linux/string_helpers.h
-@@ -7,6 +7,7 @@
- #include <linux/string.h>
- #include <linux/types.h>
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 6031d98d9849..ae80c95bae87 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -285,6 +285,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ {
+ 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+ 	const struct rockchip_pin_group *grp;
++	struct device *dev = info->dev;
+ 	struct pinctrl_map *new_map;
+ 	struct device_node *parent;
+ 	int map_num = 1;
+@@ -296,8 +297,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	 */
+ 	grp = pinctrl_name_to_group(info, np->name);
+ 	if (!grp) {
+-		dev_err(info->dev, "unable to find group for node %pOFn\n",
+-			np);
++		dev_err(dev, "unable to find group for node %pOFn\n", np);
+ 		return -EINVAL;
+ 	}
  
-+struct device;
- struct file;
- struct task_struct;
+@@ -331,7 +331,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 		new_map[i].data.configs.num_configs = grp->data[i].nconfigs;
+ 	}
  
-@@ -103,4 +104,6 @@ char *kstrdup_quotable_file(struct file *file, gfp_t gfp);
- char **kasprintf_strarray(gfp_t gfp, const char *prefix, size_t n);
- void kfree_strarray(char **array, size_t n);
+-	dev_dbg(pctldev->dev, "maps: function %s group %s num %d\n",
++	dev_dbg(dev, "maps: function %s group %s num %d\n",
+ 		(*map)->data.mux.function, (*map)->data.mux.group, map_num);
  
-+char **devm_kasprintf_strarray(struct device *dev, const char *prefix, size_t n);
-+
- #endif
-diff --git a/lib/string_helpers.c b/lib/string_helpers.c
-index 9758997c465e..90f9f1b7afec 100644
---- a/lib/string_helpers.c
-+++ b/lib/string_helpers.c
-@@ -10,6 +10,7 @@
- #include <linux/math64.h>
- #include <linux/export.h>
- #include <linux/ctype.h>
-+#include <linux/device.h>
- #include <linux/errno.h>
- #include <linux/fs.h>
- #include <linux/limits.h>
-@@ -730,6 +731,36 @@ void kfree_strarray(char **array, size_t n)
+ 	return 0;
+@@ -872,20 +872,20 @@ static int rockchip_verify_mux(struct rockchip_pin_bank *bank,
+ 			       int pin, int mux)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
++	struct device *dev = info->dev;
+ 	int iomux_num = (pin / 8);
+ 
+ 	if (iomux_num > 3)
+ 		return -EINVAL;
+ 
+ 	if (bank->iomux[iomux_num].type & IOMUX_UNROUTED) {
+-		dev_err(info->dev, "pin %d is unrouted\n", pin);
++		dev_err(dev, "pin %d is unrouted\n", pin);
+ 		return -EINVAL;
+ 	}
+ 
+ 	if (bank->iomux[iomux_num].type & IOMUX_GPIO_ONLY) {
+ 		if (mux != RK_FUNC_GPIO) {
+-			dev_err(info->dev,
+-				"pin %d only supports a gpio mux\n", pin);
++			dev_err(dev, "pin %d only supports a gpio mux\n", pin);
+ 			return -ENOTSUPP;
+ 		}
+ 	}
+@@ -909,6 +909,7 @@ static int rockchip_verify_mux(struct rockchip_pin_bank *bank,
+ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
++	struct device *dev = info->dev;
+ 	int iomux_num = (pin / 8);
+ 	struct regmap *regmap;
+ 	int reg, ret, mask, mux_type;
+@@ -922,8 +923,7 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
+ 	if (bank->iomux[iomux_num].type & IOMUX_GPIO_ONLY)
+ 		return 0;
+ 
+-	dev_dbg(info->dev, "setting mux of GPIO%d-%d to %d\n",
+-						bank->bank_num, pin, mux);
++	dev_dbg(dev, "setting mux of GPIO%d-%d to %d\n", bank->bank_num, pin, mux);
+ 
+ 	regmap = (bank->iomux[iomux_num].type & IOMUX_SOURCE_PMU)
+ 				? info->regmap_pmu : info->regmap_base;
+@@ -1575,6 +1575,7 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
++	struct device *dev = info->dev;
+ 	struct regmap *regmap;
+ 	int reg, ret;
+ 	u32 data, temp, rmask_bits;
+@@ -1620,7 +1621,7 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
+ 			bit -= 16;
+ 			break;
+ 		default:
+-			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
++			dev_err(dev, "unsupported bit: %d for pinctrl drive type: %d\n",
+ 				bit, drv_type);
+ 			return -EINVAL;
+ 		}
+@@ -1632,8 +1633,7 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
+ 		rmask_bits = RK3288_DRV_BITS_PER_PIN;
+ 		break;
+ 	default:
+-		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
+-			drv_type);
++		dev_err(dev, "unsupported pinctrl drive type: %d\n", drv_type);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1652,13 +1652,14 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
++	struct device *dev = info->dev;
+ 	struct regmap *regmap;
+ 	int reg, ret, i;
+ 	u32 data, rmask, rmask_bits, temp;
+ 	u8 bit;
+ 	int drv_type = bank->drv[pin_num / 8].drv_type;
+ 
+-	dev_dbg(info->dev, "setting drive of GPIO%d-%d to %d\n",
++	dev_dbg(dev, "setting drive of GPIO%d-%d to %d\n",
+ 		bank->bank_num, pin_num, strength);
+ 
+ 	ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
+@@ -1680,8 +1681,7 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 	}
+ 
+ 	if (ret < 0) {
+-		dev_err(info->dev, "unsupported driver strength %d\n",
+-			strength);
++		dev_err(dev, "unsupported driver strength %d\n", strength);
+ 		return ret;
+ 	}
+ 
+@@ -1720,7 +1720,7 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 			bit -= 16;
+ 			break;
+ 		default:
+-			dev_err(info->dev, "unsupported bit: %d for pinctrl drive type: %d\n",
++			dev_err(dev, "unsupported bit: %d for pinctrl drive type: %d\n",
+ 				bit, drv_type);
+ 			return -EINVAL;
+ 		}
+@@ -1731,8 +1731,7 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
+ 		rmask_bits = RK3288_DRV_BITS_PER_PIN;
+ 		break;
+ 	default:
+-		dev_err(info->dev, "unsupported pinctrl drive type: %d\n",
+-			drv_type);
++		dev_err(dev, "unsupported pinctrl drive type: %d\n", drv_type);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1766,6 +1765,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
++	struct device *dev = info->dev;
+ 	struct regmap *regmap;
+ 	int reg, ret, pull_type;
+ 	u8 bit;
+@@ -1800,7 +1800,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
+ 
+ 		return rockchip_pull_list[pull_type][data];
+ 	default:
+-		dev_err(info->dev, "unsupported pinctrl type\n");
++		dev_err(dev, "unsupported pinctrl type\n");
+ 		return -EINVAL;
+ 	};
  }
- EXPORT_SYMBOL_GPL(kfree_strarray);
+@@ -1810,13 +1810,13 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
++	struct device *dev = info->dev;
+ 	struct regmap *regmap;
+ 	int reg, ret, i, pull_type;
+ 	u8 bit;
+ 	u32 data, rmask;
  
-+struct strarray {
-+	char **array;
-+	size_t n;
-+};
-+
-+static void devm_kfree_strarray(struct device *dev, void *res)
-+{
-+	struct strarray *array = res;
-+
-+	kfree_strarray(array->array, array->n);
-+}
-+
-+char **devm_kasprintf_strarray(struct device *dev, const char *prefix, size_t n)
-+{
-+	struct strarray *ptr;
-+
-+	ptr = devres_alloc(devm_kfree_strarray, sizeof(*ptr), GFP_KERNEL);
-+	if (!ptr)
-+		return ERR_PTR(-ENOMEM);
-+
-+	ptr->array = kasprintf_strarray(GFP_KERNEL, prefix, n);
-+	if (!ptr->array) {
-+		devres_free(ptr);
-+		return ERR_PTR(-ENOMEM);
-+	}
-+
-+	return ptr->array;
-+}
-+EXPORT_SYMBOL_GPL(devm_kasprintf_strarray);
-+
- /**
-  * strscpy_pad() - Copy a C-string into a sized buffer
-  * @dest: Where to copy the string to
+-	dev_dbg(info->dev, "setting pull of GPIO%d-%d to %d\n",
+-		 bank->bank_num, pin_num, pull);
++	dev_dbg(dev, "setting pull of GPIO%d-%d to %d\n", bank->bank_num, pin_num, pull);
+ 
+ 	/* rk3066b does support any pulls */
+ 	if (ctrl->type == RK3066B)
+@@ -1859,8 +1859,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 		}
+ 
+ 		if (ret < 0) {
+-			dev_err(info->dev, "unsupported pull setting %d\n",
+-				pull);
++			dev_err(dev, "unsupported pull setting %d\n", pull);
+ 			return ret;
+ 		}
+ 
+@@ -1872,7 +1871,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
+ 		ret = regmap_update_bits(regmap, reg, rmask, data);
+ 		break;
+ 	default:
+-		dev_err(info->dev, "unsupported pinctrl type\n");
++		dev_err(dev, "unsupported pinctrl type\n");
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1963,12 +1962,13 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
+ {
+ 	struct rockchip_pinctrl *info = bank->drvdata;
+ 	struct rockchip_pin_ctrl *ctrl = info->ctrl;
++	struct device *dev = info->dev;
+ 	struct regmap *regmap;
+ 	int reg, ret;
+ 	u8 bit;
+ 	u32 data, rmask;
+ 
+-	dev_dbg(info->dev, "setting input schmitt of GPIO%d-%d to %d\n",
++	dev_dbg(dev, "setting input schmitt of GPIO%d-%d to %d\n",
+ 		bank->bank_num, pin_num, enable);
+ 
+ 	ret = ctrl->schmitt_calc_reg(bank, pin_num, &regmap, &reg, &bit);
+@@ -2028,10 +2028,11 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+ 	const unsigned int *pins = info->groups[group].pins;
+ 	const struct rockchip_pin_config *data = info->groups[group].data;
++	struct device *dev = info->dev;
+ 	struct rockchip_pin_bank *bank;
+ 	int cnt, ret = 0;
+ 
+-	dev_dbg(info->dev, "enable function %s group %s\n",
++	dev_dbg(dev, "enable function %s group %s\n",
+ 		info->functions[selector].name, info->groups[group].name);
+ 
+ 	/*
+@@ -2310,6 +2311,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 					      struct rockchip_pinctrl *info,
+ 					      u32 index)
+ {
++	struct device *dev = info->dev;
+ 	struct rockchip_pin_bank *bank;
+ 	int size;
+ 	const __be32 *list;
+@@ -2317,7 +2319,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 	int i, j;
+ 	int ret;
+ 
+-	dev_dbg(info->dev, "group(%d): %pOFn\n", index, np);
++	dev_dbg(dev, "group(%d): %pOFn\n", index, np);
+ 
+ 	/* Initialise group */
+ 	grp->name = np->name;
+@@ -2330,18 +2332,14 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 	/* we do not check return since it's safe node passed down */
+ 	size /= sizeof(*list);
+ 	if (!size || size % 4) {
+-		dev_err(info->dev, "wrong pins number or pins and configs should be by 4\n");
++		dev_err(dev, "wrong pins number or pins and configs should be by 4\n");
+ 		return -EINVAL;
+ 	}
+ 
+ 	grp->npins = size / 4;
+ 
+-	grp->pins = devm_kcalloc(info->dev, grp->npins, sizeof(unsigned int),
+-						GFP_KERNEL);
+-	grp->data = devm_kcalloc(info->dev,
+-					grp->npins,
+-					sizeof(struct rockchip_pin_config),
+-					GFP_KERNEL);
++	grp->pins = devm_kcalloc(dev, grp->npins, sizeof(*grp->pins), GFP_KERNEL);
++	grp->data = devm_kcalloc(dev, grp->npins, sizeof(*grp->data), GFP_KERNEL);
+ 	if (!grp->pins || !grp->data)
+ 		return -ENOMEM;
+ 
+@@ -2375,6 +2373,7 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
+ 						struct rockchip_pinctrl *info,
+ 						u32 index)
+ {
++	struct device *dev = info->dev;
+ 	struct device_node *child;
+ 	struct rockchip_pmx_func *func;
+ 	struct rockchip_pin_group *grp;
+@@ -2382,7 +2381,7 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
+ 	static u32 grp_index;
+ 	u32 i = 0;
+ 
+-	dev_dbg(info->dev, "parse function(%d): %pOFn\n", index, np);
++	dev_dbg(dev, "parse function(%d): %pOFn\n", index, np);
+ 
+ 	func = &info->functions[index];
+ 
+@@ -2392,8 +2391,7 @@ static int rockchip_pinctrl_parse_functions(struct device_node *np,
+ 	if (func->ngroups <= 0)
+ 		return 0;
+ 
+-	func->groups = devm_kcalloc(info->dev,
+-			func->ngroups, sizeof(char *), GFP_KERNEL);
++	func->groups = devm_kcalloc(dev, func->ngroups, sizeof(*func->groups), GFP_KERNEL);
+ 	if (!func->groups)
+ 		return -ENOMEM;
+ 
+@@ -2421,20 +2419,14 @@ static int rockchip_pinctrl_parse_dt(struct platform_device *pdev,
+ 
+ 	rockchip_pinctrl_child_count(info, np);
+ 
+-	dev_dbg(&pdev->dev, "nfunctions = %d\n", info->nfunctions);
+-	dev_dbg(&pdev->dev, "ngroups = %d\n", info->ngroups);
++	dev_dbg(dev, "nfunctions = %d\n", info->nfunctions);
++	dev_dbg(dev, "ngroups = %d\n", info->ngroups);
+ 
+-	info->functions = devm_kcalloc(dev,
+-					      info->nfunctions,
+-					      sizeof(struct rockchip_pmx_func),
+-					      GFP_KERNEL);
++	info->functions = devm_kcalloc(dev, info->nfunctions, sizeof(*info->functions), GFP_KERNEL);
+ 	if (!info->functions)
+ 		return -ENOMEM;
+ 
+-	info->groups = devm_kcalloc(dev,
+-					    info->ngroups,
+-					    sizeof(struct rockchip_pin_group),
+-					    GFP_KERNEL);
++	info->groups = devm_kcalloc(dev, info->ngroups, sizeof(*info->groups), GFP_KERNEL);
+ 	if (!info->groups)
+ 		return -ENOMEM;
+ 
+@@ -2446,7 +2438,7 @@ static int rockchip_pinctrl_parse_dt(struct platform_device *pdev,
+ 
+ 		ret = rockchip_pinctrl_parse_functions(child, info, i++);
+ 		if (ret) {
+-			dev_err(&pdev->dev, "failed to parse function\n");
++			dev_err(dev, "failed to parse function\n");
+ 			of_node_put(child);
+ 			return ret;
+ 		}
+@@ -2461,6 +2453,7 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
+ 	struct pinctrl_desc *ctrldesc = &info->pctl;
+ 	struct pinctrl_pin_desc *pindesc, *pdesc;
+ 	struct rockchip_pin_bank *pin_bank;
++	struct device *dev = &pdev->dev;
+ 	int pin, bank, ret;
+ 	int k;
+ 
+@@ -2470,9 +2463,7 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
+ 	ctrldesc->pmxops = &rockchip_pmx_ops;
+ 	ctrldesc->confops = &rockchip_pinconf_ops;
+ 
+-	pindesc = devm_kcalloc(&pdev->dev,
+-			       info->ctrl->nr_pins, sizeof(*pindesc),
+-			       GFP_KERNEL);
++	pindesc = devm_kcalloc(dev, info->ctrl->nr_pins, sizeof(*pindesc), GFP_KERNEL);
+ 	if (!pindesc)
+ 		return -ENOMEM;
+ 
+@@ -2497,9 +2488,9 @@ static int rockchip_pinctrl_register(struct platform_device *pdev,
+ 	if (ret)
+ 		return ret;
+ 
+-	info->pctl_dev = devm_pinctrl_register(&pdev->dev, ctrldesc, info);
++	info->pctl_dev = devm_pinctrl_register(dev, ctrldesc, info);
+ 	if (IS_ERR(info->pctl_dev)) {
+-		dev_err(&pdev->dev, "could not register pinctrl driver\n");
++		dev_err(dev, "could not register pinctrl driver\n");
+ 		return PTR_ERR(info->pctl_dev);
+ 	}
+ 
+@@ -2513,8 +2504,9 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ 						struct rockchip_pinctrl *d,
+ 						struct platform_device *pdev)
+ {
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->of_node;
+ 	const struct of_device_id *match;
+-	struct device_node *node = pdev->dev.of_node;
+ 	struct rockchip_pin_ctrl *ctrl;
+ 	struct rockchip_pin_bank *bank;
+ 	int grf_offs, pmu_offs, drv_grf_offs, drv_pmu_offs, i, j;
+@@ -2566,7 +2558,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ 						drv_pmu_offs : drv_grf_offs;
+ 			}
+ 
+-			dev_dbg(d->dev, "bank %d, iomux %d has iom_offset 0x%x drv_offset 0x%x\n",
++			dev_dbg(dev, "bank %d, iomux %d has iom_offset 0x%x drv_offset 0x%x\n",
+ 				i, j, iom->offset, drv->offset);
+ 
+ 			/*
+@@ -2675,8 +2667,8 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_pinctrl *info;
+ 	struct device *dev = &pdev->dev;
++	struct device_node *np = dev->of_node, *node;
+ 	struct rockchip_pin_ctrl *ctrl;
+-	struct device_node *np = pdev->dev.of_node, *node;
+ 	struct resource *res;
+ 	void __iomem *base;
+ 	int ret;
+@@ -2712,8 +2704,8 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 
+ 		rockchip_regmap_config.max_register = resource_size(res) - 4;
+ 		rockchip_regmap_config.name = "rockchip,pinctrl";
+-		info->regmap_base = devm_regmap_init_mmio(&pdev->dev, base,
+-						    &rockchip_regmap_config);
++		info->regmap_base =
++			devm_regmap_init_mmio(dev, base, &rockchip_regmap_config);
+ 
+ 		/* to check for the old dt-bindings */
+ 		info->reg_size = resource_size(res);
+@@ -2725,12 +2717,10 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 			if (IS_ERR(base))
+ 				return PTR_ERR(base);
+ 
+-			rockchip_regmap_config.max_register =
+-							resource_size(res) - 4;
++			rockchip_regmap_config.max_register = resource_size(res) - 4;
+ 			rockchip_regmap_config.name = "rockchip,pinctrl-pull";
+-			info->regmap_pull = devm_regmap_init_mmio(&pdev->dev,
+-						    base,
+-						    &rockchip_regmap_config);
++			info->regmap_pull =
++				devm_regmap_init_mmio(dev, base, &rockchip_regmap_config);
+ 		}
+ 	}
+ 
+@@ -2750,7 +2740,7 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 
+ 	ret = of_platform_populate(np, rockchip_bank_match, NULL, NULL);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "failed to register gpio device\n");
++		dev_err(dev, "failed to register gpio device\n");
+ 		return ret;
+ 	}
+ 
 -- 
 2.33.0
 
