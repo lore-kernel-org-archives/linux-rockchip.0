@@ -2,14 +2,14 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C4B5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0D5DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:50:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9EE7603E9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:48:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E9EE7603E9
+	by mail.kernel.org (Postfix) with ESMTPS id 6E6DF60C51
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:50:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6E6DF60C51
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eHf1YT9SzIgD55uz7crxFcN02+WGnLvayjHCp5zRrVQ=; b=WTMsG+To8d06h+
-	C5+neRLASWWgi5vT3k/JSgT756wLcx7P4C1qlTXDjPRjvHT6OdZ2DxKe5mmUL2BQkLwPwKXsxsDb8
-	7Wa6HLde2neniEZQ0HD11qcjWkTYHyiHpTEHjYN1FkI6PMMoDA10GGumEzdZ6CtEFAIojrd7V0f5x
-	G/+v6bUFl3/xz6//iS4bXkUOijkkL/fKcNzYyTtZYZZ2KsT7H7BK8Okqev3KsTldAEfUGXtBw2Xwv
-	YEdd0wXg56NcxhRapo9Z/AcKSAkiafnwC0SzEmbvHztIbw25butrew/ZjqMe1FScar0acvHyxNcvR
-	G4bA3xlvPSlbYsEFaulw==;
+	List-Owner; bh=A/E8QmDUUbhFdr/B2rLN/K2aT0612qPB57++rjysKqk=; b=I5VcMGOFlbbgVA
+	MIICRn9oReTyxsRWh80XMCOpO7lkHqThZxiLSfdjYtsFoGC21TeLkIdHh2wzucvFLaPPOHfLZtT0A
+	+miWqQLzDVy26tQ7gW/BUgRC4wecNKDne9eceAGHXX9B2bdp1AsSteJlbye7NpTt4Rb6Kn8CyIXLs
+	Dpt2OgpgnO5KpQYQeeuZKDNsXeYJ9EazKvsjkbuJ9PlmyMh+epDiOdlawxjM+lz//3M1KR67YfOdi
+	hNXg5xDAMnDGd5NbTTD5cXWQJQW2pitTLZH7BXqw+8f+t4DR/ObmbAR1rqExJOmPgb7mcTGH1wSd9
+	mSSEKFB+7l7mH9fdXopQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miye8-00BJhl-CJ; Fri, 05 Nov 2021 12:48:40 +0000
+	id 1miyfl-00BKVi-Jl; Fri, 05 Nov 2021 12:50:21 +0000
 Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miyYq-00BGXk-2j; Fri, 05 Nov 2021 12:43:14 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="211941090"
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="211941090"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ id 1miyYr-00BGW6-S0; Fri, 05 Nov 2021 12:43:15 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="211941098"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="211941098"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 05:43:11 -0700
+ 05 Nov 2021 05:43:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="542718188"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="730520456"
 Received: from black.fi.intel.com ([10.237.72.28])
- by fmsmga008.fm.intel.com with ESMTP; 05 Nov 2021 05:43:04 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 05 Nov 2021 05:43:09 -0700
 Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 7D7D262B; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
+ id DDDE5ABE; Fri,  5 Nov 2021 14:43:01 +0200 (EET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
  Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
@@ -55,17 +55,16 @@ Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  Heiko Stuebner <heiko@sntech.de>,
  Patrice Chotard <patrice.chotard@foss.st.com>,
  Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: [PATCH v1 09/19] pinctrl: armada-37xx: Use temporary variable for
- struct device
-Date: Fri,  5 Nov 2021 14:42:32 +0200
-Message-Id: <20211105124242.27288-9-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 17/19] pinctrl: st: Switch to use devm_kasprintf_strarray()
+Date: Fri,  5 Nov 2021 14:42:40 +0200
+Message-Id: <20211105124242.27288-17-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_054312_286163_06BCFA7A 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20211105_054313_941736_75E3370B 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,222 +82,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use temporary variable for struct device to make code neater.
+Since we have a generic helper, switch the module to use it.
+
+As a side effect, add check for the memory allocation failures and
+cleanup it either in error case or when driver is unloading.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/pinctrl/mvebu/pinctrl-armada-37xx.c | 56 +++++++++------------
- 1 file changed, 23 insertions(+), 33 deletions(-)
+ drivers/pinctrl/pinctrl-st.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-index 5615cb7a1209..37f92dc54d7a 100644
---- a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-+++ b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
-@@ -341,12 +341,12 @@ static int armada_37xx_pmx_set_by_name(struct pinctrl_dev *pctldev,
- 				       struct armada_37xx_pin_group *grp)
- {
- 	struct armada_37xx_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
-+	struct device *dev = info->dev;
- 	unsigned int reg = SELECTION;
- 	unsigned int mask = grp->reg_mask;
- 	int func, val;
+diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
+index 9cb0da88b098..0fea71fd9a00 100644
+--- a/drivers/pinctrl/pinctrl-st.c
++++ b/drivers/pinctrl/pinctrl-st.c
+@@ -1624,6 +1624,8 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
+ 	for_each_child_of_node(np, child) {
+ 		if (of_property_read_bool(child, "gpio-controller")) {
+ 			const char *bank_name = NULL;
++			char **pin_names;
++
+ 			ret = st_gpiolib_register_bank(info, bank, child);
+ 			if (ret) {
+ 				of_node_put(child);
+@@ -1632,10 +1634,16 @@ static int st_pctl_probe_dt(struct platform_device *pdev,
  
--	dev_dbg(info->dev, "enable function %s group %s\n",
--		name, grp->name);
-+	dev_dbg(dev, "enable function %s group %s\n", name, grp->name);
- 
- 	func = match_string(grp->funcs, NB_FUNCS, name);
- 	if (func < 0)
-@@ -722,16 +722,16 @@ static unsigned int armada_37xx_irq_startup(struct irq_data *d)
- static int armada_37xx_irqchip_register(struct platform_device *pdev,
- 					struct armada_37xx_pinctrl *info)
- {
--	struct device_node *np = info->dev->of_node;
- 	struct gpio_chip *gc = &info->gpio_chip;
- 	struct irq_chip *irqchip = &info->irq_chip;
- 	struct gpio_irq_chip *girq = &gc->irq;
- 	struct device *dev = &pdev->dev;
-+	struct device_node *np;
- 	struct resource res;
- 	int ret = -ENODEV, i, nr_irq_parent;
- 
- 	/* Check if we have at least one gpio-controller child node */
--	for_each_child_of_node(info->dev->of_node, np) {
-+	for_each_child_of_node(dev->of_node, np) {
- 		if (of_property_read_bool(np, "gpio-controller")) {
- 			ret = 0;
- 			break;
-@@ -750,12 +750,12 @@ static int armada_37xx_irqchip_register(struct platform_device *pdev,
- 		return 0;
- 	}
- 
--	if (of_address_to_resource(info->dev->of_node, 1, &res)) {
-+	if (of_address_to_resource(dev->of_node, 1, &res)) {
- 		dev_err(dev, "cannot find IO resource\n");
- 		return -ENOENT;
- 	}
- 
--	info->base = devm_ioremap_resource(info->dev, &res);
-+	info->base = devm_ioremap_resource(dev, &res);
- 	if (IS_ERR(info->base))
- 		return PTR_ERR(info->base);
- 
-@@ -774,8 +774,7 @@ static int armada_37xx_irqchip_register(struct platform_device *pdev,
- 	 * the chained irq with all of them.
- 	 */
- 	girq->num_parents = nr_irq_parent;
--	girq->parents = devm_kcalloc(&pdev->dev, nr_irq_parent,
--				     sizeof(*girq->parents), GFP_KERNEL);
-+	girq->parents = devm_kcalloc(dev, nr_irq_parent, sizeof(*girq->parents), GFP_KERNEL);
- 	if (!girq->parents)
- 		return -ENOMEM;
- 	for (i = 0; i < nr_irq_parent; i++) {
-@@ -794,11 +793,12 @@ static int armada_37xx_irqchip_register(struct platform_device *pdev,
- static int armada_37xx_gpiochip_register(struct platform_device *pdev,
- 					struct armada_37xx_pinctrl *info)
- {
-+	struct device *dev = &pdev->dev;
- 	struct device_node *np;
- 	struct gpio_chip *gc;
- 	int ret = -ENODEV;
- 
--	for_each_child_of_node(info->dev->of_node, np) {
-+	for_each_child_of_node(dev->of_node, np) {
- 		if (of_find_property(np, "gpio-controller", NULL)) {
- 			ret = 0;
- 			break;
-@@ -811,19 +811,16 @@ static int armada_37xx_gpiochip_register(struct platform_device *pdev,
- 
- 	gc = &info->gpio_chip;
- 	gc->ngpio = info->data->nr_pins;
--	gc->parent = &pdev->dev;
-+	gc->parent = dev;
- 	gc->base = -1;
- 	gc->of_node = np;
- 	gc->label = info->data->name;
- 
- 	ret = armada_37xx_irqchip_register(pdev, info);
--	if (ret)
--		return ret;
--	ret = devm_gpiochip_add_data(&pdev->dev, gc, info);
- 	if (ret)
- 		return ret;
- 
--	return 0;
-+	return devm_gpiochip_add_data(dev, gc, info);
- }
- 
- /**
-@@ -874,13 +871,13 @@ static int armada_37xx_add_function(struct armada_37xx_pmx_func *funcs,
- static int armada_37xx_fill_group(struct armada_37xx_pinctrl *info)
- {
- 	int n, num = 0, funcsize = info->data->nr_pins;
-+	struct device *dev = info->dev;
- 
- 	for (n = 0; n < info->ngroups; n++) {
- 		struct armada_37xx_pin_group *grp = &info->groups[n];
- 		int i, j, f;
- 
--		grp->pins = devm_kcalloc(info->dev,
--					 grp->npins + grp->extra_npins,
-+		grp->pins = devm_kcalloc(dev, grp->npins + grp->extra_npins,
- 					 sizeof(*grp->pins),
- 					 GFP_KERNEL);
- 		if (!grp->pins)
-@@ -898,8 +895,7 @@ static int armada_37xx_fill_group(struct armada_37xx_pinctrl *info)
- 			ret = armada_37xx_add_function(info->funcs, &funcsize,
- 					    grp->funcs[f]);
- 			if (ret == -EOVERFLOW)
--				dev_err(info->dev,
--					"More functions than pins(%d)\n",
-+				dev_err(dev, "More functions than pins(%d)\n",
- 					info->data->nr_pins);
- 			if (ret < 0)
- 				continue;
-@@ -925,6 +921,7 @@ static int armada_37xx_fill_group(struct armada_37xx_pinctrl *info)
- static int armada_37xx_fill_func(struct armada_37xx_pinctrl *info)
- {
- 	struct armada_37xx_pmx_func *funcs = info->funcs;
-+	struct device *dev = info->dev;
- 	int n;
- 
- 	for (n = 0; n < info->nfuncs; n++) {
-@@ -932,8 +929,7 @@ static int armada_37xx_fill_func(struct armada_37xx_pinctrl *info)
- 		const char **groups;
- 		int g;
- 
--		funcs[n].groups = devm_kcalloc(info->dev,
--					       funcs[n].ngroups,
-+		funcs[n].groups = devm_kcalloc(dev, funcs[n].ngroups,
- 					       sizeof(*(funcs[n].groups)),
- 					       GFP_KERNEL);
- 		if (!funcs[n].groups)
-@@ -962,6 +958,7 @@ static int armada_37xx_pinctrl_register(struct platform_device *pdev,
- 	const struct armada_37xx_pin_data *pin_data = info->data;
- 	struct pinctrl_desc *ctrldesc = &info->pctl;
- 	struct pinctrl_pin_desc *pindesc, *pdesc;
-+	struct device *dev = &pdev->dev;
- 	int pin, ret;
- 
- 	info->groups = pin_data->groups;
-@@ -973,9 +970,7 @@ static int armada_37xx_pinctrl_register(struct platform_device *pdev,
- 	ctrldesc->pmxops = &armada_37xx_pmx_ops;
- 	ctrldesc->confops = &armada_37xx_pinconf_ops;
- 
--	pindesc = devm_kcalloc(&pdev->dev,
--			       pin_data->nr_pins, sizeof(*pindesc),
--			       GFP_KERNEL);
-+	pindesc = devm_kcalloc(dev, pin_data->nr_pins, sizeof(*pindesc), GFP_KERNEL);
- 	if (!pindesc)
- 		return -ENOMEM;
- 
-@@ -994,14 +989,10 @@ static int armada_37xx_pinctrl_register(struct platform_device *pdev,
- 	 * we allocate functions for number of pins and hope there are
- 	 * fewer unique functions than pins available
- 	 */
--	info->funcs = devm_kcalloc(&pdev->dev,
--				   pin_data->nr_pins,
--				   sizeof(struct armada_37xx_pmx_func),
--				   GFP_KERNEL);
-+	info->funcs = devm_kcalloc(dev, pin_data->nr_pins, sizeof(*info->funcs), GFP_KERNEL);
- 	if (!info->funcs)
- 		return -ENOMEM;
- 
--
- 	ret = armada_37xx_fill_group(info);
- 	if (ret)
- 		return ret;
-@@ -1010,9 +1001,9 @@ static int armada_37xx_pinctrl_register(struct platform_device *pdev,
- 	if (ret)
- 		return ret;
- 
--	info->pctl_dev = devm_pinctrl_register(&pdev->dev, ctrldesc, info);
-+	info->pctl_dev = devm_pinctrl_register(dev, ctrldesc, info);
- 	if (IS_ERR(info->pctl_dev)) {
--		dev_err(&pdev->dev, "could not register pinctrl driver\n");
-+		dev_err(dev, "could not register pinctrl driver\n");
- 		return PTR_ERR(info->pctl_dev);
- 	}
- 
-@@ -1143,8 +1134,7 @@ static int __init armada_37xx_pinctrl_probe(struct platform_device *pdev)
- 	struct regmap *regmap;
- 	int ret;
- 
--	info = devm_kzalloc(dev, sizeof(struct armada_37xx_pinctrl),
--			    GFP_KERNEL);
-+	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
- 	if (!info)
- 		return -ENOMEM;
- 
-@@ -1152,7 +1142,7 @@ static int __init armada_37xx_pinctrl_probe(struct platform_device *pdev)
- 
- 	regmap = syscon_node_to_regmap(np);
- 	if (IS_ERR(regmap)) {
--		dev_err(&pdev->dev, "cannot get regmap\n");
-+		dev_err(dev, "cannot get regmap\n");
- 		return PTR_ERR(regmap);
- 	}
- 	info->regmap = regmap;
+ 			k = info->banks[bank].range.pin_base;
+ 			bank_name = info->banks[bank].range.name;
++
++			pin_names = devm_kasprintf_strarray(dev, bank_name, ST_GPIO_PINS_PER_BANK);
++			if (IS_ERR(pin_names)) {
++				of_node_put(child);
++				return PTR_ERR(pin_names);
++			}
++
+ 			for (j = 0; j < ST_GPIO_PINS_PER_BANK; j++, k++) {
+ 				pdesc->number = k;
+-				pdesc->name = kasprintf(GFP_KERNEL, "%s[%d]",
+-							bank_name, j);
++				pdesc->name = pin_names[j];
+ 				pdesc++;
+ 			}
+ 			st_parse_syscfgs(info, bank, child);
 -- 
 2.33.0
 
