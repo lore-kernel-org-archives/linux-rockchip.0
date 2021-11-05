@@ -1,87 +1,75 @@
-Return-Path: <SRS0=Uz4W=PX=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25DC3C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Nov 2021 21:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 107FAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 08:33:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E422261213
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Nov 2021 21:45:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E422261213
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4DBCA60232
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 08:33:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4DBCA60232
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nJr3OtZSKIIlSVY5dp1LSsYlvFpl08wm4FkxOl1+RDo=; b=o6ks3LrbW+ZUq0
-	RGQe4WXeslUZFztua3btRzHL9JSxZf1ZwbLLmm0PH1G9PTM6q5IVGJNKYf/FIMUpFMfB5FWJcBTUX
-	3sta6eNorriMQQDsuv1cA28tPcM/sMmxC6TmlTXp76IhvZD7am6TYurCEE9Nn8ARzD4rx2KuFeV3T
-	E3oGPcln8fOtBF8VcbQvSt0hRutN6TXhyCYlpvuzFDGbxTXLTNVdbshbKDcqtTvWhRKu2v/Tq5gdj
-	2zS/EbOh5jRn+p5THHNDO4JfPCdaORytDw6fJ0b1xc9cnI5DY1V5r5Vy/1bSr2FWH9bvvH/9Y358D
-	iWncJlBt1J0HJ6t2Rt7A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wc3cOBhEq6uytw3fZc3BkjFEQve37Tysx1Y3upgO4AQ=; b=VO615z05FG57qN
+	KcdU4AuAlfjNpwpBlZDPrMVhpHNcAqkuwcbaBX8M7DJMC3EsAEXb3E+YBQPZxrmh5g+/nVmkcDvcF
+	aMCpxssNCFom/Ep1LAxz/luX6XYjAP+qAjV6M9uwXh3sLHpiHmf6kCeiJFFeV4U/F2KDJ69fEzHkn
+	mMq3uyVW1Z2ETk/q41J9SU2IiAUpOu4CPE2tDbx6XYrSHGzonUfWEKypRab8U20U4F6zLu7Sc0ySv
+	GbnDwcKN1KGWmDDsx56vFcw3JMlb7FA2acEsm5Jv3mF31d6iivMhAY6I55dVCGT404boGgcBKCw7a
+	CmUeZztuzZCrh/Iktytg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mikY1-00A1ZW-Fj; Thu, 04 Nov 2021 21:45:25 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1miuf9-00Asmk-0C; Fri, 05 Nov 2021 08:33:27 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mikXy-00A1Yf-Ms
- for linux-rockchip@lists.infradead.org; Thu, 04 Nov 2021 21:45:24 +0000
-Received: by mail-pl1-x636.google.com with SMTP id y1so9490469plk.10
- for <linux-rockchip@lists.infradead.org>; Thu, 04 Nov 2021 14:45:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=JWx9ct2MbjImA6H/WvO058+827HmSCDeJJGYWZ5NWKI=;
- b=B0nLjg/Un1RR8JO88l4pjO/r40QMXp2NKWLOT8gleROTy83KBOS+lF4w9BC+N5Ioq0
- M8bgTpM76+k0f6GHJDCplbtrZ8g8sQxnoKAkzpFVhEiz4SpSE8yvyy+bPNe9HOBo3xzV
- /Wz2WuZ1KL/kBkyWJd7mLDWnE9FE4GQyRtI4Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=JWx9ct2MbjImA6H/WvO058+827HmSCDeJJGYWZ5NWKI=;
- b=OpHSP+Z7ciBReZsSUtCNK/I1wjrGDXGuBYf0rW7qPzW3i4mfYFsBM26gcsLjsCZkts
- AfzTPRfrTP3vo26P5AgDPwJ66ZivoL0658GPH/xAhRDengL2SyvaaOg8IRUsLWKHHC7v
- F2RVaGhdjl2pUjIFSV+1OMM9z9dvuy1LrlCqAoHZ0EA1Db/kKT1Yvr43C2xUuR0JGWxT
- qdvgxwBxzaF/slUFUHQ0079UvX36dgwV1TvFJecB4N/NWafqPZMhSrzuv4lnWTd7RrZe
- MqaNYd88bCNGUuj8gz+dfz3mV1s+JpJd+zSB9ednmOxSH2nyXsdMhpphIM25dnUzsvrG
- uJ/Q==
-X-Gm-Message-State: AOAM5322yDj60MDOK5JAAHBSsDScq5bsqO9Je6goEDqHJequWcl+d3dU
- 4xY7NGev8IjlRtP0vZCQCk+1RHqjRqwfjQ==
-X-Google-Smtp-Source: ABdhPJxqHMDw5YqGMlZwg7dpWo0+rcl7UStC/9wzlqsDbweCwI/3ZPYSoXpZo8EXmcankBbq9Sl1aA==
-X-Received: by 2002:a17:90b:1c06:: with SMTP id
- oc6mr24886431pjb.126.1636062321332; 
- Thu, 04 Nov 2021 14:45:21 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:49a7:f0ba:24b0:bc39])
- by smtp.gmail.com with ESMTPSA id e7sm4473408pgk.90.2021.11.04.14.45.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Nov 2021 14:45:20 -0700 (PDT)
-Date: Thu, 4 Nov 2021 14:45:18 -0700
-From: Brian Norris <briannorris@chromium.org>
-To: kernel test robot <lkp@intel.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, kbuild-all@lists.01.org,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
- David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org,
- "Kristian H . Kristensen" <hoegsberg@google.com>
-Subject: Re: [PATCH 1/2] drm/input_helper: Add new input-handling helper
-Message-ID: <YYRUbhWH1MlDvSsR@google.com>
-References: <20211103164002.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
- <202111041849.GKXf3qid-lkp@intel.com>
+ id 1miuf5-00Aslz-DH
+ for linux-rockchip@lists.infradead.org; Fri, 05 Nov 2021 08:33:25 +0000
+Received: from localhost (unknown [192.168.167.70])
+ by lucky1.263xmail.com (Postfix) with ESMTP id AF940D1250;
+ Fri,  5 Nov 2021 16:33:11 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P31296T140158673274624S1636101189603309_; 
+ Fri, 05 Nov 2021 16:33:11 +0800 (CST)
+X-IP-DOMAINF: 1
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: maarten.lankhorst@linux.intel.com
+X-RCPT-COUNT: 14
+X-LOCAL-RCPT-COUNT: 2
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-UNIQUE-TAG: <b0618e41130f8db6484a6eaac288d033>
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@linux.ie, daniel@ffwll.ch, sumit.semwal@linaro.org,
+ christian.koenig@amd.com
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
+ linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com,
+ andy.yan@rock-chips.com
+Subject: [PATCH] drm/prime/gem: drm_gem_object_release_handle by handle
+Date: Fri,  5 Nov 2021 16:33:08 +0800
+Message-Id: <20211105083308.392156-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <202111041849.GKXf3qid-lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211104_144522_785456_B5E487BA 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20211105_013323_827060_2D493788 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,32 +87,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 04, 2021 at 06:47:34PM +0800, kernel test robot wrote:
-> Hi Brian,
+The drm_gem_handle_delete is called by DRM_IOCTL_GEM_CLOSE from
+userspace.
 
-Hi robot!
+drm_gem_handle_delete(handle)
+  drm_gem_object_release_handle(handle)
+    drm_gem_remove_prime_handles()
+	drm_prime_remove_buf_handle_locked()
+	  if (member->dma_buf == dma_buf)
+	    free member
+	    return
 
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kernel test robot <lkp@intel.com>
+The api description of drm_gem_handle_delete says to delete the given
+file-private handle.
 
-I'm not sure how to do that in a v2 patch -- one doesn't normally credit
-"Reported-by" for every testing/review improvement on an in-development
-patch series.
+But the drm_gem_remove_prime_handles seems to remove *handles* from
+rbtree of drm file-private structure.
 
-> All errors (new ones prefixed by >>):
-> 
->    or1k-linux-ld: drivers/gpu/drm/drm_input_helper.o: in function `drm_input_disconnect':
-> >> drm_input_helper.c:(.text+0x48): undefined reference to `input_close_device'
+And then the drm_gem_remove_prime_handles only remove the first handle
+lookuped from rbtree, as following codes:
 
-I've cooked a local change to separate the CONFIG_INPUT dependencies
-under another Kconfig symbol which optionally builds this stuff into the
-drm helper module, only when CONFIG_INPUT is present. That should fix
-the build issues while still leaving DRM_KMS_HELPER workable with or
-without CONFIG_INPUT.
+	rb = prime_fpriv->dmabufs.rb_node;
+	while (rb) {
+		struct drm_prime_member *member;
 
-I'll wait to see if there's any other feedback before spinning though.
+		member = rb_entry(rb, struct drm_prime_member, dmabuf_rb);
+		if (member->dma_buf == dma_buf) {
+			rb_erase(&member->handle_rb, &prime_fpriv->handles);
+			rb_erase(&member->dmabuf_rb, &prime_fpriv->dmabufs);
 
-Brian
+			dma_buf_put(dma_buf);
+			kfree(member);
+			return;
+		}
+
+This patch fixes to remove the rbtree member by given handle.
+
+Test
+
+handle_1 = drm_alloc(1MB)
+fd_1     = drm_handle_to_fd(handle_1)
+name_1   = drm get flink name from handle(handle_1)        // DRM_IOCTL_GEM_FLINK
+
+handle_2 = drm get handle,size_2 from flink name(name_1)   // DRM_IOCTL_GEM_OPEN
+fd_2     = drm_handle_to_fd(handle_2)
+
+handle_3 = drm get handle,size_3 from flink name(name_1)   // DRM_IOCTL_GEM_OPEN
+fd_3     = drm_handle_to_fd(handle_3)
+
+drm close handle(handle_3) // DRM_IOCTL_GEM_CLOSE
+
+handle_4 = drm_alloc(4MB)
+fd_4     = drm_handle_to_fd(handle_4)
+
+We find that the fd_4 dmabuf size is 1MB. Tested by following:
+
+handle_5 = drm_fd_to_handle(fd_4)
+name_5   = drm get flink name from handle(handle_5)        // DRM_IOCTL_GEM_FLINK
+handle_3 = drm get handle,size_5 from flink name(name_5)   // DRM_IOCTL_GEM_OPEN
+
+Without this patch, the size_5 = 1MB
+With this patch, the size_5 = 4MB
+
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/gpu/drm/drm_gem.c      | 7 ++++---
+ drivers/gpu/drm/drm_internal.h | 2 +-
+ drivers/gpu/drm/drm_prime.c    | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/drm_gem.c b/drivers/gpu/drm/drm_gem.c
+index 09c820045859..bfa5637f54d2 100644
+--- a/drivers/gpu/drm/drm_gem.c
++++ b/drivers/gpu/drm/drm_gem.c
+@@ -168,7 +168,8 @@ void drm_gem_private_object_init(struct drm_device *dev,
+ EXPORT_SYMBOL(drm_gem_private_object_init);
+ 
+ static void
+-drm_gem_remove_prime_handles(struct drm_gem_object *obj, struct drm_file *filp)
++drm_gem_remove_prime_handle(struct drm_gem_object *obj, struct drm_file *filp,
++			    int handle)
+ {
+ 	/*
+ 	 * Note: obj->dma_buf can't disappear as long as we still hold a
+@@ -177,7 +178,7 @@ drm_gem_remove_prime_handles(struct drm_gem_object *obj, struct drm_file *filp)
+ 	mutex_lock(&filp->prime.lock);
+ 	if (obj->dma_buf) {
+ 		drm_prime_remove_buf_handle_locked(&filp->prime,
+-						   obj->dma_buf);
++						   obj->dma_buf, handle);
+ 	}
+ 	mutex_unlock(&filp->prime.lock);
+ }
+@@ -252,7 +253,7 @@ drm_gem_object_release_handle(int id, void *ptr, void *data)
+ 	if (obj->funcs->close)
+ 		obj->funcs->close(obj, file_priv);
+ 
+-	drm_gem_remove_prime_handles(obj, file_priv);
++	drm_gem_remove_prime_handle(obj, file_priv, id);
+ 	drm_vma_node_revoke(&obj->vma_node, file_priv);
+ 
+ 	drm_gem_object_handle_put_unlocked(obj);
+diff --git a/drivers/gpu/drm/drm_internal.h b/drivers/gpu/drm/drm_internal.h
+index 17f3548c8ed2..17c4f6cac21c 100644
+--- a/drivers/gpu/drm/drm_internal.h
++++ b/drivers/gpu/drm/drm_internal.h
+@@ -75,7 +75,7 @@ int drm_prime_fd_to_handle_ioctl(struct drm_device *dev, void *data,
+ void drm_prime_init_file_private(struct drm_prime_file_private *prime_fpriv);
+ void drm_prime_destroy_file_private(struct drm_prime_file_private *prime_fpriv);
+ void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpriv,
+-					struct dma_buf *dma_buf);
++					struct dma_buf *dma_bufi, int handle);
+ 
+ /* drm_drv.c */
+ struct drm_minor *drm_minor_acquire(unsigned int minor_id);
+diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
+index deb23dbec8b5..080476296715 100644
+--- a/drivers/gpu/drm/drm_prime.c
++++ b/drivers/gpu/drm/drm_prime.c
+@@ -188,7 +188,7 @@ static int drm_prime_lookup_buf_handle(struct drm_prime_file_private *prime_fpri
+ }
+ 
+ void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpriv,
+-					struct dma_buf *dma_buf)
++					struct dma_buf *dma_buf, int handle)
+ {
+ 	struct rb_node *rb;
+ 
+@@ -197,7 +197,7 @@ void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpr
+ 		struct drm_prime_member *member;
+ 
+ 		member = rb_entry(rb, struct drm_prime_member, dmabuf_rb);
+-		if (member->dma_buf == dma_buf) {
++		if ((member->dma_buf == dma_buf) && (member->handle == handle)) {
+ 			rb_erase(&member->handle_rb, &prime_fpriv->handles);
+ 			rb_erase(&member->dmabuf_rb, &prime_fpriv->dmabufs);
+ 
+-- 
+2.25.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
