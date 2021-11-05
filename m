@@ -2,15 +2,15 @@ Return-Path: <SRS0=A0J0=PY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 107FAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 08:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11B0FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:43:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4DBCA60232
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 08:33:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4DBCA60232
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	by mail.kernel.org (Postfix) with ESMTPS id DBFA1611EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Nov 2021 12:43:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DBFA1611EF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,58 +18,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wc3cOBhEq6uytw3fZc3BkjFEQve37Tysx1Y3upgO4AQ=; b=VO615z05FG57qN
-	KcdU4AuAlfjNpwpBlZDPrMVhpHNcAqkuwcbaBX8M7DJMC3EsAEXb3E+YBQPZxrmh5g+/nVmkcDvcF
-	aMCpxssNCFom/Ep1LAxz/luX6XYjAP+qAjV6M9uwXh3sLHpiHmf6kCeiJFFeV4U/F2KDJ69fEzHkn
-	mMq3uyVW1Z2ETk/q41J9SU2IiAUpOu4CPE2tDbx6XYrSHGzonUfWEKypRab8U20U4F6zLu7Sc0ySv
-	GbnDwcKN1KGWmDDsx56vFcw3JMlb7FA2acEsm5Jv3mF31d6iivMhAY6I55dVCGT404boGgcBKCw7a
-	CmUeZztuzZCrh/Iktytg==;
+	List-Owner; bh=wkyxhUGtZHE8izEF1TWm1Uome3XAmj6jxK5p3cyKgQo=; b=EnERmcctTJyMHQ
+	uaL5ggLZJfXy2GVxkm4UiTJY4lW3w987vF+gn5C2ij958qlujdZizeldkJ53+JOdojW1n++wEBM9P
+	zorYNQeza1HLw32Qeu99HA/E/UDlhUcujATrSegynMTx0oKa4tyrWG4f73YwofJIUa0acQ9CypuOo
+	qJRw6wOrzf3DVLusoVO0rP9loW+FHWeBFt69GSmmHPydU/Il8q8LpBDM+mOQTJfcCKOJV3B5YPDUa
+	PiPU4V8Xoqa0FGyXcupFU1IPsKTPM5cXdc0rkCPJ4J//XK6hWfscWb56t79IzjJTbv5T3aq6rVZ0/
+	5MpCh5Zf+ErGg8mykZtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miuf9-00Asmk-0C; Fri, 05 Nov 2021 08:33:27 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1miyZA-00BGfm-Ms; Fri, 05 Nov 2021 12:43:32 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miuf5-00Aslz-DH
- for linux-rockchip@lists.infradead.org; Fri, 05 Nov 2021 08:33:25 +0000
-Received: from localhost (unknown [192.168.167.70])
- by lucky1.263xmail.com (Postfix) with ESMTP id AF940D1250;
- Fri,  5 Nov 2021 16:33:11 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-SKE-CHECKED: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P31296T140158673274624S1636101189603309_; 
- Fri, 05 Nov 2021 16:33:11 +0800 (CST)
-X-IP-DOMAINF: 1
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: maarten.lankhorst@linux.intel.com
-X-RCPT-COUNT: 14
-X-LOCAL-RCPT-COUNT: 2
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-UNIQUE-TAG: <b0618e41130f8db6484a6eaac288d033>
-X-System-Flag: 0
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@linux.ie, daniel@ffwll.ch, sumit.semwal@linaro.org,
- christian.koenig@amd.com
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- linux-rockchip@lists.infradead.org, jay.xu@rock-chips.com,
- andy.yan@rock-chips.com
-Subject: [PATCH] drm/prime/gem: drm_gem_object_release_handle by handle
-Date: Fri,  5 Nov 2021 16:33:08 +0800
-Message-Id: <20211105083308.392156-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+ id 1miyYk-00BGUF-Hl; Fri, 05 Nov 2021 12:43:07 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="218789400"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="218789400"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2021 05:43:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="532577175"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga001.jf.intel.com with ESMTP; 05 Nov 2021 05:42:59 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id 0C9D312B; Fri,  5 Nov 2021 14:43:00 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
+Subject: [PATCH v1 01/19] lib/string_helpers: Introduce kasprintf_strarray()
+Date: Fri,  5 Nov 2021 14:42:24 +0200
+Message-Id: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_013323_827060_2D493788 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20211105_054306_673047_C12E1444 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,146 +80,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The drm_gem_handle_delete is called by DRM_IOCTL_GEM_CLOSE from
-userspace.
+We have a few users already that basically want to have array of
+sequential strings to be allocated and filled.
 
-drm_gem_handle_delete(handle)
-  drm_gem_object_release_handle(handle)
-    drm_gem_remove_prime_handles()
-	drm_prime_remove_buf_handle_locked()
-	  if (member->dma_buf == dma_buf)
-	    free member
-	    return
+Provide a helper for them (basically adjusted version from gpio-mockup.c).
 
-The api description of drm_gem_handle_delete says to delete the given
-file-private handle.
-
-But the drm_gem_remove_prime_handles seems to remove *handles* from
-rbtree of drm file-private structure.
-
-And then the drm_gem_remove_prime_handles only remove the first handle
-lookuped from rbtree, as following codes:
-
-	rb = prime_fpriv->dmabufs.rb_node;
-	while (rb) {
-		struct drm_prime_member *member;
-
-		member = rb_entry(rb, struct drm_prime_member, dmabuf_rb);
-		if (member->dma_buf == dma_buf) {
-			rb_erase(&member->handle_rb, &prime_fpriv->handles);
-			rb_erase(&member->dmabuf_rb, &prime_fpriv->dmabufs);
-
-			dma_buf_put(dma_buf);
-			kfree(member);
-			return;
-		}
-
-This patch fixes to remove the rbtree member by given handle.
-
-Test
-
-handle_1 = drm_alloc(1MB)
-fd_1     = drm_handle_to_fd(handle_1)
-name_1   = drm get flink name from handle(handle_1)        // DRM_IOCTL_GEM_FLINK
-
-handle_2 = drm get handle,size_2 from flink name(name_1)   // DRM_IOCTL_GEM_OPEN
-fd_2     = drm_handle_to_fd(handle_2)
-
-handle_3 = drm get handle,size_3 from flink name(name_1)   // DRM_IOCTL_GEM_OPEN
-fd_3     = drm_handle_to_fd(handle_3)
-
-drm close handle(handle_3) // DRM_IOCTL_GEM_CLOSE
-
-handle_4 = drm_alloc(4MB)
-fd_4     = drm_handle_to_fd(handle_4)
-
-We find that the fd_4 dmabuf size is 1MB. Tested by following:
-
-handle_5 = drm_fd_to_handle(fd_4)
-name_5   = drm get flink name from handle(handle_5)        // DRM_IOCTL_GEM_FLINK
-handle_3 = drm get handle,size_5 from flink name(name_5)   // DRM_IOCTL_GEM_OPEN
-
-Without this patch, the size_5 = 1MB
-With this patch, the size_5 = 4MB
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/gpu/drm/drm_gem.c      | 7 ++++---
- drivers/gpu/drm/drm_internal.h | 2 +-
- drivers/gpu/drm/drm_prime.c    | 4 ++--
- 3 files changed, 7 insertions(+), 6 deletions(-)
+ include/linux/string_helpers.h |  1 +
+ lib/string_helpers.c           | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_gem.c b/drivers/gpu/drm/drm_gem.c
-index 09c820045859..bfa5637f54d2 100644
---- a/drivers/gpu/drm/drm_gem.c
-+++ b/drivers/gpu/drm/drm_gem.c
-@@ -168,7 +168,8 @@ void drm_gem_private_object_init(struct drm_device *dev,
- EXPORT_SYMBOL(drm_gem_private_object_init);
+diff --git a/include/linux/string_helpers.h b/include/linux/string_helpers.h
+index 4ba39e1403b2..f67a94013c87 100644
+--- a/include/linux/string_helpers.h
++++ b/include/linux/string_helpers.h
+@@ -100,6 +100,7 @@ char *kstrdup_quotable(const char *src, gfp_t gfp);
+ char *kstrdup_quotable_cmdline(struct task_struct *task, gfp_t gfp);
+ char *kstrdup_quotable_file(struct file *file, gfp_t gfp);
  
- static void
--drm_gem_remove_prime_handles(struct drm_gem_object *obj, struct drm_file *filp)
-+drm_gem_remove_prime_handle(struct drm_gem_object *obj, struct drm_file *filp,
-+			    int handle)
- {
- 	/*
- 	 * Note: obj->dma_buf can't disappear as long as we still hold a
-@@ -177,7 +178,7 @@ drm_gem_remove_prime_handles(struct drm_gem_object *obj, struct drm_file *filp)
- 	mutex_lock(&filp->prime.lock);
- 	if (obj->dma_buf) {
- 		drm_prime_remove_buf_handle_locked(&filp->prime,
--						   obj->dma_buf);
-+						   obj->dma_buf, handle);
- 	}
- 	mutex_unlock(&filp->prime.lock);
++char **kasprintf_strarray(gfp_t gfp, const char *prefix, size_t n);
+ void kfree_strarray(char **array, size_t n);
+ 
+ #endif
+diff --git a/lib/string_helpers.c b/lib/string_helpers.c
+index d5d008f5b1d9..9758997c465e 100644
+--- a/lib/string_helpers.c
++++ b/lib/string_helpers.c
+@@ -674,6 +674,39 @@ char *kstrdup_quotable_file(struct file *file, gfp_t gfp)
  }
-@@ -252,7 +253,7 @@ drm_gem_object_release_handle(int id, void *ptr, void *data)
- 	if (obj->funcs->close)
- 		obj->funcs->close(obj, file_priv);
+ EXPORT_SYMBOL_GPL(kstrdup_quotable_file);
  
--	drm_gem_remove_prime_handles(obj, file_priv);
-+	drm_gem_remove_prime_handle(obj, file_priv, id);
- 	drm_vma_node_revoke(&obj->vma_node, file_priv);
- 
- 	drm_gem_object_handle_put_unlocked(obj);
-diff --git a/drivers/gpu/drm/drm_internal.h b/drivers/gpu/drm/drm_internal.h
-index 17f3548c8ed2..17c4f6cac21c 100644
---- a/drivers/gpu/drm/drm_internal.h
-+++ b/drivers/gpu/drm/drm_internal.h
-@@ -75,7 +75,7 @@ int drm_prime_fd_to_handle_ioctl(struct drm_device *dev, void *data,
- void drm_prime_init_file_private(struct drm_prime_file_private *prime_fpriv);
- void drm_prime_destroy_file_private(struct drm_prime_file_private *prime_fpriv);
- void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpriv,
--					struct dma_buf *dma_buf);
-+					struct dma_buf *dma_bufi, int handle);
- 
- /* drm_drv.c */
- struct drm_minor *drm_minor_acquire(unsigned int minor_id);
-diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
-index deb23dbec8b5..080476296715 100644
---- a/drivers/gpu/drm/drm_prime.c
-+++ b/drivers/gpu/drm/drm_prime.c
-@@ -188,7 +188,7 @@ static int drm_prime_lookup_buf_handle(struct drm_prime_file_private *prime_fpri
- }
- 
- void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpriv,
--					struct dma_buf *dma_buf)
-+					struct dma_buf *dma_buf, int handle)
- {
- 	struct rb_node *rb;
- 
-@@ -197,7 +197,7 @@ void drm_prime_remove_buf_handle_locked(struct drm_prime_file_private *prime_fpr
- 		struct drm_prime_member *member;
- 
- 		member = rb_entry(rb, struct drm_prime_member, dmabuf_rb);
--		if (member->dma_buf == dma_buf) {
-+		if ((member->dma_buf == dma_buf) && (member->handle == handle)) {
- 			rb_erase(&member->handle_rb, &prime_fpriv->handles);
- 			rb_erase(&member->dmabuf_rb, &prime_fpriv->dmabufs);
- 
++/**
++ * kasprintf_strarray - allocate and fill array of sequential strings
++ * @gfp: flags for the slab allocator
++ * @prefix: prefix to be used
++ * @n: amount of lines to be allocated and filled
++ *
++ * Allocates and fills @n strings using pattern "%s-%zu", where prefix
++ * is provided by caller. The caller is responsible to free them with
++ * kfree_strarray() after use.
++ *
++ * Returns array of strings or NULL when memory can't be allocated.
++ */
++char **kasprintf_strarray(gfp_t gfp, const char *prefix, size_t n)
++{
++	char **names;
++	size_t i;
++
++	names = kcalloc(n + 1, sizeof(char *), gfp);
++	if (!names)
++		return NULL;
++
++	for (i = 0; i < n; i++) {
++		names[i] = kasprintf(gfp, "%s-%zu", prefix, i);
++		if (!names[i]) {
++			kfree_strarray(names, i);
++			return NULL;
++		}
++	}
++
++	return names;
++}
++EXPORT_SYMBOL_GPL(kasprintf_strarray);
++
+ /**
+  * kfree_strarray - free a number of dynamically allocated strings contained
+  *                  in an array and the array itself
 -- 
-2.25.1
-
-
+2.33.0
 
 
 _______________________________________________
