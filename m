@@ -2,14 +2,14 @@ Return-Path: <SRS0=5KZ+=PZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67D3EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 07:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27713C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 07:50:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F7A0611CE
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 07:35:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1F7A0611CE
+	by mail.kernel.org (Postfix) with ESMTPS id E5E95611EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 07:50:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E5E95611EF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,28 +18,28 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fvmPRBk2VbGRV7WGMa3A8FXrxWajBn3mQCRfrDTwWQY=; b=gXiGkZE8klv2lL
-	GznaUiCNRHRGhfUkgRv2+SR/r52tZKC9vCoph67pfROPSV5Tkxw761ModMqUZdZNfy4wUEFFkboEd
-	T1JMEG2IzbgHOOKylRGoqtXY0pgpdz9YRd5xNz8N6STcMh0Hf5LQQAj15Biy5eteKfNDrZX0DWsln
-	1PZZFcYIYxOr9tQQXd00f3iW4JO/ZqV5L79cpwzBDq43bDLEz51B2HDFH/9JI7qvjfW17b8ZNOU8W
-	7tclsk46cg5lUKT2wI1AXH2Q7UfnpKIh5LPdeEGva3EPpARsPtREyVSnOPgUPzEC870ULnWtRyKAq
-	dWTpK/o9YNnx+PVJ1GgQ==;
+	List-Owner; bh=SAET16a2zhTHPmTTMDBHeNHN+LIwE0xn3lTm7z4KV/Y=; b=vZ25vbYYNGTayB
+	50WTz7ITYdbJ/yy1kMRu0pkm1LGXah5GHmUO+Vg5ywXNwcM0/5Zr1FBlibab3dQmXqT/0I0C2CIS9
+	OF8r0UTbnTFsygbKxAeIb5tuDMnEbWdxIBR8AHCB3acBcDbCYx/8eZQ8uU9xEd0FdgG8fRG3HI4Td
+	K63REEFg7uhROIYfssfnZuPv+ZxzxUVms7Qi1ZnCDdfL+hDs39FBC3s9WuQ0//I8MqpibOgWi5fA9
+	GpuXWrBY9rpqSrzidbz3N06YRazbHpiXdd3j7ftWe/gBmeGBuVfyo5OBkfa1MqJmiJ6+FuumkP02D
+	jWW/7/ZkWYYdbSnLd5Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mjGEL-00CkI0-6R; Sat, 06 Nov 2021 07:35:13 +0000
-Received: from smtprelay0123.hostedemail.com ([216.40.44.123]
+	id 1mjGTP-00ClR4-Fc; Sat, 06 Nov 2021 07:50:47 +0000
+Received: from smtprelay0152.hostedemail.com ([216.40.44.152]
  helo=smtprelay.hostedemail.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mjGE9-00CkGg-6J; Sat, 06 Nov 2021 07:35:02 +0000
-Received: from omf20.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
- by smtprelay07.hostedemail.com (Postfix) with ESMTP id CD4F7181D2090;
- Sat,  6 Nov 2021 07:34:56 +0000 (UTC)
+ id 1mjGTC-00ClOj-Kj; Sat, 06 Nov 2021 07:50:36 +0000
+Received: from omf12.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
+ by smtprelay06.hostedemail.com (Postfix) with ESMTP id B860018223268;
+ Sat,  6 Nov 2021 07:50:28 +0000 (UTC)
 Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
- omf20.hostedemail.com (Postfix) with ESMTPA id EE66118A5F8; 
- Sat,  6 Nov 2021 07:34:52 +0000 (UTC)
-Message-ID: <6f27043dc7c50a7447b8fdcb6126f4c67a5936a5.camel@perches.com>
-Subject: Re: [PATCH v1 01/19] lib/string_helpers: Introduce
- kasprintf_strarray()
+ omf12.hostedemail.com (Postfix) with ESMTPA id EA9E7240237; 
+ Sat,  6 Nov 2021 07:50:24 +0000 (UTC)
+Message-ID: <4b3f1ee1179dd6d4b010cb110b38d26e7d91c19f.camel@perches.com>
+Subject: Re: [PATCH v1 14/19] pinctrl: st: Use temporary variable for struct
+ device
 From: Joe Perches <joe@perches.com>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Bartosz Golaszewski
  <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>, Linus Walleij
@@ -53,20 +53,22 @@ Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  <sebastian.hesselbarth@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Patrice Chotard <patrice.chotard@foss.st.com>, Michal Simek
  <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Date: Sat, 06 Nov 2021 00:34:51 -0700
-In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
+Date: Sat, 06 Nov 2021 00:50:23 -0700
+In-Reply-To: <20211105124242.27288-14-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
+ <20211105124242.27288-14-andriy.shevchenko@linux.intel.com>
 User-Agent: Evolution 3.40.4-1 
 MIME-Version: 1.0
-X-Stat-Signature: 1ifh16fok5zodoyg17ub7y551gue9gq8
-X-Rspamd-Server: rspamout03
-X-Rspamd-Queue-Id: EE66118A5F8
+X-Stat-Signature: jap6txt4towx51bf66y6cdqwxohz91c7
+X-Rspamd-Server: rspamout02
+X-Rspamd-Queue-Id: EA9E7240237
 X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX1/zHRdlX+53TMDzXto5pNOnstJ0U8Gbcpk=
-X-HE-Tag: 1636184092-287531
+X-Session-ID: U2FsdGVkX1+6DUZa/TtJProF7+rBll2LVmF0I4FX6+w=
+X-HE-Tag: 1636185024-57322
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211106_003501_349660_93B3571A 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20211106_005034_770369_6184B750 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,70 +87,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On Fri, 2021-11-05 at 14:42 +0200, Andy Shevchenko wrote:
-> We have a few users already that basically want to have array of
-> sequential strings to be allocated and filled.
-> 
-> Provide a helper for them (basically adjusted version from gpio-mockup.c).
-
-I think this is overkill and unnecessary bloat for the number of
-actual or possible in-tree uses.  The devm_ variant too.
-
-And it'd be useful to have an 0/n patch cover letter describing
-why the patchset is useful so I could reply to that instead of the
-1/n.
-
-> diff --git a/include/linux/string_helpers.h b/include/linux/string_helpers.h
+> Use temporary variable for struct device to make code neater.
 []
-> @@ -100,6 +100,7 @@ char *kstrdup_quotable(const char *src, gfp_t gfp);
->  char *kstrdup_quotable_cmdline(struct task_struct *task, gfp_t gfp);
->  char *kstrdup_quotable_file(struct file *file, gfp_t gfp);
->  
-> +char **kasprintf_strarray(gfp_t gfp, const char *prefix, size_t n);
->  void kfree_strarray(char **array, size_t n);
->  
->  #endif
-> diff --git a/lib/string_helpers.c b/lib/string_helpers.c
+> diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
 []
-> @@ -674,6 +674,39 @@ char *kstrdup_quotable_file(struct file *file, gfp_t gfp)
->  }
->  EXPORT_SYMBOL_GPL(kstrdup_quotable_file);
->  
-> +/**
-> + * kasprintf_strarray - allocate and fill array of sequential strings
-> + * @gfp: flags for the slab allocator
-> + * @prefix: prefix to be used
-> + * @n: amount of lines to be allocated and filled
-> + *
-> + * Allocates and fills @n strings using pattern "%s-%zu", where prefix
-> + * is provided by caller. The caller is responsible to free them with
-> + * kfree_strarray() after use.
-> + *
-> + * Returns array of strings or NULL when memory can't be allocated.
-> + */
-> +char **kasprintf_strarray(gfp_t gfp, const char *prefix, size_t n)
-> +{
-> +	char **names;
-> +	size_t i;
-> +
-> +	names = kcalloc(n + 1, sizeof(char *), gfp);
-> +	if (!names)
-> +		return NULL;
-> +
-> +	for (i = 0; i < n; i++) {
-> +		names[i] = kasprintf(gfp, "%s-%zu", prefix, i);
-> +		if (!names[i]) {
-> +			kfree_strarray(names, i);
-> +			return NULL;
-> +		}
-> +	}
-> +
-> +	return names;
-> +}
-> +EXPORT_SYMBOL_GPL(kasprintf_strarray);
-> +
->  /**
->   * kfree_strarray - free a number of dynamically allocated strings contained
->   *                  in an array and the array itself
+> @@ -814,26 +814,25 @@ static int st_pctl_dt_node_to_map(struct pinctrl_dev *pctldev,
+>  {
+>  	struct st_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+>  	const struct st_pctl_group *grp;
+> +	struct device *dev = info->dev;
+[]
+> -	new_map = devm_kcalloc(pctldev->dev,
+> -				map_num, sizeof(*new_map), GFP_KERNEL);
+> +	new_map = devm_kcalloc(dev, map_num, sizeof(*new_map), GFP_KERNEL);
+
+Are pctldev->dev and dev the same pointer?
+It seems they are not.
+Why reassign the ownership?
 
 
 
