@@ -2,77 +2,79 @@ Return-Path: <SRS0=5KZ+=PZ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03682C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 08:28:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA8F6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 17:01:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9419A61159
-	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 08:28:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9419A61159
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2673D60F9E
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Nov 2021 17:01:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2673D60F9E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iYaART+ZfLtATyXGSz4ySszgafZgUao7ej0RgT57JPg=; b=LzChxg2xhSo7iE
-	k+FadwwUfQUgxj1r8Rs51eTk4Z7eTrhe/8KuQahfATj8Cn+ogDrviZ3ZSq246mpSfXF1mSUAYgT2e
-	AG39dMeCUoZEdoBmVK/HSkDyaOvIPNRZoOj/PbHNa9O6WutAl5hNnFHp6qhsfS5Zhd03MV4zqUzdX
-	P7vrtzWCTxhZgS/eMCdRH4wHCNnKO7qnEa/gmY2MLWB64eqfHw2wOZsR5cWtnadSo5GTMdSqdEpoi
-	FFnstw0gQn5ZPqlFhRAZTUo6UDzudG4jLgqCCs0ZNv8KpE7igWdke2BKIgVZXOHger8VjYFzOwS5L
-	nZ4e2xvvZQakDmO4DF7A==;
+	List-Owner; bh=BhhZHB9Btpr+znyOCAOq24yGs6+SIu34/TLfp985MD8=; b=ecN3IXoT4Rp0YR
+	miW5eNplioI/p2izPjuKAV1ML+HMvk2/+jSa7EAp7EkeXqJRjX5c80GVe75Mu4jgrbVvCgvcnzS9N
+	QuFIifUAmk476XQrkwEF64Beoh9rZtVbMzSlo5t8/x7ULwDLuxhSVYFCMaHRhm6MhTjYhArpoWb9w
+	wnWWf1ETrveFvNBXDlMAzHPkjtMtYNSjI/GRvhFe1ZfSkVJNU2t60Wk1CXIOb4EzUOpvx1T2CLYcs
+	Svo8V/8RG8IesR0hQMpW1QP3NmeiYXUjUvO7jAXr4CGL5yS7vsQ6hZrTeb44j/ZLWI6dvHmLufBES
+	+btNFSEkULgVc3y54Fkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mjH42-00CotH-52; Sat, 06 Nov 2021 08:28:38 +0000
-Received: from smtprelay0244.hostedemail.com ([216.40.44.244]
- helo=smtprelay.hostedemail.com)
+	id 1mjP4A-00DDVT-Qe; Sat, 06 Nov 2021 17:01:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mjH3o-00CorO-Hs; Sat, 06 Nov 2021 08:28:26 +0000
-Received: from omf03.hostedemail.com (clb03-v110.bra.tucows.net [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 01D14837F24A;
- Sat,  6 Nov 2021 08:28:23 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
- omf03.hostedemail.com (Postfix) with ESMTPA id EB6B013D96; 
- Sat,  6 Nov 2021 08:28:18 +0000 (UTC)
-Message-ID: <103d7321a2d18e44fb8c01483b1197766aff645a.camel@perches.com>
-Subject: Re: [PATCH v1 14/19] pinctrl: st: Use temporary variable for struct
- device
-From: Joe Perches <joe@perches.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Bartosz Golaszewski
- <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>, Linus Walleij
- <linus.walleij@linaro.org>, Sai Krishna Potthuri
- <lakshmi.sai.krishna.potthuri@xilinx.com>, Andrew Morton
- <akpm@linux-foundation.org>, "linux-gpio@vger.kernel.org"
- <linux-gpio@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- Bamvor Jian Zhang <bamv2005@gmail.com>,  Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Patrice Chotard <patrice.chotard@foss.st.com>, Michal Simek
- <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Date: Sat, 06 Nov 2021 01:28:17 -0700
-In-Reply-To: <CAHp75Ve0Bv9VsWFFZxL9wYk=Z_Mm7nat-vf7g8HHTiROi7EY=Q@mail.gmail.com>
+ id 1mjOdR-00D6Ih-GW
+ for linux-rockchip@bombadil.infradead.org; Sat, 06 Nov 2021 16:33:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+ :MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=XKCP+MleqMlqzKUwHENk609cO3a3n0nHk0jERbpJ2Js=; b=Gmlxo3w2tuNCjgrQVkdbBy29vW
+ CfLqzA6Paz+d++ZmC/j+S6KfksKYR0sN9d30dSQ0LJRfLHv0kpLq8Q5S5aNFwjuwnx1GS2Dgiia1r
+ fLLsPvKb0u+7zChl96VwLCC+OUXmJcrnPaM7nU6WTa67lYId9n88cuiQVeJUhFCYM7die6/mOB1WP
+ Tne09qUdkEankq3GkaZhg7wl19MSW3K7WdOvoVCXP5V3KHRwmxmODgLGgl6kdwJ45jtv1BIF/7NsT
+ iJlY6MUVK4a17LooBMfa/y6vPzs58bst+XyOdqW6A66BLBOS2Pgh1Ml9Bx+0EYrgFP7uNorGZ0nHB
+ 1LtjtCSA==;
+Received: from gloria.sntech.de ([185.11.138.130])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mjOdO-00EXqK-22
+ for linux-rockchip@lists.infradead.org; Sat, 06 Nov 2021 16:33:40 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mjObq-0008E6-R1; Sat, 06 Nov 2021 17:32:02 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>,
+ Andrew Morton <akpm@linux-foundation.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
+Subject: Re: [PATCH v1 03/19] pinctrl/rockchip: Drop wrong kernel doc
+ annotation
+Date: Sat, 06 Nov 2021 17:32:01 +0100
+Message-ID: <1844978.gOY4SzdxhB@diego>
+In-Reply-To: <20211105124242.27288-3-andriy.shevchenko@linux.intel.com>
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
- <20211105124242.27288-14-andriy.shevchenko@linux.intel.com>
- <4b3f1ee1179dd6d4b010cb110b38d26e7d91c19f.camel@perches.com>
- <CAHp75Ve0Bv9VsWFFZxL9wYk=Z_Mm7nat-vf7g8HHTiROi7EY=Q@mail.gmail.com>
-User-Agent: Evolution 3.40.4-1 
+ <20211105124242.27288-3-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-X-Stat-Signature: h8rybhkjgkwct5m577thmm95p3sew5ni
-X-Rspamd-Server: rspamout05
-X-Rspamd-Queue-Id: EB6B013D96
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX19DqiwzorEKDYikYui8SpA+cKLioisfSSU=
-X-HE-Tag: 1636187298-402643
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211106_012824_690964_BCD796F1 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20211106_163338_296826_CDEBB86D 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +92,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2021-11-06 at 10:07 +0200, Andy Shevchenko wrote:
-> On Saturday, November 6, 2021, Joe Perches <joe@perches.com> wrote:
-> > On Fri, 2021-11-05 at 14:42 +0200, Andy Shevchenko wrote:
-> > > Use temporary variable for struct device to make code neater.
-> > []
-> > > diff --git a/drivers/pinctrl/pinctrl-st.c b/drivers/pinctrl/pinctrl-st.c
-> > []
-> > > @@ -814,26 +814,25 @@ static int st_pctl_dt_node_to_map(struct
-> > pinctrl_dev *pctldev,
-> > >  {
-> > >       struct st_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
-> > >       const struct st_pctl_group *grp;
-> > > +     struct device *dev = info->dev;
-> > []
-> > > -     new_map = devm_kcalloc(pctldev->dev,
-> > > -                             map_num, sizeof(*new_map), GFP_KERNEL);
-> > > +     new_map = devm_kcalloc(dev, map_num, sizeof(*new_map), GFP_KERNEL);
-> > 
-> > Are pctldev->dev and dev the same pointer?
+Am Freitag, 5. November 2021, 13:42:26 CET schrieb Andy Shevchenko:
+> Kernel doc validator is not happy:
 > 
-> Seems so.
-
-OK.
-
-> https://elixir.bootlin.com/linux/latest/source/drivers/pinctrl/core.c#L2015
+>   .../pinctrl-rockchip.c:45: warning: This comment starts with '/**', but isn't a kernel-doc comment.
 > 
-> > It seems they are not.
+> Drop it as it's indeed not a kernel doc comment.
 > 
-> Can you elaborate, please?
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-From code shape, you assign dev to info->dev rather than pctldev->dev
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-I also believe this single 19 patch series would be better as
-multiple patch series.
+> ---
+>  drivers/pinctrl/pinctrl-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index 5ce260f152ce..6031d98d9849 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -39,7 +39,7 @@
+>  #include "pinconf.h"
+>  #include "pinctrl-rockchip.h"
+>  
+> -/**
+> +/*
+>   * Generate a bitmask for setting a value (v) with a write mask bit in hiword
+>   * register 31:16 area.
+>   */
+> 
 
-IMO: the strarray variants introduction and use should be a separate
-patchset from the rest.
+
 
 
 
