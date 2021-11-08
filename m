@@ -2,78 +2,68 @@ Return-Path: <SRS0=7z7M=P3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA28C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D06D8C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:35:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5DC061288
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:26:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D5DC061288
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 95FB861215
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 95FB861215
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gXXoNdUWvLyGqvuxosrz89deRhsvJYQlUtfWbWKjJLc=; b=sox4uInVY+7O9C
-	6ZMl3kwJuYrbw0WuEBhHW/CfDoEG2p4u7meld1P+T4vCIk5YfnhsBN1P9VJY4hUI0Xxgxo6kma4EX
-	N6cxdzQFv+YBRFcv5WBhB8gtxFCsQPY1k1R52fAlU/kn+L5UbjBPxKxJqupBsUEumjmBedgP1F1Kr
-	W8LRXWGz63TIjc4v/9FyS7o4jxOvUR9SfDkUJ1dv+XvWVKMg7/O/PghDPivj6exg+QKmSxLEh866E
-	LIlDC/MMLOEJByYC1Q2Afat0LQFooA4mMKu5E8kFlyLwQpQj7fu5LWk5JNHYdX1FT38snHTpj/YWs
-	5puWEvt1F2cvIRh1ZdEQ==;
+	List-Owner; bh=G3kgh4DiGL9ju7Av15VC1UgKHSF34A8aqxJT6GAxEU4=; b=ot82x9S2EEMmuX
+	21A9SYGFa9F5zby+WRYvLMaiq51k77nVDc54rZY3qO9ng5r0/xrdVUGQduped+eEd6XONKiGmFRHe
+	OvC8RlE/Gd/N7ElFMJhJz45mRUD5rqtaZnuC8Pzi3jw554n7JHPRL2Pq+1oQiNODO8hHQTFissRdJ
+	zRgchVzcwGastT6F9S3q6Zj1/aginNjXktSDMex1wjq4eES9WUMmPA5eklwLNmt57hvVXtYjlHYUH
+	X4oBrMopj0EUH0g5B4iwXvG1gD++G3EM2e5cBgIQsVjAwdg4Rq78xouW5of0tLfFSTGVp0hVRxK5k
+	5E2j9Tt86e5INxptYsdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mk0vG-00FrHd-0j; Mon, 08 Nov 2021 09:26:38 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1mk13j-00FtW1-0T; Mon, 08 Nov 2021 09:35:23 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mk0v3-00FrGJ-7D; Mon, 08 Nov 2021 09:26:26 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10161"; a="219095475"
-X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; d="scan'208";a="219095475"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2021 01:26:23 -0800
-X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; d="scan'208";a="499814430"
-Received: from smile.fi.intel.com ([10.237.72.184])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2021 01:26:18 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.95)
- (envelope-from <andy.shevchenko@gmail.com>) id 1mk0ui-004cSx-N0;
- Mon, 08 Nov 2021 11:26:04 +0200
-Date: Mon, 8 Nov 2021 11:26:04 +0200
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-To: Joe Perches <joe@perches.com>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
-Subject: Re: [PATCH v1 14/19] pinctrl: st: Use temporary variable for struct
- device
-Message-ID: <YYjtLGlSCDPM4UVL@smile.fi.intel.com>
-References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
- <20211105124242.27288-14-andriy.shevchenko@linux.intel.com>
- <4b3f1ee1179dd6d4b010cb110b38d26e7d91c19f.camel@perches.com>
- <CAHp75Ve0Bv9VsWFFZxL9wYk=Z_Mm7nat-vf7g8HHTiROi7EY=Q@mail.gmail.com>
- <103d7321a2d18e44fb8c01483b1197766aff645a.camel@perches.com>
+ id 1mk13e-00FtTU-Jf
+ for linux-rockchip@lists.infradead.org; Mon, 08 Nov 2021 09:35:21 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1mk13X-00085V-CC; Mon, 08 Nov 2021 10:35:11 +0100
+Received: from pza by lupine with local (Exim 4.94.2)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1mk13V-0003Jc-1w; Mon, 08 Nov 2021 10:35:09 +0100
+Message-ID: <a2a8cca55604755458a2b5daec59290b239a142a.camel@pengutronix.de>
+Subject: Re: [PATCH v3 2/3] phy/rockchip: add naneng combo phy for RK3568
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, heiko@sntech.de, 
+ robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, vkoul@kernel.org,
+ michael.riesch@wolfvision.net,  linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, kishon@ti.com,  cl@rock-chips.com
+Date: Mon, 08 Nov 2021 10:35:09 +0100
+In-Reply-To: <20211025080632.32063-3-yifeng.zhao@rock-chips.com>
+References: <20211025080632.32063-1-yifeng.zhao@rock-chips.com>
+ <20211025080632.32063-3-yifeng.zhao@rock-chips.com>
+User-Agent: Evolution 3.38.3-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <103d7321a2d18e44fb8c01483b1197766aff645a.camel@perches.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211108_012625_329918_6B6E9385 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20211108_013518_685070_75378734 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,58 +81,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 06, 2021 at 01:28:17AM -0700, Joe Perches wrote:
-> On Sat, 2021-11-06 at 10:07 +0200, Andy Shevchenko wrote:
-> > On Saturday, November 6, 2021, Joe Perches <joe@perches.com> wrote:
-> > > On Fri, 2021-11-05 at 14:42 +0200, Andy Shevchenko wrote:
-
-...
-
-> > > > -     new_map = devm_kcalloc(pctldev->dev,
-> > > > -                             map_num, sizeof(*new_map), GFP_KERNEL);
-> > > > +     new_map = devm_kcalloc(dev, map_num, sizeof(*new_map), GFP_KERNEL);
-> > > 
-> > > Are pctldev->dev and dev the same pointer?
-> > 
-> > Seems so.
+On Mon, 2021-10-25 at 16:06 +0800, Yifeng Zhao wrote:
+> This patch implements a combo phy driver for Rockchip SoCs
+> with NaNeng IP block. This phy can be used as pcie-phy, usb3-phy,
+> sata-phy or sgmii-phy.
 > 
-> OK.
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> ---
 > 
-> > https://elixir.bootlin.com/linux/latest/source/drivers/pinctrl/core.c#L2015
-> > 
-> > > It seems they are not.
-> > 
-> > Can you elaborate, please?
+> Changes in v3:
+> - Using api devm_reset_control_get_optional_exclusive and dev_err_probe
 
-> From code shape, you assign dev to info->dev rather than pctldev->dev
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-Yes. And they are the same. TBH these three drivers seem to be written by
-copy'n'paste method where the first one, whichever it was, is simply messy
-and buggy.
-
-The extra redundant parameter (often struct platform_device) is passed to
-zillions of functions when at the same time info structure already has pointer
-to struct device is the easiest one to notice. And I believe so on, so on...
-
-> I also believe this single 19 patch series would be better as
-> multiple patch series.
-
-I'm fine with either, but I would like to hear from Linus about what he wishes
-as the maintainer. You know that we don't add code without users? So that's why
-my motive to send it in full.
-
-> IMO: the strarray variants introduction and use should be a separate
-> patchset from the rest.
-
-It will add unnecessary churn. Yeah, I have planned to send just that, but then
-it took more and more cleanups and I have to stop at some point, the code there
-is bad (historically or by other reasons, dunno).
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
