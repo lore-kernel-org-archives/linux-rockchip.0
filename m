@@ -2,68 +2,61 @@ Return-Path: <SRS0=7z7M=P3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D06D8C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4054CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 10:38:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95FB861215
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 09:35:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 95FB861215
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 081F361105
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Nov 2021 10:38:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 081F361105
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G3kgh4DiGL9ju7Av15VC1UgKHSF34A8aqxJT6GAxEU4=; b=ot82x9S2EEMmuX
-	21A9SYGFa9F5zby+WRYvLMaiq51k77nVDc54rZY3qO9ng5r0/xrdVUGQduped+eEd6XONKiGmFRHe
-	OvC8RlE/Gd/N7ElFMJhJz45mRUD5rqtaZnuC8Pzi3jw554n7JHPRL2Pq+1oQiNODO8hHQTFissRdJ
-	zRgchVzcwGastT6F9S3q6Zj1/aginNjXktSDMex1wjq4eES9WUMmPA5eklwLNmt57hvVXtYjlHYUH
-	X4oBrMopj0EUH0g5B4iwXvG1gD++G3EM2e5cBgIQsVjAwdg4Rq78xouW5of0tLfFSTGVp0hVRxK5k
-	5E2j9Tt86e5INxptYsdw==;
+	List-Owner; bh=NbZo7MMU2U0cDvauLvOwZx6pitoQsSltfKMCIs2dfbQ=; b=lKnpVACWvcOYWJ
+	mIuI4AfvZHkwE3u3y+wMo2R++TXHHJlKHJ3gARvkxxtbOxPCkZ0IEGpiGpwBjfbEI7YT4bwg9iMX4
+	lJ6/aSwqS8wOgBDg9aAuPx7dRUnSeXme9KHU32gA7MMwcrDkEa/DPWvQNd6Qkz6arN68G5NTfudC4
+	U4ay0ZexlNstn8g0TpmQUkw6C44oqL+cCdna9dKLfvqsKmG8oezaWRZ839BixT1Ns1QV4NjypyNdC
+	OPXag2OCG/ZIP9xZmMvT3B5wq1VnWVyrf6pdQRd5m06SAXfW+dnPo0XP+Ch2svutn1F1b9cFVbnlg
+	8gmqrKNtjwhC5PtuEqkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mk13j-00FtW1-0T; Mon, 08 Nov 2021 09:35:23 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mk22Y-00G6Ov-Uh; Mon, 08 Nov 2021 10:38:14 +0000
+Received: from relay10.mail.gandi.net ([217.70.178.230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mk13e-00FtTU-Jf
- for linux-rockchip@lists.infradead.org; Mon, 08 Nov 2021 09:35:21 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mk13X-00085V-CC; Mon, 08 Nov 2021 10:35:11 +0100
-Received: from pza by lupine with local (Exim 4.94.2)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1mk13V-0003Jc-1w; Mon, 08 Nov 2021 10:35:09 +0100
-Message-ID: <a2a8cca55604755458a2b5daec59290b239a142a.camel@pengutronix.de>
-Subject: Re: [PATCH v3 2/3] phy/rockchip: add naneng combo phy for RK3568
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, heiko@sntech.de, 
- robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, vkoul@kernel.org,
- michael.riesch@wolfvision.net,  linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, kishon@ti.com,  cl@rock-chips.com
-Date: Mon, 08 Nov 2021 10:35:09 +0100
-In-Reply-To: <20211025080632.32063-3-yifeng.zhao@rock-chips.com>
-References: <20211025080632.32063-1-yifeng.zhao@rock-chips.com>
- <20211025080632.32063-3-yifeng.zhao@rock-chips.com>
-User-Agent: Evolution 3.38.3-1 
+ id 1mk22E-00G6F4-7I; Mon, 08 Nov 2021 10:37:56 +0000
+Received: (Authenticated sender: gregory.clement@bootlin.com)
+ by relay10.mail.gandi.net (Postfix) with ESMTPSA id 084A024000C;
+ Mon,  8 Nov 2021 10:37:46 +0000 (UTC)
+From: Gregory CLEMENT <gregory.clement@bootlin.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Jianqun Xu <jay.xu@rock-chips.com>, Linus Walleij
+ <linus.walleij@linaro.org>, Sai Krishna Potthuri
+ <lakshmi.sai.krishna.potthuri@xilinx.com>, Andrew Morton
+ <akpm@linux-foundation.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Bamvor Jian Zhang <bamv2005@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Heiko Stuebner
+ <heiko@sntech.de>, Patrice Chotard <patrice.chotard@foss.st.com>, Michal
+ Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
+Subject: Re: [PATCH v1 08/19] pinctrl: armada-37xx: Fix function name in the
+ kernel doc
+In-Reply-To: <20211105124242.27288-8-andriy.shevchenko@linux.intel.com>
+References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
+ <20211105124242.27288-8-andriy.shevchenko@linux.intel.com>
+Date: Mon, 08 Nov 2021 11:37:46 +0100
+Message-ID: <877ddjszk5.fsf@BL-laptop>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211108_013518_685070_75378734 
-X-CRM114-Status: UNSURE (   8.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211108_023754_441689_D5E81A3F 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +74,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-10-25 at 16:06 +0800, Yifeng Zhao wrote:
-> This patch implements a combo phy driver for Rockchip SoCs
-> with NaNeng IP block. This phy can be used as pcie-phy, usb3-phy,
-> sata-phy or sgmii-phy.
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Andy Shevchenko <andriy.shevchenko@linux.intel.com> writes:
+
+> Kernel doc validator is not happy:
+>
+>   .../pinctrl-armada-37xx.c:926: warning: expecting prototype for armada_37xx_fill_funcs(). Prototype was for armada_37xx_fill_func() instead
+>
+> Fix this by updating function name in the kernel doc.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+
+Reviewed-by: Gregory CLEMENT <gregory.clement@bootlin.com>
+
+Thanks,
+
+Gregory
+
 > ---
-> 
-> Changes in v3:
-> - Using api devm_reset_control_get_optional_exclusive and dev_err_probe
+>  drivers/pinctrl/mvebu/pinctrl-armada-37xx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
+> index 5cb018f98800..5615cb7a1209 100644
+> --- a/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
+> +++ b/drivers/pinctrl/mvebu/pinctrl-armada-37xx.c
+> @@ -913,7 +913,7 @@ static int armada_37xx_fill_group(struct armada_37xx_pinctrl *info)
+>  }
+>  
+>  /**
+> - * armada_37xx_fill_funcs() - complete the funcs array
+> + * armada_37xx_fill_func() - complete the funcs array
+>   * @info: info driver instance
+>   *
+>   * Based on the data available from the armada_37xx_pin_group array
+> -- 
+> 2.33.0
+>
 
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-regards
-Philipp
+-- 
+Gregory Clement, Bootlin
+Embedded Linux and Kernel engineering
+http://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
