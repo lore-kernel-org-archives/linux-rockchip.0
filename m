@@ -1,71 +1,94 @@
-Return-Path: <SRS0=ojj+=P4=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=bU6c=P5=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15969C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39FB5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 00:04:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C9A67611BF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:49:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C9A67611BF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id EF0EF61101
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 00:04:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EF0EF61101
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9T30nINKv7taRePt6DYEFk5ySL95rwD7cFxydMbT6Yg=; b=ReisKJz8rYXdXB
-	0S9Oy4oo1+SXVo3a50icvLigqsVZXWV0p/s3+S77KgVXuOwPs00YAv0OIfd9XQ5MkfDkkjHHrpQpA
-	pLirOxmBAPa5hd7XmrOSZgOleuk3YUYPOwZdvUckLmUPqujT08/j374tqFiJ5nHnr5DXMd893LaYu
-	Z1O052u4RkWUzImGe51EEuTP3vJ1oWLMm9EseC+Wxrhf600Gg5Mv5AaHoU9a8oMUmR/ogfAm0LOq7
-	oujkK6bWCbF6WHTW9UzboBKYL4x/PM5ovU8yM4hXZsv+2ihBA+vVbMDSTsXB6YYZDaD5EGwue65/b
-	xG7PDy095J9HtXXaBRcw==;
+	List-Owner; bh=/z8fqHEjTTCPRCbNtkbNi1GveAWY63F3iW6/82729XI=; b=eRpGF6tkpx9Jks
+	hHqQ8T4VU2HrZzs6o8/N8Ny6GjOewUGEt/NUob3IgbR7XLtENCny7eYzwgNPjLpHhrUE2VqZXrxt6
+	XvHqWuWVry/VC6tBWmKi4YWhyGbnaaPBLY/tY/hb2WVD3COwdw83KS4kVbjuB7a1KMeY0qMt16Lad
+	WC/ZGkcSs/zg9Uni5yKFEue8yhHwCxGXp1S4UzmNz277oDRSCju/HUteanyEVDT9vQyYUVNiDHBb4
+	Kdc+owPVeRhkI5OEAXJSgLzPwIYBq3A6f5eAAOFH8LdWwgzP9T5PVpubqRT029EsBfBQJ7254wTiY
+	We5e6IcNX8ertAbHavIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkarN-004001-SB; Tue, 09 Nov 2021 23:49:01 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mkb6R-0046ye-3f; Wed, 10 Nov 2021 00:04:35 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkZWw-003PL6-HG; Tue, 09 Nov 2021 22:23:52 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 40DD261A09;
- Tue,  9 Nov 2021 22:23:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636496629;
- bh=/RhO3cc31Q2lvSql6+/05yAwJFD5udIYx0uH6CwOs3E=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Tlo10SaM1b6DJPa1ZSbn4ZmNJQwhVdbtXV5XnFgldmcVwoV6JiUMTSYIEOBa2LFZN
- 9kG0bEKnjsYHB5G1pUJVKRwAvSetMpDniEViu5MlmrXbO9lqgAefNHaDRyOH5eYhnO
- 5zmlQEyMbqThC/xU3O1Ukloqt/GsZE5itfYN84uflfilmrFHEir60Q/NWYDzWfjCec
- YXXuGRuLrrXT+/qefuKhu++b6cDjZzsnkvzAgaoMhQ9ojW4wFTLP6NWql0PLDsGoZu
- BdYgcvfRQ40vvp6mv4rY/qsMHTSH0weiFX4WYuESkkr24LJrjqj+1ESg/NuXS6UF0B
- 15YfJikDmXLvA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Brian Norris <briannorris@chromium.org>, Leo Yan <leo.yan@linaro.org>,
- Chen-Yu Tsai <wenst@chromium.org>,
- Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, robh+dt@kernel.org, pawel.moll@arm.com,
- mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org,
- catalin.marinas@arm.com, will.deacon@arm.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.14 03/14] arm64: dts: rockchip: add Coresight debug
- range for RK3399
-Date: Tue,  9 Nov 2021 17:23:32 -0500
-Message-Id: <20211109222343.1235902-3-sashal@kernel.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211109222343.1235902-1-sashal@kernel.org>
-References: <20211109222343.1235902-1-sashal@kernel.org>
+ id 1mkaZx-003scf-HE
+ for linux-rockchip@lists.infradead.org; Tue, 09 Nov 2021 23:31:02 +0000
+Received: by mail-ot1-x332.google.com with SMTP id
+ h12-20020a056830034c00b0055c8458126fso1216184ote.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 09 Nov 2021 15:30:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nL261LfEnE+lH5hQroZYFitjsNXa1tK6YPPcrVYv6c4=;
+ b=N1HvdV99468q9bEv5q7ellPorYQd/W8mpCPrWLqn8S4ksJv0XInlTz/z79o91irx8F
+ IBinuVJR+3dv3ohTcMOjoLOjds8IlTm/Ay2TbcpMEIQb7TPl2tCqAAaonqYywCgsr4kN
+ ZCEWZuQ1MSmhqlppYjbvItwe0X/k2DasKrpK8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nL261LfEnE+lH5hQroZYFitjsNXa1tK6YPPcrVYv6c4=;
+ b=2ltEbWxMx3zXFNTQ2fRCC8xYcux4DCOKGjgCV7VOaphnL2QEW5CB+iW+lk3EQ/PUt3
+ WOi1if8+yNxENqn/fFcEnKrQ8mE81dEMhcws1wjFMxLzkH1H4C1+PQeZd7jEoHVukWrk
+ wpriS5c+mwCiqBatqGEa8ftdKGxXW58LUCjVSkTmMbRtViW0tEG3I8eM7RMk6/8afdfJ
+ Dr9e/TdLNsPGwajz5KySaTWd2nFqAxzk3M8mRExlfW+sFVtQ6Wie8PgJ+Gv7rItdCOxR
+ bVNccYtMwQ1nXxtJS+s+OFOFybOmLgZFWVpG5S1/RxcB+eBNVvUO5IZnOefv4dW9pYp+
+ +eiA==
+X-Gm-Message-State: AOAM532RsFjz0GvY3O9j+GdUCmOUOIv12vPYKeI2AkCNy5Ypoy3o2U9U
+ BQM8tAS2vXa/UJqCpiFUIaO2n+qgi2Gb0Q==
+X-Google-Smtp-Source: ABdhPJxsY8GIq9ieI8juYECXUwtscH/SXXAmpTbbiXCs7DydOU57sfEzh6q/6ZOzvmdDz3SLkqq1bQ==
+X-Received: by 2002:a9d:6ac7:: with SMTP id m7mr5360874otq.306.1636500659068; 
+ Tue, 09 Nov 2021 15:30:59 -0800 (PST)
+Received: from mail-ot1-f52.google.com (mail-ot1-f52.google.com.
+ [209.85.210.52])
+ by smtp.gmail.com with ESMTPSA id n67sm7922269oib.42.2021.11.09.15.30.58
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Nov 2021 15:30:58 -0800 (PST)
+Received: by mail-ot1-f52.google.com with SMTP id
+ b5-20020a9d60c5000000b0055c6349ff22so1069769otk.13
+ for <linux-rockchip@lists.infradead.org>; Tue, 09 Nov 2021 15:30:58 -0800 (PST)
+X-Received: by 2002:a9d:734a:: with SMTP id l10mr9337755otk.3.1636500354735;
+ Tue, 09 Nov 2021 15:25:54 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+References: <20211109221641.1233217-1-sashal@kernel.org>
+ <20211109221641.1233217-17-sashal@kernel.org>
+In-Reply-To: <20211109221641.1233217-17-sashal@kernel.org>
+From: Brian Norris <briannorris@chromium.org>
+Date: Tue, 9 Nov 2021 15:25:39 -0800
+X-Gmail-Original-Message-ID: <CA+ASDXNcC4_MpURRjbeXsyXsQ9Qte_YgoXFCJUKtrSWpZsHn-g@mail.gmail.com>
+Message-ID: <CA+ASDXNcC4_MpURRjbeXsyXsQ9Qte_YgoXFCJUKtrSWpZsHn-g@mail.gmail.com>
+Subject: Re: [PATCH AUTOSEL 5.15 17/82] arm64: dts: rockchip: add Coresight
+ debug range for RK3399
+To: Sasha Levin <sashal@kernel.org>
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
+ Leo Yan <leo.yan@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, 
+ Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>,
+ robh+dt@kernel.org, 
+ pawel.moll@arm.com, mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, 
+ galak@codeaurora.org, catalin.marinas@arm.com, will.deacon@arm.com, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_142350_645082_6B56B46F 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211109_153101_625524_239AA435 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,89 +106,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Brian Norris <briannorris@chromium.org>
+On Tue, Nov 9, 2021 at 2:17 PM Sasha Levin <sashal@kernel.org> wrote:
+>
+> From: Brian Norris <briannorris@chromium.org>
+>
+> [ Upstream commit 75dccea503b8e176ad044175e891d7bb291b6ba0 ]
+>
+> Per Documentation/devicetree/bindings/arm/coresight-cpu-debug.txt.
+>
+> This IP block can be used for sampling the PC of any given CPU, which is
+> useful in certain panic scenarios where you can't get the CPU to stop
+> cleanly (e.g., hard lockup).
 
-[ Upstream commit 75dccea503b8e176ad044175e891d7bb291b6ba0 ]
+I don't understand why this is being backported to -stable. First of
+all, it won't work because it's missing dependencies (specifically,
+around the RK3399 clock driver). But even if it did, I don't see how
+this is a candidate for -stable.
 
-Per Documentation/devicetree/bindings/arm/coresight-cpu-debug.txt.
+Methinks the AI has gone too far again.
 
-This IP block can be used for sampling the PC of any given CPU, which is
-useful in certain panic scenarios where you can't get the CPU to stop
-cleanly (e.g., hard lockup).
-
-Reviewed-by: Leo Yan <leo.yan@linaro.org>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
-Link: https://lore.kernel.org/r/20210908111337.v2.3.Ibc87b4785709543c998cc852c1edaeb7a08edf5c@changeid
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 48 ++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 029d4578bca3c..0b0b19618c1ea 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -394,6 +394,54 @@
- 		status = "disabled";
- 	};
- 
-+	debug@fe430000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe430000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_L>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_l0>;
-+	};
-+
-+	debug@fe432000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe432000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_L>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_l1>;
-+	};
-+
-+	debug@fe434000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe434000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_L>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_l2>;
-+	};
-+
-+	debug@fe436000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe436000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_L>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_l3>;
-+	};
-+
-+	debug@fe610000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe610000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_B>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_b0>;
-+	};
-+
-+	debug@fe710000 {
-+		compatible = "arm,coresight-cpu-debug", "arm,primecell";
-+		reg = <0 0xfe710000 0 0x1000>;
-+		clocks = <&cru PCLK_COREDBG_B>;
-+		clock-names = "apb_pclk";
-+		cpu = <&cpu_b1>;
-+	};
-+
- 	usbdrd3_0: usb@fe800000 {
- 		compatible = "rockchip,rk3399-dwc3";
- 		#address-cells = <2>;
--- 
-2.33.0
-
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
