@@ -2,14 +2,14 @@ Return-Path: <SRS0=ojj+=P4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27849C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15969C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:49:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E19AE61027
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:44:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E19AE61027
+	by mail.kernel.org (Postfix) with ESMTPS id C9A67611BF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:49:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C9A67611BF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,30 +18,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xBvf3So7YuuNInACNCJlxJJxO5JAsyy6f6TCo7zAjQ8=; b=01mVvZCQmHdkW6
-	ospLIXJ/WiVLWFmjaSGBgYPO2uWZh3iykAj2voNl+nDz2PBcSe5V3eQ6NHHDEzL6gcc91OcS4ulCi
-	NRKQISbmBnSdjJlEgqmWMSp1ZzJoAhRP1ZZ9YSGMmjDkuZcwLafezRREbYx8AmgZ2u3IT8q6FMAL4
-	7d0TmObsUQ7GvfjNol8yJ6rWCFAYsiWuzbN/omfsU3/zhS1+xbW7UegnHkUNbnGb+6pqpu9zzZIJh
-	MOau1OcsNYgWbTTv8qgsuxWmGaRAEN/2ySW5iiib6CvnB5v/KWn/h69NPiO4eSWLX876BXtWJDJIM
-	Un+h8rDAp505cn5mIdbg==;
+	List-Owner; bh=9T30nINKv7taRePt6DYEFk5ySL95rwD7cFxydMbT6Yg=; b=ReisKJz8rYXdXB
+	0S9Oy4oo1+SXVo3a50icvLigqsVZXWV0p/s3+S77KgVXuOwPs00YAv0OIfd9XQ5MkfDkkjHHrpQpA
+	pLirOxmBAPa5hd7XmrOSZgOleuk3YUYPOwZdvUckLmUPqujT08/j374tqFiJ5nHnr5DXMd893LaYu
+	Z1O052u4RkWUzImGe51EEuTP3vJ1oWLMm9EseC+Wxrhf600Gg5Mv5AaHoU9a8oMUmR/ogfAm0LOq7
+	oujkK6bWCbF6WHTW9UzboBKYL4x/PM5ovU8yM4hXZsv+2ihBA+vVbMDSTsXB6YYZDaD5EGwue65/b
+	xG7PDy095J9HtXXaBRcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkamY-003xz4-GH; Tue, 09 Nov 2021 23:44:02 +0000
+	id 1mkarN-004001-SB; Tue, 09 Nov 2021 23:49:01 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkZWT-003P2Q-Uw; Tue, 09 Nov 2021 22:23:23 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9B29A61B03;
- Tue,  9 Nov 2021 22:23:19 +0000 (UTC)
+ id 1mkZWw-003PL6-HG; Tue, 09 Nov 2021 22:23:52 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 40DD261A09;
+ Tue,  9 Nov 2021 22:23:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636496601;
- bh=VI+jTHwTdrVEn1b44tuhB5Y/aGRbYE91tsnnDfKeyS8=;
+ s=k20201202; t=1636496629;
+ bh=/RhO3cc31Q2lvSql6+/05yAwJFD5udIYx0uH6CwOs3E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=rGZEmQFU3d3yynI+uPuTHrYcUMKbqJlLV64FIe7Njc+qL7uRFk5PFVLKDyVlWxH7b
- ZuVTWESHjZXR/wY9+gy/BSI1yQkvP5a4dGiZaw4G718zGflMCtF7MYeRs02yjJ+NW5
- pSfi7PA27bp75K9pGTiGEg0KpDfa+WJYMH+PIhVqUj3sdN5x5MsLBGqdcmspe6ScAc
- GGZQZOHDLsnnjDhcxscq0EDWN9ENjIHCGzf6Vi8ECpYYLAzPLXpj8n3/eJDXu9rZ6g
- V6EPtA80k8ivtdZ0+mSA4xFLLCrs/nm9uhXt1xlbRQyD4vrPIeMnCKPFJfhiBMTbKM
- aPNcre61x254g==
+ b=Tlo10SaM1b6DJPa1ZSbn4ZmNJQwhVdbtXV5XnFgldmcVwoV6JiUMTSYIEOBa2LFZN
+ 9kG0bEKnjsYHB5G1pUJVKRwAvSetMpDniEViu5MlmrXbO9lqgAefNHaDRyOH5eYhnO
+ 5zmlQEyMbqThC/xU3O1Ukloqt/GsZE5itfYN84uflfilmrFHEir60Q/NWYDzWfjCec
+ YXXuGRuLrrXT+/qefuKhu++b6cDjZzsnkvzAgaoMhQ9ojW4wFTLP6NWql0PLDsGoZu
+ BdYgcvfRQ40vvp6mv4rY/qsMHTSH0weiFX4WYuESkkr24LJrjqj+1ESg/NuXS6UF0B
+ 15YfJikDmXLvA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,19 +52,19 @@ Cc: Brian Norris <briannorris@chromium.org>, Leo Yan <leo.yan@linaro.org>,
  mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org,
  catalin.marinas@arm.com, will.deacon@arm.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 05/21] arm64: dts: rockchip: add Coresight debug
+Subject: [PATCH AUTOSEL 4.14 03/14] arm64: dts: rockchip: add Coresight debug
  range for RK3399
-Date: Tue,  9 Nov 2021 17:22:54 -0500
-Message-Id: <20211109222311.1235686-5-sashal@kernel.org>
+Date: Tue,  9 Nov 2021 17:23:32 -0500
+Message-Id: <20211109222343.1235902-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211109222311.1235686-1-sashal@kernel.org>
-References: <20211109222311.1235686-1-sashal@kernel.org>
+In-Reply-To: <20211109222343.1235902-1-sashal@kernel.org>
+References: <20211109222343.1235902-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_142322_086589_590FBEAC 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20211109_142350_645082_6B56B46F 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,10 +105,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 48 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index f70c053326865..70c389e30d75c 100644
+index 029d4578bca3c..0b0b19618c1ea 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -364,6 +364,54 @@
+@@ -394,6 +394,54 @@
  		status = "disabled";
  	};
  
