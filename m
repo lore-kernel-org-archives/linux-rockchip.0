@@ -2,14 +2,14 @@ Return-Path: <SRS0=ojj+=P4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B705C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:33:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27849C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:44:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E885C611AF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:33:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E885C611AF
+	by mail.kernel.org (Postfix) with ESMTPS id E19AE61027
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 23:44:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E19AE61027
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,30 +18,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AJ6ilV2EuverNk5ROlXAH3HT7VmIDEp6oub5rcpe6MQ=; b=MC+I4ywxTPCP5b
-	FeAfDnJBJi3RdF6ihQ8EH+IAjFedlF6nODqn5Rfxd9WQ0zJRm9t/uaY9qL1ywsLyZGbSufT2Y6F9i
-	jVSnTDZFSlyHqkQjA96VBkJSDFXNQba5KBkWrG3OwsqKbm7KI8dL5Dc0Qz2l33mVWl07+Zfo6uotY
-	uRRRG1CweTKqAojviAOLNJ+fpvB5y8WRu+5yi/uoqOPiXrutwuOPYo+zX7+v3Guuyg92yQnweYdzf
-	OysPW5a8KVecvELUebAvf3Hg53lz7O1FnsJgK6d+VRiwUnFlmtuS2vu4g2JKmPvJpaM28QEy/Y25j
-	5+GkM+zawQIiqHmAytoQ==;
+	List-Owner; bh=xBvf3So7YuuNInACNCJlxJJxO5JAsyy6f6TCo7zAjQ8=; b=01mVvZCQmHdkW6
+	ospLIXJ/WiVLWFmjaSGBgYPO2uWZh3iykAj2voNl+nDz2PBcSe5V3eQ6NHHDEzL6gcc91OcS4ulCi
+	NRKQISbmBnSdjJlEgqmWMSp1ZzJoAhRP1ZZ9YSGMmjDkuZcwLafezRREbYx8AmgZ2u3IT8q6FMAL4
+	7d0TmObsUQ7GvfjNol8yJ6rWCFAYsiWuzbN/omfsU3/zhS1+xbW7UegnHkUNbnGb+6pqpu9zzZIJh
+	MOau1OcsNYgWbTTv8qgsuxWmGaRAEN/2ySW5iiib6CvnB5v/KWn/h69NPiO4eSWLX876BXtWJDJIM
+	Un+h8rDAp505cn5mIdbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkacB-003tYE-Gp; Tue, 09 Nov 2021 23:33:19 +0000
+	id 1mkamY-003xz4-GH; Tue, 09 Nov 2021 23:44:02 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkZVk-003OWQ-Tf; Tue, 09 Nov 2021 22:22:38 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E6D2B61AF0;
- Tue,  9 Nov 2021 22:22:34 +0000 (UTC)
+ id 1mkZWT-003P2Q-Uw; Tue, 09 Nov 2021 22:23:23 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9B29A61B03;
+ Tue,  9 Nov 2021 22:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636496556;
- bh=rDbHEjuvXOYY3Wjuu4ouvGZnXTueKZNWfPv+fX5LIL0=;
+ s=k20201202; t=1636496601;
+ bh=VI+jTHwTdrVEn1b44tuhB5Y/aGRbYE91tsnnDfKeyS8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CCNyUweV32HiyyEZRK5lN/0t7n9F+mRedEi0da/6kJh+68rjxMXpX4TsjQVZY2zzG
- knyM76duXEfNtlrWqSb1saEJjc2/vkNvHgv0TZvJBcTT0ysZZcrN40A9OQ7FgMD5YG
- niL6z0HI9lBO1OmfbvQjUB9JHG98HeMD2YYRwmK8QClAMmZd0UIFK6A9kwGChJVdm6
- US1OhlhPBMDNFljwvy1C/osHy8WQh9h8MLY2Tk4KSOXVjbrgmKM3UPO9iBsYJQlDom
- +JV7ZuGzAyWAejELwfphllJEPlAYaSeXkZ/BRwM6s8nUyW5Z1C+Ch09fNSnTQmFL3/
- 7nqbHYhyRamRw==
+ b=rGZEmQFU3d3yynI+uPuTHrYcUMKbqJlLV64FIe7Njc+qL7uRFk5PFVLKDyVlWxH7b
+ ZuVTWESHjZXR/wY9+gy/BSI1yQkvP5a4dGiZaw4G718zGflMCtF7MYeRs02yjJ+NW5
+ pSfi7PA27bp75K9pGTiGEg0KpDfa+WJYMH+PIhVqUj3sdN5x5MsLBGqdcmspe6ScAc
+ GGZQZOHDLsnnjDhcxscq0EDWN9ENjIHCGzf6Vi8ECpYYLAzPLXpj8n3/eJDXu9rZ6g
+ V6EPtA80k8ivtdZ0+mSA4xFLLCrs/nm9uhXt1xlbRQyD4vrPIeMnCKPFJfhiBMTbKM
+ aPNcre61x254g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -52,18 +52,18 @@ Cc: Brian Norris <briannorris@chromium.org>, Leo Yan <leo.yan@linaro.org>,
  mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org,
  catalin.marinas@arm.com, will.deacon@arm.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 06/30] arm64: dts: rockchip: add Coresight debug
+Subject: [PATCH AUTOSEL 4.19 05/21] arm64: dts: rockchip: add Coresight debug
  range for RK3399
-Date: Tue,  9 Nov 2021 17:22:00 -0500
-Message-Id: <20211109222224.1235388-6-sashal@kernel.org>
+Date: Tue,  9 Nov 2021 17:22:54 -0500
+Message-Id: <20211109222311.1235686-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211109222224.1235388-1-sashal@kernel.org>
-References: <20211109222224.1235388-1-sashal@kernel.org>
+In-Reply-To: <20211109222311.1235686-1-sashal@kernel.org>
+References: <20211109222311.1235686-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_142237_034370_DA4B3911 
+X-CRM114-CacheID: sfid-20211109_142322_086589_590FBEAC 
 X-CRM114-Status: UNSURE (   9.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -105,10 +105,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 48 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 750dad0d17400..26c9c9317a642 100644
+index f70c053326865..70c389e30d75c 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -398,6 +398,54 @@
+@@ -364,6 +364,54 @@
  		status = "disabled";
  	};
  
