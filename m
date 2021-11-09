@@ -2,14 +2,14 @@ Return-Path: <SRS0=ojj+=P4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3A59C4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 22:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E48D3C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 22:22:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A896D61AE1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 22:22:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A896D61AE1
+	by mail.kernel.org (Postfix) with ESMTPS id B87E7619E8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 22:22:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B87E7619E8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,44 +18,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=avQjeFNTwM8qaRMort1TJPp9ZwX5PYqI02F2k9+40j0=; b=MJQiibVBKJi1Gp
-	RoJhzXH7+HvJ1qSqVeqH6ia7cP7rfEiBF/kWKn+kU2BVVQhiPZl4VOsR0NI5vsvSLsT6ZpjtTz7MP
-	/YvIo+IE+iAgxkrD38jMZcb6880WXPpt7WRwVcvoixaj3q8Xcr9Z27wQ3NEASxU9GLmfnETO1EB68
-	EYFVWtLgAnxV/FrKbBOR6ohCJwj6PPNCrzzpYvDOlRaKJjaiWVQwafhoITNidqnoOLfXR/jW+yyZa
-	yLZNnULqIZ5laT/ygDSXvD0OkD0fORCcE1Le3iXo/jMmnoV95OvltEGcEqzoNIcl1oN318UbvMFul
-	RL8wo8vHdxrC+1iE+HZg==;
+	List-Owner; bh=WKQ4GoXwDRqpVJXx6PUIlO7iC1LQcYYuJaD4MueXm+g=; b=RocBYdoVWBdZ/h
+	ZQz8veJH7l3Tu5Bryb/BATBOhPfHodIc+lI4RSaO++PmXYcQIfJZdu7HNB/vsDl6u9kxADCf1vmhi
+	etOZ/f7mW1KG/SG56FR8SyH0U1sf+0uZ4MFnub7cX/PRpUCS+TDIRPi/WTPFXvog0ZtDiHOquvQGZ
+	3ogHaO+epQeyJkJx+oO1FXf/QeHebz2fnfz366cH/T706inZMF9ecxsKdzBtYOEAUFa/fF7Bds2Wc
+	rxbpWm1/BbI+m4Zs1rX2iuRHRXqpwAvdOXb45pCvl7mEkM39OlESpJDvbFDISg0QJBM53MasbX2ew
+	EoyVZ5+qC5oR8VQBpjlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkZVD-003ODW-GL; Tue, 09 Nov 2021 22:22:03 +0000
+	id 1mkZVm-003OXR-HV; Tue, 09 Nov 2021 22:22:38 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkZQc-003LMn-Bp; Tue, 09 Nov 2021 22:17:19 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 998FA61207;
- Tue,  9 Nov 2021 22:17:16 +0000 (UTC)
+ id 1mkZQg-003LOc-O7; Tue, 09 Nov 2021 22:17:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B2A0E611BF;
+ Tue,  9 Nov 2021 22:17:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636496238;
- bh=qR8ttzQ+HcT95TOU3T643QpXnqN44D8DenWBQhzqmzI=;
+ s=k20201202; t=1636496242;
+ bh=ZkBvY0/FGy1zslJ/8p6SQONClTFCw+k1PjFEb3t7NMY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=e0kReMqfTAurzCI3vJbOIlsjW4xUcDCzVsksF7gqJiCQ96f1RHx1w6AJfC6CAIt0v
- 2fDFOGkwLf+fANQvunWAXIXWi7g32+CCh0ar+Xzl/MSNcjR9kTUf9CV2orFQcNkFCQ
- iXMwfHc3pbfdcQhemN8LCjcvpSRdNsdgEHLSOQ2T5nhbURuTFZmyoqxfek2IgrU86c
- MteIUTuLOFm+PZt2LjQNekDsWooSrrhDe8t5p4/3grs+liF11uUut9QCtw7Q2MBFbK
- 1lnpqN1ECCVvPO8QzDg0NSgIRZf1zrMZUhYP5LeRxuYODpXF9brGRX6/G/GUGHaxpZ
- C6GUlFryBMZ9w==
+ b=C5UvqCwlkEmDixq0KUCLbnrLTgl5z7U2HOPBCavCmgvn8VMcjP4qDmnAIP3P5eqsy
+ bE5sULcyWnJK9j7C5GdN1+/D7wz+6UwmU7K45EoZYLJLtUXO57HIsk1MgxAodeDry9
+ Ia9vBv26JksEs/OChNSUQjUPYIurnb0/KLktceIhI94Bhw8gaU0Mkufg6k5yA8Ti0W
+ +xKgcjJsOXqrL/z0rWLH3cga8RN5S8LrED8QJLamysjgSn4toJvUsN2SqpSeDG3GPl
+ NmLj6RLLIJuUgtMS9tgLvdoUWFVSnMwou0OLEjnLd7OqsHa5TjCjRDM92o5Lpw7o/l
+ XPcVviKILNO6w==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Matthias Brugger <mbrugger@suse.com>,
- Guillaume Gardet <guillaume.gardet@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>,
- robh+dt@kernel.org, pawel.moll@arm.com, mark.rutland@arm.com,
- ijc+devicetree@hellion.org.uk, galak@codeaurora.org,
+Cc: Brian Norris <briannorris@chromium.org>, Leo Yan <leo.yan@linaro.org>,
+ Chen-Yu Tsai <wenst@chromium.org>,
+ Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>,
+ Sasha Levin <sashal@kernel.org>, robh+dt@kernel.org, pawel.moll@arm.com,
+ mark.rutland@arm.com, ijc+devicetree@hellion.org.uk, galak@codeaurora.org,
  catalin.marinas@arm.com, will.deacon@arm.com, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 15/82] arm64: dts: rockchip: Disable CDN DP on
- Pinebook Pro
-Date: Tue,  9 Nov 2021 17:15:33 -0500
-Message-Id: <20211109221641.1233217-15-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 17/82] arm64: dts: rockchip: add Coresight debug
+ range for RK3399
+Date: Tue,  9 Nov 2021 17:15:35 -0500
+Message-Id: <20211109221641.1233217-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211109221641.1233217-1-sashal@kernel.org>
 References: <20211109221641.1233217-1-sashal@kernel.org>
@@ -63,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_141718_462589_4BE5114C 
-X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-CacheID: sfid-20211109_141722_854276_40747CC9 
+X-CRM114-Status: UNSURE (   9.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,41 +83,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+From: Brian Norris <briannorris@chromium.org>
 
-[ Upstream commit 2513fa5c25d42f55ca5f0f0ab247af7c9fbfa3b1 ]
+[ Upstream commit 75dccea503b8e176ad044175e891d7bb291b6ba0 ]
 
-The CDN DP needs a PHY and a extcon to work correctly. But no extcon is
-provided by the device-tree, which leads to an error:
-cdn-dp fec00000.dp: [drm:cdn_dp_probe [rockchipdrm]] *ERROR* missing extcon or phy
-cdn-dp: probe of fec00000.dp failed with error -22
+Per Documentation/devicetree/bindings/arm/coresight-cpu-debug.txt.
 
-Disable the CDN DP to make graphic work on the Pinebook Pro.
+This IP block can be used for sampling the PC of any given CPU, which is
+useful in certain panic scenarios where you can't get the CPU to stop
+cleanly (e.g., hard lockup).
 
-Reported-by: Guillaume Gardet <guillaume.gardet@arm.com>
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-Link: https://lore.kernel.org/r/20210715164101.11486-1-matthias.bgg@kernel.org
+Reviewed-by: Leo Yan <leo.yan@linaro.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+Link: https://lore.kernel.org/r/20210908111337.v2.3.Ibc87b4785709543c998cc852c1edaeb7a08edf5c@changeid
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
- 1 file changed, 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 48 ++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 2b5f001ff4a61..9e5d07f5712e6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -385,10 +385,6 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 3871c7fd83b00..c5fe2d4401149 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -361,6 +361,54 @@
+ 		status = "disabled";
  	};
- };
  
--&cdn_dp {
--	status = "okay";
--};
--
- &cpu_b0 {
- 	cpu-supply = <&vdd_cpu_b>;
- };
++	debug@fe430000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe430000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_L>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_l0>;
++	};
++
++	debug@fe432000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe432000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_L>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_l1>;
++	};
++
++	debug@fe434000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe434000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_L>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_l2>;
++	};
++
++	debug@fe436000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe436000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_L>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_l3>;
++	};
++
++	debug@fe610000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe610000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_B>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_b0>;
++	};
++
++	debug@fe710000 {
++		compatible = "arm,coresight-cpu-debug", "arm,primecell";
++		reg = <0 0xfe710000 0 0x1000>;
++		clocks = <&cru PCLK_COREDBG_B>;
++		clock-names = "apb_pclk";
++		cpu = <&cpu_b1>;
++	};
++
+ 	usbdrd3_0: usb@fe800000 {
+ 		compatible = "rockchip,rk3399-dwc3";
+ 		#address-cells = <2>;
 -- 
 2.33.0
 
