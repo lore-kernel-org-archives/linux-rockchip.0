@@ -2,14 +2,14 @@ Return-Path: <SRS0=ojj+=P4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24B68C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 11:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C07A5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 11:42:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E68DE61184
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 11:35:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E68DE61184
+	by mail.kernel.org (Postfix) with ESMTPS id 81C27603E8
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Nov 2021 11:42:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 81C27603E8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,54 +18,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I6bcpX0OwXcH5wozq5/Ip9ASLU1wyBjyu0M8tuDh3ao=; b=0MVhnWReyhXVm1
-	3B1ojvZvkSDrqnwzj4e6eNVrKoETHX3SH2TrkJZ2VZj5Q/oyZOqQHGHNFmr07QU3QP/jt9zbowE5C
-	HgVu7ZoIAVIpMv//r3LDxRslrz+3wo5xJcQeLWnTZQjsXDNP+hoh9LhYNIC6lp7otGe/CP9FkWDJi
-	uhomXo8Hc/8Onin7JMjVN7EaslkmD6a/WWfs+P6gayzUDSNo1In7eCD+yKXuuHGlulRYfNNtaSmXU
-	xMggSJFz+ca+m1OZTf7MqYaoP3kbiS9629rxXnh0ZjVQklC0qCTOJLIxZ9qDSJjG6BCdZ27DRkddi
-	qjPZKf0rLpJHqzT+ZV4Q==;
+	List-Owner; bh=neXAB45OFgwOv0Dz0Hln0nv8DZ1o71G4ujLrm75paig=; b=UveItCW43xFF5t
+	XYhzazf4kB+y4JJ/E26rTPyHTVQdAV+irEtEcnDoI2wiJbIkgGJ7dVRPv0OFPwiVblFBne3oTkTbb
+	0bYadKDwV/d4Mpu2B5jjj7YtavYyofdI7zAw5FnClErIw4CFq/tkijRQNNI3iAxh1kNb2BBh+LjTB
+	Rl1NQBWglXNszM35QnrkI48x7kqnRx375b27JEyKmvNwmZnzBQDbLhl3YObt9xvyVydg908bgSMXw
+	cL64MSRPRTyzLEH5HzAPJ6FdnPJu15I42CPeXIcDq85IXuDUtyzOELNPNc76YLyCZOTW9fP9QZQNk
+	+0NlHKPsPwbWGySosijQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkPPW-001knm-6c; Tue, 09 Nov 2021 11:35:30 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1mkPW3-001n2m-EG; Tue, 09 Nov 2021 11:42:15 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkPPG-001ker-Iv
- for linux-rockchip@lists.infradead.org; Tue, 09 Nov 2021 11:35:15 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id q124so33139786oig.3
- for <linux-rockchip@lists.infradead.org>; Tue, 09 Nov 2021 03:35:14 -0800 (PST)
+ id 1mkPW0-001n1n-Ua
+ for linux-rockchip@lists.infradead.org; Tue, 09 Nov 2021 11:42:14 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id m6so7221607oim.2
+ for <linux-rockchip@lists.infradead.org>; Tue, 09 Nov 2021 03:42:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v2pAd4bAvLGuQHlmvNN+h2TrmSqORB/og4IefjMu/Gs=;
- b=oeBZnU3MNAghzjyLIb+fM7Irgkj3AauRHUnUS9LblIjn/HL/tpUBDV4ZYfAfSiBivY
- f2Ooq2zZvyRjQykYk2jrIrnXytZnVmx3pmJ7cP3XrQdBrqFTVMKjjm/9LROvnpeG4s6R
- ZC3XFcnEK6V2y+vFLNbGJlxgqlKt/oOrjg1pqxQn5BWklsQBh4sg+99rG5PuQ2YCb4Uj
- S+Cpvf9CPwkp32bMJe9Jk+y+lG5z5tjx2uGFGBBe/7UZU6FTzAAYks78FbC79IeVdjSG
- wjVKRCfbkDZtVon7tBp0LZBnLgm8eVTxAGO+wskKug5AJrfa9LZwzG2igXTZbgv5k6vE
- bZEw==
+ :cc; bh=mhp9TzcF0FJk80drP2WtwN9HUs+vg3LkkMoIt6RpEF4=;
+ b=olwR8eKIQydywoP9wwQ49hUplsRYThhLBucewwDhwt7sW0N8FghwRqb2YTfFmmQaAM
+ eoOHY/s2eMATsA0TyHJz6KNPgGrwLjAq1yAYu3pqPbg4ILcyfhlt4XBS1maL5zZGM8SB
+ /J5eUploIL+HdOCmiSCrzSExX+tnB8XZ/yeaby54qp5/GAhldTb++/1lgFAWnNT/gozP
+ A2+m2Aa9liTusE9rl+++t+wQUwKU9sndyzWTo28y3+L8i4AZgXoGb1JB+PIGHFMdTkAd
+ +CWj2/pK7Czc/z1j0ov7mWhnuifK7Zecv6IVdudLEJIIlnN8ttiE2Awf1Uu/iQgP0MQ+
+ A4Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=v2pAd4bAvLGuQHlmvNN+h2TrmSqORB/og4IefjMu/Gs=;
- b=a/eX2UEnjmNuHyp2vzvfT1u4F9tuXXHn+9xq7LXmfCkT5mgjYmQDjT+1J6YHoeOyHu
- F7ksIzabOIwcvyGdMRqp3J0MbfYJXW40oVNocFDn87M/1bleoYHFcFkTlMe9+TOrmsaT
- QPdPGdm61LnMNRe4Q3PSRIKreTVlMB7bqzy/fLi0cMUfpIqmzRvfraMfi25sXGPE9Rp9
- 0MM4CuouJ37KPJ8MwESwK4hDfSprX3qe4ylv2wyFeyVW8GV64q3S7ogdHzzWGeJmPC88
- DQ8gonIZQSD7EcPIagssLPtj3ZS3R+uPA4BiAEByDE3J2c4FT/q2UyBTjf0yy6xy7f3u
- lUAw==
-X-Gm-Message-State: AOAM531vdVK/WWVxMkAILvG60Eo1n96v67Ww21QVuEacUe/IEHY5vOFL
- pEyF6bT6FbM1Dtk3WtamwTIa+htPSbKFjlZrAWGu3Q==
-X-Google-Smtp-Source: ABdhPJx4OlotCLYJPZy+X0p8zFLUTXcqcM/xCAFKp3eZ4QqsYKNx7VufYAbkVJoBzN16IyIl2/T2UCY/eqmhbavLu80=
-X-Received: by 2002:a54:4791:: with SMTP id o17mr5249862oic.114.1636457713735; 
- Tue, 09 Nov 2021 03:35:13 -0800 (PST)
+ bh=mhp9TzcF0FJk80drP2WtwN9HUs+vg3LkkMoIt6RpEF4=;
+ b=NJkx/SCaLSg9hVVUdZmtna0r3wi8wIMIX77yY3/B0kCBQGEAhRo/OwbA6MWOTfQDMv
+ uBTGiZPnD4RN0/5A5MVVVMJtR9Jd3cN1SeA6+LDKOEZgGls4082tbadyR/v9Y2TdvyEn
+ DWd1IzSwh8h7haHFxoPKfJMdbTvKXd4kvuxz1cX3ZLeX1XIG1be1lB3CLGFFHQ4Gjxxs
+ 3BjGFIfVBb0O67s5/fbyHTOFxNLC+WCF2OsROHmaxfApb8/Mr4fM++E81Xl0++9Q4Kok
+ yOGw6fkAiuwQxnhLVP54jM4W6i3117xJ8JRpW6plKEzoG3x/YtSGQzKxRwEJzhx0tzf0
+ wNVA==
+X-Gm-Message-State: AOAM533rRZMZP8+zQiibTfRbtPFetbv1SAj8b7Et2nwWNY5u9fGl8Owo
+ msK5U6ee75K/MDhiT/DyRGYYKHQsfocOPzSLBocVAQ9ERGc=
+X-Google-Smtp-Source: ABdhPJyPHpmLKJWvNf4h7ERinzV0bNLNBoF0liQERhWM5bH4q3Bh9XBTTXD2QUAOEmTu+PDwzljjIN9g/NSOLBZiY0c=
+X-Received: by 2002:a05:6808:60e:: with SMTP id
+ y14mr5187977oih.162.1636458132308; 
+ Tue, 09 Nov 2021 03:42:12 -0800 (PST)
 MIME-Version: 1.0
 References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
- <20211105124242.27288-19-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211105124242.27288-19-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 9 Nov 2021 12:35:02 +0100
-Message-ID: <CACRpkda47wek7EEhs-ecaij_OX4i7EZ+nvxa=VxHH+krgVYg+g@mail.gmail.com>
-Subject: Re: [PATCH v1 19/19] gpio: mockup: Switch to use kasprintf_strarray()
+Date: Tue, 9 Nov 2021 12:42:00 +0100
+Message-ID: <CACRpkdZ2-MRY_L2J4RvKDNW1yyThg7KUFbd80ZMpRY209RNxnw@mail.gmail.com>
+Subject: Re: [PATCH v1 01/19] lib/string_helpers: Introduce
+ kasprintf_strarray()
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>, 
  Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>, 
@@ -78,8 +79,8 @@ Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Jianqun Xu <jay.xu@rock-chips.com>,
  Patrice Chotard <patrice.chotard@foss.st.com>,
  Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_033514_664532_1BD8DA52 
-X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-CacheID: sfid-20211109_034213_020826_DA060C3B 
+X-CRM114-Status: UNSURE (   8.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,11 +102,15 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On Fri, Nov 5, 2021 at 1:43 PM Andy Shevchenko
 <andriy.shevchenko@linux.intel.com> wrote:
 
-> Since we have a generic helper, switch the module to use it.
-> No functional change intended.
+> We have a few users already that basically want to have array of
+> sequential strings to be allocated and filled.
+>
+> Provide a helper for them (basically adjusted version from gpio-mockup.c).
 >
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
+Fulfils Rusty Russell's API design hierarchy requirements
+and help people to make less mistakes so:
 Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
 Yours,
