@@ -2,84 +2,87 @@ Return-Path: <SRS0=bU6c=P5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 66A4FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 05:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D17AEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 19:26:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 266D76108E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 05:54:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 266D76108E
+	by mail.kernel.org (Postfix) with ESMTPS id 9E34F6108B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 10 Nov 2021 19:26:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9E34F6108B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JQzTWrub0BqDhLlk3/gGcxAAcYtEQr4fiQ8g+aaQQt4=; b=uNeRxOdKsJvzeu
-	F90NE7fOFYyJa4Z/rm+JIVjRk87xo6Qt5rtZ0hkq42K2WECHjhtubNxyszR19RVcIuLtS352MYF14
-	dyvq5ZZ9Yrr6wD4mv1RqDZ/cRXTAj2kW7kDajedsQb4Sbo46au3at+oF5wdUZGWmqKAewQ7iynEU6
-	PqnL9tjNh3OpO9sJln0cRShiZYPdyda1QnGYdcNV5vuLiJUt1HiJd3Bmfh9voG1c9UYjlHC56xdCI
-	XO7eIF2jiSdrPQ2yspJoZ8oSEeWfOmmZzrpAzUyJD/pkoAu75pYuLtwvc7zznIMzK3MpUD4HxLAUS
-	r7PJJd3oxC/6f3lJYAkg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x6/A8TmXnEHGYeK9HW7fgpkUzgCV+iElaXv4mcxecz0=; b=eKB6zr3+awnkkT
+	ZosVlxdjU1U7kniefKsRwJKRZ4vuy6hYvtXVCIC+QOy/NY7SysnYFWwVPOF2EA+9ITWWTEfAwu2J8
+	+aEPz8tyHpDhSnxShME626QhPJYX9HkNJ+MFqq4rdwoiaWMMBdOEpkzEyuuf64/HjHUcQMiYNWWx1
+	1j3UemZySzSz2rePXGJEYEZd+zpeyesaCzJbi26RW5cc33Qc5rAZB+0tCfv0O6rl7bvI1Nsk1Py9V
+	cXsQfAkTGg6ohykGmePoDC2s+eEmeflqman/oVER6mQVCA3HIouaG9ZNTxKonNTXXE7cIiMMTCCmQ
+	UjUrEdcdsx7FhhiU9QEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkgYY-004VyK-UB; Wed, 10 Nov 2021 05:53:58 +0000
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+	id 1mktEY-0068nC-W7; Wed, 10 Nov 2021 19:26:11 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkgYV-004Vx4-Rp; Wed, 10 Nov 2021 05:53:57 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id r80so1256992pgr.9;
- Tue, 09 Nov 2021 21:53:53 -0800 (PST)
+ id 1mktEW-0068lL-8R; Wed, 10 Nov 2021 19:26:09 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id n29so5804682wra.11;
+ Wed, 10 Nov 2021 11:26:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=eUMJHV6ISsdKfy1mWWM3Q3JFhiOT5WxpZzF6+QjqwNg=;
- b=Vt9VxIzU4aG3ALLwBZC6iYlE6e+REQvXk5XlrOuiydmP1N+q4KMs+JiMhxGxs1TvzE
- JF3TT4NMZndIYcxaGkM7E4fxQaRIoLX4jO2cbykUGppseQG1ZkIVkiWlKl+tMqGHFWbB
- qcIykAMWjHE9cll6Ca0woYyO0733CTyAFfa/Jj1WbhmiumDm1BECdALUpIG6P2UsvdbU
- OOj0r1CXsOp39nil1nkqavhnPPSayeQDJw/MAMt1B9XMgAjWSSi1OJkMI771CfMy8pRP
- g7RbXPSo7j7Xkd8J3g6k+bKrN/7HDC3v7YNW+hFA6BXPsu71nWpA6d5zB5zeRc79Qhv+
- g/qA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=stxfGq5TzEk/m+h1V0oWIaH2yEXT1vhy8334vKhpSbk=;
+ b=HSbkCB5tuRc+2W2n8fgn9E3Tq0iwlPq1i+mBl1CVpMIVh0k5ZYJaWbZ5Hb146uIwb7
+ 1m/7OWgXQ6CvJCRl1QHVqTV1f5a/bHcJhkEHoxF8CDvtwhBBc+rOYnUfwkIbMRF8oGxa
+ /0cUt5yNj3ON6xQ+cqwzUZw59rA2Cs0kG8GZBrBdIOI9Cj0nN5iJWMz9e+hD4yGqOImh
+ +g+ElXEzWESJZTGgaRBPCmMiKqGCvjhKUCrDGfCd2WLzYaa10S8wsSJ1USQulhDKhXQW
+ KRHmCIQwul/QBl2TzNKh8MakjGfZZyMLMqvVeZ2FvQn+EhVbW9RKQdgpwWFOCoVbwHGN
+ O8nQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=eUMJHV6ISsdKfy1mWWM3Q3JFhiOT5WxpZzF6+QjqwNg=;
- b=7jahq67r/EWClYIAMr43qQm21+lp2ysR5h+R8hKwQDt6rcGDGcDFe87g2KU8rOXFF9
- 7wBC0VlYDLvc22E5OSlJGomxWacxMip3SjHbB/7eESrgOcl9GYiZKW+xGTUxr+j8wbxK
- oNsT5gmqcxPsXIQhFofD2fSfdWaY1sy1IPxPLKOLYhh/8Qj2D6/W26GAcIwo0cgokDPe
- ZWZUe6QzkflEZCwVwAK13W31yH3Bmjs8Wd3uVewmg8fT/UbiuUWPAnoJUxIMnGQJGXef
- Pg8JmjJ2Ld0G2WzdxfMLVVMICsAXrOypaVf7/wDRCULrtO/0PxtcIVz6+XvGlckgZjNj
- YzEw==
-X-Gm-Message-State: AOAM5316sZ3/cK9bkQjI3JxbM2NF8utXTYN43dnyxZPRGxPAg27I3bm0
- QD2jDQfTyXHrtwKlpoTq5u0=
-X-Google-Smtp-Source: ABdhPJxXTZYHB2UGHAUNtYwf3kP69Bis45hSi+RvLIuzi4J/8jzDu11Q9GCv9DCihg8WtplitYdf7g==
-X-Received: by 2002:a65:6158:: with SMTP id o24mr10207501pgv.141.1636523633472; 
- Tue, 09 Nov 2021 21:53:53 -0800 (PST)
-Received: from localhost.localdomain (199.19.111.227.16clouds.com.
- [199.19.111.227])
- by smtp.gmail.com with ESMTPSA id h10sm22640981pfc.104.2021.11.09.21.53.49
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=stxfGq5TzEk/m+h1V0oWIaH2yEXT1vhy8334vKhpSbk=;
+ b=n1/IABrCUF553xiBqwnjLydbgmSiKwoXuXhyhEoisJHc2kp5CqexBIFUJJi862GAqm
+ QJLdU0/5+pvigVUPAuXmJTislljruzwlXuAx065fOzfmEO5OFBp3SxGjHqXkieEagQYj
+ S39lGldmXEgbPWS5necidIUt08CWgH7qc7GXMVAFZSgAGrQzMiznYFaZDFigbM6kEWZA
+ fxTWVxqctOsuG1P1bC9EAcTB3MbGKPoQ5T6ewt1TdTh+063ZYUVtt0ILYdaGs6p6rVkS
+ O2Q0Ez0tA0nn3DGkkENj9zxS9LBhpqV6uFaLnYzswVt1vAx01MHoJvZmcgxRX/peCAgD
+ sVCw==
+X-Gm-Message-State: AOAM533xWJAWyPDnsoZD54ZCZdTT7QNGyOgK7+DxGbWcfJ4W4UmHOvNy
+ AACqjB4PQFjLoiyOvppaqiJpYBBoc4s=
+X-Google-Smtp-Source: ABdhPJxTG94yTUSY/Xh7rvmJIuspjf0raoj13K6wYdvH8/nsbTpXXHcT2atafOeteM53GX0FbKj6Ow==
+X-Received: by 2002:a05:6000:1688:: with SMTP id
+ y8mr1773432wrd.420.1636572366357; 
+ Wed, 10 Nov 2021 11:26:06 -0800 (PST)
+Received: from kista.localnet (cpe-86-58-29-253.static.triera.net.
+ [86.58.29.253])
+ by smtp.gmail.com with ESMTPSA id b197sm610739wmb.24.2021.11.10.11.26.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Nov 2021 21:53:53 -0800 (PST)
-From: Artem Lapkin <email2tema@gmail.com>
-X-Google-Original-From: Artem Lapkin <art@khadas.com>
-To: heiko@sntech.de,
-	linux-rockchip@lists.infradead.org
-Cc: robh+dt@kernel.org, jbx6244@gmail.com, wenst@chromium.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, art@khadas.com, nick@khadas.com,
- gouwa@khadas.com
-Subject: [PATCH] arm64: dts: rockchip: emmc remove mmc-hs400-enhanced-strobe
- rk3399-khadas-edge
-Date: Wed, 10 Nov 2021 13:53:42 +0800
-Message-Id: <20211110055342.1693350-1-art@khadas.com>
-X-Mailer: git-send-email 2.25.1
+ Wed, 10 Nov 2021 11:26:05 -0800 (PST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: mchehab@kernel.org, p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ hverkuil-cisco@xs4all.nl, jc@kynesim.co.uk, ezequiel@vanguardiasur.com.ar,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v2 1/4] media: hevc: Remove RPS named flags
+Date: Wed, 10 Nov 2021 20:26:04 +0100
+Message-ID: <2215692.ElGaqSPkdT@kista>
+In-Reply-To: <20211012143552.661751-2-benjamin.gaignard@collabora.com>
+References: <20211012143552.661751-1-benjamin.gaignard@collabora.com>
+ <20211012143552.661751-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_215355_922791_A370A73C 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20211110_112608_363351_6E928090 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,76 +100,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove mmc-hs400-enhanced-strobe for rk3399-khadas-edge
+Hi Benjamin,
 
-Not compitable for some eMMC chips ( BJTD4R 29.1 GiB ). And no
-performance difference in our case from emmc-hs400-enhanced-strobe option
-for other eMMC chips.
+Dne torek, 12. oktober 2021 ob 16:35:49 CET je Benjamin Gaignard napisal(a):
+> Marking a picture as long-term reference is valid for DPB but not for RPS.
+> Change flag name to match with it description in HEVC spec chapiter
 
-Problem example ( eMMC chip BJTD4R 29.1 GiB ):
+chapiter -> chapter
 
-[    0.068282] platform ff770000.syscon:phy@f780: Fixing up cyclic dependency with fe330000.mmc
-[    7.001493] mmc2: CQHCI version 5.10
-[    7.027971] mmc2: SDHCI controller on fe330000.mmc [fe330000.mmc] using ADMA
-.......
-[    7.207086] mmc2: mmc_select_hs400es failed, error -110
-[    7.207129] mmc2: error -110 whilst initialising MMC card
-[    7.308893] mmc2: mmc_select_hs400es failed, error -110
-[    7.308921] mmc2: error -110 whilst initialising MMC card
-[    7.427524] mmc2: mmc_select_hs400es failed, error -110
-[    7.427546] mmc2: error -110 whilst initialising MMC card
-[    7.590993] mmc2: mmc_select_hs400es failed, error -110
-[    7.591012] mmc2: error -110 whilst initialising MMC card
+> "8.3.2 Decoding process for reference picture set".
+> Remove the other unused RPS flags.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> version 2:
+> - change DPB field name from rps to flags
+> 
+>  Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst | 8 +++-----
+>  drivers/staging/media/hantro/hantro_g2_hevc_dec.c         | 2 +-
+>  drivers/staging/media/sunxi/cedrus/cedrus_h265.c          | 2 +-
+>  include/media/hevc-ctrls.h                                | 6 ++----
+>  4 files changed, 7 insertions(+), 11 deletions(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/
+Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> index e141f0e4eec9..38da33e61c3d 100644
+> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> @@ -3166,11 +3166,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>  	:c:func:`v4l2_timeval_to_ns()` function to convert the struct
+>  	:c:type:`timeval` in struct :c:type:`v4l2_buffer` to a __u64.
+>      * - __u8
+> -      - ``rps``
+> -      - The reference set for the reference frame
+> -        (V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE,
+> -        V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER or
+> -        V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR)
+> +      - ``flags``
+> +      - Long term flag for the reference frame
+> +        (V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE)
+>      * - __u8
+>        - ``field_pic``
+>        - Whether the reference is a field picture or a frame.
+> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/
+staging/media/hantro/hantro_g2_hevc_dec.c
+> index 76a921163b9a..bbf71dcea099 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> @@ -445,7 +445,7 @@ static int set_ref(struct hantro_ctx *ctx)
+>  		chroma_addr = luma_addr + cr_offset;
+>  		mv_addr = luma_addr + mv_offset;
+>  
+> -		if (dpb[i].rps == V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR)
+> +		if (dpb[i].flags == 
+V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE)
+>  			dpb_longterm_e |= 
+BIT(V4L2_HEVC_DPB_ENTRIES_NUM_MAX - 1 - i);
+>  
+>  		hantro_write_addr(vpu, G2_REG_ADDR_REF(i), luma_addr);
+> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/
+staging/media/sunxi/cedrus/cedrus_h265.c
+> index 3d9561d4aadb..1edfc3823a57 100644
+> --- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+> @@ -169,7 +169,7 @@ static void cedrus_h265_ref_pic_list_write(struct 
+cedrus_dev *dev,
+>  		unsigned int index = list[i];
+>  		u8 value = list[i];
+>  
+> -		if (dpb[index].rps == V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR)
+> +		if (dpb[index].flags == 
+V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE)
 
-Workable example without mmc-hs400-enhanced-strobe:
+Flags are usually checked with "&", same goes in Hantro case.
 
-[    6.960785] mmc2: CQHCI version 5.10
-[    6.984672] mmc2: SDHCI controller on fe330000.mmc [fe330000.mmc] using ADMA
-[    7.175021] mmc2: Command Queue Engine enabled
-[    7.175053] mmc2: new HS400 MMC card at address 0001
-[    7.175808] mmcblk2: mmc2:0001 BJTD4R 29.1 GiB 
-[    7.176033] mmcblk2boot0: mmc2:0001 BJTD4R 4.00 MiB 
-[    7.176245] mmcblk2boot1: mmc2:0001 BJTD4R 4.00 MiB 
-[    7.176495] mmcblk2rpmb: mmc2:0001 BJTD4R 4.00 MiB, chardev (242:0)
+Once all fixed, this patch is:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-Performance note for mmc-hs400-enhanced-strobe usage:
+Best regards,
+Jernej
 
-Other chips DUTA42 116 GiB works well with or without
-mmc-hs400-enhanced-strobe!
+>  			value |= 
+VE_DEC_H265_SRAM_REF_PIC_LIST_LT_REF;
+>  
+>  		/* Each SRAM word gathers up to 4 references. */
+> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> index ef63bc205756..01ccda48d8c5 100644
+> --- a/include/media/hevc-ctrls.h
+> +++ b/include/media/hevc-ctrls.h
+> @@ -127,15 +127,13 @@ struct v4l2_ctrl_hevc_pps {
+>  	__u64	flags;
+>  };
+>  
+> -#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_BEFORE	0x01
+> -#define V4L2_HEVC_DPB_ENTRY_RPS_ST_CURR_AFTER	0x02
+> -#define V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR		0x03
+> +#define V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE	0x01
+>  
+>  #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
+>  
+>  struct v4l2_hevc_dpb_entry {
+>  	__u64	timestamp;
+> -	__u8	rps;
+> +	__u8	flags;
+>  	__u8	field_pic;
+>  	__u16	pic_order_cnt[2];
+>  	__u8	padding[2];
+> -- 
+> 2.30.2
+> 
+> 
 
-..... mmc-hs400-enhanced-strobe disabled
-
-[    7.175053] mmc2: new HS400 MMC card at address 0001
-
-786432000 bytes (786 MB, 750 MiB) copied, 3 s, 262 MB/s
-
-..... mmc-hs400-enhanced-strobe enabled
-
-[    7.135880] mmc2: Command Queue Engine enabled
-[    7.135928] mmc2: new HS400 Enhanced strobe MMC card at address 0001
-[    7.136992] mmcblk2: mmc2:0001 DUTA42 116 GiB 
-
-1048576000 bytes (1.0 GB, 1000 MiB) copied, 4 s, 262 MB/s
-
-Signed-off-by: Artem Lapkin <art@khadas.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index d5c7648c841d..f1fcc6b5b402 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -705,7 +705,6 @@ &sdmmc {
- &sdhci {
- 	bus-width = <8>;
- 	mmc-hs400-1_8v;
--	mmc-hs400-enhanced-strobe;
- 	non-removable;
- 	status = "okay";
- };
--- 
-2.25.1
 
 
 _______________________________________________
