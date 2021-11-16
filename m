@@ -2,14 +2,14 @@ Return-Path: <SRS0=A1uQ=QD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDFD3C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 14:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2037C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 14:43:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 911FD63222
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 14:42:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 911FD63222
+	by mail.kernel.org (Postfix) with ESMTPS id 80EA063219
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 14:43:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 80EA063219
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,29 +18,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JrqJrVkzvS5M272M6Uwwcm2ctGSmTNEYoe2/ceHw80I=; b=DPOJjjQ/NSagha
-	5VWSF0zqUGdzcPimlTilIdwcfoSwjGNwmPY8XW5Fo3e2BmLqRDQjCV5kW/6KAio2qZf0GEvZ1yUQA
-	qtE/8m2qSXekkfscwGNFJpPTVwqv5VgKL71EpWgtLxloPs8m8BN6UlWiJXZHP7blPbBvRX5m7ltA8
-	20NMzTOpIp+sZg3X7/8eA1+2DGi8Zy8bRZNQBq7rRimsOc6UDKXrrR8Wz47za0zCUPl677b+1qzB1
-	toUe5OrJql11btYd5XzFiaP4ky/3NePDGeIdnTdw4tDijxBfOzMMOzKQQrIXmoLZSvaWhF1AENtjZ
-	DL/CZfJQ3fxvRB7BSFog==;
+	List-Owner; bh=wA0OKZX0bwJRN0MXqDNt0/udLFYJtzttRlVk2WayCTc=; b=GDkP/sV7uNlp1m
+	Ga6A4j1lQn30yi1Pdcejbgbe4bXeb3CvTljjSooJsdmY0CFASEN2+TED3I2SnFLWga4lxbhfwSA8a
+	bdis8SezWeg7HQ5AGuHOZr0ug8y4dTfrSYZ30Nw3ozd6y1+RgbJOwM67CHMnH/JmxNeLp7yaKedsd
+	FjqhRM45cQBxa9CcCa4sMCZAepJ1rbYS3NT5aEXfrwn26TddgC8Aw9Odz0ZPj1gCHfSGUtCdKDT+s
+	ayjuLUMCVi7B/WrNTq/PyN4wMaAmGDHeIeLgc6Rhr2t61TAOzK12L+ybETo8P7Dh9LMtIWQ97VrBo
+	01Vx3l419BePGLN2JNYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmzfK-001wze-7Z; Tue, 16 Nov 2021 14:42:30 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mmzfl-001xFn-Jm; Tue, 16 Nov 2021 14:42:57 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmzbs-001v3P-PN; Tue, 16 Nov 2021 14:39:08 +0000
+ id 1mmzbt-001v42-L3; Tue, 16 Nov 2021 14:39:10 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: andrzej.p) with ESMTPSA id D7AD71F45833
+ (Authenticated sender: andrzej.p) with ESMTPSA id A99831F457C7
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637073535; bh=RQVo539qp9iXNmEyDFS0l7nTXu60RvN92hP7trq2Pe8=;
+ t=1637073536; bh=6rLcj1IIg+lwQNzG+MUqi9j9BubttD570CB/lXjD2oE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pxRLtrjO8HBgdt5IjCk3AT7KfFVV50o463S0PErk7mk8zNX6kOYVd//UHl7kFNQ7M
- BbZcxUmgHfwUM5bTZ/vfiDlq9avBRiosf2yXy7enHPbxvK72KTK3D/fWs4ShiyK7Bn
- XhWSdo4X0kuC/ti/DbhVmhbJDgEl87S3eYj+4N+cPE0/fOelxIB59GFUeGTFNU3sgr
- a1K1vjfrHinb8e1P5NOAoFRbAmgOGIpq6Nsr/XVjkNvyGKjCAxdnM2XXCjxlkzfqCi
- SUxnUW+BYPe0JWTvCONtDU8EVbnUv2z4tG2CB10vC3geAWFVuj/5nGkQwY05KHYT66
- PjmPJRdoYWpyQ==
+ b=ME7IYH7MjFvOSN+HD0Vbo7w0ySA2ik/h1RzuTZ7vE48Fj4y++cD9O/jiKKulGCks7
+ vtVa872HF/dwBK0tu6PB/r/h5hkGyYPHVRAA07aQiQm00h0adpuax/kfxzhzEDFB+u
+ eZdMpFfa5pc+qfF9QcA20i7YRMj4c4OcqbqoQLobAudkB9ePXdQaLXS994dsiwnwT4
+ RC/ONw0p3izbkInrg44yNAhp62Rx1A8BMF6PLRP5TWQk+16KaeYQNeB5iuPEkj96Dk
+ Q5JiJKPpdLuffiLTSQxvonHVnl7ulh2pjlp8rxPwboEtMOWEGFUO1sun2D2OHy9UPK
+ MhOEMS22q5Ogg==
 From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -60,16 +60,16 @@ Cc: Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
  kernel@collabora.com
-Subject: [PATCH v8 08/12] media: hantro: Rename registers
-Date: Tue, 16 Nov 2021 15:38:38 +0100
-Message-Id: <20211116143842.75896-9-andrzej.p@collabora.com>
+Subject: [PATCH v8 09/12] media: hantro: Prepare for other G2 codecs
+Date: Tue, 16 Nov 2021 15:38:39 +0100
+Message-Id: <20211116143842.75896-10-andrzej.p@collabora.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211116143842.75896-1-andrzej.p@collabora.com>
 References: <20211116143842.75896-1-andrzej.p@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_063857_163152_3221A5FA 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20211116_063857_991607_E01052C0 
+X-CRM114-Status: GOOD (  23.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,137 +87,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add more consistency in the way registers are named.
+VeriSilicon Hantro G2 core supports other codecs besides hevc.
+Factor out some common code in preparation for vp9 support.
 
 Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 40 +++++++++----------
- drivers/staging/media/hantro/hantro_g2_regs.h | 28 ++++++-------
- 2 files changed, 34 insertions(+), 34 deletions(-)
+ drivers/staging/media/hantro/Makefile         |  1 +
+ drivers/staging/media/hantro/hantro.h         |  7 +++++
+ drivers/staging/media/hantro/hantro_drv.c     |  5 +++
+ drivers/staging/media/hantro/hantro_g2.c      | 27 ++++++++++++++++
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 31 -------------------
+ drivers/staging/media/hantro/hantro_g2_regs.h |  7 +++++
+ drivers/staging/media/hantro/hantro_hw.h      |  2 ++
+ 7 files changed, 49 insertions(+), 31 deletions(-)
+ create mode 100644 drivers/staging/media/hantro/hantro_g2.c
 
+diff --git a/drivers/staging/media/hantro/Makefile b/drivers/staging/media/hantro/Makefile
+index 90036831fec4..fe6d84871d07 100644
+--- a/drivers/staging/media/hantro/Makefile
++++ b/drivers/staging/media/hantro/Makefile
+@@ -12,6 +12,7 @@ hantro-vpu-y += \
+ 		hantro_g1_mpeg2_dec.o \
+ 		hantro_g2_hevc_dec.o \
+ 		hantro_g1_vp8_dec.o \
++		hantro_g2.o \
+ 		rockchip_vpu2_hw_jpeg_enc.o \
+ 		rockchip_vpu2_hw_h264_dec.o \
+ 		rockchip_vpu2_hw_mpeg2_dec.o \
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index dd5e56765d4e..d91eb2b1c509 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -369,6 +369,13 @@ static inline void vdpu_write(struct hantro_dev *vpu, u32 val, u32 reg)
+ 	writel(val, vpu->dec_base + reg);
+ }
+ 
++static inline void hantro_write_addr(struct hantro_dev *vpu,
++				     unsigned long offset,
++				     dma_addr_t addr)
++{
++	vdpu_write(vpu, addr & 0xffffffff, offset);
++}
++
+ static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
+ {
+ 	u32 val = readl(vpu->dec_base + reg);
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index fb82b9297a2b..bb72e5e208b7 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -907,6 +907,11 @@ static int hantro_probe(struct platform_device *pdev)
+ 	vpu->enc_base = vpu->reg_bases[0] + vpu->variant->enc_offset;
+ 	vpu->dec_base = vpu->reg_bases[0] + vpu->variant->dec_offset;
+ 
++	/**
++	 * TODO: Eventually allow taking advantage of full 64-bit address space.
++	 * Until then we assume the MSB portion of buffers' base addresses is
++	 * always 0 due to this masking operation.
++	 */
+ 	ret = dma_set_coherent_mask(vpu->dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+ 		dev_err(vpu->dev, "Could not set DMA coherent mask.\n");
+diff --git a/drivers/staging/media/hantro/hantro_g2.c b/drivers/staging/media/hantro/hantro_g2.c
+new file mode 100644
+index 000000000000..5f7bb27913de
+--- /dev/null
++++ b/drivers/staging/media/hantro/hantro_g2.c
+@@ -0,0 +1,27 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Hantro VPU codec driver
++ *
++ * Copyright (C) 2021 Collabora Ltd, Andrzej Pietrasiewicz <andrzej.p@collabora.com>
++ */
++
++#include "hantro_hw.h"
++#include "hantro_g2_regs.h"
++
++void hantro_g2_check_idle(struct hantro_dev *vpu)
++{
++	int i;
++
++	for (i = 0; i < 3; i++) {
++		u32 status;
++
++		/* Make sure the VPU is idle */
++		status = vdpu_read(vpu, G2_REG_INTERRUPT);
++		if (status & G2_REG_INTERRUPT_DEC_E) {
++			dev_warn(vpu->dev, "device still running, aborting");
++			status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
++			vdpu_write(vpu, status, G2_REG_INTERRUPT);
++		}
++	}
++}
++
 diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index 76a921163b9a..abae36f9b418 100644
+index abae36f9b418..f62608b0b408 100644
 --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
 +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -448,9 +448,9 @@ static int set_ref(struct hantro_ctx *ctx)
- 		if (dpb[i].rps == V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR)
- 			dpb_longterm_e |= BIT(V4L2_HEVC_DPB_ENTRIES_NUM_MAX - 1 - i);
+@@ -8,20 +8,6 @@
+ #include "hantro_hw.h"
+ #include "hantro_g2_regs.h"
  
--		hantro_write_addr(vpu, G2_REG_ADDR_REF(i), luma_addr);
--		hantro_write_addr(vpu, G2_REG_CHR_REF(i), chroma_addr);
--		hantro_write_addr(vpu, G2_REG_DMV_REF(i), mv_addr);
-+		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
-+		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
-+		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
- 	}
- 
- 	luma_addr = hantro_hevc_get_ref_buf(ctx, decode_params->pic_order_cnt_val);
-@@ -460,20 +460,20 @@ static int set_ref(struct hantro_ctx *ctx)
- 	chroma_addr = luma_addr + cr_offset;
- 	mv_addr = luma_addr + mv_offset;
- 
--	hantro_write_addr(vpu, G2_REG_ADDR_REF(i), luma_addr);
--	hantro_write_addr(vpu, G2_REG_CHR_REF(i), chroma_addr);
--	hantro_write_addr(vpu, G2_REG_DMV_REF(i++), mv_addr);
-+	hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
-+	hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
-+	hantro_write_addr(vpu, G2_REF_MV_ADDR(i++), mv_addr);
- 
--	hantro_write_addr(vpu, G2_ADDR_DST, luma_addr);
--	hantro_write_addr(vpu, G2_ADDR_DST_CHR, chroma_addr);
--	hantro_write_addr(vpu, G2_ADDR_DST_MV, mv_addr);
-+	hantro_write_addr(vpu, G2_OUT_LUMA_ADDR, luma_addr);
-+	hantro_write_addr(vpu, G2_OUT_CHROMA_ADDR, chroma_addr);
-+	hantro_write_addr(vpu, G2_OUT_MV_ADDR, mv_addr);
- 
- 	hantro_hevc_ref_remove_unused(ctx);
- 
- 	for (; i < V4L2_HEVC_DPB_ENTRIES_NUM_MAX; i++) {
--		hantro_write_addr(vpu, G2_REG_ADDR_REF(i), 0);
--		hantro_write_addr(vpu, G2_REG_CHR_REF(i), 0);
--		hantro_write_addr(vpu, G2_REG_DMV_REF(i), 0);
-+		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), 0);
-+		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), 0);
-+		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), 0);
- 	}
- 
- 	hantro_reg_write(vpu, &g2_refer_lterm_e, dpb_longterm_e);
-@@ -499,7 +499,7 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	src_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
- 	src_buf_len = vb2_plane_size(&src_buf->vb2_buf, 0);
- 
--	hantro_write_addr(vpu, G2_ADDR_STR, src_dma);
-+	hantro_write_addr(vpu, G2_STREAM_ADDR, src_dma);
- 	hantro_reg_write(vpu, &g2_stream_len, src_len);
- 	hantro_reg_write(vpu, &g2_strm_buffer_len, src_buf_len);
- 	hantro_reg_write(vpu, &g2_strm_start_offset, 0);
-@@ -508,12 +508,12 @@ static void set_buffers(struct hantro_ctx *ctx)
- 	/* Destination (decoded frame) buffer. */
- 	dst_dma = hantro_get_dec_buf_addr(ctx, &dst_buf->vb2_buf);
- 
--	hantro_write_addr(vpu, G2_RASTER_SCAN, dst_dma);
--	hantro_write_addr(vpu, G2_RASTER_SCAN_CHR, dst_dma + cr_offset);
--	hantro_write_addr(vpu, G2_ADDR_TILE_SIZE, ctx->hevc_dec.tile_sizes.dma);
--	hantro_write_addr(vpu, G2_TILE_FILTER, ctx->hevc_dec.tile_filter.dma);
--	hantro_write_addr(vpu, G2_TILE_SAO, ctx->hevc_dec.tile_sao.dma);
--	hantro_write_addr(vpu, G2_TILE_BSD, ctx->hevc_dec.tile_bsd.dma);
-+	hantro_write_addr(vpu, G2_RS_OUT_LUMA_ADDR, dst_dma);
-+	hantro_write_addr(vpu, G2_RS_OUT_CHROMA_ADDR, dst_dma + cr_offset);
-+	hantro_write_addr(vpu, G2_TILE_SIZES_ADDR, ctx->hevc_dec.tile_sizes.dma);
-+	hantro_write_addr(vpu, G2_TILE_FILTER_ADDR, ctx->hevc_dec.tile_filter.dma);
-+	hantro_write_addr(vpu, G2_TILE_SAO_ADDR, ctx->hevc_dec.tile_sao.dma);
-+	hantro_write_addr(vpu, G2_TILE_BSD_ADDR, ctx->hevc_dec.tile_bsd.dma);
+-#define HEVC_DEC_MODE	0xC
+-
+-#define BUS_WIDTH_32		0
+-#define BUS_WIDTH_64		1
+-#define BUS_WIDTH_128		2
+-#define BUS_WIDTH_256		3
+-
+-static inline void hantro_write_addr(struct hantro_dev *vpu,
+-				     unsigned long offset,
+-				     dma_addr_t addr)
+-{
+-	vdpu_write(vpu, addr & 0xffffffff, offset);
+-}
+-
+ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
+@@ -566,23 +552,6 @@ static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
+ 	hantro_write_addr(vpu, G2_HEVC_SCALING_LIST_ADDR, ctx->hevc_dec.scaling_lists.dma);
  }
  
- static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
-@@ -563,7 +563,7 @@ static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
- 			for (k = 0; k < 8; k++)
- 				*p++ = sc->scaling_list_32x32[i][8 * k + j];
- 
--	hantro_write_addr(vpu, HEVC_SCALING_LIST, ctx->hevc_dec.scaling_lists.dma);
-+	hantro_write_addr(vpu, G2_HEVC_SCALING_LIST_ADDR, ctx->hevc_dec.scaling_lists.dma);
- }
- 
- static void hantro_g2_check_idle(struct hantro_dev *vpu)
+-static void hantro_g2_check_idle(struct hantro_dev *vpu)
+-{
+-	int i;
+-
+-	for (i = 0; i < 3; i++) {
+-		u32 status;
+-
+-		/* Make sure the VPU is idle */
+-		status = vdpu_read(vpu, G2_REG_INTERRUPT);
+-		if (status & G2_REG_INTERRUPT_DEC_E) {
+-			dev_warn(vpu->dev, "device still running, aborting");
+-			status |= G2_REG_INTERRUPT_DEC_ABORT_E | G2_REG_INTERRUPT_DEC_IRQ_DIS;
+-			vdpu_write(vpu, status, G2_REG_INTERRUPT);
+-		}
+-	}
+-}
+-
+ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_dev *vpu = ctx->dev;
 diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
-index bb22fa921914..24b18f839ff8 100644
+index 24b18f839ff8..136ba6d98a1f 100644
 --- a/drivers/staging/media/hantro/hantro_g2_regs.h
 +++ b/drivers/staging/media/hantro/hantro_g2_regs.h
-@@ -177,20 +177,20 @@
- #define G2_REG_CONFIG_DEC_CLK_GATE_E		BIT(16)
- #define G2_REG_CONFIG_DEC_CLK_GATE_IDLE_E	BIT(17)
+@@ -27,6 +27,13 @@
+ #define G2_REG_INTERRUPT_DEC_IRQ_DIS	BIT(4)
+ #define G2_REG_INTERRUPT_DEC_E		BIT(0)
  
--#define G2_ADDR_DST		(G2_SWREG(65))
--#define G2_REG_ADDR_REF(i)	(G2_SWREG(67)  + ((i) * 0x8))
--#define G2_ADDR_DST_CHR		(G2_SWREG(99))
--#define G2_REG_CHR_REF(i)	(G2_SWREG(101) + ((i) * 0x8))
--#define G2_ADDR_DST_MV		(G2_SWREG(133))
--#define G2_REG_DMV_REF(i)	(G2_SWREG(135) + ((i) * 0x8))
--#define G2_ADDR_TILE_SIZE	(G2_SWREG(167))
--#define G2_ADDR_STR		(G2_SWREG(169))
--#define HEVC_SCALING_LIST	(G2_SWREG(171))
--#define G2_RASTER_SCAN		(G2_SWREG(175))
--#define G2_RASTER_SCAN_CHR	(G2_SWREG(177))
--#define G2_TILE_FILTER		(G2_SWREG(179))
--#define G2_TILE_SAO		(G2_SWREG(181))
--#define G2_TILE_BSD		(G2_SWREG(183))
-+#define G2_OUT_LUMA_ADDR		(G2_SWREG(65))
-+#define G2_REF_LUMA_ADDR(i)		(G2_SWREG(67)  + ((i) * 0x8))
-+#define G2_OUT_CHROMA_ADDR		(G2_SWREG(99))
-+#define G2_REF_CHROMA_ADDR(i)		(G2_SWREG(101) + ((i) * 0x8))
-+#define G2_OUT_MV_ADDR			(G2_SWREG(133))
-+#define G2_REF_MV_ADDR(i)		(G2_SWREG(135) + ((i) * 0x8))
-+#define G2_TILE_SIZES_ADDR		(G2_SWREG(167))
-+#define G2_STREAM_ADDR			(G2_SWREG(169))
-+#define G2_HEVC_SCALING_LIST_ADDR	(G2_SWREG(171))
-+#define G2_RS_OUT_LUMA_ADDR		(G2_SWREG(175))
-+#define G2_RS_OUT_CHROMA_ADDR		(G2_SWREG(177))
-+#define G2_TILE_FILTER_ADDR		(G2_SWREG(179))
-+#define G2_TILE_SAO_ADDR		(G2_SWREG(181))
-+#define G2_TILE_BSD_ADDR		(G2_SWREG(183))
++#define HEVC_DEC_MODE			0xc
++
++#define BUS_WIDTH_32			0
++#define BUS_WIDTH_64			1
++#define BUS_WIDTH_128			2
++#define BUS_WIDTH_256			3
++
+ #define g2_strm_swap		G2_DEC_REG(2, 28, 0xf)
+ #define g2_dirmv_swap		G2_DEC_REG(2, 20, 0xf)
  
- #define g2_strm_buffer_len	G2_DEC_REG(258, 0, 0xffffffff)
- #define g2_strm_start_offset	G2_DEC_REG(259, 0, 0xffffffff)
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 2f85430682d8..1d869abf90b2 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -312,4 +312,6 @@ void hantro_vp8_dec_exit(struct hantro_ctx *ctx);
+ void hantro_vp8_prob_update(struct hantro_ctx *ctx,
+ 			    const struct v4l2_ctrl_vp8_frame *hdr);
+ 
++void hantro_g2_check_idle(struct hantro_dev *vpu);
++
+ #endif /* HANTRO_HW_H_ */
 -- 
 2.25.1
 
