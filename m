@@ -2,90 +2,60 @@ Return-Path: <SRS0=A1uQ=QD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA5EDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 09:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69801C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 10:28:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A11561A4E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 09:13:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9A11561A4E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
+	by mail.kernel.org (Postfix) with ESMTPS id 2197563217
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Nov 2021 10:28:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2197563217
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=monE7xAbxYrqZ2eoAn8M5QAEf7KRMT9DchfVUa0sB88=; b=fPApMT945xdNzw
-	5ytZIKQjDlcETGSPI/+Q5J+fQEQH5o/irvJHnRrC+8b0MNYv2OQGF3lFo7SOrdD380IQYT8YKxico
-	WUeFFzDmCPU+zlkNXbs7lr5k5wmpI3S5cnBTU7i9kubaxo+IpjZCeEF8V3KLu8iwi4PqinSUWbywO
-	T1A0T0jgcciI6YB0V3eH8+oEqC0vBOMgdfiGj0DQ8l64EPbZ6YJlUfKI2U0UgNQhy7P/7wqrl0m1b
-	588mx6oC2CDr3Unc6eqJaTi9VMnfw7ZX1EA0/AkvEUvS9xymjca1W1L7zaUeDQLR45I5Qp110U88e
-	lF4395wC/9/YX+M7OddA==;
+	List-Owner; bh=vSFjORKj9unp2sFAnQ76r6naabIQKF0aVI4btc+a82w=; b=eqqcBs/sD6wVoy
+	Pk1ej4P0wRNRU6QnQcjzkif90XIUaRM3jf7GnNmHqvnZGr2ii/DNQnF9ISzXAPRiOre1G1hvF/86Z
+	zx79wVNL+OteQ1ouwTIWwCQwjKD+4uWI2JuncWXoo+T0DAb7cn+U+4Fxv7jcJI5U3SGIndJlSpPGp
+	MueS0Ivjfsds9aYV5h8fOCddWjVE+evPCriIGuxqQLJUh2lqMne6wOBgWYn9Iu1kXBbYObSQnCPMX
+	IXqAAgLdyrrOm1gpMALVQg84HLINSBUGXiOQj1Yuze+nk29LDqLKc8jVAk7JExxIbPkPN3xD0W7AE
+	LwaI8kSp6cUroMyb5AMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmuWp-000ssf-Gl; Tue, 16 Nov 2021 09:13:23 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmuWC-000sab-8L
- for linux-rockchip@lists.infradead.org; Tue, 16 Nov 2021 09:12:45 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id x15so84712457edv.1
- for <linux-rockchip@lists.infradead.org>; Tue, 16 Nov 2021 01:12:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qKVkYLH3mOowH9ihjxmK78ep8UuW+0rWvJVOqRYNCN4=;
- b=7kGEMByJoCTKLzBecErJpTJcSpp8TYNs47ih0FIsR8BboXBXDTVrz9X2CHpFsqCjAQ
- plsZumoB6V8NrmfWB1JsyuJXZnWAbzNtxDSNpn/0gfRd6V8sO3jemtgvSY4Px/Qc6YDQ
- yAQXq3KXBl17GyClcDfBnOL/5SWTW5Hi6jMbaEbSrID6AQDpQlWj+n5gvEWFykrk4g0G
- +qvZJGNrHafjgBIcO6zXohiXQAcaGBWM6teeU6CUBHznIvnWv2WlBvEpieT8TvNL2twO
- FkwDw11qnsNrKe2jvJTP/t3yO3TlQYFJ9ZyM77EhuwtbAwTqTAnVJ8DOGqTQEJoqWE30
- 6Ifg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qKVkYLH3mOowH9ihjxmK78ep8UuW+0rWvJVOqRYNCN4=;
- b=cmqr1wLhhMw73C0yuFWAFXbawng8dhz8u2vtQzuYw6i9+2NAtYI6kivrSJFENtQqQD
- mhcBk+M8qnefLpDbzImPvQkcNllvcchIGaR3ooZ0gBkffKD100fJLvlNPXzBxfUKy8n5
- GyEu07yve6Erls1hIh5WZJhTKOIOfctJfLiPC18cJYbSNNpoP0vSnR9h57aIv+KFXrtp
- krCjTR4QJHPjimkXftcSSikHnFvbfU/1y9PZs8VyRWzTlwaOCsQWuCfoDEQrqrCdc3xv
- ft+mOIehisQjPGv0cAP8tpgf3I7txDBDCqnt+nnd4AJ/hqGOUBZIeYkpRsjg/u20epGX
- rN+Q==
-X-Gm-Message-State: AOAM531QpXIVlMg+kQFPVbC0/P2B9zP1g4q9BAr1AsJkDAB+V9S00BxX
- 8+G4K18qDwtonH8cw7kjsdcbmT/u+bH/T9ATseG7hA==
-X-Google-Smtp-Source: ABdhPJyN+4pYB4ITOLCCI2vxwYTJycQb5pex8bjnakGV8Kf69ptx0Ib7k3LjS+VYdVHfNClgN8lvQe15xzC1yaFSyIw=
-X-Received: by 2002:a17:907:75f0:: with SMTP id
- jz16mr7942096ejc.77.1637053960836; 
- Tue, 16 Nov 2021 01:12:40 -0800 (PST)
+	id 1mmvhK-001C42-0e; Tue, 16 Nov 2021 10:28:18 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mmvhG-001C2Q-Si
+ for linux-rockchip@lists.infradead.org; Tue, 16 Nov 2021 10:28:16 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CC0D81FB;
+ Tue, 16 Nov 2021 02:28:12 -0800 (PST)
+Received: from [10.57.82.45] (unknown [10.57.82.45])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7EEBD3F766;
+ Tue, 16 Nov 2021 02:28:11 -0800 (PST)
+Message-ID: <ba499fa1-c5f7-2e69-2bd5-14677f385d5b@arm.com>
+Date: Tue, 16 Nov 2021 10:28:06 +0000
 MIME-Version: 1.0
-References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
- <20211105124242.27288-19-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211105124242.27288-19-andriy.shevchenko@linux.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 16 Nov 2021 10:12:30 +0100
-Message-ID: <CAMRc=Me20whtwS--+Zy2NLDGKH+wvxVtXFGMXj+E-ANun2U=qA@mail.gmail.com>
-Subject: Re: [PATCH v1 19/19] gpio: mockup: Switch to use kasprintf_strarray()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Jianqun Xu <jay.xu@rock-chips.com>,
- Linus Walleij <linus.walleij@linaro.org>, 
- Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>, 
- Andrew Morton <akpm@linux-foundation.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [Question] rk3399 vfio-pci/sr-iov support
+Content-Language: en-GB
+To: Adam Joseph <adam@westernsemico.com>
+Cc: Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Bamvor Jian Zhang <bamv2005@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, 
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
+ linux-pci@vger.kernel.org
+References: <CAMdYzYoPXWbv4zXet6c9JQEMbqcJi6ZEOui_n82NVmrqNLy_pw@mail.gmail.com>
+ <b597b9a6-870a-8fbd-6490-59734c04367f@arm.com>
+ <20211115115004.7d043c5b@snowden>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20211115115004.7d043c5b@snowden>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_011244_343730_0DD72F5A 
-X-CRM114-Status: GOOD (  18.88  )
+X-CRM114-CacheID: sfid-20211116_022815_017417_5F2A3955 
+X-CRM114-Status: GOOD (  23.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,72 +68,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 5, 2021 at 1:43 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> Since we have a generic helper, switch the module to use it.
-> No functional change intended.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
->  drivers/gpio/gpio-mockup.c | 23 +----------------------
->  1 file changed, 1 insertion(+), 22 deletions(-)
->
-> diff --git a/drivers/gpio/gpio-mockup.c b/drivers/gpio/gpio-mockup.c
-> index d26bff29157b..8943cea92764 100644
-> --- a/drivers/gpio/gpio-mockup.c
-> +++ b/drivers/gpio/gpio-mockup.c
-> @@ -491,27 +491,6 @@ static void gpio_mockup_unregister_pdevs(void)
->         }
->  }
->
-> -static __init char **gpio_mockup_make_line_names(const char *label,
-> -                                                unsigned int num_lines)
-> -{
-> -       unsigned int i;
-> -       char **names;
-> -
-> -       names = kcalloc(num_lines + 1, sizeof(char *), GFP_KERNEL);
-> -       if (!names)
-> -               return NULL;
-> -
-> -       for (i = 0; i < num_lines; i++) {
-> -               names[i] = kasprintf(GFP_KERNEL, "%s-%u", label, i);
-> -               if (!names[i]) {
-> -                       kfree_strarray(names, i);
-> -                       return NULL;
-> -               }
-> -       }
-> -
-> -       return names;
-> -}
-> -
->  static int __init gpio_mockup_register_chip(int idx)
->  {
->         struct property_entry properties[GPIO_MOCKUP_MAX_PROP];
-> @@ -538,7 +517,7 @@ static int __init gpio_mockup_register_chip(int idx)
->         properties[prop++] = PROPERTY_ENTRY_U16("nr-gpios", ngpio);
->
->         if (gpio_mockup_named_lines) {
-> -               line_names = gpio_mockup_make_line_names(chip_label, ngpio);
-> +               line_names = kasprintf_strarray(GFP_KERNEL, chip_label, ngpio);
->                 if (!line_names)
->                         return -ENOMEM;
->
-> --
-> 2.33.0
->
+On 2021-11-15 19:50, Adam Joseph wrote:
+> On Mon, 9 Dec 2019 14:07:02 +0000
+> Robin Murphy <robin.murphy@arm.com> wrote:
+>> On 09/12/2019 1:28 pm, Peter Geis wrote:
+>>> I'm back with more pcie fun on the rk3399.
+>>> I'm trying to get pcie passthrough working for a vm on the rk3399,
+>>> and have encountered some roadblocks.
+>>
+>> That much I can help with somewhat: the major impediment is that
+>> RK3399 doesn't have an IOMMU in front of PCIe.
+> 
+> For the more limited case of defending against attacks from
+> hostile/buggy firmware on PCIe devices: is it possible to use the
+> RK3399 PCIe "inbound address translation" support instead of an IOMMU?
 
-Acked-by: Bartosz Golaszewski <brgl@bgdev.pl>
+I guess it might be possible to reserve some memory with the new 
+"restricted-dma-pool" semantics then tweak the PCIe setup to match that. 
+It will mostly depend on what the RC does with transactions that don't 
+match any ATU entry. These kinds of registers typically only decode a 
+small number of naturally-aligned power-of-two-sized address ranges so 
+would not be able to support the kind of arbitrary translation/page 
+protection you'd need for something like VFIO.
 
-Feel free to take it with the rest of the series.
+> The RK3399 TRM, v1.3 "Part 2", section 17.5.5.2.1 explains how to
+> configure address translation (including a base/bounds check) for
+> inbound-to-SoC memory writes, but details are quite sparse.
+> 
+> Linux appears to not use this functionality; from
+> drivers/pci/controller/pcie-rockchip-host.c we can see that it
+> disables the base/bounds (sets them to the entire 32-bit space, which
+> is all RAM on RK3399 since it supports only 4GB) and passes all 32
+> bits of incoming memory writes:
+> 
+> static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
+>                                       int region_no, u8 num_pass_bits,
+> 	                             u32 lower_addr, u32 upper_addr)
+> ...
+> 
+> static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
+> {
+> ...
+> 	err = rockchip_pcie_prog_ib_atu(rockchip, 2, 32 - 1, 0x0, 0);
+> 
+> Is this a dead end?  If not I might pursue it, if I can get the
+> necessary documentation.  I couldn't find any mention of ATS in the
+> RK3399 manual; if the PCIe RC allows that then all bets are off anyways.
 
-Bart
+Knowing this RC, if it ever did see an ATS translated transaction header 
+it would probably SError the system, like it does for such outlandish 
+things as trying to probe config space behind bridges :)
+
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
