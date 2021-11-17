@@ -2,67 +2,57 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A0E2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:38:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20696C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:41:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14217610CA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:38:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 14217610CA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8362961BCF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:41:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8362961BCF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MBjjXtl9Mmy7JF8SvrqA0BFw3Nx+ZVc29KmoO00p0zk=; b=QLXZ4/hxMrwamC
-	l0KUAy+yQ2oZdu3XlHNgR6UlivEZW9Rr/ov2nfMB/UF4QhhNo4i0Bbpua7Lg92e7iRczA4G5rsUir
-	8ShIwOBZZ1aeryBSYkXuEOceOQZjLpvu+i92HRvfb824GC76LDYKV10UmMbncf+lIPQzMIRyc3cme
-	SXGA33KUzS/UkTdMEBEz9uMGEaF+vX6szLDUmnwsTAX+6+jP9dw7Iyx3ECY0J1nsQ7gDb4sbqg3rM
-	x/QGd3tKX0k1FoL5fZZSLUvY0UhtzqSjJayon9Rb+KgBzV+kid5oTljKHdvdLVLY6w5Ap7tgKlUXv
-	KETap4gUJUbc6Li8JmPA==;
+	List-Owner; bh=7jqlMVyPu77mECTqXCHFcw4Q+welrEXuHgdDrkaURh4=; b=Uh8EwE+XvTzk01
+	oVaTXSA5xWJUXltTC9L3rm0+jHEny82baHd5ILdQdzYA6qvbMpVWPBuFvycX43xpjm7OXXLkaVbMV
+	5RnpM05EfDgF99iUlVLWQm4hygcf1pjmSvd7OcxQUfSpMrwK5j3V4J9ONhlU4FI4uk4oRcJkK6xyM
+	0BTHzLDn6/BZJCqJLNhyOBMxjxZT+4mgvV2wGWpyBuhmTHz+luQ1RApAuDyQWNF9w7s3a+0lVsBRF
+	ugBu/VQVgqEMQiHXvndgi7KTgVuJhhLavwOzkqGZFhxtdF2WvGpGXfjghfTjZSFBYo/foPaE61SY1
+	F54VWhT0xMu5rLtrHfFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnM5P-005A7T-Ag; Wed, 17 Nov 2021 14:38:55 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mnM7x-005BKZ-JQ; Wed, 17 Nov 2021 14:41:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnM1M-0057eb-4N
- for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 14:34:45 +0000
-Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mnM0e-0005tg-F5; Wed, 17 Nov 2021 15:34:00 +0100
-Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <sha@pengutronix.de>)
- id 1mnM0b-001P6Q-3l; Wed, 17 Nov 2021 15:33:57 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: dri-devel@lists.freedesktop.org
+ id 1mnM6z-005Avr-1d; Wed, 17 Nov 2021 14:40:34 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mnM6t-0004he-Gm; Wed, 17 Nov 2021 15:40:27 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, kernel@pengutronix.de,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 07/12] dt-bindings: display: rockchip: Add binding for VOP2
-Date: Wed, 17 Nov 2021 15:33:42 +0100
-Message-Id: <20211117143347.314294-8-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 11/12] drm/rockchip: Make VOP driver optional
+Date: Wed, 17 Nov 2021 15:40:26 +0100
+Message-ID: <15744316.EhFUcUTHNY@diego>
+In-Reply-To: <20211117143347.314294-12-s.hauer@pengutronix.de>
 References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <20211117143347.314294-12-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::28
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_063444_204601_3ACB9A72 
-X-CRM114-Status: GOOD (  16.40  )
+X-CRM114-CacheID: sfid-20211117_064033_181689_56321F1C 
+X-CRM114-Status: GOOD (  23.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,138 +70,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 is found on newer Rockchip SoCs like the rk3568 or the rk3566.
-The binding differs slightly from the existing VOP binding, so add a new
-binding file for it.
+Am Mittwoch, 17. November 2021, 15:33:46 CET schrieb Sascha Hauer:
+> With upcoming VOP2 support VOP won't be the only choice anymore, so make
+> the VOP driver optional.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  arch/arm/configs/multi_v7_defconfig         | 1 +
+>  arch/arm64/configs/defconfig                | 1 +
+>  drivers/gpu/drm/rockchip/Kconfig            | 7 +++++++
+>  drivers/gpu/drm/rockchip/Makefile           | 3 ++-
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
+>  5 files changed, 12 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/multi_v7_defconfig
+> index c951aeed2138c..fc123e8f3e2f9 100644
+> --- a/arch/arm/configs/multi_v7_defconfig
+> +++ b/arch/arm/configs/multi_v7_defconfig
+> @@ -667,6 +667,7 @@ CONFIG_DRM_EXYNOS_DPI=y
+>  CONFIG_DRM_EXYNOS_DSI=y
+>  CONFIG_DRM_EXYNOS_HDMI=y
+>  CONFIG_DRM_ROCKCHIP=m
+> +CONFIG_ROCKCHIP_VOP=y
+>  CONFIG_ROCKCHIP_ANALOGIX_DP=y
+>  CONFIG_ROCKCHIP_DW_HDMI=y
+>  CONFIG_ROCKCHIP_DW_MIPI_DSI=y
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index f2e2b9bdd7024..a623386473dc9 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -682,6 +682,7 @@ CONFIG_DRM_EXYNOS_DSI=y
+>  CONFIG_DRM_EXYNOS_HDMI=y
+>  CONFIG_DRM_EXYNOS_MIC=y
+>  CONFIG_DRM_ROCKCHIP=m
+> +CONFIG_ROCKCHIP_VOP=y
+>  CONFIG_ROCKCHIP_ANALOGIX_DP=y
+>  CONFIG_ROCKCHIP_CDN_DP=y
+>  CONFIG_ROCKCHIP_DW_HDMI=y
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+> index 9f1ecefc39332..a1c4158259099 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -21,8 +21,15 @@ config DRM_ROCKCHIP
+>  
+>  if DRM_ROCKCHIP
+>  
+> +config ROCKCHIP_VOP
+> +	bool "Rockchip VOP driver"
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- .../display/rockchip/rockchip-vop2.yaml       | 114 ++++++++++++++++++
- 1 file changed, 114 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+would this benefit from a default-y ?
+For builds reusing preexisting .configs.
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-new file mode 100644
-index 0000000000000..d566c423f9d8d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-@@ -0,0 +1,114 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip SoC display controller (VOP2)
-+
-+description:
-+  VOP2 (Video Output Processor v2) is the display controller for the Rockchip
-+  series of SoCs which transfers the image data from a video memory
-+  buffer to an external LCD interface.
-+
-+maintainers:
-+  - Sandy Huang <hjc@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3568-vop
-+      - rockchip,rk3566-vop
-+
-+  reg:
-+    minItems: 1
-+    items:
-+      - description:
-+          Must contain one entry corresponding to the base address and length
-+          of the register space.
-+      - description:
-+          Can optionally contain a second entry corresponding to
-+          the CRTC gamma LUT address.
-+
-+  interrupts:
-+    maxItems: 1
-+    description:
-+      The VOP interrupt is shared by several interrupt sources, such as
-+      frame start (VSYNC), line flag and other status interrupts.
-+
-+  clocks:
-+    items:
-+      - description: Clock for ddr buffer transfer.
-+      - description: Clock for the ahb bus to R/W the phy regs.
-+      - description: Pixel clock for video port 0.
-+      - description: Pixel clock for video port 1.
-+      - description: Pixel clock for video port 2.
-+
-+  clock-names:
-+    items:
-+      - const: aclk_vop
-+      - const: hclk_vop
-+      - const: dclk_vp0
-+      - const: dclk_vp1
-+      - const: dclk_vp2
-+
-+  port:
-+    $ref: /schemas/graph.yaml#/properties/port
-+
-+  assigned-clocks:
-+    maxItems: 2
-+
-+  assigned-clock-rates:
-+    maxItems: 2
-+
-+  iommus:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3568-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/power/rk3568-power.h>
-+    vop: vop@fe040000 {
-+      compatible = "rockchip,rk3568-vop";
-+      reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
-+      interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&cru ACLK_VOP>,
-+               <&cru HCLK_VOP>,
-+               <&cru DCLK_VOP0>,
-+               <&cru DCLK_VOP1>,
-+               <&cru DCLK_VOP2>;
-+      clock-names = "aclk_vop",
-+                    "hclk_vop",
-+                    "dclk_vp0",
-+                    "dclk_vp1",
-+                    "dclk_vp2";
-+      power-domains = <&power RK3568_PD_VO>;
-+      iommus = <&vop_mmu>;
-+      vop_out: port {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        vp0_out_dsi0: endpoint@0 {
-+          reg = <0>;
-+          remote-endpoint = <&dsi0_in_vp0>;
-+        };
-+        vp0_out_hdmi: endpoint@1 {
-+          reg = <1>;
-+          remote-endpoint = <&dsi0_in_vp0>;
-+        };
-+      };
-+    };
--- 
-2.30.2
+
+Heiko
+
+> +	help
+> +	  This selects support for the VOP driver. You should enable it
+> +	  on all older SoCs up to RK3399.
+> +
+>  config ROCKCHIP_ANALOGIX_DP
+>  	bool "Rockchip specific extensions for Analogix DP driver"
+> +	depends on ROCKCHIP_VOP
+>  	help
+>  	  This selects support for Rockchip SoC specific extensions
+>  	  for the Analogix Core DP driver. If you want to enable DP
+> diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
+> index 17a9e7eb2130d..cd6e7bb5ce9c5 100644
+> --- a/drivers/gpu/drm/rockchip/Makefile
+> +++ b/drivers/gpu/drm/rockchip/Makefile
+> @@ -4,9 +4,10 @@
+>  # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+>  
+>  rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
+> -		rockchip_drm_gem.o rockchip_drm_vop.o rockchip_vop_reg.o
+> +		rockchip_drm_gem.o
+>  rockchipdrm-$(CONFIG_DRM_FBDEV_EMULATION) += rockchip_drm_fbdev.o
+>  
+> +rockchipdrm-$(CONFIG_ROCKCHIP_VOP) += rockchip_drm_vop.o rockchip_vop_reg.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
+>  rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> index e4ebe60b3cc1a..64fa5fd62c01a 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> @@ -473,7 +473,7 @@ static int __init rockchip_drm_init(void)
+>  	int ret;
+>  
+>  	num_rockchip_sub_drivers = 0;
+> -	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
+> +	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_ROCKCHIP_VOP);
+>  	ADD_ROCKCHIP_SUB_DRIVER(rockchip_lvds_driver,
+>  				CONFIG_ROCKCHIP_LVDS);
+>  	ADD_ROCKCHIP_SUB_DRIVER(rockchip_dp_driver,
+> 
+
+
+
 
 
 _______________________________________________
