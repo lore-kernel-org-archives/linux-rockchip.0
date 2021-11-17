@@ -2,66 +2,64 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E1D2C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 22:49:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 17727C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 22:49:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3307D610CA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 22:49:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3307D610CA
+	by mail.kernel.org (Postfix) with ESMTPS id E02106101C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 22:49:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E02106101C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LSiqR+G+zfTx6jdCZ+AhlQBOIvfzu4UIMkRmRtWaLXE=; b=Z9w4vjcKGNakKl
-	gQR4nQZoiv4BHS6C7sOYSeWZY4QtqwkqRCeBFY3xTpBTllvi1dmC5B9SQ4/KxgVA6/no6t3ULgMam
-	EVACbmAIXkCRjRN2zhTIBWgLH6AikKloAznfCWRW+usldHb5LHNQuhhZnpydfHyECwS0uSbnyAhH+
-	VamoHmCEv5Q2ob5yHWpk8uVnwSYF87c3Zb7J/j6+xfI0Lkyq8TXq0FPIbgNIw2Q3h8hJw0oVPTzey
-	htsV4Ve1K+EB1RcHS40xRKyMD+0MLVJHym2Ft+uqa9HnqtCSmssGTf8QiVL/X2xcuIvi7PBtxkhV6
-	hBe3oOaD0BcUMMklj/QQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SlAJoxEHKBmns372OYYZwUO0oI9MESyKc4KHnncE4Jk=; b=CaoG4hijMwhTQh
+	p6pewNg8Lc4JlODPCFUsU1hjdlGy67afUtkF5tg2kGXr692gDUEVrK9ezAKAiNcKjYeT4zm4chvjU
+	pnz9P/bU6ESGYApzyO4wTnglfGM5ehAOHV2nfikXdj0luTQBFZsdeNkALxPxMrZHrFerR/ctA0Zjb
+	gVU/Pw7FMH9EgqS7LEaeIgGQ98NF3fbuHt2kVnKe82coKF66Lx1g18gKJ6UiNM04YfuaWYvWOtAzW
+	tIuqoQBywkzk/16HO2TLY9pFX37AazFvFCM3qFcppe/BN3CD4szMI77SAyLFjUV2Lapt4aHEp8bGf
+	JjEAWvLHA9qUHn5uPnyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnTjp-006WU7-UP; Wed, 17 Nov 2021 22:49:09 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1mnTjt-006WVl-Ik; Wed, 17 Nov 2021 22:49:13 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnTjm-006WSg-NZ
- for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 22:49:08 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id
- gf14-20020a17090ac7ce00b001a7a2a0b5c3so6494017pjb.5
- for <linux-rockchip@lists.infradead.org>; Wed, 17 Nov 2021 14:49:06 -0800 (PST)
+ id 1mnTjp-006WTI-90
+ for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 22:49:11 +0000
+Received: by mail-pf1-x433.google.com with SMTP id x5so4074845pfr.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 17 Nov 2021 14:49:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rpv3ppQp4AdrKrqKBlCi3lv1TW7GOvkKLKXPxTB7n5Y=;
- b=CmCe9x1evLqmgJ2tkD2ei5zZtVLnugfocj/BWL7RE6407XI6b4ZrG/ZlsrU08i+PTk
- U6Xo63RXOuh7ZShFvqCihtigQwrvJUIoqc93GEZiSpBCmuFKYsC8uC+WQWJo0s7PUjfD
- 6cYU9y1AbXPsd0nSfQYWeT7eD3QkH//b5Sods=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=jas5Tr1JiB/SoUHal8S3Y4kBEi23oxdNkc4xorlYI00=;
+ b=IWTc7bgRvrEcHTa4YD8tGWPNVsvghUJb4RtRMZBp/FEUwaUtRimFwOv9oTM+ZYi+Dy
+ bzez/qw64wH0bW216fisndzmwIjeEviz5W/BRKxHTnZN6gwzwM9UtB6tyRZfTDW5GtBp
+ fW0gqp3NI3f25xgw4LgLZnVefkzFDq0TbzXYE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rpv3ppQp4AdrKrqKBlCi3lv1TW7GOvkKLKXPxTB7n5Y=;
- b=gVo064NfCKfqaUKbOP8fq4L5MACHA8u+mJpGpZVgvojd5vYgm42/DvsrGVlevCqW7/
- VY/MmdWzH+qatYlIeCFgMFMxvwu4WcUbIAM524lHJ7FmaaOAz6rmuN39YOQcTMfBZMR/
- ZMYrmILicZbeo4uzfuR90kzk9ACugaHpggRhhKpZFnp0klSZ6CtwgPvCOlmIjy8VnLmy
- zdWjshH8j6om+gjWGp1bFMRCSERrHBo/czU0VDlAKpRw6p6X4M5AhJ/CzYQjZfLcKOPs
- VFtbu8/+A8g019cGIzVXslL1Vj8AVqYEAqjVbEN8xNYmKAivti1J7KOH4nto9QUsckcP
- fTCw==
-X-Gm-Message-State: AOAM5330XaD4BOfsZ7kf6Z5VsAPtPSSuAcmT/4QZlZwSapnVfP+38+jl
- 1htXzhW4950DQjZ04JLvSQZGgw==
-X-Google-Smtp-Source: ABdhPJyLA0GlFJYLVXLkAb23Pd6HZXVzIX/Db1U2jnd4GET4hbncySrNQFQD8cVcGqeHii1Rq+eQxw==
-X-Received: by 2002:a17:90a:2843:: with SMTP id
- p3mr4320482pjf.176.1637189345652; 
- Wed, 17 Nov 2021 14:49:05 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=jas5Tr1JiB/SoUHal8S3Y4kBEi23oxdNkc4xorlYI00=;
+ b=Xsc70mFF7PC/UgOmcxMmq/bJvcVANCsQMPv0ZdwN7hPbbCx7j7cJFo4+RkEUAZW49S
+ KcZ6eHXAJ5sMZ084NDa/pp/8zYl/zLCHwxzUXdgTtce3EDw1rC724s/BbYFmdxIGEFWx
+ 76sr3NM3wFpoLCWcP/iQxv9Idmb/2xUW83xx7uL5T3Hs/UneUaXbS75YCmePCP46LQaV
+ 6GwvPixOIrlzzqG1SLoesob+ruSVN6ejycNEg7JcUDd3EEqBIn5edDl7C5IpUV/V3k2g
+ WX3UtTiov2B1Qj6SACpdWqRYIX0FouDlPePFbkex/9QItuplxw+D63UuORSqmVqkhj2H
+ +RwQ==
+X-Gm-Message-State: AOAM532J/pbrJND+hMXPiA+uTxKlbdmjD0uDbxsHQEBOUQ7e0Kwz2ikh
+ JPKg9iWmPAFV+Cc/QQLDjlSd4Q==
+X-Google-Smtp-Source: ABdhPJztI4eJrdjEiTlm8rUjgfXf5/4Qc114lhcWrXp9mjpk7Yh3dGAXK36pBleEvWp2B+BMVwSwzA==
+X-Received: by 2002:a63:5257:: with SMTP id s23mr7781806pgl.473.1637189347245; 
+ Wed, 17 Nov 2021 14:49:07 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:896b:df38:4eae:c568])
- by smtp.gmail.com with UTF8SMTPSA id w189sm620772pfd.164.2021.11.17.14.49.04
+ by smtp.gmail.com with UTF8SMTPSA id ip6sm6676844pjb.42.2021.11.17.14.49.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Nov 2021 14:49:05 -0800 (PST)
+ Wed, 17 Nov 2021 14:49:06 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>
@@ -73,14 +71,16 @@ Cc: "Kristian H . Kristensen" <hoegsberg@google.com>,
  linux-input@vger.kernel.org, Rob Clark <robdclark@chromium.org>,
  Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
  dri-devel@lists.freedesktop.org, Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 0/2] drm: Support input-boosted panel self-refresh exit
-Date: Wed, 17 Nov 2021 14:48:39 -0800
-Message-Id: <20211117224841.3442482-1-briannorris@chromium.org>
+Subject: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Date: Wed, 17 Nov 2021 14:48:40 -0800
+Message-Id: <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
 X-Mailer: git-send-email 2.34.0.rc1.387.gb447b232ab-goog
+In-Reply-To: <20211117224841.3442482-1-briannorris@chromium.org>
+References: <20211117224841.3442482-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_144906_831637_3DED6C57 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20211117_144909_361511_56DD1C3E 
+X-CRM114-Status: GOOD (  25.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,54 +116,259 @@ doing latency-sensitive activities:
    as soon as there is input activity. Many Chrome OS systems also ship
    with an input_handler boost that powers up the GPU.
 
-I implement the first bullet in this series, and I also compared with
-some out-of-tree patches for the second, to ensure this could be useful
-there too.
+This patch provides a small helper library that abstracts some of the
+input-subsystem details around picking which devices to listen to, and
+some other boilerplate. This will be used in the next patch to implement
+the first bullet: preemptive exit for panel self-refresh.
 
-Past work on upstreaming a variety of Chromebook display patches got
-held up for this particular feature, as there was some desire to make it
-a bit more generic, for one. See the latest here:
+Bits of this are adapted from code the Android and/or Chrome OS kernels
+have been carrying for a while.
 
-  https://lore.kernel.org/all/20180405095000.9756-25-enric.balletbo@collabora.com/
-  [PATCH v6 24/30] drm/rockchip: Disable PSR on input events
-
-I significantly rewrote this to adapt it to the new common
-drm_self_refresh_helpers and to add a new drm_input_helper thin library,
-so I only carry my own authorship on this series.
-
-Admittedly, this "drm_input_helper" library is barely DRM-specific at
-all, except that all display- and GPU-related input-watchers are likely
-to want to watch similar device behavior (unlike, say, rfkill or led
-input_handler code). The approximate consensus so far seems to be that
-(a) this isn't much code; if we need it for other subsystems (like,
-    cpufreq-boost), it's easy to implement similar logic
-(b) input subsystem maintainers think the existing input_handler
-    abstraction is good enough
-So, I keep the thin input helper in drivers/gpu/drm/.
-
-v1: https://lore.kernel.org/all/20211103234018.4009771-1-briannorris@chromium.org/
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
 
 Changes in v2:
  - Honor CONFIG_INPUT dependency, via new CONFIG_DRM_INPUT_HELPER
  - Remove void*; users should use container_of()
  - Document the callback context
- - Delay PSR re-entry, when already disabled
- - Allow default configuration via Kconfig and modparam
- - really CC dri-devel@lists.freedesktop.org (oops!)
 
-Brian Norris (2):
-  drm/input_helper: Add new input-handling helper
-  drm/self_refresh: Disable self-refresh on input events
-
- drivers/gpu/drm/Kconfig                   |  22 ++++
- drivers/gpu/drm/Makefile                  |   2 +
- drivers/gpu/drm/drm_input_helper.c        | 143 ++++++++++++++++++++++
- drivers/gpu/drm/drm_self_refresh_helper.c |  98 ++++++++++++---
- include/drm/drm_input_helper.h            |  41 +++++++
- 5 files changed, 292 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/Kconfig            |   6 ++
+ drivers/gpu/drm/Makefile           |   2 +
+ drivers/gpu/drm/drm_input_helper.c | 143 +++++++++++++++++++++++++++++
+ include/drm/drm_input_helper.h     |  41 +++++++++
+ 4 files changed, 192 insertions(+)
  create mode 100644 drivers/gpu/drm/drm_input_helper.c
  create mode 100644 include/drm/drm_input_helper.h
 
+diff --git a/drivers/gpu/drm/Kconfig b/drivers/gpu/drm/Kconfig
+index fb144617055b..381476b10a9d 100644
+--- a/drivers/gpu/drm/Kconfig
++++ b/drivers/gpu/drm/Kconfig
+@@ -79,9 +79,15 @@ config DRM_DEBUG_SELFTEST
+ 
+ 	  If in doubt, say "N".
+ 
++config DRM_INPUT_HELPER
++	def_bool y
++	depends on DRM_KMS_HELPER
++	depends on INPUT
++
+ config DRM_KMS_HELPER
+ 	tristate
+ 	depends on DRM
++	select DRM_INPUT_HELPER if INPUT
+ 	help
+ 	  CRTC helpers for KMS drivers.
+ 
+diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
+index 1c41156deb5f..9a6494aa45e6 100644
+--- a/drivers/gpu/drm/Makefile
++++ b/drivers/gpu/drm/Makefile
+@@ -56,6 +56,8 @@ drm_kms_helper-y := drm_bridge_connector.o drm_crtc_helper.o drm_dp_helper.o \
+ 		drm_atomic_state_helper.o drm_damage_helper.o \
+ 		drm_format_helper.o drm_self_refresh_helper.o drm_rect.o
+ 
++drm_kms_helper-$(CONFIG_DRM_INPUT_HELPER) += drm_input_helper.o
++
+ drm_kms_helper-$(CONFIG_DRM_PANEL_BRIDGE) += bridge/panel.o
+ drm_kms_helper-$(CONFIG_DRM_FBDEV_EMULATION) += drm_fb_helper.o
+ drm_kms_helper-$(CONFIG_DRM_KMS_CMA_HELPER) += drm_fb_cma_helper.o
+diff --git a/drivers/gpu/drm/drm_input_helper.c b/drivers/gpu/drm/drm_input_helper.c
+new file mode 100644
+index 000000000000..470f90865c7c
+--- /dev/null
++++ b/drivers/gpu/drm/drm_input_helper.c
+@@ -0,0 +1,143 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2021 Google, Inc.
++ */
++#include <linux/input.h>
++#include <linux/slab.h>
++
++#include <drm/drm_device.h>
++#include <drm/drm_input_helper.h>
++
++/**
++ * DOC: overview
++ *
++ * This helper library provides a thin wrapper around input handles, so that
++ * DRM drivers can easily perform domain-specific actions in response to user
++ * activity. e.g., if someone is moving a mouse, we're likely to want to
++ * display something soon, and we should exit panel self-refresh.
++ */
++
++static void drm_input_event(struct input_handle *handle, unsigned int type,
++			    unsigned int code, int value)
++{
++	struct drm_input_handler *handler = handle->handler->private;
++
++	handler->callback(handler);
++}
++
++static int drm_input_connect(struct input_handler *handler,
++			     struct input_dev *dev,
++			     const struct input_device_id *id)
++{
++	struct input_handle *handle;
++	int error;
++
++	handle = kzalloc(sizeof(struct input_handle), GFP_KERNEL);
++	if (!handle)
++		return -ENOMEM;
++
++	handle->dev = dev;
++	handle->handler = handler;
++	handle->name = "drm-input-helper";
++
++	error = input_register_handle(handle);
++	if (error)
++		goto err2;
++
++	error = input_open_device(handle);
++	if (error)
++		goto err1;
++
++	return 0;
++
++err1:
++	input_unregister_handle(handle);
++err2:
++	kfree(handle);
++	return error;
++}
++
++static void drm_input_disconnect(struct input_handle *handle)
++{
++	input_close_device(handle);
++	input_unregister_handle(handle);
++	kfree(handle);
++}
++
++static const struct input_device_id drm_input_ids[] = {
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
++			 INPUT_DEVICE_ID_MATCH_ABSBIT,
++		.evbit = { BIT_MASK(EV_ABS) },
++		.absbit = { [BIT_WORD(ABS_MT_POSITION_X)] =
++			    BIT_MASK(ABS_MT_POSITION_X) |
++			    BIT_MASK(ABS_MT_POSITION_Y) },
++	}, /* multi-touch touchscreen */
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
++		.evbit = { BIT_MASK(EV_ABS) },
++		.absbit = { [BIT_WORD(ABS_X)] = BIT_MASK(ABS_X) }
++
++	}, /* stylus or joystick device */
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
++		.evbit = { BIT_MASK(EV_KEY) },
++		.keybit = { [BIT_WORD(BTN_LEFT)] = BIT_MASK(BTN_LEFT) },
++	}, /* pointer (e.g. trackpad, mouse) */
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT,
++		.evbit = { BIT_MASK(EV_KEY) },
++		.keybit = { [BIT_WORD(KEY_ESC)] = BIT_MASK(KEY_ESC) },
++	}, /* keyboard */
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
++			 INPUT_DEVICE_ID_MATCH_KEYBIT,
++		.evbit = { BIT_MASK(EV_KEY) },
++		.keybit = {[BIT_WORD(BTN_JOYSTICK)] = BIT_MASK(BTN_JOYSTICK) },
++	}, /* joysticks not caught by ABS_X above */
++	{
++		.flags = INPUT_DEVICE_ID_MATCH_EVBIT |
++			 INPUT_DEVICE_ID_MATCH_KEYBIT,
++		.evbit = { BIT_MASK(EV_KEY) },
++		.keybit = { [BIT_WORD(BTN_GAMEPAD)] = BIT_MASK(BTN_GAMEPAD) },
++	}, /* gamepad */
++	{ },
++};
++
++int drm_input_handle_register(struct drm_device *dev,
++			      struct drm_input_handler *handler)
++{
++	int ret;
++
++	if (!handler->callback)
++		return -EINVAL;
++
++	handler->handler.event = drm_input_event;
++	handler->handler.connect = drm_input_connect;
++	handler->handler.disconnect = drm_input_disconnect;
++	handler->handler.name = kasprintf(GFP_KERNEL, "drm-input-helper-%s",
++					  dev_name(dev->dev));
++	if (!handler->handler.name)
++		return -ENOMEM;
++
++	handler->handler.id_table = drm_input_ids;
++	handler->handler.private = handler;
++
++	ret = input_register_handler(&handler->handler);
++	if (ret)
++		goto err;
++
++	return 0;
++
++err:
++	kfree(handler->handler.name);
++	return ret;
++}
++EXPORT_SYMBOL(drm_input_handle_register);
++
++void drm_input_handle_unregister(struct drm_input_handler *handler)
++{
++	input_unregister_handler(&handler->handler);
++	kfree(handler->handler.name);
++}
++EXPORT_SYMBOL(drm_input_handle_unregister);
+diff --git a/include/drm/drm_input_helper.h b/include/drm/drm_input_helper.h
+new file mode 100644
+index 000000000000..7904f397b934
+--- /dev/null
++++ b/include/drm/drm_input_helper.h
+@@ -0,0 +1,41 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (C) 2021 Google, Inc.
++ */
++#ifndef __DRM_INPUT_HELPER_H__
++#define __DRM_INPUT_HELPER_H__
++
++#include <linux/input.h>
++
++struct drm_device;
++
++struct drm_input_handler {
++	/*
++	 * Callback to call for input activity. Will be called in an atomic
++	 * context.
++	 */
++	void (*callback)(struct drm_input_handler *handler);
++
++	struct input_handler handler;
++};
++
++#if defined(CONFIG_DRM_INPUT_HELPER)
++
++int drm_input_handle_register(struct drm_device *dev,
++			      struct drm_input_handler *handler);
++void drm_input_handle_unregister(struct drm_input_handler *handler);
++
++#else /* !CONFIG_DRM_INPUT_HELPER */
++
++static inline int drm_input_handle_register(struct drm_device *dev,
++					    struct drm_input_handler *handler)
++{
++	return 0;
++}
++
++static inline void
++drm_input_handle_unregister(struct drm_input_handler *handler) {}
++
++#endif /* CONFIG_DRM_INPUT_HELPER */
++
++#endif /* __DRM_INPUT_HELPER_H__ */
 -- 
 2.34.0.rc1.387.gb447b232ab-goog
 
