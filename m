@@ -2,76 +2,56 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43C06C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2943BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:16:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A17D61212
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:14:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0A17D61212
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id C31866187F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:16:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C31866187F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tZwvlPtMDQ5AGNdUMxoL2gm60P+zKwDSk7JJhSkDWp0=; b=AQiagE/CgvzYWP
-	YHIkLTk0UwoiTNrScUaKI5DGtwBrOHDv9SOnjEB/CeXboio8vH9UwMgiwXQt1nJR2aWWmga4AsAXG
-	Dhdu9yCTFTA/rI7NAnC4LydCgUsbxh16Qy5a87pMNFLt8Z7l6z5KH/d+k6E+c3iCyvUMn8coCnJui
-	qiNTbDqxsX8ngIk1mZVIPmwVmva54bJIGyQDQPtD+vA60KRL8mmoKyDXVz1vvWoA4/kbvrS2fj7D4
-	2prdfrkZ4KojMXnwUTIbwkf+yGFojD5dQZYqrYfB3fJ/10/z5ZExe9z4YuCyGU6jRqYJOR/xc/LxG
-	7RNs9aTdyaA8QCmjtnNg==;
+	List-Owner; bh=YMsnsFkduSGoBRUCFibybPogEL+xDdTnATZAkmkiSn8=; b=3KrihwbmVU203p
+	8rz6OdrYC/qQTmYlG9JrP6HLlZLGrsnCNwZHfcF3r6AqCIwRBBohmfDQ7ZhEu/rhhZE2GIL7JZZCY
+	mzgyeQHNwI9udxaGH65VwH4uOPrqrpFvbOUdkAUjwmtDVnhZ6+Ha9M8yZ5weJ3FJ1gmdRrt7Sy+nZ
+	HUdbbiCHUZxIWOSnc0mKJUVKOb1ZYS/qMNLrBzsD6o9WX01kSRQxBtGvVt4rwSJdDmUg+03goMzDB
+	hpsfsJspDZcRVmt8wCNE+Cjjhxm1IAsJlwvdPBfINozWaNT7wkdz1UsoIUG7UGCmkm1jHQI4Ckhr9
+	SxmvvpK+Ciup6Mi0C1oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnMdN-005L07-CH; Wed, 17 Nov 2021 15:14:01 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mnMfx-005Ldm-Sw; Wed, 17 Nov 2021 15:16:41 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnMd9-005KwI-Tg; Wed, 17 Nov 2021 15:13:49 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9847E6187F;
- Wed, 17 Nov 2021 15:13:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637162027;
- bh=tZcW3zqZ2p/birQX+yJqTxjMCnP2s9t1QtRYxsWFEvg=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=oIOu6k7U8x9r4zq5aO5Af2XLg9EDYk/zb+z2ROUdG1bD9jpEslt+h6NtPF6+RhN+P
- Jq2PuElAE7Dbjw2ifM1uH+waLOktg3qXhuq499SSCevqiBErqmCUOYxkZOFpklLmeW
- 6J01yU8SK7SmRVRhkxlzFpJCZcZ8Veq+UMOt/zP7FrEt54R0Wzf/M2CFbs2PAXa5kA
- 3Ls0bA13u5oKnMOuy+20Ys7uvWekxEBxXKD5z4YpSzRLp+/tnY13486JwjKfWQ6Z9S
- 2yckAJX0jtioZahzfU6A8E2jHcb9WgKxHY7LAP//J66xlIGfQcwmmWxDOa+NnqGeI5
- gc3LetSR2xpFQ==
-Received: by mail-ed1-f48.google.com with SMTP id b15so12654648edd.7;
- Wed, 17 Nov 2021 07:13:47 -0800 (PST)
-X-Gm-Message-State: AOAM532ZU+M1AZ5pprF8/REnKiK1GxBCTwMoZkZFpAoLb1brkFckoJKP
- D17DZVNiHXIu/inTf2a+gR6nywk01AFWdDVicQ==
-X-Google-Smtp-Source: ABdhPJxbUqiZ3x7XGc+stsRtoSA5zmeY1KdzaMhPnAoOA8KUFon4ufB68HU/KiMA99G4V5+M/1oDu9//tiRxhtlVKTA=
-X-Received: by 2002:a17:907:a411:: with SMTP id
- sg17mr22354933ejc.84.1637162025900; 
- Wed, 17 Nov 2021 07:13:45 -0800 (PST)
-MIME-Version: 1.0
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <20211117143347.314294-10-s.hauer@pengutronix.de>
-In-Reply-To: <20211117143347.314294-10-s.hauer@pengutronix.de>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 17 Nov 2021 09:13:33 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
-Message-ID: <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
-Subject: Re: [PATCH 09/12] arm64: dts: rockchip: rk356x: Add HDMI nodes
+ id 1mnMfj-005Lae-DR; Wed, 17 Nov 2021 15:16:28 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mnMfh-0004un-MX; Wed, 17 Nov 2021 16:16:25 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, 
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Peter Geis <pgwipeout@gmail.com>
+ Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH 11/12] drm/rockchip: Make VOP driver optional
+Date: Wed, 17 Nov 2021 16:16:24 +0100
+Message-ID: <2763206.1bNW4tK36S@diego>
+In-Reply-To: <20211117145054.GL6556@pengutronix.de>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <15744316.EhFUcUTHNY@diego> <20211117145054.GL6556@pengutronix.de>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_071348_014589_2A23AA38 
-X-CRM114-Status: GOOD (  16.45  )
+X-CRM114-CacheID: sfid-20211117_071627_488096_3D923C12 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,127 +64,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 8:34 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
->
-> Add support for the HDMI port found on RK3568.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 65 ++++++++++++++++++++++++
->  1 file changed, 65 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 6ebf7c14e096a..53be61a7ce595 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -472,18 +472,36 @@ vp0: port@0 {
->                                 #address-cells = <1>;
->                                 #size-cells = <0>;
->                                 reg = <0>;
-> +
-> +                               vp0_out_hdmi: endpoint@0 {
-> +                                       reg = <0>;
-> +                                       remote-endpoint = <&hdmi_in_vp0>;
-> +                                       status = "disabled";
-> +                               };
->                         };
->
->                         vp1: port@1 {
->                                 #address-cells = <1>;
->                                 #size-cells = <0>;
->                                 reg = <1>;
-> +
-> +                               vp1_out_hdmi: endpoint@0 {
-> +                                       reg = <0>;
-> +                                       remote-endpoint = <&hdmi_in_vp1>;
-> +                                       status = "disabled";
-> +                               };
->                         };
->
->                         vp2: port@2 {
->                                 #address-cells = <1>;
->                                 #size-cells = <0>;
->                                 reg = <2>;
-> +
-> +                               vp2_out_hdmi: endpoint@0 {
-> +                                       reg = <0>;
-> +                                       remote-endpoint = <&hdmi_in_vp2>;
-> +                                       status = "disabled";
-> +                               };
->                         };
->                 };
->         };
-> @@ -499,6 +517,53 @@ vop_mmu: iommu@fe043e00 {
->                 status = "disabled";
->         };
->
-> +       hdmi: hdmi@fe0a0000 {
-> +               compatible = "rockchip,rk3568-dw-hdmi";
-> +               reg = <0x0 0xfe0a0000 0x0 0x20000>;
-> +               interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-> +               clocks = <&cru PCLK_HDMI_HOST>,
-> +                        <&cru CLK_HDMI_SFR>,
-> +                        <&cru CLK_HDMI_CEC>,
-> +                        <&cru HCLK_VOP>;
-> +               clock-names = "iahb", "isfr", "cec", "hclk";
-> +               power-domains = <&power RK3568_PD_VO>;
-> +               reg-io-width = <4>;
-> +               rockchip,grf = <&grf>;
-> +               #sound-dai-cells = <0>;
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
-> +               status = "disabled";
-> +
-> +               ports {
-> +                       #address-cells = <1>;
-> +                       #size-cells = <0>;
-> +
-> +                       hdmi_in: port@0 {
+Am Mittwoch, 17. November 2021, 15:50:54 CET schrieb Sascha Hauer:
+> On Wed, Nov 17, 2021 at 03:40:26PM +0100, Heiko St=FCbner wrote:
+> > Am Mittwoch, 17. November 2021, 15:33:46 CET schrieb Sascha Hauer:
+> > > With upcoming VOP2 support VOP won't be the only choice anymore, so m=
+ake
+> > > the VOP driver optional.
+> > > =
+
+> > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > > ---
+> > >  arch/arm/configs/multi_v7_defconfig         | 1 +
+> > >  arch/arm64/configs/defconfig                | 1 +
+> > >  drivers/gpu/drm/rockchip/Kconfig            | 7 +++++++
+> > >  drivers/gpu/drm/rockchip/Makefile           | 3 ++-
+> > >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
+> > >  5 files changed, 12 insertions(+), 2 deletions(-)
+> > > =
+
+> > > diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/m=
+ulti_v7_defconfig
+> > > index c951aeed2138c..fc123e8f3e2f9 100644
+> > > --- a/arch/arm/configs/multi_v7_defconfig
+> > > +++ b/arch/arm/configs/multi_v7_defconfig
+> > > @@ -667,6 +667,7 @@ CONFIG_DRM_EXYNOS_DPI=3Dy
+> > >  CONFIG_DRM_EXYNOS_DSI=3Dy
+> > >  CONFIG_DRM_EXYNOS_HDMI=3Dy
+> > >  CONFIG_DRM_ROCKCHIP=3Dm
+> > > +CONFIG_ROCKCHIP_VOP=3Dy
+> > >  CONFIG_ROCKCHIP_ANALOGIX_DP=3Dy
+> > >  CONFIG_ROCKCHIP_DW_HDMI=3Dy
+> > >  CONFIG_ROCKCHIP_DW_MIPI_DSI=3Dy
+> > > diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defcon=
+fig
+> > > index f2e2b9bdd7024..a623386473dc9 100644
+> > > --- a/arch/arm64/configs/defconfig
+> > > +++ b/arch/arm64/configs/defconfig
+> > > @@ -682,6 +682,7 @@ CONFIG_DRM_EXYNOS_DSI=3Dy
+> > >  CONFIG_DRM_EXYNOS_HDMI=3Dy
+> > >  CONFIG_DRM_EXYNOS_MIC=3Dy
+> > >  CONFIG_DRM_ROCKCHIP=3Dm
+> > > +CONFIG_ROCKCHIP_VOP=3Dy
+> > >  CONFIG_ROCKCHIP_ANALOGIX_DP=3Dy
+> > >  CONFIG_ROCKCHIP_CDN_DP=3Dy
+> > >  CONFIG_ROCKCHIP_DW_HDMI=3Dy
+> > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockc=
+hip/Kconfig
+> > > index 9f1ecefc39332..a1c4158259099 100644
+> > > --- a/drivers/gpu/drm/rockchip/Kconfig
+> > > +++ b/drivers/gpu/drm/rockchip/Kconfig
+> > > @@ -21,8 +21,15 @@ config DRM_ROCKCHIP
+> > >  =
+
+> > >  if DRM_ROCKCHIP
+> > >  =
+
+> > > +config ROCKCHIP_VOP
+> > > +	bool "Rockchip VOP driver"
+> > =
+
+> > would this benefit from a default-y ?
+> > For builds reusing preexisting .configs.
+> =
+
+> I enabled CONFIG_ROCKCHIP_VOP for all configs in the tree that enable
+> CONFIG_DRM_ROCKCHIP, so defconfig users shouldn't see any surprises.
+> That won't help users of custom configs of course.
+> =
+
+> I don't know what's preferred in such cases, I can change to default-y
+> if you like.
+
+default-y would keep the behaviour identical for all existing configs I
+guess and right now vop(1) is still the most used variant and will stay
+that way for a while longer, so I guess my preference would be for going
+that route - also so that we don't drown in "my display stopped working"
+during 5.17 ;-)
 
 
-The schema says there is only 1 'port' node. Please run schema
-validation when making DT changes.
+Heiko
 
-However, an HDMI bridge should also define an output port to a
-connector node (or another bridge). So the fix is to allow 'port@0'
-and add an output port.
 
-> +                               reg = <0>;
-> +                               #address-cells = <1>;
-> +                               #size-cells = <0>;
-> +
-> +                               hdmi_in_vp0: endpoint@0 {
-> +                                       reg = <0>;
-> +                                       remote-endpoint = <&vp0_out_hdmi>;
-> +                                       status = "disabled";
-> +                               };
-> +
-> +                               hdmi_in_vp1: endpoint@1 {
-> +                                       reg = <1>;
-> +                                       remote-endpoint = <&vp1_out_hdmi>;
-> +                                       status = "disabled";
-> +                               };
-> +
-> +                               hdmi_in_vp2: endpoint@2 {
-> +                                       reg = <2>;
-> +                                       remote-endpoint = <&vp2_out_hdmi>;
-> +                                       status = "disabled";
-> +                               };
-> +                       };
-> +               };
-> +       };
-> +
->         qos_gpu: qos@fe128000 {
->                 compatible = "rockchip,rk3568-qos", "syscon";
->                 reg = <0x0 0xfe128000 0x0 0x20>;
-> --
-> 2.30.2
->
 
 _______________________________________________
 Linux-rockchip mailing list
