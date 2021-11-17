@@ -2,43 +2,43 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92911C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 424C4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:34:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BA1861353
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:34:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5BA1861353
+	by mail.kernel.org (Postfix) with ESMTPS id 08FFC60E78
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 14:34:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 08FFC60E78
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4GhDyDjihCFlNH30r6nf047IWZNjTlCEUsEHcsrxqa0=; b=lCUzzBrUqqbiY+
-	qL/JZt5qEhVftnjiHKo050jyp50mDNKsUSkLdYBafq3xLtJjlhvUYrcskyKEIb8eZJkQkqqbh78fZ
-	97W6/40mhc2WdkfXsImBqrjDljfIILCn2JgTurWWaxBZkS4U5P0kZQgZnA8444z6ps+OPeE/SO46P
-	YhBzzu232h4rJRw/zh5/vtVZ7EZweYDqle7QaZE0EF8wR5r7/SfHqcEtNP/hIa6tCrpYn/o9h6M7c
-	dSClZ7c8i7uTYBuT/FmGF8cU7SGmtJslKxZwFuDPOoiYRSSYAKFEgYVB18vMNE1AlAkg2IS9sprST
-	S/9mLrxzICEiI97/WlaA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wsaaG2caod2ICRf9Bh/eAaYFBnSrGQotf/XrLbOhoMg=; b=FTLaZJ9c1G/EG7
+	B9wzigaSIBNsINPwHOoXyd0JPL4NRfImz1lPJqKPmZLvCmnqJSxj4s8MTaizZHf0+0KO3GbTDm5Sc
+	R7CgWsNveQf2KVbs2NSo7wp8z/sVxSNcGjpp+H2EL1DoEYFrlbNhvzP/1G6KAa4Og6/RsymCtLuiz
+	O5OCjLob7YF7f3+7CeaKusKt/8JH3X9mHrVWYIDV0cam/2dVhg7DFDIC6BIys1nVvuhONifHZ0nXI
+	z5XaIUSBxsd8CrQTG8YPNilc2pHMLdd24xgTbEx9vyvgkLkgYDAhxL0b0hXjsd9g0hrInFX2DaCW6
+	9XOm9uON4tSrLJTzFyjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnM17-0057Yo-Hc; Wed, 17 Nov 2021 14:34:29 +0000
+	id 1mnM1P-0057gN-PX; Wed, 17 Nov 2021 14:34:47 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnM0i-0057PN-AN
- for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 14:34:05 +0000
+ id 1mnM0k-0057QP-CZ
+ for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 14:34:07 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1mnM0e-0005tZ-F7; Wed, 17 Nov 2021 15:34:00 +0100
+ id 1mnM0h-0005th-5s; Wed, 17 Nov 2021 15:34:03 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1mnM0a-001P66-W3; Wed, 17 Nov 2021 15:33:56 +0100
+ id 1mnM0b-001P6T-4S; Wed, 17 Nov 2021 15:33:57 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -48,10 +48,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v1 00/12] drm/rockchip: RK356x VOP2 support
-Date: Wed, 17 Nov 2021 15:33:35 +0100
-Message-Id: <20211117143347.314294-1-s.hauer@pengutronix.de>
+Subject: [PATCH 08/12] arm64: dts: rockchip: rk356x: Add VOP2 nodes
+Date: Wed, 17 Nov 2021 15:33:43 +0100
+Message-Id: <20211117143347.314294-9-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20211117143347.314294-1-s.hauer@pengutronix.de>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::28
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -59,8 +61,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_063404_364218_48C9E88A 
-X-CRM114-Status: GOOD (  17.08  )
+X-CRM114-CacheID: sfid-20211117_063406_441916_34CBE6D8 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +80,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds initial graphics support for the Rockchip RK356[68]
-SoCs.  Graphics support is based around the VOP2 controller which
-replaces the VOP controller found on earlier Rockchip SoCs. The driver
-has been tested with HDMI support included in this series and MIPI-DSI
-which is not included because it needs some more work. The driver is
-taken from the downstream Rockchip kernel and heavily polished, most non
-standard features have been removed for now. I tested the driver with
-the libdrm modetest utility and also with weston with both pixman and
-panfrost driver support. Michael Riesch reported the driver to work on
-the RK3566 as well, but device tree support for this SoC is not yet
-included in this series.
+The VOP2 is the display output controller on the RK3568. Add the node
+for it to the dtsi file along with the required display-subsystem node
+and the iommu node.
 
-The HDMI changes are based on patches from Benjamin Gaignard, but
-modified a bit as I found out that the HDMI port on the RK3568 only
-needs one additional clock, not two. Also I added regulator support
-which is needed to get the HDMI up on the rk3568-EVB board.
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 52 ++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-All review and testing feedback welcome
-
-Sascha
-
-Benjamin Gaignard (2):
-  dt-bindings: display: rockchip: Add compatible for rk3568 HDMI
-  drm/rockchip: dw_hdmi: add rk3568 support
-
-Sascha Hauer (10):
-  drm/rockchip: dw_hdmi: Do not leave clock enabled in error case
-  drm/rockchip: dw_hdmi: add regulator support
-  of: graph: Allow disabled endpoints
-  dt-bindings: of: graph: Allow disabled endpoints
-  dt-bindings: display: rockchip: Add binding for VOP2
-  arm64: dts: rockchip: rk356x: Add VOP2 nodes
-  arm64: dts: rockchip: rk356x: Add HDMI nodes
-  arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
-  drm/rockchip: Make VOP driver optional
-  drm: rockchip: Add VOP2 driver
-
- .../display/rockchip/rockchip,dw-hdmi.yaml    |   12 +-
- .../display/rockchip/rockchip-vop2.yaml       |  114 +
- .../bindings/media/video-interfaces.yaml      |    8 +
- arch/arm/configs/multi_v7_defconfig           |    1 +
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     |   24 +
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  117 +
- arch/arm64/configs/defconfig                  |    1 +
- drivers/gpu/drm/drm_of.c                      |    6 +-
- drivers/gpu/drm/rockchip/Kconfig              |   13 +
- drivers/gpu/drm/rockchip/Makefile             |    4 +-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  137 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    3 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   22 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |  774 ++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 3611 +++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |  916 +++++
- drivers/of/property.c                         |    3 +
- 17 files changed, 5731 insertions(+), 35 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
- create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
- create mode 100644 drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 46d9552f60284..6ebf7c14e096a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -447,6 +447,58 @@ gmac1_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
+ 
++	display_subsystem: display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop_out>;
++	};
++
++	vop: vop@fe040000 {
++		compatible = "rockchip,rk3568-vop";
++		reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
++		reg-names = "regs", "gamma_lut";
++		rockchip,grf = <&grf>;
++		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>, <&cru DCLK_VOP0>, <&cru DCLK_VOP1>, <&cru DCLK_VOP2>;
++		clock-names = "aclk_vop", "hclk_vop", "dclk_vp0", "dclk_vp1", "dclk_vp2";
++		iommus = <&vop_mmu>;
++		power-domains = <&power RK3568_PD_VO>;
++		status = "disabled";
++
++		vop_out: ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			vp0: port@0 {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <0>;
++			};
++
++			vp1: port@1 {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <1>;
++			};
++
++			vp2: port@2 {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				reg = <2>;
++			};
++		};
++	};
++
++	vop_mmu: iommu@fe043e00 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfe043e00 0x0 0x100>, <0x0 0xfe043f00 0x0 0x100>;
++		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vop_mmu";
++		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
++		clock-names = "aclk", "iface";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
 2.30.2
 
