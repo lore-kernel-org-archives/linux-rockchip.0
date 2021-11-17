@@ -2,56 +2,77 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2943BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EE5DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:20:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C31866187F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:16:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C31866187F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	by mail.kernel.org (Postfix) with ESMTPS id CD80461BE2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 15:20:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CD80461BE2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YMsnsFkduSGoBRUCFibybPogEL+xDdTnATZAkmkiSn8=; b=3KrihwbmVU203p
-	8rz6OdrYC/qQTmYlG9JrP6HLlZLGrsnCNwZHfcF3r6AqCIwRBBohmfDQ7ZhEu/rhhZE2GIL7JZZCY
-	mzgyeQHNwI9udxaGH65VwH4uOPrqrpFvbOUdkAUjwmtDVnhZ6+Ha9M8yZ5weJ3FJ1gmdRrt7Sy+nZ
-	HUdbbiCHUZxIWOSnc0mKJUVKOb1ZYS/qMNLrBzsD6o9WX01kSRQxBtGvVt4rwSJdDmUg+03goMzDB
-	hpsfsJspDZcRVmt8wCNE+Cjjhxm1IAsJlwvdPBfINozWaNT7wkdz1UsoIUG7UGCmkm1jHQI4Ckhr9
-	SxmvvpK+Ciup6Mi0C1oA==;
+	List-Owner; bh=H7/9vsWMPZJK7jf3YulRszrWjXg8g8OPKbUw+OMa3z0=; b=ds2M51q38/52xF
+	H3o3YRCt6izDND2eF8jjE7d4GcqGl/OtOvsJ1O5WOTncp+VnIPhHRh9ncCldiJQN/ycjh9VGWQjdN
+	t31EUCAyPleO63JSKestCzQSW4oBEndrj8N15/zAp/Qfw2ch/j9wXHPd6EPvL6f0QJwjzK6XCwzwt
+	7N4aiiw8YGtU3G9QOJHZ+rBksjf6tmbTo5LiqN4a2Sp0Ao8hMXgi6hc4sX2mIKZgE04BvHPUmCpQe
+	O+h4/n3t2GSnOY0gXWB+tOmX5fQB3kOo1fmNCUAEjaxKELlUvGxJUJ7dfWmb8EjBP8Oxcfy6i+Ro/
+	/igNL6WgJzH9Ca31dJWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnMfx-005Ldm-Sw; Wed, 17 Nov 2021 15:16:41 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mnMjG-005MST-91; Wed, 17 Nov 2021 15:20:06 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnMfj-005Lae-DR; Wed, 17 Nov 2021 15:16:28 +0000
-Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mnMfh-0004un-MX; Wed, 17 Nov 2021 16:16:25 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 11/12] drm/rockchip: Make VOP driver optional
-Date: Wed, 17 Nov 2021 16:16:24 +0100
-Message-ID: <2763206.1bNW4tK36S@diego>
-In-Reply-To: <20211117145054.GL6556@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <15744316.EhFUcUTHNY@diego> <20211117145054.GL6556@pengutronix.de>
+ id 1mnMj2-005MO4-1k; Wed, 17 Nov 2021 15:19:53 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B759761BE1;
+ Wed, 17 Nov 2021 15:19:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637162391;
+ bh=21V8ySdNI8rzKppmwzqXaWV+WIeRV5sbbODnQ+RIf/4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=cz59dCa+o2S/wHot45VrB76ew3z7XNQ55gUlziZUp5WzfwP1jlnBNpZtJk00p3JeI
+ EuvTBY88yoYke5aVPCR3Lt4OksFhJBJRyOqUyHM/ZwwLjZTvzXuWe1YwV1wYkNxbjC
+ gGJtsLGsf566Vm4OJapBw1F6WTHDl9IiKeTE/nbsvyDtwedn0ad6INVefXZRueXdj4
+ nPYwjZku/V8mEm2GBPckhPJZ9zgE5jDoYq48kxQkqlsTzI8Azj2NNoXiUddCMd8peh
+ 5khdWUcfI4CP/7NLas+8NOSulMrLzld1dEQKqWzPYWJokbCOUPsNaGidg2IundZsS9
+ avOG9wUy5xzmA==
+Received: by mail-ed1-f44.google.com with SMTP id g14so12721764edb.8;
+ Wed, 17 Nov 2021 07:19:51 -0800 (PST)
+X-Gm-Message-State: AOAM531gS3aGly+NclQoZfJtE1SwNTYPbiGAAfwmMojteuAzPwlgihxH
+ WyerYu0/ybSfkgCW4CRuQTqGnefWpIdYGYKeJA==
+X-Google-Smtp-Source: ABdhPJxa6UOUwCE4UADcjJKl6sQgO6HQ05fBhvojoiMf7CwaNTfZtwtbbDkvZLkvvHzt+nTfGmKMinHDp78RYSO3hOI=
+X-Received: by 2002:a17:907:7f25:: with SMTP id
+ qf37mr22897118ejc.147.1637162390183; 
+ Wed, 17 Nov 2021 07:19:50 -0800 (PST)
 MIME-Version: 1.0
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <20211117143347.314294-11-s.hauer@pengutronix.de>
+In-Reply-To: <20211117143347.314294-11-s.hauer@pengutronix.de>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 17 Nov 2021 09:19:38 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqL7C32FB47=xfUtndtCvfOQx7f3Gq0O0FqZxRoeS1fNSQ@mail.gmail.com>
+Message-ID: <CAL_JsqL7C32FB47=xfUtndtCvfOQx7f3Gq0O0FqZxRoeS1fNSQ@mail.gmail.com>
+Subject: Re: [PATCH 10/12] arm64: dts: rockchip: rk3568-evb: Enable VOP2 and
+ hdmi
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Peter Geis <pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_071627_488096_3D923C12 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20211117_071952_129286_284E49DB 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,92 +85,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 17. November 2021, 15:50:54 CET schrieb Sascha Hauer:
-> On Wed, Nov 17, 2021 at 03:40:26PM +0100, Heiko St=FCbner wrote:
-> > Am Mittwoch, 17. November 2021, 15:33:46 CET schrieb Sascha Hauer:
-> > > With upcoming VOP2 support VOP won't be the only choice anymore, so m=
-ake
-> > > the VOP driver optional.
-> > > =
+On Wed, Nov 17, 2021 at 8:34 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
+>
+> This enabled the VOP2 display controller along with hdmi and the
+> required port routes which is enough to get a picture out of the
+> hdmi port of the board.
+>
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 24 +++++++++++++++++++
+>  1 file changed, 24 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> index 184e2aa2416af..156e001492173 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> @@ -106,6 +106,12 @@ &gmac1m1_rgmii_clk
+>         status = "okay";
+>  };
+>
+> +&hdmi {
+> +       status = "okay";
+> +       avdd-0v9-supply = <&vdda0v9_image>;
+> +       avdd-1v8-supply = <&vcca1v8_image>;
+> +};
+> +
+>  &i2c0 {
+>         status = "okay";
+>
+> @@ -390,3 +396,21 @@ &sdmmc0 {
+>  &uart2 {
+>         status = "okay";
+>  };
+> +
+> +&vop {
+> +       status = "okay";
+> +       assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+> +       assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
+> +};
+> +
+> +&vop_mmu {
+> +       status = "okay";
+> +};
+> +
+> +&hdmi_in_vp0 {
+> +       status = "okay";
+> +};
+> +
+> +&vp0_out_hdmi {
+> +       status = "okay";
+> +};
 
-> > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > ---
-> > >  arch/arm/configs/multi_v7_defconfig         | 1 +
-> > >  arch/arm64/configs/defconfig                | 1 +
-> > >  drivers/gpu/drm/rockchip/Kconfig            | 7 +++++++
-> > >  drivers/gpu/drm/rockchip/Makefile           | 3 ++-
-> > >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
-> > >  5 files changed, 12 insertions(+), 2 deletions(-)
-> > > =
+You can accomplish the same thing already with:
 
-> > > diff --git a/arch/arm/configs/multi_v7_defconfig b/arch/arm/configs/m=
-ulti_v7_defconfig
-> > > index c951aeed2138c..fc123e8f3e2f9 100644
-> > > --- a/arch/arm/configs/multi_v7_defconfig
-> > > +++ b/arch/arm/configs/multi_v7_defconfig
-> > > @@ -667,6 +667,7 @@ CONFIG_DRM_EXYNOS_DPI=3Dy
-> > >  CONFIG_DRM_EXYNOS_DSI=3Dy
-> > >  CONFIG_DRM_EXYNOS_HDMI=3Dy
-> > >  CONFIG_DRM_ROCKCHIP=3Dm
-> > > +CONFIG_ROCKCHIP_VOP=3Dy
-> > >  CONFIG_ROCKCHIP_ANALOGIX_DP=3Dy
-> > >  CONFIG_ROCKCHIP_DW_HDMI=3Dy
-> > >  CONFIG_ROCKCHIP_DW_MIPI_DSI=3Dy
-> > > diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defcon=
-fig
-> > > index f2e2b9bdd7024..a623386473dc9 100644
-> > > --- a/arch/arm64/configs/defconfig
-> > > +++ b/arch/arm64/configs/defconfig
-> > > @@ -682,6 +682,7 @@ CONFIG_DRM_EXYNOS_DSI=3Dy
-> > >  CONFIG_DRM_EXYNOS_HDMI=3Dy
-> > >  CONFIG_DRM_EXYNOS_MIC=3Dy
-> > >  CONFIG_DRM_ROCKCHIP=3Dm
-> > > +CONFIG_ROCKCHIP_VOP=3Dy
-> > >  CONFIG_ROCKCHIP_ANALOGIX_DP=3Dy
-> > >  CONFIG_ROCKCHIP_CDN_DP=3Dy
-> > >  CONFIG_ROCKCHIP_DW_HDMI=3Dy
-> > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockc=
-hip/Kconfig
-> > > index 9f1ecefc39332..a1c4158259099 100644
-> > > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > > @@ -21,8 +21,15 @@ config DRM_ROCKCHIP
-> > >  =
+&vp0_out_hdmi {
+  remote-endpoint = <&hdmi_in_vp0>;
+};
 
-> > >  if DRM_ROCKCHIP
-> > >  =
+or:
 
-> > > +config ROCKCHIP_VOP
-> > > +	bool "Rockchip VOP driver"
-> > =
-
-> > would this benefit from a default-y ?
-> > For builds reusing preexisting .configs.
-> =
-
-> I enabled CONFIG_ROCKCHIP_VOP for all configs in the tree that enable
-> CONFIG_DRM_ROCKCHIP, so defconfig users shouldn't see any surprises.
-> That won't help users of custom configs of course.
-> =
-
-> I don't know what's preferred in such cases, I can change to default-y
-> if you like.
-
-default-y would keep the behaviour identical for all existing configs I
-guess and right now vop(1) is still the most used variant and will stay
-that way for a while longer, so I guess my preference would be for going
-that route - also so that we don't drown in "my display stopped working"
-during 5.17 ;-)
-
-
-Heiko
-
-
+&vp0_out_hdmi {
+  /delete-property/ remote-endpoint;
+};
 
 _______________________________________________
 Linux-rockchip mailing list
