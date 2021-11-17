@@ -2,15 +2,15 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C9CDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 19:46:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BC30C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 20:47:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B1DC661B64
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 19:46:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B1DC661B64
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id DE6E561AA7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 20:47:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE6E561AA7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,61 +18,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KGUVQ0vt1i0rrQnD3eyCeloPEabG8+icSOvML6httEc=; b=pZY0ipKbN/9U/G
-	cwli7dB0cyx1+zVzVSFdjcv9ZDeYFKp+CFhuq6RejQxC0R8ZbgGG3r6TH57GGtwe5hQc7VQeYpI5Y
-	yDk1VmebEsev2c/pL84ZnnLcrhK4NXxaGG/Y9EbuA6Xv7/aRV+fESmBi2bG2zyaV8v/TS9ELrnk/F
-	hdoINfusqRJHCUi75AEUNsg8SeywKWHuG/H9o1NDyIfGhIUE0+nnpuhJNJcYhHSV5TZlD0A4Rf+Ei
-	rLUns1bMNKI88ox8Bk4mJ+b6or7DMeqmHnbDWSmVZkMi4ksQIqK5HkH/eoq92O+n2yN59lffgfOfr
-	wX4MBDLytTYap2BIn3zg==;
+	List-Owner; bh=dSJQ9CUmNznyWjLrH/LcCjqOXBX8CCOTMPrkLP+U/pY=; b=sgBAZHS9Qj+yQA
+	rNPNNTE2c9z06aZK1reBSY8Ihouv1q/rzsE/xHGlunlDEhMpsApTwG7BR1n4klOXsJOONtOcS/P4O
+	sd5t+VmLBo0RSCwAB/GuhR/NsXt2loBZ/5tLi72+8SlKI8iLR8GMYIVnJWXO9KQuHZrrzSZhcX4/O
+	EDQEfTsOnRPNLJcTxIEsvNIe1vkyH3dg4vCyu8vhJdKwxRxRIqwyLr7FL66QMya2Tr9P/BmHuwenk
+	6XAK58doKYCzsygD5MFbS0P1+aJNL4sO1UgZUTMz8CXABfqzHBoE+jSvWUo6GZEydbDk53ulBncE/
+	s4EyJYYoIChOY6galFEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnQsW-006Bc9-RU; Wed, 17 Nov 2021 19:45:56 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mnRqR-006G0D-6T; Wed, 17 Nov 2021 20:47:51 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnQsT-006Bb6-Hb
- for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 19:45:55 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mnQsQ-0002ub-VJ; Wed, 17 Nov 2021 20:45:50 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mnQsN-0002t0-Lm; Wed, 17 Nov 2021 20:45:47 +0100
-Date: Wed, 17 Nov 2021 20:45:47 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 12/12] drm: rockchip: Add VOP2 driver
-Message-ID: <20211117194547.GN6556@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <20211117143347.314294-13-s.hauer@pengutronix.de>
- <7182753.rMVL1d3Icj@archbook>
+ id 1mnRqN-006Fzp-OB
+ for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 20:47:49 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id
+ p18-20020a17090ad31200b001a78bb52876so6256760pju.3
+ for <linux-rockchip@lists.infradead.org>; Wed, 17 Nov 2021 12:47:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=0vK/ighOzZuC6Y+2uf+e2G0O4RrKtsj6uBz25D3JSHE=;
+ b=jOsuG4++rRbfbei3wgTWv6Nu9ZKIRWjd3Q1x8lfasRr7VVQd0qRTzAC8Wf64zWmi6b
+ +T90ZsPVL13J8h7iqkBL8g1cM/39AHbMKaEQaWoGP7mZ8i0+yOUfHJaKKciQfUSaqs63
+ 0RPcrWHsBEcdZ5IygXZHZDxEv5Ii2QJlOkXdO5UM537S+WxY7KMyuzCADhhxiDGboq+4
+ iFSg0jXX6aZkaHPbw10/ZRNVcc49nx00/PtB6PKSJgHxywjQMawPsqQv+E2T7r+6uzXn
+ aB+RH841EyvHFULt1YvNwTaapEZ1m2n4vyET2yGrGfkJ/aLRpJHKCyDdD7raJIIaauzN
+ PBVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=0vK/ighOzZuC6Y+2uf+e2G0O4RrKtsj6uBz25D3JSHE=;
+ b=PF5k29IqWrSN85vh1wkxfEg8bcf9xltHS+R2XEydorvX+pnjhuOOf97Wt5K2d9/kVo
+ KTauFySxnfD7+LU+Rqy2ib0p4FNWXNqvpARqGm/TXejbMITDui/oCsCIwbNwzVtXnZB1
+ CSgkrIvu8/6qZ5KjOEOGaCqKtockNnMr73FJnb871Lo89rKsf8SWZihKT7cPaibdxXoY
+ nucL2NBzRZ/gZfaqTPk+4+hkG564k9KOo8uuhcpvTQzPReV2pEeyMm5hNCRBixYHUn+L
+ Jd1Lp+ENlqWiWpvRlh9Tl9b9cZSILtZ6XdkteJQ0eLG8ch30kNj9qgNz5udLjeW/sb+s
+ Dv+Q==
+X-Gm-Message-State: AOAM531wSvxKMTSo3C9oIsSsXc+0A0xeF8CpNIgw9ShwtUEeY//CQ8tE
+ /qbK266R0GWKjV+e5mAqfqY=
+X-Google-Smtp-Source: ABdhPJzEC2p9CKz/ZZEYDEmlP4fgK23s9z+zbfLmbyywgcJzuvpeuyktKLwofPfWSV13pArbF8sPwQ==
+X-Received: by 2002:a17:90b:3890:: with SMTP id
+ mu16mr3355961pjb.186.1637182065107; 
+ Wed, 17 Nov 2021 12:47:45 -0800 (PST)
+Received: from google.com ([2620:15c:202:201:e863:bb5d:673b:3a6d])
+ by smtp.gmail.com with ESMTPSA id pg13sm511061pjb.8.2021.11.17.12.47.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Nov 2021 12:47:43 -0800 (PST)
+Date: Wed, 17 Nov 2021 12:47:41 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Doug Anderson <dianders@chromium.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ linux-kernel@vger.kernel.org, linux-input@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, linux-rockchip@lists.infradead.org,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ Rob Clark <robdclark@chromium.org>, Rob Clark <robdclark@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <YZVqbZpAPHOBG6bL@google.com>
+References: <20211103234018.4009771-1-briannorris@chromium.org>
+ <20211103164002.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <CAD=FV=XOda7vwUPY+WpGLzMwwrbrhQ9RqBQw4LhPwD6Sqhf7vw@mail.gmail.com>
+ <CA+ASDXMvZCjn+X98JccyJiLQ0ggq-t-HqnM5SKYMbiQFqZDhGQ@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <7182753.rMVL1d3Icj@archbook>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 20:43:02 up 272 days, 23:06, 125 users,  load average: 0.13, 0.21,
- 0.20
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <CA+ASDXMvZCjn+X98JccyJiLQ0ggq-t-HqnM5SKYMbiQFqZDhGQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_114553_609372_8DF5EC24 
-X-CRM114-Status: GOOD (  33.36  )
+X-CRM114-CacheID: sfid-20211117_124747_840157_692DECD6 
+X-CRM114-Status: GOOD (  26.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,55 +107,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 07:05:33PM +0100, Nicolas Frattaroli wrote:
-> On Mittwoch, 17. November 2021 15:33:47 CET Sascha Hauer wrote:
-> > The VOP2 unit is found on Rockchip SoCs beginning with rk3566/rk3568.
-> > It replaces the VOP unit found in the older Rockchip SoCs.
-> > 
-> > This driver has been derived from the downstream Rockchip Kernel and
-> > heavily modified:
-> > 
-> > - All nonstandard DRM properties have been removed
-> > - dropped struct vop2_plane_state and pass around less data between
-> >   functions
-> > - Dropped all DRM_FORMAT_* not known on upstream
-> > - rework register access to get rid of excessively used macros
-> > 
-> > The driver is tested with HDMI and MIPI-DSI display on a RK3568-EVB
-> > board. Overlay support is tested with the modetest utility. AFBC support
-> > is still present in the driver, but currently untested due to the lack
-> > of suitable image sources. Also the driver has been tested with weston
-> > using pixman and (yet to be upstreamed) panfrost driver support.
-> > 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
+On Wed, Nov 17, 2021 at 10:38:58AM -0800, Brian Norris wrote:
+> On Fri, Nov 12, 2021 at 4:52 PM Doug Anderson <dianders@chromium.org> wrote:
 > 
-> Hi Sascha,
+> (Snip other comments; they seem reasonable, and I'll factor them into
+> the next version)
 > 
-> thank you very much for your work on this! I gave it a try tonight,
-> and unfortunately it appears to currently always attempt to use
-> 1920x1080p60 as the mode regardless of the monitor. For example,
-> on an old 720p monitor I had laying around:
+> > I guess one random thought I had is whether there would be an
+> > appropriate place to put this that _wasn't_ in DRM. I still wonder
+> > whether we'll ever try to upstream something like the cpufreq boost
+> > driver that we're carrying around and using in Chrome OS. If so, it
+> > would want to use these same helpers and it'd be pretty awkward for it
+> > to have to reach into DRM. ...any chance we could just land these
+> > helpers somewhere more generic?
 > 
-> 	[  225.732342] rockchip-drm display-subsystem: [drm] Update mode to 1920x1080p60, type: 11 for vp0, output 0x00000800  HDMI0
-> 
-> This results in a broken picture (all white with occasional glitches).
-> Somebody else observed the same behaviour on a 1440p monitor.
+> Yeah, I was torn on what to do here as well. I'd rather land something
+> than nothing, and when reading past conversations, it sounded like
+> Dmitry didn't want this kind of thing in drivers/input/ [1]. I'd love
+> to be wrong here though.
 
-Unfortunately all my monitors I have here have exactly 1920x1080p60, so
-I didn't notice. Anyway, when I try another mode like 1280x1024 which
-should be supported as well then my monitor responds with "out of
-range", so something is indeed fishy here.
+I simply feel that input_handler is already a very simple abstraction
+and trying to specialize it to simplify users further is not productive.
 
-I'll have a look into it.
+> 
+> I'm not sure where else this would belong though -- either in the
+> producing subsystem (input) or the consuming one(s) (drm, cpufreq). We
+> could make up some odd middle ground I suppose (lib/?), but that seems
+> pretty artificial.
+> 
+> I guess one question is, what is this abstracting, and is that
+> abstraction actually a shared need for multiple subsystems? I think
+> the abstraction is, "impending user activity; <component X> should
+> prepare itself". That general need is exactly the same for the cases
+> I'm aware of. And if there is any tuning needed (e.g., ignore input
+> device Y; or turn the whole thing off, because we're ignoring input
+> for now), that would also seem to be a shared need.
+> 
+> Anyway, back to my first paragraph: I'll plan on keeping this as-is
+> (as a DRM helper) unless I hear otherwise from input folks.
+> 
+> Brian
+> 
+> [1] https://lore.kernel.org/all/20180416174117.GA77055@dtor-ws/
 
-Sascha
+Thanks.
 
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
