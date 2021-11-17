@@ -2,97 +2,83 @@ Return-Path: <SRS0=hOKP=QE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 050E7C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 11:03:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B6C9C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 11:34:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4E0A6126A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 11:03:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B4E0A6126A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id 26B8261875
+	for <linux-rockchip@archiver.kernel.org>; Wed, 17 Nov 2021 11:34:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 26B8261875
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=42DTjPKz/oUgrpmML2jOtW4mtszO2wCOr5Xwmo4cUwc=; b=shBiOU6vvDgl1k
-	/Z5OfQDk4IkzP+Uk6f/j0vDqe2f5x7Sw3TfqlSbWvLqxrPiPS8w7+jC33Sg6HDr/uV2nYUBfPlwcb
-	PcaQE77rkjhk6ZpSiWLmcYcb9RvMdN/GF2hhWef8S7p31MZFnLMpU65wfEFu3c1Yw0sg9dl05o4Q/
-	eKFon1KiXSWh9wsmas8HWolYyHEGN02ghRHMiHSEgrcxznwB2275ernY+UhkIEW3h826My5HCkfQs
-	9wzcJLyciEAz4J1u5slTYQhVfM113ZvYRHVMVv7035+gn46brtnqVO2aGN6kCjncoiKt4Kd0t7C3e
-	7s+KeNIw1Qt7J5KHgISA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
+	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4K1s20fBGpHRUvbmX/rlDGp2rumYjk29ouIVPZgzeug=; b=YfBlTNhm60eRePMZIj7pFglblm
+	7R7OGiDAjWFfa0239NClCoK7Dp1v6Lup1/HZxssawV1YSe3mXbPKE4DFgb5ZYyVQ+M+65G/PBGECs
+	rW1/HaoqopivrNdHJm5M49I+ZoQFQ2qqPTTg+r4tqSj1i0qkg/g1U/qGDchzsP1so8Sgk2rGzW937
+	UcFPizWdjmAH7jP9m+JbChUJbrwTNbRIVARe7FpoJF0koXfzMkOwrbKBB2FQ8BhlMaxd7KJBdUrco
+	EO9tYved1cORHgMqvnq1MLqEfNI+m0fGYaNJ/+zJLnohYbqMJYaGZPzq6RyHPoSzmfiLNjFOSjYFj
+	tXaJk/pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnIib-004XOl-3k; Wed, 17 Nov 2021 11:03:09 +0000
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+	id 1mnJCO-004c6P-8m; Wed, 17 Nov 2021 11:33:56 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnIiH-004XES-Sa
- for linux-rockchip@lists.infradead.org; Wed, 17 Nov 2021 11:02:51 +0000
-Received: by mail-ua1-x935.google.com with SMTP id l24so4996752uak.2
- for <linux-rockchip@lists.infradead.org>; Wed, 17 Nov 2021 03:02:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=xD4jSD9o0m9VWMMQNYtIoSApMPXuTCerJ7ps5HrGPyg=;
- b=blT1eGbVnvRYqzUNVw9bSeQHG/9OJnZ9O/3Pb9sESMd3ykf6x7RgtWV2oHzX3ci/wi
- Q8chAmyd7ur9C/Sci0vhOxY2CbLt2EVwRtul1YiHoekJYTUeu7vZms1lDINpBYa+RaT8
- HDnUw4+Dn0BfjrL5jBtNUgPvIZ577D57l2KF8X79TlkiQIkGt19EwdH4KCjxleqd04x5
- 6CKxkke8qVvg4G1j/kKGTfybN0rw2Ob4ulqXJKyKv0caV5UPCudi1rNMOuUa4u5V6Zpt
- Kwdd2qrVcHIkq/N0+sM16QjRbvHgSM2hMxSIsIIz+L6gJdyDRAQG7UxAX74in9t8EZ3V
- 1yTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=xD4jSD9o0m9VWMMQNYtIoSApMPXuTCerJ7ps5HrGPyg=;
- b=Wamp/9r4jaHCO4Jn8V1tgfDEhHRzd84t2Jb65RS0uv/SxQl7jX9MwUaS3Rwm8fi9vS
- 6pj5jQ+aZyuFZOovwpSedl9maLh/oJuUJNziiH/Ca9l4IFyPH8FXRpIEUBLlZjNsfBHa
- 5dZj3fsHijHX397ti+8T+Ozhl+ufr7kq8HU0tdaeyMIbpoE+zZVbgE8nPzSP04CTli0/
- M7jm2SkH0p0KV1ZwjrcE8T5D+ZEzg7KLlWHbLZzHEhs/wVZeiUg538/WJRrndBqThVz6
- 5K/vMgCTn49m0Qfmoz+Oy95ebp5qcaJ8a+iv47gNaxQj81p1+uE6Fryh2Jp+w0AxvLr/
- YWqw==
-X-Gm-Message-State: AOAM532ttTwu6mO1bR8OkRnFR0WemrVyvHoay/q//iAvj3lcONz5xeCn
- Lmt9ETHvkGs+e3uTCGPq+lf+9Q==
-X-Google-Smtp-Source: ABdhPJw1GsVPwwYHkvpb1r006heaI+l5ljDUmAz1MjejjViCZ+UI6X+4Ovr/EM2O2Dx8y9RTxJjODg==
-X-Received: by 2002:ab0:3359:: with SMTP id h25mr22083214uap.59.1637146968530; 
- Wed, 17 Nov 2021 03:02:48 -0800 (PST)
-Received: from eze-laptop ([186.122.18.126])
- by smtp.gmail.com with ESMTPSA id s2sm12502206uap.7.2021.11.17.03.02.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Nov 2021 03:02:47 -0800 (PST)
-Date: Wed, 17 Nov 2021 08:02:39 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ id 1mnJC9-004c1l-Vk; Wed, 17 Nov 2021 11:33:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: andrzej.p) with ESMTPSA id E119D1F45A21
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1637148814; bh=A4pYsgInc6hmH+rf5WuMyPL2m41bZ1WToRtl1fmxA+Q=;
+ h=Subject:From:To:Cc:References:Date:In-Reply-To:From;
+ b=oBheq0QgHZSLcrwy6Y86/nyKLGer6gkFIG9O/vTGsSkBV9MCbotdMSMA+gYGwrWoT
+ IYKpVefzndbFdexPY7eiD+aEClLcqaU+VMoal2lliOpJoiw+xQoAajspflXKT/7XrO
+ +RE/y0BKmypr+10ZvBtmGIIAQE+3vQojHyYNMDIX6W7gEqDOiF+U9oDwMOKla+ZwzU
+ 6nVGkg2KB37y9zm8VQTDIgl4ia/RTaGrDPiEdXsbykNeaCA/ILSlYpV9GZmUUhXYF4
+ 97JTbwMHrT3fFj6WfRcmcLB5hWxnLh7JBrVLm7lWr/DkNUF7bLO3NTrYwmDoSpFw+P
+ 79J6LIrImmLjg==
+Subject: Re: [PATCH v7 00/11] VP9 codec V4L2 control interface
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Boris Brezillon <boris.brezillon@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Fabio Estevam <festevam@gmail.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jernej Skrabec <jernej.skrabec@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  NXP Linux Team <linux-imx@nxp.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, kernel@collabora.com
-Subject: Re: [PATCH v8 08/12] media: hantro: Rename registers
-Message-ID: <YZThT9kRyoGu2IkU@eze-laptop>
-References: <20211116143842.75896-1-andrzej.p@collabora.com>
- <20211116143842.75896-9-andrzej.p@collabora.com>
+ Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ kernel@collabora.com
+References: <20210929160439.6601-1-andrzej.p@collabora.com>
+ <9db47ebc-cb95-872d-feb4-d6432a74f2cb@xs4all.nl>
+ <29f27bad-28ae-12ff-eed6-79902bd5b722@collabora.com>
+ <b8f8ee2e-ea98-4700-f4ca-f0af68c9de5c@xs4all.nl>
+ <cdbbe5e6-0811-1276-1f62-fc7ad2628a30@collabora.com>
+ <4da113ef-7b12-3729-0186-f746901c892a@xs4all.nl>
+ <69f16bb0-4b5a-18b3-e244-60deb029d239@collabora.com>
+ <2cd7a7f0-72d6-1a0e-b5d2-87ff809c2acd@xs4all.nl>
+ <63429780-9e39-f8ab-40c2-0f1b57553850@collabora.com>
+ <ccc29c1f-e2a1-f7c9-77ad-6e9fc1a57c95@collabora.com>
+Message-ID: <75b64c8e-01aa-d3bd-b3b8-5729b33f4087@collabora.com>
+Date: Wed, 17 Nov 2021 12:33:31 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211116143842.75896-9-andrzej.p@collabora.com>
+In-Reply-To: <ccc29c1f-e2a1-f7c9-77ad-6e9fc1a57c95@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_030249_937221_1CEF965E 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20211117_033342_298235_27D536AD 
+X-CRM114-Status: GOOD (  20.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,151 +91,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 16, 2021 at 03:38:38PM +0100, Andrzej Pietrasiewicz wrote:
-> Add more consistency in the way registers are named.
-> 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-
-> ---
->  .../staging/media/hantro/hantro_g2_hevc_dec.c | 40 +++++++++----------
->  drivers/staging/media/hantro/hantro_g2_regs.h | 28 ++++++-------
->  2 files changed, 34 insertions(+), 34 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> index 76a921163b9a..abae36f9b418 100644
-> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> @@ -448,9 +448,9 @@ static int set_ref(struct hantro_ctx *ctx)
->  		if (dpb[i].rps == V4L2_HEVC_DPB_ENTRY_RPS_LT_CURR)
->  			dpb_longterm_e |= BIT(V4L2_HEVC_DPB_ENTRIES_NUM_MAX - 1 - i);
->  
-> -		hantro_write_addr(vpu, G2_REG_ADDR_REF(i), luma_addr);
-> -		hantro_write_addr(vpu, G2_REG_CHR_REF(i), chroma_addr);
-> -		hantro_write_addr(vpu, G2_REG_DMV_REF(i), mv_addr);
-> +		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
-> +		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
-> +		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
->  	}
->  
->  	luma_addr = hantro_hevc_get_ref_buf(ctx, decode_params->pic_order_cnt_val);
-> @@ -460,20 +460,20 @@ static int set_ref(struct hantro_ctx *ctx)
->  	chroma_addr = luma_addr + cr_offset;
->  	mv_addr = luma_addr + mv_offset;
->  
-> -	hantro_write_addr(vpu, G2_REG_ADDR_REF(i), luma_addr);
-> -	hantro_write_addr(vpu, G2_REG_CHR_REF(i), chroma_addr);
-> -	hantro_write_addr(vpu, G2_REG_DMV_REF(i++), mv_addr);
-> +	hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), luma_addr);
-> +	hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), chroma_addr);
-> +	hantro_write_addr(vpu, G2_REF_MV_ADDR(i++), mv_addr);
->  
-> -	hantro_write_addr(vpu, G2_ADDR_DST, luma_addr);
-> -	hantro_write_addr(vpu, G2_ADDR_DST_CHR, chroma_addr);
-> -	hantro_write_addr(vpu, G2_ADDR_DST_MV, mv_addr);
-> +	hantro_write_addr(vpu, G2_OUT_LUMA_ADDR, luma_addr);
-> +	hantro_write_addr(vpu, G2_OUT_CHROMA_ADDR, chroma_addr);
-> +	hantro_write_addr(vpu, G2_OUT_MV_ADDR, mv_addr);
->  
->  	hantro_hevc_ref_remove_unused(ctx);
->  
->  	for (; i < V4L2_HEVC_DPB_ENTRIES_NUM_MAX; i++) {
-> -		hantro_write_addr(vpu, G2_REG_ADDR_REF(i), 0);
-> -		hantro_write_addr(vpu, G2_REG_CHR_REF(i), 0);
-> -		hantro_write_addr(vpu, G2_REG_DMV_REF(i), 0);
-> +		hantro_write_addr(vpu, G2_REF_LUMA_ADDR(i), 0);
-> +		hantro_write_addr(vpu, G2_REF_CHROMA_ADDR(i), 0);
-> +		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), 0);
->  	}
->  
->  	hantro_reg_write(vpu, &g2_refer_lterm_e, dpb_longterm_e);
-> @@ -499,7 +499,7 @@ static void set_buffers(struct hantro_ctx *ctx)
->  	src_len = vb2_get_plane_payload(&src_buf->vb2_buf, 0);
->  	src_buf_len = vb2_plane_size(&src_buf->vb2_buf, 0);
->  
-> -	hantro_write_addr(vpu, G2_ADDR_STR, src_dma);
-> +	hantro_write_addr(vpu, G2_STREAM_ADDR, src_dma);
->  	hantro_reg_write(vpu, &g2_stream_len, src_len);
->  	hantro_reg_write(vpu, &g2_strm_buffer_len, src_buf_len);
->  	hantro_reg_write(vpu, &g2_strm_start_offset, 0);
-> @@ -508,12 +508,12 @@ static void set_buffers(struct hantro_ctx *ctx)
->  	/* Destination (decoded frame) buffer. */
->  	dst_dma = hantro_get_dec_buf_addr(ctx, &dst_buf->vb2_buf);
->  
-> -	hantro_write_addr(vpu, G2_RASTER_SCAN, dst_dma);
-> -	hantro_write_addr(vpu, G2_RASTER_SCAN_CHR, dst_dma + cr_offset);
-> -	hantro_write_addr(vpu, G2_ADDR_TILE_SIZE, ctx->hevc_dec.tile_sizes.dma);
-> -	hantro_write_addr(vpu, G2_TILE_FILTER, ctx->hevc_dec.tile_filter.dma);
-> -	hantro_write_addr(vpu, G2_TILE_SAO, ctx->hevc_dec.tile_sao.dma);
-> -	hantro_write_addr(vpu, G2_TILE_BSD, ctx->hevc_dec.tile_bsd.dma);
-> +	hantro_write_addr(vpu, G2_RS_OUT_LUMA_ADDR, dst_dma);
-> +	hantro_write_addr(vpu, G2_RS_OUT_CHROMA_ADDR, dst_dma + cr_offset);
-> +	hantro_write_addr(vpu, G2_TILE_SIZES_ADDR, ctx->hevc_dec.tile_sizes.dma);
-> +	hantro_write_addr(vpu, G2_TILE_FILTER_ADDR, ctx->hevc_dec.tile_filter.dma);
-> +	hantro_write_addr(vpu, G2_TILE_SAO_ADDR, ctx->hevc_dec.tile_sao.dma);
-> +	hantro_write_addr(vpu, G2_TILE_BSD_ADDR, ctx->hevc_dec.tile_bsd.dma);
->  }
->  
->  static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
-> @@ -563,7 +563,7 @@ static void prepare_scaling_list_buffer(struct hantro_ctx *ctx)
->  			for (k = 0; k < 8; k++)
->  				*p++ = sc->scaling_list_32x32[i][8 * k + j];
->  
-> -	hantro_write_addr(vpu, HEVC_SCALING_LIST, ctx->hevc_dec.scaling_lists.dma);
-> +	hantro_write_addr(vpu, G2_HEVC_SCALING_LIST_ADDR, ctx->hevc_dec.scaling_lists.dma);
->  }
->  
->  static void hantro_g2_check_idle(struct hantro_dev *vpu)
-> diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
-> index bb22fa921914..24b18f839ff8 100644
-> --- a/drivers/staging/media/hantro/hantro_g2_regs.h
-> +++ b/drivers/staging/media/hantro/hantro_g2_regs.h
-> @@ -177,20 +177,20 @@
->  #define G2_REG_CONFIG_DEC_CLK_GATE_E		BIT(16)
->  #define G2_REG_CONFIG_DEC_CLK_GATE_IDLE_E	BIT(17)
->  
-> -#define G2_ADDR_DST		(G2_SWREG(65))
-> -#define G2_REG_ADDR_REF(i)	(G2_SWREG(67)  + ((i) * 0x8))
-> -#define G2_ADDR_DST_CHR		(G2_SWREG(99))
-> -#define G2_REG_CHR_REF(i)	(G2_SWREG(101) + ((i) * 0x8))
-> -#define G2_ADDR_DST_MV		(G2_SWREG(133))
-> -#define G2_REG_DMV_REF(i)	(G2_SWREG(135) + ((i) * 0x8))
-> -#define G2_ADDR_TILE_SIZE	(G2_SWREG(167))
-> -#define G2_ADDR_STR		(G2_SWREG(169))
-> -#define HEVC_SCALING_LIST	(G2_SWREG(171))
-> -#define G2_RASTER_SCAN		(G2_SWREG(175))
-> -#define G2_RASTER_SCAN_CHR	(G2_SWREG(177))
-> -#define G2_TILE_FILTER		(G2_SWREG(179))
-> -#define G2_TILE_SAO		(G2_SWREG(181))
-> -#define G2_TILE_BSD		(G2_SWREG(183))
-> +#define G2_OUT_LUMA_ADDR		(G2_SWREG(65))
-> +#define G2_REF_LUMA_ADDR(i)		(G2_SWREG(67)  + ((i) * 0x8))
-> +#define G2_OUT_CHROMA_ADDR		(G2_SWREG(99))
-> +#define G2_REF_CHROMA_ADDR(i)		(G2_SWREG(101) + ((i) * 0x8))
-> +#define G2_OUT_MV_ADDR			(G2_SWREG(133))
-> +#define G2_REF_MV_ADDR(i)		(G2_SWREG(135) + ((i) * 0x8))
-> +#define G2_TILE_SIZES_ADDR		(G2_SWREG(167))
-> +#define G2_STREAM_ADDR			(G2_SWREG(169))
-> +#define G2_HEVC_SCALING_LIST_ADDR	(G2_SWREG(171))
-> +#define G2_RS_OUT_LUMA_ADDR		(G2_SWREG(175))
-> +#define G2_RS_OUT_CHROMA_ADDR		(G2_SWREG(177))
-> +#define G2_TILE_FILTER_ADDR		(G2_SWREG(179))
-> +#define G2_TILE_SAO_ADDR		(G2_SWREG(181))
-> +#define G2_TILE_BSD_ADDR		(G2_SWREG(183))
->  
->  #define g2_strm_buffer_len	G2_DEC_REG(258, 0, 0xffffffff)
->  #define g2_strm_start_offset	G2_DEC_REG(259, 0, 0xffffffff)
-> -- 
-> 2.25.1
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSGFucywKClcgZG5pdSAxNy4xMS4yMDIxIG/CoDExOjUxLCBBbmRyemVqIFBpZXRyYXNpZXdp
+Y3ogcGlzemU6Cj4gSGkgYWdhaW4sCj4gCj4gVyBkbml1IDE3LjExLjIwMjEgb8KgMTE6NDksIEFu
+ZHJ6ZWogUGlldHJhc2lld2ljeiBwaXN6ZToKPj4gSGksCj4+Cj4+IFcgZG5pdSAxNy4xMS4yMDIx
+IG/CoDEwOjU5LCBIYW5zIFZlcmt1aWwgcGlzemU6Cj4+PiBPbiAxNi8xMS8yMDIxIDE0OjE0LCBB
+bmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6Cj4+Pj4gSGksCj4+Pj4KPj4+PiBXIGRuaXUgMTYu
+MTEuMjAyMSBvwqAwOToyMSwgSGFucyBWZXJrdWlsIHBpc3plOgo+Pj4+PiBPbiAxNi8xMS8yMDIx
+IDA5OjA5LCBBbmRyemVqIFBpZXRyYXNpZXdpY3ogd3JvdGU6Cj4+Pj4+PiBIaSBIYW5zLAo+Pj4+
+Pj4KPj4+Pj4+IFcgZG5pdSAxNS4xMS4yMDIxIG/CoDIyOjE2LCBIYW5zIFZlcmt1aWwgcGlzemU6
+Cj4+Pj4+Pj4gT24gMTUvMTEvMjAyMSAxODoxNCwgQW5kcnplaiBQaWV0cmFzaWV3aWN6IHdyb3Rl
+Ogo+Pj4+Pj4+PiBIaSBIYW5zLAo+Pj4+Pj4+Pgo+Pj4+Pj4+PiBXIGRuaXUgMTUuMTEuMjAyMSBv
+wqAxNjowNywgSGFucyBWZXJrdWlsIHBpc3plOgo+Pj4+Pj4+Pj4gQW5kcnplaiwKPj4+Pj4+Pj4+
+Cj4+Pj4+Pj4+PiBDYW4geW91IHJlYmFzZSB0aGlzIHNlcmllcyBvbiB0b3Agb2YgdGhlIG1hc3Rl
+ciBicmFuY2ggb2YKPj4+Pj4+Pj4+IGh0dHBzOi8vZ2l0LmxpbnV4dHYub3JnL21lZGlhX3N0YWdl
+LmdpdC8gPyBVbmZvcnR1bmF0ZWx5IHRoaXMgdjcgbm8gbG9uZ2VyCj4+Pj4+Pj4+PiBhcHBsaWVz
+LiBTcGVjaWZpY2FsbHkgInJrdmRlYzogQWRkIHRoZSBWUDkgYmFja2VuZCIgZmFpbGVkIGluIGEg
+Cj4+Pj4+Pj4+PiBub24tdHJpdmlhbAo+Pj4+Pj4+Pj4gbWFubmVyLgo+Pj4+Pj4+Pgo+Pj4+Pj4+
+PiBUaGlzIGlzIGEgYnJhbmNoIGZvciB5b3U6Cj4+Pj4+Pj4+Cj4+Pj4+Pj4+IGh0dHBzOi8vZ2l0
+bGFiLmNvbGxhYm9yYS5jb20vbGludXgvZm9yLXVwc3RyZWFtLy0vdHJlZS92cDktdWFwaQo+Pj4+
+Pj4+Cj4+Pj4+Pj4gSSdtIGdldHRpbmcgYSBidW5jaCBvZiBzcGFyc2Uvc21hdGNoIHdhcm5pbmdz
+Ogo+Pj4+Pj4+Cj4+Pj4+Pgo+Pj4+Pj4gVGhhbmtzIGZvciBmaW5kaW5nIHRoaXMsIEkgd2lsbCBy
+ZS1jcmVhdGUgdGhlIGJyYW5jaCBhbmQgbGV0IHlvdSBrbm93IG9uIGlyYy4KPj4+Pj4+IFNvbWUg
+b2YgdGhlIGJlbG93IGFyZSAiZmFsc2UgcG9zaXRpdmVzLCBuYW1lbHk6Cj4+Pj4+Pgo+Pj4+Pj4g
+ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9vbWFwM2lzcC9vbWFwM2lzcC5oCj4+Pj4+PiBkcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL3Fjb20vdmVudXMvY29yZS5oCj4+Pj4+Cj4+Pj4+IEFoLCBzb3JyeSwg
+SSB0aG91Z2ggSSBoYWQgZmlsdGVyZWQgdGhvc2Ugb3V0LiBPYnZpb3VzbHkgeW91IGNhbiBpZ25v
+cmUgdGhvc2UuCj4+Pj4+Cj4+Pj4+IFBsZWFzZSBwb3N0IGEgdjguIFRoYXQgd2F5IHRoZSBzZXJp
+ZXMgaXMgYXJjaGl2ZWQgb24gbG9yZS4gQW5kIGl0IHdvcmtzIGJldHRlcgo+Pj4+PiB3aXRoIHBh
+dGNod29yay4KPj4+Pgo+Pj4+IFN1cmUsIG5vIHByb2JsZW0uIEFsc28gcGxlYXNlIHNlZSBiZWxv
+dy4KPj4+Pgo+Pj4+Pgo+Pj4+PiBSZWdhcmRzLAo+Pj4+Pgo+Pj4+PiDCoMKgwqDCoEhhbnMKPj4+
+Pj4KPj4+Pj4+Cj4+Pj4+PiB3aGljaCBhcmUgbm90IHRvdWNoZWQgYnkgdGhlIHNlcmllcy4KPj4+
+Pj4+Cj4+Pj4+PiBSZWdhcmRzLAo+Pj4+Pj4KPj4+Pj4+IEFuZHJ6ZWoKPj4+Pj4+Cj4+Pj4+Pj4g
+c3BhcnNlOgo+Pj4+Pj4+IHJrdmRlYy9ya3ZkZWMtdnA5LmM6MTkwOjQzOiB3YXJuaW5nOiB2YXJp
+YWJsZSAnZGVjX3BhcmFtcycgc2V0IGJ1dCBub3QgCj4+Pj4+Pj4gdXNlZCBbLVd1bnVzZWQtYnV0
+LXNldC12YXJpYWJsZV0KPj4+Pj4+PiBya3ZkZWMvcmt2ZGVjLXZwOS5jOjI0NTo0Mzogd2Fybmlu
+ZzogdmFyaWFibGUgJ2RlY19wYXJhbXMnIHNldCBidXQgbm90IAo+Pj4+Pj4+IHVzZWQgWy1XdW51
+c2VkLWJ1dC1zZXQtdmFyaWFibGVdCj4+Pj4+Pj4gU1BBUlNFOmhhbnRyby9oYW50cm9fcG9zdHBy
+b2MuYyBoYW50cm8vaGFudHJvX3Bvc3Rwcm9jLmM6Mzc6MzU6IHdhcm5pbmc6IAo+Pj4+Pj4+IHN5
+bWJvbCAnaGFudHJvX2cxX3Bvc3Rwcm9jX3JlZ3MnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBp
+dCBiZSBzdGF0aWM/Cj4+Pj4+Pj4KPj4+Pj4+PiBzbWF0Y2g6Cj4+Pj4+Pj4gcmt2ZGVjL3JrdmRl
+Yy12cDkuYzoxOTA6NDM6IHdhcm5pbmc6IHZhcmlhYmxlICdkZWNfcGFyYW1zJyBzZXQgYnV0IG5v
+dCAKPj4+Pj4+PiB1c2VkIFstV3VudXNlZC1idXQtc2V0LXZhcmlhYmxlXQo+Pj4+Pj4+IHJrdmRl
+Yy9ya3ZkZWMtdnA5LmM6MjQ1OjQzOiB3YXJuaW5nOiB2YXJpYWJsZSAnZGVjX3BhcmFtcycgc2V0
+IGJ1dCBub3QgCj4+Pj4+Pj4gdXNlZCBbLVd1bnVzZWQtYnV0LXNldC12YXJpYWJsZV0KPj4+Pj4+
+PiBya3ZkZWMvcmt2ZGVjLXZwOS5jOiBya3ZkZWMvcmt2ZGVjLXZwOS5jOjIzNiBpbml0X2ludHJh
+X29ubHlfcHJvYnMoKSAKPj4+Pj4+PiBlcnJvcjogYnVmZmVyIG92ZXJmbG93ICdwdHInIDkwIDw9
+IDkxCj4+Pj4KPj4+PiB0aGlzIGxvb2tzIGEgZmFsc2UgcG9zaXRpdmUuCj4+Pj4KPj4+PiBBIHBv
+cnRpb24gb2YgbWVtb3J5IHBvaW50ZWQgdG8gYnkgcHRyIGlzIGluZGV4ZWQgd2l0aCBpICogMjMg
+KyBtLAo+Pj4+IHdoZXJlIGkgcmFuZ2VzIGZyb20gMCB0byAzLCBpbmNsdXNpdmUsIGFuZCBtIHJh
+bmdlcyBmcm9tIDAgdG8gMjIsCj4+Pj4gaW5jbHVzaXZlIGlmIGkgPCAzLCBvdGhlcndpc2UgbSBy
+YW5nZXMgZnJvbSAwIHRvIDIwLCBpbmNsdXNpdmUuCj4+Pj4gU28gdGhlIGxhcmdlc3QgaW5kZXgg
+dmFsdWUgd2UgY29tcHV0ZSBlcXVhbHMgODkgKDMgKiAyMyArIDIwKS4KPj4+PiBCZWNhdXNlIHB0
+ciBwb2ludHMgdG8gc29tZXRoaW5nIHRoYXQgaXMgYXQgbGVhc3QgOTAgYnl0ZXMgbGFyZ2UsCj4+
+Pj4gODkgaXMgYSB2YWxpZCBpbmRleCBhbmQgbm8gZ3JlYXRlciBpbmRleCB3aWxsIGJlIGV2ZXIg
+Y29tcHV0ZWQuCj4+Pgo+Pj4gQnV0IHdlIGRvIG5lZWQgdG8gZ2V0IHJpZCBvZiB0aGlzIHNtYXRj
+aCB3YXJuaW5nLCBvdGhlcndpc2UgaXQgd2lsbCBwb2xsdXRlIHRoZQo+Pj4gbGlzdCBvZiBzbWF0
+Y2ggd2FybmluZ3MuCj4+Pgo+Pj4gSSB3YXMgbG9va2luZyBhdCB0aGUgY29kZSBhbmQgd29uZGVy
+IGlmIGl0IHdvdWxkbid0IG1ha2UgbW9yZSBzZW5zZSB0bwo+Pj4gbW92ZSB3cml0aW5nIHRvIHJr
+cHJvYnMtPmludHJhX21vZGVbaV0udXZfbW9kZVtdIGludG8gYSBzZXBhcmF0ZSBmb3IgbG9vcDoK
+Pj4+Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIGZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKHY0bDJf
+dnA5X2tmX3V2X21vZGVfcHJvYik7IGkrKykKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIHJrcHJvYnMtPmludHJhX21vZGVbaSAvIDIzXS51dl9tb2RlW2kgJSAyM10gPSAKPj4+
+IHY0bDJfdnA5X2tmX3V2X21vZGVfcHJvYltpXTsKPj4+Cj4+PiBXb3VsZG4ndCB0aGF0IGRvIHRo
+ZSBzYW1lIGFzIHRoZSBjdXJyZW50IGNvZGU/IEl0IGxvb2tzIHNpbXBsZXIgYXMgd2VsbC4KPj4+
+Cj4+Cj4+IEkgdGhpbmsgaXQgd291bGQsIGJ1dCBJIHdvdWxkIHNsaWdodGx5IGNoYW5nZSB0aGUg
+bG9vcDoKPj4KPj4gwqDCoMKgwqDCoGZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKHY0bDJfdnA5
+X2tmX3V2X21vZGVfcHJvYik7IGkrKykgewo+IAo+IGFjdHVhbGx5LCBzaXplb2YodjRsMl92cDlf
+a2ZfdXZfbW9kZV9wcm9iKQo+IAo+IAo+IAo+PiDCoMKgwqDCoMKgwqDCoMKgIGNvbnN0IHU4ICpw
+dHIgPSAoY29uc3QgdTggKil2NGwyX3ZwOV9rZl91dl9tb2RlX3Byb2I7Cj4+Cj4+IMKgwqDCoMKg
+wqDCoMKgwqAgcmtwcm9icy0+aW50cmFfbW9kZVtpIC8gMjNdLnV2X21vZGVbaSAlIDIzXSA9IHB0
+cltpXTsKPj4gwqDCoMKgwqDCoH0KPj4KPj4gYmVjYXVzZSB2NGwyX3ZwOV9rZl91dl9tb2RlX3By
+b2IgaXMgYWN0dWFsbHkgYSB1OFsxMF1bOV0uCj4+Cj4+IEkgd2lsbCBtYWtlIHN1Y2ggYSBjaGFu
+Z2UgbG9jYWxseSBhbmQgdGVzdCB3aGV0aGVyIGl0IGNhdXNlcyByZWdyZXNzaW9ucy4KClRoaXMg
+d29ya2VkLCBubyByZWdyZXNzaW9uczoKCglmb3IgKGkgPSAwOyBpIDwgc2l6ZW9mKHY0bDJfdnA5
+X2tmX3V2X21vZGVfcHJvYik7ICsraSkgewoJCWNvbnN0IHU4ICpwdHIgPSAoY29uc3QgdTggKil2
+NGwyX3ZwOV9rZl91dl9tb2RlX3Byb2I7CgoJCXJrcHJvYnMtPmludHJhX21vZGVbaSAvIDIzXS51
+dl9tb2RlW2kgJSAyM10gPSBwdHJbaV07Cgl9CgpBbmRyemVqCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
