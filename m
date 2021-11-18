@@ -2,68 +2,88 @@ Return-Path: <SRS0=Tpqa=QF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEC79C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 18:38:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42C17C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 19:30:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF33B613DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 18:38:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AF33B613DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=metanate.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0389961507
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 19:30:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0389961507
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7e26gi6F+LpcnFYcmW7fi7B9tQijGsWGpj3joUcJ+uk=; b=nNVCPNHLsFwdB5
-	w0xUeV4+g40UzKVdzHXaFMFjv9nmQ4T+CK3ZRt8FgZ1sI2ZqCJ65bPxn2pzAhT1VoL1KN1QolDU2M
-	ArNIv3W805WNxpf5wmVpAq9vFsPfPrvl2jFklCdKY5JfFmWYBWeyGo49fix/D16CXb9Y/1D0Bz6Fs
-	8lTLqj2rAX5PCiT6e9yvFpDnsJLtCAqnG5iG5ROUJ4B8QWaZ4F9E0HaZHrn7L9+ExDCUEFVnfndel
-	fJYQ1PNnpzY5gCddFm36rOl55aZWdCVzzjRQ+WMVrWsUmCbPknGtfxpAbha1+Q6bgPWTIIC5ekP3Q
-	cltrQb59WeeiXm8t/8sg==;
+	List-Owner; bh=Lop6cpCDgRyufrVlb/SdlgcOzZSe+hEi8XbCkvM7UOU=; b=AnnZ4Fu/fxmBvr
+	2TkK8KyFXMh+DfFg9Fs6IpMcdPcyrcJqqCXPM7nqLdzPXgnN8+N4as+57QhIToVSrsB4RvdkNPOG0
+	fbLQHSeuKa4g6m9ugbCP10Unb3eYoi2Aq893OpF6ZSMQAV1Q9+gMRa/McykKJnJXQ7yfN7igx8e/7
+	FoH9pxzVpvvi3m4SGDaCnzcXHIYcc7w1adb/vn/DjUuWEM+tPdm+M3ci9q1VjSfBjFKcNNwJ8yvmv
+	78ZTMRv5zPvvWXMaHIHWtYupjUDjrZCVP89F9Yqc2dYEs1a/VjotyUS0L9OVZM3GWP7r5UQ7XH8TM
+	sXfI/IYJKJuKxGBJS0Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnmIj-008azX-2a; Thu, 18 Nov 2021 18:38:25 +0000
-Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
+	id 1mnn7T-008lfz-PR; Thu, 18 Nov 2021 19:30:51 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnmI1-008alR-6d; Thu, 18 Nov 2021 18:37:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
- Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description; bh=NMsSVSlICaw3KxLzwPPUCPeVdNgwg5v8aK2nEdXuhtA=; b=DILZx
- /TB9pZ1072e6u6lM8weFHFpm1OxAnji/1mVME5ECSH4vCffcOLqzZVLl9ABFp1eiHkfUCzM9/B40F
- p0DdAQ4KvHFi0GD2q+1d5twBHNIo4IcyJtFIXmysJ7uhOU9U3XXAGHEFqZ9pJNOP+g9HzavcKLD80
- BQwOrZZasBUwPK1JWN97LcMLNGOlQDEy8vzTah0QqgBwmdoZ98DNRr+1AzoM0YiPrRrgTgbmC1CdP
- A078lmkh22euzzTvJAzI0hqn9qpHoLBc+Ws5DguYxd2tDAVxLEzYrLikydU9V+bw2BMPKBh0dCKwr
- sGusX9DDSrYh9JmSuyaa7f6MEUD2w==;
-Received: from [81.174.171.191] (helo=donbot)
- by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1mnmHu-0005Py-OZ; Thu, 18 Nov 2021 18:37:34 +0000
-Date: Thu, 18 Nov 2021 18:37:33 +0000
-From: John Keeping <john@metanate.com>
-To: Ondrej Jirman <megous@megous.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Wolfram Sang <wsa@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>
-Subject: Re: [RESEND PATCH] i2c: rk3x: Handle a spurious start completion
- interrupt flag
-Message-ID: <YZadbTw0q4NA2XWs@donbot>
-References: <20210924111528.2924251-1-megous@megous.com>
+ id 1mnn7Q-008leW-AI
+ for linux-rockchip@lists.infradead.org; Thu, 18 Nov 2021 19:30:50 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id g19so7049383pfb.8
+ for <linux-rockchip@lists.infradead.org>; Thu, 18 Nov 2021 11:30:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Pb14MqCTU3J6D9GGe31yDgUMoZQIJFb1ROL5bX0DMqg=;
+ b=cQZwJ9YeqwPxXKl7/Ra3o+Rh8nEuwKxhuosgjgtlhTQ9kgdIZjE74Ip21sK6YRPEgm
+ 7pGvDXGboYqRXhoV3r5ew86r8uC7gbuGrZDoWKAVT5sRfMUYfx0FANg7onPC6+lRTMFT
+ G7NBPobkXbp7AjQ9XFWMpeuuNrxYMee4pKUfo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Pb14MqCTU3J6D9GGe31yDgUMoZQIJFb1ROL5bX0DMqg=;
+ b=Z+hxz+dbgt53MqQVR/SVlAm5BsjrFEJNmpGKoDRgrfjEUPijkQtg2mdhsh7R9DmDFy
+ mfgwraqmmY6VfFeGcjZvVgD3xYt+bMcEiuqKBYDkMKFkW9+nA1D0MqUz41/WbOMYfgqb
+ /fIl5HzBnBOJGsj9TXAZ71S03VTXHaXsJorgTfmL0EBHomVnDMfHJYO1wB8aQX+hLB+m
+ 3D9xav8ap1kvdk83P5Ax7GWwL2ape9JCJijqz64AuJg4Iguvb9SCJ0lCzD98TwIn3Vg2
+ /ZFAxBQtktFGFaFfwSliTKEvUvzqkTJt8J+6bZJ4wOFZ2wH0pIewWhAo98/miPvx5Qsp
+ 2+ng==
+X-Gm-Message-State: AOAM531Sv6mI23QnWtdWeTp0N0ItCj76Bbp/4n/F+iS5K80t0vIHbPFy
+ o09u5b3KYK9lO8lUsixNlDnHQQ==
+X-Google-Smtp-Source: ABdhPJwhGJoIuasv+jusGZbzhkG5zaQIvyvco0ciQxImTVKnurOgSMOAYFJj+ihc5CEUER2gToLAjQ==
+X-Received: by 2002:a65:46cf:: with SMTP id n15mr13180408pgr.260.1637263846379; 
+ Thu, 18 Nov 2021 11:30:46 -0800 (PST)
+Received: from google.com ([2620:15c:202:201:896b:df38:4eae:c568])
+ by smtp.gmail.com with ESMTPSA id e13sm319618pgi.90.2021.11.18.11.30.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Nov 2021 11:30:45 -0800 (PST)
+Date: Thu, 18 Nov 2021 11:30:43 -0800
+From: Brian Norris <briannorris@chromium.org>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Doug Anderson <dianders@chromium.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Rob Clark <robdclark@gmail.com>, linux-input@vger.kernel.org,
+ Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <YZap4zKo8D5eZc1y@google.com>
+References: <20211117224841.3442482-1-briannorris@chromium.org>
+ <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <YZYXR4u6VBEi4qnM@phenom.ffwll.local>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210924111528.2924251-1-megous@megous.com>
-X-Authenticated: YES
+In-Reply-To: <YZYXR4u6VBEi4qnM@phenom.ffwll.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_103741_284945_A0ABE1DE 
-X-CRM114-Status: GOOD (  19.32  )
+X-CRM114-CacheID: sfid-20211118_113048_395208_8EB0871C 
+X-CRM114-Status: GOOD (  38.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,64 +101,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 24, 2021 at 01:15:27PM +0200, Ondrej Jirman wrote:
-> In a typical read transfer, start completion flag is being set after
-> read finishes (notice ipd bit 4 being set):
-> 
-> trasnfer poll=0
-> i2c start
-> rk3x-i2c fdd40000.i2c: IRQ: state 1, ipd: 10
-> i2c read
-> rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 1b
-> i2c stop
-> rk3x-i2c fdd40000.i2c: IRQ: state 4, ipd: 33
-> 
-> This causes I2C transfer being aborted in polled mode from a stop completion
-> handler:
-> 
-> trasnfer poll=1
-> i2c start
-> rk3x-i2c fdd40000.i2c: IRQ: state 1, ipd: 10
-> i2c read
-> rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 0
-> rk3x-i2c fdd40000.i2c: IRQ: state 2, ipd: 1b
-> i2c stop
-> rk3x-i2c fdd40000.i2c: IRQ: state 4, ipd: 13
-> i2c stop
-> rk3x-i2c fdd40000.i2c: unexpected irq in STOP: 0x10
-> 
-> Clearing the START flag after read fixes the issue without any obvious
-> side effects.
-> 
-> This issue was dicovered on RK3566 when adding support for powering
-> off the RK817 PMIC.
-> 
-> Signed-off-by: Ondrej Jirman <megous@megous.com>
-> ---
+Hi Daniel,
 
-I haven't seen the issue described here, so I can't test whether this
-fix works, but the explanation makes sense, so:
+Thanks for the review. Lots to address elsewhere, but I can respond
+here first:
 
-Reviewed-by: John Keeping <john@metanate.com>
-
->  drivers/i2c/busses/i2c-rk3x.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Thu, Nov 18, 2021 at 10:05:11AM +0100, Daniel Vetter wrote:
+> On Wed, Nov 17, 2021 at 02:48:40PM -0800, Brian Norris wrote:
+> > --- a/drivers/gpu/drm/Kconfig
+> > +++ b/drivers/gpu/drm/Kconfig
+> > @@ -79,9 +79,15 @@ config DRM_DEBUG_SELFTEST
+> >  
+> >  	  If in doubt, say "N".
+> >  
+> > +config DRM_INPUT_HELPER
+> > +	def_bool y
+> > +	depends on DRM_KMS_HELPER
+> > +	depends on INPUT
 > 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 819ab4ee517e..02ddb237f69a 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -423,8 +423,8 @@ static void rk3x_i2c_handle_read(struct rk3x_i2c *i2c, unsigned int ipd)
->  	if (!(ipd & REG_INT_MBRF))
->  		return;
->  
-> -	/* ack interrupt */
-> -	i2c_writel(i2c, REG_INT_MBRF, REG_IPD);
-> +	/* ack interrupt (read also produces a spurious START flag, clear it too) */
-> +	i2c_writel(i2c, REG_INT_MBRF | REG_INT_START, REG_IPD);
->  
->  	/* Can only handle a maximum of 32 bytes at a time */
->  	if (len > 32)
+> Uh please no configs for each thing, it just makes everything more
+> complex. Do we _really_ need this?
+
+First, it's not a configurable option (a user will never see this nor
+have to answer Y/N to it); it only serves as an intermediary to express
+the CONFIG_INPUT dependency (which is necessary) without making
+DRM_KMS_HELPER fully depend on CONFIG_INPUT. (We should be able to run
+display stacks without the input subsystem.)
+
+The closest alternative I can think of with fewer Kconfig symbols is to
+just use CONFIG_INPUT directly in the code, to decide whether to provide
+the helpers or else just stub them out. But that has a problem of not
+properly expressing the =m vs. =y necessity: if, for example,
+CONFIG_DRM_KMS_HELPER=y and CONFIG_INPUT=m, then we'll have linker
+issues.
+
+In short, yes, I think we really need this. But I'm not a Kbuild expert.
+
+> > diff --git a/include/drm/drm_input_helper.h b/include/drm/drm_input_helper.h
+> > new file mode 100644
+> > index 000000000000..7904f397b934
+> > --- /dev/null
+> > +++ b/include/drm/drm_input_helper.h
+> > @@ -0,0 +1,41 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (C) 2021 Google, Inc.
+> > + */
+> > +#ifndef __DRM_INPUT_HELPER_H__
+> > +#define __DRM_INPUT_HELPER_H__
+> > +
+> > +#include <linux/input.h>
+> > +
+> > +struct drm_device;
+> > +
+> > +struct drm_input_handler {
+> > +	/*
+> > +	 * Callback to call for input activity. Will be called in an atomic
+> > +	 * context.
+> 
+> How atomic? Like hardirq, and nasty spinlocks held?
+
+Maybe I should have just cribbed off the <linux/input.h> doc:
+
+ * @event: event handler. This method is being called by input core with
+ *      interrupts disabled and dev->event_lock spinlock held and so
+ *      it may not sleep
+
+I probably don't want to propagate the subsystem details about which
+locks, but I guess I can be specific about "interrupts disabled" and
+"don't sleep".
+
+> > +	 */
+> > +	void (*callback)(struct drm_input_handler *handler);
+> > +
+> > +	struct input_handler handler;
+> > +};
+> > +
+> > +#if defined(CONFIG_DRM_INPUT_HELPER)
+> > +
+> > +int drm_input_handle_register(struct drm_device *dev,
+> > +			      struct drm_input_handler *handler);
+> > +void drm_input_handle_unregister(struct drm_input_handler *handler);
+> > +
+> > +#else /* !CONFIG_DRM_INPUT_HELPER */
+> > +
+> > +static inline int drm_input_handle_register(struct drm_device *dev,
+> > +					    struct drm_input_handler *handler)
+> > +{
+> > +	return 0;
+> > +}
+> 
+> I guess the reason behind the helper is that you also want to use this in
+> drivers or maybe drm/sched?
+
+I think my reasoning is heavily described in both the cover letter and
+the commit message. If that's not clear, can you point out which part?
+I'd gladly improve it :)
+
+But specifically, see the 2nd bullet from the commit message, which I've
+re-quoted down here:
+
+> >  * GPU drivers: on GPU-accelerated desktop systems, we may need to
+> >    render new frames immediately after user activity. Powering up the
+> >    GPU can take enough time that it is worthwhile to start this process
+> >    as soon as there is input activity. Many Chrome OS systems also ship
+> >    with an input_handler boost that powers up the GPU.
+
+Rob Clark has patches to drm/msm to boost GPU power-up via a similar
+helper.
+
+> Anyway I think it looks all reasonable. Definitely need an ack from input
+> people
+
+I realized I failed to carry Dmitry's Ack from version 1 [1]. If this
+has a v3 in similar form, I'll carry it there.
+
+> that the event list you have is a good choice, I have no idea what
+> that all does. Maybe also document that part a bit more.
+
+I'm admittedly not an expert there, and this is actually one reason why
+we hoped to make this a library (that nobody wants to keep figuring out
+whether all those flags, etc., are really doing the right thing), but
+there are comments about what each entry is _trying_ to do. Are you
+suggesting more, as in, why "BTN_LEFT + EV_KEY" means "pointer"? Or why
+we match certain devices (because they represent likely user activity
+that will affect the display pipeline)? Or both? Anyway, I'll give it a
+shot, if we keep this.
+
+Brian
+
+[1] https://lore.kernel.org/all/YYW6FwSeNMK25ENm@google.com/
 
 _______________________________________________
 Linux-rockchip mailing list
