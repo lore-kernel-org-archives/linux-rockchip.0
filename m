@@ -2,91 +2,94 @@ Return-Path: <SRS0=Tpqa=QF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53305C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 20:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1A36C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 20:44:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A50A611BF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 20:30:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1A50A611BF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
+	by mail.kernel.org (Postfix) with ESMTPS id 7261D6112E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 20:44:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7261D6112E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YChIrTk96Z4a42R1bFA/65BroOsG/+8SQ3BTUj6HSe8=; b=mtYvj3NoTkMv5H
-	FYpi65PoHXZDYt+z/aYfuWdfqKOWoGm+H+NpPT0esiKk+f2AH6mh2FXlOMZ682i3bqxU7VvHAoo/x
-	rb0gbexRa+O+z63umXMYSKhsznnkETlJaGjFOJRMCSnzrEGCS25/99MDoBsPOGbAw6c9K5EY62lGU
-	EIazopJZZ4kSUu9jVefM8cEkvV+hhr0q5fzcHRn2K+BzZzVINJkMgJBL2JcyNHXdBRciuKYtzklJp
-	cMAtVIkpirvowoiNEFY+VICBpYLCQwgfVr9xiGifbdwy1fOBQChq7k9KriEnyzADqKhQmfocMJlVf
-	rdd8ULeDf7xZm7ZskLuw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=BjKP4HXtLTL4UvffuK6ZHNtTxsq066nclEkumKQ3xbc=; b=awYKNe+ePPGqni
+	XkPiphg4+bd0DzmxnO+EBc/W/JDWk81wHIBq6LzphKP+owVVOGDddCO0AjNPe/eeNH2wD0UhmSiiJ
+	u6770jotgQq+0Gwl1mD1/ZidNRnLuteMGuUnhnEUgoi/50QzS4BN+hKwbIcGcoKAgN+lHBd8VcZw2
+	ML5AfTSZcimBtaVv+ql+cfOqrBfa1zT0mH3kK7RKxsE1/Bkeetvq/1MdVzgLS0+zBgMRBDFpL9qJ0
+	caTKXSg7cmaeaPPSwk5r64eQOgpBcVXJoSx2WT/dfWdpbXzAw+3URgCnXFzI5Uw5EYlcbTIEoi7xZ
+	CG55QgMPcJR68eMHEZmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mno3N-008pyG-CI; Thu, 18 Nov 2021 20:30:41 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1mnoGi-008rlq-Iw; Thu, 18 Nov 2021 20:44:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mno3A-008pw0-4e
- for linux-rockchip@lists.infradead.org; Thu, 18 Nov 2021 20:30:29 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id b15so32563579edd.7
- for <linux-rockchip@lists.infradead.org>; Thu, 18 Nov 2021 12:30:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wwg+Ca9jb9pUEm7rE+CduZsgo7GneYWcNrMAsYNN4w0=;
- b=J9QOzTq127+fjB9bPz1Tnkq8fAIAL3i5cPhju4I+zno7r6Z0aHsjUzVuJ+w32/a2Q7
- RIO526yWOq/eal3vMxgZIKyyhjNMlEhgJs1eDXiPQE0NsNprB6qriiR7Wgsbrecrq+ez
- QuyIbgcopabzqAIu2L6lhS70RNLKh00a3v3a2ZprgWdnPCFAeWW0kiwblid1NUwc96yC
- Tp8dl/pjplMx8XddvkdoNoROcC0Sub/8IwP0p5ArtnbG4R3QPLL74z9buVSle0iD2Nc0
- 5tLmpZhp7pg5CqPUA69D4PYecmNlT74wayeiqMWMg/ZYZsNGalBVUnMwRNtMKDhXAECX
- o9NQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wwg+Ca9jb9pUEm7rE+CduZsgo7GneYWcNrMAsYNN4w0=;
- b=qIxF5D4blEFd0/8R1zRbi/rOhYtc0Iq16lddfi8VZTf+8+a0HJ62rfl3WLWfE+9k9E
- 07UugO80GV8+LrmGUHm968+HmRmv5w4T0B+jJLslv63PZgaxeLsI1wgnF5EJlZnI7kV6
- G48y+Qj1hP8dxPSw2clbLWFzAo6e9Imd6vThBi99s3lLexVHZUTMLuwL+AyyvpCA8eoA
- ZNDZpMFHfjvwN1ysk1ACi3mnxe+wf4Deox0tJygyOzMLg75o4PUYgEjZYpeJo4vL3baa
- xjBkxfWC1m0RxyVCMVLpFODVl+G7UzWtOIVf9lZqj4ai3DQacvnm2Zz6jG+g25mWOvZV
- MKmQ==
-X-Gm-Message-State: AOAM530ByvyMvUlV4nwinoSdvRW4Xq6jY4pp5xw2Cz1lqOskyJcmH7ns
- M0klXOanLCkvQk6YR3JXNdvTOpJizH1F3QqR9DKUBA==
-X-Google-Smtp-Source: ABdhPJwmTWmlHt4Iw5Q0nSvh9x75b6Y1V3AEdkg+yigj2bPoOupsbO8rrcQLoT70uyjwd8iVWqIasKW1gEPKi1IWv7Q=
-X-Received: by 2002:a50:ef02:: with SMTP id m2mr15409971eds.172.1637267425669; 
- Thu, 18 Nov 2021 12:30:25 -0800 (PST)
+ id 1mnoGd-008rk7-C5; Thu, 18 Nov 2021 20:44:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 475F96128C;
+ Thu, 18 Nov 2021 20:44:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637268262;
+ bh=sVeugOXOThpr87Zi3LpkKeS4dLNuxTnnYlOPOREQuJ0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=Jb8casGJHw1GPw52ROWvElXI1Y3Ol4NorSB8tY4VFUWAsxhMhJw1eGg8yeeDOl3HL
+ 1gEwn+J/Nwj3oOgX2oyUA2qOkyE/QgPMADTRcCzD9yMiYgcjYUYDgq+dL2TdYrZkrO
+ DdUxiQel6roOXC65gdhkzxUJk9jgL+XYK9S7+j+2lkQ1K/Kzq9TxQ0cGLh3BqCmPU8
+ SJQVIITH1U7ML7B0BhEONKb9SbGnIRmDeuojCtWd98bXE7wmEYbfbkzXsfTzGIULyP
+ C+fXuO7dL5eKt7rtZyOn/GSS+MoJ67VMC4nYz5UwIajXf0XXzbE3KqP5TeTFwOTboQ
+ 1i0TF1Z0kO7nA==
+Date: Thu, 18 Nov 2021 14:44:21 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Naveen Naidu <naveennaidu479@gmail.com>
+Cc: bhelgaas@google.com, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ linux-hyperv@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ Binghui Wang <wangbinghui@hisilicon.com>,
+ Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
+ Oliver O'Halloran <oohall@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Russell Currey <ruscur@russell.cc>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Toan Le <toan@os.amperecomputing.com>,
+ "K. Y. Srinivasan" <kys@microsoft.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Rob Herring <robh@kernel.org>, Wei Liu <wei.liu@kernel.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Joyce Ooi <joyce.ooi@intel.com>, Dexuan Cui <decui@microsoft.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ linux-rockchip@lists.infradead.org,
+ "maintainer:BROADCOM IPROC ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, 
+ Jonathan Derrick <jonathan.derrick@linux.dev>,
+ Xiaowei Song <songxiaowei@hisilicon.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org,
+ Robert Richter <rric@kernel.org>, Sean V Kelley <sean.v.kelley@intel.com>,
+ Ray Jui <rjui@broadcom.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ linux-arm-kernel@lists.infradead.org, Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
+ Scott Branden <sbranden@broadcom.com>, linuxppc-dev@lists.ozlabs.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ Lukas Wunner <lukas@wunner.de>, Jingoo Han <jingoohan1@gmail.com>,
+ Shawn Guo <shawn.guo@linaro.org>,
+ Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>
+Subject: Re: [PATCH v4 00/25] Unify PCI error response checking
+Message-ID: <20211118204421.GA1881943@bhelgaas>
 MIME-Version: 1.0
-References: <20211105124242.27288-1-andriy.shevchenko@linux.intel.com>
- <CACRpkdZ2-MRY_L2J4RvKDNW1yyThg7KUFbd80ZMpRY209RNxnw@mail.gmail.com>
- <YZJDFhMNyRaH+HFE@smile.fi.intel.com> <YZaFuGZ4AEN8HjUv@smile.fi.intel.com>
-In-Reply-To: <YZaFuGZ4AEN8HjUv@smile.fi.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 18 Nov 2021 21:30:14 +0100
-Message-ID: <CAMRc=MfD54gjMcZazJqXKUMTaW45_qKH6GSLOfs4eciKGtfrCw@mail.gmail.com>
-Subject: Re: [PATCH v1 01/19] lib/string_helpers: Introduce
- kasprintf_strarray()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>, 
- Sai Krishna Potthuri <lakshmi.sai.krishna.potthuri@xilinx.com>, 
- Andrew Morton <akpm@linux-foundation.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Bamvor Jian Zhang <bamv2005@gmail.com>, 
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, 
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Michal Simek <michal.simek@xilinx.com>, Andy Shevchenko <andy@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cover.1637243717.git.naveennaidu479@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_123028_192669_1B0E2B27 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20211118_124423_477152_5601D91E 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,39 +107,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 18, 2021 at 5:56 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Mon, Nov 15, 2021 at 01:23:02PM +0200, Andy Shevchenko wrote:
-> > On Tue, Nov 09, 2021 at 12:42:00PM +0100, Linus Walleij wrote:
-> > > On Fri, Nov 5, 2021 at 1:43 PM Andy Shevchenko
-> > > <andriy.shevchenko@linux.intel.com> wrote:
-> > >
-> > > > We have a few users already that basically want to have array of
-> > > > sequential strings to be allocated and filled.
-> > > >
-> > > > Provide a helper for them (basically adjusted version from gpio-mockup.c).
-> > > >
-> > > > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > >
-> > > Fulfils Rusty Russell's API design hierarchy requirements
-> > > and help people to make less mistakes so:
-> > > Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-> >
-> > Thanks!
-> >
-> > Should I resend, take into mine PR, or you just apply it as is?
-> >
-> > As I answered previously the series doesn't require additional work
-> > from my perspective.
->
-> Okay, I'm about to send a PR to you and Bart for this.
-> Does it sound good?
->
+On Thu, Nov 18, 2021 at 07:33:10PM +0530, Naveen Naidu wrote:
+> An MMIO read from a PCI device that doesn't exist or doesn't respond
+> causes a PCI error.  There's no real data to return to satisfy the 
+> CPU read, so most hardware fabricates ~0 data.
+> 
+> This patch series adds PCI_ERROR_RESPONSE definition and other helper
+> definition PCI_SET_ERROR_RESPONSE and PCI_POSSIBLE_ERROR and uses it
+> where appropriate to make these checks consistent and easier to find.
+> 
+> This helps unify PCI error response checking and make error check
+> consistent and easier to find.
+> 
+> This series also ensures that the error response fabrication now happens
+> in the PCI_OP_READ and PCI_USER_READ_CONFIG. This removes the
+> responsibility from controller drivers to do the error response setting. 
 
-Sounds good to me.
+Applied to pci/error for v5.17.  Thanks, this is really nice work.
+Somehow small changes like these add up to something much greater than
+one would expect.
 
-Bart
+This touches many native controller drivers but in trivial ways, so I
+plan to merge this branch after the usual native controller stuff from
+Lorenzo.
+
+I tweaked the commit logs to clarify that this series is all about
+*config* reads, not MMIO reads.  MMIO reads have similar issues, and
+we can use PCI_ERROR_RESPONSE, etc., there, too, but that's not what
+this series does.
+
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
