@@ -2,90 +2,117 @@ Return-Path: <SRS0=Tpqa=QF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7884BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 13:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51B60C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 13:31:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3034261401
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 13:24:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3034261401
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fooishbar.org
+	by mail.kernel.org (Postfix) with ESMTPS id 18F9261401
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Nov 2021 13:31:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 18F9261401
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7B6Z/1MvxmynLfjgLKmzzFIZBFlRvJg2kc0z4p+75e4=; b=jrkvzSJe6l2H8P
-	YlkOXwz29GWAoXF0eRdrxApkTXbFr+tn+3a+nfZGt1mZeWF/7Bn/08muaeOrkyn+W/MyBefvsV/76
-	OveQM96W8hyNecXEfsg9oT3dmd6nKXCmwWXFtfaDUP6n0SIXToT5xmb+nHXFjyZNyc2Yaa1pQKuX0
-	/W9UxPooSyLC8FHOHiEJKltLq/Xgo4JMbpVtC76D37I8FLHnmUvY0RLdrl76x6JZRICD/sUFeft3q
-	7r/j9un8EQIyGS0wz2uVWlq7aKiL4Cx3X9hBppmujYTXSAwapeeGd1h3Bi2JfSKamIg35tKoAA+ZY
-	XWdB2zi+IlQbeOeqnQGA==;
+	List-Owner; bh=04SdKmSMvubifj36StvOBhddErWjqkoqkPsCOpCkivI=; b=eLMBCpKAek0wlM
+	9zTJoHfOeJja+vM7OwQKGNxWfEDIyUn2AVRkl6dVrztNjM855eBrSivOPZvM402czSGWLok5D0aOA
+	JSyLyLYLGC9Y1pEWt1ALM4oXomUSROONtbfxCJY1oM5t969bGfIjqT/e9wb8d8fwxNxiwGqiHB8+5
+	o/q+AK6j7Vo8sbA7L2YFcHz1Cffu9+bG2DrhbiotC0PqcQwTkKalMcRPP022HL/MEA2MmRQujMCmx
+	LmAM5VOlSZDhKfgHdyBF6FV2Nk+w/rYJb4GJe6nJSZVIsM8D3PJIIQwhCRHarfhuaLJ0OlFzMjMnC
+	PeZY4O94zjo/Ke3HP+kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnhOq-007tJH-E2; Thu, 18 Nov 2021 13:24:24 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1mnhVG-007vIw-Ju; Thu, 18 Nov 2021 13:31:02 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnhOn-007tGE-1H
- for linux-rockchip@lists.infradead.org; Thu, 18 Nov 2021 13:24:22 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id u60so17891388ybi.9
- for <linux-rockchip@lists.infradead.org>; Thu, 18 Nov 2021 05:24:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fooishbar-org.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3CHovZnyFYzL8A4y+oY7gk4d/KIvHf2oXmR6WClb8/s=;
- b=T6WqBHc0TCpshnyXZ0Y0DJ578rZDDMyf1YgWWuXk0Fpnpref3dIG0HDuViic5bsZaO
- pLHoJ0eiaSOqtmuA9Vqz7lX8uC7BW9GcYolNoaStCGDfYFj3NMQ0pmovjvUVZJEtkSLU
- gdu6Ls2fD5r5Kb7bX8FrQraDF9/jK+uZbsr5bZFfSVZZLsN9n0eHS/xCWUkL2ONPo1Yw
- ef+b5XBuooYEblM2ZFxjouFDGhGHi818ivhaxmUTv0vhgnKSCpgaNipGIXoYygx5wU1O
- EtHeCZ7CMAchl1gp4Jibq4butcBqnXKX6GO2T2IwKkGiWoH0TCK9rwNYDRLwBRHqqFHY
- u3UA==
+ id 1mnhVC-007vHJ-J3; Thu, 18 Nov 2021 13:31:00 +0000
+Received: by mail-pl1-x631.google.com with SMTP id v19so5242426plo.7;
+ Thu, 18 Nov 2021 05:30:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Rri8CgMU3iUgw+czpevbWjMbr1UWm75xhAwXD02I6xU=;
+ b=FDEnvL+UtpoLRk6Q1zJ5TWKgN3pkejoc+c1lfiUwMmvGmldi6KxwZO1grB8bUwgggl
+ NxymJ9lCNeYeShRKPCEoAFb/qyeXIlHXW6H9LhjrDZVVUGNirPbyJuI24LirczSzl/Na
+ OK380QfTTMyJLsiytjnQRYSmo9aAci9N0vFC8VP0JB29tQt8eoW/ggKIxCPmK5+dxsXW
+ XwurEenZVOh5wEwUMaPPAASeHd9USOigFhhHFenuvMmC1EPdDlgUL2LZwm9an0CE8meS
+ Rv6YcVKeQnHd4N1kacEKQoyflUzVHPAi/1nTgQ8d8eBhHJHyNrVBYPckBm/kGT11HH/L
+ 8L/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3CHovZnyFYzL8A4y+oY7gk4d/KIvHf2oXmR6WClb8/s=;
- b=D+xPr61wr/mfZOHJvrZd4tWmAC8/JHrYOTUDtgNSdTzK9PzyxJ86fTXhHQ0+H2GzU9
- S8yFleKuiL0X+VTXyv94eDjxnpiFyPH742ApLHXe06dGAfAaY+t2l4Wnko1bGP3KjNle
- SZSKYWn385+qCYyKrJ/dWM9VRTCtpRJIa8+N/40h73Q2jYSsrSbmGaaFvZBnX+ThQsN5
- mVYp9NYIO0fLuQEs4S07NkkGtfEaKsV39myL+VE1xc2bq08bMFM9exi4SMEL8fXO0EZd
- TvjDP9bqq9BQ6gRRD7F95maex6D55j5uo7jFHpYfOycAHnuF0aq3M/g5WkCNA8uxT0yJ
- eyDw==
-X-Gm-Message-State: AOAM533na6HoaV0MqUTSGRuqol4+ZjR6etGTLt2hLjEP+7NhYPrkd4WO
- nN0JandS8xMR8eUWrToq0475x6fRrZ5upAxvwP1elg==
-X-Google-Smtp-Source: ABdhPJxQH4DGzX1DsG0B1QVx1lWh1G3G3AkM7oB0/0OrlLqXkWrE2kGjQvi/XY7Qmfbr8Yqc3zf4bpfydzz5bXBUpyw=
-X-Received: by 2002:a05:6902:1021:: with SMTP id
- x1mr28021143ybt.43.1637241859608; 
- Thu, 18 Nov 2021 05:24:19 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Rri8CgMU3iUgw+czpevbWjMbr1UWm75xhAwXD02I6xU=;
+ b=2aLDb7JiUmgJYhxoWjB/siG3rS9CpSXVlChTZ7Klytb54bODR58GX1wTsv5Gej/Pzn
+ /pKIDJoYDrwWVyAU17AnuugESrlC+ek9ivlnqYDPtZOZ0/JniEHuFuGpSWGoZMM0OWne
+ fmItbnct6VNuHJeoMPGV0q82K98rOQKAY/PO1lNDlRZ+AfENTriMMK5HXXTEWIRtg5ne
+ NUnDz+AnfxCCTUqOmAV3xItP+rnoIhaUazPDEJRfbRoef/tLCOz70wZ7GaiCnExjv1xo
+ W2UqD5njHiviqpVZAAcjO2PlI0SY6nV88RbkrXOH69yxSMJ1hWqLsD0j4jWiSRMghVFx
+ jTbQ==
+X-Gm-Message-State: AOAM533Z4Fgaatjch6/MAd055fDIjZf8C2BxHIoLhwLDIfw6lgSS29OE
+ fadrdvyWE3EHDIEVLkmy0fM=
+X-Google-Smtp-Source: ABdhPJw603nbU+O/fPHP8RoT4nn8P5boytORpwShOu3KLVJrVk3lFo3z0RQCNEqj18u5XFcu5Q1lpg==
+X-Received: by 2002:a17:90a:df14:: with SMTP id
+ gp20mr10690696pjb.186.1637242256451; 
+ Thu, 18 Nov 2021 05:30:56 -0800 (PST)
+Received: from theprophet ([2406:7400:63:2c47:5ffe:fc34:61f0:f1ea])
+ by smtp.gmail.com with ESMTPSA id z19sm3624615pfe.181.2021.11.18.05.30.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Nov 2021 05:30:56 -0800 (PST)
+Date: Thu, 18 Nov 2021 19:00:20 +0530
+From: Naveen Naidu <naveennaidu479@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: bhelgaas@google.com, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ linux-hyperv@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ Binghui Wang <wangbinghui@hisilicon.com>,
+ Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
+ Oliver O'Halloran <oohall@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Russell Currey <ruscur@russell.cc>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Toan Le <toan@os.amperecomputing.com>,
+ "K. Y. Srinivasan" <kys@microsoft.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Rob Herring <robh@kernel.org>, Wei Liu <wei.liu@kernel.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Joyce Ooi <joyce.ooi@intel.com>, Dexuan Cui <decui@microsoft.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ linux-rockchip@lists.infradead.org,
+ "maintainer:BROADCOM IPROC ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, 
+ Jonathan Derrick <jonathan.derrick@linux.dev>,
+ Xiaowei Song <songxiaowei@hisilicon.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org,
+ Robert Richter <rric@kernel.org>, Sean V Kelley <sean.v.kelley@intel.com>,
+ Ray Jui <rjui@broadcom.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ linux-arm-kernel@lists.infradead.org, Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
+ Scott Branden <sbranden@broadcom.com>, linuxppc-dev@lists.ozlabs.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ Lukas Wunner <lukas@wunner.de>, Jingoo Han <jingoohan1@gmail.com>,
+ Shawn Guo <shawn.guo@linaro.org>,
+ Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+Subject: Re: [PATCH v3 01/25] PCI: Add PCI_ERROR_RESPONSE and it's related
+ definitions
+Message-ID: <20211118133020.nkr3xzbzonxtrqbw@theprophet>
+References: <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
+ <20211117235812.GA1786428@bhelgaas>
 MIME-Version: 1.0
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <3bbf42f3-bd9c-ed66-e421-8d78fbeb22ad@rock-chips.com>
- <4310886.V3yF0ifEZO@diego>
- <CAPj87rPNSt7nZX93prAYD3Emf-34RdTZWp_1TOuAybBebObZhQ@mail.gmail.com>
- <fba695b7-863a-c492-0209-41bc07c7baee@rock-chips.com>
- <CAPj87rO86Mom-076Z5QX9hd=0bQi=AQcofkc1fSR4-VV2Zo6aQ@mail.gmail.com>
- <e948ee33-d1ea-cd53-a792-2e044eed1529@rock-chips.com>
-In-Reply-To: <e948ee33-d1ea-cd53-a792-2e044eed1529@rock-chips.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Thu, 18 Nov 2021 13:24:07 +0000
-Message-ID: <CAPj87rOQDAP+=AGizuvHG=cOfOCNFtPhYM_g8V=XMNmJPoz6oQ@mail.gmail.com>
-Subject: Re: [PATCH v1 00/12] drm/rockchip: RK356x VOP2 support
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, 
- devicetree@vger.kernel.org, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, 
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de, 
- linux-arm-kernel@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20211117235812.GA1786428@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_052421_180367_DB8B2CB3 
-X-CRM114-Status: GOOD (  32.58  )
+X-CRM114-CacheID: sfid-20211118_053058_686170_E6AC3C72 
+X-CRM114-Status: GOOD (  42.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,70 +130,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-
-On Thu, 18 Nov 2021 at 13:14, Andy Yan <andy.yan@rock-chips.com> wrote:
-> On 11/18/21 8:07 PM, Daniel Stone wrote:
-> > Technically, the driver cannot be upstreamed as-is. It looks as if it
-> > were a pre-atomic driver, that was half-converted to atomic, and then
-> > has been half-converted to atomic helpers as well. Things like
-> > reference counting and global state are not handled correctly at all.
-> > You can see this if you try to run Weston on top of the VOP2 driver:
-> > the framerate is decimated because the event handling massively
-> > over-synchronises, and the event timestamps which arrive are
-> > incorrect. This would be fixed by correctly using the event helpers
-> > that we have had in the tree for years (which would also eliminate the
-> > unnecessary framebuffer reference handling). It also does not work
-> > with the GPU drivers in the tree because it lacks the one-liner to
-> > correctly handle dma_resv synchronisation, which makes it both too
-> > fast as it displays content which is not ready, and too slow because
-> > it can't do it at full frame rate.
+On 17/11, Bjorn Helgaas wrote:
+> On Thu, Oct 21, 2021 at 08:37:26PM +0530, Naveen Naidu wrote:
+> > An MMIO read from a PCI device that doesn't exist or doesn't respond
+> > causes a PCI error.  There's no real data to return to satisfy the
+> > CPU read, so most hardware fabricates ~0 data.
+> > 
+> > Add a PCI_ERROR_RESPONSE definition for that and use it where
+> > appropriate to make these checks consistent and easier to find.
+> > 
+> > Also add helper definitions SET_PCI_ERROR_RESPONSE and
+> > RESPONSE_IS_PCI_ERROR to make the code more readable.
+> > 
+> > Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> > Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
+> > ---
+> >  include/linux/pci.h | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> > 
+> > diff --git a/include/linux/pci.h b/include/linux/pci.h
+> > index cd8aa6fce204..689c8277c584 100644
+> > --- a/include/linux/pci.h
+> > +++ b/include/linux/pci.h
+> > @@ -154,6 +154,15 @@ enum pci_interrupt_pin {
+> >  /* The number of legacy PCI INTx interrupts */
+> >  #define PCI_NUM_INTX	4
+> >  
+> > +/*
+> > + * Reading from a device that doesn't respond typically returns ~0.  A
+> > + * successful read from a device may also return ~0, so you need additional
+> > + * information to reliably identify errors.
+> > + */
+> > +#define PCI_ERROR_RESPONSE     (~0ULL)
+> > +#define SET_PCI_ERROR_RESPONSE(val)    (*(val) = ((typeof(*(val))) PCI_ERROR_RESPONSE))
+> > +#define RESPONSE_IS_PCI_ERROR(val) ((val) == ((typeof(val)) PCI_ERROR_RESPONSE))
+> 
+> Beautiful!  I really like this.
 >
-> We have different team run Android , X11, Weston on rk356x, especially
-> for android, we can run at 60 fps.
+
+Thank you very much for the review ^^
+
+> I would prefer the macros to start with "PCI_", e.g.,
+> PCI_SET_ERROR_RESPONSE().
+> 
+
+ACK
+
+> I think "RESPONSE_IS_PCI_ERROR()" is too strong because (as the
+> comment says), ~0 *may* indicate an error.  Or it may be a successful
+> read of a register that happens to contain ~0.
+> 
+> Possibilities to convey the idea that this isn't definitive:
+> 
+>   PCI_POSSIBLE_ERROR_RESPONSE(val)  # a little long
+>   PCI_LIKELY_ERROR(val)             # we really have no idea whether
+>   PCI_PROBABLE_ERROR(val)           #   likely or probable
+>   PCI_POSSIBLE_ERROR(val)           # promising?
 >
-> Our vop2 driver is developed on Linux 4.19, am not sure which version of
-> kernel you put our drivers on.
 
-We forward-ported it to a current mainline kernel and started to work
-on fixing some of the issues. When we did this, we went back to the
-BSP tree posted on GitHub to test using a pure-BSP environment, and
-observed the same breakage there.
+ACK. Will use PCI_POSSIBLE_ERROR()
 
-> > Similarly, on the RK3566 EVB, the DSI does not work unless HDMI is
-> > also active, but when HDMI is active at the same time as DSI, it just
->
-> I am very sure rk3566 evb DSI can work without HDMI.
+> Can you rebase to my "main" branch (v5.16-rc1), tweak the above, and
+> collect up the acks/reviews?
+> 
 
-I'd love to know how. :) Using the meta-rockchip layer as published on
-GitHub, we cannot get working DSI without HDMI, using upstream Weston.
-When the HDMI connector is disabled, DSI comes up blank. When the HDMI
-connector is enabled, DSI works fine but HDMI is blank.
+ACK
 
-> But take care that the vop on rk3566 has a special limitation: there are
-> three windows(Cluster1/Esmart1/Smart1) that have a mirror lock, that means they
-> can't be programed framebuffer address independently , they can only
-> share framebuffer address with Cluster0/Esmart0/Smart0. We use these feature
-> on Android.
->
-> I have comment these limitation in our driver.
+> We should also browse drivers outside drivers/pci for places we could
+> use these.  Not necessarily as part of this series, although if
+> authors there object, it would be good to learn that earlier than
+> later.
+> 
+> Drivers that implement pci_error_handlers might be a fruitful place to
+> start.  But you've done a great job finding users of ~0 and 0xffff...
+> in drivers/pci/, too.
+> 
 
-Yeah, we noticed this.
+A quick grep showed that there are around 80 drivers which have
+pci_error_handlers. I was thinking that it would be better if we handle
+these drivers in another patch series since the current patch series is
+itself 25 patches long. And in my short tenure reading LKML, I gathered
+that folks generally are not so kind to a long list of patches in a
+single patch series ^^' (I might be wrong though, Apologies)
 
-> Compared to old vop, vop is strong but a bit complicated, we try very had to
-> make it work on as much display framework as possible.
->
-> We have upstream plane, but I am really in a rush this year. So sorry
-> for the late of upstream, but we glad to work with community.
->
-> So Sascha, please feel free to go on with your work.
+The consensus on the patch series does seem slightly positive so
+ideally, I was hoping that we would not have the case where a author
+does not like the way we are handling this patch. Then again, I'm
+pretty sure that I might be wrong ^^'
 
-Great, thanks. If you agree with the plan I posted, then we can all go
-forward with that upstream, doing the development work with ourselves
-and Sascha. Hopefully Rockchip will be able to support this effort.
+I hope it would be okay that I send in a new patch series with the
+suggested changes and handle the other changes in another patch series
+^^
 
-Cheers,
-Daniel
+Thanks,
+Naveen
+> > +
+> >  /*
+> >   * pci_power_t values must match the bits in the Capabilities PME_Support
+> >   * and Control/Status PowerState fields in the Power Management capability.
+> > -- 
+> > 2.25.1
+> > 
+> > _______________________________________________
+> > Linux-kernel-mentees mailing list
+> > Linux-kernel-mentees@lists.linuxfoundation.org
+> > https://lists.linuxfoundation.org/mailman/listinfo/linux-kernel-mentees
 
 _______________________________________________
 Linux-rockchip mailing list
