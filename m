@@ -2,105 +2,86 @@ Return-Path: <SRS0=Lfqv=QG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA7FAC4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 15:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19DE5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:00:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8AEDE61549
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 15:56:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8AEDE61549
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id D2D8961A58
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:00:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D2D8961A58
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ndufresne.ca
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1KLqPX28YAcwRWUcM8Rgb9t/bayYhFElt2FLm/gaEFo=; b=gqTD0IWzrOpsSj
-	9RftDeBdd1ijM0EGlFzK/rv4JdkeOA5QHYgkrQ1fgN4v6jNDzVMHdvaakbdo7RPVGBP2+hI9Q7Ewa
-	pO/A7pobwVBoGE0MIfrGlzYqzQjhVCC2dTlvZAvuR/jjWHfYCHd4OFGRIAgA1uHFICE8YNnqCqVw7
-	u7aSLknTRumA61dDnWuEy3y3Gs6MzmIlyJfauAAmtyGaD9ZetSQJpHxA62hy0kHxazHvA9sNcr4Cd
-	8S835Iggc+uP4k+1JN2dUmUFU6zTDKlIA6b2N6V5m+G5t8quRF6hesMEi36+n84qUmzO7KgnTu7kg
-	X1qOIShR/cTW4IA3KFqQ==;
+	List-Owner; bh=nWV/6UMEYoY2EwdOJ9eUoslz2vPVSlIK0XmYLH+y3FI=; b=Hy3nZL5GGo3N9o
+	SpaQ7fGhUU5mXS0/pZw/0nHHguoC3S+n4W8TfDkwcqBGUf4Wyx/VuHp+6AQ+YLQqpLO8OaZ5HXtas
+	VXIIeYH0Mgy8sw3/cjHVoTN5oKGWrPHmlMEj+RKj0hKAnA5rXhF27ae3zCv/XXt1jIg5/U3FlX1rP
+	PqcTcdYgV70R6/17SQr52Cno6oCpXvF4jyY3HCKWxxEfyOpGfEjuWHiyzu9dyUGulVNvRTc/+6NoS
+	BHxHwR/NaYvsi1xVoXcCWimoBBEwJWLdBwIKYCfuy31K0Qy/Wlckr2txxWsrU1+85/7eteMtG1i4Q
+	/U5kgffK0iGoinxyhv9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mo6FF-00AvBL-0V; Fri, 19 Nov 2021 15:56:09 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1mo6JH-00AwCy-JR; Fri, 19 Nov 2021 16:00:19 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mo6FB-00Av9q-52
- for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 15:56:07 +0000
-Received: by mail-ed1-x530.google.com with SMTP id x15so44598847edv.1
- for <linux-rockchip@lists.infradead.org>; Fri, 19 Nov 2021 07:56:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to; bh=/tKsxSEfsYBwSluuYOLprfcJui1VZ7odSBnyxo6MzeA=;
- b=cmORIRUfx88TR56Bemm+KdlRbNS5Fm4HGjHKHYa9KE4Tvlz3qaOh9U2IFJD/BhDMpK
- 0AKpO60Iosrbqn1gsPFpkQbJpe7NJU6c1U9n3cAo2VpUBVMIXV4Bv5XoSVbQm0jmtgo6
- Iqr6H3xnJs4GWEXxTtFNbusM2Iz2v2UaXYYyc=
+ id 1mo6JA-00Aw5M-0i
+ for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 16:00:14 +0000
+Received: by mail-io1-xd33.google.com with SMTP id e144so13334888iof.3
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Nov 2021 08:00:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=CzDhnBYrIWCmbBZJRky5D2oCgX/sSqmYTvB1Vt37Vfo=;
+ b=fa0xr6f09xAV9zx/WfI/tmWv8Ikuoej2kMVUW+OEWPKoIZzssNw+T4Y3TZExLu7nej
+ VfCp5u1dC1ST5uNKwNufcB40fJ3jagxMBeZbJ6R64qjQtImtlnaZXhwsMgACaWdm7+9Q
+ rP4RARCPmG2Bcj+JDkMxRMlbitADjShkbCLSJXQuG+X+7tHijelRW4UBVKmdsEHpLL8R
+ nvlw6vz6H0spXdWfvNjoiQYVzIxHJ/D3+gdo7HThJZsiqPCoLzRs2mifLOMLAfOOyHMP
+ EX4DrS0QDp2lRf+uBmA5hrQ1tepvALcWHA2F6Rr59JqN3tJ8EmhrABLSX7LFL4G8aEO7
+ SOlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=/tKsxSEfsYBwSluuYOLprfcJui1VZ7odSBnyxo6MzeA=;
- b=rv2mFrBOYPdT4MvCmkNw4DU31ARIQXrxdmfjXGGT9qOAUnAoNAlGzHPkfsvUC9TcXv
- soOjjgYfZZMefUjvN5RtdUUS013RVI3XI+V5q8QDjFW3EdoK8QIYJziqCllIAGloEE22
- 0othEVYit1hJYAmNNIZOJY8oST1JeuKlXAnUjsRU8WuvmNbqgeZtKCExYvEnhdWAd312
- /ENykiNFimTNwVlYhrz/b1g0HRxiWHw6sRoSt+NdWwRfWBj8iXYZR1PB6z0dHq02JYS8
- Z7wyyHCOR0WDuHynaukb0y3WjYmtE4EkGKRi3KIAsYjgEkeBe5+ffDDiMR5JTUXllexV
- qgZQ==
-X-Gm-Message-State: AOAM532mr+wvGAv0jbYbuto0q2bp6IKgiaOKtoMjmtvvailuRTBFAm8o
- kZcQ4HWqtGFhHGRiFp4WqipG3Q==
-X-Google-Smtp-Source: ABdhPJwUfsvKoAXImN0ctJFSv9mqYmIe6+r/s/xfHWgFamuUb00KlG/yNCuxGBbOwCLL8IkakZ83jg==
-X-Received: by 2002:a17:906:a215:: with SMTP id
- r21mr9126381ejy.21.1637337363469; 
- Fri, 19 Nov 2021 07:56:03 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id h10sm83825edr.95.2021.11.19.07.56.02
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=CzDhnBYrIWCmbBZJRky5D2oCgX/sSqmYTvB1Vt37Vfo=;
+ b=fM0T87Aui+JUM06fbicdOQifE77XgMVwMGJgm14mg9pykpWhrW9fII2iiqiNE7jHl1
+ 95WJxVnVXtJBJqWmbFozxbBMIQRvy8g1x3XukRhjcaFT2hdDnrqsIuGvbGMQVUwJnh9S
+ fNOULbMb2suVwjtJPtn7xgAMrmucykiaUv55QmwrDqa0p9xRN1GX3x4xYWWg6c/QHJxu
+ 8yTCm4SpQkmAqDsU9IaAxwq66loFgffBdWdwqj05sE4103sqCGpnAQkJ2tUvmzcUwvQ7
+ uakuJ3p7ydmG/hNiHEP9kAFPHK1CGmMdtQISkiVAd+S/NvO26wPomGZqkW7HJs0tsTno
+ YKsw==
+X-Gm-Message-State: AOAM530DVeZvIc8LTTK67PwmuyRjDirpXvVaA7NfTzkmBJ0On1t/Opkz
+ Wi8j5RqJogmciqZZYAhHygazuMfVzSohJG2x
+X-Google-Smtp-Source: ABdhPJxKzuc5TzSBPZkYIoBfS4UseX9DrbkBy7awo0aGJZ6Z8Ph8k5D3DAv6+0Qic/hHB26SMRGDNg==
+X-Received: by 2002:a05:6638:25c8:: with SMTP id
+ u8mr28978236jat.23.1637337609816; 
+ Fri, 19 Nov 2021 08:00:09 -0800 (PST)
+Received: from nicolas-tpx395.localdomain (mtl.collabora.ca. [66.171.169.34])
+ by smtp.gmail.com with ESMTPSA id l1sm66114ioj.29.2021.11.19.08.00.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Nov 2021 07:56:02 -0800 (PST)
-Date: Fri, 19 Nov 2021 16:56:01 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Pekka Paalanen <ppaalanen@gmail.com>
-Cc: Brian Norris <briannorris@chromium.org>,
- Rob Clark <robdclark@chromium.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Peter Hutterer <peter.hutterer@who-t.net>, David Airlie <airlied@linux.ie>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
- linux-rockchip@lists.infradead.org,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
- linux-input@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
-Message-ID: <YZfJET55LjuW4BP+@phenom.ffwll.local>
-Mail-Followup-To: Pekka Paalanen <ppaalanen@gmail.com>,
- Brian Norris <briannorris@chromium.org>,
- Rob Clark <robdclark@chromium.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Peter Hutterer <peter.hutterer@who-t.net>,
- David Airlie <airlied@linux.ie>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-kernel@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
- linux-rockchip@lists.infradead.org,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- dri-devel@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>,
- linux-input@vger.kernel.org
-References: <20211117224841.3442482-1-briannorris@chromium.org>
- <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
- <20211118123928.545dec8a@eldfell> <YZcB4ooqpvP3gHdx@google.com>
- <20211119123841.1d628cb6@eldfell>
+ Fri, 19 Nov 2021 08:00:09 -0800 (PST)
+Message-ID: <5d23258a954eb0076cacf89d6c88b5e6ef13695f.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: hantro: Hook up RK3399 JPEG encoder output
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Chen-Yu Tsai <wenst@chromium.org>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Date: Fri, 19 Nov 2021 11:00:07 -0500
+In-Reply-To: <20211119074654.470729-1-wenst@chromium.org>
+References: <20211119074654.470729-1-wenst@chromium.org>
+User-Agent: Evolution 3.42.1 (3.42.1-1.fc35) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211119123841.1d628cb6@eldfell>
-X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211119_075605_243475_FAD9ACCA 
-X-CRM114-Status: GOOD (  83.38  )
+X-CRM114-CacheID: sfid-20211119_080012_098466_58F55818 
+X-CRM114-Status: GOOD (  28.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,536 +94,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 19, 2021 at 12:38:41PM +0200, Pekka Paalanen wrote:
-> On Thu, 18 Nov 2021 17:46:10 -0800
-> Brian Norris <briannorris@chromium.org> wrote:
-> =
-
-> > Hi Pekka,
-> > =
-
-> > Thanks for the thoughts and review. I've tried to respond below:
-> > =
-
-> > On Thu, Nov 18, 2021 at 12:39:28PM +0200, Pekka Paalanen wrote:
-> > > On Wed, 17 Nov 2021 14:48:40 -0800
-> > > Brian Norris <briannorris@chromium.org> wrote:
-> > >   =
-
-> > > > A variety of applications have found it useful to listen to
-> > > > user-initiated input events to make decisions within a DRM driver, =
-given
-> > > > that input events are often the first sign that we're going to start
-> > > > doing latency-sensitive activities:
-> > > > =
-
-> > > >  * Panel self-refresh: software-directed self-refresh (e.g., with
-> > > >    Rockchip eDP) is especially latency sensitive. In some cases, it=
- can
-> > > >    take 10s of milliseconds for a panel to exit self-refresh, which=
- can
-> > > >    be noticeable. Rockchip RK3399 Chrome OS systems have always shi=
-pped
-> > > >    with an input_handler boost, that preemptively exits self-refresh
-> > > >    whenever there is input activity.
-> > > > =
-
-> > > >  * GPU drivers: on GPU-accelerated desktop systems, we may need to
-> > > >    render new frames immediately after user activity. Powering up t=
-he
-> > > >    GPU can take enough time that it is worthwhile to start this pro=
-cess
-> > > >    as soon as there is input activity. Many Chrome OS systems also =
-ship
-> > > >    with an input_handler boost that powers up the GPU.
-> > > > =
-
-> > > > This patch provides a small helper library that abstracts some of t=
-he
-> > > > input-subsystem details around picking which devices to listen to, =
-and
-> > > > some other boilerplate. This will be used in the next patch to impl=
-ement
-> > > > the first bullet: preemptive exit for panel self-refresh.
-> > > > =
-
-> > > > Bits of this are adapted from code the Android and/or Chrome OS ker=
-nels
-> > > > have been carrying for a while.
-> > > > =
-
-> > > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > > > ---  =
-
-> > > =
-
-> > > Thanks Simon for the CC.
-> > > =
-
-> > > Hi Brian,
-> > > =
-
-> > > while this feature in general makes sense and sounds good, to start
-> > > warming up display hardware early when something might start to happe=
-n,
-> > > this particular proposal has many problems from UAPI perspective (as =
-it
-> > > has none). Comments below.
-> > > =
-
-> > > Btw. if PSR is that slow to wake up from, how much do you actually ga=
-in
-> > > from this input event watching? I would imagine the improvement to not
-> > > be noticeable.  =
-
-> > =
-
-> > Patch 2 has details. It's not really about precisely how slow PSR is,
-> > but how much foresight we can gain: in patch 2, I note that with my
-> > particular user space and system, I can start PSR-exit 50ms earlier than
-> > I would otherweise. (FWIW, this measurement is exactly the same it was
-> > with the original version written 4 years ago.)
-> > =
-
-> > For how long PSR-exit takes: the measurements I'm able to do (via
-> > ftrace) show that drm_self_refresh_transition() takes between 35 and 55
-> > ms. That's noticeable at 60 fps. And quite conveniently, the input-boost
-> > manages to hide nearly 100% of that latency.
-> > =
-
-> > Typical use cases where one notices PSR latency (and where this 35-55ms
-> > matters) involve simply moving a cursor; it's very noticeable when you
-> > have more than a few frames of latency to "get started".
-> =
-
-> Hi Brian,
-> =
-
-> that is very interesting, thanks.
-> =
-
-> I would never have expected to have userspace take *that* long to
-> react. But, that sounds like it could be just your userspace software
-> stack.
-
-In the other subthread we're talking about making this more explicit.
-Maybe we need to combine this with a "I expect to take this many
-milliseconds to get the first frame out" value.
-
-That way compositors which take 50ms (which frankly is shocking slow) can
-set that, and kms can enable sr exit (since sr exit will actually help
-here). But other compositors which expect to get the first frame out in
-maybe 20 can spec that, and then the driver will not sr exit (because too
-high chances we'll just make shit slower), and instead will only boost
-render clocks.
-
-Thoughts?
--Daniel
-
-> =
-
-> > > I think some numbers about how much this feature helps would be really
-> > > good, even if they are quite specific use cases. You also need to
-> > > identify the userspace components, because I think different display
-> > > servers are very different in their reaction speed.  =
-
-> > =
-
-> > If my email address isn't obvious, I'm testing Chrome OS. I'm frankly
-> > not that familiar with the user space display stack, but for what I
-> > know, it's rather custom, developed within the Chromium project. Others
-> > on CC here could probably give you more detail, if you want specific
-> > answers, besides docs like this:
-> > =
-
-> > https://chromium.googlesource.com/chromium/src/+/HEAD/docs/ozone_overvi=
-ew.md
-> > =
-
-> > > If KMS gets a pageflip or modeset in no time after an input event, th=
-en
-> > > what's the gain. OTOH, if the display server is locking on to vblank,
-> > > there might be a delay worth avoiding. But then, is it worth
-> > > short-circuiting the wake-up in kernel vs. adding a new ioctl that
-> > > userspace could hit to start the warming up process?  =
-
-> > =
-
-> > Rob responded to the first part to some extent (there is definitely gain
-> > to be had).
-> > =
-
-> > To the last part: I wrote a simple debugfs hook to allow user space to
-> > force a PSR exit, and then a simple user space program to read input
-> > events and smash that debugfs file whenever it sees one. Testing in the
-> > same scenarios, this appears to lose less than 100 microseconds versus
-> > the in-kernel approach, which is negligible for this use case. (I'm not
-> > sure about the other use cases.)
-> > =
-
-> > So, this is technically doable in user space.
-> =
-
-> This is crucial information I would like you to include in some commit
-> message. I think it is very interesting for the reviewers. Maybe also
-> copy that in the cover letter.
-> =
-
-> In my opinion there is a clear and obvious decision due that
-> measurement: Add the new ioctl for userspace to hit, do not try to
-> hardcode or upload the wake-up policy into the kernel.
-> =
-
-> > I can't speak to the ease of _actually_ integrating this into even our
-> > own Chrome display manager, but I highly doubt it will get integrated
-> > into others. I'd posit this should weigh into the relative worth, but
-> > otherwise can't really give you an answer there.
-> =
-
-> I think such a thing would be very simple to add to any display server.
-> They already have hooks for things like resetting idle timeout timers on
-> any relevant input event.
-> =
-
-> > I'd also note, software-directed PSR is so far designed to be completely
-> > opaque to user space. There's no way to disable it; no way to know it's
-> > active; and no way to know anything about the parameters it's computing
-> > (like average entry/exit delay). Would you suggest a whole set of new
-> > IOCTLs for this?
-> =
-
-> Just one ioctl on the DRM device: "Hey, wake up!". Because that's what
-> your patch does in-kernel, right?
-> =
-
-> If there are use case specific parameters, then how did you intend to
-> allow adjusting those in your proposal?
-> =
-
-> > > > diff --git a/drivers/gpu/drm/Makefile b/drivers/gpu/drm/Makefile
-> > > > index 1c41156deb5f..9a6494aa45e6 100644
-> > > > --- a/drivers/gpu/drm/Makefile
-> > > > +++ b/drivers/gpu/drm/Makefile
-> > > > @@ -56,6 +56,8 @@ drm_kms_helper-y :=3D drm_bridge_connector.o drm_=
-crtc_helper.o drm_dp_helper.o \
-> > > >  		drm_atomic_state_helper.o drm_damage_helper.o \
-> > > >  		drm_format_helper.o drm_self_refresh_helper.o drm_rect.o
-> > > >  =
-
-> > > > +drm_kms_helper-$(CONFIG_DRM_INPUT_HELPER) +=3D drm_input_helper.o
-> > > > +
-> > > >  drm_kms_helper-$(CONFIG_DRM_PANEL_BRIDGE) +=3D bridge/panel.o
-> > > >  drm_kms_helper-$(CONFIG_DRM_FBDEV_EMULATION) +=3D drm_fb_helper.o
-> > > >  drm_kms_helper-$(CONFIG_DRM_KMS_CMA_HELPER) +=3D drm_fb_cma_helper=
-.o
-> > > > diff --git a/drivers/gpu/drm/drm_input_helper.c b/drivers/gpu/drm/d=
-rm_input_helper.c
-> > > > new file mode 100644
-> > > > index 000000000000..470f90865c7c
-> > > > --- /dev/null
-> > > > +++ b/drivers/gpu/drm/drm_input_helper.c  =
-
-> > =
-
-> > > > +static int drm_input_connect(struct input_handler *handler,
-> > > > +			     struct input_dev *dev,
-> > > > +			     const struct input_device_id *id)
-> > > > +{
-> > > > +	struct input_handle *handle;
-> > > > +	int error;
-> > > > +
-> > > > +	handle =3D kzalloc(sizeof(struct input_handle), GFP_KERNEL);
-> > > > +	if (!handle)
-> > > > +		return -ENOMEM;
-> > > > +
-> > > > +	handle->dev =3D dev;
-> > > > +	handle->handler =3D handler;
-> > > > +	handle->name =3D "drm-input-helper";
-> > > > +
-> > > > +	error =3D input_register_handle(handle);
-> > > > +	if (error)
-> > > > +		goto err2;
-> > > > +
-> > > > +	error =3D input_open_device(handle);  =
-
-> > > =
-
-> > > Does this literally open the input device, just like when userspace
-> > > opens the input device?  =
-
-> > =
-
-> > I believe so. Dmitry mentioned something to this effect on earlier
-> > versions, but I found that the input_handler does not operate at all if
-> > this specific handle wasn't opened. (All handles are independent, and
-> > each over their own |open| count.)
-> > =
-
-> > This part is unfortunate, I agree. If we really want this in-kernel,
-> > perhaps I could find a way to tweak the input_handler API.
-> =
-
-> Ok. Sounds like this can have a clear technical solution, and then this
-> issue is solved for good. This might also remove the device type
-> filtering problem.
-> =
-
-> > > How do you know userspace is using this input device at all? If
-> > > userspace is not using the input device, then DRM should not be openi=
-ng
-> > > it either, as it must have no effect on anything.
-> > > =
-
-> > > If you open an input device that userspace does not use, you also cau=
-se
-> > > a power consumption regression, because now the input device itself is
-> > > active and possibly flooding the kernel with events (e.g. an
-> > > accelerometer).  =
-
-> > =
-
-> > Well, I don't think accelerometers show up as input devices, but I
-> > suppose your point could apply to actual input devices.
-> =
-
-> My understanding is that accelerometers are evdev (input) devices,
-> especially when used as input e.g. for controlling games. I'm not aware
-> of any other interface for it.
-> =
-
-> Even audio sockets are input devices for detecting whether a plug has
-> been plugged in, but those probably wouldn't flood anything.
-> =
-
-> =
-
-> > > > +	if (error)
-> > > > +		goto err1;
-> > > > +
-> > > > +	return 0;
-> > > > +
-> > > > +err1:
-> > > > +	input_unregister_handle(handle);
-> > > > +err2:
-> > > > +	kfree(handle);
-> > > > +	return error;
-> > > > +}
-> > > > +
-> > > > +static void drm_input_disconnect(struct input_handle *handle)
-> > > > +{
-> > > > +	input_close_device(handle);
-> > > > +	input_unregister_handle(handle);
-> > > > +	kfree(handle);
-> > > > +}
-> > > > +
-> > > > +static const struct input_device_id drm_input_ids[] =3D {
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT |
-> > > > +			 INPUT_DEVICE_ID_MATCH_ABSBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_ABS) },
-> > > > +		.absbit =3D { [BIT_WORD(ABS_MT_POSITION_X)] =3D
-> > > > +			    BIT_MASK(ABS_MT_POSITION_X) |
-> > > > +			    BIT_MASK(ABS_MT_POSITION_Y) },
-> > > > +	}, /* multi-touch touchscreen */
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_ABS) },
-> > > > +		.absbit =3D { [BIT_WORD(ABS_X)] =3D BIT_MASK(ABS_X) }
-> > > > +
-> > > > +	}, /* stylus or joystick device */
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_KEY) },
-> > > > +		.keybit =3D { [BIT_WORD(BTN_LEFT)] =3D BIT_MASK(BTN_LEFT) },
-> > > > +	}, /* pointer (e.g. trackpad, mouse) */
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_KEY) },
-> > > > +		.keybit =3D { [BIT_WORD(KEY_ESC)] =3D BIT_MASK(KEY_ESC) },
-> > > > +	}, /* keyboard */
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT |
-> > > > +			 INPUT_DEVICE_ID_MATCH_KEYBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_KEY) },
-> > > > +		.keybit =3D {[BIT_WORD(BTN_JOYSTICK)] =3D BIT_MASK(BTN_JOYSTICK)=
- },
-> > > > +	}, /* joysticks not caught by ABS_X above */
-> > > > +	{
-> > > > +		.flags =3D INPUT_DEVICE_ID_MATCH_EVBIT |
-> > > > +			 INPUT_DEVICE_ID_MATCH_KEYBIT,
-> > > > +		.evbit =3D { BIT_MASK(EV_KEY) },
-> > > > +		.keybit =3D { [BIT_WORD(BTN_GAMEPAD)] =3D BIT_MASK(BTN_GAMEPAD) =
-},
-> > > > +	}, /* gamepad */  =
-
-> > > =
-
-> > > I don't think this hardcoded policy belongs in the kernel, nor even
-> > > works.  =
-
-> > =
-
-> > Define "works"?
-> =
-
-> Makes the right decision in at least all those cases where current
-> desktop userspace (udev + hwdb + libinput) already makes the correct
-> decision. From what I've seen, it looks like end users come with bug
-> reports every now and then when some hardware manufacturer was lazy or
-> inventive with their HID descriptors.
-> =
-
-> > It's shipping in various forms on a variety of Android
-> > and Chrome OS systems, where it has a noticeable performance benefit,
-> > and isn't known to have significant power-consumption issues.
-> =
-
-> Peter Hutterer could probably say more, I confess I am quite
-> pessimistic.
-> =
-
-> > > I believe classifying input devices is not that simple. Spearheading
-> > > that is libinput which relies on udev tagging the devices with their
-> > > types, and that is done based on a hwdb maintained by I think the
-> > > systemd project. Or maybe libinput has its own db nowadays as well, I=
-'m
-> > > not sure.  =
-
-> > =
-
-> > I'm not that familiar with libinput, etc., but I expect most of what it
-> > needs to do is irrelevant to these kinds of use cases. We don't care at
-> > all about what character sets or even what type of device is in use, in
-> > most cases. As long as it could reasonably be called user input, it's
-> > good enough.
-> > =
-
-> > Also, for most use cases here, the penalty for small inaccuracies is
-> > small. Especially for something like panel self-refresh, we'd rather not
-> > have it enabled at all, than have it performing poorly.
-> =
-
-> This problem will diminish once your patches stop literally opening the
-> input devices and listens only on input devices that are actually
-> opened by userspace. When that happens, I'm not sure you even need this
-> device type filtering at all. The remaining problem is the seat
-> designation.
-> =
-
-> > > Also, joysticks and gamepads are something display servers generally =
-do
-> > > not open. An application might open some while it's running, but not
-> > > all the time. Joysticks could be very chatty while opened, game
-> > > controllers might have accelerometers, etc.
-> > >   =
-
-> > > > +	{ },
-> > > > +};
-> > > > +
-> > > > +int drm_input_handle_register(struct drm_device *dev,
-> > > > +			      struct drm_input_handler *handler)
-> > > > +{
-> > > > +	int ret;
-> > > > +
-> > > > +	if (!handler->callback)
-> > > > +		return -EINVAL;
-> > > > +
-> > > > +	handler->handler.event =3D drm_input_event;
-> > > > +	handler->handler.connect =3D drm_input_connect;
-> > > > +	handler->handler.disconnect =3D drm_input_disconnect;
-> > > > +	handler->handler.name =3D kasprintf(GFP_KERNEL, "drm-input-helper=
--%s",
-> > > > +					  dev_name(dev->dev));
-> > > > +	if (!handler->handler.name)
-> > > > +		return -ENOMEM;
-> > > > +
-> > > > +	handler->handler.id_table =3D drm_input_ids;
-> > > > +	handler->handler.private =3D handler;
-> > > > +
-> > > > +	ret =3D input_register_handler(&handler->handler);  =
-
-> > > =
-
-> > > Yet another problem here is that this completely ignores the concept =
-of
-> > > physical seats. Of course it does so, because seats are a pure
-> > > userspace concept.
-> > > =
-
-> > > The kernel VT console already has problems because the kernel has no
-> > > concept of seats, which means that if there is a second seat defined =
-and
-> > > a desktop running on it, while the first seat is in the normal VT text
-> > > mode, then everything typed in the desktop will be delivered to the VT
-> > > shell as well! (This has a possible workaround in userspace [1], by o=
-pening
-> > > the evdev input devices in some kind of exclusive mode - which is not
-> > > common practise AFAIK.)  =
-
-> > =
-
-> > Sure.
-> > =
-
-> > I'd bet the intersection of systems that use SW-directed PSR and
-> > "multi-seat" is negligibly close to zero, but I can't guarantee that.
-> > Chalk one up for a user space policy.
-> =
-
-> Your cover letter has also the other bullet point: ramping up GPUs.
-> That applies to a lot more systems than PSR, right?
-> =
-
-> Maybe that is an acceptable trade-off: be 100 =B5s faster (your
-> measurement) by ramping up all GPUs in a system instead of only the
-> relevant ones?
-> =
-
-> Or maybe that will hurt normal gaming computers by ramping up the iGPU
-> when the OS and game only uses the dGPU, which makes iGPU eat away the
-> CPU power budget, causing the CPU to slow down? I suppose that would be
-> handled by ramping up only GPUs that userspace has opened.
-> =
-
-> > > Btw. if userspace does use EVIOCGRAB, then will your in-kernel handler
-> > > stop getting events?  =
-
-> > =
-
-> > I believe so.
-> =
-
-> I suppose you would not want that?
-> =
-
-> The solution to the VT console problem is for userspace to start using
-> EVIOCGRAB and that could regress the warm-up machinery.
-> =
-
-> In summary, there are all these open questions and annoying little
-> problems, and none of these issues would exist if userspace would drive
-> the warm-up explicitly.
-> =
-
-> =
-
-> Thanks,
-> pq
-
-
-
--- =
-
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgdmVuZHJlZGkgMTkgbm92ZW1icmUgMjAyMSDDoCAxNTo0NiArMDgwMCwgQ2hlbi1ZdSBUc2Fp
+IGEgw6ljcml0wqA6Cj4gVGhlIEpQRUcgZW5jb2RlciBmb3VuZCBpbiB0aGUgSGFudHJvIEgxIGVu
+Y29kZXIgYmxvY2sgb25seSBwcm9kdWNlcyBhCj4gcmF3IGVudHJvcHktZW5jb2RlZCBzY2FuLiBU
+aGUgZHJpdmVyIGlzIHJlc3BvbnNpYmxlIGZvciBidWlsZGluZyBhIEpQRUcKPiBjb21wbGlhbnQg
+Yml0c3RyZWFtIGFuZCBwbGFjaW5nIHRoZSBlbnRyb3B5LWVuY29kZWQgc2NhbiBpbiBpdC4gUmln
+aHQKPiBub3cgdGhlIGRyaXZlciB1c2VzIGEgYm91bmNlIGJ1ZmZlciBmb3IgdGhlIGhhcmR3YXJl
+IHRvIG91dHB1dCB0aGUgcmF3Cj4gc2NhbiB0by4KPiAKPiBJbiBjb21taXQgZTc2NWRiYTExZWMy
+ICgiaGFudHJvOiBNb3ZlIGhhbnRyb19lbmNfYnVmX2ZpbmlzaCB0byBKUEVHCj4gY29kZWNfb3Bz
+LmRvbmUiKSwgdGhlIGNvZGUgdGhhdCBjb3BpZXMgdGhlIHJhdyBzY2FuIGZyb20gdGhlIGJvdW5j
+ZQo+IGJ1ZmZlciB0byB0aGUgY2FwdHVyZSBidWZmZXIgd2FzIG1vdmVkLCBidXQgd2FzIG9ubHkg
+aG9va2VkIHVwIGZvciB0aGUKPiBIYW50cm8gSDEgKHRoZW4gUkszMjg4KSB2YXJpYW50LiBUaGUg
+UkszMzk5IHZhcmlhbnQgd2FzIGJyb2tlbiwKPiBwcm9kdWNpbmcgYSBKUEVHIGJpdHN0cmVhbSB3
+aXRob3V0IHRoZSBzY2FuLCBhbmQgdGhlIGNhcHR1cmUgYnVmZmVyJ3MKPiAuYnl0ZXN1c2VkIGZp
+ZWxkIHVuc2V0Lgo+IAo+IEZpeCB0aGlzIGJ5IGR1cGxpY2F0aW5nIHRoZSBjb2RlIHRoYXQgaXMg
+ZXhlY3V0ZWQgd2hlbiB0aGUgSlBFRyBlbmNvZGVyCj4gZmluaXNoZXMgZW5jb2RpbmcgYSBmcmFt
+ZS4gQXMgdGhlIGVuY29kZWQgbGVuZ3RoIGlzIHJlYWQgYmFjayBmcm9tCj4gaGFyZHdhcmUsIGFu
+ZCB0aGUgdmFyaWFudHMgaGF2aW5nIGRpZmZlcmVudCByZWdpc3RlciBsYXlvdXRzLCB0aGUKPiBj
+b2RlIGlzIGR1cGxpY2F0ZWQgcmF0aGVyIHRoYW4gc2hhcmVkLgo+IAo+IEZpeGVzOiBlNzY1ZGJh
+MTFlYzIgKCJoYW50cm86IE1vdmUgaGFudHJvX2VuY19idWZfZmluaXNoIHRvIEpQRUcgY29kZWNf
+b3BzLmRvbmUiKQo+IFNpZ25lZC1vZmYtYnk6IENoZW4tWXUgVHNhaSA8d2Vuc3RAY2hyb21pdW0u
+b3JnPgo+IC0tLQo+IFRoaXMgd2FzIGRldmVsb3BlZCBvbiB0aGUgZG93bnN0cmVhbSBDaHJvbWVP
+UyA1LjEwIGtlcm5lbCAod2l0aCBhIGhhY2sKPiBmb3IgLmRhdGFfb2Zmc2V0KSBhbmQgdGVzdGVk
+IHdpdGggQ2hyb21lT1MncyBqcGVnX2VuY29kZV9hY2NlbGVyYXRvcl91bml0dGVzdAo+IHBhdGNo
+ZWQgdG8gYWNjZXB0IG5vbi1KRklGIEpQRUcgc3RyZWFtcyAoaHR0cHM6Ly9jcnJldi5jb20vYy8z
+MjkxNDgwKS4KPiAKPiBUaGlzIHdhcyB0aGVuIGZvcndhcmQtcG9ydGVkIHRvIG1haW5saW5lIChu
+YW1lIGFuZCBmaWxlbmFtZSBjaGFuZ2VzKSBhbmQKPiBjb21waWxlIHRlc3RlZCBvbmx5LgoKVGVz
+dGVkIHdpdGggR1N0cmVhbWVyIG9uIHRvcCBvZiA1LjE2LXJjMSBmcm9tIG1lZGlhX3N0YWdlLmdp
+dC4gTm90IHBlcmZlY3QgYnV0CmF0IGxlYXN0IHRoZSB0aGUgb3V0cHV0IGl0IHZhbGlkLiBUZXN0
+IGNvbW1hbmQgd2FzOgoKICBnc3QtbGF1bmNoLTEuMCB2aWRlb3Rlc3RzcmMgbnVtLWJ1ZmZlcnM9
+MiAhIHY0bDJqcGVnZW5jICEgZmlsZXNpbmsKbG9jYXRpb249dGVzdC5qcGcKCk5vdGljZSB0aGF0
+IEkgZW5jb2RlIHR3byBmcmFtZXMsIGl0IHNlZW1zIGxpa2UgdGhlIGRyYWluaW5nIGZsb3cgaXMg
+YnJva2VuIGluCnRoaXMgZHJpdmVyLiBHU3RyZWFtZXIgd2lsbCBxdWV1ZSB0aGUgZnJhbWUgYW5k
+IGlzc3VlIENNRF9TVEFSVCBpbW1lZGlhdGVseSwgdGhlCmRyaXZlciB3aWxsIHNraXAgdGhlIGVu
+Y29kZSwgbGVhdmluZyBtZSB3aXRoIGFuIGVtcHR5IGZpbGUuCgpUZXN0ZWQtYnk6IE5pY29sYXMg
+RHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KCj4gCj4gLS0tCj4gIC4u
+Li9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faDFfanBlZ19lbmMuYyAgIHwgIDIgKy0KPiAg
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaCAgICAgICAgfCAgMyArKy0K
+PiAgLi4uL21lZGlhL2hhbnRyby9yb2NrY2hpcF92cHUyX2h3X2pwZWdfZW5jLmMgICAgfCAxNyAr
+KysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JvY2tjaGlw
+X3ZwdV9ody5jICB8ICA1ICsrKy0tCj4gIDQgZmlsZXMgY2hhbmdlZCwgMjMgaW5zZXJ0aW9ucygr
+KSwgNCBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlh
+L2hhbnRyby9oYW50cm9faDFfanBlZ19lbmMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
+cm8vaGFudHJvX2gxX2pwZWdfZW5jLmMKPiBpbmRleCA1NmNmMjYxYThlOTUuLjljZDcxM2MwMmE0
+NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oMV9q
+cGVnX2VuYy5jCj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faDFf
+anBlZ19lbmMuYwo+IEBAIC0xNDAsNyArMTQwLDcgQEAgaW50IGhhbnRyb19oMV9qcGVnX2VuY19y
+dW4oc3RydWN0IGhhbnRyb19jdHggKmN0eCkKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC12b2lk
+IGhhbnRyb19qcGVnX2VuY19kb25lKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gK3ZvaWQgaGFu
+dHJvX2gxX2pwZWdfZW5jX2RvbmUoc3RydWN0IGhhbnRyb19jdHggKmN0eCkKPiAgewo+ICAJc3Ry
+dWN0IGhhbnRyb19kZXYgKnZwdSA9IGN0eC0+ZGV2Owo+ICAJdTMyIGJ5dGVzdXNlZCA9IHZlcHVf
+cmVhZCh2cHUsIEgxX1JFR19TVFJfQlVGX0xJTUlUKSAvIDg7Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL2hhbnRyb19ody5oCj4gaW5kZXggMjY3YTZkMzNhNDdiLi42MGQ0NjAyZDMzZWQg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaAo+
+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPiBAQCAtMjM5
+LDcgKzIzOSw4IEBAIGludCBoYW50cm9faDFfanBlZ19lbmNfcnVuKHN0cnVjdCBoYW50cm9fY3R4
+ICpjdHgpOwo+ICBpbnQgcm9ja2NoaXBfdnB1Ml9qcGVnX2VuY19ydW4oc3RydWN0IGhhbnRyb19j
+dHggKmN0eCk7Cj4gIGludCBoYW50cm9fanBlZ19lbmNfaW5pdChzdHJ1Y3QgaGFudHJvX2N0eCAq
+Y3R4KTsKPiAgdm9pZCBoYW50cm9fanBlZ19lbmNfZXhpdChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4
+KTsKPiAtdm9pZCBoYW50cm9fanBlZ19lbmNfZG9uZShzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsK
+PiArdm9pZCBoYW50cm9faDFfanBlZ19lbmNfZG9uZShzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsK
+PiArdm9pZCByb2NrY2hpcF92cHUyX2pwZWdfZW5jX2RvbmUoc3RydWN0IGhhbnRyb19jdHggKmN0
+eCk7Cj4gIAo+ICBkbWFfYWRkcl90IGhhbnRyb19oMjY0X2dldF9yZWZfYnVmKHN0cnVjdCBoYW50
+cm9fY3R4ICpjdHgsCj4gIAkJCQkgICB1bnNpZ25lZCBpbnQgZHBiX2lkeCk7Cj4gZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcm9ja2NoaXBfdnB1Ml9od19qcGVnX2Vu
+Yy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yb2NrY2hpcF92cHUyX2h3X2pwZWdf
+ZW5jLmMKPiBpbmRleCA5OTEyMTNjZTE2MTAuLjVkOWZmNDIwZjBiNSAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JvY2tjaGlwX3ZwdTJfaHdfanBlZ19lbmMuYwo+
+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcm9ja2NoaXBfdnB1Ml9od19qcGVn
+X2VuYy5jCj4gQEAgLTE3MSwzICsxNzEsMjAgQEAgaW50IHJvY2tjaGlwX3ZwdTJfanBlZ19lbmNf
+cnVuKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gIAo+ICAJcmV0dXJuIDA7Cj4gIH0KPiArCj4g
+K3ZvaWQgcm9ja2NoaXBfdnB1Ml9qcGVnX2VuY19kb25lKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgp
+Cj4gK3sKPiArCXN0cnVjdCBoYW50cm9fZGV2ICp2cHUgPSBjdHgtPmRldjsKPiArCXUzMiBieXRl
+c3VzZWQgPSB2ZXB1X3JlYWQodnB1LCBWRVBVX1JFR19TVFJfQlVGX0xJTUlUKSAvIDg7Cj4gKwlz
+dHJ1Y3QgdmIyX3Y0bDJfYnVmZmVyICpkc3RfYnVmID0gaGFudHJvX2dldF9kc3RfYnVmKGN0eCk7
+Cj4gKwo+ICsJLyoKPiArCSAqIFRPRE86IFJld29yayB0aGUgSlBFRyBlbmNvZGVyIHRvIGVsaW1p
+bmF0ZSB0aGUgbmVlZAo+ICsJICogZm9yIGEgYm91bmNlIGJ1ZmZlci4KPiArCSAqLwo+ICsJbWVt
+Y3B5KHZiMl9wbGFuZV92YWRkcigmZHN0X2J1Zi0+dmIyX2J1ZiwgMCkgKwo+ICsJICAgICAgIGN0
+eC0+dnB1X2RzdF9mbXQtPmhlYWRlcl9zaXplLAo+ICsJICAgICAgIGN0eC0+anBlZ19lbmMuYm91
+bmNlX2J1ZmZlci5jcHUsIGJ5dGVzdXNlZCk7Cj4gKwl2YjJfc2V0X3BsYW5lX3BheWxvYWQoJmRz
+dF9idWYtPnZiMl9idWYsIDAsCj4gKwkJCSAgICAgIGN0eC0+dnB1X2RzdF9mbXQtPmhlYWRlcl9z
+aXplICsgYnl0ZXN1c2VkKTsKPiArfQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL3JvY2tjaGlwX3ZwdV9ody5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9yb2NrY2hpcF92cHVfaHcuYwo+IGluZGV4IGQ0ZjUyOTU3Y2M1My4uMGMyMjAzOTE2MmEwIDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcm9ja2NoaXBfdnB1X2h3
+LmMKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JvY2tjaGlwX3ZwdV9ody5j
+Cj4gQEAgLTM0Myw3ICszNDMsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19jb2RlY19v
+cHMgcmszMDY2X3ZwdV9jb2RlY19vcHNbXSA9IHsKPiAgCQkucnVuID0gaGFudHJvX2gxX2pwZWdf
+ZW5jX3J1biwKPiAgCQkucmVzZXQgPSByb2NrY2hpcF92cHUxX2VuY19yZXNldCwKPiAgCQkuaW5p
+dCA9IGhhbnRyb19qcGVnX2VuY19pbml0LAo+IC0JCS5kb25lID0gaGFudHJvX2pwZWdfZW5jX2Rv
+bmUsCj4gKwkJLmRvbmUgPSBoYW50cm9faDFfanBlZ19lbmNfZG9uZSwKPiAgCQkuZXhpdCA9IGhh
+bnRyb19qcGVnX2VuY19leGl0LAo+ICAJfSwKPiAgCVtIQU5UUk9fTU9ERV9IMjY0X0RFQ10gPSB7
+Cj4gQEAgLTM3MSw3ICszNzEsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19jb2RlY19v
+cHMgcmszMjg4X3ZwdV9jb2RlY19vcHNbXSA9IHsKPiAgCQkucnVuID0gaGFudHJvX2gxX2pwZWdf
+ZW5jX3J1biwKPiAgCQkucmVzZXQgPSByb2NrY2hpcF92cHUxX2VuY19yZXNldCwKPiAgCQkuaW5p
+dCA9IGhhbnRyb19qcGVnX2VuY19pbml0LAo+IC0JCS5kb25lID0gaGFudHJvX2pwZWdfZW5jX2Rv
+bmUsCj4gKwkJLmRvbmUgPSBoYW50cm9faDFfanBlZ19lbmNfZG9uZSwKPiAgCQkuZXhpdCA9IGhh
+bnRyb19qcGVnX2VuY19leGl0LAo+ICAJfSwKPiAgCVtIQU5UUk9fTU9ERV9IMjY0X0RFQ10gPSB7
+Cj4gQEAgLTM5OSw2ICszOTksNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGhhbnRyb19jb2RlY19v
+cHMgcmszMzk5X3ZwdV9jb2RlY19vcHNbXSA9IHsKPiAgCQkucnVuID0gcm9ja2NoaXBfdnB1Ml9q
+cGVnX2VuY19ydW4sCj4gIAkJLnJlc2V0ID0gcm9ja2NoaXBfdnB1Ml9lbmNfcmVzZXQsCj4gIAkJ
+LmluaXQgPSBoYW50cm9fanBlZ19lbmNfaW5pdCwKPiArCQkuZG9uZSA9IHJvY2tjaGlwX3ZwdTJf
+anBlZ19lbmNfZG9uZSwKPiAgCQkuZXhpdCA9IGhhbnRyb19qcGVnX2VuY19leGl0LAo+ICAJfSwK
+PiAgCVtIQU5UUk9fTU9ERV9IMjY0X0RFQ10gPSB7CgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
