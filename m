@@ -2,110 +2,107 @@ Return-Path: <SRS0=Lfqv=QG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D48EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B35B8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:29:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4350061B1E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:11:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4350061B1E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id 774A761B1E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 16:29:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 774A761B1E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ndufresne.ca
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MJzZovB742VOTU4KzQUTWoRBz6D7JXzRQLRFSqbTimU=; b=2Q71IMK3yUlqu4
-	H8nrzlo/3ARDMX1FU9LBHV+xhOGqiTPyiF7LC/yMKCsT8s/P9+8/YDrk4vtTvheKF4PcI6n+fo7Lz
-	6PFnLFHRO9L0Jr0ShdTTtwPebcWPC9rsI44lThZ/EDjEF45l/dbadsjIi7gyWObky89UR9yQ8uh69
-	NpnG8qCPeCf6YvGH/rRCQe8lL2tEugx18Zq2+Kghw6PRWiNZ0c6y3o9v0/tDorGygL0aH9hjp4kuR
-	oEIk4xuF1RPCG3/Y/ZdorWYA0y08NfPj9cuxWFCMKmgzbVK6zu5NNc9SWDNYfzMdeSDQCb1at0HRS
-	LHOwoGBVJtl/FzdG+NKw==;
+	List-Owner; bh=D8XzijA2Mb+YJw3O+K9c0eil4MbWLTSct/cYN6z3ac8=; b=u1hiSDWW1WpC+S
+	g92ZdeNwLq10l49Lh1StVpTSmOby93JOhaJ50m4vC2Tekg5wq/VycPLXJSv327KZQz9aRK9meWx95
+	jKJBIJO9X1cSIBvPa//hbLcI7TALzk0qjg/h2wrhihjDY4wA2l5NJfz8wihjbBasJvCDxr523XWQs
+	OWUmYjmq7dIr2Ys9lAqQpjIpGpIjj6DhDTQyhnzDEha+64lvUUniDG6m9Y70RruOJwhv779NvbzwL
+	BghcBnM3wBqsSWbCDNhQWgrND2n56pcf0OGl3r6CkQ9Mk4Pu45KvnoLjh/N4w3nSCaJDJnDS/sPBS
+	N9PTmufm/BTe4wzXIKyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mo6Tr-00Axk2-22; Fri, 19 Nov 2021 16:11:15 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1mo6lv-00B1h0-Md; Fri, 19 Nov 2021 16:29:55 +0000
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mo6To-00AxiG-79
- for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 16:11:13 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id o20so283226eds.10
- for <linux-rockchip@lists.infradead.org>; Fri, 19 Nov 2021 08:11:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=KIgonA2EFTJLKTGv6+UD7Og9LS6eD0ftI5Kt9N5ampc=;
- b=dgWOaaq8yzIV1gHvfhemyZzO0QeUnPQPv8uVRZXUwjLioj3Hwn6siTvzHlaMIZ+M10
- 7tJHjRqw94twP/WJGnDKvc9Tmz0Fn6Yc9Vvt+pm9yC4Sy11voNWpvPXPuV5NiIR23tEp
- 5UPYM6qyrV8lv4YGUd8iuMlwg7TcUyXij0cLY=
+ id 1mo6lt-00B1f2-00
+ for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 16:29:54 +0000
+Received: by mail-il1-x129.google.com with SMTP id e8so10756314ilu.9
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Nov 2021 08:29:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=NA+2l6X3VrlJxsJamfaAblN1iQr9G5GeyeDjrzqWldE=;
+ b=pWYGr8brYDg2I9xcuGuhurThossAPr1q87fBQPqCiM2BAja4C7uFnX65Fix38gLbMR
+ at4/FYFXGd1o9zn1i0YRa4Hl3P62bx1s2GsXPKOGSzrVsAT1Xw8HlYNWbORdzoDIOeqe
+ 0qslCNUJ66VzbM5OECQeydfyhNNqUWwGP6afEEwmpoOMoNIZnNaZfchouPoszwNYzV1v
+ y1bimltU6qqxfdJSKgW6NjHgo6foggqrexAHaTR5BhNExaTs0kreVzSvKeiuvCJBGMM5
+ 4hhlHH8MqKp2ss3LA9dpdsxQOKHOGkUr880PDTOgcILg0r5nps7M4Bb//54zUt1tJBXH
+ UXjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=KIgonA2EFTJLKTGv6+UD7Og9LS6eD0ftI5Kt9N5ampc=;
- b=n3/sNIAgCsj4w1VLrjzWbGZSt3nhCPhafM1Ix+Wqrm5ctRjTSiBMuaxv3tUL67i0GF
- KcHr1zj/IoBgOCDCnqVbnjzL/AiqvRalAC2/PN4v3C87hEnDHaoJgQT/13uWAy2B6TFu
- 8rpX4u386SxbTfsRGg2YJL1O/PgL9VQKUw3LxOLK1p8mpsrUxcali43CF1DBM+Daqpmc
- hAZGNk02niWnzbzb1rIPO98ROAX45UNkqPSMQAjdMhXkRFWO+P4dAMsSjdhph8BE5OpZ
- d1eoQhjbH09eIveHsdWTCSl+poaYBai6qwC2Uflo9InvDtf8Gv8qD4aSgJVhEq8jKiH+
- WcaA==
-X-Gm-Message-State: AOAM532M1ec5uKob2wc6j8iD1DBEjEkVUXvqEJJ3e8FaUSc8RHlgb6/g
- MAR7/5UQ+KKpYWjPO506ZhZyOg==
-X-Google-Smtp-Source: ABdhPJxdLdSV5agM8x3vcedpr+NqChZx9RvCft+FI62Knox080qmHnRF7sNgy7+mWO4QtRIMEi9PDQ==
-X-Received: by 2002:a05:6402:268d:: with SMTP id
- w13mr26820359edd.257.1637338270326; 
- Fri, 19 Nov 2021 08:11:10 -0800 (PST)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id u16sm128924ejy.16.2021.11.19.08.11.09
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=NA+2l6X3VrlJxsJamfaAblN1iQr9G5GeyeDjrzqWldE=;
+ b=t8AIF/ol0+LAdmOWEmio1Zh6vOpewHV2Q3Km2C7yOY7eJcVCEjffX2qJ6dC7IFjsvW
+ /2fH8jVVAzykKV/ZJYIwYfiJiECR6n/kuqdZGQijGS2IJDo9UG9F1ayezIg1SbDm/LJN
+ Ij1/EM1GKwC+MoFkWuWPcOt347/jheY6esQ52hDNRK6Ad0ZIfY0COBwK7G73IkkRRWKB
+ W1NgZkA4aUEvtd8VVSbBSinsuDbk2q9Ol7bUr+3Nb9u97b3/35cW7x30e9LdGkfjefda
+ LUUVhmpHD4mAzHmQ6QfKjOekaoC8cVec2EvBl1IF8up2FUuRDq6/XGai9DybiVdXG0yE
+ Fpaw==
+X-Gm-Message-State: AOAM532qtc7qov1vuD6WvkpgJaW94Hljaqlgk805Ex1O+bd2eorhZe/5
+ eiTDFIFOU/TdSxE+8IltHM8eTg==
+X-Google-Smtp-Source: ABdhPJy9+PK69iHyuVZcAK9TkCljtUM0G3YiAMHQdYjwnsW/n1HgnSVsWmM0mEP/36cqcfaj9/5ecQ==
+X-Received: by 2002:a92:d343:: with SMTP id a3mr5688828ilh.136.1637339392190; 
+ Fri, 19 Nov 2021 08:29:52 -0800 (PST)
+Received: from nicolas-tpx395.localdomain (mtl.collabora.ca. [66.171.169.34])
+ by smtp.gmail.com with ESMTPSA id
+ c7sm108143iob.28.2021.11.19.08.29.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Nov 2021 08:11:09 -0800 (PST)
-Date: Fri, 19 Nov 2021 17:11:07 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Simon Ser <contact@emersion.fr>
-Cc: Daniel Vetter <daniel@ffwll.ch>, Pekka Paalanen <ppaalanen@gmail.com>,
- Rob Clark <robdclark@chromium.org>,
- Brian Norris <briannorris@chromium.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@linux.ie>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Doug Anderson <dianders@chromium.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, linux-input@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
-Message-ID: <YZfMm3GkFereYPTZ@phenom.ffwll.local>
-Mail-Followup-To: Simon Ser <contact@emersion.fr>,
- Pekka Paalanen <ppaalanen@gmail.com>,
- Rob Clark <robdclark@chromium.org>,
- Brian Norris <briannorris@chromium.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- David Airlie <airlied@linux.ie>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Doug Anderson <dianders@chromium.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- linux-input@vger.kernel.org
-References: <20211117224841.3442482-1-briannorris@chromium.org>
- <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
- <20211118123928.545dec8a@eldfell>
- <CAF6AEGuc9JbOsC4Lrvoqo8VzMHq+7ru7Y6_UwoZaGV2wHQ6E5g@mail.gmail.com>
- <20211119115419.505155b5@eldfell>
- <YZfIgd8s7uGXAD2X@phenom.ffwll.local>
- <98236dpcx39iOz8xAYrwGLfiLdwgUlljrbBgHL3wd8A0Wz4KzRk3PR8s_tb5Rxu4eScKI4483kB6Vhv-T64CJYOeQqwXlqo2c-64HvoS5cg=@emersion.fr>
+ Fri, 19 Nov 2021 08:29:51 -0800 (PST)
+Message-ID: <7f94eaacfddb8c5434c17f1e069ea87a17657ce9.camel@ndufresne.ca>
+Subject: Re: [RFC 0/5] arm64: imx8mm: Enable Hantro VPUs
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Adam Ford <aford173@gmail.com>, Tim Harvey <tharvey@gateworks.com>
+Cc: linux-media <linux-media@vger.kernel.org>, Schrempf Frieder
+ <frieder.schrempf@kontron.de>, Marek Vasut <marek.vasut@gmail.com>, Jagan
+ Teki <jagan@amarulasolutions.com>, Adam Ford-BE <aford@beaconembedded.com>,
+ cstevens@beaconembedded.com, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner
+ <heiko@sntech.de>, Lucas Stach <l.stach@pengutronix.de>, Joakim Zhang
+ <qiangqing.zhang@nxp.com>, Alice Guo <alice.guo@nxp.com>, Peng Fan
+ <peng.fan@nxp.com>, "open list:HANTRO VPU CODEC DRIVER"
+ <linux-rockchip@lists.infradead.org>, "open list:OPEN FIRMWARE AND
+ FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "moderated
+ list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, open list
+ <linux-kernel@vger.kernel.org>,  "open list:STAGING SUBSYSTEM"
+ <linux-staging@lists.linux.dev>
+Date: Fri, 19 Nov 2021 11:29:48 -0500
+In-Reply-To: <CAHCN7x+0LwwU_rEST+TZxGquswGKL19gnTy9WLofsXtGAtWqdw@mail.gmail.com>
+References: <20211106183802.893285-1-aford173@gmail.com>
+ <718f7f6d6cd564d031c1963f1590c62d549ae725.camel@ndufresne.ca>
+ <CAHCN7xKM9RUE7z-+ug1on+D=nDoEm589R4m03ofys92Aq75ZVQ@mail.gmail.com>
+ <8db00a4b6faa99c940d9bc86e17161eb0db5efe3.camel@ndufresne.ca>
+ <CAJ+vNU28UJffFv9jQ2KryJMudqYxvCaoVOVcU5dPqRA209iN6A@mail.gmail.com>
+ <d91532c2c0772f9aa708ead36b2a97203727a7ea.camel@ndufresne.ca>
+ <CAJ+vNU3H-V+bPoZ3qKead45h=W7AhQK6Lhjrx5ssdF4c_qfe=A@mail.gmail.com>
+ <CAHCN7x+0LwwU_rEST+TZxGquswGKL19gnTy9WLofsXtGAtWqdw@mail.gmail.com>
+User-Agent: Evolution 3.42.1 (3.42.1-1.fc35) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <98236dpcx39iOz8xAYrwGLfiLdwgUlljrbBgHL3wd8A0Wz4KzRk3PR8s_tb5Rxu4eScKI4483kB6Vhv-T64CJYOeQqwXlqo2c-64HvoS5cg=@emersion.fr>
-X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211119_081112_284912_B5E91FAE 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20211119_082953_071017_7D170FF5 
+X-CRM114-Status: GOOD (  34.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,34 +120,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 19, 2021 at 04:04:28PM +0000, Simon Ser wrote:
-> On Friday, November 19th, 2021 at 16:53, Daniel Vetter <daniel@ffwll.ch> wrote:
-> 
-> > Random idea ... should we perhaps let userspace connect the boosting? I.e.
-> > we do a bunch of standardized boost targets (render clocks, display sr
-> > exit), and userspace can then connect it to whichever input device it
-> > wants to?
-> 
-> On IRC we discussed having user-space hand over a FD to the kernel. When the FD
-> becomes readable, the kernel triggers the boost.
-> 
-> This would let user-space use e.g. an input device, an eventfd, or an epoll FD
-> with any combination of these as the boost signal.
+Hi Adam, Tim,
 
-Can userspace filter eventfd appropriately like we do here? And can they
-get at that maybe 2nd eventfd from logind or whatever there is on distros
-where /dev access is locked down for compositors/users.
+[...]
+> > > > Nicolas and Adam,
+> > > > 
+> > > > For the H1 patches in this series: I've been able to test the IMX8MM
+> > > > H1 JPEG encode using GStreamer 1.18.5:
+> > > > $ gst-inspect-1.0 | grep -e "v4l2.*enc"
+> > > > video4linux2:  v4l2jpegenc: V4L2 JPEG Encoder
+> > > > $ gst-launch-1.0 videotestsrc ! jpegenc ! rtpjpegpay ! udpsink
+> > >                                   ^ v4l2jpegenc
+> > > 
+> > > This is just a transcript error ?
+> > 
+> > Nicolas,
+> > 
+> > No! Thanks for catching my mistake. I was testing with software encode... ooops!
+> > 
+> > 'gst-launch-1.0 videotestsrc ! v4l2jpegenc ! fakesink' actually hangs
+> > the board so likely a power-domain issue there?
+> 
+> The v4l2-compliance tests fail on the h1 decoder with a hang, but I
+> think we're writing to registers which are not documented in the Mini
+> TRM.  The Mini TRM doesn't explicitly show the JPEG encoding as a
+> feature, but some of the registers state JPEG, but because some of the
+> registers written for the H1 are not documented in the TRM.  If those
+> registers are restricted or not in this SoC, I am concerned that it
+> might be related.  I'll try to run some more tests this weekend to
+> check on the status of the power-domain stuff.
 
-I do agree that if we can do this generically maybe we should, but also
-the use-case for input boosting is pretty well defined. I think it's just
-about making sure that compositors is in control, and that we don't make
-it worse (e.g. with the sr exit adding latency when the compositor can
-redraw quickly enough).
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+To verify if the HW support JPEG encoding you can read SWREG63 bit 25. This is
+in the TRM, just not labelled properly. To mimic the decoding side, would be "HW
+synthesis config register X" with the bit labelled SW_ENC_JPEG_PROF (but
+PROF/profile is on or off). If your board hang while reading this, you likely
+didn't get the power bit right.
+
+IMX8 has an undocumented control block thing that we have been fighting with in
+imx8q,  perhaps that's your issue. Few driver was proposed, we are still pending
+on NXP solution to be submitted (they asked us to wait, still waiting =)).
+
+> > 
+> > > 
+> > > > host=192.168.1.146 port=5000
+> > > > viewed on client@192.168.1.146 via:
+> > > > $ gst-launch-1.0 udpsrc port=5000 ! application/x-rtp,payload=96 !
+> > > > rtpjpegdepay ! jpegdec ! autovideosink
+> > > > 
+> > > > For the G1/G2 patches in the series I don't see any Gstreamer
+> > > > 'v4l2.*dec' elements. Perhaps I need a newer version of Gstreamer.
+> > > 
+> > > Most likely yes, I suggest building gstreamer/ branch "main", GStreamer has now
+> > > a single repository. We are very close to 1.20, which will include stable API
+> > > support of H264, MPEG2 and VP8 decoding.
+> > > 
+> > 
+> > Ok, let me see if I can navigate through the build process and I'll
+> > get back to you.
+> > 
+> > Thanks,
+> > 
+> > Tim
+> > 
+> > > > 
+> > > > I have CSI capture and DSI display currently working on
+> > > > imx8mm-venice-gw73xx-0x that I can play with. The CSI sensor only
+> > > > supports RAW8/RAW10 (and gstreamer currently only supports RAW8) and I
+> > > > can't efficiently convert to something the JPEG encoder likes without
+> > > > bayer2rgbneon (a libneon version).
+> > > > 
+> > > > I see from the IMX8MMRM that the 2D GPU supports scaling etc with a
+> > > > wide range of data formats but I'm not sure how to tap into this as
+> > > > that hardware is managed by the vivante driver. On the IMX6QDL there
+> > > > is a separate IPU block that Philipp Zabel wrote a nice mem2mem
+> > > > csc/scaler driver for but I don't see any equivalent currently for
+> > > > IMX8MM.
+> > > > 
+> > > > Best regards,
+> > > > 
+> > > > Tim
+> > > 
+
 
 _______________________________________________
 Linux-rockchip mailing list
