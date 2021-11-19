@@ -2,82 +2,90 @@ Return-Path: <SRS0=Lfqv=QG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CFCEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 07:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48B0AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 09:54:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFE1761B1B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 07:47:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BFE1761B1B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id DC64B61A8A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Nov 2021 09:54:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DC64B61A8A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WgXnUDv96BSx5TquG9rPWUh1k5SqEXFWCN4P3hylvdE=; b=vps04qPSuZ+qlV
-	IUcep163oYMSk9+QtXeC77EFS3arESg8KcM3AKBHIdweqia2mNYu1IBQC0nqUsJIMr4n4zYRnYCKI
-	n+6/ZygjJb22KlhpNvZV+EZ3DwZKR2IgHRvG0v8ioD0pnuQsrwUJCiQNSQJqGquHbLHYcTy3vXT/0
-	Yzn954woNdwdopvT7P9+EVPtTl+uJRhPEgNDoMFkOOLFfkveHqvF3Nv62k22BSDMKNwb8YykNzkSl
-	bjMSvXj3Dazv8YT7Fe9jJDmY5V0KMCUetgeptSrCMQ8Xn0iPw1Jo8zGa2cw25ODGre/Uoh67FOdfZ
-	xjb5Fm59Y1PBB08DrZgg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+AmANJDn8Dzrq333360JvowDH8aZZHU980zfXXmcIPs=; b=hYQ65VuNllWuwttNk0CB60vWt+
+	UY+M1uSB28sO74kl8j+WguDwfpNnzF66v2KFRNNl7DptV6+uuRzq5U3QmnRAtSbQ9zBhHtDdLtONg
+	z6rCSNrDj1Dy1pNfNxDsVb6NKvjsOuCGp8PefO8I47x5XBCvqyo1FBVw1fDikNedx63A6z1HuQh+2
+	mTc3i6qvzPxafUQQobnWGGTYR+pLN2lZkolt1QLYTjV8lqRij9rkd594kT9QC9bCfG+VZlQOpnw+X
+	1BUHJUsR6F8dsXQnSduyD+diC29/+z6/j0HMKY4tIq5JjG19grzpdl2jJq3cxwGxUyIO2YIWxh5G5
+	RoDjb6+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnybw-009f2e-BX; Fri, 19 Nov 2021 07:47:04 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1mo0bD-00A2US-Qx; Fri, 19 Nov 2021 09:54:27 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnybs-009f0m-QY
- for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 07:47:02 +0000
-Received: by mail-pl1-x631.google.com with SMTP id b11so7478063pld.12
- for <linux-rockchip@lists.infradead.org>; Thu, 18 Nov 2021 23:46:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NBNCtCfqZurLfKPQYW4MDFzz8IQkjaKhoSv1g1++xxc=;
- b=jqpginvm/vLrNZxTGFU4ndyCA+Jy+2RIfESFUWEQqcEBVweBM32Ekf8kfLeNOV5u0p
- 7pOkviWwOlxUELyU5MJJo0iLXUffbfWtEkqGQgU+8vXF5KHBqnIQxjdgYeEbPihIRYCs
- 6Wce0sbJzAdfCCX4i+JujESBrn6/W1Mvfvcf0=
+ id 1mo0bB-00A2U4-EM
+ for linux-rockchip@lists.infradead.org; Fri, 19 Nov 2021 09:54:26 +0000
+Received: by mail-lf1-x134.google.com with SMTP id f18so40946242lfv.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 19 Nov 2021 01:54:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version; bh=cCmbb3DeLLP09ki4kuTJnLQtb2WYrPD5nXeA3cU7GHA=;
+ b=CBkTq6ESHlhgDp68NHzmdZpbcEmNLLnQWp1+ZPSbbqH0lNdBvmM9mKgBhKUg2BwNZP
+ lQ8Sle9W/OpUk/RPmfqTfYK0+1s4Ci3uZZvnV4AG7/snRoZS7NZZc/nNkFMXaIoPdP+5
+ 29hoODFIbGpE77eRmKctbKZ5WhVgMTMJM9cB+SFEOxSDKqrQG45G1rehYYJNW8TgRRpA
+ MVM3dWAd5/++pqjAs8qdq94k8RojhP2yE/gT4sdlFT67qYlcr8QBXlCEmTjYQE68q0gL
+ AfA7aBmDqMt2/rsY9F2XhUDcmFxczzt1A5Cb8yevWLWXo4nYDsgUs0vXA54KlznNm7WS
+ 8utg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NBNCtCfqZurLfKPQYW4MDFzz8IQkjaKhoSv1g1++xxc=;
- b=gILfdJEd3bkZYXJx4SS8XcLgL0vkCGwzYE10/+lKI/9xGkOUMPqP4BY2PPBhAFxMNm
- +wBbdG+AIqZKdEPmEJfGqKbpIWqkspqF3RLdk+jKEGapZD8INqEpXWK6tZxnyDJ/cCVE
- mBe/OBuuMctTi2Tx4prTReiqehnrTWoG/d2s/7cIx3q8Mlofwj4NW9Sy5hU1zGjPSVuT
- JzPtepJQBwTgkbLcTw5ZwRCeMdBOSkuiU0O7vBwvGWArBhmjfstqbjTT9QqrCqm7nLDf
- 5m7E3Fn9ybP5XJLs8cwKEyFCqbWxtJngeumXAN5HbqD8erNSpgNTCbPOhWZlGdMdiOOs
- V/8A==
-X-Gm-Message-State: AOAM533s/gEuVRk3AZKgU9wUzrQmFrcKacNVvB+1K+LqZoCCgPjsysl3
- DvbeEJxJFddlM50VkTjSWtNAcg==
-X-Google-Smtp-Source: ABdhPJyFmPMYwHPxr+FyJ3stDNWysKqief+fvUPuIW24yLnrFAjmZiZUA23UfnYdhPzXTT1lpcoTXw==
-X-Received: by 2002:a17:90a:e012:: with SMTP id
- u18mr2272529pjy.103.1637308018800; 
- Thu, 18 Nov 2021 23:46:58 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com
- ([2401:fa00:1:10:1e9e:88c0:7cad:9b21])
- by smtp.gmail.com with ESMTPSA id t4sm1919051pfg.155.2021.11.18.23.46.56
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version;
+ bh=cCmbb3DeLLP09ki4kuTJnLQtb2WYrPD5nXeA3cU7GHA=;
+ b=jHG4Hy/NK/zs6hRfIRQM4ZMnu7sRJXkFDiCFQjwzBMmg5pdR2BFmeCJ5LusVSmrwAi
+ h3EkWW/Eh+E5dMwwiDgB6VmVgVuVB36+WSvvO6hzjIDNLjG4VQdgIPFpeVaT/as43YMG
+ rKFE90LihWPn4TwwWm9FsHOJaoVa/osSdDt6Vg38j4TzppP9PHy1zvhIYfGH7g8i6i8M
+ omzo+xSJEUX6lJUt/wX06jnSmpbppx91Mor15d13t19Nqxro7twq/CMGfwuGyp7msB4X
+ Jg0ZWbDVdCD+9xmGFNu+w2fepM7scIubohZddGw24BaY40NYs+Q9AeUBFLLAFdO0UXcW
+ 1VMw==
+X-Gm-Message-State: AOAM532xqkoar1yNdPiqXoWcVM0K8JeGt45wjhlsQZmq7FqwvR56wM1r
+ XuhDhzyfrhxfAy4t1JHjutM=
+X-Google-Smtp-Source: ABdhPJyMAsdZM1wTFviXfnVXe1xpTGDJW5bHj20TI7D62Huwj4l4m4Q0rLsX2tTFp2ikjlKXTD9LCQ==
+X-Received: by 2002:a05:6512:1154:: with SMTP id
+ m20mr30708122lfg.600.1637315663309; 
+ Fri, 19 Nov 2021 01:54:23 -0800 (PST)
+Received: from eldfell ([194.136.85.206])
+ by smtp.gmail.com with ESMTPSA id v24sm240363lji.120.2021.11.19.01.54.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Nov 2021 23:46:58 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] media: hantro: Hook up RK3399 JPEG encoder output
-Date: Fri, 19 Nov 2021 15:46:54 +0800
-Message-Id: <20211119074654.470729-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.34.0.rc2.393.gf8c9666880-goog
+ Fri, 19 Nov 2021 01:54:23 -0800 (PST)
+Date: Fri, 19 Nov 2021 11:54:19 +0200
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Rob Clark <robdclark@gmail.com>
+Cc: Brian Norris <briannorris@chromium.org>, Rob Clark
+ <robdclark@chromium.org>, Andrzej Hajda <andrzej.hajda@intel.com>, David
+ Airlie <airlied@linux.ie>, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Doug Anderson
+ <dianders@chromium.org>, "open list:ARM/Rockchip SoC..."
+ <linux-rockchip@lists.infradead.org>, "Kristian H . Kristensen"
+ <hoegsberg@google.com>, dri-devel <dri-devel@lists.freedesktop.org>, Thomas
+ Zimmermann <tzimmermann@suse.de>, linux-input@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <20211119115419.505155b5@eldfell>
+In-Reply-To: <CAF6AEGuc9JbOsC4Lrvoqo8VzMHq+7ru7Y6_UwoZaGV2wHQ6E5g@mail.gmail.com>
+References: <20211117224841.3442482-1-briannorris@chromium.org>
+ <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <20211118123928.545dec8a@eldfell>
+ <CAF6AEGuc9JbOsC4Lrvoqo8VzMHq+7ru7Y6_UwoZaGV2wHQ6E5g@mail.gmail.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_234700_879552_4D00A9A2 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20211119_015425_525859_7EA667B1 
+X-CRM114-Status: GOOD (  40.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,133 +98,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4592028581212394314=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The JPEG encoder found in the Hantro H1 encoder block only produces a
-raw entropy-encoded scan. The driver is responsible for building a JPEG
-compliant bitstream and placing the entropy-encoded scan in it. Right
-now the driver uses a bounce buffer for the hardware to output the raw
-scan to.
+--===============4592028581212394314==
+Content-Type: multipart/signed; boundary="Sig_/GCMqU3cCDFY4+95vMjiPI4b";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 
-In commit e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG
-codec_ops.done"), the code that copies the raw scan from the bounce
-buffer to the capture buffer was moved, but was only hooked up for the
-Hantro H1 (then RK3288) variant. The RK3399 variant was broken,
-producing a JPEG bitstream without the scan, and the capture buffer's
-.bytesused field unset.
+--Sig_/GCMqU3cCDFY4+95vMjiPI4b
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-Fix this by duplicating the code that is executed when the JPEG encoder
-finishes encoding a frame. As the encoded length is read back from
-hardware, and the variants having different register layouts, the
-code is duplicated rather than shared.
+On Thu, 18 Nov 2021 15:30:38 -0800
+Rob Clark <robdclark@gmail.com> wrote:
 
-Fixes: e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG codec_ops.done")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-This was developed on the downstream ChromeOS 5.10 kernel (with a hack
-for .data_offset) and tested with ChromeOS's jpeg_encode_accelerator_unittest
-patched to accept non-JFIF JPEG streams (https://crrev.com/c/3291480).
+> On Thu, Nov 18, 2021 at 2:39 AM Pekka Paalanen <ppaalanen@gmail.com> wrot=
+e:
+> >
+> > On Wed, 17 Nov 2021 14:48:40 -0800
+> > Brian Norris <briannorris@chromium.org> wrote:
+> > =20
+> > > A variety of applications have found it useful to listen to
+> > > user-initiated input events to make decisions within a DRM driver, gi=
+ven
+> > > that input events are often the first sign that we're going to start
+> > > doing latency-sensitive activities:
+> > >
+> > >  * Panel self-refresh: software-directed self-refresh (e.g., with
+> > >    Rockchip eDP) is especially latency sensitive. In some cases, it c=
+an
+> > >    take 10s of milliseconds for a panel to exit self-refresh, which c=
+an
+> > >    be noticeable. Rockchip RK3399 Chrome OS systems have always shipp=
+ed
+> > >    with an input_handler boost, that preemptively exits self-refresh
+> > >    whenever there is input activity.
+> > >
+> > >  * GPU drivers: on GPU-accelerated desktop systems, we may need to
+> > >    render new frames immediately after user activity. Powering up the
+> > >    GPU can take enough time that it is worthwhile to start this proce=
+ss
+> > >    as soon as there is input activity. Many Chrome OS systems also sh=
+ip
+> > >    with an input_handler boost that powers up the GPU.
+> > >
+> > > This patch provides a small helper library that abstracts some of the
+> > > input-subsystem details around picking which devices to listen to, and
+> > > some other boilerplate. This will be used in the next patch to implem=
+ent
+> > > the first bullet: preemptive exit for panel self-refresh.
+> > >
+> > > Bits of this are adapted from code the Android and/or Chrome OS kerne=
+ls
+> > > have been carrying for a while.
+> > >
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > --- =20
+> >
+> > Thanks Simon for the CC.
+> >
+> > Hi Brian,
+> >
+> > while this feature in general makes sense and sounds good, to start
+> > warming up display hardware early when something might start to happen,
+> > this particular proposal has many problems from UAPI perspective (as it
+> > has none). Comments below.
+> >
+> > Btw. if PSR is that slow to wake up from, how much do you actually gain
+> > from this input event watching? I would imagine the improvement to not
+> > be noticeable.
+> >
+> > I think some numbers about how much this feature helps would be really
+> > good, even if they are quite specific use cases. You also need to
+> > identify the userspace components, because I think different display
+> > servers are very different in their reaction speed.
+> >
+> > If KMS gets a pageflip or modeset in no time after an input event, then
+> > what's the gain. OTOH, if the display server is locking on to vblank,
+> > there might be a delay worth avoiding. But then, is it worth
+> > short-circuiting the wake-up in kernel vs. adding a new ioctl that
+> > userspace could hit to start the warming up process? =20
+>=20
+> In my measurements, it takes userspace a frame or two to respond and
+> get to the point of starting to build cmdstream (before eventually
+> doing atomic/pageflip ioctl).. possibly longer if you don't also have
+> a similar boost mechanism to spool up cpufreq
+>=20
+> But the important thing, IMO, is that atomic/pageflip ioctl is the
+> cumulation of a long sequence of events.. input-boost is letting
+> whatever it may be (PSR exit, GPU resume, etc) happen in parallel with
+> that long sequence.
 
-This was then forward-ported to mainline (name and filename changes) and
-compile tested only.
+Right, exactly. That is why I was musing about a *new* ioctl that
+userspace could hit as soon as any input device fd (or network fd!)
+shows signs of life. Would that be enough, avoiding all the annoying
+questions about which input and DRM devices should participate here
+(and what about non-input devices that still want to trigger the
+warm-up, like network traffic, e.g. remote control?), or does it really
+need to be kernel internal to be fast enough?
 
----
- .../staging/media/hantro/hantro_h1_jpeg_enc.c   |  2 +-
- drivers/staging/media/hantro/hantro_hw.h        |  3 ++-
- .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c    | 17 +++++++++++++++++
- drivers/staging/media/hantro/rockchip_vpu_hw.c  |  5 +++--
- 4 files changed, 23 insertions(+), 4 deletions(-)
+As Brian wrote about his quick hack to test that via debugfs, sounds
+like the userspace solution would be totally sufficient.
 
-diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-index 56cf261a8e95..9cd713c02a45 100644
---- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-@@ -140,7 +140,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- 	return 0;
- }
- 
--void hantro_jpeg_enc_done(struct hantro_ctx *ctx)
-+void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	u32 bytesused = vepu_read(vpu, H1_REG_STR_BUF_LIMIT) / 8;
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 267a6d33a47b..60d4602d33ed 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -239,7 +239,8 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
- int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx);
- int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
- void hantro_jpeg_enc_exit(struct hantro_ctx *ctx);
--void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
-+void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx);
-+void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx);
- 
- dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
- 				   unsigned int dpb_idx);
-diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-index 991213ce1610..5d9ff420f0b5 100644
---- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-@@ -171,3 +171,20 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
- 
- 	return 0;
- }
-+
-+void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx)
-+{
-+	struct hantro_dev *vpu = ctx->dev;
-+	u32 bytesused = vepu_read(vpu, VEPU_REG_STR_BUF_LIMIT) / 8;
-+	struct vb2_v4l2_buffer *dst_buf = hantro_get_dst_buf(ctx);
-+
-+	/*
-+	 * TODO: Rework the JPEG encoder to eliminate the need
-+	 * for a bounce buffer.
-+	 */
-+	memcpy(vb2_plane_vaddr(&dst_buf->vb2_buf, 0) +
-+	       ctx->vpu_dst_fmt->header_size,
-+	       ctx->jpeg_enc.bounce_buffer.cpu, bytesused);
-+	vb2_set_plane_payload(&dst_buf->vb2_buf, 0,
-+			      ctx->vpu_dst_fmt->header_size + bytesused);
-+}
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index d4f52957cc53..0c22039162a0 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -343,7 +343,7 @@ static const struct hantro_codec_ops rk3066_vpu_codec_ops[] = {
- 		.run = hantro_h1_jpeg_enc_run,
- 		.reset = rockchip_vpu1_enc_reset,
- 		.init = hantro_jpeg_enc_init,
--		.done = hantro_jpeg_enc_done,
-+		.done = hantro_h1_jpeg_enc_done,
- 		.exit = hantro_jpeg_enc_exit,
- 	},
- 	[HANTRO_MODE_H264_DEC] = {
-@@ -371,7 +371,7 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
- 		.run = hantro_h1_jpeg_enc_run,
- 		.reset = rockchip_vpu1_enc_reset,
- 		.init = hantro_jpeg_enc_init,
--		.done = hantro_jpeg_enc_done,
-+		.done = hantro_h1_jpeg_enc_done,
- 		.exit = hantro_jpeg_enc_exit,
- 	},
- 	[HANTRO_MODE_H264_DEC] = {
-@@ -399,6 +399,7 @@ static const struct hantro_codec_ops rk3399_vpu_codec_ops[] = {
- 		.run = rockchip_vpu2_jpeg_enc_run,
- 		.reset = rockchip_vpu2_enc_reset,
- 		.init = hantro_jpeg_enc_init,
-+		.done = rockchip_vpu2_jpeg_enc_done,
- 		.exit = hantro_jpeg_enc_exit,
- 	},
- 	[HANTRO_MODE_H264_DEC] = {
--- 
-2.34.0.rc2.393.gf8c9666880-goog
 
+Thanks,
+pq
+
+--Sig_/GCMqU3cCDFY4+95vMjiPI4b
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmGXdEsACgkQI1/ltBGq
+qqcdOBAAl9X47lu2lO66cWGjSsacbgjGDy+MldM0YFq5JF8ooCZXNGL176wqkChG
+yz9SMJGDApoJ04/NsIE73coxTYU3xKBYTbAeuFxM5IklcXEqKc/4VXDCcim7Lwlg
+VzUxOxb1XfNfZNyn4uMANyGpk0uO4dnIpd5u1uaWXhKajn9RTZKwQ2SBbbEt4Dcl
+hcDBpGXGU9evx5ZBvUHTNUPcfEsAYWyHKMDGhVZwH5YUYAgwG2P5IHFstX5PUori
+O/6SBot5hj7JfCOpV6wZcASeonCeescV2Nq4muPF6yHGI9mbgppaaYi2ezcx6Os+
+udxpoovlLoYU54foZaqjsJvy1nlLZLHi4pPIfHmAn8+hJ2IvU5yQoB+7QZe6FhQN
+tKhkoqUpUYCSUTMy1v/0mJJ0+zBBChNV3Y5uT/Q8c7TJPPORtAMjU8bP0xgL1SpA
+6CB2CPZy+QyCGeQJpR+lAlMGtgZPPzsx9zgS3SM/sItEl+yNDDvkoJMPfYlKjvqH
+ZI9KUtZ1BIfYzeU3F2B5vztJRIpG4sDS4nRa+WXHLTQi0eit4ZFqaRU+5oU1HQP8
+OmOu+bAlP45l8QiunzbwvCFmq/Kq5PY61ly+iN08+26EXLxeCmVLGi3UGkcIMulI
+WeqfT8f3422boYyBp9ftzCnEakQHcU2Sl4gZnXnonw+7SpNNSYY=
+=g0x0
+-----END PGP SIGNATURE-----
+
+--Sig_/GCMqU3cCDFY4+95vMjiPI4b--
+
+
+--===============4592028581212394314==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4592028581212394314==--
+
