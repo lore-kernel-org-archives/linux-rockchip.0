@@ -4,44 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C0CDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C246AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b3KeHsPDA9WtsU5TQTRuZ5T9vtQQFKa3J5J0XMRCoK0=; b=XDUJcF2LwYcCoc
-	XQJxnmsWStg0RDx84uhSnc9/esIAaJ5OrBpEW/SIhbP9JJdB0jpfpZNUXW97kNcJG0vDdv2KKiOfZ
-	Fqc+iGpKeS4tFhJ5Lp/IaSml/1g6exZrFg607J008JI98IjTuW35uxciNtB4F0wKnDtBX6HuiV2G4
-	AVT+ov4Dr4wYsy3hmLVRWPMXtym6jf97nRvwXVhoB+EB6ISYkWR7//sr/BMmiuvHg5qY4XpOiMFga
-	8wtJhDFkSHWuKAjgaGEmxKQgIt7n9qwNM7fwXbwzrKPiy12907ZIIbE68RKqdgoElVCuj/xRdX+Zv
-	uYheN7VzB8YSJqBtifug==;
+	List-Owner; bh=EkzKJuDS0r2nr+jLd0IwgAcEcgkjpwJba+AsUzUme/4=; b=19MDB4C7hZgcof
+	83P9UkyKhYd3054LA2KCRkR0R+p7P829HoSkYh7KWhP71iZZoks6bs1eEp8oEouBWSAKAqTwnd4xO
+	STZFfoab/J4nJJcjbKDthfnpIyoACqm9aqd6M4GKJX7azQIw1ToAxDKJDnFRUKFfPg39a8GnzHlyS
+	MAzCkxGBBPySB73SwTPkniNEV6QvUdB4MoOr9ayDQWnidMc+RgmO9QLErWPrrTUfPrd2xft7/gJg7
+	Q7JkTzcujZs8/c+WjtqNHyhZ418Pr0MkqtGpDkX92y9D+1GrbnrjtvCYapa6F/nwBmUXooTBbzlmF
+	xcBdoE54Dkf4EUC6Xfbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mor9K-00E6FF-HS; Sun, 21 Nov 2021 18:01:10 +0000
+	id 1morwo-00EAWy-Kr; Sun, 21 Nov 2021 18:52:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mor97-00E6Cc-Hg; Sun, 21 Nov 2021 18:00:58 +0000
+ id 1morwl-00EAUe-N0; Sun, 21 Nov 2021 18:52:16 +0000
 Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
- helo=diego.localnet)
+ helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mor96-0007x2-7a; Sun, 21 Nov 2021 19:00:56 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: linux-i2c@vger.kernel.org, John Keeping <john@metanate.com>
-Cc: John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] i2c: rk3x: enable clock before getting rate
-Date: Sun, 21 Nov 2021 19:00:55 +0100
-Message-ID: <1738891.e3IbIVKTtj@diego>
-In-Reply-To: <20211004131539.1253195-1-john@metanate.com>
-References: <20211004131539.1253195-1-john@metanate.com>
+ id 1morwi-00086u-T8; Sun, 21 Nov 2021 19:52:12 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Artem Lapkin <email2tema@gmail.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+ gouwa@khadas.com, jbx6244@gmail.com, nick@khadas.com, wenst@chromium.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ christianshewitt@gmail.com, art@khadas.com, robh+dt@kernel.org
+Subject: Re: [PATCH v2] arm64: dts: rockchip: remove mmc-hs400-enhanced-strobe
+ from rk3399-khadas-edge
+Date: Sun, 21 Nov 2021 19:52:06 +0100
+Message-Id: <163752071859.2241976.7994917045018325320.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20211115083321.2627461-1-art@khadas.com>
+References: <20211115083321.2627461-1-art@khadas.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211121_100057_640311_A9DA0BB1 
-X-CRM114-Status: GOOD (  19.72  )
+X-CRM114-CacheID: sfid-20211121_105215_797325_4E754A98 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,50 +65,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 4. Oktober 2021, 15:15:39 CET schrieb John Keeping:
-> clk_get_rate() is documented as requiring the clock to be enabled.
-> Ensure that the bus clock is enabled before calling clk_get_rate() in
-> rk3x_i2c_probe() to satisfy this requirement.
+On Mon, 15 Nov 2021 16:33:21 +0800, Artem Lapkin wrote:
+> Remove mmc-hs400-enhanced-strobe from the rk3399-khadas-edge dts to
+> improve compatibility with a wider range of eMMC chips.
 > 
-> Signed-off-by: John Keeping <john@metanate.com>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-Do you maybe want to repost and include the actual i2c-maintainers
-in the recipient list?
-
-
-Heiko
-
-> ---
->  drivers/i2c/busses/i2c-rk3x.c | 7 +++++++
->  1 file changed, 7 insertions(+)
+> Before (BJTD4R 29.1 GiB):
 > 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 819ab4ee517e..332755fab2a1 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -1338,8 +1338,15 @@ static int rk3x_i2c_probe(struct platform_device *pdev)
->  		goto err_pclk;
->  	}
->  
-> +	ret = clk_enable(i2c->clk);
-> +	if (ret < 0) {
-> +		dev_err(&pdev->dev, "Can't enable bus clk: %d\n", ret);
-> +		goto err_clk_notifier;
-> +	}
-> +
->  	clk_rate = clk_get_rate(i2c->clk);
->  	rk3x_i2c_adapt_div(i2c, clk_rate);
-> +	clk_disable(i2c->clk);
->  
->  	ret = i2c_add_adapter(&i2c->adap);
->  	if (ret < 0)
+> [    7.001493] mmc2: CQHCI version 5.10
+> [    7.027971] mmc2: SDHCI controller on fe330000.mmc [fe330000.mmc] using ADMA
+> .......
+> [    7.207086] mmc2: mmc_select_hs400es failed, error -110
+> [    7.207129] mmc2: error -110 whilst initialising MMC card
+> [    7.308893] mmc2: mmc_select_hs400es failed, error -110
+> [    7.308921] mmc2: error -110 whilst initialising MMC card
+> [    7.427524] mmc2: mmc_select_hs400es failed, error -110
+> [    7.427546] mmc2: error -110 whilst initialising MMC card
+> [    7.590993] mmc2: mmc_select_hs400es failed, error -110
+> [    7.591012] mmc2: error -110 whilst initialising MMC card
 > 
+> [...]
 
+Applied, thanks!
 
+[1/1] arm64: dts: rockchip: remove mmc-hs400-enhanced-strobe from rk3399-khadas-edge
+      commit: 6dd0053683804427529ef3523f7872f473440a19
 
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
