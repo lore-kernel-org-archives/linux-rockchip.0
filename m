@@ -4,76 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959CFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 15:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9901FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 17:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/hhxvzP7E23azfUe9X3eBEnWZTo0t3rw8OOHVyX1udk=; b=vq9L36YqnJ+ZUj
-	nIMQYIqS493c3hZaFFL7FSnSILmLC1oKpDEmtytsRxeGIbWXDF9LEitjmMrYoDFf5FQdsXIb2jTo5
-	Gf7m+gq0d4nh9Ac6LP4gAq6UD0d24hbLXZoMmTdSD7++jJJa9IA1uzwarmuN4KZYCCdayZnKEjk9O
-	AzL8lULKWrs8lDSDE8DePaGmlTAuj+UVQk/rV9yI4KXlASxfZRlicHC8C6gVp5L+by0LTJwqZEp89
-	mxx7JEDOmNTI4gtOm+TTukcwTlHe7+KvL1Okz5HHK0YGshH6/XiTK2TXRhD6kQmnUQOqyJAvymKx6
-	h/16oTtxyjPKlHbZtpJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rs7YZckKUU6cICDyf/1gdKGWX976VYesRSjdv4unwXo=; b=KiSyzPuUwD4Rdp
+	Ry/7TuHLMqsfTXPfhN97mrRQi3aX/Rkh2FvaJfilicWMoSl4YCYVZYPTLWNmK/JyyJp6eeep5GJs3
+	4DBSGQ1K/lMe5K5T47FskU0HDnFMZT1MUSaf8Rg+s71HgGDzxrJBJbyEOsFR3Buk9lv9ElA8zwVdq
+	YyngBj1phh16+QknBjJQGcRFOmtt2adBH6QxHFfqhGkg28fUlGjJlcuSHTbUQR6+MCvrquZYDAZEM
+	z9ki2ZrezB4yD2WytG1Sa7CITRf2Qn4/ynTL86XsPOxbggYxRs59DyAHQ7E3dEwrnn1qLHElb4lOy
+	GCJ9HKvL8w2m3U2k1VWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mooPt-00DpKT-0u; Sun, 21 Nov 2021 15:06:05 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1moqzC-00E57Y-3s; Sun, 21 Nov 2021 17:50:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mooPq-00DpJ6-7j
- for linux-rockchip@lists.infradead.org; Sun, 21 Nov 2021 15:06:03 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id d24so27814143wra.0
- for <linux-rockchip@lists.infradead.org>; Sun, 21 Nov 2021 07:05:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WhMbJUwa3m/sRiL1gTb1ydr+MolnUwJkremam+jJja4=;
- b=ky9HhfB4zPRUT2MnXbKup+kEwCKXxsvGrrygGL4zkh5UidAS7NSi0OJY8yc/fVZsWW
- Zk1UjB2WGE/Sfuvt/Cte2OD3KqKhaUnUGrMU+zRfMGK++0FlWdN1FIdsYMEhW4N45qe7
- 6nELj29FMrBwYQ0k8NmWh2WNL5lcKkGtm+sYxwGr9IMvwN5ou8sbmbGBcXZB6hpwlyFA
- AugIqDuEJSlUGEsT+rS5Ds4qaLScsWuSLc/WtuCCc9KKeQ+87W9tWmsVWlqIm7rmug/D
- /DcgZrhA/Sg70KaS7KxzAqc1HdIN0Vsyy4bGl5djCtmJ+agJR5xHxuxhM1Z2IFetzh/F
- mOlg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WhMbJUwa3m/sRiL1gTb1ydr+MolnUwJkremam+jJja4=;
- b=3hlXk3E4wiG0K1EFbeDWmU+uiUZkW7tBMfjH0mIaIXx9GPg5KPBy0PnxnWVnmp2PGH
- WbporsQC09G3lvv46XA2kzZEendaVSnQG5UGDWcruWUTITTXjsVyuzyprBIZlGjzdxLz
- wLJjX8yBivj4wZvBZ25xixnZALgl9pejAmIvwFjLzKWM0TlTJKs1DRo7+5l7ZCYAJry5
- JWCPIwqXC/U2cv6E6lkSMCA3tTfPZTrKcxZItHhbPzlvjqelZBehApNsOdEMUbMm2mcQ
- t/jnfjRRFzkDFLhCw9/lqMutL4PgGKWcxMG8oFx6WCKVIfyoA2LSP2Kp+MEWHDS0HF5O
- MNtA==
-X-Gm-Message-State: AOAM531Vpb1fxCK4LpiS+Ae2+a1sYe2YP5k9bgSADbRS4KMq0yXJpwid
- bqaHyc6blL+X/l5W2L7ay5I=
-X-Google-Smtp-Source: ABdhPJxsC+4TTcof9z/OHJG/6NWbE6UbhfEGg7Yh4W72/NKnNh67brFJFmEc0qg3V4uOuLuyJqjZdw==
-X-Received: by 2002:a5d:648f:: with SMTP id o15mr27742341wri.381.1637507157762; 
- Sun, 21 Nov 2021 07:05:57 -0800 (PST)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id j19sm6037448wra.5.2021.11.21.07.05.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Nov 2021 07:05:57 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Chris Morgan <macromorgan@hotmail.com>, Lee Jones <lee.jones@linaro.org>,
- alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-rockchip@lists.infradead.org
-Subject: [PATCH] ASoC: rk817: Add module alias for rk817-codec
-Date: Sun, 21 Nov 2021 16:05:20 +0100
-Message-Id: <20211121150521.159543-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.34.0
+ id 1moqz9-00E56n-DE; Sun, 21 Nov 2021 17:50:40 +0000
+Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1moqz1-0007ug-8K; Sun, 21 Nov 2021 18:50:31 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Dennis Gilmore <dgilmore@redhat.com>
+Cc: dgilmore@redhat.com, Rob Herring <robh+dt@kernel.org>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <uwe@kleine-koenig.org>,
+ Florian Klink <flokli@flokli.de>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: helios64: define usb hub and 2.5GbE
+ nic
+Date: Sun, 21 Nov 2021 18:50:30 +0100
+Message-ID: <2865185.A8ACM6KOrL@diego>
+In-Reply-To: <20211026150751.70115-1-dgilmore@redhat.com>
+References: <20211026150751.70115-1-dgilmore@redhat.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211121_070602_300592_A244038A 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211121_095039_489135_CFA1717B 
+X-CRM114-Status: GOOD (  19.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +65,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Without a module alias, autoloading the driver does not occurr
-when it is built as a module.
+Hi Dennis,
 
-By adding a module alias, the driver now probes fine automatically
-and therefore analog audio output works as it should.
+Am Dienstag, 26. Oktober 2021, 17:07:47 CET schrieb Dennis Gilmore:
+> Add the 4 ports on the internal hub and define and turn on the 2.5GbE
+> nic.
+> 
+> Signed-off-by: Dennis Gilmore <dgilmore@redhat.com>
+> ---
+>  .../dts/rockchip/rk3399-kobol-helios64.dts    | 55 +++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> index 26d45cf7ce00..1ffddf860375 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts
+> @@ -125,6 +125,18 @@ pcie_power: pcie-power {
+>  		vin-supply = <&vcc5v0_perdev>;
+>  	};
+>  
+> +	usblan_power: usblan-power {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio1 RK_PC7 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&usb_lan_en>;
+> +		regulator-name = "usblan_power";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		vin-supply = <&vcc5v0_usb>;
+> +	};
+> +
+>  	vcc1v8_sys_s0: vcc1v8-sys-s0 {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc1v8_sys_s0";
+> @@ -465,6 +477,11 @@ hdd_b_power_en: hdd-b-power-en {
+>  		vcc5v0_usb_en: vcc5v0-usb-en {
+>  			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+> +
+> +		usb_lan_en: usb-lan-en {
+> +			rockchip,pins = <1 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+>  	};
+>  
+>  	vcc3v0-sd {
+> @@ -563,5 +580,43 @@ &usbdrd3_1 {
+>  	usb@fe900000 {
+>  		dr_mode = "host";
+>  		status = "okay";
+> +
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		hub@1 {
+> +			compatible = "usb2109,0815";
+> +			reg = <1>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@1 {
 
-Fixes: 0d6a04da9b25 ("ASoC: Add Rockchip rk817 audio CODEC support")
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- sound/soc/codecs/rk817_codec.c | 1 +
- 1 file changed, 1 insertion(+)
+port@ nodes are not defined in the dt-bindings.
 
-diff --git a/sound/soc/codecs/rk817_codec.c b/sound/soc/codecs/rk817_codec.c
-index 943d7d933e81..03f24edfe4f6 100644
---- a/sound/soc/codecs/rk817_codec.c
-+++ b/sound/soc/codecs/rk817_codec.c
-@@ -539,3 +539,4 @@ module_platform_driver(rk817_codec_driver);
- MODULE_DESCRIPTION("ASoC RK817 codec driver");
- MODULE_AUTHOR("binyuan <kevan.lan@rock-chips.com>");
- MODULE_LICENSE("GPL v2");
-+MODULE_ALIAS("platform:rk817-codec");
--- 
-2.34.0
+Are you really sure these are needed, as I guess only defining the
+device@4 should be enough and leaving the rest to be allocated
+dynamically?
+
+The binding at least contains the line
+	Usually, we only use device tree for hard wired USB device.
+
+
+Heiko
+
+> +				reg = <1>;
+> +				#trigger-source-cells = <0>;
+> +			};
+> +
+> +			port@2 {
+> +				reg = <2>;
+> +				#trigger-source-cells = <0>;
+> +			};
+> +
+> +			port@3 {
+> +				reg = <3>;
+> +				#trigger-source-cells = <0>;
+> +			};
+> +
+> +			device@4 {
+> +				compatible = "usbbda,8156";
+> +				reg = <4>;
+> +
+> +				#address-cells = <2>;
+> +				#size-cells = <0>;
+> +
+> +				interface@0 {	/* interface 0 of configuration 1 */
+> +					compatible = "usbbda,8156.config1.0";
+> +					reg = <0 1>;
+> +				};
+> +			};
+> +		};
+>  	};
+>  };
+> 
+
+
+
 
 
 _______________________________________________
