@@ -4,52 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B609CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C53E5C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:52:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tNbX//JfD6meEEYfLI5k/rTEOOknGao92h6fgOGnJs8=; b=g0RnT0IILcky+i
-	2Yj4K/R3l0qP61oJVlcGRJA5Gw7HA+0zXwmwsk+x/PLSrEILX3cvTgbrN3JYA9C9SeJSyYaT2yHom
-	6zLKYrMgHv8+pdbl9jTlXFcvMKDH9gAEya4EfiW47JGrKkJZsNleenSyR9VQh70jWUl2PnWPQ81FZ
-	uBjTDtvWPXomKIHR1QOKK8yA8JACyvGr9jtbhQrrne0on/q2H/Stspfef0U3qkxZA78YYO97zU03O
-	5ura34BzgdaDOskYdWDmyzDz+h8S9aGxZlepelfRYM1IBSHPQAwKtlHRHRZ+GS1vveLLox9abdjCE
-	6x2iFEl8t8v7t4bIlOXA==;
+	List-Owner; bh=IBuBkSB4svyHcsbG0hpZbpHO5SPjvF7O8guJy2v68fE=; b=lVcdGbb4TlbVvT
+	bfYf3/4DOtEBzuPM3d6B+nTu8b5xVUMiFSsMMVvQMAISIVdWUP77AuZs4eSF/D7IL5SbTORKCEqDX
+	ALEnV31bOmTjni2lHcnFGY0C2MrrxwJLnBu8rA+UnfI56oDYV3nUADKK/t13VEoQpP+MCEAAqLFeC
+	7XnpD4Pg2FstoBg70hPAd4xf6I8DyMo0jAIq2qy97rJWSstgP0Ty8IBJUDgCFfHUros4/JjWtuo55
+	AVidUiB/BbOH/NWDEWswwJJV1APrz+TT/UaTcZXRcflIaaIYq+QMfnSDrizPPDE15s13SNbGpSPKA
+	SnGsym/8Fs+1OHHPdoYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1morxC-00EAeW-LX; Sun, 21 Nov 2021 18:52:42 +0000
+	id 1morxF-00EAfl-0I; Sun, 21 Nov 2021 18:52:45 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1morwl-00EAUg-N7; Sun, 21 Nov 2021 18:52:18 +0000
+ id 1morwl-00EAUh-NC; Sun, 21 Nov 2021 18:52:18 +0000
 Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1morwi-00086u-DW; Sun, 21 Nov 2021 19:52:12 +0100
+ id 1morwj-00086u-G2; Sun, 21 Nov 2021 19:52:13 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Dennis Gilmore <dgilmore@redhat.com>,
-	linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- open list <linux-kernel@vger.kernel.org>, Florian Klink <flokli@flokli.de>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: helios64: add variables for pcie
- completion
-Date: Sun, 21 Nov 2021 19:52:05 +0100
-Message-Id: <163752071860.2241976.17406214616552247687.b4-ty@sntech.de>
+To: "Ivan T. Ivanov" <iivanov@suse.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, Russell King <linux@armlinux.org.uk>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] ARM: rockchip: Use memcpy_toio instead of memcpy on smp
+ bring-up
+Date: Sun, 21 Nov 2021 19:52:08 +0100
+Message-Id: <163752071859.2241976.11773008941383016973.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211029005323.144652-1-dgilmore@redhat.com>
-References: <20211029005323.144652-1-dgilmore@redhat.com>
+In-Reply-To: <20211116084616.24811-1-iivanov@suse.de>
+References: <20211116084616.24811-1-iivanov@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211121_105215_806408_C2FED7B4 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20211121_105215_817690_202D7736 
+X-CRM114-Status: UNSURE (   9.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,19 +62,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Oct 2021 19:53:19 -0500, Dennis Gilmore wrote:
-> without ep-gpios defined u-boot does not initialise PCIe
-> rockchip_pcie pcie@f8000000: failed to find ep-gpios property
-> 
-> additionally set max-link-speed and pinctrl-names for completeness
-> 
-> with this patch and the ones from Florian Klink applied to the dts
-> file in u-boot sata drives show up in both u-boot and linux
+On Tue, 16 Nov 2021 10:46:16 +0200, Ivan T. Ivanov wrote:
+> This fixes a potential kernel panic on memcpy when FORTIFY_SOURCE
+> is enabled. Because memory is iomem use appropriate function for
+> accessing it.
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: helios64: add variables for pcie completion
-      commit: 755fff528b1b760c700dbf39928ff3dda825f748
+[1/1] ARM: rockchip: Use memcpy_toio instead of memcpy on smp bring-up
+      commit: 423e85e97aaf69e5198bbec6811e3825c8b5019a
 
 Best regards,
 -- 
