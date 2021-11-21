@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91005C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 08:55:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959CFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 15:06:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xs7odaJG0gj16JIWDFtOMSs+izq2PK4OG/X7a7n+R2w=; b=B3WRPB77foc4rx
-	z+p9h7UtUxjpEJ+BqwewzymlIaUeQ/edxaKA7c3ZdEVz8q423tQ/pJmeJ74EQaFHypWwKD0/xFrvD
-	snPBuxqqq97tWwm4i4G0He5W6Ba1YQRTuQB/rCqJXbrcNLK5Xekh5WLq76svDkf1GQDIYPiL9MUUd
-	z8xmMvKiKd6i9MlFSc+zJE9doNIbiW+3IhrKda1XHlIhyS4LRE+TRR3kqwXuNuyaQ1wkmyM4SXwP2
-	pewHkxYZfRu2XGVmgeaj6Iio8TjDh330LSfxgqEvw8aPi+UE35y7ICjOA72tByeHSsvhO39M0nfM6
-	wUjGRbgCcjGllzKuqg+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/hhxvzP7E23azfUe9X3eBEnWZTo0t3rw8OOHVyX1udk=; b=vq9L36YqnJ+ZUj
+	nIMQYIqS493c3hZaFFL7FSnSILmLC1oKpDEmtytsRxeGIbWXDF9LEitjmMrYoDFf5FQdsXIb2jTo5
+	Gf7m+gq0d4nh9Ac6LP4gAq6UD0d24hbLXZoMmTdSD7++jJJa9IA1uzwarmuN4KZYCCdayZnKEjk9O
+	AzL8lULKWrs8lDSDE8DePaGmlTAuj+UVQk/rV9yI4KXlASxfZRlicHC8C6gVp5L+by0LTJwqZEp89
+	mxx7JEDOmNTI4gtOm+TTukcwTlHe7+KvL1Okz5HHK0YGshH6/XiTK2TXRhD6kQmnUQOqyJAvymKx6
+	h/16oTtxyjPKlHbZtpJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1moid9-00DO2P-3t; Sun, 21 Nov 2021 08:55:23 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mooPt-00DpKT-0u; Sun, 21 Nov 2021 15:06:05 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1moicv-00DNzE-4P; Sun, 21 Nov 2021 08:55:10 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 689BA60231;
- Sun, 21 Nov 2021 08:55:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637484907;
- bh=BSrNBk1+xTVdjY/KH9HeiQ19aqGKk4qtpYXlS/s+Bi0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tatESt2cVzf7HD/KkoxWzf6u8sn0XI27B+PpnyEvnlG5TRXVuC3dZOd3am3b8I+C0
- 5G3PaGYVPSDNLTfsws9MbU7DSfDXQec8L3S1EMA9SYP602lbQgq6TdNKLPv8gTEa5W
- h4DCKpMJQ69txcLZBiZHHTb+zpZ7YZa6TMBeXJeGSrQo2O1ejc+DSL0yiwmEZ0s+V+
- WCx5dJPVXpxqkVOL46x0LUbKwTPT8WRQ0p3QZIEzDFCrXuB3380URRWhZ3jicWE4qv
- oOo20/GIDVTxQJ1xkqHyCxvtvXYImCo1uJ/UQjPqhwKjtnE9Iw3RWmw+ZHfm4kZCJx
- gaXkZ8rHGV2lw==
-Date: Sun, 21 Nov 2021 16:55:00 +0800
-From: Shawn Guo <shawnguo@kernel.org>
-To: David Heidelberg <david@ixit.cz>
-Cc: Rob Herring <robh+dt@kernel.org>, Neil Armstrong <narmstrong@baylibre.com>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Heiko Stuebner <heiko@sntech.de>, ~okias/devicetree@lists.sr.ht,
- phone-devel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org,
+ id 1mooPq-00DpJ6-7j
+ for linux-rockchip@lists.infradead.org; Sun, 21 Nov 2021 15:06:03 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id d24so27814143wra.0
+ for <linux-rockchip@lists.infradead.org>; Sun, 21 Nov 2021 07:05:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WhMbJUwa3m/sRiL1gTb1ydr+MolnUwJkremam+jJja4=;
+ b=ky9HhfB4zPRUT2MnXbKup+kEwCKXxsvGrrygGL4zkh5UidAS7NSi0OJY8yc/fVZsWW
+ Zk1UjB2WGE/Sfuvt/Cte2OD3KqKhaUnUGrMU+zRfMGK++0FlWdN1FIdsYMEhW4N45qe7
+ 6nELj29FMrBwYQ0k8NmWh2WNL5lcKkGtm+sYxwGr9IMvwN5ou8sbmbGBcXZB6hpwlyFA
+ AugIqDuEJSlUGEsT+rS5Ds4qaLScsWuSLc/WtuCCc9KKeQ+87W9tWmsVWlqIm7rmug/D
+ /DcgZrhA/Sg70KaS7KxzAqc1HdIN0Vsyy4bGl5djCtmJ+agJR5xHxuxhM1Z2IFetzh/F
+ mOlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WhMbJUwa3m/sRiL1gTb1ydr+MolnUwJkremam+jJja4=;
+ b=3hlXk3E4wiG0K1EFbeDWmU+uiUZkW7tBMfjH0mIaIXx9GPg5KPBy0PnxnWVnmp2PGH
+ WbporsQC09G3lvv46XA2kzZEendaVSnQG5UGDWcruWUTITTXjsVyuzyprBIZlGjzdxLz
+ wLJjX8yBivj4wZvBZ25xixnZALgl9pejAmIvwFjLzKWM0TlTJKs1DRo7+5l7ZCYAJry5
+ JWCPIwqXC/U2cv6E6lkSMCA3tTfPZTrKcxZItHhbPzlvjqelZBehApNsOdEMUbMm2mcQ
+ t/jnfjRRFzkDFLhCw9/lqMutL4PgGKWcxMG8oFx6WCKVIfyoA2LSP2Kp+MEWHDS0HF5O
+ MNtA==
+X-Gm-Message-State: AOAM531Vpb1fxCK4LpiS+Ae2+a1sYe2YP5k9bgSADbRS4KMq0yXJpwid
+ bqaHyc6blL+X/l5W2L7ay5I=
+X-Google-Smtp-Source: ABdhPJxsC+4TTcof9z/OHJG/6NWbE6UbhfEGg7Yh4W72/NKnNh67brFJFmEc0qg3V4uOuLuyJqjZdw==
+X-Received: by 2002:a5d:648f:: with SMTP id o15mr27742341wri.381.1637507157762; 
+ Sun, 21 Nov 2021 07:05:57 -0800 (PST)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id j19sm6037448wra.5.2021.11.21.07.05.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Nov 2021 07:05:57 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Chris Morgan <macromorgan@hotmail.com>, Lee Jones <lee.jones@linaro.org>,
+ alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
  linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] arm64: dts: make dts use gpio-fan matrix instead
- of array
-Message-ID: <20211121085457.GN31998@dragon>
-References: <20211029114948.41841-1-david@ixit.cz>
- <20211029114948.41841-2-david@ixit.cz>
+Subject: [PATCH] ASoC: rk817: Add module alias for rk817-codec
+Date: Sun, 21 Nov 2021 16:05:20 +0100
+Message-Id: <20211121150521.159543-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211029114948.41841-2-david@ixit.cz>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211121_005509_237468_7629CB27 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20211121_070602_300592_A244038A 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,91 +91,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 29, 2021 at 01:49:45PM +0200, David Heidelberg wrote:
-> No functional changes.
-> 
-> Adjust to comply with dt-schema requirements
-> and make possible to validate values.
-> 
-> Signed-off-by: David Heidelberg <david@ixit.cz>
-> ---
->  arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts | 9 +++++----
->  arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts     | 2 +-
+Without a module alias, autoloading the driver does not occurr
+when it is built as a module.
 
-You may want to split it per platform, so that corresponding platform
-maintainer can pick them up.
+By adding a module alias, the driver now probes fine automatically
+and therefore analog audio output works as it should.
 
-Shawn
+Fixes: 0d6a04da9b25 ("ASoC: Add Rockchip rk817 audio CODEC support")
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ sound/soc/codecs/rk817_codec.c | 1 +
+ 1 file changed, 1 insertion(+)
 
->  arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi     | 2 +-
->  arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts    | 5 +++--
->  4 files changed, 10 insertions(+), 8 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-> index 86bdc0baf032..fbbcacf24f2e 100644
-> --- a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-> +++ b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
-> @@ -52,10 +52,11 @@ gpio_fan: gpio-fan {
->  		gpios = <&gpio GPIODV_14 GPIO_ACTIVE_HIGH
->  			 &gpio GPIODV_15 GPIO_ACTIVE_HIGH>;
->  		/* Dummy RPM values since fan is optional */
-> -		gpio-fan,speed-map = <0 0
-> -				      1 1
-> -				      2 2
-> -				      3 3>;
-> +		gpio-fan,speed-map =
-> +				<0 0>,
-> +				<1 1>,
-> +				<2 2>,
-> +				<3 3>;
->  		#cooling-cells = <2>;
->  	};
->  
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts b/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-> index a3b9d615a3b4..e34045d10a12 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-> +++ b/arch/arm64/boot/dts/freescale/imx8mq-phanbell.dts
-> @@ -39,7 +39,7 @@ reg_usdhc2_vmmc: regulator-usdhc2-vmmc {
->  
->  	fan: gpio-fan {
->  		compatible = "gpio-fan";
-> -		gpio-fan,speed-map = <0 0 8600 1>;
-> +		gpio-fan,speed-map = <0 0>, <8600 1>;
->  		gpios = <&gpio3 5 GPIO_ACTIVE_HIGH>;
->  		#cooling-cells = <2>;
->  		pinctrl-names = "default";
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> index 46b0f97a0b1c..4af535866d1f 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-> @@ -44,7 +44,7 @@ dc_12v: dc-12v {
->  	fan0: gpio-fan {
->  		#cooling-cells = <2>;
->  		compatible = "gpio-fan";
-> -		gpio-fan,speed-map = <0 0 3000 1>;
-> +		gpio-fan,speed-map = <0 0>, <3000 1>;
->  		gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_HIGH>;
->  		status = "okay";
->  	};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> index 4d4b2a301b1a..8af3763daaba 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> @@ -30,8 +30,9 @@ gmac1_clkin: external-gmac1-clock {
->  	fan: gpio_fan {
->  		compatible = "gpio-fan";
->  		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-> -		gpio-fan,speed-map = <0    0
-> -				      4500 1>;
-> +		gpio-fan,speed-map =
-> +				<   0 0>,
-> +				<4500 1>;
->  		#cooling-cells = <2>;
->  	};
->  
-> -- 
-> 2.33.0
-> 
+diff --git a/sound/soc/codecs/rk817_codec.c b/sound/soc/codecs/rk817_codec.c
+index 943d7d933e81..03f24edfe4f6 100644
+--- a/sound/soc/codecs/rk817_codec.c
++++ b/sound/soc/codecs/rk817_codec.c
+@@ -539,3 +539,4 @@ module_platform_driver(rk817_codec_driver);
+ MODULE_DESCRIPTION("ASoC RK817 codec driver");
+ MODULE_AUTHOR("binyuan <kevan.lan@rock-chips.com>");
+ MODULE_LICENSE("GPL v2");
++MODULE_ALIAS("platform:rk817-codec");
+-- 
+2.34.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
