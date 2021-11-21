@@ -4,49 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3AB4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:52:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B609CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 21 Nov 2021 18:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rjNC0dfK3eTzKaPXoOhJfkFNAzP9fOZL3u4JJRw89NQ=; b=LhQczY1VuyV8gD
-	FdUPhaoKcBediB59XcTII48Y9RGbHh3qQnAunlD+W2Y2UFNe722+rMcwne3N7T0sGVS4qdSp6TL+b
-	gwrDAZsz6keaiIBKC5VXufxpq4R9uYrPZLCHzhBCFQgw7vLCeA5BSrQ20ySuJIVu/hkl+NRVWQXNn
-	FV4pO9UkZ4vt7LUxBmKInSBBcuir62CPev39eTULSd8m6HudRcuEPmWLXqlXcgzeypaIEIjCXMrES
-	Mb//um7Vd6roVFoaD0vKi/CDOgvyL3PfzCgGeMvKapUBwiTX2UtoDfJmCEBcGTXbu1QYBEPH7uIQi
-	Zy494QNj8OZXneIhUtkA==;
+	List-Owner; bh=tNbX//JfD6meEEYfLI5k/rTEOOknGao92h6fgOGnJs8=; b=g0RnT0IILcky+i
+	2Yj4K/R3l0qP61oJVlcGRJA5Gw7HA+0zXwmwsk+x/PLSrEILX3cvTgbrN3JYA9C9SeJSyYaT2yHom
+	6zLKYrMgHv8+pdbl9jTlXFcvMKDH9gAEya4EfiW47JGrKkJZsNleenSyR9VQh70jWUl2PnWPQ81FZ
+	uBjTDtvWPXomKIHR1QOKK8yA8JACyvGr9jtbhQrrne0on/q2H/Stspfef0U3qkxZA78YYO97zU03O
+	5ura34BzgdaDOskYdWDmyzDz+h8S9aGxZlepelfRYM1IBSHPQAwKtlHRHRZ+GS1vveLLox9abdjCE
+	6x2iFEl8t8v7t4bIlOXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1morxB-00EAeB-Fm; Sun, 21 Nov 2021 18:52:41 +0000
+	id 1morxC-00EAeW-LX; Sun, 21 Nov 2021 18:52:42 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1morwl-00EAUk-N1; Sun, 21 Nov 2021 18:52:17 +0000
+ id 1morwl-00EAUg-N7; Sun, 21 Nov 2021 18:52:18 +0000
 Received: from ip5f5a6e92.dynamic.kabel-deutschland.de ([95.90.110.146]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1morwj-00086u-7t; Sun, 21 Nov 2021 19:52:13 +0100
+ id 1morwi-00086u-DW; Sun, 21 Nov 2021 19:52:12 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Aditya Prayoga <aditya@kobol.io>,
-	Florian Klink <flokli@flokli.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
+To: Dennis Gilmore <dgilmore@redhat.com>,
+	linux-rockchip@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>,
  =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: Enable HDD power on helios64
-Date: Sun, 21 Nov 2021 19:52:07 +0100
-Message-Id: <163752071860.2241976.13058196563714996469.b4-ty@sntech.de>
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>, Florian Klink <flokli@flokli.de>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: helios64: add variables for pcie
+ completion
+Date: Sun, 21 Nov 2021 19:52:05 +0100
+Message-Id: <163752071860.2241976.17406214616552247687.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211020095926.735938-1-flokli@flokli.de>
-References: <20211020095926.735938-1-flokli@flokli.de>
+In-Reply-To: <20211029005323.144652-1-dgilmore@redhat.com>
+References: <20211029005323.144652-1-dgilmore@redhat.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211121_105215_799512_C242462B 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211121_105215_806408_C2FED7B4 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,23 +67,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Oct 2021 11:59:22 +0200, Florian Klink wrote:
-> This adds the hdd_{a,b}_power blocks present in the armbian helios64
-> dts. [1]
+On Thu, 28 Oct 2021 19:53:19 -0500, Dennis Gilmore wrote:
+> without ep-gpios defined u-boot does not initialise PCIe
+> rockchip_pcie pcie@f8000000: failed to find ep-gpios property
 > 
-> Without those powered up, no HDDs will appear (except one connected via
-> the m.2 slot).
+> additionally set max-link-speed and pinctrl-names for completeness
 > 
-> >From https://wiki.kobol.io/helios64/sata/#hdd-power:
-> 
-> [...]
+> with this patch and the ones from Florian Klink applied to the dts
+> file in u-boot sata drives show up in both u-boot and linux
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Enable HDD power on helios64
-      commit: 8169b9894dbd2d4e440cfbc5fe9f733e5876a564
-[2/2] arm64: dts: rockchip: fix poweroff
-      commit: aef4b9a89a376a9cabe5e744729914e7766c59bb
+[1/1] arm64: dts: rockchip: helios64: add variables for pcie completion
+      commit: 755fff528b1b760c700dbf39928ff3dda825f748
 
 Best regards,
 -- 
