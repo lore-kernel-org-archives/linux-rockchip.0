@@ -4,101 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F8F8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Nov 2021 17:26:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36452C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Nov 2021 17:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oQHs1avS/JYHJvxD1KA3hhueCj4e0l3s4FNLRSyh6uM=; b=LfDTJZBwJl+X8T
-	6cPARg+3GpD1uLZqRESPr/tB2uZME3JOUOPPzGVCDmJLOsNhJ6SB7sNM3Orfb8RaeIM5fignGh3cu
-	BE5eY7RYnrD/NLjoN1hO41BETdxucgBRXMqhDFy0SGHEYK4UL1YNkUTLILzH+V6vAX96SXbbs5+mW
-	VgzRUowkkTbySo5NXABWtW+1g9YD5VEcprOM9UB6YeXPlc2OcaQeIu59IHROYJsesF/ZJ8Qm1Xx88
-	cWqdb/qJ9IQFDXOSuWaGfyIzBZ8dlO6zBL599jJhvaq9kabTh79TJlevrRavV1LZMkWeq78dbmKza
-	0JXhwWzkYLwQ8X3gZDEg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=UXsAHI5wR0GZ9wCllMOC6e6BiUzYjy5LudCev3VLHug=; b=eVWPAx3rewig4t7KTiMuab1lUV
+	9yhEEREGuJTL+KEUryywW9NYK0MrflvUz08l0uy6Vd6o1DSF+w0bB0Iv+/BcRpnHyhsPV/qHoyANy
+	dJjOnVeItvY2prNY1r0WHpDl7VX4a+Cm36kdTTeqzo7GV8TTbngcMOr6OoonrZS85FQqYIesgkczb
+	pQq7yLN0IjE5HfVcdaIzzh3KSz/OnGPR4172d3EKM6UYSmJ699cS9V0KInkd/H7au/ciyuKEyLdfB
+	8LyPatMYKfzF33sKLe1QcGAm8eM/T49ZyvXd38Ea3BBCYlL07avePF8xVqVJJCQw9espTigLM5MuO
+	IBAStG6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpD4t-00HFV0-Mt; Mon, 22 Nov 2021 17:26:03 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1mpDPy-00HHCw-PH; Mon, 22 Nov 2021 17:47:50 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpD4p-00HFTW-Qi
- for linux-rockchip@lists.infradead.org; Mon, 22 Nov 2021 17:26:01 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id p18so14668610plf.13
- for <linux-rockchip@lists.infradead.org>; Mon, 22 Nov 2021 09:25:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gateworks-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kXsfyBDFONl51YXv5b23OS62EMb824elrLR+gYrriWQ=;
- b=LsxC5mVgF4xkotHzuYe9UmuivOZdHcj58lBuP3OviPk1Cf+N7QdCUozqvxDu//guoR
- ek3HGzpahJ3hU6wNX2x8S7UgFJzKA38YrYtMvwz+hquLSh3SfS37yPE+xZdSOfXfBxS4
- M7dbyrhehSzCmtqG7tQtfSoIGRfulq0EGhzU8eOro/j5lQ1/KOYgaJO9rCG0sEcoyAC6
- bgBOJNSYQpx7+ObaJlff3mEDjzmpch/7mhWQNUAf4PYgbqWkCWoEHc6oLeRov7NkaCT4
- lp2YLrKzRCwp6w7wdQ5VPolwd6ahVugOPQhs0FrKIrn4t+VCG2wDVaYZR1BfT7q9406F
- gAFQ==
+ id 1mpDPv-00HHCD-5y; Mon, 22 Nov 2021 17:47:49 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id i12so16245192wmq.4;
+ Mon, 22 Nov 2021 09:47:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=NAERJfyuh3hrk2pVn4WCNTl0iGx7EaTAYCDW21ycnzg=;
+ b=igGA+iIrutkZXjmuS+YrrJhUZ3MsONtDK7LNrgANUAUR94lF9jEQCaQJeeNdw09I3L
+ Qn6uzRRjyPlTQR8UYxENPLbuy9k6VitQ52COxei9KRoowQUMQrei2umldoBea+U6zDN3
+ PXOnvi2MoPTH8X75sEzgi6GweR3sT3bDEEJdG99pRKIF5ESPJ7QweC27e+v2r+Y9BEnq
+ rgd5P5C0lPbbc4db0wOm/LZJqq4xWDfLjYgC2/YV5ctZUJDkwjZnOCBUu5CnmA9IKKGj
+ SNDmbqUbYokfJtZGtQ1LA/LjRRJz6i3H27DpnOUIk+lZ+9cD++aSdc0u81/r8oR2dxeJ
+ RYag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kXsfyBDFONl51YXv5b23OS62EMb824elrLR+gYrriWQ=;
- b=zweGMXpMtFjU5+I6qhNQm0tpN5nqpAzKVqoZ8PhMCNV1p0QS8o1ivjxX2OX5YHzg+h
- RNwHG4gp+h4P+DgkVCAvCS8FAcNJyHO7eh/UFolF6qvUsxjVg/Ohw61jJvTgOFWxjfgv
- 8TJziFMO5qUhDmUSGacXqFR8QEj9P8iJRz1ZAjjfuvyLz6Nh5Jd0gHBhuX4gWGwzsEpv
- 40nNqRr+b7E6CbGAkGZQwIZUd+EuPdWcFNIPnvmCfBYPeFSKkcg3xVPrU/LXDT2vtK86
- zl/sgPiggJ6OkRwrlgv+Rhxgj9XfYkmP/ikLEUtJicB8iB+MG8wytsNYCdBWx61fiaV7
- x3/Q==
-X-Gm-Message-State: AOAM533lKYiivpXmz2IfeuOUAPzQGDj9hgyYGXP0CbbXE1cvxuLIPshf
- 8qP+qNL2z/s1GF+Cjp+SZMaaWkSQQrpwnrSWYFcV0w==
-X-Google-Smtp-Source: ABdhPJyksJ+8pVa85XyniCpcWpEwEAD4ziXSyCuQwba0HIwX3os9uqj6tS6LtRztbmF2+AF+ODy/QMVYD+dB8l5dleg=
-X-Received: by 2002:a17:90b:33d0:: with SMTP id
- lk16mr32569330pjb.66.1637601958586; 
- Mon, 22 Nov 2021 09:25:58 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=NAERJfyuh3hrk2pVn4WCNTl0iGx7EaTAYCDW21ycnzg=;
+ b=4s0aV9nLSUvWAyy2f65+QVpPXRommTfU1AR3kNcxuW8iz1dSHhPrhf8xcXd/mZ3E3i
+ /xVQaFIbQ/eSfJqL3JCH4uXVN6S8b59vHYWmr+WftB4hgk8MriYWiWA77HOwN/aGljfJ
+ QRSj3DpDw45jQi1+6wuqPo8l+SmxaIn55JSsDJj3vBbAfHO92AzlPLiBzurfWM2602Yf
+ Eec6ZKPDMdJ3ryYrtBB4au81FYHzbxXdorOV/s9WPBj0vqUXPt5PYRigyJUQdbk05oWP
+ ann2f4LVLNxRykRCK/fKhIxEsLnkDso+2BI4reudNaysQB0aXDiZolg1fja0xsV4NyUF
+ ypgA==
+X-Gm-Message-State: AOAM532jaT/ZNluWz9zoEDVkmkJufukKvtArgzVZPog+D0v5fNcuUltq
+ seLFiIU1O/sISFzS+2SRdQ==
+X-Google-Smtp-Source: ABdhPJyLhxP0ZcR453J7Jypjzt74httJPSj0sP8H7ogHHLG/J+9Xhjl/qHlL28VWh+9k9PTqrcuKnA==
+X-Received: by 2002:a05:600c:501f:: with SMTP id
+ n31mr32696731wmr.101.1637603265204; 
+ Mon, 22 Nov 2021 09:47:45 -0800 (PST)
+Received: from ?IPv6:2a02:810b:f40:4200:a22c:1f83:255b:80f3?
+ ([2a02:810b:f40:4200:a22c:1f83:255b:80f3])
+ by smtp.gmail.com with ESMTPSA id u15sm11746081wmq.13.2021.11.22.09.47.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Nov 2021 09:47:44 -0800 (PST)
+Subject: Re: [PATCH v1 00/12] drm/rockchip: RK356x VOP2 support
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <73c57643-a0db-e7e7-174d-3cb6a978d98a@gmail.com>
+ <20211122081008.GR6556@pengutronix.de>
+From: Alex Bee <knaerzche@gmail.com>
+Message-ID: <0f975419-f3a6-8c5d-f700-904957eea3e6@gmail.com>
+Date: Mon, 22 Nov 2021 18:47:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <20211106183802.893285-1-aford173@gmail.com>
- <718f7f6d6cd564d031c1963f1590c62d549ae725.camel@ndufresne.ca>
- <CAHCN7xKM9RUE7z-+ug1on+D=nDoEm589R4m03ofys92Aq75ZVQ@mail.gmail.com>
- <8db00a4b6faa99c940d9bc86e17161eb0db5efe3.camel@ndufresne.ca>
- <CAJ+vNU28UJffFv9jQ2KryJMudqYxvCaoVOVcU5dPqRA209iN6A@mail.gmail.com>
- <d91532c2c0772f9aa708ead36b2a97203727a7ea.camel@ndufresne.ca>
- <CAJ+vNU3H-V+bPoZ3qKead45h=W7AhQK6Lhjrx5ssdF4c_qfe=A@mail.gmail.com>
- <CAHCN7x+0LwwU_rEST+TZxGquswGKL19gnTy9WLofsXtGAtWqdw@mail.gmail.com>
- <7f94eaacfddb8c5434c17f1e069ea87a17657ce9.camel@ndufresne.ca>
- <CAHCN7xKRzxMBmPbDobWTuvNNSpTXk5XENvfBnfkhRY3eZKhn6w@mail.gmail.com>
- <CAHCN7xJFLNi_g+HX8PCy1Rkgf0jnWpO5QGYVz8nH19xrJkwHrA@mail.gmail.com>
-In-Reply-To: <CAHCN7xJFLNi_g+HX8PCy1Rkgf0jnWpO5QGYVz8nH19xrJkwHrA@mail.gmail.com>
-From: Tim Harvey <tharvey@gateworks.com>
-Date: Mon, 22 Nov 2021 09:25:47 -0800
-Message-ID: <CAJ+vNU3zFd=6k_Emc5aafxKkGwCPp4crgOFezQ-E_MbWsn1_EA@mail.gmail.com>
-Subject: Re: [RFC 0/5] arm64: imx8mm: Enable Hantro VPUs
-To: Adam Ford <aford173@gmail.com>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>,
- linux-media <linux-media@vger.kernel.org>, 
- Schrempf Frieder <frieder.schrempf@kontron.de>,
- Marek Vasut <marek.vasut@gmail.com>, 
- Jagan Teki <jagan@amarulasolutions.com>,
- Adam Ford-BE <aford@beaconembedded.com>, 
- cstevens@beaconembedded.com, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Heiko Stuebner <heiko@sntech.de>, 
- Lucas Stach <l.stach@pengutronix.de>, Joakim Zhang <qiangqing.zhang@nxp.com>, 
- Alice Guo <alice.guo@nxp.com>, Peng Fan <peng.fan@nxp.com>, 
- "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- open list <linux-kernel@vger.kernel.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
+In-Reply-To: <20211122081008.GR6556@pengutronix.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_092559_971094_3581C244 
-X-CRM114-Status: GOOD (  59.28  )
+X-CRM114-CacheID: sfid-20211122_094747_278121_0059342E 
+X-CRM114-Status: GOOD (  45.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,212 +94,128 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 20, 2021 at 7:36 AM Adam Ford <aford173@gmail.com> wrote:
+Am 22.11.21 um 09:10 schrieb Sascha Hauer:
+> Hi Alex,
 >
-> On Fri, Nov 19, 2021 at 5:37 PM Adam Ford <aford173@gmail.com> wrote:
-> >
-> > On Fri, Nov 19, 2021 at 10:29 AM Nicolas Dufresne <nicolas@ndufresne.ca> wrote:
-> > >
-> > > Hi Adam, Tim,
-> > >
-> > > [...]
-> > > > > > > Nicolas and Adam,
-> > > > > > >
-> > > > > > > For the H1 patches in this series: I've been able to test the IMX8MM
-> > > > > > > H1 JPEG encode using GStreamer 1.18.5:
-> > > > > > > $ gst-inspect-1.0 | grep -e "v4l2.*enc"
-> > > > > > > video4linux2:  v4l2jpegenc: V4L2 JPEG Encoder
-> > > > > > > $ gst-launch-1.0 videotestsrc ! jpegenc ! rtpjpegpay ! udpsink
-> > > > > >                                   ^ v4l2jpegenc
-> > > > > >
-> > > > > > This is just a transcript error ?
-> > > > >
-> > > > > Nicolas,
-> > > > >
-> > > > > No! Thanks for catching my mistake. I was testing with software encode... ooops!
-> > > > >
-> > > > > 'gst-launch-1.0 videotestsrc ! v4l2jpegenc ! fakesink' actually hangs
-> > > > > the board so likely a power-domain issue there?
-> > > >
-> > > > The v4l2-compliance tests fail on the h1 decoder with a hang, but I
-> > > > think we're writing to registers which are not documented in the Mini
-> > > > TRM.  The Mini TRM doesn't explicitly show the JPEG encoding as a
-> > > > feature, but some of the registers state JPEG, but because some of the
-> > > > registers written for the H1 are not documented in the TRM.  If those
-> > > > registers are restricted or not in this SoC, I am concerned that it
-> > > > might be related.  I'll try to run some more tests this weekend to
-> > > > check on the status of the power-domain stuff.
-> > >
-> > > To verify if the HW support JPEG encoding you can read SWREG63 bit 25. This is
-> > > in the TRM, just not labelled properly. To mimic the decoding side, would be "HW
-> > > synthesis config register X" with the bit labelled SW_ENC_JPEG_PROF (but
-> > > PROF/profile is on or off). If your board hang while reading this, you likely
-> > > didn't get the power bit right.
-> > >
-> > > IMX8 has an undocumented control block thing that we have been fighting with in
-> > > imx8q,  perhaps that's your issue. Few driver was proposed, we are still pending
-> > > on NXP solution to be submitted (they asked us to wait, still waiting =)).
-> >
-> > Nicolas,
-> >
-> > Thanks for the suggestion to read offset FC.  There was an attempt
-> > made by Lucas Stach to develop a VPU blk-ctrl driver to coordinate the
-> > power-domains with the GPC driver. Unfortunately, it does appear to
-> > hang, so it might not be operating correctly.
-> >
-> > Lucas,
-> >
-> > Do you have any idea of stuff I can try to see if the power domain is
-> > coming online correctly?
-> >
-> > [   10.434727] imx-pgc imx-pgc-domain.6: request the vpumix domain to power up
-> > [   10.463647] imx-pgc imx-pgc-domain.6: request the vpumix ADB400 to power up
-> > [   10.517155] imx-pgc imx-pgc-domain.6: genpd vpumix success
-> > [   10.728927] vpu: set fuse bits to enable
-> > [   10.825500] imx8m-blk-ctrl 38330000.blk-ctrl: power vpublk-g1 GPC domain
-> > [   10.878986] imx-pgc imx-pgc-domain.7: request the vpu-g1 domain to power up
-> > [   10.932429] imx-pgc imx-pgc-domain.7: genpd vpu-g1 success
-> > [   10.971988] imx8m-blk-ctrl 38330000.blk-ctrl: genpd vpublk-g1 success
-> > [   11.004726] hantro-vpu 38300000.video-codec: registered
-> > nxp,imx8mm-vpu-dec as /dev/video0
-> > [   11.040760] imx8m-blk-ctrl 38330000.blk-ctrl: power vpublk-g2 GPC domain
-> > [   11.066181] imx-pgc imx-pgc-domain.8: request the vpu-g2 domain to power up
-> > [   11.087887] imx-pgc imx-pgc-domain.8: genpd vpu-g2 success
-> > [   11.113808] imx8m-blk-ctrl 38330000.blk-ctrl: genpd vpublk-g2 success
-> > [   11.139634] hantro-vpu 38310000.video-codec: registered
-> > nxp,imx8mm-vpu-g2-dec as /dev/video1
-> > [   11.156463] imx8m-blk-ctrl 38330000.blk-ctrl: power vpublk-h1 GPC domain
-> > [   11.170817] imx-pgc imx-pgc-domain.9: request the vpu-h1 domain to power up
-> > [   11.232990] imx-pgc imx-pgc-domain.9: genpd vpu-h1 success
-> > [   11.252546] imx8m-blk-ctrl 38330000.blk-ctrl: genpd vpublk-h1 success
-> > [   11.266152] hantro-vpu 38320000.video-codec: Checking vpu->enc_base + 0xfc
-> >
-> > <hang>
-> >
-> > adam
-> >
+> On Mon, Nov 22, 2021 at 12:18:47AM +0100, Alex Bee wrote:
+>> Hi Sascha,
+>>
+>> Am 17.11.21 um 15:33 schrieb Sascha Hauer:
+>>> This series adds initial graphics support for the Rockchip RK356[68]
+>>> SoCs.  Graphics support is based around the VOP2 controller which
+>>> replaces the VOP controller found on earlier Rockchip SoCs. The driver
+>>> has been tested with HDMI support included in this series and MIPI-DSI
+>>> which is not included because it needs some more work. The driver is
+>>> taken from the downstream Rockchip kernel and heavily polished, most non
+>>> standard features have been removed for now. I tested the driver with
+>>> the libdrm modetest utility and also with weston with both pixman and
+>>> panfrost driver support. Michael Riesch reported the driver to work on
+>>> the RK3566 as well, but device tree support for this SoC is not yet
+>>> included in this series.
+>>>
+>>> The HDMI changes are based on patches from Benjamin Gaignard, but
+>>> modified a bit as I found out that the HDMI port on the RK3568 only
+>>> needs one additional clock, not two. Also I added regulator support
+>>> which is needed to get the HDMI up on the rk3568-EVB board.
+>>>
+>>> All review and testing feedback welcome
+>>
+>> thanks for working on that - it's very (very,very) much appreciated.
+>>
+>> It took me some time to figure it out: It seems rk3568-iommu driver s
+>> broken - I did only get "white noise" when using it alongside vop
+>> (similar like it was reported here before). However: removing the
+>> iommu-property from vop makes it working for me with HDMI output on
+>> quartz64 as well. Could you check if you have the iommu driver in kernel
+>> enabled if it works for you, if the property is present in DT? (I used
+>> 5.16-rc1 + this series + [0]).
+> I have the iommu driver enabled and it works for me. I get this during
+> boot:
 >
-> Nicolas, Tim, and Lucas,
+> [0.263287] rockchip-vop2 fe040000.vop: Adding to iommu group 0
 >
-> I think I have the hanging resolved in the power domains, and I'll be
-> pushing the fix to the GPCv2.
+> So I expect it is indeed used.
 >
-> For the H1 Encoder, I added some debugging code to read the offset
-> 0xfc and print some data based on the findings of that VPU-h1 offset.
-> I basically check the various bits per the TRM to see if they are set
-> and print some splat to indicate whether or not the function is
-> supported.
+>> Also vop mmu seems to have the
+>> power-domain missing in your series (same as downstream) - however
+>> adding that doesn't help much currently.
+> Probably the power domain gets enabled anyway when the VOP is activated,
+> so adding it to the iommu won't help anything. Nevertheless it seems
+> correct to add the property, I'll do so in the next round.
 >
-> [    8.861865] hantro-vpu 38320000.video-codec: Checking vpu->enc_base + 0xfc
-> [    8.870594] hantro-vpu 38320000.video-codec: Stabilization supported by HW
-> [    8.889341] hantro-vpu 38320000.video-codec: VP8 encoding supported by HW
-> [    8.899386] hantro-vpu 38320000.video-codec: H.264 encoding supported by HW
-> [    8.918171] hantro-vpu 38320000.video-codec: RGB to YUV conversion
-> supported by HW
-> [    8.934067] hantro-vpu 38320000.video-codec: registered
-> nxp,imx8mm-vpu-h1-enc as /dev/video2
->
-> Unfortunately, JPEG is not listed as supported.  :-(
+>> As a sidenote: I verfied this with using Ezequiel's vpu addtion for
+>> RK356x: It did only work when removing the iommu there as well (getting
+>> tons of page faults otherwise) - so iommu driver really seems to broken,
+>> at least for RK3566. (Or I'm a missing a option in kernel config, which
+>> wasn't required for the older iommu version?)
+> I don't think so. I started from defconfig and disabled other
+> architectures and unneeded drivers, but I did not enable anything
+> specific to iommu.
 
-Adam,
+I've found out now that I can make it work with iommu, by limiting the
+available memory to something below 4G (I have a 8G board). So there is
+something wrong in the driver or somewhere in memory mapping, iommu api
+(since it works when using CMA), ... however: it does clearly not relate
+to your patch.
 
-Well not having JPEG encode support is unfortunate, and unexpected. Do
-we not have hantro support yet for VP8/H264 encode?
+>> =A0
+>> But as reported before: For HDMI this does currently only work for pixel
+>> clock rates, which are integer-divisable with hpll clock rate (which is
+>> the hardcoded parent of vop0's dclk)
+>> As discussed in Benjamin's initial submission of the addition of
+>> RK3568's hdmi controller [1] same as with RK3288's and RK3399's hdmi phy
+>> needs a reference clock (it's called vpll there) which needs to get
+>> switched before the vop switches the mode (since phy rate switching is
+>> done before) - it's HPLL in case of RK356x. For whatever reason it's
+>> called "ref" for RK356x only downstream [2] - so you should add another
+>> clock "vpll" (renaming it to "ref" for _ALL_ SoCs which have it would be
+>> a _GREAT_ idea) which is <&pmucru PLL_HPLL>.
+> Yeah, a consumer clock should be named after the usage in the consumer,
+> not after the provider name. I also stumbled over this and naming it
+> "ref" makes much more sense. We'll likely have to keep supporting "vpll"
+> as well for compatibility to old device trees.
+>
+>> What brings us to the "real" clock problem and the reason, why
+>> non-integer divisable pixel clock rates are not possible ATM: This is a
+>> long standing issue for RK3288 and RK3399 as well (and one of the main
+>> reasons why 4k modes are not possible for those older SoCs currently):
+>> Upstream all PLL rates are controlled with those PLL rate tables in the
+>> clock driver and they have to be _exactly_ defined as they are used
+>> (HDMI sinks are very picky).
+>> You will not see any additional rates downstream for RK3568: they have a
+>> mechanism there to automatically calculate the PLL settings if the rate
+>> doesn't exist in these tables (IIRC this was submitted upstream also:
+>> but it was rejected/ignored by maintainers).
+> Looks like we have to try harder to get it upstream. Do you have a
+> pointer to this patch?
 
-I haven't quite figured out how to build a modern mono-repo gstreamer
-on the ubuntu 20.04 rootfs I'm using so I haven't been able to test
-VPU encode/decode properly. I'll keep working on it when I'm back in
-the office the following week.
+Sure:
+
+https://patchwork.kernel.org/project/linux-clk/patch/20191204082527.19957-1=
+-zhangqing@rock-chips.com/
+
+I don't know if that is the was last submitted version.
 
 Best regards,
 
-Tim
+Alex
 
+>> As a quick hackarround (for
+>> testing): You could use this table [3] we are using in LibreElec for
+>> RK3399 to get 4k modes working and assign it to HPLL in RK3568's clock
+>> driver (I tested it and it works great). It might be possible to just
+>> add those rates (some also without frac dividers) to the common PLL
+>> table for RK3568.
+> Thanks for noting. This could also explain why currently only 1080p is
+> working.
 >
-> However, the hanging stops occurring, so I'll be posting a patch to
-> update the GPCv2 code.  I can reduce sone device tree duplication, and
-> the G2 throws some splat, but that will be a separate discussion.
+> Sascha
 >
-> I can also run v4l2-compliance on the H1 node, and it responds without hanging.
->
-> root@beacon-imx8mm-kit:~# v4l2-compliance -d2
-> v4l2-compliance SHA: not available
-> , 64 bits, 64-bit time_t
->
-> Compliance test for hantro-vpu device /dev/video2:
->
-> Driver Info:
-> Driver name      : hantro-vpu
-> Card type        : nxp,imx8mm-vpu-h1-enc
-> Bus info         : platform: hantro-vpu
-> Driver version   : 5.16.0
-> Capabilities     : 0x84204000
-> Video Memory-to-Memory Multiplanar
-> Streaming
-> Extended Pix Format
-> Device Capabilities
-> Device Caps      : 0x04204000
-> Video Memory-to-Memory Multiplanar
->
-> < snip>
->
-> Total for hantro-vpu device /dev/video2: 46, Succeeded: 46, Failed: 0,
-> Warnings: 0
->
-> I'll do an RFCv2 on the Hantro G1 and G2 with the H1 removed based on
-> the updated GPCv2 code I'll be pushing shortly, but at least the
-> system doesn't hang, so I'm fairly confident the power domains are
-> working better now even if we cannot support the JPEG.
->
-> adam
->
-> > >
-> > > > >
-> > > > > >
-> > > > > > > host=192.168.1.146 port=5000
-> > > > > > > viewed on client@192.168.1.146 via:
-> > > > > > > $ gst-launch-1.0 udpsrc port=5000 ! application/x-rtp,payload=96 !
-> > > > > > > rtpjpegdepay ! jpegdec ! autovideosink
-> > > > > > >
-> > > > > > > For the G1/G2 patches in the series I don't see any Gstreamer
-> > > > > > > 'v4l2.*dec' elements. Perhaps I need a newer version of Gstreamer.
-> > > > > >
-> > > > > > Most likely yes, I suggest building gstreamer/ branch "main", GStreamer has now
-> > > > > > a single repository. We are very close to 1.20, which will include stable API
-> > > > > > support of H264, MPEG2 and VP8 decoding.
-> > > > > >
-> > > > >
-> > > > > Ok, let me see if I can navigate through the build process and I'll
-> > > > > get back to you.
-> > > > >
-> > > > > Thanks,
-> > > > >
-> > > > > Tim
-> > > > >
-> > > > > > >
-> > > > > > > I have CSI capture and DSI display currently working on
-> > > > > > > imx8mm-venice-gw73xx-0x that I can play with. The CSI sensor only
-> > > > > > > supports RAW8/RAW10 (and gstreamer currently only supports RAW8) and I
-> > > > > > > can't efficiently convert to something the JPEG encoder likes without
-> > > > > > > bayer2rgbneon (a libneon version).
-> > > > > > >
-> > > > > > > I see from the IMX8MMRM that the 2D GPU supports scaling etc with a
-> > > > > > > wide range of data formats but I'm not sure how to tap into this as
-> > > > > > > that hardware is managed by the vivante driver. On the IMX6QDL there
-> > > > > > > is a separate IPU block that Philipp Zabel wrote a nice mem2mem
-> > > > > > > csc/scaler driver for but I don't see any equivalent currently for
-> > > > > > > IMX8MM.
-> > > > > > >
-> > > > > > > Best regards,
-> > > > > > >
-> > > > > > > Tim
-> > > > > >
-> > >
 
 _______________________________________________
 Linux-rockchip mailing list
