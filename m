@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E0CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Nov 2021 09:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D7A0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Nov 2021 09:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a56IfHzUxzpZzBVI2ruxOa+LmdrTvu8mE913z8ywKkQ=; b=Ta2HRWlx/+5x0C
-	XYMrHOz/iOo6doQQMDVaSu/J+nRmsi0KB2sFe+Tv3cEIm1UYdXHLe88kn4oOIO7uEBAsRNZTgwd/1
-	bEnAHkKUEzLSeyAml6sC6FgT8MAVHJXAwTfOE5uIVehxyfiXAV1tZNWUutz5z0CDZaisoJnNFFsdP
-	zrHTmf/3dGGkrY6zz/ADQHf9dktTg/dYUkAO94nTvsNvkAl1EfdhOoTtrzbG/F0nrLz92zAnY1vRe
-	gOWJQgqIeadwIOU0Oaa38EsnTzWqH3wgnZ10SJKt5RcozFXZmpplvs55CxvC+Dj1FcCwh2uFXw9ZL
-	717f+c6VXOa6nnSqh/nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A1zZbJankB4vw5IT8oth1I9FeqYaPNYywDqLAnuwWg4=; b=GBUlDVEv835KaAZ0IqoBYSD0s5
+	d5tochPtnQrzq/JAEwKBOqwOs940142dsPH2Wr5dADbvIcggLv3hOnKZvOCLXm2Nqivpmad/GRdPu
+	78hZZJ4kyD3OEOdtaGFaynqtJQiCOaFSfWBklI5k+ezqmRK13yHCg3eGrxmh1RNudRL2MDl4pegdB
+	NaJQrsztB+5sFRY0creYKNM9NefUrmEfqOpifX3N9/mZcYXUADGjUy6pprnzM/pvi2SgYLFW/KZfz
+	6HCXkfo4upWPDKqr1uINoyXficUp9s2dK/gQYAISSpsWEJtFOWannV3z+wPnfyqWRQOM+3UvwyR8p
+	lFk95JWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mp5lh-00FdHV-B7; Mon, 22 Nov 2021 09:37:45 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mp5rC-00FesQ-Ac; Mon, 22 Nov 2021 09:43:26 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mp4P5-00FE0W-3q
- for linux-rockchip@lists.infradead.org; Mon, 22 Nov 2021 08:10:20 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mp4Oz-0003KK-S0; Mon, 22 Nov 2021 09:10:13 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mp4Ou-0005pL-HP; Mon, 22 Nov 2021 09:10:08 +0100
-Date: Mon, 22 Nov 2021 09:10:08 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v1 00/12] drm/rockchip: RK356x VOP2 support
-Message-ID: <20211122081008.GR6556@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <73c57643-a0db-e7e7-174d-3cb6a978d98a@gmail.com>
+ id 1mp5Za-00FZDL-2C
+ for linux-rockchip@lists.infradead.org; Mon, 22 Nov 2021 09:25:15 +0000
+Received: by mail-lf1-x134.google.com with SMTP id b1so77296428lfs.13
+ for <linux-rockchip@lists.infradead.org>; Mon, 22 Nov 2021 01:25:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version; bh=xxQtWyJocXmtu7ZkhSsQxz4Z9a1g2nRcvrt+ZIrEyGI=;
+ b=qJVfJ35Xw3XQ8Z7iBFBc0ObJZM+HqYomwU2i7WW+4ksPrOyv8jnBkvXYGYsepoB5P6
+ 1EHLmM3TN1fBlpmW13vxAlMzDU1CHnJaEfNo/pM2LvcFQwPQcsKCSuJdk5PpdecRmdX3
+ 5DgeT73XdQv8YyaLiQ5VkuodppI7r+id/mMWfZIQw2vM9plSYGADMRlNlJIhIEdFnCB9
+ 6KZAuqb5M9D108KUbcnpo/fc2kUvmGM3U0EcVsmmqzLmabiidOeIWQ7Kk2qETxPpgAkx
+ Tk5fBKD+1Ge5XeCdqadQ+kN+qgxReTYjbqn7bl86I+puK2YGyvdrgRTu5TD1ODn4ILdN
+ MVYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version;
+ bh=xxQtWyJocXmtu7ZkhSsQxz4Z9a1g2nRcvrt+ZIrEyGI=;
+ b=c10+BielEBKw/I6DGLv6z2nz3NiqUS3MVoBtfmvXZ9AfGi9bKlRjhfZbckEtGjrJG+
+ D/9kcE8VD3O4hYtIiDOkBV2yp6GvRQXnaQ/FrXj/UKDHEWOvEr2ddxzbpdXU1bPT9lEC
+ kh0t5+jjgyjZWAgFXpD03xqG9BxfMFC9jI34lIcWFnnt7LTDX/fViicRv4izY95Tm58T
+ hKbuxUkbR1wFDrTpxjvqReTwH0fRVHX7V6sBuXYAmSPgUy91q4sdCORj55Xc4R6Ya0zX
+ 5ewA1UxzsO7GYJwRIyvSEX/YiqqNQSb9kLAIS4iATKFADDCUN5xFyrbbNFjOyCahZ4Fl
+ GoUw==
+X-Gm-Message-State: AOAM531G14eNwOgqwb3vxiDcftU3odUOS0ivI3i2jesE50Vkr8pYgIqW
+ H2STq3dciPiwf9iM9d6Jf3Q=
+X-Google-Smtp-Source: ABdhPJwRzFsFc6m7LbXk5yEmkvBbNjw4oQ4fPMsXutabrGsODK2z5xsPYxFA5vhjquk7lHXpA3xRzw==
+X-Received: by 2002:ac2:4f90:: with SMTP id z16mr55965325lfs.381.1637573112420; 
+ Mon, 22 Nov 2021 01:25:12 -0800 (PST)
+Received: from eldfell ([194.136.85.206])
+ by smtp.gmail.com with ESMTPSA id f19sm902545lfm.119.2021.11.22.01.25.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Nov 2021 01:25:12 -0800 (PST)
+Date: Mon, 22 Nov 2021 11:25:09 +0200
+From: Pekka Paalanen <ppaalanen@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: Brian Norris <briannorris@chromium.org>, Rob Clark
+ <robdclark@chromium.org>, Andrzej Hajda <andrzej.hajda@intel.com>, Peter
+ Hutterer <peter.hutterer@who-t.net>, David Airlie <airlied@linux.ie>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
+ Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ linux-input@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <20211122112509.4d7e6ad3@eldfell>
+In-Reply-To: <YZfJET55LjuW4BP+@phenom.ffwll.local>
+References: <20211117224841.3442482-1-briannorris@chromium.org>
+ <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <20211118123928.545dec8a@eldfell> <YZcB4ooqpvP3gHdx@google.com>
+ <20211119123841.1d628cb6@eldfell>
+ <YZfJET55LjuW4BP+@phenom.ffwll.local>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <73c57643-a0db-e7e7-174d-3cb6a978d98a@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 08:45:58 up 277 days, 11:09, 111 users,  load average: 0.11, 0.10,
- 0.09
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_001019_185519_56577D92 
-X-CRM114-Status: GOOD (  56.88  )
+X-CRM114-CacheID: sfid-20211122_012514_170316_77F2A564 
+X-CRM114-Status: GOOD (  48.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,129 +92,180 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============0564825652094243224=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+--===============0564825652094243224==
+Content-Type: multipart/signed; boundary="Sig_/JE8=lbNU9pXwl2HdVmDFmA_";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
 
-On Mon, Nov 22, 2021 at 12:18:47AM +0100, Alex Bee wrote:
-> Hi Sascha,
-> =
+--Sig_/JE8=lbNU9pXwl2HdVmDFmA_
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-> Am 17.11.21 um 15:33 schrieb Sascha Hauer:
-> > This series adds initial graphics support for the Rockchip RK356[68]
-> > SoCs.  Graphics support is based around the VOP2 controller which
-> > replaces the VOP controller found on earlier Rockchip SoCs. The driver
-> > has been tested with HDMI support included in this series and MIPI-DSI
-> > which is not included because it needs some more work. The driver is
-> > taken from the downstream Rockchip kernel and heavily polished, most non
-> > standard features have been removed for now. I tested the driver with
-> > the libdrm modetest utility and also with weston with both pixman and
-> > panfrost driver support. Michael Riesch reported the driver to work on
-> > the RK3566 as well, but device tree support for this SoC is not yet
-> > included in this series.
-> >
-> > The HDMI changes are based on patches from Benjamin Gaignard, but
-> > modified a bit as I found out that the HDMI port on the RK3568 only
-> > needs one additional clock, not two. Also I added regulator support
-> > which is needed to get the HDMI up on the rk3568-EVB board.
-> >
-> > All review and testing feedback welcome
-> =
+On Fri, 19 Nov 2021 16:56:01 +0100
+Daniel Vetter <daniel@ffwll.ch> wrote:
 
-> =
+> On Fri, Nov 19, 2021 at 12:38:41PM +0200, Pekka Paalanen wrote:
+> > On Thu, 18 Nov 2021 17:46:10 -0800
+> > Brian Norris <briannorris@chromium.org> wrote:
+> >  =20
+> > > Hi Pekka,
+> > >=20
+> > > Thanks for the thoughts and review. I've tried to respond below:
+> > >=20
+> > > On Thu, Nov 18, 2021 at 12:39:28PM +0200, Pekka Paalanen wrote: =20
+> > > > On Wed, 17 Nov 2021 14:48:40 -0800
+> > > > Brian Norris <briannorris@chromium.org> wrote:
+> > > >    =20
+> > > > > A variety of applications have found it useful to listen to
+> > > > > user-initiated input events to make decisions within a DRM driver=
+, given
+> > > > > that input events are often the first sign that we're going to st=
+art
+> > > > > doing latency-sensitive activities:
+> > > > >=20
+> > > > >  * Panel self-refresh: software-directed self-refresh (e.g., with
+> > > > >    Rockchip eDP) is especially latency sensitive. In some cases, =
+it can
+> > > > >    take 10s of milliseconds for a panel to exit self-refresh, whi=
+ch can
+> > > > >    be noticeable. Rockchip RK3399 Chrome OS systems have always s=
+hipped
+> > > > >    with an input_handler boost, that preemptively exits self-refr=
+esh
+> > > > >    whenever there is input activity.
+> > > > >=20
+> > > > >  * GPU drivers: on GPU-accelerated desktop systems, we may need to
+> > > > >    render new frames immediately after user activity. Powering up=
+ the
+> > > > >    GPU can take enough time that it is worthwhile to start this p=
+rocess
+> > > > >    as soon as there is input activity. Many Chrome OS systems als=
+o ship
+> > > > >    with an input_handler boost that powers up the GPU.
+> > > > >=20
+> > > > > This patch provides a small helper library that abstracts some of=
+ the
+> > > > > input-subsystem details around picking which devices to listen to=
+, and
+> > > > > some other boilerplate. This will be used in the next patch to im=
+plement
+> > > > > the first bullet: preemptive exit for panel self-refresh.
+> > > > >=20
+> > > > > Bits of this are adapted from code the Android and/or Chrome OS k=
+ernels
+> > > > > have been carrying for a while.
+> > > > >=20
+> > > > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > > > ---   =20
+> > > >=20
+> > > > Thanks Simon for the CC.
+> > > >=20
+> > > > Hi Brian,
+> > > >=20
+> > > > while this feature in general makes sense and sounds good, to start
+> > > > warming up display hardware early when something might start to hap=
+pen,
+> > > > this particular proposal has many problems from UAPI perspective (a=
+s it
+> > > > has none). Comments below.
+> > > >=20
+> > > > Btw. if PSR is that slow to wake up from, how much do you actually =
+gain
+> > > > from this input event watching? I would imagine the improvement to =
+not
+> > > > be noticeable.   =20
+> > >=20
+> > > Patch 2 has details. It's not really about precisely how slow PSR is,
+> > > but how much foresight we can gain: in patch 2, I note that with my
+> > > particular user space and system, I can start PSR-exit 50ms earlier t=
+han
+> > > I would otherweise. (FWIW, this measurement is exactly the same it was
+> > > with the original version written 4 years ago.)
+> > >=20
+> > > For how long PSR-exit takes: the measurements I'm able to do (via
+> > > ftrace) show that drm_self_refresh_transition() takes between 35 and =
+55
+> > > ms. That's noticeable at 60 fps. And quite conveniently, the input-bo=
+ost
+> > > manages to hide nearly 100% of that latency.
+> > >=20
+> > > Typical use cases where one notices PSR latency (and where this 35-55=
+ms
+> > > matters) involve simply moving a cursor; it's very noticeable when you
+> > > have more than a few frames of latency to "get started". =20
+> >=20
+> > Hi Brian,
+> >=20
+> > that is very interesting, thanks.
+> >=20
+> > I would never have expected to have userspace take *that* long to
+> > react. But, that sounds like it could be just your userspace software
+> > stack. =20
+>=20
+> In the other subthread we're talking about making this more explicit.
+> Maybe we need to combine this with a "I expect to take this many
+> milliseconds to get the first frame out" value.
+>=20
+> That way compositors which take 50ms (which frankly is shocking slow) can
+> set that, and kms can enable sr exit (since sr exit will actually help
+> here). But other compositors which expect to get the first frame out in
+> maybe 20 can spec that, and then the driver will not sr exit (because too
+> high chances we'll just make shit slower), and instead will only boost
+> render clocks.
+>=20
+> Thoughts?
 
-> thanks for working on that - it's very (very,very) much appreciated.
-> =
+I wonder if the compositor or the userspace stack can know how long it
+usually takes to prepare the first KMS submission after a pause. I
+guess it would need to measure that at runtime. Hmm, doable I guess,
+sure. Input to output latency in general is interesting.
 
-> It took me some time to figure it out: It seems rk3568-iommu driver s
-> broken - I did only get "white noise" when using it alongside vop
-> (similar like it was reported here before). However: removing the
-> iommu-property from vop makes it working for me with HDMI output on
-> quartz64 as well. Could you check if you have the iommu driver in kernel
-> enabled if it works for you, if the property is present in DT? (I used
-> 5.16-rc1 + this series + [0]).
+However, that sounds like a pretty vague API with the delay value. I
+think it has a high risk of regressing into a boolean toggle by
+userspace choosing an arbitrary number and then assuming the threshold
+in the driver is always the same.
 
-I have the iommu driver enabled and it works for me. I get this during
-boot:
 
-[0.263287] rockchip-vop2 fe040000.vop: Adding to iommu group 0
+Thanks,
+pq
 
-So I expect it is indeed used.
+--Sig_/JE8=lbNU9pXwl2HdVmDFmA_
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
 
-> Also vop mmu seems to have the
-> power-domain missing in your series (same as downstream) - however
-> adding that doesn't help much currently.
+-----BEGIN PGP SIGNATURE-----
 
-Probably the power domain gets enabled anyway when the VOP is activated,
-so adding it to the iommu won't help anything. Nevertheless it seems
-correct to add the property, I'll do so in the next round.
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmGbYfUACgkQI1/ltBGq
+qqeG7g/+LSlc5q6r2WtPf9z7hRt/C7xOrGRWRYIWMKqn1N4Hkf1nTqrdPcnfYP7U
+P79qWxup8ZJsrs4GUI/HlcZf4/XCZNBly7H/mEfCPOdHD9BpnXSo+oPkP08KK0Rw
+h8sI+I88O4Hwjr5G2E+o3bd5rEoZ74NvqI1KwygjyfIOJ08r/nY5PXlw5W7mYsb1
+wVpMDb0UUviRsz67zXZheFdVYKvWvt7aksKePY3rwB7G8suBTLexaj794R3O1Mlh
+I2M51wOU2FjpvYkUsY6N8UAN5Q3EJDSB0elG8DYbV2aTwxoc+5DrnDnIU7BNgZXm
+XGp3AXYVInRSfZ8+dEHpABBiiZ3T7n0cKE9gGxpsw+h9jO6mXzlbY0xcwrgQPc6V
+yNVN2R+2KcApkVl7M+X3Kd6QPA0zkKb1COtprTSdhWzluZgWNqvlBhnddKrS3OvQ
+p3KSPY9yAwNV1lzKZrShUeygXbYm7mCSnV4v78HzcEtD6nxfOAv3gm7eEWnYznx8
+JdT/CE72i1hqPx9GbRfgHIbfhw7gRItzo3B5n3PoXoe1UIYapWiK6yUVfx6ZvYAi
+Skv/Mh+i7xfFaUBpZRjxNHKli196wQphamw/GR160QErlUUmLvDYf22DBsF+6guL
+OhHVbHpFKr8wWMK79MzV3NUgWk9vvrK+2uSi3koB0JqoinlwIyo=
+=XnSG
+-----END PGP SIGNATURE-----
 
-> As a sidenote: I verfied this with using Ezequiel's vpu addtion for
-> RK356x: It did only work when removing the iommu there as well (getting
-> tons of page faults otherwise) - so iommu driver really seems to broken,
-> at least for RK3566. (Or I'm a missing a option in kernel config, which
-> wasn't required for the older iommu version?)
+--Sig_/JE8=lbNU9pXwl2HdVmDFmA_--
 
-I don't think so. I started from defconfig and disabled other
-architectures and unneeded drivers, but I did not enable anything
-specific to iommu.
 
-> =A0
-> But as reported before: For HDMI this does currently only work for pixel
-> clock rates, which are integer-divisable with hpll clock rate (which is
-> the hardcoded parent of vop0's dclk)
-> As discussed in Benjamin's initial submission of the addition of
-> RK3568's hdmi controller [1] same as with RK3288's and RK3399's hdmi phy
-> needs a reference clock (it's called vpll there) which needs to get
-> switched before the vop switches the mode (since phy rate switching is
-> done before) - it's HPLL in case of RK356x. For whatever reason it's
-> called "ref" for RK356x only downstream [2] - so you should add another
-> clock "vpll" (renaming it to "ref" for _ALL_ SoCs which have it would be
-> a _GREAT_ idea) which is <&pmucru PLL_HPLL>.
-
-Yeah, a consumer clock should be named after the usage in the consumer,
-not after the provider name. I also stumbled over this and naming it
-"ref" makes much more sense. We'll likely have to keep supporting "vpll"
-as well for compatibility to old device trees.
-
-> What brings us to the "real" clock problem and the reason, why
-> non-integer divisable pixel clock rates are not possible ATM: This is a
-> long standing issue for RK3288 and RK3399 as well (and one of the main
-> reasons why 4k modes are not possible for those older SoCs currently):
-> Upstream all PLL rates are controlled with those PLL rate tables in the
-> clock driver and they have to be _exactly_ defined as they are used
-> (HDMI sinks are very picky).
-> You will not see any additional rates downstream for RK3568: they have a
-> mechanism there to automatically calculate the PLL settings if the rate
-> doesn't exist in these tables (IIRC this was submitted upstream also:
-> but it was rejected/ignored by maintainers).
-
-Looks like we have to try harder to get it upstream. Do you have a
-pointer to this patch?
-
-> As a quick hackarround (for
-> testing): You could use this table [3] we are using in LibreElec for
-> RK3399 to get 4k modes working and assign it to HPLL in RK3568's clock
-> driver (I tested it and it works great). It might be possible to just
-> add those rates (some also without frac dividers) to the common PLL
-> table for RK3568.
-
-Thanks for noting. This could also explain why currently only 1080p is
-working.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--===============0564825652094243224==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0564825652094243224==--
+
