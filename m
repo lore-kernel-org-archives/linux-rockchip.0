@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057CEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 18:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0252C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 18:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AHLrOBFUf+VPMER3uJoNnJs+PTWyWYTrcaetvYGXIZY=; b=PDNFxZvUdPcQbL
-	yXx1VxFXfc8H8ZMfQnKRvJydDpj0EU2ZiB2E43n3UBjkNRIXuvsb7wj2VCWZWR4vY6GAkQwtEoHoA
-	KRO7a0uRf7T1dLsVQwl6BH3twqTqEsGTmhmoB4b8BJESiNvxDb2BhVuvW0D36Pdt5ugNLsJLF4cdm
-	JvwKMjY7FtRqa8SPeg5eWS6OnV9StWhUFIm93gmnTAAkD0w4IP2UBMhmJtXJ/nULZ4NPluK2Kn1gK
-	SToqXTLvacTSZskY0yFiW5NXzkrUyCXUvEE8jhru3j6eVs5cFNfXzjJyqFhU7XmvXG9kk8a1EaRUG
-	gws8W0CD5VFzj9fr0dAA==;
+	List-Owner; bh=0tw+S6oBkiMREsz9dNtn0EZKWQMz8LzqKoZE5g8U9Ek=; b=EXVucF+103q2DQ
+	5XrSEXuEt9SlcWTIjmhnpjsY6zomah8r0P73rAC3QuUeh4CBQNge02I2tFZe8NRAPN/Z5CRfYtccV
+	lwiqEfyPt9DKmI1mgtjId6t8PSq14TfSvBHvjjqVRc+zI+S7BGC/5FG38c8eE1wneGDivR0Fj1+zA
+	AzT+AA9EsMATJChsVfIQBbFJxc95JMrFoqBqE8zQzDQsTR6Xf1uxJ3fT/vecFqgeOwmzJvubQT6Bh
+	HX34vtqxeEeyoKuPkCGAs2/COZJIwfe/KUZXDbN/ZNvaN2o64IGOMm5svpnDk64fw4zp1gQpbDT4j
+	DSGaazdDBzJVFLTW/ePA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpxI2-005X7o-JA; Wed, 24 Nov 2021 18:46:42 +0000
+	id 1mpxI1-005X7b-Q8; Wed, 24 Nov 2021 18:46:41 +0000
 Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpxHc-005Wzt-Qf; Wed, 24 Nov 2021 18:46:18 +0000
+ id 1mpxHc-005Wzh-Qk; Wed, 24 Nov 2021 18:46:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=metanate.com; s=stronger; h=Content-Transfer-Encoding:References:
  In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:Reply-To:
  Content-ID:Content-Description;
- bh=lPi+Knpu85ApFKN1hCgex6IK5JO2TM11yYvM5Cw66/Q=; b=pZP9IxWd/ronCKzZ+PMeU7SeDb
- J0PgruqxPg5J0wP8UiFl/ObTGFJUEkvsJZwCn3pvNkMcpFu79fHmpwbQQVm/SXblTukYf6XuyNrIZ
- jp+mBzUgKVmLQmUegOlYbGBDPTa2U0ewI6JsKnQuz4VmHdNKHNR4/oqBnq+m962kiQBZhV/6b4zrV
- 0DWX7VcW27BpT7S4JitKKQixs3CwcAJCaqDEL3nPwq3Mm7Mn1LJQqleOwsNNhxDUoWhaP/ssXJLKI
- +IqHtxtJGaeD1+4TPVRc+vg3Cj+vKFP66rntQ8Fg1AwLqM6cddZr/dWsvSgDpUqqzFUwLUAFPdzWX
- EbBYb7SA==;
+ bh=R6d+fdmVlW1mqNTDMqcWULS5Btx0udfWYQ0h5v3+RgE=; b=Oduy2hVDi7trTPFC5lx+7E2bUo
+ c5pCeVXpyjSz5qRi1X3VTyez0AtpP6BcXgqc+MULCLS3GuLazo/J3EFW62sk+RQbJZXIHpkrCYPqq
+ zSvZWPIuqnrjC2jGT9IPQiY+PuEjvkxKNrE1AzqxY0r2aHY3/x5SRj0mVwcCDk5d9ebKOA35PyKr0
+ 61mGZvVRFijIINPCSw2Xa8ISX7yE+30kL3lnqk0QL1XMwzWD4tg92GiDJToOWnzQC/KBoouT7klCA
+ 2V2CH1LXaglx6T8eCdI4Ilqcr+P+kqwA8LTpiezfUGIzvAxJy+YSAvCBBugPcmFQriqwQtdG5ukrs
+ nP37Ax8Q==;
 Received: from [81.174.171.191] (helo=donbot.metanate.com)
  by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1mpxHV-00007s-A6; Wed, 24 Nov 2021 18:46:09 +0000
+ id 1mpxHX-00007s-5y; Wed, 24 Nov 2021 18:46:11 +0000
 From: John Keeping <john@metanate.com>
 To: linux-mmc@vger.kernel.org
 Cc: John Keeping <john@metanate.com>, Heiko Stuebner <heiko@sntech.de>,
@@ -46,17 +46,17 @@ Cc: John Keeping <john@metanate.com>, Heiko Stuebner <heiko@sntech.de>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
  Ulf Hansson <ulf.hansson@linaro.org>
-Subject: [PATCH 1/4] mmc: dw_mmc: add common capabilities to replace caps
-Date: Wed, 24 Nov 2021 18:45:59 +0000
-Message-Id: <20211124184603.3897245-2-john@metanate.com>
+Subject: [PATCH 3/4] mmc: dw_mmc: rockchip: use common_caps
+Date: Wed, 24 Nov 2021 18:46:01 +0000
+Message-Id: <20211124184603.3897245-4-john@metanate.com>
 X-Mailer: git-send-email 2.34.0
 In-Reply-To: <20211124184603.3897245-1-john@metanate.com>
 References: <20211124184603.3897245-1-john@metanate.com>
 MIME-Version: 1.0
 X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211124_104616_894232_5CEC0B41 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20211124_104616_903515_B09D0424 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,54 +74,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The caps field depends on the mshcN alias ID but for some devices this
-is unnecessary as the capabilities are the same for all instances
-sharing the same compatible.
-
-Add a common_caps field for this case which updates the host's
-capabilities without needing the mshcN alias ID.
+The capabilities for all instances are the same, so use common_caps
+instead of caps/num_caps to remove the dependency on the mshcN device
+tree alias.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/mmc/host/dw_mmc.c | 3 +++
- drivers/mmc/host/dw_mmc.h | 3 +++
- 2 files changed, 6 insertions(+)
+ drivers/mmc/host/dw_mmc-rockchip.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
-index 195f2b2434b0..f2a14a434bef 100644
---- a/drivers/mmc/host/dw_mmc.c
-+++ b/drivers/mmc/host/dw_mmc.c
-@@ -2856,6 +2856,9 @@ static int dw_mci_init_slot_caps(struct dw_mci_slot *slot)
- 	if (host->pdata->pm_caps)
- 		mmc->pm_caps = host->pdata->pm_caps;
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index d36991acd6df..95d0ec0f5f3a 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -300,21 +300,12 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
+ 	return 0;
+ }
  
-+	if (drv_data)
-+		mmc->caps |= drv_data->common_caps;
-+
- 	if (host->dev->of_node) {
- 		ctrl_id = of_alias_get_id(host->dev->of_node, "mshc");
- 		if (ctrl_id < 0)
-diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
-index ce05d81477d9..771d5afa3136 100644
---- a/drivers/mmc/host/dw_mmc.h
-+++ b/drivers/mmc/host/dw_mmc.h
-@@ -550,6 +550,8 @@ struct dw_mci_slot {
-  * dw_mci driver data - dw-mshc implementation specific driver data.
-  * @caps: mmc subsystem specified capabilities of the controller(s).
-  * @num_caps: number of capabilities specified by @caps.
-+ * @common_caps: mmc subsystem specified capabilities applicable to all of
-+ *	the controllers
-  * @init: early implementation specific initialization.
-  * @set_ios: handle bus specific extensions.
-  * @parse_dt: parse implementation specific device tree properties.
-@@ -562,6 +564,7 @@ struct dw_mci_slot {
- struct dw_mci_drv_data {
- 	unsigned long	*caps;
- 	u32		num_caps;
-+	u32		common_caps;
- 	int		(*init)(struct dw_mci *host);
- 	void		(*set_ios)(struct dw_mci *host, struct mmc_ios *ios);
- 	int		(*parse_dt)(struct dw_mci *host);
+-/* Common capabilities of RK3288 SoC */
+-static unsigned long dw_mci_rk3288_dwmmc_caps[4] = {
+-	MMC_CAP_CMD23,
+-	MMC_CAP_CMD23,
+-	MMC_CAP_CMD23,
+-	MMC_CAP_CMD23,
+-};
+-
+ static const struct dw_mci_drv_data rk2928_drv_data = {
+ 	.init			= dw_mci_rockchip_init,
+ };
+ 
+ static const struct dw_mci_drv_data rk3288_drv_data = {
+-	.caps			= dw_mci_rk3288_dwmmc_caps,
+-	.num_caps		= ARRAY_SIZE(dw_mci_rk3288_dwmmc_caps),
++	.common_caps		= MMC_CAP_CMD23,
+ 	.set_ios		= dw_mci_rk3288_set_ios,
+ 	.execute_tuning		= dw_mci_rk3288_execute_tuning,
+ 	.parse_dt		= dw_mci_rk3288_parse_dt,
 -- 
 2.34.0
 
