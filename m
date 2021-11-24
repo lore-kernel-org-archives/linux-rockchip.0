@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0FC0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 18:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 084F6C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 19:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qrkzyXGxkX2gMOHsE3c/Mg692WDx/E6WoFhw0qULgz0=; b=LljCAnsQ/SAIJ3
-	ORV76PjGSs6ngxzSxcXiGLluiHQi8kDNwvycJ4Zl36LmvOV4GpIcEF3aeFcFFrRqeeb1A01s2c5kk
-	3AIB0T2ibNKnSjU8nxRl4tPVyBWOesiHfNZQAgC1NfD3DAikzepHc9m2G9x6LJ+/1ExQNSxEQCLO2
-	f7yQjVLj1+IcWUnrunMJbwIPo/n4Jki2p1frgc2OOUTf8DlwiHgjrf+19YTbYGf43FDoDhoRqxqbQ
-	s+Me440CPvx3MU/Fy3n97EqBhhXtlZ2ULKv23tIIA+/YUf9Jtq/8C2bMK9SobeRnJuG+4keQ3LjAf
-	bkngwMsbkOFvynhR4F7A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M2hftyy2V7l/0i9HGvCjlSwsOOYwfS/eKFrBvPWPs7g=; b=v104bDUb2j19AL
+	uDxDAlZtzIB8+gyEULfYZFvSC7761OUTQASYJyKdl71K7VXdWfoD2fkalFIxhjzlp37xi9wU+j8N0
+	osr9dCVNzXQcXWi5FE81iskEFHriCQbIctkMPiX6OjzKSTerw3+pO/Q3s2t1dZGfA8lYIJlefgBFc
+	OZH/48CIAvTQU7WZAgYGEJyCCUN76YifzGPB4hRPHvm5wheTu/+gpOLxXa7RtHG+2vMbOxddHbaxc
+	RFZXCiC4rBeKbaBiaUy8G9Quz1xR6cPFhEB7bohjEDL9IJQR/wFaYSY1Ao6mBYx8QhV35wOjBlYQ2
+	xjecbThR1tPgoQEPlMJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpxJ8-005Xo4-5g; Wed, 24 Nov 2021 18:47:50 +0000
-Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
+	id 1mpxu1-005fDw-8e; Wed, 24 Nov 2021 19:25:57 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpxHc-005Wzk-Sc; Wed, 24 Nov 2021 18:46:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=metanate.com; s=stronger; h=Content-Transfer-Encoding:Message-Id:Date:
- Subject:Cc:To:From:Content-Type:Reply-To:Content-ID:Content-Description:
- In-Reply-To:References; bh=xdJhRT8gHwOG2GAHSWsFdaRNgcw78JPzju2JYRuISc4=; b=5C
- vNWud1YX5zuJYO41GAoZePSVD0hBMY66VLiNR/FufOmli/Yd6lpBGHYlZVV/XRy5JEkJku/r/uQLJ
- GOLtb8KunPQ8wzsSaSEAKkMgObUhQTxqoOZ0oLNhhwIKMj3AMCNiks0i+5bjzxRy3iv91OZl7MUEO
- 52qxgoJMOZNxo1xPpI7Zp3grW/zUPonyfU7ZZgUJDLoNo3l9IiBIyNUB2oXBO7YFMzO4Spy9Hf+24
- U1PgLEFN13nYo53f1PvjzXtAm8F8gC4Yjb2YTJMyo05i8k6HY0bikZyN5SbGmR9UycZYfITHfv0E1
- PVmL7qQXwIpMJ7Y9UTPVH0TholPkJdkA==;
-Received: from [81.174.171.191] (helo=donbot.metanate.com)
- by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1mpxHU-00007s-C6; Wed, 24 Nov 2021 18:46:08 +0000
-From: John Keeping <john@metanate.com>
-To: linux-mmc@vger.kernel.org
-Cc: John Keeping <john@metanate.com>, Heiko Stuebner <heiko@sntech.de>,
- Jaehoon Chung <jh80.chung@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>
-Subject: [PATCH 0/4] mmc: dw_mmc: start deprecating mshcN aliases
-Date: Wed, 24 Nov 2021 18:45:58 +0000
-Message-Id: <20211124184603.3897245-1-john@metanate.com>
-X-Mailer: git-send-email 2.34.0
+ id 1mpxtg-005f5q-7N
+ for linux-rockchip@lists.infradead.org; Wed, 24 Nov 2021 19:25:37 +0000
+Received: by mail-lf1-x131.google.com with SMTP id r26so9978417lfn.8
+ for <linux-rockchip@lists.infradead.org>; Wed, 24 Nov 2021 11:25:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KeS8gzA/xfPhh34ugNpumxJ4yVD03DKGSAXtYcv0CNY=;
+ b=SAc/SLcjr/Co2yuN16R4GlaVzZSj3SGoLB+z8GEtc5h3aU8zidJIe+uJIfa5Bt3D1m
+ nuadLC4dAavDlWMr1PeQuweQd+2WdTckNNsIconSEReAJErSpN6N4gfv9qVsidgXYX4W
+ DgLzz9OtmsjjUCln49Mp1puk5J/PS0oP5pNQGW6/PODbWKgIQA2683kIWTMVDF2u1GaU
+ zUk/hBrZv/Y5JYpAKGEZV59d7yKkGNXiC8ECZpl5WSyDCfVqbJatNNvZekBqH872CrLv
+ DnkBT6Ag/Y+r1nbhQmm3dynY5ZAPZOqTB78XiVuqR4zUUwyampX0urGluugIt56Dj2tu
+ WlHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KeS8gzA/xfPhh34ugNpumxJ4yVD03DKGSAXtYcv0CNY=;
+ b=W8fuQy9/X/jHY7zgaoYfEAEUF/qlkS36Yqs8QflS5oT8gXc0JYcFDPtmD6KgysfxjJ
+ 5TdsPUn+go0+j4CQn3CgRVyLHRgncXD9u90hDO9pEZ15EXYYGOIcN70unLyBc/6Y8pwg
+ tsLyAqmu52FYcFQJjolQQiJC3Zcq43ozhMx8epmPRbKNj23BLw4Fn3l20ecSNZtD8iTS
+ jIUH65KzdOxrKYtUD2Nl4Qa7GACgUwwjalsavZZV5q/xR9S6bEe5KqVa2OTatvmFnMEi
+ aUKAZk8IU1R25SMSFxBJG1PsHqD+E44Br36BFso1jF3wSBUMXTqNherQR3XEQbv9eAEO
+ GV0A==
+X-Gm-Message-State: AOAM531SnfoVs7Qgo/u6MBUssQGvwj5IL9ksJwXY5DGVivt2lh2HuEB7
+ 47siTR5vrJRMUM7hdjCC6YfTO8Y98R07bwHZUIgLyA==
+X-Google-Smtp-Source: ABdhPJzSEYCURJSiTw//vdik61HAkzTY0+VAOHaDC/VmX4bo1DEpc6xicGzGrpeh42Ukrn7jGcsGzS4EiBrSWD3re9Y=
+X-Received: by 2002:ac2:5a46:: with SMTP id r6mr18103844lfn.358.1637781932136; 
+ Wed, 24 Nov 2021 11:25:32 -0800 (PST)
 MIME-Version: 1.0
-X-Authenticated: YES
+References: <20211124184603.3897245-1-john@metanate.com>
+In-Reply-To: <20211124184603.3897245-1-john@metanate.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 24 Nov 2021 20:24:56 +0100
+Message-ID: <CAPDyKFr=ok3uKXS8bWtZPvyLOeA2cF_4Z2c7ROcoMfBF2G1uhA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] mmc: dw_mmc: start deprecating mshcN aliases
+To: John Keeping <john@metanate.com>
+Cc: linux-mmc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
+ Jaehoon Chung <jh80.chung@samsung.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211124_104617_019622_085B9648 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20211124_112536_306750_EB05DC08 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,37 +86,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series is prompted by discussion on a previous patch set [1] but is
-a totally different approach and only a partial solution.
+On Wed, 24 Nov 2021 at 19:46, John Keeping <john@metanate.com> wrote:
+>
+> This series is prompted by discussion on a previous patch set [1] but is
+> a totally different approach and only a partial solution.
+>
+> With these patches, the dependency on the mshcN alias is totally removed
+> from dw_mmc-hi3798cv200 and dw_mmc-rockchip and dw_mmc-exynos moves
+> towards being able to consider the mshcN aliases deprecated.
+>
+> I haven't changed dw_mci_hi6220_caps here, although it looks like it's
+> possible to apply MMC_CAP_CMD23 to all controllers there with no change
+> in behaviour as the final entry is SDIO for which CMD23 is not
+> applicable IIUC.  But I'm not familiar with that hardware and don't feel
+> confident making that change.
+>
+> [1] https://lore.kernel.org/all/20211116190244.1417591-1-john@metanate.com/
+>
+> John Keeping (4):
+>   mmc: dw_mmc: add common capabilities to replace caps
+>   mmc: dw_mmc: hi3798cv200: use common_caps
+>   mmc: dw_mmc: rockchip: use common_caps
+>   mmc: dw_mmc: exynos: use common_caps
+>
+>  drivers/mmc/host/dw_mmc-exynos.c      |  9 +++++----
+>  drivers/mmc/host/dw_mmc-hi3798cv200.c |  9 +--------
+>  drivers/mmc/host/dw_mmc-rockchip.c    | 11 +----------
+>  drivers/mmc/host/dw_mmc.c             |  3 +++
+>  drivers/mmc/host/dw_mmc.h             |  3 +++
+>  5 files changed, 13 insertions(+), 22 deletions(-)
+>
+> --
+> 2.34.0
+>
 
-With these patches, the dependency on the mshcN alias is totally removed
-from dw_mmc-hi3798cv200 and dw_mmc-rockchip and dw_mmc-exynos moves
-towards being able to consider the mshcN aliases deprecated.
+This looks good to me, I intend to apply this later this week, unless
+objections of course.
 
-I haven't changed dw_mci_hi6220_caps here, although it looks like it's
-possible to apply MMC_CAP_CMD23 to all controllers there with no change
-in behaviour as the final entry is SDIO for which CMD23 is not
-applicable IIUC.  But I'm not familiar with that hardware and don't feel
-confident making that change.
+In the meantime, I will continue to look at what we can do to resolve
+the exynos/k3 issues around this.
 
-[1] https://lore.kernel.org/all/20211116190244.1417591-1-john@metanate.com/
-
-John Keeping (4):
-  mmc: dw_mmc: add common capabilities to replace caps
-  mmc: dw_mmc: hi3798cv200: use common_caps
-  mmc: dw_mmc: rockchip: use common_caps
-  mmc: dw_mmc: exynos: use common_caps
-
- drivers/mmc/host/dw_mmc-exynos.c      |  9 +++++----
- drivers/mmc/host/dw_mmc-hi3798cv200.c |  9 +--------
- drivers/mmc/host/dw_mmc-rockchip.c    | 11 +----------
- drivers/mmc/host/dw_mmc.c             |  3 +++
- drivers/mmc/host/dw_mmc.h             |  3 +++
- 5 files changed, 13 insertions(+), 22 deletions(-)
-
--- 
-2.34.0
-
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
