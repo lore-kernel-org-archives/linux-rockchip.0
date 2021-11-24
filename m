@@ -4,53 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ECFAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 16:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057CEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Nov 2021 18:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tzFEZVa2OhrmKP0u1E+7LR42t6RXTUTx17ySlYkC3M4=; b=mcHuoSVhHcfD9m
-	MkUpotx7PEZY+grvt1cFdxSGKeAfXQtikNt2dxdHLCfkhjOMkQ5MuvX26EGTFDsmR33gP9Pqfti3G
-	haPJLInbI3lYYtjyawsYtOEJ7qVlDY+EgQHOBhwgkPo+Khw5Z2q6f8UdOSfdQx34gmfkS3ReoTe7j
-	s34DckNlpCeSBHnqoXstCSm7oUCs+A7RpKedDgunceVnJmFRB0wMF1oOraG57/q71KcHx5Gnoymub
-	oA8wBFSBxM0iKr4pMbCA5gvredJPay6dDNc8y9LNZFGevxsrKbsbW+fuqhLSg5sI+C6nXvUl6WiQi
-	DkGuuCQsbU5umAHKDLiA==;
+	List-Owner; bh=AHLrOBFUf+VPMER3uJoNnJs+PTWyWYTrcaetvYGXIZY=; b=PDNFxZvUdPcQbL
+	yXx1VxFXfc8H8ZMfQnKRvJydDpj0EU2ZiB2E43n3UBjkNRIXuvsb7wj2VCWZWR4vY6GAkQwtEoHoA
+	KRO7a0uRf7T1dLsVQwl6BH3twqTqEsGTmhmoB4b8BJESiNvxDb2BhVuvW0D36Pdt5ugNLsJLF4cdm
+	JvwKMjY7FtRqa8SPeg5eWS6OnV9StWhUFIm93gmnTAAkD0w4IP2UBMhmJtXJ/nULZ4NPluK2Kn1gK
+	SToqXTLvacTSZskY0yFiW5NXzkrUyCXUvEE8jhru3j6eVs5cFNfXzjJyqFhU7XmvXG9kk8a1EaRUG
+	gws8W0CD5VFzj9fr0dAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpvVd-005Ksp-Pu; Wed, 24 Nov 2021 16:52:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mpxI2-005X7o-JA; Wed, 24 Nov 2021 18:46:42 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpvVN-005Kp6-Ow; Wed, 24 Nov 2021 16:52:23 +0000
-Received: from ip5f5b2004.dynamic.kabel-deutschland.de ([95.91.32.4]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mpvVH-0006PD-AE; Wed, 24 Nov 2021 17:52:15 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Robin Murphy <robin.murphy@arm.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: robh@kernel.org, arnd@linaro.org, ulf.hansson@linaro.org, rjw@rjwysocki.net,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, lukasz.luba@arm.com,
- Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH 2/5] arm64: dts: rockchip: Add powerzones definition for
- rock960
-Date: Wed, 24 Nov 2021 17:52:14 +0100
-Message-ID: <2457824.5MrYSl4YA0@diego>
-In-Reply-To: <f2609d56-f014-3713-8f73-c7ca9c7cba60@linaro.org>
-References: <20211124125506.2971069-1-daniel.lezcano@linaro.org>
- <bf994aa8-df18-22d0-e718-2c8b406a5cc8@arm.com>
- <f2609d56-f014-3713-8f73-c7ca9c7cba60@linaro.org>
+ id 1mpxHc-005Wzt-Qf; Wed, 24 Nov 2021 18:46:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:Reply-To:
+ Content-ID:Content-Description;
+ bh=lPi+Knpu85ApFKN1hCgex6IK5JO2TM11yYvM5Cw66/Q=; b=pZP9IxWd/ronCKzZ+PMeU7SeDb
+ J0PgruqxPg5J0wP8UiFl/ObTGFJUEkvsJZwCn3pvNkMcpFu79fHmpwbQQVm/SXblTukYf6XuyNrIZ
+ jp+mBzUgKVmLQmUegOlYbGBDPTa2U0ewI6JsKnQuz4VmHdNKHNR4/oqBnq+m962kiQBZhV/6b4zrV
+ 0DWX7VcW27BpT7S4JitKKQixs3CwcAJCaqDEL3nPwq3Mm7Mn1LJQqleOwsNNhxDUoWhaP/ssXJLKI
+ +IqHtxtJGaeD1+4TPVRc+vg3Cj+vKFP66rntQ8Fg1AwLqM6cddZr/dWsvSgDpUqqzFUwLUAFPdzWX
+ EbBYb7SA==;
+Received: from [81.174.171.191] (helo=donbot.metanate.com)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1mpxHV-00007s-A6; Wed, 24 Nov 2021 18:46:09 +0000
+From: John Keeping <john@metanate.com>
+To: linux-mmc@vger.kernel.org
+Cc: John Keeping <john@metanate.com>, Heiko Stuebner <heiko@sntech.de>,
+ Jaehoon Chung <jh80.chung@samsung.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: [PATCH 1/4] mmc: dw_mmc: add common capabilities to replace caps
+Date: Wed, 24 Nov 2021 18:45:59 +0000
+Message-Id: <20211124184603.3897245-2-john@metanate.com>
+X-Mailer: git-send-email 2.34.0
+In-Reply-To: <20211124184603.3897245-1-john@metanate.com>
+References: <20211124184603.3897245-1-john@metanate.com>
 MIME-Version: 1.0
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211124_085221_861141_D140BF4F 
-X-CRM114-Status: GOOD (  21.97  )
+X-CRM114-CacheID: sfid-20211124_104616_894232_5CEC0B41 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,93 +74,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 24. November 2021, 17:41:34 CET schrieb Daniel Lezcano:
-> On 24/11/2021 14:49, Robin Murphy wrote:
-> > On 2021-11-24 12:55, Daniel Lezcano wrote:
-> >> Add the powerzones description. This first step introduces the big,
-> >> the little and the gpu as a powerzone place.
-> > 
-> > These look more like SoC-level properties than board-level ones - should
-> > they be in rk3399.dtsi?
-> 
-> Yes, it makes sense
-> 
-> If Heiko is fine with that I can add this description in the rk3399.dtsi
-> file
+The caps field depends on the mshcN alias ID but for some devices this
+is unnecessary as the capabilities are the same for all instances
+sharing the same compatible.
 
-Sure. Robin's suggestion sounds very sensible as these properties are
-quite specific to the soc itself.
+Add a common_caps field for this case which updates the host's
+capabilities without needing the mshcN alias ID.
 
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/mmc/host/dw_mmc.c | 3 +++
+ drivers/mmc/host/dw_mmc.h | 3 +++
+ 2 files changed, 6 insertions(+)
 
-Heiko
-
-> 
-> >> ---
-> >>   .../boot/dts/rockchip/rk3399-rock960.dts      | 45 +++++++++++++++++++
-> >>   1 file changed, 45 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> >> b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> >> index 1a23e8f3cdf6..83540bdb64cd 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
-> >> @@ -61,6 +61,51 @@ bt_active_led: led-6 {
-> >>           };
-> >>       };
-> >>   +    powerzones {
-> >> +
-> >> +        PKG_PZ: pkg {
-> >> +            #powerzone-cells = <0>;
-> >> +                        powerzone = <&SOC_PZ>;
-> >> +        };
-> >> +
-> >> +        SOC_PZ: soc {
-> >> +        };
-> >> +    };
-> >> +};
-> >> +
-> >> +&cpu_b0 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&cpu_b1 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&cpu_l0 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&cpu_l1 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&cpu_l2 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&cpu_l3 {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >> +};
-> >> +
-> >> +&gpu {
-> >> +    #powerzone-cells = <0>;
-> >> +    powerzone = <&PKG_PZ>;
-> >>   };
-> >>     &cpu_alert0 {
-> >>
-> 
-> 
-> 
-
-
-
+diff --git a/drivers/mmc/host/dw_mmc.c b/drivers/mmc/host/dw_mmc.c
+index 195f2b2434b0..f2a14a434bef 100644
+--- a/drivers/mmc/host/dw_mmc.c
++++ b/drivers/mmc/host/dw_mmc.c
+@@ -2856,6 +2856,9 @@ static int dw_mci_init_slot_caps(struct dw_mci_slot *slot)
+ 	if (host->pdata->pm_caps)
+ 		mmc->pm_caps = host->pdata->pm_caps;
+ 
++	if (drv_data)
++		mmc->caps |= drv_data->common_caps;
++
+ 	if (host->dev->of_node) {
+ 		ctrl_id = of_alias_get_id(host->dev->of_node, "mshc");
+ 		if (ctrl_id < 0)
+diff --git a/drivers/mmc/host/dw_mmc.h b/drivers/mmc/host/dw_mmc.h
+index ce05d81477d9..771d5afa3136 100644
+--- a/drivers/mmc/host/dw_mmc.h
++++ b/drivers/mmc/host/dw_mmc.h
+@@ -550,6 +550,8 @@ struct dw_mci_slot {
+  * dw_mci driver data - dw-mshc implementation specific driver data.
+  * @caps: mmc subsystem specified capabilities of the controller(s).
+  * @num_caps: number of capabilities specified by @caps.
++ * @common_caps: mmc subsystem specified capabilities applicable to all of
++ *	the controllers
+  * @init: early implementation specific initialization.
+  * @set_ios: handle bus specific extensions.
+  * @parse_dt: parse implementation specific device tree properties.
+@@ -562,6 +564,7 @@ struct dw_mci_slot {
+ struct dw_mci_drv_data {
+ 	unsigned long	*caps;
+ 	u32		num_caps;
++	u32		common_caps;
+ 	int		(*init)(struct dw_mci *host);
+ 	void		(*set_ios)(struct dw_mci *host, struct mmc_ios *ios);
+ 	int		(*parse_dt)(struct dw_mci *host);
+-- 
+2.34.0
 
 
 _______________________________________________
