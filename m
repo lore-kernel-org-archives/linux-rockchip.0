@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D04DBC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 08:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA7FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 08:49:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=gM6S2ZCpuYUlD8IVbgAlsgNMeF7MhSw16afUJuW4iRM=; b=JUuNUbt6YTJJFdi3FL4KbqaW45
-	chK8ogCfIOzY2DW3kFlxYZp7z8nkEjVdr0zNUiV4bp++TdGk1IYiq6uh1dztdKjxjWHA+3oWRrAOl
-	FM3dPonIjhfmoJDVAPHlrhDiZd+Rg38PuauwQNh/9utdSg411QwVA8eLR2iONlUThHkfd+HhKw0ZS
-	6e4Kshnw/+udeH9/td7FgW1DQTSowpFNHvmpRmD94cVr34pBT7nDJRyJfLkgJECGunOq0B8wCRClZ
-	8a/jZDFPDowBIFaW8Y1YWjNzIsfrcdtp3EH1/RFb/MxALv4LHVvlcrDKl+6gHuC3s+gd2u1SV+KAp
-	9iwntpEg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r44AdEJ++VWjh+ppXElc8T28cAOs7dxvKc+89AcrYEI=; b=FgvLtC2XgzVte6
+	Gx1P56iaROgD9kgf5CCi76XVKzu8hYKX3CXB0BZqSYtdAB8WN4Z58qdoti+wFsSBtm8qO9/KSYDJc
+	7dP0kPGyijejY5OZnCMMcC06NyHHASip3iBAqz07xVcHq/EIpkcB57oZCbc8qCPzTFBlqPTDuoOU+
+	i0Bq9THiST2BuHjl1Yi6TgxDcI5XFw9HK7XQ2dP51QEOUf3sT1c8ED1vGJ1FosAxtn8OyvmSCMnTW
+	KUVzShpepLWOpnNwbaVV9gDnkye7AnrKRxXzxBiUXvr2HHOtKrho1pL8FWWqmB/84nP08xLSgdnTI
+	wGKwag1VES0XMk4CGxkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqAND-006l61-Od; Thu, 25 Nov 2021 08:44:55 +0000
-Received: from lb2-smtp-cloud9.xs4all.net ([2001:888:0:108::2c])
+	id 1mqARU-006ljP-Ox; Thu, 25 Nov 2021 08:49:20 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqAN9-006l4y-Tf
- for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 08:44:53 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id qAN3m651R1HGJqAN7m2pWs; Thu, 25 Nov 2021 09:44:49 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1637829889; bh=lwsKr77FArwR6lJ1Nnqu0OKRhMTMQX8pT5I1Nx81v/s=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=F/0MRKaEesAd9gfaojnhRm3o9PuqQiF385eoewyExkM77AIQ0kJ1fxT1Sgp8r8sCC
- z2qrxOf1F9SSvJs6Nt2qvnPmEAEJJLpnm54JBGm1gwpQs4oloo+v+bby/Edw46Jo6c
- WiUTgErNDxWeYIa3OYFqXsIlzZWvgGUxygioayI+YfEcQK7mhhXeNCkBj9sF4PyKyq
- xDuEEO5OLMyLKG69FHiOvNty0h0jWMhYB9Tp9ia7eWJOOeBC6z9qccZFkCHA+NfkaP
- J+ZbXbHnfYm3JkqQiMKR1TwznO+2Za0TfI3Iuyr6jeOV2M+z0QtUmFcrQrT0j5Fg/m
- xv1Qux7+cIngA==
-Subject: Re: [PATCH] media: hantro: Hook up RK3399 JPEG encoder output
-To: Nicolas Dufresne <nicolas@ndufresne.ca>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20211119074654.470729-1-wenst@chromium.org>
- <5d23258a954eb0076cacf89d6c88b5e6ef13695f.camel@ndufresne.ca>
- <CAGXv+5Gf-gsB7JXnLiZF_R=0RdxXS7CDZaFftyZ+aESXLXy1Ew@mail.gmail.com>
- <85e9830ff0c2ed5eb77ce52ec7fde82a08368a2a.camel@ndufresne.ca>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <41d75ec1-b3b6-b991-33f0-7188869eb59c@xs4all.nl>
-Date: Thu, 25 Nov 2021 09:44:45 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.14.0
+ id 1mqARL-006lhq-2i; Thu, 25 Nov 2021 08:49:12 +0000
+Received: by mail-wr1-x431.google.com with SMTP id i5so9980420wrb.2;
+ Thu, 25 Nov 2021 00:49:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZXv6Jzb5SFH68Jd64JT8apKFHuvDqOPlffO+TYcXQtY=;
+ b=AKRvG4+UulX55UiCC4Ng2Y9uoNqhfPYcCi3MxdkcQcSh9t2XdvQPlFSiYo7kp9KOaA
+ vvb9cO7nAW/USZk/WGRayw38aBwAtKryDbHIfbAfBKmOJB5g2CJqGRIYkj1ko/tGe1am
+ q2WwM62+cu5GHhCqmBAW7GA9DMz5MW0iUG4XS+rS3CavVHe0AeuEvbBZqva7pFMw5mYm
+ IkN0DAs3yNwJCjSKSxSr3k/fo2k0qxZFPij0x0JRfMbxBsAyDAZWEX5c/OW323+9di+Q
+ ZKJNGOoi41yRwO4rksbjNqAISCbmVllXH5uenpiYsupVL3EIvm4uaZz1WCHZraadHmsD
+ O2LA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZXv6Jzb5SFH68Jd64JT8apKFHuvDqOPlffO+TYcXQtY=;
+ b=FfVz6vOPq2hcGOrsZO9HrsPkmOAvImIyTfDOp2xDK/1+hfhcSbsNQgU/tsHg6598eO
+ G6PgIDpQrxxabp0QOEMm+goMGD+nCs+G9eJ6AlrHtU5Feb8QpfnYPrJRildgstwFl2w0
+ zolmEE71svPNrc0RSLr7rz6xEuErOZOXy9jh6tMbZKzPY5aSkdzs7m1Vp9CoaQuEM0es
+ avFjW0utpAA8BPcc42Ox0B1+OOzpgnxJUlu0t1NbT2zJjCM5z9e2rO+yDTEASdZjPga3
+ vRRtArF9uEGAZ9d+b3AkWDmu8fUhG4LLIQHZSolNYXJDPI73AUubLejXOiegU8SuHl87
+ So0w==
+X-Gm-Message-State: AOAM531ebJDdDhF8EB7UZG6R4cnoSbFhyTdXybR3egkVYL2T3bkg+ITd
+ VxNxTRIqCUO6F4iCUMJWC1lH3RXC6wE=
+X-Google-Smtp-Source: ABdhPJwTZldI+270r7Sfhiuta0uUF9IWR/ikPaEuYdnjLEVCqRPB6BDiHGPszf3aY+c1uwUzTakBDw==
+X-Received: by 2002:a5d:64ea:: with SMTP id g10mr4866677wri.242.1637830149421; 
+ Thu, 25 Nov 2021 00:49:09 -0800 (PST)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id m1sm2290568wme.39.2021.11.25.00.49.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Nov 2021 00:49:08 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v3] ASoC: rockchip: i2s_tdm: Dup static DAI template
+Date: Thu, 25 Nov 2021 09:48:59 +0100
+Message-Id: <20211125084900.417102-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
-In-Reply-To: <85e9830ff0c2ed5eb77ce52ec7fde82a08368a2a.camel@ndufresne.ca>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfPq/gDjwsOnpUfhjx4+PkATU+2KVcCHyUa6STjsIrmw7KiLNj2dEomLAQHepTcySgRGrW2QQip808Mr1BCj42l/U1wt2H/qSUJ72BX2QU97vUbjMYZfJ
- xTBW+Cwz59QoWW+Ke0I94s56cuO1qcXD2z1LO0KJy4cinnN1pTb+0Zn8T9rwmWDc7A44IJhmnPRsIhBA/88fZhLHu2pX/5JoD2GFetvrZHL2fFBYyOikF3+f
- RAtNrcjNab/cdNiHaV4jAgQHYaLHEiHAaqWUqPjCbKfDkZsp5QTrms3I8MAqd4g6yyJYg9e5Kyb0XyIIJVJ0pi5LYlqnlcYl3HfYWqOMm0IgM/07INsysi5H
- HaGdxZryUPVdm2QaIbUjXtAZJHwB1c/IRoVGep1sQIt1DKze+MIfq35rMDY6AUTTsJFG8Rp0lKQhjdchDwyjHsdWCwaB5YLQgA0/e0mygZklIBacwDP43hSM
- IJzl8TtIgm8M8z3MvyTbhLb+nDxhSbfkYQlHn/PtxFLiMGhjFaekjUy2DL0UT6B63jWJ1f+8sdN8P4yp
+X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_004452_414706_CFBE2447 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20211125_004911_178862_0D1E2A5F 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +85,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjMvMTEvMjAyMSAyMDozOSwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBMZSBsdW5kaSAy
-MiBub3ZlbWJyZSAyMDIxIMOgIDExOjU3ICswODAwLCBDaGVuLVl1IFRzYWkgYSDDqWNyaXTCoDoK
-Pj4gT24gU2F0LCBOb3YgMjAsIDIwMjEgYXQgMTI6MDAgQU0gTmljb2xhcyBEdWZyZXNuZSA8bmlj
-b2xhc0BuZHVmcmVzbmUuY2E+IHdyb3RlOgo+Pj4KPj4+IExlIHZlbmRyZWRpIDE5IG5vdmVtYnJl
-IDIwMjEgw6AgMTU6NDYgKzA4MDAsIENoZW4tWXUgVHNhaSBhIMOpY3JpdCA6Cj4+Pj4gVGhlIEpQ
-RUcgZW5jb2RlciBmb3VuZCBpbiB0aGUgSGFudHJvIEgxIGVuY29kZXIgYmxvY2sgb25seSBwcm9k
-dWNlcyBhCj4+Pj4gcmF3IGVudHJvcHktZW5jb2RlZCBzY2FuLiBUaGUgZHJpdmVyIGlzIHJlc3Bv
-bnNpYmxlIGZvciBidWlsZGluZyBhIEpQRUcKPj4+PiBjb21wbGlhbnQgYml0c3RyZWFtIGFuZCBw
-bGFjaW5nIHRoZSBlbnRyb3B5LWVuY29kZWQgc2NhbiBpbiBpdC4gUmlnaHQKPj4+PiBub3cgdGhl
-IGRyaXZlciB1c2VzIGEgYm91bmNlIGJ1ZmZlciBmb3IgdGhlIGhhcmR3YXJlIHRvIG91dHB1dCB0
-aGUgcmF3Cj4+Pj4gc2NhbiB0by4KPj4+Pgo+Pj4+IEluIGNvbW1pdCBlNzY1ZGJhMTFlYzIgKCJo
-YW50cm86IE1vdmUgaGFudHJvX2VuY19idWZfZmluaXNoIHRvIEpQRUcKPj4+PiBjb2RlY19vcHMu
-ZG9uZSIpLCB0aGUgY29kZSB0aGF0IGNvcGllcyB0aGUgcmF3IHNjYW4gZnJvbSB0aGUgYm91bmNl
-Cj4+Pj4gYnVmZmVyIHRvIHRoZSBjYXB0dXJlIGJ1ZmZlciB3YXMgbW92ZWQsIGJ1dCB3YXMgb25s
-eSBob29rZWQgdXAgZm9yIHRoZQo+Pj4+IEhhbnRybyBIMSAodGhlbiBSSzMyODgpIHZhcmlhbnQu
-IFRoZSBSSzMzOTkgdmFyaWFudCB3YXMgYnJva2VuLAo+Pj4+IHByb2R1Y2luZyBhIEpQRUcgYml0
-c3RyZWFtIHdpdGhvdXQgdGhlIHNjYW4sIGFuZCB0aGUgY2FwdHVyZSBidWZmZXIncwo+Pj4+IC5i
-eXRlc3VzZWQgZmllbGQgdW5zZXQuCj4+Pj4KPj4+PiBGaXggdGhpcyBieSBkdXBsaWNhdGluZyB0
-aGUgY29kZSB0aGF0IGlzIGV4ZWN1dGVkIHdoZW4gdGhlIEpQRUcgZW5jb2Rlcgo+Pj4+IGZpbmlz
-aGVzIGVuY29kaW5nIGEgZnJhbWUuIEFzIHRoZSBlbmNvZGVkIGxlbmd0aCBpcyByZWFkIGJhY2sg
-ZnJvbQo+Pj4+IGhhcmR3YXJlLCBhbmQgdGhlIHZhcmlhbnRzIGhhdmluZyBkaWZmZXJlbnQgcmVn
-aXN0ZXIgbGF5b3V0cywgdGhlCj4+Pj4gY29kZSBpcyBkdXBsaWNhdGVkIHJhdGhlciB0aGFuIHNo
-YXJlZC4KPj4+Pgo+Pj4+IEZpeGVzOiBlNzY1ZGJhMTFlYzIgKCJoYW50cm86IE1vdmUgaGFudHJv
-X2VuY19idWZfZmluaXNoIHRvIEpQRUcgY29kZWNfb3BzLmRvbmUiKQo+Pj4+IFNpZ25lZC1vZmYt
-Ynk6IENoZW4tWXUgVHNhaSA8d2Vuc3RAY2hyb21pdW0ub3JnPgo+Pj4+IC0tLQo+Pj4+IFRoaXMg
-d2FzIGRldmVsb3BlZCBvbiB0aGUgZG93bnN0cmVhbSBDaHJvbWVPUyA1LjEwIGtlcm5lbCAod2l0
-aCBhIGhhY2sKPj4+PiBmb3IgLmRhdGFfb2Zmc2V0KSBhbmQgdGVzdGVkIHdpdGggQ2hyb21lT1Mn
-cyBqcGVnX2VuY29kZV9hY2NlbGVyYXRvcl91bml0dGVzdAo+Pj4+IHBhdGNoZWQgdG8gYWNjZXB0
-IG5vbi1KRklGIEpQRUcgc3RyZWFtcyAoaHR0cHM6Ly9jcnJldi5jb20vYy8zMjkxNDgwKS4KPj4+
-Pgo+Pj4+IFRoaXMgd2FzIHRoZW4gZm9yd2FyZC1wb3J0ZWQgdG8gbWFpbmxpbmUgKG5hbWUgYW5k
-IGZpbGVuYW1lIGNoYW5nZXMpIGFuZAo+Pj4+IGNvbXBpbGUgdGVzdGVkIG9ubHkuCj4+Pgo+Pj4g
-VGVzdGVkIHdpdGggR1N0cmVhbWVyIG9uIHRvcCBvZiA1LjE2LXJjMSBmcm9tIG1lZGlhX3N0YWdl
-LmdpdC4gTm90IHBlcmZlY3QgYnV0Cj4+PiBhdCBsZWFzdCB0aGUgdGhlIG91dHB1dCBpdCB2YWxp
-ZC4gVGVzdCBjb21tYW5kIHdhczoKPj4+Cj4+PiAgIGdzdC1sYXVuY2gtMS4wIHZpZGVvdGVzdHNy
-YyBudW0tYnVmZmVycz0yICEgdjRsMmpwZWdlbmMgISBmaWxlc2luawo+Pj4gbG9jYXRpb249dGVz
-dC5qcGcKPj4+Cj4+PiBOb3RpY2UgdGhhdCBJIGVuY29kZSB0d28gZnJhbWVzLCBpdCBzZWVtcyBs
-aWtlIHRoZSBkcmFpbmluZyBmbG93IGlzIGJyb2tlbiBpbgo+Pj4gdGhpcyBkcml2ZXIuIEdTdHJl
-YW1lciB3aWxsIHF1ZXVlIHRoZSBmcmFtZSBhbmQgaXNzdWUgQ01EX1NUQVJUIGltbWVkaWF0ZWx5
-LCB0aGUKPj4+IGRyaXZlciB3aWxsIHNraXAgdGhlIGVuY29kZSwgbGVhdmluZyBtZSB3aXRoIGFu
-IGVtcHR5IGZpbGUuCj4+Cj4+IFRoZSBoYW50cm8gZHJpdmVyIGRvZXNuJ3QgaW1wbGVtZW50IEVO
-Q19DTUQsIHdoaWNoIElJUkMgaXMgdXNlZCBmb3IgdGhlCj4+IGRyYWluaW5nIGZsb3cuIEkgZ3Vl
-c3MgdGhhdCdzIHNvbWV0aGluZyB0byBmaXgsIHNpbmNlIHRoZSBtZW0ybWVtIHN0YXRlZnVsCj4+
-IGVuY29kZXIgc3BlYyBzZWVtcyB0byByZXF1aXJlIGl0LiBPciBkb2VzIHRoYXQgc3BlYyBub3Qg
-YXBwbHkgdG8gdGhlIEpQRUcKPj4gZW5jb2RlcnM/Cj4gCj4gSSdtIHByZXR0eSBzdXJlIGl0cyBy
-ZXF1aXJlZC4gQnV0IHRoaXMgaXNuJ3QgYSByZWdyZXNzaW9uIGZyb20gdGhpcyBwYXRjaC4KCkkg
-ZG9uJ3QgdGhpbmsgaXQgaXMgcmVxdWlyZWQgZm9yIEpQRUcgZW5jb2RlcnMgdG9kYXkuIEVhY2gg
-ZnJhbWUgaXMgaW5kZXBlbmRlbnQgb2YKYW55IG90aGVyLCBzbyBpdCBiZWhhdmVzIGp1c3QgbGlr
-ZSBhIG0ybSBzY2FsZXIgZm9yIGV4YW1wbGUuCgpJdCBkb2Vzbid0IGh1cnQgdG8gc3VwcG9ydCBp
-dCwgYnV0IGl0IHNob3VsZG4ndCBiZSBuZWNlc3NhcnkgZm9yIGpwZWcgY29kZWNzLgoKSWYgdGhl
-cmUgaXMgYSByZWFzb24gd2h5IHRoaXMgaXMgbmVlZGVkLCB0aGVuIGl0IHdvdWxkIGxpa2VseSBh
-bHNvIGJlIG5lZWRlZCBmb3IKbTJtIGRldmljZXMgbGlrZSBzY2FsZXJzLgoKUmVnYXJkcywKCglI
-YW5zCgo+IAo+Pgo+Pj4gVGVzdGVkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJl
-c25lQGNvbGxhYm9yYS5jb20+Cj4+Cj4+IFRoYW5rcyEKPj4KPj4gQ2hlbll1Cj4gCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Previously, the DAI template was used directly, which lead to
+fun bugs such as "why is my channels_max changing?" when one
+instantiated more than one i2s_tdm IP block in a device tree.
+
+This change makes it so that we instead duplicate the template
+struct, and then use that.
+
+Fixes: 081068fd6414 ("ASoC: rockchip: add support for i2s-tdm controller")
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+
+Changes in v3:
+ - constify the i2s_tdm_dai struct
+ - remove remaining direct i2s_tdm_dai uses
+ - move symmetric_rate setting to _init_dai
+ - store pointer to dai struct in rk_i2s_tdm_dev struct
+
+Changes in v2:
+ - remove accidental whitespace changes
+
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 52 ++++++++++++++++-----------
+ 1 file changed, 31 insertions(+), 21 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 17b9b287853a..5f9cb5c4c7f0 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -95,6 +95,7 @@ struct rk_i2s_tdm_dev {
+ 	spinlock_t lock; /* xfer lock */
+ 	bool has_playback;
+ 	bool has_capture;
++	struct snd_soc_dai_driver *dai;
+ };
+ 
+ static int to_ch_num(unsigned int val)
+@@ -1310,19 +1311,14 @@ static const struct of_device_id rockchip_i2s_tdm_match[] = {
+ 	{},
+ };
+ 
+-static struct snd_soc_dai_driver i2s_tdm_dai = {
++static const struct snd_soc_dai_driver i2s_tdm_dai = {
+ 	.probe = rockchip_i2s_tdm_dai_probe,
+-	.playback = {
+-		.stream_name  = "Playback",
+-	},
+-	.capture = {
+-		.stream_name  = "Capture",
+-	},
+ 	.ops = &rockchip_i2s_tdm_dai_ops,
+ };
+ 
+-static void rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
++static int rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
+ {
++	struct snd_soc_dai_driver *dai;
+ 	struct property *dma_names;
+ 	const char *dma_name;
+ 	u64 formats = (SNDRV_PCM_FMTBIT_S8 | SNDRV_PCM_FMTBIT_S16_LE |
+@@ -1337,19 +1333,33 @@ static void rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
+ 			i2s_tdm->has_capture = true;
+ 	}
+ 
++	dai = devm_kmemdup(i2s_tdm->dev, &i2s_tdm_dai,
++			   sizeof(*dai), GFP_KERNEL);
++	if (!dai)
++		return -ENOMEM;
++
+ 	if (i2s_tdm->has_playback) {
+-		i2s_tdm_dai.playback.channels_min = 2;
+-		i2s_tdm_dai.playback.channels_max = 8;
+-		i2s_tdm_dai.playback.rates = SNDRV_PCM_RATE_8000_192000;
+-		i2s_tdm_dai.playback.formats = formats;
++		dai->playback.stream_name  = "Playback";
++		dai->playback.channels_min = 2;
++		dai->playback.channels_max = 8;
++		dai->playback.rates = SNDRV_PCM_RATE_8000_192000;
++		dai->playback.formats = formats;
+ 	}
+ 
+ 	if (i2s_tdm->has_capture) {
+-		i2s_tdm_dai.capture.channels_min = 2;
+-		i2s_tdm_dai.capture.channels_max = 8;
+-		i2s_tdm_dai.capture.rates = SNDRV_PCM_RATE_8000_192000;
+-		i2s_tdm_dai.capture.formats = formats;
++		dai->capture.stream_name  = "Capture";
++		dai->capture.channels_min = 2;
++		dai->capture.channels_max = 8;
++		dai->capture.rates = SNDRV_PCM_RATE_8000_192000;
++		dai->capture.formats = formats;
+ 	}
++
++	if (i2s_tdm->clk_trcm != TRCM_TXRX)
++		dai->symmetric_rate = 1;
++
++	i2s_tdm->dai = dai;
++
++	return 0;
+ }
+ 
+ static int rockchip_i2s_tdm_path_check(struct rk_i2s_tdm_dev *i2s_tdm,
+@@ -1541,8 +1551,6 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
+ 	spin_lock_init(&i2s_tdm->lock);
+ 	i2s_tdm->soc_data = (struct rk_i2s_soc_data *)of_id->data;
+ 
+-	rockchip_i2s_tdm_init_dai(i2s_tdm);
+-
+ 	i2s_tdm->frame_width = 64;
+ 
+ 	i2s_tdm->clk_trcm = TRCM_TXRX;
+@@ -1555,8 +1563,10 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
+ 		}
+ 		i2s_tdm->clk_trcm = TRCM_RX;
+ 	}
+-	if (i2s_tdm->clk_trcm != TRCM_TXRX)
+-		i2s_tdm_dai.symmetric_rate = 1;
++
++	ret = rockchip_i2s_tdm_init_dai(i2s_tdm);
++	if (ret)
++		return ret;
+ 
+ 	i2s_tdm->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
+ 	if (IS_ERR(i2s_tdm->grf))
+@@ -1678,7 +1688,7 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
+ 
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+ 					      &rockchip_i2s_tdm_component,
+-					      &i2s_tdm_dai, 1);
++					      i2s_tdm->dai, 1);
+ 
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Could not register DAI\n");
+-- 
+2.34.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
