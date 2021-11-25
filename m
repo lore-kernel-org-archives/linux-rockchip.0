@@ -4,77 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0065BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 13:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6597C4332F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 15:25:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oUHfhkceVH86cMSDyJVq/M2eg7MI2eDmzTcAKKV4CUM=; b=VSchuqkDFHug2y
-	xxxyT2aHWk1t91+OAWNEy3o++rsUc6YRqgXhpeTHI5KwzSh0LYwnzzAzRpC7KH4vE7ugdMOoU+INN
-	wRzrBAKkXeme9m8E60HiBPY2Jy5fL3LX/MSdke0Y0SLiTynEZzlzrnkihiirMGkCPk/hzghJh3vsV
-	75kWxNyb4ATFwar5S+3aCjd5upWFKFL0ud+MbJCMQ39khf+IvfLOxrvqPDju0l62YltIY3QczjbIN
-	ZKkW/nXurWSW1yz3a2OSc9bSamxxwDBtb0aDA93JJIy9VJVK5z+Mxo5BHXT3J5u0TigTvCmd+t0ny
-	70aKJDFQPYxVZf4LRq4Q==;
+	List-Owner; bh=ai1B1RdBvYGSyKKijSBVIf2cfJQJbvS9+HHL/ZF2bIM=; b=U3dpO20ITSuUFg
+	0RYu6bBvCEiuwKhguVMooTIJAFlYlf0J0Sc24jrpZjNM/H0pPEjw+fk53cgmo40KFZFmHBYhZCubH
+	UjA7YX6E2iYBo04zCSiHF9I5pMEHkgQQgnJdau35QA0ldYRqoqdUbDYCbYbJqgMLCGLgTM32066RH
+	mbDQhOZrO00gPKPpgWaCvBLMv0OmkRS8pLmznGRavGdf3GdlEBqqf3txof8lELLjmJSvl7wSYKxy7
+	qN/N2BwJd5rdPfNb36cGAp1X7DqjRtkq5aLEJWVPlwWVwBkOf5x6vDtZuZ9QpLsW6AdcNWn/0/2iO
+	AHakFOT81LtDu7nEiIgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqEj6-007e4q-OX; Thu, 25 Nov 2021 13:23:48 +0000
-Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
+	id 1mqGcc-0080D8-1Y; Thu, 25 Nov 2021 15:25:14 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqEj3-007e3Z-KM
- for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 13:23:47 +0000
-Received: by mail-ua1-x92a.google.com with SMTP id j14so12198502uan.10
- for <linux-rockchip@lists.infradead.org>; Thu, 25 Nov 2021 05:23:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=pD+qJk3r29qPwzJLYfks/oabSI7Y6YhNSM12M9kudsA=;
- b=J8uByjrN3pIMyLs+oh8F1h51AEiVYGcn/jk6MaCawLgGb4CapJzoFhR0hQKkiQWrEh
- xKIta24WH4WpCzvI7EIBkg+W6diz1AMrs5Nh5DWnQ17/D1qf7KcJlWZydHbexMjaU0FZ
- 6cO8NeT+7ZFSfHD3SUwtJ2YpxDY9gtwdnbcM+LqO2cSdDvD0pxxXL7jQHFJFJtFlpW78
- EXpF6w7NvojJcmLBeousUkR+ZeJtQR0X35kMvVAuQ/xzdDhW73D7FpwNWjgCLvULsJY1
- sEM8l0tNEuPJIsEtq7GxesgoWAZ1LHRcd6g6qsstxazhIP3WaJQ6ie4vvUpt4+Cqu0ic
- sGig==
+ id 1mqGcZ-0080Bq-N1
+ for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 15:25:13 +0000
+Received: by mail-wr1-x434.google.com with SMTP id b12so12443859wrh.4
+ for <linux-rockchip@lists.infradead.org>; Thu, 25 Nov 2021 07:25:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:mail-followup-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bgokrwfXdRB9SClU9n/nKdZVyUcKPx1fDzLulUzJIPU=;
+ b=BktAf1OS+eudDpfgrdZDTSFFMA7Yx1oBn5NMzdoU7qIo8aNQ9mok4e2egctvZU1mko
+ URk5CsZF+wfaS2PBAqP0GONNNyChiLkL+Cn3nlkbJubQzzbvN+ZxhxMH6RQhCRyrTmWO
+ zzBIJ4Mhg0tjItLDamKowUeOk7aREzY9Rg5Nw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=pD+qJk3r29qPwzJLYfks/oabSI7Y6YhNSM12M9kudsA=;
- b=hi/VceVqDfBdXx9vDZ34On8guQjo7tqPS1mJmiL/TklTfnrMiwqG+gq2ZJyamzvSOg
- o0DSDlZiHQcaievPTj07tbJGXP482IUp2hkqPUiDN8y1g0VZz8+DAAndTOYS6S2xD46X
- BV9zUas50U2bOXigwucctGPlhGeAIx9ZtglBybVEBoaMJg3Z/Ey2Qy5WxRvg9fZwHYSy
- TeBg/rucd1xuDhD5tZ7Y84Z0DKpZ6ARd9v4kY+6f7vg6nrGRFKA7sEOsgJRuXROTc+/g
- S9UDXrlZlEkiTs5Np8Q+4rM/llsEw1bBa27v+wh+rKlfgYuZk/7uJz+lIOb8zdRsxQqR
- cy8Q==
-X-Gm-Message-State: AOAM533yKh+Te6kOIN/2nVnF4XFP4OwUCNOy3y8Tcm+KY3+v52nmW+/w
- HL7Tkhct5XCFqVEP/CNF1z3sLg==
-X-Google-Smtp-Source: ABdhPJzRdO7QoZ3b2O8Hj0UdN3JVKR91c4TnqnGBSgCpEcjeZkf5dyufcKOuzsSpQNPw3BaQ4UsNCQ==
-X-Received: by 2002:a67:2fd0:: with SMTP id v199mr8700734vsv.35.1637846618499; 
- Thu, 25 Nov 2021 05:23:38 -0800 (PST)
-Received: from eze-laptop (host208.201-253-22.telecom.net.ar. [201.253.22.208])
- by smtp.gmail.com with ESMTPSA id q9sm1674052vkn.44.2021.11.25.05.23.35
+ h=x-gm-message-state:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to;
+ bh=bgokrwfXdRB9SClU9n/nKdZVyUcKPx1fDzLulUzJIPU=;
+ b=WsMZ0dKsW9bWgUY2aJi13GhcCXCX1L5QPaKX1l6qvQbGu/Za7Z11Zf4e0Zp5Ni8Dot
+ OdMcv7jUHFhPl4r0Pn5qIJdRDMhAnyVxx/jutRj0qw7MOeAVDiXUITBiri8aoL5vxy0j
+ KZO6IH9feEtwtIZ5p7lAYVrvVPpfpdFZBiRd8ZKhDDZiWs1c+GNJ8KpP9ZQsKLXjiU67
+ kjZOkdaak8ZVb+wD6CIG0lE4tnOEayaPcJu7M0dyfU0EIaHt1fW8hVirOfHhg/pNXwmZ
+ c+j4znaYTBsNYM+lZw3hwO2zG1H+dEEu5o8AmeSFtmXAhRfStvTNXCcyU3+lossIImK5
+ odKg==
+X-Gm-Message-State: AOAM531dCc8TUSlGrRRfe9vWkitoVFUFJbNsPcSIqFqTUT5LNT3x0wUn
+ 8vAaJ0HE1y6iaBt+qK5Useyyxw==
+X-Google-Smtp-Source: ABdhPJwe8pptmsJdDF9M6JUSyrscCdaDaxsY8JQgVcoGOgo8XjGLEdr1e+oL4tgyhJgNNAWjvV0HCw==
+X-Received: by 2002:a5d:6111:: with SMTP id v17mr7637482wrt.512.1637853908242; 
+ Thu, 25 Nov 2021 07:25:08 -0800 (PST)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id bg12sm4220870wmb.5.2021.11.25.07.25.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Nov 2021 05:23:37 -0800 (PST)
-Date: Thu, 25 Nov 2021 10:23:32 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: hantro: Hook up RK3399 JPEG encoder output
-Message-ID: <YZ+OVEKrvsbbQrjn@eze-laptop>
-References: <20211119074654.470729-1-wenst@chromium.org>
+ Thu, 25 Nov 2021 07:25:07 -0800 (PST)
+Date: Thu, 25 Nov 2021 16:25:05 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Doug Anderson <dianders@chromium.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Rob Clark <robdclark@gmail.com>, linux-input@vger.kernel.org,
+ Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <YZ+q0ZlIRoq4nZMl@phenom.ffwll.local>
+Mail-Followup-To: Brian Norris <briannorris@chromium.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Doug Anderson <dianders@chromium.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Rob Clark <robdclark@gmail.com>, linux-input@vger.kernel.org,
+ Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org
+References: <20211117224841.3442482-1-briannorris@chromium.org>
+ <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <YZYXR4u6VBEi4qnM@phenom.ffwll.local> <YZap4zKo8D5eZc1y@google.com>
+ <YZd17jm5Nkfu5YRO@phenom.ffwll.local> <YZf15Ir0LDjkYNF2@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211119074654.470729-1-wenst@chromium.org>
+In-Reply-To: <YZf15Ir0LDjkYNF2@google.com>
+X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_052345_891772_E3CC5F82 
-X-CRM114-Status: GOOD (  28.06  )
+X-CRM114-CacheID: sfid-20211125_072511_782745_69313809 
+X-CRM114-Status: GOOD (  37.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,134 +111,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+On Fri, Nov 19, 2021 at 11:07:16AM -0800, Brian Norris wrote:
+> Hi Daniel,
+> 
+> On Fri, Nov 19, 2021 at 11:01:18AM +0100, Daniel Vetter wrote:
+> > On Thu, Nov 18, 2021 at 11:30:43AM -0800, Brian Norris wrote:
+> > > On Thu, Nov 18, 2021 at 10:05:11AM +0100, Daniel Vetter wrote:
+> > > > On Wed, Nov 17, 2021 at 02:48:40PM -0800, Brian Norris wrote:
+> > > > > --- a/drivers/gpu/drm/Kconfig
+> > > > > +++ b/drivers/gpu/drm/Kconfig
+> > > > > @@ -79,9 +79,15 @@ config DRM_DEBUG_SELFTEST
+> > > > >  
+> > > > >  	  If in doubt, say "N".
+> > > > >  
+> > > > > +config DRM_INPUT_HELPER
+> > > > > +	def_bool y
+> > > > > +	depends on DRM_KMS_HELPER
+> > > > > +	depends on INPUT
+> > > > 
+> > > > Uh please no configs for each thing, it just makes everything more
+> > > > complex. Do we _really_ need this?
+> > > 
+> > > First, it's not a configurable option (a user will never see this nor
+> > > have to answer Y/N to it); it only serves as an intermediary to express
+> > > the CONFIG_INPUT dependency (which is necessary) without making
+> > > DRM_KMS_HELPER fully depend on CONFIG_INPUT. (We should be able to run
+> > > display stacks without the input subsystem.)
+> > 
+> > I'm not so much worried about the user cost, but the maintenance cost.
+> > Kbuild config complexity is ridiculous, anything that adds even a bit is
+> > really silly.
+> > 
+> > > The closest alternative I can think of with fewer Kconfig symbols is to
+> > > just use CONFIG_INPUT directly in the code, to decide whether to provide
+> > > the helpers or else just stub them out. But that has a problem of not
+> > > properly expressing the =m vs. =y necessity: if, for example,
+> > > CONFIG_DRM_KMS_HELPER=y and CONFIG_INPUT=m, then we'll have linker
+> > > issues.
+> > 
+> > Usually this is done by providing static inline dummy implementations in
+> > the headers. That avoids having to sprinkle new Kconfig symbols all over.
+> 
+> Right, I already did that, and I'm not sprinkling
+> CONFIG_DRM_INPUT_HELPER much. (I do include one around the module
+> parameter, because it doesn't make much sense to have the module
+> parameter even exist, if the underlying feature is stubbed out.)
+> 
+> But that doesn't solve the problem in my last sentence, involving
+> tristates. The "stub inline" approach only works well for boolean
+> features -- either built-in, or disabled. Once your feature is in a
+> module, you need to ensure that no built-in code depends on it.
+> 
+> Do you want DRM_KMS_HELPER to unconditionally depend on CONFIG_INPUT? If
+> so, I can just add a 'select' or 'depend' and drop this intermediate
+> symbol.
+> If not, then what do you expect to happen with DRM_KMS_HELPER=y and
+> CONFIG_INPUT=m?
 
-On Fri, Nov 19, 2021 at 03:46:54PM +0800, Chen-Yu Tsai wrote:
-> The JPEG encoder found in the Hantro H1 encoder block only produces a
-> raw entropy-encoded scan. The driver is responsible for building a JPEG
-> compliant bitstream and placing the entropy-encoded scan in it. Right
-> now the driver uses a bounce buffer for the hardware to output the raw
-> scan to.
-> 
-> In commit e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG
-> codec_ops.done"), the code that copies the raw scan from the bounce
-> buffer to the capture buffer was moved, but was only hooked up for the
-> Hantro H1 (then RK3288) variant. The RK3399 variant was broken,
-> producing a JPEG bitstream without the scan, and the capture buffer's
-> .bytesused field unset.
-> 
-> Fix this by duplicating the code that is executed when the JPEG encoder
-> finishes encoding a frame. As the encoded length is read back from
-> hardware, and the variants having different register layouts, the
-> code is duplicated rather than shared.
-> 
-> Fixes: e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG codec_ops.done")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Yeah just add the dependency. If you still want to keep it optional the
+way to do it is to add
 
-Thanks a lot for fixing this.
+	depends on FOO || FOO=n
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-
-> ---
-> This was developed on the downstream ChromeOS 5.10 kernel (with a hack
-> for .data_offset) and tested with ChromeOS's jpeg_encode_accelerator_unittest
-> patched to accept non-JFIF JPEG streams (https://crrev.com/c/3291480).
-> 
-> This was then forward-ported to mainline (name and filename changes) and
-> compile tested only.
-> 
-> ---
->  .../staging/media/hantro/hantro_h1_jpeg_enc.c   |  2 +-
->  drivers/staging/media/hantro/hantro_hw.h        |  3 ++-
->  .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c    | 17 +++++++++++++++++
->  drivers/staging/media/hantro/rockchip_vpu_hw.c  |  5 +++--
->  4 files changed, 23 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> index 56cf261a8e95..9cd713c02a45 100644
-> --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> @@ -140,7 +140,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
->  	return 0;
->  }
->  
-> -void hantro_jpeg_enc_done(struct hantro_ctx *ctx)
-> +void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx)
->  {
->  	struct hantro_dev *vpu = ctx->dev;
->  	u32 bytesused = vepu_read(vpu, H1_REG_STR_BUF_LIMIT) / 8;
-> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> index 267a6d33a47b..60d4602d33ed 100644
-> --- a/drivers/staging/media/hantro/hantro_hw.h
-> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> @@ -239,7 +239,8 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
->  int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx);
->  int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
->  void hantro_jpeg_enc_exit(struct hantro_ctx *ctx);
-> -void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
-> +void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx);
-> +void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx);
->  
->  dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
->  				   unsigned int dpb_idx);
-> diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> index 991213ce1610..5d9ff420f0b5 100644
-> --- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> @@ -171,3 +171,20 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
->  
->  	return 0;
->  }
-> +
-> +void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx)
-> +{
-> +	struct hantro_dev *vpu = ctx->dev;
-> +	u32 bytesused = vepu_read(vpu, VEPU_REG_STR_BUF_LIMIT) / 8;
-> +	struct vb2_v4l2_buffer *dst_buf = hantro_get_dst_buf(ctx);
-> +
-> +	/*
-> +	 * TODO: Rework the JPEG encoder to eliminate the need
-> +	 * for a bounce buffer.
-> +	 */
-> +	memcpy(vb2_plane_vaddr(&dst_buf->vb2_buf, 0) +
-> +	       ctx->vpu_dst_fmt->header_size,
-> +	       ctx->jpeg_enc.bounce_buffer.cpu, bytesused);
-> +	vb2_set_plane_payload(&dst_buf->vb2_buf, 0,
-> +			      ctx->vpu_dst_fmt->header_size + bytesused);
-> +}
-> diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> index d4f52957cc53..0c22039162a0 100644
-> --- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> +++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> @@ -343,7 +343,7 @@ static const struct hantro_codec_ops rk3066_vpu_codec_ops[] = {
->  		.run = hantro_h1_jpeg_enc_run,
->  		.reset = rockchip_vpu1_enc_reset,
->  		.init = hantro_jpeg_enc_init,
-> -		.done = hantro_jpeg_enc_done,
-> +		.done = hantro_h1_jpeg_enc_done,
->  		.exit = hantro_jpeg_enc_exit,
->  	},
->  	[HANTRO_MODE_H264_DEC] = {
-> @@ -371,7 +371,7 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
->  		.run = hantro_h1_jpeg_enc_run,
->  		.reset = rockchip_vpu1_enc_reset,
->  		.init = hantro_jpeg_enc_init,
-> -		.done = hantro_jpeg_enc_done,
-> +		.done = hantro_h1_jpeg_enc_done,
->  		.exit = hantro_jpeg_enc_exit,
->  	},
->  	[HANTRO_MODE_H264_DEC] = {
-> @@ -399,6 +399,7 @@ static const struct hantro_codec_ops rk3399_vpu_codec_ops[] = {
->  		.run = rockchip_vpu2_jpeg_enc_run,
->  		.reset = rockchip_vpu2_enc_reset,
->  		.init = hantro_jpeg_enc_init,
-> +		.done = rockchip_vpu2_jpeg_enc_done,
->  		.exit = hantro_jpeg_enc_exit,
->  	},
->  	[HANTRO_MODE_H264_DEC] = {
-> -- 
-> 2.34.0.rc2.393.gf8c9666880-goog
-> 
+And then just have #if IS_ENABLED(FOO) around your inline wrappers.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-rockchip mailing list
