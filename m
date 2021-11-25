@@ -4,76 +4,165 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F28AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 11:49:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A74C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 12:26:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U7DoKj3/qsG3wQybNGC2EdlO0qo6kaIzZQl0hQqQBr8=; b=q52FPMjhBh9wRP
-	ISaPxKigLJIvf8vzz0ROEETy1QZwUeOqUeotA9oz2zNeKZi78b1MFkhzu3cNoUmKGccTMx9f+VAms
-	3D49gp+qCcmeczp6SGb48zIylGHIMGWfkG4T1H7foGJad/VIg62NGPcRZI6Q5hyci/F+R7NPUWA8S
-	DwtDwFoHiN8B8Dk4R4NH+FJRLW3Lm5dYE0eP9ag1W4t2MYtQOrRCxk0/lXTU7HbO4CuTw/8EAlhND
-	ehVbhd0EpD7J9WCnB1IoJYj+7FP/IskiwFLjxaZOB+o5M4Ac9yCG0KFIYOItTSImqhJzK8Kqg0T+e
-	zcBBFuBhAj0bk/Rgj3Hg==;
+	List-Owner; bh=Tp7xPHcb77C514+eRjxIsV1wT8J1G256IkRQ7j9ZXiA=; b=ITaFQV5ztnTxBG
+	n4IR7A+/2sfYCfZwuDE4i8or087dMyXKwBuUhUYULNjOD3pLnkHR0fSB2asS6FVqoKEs5SywxvvZj
+	1jTGt3Y69drY3rjETJLOqRwdKikmt6NackRP/wPDRiMFcqPLqXLuEPUMKs9sOeSfPA6wy3eFPccUR
+	zd6gUXCAhQaI0HVjO3SSKK+Q0ZfSt13ULSCTL19Nq8zfGK29Yn6z60mkZLLZjMsqkZRs2QsIAVXvo
+	qBGLnLHTqUBUXE5tHWdrIf9w2GZKCajH1gFiwNVTeLPrMzVbPvJ7rXNTzOgtuK0LhuptkNYAVMVx+
+	0tslhEe8WD7ozSkg1AZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqDFH-007IBu-8Z; Thu, 25 Nov 2021 11:48:55 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1mqDpR-007NDM-1i; Thu, 25 Nov 2021 12:26:17 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqDFE-007IAd-2x; Thu, 25 Nov 2021 11:48:53 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id b12so11032185wrh.4;
- Thu, 25 Nov 2021 03:48:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=zGTZSlpnGm2n22lxkSJEMVFE+t4NAH4c6Xl/p/baCNU=;
- b=ggxDlHYdO+nCmw8YUmoTmFXUdtbKl0mS9AliK8qS1pDShNbNhw4sCm8M7F+WbLrHrR
- QjTnc3i0ghnf46wkkbFOyw9SIiOr656jb8zkJ60WYFAdg2gT+laqeCk9gHAFSaS44Fww
- Auxyyi63Uo4FKYqTOrabXLVQOlng6hAdeMofcFiUlgVf6f4fRzfdVlqQbcy7g6uKpWin
- 1Nq//GBDfbtiBr3xAVJnJ7qdcBc2y0uw1x6ywo8UGrpYUDhz+SfSq0YQxSHiZDUp3Vf0
- CPR57y+lqyYN5O27weZ9v7GO0YynKW9NOKDrc0p0w/T1A3RYt8K3Ncj/s1ukEB7+d3hQ
- 5cUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=zGTZSlpnGm2n22lxkSJEMVFE+t4NAH4c6Xl/p/baCNU=;
- b=uld4b4ZmsUCEdeo7O+NU3/DHuVo/nBPRW6eQhWt3g9G9am7ize4GanadGO1Pr1OOgB
- 8hAo0BV5s562nije0ze5855svnrjP1BoW6C7KkZg7dVhXz0pYBQCJ28m4dPBAqpKVCR0
- Oa60GSINV9CDPEPj4AiW2DqALC+kDHw/e4L9gXGeFCQU1ft+HCp9R2bRJjMTlpXXB4Sp
- WSnkdS5zwy3o8xCw3MxIH5dExIXxCXF3E6W49eZnKcOd36YX0QJGeH1puBdUk8KqVuTe
- v3KX54WqLobFTA3fPv1/ed0xGhXLTkUdXlVw2nL6SF2k542bl8qEXigXDzozLjhhdDb+
- RngQ==
-X-Gm-Message-State: AOAM533HbaX8bsI0DJUrfo8ChWJRCByinwAdl/wGx8XvFIwU9Hegwu9L
- udI9Bo6FMzK5i2tdLBbwVJs=
-X-Google-Smtp-Source: ABdhPJwGaIlEzWSzYkOIFmFGYLa8i4k+7ojXDZzjuWLF9TI9gTOa0UaEeu8MeB+7/DzoNwcWBPOppw==
-X-Received: by 2002:a5d:64c4:: with SMTP id f4mr5748349wri.6.1637840928209;
- Thu, 25 Nov 2021 03:48:48 -0800 (PST)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id o10sm3285079wri.15.2021.11.25.03.48.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Nov 2021 03:48:47 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: John Keeping <john@metanate.com>, Heiko Stuebner <heiko@sntech.de>,
- Jaehoon Chung <jh80.chung@samsung.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Ulf Hansson <ulf.hansson@linaro.org>, John Keeping <john@metanate.com>
-Subject: Re: [PATCH 0/4] mmc: dw_mmc: start deprecating mshcN aliases
-Date: Thu, 25 Nov 2021 12:48:46 +0100
-Message-ID: <1727408.1NuWAi7hEM@archbook>
-In-Reply-To: <20211124184603.3897245-1-john@metanate.com>
-References: <20211124184603.3897245-1-john@metanate.com>
+ id 1mqDpN-007NCK-IR; Thu, 25 Nov 2021 12:26:14 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1APBxSBp012709; 
+ Thu, 25 Nov 2021 12:26:05 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
+ b=qlDOezNx6ijhxjGL+yt7CsOtOYUwbFYWrFAnm95e+Fpbeg0/yPie6az247zyTilvLBm+
+ 73LLzQDF3L9jjwcOqMvd8q/WCP5JO9PKnBHqDqDw25GUlnAbelxThzKA08Lp0du/KwIZ
+ K5RjBoWkhxLU7u6ooA7dmNVbWfKq6iW3ScnpTCD8P7YJgH1GHifUII5vSRdUj8zHKnY5
+ UKgONcavekeR2eiaRNu+UIWQck1eCUrNEYiiWVwkINlfBWcddWcVydNW4Zc6e2h9Q4fK
+ uCHFzXQPnH+4EymIbovXoAAfcBIyX+qL82h6xX4vHTdMktzbbJqyP6VlZsgX0JT53eum yQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3chpeex901-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 25 Nov 2021 12:26:05 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1APCLPnd134289;
+ Thu, 25 Nov 2021 12:26:04 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2047.outbound.protection.outlook.com [104.47.66.47])
+ by aserp3020.oracle.com with ESMTP id 3ceru8m1wq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 25 Nov 2021 12:26:04 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GBsb5JI+MImy5nf5Go8aLgsMjkOcHb1QuWnUbcIhO9L1vPMnk9mRP2RxdxmBU3/WEj/t+k03BHxoPcQyjSd8wkIWrnZvia7BpBt5gsgQ9C35UhfqIzUvK/3CffH7m6JD4V9PGHyYPMW9Tl1r2gDiDWRFLkxdY9dWKuN6fCAQir+SbZEbE5AfqFQ9s7V8hVCabRLh579Dg+exl2WsLr4hcZmb+Harq/06qw1ZRRk6ZTGDvgFMvs25d8numw1k0oS83Tr4FfLohkDRqItPSJ/NTklWgo8dU4OYklpr30KQTeyxZ+fy87vH3DCSbvcs9vL+q3Z6fHldUkzNiXSRbt80ag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
+ b=WF/76pf2n01T4QRtn7C4SaArlBzR5Vf0Qazyul/7XGUdAMiH91wxlSASj0IMNmDA6Hidpk932KmHDMrXcMuQ3Mdekcr2V5yLWr8NTG5BwwX00XWLiMSYhsABnKpDKK2g+90k12cenTrCUuE4zFtLVCwOa/9XDeARf0TnIGlkj6ost3ZHyjMj5ZGb8deJ3u3XGjVA93DJ2nL8UIdMh+BkZ78o4Yab7XLOl5regUuEJr4rdTTjoZCN6nWFYqfvysdLVMICrfsSYi4YyQTYweaAh2Uic9oxCibbzTkhDTOkpWzVjS0ZTbTsW9IPRT4b2Xj5q8axNTPSqg45FP/AZhW1Jw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
+ b=qaKIhyAmOjD1Xi8kOZFREOI2Llp3890+8zb+PLHG7qaE9rA30Pe0jBj1kkwGHnUoohGR8F0fL/xWW4O1stR582S/v7tplUB54PDXylECPLiLPijlC2oaBz4AifdUMKkNCkV+k5xJFeKdntgjMZSV3uLKpmeJyn5/LVwRNsDSXBQ=
+Authentication-Results: danwin1210.me; dkim=none (message not signed)
+ header.d=none;danwin1210.me; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by MW4PR10MB5861.namprd10.prod.outlook.com
+ (2603:10b6:303:18e::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10; Thu, 25 Nov
+ 2021 12:26:02 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::7194:c377:36cc:d9f0]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::7194:c377:36cc:d9f0%6]) with mapi id 15.20.4734.022; Thu, 25 Nov 2021
+ 12:26:02 +0000
+Date: Thu, 25 Nov 2021 15:25:38 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Kyle Copperfield <kmcopper@danwin1210.me>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Dragan Simic <dragan.simic@gmail.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rockchip/rga: do proper error checking in probe
+Message-ID: <20211125122538.GF18178@kadam>
+References: <20211120122321.20253-1-kmcopper@danwin1210.me>
+Content-Disposition: inline
+In-Reply-To: <20211120122321.20253-1-kmcopper@danwin1210.me>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JN2P275CA0006.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::18)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
+Received: from kadam (102.222.70.114) by
+ JN2P275CA0006.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4734.20 via Frontend Transport; Thu, 25 Nov 2021 12:25:55 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 97f89e9b-fcc2-4e79-0d6b-08d9b00ebe26
+X-MS-TrafficTypeDiagnostic: MW4PR10MB5861:
+X-Microsoft-Antispam-PRVS: <MW4PR10MB58616A9E9F68E4F40D53F51A8E629@MW4PR10MB5861.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:854;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: TOhJ3ozZwW4D9Z0z4kMuWap6o6+gR85jrutp9I01HM/dJBqfAwLteBMU82O2a0cYcnYz39caGLQ4IwutAxMuE1iSAP0yAsBOsKoQ3GcFAXeA53MaGhs9UgKV2G93M38P6w5H5pQbyNwbaXO2oFXRl/dszfyh9dJ0U41Dl67XpNGhB+ts+yhBeHTfaTXhg71pAewTSg6TY1hIUZJyJBn3cpj0hqjBK5y0+yjePa2Az6kLql+C3hMWwLdEt3MDfpphtkuC3KMn6PmgEhlVYKd8Jw1HzytN09HpGkHTZQIawWmOuPQQwmryomJQ5Uu7N6RYyDDDtAyegNbMcP7R8AkJHdVIY1vBc08MVNQKTpO9UVXkGlr+enhZoiBVvko+Qe5M/tPdG+SP6X3Dnl+uVf5hsFqpBv3lYxdo7ZG4y+15QvGyFiW7vv40Pm5xnvw/oS6vo/Z03hjfo5NRk0yG3EDTAKC04CiG+1qAwDmKUbWLpE1/Eqn9fLakyxM6Gsq9hmm2xlAhXgBf5k4+bK3mLdIcl41YJRU4Y3v2tiPLqi1HQqmCQ1KEHOpaEmd68cWKJDjBT5VEdnj7bRppuQu6CPGfz4x73tWEsh6UTfWsxAzeeJXNyB1v6CMesP3/EvMJ8Jt7OSWLzIPgWOaJSHctaH2LUPRmnULrdiFES+H6dWRWO/EAmwn+sAZCnNc597KeOT6ymWauJCBBdvSri8Uv57KAZA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(84040400005)(54906003)(2906002)(33716001)(6496006)(26005)(508600001)(8676002)(316002)(33656002)(6916009)(8936002)(5660300002)(9576002)(9686003)(86362001)(956004)(44832011)(66556008)(66476007)(1076003)(4326008)(52116002)(186003)(6666004)(66946007)(38100700002)(83380400001)(55016003)(38350700002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Ua6ndyV4eUEZCr12oA9jqbAOGl0g2SkcPCrOqhIrEWRPyzx2fD/tdvvGRCKp?=
+ =?us-ascii?Q?smUNSZxPGLV6VPkgYD2o2L7XGy5kDJqS8ivYLYjHIKoYfxrx6Hu6QG6M0enO?=
+ =?us-ascii?Q?wrxBUW+OColvupXaFc1xU+uW/VKk2sPdkLH5klNMvisvsqfh31xE9/gBORzb?=
+ =?us-ascii?Q?UUPjc5wZ5XyYj+pMM0DUJX3TsRBHk8vCSSJkFkZ/fE8vSidldxTkPOFdXAjA?=
+ =?us-ascii?Q?fkqPMmR3yj9I1XxkZ4FahagB7t0Sn/EyDM582k+4iuEqesQ4FiHQv/rF5RQH?=
+ =?us-ascii?Q?r/RB3xhKvFGk36XF+xZuzgbJRrHTLAGGDPBWASCJ7Qp7fDB+WbpQpH4yoT/l?=
+ =?us-ascii?Q?L+Kx7aEnGCySs9/lBzSb9+664zvqEPi3oz6rpMyIVuB2w+ilwXtUi+azaZO0?=
+ =?us-ascii?Q?/VO9VyocP3DVgs/92ll8LaUtQrhJ+RHLvAuDHtO0t5ZLzzdlbswKsiky6Lug?=
+ =?us-ascii?Q?WI79pmW2GWBYV3gBS25wQuMFiZcD33kmOjw2TJRGB5R8l3CgFfKnAK/0btIA?=
+ =?us-ascii?Q?GkjBTHEfDWEOT5A8um+TyQxqbG065xwnKz3Bot9igktOsXnCmiPVXyMmX3uW?=
+ =?us-ascii?Q?K4YCie4q5t/zxV1dQ5wbMyaZEEc6NGekieT6naqEyNTtz34dUgBNRCfTOEok?=
+ =?us-ascii?Q?XeCub3hEno7jjq/Cas++2mqkHz7TNSqPiqRCPNp7xyf6PDIg0YzstFcqiAmC?=
+ =?us-ascii?Q?tnNHg86yVQnR/HKmIDkxwoR5i9eGPtLHpDG7Vq0Tt5TAokDjGhFZJrxFsOrJ?=
+ =?us-ascii?Q?gOAZ6m0bxv7+gIe2ffjEoX3pecOafcc2QP1LLpmnA0f7zMy99fYe0HaJra8f?=
+ =?us-ascii?Q?zpqLB3NP9SCQbA6D9Q/OCeftHwgKJ1nXghn6laMa239ND8YtNb26GnF9Y2h6?=
+ =?us-ascii?Q?MGGIsuEna9HQ6acQe49G/OiUrAy3mdk/849HFfWq88/dMcJRwtYmHJsuUcDB?=
+ =?us-ascii?Q?7/tUfiq5lt7DOEJ5OnJN/JyuVMEHYhUNvjKK8p8eJMtk03coMWEYFy9z5m1n?=
+ =?us-ascii?Q?uVuItDfsZdyqPibgBVaY7j4lSvmLl/UNSoJRIRVDyXBpcTvKfIhefTYhv6iw?=
+ =?us-ascii?Q?S3LloKt2fLehFDb/vNjyQVSvVHjD95V0tBOu9aow5rI8dMmNH8Xn/DBMgCXE?=
+ =?us-ascii?Q?AhhdOmKFBYGb0pUqjw13bY5NuYwi7pArkugYBHFVC3vMsPAQHV0fa7Jsk+n/?=
+ =?us-ascii?Q?MNQMvkOKx8cuIDPhFSGY/6ubNjO6qD7ruLJXHqBbqt0bWTAtcMc/ctnPACmU?=
+ =?us-ascii?Q?6n2zK39i3cgIHMuLdrj0VlKlOgFnX1slczFRaFMsgPB6sbDhgfcR74GbZGZh?=
+ =?us-ascii?Q?kP2pCg5oOu0eYqZM+R7zEAUWoej/xqPLctFJWK9rMPKFBxpk5oqxa8HkxaKO?=
+ =?us-ascii?Q?duLqwzLsXEzEaOKKJiSu/QsUglHhidFcfxD/woLb0V1NM6UxyRIZlKXjM6+D?=
+ =?us-ascii?Q?uCAcrcyO/7IZXPCxDi8PCXONIFbnBz0JORPfwvjni1dcDmoGo78eV/lF2yhd?=
+ =?us-ascii?Q?TBxy9udbyRZq8mHNBJK/21gyUc40NpdiKWL4uFwXJPrpQz7dk1eT+OP5Ct2g?=
+ =?us-ascii?Q?l2jW/EJkuxNv9IfMHFsGIIq3ijfzA3RTcQ25ns7mSUsCOJBXUGrjQXsp/J4l?=
+ =?us-ascii?Q?smmLlS5Eb64GUlEfGh4EcMNZuRA3oJachrpv4+8E28yvECIyGpKABrG4N5eM?=
+ =?us-ascii?Q?l4X55gOe9x61HYkFP8lSDQ8l6hA=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 97f89e9b-fcc2-4e79-0d6b-08d9b00ebe26
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2021 12:26:02.0888 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Om9HyNhwEuKaPgYpGo8txCB0mc+p/9QMudaFjy1bVXJCxWphB0hrX+sBZGvMSGwuYrx5Dlmz3JBMtz31LKu9S7zbGRXAh/D1RE6zyP0RgHE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR10MB5861
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10178
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0 spamscore=0
+ mlxlogscore=999 malwarescore=0 phishscore=0 adultscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111250069
+X-Proofpoint-GUID: ANASO9_yt9weuGCVHE_KZRDsSlZUMOIt
+X-Proofpoint-ORIG-GUID: ANASO9_yt9weuGCVHE_KZRDsSlZUMOIt
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_034852_164890_000EFFC7 
-X-CRM114-Status: GOOD (  17.97  )
+X-CRM114-CacheID: sfid-20211125_042613_637076_3D7890F3 
+X-CRM114-Status: GOOD (  30.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,47 +180,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mittwoch, 24. November 2021 19:45:58 CET John Keeping wrote:
-> This series is prompted by discussion on a previous patch set [1] but is
-> a totally different approach and only a partial solution.
+On Sat, Nov 20, 2021 at 12:23:02PM +0000, Kyle Copperfield wrote:
+> The latest fix for probe error handling contained a typo that causes
+> probing to fail with the following message:
 > 
-> With these patches, the dependency on the mshcN alias is totally removed
-> from dw_mmc-hi3798cv200 and dw_mmc-rockchip and dw_mmc-exynos moves
-> towards being able to consider the mshcN aliases deprecated.
+>   rockchip-rga: probe of ff680000.rga failed with error -12
 > 
-> I haven't changed dw_mci_hi6220_caps here, although it looks like it's
-> possible to apply MMC_CAP_CMD23 to all controllers there with no change
-> in behaviour as the final entry is SDIO for which CMD23 is not
-> applicable IIUC.  But I'm not familiar with that hardware and don't feel
-> confident making that change.
+> This patch fixes the typo.
 > 
-> [1] https://lore.kernel.org/all/20211116190244.1417591-1-john@metanate.com/
+> Fixes: e58430e1d4fd (media: rockchip/rga: fix error handling in probe)
+> Reviewed-by: Dragan Simic <dragan.simic@gmail.com>
+> Signed-off-by: Kyle Copperfield <kmcopper@danwin1210.me>
+> ---
+>  drivers/media/platform/rockchip/rga/rga.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> John Keeping (4):
->   mmc: dw_mmc: add common capabilities to replace caps
->   mmc: dw_mmc: hi3798cv200: use common_caps
->   mmc: dw_mmc: rockchip: use common_caps
->   mmc: dw_mmc: exynos: use common_caps
-> 
->  drivers/mmc/host/dw_mmc-exynos.c      |  9 +++++----
->  drivers/mmc/host/dw_mmc-hi3798cv200.c |  9 +--------
->  drivers/mmc/host/dw_mmc-rockchip.c    | 11 +----------
->  drivers/mmc/host/dw_mmc.c             |  3 +++
->  drivers/mmc/host/dw_mmc.h             |  3 +++
->  5 files changed, 13 insertions(+), 22 deletions(-)
-> 
-> 
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+> index 6759091b15e0..d99ea8973b67 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -895,7 +895,7 @@ static int rga_probe(struct platform_device *pdev)
+>  	}
+>  	rga->dst_mmu_pages =
+>  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+> -	if (rga->dst_mmu_pages) {
+> +	if (!rga->dst_mmu_pages) {
+>  		ret = -ENOMEM;
+>  		goto free_src_pages;
+>  	}
 
-For rockchip:
+There was supposed to be Smatch warning to catch this bug but Smatch was
+not parsing __get_free_pages() correctly.  I've fixed that so it
+generates a warning now.
 
-Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+drivers/media/platform/rockchip/rga/rga.c:928 rga_probe() warn: 'rga->dst_mmu_pages' from __get_free_pages() not released on lines: 928.
 
-Tested on a rk3566 with no obvious issues arising.
+Also I have introduced a new checker warning for code like:
 
-Regards,
-Nicolas Frattaroli
+	foo = alloc();
+	if (foo)
+		ret = -ENOMEM;
 
+drivers/media/platform/rockchip/rga/rga.c:896 rga_probe() warn: inverted NULL check
 
+I will test that out tonight.  I've also created a warning for if we
+return success when a function returns NULL but I'm not really
+optimistic that it will work.  Still, you never know until you check so
+I'll test that out as well.
+
+drivers/media/platform/rockchip/rga/rga.c:912 rga_probe() warn: success when 'rga->dst_mmu_pages' is NULL'
+
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-rockchip mailing list
