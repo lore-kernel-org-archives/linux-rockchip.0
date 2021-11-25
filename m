@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA7FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 08:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38588C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 09:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r44AdEJ++VWjh+ppXElc8T28cAOs7dxvKc+89AcrYEI=; b=FgvLtC2XgzVte6
-	Gx1P56iaROgD9kgf5CCi76XVKzu8hYKX3CXB0BZqSYtdAB8WN4Z58qdoti+wFsSBtm8qO9/KSYDJc
-	7dP0kPGyijejY5OZnCMMcC06NyHHASip3iBAqz07xVcHq/EIpkcB57oZCbc8qCPzTFBlqPTDuoOU+
-	i0Bq9THiST2BuHjl1Yi6TgxDcI5XFw9HK7XQ2dP51QEOUf3sT1c8ED1vGJ1FosAxtn8OyvmSCMnTW
-	KUVzShpepLWOpnNwbaVV9gDnkye7AnrKRxXzxBiUXvr2HHOtKrho1pL8FWWqmB/84nP08xLSgdnTI
-	wGKwag1VES0XMk4CGxkA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jKeyEujYndm1d7HzYuy3XAOVtJ4QtUqHGO2PNjyi7tk=; b=CCt5m0T3baKT5T
+	6g9H2r1BvFb9Gwr2ModF9lMaGrp9Fm3olzjQw72hRAiSz0xDuap4F76xnZfndadgqLu//irM2BFPB
+	SCHievcTMD/VzTn4E1eXFcbc7OLhBN5nrUZu2MB80q+iJlJ2Zs0fdivlIlEUzrsNTeyCwDGiN2QDp
+	4Ax3yl8QHjo9HL1OMIw4QFgbWMY4jKrFlO0ogww4PMOKGpdJH8FdoHTllmR0g1AAv7aTQMHjdtABV
+	cCAdTzNqEyG19HjLu6P5JlAEvt8CWJ2f0m9KxoshZ6iEk8uEBAQTcyhinbIu0fVc9DouHTm9J09/b
+	NHZFBhVLk/NQVKxKSpqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqARU-006ljP-Ox; Thu, 25 Nov 2021 08:49:20 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1mqBDs-006wfa-11; Thu, 25 Nov 2021 09:39:20 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqARL-006lhq-2i; Thu, 25 Nov 2021 08:49:12 +0000
-Received: by mail-wr1-x431.google.com with SMTP id i5so9980420wrb.2;
- Thu, 25 Nov 2021 00:49:10 -0800 (PST)
+ id 1mqBDp-006wee-Ly; Thu, 25 Nov 2021 09:39:18 +0000
+Received: by mail-wm1-x333.google.com with SMTP id
+ m25-20020a7bcb99000000b0033aa12cdd33so578667wmi.1; 
+ Thu, 25 Nov 2021 01:39:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZXv6Jzb5SFH68Jd64JT8apKFHuvDqOPlffO+TYcXQtY=;
- b=AKRvG4+UulX55UiCC4Ng2Y9uoNqhfPYcCi3MxdkcQcSh9t2XdvQPlFSiYo7kp9KOaA
- vvb9cO7nAW/USZk/WGRayw38aBwAtKryDbHIfbAfBKmOJB5g2CJqGRIYkj1ko/tGe1am
- q2WwM62+cu5GHhCqmBAW7GA9DMz5MW0iUG4XS+rS3CavVHe0AeuEvbBZqva7pFMw5mYm
- IkN0DAs3yNwJCjSKSxSr3k/fo2k0qxZFPij0x0JRfMbxBsAyDAZWEX5c/OW323+9di+Q
- ZKJNGOoi41yRwO4rksbjNqAISCbmVllXH5uenpiYsupVL3EIvm4uaZz1WCHZraadHmsD
- O2LA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=JsWSBzoF6q60IKzONTXTKTOX38hGEElpEC5e1cFXxMw=;
+ b=e9BNmaZr+9frNsh1OxVSxcuyZYi5JHpT5RH5ySRVrg9VUsQimIf8iryHBDnjO6Q/Gf
+ 4CNOcPC6pF1ffCESR/nfd1pkj8i3Gn2KIczOpCw7emtLwlsjCR6Zc0U9eVjQdzoAO+HW
+ Z3mBdV04WIQp60cXuw3cXABF49Fku3m7yzAuwWHTKndsWNTG/8EXu8Gr+H4NOscy6vM7
+ qHV1d4UduVpXX8Rqi83rOxxNjQmGhtLLHwyW/MBcL2oSl8pkgaILPA/q1wHvGLZp35sq
+ s7ofF4kG609Ul/4jqIOS27xPi0I5gJwpRIgkWEauHJb7uL74APaGL0UiSKaOQSUQQer7
+ fQnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZXv6Jzb5SFH68Jd64JT8apKFHuvDqOPlffO+TYcXQtY=;
- b=FfVz6vOPq2hcGOrsZO9HrsPkmOAvImIyTfDOp2xDK/1+hfhcSbsNQgU/tsHg6598eO
- G6PgIDpQrxxabp0QOEMm+goMGD+nCs+G9eJ6AlrHtU5Feb8QpfnYPrJRildgstwFl2w0
- zolmEE71svPNrc0RSLr7rz6xEuErOZOXy9jh6tMbZKzPY5aSkdzs7m1Vp9CoaQuEM0es
- avFjW0utpAA8BPcc42Ox0B1+OOzpgnxJUlu0t1NbT2zJjCM5z9e2rO+yDTEASdZjPga3
- vRRtArF9uEGAZ9d+b3AkWDmu8fUhG4LLIQHZSolNYXJDPI73AUubLejXOiegU8SuHl87
- So0w==
-X-Gm-Message-State: AOAM531ebJDdDhF8EB7UZG6R4cnoSbFhyTdXybR3egkVYL2T3bkg+ITd
- VxNxTRIqCUO6F4iCUMJWC1lH3RXC6wE=
-X-Google-Smtp-Source: ABdhPJwTZldI+270r7Sfhiuta0uUF9IWR/ikPaEuYdnjLEVCqRPB6BDiHGPszf3aY+c1uwUzTakBDw==
-X-Received: by 2002:a5d:64ea:: with SMTP id g10mr4866677wri.242.1637830149421; 
- Thu, 25 Nov 2021 00:49:09 -0800 (PST)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=JsWSBzoF6q60IKzONTXTKTOX38hGEElpEC5e1cFXxMw=;
+ b=DM0BeSowE30ck9UgPVbq4rn8tBg4dr6sCNQsvEWA/nl+gFugrVYuDdxGFr/34DuneD
+ pF9YGN2Gq0lmlk2aPMUkrwWIpwK2Q3/pQzdqrRrhGINGBSRWIsYyHDjdFUVSGICnz9wb
+ gW/sRelgLjqUAZhUGoquyvgH9uNhHBvWtP5cOi4S44r9dZRo/09VljAfS+sGsPhD6f6R
+ CRXO7o9lJ6D+xDbF7Zy8R1GslxWm81H4uhfxC1gnx8dCtC30IOgkxfAky1zXfhxxmRF/
+ b9okNR5sz1kqsFGzYvJ7EaWLikqbj2pi1opK2IOI/pBL8bdTFQD80bVxWUk0iGSzNxSl
+ g5eA==
+X-Gm-Message-State: AOAM533y8pPdQjMpxsrO/u/Rqh7jG32zso68WbTCG9o+WUmLg7vs8u8X
+ VnhrKcNr2jClBK5/x6eKdmiVpHozwFM=
+X-Google-Smtp-Source: ABdhPJwn9WYM4A5Ba6uOrUY3qZJujkwovHFYdpg+NpSmE67uRNgza9NoVF3XBWhs8MyNZm5A0klAMw==
+X-Received: by 2002:a05:600c:4f03:: with SMTP id
+ l3mr5548476wmq.47.1637833156147; 
+ Thu, 25 Nov 2021 01:39:16 -0800 (PST)
+Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
  [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id m1sm2290568wme.39.2021.11.25.00.49.08
+ by smtp.gmail.com with ESMTPSA id i17sm2732092wmq.48.2021.11.25.01.39.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Nov 2021 00:49:08 -0800 (PST)
+ Thu, 25 Nov 2021 01:39:15 -0800 (PST)
 From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3] ASoC: rockchip: i2s_tdm: Dup static DAI template
-Date: Thu, 25 Nov 2021 09:48:59 +0100
-Message-Id: <20211125084900.417102-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.34.0
+To: Ezequiel Garcia <ezequiel@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Dan Carpenter <dan.carpenter@oracle.com>, linux-rockchip@lists.infradead.org
+Cc: Kyle Copperfield <kmcopper@danwin1210.me>,
+ Dragan Simic <dragan.simic@gmail.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Kyle Copperfield <kmcopper@danwin1210.me>
+Subject: Re: [PATCH] media: rockchip/rga: do proper error checking in probe
+Date: Thu, 25 Nov 2021 10:39:14 +0100
+Message-ID: <1864840.RQ6cyUMOaI@archbook>
+In-Reply-To: <20211120122321.20253-1-kmcopper@danwin1210.me>
+References: <20211120122321.20253-1-kmcopper@danwin1210.me>
 MIME-Version: 1.0
-X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_004911_178862_0D1E2A5F 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20211125_013917_750706_A96B3D91 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,139 +93,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Previously, the DAI template was used directly, which lead to
-fun bugs such as "why is my channels_max changing?" when one
-instantiated more than one i2s_tdm IP block in a device tree.
+On Samstag, 20. November 2021 13:23:02 CET Kyle Copperfield wrote:
+> The latest fix for probe error handling contained a typo that causes
+> probing to fail with the following message:
+> 
+>   rockchip-rga: probe of ff680000.rga failed with error -12
+> 
+> This patch fixes the typo.
+> 
+> Fixes: e58430e1d4fd (media: rockchip/rga: fix error handling in probe)
+> Reviewed-by: Dragan Simic <dragan.simic@gmail.com>
+> Signed-off-by: Kyle Copperfield <kmcopper@danwin1210.me>
+> ---
 
-This change makes it so that we instead duplicate the template
-struct, and then use that.
+Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 
-Fixes: 081068fd6414 ("ASoC: rockchip: add support for i2s-tdm controller")
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
+Fixes RGA probing for me, many thanks!
 
-Changes in v3:
- - constify the i2s_tdm_dai struct
- - remove remaining direct i2s_tdm_dai uses
- - move symmetric_rate setting to _init_dai
- - store pointer to dai struct in rk_i2s_tdm_dev struct
-
-Changes in v2:
- - remove accidental whitespace changes
-
- sound/soc/rockchip/rockchip_i2s_tdm.c | 52 ++++++++++++++++-----------
- 1 file changed, 31 insertions(+), 21 deletions(-)
-
-diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-index 17b9b287853a..5f9cb5c4c7f0 100644
---- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-+++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-@@ -95,6 +95,7 @@ struct rk_i2s_tdm_dev {
- 	spinlock_t lock; /* xfer lock */
- 	bool has_playback;
- 	bool has_capture;
-+	struct snd_soc_dai_driver *dai;
- };
- 
- static int to_ch_num(unsigned int val)
-@@ -1310,19 +1311,14 @@ static const struct of_device_id rockchip_i2s_tdm_match[] = {
- 	{},
- };
- 
--static struct snd_soc_dai_driver i2s_tdm_dai = {
-+static const struct snd_soc_dai_driver i2s_tdm_dai = {
- 	.probe = rockchip_i2s_tdm_dai_probe,
--	.playback = {
--		.stream_name  = "Playback",
--	},
--	.capture = {
--		.stream_name  = "Capture",
--	},
- 	.ops = &rockchip_i2s_tdm_dai_ops,
- };
- 
--static void rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
-+static int rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
- {
-+	struct snd_soc_dai_driver *dai;
- 	struct property *dma_names;
- 	const char *dma_name;
- 	u64 formats = (SNDRV_PCM_FMTBIT_S8 | SNDRV_PCM_FMTBIT_S16_LE |
-@@ -1337,19 +1333,33 @@ static void rockchip_i2s_tdm_init_dai(struct rk_i2s_tdm_dev *i2s_tdm)
- 			i2s_tdm->has_capture = true;
- 	}
- 
-+	dai = devm_kmemdup(i2s_tdm->dev, &i2s_tdm_dai,
-+			   sizeof(*dai), GFP_KERNEL);
-+	if (!dai)
-+		return -ENOMEM;
-+
- 	if (i2s_tdm->has_playback) {
--		i2s_tdm_dai.playback.channels_min = 2;
--		i2s_tdm_dai.playback.channels_max = 8;
--		i2s_tdm_dai.playback.rates = SNDRV_PCM_RATE_8000_192000;
--		i2s_tdm_dai.playback.formats = formats;
-+		dai->playback.stream_name  = "Playback";
-+		dai->playback.channels_min = 2;
-+		dai->playback.channels_max = 8;
-+		dai->playback.rates = SNDRV_PCM_RATE_8000_192000;
-+		dai->playback.formats = formats;
- 	}
- 
- 	if (i2s_tdm->has_capture) {
--		i2s_tdm_dai.capture.channels_min = 2;
--		i2s_tdm_dai.capture.channels_max = 8;
--		i2s_tdm_dai.capture.rates = SNDRV_PCM_RATE_8000_192000;
--		i2s_tdm_dai.capture.formats = formats;
-+		dai->capture.stream_name  = "Capture";
-+		dai->capture.channels_min = 2;
-+		dai->capture.channels_max = 8;
-+		dai->capture.rates = SNDRV_PCM_RATE_8000_192000;
-+		dai->capture.formats = formats;
- 	}
-+
-+	if (i2s_tdm->clk_trcm != TRCM_TXRX)
-+		dai->symmetric_rate = 1;
-+
-+	i2s_tdm->dai = dai;
-+
-+	return 0;
- }
- 
- static int rockchip_i2s_tdm_path_check(struct rk_i2s_tdm_dev *i2s_tdm,
-@@ -1541,8 +1551,6 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
- 	spin_lock_init(&i2s_tdm->lock);
- 	i2s_tdm->soc_data = (struct rk_i2s_soc_data *)of_id->data;
- 
--	rockchip_i2s_tdm_init_dai(i2s_tdm);
--
- 	i2s_tdm->frame_width = 64;
- 
- 	i2s_tdm->clk_trcm = TRCM_TXRX;
-@@ -1555,8 +1563,10 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
- 		}
- 		i2s_tdm->clk_trcm = TRCM_RX;
- 	}
--	if (i2s_tdm->clk_trcm != TRCM_TXRX)
--		i2s_tdm_dai.symmetric_rate = 1;
-+
-+	ret = rockchip_i2s_tdm_init_dai(i2s_tdm);
-+	if (ret)
-+		return ret;
- 
- 	i2s_tdm->grf = syscon_regmap_lookup_by_phandle(node, "rockchip,grf");
- 	if (IS_ERR(i2s_tdm->grf))
-@@ -1678,7 +1688,7 @@ static int rockchip_i2s_tdm_probe(struct platform_device *pdev)
- 
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rockchip_i2s_tdm_component,
--					      &i2s_tdm_dai, 1);
-+					      i2s_tdm->dai, 1);
- 
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not register DAI\n");
--- 
-2.34.0
 
 
 _______________________________________________
