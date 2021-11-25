@@ -4,165 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27A74C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 12:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0065BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 13:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tp7xPHcb77C514+eRjxIsV1wT8J1G256IkRQ7j9ZXiA=; b=ITaFQV5ztnTxBG
-	n4IR7A+/2sfYCfZwuDE4i8or087dMyXKwBuUhUYULNjOD3pLnkHR0fSB2asS6FVqoKEs5SywxvvZj
-	1jTGt3Y69drY3rjETJLOqRwdKikmt6NackRP/wPDRiMFcqPLqXLuEPUMKs9sOeSfPA6wy3eFPccUR
-	zd6gUXCAhQaI0HVjO3SSKK+Q0ZfSt13ULSCTL19Nq8zfGK29Yn6z60mkZLLZjMsqkZRs2QsIAVXvo
-	qBGLnLHTqUBUXE5tHWdrIf9w2GZKCajH1gFiwNVTeLPrMzVbPvJ7rXNTzOgtuK0LhuptkNYAVMVx+
-	0tslhEe8WD7ozSkg1AZQ==;
+	List-Owner; bh=oUHfhkceVH86cMSDyJVq/M2eg7MI2eDmzTcAKKV4CUM=; b=VSchuqkDFHug2y
+	xxxyT2aHWk1t91+OAWNEy3o++rsUc6YRqgXhpeTHI5KwzSh0LYwnzzAzRpC7KH4vE7ugdMOoU+INN
+	wRzrBAKkXeme9m8E60HiBPY2Jy5fL3LX/MSdke0Y0SLiTynEZzlzrnkihiirMGkCPk/hzghJh3vsV
+	75kWxNyb4ATFwar5S+3aCjd5upWFKFL0ud+MbJCMQ39khf+IvfLOxrvqPDju0l62YltIY3QczjbIN
+	ZKkW/nXurWSW1yz3a2OSc9bSamxxwDBtb0aDA93JJIy9VJVK5z+Mxo5BHXT3J5u0TigTvCmd+t0ny
+	70aKJDFQPYxVZf4LRq4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqDpR-007NDM-1i; Thu, 25 Nov 2021 12:26:17 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1mqEj6-007e4q-OX; Thu, 25 Nov 2021 13:23:48 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqDpN-007NCK-IR; Thu, 25 Nov 2021 12:26:14 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1APBxSBp012709; 
- Thu, 25 Nov 2021 12:26:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
- b=qlDOezNx6ijhxjGL+yt7CsOtOYUwbFYWrFAnm95e+Fpbeg0/yPie6az247zyTilvLBm+
- 73LLzQDF3L9jjwcOqMvd8q/WCP5JO9PKnBHqDqDw25GUlnAbelxThzKA08Lp0du/KwIZ
- K5RjBoWkhxLU7u6ooA7dmNVbWfKq6iW3ScnpTCD8P7YJgH1GHifUII5vSRdUj8zHKnY5
- UKgONcavekeR2eiaRNu+UIWQck1eCUrNEYiiWVwkINlfBWcddWcVydNW4Zc6e2h9Q4fK
- uCHFzXQPnH+4EymIbovXoAAfcBIyX+qL82h6xX4vHTdMktzbbJqyP6VlZsgX0JT53eum yQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 3chpeex901-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 25 Nov 2021 12:26:05 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1APCLPnd134289;
- Thu, 25 Nov 2021 12:26:04 GMT
-Received: from nam12-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2047.outbound.protection.outlook.com [104.47.66.47])
- by aserp3020.oracle.com with ESMTP id 3ceru8m1wq-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 25 Nov 2021 12:26:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GBsb5JI+MImy5nf5Go8aLgsMjkOcHb1QuWnUbcIhO9L1vPMnk9mRP2RxdxmBU3/WEj/t+k03BHxoPcQyjSd8wkIWrnZvia7BpBt5gsgQ9C35UhfqIzUvK/3CffH7m6JD4V9PGHyYPMW9Tl1r2gDiDWRFLkxdY9dWKuN6fCAQir+SbZEbE5AfqFQ9s7V8hVCabRLh579Dg+exl2WsLr4hcZmb+Harq/06qw1ZRRk6ZTGDvgFMvs25d8numw1k0oS83Tr4FfLohkDRqItPSJ/NTklWgo8dU4OYklpr30KQTeyxZ+fy87vH3DCSbvcs9vL+q3Z6fHldUkzNiXSRbt80ag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
- b=WF/76pf2n01T4QRtn7C4SaArlBzR5Vf0Qazyul/7XGUdAMiH91wxlSASj0IMNmDA6Hidpk932KmHDMrXcMuQ3Mdekcr2V5yLWr8NTG5BwwX00XWLiMSYhsABnKpDKK2g+90k12cenTrCUuE4zFtLVCwOa/9XDeARf0TnIGlkj6ost3ZHyjMj5ZGb8deJ3u3XGjVA93DJ2nL8UIdMh+BkZ78o4Yab7XLOl5regUuEJr4rdTTjoZCN6nWFYqfvysdLVMICrfsSYi4YyQTYweaAh2Uic9oxCibbzTkhDTOkpWzVjS0ZTbTsW9IPRT4b2Xj5q8axNTPSqg45FP/AZhW1Jw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ id 1mqEj3-007e3Z-KM
+ for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 13:23:47 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id j14so12198502uan.10
+ for <linux-rockchip@lists.infradead.org>; Thu, 25 Nov 2021 05:23:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=p2yTzdPsc707far2C8TbZsWraN74C7iht7pCe2hND8Y=;
- b=qaKIhyAmOjD1Xi8kOZFREOI2Llp3890+8zb+PLHG7qaE9rA30Pe0jBj1kkwGHnUoohGR8F0fL/xWW4O1stR582S/v7tplUB54PDXylECPLiLPijlC2oaBz4AifdUMKkNCkV+k5xJFeKdntgjMZSV3uLKpmeJyn5/LVwRNsDSXBQ=
-Authentication-Results: danwin1210.me; dkim=none (message not signed)
- header.d=none;danwin1210.me; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MW4PR10MB5861.namprd10.prod.outlook.com
- (2603:10b6:303:18e::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10; Thu, 25 Nov
- 2021 12:26:02 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::7194:c377:36cc:d9f0]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::7194:c377:36cc:d9f0%6]) with mapi id 15.20.4734.022; Thu, 25 Nov 2021
- 12:26:02 +0000
-Date: Thu, 25 Nov 2021 15:25:38 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kyle Copperfield <kmcopper@danwin1210.me>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=pD+qJk3r29qPwzJLYfks/oabSI7Y6YhNSM12M9kudsA=;
+ b=J8uByjrN3pIMyLs+oh8F1h51AEiVYGcn/jk6MaCawLgGb4CapJzoFhR0hQKkiQWrEh
+ xKIta24WH4WpCzvI7EIBkg+W6diz1AMrs5Nh5DWnQ17/D1qf7KcJlWZydHbexMjaU0FZ
+ 6cO8NeT+7ZFSfHD3SUwtJ2YpxDY9gtwdnbcM+LqO2cSdDvD0pxxXL7jQHFJFJtFlpW78
+ EXpF6w7NvojJcmLBeousUkR+ZeJtQR0X35kMvVAuQ/xzdDhW73D7FpwNWjgCLvULsJY1
+ sEM8l0tNEuPJIsEtq7GxesgoWAZ1LHRcd6g6qsstxazhIP3WaJQ6ie4vvUpt4+Cqu0ic
+ sGig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=pD+qJk3r29qPwzJLYfks/oabSI7Y6YhNSM12M9kudsA=;
+ b=hi/VceVqDfBdXx9vDZ34On8guQjo7tqPS1mJmiL/TklTfnrMiwqG+gq2ZJyamzvSOg
+ o0DSDlZiHQcaievPTj07tbJGXP482IUp2hkqPUiDN8y1g0VZz8+DAAndTOYS6S2xD46X
+ BV9zUas50U2bOXigwucctGPlhGeAIx9ZtglBybVEBoaMJg3Z/Ey2Qy5WxRvg9fZwHYSy
+ TeBg/rucd1xuDhD5tZ7Y84Z0DKpZ6ARd9v4kY+6f7vg6nrGRFKA7sEOsgJRuXROTc+/g
+ S9UDXrlZlEkiTs5Np8Q+4rM/llsEw1bBa27v+wh+rKlfgYuZk/7uJz+lIOb8zdRsxQqR
+ cy8Q==
+X-Gm-Message-State: AOAM533yKh+Te6kOIN/2nVnF4XFP4OwUCNOy3y8Tcm+KY3+v52nmW+/w
+ HL7Tkhct5XCFqVEP/CNF1z3sLg==
+X-Google-Smtp-Source: ABdhPJzRdO7QoZ3b2O8Hj0UdN3JVKR91c4TnqnGBSgCpEcjeZkf5dyufcKOuzsSpQNPw3BaQ4UsNCQ==
+X-Received: by 2002:a67:2fd0:: with SMTP id v199mr8700734vsv.35.1637846618499; 
+ Thu, 25 Nov 2021 05:23:38 -0800 (PST)
+Received: from eze-laptop (host208.201-253-22.telecom.net.ar. [201.253.22.208])
+ by smtp.gmail.com with ESMTPSA id q9sm1674052vkn.44.2021.11.25.05.23.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Nov 2021 05:23:37 -0800 (PST)
+Date: Thu, 25 Nov 2021 10:23:32 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Dragan Simic <dragan.simic@gmail.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rockchip/rga: do proper error checking in probe
-Message-ID: <20211125122538.GF18178@kadam>
-References: <20211120122321.20253-1-kmcopper@danwin1210.me>
-Content-Disposition: inline
-In-Reply-To: <20211120122321.20253-1-kmcopper@danwin1210.me>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JN2P275CA0006.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::18)
- To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: hantro: Hook up RK3399 JPEG encoder output
+Message-ID: <YZ+OVEKrvsbbQrjn@eze-laptop>
+References: <20211119074654.470729-1-wenst@chromium.org>
 MIME-Version: 1.0
-Received: from kadam (102.222.70.114) by
- JN2P275CA0006.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4734.20 via Frontend Transport; Thu, 25 Nov 2021 12:25:55 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 97f89e9b-fcc2-4e79-0d6b-08d9b00ebe26
-X-MS-TrafficTypeDiagnostic: MW4PR10MB5861:
-X-Microsoft-Antispam-PRVS: <MW4PR10MB58616A9E9F68E4F40D53F51A8E629@MW4PR10MB5861.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:854;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: TOhJ3ozZwW4D9Z0z4kMuWap6o6+gR85jrutp9I01HM/dJBqfAwLteBMU82O2a0cYcnYz39caGLQ4IwutAxMuE1iSAP0yAsBOsKoQ3GcFAXeA53MaGhs9UgKV2G93M38P6w5H5pQbyNwbaXO2oFXRl/dszfyh9dJ0U41Dl67XpNGhB+ts+yhBeHTfaTXhg71pAewTSg6TY1hIUZJyJBn3cpj0hqjBK5y0+yjePa2Az6kLql+C3hMWwLdEt3MDfpphtkuC3KMn6PmgEhlVYKd8Jw1HzytN09HpGkHTZQIawWmOuPQQwmryomJQ5Uu7N6RYyDDDtAyegNbMcP7R8AkJHdVIY1vBc08MVNQKTpO9UVXkGlr+enhZoiBVvko+Qe5M/tPdG+SP6X3Dnl+uVf5hsFqpBv3lYxdo7ZG4y+15QvGyFiW7vv40Pm5xnvw/oS6vo/Z03hjfo5NRk0yG3EDTAKC04CiG+1qAwDmKUbWLpE1/Eqn9fLakyxM6Gsq9hmm2xlAhXgBf5k4+bK3mLdIcl41YJRU4Y3v2tiPLqi1HQqmCQ1KEHOpaEmd68cWKJDjBT5VEdnj7bRppuQu6CPGfz4x73tWEsh6UTfWsxAzeeJXNyB1v6CMesP3/EvMJ8Jt7OSWLzIPgWOaJSHctaH2LUPRmnULrdiFES+H6dWRWO/EAmwn+sAZCnNc597KeOT6ymWauJCBBdvSri8Uv57KAZA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(84040400005)(54906003)(2906002)(33716001)(6496006)(26005)(508600001)(8676002)(316002)(33656002)(6916009)(8936002)(5660300002)(9576002)(9686003)(86362001)(956004)(44832011)(66556008)(66476007)(1076003)(4326008)(52116002)(186003)(6666004)(66946007)(38100700002)(83380400001)(55016003)(38350700002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Ua6ndyV4eUEZCr12oA9jqbAOGl0g2SkcPCrOqhIrEWRPyzx2fD/tdvvGRCKp?=
- =?us-ascii?Q?smUNSZxPGLV6VPkgYD2o2L7XGy5kDJqS8ivYLYjHIKoYfxrx6Hu6QG6M0enO?=
- =?us-ascii?Q?wrxBUW+OColvupXaFc1xU+uW/VKk2sPdkLH5klNMvisvsqfh31xE9/gBORzb?=
- =?us-ascii?Q?UUPjc5wZ5XyYj+pMM0DUJX3TsRBHk8vCSSJkFkZ/fE8vSidldxTkPOFdXAjA?=
- =?us-ascii?Q?fkqPMmR3yj9I1XxkZ4FahagB7t0Sn/EyDM582k+4iuEqesQ4FiHQv/rF5RQH?=
- =?us-ascii?Q?r/RB3xhKvFGk36XF+xZuzgbJRrHTLAGGDPBWASCJ7Qp7fDB+WbpQpH4yoT/l?=
- =?us-ascii?Q?L+Kx7aEnGCySs9/lBzSb9+664zvqEPi3oz6rpMyIVuB2w+ilwXtUi+azaZO0?=
- =?us-ascii?Q?/VO9VyocP3DVgs/92ll8LaUtQrhJ+RHLvAuDHtO0t5ZLzzdlbswKsiky6Lug?=
- =?us-ascii?Q?WI79pmW2GWBYV3gBS25wQuMFiZcD33kmOjw2TJRGB5R8l3CgFfKnAK/0btIA?=
- =?us-ascii?Q?GkjBTHEfDWEOT5A8um+TyQxqbG065xwnKz3Bot9igktOsXnCmiPVXyMmX3uW?=
- =?us-ascii?Q?K4YCie4q5t/zxV1dQ5wbMyaZEEc6NGekieT6naqEyNTtz34dUgBNRCfTOEok?=
- =?us-ascii?Q?XeCub3hEno7jjq/Cas++2mqkHz7TNSqPiqRCPNp7xyf6PDIg0YzstFcqiAmC?=
- =?us-ascii?Q?tnNHg86yVQnR/HKmIDkxwoR5i9eGPtLHpDG7Vq0Tt5TAokDjGhFZJrxFsOrJ?=
- =?us-ascii?Q?gOAZ6m0bxv7+gIe2ffjEoX3pecOafcc2QP1LLpmnA0f7zMy99fYe0HaJra8f?=
- =?us-ascii?Q?zpqLB3NP9SCQbA6D9Q/OCeftHwgKJ1nXghn6laMa239ND8YtNb26GnF9Y2h6?=
- =?us-ascii?Q?MGGIsuEna9HQ6acQe49G/OiUrAy3mdk/849HFfWq88/dMcJRwtYmHJsuUcDB?=
- =?us-ascii?Q?7/tUfiq5lt7DOEJ5OnJN/JyuVMEHYhUNvjKK8p8eJMtk03coMWEYFy9z5m1n?=
- =?us-ascii?Q?uVuItDfsZdyqPibgBVaY7j4lSvmLl/UNSoJRIRVDyXBpcTvKfIhefTYhv6iw?=
- =?us-ascii?Q?S3LloKt2fLehFDb/vNjyQVSvVHjD95V0tBOu9aow5rI8dMmNH8Xn/DBMgCXE?=
- =?us-ascii?Q?AhhdOmKFBYGb0pUqjw13bY5NuYwi7pArkugYBHFVC3vMsPAQHV0fa7Jsk+n/?=
- =?us-ascii?Q?MNQMvkOKx8cuIDPhFSGY/6ubNjO6qD7ruLJXHqBbqt0bWTAtcMc/ctnPACmU?=
- =?us-ascii?Q?6n2zK39i3cgIHMuLdrj0VlKlOgFnX1slczFRaFMsgPB6sbDhgfcR74GbZGZh?=
- =?us-ascii?Q?kP2pCg5oOu0eYqZM+R7zEAUWoej/xqPLctFJWK9rMPKFBxpk5oqxa8HkxaKO?=
- =?us-ascii?Q?duLqwzLsXEzEaOKKJiSu/QsUglHhidFcfxD/woLb0V1NM6UxyRIZlKXjM6+D?=
- =?us-ascii?Q?uCAcrcyO/7IZXPCxDi8PCXONIFbnBz0JORPfwvjni1dcDmoGo78eV/lF2yhd?=
- =?us-ascii?Q?TBxy9udbyRZq8mHNBJK/21gyUc40NpdiKWL4uFwXJPrpQz7dk1eT+OP5Ct2g?=
- =?us-ascii?Q?l2jW/EJkuxNv9IfMHFsGIIq3ijfzA3RTcQ25ns7mSUsCOJBXUGrjQXsp/J4l?=
- =?us-ascii?Q?smmLlS5Eb64GUlEfGh4EcMNZuRA3oJachrpv4+8E28yvECIyGpKABrG4N5eM?=
- =?us-ascii?Q?l4X55gOe9x61HYkFP8lSDQ8l6hA=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97f89e9b-fcc2-4e79-0d6b-08d9b00ebe26
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2021 12:26:02.0888 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Om9HyNhwEuKaPgYpGo8txCB0mc+p/9QMudaFjy1bVXJCxWphB0hrX+sBZGvMSGwuYrx5Dlmz3JBMtz31LKu9S7zbGRXAh/D1RE6zyP0RgHE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR10MB5861
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10178
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxscore=0 spamscore=0
- mlxlogscore=999 malwarescore=0 phishscore=0 adultscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111250069
-X-Proofpoint-GUID: ANASO9_yt9weuGCVHE_KZRDsSlZUMOIt
-X-Proofpoint-ORIG-GUID: ANASO9_yt9weuGCVHE_KZRDsSlZUMOIt
+Content-Disposition: inline
+In-Reply-To: <20211119074654.470729-1-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_042613_637076_3D7890F3 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20211125_052345_891772_E3CC5F82 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,58 +92,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 20, 2021 at 12:23:02PM +0000, Kyle Copperfield wrote:
-> The latest fix for probe error handling contained a typo that causes
-> probing to fail with the following message:
+Hi Chen-Yu,
+
+On Fri, Nov 19, 2021 at 03:46:54PM +0800, Chen-Yu Tsai wrote:
+> The JPEG encoder found in the Hantro H1 encoder block only produces a
+> raw entropy-encoded scan. The driver is responsible for building a JPEG
+> compliant bitstream and placing the entropy-encoded scan in it. Right
+> now the driver uses a bounce buffer for the hardware to output the raw
+> scan to.
 > 
->   rockchip-rga: probe of ff680000.rga failed with error -12
+> In commit e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG
+> codec_ops.done"), the code that copies the raw scan from the bounce
+> buffer to the capture buffer was moved, but was only hooked up for the
+> Hantro H1 (then RK3288) variant. The RK3399 variant was broken,
+> producing a JPEG bitstream without the scan, and the capture buffer's
+> .bytesused field unset.
 > 
-> This patch fixes the typo.
+> Fix this by duplicating the code that is executed when the JPEG encoder
+> finishes encoding a frame. As the encoded length is read back from
+> hardware, and the variants having different register layouts, the
+> code is duplicated rather than shared.
 > 
-> Fixes: e58430e1d4fd (media: rockchip/rga: fix error handling in probe)
-> Reviewed-by: Dragan Simic <dragan.simic@gmail.com>
-> Signed-off-by: Kyle Copperfield <kmcopper@danwin1210.me>
+> Fixes: e765dba11ec2 ("hantro: Move hantro_enc_buf_finish to JPEG codec_ops.done")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Thanks a lot for fixing this.
+
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+
 > ---
->  drivers/media/platform/rockchip/rga/rga.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> This was developed on the downstream ChromeOS 5.10 kernel (with a hack
+> for .data_offset) and tested with ChromeOS's jpeg_encode_accelerator_unittest
+> patched to accept non-JFIF JPEG streams (https://crrev.com/c/3291480).
 > 
-> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-> index 6759091b15e0..d99ea8973b67 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.c
-> +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -895,7 +895,7 @@ static int rga_probe(struct platform_device *pdev)
->  	}
->  	rga->dst_mmu_pages =
->  		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
-> -	if (rga->dst_mmu_pages) {
-> +	if (!rga->dst_mmu_pages) {
->  		ret = -ENOMEM;
->  		goto free_src_pages;
->  	}
-
-There was supposed to be Smatch warning to catch this bug but Smatch was
-not parsing __get_free_pages() correctly.  I've fixed that so it
-generates a warning now.
-
-drivers/media/platform/rockchip/rga/rga.c:928 rga_probe() warn: 'rga->dst_mmu_pages' from __get_free_pages() not released on lines: 928.
-
-Also I have introduced a new checker warning for code like:
-
-	foo = alloc();
-	if (foo)
-		ret = -ENOMEM;
-
-drivers/media/platform/rockchip/rga/rga.c:896 rga_probe() warn: inverted NULL check
-
-I will test that out tonight.  I've also created a warning for if we
-return success when a function returns NULL but I'm not really
-optimistic that it will work.  Still, you never know until you check so
-I'll test that out as well.
-
-drivers/media/platform/rockchip/rga/rga.c:912 rga_probe() warn: success when 'rga->dst_mmu_pages' is NULL'
-
-regards,
-dan carpenter
+> This was then forward-ported to mainline (name and filename changes) and
+> compile tested only.
+> 
+> ---
+>  .../staging/media/hantro/hantro_h1_jpeg_enc.c   |  2 +-
+>  drivers/staging/media/hantro/hantro_hw.h        |  3 ++-
+>  .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c    | 17 +++++++++++++++++
+>  drivers/staging/media/hantro/rockchip_vpu_hw.c  |  5 +++--
+>  4 files changed, 23 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> index 56cf261a8e95..9cd713c02a45 100644
+> --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> @@ -140,7 +140,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
+>  	return 0;
+>  }
+>  
+> -void hantro_jpeg_enc_done(struct hantro_ctx *ctx)
+> +void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx)
+>  {
+>  	struct hantro_dev *vpu = ctx->dev;
+>  	u32 bytesused = vepu_read(vpu, H1_REG_STR_BUF_LIMIT) / 8;
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index 267a6d33a47b..60d4602d33ed 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -239,7 +239,8 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx);
+>  int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx);
+>  int hantro_jpeg_enc_init(struct hantro_ctx *ctx);
+>  void hantro_jpeg_enc_exit(struct hantro_ctx *ctx);
+> -void hantro_jpeg_enc_done(struct hantro_ctx *ctx);
+> +void hantro_h1_jpeg_enc_done(struct hantro_ctx *ctx);
+> +void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx);
+>  
+>  dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
+>  				   unsigned int dpb_idx);
+> diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
+> index 991213ce1610..5d9ff420f0b5 100644
+> --- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
+> +++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
+> @@ -171,3 +171,20 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
+>  
+>  	return 0;
+>  }
+> +
+> +void rockchip_vpu2_jpeg_enc_done(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	u32 bytesused = vepu_read(vpu, VEPU_REG_STR_BUF_LIMIT) / 8;
+> +	struct vb2_v4l2_buffer *dst_buf = hantro_get_dst_buf(ctx);
+> +
+> +	/*
+> +	 * TODO: Rework the JPEG encoder to eliminate the need
+> +	 * for a bounce buffer.
+> +	 */
+> +	memcpy(vb2_plane_vaddr(&dst_buf->vb2_buf, 0) +
+> +	       ctx->vpu_dst_fmt->header_size,
+> +	       ctx->jpeg_enc.bounce_buffer.cpu, bytesused);
+> +	vb2_set_plane_payload(&dst_buf->vb2_buf, 0,
+> +			      ctx->vpu_dst_fmt->header_size + bytesused);
+> +}
+> diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+> index d4f52957cc53..0c22039162a0 100644
+> --- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+> @@ -343,7 +343,7 @@ static const struct hantro_codec_ops rk3066_vpu_codec_ops[] = {
+>  		.run = hantro_h1_jpeg_enc_run,
+>  		.reset = rockchip_vpu1_enc_reset,
+>  		.init = hantro_jpeg_enc_init,
+> -		.done = hantro_jpeg_enc_done,
+> +		.done = hantro_h1_jpeg_enc_done,
+>  		.exit = hantro_jpeg_enc_exit,
+>  	},
+>  	[HANTRO_MODE_H264_DEC] = {
+> @@ -371,7 +371,7 @@ static const struct hantro_codec_ops rk3288_vpu_codec_ops[] = {
+>  		.run = hantro_h1_jpeg_enc_run,
+>  		.reset = rockchip_vpu1_enc_reset,
+>  		.init = hantro_jpeg_enc_init,
+> -		.done = hantro_jpeg_enc_done,
+> +		.done = hantro_h1_jpeg_enc_done,
+>  		.exit = hantro_jpeg_enc_exit,
+>  	},
+>  	[HANTRO_MODE_H264_DEC] = {
+> @@ -399,6 +399,7 @@ static const struct hantro_codec_ops rk3399_vpu_codec_ops[] = {
+>  		.run = rockchip_vpu2_jpeg_enc_run,
+>  		.reset = rockchip_vpu2_enc_reset,
+>  		.init = hantro_jpeg_enc_init,
+> +		.done = rockchip_vpu2_jpeg_enc_done,
+>  		.exit = hantro_jpeg_enc_exit,
+>  	},
+>  	[HANTRO_MODE_H264_DEC] = {
+> -- 
+> 2.34.0.rc2.393.gf8c9666880-goog
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
