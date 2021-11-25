@@ -4,96 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6597C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 15:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F04BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Nov 2021 15:30:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ai1B1RdBvYGSyKKijSBVIf2cfJQJbvS9+HHL/ZF2bIM=; b=U3dpO20ITSuUFg
-	0RYu6bBvCEiuwKhguVMooTIJAFlYlf0J0Sc24jrpZjNM/H0pPEjw+fk53cgmo40KFZFmHBYhZCubH
-	UjA7YX6E2iYBo04zCSiHF9I5pMEHkgQQgnJdau35QA0ldYRqoqdUbDYCbYbJqgMLCGLgTM32066RH
-	mbDQhOZrO00gPKPpgWaCvBLMv0OmkRS8pLmznGRavGdf3GdlEBqqf3txof8lELLjmJSvl7wSYKxy7
-	qN/N2BwJd5rdPfNb36cGAp1X7DqjRtkq5aLEJWVPlwWVwBkOf5x6vDtZuZ9QpLsW6AdcNWn/0/2iO
-	AHakFOT81LtDu7nEiIgQ==;
+	List-Owner; bh=H/0DejC05MiK138mn8qxYUJt1/8FO/etBKm+3+CVe5M=; b=vCgVCJ3y0ORZd9
+	BHTVMJC2kcmjB/Qr1b1V5BogTMS4K8nYf02LwN/0nGjdvz4YsLubOUcO+su9Xnvra8kT7I8QdSMCo
+	fuii8yyx5XFHold1k3NUaUaxDZ2qdDDnMlPII7pFPDxNqQfFfzhTG4KQIribzyJWUCTdx6LaW01mu
+	nUIoOfPb5usQvojXyobWbmUzAQAexsDKfllpzsHac9sPH4rBuL0NPAJjmsgmKql3U3cbibnSiVFJO
+	EZkNKONJBfoGc8jI5tJDJ/LChVHErlRCizZo2LvGiLh0GQCpU2Q+dVtKmb0cezo1z4tWvQnyGWY86
+	Ip4RRApVfqI9dj2oGqqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqGcc-0080D8-1Y; Thu, 25 Nov 2021 15:25:14 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1mqGhm-0081gX-Vp; Thu, 25 Nov 2021 15:30:34 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqGcZ-0080Bq-N1
- for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 15:25:13 +0000
-Received: by mail-wr1-x434.google.com with SMTP id b12so12443859wrh.4
- for <linux-rockchip@lists.infradead.org>; Thu, 25 Nov 2021 07:25:10 -0800 (PST)
+ id 1mqGhj-0081fS-Jb
+ for linux-rockchip@lists.infradead.org; Thu, 25 Nov 2021 15:30:33 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 137so5942153wma.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 25 Nov 2021 07:30:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
  h=date:from:to:cc:subject:message-id:mail-followup-to:references
  :mime-version:content-disposition:in-reply-to;
- bh=bgokrwfXdRB9SClU9n/nKdZVyUcKPx1fDzLulUzJIPU=;
- b=BktAf1OS+eudDpfgrdZDTSFFMA7Yx1oBn5NMzdoU7qIo8aNQ9mok4e2egctvZU1mko
- URk5CsZF+wfaS2PBAqP0GONNNyChiLkL+Cn3nlkbJubQzzbvN+ZxhxMH6RQhCRyrTmWO
- zzBIJ4Mhg0tjItLDamKowUeOk7aREzY9Rg5Nw=
+ bh=mT5CztXXGEVtVu2lf/CwV1g7OPVgRExJfPGlfmMywm0=;
+ b=PEQF6bMcJoShAAAQZkOF5BkWuiwr/n8dHKen+aLofuFtfwvoi1JRGleq7frRxwDwPz
+ dnnd09H6YI8fqa/4VFmNOCorgx79h5Kb8CTaEQBFTgi9u06DecieiPFcyxaALI3u/tie
+ nIGrxVpEgmrjxTTqEkl42sXE71D31J1/kYVeo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id
  :mail-followup-to:references:mime-version:content-disposition
  :in-reply-to;
- bh=bgokrwfXdRB9SClU9n/nKdZVyUcKPx1fDzLulUzJIPU=;
- b=WsMZ0dKsW9bWgUY2aJi13GhcCXCX1L5QPaKX1l6qvQbGu/Za7Z11Zf4e0Zp5Ni8Dot
- OdMcv7jUHFhPl4r0Pn5qIJdRDMhAnyVxx/jutRj0qw7MOeAVDiXUITBiri8aoL5vxy0j
- KZO6IH9feEtwtIZ5p7lAYVrvVPpfpdFZBiRd8ZKhDDZiWs1c+GNJ8KpP9ZQsKLXjiU67
- kjZOkdaak8ZVb+wD6CIG0lE4tnOEayaPcJu7M0dyfU0EIaHt1fW8hVirOfHhg/pNXwmZ
- c+j4znaYTBsNYM+lZw3hwO2zG1H+dEEu5o8AmeSFtmXAhRfStvTNXCcyU3+lossIImK5
- odKg==
-X-Gm-Message-State: AOAM531dCc8TUSlGrRRfe9vWkitoVFUFJbNsPcSIqFqTUT5LNT3x0wUn
- 8vAaJ0HE1y6iaBt+qK5Useyyxw==
-X-Google-Smtp-Source: ABdhPJwe8pptmsJdDF9M6JUSyrscCdaDaxsY8JQgVcoGOgo8XjGLEdr1e+oL4tgyhJgNNAWjvV0HCw==
-X-Received: by 2002:a5d:6111:: with SMTP id v17mr7637482wrt.512.1637853908242; 
- Thu, 25 Nov 2021 07:25:08 -0800 (PST)
+ bh=mT5CztXXGEVtVu2lf/CwV1g7OPVgRExJfPGlfmMywm0=;
+ b=C0Wk0R8jvh4Ek2V6N//rBrGULRtzU1DFS9IkUC8F2DeWELFSW6E/7SSwb0Kxvzlkn3
+ YSThRNDBhm0JfU7zWBLr1vnZLMo8Vn/1/kOVMWai21xx5lQHTscwC7Q1iJltFk5RjqlX
+ xS1e5+AzgdYLogcHXWU7eSZkOW6isIcK/TahyLmZABaHeFilZWx+JoZRuJdQOLn7wKQq
+ mJJ914UeVm6Ih3l6wDzPZMVesGBj5334vhh84Uh+kQ6RSrCI2e2QpR8ODOjKKiz3wP0Z
+ /OsqtpAKZHbYSJMdeJKRuMNm27n+1UenZysVUkN0wHQcddWtwmjQA8kcM1NUIT0/Dbmc
+ Qe9g==
+X-Gm-Message-State: AOAM533dmeQmKV3h3dD0TQuPOL4y4vFtEjoNBdVSQiLUgAp7MZlW4Fxc
+ XreqDq+Zos92JKzfIgoL4gi+iw==
+X-Google-Smtp-Source: ABdhPJxhA/VhsuDIAS0OWxUiI3i8TAhLLHvv9SkU+3wJwc/Kf9vwByE1Bdg0iWstOjaQzCy5lMbUTQ==
+X-Received: by 2002:a1c:6a0e:: with SMTP id f14mr8313877wmc.58.1637854229881; 
+ Thu, 25 Nov 2021 07:30:29 -0800 (PST)
 Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id bg12sm4220870wmb.5.2021.11.25.07.25.07
+ by smtp.gmail.com with ESMTPSA id p27sm3220547wmi.28.2021.11.25.07.30.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Nov 2021 07:25:07 -0800 (PST)
-Date: Thu, 25 Nov 2021 16:25:05 +0100
+ Thu, 25 Nov 2021 07:30:29 -0800 (PST)
+Date: Thu, 25 Nov 2021 16:30:27 +0100
 From: Daniel Vetter <daniel@ffwll.ch>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+To: Pekka Paalanen <ppaalanen@gmail.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>, Simon Ser <contact@emersion.fr>,
+ Rob Clark <robdclark@chromium.org>,
+ Brian Norris <briannorris@chromium.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@linux.ie>,
  Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
  Doug Anderson <dianders@chromium.org>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Rob Clark <robdclark@gmail.com>, linux-input@vger.kernel.org,
- Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, linux-input@vger.kernel.org
 Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
-Message-ID: <YZ+q0ZlIRoq4nZMl@phenom.ffwll.local>
-Mail-Followup-To: Brian Norris <briannorris@chromium.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Doug Anderson <dianders@chromium.org>,
+Message-ID: <YZ+sEw2ya80bYYaC@phenom.ffwll.local>
+Mail-Followup-To: Pekka Paalanen <ppaalanen@gmail.com>,
+ Simon Ser <contact@emersion.fr>, Rob Clark <robdclark@chromium.org>,
+ Brian Norris <briannorris@chromium.org>,
  Andrzej Hajda <andrzej.hajda@intel.com>,
- Rob Clark <robdclark@gmail.com>, linux-input@vger.kernel.org,
- Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org
+ David Airlie <airlied@linux.ie>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Doug Anderson <dianders@chromium.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ linux-input@vger.kernel.org
 References: <20211117224841.3442482-1-briannorris@chromium.org>
  <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
- <YZYXR4u6VBEi4qnM@phenom.ffwll.local> <YZap4zKo8D5eZc1y@google.com>
- <YZd17jm5Nkfu5YRO@phenom.ffwll.local> <YZf15Ir0LDjkYNF2@google.com>
+ <20211118123928.545dec8a@eldfell>
+ <CAF6AEGuc9JbOsC4Lrvoqo8VzMHq+7ru7Y6_UwoZaGV2wHQ6E5g@mail.gmail.com>
+ <20211119115419.505155b5@eldfell>
+ <YZfIgd8s7uGXAD2X@phenom.ffwll.local>
+ <98236dpcx39iOz8xAYrwGLfiLdwgUlljrbBgHL3wd8A0Wz4KzRk3PR8s_tb5Rxu4eScKI4483kB6Vhv-T64CJYOeQqwXlqo2c-64HvoS5cg=@emersion.fr>
+ <YZfMm3GkFereYPTZ@phenom.ffwll.local>
+ <20211122114342.0d23890f@eldfell>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YZf15Ir0LDjkYNF2@google.com>
+In-Reply-To: <20211122114342.0d23890f@eldfell>
 X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_072511_782745_69313809 
-X-CRM114-Status: GOOD (  37.27  )
+X-CRM114-CacheID: sfid-20211125_073031_683026_70A07D34 
+X-CRM114-Status: GOOD (  42.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,69 +117,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 19, 2021 at 11:07:16AM -0800, Brian Norris wrote:
-> Hi Daniel,
+On Mon, Nov 22, 2021 at 11:43:42AM +0200, Pekka Paalanen wrote:
+> On Fri, 19 Nov 2021 17:11:07 +0100
+> Daniel Vetter <daniel@ffwll.ch> wrote:
 > 
-> On Fri, Nov 19, 2021 at 11:01:18AM +0100, Daniel Vetter wrote:
-> > On Thu, Nov 18, 2021 at 11:30:43AM -0800, Brian Norris wrote:
-> > > On Thu, Nov 18, 2021 at 10:05:11AM +0100, Daniel Vetter wrote:
-> > > > On Wed, Nov 17, 2021 at 02:48:40PM -0800, Brian Norris wrote:
-> > > > > --- a/drivers/gpu/drm/Kconfig
-> > > > > +++ b/drivers/gpu/drm/Kconfig
-> > > > > @@ -79,9 +79,15 @@ config DRM_DEBUG_SELFTEST
-> > > > >  
-> > > > >  	  If in doubt, say "N".
-> > > > >  
-> > > > > +config DRM_INPUT_HELPER
-> > > > > +	def_bool y
-> > > > > +	depends on DRM_KMS_HELPER
-> > > > > +	depends on INPUT
-> > > > 
-> > > > Uh please no configs for each thing, it just makes everything more
-> > > > complex. Do we _really_ need this?
+> > On Fri, Nov 19, 2021 at 04:04:28PM +0000, Simon Ser wrote:
+> > > On Friday, November 19th, 2021 at 16:53, Daniel Vetter <daniel@ffwll.ch> wrote:
+> > >   
+> > > > Random idea ... should we perhaps let userspace connect the boosting? I.e.
+> > > > we do a bunch of standardized boost targets (render clocks, display sr
+> > > > exit), and userspace can then connect it to whichever input device it
+> > > > wants to?  
 > > > 
-> > > First, it's not a configurable option (a user will never see this nor
-> > > have to answer Y/N to it); it only serves as an intermediary to express
-> > > the CONFIG_INPUT dependency (which is necessary) without making
-> > > DRM_KMS_HELPER fully depend on CONFIG_INPUT. (We should be able to run
-> > > display stacks without the input subsystem.)
+> > > On IRC we discussed having user-space hand over a FD to the kernel. When the FD
+> > > becomes readable, the kernel triggers the boost.
+> > > 
+> > > This would let user-space use e.g. an input device, an eventfd, or an epoll FD
+> > > with any combination of these as the boost signal.  
 > > 
-> > I'm not so much worried about the user cost, but the maintenance cost.
-> > Kbuild config complexity is ridiculous, anything that adds even a bit is
-> > really silly.
-> > 
-> > > The closest alternative I can think of with fewer Kconfig symbols is to
-> > > just use CONFIG_INPUT directly in the code, to decide whether to provide
-> > > the helpers or else just stub them out. But that has a problem of not
-> > > properly expressing the =m vs. =y necessity: if, for example,
-> > > CONFIG_DRM_KMS_HELPER=y and CONFIG_INPUT=m, then we'll have linker
-> > > issues.
-> > 
-> > Usually this is done by providing static inline dummy implementations in
-> > the headers. That avoids having to sprinkle new Kconfig symbols all over.
+> > Can userspace filter eventfd appropriately like we do here? And can they
+> > get at that maybe 2nd eventfd from logind or whatever there is on distros
+> > where /dev access is locked down for compositors/users.
 > 
-> Right, I already did that, and I'm not sprinkling
-> CONFIG_DRM_INPUT_HELPER much. (I do include one around the module
-> parameter, because it doesn't make much sense to have the module
-> parameter even exist, if the underlying feature is stubbed out.)
+> (Mind, eventfd is a specific thing, see 'man eventfd', and evdev/input
+> device fd is different.)
+
+Yeah I was a bit sloppy, but I knew.
+
+> I don't think any of that is any problem when userspace prepares an
+> epoll fd to be given to the boosting machinery. The boosting machinery
+> could have several different targets as well, PSR vs. GPU clocks and
+> whatnot.
 > 
-> But that doesn't solve the problem in my last sentence, involving
-> tristates. The "stub inline" approach only works well for boolean
-> features -- either built-in, or disabled. Once your feature is in a
-> module, you need to ensure that no built-in code depends on it.
+> I envision a compositor to maintain an epoll fd for boosting by
+> adding/removing the same device fds to it that it already uses in its
+> operations. I don't see any need to open new device fds just for
+> boosting. It's only the epoll fd given to the kernel and after that the
+> epoll set can still be changed, right?
 > 
-> Do you want DRM_KMS_HELPER to unconditionally depend on CONFIG_INPUT? If
-> so, I can just add a 'select' or 'depend' and drop this intermediate
-> symbol.
-> If not, then what do you expect to happen with DRM_KMS_HELPER=y and
-> CONFIG_INPUT=m?
+> The boosting machinery would never actually read or write the
+> registered fd(s), so it would not interfere with the normal operations.
+> But it also means the fd will remain readable until userspace services
+> it. Userspace may need to set up that epoll set very carefully to have
+> it work right (e.g. edge-triggered?).
+> 
+> If your input handling is in a different process than the DRM poking
+> for some reason, the epoll fd should still work if:
+> - it is possible to use SCM_RIGHTS to pass the epollfd from the
+>   input process to the DRM process, and
+> - you cannot extract the watched fds from an epoll fd.
+> 
+> Do we have those assumptions today?
+> 
+> Then the attack surface in the DRM process is limited to changing the
+> epoll set of which fds can trigger boosting, but the DRM process can do
+> that anyway. I also presume the input process can still add and remove
+> fds from the epoll set even afterwards.
+> 
+> > I do agree that if we can do this generically maybe we should, but also
+> > the use-case for input boosting is pretty well defined. I think it's just
+> > about making sure that compositors is in control, and that we don't make
+> > it worse (e.g. with the sr exit adding latency when the compositor can
+> > redraw quickly enough).
+> 
+> The epollfd design sounds very good to me. One can register an
+> arbitrary set of fds with it, and use even eventfds in the set to have
+> purely software triggers.
 
-Yeah just add the dependency. If you still want to keep it optional the
-way to do it is to add
-
-	depends on FOO || FOO=n
-
-And then just have #if IS_ENABLED(FOO) around your inline wrappers.
+Yeah I think just allowing to internall poll on any arbitrary fd sounds
+like a neat interface. Userspace should then be able to do whatever it
+wants to.
 -Daniel
 -- 
 Daniel Vetter
