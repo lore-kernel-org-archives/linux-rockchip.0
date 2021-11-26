@@ -4,49 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CF46C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 08:16:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DC6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 12:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jS87y7EuYdkzQgK5ocXOTstLrrfsPuDE1DvefL5Dcjc=; b=NEoXsxb16xrPRn
-	mH3MRZ3QlpWP4P1Neyie7izO2T2Faf/EEThtT8rT76Mj9C83iVZYcz3AWYB0dg2Gl85oom9Yp2S6K
-	Q5WoVEf7XnHa1Hj1Oj+g/AzMO/x/fIY8bkmXFPn60LIdN2ptHT/lkJlPMWZwH/5v9r5wiihSG2GLA
-	rNSIEbA2zM6ixWlh0UhoDKoO53S6WH/xGK3FJ1lMdjBEYrChtliWF9CHprkQfVbOk94IhvsHfbfez
-	VUWFpRRNHGP0J5r9+HdoXys9if0SMjG9Bxz+PPu/f+WVg+uP3uDMfP0RZNu4HwpIQtRChwFbLN9sa
-	zNB3XPv7eorV4MamCBZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cFjDHq9btYCTGVUczcjAFja+mIGyXY1sObxAJdZla/4=; b=GgHpXr6IqiUiop
+	TQwqaLBB3HNBdn9nEa2L/vdIQNPUsRZWGqGYI08qklN7Jg/WGua27Md3Qj5gyjGXBXVNpYOAvuuJU
+	oIawCBr9tSOXcb1vo56veDyu1BYoLOKHHW4xCtECD06uRRRWP9z2jqJ/bv3m/HDnwygQiW/DfuBBk
+	Ccw3SoFzkyJMZWpeURL4iiN+L0d3by1l3nV+1SqbKGJyOKqoqzUp5hJNURZnE4xpbg8WCZaD4nYPg
+	tggmJGnsADsh11Xv537391iIRaiWs5LmbJ7BqobBgTUP7TvS6na6fstgnbbVykuuOGOKArcm/AHYO
+	o1OqVqrC5+Bo3X1MQShw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqWOo-009ad6-ON; Fri, 26 Nov 2021 08:16:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1mqaYC-00AQJ9-0r; Fri, 26 Nov 2021 12:42:00 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqWOc-009abD-2N; Fri, 26 Nov 2021 08:15:51 +0000
-Received: from ip5f5b2004.dynamic.kabel-deutschland.de ([95.91.32.4]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1mqWOX-0008Mz-Bs; Fri, 26 Nov 2021 09:15:45 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Johan Jonker <jbx6244@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 08/12] arm64: dts: rockchip: rk356x: Add VOP2 nodes
-Date: Fri, 26 Nov 2021 09:15:44 +0100
-Message-ID: <2143457.uCsENmBeE3@diego>
-In-Reply-To: <20211126074021.GH28260@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <8451aeb1-03c9-6c90-c95e-c4a76e2159b8@gmail.com>
- <20211126074021.GH28260@pengutronix.de>
+ id 1mqaKH-00AMkz-9w; Fri, 26 Nov 2021 12:27:38 +0000
+Received: by mail-wr1-x434.google.com with SMTP id u18so18297229wrg.5;
+ Fri, 26 Nov 2021 04:27:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WveCJzDdl0l4mujHAZT0CFJQL1dFWMtBRgbLVlZUP+I=;
+ b=IzyJSpDdodNAlKNmlR90BQJ5l4tpvEZ0kwc43qEk93WVIkE+efu5gBF+jsRPDOClqf
+ U2xBWJN13j3yAUqeTXy38pv8zF0hlifdBpo53iFycnZ9Xm54T1j/X3jjSAfGbXH8YWof
+ D/qrMQxUnIsSLbBF6XhjsnkshP0b5DpZ23bJC6+2jRQLgvDKuTrmOy9zVwRcXRqDzSzl
+ i7TbAPwcgxlf4XkbH/R6q/RQfCeNVudCW0GNYjhoeuuo62k+9+r4WqbuskJ+c0+Ob4SF
+ DmSzWyoFI37FDqnTT0yjIX3FcyFrV57nIXb6c1vb4lkqttde4LnxzkrxOaiM17SPD+3Q
+ K0bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WveCJzDdl0l4mujHAZT0CFJQL1dFWMtBRgbLVlZUP+I=;
+ b=5Y1+etBbFsyHkhGCINXdkgxj+sq+Ww/6N0MNSYo6t4dsYGHPij2fG2MnOsNtXHMwGp
+ BVW4/EuRgcroKa3Ny5ILTi7NCIOqtEc32w8BTnoW8B2G/ucrLKm/c62j9fIqJJimDbWU
+ 3RNuQX9RVaFKrszEX2BjyXsUO5iENZbVT5REqXsdgbrZ2rOzDk0DMPKSYj8y9OhD5lp+
+ +p+mJpXOt9MuO69gGdGlAGKsBDYa13bZ2yyIBRsIMUiU5BruNIgF9ViIcRLU9g5zOo9P
+ 58xCBR4y+9uxFvXTUDaPDZUvONzSfIwpDCSLgDQ+QkPWNYF7Dk/VWUzC9+fl3agXt4NF
+ Cynw==
+X-Gm-Message-State: AOAM531dVBhaOt0c014Tz/3Vu6J0XEUda80wmbn7blTdUXe7Gkm7N8Mb
+ 05EcfNJ7IzZn1keWV5Ln5/E=
+X-Google-Smtp-Source: ABdhPJx54lWgxLYEUOC+es5kBFdEmvYdXvy16mln+hQlaUlaFl31L6MyfZMZLsAIUBBva9tq6zuH2A==
+X-Received: by 2002:a05:6000:18ad:: with SMTP id
+ b13mr14244388wri.195.1637929654549; 
+ Fri, 26 Nov 2021 04:27:34 -0800 (PST)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id l7sm6821130wry.86.2021.11.26.04.27.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Nov 2021 04:27:33 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/2] HDMI Audio on RK356x/Quartz64 Model A
+Date: Fri, 26 Nov 2021 13:27:16 +0100
+Message-Id: <20211126122718.631506-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
+X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_001550_153543_99392A80 
-X-CRM114-Status: GOOD (  29.40  )
+X-CRM114-CacheID: sfid-20211126_042737_398193_8DF1578D 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,82 +90,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 26. November 2021, 08:40:21 CET schrieb Sascha Hauer:
-> On Thu, Nov 25, 2021 at 09:25:28PM +0100, Johan Jonker wrote:
-> > Hi Sascha,
-> > 
-> > 
-> > On 11/17/21 3:33 PM, Sascha Hauer wrote:
-> > > The VOP2 is the display output controller on the RK3568. Add the node
-> > > for it to the dtsi file along with the required display-subsystem node
-> > > and the iommu node.
-> > > 
-> > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > ---
-> > >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 52 ++++++++++++++++++++++++
-> > >  1 file changed, 52 insertions(+)
-> > > 
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > > index 46d9552f60284..6ebf7c14e096a 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > > @@ -447,6 +447,58 @@ gmac1_mtl_tx_setup: tx-queues-config {
-> > >  		};
-> > >  	};
-> > >  
-> > 
-> > > +	display_subsystem: display-subsystem {
-> > > +		compatible = "rockchip,display-subsystem";
-> > > +		ports = <&vop_out>;
-> > > +	};
-> > 
-> > Some DT sort rules:
-> > 
-> > For nodes:
-> > Sort things without reg alphabetical first,
-> > then sort the rest by reg address.
-> > 
-> > > +
-> > > +	vop: vop@fe040000 {
-> > 
-> > > +		compatible = "rockchip,rk3568-vop";
-> > 
-> > From rockchip-vop2.yaml:
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > 
-> > +      - rockchip,rk3568-vop
-> > +      - rockchip,rk3566-vop
-> > 
-> > Maybe sort yaml compatibles in alphabetical order.
-> > 
-> > rockchip,rk3566-vop is not used in the dtsi I think.
-> > 
-> > Comment by Andy Yan:
-> > > 
-> > > But take care that the vop on rk3566 has a special limitation: there are 
-> > > three
-> > > 
-> > > windows(Cluster1/Esmart1/Smart1) that have a mirror lock, that means they
-> > > 
-> > > can't be programed framebuffer address independently , they can only
-> > > 
-> > > share framebuffer address with Cluster0/Esmart0/Smart0.
-> > 
-> > Question:
-> > Given Andy's comment could someone explain weather the vop and hdmi
-> > nodes should be in rk3566.dtsi and rk3568.dtsi with an extra
-> > rockchip,rk3566-dw-hdmi compatible?
-> 
-> We could put the vop/hdmi nodes into rk356x.dtsi and just add the
-> compatible properties to rk3566.dtsi and rk3568.dtsi.
+This enables HDMI audio on Quartz64 Model A, and the RK356x SoC in
+general. The patches require the VOP2 patchset[1] and my I2S/TDM
+controller fix[2] to work.
 
-sounds about right. We have similar solutions in place in other socs.
+i2s0 on the RK356x is connected to HDMI, and only has one DMA. I've
+confirmed this with the TRM. With [2] the driver now handles this
+properly, and does not try to register a capture PCM in this case.
 
-Heiko
+To test this, one needs a video clock, i.e. there is no audio if your
+screen is off. I've found that running kmscube momentarily is enough
+to make the VOP2 keep the screen turned on indefinitely, which is
+a pleasant quirk in this case.
 
+Changes in v2:
+ - reordered nodes in rk356x.dtsi to conform
+ - reordered properties in rk356x.dtsi to conform
+ - add Michael Riesch's Tested-by to rk356x.dtsi
 
+Nicolas Frattaroli (2):
+  arm64: dts: rockchip: rk356x: Add HDMI audio nodes
+  arm64: dts: rockchip: Enable HDMI audio on Quartz64 A
+
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  8 +++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 33 +++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+
+-- 
+2.34.0
 
 
 _______________________________________________
