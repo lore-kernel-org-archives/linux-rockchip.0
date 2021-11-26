@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4918C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 12:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D44ABC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 12:47:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a3oby7pMfcLdXFiaFEgxDoOVJQz8mJcksTIYxt+vnYM=; b=ijfySfvBN/glhw
-	rj0JI+eP1irG/r8gt2qMnIWWp+sR440cCi/Z6svnsCaBwV2dxoc+u2I0GeyzInnvOf2Yqn0FO91yq
-	iyjIMNuAtxa+4mwzEHe38kVtr1u31AxhCD+GZtaQ93G7GnkF/54EKpdl7IV+k17ym4OZsApAywdi2
-	hVRsHK8zvbQKPNdXfZKgztrpBDE4EaDfoLyNv6Z/aJzpBpB7dDRMNNKg3I4mZHqFnwa7m+/ulHG4k
-	YqsQsoFeTCXOlbwR4eQkoaadf3WPLs53a4aIAbd5+6p2WdkQS/oseIUGTfZmrOrz7dOnSNMIBZIJF
-	XbW+mIWzrs1cPUtdiUAA==;
+	List-Owner; bh=RwpJh1aPBVUTFXaTbaOanQliIu8GJE7Ecmt3tuGpdtI=; b=ANWB5Md6tBWMQ/
+	EP4ZF8OBzzw5+sYNQpgDOSDxb9GWXBR3A2GIdhDy7bZ01LZxtw0L01AjorndtHpf0Dy/ARvi9FBbd
+	AYeMF2O4x/9StWxpjFCjY8Uz6CCboXvGo2wKRwfT8sWkThViTWSMg7jIwOVqcr0LX3EmQ4QPJAl6m
+	hIYn58MflYG75GYIq9e7q92MdVUt75sS1NzgAaOSNcOjxpB8ZsWQHxkcFsraHS+Xoc7YKz3pC/Sfx
+	twKyoY+jhNGRq5O6yhT7vEcRwkU2/1HNrqe8SP+aYyiMrtqlh4aKoX2+xe07LyVHbc9zrFt0jrMqK
+	zKb+drzMjrKi9CFTjprQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqaaQ-00AR19-NH; Fri, 26 Nov 2021 12:44:18 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1mqadf-00ASGE-PL; Fri, 26 Nov 2021 12:47:39 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqaKQ-00AMph-Ax; Fri, 26 Nov 2021 12:27:47 +0000
-Received: by mail-wr1-x433.google.com with SMTP id u18so18298044wrg.5;
- Fri, 26 Nov 2021 04:27:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=sonVc1z4s9yp3qxr+30Ehdj21m5HXG+GbXci1EkRyd0=;
- b=Uqz80p3L8NEW/rbj1SDrZzbA7hcMP2L9VMWdr3x9ZaTGxvm6/h532VejkDZJPlaAno
- f9MgLrnbbyUWAylerTMM7saV6+1chfNDltqsTZWL0wyXH7YX6Uj+onUEQVG7+hYQNTPb
- GZUgCt+lH7MbDmm7GAYW8QvcNI44kCvdKG+Rw7dOOvGi3BDUV10pCr/3Z4/6f7i0uuh1
- oV7aAfO1MgsgoS+G00jeqDCKGb87JUqRvZNLMzj46ISLjjZWjP13qlsS9RB0TDuPamlS
- GBjCYtoP2HyAbfkEbxF3oO2wn42N5FMqsv61cQMyTzluZwrOdmnZDmYb7XW1YXeJaTOh
- KKGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=sonVc1z4s9yp3qxr+30Ehdj21m5HXG+GbXci1EkRyd0=;
- b=eJ6VBO4VPC4lN6ITu6IhRQE3+m6gkw0VmomKagcSshICGr2vEIE3up9yxOOT93gMe5
- 48VhXxGmmUP3Pm6wLkPlRMRcvpAAbaS1DjXFtwjvLk46KHQ3o30gJrDdn/pGuvI5R+KU
- 5J4qdcGieuFyFWMTBV12TyVxrern/6Ulu6QXSg8bqvCSj/Jw8tPENu4MJrTStvmeX1cK
- 0dEH/9tffE/dMc43HP4GX1pHD6XVNPvrJ6DAR3AS78auCD+IE2Xlgmis4xTiIVXIF9Aa
- zoug6vWF1asgidq4EQ/PZzdszOWSATPNLgTXvTGlDcU7ehtkDXqcGWb+10nfPW1L8Pr0
- jrHA==
-X-Gm-Message-State: AOAM533DncG/zjuy1frSCc7BTu+nL4h5xdQtZsk8KkcY3CbUDqo63xYF
- 8J9g2dWgpSVOFZm+WHXDA1Y=
-X-Google-Smtp-Source: ABdhPJxLoAiEsj9xkUs1FxX2QVzAhJB9SOnP8TF2FqFWAPqf9XSvRl5JWt+sb6SxrSPe1b7EK/4RNA==
-X-Received: by 2002:adf:e391:: with SMTP id e17mr13589765wrm.613.1637929664475; 
- Fri, 26 Nov 2021 04:27:44 -0800 (PST)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id l7sm6821130wry.86.2021.11.26.04.27.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Nov 2021 04:27:44 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Enable HDMI audio on Quartz64 A
-Date: Fri, 26 Nov 2021 13:27:18 +0100
-Message-Id: <20211126122718.631506-3-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.34.0
-In-Reply-To: <20211126122718.631506-1-frattaroli.nicolas@gmail.com>
-References: <20211126122718.631506-1-frattaroli.nicolas@gmail.com>
+ id 1mqaVZ-00APWN-ON; Fri, 26 Nov 2021 12:39:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description; bh=6Q8FkNR0DNeahIkoGpQtYJLzOambxup0KYyLRA9vCcY=; b=hjUMA
+ LFrtuLT9/WLkRW0wCzOVZzXTcy0gZsOZt0xnR9prHD9xP991ArgEVv91sadR6YmjKUf8H+dBJS4XI
+ jpfipRFa9k76XKDJQhhOYdiDHVYlnXHxCvKJr+zZYeo4/vXFyy9Z2VUGET8+ARF+ZM7+TKlbdbIrd
+ 79G2asIgrjBrk9/v1p6rcLSBodwCOxYvNsM4YA9HWGxyCmaWNrcRYcT7WqJbiT+P0/zUeqv973zAs
+ TJljWxj28IWz+vm3b1vNSdHe2yMdgx/wWys7Cxqlyo2guwQevyXIlVftaoTWTeibzfDCOeCiMTfsf
+ qCqTy/ELzRKDsi1GOs6DvBYR//wog==;
+Received: from [81.174.171.191] (helo=donbot)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1mqaVM-0005gT-LX; Fri, 26 Nov 2021 12:39:04 +0000
+Date: Fri, 26 Nov 2021 12:39:03 +0000
+From: John Keeping <john@metanate.com>
+To: Jaehoon Chung <jh80.chung@samsung.com>
+Cc: linux-mmc@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH 4/4] mmc: dw_mmc: exynos: use common_caps
+Message-ID: <YaDVZ94vQ/O5djuA@donbot>
+References: <20211124184603.3897245-1-john@metanate.com>
+ <CGME20211124184628epcas1p4130e325d30e2e32113f5c5cdf2d6c85d@epcas1p4.samsung.com>
+ <20211124184603.3897245-5-john@metanate.com>
+ <bfb7cc7f-d01a-f99e-2085-d1b3e252d7dd@samsung.com>
 MIME-Version: 1.0
-X-Patchwork-Bot: notify
+Content-Disposition: inline
+In-Reply-To: <bfb7cc7f-d01a-f99e-2085-d1b3e252d7dd@samsung.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_042746_423282_7C9D1A13 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20211126_043917_842751_9E5B5D77 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,43 +75,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This enables the i2s0 controller and the hdmi-sound node on
-the PINE64 Quartz64 Model A single-board computer.
+On Fri, Nov 26, 2021 at 08:38:20AM +0900, Jaehoon Chung wrote:
+> On 11/25/21 3:46 AM, John Keeping wrote:
+> > Move the common MMC_CAP_CMD23 capability to common_caps so that only the
+> > special case of MMC_CAP_1_8V_DDR and MMC_CAP_8_BIT_DATA are set via
+> > caps/num_caps.  Both of those can, and should, be set via device tree
+> > properties instead, so we can now say that exynos_dwmmc_caps is only
+> > used for backwards compatibility.
+> > 
+> > Signed-off-by: John Keeping <john@metanate.com>
+> 
+> 
+> Reviewed-by: Jaehoon Chung <jh80.chung@samsung.com>
+> 
+> Added minor comment..
+> 
+> > ---
+> >  drivers/mmc/host/dw_mmc-exynos.c | 9 +++++----
+> >  1 file changed, 5 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/host/dw_mmc-exynos.c b/drivers/mmc/host/dw_mmc-exynos.c
+> > index c2dd29ef45c6..f76eeeb0cc53 100644
+> > --- a/drivers/mmc/host/dw_mmc-exynos.c
+> > +++ b/drivers/mmc/host/dw_mmc-exynos.c
+> > @@ -526,15 +526,16 @@ static int dw_mci_exynos_prepare_hs400_tuning(struct dw_mci *host,
+> >  
+> >  /* Common capabilities of Exynos4/Exynos5 SoC */
+> >  static unsigned long exynos_dwmmc_caps[4] = {
+> > -	MMC_CAP_1_8V_DDR | MMC_CAP_8_BIT_DATA | MMC_CAP_CMD23,
+> > -	MMC_CAP_CMD23,
+> > -	MMC_CAP_CMD23,
+> > -	MMC_CAP_CMD23,
+> > +	MMC_CAP_1_8V_DDR | MMC_CAP_8_BIT_DATA,
+> > +	0,
+> > +	0,
+> > +	0,
+> >  };
+> 
+> It can be removed all things.
 
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Do you mean that the MMC_CAP_1_8V_DDR | MMC_CAP_8_BIT_DATA entries are
+not needed at all?
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index a4453c82b03d..0598510dce58 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -215,6 +215,10 @@ &hdmi_in_vp0 {
- 	status = "okay";
- };
- 
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
- &gpu {
- 	mali-supply = <&vdd_gpu>;
- 	status = "okay";
-@@ -444,6 +448,10 @@ regulator-state-mem {
- 	};
- };
- 
-+&i2s0_8ch {
-+	status = "okay";
-+};
-+
- &i2s1_8ch {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2s1m0_sclktx
--- 
-2.34.0
+I know those can be set via DT but I don't think any Exynos DTs are
+currently using mmc-ddr-1_8v, so removing MMC_CAP_1_8V_DDR looks like a
+change in behaviour.
 
+MMC_CAP_8_BIT_DATA looks easier to remove, although
+exynos4412-p4note.dtsi seems to set the incorrect bus-width for mshc_0
+so there would be a change of behaviour on that platform from removing
+this.
+
+Maybe it makes sense to add a warning in dw_mci_init_slot_caps() if any
+new caps are set by drv_data->caps[ctrl_id], to make it clear that this
+is deprecated.
+
+
+Regards,
+John
 
 _______________________________________________
 Linux-rockchip mailing list
