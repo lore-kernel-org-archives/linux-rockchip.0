@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3645C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 15:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D59C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Nov 2021 15:44:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tRGGw0jfbyHLBtgHwyWyrxNj/zOF9xLdBLRuCvBYmEA=; b=2Qs13Cs0ewOy/l
-	L7n+e0Fo+zZ3Hh3Km6uOxn8oWyTqIaMM8ZXgmmvzRxHUb5OPnlX22JzMT2caTSPpVjaUhhUnJTA7U
-	ilw5ex/Vx+uLnedYPGE+t0gnE84gBoblU4fWSSofwVh0kp2C+X8CAAcHprW6Jo0xq722Ull3N2oQv
-	J1aLd5PY9BOwinbweQJG5LPQWd6MbCbyALdqip7Dg3jQ+oPgOGit3bRoXMB8qgosD7sHO4yHknBq0
-	+/SJIF04TEjUwdQWYuM46MAXMmZjqFk+iBINfvboAZjVF4qPjKR42GSFqIQ1JOaaUYL/JmzsGNsl3
-	p5FS2zSYUefYFKn71KeA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KxJuumguWWF79tQXR+j5ECUEvlwL6vV5kZDRv+/abf4=; b=oUKkCKuYe0jvwj
+	W+/QLBIRIXiGUl8fYT21N/cxVflG22jwBiPqOpQZEDJ3xlWqOirIXFb+bWL2NFxDeg0DbcI2UCAdW
+	tMqrUD9mkjQgJxW3D3cckgCnN7IAl8B3c2WttmDd7d9F6ApOlVEnlxHhKFoBX3oQezk5hLAWLn9H/
+	ELcAxdPWuy6AULOYPk0wNKQa9aGPaRk2QhPM1y70OZ/3ssP6WVQrRW3FjGpIm679o/jlP6YJ8ZTaM
+	jYvV3Z9hw14ZvwH+bUZf0zdjJYaFU+o+C/ZDUfALn5kR2ITdf8estfTJ0ooOZFPpXWteb5P1USlwh
+	rrhj4bVpODCSbx+QK4FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqczn-00Atxd-Ub; Fri, 26 Nov 2021 15:18:39 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1mqdOX-00AyuZ-Gw; Fri, 26 Nov 2021 15:44:13 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqcyv-00AtZ5-1f; Fri, 26 Nov 2021 15:17:46 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 137so8438240wma.1;
- Fri, 26 Nov 2021 07:17:40 -0800 (PST)
+ id 1mqdOK-00Ayr7-81; Fri, 26 Nov 2021 15:44:01 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id u18so19524586wrg.5;
+ Fri, 26 Nov 2021 07:44:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+bFxhbi+YBOdMVe3lR8afDXUVB1LyZN9EknvfWnuqO4=;
- b=mkvudNPF7VhYVt3OaOIAEdEVP9/xN3txsrNbt2N/PNBtxwjicL+uesXe06jJs/nJTa
- I+t6D4QCrshuFBo/FLLTCpMxmyangJW6PmcAu7hiHX8Jydw+c8Du+zxbhfdNfsgD3rYR
- +e8Fu85w40PH0/8tUYK7kxJ08VqLuoqorrMxU5ccjp2mMGuNJZyLsLNCo12HXRhA0Ldu
- XeEXF8X9lXBR6HeZcjq6QY0rJGaRFweCdMODSpV6q7f3G9Kgf7oJrILkzQBUfvfuIbOi
- MhZ3ZtCsniUrirkTJrsLdNokgwHlasVmvJNzRJB1oORPNInNVdaN3tDyZoj0VdW+7lcV
- EE7A==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GLkyoLUKpRjZnUdDc279znKmoge1lvnkGD50/gVexkQ=;
+ b=OqVKngMbKLP1DHv9TsYenjFQef9cX6K7kJey9mSlOp6MZOzu3usOtwBL0qb2SNi4EK
+ ffP1HlR1pHpOe7MCNiKzCLNi/xllzf8RTz6nNXz4Ujt3LAOaN6OLa7vnaZb7XvQFGXPF
+ btNKgwianGoMtkWVm7adowHH4JIvmWOGvnzXBPija5qvt9p8cdv12LiLl3M1Lmfvi+cg
+ tEM5Svnk6RyH9iHSCwTb8TWGt1YCB9XSU78W7pamTXnBNDyEkCt3x3+QevXjCso/2Wpi
+ ydRzASYt1K/q3legxeFrgeQYmFHYGCJIjFyNqC8DckkEMt1RMRrNhrU1Ib2hJR3i/uDO
+ W26Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+bFxhbi+YBOdMVe3lR8afDXUVB1LyZN9EknvfWnuqO4=;
- b=aKEXf9np1nnvxtZkB7EnK3VpIP4OXGFCwekM3j3Lp0BMq3mgj0VbA3/Eo/GAxThP6q
- y4uL5R3lRJ2mUEMCwPu7JkDhCxR1v9LNQg2LSTRYmWDWZhEYwHklD3EkQLCGyPwWNfT1
- hI7Q6xUSMvrw5RUTjagbDgSe5FcqzdcXK/gbD5HTfeBacVY3n819dfnfajcy2iyeVj/4
- 9U8dsYQBKXO3pWirir+c4ixWQSf/KZSh24pnIMl3x9pixb41szOQ4oxleuZomOaTyovm
- 7mjj8XbMjPrZ66W3lu7mySZhZS/tIgq+8ETMVFYhZc8PZRKG4T1xRT6X1r1cQZNj6pmv
- ky0Q==
-X-Gm-Message-State: AOAM533y/MVcBZ72XaPFcBWwbvmHkzCkMg3omgJt2s3Ohg/lDI+hhM1e
- 8oxwYdCQYa6iC53j4FN8og==
-X-Google-Smtp-Source: ABdhPJyGQtejEAreYJ4YBr09uEGV/yHcZX3kTWvoWliGGupW6SpIbPKgCZQDD0PhTWt9WmnOjZgT6g==
-X-Received: by 2002:a7b:ce16:: with SMTP id m22mr15743639wmc.39.1637939859270; 
- Fri, 26 Nov 2021 07:17:39 -0800 (PST)
-Received: from alex-ThinkPad-E480.. (ip5b435a69.dynamic.kabel-deutschland.de.
- [91.67.90.105])
- by smtp.googlemail.com with ESMTPSA id k187sm12323496wme.0.2021.11.26.07.17.38
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GLkyoLUKpRjZnUdDc279znKmoge1lvnkGD50/gVexkQ=;
+ b=nNVYJuUfElJ+ths1rVQhaNsGnAr8JeV1WBtCcJFD35PqMtsu660bUY/nxWwE2qN2qU
+ C3O2W/Q+LMJkyU/i/zMkfGgkdlbWBgTZlFAy/slA/wl19BbWjOQn/rl0Rc8gF3PkgUct
+ pT1le2K5KbM6HugrOhYCYoEbhQwZD0+Eio4n6gvJkQchg06VrzDVA+JXD2yvIM6hGhQy
+ jVozjIgmq8a275u8MtnDF+l/hKvmJK1VjVIeuI7/9nZ2WPA48GlY5sFltv7mWEUDL7dW
+ Pt9DTRpCKrrCA/Hu8i1v/Cw0ezzC5jioQrD/yvLqGWLxBjT8L2Zza9HoVXYLTbfkucLY
+ WC5Q==
+X-Gm-Message-State: AOAM530wOSakivFo5HT4uiMMGavQaT5+t1BJZrRCW/yHnSV8UPRWUdxD
+ GIv+P/T8raD6d6nz62xgc2Y=
+X-Google-Smtp-Source: ABdhPJz32axiOIaYWuL5xgqmPKeOpKTpr4MPYCFIT4SmwfpsM90/cnVDf90UkxFLZUgJBM6pUasxug==
+X-Received: by 2002:adf:fa4b:: with SMTP id y11mr15142087wrr.460.1637941439074; 
+ Fri, 26 Nov 2021 07:43:59 -0800 (PST)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84])
+ by smtp.gmail.com with ESMTPSA id p13sm11372400wmi.0.2021.11.26.07.43.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Nov 2021 07:17:38 -0800 (PST)
-From: Alex Bee <knaerzche@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH 1/4] dt-bindings: gpu: mali-bifrost: Allow up to two clocks
-Date: Fri, 26 Nov 2021 16:17:26 +0100
-Message-Id: <20211126151729.1026566-2-knaerzche@gmail.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211126151729.1026566-1-knaerzche@gmail.com>
-References: <20211126151729.1026566-1-knaerzche@gmail.com>
+ Fri, 26 Nov 2021 07:43:58 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] RK356x/Quartz64 Model A SPI
+Date: Fri, 26 Nov 2021 16:43:41 +0100
+Message-Id: <20211126154344.724316-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.34.0
 MIME-Version: 1.0
+X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_071745_166493_8275E234 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20211126_074400_322310_E57ADBB0 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,59 +90,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit b681af0bc1cc ("drm: panfrost: add optional bus_clock")
-added an optional bus_clock to support Allwinner H6 T-720 GPU.
-Increase the max clock items in the dt-binding to reflect this.
+The first patch of this series adds a compatible for rk3568-spi
+to the DT bindings.
 
-Bifrost GPU in Rockchip RK3568 SoCs also has a core and a bus clock
-and it gets added here in a (very) similar way it was done for
-allwinner,sun50i-h6-mali compatible in arm,mali-midgard binding.
+The second adds the SPI nodes for RK3566 and RK3568 SoCs. The nodes
+were lifted from the downstream vendor kernel's devicetree, and were
+double-checked for correctness.
 
-Signed-off-by: Alex Bee <knaerzche@gmail.com>
----
- .../bindings/gpu/arm,mali-bifrost.yaml        | 20 ++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+The third patch sets up the broken-out SPI pins on the Quartz64
+Model A; they use the "m1" set of the pins, not the "m0" set. I
+assume the "m" stands for "mux".
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-index 6f98dd55fb4c..2849a7a97d73 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-@@ -39,7 +39,14 @@ properties:
-       - const: gpu
- 
-   clocks:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 2
-+
-+  clock-names:
-+    minItems: 1
-+    items:
-+      - const: core
-+      - const: bus
- 
-   mali-supply: true
- 
-@@ -118,6 +125,17 @@ allOf:
-         power-domains:
-           maxItems: 1
-         sram-supply: false
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3568-mali
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 2
-+      required:
-+        - clock-names
- 
- examples:
-   - |
+I've tested both patches by connecting an MCP2515 SPI CAN bus
+controller to the spi pins, which initialised fine.
+
+Regards,
+Nicolas Frattaroli
+
+Nicolas Frattaroli (3):
+  dt-bindings: spi: spi-rockchip: Add rk3568-spi compatible
+  arm64: dts: rockchip: Add spi nodes on rk356x
+  arm64: dts: rockchip: Add spi1 pins on Quartz64 A
+
+ .../devicetree/bindings/spi/spi-rockchip.yaml |  1 +
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  5 ++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 68 +++++++++++++++++++
+ 3 files changed, 74 insertions(+)
+
 -- 
-2.30.2
+2.34.0
 
 
 _______________________________________________
