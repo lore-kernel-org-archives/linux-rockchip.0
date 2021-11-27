@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496DDC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Nov 2021 14:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5C3C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Nov 2021 14:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0/ia9BGLt+XJabsqYGVz2TyUj+W5eNCAjfWjPlPKX6A=; b=CIEJ38YDt9qofE
-	0OQc17PVLAeH9A++rupbMDC2A56I50ZX0//W6NgHyElPnlQQ4XGQKJVdpvrzVyQ4DaX85foJ2XId6
-	Pcx9xGgufuP+WH3Wdn0mxPClR0IF9sIpyPCxg3VWFsUjDPT4ecCtD22Zw6l+qsHfdi7F49STUB1Gg
-	/UtPEW2h31OAS/hAwrrzxWDWeh2I3G8WarpDpHXh1ByLcpU44ptiqct1Ghq5J/DkmpjSdO7Zz8FNQ
-	M1NU/3/iTN6IDjcBL5Y+Dh+mBv3MxAMIYCsKlE2g7MEE9KGSON3S+W7BFA+uMJ0E0DJF+QXjh+pO/
-	arGBDnbFricKrKl3qSwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=huekvdzzMVdl8boALAoK9af3uaLHettwJyYh7Nl5p2A=; b=ufqgeFWYs2MPz5
+	6JL7qWsPVCMf3m5lwKaJtBM2dW47TEL5U7ZXPM3ZQDOcGWL7YxAAuPBlIfc7Npn/vU6gcrCbg/vSA
+	o4Er5VP6xErvzG0v+LP4f9pOs2zpmzWXzC8h+JVf0XJtPpUCeJ4JlnsFe6TsAwFLtqtucikYsz5I1
+	3NkaP5wA3AkwRC2XBiVVD0uEXDUmhflEIctYCcdYV473F35wCtC4Y4Q+imCSKh5Ag0gzIntZVQduk
+	8kwkWLDhcuZ1DAhHI/i7Wo7fBlJ9YTWKraCIy0xRzg631BxDgqOrsGHsHmJi5XyafhZcElKk9VKU1
+	qU1aVyRhljkFrdV4LH9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqyYE-00DmT3-K0; Sat, 27 Nov 2021 14:19:38 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1mqyYZ-00DmXs-0r; Sat, 27 Nov 2021 14:19:59 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqyY1-00DmQj-EX; Sat, 27 Nov 2021 14:19:26 +0000
-Received: by mail-wm1-x334.google.com with SMTP id y196so10467007wmc.3;
- Sat, 27 Nov 2021 06:19:24 -0800 (PST)
+ id 1mqyYL-00DmTr-JJ; Sat, 27 Nov 2021 14:19:46 +0000
+Received: by mail-wr1-x431.google.com with SMTP id s13so25255582wrb.3;
+ Sat, 27 Nov 2021 06:19:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xFp9yJ8rZkXgj7ePptPkWdw3Q/P2qqDL2o/jvz8fSVA=;
- b=Dn/5p85mul5rJG5QzcqwN+ymmrQpsTyNF1VyBb2/2WRiYgMzUPB9hGQ11+b0LyEUv2
- ncY3otlJKo7WXwk9WFGo8fPd3fvHZfDvV+nC9rv6ka9AzI36Bwx50riZVrIMKsNSUhcz
- zkbt4l7psn/G8HNBZDoCQbWZX0l0ivQ010vBHlF9yWMZ2rMGoStb1C1Ce7OxiX620dVl
- ALe5zhflAINYKJK8fyI5FLz8jFdc+sZTzmMJiAdMxfiKMDDO27LeAry0i4p/QlvLdd5+
- 0534c51K3c+DjQEAKBqha2Q0v16Cm7ZjdBeA4UOkaQpWFRwFN3fmnra7U3hDprTRTfrl
- 2hSA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Rs1vltk9uRLtJlv1JN67bIfY9H+/oNUCoFzx5XImALc=;
+ b=lusi+qSAJybLG5GOHY9d+VZ66Uvb6zLa8539YNULtqXWBSuk5WXXPn3BsUdtZZGuT3
+ 0CfE4T2V9zzPfDXaWMF4xzwx2vkdfajS86MxTBFBwE5Xs6X8Jx6qFsIjmNa1GUXKBK0s
+ gf4OJNhAI+zdZTKYN6oFIjbF9cqQc/oWqOwFZD9FvScBIZzgol0/bTaXy3I+m/htt+a4
+ R8qo2Ibs2xJOHaUmRmQQD3KLOquDhEEFXmrvaKfJ9K1tDQgVktlLOm5Nn1J+aFntgp32
+ 6EsPcp/2/ZPKTzb7yxdJ5zoilFsU39c21Qpn8zqu5cl5yrVxptaWQ+FxpFiakUxaCFa+
+ aR9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xFp9yJ8rZkXgj7ePptPkWdw3Q/P2qqDL2o/jvz8fSVA=;
- b=ztFpKvllNNXlQ673fT6Q2xN5NsSMu2n1FI+sdaNlo4FPg2fUhv5v4STmnsQjJ8D3V2
- eyJeRfLNztTk1m5IWDA5MckIPZtDhb6IUbrdU+VLcEMmibp2PkCrc+DQz3P227KFV7oe
- 1+dfXm/A/H/z2uOipY/H2EiZfqdMcv++TwiTUmj5oM7fe9ykQ+Gn+4GljJ/guPyde31G
- 0VHKQv/klLaX78pu+N0HfVxsuvfglrQ/DgPbmUypYAgGuLQroI6yeJMXwevzoG19oIsv
- iPWZtN7DNH4PpZl5tuYQiuqoJZhizm51Bfu8qRRKNPDPzM/81ECHJronaHglexW2ZKKn
- BV0w==
-X-Gm-Message-State: AOAM531nZxAcJaNJIzHOkbtgvMcRC+Un3wXYgVSGxbYmVwDAWPVlTdeg
- OPDkgSK1Bf36SAXBEA+e7Rc=
-X-Google-Smtp-Source: ABdhPJzBzdfHExsOWLTrSNW4E0mEbnVK370gPl2fRqZmj0TWJi+4C4nBiEub4EfNn6LocJn0l3xXOw==
-X-Received: by 2002:a1c:f418:: with SMTP id z24mr23529383wma.95.1638022763324; 
- Sat, 27 Nov 2021 06:19:23 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Rs1vltk9uRLtJlv1JN67bIfY9H+/oNUCoFzx5XImALc=;
+ b=a/vFaaaAJutYphOJKX1Mjm2I2EHRRg/SZrblR4HATnLhSeIJeTYvJ6BwZl+tFIOgWd
+ qUsAF9XkPJgVAg9ixnz7L+2Ou+zTTDck3EWrkS5LB/s1owEV/Ks3tGDxKxe2JVefFCiH
+ 0HpSgQT4/0IHBhsa75qZTSvGiMKrW15jpMXxgw7Qwml5uYD/Degxwgb1E8u4C+CSgoRv
+ XXj+javq4/6SrCnQtO5+e9lTiXQHM09DcpC63hdHjhZpLxAgJgpM9bZK4njUDoqnq5qP
+ JirNZyYwZA270Mp69QIz2zX4iY3wx4Vxa7XEZvu58YogQfm6GOhZbp+ELdO9r7fMKCDk
+ jToQ==
+X-Gm-Message-State: AOAM533WHr1MHw2VPtpYJpDSw4th04pZvg24xbJJ8bxXumi3yZsOTL+W
+ X8G1qouLNK5mJi0GnXN4ASWtlGXw3R8=
+X-Google-Smtp-Source: ABdhPJwGX9REL4Zzk45kInjHUw2v717C7ACm/3cCxTw+9Wo5pJuqqqvZ48rpjvcXVRD0pQUq2QotKw==
+X-Received: by 2002:a5d:5151:: with SMTP id u17mr21582797wrt.126.1638022784121; 
+ Sat, 27 Nov 2021 06:19:44 -0800 (PST)
 Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
  [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id o1sm8509839wrn.63.2021.11.27.06.19.21
+ by smtp.gmail.com with ESMTPSA id o1sm8509839wrn.63.2021.11.27.06.19.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 27 Nov 2021 06:19:22 -0800 (PST)
+ Sat, 27 Nov 2021 06:19:43 -0800 (PST)
 From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
 Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/3] RK356x/Quartz64 Model A SPI
-Date: Sat, 27 Nov 2021 15:19:06 +0100
-Message-Id: <20211127141910.12649-1-frattaroli.nicolas@gmail.com>
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/3] dt-bindings: spi: spi-rockchip: Add rk3568-spi
+ compatible
+Date: Sat, 27 Nov 2021 15:19:07 +0100
+Message-Id: <20211127141910.12649-2-frattaroli.nicolas@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20211127141910.12649-1-frattaroli.nicolas@gmail.com>
+References: <20211127141910.12649-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211127_061925_575779_32083EB0 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20211127_061945_661806_E24C2264 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +93,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - sort properties in rk356x.dtsi correctly
- - remove pinctrl-1 line from rk356x.dtsi as it refers to
-   non-mainline stuff
+This adds a compatible string for the SPI controller found on
+the RK3566 and RK3568 SoCs.
 
-Original cover letter:
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-The first patch of this series adds a compatible for rk3568-spi
-to the DT bindings.
-
-The second adds the SPI nodes for RK3566 and RK3568 SoCs. The nodes
-were lifted from the downstream vendor kernel's devicetree, and were
-double-checked for correctness.
-
-The third patch sets up the broken-out SPI pins on the Quartz64
-Model A; they use the "m1" set of the pins, not the "m0" set. I
-assume the "m" stands for "mux".
-
-I've tested both patches by connecting an MCP2515 SPI CAN bus
-controller to the spi pins, which initialised fine.
-
-Regards,
-Nicolas Frattaroli
-
-Nicolas Frattaroli (3):
-  dt-bindings: spi: spi-rockchip: Add rk3568-spi compatible
-  arm64: dts: rockchip: Add spi nodes on rk356x
-  arm64: dts: rockchip: Add spi1 pins on Quartz64 A
-
- .../devicetree/bindings/spi/spi-rockchip.yaml |  1 +
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  5 ++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 64 +++++++++++++++++++
- 3 files changed, 70 insertions(+)
-
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+index 7f987e79337c..52a78a2e362e 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+@@ -33,6 +33,7 @@ properties:
+               - rockchip,rk3328-spi
+               - rockchip,rk3368-spi
+               - rockchip,rk3399-spi
++              - rockchip,rk3568-spi
+               - rockchip,rv1126-spi
+           - const: rockchip,rk3066-spi
+ 
 -- 
 2.34.1
 
