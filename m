@@ -4,69 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A87FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 09:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 186BAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 09:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pLmUfhx0W1On07FT3x8URv7Uo+NpMynhliC7ncl2JwI=; b=O6BUnh9lX+R2krUA12m1872bjP
-	wCWuEXngMS0qpsQjm8lEkRjThkzTZ/MaHUr83nmhuIfyGwXw19mIyRAFCLIetbolkKBYDnVBz/dFs
-	yXXxa9F5gNZjYC2HGsrMKi37VrEO1AHyzujznmautoVpou0haRblgg9R786rm6xbutRrN1ocNjXcQ
-	qsLq6HWZQHFa/aus/Ym6f6sTBhqtASnxV+w2dVqUxmnm8y/cPspspx+5LqBERiOlq0NcN9Xmn2SrX
-	46nHD2A18et7DE5L5mPwCAq0SsSLdI3knUUnjFpddz3Z0HZ5uDDm6sQGFiarcyOvrJ+e/B1kZ8X7v
-	BzL5S7Kw==;
+	bh=c+2LbcfTK0cot88hc4QPBa3RSK3hhvu75biM63MuEM0=; b=iYy8T0I6r4c4/YioKXpEKXD4sv
+	t+bQoyNU7WaNMEITlkctpZnXL5SY7IuNodt4HpZWOU4bBq711UBRbrAjLkTteF5pvfu8kWbu5zyEw
+	//uOnoNJVR/mj3beyN0TrS4yWSZ0AghRjXvWVEdqwmZUeSlnSvV43bijN02OcCdCAf7n2+sFqVBT7
+	F4pgtOvaF/k7ekC6ydiUihEGg2lBYC/lUSF1oFV2IT1CaXhrQT41ZTT/AGlo9wuHPM4CRguFwPQQp
+	M6Ur95AniJ1ocWcwfEvzlNF/xHH47H32LE2bHth77bxYF+r8nbMDc+EL/quw6OlYfoBwQuENVkzJm
+	V9uQFldQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrd6o-000FyB-FF; Mon, 29 Nov 2021 09:38:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1mrd93-000GOU-DV; Mon, 29 Nov 2021 09:40:21 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrd6a-000FwT-VV; Mon, 29 Nov 2021 09:37:50 +0000
+ id 1mrd8q-000GMK-GP; Mon, 29 Nov 2021 09:40:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id EB1A661216;
- Mon, 29 Nov 2021 09:37:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABB53C004E1;
- Mon, 29 Nov 2021 09:37:45 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 268B2B80E4D;
+ Mon, 29 Nov 2021 09:40:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 292D3C004E1;
+ Mon, 29 Nov 2021 09:40:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638178666;
- bh=Fnp3RhDbBTd+N/Si0zHCqyEEQ8HNT8WuTFzETcIGm3w=;
+ s=k20201202; t=1638178805;
+ bh=ZhrZMdR4hI+luzbo+GzPORQaaCnJyhm/SoWTXwO5h1A=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=lIpx4Bua/YUGNKneTex9+IKZz93W8DKDgMNvLpA7/YIm+CI6Fo1nsCTxThnzgcrmq
- C2AxEOpxrU1/CVdYNjK1r9S/rNsbciftD9jIxnolz2UMUUGEJQP9pCOr/vht3yIiME
- xpCWtiA7hZhER17SB3PEnfpGrinP+D/dtXB+gknWMry9D/QrCDGovzv+VCt54k9E/N
- BOI+KVYFjqL+hF6j1K0ZNLYjqGTauHWz1hM7dUG/tmID0i+e0AYePRluK+dqvG6X2A
- 6A9fb1/Cq3o5cSG+W+/gEI4T5LugIS72Z2DRUqeXYuIPe7IeewlidBbuqV9hLNtMn4
- hYgoR0lI7URnQ==
-Date: Mon, 29 Nov 2021 10:37:43 +0100
+ b=BMHoA94rKV5psCRpZ21WtLB5m8KQbFk8E3zmj5YSx8u0eorGyWG0wJTTRW+nFEZXT
+ 5h9O4h5ifkeg/FL4Nfy/hov+Vcis8MW4/48F8rPCSE5jBCvm7wlxTd+064RUhZaE0F
+ q+ePf5i9fErYg4Bj8H9J2fbJC0xJ46LGyBPTReicugSGbGCnNrkji0Ve0qJMWvixTs
+ ZraIgsoWWf2xJq5MqnqxiwGP6/u41+4CX41yiwM7g3W623DnNWaNCxMdOvNhRr3eFW
+ JuI6844RWf4HvSivxn+PA7184vAbVJL/l8NYyaL7iEwIekIP5Q7n8b/ktmVuIN3+V4
+ K314tUybE8rZQ==
+Date: Mon, 29 Nov 2021 10:40:02 +0100
 From: Wolfram Sang <wsa@kernel.org>
-To: Ondrej Jirman <megous@megous.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>
-Subject: Re: [RESEND PATCH] i2c: rk3x: Handle a spurious start completion
- interrupt flag
-Message-ID: <YaSfZxtYtV+SfJqL@kunai>
+To: John Keeping <john@metanate.com>
+Cc: linux-i2c@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] i2c: rk3x: enable clock before getting rate
+Message-ID: <YaSf8uDjGCBHcHyZ@kunai>
 Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
- Ondrej Jirman <megous@megous.com>, Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>
-References: <20210924111528.2924251-1-megous@megous.com>
+ John Keeping <john@metanate.com>, linux-i2c@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20211004131539.1253195-1-john@metanate.com>
 MIME-Version: 1.0
-In-Reply-To: <20210924111528.2924251-1-megous@megous.com>
+In-Reply-To: <20211004131539.1253195-1-john@metanate.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_013749_098498_21CE4E47 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20211129_014008_726215_3BFAF042 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +72,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0997703288864553406=="
+Content-Type: multipart/mixed; boundary="===============0782469241328268372=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0997703288864553406==
+--===============0782469241328268372==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dHdtOdyzSVAJRQNC"
+	protocol="application/pgp-signature"; boundary="m5TcwiphfSOva+uT"
 Content-Disposition: inline
 
 
---dHdtOdyzSVAJRQNC
+--m5TcwiphfSOva+uT
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Oct 04, 2021 at 02:15:39PM +0100, John Keeping wrote:
+> clk_get_rate() is documented as requiring the clock to be enabled.
+> Ensure that the bus clock is enabled before calling clk_get_rate() in
+> rk3x_i2c_probe() to satisfy this requirement.
+>=20
+> Signed-off-by: John Keeping <john@metanate.com>
+
+Doesn't look like an urgent bugfix, so applied to for-next, thanks! Let
+me know if it should go to for-current instead.
 
 
-> This causes I2C transfer being aborted in polled mode from a stop completion
-> handler:
-
-I wonder why this only happens in polling mode? The question behind that
-is: is it really a spurious irq from the HW or is it maybe a race in the
-driver? Because polling uses the same interrupt handler but just
-periodically polls it.
-
-
---dHdtOdyzSVAJRQNC
+--m5TcwiphfSOva+uT
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmGkn2MACgkQFA3kzBSg
-Kbb2jA//exKS6aQIdTvjz8ryB2xg8jb2xyVFPoVlmNgzqLv5zTKeG6F0sLFEgMWy
-sAtUESQl2OHpLbG+XhfN7/hVgIOng97GmAuPQgEluKe75E+U5HUc12izmMEsBdM3
-Y/3A1tutxyW+Zv5hddgRE9imPAAgVo+YQw3oc02Sfx+MWhqRgq3zN8ahNnE5EKhL
-HwsGqD92nC4YkhENS2DqSbVQdW/FXxqYEHitnjziOploo/M3rbAlGMsZD7y3ZsEp
-aSzXw86DWDzzmrLGPaeldx2hr86wnx87ITR4fDqDdFXEGv6HW1x4Kudl8aZGILRL
-nbFOd9wN6lFudmSiZL6SRRJjZnz/weghpgG+5XZAWD64YydsmcL5/X/aE1U7Zv1c
-UujkXwcYwYySXh9wOFHMJlxAq7A49C+Hu88M8DS+QAcsLUtE/CC+X8anHdEyDbpw
-agoocQE2WnQzGRvEo3eJWyk4fHYgPPbyxdNJfOIXy+07XbFluJ1lEkjuDBV/BOjm
-tLUrrouuJD4teX10rXDsLHHHmxhYOi2322s3KqTqlPgLuixVbCxJuRD1ht4tVxL/
-eKwp+QW8ofgnm9HJpylOo3+/PMK/L44+H41JstGW3rzC9YslypSkit7hXNSk6VzA
-AhTZ7APBX3+d4WMONyBE0pNktrz3xync2/B0yrEY8J7FRMvARV0=
-=pHYp
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmGkn/IACgkQFA3kzBSg
+KbZCAA//edcBmoIXEz3MVD3TsEFx5qCOw0SxbZj6aq1kjReXgv81FZWzRs2JzzNp
+h+pO0Yxm26BZ681UJtqr8NzvlUSDmZLiI//jv4xRdkXmOSHY4OCZuK1LdIYFU63Z
+sKLg09YMWpXe9HxPO0ziowG+LGDQDfjS56OJxJEpbjYnSDcWPKV8Jzcw1x5LEg76
+h62m58mZHSX61FL72ay3pHhUuLbBiRaQfP7w4xSibZEsHSrYAiOLI/WvqGkEmHvL
+LGrpLNCemr+5/aQ5+wFVOuide2uKFOlBJWNcNUH5MEFtlMFf+gRaTb4BUNdbXWI9
+hkHqysMMDmyy5mGwDDgm3lil2KV0aAk7bNX1gO5ZZhYU0WCO6lj9e13hJZgdWu4j
+s6L0xEQQ/1wYhNg0qTE+R+8wXQSCOquLFznqnJ2T7+9kpZDQGnM5E6IUUZk1kJYl
+CfDbboUoRYs6wwhZ9jiIXFn2EN5KqBGwC+u8UkOIwPZAH5P96RgmEp2mdPQHH5aL
+LufL2AvruEMRP0e/uFA6aRCQVmX6iUEqDGcrtIcEWLTnJUjMvkaKvY+bhpvgt/eu
+VK0c3nQPYNm5RuLyTRQ7/QeNQ7XjWnDuZARnOuws1EzRf76Zs9Sc08aY1H4MVzpW
+62hFBkeidXaf1cTeAiRPj8c4+twr9Nmg2oaG6YwehlF6pjzmXUI=
+=zvfT
 -----END PGP SIGNATURE-----
 
---dHdtOdyzSVAJRQNC--
+--m5TcwiphfSOva+uT--
 
 
---===============0997703288864553406==
+--===============0782469241328268372==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -138,5 +133,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0997703288864553406==--
+--===============0782469241328268372==--
 
