@@ -4,85 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4FAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 21:10:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC53C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 22:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6YqwUn9LXpXXKX/mQLRMsgqbByTaxRoEXqExeFBL9p8=; b=YxvdP2YC5twIgw
-	ySD/kpm6t9nQ/treHPV373mUe31nrynOG3qA0fYuqTlQNLfslek6tkh2X5fz11mthTP6IUyXofUyo
-	UrYsuf6IhbTP+Ve1hm8id3aUpqz85sgr009XgxmFWhZWknHBbWtfUhin+YoWDft0BU3jdv5uTNxU7
-	qOFx7zPVmRmZOcCcoQC5VveiN9kiAnOSMXwA5Dz0f0CF0eOKRY0S8iEAjS0W7xNQ1hO62cwQ9pq1r
-	uY03NcHqueTflMP7jsEts2puWkBL+HGgyoKmpyv7zWGHsWe6aTsvUnLHidSMoY2Yla7fGTNiMmo+1
-	o4wHeRZAxe8VBEGHDAow==;
+	List-Owner; bh=UVoVOHy/EWXm/EHrPazKj1DkguJdtha7hEmohADEifU=; b=QhpKOvVw+HZmhz
+	Fyftyn6PIsLik2pev/ZpCG8tkjM+RJX9diMWHutw7jOXgoC05YC5lJpbKYHTSqd/RCCfgnbsU9xeI
+	UpjbNHaTjLVWkI9qSo62YjRxWYGESx18LH7uGmIHAyzcb0UX4zkb/5iyZueXEnPMVvDhXHp3Kq9Hu
+	lepSRLMo+/ZglMiytUDGTZNinwRNBVbZ4LUrCU9B4YTHCwZIRFH+r43+mAi2YuO12wzYVrdfQ4w3/
+	3F3KxhK7njMidOmf7QUzt12iXOWrna3Spmadf8fp8+nURzzjI3a6SZgLb5BBYTawbr1dSDeoVVvzU
+	5TVX652oYtjc71xF9IdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrnuW-002cyw-6o; Mon, 29 Nov 2021 21:10:04 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1mrpQM-002wzr-6I; Mon, 29 Nov 2021 22:47:02 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrn2B-002Hft-B0; Mon, 29 Nov 2021 20:13:58 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id t5so77333568edd.0;
- Mon, 29 Nov 2021 12:13:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fi42U/2jTpx4BPkiel0v3NDRtd9dtjlNx3pYLf3HPek=;
- b=Cp149vpQac3NuayyncHRgVWAufJASCZmcQmiC8wTWF0gcADkg5OetNokGVSlko2U5V
- wu95zs4NSFS4Zef9eezxIxUyrXSwLKbBAQod5t5j8q51tKRtYf+I9C35RQ7He8CjsOGj
- ozkkesanML5s0T/kTEQASrhj+zaxg1f4wLkX3jQMn6XnmzMl8ITbNwUe2xP6Ewk887Bg
- bPoCn8Y9V5lj9fxOnFBtkW/ITEqk0Ng7XMbBVgSAsb8aYsMu85Bt71uJpF1a7A1SuXIp
- 1EzEILVjPx8v9ChnM9Gioa5D+yd/pSWgze8wHFEQM7jbT5DHLUkfT5lg1Sw0/K69pveF
- 25tw==
+ id 1mrpQ1-002ws7-8T; Mon, 29 Nov 2021 22:46:42 +0000
+Received: by mail-ot1-f52.google.com with SMTP id
+ 47-20020a9d0332000000b005798ac20d72so27583245otv.9; 
+ Mon, 29 Nov 2021 14:46:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fi42U/2jTpx4BPkiel0v3NDRtd9dtjlNx3pYLf3HPek=;
- b=m0N46UsGlF7zs74lUsP5rsY8V5BUTY22bfEzqXApI76ctMR5YNd7zWN0t2vkZNCYc5
- MDCXyTCVm4SoLGpTXcEaIwlY63csrTOhL9d/3yWNsePxV7aG41yX6U3EeN/1ezY/Zydu
- 1KxKFI6Xf757nWW/JP44BOHm9ImRjEwmWOS4kfuU6TOjw2fZxpQyvFOMR74qxVrfp056
- F//6RreC04BC0v7FgfEVogyGBI/sjfsWevN2vM45bS+0wyo4pXs43+PLPEYeQqQoYqDQ
- o8KrdXY3yt/L68/K1dH8UCtMeatl7f10xuAWcNXpq8O/zM0vcRzzCTfWbf/RztywnWS8
- F2ow==
-X-Gm-Message-State: AOAM532pAxfBRlBaNLX9jong3kyl/we/HtrFzjoFTdTCCycj41ZIBBh9
- CyB0a9+6iaprObJJ/u5P/StMlky631xEGuY8Qp0=
-X-Google-Smtp-Source: ABdhPJxomutnM/GNTZ/jmxeBw2lYvQB2BV61no9JvRS0JnbN0CtivcJkvJEPPqNAW7GUtFRbx/PgSf3ryQizZel12NE=
-X-Received: by 2002:a05:6402:3595:: with SMTP id
- y21mr78068428edc.332.1638216832876; 
- Mon, 29 Nov 2021 12:13:52 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=vlaUIuTpfkQHFZYUbKS4f3lFAsn1jJAs7KRU7cm0X2I=;
+ b=XNjRL5UbYV8cafKMEYh9/qO432aM1shMx1fNO9FOvaFUrc5/eh2XOZlUK2yFOCrBD/
+ VgjyIMhfVYI0dxN1fW8WyK9R6SV0QxmDqNnvOd5oPwb1LvaE3lIwaAFxfW2XxFSxXafu
+ z4mCqPPtfVKcxbkpFNAqaNyFSF7/GSYPyYdRqltp88LHfXuTr8ziCnpteMQqV4/gj5iW
+ rlxHKTGhJ6RSpyDHA0b4/NBcwcsc+52phUobassjIPx5879BOXxKOOZpiu2KMib919BH
+ KbtQQso2ghtI3kV0cyQSq2SWzQcJAQWOPoVyCHwADGJK+YNHyns9B29qgg7siFkVVpTC
+ Jo4w==
+X-Gm-Message-State: AOAM530D8+ikeo0hgolzNF/qem9tGHgpOcMKI6V8TXd+39BgxY6XW/jN
+ wIlg1AFuBD7wXuje5nSmlA==
+X-Google-Smtp-Source: ABdhPJwjYUv7TStIwEgfVKtax+pxEAr4orFhSvEl5ThKh76p2DPoQYSgbkr5OqmDg1XgSEO47zntGA==
+X-Received: by 2002:a05:6830:1e25:: with SMTP id
+ t5mr48290837otr.291.1638225999927; 
+ Mon, 29 Nov 2021 14:46:39 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id q44sm2927209otv.80.2021.11.29.14.46.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Nov 2021 14:46:39 -0800 (PST)
+Received: (nullmailer pid 750903 invoked by uid 1000);
+ Mon, 29 Nov 2021 22:46:38 -0000
+Date: Mon, 29 Nov 2021 16:46:38 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH 04/12] drm/rockchip: dw_hdmi: add regulator support
+Message-ID: <YaVYTmvCQcs892Bh@robh.at.kernel.org>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <20211117143347.314294-5-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
- <20210407073534.376722-3-benjamin.gaignard@collabora.com>
-In-Reply-To: <20210407073534.376722-3-benjamin.gaignard@collabora.com>
-From: Adam Ford <aford173@gmail.com>
-Date: Mon, 29 Nov 2021 14:13:41 -0600
-Message-ID: <CAHCN7x+HOMoVNq-swqA2p3ddGKft_8QkB2qm00-CN8Dujaw52Q@mail.gmail.com>
-Subject: Re: [PATCH v9 02/13] dt-bindings: media: nxp, imx8mq-vpu: Update the
- bindings for G2 support
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
- Lee Jones <lee.jones@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, mripard@kernel.org, 
- paul.kocialkowski@bootlin.com, Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@siol.net>, hverkuil-cisco@xs4all.nl, 
- emil.l.velikov@gmail.com, Sascha Hauer <kernel@pengutronix.de>, 
- NXP Linux Team <linux-imx@nxp.com>, linux-media <linux-media@vger.kernel.org>, 
- "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- devel@driverdev.osuosl.org, 
- kernel@collabora.com, Chris Healy <cphealy@gmail.com>,
- Rob Herring <robh@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20211117143347.314294-5-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_121355_455216_71719119 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20211129_144641_325342_247D4F7A 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,152 +88,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 7, 2021 at 2:37 AM Benjamin Gaignard
-<benjamin.gaignard@collabora.com> wrote:
->
-> Introducing the G2 hevc video decoder requires modifications of the bindings to allow
-> one node per VPU.
->
-> VPUs share one hardware control block which is provided as a phandle on
-> a syscon.
-> Each node has now one reg and one interrupt.
-> Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
->
-> To be compatible with older DT the driver is still capable to use the 'ctrl'
-> reg-name even if it is deprecated now.
->
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-
-I need to edit the yaml file to add support the imx8mm, but it doesn't
-appear that this series has gone anywhere.  I know there is still some
-waiting on the vpu-blk-ctrl driver, but it seems like the 8mq could
-split the codecs out using syscon in place of the blk-ctrl until that
-driver is available.  If that doesn't work, I might have to introduce
-a separate yaml file for mini which could be somehow merged with the
-8mq in the future.  I am just not sure which way to go right now.
-
-adam
+On Wed, Nov 17, 2021 at 03:33:39PM +0100, Sascha Hauer wrote:
+> The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+> for the HDMI port. add support for these to the driver for boards which
+> have them supplied by switchable regulators.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
-> version 9:
->  - Corrections in commit message
->
-> version 7:
->  - Add Rob and Philipp reviewed-by tag
->  - Change syscon phandle name to nxp,imx8m-vpu-ctrl (remove 'q' to be
->    usable for iMX8MM too)
->
-> version 5:
-> - This version doesn't break the backward compatibilty between kernel
->   and DT.
->
->  .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++-------
->  1 file changed, 34 insertions(+), 19 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> index 762be3f96ce9..18e7d40a5f24 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> @@ -15,22 +15,18 @@ description:
->
->  properties:
->    compatible:
-> -    const: nxp,imx8mq-vpu
-> +    oneOf:
-> +      - const: nxp,imx8mq-vpu
-> +      - const: nxp,imx8mq-vpu-g2
->
->    reg:
-> -    maxItems: 3
-> -
-> -  reg-names:
-> -    items:
-> -      - const: g1
-> -      - const: g2
-> -      - const: ctrl
-> +    maxItems: 1
->
->    interrupts:
-> -    maxItems: 2
-> +    maxItems: 1
->
->    interrupt-names:
-> -    items:
-> +    oneOf:
->        - const: g1
->        - const: g2
->
-> @@ -46,14 +42,18 @@ properties:
->    power-domains:
->      maxItems: 1
->
-> +  nxp,imx8m-vpu-ctrl:
-> +    description: Specifies a phandle to syscon VPU hardware control block
-> +    $ref: "/schemas/types.yaml#/definitions/phandle"
+>  .../display/rockchip/rockchip,dw-hdmi.yaml    |  6 ++
+
+Bindings should be a separate patch. Include this as part of adding 
+RK3568 support to the binding.
+
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   | 58 ++++++++++++++++++-
+>  2 files changed, 61 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> index 53fa42479d5b7..293b2cfbf739f 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> @@ -28,6 +28,12 @@ properties:
+>    reg-io-width:
+>      const: 4
+>  
+> +  avdd-0v9-supply:
+> +    description: A 0.9V supply that powers up the SoC internal circuitry.
 > +
->  required:
->    - compatible
->    - reg
-> -  - reg-names
->    - interrupts
->    - interrupt-names
->    - clocks
->    - clock-names
-> +  - nxp,imx8m-vpu-ctrl
->
->  additionalProperties: false
->
-> @@ -62,18 +62,33 @@ examples:
->          #include <dt-bindings/clock/imx8mq-clock.h>
->          #include <dt-bindings/interrupt-controller/arm-gic.h>
->
-> -        vpu: video-codec@38300000 {
-> +        vpu_ctrl: syscon@38320000 {
-> +                 compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
-> +                 reg = <0x38320000 0x10000>;
-> +        };
+> +  avdd-1v8-supply:
+> +    description: A 0.9V supply that powers up the SoC internal circuitry.
+
+0.9V ???
+
 > +
-> +        vpu_g1: video-codec@38300000 {
->                  compatible = "nxp,imx8mq-vpu";
-> -                reg = <0x38300000 0x10000>,
-> -                      <0x38310000 0x10000>,
-> -                      <0x38320000 0x10000>;
-> -                reg-names = "g1", "g2", "ctrl";
-> -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> -                interrupt-names = "g1", "g2";
-> +                reg = <0x38300000 0x10000>;
-> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g1";
-> +                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> +                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> +                clock-names = "g1", "g2", "bus";
-> +                power-domains = <&pgc_vpu>;
-> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
-> +        };
-> +
-> +        vpu_g2: video-codec@38310000 {
-> +                compatible = "nxp,imx8mq-vpu-g2";
-> +                reg = <0x38300000 0x10000>;
-> +                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "g2";
->                  clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
->                           <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
->                  clock-names = "g1", "g2", "bus";
->                  power-domains = <&pgc_vpu>;
-> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
->          };
-> --
-> 2.25.1
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+>    clocks:
+>      minItems: 2
+>      items:
 
 _______________________________________________
 Linux-rockchip mailing list
