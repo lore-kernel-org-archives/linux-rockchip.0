@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A46C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 12:15:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9075C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 16:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6qCjozwBjSFptUR76RhdjjAXaOO3AWXj/DTw34lo7Oc=; b=JcGSX1AQAScFRE
-	QxSQFEiANDAAshbVkCQg61XbUOVtr5hJJF3vFLOuY2XFAQaxC3AeGTaLQEO9PtQBFjxorA7x9Bx6b
-	ZsjttBDkuEESST4wtLlVV0eZskqYdPrmSFX9iIhcaTMcezDT1a1CkOrbpJbjHjlRVT9ci7ENHTlhy
-	Qxrdse+poVYdLQEZenYEy5T+UDBXlNsB6Q0spNU60mk97FSejG7fKmaqQdLbi1XNTduSIXwkerkeZ
-	6hxr07fv1uKxL6lHF2igWBfwRoCh/AZVkA/UmsGb5gCUK9TWEkeNIo7iSPKJg1B4vBSKfi1KKWs0n
-	Ucqo3f5Kk7ezKMbD0GVg==;
+	List-Owner; bh=2xl7GVxw37cOw+d3vC7XHT8mVe05HrJ3zMm9gC+1YzM=; b=uO2X/li0q2tSaZ
+	PHHgO8MgIKcc7oWW9jP2piTMI0XkJm+UUetcGqBOFGAyV/nRkuCHnR77SU+kMTJ2BjutqMtJ0Mj4K
+	w0+KZNQpScmn9nchKVPSCei2JdxlrOBtLWAhRF2q8l4BzX1TEPk3BfaAN7F4N1BjoD3faibAWGuH6
+	/XyX6keJuFDrRUi71lSXad6WvzueukgKyuk6epN6KZtdj25nprIdciNfOMBBc2VdqggeonMCeteRH
+	RSy1T57Jd6DJqffIflldEjS4haEXPpkF+B+2YW7Yq1OC0m4f5ZP9ataFDyuWISerIoWrNpPS5W4BA
+	WqVNLZ9d8YsH7NO1WgpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrfZA-000e9o-Ee; Mon, 29 Nov 2021 12:15:28 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1mrjnH-001TD8-Ch; Mon, 29 Nov 2021 16:46:19 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrfYx-000e71-Hh
- for linux-rockchip@lists.infradead.org; Mon, 29 Nov 2021 12:15:16 +0000
-Received: by mail-ed1-x530.google.com with SMTP id y13so70820402edd.13
- for <linux-rockchip@lists.infradead.org>; Mon, 29 Nov 2021 04:15:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rou4pRkJOQKrkwM9iYNfP2xhm0pSwKIOsmwdXqm2KCk=;
- b=Sb/IWAF/Hhlr82pyhvplMDC0a4LdkBZtLThJPQEKY60guM1/Jz5HF1upBe466BAGar
- XT+E52u166pFFrcFsm8V4s814waPHpccFcl4em8dt6kgeX6lUKsJPsyVQyVDtphIAcCE
- zX+0gaGCx/c8smHHt6zH3W2AyLC2anRmKOT2XzDqjQkPPxqOLx9LR34ty+vlduueHGft
- p2kn38x7DZbsg/26lvqIiW5mRSaM/7gJdPBTiOOD5j3oyjm7P2S4oiZRrmirsxV6Rnm6
- YMeX+lUk1/Z3iaxXTVZjuFAQ1qSPtH3eMPSH27yhY8kYV4tEWP/gdKt4MwyEnz/c0XFi
- CXNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rou4pRkJOQKrkwM9iYNfP2xhm0pSwKIOsmwdXqm2KCk=;
- b=wgm7pwgyRGmZJ7CwemI5Ck5l1sc/8si/Z1ijazYLOB1C//WVkr1cHhlHj+HVkHarFJ
- /dFeATZRS5K7okYxEGoPz9yV3fkPNtYEbgXSlcHcR6y0pmWvx2X4cPyOeMjeIR1B8Xro
- FyvqSWrhV6WTSCEb22kBcXvBGcwL5gdkt9c8hAyGVam/ARWUDFgc9cXgrXElY5AtbIQW
- iiOp+k1GMb6zOXkoj8PILY3TafOuod3vU0vCzoV62JRlv1W4lNR9pfx2HXXFNEF6Cc4o
- L2GPrXqPX68l4kbYxMrlRLGxCtYMrTWbwS91XsVDl8YJBtGtIJgziBXqEuL6NEg+V7ua
- T8gA==
-X-Gm-Message-State: AOAM531lKljIM74ikXJJpQVOPDP+5LrPiI4dTXEiVZbV1RjRT2MlFowP
- HMTTF1xowSUmBHnYsoeJIGZBcOO86LsB646fEua37g==
-X-Google-Smtp-Source: ABdhPJxKenxE8Fuc2uEWhdJ5OaU3u7PfxeXl72lxBq51H5tU+80x06TBDToO080t3NzzJrmZUT9pyIckGdhZqVpgWzI=
-X-Received: by 2002:aa7:c946:: with SMTP id h6mr74871032edt.190.1638188112437; 
- Mon, 29 Nov 2021 04:15:12 -0800 (PST)
+ id 1mrjmx-001T4V-5X; Mon, 29 Nov 2021 16:46:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 9CB1AB81215;
+ Mon, 29 Nov 2021 16:45:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E56DCC53FC7;
+ Mon, 29 Nov 2021 16:45:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638204356;
+ bh=BDOCaXVF64qmbKixmffTWgJrkuezOZ8u43wxCYDH+Gg=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=G2PyIpIEtaa89eQ6Q/AfTZ1/UXMT2PvKvhUAdSFEAeeQ9clvKKjiTOcUH56XK/uUJ
+ CVQEgs2tDHv8Amsavg1urOKwXyAauV5mN0daMZmo2O4C742eTw+2fwllbDUOqsD8i6
+ 5VoaM7h1I55M3sEJbhinEOE3eQlluFxNBZylFhWtTE7jmz9uU4rOl+Ru88utYiNVWt
+ 4eMf8iVp+JJcAuH78KVCHqooBwyDY90Ub7/AYDFeVu6taJmDI3w5JxLxpUDhqlCQxO
+ eb/4zL4ywXY/pUsqCvQXj5KKzetnFyem94/FU01DMgpFz+HcVj/QUztPw065K8TAns
+ eCcnE4sfMGXfA==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20211126154344.724316-1-frattaroli.nicolas@gmail.com>
+References: <20211126154344.724316-1-frattaroli.nicolas@gmail.com>
+Subject: Re: (subset) [PATCH 0/3] RK356x/Quartz64 Model A SPI
+Message-Id: <163820435465.1716901.11036840063339929110.b4-ty@kernel.org>
+Date: Mon, 29 Nov 2021 16:45:54 +0000
 MIME-Version: 1.0
-References: <20211126151729.1026566-1-knaerzche@gmail.com>
-In-Reply-To: <20211126151729.1026566-1-knaerzche@gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 29 Nov 2021 09:15:01 -0300
-Message-ID: <CAAEAJfBWFeDxZWPev9ysGWWS-m7UEBPu==NrzfNe24_gb+LuBA@mail.gmail.com>
-Subject: Re: [PATCH 0/4] add GPU for RK356x SoCs
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_041515_737370_E3F3FB27 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211129_084559_375624_C376A259 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,16 +72,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Alex,
+On Fri, 26 Nov 2021 16:43:41 +0100, Nicolas Frattaroli wrote:
+> The first patch of this series adds a compatible for rk3568-spi
+> to the DT bindings.
+> 
+> The second adds the SPI nodes for RK3566 and RK3568 SoCs. The nodes
+> were lifted from the downstream vendor kernel's devicetree, and were
+> double-checked for correctness.
+> 
+> [...]
 
-On Fri, 26 Nov 2021 at 12:17, Alex Bee <knaerzche@gmail.com> wrote:
->
-> This is a respin of Ezequiel's series which adds GPU for RK3568 [0]:
->
+Applied to
 
-Thanks for picking this up!
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-linus
 
-Ezequiel
+Thanks!
+
+[1/3] dt-bindings: spi: spi-rockchip: Add rk3568-spi compatible
+      commit: 07fb78a78de4e67b5d6d5407aeee1250a327a698
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
