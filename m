@@ -4,50 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8452C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 28 Nov 2021 19:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A87FC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Nov 2021 09:38:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Message-ID:Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:Subject:
-	From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AQM5loyjdTFVO2BmYskBentQpdXfMhXUOBnhI18N6GI=; b=oIg450WvvVRY1lULXsS5KaAZKl
-	8bKFfeqQYH+fg/yOELXDVLu+X9Z//Xxpr/c2SCxSkSJ3hER2u9rwsrdrNVsBDPEcX9HPo6bbFqrUW
-	y1oeBaLcE30sKjaksV37QUfLgaAQzZXVx5dN+++3BMcbIKoNpXNJumzQnsYVt4zzJpbmqlICIzyBD
-	77iivBhE0sQ6ZmHyCDwbJt+kLqcA/PKrb4O1GtDCH+JNFiyng2V/QE/hEpDjvTjPjYKXHvP5JMoCU
-	Fw+ehlbrNVlPQ0DFQcYF0EqFCcLFlX7ttkl+79sy35ul1TTbFwjvbMeiUPrOZF7Me/KpLm1BFwjfo
-	pq2rRoyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pLmUfhx0W1On07FT3x8URv7Uo+NpMynhliC7ncl2JwI=; b=O6BUnh9lX+R2krUA12m1872bjP
+	wCWuEXngMS0qpsQjm8lEkRjThkzTZ/MaHUr83nmhuIfyGwXw19mIyRAFCLIetbolkKBYDnVBz/dFs
+	yXXxa9F5gNZjYC2HGsrMKi37VrEO1AHyzujznmautoVpou0haRblgg9R786rm6xbutRrN1ocNjXcQ
+	qsLq6HWZQHFa/aus/Ym6f6sTBhqtASnxV+w2dVqUxmnm8y/cPspspx+5LqBERiOlq0NcN9Xmn2SrX
+	46nHD2A18et7DE5L5mPwCAq0SsSLdI3knUUnjFpddz3Z0HZ5uDDm6sQGFiarcyOvrJ+e/B1kZ8X7v
+	BzL5S7Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrPaj-00GWj9-Jv; Sun, 28 Nov 2021 19:12:01 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1mrd6o-000FyB-FF; Mon, 29 Nov 2021 09:38:02 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrPah-00GWiq-Py
- for linux-rockchip@bombadil.infradead.org; Sun, 28 Nov 2021 19:11:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Date:Reply-To:Content-Type:To:Subject:
- From:Sender:Message-ID:Cc:MIME-Version:Content-Transfer-Encoding:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=vjIC+suNP7uaCtYlc9A40Kgy2eMsl3Xt4IdYvx5mE3Q=; b=wEXlnE6aeSNJVnHe65PhDSmAkb
- YqToz5BlyDvv5D4LdKVzHVMqunYGISOufb2vUWTgsIkxMYYXqi/ilUhDVzPCcnWWjUoAbRaK4yCv5
- MZbKCsRtlmDL9u4g3z525TCoLI8Sib9Wqq7Hc/8NvZj+F89qLFlAc+SAqRks/xiGMUlo9W0OYuvmM
- LBaGaR97/LEyS8PdvGoK//gPuohpltIWcp6o3X7xNVTe/flM2UChekxz1/ToFi/IqstMouXok3Gg0
- rIQNGmqRZ4Ty8NoLJLpCVu9zCXAGdjrGWhJmwcwvGPx8tHBN1IDGMHiOd7JQRnhoeiOdrCuzKLsdS
- q9AuhNlA==;
-Received: from vps-cb7b666f.vps.ovh.us ([135.148.149.159] helo=q1vkdys.com)
- by casper.infradead.org with smtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrPad-003l96-JB
- for linux-rockchip@lists.infradead.org; Sun, 28 Nov 2021 19:11:58 +0000
-From: "Hussein" <ahmedaliih464@gmail.com>
-Subject: Assist me purchase a living home in your country
-To: linux-rockchip@lists.infradead.org
-Date: Mon, 29 Nov 2021 02:11:55 +0700
-X-Priority: 3
+ id 1mrd6a-000FwT-VV; Mon, 29 Nov 2021 09:37:50 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id EB1A661216;
+ Mon, 29 Nov 2021 09:37:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABB53C004E1;
+ Mon, 29 Nov 2021 09:37:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638178666;
+ bh=Fnp3RhDbBTd+N/Si0zHCqyEEQ8HNT8WuTFzETcIGm3w=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=lIpx4Bua/YUGNKneTex9+IKZz93W8DKDgMNvLpA7/YIm+CI6Fo1nsCTxThnzgcrmq
+ C2AxEOpxrU1/CVdYNjK1r9S/rNsbciftD9jIxnolz2UMUUGEJQP9pCOr/vht3yIiME
+ xpCWtiA7hZhER17SB3PEnfpGrinP+D/dtXB+gknWMry9D/QrCDGovzv+VCt54k9E/N
+ BOI+KVYFjqL+hF6j1K0ZNLYjqGTauHWz1hM7dUG/tmID0i+e0AYePRluK+dqvG6X2A
+ 6A9fb1/Cq3o5cSG+W+/gEI4T5LugIS72Z2DRUqeXYuIPe7IeewlidBbuqV9hLNtMn4
+ hYgoR0lI7URnQ==
+Date: Mon, 29 Nov 2021 10:37:43 +0100
+From: Wolfram Sang <wsa@kernel.org>
+To: Ondrej Jirman <megous@megous.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>,
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>
+Subject: Re: [RESEND PATCH] i2c: rk3x: Handle a spurious start completion
+ interrupt flag
+Message-ID: <YaSfZxtYtV+SfJqL@kunai>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+ Ondrej Jirman <megous@megous.com>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:I2C SUBSYSTEM HOST DRIVERS" <linux-i2c@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>
+References: <20210924111528.2924251-1-megous@megous.com>
+MIME-Version: 1.0
+In-Reply-To: <20210924111528.2924251-1-megous@megous.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211128_191156_918347_2D8CB04D 
-X-CRM114-Status: UNSURE (  -1.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211129_013749_098498_21CE4E47 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,26 +79,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Hussein <ahmedaliih464@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0997703288864553406=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
-Message-ID: <E1mrPaj-00GWj9-Jv@bombadil.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Assist me purchase a living home, .I have huge sum in
-financial institution  .Should there be a need for an evidence, or a
-prove of my seriousness and genuineness. I have a Certificate of Deposit as
-a prove of fund. am from Syria, (where I can
-invest to sustain my living until the political crisis in my country is
-over).Could you please send me an email on
-( ahmedaliih464@gmail.com )  to enable me know you
-have received my email.
 
-Ahmed Hussein
+--===============0997703288864553406==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="dHdtOdyzSVAJRQNC"
+Content-Disposition: inline
+
+
+--dHdtOdyzSVAJRQNC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+> This causes I2C transfer being aborted in polled mode from a stop completion
+> handler:
+
+I wonder why this only happens in polling mode? The question behind that
+is: is it really a spurious irq from the HW or is it maybe a race in the
+driver? Because polling uses the same interrupt handler but just
+periodically polls it.
+
+
+--dHdtOdyzSVAJRQNC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmGkn2MACgkQFA3kzBSg
+Kbb2jA//exKS6aQIdTvjz8ryB2xg8jb2xyVFPoVlmNgzqLv5zTKeG6F0sLFEgMWy
+sAtUESQl2OHpLbG+XhfN7/hVgIOng97GmAuPQgEluKe75E+U5HUc12izmMEsBdM3
+Y/3A1tutxyW+Zv5hddgRE9imPAAgVo+YQw3oc02Sfx+MWhqRgq3zN8ahNnE5EKhL
+HwsGqD92nC4YkhENS2DqSbVQdW/FXxqYEHitnjziOploo/M3rbAlGMsZD7y3ZsEp
+aSzXw86DWDzzmrLGPaeldx2hr86wnx87ITR4fDqDdFXEGv6HW1x4Kudl8aZGILRL
+nbFOd9wN6lFudmSiZL6SRRJjZnz/weghpgG+5XZAWD64YydsmcL5/X/aE1U7Zv1c
+UujkXwcYwYySXh9wOFHMJlxAq7A49C+Hu88M8DS+QAcsLUtE/CC+X8anHdEyDbpw
+agoocQE2WnQzGRvEo3eJWyk4fHYgPPbyxdNJfOIXy+07XbFluJ1lEkjuDBV/BOjm
+tLUrrouuJD4teX10rXDsLHHHmxhYOi2322s3KqTqlPgLuixVbCxJuRD1ht4tVxL/
+eKwp+QW8ofgnm9HJpylOo3+/PMK/L44+H41JstGW3rzC9YslypSkit7hXNSk6VzA
+AhTZ7APBX3+d4WMONyBE0pNktrz3xync2/B0yrEY8J7FRMvARV0=
+=pHYp
+-----END PGP SIGNATURE-----
+
+--dHdtOdyzSVAJRQNC--
+
+
+--===============0997703288864553406==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0997703288864553406==--
+
