@@ -4,77 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0037C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Nov 2021 19:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F90C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Nov 2021 19:29:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fce5QtZEWqCrKuefFQ1/gU9A1XUkgVrzzFUbndlwU+U=; b=pqGpz36J9Hs1jo
-	gAl9uSEetflxaVNY478BQyC0dgceSBF9N5nyU5N+9aHrru4v1gvLwOcamSDHEooDVjcXDpS3Qv35j
-	aLccSShNZdX4xYL4UAjEvyHO/wTFbobrJyh54U/6xT9bKIN9/s5+NtgsGSG+Teb56GyfrD0dAqKbR
-	50vIEiQ94HAsJ6OfjVXeNAO2QmHuRiC1ITwhb+Zahc/6WWvur+xJusiodE1stHtWqosKKS7KTdhp6
-	H78PBr0L2qzOE5U+Z53MvU01d8Uf9pUDmZTB0ES1u7ogSIKmU498/rXjnZb7bwfcmIeVTM1EwMH9E
-	Nr4Hc8nuIuQJ1xrmINHA==;
+	List-Owner; bh=MF+wDKv2a0Mhv73fJCVtFqK7SHMmRzZ6uB4Px5yhZWQ=; b=h6stDc17ePdd5i
+	irCYDX0psK1mfBeGXFcc4OiHxzwvLniY2OY71kph99gXgL+OKd2FhXo+DvhdZa40IrG5fKAQxwhJI
+	nEmbzCHcocE7qQWUnJzES7H1FNYMh4EsfdKgCmteliW3i5n0vedeOZdRE38T1EQA8vL5Zks7iTBbj
+	/NDFbcoojbJHGmDLmGATDIdSXNmUcPKYne8xNh0gJUAwrpyl0ItS2MHym71/h3zLSVo3tukNxQDBF
+	kkSjDaU7x+imNrAz7KNPLiSnL+irDrhnXVar+t86nDLj4tG9c490ejuAYSDzmVnI0qF0Ephu36bg6
+	eHjBDLDlKqFLAfZ2ZODg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ms8cI-006Yl3-Ld; Tue, 30 Nov 2021 19:16:38 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1ms8oO-006ZA7-SX; Tue, 30 Nov 2021 19:29:08 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ms8cF-006Ykj-BN
- for linux-rockchip@lists.infradead.org; Tue, 30 Nov 2021 19:16:37 +0000
-Received: by mail-wr1-x435.google.com with SMTP id d9so25858325wrw.4
- for <linux-rockchip@lists.infradead.org>; Tue, 30 Nov 2021 11:16:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ef3pNAvFyeJjbNmdet3IMAdRtnds6OW8kq/F+gFt22k=;
- b=CtVOjrOJO/4rb85gtmbkXVMXJA7w5ibhKEfc7HveyKmKxoyIZIho9u4IfdG7rkI4hd
- IDuexFjBYgFiZRmz8K6ypPpB9p3umOb90vOeG6TY7Wwqtfp7ag3hIRYWB9PYproE66dr
- cbxiVaMcSUF8LZm9691lf2QkszzSqaqjyHpWngi7BGVgY2ESMMpe3wVZ7u28A01rlosE
- Er02wUZP6tWouAl6c7XraZlPSMeOf/8O6kW4PB8x/wDmh35onYaRmFrLnuL3U9f/O/E2
- WfoRLVH18Z+adygcSXbc7lZjawn/obmxBc2dJM/CgFAXAerh/zukr5zqXR7ezqkfauc7
- 6xEA==
+ id 1ms8oB-006Z89-DH
+ for linux-rockchip@lists.infradead.org; Tue, 30 Nov 2021 19:28:57 +0000
+Received: by mail-pl1-x630.google.com with SMTP id n8so15744975plf.4
+ for <linux-rockchip@lists.infradead.org>; Tue, 30 Nov 2021 11:28:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gateworks-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=8xRMmiakU1EMVn9KGKZK7gagQ/r6zpi2qMLSAdpg+SI=;
+ b=thWQBaHWuu9s2KaF+kB2PIi9KtLxsHh7eG3TkQeCYjWAUOqPWdMJ2vxaWgYKBR62oZ
+ p+xzjo6xIBpCezORDzSae7OIF33kxlz7WIf0K6DvztbwAXFLB17xgTGG1VXvQE22swyd
+ /YWNzng0aWMn13Cwrw4EzwgrPAdH5EA87S5+T7s668tmJo2TDjUrxXorwjRrb4b8lO8M
+ awBozzMv4wuIcFH89Pw6usuBj35gtBpi/ZTy5X0vInU6I8f0RLtO4NfnB4CmWms7ECfv
+ gOwfJ5RpJp4zTNbtCHc1uNJ5LucMosInTDxgPo3NKiWLxbo7pkL8IcQSfUbw0GBBVFBo
+ 3ivg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ef3pNAvFyeJjbNmdet3IMAdRtnds6OW8kq/F+gFt22k=;
- b=LwHX9OjoLsz0xtMd6AHWr8qyIaL5hirnZt2hbTTI67fv9bEwg3ydZAYuBoxuiRJE2c
- 2RMouUDVh1PgRXjhC7ogucbAaL6q/33bAX5yhwgW0ZWPmC2MkIRkBoeP791L46xsRciX
- G2MWI7AeOMNqc07mQtdQu0dzFZggnq9DhBnP4KMKJ+NL21QrvTwHalGFA/WCfoRz9yRg
- ybjUGV34cd16NRZ9Y24a+zaA3DyKp0Z0/oEVGHUiHXMks15MnsgzfBPDe/bIXQ7AY6+M
- KeDMfeYfrBEAcitKT7em5SfOzaAhJInXk/RQdmD93Nh/S7bDDCu2f+h9Q8QachMpZ41h
- xlXQ==
-X-Gm-Message-State: AOAM533c1PgClmuXMyCnY6LoPd7ocW0gwqH4sD75o3kci9jstHfN17W4
- oep11gHQCG+fq9bnFm4sUmk=
-X-Google-Smtp-Source: ABdhPJyffvNw0qfX1lL78dpOYLQgp+oWkJkRGWN9lsL8P8CbfAHkgVc5i12qejLoXuHogvxwfAwnGg==
-X-Received: by 2002:adf:82d3:: with SMTP id 77mr928486wrc.377.1638299793299;
- Tue, 30 Nov 2021 11:16:33 -0800 (PST)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84])
- by smtp.gmail.com with ESMTPSA id o3sm3808644wms.10.2021.11.30.11.16.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Nov 2021 11:16:32 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: linux-rockchip@lists.infradead.org, lee.jones@linaro.org,
- robh+dt@kernel.org, heiko@sntech.de, sre@kernel.org, maccraft123mc@gmail.com,
- devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
- Chris Morgan <macroalpha82@gmail.com>
-Subject: Re: [PATCH v4 RESEND 0/4] power: supply: Add Support for RK817 Charger
-Date: Tue, 30 Nov 2021 20:16:31 +0100
-Message-ID: <5790471.3iNxtBKjHZ@archbook>
-In-Reply-To: <SN6PR06MB5342DF2234B8F9599E1AF125A5679@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20210916194208.10387-1-macroalpha82@gmail.com>
- <2197533.Eh1vGvx6NY@archbook>
- <SN6PR06MB5342DF2234B8F9599E1AF125A5679@SN6PR06MB5342.namprd06.prod.outlook.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=8xRMmiakU1EMVn9KGKZK7gagQ/r6zpi2qMLSAdpg+SI=;
+ b=jOWiUNtTyzyCIbscI5n0yzCUeSGfpwr/ryikzrNXAEXmm5hkIcPKT1zv8zOGCANnb7
+ c3yMeC5sXGsS657db6cR1UG8vD9pfFPQotTtwYYpO6ot2idD9PrrLFd8UyBu79bhwBD6
+ YiGeGgw+Unp2WnU5bs6rN9UOeF0A/+n3il8+hwP7LOHIlUZPygZFdEKWzoFvv2QowSTN
+ zq5h6p8uGzPf9T9D7Vx3EbT2/wiYLU0/jZzoXnYvJySaepyQebdJndCT7jB8l+A7Oa8K
+ AGo1yNwHsJpT07ddnwv+zUcohwE4rWyxvsxjYO9A8yktwiCmKa0+U9TTCFdw5dUfun40
+ XdZw==
+X-Gm-Message-State: AOAM533QnaZYhnoUYmcKQx01BymXn0EvFNNPh3aO7iLWngtyJQChKkUz
+ XvZcxKH9ARZtJAlws6MiK7747VY2THxQuhQpyriHLQ==
+X-Google-Smtp-Source: ABdhPJzuiIzyC7Gkuy0Pli9c4g7qlHhacM7DFcW7lvc8EjG4/8pLDgcxWOFJYEasHl31T4xiue4p2duA2/U138yvOqk=
+X-Received: by 2002:a17:90b:1b06:: with SMTP id
+ nu6mr1142360pjb.155.1638300533615; 
+ Tue, 30 Nov 2021 11:28:53 -0800 (PST)
 MIME-Version: 1.0
+References: <20211106183802.893285-1-aford173@gmail.com>
+ <718f7f6d6cd564d031c1963f1590c62d549ae725.camel@ndufresne.ca>
+ <CAHCN7xKM9RUE7z-+ug1on+D=nDoEm589R4m03ofys92Aq75ZVQ@mail.gmail.com>
+ <8db00a4b6faa99c940d9bc86e17161eb0db5efe3.camel@ndufresne.ca>
+ <CAJ+vNU28UJffFv9jQ2KryJMudqYxvCaoVOVcU5dPqRA209iN6A@mail.gmail.com>
+ <d91532c2c0772f9aa708ead36b2a97203727a7ea.camel@ndufresne.ca>
+ <CAJ+vNU3H-V+bPoZ3qKead45h=W7AhQK6Lhjrx5ssdF4c_qfe=A@mail.gmail.com>
+ <CAHCN7x+0LwwU_rEST+TZxGquswGKL19gnTy9WLofsXtGAtWqdw@mail.gmail.com>
+ <7f94eaacfddb8c5434c17f1e069ea87a17657ce9.camel@ndufresne.ca>
+ <CAHCN7xKRzxMBmPbDobWTuvNNSpTXk5XENvfBnfkhRY3eZKhn6w@mail.gmail.com>
+ <CAHCN7xJFLNi_g+HX8PCy1Rkgf0jnWpO5QGYVz8nH19xrJkwHrA@mail.gmail.com>
+ <CAJ+vNU3zFd=6k_Emc5aafxKkGwCPp4crgOFezQ-E_MbWsn1_EA@mail.gmail.com>
+ <fed6c2fd7cf4971062c417ce41ed1e3812b900e0.camel@ndufresne.ca>
+ <CAHCN7xK+wROHaqDcsY-3WYFQ82qX17L-LHNL3siSWnWvwFShzQ@mail.gmail.com>
+ <CAAEAJfC1xXvemaFP+vTFVJ3S-SpYtrxyZgDamSOgLC1F3ua5xw@mail.gmail.com>
+ <CAHCN7x+UMMP6RXsNm0=OC=UTQzh=RKqQo6B7FD5e4eoJAEfmpg@mail.gmail.com>
+ <CAJ+vNU1epi9SwPMHkuDmKcb68RLemYF=bsp7AVnzz06zKc2efw@mail.gmail.com>
+ <CAAEAJfCpjk5nWWkJYjjDT-YEpJi4pTZqZbzp_if9OGC0HKspzw@mail.gmail.com>
+In-Reply-To: <CAAEAJfCpjk5nWWkJYjjDT-YEpJi4pTZqZbzp_if9OGC0HKspzw@mail.gmail.com>
+From: Tim Harvey <tharvey@gateworks.com>
+Date: Tue, 30 Nov 2021 11:28:42 -0800
+Message-ID: <CAJ+vNU2we5mGXgYsR6CfimvFXZsc0zktR3fDa-h6RRa02jTT0g@mail.gmail.com>
+Subject: Re: [RFC 0/5] arm64: imx8mm: Enable Hantro VPUs
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Adam Ford <aford173@gmail.com>, linux-media <linux-media@vger.kernel.org>, 
+ Schrempf Frieder <frieder.schrempf@kontron.de>,
+ Marek Vasut <marek.vasut@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Adam Ford-BE <aford@beaconembedded.com>, 
+ cstevens@beaconembedded.com, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Lucas Stach <l.stach@pengutronix.de>, Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Alice Guo <alice.guo@nxp.com>, Peng Fan <peng.fan@nxp.com>, 
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211130_111635_437425_D42E614F 
-X-CRM114-Status: GOOD (  62.40  )
+X-CRM114-CacheID: sfid-20211130_112855_548648_2D477453 
+X-CRM114-Status: GOOD (  30.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,168 +117,179 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Dienstag, 30. November 2021 19:33:02 CET you wrote:
-> On Tue, Nov 30, 2021 at 07:12:11PM +0100, Nicolas Frattaroli wrote:
-> > On Dienstag, 30. November 2021 17:10:21 CET Chris Morgan wrote:
-> > > On Tue, Nov 30, 2021 at 03:03:03AM +0100, Nicolas Frattaroli wrote:
-> > > > On Donnerstag, 16. September 2021 21:42:04 CET Chris Morgan wrote:
-> > > > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > > > 
-> > > > > This series is to add support for the Rockchip rk817 battery charger
-> > > > > which is present in all Rockchip RK817 PMICs. The driver was written
-> > > > > as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
-> > > > > myself Chris Morgan <macromorgan@hotmail.com>.
-> > > > 
-> > > > Hi Chris and Maya,
-> > > > 
-> > > > Gave this a whirl on my Quartz64 Model A. I noticed that this will
-> > > > happily let me discharge past voltage_min_design:
-> > > > 
-> > > >  $ cat /sys/class/power_supply/rk817-battery/voltage_min_design 
-> > > >  3625000
-> > > >  $ cat /sys/class/power_supply/rk817-battery/voltage_avg 
-> > > >  3381360
-> > > > 
-> > > > Is this normal? It went all the way to under 3V before the
-> > > > board finally locked up.
-> > > > 
-> > > > Does the minimum voltage not affect some sort of cutout on
-> > > > the RK817? Does it even have one? Is it the driver's job to
-> > > > do something here or not?
-> > 
-> > Hi Chris,
-> > 
-> > > It does not look like I coded that, but I can. The PMIC has a
-> > > selectable register (RK817_PMIC_SYS_CFG0 = 0xf1) to automatically shut
-> > > down the system at a certain voltage (between 2.7v and 3.4v in
-> > > increments of 100mv; bits 6-4), a register to set a low voltage value
-> > > (between 2.8v and 3.5v in increments of 100mv; bits 2-0), and a
-> > > register to set a low voltage action (either shut down the machine or
-> > > trigger an interrupt; bit 3 and then I believe the interrupt is read at
-> > > bit 7 of RK817_PMIC_INT_STS0 - 0xf8).
-> > 
-> > Excellent, I think shutting down the system is definitely the way to
-> > go here, as by reaching this voltage we can assume userspace has gone
-> > missing and we don't know if the kernel is still alive.
-> > 
-> > > I guess I just assumed userspace would handle it, but that's probably
-> > > a bad assumption.
-> > 
-> > Yes, I didn't have upower installed, but over discharge protection
-> > shouldn't be handled by userspace at all. Had I connected an unprotected
-> > cell that didn't cut out at below 3V, it would've been irreversibly
-> > damaged due to a simple forgotten package install. Even if unprotected
-> > batteries are a bad idea, I think we best assume the worst case
-> > situation here.
-> > 
-> > > What if I set the low voltage value to either 3.5v
-> > > or the min design voltage, whichever is less; and then set the low
-> > > voltage trigger to shut down the system? This would prevent your
-> > > battery from dropping below 3.5v or the min design voltage (whichever
-> > > is less, sadly 3.5v is as high as I can go for the minimum) in the
-> > > event userspace doesn't take action first? We could also set the
-> > > shutdown voltage to be 100mv less than the min design voltage and use
-> > > the low voltage interrupt to trigger an action, but I'm not sure what
-> > > action would be appropriate (and if userspace isn't listening it would
-> > > be moot anyway).
-> > 
-> > A very simple solution would be to simply set the shutoff point to the
-> > voltage reaching less than 3.1V. The RK817 only charges Lithium/Li-Po
-> > batteries, and they should generally not be discharged below 3.0V. Of
-> > the protected batteries I own, over-discharge protection generally
-> > kicks in at the 3V threshold.
-> > 
-> > This gets rid of a lot of logic that could lead to bugs by simply setting
-> > a known good value to begin with.
-> > 
-> > I think I can summarise how I understand this is supposed to work as
-> > follows:
-> > 
-> >  - if battery reaches 0% and the battery alarm is rang, userspace should
-> >    power down the system
-> >      - this prevents unclean shutdowns
-> >  - if the battery reaches a dangerously low voltage for its chemistry,
-> >    the PMIC should cut power to the system as instructed by the kernel
-> >      - last resort measure in case userspace is absent and the battery
-> >        happens to be unprotected
-> >  - there may or may not be battery protection which kicks in at 3V, but
-> >    we should not rely on this working
-> >       - some 18650 cases infamously aren't sized to fit cells with a
-> >         protection circuit connected to it. I shan't name names.
-> > 
-> > In a freak accident where the kernel is completely locked up and the
-> > battery is unprotected and being drained, I presume that having set
-> > this PMIC register will still make it kick in, which lets me sleep
-> > a little sounder at night.
-> > 
-> 
-> Okay. The default value for automatic shutdown is 2.7v, but that's
-> probably too low. I'm wondering though if this should go in the main
-> MFD driver, rather than the battery driver? The reason why I ask is
-> that without a battery driver to raise the shutdown voltage to 3.1v,
-> the shutdown will not happen until 2.7v which risks damage to the
-> battery. This means devices in production today (such as anyone running
-> the Odroid Go Advance on a mainline kernel) on a battery will
-> experience this behavior. Setting that register value shouldn't do
-> anything harmful if you don't have a battery, so I assume if it's safe
-> to set it 100% of the time for battery users it's safe to set 100% of
-> the time in total. Which also begs the question, if this is such a
-> danger to the hardware, should we even be doing it in Linux? We could
-> be setting it in U-Boot, because if the MFD driver fails to load or the
-> kernel freezes before the MFD driver loads there is STILL the risk you
-> could undervolt the battery, regardless of fixing this in the MFD driver
-> or the battery driver.
-
-I believe 2.7V is still fine. The protection circuits may cut off before
-that because they want to keep the longevity of the battery and there
-isn't much juice left between 2.7V and 3.0V anyway. If the PMIC always
-shuts down at 2.7V then there isn't anything to fear really, that's
-still above the 2.5V that Wikipedia states as being the lower end of
-the safe voltage range. While that's not the source to end all sources,
-the PMIC having a lower cutoff probably means that some engineer did
-think of this and pulled up the correct numbers.
-
-Now that I've learned of this, I suspect there isn't really an issue
-at all here. If we shut off at 2.7V we're good. Userspace should shut
-down before then, and if there's battery protection that kicks in
-before that, it makes really no difference to the end result, as
-long as there is some cutoff somewhere
-
-Thanks for your quick responses, my concerns regarding this are
-alleviated. Devices that are already out there should be fine
-in this regard.
-
-> 
-> Thank you.
-> 
-> > Regards,
-> > Nicolas Frattaroli
-> > 
-> > > 
-> > > Thank you.
-> > > 
-> > > > 
-> > > > Regards,
-> > > > Nicolas Frattaroli
-> > > > 
-> > > > 
-> > > 
-> > 
-> > 
-> > 
-> > 
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBOb3YgMzAsIDIwMjEgYXQgNjowMCBBTSBFemVxdWllbCBHYXJjaWEKPGV6ZXF1aWVs
+QHZhbmd1YXJkaWFzdXIuY29tLmFyPiB3cm90ZToKPgo+IEhpIFRpbSwKPgo+IE9uIE1vbiwgMjkg
+Tm92IDIwMjEgYXQgMTY6MzYsIFRpbSBIYXJ2ZXkgPHRoYXJ2ZXlAZ2F0ZXdvcmtzLmNvbT4gd3Jv
+dGU6Cj4gPgo+ID4gT24gTW9uLCBOb3YgMjksIDIwMjEgYXQgMTA6NTkgQU0gQWRhbSBGb3JkIDxh
+Zm9yZDE3M0BnbWFpbC5jb20+IHdyb3RlOgo+IC4uCj4gPiA+Cj4gPgo+ID4gQWRhbSwKPiA+Cj4g
+PiBXaGF0IGRlcHMgZGlkIHlvdSBpbnN0YWxsIGluIG9yZGVyIHRvIGdldCB2NGwyY29kZWNzIGJ1
+aWxkaW5nPyBJCj4gPiBpbnN0YWxsZWQgbGliZ3VkZXYtMS4wLWRldiBiYXNlZCBvbiBOaWNvbGFz
+JyBzdWdnZXN0aW9uIGFuZCByZWJ1aWx0Cj4gPiAobm90IHN1cmUgaWYgSSBuZWVkZWQgdG8gcmUt
+Y29uZmlndXJlIHNvbWVob3cpIGJ1dCB0aGVyZSBpcyBzdGlsbAo+ID4gbm90aGluZyBpbiBidWls
+ZC9zdWJwcm9qZWN0cy9nc3QtcGx1Z2lucy1iYWQvc3lzL3Y0bDJjb2RlY3MvLiBBICdtZXNvbgo+
+ID4gY29uZmlndXJlJyB0ZWxscyBtZSB0aGF0IHY0bDJjb2RlY3MgaXMgc2V0IHRvICdhdXRvJyBi
+dXQgSSdtIG5vdCBzdXJlCj4gPiBob3cgdG8gZmluZCBvdXQgd2hhdCBkZXBlbmRlbmNpZXMgYXJl
+IG5lZWRlZCBvciB3aGF0IG1heSBiZSBtaXNzaW5nLgo+ID4KPgo+IEF0IGxlYXN0IGluIG15IGNh
+c2UgKENlbnRwcy1kZXJpdmF0aXZlKSwgdGhpcyBpcyB3aGF0IEkndmUgZG9uZToKPgo+IC4uLgo+
+IGdzdC1wbHVnaW5zLWJhZHwgUnVuLXRpbWUgZGVwZW5kZW5jeSBndWRldi0xLjAgZm91bmQ6IE5P
+ICh0cmllZAo+IHBrZ2NvbmZpZyBhbmQgY21ha2UpCj4KPiBJbnN0YWxsZWQgZ3VkZXYgLi4uIGFu
+ZCB0aGVuOgo+Cj4gLi4uCj4gZ3N0LXBsdWdpbnMtYmFkfCBEZXBlbmRlbmN5IGd1ZGV2LTEuMCBm
+b3VuZDogWUVTIDIzMiAoY2FjaGVkKQo+IC4uLgo+IGdzdC1wbHVnaW5zLWJhZCAxLjE5LjMuMQo+
+Cj4gICAgIFBsdWdpbnMgICAgICAgICAgICAgICA6IGFjY3VyaXAsIGFkcGNtZGVjLCBhZHBjbWVu
+YywgYWlmZiwgYXNmbXV4LAo+IGF1ZGlvYnVmZmVyc3BsaXQsIGF1ZGlvZnhiYWQsIGF1ZGlvbWl4
+bWF0cml4LCBhdWRpb2xhdGVuY3ksCj4gYXVkaW92aXN1YWxpemVycywgYXV0b2NvbnZlcnQsIGJh
+eWVyLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjYW1lcmFiaW4sIGNvZGVjYWxwaGEs
+IGNvbG9yZWZmZWN0cywKPiBkZWJ1Z3V0aWxzYmFkLCBkdmJzdWJlbmMsIGR2YnN1Ym92ZXJsYXks
+IGR2ZHNwdSwgZmFjZW92ZXJsYXksCj4gZmVzdGl2YWwsIGZpZWxkYW5hbHlzaXMsIGZyZWV2ZXJi
+LCBmcmVpMHIsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGdhdWRpZWZmZWN0cywgZ2Rw
+LCBnZW9tZXRyaWN0cmFuc2Zvcm0sCj4gaWQzdGFnLCBpbnRlciwgaW50ZXJsYWNlLCBpdmZwYXJz
+ZSwgaXZ0YywganAya2RlY2ltYXRvciwganBlZ2Zvcm1hdCwKPiByZmJzcmMsIG1pZGksIG1wZWdw
+c2RlbXV4LAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtcGVncHNtdXgsIG1wZWd0c2Rl
+bXV4LCBtcGVndHNtdXgsIG14ZiwKPiBuZXRzaW0sIHJ0cG9udmlmLCBwY2FwcGFyc2UsIHBubSwg
+cHJveHksIGxlZ2FjeXJhd3BhcnNlLAo+IHJlbW92ZXNpbGVuY2UsIHJpc3QsIHJ0bXAyLCBydHBt
+YW5hZ2VyYmFkLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzZHBlbGVtLCBzZWdtZW50
+Y2xpcCwgc2lyZW4sIHNtb290aCwKPiBzcGVlZCwgc3ViZW5jLCBzd2l0Y2hiaW4sIHRpbWVjb2Rl
+LCB0cmFuc2NvZGUsIHZpZGVvZmlsdGVyc2JhZCwKPiB2aWRlb2ZyYW1lX2F1ZGlvbGV2ZWwsIHZp
+ZGVvcGFyc2Vyc2JhZCwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdmlkZW9zaWduYWws
+IHZtbmMsIHk0bWRlYywgZGVja2xpbmssIGR2YiwKPiBmYmRldnNpbmssIGlwY3BpcGVsaW5lLCBu
+dmNvZGVjLCBzaG0sIHY0bDJjb2RlY3MsIGhscywgc2N0cAo+Cj4gR1N0cmVhbWVyIGN1cnJlbnQg
+bWFzdGVyIGJ1aWxkIGZhaWxzLiBJdCdzIGEga25vd24gaXNzdWUgd2hpY2ggd2lsbCBiZQo+IGZp
+eGVkIHRvZGF5Ogo+Cj4gWy4uLl0KPiBbOC85XSBDb21waWxpbmcgQyBvYmplY3QKPiBzdWJwcm9q
+ZWN0cy9nc3QtcGx1Z2lucy1iYWQvc3lzL3Y0bDJjb2RlY3MvbGliZ3N0djRsMmNvZGVjcy5zby5w
+L2dzdHY0bDJjb2RlY3ZwOWRlYy5jLm8KPiBGQUlMRUQ6IHN1YnByb2plY3RzL2dzdC1wbHVnaW5z
+LWJhZC9zeXMvdjRsMmNvZGVjcy9saWJnc3R2NGwyY29kZWNzLnNvLnAvZ3N0djRsMmNvZGVjdnA5
+ZGVjLmMubwo+IGNjIC1Jc3VicHJvamVjdHMvZ3N0LXBsdWdpbnMtYmFkL3N5cy92NGwyY29kZWNz
+L2xpYmdzdHY0bDJjb2RlY3Muc28ucAo+IC1Jc3VicHJvamVjdHMvZ3N0LXBsdWdpbnMtYmFkL3N5
+cy92NGwyY29kZWNzCj4gLUkuLi9zdWJwcm9qZWN0cy9nc3QtcGx1Z2lucy1iYWQvc3lzL3Y0bDJj
+b2RlY3MKPiAtSXN1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZCAtSS4uL3N1YnByb2plY3RzL2dz
+dC1wbHVnaW5zLWJhZAo+IC1Jc3VicHJvamVjdHMvZ3N0cmVhbWVyL2xpYnMgLUkuLi9zdWJwcm9q
+ZWN0cy9nc3RyZWFtZXIvbGlicwo+IC1Jc3VicHJvamVjdHMvZ3N0cmVhbWVyIC1JLi4vc3VicHJv
+amVjdHMvZ3N0cmVhbWVyCj4gLUlzdWJwcm9qZWN0cy9nc3QtcGx1Z2lucy1iYWQvZ3N0LWxpYnMK
+PiAtSS4uL3N1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZC9nc3QtbGlicwo+IC1Jc3VicHJvamVj
+dHMvZ3N0LXBsdWdpbnMtYmFzZS9nc3QtbGlicwo+IC1JLi4vc3VicHJvamVjdHMvZ3N0LXBsdWdp
+bnMtYmFzZS9nc3QtbGlicyAtSXN1YnByb2plY3RzL29yYwo+IC1JLi4vc3VicHJvamVjdHMvb3Jj
+IC1Jc3VicHJvamVjdHMvZ3N0cmVhbWVyL2dzdAo+IC1Jc3VicHJvamVjdHMvZ3N0LXBsdWdpbnMt
+YmFzZS9nc3QtbGlicy9nc3QvdmlkZW8KPiAtSXN1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhc2Uv
+Z3N0LWxpYnMvZ3N0L3BidXRpbHMKPiAtSXN1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhc2UvZ3N0
+LWxpYnMvZ3N0L2F1ZGlvCj4gLUlzdWJwcm9qZWN0cy9nc3QtcGx1Z2lucy1iYXNlL2dzdC1saWJz
+L2dzdC90YWcKPiAtSS91c3IvaW5jbHVkZS9nbGliLTIuMCAtSS91c3IvbGliNjQvZ2xpYi0yLjAv
+aW5jbHVkZQo+IC1JL3Vzci9pbmNsdWRlL2d1ZGV2LTEuMCAtZmRpYWdub3N0aWNzLWNvbG9yPWFs
+d2F5cwo+IC1EX0ZJTEVfT0ZGU0VUX0JJVFM9NjQgLVdhbGwgLVdpbnZhbGlkLXBjaCAtTzIgLWcg
+LWZ2aXNpYmlsaXR5PWhpZGRlbgo+IC1mbm8tc3RyaWN0LWFsaWFzaW5nIC1ER19ESVNBQkxFX0RF
+UFJFQ0FURUQgLVdtaXNzaW5nLXByb3RvdHlwZXMKPiAtV2RlY2xhcmF0aW9uLWFmdGVyLXN0YXRl
+bWVudCAtV29sZC1zdHlsZS1kZWZpbml0aW9uCj4gLVdtaXNzaW5nLWRlY2xhcmF0aW9ucyAtV3Jl
+ZHVuZGFudC1kZWNscyAtV3dyaXRlLXN0cmluZ3MgLVdmb3JtYXQKPiAtV2Zvcm1hdC1zZWN1cml0
+eSAtV2luaXQtc2VsZiAtV21pc3NpbmctaW5jbHVkZS1kaXJzIC1XYWRkcmVzcwo+IC1Xbm8tbXVs
+dGljaGFyIC1XdmxhIC1XcG9pbnRlci1hcml0aCAtZlBJQyAtcHRocmVhZCAtREhBVkVfQ09ORklH
+X0gKPiAtTUQgLU1RIHN1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZC9zeXMvdjRsMmNvZGVjcy9s
+aWJnc3R2NGwyY29kZWNzLnNvLnAvZ3N0djRsMmNvZGVjdnA5ZGVjLmMubwo+IC1NRiBzdWJwcm9q
+ZWN0cy9nc3QtcGx1Z2lucy1iYWQvc3lzL3Y0bDJjb2RlY3MvbGliZ3N0djRsMmNvZGVjcy5zby5w
+L2dzdHY0bDJjb2RlY3ZwOWRlYy5jLm8uZAo+IC1vIHN1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJh
+ZC9zeXMvdjRsMmNvZGVjcy9saWJnc3R2NGwyY29kZWNzLnNvLnAvZ3N0djRsMmNvZGVjdnA5ZGVj
+LmMubwo+IC1jIC4uL3N1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZC9zeXMvdjRsMmNvZGVjcy9n
+c3R2NGwyY29kZWN2cDlkZWMuYwo+IC4uL3N1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZC9zeXMv
+djRsMmNvZGVjcy9nc3R2NGwyY29kZWN2cDlkZWMuYzo5MjozOgo+IGVycm9yOiB1bmtub3duIHR5
+cGUgbmFtZSDigJhncmVmY291bnTigJkKPiAgICBncmVmY291bnQgcmVmX2NvdW50Owo+ICAgIF5+
+fn5+fn5+fgo+IC4uL3N1YnByb2plY3RzL2dzdC1wbHVnaW5zLWJhZC9zeXMvdjRsMmNvZGVjcy9n
+c3R2NGwyY29kZWN2cDlkZWMuYzogSW4KPiBmdW5jdGlvbiDigJhnc3RfdjRsMl9jb2RlY192cDlf
+ZGVjX3BpY3R1cmVfZGF0YV9uZXfigJk6Cj4gLi4vc3VicHJvamVjdHMvZ3N0LXBsdWdpbnMtYmFk
+L3N5cy92NGwyY29kZWNzL2dzdHY0bDJjb2RlY3ZwOWRlYy5jOjEwNjozOgo+IHdhcm5pbmc6IGlt
+cGxpY2l0IGRlY2xhcmF0aW9uIG9mIGZ1bmN0aW9uIOKAmGdfcmVmX2NvdW50X2luaXTigJk7IGRp
+ZCB5b3UKPiBtZWFuIOKAmGdfY29uZF9pbml04oCZPyBbLVdpbXBsaWNpdC1mdW5jdGlvbi1kZWNs
+YXJhdGlvbl0KPiAgICBnX3JlZl9jb3VudF9pbml0ICgmcGljX2RhdGEtPnJlZl9jb3VudCk7Cj4g
+ICAgXn5+fn5+fn5+fn5+fn5+fgo+ICAgIGdfY29uZF9pbml0Cj4gLi4vc3VicHJvamVjdHMvZ3N0
+LXBsdWdpbnMtYmFkL3N5cy92NGwyY29kZWNzL2dzdHY0bDJjb2RlY3ZwOWRlYy5jOiBJbgo+IGZ1
+bmN0aW9uIOKAmGdzdF92NGwyX2NvZGVjX3ZwOV9kZWNfcGljdHVyZV9kYXRhX3JlZuKAmToKPiAu
+Li9zdWJwcm9qZWN0cy9nc3QtcGx1Z2lucy1iYWQvc3lzL3Y0bDJjb2RlY3MvZ3N0djRsMmNvZGVj
+dnA5ZGVjLmM6MTE4OjM6Cj4gd2FybmluZzogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVuY3Rp
+b24g4oCYZ19yZWZfY291bnRfaW5j4oCZOyBkaWQgeW91Cj4gbWVhbiDigJhnX3N0cnZfY29udGFp
+bnPigJk/IFstV2ltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQo+ICAgIGdfcmVmX2NvdW50
+X2luYyAoJmRhdGEtPnJlZl9jb3VudCk7Cj4gICAgXn5+fn5+fn5+fn5+fn5+Cj4gICAgZ19zdHJ2
+X2NvbnRhaW5zCj4gLi4vc3VicHJvamVjdHMvZ3N0LXBsdWdpbnMtYmFkL3N5cy92NGwyY29kZWNz
+L2dzdHY0bDJjb2RlY3ZwOWRlYy5jOiBJbgo+IGZ1bmN0aW9uIOKAmGdzdF92NGwyX2NvZGVjX3Zw
+OV9kZWNfcGljdHVyZV9kYXRhX3VucmVm4oCZOgo+IC4uL3N1YnByb2plY3RzL2dzdC1wbHVnaW5z
+LWJhZC9zeXMvdjRsMmNvZGVjcy9nc3R2NGwyY29kZWN2cDlkZWMuYzoxMjU6NzoKPiB3YXJuaW5n
+OiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiDigJhnX3JlZl9jb3VudF9kZWPigJkK
+PiBbLVdpbXBsaWNpdC1mdW5jdGlvbi1kZWNsYXJhdGlvbl0KPiAgICBpZiAoZ19yZWZfY291bnRf
+ZGVjICgmZGF0YS0+cmVmX2NvdW50KSkgewo+ICAgICAgICBefn5+fn5+fn5+fn5+fn4KPiBuaW5q
+YTogYnVpbGQgc3RvcHBlZDogc3ViY29tbWFuZCBmYWlsZWQuCj4KPiBIb3BlIHRoaXMgaGVscHMg
+Z2V0IHlvdSBzdGFydGVkIQo+IEV6ZXF1aWVsCgpFemVxdWllbCBhbmQgTmljb2xhcywKClRoYW5r
+cyAtIEkgZGlkIG1hbmFnZSB0byBnZXQgZ3N0cmVhbWVyIDEuMTkuMyBidWlsdCBzdWNjZXNzZnVs
+bHkgd2l0aAp2NGwyY29kZWNzIGZpbmFsbHkgYnkgZ2V0dGluZyB0aGUgY29ycmVjdCBkZXBlbmRl
+bmNpZXMuIEkndmUgYXR0ZW1wdGVkCnRvIHNvZnR3YXJlIGVuY29kZSBmcm9tIGFub3RoZXIgc3lz
+dGVtIGFuZCBkZWNvZGUvZGlzcGxheSBvbiB0aGUgSU1YOE0KTWluaSBidXQgdGh1cyBmYXIgaGF2
+ZSBub3QgYmVlbiBzdWNjZXNzZnVsLgoKSSBzZWUgdGhhdCB2NGwyY29kZWNzIHBsdWdpbiB2NGwy
+c2xoMjY0ZGVjL3Y0bDJzbG1wZWcyZGVjL3Y0bDJzbHZwOGRlYwphbmQgdGhlc2UgYWxsIGNhbiBv
+dXRwdXQgdmlkZW8veC1yYXcgTlYxMi9ZVVkyIHdoaWNoIGttc3Npbmsgc2hvdWxkCmFjY2VwdCBz
+byBJJ20gYXR0ZW1wdGluZyB0aGUgZm9sbG93aW5nIDoKCiMgdnA4IGVuY29kZSBmcm9tIHg4Ngpn
+c3QtbGF1bmNoLTEuMCAtdiB2aWRlb3Rlc3RzcmMgISB2aWRlby94LXJhdyx3aWR0aD04MDAsaGVp
+Z2h0PTQ4MCAhCnZwOGVuYyAhIHJ0cHZwOHBheSAhIHVkcHNpbmsgaG9zdD0xNzIuMjQuMzMuMTUg
+cG9ydD05MDAxCiMgdnA4IGRlY29kZSBvbiBpbXg4bW1AMTcyLjI0LjMzLjE1IHdoaWNoIGhhcyBh
+IDgwMHg0ODAgZGlzcGxheQpbZ3N0LW1haW5dIHJvb3RAZm9jYWwtdmVuaWNlOn4vZ3N0cmVhbWVy
+L2J1aWxkIyBnc3QtbGF1bmNoLTEuMCAtdgp1ZHBzcmMgcG9ydD05MDAxIGNhcHMgPSAiYXBwbGlj
+YXRpb24veC1ydHAsIG1lZGlhPShzdHJpbmcpdmlkZW8sCmNsb2NrLXJhdGU9KGludCk5MDAwMCwg
+ZW5jb2RpbmctbmFtZT0oc3RyaW5nKVZQOCwgcGF5bG9hZD0oaW50KTk2LApzc3JjPSh1aW50KTI3
+NDUyNjIxNTUsIHRpbWVzdGFtcC1vZmZzZXQ9KHVpbnQpMjUxNTAzMjY4MywKc2VxbnVtLW9mZnNl
+dD0odWludCkxOTU3OSwgYS1mcmFtZXJhdGU9KHN0cmluZykzMCIgISBydHB2cDhkZXBheSAhCnY0
+bDJzbHZwOGRlYyAhIGttc3NpbmsKU2V0dGluZyBwaXBlbGluZSB0byBQQVVTRUQgLi4uClBpcGVs
+aW5lIGlzIGxpdmUgYW5kIGRvZXMgbm90IG5lZWQgUFJFUk9MTCAuLi4KL0dzdFBpcGVsaW5lOnBp
+cGVsaW5lMC9Hc3RLTVNTaW5rOmttc3NpbmswOiBkaXNwbGF5LXdpZHRoID0gODAwCi9Hc3RQaXBl
+bGluZTpwaXBlbGluZTAvR3N0S01TU2luazprbXNzaW5rMDogZGlzcGxheS1oZWlnaHQgPSA0ODAK
+UGlwZWxpbmUgaXMgUFJFUk9MTEVEIC4uLgpTZXR0aW5nIHBpcGVsaW5lIHRvIFBMQVlJTkcgLi4u
+Ci9Hc3RQaXBlbGluZTpwaXBlbGluZTAvR3N0VURQU3JjOnVkcHNyYzAuR3N0UGFkOnNyYzogY2Fw
+cyA9CmFwcGxpY2F0aW9uL3gtcnRwLCBtZWRpYT0oc3RyaW5nKXZpZGVvLCBjbG9jay1yYXRlPShp
+bnQpOTAwMDAsCmVuY29kaW5nLW5hbWU9KHN0cmluZylWUDgsIHBheWxvYWQ9KGludCk5Niwgc3Ny
+Yz0odWludCkyNzQ1MjYyMTU1LAp0aW1lc3RhbXAtb2Zmc2V0PSh1aW50KTI1MTUwMzI2ODMsIHNl
+cW51bS1vZmZzZXQ9KHVpbnQpMTk1NzksCmEtZnJhbWVyYXRlPShzdHJpbmcpMzAKTmV3IGNsb2Nr
+OiBHc3RTeXN0ZW1DbG9jawovR3N0UGlwZWxpbmU6cGlwZWxpbmUwL0dzdFJ0cFZQOERlcGF5OnJ0
+cHZwOGRlcGF5MC5Hc3RQYWQ6c2luazogY2FwcyA9CmFwcGxpY2F0aW9uL3gtcnRwLCBtZWRpYT0o
+c3RyaW5nKXZpZGVvLCBjbG9jay1yYXRlPShpbnQpOTAwMDAsCmVuY29kaW5nLW5hbWU9KHN0cmlu
+ZylWUDgsIHBheWxvYWQ9KGludCk5Niwgc3NyYz0odWludCkyNzQ1MjYyMTU1LAp0aW1lc3RhbXAt
+b2Zmc2V0PSh1aW50KTI1MTUwMzI2ODMsIHNlcW51bS1vZmZzZXQ9KHVpbnQpMTk1NzksCmEtZnJh
+bWVyYXRlPShzdHJpbmcpMzAKL0dzdFBpcGVsaW5lOnBpcGVsaW5lMC9Hc3RSdHBWUDhEZXBheTpy
+dHB2cDhkZXBheTAuR3N0UGFkOnNyYzogY2FwcyA9CnZpZGVvL3gtdnA4LCBmcmFtZXJhdGU9KGZy
+YWN0aW9uKTAvMSwgaGVpZ2h0PShpbnQpNDgwLCB3aWR0aD0oaW50KTgwMCwKcHJvZmlsZT0oc3Ry
+aW5nKTAKRVJST1I6IGZyb20gZWxlbWVudCAvR3N0UGlwZWxpbmU6cGlwZWxpbmUwL0dzdFVEUFNy
+Yzp1ZHBzcmMwOiBJbnRlcm5hbApkYXRhIHN0cmVhbSBlcnJvci4KQWRkaXRpb25hbCBkZWJ1ZyBp
+bmZvOgouLi9zdWJwcm9qZWN0cy9nc3RyZWFtZXIvbGlicy9nc3QvYmFzZS9nc3RiYXNlc3JjLmMo
+MzEyNyk6CmdzdF9iYXNlX3NyY19sb29wICgpOiAvR3N0UGlwZWxpbmU6cGlwZWxpbmUwL0dzdFVE
+UFNyYzp1ZHBzcmMwOgpzdHJlYW1pbmcgc3RvcHBlZCwgcmVhc29uIG5vdC1uZWdvdGlhdGVkICgt
+NCkKRXhlY3V0aW9uIGVuZGVkIGFmdGVyIDA6MDA6MDIuMDc2ODM5NjQ0ClNldHRpbmcgcGlwZWxp
+bmUgdG8gTlVMTCAuLi4KRnJlZWluZyBwaXBlbGluZSAuLi4KCkknbSBnZXR0aW5nIHRoZSBzYW1l
+IHRoaW5nIHdoZW4gdHJ5aW5nIHRvIHVzZSBoMjY0LgoKSSd2ZSBuZXZlciBxdWl0ZSBiZWVuIGFi
+bGUgdG8gZ3Jhc3AgaG93IHRvIGRlYnVnIEdTdHJlYW1lcidzCm5lZ290aWF0aW9uIGlzc3Vlcy4g
+SWYgSSBlbmQgd2l0aCBmYWtlc2luayBpdCBhcHBlYXJzIHRvIGRlY29kZSBzbyBpdAptdXN0IGJl
+IHRoZSB2NGwyc2x2cDhkZWMgdG8ga21zc2luay4gSSB0cmllZCBmb3JjaW5nIHRoZSBwaXhlbCBm
+b3JtYXQKdXNpbmcgJ3Y0bDJzbHZwOGRlYyAhICJ2aWRlby94LXJhdyxmb3JtYXQ9KHN0cmluZylO
+VjEyIiAhIGttc3NpbmsnIGJ1dApJIHN0aWxsIGdldCB0aGUgbmVnb3RpYXRpb24gZXJyb3IuCgpX
+aGF0IGludGVycnVwdHMgc2hvdWxkIEkgYmUgc2VlaW5nIGluIC9wcm9jL2ludGVycnVwdHM/IEkg
+ZG9uJ3Qgc2VlCmFueXRoaW5nIHZwdS9oYW50cm8gcmVsYXRlZCB0aGVyZS4KCkkgYWxzbyB3YW50
+IHRvIG1ha2Ugc3VyZSBJIGhhdmUgYSBiYXNpYyB1bmRlcnN0YW5kaW5nIG9mIHRoZSB2cHUKZHJp
+dmVycyBhbmQgdXNlcnNhcGNlIG9uIHRoZSBJTVg4TSBNaW5pLiBUaGUgSU1YNlEvREwgdGhhdCBJ
+J20gbW9yZQpmYW1pbGlhciB3aXRoIGhhcyBhIHZwdSB0aGF0IGlzIHN1cHBvcnRlZCBieSB0aGUg
+R1N0cmVhbWVyIHZpZGVvNGxpbnV4CnBsdWdpbiB3aGljaCBzaG93cyB0aGUgZm9sbG93aW5nIChv
+biBHU3RyZWFtZXIgMS4xNi4yKToKICB2NGwyanBlZ2VuYzogVjRMMiBKUEVHIEVuY29kZXIKICB2
+NGwyanBlZ2RlYzogVjRMMiBKUEVHIERlY29kZXIKICB2NGwyaDI2NGVuYzogVjRMMiBILjI2NCBF
+bmNvZGVyCiAgdjRsMm1wZWc0ZW5jOiBWNEwyIE1QRUc0IEVuY29kZXIKICB2NGwybXBlZzRkZWM6
+IFY0TDIgTVBFRzQgRGVjb2RlcgogIHY0bDJtcGVnMmRlYzogVjRMMiBNUEVHMiBEZWNvZGVyCiAg
+djRsMmgyNjRkZWM6IFY0TDIgSDI2NCBEZWNvZGVyClRoZSBJTVg2US9ETCBhbHNvIGhhcyBhbiBJ
+UFUgdGhhdCBoYXMgYW4gTTJNIGRyaXZlciB0aGF0IHByb3ZpZGVzIHRoZQpmb2xsb3dpbmcgZm9y
+IHNjYWxpbmcvY29sb3JzcGFjZSBjb252ZXJzaW9uOgogIHY0bDJjb252ZXJ0OiBWNEwyIFZpZGVv
+IENvbnZlcnRlcgoKSSBiZWxpZXZlIHdoYXQgSSdtIHJlYWRpbmcgaXMgdGhhdCB0aGUgSU1YOE0g
+TWluaSBIYW50cm8gY29kZWNzIGFyZQonc3RhdGVmdWwnIHdoZXJlIG1vcmUgc29mdHdhcmUgaXMg
+cmVxdWlyZWQgdG8gZHJpdmUgdGhlbSBhbmQgaXMKc3VwcG9ydGVkIGJ5IHRoZSBuZXdlciB2NGwy
+Y29kZWNzIHBsdWdpbi4gSSBoYXZlbid0IGJlZW4gYWJsZSB0bwp1bmRlcnN0YW5kIHdoYXQga2Vy
+bmVsIHZlcnNpb24vcmVxdWlyZW1lbnRzIHRoZSB2NGwyY29kZWNzIHBsdWdpbgp1c2Vycy9yZXF1
+aXJlcy4KCkknbSBhbHNvIHRyeWluZyB0byB1bmRlcnN0YW5kIGhvdyB3ZSBjYW4gZ2V0IHNjYWxp
+bmcvY29sb3JzcGFjZQpjb252ZXJzaW9uIG9uIHRoZSBJTVg4TSBNaW5pLiBUaGUgSU1YOE0gbGFj
+a3MgYW4gSVBVLi4uIGlzIHRoZXJlIHNvbWUKd2F5IHRvIHV0aWxpemUgc2NhbGluZy9jb2xvcnNw
+YWNlIGNvbnZlcnNpb24gZnJvbSB0aGUgMkQgR1BVIGJvdW5kIHRvCnRoZSBldG5hdml2IGRyaXZl
+cj8KCkJlc3QgcmVnYXJkcywKClRpbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
