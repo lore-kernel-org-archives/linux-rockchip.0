@@ -4,84 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F186C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 01:34:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619A2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 09:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zy3AfN5/M/4uF7Tclh83Hti4MgyDPEZ3a2mwEZLTUmY=; b=pNFV3zKRjdD06Y
-	B85PR8ZdU1tO80adhFwCAsEDVxT3cuafLDRIA3KL5J4UeVsglC5n2vcXZpm3NeJpEyaeOa/Q2z/+A
-	9HQj69UOAZq+tCRrPccng/QT2GZPZHvE3nkV5f38A74HSLXc2OlexFMIUr2CzqaTgyJLPGTuhvjeO
-	2+a3BZmaZeHuVSIIWES2qFAAv2B16w/dBnc2U2/5VsbDEpZruhJ+Lpuk3goAqs7GmvpXV3wvD3Lkb
-	HUKoIyrsTmfEi8MbZG1QGWfEVRFB/DZ59rRGe6fAYRj39xkDIXtJ1ZVQlBcGfjQWvBVzazdJ+GwkO
-	yD24j2Oyq/csnT4gI3wA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8iyBg0btXT9fhKJ6+mEbCS6RwE39Ebs/DPpbxVAQ834=; b=DwWE4JQJ7r+fcM7FIOb4LvzPfJ
+	pC8URkRa52Qa+rB9rp5f8yoYZ7mPtaccuveNOg7oNgkwaQIcQ6YnATZAxuV11mzbaZHY6veLWdeav
+	I1QMvCRRZhPl1483OxpWwCFkSVHC7vMXWbExpGsLl4ZuPTns779JFwISAGWYEROcedZM1Mmf0P+Vj
+	DU6hd/PqrAKst23h+Zwy7olBFwz9J+jIaazzgsKP0LG3FBpRTEgUXOHPeMCmlYq4VxspVE+mR/r9O
+	bZOI1GnTjyNzJZiL6QMZD7R/K84Dj12AxXV0F0ZFa/KmJ5jxV0vL7EYc7SSXnsHuFwM/gqubyzbNd
+	tBBFq0VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msEVq-007Fmi-BI; Wed, 01 Dec 2021 01:34:22 +0000
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+	id 1msLuV-007wNM-Bb; Wed, 01 Dec 2021 09:28:19 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msEVJ-007FcZ-OY; Wed, 01 Dec 2021 01:33:51 +0000
-Received: by mail-io1-xd33.google.com with SMTP id p23so28702779iod.7;
- Tue, 30 Nov 2021 17:33:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+ap+Y2Tz8z5LcHzGO6SA2tif2EyiHYR6r3DF4Am/aoA=;
- b=OcbXRHDXrnBr8kivgFa/eyWQC8wj9OddkBPOFLlJP2uV0U47aHQn6gbTwG3IPOQM+3
- 4IDeyBU8fV9k6Mw8DW+7GMii65R3Ud6uJGKaM5sFDo8e5VOy/JsP1+FnSOidK+nrwbJA
- +c6l1vZUjTDiaxHNCNh8Ix7WCaDA4EjTXaGRuTOb8RHT2q5x/jF5hKD4QTYgaHCYYDBJ
- 4lqpVh3AdxNri9cq5zbgwLUKnAcHJsT0bnBqV4YcvvkbHsL+Slq0eT4zfjXk1latB2ir
- UZ9s+8Eh9J6f9I9oD5ruIY/EVu9CDQwKeJ1Gzj5wx4jwk5rtlKCeuTT+W/36K9mXC1/y
- kV9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+ap+Y2Tz8z5LcHzGO6SA2tif2EyiHYR6r3DF4Am/aoA=;
- b=1/H3ymEIfNcTnAVVxbzQUy9hmFXXc8TnQ/948S3PnLdkeNxZU1Akj/7wKNlo5cqKL+
- Y8Xm+QK0NH0RPdifSkGsoWY7R3nZNQaj2qmZygGLfs/Qx0XdT1IcHQHyEsudbjiK/0zT
- MhQWTMt81ZiQXpoXU/iCdRK0J/TWj4w38qEazDv04ZCyf/tcWd2sBvmbF5oDRXSIhx5F
- hpf+ofnOpEQ8Mr2WCOND2q/ILVvj1hB1s3iG+MUIrrM4EdHa2Hs5/r+WGPk23dK9WXTl
- /JpKHRuWsNEsRohubAuKi16qRQ5dkZSaod7snOSOnsK7iFSJ171lxbesM1q/D7lleE1b
- q9Kw==
-X-Gm-Message-State: AOAM533h3RxZD1r92mhAzxm4MnsIWNG4Anarv7JMHZmLtL86uaslC6nx
- qM7WuY76/W3ApSMiOWwfnqA4a1oYqHN6gyKr
-X-Google-Smtp-Source: ABdhPJws3i9Y5kHYiQGhopk7urQguB9dlP7kNjGUVEgv5jDp6giKcZ6fFE4/yqGZACC+0c8Xw/Wdcg==
-X-Received: by 2002:a02:9f87:: with SMTP id a7mr5568738jam.136.1638322422135; 
- Tue, 30 Nov 2021 17:33:42 -0800 (PST)
-Received: from aford-IdeaCentre-A730.lan
- ([2601:448:8400:9e8:b7ee:f768:f33c:c028])
- by smtp.gmail.com with ESMTPSA id u24sm11856737ior.20.2021.11.30.17.33.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Nov 2021 17:33:41 -0800 (PST)
-From: Adam Ford <aford173@gmail.com>
-To: linux-media@vger.kernel.org
-Cc: ezequiel@vanguardiasur.com.ar, hverkuil@xs4all.nl, tharvey@gateworks.com,
+ id 1msLuH-007wGp-Fi; Wed, 01 Dec 2021 09:28:07 +0000
+Received: from [IPv6:2a01:e0a:120:3210:81b0:4101:d4f2:ecb7] (unknown
+ [IPv6:2a01:e0a:120:3210:81b0:4101:d4f2:ecb7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D03FE1F456A8;
+ Wed,  1 Dec 2021 09:28:00 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638350881; bh=GOanvQHnMURC6UIEgHUa/+fTqbcJzEywsBQPZpD0MJA=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=St1k4d/bgtbXVPjdtfbYA9aV4V9ZWSYVYtYwv4/c4FjJvQMSIbZKlzc18tl6VVxys
+ +9+W64Jyao7xM80jFjcykCzfwQDYjw89p7rBHr5qi0Cc1R05nxmVPzOT0jlpRb9rG9
+ 6FBaB7Bag9wbRydqBhvX98QQGE9a6Xra6HO0xPpuZqDpIwqp6DeX9+mhrm8A+8cnl+
+ HvLVl0bZkut7JlsYbQhDgdZw4Nt7bFrJQEyef6DumdrKef6n2MMUspFScI6081vh7B
+ kaRZc9wY5l5YgSoO6GU2a0YWVRzaKeCyY+7HBAIl0LGQcQfDovjeL7PEXy/4stwN8y
+ kMEDbFLZRlL9g==
+Subject: Re: [RFC V2 0/2] arm64: imx8mm: Enable Hantro VPUs
+To: Adam Ford <aford173@gmail.com>, linux-media@vger.kernel.org
+Cc: ezequiel@vanguardiasur.com.ar, hverkuil@xs4all.nl, tharvey@gateworks.com, 
  nicolas@ndufresne.ca, aford@beaconembedded.com,
- Adam Ford <aford173@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev
-Subject: [RFC V2 2/2] arm64: dts: imx8mm: Enable VPU-G1 and VPU-G2
-Date: Tue, 30 Nov 2021 19:33:29 -0600
-Message-Id: <20211201013329.15875-3-aford173@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211201013329.15875-1-aford173@gmail.com>
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
 References: <20211201013329.15875-1-aford173@gmail.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <a07677bc-0a18-c910-222d-d6faee3fe5a0@collabora.com>
+Date: Wed, 1 Dec 2021 10:27:58 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <20211201013329.15875-1-aford173@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211130_173349_809934_4AD78CEF 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211201_012805_681538_C0255848 
+X-CRM114-Status: GOOD (  26.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,72 +77,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable two hardware Hantro decoders called G1 and G2.
-
-Signed-off-by: Adam Ford <aford173@gmail.com>
-
-diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-index c2f3f118f82e..eb9dcd9d1a31 100644
---- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-@@ -1197,6 +1197,47 @@ gpu_2d: gpu@38008000 {
- 			power-domains = <&pgc_gpu>;
- 		};
- 
-+		vpu_g1: video-codec@38300000 {
-+			compatible = "nxp,imx8mm-vpu";
-+			reg = <0x38300000 0x10000>;
-+			reg-names = "g1";
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g1";
-+			clocks = <&clk IMX8MM_CLK_VPU_G1_ROOT>,
-+				 <&clk IMX8MM_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g1", "bus";
-+			assigned-clocks = <&clk IMX8MM_CLK_VPU_G1>,
-+					  <&clk IMX8MM_CLK_VPU_BUS>,
-+					  <&clk IMX8MM_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MM_VPU_PLL_OUT>,
-+						 <&clk IMX8MM_SYS_PLL1_800M>,
-+						 <&clk IMX8MM_VPU_PLL>;
-+			assigned-clock-rates = <600000000>,
-+					       <800000000>,
-+					       <0>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G1>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mm-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g2";
-+			clocks = <&clk IMX8MM_CLK_VPU_G2_ROOT>,
-+				 <&clk IMX8MM_CLK_VPU_DEC_ROOT>;
-+			clock-names = "g2",  "bus";
-+			assigned-clocks = <&clk IMX8MM_CLK_VPU_G2>,
-+					 <&clk IMX8MM_CLK_VPU_BUS>,
-+					 <&clk IMX8MM_VPU_PLL_BYPASS>;
-+			assigned-clock-parents = <&clk IMX8MM_VPU_PLL_OUT>,
-+						<&clk IMX8MM_SYS_PLL1_800M>,
-+						<&clk IMX8MM_VPU_PLL>;
-+			assigned-clock-rates = <600000000>,
-+					       <800000000>,
-+					       <0>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G2>;
-+		};
-+
- 		vpu_blk_ctrl: blk-ctrl@38330000 {
- 			compatible = "fsl,imx8mm-vpu-blk-ctrl", "syscon";
- 			reg = <0x38330000 0x100>;
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDAxLzEyLzIwMjEgw6AgMDI6MzMsIEFkYW0gRm9yZCBhIMOpY3JpdMKgOgo+IFRoZSBpLk1Y
+OE0gaGFzIHR3byBIYW50cm8gdmlkZW8gZGVjb2RlcnMsIGNhbGxlZCBHMSBhbmQgRzIgd2hpY2gg
+YXBwZWFyCj4gdG8gYmUgcmVsYXRlZCB0byB0aGUgdmlkZW8gZGVjb2RlcnMgdXNlZCBvbiB0aGUg
+aS5NWDhNUSwgYnV0IGJlY2F1c2Ugb2YKPiBob3cgdGhlIE1pbmkgaGFuZGxlcyB0aGUgcG93ZXIg
+ZG9tYWlucywgdGhlIFZQVSBkcml2ZXIgZG9lcyBub3QgbmVlZCB0bwo+IGhhbmRsZSBhbGwgdGhl
+IGZ1bmN0aW9ucywgbm9yIGRvZXMgaXQgc3VwcG9ydCB0aGUgcG9zdC1wcm9jZXNzb3IsCj4gc28g
+YSBuZXcgY29tcGF0aWJsZSBmbGFnIGlzIHJlcXVpcmVkLgo+Cj4gV2l0aCB0aGUgc3VnZ2VzdGlv
+biBmcm9tIEhhbnMgVmVya3VpbCwgSSB3YXMgYWJsZSB0byBnZXQgdGhlIEcyIHNwbGF0IHRvIGdv
+IGF3YXkKPiB3aXRoIGNoYW5nZXMgdG8gRk9SQ0VfTUFYX1pPTkVPUkRFUiwgYnV0IEkgZm91bmQg
+SSBjb3VsZCBhbHNvIHNldCBjbWE9NTEyTSwgaG93ZXZlcgo+IGl0J3MgdW5jbGVhciB0byBtZSBp
+ZiB0aGF0J3MgYW4gYWNjZXB0YWJsZSBhbHRlcm5hdGl2ZS4KPgo+IEF0IHRoZSBzdWdnZXN0aW9u
+IG9mIEV6ZXF1aWVsIEdhcmNpYSBhbmQgTmljb2xhcyBEdWZyZXNuZSBJIGhhdmUgc29tZQo+IHJl
+c3VsdHMgZnJvbSBGbHVzdGVyLiBIb3dldmVyLCB0aGUgRzIgVlBVIGFwcGVhcnMgdG8gZmFpbCBt
+b3N0IHRlc3RzLgo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZEdTdHJlYW1lci1ILjI2NC1WNEwyU0wt
+R3N0MS4wCj4gUmFuIDkwLzEzNSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiA3
+Ni40MzEgc2Vjcwo+Cj4gICAuL2ZsdXN0ZXIucHkgcnVuIC1kIEdTdHJlYW1lci1WUDgtVjRMMlNM
+LUdzdDEuMAo+IFJhbiA1NS82MSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiAy
+MS40NTQgc2Vjcwo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFtZXItVlA5LVY0TDJTTC1H
+c3QxLjAKPiBSYW4gMC8zMDMgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gMjAu
+MDE2IHNlY3MKPgo+IEVhY2ggZGF5IHNlZW1zIHRvIHNob3cgbW9yZSBhbmQgbW9yZSBHMiBzdWJt
+aXNzaW9ucywgYW5kIGdzdHJlYW1lciBzZWVtcyB0byBiZQo+IHN0aWxsIHdvcmtpbmcgb24gdGhl
+IFZQOSwgc28gSSBhbSBub3Qgc3VyZSBpZiBJIHNob3VsZCBkcm9wIEcyIGFzIHdlbGwuCgpJIHRo
+aW5rIGl0IGlzIGdvaW5nIGluIHRoZSBnb29kIGRpcmVjdGlvbi4KSSdtIHRyeWluZyB0byBkbyB0
+aGUgc2FtZSBvbiBJTVg2TVEgYnV0IHN0aWxsIGhhdmUgaGFuZyBpc3N1ZSBvbiBHMi4KClJlZ2Fy
+ZHMsCkJlbmphbWluCgo+Cj4gQWRhbSBGb3JkICgyKToKPiAgICBtZWRpYTogaGFudHJvOiBBZGQg
+c3VwcG9ydCBmb3IgaS5NWDhNIE1pbmkKPiAgICBhcm02NDogZHRzOiBpbXg4bW06IEVuYWJsZSBW
+UFUtRzEgYW5kIFZQVS1HMgo+Cj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4
+bW0uZHRzaSAgIHwgNDEgKysrKysrKysrKysrKysrCj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aGFudHJvL2hhbnRyb19kcnYuYyAgIHwgIDIgKwo+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
+bnRyby9oYW50cm9faHcuaCAgICB8ICAyICsKPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
+cm8vaW14OG1fdnB1X2h3LmMgfCA1NyArKysrKysrKysrKysrKysrKysrKysKPiAgIDQgZmlsZXMg
+Y2hhbmdlZCwgMTAyIGluc2VydGlvbnMoKykKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
