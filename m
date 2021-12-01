@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C046C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 16:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A14BCC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 16:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GKSqFVEpDJULVpSN6suKxq8u+G6xQitOkjB+7+SOrDU=; b=g1ntLV/FYYmMMJ
-	mu0lqDhzXZhauzjxjcPr0WocB8dPVJH4HI/dtvNA+PBI1rP5upNN3zwIGyzwefVcj5kxvc9qWYQ4w
-	/1TVDBJvZXHjkj5kpfcAuqKkriRf2HJIuAYA8qCnrMf1acwqk+Kc1yFv5w2ioIEMcpTh5NukzSxkP
-	wtosmFPZHBrSI2GXrKM8Buxb8HnitnUZLc79AW2JyilGUuiCVthaF1/3bpf/PGz/N4wXhrY9cRXWf
-	3JVk2xta86DWI/YV+rqtqxvXsU8RezL0v0UOPIqAsaUDv8fg8bqyAZbNxP4e8MQDiDWz5+j19J6ik
-	v+9EhMuCGNa7m7fEEnSw==;
+	List-Owner; bh=l3RdLa4pFNaGRFYuDFknu5INHfHwpKj1clix+VYcDjU=; b=YEjhKb+8SOn0Ip
+	DHUpYyCAMSrIMLmGN5TJur35t86uNCnFjx6bVCSaPU+9MNWO8M2VH8E2TjMWQ2aYgmyVJa3ReU+FR
+	8ggiGDieLq924i5uD8moWV3pZ8x8npJ/nbRSQGQm+H8ojOx8CRgD4o5ewE6ROxPDher8NJqaGqrmS
+	XFc/SHd9eOJspt4PPKcAv2aCfmDyXbSc8jfZ9Q4m2kD+tANxl7IuectqRZkbEkjQ26VZk4BQWaxSM
+	iWsWDIM1vEf4MiV9hxt2bslv/bQzBM993O3rO6oFZbV65WLDGJbfN/vEtMkjOacBCPN6wL1PUzdlG
+	gWKe/K3Fmu4WVCOFFRsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msS6a-009JDi-DZ; Wed, 01 Dec 2021 16:05:12 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1msSgK-009Ou8-Vq; Wed, 01 Dec 2021 16:42:08 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msS6O-009J9q-6j
- for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 16:05:01 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1msS6G-00018X-SS; Wed, 01 Dec 2021 17:04:52 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1msS6D-0007gg-9U; Wed, 01 Dec 2021 17:04:49 +0100
-Date: Wed, 1 Dec 2021 17:04:49 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Rob Herring <robh@kernel.org>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 09/12] arm64: dts: rockchip: rk356x: Add HDMI nodes
-Message-ID: <20211201160449.GF25697@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <20211117143347.314294-10-s.hauer@pengutronix.de>
- <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
+ id 1msSgI-009Osn-Ef
+ for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 16:42:07 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 133so20981843wme.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 01 Dec 2021 08:42:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3fr5sB/hWF6oqc9m6hzOo1nMZaFOt3GJ2Ovlo132VCQ=;
+ b=edPaqO5xvP3OJ9dsMgrn3NJJjrZSdjdw+30GE0TCznSZCEhE/+IeIqW40S81GY9zcU
+ J3xJVgyr/iCyMG1qVB5Zgtd8y+i0m+BgXLtVSeLhzoO35w5JE1/D1Y8M9zls8skse1fh
+ 2j+jmHvmzmXybWpBnu1PTixUOjeMv/1LSyp7iAjj2r6WHt8tY2qVGCCxVWMBMBKDGQ2q
+ IIyTMRqS1f0n0WDX2magPspnVJ6J6Pd1Yg9UvIqNlwo/qBFJtn9Q0WFtJCUFGbP1N2pP
+ B1LFkWomE3Kqvm46T9Zw4g5iQxp4jLYYj7SStbKk9EAOdRLMTvkiyTKsn1bI81oxaYqN
+ acEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3fr5sB/hWF6oqc9m6hzOo1nMZaFOt3GJ2Ovlo132VCQ=;
+ b=YAIpesoe+89ah0f5yjlSJV9cOrFG4CfVq1P998050Q67uKWWlkZapce4Biilk5Qzhz
+ eBYP2afgUi7ByosnDrOhn/Em4hZdPgC6JRhxInEnTgSENYAXiXinsHYUzQKPzRwZyZFz
+ o48pBPjMmgkuJRpoo8UUDnmDUCdAEfPC2KLy0mBGyQBhd8sgyCTusZP9+Al9O0ejfOHL
+ YQgRDjJ8wqeWZzmFrz5yfXhYIiXZ1b3h35n+hBQ8zBmwc77zFFIHOqDvmink8qil+FIc
+ iNR40w2vGO8AuBM2/LxZHVvbeCDuGOorXErAi3hZub5+am3xlx6NT/PIe/VrFoWMHJgu
+ nikg==
+X-Gm-Message-State: AOAM532QWMJaPr4SmCLq7g1bRMME23tigkpm+N4NlZYcATFeAfvterKR
+ C7/vkZnYMLp1HwVMHKMRxQLz9A==
+X-Google-Smtp-Source: ABdhPJwZs1Eb9XLIHSC22SB5RhOI84i+Yyfqvzl0zjy3mqksUQU5ZTohyeD569HO712YaEOlrL1fnA==
+X-Received: by 2002:a1c:80c5:: with SMTP id b188mr8663137wmd.57.1638376921939; 
+ Wed, 01 Dec 2021 08:42:01 -0800 (PST)
+Received: from localhost.localdomain ([2a01:e34:ed2f:f020:72d0:52a1:d4ea:f564])
+ by smtp.gmail.com with ESMTPSA id v8sm255547wrd.84.2021.12.01.08.41.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Dec 2021 08:42:01 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: daniel.lezcano@linaro.org,
+	robh@kernel.org
+Cc: arnd@linaro.org, heiko@sntech.de, ulf.hansson@linaro.org,
+ rjw@rjwysocki.net, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ lukasz.luba@arm.com, Robin Murphy <robin.murphy@arm.com>,
+ Rob Herring <robh+dt@kernel.org>, Johan Jonker <jbx6244@gmail.com>,
+ Helen Koike <helen.koike@collabora.com>,
+ Brian Norris <briannorris@chromium.org>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+ linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH v3 2/5] arm64: dts: rockchip: Add powerzones definition for
+ rock960
+Date: Wed,  1 Dec 2021 17:38:51 +0100
+Message-Id: <20211201163856.41419-2-daniel.lezcano@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211201163856.41419-1-daniel.lezcano@linaro.org>
+References: <20211201163856.41419-1-daniel.lezcano@linaro.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 17:03:19 up 286 days, 19:27, 150 users,  load average: 0.49, 0.50,
- 0.37
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_080500_258862_64FF0A73 
-X-CRM114-Status: GOOD (  26.37  )
+X-CRM114-CacheID: sfid-20211201_084206_517407_A9861C74 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,104 +98,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 09:13:33AM -0600, Rob Herring wrote:
-> On Wed, Nov 17, 2021 at 8:34 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> >
-> > Add support for the HDMI port found on RK3568.
-> >
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 65 ++++++++++++++++++++++++
-> >  1 file changed, 65 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > index 6ebf7c14e096a..53be61a7ce595 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > @@ -472,18 +472,36 @@ vp0: port@0 {
-> >                                 #address-cells = <1>;
-> >                                 #size-cells = <0>;
-> >                                 reg = <0>;
-> > +
-> > +                               vp0_out_hdmi: endpoint@0 {
-> > +                                       reg = <0>;
-> > +                                       remote-endpoint = <&hdmi_in_vp0>;
-> > +                                       status = "disabled";
-> > +                               };
-> >                         };
-> >
-> >                         vp1: port@1 {
-> >                                 #address-cells = <1>;
-> >                                 #size-cells = <0>;
-> >                                 reg = <1>;
-> > +
-> > +                               vp1_out_hdmi: endpoint@0 {
-> > +                                       reg = <0>;
-> > +                                       remote-endpoint = <&hdmi_in_vp1>;
-> > +                                       status = "disabled";
-> > +                               };
-> >                         };
-> >
-> >                         vp2: port@2 {
-> >                                 #address-cells = <1>;
-> >                                 #size-cells = <0>;
-> >                                 reg = <2>;
-> > +
-> > +                               vp2_out_hdmi: endpoint@0 {
-> > +                                       reg = <0>;
-> > +                                       remote-endpoint = <&hdmi_in_vp2>;
-> > +                                       status = "disabled";
-> > +                               };
-> >                         };
-> >                 };
-> >         };
-> > @@ -499,6 +517,53 @@ vop_mmu: iommu@fe043e00 {
-> >                 status = "disabled";
-> >         };
-> >
-> > +       hdmi: hdmi@fe0a0000 {
-> > +               compatible = "rockchip,rk3568-dw-hdmi";
-> > +               reg = <0x0 0xfe0a0000 0x0 0x20000>;
-> > +               interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-> > +               clocks = <&cru PCLK_HDMI_HOST>,
-> > +                        <&cru CLK_HDMI_SFR>,
-> > +                        <&cru CLK_HDMI_CEC>,
-> > +                        <&cru HCLK_VOP>;
-> > +               clock-names = "iahb", "isfr", "cec", "hclk";
-> > +               power-domains = <&power RK3568_PD_VO>;
-> > +               reg-io-width = <4>;
-> > +               rockchip,grf = <&grf>;
-> > +               #sound-dai-cells = <0>;
-> > +               pinctrl-names = "default";
-> > +               pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
-> > +               status = "disabled";
-> > +
-> > +               ports {
-> > +                       #address-cells = <1>;
-> > +                       #size-cells = <0>;
-> > +
-> > +                       hdmi_in: port@0 {
-> 
-> 
-> The schema says there is only 1 'port' node. Please run schema
-> validation when making DT changes.
-> 
-> However, an HDMI bridge should also define an output port to a
-> connector node (or another bridge). So the fix is to allow 'port@0'
-> and add an output port.
+Add the powerzones description. This first step introduces the big,
+the little as powerzone places.
 
-The rockchip bindings traditionally don't have a connector explicitly
-specified in their device trees. I'll stick to that for the next round.
-If necessary I'll look later what it takes to add a connector node.
+Cc: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+   V3:
+     - Remove GPU section as no power is available (yet)
+     - Remove '#powerzone-cells' conforming to the bindings change
+   V2:
+     - Move description in the SoC dtsi specific file
+   V1: Initial post
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-Sascha
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index d3cdf6f42a30..c41b20888a44 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -76,6 +76,7 @@ cpu_l0: cpu@0 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <100>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 		};
+ 
+ 		cpu_l1: cpu@1 {
+@@ -88,6 +89,7 @@ cpu_l1: cpu@1 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <100>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 		};
+ 
+ 		cpu_l2: cpu@2 {
+@@ -100,6 +102,7 @@ cpu_l2: cpu@2 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <100>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 		};
+ 
+ 		cpu_l3: cpu@3 {
+@@ -112,6 +115,7 @@ cpu_l3: cpu@3 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <100>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 		};
+ 
+ 		cpu_b0: cpu@100 {
+@@ -124,6 +128,7 @@ cpu_b0: cpu@100 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <436>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 
+ 			thermal-idle {
+ 				#cooling-cells = <2>;
+@@ -142,6 +147,7 @@ cpu_b1: cpu@101 {
+ 			#cooling-cells = <2>; /* min followed by max */
+ 			dynamic-power-coefficient = <436>;
+ 			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
++			powerzone = <&PKG_PZ>;
+ 
+ 			thermal-idle {
+ 				#cooling-cells = <2>;
+@@ -791,6 +797,17 @@ spi5: spi@ff200000 {
+ 		status = "disabled";
+ 	};
+ 
++	powerzones {
++
++		PKG_PZ: pkg {
++			#powerzone-cells = <0>;
++                        powerzone = <&SOC_PZ>;
++		};
++
++		SOC_PZ: soc {
++		};
++	};
++
+ 	thermal_zones: thermal-zones {
+ 		cpu_thermal: cpu-thermal {
+ 			polling-delay-passive = <100>;
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
