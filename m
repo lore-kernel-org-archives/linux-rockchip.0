@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FF9CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 12:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C046C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 16:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5VJn5AHJWbIKs2P/P2qgE5Fg2raFJgtjzQux81Q121k=; b=qCo3rKG/fofWWB
-	i0zzJ09KKActg/tmKfjF0mMiYIbYRg9vJWOl+oTZHpaAQXbHVQ42nW271MixTfe18+MIIZxEUGTOZ
-	Bs05PzVbT7wjicyvw41Q540ZyKksPsYUnFHRSgjyDMnfyH9ZQt8sJxvKiR/YiztPC5cYZaxQ1y4tU
-	FN2ane2o5xjJXBQ2qtMWfjvEIvJ3Ja4GUHEViF9Y4aQEZPw+J1TeTSGKITILXbegWPbejIQ3bqph6
-	OrysQxvPwnVgWTGZBkt7SkkBaafyFtplxdE44H0h2AwiD/UMdhOmy/lxVjMInxxczcqykr+lgG9Ix
-	veQI0i0pWxURikhakaIQ==;
+	List-Owner; bh=GKSqFVEpDJULVpSN6suKxq8u+G6xQitOkjB+7+SOrDU=; b=g1ntLV/FYYmMMJ
+	mu0lqDhzXZhauzjxjcPr0WocB8dPVJH4HI/dtvNA+PBI1rP5upNN3zwIGyzwefVcj5kxvc9qWYQ4w
+	/1TVDBJvZXHjkj5kpfcAuqKkriRf2HJIuAYA8qCnrMf1acwqk+Kc1yFv5w2ioIEMcpTh5NukzSxkP
+	wtosmFPZHBrSI2GXrKM8Buxb8HnitnUZLc79AW2JyilGUuiCVthaF1/3bpf/PGz/N4wXhrY9cRXWf
+	3JVk2xta86DWI/YV+rqtqxvXsU8RezL0v0UOPIqAsaUDv8fg8bqyAZbNxP4e8MQDiDWz5+j19J6ik
+	v+9EhMuCGNa7m7fEEnSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msPCO-008axC-R0; Wed, 01 Dec 2021 12:59:00 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1msS6a-009JDi-DZ; Wed, 01 Dec 2021 16:05:12 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msPBv-008alr-BC
- for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 12:58:33 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id g14so101337958edb.8
- for <linux-rockchip@lists.infradead.org>; Wed, 01 Dec 2021 04:58:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=D5PW8BhdAuu4oqSswIsrh+4cgg8Ko16BHPb2BC0DyDc=;
- b=ShtUvDfW5PyLg35gKksvBhAIF13Qdlo2k1kJ5nf9ddtcN2IWargq9oK9uH9Mj7mOlM
- yrZ5ncJ7wlQ3v3gaY2hNqU4iayvlI7vavUCnibRCmaVdQk34nmuQKcpVe0PohmHbMvqP
- Nx1ViR1M93mzRFKRGh73XszDpowN3KMR+Opzfq2PvivLIH0YhKXdc+DMIXTeShsMgFxl
- 9/rGywoLb97EPLIPX0ys7IEZFihb9iHe1IeX3ailUU8luIz9EXUyP9Qn6V0BocL4t0CC
- j9BgxuSZEW7jn2HQAkvAuK6mVu7ghUJOjDX/Fe7XXV7vRQ/AHlnQE8pbKWqG8SpIt0l0
- Nf9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=D5PW8BhdAuu4oqSswIsrh+4cgg8Ko16BHPb2BC0DyDc=;
- b=a+jWtgPUQS3zZaDxi8qf/qIhliVsrJYGpQKZwsqfPO9QdcvOH+l3ADmebRd2KuuwTf
- X9C7ri0LjBYF6+3myAZbbFAq8KB/4XGCE0ik2sGLSH2VXzDoJ/gtokwS14qsi1fLxfTQ
- 1+CrbvTY0brCgHTYo14KDZcfjMFH6BmSDt3jPG1FzZ8CoJd8Imc6D5kI3pkFd0DjCfjt
- UgfDxmVKSsSBI66tA0ZONEl2K7OarKJfUoS6gflnrDfyCIepa+AX+KCDbouhh1Ce6/jw
- HWWxhv+t8Gy05t7wrz5I/UgOG+Xm5j38q5OJtQFkEvavHL8hvb7hjWLTuzxB7PpZhsxW
- N2vQ==
-X-Gm-Message-State: AOAM530aHLHGd9e5/jxvJgVI8BFl53uCBFLM+BLLBJIj4EEdO06PDyZp
- ZjlWkx05DVMqmQtVBF8HK2psdeUzinVkzmse+bF0SA==
-X-Google-Smtp-Source: ABdhPJz9iOdDKNgMdJzD0gqeRB73Q1A4iiFR0FxNxz9fFpszk+uTamQrvcRyI5fCgzr/AcT0r10edZjMU7/6TzU7sCE=
-X-Received: by 2002:aa7:c946:: with SMTP id h6mr8446283edt.190.1638363509446; 
- Wed, 01 Dec 2021 04:58:29 -0800 (PST)
+ id 1msS6O-009J9q-6j
+ for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 16:05:01 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1msS6G-00018X-SS; Wed, 01 Dec 2021 17:04:52 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1msS6D-0007gg-9U; Wed, 01 Dec 2021 17:04:49 +0100
+Date: Wed, 1 Dec 2021 17:04:49 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH 09/12] arm64: dts: rockchip: rk356x: Add HDMI nodes
+Message-ID: <20211201160449.GF25697@pengutronix.de>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <20211117143347.314294-10-s.hauer@pengutronix.de>
+ <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20211201013329.15875-1-aford173@gmail.com>
- <20211201013329.15875-2-aford173@gmail.com>
- <CAAEAJfBBFhRtW2wmoA6T+yyM-nurUbtPqYHKPHjeRdKzA34PcQ@mail.gmail.com>
- <CAHCN7xLGTadbr+=-j2yJHFn233dgHic28njej8LHS2M0WwtqYQ@mail.gmail.com>
-In-Reply-To: <CAHCN7xLGTadbr+=-j2yJHFn233dgHic28njej8LHS2M0WwtqYQ@mail.gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Wed, 1 Dec 2021 09:58:17 -0300
-Message-ID: <CAAEAJfDqBezv1_ZsF3vjAFprZYuaE7krkSXa4vzAfMZp5_z+sA@mail.gmail.com>
-Subject: Re: [RFC V2 1/2] media: hantro: Add support for i.MX8M Mini
-To: Adam Ford <aford173@gmail.com>
-Cc: linux-media <linux-media@vger.kernel.org>,
- Hans Verkuil <hverkuil@xs4all.nl>, 
- Tim Harvey <tharvey@gateworks.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, 
- Adam Ford-BE <aford@beaconembedded.com>, Rob Herring <robh+dt@kernel.org>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, 
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
+Content-Disposition: inline
+In-Reply-To: <CAL_JsqJH4NZkte_2w9i1zf9UrkYZx3du4ja5i__Vzki5p13zBQ@mail.gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 17:03:19 up 286 days, 19:27, 150 users,  load average: 0.49, 0.50,
+ 0.37
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_045831_416224_3A63765A 
-X-CRM114-Status: GOOD (  30.78  )
+X-CRM114-CacheID: sfid-20211201_080500_258862_64FF0A73 
+X-CRM114-Status: GOOD (  26.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,106 +86,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 1 Dec 2021 at 09:36, Adam Ford <aford173@gmail.com> wrote:
->
-> On Wed, Dec 1, 2021 at 6:25 AM Ezequiel Garcia
-> <ezequiel@vanguardiasur.com.ar> wrote:
+On Wed, Nov 17, 2021 at 09:13:33AM -0600, Rob Herring wrote:
+> On Wed, Nov 17, 2021 at 8:34 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
 > >
-> > Hi Adam,
+> > Add support for the HDMI port found on RK3568.
 > >
-> > On Tue, 30 Nov 2021 at 22:33, Adam Ford <aford173@gmail.com> wrote:
-> > >
-> > > The i.MX8M Mini has a similar implementation of the Hantro G1 and
-> > > h decoders, but the Mini uses the vpu-blk-ctrl for handling the
-> > > VPU resets through the power domain system.  As such, there are
-> > > functions present in the 8MQ that are not applicable to the Mini
-> > > which requires the driver to have a different compatible flags.
-> > >
-> > > Signed-off-by: Adam Ford <aford173@gmail.com>
-> > >
-> > > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> > > index fb82b9297a2b..2aa1c520be50 100644
-> > > --- a/drivers/staging/media/hantro/hantro_drv.c
-> > > +++ b/drivers/staging/media/hantro/hantro_drv.c
-> > > @@ -592,6 +592,8 @@ static const struct of_device_id of_hantro_match[] = {
-> > >         { .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
-> > >  #endif
-> > >  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
-> > > +       { .compatible = "nxp,imx8mm-vpu", .data = &imx8mm_vpu_variant, },
-> > > +       { .compatible = "nxp,imx8mm-vpu-g2", .data = &imx8mm_vpu_g2_variant },
-> > >         { .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
-> > >         { .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
-> > >  #endif
-> > > diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> > > index 267a6d33a47b..ae7c3fff760c 100644
-> > > --- a/drivers/staging/media/hantro/hantro_hw.h
-> > > +++ b/drivers/staging/media/hantro/hantro_hw.h
-> > > @@ -211,6 +211,8 @@ enum hantro_enc_fmt {
-> > >         ROCKCHIP_VPU_ENC_FMT_UYVY422 = 3,
-> > >  };
-> > >
-> > > +extern const struct hantro_variant imx8mm_vpu_g2_variant;
-> > > +extern const struct hantro_variant imx8mm_vpu_variant;
-> > >  extern const struct hantro_variant imx8mq_vpu_g2_variant;
-> > >  extern const struct hantro_variant imx8mq_vpu_variant;
-> > >  extern const struct hantro_variant px30_vpu_variant;
-> > > diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-> > > index ea919bfb9891..c68516c00c6d 100644
-> > > --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-> > > +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-> > > @@ -242,6 +242,32 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
-> > >         },
-> > >  };
-> > >
-> > > +static const struct hantro_codec_ops imx8mm_vpu_codec_ops[] = {
-> > > +       [HANTRO_MODE_MPEG2_DEC] = {
-> > > +               .run = hantro_g1_mpeg2_dec_run,
-> > > +               .init = hantro_mpeg2_dec_init,
-> > > +               .exit = hantro_mpeg2_dec_exit,
-> > > +       },
-> > > +       [HANTRO_MODE_VP8_DEC] = {
-> > > +               .run = hantro_g1_vp8_dec_run,
-> > > +               .init = hantro_vp8_dec_init,
-> > > +               .exit = hantro_vp8_dec_exit,
-> > > +       },
-> > > +       [HANTRO_MODE_H264_DEC] = {
-> > > +               .run = hantro_g1_h264_dec_run,
-> > > +               .init = hantro_h264_dec_init,
-> > > +               .exit = hantro_h264_dec_exit,
-> > > +       },
-> > > +};
-> > > +
-> > > +static const struct hantro_codec_ops imx8mm_vpu_g2_codec_ops[] = {
-> > > +       [HANTRO_MODE_HEVC_DEC] = {
-> > > +               .run = hantro_g2_hevc_dec_run,
-> > > +               .init = hantro_hevc_dec_init,
-> > > +               .exit = hantro_hevc_dec_exit,
-> > > +       },
-> > > +};
-> > > +
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 65 ++++++++++++++++++++++++
+> >  1 file changed, 65 insertions(+)
 > >
-> > I believe you are missing VP9, which explains why you get
-> > a zero fluster score.
->
-> That's what I was thinking too and that's why I was wondering if I
-> should wait on G2 until more of those G2 patches have been finalized
-> and accepted.  Is there a way to test the HEVC?  I didn't see one in
-> the fluster list.
->
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > index 6ebf7c14e096a..53be61a7ce595 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > @@ -472,18 +472,36 @@ vp0: port@0 {
+> >                                 #address-cells = <1>;
+> >                                 #size-cells = <0>;
+> >                                 reg = <0>;
+> > +
+> > +                               vp0_out_hdmi: endpoint@0 {
+> > +                                       reg = <0>;
+> > +                                       remote-endpoint = <&hdmi_in_vp0>;
+> > +                                       status = "disabled";
+> > +                               };
+> >                         };
+> >
+> >                         vp1: port@1 {
+> >                                 #address-cells = <1>;
+> >                                 #size-cells = <0>;
+> >                                 reg = <1>;
+> > +
+> > +                               vp1_out_hdmi: endpoint@0 {
+> > +                                       reg = <0>;
+> > +                                       remote-endpoint = <&hdmi_in_vp1>;
+> > +                                       status = "disabled";
+> > +                               };
+> >                         };
+> >
+> >                         vp2: port@2 {
+> >                                 #address-cells = <1>;
+> >                                 #size-cells = <0>;
+> >                                 reg = <2>;
+> > +
+> > +                               vp2_out_hdmi: endpoint@0 {
+> > +                                       reg = <0>;
+> > +                                       remote-endpoint = <&hdmi_in_vp2>;
+> > +                                       status = "disabled";
+> > +                               };
+> >                         };
+> >                 };
+> >         };
+> > @@ -499,6 +517,53 @@ vop_mmu: iommu@fe043e00 {
+> >                 status = "disabled";
+> >         };
+> >
+> > +       hdmi: hdmi@fe0a0000 {
+> > +               compatible = "rockchip,rk3568-dw-hdmi";
+> > +               reg = <0x0 0xfe0a0000 0x0 0x20000>;
+> > +               interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+> > +               clocks = <&cru PCLK_HDMI_HOST>,
+> > +                        <&cru CLK_HDMI_SFR>,
+> > +                        <&cru CLK_HDMI_CEC>,
+> > +                        <&cru HCLK_VOP>;
+> > +               clock-names = "iahb", "isfr", "cec", "hclk";
+> > +               power-domains = <&power RK3568_PD_VO>;
+> > +               reg-io-width = <4>;
+> > +               rockchip,grf = <&grf>;
+> > +               #sound-dai-cells = <0>;
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
+> > +               status = "disabled";
+> > +
+> > +               ports {
+> > +                       #address-cells = <1>;
+> > +                       #size-cells = <0>;
+> > +
+> > +                       hdmi_in: port@0 {
+> 
+> 
+> The schema says there is only 1 'port' node. Please run schema
+> validation when making DT changes.
+> 
+> However, an HDMI bridge should also define an output port to a
+> connector node (or another bridge). So the fix is to allow 'port@0'
+> and add an output port.
 
-VP9 is on its way to be merged. There is a pull request from Hans
-already: see https://www.spinics.net/lists/linux-media/msg202448.html
-which includes the git repository and tag you can merge/rebase to test
-it.
+The rockchip bindings traditionally don't have a connector explicitly
+specified in their device trees. I'll stick to that for the next round.
+If necessary I'll look later what it takes to add a connector node.
 
-It would be great if you can test G2 on top of that, but it's also fine
-if you want to just submit G1 for now. Up to you.
+Sascha
 
-Regarding HEVC, currently Benjamin is who knows best how to test it.
-Thinking about it, perhaps we should document this somewhere?
 
-Regards,
-Ezequiel
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
