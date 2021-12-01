@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53FF5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 19:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68309C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 20:04:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XnJoIOUHYfbM/gAazpCoFb4HVTQCMnaSPfDbdMIywk0=; b=MW9VDrF5KFGBEL
-	+KN0seTXBvnKWZq4oYjmFRvSFGUblNn4kIobuIpbZSoaHS9CjHVgJA9rACNsMhobU0C0cfr7vEdrV
-	Gi4z+1iwWTjMD92q/DBb7/Z/8GfdBtnS3oH4lCoMvvm1zf09eBZ8sLu9/TAdFdvHrIQIHYy0lY/F+
-	n51eqhkrWY+y8zntko9HbuDBTujvEyVQ5TkeyUkharbN4fqowLmEOfgwsm517bIkmycdtXVYcP+7M
-	niDY1y8oyYdGX+oNL4zK65njTyFAcUeFLKj4j53xjGlk6fFG2G2EDo67hGwjTKgoeVNvU2ZY6E8TZ
-	RkO4/w5QpXNAhDmo1uVQ==;
+	List-Owner; bh=7vpqifumIJI0SbgomkicB6BXWkk9V/dnAAs3bcSFCbI=; b=PHrBwFOsHqhhDM
+	hkrSuhV9Wm8/cP8FVZahKGUB0kXL9/fqHdBNwaBwwNHgyRU1nmpV8HBWpwFXdQ4OmqGdgOUzJWDyG
+	53opEDIMqUeSYrE1ewN5hGr1kpJoESxMmU0AyNQ7nooRgkPugVm0tO7DUb6ZpOqxP2us5xmhq1U+q
+	Fvi3YwFmyqj8BjH+tfP8dKiq2iW8X/IW3ScuHvlx5XuGB6aVLEN1pvFGKre/pfog8UBjuX4GOX5Is
+	MxzU0O8vxNvrNMTQKLcpAnn1izXOEHcktjdqlo1juAgUJOwtEN/0jkeftCJnTwbf1HcAgadxofO7M
+	FBuziHJk5I/jFKhKFDWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msVGP-009wl5-Dv; Wed, 01 Dec 2021 19:27:33 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1msVqU-00A1UU-H0; Wed, 01 Dec 2021 20:04:50 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msVGC-009wjc-46; Wed, 01 Dec 2021 19:27:22 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id e3so106325293edu.4;
- Wed, 01 Dec 2021 11:27:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ id 1msVqH-00A1Rx-Jt
+ for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 20:04:39 +0000
+Received: by mail-pg1-x530.google.com with SMTP id j11so14839081pgs.2
+ for <linux-rockchip@lists.infradead.org>; Wed, 01 Dec 2021 12:04:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gateworks-com.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JAv+a8iChUvwqOY5lIjki0ZUA4EpmPS1I3AqCsxWKaA=;
- b=C4txjCwm3xDKfmaX5oVjU/e2fbmP3gKFWv2gYVGrXCne7LzW2nuJAuTe47lj3Xti3d
- gF6/MTjUqynCFWLDuUyB1xDP5znJx/eqiiPkeYNs5ZIxOccOUX8HwuaDiFcXAStwHVEA
- y61hNacUznJejZBJfHOrN+IYOMFMb6z1rv1C1+R2fS90bBBdXcnZDJ3eIwtKkFEVb/ma
- eQ+WwCPN/grOWJ73ousVBalkFe0n8ov/Vk53Y1KTwtWmexQ5escN8yO5rnBmGtRiDaGz
- D9TgTO1VKJQe23vyXcdTC2H+nKPg+OjcB4uQ4yXWHWKpEv7mUqEupjVZpcA0aPSllNAr
- 9WLA==
+ :cc; bh=nsiTKNzeT17zlcGBPEflu0BoPiL6YOvxqxu/DTkED3c=;
+ b=p8SsnBedrs0pmpdP+PRCtrcFW88LibHugJKnafYAMXVev9lcICnPaVSkqTREFVdw3Z
+ pTx7W6JKls/ESN2H6v6TdkB2aHX8RDmMxhIDLKxP9huqGq+tHRFKHakhmJXNhY1shzzE
+ jJwyaEznLXvggJcqQYNbE/qEuXKY/fW6nz+que4qcDiDQ0hAoBUoSzTOQm37e2PXVF4f
+ Wc9fSNe3ItT+xrQ5cX+wfniWd4qN8DErB6P6JMuGXsL9XIzBNCuOGzXN/NQF912hpdnB
+ R7iDGGuVIrutad7jTVRwWTJghwCxygv3+aL8B8uFoTBKM8C0NEPYJBSJJxFza8WJxhN8
+ UUvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=JAv+a8iChUvwqOY5lIjki0ZUA4EpmPS1I3AqCsxWKaA=;
- b=OSHfdGp7rRLqfJwSUJ2SmJRjatpc6/jZab752NVihPQkyPPOlAOtVdiSIABx49w8WH
- 86R/QurOJkK+HKIU4Y17GjPhbsKN6lk6PPGUFGbOXsEcDXEewhCGNisQ72TOJOo7ykp9
- U8jdnvKDUcUhaDpfbAFksW5dY2KHWFQYAgd6dpYIRTYkR6cCU3aX/eEn+xz82xOelHhr
- 7g86vGi+jphi81eWz4sw6yS7TqoIljOOItoLX3O0aQku6stdvveTRUqId7ETahjWmz2X
- C8eWRCRBiIekN1e/RqX8Mv7iitRSCTep479WazCI4xiwUclBrw07hXodvpnMMSvYVphL
- ACRQ==
-X-Gm-Message-State: AOAM5335ciqTpzvrW6/XWwPufrbHsc9TWIxaue0h/65yZpjbzSDpR9SW
- QkwfDbpzduaBroNGEcBnjguQWSQNocpLOX0Ydd8=
-X-Google-Smtp-Source: ABdhPJzlutLYnRXY7oNgCBeUPmCoR5PdT2Y3yu0by3ZRURhZA7664xM0tbkih3XmSHR+97JmFdGGwKBZIt5MEzIs7t8=
-X-Received: by 2002:a17:906:79c3:: with SMTP id
- m3mr9108224ejo.332.1638386838377; 
- Wed, 01 Dec 2021 11:27:18 -0800 (PST)
+ bh=nsiTKNzeT17zlcGBPEflu0BoPiL6YOvxqxu/DTkED3c=;
+ b=QHkDwZIv58oMeMRnl/VHwBs+XupSvco/JC3Rq5YoQCoINRSzapZnsapJeNaMf3FjCB
+ vaal2Q6qJ6O0Ln6JWn38/5qDVO2gmIL/tHW/A1TEtcup7Zzonvo5LAKHgyDj/RB8p6RB
+ CuRoA1o+7uWlTz/ieTj2cI7xBnYwJ9VFUMYSV8UuLmb1uNiEyZoAgOfOp2Q7ri0qSOLh
+ zHePuFXn6pJyk6lz3X9DBWiKsMbQATDwpSszqeFsQyNQVQhjeTIPFVJQCi83Yp+njOy3
+ 9xUo6UJn56XfxtWbbr78zUWxFncFJ+ZX+8M9fmdfgmORbYippt+1rkLeERrbgQigCYE1
+ dscQ==
+X-Gm-Message-State: AOAM533Xgv5PMSycnokUZKcNfo5875+j+lcwKdhf9alM5apAw6okjDfa
+ f87DkjHCCQDUHF8SVTW+mFAroLJaVP5LyKOy3A5EpA==
+X-Google-Smtp-Source: ABdhPJy+3CvqU/GPcenNmXENaMK9b6wwBTCbzk8227jknk4mSAb04PfrkSVC1bSF+DRQVYH5SMp0/0bSPgg4P7dEmIQ=
+X-Received: by 2002:a05:6a00:22c3:b0:4a0:605:6446 with SMTP id
+ f3-20020a056a0022c300b004a006056446mr8526530pfj.27.1638389075912; Wed, 01 Dec
+ 2021 12:04:35 -0800 (PST)
 MIME-Version: 1.0
 References: <20211201013329.15875-1-aford173@gmail.com>
  <CAJ+vNU1jENmWAR_5E98Vgb53ctxjxSWJewPW0YC4Yp4DuYTn3g@mail.gmail.com>
  <7216bc863d89faa9fdc5cd8d44c319f7a6d88159.camel@pengutronix.de>
  <CAJ+vNU2PxgdN414Ufd4NAG5CJgnftNSAHDGpt9Nj+RfgkNmxaw@mail.gmail.com>
  <ccfc08bbb6ec0debd523bd106e7eff4a747aaa23.camel@pengutronix.de>
- <CAHCN7xKfRj3f03kC5TuBv-Te1OyeWNRe2aaqJNaW9VdHgbWqbg@mail.gmail.com>
- <62d99a764d3a8071f061a0127cfba6d7df53fc19.camel@pengutronix.de>
-In-Reply-To: <62d99a764d3a8071f061a0127cfba6d7df53fc19.camel@pengutronix.de>
-From: Adam Ford <aford173@gmail.com>
-Date: Wed, 1 Dec 2021 13:27:07 -0600
-Message-ID: <CAHCN7xKVPtjx+YpPQKeUOZYUb0W6NWacYdsB-HHe-3AUbSGAFw@mail.gmail.com>
+In-Reply-To: <ccfc08bbb6ec0debd523bd106e7eff4a747aaa23.camel@pengutronix.de>
+From: Tim Harvey <tharvey@gateworks.com>
+Date: Wed, 1 Dec 2021 12:04:24 -0800
+Message-ID: <CAJ+vNU3GgwW02VCiqQJhpR_D_fFse42zyWHrB-ETj6V+c4KqtA@mail.gmail.com>
 Subject: Re: [RFC V2 0/2] arm64: imx8mm: Enable Hantro VPUs
 To: Lucas Stach <l.stach@pengutronix.de>
-Cc: Tim Harvey <tharvey@gateworks.com>,
- linux-media <linux-media@vger.kernel.org>, 
+Cc: Adam Ford <aford173@gmail.com>, linux-media <linux-media@vger.kernel.org>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Hans Verkuil <hverkuil@xs4all.nl>, 
  Nicolas Dufresne <nicolas@ndufresne.ca>,
@@ -85,8 +84,8 @@ Cc: Tim Harvey <tharvey@gateworks.com>,
  "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
  "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_112720_195168_1CCEF37B 
-X-CRM114-Status: GOOD (  56.44  )
+X-CRM114-CacheID: sfid-20211201_120437_731388_9E63C894 
+X-CRM114-Status: GOOD (  53.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,161 +103,283 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 1, 2021 at 1:04 PM Lucas Stach <l.stach@pengutronix.de> wrote:
+On Wed, Dec 1, 2021 at 10:37 AM Lucas Stach <l.stach@pengutronix.de> wrote:
 >
-> Am Mittwoch, dem 01.12.2021 um 12:52 -0600 schrieb Adam Ford:
-> > On Wed, Dec 1, 2021 at 12:37 PM Lucas Stach <l.stach@pengutronix.de> wrote:
+> Am Mittwoch, dem 01.12.2021 um 10:16 -0800 schrieb Tim Harvey:
+> > On Wed, Dec 1, 2021 at 9:32 AM Lucas Stach <l.stach@pengutronix.de> wrote:
 > > >
-> > > Am Mittwoch, dem 01.12.2021 um 10:16 -0800 schrieb Tim Harvey:
-> > > > On Wed, Dec 1, 2021 at 9:32 AM Lucas Stach <l.stach@pengutronix.de> wrote:
+> > > Hi Tim,
+> > >
+> > > Am Mittwoch, dem 01.12.2021 um 09:23 -0800 schrieb Tim Harvey:
+> > > > On Tue, Nov 30, 2021 at 5:33 PM Adam Ford <aford173@gmail.com> wrote:
 > > > > >
-> > > > > Hi Tim,
+> > > > > The i.MX8M has two Hantro video decoders, called G1 and G2 which appear
+> > > > > to be related to the video decoders used on the i.MX8MQ, but because of
+> > > > > how the Mini handles the power domains, the VPU driver does not need to
+> > > > > handle all the functions, nor does it support the post-processor,
+> > > > > so a new compatible flag is required.
 > > > > >
-> > > > > Am Mittwoch, dem 01.12.2021 um 09:23 -0800 schrieb Tim Harvey:
-> > > > > > On Tue, Nov 30, 2021 at 5:33 PM Adam Ford <aford173@gmail.com> wrote:
-> > > > > > >
-> > > > > > > The i.MX8M has two Hantro video decoders, called G1 and G2 which appear
-> > > > > > > to be related to the video decoders used on the i.MX8MQ, but because of
-> > > > > > > how the Mini handles the power domains, the VPU driver does not need to
-> > > > > > > handle all the functions, nor does it support the post-processor,
-> > > > > > > so a new compatible flag is required.
-> > > > > > >
-> > > > > > > With the suggestion from Hans Verkuil, I was able to get the G2 splat to go away
-> > > > > > > with changes to FORCE_MAX_ZONEORDER, but I found I could also set cma=512M, however
-> > > > > > > it's unclear to me if that's an acceptable alternative.
-> > > > > > >
-> > > > > > > At the suggestion of Ezequiel Garcia and Nicolas Dufresne I have some
-> > > > > > > results from Fluster. However, the G2 VPU appears to fail most tests.
-> > > > > > >
-> > > > > > > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-> > > > > > > Ran 90/135 tests successfully               in 76.431 secs
-> > > > > > >
-> > > > > > >  ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-> > > > > > > Ran 55/61 tests successfully               in 21.454 secs
-> > > > > > >
-> > > > > > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-> > > > > > > Ran 0/303 tests successfully               in 20.016 secs
-> > > > > > >
-> > > > > > > Each day seems to show more and more G2 submissions, and gstreamer seems to be
-> > > > > > > still working on the VP9, so I am not sure if I should drop G2 as well.
-> > > > > > >
-> > > > > > >
-> > > > > > > Adam Ford (2):
-> > > > > > >   media: hantro: Add support for i.MX8M Mini
-> > > > > > >   arm64: dts: imx8mm: Enable VPU-G1 and VPU-G2
-> > > > > > >
-> > > > > > >  arch/arm64/boot/dts/freescale/imx8mm.dtsi   | 41 +++++++++++++++
-> > > > > > >  drivers/staging/media/hantro/hantro_drv.c   |  2 +
-> > > > > > >  drivers/staging/media/hantro/hantro_hw.h    |  2 +
-> > > > > > >  drivers/staging/media/hantro/imx8m_vpu_hw.c | 57 +++++++++++++++++++++
-> > > > > > >  4 files changed, 102 insertions(+)
-> > > > > > >
-> > > > > >
-> > > > > > Adam,
-> > > > > >
-> > > > > > That's for the patches!
-> > > > > >
-> > > > > > I tested just this series on top of v5.16-rc3 on an
-> > > > > > imx8mm-venice-gw73xx-0x and found that if I loop fluster I can end up
-> > > > > > getting a hang within 10 to 15 mins or so when imx8m_blk_ctrl_power_on
-> > > > > > is called for VPUMIX pd :
-> > > > > > while [ 1 ]; do uptime; ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0; done
-> > > > > > ...
-> > > > > > [  618.838436] imx-pgc imx-pgc-domain.6: failed to command PGC
-> > > > > > [  618.844407] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
-> > > > > >
-> > > > > > I added prints in imx_pgc_power_{up,down} and
-> > > > > > imx8m_blk_ctrl_power_{on,off} to get some more context
-> > > > > > ...
-> > > > > > Ran 55/61 tests successfully               in 8.685 secs
-> > > > > >  17:16:34 up 17 min,  0 users,  load average: 3.97, 2.11, 0.93
-> > > > > > ********************************************************************************
-> > > > > > ********************
-> > > > > > Running test suite VP8-TEST-VECTORS with decoder GStreamer-VP8-V4L2SL-Gst1.0
-> > > > > > Using 4 parallel job(s)
-> > > > > > ********************************************************************************
-> > > > > > ********************
-> > > > > >
-> > > > > > [TEST SUITE      ] (DECODER                    ) TEST VECTOR               ... R
-> > > > > > ESULT
-> > > > > > ----------------------------------------------------------------------
-> > > > > > [ 1023.114806] imx8m_blk_ctrl_power_on vpublk-g1
-> > > > > > [ 1023.119669] imx_pgc_power_up vpumix
-> > > > > > [ 1023.124307] imx-pgc imx-pgc-domain.6: failed to command PGC
-> > > > > > [ 1023.130006] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
-> > > > > >
-> > > > > > While this wouldn't be an issue with this series it does indicate we
-> > > > > > still have something racy in blk-ctrl. Can you reproduce this (and if
-> > > > > > not what kernel are you based on)? Perhaps you or Lucas have some
-> > > > > > ideas?
-> > > > > >
-> > > > > Did you have "[PATCH] soc: imx: gpcv2: Synchronously suspend MIX
-> > > > > domains" applied when running those tests? It has only recently been
-> > > > > picked up by Shawn and may have an influence on the bus domain
-> > > > > behavior.
+> > > > > With the suggestion from Hans Verkuil, I was able to get the G2 splat to go away
+> > > > > with changes to FORCE_MAX_ZONEORDER, but I found I could also set cma=512M, however
+> > > > > it's unclear to me if that's an acceptable alternative.
+> > > > >
+> > > > > At the suggestion of Ezequiel Garcia and Nicolas Dufresne I have some
+> > > > > results from Fluster. However, the G2 VPU appears to fail most tests.
+> > > > >
+> > > > > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+> > > > > Ran 90/135 tests successfully               in 76.431 secs
+> > > > >
+> > > > >  ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+> > > > > Ran 55/61 tests successfully               in 21.454 secs
+> > > > >
+> > > > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+> > > > > Ran 0/303 tests successfully               in 20.016 secs
+> > > > >
+> > > > > Each day seems to show more and more G2 submissions, and gstreamer seems to be
+> > > > > still working on the VP9, so I am not sure if I should drop G2 as well.
+> > > > >
+> > > > >
+> > > > > Adam Ford (2):
+> > > > >   media: hantro: Add support for i.MX8M Mini
+> > > > >   arm64: dts: imx8mm: Enable VPU-G1 and VPU-G2
+> > > > >
+> > > > >  arch/arm64/boot/dts/freescale/imx8mm.dtsi   | 41 +++++++++++++++
+> > > > >  drivers/staging/media/hantro/hantro_drv.c   |  2 +
+> > > > >  drivers/staging/media/hantro/hantro_hw.h    |  2 +
+> > > > >  drivers/staging/media/hantro/imx8m_vpu_hw.c | 57 +++++++++++++++++++++
+> > > > >  4 files changed, 102 insertions(+)
 > > > > >
 > > > >
-> > > > Lucas,
+> > > > Adam,
 > > > >
-> > > > Good point. I did have that originally before I started pruning down
-> > > > to the bare minimum to reproduce the issue.
+> > > > That's for the patches!
 > > > >
-> > > > I added it back and now I have the following:
-> > > > arm64: dts: imx8mm: Enable VPU-G1 and VPU-G2
-> > > > media: hantro: Add support for i.MX8M Mini
-> > > > soc: imx: gpcv2: keep i.MX8MM VPU-H1 bus clock active
-> > > > soc: imx: gpcv2: Synchronously suspend MIX domains
-> > > > Linux 5.16-rc3
-> > > >
-> > > > Here's the latest with that patch:
+> > > > I tested just this series on top of v5.16-rc3 on an
+> > > > imx8mm-venice-gw73xx-0x and found that if I loop fluster I can end up
+> > > > getting a hang within 10 to 15 mins or so when imx8m_blk_ctrl_power_on
+> > > > is called for VPUMIX pd :
+> > > > while [ 1 ]; do uptime; ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0; done
 > > > > ...
-> > > > [VP8-TEST-VECTORS] (GStreamer-VP8-V4L2SL-Gst1.0)
-> > > > vp80-00-comprehensive-007 ... Success
-> > > > [  316.632373] imx8m_blk_ctrl_power_off vpublk-g1
-> > > > [  316.636908] imx_pgc_power_down vpu-g1
-> > > > [  316.640983] imx_pgc_power_down vpumix
-> > > > [  316.756869] imx8m_blk_ctrl_power_on vpublk-g1
-> > > > [  316.761360] imx_pgc_power_up vpumix
-> > > > [  316.765985] imx-pgc imx-pgc-domain.6: failed to command PGC
-> > > > [  316.772743] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
-> > > > ^^^ hang
+> > > > [  618.838436] imx-pgc imx-pgc-domain.6: failed to command PGC
+> > > > [  618.844407] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
+> > > >
+> > > > I added prints in imx_pgc_power_{up,down} and
+> > > > imx8m_blk_ctrl_power_{on,off} to get some more context
+> > > > ...
+> > > > Ran 55/61 tests successfully               in 8.685 secs
+> > > >  17:16:34 up 17 min,  0 users,  load average: 3.97, 2.11, 0.93
+> > > > ********************************************************************************
+> > > > ********************
+> > > > Running test suite VP8-TEST-VECTORS with decoder GStreamer-VP8-V4L2SL-Gst1.0
+> > > > Using 4 parallel job(s)
+> > > > ********************************************************************************
+> > > > ********************
+> > > >
+> > > > [TEST SUITE      ] (DECODER                    ) TEST VECTOR               ... R
+> > > > ESULT
+> > > > ----------------------------------------------------------------------
+> > > > [ 1023.114806] imx8m_blk_ctrl_power_on vpublk-g1
+> > > > [ 1023.119669] imx_pgc_power_up vpumix
+> > > > [ 1023.124307] imx-pgc imx-pgc-domain.6: failed to command PGC
+> > > > [ 1023.130006] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
+> > > >
+> > > > While this wouldn't be an issue with this series it does indicate we
+> > > > still have something racy in blk-ctrl. Can you reproduce this (and if
+> > > > not what kernel are you based on)? Perhaps you or Lucas have some
+> > > > ideas?
+> > > >
+> > > Did you have "[PATCH] soc: imx: gpcv2: Synchronously suspend MIX
+> > > domains" applied when running those tests? It has only recently been
+> > > picked up by Shawn and may have an influence on the bus domain
+> > > behavior.
 > > >
-> > > Hm, I wonder if there's some broken error handling here somewhere, as a
-> > > failure to power up a domain shouldn't lead to a hang.
-> > >
-> > > However, that doesn't explain why the PGC isn't completing the request.
-> > > Can you try to extend the timeout some more. Even though I think that
-> > > 1msec should already be generous. Can you dump the content of the
-> > > GPC_PU_PGC_SW_PUP_REQ and GPC_A53_PU_PGC_PUP_STATUSn (all 3 of them)
-> > > registers, when the failure condition is hit?
 > >
-> > I submitted a patch [1]  to enable the commented-out if statement
-> > which waits for the handshake if the gpc domain was invoked by the
-> > blk-ctrl or we knew if the bus clock was operational.
+> > Lucas,
 > >
-> > I am not 100% certain it can work as-is with the vpumix, but based on
-> > what I've seen from my testing, it's not hanging or causing errors.
+> > Good point. I did have that originally before I started pruning down
+> > to the bare minimum to reproduce the issue.
 > >
-> > [1] - https://lore.kernel.org/linux-arm-kernel/20211120194900.1309914-1-aford173@gmail.com/T/
+> > I added it back and now I have the following:
+> > arm64: dts: imx8mm: Enable VPU-G1 and VPU-G2
+> > media: hantro: Add support for i.MX8M Mini
+> > soc: imx: gpcv2: keep i.MX8MM VPU-H1 bus clock active
+> > soc: imx: gpcv2: Synchronously suspend MIX domains
+> > Linux 5.16-rc3
 > >
-> > I didn't have it applied to my latest RFC for the G1 and G2 because I
-> > had not noticed a change in behavior one way or the other with that
-> > patch.
+> > Here's the latest with that patch:
+> > ...
+> > [VP8-TEST-VECTORS] (GStreamer-VP8-V4L2SL-Gst1.0)
+> > vp80-00-comprehensive-007 ... Success
+> > [  316.632373] imx8m_blk_ctrl_power_off vpublk-g1
+> > [  316.636908] imx_pgc_power_down vpu-g1
+> > [  316.640983] imx_pgc_power_down vpumix
+> > [  316.756869] imx8m_blk_ctrl_power_on vpublk-g1
+> > [  316.761360] imx_pgc_power_up vpumix
+> > [  316.765985] imx-pgc imx-pgc-domain.6: failed to command PGC
+> > [  316.772743] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
+> > ^^^ hang
 >
-> That's not going to work with all the MIX domains. The handshake
-> requires some clocks to be enabled in the blk-ctrl (the secondary clock
-> gates in the blk-ctrl) to work properly. This is only done by the blk-
-> ctrl driver _after_ the GPC bus domain is powered up, so you can not
-> wait for the handshake to complete inside the GPC power up routine.
+> Hm, I wonder if there's some broken error handling here somewhere, as a
+> failure to power up a domain shouldn't lead to a hang.
+>
+> However, that doesn't explain why the PGC isn't completing the request.
+> Can you try to extend the timeout some more. Even though I think that
+> 1msec should already be generous. Can you dump the content of the
+> GPC_PU_PGC_SW_PUP_REQ and GPC_A53_PU_PGC_PUP_STATUSn (all 3 of them)
+> registers, when the failure condition is hit?
+>
 
-I wasn't exactly sure how the handshake worked.  What your saying makes sense.
-Will you NAK my patch so it doesn't accidentally get applied.
+Adam,
 
-adam
->
-> Regards,
-> Lucas
->
+Adding keep_clocks=true to VPUG1/VPUG2 domains did not help
+
+Lucas,
+
+I bumped the regmap_read_poll_timeout timeouts from 1m to 100ms and
+still saw the same issue.
+
+Here's some added debugging to show the regs:
+[  648.037903] imx8m_blk_ctrl_power_on vpublk-g1
+[  648.042346] imx_pgc_power_up vpumix
+[  648.146178] imx-pgc imx-pgc-domain.6: imx_pgc_power_up: failed to command PGC
+[  648.153355] imx-pgc imx-pgc-domain.6: GPC_PU_PGC_SW_PUP_REQ(0x0f8)=0x00000100
+[  648.162339] imx-pgc imx-pgc-domain.6:
+GPC_A53_PU_PGC_PUP_STATUS0(0x14c)=0x00000000
+[  648.169988] imx-pgc imx-pgc-domain.6:
+GPC_A53_PU_PGC_PUP_STATUS1(0x150)=0x00000000
+[  648.177618] imx-pgc imx-pgc-domain.6:
+GPC_A53_PU_PGC_PUP_STATUS2(0x154)=0x00000000
+[  648.185281] imx8m-blk-ctrl 38330000.blk-ctrl: failed to power up bus domain
+
+diff --git a/drivers/soc/imx/gpcv2.c b/drivers/soc/imx/gpcv2.c
+index 8176380b02e6..8124a3434655 100644
+--- a/drivers/soc/imx/gpcv2.c
++++ b/drivers/soc/imx/gpcv2.c
+@@ -67,6 +67,9 @@
+
+ #define GPC_PU_PGC_SW_PUP_REQ          0x0f8
+ #define GPC_PU_PGC_SW_PDN_REQ          0x104
++#define GPC_A53_PU_PGC_PUP_STATUS0     0x14c
++#define GPC_A53_PU_PGC_PUP_STATUS1     0x150
++#define GPC_A53_PU_PGC_PUP_STATUS2     0x154
+
+ #define IMX7_USB_HSIC_PHY_SW_Pxx_REQ           BIT(4)
+ #define IMX7_USB_OTG2_PHY_SW_Pxx_REQ           BIT(3)
+@@ -224,6 +227,7 @@ static int imx_pgc_power_up(struct generic_pm_domain *genpd)
+        u32 reg_val, pgc;
+        int ret;
+
++printk("%s %s\n", __func__, genpd->name);
+        ret = pm_runtime_get_sync(domain->dev);
+        if (ret < 0) {
+                pm_runtime_put_noidle(domain->dev);
+@@ -258,9 +262,17 @@ static int imx_pgc_power_up(struct
+generic_pm_domain *genpd)
+                ret = regmap_read_poll_timeout(domain->regmap,
+                                               GPC_PU_PGC_SW_PUP_REQ, reg_val,
+                                               !(reg_val & domain->bits.pxx),
+-                                              0, USEC_PER_MSEC);
++                                              0, 100 * USEC_PER_MSEC);
+                if (ret) {
+-                       dev_err(domain->dev, "failed to command PGC\n");
++                       dev_err(domain->dev, "%s: failed to command
+PGC\n", __func__);
++                       if (!regmap_read(domain->regmap,
+GPC_PU_PGC_SW_PUP_REQ, &reg_val))
++                               dev_err(domain->dev,
+"GPC_PU_PGC_SW_PUP_REQ(0x%03x)=0x%08x\n", GPC_PU_PGC_SW_PUP_REQ,
+reg_val);
++                       if (!regmap_read(domain->regmap,
+GPC_A53_PU_PGC_PUP_STATUS0, &reg_val))
++                               dev_err(domain->dev,
+"GPC_A53_PU_PGC_PUP_STATUS0(0x%03x)=0x%08x\n",
+GPC_A53_PU_PGC_PUP_STATUS0, reg_val);
++                       if (!regmap_read(domain->regmap,
+GPC_A53_PU_PGC_PUP_STATUS1, &reg_val))
++                               dev_err(domain->dev,
+"GPC_A53_PU_PGC_PUP_STATUS1(0x%03x)=0x%08x\n",
+GPC_A53_PU_PGC_PUP_STATUS1, reg_val);
++                       if (!regmap_read(domain->regmap,
+GPC_A53_PU_PGC_PUP_STATUS2, &reg_val))
++                               dev_err(domain->dev,
+"GPC_A53_PU_PGC_PUP_STATUS2(0x%03x)=0x%08x\n",
+GPC_A53_PU_PGC_PUP_STATUS2, reg_val);
+                        goto out_clk_disable;
+                }
+
+@@ -318,6 +330,7 @@ static int imx_pgc_power_down(struct
+generic_pm_domain *genpd)
+        u32 reg_val, pgc;
+        int ret;
+
++printk("%s %s\n", __func__, genpd->name);
+        /* Enable reset clocks for all devices in the domain */
+        if (!domain->keep_clocks) {
+                ret = clk_bulk_prepare_enable(domain->num_clks, domain->clks);
+@@ -335,7 +348,7 @@ static int imx_pgc_power_down(struct
+generic_pm_domain *genpd)
+                ret = regmap_read_poll_timeout(domain->regmap, GPC_PU_PWRHSK,
+                                               reg_val,
+                                               !(reg_val & domain->bits.hskack),
+-                                              0, USEC_PER_MSEC);
++                                              0, 100 * USEC_PER_MSEC);
+                if (ret) {
+                        dev_err(domain->dev, "failed to power down ADB400\n");
+                        goto out_clk_disable;
+@@ -359,9 +372,9 @@ static int imx_pgc_power_down(struct
+generic_pm_domain *genpd)
+                ret = regmap_read_poll_timeout(domain->regmap,
+                                               GPC_PU_PGC_SW_PDN_REQ, reg_val,
+                                               !(reg_val & domain->bits.pxx),
+-                                              0, USEC_PER_MSEC);
++                                              0, 100 * USEC_PER_MSEC);
+                if (ret) {
+-                       dev_err(domain->dev, "failed to command PGC\n");
++                       dev_err(domain->dev, "%s: failed to command
+PGC\n", __func__);
+                        goto out_clk_disable;
+                }
+        }
+@@ -712,6 +725,7 @@ static const struct imx_pgc_domain imx8mm_pgc_domains[] = {
+                        .map = IMX8MM_VPUG1_A53_DOMAIN,
+                },
+                .pgc   = BIT(IMX8MM_PGC_VPUG1),
++               .keep_clocks = true,
+        },
+
+        [IMX8MM_POWER_DOMAIN_VPUG2] = {
+@@ -723,6 +737,7 @@ static const struct imx_pgc_domain imx8mm_pgc_domains[] = {
+                        .map = IMX8MM_VPUG2_A53_DOMAIN,
+                },
+                .pgc   = BIT(IMX8MM_PGC_VPUG2),
++               .keep_clocks = true,
+        },
+
+        [IMX8MM_POWER_DOMAIN_VPUH1] = {
+diff --git a/drivers/soc/imx/imx8m-blk-ctrl.c b/drivers/soc/imx/imx8m-blk-ctrl.c
+index 519b3651d1d9..028f38d45892 100644
+--- a/drivers/soc/imx/imx8m-blk-ctrl.c
++++ b/drivers/soc/imx/imx8m-blk-ctrl.c
+@@ -68,6 +68,7 @@ static int imx8m_blk_ctrl_power_on(struct
+generic_pm_domain *genpd)
+        struct imx8m_blk_ctrl *bc = domain->bc;
+        int ret;
+
++printk("%s %s\n", __func__, genpd->name);
+        /* make sure bus domain is awake */
+        ret = pm_runtime_get_sync(bc->bus_power_dev);
+        if (ret < 0) {
+@@ -119,6 +120,7 @@ static int imx8m_blk_ctrl_power_off(struct
+generic_pm_domain *genpd)
+        const struct imx8m_blk_ctrl_domain_data *data = domain->data;
+        struct imx8m_blk_ctrl *bc = domain->bc;
+
++printk("%s %s\n", __func__, genpd->name);
+        /* put devices into reset and disable clocks */
+        regmap_clear_bits(bc->regmap, BLK_SFT_RSTN, data->rst_mask);
+        regmap_clear_bits(bc->regmap, BLK_CLK_EN, data->clk_mask);
+
+Tim
 
 _______________________________________________
 Linux-rockchip mailing list
