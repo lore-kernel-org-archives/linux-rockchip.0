@@ -4,67 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 619A2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 09:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2EEBC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Dec 2021 12:26:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8iyBg0btXT9fhKJ6+mEbCS6RwE39Ebs/DPpbxVAQ834=; b=DwWE4JQJ7r+fcM7FIOb4LvzPfJ
-	pC8URkRa52Qa+rB9rp5f8yoYZ7mPtaccuveNOg7oNgkwaQIcQ6YnATZAxuV11mzbaZHY6veLWdeav
-	I1QMvCRRZhPl1483OxpWwCFkSVHC7vMXWbExpGsLl4ZuPTns779JFwISAGWYEROcedZM1Mmf0P+Vj
-	DU6hd/PqrAKst23h+Zwy7olBFwz9J+jIaazzgsKP0LG3FBpRTEgUXOHPeMCmlYq4VxspVE+mR/r9O
-	bZOI1GnTjyNzJZiL6QMZD7R/K84Dj12AxXV0F0ZFa/KmJ5jxV0vL7EYc7SSXnsHuFwM/gqubyzbNd
-	tBBFq0VQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KejOtwF2FOsFSB3XVgiTKjbERu+R4ZAjZR0IsXQM20E=; b=jeMwbe+45LQ7NA
+	D32YWz4tUElnb69LbZadwH6Nk4iKIFxyfmbYMw07V5up7I2UEvAgfvXVQ1wcHcMx532XjMy6k01dN
+	//N1DmOH0xq8YRlPiiTz5vkhM0ZCTtwol7G/pxIehTdYULLnX/MbQpl1cfuN9zXRSv0AcohSPl4ML
+	e9nCEckOVRROz8tMJoVzu3Y/H7uAiTcjAw6xjzAVlMHBB/uGubrB0ZnsRVUsudaVv54nDdvrpAQbL
+	h8dFumJ/daxJXVXuoAeEoIMCz54x49t1xCdFutMOOc9SYUW17Sy+VEuss5ZayfgEHc0ygojiYMiJM
+	3vvTVc1NBD+GD3s4TmrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msLuV-007wNM-Bb; Wed, 01 Dec 2021 09:28:19 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1msOgR-008Ren-G8; Wed, 01 Dec 2021 12:25:59 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msLuH-007wGp-Fi; Wed, 01 Dec 2021 09:28:07 +0000
-Received: from [IPv6:2a01:e0a:120:3210:81b0:4101:d4f2:ecb7] (unknown
- [IPv6:2a01:e0a:120:3210:81b0:4101:d4f2:ecb7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D03FE1F456A8;
- Wed,  1 Dec 2021 09:28:00 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638350881; bh=GOanvQHnMURC6UIEgHUa/+fTqbcJzEywsBQPZpD0MJA=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=St1k4d/bgtbXVPjdtfbYA9aV4V9ZWSYVYtYwv4/c4FjJvQMSIbZKlzc18tl6VVxys
- +9+W64Jyao7xM80jFjcykCzfwQDYjw89p7rBHr5qi0Cc1R05nxmVPzOT0jlpRb9rG9
- 6FBaB7Bag9wbRydqBhvX98QQGE9a6Xra6HO0xPpuZqDpIwqp6DeX9+mhrm8A+8cnl+
- HvLVl0bZkut7JlsYbQhDgdZw4Nt7bFrJQEyef6DumdrKef6n2MMUspFScI6081vh7B
- kaRZc9wY5l5YgSoO6GU2a0YWVRzaKeCyY+7HBAIl0LGQcQfDovjeL7PEXy/4stwN8y
- kMEDbFLZRlL9g==
-Subject: Re: [RFC V2 0/2] arm64: imx8mm: Enable Hantro VPUs
-To: Adam Ford <aford173@gmail.com>, linux-media@vger.kernel.org
-Cc: ezequiel@vanguardiasur.com.ar, hverkuil@xs4all.nl, tharvey@gateworks.com, 
- nicolas@ndufresne.ca, aford@beaconembedded.com,
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
-References: <20211201013329.15875-1-aford173@gmail.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <a07677bc-0a18-c910-222d-d6faee3fe5a0@collabora.com>
-Date: Wed, 1 Dec 2021 10:27:58 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1msOg6-008RXY-5V
+ for linux-rockchip@lists.infradead.org; Wed, 01 Dec 2021 12:25:40 +0000
+Received: by mail-ed1-x530.google.com with SMTP id e3so100941850edu.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 01 Dec 2021 04:25:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Q1bXomoZK1uliSFuVlRwGoqDfgeoL9wTIcaSZKyOo3w=;
+ b=P68R8RdCgIl0gxA1N+wy5SkHXfbt/D1cXaJOKR2qqp34uB1KncofMP4RRJxIUk/ZVb
+ krfz5geTxre4LhueKkboAFLvUcWFVxLip4vKY2Y2qSdMTays/sl+wvdYTAdUtWKmCio4
+ N578egHQt6+i3BPnPwX43gmTBDIhIbawT22MR4Hh0CSNmTBXKebsTbHn1a1+P+/fgP5Z
+ v6RWw586cv9ZxWD7OThwBC2cy9WLFeOIn1MrmcG6GuVFoNFcf3yTnGXu+UTRgtgTLv53
+ 0OT1NTkAUEfedg8MuZWxFxuSvLCsjGaz7thiJ3Byqi/gKV/kEwf+GuiUk6ReXsyHRMCK
+ w+Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Q1bXomoZK1uliSFuVlRwGoqDfgeoL9wTIcaSZKyOo3w=;
+ b=f3JoDqvCd4qXK4VHeLI2u6cXxJtzJOTIEfDagu9t3fWCWud4qTdksMS+OmAl3k+Doo
+ 5bYs+p49QVicA1P5WJ9hrqB0u9y8GWnDCo4Xv/kvEUsNCEi3/4IKaIoZyHnlL9pbEf3g
+ Zd4LuyRJRirwopopRioNCrjp8IeIMzOy+pMSC7T71vybjU82v8Qy66qkYc74miOfDUG/
+ N0Dp9RysfnBF09kcYBuy3OwCfO/P9I184uMd1NJXSOMAAWtVIPxSQ3WvvLVrHIl97fqA
+ yqaTlACVmU3WoV0up9fNTHk33Ovv6Nr2MJg4W9PEwNqCXf4yM5T9Q84pi0hbzpfK6BWa
+ rFmA==
+X-Gm-Message-State: AOAM531ukhq0UFeawAPe1EkxBLpZF0Ij2cmaePKYfQLM+XDCO49VPz4Q
+ 76xy7fb76XECSgoLyohbNe5TuUyWmdS7sYGTegpFCQ==
+X-Google-Smtp-Source: ABdhPJxqcgQiEY76Rd0OlztgVDvAKC2e3Q50wIGfgfNHSONNNfT26V+DNnPfuftHX99L+Bf304WeNkdbMAk6WBC5gew=
+X-Received: by 2002:a17:906:ece9:: with SMTP id
+ qt9mr6601577ejb.362.1638361535048; 
+ Wed, 01 Dec 2021 04:25:35 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20211201013329.15875-1-aford173@gmail.com>
-Content-Language: en-US
+References: <20211201013329.15875-1-aford173@gmail.com>
+ <20211201013329.15875-2-aford173@gmail.com>
+In-Reply-To: <20211201013329.15875-2-aford173@gmail.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Wed, 1 Dec 2021 09:25:22 -0300
+Message-ID: <CAAEAJfBBFhRtW2wmoA6T+yyM-nurUbtPqYHKPHjeRdKzA34PcQ@mail.gmail.com>
+Subject: Re: [RFC V2 1/2] media: hantro: Add support for i.MX8M Mini
+To: Adam Ford <aford173@gmail.com>
+Cc: linux-media <linux-media@vger.kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, 
+ Tim Harvey <tharvey@gateworks.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, 
+ Adam Ford-BE <aford@beaconembedded.com>, Rob Herring <robh+dt@kernel.org>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_012805_681538_C0255848 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20211201_042538_508512_BBBB78B3 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +93,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDAxLzEyLzIwMjEgw6AgMDI6MzMsIEFkYW0gRm9yZCBhIMOpY3JpdMKgOgo+IFRoZSBpLk1Y
-OE0gaGFzIHR3byBIYW50cm8gdmlkZW8gZGVjb2RlcnMsIGNhbGxlZCBHMSBhbmQgRzIgd2hpY2gg
-YXBwZWFyCj4gdG8gYmUgcmVsYXRlZCB0byB0aGUgdmlkZW8gZGVjb2RlcnMgdXNlZCBvbiB0aGUg
-aS5NWDhNUSwgYnV0IGJlY2F1c2Ugb2YKPiBob3cgdGhlIE1pbmkgaGFuZGxlcyB0aGUgcG93ZXIg
-ZG9tYWlucywgdGhlIFZQVSBkcml2ZXIgZG9lcyBub3QgbmVlZCB0bwo+IGhhbmRsZSBhbGwgdGhl
-IGZ1bmN0aW9ucywgbm9yIGRvZXMgaXQgc3VwcG9ydCB0aGUgcG9zdC1wcm9jZXNzb3IsCj4gc28g
-YSBuZXcgY29tcGF0aWJsZSBmbGFnIGlzIHJlcXVpcmVkLgo+Cj4gV2l0aCB0aGUgc3VnZ2VzdGlv
-biBmcm9tIEhhbnMgVmVya3VpbCwgSSB3YXMgYWJsZSB0byBnZXQgdGhlIEcyIHNwbGF0IHRvIGdv
-IGF3YXkKPiB3aXRoIGNoYW5nZXMgdG8gRk9SQ0VfTUFYX1pPTkVPUkRFUiwgYnV0IEkgZm91bmQg
-SSBjb3VsZCBhbHNvIHNldCBjbWE9NTEyTSwgaG93ZXZlcgo+IGl0J3MgdW5jbGVhciB0byBtZSBp
-ZiB0aGF0J3MgYW4gYWNjZXB0YWJsZSBhbHRlcm5hdGl2ZS4KPgo+IEF0IHRoZSBzdWdnZXN0aW9u
-IG9mIEV6ZXF1aWVsIEdhcmNpYSBhbmQgTmljb2xhcyBEdWZyZXNuZSBJIGhhdmUgc29tZQo+IHJl
-c3VsdHMgZnJvbSBGbHVzdGVyLiBIb3dldmVyLCB0aGUgRzIgVlBVIGFwcGVhcnMgdG8gZmFpbCBt
-b3N0IHRlc3RzLgo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZEdTdHJlYW1lci1ILjI2NC1WNEwyU0wt
-R3N0MS4wCj4gUmFuIDkwLzEzNSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiA3
-Ni40MzEgc2Vjcwo+Cj4gICAuL2ZsdXN0ZXIucHkgcnVuIC1kIEdTdHJlYW1lci1WUDgtVjRMMlNM
-LUdzdDEuMAo+IFJhbiA1NS82MSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiAy
-MS40NTQgc2Vjcwo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFtZXItVlA5LVY0TDJTTC1H
-c3QxLjAKPiBSYW4gMC8zMDMgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gMjAu
-MDE2IHNlY3MKPgo+IEVhY2ggZGF5IHNlZW1zIHRvIHNob3cgbW9yZSBhbmQgbW9yZSBHMiBzdWJt
-aXNzaW9ucywgYW5kIGdzdHJlYW1lciBzZWVtcyB0byBiZQo+IHN0aWxsIHdvcmtpbmcgb24gdGhl
-IFZQOSwgc28gSSBhbSBub3Qgc3VyZSBpZiBJIHNob3VsZCBkcm9wIEcyIGFzIHdlbGwuCgpJIHRo
-aW5rIGl0IGlzIGdvaW5nIGluIHRoZSBnb29kIGRpcmVjdGlvbi4KSSdtIHRyeWluZyB0byBkbyB0
-aGUgc2FtZSBvbiBJTVg2TVEgYnV0IHN0aWxsIGhhdmUgaGFuZyBpc3N1ZSBvbiBHMi4KClJlZ2Fy
-ZHMsCkJlbmphbWluCgo+Cj4gQWRhbSBGb3JkICgyKToKPiAgICBtZWRpYTogaGFudHJvOiBBZGQg
-c3VwcG9ydCBmb3IgaS5NWDhNIE1pbmkKPiAgICBhcm02NDogZHRzOiBpbXg4bW06IEVuYWJsZSBW
-UFUtRzEgYW5kIFZQVS1HMgo+Cj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4
-bW0uZHRzaSAgIHwgNDEgKysrKysrKysrKysrKysrCj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2hhbnRyb19kcnYuYyAgIHwgIDIgKwo+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm9faHcuaCAgICB8ICAyICsKPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaW14OG1fdnB1X2h3LmMgfCA1NyArKysrKysrKysrKysrKysrKysrKysKPiAgIDQgZmlsZXMg
-Y2hhbmdlZCwgMTAyIGluc2VydGlvbnMoKykKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Adam,
+
+On Tue, 30 Nov 2021 at 22:33, Adam Ford <aford173@gmail.com> wrote:
+>
+> The i.MX8M Mini has a similar implementation of the Hantro G1 and
+> h decoders, but the Mini uses the vpu-blk-ctrl for handling the
+> VPU resets through the power domain system.  As such, there are
+> functions present in the 8MQ that are not applicable to the Mini
+> which requires the driver to have a different compatible flags.
+>
+> Signed-off-by: Adam Ford <aford173@gmail.com>
+>
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index fb82b9297a2b..2aa1c520be50 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -592,6 +592,8 @@ static const struct of_device_id of_hantro_match[] = {
+>         { .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+>  #endif
+>  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+> +       { .compatible = "nxp,imx8mm-vpu", .data = &imx8mm_vpu_variant, },
+> +       { .compatible = "nxp,imx8mm-vpu-g2", .data = &imx8mm_vpu_g2_variant },
+>         { .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
+>         { .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+>  #endif
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index 267a6d33a47b..ae7c3fff760c 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -211,6 +211,8 @@ enum hantro_enc_fmt {
+>         ROCKCHIP_VPU_ENC_FMT_UYVY422 = 3,
+>  };
+>
+> +extern const struct hantro_variant imx8mm_vpu_g2_variant;
+> +extern const struct hantro_variant imx8mm_vpu_variant;
+>  extern const struct hantro_variant imx8mq_vpu_g2_variant;
+>  extern const struct hantro_variant imx8mq_vpu_variant;
+>  extern const struct hantro_variant px30_vpu_variant;
+> diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> index ea919bfb9891..c68516c00c6d 100644
+> --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> @@ -242,6 +242,32 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
+>         },
+>  };
+>
+> +static const struct hantro_codec_ops imx8mm_vpu_codec_ops[] = {
+> +       [HANTRO_MODE_MPEG2_DEC] = {
+> +               .run = hantro_g1_mpeg2_dec_run,
+> +               .init = hantro_mpeg2_dec_init,
+> +               .exit = hantro_mpeg2_dec_exit,
+> +       },
+> +       [HANTRO_MODE_VP8_DEC] = {
+> +               .run = hantro_g1_vp8_dec_run,
+> +               .init = hantro_vp8_dec_init,
+> +               .exit = hantro_vp8_dec_exit,
+> +       },
+> +       [HANTRO_MODE_H264_DEC] = {
+> +               .run = hantro_g1_h264_dec_run,
+> +               .init = hantro_h264_dec_init,
+> +               .exit = hantro_h264_dec_exit,
+> +       },
+> +};
+> +
+> +static const struct hantro_codec_ops imx8mm_vpu_g2_codec_ops[] = {
+> +       [HANTRO_MODE_HEVC_DEC] = {
+> +               .run = hantro_g2_hevc_dec_run,
+> +               .init = hantro_hevc_dec_init,
+> +               .exit = hantro_hevc_dec_exit,
+> +       },
+> +};
+> +
+
+I believe you are missing VP9, which explains why you get
+a zero fluster score.
+
+Thanks,
+Ezequiel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
