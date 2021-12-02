@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8168C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 21:00:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A840FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 21:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+uXl+HiVCFi5fraiJGLAd9JuUudEKZtbBA7oWYc0+8c=; b=3LUUA8xxJ9n1El
-	iWFUR/0FLvfEj0OAMrmy7QbWM/JI6DDO7Cz4d50BZTBe+mKnluVwGVsI2tzAVGooVYWKVx/e5vy1P
-	N4hNGcqmTW82cuyTSHHDZmljnIDvuO30tGzTvQsFjay47/j7WTCoP6fwLBqwUPZVJJLOc/F8VA4bf
-	GXJfdmpDoHZRYgZMg2/+Hmm65+/chhpeiDXttoUPWK+RmHgK5KJUqvjSlV1nHx1Xk1Ko2A4IBBZNN
-	9kGiNQCmBc8Ykv/3UxBenyCSdY4imtONutlsol3WLLfMP7PbTSbW48y0gOBJYxmgclyvFE7Ju7bwL
-	JkfoJCGPsTBn0Iq2nvKQ==;
+	List-Owner; bh=yOppePJfEG1v3h4LebgjPq4pBtQ1Do6H8M+BgOd3SNY=; b=x+Y8DlrviZ2Quc
+	kTcoTQBTIKFGoJZbf86TluQnO8znUK9ZG/NQBZ6aAcKY/TmAfhBYiraOadNYs9KFkKrQF7YV/fIQk
+	59mT+uMAO6eVqa+0CjKtzOIUKH9ML/POmq9YBkr5erS/mNt8J5pr2BpzZTy2m3UVOKujvq+gqFNW4
+	R84Xc9BunBzi84sNyINlJN0un4GyBTlqxkp8b9iHa15wUFbeWnwyBs9s1FW1IM8gYxD0WIrOziVTn
+	Qpis4kjCjOqhehSJ9BTOZRBoCPQXztspms/G9rtGutR/QPfKCV3/N4eYMOPQLtxwjfxtY1xUKRoR8
+	AJFjQT1sCM9+9lKlHrjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mstC2-00DS0u-Al; Thu, 02 Dec 2021 21:00:38 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1mstSb-00DTZJ-Pr; Thu, 02 Dec 2021 21:17:45 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mstBp-00DRzD-IB; Thu, 02 Dec 2021 21:00:27 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id t5so3367777edd.0;
- Thu, 02 Dec 2021 13:00:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bh3FkLB+q+IhBnShvoY1GO0GV+nrEdn+PjaCXWUUYOc=;
- b=VJQf+7H+nZE/4Atz54WLI2qgPxceJ4EAgS2M5r3wJnoaUAaq7dBzEl1CDSCJHhvbPG
- Yjcpl+DI5cm+PlzbPSzZ8fwQnjnf9n5h+3yPt0aTT0M0w0G2du+p8G5KPk2Bk7Lpl5ai
- h2ytk6TGndnsA8YXNRN6HicdaaPxWJBD3IrRU2Y20UyZN/kWqVokNzH5AjMZ5KfkPFRS
- r5OYZky0NEGw7CB5hkvPfhdje1cU6cm491NtXzlvgaVuGEvilzwIGg2QyjFdRck6gYvL
- rU8b6l/f3dqbKHTwNy9fT0NyFnZM2++21paFakjDcNSWk8oip8CREB1Jrs32C49e5jTL
- 7SIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bh3FkLB+q+IhBnShvoY1GO0GV+nrEdn+PjaCXWUUYOc=;
- b=OwwJwPlZKbkjIsoqjNyqzTVjr4c9jJwhHdOl8qznNMiIVx/Y+8XyJP5MT1CbPxgPoM
- pDeXSNMPS2X/WfcaqHMg5U/ygJY9A5f6XKy6pZEDUxm8C7HMkAQXDMUY00nX/TvrrhtC
- WgLk+09v8b+uwmDT9nlfJibjE4erSzN1T9ZswjzNrbaNoxYimBWqN3YgGfB7FUa322r/
- mYVsDxNl45EMZU3raPCW5Lk/D1b6X8tiRfzKuQvyTJxNIOwnrgMWSpO+5hfI/Za3nyJm
- BPIB3qzqU7l1gHxgP06rUEgRktHs+xA0no/qbKKuNWsWlo+ix/2eRH6VNpOKOcTZ9A3c
- DNOA==
-X-Gm-Message-State: AOAM532fg19Prtb5YqhSiqt9o+elyA0X1NLai/kU9HBMqh7p/iiFHlyl
- Ed0KpWXAheKXHuMuOLqWQo3sqUZTCrpIsyPD7BY=
-X-Google-Smtp-Source: ABdhPJyMPW1OcigW7e9CCbjgXJ/K6L2Wg+y5swFfQKOCkjrdriWNyhtUcXxkvAzdQwnh3K47pPVeqGNW0tUxlyIRmok=
-X-Received: by 2002:a05:6402:3488:: with SMTP id
- v8mr21163665edc.398.1638478821295; 
- Thu, 02 Dec 2021 13:00:21 -0800 (PST)
+ id 1mstSV-00DTWC-Dl; Thu, 02 Dec 2021 21:17:40 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10186"; a="297638460"
+X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="297638460"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2021 13:17:38 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="541381178"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga001.jf.intel.com with ESMTP; 02 Dec 2021 13:17:26 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id B5DAE165; Thu,  2 Dec 2021 23:17:31 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Tony Lindgren <tony@atomide.com>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Jianqun Xu <jay.xu@rock-chips.com>,
+ Alexandru Ardelean <aardelean@deviqon.com>,
+ Thierry Reding <treding@nvidia.com>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-power@fi.rohmeurope.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pwm@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
+Cc: Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Gregory Fong <gregory.0xf0@gmail.com>,
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>,
+ Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>
+Subject: [PATCH v1 3/3] gpio: Propagate firmware node from a parent device
+Date: Thu,  2 Dec 2021 23:08:39 +0200
+Message-Id: <20211202210839.79140-3-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-References: <20211202041627.291625-1-aford173@gmail.com>
- <CAHCN7xJHuOFTQBQWk1yKsk3M0iDB7aKc0=L2DisUoSXVeO3xXQ@mail.gmail.com>
- <CAJ+vNU2t7Yp5OGtWj432Y-8hL62nQBbG58zM-gAj5YfuCO__sA@mail.gmail.com>
-In-Reply-To: <CAJ+vNU2t7Yp5OGtWj432Y-8hL62nQBbG58zM-gAj5YfuCO__sA@mail.gmail.com>
-From: Adam Ford <aford173@gmail.com>
-Date: Thu, 2 Dec 2021 15:00:10 -0600
-Message-ID: <CAHCN7xJXMUHHBACuozY3nUdZ0QqHFLrmwrXnArtCKBG7+P4UZQ@mail.gmail.com>
-Subject: Re: [RFC V3 0/2] arm64: imx8mm: Enable Hantro VPUs
-To: Tim Harvey <tharvey@gateworks.com>
-Cc: Lucas Stach <l.stach@pengutronix.de>,
- linux-media <linux-media@vger.kernel.org>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Nicolas Dufresne <nicolas@ndufresne.ca>, 
- Adam Ford-BE <aford@beaconembedded.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- devicetree <devicetree@vger.kernel.org>, 
- arm-soc <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_130025_632799_55F3E0E2 
-X-CRM114-Status: GOOD (  33.16  )
+X-CRM114-CacheID: sfid-20211202_131739_552204_E8AC8603 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,96 +99,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 2, 2021 at 12:54 PM Tim Harvey <tharvey@gateworks.com> wrote:
->
-> On Thu, Dec 2, 2021 at 4:29 AM Adam Ford <aford173@gmail.com> wrote:
-> >
-> > On Wed, Dec 1, 2021 at 10:17 PM Adam Ford <aford173@gmail.com> wrote:
-> > >
-> > > The i.MX8M has two Hantro video decoders, called G1 and G2 which appear
-> > > to be related to the video decoders used on the i.MX8MQ, but because of
-> > > how the Mini handles the power domains, the VPU driver does not need to
-> > > handle all the functions, so a new compatible flag is required.
-> > >
-> > > V3 is rebased from git://linuxtv.org/hverkuil/media_tree.git for-v5.17c
-> > > This branch has support for VP9.
-> > >
-> > > I set cma=512M, but this may not be enough memory as some tests appeard to run out of memory
-> > >
-> > > V3 of this series has several changes:
-> > >
-> > > Update imx8m_vpu_hw to add missing 'reg' reference names for G2 and include references to VP9
-> > > Update device tree to remove IMX8MQ_VPU_RESET, remove some duplicate vpu clock parenting
-> > > Fix missing reg-names from vpu_g2 node.
-> > > Apply patch [1] to manage the power domains powering down.
-> > > [1] - https://lore.kernel.org/linux-arm-kernel/20211016210547.171717-1-marex@denx.de/t/
-> > >
-> > > With the above, the following Fluster scores are produced:
-> > >
-> > > G1:
-> > > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-> > > Ran 90/135 tests successfully               in 74.406 secs
-> > >
-> > > ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-> > > Ran 55/61 tests successfully               in 8.080 secs
-> > >
-> > > G2:
-> > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-> > > Ran 127/303 tests successfully               in 203.873 secs
-> > >
-> > > Fluster and G-Streamer were both built from their respective git repos using their respective master/main branches.
-> > >
-> >
-> > I should note, that both interrupts appear to be triggering.
-> >
-> > # cat /proc/interrupts |grep codec
-> >  57:      13442          0          0          0     GICv3  39 Level
-> >   38300000.video-codec
-> >  58:       7815          0          0          0     GICv3  40 Level
-> >   38310000.video-codec
-> >
->
-> Adam,
->
-> On another thread you had let me know that you also removed the reset
-> from the pgc_vpumix power domain which does appear to resolve the
-> hang:
->
-> diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-> b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-> index eb9dcd9d1a31..31710af544dc 100644
-> --- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-> +++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-> @@ -681,7 +681,6 @@
->                                                 clocks = <&clk
-> IMX8MM_CLK_VPU_DEC_ROOT>;
->                                                 assigned-clocks =
-> <&clk IMX8MM_CLK_VPU_BUS>;
->                                                 assigned-clock-parents
-> = <&clk IMX8MM_SYS_PLL1_800M>;
-> -                                               resets = <&src
-> IMX8MQ_RESET_VPU_RESET>;
->                                         };
->
->                                         pgc_vpu_g1: power-domain@7 {
->
-> That would make such a patch have a 'Fixes commit d39d4bb15310
-> ("arm64: dts: imx8mm: add GPC node")' but of course that vpu domain
-> isn't active until your series so I'm not sure if we should send this
-> separate or squash it with "arm64: dts: imx8mm: Enable VPU-G1 and
-> VPU-G2". I'm also not clear if removing the reset requires some
-> further discussion with Lucas.
+When creating MFD platform devices the firmware node is left unset.
+This, in particular, prevents GPIO library to use it for different
+purposes. Propagate firmware node from the parent device and let
+GPIO library do the right thing.
 
-Unless there is objection from Lucas, I'll likely make it the first
-patch in the series marking it with a fixes tag so it gets backported,
-then the rest of the series would be adding the bindings, update the
-driver and adding the G1 and G2 nodes.
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/gpio/gpio-arizona.c  | 5 ++---
+ drivers/gpio/gpio-tps6586x.c | 5 ++---
+ drivers/gpio/gpio-tps65910.c | 6 +++---
+ drivers/gpio/gpio-twl6040.c  | 5 ++---
+ drivers/gpio/gpio-wm831x.c   | 5 ++---
+ 5 files changed, 11 insertions(+), 15 deletions(-)
 
-adam
->
-> Best regards,
->
-> Tim
+diff --git a/drivers/gpio/gpio-arizona.c b/drivers/gpio/gpio-arizona.c
+index 2bc173c352ce..02f9ae19cd44 100644
+--- a/drivers/gpio/gpio-arizona.c
++++ b/drivers/gpio/gpio-arizona.c
+@@ -151,6 +151,8 @@ static int arizona_gpio_probe(struct platform_device *pdev)
+ 	struct arizona_gpio *arizona_gpio;
+ 	int ret;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	arizona_gpio = devm_kzalloc(&pdev->dev, sizeof(*arizona_gpio),
+ 				    GFP_KERNEL);
+ 	if (!arizona_gpio)
+@@ -159,9 +161,6 @@ static int arizona_gpio_probe(struct platform_device *pdev)
+ 	arizona_gpio->arizona = arizona;
+ 	arizona_gpio->gpio_chip = template_chip;
+ 	arizona_gpio->gpio_chip.parent = &pdev->dev;
+-#ifdef CONFIG_OF_GPIO
+-	arizona_gpio->gpio_chip.of_node = arizona->dev->of_node;
+-#endif
+ 
+ 	switch (arizona->type) {
+ 	case WM5102:
+diff --git a/drivers/gpio/gpio-tps6586x.c b/drivers/gpio/gpio-tps6586x.c
+index da0304b764a5..c5713524b581 100644
+--- a/drivers/gpio/gpio-tps6586x.c
++++ b/drivers/gpio/gpio-tps6586x.c
+@@ -77,6 +77,8 @@ static int tps6586x_gpio_probe(struct platform_device *pdev)
+ 	struct tps6586x_platform_data *pdata;
+ 	struct tps6586x_gpio *tps6586x_gpio;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	pdata = dev_get_platdata(pdev->dev.parent);
+ 	tps6586x_gpio = devm_kzalloc(&pdev->dev,
+ 				sizeof(*tps6586x_gpio), GFP_KERNEL);
+@@ -97,9 +99,6 @@ static int tps6586x_gpio_probe(struct platform_device *pdev)
+ 	tps6586x_gpio->gpio_chip.get	= tps6586x_gpio_get;
+ 	tps6586x_gpio->gpio_chip.to_irq	= tps6586x_gpio_to_irq;
+ 
+-#ifdef CONFIG_OF_GPIO
+-	tps6586x_gpio->gpio_chip.of_node = pdev->dev.parent->of_node;
+-#endif
+ 	if (pdata && pdata->gpio_base)
+ 		tps6586x_gpio->gpio_chip.base = pdata->gpio_base;
+ 	else
+diff --git a/drivers/gpio/gpio-tps65910.c b/drivers/gpio/gpio-tps65910.c
+index 7fa8c841081f..321e6945f0be 100644
+--- a/drivers/gpio/gpio-tps65910.c
++++ b/drivers/gpio/gpio-tps65910.c
+@@ -111,6 +111,8 @@ static int tps65910_gpio_probe(struct platform_device *pdev)
+ 	int ret;
+ 	int i;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	tps65910_gpio = devm_kzalloc(&pdev->dev,
+ 				sizeof(*tps65910_gpio), GFP_KERNEL);
+ 	if (!tps65910_gpio)
+@@ -137,9 +139,7 @@ static int tps65910_gpio_probe(struct platform_device *pdev)
+ 	tps65910_gpio->gpio_chip.set	= tps65910_gpio_set;
+ 	tps65910_gpio->gpio_chip.get	= tps65910_gpio_get;
+ 	tps65910_gpio->gpio_chip.parent = &pdev->dev;
+-#ifdef CONFIG_OF_GPIO
+-	tps65910_gpio->gpio_chip.of_node = tps65910->dev->of_node;
+-#endif
++
+ 	if (pdata && pdata->gpio_base)
+ 		tps65910_gpio->gpio_chip.base = pdata->gpio_base;
+ 	else
+diff --git a/drivers/gpio/gpio-twl6040.c b/drivers/gpio/gpio-twl6040.c
+index 648fb418d775..6c3fbf382dba 100644
+--- a/drivers/gpio/gpio-twl6040.c
++++ b/drivers/gpio/gpio-twl6040.c
+@@ -80,6 +80,8 @@ static int gpo_twl6040_probe(struct platform_device *pdev)
+ 	struct twl6040 *twl6040 = dev_get_drvdata(twl6040_core_dev);
+ 	int ret;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	twl6040gpo_chip.base = -1;
+ 
+ 	if (twl6040_get_revid(twl6040) < TWL6041_REV_ES2_0)
+@@ -88,9 +90,6 @@ static int gpo_twl6040_probe(struct platform_device *pdev)
+ 		twl6040gpo_chip.ngpio = 1; /* twl6041 have 1 GPO */
+ 
+ 	twl6040gpo_chip.parent = &pdev->dev;
+-#ifdef CONFIG_OF_GPIO
+-	twl6040gpo_chip.of_node = twl6040_core_dev->of_node;
+-#endif
+ 
+ 	ret = devm_gpiochip_add_data(&pdev->dev, &twl6040gpo_chip, NULL);
+ 	if (ret < 0) {
+diff --git a/drivers/gpio/gpio-wm831x.c b/drivers/gpio/gpio-wm831x.c
+index 9cf1e5ebb352..7eaf8a28638c 100644
+--- a/drivers/gpio/gpio-wm831x.c
++++ b/drivers/gpio/gpio-wm831x.c
+@@ -262,6 +262,8 @@ static int wm831x_gpio_probe(struct platform_device *pdev)
+ 	struct wm831x_pdata *pdata = &wm831x->pdata;
+ 	struct wm831x_gpio *wm831x_gpio;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	wm831x_gpio = devm_kzalloc(&pdev->dev, sizeof(*wm831x_gpio),
+ 				   GFP_KERNEL);
+ 	if (wm831x_gpio == NULL)
+@@ -275,9 +277,6 @@ static int wm831x_gpio_probe(struct platform_device *pdev)
+ 		wm831x_gpio->gpio_chip.base = pdata->gpio_base;
+ 	else
+ 		wm831x_gpio->gpio_chip.base = -1;
+-#ifdef CONFIG_OF_GPIO
+-	wm831x_gpio->gpio_chip.of_node = wm831x->dev->of_node;
+-#endif
+ 
+ 	return devm_gpiochip_add_data(&pdev->dev, &wm831x_gpio->gpio_chip, wm831x_gpio);
+ }
+-- 
+2.33.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
