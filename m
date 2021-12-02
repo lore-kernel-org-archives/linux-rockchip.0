@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25936C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 21:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C7AFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 22:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7xK4HdUz2/pzgob1XyFoN6vkCNlTJXJVi93xK8d9r74=; b=ypGEl6vQQwCUxZ
-	VkTchA3aIg/U6q824afyieECfYmJ9EkIHY8ge1x3clfYQoyaXYdCu4zRNmxrcblEfcAMBe43ZdQrf
-	2q0qxxnE57tWUYJ8mGaI80AMZLF081E8TjDOe+829Lx/RAE+alJNzpopoEOvpVhzvyhpkY9FI7nVQ
-	k/rp5NDgBc6wIiKC1pQLv/flpfT8R5bh1FQjstHeblHjOIyNv5Hhr1Bx2HEr/a+FZ4cnMau24NBC+
-	TNxhPUk5XDujLHBKFmIBWOPp100ztwkxRC7sYcTLvkJjqrT7t7Vfxwim7j3IaiLJY/DQO4e8bHE2E
-	8MTadQcChLvQGR5m5Ctg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Eyjr/vFYjXAlHX9Z0XKbB8Lw5Wn+d44WlVcT1v7911k=; b=yK5dst4koOOApt
+	zA9oCXdg+sfJxScbkWyMBeVZaZkQ6nxQ9uxcXfgoPgM+o8jRsa4i+mzxUliSrtXIl1PcLMu9crUc8
+	3VkDN9+cghr0tENPUZsND+AJxz9luFAk1ojgmbNORuomYKkn+97Ii5UzEfrq53Fo239UOw7+sZumg
+	aQ06cn2MBTrncz37lyMJX4VT8WnJiYhaAejpwjnvk8GWBbudmXoTTmEgIU2rlnrCPDLpnbYyNeQDO
+	tBMkAi7kwS6nWjLf98FBKpjy+agBGpd0BhxUoc+fr037BmiEIFbradOcfDA4D35wJS5QXRQLhtnea
+	ESxjCG+lw1mi6hSA9d/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mstSe-00DTbN-Fz; Thu, 02 Dec 2021 21:17:48 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1msuyl-00DeRP-78; Thu, 02 Dec 2021 22:55:03 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mstSW-00DTXD-LY; Thu, 02 Dec 2021 21:17:43 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10186"; a="260842551"
-X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="260842551"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Dec 2021 13:17:39 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,282,1631602800"; d="scan'208";a="603129097"
-Received: from black.fi.intel.com ([10.237.72.28])
- by fmsmga002.fm.intel.com with ESMTP; 02 Dec 2021 13:17:26 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 8B4C4109; Thu,  2 Dec 2021 23:17:31 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- Alexandru Ardelean <aardelean@deviqon.com>,
- Thierry Reding <treding@nvidia.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
- bcm-kernel-feedback-list@broadcom.com, linux-power@fi.rohmeurope.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Scott Branden <sbranden@broadcom.com>,
- Gregory Fong <gregory.0xf0@gmail.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jonathan Hunter <jonathanh@nvidia.com>
-Subject: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in the
- drivers
-Date: Thu,  2 Dec 2021 23:08:37 +0200
-Message-Id: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
+ id 1msuyW-00DeLm-Qt
+ for linux-rockchip@lists.infradead.org; Thu, 02 Dec 2021 22:54:52 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ fv9-20020a17090b0e8900b001a6a5ab1392so964191pjb.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 02 Dec 2021 14:54:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gateworks-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Vfw913dxLQGDDDu3u0AH4o7CLm4UyARzu/jOwnTAzDg=;
+ b=zCVZOPDnH85lUefIRg9bWnj7MAId6D6aN+FVUw2OKz0F6YISk7zj6lYaztcaSCySD1
+ 82ES1v/dJHv93WFEWnmV2/HDH0yJFGadeEkY0HnnRKRmtiSH6bQJTKDqx76mot+h083R
+ vStvRWP59Kco0YXYzeCtIBcfl2L3bdFA5uJjuTU1wUBn3tMeWiInOYQ1xr9EX5YpzzSi
+ P0HwqMDciy4NIVr0T/l5GOfP1lwGHosCkrgf2ciGZgcXkzp/4ZgtsX2p8QpWJSezbxSy
+ pTolQgF+pLwL/uPNEzHp0m7oRq3n+HDe4Wtf4rXBG5uEZVPFynN085c09LYe/oNLxOR5
+ vmLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Vfw913dxLQGDDDu3u0AH4o7CLm4UyARzu/jOwnTAzDg=;
+ b=e4UL44ZMk+5O79EjCbo5PayVha1qKdv1BTdVPsQa6S/pzrA+C+5fzVIKmop8Kzyhrv
+ 9Gp7NG5X5jfsUwlIq3dzOPlHYBb0mHEYmugxch/La6baG2jwSGnRO+6lz5VclgYdjZBr
+ 7qZBT3tN3xF7rICyTnSPEF6FFSmH8JGconTFkDxdHiEEpwm7Sc74bnnOHoeCqHML9qCC
+ BNZHzKxk5tG+qvQUyvKllbjUvhrzQHegyRSYKeNzAthHL2AXkeGFDKymG4QFId6Vd9rJ
+ JECBkDW6hvkjv/CHU9Xnv5acUZPxMtvc7XaCZwHEs2fVijLRVhN6399WfF9J7DZaLvoJ
+ +vWg==
+X-Gm-Message-State: AOAM532g2ip9eCMs4Wu0rS5AeB0BL9A2X53cyoqGO5tBfPad2oBhh+u0
+ rITu3iQ1IgPqZVahZXRMvBl+rbiHUmFlQ2T33Dm44A==
+X-Google-Smtp-Source: ABdhPJwNWK1BZ6y85VRBKw2XnnhU2TW8bgHhFWv+lq+A4VRYCiBdHuU2rJQ1o76TWMR9SV0iQzkrAUpUSTIwVNHJ+Cg=
+X-Received: by 2002:a17:902:a717:b0:142:76bc:da69 with SMTP id
+ w23-20020a170902a71700b0014276bcda69mr18556804plq.12.1638485687667; Thu, 02
+ Dec 2021 14:54:47 -0800 (PST)
 MIME-Version: 1.0
+References: <20211202041627.291625-1-aford173@gmail.com>
+ <CAHCN7xJHuOFTQBQWk1yKsk3M0iDB7aKc0=L2DisUoSXVeO3xXQ@mail.gmail.com>
+ <CAJ+vNU2t7Yp5OGtWj432Y-8hL62nQBbG58zM-gAj5YfuCO__sA@mail.gmail.com>
+ <CAHCN7xJXMUHHBACuozY3nUdZ0QqHFLrmwrXnArtCKBG7+P4UZQ@mail.gmail.com>
+In-Reply-To: <CAHCN7xJXMUHHBACuozY3nUdZ0QqHFLrmwrXnArtCKBG7+P4UZQ@mail.gmail.com>
+From: Tim Harvey <tharvey@gateworks.com>
+Date: Thu, 2 Dec 2021 14:54:36 -0800
+Message-ID: <CAJ+vNU15MWx9t-KUJKZjwPbBZTU=KuRtGYzxgfhypENHKFJpiQ@mail.gmail.com>
+Subject: Re: [RFC V3 0/2] arm64: imx8mm: Enable Hantro VPUs
+To: Adam Ford <aford173@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Lucas Stach <l.stach@pengutronix.de>,
+ linux-media <linux-media@vger.kernel.org>, 
+ Adam Ford-BE <aford@beaconembedded.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-soc <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_131740_754634_11281F95 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20211202_145448_985606_61883A2C 
+X-CRM114-Status: GOOD (  36.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,386 +104,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-GPIO library does copy the of_node from the parent device of
-the GPIO chip, there is no need to repeat this in the individual
-drivers. Remove these assignment all at once.
+On Thu, Dec 2, 2021 at 1:00 PM Adam Ford <aford173@gmail.com> wrote:
+>
+> On Thu, Dec 2, 2021 at 12:54 PM Tim Harvey <tharvey@gateworks.com> wrote:
+> >
+> > On Thu, Dec 2, 2021 at 4:29 AM Adam Ford <aford173@gmail.com> wrote:
+> > >
+> > > On Wed, Dec 1, 2021 at 10:17 PM Adam Ford <aford173@gmail.com> wrote:
+> > > >
+> > > > The i.MX8M has two Hantro video decoders, called G1 and G2 which appear
+> > > > to be related to the video decoders used on the i.MX8MQ, but because of
+> > > > how the Mini handles the power domains, the VPU driver does not need to
+> > > > handle all the functions, so a new compatible flag is required.
+> > > >
+> > > > V3 is rebased from git://linuxtv.org/hverkuil/media_tree.git for-v5.17c
+> > > > This branch has support for VP9.
+> > > >
+> > > > I set cma=512M, but this may not be enough memory as some tests appeard to run out of memory
+> > > >
+> > > > V3 of this series has several changes:
+> > > >
+> > > > Update imx8m_vpu_hw to add missing 'reg' reference names for G2 and include references to VP9
+> > > > Update device tree to remove IMX8MQ_VPU_RESET, remove some duplicate vpu clock parenting
+> > > > Fix missing reg-names from vpu_g2 node.
+> > > > Apply patch [1] to manage the power domains powering down.
+> > > > [1] - https://lore.kernel.org/linux-arm-kernel/20211016210547.171717-1-marex@denx.de/t/
+> > > >
+> > > > With the above, the following Fluster scores are produced:
+> > > >
+> > > > G1:
+> > > > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+> > > > Ran 90/135 tests successfully               in 74.406 secs
+> > > >
+> > > > ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+> > > > Ran 55/61 tests successfully               in 8.080 secs
+> > > >
+> > > > G2:
+> > > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+> > > > Ran 127/303 tests successfully               in 203.873 secs
+> > > >
+> > > > Fluster and G-Streamer were both built from their respective git repos using their respective master/main branches.
+> > > >
+> > >
+> > > I should note, that both interrupts appear to be triggering.
+> > >
+> > > # cat /proc/interrupts |grep codec
+> > >  57:      13442          0          0          0     GICv3  39 Level
+> > >   38300000.video-codec
+> > >  58:       7815          0          0          0     GICv3  40 Level
+> > >   38310000.video-codec
+> > >
+> >
+> > Adam,
+> >
+> > On another thread you had let me know that you also removed the reset
+> > from the pgc_vpumix power domain which does appear to resolve the
+> > hang:
+> >
+> > diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> > b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> > index eb9dcd9d1a31..31710af544dc 100644
+> > --- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> > +++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> > @@ -681,7 +681,6 @@
+> >                                                 clocks = <&clk
+> > IMX8MM_CLK_VPU_DEC_ROOT>;
+> >                                                 assigned-clocks =
+> > <&clk IMX8MM_CLK_VPU_BUS>;
+> >                                                 assigned-clock-parents
+> > = <&clk IMX8MM_SYS_PLL1_800M>;
+> > -                                               resets = <&src
+> > IMX8MQ_RESET_VPU_RESET>;
+> >                                         };
+> >
+> >                                         pgc_vpu_g1: power-domain@7 {
+> >
+> > That would make such a patch have a 'Fixes commit d39d4bb15310
+> > ("arm64: dts: imx8mm: add GPC node")' but of course that vpu domain
+> > isn't active until your series so I'm not sure if we should send this
+> > separate or squash it with "arm64: dts: imx8mm: Enable VPU-G1 and
+> > VPU-G2". I'm also not clear if removing the reset requires some
+> > further discussion with Lucas.
+>
+> Unless there is objection from Lucas, I'll likely make it the first
+> patch in the series marking it with a fixes tag so it gets backported,
+> then the rest of the series would be adding the bindings, update the
+> driver and adding the G1 and G2 nodes.
+>
 
-For the details one may look into the of_gpio_dev_init() implementation.
+Adam,
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/gpio/gpio-adnp.c            | 1 -
- drivers/gpio/gpio-amdpt.c           | 4 +---
- drivers/gpio/gpio-bd70528.c         | 4 +---
- drivers/gpio/gpio-bd71828.c         | 1 -
- drivers/gpio/gpio-brcmstb.c         | 1 -
- drivers/gpio/gpio-davinci.c         | 1 -
- drivers/gpio/gpio-eic-sprd.c        | 1 -
- drivers/gpio/gpio-em.c              | 1 -
- drivers/gpio/gpio-ge.c              | 1 -
- drivers/gpio/gpio-grgpio.c          | 1 -
- drivers/gpio/gpio-gw-pld.c          | 1 -
- drivers/gpio/gpio-mt7621.c          | 1 -
- drivers/gpio/gpio-mvebu.c           | 1 -
- drivers/gpio/gpio-omap.c            | 3 ---
- drivers/gpio/gpio-palmas.c          | 4 +---
- drivers/gpio/gpio-pmic-eic-sprd.c   | 1 -
- drivers/gpio/gpio-raspberrypi-exp.c | 1 -
- drivers/gpio/gpio-rda.c             | 2 --
- drivers/gpio/gpio-rockchip.c        | 3 ---
- drivers/gpio/gpio-sama5d2-piobu.c   | 1 -
- drivers/gpio/gpio-sprd.c            | 1 -
- drivers/gpio/gpio-stmpe.c           | 1 -
- drivers/gpio/gpio-tc3589x.c         | 1 -
- drivers/gpio/gpio-tegra186.c        | 1 -
- drivers/gpio/gpio-tps65218.c        | 3 ---
- drivers/gpio/gpio-vf610.c           | 1 -
- drivers/gpio/gpio-xlp.c             | 1 -
- 27 files changed, 3 insertions(+), 40 deletions(-)
+I've also gotten decode+display working for vp8/h264 using this series
+and gstreamer-1.19.3 (although I have to use software colorspace
+conversion)
 
-diff --git a/drivers/gpio/gpio-adnp.c b/drivers/gpio/gpio-adnp.c
-index 8eedfc6451df..cc349d4e4973 100644
---- a/drivers/gpio/gpio-adnp.c
-+++ b/drivers/gpio/gpio-adnp.c
-@@ -458,7 +458,6 @@ static int adnp_gpio_setup(struct adnp *adnp, unsigned int num_gpios,
- 	chip->ngpio = num_gpios;
- 	chip->label = adnp->client->name;
- 	chip->parent = &adnp->client->dev;
--	chip->of_node = chip->parent->of_node;
- 	chip->owner = THIS_MODULE;
- 
- 	if (is_irq_controller) {
-diff --git a/drivers/gpio/gpio-amdpt.c b/drivers/gpio/gpio-amdpt.c
-index bbf53e289141..afe59fb79821 100644
---- a/drivers/gpio/gpio-amdpt.c
-+++ b/drivers/gpio/gpio-amdpt.c
-@@ -104,9 +104,7 @@ static int pt_gpio_probe(struct platform_device *pdev)
- 	pt_gpio->gc.request          = pt_gpio_request;
- 	pt_gpio->gc.free             = pt_gpio_free;
- 	pt_gpio->gc.ngpio            = PT_TOTAL_GPIO;
--#if defined(CONFIG_OF_GPIO)
--	pt_gpio->gc.of_node          = dev->of_node;
--#endif
-+
- 	ret = gpiochip_add_data(&pt_gpio->gc, pt_gpio);
- 	if (ret) {
- 		dev_err(dev, "Failed to register GPIO lib\n");
-diff --git a/drivers/gpio/gpio-bd70528.c b/drivers/gpio/gpio-bd70528.c
-index 397a50d6bc65..6874efc18f41 100644
---- a/drivers/gpio/gpio-bd70528.c
-+++ b/drivers/gpio/gpio-bd70528.c
-@@ -201,9 +201,7 @@ static int bd70528_probe(struct platform_device *pdev)
- 	bdgpio->gpio.set = bd70528_gpio_set;
- 	bdgpio->gpio.ngpio = 4;
- 	bdgpio->gpio.base = -1;
--#ifdef CONFIG_OF_GPIO
--	bdgpio->gpio.of_node = dev->parent->of_node;
--#endif
-+
- 	bdgpio->regmap = dev_get_regmap(dev->parent, NULL);
- 	if (!bdgpio->regmap)
- 		return -ENODEV;
-diff --git a/drivers/gpio/gpio-bd71828.c b/drivers/gpio/gpio-bd71828.c
-index c8e382b53f2f..b2ccc320c7b5 100644
---- a/drivers/gpio/gpio-bd71828.c
-+++ b/drivers/gpio/gpio-bd71828.c
-@@ -121,7 +121,6 @@ static int bd71828_probe(struct platform_device *pdev)
- 	 * "gpio-reserved-ranges" and exclude them from control
- 	 */
- 	bdgpio->gpio.ngpio = 4;
--	bdgpio->gpio.of_node = dev->parent->of_node;
- 	bdgpio->regmap = dev_get_regmap(dev->parent, NULL);
- 	if (!bdgpio->regmap)
- 		return -ENODEV;
-diff --git a/drivers/gpio/gpio-brcmstb.c b/drivers/gpio/gpio-brcmstb.c
-index 895a79936248..176c264bb959 100644
---- a/drivers/gpio/gpio-brcmstb.c
-+++ b/drivers/gpio/gpio-brcmstb.c
-@@ -703,7 +703,6 @@ static int brcmstb_gpio_probe(struct platform_device *pdev)
- 			goto fail;
- 		}
- 
--		gc->of_node = np;
- 		gc->owner = THIS_MODULE;
- 		gc->label = devm_kasprintf(dev, GFP_KERNEL, "%pOF", dev->of_node);
- 		if (!gc->label) {
-diff --git a/drivers/gpio/gpio-davinci.c b/drivers/gpio/gpio-davinci.c
-index cb5afaa7ed48..f960587f86a3 100644
---- a/drivers/gpio/gpio-davinci.c
-+++ b/drivers/gpio/gpio-davinci.c
-@@ -254,7 +254,6 @@ static int davinci_gpio_probe(struct platform_device *pdev)
- #ifdef CONFIG_OF_GPIO
- 	chips->chip.of_gpio_n_cells = 2;
- 	chips->chip.parent = dev;
--	chips->chip.of_node = dev->of_node;
- 	chips->chip.request = gpiochip_generic_request;
- 	chips->chip.free = gpiochip_generic_free;
- #endif
-diff --git a/drivers/gpio/gpio-eic-sprd.c b/drivers/gpio/gpio-eic-sprd.c
-index 865ab2b34fdd..8d722e026e9c 100644
---- a/drivers/gpio/gpio-eic-sprd.c
-+++ b/drivers/gpio/gpio-eic-sprd.c
-@@ -609,7 +609,6 @@ static int sprd_eic_probe(struct platform_device *pdev)
- 	sprd_eic->chip.ngpio = pdata->num_eics;
- 	sprd_eic->chip.base = -1;
- 	sprd_eic->chip.parent = &pdev->dev;
--	sprd_eic->chip.of_node = pdev->dev.of_node;
- 	sprd_eic->chip.direction_input = sprd_eic_direction_input;
- 	switch (sprd_eic->type) {
- 	case SPRD_EIC_DEBOUNCE:
-diff --git a/drivers/gpio/gpio-em.c b/drivers/gpio/gpio-em.c
-index 90b336e6ee27..858e6ebbb584 100644
---- a/drivers/gpio/gpio-em.c
-+++ b/drivers/gpio/gpio-em.c
-@@ -306,7 +306,6 @@ static int em_gio_probe(struct platform_device *pdev)
- 	}
- 
- 	gpio_chip = &p->gpio_chip;
--	gpio_chip->of_node = dev->of_node;
- 	gpio_chip->direction_input = em_gio_direction_input;
- 	gpio_chip->get = em_gio_get;
- 	gpio_chip->direction_output = em_gio_direction_output;
-diff --git a/drivers/gpio/gpio-ge.c b/drivers/gpio/gpio-ge.c
-index 636952769bc8..f6a3de99f7db 100644
---- a/drivers/gpio/gpio-ge.c
-+++ b/drivers/gpio/gpio-ge.c
-@@ -82,7 +82,6 @@ static int __init gef_gpio_probe(struct platform_device *pdev)
- 	gc->base = -1;
- 	gc->ngpio = (u16)(uintptr_t)of_device_get_match_data(&pdev->dev);
- 	gc->of_gpio_n_cells = 2;
--	gc->of_node = pdev->dev.of_node;
- 
- 	/* This function adds a memory mapped GPIO chip */
- 	ret = devm_gpiochip_add_data(&pdev->dev, gc, NULL);
-diff --git a/drivers/gpio/gpio-grgpio.c b/drivers/gpio/gpio-grgpio.c
-index f954359c9544..23d447e17a67 100644
---- a/drivers/gpio/gpio-grgpio.c
-+++ b/drivers/gpio/gpio-grgpio.c
-@@ -358,7 +358,6 @@ static int grgpio_probe(struct platform_device *ofdev)
- 	priv->imask = gc->read_reg(regs + GRGPIO_IMASK);
- 	priv->dev = &ofdev->dev;
- 
--	gc->of_node = np;
- 	gc->owner = THIS_MODULE;
- 	gc->to_irq = grgpio_to_irq;
- 	gc->label = devm_kasprintf(&ofdev->dev, GFP_KERNEL, "%pOF", np);
-diff --git a/drivers/gpio/gpio-gw-pld.c b/drivers/gpio/gpio-gw-pld.c
-index 242112ff60ee..77a3fbd46111 100644
---- a/drivers/gpio/gpio-gw-pld.c
-+++ b/drivers/gpio/gpio-gw-pld.c
-@@ -82,7 +82,6 @@ static int gw_pld_probe(struct i2c_client *client,
- 	gw->chip.base = -1;
- 	gw->chip.can_sleep = true;
- 	gw->chip.parent = dev;
--	gw->chip.of_node = np;
- 	gw->chip.owner = THIS_MODULE;
- 	gw->chip.label = dev_name(dev);
- 	gw->chip.ngpio = 8;
-diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-index c3658a597a80..52b49e7a0a80 100644
---- a/drivers/gpio/gpio-mt7621.c
-+++ b/drivers/gpio/gpio-mt7621.c
-@@ -217,7 +217,6 @@ mediatek_gpio_bank_probe(struct device *dev,
- 	memset(rg, 0, sizeof(*rg));
- 
- 	spin_lock_init(&rg->lock);
--	rg->chip.of_node = node;
- 	rg->bank = bank;
- 
- 	dat = mtk->base + GPIO_REG_DATA + (rg->bank * GPIO_BANK_STRIDE);
-diff --git a/drivers/gpio/gpio-mvebu.c b/drivers/gpio/gpio-mvebu.c
-index 8f429d9f3661..4c1f9e1091b7 100644
---- a/drivers/gpio/gpio-mvebu.c
-+++ b/drivers/gpio/gpio-mvebu.c
-@@ -1183,7 +1183,6 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
- 	mvchip->chip.base = id * MVEBU_MAX_GPIO_PER_BANK;
- 	mvchip->chip.ngpio = ngpios;
- 	mvchip->chip.can_sleep = false;
--	mvchip->chip.of_node = np;
- 	mvchip->chip.dbg_show = mvebu_gpio_dbg_show;
- 
- 	if (soc_variant == MVEBU_GPIO_SOC_VARIANT_A8K)
-diff --git a/drivers/gpio/gpio-omap.c b/drivers/gpio/gpio-omap.c
-index 415e8df89d6f..e099c39e0355 100644
---- a/drivers/gpio/gpio-omap.c
-+++ b/drivers/gpio/gpio-omap.c
-@@ -1419,9 +1419,6 @@ static int omap_gpio_probe(struct platform_device *pdev)
- 	bank->is_mpuio = pdata->is_mpuio;
- 	bank->non_wakeup_gpios = pdata->non_wakeup_gpios;
- 	bank->regs = pdata->regs;
--#ifdef CONFIG_OF_GPIO
--	bank->chip.of_node = of_node_get(node);
--#endif
- 
- 	if (node) {
- 		if (!of_property_read_bool(node, "ti,gpio-always-on"))
-diff --git a/drivers/gpio/gpio-palmas.c b/drivers/gpio/gpio-palmas.c
-index e8e9029ba5bd..bac10c2faf56 100644
---- a/drivers/gpio/gpio-palmas.c
-+++ b/drivers/gpio/gpio-palmas.c
-@@ -170,9 +170,7 @@ static int palmas_gpio_probe(struct platform_device *pdev)
- 	palmas_gpio->gpio_chip.set	= palmas_gpio_set;
- 	palmas_gpio->gpio_chip.get	= palmas_gpio_get;
- 	palmas_gpio->gpio_chip.parent = &pdev->dev;
--#ifdef CONFIG_OF_GPIO
--	palmas_gpio->gpio_chip.of_node = pdev->dev.of_node;
--#endif
-+
- 	palmas_pdata = dev_get_platdata(palmas->dev);
- 	if (palmas_pdata && palmas_pdata->gpio_base)
- 		palmas_gpio->gpio_chip.base = palmas_pdata->gpio_base;
-diff --git a/drivers/gpio/gpio-pmic-eic-sprd.c b/drivers/gpio/gpio-pmic-eic-sprd.c
-index 938285190566..e518490c4b68 100644
---- a/drivers/gpio/gpio-pmic-eic-sprd.c
-+++ b/drivers/gpio/gpio-pmic-eic-sprd.c
-@@ -331,7 +331,6 @@ static int sprd_pmic_eic_probe(struct platform_device *pdev)
- 	pmic_eic->chip.ngpio = SPRD_PMIC_EIC_NR;
- 	pmic_eic->chip.base = -1;
- 	pmic_eic->chip.parent = &pdev->dev;
--	pmic_eic->chip.of_node = pdev->dev.of_node;
- 	pmic_eic->chip.direction_input = sprd_pmic_eic_direction_input;
- 	pmic_eic->chip.request = sprd_pmic_eic_request;
- 	pmic_eic->chip.free = sprd_pmic_eic_free;
-diff --git a/drivers/gpio/gpio-raspberrypi-exp.c b/drivers/gpio/gpio-raspberrypi-exp.c
-index 64a552ecc2ad..3c414e0005fc 100644
---- a/drivers/gpio/gpio-raspberrypi-exp.c
-+++ b/drivers/gpio/gpio-raspberrypi-exp.c
-@@ -221,7 +221,6 @@ static int rpi_exp_gpio_probe(struct platform_device *pdev)
- 	rpi_gpio->gc.parent = dev;
- 	rpi_gpio->gc.label = MODULE_NAME;
- 	rpi_gpio->gc.owner = THIS_MODULE;
--	rpi_gpio->gc.of_node = np;
- 	rpi_gpio->gc.base = -1;
- 	rpi_gpio->gc.ngpio = NUM_GPIO;
- 
-diff --git a/drivers/gpio/gpio-rda.c b/drivers/gpio/gpio-rda.c
-index 463846431183..0d03f525dcd3 100644
---- a/drivers/gpio/gpio-rda.c
-+++ b/drivers/gpio/gpio-rda.c
-@@ -240,8 +240,6 @@ static int rda_gpio_probe(struct platform_device *pdev)
- 	rda_gpio->chip.label = dev_name(dev);
- 	rda_gpio->chip.ngpio = ngpios;
- 	rda_gpio->chip.base = -1;
--	rda_gpio->chip.parent = dev;
--	rda_gpio->chip.of_node = np;
- 
- 	if (rda_gpio->irq >= 0) {
- 		rda_gpio->irq_chip.name = "rda-gpio",
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index ce63cbd14d69..577abef578e1 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -566,9 +566,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	gc->ngpio = bank->nr_pins;
- 	gc->label = bank->name;
- 	gc->parent = bank->dev;
--#ifdef CONFIG_OF_GPIO
--	gc->of_node = of_node_get(bank->of_node);
--#endif
- 
- 	ret = gpiochip_add_data(gc, bank);
- 	if (ret) {
-diff --git a/drivers/gpio/gpio-sama5d2-piobu.c b/drivers/gpio/gpio-sama5d2-piobu.c
-index b7c950658170..3e95da717fc9 100644
---- a/drivers/gpio/gpio-sama5d2-piobu.c
-+++ b/drivers/gpio/gpio-sama5d2-piobu.c
-@@ -192,7 +192,6 @@ static int sama5d2_piobu_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, piobu);
- 	piobu->chip.label = pdev->name;
- 	piobu->chip.parent = &pdev->dev;
--	piobu->chip.of_node = pdev->dev.of_node;
- 	piobu->chip.owner = THIS_MODULE,
- 	piobu->chip.get_direction = sama5d2_piobu_get_direction,
- 	piobu->chip.direction_input = sama5d2_piobu_direction_input,
-diff --git a/drivers/gpio/gpio-sprd.c b/drivers/gpio/gpio-sprd.c
-index 9dd9dabb579e..9bff63990eee 100644
---- a/drivers/gpio/gpio-sprd.c
-+++ b/drivers/gpio/gpio-sprd.c
-@@ -237,7 +237,6 @@ static int sprd_gpio_probe(struct platform_device *pdev)
- 	sprd_gpio->chip.ngpio = SPRD_GPIO_NR;
- 	sprd_gpio->chip.base = -1;
- 	sprd_gpio->chip.parent = &pdev->dev;
--	sprd_gpio->chip.of_node = pdev->dev.of_node;
- 	sprd_gpio->chip.request = sprd_gpio_request;
- 	sprd_gpio->chip.free = sprd_gpio_free;
- 	sprd_gpio->chip.get = sprd_gpio_get;
-diff --git a/drivers/gpio/gpio-stmpe.c b/drivers/gpio/gpio-stmpe.c
-index dd4d58b4ae49..0fa4f0a93378 100644
---- a/drivers/gpio/gpio-stmpe.c
-+++ b/drivers/gpio/gpio-stmpe.c
-@@ -477,7 +477,6 @@ static int stmpe_gpio_probe(struct platform_device *pdev)
- 	stmpe_gpio->chip = template_chip;
- 	stmpe_gpio->chip.ngpio = stmpe->num_gpios;
- 	stmpe_gpio->chip.parent = &pdev->dev;
--	stmpe_gpio->chip.of_node = np;
- 	stmpe_gpio->chip.base = -1;
- 
- 	if (IS_ENABLED(CONFIG_DEBUG_FS))
-diff --git a/drivers/gpio/gpio-tc3589x.c b/drivers/gpio/gpio-tc3589x.c
-index 8d158492488f..443fe975bf13 100644
---- a/drivers/gpio/gpio-tc3589x.c
-+++ b/drivers/gpio/gpio-tc3589x.c
-@@ -319,7 +319,6 @@ static int tc3589x_gpio_probe(struct platform_device *pdev)
- 	tc3589x_gpio->chip.ngpio = tc3589x->num_gpio;
- 	tc3589x_gpio->chip.parent = &pdev->dev;
- 	tc3589x_gpio->chip.base = -1;
--	tc3589x_gpio->chip.of_node = np;
- 
- 	girq = &tc3589x_gpio->chip.irq;
- 	girq->chip = &tc3589x_gpio_irq_chip;
-diff --git a/drivers/gpio/gpio-tegra186.c b/drivers/gpio/gpio-tegra186.c
-index c026e7141e4e..7d90df8c097e 100644
---- a/drivers/gpio/gpio-tegra186.c
-+++ b/drivers/gpio/gpio-tegra186.c
-@@ -748,7 +748,6 @@ static int tegra186_gpio_probe(struct platform_device *pdev)
- 	gpio->gpio.names = (const char * const *)names;
- 
- #if defined(CONFIG_OF_GPIO)
--	gpio->gpio.of_node = pdev->dev.of_node;
- 	gpio->gpio.of_gpio_n_cells = 2;
- 	gpio->gpio.of_xlate = tegra186_gpio_of_xlate;
- #endif /* CONFIG_OF_GPIO */
-diff --git a/drivers/gpio/gpio-tps65218.c b/drivers/gpio/gpio-tps65218.c
-index 912382be48e1..e1d425a18854 100644
---- a/drivers/gpio/gpio-tps65218.c
-+++ b/drivers/gpio/gpio-tps65218.c
-@@ -196,9 +196,6 @@ static int tps65218_gpio_probe(struct platform_device *pdev)
- 	tps65218_gpio->tps65218 = tps65218;
- 	tps65218_gpio->gpio_chip = template_chip;
- 	tps65218_gpio->gpio_chip.parent = &pdev->dev;
--#ifdef CONFIG_OF_GPIO
--	tps65218_gpio->gpio_chip.of_node = pdev->dev.of_node;
--#endif
- 
- 	return devm_gpiochip_add_data(&pdev->dev, &tps65218_gpio->gpio_chip,
- 				      tps65218_gpio);
-diff --git a/drivers/gpio/gpio-vf610.c b/drivers/gpio/gpio-vf610.c
-index e0f2b67558e7..20780c35da1b 100644
---- a/drivers/gpio/gpio-vf610.c
-+++ b/drivers/gpio/gpio-vf610.c
-@@ -298,7 +298,6 @@ static int vf610_gpio_probe(struct platform_device *pdev)
- 	}
- 
- 	gc = &port->gc;
--	gc->of_node = np;
- 	gc->parent = dev;
- 	gc->label = "vf610-gpio";
- 	gc->ngpio = VF610_GPIO_PER_PORT;
-diff --git a/drivers/gpio/gpio-xlp.c b/drivers/gpio/gpio-xlp.c
-index 0d94d3aef752..9bb0d1c17f67 100644
---- a/drivers/gpio/gpio-xlp.c
-+++ b/drivers/gpio/gpio-xlp.c
-@@ -374,7 +374,6 @@ static int xlp_gpio_probe(struct platform_device *pdev)
- 	gc->base = 0;
- 	gc->parent = &pdev->dev;
- 	gc->ngpio = ngpio;
--	gc->of_node = pdev->dev.of_node;
- 	gc->direction_output = xlp_gpio_dir_output;
- 	gc->direction_input = xlp_gpio_dir_input;
- 	gc->set = xlp_gpio_set;
--- 
-2.33.0
+# source: vp8 software encode on x86
+gst-launch-1.0 -v videotestsrc ! vp8enc ! rtpvp8pay ! udpsink
+host=172.24.33.15 port=9001
+# sink: vp8 hardware decode on imx8mm
+gst-launch-1.0 udpsrc port=9001 caps = 'application/x-rtp,
+media=(string)video, clock-rate=(int)90000, encoding-name=(string)VP8,
+payload=(int)96, ssrc=(uint)3363940374,
+timestamp-offset=(uint)3739685909, seqnum-offset=(uint)28161,
+a-framerate=(string)30' ! rtpvp8depay ! v4l2slvp8dec ! videoconvert !
+kmssink
 
+# source: h264 software encode on x86
+gst-launch-1.0 -v videotestsrc ! video/x-raw,width=800,height=480 !
+x264enc ! rtph264pay ! udpsink host=172.24.33.15 port=9001
+# sink: h264 hardware decode on imx8mm
+gst-launch-1.0 udpsrc port=9001 caps = 'application/x-rtp,
+media=(string)video, clock-rate=(int)90000,
+encoding-name=(string)H264, packetization-mode=(string)1,
+profile-level-id=(string)64001f,
+sprop-parameter-sets=(string)"Z2QAH6zZQMg9sBagwCC0oAAAAwAgAAAHkeMGMsA\=\,aOvssiw\=",
+payload=(int)96, ssrc=(uint)2753453329,
+timestamp-offset=(uint)3593065282, seqnum-offset=(uint)12297,
+a-framerate=(string)30' ! rtph264depay ! v4l2slh264dec ! videoconvert
+! kmssink
+
+# source: vp9 software encode on x86
+gst-launch-1.0 -v videotestsrc ! video/x-raw,width=800,height=480 !
+vp9enc ! rtpvp9pay ! udpsink host=172.24.33.15 port=9001
+# sink: vp9 hardware decode on imx8mm
+gst-launch-1.0 udpsrc port=9001 caps = 'application/x-rtp,
+media=(string)video, clock-rate=(int)90000, encoding-name=(string)VP9,
+payload=(int)96, ssrc=(uint)2246741422,
+timestamp-offset=(uint)3441735424, seqnum-offset=(uint)30250,
+a-framerate=(string)30' ! rtpvp9depay ! v4l2slvp9dec ! fakesink
+^^^ this fails with no-negotiated
+
+Note I have to use videoconvert because v4l2slvp8dev src is
+NV12/YUY2/NV12_32L32 and from testing only BGRx appears compatible
+with kmssink (even though gst-inspect kmssink says it can sink
+NV12/YUY2). With the 800x480 resolution of my display the CPU overhead
+of software colorspcae conversion with videoconvert only about 9%
+
+I haven't yet gotten vp9 decode+display working yet as 'rtpvp9depay !
+v4l2slvp9dec ! fakesink' does not negotiate and it might be because my
+vp9enc source is on an old gstreamer 1.16.
+
+When you post the next series please add:
+Tested-By: Tim Harvey <tharvey@gateworks.com>
 
 _______________________________________________
 Linux-rockchip mailing list
