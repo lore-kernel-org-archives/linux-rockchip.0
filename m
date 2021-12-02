@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56054C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 15:50:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D98EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Dec 2021 15:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U54ry8LcswqB8UGg0T4PRGevFkuxpi19ltUVVx4YgAI=; b=3IC9Qiq3GZzoCm
-	cb/cEcl5HgLylZy+mfLzQkIGYrtrMcIVO0fA2oviMtLfb0tMIxLbHENKa24goPU9yn/nE610ayP48
-	Uybw2HfRi9yq/phpsyCLh79rWDztnpRHqSyyXxEYY4b3xNw2tJuPrbVpbOPe4QDjgSbl0AOrGzGSs
-	ty4IV1j1FmO2pNSFQ6BXWE5fjzm67CqpzvRZdfiaEO5NapPFx6uPG/9zPcge2YHbZKILhT7RrJjup
-	p1QsZk8wmjbTFUUDZVtvZWWkmj3NNvKta9xWLj36o2gaEqxWgZsNuAu4G/zTR2439tD/u1MSgqwjg
-	C7JzQVTo9Ro2RqAJRvmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vLFZGAP1ii5TruG8nNZanltYn1QqNbw94+FIVvvwJmQ=; b=OEEzpqbiGbmAUN
+	goVyXGdrFgmLobnjecydpdSKjUyeKTVhKyxaP7SJaaICmZ6NAIR72DxJI60RAQNFvHGZdjRkkU31t
+	YWRqySxFmVPI3+Uz1Pzgt3V1cjv9t5q+1puiIAZuuBmOYUAt1BOm2AtAEdrRMv9I1BnQY3lLfgecA
+	78BRDl2NabkDUSPpS3t0CygTiOntgqrm6+Nag0o92eNfvjhfgUbKSPhufjFvAIyQyfaFkG1Gm8753
+	xx1wjsW0GLsUO6EatLS5+o85ObCeDAxPyz7ESrDdqxdEyrTKx6VsOsSLK69tYgE5Iw0HTtWkBpdSd
+	kt9qZimvpNElLmZxno4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msoM2-00Cqi8-Vt; Thu, 02 Dec 2021 15:50:39 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1msoR0-00CsZd-Ja; Thu, 02 Dec 2021 15:55:46 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msoD9-00CoGT-8z; Thu, 02 Dec 2021 15:41:29 +0000
-Received: from ip4d17a2ab.dynamic.kabel-deutschland.de ([77.23.162.171]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1msoD1-0000g5-2c; Thu, 02 Dec 2021 16:41:19 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 10/12] arm64: dts: rockchip: rk3568-evb: Enable VOP2 and
- hdmi
-Date: Thu, 02 Dec 2021 16:41:17 +0100
-Message-ID: <6427725.puVkvWICD3@diego>
-In-Reply-To: <20211202153449.GG25697@pengutronix.de>
-References: <20211117143347.314294-1-s.hauer@pengutronix.de>
- <CAL_JsqL7C32FB47=xfUtndtCvfOQx7f3Gq0O0FqZxRoeS1fNSQ@mail.gmail.com>
- <20211202153449.GG25697@pengutronix.de>
+ id 1msoMO-00CqqE-7U; Thu, 02 Dec 2021 15:51:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=Content-Transfer-Encoding:Message-Id:Date:
+ Subject:Cc:To:From:Content-Type:Reply-To:Content-ID:Content-Description:
+ In-Reply-To:References; bh=OY2zTbK1ie6cFTyrDOMcePVtS2yQyfQeUBoaSJjVJcY=; b=o+
+ 7M2AA4ymceZJiSU6SXW4kEaI2rwGKYlRf6gYKbZ5BpOOdVsMx53fkyJZZi5VhgllO7tfXLD1BHgpc
+ 6hMDEGwMK9/ch9qS/6M2sNd1r8N5axFUlfuUuD1vz2DuSObNiU53Fi8qtDmtMHTvGrTGIxPbv4rdP
+ kw/CnRQ/KxJUBFJWRbY52ERZzIZlJ9OM2tWDKTWzOt5n/Jn0vheYWU6sdZtrmH8tq3ecJQffsqPec
+ G6ZIritKwllHEnTGmRF2WgM1yjRz4E4gAJ9qMCxZN627PHzQnIWsbaM94rm8coS3aRNqcNnwnhdu2
+ SmW6rdq6LJ7HW4YmgQ9+S+hrc1paCF4Q==;
+Received: from [81.174.171.191] (helo=donbot.metanate.com)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1msoMH-0001G2-Fy; Thu, 02 Dec 2021 15:50:53 +0000
+From: John Keeping <john@metanate.com>
+To: linux-gpio@vger.kernel.org
+Cc: John Keeping <john@metanate.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] gpio/rockchip: lock GPIOs used as interrupts
+Date: Thu,  2 Dec 2021 15:50:21 +0000
+Message-Id: <20211202155022.2972779-1-john@metanate.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_074127_379588_86D56764 
-X-CRM114-Status: GOOD (  32.93  )
+X-CRM114-CacheID: sfid-20211202_075100_448401_793171AD 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,102 +70,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
+Use the standard gpiochip request/release resource functions so that any
+GPIOs used as interrupts are properly locked.  This allows libgpiod to
+correctly show these GPIOs as in-use.
 
-Am Donnerstag, 2. Dezember 2021, 16:34:49 CET schrieb Sascha Hauer:
-> On Wed, Nov 17, 2021 at 09:19:38AM -0600, Rob Herring wrote:
-> > On Wed, Nov 17, 2021 at 8:34 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
-> > >
-> > > This enabled the VOP2 display controller along with hdmi and the
-> > > required port routes which is enough to get a picture out of the
-> > > hdmi port of the board.
-> > >
-> > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > ---
-> > >  .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 24 +++++++++++++++++++
-> > >  1 file changed, 24 insertions(+)
-> > >
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> > > index 184e2aa2416af..156e001492173 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-> > > @@ -106,6 +106,12 @@ &gmac1m1_rgmii_clk
-> > >         status = "okay";
-> > >  };
-> > >
-> > > +&hdmi {
-> > > +       status = "okay";
-> > > +       avdd-0v9-supply = <&vdda0v9_image>;
-> > > +       avdd-1v8-supply = <&vcca1v8_image>;
-> > > +};
-> > > +
-> > >  &i2c0 {
-> > >         status = "okay";
-> > >
-> > > @@ -390,3 +396,21 @@ &sdmmc0 {
-> > >  &uart2 {
-> > >         status = "okay";
-> > >  };
-> > > +
-> > > +&vop {
-> > > +       status = "okay";
-> > > +       assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-> > > +       assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-> > > +};
-> > > +
-> > > +&vop_mmu {
-> > > +       status = "okay";
-> > > +};
-> > > +
-> > > +&hdmi_in_vp0 {
-> > > +       status = "okay";
-> > > +};
-> > > +
-> > > +&vp0_out_hdmi {
-> > > +       status = "okay";
-> > > +};
-> > 
-> > You can accomplish the same thing already with:
-> > 
-> > &vp0_out_hdmi {
-> >   remote-endpoint = <&hdmi_in_vp0>;
-> > };
-> 
-> My idea was to describe all possible connections in the dtsi file and
-> let the board dts writer only en/disable the needed connections. When
-> the connections are specified in the dts file then writing it is more
-> difficult and error prone.
-> 
-> > 
-> > or:
-> > 
-> > &vp0_out_hdmi {
-> >   /delete-property/ remote-endpoint;
-> > };
-> 
-> With this I have to change all connections that I don't need. With
-> status = "okay" I have to change all connections that I actually do
-> need, which will be much easier to read and write.
-> 
-> I'll stick to the status = "okay" method for the next round, maybe I can
-> still convince you ;)
-> 
-> If it's the 'status' property you don't like being used when it's not a
-> device that is enabled/disabled, then every other name would be fine
-> with me as well.
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/gpio/gpio-rockchip.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-hmm, we do have code in the rockchip drm-driver to find out
-if the device at the end of a graph-connection is disabled or not [0] ,
-So on previous Rockchip socs, there are already all connections
-established, and the driver weeds out the disabled ones.
-
-So I'm wondering what is missing to use that in a vop2 context?
-
-
-Heiko
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/rockchip/rockchip_drm_drv.c#n274
-
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index ce63cbd14d69a..c1b8e5dbbcc47 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -465,6 +465,22 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
+ 	return ret;
+ }
+ 
++static int rockchip_irq_reqres(struct irq_data *d)
++{
++	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
++	struct rockchip_pin_bank *bank = gc->private;
++
++	return gpiochip_reqres_irq(&bank->gpio_chip, d->hwirq);
++}
++
++static void rockchip_irq_relres(struct irq_data *d)
++{
++	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
++	struct rockchip_pin_bank *bank = gc->private;
++
++	gpiochip_relres_irq(&bank->gpio_chip, d->hwirq);
++}
++
+ static void rockchip_irq_suspend(struct irq_data *d)
+ {
+ 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
+@@ -536,6 +552,8 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+ 	gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
+ 	gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
+ 	gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
++	gc->chip_types[0].chip.irq_request_resources = rockchip_irq_reqres;
++	gc->chip_types[0].chip.irq_release_resources = rockchip_irq_relres;
+ 	gc->wake_enabled = IRQ_MSK(bank->nr_pins);
+ 
+ 	/*
+-- 
+2.34.1
 
 
 _______________________________________________
