@@ -4,103 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D711C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Dec 2021 08:41:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13CF9C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Dec 2021 09:18:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AZMwjsYBZ/u6G/MPtU6VnAPyzRcxmHDG894gON2mDeY=; b=i/uyOFmzJnnpca
-	t/MKSxT4rSTF21le3u4GA0unyhWA3t6o1dcBUNNWXy2hLINOAeAfpy2n9wLw9e9PBvzfv8ybY/h11
-	p0lh21kTpzz6lwbDM9OEafe0gpJx4N5HQo65Oo1zmPfXHbcv09ztgr+r3O/udKk8DjkdErD5ojbps
-	gTTcIyNIBt2pQ0qVyqPBGvm1OWZNkbcwx7sXiC3j+Ucyn9Obq7P9Cv1ZOPttotTh8/ThJQV6/krc8
-	FZckEjIgPvFOXelAQ+I0CTBu88MEV4fADeo7IX82sN+y92Hs4feC+wcuRsADdQ2GG+YSE8mPltX2y
-	hBAhcX8/982GJXeYls5g==;
+	List-Owner; bh=XW8XvRE5OII6c/0bmdvd/dIdgskLDr7Qa/ir38sX/pM=; b=nkrzbTSZ8IvqJ2
+	cmjpwg49xgchxVmYp3t9mKfAQonWNoFLRtxdTlg3JQL9KVPiJ29Psghilaux9o6Mgrhm39+FkE78y
+	3YqsFoUX4Ze1Y+xl9x+iUW/n246v6Qljx2F0LIEy/UvrAdlGTKUwYjqF3+pJJSe0Q3GXs5FNt5mqk
+	fZeQWxZlKfxCuXIyWs2NOffGi7BsQbiIFpIXyeHkD5fctTLbH9gj+3axw54PTwlM0zHZU7ON1Akg7
+	MfoUIyGXPkzVGec1irPE1i0TyLmYMEqhswixFJYH+3g4+tL7h7gE+7XFPtoKBu6PZjyG7l8mKHS6N
+	o2vq+e6t5pIk/nNcQOlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt489-00Eryu-99; Fri, 03 Dec 2021 08:41:21 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1mt4hf-00EwvG-AP; Fri, 03 Dec 2021 09:18:03 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt47x-00ErvT-Bw
- for linux-rockchip@lists.infradead.org; Fri, 03 Dec 2021 08:41:11 +0000
-Received: by mail-ed1-x531.google.com with SMTP id g14so8429856edb.8
- for <linux-rockchip@lists.infradead.org>; Fri, 03 Dec 2021 00:41:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
- b=LsIAHi4O7+rAKszJKyJ/QwZwolqgX7Xp85HCfWi/OAlf7oOjExVQVB3A1uF6oJMxXi
- gPosTZ3PyRq9IbJKMX4ESqDGYZZYcom4XQ8JtyMRl5tOE7xlwAkd4FpJbONadp6pWo7I
- oUoB99whrPg0HGUqiRetXBExiz97qDkf5NdxXb1GpetgxbWitUxWw81WWVuMwB7DeHg4
- F4fsE0Im8ySC6EvPdTGuYxXIdnTwT10W+OMVEHRanF7YSviRe6CvO4rDs/Sfax7qLy0G
- GQ8KIQPRWvs0w82uwlN5lRnk2skx92g4UPLasKF6asjvNdNubK/yYeFyTDsn7OcD+219
- BK3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
- b=76kR2uSovpVQaOVoEr/jp8gxscywoiv80/mKK4m9Q5nFhJPeep26fdGUBq7yHu09tx
- ZuMPfHyRSv2e9xjgKZAXjrm+eqamYuM8t1MyforPQV52mb6OIHqcTdmSQcKuseSd6geQ
- CxWPVKGy5x9jUUdyZ1g4M4n8beGP5JPDoNCdZB4jgru3s+st1eqXR2A+yN26BNBVfMhg
- 8fe1Su0aoz8gJp4MU7sioInUanAOzediYPy5URBWjTFdAP8FrfSHNLrc7IHFPguU5J1d
- 84TQ9LKJAVtHt87YVWJPN07xAVc7TmgnviEZSRt9piqoVDnk/pk8bk7wpnGVp82c2c9o
- SSDg==
-X-Gm-Message-State: AOAM530/8VEv+y2yye9GjDHV681hCe9DyFtAe8/JH2hls04rFA/ToD8k
- kwndHLIBrbGUR5LiIJmi3K/TetoOiJ7QQNnL73PYPQ==
-X-Google-Smtp-Source: ABdhPJzNHiauf+pMC5f/US+c9OIXcWbcKMNg90ABw6xCvQOgNu83JV2BIOiQy03TdGH6uVMTEr4y57dSuqO0jiYbpps=
-X-Received: by 2002:a17:907:75f0:: with SMTP id
- jz16mr22268827ejc.77.1638520866276; 
- Fri, 03 Dec 2021 00:41:06 -0800 (PST)
+ id 1mt4hT-00Ewqp-OW
+ for linux-rockchip@lists.infradead.org; Fri, 03 Dec 2021 09:17:53 +0000
+Received: from gallifrey.ext.pengutronix.de
+ ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <l.stach@pengutronix.de>)
+ id 1mt4hE-0000j9-TQ; Fri, 03 Dec 2021 10:17:36 +0100
+Message-ID: <6a274996f96c799db2efef4498a8fc42e78e1d2d.camel@pengutronix.de>
+Subject: Re: [RFC V3 0/2] arm64: imx8mm: Enable Hantro VPUs
+From: Lucas Stach <l.stach@pengutronix.de>
+To: Tim Harvey <tharvey@gateworks.com>, Adam Ford <aford173@gmail.com>
+Cc: linux-media <linux-media@vger.kernel.org>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Nicolas Dufresne <nicolas@ndufresne.ca>, 
+ Adam Ford-BE <aford@beaconembedded.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Rob Herring <robh+dt@kernel.org>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>,  Fabio Estevam <festevam@gmail.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>,  devicetree <devicetree@vger.kernel.org>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, "open list:HANTRO VPU CODEC DRIVER"
+ <linux-rockchip@lists.infradead.org>, "open list:STAGING SUBSYSTEM"
+ <linux-staging@lists.linux.dev>
+Date: Fri, 03 Dec 2021 10:17:33 +0100
+In-Reply-To: <CAJ+vNU2t7Yp5OGtWj432Y-8hL62nQBbG58zM-gAj5YfuCO__sA@mail.gmail.com>
+References: <20211202041627.291625-1-aford173@gmail.com>
+ <CAHCN7xJHuOFTQBQWk1yKsk3M0iDB7aKc0=L2DisUoSXVeO3xXQ@mail.gmail.com>
+ <CAJ+vNU2t7Yp5OGtWj432Y-8hL62nQBbG58zM-gAj5YfuCO__sA@mail.gmail.com>
+User-Agent: Evolution 3.40.4 (3.40.4-1.fc34) 
 MIME-Version: 1.0
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Fri, 3 Dec 2021 09:40:55 +0100
-Message-ID: <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>, 
- Baruch Siach <baruch@tkos.co.il>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
- Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- patches@opensource.cirrus.com, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- linux-power <linux-power@fi.rohmeurope.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- linux-pwm@vger.kernel.org, 
- Linux-OMAP <linux-omap@vger.kernel.org>, linux-unisoc@lists.infradead.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
- Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, 
- Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>
+X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
+X-SA-Exim-Mail-From: l.stach@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_004109_437228_7DEA7110 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20211203_011751_816730_EF20639A 
+X-CRM114-Status: GOOD (  35.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,26 +80,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> GPIO library does copy the of_node from the parent device of
-> the GPIO chip, there is no need to repeat this in the individual
-> drivers. Remove these assignment all at once.
->
-> For the details one may look into the of_gpio_dev_init() implementation.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
+Am Donnerstag, dem 02.12.2021 um 10:54 -0800 schrieb Tim Harvey:
+> On Thu, Dec 2, 2021 at 4:29 AM Adam Ford <aford173@gmail.com> wrote:
+> > 
+> > On Wed, Dec 1, 2021 at 10:17 PM Adam Ford <aford173@gmail.com> wrote:
+> > > 
+> > > The i.MX8M has two Hantro video decoders, called G1 and G2 which appear
+> > > to be related to the video decoders used on the i.MX8MQ, but because of
+> > > how the Mini handles the power domains, the VPU driver does not need to
+> > > handle all the functions, so a new compatible flag is required.
+> > > 
+> > > V3 is rebased from git://linuxtv.org/hverkuil/media_tree.git for-v5.17c
+> > > This branch has support for VP9.
+> > > 
+> > > I set cma=512M, but this may not be enough memory as some tests appeard to run out of memory
+> > > 
+> > > V3 of this series has several changes:
+> > > 
+> > > Update imx8m_vpu_hw to add missing 'reg' reference names for G2 and include references to VP9
+> > > Update device tree to remove IMX8MQ_VPU_RESET, remove some duplicate vpu clock parenting
+> > > Fix missing reg-names from vpu_g2 node.
+> > > Apply patch [1] to manage the power domains powering down.
+> > > [1] - https://lore.kernel.org/linux-arm-kernel/20211016210547.171717-1-marex@denx.de/t/
+> > > 
+> > > With the above, the following Fluster scores are produced:
+> > > 
+> > > G1:
+> > > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+> > > Ran 90/135 tests successfully               in 74.406 secs
+> > > 
+> > > ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+> > > Ran 55/61 tests successfully               in 8.080 secs
+> > > 
+> > > G2:
+> > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+> > > Ran 127/303 tests successfully               in 203.873 secs
+> > > 
+> > > Fluster and G-Streamer were both built from their respective git repos using their respective master/main branches.
+> > > 
+> > 
+> > I should note, that both interrupts appear to be triggering.
+> > 
+> > # cat /proc/interrupts |grep codec
+> >  57:      13442          0          0          0     GICv3  39 Level
+> >   38300000.video-codec
+> >  58:       7815          0          0          0     GICv3  40 Level
+> >   38310000.video-codec
+> > 
+> 
+> Adam,
+> 
+> On another thread you had let me know that you also removed the reset
+> from the pgc_vpumix power domain which does appear to resolve the
+> hang:
+> 
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> index eb9dcd9d1a31..31710af544dc 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> @@ -681,7 +681,6 @@
+>                                                 clocks = <&clk
+> IMX8MM_CLK_VPU_DEC_ROOT>;
+>                                                 assigned-clocks =
+> <&clk IMX8MM_CLK_VPU_BUS>;
+>                                                 assigned-clock-parents
+> = <&clk IMX8MM_SYS_PLL1_800M>;
+> -                                               resets = <&src
+> IMX8MQ_RESET_VPU_RESET>;
+>                                         };
+> 
+>                                         pgc_vpu_g1: power-domain@7 {
+> 
+> That would make such a patch have a 'Fixes commit d39d4bb15310
+> ("arm64: dts: imx8mm: add GPC node")' but of course that vpu domain
+> isn't active until your series so I'm not sure if we should send this
+> separate or squash it with "arm64: dts: imx8mm: Enable VPU-G1 and
+> VPU-G2". I'm also not clear if removing the reset requires some
+> further discussion with Lucas.
+> 
+I'm fine with removing the reset when it fixes things. In normal
+operation the reset should already be triggered by the GPC itself via a
+hardware mechanism. We know that this doesn't work for the GPU reset on
+the i.MX8MM, so we have the ability for the driver to handle it by
+poking the SRC explicitly.
 
-I have a bad feeling about this but I've gone through the drivers in
-this patch and it seems like you don't update any of the drivers that
-use multiple child OF nodes so I can't really point out any obvious
-bug.
+Adding the reset to the VPU DT description wasn't done because I know
+that we need it, but more of a "I know that things are broken with the
+GPU domain, so better be safe than sorry with the VPU domain". My line
+of thought clearly was that it may not be needed, but it may prevent
+some issues in the long run. If it is _causing_ issues however, there
+is no need to discuss anything, just get rid of it.
 
-I have another change I'm working on that's related, let me send it shortly.
+Regards,
+Lucas
 
-Bart
 
 _______________________________________________
 Linux-rockchip mailing list
