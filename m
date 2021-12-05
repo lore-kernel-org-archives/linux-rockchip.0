@@ -4,58 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCA2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Dec 2021 15:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B32EAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Dec 2021 00:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B8Co3WWSh5KCN3QKQRINbA+rKJ1hR921Ds2oG36ET0k=; b=hkb4SM74yPFBir
-	5Y8i5h8YFqRioTf8zagKpJlY5+QGim0UpfqSUM3sgJTuDSBvA99tLc2RQt9kOylFycOU5bYGrhohe
-	D1rAJ63dhYlzx9GjGjqEsTUV8Uucauh6eKCLAw5cHbhzUSNlk7VA/PNe1NdogLwuPZYK+B6QOrYwV
-	Ec04oDnIV8hlkMUQvrT9BVNeJBtpdolkk0yImEZIUjdNhGcdH4Bw7JflMaAucgZCvuODZJ0P63SpK
-	netgpahimWZHiW35ImYotVbliSCPJZNsC1XYJilUnfeGPk2TquNv/e8xTa8xb0JJnHL5LHvFL4DUy
-	Pe/O1cpTce1qlQL6nrRg==;
+	List-Owner; bh=jUmB958ikAjL9XDRHE3Cr5mtJMxw7wP1B9ZM8kFKWxk=; b=NSBp+YLFvJj4wc
+	ZeZudppQMfbXDgssMvHVdBv0fyf3RO8aKeternWFc4tRuiVC9lV5PXTk3cOhAL2nGKErLcqcWMfNY
+	a6x9lsopyF1t9MzpdqY75C2LPY4/hDi3D76g9WHGWODAQKOGvzX+zsMLXIzgLPIqsik5VI4Nr/PKx
+	DAEO3VFkYLe5rM9iFRdoVKlAyZYrXNi/XDw4jhqfYSOuO9XTMCO5PxHeXxHiu7shDJd32cZ5j3jFY
+	vIhzTFmIdMsLpsCSD+QFMm4hsp+7jQx8CK+jPVCGoDUMooLlaRFyDk5d+WmzN17P/SMYAStD2AiA3
+	qcABdhxryo/vaAvVcOPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mtWuq-000ScE-Hz; Sat, 04 Dec 2021 15:25:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mtf2u-0013Av-2G; Sun, 05 Dec 2021 00:06:24 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mtWu7-000SPu-N4; Sat, 04 Dec 2021 15:24:49 +0000
-Received: from localhost.localdomain (unknown
- [IPv6:2a00:c281:1409:4a00:6988:6ac4:851c:3f63])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 307051F45C0C;
- Sat,  4 Dec 2021 15:24:44 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638631485; bh=9ICs/y4HUDZ5NV8MZBtkV53PWQ6+UIINUtCdzKskXtw=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=S4+QEALCIB7I8isBb8M+sZZTnmXTzAEHomEidsXLEP7XLjEkZVVeHjIEFa2ki6zRC
- hRajHtxBZJ8ON4fKVx/IW7W8vayTMySQO5nfl1Q4J0/HJoH3zurAE/aRZrf+KSG+jn
- KUIFloASV69am+tAedU114mhAu4PpaEqpVoxByO3hAk4vdKbLiT0MS5Jq6tNtcSdF0
- h2E7h/cI3vN4g/XGN2vFHbxbIAONMYIeSCZEpNPu6YszHXlzG3THlu5mBqIQFd1OeC
- 9eqmmabmZZMOEB+JqhBsQ6VdWPacG7MpQSo7IxvzlWn2ZED4v567A+KBr+i1feMKtk
- PQ42R1SZFtZmA==
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: iommu@lists.linux-foundation.org
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>,
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
- linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
- kernel@collabora.com
-Subject: [PATCH 3/4] iommu/rockchip: rename dte_index to dte
-Date: Sat,  4 Dec 2021 17:24:27 +0200
-Message-Id: <20211204152428.13899-3-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20211204152428.13899-1-dafna.hirschfeld@collabora.com>
-References: <20211204152428.13899-1-dafna.hirschfeld@collabora.com>
+ id 1mtf2p-00139U-IR
+ for linux-rockchip@lists.infradead.org; Sun, 05 Dec 2021 00:06:21 +0000
+Received: by mail-oi1-x235.google.com with SMTP id s139so13713265oie.13
+ for <linux-rockchip@lists.infradead.org>; Sat, 04 Dec 2021 16:06:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aLM7Vzy6+wcFi2+uw4mY6eHdc1c6QIPZ2YzBFSeQVDk=;
+ b=oypqQM9WYczOUD8yOv4W0b0J4SdrSIP2/GWFE4TR5k1CGEkHNy9WPiO008zNzsg3Pz
+ zh9bUtf/VG6/b3zJ480BiJtwEa7PuEjsHQIWuEsggMdMqcZfJwsOE3iFtiG2DEPADAsO
+ hqFPrgRv7CWtgQ4J5ZJRkR9iA1oQHlUoWYY8QDKpr7VM+f+8Yrryge0w8oCSslRvNp+6
+ exKWbX0iHLd50+WQaM9fAnPeBnEozwwfUcCOKBUJC5pSMVg0d33S/UEK3rrGtAaDpFWu
+ Uv4am7V67+qDJ2gKBQwHEmdYiUOqE7eMf4wLG94y+RQ3YPpVsZKN31tRHAbmVgDqfwLj
+ frKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aLM7Vzy6+wcFi2+uw4mY6eHdc1c6QIPZ2YzBFSeQVDk=;
+ b=RYYmIy1Wfrshsoje1Isg6rGfLWoDBHe0eWLfQ1ZDFtFccJaizJWveIm1CsDIAovbcK
+ nryZUqeSFMNJYfHNBvb2ua1T/aubsqUMQj6uHHwrWXEuWQdBlsYUb3vR1P6jKTj28al7
+ spjJWaLKqSFRwyGHY9OQ0IZ7zLHdOJ6WnD696PQrUE0avtPt2JAzhDdzmKsE406l6noZ
+ fxwRhSRHWHmDRLi8zkByoL/SUaL74GpbeXdbN8RWCyizHWnrUfFwDX7OIq988fLVx4sD
+ kyLwP+j+uPsfBaqezVdIiCSrgq6ozQ4F1VvaAEDPtUVekX6VPRl2TQZbNYTrNmJYYFQk
+ B3OQ==
+X-Gm-Message-State: AOAM533/pl5NvXms362IfTbb5HIjBUZhykz8U9ndIp1TRU0sefpDREFe
+ UngC5LwCi9M1+dtC75DKL2jW7t7LCwWdeQiavt3RGQ==
+X-Google-Smtp-Source: ABdhPJy/aeGs123LiAIPsyMW3EdsawUgHdqxl5iex8vMswm1x7JAmAebxj9z1jBeNmQdoS/RXvDPX+AOcq/DNJTtHIA=
+X-Received: by 2002:aca:120f:: with SMTP id 15mr16602417ois.132.1638662778472; 
+ Sat, 04 Dec 2021 16:06:18 -0800 (PST)
+MIME-Version: 1.0
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sun, 5 Dec 2021 01:06:07 +0100
+Message-ID: <CACRpkdZbpKqG_uS2N8TW2-HL5CqnuKDpHVCabf66MyQQof0jOw@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Jianqun Xu <jay.xu@rock-chips.com>, 
+ Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ linux-gpio@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, patches@opensource.cirrus.com, 
+ bcm-kernel-feedback-list@broadcom.com, linux-power@fi.rohmeurope.com, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pwm@vger.kernel.org, linux-omap@vger.kernel.org, 
+ linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211204_072447_921446_F08AADB9 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20211204_160619_678062_89B3D736 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,50 +107,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In rk_iommu_map, the var dte_index is actually
-set to the dte and not to the dte index. Rename it.
+On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/iommu/rockchip-iommu.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+> GPIO library does copy the of_node from the parent device of
+> the GPIO chip, there is no need to repeat this in the individual
+> drivers. Remove these assignment all at once.
+>
+> For the details one may look into the of_gpio_dev_init() implementation.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index bd73cf9c54f5..ba60f0faafcc 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -852,7 +852,7 @@ static int rk_iommu_map(struct iommu_domain *domain, unsigned long _iova,
- 	unsigned long flags;
- 	dma_addr_t pte_dma, iova = (dma_addr_t)_iova;
- 	u32 *page_table, *pte_addr;
--	u32 dte_index, pte_index;
-+	u32 dte, pte_index;
- 	int ret;
- 
- 	spin_lock_irqsave(&rk_domain->dt_lock, flags);
-@@ -870,11 +870,11 @@ static int rk_iommu_map(struct iommu_domain *domain, unsigned long _iova,
- 		return PTR_ERR(page_table);
- 	}
- 
--	dte_index = rk_domain->dt[rk_iova_dte_index(iova)];
-+	dte = rk_domain->dt[rk_iova_dte_index(iova)];
- 	pte_index = rk_iova_pte_index(iova);
- 	pte_addr = &page_table[pte_index];
- 
--	pte_dma = rk_ops->pt_address(dte_index) + pte_index * sizeof(u32);
-+	pte_dma = rk_ops->pt_address(dte) + pte_index * sizeof(u32);
- 	ret = rk_iommu_map_iova(rk_domain, pte_addr, pte_dma, iova,
- 				paddr, size, prot);
- 
--- 
-2.17.1
+This is definitely a patch in the right direction, as Bart says
+it can be a bit dangerous, the outliers are those drivers that
+assign the .dev to something completely different than the
+the dev where the of_node is copied from.
 
+The idea was definitely always to only assign it in the core
+*unless* there is a reason to have a completely different
+of_node for some reason.
+
+> +++ b/drivers/gpio/gpio-rda.c
+> @@ -240,8 +240,6 @@ static int rda_gpio_probe(struct platform_device *pdev)
+>         rda_gpio->chip.label = dev_name(dev);
+>         rda_gpio->chip.ngpio = ngpios;
+>         rda_gpio->chip.base = -1;
+> -       rda_gpio->chip.parent = dev;
+> -       rda_gpio->chip.of_node = np;
+
+Mention in the commit message that in this driver
+you also drop the the .parent assignment because the
+core will handle it.
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
