@@ -4,85 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1341BC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Dec 2021 13:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934A7C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Dec 2021 13:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gGcUDbfoK/Cmql9ug44AsuWQE/rTetwq6ILDtzQQY7g=; b=zFC2rBayJj7lFQ
-	ikNDhtLvxHlzZgrsRCWDRolYD+hs3gJ2qUcxMp9Jq+1Vs3bYjKiWxdXIC5U3KKJTfmMZq6lDji/P5
-	Sv78QGdbZePb+QXr7IIxkRphKZmjHPAX+59ePTAd5RhRFdhRNVCnO4pQfe6nIJwiBGe63qAHYrJaW
-	0ZQaPrsMeQkZtl4jlMSJ6oUi3R16uKLImsQLWKso4MWxNZPCKnUQVKelEK4GGkzGHpHwEMC1KAx51
-	PhEnVTQ75hA4Jo1zlQMegAzdwAATHzgXj+ARokpxXp/RyZiG0XNRBBcX/8ATVxG4PKtXMejoYicz6
-	Ah68YTbt6MF2/f9SlGPw==;
+	List-Owner; bh=dPYmh5PBHKtjYf0+l6g/vR65gTmpqNRLt/o2DxUGkj0=; b=Rkw7+GJ0+Wh7PJ
+	2RskTjF2X3vI0DBd1VjFJRtPCMLkDhITeijuM1u8yfE9pwL77dCrnyq31P99G30iYivHnaqaA12CD
+	nQIqynjHX04tr2fjYOXBgDUHR0+n/hw1hML70Qe5q37ypKGk8Pncy6VhCC1XUV1/OEfGesMTrNTfy
+	yrP9x97yQM2FPlVmgWCo8fPOOirgXGZ3AQBQIN+cfqxS8Blu5hjY4Lkthh2z7unV3ipbQ80sfKfJV
+	z31Ss2AUJt/LhxrDUupFSmKFyKXRd31d7DxCTQTv8sjhZ8ggq+1ClEODULimD9japJl1wB0jgpVIi
+	B53MNtS4rfk3ojG5ikNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muDtn-003zH9-EX; Mon, 06 Dec 2021 13:19:19 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1muDud-003zmF-MU; Mon, 06 Dec 2021 13:20:11 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muDtc-003z9y-Ih; Mon, 06 Dec 2021 13:19:11 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10189"; a="234824187"
-X-IronPort-AV: E=Sophos;i="5.87,291,1631602800"; d="scan'208";a="234824187"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Dec 2021 05:19:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,291,1631602800"; d="scan'208";a="479112963"
-Received: from black.fi.intel.com ([10.237.72.28])
- by orsmga002.jf.intel.com with ESMTP; 06 Dec 2021 05:18:54 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 20B7EB8; Mon,  6 Dec 2021 15:19:00 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marc Zyngier <maz@kernel.org>,
+ id 1muDuY-003ziS-E8
+ for linux-rockchip@lists.infradead.org; Mon, 06 Dec 2021 13:20:09 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id r25so42634203edq.7
+ for <linux-rockchip@lists.infradead.org>; Mon, 06 Dec 2021 05:20:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hvZZ98+ZsTYkg5d9GGJxZP1sUx5SwZWVJ8siiSeTEiQ=;
+ b=2MOQRTdPkwhZdrDsZF8v1LkIe9VhVcu+CnHsKM9OdXefuBhdam0kh3pKuY/iXJ4jwh
+ zU6Pi0uyyixDjjwk/OQSxSOoc3iQ4xccBh7VU5XFj2RJmmXBFIQ5+C1z5IVbt1IIXZI9
+ dWJnZb7vMFYt3V5p/nBP65LNmmSKgBcIPbBTYhEdVlTDWAEZK/VS4uN6PLzPx/US5RWz
+ mZbpnIm91JPS41EBzCzQXFGe1mimok+Yzh24z3yokPYDAKM6CqgeVZv0RUMAMUb6bGfj
+ 4BUxGDcldPfeerU2uRtK9S94iyKNhrpwRqnnngf6pKx2tQNdE8FduPUAGoYjZpp5I9Hz
+ mHRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hvZZ98+ZsTYkg5d9GGJxZP1sUx5SwZWVJ8siiSeTEiQ=;
+ b=QjsUbHEqTy3YHQMIkqxS/haXJ6q13vuEAhnxNmAtr6WWMBBnGIJ0yBen1+NQ1+9ffa
+ 2fWvpeQ+kWuEv6mA0m02KpOkBK/Iwo5bdgvxd66Gk9Qv31amQe0F5IGAnCZ5uriqXI6L
+ wLO6Y8/FN7oOVUVxUDy9X7m4ntEU049dOPAeqLZ34TdSQJCE6sKUXgdrEkL7LE6+cfIH
+ W6lBxI/noCCtleT56wNAHeg4yMstifXjYMwiISkRbscrvgPwpuflTLrv0h5p/n2sC6d2
+ lQ8eGjOVTNGjN0hFVTZR56QqatvA26PMCiQWMC3TrbtQwLbuFIwFj93uJM38HyAmBceG
+ +IcQ==
+X-Gm-Message-State: AOAM533fF17SSFxZLLRHb8s0r6ske0WCgphT/6LNX0SPhuZzVUAoDZ9f
+ 6bPxs8uiRI/LxwIu90P4+pi78AblqKwPjoF0Q+in8Q==
+X-Google-Smtp-Source: ABdhPJxT2dlCIImgLcO5pXZfgOHvmQ1PFmCORP62C543H7xjg6esBcWHlJIUNIvBYImdxEeNXjaXGHzx8AiVjQpaFnY=
+X-Received: by 2002:a17:906:7b53:: with SMTP id
+ n19mr45793820ejo.538.1638796804233; 
+ Mon, 06 Dec 2021 05:20:04 -0800 (PST)
+MIME-Version: 1.0
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+ <CACRpkdZbpKqG_uS2N8TW2-HL5CqnuKDpHVCabf66MyQQof0jOw@mail.gmail.com>
+ <Ya4MFMWSyj4YbdNG@smile.fi.intel.com>
+In-Reply-To: <Ya4MFMWSyj4YbdNG@smile.fi.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Mon, 6 Dec 2021 14:19:53 +0100
+Message-ID: <CAMRc=MfHir4B3X=Hhkb1_VBQJFE17=YEexDa-+cs2LnFASPRkA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Marc Zyngier <maz@kernel.org>, 
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
  Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Baruch Siach <baruch@tkos.co.il>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- Alexandru Ardelean <aardelean@deviqon.com>,
- Thierry Reding <treding@nvidia.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
- bcm-kernel-feedback-list@broadcom.com, linux-power@fi.rohmeurope.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Scott Branden <sbranden@broadcom.com>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Gregory Fong <gregory.0xf0@gmail.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, 
+ Baruch Siach <baruch@tkos.co.il>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Jianqun Xu <jay.xu@rock-chips.com>, 
+ Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ patches@opensource.cirrus.com, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
+ linux-power <linux-power@fi.rohmeurope.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ linux-pwm@vger.kernel.org, 
+ Linux-OMAP <linux-omap@vger.kernel.org>, linux-unisoc@lists.infradead.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
  Robert Jarzmik <robert.jarzmik@free.fr>,
  Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
  Jonathan Hunter <jonathanh@nvidia.com>
-Subject: [PATCH v2 2/3] gpio: Setup parent device and get rid of unnecessary
- of_node assignment
-Date: Mon,  6 Dec 2021 15:18:51 +0200
-Message-Id: <20211206131852.74746-2-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211206131852.74746-1-andriy.shevchenko@linux.intel.com>
-References: <20211206131852.74746-1-andriy.shevchenko@linux.intel.com>
-MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_051908_651255_DA7D0707 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20211206_052006_540336_C283B381 
+X-CRM114-Status: GOOD (  30.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,112 +120,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some of the drivers do not set parent device. This may lead to obstacles
-during debugging or understanding the device relations from the Linux
-point of view. Assign parent device for GPIO chips created by these
-drivers.
+On Mon, Dec 6, 2021 at 2:13 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Sun, Dec 05, 2021 at 01:06:07AM +0100, Linus Walleij wrote:
+> > On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> >
+> > > GPIO library does copy the of_node from the parent device of
+> > > the GPIO chip, there is no need to repeat this in the individual
+> > > drivers. Remove these assignment all at once.
+> > >
+> > > For the details one may look into the of_gpio_dev_init() implementation.
+> > >
+> > > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> >
+> > This is definitely a patch in the right direction, as Bart says
+> > it can be a bit dangerous, the outliers are those drivers that
+> > assign the .dev to something completely different than the
+> > the dev where the of_node is copied from.
+>
+> I carefully checked these all and this patch series is only for the cases
+> when I'm sure it's the same device, which is used as parent, and its of_node
+> supplied.
+>
+> > The idea was definitely always to only assign it in the core
+> > *unless* there is a reason to have a completely different
+> > of_node for some reason.
+> >
+> > > +++ b/drivers/gpio/gpio-rda.c
+> > > @@ -240,8 +240,6 @@ static int rda_gpio_probe(struct platform_device *pdev)
+> > >         rda_gpio->chip.label = dev_name(dev);
+> > >         rda_gpio->chip.ngpio = ngpios;
+> > >         rda_gpio->chip.base = -1;
+> > > -       rda_gpio->chip.parent = dev;
+> > > -       rda_gpio->chip.of_node = np;
+> >
+> > Mention in the commit message that in this driver
+> > you also drop the the .parent assignment because the
+> > core will handle it.
+>
+> Okay, I will update it. Also I'll update to the last codebase (dunno if Bart
+> is going to pull the IB from Lee where one of the drivers is gone: da53cc634cea
+> ("gpio: bd70528 Drop BD70528 support").
+>
 
-While at it, let GPIO library to assign of_node from the parent device.
+I didn't plan to, just drop it from your patch.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
-v2: no change
- drivers/gpio/gpio-bcm-kona.c  | 2 +-
- drivers/gpio/gpio-creg-snps.c | 2 +-
- drivers/gpio/gpio-lpc32xx.c   | 2 +-
- drivers/gpio/gpio-pxa.c       | 8 +++-----
- 4 files changed, 6 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpio/gpio-bcm-kona.c b/drivers/gpio/gpio-bcm-kona.c
-index d329a143f5ec..e84474494429 100644
---- a/drivers/gpio/gpio-bcm-kona.c
-+++ b/drivers/gpio/gpio-bcm-kona.c
-@@ -606,7 +606,7 @@ static int bcm_kona_gpio_probe(struct platform_device *pdev)
- 
- 	kona_gpio->pdev = pdev;
- 	platform_set_drvdata(pdev, kona_gpio);
--	chip->of_node = dev->of_node;
-+	chip->parent = dev;
- 	chip->ngpio = kona_gpio->num_bank * GPIO_PER_BANK;
- 
- 	kona_gpio->irq_domain = irq_domain_add_linear(dev->of_node,
-diff --git a/drivers/gpio/gpio-creg-snps.c b/drivers/gpio/gpio-creg-snps.c
-index 1d0827e79703..789384c6e178 100644
---- a/drivers/gpio/gpio-creg-snps.c
-+++ b/drivers/gpio/gpio-creg-snps.c
-@@ -163,12 +163,12 @@ static int creg_gpio_probe(struct platform_device *pdev)
- 
- 	spin_lock_init(&hcg->lock);
- 
-+	hcg->gc.parent = dev;
- 	hcg->gc.label = dev_name(dev);
- 	hcg->gc.base = -1;
- 	hcg->gc.ngpio = ngpios;
- 	hcg->gc.set = creg_gpio_set;
- 	hcg->gc.direction_output = creg_gpio_dir_out;
--	hcg->gc.of_node = dev->of_node;
- 
- 	ret = devm_gpiochip_add_data(dev, &hcg->gc, hcg);
- 	if (ret)
-diff --git a/drivers/gpio/gpio-lpc32xx.c b/drivers/gpio/gpio-lpc32xx.c
-index 4e626c4235c2..d2b65cfb336e 100644
---- a/drivers/gpio/gpio-lpc32xx.c
-+++ b/drivers/gpio/gpio-lpc32xx.c
-@@ -512,10 +512,10 @@ static int lpc32xx_gpio_probe(struct platform_device *pdev)
- 		return PTR_ERR(reg_base);
- 
- 	for (i = 0; i < ARRAY_SIZE(lpc32xx_gpiochip); i++) {
-+		lpc32xx_gpiochip[i].chip.parent = &pdev->dev;
- 		if (pdev->dev.of_node) {
- 			lpc32xx_gpiochip[i].chip.of_xlate = lpc32xx_of_xlate;
- 			lpc32xx_gpiochip[i].chip.of_gpio_n_cells = 3;
--			lpc32xx_gpiochip[i].chip.of_node = pdev->dev.of_node;
- 			lpc32xx_gpiochip[i].reg_base = reg_base;
- 		}
- 		devm_gpiochip_add_data(&pdev->dev, &lpc32xx_gpiochip[i].chip,
-diff --git a/drivers/gpio/gpio-pxa.c b/drivers/gpio/gpio-pxa.c
-index 382468e294e1..c7fbfa3ae43b 100644
---- a/drivers/gpio/gpio-pxa.c
-+++ b/drivers/gpio/gpio-pxa.c
-@@ -343,8 +343,7 @@ static int pxa_gpio_of_xlate(struct gpio_chip *gc,
- }
- #endif
- 
--static int pxa_init_gpio_chip(struct pxa_gpio_chip *pchip, int ngpio,
--			      struct device_node *np, void __iomem *regbase)
-+static int pxa_init_gpio_chip(struct pxa_gpio_chip *pchip, int ngpio, void __iomem *regbase)
- {
- 	int i, gpio, nbanks = DIV_ROUND_UP(ngpio, 32);
- 	struct pxa_gpio_bank *bank;
-@@ -354,6 +353,7 @@ static int pxa_init_gpio_chip(struct pxa_gpio_chip *pchip, int ngpio,
- 	if (!pchip->banks)
- 		return -ENOMEM;
- 
-+	pchip->chip.parent = pchip->dev;
- 	pchip->chip.label = "gpio-pxa";
- 	pchip->chip.direction_input  = pxa_gpio_direction_input;
- 	pchip->chip.direction_output = pxa_gpio_direction_output;
-@@ -365,7 +365,6 @@ static int pxa_init_gpio_chip(struct pxa_gpio_chip *pchip, int ngpio,
- 	pchip->chip.free = gpiochip_generic_free;
- 
- #ifdef CONFIG_OF_GPIO
--	pchip->chip.of_node = np;
- 	pchip->chip.of_xlate = pxa_gpio_of_xlate;
- 	pchip->chip.of_gpio_n_cells = 2;
- #endif
-@@ -675,8 +674,7 @@ static int pxa_gpio_probe(struct platform_device *pdev)
- 	}
- 
- 	/* Initialize GPIO chips */
--	ret = pxa_init_gpio_chip(pchip, pxa_last_gpio + 1, pdev->dev.of_node,
--				 gpio_reg_base);
-+	ret = pxa_init_gpio_chip(pchip, pxa_last_gpio + 1, gpio_reg_base);
- 	if (ret) {
- 		clk_put(clk);
- 		return ret;
--- 
-2.33.0
-
+Bart
 
 _______________________________________________
 Linux-rockchip mailing list
