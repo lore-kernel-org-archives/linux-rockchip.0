@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 975A4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Dec 2021 21:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B4FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Dec 2021 21:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6b+YyZIMpTQVERUANXrtVLlYY7GDrt08SJrAQ/jIdg=; b=tK4ZM6PVVXvMZd
-	K1GLSbq/CcjPlmDsuZPyk53HlAmRB0r1b0hBsiNWpT1b2JrFkmuZcA7tBN3Jv9WU9cz1gPXkvXuYG
-	4G5e2WkCoI9DvGlPchOjSifLwb4EV4Vhs07deS9hzBY6ojSDvtMLSF1yx9CkZEVaUfHZP67S1K8gl
-	fSfI2hjCV/qSHk5hmPToLYj9F8xqtpB8pkGxDibjgo2qT5DRtyd4e2cHtLBO5zJRMmrRAAQm18sua
-	aJw0Wj3B2KJTmp+pTtIAsvceajJ3c8JpJCO62Na64qV4jnPjy9KOMuOwR4wGSRaEChSs+CVUQyfsh
-	S8iwltpw0dtyTqJyYE0g==;
+	List-Owner; bh=vUTErsuOOSxqTa3KjmNk3hrJ634Xwz17deplO70P48o=; b=BvOvGU8RF+BQOK
+	iKd4BXt6aL/sdxrEnHoGjYrTIVIgZPMEai+ku0NuAYzLDp2wmdNFTYdLZzSLTrW1iHoo5BI7sAzrb
+	0f1ovdQCFWtlaKcR5aRmamaQSktdjG8qsWC0sjzWrokF57WL1MILTQa6PRQ1Tz4xuwFDcmLDXhAk+
+	SX8N67RzAWcjPODUaIweTzQVIdwwxl6c9EFy29+CjKgs2O8mEf9VmxDPJeQ9g2Zr8/rkhA7pKfVGC
+	Td9gZI809nT8Rfox+MRYXve6IPubbk98XEJ2q4JWH0NJetAfyLy2I1suV6CF00GTK60qDUABOEPO3
+	Beg+m3LJOwkxD6WTq5IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muLTF-005rFC-MM; Mon, 06 Dec 2021 21:24:25 +0000
+	id 1muLUB-005rf1-88; Mon, 06 Dec 2021 21:25:23 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muLPF-005pWO-RW; Mon, 06 Dec 2021 21:20:19 +0000
+ id 1muLPS-005pct-Ds; Mon, 06 Dec 2021 21:20:31 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 836EBB8110F;
- Mon,  6 Dec 2021 21:20:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0619AC341C1;
- Mon,  6 Dec 2021 21:20:13 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 1E035B8159B;
+ Mon,  6 Dec 2021 21:20:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71740C341C6;
+ Mon,  6 Dec 2021 21:20:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638825615;
- bh=IOp27fWHEyFabm28nK96fSbGm+oP2n3zr0PYA2P6JFs=;
+ s=k20201202; t=1638825628;
+ bh=UqIoGty3x6i+tPouRMfzEwDwRqaI2XcL1JbTVVMihyY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=dXbjry83MiOcXft7Ex9dVSe2B/nAZZqCzr381k/sAfdBWTxLwJGGkjohAeixksvYi
- XuiGWxFm0NH+CAzMsyG4oe4tTdc8/cVZODEC5/l5vMdl6WF+H5dnkF0ASWky59kFZ/
- lgdIh8ldC68ZRYehQ1egwVUzYeohOYRB3gNGHpPa7oj7O+1yS96kl5A5K5wbzIHL6T
- hk9v76Ha3yU0iXpAUtywlfJaI9z2X0yr4H3fxd9pVNTEG9uQGeFEwHLAS5qKtQZTFU
- 4kt3NFRhQL3fw1KtmTTGFDW24CKcRkm7ZueEXfc29vzFZeciPiCwQXN4ahnlMSuMFc
- ZnGLHd8am6wKQ==
+ b=iii0E+JYjiH2xJJ246ZhfAFEjDSb9Htp0PTHZKyRC4fuMoMYgJWBMkEWysEoyeOW4
+ LhSH5qGEGXE9SqttEZ8k44uplhH8V0VdklVeCx3Krr0PxHg+QlwjjkqGA0iFRsVp4t
+ JnjGxaqFClF+haRQtiQlWo43eSiwVlflzX5bjNv4Rc4G9lUnmEq8jDbgUlrfAYaQQW
+ xhyKcbTVTRBfTICBSM3U3QyOM5Gpijhh5JIYFPY7jBRoD4jTEfzeMI+6xWVUyOtB//
+ EleAYX2xGImRzPCB1mwixqOOOCIwpIOzC2QASOMoTgCTw+c/2JJItM4tcnE8ak+uWX
+ LWAqKfryQgM8Q==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -48,18 +48,18 @@ Cc: Ondrej Jirman <megous@megous.com>, John Keeping <john@metanate.com>,
  Wolfram Sang <wsa@kernel.org>, Sasha Levin <sashal@kernel.org>,
  heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 4/6] i2c: rk3x: Handle a spurious start
- completion interrupt flag
-Date: Mon,  6 Dec 2021 16:20:00 -0500
-Message-Id: <20211206212004.1661417-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.9 3/5] i2c: rk3x: Handle a spurious start completion
+ interrupt flag
+Date: Mon,  6 Dec 2021 16:20:19 -0500
+Message-Id: <20211206212021.1661517-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211206212004.1661417-1-sashal@kernel.org>
-References: <20211206212004.1661417-1-sashal@kernel.org>
+In-Reply-To: <20211206212021.1661517-1-sashal@kernel.org>
+References: <20211206212021.1661517-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_132018_096915_B1663A12 
+X-CRM114-CacheID: sfid-20211206_132030_664254_02E9CD32 
 X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,7 +122,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index fe234578380ac..548089aa9aba5 100644
+index df220666d6274..b4f8cd7dc8b74 100644
 --- a/drivers/i2c/busses/i2c-rk3x.c
 +++ b/drivers/i2c/busses/i2c-rk3x.c
 @@ -424,8 +424,8 @@ static void rk3x_i2c_handle_read(struct rk3x_i2c *i2c, unsigned int ipd)
