@@ -4,77 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD7CBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 13:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E936BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 13:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nB+cP1h8xT9X7Wt6CLIjxIifk7+1A8pUvdQfh5pHs70=; b=WyiD/W4lautgMGMQesh0Xvp9kL
-	Bbsnmca8a69Tzlo6kIWc1FQ2fW1yOTdCnANUQ/vqq4cmK/E2J/zE8bme3hFQrNVSeKfvndmtBOhNZ
-	is9gryIfdhhh4XuIGs5v5c9pmC4KJ/Eo/2tFdjtjUV9ap6df1FlyJc+de2y8Ce53p5EV5G6NUaju5
-	YcYo++WwryvTEaYmiDm1oHxWmyLxZX577KgfPrvRMfnuQDcimDNBnXwNb+IV5aQXy4xTyHxDr6+ON
-	reR2IcFn3JabmpoU6MsNOC8H0Ab9qsyb4tYGv/b67aOPXT1CyJW+Yi3672SNBYbBQcLqRntD7ttRu
-	4ZprwfVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Cs462Tsbd51YgaCFB2Ee24KALy5Bcfzcznr8kQz/ShQ=; b=jg/M/J3o+Diijm
+	VgWUXuy8NCcrCtpz+zSiLJbM1gzl1WkoCfrttDkcMqNptLcJtGWhUkQ4SYIMmRh9J3SiikqlclIue
+	VrK5KZaBOwUVVeZJd15/cb9/DGl09rV91oPUPL9x26+hGXwVAHH7InrDTEEii5s43JYPABNu4YsxL
+	aXpoyS3as0ywPOqeKMuLt61QXi500MGQy7C0vZKmEaBR4S3OEeaEtE/N3wbNXSYxsrzh8Pj+eaiXj
+	nkdta99IfHXtZe/ocjmUf2s6N1JF3CU3kwCSaYXDqi48F6BwABq3tUQ/2uicIYXWqLji5DfW0CbWP
+	IchXd8Ju68w2y5ET69RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mua5n-008ayS-W7; Tue, 07 Dec 2021 13:01:12 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1muaSK-008gJ5-17; Tue, 07 Dec 2021 13:24:28 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mua4y-008aiM-5V; Tue, 07 Dec 2021 13:00:21 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 27FA81FDFE;
- Tue,  7 Dec 2021 13:00:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1638882016; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=+C8znulBKfN2iqCnpcXwfq/A/cdrkCZr52J26lpfUyA=;
- b=IZtx9SM9+SakYOsz8jBa0MNR9U65fWq6gRkSLmuQpgRuufpCzLia6gclbZBIuVRO7xKKXJ
- hluXHKYGlGQ/tw8Ts25/ZPXS2ZygLu+3AE9y2hTzw86NTzsDHYb7b0r6fZzviioo/M0Eyq
- 3oqtPjqI30NIbPjjWQwSrH6/QA2J3xY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1638882016;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=+C8znulBKfN2iqCnpcXwfq/A/cdrkCZr52J26lpfUyA=;
- b=I7Oay/eG0I6BpwMaEtiqsJPDP0GaIB4GSFJLafQY0bcwh2UoKPh5v0UdaEVy4vSgiPpRDI
- U3jvTYQPcwxIoDBw==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id DFDAA13A78;
- Tue,  7 Dec 2021 13:00:15 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id dOw6Nd9ar2GaPQAAMHmgww
- (envelope-from <tzimmermann@suse.de>); Tue, 07 Dec 2021 13:00:15 +0000
-Message-ID: <26f988d4-3fac-fcc0-f80a-c9d7516c266b@suse.de>
-Date: Tue, 7 Dec 2021 14:00:15 +0100
+ id 1muaSG-008gH8-Ta; Tue, 07 Dec 2021 13:24:26 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id y12so56635271eda.12;
+ Tue, 07 Dec 2021 05:24:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=x0QgR0QHTHs0xsTjniQ60whJDFQ8sLPt6MN8mnbaT7U=;
+ b=Me+YjS2RJv0SZUoV1n+WLsWH5cIZC47OoexCh69qWXCWzDUq7lrcm/vHQHUuACk27e
+ gvw79uzEPyyusnGIE6St85eI0f2jPvNA4gulZ7J3da5j5sRL9P5Vvdgu+leL8SxvkKP1
+ 7gRw9ADIUYLq7KiZHfSn/48UyuuHxn9WmSN6tVczsg491zb/9kO2YbL3DvGv/Deqiu+z
+ 8vY98M6jmzqq9hG7JmTD6t+79n+P2eKOh8V64uO8fC2JlM6PJrwwTAIScw3kZTu7nPlu
+ wcjiuFx0mIhihRrkvMic+ANwF/FVGeEdt+dzeN7VCvs2egCJ7G1aXK1wQK8Jr1Daiw0/
+ 4Hcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=x0QgR0QHTHs0xsTjniQ60whJDFQ8sLPt6MN8mnbaT7U=;
+ b=mylw0gIUgWLmc+fxTYCT629eBKqDFkAYcctngyJFH/peVOAPqR1be4FgUflv0iBX0j
+ 3BKpcrL592wjoyzoHvJ02x+RuGgOpR0JNC3QZCPhhZbo52WLw+vXjnRSy+2hvpqxNOlv
+ ostf6+8kvh0ppMv7ylzBioJieit3r3mUxGzF5EqJdDe06+0x71XajPERReq6oOHol8GA
+ A1YLc2vXZ3mUKXs320WtgzeeY0yaQ7gQDv5oxN2yynbmM85cP73z9g8NI2wu9uuGLM/o
+ AcwnLqi+1VjX+Gixwu+GaSgd01SwLHHv+ArGBtAjeMSSOTNmoJhRfGLZe5+Kyx/MmZOY
+ fBaA==
+X-Gm-Message-State: AOAM53028LJ0bIXrpy4QM+HIw6lRXiH0gje+z6yiFWnjCBl0oPNPDWnv
+ SnIaCpmu2htev8j1uMY3ikE68FFQqo7lB6e0lCE=
+X-Google-Smtp-Source: ABdhPJx9x+P+XkcGaoF6wBVb2ZWnvwQFDt/Z5Ru6h6q3PbqmtywHiZXXXl41P3nKogMnl54ENZd/aSikZo2XBzF2fBQ=
+X-Received: by 2002:a17:907:75f0:: with SMTP id
+ jz16mr54530396ejc.77.1638883462652; 
+ Tue, 07 Dec 2021 05:24:22 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.2
-Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
-Content-Language: en-US
-To: John Keeping <john@metanate.com>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-References: <20211029115014.264084-1-john@metanate.com>
- <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
- <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
- <20211101113415.3bed0f62.john@metanate.com> <Ya9LdiutXV7lCOtT@donbot>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-In-Reply-To: <Ya9LdiutXV7lCOtT@donbot>
+References: <20211207015446.1250854-1-aford173@gmail.com>
+ <20211207015446.1250854-6-aford173@gmail.com>
+ <Ya9V7Kwa8MICeS34@eze-laptop>
+In-Reply-To: <Ya9V7Kwa8MICeS34@eze-laptop>
+From: Adam Ford <aford173@gmail.com>
+Date: Tue, 7 Dec 2021 07:24:11 -0600
+Message-ID: <CAHCN7xJ9kTdTmhbSwwNCCivRdTULO494CEj0eVkfPfqbPqNPvA@mail.gmail.com>
+Subject: Re: [RFC V2 5/6] media: hantro: split i.MX8MQ G1 and G2 code
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: linux-media <linux-media@vger.kernel.org>, Chris Healy <cphealy@gmail.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>, 
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
+ devicetree <devicetree@vger.kernel.org>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_050020_411833_C593086E 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20211207_052425_004030_13976EFA 
+X-CRM114-Status: GOOD (  41.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,85 +92,302 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8940105678141217307=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============8940105678141217307==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------UbAOQXuN5ozF4VxDiNVJF0Ed"
+On Tue, Dec 7, 2021 at 6:39 AM Ezequiel Garcia
+<ezequiel@vanguardiasur.com.ar> wrote:
+>
+> Hi Adam,
+>
+> Thanks for the good work! This is looking quite promising.
+>
+> On Mon, Dec 06, 2021 at 07:54:44PM -0600, Adam Ford wrote:
+> > The VPU in the i.MX8MQ is really the combination of Hantro G1 and
+> > Hantro G2. With the updated vpu-blk-ctrl, the power domains system
+> > can enable and disable them separately as well as pull them out of
+> > reset. This simplifies the code and lets them run independently.
+> >
+> > Signed-off-by: Adam Ford <aford173@gmail.com>
+> >
+> > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> > index ab2467998d29..d803252a5aba 100644
+> > --- a/drivers/staging/media/hantro/hantro_drv.c
+> > +++ b/drivers/staging/media/hantro/hantro_drv.c
+> > @@ -608,8 +608,8 @@ static const struct of_device_id of_hantro_match[] = {
+> >       { .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+> >  #endif
+> >  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+> > -     { .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
+> > -     { .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+> > +     { .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant, },
+>
+> I think it's important to clarify that you are breaking support
+> for the previous device-tree binding. Not only because of the compatible
+> string change, but because the binding is now quite different.
+>
+> Note that in the past Benjamin tried to avoid this.
+> IIRC, his proposal was backwards compatible.
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------UbAOQXuN5ozF4VxDiNVJF0Ed
-Content-Type: multipart/mixed; boundary="------------GufJmFGkh9XtWaqveMIfvlqc";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: John Keeping <john@metanate.com>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Message-ID: <26f988d4-3fac-fcc0-f80a-c9d7516c266b@suse.de>
-Subject: Re: [PATCH] drm/rockchip: use generic fbdev setup
-References: <20211029115014.264084-1-john@metanate.com>
- <ab7ace79-0148-1efa-ec17-6994bb35fd2f@suse.de> <YX01C6l93I2YPgku@donbot>
- <6e69f9bb-5a1e-7b79-38e8-d2860e5ee615@suse.de>
- <20211101113415.3bed0f62.john@metanate.com> <Ya9LdiutXV7lCOtT@donbot>
-In-Reply-To: <Ya9LdiutXV7lCOtT@donbot>
+I was looking at how to do this, but the stand-alone vpu bindings did
+the reset and the fuses manually, it causes issues.  When the block
+control is enabled those memory locations for the resets and fuses are
+assigned to the blk-ctrl driver, so attempting to access them from a
+different driver was a violation.
 
---------------GufJmFGkh9XtWaqveMIfvlqc
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+When I started looking at this, the stand-alone VPU was trying to be
+both G1 and G2, but when I was testing it before I made changes, I
+didn't see the G2 function at all. When I was done the G2 seemed to
+work, so it seems like this is an improvement.  If you want me to keep
+the previous compatible flag, I could rename the nxp,imx8mq-vpu-g1
+back to nxp,imx8mq-vpu and remove the reset/fuse controls, but I'd
+have to add the blk-ctrl reference, so it seemed to me like a better
+alternative to deprecate the old binding/driver and replace it with
+the new one because of the significant changes.  Since I'd like to
+rebase the i.MX8M Mini I did on this work, it seemed weird to have
+nxp,imx8mq-vpu, nxp,imx8mq-vpu-g2, nxp,imx8mm-vpu-g1, and
+nxp,imx8mm-vpu-g2 where the only one without a Gx name was the
+original 8MQ binding but limited to G1 functionality and the G2
+stripped out.
+>
+> If this is unavoidable, due to how the blk-ctrl is handled, then that's
+> fine. Given it's a staging driver, we can still play these games.
+>
+> Having said that, let's please make this very clear in the commit
+> description, to it's clear for developers forward-porting their kernels.
+> This applies not only to this commit, but to all commits that affect
+> the binding.
 
-SGkNCg0KQW0gMDcuMTIuMjEgdW0gMTI6NTQgc2NocmllYiBKb2huIEtlZXBpbmc6DQo+IA0K
-PiBBcmUgeW91IGFibGUgdG8gcGljayB0aGlzIHVwIChhbmQgWzFdKT8gIE90aGVyd2lzZSB3
-aGF0IGlzIG5lZWRlZCBoZXJlDQo+IGFuZCB3aG8gc2hvdWxkIHBpY2sgdGhpcyB1cD8NCj4g
-DQo+IFsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9kcmktZGV2ZWwvMjAyMTExMDExMTQ2
-MjIuODEzNTM2LTEtam9obkBtZXRhbmF0ZS5jb20vDQo+IA0KDQpJIGFkZGVkIGJvdGggcGF0
-Y2hlcyB0byBkcm0tbWlzYy1uZXh0Lg0KDQpCZXN0IHJlZ2FyZHMNClRob21hcw0KDQoNCi0t
-IA0KVGhvbWFzIFppbW1lcm1hbm4NCkdyYXBoaWNzIERyaXZlciBEZXZlbG9wZXINClNVU0Ug
-U29mdHdhcmUgU29sdXRpb25zIEdlcm1hbnkgR21iSA0KTWF4ZmVsZHN0ci4gNSwgOTA0MDkg
-TsO8cm5iZXJnLCBHZXJtYW55DQooSFJCIDM2ODA5LCBBRyBOw7xybmJlcmcpDQpHZXNjaMOk
-ZnRzZsO8aHJlcjogSXZvIFRvdGV2DQo=
+When I post the formal patch, I will add a note that this explicitly
+deprecates the old bindings due to the fact that the G1 and G2 are
+separate IP blocks in the reference manual, and blk-ctrl is a
+completely separate driver altogether.
 
---------------GufJmFGkh9XtWaqveMIfvlqc--
-
---------------UbAOQXuN5ozF4VxDiNVJF0Ed
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmGvWt8FAwAAAAAACgkQlh/E3EQov+Cw
-Kw/9HsNOGnt0zzCJ/bfdMgu2znBHFFGK6kl9x24z0DjOoWvjlMKWpUfILBnjeJkAf+uqRpI7MOul
-oqbt7rHnWPu64tGdqUcFJ0Ta9oiWJg4ow0mSOOUWjStO2LmC4uIGQdjJYtUdoXcghlnnBCICqkLY
-bxWZOh1UfXEU59rjSu+ZyY3Eo51ANVdLU8mNwWqEiCNdjN6Uxo27052qkfbgRYQnQQIuLpUoJGg9
-ZIB3yS+Jf3uqVYxh8vJs50kW4/4xUWIl8Ye77275AoC8wT5kr7BRcIv6/rqMtr5FmR4yaG8qYm6H
-7XTJrb9EzLeSy5To8MY0Z190228alxkhBdT3Qq8BvjlWEIrrU6nRSDdtBiYMRxy5S/fzmDZ/jXhK
-wQgys58+1PutAgXPx48H3XbO3NugNwvB4GV697ZIgu+AtSZCbh5RQ7X30hC2zNxbZirYpZ4m/S67
-v60uKzWvxKW1YIbsi4Xc5+gJcu6uvJ92BZ+8lpjOlMDx4ajB2u+IsFIvTmv1/p8kbysRaGcjq6dP
-rteItmAddk/DTbSz0tLbGr6U9OCgUOrbGXB78Zh/iF3d5V00D0Ct5XQyPGQpaOu+HgnLNWHrkewg
-0d77NHE9OZWtp4i3KbuTjTYMtaDTPOe5hMfLkspB3j+TayoukB5+K5gTvIydiWub3ZS5mlHdteGE
-ukc=
-=exws
------END PGP SIGNATURE-----
-
---------------UbAOQXuN5ozF4VxDiNVJF0Ed--
-
-
---===============8940105678141217307==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>
+> Thanks!
+> Ezequiel
+>
+> > +     { .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant, },
+> >  #endif
+> >  #ifdef CONFIG_VIDEO_HANTRO_SAMA5D4
+> >       { .compatible = "microchip,sama5d4-vdec", .data = &sama5d4_vdec_variant, },
+> > diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> > index cff817ca8d22..122b83a16663 100644
+> > --- a/drivers/staging/media/hantro/hantro_hw.h
+> > +++ b/drivers/staging/media/hantro/hantro_hw.h
+> > @@ -299,8 +299,8 @@ enum hantro_enc_fmt {
+> >       ROCKCHIP_VPU_ENC_FMT_UYVY422 = 3,
+> >  };
+> >
+> > +extern const struct hantro_variant imx8mq_vpu_g1_variant;
+> >  extern const struct hantro_variant imx8mq_vpu_g2_variant;
+> > -extern const struct hantro_variant imx8mq_vpu_variant;
+> >  extern const struct hantro_variant px30_vpu_variant;
+> >  extern const struct hantro_variant rk3036_vpu_variant;
+> >  extern const struct hantro_variant rk3066_vpu_variant;
+> > diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> > index 1a43f6fceef9..c9f6e8472258 100644
+> > --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> > +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> > @@ -13,67 +13,6 @@
+> >  #include "hantro_g1_regs.h"
+> >  #include "hantro_g2_regs.h"
+> >
+> > -#define CTRL_SOFT_RESET              0x00
+> > -#define RESET_G1             BIT(1)
+> > -#define RESET_G2             BIT(0)
+> > -
+> > -#define CTRL_CLOCK_ENABLE    0x04
+> > -#define CLOCK_G1             BIT(1)
+> > -#define CLOCK_G2             BIT(0)
+> > -
+> > -#define CTRL_G1_DEC_FUSE     0x08
+> > -#define CTRL_G1_PP_FUSE              0x0c
+> > -#define CTRL_G2_DEC_FUSE     0x10
+> > -
+> > -static void imx8m_soft_reset(struct hantro_dev *vpu, u32 reset_bits)
+> > -{
+> > -     u32 val;
+> > -
+> > -     /* Assert */
+> > -     val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+> > -     val &= ~reset_bits;
+> > -     writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+> > -
+> > -     udelay(2);
+> > -
+> > -     /* Release */
+> > -     val = readl(vpu->ctrl_base + CTRL_SOFT_RESET);
+> > -     val |= reset_bits;
+> > -     writel(val, vpu->ctrl_base + CTRL_SOFT_RESET);
+> > -}
+> > -
+> > -static void imx8m_clk_enable(struct hantro_dev *vpu, u32 clock_bits)
+> > -{
+> > -     u32 val;
+> > -
+> > -     val = readl(vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+> > -     val |= clock_bits;
+> > -     writel(val, vpu->ctrl_base + CTRL_CLOCK_ENABLE);
+> > -}
+> > -
+> > -static int imx8mq_runtime_resume(struct hantro_dev *vpu)
+> > -{
+> > -     int ret;
+> > -
+> > -     ret = clk_bulk_prepare_enable(vpu->variant->num_clocks, vpu->clocks);
+> > -     if (ret) {
+> > -             dev_err(vpu->dev, "Failed to enable clocks\n");
+> > -             return ret;
+> > -     }
+> > -
+> > -     imx8m_soft_reset(vpu, RESET_G1 | RESET_G2);
+> > -     imx8m_clk_enable(vpu, CLOCK_G1 | CLOCK_G2);
+> > -
+> > -     /* Set values of the fuse registers */
+> > -     writel(0xffffffff, vpu->ctrl_base + CTRL_G1_DEC_FUSE);
+> > -     writel(0xffffffff, vpu->ctrl_base + CTRL_G1_PP_FUSE);
+> > -     writel(0xffffffff, vpu->ctrl_base + CTRL_G2_DEC_FUSE);
+> > -
+> > -     clk_bulk_disable_unprepare(vpu->variant->num_clocks, vpu->clocks);
+> > -
+> > -     return 0;
+> > -}
+> > -
+> >  /*
+> >   * Supported formats.
+> >   */
+> > @@ -209,27 +148,6 @@ static irqreturn_t imx8m_vpu_g2_irq(int irq, void *dev_id)
+> >       return IRQ_HANDLED;
+> >  }
+> >
+> > -static int imx8mq_vpu_hw_init(struct hantro_dev *vpu)
+> > -{
+> > -     vpu->ctrl_base = vpu->reg_bases[vpu->variant->num_regs - 1];
+> > -
+> > -     return 0;
+> > -}
+> > -
+> > -static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
+> > -{
+> > -     struct hantro_dev *vpu = ctx->dev;
+> > -
+> > -     imx8m_soft_reset(vpu, RESET_G1);
+> > -}
+> > -
+> > -static void imx8m_vpu_g2_reset(struct hantro_ctx *ctx)
+> > -{
+> > -     struct hantro_dev *vpu = ctx->dev;
+> > -
+> > -     imx8m_soft_reset(vpu, RESET_G2);
+> > -}
+> > -
+> >  /*
+> >   * Supported codec ops.
+> >   */
+> > @@ -237,19 +155,16 @@ static void imx8m_vpu_g2_reset(struct hantro_ctx *ctx)
+> >  static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+> >       [HANTRO_MODE_MPEG2_DEC] = {
+> >               .run = hantro_g1_mpeg2_dec_run,
+> > -             .reset = imx8m_vpu_g1_reset,
+> >               .init = hantro_mpeg2_dec_init,
+> >               .exit = hantro_mpeg2_dec_exit,
+> >       },
+> >       [HANTRO_MODE_VP8_DEC] = {
+> >               .run = hantro_g1_vp8_dec_run,
+> > -             .reset = imx8m_vpu_g1_reset,
+> >               .init = hantro_vp8_dec_init,
+> >               .exit = hantro_vp8_dec_exit,
+> >       },
+> >       [HANTRO_MODE_H264_DEC] = {
+> >               .run = hantro_g1_h264_dec_run,
+> > -             .reset = imx8m_vpu_g1_reset,
+> >               .init = hantro_h264_dec_init,
+> >               .exit = hantro_h264_dec_exit,
+> >       },
+> > @@ -258,14 +173,12 @@ static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
+> >  static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
+> >       [HANTRO_MODE_HEVC_DEC] = {
+> >               .run = hantro_g2_hevc_dec_run,
+> > -             .reset = imx8m_vpu_g2_reset,
+> >               .init = hantro_hevc_dec_init,
+> >               .exit = hantro_hevc_dec_exit,
+> >       },
+> >       [HANTRO_MODE_VP9_DEC] = {
+> >               .run = hantro_g2_vp9_dec_run,
+> >               .done = hantro_g2_vp9_dec_done,
+> > -             .reset = imx8m_vpu_g2_reset,
+> >               .init = hantro_vp9_dec_init,
+> >               .exit = hantro_vp9_dec_exit,
+> >       },
+> > @@ -275,7 +188,7 @@ static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
+> >   * VPU variants.
+> >   */
+> >
+> > -static const struct hantro_irq imx8mq_irqs[] = {
+> > +static const struct hantro_irq imx8mq_g1_irqs[] = {
+> >       { "g1", imx8m_vpu_g1_irq },
+> >  };
+> >
+> > @@ -283,10 +196,12 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
+> >       { "g2", imx8m_vpu_g2_irq },
+> >  };
+> >
+> > -static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
+> > -static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
+> > +static const char * const imx8mq_g1_clk_names[] = { "g1" };
+> > +static const char * const imx8mq_g1_reg_names[] = { "g1" };
+> > +static const char * const imx8mq_g2_clk_names[] = { "g2" };
+> > +static const char * const imx8mq_g2_reg_names[] = { "g2" };
+> >
+> > -const struct hantro_variant imx8mq_vpu_variant = {
+> > +const struct hantro_variant imx8mq_vpu_g1_variant = {
+> >       .dec_fmts = imx8m_vpu_dec_fmts,
+> >       .num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
+> >       .postproc_fmts = imx8m_vpu_postproc_fmts,
+> > @@ -295,14 +210,12 @@ const struct hantro_variant imx8mq_vpu_variant = {
+> >       .codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
+> >                HANTRO_H264_DECODER,
+> >       .codec_ops = imx8mq_vpu_codec_ops,
+> > -     .init = imx8mq_vpu_hw_init,
+> > -     .runtime_resume = imx8mq_runtime_resume,
+> > -     .irqs = imx8mq_irqs,
+> > -     .num_irqs = ARRAY_SIZE(imx8mq_irqs),
+> > -     .clk_names = imx8mq_clk_names,
+> > -     .num_clocks = ARRAY_SIZE(imx8mq_clk_names),
+> > -     .reg_names = imx8mq_reg_names,
+> > -     .num_regs = ARRAY_SIZE(imx8mq_reg_names)
+> > +     .irqs = imx8mq_g1_irqs,
+> > +     .num_irqs = ARRAY_SIZE(imx8mq_g1_irqs),
+> > +     .clk_names = imx8mq_g1_clk_names,
+> > +     .num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
+> > +     .reg_names = imx8mq_g1_reg_names,
+> > +     .num_regs = ARRAY_SIZE(imx8mq_g1_reg_names),
+> >  };
+> >
+> >  const struct hantro_variant imx8mq_vpu_g2_variant = {
+> > @@ -314,10 +227,10 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
+> >       .postproc_ops = &hantro_g2_postproc_ops,
+> >       .codec = HANTRO_HEVC_DECODER | HANTRO_VP9_DECODER,
+> >       .codec_ops = imx8mq_vpu_g2_codec_ops,
+> > -     .init = imx8mq_vpu_hw_init,
+> > -     .runtime_resume = imx8mq_runtime_resume,
+> >       .irqs = imx8mq_g2_irqs,
+> >       .num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
+> > -     .clk_names = imx8mq_clk_names,
+> > -     .num_clocks = ARRAY_SIZE(imx8mq_clk_names),
+> > +     .clk_names = imx8mq_g2_clk_names,
+> > +     .num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
+> > +     .reg_names = imx8mq_g2_reg_names,
+> > +     .num_regs = ARRAY_SIZE(imx8mq_g2_reg_names),
+> >  };
+> > --
+> > 2.32.0
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8940105678141217307==--
-
