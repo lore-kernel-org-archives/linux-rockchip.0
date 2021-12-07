@@ -4,86 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C76FFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 01:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E2ADC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 03:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/yrFWxUM8rsmhqvCLGMFrtqur62VUh1RwG00OC/3GtQ=; b=QbhEGsI/YCz0+X
-	iE6ySJjb7WtMmqJFUM0BBgilNvsGnbQ/802iAY7ywx/y3GzdJwPoIyfj88y2PhyEf6/eG1ZjZNRpq
-	FQQigbvM8E+NM2lLj6KJAnQd3IFeT2tzFGRHRfToQ5p+4BzKzQLenzOQeQKbY1bcAUyPHaOU4nZho
-	yyKKNsISEsxahU27P5Mxhap7WkBU1Wr8I6lUVGC8pivXMilRb3VBQ4u8wMhTNx/rK5EXfVZVJ/FsK
-	ptsfrDaVM+h95pnMILD01FKx8vuphf7mxfHTtEcts/5cC/CKI7662G101cWTqY+LUOStK42VEI5Fz
-	p3gbFoXfNWbvD5lN4iIw==;
+	List-Owner; bh=H9SRcR/6kh0MdcgsoEH/YFWQXFkou/cLcU0Oy9r286k=; b=0NcGV7UcRr6rHT
+	83qgsIHzpGmBc6oCncd3GzNUwC3NJrK0HgeOhJmk2TfUpZwOR0Vj9m0eqZlPTc5socqq7TmO3NzuH
+	ipgKH637wjs676e8JWBQu7YVcBSE28KA/Rl7nkNGPW5InrYQap4yiUe9JRU/DbrMxC9nFrZfdZ1ed
+	yJ9Z0Apy+gxCPs2bfBTci1COji1fQNSk1codgi8K31onkI0d4W/JNRd25to4Ul4N5ezqv+UFdDpLI
+	EZxt7sSlp1FKfBOLT/ktrjdo1ynoI9wR9BJYMK/PtTSfw+CqSO62dYSXZ/Kiw5ymkAJfLP6aVnFsG
+	lFG4XgBtLvfvKd40579w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muPk6-006g70-RR; Tue, 07 Dec 2021 01:58:06 +0000
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
+	id 1muQy9-006qeo-4u; Tue, 07 Dec 2021 03:16:41 +0000
+Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muPhJ-006eNO-VZ; Tue, 07 Dec 2021 01:55:15 +0000
-Received: by mail-il1-x12b.google.com with SMTP id j7so12141365ilk.13;
- Mon, 06 Dec 2021 17:55:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=N2Fm6dWc0a7+XOgJFn0Wt/EroGCK7h79J9FUWbkFAFU=;
- b=G2HYHzbdjxUJbtEeR3Os3Or3mcq2aUaj1uFlbZcGiz6F7622cW1x3Q1wVyTgnNYc7X
- ivDpHgSXwdzxWpNd3p3nlBbZ2cgyVdQoil1dvKLSPVzmaypwuZe+SRmH0PvId5F1hbcx
- 9VfrBh/W+0+vh9vBl4yAC3mBReomcOpvllCxZF9sl1pt1ptJbSU5tLbXQcvdDygQLT1o
- MHbrVDn4qG0RdBT6NNf0yIdwdfpGSBlRLT5rUoK4jauoKxfSPGnqTPqQ9YeKo2AQlZRy
- b8vik5ATTgBMLn8rnxcnDF/qLQSyBpaGoPV08e7FddLiQjjF28havCOhS97YxidFWu/2
- dIJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=N2Fm6dWc0a7+XOgJFn0Wt/EroGCK7h79J9FUWbkFAFU=;
- b=PjXGwwy6f4PIyhLAxdBgPTfU+WctXVikh4MkCfXXR3Jk2Mdyh8mVZjhlCPbwCJzCy9
- JgmBPDkNmDPaKbu0v89KYxxipuz66ymoaGi1aSX5NCcwItr8wAQWYH3t5AOod3b1asWj
- Q+h5U3ZFMPu3sxJHe9xZWTgxJ6Qb5ORBRs2lsTIrHhJKKXU6gOoJutxSK2Pp5i6chxa1
- 5ahDvtniWaXwehbatt5mzL+WIVT+Fklli/3d5IQuJsYSVAcY/7SF220x7q6yMbPdHtzc
- ZmxwJNgeea52Ca+iSma8I8C71iyWG1DqVrfVXVZ/4OpCr8aZvq8PmZxGBiekqSERMjV0
- VsVA==
-X-Gm-Message-State: AOAM530sLXucV1nOJPBluUcXWAh1ntopWnVz07BBCGa8QG2BTrLugvmh
- 2XC3G5S5dggTg5fOJ20Bdec=
-X-Google-Smtp-Source: ABdhPJwFLGfSdq9wLBvEJKWPqQo0SPqabYFCnQeXCrib2XsGTtaB0FmNDVOawUKEl716ZhKkS/S3Kg==
-X-Received: by 2002:a05:6e02:c94:: with SMTP id
- b20mr35622714ile.257.1638842112590; 
- Mon, 06 Dec 2021 17:55:12 -0800 (PST)
-Received: from aford-IdeaCentre-A730.lan
- ([2601:448:8400:9e8:6db8:c9e4:6f6d:f38e])
- by smtp.gmail.com with ESMTPSA id j21sm8623639ila.6.2021.12.06.17.55.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Dec 2021 17:55:11 -0800 (PST)
-From: Adam Ford <aford173@gmail.com>
-To: linux-media@vger.kernel.org
-Cc: cphealy@gmail.com, benjamin.gaignard@collabora.com, hverkuil@xs4all.nl,
- Adam Ford <aford173@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [RFC V2 6/6] arm64: dts: imx8mq: Split i.MX8MQ G1 and G2 with
- vpu-blk-ctrl
-Date: Mon,  6 Dec 2021 19:54:45 -0600
-Message-Id: <20211207015446.1250854-7-aford173@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211207015446.1250854-1-aford173@gmail.com>
-References: <20211207015446.1250854-1-aford173@gmail.com>
+ id 1muQy5-006qds-6D
+ for linux-rockchip@lists.infradead.org; Tue, 07 Dec 2021 03:16:39 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.west.internal (Postfix) with ESMTP id 76D0D2B000FE;
+ Mon,  6 Dec 2021 22:16:28 -0500 (EST)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Mon, 06 Dec 2021 22:16:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=who-t.net; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:content-transfer-encoding:in-reply-to; s=fm1; bh=K
+ DwpeRiMBZ51a/1N537G6MpuhOZKtEbUes449q2dxHA=; b=aMSVqlTgdlw0z4qzM
+ jhsxSmzCok04+3Ub8TZuJRQFEilsZUiVfV5tRwxqtKK7Kvkuwkx2LXPvycBx2d7l
+ 9N8VmLkcPANwMi6mSuo3tSQjEQg1ZchvrtMJ73faDvC9mPDDJyOUd2CDzU56jcSx
+ N/ibXUgMxl83B9tf4KZVGfabXL8MfAyJvhbwNHQiHiZosl+r97LFopr2VXOZUNxT
+ ztaabFr8IqjrxRO6RtWoJygsRezHqXXOqBYorI2X4D7WhezS3a0J05KT7f6jV6m+
+ 8UzIrlu+cHtjBO74JbIDSIMy+bOd9+UIUHqs0qkt4LtHcqjVZqnj90EDjt1qJRHA
+ jVkxQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; bh=KDwpeRiMBZ51a/1N537G6MpuhOZKtEbUes449q2dx
+ HA=; b=Wjgizc0i5kuQ49PQnaS0dZyj7XWwusgQ8K38W5zQ2uHc/bhPBd6l/TUnc
+ ndCtVqqYhudhtuWA05eAOXHfYP4toV/TYqp0PX6xlEPkdVxu3VbtZ1qc+1IgnNRD
+ zeVruVhdGtzVslfW6YAbCSBjw/SHBNDPnqhthtz9Q/9sOOiAGpGJ6FN61gIkc2Na
+ oUIY6B5cKUbhe5mkhXJ3WUocdM7633zG3HKOoEYC8xlrbH9c0fsHpZx0InB2HlJe
+ MNdHzbn6hf4uG3UcXpAlNOKyBzPgrE4pfZOQ80pId3YHL7kCgq7ncXKRn7uOuFfD
+ nAP0e7A2TZGlPX9l0Izunr3+3oTfQ==
+X-ME-Sender: <xms:C9KuYY3yF_ZwjRG9Xv3bxTZesMsUR4MqCTjytAZW6Rcfb4CQPONoeQ>
+ <xme:C9KuYTEQD3RbrHY7ir45q9C8NR74L6Gs76FIPpwQ0wLTKIDmsbwGbnug34Zth8F7v
+ GgHWTYT-z0fR21EaEg>
+X-ME-Received: <xmr:C9KuYQ5DglWL4yyQjaK65vj9wf3eDjNIxzXVHTUYw_bKjI4RipH5k9RNFzifW7edKAYflvvII8QqSNUmlrEMjT5YVkDI5EPuogTL>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrjeeggdehiecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvghtvghr
+ ucfjuhhtthgvrhgvrhcuoehpvghtvghrrdhhuhhtthgvrhgvrhesfihhohdqthdrnhgvth
+ eqnecuggftrfgrthhtvghrnhepveeuveeifeetgedvvdehgeefieehveekffevteeiudei
+ hfevvdejieeuleefleefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhush
+ htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrrdhhuhht
+ thgvrhgvrhesfihhohdqthdrnhgvth
+X-ME-Proxy: <xmx:C9KuYR2NgKorlsKgWHKhNABkmON_FpvJAX2Yp0yhLyHCUpx24z9b-Q>
+ <xmx:C9KuYbHng5AsCOalPPnoCNqeqRC92Np16M2wRpd2DaOUCdEQDHXX0A>
+ <xmx:C9KuYa9IZaBsRgGQ3CjK6qn6kafZOkXZ4K1WSbVQ8_-ZFf3D4nqe9g>
+ <xmx:C9KuYYdQupVdu8lccYCGrOfdRRLo-5bYAkb2_01tz5y2qrYgiGRJXqmF9nQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 6 Dec 2021 22:16:22 -0500 (EST)
+Date: Tue, 7 Dec 2021 13:16:16 +1000
+From: Peter Hutterer <peter.hutterer@who-t.net>
+To: Brian Norris <briannorris@chromium.org>
+Cc: Pekka Paalanen <ppaalanen@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org,
+ "Kristian H . Kristensen" <hoegsberg@google.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ linux-input@vger.kernel.org, Simon Ser <contact@emersion.fr>
+Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
+Message-ID: <Ya7SAHD39m/CLJqw@quokka>
+References: <20211117224841.3442482-1-briannorris@chromium.org>
+ <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
+ <20211118123928.545dec8a@eldfell> <YZcB4ooqpvP3gHdx@google.com>
+ <20211119123841.1d628cb6@eldfell> <YaaLITQF+lngE+VZ@google.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YaaLITQF+lngE+VZ@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_175514_063086_48A82337 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20211206_191637_322652_5310C0C7 
+X-CRM114-Status: GOOD (  70.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,111 +108,228 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the Hantro G1 and G2 now setup to run independently, update
-the device tree to enable it again.  This requires the vpu-blk-ctrl
-node to be configured, and the clock-parents and clock-rates for
-the various VPU's to be moved into the pgc_vpu because they cannot
-get re-parented once enabled, and the pgc_vpu is the highest
-in the chain.
+On Tue, Nov 30, 2021 at 12:35:45PM -0800, Brian Norris wrote:
+> Hi Pekka,
+> =
 
-Signed-off-by: Adam Ford <aford173@gmail.com>
+> On Fri, Nov 19, 2021 at 12:38:41PM +0200, Pekka Paalanen wrote:
+> > On Thu, 18 Nov 2021 17:46:10 -0800
+> > Brian Norris <briannorris@chromium.org> wrote:
+> > > On Thu, Nov 18, 2021 at 12:39:28PM +0200, Pekka Paalanen wrote:
+> > > > On Wed, 17 Nov 2021 14:48:40 -0800
+> > > > Brian Norris <briannorris@chromium.org> wrote:
+> > > > If KMS gets a pageflip or modeset in no time after an input event, =
+then
+> > > > what's the gain. OTOH, if the display server is locking on to vblan=
+k,
+> > > > there might be a delay worth avoiding. But then, is it worth
+> > > > short-circuiting the wake-up in kernel vs. adding a new ioctl that
+> > > > userspace could hit to start the warming up process?  =
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-index 972766b67a15..3ed2644bd500 100644
---- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
-@@ -711,7 +711,21 @@ pgc_gpu: power-domain@5 {
- 					pgc_vpu: power-domain@6 {
- 						#power-domain-cells = <0>;
- 						reg = <IMX8M_POWER_DOMAIN_VPU>;
--						clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-+						clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>,
-+							 <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-+							 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-+						assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
-+								  <&clk IMX8MQ_CLK_VPU_G2>,
-+								  <&clk IMX8MQ_CLK_VPU_BUS>,
-+								  <&clk IMX8MQ_VPU_PLL_BYPASS>;
-+						assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
-+									 <&clk IMX8MQ_VPU_PLL_OUT>,
-+									 <&clk IMX8MQ_SYS1_PLL_800M>,
-+									 <&clk IMX8MQ_VPU_PLL>;
-+						assigned-clock-rates = <600000000>,
-+								       <600000000>,
-+								       <800000000>,
-+								       <0>;
- 					};
- 
- 					pgc_disp: power-domain@7 {
-@@ -1432,30 +1446,37 @@ usb3_phy1: usb-phy@382f0040 {
- 			status = "disabled";
- 		};
- 
--		vpu: video-codec@38300000 {
--			compatible = "nxp,imx8mq-vpu";
--			reg = <0x38300000 0x10000>,
--			      <0x38310000 0x10000>,
--			      <0x38320000 0x10000>;
--			reg-names = "g1", "g2", "ctrl";
--			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
--			interrupt-names = "g1", "g2";
-+		vpu_g1: video-codec@38300000 {
-+			compatible = "nxp,imx8mq-vpu-g1";
-+			reg = <0x38300000 0x10000>;
-+			reg-names = "g1";
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g1";
-+			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>;
-+			clock-names = "g1";
-+			power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G1>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			reg-names = "g2";
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-names = "g2";
-+			clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-+			clock-names = "g2";
-+			power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G2>;
-+		};
-+
-+		vpu_blk_ctrl: blk-ctrl@38320000 {
-+			compatible = "fsl,imx8mq-vpu-blk-ctrl";
-+			reg = <0x38320000 0x100>;
-+			power-domains = <&pgc_vpu>, <&pgc_vpu>, <&pgc_vpu>;
-+			power-domain-names = "bus", "g1", "g2";
- 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
--				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
--			clock-names = "g1", "g2", "bus";
--			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
--					  <&clk IMX8MQ_CLK_VPU_G2>,
--					  <&clk IMX8MQ_CLK_VPU_BUS>,
--					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
--			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
--						 <&clk IMX8MQ_VPU_PLL_OUT>,
--						 <&clk IMX8MQ_SYS1_PLL_800M>,
--						 <&clk IMX8MQ_VPU_PLL>;
--			assigned-clock-rates = <600000000>, <600000000>,
--					       <800000000>, <0>;
--			power-domains = <&pgc_vpu>;
-+				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-+			clock-names = "g1", "g2";
-+			#power-domain-cells = <1>;
- 		};
- 
- 		pcie0: pcie@33800000 {
--- 
-2.32.0
+> > > =
 
+> > > Rob responded to the first part to some extent (there is definitely g=
+ain
+> > > to be had).
+> > > =
+
+> > > To the last part: I wrote a simple debugfs hook to allow user space to
+> > > force a PSR exit, and then a simple user space program to read input
+> > > events and smash that debugfs file whenever it sees one. Testing in t=
+he
+> > > same scenarios, this appears to lose less than 100 microseconds versus
+> > > the in-kernel approach, which is negligible for this use case. (I'm n=
+ot
+> > > sure about the other use cases.)
+> > > =
+
+> > > So, this is technically doable in user space.
+> > =
+
+> > This is crucial information I would like you to include in some commit
+> > message. I think it is very interesting for the reviewers. Maybe also
+> > copy that in the cover letter.
+> > =
+
+> > In my opinion there is a clear and obvious decision due that
+> > measurement: Add the new ioctl for userspace to hit, do not try to
+> > hardcode or upload the wake-up policy into the kernel.
+> =
+
+> Perhaps.
+> =
+
+> I'll admit, I'm not eager to go write the fd-passing solutions that
+> others are designing on the fly. I'm currently torn on whether I'll just
+> live with this current patch set out-of-tree (or, y'all can decide that
+> a simple, 99% working solution is better than no solution), because it's
+> simple; or possibly figuring out how to utilize such an ioctl cleanly
+> within our display manager. I'm not super hopeful on the latter.
+> =
+
+> IOW, I'm approximately in line with Doug's thoughts:
+> https://lore.kernel.org/all/CAD=3DFV=3DXARhZoj+0p-doxcbC=3D4K+NuMc=3DuR6w=
+qG6kWk-MkPkNdQ@mail.gmail.com/
+> But then, we're obviously biased.
+> =
+
+> > > I can't speak to the ease of _actually_ integrating this into even our
+> > > own Chrome display manager, but I highly doubt it will get integrated
+> > > into others. I'd posit this should weigh into the relative worth, but
+> > > otherwise can't really give you an answer there.
+> > =
+
+> > I think such a thing would be very simple to add to any display server.
+> > They already have hooks for things like resetting idle timeout timers on
+> > any relevant input event.
+> > =
+
+> > > I'd also note, software-directed PSR is so far designed to be complet=
+ely
+> > > opaque to user space. There's no way to disable it; no way to know it=
+'s
+> > > active; and no way to know anything about the parameters it's computi=
+ng
+> > > (like average entry/exit delay). Would you suggest a whole set of new
+> > > IOCTLs for this?
+> > =
+
+> > Just one ioctl on the DRM device: "Hey, wake up!". Because that's what
+> > your patch does in-kernel, right?
+> =
+
+> Well, we'd at least want something to advertise that the feature does
+> something ("is supported") I think, otherwise we're just asking user
+> space to do useless work.
+> =
+
+> > If there are use case specific parameters, then how did you intend to
+> > allow adjusting those in your proposal?
+> =
+
+> Another commenter mentioned the latency tradeoff -- it's possible that
+> there are panels/eDP-links that resume fast enough that one doesn't care
+> to use this ioctl. For an in-kernel solution, one has all the data
+> available and could use hardware information to make decisions, if
+> needed. For a user space solution, we won't have any of that, and we'd
+> have to work to expose that information.
+> =
+
+> I suppose we could ignore that problem and only expose a minimal UAPI
+> until we need something more, but it feels like exposing a UAPI for
+> something is a critical point where one should make sure it's reasonably
+> descriptive and useful.
+> =
+
+> > > > How do you know userspace is using this input device at all? If
+> > > > userspace is not using the input device, then DRM should not be ope=
+ning
+> > > > it either, as it must have no effect on anything.
+> > > > =
+
+> > > > If you open an input device that userspace does not use, you also c=
+ause
+> > > > a power consumption regression, because now the input device itself=
+ is
+> > > > active and possibly flooding the kernel with events (e.g. an
+> > > > accelerometer).  =
+
+> > > =
+
+> > > Well, I don't think accelerometers show up as input devices, but I
+> > > suppose your point could apply to actual input devices.
+
+fwiw, filtering INPUT_PROP_ACCELEROMETER would go a long way towards ignori=
+ng
+accelerometers.
+
+> > My understanding is that accelerometers are evdev (input) devices,
+> > especially when used as input e.g. for controlling games. I'm not aware
+> > of any other interface for it.
+
+> I'm not familiar with game-controlling accelerometers, but many types of
+> accelerometers are serviced by drivers/iio/.
+
+you can also unbind devices and use hidraw directly.
+
+> And even if they register as input devices, do they match the ID list in
+> this patch?
+
+device type assignment is problematic, but i think in this case it doesn't
+matter if the associations are a bit rough. You don't care about the type of
+device, you merely care about "is this likely to be used". And I think for
+that the list is good enough.
+
+though tbh, having this policy in userspace would still be better IMO.
+
+Cheers,
+  Peter
+
+> > Even audio sockets are input devices for detecting whether a plug has
+> > been plugged in, but those probably wouldn't flood anything.
+> =
+
+> They also won't match the input_handler ID list, because they won't
+> support the key or position combinations in the heuristic.
+> =
+
+> > > > Yet another problem here is that this completely ignores the concep=
+t of
+> > > > physical seats. Of course it does so, because seats are a pure
+> > > > userspace concept.
+> > > > =
+
+> > > > The kernel VT console already has problems because the kernel has no
+> > > > concept of seats, which means that if there is a second seat define=
+d and
+> > > > a desktop running on it, while the first seat is in the normal VT t=
+ext
+> > > > mode, then everything typed in the desktop will be delivered to the=
+ VT
+> > > > shell as well! (This has a possible workaround in userspace [1], by=
+ opening
+> > > > the evdev input devices in some kind of exclusive mode - which is n=
+ot
+> > > > common practise AFAIK.)  =
+
+> > > =
+
+> > > Sure.
+> > > =
+
+> > > I'd bet the intersection of systems that use SW-directed PSR and
+> > > "multi-seat" is negligibly close to zero, but I can't guarantee that.
+> > > Chalk one up for a user space policy.
+> > =
+
+> > Your cover letter has also the other bullet point: ramping up GPUs.
+> > That applies to a lot more systems than PSR, right?
+> > =
+
+> > Maybe that is an acceptable trade-off: be 100 =B5s faster (your
+> > measurement) by ramping up all GPUs in a system instead of only the
+> > relevant ones?
+> > =
+
+> > Or maybe that will hurt normal gaming computers by ramping up the iGPU
+> > when the OS and game only uses the dGPU, which makes iGPU eat away the
+> > CPU power budget, causing the CPU to slow down? I suppose that would be
+> > handled by ramping up only GPUs that userspace has opened.
+> =
+
+> FWIW, the current work we have out-of-tree involves only select GPU
+> drivers that know they are slow to ramp up. If this were generalized,
+> then yes, it could potentially have undesireable side effects. I'm
+> certainly not an expert on Rob's work though, so I can't speak to this
+> very much, but I imagine we could resolve the {d,i}GPU problem easily.
+> =
+
+> Brian
 
 _______________________________________________
 Linux-rockchip mailing list
