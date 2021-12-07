@@ -4,98 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E2ADC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 03:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A08C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 05:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H9SRcR/6kh0MdcgsoEH/YFWQXFkou/cLcU0Oy9r286k=; b=0NcGV7UcRr6rHT
-	83qgsIHzpGmBc6oCncd3GzNUwC3NJrK0HgeOhJmk2TfUpZwOR0Vj9m0eqZlPTc5socqq7TmO3NzuH
-	ipgKH637wjs676e8JWBQu7YVcBSE28KA/Rl7nkNGPW5InrYQap4yiUe9JRU/DbrMxC9nFrZfdZ1ed
-	yJ9Z0Apy+gxCPs2bfBTci1COji1fQNSk1codgi8K31onkI0d4W/JNRd25to4Ul4N5ezqv+UFdDpLI
-	EZxt7sSlp1FKfBOLT/ktrjdo1ynoI9wR9BJYMK/PtTSfw+CqSO62dYSXZ/Kiw5ymkAJfLP6aVnFsG
-	lFG4XgBtLvfvKd40579w==;
+	List-Owner; bh=MhGrgWGZu6Ztjr6qs/sCWVSM9kyS1d4Zns23ugc1ghY=; b=cKt/WPlWaJydb+
+	AWJEUFNuRLTdVhbg1zRsZCFSEQchV3A4Y2QVaEweVH1NP+3i6bJzGj/AS/Nj/U+6hJn9FWQSmqXOn
+	Sv3ASugSCvGXmV9reGWHBmQ63iSU7M3PQnceN76QeYjnnqz2NZW6IgzLpAevRsueMQpx1KZHeTY+j
+	SAzKkkdlu0eaDt3R+t4RMswpT8/jl0+//aW3hZZxkv2T++ENJj+5kno2Q9RPartTCvxeRpNVnfbUX
+	YBo2eQ1QeN14d4rxRa/zYXglOxjMrqj86o/x+NQK3i5RRNSYnHCDWGb9hzqZV7wLitO7J0uq0ahG6
+	Ch3rf1RwsPcOe80Q6kHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muQy9-006qeo-4u; Tue, 07 Dec 2021 03:16:41 +0000
-Received: from wnew3-smtp.messagingengine.com ([64.147.123.17])
+	id 1muT6C-006zl7-43; Tue, 07 Dec 2021 05:33:08 +0000
+Received: from mail-eopbgr50059.outbound.protection.outlook.com ([40.107.5.59]
+ helo=EUR03-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muQy5-006qds-6D
- for linux-rockchip@lists.infradead.org; Tue, 07 Dec 2021 03:16:39 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id 76D0D2B000FE;
- Mon,  6 Dec 2021 22:16:28 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Mon, 06 Dec 2021 22:16:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=who-t.net; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:content-transfer-encoding:in-reply-to; s=fm1; bh=K
- DwpeRiMBZ51a/1N537G6MpuhOZKtEbUes449q2dxHA=; b=aMSVqlTgdlw0z4qzM
- jhsxSmzCok04+3Ub8TZuJRQFEilsZUiVfV5tRwxqtKK7Kvkuwkx2LXPvycBx2d7l
- 9N8VmLkcPANwMi6mSuo3tSQjEQg1ZchvrtMJ73faDvC9mPDDJyOUd2CDzU56jcSx
- N/ibXUgMxl83B9tf4KZVGfabXL8MfAyJvhbwNHQiHiZosl+r97LFopr2VXOZUNxT
- ztaabFr8IqjrxRO6RtWoJygsRezHqXXOqBYorI2X4D7WhezS3a0J05KT7f6jV6m+
- 8UzIrlu+cHtjBO74JbIDSIMy+bOd9+UIUHqs0qkt4LtHcqjVZqnj90EDjt1qJRHA
- jVkxQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:content-type
- :date:from:in-reply-to:message-id:mime-version:references
- :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; bh=KDwpeRiMBZ51a/1N537G6MpuhOZKtEbUes449q2dx
- HA=; b=Wjgizc0i5kuQ49PQnaS0dZyj7XWwusgQ8K38W5zQ2uHc/bhPBd6l/TUnc
- ndCtVqqYhudhtuWA05eAOXHfYP4toV/TYqp0PX6xlEPkdVxu3VbtZ1qc+1IgnNRD
- zeVruVhdGtzVslfW6YAbCSBjw/SHBNDPnqhthtz9Q/9sOOiAGpGJ6FN61gIkc2Na
- oUIY6B5cKUbhe5mkhXJ3WUocdM7633zG3HKOoEYC8xlrbH9c0fsHpZx0InB2HlJe
- MNdHzbn6hf4uG3UcXpAlNOKyBzPgrE4pfZOQ80pId3YHL7kCgq7ncXKRn7uOuFfD
- nAP0e7A2TZGlPX9l0Izunr3+3oTfQ==
-X-ME-Sender: <xms:C9KuYY3yF_ZwjRG9Xv3bxTZesMsUR4MqCTjytAZW6Rcfb4CQPONoeQ>
- <xme:C9KuYTEQD3RbrHY7ir45q9C8NR74L6Gs76FIPpwQ0wLTKIDmsbwGbnug34Zth8F7v
- GgHWTYT-z0fR21EaEg>
-X-ME-Received: <xmr:C9KuYQ5DglWL4yyQjaK65vj9wf3eDjNIxzXVHTUYw_bKjI4RipH5k9RNFzifW7edKAYflvvII8QqSNUmlrEMjT5YVkDI5EPuogTL>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrjeeggdehiecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggugfgjsehtkeertddttddunecuhfhrohhmpefrvghtvghr
- ucfjuhhtthgvrhgvrhcuoehpvghtvghrrdhhuhhtthgvrhgvrhesfihhohdqthdrnhgvth
- eqnecuggftrfgrthhtvghrnhepveeuveeifeetgedvvdehgeefieehveekffevteeiudei
- hfevvdejieeuleefleefnecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhush
- htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvghrrdhhuhht
- thgvrhgvrhesfihhohdqthdrnhgvth
-X-ME-Proxy: <xmx:C9KuYR2NgKorlsKgWHKhNABkmON_FpvJAX2Yp0yhLyHCUpx24z9b-Q>
- <xmx:C9KuYbHng5AsCOalPPnoCNqeqRC92Np16M2wRpd2DaOUCdEQDHXX0A>
- <xmx:C9KuYa9IZaBsRgGQ3CjK6qn6kafZOkXZ4K1WSbVQ8_-ZFf3D4nqe9g>
- <xmx:C9KuYYdQupVdu8lccYCGrOfdRRLo-5bYAkb2_01tz5y2qrYgiGRJXqmF9nQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 6 Dec 2021 22:16:22 -0500 (EST)
-Date: Tue, 7 Dec 2021 13:16:16 +1000
-From: Peter Hutterer <peter.hutterer@who-t.net>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Pekka Paalanen <ppaalanen@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Clark <robdclark@chromium.org>, David Airlie <airlied@linux.ie>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Doug Anderson <dianders@chromium.org>, linux-rockchip@lists.infradead.org,
- "Kristian H . Kristensen" <hoegsberg@google.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- linux-input@vger.kernel.org, Simon Ser <contact@emersion.fr>
-Subject: Re: [PATCH v2 1/2] drm/input_helper: Add new input-handling helper
-Message-ID: <Ya7SAHD39m/CLJqw@quokka>
-References: <20211117224841.3442482-1-briannorris@chromium.org>
- <20211117144807.v2.1.I09b516eff75ead160a6582dd557e7e7e900c9e8e@changeid>
- <20211118123928.545dec8a@eldfell> <YZcB4ooqpvP3gHdx@google.com>
- <20211119123841.1d628cb6@eldfell> <YaaLITQF+lngE+VZ@google.com>
+ id 1muT5x-006zhM-1f; Tue, 07 Dec 2021 05:32:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JCXGbcx5YXeCjVaf5EcecOE0pV+u+yghbJuclSlt7u9biLGuMnV4pP3/Yk27KsJtvXyautcHhD1KxRIyZNQklXTdxR3q+5/8gA64tqzE4xehm8rXDZ91VlSyVIeFmhiaBIxI5/PKANas3OTon7GXnZIHg9wyIO8sc3Qwg9S9W/YMva/CxIgifp2bbRwi7fb7DqqWh/IdfMWkfp6pDlGOxca1evAZO49psZko4Bj6NvkIPzNNY9QFvzOnARs6pFSu9Qcya87rHrWEnF7xa6YD1wFrs8wigH97arlt0bHQLcq5GHm6yhQF6XwY5u8vhmosEw+RiZwqvDP0pgVT/prtiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UPfyVky6MQwU3PaTxjupGvwyhEMfmPGsqxiGAXpiqGU=;
+ b=bDIbjTFehYsY5tf8dapeHc/hLZpM/KOm6Meo+fv4iW/b47TniRhU2doXKfGr97KHLTWQlMz18Zvs9evgUOFD7L5w0JCZVtVCvVPd4HAcGtVBcvCUhWsVIwIz3QgOdPCIaZQ3GqjqswXtmkIjh02oX3V2PMy0YuUF0qLP5w9BmiOMepScBoiy+NUydDzt0yFWH0PH7a/EZ7ocEKneshkDsnaVod8WX/c7ont8JNxVS8BFAIgqtD+EzcUPaLyYEjp8sMEFi2u5M11IfJcmfG7/O2k5rGCNToxVO8Qt7XqNitlotjuw4+8GaoxijfKR7BrYVzZ0ku9EQcK3N4nmnDTiTg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=fi.rohmeurope.com; dmarc=pass action=none
+ header.from=fi.rohmeurope.com; dkim=pass header.d=fi.rohmeurope.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=rohmsemiconductoreurope.onmicrosoft.com;
+ s=selector1-rohmsemiconductoreurope-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UPfyVky6MQwU3PaTxjupGvwyhEMfmPGsqxiGAXpiqGU=;
+ b=pcn5MyRrCT9J1N46uIWlN4wzdHQvZHhZKf3pBTKm7/VzkKxBq/Nzoh9yjyhkT/ST6D+93iDmh4tgfSanJ4IRZRlu8ogDFy13PUWl1UN2VQSoPtJZ3yW7UpMmtyxsPmlmlCM51fdByaTilbsfS42E+4GjWsxG6eDYrUXNzDcbmHE=
+Received: from HE1PR03MB3162.eurprd03.prod.outlook.com (2603:10a6:7:55::20) by
+ HE1PR0302MB2732.eurprd03.prod.outlook.com (2603:10a6:3:f0::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4755.21; Tue, 7 Dec 2021 05:32:47 +0000
+Received: from HE1PR03MB3162.eurprd03.prod.outlook.com
+ ([fe80::544e:754:6241:aa7f]) by HE1PR03MB3162.eurprd03.prod.outlook.com
+ ([fe80::544e:754:6241:aa7f%6]) with mapi id 15.20.4755.022; Tue, 7 Dec 2021
+ 05:32:46 +0000
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier
+ <maz@kernel.org>, Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chunyan
+ Zhang <chunyan.zhang@unisoc.com>, Bartosz Golaszewski <brgl@bgdev.pl>, Baruch
+ Siach <baruch@tkos.co.il>, =?utf-8?B?VXdlIEtsZWluZS1Lw7ZuaWc=?=
+ <u.kleine-koenig@pengutronix.de>, Tony Lindgren <tony@atomide.com>, Nicolas
+ Saenz Julienne <nsaenz@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+ Jianqun Xu <jay.xu@rock-chips.com>, Alexandru Ardelean
+ <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "bcm-kernel-feedback-list@broadcom.com"
+ <bcm-kernel-feedback-list@broadcom.com>, linux-power
+ <linux-power@fi.rohmeurope.com>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "linux-pwm@vger.kernel.org"
+ <linux-pwm@vger.kernel.org>, "linux-omap@vger.kernel.org"
+ <linux-omap@vger.kernel.org>, "linux-unisoc@lists.infradead.org"
+ <linux-unisoc@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
+ <linux-rockchip@lists.infradead.org>,
+ "linux-stm32@st-md-mailman.stormreply.com"
+ <linux-stm32@st-md-mailman.stormreply.com>, "linux-tegra@vger.kernel.org"
+ <linux-tegra@vger.kernel.org>
+CC: Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>, Grygorii
+ Strashko <grygorii.strashko@ti.com>, Santosh Shilimkar <ssantosh@kernel.org>, 
+ Kevin Hilman <khilman@kernel.org>, Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
+Subject: Re: [PATCH v2 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+Thread-Topic: [PATCH v2 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+Thread-Index: AQHX6qPlbNC/xZaZB0uM50SVI3g84awmgnGA
+Date: Tue, 7 Dec 2021 05:32:46 +0000
+Message-ID: <c5464ae4-d8e9-6fab-4855-3ca1ba58d705@fi.rohmeurope.com>
+References: <20211206131852.74746-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211206131852.74746-1-andriy.shevchenko@linux.intel.com>
+Accept-Language: fi-FI, en-US
+Content-Language: fi-FI
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=fi.rohmeurope.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: a59a12dd-6973-432c-2a9c-08d9b943005d
+x-ms-traffictypediagnostic: HE1PR0302MB2732:EE_
+x-microsoft-antispam-prvs: <HE1PR0302MB2732B1150C7F3ECAC7FF3644AD6E9@HE1PR0302MB2732.eurprd03.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6430;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: sxxlaCytz7SgGEZz6QCsHFfuItTQnpZ9SrpWlKlUuzHJYqFgkGkJrJb84rDrE45zhc0ZoT9Va5Ncj2Ev4zK/ICX4wmePK0oHjQIkkAnJfjK4meG+gptWgjbGpZ0iODlg11ezncupkaU5fINSYA0TiZoknSIILuOCrvH173TQvWKKjoQKfh/mdAHpc9Bog+C85hUBR3M+WPx0VpyFel2hlYsybwluFk+gQuQEPvcnZ0w3sUfxyahVoBhICOAvD7+9QwuvQj0r5QxsPvYd+KjZgmirRwgptJr573sOX++jCF3rQIT2t4JyMaY8Vy0+grUtI7mdKgDZbCjeME3FQk/1ZfDjsktB5ueVaB30I3LeLo26ZVHToWHY917ZPItn+4P2QABLpg1sApBA4Lnkmu1jsaWmyVv9tE6sAA0rXbNMLUPYnQuWWTIwPuhdWA8aTYC4hSwjqcZYP2cjPWSDP6PlJsf4oBbCaOGuiIzIEdzaFX47JNmutniC/NyUsvxNrNobhgiLiOGVz4KhGOIZpi0IFZaoC6u/tNw6yEBOlVUat//x320zLbGrGQ102doiTqZnlHdr4XgQiR5j75GqPGFICxkR63NlnI44E9PS32VftgeWXa8TInUB05azti0cFbOfXYxSfeAjv82GyWkXpyitOdiVSPeJk+OCqOWIJo05i570tijfN9uzYMHO9dfCWU3nvsOAPeYtzmtgX2cajdEZla4rnP0aQY/Gic35o9YjgEMDL4T0yx8fAV7GbwaDbuM221On6nhThbqf5AppCPVfYIuZq9B7j3c+A8aM0kpoSCeyFv7efgPd6J3ymxDMureg
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR03MB3162.eurprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(31686004)(53546011)(71200400001)(186003)(86362001)(6506007)(4326008)(6512007)(38100700002)(76116006)(31696002)(6486002)(122000001)(83380400001)(38070700005)(64756008)(66556008)(66446008)(7416002)(8936002)(7406005)(66476007)(2906002)(508600001)(316002)(110136005)(66946007)(54906003)(4744005)(921005)(8676002)(5660300002)(2616005)(26583001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?LzZRMkhQSWxUUGtreWZqZ0h3VmMrZjh0WVh6TWFOOWZrZVBrVTVZOXowLzVI?=
+ =?utf-8?B?N2pKajczSGVtY1F5Y0VyRVJXNTR5OXRlSHRhUGM2MDVlaU85OUJlT21Rb0FX?=
+ =?utf-8?B?TTE3aUhWVnRRMVJsMWRqL2cxQVJXSHgrTTUrbHJiRGwxQmdzazJlSDVkUXR4?=
+ =?utf-8?B?Wm5DK1NjSzNHUGIvanpGMkozZnRocDFoVEJFRWROWFcrb0FubkhiSW5LVC85?=
+ =?utf-8?B?bzJZYWx0bnJGTHpFTWZtSWFyS2tiMjJUMmxrYm9QamRHSHNtSFB1cHZyaEYr?=
+ =?utf-8?B?aHl3UDEwT3UxajUvaW9oMHd2clNvTGJwYWhLVzlNc1BwbVR3MGZlT214bFhy?=
+ =?utf-8?B?NG1KK3lCL1p6NmJJTEppZm45ekJ1R0VBZlMyYU9RcHpjdlE3VGRzN2tvNkNE?=
+ =?utf-8?B?SDBHcVF1R3BYQjI2NnRxbkpITytHOC92VVVoNnpoRkpxZDUzVmpiRVpJNXVp?=
+ =?utf-8?B?ZTlicWdzVVFhRjNKOENBY3RVYUdpelkzTnh0SXBGWFhseWpWUUMzOE90eTMy?=
+ =?utf-8?B?Z0I1a3FVczFEczNyS1ZNc3E3WmZBU1JieldwcTdlbWVjaXRXNmJhdG94TERJ?=
+ =?utf-8?B?emtGd0JrTVJwbVVOQlVpL3hobGRMTHJlZWdueldnZ2VFbVVwSEViMlB3UjFY?=
+ =?utf-8?B?a0FwRExyaWl4a1Y5amlOSXlwWEhPelV3OW11cWJSWGRJU2wyQ3VhWmdXZVds?=
+ =?utf-8?B?Q2RpN25NajN2R2gzZ2VjVWRWZDI5VGpQem9mNXhtd0pVSnphNEFyRUpuaUs5?=
+ =?utf-8?B?VlBRSVZJUEptK3p1YmxoaGlsVzBmNWJEQUVPZE91TzBsYjNTZjJoTlJQbTBK?=
+ =?utf-8?B?ODRmVUVNZnlGbnRMWUhUUlFjVk1lZUtPZlRaMHcxUVhDdjFpdmZVSGp3WGtz?=
+ =?utf-8?B?OTZ6VmwxK1ViUVB6a2plMzY5VjE5OXd2eEU2bU5QeXFqbHgxWldZcFBGSEpw?=
+ =?utf-8?B?Z2ZwaENWU1JzMWhMYmI4OGdmN29xZVlwL2F0ODRmeDR0cDJDb1FGWVE3VmhE?=
+ =?utf-8?B?TG8rR2NTUEZxOVZPWC8yMFJmeVR5VHNUZXFpMVBjRUFEQzVsRHVIYk1sZkdz?=
+ =?utf-8?B?M0tpWDRldnVGdWRoc08zNld2Qm9UM2tvb3JiQ3c1U2VybkNhM0UzTnZ2MlFQ?=
+ =?utf-8?B?ZzhPbmpvUE5tR2NTaG84bEZmY0M4ZVJJVmVWSFpyem9ZV1ZRTlozVDV3NWRp?=
+ =?utf-8?B?NzZHT3Jnam9rZnFIb295bDhUbzFmcFhSUS8vVHdXWVZCcGNGQ3BIb1VyTS81?=
+ =?utf-8?B?QXhMYW9aUHJGZDVSYXJsVWZxcXB4bGZkTnhaODNRZ3VxL0RGbktIdFJZcmMr?=
+ =?utf-8?B?U3QzNVpiNnZVK0FvVTVvNi9mTFRsc1MvcW0wWW4yVUJVc1czQ0xqQTk1YlZ0?=
+ =?utf-8?B?WFlFT1RWT1dnS2RuNVNFbTVlNEttK2lMM3lUR24wVDZOR2JYWW9BVURheDZk?=
+ =?utf-8?B?aTU2Z0hkbVJMVHJ4S2VJZTh2UHFBZTBMUmlERThQZWtsWFNnRXE2Z1BlRW8x?=
+ =?utf-8?B?NExQNkh5dFpRSW9BaERRdG5xR1U5NGdXUlFHS2tvVkFPMUdyeEMyYmxuMmJr?=
+ =?utf-8?B?MjRtYnhZVVljRFVGQUF4bmFJR1gwTmJqUHBtQzNHN2hGVVkyS09Jd0JnZ0hR?=
+ =?utf-8?B?TUdQdEhZVzR0VlpHY25Da0lwbmdiRi9CUys5YXg2aFRQdnduRnFyQ3FPREgx?=
+ =?utf-8?B?ejYzb3lyMlY2VzdpSWdUclcwakEvTXNFeXBVYnhpY2s2MlI0OFd2TUh6NHRS?=
+ =?utf-8?B?SU1CaFdWdEtyMVk3b0ZPS3dCNnEzck50UDVpZnVrTmZLV3huQVc0c2J1L0dC?=
+ =?utf-8?B?ZXpjTktLT1FTTFdsUEVGWDhoUS9wdkxVTWY0RURqemlaM3pkNlAwYklENlAr?=
+ =?utf-8?B?Q29rR2ptb2xHOW9sZjFGeThnSzdnWUpjbE5RTTRvZUdVUUUxU0w5UGdEV2pC?=
+ =?utf-8?B?TERwYURybFhrVDZ3UzNtQ3NUTEVsM2FHa3hWc1RLYm1BME5EUW8xWWUxWWVh?=
+ =?utf-8?B?dzEyUVZhUURDNWRTVEJ3eG9TS3JiamhmQnpGczRsem0vQlBDRTJsN3VrY0ZQ?=
+ =?utf-8?B?UlhNMmtkQmhZaVRaZklZVkp2UXU3ZlQ1TlZpYTgwWFk5QWVGTXNMNkFMOFVJ?=
+ =?utf-8?B?RkpqdmFBTmtUeU01dHFDTVRJREF4NVFZYTd3Uk9Rb0FGWS81dXJJVlY4bGxZ?=
+ =?utf-8?B?cnp5Vlh4NXpmZWpnN0RZUFVVTW5XdC9zVnJVZm14S3JGd3Q4VTdmdjhYa0ZQ?=
+ =?utf-8?B?bGh4ZkVEalZ3ZCt1L29mY3NCY011NEc0bzVjUllUdTVabEQzbDlqRnFRdWZN?=
+ =?utf-8?B?RVNrNEdzMU4rNktxbHErYmNRengxTnN0L01yakJwR3UzczRTSGx2Zz09?=
+Content-ID: <127CB2431B374341B6A92C1C7D91C3D4@eurprd03.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YaaLITQF+lngE+VZ@google.com>
+X-OriginatorOrg: fi.rohmeurope.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR03MB3162.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a59a12dd-6973-432c-2a9c-08d9b943005d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Dec 2021 05:32:46.6220 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 94f2c475-a538-4112-b5dd-63f17273d67a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8dQPkrp6bQCbQMUUZZGm5Sk9KOE6hymi2KDAdTq8W+oJy/yq9Zkesb/eEtoUeP+5cAreL4ajFusG8h+6VrxO3v7iFXvhIMoc7bNk4J9YtHdYWBKjJEJyBD3ej1mCYitX
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0302MB2732
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_191637_322652_5310C0C7 
-X-CRM114-Status: GOOD (  70.37  )
+X-CRM114-CacheID: sfid-20211206_213253_219986_6DE1A361 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,229 +184,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 30, 2021 at 12:35:45PM -0800, Brian Norris wrote:
-> Hi Pekka,
-> =
+On 12/6/21 15:18, Andy Shevchenko wrote:
+> GPIO library does copy the of_node from the parent device of
+> the GPIO chip, there is no need to repeat this in the individual
+> drivers. Remove these assignment all at once.
+> 
+> For the details one may look into the of_gpio_dev_init() implementation.
+> 
+> While at it, remove duplicate parent device assignment where it is the case.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+> v2: mentioned parent removal (Linus), dropped change of the removed code
+>   drivers/gpio/gpio-adnp.c            | 1 -
+>   drivers/gpio/gpio-amdpt.c           | 4 +---
+>   drivers/gpio/gpio-bd71828.c         | 1 -
 
-> On Fri, Nov 19, 2021 at 12:38:41PM +0200, Pekka Paalanen wrote:
-> > On Thu, 18 Nov 2021 17:46:10 -0800
-> > Brian Norris <briannorris@chromium.org> wrote:
-> > > On Thu, Nov 18, 2021 at 12:39:28PM +0200, Pekka Paalanen wrote:
-> > > > On Wed, 17 Nov 2021 14:48:40 -0800
-> > > > Brian Norris <briannorris@chromium.org> wrote:
-> > > > If KMS gets a pageflip or modeset in no time after an input event, =
-then
-> > > > what's the gain. OTOH, if the display server is locking on to vblan=
-k,
-> > > > there might be a delay worth avoiding. But then, is it worth
-> > > > short-circuiting the wake-up in kernel vs. adding a new ioctl that
-> > > > userspace could hit to start the warming up process?  =
+for bd71828:
+Reviewed-By: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 
-> > > =
+-- 
+The Linux Kernel guy at ROHM Semiconductors
 
-> > > Rob responded to the first part to some extent (there is definitely g=
-ain
-> > > to be had).
-> > > =
+Matti Vaittinen, Linux device drivers
+ROHM Semiconductors, Finland SWDC
+Kiviharjunlenkki 1E
+90220 OULU
+FINLAND
 
-> > > To the last part: I wrote a simple debugfs hook to allow user space to
-> > > force a PSR exit, and then a simple user space program to read input
-> > > events and smash that debugfs file whenever it sees one. Testing in t=
-he
-> > > same scenarios, this appears to lose less than 100 microseconds versus
-> > > the in-kernel approach, which is negligible for this use case. (I'm n=
-ot
-> > > sure about the other use cases.)
-> > > =
-
-> > > So, this is technically doable in user space.
-> > =
-
-> > This is crucial information I would like you to include in some commit
-> > message. I think it is very interesting for the reviewers. Maybe also
-> > copy that in the cover letter.
-> > =
-
-> > In my opinion there is a clear and obvious decision due that
-> > measurement: Add the new ioctl for userspace to hit, do not try to
-> > hardcode or upload the wake-up policy into the kernel.
-> =
-
-> Perhaps.
-> =
-
-> I'll admit, I'm not eager to go write the fd-passing solutions that
-> others are designing on the fly. I'm currently torn on whether I'll just
-> live with this current patch set out-of-tree (or, y'all can decide that
-> a simple, 99% working solution is better than no solution), because it's
-> simple; or possibly figuring out how to utilize such an ioctl cleanly
-> within our display manager. I'm not super hopeful on the latter.
-> =
-
-> IOW, I'm approximately in line with Doug's thoughts:
-> https://lore.kernel.org/all/CAD=3DFV=3DXARhZoj+0p-doxcbC=3D4K+NuMc=3DuR6w=
-qG6kWk-MkPkNdQ@mail.gmail.com/
-> But then, we're obviously biased.
-> =
-
-> > > I can't speak to the ease of _actually_ integrating this into even our
-> > > own Chrome display manager, but I highly doubt it will get integrated
-> > > into others. I'd posit this should weigh into the relative worth, but
-> > > otherwise can't really give you an answer there.
-> > =
-
-> > I think such a thing would be very simple to add to any display server.
-> > They already have hooks for things like resetting idle timeout timers on
-> > any relevant input event.
-> > =
-
-> > > I'd also note, software-directed PSR is so far designed to be complet=
-ely
-> > > opaque to user space. There's no way to disable it; no way to know it=
-'s
-> > > active; and no way to know anything about the parameters it's computi=
-ng
-> > > (like average entry/exit delay). Would you suggest a whole set of new
-> > > IOCTLs for this?
-> > =
-
-> > Just one ioctl on the DRM device: "Hey, wake up!". Because that's what
-> > your patch does in-kernel, right?
-> =
-
-> Well, we'd at least want something to advertise that the feature does
-> something ("is supported") I think, otherwise we're just asking user
-> space to do useless work.
-> =
-
-> > If there are use case specific parameters, then how did you intend to
-> > allow adjusting those in your proposal?
-> =
-
-> Another commenter mentioned the latency tradeoff -- it's possible that
-> there are panels/eDP-links that resume fast enough that one doesn't care
-> to use this ioctl. For an in-kernel solution, one has all the data
-> available and could use hardware information to make decisions, if
-> needed. For a user space solution, we won't have any of that, and we'd
-> have to work to expose that information.
-> =
-
-> I suppose we could ignore that problem and only expose a minimal UAPI
-> until we need something more, but it feels like exposing a UAPI for
-> something is a critical point where one should make sure it's reasonably
-> descriptive and useful.
-> =
-
-> > > > How do you know userspace is using this input device at all? If
-> > > > userspace is not using the input device, then DRM should not be ope=
-ning
-> > > > it either, as it must have no effect on anything.
-> > > > =
-
-> > > > If you open an input device that userspace does not use, you also c=
-ause
-> > > > a power consumption regression, because now the input device itself=
- is
-> > > > active and possibly flooding the kernel with events (e.g. an
-> > > > accelerometer).  =
-
-> > > =
-
-> > > Well, I don't think accelerometers show up as input devices, but I
-> > > suppose your point could apply to actual input devices.
-
-fwiw, filtering INPUT_PROP_ACCELEROMETER would go a long way towards ignori=
-ng
-accelerometers.
-
-> > My understanding is that accelerometers are evdev (input) devices,
-> > especially when used as input e.g. for controlling games. I'm not aware
-> > of any other interface for it.
-
-> I'm not familiar with game-controlling accelerometers, but many types of
-> accelerometers are serviced by drivers/iio/.
-
-you can also unbind devices and use hidraw directly.
-
-> And even if they register as input devices, do they match the ID list in
-> this patch?
-
-device type assignment is problematic, but i think in this case it doesn't
-matter if the associations are a bit rough. You don't care about the type of
-device, you merely care about "is this likely to be used". And I think for
-that the list is good enough.
-
-though tbh, having this policy in userspace would still be better IMO.
-
-Cheers,
-  Peter
-
-> > Even audio sockets are input devices for detecting whether a plug has
-> > been plugged in, but those probably wouldn't flood anything.
-> =
-
-> They also won't match the input_handler ID list, because they won't
-> support the key or position combinations in the heuristic.
-> =
-
-> > > > Yet another problem here is that this completely ignores the concep=
-t of
-> > > > physical seats. Of course it does so, because seats are a pure
-> > > > userspace concept.
-> > > > =
-
-> > > > The kernel VT console already has problems because the kernel has no
-> > > > concept of seats, which means that if there is a second seat define=
-d and
-> > > > a desktop running on it, while the first seat is in the normal VT t=
-ext
-> > > > mode, then everything typed in the desktop will be delivered to the=
- VT
-> > > > shell as well! (This has a possible workaround in userspace [1], by=
- opening
-> > > > the evdev input devices in some kind of exclusive mode - which is n=
-ot
-> > > > common practise AFAIK.)  =
-
-> > > =
-
-> > > Sure.
-> > > =
-
-> > > I'd bet the intersection of systems that use SW-directed PSR and
-> > > "multi-seat" is negligibly close to zero, but I can't guarantee that.
-> > > Chalk one up for a user space policy.
-> > =
-
-> > Your cover letter has also the other bullet point: ramping up GPUs.
-> > That applies to a lot more systems than PSR, right?
-> > =
-
-> > Maybe that is an acceptable trade-off: be 100 =B5s faster (your
-> > measurement) by ramping up all GPUs in a system instead of only the
-> > relevant ones?
-> > =
-
-> > Or maybe that will hurt normal gaming computers by ramping up the iGPU
-> > when the OS and game only uses the dGPU, which makes iGPU eat away the
-> > CPU power budget, causing the CPU to slow down? I suppose that would be
-> > handled by ramping up only GPUs that userspace has opened.
-> =
-
-> FWIW, the current work we have out-of-tree involves only select GPU
-> drivers that know they are slow to ramp up. If this were generalized,
-> then yes, it could potentially have undesireable side effects. I'm
-> certainly not an expert on Rob's work though, so I can't speak to this
-> very much, but I imagine we could resolve the {d,i}GPU problem easily.
-> =
-
-> Brian
-
+~~ this year is the year of a signature writers block ~~
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
