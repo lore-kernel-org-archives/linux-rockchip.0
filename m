@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01CB7C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Dec 2021 23:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE8CC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 01:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xEbBSZEnHipyRvb2gdF/t7+lYhhx6sO0bvxe7ExVXKQ=; b=teiQgk1TqF6uDP
-	h7gLfGbL33Q/W5/8ScUv00R+eQ11nppKOgpyD6av8bvgVJkJZgCcLOaJ1tepzAGujvjUPr6JtV+c+
-	cJ4ahGhqulG7hwB7CrhuWSOn9cLkaSq4SaVkaFZIip1mxhu0LsZHf9VZtuWKYMNyZ76pF/nUNEwP9
-	mCopXVeV73MAsiAVglFt+nSwlNEL2AfxwN/NX2NZv3oWZDaeHx0mlnPu3B8OTkjketEfyPPuVv+qv
-	ER3oiCez5IbTS5Pd4cvAKr/gu6S1akWR91TpVT84OeQ2cPB7vStfzwfSh+WVcs3ZDVMbETuRBS+2n
-	QgjzmA6tj/UQtqkoiryQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QBvM1EyDwfW51XFIsfERpmlm90laVF+QGYPT2Q3X5cg=; b=0KE1f7HOrrHqsM
+	9nCD9xneABrTpUcJ1Z+5Ip+MjgTj/JaDfsgMrNocVp5pE6kOfSp6g9/2Bubz/PAVslavnigfyvCxQ
+	54JpaeCxnFPDXs1bFdZlFvTq2TJoOxIqGYOOdaaeI4g4UmX/06BRbidyaWGBe+IX1QQJjmL8ALEP3
+	c7xK7DMsujSChpOwDkSoXSn1prRCxZE5+ePa2iGFNNTGGy6oSrx06OPGfU6TTdFFJlHxhSlUGkClT
+	27tUgAPE7mwSU6Vs0JyqGStef+iLha+ONoVq73ZtmPGer26OOsPH3D8Kg0+6HHfrbaHBzmL42RWv7
+	0iHz8Q9ZMLjweqIA8K1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muNMk-006VV7-2v; Mon, 06 Dec 2021 23:25:50 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1muPh8-006eFY-JT; Tue, 07 Dec 2021 01:55:02 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muNMW-006VT7-Oc; Mon, 06 Dec 2021 23:25:38 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id o20so49535309eds.10;
- Mon, 06 Dec 2021 15:25:36 -0800 (PST)
+ id 1muPh5-006eDK-TR; Tue, 07 Dec 2021 01:55:01 +0000
+Received: by mail-io1-xd36.google.com with SMTP id b187so15174993iof.11;
+ Mon, 06 Dec 2021 17:54:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=4jV+KqtpM7JW+L5upscVKEEk6MlCh5LAGBK1hWf/qpE=;
- b=Z/V3La0yEBh0sB7xYAIMGrElf+AakB+TTvh3Mipj2EpT+5gAHOceeF+fJ5BxtXEwmg
- lPABrBeTNgT2Zusv9Wk0K7YA23Pb+j90UBHgF03X6l+yn5NmXaTix3IKpzLjhaJ3pE9I
- vfQRB4dborFnqmnSIyYScI4E5k6wrW7+ai1HDlzGgFeNnwjE6ghtcrtnUWz+fqhAGtf9
- RnRYqVllvx7oui9kbHhIWMNBDGHDfMfU0eeSnFlgPmOcr7qQ4r9KaBUno0l2qI9EsZtT
- dLUNyNqRZ+qoiyw/rOOPoUj2exN8xnj0/lhEcdi2JSuD84553WTct1N1NrP0QUcompYL
- 5PlQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GG9IZeKUXqHbwgRlEUez+S6LOG7iNmAE27aQpf7wARQ=;
+ b=WqIK77xBg4jom+nkZAVdSaO+QIg13np6F3MKrEpOJxlgBj0edb47bwPLekDQTHcKeK
+ FA6d4WHrbDFppB6kaDqVZOMsV1vBjPQVh+b4LV0tRsPi9oMulqUiJH5AW3HVYjxnKDGs
+ uiJfjNrUOd9TGOE79/VgAXaRCZsG4oJoFZvJtzTzigoTIhct5DRYBLL89/UYpa3oWGnb
+ 2cRrKUPPdp9rsOuSJ89vNpJXKg8+bnCPY4SW7GDNgMJ+6s5AeDatpN1Qz0elwnESIzuU
+ dL9ubYC0HXa/RCrG9fznbfdPuUPwHGAkPD0ahJB7VYnU5Yo6PtQwfb/ObYmEDfcGR4lg
+ +VQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=4jV+KqtpM7JW+L5upscVKEEk6MlCh5LAGBK1hWf/qpE=;
- b=MCOLcX1aZOh3+BJr/XpwwFP30FFK8TQhnwSkVdY79nhsJaY7hKZN953atgd6iY+mUz
- lOLHvTPza3Lhh3W10qr6qzC+oYIS8Zn5mHoicQW533ydBue+QHbre2t12mmD4f6Ap3il
- tsncEEprBQpFMfCUALlR6BpR7g2hSx0OAnquStxhCWmowyjv6NW5c3gInxhLBETFe0aG
- nwMi0BAoeQZfnd0jiTr9m51LRu+7BZGvFq/ZBJZCYTK+dbv2h5Wl2lcJUYzHdGBmxf7D
- x+Mif/noKqiZtIWOcFUcvr4jS1vujm6iGqNPBih0/OMSvX1y29V8ucJ8ySRABmDFnwK4
- HEjQ==
-X-Gm-Message-State: AOAM530/aTBcV9l0ScrZSxxuOiKsgTNATBMSKzJQCtEM5LWYEj62F4g+
- MBMUFs6iOEaDIKs/WEEIQRbd0JcdWIH5Ws8CBIs=
-X-Google-Smtp-Source: ABdhPJxrfMVHSOouoxr/+cSB16Q7UzeaTBXSxd4bv1eKjaKdQrKDvpgt4H1AK8+o2kVsbxd2nVyWpOLXNjYHIfnafec=
-X-Received: by 2002:a05:6402:3549:: with SMTP id
- f9mr3446135edd.23.1638833135041; 
- Mon, 06 Dec 2021 15:25:35 -0800 (PST)
-MIME-Version: 1.0
-References: <20211205181618.1041699-1-aford173@gmail.com>
- <CAHCN7xL3PSbHKZK_4NKRwhNGOZYM+i54CoKCq01a6kdbCLc2KA@mail.gmail.com>
- <3b81a33d9bbadd10bc61c3daedecc5b73b99a435.camel@ndufresne.ca>
- <CAHCN7xKb4YhH83oOnbXtkAKWk-3QWNNxE8EhVJ=i7xKW0wjYXw@mail.gmail.com>
-In-Reply-To: <CAHCN7xKb4YhH83oOnbXtkAKWk-3QWNNxE8EhVJ=i7xKW0wjYXw@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=GG9IZeKUXqHbwgRlEUez+S6LOG7iNmAE27aQpf7wARQ=;
+ b=B36dHAayQOw2NV5Y7TPMKQklhJdTM4efN4WvZTT9vMq2BZR+L13ofSAQoNNC/L91ql
+ IkujfnTIHauwvF7SeBGb6qdNkJ65o8zfMs0J07CUXBM/+xoplTcVwt7kS0jqCUhow1Yk
+ OCnkpIeItZEcX6cMBEggK/l6/0h+ORbjjE73HTsJjEJqIL735NuZl70GZCH5Dzka3I/A
+ yBY1YCUhgXOwS0pVZ3BOeB5kHRNwC1/ktzh8gFc2dev49zh1gUreAuV0qeXOE7rrwFw5
+ mTwYXBJH8nMj5ege3kYbTNarFLOt2Fa6Ixw6VwPNYOxtJXCX4jM4NuLBI7BasAdbMuyQ
+ I5qA==
+X-Gm-Message-State: AOAM531JqEAsRfxz/nURVy9FadApELEgHfCCfgd/2PUD9QPWWUzGVXWL
+ FIY6ciPCldq99x2/bL6JC4w=
+X-Google-Smtp-Source: ABdhPJxXzleMgy7efHrDCU1qKOzpEcVeClDkZTXS6ODGap4b87zAOAQznzyyx/BOUpKMQ3mjTanv4w==
+X-Received: by 2002:a6b:c881:: with SMTP id y123mr36840733iof.53.1638842098503; 
+ Mon, 06 Dec 2021 17:54:58 -0800 (PST)
+Received: from aford-IdeaCentre-A730.lan
+ ([2601:448:8400:9e8:6db8:c9e4:6f6d:f38e])
+ by smtp.gmail.com with ESMTPSA id j21sm8623639ila.6.2021.12.06.17.54.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 06 Dec 2021 17:54:58 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
-Date: Mon, 6 Dec 2021 17:25:23 -0600
-Message-ID: <CAHCN7xLh-daWTOJXxQmrjprX8uT6xn5WjvZo1M3xPW4W27vusw@mail.gmail.com>
-Subject: Re: [RFC 0/5] Split iMX8MQ Hantro VPU into G1 and G2 with blk-ctrl
- support
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: linux-media <linux-media@vger.kernel.org>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Chris Healy <cphealy@gmail.com>, 
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+To: linux-media@vger.kernel.org
+Cc: cphealy@gmail.com, benjamin.gaignard@collabora.com, hverkuil@xs4all.nl,
+ Adam Ford <aford173@gmail.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Lucas Stach <l.stach@pengutronix.de>, devicetree <devicetree@vger.kernel.org>, 
- arm-soc <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [RFC V2 0/6] media: Hantro: Split iMX8MQ VPU into G1 and G2 with
+ blk-ctrl support
+Date: Mon,  6 Dec 2021 19:54:39 -0600
+Message-Id: <20211207015446.1250854-1-aford173@gmail.com>
+X-Mailer: git-send-email 2.32.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_152536_852537_B4869CBE 
-X-CRM114-Status: GOOD (  38.51  )
+X-CRM114-CacheID: sfid-20211206_175459_989690_ADFB4CD2 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,145 +93,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBEZWMgNiwgMjAyMSBhdCA0OjMwIFBNIEFkYW0gRm9yZCA8YWZvcmQxNzNAZ21haWwu
-Y29tPiB3cm90ZToKPgo+IE9uIE1vbiwgRGVjIDYsIDIwMjEgYXQgMjo1MSBQTSBOaWNvbGFzIER1
-ZnJlc25lIDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4gPgo+ID4gTGUgZGltYW5jaGUg
-MDUgZMOpY2VtYnJlIDIwMjEgw6AgMTM6NTEgLTA2MDAsIEFkYW0gRm9yZCBhIMOpY3JpdCA6Cj4g
-PiA+IE9uIFN1biwgRGVjIDUsIDIwMjEgYXQgMTI6MTYgUE0gQWRhbSBGb3JkIDxhZm9yZDE3M0Bn
-bWFpbC5jb20+IHdyb3RlOgo+ID4gPiA+Cj4gPiA+ID4gQ3VycmVudGx5LCB0aGUgVlBVIGluIHRo
-ZSBpLk1ROE1RIGlzIGFwcGVhcmluZyBhcyBvbmUgY29kZWMsIGJ1dCBpbiByZWFsaXR5LCBpdCdz
-Cj4gPiA+ID4gdHdvIElQIGJsb2NrcyBjYWxsZWQgRzEgYW5kIEcyLiAgVGhlcmUgaXMgaW5pdGlh
-bGl6YXRpb24gY29kZSBpbiBWUFUgY29kZSB0bwo+ID4gPiA+IHB1bGwgc29tZSBjbG9ja3MsIHJl
-c2V0cyBhbmQgb3RoZXIgZmVhdHVyZXMgd2hpY2ggaGFzIGJlZW4gaW50ZWdyYXRlZCBpbnRvCj4g
-PiA+ID4gdGhlIHZwdS1ibGstY3RybCBmb3IgdGhlIGkuTVg4TSBNaW5pIGFuZCBhIHNpbWlsYXIg
-bWV0aG9kIGNhbiBiZSB1c2VkIHRvIG1ha2UKPiA+ID4gPiB0aGUgVlBVIGNvZGVjJ3Mgb3BlcmF0
-ZSBhcyBzdGFuZC1hbG9uZSBjb3JlcyB3aXRob3V0IGhhdmluZyB0byBrbm93IHRoZSBkZXRhaWxz
-Cj4gPiA+ID4gb2YgZWFjaCBvdGhlciBvciB0aGUgcXVpcmtzIHVuaXF1ZSB0byB0aGUgaS5NWDhN
-USwgc28gdGhlIHJlbWFpbmluZyBjb2RlIGNhbiBiZQo+ID4gPiA+IGxlZnQgbW9yZSBnZW5lcmlj
-Lgo+ID4gPiA+Cj4gPiA+ID4gVGhpcyBzZXJpZXMgd2FzIHN0YXJ0ZWQgYnkgTHVjYXMgU3RhY2gs
-IGFuZCBwaWNrZWQgdXAgYnkgbWUgc28gc29tZSBwYXRjaGVzIGhhdmUKPiA+ID4gPiBoaXMgcy1v
-LWIgYW5kIG1pbmUgd2hlcmUgSSBtaWdodCBoYXZlIGNoYW5nZWQgYSBmZXcgbWlub3IgaXRlbXMu
-ICBJdCdzIGluIGFuIFJGQyBzdGF0ZQo+ID4gPiA+IGJlY2F1c2UgdGhlIEcyIFZQOSBvcGVyYXRp
-b25zIGFwcGVhciB0byBoYW5nLCBidXQgdGhlIHBhcmVudCBjb2RlIGZyb20gd2hpY2ggSSBzdGFy
-dGVkIGRvZXNuJ3QKPiA+ID4gPiBhcHBlYXIgdG8gc2hvdyBWUDkgc3VwcG9ydCwgYW5kIGl0IGxv
-b2tzIGxpa2UgaXQgc2hvdWxkLgo+ID4gPiA+Cj4gPiA+ID4gc2luY2UgdGhlIGctc3RyZWFtZXIg
-YW5kIG1lZGlhIHRyZWVzIGFyZSBpbiBhIGNvbnN0YW50IHN0YXRlIG9mIGNoYW5nZSwgdGhpcyBz
-ZXJpZXMgaXMgYmFzZWQgb24KPiA+ID4gPiBnaXQ6Ly9saW51eHR2Lm9yZy9odmVya3VpbC9tZWRp
-YV90cmVlLmdpdCBmb3ItdjUuMTdlCj4gPiA+ID4KPiA+ID4KPiA+ID4gSSBmb3Jnb3QgdG8gcG9z
-dCBGbHVzdGVyIHJlc3VsdHMuCj4gPiA+Cj4gPiA+IEJlZm9yZSB0aGUgcGF0Y2hlcyB0byB0aGlz
-IGJyYW5jaDoKPiA+ID4KPiA+ID4gMmdzdC1tYWluXSByb290QGxvY2FsaG9zdDp+L2dzdHJlYW1l
-ci9mbHVzdGVyIyAuL2ZsdXN0ZXIucHkgbGlzdCAtYyB8Z3JlcCAtaSB2NGwKPiA+ID4KPiA+ID4g
-ICAgIEdTdHJlYW1lci1ILjI2NC1WNEwyLUdzdDEuMDogR1N0cmVhbWVyIEguMjY0IFY0TDIgZGVj
-b2RlciBmb3IKPiA+ID4gR1N0cmVhbWVyIDEuMC4uLiDinYwKPiA+ID4gICAgIEdTdHJlYW1lci1I
-LjI2NC1WNEwyU0wtR3N0MS4wOiBHU3RyZWFtZXIgSC4yNjQgVjRMMlNMIGRlY29kZXIgZm9yCj4g
-PiA+IEdTdHJlYW1lciAxLjAuLi4g4pyU77iPCj4gPiA+ICAgICBHU3RyZWFtZXItSC4yNjUtVjRM
-Mi1Hc3QxLjA6IEdTdHJlYW1lciBILjI2NSBWNEwyIGRlY29kZXIgZm9yCj4gPiA+IEdTdHJlYW1l
-ciAxLjAuLi4g4p2MCj4gPiA+ICAgICBHU3RyZWFtZXItSC4yNjUtVjRMMlNMLUdzdDEuMDogR1N0
-cmVhbWVyIEguMjY1IFY0TDJTTCBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFtZXIgMS4wLi4uIOKd
-jAo+ID4gPiAgICAgR1N0cmVhbWVyLVZQOC1WNEwyLUdzdDEuMDogR1N0cmVhbWVyIFZQOCBWNEwy
-IGRlY29kZXIgZm9yIEdTdHJlYW1lciAxLjAuLi4g4p2MCj4gPiA+ICAgICBHU3RyZWFtZXItVlA4
-LVY0TDJTTC1Hc3QxLjA6IEdTdHJlYW1lciBWUDggVjRMMlNMIGRlY29kZXIgZm9yCj4gPiA+IEdT
-dHJlYW1lciAxLjAuLi4g4pyU77iPCj4gPiA+ICAgICBHU3RyZWFtZXItVlA5LVY0TDJTTC1Hc3Qx
-LjA6IEdTdHJlYW1lciBWUDkgVjRMMlNMIGRlY29kZXIgZm9yCj4gPiA+IEdTdHJlYW1lciAxLjAu
-Li4g4p2MCj4gPiA+ICAgICBHU3RyZWFtZXItQVYxLVY0TDJTTC1Hc3QxLjA6IEdTdHJlYW1lciBB
-VjEgVjRMMlNMIGRlY29kZXIgZm9yCj4gPiA+IEdTdHJlYW1lciAxLjAuLi4g4p2MCj4gPiA+IFtn
-c3QtbWFpbl0gcm9vdEBsb2NhbGhvc3Q6fi9nc3RyZWFtZXIvZmx1c3RlciMKPiA+ID4KPiA+ID4g
-VGhlcmUgd2FzIG5vIFZQOSBzdXBwb3J0Lgo+ID4gPgo+ID4gPiAuL2ZsdXN0ZXIucHkgcnVuIC1k
-R1N0cmVhbWVyLUguMjY0LVY0TDJTTC1Hc3QxLjAKPiA+ID4gR1N0cmVhbWVyLUguMjY0LVY0TDJT
-TC1Hc3QxLjAKPiA+ID4gUmFuIDkwLzEzNSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAg
-ICBpbiA1OC43ODcgc2Vjcwo+ID4gPgo+ID4gPiBBRlRFUiB0aGlzIHNlcmllcywgdHdvIGRlY29k
-ZXJzIGFwcGVhcjoKPiA+ID4KPiA+ID4gWyAgIDE1LjkxOTEzN10gaGFudHJvLXZwdSAzODMwMDAw
-MC52aWRlby1jb2RlYzogcmVnaXN0ZXJlZAo+ID4gPiBueHAsaW14OG1xLXZwdS1nMS1kZWMgYXMg
-L2Rldi92aWRlbzAKPiA+ID4gWyAgIDE1Ljk4MzU3OV0gaGFudHJvLXZwdSAzODMxMDAwMC52aWRl
-by1jb2RlYzogcmVnaXN0ZXJlZAo+ID4gPiBueHAsaW14OG1xLXZwdS1nMi1kZWMgYXMgL2Rldi92
-aWRlbzEKPiA+ID4KPiA+ID4gVlA5IHdhcyBsaXN0ZWQ6Cj4gPiA+Cj4gPiA+ICAgICBHU3RyZWFt
-ZXItSC4yNjQtVjRMMi1Hc3QxLjA6IEdTdHJlYW1lciBILjI2NCBWNEwyIGRlY29kZXIgZm9yCj4g
-PiA+IEdTdHJlYW1lciAxLjAuLi4g4p2MCj4gPiA+ICAgICBHU3RyZWFtZXItSC4yNjQtVjRMMlNM
-LUdzdDEuMDogR1N0cmVhbWVyIEguMjY0IFY0TDJTTCBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFt
-ZXIgMS4wLi4uIOKclO+4jwo+ID4gPiAgICAgR1N0cmVhbWVyLUguMjY1LVY0TDItR3N0MS4wOiBH
-U3RyZWFtZXIgSC4yNjUgVjRMMiBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFtZXIgMS4wLi4uIOKd
-jAo+ID4gPiAgICAgR1N0cmVhbWVyLUguMjY1LVY0TDJTTC1Hc3QxLjA6IEdTdHJlYW1lciBILjI2
-NSBWNEwyU0wgZGVjb2RlciBmb3IKPiA+ID4gR1N0cmVhbWVyIDEuMC4uLiDinYwKPiA+ID4gICAg
-IEdTdHJlYW1lci1WUDgtVjRMMi1Hc3QxLjA6IEdTdHJlYW1lciBWUDggVjRMMiBkZWNvZGVyIGZv
-ciBHU3RyZWFtZXIgMS4wLi4uIOKdjAo+ID4gPiAgICAgR1N0cmVhbWVyLVZQOC1WNEwyU0wtR3N0
-MS4wOiBHU3RyZWFtZXIgVlA4IFY0TDJTTCBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFtZXIgMS4w
-Li4uIOKclO+4jwo+ID4gPiAgICAgR1N0cmVhbWVyLVZQOS1WNEwyU0wtR3N0MS4wOiBHU3RyZWFt
-ZXIgVlA5IFY0TDJTTCBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFtZXIgMS4wLi4uIOKclO+4jwo+
-ID4gPiAgICAgR1N0cmVhbWVyLUFWMS1WNEwyU0wtR3N0MS4wOiBHU3RyZWFtZXIgQVYxIFY0TDJT
-TCBkZWNvZGVyIGZvcgo+ID4gPiBHU3RyZWFtZXIgMS4wLi4uIOKdjAo+ID4gPgo+ID4gPiAuL2Zs
-dXN0ZXIucHkgcnVuIC1kIEdTdHJlYW1lci1WUDgtVjRMMlNMLUdzdDEuMAo+ID4gPiBSYW4gNTUv
-NjEgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gOC41NjUgc2Vjcwo+ID4gPgo+
-ID4gPgo+ID4gPiAuL2ZsdXN0ZXIucHkgcnVuIC1kR1N0cmVhbWVyLUguMjY0LVY0TDJTTC1Hc3Qx
-LjAKPiA+ID4gUmFuIDkwLzEzNSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiA2
-MC4yNjkgc2Vjcwo+ID4gPgo+ID4gPiBTYW1lIHJlc3VsdHMgZm9yIEguMjY0Cj4gPiA+Cj4gPiA+
-IFZQOSBIYW5ncywgd2hlcmUgaXQgZGlkbid0IGV2ZW4gYXBwZWFyIGFzIGF2YWlsYWJsZSBiZWZv
-cmU6Cj4gPiA+Cj4gPiA+IC4vZmx1c3Rlci5weSBydW4gLWQgR1N0cmVhbWVyLVZQOS1WNEwyU0wt
-R3N0MS4wCj4gPiA+ICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioK
-PiA+ID4gUnVubmluZyB0ZXN0IHN1aXRlIFZQOS1URVNULVZFQ1RPUlMgd2l0aCBkZWNvZGVyIEdT
-dHJlYW1lci1WUDktVjRMMlNMLUdzdDEuMAo+ID4gPiBVc2luZyA0IHBhcmFsbGVsIGpvYihzKQo+
-ID4gPiAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqCj4gPiA+Cj4g
-PiA+IFtURVNUIFNVSVRFICAgICAgXSAoREVDT0RFUiAgICAgICAgICAgICAgICAgICAgKSBURVNU
-IFZFQ1RPUgo+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgIC4uLiBSRVNVTFQKPiA+ID4g
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLQo+ID4gPiBbVlA5LVRFU1QtVkVDVE9SU10gKEdTdHJlYW1lci1WUDktVjRM
-MlNMLUdzdDEuMCkKPiA+ID4gdnA5MC0yLTAwLXF1YW50aXplci0wMC53ZWJtICAgICAgICAgICAg
-ICAgICAgICAgLi4uIFN1Y2Nlc3MKPiA+ID4gW1ZQOS1URVNULVZFQ1RPUlNdIChHU3RyZWFtZXIt
-VlA5LVY0TDJTTC1Hc3QxLjApCj4gPiA+IHZwOTAtMi0wMC1xdWFudGl6ZXItMDEud2VibSAgICAg
-ICAgICAgICAgICAgICAgIC4uLiBTdWNjZXNzCj4gPiA+IFtWUDktVEVTVC1WRUNUT1JTXSAoR1N0
-cmVhbWVyLVZQOS1WNEwyU0wtR3N0MS4wKQo+ID4gPiB2cDkwLTItMDAtcXVhbnRpemVyLTAyLndl
-Ym0gICAgICAgICAgICAgICAgICAgICAuLi4gU3VjY2VzCj4gPiA+Cj4gPiA+IDxoYW5nID4gLSBh
-bmQgeWVzLCAnU3VjY2VzcycgZGlkbnQnIGZpbmlzaCB3cml0aW5nIHRvIHRoZSBzZXJpYWwgcG9y
-dC4KPiA+Cj4gPiBMb29rcyBsaWtlIGhvcGUgdG8gbWUgISBEbyB5b3UgZ2V0IGZ1cnRoZXIgd2l0
-aCAtaiAxIChvbmUgY29uY3VycmVudCBkZWNvZGUpID8KPgo+IEFueXRoaW5nIGFmdGVyIHRoZSBm
-aXJzdCBhdHRlbXB0IGFwcGVhcnMgdG8gZmFpbC4gIEkgaGF2ZW4ndCBmaWd1cmVkCj4gb3V0IGlm
-IGl0J3MgdGhlIEcyIGNvZGUgb3IgdGhlIHBvd2VyIGRvbWFpbiBzdHVmZi4gIFNpbmNlIFZQOSBk
-aWRuJ3QKPiB3b3JrIEkgbWlncmF0ZWQgaXQgdG8gdXNlIHRoZSB2cHUtYmxrLWN0cmwsIEkgY2Fu
-J3QgcmVhbGx5IGNvbXBhcmUgdG8KPiBrbm93IGlmIGl0IHdhcyBhIHJlZ3Jlc3Npb24gb3IgYW4g
-aW1wcm92ZW1lbnQuCj4KPiA6LSkKPgpJIG1hbmFnZWQgdG8gZ2V0IHRoZSB2cHUtYmxrLWN0cmwg
-dXBkYXRlZCB0byBhZGRyZXNzIHRoZSBHMiBoYW5naW5nLgoKLi9mbHVzdGVyLnB5IHJ1biAtZCBH
-U3RyZWFtZXItVlA5LVY0TDJTTC1Hc3QxLjAKUmFuIDE0NC8zMDMgdGVzdHMgc3VjY2Vzc2Z1bGx5
-ICAgICAgICAgICAgICAgaW4gMjI0Ljg0NyBzZWNzCgpTaW5jZSBJIGNvdWxkbid0IGdldCBpdCB0
-byB3b3JrIGJlZm9yZSB0aGUgc3BsaXQsIEkgYW0gbm90IHN1cmUgaWYKdGhpcyBpcyBnb29kIG9y
-IG5vdC4gIEkgYWxzbyB3YXNuJ3Qgc3VyZSBpZiBJIG5lZWRlZCB0byBhbGxvY2F0ZSBtb3JlCkNN
-QSBmb3IgdGhpcy4KCklmL3doZW4gcGVvcGxlIGNhbiBnaXZlIG1lIHNvbWUgZmVlZGJhY2sgb24g
-dGhlIFJGQydzLCBJJ2xsIHN1Ym1pdCBhbgp1cGRhdGVkIGZvcm1hbCBwYXRjaCBmb3IgYm90aCB0
-aGUgaS5NUThNUSBhbmQgdGhlIGkuTVE4TSBNaW5pIGFzIG9uZQpzZXJpZXMgYmFzZWQgb24gICJm
-b3ItdjUuMTdlIiBmcm9tCmdpdDovL2xpbnV4dHYub3JnL2h2ZXJrdWlsL21lZGlhX3RyZWUuZ2l0
-CgpJIHdhc24ndCBzdXJlIGlmIEkgbmVlZGVkIHRvIGJyZWFrIHVwIHRoZSBtaWdyYXRpb24gZnJv
-bSBhIGNvbWJpbmVkClZQVSB0byBzcGxpdCBHMSBhbmQgRzIuICBJIG1pZ2h0IG5lZWQgc29tZSBo
-ZWxwL3N1Z2dlc3Rpb25zIG9uIHRoZQpZQU1MLCBiZWNhdXNlIEkgc3RydWdnbGUgd2l0aCB0aGF0
-IHBhcnQgYSBsaXR0bGUsIGJ1dCBJJ2QgbGlrZSB0aGUgOE1NCnRvIHVzZSB0aGUgOE1RIGR0LWJp
-bmRpbmcgeWFtbCBmaWxlIHNpbmNlIHRoZXkgYXJlIHNvIHNpbWlsYXIuCgpJIGhvcGUgdG8gaGF2
-ZSBzb21lIG1vcmUgdGltZSB0aGlzIHdlZWsgYmVjYXVzZSBteSB3ZWVrZW5kcyBhcmUKY29tcGxl
-dGVseSBib29rZWQgZm9yIHRoZSByZXN0IG9mIHRoZSB5ZWFyLCBhbmQgbGVhdmUgZm9yIExvbmRv
-biwgb24KMjMgRGVjIDIwMjEgYW5kIEkgd29uJ3QgcmV0dXJuIHVudGlsIDUgSmFuIDIwMjIuCgoK
-PiBhZGFtCj4KPiA+Cj4gPiA+Cj4gPiA+Cj4gPiA+Cj4gPiA+ID4gQWRhbSBGb3JkICgyKToKPiA+
-ID4gPiAgIG1lZGlhOiBoYW50cm86IHNwbGl0IGkuTVg4TVEgRzEgYW5kIEcyIGNvZGUKPiA+ID4g
-PiAgIGFybTY0OiBkdHM6IGlteDhtcTogU3BsaXQgaS5NWDhNUSBHMSBhbmQgRzIgd2l0aCB2cHUt
-YmxrLWN0cmwKPiA+ID4gPgo+ID4gPiA+IEx1Y2FzIFN0YWNoICgzKToKPiA+ID4gPiAgIGR0LWJp
-bmRpbmdzOiBwb3dlcjogaW14OG1xOiBhZGQgZGVmaW5lcyBmb3IgVlBVIGJsay1jdHJsIGRvbWFp
-bnMKPiA+ID4gPiAgIGR0LWJpbmRpbmdzOiBzb2M6IGFkZCBiaW5kaW5nIGZvciBpLk1YOE1RIFZQ
-VSBibGstY3RybAo+ID4gPiA+ICAgc29jOiBpbXg6IGlteDhtLWJsay1jdHJsOiBhZGQgaS5NWDhN
-USBWUFUgYmxrLWN0cmwKPiA+ID4gPgo+ID4gPiA+ICAuLi4vc29jL2lteC9mc2wsaW14OG1xLXZw
-dS1ibGstY3RybC55YW1sICAgICAgfCAgNzEgKysrKysrKysrKysKPiA+ID4gPiAgYXJjaC9hcm02
-NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kgICAgIHwgIDY5ICsrKysrKy0tLS0KPiA+
-ID4gPiAgZHJpdmVycy9zb2MvaW14L2lteDhtLWJsay1jdHJsLmMgICAgICAgICAgICAgIHwgIDY3
-ICsrKysrKysrKysKPiA+ID4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9f
-ZHJ2LmMgICAgIHwgICA0ICstCj4gPiA+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
-aGFudHJvX2h3LmggICAgICB8ICAgMiArLQo+ID4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2lteDhtX3ZwdV9ody5jICAgfCAxMTkgKysrLS0tLS0tLS0tLS0tLS0tCj4gPiA+ID4g
-IGluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvaW14OG1xLXBvd2VyLmggICAgICB8ICAgMyArCj4g
-PiA+ID4gIDcgZmlsZXMgY2hhbmdlZCwgMjA1IGluc2VydGlvbnMoKyksIDEzMCBkZWxldGlvbnMo
-LSkKPiA+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9zb2MvaW14L2ZzbCxpbXg4bXEtdnB1LWJsay1jdHJsLnlhbWwKPiA+ID4gPgo+ID4g
-PiA+IC0tCj4gPiA+ID4gMi4zMi4wCj4gPiA+ID4KPiA+CgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Currently, the VPU in the i.MQ8MQ is appearing as one codec, but in
+reality, it's two IP blocks called G1 and G2.  There is initialization
+code in VPU code to pull some clocks, resets and other features which
+has been integrated into the vpu-blk-ctrl for the i.MX8M Mini and a
+similar method can be used to make the VPU codec's operate as 
+stand-alone cores without having to know the details of each other
+or the quirks unique to the i.MX8MQ, so the remaining code can be
+left more generic.
+
+This series was started by Lucas Stach with one by Benjamin Gaignard.
+Most patches have been modified slightly by me.  It's in an RFC state
+because I wasn't sure how to best handle the signatures and wasn't sure
+if I could base it off the branch I did.
+
+Since the g-streamer and media trees are in a constant state of
+change, this series is based on
+
+git://linuxtv.org/hverkuil/media_tree.git for-v5.17e
+
+The downstream code from NXP shows the G1 and G2 clocks running
+at 600MHz, but between the TRM and the datasheet, there is some
+discrepancy.  Because the NXP reference code used 600MHz, that is
+what was chosen here.  Users who need to adjust their G1 and G2
+clocks can do so in their board files.
+
+Fluster Results:
+
+./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+Ran 90/135 tests successfully               in 61.966 secs
+
+./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+Ran 55/61 tests successfully               in 7.660 secs
+
+
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+Ran 144/303 tests successfully               in 162.665 secs
+
+Changes log:
+
+V2:  Make vpu-blk-ctrl enable G2 clock when enabling fuses.
+     Remove syscon from device tree and binding example
+     Added modified nxp,imx8mq-vpu.yaml from Benjamin Gaignard 
+
+Adam Ford (2):
+  media: hantro: split i.MX8MQ G1 and G2 code
+  arm64: dts: imx8mq: Split i.MX8MQ G1 and G2 with vpu-blk-ctrl
+
+Benjamin Gaignard (1):
+  dt-bindings: media: nxp,imx8mq-vpu: Update the bindings for G2 support
+
+Lucas Stach (3):
+  dt-bindings: power: imx8mq: add defines for VPU blk-ctrl domains
+  dt-bindings: soc: add binding for i.MX8MQ VPU blk-ctrl
+  soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
+
+ .../bindings/media/nxp,imx8mq-vpu.yaml        |  58 +++++----
+ .../soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml      |  71 +++++++++++
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  69 ++++++----
+ drivers/soc/imx/imx8m-blk-ctrl.c              |  68 +++++++++-
+ drivers/staging/media/hantro/hantro_drv.c     |   4 +-
+ drivers/staging/media/hantro/hantro_hw.h      |   2 +-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 119 +++---------------
+ include/dt-bindings/power/imx8mq-power.h      |   3 +
+ 8 files changed, 237 insertions(+), 157 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml
+
+
+base-commit: d1888b0bfd2ddef2e8a81505ffa200b92cc32e0c
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
