@@ -4,63 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB35C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 15:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF07C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 17:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lvGyutg0MLtM+3XmZWkO2BkvvV3L22zRHVOjZr/yGwU=; b=bReJgdRegt0qlA
-	D1VyWXoPtfKW/7b10QWYhS8zNakggmKMuyuHnkxZeR9qCAj7G4Xge0UKa+sQOsZ8F31KjBs21c7g4
-	bfJ5e5lgUMnLWNDvYHWKcccg8iCXhvEk2AGEu31VrJh2YCS3xOx5QzBg+Bzqn9MOrwz1reX5aBxZd
-	lwwpJCHDUO8c8wY5Epa5RG87UHqypEjhwHLMnGVJ+7QfKWuhPrylHE3K6YRTRJXOjHxfbE8ItK9Vq
-	Vk+z6D0NIzQfPInKHZwN3mbt/3Fhe5oLFSionJ6cbCeNckGT38cWWj6X/P4eqJ4psjl/Lfh3hl6C4
-	OnGrugTgizZz3CCyM94g==;
+	List-Owner; bh=gwDUBXYMzmmssXAP/igByIKd+HJ4LSI3fStJJKh/cv4=; b=Ei38+OMjY8ux+w
+	CDm+hAg+n0XBL9Zhsi2qzTyUFItO7AEg6ZgXV3sn6VzITrpBK6hjrPdD/TembzT0W04a6gvIyEWo1
+	wU0akCWZM1ZvKW4MH8jwCJQr4LdL6GH1s9NFiD4FUz6U63obOE7bWNC6MMc4ggjEqMn5YjMUVKJ/w
+	+kY/rUXzEfMso4ZVdcOFyy4E3hMoPWJkDKAcNUsvadzhGjRcFt404E0UdXhBAgAZGDTyMwyMpCmfm
+	71HoofBCfEy/Ttmmn0/xBl48VFWakQFR7x6EdQ7q5NGNM+0Zlu6vt8rb3gSSHAKe02g5mhNGsCCas
+	z0ZuwcmkJrwNwagX5SQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mucYB-009HAD-Un; Tue, 07 Dec 2021 15:38:39 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mucY5-009H7n-Fg
- for linux-rockchip@lists.infradead.org; Tue, 07 Dec 2021 15:38:38 +0000
-Received: from gallifrey.ext.pengutronix.de
- ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <l.stach@pengutronix.de>)
- id 1mucXu-0004Ow-J8; Tue, 07 Dec 2021 16:38:22 +0100
-Message-ID: <dbe7f7e488d92364ac2573175b0a262477a4d69a.camel@pengutronix.de>
-Subject: Re: [RFC V2 3/6] dt-bindings: media: nxp,imx8mq-vpu: Update the
- bindings for G2 support
-From: Lucas Stach <l.stach@pengutronix.de>
-To: Rob Herring <robh@kernel.org>, Adam Ford <aford173@gmail.com>
-Cc: linux-media@vger.kernel.org, cphealy@gmail.com, 
- benjamin.gaignard@collabora.com, hverkuil@xs4all.nl, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
- Kernel Team <kernel@pengutronix.de>,  Fabio Estevam <festevam@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Date: Tue, 07 Dec 2021 16:38:19 +0100
-In-Reply-To: <Ya96O6VXuIDdcM8p@robh.at.kernel.org>
-References: <20211207015446.1250854-1-aford173@gmail.com>
- <20211207015446.1250854-4-aford173@gmail.com>
- <Ya96O6VXuIDdcM8p@robh.at.kernel.org>
-User-Agent: Evolution 3.40.4 (3.40.4-1.fc34) 
+	id 1mudqZ-009VWi-OP; Tue, 07 Dec 2021 17:01:43 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mudqN-009VVA-GP; Tue, 07 Dec 2021 17:01:33 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 36F9011D4;
+ Tue,  7 Dec 2021 09:01:30 -0800 (PST)
+Received: from [10.57.34.58] (unknown [10.57.34.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 57E6C3F73B;
+ Tue,  7 Dec 2021 09:01:28 -0800 (PST)
+Message-ID: <d9646a05-2588-339f-24f6-e8cd2f2de746@arm.com>
+Date: Tue, 7 Dec 2021 17:01:20 +0000
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
-X-SA-Exim-Mail-From: l.stach@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.2
+Subject: Re: [PATCH 04/12] drm/rockchip: dw_hdmi: add regulator support
+Content-Language: en-GB
+To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
+References: <20211117143347.314294-1-s.hauer@pengutronix.de>
+ <20211117143347.314294-5-s.hauer@pengutronix.de>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20211117143347.314294-5-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_073833_573835_FDC5E8B1 
-X-CRM114-Status: GOOD (  28.64  )
+X-CRM114-CacheID: sfid-20211207_090131_689731_05998881 
+X-CRM114-Status: GOOD (  22.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,160 +63,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-Am Dienstag, dem 07.12.2021 um 09:14 -0600 schrieb Rob Herring:
-> On Mon, Dec 06, 2021 at 07:54:42PM -0600, Adam Ford wrote:
-> > From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > 
-> > Introducing the G2 hevc video decoder requires modifications of the bindings to allow
-> > one node per VPU.
+On 2021-11-17 14:33, Sascha Hauer wrote:
+> The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+> for the HDMI port. add support for these to the driver for boards which
+> have them supplied by switchable regulators.
 > 
-> Why? It looks like the G2 part was already described. If you are 
-> changing this because you want 2 drivers for G1 and G2, then NAK. DT 
-> nodes and drivers don't have to be 1:1. This change is breaking 
-> compatibility.
-
-We can keep the compatibility by just keeping the code in the VPU
-driver to handle the G1 block as-is. The VPU block on the imx8mq is
-really three peripherals: the control block working together with the
-power domain controller to provide clocks and resets and the G1 and G2
-VPU cores.
-
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>   .../display/rockchip/rockchip,dw-hdmi.yaml    |  6 ++
+>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   | 58 ++++++++++++++++++-
+>   2 files changed, 61 insertions(+), 3 deletions(-)
 > 
-> > 
-> > VPUs share one hardware control block which is provided as a phandle on
-> > a syscon.
-> 
-> That's not really ideal. Is this really a separate block?
-> 
-This part of the commit message is not accurate anymore. The control
-block is in fact so separate from the VPU that we even added a new
-driver to handle those control blocks: the imx8m blk-ctrl driver. The
-VPU driver doesn't need handle this control block anymore, it's now
-handled via the power-domain abstraction.
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> index 53fa42479d5b7..293b2cfbf739f 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+> @@ -28,6 +28,12 @@ properties:
+>     reg-io-width:
+>       const: 4
+>   
+> +  avdd-0v9-supply:
+> +    description: A 0.9V supply that powers up the SoC internal circuitry.
+> +
+> +  avdd-1v8-supply:
+> +    description: A 0.9V supply that powers up the SoC internal circuitry.
+> +
+>     clocks:
+>       minItems: 2
+>       items:
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index 29608c25e2d0e..b8fe56c89cdc9 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -9,6 +9,7 @@
+>   #include <linux/platform_device.h>
+>   #include <linux/phy/phy.h>
+>   #include <linux/regmap.h>
+> +#include <linux/regulator/consumer.h>
+>   
+>   #include <drm/bridge/dw_hdmi.h>
+>   #include <drm/drm_edid.h>
+> @@ -83,6 +84,8 @@ struct rockchip_hdmi {
+>   	struct clk *vpll_clk;
+>   	struct clk *grf_clk;
+>   	struct dw_hdmi *hdmi;
+> +	struct regulator *avdd_0v9;
+> +	struct regulator *avdd_1v8;
+>   	struct phy *phy;
+>   };
+>   
+> @@ -222,6 +225,22 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+>   	hdmi->vpll_clk = hdmi->clks[RK_HDMI_CLK_VPLL].clk;
+>   	hdmi->grf_clk = hdmi->clks[RK_HDMI_CLK_GRF].clk;
+>   
+> +	hdmi->avdd_0v9 = devm_regulator_get_optional(hdmi->dev, "avdd-0v9");
 
-Regards,
-Lucas
+These are clearly *not* optional, unless the HDMI block is magic and can 
+still work without physical power. Use devm_regulator_get(), and if the 
+real supply is missing from the DT for whatever reason you should get a 
+dummy regulator back, which you can then successfully disable and enable 
+without all the conditional mess.
 
-> > Each node has now one reg and one interrupt.
-> > Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
-> > 
-> > To be compatible with older DT the driver is still capable to use the 'ctrl'
-> > reg-name even if it is deprecated now.
-> > 
-> > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > Signed-off-by: Adam Ford <aford173@gmail.com>
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > index 762be3f96ce9..eaeba4ce262a 100644
-> > --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> > @@ -15,37 +15,36 @@ description:
-> >  
-> >  properties:
-> >    compatible:
-> > -    const: nxp,imx8mq-vpu
-> > +    oneOf:
-> > +      - const: nxp,imx8mq-vpu-g1
-> > +      - const: nxp,imx8mq-vpu-g2
-> >  
-> >    reg:
-> > -    maxItems: 3
-> > -
-> > -  reg-names:
-> > -    items:
-> > -      - const: g1
-> > -      - const: g2
-> > -      - const: ctrl
-> > +    maxItems: 1
-> >  
-> >    interrupts:
-> > -    maxItems: 2
-> > +    maxItems: 1
-> >  
-> >    interrupt-names:
-> > -    items:
-> > +    oneOf:
-> >        - const: g1
-> >        - const: g2
-> >  
-> >    clocks:
-> > -    maxItems: 3
-> > +    maxItems: 1
-> >  
-> >    clock-names:
-> > -    items:
-> > +    oneOf:
-> >        - const: g1
-> >        - const: g2
-> > -      - const: bus
-> >  
-> >    power-domains:
-> >      maxItems: 1
-> >  
-> > +  nxp,imx8m-vpu-ctrl:
-> > +    description: Specifies a phandle to syscon VPU hardware control block
-> > +    $ref: "/schemas/types.yaml#/definitions/phandle"
+Robin.
+
+> +	if (IS_ERR(hdmi->avdd_0v9)) {
+> +		if (PTR_ERR(hdmi->avdd_0v9) != -ENODEV)
+> +			return PTR_ERR(hdmi->avdd_0v9);
+> +
+> +		hdmi->avdd_0v9 = NULL;
+> +	}
+> +
+> +	hdmi->avdd_1v8 = devm_regulator_get_optional(hdmi->dev, "avdd-1v8");
+> +	if (IS_ERR(hdmi->avdd_1v8)) {
+> +		if (PTR_ERR(hdmi->avdd_1v8) != -ENODEV)
+> +			return PTR_ERR(hdmi->avdd_1v8);
+> +
+> +		hdmi->avdd_1v8 = NULL;
+> +	}
+> +
+>   	return 0;
+>   }
+>   
+> @@ -559,11 +578,27 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+>   		return ret;
+>   	}
+>   
+> +	if (hdmi->avdd_0v9) {
+> +		ret = regulator_enable(hdmi->avdd_0v9);
+> +		if (ret) {
+> +			DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: %d\n", ret);
+> +			goto err_avdd_0v9;
+> +		}
+> +	}
+> +
+> +	if (hdmi->avdd_1v8) {
+> +		ret = regulator_enable(hdmi->avdd_1v8);
+> +		if (ret) {
+> +			DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: %d\n", ret);
+> +			goto err_avdd_1v8;
+> +		}
+> +	}
+> +
+>   	ret = clk_bulk_prepare_enable(RK_HDMI_NCLOCKS_HDMI, hdmi->clks);
+>   	if (ret) {
+>   		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI vpll: %d\n",
+>   			      ret);
+> -		return ret;
+> +		goto err_clk;
+>   	}
+>   
+>   	if (hdmi->chip_data == &rk3568_chip_data) {
+> @@ -587,10 +622,21 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+>   	 */
+>   	if (IS_ERR(hdmi->hdmi)) {
+>   		ret = PTR_ERR(hdmi->hdmi);
+> -		drm_encoder_cleanup(encoder);
+> -		clk_bulk_disable_unprepare(RK_HDMI_NCLOCKS_HDMI, hdmi->clks);
+> +		goto err_bind;
+>   	}
+>   
+> +	return 0;
+> +
+> +err_bind:
+> +	clk_bulk_disable_unprepare(RK_HDMI_NCLOCKS_HDMI, hdmi->clks);
+> +	drm_encoder_cleanup(encoder);
+> +err_clk:
+> +	if (hdmi->avdd_1v8)
+> +		regulator_disable(hdmi->avdd_1v8);
+> +err_avdd_1v8:
+> +	if (hdmi->avdd_0v9)
+> +		regulator_disable(hdmi->avdd_0v9);
+> +err_avdd_0v9:
+>   	return ret;
+>   }
+>   
+> @@ -601,6 +647,12 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+>   
+>   	dw_hdmi_unbind(hdmi->hdmi);
+>   	clk_bulk_disable_unprepare(RK_HDMI_NCLOCKS_HDMI, hdmi->clks);
+> +
+> +	if (hdmi->avdd_1v8)
+> +		regulator_disable(hdmi->avdd_1v8);
+> +
+> +	if (hdmi->avdd_0v9)
+> +		regulator_disable(hdmi->avdd_0v9);
+>   }
+>   
+>   static const struct component_ops dw_hdmi_rockchip_ops = {
 > 
-> This is optional?
-> 
-> > +
-> >  required:
-> >    - compatible
-> >    - reg
-> > @@ -60,20 +59,27 @@ additionalProperties: false
-> >  examples:
-> >    - |
-> >          #include <dt-bindings/clock/imx8mq-clock.h>
-> > +        #include <dt-bindings/power/imx8mq-power.h>
-> >          #include <dt-bindings/interrupt-controller/arm-gic.h>
-> >  
-> > -        vpu: video-codec@38300000 {
-> > +        vpu_g1: video-codec@38300000 {
-> >                  compatible = "nxp,imx8mq-vpu";
-> > -                reg = <0x38300000 0x10000>,
-> > -                      <0x38310000 0x10000>,
-> > -                      <0x38320000 0x10000>;
-> > -                reg-names = "g1", "g2", "ctrl";
-> > -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
-> > -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> > -                interrupt-names = "g1", "g2";
-> > -                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
-> > -                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
-> > -                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
-> > -                clock-names = "g1", "g2", "bus";
-> > -                power-domains = <&pgc_vpu>;
-> > +                reg = <0x38300000 0x10000>;
-> > +                reg-names "g1";
-> > +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> > +                interrupt-names = "g1";
-> > +                clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-> > +                clock-names = "g1";
-> > +                power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G1>;
-> > +        };
-> > +
-> > +        vpu_g2: video-codec@38310000 {
-> > +                compatible = "nxp,imx8mq-vpu-g2";
-> > +                reg = <0x38300000 0x10000>;
-> > +                reg-names "g2";
-> > +                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-> > +                interrupt-names = "g2";
-> > +                clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
-> > +                clock-names = "g2";
-> > +                power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G2>;
-> >          };
-> > -- 
-> > 2.32.0
-> > 
-> > 
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
