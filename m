@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81BFAC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Dec 2021 18:41:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DCA5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 09:33:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HxN82XmJNtHxEIyGBodWfDXZ5VFjwtRKYV9/Vw5j3ig=; b=bDK63wrSzNjrC6
-	7VsNF9g46vAG0cDf9h2ghO7whizwg5l21D7FYveMhev9hjosywpG2sw+bxKH0dMHOsjcPS7jtHilV
-	BSmEhqYmGkFMmolXULUOKld9GmIsG/QM8BSrosA7lzgnuGfTwB0FVTXNem8cMYav14BWXjEllfEjz
-	5dl9Hk9ZbtLH8Lu3lbnxBaOo9PoYIUDa7Tllf0ZU2oTTnZXDf9btfbePtx3orB4dI2sxrstkKqMwz
-	iukUOuCIF3hgtZiOAzLV7JWHD+1B2XsPzLlXWj5ohYDIYLDlmshLFbDwnMe67ehaO5gB4LOlQYgxw
-	5fa5UdE6Ui/93L6Cz/7w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QaAPF6LHLt1A3TRBA4JyfiizXEWdGyJpnKtGpaDWNVI=; b=xRdHIFGp3OJlHovYUHnhs2ADmv
+	8VGRqVneCQfDxPoxhveA4q1CL2Kq2kT9wGk9/Zvq6PEtZDlMRMglKQm7vmHx0+eKEpq8EV5WaBvHJ
+	fbkc1t8rbNxVuxAMsSdLXG8lXxo3nVFM8yB3rVhcnUvSTGTiWJpTrFYfge8mRPJ3lzVU7lZ/dmDHy
+	XnFMgxPu6kiLDru17CSG+S/fRRG+rdyYkJY4HY/+NDcA8PaH9fqs5CSuMMZJb7+9UpgTP7yg8F10F
+	UzNzL10+Rt6JYz1p9NF2Qr+xPJir56JPe7EBaLDn52AkQwekIh3VDyaHesHyFill7h0QDzldOVM4Y
+	bdbV2dzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mufPC-009pMH-Jx; Tue, 07 Dec 2021 18:41:34 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1mutKB-00BvGr-BB; Wed, 08 Dec 2021 09:33:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mufOx-009pIM-2D; Tue, 07 Dec 2021 18:41:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1mutJv-00BvBI-56; Wed, 08 Dec 2021 09:33:04 +0000
+Received: from [IPv6:2a01:e0a:120:3210:9928:73b0:79a4:e623] (unknown
+ [IPv6:2a01:e0a:120:3210:9928:73b0:79a4:e623])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 34CF2B81DFC;
- Tue,  7 Dec 2021 18:41:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 746D1C341CF;
- Tue,  7 Dec 2021 18:41:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638902474;
- bh=BD7y6nHDHYvwF8F0ey/Mk8ZBpokO5pKuXGZlYMItmjk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=XYRyupyxYqJ1J2Xzzy1fbDAcK8U9EmRcrld67xacdQOCmUHzbODW7peeYiDwZrj3u
- AAkkDDnUYN3tbSBkG8UlHGdxboK6IuLb2BAQQASbgdWxGCFISUaZRIGDhgLbnG48cz
- siNPn1nu/axEkF9uldG4y4g9XdJ7SG3qoGjVeK/8chFCXZ8bMNRTKgdW1BAny1jfzx
- EcrXYOZj3qZrX28TtJJ+5tU4GTVkhF0tWH7ald/YdXYQWmXgLM05MTqOf7Eb+8HuTo
- 8xt6IKmU4dJOc//poaAiHnlFV10RNIqgr6tpoX5NFDhg2CZOq3jm7pIxEq/uR2U41l
- M3la7iG9doIFQ==
-Received: by mail-ed1-f44.google.com with SMTP id y13so60497878edd.13;
- Tue, 07 Dec 2021 10:41:14 -0800 (PST)
-X-Gm-Message-State: AOAM530YOjmLKjfrJOvYfpyF5Oy6tUDSuN4gakmZzj8XHaIoFigjxgOr
- CJ8dHyoq4Y3yVwggcJL0DjuJh4X414G1z+xfwQ==
-X-Google-Smtp-Source: ABdhPJzcwDO/upO0y0Heow+dDIweLmSN4XLEBMezQBu999RnN0nYR8CEhaX/FQ9NPwIz30CbYJUz7q1kPpylgv6jWiU=
-X-Received: by 2002:a17:906:5e14:: with SMTP id
- n20mr1338660eju.466.1638902472240; 
- Tue, 07 Dec 2021 10:41:12 -0800 (PST)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 39CCF1F45A1D;
+ Wed,  8 Dec 2021 09:32:58 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638955978; bh=qdoGNUS0B38g/vQl8OYWvSbXd37jJA7vB7+2VrQDEBo=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=nJ8VNPLOSjOYZBedj0grLrp18tc5OnjuKMsPV07CFaOr4tQuywGpklRmMhlMXjMJe
+ kpthjLYUO6CMUJGV5jxCi1qX9YhRPVDNIs2zAL0QmV2eh8j7imKbYNpQFLRSFa1VuS
+ G+8lxXDTfyUi1KlHQh9LQkMCg1DlXLkZP/ngthXFt2cC6QStIBGAIEBrSEm6J4zIL0
+ EXorkYrmiitvE9lQLwyTxnHXSMk2PrUsdEimtUT46tb0ualBFzLQmGcYCz5GGO5tBL
+ t1wIc1nA2WdnH1QCeaaXG/9IyrMeIaXf5B4KzrRehwz20bE4HRzXh3dRZ7cLvCin3Y
+ /+txpI5hwgjvQ==
+Subject: Re: [RFC V2 0/6] media: Hantro: Split iMX8MQ VPU into G1 and G2 with
+ blk-ctrl support
+To: Adam Ford <aford173@gmail.com>, linux-media@vger.kernel.org
+Cc: cphealy@gmail.com, hverkuil@xs4all.nl,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+References: <20211207015446.1250854-1-aford173@gmail.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <f85da774-ccb3-85de-edd6-5333ed8d0503@collabora.com>
+Date: Wed, 8 Dec 2021 10:32:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
-References: <20211126181500.3404129-1-daniel.lezcano@linaro.org>
- <20211126181500.3404129-2-daniel.lezcano@linaro.org>
-In-Reply-To: <20211126181500.3404129-2-daniel.lezcano@linaro.org>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 7 Dec 2021 12:41:00 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqK1tsOqUYrLkZCo95BC=AXwZxai947x41zYpeHbodvwFg@mail.gmail.com>
-Message-ID: <CAL_JsqK1tsOqUYrLkZCo95BC=AXwZxai947x41zYpeHbodvwFg@mail.gmail.com>
-Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Add powerzones definition
- for rock960
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: arnd@linaro.org, heiko@sntech.de, ulf.hansson@linaro.org, 
- rjw@rjwysocki.net, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-pm@vger.kernel.org, lukasz.luba@arm.com, 
- Robin Murphy <robin.murphy@arm.com>, Johan Jonker <jbx6244@gmail.com>, 
- Helen Koike <helen.koike@collabora.com>,
- Brian Norris <briannorris@chromium.org>, 
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Elaine Zhang <zhangqing@rock-chips.com>, 
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+In-Reply-To: <20211207015446.1250854-1-aford173@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_104119_424932_224209DD 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20211208_013303_355171_EFB607CF 
+X-CRM114-Status: GOOD (  30.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,117 +79,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 26, 2021 at 12:15 PM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> Add the powerzones description. This first step introduces the big,
-> the little and the gpu as a powerzone place.
->
-> Cc: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
-> ---
->    V1: Initial post
->    V2:
->      - Move description in the SoC dtsi specific file
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index d3cdf6f42a30..3c0dbc0cb2bc 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -76,6 +76,8 @@ cpu_l0: cpu@0 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <100>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->                 };
->
->                 cpu_l1: cpu@1 {
-> @@ -88,6 +90,8 @@ cpu_l1: cpu@1 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <100>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->                 };
->
->                 cpu_l2: cpu@2 {
-> @@ -100,6 +104,8 @@ cpu_l2: cpu@2 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <100>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->                 };
->
->                 cpu_l3: cpu@3 {
-> @@ -112,6 +118,8 @@ cpu_l3: cpu@3 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <100>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->                 };
->
->                 cpu_b0: cpu@100 {
-> @@ -124,6 +132,8 @@ cpu_b0: cpu@100 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <436>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->
->                         thermal-idle {
->                                 #cooling-cells = <2>;
-> @@ -142,6 +152,8 @@ cpu_b1: cpu@101 {
->                         #cooling-cells = <2>; /* min followed by max */
->                         dynamic-power-coefficient = <436>;
->                         cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +                       #powerzone-cells = <0>;
-> +                       powerzone = <&PKG_PZ>;
->
->                         thermal-idle {
->                                 #cooling-cells = <2>;
-> @@ -791,6 +803,17 @@ spi5: spi@ff200000 {
->                 status = "disabled";
->         };
->
-> +       powerzones {
-> +
-> +               PKG_PZ: pkg {
-> +                       #powerzone-cells = <0>;
-> +                        powerzone = <&SOC_PZ>;
-> +               };
-> +
-> +               SOC_PZ: soc {
-> +               };
-> +       };
-> +
->         thermal_zones: thermal-zones {
->                 cpu_thermal: cpu-thermal {
->                         polling-delay-passive = <100>;
-> @@ -2027,6 +2050,8 @@ gpu: gpu@ff9a0000 {
->                 clocks = <&cru ACLK_GPU>;
->                 #cooling-cells = <2>;
->                 power-domains = <&power RK3399_PD_GPU>;
-> +               #powerzone-cells = <0>;
-> +               powerzone = <&PKG_PZ>;
-
-Every CPU and the GPU are in the same powerzone. What is the point? Do
-you really have to be told that CPUs and GPU are a source of heat and
-might need to be limited?
-
-Rob
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA3LzEyLzIwMjEgw6AgMDI6NTQsIEFkYW0gRm9yZCBhIMOpY3JpdMKgOgoKPiBDdXJyZW50
+bHksIHRoZSBWUFUgaW4gdGhlIGkuTVE4TVEgaXMgYXBwZWFyaW5nIGFzIG9uZSBjb2RlYywgYnV0
+IGluCj4gcmVhbGl0eSwgaXQncyB0d28gSVAgYmxvY2tzIGNhbGxlZCBHMSBhbmQgRzIuICBUaGVy
+ZSBpcyBpbml0aWFsaXphdGlvbgo+IGNvZGUgaW4gVlBVIGNvZGUgdG8gcHVsbCBzb21lIGNsb2Nr
+cywgcmVzZXRzIGFuZCBvdGhlciBmZWF0dXJlcyB3aGljaAo+IGhhcyBiZWVuIGludGVncmF0ZWQg
+aW50byB0aGUgdnB1LWJsay1jdHJsIGZvciB0aGUgaS5NWDhNIE1pbmkgYW5kIGEKPiBzaW1pbGFy
+IG1ldGhvZCBjYW4gYmUgdXNlZCB0byBtYWtlIHRoZSBWUFUgY29kZWMncyBvcGVyYXRlIGFzCj4g
+c3RhbmQtYWxvbmUgY29yZXMgd2l0aG91dCBoYXZpbmcgdG8ga25vdyB0aGUgZGV0YWlscyBvZiBl
+YWNoIG90aGVyCj4gb3IgdGhlIHF1aXJrcyB1bmlxdWUgdG8gdGhlIGkuTVg4TVEsIHNvIHRoZSBy
+ZW1haW5pbmcgY29kZSBjYW4gYmUKPiBsZWZ0IG1vcmUgZ2VuZXJpYy4KPgo+IFRoaXMgc2VyaWVz
+IHdhcyBzdGFydGVkIGJ5IEx1Y2FzIFN0YWNoIHdpdGggb25lIGJ5IEJlbmphbWluIEdhaWduYXJk
+Lgo+IE1vc3QgcGF0Y2hlcyBoYXZlIGJlZW4gbW9kaWZpZWQgc2xpZ2h0bHkgYnkgbWUuICBJdCdz
+IGluIGFuIFJGQyBzdGF0ZQo+IGJlY2F1c2UgSSB3YXNuJ3Qgc3VyZSBob3cgdG8gYmVzdCBoYW5k
+bGUgdGhlIHNpZ25hdHVyZXMgYW5kIHdhc24ndCBzdXJlCj4gaWYgSSBjb3VsZCBiYXNlIGl0IG9m
+ZiB0aGUgYnJhbmNoIEkgZGlkLgo+Cj4gU2luY2UgdGhlIGctc3RyZWFtZXIgYW5kIG1lZGlhIHRy
+ZWVzIGFyZSBpbiBhIGNvbnN0YW50IHN0YXRlIG9mCj4gY2hhbmdlLCB0aGlzIHNlcmllcyBpcyBi
+YXNlZCBvbgo+Cj4gZ2l0Oi8vbGludXh0di5vcmcvaHZlcmt1aWwvbWVkaWFfdHJlZS5naXQgZm9y
+LXY1LjE3ZQo+Cj4gVGhlIGRvd25zdHJlYW0gY29kZSBmcm9tIE5YUCBzaG93cyB0aGUgRzEgYW5k
+IEcyIGNsb2NrcyBydW5uaW5nCj4gYXQgNjAwTUh6LCBidXQgYmV0d2VlbiB0aGUgVFJNIGFuZCB0
+aGUgZGF0YXNoZWV0LCB0aGVyZSBpcyBzb21lCj4gZGlzY3JlcGFuY3kuICBCZWNhdXNlIHRoZSBO
+WFAgcmVmZXJlbmNlIGNvZGUgdXNlZCA2MDBNSHosIHRoYXQgaXMKPiB3aGF0IHdhcyBjaG9zZW4g
+aGVyZS4gIFVzZXJzIHdobyBuZWVkIHRvIGFkanVzdCB0aGVpciBHMSBhbmQgRzIKPiBjbG9ja3Mg
+Y2FuIGRvIHNvIGluIHRoZWlyIGJvYXJkIGZpbGVzLgoKSGkgQWRhbSwKClRoYW5rcyBmb3IgeW91
+ciBwYXRjaGVzLCBJIGhhdmUgYmVlbiBhYmxlIHRvIHJlcHJvZHVjZSBWUDkgcmVzdWx0cyBvbiBt
+eSBzaWRlIChGbHVzdGVyIDE0Ny8zMDMpLgpJbiBwYXN0IEkgaGF2ZSBub3RpY2Ugc3B1cmlvdXMg
+ZXJyb3JzIHdoZW4gdXNpbmcgNjAwTUh6IGNsb2NrIG9uIEhFVkMgZGVjb2RlIGJ1dCBub3Qgd2l0
+aCAzMDBNSHouCgpSZWdhcmRzLApCZW5qYW1pbgoKPgo+IEZsdXN0ZXIgUmVzdWx0czoKPgo+IC4v
+Zmx1c3Rlci5weSBydW4gLWRHU3RyZWFtZXItSC4yNjQtVjRMMlNMLUdzdDEuMAo+IFJhbiA5MC8x
+MzUgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gNjEuOTY2IHNlY3MKPgo+IC4v
+Zmx1c3Rlci5weSBydW4gLWQgR1N0cmVhbWVyLVZQOC1WNEwyU0wtR3N0MS4wCj4gUmFuIDU1LzYx
+IHRlc3RzIHN1Y2Nlc3NmdWxseSAgICAgICAgICAgICAgIGluIDcuNjYwIHNlY3MKPgo+Cj4gLi9m
+bHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFtZXItVlA5LVY0TDJTTC1Hc3QxLjAKPiBSYW4gMTQ0LzMw
+MyB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiAxNjIuNjY1IHNlY3MKPgo+IENo
+YW5nZXMgbG9nOgo+Cj4gVjI6ICBNYWtlIHZwdS1ibGstY3RybCBlbmFibGUgRzIgY2xvY2sgd2hl
+biBlbmFibGluZyBmdXNlcy4KPiAgICAgICBSZW1vdmUgc3lzY29uIGZyb20gZGV2aWNlIHRyZWUg
+YW5kIGJpbmRpbmcgZXhhbXBsZQo+ICAgICAgIEFkZGVkIG1vZGlmaWVkIG54cCxpbXg4bXEtdnB1
+LnlhbWwgZnJvbSBCZW5qYW1pbiBHYWlnbmFyZAo+Cj4gQWRhbSBGb3JkICgyKToKPiAgICBtZWRp
+YTogaGFudHJvOiBzcGxpdCBpLk1YOE1RIEcxIGFuZCBHMiBjb2RlCj4gICAgYXJtNjQ6IGR0czog
+aW14OG1xOiBTcGxpdCBpLk1YOE1RIEcxIGFuZCBHMiB3aXRoIHZwdS1ibGstY3RybAo+Cj4gQmVu
+amFtaW4gR2FpZ25hcmQgKDEpOgo+ICAgIGR0LWJpbmRpbmdzOiBtZWRpYTogbnhwLGlteDhtcS12
+cHU6IFVwZGF0ZSB0aGUgYmluZGluZ3MgZm9yIEcyIHN1cHBvcnQKPgo+IEx1Y2FzIFN0YWNoICgz
+KToKPiAgICBkdC1iaW5kaW5nczogcG93ZXI6IGlteDhtcTogYWRkIGRlZmluZXMgZm9yIFZQVSBi
+bGstY3RybCBkb21haW5zCj4gICAgZHQtYmluZGluZ3M6IHNvYzogYWRkIGJpbmRpbmcgZm9yIGku
+TVg4TVEgVlBVIGJsay1jdHJsCj4gICAgc29jOiBpbXg6IGlteDhtLWJsay1jdHJsOiBhZGQgaS5N
+WDhNUSBWUFUgYmxrLWN0cmwKPgo+ICAgLi4uL2JpbmRpbmdzL21lZGlhL254cCxpbXg4bXEtdnB1
+LnlhbWwgICAgICAgIHwgIDU4ICsrKysrLS0tLQo+ICAgLi4uL3NvYy9pbXgvZnNsLGlteDhtcS12
+cHUtYmxrLWN0cmwueWFtbCAgICAgIHwgIDcxICsrKysrKysrKysrCj4gICBhcmNoL2FybTY0L2Jv
+b3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRzaSAgICAgfCAgNjkgKysrKysrLS0tLQo+ICAgZHJp
+dmVycy9zb2MvaW14L2lteDhtLWJsay1jdHJsLmMgICAgICAgICAgICAgIHwgIDY4ICsrKysrKysr
+Ky0KPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jICAgICB8ICAg
+NCArLQo+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaCAgICAgIHwg
+ICAyICstCj4gICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2lteDhtX3ZwdV9ody5jICAg
+fCAxMTkgKysrLS0tLS0tLS0tLS0tLS0tCj4gICBpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL2lt
+eDhtcS1wb3dlci5oICAgICAgfCAgIDMgKwo+ICAgOCBmaWxlcyBjaGFuZ2VkLCAyMzcgaW5zZXJ0
+aW9ucygrKSwgMTU3IGRlbGV0aW9ucygtKQo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9zb2MvaW14L2ZzbCxpbXg4bXEtdnB1LWJsay1jdHJs
+LnlhbWwKPgo+Cj4gYmFzZS1jb21taXQ6IGQxODg4YjBiZmQyZGRlZjJlOGE4MTUwNWZmYTIwMGI5
+MmNjMzJlMGMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
