@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 327C4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 22:53:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED49BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 22:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HQ3CzMPa8FvslAh+xobBFY5of+cOzN1Un4GkOwXRcVw=; b=FVgFKWazWSfLJj
-	0XpDltfyMHt4dfn0AkHvaiMqMxEUUedgKQ6UxH811+3cXd+kWxKMoYTB8dT3BQIqsdRz49ASZ94NE
-	wuYobussaXSSl3t97eBAY0j83n9w/0BEwhzxpcSqdUGWlE8K193uGbxPpW5JuSkLDwL4EPPF+Ptzx
-	ACoppV5ZNFXtbqTlaIftGwJfD5qtOw+G3kPj2ypsoaIBOTsvtKOnJZMeGrf4KfhdvS7XE+ywKzFTQ
-	WOb9118yc53TAmHa9wKGMFyGUa+yXy53eNgMShDWgZu41hRGIZs3VABaEASL7bb7+Q0vgHVLJ0odT
-	u9sGOYmVW/9N1jir5oMA==;
+	List-Owner; bh=T4FsxIqCzpLFLB/4Qj6e7yUwyQ1qSYzuVLaop0K40KQ=; b=WhJC6PujQgPwTJ
+	mO+alx+ez8jra3AQKFn0bUOfiSJwjJVFsz7tmrsNLI4jSTV5tUA/6ry2Te/C/ujbhagrcnvfsH5At
+	6DpQ3oJ00enqIDMKidwXqjR4OvJuHlUlbvrKmYH9u00QFw478dUWy8lbFg3EGjekt/cdPSD1Ijdz4
+	d3NNTUSXI2K0LVNBBFlyNJBVxmQynrJ5Cq6lJT3SiXVZX9grIdeLJ0yiCMvuM0kNskBm6kZwatoRu
+	GSMspRSsqEqhrD1DmhFwn+hd6tw4DwoRTaopWv6tXRunvsR3fRPef9U+qR+RIsBQTCCpbHIDRY/NT
+	XDoqfNVeWTb4x/tNfO1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mv5oG-00ESoA-G5; Wed, 08 Dec 2021 22:53:12 +0000
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+	id 1mv5os-00ET9F-SF; Wed, 08 Dec 2021 22:53:50 +0000
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mv5m2-00ERXM-Sh; Wed, 08 Dec 2021 22:50:56 +0000
-Received: by mail-io1-xd2a.google.com with SMTP id z18so4604084iof.5;
- Wed, 08 Dec 2021 14:50:54 -0800 (PST)
+ id 1mv5m6-00ERa4-3E; Wed, 08 Dec 2021 22:50:59 +0000
+Received: by mail-io1-xd32.google.com with SMTP id p65so4610296iof.3;
+ Wed, 08 Dec 2021 14:50:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CrNumwISLUpkzDEc0TVgaptJcWoPniM3pmiYzi2RbfE=;
- b=Fj6VpvXikYeBpUY3sac3yJ39RVxk5IUonJwvZgE62hZzJh1g8rF1GAOIhXAWaSkfiE
- XmJlE0U6MQJ1fG17Nfa8iqI+RmfFhq7IzckfnyQJJVvGJRhFtobH7ZnL9N8cN5/51k1g
- Xt4QA95/53ihaR8NBmcrYngNnoKhVZsxJJHCO6uFsCr+5WkxjgHDOQxW56G9K0FRn5Xx
- 8UH/gsESc/zJi+ObAZ1Bd9ujFD0uTC4gyI7jw72C/b47isugWCc3OsWbK+PAUqD6DZiI
- ZvXHF+1hkgxNORUBJTNz1eb4Nma4dfz6C8dS5yssc0IQco2UE+8dyUUGlEj92s+hmD5h
- 4BEg==
+ bh=5uDGT+bQdOGd9jInpMhbePhooiUuliLL4k3ARcsSlNE=;
+ b=SMrAIUyTmmwqq2KE5GitKXfURAPHk0xEp2DVv8M6//mv/uHw1hSIFsZ95PEHPiUUFr
+ KpIizsH+p/xMLD8jfZiYd9/1Kqc0Glt26WUGdmpb1qnAB+gAjxwklaY4KS1yKOhY/7Tt
+ 9/b2Ctl7g9uhk6aCy2qxaH1JX1xbvvy7b/gXAF3SjLJqmuruA14QH/zL25f/rL9dbdPB
+ gAB94PIy3CnlEB9M4HXQt/BiSyBfOQt3ssknZkE/fhXXfB6jt4TVgd2R/XppIocMvUWT
+ tnIJ1BM6sybxx2Go9kNp7yu8VmuTlh19RBGTTLNAvz8GhZCYwd/AF6cDn0WIadvqji9O
+ 581g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CrNumwISLUpkzDEc0TVgaptJcWoPniM3pmiYzi2RbfE=;
- b=QblOeVuCjnlfSegguXcy0yo2J8JAe+UV08vXOFNj59QgPpJZVcmvMM0pRAYmlKAZux
- 2OSK16TavaegRtT99GurkRGS5IojUPUOOFTDoqyb9x6W9bXnEmHUMN9g89ouELM/DiR8
- nFEEOv+dJKd+cEBhLO6erhk48bJE0sjFA4v0QmAlkjIN70V0FuN/eogmoBbCHHnSB6iw
- ndiRhdEteRQ0SNIS6UFhP5B8BO1CIlKCKg/KOwZYsCQCVCzEUADly0pcCJLOs1EkKOXT
- 6cmsyWeMwxiOuVWCKL5eWd3+AbsFbcFJNDFCqyLGYX4Qhf5sZg2tkqmBau1IipiKkYV1
- 3sAA==
-X-Gm-Message-State: AOAM532n6CVf4HvtR6BbL6VDYR960SRNExmuSHwQOKzV3olL4XR7ZzXB
- BoDDAae9N7mAhEYSyDiVyNQ=
-X-Google-Smtp-Source: ABdhPJy3Fw9s3P+tqSX21rd0Q8PHUJ8JDm/ujxjgd6QaaXBU9HU3PzKf3iIs1q8oTPSXKUJpcKLmdQ==
-X-Received: by 2002:a05:6638:d46:: with SMTP id
- d6mr3444633jak.129.1639003854249; 
- Wed, 08 Dec 2021 14:50:54 -0800 (PST)
+ bh=5uDGT+bQdOGd9jInpMhbePhooiUuliLL4k3ARcsSlNE=;
+ b=gokJRTKdDAuqhhiIfnXr2aExUJtGljIEfVL71ZKVsxU1GAbYo6C1VVizk2JhGYFQ03
+ Ov9+gr9i7uNAVh08pT7qRGUuBTx3jJ029zgAvgDyGu8TbJFVr5kIYtV0snPbh1lMPfOC
+ XQdm5t/ZnkdA99C4YQuziTZVHcokU3qVxbafhlYN4Bz53NYXQlUBIkv4uVqK3BydNMpb
+ mimebQqWk+w0jyB5gNCsyMm+fYhL0PAEGRcaiQXRyOZjaeFZs2qC+RFKOPdNsM84oFIh
+ ox7tZBOl+L1jVYzMCTDIWkg0f6FgG37+I8/YXh4RSBXKNozwKeiZ09kI8Xw9YmJYYzl2
+ NLZQ==
+X-Gm-Message-State: AOAM530ZVUHxWTt7YzQfmVfB7IK0b4DDUyqT+nE+RMzbwKaFahPcQG2L
+ vgytBJAqiWdPFC3UkPiycr0=
+X-Google-Smtp-Source: ABdhPJzyhQ8e0ZLCj/Du9L9st0l3VnW5IAfRW7Fn4vUJ5oaWO5af3oiXkAFyrdj38nTMLmZxbd0vtA==
+X-Received: by 2002:a6b:8ed4:: with SMTP id q203mr9777949iod.200.1639003857077; 
+ Wed, 08 Dec 2021 14:50:57 -0800 (PST)
 Received: from aford-IdeaCentre-A730.lan
  ([2601:448:8400:9e8:269a:1aa2:f1d9:8dbb])
- by smtp.gmail.com with ESMTPSA id t6sm2378751ioi.51.2021.12.08.14.50.52
+ by smtp.gmail.com with ESMTPSA id t6sm2378751ioi.51.2021.12.08.14.50.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Dec 2021 14:50:53 -0800 (PST)
+ Wed, 08 Dec 2021 14:50:56 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
 To: linux-media@vger.kernel.org
 Cc: benjamin.gaignard@collabora.com, cphealy@gmail.com,
@@ -74,16 +73,17 @@ Cc: benjamin.gaignard@collabora.com, cphealy@gmail.com,
  Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH 07/10] arm64: dts: imx8mm: Fix VPU Hanging
-Date: Wed,  8 Dec 2021 16:50:26 -0600
-Message-Id: <20211208225030.2018923-8-aford173@gmail.com>
+Subject: [PATCH 08/10] dt-bindings: media: nxp,
+ imx8mq-vpu: Enable support for i.MX8M Mini
+Date: Wed,  8 Dec 2021 16:50:27 -0600
+Message-Id: <20211208225030.2018923-9-aford173@gmail.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20211208225030.2018923-1-aford173@gmail.com>
 References: <20211208225030.2018923-1-aford173@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_145054_969639_114B8EA7 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20211208_145058_213343_D3C6B2E1 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +101,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vpumix power domain has a reset assigned to it, however
-when used, it causes a system hang.  Testing has shown that
-it does not appear to be needed anywhere.
+The i.MX8M mini appears to have a similar G1 and G2 decoder but the
+post-procesing isn't present.  Add compatible flags to support
+G1 and G2 without post-processing.
 
-Fixes: d39d4bb15310 ("arm64: dts: imx8mm: add GPC node")
 Signed-off-by: Adam Ford <aford173@gmail.com>
 ---
- arch/arm64/boot/dts/freescale/imx8mm.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-index c2f3f118f82e..f13d31ebfcbd 100644
---- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-@@ -681,7 +681,6 @@ pgc_vpumix: power-domain@6 {
- 						clocks = <&clk IMX8MM_CLK_VPU_DEC_ROOT>;
- 						assigned-clocks = <&clk IMX8MM_CLK_VPU_BUS>;
- 						assigned-clock-parents = <&clk IMX8MM_SYS_PLL1_800M>;
--						resets = <&src IMX8MQ_RESET_VPU_RESET>;
- 					};
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+index eeb7bd6281f9..fb6c2ab1b2dc 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+@@ -20,6 +20,8 @@ properties:
+         deprecated: true
+       - const: nxp,imx8mq-vpu-g1
+       - const: nxp,imx8mq-vpu-g2
++      - const: nxp, imx8mm-vpu-g1
++      - const: nxp, imx8mm-vpu-g2
  
- 					pgc_vpu_g1: power-domain@7 {
+   reg:
+     minItems: 1
 -- 
 2.32.0
 
