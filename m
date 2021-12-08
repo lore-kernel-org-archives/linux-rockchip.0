@@ -4,90 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9AEBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 16:16:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C04C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 16:18:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=We4KGctONfWI/BW0pI/ZUvizZJqUWrtKXGUnX1Gl2Qo=; b=B0gYcbFbv0+SwDkOa431bQd9eU
-	7YUAdUl1krXriiSsPwdCMd216qtMa8Fw95u/OAg+rGZb/xD22Sgt7ZnMwcR1BbmmhyQuZhWsla6th
-	HU4QYhkfK63hOsU4KkQ0V1ZHW9bhA2OQ3JNmBa9Y6oizE+U2KS7YUROJWNbnKp+OTNLfaOaMWlIIB
-	eGIDyeri6mPxrC4sPjiGkjk1VO9pyqcE0s4EiMCAdAxvNx2xnNrMRiTMnB1wdG/sAQXIynMNXDHk6
-	oLURj7jCZ0LpPb4VInO9qBEY/9VD9c4D60dDsCcdlj1GnLuPuZLX3BN1EScLS03v0IauiOL4b0M+M
-	+bWkC19Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kcpUXdhl7hHs+KQ05LrC7awDCHThAcmJNaBAVrPPL2E=; b=sIvfO2yyvGmHNf
+	DhN0RuiDyiB3O8XeZSi3+Qlvp4QQSMhxXi0rSbxFuaXpsnWwls0R0VdAhlzAmO75noVN5Z3fRNa5x
+	bw4SJXvjeDQ+x4puHR1l/LK6LglJWKQYT3UkuMPgU6h/5i3wGaaPhjgpwFQV9ky/vcMjoHfcWqrNm
+	3jIv+gGmwpVH7o5U93/cMRTQZMv6v8JN1TeDmre/zCG6WBsbJlK5pip/xZQAxTjDkKiqzRwq5d/vd
+	OpQO46w84MzCKZ7tukNk8FWyQC+szB0CzP7NvimC19fUGThHc5oN7nIqS1vfxtTLR+dcJi6cz4lOW
+	eZuteriaNuTk0QUctm+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muzcK-00DWWO-9k; Wed, 08 Dec 2021 16:16:28 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1muzef-00DXRy-9n; Wed, 08 Dec 2021 16:18:53 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muzcG-00DWSV-6v
- for linux-rockchip@lists.infradead.org; Wed, 08 Dec 2021 16:16:25 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id d9so4982690wrw.4
- for <linux-rockchip@lists.infradead.org>; Wed, 08 Dec 2021 08:16:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=s3S6Qu67tEui0DUsR7g/4/F35A73+SPBA+zRxkUhaG8=;
- b=MOtB1a6nj3/eQ3UtTDyQj1j+VVPdxYy6CedR8STiP6JvFUMlapTFPLi4UqGLNvsarp
- LBJcZFgfWEfjBSAAsypXx6MZtRZIkpUiNnsuhfbv/v8ov6rSYP/ZvOMQGqIat3nqxTUE
- sZT4IGJtCEQtYlnhi+uHHCl8gv/wD/2me2DEVJy3eYtdc4A+xHBTdxA1EjO3til/UDMm
- H/1edaw3ZvxzNZs7S/nWmnPAoIfTzxFkuQvzRY5Zg2TIP1/22hviuBUTchcYCqzkEiCs
- YLG2lwVRBbHfl0Z0TO8HEmsEIUF8y/l4xfS0BqKLlBXZ8DuHBBHsxnhYUoXSD5M9ohK7
- erVA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=s3S6Qu67tEui0DUsR7g/4/F35A73+SPBA+zRxkUhaG8=;
- b=045AqddOl/BwqwVdb5aCOF+aF36VQVA7aDlQj4S6YVg3+TWx0C6FtsNd6tKguXsw4d
- PZsq4NeGj6h1xALb1nVefZGE3D3IFpUS3iw1ROtSsbHxynsscJxKBj1u5otYFNWDcpz+
- 3rrcx87f5fLXBfJoyyAtZpK2z6vFSK2PZXFiAbOiBgtx7jCTmQfc72pyHQls8FQQJ41I
- hQjR0Oa7ZGL6EnxFt/wa/IKduq+H48bFgJAYXIkJS6fFim5/QeDywtfJetGZUJh4ZLk5
- uPMwiqngbdagy4j+Yf29oxb2P6PQSIJg8xU35LCV1McVcHtrld8uZQFmxU9pj7IAknAA
- p9Dw==
-X-Gm-Message-State: AOAM532jPTQMedMnNA0HZkxz12MSt0oYXh5A4L4M7s5e4KO7kGlEKSRH
- 5Gx7AvU1KMw6mv4CHvrnc6e/WHxs55ot1A==
-X-Google-Smtp-Source: ABdhPJyCcP3HTyvqGn8Z6fbCxuZdPjgKKEAI4N4Ibrf6Rk4KMeup+vzySvXG4xrGLqlNMeEqm37nlA==
-X-Received: by 2002:a5d:48cf:: with SMTP id p15mr60128362wrs.277.1638980181213; 
- Wed, 08 Dec 2021 08:16:21 -0800 (PST)
-Received: from ?IPv6:2a01:e34:ed2f:f020:8ae8:ca1f:ff1a:a23d?
- ([2a01:e34:ed2f:f020:8ae8:ca1f:ff1a:a23d])
- by smtp.googlemail.com with ESMTPSA id r83sm6322557wma.22.2021.12.08.08.16.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Dec 2021 08:16:20 -0800 (PST)
-Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Add powerzones definition
- for rock960
-To: Rob Herring <robh@kernel.org>
-Cc: arnd@linaro.org, heiko@sntech.de, ulf.hansson@linaro.org,
- rjw@rjwysocki.net, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, lukasz.luba@arm.com,
- Robin Murphy <robin.murphy@arm.com>, Johan Jonker <jbx6244@gmail.com>,
- Helen Koike <helen.koike@collabora.com>,
- Brian Norris <briannorris@chromium.org>,
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
-References: <20211126181500.3404129-1-daniel.lezcano@linaro.org>
- <20211126181500.3404129-2-daniel.lezcano@linaro.org>
- <CAL_JsqK1tsOqUYrLkZCo95BC=AXwZxai947x41zYpeHbodvwFg@mail.gmail.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <82ac88d2-5419-4c1f-e81a-154c65b39c1b@linaro.org>
-Date: Wed, 8 Dec 2021 17:16:18 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1muzea-00DXPp-Jy
+ for linux-rockchip@lists.infradead.org; Wed, 08 Dec 2021 16:18:51 +0000
+Received: from benjamin-XPS-13-9310.. (unknown
+ [IPv6:2a01:e0a:120:3210:9928:73b0:79a4:e623])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 64B6D1F46128;
+ Wed,  8 Dec 2021 16:18:46 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638980326; bh=/t2EHDkGaVsQYxOM7ghlNzX7xP49esI+doffFRaY66g=;
+ h=From:To:Cc:Subject:Date:From;
+ b=mFYwRp9YcqxQllHYa7p8wsd1Kk17BtPajGkXpoqofs1+SFdNU5G5PCfwGp2TeMqZd
+ iM70Dw0Svspg8JRSGqQdnQS+glR0lYDNRB1YhxK3vq0T6OzFhjZGZc/SpByXgvfc/h
+ iAmqPqb/fJfL/XVkWsx5FY6x1tnlVDz1iuAK3fkGA+USd+MxSXNb/W0ImtMZamord/
+ rVAp3sUIBPaF3kLVWI4p7iP2mO+EqrO6cFnqfsHo9iQSdzgdRPiNMEqCgRXAtBZY9j
+ yFFQOwQrNAe9qJZyrmGM4Rmpl/JVqJMeQ7ioDhW1cKwU/BUO+tkr51vfXvkWzpBWzl
+ 2XrHNB/W40+Kg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v5] media: hantro: Make G2/HEVC use hantro_postproc_ops
+Date: Wed,  8 Dec 2021 17:18:39 +0100
+Message-Id: <20211208161839.818397-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <CAL_JsqK1tsOqUYrLkZCo95BC=AXwZxai947x41zYpeHbodvwFg@mail.gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_081624_289135_1B6D9CE2 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20211208_081848_994694_BEB8AD98 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +67,318 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhpIFJvYiwKCk9uIDA3LzEyLzIwMjEgMTk6NDEsIFJvYiBIZXJyaW5nIHdyb3RlOgoKWyAuLi4g
-XQoKPj4gICAgICAgICB0aGVybWFsX3pvbmVzOiB0aGVybWFsLXpvbmVzIHsKPj4gICAgICAgICAg
-ICAgICAgIGNwdV90aGVybWFsOiBjcHUtdGhlcm1hbCB7Cj4+ICAgICAgICAgICAgICAgICAgICAg
-ICAgIHBvbGxpbmctZGVsYXktcGFzc2l2ZSA9IDwxMDA+Owo+PiBAQCAtMjAyNyw2ICsyMDUwLDgg
-QEAgZ3B1OiBncHVAZmY5YTAwMDAgewo+PiAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZjcnUg
-QUNMS19HUFU+Owo+PiAgICAgICAgICAgICAgICAgI2Nvb2xpbmctY2VsbHMgPSA8Mj47Cj4+ICAg
-ICAgICAgICAgICAgICBwb3dlci1kb21haW5zID0gPCZwb3dlciBSSzMzOTlfUERfR1BVPjsKPj4g
-KyAgICAgICAgICAgICAgICNwb3dlcnpvbmUtY2VsbHMgPSA8MD47Cj4+ICsgICAgICAgICAgICAg
-ICBwb3dlcnpvbmUgPSA8JlBLR19QWj47Cj4gCj4gRXZlcnkgQ1BVIGFuZCB0aGUgR1BVIGFyZSBp
-biB0aGUgc2FtZSBwb3dlcnpvbmUuIFdoYXQgaXMgdGhlIHBvaW50PyBEbwo+IHlvdSByZWFsbHkg
-aGF2ZSB0byBiZSB0b2xkIHRoYXQgQ1BVcyBhbmQgR1BVIGFyZSBhIHNvdXJjZSBvZiBoZWF0IGFu
-ZAo+IG1pZ2h0IG5lZWQgdG8gYmUgbGltaXRlZD8KCkEgcG93ZXJ6b25lID09PiBjYW4gcmVhZCBw
-b3dlciAmJiBzZXQgcG93ZXIgbGltaXQKCkV2ZXJ5IENQVSBpcyBhIHBvd2Vyem9uZSBhcyB3ZWxs
-IGFzIHRoZSBHUFUuCgpUaGV5IGFyZSBhbGwgZ3JvdXBlZCB1bmRlciBQS0dfUFouCgpUaGF0IG1l
-YW5zIHdlIGhhdmU6CgogcGtnCiAgfC0tIGNwdTAtMwogIHwKICB8LS0gY3B1NC03CiAgfAogIGAt
-LSBncHUKCldlIGNhbiByZWFkIHRoZSBwb3dlciBjb25zdW1wdGlvbiBvZiBjcHUwLTMsIGNwdTQt
-NyBvciBncHUgYW5kIHNldCB0aGVpcgpwb3dlciBsaW1pdC4KCldlIGNhbiByZWFkIHRoZSBwb3dl
-ciBjb25zdW1wdGlvbiBvZiBwa2cgKHdoaWNoIGlzIHRoZSBzdW0gb2YgdGhlIHBvd2VyCmNvbnN1
-bXB0aW9uIG9mIGNwdTAtMywgY3B1NC03IGFuZCBncHUpIGFuZCBJIGNhbiBzZXQgdGhlIHBvd2Vy
-IGxpbWl0CndoaWNoIHdpbGwgZW5zdXJlIHBvd2Vyb2YoY3B1MC0zICsgY3B1NC03ICsgZ3B1KSA8
-PSBwb3dlcm9mKHBrZykuCgoKCi0tIAo8aHR0cDovL3d3dy5saW5hcm8ub3JnLz4gTGluYXJvLm9y
-ZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCgpGb2xsb3cgTGluYXJvOiAg
-PGh0dHA6Ly93d3cuZmFjZWJvb2suY29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo8aHR0cDov
-L3R3aXR0ZXIuY29tLyMhL2xpbmFyb29yZz4gVHdpdHRlciB8CjxodHRwOi8vd3d3LmxpbmFyby5v
-cmcvbGluYXJvLWJsb2cvPiBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Use the postprocessor functions introduced by Hantro G2/VP9 codec series
+and remove duplicated buffer management.
+This allow Hantro G2/HEVC to produce NV12_4L4 and NV12.
+
+It fixes an issue where driver capture queue pixel format claims to be VT12
+while G2/HEVC always generate NV12 frames.
+
+video1: VIDIOC_S_FMT: type=vid-out-mplane, width=2560, height=1600, format=S265 little-endian (0x35363253), field=none, colorspace=0, num_planes=1, flags=0x0, ycbcr_enc=0, quantization=0, xfer_func=0
+plane 0: bytesperline=0 sizeimage=6144000
+video1: VIDIOC_S_EXT_CTRLS: which=0x0, count=1, error_idx=0, request_fd=0, name=HEVC Sequence Parameter Set, id/size=0x990cf0/32
+video1: VIDIOC_G_FMT: type=vid-cap-mplane, width=2560, height=1600, format=VT12 little-endian (0x32315456), field=none, colorspace=0, num_planes=1, flags=0x0, ycbcr_enc=0, quantization=0, xfer_func=0
+plane 0: bytesperline=2560 sizeimage=6144000
+video1: VIDIOC_ENUM_FMT: index=0, type=vid-cap-mplane, flags=0x0, pixelformat=NV12 little-endian (0x3231564e), mbus_code=0x0000, description='Y/CbCr 4:2:0'
+video1: VIDIOC_ENUM_FMT: error -22: index=1, type=vid-cap-mplane, flags=0x0, pixelformat=.... little-endian (0x00000000), mbus_code=0x0000, description=''
+video1: VIDIOC_G_FMT: type=vid-cap-mplane, width=2560, height=1600, format=VT12 little-endian (0x32315456), field=none, colorspace=0, num_planes=1, flags=0x0, ycbcr_enc=0, quantization=0, xfer_func=0
+
+Fluster scores are 77/147 for HEVC and 129/303 for VP9 (no regression).
+
+Beauty, Jockey and ShakeNDry bitstreams from UVG (http://ultravideo.fi/)
+set have also been tested.
+
+Fixes: 53a3e71095c5 ("media: hantro: Simplify postprocessor")
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+v5:
+- Add logs about wrong capture pixel format and Fixes tag.
+
+v4:
+- Add fluster VP9 scores.
+
+change since v1:
+- Reword commit message.
+
+ .../staging/media/hantro/hantro_g2_hevc_dec.c | 25 +++---
+ drivers/staging/media/hantro/hantro_hevc.c    | 79 +++----------------
+ drivers/staging/media/hantro/hantro_hw.h      | 11 +++
+ .../staging/media/hantro/hantro_postproc.c    |  3 +
+ drivers/staging/media/hantro/hantro_v4l2.c    | 19 ++---
+ 5 files changed, 41 insertions(+), 96 deletions(-)
+
+diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+index b35f36109a6f..6ef5430b18eb 100644
+--- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
++++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+@@ -341,6 +341,8 @@ static int set_ref(struct hantro_ctx *ctx)
+ 	const struct v4l2_hevc_dpb_entry *dpb = decode_params->dpb;
+ 	dma_addr_t luma_addr, chroma_addr, mv_addr = 0;
+ 	struct hantro_dev *vpu = ctx->dev;
++	struct vb2_v4l2_buffer *vb2_dst;
++	struct hantro_decoded_buffer *dst;
+ 	size_t cr_offset = hantro_hevc_chroma_offset(sps);
+ 	size_t mv_offset = hantro_hevc_motion_vectors_offset(sps);
+ 	u32 max_ref_frames;
+@@ -426,10 +428,15 @@ static int set_ref(struct hantro_ctx *ctx)
+ 		hantro_write_addr(vpu, G2_REF_MV_ADDR(i), mv_addr);
+ 	}
+ 
+-	luma_addr = hantro_hevc_get_ref_buf(ctx, decode_params->pic_order_cnt_val);
++	vb2_dst = hantro_get_dst_buf(ctx);
++	dst = vb2_to_hantro_decoded_buf(&vb2_dst->vb2_buf);
++	luma_addr = hantro_get_dec_buf_addr(ctx, &dst->base.vb.vb2_buf);
+ 	if (!luma_addr)
+ 		return -ENOMEM;
+ 
++	if (hantro_hevc_add_ref_buf(ctx, decode_params->pic_order_cnt_val, luma_addr))
++		return -EINVAL;
++
+ 	chroma_addr = luma_addr + cr_offset;
+ 	mv_addr = luma_addr + mv_offset;
+ 
+@@ -456,16 +463,12 @@ static int set_ref(struct hantro_ctx *ctx)
+ 
+ static void set_buffers(struct hantro_ctx *ctx)
+ {
+-	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++	struct vb2_v4l2_buffer *src_buf;
+ 	struct hantro_dev *vpu = ctx->dev;
+-	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
+-	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
+-	size_t cr_offset = hantro_hevc_chroma_offset(sps);
+-	dma_addr_t src_dma, dst_dma;
++	dma_addr_t src_dma;
+ 	u32 src_len, src_buf_len;
+ 
+ 	src_buf = hantro_get_src_buf(ctx);
+-	dst_buf = hantro_get_dst_buf(ctx);
+ 
+ 	/* Source (stream) buffer. */
+ 	src_dma = vb2_dma_contig_plane_dma_addr(&src_buf->vb2_buf, 0);
+@@ -478,11 +481,6 @@ static void set_buffers(struct hantro_ctx *ctx)
+ 	hantro_reg_write(vpu, &g2_strm_start_offset, 0);
+ 	hantro_reg_write(vpu, &g2_write_mvs_e, 1);
+ 
+-	/* Destination (decoded frame) buffer. */
+-	dst_dma = hantro_get_dec_buf_addr(ctx, &dst_buf->vb2_buf);
+-
+-	hantro_write_addr(vpu, G2_RS_OUT_LUMA_ADDR, dst_dma);
+-	hantro_write_addr(vpu, G2_RS_OUT_CHROMA_ADDR, dst_dma + cr_offset);
+ 	hantro_write_addr(vpu, G2_TILE_SIZES_ADDR, ctx->hevc_dec.tile_sizes.dma);
+ 	hantro_write_addr(vpu, G2_TILE_FILTER_ADDR, ctx->hevc_dec.tile_filter.dma);
+ 	hantro_write_addr(vpu, G2_TILE_SAO_ADDR, ctx->hevc_dec.tile_sao.dma);
+@@ -575,9 +573,6 @@ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx)
+ 	/* Don't compress buffers */
+ 	hantro_reg_write(vpu, &g2_ref_compress_bypass, 1);
+ 
+-	/* use NV12 as output format */
+-	hantro_reg_write(vpu, &g2_out_rs_e, 1);
+-
+ 	/* Bus width and max burst */
+ 	hantro_reg_write(vpu, &g2_buswidth, BUS_WIDTH_128);
+ 	hantro_reg_write(vpu, &g2_max_burst, 16);
+diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+index ee03123e7704..b49a41d7ae91 100644
+--- a/drivers/staging/media/hantro/hantro_hevc.c
++++ b/drivers/staging/media/hantro/hantro_hevc.c
+@@ -44,47 +44,6 @@ size_t hantro_hevc_motion_vectors_offset(const struct v4l2_ctrl_hevc_sps *sps)
+ 	return ALIGN((cr_offset * 3) / 2, G2_ALIGN);
+ }
+ 
+-static size_t hantro_hevc_mv_size(const struct v4l2_ctrl_hevc_sps *sps)
+-{
+-	u32 min_cb_log2_size_y = sps->log2_min_luma_coding_block_size_minus3 + 3;
+-	u32 ctb_log2_size_y = min_cb_log2_size_y + sps->log2_diff_max_min_luma_coding_block_size;
+-	u32 pic_width_in_ctbs_y = (sps->pic_width_in_luma_samples + (1 << ctb_log2_size_y) - 1)
+-				  >> ctb_log2_size_y;
+-	u32 pic_height_in_ctbs_y = (sps->pic_height_in_luma_samples + (1 << ctb_log2_size_y) - 1)
+-				   >> ctb_log2_size_y;
+-	size_t mv_size;
+-
+-	mv_size = pic_width_in_ctbs_y * pic_height_in_ctbs_y *
+-		  (1 << (2 * (ctb_log2_size_y - 4))) * 16;
+-
+-	vpu_debug(4, "%dx%d (CTBs) %zu MV bytes\n",
+-		  pic_width_in_ctbs_y, pic_height_in_ctbs_y, mv_size);
+-
+-	return mv_size;
+-}
+-
+-static size_t hantro_hevc_ref_size(struct hantro_ctx *ctx)
+-{
+-	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
+-	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
+-
+-	return hantro_hevc_motion_vectors_offset(sps) + hantro_hevc_mv_size(sps);
+-}
+-
+-static void hantro_hevc_ref_free(struct hantro_ctx *ctx)
+-{
+-	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
+-	struct hantro_dev *vpu = ctx->dev;
+-	int i;
+-
+-	for (i = 0;  i < NUM_REF_PICTURES; i++) {
+-		if (hevc_dec->ref_bufs[i].cpu)
+-			dma_free_coherent(vpu->dev, hevc_dec->ref_bufs[i].size,
+-					  hevc_dec->ref_bufs[i].cpu,
+-					  hevc_dec->ref_bufs[i].dma);
+-	}
+-}
+-
+ static void hantro_hevc_ref_init(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
+@@ -108,37 +67,25 @@ dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx,
+ 		}
+ 	}
+ 
+-	/* Allocate a new reference buffer */
++	return 0;
++}
++
++int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr)
++{
++	struct hantro_hevc_dec_hw_ctx *hevc_dec = &ctx->hevc_dec;
++	int i;
++
++	/* Add a new reference buffer */
+ 	for (i = 0; i < NUM_REF_PICTURES; i++) {
+ 		if (hevc_dec->ref_bufs_poc[i] == UNUSED_REF) {
+-			if (!hevc_dec->ref_bufs[i].cpu) {
+-				struct hantro_dev *vpu = ctx->dev;
+-
+-				/*
+-				 * Allocate the space needed for the raw data +
+-				 * motion vector data. Optimizations could be to
+-				 * allocate raw data in non coherent memory and only
+-				 * clear the motion vector data.
+-				 */
+-				hevc_dec->ref_bufs[i].cpu =
+-					dma_alloc_coherent(vpu->dev,
+-							   hantro_hevc_ref_size(ctx),
+-							   &hevc_dec->ref_bufs[i].dma,
+-							   GFP_KERNEL);
+-				if (!hevc_dec->ref_bufs[i].cpu)
+-					return 0;
+-
+-				hevc_dec->ref_bufs[i].size = hantro_hevc_ref_size(ctx);
+-			}
+ 			hevc_dec->ref_bufs_used |= 1 << i;
+-			memset(hevc_dec->ref_bufs[i].cpu, 0, hantro_hevc_ref_size(ctx));
+ 			hevc_dec->ref_bufs_poc[i] = poc;
+-
+-			return hevc_dec->ref_bufs[i].dma;
++			hevc_dec->ref_bufs[i].dma = addr;
++			return 0;
+ 		}
+ 	}
+ 
+-	return 0;
++	return -EINVAL;
+ }
+ 
+ void hantro_hevc_ref_remove_unused(struct hantro_ctx *ctx)
+@@ -314,8 +261,6 @@ void hantro_hevc_dec_exit(struct hantro_ctx *ctx)
+ 				  hevc_dec->tile_bsd.cpu,
+ 				  hevc_dec->tile_bsd.dma);
+ 	hevc_dec->tile_bsd.cpu = NULL;
+-
+-	hantro_hevc_ref_free(ctx);
+ }
+ 
+ int hantro_hevc_dec_init(struct hantro_ctx *ctx)
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index dbe51303724b..7286404c32ab 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -345,6 +345,7 @@ void hantro_hevc_dec_exit(struct hantro_ctx *ctx);
+ int hantro_g2_hevc_dec_run(struct hantro_ctx *ctx);
+ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
+ dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, int poc);
++int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
+ void hantro_hevc_ref_remove_unused(struct hantro_ctx *ctx);
+ size_t hantro_hevc_chroma_offset(const struct v4l2_ctrl_hevc_sps *sps);
+ size_t hantro_hevc_motion_vectors_offset(const struct v4l2_ctrl_hevc_sps *sps);
+@@ -394,6 +395,16 @@ hantro_h264_mv_size(unsigned int width, unsigned int height)
+ 	return 64 * MB_WIDTH(width) * MB_WIDTH(height) + 32;
+ }
+ 
++static inline size_t
++hantro_hevc_mv_size(unsigned int width, unsigned int height)
++{
++	/*
++	 * A CTB can be 64x64, 32x32 or 16x16.
++	 * Allocated memory for the "worse" case: 16x16
++	 */
++	return width * height / 16;
++}
++
+ int hantro_g1_mpeg2_dec_run(struct hantro_ctx *ctx);
+ int rockchip_vpu2_mpeg2_dec_run(struct hantro_ctx *ctx);
+ void hantro_mpeg2_dec_copy_qtable(u8 *qtable,
+diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
+index a7774ad4c445..248abe5423f0 100644
+--- a/drivers/staging/media/hantro/hantro_postproc.c
++++ b/drivers/staging/media/hantro/hantro_postproc.c
+@@ -146,6 +146,9 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
+ 	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME)
+ 		buf_size += hantro_vp9_mv_size(ctx->dst_fmt.width,
+ 					       ctx->dst_fmt.height);
++	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
++		buf_size += hantro_hevc_mv_size(ctx->dst_fmt.width,
++						ctx->dst_fmt.height);
+ 
+ 	for (i = 0; i < num_buffers; ++i) {
+ 		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index e4b0645ba6fc..e1fe37afe576 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -150,20 +150,6 @@ static int vidioc_enum_fmt(struct file *file, void *priv,
+ 	unsigned int num_fmts, i, j = 0;
+ 	bool skip_mode_none;
+ 
+-	/*
+-	 * The HEVC decoder on the G2 core needs a little quirk to offer NV12
+-	 * only on the capture side. Once the post-processor logic is used,
+-	 * we will be able to expose NV12_4L4 and NV12 as the other cases,
+-	 * and therefore remove this quirk.
+-	 */
+-	if (capture && ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE) {
+-		if (f->index == 0) {
+-			f->pixelformat = V4L2_PIX_FMT_NV12;
+-			return 0;
+-		}
+-		return -EINVAL;
+-	}
+-
+ 	/*
+ 	 * When dealing with an encoder:
+ 	 *  - on the capture side we want to filter out all MODE_NONE formats.
+@@ -304,6 +290,11 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 			pix_mp->plane_fmt[0].sizeimage +=
+ 				hantro_vp9_mv_size(pix_mp->width,
+ 						   pix_mp->height);
++		else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE &&
++			 !hantro_needs_postproc(ctx, fmt))
++			pix_mp->plane_fmt[0].sizeimage +=
++				hantro_hevc_mv_size(pix_mp->width,
++						    pix_mp->height);
+ 	} else if (!pix_mp->plane_fmt[0].sizeimage) {
+ 		/*
+ 		 * For coded formats the application can specify
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
