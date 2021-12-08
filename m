@@ -4,58 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC292C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 21:57:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D57C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Dec 2021 22:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oj1ym7J6lbOiO2tEB96uMlztA8cEnWu53AL4hPs9hXs=; b=1E/jQX+tlXL9AX
-	15TUHG/aiCKJm/njfGgLrmtyhbFJ94xtO7uodc5q5urYCRKZfhyG5+bgauXjmnhoMI7PiIYPRmmOH
-	qekJw2XWQx6/15mM7pwU3qEywZNaomNb8tPFvH339zvIDuFDOm+LtvGDqS+7f7EijHmREe8K4iXwp
-	vl7jljQTy1eV2NbvTaTSI4HCBjf8hAfVN9Dx4cXcmjll/E5enDwPMDjVj08TyhxVSHJZotjuLj3WF
-	s0r44XOos7sNWzj+v2GibM6pcrkenNWEPRB3BoFzLDsWSu9PpyVJc/Vl4ADJd09Azv6i3fgJcQt77
-	XIh71N9hQYZT+VEqhZIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SGgJPZPzT5GPYIW20vzFHIJMK4HN72d8IuKsKCIBfUY=; b=DybQss+RYBVX/+
+	+4TZ3kUrd/mvfXkUyKCoW++Vxuc1Llmw6TfzUZ8BMpOIuK05V6osQdq/3CqiIhm98AcEKLyRbLfvk
+	JRpVklVunNK1Jc7ILl3EbEVJsHS9kI8O9lZ+E1OY8Qn+tewZLI1nBtCT57IbdCnD51PQ4H3sxU48x
+	t4a92PhRoE4w+lvCerOj1oE8rmUFjTnIl73xqf2O0Vqkd1+z7NCpo8QdZEuXpaN9AGlQ8dI8L9y2F
+	BicatWsclG1UuB1p/DrAZyzQCU77GY5YCgCtFNF074Dzpny9fv8eEMBZiHvxbyPFNycxV2owiH10T
+	TTlKZb2ntjkzlUEKAW2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mv4wT-00ELa0-BQ; Wed, 08 Dec 2021 21:57:37 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1mv5lp-00EROy-FC; Wed, 08 Dec 2021 22:50:41 +0000
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mv4wF-00ELVM-5E
- for linux-rockchip@lists.infradead.org; Wed, 08 Dec 2021 21:57:25 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10192"; a="236697090"
-X-IronPort-AV: E=Sophos;i="5.88,190,1635231600"; d="scan'208";a="236697090"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2021 13:51:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,190,1635231600"; d="scan'208";a="564284920"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by fmsmga008.fm.intel.com with ESMTP; 08 Dec 2021 13:50:58 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mv4q2-00015x-1C; Wed, 08 Dec 2021 21:50:58 +0000
-Date: Thu, 9 Dec 2021 05:50:49 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: kbuild-all@lists.01.org, devicetree@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH 17/18] drm: rockchip: Add VOP2 driver
-Message-ID: <202112090519.Beunfs20-lkp@intel.com>
-References: <20211208151230.3695378-18-s.hauer@pengutronix.de>
+ id 1mv5lm-00EROF-N1; Wed, 08 Dec 2021 22:50:40 +0000
+Received: by mail-io1-xd2a.google.com with SMTP id p23so4585208iod.7;
+ Wed, 08 Dec 2021 14:50:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mMi1WPOBzI4R2YZ5HVYQx/dnfliDDCI8Msm6WyR+eh4=;
+ b=XcTrSwtnNRn21WNNBvMrv1NLcY+Mu2z72raACo/rJ6Taqa/EMOV2oNk4pwj4EmSvLt
+ luGUbISzvvMt4KSslR634zeGU7QYraSlBBEYjYNASBeA99EN9gyzY0p3wkqYQQhmphEs
+ 8l6EQVJ9oSaQ7qdsh3KMQ5fyqkh0iQTq9sXGOyz+HT58120MR9jLg5eqv6VmCk0b0gqW
+ 34LQEiA0JxmeDCBx2kRlrxNHM5UZLoMzC557S3/8Anr6qDjJTuoMvojX8ltnjNtmc2Lp
+ sdaKeArGSaq2svysxh0W+nXexC/NVpk3OK92mdkaPLWl6MwyxoTVlfMCYz+CxLRAeJ0i
+ tSyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=mMi1WPOBzI4R2YZ5HVYQx/dnfliDDCI8Msm6WyR+eh4=;
+ b=4/gRGE22n6DXNKZVtoGf7+MADX6dF1EibdFqte6boNd0DDQQdK/ON3zHHOORdV3pLp
+ CQC/F0wFliH6cpK0lMMxzDiHzmOybBPV9xjpPhFs4bajV3SzlY4ANgHFjKbEdzYFb6Q1
+ eDF2TI88o/a76TX+79URL9pKdz/kk1tr+4MngXKCy8gFUOTctjl5hCinACeb3NpCyj31
+ kj9j++KZUtdMMTliWjRtS7ycnjsxy8O6gZ3gScHgLogs7CEuvcjkJyCtEhT8I+Sh4WnW
+ nykjIH+5JX8WNpXgh8RexuyJM6HXIgjtXaB/7zLISW32m3a7+0PMS1EKbBBtqylvcZRB
+ SnSg==
+X-Gm-Message-State: AOAM531VKpkX1EQ2ITmAqbdtcNu0RAG7tfwLthVM/OkqE8uJHmXKAxoP
+ wieRlghSYRMs9FfmRDqucvw=
+X-Google-Smtp-Source: ABdhPJzZJP3Os1XE981Rf8W5rVV6iSlxLLkvkEoeb5qMER1aAj+4hxIA+fbfp5SLUrLTyxyWqwN1AA==
+X-Received: by 2002:a6b:b490:: with SMTP id
+ d138mr10603468iof.180.1639003837735; 
+ Wed, 08 Dec 2021 14:50:37 -0800 (PST)
+Received: from aford-IdeaCentre-A730.lan
+ ([2601:448:8400:9e8:269a:1aa2:f1d9:8dbb])
+ by smtp.gmail.com with ESMTPSA id t6sm2378751ioi.51.2021.12.08.14.50.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Dec 2021 14:50:37 -0800 (PST)
+From: Adam Ford <aford173@gmail.com>
+To: linux-media@vger.kernel.org
+Cc: benjamin.gaignard@collabora.com, cphealy@gmail.com,
+ aford@beaconembedded.com, nicolas@ndufresne.ca,
+ Adam Ford <aford173@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [PATCH 00/10] media: hantro: imx8mq/imx8mm: Let VPU decoders get
+ controlled by vpu-blk-ctrl
+Date: Wed,  8 Dec 2021 16:50:19 -0600
+Message-Id: <20211208225030.2018923-1-aford173@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211208151230.3695378-18-s.hauer@pengutronix.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_135723_263016_923152AA 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20211208_145038_780288_39B41C50 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,90 +100,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
+Both the i.MX8MQ and i.MX8MM have G1 and G2 decoders.
+The two decoders are similar, but the imx8mm lacks the
+post-processor, so they will have distinct compatible flags.
+Splitting the i.MX8MQ VPU into G1 and G2 makes it easier to
+control them independently since the TRM of both the i.MX8MQ and
+i.MX8MM list them as distinct IP blocks.  With them being split,
+the power-domain can shift to the vpu-blk-ctrl which is available
+on both i.MX8MQ and i.MX8MM but some of bits are different, so
+they'll have separate device tree bindings.
+Lastly, with the G1 and G2 operational, enable the i.MX8MM.
+On the i.MX8MM, the clock speed of 600MHz was chosen to match
+the default of the kernel repo from NXP and can be overwritten
+by board files for anyone who under/over volts the power rail.
 
-Thank you for the patch! Perhaps something to improve:
+The repo used as the starting point was:
+   git://linuxtv.org/hverkuil/media_tree.git for-v5.17e
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on drm/drm-next drm-intel/for-linux-next drm-exynos/exynos-drm-next v5.16-rc4]
-[cannot apply to drm-tip/drm-tip tegra-drm/drm/tegra/for-next airlied/drm-next next-20211208]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+This media hantro group has been especially helpful in helping
+me get up to speed on how it works.
 
-url:    https://github.com/0day-ci/linux/commits/Sascha-Hauer/drm-rockchip-RK356x-VOP2-support/20211208-231502
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-config: mips-allmodconfig (https://download.01.org/0day-ci/archive/20211209/202112090519.Beunfs20-lkp@intel.com/config)
-compiler: mips-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/8d57a528cbdfec4716a21d22d3d6c04c40451355
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Sascha-Hauer/drm-rockchip-RK356x-VOP2-support/20211208-231502
-        git checkout 8d57a528cbdfec4716a21d22d3d6c04c40451355
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=mips SHELL=/bin/bash drivers/gpu/drm/rockchip/
+Fluster was run on the i.MX8M Mini at 600 MHz:
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+Ran 55/61 tests successfully               in 8.299 secs
 
-All warnings (new ones prefixed by >>):
+./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+Ran 90/135 tests successfully               in 71.200 secs
 
-   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c: In function 'vop2_setup_cluster_alpha':
->> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c:1861:33: warning: variable 'top_win_pstate' set but not used [-Wunused-but-set-variable]
-    1861 |         struct drm_plane_state *top_win_pstate;
-         |                                 ^~~~~~~~~~~~~~
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+Ran 139/303 tests successfully               in 218.079 secs
 
 
-vim +/top_win_pstate +1861 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+Adam Ford (7):
+  dt-bindings: media: nxp,imx8mq-vpu: Support split G1 and G2 nodes with
+    vpu-blk-ctrl
+  media: hantro: Allow i.MX8MQ G1 and G2 to run independently
+  arm64: dts: imx8mq: Enable both G1 and G2 VPU's with vpu-blk-ctrl
+  arm64: dts: imx8mm: Fix VPU Hanging
+  dt-bindings: media: nxp,imx8mq-vpu: Enable support for i.MX8M Mini
+  media: hantro: Add support for i.MX8MM
+  arm64: dts: imx8mm: Enable Hantro G1 and G2 video decoders
 
-  1855	
-  1856	static void vop2_setup_cluster_alpha(struct vop2 *vop2, struct vop2_win *main_win)
-  1857	{
-  1858		uint32_t offset = (main_win->data->phys_id * 0x10);
-  1859		struct vop2_alpha_config alpha_config;
-  1860		struct vop2_alpha alpha;
-> 1861		struct drm_plane_state *top_win_pstate;
-  1862		struct drm_plane_state *bottom_win_pstate;
-  1863		bool src_pixel_alpha_en = false;
-  1864		uint16_t src_glb_alpha_val, dst_glb_alpha_val;
-  1865		bool premulti_en = false;
-  1866		bool swap = false;
-  1867	
-  1868		/* At one win mode, win0 is dst/bottom win, and win1 is a all zero src/top win */
-  1869		top_win_pstate = NULL;
-  1870		bottom_win_pstate = main_win->base.state;
-  1871		src_glb_alpha_val = 0;
-  1872		dst_glb_alpha_val = main_win->base.state->alpha;
-  1873	
-  1874		if (!bottom_win_pstate->fb)
-  1875			return;
-  1876	
-  1877		alpha_config.src_premulti_en = premulti_en;
-  1878		alpha_config.dst_premulti_en = false;
-  1879		alpha_config.src_pixel_alpha_en = src_pixel_alpha_en;
-  1880		alpha_config.dst_pixel_alpha_en = true; /* alpha value need transfer to next mix */
-  1881		alpha_config.src_glb_alpha_value = src_glb_alpha_val;
-  1882		alpha_config.dst_glb_alpha_value = dst_glb_alpha_val;
-  1883		vop2_parse_alpha(&alpha_config, &alpha);
-  1884	
-  1885		alpha.src_color_ctrl.bits.src_dst_swap = swap;
-  1886		vop2_writel(vop2, RK3568_CLUSTER0_MIX_SRC_COLOR_CTRL + offset,
-  1887			    alpha.src_color_ctrl.val);
-  1888		vop2_writel(vop2, RK3568_CLUSTER0_MIX_DST_COLOR_CTRL + offset,
-  1889			    alpha.dst_color_ctrl.val);
-  1890		vop2_writel(vop2, RK3568_CLUSTER0_MIX_SRC_ALPHA_CTRL + offset,
-  1891			    alpha.src_alpha_ctrl.val);
-  1892		vop2_writel(vop2, RK3568_CLUSTER0_MIX_DST_ALPHA_CTRL + offset,
-  1893			    alpha.dst_alpha_ctrl.val);
-  1894	}
-  1895	
+Lucas Stach (3):
+  dt-bindings: power: imx8mq: add defines for VPU blk-ctrl domains
+  dt-bindings: soc: add binding for i.MX8MQ VPU blk-ctrl
+  soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ .../bindings/media/nxp,imx8mq-vpu.yaml        | 85 ++++++++++++++-----
+ .../soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml      | 71 ++++++++++++++++
+ arch/arm64/boot/dts/freescale/imx8mm.dtsi     | 29 ++++++-
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi     | 69 +++++++++------
+ drivers/soc/imx/imx8m-blk-ctrl.c              | 68 ++++++++++++++-
+ drivers/staging/media/hantro/hantro_drv.c     |  3 +
+ drivers/staging/media/hantro/hantro_hw.h      |  3 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 84 +++++++++++++++---
+ include/dt-bindings/power/imx8mq-power.h      |  3 +
+ 9 files changed, 357 insertions(+), 58 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml
+
+base-commit: d1888b0bfd2ddef2e8a81505ffa200b92cc32e0c
+
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
