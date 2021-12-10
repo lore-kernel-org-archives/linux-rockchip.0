@@ -4,70 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3146C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Dec 2021 08:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE51BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Dec 2021 09:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VWl16H+OwxUNvVOHaOXt7xQSan9DMgthWC8rZ4+P6vk=; b=QbqI0VnDN2W2k0
-	U2qBFDLhM1NqZnsajqR7VMMBGDrWyiH3tkjNrJkQggCnW7UCuhSKoOzmFL3Ipwlg1AzTb1rkDIkUJ
-	m34WEaS9hU/E64nPjj3qtt3zkYx8ilzVe1KuzhLLI45Wx/1h0qStatnZ4yxJblueKaFTQ8cRultl4
-	izaj0ha47yv6qY0eXigmESLlnDAFJqg07YbY+WC7oKGioQmCYsyMCTu5n2ZeTtj1RWbT5jcaLnh5O
-	XGahxSZA4BfxYBx9QdGmNw+e6HUtvmxSq9pYKBBmjduak1RS3HZsRKB/Imn6tLOmpTgXxdn6ms6g3
-	NGh6U9fmRqSn/9WYiLIg==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=N4vZmFn+lQQYhsYVT18LrqPTPSFfmUPNHAcBX+UW88c=; b=uZykvNxu8ZN+zO
+	EhBualdt0kQzp7EZZHqWZZeVz5RAlybGVYEyFxnzGcpP+e1Pk255Imre6FUO1/lViOptJbetJ3r8w
+	wH42dTEQXfy6p1//zHHbDYnVskJT8rdP6ykDqk9NhJxZ6UkKWsJhu0t0/SraENht5jYzVeaB9g4wL
+	VYf54gehji74BOH+VMSwhqHSpVUn0Uq27rQPF3Q53tj1DnGlhiYeB47TUyfIs3FC6MTW5h3lmzAXd
+	cOIZhiMSSi+EVJXvFC/FuyorafUkOA+Mfqa4ToI8iKuq6WHeVnB6CDk+g7XkF7L4etiTI/nIsfCvI
+	WWsV8c/y99Yn66Ovbttg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvbh2-001G8o-6B; Fri, 10 Dec 2021 08:55:52 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mvcZs-001Pvk-JF; Fri, 10 Dec 2021 09:52:32 +0000
+Received: from regular1.263xmail.com ([211.150.70.195])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvbgq-001G6I-26
- for linux-rockchip@lists.infradead.org; Fri, 10 Dec 2021 08:55:41 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mvbgn-0000TC-1L; Fri, 10 Dec 2021 09:55:37 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mvbgm-0002Mi-En; Fri, 10 Dec 2021 09:55:36 +0100
-Date: Fri, 10 Dec 2021 09:55:36 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 17/18] drm: rockchip: Add VOP2 driver
-Message-ID: <20211210085536.GC25513@pengutronix.de>
-References: <20211208151230.3695378-1-s.hauer@pengutronix.de>
- <20211208151230.3695378-18-s.hauer@pengutronix.de>
- <bd576949-a42b-9750-fe97-b9b567c7ea75@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <bd576949-a42b-9750-fe97-b9b567c7ea75@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 09:51:38 up 295 days, 12:15, 150 users,  load average: 0.22, 0.19,
- 0.18
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+ id 1mvcZe-001Pu1-5h; Fri, 10 Dec 2021 09:52:20 +0000
+Received: from localhost (unknown [192.168.167.69])
+ by regular1.263xmail.com (Postfix) with ESMTP id C1F681DB2;
+ Fri, 10 Dec 2021 17:52:10 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+X-ANTISPAM-LEVEL: 2
+Received: from hp1216 (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P21855T140161358755584S1639129928714121_; 
+ Fri, 10 Dec 2021 17:52:10 +0800 (CST)
+X-IP-DOMAINF: 1
+X-RL-SENDER: zyf@rock-chips.com
+X-SENDER: zyf@rock-chips.com
+X-LOGIN-NAME: zyf@rock-chips.com
+X-FST-TO: jbx6244@gmail.com
+X-RCPT-COUNT: 14
+X-LOCAL-RCPT-COUNT: 2
+X-MUTI-DOMAIN-COUNT: 0
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-UNIQUE-TAG: <e0494cae6d4ee80fec1a7b8ba3da28e9>
+X-System-Flag: 0
+Date: Fri, 10 Dec 2021 17:52:10 +0800
+Organization: =?utf-8?B?55Ge6Iqv5b6u55S15a2Q?=
+From: =?utf-8?B?6LW15Luq5bOw?= <yifeng.zhao@rock-chips.com>
+To: "Johan Jonker" <jbx6244@gmail.com>, 
+ =?utf-8?B?SGVpa29TdMO8Ym5lcg==?= <heiko@sntech.de>, 
+ robh+dt <robh+dt@kernel.org>
+Cc: devicetree <devicetree@vger.kernel.org>, "Vinod Koul" <vkoul@kernel.org>, 
+ michael.riesch <michael.riesch@wolfvision.net>, 
+ linux-rockchip <linux-rockchip@lists.infradead.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ linux-phy <linux-phy@lists.infradead.org>, kishon <kishon@ti.com>, 
+ "Philipp Zabel" <p.zabel@pengutronix.de>, 
+ =?utf-8?B?6ZmI5Lqu?= <cl@rock-chips.com>
+Subject: Re: Re: [PATCH v3 2/3] phy/rockchip: add naneng combo phy for RK3568
+References: <20211025080632.32063-1-yifeng.zhao@rock-chips.com>, 
+ <20211025080632.32063-3-yifeng.zhao@rock-chips.com>, 
+ <65898b49-87ee-211e-f5ef-39147107ef83@gmail.com>, 
+ <95ba0a5b-8f5a-3351-fc53-33021b2a0111@gmail.com>
+X-Priority: 3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.22.188[cn]
+Mime-Version: 1.0
+Message-ID: <2021121017510984173129@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_005540_114530_969A0BF4 
-X-CRM114-Status: GOOD (  30.20  )
+X-CRM114-CacheID: sfid-20211210_015218_599491_5EE29983 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +88,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan,
-
-On Wed, Dec 08, 2021 at 05:59:16PM +0100, Johan Jonker wrote:
-> Hi,
-> 
-> On 12/8/21 4:12 PM, Sascha Hauer wrote:
-> > From: Andy Yan <andy.yan@rock-chips.com>
-> > 
-> > The VOP2 unit is found on Rockchip SoCs beginning with rk3566/rk3568.
-> > It replaces the VOP unit found in the older Rockchip SoCs.
-> > 
-> > This driver has been derived from the downstream Rockchip Kernel and
-> > heavily modified:
-> > 
-> > - All nonstandard DRM properties have been removed
-> > - dropped struct vop2_plane_state and pass around less data between
-> >   functions
-> > - Dropped all DRM_FORMAT_* not known on upstream
-> > - rework register access to get rid of excessively used macros
-> > - Drop all waiting for framesyncs
-> > 
-> > The driver is tested with HDMI and MIPI-DSI display on a RK3568-EVB
-> > board. Overlay support is tested with the modetest utility. AFBC support
-> > on the cluster windows is tested with weston-simple-dmabuf-egl on
-> > weston using the (yet to be upstreamed) panfrost driver support.
-> > 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> 
-> [..]
-> 
-> > +
-> > +static const struct of_device_id vop2_dt_match[] = {
-> > +	{
-> > +		.compatible = "rockchip,rk3568-vop",
-> > +		.data = &rk3568_vop
-> > +	}, {
-> 
-> > +		.compatible = "rockchip,rk3568-vop",
-> 
-> Maybe use:
-> .compatible = "rockchip,rk3566-vop",
-
-Copy/Paste bug. Will fix.
-
-> 
-> > +		.data = &rk3566_vop
-> > +	}, {
-> > +	},
-> 
-> Maybe sort this list alphabetical based on compatible in case later more
-> SoCs are added.
-> 
-> rk3566
-> rk3568
-
-Ok.
-
-> 
-> ===
-> 
-> The structure layout size above could be reduced for if we get more
-> compatible strings additions.
-> 
-> Example vop1:
-> 
-> static const struct of_device_id vop_driver_dt_match[] = {
-> 	{ .compatible = "rockchip,rk3036-vop",
-> 	  .data = &rk3036_vop },
-> 	{ .compatible = "rockchip,rk3126-vop",
-> 	  .data = &rk3126_vop },
-> 	{ .compatible = "rockchip,px30-vop-big",
-> 	  .data = &px30_vop_big },
-> 	{ .compatible = "rockchip,px30-vop-lit",
-> 	  .data = &px30_vop_lit },
-> 	{ .compatible = "rockchip,rk3066-vop",
-> 	  .data = &rk3066_vop },
-> 	{ .compatible = "rockchip,rk3188-vop",
-> 	  .data = &rk3188_vop },
-> 	{ .compatible = "rockchip,rk3288-vop",
-> 	  .data = &rk3288_vop },
-> 	{ .compatible = "rockchip,rk3368-vop",
-> 	  .data = &rk3368_vop },
-> 	{ .compatible = "rockchip,rk3366-vop",
-> 	  .data = &rk3366_vop },
-> 	{ .compatible = "rockchip,rk3399-vop-big",
-> 	  .data = &rk3399_vop_big },
-> 	{ .compatible = "rockchip,rk3399-vop-lit",
-> 	  .data = &rk3399_vop_lit },
-> 	{ .compatible = "rockchip,rk3228-vop",
-> 	  .data = &rk3228_vop },
-> 	{ .compatible = "rockchip,rk3328-vop",
-> 	  .data = &rk3328_vop },
-> 	{},
-
-It's shorter, but ugly ;)
-That's only my personal taste though, I don't care much.
-
-Sascha
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9oYW4sCgpXZSByZWZlciB0byB0aGUgSVAgZG9jdW1lbnRzIG9ubHkgIGFuZCBkb24ndCBu
+b3RpY2UgdGhhdCB0aGUgVFJNIG5hbWVzIHRoZSByZWdpc3RlcnMgaXMgZGlmZmVyZW50LiAKCkFi
+b3V0IHRoZSBTU0MsIHNzY19lbiA9IDHvvIwgSW4gUENJRSBtb2RlIHdpbGwgc2V0IFNTQyBPTiwg
+aXQgdGhlIHNhbWUgd2l0aCBTQVRBIGFuZCBVU0IuIApUaGUgZG9jdW1lbnQgZGVzY3JpcHRpb24g
+aXMgbm90IGNsZWFyIGVub3VnaC4KCgoKCgo+SGksCgoKCj4KCgoKPlNlZSBxdWVzdGlvbiBiZWxv
+dy4KCgoKPgoKCgo+T24gMTEvMTQvMjEgMTI6NDAgUE0sIEpvaGFuIEpvbmtlciB3cm90ZToKCgoK
+Pj4gSGkgWWlmZW5nLAoKCgo+PiAKCgoKPj4gU29tZSBjb21tZW50cy4gSGF2ZSBhIGxvb2sgaWYg
+aXQncyB1c2VmdWwuCgoKCj4+IAoKCgo+PiBPbiAxMC8yNS8yMSAxMDowNiBBTSwgWWlmZW5nIFpo
+YW8gd3JvdGU6CgoKCj4+PiBUaGlzIHBhdGNoIGltcGxlbWVudHMgYSBjb21ibyBwaHkgZHJpdmVy
+IGZvciBSb2NrY2hpcCBTb0NzCgoKCj4+PiB3aXRoIE5hTmVuZyBJUCBibG9jay4gVGhpcyBwaHkg
+Y2FuIGJlIHVzZWQgYXMgcGNpZS1waHksIHVzYjMtcGh5LAoKCgo+Pj4gc2F0YS1waHkgb3Igc2dt
+aWktcGh5LgoKCgo+Pj4KCgoKPj4+IFNpZ25lZC1vZmYtYnk6IFlpZmVuZyBaaGFvIDx5aWZlbmcu
+emhhb0Byb2NrLWNoaXBzLmNvbT4KCgoKPj4+IC0tLQoKCgo+CgoKCj4+PiBkaWZmIC0tZ2l0IGEv
+ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLW5hbmVuZy1jb21icGh5LmMgYi9kcml2
+ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtbmFuZW5nLWNvbWJwaHkuYwoKCgo+CgoKCj4+
+PiArCgoKCj4+PiArI2RlZmluZSBCSVRfV1JJVEVBQkxFX1NISUZUCQkxNgoKCgo+Pj4gKyNkZWZp
+bmUgUkVGX0NMT0NLXzI0TUh6CQkJMjQwMDAwMDAKCgoKPj4+ICsjZGVmaW5lIFJFRl9DTE9DS18y
+NU1IegkJCTI1MDAwMDAwCgoKCj4+PiArI2RlZmluZSBSRUZfQ0xPQ0tfMTAwTUh6CQkxMDAwMDAw
+MDAKCgoKPj4+ICsvKiBSSzM1NjggVDIyIENPTUJPIFBIWSBSRUcgKi8KCgoKPj4+ICsjZGVmaW5l
+IFJLMzU2OF9UMjJfUEhZUkVHNQkJMHgxNAoKCgo+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzVfUExM
+X0RJVl9NQVNLCUdFTk1BU0soNywgNikKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUc1X1BMTF9E
+SVZfU0hJRlQJNgoKCgo+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzVfUExMX0RJVl8yCQkxCgoKCj4+
+PiArCgoKCj4KCgoKPj4+ICsjZGVmaW5lIFJLMzU2OF9UMjJfUEhZUkVHNgkJMHgxOAoKCgo+CgoK
+Cj5NdWx0aS1QSFlfUmVnaXN0ZXIwMDcKCgoKPkFkZHJlc3M6IE9wZXJhdGlvbmFsIEJhc2UgKyBv
+ZmZzZXQgKDB4MDAxOCkKCgoKPgoKCgo+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzZfVFhfUlRFUk1f
+TUFTSwlHRU5NQVNLKDcsIDQpCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHNl9UWF9SVEVSTV9T
+SElGVAk0CgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHNl9UWF9SVEVSTV81ME9ITQkweDgKCgoK
+Pj4+ICsjZGVmaW5lIFQyMl9QSFlSRUc2X1JYX1JURVJNX01BU0sJR0VOTUFTSygzLCAwKQoKCgo+
+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzZfUlhfUlRFUk1fU0hJRlQJMAoKCgo+Pj4gKyNkZWZpbmUg
+VDIyX1BIWVJFRzZfUlhfUlRFUk1fNDRPSE0JMHhGCgoKCj4+PiArCgoKCj4+PiArI2RlZmluZSBS
+SzM1NjhfVDIyX1BIWVJFRzcJCTB4MUMKCgoKPgoKCgo+TXVsdGktUEhZX1JlZ2lzdGVyMDA4CgoK
+Cj5BZGRyZXNzOiBPcGVyYXRpb25hbCBCYXNlICsgb2Zmc2V0ICgweDAwMUMpCgoKCj4KCgoKPj4+
+ICsjZGVmaW5lIFQyMl9QSFlSRUc3X1NTQ19FTgkJQklUKDQpCgoKCj4KCgoKPlNlZSBSb2NrY2hp
+cCBSSzM1NjggVFJNIFBhcnQyIFYxLjAtMjAyMTAxMTEgcGFnZSAxOTU3LTE5NTgKCgoKPgoKCgo+
+SXQgbG9va3MgYXMgaWYgYWxsIFBIWVJFRyBkZWZpbmVzIGFkZCAtMSBpbiB2YWx1ZT8gSSdtIEkg
+Y29ycmVjdCBoZXJlPwoKCgo+CgoKCj49PT0KCgoKPgoKCgo+U1NDX0VOCgoKCj5JbiBVMyBhbmQg
+U0FUQSBtb2RlLCB0aGlzIGJpdD0gMSwgc2V0IFNTQyBvbgoKCgo+SW4gUENJRSBtb2RlLCB0aGlz
+IGJpdD0wIHNldCBTU0Mgb2ZmCgoKCj4KCgoKPsKgwqDCoMKgwqAgSWYgU3ByZWFkIFNwZWN0cnVt
+IENsb2NraW5nIChTU0MpIGlzIHVzZWQgaXQgaXMKCgoKPsKgwqDCoMKgwqAgcmVxdWlyZWQgdGhh
+dCBhIGNvbW1vbiByZWZlcmVuY2UgY2xvY2sgaXMgdXNlZCBieSB0aGUgbGluayBwYXJ0bmVycy4K
+CgoKPsKgwqDCoMKgwqAgTW9zdCBjb21tZXJjaWFsbHkgYXZhaWxhYmxlIHBsYXRmb3JtcyB3aXRo
+IFBDSWUgYmFja3BsYW5lcyB1c2UKCgoKPsKgwqDCoMKgwqAgU1NDIHRvIHJlZHVjZSBFTUkuCgoK
+Cj4KCgoKPk1heWJlIGEgZHVtYiBxdWVzdGlvbiBmb3IgaW4gYSBwb3NzaWJsZSBZQU1MIGRlc2Ny
+aXB0aW9uOgoKCgo+SXMgdGhpcyBhYm92ZSB0ZXh0IGZyb20gdGhlIFRSTSBjb3JyZWN0PwoKCgo+
+SXMgU1NDIG9ubHkgdXNlZCBpbiBjb21iaW5hdGlvbiB3aXRoIFBDSUUgaW5zdGVhZCBvZiBVMyBh
+bmQgU0FUQT8KCgoKPgoKCgo+PT09CgoKCj4KCgoKPkpvaGFuCgoKCj4KCgoKPj4+ICsKCgoKPj4+
+ICsjZGVmaW5lIFJLMzU2OF9UMjJfUEhZUkVHMTAJCTB4MjgKCgoKPj4+ICsjZGVmaW5lIFQyMl9Q
+SFlSRUcxMF9TVV9UUklNXzBfNwkweEYwCgoKCj4+PiArCgoKCj4+PiArI2RlZmluZSBSSzM1Njhf
+VDIyX1BIWVJFRzExCQkweDJDCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMTFfUExMX0xQRl9B
+REoJMHg0CgoKCj4+PiArCgoKCj4KCgoKPj4+ICsjZGVmaW5lIFJLMzU2OF9UMjJfUEhZUkVHMTIJ
+CTB4MzAKCgoKPgoKCgo+TXVsdGktUEhZX1JlZ2lzdGVyMDEzCgoKCj5BZGRyZXNzOiBPcGVyYXRp
+b25hbCBCYXNlICsgb2Zmc2V0ICgweDAwMzApCgoKCj4KCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlS
+RUcxMl9SRVNJU1RFUl9NQVNLCUdFTk1BU0soNSwgNCkKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlS
+RUcxMl9SRVNJU1RFUl9TSElGVAkweDQKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUcxMl9SRVNJ
+U1RFUl9ISUdIX1oJMHgzCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMTJfQ0tSQ1ZfQU1QMAkJ
+QklUKDcpCgoKCj4+PiArCgoKCj4+PiArI2RlZmluZSBSSzM1NjhfVDIyX1BIWVJFRzEzCQkweDM0
+CgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMTNfQ0tSQ1ZfQU1QMQkJQklUKDApCgoKCj4+PiAr
+CgoKCj4+PiArI2RlZmluZSBSSzM1NjhfVDIyX1BIWVJFRzE0CQkweDM4CgoKCj4+PiArI2RlZmlu
+ZSBUMjJfUEhZUkVHMTRfQ1RMRV9FTgkJQklUKDApCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVH
+MTRfU1NDX0NOVF9NQVNLCUdFTk1BU0soNywgNikKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUcx
+NF9TU0NfQ05UX1NISUZUCTYKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUcxNF9TU0NfQ05UX1ZB
+TFVFCTB4MQoKCgo+Pj4gKwoKCgo+Pj4gKyNkZWZpbmUgUkszNTY4X1QyMl9QSFlSRUcxNQkJMHgz
+QwoKCgo+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzE1X1NTQ19DTlRfVkFMVUUJMHg1ZgoKCgo+Pj4g
+KwoKCgo+Pj4gKyNkZWZpbmUgUkszNTY4X1QyMl9QSFlSRUcxNwkJMHg0NAoKCgo+Pj4gKyNkZWZp
+bmUgVDIyX1BIWVJFRzE3X1BMTF9MT09QCQkweDMyCgoKCj4+PiArCgoKCj4+PiArI2RlZmluZSBS
+SzM1NjhfVDIyX1BIWVJFRzMxCQkweDdDCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMzFfU1ND
+X01BU0sJCUdFTk1BU0soNywgNCkKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUczMV9TU0NfRElS
+X1NISUZUCTQKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUczMV9TU0NfVVBXQVJECQkwCgoKCj4+
+PiArI2RlZmluZSBUMjJfUEhZUkVHMzFfU1NDX0RPV05XQVJECTEKCgoKPj4+ICsjZGVmaW5lIFQy
+Ml9QSFlSRUczMV9TU0NfT0ZGU0VUX1NISUZUCTYKCgoKPj4+ICsjZGVmaW5lIFQyMl9QSFlSRUcz
+MV9TU0NfT0ZGU0VUXzUwMFBQTQkxCgoKCj4+PiArCgoKCj4+PiArI2RlZmluZSBSSzM1NjhfVDIy
+X1BIWVJFRzMyCQkweDgwCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMzJfUExMX0tWQ09fTUFT
+SwlHRU5NQVNLKDQsIDIpCgoKCj4+PiArI2RlZmluZSBUMjJfUEhZUkVHMzJfUExMX0tWQ09fU0hJ
+RlQJMgoKCgo+Pj4gKyNkZWZpbmUgVDIyX1BIWVJFRzMyX1BMTF9LVkNPX1ZBTFVFCTIKCgoKPj4+
+ICsKCgoKPgoKCgo+CgoKCj4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
