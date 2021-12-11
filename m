@@ -4,71 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8418C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Dec 2021 22:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCE01C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Dec 2021 10:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vO2kgBjv5MPe4xm9w0zfGrG4CSfWB83sYNirFNy0GbI=; b=4dsQhmRM0U26aF
-	MiwF7rEExVgtTYIdbTMAI5Cw8BtAkM/tOkFN6Qf4NUfItTqzyMIEvHPju/PCyOjK9XsXYRNTycFk2
-	V4y/CtdIWR7tCHByOKiaks30IMM0lbiBgXyeV9p1iZP2u+VcLaYetqVaIza7s433uyqjMdzUG3FKG
-	2cVRoHa75gSsgsTYNiLI9QcFnrSs9cK7kJhNqXI6L6tfT/fKLH8C9uJM/8jDEmLBuKJa/qZBY0sKO
-	mepuD3fgDH+P54qvWqEN9JroL+OmKqmQ3Q41VNKz4EQR3hfQ7/dmQB3B0KGT8fpQC0fJ092K764Dg
-	44F6fYggrP8FlptVHrdg==;
+	List-Owner; bh=tkM3s17b9OTHlRVdqVGBY8GT625jHlILPhQmcY11dD0=; b=zgsgCxcKVOubXm
+	IU0fQaRlE7PQ7D2/aeBm2xytBgUqBQdg8PIVYvl2YKZIxe2C8SZ50WAWuqDNtvB61gFFd0RO9zcTa
+	gQkRQBP5kthtNKocbTNpOjM8n3uJUuF+gQ+ahElM92BDkC06XCbgnj9D4e0zM3TzdRdMy3fLx+jfa
+	sxyBev4zExMnx4eAzKWTCshhBF4qY/xPMNUiOCo1m3XtPo0TtaieZ2j3xYodPy1IU3aPRUr8Uh8w9
+	NVp478FCVle/cKT1faJpJ0Mu8PTqc1M42sTxCDvoVrOGBka5GFeH4mmYeOHP8ifpb0/iHiiQg8ktI
+	+Tl51PA5dasbhUo8lNLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvo1u-003vOG-Qe; Fri, 10 Dec 2021 22:06:14 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1mw03H-004tzn-8F; Sat, 11 Dec 2021 10:56:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvo1g-003vKc-Ky; Fri, 10 Dec 2021 22:06:01 +0000
-Received: by mail-ot1-f49.google.com with SMTP id
- w6-20020a9d77c6000000b0055e804fa524so11033884otl.3; 
- Fri, 10 Dec 2021 14:06:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=z0ZIWpgf+ozqCXjjJqmBIsm6dGvp4HgfAzO7q4NuCw8=;
- b=gB0OhvK959QwqOaI2+7iF9skGO2X/oPShtPfuUGWINXttW2yCzX6mHZV9u0bkHiwQr
- a0m+Gq206HEdDlBx/u5N+L9WWFgBx19cqg10dfdDcDhl2JMIwOywuUp2gpuLk03Kkzx4
- i6UgZSVa55HFExjv3t7kwAdXyp76FeTvg28M4FpO5cwb4YaV4/58OtyiPrAcDEV76SXh
- rP18gH9mwgqFmm+gIH3enCQy1nhubcBHhb42S8rrpC2hR50hMJFQjm45WSgFKmUwBGAr
- 7ticHRMPTKkUp/2jGhmka7ptzwg/0W6jay5ybjjIlb8YHgXNRNzVd+XNw1lOqRq+QxiL
- Z/og==
-X-Gm-Message-State: AOAM532RSI7O1bcN+wKPXLegEcmnm5J8QruGnYkVYk2sR7E5UQzzErFx
- Jfff6+OrZ2Q/PAqkFOHC7w==
-X-Google-Smtp-Source: ABdhPJzE1v5OmwDcvB5jsdLIarkvcrqvllmn9doaEKyiymwKfG7SjrwD4X03lykl1F1KBPo+plnVfg==
-X-Received: by 2002:a9d:12c:: with SMTP id 41mr13206819otu.322.1639173960028; 
- Fri, 10 Dec 2021 14:06:00 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id y12sm1084779oiv.49.2021.12.10.14.05.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Dec 2021 14:05:59 -0800 (PST)
-Received: (nullmailer pid 2010456 invoked by uid 1000);
- Fri, 10 Dec 2021 22:05:58 -0000
-Date: Fri, 10 Dec 2021 16:05:58 -0600
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: yifeng.zhao@rock-chips.com, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, kever.yang@rock-chips.com,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- p.zabel@pengutronix.de, linux-rockchip@lists.infradead.org, heiko@sntech.de,
- vkoul@kernel.org, robh+dt@kernel.org, kishon@ti.com, cl@rock-chips.com
-Subject: Re: [RFC PATCH v4 2/4] dt-bindings: phy: rockchip: Add Naneng combo
- PHY bindings
-Message-ID: <YbPPRu+KYRLFKOkD@robh.at.kernel.org>
-References: <20211208185449.16763-1-jbx6244@gmail.com>
- <20211208185449.16763-3-jbx6244@gmail.com>
+ id 1mw034-004txP-Vm; Sat, 11 Dec 2021 10:56:16 +0000
+Received: from ip4d17a2ab.dynamic.kabel-deutschland.de ([77.23.162.171]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mw02p-0007zm-NW; Sat, 11 Dec 2021 11:55:59 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
+ - <opensource@rock-chips.com>, David Heidelberg <david@ixit.cz>
+Cc: ~okias/devicetree@lists.sr.ht, David Heidelberg <david@ixit.cz>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: convert power domain node for rockchip DW
+ MIPI DSI
+Date: Sat, 11 Dec 2021 11:55:58 +0100
+Message-ID: <26502781.jAYDHVeSjN@diego>
+In-Reply-To: <20211206212651.126405-1-david@ixit.cz>
+References: <20211206212651.126405-1-david@ixit.cz>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211208185449.16763-3-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_140600_714845_204705F4 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20211211_025615_055350_F46D6840 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +64,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 08 Dec 2021 19:54:47 +0100, Johan Jonker wrote:
-> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> 
-> Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
-> 
-> Changed V4:
->   restyle
->   remove some minItems
->   add more properties
->   remove reset-names
->   move #phy-cells
->   add rockchip,rk3568-pipe-grf
->   add rockchip,rk3568-pipe-phy-grf
-> ---
->  .../phy/phy-rockchip-naneng-combphy.yaml      | 127 ++++++++++++++++++
->  1 file changed, 127 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-> 
+Hi David,
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Am Montag, 6. Dezember 2021, 22:26:50 CET schrieb David Heidelberg:
+> Convert into YAML format into format, which can be validated.
+> 
+> Changes:
+>  - drop panel from example
+
+the patch subject is strange, talking about a "power domain node".
+That needs a fix.
+
+Some more things below.
+
+
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - rockchip,px30-mipi-dsi
+> +              - rockchip,rk3288-mipi-dsi
+> +              - rockchip,rk3399-mipi-dsi
+> +          - const: snps,dw-mipi-dsi
+
+> +      - items:
+> +          - const: rockchip,px30-mipi-dsi
+> +      - items:
+> +          - const: rockchip,rk3288-mipi-dsi
+> +      - items:
+> +          - const: rockchip,rk3399-mipi-dsi
+
+what are these for?
+
+I see that px30 uses the dsi without the snps part, but you
+can also just add a patch adding that second compatible to px30.dtsi
+
+I don't think we need to support both ways.
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks: true
+> +
+> +  clock-names: true
+> +
+> +  phys:
+> +    maxItems: 1
+> +    description: The external PHY
+
+make that "Optional external PHY perhaps"?
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
