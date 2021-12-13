@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CECAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Dec 2021 11:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCC0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Dec 2021 13:34:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5LMeatfBt4lm2anQP+p3NM/Bhh/rFb0o63O44YSBRqo=; b=m/oZXSJD2jHJdw
-	ykS3zE5Gkz7FgVlNPrVS76Lk/2NuDONh0Z+K/32fLeH1MtRCKBt57he0HJjmwAwhcOJ6lMQb8YA81
-	IfMud6LjSCba9wSWornuDnjB2axHFSw4EL3O71z4pew62wyG5Z7EfuyESMn7851ljeTDMgBLUCdHn
-	Pw7PXoYsY1O1wEfMQKTr2kQf5xUl1puz863uAo1rqruRU39FzROMuc474FQaYdzhsggkdZjBKmoWM
-	OfHa/vEG3IFycDhdj8H9C9trGnWB5oz8RKmnb09psGNYcUHKIRVOS41cIu7E1TUCMNWqBq0hJKppK
-	OjI/tlb3DL8/Y+Pon3SA==;
+	List-Owner; bh=PgqS0clpUxFpYz5UX868+KTKEE0Kvo2bZM9ESnufV7A=; b=x0TSYca5rpx7pv
+	/6ytdEvfaSgJTMS0OPYl0YIQ80ywMLNEEDHYCbjSdyOohyckDgi7bLN8JVANWNQFCWBELvv5aDXQS
+	aNvcEs+gQrvX7kDT1rd5cNesIX7m0gtVhpIsDwH5oypCVeQG9Z2U4KaD/zvX9890fIyvC8yFj07ZG
+	LUAEShlI9NcytabYjEblVQfZbL+MDvohz3Xa9dx8PrQQAuflFval/GVvfIRg9u4A2Xc1aNUnOaFEW
+	/UizTzRWQR70FWdvMwSZxal7d1+iRhlxzMYooR+wnsnbyIYZADaxu4EOY/AqMEvxtW438ZAldhxMn
+	uv8VVCynPWDNPEBDeURA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwjCH-009BPZ-BG; Mon, 13 Dec 2021 11:08:45 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mwlTW-009isU-1w; Mon, 13 Dec 2021 13:34:42 +0000
+Received: from mga02.intel.com ([134.134.136.20])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwjC0-009BHy-8A
- for linux-rockchip@lists.infradead.org; Mon, 13 Dec 2021 11:08:31 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mwjBv-0002cG-6X; Mon, 13 Dec 2021 12:08:23 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1mwjBr-0006po-V0; Mon, 13 Dec 2021 12:08:19 +0100
-Date: Mon, 13 Dec 2021 12:08:19 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH 07/18] dt-bindings: display: rockchip: dw-hdmi: Allow
- "ref" as clock name
-Message-ID: <20211213110819.GB6003@pengutronix.de>
-References: <20211208151230.3695378-1-s.hauer@pengutronix.de>
- <20211208151230.3695378-8-s.hauer@pengutronix.de>
- <3032544.f5MXlUzpl7@phil>
+ id 1mwlTB-009iiW-Fc; Mon, 13 Dec 2021 13:34:22 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10196"; a="226007994"
+X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="226007994"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Dec 2021 05:34:19 -0800
+X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="517751011"
+Received: from ppolasze-mobl.ger.corp.intel.com (HELO localhost)
+ ([10.252.20.7])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Dec 2021 05:34:15 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, airlied@linux.ie, daniel@ffwll.ch
+Cc: linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 0/3] drm/dp: Move DisplayPort helpers into own module
+In-Reply-To: <20211213093650.19598-1-tzimmermann@suse.de>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20211213093650.19598-1-tzimmermann@suse.de>
+Date: Mon, 13 Dec 2021 15:34:12 +0200
+Message-ID: <87lf0o7hnv.fsf@intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3032544.f5MXlUzpl7@phil>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 12:07:30 up 2 days, 19:53, 56 users, load average: 0.19, 0.24, 0.18
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_030828_306590_44B77586 
-X-CRM114-Status: GOOD (  23.90  )
+X-CRM114-CacheID: sfid-20211213_053421_612023_2D50AE28 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,33 +69,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 12, 2021 at 11:09:24PM +0100, Heiko Stuebner wrote:
-> Am Mittwoch, 8. Dezember 2021, 16:12:19 CET schrieb Sascha Hauer:
-> > "vpll" is a misnomer. A clock input to a device should be named after
-> > the usage in the device, not after the clock that drives it. On the
-> > rk3568 the same clock is driven by the HPLL.
-> > To fix that, this patch renames the vpll clock to ref clock.  The clock
-> > name "vpll" is left for compatibility to old device trees.
-> 
-> Can't we just say that the binding only takes the "ref" name, but
-> the code still allows "vpll".
-> 
-> I think I remember Rob suggesting something similar in the past.
-> 
-> I don't think that we need to keep the binding(-validation)
-> compatible with old devicetrees, but the kernel itself should stay
-> compatible.
+On Mon, 13 Dec 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+> Split-off DisplayPort functions from KMS helper library and move them
+> into their own module. Reduces the size of drm_kms_helper.ko by ~50%.
+>
+> This patchset is part of an on-going effort to reduce the minimum
+> binary size of the DRM core and helpers. It's helpful for systems with
+> early-boot DRM graphics, which requires DRM to be linked into the
+> kernel image.
 
-Sounds reasonable. I'll also add a patch changing the in-tree users next
-round.
+Would it be time to add a subdirectory for each non-driver, non-core drm
+module? We've touched this topic before. I find it increasingly hard to
+remember which files are part of helpers. This would also help with the
+arbitrary drm_dp_helper_mod.c naming.
 
-Sascha
+Perhaps drivers/gpu/drm/drm_dp/?
+
+BR,
+Jani.
+
+
+
+>
+> Thomas Zimmermann (3):
+>   drm/dp_mst: Remove trailing whitespace.
+>   drm/dp: Move DP declarations into separate header file
+>   drm/dp: Move DisplayPort helpers into separate helper module
+>
+>  drivers/gpu/drm/Kconfig                       |  8 ++++++
+>  drivers/gpu/drm/Makefile                      | 14 ++++++----
+>  drivers/gpu/drm/bridge/Kconfig                |  4 +++
+>  drivers/gpu/drm/bridge/analogix/Kconfig       |  2 ++
+>  drivers/gpu/drm/bridge/cadence/Kconfig        |  1 +
+>  drivers/gpu/drm/drm_crtc_helper_internal.h    | 27 ------------------
+>  drivers/gpu/drm/{drm_dp_helper.c => drm_dp.c} |  2 +-
+>  drivers/gpu/drm/drm_dp_aux_dev.c              |  2 +-
+>  drivers/gpu/drm/drm_dp_helper_internal.h      | 28 +++++++++++++++++++
+>  drivers/gpu/drm/drm_dp_helper_mod.c           | 22 +++++++++++++++
+>  drivers/gpu/drm/drm_dp_mst_topology.c         |  4 +--
+>  drivers/gpu/drm/drm_kms_helper_common.c       | 14 ----------
+>  drivers/gpu/drm/i915/Kconfig                  |  1 +
+>  drivers/gpu/drm/msm/Kconfig                   |  1 +
+>  drivers/gpu/drm/nouveau/Kconfig               |  1 +
+>  drivers/gpu/drm/rockchip/Kconfig              |  1 +
+>  drivers/gpu/drm/tegra/Kconfig                 |  1 +
+>  drivers/gpu/drm/xlnx/Kconfig                  |  1 +
+>  18 files changed, 83 insertions(+), 51 deletions(-)
+>  rename drivers/gpu/drm/{drm_dp_helper.c => drm_dp.c} (99%)
+>  create mode 100644 drivers/gpu/drm/drm_dp_helper_internal.h
+>  create mode 100644 drivers/gpu/drm/drm_dp_helper_mod.c
+>
+>
+> base-commit: 3f422828221d9ceefcddef0be33561b1646a1cbe
+> prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
+> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
+> --
+> 2.34.1
+>
 
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-rockchip mailing list
