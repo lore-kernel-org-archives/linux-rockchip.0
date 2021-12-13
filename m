@@ -4,56 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CBCC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Dec 2021 10:18:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CB5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Dec 2021 10:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PTwnFtBrDqH6DKSNn5t8m2e931hQXJt/6cOsHgsF7r4=; b=NhcoSKPWpCGiox
-	Lp52nU3DuetFaofPOVePwmOwJEcM6DxfzUj8qL5ERcUEoGQcYdZ2EMSsYnYmeI74sV2UWmt4labpj
-	FNSD32eHln5he+2DvoJOupEvtbd0cUpK18iDAxIUAiYVpRiCxT5J3vccXGlApxC+VQBk7NLsMdBKf
-	uJ45CXRYn93mm/O+Hqt6E7gJPdjzECM/XvdMX+5T2+6aTC/xSZNuQK7GUqVlg5NK+GRTYgScEgIFJ
-	FWeTUbQ26fJx+V1E8bWtEzCasBweeuWWL8omDNCVS2dR6gqlx2TiJ7cBuTjj5Z9zGntVR4M4lRAm9
-	yhpTekDTzxOACj+XbLaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jODaOZShCS7ix/tMG31pv50J9aKG+3wIPZ5sQYWm37g=; b=zDzX7G27wmLSN6
+	EQ7nxuFoAmf+UpfBvzEhSGksHkwu7ie0o02yu/Yupsy7ed04r4Ic4Gv5dngRmLZIv9yB7zBD37Pur
+	4ZtTZanORHE6MBi1lkODm2QXezsPrYzjV9NFcr2qX+8T4Bnh+awoM7Xsiu4Y+egFmUHOcwmgJolsG
+	ZHvcH2fDVhAegUZTEeu3N5MUxSiNiD8LLTPBdVc3oEWRGYbx8/tM41/+ymokxkapYST3w1ljMzB6e
+	t2SWHa4hFUX/vWi5m+QWl0am/X7QpnbbaDTQmxxc96ZZQr4+/gIlEuoF5BGIl2LhF/qHIYgXBm5PL
+	Eu/WVR38cnjSPeqSAScw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwiPP-008xDE-3N; Mon, 13 Dec 2021 10:18:15 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1mwiZD-0090kA-Pc; Mon, 13 Dec 2021 10:28:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwi7E-008ozG-HT; Mon, 13 Dec 2021 09:59:30 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10196"; a="238924787"
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="238924787"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 01:59:24 -0800
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="566495206"
-Received: from ppolasze-mobl.ger.corp.intel.com (HELO localhost)
- ([10.252.20.7])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 01:59:20 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, mripard@kernel.org,
- maarten.lankhorst@linux.intel.com, airlied@linux.ie, daniel@ffwll.ch
-Cc: linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- Thomas Zimmermann <tzimmermann@suse.de>, nouveau@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, freedreno@lists.freedesktop.org,
+ id 1mwiCT-008rMv-B3; Mon, 13 Dec 2021 10:04:54 +0000
+Received: from p5b127e39.dip0.t-ipconnect.de ([91.18.126.57]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mwiCR-0000r3-FE; Mon, 13 Dec 2021 11:04:51 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: Re: [Intel-gfx] [PATCH 2/3] drm/dp: Move DP declarations into
- separate header file
-In-Reply-To: <20211213093650.19598-3-tzimmermann@suse.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20211213093650.19598-1-tzimmermann@suse.de>
- <20211213093650.19598-3-tzimmermann@suse.de>
-Date: Mon, 13 Dec 2021 11:59:18 +0200
-Message-ID: <87v8zs7rm1.fsf@intel.com>
+Subject: [GIT PULL] Rockchip dts fixes for 5.16
+Date: Mon, 13 Dec 2021 11:04:52 +0100
+Message-ID: <3072346.MIvVl8DfR5@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_015928_635121_9C8A8A9D 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20211213_020453_463022_686576F7 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,158 +58,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Dec 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> Split the DP declarations from other helpers before moving the
-> DP functions into a separate module.
->
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->  drivers/gpu/drm/drm_crtc_helper_internal.h | 27 ---------------------
->  drivers/gpu/drm/drm_dp_aux_dev.c           |  2 +-
->  drivers/gpu/drm/drm_dp_helper.c            |  2 +-
->  drivers/gpu/drm/drm_dp_helper_internal.h   | 28 ++++++++++++++++++++++
->  drivers/gpu/drm/drm_dp_mst_topology.c      |  2 +-
->  drivers/gpu/drm/drm_kms_helper_common.c    |  1 +
->  6 files changed, 32 insertions(+), 30 deletions(-)
->  create mode 100644 drivers/gpu/drm/drm_dp_helper_internal.h
->
-> diff --git a/drivers/gpu/drm/drm_crtc_helper_internal.h b/drivers/gpu/drm/drm_crtc_helper_internal.h
-> index 61e09f8a8d0f..28e04e750130 100644
-> --- a/drivers/gpu/drm/drm_crtc_helper_internal.h
-> +++ b/drivers/gpu/drm/drm_crtc_helper_internal.h
-> @@ -28,36 +28,9 @@
->  
->  #include <drm/drm_connector.h>
->  #include <drm/drm_crtc.h>
-> -#include <drm/drm_dp_helper.h>
->  #include <drm/drm_encoder.h>
->  #include <drm/drm_modes.h>
->  
-> -/* drm_dp_aux_dev.c */
-> -#ifdef CONFIG_DRM_DP_AUX_CHARDEV
-> -int drm_dp_aux_dev_init(void);
-> -void drm_dp_aux_dev_exit(void);
-> -int drm_dp_aux_register_devnode(struct drm_dp_aux *aux);
-> -void drm_dp_aux_unregister_devnode(struct drm_dp_aux *aux);
-> -#else
-> -static inline int drm_dp_aux_dev_init(void)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline void drm_dp_aux_dev_exit(void)
-> -{
-> -}
-> -
-> -static inline int drm_dp_aux_register_devnode(struct drm_dp_aux *aux)
-> -{
-> -	return 0;
-> -}
-> -
-> -static inline void drm_dp_aux_unregister_devnode(struct drm_dp_aux *aux)
-> -{
-> -}
-> -#endif
-> -
->  /* drm_probe_helper.c */
->  enum drm_mode_status drm_crtc_mode_valid(struct drm_crtc *crtc,
->  					 const struct drm_display_mode *mode);
-> diff --git a/drivers/gpu/drm/drm_dp_aux_dev.c b/drivers/gpu/drm/drm_dp_aux_dev.c
-> index 06b374cae956..0618dfe16660 100644
-> --- a/drivers/gpu/drm/drm_dp_aux_dev.c
-> +++ b/drivers/gpu/drm/drm_dp_aux_dev.c
-> @@ -40,7 +40,7 @@
->  #include <drm/drm_dp_mst_helper.h>
->  #include <drm/drm_print.h>
->  
-> -#include "drm_crtc_helper_internal.h"
-> +#include "drm_dp_helper_internal.h"
->  
->  struct drm_dp_aux_dev {
->  	unsigned index;
-> diff --git a/drivers/gpu/drm/drm_dp_helper.c b/drivers/gpu/drm/drm_dp_helper.c
-> index 23f9073bc473..e995a0262ed7 100644
-> --- a/drivers/gpu/drm/drm_dp_helper.c
-> +++ b/drivers/gpu/drm/drm_dp_helper.c
-> @@ -35,7 +35,7 @@
->  #include <drm/drm_dp_mst_helper.h>
->  #include <drm/drm_panel.h>
->  
-> -#include "drm_crtc_helper_internal.h"
-> +#include "drm_dp_helper_internal.h"
->  
->  struct dp_aux_backlight {
->  	struct backlight_device *base;
-> diff --git a/drivers/gpu/drm/drm_dp_helper_internal.h b/drivers/gpu/drm/drm_dp_helper_internal.h
-> new file mode 100644
-> index 000000000000..5c9f8bb0c99a
-> --- /dev/null
-> +++ b/drivers/gpu/drm/drm_dp_helper_internal.h
-> @@ -0,0 +1,28 @@
-> +/* SPDX-License-Identifier: MIT */
-> +
-> +#include <drm/drm_dp_helper.h>
+The following changes since commit fa55b7dcdc43c1aa1ba12bca9d2dd4318c2a0dbf:
 
-Please don't include other headers if you can avoid them by using
-forward declarations.
+  Linux 5.16-rc1 (2021-11-14 13:56:52 -0800)
 
-BR,
-Jani.
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.16-rockchip-dtsfixes1
+
+for you to fetch changes up to aef4b9a89a376a9cabe5e744729914e7766c59bb:
+
+  arm64: dts: rockchip: fix poweroff on helios64 (2021-11-21 18:59:06 +0100)
+
+----------------------------------------------------------------
+Fixes for some board-level issues (regulators, mmc, poweroff, audio)
+
+----------------------------------------------------------------
+Alex Bee (1):
+      arm64: dts: rockchip: fix audio-supply for Rock Pi 4
+
+Artem Lapkin (1):
+      arm64: dts: rockchip: remove mmc-hs400-enhanced-strobe from rk3399-khadas-edge
+
+Florian Klink (1):
+      arm64: dts: rockchip: fix poweroff on helios64
+
+John Keeping (2):
+      arm64: dts: rockchip: fix rk3308-roc-cc vcc-sd supply
+      arm64: dts: rockchip: fix rk3399-leez-p710 vcc3v3-lan supply
+
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi   | 1 -
+ arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dts | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts      | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi     | 2 +-
+ 5 files changed, 4 insertions(+), 4 deletions(-)
 
 
-> +
-> +#ifdef CONFIG_DRM_DP_AUX_CHARDEV
-> +int drm_dp_aux_dev_init(void);
-> +void drm_dp_aux_dev_exit(void);
-> +int drm_dp_aux_register_devnode(struct drm_dp_aux *aux);
-> +void drm_dp_aux_unregister_devnode(struct drm_dp_aux *aux);
-> +#else
-> +static inline int drm_dp_aux_dev_init(void)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline void drm_dp_aux_dev_exit(void)
-> +{
-> +}
-> +
-> +static inline int drm_dp_aux_register_devnode(struct drm_dp_aux *aux)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline void drm_dp_aux_unregister_devnode(struct drm_dp_aux *aux)
-> +{
-> +}
-> +#endif
-> diff --git a/drivers/gpu/drm/drm_dp_mst_topology.c b/drivers/gpu/drm/drm_dp_mst_topology.c
-> index 7f0ff96261cf..9f7b0b606924 100644
-> --- a/drivers/gpu/drm/drm_dp_mst_topology.c
-> +++ b/drivers/gpu/drm/drm_dp_mst_topology.c
-> @@ -45,7 +45,7 @@
->  #include <drm/drm_print.h>
->  #include <drm/drm_probe_helper.h>
->  
-> -#include "drm_crtc_helper_internal.h"
-> +#include "drm_dp_helper_internal.h"
->  #include "drm_dp_mst_topology_internal.h"
->  
->  /**
-> diff --git a/drivers/gpu/drm/drm_kms_helper_common.c b/drivers/gpu/drm/drm_kms_helper_common.c
-> index 47e92400548d..88260d26409c 100644
-> --- a/drivers/gpu/drm/drm_kms_helper_common.c
-> +++ b/drivers/gpu/drm/drm_kms_helper_common.c
-> @@ -29,6 +29,7 @@
->  
->  #include <drm/drm_print.h>
->  
-> +#include "drm_dp_helper_internal.h"
->  #include "drm_crtc_helper_internal.h"
->  
->  MODULE_AUTHOR("David Airlie, Jesse Barnes");
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-rockchip mailing list
