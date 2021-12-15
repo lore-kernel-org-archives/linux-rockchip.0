@@ -4,77 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB95FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 21:06:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56BAEC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 21:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ll0qbP8C2e9u+G6yDkxlvTaWpwR501szn+mGuvxKRiY=; b=Zv4tdrf1jQ+dce
-	QCE6O70bSBVfNGroZcOVkxjZSvLp4dzOFus4w3OtOYoY1kqtHcYc03a1trKpR8LaVvq285Y7N9HEV
-	o1kR0Qe5PVWlkGoGVbh/3+ClP56t/LdxeP8vgCS2Wrrxs+/FLbaSdrGn/CYYSBSAYr2C/xm83Fv/I
-	8rKoRg6EuAIr/qMLjXYIXKEjpf0sIVvQwA55gRRL1qwCpKioFXOxJSRCgB/CvtK61jJWxEQJRtvzM
-	l6X0osCJozi6i/WI0HA43ZHFj4twB8mRh1ZWniENingJ94PUtL4Mo99mzmYZY2NOrp84jmSYiw6Gs
-	hglCkaqfraKXg5eFMCRw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gu1ECNT47jjROBQPFqa6xKFXOD/jVnFkI3b7rjv1z7k=; b=GUHxXS2lraKz9r
+	0HL37pDtdSlWXbf0qItnwFiIZbpwwFxcKkFuhhlIh8qjcKvFKBq/uJqEontDhsSg01poqAwOnEeri
+	V6jxOMf8EIQAGegX8Tb/oE6ojBwy212fGQ29K2JTvpl72FYxxphOM3lTwXU9SIqO1q8pPW7HLXLgm
+	XhHjSDXnc0sa1UF0OW3wr0K0ofQ0aamgdN0b4c8Shv6kiqKG5sMzm7Kz+38NDyBbIsnqXcKrsHz55
+	1AKQb05X2UuH1NwnxMI0BGyb3h9/jZwBiNEG0+1kqVZc6XBujaHvUmr/wiHNpmmmSmaMqmFNXV7Kh
+	OaTeOlPNHKE5RBFKoXGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxbTd-002kIW-Ej; Wed, 15 Dec 2021 21:06:17 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1mxbtp-002oEN-Ui; Wed, 15 Dec 2021 21:33:21 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxbQc-002ibG-4M; Wed, 15 Dec 2021 21:03:11 +0000
-Received: by mail-qk1-x730.google.com with SMTP id m192so21403486qke.2;
- Wed, 15 Dec 2021 13:03:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=eZzjv6PEcKc8tKRxH0kjZUoCXyO3M8rdYy6VBQjMZIk=;
- b=j/cbQ7ZkNwbCC4EnPjBRyMUYWeEcRvj1dQ2i+c2ancEl6Kw5PCtNOXjz2wR25eyXoY
- WBKYz6vds2J4v7pSSAx6xqfGLhUvuHYBa/KeVHXlsNIJTiCDY6Y2nkFV+m7Rn9RfhEt1
- Y0E/bkmZZdY9mMpZTM0fNEaywocnxf4FmSm11UOnBBKLFGhm7FzI4YsePYARb5mxAibk
- ueujdVekwICe6DthNPzT42QAWB8mlhY1Yxik6i2ugk65ALKVM3skLDsiael+IF023Evo
- ncHq2G0b7HOiETEHH/GpbL52PtuxqsC6Y860j3jIezesYi525qkx/hYDA77Ukra6HiHp
- U1kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=eZzjv6PEcKc8tKRxH0kjZUoCXyO3M8rdYy6VBQjMZIk=;
- b=2ht9G2rBJ1+yEJ85JRCPbEs597k/Gd45XKrRIMfr46P0NIZrgIPEpWxse9QIHcT/iZ
- X2usbYV90qTAlsQMG4dzQRylMu8W8hG8BFSsmYqgr29JVwlVqYLo9+XLXm1B7ag2wzgE
- KtJ1DPW8lWlmgv7kVyARfQl4mEqB8kynDlIfwKcFwaJwz0RuwPvMCIV2tX+LuqHGf9+7
- V4zPlPfEUXhUkzXaXQozuOhc3sLhp1AM5UrEZ8KaKq5BDNKyP5LQ6CMucOsIhKklshMl
- ni53deX9CS0Kc9SFm6YEnfPmbbAeuuYuNLFrUYGiOZ4BCN6B41SCpKqqxEUdTr4sDeKO
- sKRA==
-X-Gm-Message-State: AOAM5312qA0YVGJR602qnNzM1+yqsm+5JNid62H0s1CvtDLaZgcbP8w/
- SZttYLnMmsyBYwn9rbCJgzs=
-X-Google-Smtp-Source: ABdhPJzR1emnZ2WdfeP0+0vXOW/jlCE4yfiLz/eq6GEZ9SkRx5xm+EuQbaRIYJbqmRQAUnEFLhHvtA==
-X-Received: by 2002:a05:620a:1253:: with SMTP id
- a19mr10174631qkl.293.1639602188652; 
- Wed, 15 Dec 2021 13:03:08 -0800 (PST)
-Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.md.comcast.net.
- [98.233.193.225])
- by smtp.gmail.com with ESMTPSA id a20sm1644356qkh.63.2021.12.15.13.03.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 13:03:08 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v3 8/8] arm64: dts: rockchip: add Quartz64-A usb2 support
-Date: Wed, 15 Dec 2021 16:02:52 -0500
-Message-Id: <20211215210252.120923-9-pgwipeout@gmail.com>
+ id 1mxbtn-002oDa-R3
+ for linux-rockchip@lists.infradead.org; Wed, 15 Dec 2021 21:33:21 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+ by mxout2.routing.net (Postfix) with ESMTP id 5DDD55FC9A;
+ Wed, 15 Dec 2021 21:33:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1639603990;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=CGLX4lLKfaZJIZOOlRW1Svrup+UeHGpvxaEwvbFjJ8Q=;
+ b=w4/Jg15uEcK4Lge66BgXoVXqq8ATZOv9qKAS5iTDg3c3qh327Fes066m3haOUXjYW1WBqg
+ 0h0ciRXFEWNMAGdzFJyjaD68IamgLcg3bk27RjZw0TRM5pXgkXvaHXEA376NOL/30vM+AC
+ hsuQaUN73stUjvpGT1peX49j3DdVbGY=
+Received: from localhost.localdomain (fttx-pool-80.245.79.169.bambit.de
+ [80.245.79.169])
+ by mxbox1.masterlogin.de (Postfix) with ESMTPSA id A63AC4023F;
+ Wed, 15 Dec 2021 21:33:09 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Frank Wunderlich <frank-w@public-files.de>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH 0/2] Add Poweroff/Reset for rk8xx PMIC
+Date: Wed, 15 Dec 2021 22:32:58 +0100
+Message-Id: <20211215213300.4778-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211215210252.120923-1-pgwipeout@gmail.com>
-References: <20211215210252.120923-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
+X-Mail-ID: f522c713-099e-4ada-b605-9e769a6c0983
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_130310_207934_1B0901BB 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20211215_133320_064103_26531FFF 
+X-CRM114-Status: UNSURE (   5.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,90 +72,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the nodes and regulators to enable usb2 support on the Quartz64
-Model A.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+This Series adds Reset functionality for rk805,rk808,rk809,rk817,
+rk818 PMIC and poweroff feature for rk809.
 
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
+Frank Wunderlich (1):
+  mfd: rk808: Add poweroff and reboot support for rk809 pmic
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 4d4b2a301b1a..e5a70ff4e920 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -124,6 +124,22 @@ vcc5v0_usb: vcc5v0_usb {
- 		vin-supply = <&vcc12v_dcin>;
- 	};
- 
-+	/* all four ports are controlled by one gpio
-+	 * the host ports are sourced from vcc5v0_usb
-+	 * the otg port is sourced from vcc5v0_midu
-+	 */
-+	vcc5v0_usb20_host: vcc5v0_usb20_host {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb20_host";
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb20_host_en>;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
- 	vcc3v3_sd: vcc3v3_sd {
- 		compatible = "regulator-fixed";
- 		enable-active-low;
-@@ -477,6 +493,12 @@ pmic_int_l: pmic-int-l {
- 		};
- 	};
- 
-+	usb2 {
-+		vcc5v0_usb20_host_en: vcc5v0-usb20-host-en {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	vcc_sd {
- 		vcc_sd_h: vcc-sd-h {
- 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -546,3 +568,33 @@ bluetooth {
- &uart2 {
- 	status = "okay";
- };
-+
-+&u2phy1_host {
-+	phy-supply = <&vcc5v0_usb20_host>;
-+	status = "okay";
-+};
-+
-+&u2phy1_otg {
-+	phy-supply = <&vcc5v0_usb20_host>;
-+	status = "okay";
-+};
-+
-+&u2phy1 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
+Peter Geis (1):
+  mfd: rk808: add reboot support to rk808 pmic
+
+ drivers/mfd/rk808.c       | 50 +++++++++++++++++++++++++++++++++++++++
+ include/linux/mfd/rk808.h |  2 ++
+ 2 files changed, 52 insertions(+)
+
 -- 
 2.25.1
 
