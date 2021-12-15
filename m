@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB427C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 18:14:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11987C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 18:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CDubyr9kYfSC0xU1jM5XZZCR6/Ed+T7XEl/Up3Ux+8g=; b=3n9bSNUF3V0Zmu
-	WFhuoOL12agO6QNppBirHs4p0yA82lxwcprgo7RzK4TTH6I2xeuQjzCDi/0q4TE6rt+dNQ/JZge/F
-	jlUOFX5eJ3E/IskXJ0ZV4+F9Am+Zzj5vXEqArFGAV7ajyT0xWfju3TMTpzPUbT9FQgORZ1XEc1C+9
-	zD7uRf4wc0T1ET+tQnFWSBDmA4LwxWHWOqZHCCXfkB/YK5WQc3bNM85Q+1x+oPLAWTz2n9ovfuyH/
-	pxJKBwmfnrAAF0jm5MmR5qa9R/zMHewXcUlfSumQEOe21QvH3DiSy1tbUbNhWz8UJlYJ+QhIhC8gc
-	OBA/TdDkDnXBcc2AtjWw==;
+	List-Owner; bh=5Gl3VSvpHw4C5cvHcPKFHKsP2c6SBNW9R5H1XfuDAEA=; b=VrXOPU+0FZN+qS
+	p21ZH5cd2ncA7OGKgc66uulUy5aMY/IU+KzbsCVaNq663C5AorazvyIt9F/tY7Olf+VlmPVh4NBCO
+	jduv4lnnRA2JYy6joq2ys+qBrbiefzIAzGIXwm22/7yMBagV1AZ/a77gik330cdKtMOiSUx6G5ZDs
+	m+cxn9HAL8WhCbycRbKqZmH/VDrb2cO1OabDYCJkjtnvW0+k4gtN48EF6kR372pvWuB7crO23F271
+	eeQO6BECnSNWUb1W/mOqMoJldB2t58jWSpM0jLWpxBxwC8s6kjjkus4PhRCo+gdWoEDWgA+60iOJO
+	rIX4Bl5ZNmiWFZHAjoiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxYnS-002DOi-Ns; Wed, 15 Dec 2021 18:14:34 +0000
+	id 1mxYnf-002DVE-SQ; Wed, 15 Dec 2021 18:14:47 +0000
 Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxYn9-002DG0-NI; Wed, 15 Dec 2021 18:14:17 +0000
+ id 1mxYnF-002DIk-Rx; Wed, 15 Dec 2021 18:14:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=metanate.com; s=stronger; h=Content-Transfer-Encoding:Message-Id:Date:
  Subject:Cc:To:From:Content-Type:Reply-To:Content-ID:Content-Description:
- In-Reply-To:References; bh=wsq8cUBFjzgYgnMDS2RJHFOuvoD7tYl9ctoDcV6S2XU=; b=ma
- VHM7jnW3jr4hNhZHkDvbhYleitth2sQiAk9MQr4S21BANoKCUezlSV2fxfYr3Bxz+Lb3ETG6oFk76
- HRmLtccR3HooekJURkDGWIw6c+GSNADF8zBWZra7N9Mdxx9SgruBVu4nTIsaFBwdzm8gLPAdnqiLm
- PQeIyY69c7Zvex5/fSBnxfk02Zppy+OUgrQcIvmQyYJwFXCdlaOeO7G6mmaeOxsznh1Mp8tI+K8QV
- mh7e4n5xbv0n3NVvzkc7IyxmESBXtYyv14G8vcQVtqkN77EsAt2QP3Zg331QvenUtq8w+53T5+D/H
- 1RueANeVYxJFgafLegyqTDY2wkvs41UQ==;
+ In-Reply-To:References; bh=aE8thdFYQsldf57tWzPRdCwPLimKXIrrUxf4p6MIe5g=; b=ZB
+ RlrjzHsTpoTx4JD4oO8rPvA0uffhOD7MwSaEFP1znA6wQgTdF8PAKY5mtK2IuiBiE721Lorl7R2+j
+ XKm/nBeb8na6dI7i3a8ymrYZXWXEeB/dfUZR/1kVCbaBOh8EHsizzFE7fk8it3T2TciYSmdyyx+Fw
+ /zBQOJ2ycoMYxbcECNdX+VgWMKtM3W7xLcbIbklJCyh06Ta/MaAoG8DosZRlK3e91joneq3gi9Uc9
+ 1/61hUgseBQsq24kHeDBJpuk6bZZE5a3ButRuAK8byookP5/DgIY828FBbLs63DptjBCsfCPAIl5W
+ GHmbEOUj6gcl44VuxAHR3J19+JN0Cmnw==;
 Received: from [81.174.171.191] (helo=donbot.metanate.com)
  by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1mxYmz-0001lA-Au; Wed, 15 Dec 2021 18:14:05 +0000
+ id 1mxYnB-0001lP-O5; Wed, 15 Dec 2021 18:14:17 +0000
 From: John Keeping <john@metanate.com>
 To: dri-devel@lists.freedesktop.org
 Cc: John Keeping <john@metanate.com>, Sandy Huang <hjc@rock-chips.com>,
@@ -44,15 +44,16 @@ Cc: John Keeping <john@metanate.com>, Sandy Huang <hjc@rock-chips.com>,
  David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/rockchip: vop: duplicate subclassed state variables
-Date: Wed, 15 Dec 2021 18:13:58 +0000
-Message-Id: <20211215181358.2950649-1-john@metanate.com>
+Subject: [PATCH] drm/rockchip: vop: implement atomic_print_state
+Date: Wed, 15 Dec 2021 18:14:12 +0000
+Message-Id: <20211215181413.2950676-1-john@metanate.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_101415_791641_4F9D2378 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20211215_101421_931329_B8D69627 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +71,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Duplicating the CRTC state should copy all of the fields in the
-subclassed state as well as the base state.  Switch to kmemdup to cover
-all of these (which are all simple variables).
-
-Most of the state variables are only used for .atomic_enable where they
-will have been set in the initial check, and enable_afbc is always set
-in the preceding .atomic_check, so the only issue here is inspecting the
-state later when these field end up no longer reflecting what has been
-programmed in the hardware.
+Rockchip VOP subclasses drm_crtc_state so implementing the
+atomic_print_state hook allows printing the additional Rockchip-specific
+fields of the CRTC state.
 
 Signed-off-by: John Keeping <john@metanate.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index f3975905599b..0efd79be8f3b 100644
+index 3e8d9e2d1b67..f3975905599b 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1552,7 +1552,7 @@ static struct drm_crtc_state *vop_crtc_duplicate_state(struct drm_crtc *crtc)
+@@ -1569,6 +1569,19 @@ static void vop_crtc_destroy_state(struct drm_crtc *crtc,
+ 	kfree(s);
+ }
+ 
++static void vop_crtc_print_state(struct drm_printer *p,
++				 const struct drm_crtc_state *state)
++{
++	struct rockchip_crtc_state *s = to_rockchip_crtc_state(state);
++
++	drm_printf(p, "\toutput_type=%s\n",
++		   drm_get_connector_type_name(s->output_type));
++	drm_printf(p, "\toutput_mode=%d\n", s->output_mode);
++	drm_printf(p, "\toutput_bpc=%d\n", s->output_bpc);
++	drm_printf(p, "\toutput_flags=%x\n", s->output_flags);
++	drm_printf(p, "\tenable_afbc=%d\n", s->enable_afbc);
++}
++
+ static void vop_crtc_reset(struct drm_crtc *crtc)
  {
- 	struct rockchip_crtc_state *rockchip_state;
- 
--	rockchip_state = kzalloc(sizeof(*rockchip_state), GFP_KERNEL);
-+	rockchip_state = kmemdup(crtc->state, sizeof(*rockchip_state), GFP_KERNEL);
- 	if (!rockchip_state)
- 		return NULL;
- 
+ 	struct rockchip_crtc_state *crtc_state =
+@@ -1652,6 +1665,7 @@ static const struct drm_crtc_funcs vop_crtc_funcs = {
+ 	.reset = vop_crtc_reset,
+ 	.atomic_duplicate_state = vop_crtc_duplicate_state,
+ 	.atomic_destroy_state = vop_crtc_destroy_state,
++	.atomic_print_state = vop_crtc_print_state,
+ 	.enable_vblank = vop_crtc_enable_vblank,
+ 	.disable_vblank = vop_crtc_disable_vblank,
+ 	.set_crc_source = vop_crtc_set_crc_source,
 -- 
 2.34.1
 
