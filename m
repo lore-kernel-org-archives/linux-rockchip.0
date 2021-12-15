@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6952DC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 21:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2940C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 21:04:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1q9nzZoPsZ935Tj81jyzUoF8RxmUOP7E1NYr4WEU3wA=; b=SK1kf87sjXdWSQ
-	+33V+l4YT6Y6tiTuywXkA7ZniUMx2qLCiE/1HN60hSbNNbLh4hRIRRF/NlbYV2HpGR31cJP/feYY7
-	jCrbgqs57UNPOW2QYWgEtMKXLFaQtmS8ORl2Wc5rEiUbNNry4IB9Bv0n8WALJLFUiUZfgQHdI8CG0
-	az+VpvzrfxffJ1VfB1H0m8istnQSHfqcFgT50rGo3jsPULHdFCdolPy5CP1oY4JiMHHFqbzAOHA7M
-	STCH3bAH14l+oWNSlkuELxIVl2U+TLTy9gRa5DkvyBA2AYHi/q8+NInbjXgYM/+weU6XSD6c1nIyC
-	l8pmDDC5/NHD3cozVtlA==;
+	List-Owner; bh=+vZtLp3kJFARU+qStf9jYiMapkiIRcJJyWDYzfne3jw=; b=lIeO1wZ0Dgc/+R
+	GbB5JOV7f6BgGcBqnbA24+6Vaot34GQWMVgMYpI5nfPrP0s756CZgI76+RUBNL9Juqf8NOlXtC67W
+	8IYr/kfVJNQcl40IncXxAF43bvwz00LS7yFM7vg5kM+Q0kiuaI+UHttmR5ozvmba0SNoQk9YEQYMe
+	8za7OutS+F7WFGcpFZUDt1F3Fum/TLYHxg997Blsup1XnLhfq+ebMghgH2CeuTn/o4JoaLpZygADD
+	xKZ8KCpy8wM5cwPWtjs+PpGMxedqILTQwYoFu12Q5xo/DCLsQNXJ9gGi03S5xVWbkQlFvgh6fSldR
+	ogZsGzuT3woFZLMfFdtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxbRg-002j4t-KU; Wed, 15 Dec 2021 21:04:16 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1mxbS5-002jLl-KY; Wed, 15 Dec 2021 21:04:41 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxbQW-002iXr-Cu; Wed, 15 Dec 2021 21:03:05 +0000
-Received: by mail-qk1-x734.google.com with SMTP id l25so12082766qkl.5;
- Wed, 15 Dec 2021 13:03:03 -0800 (PST)
+ id 1mxbQX-002iZ1-TM; Wed, 15 Dec 2021 21:03:07 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id gu12so21476528qvb.6;
+ Wed, 15 Dec 2021 13:03:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dxn6GGaZuVidLca/WMl3sqT9jVHJLPvQP6VZiUsVJrY=;
- b=XaWurc0R+0NGNOVmgUDJyVMha1V09ZYhzefIqaFhfkj0OWCWJ2k2r296h/SAHvtQ4+
- NuTgnojrPxsYbSqfv296jcpMCB1OJbHpbWwEhzXk0OSplmoiAQy4DA652/H53A8EZhka
- 4LCfn7mdyifEhwEIJ4AoE7nuPfAIwjCZONbsY2DCmQmIuF/bsjQOTfdpJA33ffWfHyZL
- M1imDOgnAb9viTpFk3htBEeCa9uJCBbenjA4+TGWsmYROojLlM2IaSDMd3Ag8c1Xam9d
- VocniaETqsUqF5oqKT6P+KHxsB85eVTfaGDDq4jCStFPQcetcGG3eSmzcS4UvAJRwO3G
- vWhw==
+ bh=cnamIWiam6by9Jdhi724L3CQvNB2/lSRkVxwvCCRpTo=;
+ b=E1AEu1MGDxZu4j9qDkDta96pULE2hKFf4bJroAvAfoO6ZR1WTD2ERJD10H4LjEyEeI
+ dTQKhY6wVd3TJVuMAb/bffsIFdIwL2YZiftTd5KOw8m+JM1uh69nSPCqoakNr5fIyHap
+ h+55/q9gAcX6H85tvC9BsJzN0fsPEn4lYjeISWXbIb2gJ1+48TidjdfjpK+XsMixD4H/
+ oFI/YiPt47j041oTRZpU3m99Q4pz56J1PTqfXcW7iSRtXHHyTr8AtDHEyzBY5PfTRJgh
+ +rWmMQpk/K3/4+Kv2w7HCiGZr+/foO9LibEUcWulrEO6IUhtTALAzS6wp+AxASB6GsvI
+ 8DQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=dxn6GGaZuVidLca/WMl3sqT9jVHJLPvQP6VZiUsVJrY=;
- b=zJufZig5LaO1yq/2P+0tW8W9vkA47n+wHJHedu/gv7WA+HmiG2J7+m2r8dR46Fsa+B
- gMlT/+04gxB3/9f6RJbi9wLtDfR2Qmce/FuWNhIOgo2mNirJJgM6sX0qQOnRnAiW91ev
- /XxQgGwR2uwExTOjlC/parjygfcH736Sm91XREsAiNstgPLB2bEWjL0mxItoWYNwSqbK
- AJCj1msVTUGlZcD5RtujeyoA+KHMOw/keIu8mMqxTkH6tOj6QJ0TfxxVB4mRaWzaKXqm
- QtJOEvHjKeUE1pYTJ2vwKsNfxxcnrXRdtNq1bFvdCPsDKf5B2dZCzxwoflxggIGm/Hj1
- JHiA==
-X-Gm-Message-State: AOAM530N5l4EJtVoOMc4ubVpKbY+MSizTTDdcrj5VSLwrWuMV19ozAjE
- oi/zVU8AEBDAOvY2aKlsWm4=
-X-Google-Smtp-Source: ABdhPJwz8LraXYh5bgWPQ24gKaH1IILFk+lRM2zMLltMoydsz/oJ62aRgdKdO2xo/lVSfOzWaIbFzg==
-X-Received: by 2002:a37:3d6:: with SMTP id 205mr10120606qkd.250.1639602182773; 
- Wed, 15 Dec 2021 13:03:02 -0800 (PST)
+ bh=cnamIWiam6by9Jdhi724L3CQvNB2/lSRkVxwvCCRpTo=;
+ b=P/6hky5EMzNLijqQ8PyPVjTcJcHT3qbu8/S8oL0Kf6lPFbMh4zD8/CZJg/JDC7jus5
+ P+jkl7jUukME/gPgJEtRgDbO1oMDYuHmBhs/Ih9juUAGr07R1TzON+kl6wbccsRomZP/
+ 2RTj6JhbWQWVJ/EZJXgE7fiGITVHvk/NUXKfyuvYeUFxJzYS9PPzTiCM1Izuryg++iRB
+ 53LnH+8/lS60T0zX4BJDkwfFBkodZ/mfIP3m1ai0QY2G2XB+9vCjcAF8NxHEh8DB5CgY
+ 2v01eodpu1l6KS3vlJzrHgYbyvFCffCOtEhQ/D7eHRRDWTYadg0Lq66PjTp4HW6uGdvl
+ 74sQ==
+X-Gm-Message-State: AOAM5320kFqozk08rx6UWoMxYvR+LT8TcjbCcJZWT+SVKTqtk72t/Cwm
+ Yj8XdXdhuj6AxXg2riEy5+4=
+X-Google-Smtp-Source: ABdhPJyifKmch0bI2sQrC3Chf/fDbNCvoFrt+qpN0s4H2EE7hzMscwXnhgQhMaapBWbNRPcoFcccHQ==
+X-Received: by 2002:a05:6214:1bcb:: with SMTP id
+ m11mr10695510qvc.0.1639602184347; 
+ Wed, 15 Dec 2021 13:03:04 -0800 (PST)
 Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.md.comcast.net.
  [98.233.193.225])
- by smtp.gmail.com with ESMTPSA id a20sm1644356qkh.63.2021.12.15.13.03.01
+ by smtp.gmail.com with ESMTPSA id a20sm1644356qkh.63.2021.12.15.13.03.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 13:03:02 -0800 (PST)
+ Wed, 15 Dec 2021 13:03:03 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>
@@ -64,17 +65,16 @@ Cc: Peter Geis <pgwipeout@gmail.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
  linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 4/8] phy: phy-rockchip-inno-usb2: support standalone phy
- nodes
-Date: Wed, 15 Dec 2021 16:02:48 -0500
-Message-Id: <20211215210252.120923-5-pgwipeout@gmail.com>
+Subject: [PATCH v3 5/8] phy: phy-rockchip-inno-usb2: support muxed interrupts
+Date: Wed, 15 Dec 2021 16:02:49 -0500
+Message-Id: <20211215210252.120923-6-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211215210252.120923-1-pgwipeout@gmail.com>
 References: <20211215210252.120923-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_130304_483750_5752726E 
-X-CRM114-Status: GOOD (  11.81  )
+X-CRM114-CacheID: sfid-20211215_130306_001542_77DC6709 
+X-CRM114-Status: GOOD (  19.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,46 +92,239 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-New Rockchip devices have the usb2 phy devices as standalone nodes
-instead of children of the grf node.
-Allow the driver to find the grf node from a phandle.
+The rk3568 usb2phy has a single muxed interrupt that handles all
+interrupts.
+Allow the driver to plug in only a single interrupt as necessary.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
 
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 168 +++++++++++++-----
+ 1 file changed, 119 insertions(+), 49 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 5cfa7169d879..29e3a0da8c26 100644
+index 29e3a0da8c26..285958fdab38 100644
 --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
 +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1074,12 +1074,19 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 		return -EINVAL;
+@@ -204,6 +204,7 @@ struct rockchip_usb2phy_port {
+  * @dcd_retries: The retry count used to track Data contact
+  *		 detection process.
+  * @edev: extcon device for notification registration
++ * @irq: muxed interrupt for single irq configuration
+  * @phy_cfg: phy register configuration, assigned by driver data.
+  * @ports: phy port instance.
+  */
+@@ -218,6 +219,7 @@ struct rockchip_usb2phy {
+ 	enum power_supply_type	chg_type;
+ 	u8			dcd_retries;
+ 	struct extcon_dev	*edev;
++	int			irq;
+ 	const struct rockchip_usb2phy_cfg	*phy_cfg;
+ 	struct rockchip_usb2phy_port	ports[USB2PHY_NUM_PORTS];
+ };
+@@ -927,6 +929,102 @@ static irqreturn_t rockchip_usb2phy_otg_mux_irq(int irq, void *data)
+ 		return IRQ_NONE;
+ }
+ 
++static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
++{
++	struct rockchip_usb2phy *rphy = data;
++	struct rockchip_usb2phy_port *rport;
++	irqreturn_t ret = IRQ_NONE;
++	unsigned int index;
++
++	for (index = 0; index < rphy->phy_cfg->num_ports; index++) {
++		rport = &rphy->ports[index];
++		if (!rport->phy)
++			continue;
++
++		/* Handle linestate irq for both otg port and host port */
++		ret = rockchip_usb2phy_linestate_irq(irq, rport);
++	}
++
++	return ret;
++}
++
++static int rockchip_usb2phy_port_irq_init(struct rockchip_usb2phy *rphy,
++					  struct rockchip_usb2phy_port *rport,
++					  struct device_node *child_np)
++{
++	int ret;
++
++	/*
++	 * If the usb2 phy used combined irq for otg and host port,
++	 * don't need to init otg and host port irq separately.
++	 */
++	if (rphy->irq > 0)
++		return 0;
++
++	switch (rport->port_id) {
++	case USB2PHY_PORT_HOST:
++		rport->ls_irq = of_irq_get_byname(child_np, "linestate");
++		if (rport->ls_irq < 0) {
++			dev_err(rphy->dev, "no linestate irq provided\n");
++			return rport->ls_irq;
++		}
++
++		ret = devm_request_threaded_irq(rphy->dev, rport->ls_irq, NULL,
++						rockchip_usb2phy_linestate_irq,
++						IRQF_ONESHOT,
++						"rockchip_usb2phy", rport);
++		if (ret) {
++			dev_err(rphy->dev, "failed to request linestate irq handle\n");
++			return ret;
++		}
++		break;
++	case USB2PHY_PORT_OTG:
++		/*
++		 * Some SoCs use one interrupt with otg-id/otg-bvalid/linestate
++		 * interrupts muxed together, so probe the otg-mux interrupt first,
++		 * if not found, then look for the regular interrupts one by one.
++		 */
++		rport->otg_mux_irq = of_irq_get_byname(child_np, "otg-mux");
++		if (rport->otg_mux_irq > 0) {
++			ret = devm_request_threaded_irq(rphy->dev, rport->otg_mux_irq,
++							NULL,
++							rockchip_usb2phy_otg_mux_irq,
++							IRQF_ONESHOT,
++							"rockchip_usb2phy_otg",
++							rport);
++			if (ret) {
++				dev_err(rphy->dev,
++					"failed to request otg-mux irq handle\n");
++				return ret;
++			}
++		} else {
++			rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
++			if (rport->bvalid_irq < 0) {
++				dev_err(rphy->dev, "no vbus valid irq provided\n");
++				ret = rport->bvalid_irq;
++				return ret;
++			}
++
++			ret = devm_request_threaded_irq(rphy->dev, rport->bvalid_irq,
++							NULL,
++							rockchip_usb2phy_bvalid_irq,
++							IRQF_ONESHOT,
++							"rockchip_usb2phy_bvalid",
++							rport);
++			if (ret) {
++				dev_err(rphy->dev,
++					"failed to request otg-bvalid irq handle\n");
++				return ret;
++			}
++		}
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
+ 					   struct rockchip_usb2phy_port *rport,
+ 					   struct device_node *child_np)
+@@ -940,18 +1038,9 @@ static int rockchip_usb2phy_host_port_init(struct rockchip_usb2phy *rphy,
+ 	mutex_init(&rport->mutex);
+ 	INIT_DELAYED_WORK(&rport->sm_work, rockchip_usb2phy_sm_work);
+ 
+-	rport->ls_irq = of_irq_get_byname(child_np, "linestate");
+-	if (rport->ls_irq < 0) {
+-		dev_err(rphy->dev, "no linestate irq provided\n");
+-		return rport->ls_irq;
+-	}
+-
+-	ret = devm_request_threaded_irq(rphy->dev, rport->ls_irq, NULL,
+-					rockchip_usb2phy_linestate_irq,
+-					IRQF_ONESHOT,
+-					"rockchip_usb2phy", rport);
++	ret = rockchip_usb2phy_port_irq_init(rphy, rport, child_np);
+ 	if (ret) {
+-		dev_err(rphy->dev, "failed to request linestate irq handle\n");
++		dev_err(rphy->dev, "failed to setup host irq\n");
+ 		return ret;
  	}
  
--	if (!dev->parent || !dev->parent->of_node)
--		return -EINVAL;
-+	if (!dev->parent || !dev->parent->of_node) {
-+		rphy->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,usbgrf");
-+		if (IS_ERR(rphy->grf)) {
-+			dev_err(dev, "failed to locate usbgrf\n");
-+			return PTR_ERR(rphy->grf);
+@@ -1000,44 +1089,10 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
+ 	INIT_DELAYED_WORK(&rport->otg_sm_work, rockchip_usb2phy_otg_sm_work);
+ 
+-	/*
+-	 * Some SoCs use one interrupt with otg-id/otg-bvalid/linestate
+-	 * interrupts muxed together, so probe the otg-mux interrupt first,
+-	 * if not found, then look for the regular interrupts one by one.
+-	 */
+-	rport->otg_mux_irq = of_irq_get_byname(child_np, "otg-mux");
+-	if (rport->otg_mux_irq > 0) {
+-		ret = devm_request_threaded_irq(rphy->dev, rport->otg_mux_irq,
+-						NULL,
+-						rockchip_usb2phy_otg_mux_irq,
+-						IRQF_ONESHOT,
+-						"rockchip_usb2phy_otg",
+-						rport);
+-		if (ret) {
+-			dev_err(rphy->dev,
+-				"failed to request otg-mux irq handle\n");
+-			goto out;
+-		}
+-	} else {
+-		rport->bvalid_irq = of_irq_get_byname(child_np, "otg-bvalid");
+-		if (rport->bvalid_irq < 0) {
+-			dev_err(rphy->dev, "no vbus valid irq provided\n");
+-			ret = rport->bvalid_irq;
+-			goto out;
+-		}
+-
+-		ret = devm_request_threaded_irq(rphy->dev, rport->bvalid_irq,
+-						NULL,
+-						rockchip_usb2phy_bvalid_irq,
+-						IRQF_ONESHOT,
+-						"rockchip_usb2phy_bvalid",
+-						rport);
+-		if (ret) {
+-			dev_err(rphy->dev,
+-				"failed to request otg-bvalid irq handle\n");
+-			goto out;
+-		}
+-	}
++	ret = rockchip_usb2phy_port_irq_init(rphy, rport, child_np);
++	if (ret) {
++		dev_err(rphy->dev, "failed to init irq for host port\n");
++		goto out;
+ 
+ 	if (!IS_ERR(rphy->edev)) {
+ 		rport->event_nb.notifier_call = rockchip_otg_event;
+@@ -1117,6 +1172,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	phy_cfgs = match->data;
+ 	rphy->chg_state = USB_CHG_STATE_UNDEFINED;
+ 	rphy->chg_type = POWER_SUPPLY_TYPE_UNKNOWN;
++	rphy->irq = platform_get_irq_optional(pdev, 0);
+ 	platform_set_drvdata(pdev, rphy);
+ 
+ 	ret = rockchip_usb2phy_extcon_register(rphy);
+@@ -1196,6 +1252,20 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
++
++	if (rphy->irq > 0) {
++		ret = devm_request_threaded_irq(rphy->dev, rphy->irq, NULL,
++						rockchip_usb2phy_irq,
++						IRQF_ONESHOT,
++						"rockchip_usb2phy",
++						rphy);
++		if (ret) {
++			dev_err(rphy->dev,
++				"failed to request usb2phy irq handle\n");
++			goto put_child;
 +		}
 +	}
++
+ 	return PTR_ERR_OR_ZERO(provider);
  
--	rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
--	if (IS_ERR(rphy->grf))
--		return PTR_ERR(rphy->grf);
-+	else {
-+		rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
-+			if (IS_ERR(rphy->grf))
-+				return PTR_ERR(rphy->grf);
-+	}
- 
- 	if (of_device_is_compatible(np, "rockchip,rv1108-usb2phy")) {
- 		rphy->usbgrf =
+ put_child:
 -- 
 2.25.1
 
