@@ -4,67 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA2A6C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 10:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E9CDC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 10:24:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lnAWNnXRxOAWi6fSF6TDrhyGrDXvdDPc8Z23KYlLaVQ=; b=cirVVoDHn1vdS0
-	ZrK30ncFb6GJrNbbW5Lqmsw200l1lTK8xOXRePY6TllTOycVLi3aBy102mL/AKOHHvZIonUoI6ZyF
-	PI8xJ+ITf0ZEIrEpX+KpcXCPVd8wpWElFYrKnwbzai9bQm5tg7o50kCXJgfs1wKoR7wX7R49VThch
-	n6ifOvlLVsRyCVsj+7g0njQnGn5lpRO6srmikVE8NqUURpOWFNaw4cNh2AAneKR9AYmVldOIoR54B
-	jciKVAzv+R+o/7+gNKjBxbQQUFM7UtQ4+/FWD35rHDbN5di8v96yEdNQGtMX2wZOxW34CfoDymiqK
-	ofzgg6sObeUwW+Xh4gpw==;
+	List-Owner; bh=d4mU9MlBSeWka69lEGte5HKfHEzylg0n5chlZNn0zD4=; b=JWoRuaXuu3eCSW
+	BCYJGU3e+K6T4IiEUkfG0ihz+xTE7eP/I/Wcj8XKTJWTc4TJo/DfTitoSmZnRu84aiXk3eznMqRWB
+	JHs0rGVw/8/a49uxbDS0Xs3hTqDDj6B3qKeaJOxbxD954/ta5GazG14b+bbVDV+0S1CqpQkrtn698
+	7YzUGVtQQr0j+0Yzc2q9VHsifkzcURTtcRdcWARdg1kem6OYlEKZhQhicOkL8nEBysDQXVzaUDrUP
+	xHAzN+vkUt8R5Lv/synwc8OnGf7dEtr6vTm+YE43oVIB5CX3oKlHLV/NEY6Ab7W+4BDXJvnF/k3kf
+	21EpDyD0eEXdoXgeXutg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxR7z-0004lm-Rw; Wed, 15 Dec 2021 10:03:15 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1mxRSi-000APv-68; Wed, 15 Dec 2021 10:24:40 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxR2G-0002Bt-BU; Wed, 15 Dec 2021 09:57:23 +0000
-Received: from localhost (unknown [192.168.167.223])
- by lucky1.263xmail.com (Postfix) with ESMTP id 1D478FDFD6;
- Wed, 15 Dec 2021 17:57:12 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P18835T140477477144320S1639562220094025_; 
- Wed, 15 Dec 2021 17:57:11 +0800 (CST)
-X-IP-DOMAINF: 1
-X-RL-SENDER: yifeng.zhao@rock-chips.com
-X-SENDER: zyf@rock-chips.com
-X-LOGIN-NAME: yifeng.zhao@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-RCPT-COUNT: 15
-X-LOCAL-RCPT-COUNT: 3
-X-MUTI-DOMAIN-COUNT: 0
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-UNIQUE-TAG: <7e09a493426c9099737eb22075673646>
-X-System-Flag: 0
-From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, jbx6244@gmail.com, devicetree@vger.kernel.org,
- vkoul@kernel.org, michael.riesch@wolfvision.net,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, kishon@ti.com,
- p.zabel@pengutronix.de, cl@rock-chips.com, kever.yang@rock-chips.com,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Subject: [PATCH v5 2/4] dt-bindings: phy: rockchip: Add Naneng combo PHY
- bindings
-Date: Wed, 15 Dec 2021 17:56:55 +0800
-Message-Id: <20211215095657.13183-3-yifeng.zhao@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20211215095657.13183-1-yifeng.zhao@rock-chips.com>
-References: <20211215095657.13183-1-yifeng.zhao@rock-chips.com>
+ id 1mxRSf-000AOK-Jl; Wed, 15 Dec 2021 10:24:39 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10198"; a="239148097"
+X-IronPort-AV: E=Sophos;i="5.88,207,1635231600"; d="scan'208";a="239148097"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2021 02:24:35 -0800
+X-IronPort-AV: E=Sophos;i="5.88,207,1635231600"; d="scan'208";a="614655687"
+Received: from adalyx-mobl1.ger.corp.intel.com (HELO localhost) ([10.252.7.70])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2021 02:24:30 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>, mripard@kernel.org,
+ maarten.lankhorst@linux.intel.com, airlied@linux.ie, daniel@ffwll.ch
+Cc: nouveau@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-tegra@vger.kernel.org,
+ freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 0/3] drm/dp: Move DisplayPort helpers into own module
+In-Reply-To: <83ab4452-3744-20fe-e3ba-5bd4b48622e3@suse.de>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20211213093650.19598-1-tzimmermann@suse.de>
+ <87lf0o7hnv.fsf@intel.com> <83ab4452-3744-20fe-e3ba-5bd4b48622e3@suse.de>
+Date: Wed, 15 Dec 2021 12:24:22 +0200
+Message-ID: <87sfuu4149.fsf@intel.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_015720_871508_B6E26B8A 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20211215_022437_743435_39A186B2 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,177 +63,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
+On Mon, 13 Dec 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+> Hi
+>
+> Am 13.12.21 um 14:34 schrieb Jani Nikula:
+>> On Mon, 13 Dec 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+>>> Split-off DisplayPort functions from KMS helper library and move them
+>>> into their own module. Reduces the size of drm_kms_helper.ko by ~50%.
+>>>
+>>> This patchset is part of an on-going effort to reduce the minimum
+>>> binary size of the DRM core and helpers. It's helpful for systems with
+>>> early-boot DRM graphics, which requires DRM to be linked into the
+>>> kernel image.
+>> 
+>> Would it be time to add a subdirectory for each non-driver, non-core drm
+>> module? We've touched this topic before. I find it increasingly hard to
+>> remember which files are part of helpers. This would also help with the
+>> arbitrary drm_dp_helper_mod.c naming.
+>> 
+>> Perhaps drivers/gpu/drm/drm_dp/?
+>
+> It's probably worth it, but I'd prefer a separate patchset and 
+> discussion over this. It affects several modules.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
+I guess the only thing here that we need to get right from the start is
+the new module name, everything else is relatively easy to change
+later. drm_dp_helper.ko seems fine by me.
 
-Changes in v5:
-- modify description for ssc and ext-refclk
-- remove apb reset
+Note that this will also affect the drm_kms_helper.ko module parameters
+dp_aux_i2c_speed_khz, dp_aux_i2c_transfer_size and
+drm_dp_cec_unregister_delay, which will move to drm_dp_helper.ko.
 
-Changes in v4:
-- restyle
-- remove some minItems
-- add more properties
-- remove reset-names
-- move #phy-cells
-- add rockchip,rk3568-pipe-grf
-- add rockchip,rk3568-pipe-phy-grf
+See the monstrosity near the top of drm_kms_helper_common.c I had to add
+for backward compatibility when I moved drm_edid_load.c from
+drm_kms_helper.ko to drm.ko. That was perhaps different, as these seem
+more like debug knobs, but at a minimum this needs to be mentioned in
+the commit message, and certainly needs acks from Dave and/or Daniel.
 
-Changes in v3: None
-Changes in v2:
-- Fix dtschema/dtc warnings/errors
 
- .../phy/phy-rockchip-naneng-combphy.yaml      | 126 ++++++++++++++++++
- 1 file changed, 126 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+BR,
+Jani.
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-new file mode 100644
-index 000000000000..6b2db5e39f76
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
-@@ -0,0 +1,126 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/phy-rockchip-naneng-combphy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip SoC Naneng Combo Phy Device Tree Bindings
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3568-naneng-combphy
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: reference clock
-+      - description: apb clock
-+      - description: pipe clock
-+
-+  clock-names:
-+    items:
-+      - const: ref
-+      - const: apb
-+      - const: pipe
-+
-+  resets:
-+    items:
-+      - description: exclusive PHY reset line
-+
-+  rockchip,dis-u3otg0-port:
-+    type: boolean
-+    description:
-+      Disable the u3otg0 port.
-+
-+  rockchip,dis-u3otg1-port:
-+    type: boolean
-+    description:
-+      Disable the u3otg1 port.
-+
-+  rockchip,enable-ssc:
-+    type: boolean
-+    description:
-+      The option SSC can be enabled for U3, SATA and PCIE.
-+      Most commercially available platforms use SSC to reduce EMI.
-+
-+  rockchip,ext-refclk:
-+    type: boolean
-+    description:
-+      Many PCIe connections, especially backplane connections,
-+      require a synchronous reference clock between the two link partners.
-+      To achieve this a common clock source, referred to as REFCLK in
-+      the PCI Express Card Electromechanical Specification,
-+      should be used by both ends of the PCIe link.
-+      In PCIe mode, the reference clock can choose to use internal clock
-+      or external clock.
-+      By default, the internal clock is selected, The PCIe PHY provides
-+      100MHz differential clock output(optional with SSC) for system applications.
-+      When selecting This option to used external reference clock, a externally
-+      100MHz differential clock is needs to be provided for PCIe PHY.
-+
-+  rockchip,pipe-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Some additional phy settings are accessed through GRF regs.
-+
-+  rockchip,pipe-phy-grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Some additional pipe settings are accessed through GRF regs.
-+
-+  rockchip,sgmii-mac-sel:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    enum: [0, 1]
-+    default: 0
-+    description:
-+      Select gmac0 or gmac1 to be used as SGMII controller.
-+
-+  "#phy-cells":
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - resets
-+  - rockchip,pipe-grf
-+  - rockchip,pipe-phy-grf
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3568-cru.h>
-+
-+    pipegrf: syscon@fdc50000 {
-+      compatible = "rockchip,rk3568-pipe-grf", "syscon";
-+      reg = <0xfdc50000 0x1000>;
-+    };
-+
-+    pipe_phy_grf0: syscon@fdc70000 {
-+      compatible = "rockchip,rk3568-pipe-phy-grf", "syscon";
-+      reg = <0xfdc70000 0x1000>;
-+    };
-+
-+    combphy0: phy@fe820000 {
-+      compatible = "rockchip,rk3568-naneng-combphy";
-+      reg = <0xfe820000 0x100>;
-+      clocks = <&pmucru CLK_PCIEPHY0_REF>,
-+               <&cru PCLK_PIPEPHY0>,
-+               <&cru PCLK_PIPE>;
-+      clock-names = "ref", "apb", "pipe";
-+      assigned-clocks = <&pmucru CLK_PCIEPHY0_REF>;
-+      assigned-clock-rates = <100000000>;
-+      resets = <&cru SRST_PIPEPHY0>;
-+      rockchip,pipe-grf = <&pipegrf>;
-+      rockchip,pipe-phy-grf = <&pipe_phy_grf0>;
-+      #phy-cells = <1>;
-+    };
+
+
 -- 
-2.17.1
-
-
-
+Jani Nikula, Intel Open Source Graphics Center
 
 _______________________________________________
 Linux-rockchip mailing list
