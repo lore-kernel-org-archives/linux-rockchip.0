@@ -4,72 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F45C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Dec 2021 23:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B312C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 11:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JnUA83kISkzjny+BqlFTkepaLVvqtktNdmPztlYglvo=; b=IpUq4Hlb8sV02K
-	gUZPleAueSSJBbwXoajcmgJYuBRDkuH5UjdgJ8L3xbUROteNic5TvHh4yiOojlltZxB3huLgmg0wp
-	+5sX84WtAP23t3CfI9vTBw51nJ3bOmdpB+wrXTbBsTNyqd0zVWHnCDAiEoZN9Fpkd20WxkYGPi9XD
-	SWb+Eyvi5Z6BOemCKosc2FfK5mRyYrp6H0Ou4ohUCyZwqEAwS4wP4+GuYDCQY6ziY3La64z4NsArk
-	JD72TVD+q1A2QAChNwv1ubk1fldFuYcvA57XDUOk5bKQd9+VxIcm3hGtRGDFCPamYj9agMW2ZYUB2
-	AOVdOS/Oe8nQ5LiKEAzw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RpuMxhLYMLa9IIgUHTG8nXqqsexzOj39OOuYl8Tzgro=; b=VkPuCksQTL5qbO
+	qMFh4I76xrRO5dVh8kBwJHLw7Lg0B9juocRl6HPi7xfMTApX+2nODZFrmP3DlBlJtpCusmY+OFpCV
+	2w/u2wn26JWLbtrK+DSrorxC0+o3e/kx2rc8cxR6iIpKAy6QOCm5qV6Lq2+gdu3l+/0IKvjDOocpS
+	cDmPM5vSWN5/ZIlkgXZdOLVQkXr7dW/jZc7lXhEyou76W+lwpFuaNQQKSePQvQ4IiNeakDDqcETFT
+	lG6R2aN6zQ9Ul8lyNYzsCFtDF4NtuS8M+H8wAL2cYdsGMJ/omq2PGQLufNFeYglcTFbvlz9p7FadB
+	Pwpflc1xJXtz/fTDangw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxe4r-0038Ky-EL; Wed, 15 Dec 2021 23:52:53 +0000
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+	id 1mxohJ-0054kV-HV; Thu, 16 Dec 2021 11:13:17 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxe4o-0038J2-Tc
- for linux-rockchip@lists.infradead.org; Wed, 15 Dec 2021 23:52:52 +0000
-Received: by mail-yb1-xb2d.google.com with SMTP id v203so59726866ybe.6
- for <linux-rockchip@lists.infradead.org>; Wed, 15 Dec 2021 15:52:48 -0800 (PST)
+ id 1mxohG-0054is-L0; Thu, 16 Dec 2021 11:13:16 +0000
+Received: by mail-io1-xd33.google.com with SMTP id e128so34673402iof.1;
+ Thu, 16 Dec 2021 03:13:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KweSx4vEToJo38w+0X+XyYiTHycESdLG197MQj3znUY=;
- b=p/H9WTYGoH4RA6GKtDjZEacYmd65ZxyK6PQRgaR/m9eg4/aol8x8W3xzriRENrM//p
- 61ivYop9wOvJv3S9pBuES2S+ug/VfYtuXK/EkqrJsKuT09l8PKqvg2arFxOQNL2zDj3h
- PopTjl5hnXjK9drpLm7mZYwjPZwpDBlAIwUUXZ3S+fYKo1ZcvrYtLyM2OekajbmRG7w7
- QoB/N4HqGSaiSFFUbcSOlbNTwqVx11paoiGUQ6Rd9nZhT6GH4B7eBB8/bIeGVL5GAaJU
- bIY1vhMgjxeMmTny0QrHup8DXUx4RYqOlX3EVjSic2qbvMRB/xg4idmp35STmjjgA4CP
- Kwzg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=54oWWoqoZRE1KomV36qp17pwppN05XALT4TsXIurcA8=;
+ b=cItagiJJAz7DHAfCxPnMgC4HuMPJL3dRt3szmXX+GaUxfZ0rOhAq2f25XNBCk8Xo46
+ ZC3jnDok91LDP/J0Aojhf8S+RVc/UGmhRKbnOdqPyEZAi3vqM4tkTUlvhQ00fg1vvRgm
+ 2uYkYPp7AqaID4zqBsI+5lrt7U5EN4ek6mAL6K3m4MCUOxi5Bn8ZcAakI0bQ1fS13l7c
+ As7EPAEOqBrOBHM8kFPlxvO6ZeJY/0N4DYB4IuA5zTxdxumdJ0vm88nlquyLbzyFaAxS
+ Dq0nuOaqsJipOx15C++m7ysQBYRUgX+qXtVN80idfexI+j/TGQcR5ciJY4KtrKX4G+dS
+ JrKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KweSx4vEToJo38w+0X+XyYiTHycESdLG197MQj3znUY=;
- b=Pepw+yWkRs0hMO+cgqR+xMELendq95yVuT4EsRc+bTXOPDwfSSiCTK70/VsVoXwUS/
- TrtKBeHzfssTim7dmvPa4HBK1HCOzbtMCE4qN9MkE2O+1RUhguByxl6erD41u0ZPiZ7N
- HAoIPvxRQOd5A3+VTJW/VXhDpKzZSrGEcODelB7ZdB5sUuF2Jqf4JPOBqeK9e3W+bQIW
- i3OhWc2OLj+j0dLPBIUa66MfdZYiasgEUEocEmzYWvNcIpf0+lbcFlYVm0HVp0uI0NL9
- s1PSHvpw5vb+r6IemovAYC2jjSJeNmAydD3gkSTRqbGhig92WccUQXhtSXwT6eqv2urH
- muqQ==
-X-Gm-Message-State: AOAM5327LvwT/27dtJB4PnjlTNkMn47IuhnsSQwsLsnppafDVq1ud8KS
- iHwEpapJJnmcBdhWAvOfQP8/uiO6K+FJVzkSVOE=
-X-Google-Smtp-Source: ABdhPJwmELBb+qECdrTPwEwqCp63tTuTaBE8smGp17R2dUN8Jz9CwrBI3ug4PJUwLycHafN7OfUUsCXgH5rnUrSg8h8=
-X-Received: by 2002:a25:ad01:: with SMTP id y1mr10326063ybi.696.1639612367496; 
- Wed, 15 Dec 2021 15:52:47 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=54oWWoqoZRE1KomV36qp17pwppN05XALT4TsXIurcA8=;
+ b=pGo13eIHjLHsG2xsVVi7ras/XFYKSaIqGa8N1VESgVXSHYnPtRbtkDsibpoSQHpASM
+ CdNmozWvAzAZp98H+Btf+9x454ohKi1P1WKRM9M6Ajh8O1FBUEu9+tqBMSeHJ8fItgM0
+ 6tCJDvxPOWcye9mxzy0WOFvj4rKh1Xiv2ydZz8a14FaZhyrTV0kcs8+CONoNbMXYDH8Q
+ uxUKfo0YqBoM54QMfONg0zdchoDlHDmOzE8kphMNkT9YTWr1XBhawv1U0wrcP7bjpVbp
+ +ymqumeeUbvJZ+KrKUvRhMj7s60sE0cVrUp45BJX6SKe1B+rvYQyz7cN6CT367DsoPkD
+ cQSw==
+X-Gm-Message-State: AOAM5327elfYzeGxb4gAkJBpxcFbbg8HJ83/G9YSpjB7oAMO7/MbR/Xn
+ amFp7Z+Co1iXlr02l0okfj0=
+X-Google-Smtp-Source: ABdhPJwvVo8tPWOUQxrNaQVlLXq+RAbTp5V12nskk+dTmerWZP7vQgxY7ozL9koGj1zxFhGi3B4yWw==
+X-Received: by 2002:a05:6638:33a6:: with SMTP id
+ h38mr9195152jav.185.1639653193110; 
+ Thu, 16 Dec 2021 03:13:13 -0800 (PST)
+Received: from aford-IdeaCentre-A730.lan
+ ([2601:448:8400:9e8:fe22:1652:55f7:5197])
+ by smtp.gmail.com with ESMTPSA id h1sm3090946iow.31.2021.12.16.03.13.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Dec 2021 03:13:12 -0800 (PST)
+From: Adam Ford <aford173@gmail.com>
+To: linux-media@vger.kernel.org
+Cc: abel.vesa@nxp.com, aford@beaconembedded.com,
+ benjamin.gaignard@collabora.com, hverkuil-cisco@xs4all.nl,
+ Adam Ford <aford173@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [PATCH V2 00/10] media: hantro: imx8mq/imx8mm: Let VPU decoders get
+ controlled by vpu-blk-ctrl
+Date: Thu, 16 Dec 2021 05:12:45 -0600
+Message-Id: <20211216111256.2362683-1-aford173@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-References: <20211215213300.4778-1-linux@fw-web.de>
- <20211215213300.4778-2-linux@fw-web.de>
- <1933509.XRPO5POFnR@archbook>
-In-Reply-To: <1933509.XRPO5POFnR@archbook>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 15 Dec 2021 18:52:36 -0500
-Message-ID: <CAMdYzYrpYoGY0HvSUgsgOBkhfwrqt0UfQtt1MQ7tZGbzY6pUnA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] mfd: rk808: add reboot support to rk808 pmic
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Frank Wunderlich <frank-w@public-files.de>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Frank Wunderlich <linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_155250_989783_6CD428B7 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20211216_031314_738577_DB47D566 
+X-CRM114-Status: GOOD (  17.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +100,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 15, 2021 at 6:07 PM Nicolas Frattaroli
-<frattaroli.nicolas@gmail.com> wrote:
->
-> On Mittwoch, 15. Dezember 2021 22:32:59 CET Frank Wunderlich wrote:
-> > From: Peter Geis <pgwipeout@gmail.com>
-> >
-> > This adds reboot support to the rk808 pmic. This only enables if the
-> > rockchip,system-power-controller flag is set.
-> >
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > ---
-> >  drivers/mfd/rk808.c       | 48 +++++++++++++++++++++++++++++++++++++++
-> >  include/linux/mfd/rk808.h |  2 ++
-> >  2 files changed, 50 insertions(+)
-> >
->
-> Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
->
-> Tested with a RK817, using a Quartz64 Model A with the patch applied
-> on top of v5.16-rc5. Poweroff works, reboot works.
->
->
+Both the i.MX8MQ and i.MX8MM have G1 and G2 decoders.
+The two decoders are similar, but the imx8mm lacks the
+post-processor, so they will have distinct compatible flags.
 
-As a note, this has come up due to rk356x having unreliable psci reboot.
-Until we have mainline atf sources so we can fix the problem this is
-the only way to reliably reset these devices.
+From what I can tell, the G2 decoder wasn't working, so splitting
+the i.MX8MQ VPU into G1 and G2 makes it easier to control them 
+independently since the TRM of both the i.MX8MQ and
+i.MX8MM list them as distinct IP blocks. This also allowed G2 to
+become available.
+
+With them being split, the power-domain can shift to the
+vpu-blk-ctrl which is available on both i.MX8MQ and i.MX8MM,
+but some of bits are different, so they'll have separate bindings.
+
+Lastly, with the G1 and G2 operational, enable the i.MX8MM.
+On the i.MX8MM, the clock speed of 600MHz was chosen to match
+the default of the kernel repo from NXP and can be overwritten
+by board files for anyone who under/over volts the power rail.
+
+There seems to be some disagreement between the TRM and the Datasheet
+for the imx8mq as to whether the speed should be 300MHz (TRM) or
+600MHz (datasheet), so feedback from NXP would be very much
+appreciated.
+
+The repo used as the starting point was:
+git://linuxtv.org/hverkuil/media_tree.git for-v5.17e
+
+Fluster was run on both i.MX8MM and i.MX8MQ
+
+At 600 MHz, the i.MX8MM had the following:
+
+./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+Ran 55/61 tests successfully               in 8.299 secs
+
+./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+Ran 90/135 tests successfully               in 71.200 secs
+
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+Ran 139/303 tests successfully               in 218.079 secs
+
+The i.MX8MQ had the following:
+
+./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
+Ran 55/61 tests successfully               in 7.732 secs
+
+./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
+Ran 90/135 tests successfully               in 58.558 secs
+
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
+Ran 144/303 tests successfully               in 271.373 secs
+
+V2:  Remove references to legacy dt-binding from YAML, but keep
+     it in the driver so older device trees can still be used.
+     Fix typos in YAML
+     Remove reg-names, interrupt-names, and clock-names from YAML,
+     since each node will only have one of each, they're not necessary
+     Add Fluster scores to cover letter for i.MX8MQ
+
+Adam Ford (7):
+  dt-bindings: media: nxp,imx8mq-vpu: Split G1 and G2 nodes
+  media: hantro: Allow i.MX8MQ G1 and G2 to run independently
+  arm64: dts: imx8mq: Enable both G1 and G2 VPU's with vpu-blk-ctrl
+  arm64: dts: imx8mm: Fix VPU Hanging
+  dt-bindings: media: nxp,imx8mq-vpu: Add support for G1 and G2 on
+    imx8mm
+  media: hantro: Add support for i.MX8MM
+  arm64: dts: imx8mm: Enable Hantro G1 and G2 video decoders
+
+Lucas Stach (3):
+  dt-bindings: power: imx8mq: add defines for VPU blk-ctrl domains
+  dt-bindings: soc: add binding for i.MX8MQ VPU blk-ctrl
+  soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
+
+ .../bindings/media/nxp,imx8mq-vpu.yaml        | 93 +++++++++++--------
+ .../soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml      | 71 ++++++++++++++
+ arch/arm64/boot/dts/freescale/imx8mm.dtsi     | 23 ++++-
+ arch/arm64/boot/dts/freescale/imx8mq.dtsi     | 63 ++++++++-----
+ drivers/soc/imx/imx8m-blk-ctrl.c              | 68 +++++++++++++-
+ drivers/staging/media/hantro/hantro_drv.c     |  3 +
+ drivers/staging/media/hantro/hantro_hw.h      |  3 +
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 75 ++++++++++++---
+ include/dt-bindings/power/imx8mq-power.h      |  3 +
+ 9 files changed, 324 insertions(+), 78 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml
+
+
+base-commit: d1888b0bfd2ddef2e8a81505ffa200b92cc32e0c
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
