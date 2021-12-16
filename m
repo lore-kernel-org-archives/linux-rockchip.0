@@ -4,69 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43DB4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 14:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 101ACC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 16:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PHr/BDif2xXHnPxzHEQCefmVj8GzSGJLyCoVBpHMQeo=; b=JueYgDEdIrYZBhNMXrqe2ryZbV
-	0JeBW4djDpMKW1VkaAjsQGNYLFNs88JzvOZDhQPwhVwVNNW6ErvHhM95HLxvMblGR0ykxNITqgQbm
-	wj8bKUHjJ9pj/N8DMPetBMIT0u1WKni1MKBzHke38CbUMydnf3YfIHLDHcyCbsTW9uSn5x48FTE32
-	O0T8I5EoMptDSOULaSWaMMgMC/Q1Sx99mE2XK2Cp3KI7/QZNcLOvLrFoFhf6murwEj+LfIGDMe3JT
-	rq97Qg8UCkrRJIfKTJJUd9MRyHRbTG13MJHmgPGvZThX6O79WD8AxxVyQCJWcmkBcKhNf3YDw67XN
-	OPl7QZRA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D7DvpCKNj4fn1asd3DJEunfaUWGJYdua84mXM/gTmic=; b=DElxkkCGfEPxA/
+	blN6D/0GR7FRhuQOGs7S9ioCFCG7Z1UDOUXsqqrnBPJYRoDs039xjvQCO12Lx3qNVdZjT/mrCq5Sp
+	HC4Y8bD7szB1GBMlFn2otpbr74XnEZ5sLRs1vc+1vvSvvVkJOD7/oUV9DaKr0OEv6qktZ+KzJmU/D
+	9LDoh4AVSO1gPCHj9ThNHMvMMyb7iAity5TGtdiDtmsjEdI6LqmFkpvoU5isTkdMTae74igUkVhXx
+	aq6cToNj+a5L2yq/JaFTJ2V0SEvGawRlci1pPFSyoq2P+tolmSKEvN1QheXsoaeOZpI/aM62yOmG8
+	LKsO+5dXYg/tvkwxIsFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxsDj-006GCu-LF; Thu, 16 Dec 2021 14:58:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mxtvx-006jLM-3O; Thu, 16 Dec 2021 16:48:45 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxsDW-006G6u-Pb; Thu, 16 Dec 2021 14:58:48 +0000
-Received: from [IPv6:2a01:e0a:120:3210:647b:8ae3:3908:58d6] (unknown
- [IPv6:2a01:e0a:120:3210:647b:8ae3:3908:58d6])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id DD3061F463F9;
- Thu, 16 Dec 2021 14:58:42 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1639666723; bh=BTdDikXpF4XSx021w9PRTEKVLDa7Vof8nDF6T89RUCg=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=PbS5VrVK3UMCLMI7wxt0g+wotYuMxgcYrjS7sJj2+Y6QdsAoGvx9o383Sz85bwlQA
- x5vLKVKL3t3bBPOgBztuJnop3EWS6MgZ4E0tBMDD2gwDRTy8ktMOQlf2EXnroX83dY
- rATCENy9mcDZTSuI1DmqRjCIKwHRiOvD4MYoP2kKl+W7f7r61S1JY5mM5tVC59FpTD
- 7ePBuhvMzOsDopFmYhdcQXdFyJohMPBjtyuu/pFHpP3KA5LUBALqftc7zJhIRm5ZlK
- 9bWyz/4Ncmx35NqEtMjkuLz81NP05g25WtdsL+CMsBnyX90iTP2T6jymNMV8W/T/M3
- i3k3OJ6nAqGjw==
-Subject: Re: [PATCH V2 00/10] media: hantro: imx8mq/imx8mm: Let VPU decoders
- get controlled by vpu-blk-ctrl
-To: Adam Ford <aford173@gmail.com>, linux-media@vger.kernel.org
-Cc: abel.vesa@nxp.com, aford@beaconembedded.com, hverkuil-cisco@xs4all.nl,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-References: <20211216111256.2362683-1-aford173@gmail.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Message-ID: <32791d1e-c81e-ea11-c7a6-e8cbebe49a5e@collabora.com>
-Date: Thu, 16 Dec 2021 15:58:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1mxtk8-006ejD-F4
+ for linux-rockchip@lists.infradead.org; Thu, 16 Dec 2021 16:36:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1639672581;
+ bh=/AbJGsc+dkLlG/Crdoxg/i9h2UZPWSTdX2g4mIfzJC0=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=QZvaS/2vp2wvumNwP2p9GDMS+WhVLLMLj4RIy5PkU+HQTNwp6X1P+yMarmZG3a+2h
+ G2vMcFahcME2KyBe63Zx7N3NRLVPAcMzHutuij8PhinoViECjEVnFG1No/FvMUMXrG
+ E3Xb49u5QpPUxpR5/bA/FVVO/H+By7XBnnfJTKck=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.157.8] ([217.61.157.8]) by web-mail.gmx.net
+ (3c-app-gmx-bap16.server.lan [172.19.172.86]) (via HTTP); Thu, 16 Dec 2021
+ 17:36:21 +0100
 MIME-Version: 1.0
-In-Reply-To: <20211216111256.2362683-1-aford173@gmail.com>
-Content-Language: en-US
+Message-ID: <trinity-18dddf5d-bc73-453d-a9eb-954de1ab7cc7-1639672581601@3c-app-gmx-bap16>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, Lee Jones <lee.jones@linaro.org>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Aw: Re: [PATCH 1/2] mfd: rk808: add reboot support to rk808 pmic
+Date: Thu, 16 Dec 2021 17:36:21 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <fe895d71-5f1f-daf0-bde8-c8ab5f4c0128@arm.com>
+References: <20211215213300.4778-1-linux@fw-web.de>
+ <20211215213300.4778-2-linux@fw-web.de>
+ <fe895d71-5f1f-daf0-bde8-c8ab5f4c0128@arm.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:S5uDaFlDscxRzpQVDFb8E4cYXWI5fyFsA/fFhQaFn8DZ1YSZI4MQXF5quP6Gs9iaCmCyT
+ RMrb00sUuIikMWruGhu4sYBfyugHMa0nLO4WE7oYJ3UbluBUU6ugyvEIgrQUqY/I6BU4tn025DfW
+ N9QzHY+S7Plh5rSUMzNtZ6RBpZYBJzTeSIqjDVKy+EoS8jmB5/nFsT5SWXtuA4fBC7l3Aw1Eardt
+ DdI4MpNhV3lRbcucRlpg9wtA9dnqz52/dj1LLSdb9noEj6jBe+RtEa2SOIFpU8hpx77WHkUsX5qI
+ Vc=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Nfl6KFGRvEA=:F/5Flh65VOiCs5gOrs6dQy
+ EH/LIyOl2NqGYk9gH7mK/G32o4WCzqEXPzcpud/HY3ILAvYyeae+BKc9CeVd9ZVEg6U5reStM
+ zWpE7iuUmoue5Hy/CyOtRQT9mbwDP/yyvA9cS2q2ipkvKeEjDdz5BRmz3bXiYRE50FSkRinbo
+ sJSOMr+ISJsPHOSNcm8lFogda5rSUkXPDqND9bHoobVJONd0QZyKtp2eKvWVIdJdYuWlXS8zp
+ GJFAMmuA5Uq9kyR4hw+eJGiIMSHvy5GjnBT7cgF/KHBbxEQHpsewXeNbIKag0Y7poDMU5GlCp
+ fje0m7ZtnOwrajTouCbDFir1a1W8R+mDBBUJiXuwtyuWNeOjGwG2Dfdno1aZj2KdgrnVjgSdZ
+ Md7qBTNVgNyM2KSgbmjuLqyl6180ivBUrFLYeczeNLdY41BOw9RK2K2fBVAow0WWQRp6ynt1v
+ zZLret2aY8Y+ALoCzjfp0AxxFrsEHL0ynvilKs305FUVg3T53Pto2qxAel4lXOq26F5h3T7VC
+ I8d7S8YjtWZstUwxxTSEAXMUI6Wwz9aXSFetNlH5sy7UQE9wsbka9E/so4bZbgraH/Zqus27u
+ I8pYIFR40LMIeCvmG8UEQjRNdObBz9q167wP3KhA80+58W1Wf/jHgu4YpGjR+JlKWyP2IOmyJ
+ L4CuESmPeuqImO0+ePEMkUxikI+rWZJFJf0ImJCVOWgIFMLcfV/KmTEt7XMM8s9DVERDlNsZY
+ 1n+j2JZkcCLnXCiKYPIgI+M6f9NqjTWE/Jr9dW1dAzf+SWJ6yQtoox7bn3i3VWFiUp6Vi6Wy5
+ jttfB72
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_065847_141150_056327B5 
-X-CRM114-Status: GOOD (  30.53  )
+X-CRM114-CacheID: sfid-20211216_083632_909481_92D47E72 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,91 +85,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE2LzEyLzIwMjEgw6AgMTI6MTIsIEFkYW0gRm9yZCBhIMOpY3JpdMKgOgo+IEJvdGggdGhl
-IGkuTVg4TVEgYW5kIGkuTVg4TU0gaGF2ZSBHMSBhbmQgRzIgZGVjb2RlcnMuCj4gVGhlIHR3byBk
-ZWNvZGVycyBhcmUgc2ltaWxhciwgYnV0IHRoZSBpbXg4bW0gbGFja3MgdGhlCj4gcG9zdC1wcm9j
-ZXNzb3IsIHNvIHRoZXkgd2lsbCBoYXZlIGRpc3RpbmN0IGNvbXBhdGlibGUgZmxhZ3MuCj4KPiAg
-RnJvbSB3aGF0IEkgY2FuIHRlbGwsIHRoZSBHMiBkZWNvZGVyIHdhc24ndCB3b3JraW5nLCBzbyBz
-cGxpdHRpbmcKPiB0aGUgaS5NWDhNUSBWUFUgaW50byBHMSBhbmQgRzIgbWFrZXMgaXQgZWFzaWVy
-IHRvIGNvbnRyb2wgdGhlbQo+IGluZGVwZW5kZW50bHkgc2luY2UgdGhlIFRSTSBvZiBib3RoIHRo
-ZSBpLk1YOE1RIGFuZAo+IGkuTVg4TU0gbGlzdCB0aGVtIGFzIGRpc3RpbmN0IElQIGJsb2Nrcy4g
-VGhpcyBhbHNvIGFsbG93ZWQgRzIgdG8KPiBiZWNvbWUgYXZhaWxhYmxlLgo+Cj4gV2l0aCB0aGVt
-IGJlaW5nIHNwbGl0LCB0aGUgcG93ZXItZG9tYWluIGNhbiBzaGlmdCB0byB0aGUKPiB2cHUtYmxr
-LWN0cmwgd2hpY2ggaXMgYXZhaWxhYmxlIG9uIGJvdGggaS5NWDhNUSBhbmQgaS5NWDhNTSwKPiBi
-dXQgc29tZSBvZiBiaXRzIGFyZSBkaWZmZXJlbnQsIHNvIHRoZXknbGwgaGF2ZSBzZXBhcmF0ZSBi
-aW5kaW5ncy4KPgo+IExhc3RseSwgd2l0aCB0aGUgRzEgYW5kIEcyIG9wZXJhdGlvbmFsLCBlbmFi
-bGUgdGhlIGkuTVg4TU0uCj4gT24gdGhlIGkuTVg4TU0sIHRoZSBjbG9jayBzcGVlZCBvZiA2MDBN
-SHogd2FzIGNob3NlbiB0byBtYXRjaAo+IHRoZSBkZWZhdWx0IG9mIHRoZSBrZXJuZWwgcmVwbyBm
-cm9tIE5YUCBhbmQgY2FuIGJlIG92ZXJ3cml0dGVuCj4gYnkgYm9hcmQgZmlsZXMgZm9yIGFueW9u
-ZSB3aG8gdW5kZXIvb3ZlciB2b2x0cyB0aGUgcG93ZXIgcmFpbC4KPgo+IFRoZXJlIHNlZW1zIHRv
-IGJlIHNvbWUgZGlzYWdyZWVtZW50IGJldHdlZW4gdGhlIFRSTSBhbmQgdGhlIERhdGFzaGVldAo+
-IGZvciB0aGUgaW14OG1xIGFzIHRvIHdoZXRoZXIgdGhlIHNwZWVkIHNob3VsZCBiZSAzMDBNSHog
-KFRSTSkgb3IKPiA2MDBNSHogKGRhdGFzaGVldCksIHNvIGZlZWRiYWNrIGZyb20gTlhQIHdvdWxk
-IGJlIHZlcnkgbXVjaAo+IGFwcHJlY2lhdGVkLgo+Cj4gVGhlIHJlcG8gdXNlZCBhcyB0aGUgc3Rh
-cnRpbmcgcG9pbnQgd2FzOgo+IGdpdDovL2xpbnV4dHYub3JnL2h2ZXJrdWlsL21lZGlhX3RyZWUu
-Z2l0IGZvci12NS4xN2UKPgo+IEZsdXN0ZXIgd2FzIHJ1biBvbiBib3RoIGkuTVg4TU0gYW5kIGku
-TVg4TVEKPgo+IEF0IDYwMCBNSHosIHRoZSBpLk1YOE1NIGhhZCB0aGUgZm9sbG93aW5nOgo+Cj4g
-Li9mbHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFtZXItVlA4LVY0TDJTTC1Hc3QxLjAKPiBSYW4gNTUv
-NjEgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gOC4yOTkgc2Vjcwo+Cj4gLi9m
-bHVzdGVyLnB5IHJ1biAtZEdTdHJlYW1lci1ILjI2NC1WNEwyU0wtR3N0MS4wCj4gUmFuIDkwLzEz
-NSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiA3MS4yMDAgc2Vjcwo+Cj4gLi9m
-bHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFtZXItVlA5LVY0TDJTTC1Hc3QxLjAKPiBSYW4gMTM5LzMw
-MyB0ZXN0cyBzdWNjZXNzZnVsbHkgICAgICAgICAgICAgICBpbiAyMTguMDc5IHNlY3MKPgo+IFRo
-ZSBpLk1YOE1RIGhhZCB0aGUgZm9sbG93aW5nOgo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZCBHU3Ry
-ZWFtZXItVlA4LVY0TDJTTC1Hc3QxLjAKPiBSYW4gNTUvNjEgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAg
-ICAgICAgICAgICAgaW4gNy43MzIgc2Vjcwo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZEdTdHJlYW1l
-ci1ILjI2NC1WNEwyU0wtR3N0MS4wCj4gUmFuIDkwLzEzNSB0ZXN0cyBzdWNjZXNzZnVsbHkgICAg
-ICAgICAgICAgICBpbiA1OC41NTggc2Vjcwo+Cj4gLi9mbHVzdGVyLnB5IHJ1biAtZCBHU3RyZWFt
-ZXItVlA5LVY0TDJTTC1Hc3QxLjAKPiBSYW4gMTQ0LzMwMyB0ZXN0cyBzdWNjZXNzZnVsbHkgICAg
-ICAgICAgICAgICBpbiAyNzEuMzczIHNlY3MKCkkgaGF2ZSB0ZXN0ZWQgdGhpcyBzZXJpZXMgb24g
-dG9wIG9mIG1lZGlhX3N0YWdlL21hc3RlciBicmFuY2gKd2l0aCBJTVg2TVE6CgouL2ZsdXN0ZXIu
-cHkgcnVuIC1kIEdTdHJlYW1lci1WUDgtVjRMMlNMLUdzdDEuMApSYW4gNTcvNjEgdGVzdHMgc3Vj
-Y2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gMzIuNzI1IHNlY3MKCi4vZmx1c3Rlci5weSBydW4g
-LWQgR1N0cmVhbWVyLUguMjY0LVY0TDJTTC1Hc3QxLjAKUmFuIDg5LzEzNSB0ZXN0cyBzdWNjZXNz
-ZnVsbHkgICAgICAgICAgICAgICBpbiAxMzEuNjMyIHNlY3MKCi4vZmx1c3Rlci5weSBydW4gLWQg
-R1N0cmVhbWVyLVZQOS1WNEwyU0wtR3N0MS4wClJhbiAxNDYvMzAzIHRlc3RzIHN1Y2Nlc3NmdWxs
-eSAgICAgICAgICAgICAgIGluIDMwNC4zNDUgc2VjcwoKLi9mbHVzdGVyLnB5IHJ1biAtZCBHU3Ry
-ZWFtZXItSC4yNjUtVjRMMlNMLUdzdDEuMCAtaiAxClJhbiA3Ny8xNDcgdGVzdHMgc3VjY2Vzc2Z1
-bGx5ICAgICAgICAgICAgICAgaW4gMTA0Ny4yMTEgc2VjcwoKRm9yIHRoaXMgc2VyaWVzOgoKVGVz
-dGVkLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNv
-bT4KClRoYW5rcyB0byBmaXggdGhpcyBwcm9ibGVtLgpCZW5qYW1pbgoKPgo+IFYyOiAgUmVtb3Zl
-IHJlZmVyZW5jZXMgdG8gbGVnYWN5IGR0LWJpbmRpbmcgZnJvbSBZQU1MLCBidXQga2VlcAo+ICAg
-ICAgIGl0IGluIHRoZSBkcml2ZXIgc28gb2xkZXIgZGV2aWNlIHRyZWVzIGNhbiBzdGlsbCBiZSB1
-c2VkLgo+ICAgICAgIEZpeCB0eXBvcyBpbiBZQU1MCj4gICAgICAgUmVtb3ZlIHJlZy1uYW1lcywg
-aW50ZXJydXB0LW5hbWVzLCBhbmQgY2xvY2stbmFtZXMgZnJvbSBZQU1MLAo+ICAgICAgIHNpbmNl
-IGVhY2ggbm9kZSB3aWxsIG9ubHkgaGF2ZSBvbmUgb2YgZWFjaCwgdGhleSdyZSBub3QgbmVjZXNz
-YXJ5Cj4gICAgICAgQWRkIEZsdXN0ZXIgc2NvcmVzIHRvIGNvdmVyIGxldHRlciBmb3IgaS5NWDhN
-UQo+Cj4gQWRhbSBGb3JkICg3KToKPiAgICBkdC1iaW5kaW5nczogbWVkaWE6IG54cCxpbXg4bXEt
-dnB1OiBTcGxpdCBHMSBhbmQgRzIgbm9kZXMKPiAgICBtZWRpYTogaGFudHJvOiBBbGxvdyBpLk1Y
-OE1RIEcxIGFuZCBHMiB0byBydW4gaW5kZXBlbmRlbnRseQo+ICAgIGFybTY0OiBkdHM6IGlteDht
-cTogRW5hYmxlIGJvdGggRzEgYW5kIEcyIFZQVSdzIHdpdGggdnB1LWJsay1jdHJsCj4gICAgYXJt
-NjQ6IGR0czogaW14OG1tOiBGaXggVlBVIEhhbmdpbmcKPiAgICBkdC1iaW5kaW5nczogbWVkaWE6
-IG54cCxpbXg4bXEtdnB1OiBBZGQgc3VwcG9ydCBmb3IgRzEgYW5kIEcyIG9uCj4gICAgICBpbXg4
-bW0KPiAgICBtZWRpYTogaGFudHJvOiBBZGQgc3VwcG9ydCBmb3IgaS5NWDhNTQo+ICAgIGFybTY0
-OiBkdHM6IGlteDhtbTogRW5hYmxlIEhhbnRybyBHMSBhbmQgRzIgdmlkZW8gZGVjb2RlcnMKPgo+
-IEx1Y2FzIFN0YWNoICgzKToKPiAgICBkdC1iaW5kaW5nczogcG93ZXI6IGlteDhtcTogYWRkIGRl
-ZmluZXMgZm9yIFZQVSBibGstY3RybCBkb21haW5zCj4gICAgZHQtYmluZGluZ3M6IHNvYzogYWRk
-IGJpbmRpbmcgZm9yIGkuTVg4TVEgVlBVIGJsay1jdHJsCj4gICAgc29jOiBpbXg6IGlteDhtLWJs
-ay1jdHJsOiBhZGQgaS5NWDhNUSBWUFUgYmxrLWN0cmwKPgo+ICAgLi4uL2JpbmRpbmdzL21lZGlh
-L254cCxpbXg4bXEtdnB1LnlhbWwgICAgICAgIHwgOTMgKysrKysrKysrKystLS0tLS0tLQo+ICAg
-Li4uL3NvYy9pbXgvZnNsLGlteDhtcS12cHUtYmxrLWN0cmwueWFtbCAgICAgIHwgNzEgKysrKysr
-KysrKysrKysKPiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtbS5kdHNpICAg
-ICB8IDIzICsrKystCj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2FsZS9pbXg4bXEuZHRz
-aSAgICAgfCA2MyArKysrKysrKy0tLS0tCj4gICBkcml2ZXJzL3NvYy9pbXgvaW14OG0tYmxrLWN0
-cmwuYyAgICAgICAgICAgICAgfCA2OCArKysrKysrKysrKysrLQo+ICAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgICAgIHwgIDMgKwo+ICAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9oYW50cm9faHcuaCAgICAgIHwgIDMgKwo+ICAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL2hhbnRyby9pbXg4bV92cHVfaHcuYyAgIHwgNzUgKysrKysrKysrKysrLS0tCj4gICBp
-bmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL2lteDhtcS1wb3dlci5oICAgICAgfCAgMyArCj4gICA5
-IGZpbGVzIGNoYW5nZWQsIDMyNCBpbnNlcnRpb25zKCspLCA3OCBkZWxldGlvbnMoLSkKPiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc29jL2lt
-eC9mc2wsaW14OG1xLXZwdS1ibGstY3RybC55YW1sCj4KPgo+IGJhc2UtY29tbWl0OiBkMTg4OGIw
-YmZkMmRkZWYyZThhODE1MDVmZmEyMDBiOTJjYzMyZTBjCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Robin
+
+thanks for your review
+
+> Gesendet: Donnerstag, 16. Dezember 2021 um 14:17 Uhr
+> Von: "Robin Murphy" <robin.murphy@arm.com>
+
+> > +	dev_err(&rk808_i2c_client->dev, "poweroff device!\n");
+>
+> This is not an error.
+
+ack, we can change to dev_dbg/dev_info or drop completely
+
+> > @@ -552,6 +554,7 @@ static void rk808_pm_power_off(void)
+> >   		bit = DEV_OFF;
+> >   		break;
+> >   	default:
+> > +		dev_err(&rk808_i2c_client->dev, "poweroff device not supported!\n");
+>
+> If we really don't support power off for the present PMIC then we should
+> avoid registering the power off handler in the first place. These
+> default cases should mostly just serve to keep static checkers happy.
+
+currently we had added all device-ids supported by probe. Before my Patch (Part2) rk809 was missing.
+It is not registered for (currently) unsupported IDs as probe exits with -EINVAL for unsupported IDs before.
+
+If anyone adds init-code in future but not poweroff/restart part we ran into this. So i would leave this message.
+
+registering handler depending on supported devices (for poweroff/restart function) imho makes code less readable.
+
+> > @@ -559,6 +562,44 @@ static void rk808_pm_power_off(void)
+> >   		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
+> >   }
+> >
+> > +static int rk808_restart_notify(struct notifier_block *this, unsigned long mode, void *cmd)
+> > +{
+> > +	int ret;
+> > +	unsigned int reg, bit;
+> > +	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+> > +
+> > +	switch (rk808->variant) {
+> > +	case RK805_ID:
+> > +		reg = RK805_DEV_CTRL_REG;
+> > +		bit = DEV_OFF_RST;
+> > +		break;
+> > +	case RK808_ID:
+> > +		reg = RK808_DEVCTRL_REG,
+> > +		bit = DEV_OFF;
+>
+> Is that right? The RK808 datasheet does say that this bit resets itself
+> once the OFF state is reached, but there doesn't seem to be any obvious
+> guarantee of a power-on condition being present to automatically
+> transition back to ACTIVE.
+
+i think you're right...imho it should be DEV_OFF_RST in restart_notify and DEV_OFF in poweroff
+
+> > @@ -727,6 +768,13 @@ static int rk808_probe(struct i2c_client *client,
+> >   	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+> >   		rk808_i2c_client = client;
+> >   		pm_power_off = rk808_pm_power_off;
+> > +		rk808->nb = &rk808_restart_handler;
+>
+> The handler just relies on the global rk808_i2c_client anyway, so does
+> this serve any purpose?
+
+i guess
+
+ret = register_restart_handler(&rk808_restart_handler);
+
+is better here too.
+
+i cannot figure out why storing the function-pointer in rk808->nb too as this seems not to be used anywhere else
+
+> > +
+> > +		dev_warn(&client->dev, "register restart handler\n");
+>
+> Don't scream a warning about normal and expected operation.
+
+ack
+
+> Thanks,
+> Robin.
+
+@Peter, what do you think?
+
+regards Frank
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
