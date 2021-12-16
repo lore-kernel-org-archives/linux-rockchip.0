@@ -4,84 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B60F1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 13:28:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12664C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 13:36:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yRcsS1YvXuMwEm66L8YYAWVFNzQT1TsptVm+oxmnBNY=; b=j8XPkvZNaA4b8G
-	SL8BHXe6pDzz5sHCP6Rq4znoqC0bUlXSGw1Hus84RqmEohQj92Jt7j1kMv1+5RNF4K/y8H9nTvT6e
-	qIFgpA7TwOiMXBIZWkb8IKDAeCCXlrc/tps4jTVwhCcxtOb7tYrwAsDxQgYBdZtS5qphFzF/qXhUU
-	XfYCfGrQGWwvRIzS0osC5ArMIxzLof4wj+t68G2jhHcED6aQRZWEcbjLXh0vqEe1guQyVdWjQ/vWY
-	SpjjSzNgzWQi+VpWRom6GPW3exTDG7ZVwpycz7if2YlD8NQ6gT8IJ4c21oKMHZ5OvqtsylxALOvuk
-	GIiNhfxFlzj++hbvGuQQ==;
+	List-Owner; bh=9GeUuEA4FD/lG8A5E5Aj8YKGbXL5QQ9V8Qt7CGo8XGA=; b=NDN3Ywm4D4AZ7f
+	LsXSNG2woX3Df1bteF17i6uZBF+SBVgMMFcJQzdx6xfNNejcCkizjMcm6GD3SX3vtj8fI2XYMKiy6
+	54ekt7It8R26Z/70Bpgje2EJnMFeKPbO2T5qKK+NGSBvitjRbZjQm08jLa65fo+LaWP2ZumWgNbk7
+	EJzU/5fgdfQgnqauaH02M6rC4mC9mSVBueGQ/66cHUCeqdKvDxaPz8BM8cuvHv575P59QdD0+TLNI
+	BV/ym5U7tRr85b092eDXFAwOBF03arfbyMJdhADJKfLze90LQdL14pKXIeCfrkpjf5cDDvbRWJ5wb
+	RGP5EyQ38FzkoSZzlH/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxqo7-005nOQ-AG; Thu, 16 Dec 2021 13:28:27 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxqWN-005ekr-6p; Thu, 16 Dec 2021 13:10:10 +0000
-Received: by mail-ed1-x532.google.com with SMTP id y13so86602608edd.13;
- Thu, 16 Dec 2021 05:10:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=psqq8AxoCtsUWk+9+3wi7F1REcnczjIneOZP6k7X4Bw=;
- b=l4/fnlsaIWrU7XKiQ7Y1Xotl89tt0lQGwCgppt2kzLRde0Zmvr3uL/Twu8Q7HJmzBR
- h4+y76Vejnslwze2Z+R8qRc4gxovJ/kYrOq7ftE7Y9OdEMUi4w8BXAZots4MkDbo6uNt
- 5BZfMIA14nVRhnyWayWC4kykR9tqSlO4q9yYaNPdWpqtfzwWnkCKsaxiPU0ydjvc4WtN
- iD/9tLaLxnFTHnLTxvOiOsLKVvImmerZK+VlpUahAATlZQZ8TkrZKYFQewtGRxQ4AgiM
- zGCJX9iDSYqMQcqCaFNJz6Nth6NbTQ2TahaYIJVvz3oOXl8EEmGVcYJA9YilTEaNnPYR
- UpBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=psqq8AxoCtsUWk+9+3wi7F1REcnczjIneOZP6k7X4Bw=;
- b=OKmC4D61Cr8IXUfYFQY5vya051fUC2QHF20PEHsV/Aba+LrVGQrcGu277VSbBFes0v
- OM1vheOvO92IIiwk8FfyTbh/7MotecGVLc8ftameTur03yqnyh2yOBK3onFDzBeK8UXz
- YxdLxq4GPHqtOlo8rx1DOqRN5nBsh4rPfuJy/Hoe3zV46hom9g6+IersMrC00Q9aMWN9
- 8YVqVGH9OB5Zmoo3mgpmaxGFz3gyVdKjMGHKK9sYAbB0tlfvnqP29NFQdm6dmOD+GK8m
- 0iTcDZBRZgQ1LHie1yV0OuQRWkCGIf8Z7oG9CguBNXD+YDzVGpyKkgaJ8M0nxM9uMhsw
- /o5g==
-X-Gm-Message-State: AOAM531EuZMRu9sPRdqCxbcI1ozCrGE828FdrWWXO5yz3IGKWmbydi9b
- Xap6yXwNXqurffR+OApYN3OiELL4lPiAdIbWIx4=
-X-Google-Smtp-Source: ABdhPJyJ7BpFsLTq0XQBuilAPWj5q7Udd6T7s6oVqbuEeN+5S7fO/uyVzU/41WmJNvE51tkKZn15ArvhQa/v+6Od+xc=
-X-Received: by 2002:a17:907:2d12:: with SMTP id
- gs18mr3229632ejc.198.1639660205253; 
- Thu, 16 Dec 2021 05:10:05 -0800 (PST)
+	id 1mxqw4-005qpi-V4; Thu, 16 Dec 2021 13:36:40 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mxqe7-005iMO-5W
+ for linux-rockchip@lists.infradead.org; Thu, 16 Dec 2021 13:18:09 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 607081435;
+ Thu, 16 Dec 2021 05:17:53 -0800 (PST)
+Received: from [10.57.34.58] (unknown [10.57.34.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5BEC13F73B;
+ Thu, 16 Dec 2021 05:17:52 -0800 (PST)
+Message-ID: <fe895d71-5f1f-daf0-bde8-c8ab5f4c0128@arm.com>
+Date: Thu, 16 Dec 2021 13:17:46 +0000
 MIME-Version: 1.0
-References: <20211216111256.2362683-1-aford173@gmail.com>
- <Ybsyd9/nRrszJ5f8@eze-laptop>
-In-Reply-To: <Ybsyd9/nRrszJ5f8@eze-laptop>
-From: Adam Ford <aford173@gmail.com>
-Date: Thu, 16 Dec 2021 07:09:53 -0600
-Message-ID: <CAHCN7xJGpjCw5TLOXJ1r-KtcRNcUVqwa2qhmwCrLuTf4aJqBkQ@mail.gmail.com>
-Subject: Re: [PATCH V2 00/10] media: hantro: imx8mq/imx8mm: Let VPU decoders
- get controlled by vpu-blk-ctrl
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: linux-media <linux-media@vger.kernel.org>, Abel Vesa <abel.vesa@nxp.com>, 
- Adam Ford-BE <aford@beaconembedded.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, 
- "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>,
- arm-soc <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH 1/2] mfd: rk808: add reboot support to rk808 pmic
+Content-Language: en-GB
+To: Frank Wunderlich <linux@fw-web.de>, Lee Jones <lee.jones@linaro.org>
+Cc: Frank Wunderlich <frank-w@public-files.de>, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>
+References: <20211215213300.4778-1-linux@fw-web.de>
+ <20211215213300.4778-2-linux@fw-web.de>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20211215213300.4778-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_051007_310280_78CA8298 
-X-CRM114-Status: GOOD (  42.54  )
+X-CRM114-CacheID: sfid-20211216_051807_382759_71B0CABB 
+X-CRM114-Status: GOOD (  23.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,160 +60,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 16, 2021 at 6:35 AM Ezequiel Garcia
-<ezequiel@vanguardiasur.com.ar> wrote:
->
-> Hi Adam,
->
-> The series looks really great.
->
-> On Thu, Dec 16, 2021 at 05:12:45AM -0600, Adam Ford wrote:
-> > Both the i.MX8MQ and i.MX8MM have G1 and G2 decoders.
-> > The two decoders are similar, but the imx8mm lacks the
-> > post-processor, so they will have distinct compatible flags.
-> >
-> > From what I can tell, the G2 decoder wasn't working, so splitting
-> > the i.MX8MQ VPU into G1 and G2 makes it easier to control them
-> > independently since the TRM of both the i.MX8MQ and
-> > i.MX8MM list them as distinct IP blocks. This also allowed G2 to
-> > become available.
-> >
-> > With them being split, the power-domain can shift to the
-> > vpu-blk-ctrl which is available on both i.MX8MQ and i.MX8MM,
-> > but some of bits are different, so they'll have separate bindings.
-> >
-> > Lastly, with the G1 and G2 operational, enable the i.MX8MM.
-> > On the i.MX8MM, the clock speed of 600MHz was chosen to match
-> > the default of the kernel repo from NXP and can be overwritten
-> > by board files for anyone who under/over volts the power rail.
-> >
-> > There seems to be some disagreement between the TRM and the Datasheet
-> > for the imx8mq as to whether the speed should be 300MHz (TRM) or
-> > 600MHz (datasheet), so feedback from NXP would be very much
-> > appreciated.
-> >
-> > The repo used as the starting point was:
-> > git://linuxtv.org/hverkuil/media_tree.git for-v5.17e
-> >
->
-> I believe you should be able to rebase on top of
-> media_tree master. As far as I can see, it contains the VP9
-> support you need.
->
-> Also, please cherry-pick the following fix from Benjamin
->
-> https://patchwork.linuxtv.org/project/linux-media/patch/20211208164418.848790-1-benjamin.gaignard@collabora.com/
->
-> This is queued and should land on the master branch very soon.
->
-> > Fluster was run on both i.MX8MM and i.MX8MQ
-> >
-> > At 600 MHz, the i.MX8MM had the following:
-> >
-> > ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-> > Ran 55/61 tests successfully               in 8.299 secs
-> >
-> > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-> > Ran 90/135 tests successfully               in 71.200 secs
-> >
-> > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-> > Ran 139/303 tests successfully               in 218.079 secs
->
-> I imagine the reason H264 and VP9 tests take so long
-> is some pixelformat conversion somewhere. It would be great
-> if Fluster could have test vectors ready in the pixelformat
-> the hardware produces :-)
->
-> >
-> > The i.MX8MQ had the following:
-> >
-> > ./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-> > Ran 55/61 tests successfully               in 7.732 secs
-> >
-> > ./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-> > Ran 90/135 tests successfully               in 58.558 secs
-> >
-> > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-> > Ran 144/303 tests successfully               in 271.373 secs
-> >
->
-> ... in any case, the fact that fluster is passing is already
-> telling us the driver is in good shape. How many jobs is the above
-> running in parallel?
->
-> If you want to do some other tests, you can build a gstreamer
-> pipeline, with sync=false, and decode a few 1080p video, e.g.
-> https://jell.yfish.us/.
->
-> Something like gst-launch-1.0 filesrc ! decodebin ! fakevideosink, or
-> so.
->
-> Then, you can run the pipeline in parallel as many times as you want:
->
-> gst-launch-1.0 filesrc ! decodebin ! fakevideosink filesrc ! decodebin ! fakevideosink filesrc ! decodebin ! fakevideosink ...
->
-> (GStreamer lets you concatenate src ! sink src ! sink, in the same
-> gst-launch-1.0 invocation).
->
-> > V2:  Remove references to legacy dt-binding from YAML, but keep
-> >      it in the driver so older device trees can still be used.
-> >      Fix typos in YAML
-> >      Remove reg-names, interrupt-names, and clock-names from YAML,
-> >      since each node will only have one of each, they're not necessary
-> >      Add Fluster scores to cover letter for i.MX8MQ
-> >
->
-> Looks great.
+On 2021-12-15 21:32, Frank Wunderlich wrote:
+> From: Peter Geis <pgwipeout@gmail.com>
+> 
+> This adds reboot support to the rk808 pmic. This only enables if the
+> rockchip,system-power-controller flag is set.
+> 
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>   drivers/mfd/rk808.c       | 48 +++++++++++++++++++++++++++++++++++++++
+>   include/linux/mfd/rk808.h |  2 ++
+>   2 files changed, 50 insertions(+)
+> 
+> diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+> index b181fe401330..afbd7e01df50 100644
+> --- a/drivers/mfd/rk808.c
+> +++ b/drivers/mfd/rk808.c
+> @@ -19,6 +19,7 @@
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+>   #include <linux/regmap.h>
+> +#include <linux/reboot.h>
+>   
+>   struct rk808_reg_data {
+>   	int addr;
+> @@ -533,6 +534,7 @@ static void rk808_pm_power_off(void)
+>   	int ret;
+>   	unsigned int reg, bit;
+>   	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+> +	dev_err(&rk808_i2c_client->dev, "poweroff device!\n");
 
-Any change you could give your acked-by or reviewed-by to the patches?
- Even if they need some work, I can carry those along to the next
-revision when I do the work you request.
+This is not an error.
 
-adam
+>   
+>   	switch (rk808->variant) {
+>   	case RK805_ID:
+> @@ -552,6 +554,7 @@ static void rk808_pm_power_off(void)
+>   		bit = DEV_OFF;
+>   		break;
+>   	default:
+> +		dev_err(&rk808_i2c_client->dev, "poweroff device not supported!\n");
 
+If we really don't support power off for the present PMIC then we should 
+avoid registering the power off handler in the first place. These 
+default cases should mostly just serve to keep static checkers happy.
 
+>   		return;
+>   	}
+>   	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+> @@ -559,6 +562,44 @@ static void rk808_pm_power_off(void)
+>   		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
+>   }
+>   
+> +static int rk808_restart_notify(struct notifier_block *this, unsigned long mode, void *cmd)
+> +{
+> +	int ret;
+> +	unsigned int reg, bit;
+> +	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
+> +
+> +	switch (rk808->variant) {
+> +	case RK805_ID:
+> +		reg = RK805_DEV_CTRL_REG;
+> +		bit = DEV_OFF_RST;
+> +		break;
+> +	case RK808_ID:
+> +		reg = RK808_DEVCTRL_REG,
+> +		bit = DEV_OFF;
 
->
-> Thanks,
-> Ezequiel
->
-> > Adam Ford (7):
-> >   dt-bindings: media: nxp,imx8mq-vpu: Split G1 and G2 nodes
-> >   media: hantro: Allow i.MX8MQ G1 and G2 to run independently
-> >   arm64: dts: imx8mq: Enable both G1 and G2 VPU's with vpu-blk-ctrl
-> >   arm64: dts: imx8mm: Fix VPU Hanging
-> >   dt-bindings: media: nxp,imx8mq-vpu: Add support for G1 and G2 on
-> >     imx8mm
-> >   media: hantro: Add support for i.MX8MM
-> >   arm64: dts: imx8mm: Enable Hantro G1 and G2 video decoders
-> >
-> > Lucas Stach (3):
-> >   dt-bindings: power: imx8mq: add defines for VPU blk-ctrl domains
-> >   dt-bindings: soc: add binding for i.MX8MQ VPU blk-ctrl
-> >   soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
-> >
-> >  .../bindings/media/nxp,imx8mq-vpu.yaml        | 93 +++++++++++--------
-> >  .../soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml      | 71 ++++++++++++++
-> >  arch/arm64/boot/dts/freescale/imx8mm.dtsi     | 23 ++++-
-> >  arch/arm64/boot/dts/freescale/imx8mq.dtsi     | 63 ++++++++-----
-> >  drivers/soc/imx/imx8m-blk-ctrl.c              | 68 +++++++++++++-
-> >  drivers/staging/media/hantro/hantro_drv.c     |  3 +
-> >  drivers/staging/media/hantro/hantro_hw.h      |  3 +
-> >  drivers/staging/media/hantro/imx8m_vpu_hw.c   | 75 ++++++++++++---
-> >  include/dt-bindings/power/imx8mq-power.h      |  3 +
-> >  9 files changed, 324 insertions(+), 78 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml
-> >
-> >
-> > base-commit: d1888b0bfd2ddef2e8a81505ffa200b92cc32e0c
-> > --
-> > 2.32.0
-> >
+Is that right? The RK808 datasheet does say that this bit resets itself 
+once the OFF state is reached, but there doesn't seem to be any obvious 
+guarantee of a power-on condition being present to automatically 
+transition back to ACTIVE.
+
+> +		break;
+> +	case RK817_ID:
+> +		reg = RK817_SYS_CFG(3);
+> +		bit = DEV_RST;
+> +		break;
+> +	case RK818_ID:
+> +		reg = RK818_DEVCTRL_REG;
+> +		bit = DEV_OFF_RST;
+> +		break;
+> +	default:
+> +		return NOTIFY_DONE;
+> +	}
+> +	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+> +	if (ret)
+> +		dev_err(&rk808_i2c_client->dev, "Failed to restart device!\n");
+> +
+> +	return NOTIFY_DONE;
+> +}
+> +
+> +static struct notifier_block rk808_restart_handler = {
+> +	.notifier_call = rk808_restart_notify,
+> +	.priority = 255,
+> +};
+> +
+>   static void rk8xx_shutdown(struct i2c_client *client)
+>   {
+>   	struct rk808 *rk808 = i2c_get_clientdata(client);
+> @@ -727,6 +768,13 @@ static int rk808_probe(struct i2c_client *client,
+>   	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+>   		rk808_i2c_client = client;
+>   		pm_power_off = rk808_pm_power_off;
+> +		rk808->nb = &rk808_restart_handler;
+
+The handler just relies on the global rk808_i2c_client anyway, so does 
+this serve any purpose?
+
+> +
+> +		dev_warn(&client->dev, "register restart handler\n");
+
+Don't scream a warning about normal and expected operation.
+
+Thanks,
+Robin.
+
+> +
+> +		ret = register_restart_handler(rk808->nb);
+> +		if (ret)
+> +			dev_err(&client->dev, "failed to register restart handler, %d\n", ret);
+>   	}
+>   
+>   	return 0;
+> diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+> index a96e6d43ca06..5dfe0c4ceab1 100644
+> --- a/include/linux/mfd/rk808.h
+> +++ b/include/linux/mfd/rk808.h
+> @@ -373,6 +373,7 @@ enum rk805_reg {
+>   #define SWITCH2_EN	BIT(6)
+>   #define SWITCH1_EN	BIT(5)
+>   #define DEV_OFF_RST	BIT(3)
+> +#define DEV_RST		BIT(2)
+>   #define DEV_OFF		BIT(0)
+>   #define RTC_STOP	BIT(0)
+>   
+> @@ -701,5 +702,6 @@ struct rk808 {
+>   	long				variant;
+>   	const struct regmap_config	*regmap_cfg;
+>   	const struct regmap_irq_chip	*regmap_irq_chip;
+> +	struct notifier_block		*nb;
+>   };
+>   #endif /* __LINUX_REGULATOR_RK808_H */
 
 _______________________________________________
 Linux-rockchip mailing list
