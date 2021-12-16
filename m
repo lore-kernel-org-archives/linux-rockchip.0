@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B312C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 11:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FCF8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 11:13:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RpuMxhLYMLa9IIgUHTG8nXqqsexzOj39OOuYl8Tzgro=; b=VkPuCksQTL5qbO
-	qMFh4I76xrRO5dVh8kBwJHLw7Lg0B9juocRl6HPi7xfMTApX+2nODZFrmP3DlBlJtpCusmY+OFpCV
-	2w/u2wn26JWLbtrK+DSrorxC0+o3e/kx2rc8cxR6iIpKAy6QOCm5qV6Lq2+gdu3l+/0IKvjDOocpS
-	cDmPM5vSWN5/ZIlkgXZdOLVQkXr7dW/jZc7lXhEyou76W+lwpFuaNQQKSePQvQ4IiNeakDDqcETFT
-	lG6R2aN6zQ9Ul8lyNYzsCFtDF4NtuS8M+H8wAL2cYdsGMJ/omq2PGQLufNFeYglcTFbvlz9p7FadB
-	Pwpflc1xJXtz/fTDangw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cX1io/tzjg1WoYAcQPCgUID2TTnWnB9UKoj4OJDw3Cw=; b=C2QSgU/kmKRwul
+	2gK/EWNiNkVZl20WurrYqHIYjxe1eyAr7DciU7TFkXRmU0YFIgEimMCuz6QPnhD5Ft9ltqxt68cAy
+	8qoW0ngm3yuKGBY+OzBKrEFhsbp+2Q0pYrQQb+qse4XQGoTe/8++6O1x6WOdboGy9AQE7aYh7pGH/
+	hSIbbegu6vvzp3C9+Bl00dNwmQ+UVC22DNKNWTeHCZd3pBnTpL9cXx7IGDvXX2+fdy5HblNCbdk/k
+	OpgoHiNkBvwquV5dQX+JD5DQkKatJ+XACU1cfJSSbldPEwXroqvXlKBZXh876xMandUDIysr6bwH5
+	QWq8ysrGa2YoXsPjDWJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxohJ-0054kV-HV; Thu, 16 Dec 2021 11:13:17 +0000
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+	id 1mxohr-00559S-9Y; Thu, 16 Dec 2021 11:13:51 +0000
+Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxohG-0054is-L0; Thu, 16 Dec 2021 11:13:16 +0000
-Received: by mail-io1-xd33.google.com with SMTP id e128so34673402iof.1;
- Thu, 16 Dec 2021 03:13:13 -0800 (PST)
+ id 1mxohI-0054jl-SU; Thu, 16 Dec 2021 11:13:18 +0000
+Received: by mail-io1-xd29.google.com with SMTP id q72so34615010iod.12;
+ Thu, 16 Dec 2021 03:13:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=54oWWoqoZRE1KomV36qp17pwppN05XALT4TsXIurcA8=;
- b=cItagiJJAz7DHAfCxPnMgC4HuMPJL3dRt3szmXX+GaUxfZ0rOhAq2f25XNBCk8Xo46
- ZC3jnDok91LDP/J0Aojhf8S+RVc/UGmhRKbnOdqPyEZAi3vqM4tkTUlvhQ00fg1vvRgm
- 2uYkYPp7AqaID4zqBsI+5lrt7U5EN4ek6mAL6K3m4MCUOxi5Bn8ZcAakI0bQ1fS13l7c
- As7EPAEOqBrOBHM8kFPlxvO6ZeJY/0N4DYB4IuA5zTxdxumdJ0vm88nlquyLbzyFaAxS
- Dq0nuOaqsJipOx15C++m7ysQBYRUgX+qXtVN80idfexI+j/TGQcR5ciJY4KtrKX4G+dS
- JrKQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Ci/iieSAzRzH/2rNrz9vVPVHZbfFcrg+DugyyrDVWRg=;
+ b=avulS/IasZOsM1IErPUXlsBP9HRJ/FmY0hN2g7eFCyffTaOijll3DLWB3r0MBj73lh
+ N+OA0lK4XQH5RLgynwNhZm7QUUtsJHKeOxvHflyujgtADBKCSoj3rx1aWsIDjpSzUXSo
+ EUeYFs/pSRMK9oY19clTmBz1yxbm1y8P2TzGXAkeDXNAx60qcga3j1uU/K3iJQj1tG2k
+ jKeygqbKwxMviXQ9XBfFaFxHz+9zz8GEgnVAd6giqbthw3VJiOGWuoO0JNN8IMjGEhHh
+ n+0oEmuJqnqNqhXKAjCTIpTM5v7Nxq+5xd0OYNUNchTm8Vm1tZFkvpqDa/dqKeN9/asr
+ 7eUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=54oWWoqoZRE1KomV36qp17pwppN05XALT4TsXIurcA8=;
- b=pGo13eIHjLHsG2xsVVi7ras/XFYKSaIqGa8N1VESgVXSHYnPtRbtkDsibpoSQHpASM
- CdNmozWvAzAZp98H+Btf+9x454ohKi1P1WKRM9M6Ajh8O1FBUEu9+tqBMSeHJ8fItgM0
- 6tCJDvxPOWcye9mxzy0WOFvj4rKh1Xiv2ydZz8a14FaZhyrTV0kcs8+CONoNbMXYDH8Q
- uxUKfo0YqBoM54QMfONg0zdchoDlHDmOzE8kphMNkT9YTWr1XBhawv1U0wrcP7bjpVbp
- +ymqumeeUbvJZ+KrKUvRhMj7s60sE0cVrUp45BJX6SKe1B+rvYQyz7cN6CT367DsoPkD
- cQSw==
-X-Gm-Message-State: AOAM5327elfYzeGxb4gAkJBpxcFbbg8HJ83/G9YSpjB7oAMO7/MbR/Xn
- amFp7Z+Co1iXlr02l0okfj0=
-X-Google-Smtp-Source: ABdhPJwvVo8tPWOUQxrNaQVlLXq+RAbTp5V12nskk+dTmerWZP7vQgxY7ozL9koGj1zxFhGi3B4yWw==
-X-Received: by 2002:a05:6638:33a6:: with SMTP id
- h38mr9195152jav.185.1639653193110; 
- Thu, 16 Dec 2021 03:13:13 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Ci/iieSAzRzH/2rNrz9vVPVHZbfFcrg+DugyyrDVWRg=;
+ b=8AP8LPewrnb6Q7mjTlqUajAA1c7w45e6TM/PVw//LehlSCoqfdtkOTFGjvGGvkH5uW
+ 3sR3mIigZWzGCGUnW5zb/NdXFWL1wwUcqoUhsW4CrbsHfzLzaH3RYMdQbmMvkibEO7QS
+ REe2QTYICBGB/qD2dNso/sYhC54b7OJOtowecWr5elxA0WhgJjhFsrXE/WNbj4Lvx4ZS
+ CIII4ZyC384Jsge30Rb/OwNpQGcYpd3EpzDQ1GUBW3QVTB0BYfCWNWPP6eeMSFSxdbLB
+ wrHdlWDg4dTaRv2hTFgBpj74BXwk6cRF4BetZXis694VbqZBUzPfsIaeT1GyKnosQqsi
+ 7X+g==
+X-Gm-Message-State: AOAM531ivlR4VRgflLOw6QYs6xMdKKAPq4edfyN60utkj9zCkjJPEui3
+ 3JGkm0hFtJVreNwfMzynozw=
+X-Google-Smtp-Source: ABdhPJx1Pz6IYHOEHrltpVoTw61dTFcY60VVPwhS85F3uFkPQ68JSVa9jDbF1/4mjZxQuXQKK69RlQ==
+X-Received: by 2002:a02:ceb9:: with SMTP id z25mr8847344jaq.121.1639653195540; 
+ Thu, 16 Dec 2021 03:13:15 -0800 (PST)
 Received: from aford-IdeaCentre-A730.lan
  ([2601:448:8400:9e8:fe22:1652:55f7:5197])
- by smtp.gmail.com with ESMTPSA id h1sm3090946iow.31.2021.12.16.03.13.11
+ by smtp.gmail.com with ESMTPSA id h1sm3090946iow.31.2021.12.16.03.13.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Dec 2021 03:13:12 -0800 (PST)
+ Thu, 16 Dec 2021 03:13:15 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
 To: linux-media@vger.kernel.org
 Cc: abel.vesa@nxp.com, aford@beaconembedded.com,
  benjamin.gaignard@collabora.com, hverkuil-cisco@xs4all.nl,
- Adam Ford <aford173@gmail.com>,
+ Lucas Stach <l.stach@pengutronix.de>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -71,18 +70,21 @@ Cc: abel.vesa@nxp.com, aford@beaconembedded.com,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH V2 00/10] media: hantro: imx8mq/imx8mm: Let VPU decoders get
- controlled by vpu-blk-ctrl
-Date: Thu, 16 Dec 2021 05:12:45 -0600
-Message-Id: <20211216111256.2362683-1-aford173@gmail.com>
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-staging@lists.linux.dev
+Subject: [PATCH V2 01/10] dt-bindings: power: imx8mq: add defines for VPU
+ blk-ctrl domains
+Date: Thu, 16 Dec 2021 05:12:46 -0600
+Message-Id: <20211216111256.2362683-2-aford173@gmail.com>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20211216111256.2362683-1-aford173@gmail.com>
+References: <20211216111256.2362683-1-aford173@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_031314_738577_DB47D566 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20211216_031316_943705_AD2B677B 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,93 +102,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Both the i.MX8MQ and i.MX8MM have G1 and G2 decoders.
-The two decoders are similar, but the imx8mm lacks the
-post-processor, so they will have distinct compatible flags.
+From: Lucas Stach <l.stach@pengutronix.de>
 
-From what I can tell, the G2 decoder wasn't working, so splitting
-the i.MX8MQ VPU into G1 and G2 makes it easier to control them 
-independently since the TRM of both the i.MX8MQ and
-i.MX8MM list them as distinct IP blocks. This also allowed G2 to
-become available.
+This adds the defines for the power domains provided by the VPU
+blk-ctrl on the i.MX8MQ.
 
-With them being split, the power-domain can shift to the
-vpu-blk-ctrl which is available on both i.MX8MQ and i.MX8MM,
-but some of bits are different, so they'll have separate bindings.
+Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 
-Lastly, with the G1 and G2 operational, enable the i.MX8MM.
-On the i.MX8MM, the clock speed of 600MHz was chosen to match
-the default of the kernel repo from NXP and can be overwritten
-by board files for anyone who under/over volts the power rail.
-
-There seems to be some disagreement between the TRM and the Datasheet
-for the imx8mq as to whether the speed should be 300MHz (TRM) or
-600MHz (datasheet), so feedback from NXP would be very much
-appreciated.
-
-The repo used as the starting point was:
-git://linuxtv.org/hverkuil/media_tree.git for-v5.17e
-
-Fluster was run on both i.MX8MM and i.MX8MQ
-
-At 600 MHz, the i.MX8MM had the following:
-
-./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-Ran 55/61 tests successfully               in 8.299 secs
-
-./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-Ran 90/135 tests successfully               in 71.200 secs
-
-./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-Ran 139/303 tests successfully               in 218.079 secs
-
-The i.MX8MQ had the following:
-
-./fluster.py run -d GStreamer-VP8-V4L2SL-Gst1.0
-Ran 55/61 tests successfully               in 7.732 secs
-
-./fluster.py run -dGStreamer-H.264-V4L2SL-Gst1.0
-Ran 90/135 tests successfully               in 58.558 secs
-
-./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0
-Ran 144/303 tests successfully               in 271.373 secs
-
-V2:  Remove references to legacy dt-binding from YAML, but keep
-     it in the driver so older device trees can still be used.
-     Fix typos in YAML
-     Remove reg-names, interrupt-names, and clock-names from YAML,
-     since each node will only have one of each, they're not necessary
-     Add Fluster scores to cover letter for i.MX8MQ
-
-Adam Ford (7):
-  dt-bindings: media: nxp,imx8mq-vpu: Split G1 and G2 nodes
-  media: hantro: Allow i.MX8MQ G1 and G2 to run independently
-  arm64: dts: imx8mq: Enable both G1 and G2 VPU's with vpu-blk-ctrl
-  arm64: dts: imx8mm: Fix VPU Hanging
-  dt-bindings: media: nxp,imx8mq-vpu: Add support for G1 and G2 on
-    imx8mm
-  media: hantro: Add support for i.MX8MM
-  arm64: dts: imx8mm: Enable Hantro G1 and G2 video decoders
-
-Lucas Stach (3):
-  dt-bindings: power: imx8mq: add defines for VPU blk-ctrl domains
-  dt-bindings: soc: add binding for i.MX8MQ VPU blk-ctrl
-  soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
-
- .../bindings/media/nxp,imx8mq-vpu.yaml        | 93 +++++++++++--------
- .../soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml      | 71 ++++++++++++++
- arch/arm64/boot/dts/freescale/imx8mm.dtsi     | 23 ++++-
- arch/arm64/boot/dts/freescale/imx8mq.dtsi     | 63 ++++++++-----
- drivers/soc/imx/imx8m-blk-ctrl.c              | 68 +++++++++++++-
- drivers/staging/media/hantro/hantro_drv.c     |  3 +
- drivers/staging/media/hantro/hantro_hw.h      |  3 +
- drivers/staging/media/hantro/imx8m_vpu_hw.c   | 75 ++++++++++++---
- include/dt-bindings/power/imx8mq-power.h      |  3 +
- 9 files changed, 324 insertions(+), 78 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/soc/imx/fsl,imx8mq-vpu-blk-ctrl.yaml
-
-
-base-commit: d1888b0bfd2ddef2e8a81505ffa200b92cc32e0c
+diff --git a/include/dt-bindings/power/imx8mq-power.h b/include/dt-bindings/power/imx8mq-power.h
+index 8a513bd9166e..9f7d0f1e7c32 100644
+--- a/include/dt-bindings/power/imx8mq-power.h
++++ b/include/dt-bindings/power/imx8mq-power.h
+@@ -18,4 +18,7 @@
+ #define IMX8M_POWER_DOMAIN_MIPI_CSI2	9
+ #define IMX8M_POWER_DOMAIN_PCIE2	10
+ 
++#define IMX8MQ_VPUBLK_PD_G1		0
++#define IMX8MQ_VPUBLK_PD_G2		1
++
+ #endif
 -- 
 2.32.0
 
