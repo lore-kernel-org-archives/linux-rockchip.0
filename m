@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43577C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 11:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD221C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Dec 2021 11:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aRYblI/TrVwkB9oRNjAEFod4Z0gUs3jyppD0rb+MiFU=; b=dSk52uELpl2kbw
-	ageA9v959xOc8rDkFCFbm6SCp1cszgU0BDfFMovJUkzsuidmn+/3qtPtaNqj664ZkjXdIa6j6tUVd
-	Za7McMVm/gZ7yisvkYDSbMKSh9cVu9Ba0h+2IFKWV5AB6XI75Yy5Hx6OV0ShWQ+70J9RfvDAb+Qlh
-	N0Km8Y2N52TpU5WWUc+YEcijw45IUbmi7ThBYqtS3tqzNuaJk2jeDGPmCaZxc1M9FchPgw5bOukmt
-	jUAWyzK3L5FC4NA3pFR4rWy1AjQEP9B0L3m1aSvLwe+3YpRxF1xOkpRY189vYM5wc9gsaxN7mC6h6
-	IABXW5Ll5xsI4g1nOQAw==;
+	List-Owner; bh=kRfZl4a53jCT36c+wCpLoUOKeRUuprG+a28TCo8+XK4=; b=Zluq9FLgDQRAjX
+	zIF8uE3Z/mpbGMdnLXnXnhpATtp8w/3A5Tni5Vy6EoaU6obFP2c+DP+petsgD8E2bXsr1x2yRTeGc
+	Qr+Idqx9cIItjE4kSNgJV/KQEUh4ozjc//Fzgbz4jJv/dPa0bUkNV+XGjCStR0OTmCGDVthzqi4C3
+	8gqrXEZn8z9UCYVQXL/XVLP5wx9++KrEcK0g6/P9a+y5w5V7kJf8fTBLFACloxeKDIeXl/NIieE2b
+	4ZnVZn25d8ePqodHbBUNF4vEXVs8uK9G/ohLYktU2m6pCkUGza8Bjjd3KQ80mxDC3wLHK7JlsKZDJ
+	LSJUquK3oYMxpMrRd8/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxoiw-0055gl-3k; Thu, 16 Dec 2021 11:14:58 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1mxojN-0055v6-Ac; Thu, 16 Dec 2021 11:15:25 +0000
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxohO-0054nv-DA; Thu, 16 Dec 2021 11:13:25 +0000
-Received: by mail-io1-xd36.google.com with SMTP id q72so34615341iod.12;
- Thu, 16 Dec 2021 03:13:21 -0800 (PST)
+ id 1mxohQ-0054pd-QZ; Thu, 16 Dec 2021 11:13:26 +0000
+Received: by mail-io1-xd35.google.com with SMTP id x6so34407016iol.13;
+ Thu, 16 Dec 2021 03:13:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=zA35Y58P12mhcmBAnqxZhkfn5G9++KfvTLXr1jNa/3g=;
- b=Wpj6JpNbY4toi6asLPHJ0NqpzgGTyBIYS9Zu6dCzMA6okbyL4N1gumkMWy3CpcHN8W
- 0PkTE6a1ysgWan5/04BZvQ7H9+eQkbFjfv+TQpu43al1wd2aQiHkJKxt/LNnitevToif
- e6i15tW+f1ou4ceEs3IbVWpiaypshsT4YHJEPcLUwhRKKVqX5Z97VRAnqLyrlLqERHKi
- O6oybSsFcJrYj/pvwD9g8rbuwBWRbCu/PBlUgrSWqDsfOLgWlhXbPMgSoAd8W32WYx5z
- MRScvxF1Axav9lrH4R/JG16s6Cq8nSB5eGJsbqpJkG7B9A8T8LVs6kYfXbOcabOr8o2U
- 3LCw==
+ bh=hIJ2BXRPTEtzu/ZO8rXZU4lpHiRp6LC7zg0PG2dAKgA=;
+ b=j21orvp1x1uJGdqNmShqe1kyn9caZrVG9j25F7I5+iYeqvshwZ06bRf77n665sNSEr
+ 2ZwH8W8aIjIRIjCpPQ+JVnN43gpGA2GVXQSgTmU0MSsBfaQaKn/lln3BPiBdeppiT+XI
+ cWhlyAwOcym+uEhYnzY89OUX/W3N9oO34zZxJL/aIq614k7ZReg4fLBbFxONMDIo0/tA
+ BmIMwHWiI0nR8nudaKeefj0tQbT10E+NMZfurhivu08OuyG7fh3qT2VLnM0+3EZnptvp
+ 779dk2HV7p+a79INg1LArV4CUb8T+v5SURyCa4QojZCSKBESow/71Fz89UcOTt1mn4Tp
+ XR9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=zA35Y58P12mhcmBAnqxZhkfn5G9++KfvTLXr1jNa/3g=;
- b=FKr3cq2EK6EC8vEgH87fMIikuvRcfsTG0a1OaL0IeinT0ynsI3+TghLex0HuaAtA9/
- +NmPK21pyRD49HTOmiJjrJUllP5Vou9jzI2iRmS9ljiVgH3p2zuAmokna+PmbLF4zpaA
- o8LdrKTvkfWBeNp6TcUNbsMtndrxVGPsZn2lQRdX4wQFYOx72QlWxADOltsrDiNeueb1
- NwAvY4Mm3yoDRnKw7Z7kIIyhupln2pyETFoL2rtDLDcGIV4ayNYv3pHkgR569gtI6PIh
- d98exP4K8Fs7PGYrbAwGUpF9CcT9GnW89o4llf4Gp8gsj242IQ2f7/rno6pgP78vI/jf
- u+qg==
-X-Gm-Message-State: AOAM532qn9XqZDzYuPISEQ+20cBpjON7X6NXaDRWv1g030RchuCWP/Dw
- HGcS7YMosvGsgEMGEhnU+no=
-X-Google-Smtp-Source: ABdhPJwS//YoEd7z38TZ/77rCtudvYnPhuNSMd60j6th3NYtYFTK2kAr2wRekpxqi9HyVzeT56QnKA==
-X-Received: by 2002:a6b:b5c3:: with SMTP id e186mr8984442iof.207.1639653200913; 
- Thu, 16 Dec 2021 03:13:20 -0800 (PST)
+ bh=hIJ2BXRPTEtzu/ZO8rXZU4lpHiRp6LC7zg0PG2dAKgA=;
+ b=KBqBGvwXoxF4gzrbSCoqywXmHU2F2ZTkleL0YDcSNJEGjRD8wote+6BfgSQ3TMRGrD
+ O+J2Nv8B6MRtBPzOyR6d/MZc6W/cOT7L8H5JBPYY0K+AsmHhVEiOtiDlpyuFDYqw5icA
+ jDBlCc2hkdIZz0uznSX8SFvsoobAjIyZeQ2rfR+h8OZoR9gk5V3dpLU2nTmPPsTGUDIB
+ hAJuliSNUy5g1VDvjL2qa3fZgLemAmTGf3sEwdu/K4Vo/DgBQ45FfUAI96fDpKw+P+jE
+ JPo4omlMIwfdYdcECuMFojUXfnJ5yT9UuImRcxk2ds3hBpdL3QVw51bx5ndzXxhgG0Oj
+ gcKA==
+X-Gm-Message-State: AOAM531twkyTKsEDKX8BVXENPu45nvg/wcq+lMzAon69eLPiucyEwHd+
+ sJbgiycFb332wS36SsMmTA8=
+X-Google-Smtp-Source: ABdhPJw4RmmjDj7+SbxpCTshhpxpOsQ5eYDEAGda/dzashZVSPmaKDpNrjhyVeIORPvbz7fpa9W/Bw==
+X-Received: by 2002:a05:6602:42:: with SMTP id
+ z2mr9035083ioz.208.1639653203369; 
+ Thu, 16 Dec 2021 03:13:23 -0800 (PST)
 Received: from aford-IdeaCentre-A730.lan
  ([2601:448:8400:9e8:fe22:1652:55f7:5197])
- by smtp.gmail.com with ESMTPSA id h1sm3090946iow.31.2021.12.16.03.13.19
+ by smtp.gmail.com with ESMTPSA id h1sm3090946iow.31.2021.12.16.03.13.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Dec 2021 03:13:20 -0800 (PST)
+ Thu, 16 Dec 2021 03:13:22 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
 To: linux-media@vger.kernel.org
 Cc: abel.vesa@nxp.com, aford@beaconembedded.com,
  benjamin.gaignard@collabora.com, hverkuil-cisco@xs4all.nl,
- Lucas Stach <l.stach@pengutronix.de>, Adam Ford <aford173@gmail.com>,
+ Adam Ford <aford173@gmail.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -70,19 +71,20 @@ Cc: abel.vesa@nxp.com, aford@beaconembedded.com,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
  Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev
-Subject: [PATCH V2 03/10] soc: imx: imx8m-blk-ctrl: add i.MX8MQ VPU blk-ctrl
-Date: Thu, 16 Dec 2021 05:12:48 -0600
-Message-Id: <20211216111256.2362683-4-aford173@gmail.com>
+ Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [PATCH V2 04/10] dt-bindings: media: nxp,
+ imx8mq-vpu: Split G1 and G2 nodes
+Date: Thu, 16 Dec 2021 05:12:49 -0600
+Message-Id: <20211216111256.2362683-5-aford173@gmail.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20211216111256.2362683-1-aford173@gmail.com>
 References: <20211216111256.2362683-1-aford173@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_031322_511904_3C8B2030 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20211216_031324_921410_10ADEBEE 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,107 +102,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Lucas Stach <l.stach@pengutronix.de>
+The G1 and G2 are separate decoder blocks that are enabled by the
+vpu-blk-ctrl power-domain controller, which now has a proper driver.
+Update the bindings to support separate nodes for the G1 and G2
+decoders with vpu-blk-ctrl power-domain support.
 
-This adds the necessary bits to drive the VPU blk-ctrl on the i.MX8MQ, to
-avoid putting more of this functionality into the decoder driver.
-
-Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
 Signed-off-by: Adam Ford <aford173@gmail.com>
 
-diff --git a/drivers/soc/imx/imx8m-blk-ctrl.c b/drivers/soc/imx/imx8m-blk-ctrl.c
-index 519b3651d1d9..a7c12e8fa89b 100644
---- a/drivers/soc/imx/imx8m-blk-ctrl.c
-+++ b/drivers/soc/imx/imx8m-blk-ctrl.c
-@@ -14,6 +14,7 @@
- #include <linux/clk.h>
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+index 762be3f96ce9..c1e157251de7 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+@@ -15,33 +15,20 @@ description:
  
- #include <dt-bindings/power/imx8mm-power.h>
-+#include <dt-bindings/power/imx8mq-power.h>
+ properties:
+   compatible:
+-    const: nxp,imx8mq-vpu
++     oneOf:
++      - const: nxp,imx8mq-vpu
++        deprecated: true
++      - const: nxp,imx8mq-vpu-g1
++      - const: nxp,imx8mq-vpu-g2
  
- #define BLK_SFT_RSTN	0x0
- #define BLK_CLK_EN	0x4
-@@ -498,6 +499,68 @@ static const struct imx8m_blk_ctrl_data imx8mm_disp_blk_ctl_dev_data = {
- 	.num_domains = ARRAY_SIZE(imx8mm_disp_blk_ctl_domain_data),
- };
+   reg:
+-    maxItems: 3
+-
+-  reg-names:
+-    items:
+-      - const: g1
+-      - const: g2
+-      - const: ctrl
++    maxItems: 1
  
-+static int imx8mq_vpu_power_notifier(struct notifier_block *nb,
-+				     unsigned long action, void *data)
-+{
-+	struct imx8m_blk_ctrl *bc = container_of(nb, struct imx8m_blk_ctrl,
-+						 power_nb);
+   interrupts:
+-    maxItems: 2
+-
+-  interrupt-names:
+-    items:
+-      - const: g1
+-      - const: g2
++    maxItems: 1
+ 
+   clocks:
+-    maxItems: 3
+-
+-  clock-names:
+-    items:
+-      - const: g1
+-      - const: g2
+-      - const: bus
++    maxItems: 1
+ 
+   power-domains:
+     maxItems: 1
+@@ -49,31 +36,33 @@ properties:
+ required:
+   - compatible
+   - reg
+-  - reg-names
+   - interrupts
+-  - interrupt-names
+   - clocks
+-  - clock-names
+ 
+ additionalProperties: false
+ 
+ examples:
+   - |
+         #include <dt-bindings/clock/imx8mq-clock.h>
++        #include <dt-bindings/power/imx8mq-power.h>
++        #include <dt-bindings/interrupt-controller/arm-gic.h>
 +
-+	if (action != GENPD_NOTIFY_ON && action != GENPD_NOTIFY_PRE_OFF)
-+		return NOTIFY_OK;
-+
-+	/*
-+	 * The ADB in the VPUMIX domain has no separate reset and clock
-+	 * enable bits, but is ungated and reset together with the VPUs. The
-+	 * reset and clock enable inputs to the ADB is a logical OR of the
-+	 * VPU bits. In order to set the G2 fuse bits, the G2 clock must
-+	 * also be enabled.
-+	 */
-+	regmap_set_bits(bc->regmap, BLK_SFT_RSTN, BIT(0) | BIT(1));
-+	regmap_set_bits(bc->regmap, BLK_CLK_EN, BIT(0) | BIT(1));
-+
-+	if (action == GENPD_NOTIFY_ON) {
-+		/*
-+		 * On power up we have no software backchannel to the GPC to
-+		 * wait for the ADB handshake to happen, so we just delay for a
-+		 * bit. On power down the GPC driver waits for the handshake.
-+		 */
-+		udelay(5);
-+
-+		/* set "fuse" bits to enable the VPUs */
-+		regmap_set_bits(bc->regmap, 0x8, 0xffffffff);
-+		regmap_set_bits(bc->regmap, 0xc, 0xffffffff);
-+		regmap_set_bits(bc->regmap, 0x10, 0xffffffff);
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
-+static const struct imx8m_blk_ctrl_domain_data imx8mq_vpu_blk_ctl_domain_data[] = {
-+	[IMX8MQ_VPUBLK_PD_G1] = {
-+		.name = "vpublk-g1",
-+		.clk_names = (const char *[]){ "g1", },
-+		.num_clks = 1,
-+		.gpc_name = "g1",
-+		.rst_mask = BIT(1),
-+		.clk_mask = BIT(1),
-+	},
-+	[IMX8MQ_VPUBLK_PD_G2] = {
-+		.name = "vpublk-g2",
-+		.clk_names = (const char *[]){ "g2", },
-+		.num_clks = 1,
-+		.gpc_name = "g2",
-+		.rst_mask = BIT(0),
-+		.clk_mask = BIT(0),
-+	},
-+};
-+
-+static const struct imx8m_blk_ctrl_data imx8mq_vpu_blk_ctl_dev_data = {
-+	.max_reg = 0x14,
-+	.power_notifier_fn = imx8mq_vpu_power_notifier,
-+	.domains = imx8mq_vpu_blk_ctl_domain_data,
-+	.num_domains = ARRAY_SIZE(imx8mq_vpu_blk_ctl_domain_data),
-+};
-+
- static const struct of_device_id imx8m_blk_ctrl_of_match[] = {
- 	{
- 		.compatible = "fsl,imx8mm-vpu-blk-ctrl",
-@@ -505,7 +568,10 @@ static const struct of_device_id imx8m_blk_ctrl_of_match[] = {
- 	}, {
- 		.compatible = "fsl,imx8mm-disp-blk-ctrl",
- 		.data = &imx8mm_disp_blk_ctl_dev_data
--	} ,{
-+	}, {
-+		.compatible = "fsl,imx8mq-vpu-blk-ctrl",
-+		.data = &imx8mq_vpu_blk_ctl_dev_data
-+	}, {
- 		/* Sentinel */
- 	}
- };
++        vpu_g1: video-codec@38300000 {
++                compatible = "nxp,imx8mq-vpu-g1";
++                reg = <0x38300000 0x10000>;
++                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>;
++                power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G1>;
++        };
++  - |
++        #include <dt-bindings/clock/imx8mq-clock.h>
++        #include <dt-bindings/power/imx8mq-power.h>
+         #include <dt-bindings/interrupt-controller/arm-gic.h>
+ 
+-        vpu: video-codec@38300000 {
+-                compatible = "nxp,imx8mq-vpu";
+-                reg = <0x38300000 0x10000>,
+-                      <0x38310000 0x10000>,
+-                      <0x38320000 0x10000>;
+-                reg-names = "g1", "g2", "ctrl";
+-                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+-                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+-                interrupt-names = "g1", "g2";
+-                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+-                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+-                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+-                clock-names = "g1", "g2", "bus";
+-                power-domains = <&pgc_vpu>;
++        vpu_g2: video-codec@38300000 {
++                compatible = "nxp,imx8mq-vpu-g2";
++                reg = <0x38310000 0x10000>;
++                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
++                clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
++                power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G2>;
+         };
 -- 
 2.32.0
 
