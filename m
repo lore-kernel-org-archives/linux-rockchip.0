@@ -4,57 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB232C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Dec 2021 13:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE547C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Dec 2021 13:15:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y/M0lcYkiAJg/9unn6onvBhNsLlfrjG7UmB7oZ/C0wU=; b=kSx2o+ngK2rogG
-	aqiYBTI9OPvMwr6EHS2kfQbg0e/uZoZdhJGmlAGebhOAQxPxEKt5iskkh5HGwDYXgKtF1Fs+ViBBQ
-	ushKuCtZ6WrfGaemAn/JDPNddc5Rlx2wCi5pBkqSof+9sGRHV9dp60gzmisztt0PJadVrsZUPx1r3
-	IDPzYqzQe+yPLiCAq4/qwJAjZTrS8Sjkp/SERdr6xGJ+LHpz2GplcITZH9tqD74lGO50f+vuREN49
-	tdGDypRM5SVY+mzNH8bo4X7LtXbDnd38uOV6I+Bk1Fw4pHO7V5T4qnO0GuxLMqPdH5L3nS0jOdUSx
-	A5A+YWSFZmhWfn6pPRsg==;
+	List-Owner; bh=SJToleVHTiu4r8P0eS8ggsEvsj+RrCcUXnLvLfKlW3Y=; b=TPFcST7E6SofWf
+	trJp6EC89SIC4GK0t37Lq4+88uuM1rS06HxUbbA3fQBeRC9DxABgVRN4oL88irlztx48mdtuu3K82
+	S3T4bLtvhsN6qT91aTP/TnQWY/a/ALzXpKxJ3x7ZoP07WznaUZfUjtWwQjVzwuVqzRuPmxrjxgukj
+	nW10JtObr3249rV3zY7xjSSdb4w8ceFmiUk6bcR8HOD8Ttn2tx/42AsG/Ug7zv9x50dzprPzMlDr3
+	FHbe/zGLIPSFD2OXTCMGaGTidqM1BvnNx0sbCY28Mi1y0Bwq51qiOqervm9WwYnr2p9ORPNmL5GiS
+	DIlvdsKtg8d3EPyZ1v+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myD0S-00AJS6-Hv; Fri, 17 Dec 2021 13:10:40 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1myD4u-00ALFm-Pi; Fri, 17 Dec 2021 13:15:16 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myCzW-00AIsD-LI
- for linux-rockchip@lists.infradead.org; Fri, 17 Dec 2021 13:09:43 +0000
-Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1myCzF-0004Us-9N; Fri, 17 Dec 2021 14:09:25 +0100
-Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
- (envelope-from <sha@pengutronix.de>)
- id 1myCzE-00Cjq9-15; Fri, 17 Dec 2021 14:09:24 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 4/4] dt-bindings: power: rockchip: Add power-supply to domain
- nodes
-Date: Fri, 17 Dec 2021 14:09:19 +0100
-Message-Id: <20211217130919.3035788-5-s.hauer@pengutronix.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20211217130919.3035788-1-s.hauer@pengutronix.de>
-References: <20211217130919.3035788-1-s.hauer@pengutronix.de>
+ id 1myD4r-00ALDZ-GH; Fri, 17 Dec 2021 13:15:14 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id x15so7782342edv.1;
+ Fri, 17 Dec 2021 05:15:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Na3iE0j4HNoWRi+U++Qkwp+ou8+ZuFrwaRIy0WfQ2hA=;
+ b=N1jr9myxISWFLN1mOI/vHIm7ZWB08fTKGVaFpYwQ27LZJHOjLxTnHX+mLbvy56Ha3e
+ +BVHSX0+Yx6xtn1m2T1ICDsnOmPq3bbHQOdrd/l/fQ9ymJcU9DHC1Q3Wd4eQwRs1irAb
+ w4QUWGBiNrBEq0UHs2n+58YHaxjSOU9CzA8xUunvBR7P+eMZVAiLVlhDonXwWiiSkod9
+ FWKCaEFXjoQPgOD4IowjyWGxZ90LuM17iceNFjjXlBPjORhF7Q4doIEUi66Yz/QyKxeW
+ R1Bl5iIjHMIx/qhhCLl9eowquoy8Mfj5HAakVqzMNmKZnjwr5ws+V7SWS0vIvxV6jZKb
+ YiRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Na3iE0j4HNoWRi+U++Qkwp+ou8+ZuFrwaRIy0WfQ2hA=;
+ b=h6LNImXF9eqU82xTw86wMJqdIKujvTk0l8fHxAYjnylnQurb51UEKzy2mnAGIsvToe
+ ug64izNKoI+uTr1OoYWW1dDOrSQ/3OMkMSBMN17i6Nyyq20PQ6x0z1+fFkV6opxyRe3E
+ +o5Eu2FCaIdFkS2eiowVkwAYFRXYulAaLBOtGY3Fr8O6H+Ue3VQpdvW5hPkDZg0YhqUf
+ 1F92l6bOb9GHp1rFl7T8E240cSkiC3XUkq8ql60fbv76wnideFoqHxn3Ms+5npJ3q0aA
+ cdZ7oaRpeKY0Zs1sSG2z56P2x3ND7HA50doCXjalDwIgXBi1Aok2qAZYx0GxjaXQoHJM
+ oO/w==
+X-Gm-Message-State: AOAM531+ExVf5DpgRe7iQqGzS8mN43QRpmD5GMXZ/922/oMHcA5RYoHf
+ 91nnsJ9sHmZhH7vrm46v1orWJ48aalUsMcMUKGs=
+X-Google-Smtp-Source: ABdhPJx2oXs11DBrV0D1boS6MZsPcSRGc/jvpGyJdpjBOAPI0LrBX/9/U5OOGPw9HCXw3XqnpD70MU3f84YkxWLJuzg=
+X-Received: by 2002:a17:907:2d12:: with SMTP id
+ gs18mr2529014ejc.198.1639746911717; 
+ Fri, 17 Dec 2021 05:15:11 -0800 (PST)
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::28
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+References: <20211106183802.893285-1-aford173@gmail.com>
+ <718f7f6d6cd564d031c1963f1590c62d549ae725.camel@ndufresne.ca>
+ <CAHCN7xKM9RUE7z-+ug1on+D=nDoEm589R4m03ofys92Aq75ZVQ@mail.gmail.com>
+ <8db00a4b6faa99c940d9bc86e17161eb0db5efe3.camel@ndufresne.ca>
+ <CAJ+vNU28UJffFv9jQ2KryJMudqYxvCaoVOVcU5dPqRA209iN6A@mail.gmail.com>
+ <d91532c2c0772f9aa708ead36b2a97203727a7ea.camel@ndufresne.ca>
+ <CAJ+vNU3H-V+bPoZ3qKead45h=W7AhQK6Lhjrx5ssdF4c_qfe=A@mail.gmail.com>
+ <CAHCN7x+0LwwU_rEST+TZxGquswGKL19gnTy9WLofsXtGAtWqdw@mail.gmail.com>
+ <7f94eaacfddb8c5434c17f1e069ea87a17657ce9.camel@ndufresne.ca>
+ <CAHCN7xKRzxMBmPbDobWTuvNNSpTXk5XENvfBnfkhRY3eZKhn6w@mail.gmail.com>
+ <CAHCN7xJFLNi_g+HX8PCy1Rkgf0jnWpO5QGYVz8nH19xrJkwHrA@mail.gmail.com>
+ <CAJ+vNU3zFd=6k_Emc5aafxKkGwCPp4crgOFezQ-E_MbWsn1_EA@mail.gmail.com>
+ <fed6c2fd7cf4971062c417ce41ed1e3812b900e0.camel@ndufresne.ca>
+ <CAHCN7xK+wROHaqDcsY-3WYFQ82qX17L-LHNL3siSWnWvwFShzQ@mail.gmail.com>
+ <CAAEAJfC1xXvemaFP+vTFVJ3S-SpYtrxyZgDamSOgLC1F3ua5xw@mail.gmail.com>
+ <CAHCN7x+UMMP6RXsNm0=OC=UTQzh=RKqQo6B7FD5e4eoJAEfmpg@mail.gmail.com>
+ <CAJ+vNU1epi9SwPMHkuDmKcb68RLemYF=bsp7AVnzz06zKc2efw@mail.gmail.com>
+ <CAAEAJfCpjk5nWWkJYjjDT-YEpJi4pTZqZbzp_if9OGC0HKspzw@mail.gmail.com>
+ <CAJ+vNU2we5mGXgYsR6CfimvFXZsc0zktR3fDa-h6RRa02jTT0g@mail.gmail.com>
+ <CAHCN7xJrM9uZUnmx65uTxWEo6HAkjozd3kD3UoEv-pYd5DV4QA@mail.gmail.com>
+ <CAAEAJfBXU-AiKKhkhXzgUSR4p1yefysNuHFycBz3F-GzNewS6w@mail.gmail.com>
+In-Reply-To: <CAAEAJfBXU-AiKKhkhXzgUSR4p1yefysNuHFycBz3F-GzNewS6w@mail.gmail.com>
+From: Adam Ford <aford173@gmail.com>
+Date: Fri, 17 Dec 2021 07:15:00 -0600
+Message-ID: <CAHCN7xL4y67V6AW5MV=8iudvvGVBWs2LoUhu_2CUJf6bSycgFA@mail.gmail.com>
+Subject: Re: [RFC 0/5] arm64: imx8mm: Enable Hantro VPUs
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Tim Harvey <tharvey@gateworks.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ linux-media <linux-media@vger.kernel.org>, 
+ Schrempf Frieder <frieder.schrempf@kontron.de>,
+ Marek Vasut <marek.vasut@gmail.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Adam Ford-BE <aford@beaconembedded.com>, 
+ cstevens@beaconembedded.com, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Lucas Stach <l.stach@pengutronix.de>, Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Alice Guo <alice.guo@nxp.com>, Peng Fan <peng.fan@nxp.com>, 
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211217_050942_756188_8D7A4A52 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211217_051513_586969_C7F1A388 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,45 +122,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
- .../bindings/power/rockchip,power-controller.yaml           | 6 ++++++
- 1 file changed, 6 insertions(+)
+On Thu, Dec 16, 2021 at 10:49 PM Ezequiel Garcia
+<ezequiel@vanguardiasur.com.ar> wrote:
+>
+> Hi Adam,
+>
+> >
+> > I will post a V2 last today with the Mini's post-processing removed.
+> > Someone, I apologize that I forget who, mentioned it was fused out of
+> > the Mini, so the testing I've been doing was with that removed and I
+> > removed the H1 encoder since the Mini doesn't support JPEG encoding.
+> >
+> [...]
+>
+> Resurrecting this thread here. IMX8MMRM Rev. 0, 02/2019 mentions
+> post-processor features for G1 and G2.
+>
+> Have you checked the fuse and synth registers to see if they throw
+> any useful information about the hardware? For instance,
+> comparing PP fuse register (SWREG99) and
+> Synthesis configuration register post-processor (SWREG100)
+> in both 8MQ and 8MM could be useful.
+>
+> As I mentioned on my previous mail, even if G1 PP is disabled
+> on the Mini, I would imagine the G2 can do linear NV12 (aka raster-scan)
+> which in our hantro driver jargon is a  "post-processed" format :-)
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-index 9b9d710874663..f7e4b95fb6feb 100644
---- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-@@ -71,6 +71,8 @@ patternProperties:
-       "#size-cells":
-         const: 0
- 
-+      power-supply: true
-+
-     patternProperties:
-       "^power-domain@[0-9a-f]+$":
- 
-@@ -85,6 +87,8 @@ patternProperties:
-           "#size-cells":
-             const: 0
- 
-+          power-supply: true
-+
-         patternProperties:
-           "^power-domain@[0-9a-f]+$":
- 
-@@ -96,6 +100,8 @@ patternProperties:
-               "#power-domain-cells":
-                 const: 0
- 
-+            power-supply: true
-+
- $defs:
-   pd-node:
-     type: object
--- 
-2.30.2
+You're likely right.  I was going on memory from an e-mail from
+Nicloas Defresne who wrote:
 
+"I will check the patchset, but you need in the mini-variant to disable the G1
+post processor, because this block was fused out. We didn't make it optional
+from the start as according to the V1 of the TRM it was there, but that error
+was corrected in V3."
+
+In my head I assumed the G2 was affected as well, but when I double
+checked his email, and based on the above statement, the G2
+post-processing is probably there, so I'll run some tests with the G2
+post-processing enabled.  I'll also double check those registers on
+both to confirm what they read. I am not sure when I'll have time
+because I leave for London next week, and I won't return until early
+January, but I'll do what I can.
+
+adam
+>
+> Thanks,
+> Ezequiel
 
 _______________________________________________
 Linux-rockchip mailing list
