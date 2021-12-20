@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CA3EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 16:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0579EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 16:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=8iLUZ7oIVcv97tYGWWftq3Vn2mWqOR55yT3OEy/LNII=; b=3SMjvOZ++bJVhvrtl+0hNoXNVI
-	nQ+IqErT9zzglgGV4NBaWueEalUKFZqI/DDRiQ80tLyDHugBdROrCIPTa8n0hBwsIvcwJ2mogiZTE
-	mbz9cq4jLgT4SyX23M1mkUM85dv66hp2B1qxjQJfko7HA6wM6pHaCfM7O28GKsl32byK8Ku2Xj6m1
-	IvDWsnZLtBw32tKYISq5DTNESQZeRq5mBSb7MDTiMyVyLYMmLm3C1CTOlhDBuZoYMUy9n/o9+Q9U1
-	Off4sRM6jdI5PgkysYAs1fsHVwr9YlNCmdaQ3R8Hda23TqgXtEi/cv5z7gcvOIP65aWsUSAnU4b6E
-	kaQPaNKA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UuoHWbqB4yGTPYbiFDHDsIqrg1OQBbtmG2Q5w7kxpB8=; b=VoqJ1Lr0RM8Wes
+	QznHT5txSeQnu0HKh1S1L+36W0XSB2oulwj+01Xx49M19VcXuH0juj17uxAa9eQPPKIKbrjxhEk2P
+	GIX5deiXOHZs51EWPfesBsR+qkU4WAfaA5mYi3tuE5vVcDk3cjeCRHzZOsKARt2JElNTgmNUSHsbx
+	5QJAuW/38DAPwY65oJi4CW3rjY3eGwf+zGsnMLC5Pt6C12ils16dNLQlWwaT608e04wZhS8UNbUqn
+	eDDZ3f6EvPHHt9ML9S8IDsW8y9IySF74EJY6Fb0T0HHGhmxFUxOOuFGVTlBk8FZmT6dpn5ta7LqwV
+	lmM9YgCB4E4x0Hvbvo/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzLem-003K3E-Qg; Mon, 20 Dec 2021 16:37:00 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1mzLua-003P4q-VD; Mon, 20 Dec 2021 16:53:21 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzLek-003K22-9d
- for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 16:36:59 +0000
-Received: by mail-lf1-x130.google.com with SMTP id g11so23081545lfu.2
- for <linux-rockchip@lists.infradead.org>; Mon, 20 Dec 2021 08:36:57 -0800 (PST)
+ id 1mzLuX-003P2M-Ir; Mon, 20 Dec 2021 16:53:19 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id r17so21032939wrc.3;
+ Mon, 20 Dec 2021 08:53:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=c+N78WDl9K0dF3N13dZEbhlEbhbeqqk4HFIa/BtOnu0=;
- b=hPpZMPbJhP6wtRXH+sEm9QWUCYxPnrFRTQcnYsTof1GrKcDJ/5aPwWJ9oIw0x2tJad
- 9Z4KPc7xyAJDJlM3kWYdAn/1pXbTOJ1fgxaEh/Gy2SFs39jjD898NSMPov2mqEQ+Lqiz
- h05Y1zENSsYKOvgG2Cu9dSZ27h4Y90ll+IKly76v4N93/kPpK2HwwOTD4CSMP6Jqnfv5
- Dq7tAtX7yTMQBsCRgylHGvLtJi2BgYqahfPeufB3gOkImcgRMzR3TENnCBH75DV5zTKX
- ahxK1x3Itn3g7On44owcV+7wrujuEaraexf231EtucyEvQcXLvvYO3wVKIcbIXtfL8Fn
- IBhg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=p9Tx2wH4HEpVybdHYcjlhyrX2v7ZfIvmca5PPAdXN6k=;
+ b=fVQb2iOMp+8XdAiBh3r7/dK9kp/+EyrvqmRClEZfDbVqB1PzXufL4v8IiRsF7HLpoa
+ QLHjSmC4jwYBjekVzIfT47xjwmABDFEr6RRI32lF/f3xa0RBFoXeTK9lAIbfd0SvZIOg
+ DFWeNf1n9jX2+Z4rAPCkuwTUhyDDAOQ1AWLLIesGzavACAbtKZOhjOi61EoF31P5zJ/4
+ WTk+KRcyYo03rcn4y+nGMJN7FFKPE6biCgCWC2+e3Rgll9+DBMqQhi7fHPQWFFfzoUYc
+ xqJ4k4Ls9vbAbILV0NZI1x1TmEWN4Os/2cvIVhloyPulUbql7QwH+tp3BjZ62/KXWNuS
+ d09g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=c+N78WDl9K0dF3N13dZEbhlEbhbeqqk4HFIa/BtOnu0=;
- b=yogdr/Lt8S3ZZX/ehxBKGXphRXEq7136AN1uG098+D6KG7DDMOfez0xVJSzuwnpwTQ
- BAzgN6pv3ONV6EADszGLfQ+bA8H5IcJsQy+5HuT5Hff2bhDy2ZTjaF1FX4mZ+Xq7BIZw
- 7Vp8kzQADbYZC0btzAWQCJoSRzHieeoLnDRYkTgz7jzxivfLVgcYaVtWj1Sf0GH1fKZu
- /lRq3kkMHipASU7Q66jh5EE/ngfDGuskVophVWonmDTUsh6c15vHqG7dDc3HudUtb+Po
- Bfvw2E2lo9lnLwKoZ4D86dviS7cHe00wtCgtrWU3B8YqanMLhap1XiKWGk1U4vy3g2H8
- Q+ag==
-X-Gm-Message-State: AOAM532VQIJjci243kLXW2MjJ2TbuK8SqUttRPAKCaeL8H7Fm+8KnWes
- UOebiQK4kup0rbtSDhyzeAY=
-X-Google-Smtp-Source: ABdhPJyFahvsEgzpy32B8BlbvcAWxb2T1XTVc1eB2QbgI9VFCP7zqP7whp3C7iKFTs0eJil9f610Tg==
-X-Received: by 2002:a05:6512:32a3:: with SMTP id
- q3mr17164895lfe.473.1640018214973; 
- Mon, 20 Dec 2021 08:36:54 -0800 (PST)
-Received: from [192.168.2.145] (46-138-43-24.dynamic.spd-mgts.ru.
- [46.138.43.24])
- by smtp.googlemail.com with ESMTPSA id br37sm927701lfb.99.2021.12.20.08.36.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Dec 2021 08:36:54 -0800 (PST)
-Subject: Re: Aw: [PATCH v3] mfd: rk808: add reboot support to rk808.c
-To: Frank Wunderlich <frank-w@public-files.de>,
- Peter Geis <pgwipeout@gmail.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Robin Murphy <robin.murphy@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-kernel@vger.kernel.org
-References: <20211220144654.926112-1-pgwipeout@gmail.com>
- <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <b0d0e2ff-4282-f104-b8f5-554b059200c9@gmail.com>
-Date: Mon, 20 Dec 2021 19:36:53 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=p9Tx2wH4HEpVybdHYcjlhyrX2v7ZfIvmca5PPAdXN6k=;
+ b=XpPWTOMh0WIWBcHwQHA+P132P7+MBo+/cckne2Bi1uY6VJ4ui95KiHlxvmYNBCBR1n
+ u5qnawTZ2foPOFhJBCiVMo4x2KUB/jgTS41ZwYeonMZsNQoGFRNhI16sa922GmJAxxEO
+ kcivZ0VyeOVvihAxbTDc5kgjlx4oxWwy0wagS+RZv6xJNoU53EsCP/YclVw1yDb9MLCf
+ p+T5zGuiaSPG6oHtQvCTm2OExU52IIzarZaofdq9qBJisXN13UUgzZ3Uua6dPa0ldAQH
+ J93YzAFfxACQw08wYFzbobALAJJdyG2Ck/4rx3R/N86yenNg3HTtk+ZU+B70wGMhS4ls
+ TCPw==
+X-Gm-Message-State: AOAM5321a+cAgABCqrF09Hhh1w4gs9lVtZDC6VlRh3oiLn+fvMspCE3M
+ xHAHbWHIa736+cxVYKBfjbQ=
+X-Google-Smtp-Source: ABdhPJx79HzNYw/1/E19mQIiwB8X0jLmD92oBdZER7LrTtQNdGGa5D09PBIWyP79Cz4iHMPyrQd8fA==
+X-Received: by 2002:adf:9cc2:: with SMTP id h2mr13387161wre.464.1640019196095; 
+ Mon, 20 Dec 2021 08:53:16 -0800 (PST)
+Received: from archbook.localnet ([217.151.114.10])
+ by smtp.gmail.com with ESMTPSA id p1sm155802wrr.75.2021.12.20.08.53.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Dec 2021 08:53:15 -0800 (PST)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Subject: Re: [PATCH 22/22] drm: rockchip: Add VOP2 driver
+Date: Mon, 20 Dec 2021 17:53:14 +0100
+Message-ID: <2517243.oazWQlOnO6@archbook>
+In-Reply-To: <5637649.G3HFo5JPcS@archbook>
+References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+ <20211220110630.3521121-23-s.hauer@pengutronix.de>
+ <5637649.G3HFo5JPcS@archbook>
 MIME-Version: 1.0
-In-Reply-To: <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_083658_373389_013C10D9 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20211220_085317_718771_69C3F9EF 
+X-CRM114-Status: GOOD (  26.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,24 +91,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-MjAuMTIuMjAyMSAxOTozMywgRnJhbmsgV3VuZGVybGljaCDQv9C40YjQtdGCOgo+IEhpCj4gCj4+
-IEdlc2VuZGV0OiBNb250YWcsIDIwLiBEZXplbWJlciAyMDIxIHVtIDE1OjQ2IFVocgo+PiBWb246
-ICJQZXRlciBHZWlzIiA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPj4gQEAgLTc0OSw2ICs3OTEsOSBA
-QCBzdGF0aWMgaW50IHJrODA4X3JlbW92ZShzdHJ1Y3QgaTJjX2NsaWVudCAqY2xpZW50KQo+PiAg
-CWlmIChwbV9wb3dlcl9vZmYgPT0gcms4MDhfcG1fcG93ZXJfb2ZmKQo+PiAgCQlwbV9wb3dlcl9v
-ZmYgPSBOVUxMOwo+Pgo+PiArCWlmIChvZl9wcm9wZXJ0eV9yZWFkX2Jvb2wobnAsICJyb2NrY2hp
-cCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciIpKQo+PiArCQl1bnJlZ2lzdGVyX3Jlc3RhcnRfaGFu
-ZGxlcigmcms4MDhfcmVzdGFydF9oYW5kbGVyKTsKPj4gKwo+PiAgCXJldHVybiAwOwo+PiAgfQo+
-IAo+IHRoaXMgY2hhbmdlIG1pc3NlcyBhIGRlY2xhcmF0aW9uCj4gCj4gc3RydWN0IGRldmljZV9u
-b2RlICpucCA9IGNsaWVudC0+ZGV2Lm9mX25vZGU7CgpHb29kIGNhdGNoLCB0ZWNobmljYWxseSB0
-aGUgd2hvbGUgb2ZfcHJvcGVydHlfcmVhZF9ib29sKCkgY291bGQgYmUKZHJvcHBlZCBmcm9tIHJr
-ODA4X3JlbW92ZSgpIHNpbmNlIHVucmVnaXN0ZXJfcmVzdGFydF9oYW5kbGVyKCkgc3Vydml2ZXMK
-aWYgaGFuZGxlciB3YXNuJ3QgcmVnaXN0ZXJlZC4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Montag, 20. Dezember 2021 15:16:55 CET Nicolas Frattaroli wrote:
+> On Montag, 20. Dezember 2021 12:06:30 CET Sascha Hauer wrote:
+> > From: Andy Yan <andy.yan@rock-chips.com>
+> > 
+> > The VOP2 unit is found on Rockchip SoCs beginning with rk3566/rk3568.
+> > It replaces the VOP unit found in the older Rockchip SoCs.
+> > 
+> > This driver has been derived from the downstream Rockchip Kernel and
+> > heavily modified:
+> > 
+> > - All nonstandard DRM properties have been removed
+> > - dropped struct vop2_plane_state and pass around less data between
+> >   functions
+> > - Dropped all DRM_FORMAT_* not known on upstream
+> > - rework register access to get rid of excessively used macros
+> > - Drop all waiting for framesyncs
+> > 
+> > The driver is tested with HDMI and MIPI-DSI display on a RK3568-EVB
+> > board. Overlay support is tested with the modetest utility. AFBC support
+> > on the cluster windows is tested with weston-simple-dmabuf-egl on
+> > weston using the (yet to be upstreamed) panfrost driver support.
+> > 
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> 
+> Hi Sascha,
+> 
+> sadly I'm getting
+> 
+> [    1.668856] rockchip-drm display-subsystem: [drm] *ERROR* failed to get vop2 register byname
+> [    1.669621] rockchip-drm display-subsystem: failed to bind fe040000.vop (ops vop2_component_ops): -22
+> [    1.670584] rockchip-drm display-subsystem: master bind failed: -22
+> [    1.671164] dwhdmi-rockchip: probe of fe0a0000.hdmi failed with error -22
+> 
+> on a Quartz64 Model A.
+> 
+> 
+> > +	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "regs");
+> > +	if (!res) {
+> > +		drm_err(vop2->drm, "failed to get vop2 register byname\n");
+> > +		return -EINVAL;
+> > +	}
+> 
+> This seems to be the code that triggers it.
+> 
+> Any ideas as to what could be causing this?
+> 
+> Regards,
+> Nicolas Frattaroli
+> 
+
+A small follow-up:
+
+We're trying to get IORESOURCE_MEM by the name "regs", but nothing
+has a reg-names property in the device tree changes you sent in.
+
+How did you test this on your system?
+
+Also, adding the reg-names = "regs"; to the vop node doesn't make
+it probe, it just fails with
+
+[    1.668560] rockchip-vop2 fe040000.vop: can't request region for resource [mem 0xfe040000-0xfe044fff]
+
+then.
+
+We're also trying to get gamma_lut the same way, but your cover letter states
+
+> drop unnecessary gamma_lut registers from vop2
+
+which makes me wonder: is this the correct series of patches you sent in?
+
+Regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
