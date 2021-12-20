@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDFD2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:08:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A241C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+ahobp+/hXsH/yU21q1TAqI2dNH3E8owWCk+giNv2gQ=; b=hEhNXfBVCAu1/T
-	6UHFTsOS00dSyv7p2jwZ1E4ky11jxJ04LUAUAUw25jpqhxlXJ1DaIuipkwo2GxKXytqI90UGKbD7f
-	0hkUExcZyD5dM0I0auAKqF32mtrhbUOdLDrP1WIapdJpgsWEvjKrN+JK69+b63FudiHlE2EhZhFRy
-	UTa/uALNF3Tc9yoDM+4GRTI1Y51j1lLPQqlS/WJo/CwHT6CG8YDAgxdlkX2JE6ELwnBvBkNiQLeDq
-	LK4C2Ua9Th+vzCT+5rFXF3PyrCH6XpVxnG8l+JoIvnl/7gCc9u3DNn3qjqafsWFzhp0eoFo5gtYWZ
-	YM0c/vyKQScAuTvpKEuw==;
+	List-Owner; bh=fY+M3vGuTLqVh74WL8nYlyPpbZJM9TtgyZaYbCyenxk=; b=NjuZ30XD/Czmyo
+	fUyxU7JjhCWJCcBFm6HUM9DkdVo1WX97hWvDK1YNNlL66pyQZgTzmX2grOE+qavakTyH3QX/zW9Xz
+	Ogwdco5SEaKMKpu8xz29KbwYDrCFw64zBARFQJd3vmTy9S194xdCIuXtde8Um+FcdSqSyapj9gL0l
+	Iiyjn2i3eM5/qS19Hgc72yVor8TBBUvefvBYQJpHVzqmBpOJb4HBIvZbQvW1mawzReHugiI1eFVVz
+	EOuoe2bITxje+2JvEN4jGlVfnlf5uogN2gdGZlrdKSOOeXeYVSXqLe5/6twO0YDhCk8wT6jS/CyUj
+	NUW0sGF79YxbBRcpQ38g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzGWt-001p4E-7y; Mon, 20 Dec 2021 11:08:31 +0000
+	id 1mzGYO-001pyg-1p; Mon, 20 Dec 2021 11:10:04 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzGVI-001oAu-1Y
- for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:06:54 +0000
+ id 1mzGVK-001oDJ-9J
+ for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:06:57 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVE-0004xF-DY; Mon, 20 Dec 2021 12:06:48 +0100
+ id 1mzGVH-0004x9-7l; Mon, 20 Dec 2021 12:06:51 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVA-00EmEh-Ps; Mon, 20 Dec 2021 12:06:44 +0100
+ id 1mzGVA-00EmEP-MA; Mon, 20 Dec 2021 12:06:44 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,9 +43,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 16/22] arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
-Date: Mon, 20 Dec 2021 12:06:24 +0100
-Message-Id: <20211220110630.3521121-17-s.hauer@pengutronix.de>
+Subject: [PATCH 10/22] dt-bindings: display: rockchip: dw-hdmi: Add additional
+ clock
+Date: Mon, 20 Dec 2021 12:06:18 +0100
+Message-Id: <20211220110630.3521121-11-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211220110630.3521121-1-s.hauer@pengutronix.de>
 References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
@@ -56,8 +57,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_030652_125345_05F20D59 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20211220_030654_389202_A66FCD61 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,92 +76,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This enabled the VOP2 display controller along with hdmi and the
-required port routes which is enough to get a picture out of the
-hdmi port of the board.
+The rk3568 HDMI has an additional clock that needs to be enabled for the
+HDMI controller to work. The purpose of that clock is not clear. It is
+named "hclk" in the downstream driver, so use the same name.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ .../bindings/display/rockchip/rockchip,dw-hdmi.yaml    | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index 184e2aa2416af..3fa0e654d7cf6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -7,6 +7,7 @@
- /dts-v1/;
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3568.dtsi"
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+index bf8618b26721a..a50ebf24b7f93 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+@@ -44,11 +44,12 @@ properties:
+     items:
+       - {}
+       - {}
+-      # The next three clocks are all optional, but shall be specified in this
++      # The next four clocks are all optional, but shall be specified in this
+       # order when present.
+       - description: The HDMI CEC controller main clock
+       - description: Power for GRF IO
+       - description: External clock for some HDMI PHY
++      - description: hclk
  
- / {
-@@ -33,6 +34,17 @@ dc_12v: dc-12v {
- 		regulator-max-microvolt = <12000000>;
- 	};
+   clock-names:
+     minItems: 2
+@@ -59,11 +60,16 @@ properties:
+           - cec
+           - grf
+           - ref
++          - hclk
+       - enum:
+           - grf
+           - ref
+-      - const:
++          - hclk
++      - enum:
+           - ref
++          - hclk
++      - const:
++          - hclk
  
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "c";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_out_con>;
-+			};
-+		};
-+	};
-+
- 	vcc3v3_sys: vcc3v3-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
-@@ -106,6 +118,12 @@ &gmac1m1_rgmii_clk
- 	status = "okay";
- };
- 
-+&hdmi {
-+	avdd-0v9-supply = <&vdda0v9_image>;
-+	avdd-1v8-supply = <&vcca1v8_image>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-@@ -390,3 +408,33 @@ &sdmmc0 {
- &uart2 {
- 	status = "okay";
- };
-+
-+&vop {
-+	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-+	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&hdmi_in {
-+	hdmi_in_vp0: endpoint@0 {
-+		reg = <0>;
-+		remote-endpoint = <&vp0_out_hdmi>;
-+	};
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi: endpoint@RK3568_VOP2_EP_HDMI {
-+		reg = <RK3568_VOP2_EP_HDMI>;
-+		remote-endpoint = <&hdmi_in_vp0>;
-+	};
-+};
+   ddc-i2c-bus:
+     $ref: /schemas/types.yaml#/definitions/phandle
 -- 
 2.30.2
 
