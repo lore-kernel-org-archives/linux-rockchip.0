@@ -4,77 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC28C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:51:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13210C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oK6cinh0PnFS9gz9Q9jdmItcahqXak3t+aAC1T01lcg=; b=AAwOEv2zruke4u
-	SRhqxHc17Z7MtDLR1U81JUc4SEOaO/GpDijR6oiGZxkylCpBVOnF6WYAYr2pNLovRziFVtudDpmTH
-	EV2gewbYJJK3Q3FJ0VWR1nfkV2CKFHsrWUm72KSLHhd8exCppSsEn2nBlCuMeelkkm1s+PC/G7p9C
-	OVOr5p4Wx5b3ejyBaZrde+Oa9QiULB8u8xsQ7l6HyaO84X6atBytb9HbplwwKWZiIOGQ3RO3dp9Kb
-	dvUwtvQR+hhsmTTMphTm8rkGy7AxQHsoOfpfJFOnPWhCgdNo3cGXj7FzhuBiWPSzdW/E1IQU21uxD
-	dQnwiS6/wSRyyTOSPwgA==;
+	List-Owner; bh=eWNRhCWgP6YSO90qJayTVbNSw9LuNWsrfSVgcFYspdQ=; b=ORYdhNvvHls7Vj
+	d5mJ2Y8K4o6YCH03W2ls8FEhhUtkkJ08CFwT2aIyOjFvuVEsbGWdTByb4H5t5TCPNG7u+lOES2uEH
+	sZ5BazCRh7NA/ph/iiQGOye0VG9voKsfiuieOFXFtVrFMVmSW2hRlJ4DkpycR1jAwM0CMZYwLhfiG
+	iSo/h2G0Cpp3eRSyMsZuA48vcSbM0uERhojuk/7kRL/KRdrC+6SjCZEQO0KDSjA79dsiICwSQ6l8T
+	fmKKJGHNq4KCl16u8AERer8VL5qjD4abuvCefGtk0pJ+ZJhg0u98DKPg3p8yRC+s7tjB5IgvzCxgI
+	/WmfchfHWbc0tGCitmUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzHCe-0026YO-TR; Mon, 20 Dec 2021 11:51:40 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzHCc-0026X6-W1; Mon, 20 Dec 2021 11:51:40 +0000
-Received: by mail-wr1-x434.google.com with SMTP id s1so19592971wrg.1;
- Mon, 20 Dec 2021 03:51:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=p/P+q/gtXvYn5lTOzvGHLt9UuDdXRspn+md2NvaF8tc=;
- b=EExu677ukA0Kz6xU+BMGFfOVjUK1XpgZ67XUjgD1pnfUdQOPcgb4bF+ZDGJYTKZlXe
- sGj5vNYbwSWwybJ6uaWOATILN+GFMjUZBFq8Sz5bplGnLQwYf9DSTAs2eR+kJ8VQ5sPH
- gSnNL6o/fsVxZSxpHu+gFpnLNy/mNTtn887BXgjdTKsi8tizvuPg45r7NkNBFkJnXWeC
- RExUSanWNrtVLlnA1jqxP8uto/oG6DNHfG0v9rQ2U6S0jrgXzxRLBhSfNis/lKBeM0I6
- uAevSHDsPzzDcAGLSnaVpora0Vr7UzwcbxYRGga5g6pbMlQmusGzThrctAph0imI3rLE
- fc1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=p/P+q/gtXvYn5lTOzvGHLt9UuDdXRspn+md2NvaF8tc=;
- b=2uDnyk4FBkyCy/Ngaic6PjEhNGgakWOXsCe6pD/Nhf/M6yo2C9Ga5CTm61IG7Cy5sU
- E1LBapPh9+8mJ5xFOo/QudATANuEKYHq2PofgBthr+hKiBPcNApl5RNEWzISMfOV7ysI
- Dc44/Yqruu9UaIVUX/zbOdp2O8+gADnmLKdZJ/uzzRTUfA4HeVtaGvQnSV0JZ8m1auth
- 22QWIXzIu8lIjn4xoWUJcOraySoxuTYpFb5rqLHohG+yQ0mcQ25IbUPtIhKS3uAX35I4
- tZ4LiFItYRxVZ/j75Y2byfRFb31zVGA1L7iMFasJx1+FHbgoZ3o4Bqy1SBBak3s80Rca
- +yhQ==
-X-Gm-Message-State: AOAM530pzvmBYX5DyA42fZWRR+YSX1Bqt+sbwpV4Jl7mH0caL9FfUzsY
- fhFXTC+iw6b1wvLrWw1ZGzo=
-X-Google-Smtp-Source: ABdhPJwoEInEeH88GH83sFShjd3YXynMJnKwtGetH4cdE8mCT0mf3TOgz0/oQKBwWWGkli1YraLIhA==
-X-Received: by 2002:adf:cc83:: with SMTP id p3mr12618669wrj.680.1640001096488; 
- Mon, 20 Dec 2021 03:51:36 -0800 (PST)
-Received: from archbook.localnet ([217.151.114.10])
- by smtp.gmail.com with ESMTPSA id o2sm14214116wru.109.2021.12.20.03.51.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Dec 2021 03:51:36 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v3 00/22] drm/rockchip: RK356x VOP2 support
-Date: Mon, 20 Dec 2021 12:51:34 +0100
-Message-ID: <2075203.1SQL01OxuU@archbook>
-In-Reply-To: <20211220110630.3521121-1-s.hauer@pengutronix.de>
-References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+	id 1mzHFf-0027Uj-Cx; Mon, 20 Dec 2021 11:54:47 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mzHFW-0027Qj-BE
+ for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:54:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 810CB1042;
+ Mon, 20 Dec 2021 03:54:37 -0800 (PST)
+Received: from [10.57.34.58] (unknown [10.57.34.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B62823F718;
+ Mon, 20 Dec 2021 03:54:35 -0800 (PST)
+Message-ID: <320d0e55-0202-a7cf-a021-f9a49e0e2f66@arm.com>
+Date: Mon, 20 Dec 2021 11:54:32 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH v2] mfd: rk808: add reboot support to rk808.c
+Content-Language: en-GB
+To: Peter Geis <pgwipeout@gmail.com>, Dmitry Osipenko <digetx@gmail.com>
+Cc: Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+References: <20211217145544.341617-1-pgwipeout@gmail.com>
+ <2bebe0ae-27df-f75d-97d6-2e4d2dd032b0@gmail.com>
+ <CAMdYzYq=2G1bvu9M_DR0vdQDtcvVBhQFRPTNKo1ySFrMZOk=jg@mail.gmail.com>
+ <4d24cb08-0475-3a9d-1b73-24e465f34701@gmail.com>
+ <CAMdYzYrDp5zcRJ=TudtiAtviJVMyNmqB5TMNYZ=XN+mb3paSTQ@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <CAMdYzYrDp5zcRJ=TudtiAtviJVMyNmqB5TMNYZ=XN+mb3paSTQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_035139_069713_1908ADCD 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20211220_035438_466356_91DEC2D0 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +66,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Montag, 20. Dezember 2021 12:06:08 CET Sascha Hauer wrote:
-> 
-> Third round of patches and last one for this year. I hopefully integrated
-> all review feedback. Additionally the driver is now fully converted to
-> regmap, so no struct vop_reg necessary anymore.
-> 
-> Sascha
-> 
-> Changes since v2:
-> - Add pin names to HDMI supply pin description
-> - Add hclk support to HDMI driver
-> - Dual license rockchip-vop2 binding, update binding
-> - Add HDMI connector to board dts files
-> - drop unnecessary gamma_lut registers from vop2
-> - Update dclk_vop[012] clock handling, no longer hacks needed
-> - Complete regmap conversion
-
-Hi Sascha,
-
-for future reference, you can add `-v 3` to your git format-patch
-command line to mark the whole patch series as PATCH v3 and not
-just the cover letter.
-
-Thanks for your continued work on this,
-Nicolas Frattaroli
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyMS0xMi0xNyAxODo0MiwgUGV0ZXIgR2VpcyB3cm90ZToKPiBPbiBGcmksIERlYyAxNywg
+MjAyMSBhdCAxOjMwIFBNIERtaXRyeSBPc2lwZW5rbyA8ZGlnZXR4QGdtYWlsLmNvbT4gd3JvdGU6
+Cj4+Cj4+IDE3LjEyLjIwMjEgMjE6MTYsIFBldGVyIEdlaXMg0L/QuNGI0LXRgjoKPj4+Pj4gKyAg
+ICAgICAgICAgICAgICAgICAgIGJyZWFrOwo+Pj4+PiArICAgICAgICAgICAgIGRlZmF1bHQ6Cj4+
+Pj4+ICsgICAgICAgICAgICAgICAgICAgICBkZXZfaW5mbygmY2xpZW50LT5kZXYsICJwbWljIGNv
+bnRyb2xsZWQgYm9hcmQgcmVzZXQgbm90IHN1cHBvcnRlZFxuIik7Cj4+Cj4+IEknZCBjaGFuZ2Ug
+dGhpcyBkZXZfaW5mbyB0byBkZXZfZGJnIHRvIG5vdCBjbHV0dGVyIEtNU0cuCj4gCj4gSSdkIHBy
+ZWZlciB0byBsZWF2ZSB0aGlzIGFzIGluZm8sIHNpbmNlIHRoZSBkZXZpY2UgaXMgZGVzaWduYXRl
+ZCBhcwo+IHRoZSBzeXN0ZW0gcG93ZXIgY29udHJvbGxlciBidXQgaXQgaXMgb25seSBjYXBhYmxl
+IG9mIHBvd2VyaW5nIGRvd24KPiB0aGUgc3lzdGVtLCBub3QgcmVib290aW5nIGl0Lgo+IEJ1dCBv
+biBzZWNvbmQgdGhvdWdodCwgYW55b25lIHdobydzIG1ha2luZyB0aGVzZSBjaGFuZ2VzIHdvdWxk
+IGJlCj4gaW52ZXN0aWdhdGluZyB0aGUgZHJpdmVyIGFueXdheS4KPiBTbyBJJ2xsIGNoYW5nZSBp
+dCB0byBkZXZfZGJnLgoKSW5kZWVkLCB0aGlzIGlzIHRoZSBleHBlY3RlZCBjYXNlIGZvciBSSzgw
+OCwgd2hpY2ggaGFzIHRvIGJlIApzeXN0ZW0tcG93ZXItY29udHJvbGxlciBpZiB5b3Ugd2FudCBz
+aHV0ZG93biB0byBhY3R1YWxseSBwb3dlciBvZmYuCgpDaGVlcnMsClJvYmluLgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
