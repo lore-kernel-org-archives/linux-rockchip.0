@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A1D9C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D56C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ub0qGw0PqplMhINqrVtsuQSqDfkYw7mDoJvMK9+Elts=; b=rYSZPO9/WthWlN
-	hr6xdzfoC6LA9cK0IMMm5l3MBYiGqoBSCwZ3KSD6oUp1vJnLmC2pDpbMRa7wgwjZJOVvH5AcxQZyx
-	uotli4m1tTrYjafRBqDlSm7CePIniOqNAAjidY+C9YNqCoszxtgtBfvDWW/F9+na+37LghDC9sbsi
-	A38zoUCODwU71V7Z9hf2kpouF45N4sTS5CaDbgc+Lb9PER0fh/+tguocmstpylPd9vAmbRbzRKns9
-	aG5vozDyV4Xi397F70LftSdjdQ5V2+TaQ+ahvywwZkRfwsBvfO1B6s+8K1QtbO3no8d7NEFAvgIIc
-	yVwXqL8i5SrxcBfMUe0g==;
+	List-Owner; bh=nF+ZZntZCkFTWHmFaNNgGVf7N4Kgyyg+/X3VfDBodio=; b=Fcyp6TSx1zDGED
+	u6Mqw6ZoKHTm/RvZOofCX0BX2vnQ//1OK2HxkcfnAan6f/0KJYIFxd7v9bjK2PaV1yULeQp43L4uv
+	xYFSCLwvOYpbFHKl9Jjqj1L5fR81Gm1K1dkc3n7J0DV4VW4WzWqLQJGWgUqQyVbdAhzZRrFtQtwpS
+	PIGNWX32e15ug3RLoaqYhkj3tyrUujVYDhtRNfZX+/mkbC1dNcqOYRQ/oJ9opXTwRU6Z3UDYGFzPN
+	YYyTh4jkbAjyl86cwChFrSrhCcropjcAN4T7nk45DY06XAsWg49CXRj/FKJYSlvgSVc/CPQCgxzjq
+	dtz1u9LiHt53w+I3BH5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzGie-001vfp-SS; Mon, 20 Dec 2021 11:20:40 +0000
+	id 1mzGig-001vgX-Dc; Mon, 20 Dec 2021 11:20:42 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzGVi-001oUP-80
- for linux-rockchip@bombadil.infradead.org; Mon, 20 Dec 2021 11:07:18 +0000
+ id 1mzGVj-001oUy-35
+ for linux-rockchip@bombadil.infradead.org; Mon, 20 Dec 2021 11:07:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=0qQl+IWgo1flydZn8pAekyNQAKvvkf3MEkBg3RCDFo8=; b=Vgwbcf2E5gH45epObbX8cWWwKJ
- ym22rXUzOkeMFDoIXn2a24dtm3LC3pVefbTY7fD5oZLkqjZX29qTH1SVvfd2b42IzICEPdLn76kbU
- SOgRpAer7ZND4YegupZBJznyLwxgkp8D8LNUsddU44ok0zixHGzQhEXcjDU9Sj/HJs+1euF6KpHWq
- 7qNqA6WikzEJR+NHGOpMIO7BzWuPsNyJGLoCwxAclvCFnuQMacGCqrAzBsyF3m0vkpVU5qK2BTBzt
- gxw1mTcRb9P4FkxOZKnpsMqOWe9fl5u17m0z1ajYyiCP47uBeFRt6qRNyHgyVUSP17tiCdniQIM58
- mPsYs+1w==;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=2pRfvj/Ei+9lP5V82MUX1TmN3XuakcA+yUYlRHVUizQ=; b=Qp2++mTquJKBXAaAjnTyQXs6iD
+ q5ZeHCCSUT3+IwAeTK8Npyuh0RNVLRIc6znTp59/iSXnwE0C2eBviRSwdLFgPI1hPtCFQ93mGV2i0
+ 7rZYEy0vub8n4F/mXHAbxkUXsX6IyZ87XdGbKKHQLf+LWKbassPZx2rDGfmMBJfRBchMk71EJU+bw
+ DLgJH8G8CRIXrlhbObfYqSKNdU8GEdBSaJrPj+V05G1pPq8M69trLq2QtG7bBOsbO+AGTg+GHyaB6
+ XkZQwlYVxpEj48JdhmUavZyUZOWyGlYwSa8spJvE7K9BwVfor0LQluWD6WDNgqytn/VQ/NIIsmFVa
+ Ypmj8O8Q==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzGVX-002UEN-FA
- for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:07:16 +0000
+ id 1mzGVf-002UGB-4L
+ for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:07:17 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVE-0004xI-DS; Mon, 20 Dec 2021 12:06:48 +0100
+ id 1mzGVE-0004xA-DT; Mon, 20 Dec 2021 12:06:48 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVA-00EmEq-Rw; Mon, 20 Dec 2021 12:06:44 +0100
+ id 1mzGVA-00EmES-Mt; Mon, 20 Dec 2021 12:06:44 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -57,10 +57,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 19/22] clk: rk3568: Add CLK_SET_RATE_PARENT to the HDMI
- reference clock
-Date: Mon, 20 Dec 2021 12:06:27 +0100
-Message-Id: <20211220110630.3521121-20-s.hauer@pengutronix.de>
+Subject: [PATCH 11/22] dt-bindings: display: rockchip: Add binding for VOP2
+Date: Mon, 20 Dec 2021 12:06:19 +0100
+Message-Id: <20211220110630.3521121-12-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211220110630.3521121-1-s.hauer@pengutronix.de>
 References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
@@ -71,8 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_110713_894163_3C0C0EB3 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20211220_110715_583359_1820B567 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,45 +84,178 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gdGhlIHJrMzU2OCB3ZSBoYXZlIHRoaXMgKHNpbXBsaWZpZWQpIHNpdHVhdGlvbjoKCiAuLS0t
-LS0tLS0uICAgICAuLS0tLS0uICAgIC4tLS0tLS0tLS0uCi18IGhwbGwgICB8LS0uLS18IC9uICB8
-LS0tLXxkY2xrX3ZvcDB8LQogYC0tLS0tLS0twrQgIHwgIGAtLS0tLcK0ICAgIGAtLS0tLS0tLS3C
-tAogICAgICAgICAgICAgfCAgLi0tLS0tLiAgICAuLS0tLS0tLS0tLgogICAgICAgICAgICAgYC0t
-fCAvbSAgfC0tLS18ZGNsa192b3AxfC0KICAgICAgICAgICAgIHwgIGAtLS0tLcK0ICAgIGAtLS0t
-LS0tLS3CtAogICAgICAgICAgICAgfCAgICAgICAgICAgICAuLS0tLS0tLS0tLgogICAgICAgICAg
-ICAgYC0tLS0tLS0tLS0tLS18aGRtaV9yZWYgfC0KICAgICAgICAgICAgICAgICAgICAgICAgICAg
-YC0tLS0tLS0tLcK0CgpGb3IgdGhlIEhETUkgdG8gd29yayB0aGUgSERNSSByZWZlcmVuY2UgY2xv
-Y2sgbmVlZHMgdG8gYmUgdGhlIHNhbWUgYXMgdGhlCnBpeGVsIGNsb2NrIHdoaWNoIG1lYW5zIHRo
-ZSBkaXZpZGVycyBoYXZlIGJlIHNldCB0byBvbmUuIFRoZSBsYXN0IHBhdGNoIHJlbW92ZWQKdGhl
-IENMS19TRVRfUkFURV9QQVJFTlQgZmxhZyBmcm9tIHRoZSBwaXhlbCBjbG9ja3Mgd2hpY2ggbWVh
-bnMgdGhlIGhwbGwgaXMgbm90CmNoYW5nZWQgb24gcGl4ZWwgY2xvY2sgY2hhbmdlcy4gSW4gb3Jk
-ZXIgdG8gYWxsb3cgdGhlIEhETUkgY29udHJvbGxlciB0bwpzZXQgYSBzdWl0YWJsZSBQTEwgcmF0
-ZSB3ZSBub3cgYWRkIHRoZSBDTEtfU0VUX1JBVEVfUEFSRU5UIGZsYWcgdG8gdGhlCkhETUkgcmVm
-ZXJlbmNlIGNsb2NrLiBXaXRoIHRoaXMgdGhlIGZsb3cgYmVjb21lczoKCjEpIEhETUkgY29udHJv
-bGxlciBkcml2ZXIgc2V0cyB0aGUgcmF0ZSB0byBpdHMgcGl4ZWwgY2xvY2sgd2hpY2ggbWVhbnMK
-ICAgaHBsbCBpcyBzZXQgdG8gdGhlIHBpeGVsIGNsb2NrCjIpIFZPUDIgZHJpdmVyIHNldHMgZGNs
-a192b3BbMDEyXSB0byB0aGUgcGl4ZWwgY2xvY2suIEFzIHRoaXMgY2FuJ3QgY2hhbmdlCiAgIHRo
-ZSBocGxsIGNsb2NrIGFueW1vcmUgdGhpcyBtZWFucyBvbmx5IHRoZSBkaXZpZGVyIGlzIGFkanVz
-dGVkIHRvIHRoZQogICBkZXNpcmVkIHZhbHVlIG9mIGRpdmlkaW5nIGJ5IG9uZS4KClNpZ25lZC1v
-ZmYtYnk6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGstcmszNTY4LmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNl
-cnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hp
-cC9jbGstcmszNTY4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszNTY4LmMKaW5kZXgg
-NjA0YTM2N2JjNDk4YS4uMWZlNzhhNTgwMTBlYSAxMDA2NDQKLS0tIGEvZHJpdmVycy9jbGsvcm9j
-a2NoaXAvY2xrLXJrMzU2OC5jCisrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1Njgu
-YwpAQCAtMTU2Miw3ICsxNTYyLDcgQEAgc3RhdGljIHN0cnVjdCByb2NrY2hpcF9jbGtfYnJhbmNo
-IHJrMzU2OF9jbGtfcG11X2JyYW5jaGVzW10gX19pbml0ZGF0YSA9IHsKIAkJCVJLMzU2OF9QTVVf
-Q0xLR0FURV9DT04oMiksIDE0LCBHRkxBR1MpLAogCUdBVEUoWElOX09TQzBfRURQUEhZX0csICJ4
-aW5fb3NjMF9lZHBwaHlfZyIsICJ4aW4yNG0iLCAwLAogCQkJUkszNTY4X1BNVV9DTEtHQVRFX0NP
-TigyKSwgMTUsIEdGTEFHUyksCi0JTVVYKENMS19IRE1JX1JFRiwgImNsa19oZG1pX3JlZiIsIGNs
-a19oZG1pX3JlZl9wLCAwLAorCU1VWChDTEtfSERNSV9SRUYsICJjbGtfaGRtaV9yZWYiLCBjbGtf
-aGRtaV9yZWZfcCwgQ0xLX1NFVF9SQVRFX1BBUkVOVCwKIAkJCVJLMzU2OF9QTVVfQ0xLU0VMX0NP
-Tig4KSwgNywgMSwgTUZMQUdTKSwKIH07CiAKLS0gCjIuMzAuMgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The VOP2 is found on newer Rockchip SoCs like the rk3568 or the rk3566.
+The binding differs slightly from the existing VOP binding, so add a new
+binding file for it.
+
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ .../display/rockchip/rockchip-vop2.yaml       | 146 ++++++++++++++++++
+ 1 file changed, 146 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+new file mode 100644
+index 0000000000000..df14d5aa85c85
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -0,0 +1,146 @@
++# SPDX-License-Identifier: GPL-2.0-only or BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoC display controller (VOP2)
++
++description:
++  VOP2 (Video Output Processor v2) is the display controller for the Rockchip
++  series of SoCs which transfers the image data from a video memory
++  buffer to an external LCD interface.
++
++maintainers:
++  - Sandy Huang <hjc@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3566-vop
++      - rockchip,rk3568-vop
++
++  reg:
++    minItems: 1
++    items:
++      - description:
++          Must contain one entry corresponding to the base address and length
++          of the register space.
++      - description:
++          Can optionally contain a second entry corresponding to
++          the CRTC gamma LUT address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The VOP interrupt is shared by several interrupt sources, such as
++      frame start (VSYNC), line flag and other status interrupts.
++
++  clocks:
++    items:
++      - description: Clock for ddr buffer transfer.
++      - description: Clock for the ahb bus to R/W the phy regs.
++      - description: Pixel clock for video port 0.
++      - description: Pixel clock for video port 1.
++      - description: Pixel clock for video port 2.
++
++  clock-names:
++    items:
++      - const: aclk_vop
++      - const: hclk_vop
++      - const: dclk_vp0
++      - const: dclk_vp1
++      - const: dclk_vp2
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to GRF regs used for misc control
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/port
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP0
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP1
++
++      port@:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP2
++
++  assigned-clocks: true
++
++  assigned-clock-rates: true
++
++  assigned-clock-parents: true
++
++  iommus:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - ports
++
++additionalProperties: false
++
++examples:
++  - |
++        #include <dt-bindings/clock/rk3568-cru.h>
++        #include <dt-bindings/interrupt-controller/arm-gic.h>
++        #include <dt-bindings/power/rk3568-power.h>
++        bus {
++            #address-cells = <2>;
++            #size-cells = <2>;
++            vop: vop@fe040000 {
++                compatible = "rockchip,rk3568-vop";
++                reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
++                interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++                clocks = <&cru ACLK_VOP>,
++                         <&cru HCLK_VOP>,
++                         <&cru DCLK_VOP0>,
++                         <&cru DCLK_VOP1>,
++                         <&cru DCLK_VOP2>;
++                clock-names = "aclk_vop",
++                              "hclk_vop",
++                              "dclk_vp0",
++                              "dclk_vp1",
++                              "dclk_vp2";
++                power-domains = <&power RK3568_PD_VO>;
++                iommus = <&vop_mmu>;
++                vop_out: ports {
++                    #address-cells = <1>;
++                    #size-cells = <0>;
++                    vp0: port@0 {
++                        reg = <0>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                    vp1: port@1 {
++                        reg = <1>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                    vp2: port@2 {
++                        reg = <2>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                };
++            };
++        };
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
