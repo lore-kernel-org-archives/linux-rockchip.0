@@ -4,35 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF6AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:12:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507B2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 11:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x/YlNXc2Imr4OeSOzXKrgK2K6+pN6AEunkkaOcUOoIQ=; b=fTYe2y379ixEti
-	Xr2osQhNlhG0jp87eIGveCvN0xPoC+zfHp8jHEsnhuuaKA7EejsQEZICUu7tcrSkc5anTV1lbmn3e
-	Q6OR0y2lvyERuPlVUFia3AhdvQDn+fl97zmkQoSaoT9Qp4VjSSVh8tY68BbXTBS2YsN+D09y15qWl
-	tKvesgj+x8aBeyyycchD1ozBMSTWUBR9N7fnNlJ0+9vMIXPtMsw+bbI78VPby3eQTycln3hht0Bk4
-	5iqTfeYSSDTKyvj7fWRaSS6wPgAPOW9EdFZ6jNKvNv/wuMcnrADXkLew6r5qvV+8/V+zAO7YgEN64
-	beMH4tYChay5qtdxKHlA==;
+	List-Owner; bh=xcRr2lHpy54EWjATBxZ7nZDTFcqsNCZL/QHTI4fod6w=; b=numRFiiMPIExcr
+	EpUhRwHKF7mzObkcVvTAX7gsYMwIF7z/3qV35jI7SH3BW4X2C0jA0ilg/bwhRotHVRuM7QboaksDM
+	FOBh+Tq4CLBadnHGTm1z1cOV7wZLcnza5Ca6Aai8Zo7g+6BR26jOBYx3mkH6BpBJvhzsnTwUHzKsJ
+	E250f2aDO9G8drPRR4wIcaE2CDScwvjazF7tLefd6vuYnSEv/5e6sQHKUriGJBE9YM35T3VJoOIx3
+	H7al2VJ02luZT2NiwcYW/lE3HF3ctlg8+yU5sNi5jj1Ck3meC2HmG06vwynMRM96YscVgj3FfIYcc
+	uxM6F8JHCQvxaW2gXjew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzGaS-001rKE-PW; Mon, 20 Dec 2021 11:12:12 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mzGaV-001rLa-1c; Mon, 20 Dec 2021 11:12:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzGVQ-001oHu-0F
+ id 1mzGVW-001oMU-VD
+ for linux-rockchip@bombadil.infradead.org; Mon, 20 Dec 2021 11:07:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=5y0rsOrGd2fqJNZsrH73akV5YMUESh6vZZ+10OaGzN4=; b=TX1fqZrBoiYBbZAHWu84SutHmb
+ CjCucVCavOjpw/9M6T2OBJUP3Y1z8JHdjPXEzUiZ0/JCw1A+0Vha5ENPqR4jUCCdBnrm3Oxh6o9U5
+ 4FuSaY6mpzy2xONXy3sR5OLvUr/UUWAZAEFhh7BkqbqDJf0uJjUBiyf0NR1klv6cXbtWPSjT1rqUb
+ +o8cNwjoarqvGAiuInX5b+LBzHuinb8zDRej/lsxb9mN9HpIb8tBoOOjntSSDl32P/j4KlZkWTSvz
+ bxSzTF2UPNS/UeZbF7Pkk1920Wvb6iSMS82OCDXUnLFdAn00+LvTX9Q1I40NaRD27Xv/dxE2ZoPsb
+ HblXCNCw==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mzGVT-002UE0-Ln
  for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 11:07:05 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVE-0004x5-Fl; Mon, 20 Dec 2021 12:06:48 +0100
+ id 1mzGVH-0004xJ-BS; Mon, 20 Dec 2021 12:06:51 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1mzGVA-00EmED-Jh; Mon, 20 Dec 2021 12:06:44 +0100
+ id 1mzGVA-00EmEt-SW; Mon, 20 Dec 2021 12:06:44 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,12 +56,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 06/22] dt-bindings: display: rockchip: dw-hdmi: Add compatible
- for rk3568 HDMI
-Date: Mon, 20 Dec 2021 12:06:14 +0100
-Message-Id: <20211220110630.3521121-7-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH 20/22] drm/encoder: Add of_graph port to struct drm_encoder
+Date: Mon, 20 Dec 2021 12:06:28 +0100
+Message-Id: <20211220110630.3521121-21-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20211220110630.3521121-1-s.hauer@pengutronix.de>
 References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
@@ -58,9 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_030700_088441_A1771CC7 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211220_110703_798471_E6CDC5BA 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,32 +89,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Add a device node to drm_encoder which corresponds with the port node
+in the DT description of the encoder. This allows drivers to find the
+of_graph link between a crtc and an encoder.
 
-Define a new compatible for rk3568 HDMI.
-This version of HDMI hardware block needs two new clocks hclk_vio and hclk
-to provide phy reference clocks.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Link: https://lore.kernel.org/r/20210707120323.401785-2-benjamin.gaignard@collabora.com
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
- 1 file changed, 1 insertion(+)
+ include/drm/drm_encoder.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index da3b889ad8fcd..45cae4f57a1c1 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -23,6 +23,7 @@ properties:
-       - rockchip,rk3288-dw-hdmi
-       - rockchip,rk3328-dw-hdmi
-       - rockchip,rk3399-dw-hdmi
-+      - rockchip,rk3568-dw-hdmi
+diff --git a/include/drm/drm_encoder.h b/include/drm/drm_encoder.h
+index 6e91a0280f31b..3acd054b1eb3e 100644
+--- a/include/drm/drm_encoder.h
++++ b/include/drm/drm_encoder.h
+@@ -99,6 +99,8 @@ struct drm_encoder {
+ 	struct drm_device *dev;
+ 	struct list_head head;
  
-   reg-io-width:
-     const: 4
++	struct device_node *port;
++
+ 	struct drm_mode_object base;
+ 	char *name;
+ 	/**
 -- 
 2.30.2
 
