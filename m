@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7AEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 14:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39542C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Dec 2021 14:47:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fc28zInxZnXGQrwU2QV03n5ZqLvoOXG2zGtsFfCgiGQ=; b=uY67g6lapPrkv7
-	K5WoAjgxfzjRS3f8PJH9hNXnXS/k4C/EHuwwMZUjfYcrAikrByAqROkkqnlmsyhWUYefx2Bln2Pyg
-	TPKQRqDEF6j8C8rYBy1rI9KR3XFA24HrI0m5xEu2ViAN5mOR8Rje9mFhKNi6WKA2sE072X6lLluUO
-	nXDeOuOpcn/YIWRR11DPKJUnIEXSSkMqUJFrqM7Mkjj8yVTHiAZt0KFIJ345Jyxs4D0qIM2eJFgDc
-	xc+PhkJ6lxhvE0cgdrWN5fsbbesBXgODFAy22+XzGOXokza5IHsVXZ2yqfhYb26/mQOwrU/AfGCUb
-	stAXg12v1XDPLh751fmg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4212s5SlC/MK/EuGFVL1pme/kOpmchzoSena/v3h4AY=; b=UpPOqqswY/+Agx
+	2ffD09WqHVu4VphY57RoIUNdhBQCLBKp5CGLjfpxx1/5FlDF46A+dxgSJIWMRfVedcK2w7aTONEDf
+	vjgktrCC+/J0N6g1a6IYUIwUxWoLiyeGk87qIDY6mDmCHCdoayYlY7ldlxiG6dUpL5H52m/5FwQC1
+	7CWXqTERF/Qs2LompCNLPbTm+w9rENkQ59oHLTDhelJOEAwpT97UB0d1vJjEUHTTudz6X0gY8fyww
+	YBYk/9n0R8r1e0mYHGDqiywIWevvI5ezF0ePGP75SKyPMGBaIqwjGGRGmfW83NehkF+mcwjTOuNOk
+	2aTSOScxcHyJN1hH09Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzJhk-002oAG-Rw; Mon, 20 Dec 2021 14:31:56 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1mzJwN-002tx9-11; Mon, 20 Dec 2021 14:47:03 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzJdo-002mxG-9n; Mon, 20 Dec 2021 14:27:55 +0000
-Received: by mail-oi1-f174.google.com with SMTP id t23so16021942oiw.3;
- Mon, 20 Dec 2021 06:27:51 -0800 (PST)
+ id 1mzJwK-002tum-6e
+ for linux-rockchip@lists.infradead.org; Mon, 20 Dec 2021 14:47:01 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id q4so2887839qvh.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 20 Dec 2021 06:46:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PLMO4XLtzBSrwFCLcbN4dCmvE/DOyGne8QsxmfrRPks=;
+ b=hFL9lwQeHWdwyGEbBdZhyBQx9V6FPycpQZ6JogRSqz1PXr4adEjRdpLOct0EWGJiC8
+ 4jyMKaGrGbPXMaNxOhLlVsGAdMLdeMF71GgJ26BgOFFAkbYAKo7XhxCa/0HVX55Z1g/C
+ za0I8/asEWr/JZTaNnT0nt5zq5+ctnkqB5WgENBurpB4ow2PcRvsUah338tnUg7dsFSO
+ KqFZ5yt1hpXckcdTpQBWZaHlTCBdT2Hld+0MoFzEzmmW3EMF6ARiQ0/GDu3PEVpFe8SW
+ xjEw3r/cA7+Jppy2jJlQOCIIxPkP7sHBNQhdrIMMpsL9J0anvPFqVujTb90MV2SmRR70
+ WsTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=zDWGu9cBBF+UZjp8vTj9QW+U99MkhuncHEZaTav2MHE=;
- b=qFlujaVy23K2ye2KiA16r2MieAFLHGAAs54dO76poXPQh/M+iLC1SRGEQQdgTdkhEX
- W5iLpMMCs7GEOkIdtpW+2DkjsB+glELZDy7tpHJrPCox5PYpuuD/nT+i7+K6LxNoU5bF
- jnpiEzSMIsV68cKc5Qg0esssq8r3TtJ7ST7sRP7Jc+AXja9j//HfH17P1xnxeN2qzrO0
- WtPHUgbEQbKippL0hhVT/gOJZnaZZTPNDpZI1HfsHn9ShPGn1kqvyhSEp81dVV6bvnDO
- uR4gvqvLzlxa3FfuXDacfT9xyAxPxdiu30O4dl1/Za1kHq0oyUb5ynpCwrbvaUD9bX+9
- /cGg==
-X-Gm-Message-State: AOAM533437CaxfUWYpOwG62o1Ay9vdgymOvY58O4dCIZrbQTIcFsYHf9
- fOz75sj2YMlzMa53JLDLhg==
-X-Google-Smtp-Source: ABdhPJymnJA4Z6UpMSbt9RnHYH7HHxzlTJRAorVIPXmvkAT2YhfCFGWf8mSZby1/CnTgxJObaa5ggA==
-X-Received: by 2002:a54:4401:: with SMTP id k1mr18534287oiw.143.1640010470666; 
- Mon, 20 Dec 2021 06:27:50 -0800 (PST)
-Received: from robh.at.kernel.org ([12.252.7.226])
- by smtp.gmail.com with ESMTPSA id g17sm3438953oiy.14.2021.12.20.06.27.49
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PLMO4XLtzBSrwFCLcbN4dCmvE/DOyGne8QsxmfrRPks=;
+ b=TDx3cim6x0e8AEG/wd9GanVJiG76+X7+nQ4rbZJJcIxQbvufuRqWv98C2cPgOVsvI5
+ Wc4La9NMZJU6WJIx17LLa77Ih6BoqGfuGVDNnhMZ/+FvzQJDdcClAkkzatkY4hkpIBsZ
+ wRIJR/IoVNtoUSYmvlbDOL57uSO+SNvN38/ajDpcEaRKc46fjDNqmbSo36+evBt/qHhb
+ EdoQb9PemgK1D8Weff0oJl6tKscG3dExoEDdIhxdjozpFo8mtfaUNmjMzAQD7dnKBOY+
+ oXpdTwq+ao2tNMv0eQdRfhXr6npvN+yYyBDQYwOezuyKFgbwAa8mPk6MxP87l0TnrIWn
+ 3a3g==
+X-Gm-Message-State: AOAM531yLSfEGrBV0wWOKAj+oTrox1JN/CBqKbzMR+dxfIdAU7RLmuKW
+ NtESQ2i4j0yQGGGfDnIusmU=
+X-Google-Smtp-Source: ABdhPJz1vNr89++rWsFg/jH/h5clBKL6gqXxI3El918AEw51NdmM3jXbOMth4FrfX+X7Ae9FW8PH9g==
+X-Received: by 2002:a05:6214:caf:: with SMTP id
+ s15mr13151311qvs.33.1640011617247; 
+ Mon, 20 Dec 2021 06:46:57 -0800 (PST)
+Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
+ [98.233.193.225])
+ by smtp.gmail.com with ESMTPSA id v12sm14965011qtx.80.2021.12.20.06.46.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Dec 2021 06:27:50 -0800 (PST)
-Received: (nullmailer pid 3388824 invoked by uid 1000);
- Mon, 20 Dec 2021 14:27:43 -0000
-From: Rob Herring <robh@kernel.org>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: kernel@pengutronix.de, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Peter Geis <pgwipeout@gmail.com>, linux-arm-kernel@lists.infradead.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, devicetree@vger.kernel.org,
- Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org
-In-Reply-To: <20211220110630.3521121-8-s.hauer@pengutronix.de>
-References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
- <20211220110630.3521121-8-s.hauer@pengutronix.de>
-Subject: Re: [PATCH 07/22] dt-bindings: display: rockchip: dw-hdmi: Make
- unwedge pinctrl optional
-Date: Mon, 20 Dec 2021 08:27:43 -0600
-Message-Id: <1640010463.872107.3388823.nullmailer@robh.at.kernel.org>
+ Mon, 20 Dec 2021 06:46:56 -0800 (PST)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Lee Jones <lee.jones@linaro.org>
+Cc: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>, linux-kernel@vger.kernel.org
+Subject: [PATCH v3] mfd: rk808: add reboot support to rk808.c
+Date: Mon, 20 Dec 2021 09:46:54 -0500
+Message-Id: <20211220144654.926112-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_062752_393454_3023C805 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20211220_064700_275358_77ACC51E 
+X-CRM114-Status: GOOD (  21.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,121 +86,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 20 Dec 2021 12:06:15 +0100, Sascha Hauer wrote:
-> None of the upstream device tree files has a "unwedge" pinctrl
-> specified. Make it optional.
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
->  1 file changed, 1 insertion(+)
-> 
+This adds reboot support to the rk808 pmic driver and enables it for
+the rk809 and rk817 devices.
+This only enables if the rockchip,system-power-controller flag is set.
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+This patch was created to address issues with psci-reset on rk356x
+chips. Until the rk356x series ATF open source code is released so we
+can fix the issue at the source, this is the only way to ensure reliable
+resetting on devices using these chips.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+After testing the rk808 (thanks Robin!), it was found DEV_OFF_RST does
+not reset the PMIC to a power on state. Since the rk805 and rk818 match
+this register layout, I'm removing support for all three in the v2.
+It may be possible to add support to them using an RTC wakeup, but that
+has not been explored and is outside the scope of this patch.
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1570970
+Changelog:
+V3: Thanks Dmitry!
+- Adjust priority to be in line with other pmic drivers
+- Move ret handling to case switch
+- Make default registration debug
+- Add unregister function on removal
 
+V2:
+- Squash the patch from Frank Wunderlich for rk809 support.
+- Remove support for the rk805, rk808, and rk818 devices.
+- Only register the reset handler for supported devices.
+- Remove unnecessary dev_err and dev_warn statements.
+- Register the reset handler directly
 
-hdmi@200a0000: clock-names:0: 'iahb' was expected
-	arch/arm/boot/dts/rk3228-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-xms6.dt.yaml
+ drivers/mfd/rk808.c       | 45 +++++++++++++++++++++++++++++++++++++++
+ include/linux/mfd/rk808.h |  1 +
+ 2 files changed, 46 insertions(+)
 
-hdmi@200a0000: clock-names:1: 'isfr' was expected
-	arch/arm/boot/dts/rk3228-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-xms6.dt.yaml
-
-hdmi@200a0000: ports:port: 'endpoint@1' is a required property
-	arch/arm/boot/dts/rk3229-xms6.dt.yaml
-
-hdmi@200a0000: Unevaluated properties are not allowed ('reg', 'interrupts', 'pinctrl-0', 'resets', 'reset-names', 'ports' were unexpected)
-	arch/arm/boot/dts/rk3228-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-evb.dt.yaml
-	arch/arm/boot/dts/rk3229-xms6.dt.yaml
-
-hdmi@ff3c0000: interrupts: [[0, 35, 4], [0, 71, 4]] is too long
-	arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dt.yaml
-
-hdmi@ff3c0000: ports:port: 'endpoint@0' is a required property
-	arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dt.yaml
-
-hdmi@ff3c0000: ports:port: 'endpoint@1' is a required property
-	arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dt.yaml
-
-hdmi@ff3c0000: Unevaluated properties are not allowed ('reg', 'interrupts', 'pinctrl-0', '#sound-dai-cells', 'ports' were unexpected)
-	arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dt.yaml
-
-hdmi@ff940000: clock-names:4: 'vpll' was expected
-	arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-ficus.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-firefly.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-dumo.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-inx.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet-kd.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-khadas-edge-captain.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-khadas-edge-v.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-kobol-helios64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-nanopi-neo4.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-orangepi.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock960.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a-plus.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b-plus.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-roc-pc-plus.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-sapphire.dt.yaml
-	arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index b181fe401330..f3a79e23ac6e 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -19,6 +19,7 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/regmap.h>
++#include <linux/reboot.h>
+ 
+ struct rk808_reg_data {
+ 	int addr;
+@@ -543,6 +544,7 @@ static void rk808_pm_power_off(void)
+ 		reg = RK808_DEVCTRL_REG,
+ 		bit = DEV_OFF_RST;
+ 		break;
++	case RK809_ID:
+ 	case RK817_ID:
+ 		reg = RK817_SYS_CFG(3);
+ 		bit = DEV_OFF;
+@@ -559,6 +561,34 @@ static void rk808_pm_power_off(void)
+ 		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
+ }
+ 
++static int rk808_restart_notify(struct notifier_block *this, unsigned long mode, void *cmd)
++{
++	int ret;
++	unsigned int reg, bit;
++	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
++
++	switch (rk808->variant) {
++	case RK809_ID:
++	case RK817_ID:
++		reg = RK817_SYS_CFG(3);
++		bit = DEV_RST;
++		break;
++
++	default:
++		return NOTIFY_DONE;
++	}
++	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
++	if (ret)
++		dev_err(&rk808_i2c_client->dev, "Failed to restart device!\n");
++
++	return NOTIFY_DONE;
++}
++
++static struct notifier_block rk808_restart_handler = {
++	.notifier_call = rk808_restart_notify,
++	.priority = 192,
++};
++
+ static void rk8xx_shutdown(struct i2c_client *client)
+ {
+ 	struct rk808 *rk808 = i2c_get_clientdata(client);
+@@ -727,6 +757,18 @@ static int rk808_probe(struct i2c_client *client,
+ 	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+ 		rk808_i2c_client = client;
+ 		pm_power_off = rk808_pm_power_off;
++
++		switch (rk808->variant) {
++		case RK809_ID:
++		case RK817_ID:
++			ret = register_restart_handler(&rk808_restart_handler);
++			if (ret)
++				dev_warn(&client->dev, "failed to register restart handler, %d\n", ret);
++			break;
++		default:
++			dev_dbg(&client->dev, "pmic controlled board reset not supported\n");
++			break;
++		}
+ 	}
+ 
+ 	return 0;
+@@ -749,6 +791,9 @@ static int rk808_remove(struct i2c_client *client)
+ 	if (pm_power_off == rk808_pm_power_off)
+ 		pm_power_off = NULL;
+ 
++	if (of_property_read_bool(np, "rockchip,system-power-controller"))
++		unregister_restart_handler(&rk808_restart_handler);
++
+ 	return 0;
+ }
+ 
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index a96e6d43ca06..58602032e642 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -373,6 +373,7 @@ enum rk805_reg {
+ #define SWITCH2_EN	BIT(6)
+ #define SWITCH1_EN	BIT(5)
+ #define DEV_OFF_RST	BIT(3)
++#define DEV_RST		BIT(2)
+ #define DEV_OFF		BIT(0)
+ #define RTC_STOP	BIT(0)
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
