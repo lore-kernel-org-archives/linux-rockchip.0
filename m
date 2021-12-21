@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A1EDC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 08:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D34C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 09:11:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject
+	:MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sj6+9N4Tth+y9QAQ6IrE8mbexWXicVQeOm3zj5jz1cc=; b=MI7mAKEqnme22n
-	xeS6LfXs2hn6uGrXMxOusgLgBSby6j/JxhDxWMCaLWOH0sARjFRYz2yIl5vgI2Dw+9nbvyqRGPjtv
-	FziMYixqlhfETVtrIpafgmdApEOJ1mUVd+YWgSdRzRLZMgWzHFx6hQ7OZmwMFl2SLmI2tnKFL/du7
-	v1i9EvQjrlki6IKQZsiZCbYt1/29+9KMK1Uyz+v5/5dMjoFARMaGHa5pDrvDZYHc5OsEcbMNDD3YP
-	mt8XqYsKWIdi+UpD4+li+x8ukCU5w7SwNWlqwwXUp/cSHyBRN2vgA+a/JUm1ryFkT3VmvwF4ldrj1
-	1NqcQ9IN5Ka2/TvkV8Kw==;
+	List-Owner; bh=U0q1TDVhdbLBoKAiJgcOIpBRnm6vlDyqF0xZmUBeYb8=; b=Gf4nnVm8+peiVJ
+	HrKHu/S2fIwyvKa/+QdPHTQ6cg0wF/NdXgNAopLEJIpQOcWqD/IWI9XlZ2553Qr7NaQxDC7QF3nvs
+	CnPESm+mSVQ9olZ3zN1CsHgxmq7u44Ur80fDtAV1byVVY3+fBclYXxq5KufnEM0eVgaaIyaQf+K0N
+	J+3ZCH3kBws9Wjfp5lRFbYlriugUb4c7qvz1cAseb+hPiDLvEh4m9eFqGei4OEpM+Em0WMd6XiarW
+	94IetswFdAqiAENq5FErc3Iq2ogfkyMg8fLDpPuB2f1DRfGk7gd7woliss+2QDSvBegUwHCFWoT2j
+	7vkzA3xPAkh4cOA6MD6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzapH-005ySI-Cb; Tue, 21 Dec 2021 08:48:51 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1mzbAi-00636S-FI; Tue, 21 Dec 2021 09:11:00 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzapE-005yQI-Vv
- for linux-rockchip@lists.infradead.org; Tue, 21 Dec 2021 08:48:50 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- n14-20020a7bcbce000000b00332f4abf43fso785339wmi.0
- for <linux-rockchip@lists.infradead.org>; Tue, 21 Dec 2021 00:48:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=1i5pKI1yaREcKWwm6ZJnOKOfClamYbFLkl1l05ao+P8=;
- b=HQm25Al+ByvO5NoxVLT6E2bOaIW00vE1JmEXCieAXBxovaFIyAYZfOTy/dfzM8wCor
- 2LzCgJRBDePMbyMT7vJh1HejDv+didIEK83TpaMo8K1PMHNmNSO/zsc/C3+iXMyqSdi5
- 862caE7jCLOYHd8d0UvKgyOvqQH3siuYAmAD7nUVzEhmpnqpTSHf0E5DTB8VcwlZT8cK
- XKEQyhdc1Szz+LjctphbTSUyyUyXdP94E94SL+75PejtPoSOU3gP9SLjNnL4hr3N2xDD
- hS/+zFa307qcAJhjwZLgSr7jh/9b5mdLHRnqIY4SbTBtHsi14frXjshWNfWMRZ6mj2cJ
- gAIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=1i5pKI1yaREcKWwm6ZJnOKOfClamYbFLkl1l05ao+P8=;
- b=V2fhwGXrRPPbXC0977a5p4zqDwkXldDskSS42/uQMZLeGbHZMbEAEqN7onhcOseV//
- Yvhma4nYIqC64nGSsKXECmUquUZG2gDXB6UERkagE8ZPJ559EO52+5H7dTn6HLm5UXJr
- rRnY7TG6xQH2zRfqW4I6QN0zzaHGaSX3U8G/rDNq8pQ0PMzjD+3nFQjxfLbFGiPyiNFi
- dDFrW7ToyYznrxj0JNnOYqFna6+FQ4iyIadFcNVVj9MBR5mOJdAdBN/EEq/XVq7wh38a
- hBbkPCQiHNMGw3hjHuSuojZpchL5RpwYYI8xRiKTRwSCXB8Kr+83H2eSrZl5DPeo76xG
- YhJQ==
-X-Gm-Message-State: AOAM531uHCVMCmaBexyBWfe4MU/nCO1J0mwtezORhiUTV7UeGfga8v9A
- +03TWb2wn5aspyE/oYrVjwKz1A==
-X-Google-Smtp-Source: ABdhPJxvds/JbvO7IudFfvfu5aJ1k1xE1AzlajsT7HSscMA4YfLFPB7yjLj0mUO3zC46G30PkUhW1A==
-X-Received: by 2002:a1c:1b8c:: with SMTP id b134mr1700891wmb.44.1640076525242; 
- Tue, 21 Dec 2021 00:48:45 -0800 (PST)
-Received: from google.com ([2.31.167.18])
- by smtp.gmail.com with ESMTPSA id n4sm18317859wrc.1.2021.12.21.00.48.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Dec 2021 00:48:44 -0800 (PST)
-Date: Tue, 21 Dec 2021 08:48:43 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ id 1mzbAe-00633o-Jv
+ for linux-rockchip@lists.infradead.org; Tue, 21 Dec 2021 09:10:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1640077840;
+ bh=rLiprYYv/03YO8D2fVcHiRIDbo7NAT0ilK/7QutJtZM=;
+ h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
+ CC:From;
+ b=cyczsnN22jBfrEZ77DibtEDk7NTN4lwzBxW4tkpk1tMKTdvBAmC6fA6kOUb1Z5X1o
+ zC6uLccoRfqfVyk+zb+i4FhwErom//ntGU6qGXeeHDXWJ//fWo+xgP465DF5lQVded
+ x4dIikaimIM7lmlnUs+LLjYPe7P/EAkvM2GngxPc=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from frank-s9 ([217.61.155.223]) by mail.gmx.net (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MFbVu-1nGesA1zYM-00H38W; Tue, 21
+ Dec 2021 10:10:40 +0100
+Date: Tue, 21 Dec 2021 10:10:36 +0100
+User-Agent: K-9 Mail for Android
+In-Reply-To: <YcGU6pQqfEPBqjrO@google.com>
+References: <20211220144654.926112-1-pgwipeout@gmail.com>
+ <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
+ <YcGU6pQqfEPBqjrO@google.com>
+MIME-Version: 1.0
+Subject: Re: [PATCH v3] mfd: rk808: add reboot support to rk808.c
+To: Lee Jones <lee.jones@linaro.org>
+CC: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
  Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
  Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
  Dmitry Osipenko <digetx@gmail.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] mfd: rk808: add reboot support to rk808.c
-Message-ID: <YcGU6pQqfEPBqjrO@google.com>
-References: <20211220144654.926112-1-pgwipeout@gmail.com>
- <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
+From: Frank Wunderlich <frank-w@public-files.de>
+Message-ID: <4963E4A2-63B4-48A1-BDDD-5F9D07D71598@public-files.de>
+X-Provags-ID: V03:K1:7t/9jNOk9g+p2ZLe1h4KOCf1RP8zvbqsrbso5ODfU/MZE7hJbkV
+ I7XVm3w62C5rLb5tpzVSzAMpbdDfpdMJ1hZ6tYBCJslyOqvssHeDTBOs/1wcWZvLlYayQyU
+ TUlwtfImqpeAYbMWzh9F0CTa5Jj8Hse/nLjEesOVFrGSPKuypY+5s6QMve5P/dwVK7whaOi
+ ne3RqRQx8VkgJeB73iGqA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:4e13MBbMUY0=:zqluPHGSICKswJ7zbRvFzq
+ NMXJ60heTaSBCjNxzCClCn8B+Pekxmm3D7XlfE3JPYn3LWbAmXKqSs8JtKwm9uuRhTrsE9kU3
+ mCUyCwkfmMhQ1uOm55Y6iy5SBnCUcVUTimXb/ujXnGkJoNoQJ7wKIfNWp1Y3/0gyIq2iPxjNh
+ KYP7/eLIIB44HgT0MxjbTkbGk1+moDFbEZwO7bFjILhNMjH8UDWk+Gp/HD/C85Kz7ppzZGIyQ
+ lGIZqBMxxWXj4tmB7zTB/n2mfjrVMuhbqqnR+Q9McTEHVG/W0VVFQWa421VJ46jNrkY7KP60z
+ EDYGrPvIQuS40CiFpgRw1Gm1wBffNvWHx1gkbmLZLKNVQqWvna8FPAUHEqFLdzM4ScdAeoMD+
+ Ulju+mIGmWlm+XUfCVn37e9VyhDFxzLgW8dKFELdNxG5i0FHVA711KRGteqzVfnlfl1lLbqmN
+ 9jAg1+bM/FKdFipTserXlt5/2Tv3YYV67Yr6ESc/N9UgB9ZMpxSMCmlyooOyvfoPmknAlZE/T
+ 8tj2RD0BbK7UoNfoWncCKcEjB5SxiXYlPeGHCICfgN7WUQCBBfp4l6tnGhJhuSob8wi2E4CPV
+ NwQOSG9cx8Tb3wcW7Me+wud9n63oAilPuAjTEWoyc/qwuyXi4MIpYdYMH9gdoGqFmHE7Yme5H
+ 3AX/WLYdTEg9InN2GoXeZmfWa28RIEwd7+cujXsiH7q918MqrB6LNN4LXD9dyDfENoVquwEff
+ SUcAIbjqDp+rebaUWbml0riMzX1BmPiqpuCpcEysWYAvSvSQx7a7JkKvc0mfs1xpwnv9kqHcP
+ fBDuK2XtzWV99cVc+5C6kBVq28baegU/PBcWVC/EXkcLg9yZG51evcekFPI0RE11meyJ03Ml0
+ dP8jsaeI4qQ5OaTXbgNTqf4JLo2LRwy3J9HWbNMlrSKppK2IAC/oqv8Dl5gJh7NPuW09YtDpe
+ K+Pttg8yKzEft2Hde/WBLiWm6P/yx/bOMFBYffLl/FeCZCsLblxnwmzDHsRappsrtCnG4Hi9x
+ cQupMWy/6qMgo9x0D9QsxAHhMWzlLPEdtHBCdJVOQf+HEKmj7YH/SLO34K08X3mvTI+jsDSI9
+ FMhuoSm0JMXpn8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211221_004849_117861_ECDBB3A3 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20211221_011057_034205_C4380FA1 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,25 +89,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: frank-w@public-files.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMCBEZWMgMjAyMSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKCj4gSGkKPiAKPiA+
-IEdlc2VuZGV0OiBNb250YWcsIDIwLiBEZXplbWJlciAyMDIxIHVtIDE1OjQ2IFVocgo+ID4gVm9u
-OiAiUGV0ZXIgR2VpcyIgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4gPiBAQCAtNzQ5LDYgKzc5MSw5
-IEBAIHN0YXRpYyBpbnQgcms4MDhfcmVtb3ZlKHN0cnVjdCBpMmNfY2xpZW50ICpjbGllbnQpCj4g
-PiAgCWlmIChwbV9wb3dlcl9vZmYgPT0gcms4MDhfcG1fcG93ZXJfb2ZmKQo+ID4gIAkJcG1fcG93
-ZXJfb2ZmID0gTlVMTDsKPiA+Cj4gPiArCWlmIChvZl9wcm9wZXJ0eV9yZWFkX2Jvb2wobnAsICJy
-b2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciIpKQo+ID4gKwkJdW5yZWdpc3Rlcl9yZXN0
-YXJ0X2hhbmRsZXIoJnJrODA4X3Jlc3RhcnRfaGFuZGxlcik7Cj4gPiArCj4gPiAgCXJldHVybiAw
-Owo+ID4gIH0KPiAKPiB0aGlzIGNoYW5nZSBtaXNzZXMgYSBkZWNsYXJhdGlvbgo+IAo+IHN0cnVj
-dCBkZXZpY2Vfbm9kZSAqbnAgPSBjbGllbnQtPmRldi5vZl9ub2RlOwoKSG93IGRpZCB0aGlzIGNv
-bXBpbGUgd2hlbiB5b3UgdGVzdGVkIGl0PwoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5p
-b3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3Bl
-biBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwg
-VHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+Am 21. Dezember 2021 09:48:43 MEZ schrieb Lee Jones <lee.jones@linaro.org>:
+>On Mon, 20 Dec 2021, Frank Wunderlich wrote:
+>
+>> Hi
+>> 
+>> > Gesendet: Montag, 20. Dezember 2021 um 15:46 Uhr
+>> > Von: "Peter Geis" <pgwipeout@gmail.com>
+>> > @@ -749,6 +791,9 @@ static int rk808_remove(struct i2c_client
+>*client)
+>> >  	if (pm_power_off == rk808_pm_power_off)
+>> >  		pm_power_off = NULL;
+>> >
+>> > +	if (of_property_read_bool(np,
+>"rockchip,system-power-controller"))
+>> > +		unregister_restart_handler(&rk808_restart_handler);
+>> > +
+>> >  	return 0;
+>> >  }
+>> 
+>> this change misses a declaration
+>> 
+>> struct device_node *np = client->dev.of_node;
+>
+>How did this compile when you tested it?
+
+Here i have squashed the change in:
+
+https://github.com/frank-w/BPI-R2-4.14/commit/06430ffcb6d58d33014fb940256de77807ed620f
+
+With the change i can compile it...
+
+But in v4 (patch is tagged as v3 too) the of_property_read_bool was dropped completely.
+regards Frank
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
