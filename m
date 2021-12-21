@@ -4,81 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56CCEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 15:56:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27715C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 17:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/LWg+HZpy2MbG1ORc5/bB3MNcmdMPKnNWDNzC3kB3Bc=; b=OOCY+RaaYY05J3jbS+CpN1k56j
-	hDTD9xBBtTmsqOhF+txXErAdiGy9Z2z9MxetEevh6M9/m+9ey8gHF3TsOUf/D6Ao+qenOmqCln7HU
-	nyiU3lli5WFNRQIULswC4vzBOz0e5nELpyckzuPGBDGyu0QXvh/VpVXv+ZqGVCwlKR8aYtOqpw6zc
-	i0DJRKsBEhZSfuSakq+6GJ5LfKnIhG8UtQUU4mEwlPVXJjGRo1GGCT+14WS1liasO+GjD/TtSz+CQ
-	rw8uIqu8FBHLHWKbFiZnZ0LtY5+lHSyckqCIIX1kFiwrPy1O3TEGMxzxB5CT6G9zRXYYiylKGAy5H
-	pFFGZ00A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iK56vT0ahaZJC8+Abu/JmsCFO6/MxgIEXCRLD3IecEk=; b=3IbV3qpwlfO6Mu
+	fcaivCYGwOxsAxq8yWyx9DB4kNIXTydcSO92QHcanU50olYvRH5xfJ6T4hmv7ZyusK+i3RvRi75qV
+	2Dq4gQoTbSY3vutqTOX7Yqd6rRJw6IlnKbRJpeHVW+9uLHh6/fJDxh9WLrz3MZh9W75ip2Ri7Po+Q
+	/MSglJ2VaAAVZvO5sqzNUWP3/EJKQKmGwX1YjTUzqryjMZsHAIYEDX9BPY9lu7gZg3sVmk7LId6Dg
+	cthvc09NT1W7+mKOFAizRGEe9zMjn3m0PeI/tcf3xMM/i6XbExurlM4h3e6ZjIPOve6PcENsfDXji
+	yMJpgH/xHneM0bs8cBmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzhVK-007UJr-KH; Tue, 21 Dec 2021 15:56:42 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1mziyv-007rZJ-KX; Tue, 21 Dec 2021 17:31:21 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzhVI-007UI9-4a
- for linux-rockchip@lists.infradead.org; Tue, 21 Dec 2021 15:56:41 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id u13so23073354lff.12
- for <linux-rockchip@lists.infradead.org>; Tue, 21 Dec 2021 07:56:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=RalMfMgmm4bE+mLMQy4sGVVWjCHlDXopwkwD5NVelf8=;
- b=VLl1YCl6USv0bxS6MkGksCaQGmN4vDXbADincTVtd0JSYiqGA+9HN55sTGz0DLEAPn
- 7J+yXBZVsGf8rY4nm7YFSUEi3dCjlKFlZWqjyx+G0y0U2zSXMIM9+9u9bJoKJGA3a6NW
- pAayd/m6U8/g7mNTgevay7/YfjDojP/ScMnJDbzlhkdxjjiqgECiBGjAM4fF3s1Xq6MT
- 3CaVrfeC58xJqyEszl0j5aEcKVmEsqXigTlyAEqAmC9ZB0Kfs+CT4Pkvu2GXm+0dIyXt
- itqe27aozDSlwLIoK7tDVPxNrVXT1FqtjaX+IpNbcsGvz5kYQlw9YsO3NUsUgKJ517XU
- MphA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RalMfMgmm4bE+mLMQy4sGVVWjCHlDXopwkwD5NVelf8=;
- b=wsiGYb5QfGUg7pGjRf/06m3nyg5THzgVun0lQjyTrlE+wr7nc5fTeoeUIYQTXqidg5
- jaVwm7OXFH9KYHCJpzA44ZQ6mj7nnKaKxEiD7RV6jCT2SOJu9drcE2IUL7WGIssOhTSu
- eQJZGgVSsgh73hBpWy5jXzkLdwCg+nTunPTk+sGNVy3wfv2y65JhZjMawdjCQuxv9m7S
- poIVNMXwWOgwRoAXYKSKhz9WCJsa08MLdDhI1ym1eyVvT4B5Y6YJTCXo4IYxTN+eaWEF
- A3TP3ihxbf0Y8+gmQqF3ewQ62WKDLZXxbEEeHdkIpPXydgYaWV51rXlW4MMvRh/MA2Uv
- XHAQ==
-X-Gm-Message-State: AOAM533Fg4GiUgQQo10H/rnQ3Qrvq1O91rPtB8WfObIWQBlJk3n8ffWF
- LY06YKnCAo4jAdIqohNqVxm+2Jn8u/Q=
-X-Google-Smtp-Source: ABdhPJz7fLFCGBuy61gb99wKVKgo0CIIMFH8e40g+6PLGobQlr8Q/9ZuMZna0ReWYAXfzjAqXvpTyw==
-X-Received: by 2002:a05:6512:2398:: with SMTP id
- c24mr3674756lfv.194.1640102197484; 
- Tue, 21 Dec 2021 07:56:37 -0800 (PST)
-Received: from [192.168.2.145] (46-138-43-24.dynamic.spd-mgts.ru.
- [46.138.43.24])
- by smtp.googlemail.com with ESMTPSA id w10sm1882066lfu.173.2021.12.21.07.56.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Dec 2021 07:56:37 -0800 (PST)
-Subject: Re: [PATCH v3] mfd: rk808: add reboot support to rk808.c
-To: Peter Geis <pgwipeout@gmail.com>, Lee Jones <lee.jones@linaro.org>
-Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>, linux-kernel@vger.kernel.org
-References: <20211220170624.1009898-1-pgwipeout@gmail.com>
-From: Dmitry Osipenko <digetx@gmail.com>
-Message-ID: <c4ad88c5-42bd-9116-2934-135c49781ce8@gmail.com>
-Date: Tue, 21 Dec 2021 18:56:36 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1mziyi-007rVw-Nt; Tue, 21 Dec 2021 17:31:09 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1mziyd-0007s8-DU; Tue, 21 Dec 2021 18:31:03 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Re: [PATCH 20/22] drm/encoder: Add of_graph port to struct drm_encoder
+Date: Tue, 21 Dec 2021 18:31:02 +0100
+Message-ID: <5748237.0N3Lptk4b8@diego>
+In-Reply-To: <20211220110630.3521121-21-s.hauer@pengutronix.de>
+References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+ <20211220110630.3521121-21-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20211220170624.1009898-1-pgwipeout@gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211221_075640_217508_DF8EC33A 
-X-CRM114-Status: GOOD (  19.92  )
+X-CRM114-CacheID: sfid-20211221_093108_814342_5C5D7261 
+X-CRM114-Status: GOOD (  19.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +60,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-MjAuMTIuMjAyMSAyMDowNiwgUGV0ZXIgR2VpcyDQv9C40YjQtdGCOgo+IFRoaXMgYWRkcyByZWJv
-b3Qgc3VwcG9ydCB0byB0aGUgcms4MDggcG1pYyBkcml2ZXIgYW5kIGVuYWJsZXMgaXQgZm9yCj4g
-dGhlIHJrODA5IGFuZCByazgxNyBkZXZpY2VzLgo+IFRoaXMgb25seSBlbmFibGVzIGlmIHRoZSBy
-b2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciBmbGFnIGlzIHNldC4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6
-IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdAcHVibGljLWZpbGVzLmRlPgo+IFJldmlld2VkLWJ5
-OiBEbWl0cnkgT3NpcGVua28gPGRpZ2V0eEBnbWFpbC5jb20+Cj4gLS0tCj4gVGhpcyBwYXRjaCB3
-YXMgY3JlYXRlZCB0byBhZGRyZXNzIGlzc3VlcyB3aXRoIHBzY2ktcmVzZXQgb24gcmszNTZ4Cj4g
-Y2hpcHMuIFVudGlsIHRoZSByazM1Nnggc2VyaWVzIEFURiBvcGVuIHNvdXJjZSBjb2RlIGlzIHJl
-bGVhc2VkIHNvIHdlCj4gY2FuIGZpeCB0aGUgaXNzdWUgYXQgdGhlIHNvdXJjZSwgdGhpcyBpcyB0
-aGUgb25seSB3YXkgdG8gZW5zdXJlIHJlbGlhYmxlCj4gcmVzZXR0aW5nIG9uIGRldmljZXMgdXNp
-bmcgdGhlc2UgY2hpcHMuCj4gCj4gQWZ0ZXIgdGVzdGluZyB0aGUgcms4MDggKHRoYW5rcyBSb2Jp
-biEpLCBpdCB3YXMgZm91bmQgREVWX09GRl9SU1QgZG9lcwo+IG5vdCByZXNldCB0aGUgUE1JQyB0
-byBhIHBvd2VyIG9uIHN0YXRlLiBTaW5jZSB0aGUgcms4MDUgYW5kIHJrODE4IG1hdGNoCj4gdGhp
-cyByZWdpc3RlciBsYXlvdXQsIEknbSByZW1vdmluZyBzdXBwb3J0IGZvciBhbGwgdGhyZWUgaW4g
-dGhlIHYyLgo+IEl0IG1heSBiZSBwb3NzaWJsZSB0byBhZGQgc3VwcG9ydCB0byB0aGVtIHVzaW5n
-IGFuIFJUQyB3YWtldXAsIGJ1dCB0aGF0Cj4gaGFzIG5vdCBiZWVuIGV4cGxvcmVkIGFuZCBpcyBv
-dXRzaWRlIHRoZSBzY29wZSBvZiB0aGlzIHBhdGNoLgo+IAo+IENoYW5nZWxvZzoKPiBWNDoKPiAt
-IHJlb3JkZXIgcms4MDhfcmVzdGFydF9ub3RpZnkgKFRoYW5rcyBEbWl0cnkpCj4gLSBkcm9wIG9m
-X3Byb3BlcnR5X3JlYWRfYm9vbCBiZWZvcmUgdW5yZWdpc3RlciAoR29vZCBjYXRjaCBGcmFuaykK
-Ck1pZ2h0IGJlIGJldHRlciB0byByZXNlbmQgaXQgd2l0aCB2NCBpbiB0aGUgY29tbWl0IHRpdGxl
-LCB0byBhdm9pZApjb25mdXNpb24uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Montag, 20. Dezember 2021, 12:06:28 CET schrieb Sascha Hauer:
+> Add a device node to drm_encoder which corresponds with the port node
+> in the DT description of the encoder. This allows drivers to find the
+> of_graph link between a crtc and an encoder.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>  include/drm/drm_encoder.h | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/include/drm/drm_encoder.h b/include/drm/drm_encoder.h
+> index 6e91a0280f31b..3acd054b1eb3e 100644
+> --- a/include/drm/drm_encoder.h
+> +++ b/include/drm/drm_encoder.h
+> @@ -99,6 +99,8 @@ struct drm_encoder {
+>  	struct drm_device *dev;
+>  	struct list_head head;
+>  
+> +	struct device_node *port;
+> +
+>  	struct drm_mode_object base;
+>  	char *name;
+>  	/**
+> 
+
+Is this the port that gets used in patch 3/22?
+It looks like it.
+
+So this would break bisectability. Can we order patches
+sequentially so that git bisect keeps working.
+
+Thanks
+Heiko
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
