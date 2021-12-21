@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C5FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 02:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A1EDC4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Dec 2021 08:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eiRo3Bvsvun0bkl+NdoNA1pHdtmt8YjG8P+CSDXxb+o=; b=w/rEgsa492g09P
-	CKmTQmC85z/48ytVpMFWEY+zo55gEnrcLBnC38mYP6YebSGiuOD/gUbyJ3ysGJEr3exBIBC9To13Z
-	eK/QN5Gg4Hu6xOI9/1LJBYfkyyvtAXEp4RK/SHrgHjFKiir3kv6GASjtcyEE+7KI5xPmUw744hl6C
-	T33NJYGJ0Mh51HS7C8fhUTrmFHi3EJKGgJ4cBXF3SDrVALkvOZcfgiK16JwnyPui3f/YFoHCm35OV
-	K7niSgnk0GDXKotbx7rMHzka9AZhz0HbcmbcolzLqoxyhciVZK765HgBvg9kF5CcmZaX2EuzzdySZ
-	WwMZA7QPhD7gfYon46vQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Sj6+9N4Tth+y9QAQ6IrE8mbexWXicVQeOm3zj5jz1cc=; b=MI7mAKEqnme22n
+	xeS6LfXs2hn6uGrXMxOusgLgBSby6j/JxhDxWMCaLWOH0sARjFRYz2yIl5vgI2Dw+9nbvyqRGPjtv
+	FziMYixqlhfETVtrIpafgmdApEOJ1mUVd+YWgSdRzRLZMgWzHFx6hQ7OZmwMFl2SLmI2tnKFL/du7
+	v1i9EvQjrlki6IKQZsiZCbYt1/29+9KMK1Uyz+v5/5dMjoFARMaGHa5pDrvDZYHc5OsEcbMNDD3YP
+	mt8XqYsKWIdi+UpD4+li+x8ukCU5w7SwNWlqwwXUp/cSHyBRN2vgA+a/JUm1ryFkT3VmvwF4ldrj1
+	1NqcQ9IN5Ka2/TvkV8Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzUa3-005DO2-8o; Tue, 21 Dec 2021 02:08:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1mzapH-005ySI-Cb; Tue, 21 Dec 2021 08:48:51 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzUTh-0059l6-QI; Tue, 21 Dec 2021 02:02:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3810961224;
- Tue, 21 Dec 2021 02:02:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6000C36AE8;
- Tue, 21 Dec 2021 02:02:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640052128;
- bh=kJa3F3/9v6+zpr3LL2pnwtBxvxYCsbvi4K8gPRQTjq0=;
- h=From:To:Cc:Subject:Date:From;
- b=NRZMNYXckP0st2SnjjY7VvHyjqt9glt/afvb9b9XLH2GMJRuL0OH9IkbqaXIb3Vfr
- 6fIsHeo/0XHxztYIib6JZHLnPrSN8lISnfWYcyUhyYPJoAygTfcqcDMRMXg1+Mc3Rp
- GpjbeSlfAd25FjXCqVutq5Nx406Po0nCWRVMHpMv2zzDQBsZ7S+XKj+HEyaS52lRrM
- nU5VIri0THf/t/JnGg/QK7kK6HvtDzyLdM/YwSqKPEZinjfJA5+t26G0PseeWetpUN
- jtKIruBrk+G0YHXVhfLVBotWRpdhd0uR2TtsMdEdpGlEm6/xy9yyV9+h2r5Hp6zfbq
- TG2mj1XXDi2/Q==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: "Ivan T. Ivanov" <iivanov@suse.de>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, linux@armlinux.org.uk,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.4 1/4] ARM: rockchip: Use memcpy_toio instead of
- memcpy on smp bring-up
-Date: Mon, 20 Dec 2021 21:02:03 -0500
-Message-Id: <20211221020206.117771-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.34.1
+ id 1mzapE-005yQI-Vv
+ for linux-rockchip@lists.infradead.org; Tue, 21 Dec 2021 08:48:50 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ n14-20020a7bcbce000000b00332f4abf43fso785339wmi.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 21 Dec 2021 00:48:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=1i5pKI1yaREcKWwm6ZJnOKOfClamYbFLkl1l05ao+P8=;
+ b=HQm25Al+ByvO5NoxVLT6E2bOaIW00vE1JmEXCieAXBxovaFIyAYZfOTy/dfzM8wCor
+ 2LzCgJRBDePMbyMT7vJh1HejDv+didIEK83TpaMo8K1PMHNmNSO/zsc/C3+iXMyqSdi5
+ 862caE7jCLOYHd8d0UvKgyOvqQH3siuYAmAD7nUVzEhmpnqpTSHf0E5DTB8VcwlZT8cK
+ XKEQyhdc1Szz+LjctphbTSUyyUyXdP94E94SL+75PejtPoSOU3gP9SLjNnL4hr3N2xDD
+ hS/+zFa307qcAJhjwZLgSr7jh/9b5mdLHRnqIY4SbTBtHsi14frXjshWNfWMRZ6mj2cJ
+ gAIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=1i5pKI1yaREcKWwm6ZJnOKOfClamYbFLkl1l05ao+P8=;
+ b=V2fhwGXrRPPbXC0977a5p4zqDwkXldDskSS42/uQMZLeGbHZMbEAEqN7onhcOseV//
+ Yvhma4nYIqC64nGSsKXECmUquUZG2gDXB6UERkagE8ZPJ559EO52+5H7dTn6HLm5UXJr
+ rRnY7TG6xQH2zRfqW4I6QN0zzaHGaSX3U8G/rDNq8pQ0PMzjD+3nFQjxfLbFGiPyiNFi
+ dDFrW7ToyYznrxj0JNnOYqFna6+FQ4iyIadFcNVVj9MBR5mOJdAdBN/EEq/XVq7wh38a
+ hBbkPCQiHNMGw3hjHuSuojZpchL5RpwYYI8xRiKTRwSCXB8Kr+83H2eSrZl5DPeo76xG
+ YhJQ==
+X-Gm-Message-State: AOAM531uHCVMCmaBexyBWfe4MU/nCO1J0mwtezORhiUTV7UeGfga8v9A
+ +03TWb2wn5aspyE/oYrVjwKz1A==
+X-Google-Smtp-Source: ABdhPJxvds/JbvO7IudFfvfu5aJ1k1xE1AzlajsT7HSscMA4YfLFPB7yjLj0mUO3zC46G30PkUhW1A==
+X-Received: by 2002:a1c:1b8c:: with SMTP id b134mr1700891wmb.44.1640076525242; 
+ Tue, 21 Dec 2021 00:48:45 -0800 (PST)
+Received: from google.com ([2.31.167.18])
+ by smtp.gmail.com with ESMTPSA id n4sm18317859wrc.1.2021.12.21.00.48.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 21 Dec 2021 00:48:44 -0800 (PST)
+Date: Tue, 21 Dec 2021 08:48:43 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Dmitry Osipenko <digetx@gmail.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] mfd: rk808: add reboot support to rk808.c
+Message-ID: <YcGU6pQqfEPBqjrO@google.com>
+References: <20211220144654.926112-1-pgwipeout@gmail.com>
+ <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+Content-Disposition: inline
+In-Reply-To: <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_180209_940002_728BF11D 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20211221_004849_117861_ECDBB3A3 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,45 +88,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: "Ivan T. Ivanov" <iivanov@suse.de>
-
-[ Upstream commit 423e85e97aaf69e5198bbec6811e3825c8b5019a ]
-
-This fixes a potential kernel panic on memcpy when FORTIFY_SOURCE
-is enabled. Because memory is iomem use appropriate function for
-accessing it.
-
-Signed-off-by: Ivan T. Ivanov <iivanov@suse.de>
-Link: https://lore.kernel.org/r/20211116084616.24811-1-iivanov@suse.de
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- arch/arm/mach-rockchip/platsmp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index 3e7a4b761a953..47b6739937c64 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -194,7 +194,7 @@ static int __init rockchip_smp_prepare_sram(struct device_node *node)
- 	rockchip_boot_fn = virt_to_phys(secondary_startup);
- 
- 	/* copy the trampoline to sram, that runs during startup of the core */
--	memcpy(sram_base_addr, &rockchip_secondary_trampoline, trampoline_sz);
-+	memcpy_toio(sram_base_addr, &rockchip_secondary_trampoline, trampoline_sz);
- 	flush_cache_all();
- 	outer_clean_range(0, trampoline_sz);
- 
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCAyMCBEZWMgMjAyMSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKCj4gSGkKPiAKPiA+
+IEdlc2VuZGV0OiBNb250YWcsIDIwLiBEZXplbWJlciAyMDIxIHVtIDE1OjQ2IFVocgo+ID4gVm9u
+OiAiUGV0ZXIgR2VpcyIgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4gPiBAQCAtNzQ5LDYgKzc5MSw5
+IEBAIHN0YXRpYyBpbnQgcms4MDhfcmVtb3ZlKHN0cnVjdCBpMmNfY2xpZW50ICpjbGllbnQpCj4g
+PiAgCWlmIChwbV9wb3dlcl9vZmYgPT0gcms4MDhfcG1fcG93ZXJfb2ZmKQo+ID4gIAkJcG1fcG93
+ZXJfb2ZmID0gTlVMTDsKPiA+Cj4gPiArCWlmIChvZl9wcm9wZXJ0eV9yZWFkX2Jvb2wobnAsICJy
+b2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlciIpKQo+ID4gKwkJdW5yZWdpc3Rlcl9yZXN0
+YXJ0X2hhbmRsZXIoJnJrODA4X3Jlc3RhcnRfaGFuZGxlcik7Cj4gPiArCj4gPiAgCXJldHVybiAw
+Owo+ID4gIH0KPiAKPiB0aGlzIGNoYW5nZSBtaXNzZXMgYSBkZWNsYXJhdGlvbgo+IAo+IHN0cnVj
+dCBkZXZpY2Vfbm9kZSAqbnAgPSBjbGllbnQtPmRldi5vZl9ub2RlOwoKSG93IGRpZCB0aGlzIGNv
+bXBpbGUgd2hlbiB5b3UgdGVzdGVkIGl0PwoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5p
+b3IgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3Bl
+biBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwg
+VHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
