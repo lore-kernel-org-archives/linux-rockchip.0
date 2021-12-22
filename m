@@ -4,82 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E40C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 12:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93DE5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 12:54:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5ByCayNVaWKqU6Cb7a5tDB/sOeOSA8vyvq6vnhkmG4U=; b=I2hP4pS1mhc73U
-	lVU69tgUdUFNKB3BNdyojcyg7KlYZ5YJ7WHmAkTRHZhCdLIIDttBPlcVXdpN33Ml8tAWN7hAMqdNV
-	WN1awgSvBQcjLnKw8cmCng2hhQFuL/zM1DCkSiHxrXgjjMFqz0GsCA7ciohhZP0xLUVPMIBYJ1hpT
-	zXyjqeM3dTJo/EplHOBLoQ5xCwBal58yq9XMDkRcmGP9eER+OMY4kdXsKMiu/gCYVqeW3chgAbLc6
-	LEIpAUifT0wmJqqLVHP2lKJ1wlevzq8CnM2PpMBvp/DOZY+3Zujls+GyjUpjVztZLCAim+d62jZD6
-	Bpse9L+NJgR7V31iFfwA==;
+	List-Owner; bh=GyUNWasgBsg4nsp6kJtL9myaiOyzQgnm4Fd/Ac/sLTI=; b=2rWsmE9+rK7xQQ
+	mlV8YWLo1xP0IYBVvg+b8SWJ3tbNP1gd5dlb1v/bWkabrMuLG5+E2H7uEOfFcv/0XCQOk/NN58fHm
+	ca1QggdjD4VgDrP3FsnqGMXIwov+y49tRRIRr7yXNwc31Dnafq8ovZOMVwPM3CdP5OMGkjVYBMUhX
+	ud87bpCXMFei23Cguk7Rc11XTO2FAiOVIeQne7W4eq15H40oQYAzLp1wQJjjAIDd8wPN4gBrn9YOP
+	l38M020pHRPo3yegDPhjqkKlUmwTXqUhdw7o6lC2/39GgzMvipO7w+nip5r/s3U9MTsRWi+p60lBu
+	8iodnX45snFFyyI67FtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n018F-00AM5a-79; Wed, 22 Dec 2021 12:54:11 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n018C-00AM4O-GR
- for linux-rockchip@lists.infradead.org; Wed, 22 Dec 2021 12:54:09 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id q16so4726643wrg.7
- for <linux-rockchip@lists.infradead.org>; Wed, 22 Dec 2021 04:54:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=QIUPDb2Al9l0PriEYRa2k7fsEcDbO0MzTz3il7SpOZ4=;
- b=awpbkn22TMyUZYnw+n+pPYfeNjmdqItYTDKxBSVCmzRL+uqHw2yNuSaZQzFo8IT+uG
- d7kH2EdfswxqFfV2FqET5quFASwdz83mFTXp/wjaumyT5iJoQA1wPRKDolldfaELmuQn
- gXAYEoPf1mXkttOSfjrwo8Ux0lj+VM14lBIEZKf/U+CYfxGQxBXp6wZCC1deBg1bRzoL
- PW3Yi3Q2JLQIBIkWFb5dYx3UxNDxaghNO98VWAe2fiKU1OQuqCPkj5F/Q9h2zf2uB8bb
- lT+D0lM5korL1n/i9LRiSkR4BAxkyBQm3bcBRkg3Cz56uM2gCU6gzZ+ICDaf0VAsWidy
- lPaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=QIUPDb2Al9l0PriEYRa2k7fsEcDbO0MzTz3il7SpOZ4=;
- b=2Bymi+qu6VzA5seN3RW0TeVsVfgvUbVWCVrC0tYZZAW01sMTXsvGvXbwPrsSZgubXQ
- MsVmY5135a5iAzbZIQl7eaIRyeYufVSEWk2sinNeRE2AIL8zO7pSs/PX1tSq9XE/17jN
- /p4mUsKkTiMVi73+hlhwfqbVT+sOQWdB2u54atvUUDPGjmYM6NynRi4jTBcqmkP87Yik
- NBknvOqKHiWRcvC6s+rs5eIFn63U0LzSEe/lgWOW0JgxHDVX8rvmS/BB7NvXpbTGKUtE
- uHV3BT72a2M747zhyFRwcgXoPvClgorsOx+Jy/ckZNL4RD+UVMa7HXmyev+f2WcG3F64
- TjXA==
-X-Gm-Message-State: AOAM53360/slb4O9OGznwr4cKU/YXNAzOxAqY3hL9vN6z0BwVl/saMD9
- aTo2Fvdw4tE46B+/iRmK42nK4g==
-X-Google-Smtp-Source: ABdhPJwZ0cIPwiohcaickHlCzeWrf8plicrIghT5eQTF8d3wUQevpwRC9KhmCWWCaIrNRPHbfdIv9A==
-X-Received: by 2002:a05:6000:c6:: with SMTP id
- q6mr2033013wrx.181.1640177646610; 
- Wed, 22 Dec 2021 04:54:06 -0800 (PST)
-Received: from google.com ([2.31.167.18])
- by smtp.gmail.com with ESMTPSA id p2sm1806840wrs.112.2021.12.22.04.54.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Dec 2021 04:54:06 -0800 (PST)
-Date: Wed, 22 Dec 2021 12:53:59 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Dmitry Osipenko <digetx@gmail.com>, linux-kernel@vger.kernel.org
-Subject: Re: Re: [PATCH v3] mfd: rk808: add reboot support to rk808.c
-Message-ID: <YcMf56MvFv0ym7E5@google.com>
-References: <20211220144654.926112-1-pgwipeout@gmail.com>
- <trinity-c54ecce4-7a39-4143-b136-f53c9b40ffd1-1640018026851@3c-app-gmx-bap45>
- <YcGU6pQqfEPBqjrO@google.com>
- <4963E4A2-63B4-48A1-BDDD-5F9D07D71598@public-files.de>
- <YcMHhJTsQMLDRRsN@google.com>
- <trinity-4d94e8dd-1499-4d5f-84c3-85075a4085dd-1640172673779@3c-app-gmx-bs44>
+	id 1n018Y-00AMDX-EP; Wed, 22 Dec 2021 12:54:30 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n018I-00AM6a-Ho; Wed, 22 Dec 2021 12:54:17 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8C5E5D6E;
+ Wed, 22 Dec 2021 04:54:12 -0800 (PST)
+Received: from [10.57.34.58] (unknown [10.57.34.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2B1563F5A1;
+ Wed, 22 Dec 2021 04:54:11 -0800 (PST)
+Message-ID: <baa1603a-a6e2-4a32-a5fb-dc1eff01189c@arm.com>
+Date: Wed, 22 Dec 2021 12:54:06 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <trinity-4d94e8dd-1499-4d5f-84c3-85075a4085dd-1640172673779@3c-app-gmx-bs44>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.1
+Subject: Re: [PATCH 3/4] soc: rockchip: power-domain: Add regulator support
+Content-Language: en-GB
+To: Sascha Hauer <s.hauer@pengutronix.de>, Mark Brown <broonie@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ Heiko Stuebner <heiko@sntech.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de
+References: <20211217130919.3035788-1-s.hauer@pengutronix.de>
+ <20211217130919.3035788-4-s.hauer@pengutronix.de>
+ <20211220094435.GU6003@pengutronix.de> <YcB85mzJHrirUEDA@sirena.org.uk>
+ <20211222104036.GY6003@pengutronix.de>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20211222104036.GY6003@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_045408_574174_922DD76B 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20211222_045414_730880_E9F7C188 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,30 +62,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMiBEZWMgMjAyMSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKCj4gPiBHZXNlbmRl
-dDogTWl0dHdvY2gsIDIyLiBEZXplbWJlciAyMDIxIHVtIDEyOjA5IFVocgo+ID4gVm9uOiAiTGVl
-IEpvbmVzIiA8bGVlLmpvbmVzQGxpbmFyby5vcmc+Cj4gPiBBbjogIkZyYW5rIFd1bmRlcmxpY2gi
-IDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiA+ID4gSGVyZSBpIGhhdmUgc3F1YXNoZWQgdGhl
-IGNoYW5nZSBpbjoKPiA+ID4KPiA+ID4gaHR0cHM6Ly9naXRodWIuY29tL2ZyYW5rLXcvQlBJLVIy
-LTQuMTQvY29tbWl0LzA2NDMwZmZjYjZkNThkMzMwMTRmYjk0MDI1NmRlNzc4MDdlZDYyMGYKPiA+
-ID4KPiA+ID4gV2l0aCB0aGUgY2hhbmdlIGkgY2FuIGNvbXBpbGUgaXQuLi4KPiA+Cj4gPiBOb3Qg
-c3VyZSBJIHVuZGVyc3RhbmQuCj4gPgo+ID4gUGxlYXNlIG1ha2Ugc3VyZSBhbGwgcGF0Y2hlcyB5
-b3Ugc2VuZCBmb3IgaW5jbHVzaW9uIGludG8gdGhlIExpbnV4Cj4gPiBrZXJuZWwgYXJlIGZ1bGx5
-IHRlc3RlZC4gIFRoZXkgc2hvdWxkIGFsc28gYmUgYmlzZWN0YWJsZSBpLmUuIG5vdAo+ID4gZGVw
-ZW5kIG9uIHBhdGNoZXMgYXBwbGllZCAqb24gdG9wKi4KPiA+Cj4gPiA+IEJ1dCBpbiB2NCAocGF0
-Y2ggaXMgdGFnZ2VkIGFzIHYzIHRvbykgdGhlIG9mX3Byb3BlcnR5X3JlYWRfYm9vbCB3YXMgZHJv
-cHBlZCBjb21wbGV0ZWx5Lgo+ID4gPiByZWdhcmRzIEZyYW5rCj4gCj4gb25seSB2MSB3YXMgc2Vu
-dCBieSBtZSA6KQo+IAo+IHY0IGlzIGNvbXBpbGFibGUgYW5kIHdvcmtzIG9uIHJrODA5IChCYW5h
-bmFwaSByMiBwcm8pCgpNeSBjb21tZW50cyBhcmUgZGlyZWN0ZWQgYXQgd2hvZXZlciBzZW50IHBh
-dGNoZXMgd2l0aG91dCB0ZXN0aW5nLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3Ig
-VGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBz
-b3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdp
-dHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On 2021-12-22 10:40, Sascha Hauer wrote:
+> On Mon, Dec 20, 2021 at 12:53:58PM +0000, Mark Brown wrote:
+>> On Mon, Dec 20, 2021 at 10:44:35AM +0100, Sascha Hauer wrote:
+>>
+>>> Well, all true and on one specific board the regulator is indeed not
+>>> optional. However, on all other power domains that don't need a
+>>> regulator and all other boards and all other SoCs this driver is used we
+>>> now get:
+>>
+>> This seems unlikely to be board specific, if the chip requires power the
+>> chip requires power.  If there are power domains that don't take
+>> external supplies then they shouldn't be requesting any regulators and
+>> should be fixed.
+>>
+>>> [    0.185588] rk-power-domain rk-power-domain.8: supply power not found, using dummy regulator
+>>
+>> It seems vanishingly unlikely that the SoC takes a single supply called
+>> "power" shared by everything in the SoC but that is what the code
+>> appears to be requesting - the power domains should be requesting the
+>> supplies they actually use, and as ever the supplies should be named
+>> such that someone looking at the schematic can hook them up.  The
+>> general recommendation is to use the names used in the datasheet.
+> 
+> Ok. I'll change the patch in a way that only for the GPU power domain on
+> rk3568 a supply is requested. That's the one power domain I know that a
+> regulator is needed. I'm sure there are more, if not on rk3568 then
+> probably on other SoCs the driver handles. Once we notice that other
+> domains need a supply we'll have to add the supply name to driver data
+> for that domain.
+
+Certainly RK3399 (and I guess RK3288 too) suffers from the same 
+priority-inversion issue of being unaware that VD_GPU needs power before 
+PD_GPU can be successfully turned on to probe the GPU to claim and 
+enable the regulator (via "mali-supply" for DVFS purposes) that needed 
+to be on in the first place. Currently all the boards are bodging around 
+this with "regulator-always-on" (e.g. commit 06b2818678d9).
+
+Thanks,
+Robin.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
