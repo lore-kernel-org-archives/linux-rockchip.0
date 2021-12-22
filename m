@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D48C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 19:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4082C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 21:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bLv5FTOmjDruzU6giRhv1js7NujWYOHlXXXnX1V9H4g=; b=d+8BtMUVZU1McA
-	5hPvwzsp3w6Q2B/e/6w65jdEZ1EqQUhiKr2Fc97ccTgWfaAPU3fwj9iVizSpbVa5C75h41fexduCF
-	q10zXQ+VK9zqLi10xqpIg1+RrGjSCxqOPjgK0owcErmGAGhjsYbWYYORuh2p0biOK10Y2sWot8lgb
-	J6yX/vAdRAPRhCi+9m6wwLrReUMSjd7XbPHiWE9uFfyCfpg0dSvMl/GuYpC/SEqgwpA0g+K3HGfUV
-	x39+aLib/AsQhiZ/QIpNINg+BTv30IN6Kp/n/1xWnmqttGaKivm37rSql4Ymj/0v6UwrU6xdRk/KN
-	9TiReWwnz9QTmxz8Dx4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=um6wGxAy5O4rpmcfoKPAIk/5rl+TXP/BCIb+u49WZas=; b=j3Fou0Oj5Z6qFG
+	5QH8w0EUKdWF72pn85rvMHkk5BytbIF4jzfvtPQgVIPEJUn9hjtMjDJpHfWpUAToF0G3eJAKZDQXA
+	RMRtpDbMPcJmaB6Yd7LkRfOjYNLcz/u32/g+EX8MBlI1n91vSGd7Sbdgs2CxAOk6DQ7zZpttRWHHI
+	5aA8drhJdz92EcsbZtrFGZTvNvobp6ClaprpWBxvlT/ghzGvcIYvL4YguxqSzsT3vm+6trQprbtLO
+	AwDP3pBjZpdyzgN8tThCKbrRos/DOoJHJYMLyysrmy63wjzpsDopvaKwai+sIFXKr3gv1QRiT4wih
+	CV+F3CEbvA0CA1xqrkpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n07jo-00BHP7-S4; Wed, 22 Dec 2021 19:57:24 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1n09CK-00BLU6-CM; Wed, 22 Dec 2021 21:30:56 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n07jc-00BHNJ-LU; Wed, 22 Dec 2021 19:57:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 2825B61CEF;
- Wed, 22 Dec 2021 19:57:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86B0BC36AEA;
- Wed, 22 Dec 2021 19:57:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640203031;
- bh=vo+ANnKfigzQzAo0jwVxZr3VvLPILGV+V4D2g0cDOJo=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=HHxrgtCPmPXHz+fCsXIxU9gvKpwFtUl+/sSit1hSB20LIHQ0CwUG3DRvyzyF/+Xtl
- azm9i3QIznjWoESMqSvLxexoV8svAkhCsYMXGAi8pOSW5oiuIAxNwdp1ec72dJVz8G
- MLrDwB1cidAo4xb9BWLkgAd3zHcnWF6FI/si3e/ldQGCmUms38Y+sPqNbIkRAlUPiy
- G2RKLFyVo5Q6wd19UREl48K9GCiAQl/39sD6uTfngJMKMGOtDtuB4pxLarScPqU3eQ
- XLvJxu9SZ9h7oJfIzvWhiMZEA0X3f7yHru9faCoNYn9F+kk042poC7ta0bMs4QQcvu
- XxSoT5DsqB9Nw==
-Received: by mail-ed1-f47.google.com with SMTP id x15so12931686edv.1;
- Wed, 22 Dec 2021 11:57:11 -0800 (PST)
-X-Gm-Message-State: AOAM530XjTsNpIa3Iho7ngs5IJcyp/FfEMfxBd7pShYEadD+5Fhqnjoz
- pukMHkE447ExWX1FU8OR1w+lRmfPMMWlpP5PJg==
-X-Google-Smtp-Source: ABdhPJzwsbCZWdVn8cOcu5PGCVl4Axi+Ni8kjsGL4ubCS8dZgY8gPy7zwXj1bZMZYLolMdf6vi/pSdQRIPwxu9a9uQc=
-X-Received: by 2002:a17:906:229b:: with SMTP id
- p27mr3667056eja.264.1640203029841; 
- Wed, 22 Dec 2021 11:57:09 -0800 (PST)
+ id 1n09C6-00BLN5-9G; Wed, 22 Dec 2021 21:30:43 +0000
+Received: by mail-ed1-x534.google.com with SMTP id j21so13589042edt.9;
+ Wed, 22 Dec 2021 13:30:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=coEccP6zZM5PP15UOTxsrXWW0cXc+iHQhmE0IjhaoXA=;
+ b=bcNp1CEVtu7v7nuRrlPp98+zljrvIF77G8t06sYR5Zbo9dNuEoLl786DxwhmBRTou7
+ Ul0UGE3V24X+95XbTcaYLCenGf0afhvOn7j2CoGU342YbYljzOsziOPX9FaRy4i+vtdO
+ GibmYZq50QT9z+VYfCDoCzAOrx+SWR/pWWFbnZtn/tLqdjFV8nhZ7/EMuMvAHH34T6JB
+ avoOe7OEj9l83OVPt4yBA6VrmvY6uCqpkpNaEYYjSkq2V5FbH1RAdW66MLmrmYRKMkla
+ R+6Q0SsGuEu3RbAv7UOZj/Lj5/AB8yDdjrK0rDjiiou5w6Fkkx3VJo6xBGRZ3++W6vXL
+ X5Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=coEccP6zZM5PP15UOTxsrXWW0cXc+iHQhmE0IjhaoXA=;
+ b=CP1oHvq9VqPbtZD4VoeCbHHUMdtELWn2Z7Ve7lA6wrgLUJRHQHEqkCmKBqSHKrKQeA
+ Y1N4FVG4U5W8Wxbo8e4bMoJcXPW+qZAWA7xAZPnec3rI7NZGuG0oa2ZSB3a4gb4r5RPo
+ bxL9GmfHCudF3BIEgHA/bHGoPiH6/trPLqetuR63aDEVsbIb97sFrmCiGCnQrhUDIbrz
+ 5+1S0bNTNvueOxlTjtDkpLo+B4oPHY21eQzOMbv+aI/RNseWqiQwfqHDgAB/ygKREwad
+ daDd0nicN259zFUkv78SHy4hn09K9TrxsevLoMT+jGHGX3iNWLyCQDzZtbatFCYE1YiJ
+ iSBw==
+X-Gm-Message-State: AOAM5306sif7J4gdxyq1v8X58YaP2yk8hzAGZczPu9zatun0MOVh5CqD
+ MQAAta7WxdqiZdSo/XAk8C89QUlfdboPMw==
+X-Google-Smtp-Source: ABdhPJxvSWOETcPDqQj7WXzbmesiuA3Egb0BiA6ohcGR6dWmohDfq5vLRiZt97656OhB2eVMXPBc9w==
+X-Received: by 2002:a17:906:37d3:: with SMTP id
+ o19mr4162211ejc.32.1640208639816; 
+ Wed, 22 Dec 2021 13:30:39 -0800 (PST)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id ne2sm1087776ejc.108.2021.12.22.13.30.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Dec 2021 13:30:39 -0800 (PST)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, kishon@ti.com, vkoul@kernel.org,
+ p.zabel@pengutronix.de, lee.jones@linaro.org, yifeng.zhao@rock-chips.com,
+ kever.yang@rock-chips.com, cl@rock-chips.com,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v6 0/4] Add Naneng multi phy support for rk3568
+Date: Wed, 22 Dec 2021 22:30:28 +0100
+Message-Id: <20211222213032.7678-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
- <20211222104736.GZ6003@pengutronix.de>
- <CAL_Jsq+jhaE7DWNu1=n9JX+oNp8XRW7mNi--8moDU6RYNyBgBw@mail.gmail.com>
- <8156864.jFcTpQmkuZ@diego>
-In-Reply-To: <8156864.jFcTpQmkuZ@diego>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 22 Dec 2021 15:56:57 -0400
-X-Gmail-Original-Message-ID: <CAL_JsqJqXHcSQEw9rz1PDk++WUf_Pgh7S09Z2UGOQUxvT6ftGA@mail.gmail.com>
-Message-ID: <CAL_JsqJqXHcSQEw9rz1PDk++WUf_Pgh7S09Z2UGOQUxvT6ftGA@mail.gmail.com>
-Subject: Re: [PATCH 08/22] dt-bindings: display: rockchip: dw-hdmi: use "ref"
- as clock name
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org, 
- Sascha Hauer <kernel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_115712_802741_F31FD795 
-X-CRM114-Status: GOOD (  26.77  )
+X-CRM114-CacheID: sfid-20211222_133042_355128_C3CF1ACD 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,43 +85,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBEZWMgMjIsIDIwMjEgYXQgMzo0MCBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPgo+IEFtIE1pdHR3b2NoLCAyMi4gRGV6ZW1iZXIgMjAyMSwgMTQ6NTI6
-NTEgQ0VUIHNjaHJpZWIgUm9iIEhlcnJpbmc6Cj4gPiBPbiBXZWQsIERlYyAyMiwgMjAyMSBhdCA2
-OjQ3IEFNIFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gPiA+
-Cj4gPiA+IE9uIFR1ZSwgRGVjIDIxLCAyMDIxIGF0IDEwOjMxOjIzQU0gLTA0MDAsIFJvYiBIZXJy
-aW5nIHdyb3RlOgo+ID4gPiA+IE9uIE1vbiwgRGVjIDIwLCAyMDIxIGF0IDEyOjA2OjE2UE0gKzAx
-MDAsIFNhc2NoYSBIYXVlciB3cm90ZToKPiA+ID4gPiA+ICJ2cGxsIiBpcyBhIG1pc25vbWVyLiBB
-IGNsb2NrIGlucHV0IHRvIGEgZGV2aWNlIHNob3VsZCBiZSBuYW1lZCBhZnRlcgo+ID4gPiA+ID4g
-dGhlIHVzYWdlIGluIHRoZSBkZXZpY2UsIG5vdCBhZnRlciB0aGUgY2xvY2sgdGhhdCBkcml2ZXMg
-aXQuIE9uIHRoZQo+ID4gPiA+ID4gcmszNTY4IHRoZSBzYW1lIGNsb2NrIGlzIGRyaXZlbiBieSB0
-aGUgSFBMTC4KPiA+ID4gPiA+IFRvIGZpeCB0aGF0LCB0aGlzIHBhdGNoIHJlbmFtZXMgdGhlIHZw
-bGwgY2xvY2sgdG8gcmVmIGNsb2NrLgo+ID4gPiA+Cj4gPiA+ID4gVGhlIHByb2JsZW0gd2l0aCB0
-aGlzIHNlcmllcyBpcyBpdCBicmVha3MgYW4gb2xkIGtlcm5lbCB3aXRoIG5ldyBkdC4gWW91Cj4g
-PiA+ID4gY2FuIHBhcnRpYWxseSBtaXRpZ2F0ZSB0aGF0IHdpdGggc3RhYmxlIGtlcm5lbCBiYWNr
-cG9ydCwgYnV0IElNTyBrZWVwaW5nCj4gPiA+ID4gdGhlIG9sZCBuYW1lIGlzIG5vdCBhIGJ1cmRl
-biB0byBtYWludGFpbi4KPiA+ID4KPiA+ID4gQXMgc3VnZ2VzdGVkIEkgb25seSByZW1vdmVkIHZw
-bGwgZnJvbSB0aGUgYmluZGluZyBkb2N1bWVudCwgYnV0IG5vdCBmcm9tCj4gPiA+IHRoZSBjb2Rl
-LiBUaGUgY29kZSBzdGlsbCBoYW5kbGVzIHRoZSBvbGQgYmluZGluZyBhcyB3ZWxsLgo+ID4KPiA+
-IFRoZSBwcm9ibGVtIGlzIHVwZGF0aW5nIHJrMzM5OS5kdHNpLiBUaGF0IGNoYW5nZSB3b24ndCB3
-b3JrIHdpdGggb2xkCj4gPiBrZXJuZWxzIGJlY2F1c2UgdGhleSB3b24ndCBsb29rIGZvciAncmVm
-Jy4gU2luY2UgeW91IHNob3VsZG4ndCBjaGFuZ2UKPiA+IGl0LCB0aGUgYmluZGluZyBuZWVkcyB0
-byBjb3ZlciBib3RoIHRoZSBvbGQgYW5kIG5ldyBjYXNlcy4KPgo+IGlzICJuZXdlciBkdCB3aXRo
-IG9sZCBrZXJuZWwiIHJlYWxseSBhIGNhc2UgdGhlc2UgZGF5cz8KCkkndmUgaGFkIGNvbXBsYWlu
-dHMgYWJvdXQgaXQuIEluIHBhcnRpY3VsYXIgZnJvbSBTVVNFIGZvbGtzIHRoYXQgd2VyZQpzaGlw
-cGluZyBuZXcgZHRicyB3aXRoIG9sZCAoc3RhYmxlKSBrZXJuZWxzLgoKPiBJIGRvIHVuZGVyc3Rh
-bmQgdGhlIG5ldyBrZXJuZWwgb2xkIGR0IGNhc2UgLSBmb3IgZXhhbXBsZSB3aXRoIHRoZQo+IGR0
-YiBiZWluZyBwcm92aWRlZCBieSBmaXJtd2FyZS4KClllcywgc28gdXBkYXRlIHlvdXIgZmlybXdh
-cmUgdGhhdCBjb250YWlucyBhIG5ld2VyIGR0YiBhbmQgdGhlbiB5b3UKc3RvcCBib290aW5nIG9y
-IGEgZGV2aWNlIHN0b3BzIHdvcmtpbmcuCgo+IEJ1dCB3aGljaCB1c2VyIHdvdWxkIGdldCB0aGUg
-aWRlYSBvZiB1cGRhdGluZyBvbmx5IHRoZSBkZXZpY2V0cmVlCj4gd2hpbGUgc3RheWluZyB3aXRo
-IGFuIG9sZGVyIGtlcm5lbD8KCkFueSBzeW5jaHJvbml6YXRpb24gYmV0d2VlbiBmaXJtd2FyZSBh
-bmQgT1MgdXBkYXRlcyBpcyBhIHByb2JsZW0uCgpSb2IKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+=============================================
+
+TEST COMPILED ONLY!
+Driver not verified with hardware!
+Produced in the hope that we can get some review progress
+with this serie for the documents and driver.
+Use at your own risk!
+
+Renamed the combi phy driver to multi phy to highlight the different approach and
+not to confuse with the driver from the Rockchip manufacturer tree.
+By using a parent node it makes it hopefully easier to coordinate
+for new futures/functions between nodes.
+
+Removed a few properties, because it's not entire clear how they should be used.
+To prevent the obligation to keep supporting them despite changed handling.
+
+=============================================
+
+Changes in v6:
+- restyle
+- rename defines
+- change from comb to multi phy
+- clean up includes
+- add parent node
+- change compatible strings
+- remove rockchip,sgmii-mac-sel support
+- remove rockchip,dis-u3otg0-port support
+- remove rockchip,dis-u3otg1-port support
+
+Changes in v5:
+- modify description for ssc and ext-refclk
+- remove apb reset
+- add rockchip_combphy_updatel()
+- restyle
+
+Changes in v4:
+- restyle
+- remove some minItems
+- add more properties
+- remove reset-names
+- move #phy-cells
+- add rockchip,rk3568-pipe-grf
+- add rockchip,rk3568-pipe-phy-grf
+- add devm_reset_control_array_get()
+- remove clk structure
+- change refclk DT parse
+- change dev_err message
+- add dot to phrase
+- add ext_refclk variable
+- add enable_ssc variable
+- rename rockchip_combphy_param_write
+- remove param_read
+- replace rockchip-naneng-combphy driver name
+- rename node name
+
+Changes in v3:
+- Using api devm_reset_control_get_optional_exclusive and dev_err_probe.
+- Remove apb_rst.
+- Redefine registers address.
+- Move pipe_phy_grf0 to rk3568.dtsi
+
+Changes in v2:
+- Fix dtschema/dtc warnings/errors
+- Using api devm_platform_get_and_ioremap_resource.
+- Modify rockchip_combphy_set_Mode.
+- Add some PHY registers definition.
+- Move phy0 to rk3568.dtsi
+
+Johan Jonker (1):
+  dt-bindings: mfd: syscon: add naneng multi phy register compatible
+
+Yifeng Zhao (3):
+  dt-bindings: phy: rockchip: add naneng multi phy bindings
+  phy: rockchip: add naneng multi phy for rk3568
+  arm64: dts: rockchip: add naneng multi phy nodes for rk3568
+
+ .../devicetree/bindings/mfd/syscon.yaml       |   2 +
+ .../phy/phy-rockchip-naneng-multiphy.yaml     | 167 +++++
+ arch/arm64/boot/dts/rockchip/rk3566.dtsi      |   4 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      |  23 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  50 ++
+ drivers/phy/rockchip/Kconfig                  |   8 +
+ drivers/phy/rockchip/Makefile                 |   1 +
+ .../rockchip/phy-rockchip-naneng-multiphy.c   | 661 ++++++++++++++++++
+ 8 files changed, 916 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-multiphy.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-naneng-multiphy.c
+
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
