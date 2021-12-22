@@ -4,82 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E7CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 19:44:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D48C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Dec 2021 19:57:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=57Nd4t7+iR27BsEDgHV3xbJ7m3fneJdCCiTrsjhmz8E=; b=fwIyHP4UilAIFk
-	rk9U5Y4gq2pqhIgM7vmhM5Kq4bNFf8o2bY471RfY5J1moeiuR0NKnVTMEEpHOUsjFnIvNxasj1n1c
-	rYh3kuciyiIaCjqpP+f23YHZvOiNt/HzJDUhhafQWe/F6BJxxNq4lENZm4quYWVfDOU9KmzbWXFRN
-	Qj4gyzxVBz6Rsoxc7pbm0l9pT7OdLtyGl22T6xocK5Xr3VhIKfiSBUJ0IT+m7499saj9NMF3xOtHE
-	8XWsCZcykkazajrw3bZgWD69R1BVbqCh1VM1dv9IO8gBDEoF+v9cVrEUsHtfUkuKsegdclRTJvPn4
-	kLBa4vbPNgf0NJdCnJlg==;
+	List-Owner; bh=bLv5FTOmjDruzU6giRhv1js7NujWYOHlXXXnX1V9H4g=; b=d+8BtMUVZU1McA
+	5hPvwzsp3w6Q2B/e/6w65jdEZ1EqQUhiKr2Fc97ccTgWfaAPU3fwj9iVizSpbVa5C75h41fexduCF
+	q10zXQ+VK9zqLi10xqpIg1+RrGjSCxqOPjgK0owcErmGAGhjsYbWYYORuh2p0biOK10Y2sWot8lgb
+	J6yX/vAdRAPRhCi+9m6wwLrReUMSjd7XbPHiWE9uFfyCfpg0dSvMl/GuYpC/SEqgwpA0g+K3HGfUV
+	x39+aLib/AsQhiZ/QIpNINg+BTv30IN6Kp/n/1xWnmqttGaKivm37rSql4Ymj/0v6UwrU6xdRk/KN
+	9TiReWwnz9QTmxz8Dx4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n07XO-00BGHu-Nn; Wed, 22 Dec 2021 19:44:34 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1n07jo-00BHP7-S4; Wed, 22 Dec 2021 19:57:24 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n07XL-00BGGt-E5; Wed, 22 Dec 2021 19:44:32 +0000
-Received: by mail-wr1-x430.google.com with SMTP id q16so6988738wrg.7;
- Wed, 22 Dec 2021 11:44:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=dCjrHpXu1Vo7I4rx8GmbmN8hEJq/k/PZV1K6n27kXVk=;
- b=bSSlZ3aH9FEGWUVzYQG9mKEMOxBNE7/T2bXPlBKZbxzhO9S2Z2J32F3JFPCuIQlfOo
- EzrW5Jny6H9NBAtnOPhBYd/fChsO41sQZTUqOwakHc82gQIbDAhx/X1HSxxosyTSelGe
- tmFMyNIS7xYEpcBviehq5HF+3xR13K2+oypvqo3B/VkYOSiakjCY3J+Ba6RwVJtEDnOP
- W6GbxzjxMNm/RoJl2lc19aPi4qEjgRrZi9sG+No47w/CiY+zYqMPsrFW929Q+EkH7KL5
- CC8H2VOEXZ5YSjeRIfPJOBAuArrMR28tvtDuuS/xzLUPnSLHNr9/A+/zvxu7LVAhQiPo
- glnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=dCjrHpXu1Vo7I4rx8GmbmN8hEJq/k/PZV1K6n27kXVk=;
- b=qjdJoVZRn5V1k1vfurfL5LennkjknA1hyH1YA4+tKGeGksJHQvwIN7TzkwGlFohk5g
- IaE8apRiKHdHpUIYtDz0cUJuDVtCxZmpq00+LCqC7kSQScKKkMtT+aCd7YcWC2fO9mZT
- YcWkvxTB7paJEwCG9cuhgaDtSxjfYQCHHiucx3sQMlgEi1UzXYlzZYk5ZtA56vIHOtyC
- iGzBZyTw36vG8COy/mbNyWHa6ZuZFsZU/Gh1Qn1BGaz7j2IKOBamEJKtq+g5xrlG8SH6
- UU/X032ZvvOg7tU9aSCwW0A0vdPAlLOiNPx7s+ugcO/DWpjMwgM1vlaghk0mTQvls9WK
- hoCw==
-X-Gm-Message-State: AOAM532k1kPM2XoJ/bwbDAXDLBBnaQZ8VAFk6Q4k9wIBHc6PKu4Wa3ka
- k9fzBtx6G/bPO/Y8x1KbSig=
-X-Google-Smtp-Source: ABdhPJxSwX0RyZXV/YBXj2EFbWxkfPas2TAbhpbHVlzdZLmZZ8hRCF0UKBxVVneoMV+Rl/taQPV5XA==
-X-Received: by 2002:a5d:59a6:: with SMTP id p6mr1126955wrr.559.1640202269582; 
- Wed, 22 Dec 2021 11:44:29 -0800 (PST)
-Received: from archbook.localnet ([217.151.114.10])
- by smtp.gmail.com with ESMTPSA id m12sm2991540wrp.49.2021.12.22.11.44.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Dec 2021 11:44:29 -0800 (PST)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- linux-rockchip@lists.infradead.org
-Cc: dri-devel <dri-devel@lists.freedesktop.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- devicetree@vger.kernel.org, Sascha Hauer <kernel@pengutronix.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 08/22] dt-bindings: display: rockchip: dw-hdmi: use "ref"
- as clock name
-Date: Wed, 22 Dec 2021 20:44:22 +0100
-Message-ID: <2487063.3NWx74C5WQ@archbook>
-In-Reply-To: <8156864.jFcTpQmkuZ@diego>
+ id 1n07jc-00BHNJ-LU; Wed, 22 Dec 2021 19:57:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 2825B61CEF;
+ Wed, 22 Dec 2021 19:57:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86B0BC36AEA;
+ Wed, 22 Dec 2021 19:57:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1640203031;
+ bh=vo+ANnKfigzQzAo0jwVxZr3VvLPILGV+V4D2g0cDOJo=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=HHxrgtCPmPXHz+fCsXIxU9gvKpwFtUl+/sSit1hSB20LIHQ0CwUG3DRvyzyF/+Xtl
+ azm9i3QIznjWoESMqSvLxexoV8svAkhCsYMXGAi8pOSW5oiuIAxNwdp1ec72dJVz8G
+ MLrDwB1cidAo4xb9BWLkgAd3zHcnWF6FI/si3e/ldQGCmUms38Y+sPqNbIkRAlUPiy
+ G2RKLFyVo5Q6wd19UREl48K9GCiAQl/39sD6uTfngJMKMGOtDtuB4pxLarScPqU3eQ
+ XLvJxu9SZ9h7oJfIzvWhiMZEA0X3f7yHru9faCoNYn9F+kk042poC7ta0bMs4QQcvu
+ XxSoT5DsqB9Nw==
+Received: by mail-ed1-f47.google.com with SMTP id x15so12931686edv.1;
+ Wed, 22 Dec 2021 11:57:11 -0800 (PST)
+X-Gm-Message-State: AOAM530XjTsNpIa3Iho7ngs5IJcyp/FfEMfxBd7pShYEadD+5Fhqnjoz
+ pukMHkE447ExWX1FU8OR1w+lRmfPMMWlpP5PJg==
+X-Google-Smtp-Source: ABdhPJzwsbCZWdVn8cOcu5PGCVl4Axi+Ni8kjsGL4ubCS8dZgY8gPy7zwXj1bZMZYLolMdf6vi/pSdQRIPwxu9a9uQc=
+X-Received: by 2002:a17:906:229b:: with SMTP id
+ p27mr3667056eja.264.1640203029841; 
+ Wed, 22 Dec 2021 11:57:09 -0800 (PST)
+MIME-Version: 1.0
 References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+ <20211222104736.GZ6003@pengutronix.de>
  <CAL_Jsq+jhaE7DWNu1=n9JX+oNp8XRW7mNi--8moDU6RYNyBgBw@mail.gmail.com>
  <8156864.jFcTpQmkuZ@diego>
-MIME-Version: 1.0
+In-Reply-To: <8156864.jFcTpQmkuZ@diego>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 22 Dec 2021 15:56:57 -0400
+X-Gmail-Original-Message-ID: <CAL_JsqJqXHcSQEw9rz1PDk++WUf_Pgh7S09Z2UGOQUxvT6ftGA@mail.gmail.com>
+Message-ID: <CAL_JsqJqXHcSQEw9rz1PDk++WUf_Pgh7S09Z2UGOQUxvT6ftGA@mail.gmail.com>
+Subject: Re: [PATCH 08/22] dt-bindings: display: rockchip: dw-hdmi: use "ref"
+ as clock name
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ devicetree@vger.kernel.org, 
+ Sascha Hauer <kernel@pengutronix.de>, Andy Yan <andy.yan@rock-chips.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_114431_499659_0F7AEB6C 
-X-CRM114-Status: GOOD (  24.54  )
+X-CRM114-CacheID: sfid-20211222_115712_802741_F31FD795 
+X-CRM114-Status: GOOD (  26.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,63 +86,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mittwoch, 22. Dezember 2021 20:39:58 CET Heiko St=FCbner wrote:
-> Am Mittwoch, 22. Dezember 2021, 14:52:51 CET schrieb Rob Herring:
-> > On Wed, Dec 22, 2021 at 6:47 AM Sascha Hauer <s.hauer@pengutronix.de> w=
-rote:
-> > >
-> > > On Tue, Dec 21, 2021 at 10:31:23AM -0400, Rob Herring wrote:
-> > > > On Mon, Dec 20, 2021 at 12:06:16PM +0100, Sascha Hauer wrote:
-> > > > > "vpll" is a misnomer. A clock input to a device should be named a=
-fter
-> > > > > the usage in the device, not after the clock that drives it. On t=
-he
-> > > > > rk3568 the same clock is driven by the HPLL.
-> > > > > To fix that, this patch renames the vpll clock to ref clock.
-> > > >
-> > > > The problem with this series is it breaks an old kernel with new dt=
-. You
-> > > > can partially mitigate that with stable kernel backport, but IMO ke=
-eping
-> > > > the old name is not a burden to maintain.
-> > >
-> > > As suggested I only removed vpll from the binding document, but not f=
-rom
-> > > the code. The code still handles the old binding as well.
-> > =
-
-> > The problem is updating rk3399.dtsi. That change won't work with old
-> > kernels because they won't look for 'ref'. Since you shouldn't change
-> > it, the binding needs to cover both the old and new cases.
-> =
-
-> is "newer dt with old kernel" really a case these days?
-> =
-
-> I do understand the new kernel old dt case - for example with the
-> dtb being provided by firmware.
-> =
-
-> But which user would get the idea of updating only the devicetree
-> while staying with an older kernel?
-> =
-
-
-Side-by-side installations of LTS kernels with new kernels. LTS kernel
-uses same DT as new kernel because distribution set it up this way.
-
-Other scenario: user wants to modify their device tree. They download
-the latest kernel sources from kernel.org because they can't use over-
-lays and they don't want to fiddle with decompiled device trees.
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBEZWMgMjIsIDIwMjEgYXQgMzo0MCBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
+ZWNoLmRlPiB3cm90ZToKPgo+IEFtIE1pdHR3b2NoLCAyMi4gRGV6ZW1iZXIgMjAyMSwgMTQ6NTI6
+NTEgQ0VUIHNjaHJpZWIgUm9iIEhlcnJpbmc6Cj4gPiBPbiBXZWQsIERlYyAyMiwgMjAyMSBhdCA2
+OjQ3IEFNIFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gPiA+
+Cj4gPiA+IE9uIFR1ZSwgRGVjIDIxLCAyMDIxIGF0IDEwOjMxOjIzQU0gLTA0MDAsIFJvYiBIZXJy
+aW5nIHdyb3RlOgo+ID4gPiA+IE9uIE1vbiwgRGVjIDIwLCAyMDIxIGF0IDEyOjA2OjE2UE0gKzAx
+MDAsIFNhc2NoYSBIYXVlciB3cm90ZToKPiA+ID4gPiA+ICJ2cGxsIiBpcyBhIG1pc25vbWVyLiBB
+IGNsb2NrIGlucHV0IHRvIGEgZGV2aWNlIHNob3VsZCBiZSBuYW1lZCBhZnRlcgo+ID4gPiA+ID4g
+dGhlIHVzYWdlIGluIHRoZSBkZXZpY2UsIG5vdCBhZnRlciB0aGUgY2xvY2sgdGhhdCBkcml2ZXMg
+aXQuIE9uIHRoZQo+ID4gPiA+ID4gcmszNTY4IHRoZSBzYW1lIGNsb2NrIGlzIGRyaXZlbiBieSB0
+aGUgSFBMTC4KPiA+ID4gPiA+IFRvIGZpeCB0aGF0LCB0aGlzIHBhdGNoIHJlbmFtZXMgdGhlIHZw
+bGwgY2xvY2sgdG8gcmVmIGNsb2NrLgo+ID4gPiA+Cj4gPiA+ID4gVGhlIHByb2JsZW0gd2l0aCB0
+aGlzIHNlcmllcyBpcyBpdCBicmVha3MgYW4gb2xkIGtlcm5lbCB3aXRoIG5ldyBkdC4gWW91Cj4g
+PiA+ID4gY2FuIHBhcnRpYWxseSBtaXRpZ2F0ZSB0aGF0IHdpdGggc3RhYmxlIGtlcm5lbCBiYWNr
+cG9ydCwgYnV0IElNTyBrZWVwaW5nCj4gPiA+ID4gdGhlIG9sZCBuYW1lIGlzIG5vdCBhIGJ1cmRl
+biB0byBtYWludGFpbi4KPiA+ID4KPiA+ID4gQXMgc3VnZ2VzdGVkIEkgb25seSByZW1vdmVkIHZw
+bGwgZnJvbSB0aGUgYmluZGluZyBkb2N1bWVudCwgYnV0IG5vdCBmcm9tCj4gPiA+IHRoZSBjb2Rl
+LiBUaGUgY29kZSBzdGlsbCBoYW5kbGVzIHRoZSBvbGQgYmluZGluZyBhcyB3ZWxsLgo+ID4KPiA+
+IFRoZSBwcm9ibGVtIGlzIHVwZGF0aW5nIHJrMzM5OS5kdHNpLiBUaGF0IGNoYW5nZSB3b24ndCB3
+b3JrIHdpdGggb2xkCj4gPiBrZXJuZWxzIGJlY2F1c2UgdGhleSB3b24ndCBsb29rIGZvciAncmVm
+Jy4gU2luY2UgeW91IHNob3VsZG4ndCBjaGFuZ2UKPiA+IGl0LCB0aGUgYmluZGluZyBuZWVkcyB0
+byBjb3ZlciBib3RoIHRoZSBvbGQgYW5kIG5ldyBjYXNlcy4KPgo+IGlzICJuZXdlciBkdCB3aXRo
+IG9sZCBrZXJuZWwiIHJlYWxseSBhIGNhc2UgdGhlc2UgZGF5cz8KCkkndmUgaGFkIGNvbXBsYWlu
+dHMgYWJvdXQgaXQuIEluIHBhcnRpY3VsYXIgZnJvbSBTVVNFIGZvbGtzIHRoYXQgd2VyZQpzaGlw
+cGluZyBuZXcgZHRicyB3aXRoIG9sZCAoc3RhYmxlKSBrZXJuZWxzLgoKPiBJIGRvIHVuZGVyc3Rh
+bmQgdGhlIG5ldyBrZXJuZWwgb2xkIGR0IGNhc2UgLSBmb3IgZXhhbXBsZSB3aXRoIHRoZQo+IGR0
+YiBiZWluZyBwcm92aWRlZCBieSBmaXJtd2FyZS4KClllcywgc28gdXBkYXRlIHlvdXIgZmlybXdh
+cmUgdGhhdCBjb250YWlucyBhIG5ld2VyIGR0YiBhbmQgdGhlbiB5b3UKc3RvcCBib290aW5nIG9y
+IGEgZGV2aWNlIHN0b3BzIHdvcmtpbmcuCgo+IEJ1dCB3aGljaCB1c2VyIHdvdWxkIGdldCB0aGUg
+aWRlYSBvZiB1cGRhdGluZyBvbmx5IHRoZSBkZXZpY2V0cmVlCj4gd2hpbGUgc3RheWluZyB3aXRo
+IGFuIG9sZGVyIGtlcm5lbD8KCkFueSBzeW5jaHJvbml6YXRpb24gYmV0d2VlbiBmaXJtd2FyZSBh
+bmQgT1MgdXBkYXRlcyBpcyBhIHByb2JsZW0uCgpSb2IKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
