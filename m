@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 239F0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Dec 2021 11:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C6EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Dec 2021 11:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bdNIRj+WajeD7REzNHX9j2jRUbpOFDKU3M1Q6cfblcs=; b=YF6gN3JAIcSK0w
-	qnBNO/bAKeeP9yy5vd1jl6W2EVP/drpPpk1vUMEvj4A39HCJja3szN8A9kLOyalFgGPWjnsithjB7
-	1vsJEJGeekZhkaFCe+wg4UPyVJUWQLHgeuxVBXCJY5e31PoUAQ8+YvZvSgAZi81FWVME4XU2yTqoe
-	gH1DbhEgm0xkidWdmBWTw9HivmCIZrM2GIurROF1JemIPmpP+MLu9bsnbXiZxh13ds9D9vk5PMT6L
-	IOgETC5tY9CCKHXHc+8e7HgjMvVnNL1HsgCSqn0PSfaaf328iUZKQ5qcIDJZyoxD6gvWxlfJxV4Hv
-	DlLU6f16KxF4tFVH10kA==;
+	List-Owner; bh=jjyDEClC44c9HGllM+QlVkQPcw0h/lICoWTRrZxxaiU=; b=uOOWp8j6j0QttO
+	ldrJxMV23hKFmg++1glTFu8aTtGDRebBG1ITZMeJC4DfMz2+NZig1vqBj6xapo/PP0YSpislBWSIZ
+	x4m2vbnlOrkz65VaYgONE1SqFBNf6WScUYcn4tjxD2n8NgbcvoKIKYOZbuXCaoAfxqcKLQSyBFn0X
+	DC2fPXfuH6uzNGPuiwp20dRRRK8bF2Vs863I3cVypmsji+n58r9hAcYvppq9nrXDYvuhnQ9B60y8O
+	JG+sdyKti8KVeJ44x5oHkYAtT+lo0okzP200h6UBt0ah7AW/D4hSwwGPPFwjAy931vMi7AbRUhaCi
+	Gvm1diR+21Jp12OSS7iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0M8c-00CZLo-SY; Thu, 23 Dec 2021 11:19:58 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1n0ME6-00CZxt-Pc; Thu, 23 Dec 2021 11:25:38 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0M8Q-00CZJs-Qw; Thu, 23 Dec 2021 11:19:48 +0000
+ id 1n0MDu-00CZv5-BN; Thu, 23 Dec 2021 11:25:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 77B16CE1FDC;
- Thu, 23 Dec 2021 11:19:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4FF7C36AE5;
- Thu, 23 Dec 2021 11:19:40 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 764CDB8200F;
+ Thu, 23 Dec 2021 11:25:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37FDCC36AE9;
+ Thu, 23 Dec 2021 11:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640258381;
- bh=9as6QT34cWbvbNObFkKEmAbbIbFepkq9xGUjBBZthCc=;
+ s=k20201202; t=1640258723;
+ bh=hP0ZPwGrLJ5L9ght86XMHMVAyvOjs4D499mJuEVzkzA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rsNQ3Cgzqe76Nl7jbeA9jP9g0EAb1BuYU9G0thpzhEr1KRhlP+Ah7r3RM2zycMkSw
- O0C1Xqs9fCGzdUvDP+wsvqIXDPlcDCssAkeBdx0LC9OOOSvwxax+RXUZ9DPHHYVv21
- yJ8wNQhdjgEquae/DyWWNQVKVIbn2xk07uZeRBCx+It5B0SJS/qVsS238HZMnoPhEX
- pHuTcbsU4foxjQAr3cSYHr4uOXYCkbsliFZsSzfKtO1MTJLfYL5VOxdeCoRmNEstiX
- ldPVrWvV5zbl+2AapLt2zX2mcvkQXiKMlqNrGRBrAiGWo84ik7NJDwGBtfCFuAAP8j
- 4wPEIaf4g7Mcw==
-Date: Thu, 23 Dec 2021 16:49:37 +0530
+ b=SWPUwxkchGsUwNeAa6Ufmmd2KK9sc0B/fABWV6OLUNi/XgLzuel7mCELfrtS0xDon
+ Cl6PBPr7Apyio4nTwOj3bFcqzkubz/jkA3Psr8pn7n+YTFxORuuQVDwiSHORT5wPSY
+ kaP2UISdxvkuMwEdfV0fbdiJGot9pq9c7AVt4ZoiOFR69g40Kauc0nxYgAZqyG2fqA
+ bJaAAQo4B1FGsVx0MKRScw57rzUlaoboi9zS9olZlT5DCjfnkgk9E9NUgbklY5IeEL
+ dImwfzBxAVPn1UIlj9Gq4WNv/BgEl8P2VH3BzYMxZW13WYOwaHDGl9jrGTCj2nd7cR
+ QH+zEGZ/dEoag==
+Date: Thu, 23 Dec 2021 16:55:19 +0530
 From: Vinod Koul <vkoul@kernel.org>
-To: kernel test robot <lkp@intel.com>
-Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>, heiko@sntech.de,
- kbuild-all@lists.01.org, robh+dt@kernel.org, jbx6244@gmail.com,
- devicetree@vger.kernel.org, michael.riesch@wolfvision.net,
- linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org
-Subject: Re: [PATCH v5 3/4] phy: rockchip: add naneng combo phy for RK3568
-Message-ID: <YcRbST7GDTNiZAkn@matsya>
-References: <20211215095657.13183-4-yifeng.zhao@rock-chips.com>
- <202112160605.2BqI0hlK-lkp@intel.com>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh@kernel.org>,
+ Ondrej Jirman <megous@megous.com>
+Subject: Re: [PATCH v3 0/8] phy-rockchip-inno-usb2: support rk356x usb2phy
+Message-ID: <YcRcn17RMRGsLr5M@matsya>
+References: <20211215210252.120923-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <202112160605.2BqI0hlK-lkp@intel.com>
+In-Reply-To: <20211215210252.120923-1-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211223_031947_251248_FF265674 
-X-CRM114-Status: GOOD (  21.54  )
+X-CRM114-CacheID: sfid-20211223_032526_562347_2688435C 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,67 +76,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 16-12-21, 06:47, kernel test robot wrote:
-> Hi Yifeng,
+On 15-12-21, 16:02, Peter Geis wrote:
+> Good Afternoon,
 > 
-> Thank you for the patch! Yet something to improve:
+> This is my series to support the usb2 phy devices on the rk356x.
+> The rk356x phy has a single muxed interrupt and has moved the usb2phy
+> nodes out of the grf and into their own nodes.
+> The phy needs to tie back into the grf for register control, similar to
+> the rv1108.
+> By moving the phys into their own nodes, they now have full
+> #address_cells = 2 register addresses, but they still reside below the 32bit
+> mmio range.
 > 
-> [auto build test ERROR on rockchip/for-next]
-> [also build test ERROR on robh/for-next lee-mfd/for-mfd-next v5.16-rc5 next-20211214]
-> [If your patch is applied to the wrong git tree, kindly drop us a note.
-> And when submitting patch, we suggest to use '--base' as documented in
-> https://git-scm.com/docs/git-format-patch]
+> This driver series only supports the host configuration for the rk356x.
+> I have have tested it on the following:
+> rk3566 - Pine64 Quartz64 Model A
+> rk3399 - Pine64 Rockpro64
 > 
-> url:    https://github.com/0day-ci/linux/commits/Yifeng-Zhao/Add-Naneng-combo-PHY-support-for-RK3568/20211215-180610
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-> config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20211216/202112160605.2BqI0hlK-lkp@intel.com/config)
-> compiler: aarch64-linux-gcc (GCC) 11.2.0
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # https://github.com/0day-ci/linux/commit/5e4ddb08d86d5232174d88483f29e96272a4b6c0
->         git remote add linux-review https://github.com/0day-ci/linux
->         git fetch --no-tags linux-review Yifeng-Zhao/Add-Naneng-combo-PHY-support-for-RK3568/20211215-180610
->         git checkout 5e4ddb08d86d5232174d88483f29e96272a4b6c0
->         # save the config file to linux build tree
->         mkdir build_dir
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm64 SHELL=/bin/bash
-> 
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All errors (new ones prefixed by >>):
-> 
->    drivers/phy/rockchip/phy-rockchip-naneng-combphy.c: In function 'rk3568_combphy_cfg':
-> >> drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:22:47: error: 'HZ_PER_MHZ' undeclared (first use in this function)
->       22 | #define REF_CLOCK_24MHz                 (24 * HZ_PER_MHZ)
->          |                                               ^~~~~~~~~~
+> Please provide feedback and comments as you see fit.
 
-You need to add the header to your driver for this
+Applied patches 2-6 to phy-next
 
->    drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:490:14: note: in expansion of macro 'REF_CLOCK_24MHz'
->      490 |         case REF_CLOCK_24MHz:
->          |              ^~~~~~~~~~~~~~~
->    drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:22:47: note: each undeclared identifier is reported only once for each function it appears in
->       22 | #define REF_CLOCK_24MHz                 (24 * HZ_PER_MHZ)
->          |                                               ^~~~~~~~~~
->    drivers/phy/rockchip/phy-rockchip-naneng-combphy.c:490:14: note: in expansion of macro 'REF_CLOCK_24MHz'
->      490 |         case REF_CLOCK_24MHz:
->          |              ^~~~~~~~~~~~~~~
-> 
-> 
-> vim +/HZ_PER_MHZ +22 drivers/phy/rockchip/phy-rockchip-naneng-combphy.c
-> 
->     20	
->     21	#define BIT_WRITEABLE_SHIFT		16
->   > 22	#define REF_CLOCK_24MHz			(24 * HZ_PER_MHZ)
->     23	#define REF_CLOCK_25MHz			(25 * HZ_PER_MHZ)
->     24	#define REF_CLOCK_100MHz		(100 * HZ_PER_MHZ)
->     25	
-> 
-> ---
-> 0-DAY CI Kernel Test Service, Intel Corporation
-> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Thanks
 
 -- 
 ~Vinod
