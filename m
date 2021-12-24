@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDF4C43217
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Dec 2021 08:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2813C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Dec 2021 08:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iUA3XQmNBksExOAyRGwNlGFCD3233A4QdzeQe0TIgM4=; b=Zr9vi2SHTPp70m
-	acFW4Acse21yW27EPYTxlmQ3B0eZMrEj0FO8VLtSUOF5k6qX1evGqh5CbtqkeJ4lgLiQKaT5s88TM
-	ica34iZVtEIlgNCr5RwHWVP9e8ZUWWC3VnM5kIe+IzCu4SNqQIQn0rqdwE3zII99eNLNI1FN5EaP6
-	cfN+cxf1I21HRjG0CcwdhC7xBVVM/K4Iz/vgdFhP3EFTj7+sJd+KFzSI/WTPvKLWOv+7mgeI/T39D
-	sPIyQGL26/JxS8lwxOrLx0iZVJWs/6OABhzt6slQ63r/qgncaI0V2dDihXG112t6DjhFE5jhMq2US
-	hZCk/hWs1HKoWX2s+TnA==;
+	List-Owner; bh=66OF7PR/pjnvdOx7UyEEB/c9vZZh8qzZisIbl4GbusQ=; b=Sr4jHUC+dtdHIH
+	qT870b7teyfoLi858bkM0Cm/QAuLfX7ylIQ/u35AhlkPaJXq+uM8iyYNoipHCSCf+Xj3Un0hTdIuT
+	Rm3CQcYptk1fZraixreqCxVo/+ZWA319FND4BDlRei09z0tUkZmHDYzJJ/NY7E+QWdjbw47zR75GL
+	8qC4zo57fnxU1uMXbgVNreQoUYov4X/rJ1lDYSIL6sC5epzGeaQegAM5yf0tZhhvpd1bbL4PNp3Q/
+	+BHlTDn9XJQEqo+ShsMZXlFeIg8PtXQi5m6XL6HWIIyf0oNEmL/2yL1KAWXBnO3juzIeW2V/cHANC
+	QsfD2b5nzkBhrZYcegFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0gAi-00Dwc1-95; Fri, 24 Dec 2021 08:43:28 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1n0gAk-00Dwf4-OD; Fri, 24 Dec 2021 08:43:30 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0gAe-00DwZ1-QI
- for linux-rockchip@lists.infradead.org; Fri, 24 Dec 2021 08:43:26 +0000
-Received: by mail-pg1-x536.google.com with SMTP id l10so7128617pgm.7
- for <linux-rockchip@lists.infradead.org>; Fri, 24 Dec 2021 00:43:24 -0800 (PST)
+ id 1n0gAh-00Dwav-45
+ for linux-rockchip@lists.infradead.org; Fri, 24 Dec 2021 08:43:28 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id r5so7114740pgi.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 24 Dec 2021 00:43:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hPZ63IyF6LoQKfupZUYc1OfiqowFJJPTt5kR2M+K+aw=;
- b=dNsLI1dDTkEL8sIW3ny3gAsoz1nRkv258v3uwCcpJhDURPMCsDTPwDgv0kmfPhcTd9
- QQWZKy14pJzcegF1dyUXg94nFDpDJXvROLST/R0ev6nQ8jeNqrzo1g5N/hUCekE++7+f
- CVA+fQ8i00xxN+wH2SR3mJGvpEKzXJ/ir4/a4=
+ bh=V96MCrbuR3Cmo1QVQzxpqsi+EQJPA/QIWspHhrAknFM=;
+ b=ReCdFld7cLRApbe6SnnREZYfmIU0RcbRDBmmnqe94U4ghsTmrWoWtRGyuVcdLv0Cvh
+ koAodEaY+50Vg+QPhpVBofstR7JJJCw53QBki/gDLSV6kp56h4qKqd+HPN+9B5mLWbP8
+ sda5TpVrDtXTGEzwCEUWPd15aRIhv+frOnbD0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hPZ63IyF6LoQKfupZUYc1OfiqowFJJPTt5kR2M+K+aw=;
- b=bh8tlbCw+BrwTub6OgilKayWtNf5DA3a8lB6x7JxuQNzU0A43M94Gn301FqJEzttKV
- 37WL9xiBr1PKlK1TB164obTUoaEwM9mSd26CLcoG+uBUn2SCk4cQwoeTf7mQyRYVbSW3
- YTJBej7KBhmNGItPSXoeszNVD+R5R54t9s4ggf7N8xQ4/jsLxYAsXPfjTEdm7tiY+mCC
- jH93kie6+QNVOYJlUJCgoUcBTzMas6/qvwzvJWAMcK3mQgPoIy07qJeF2dY7iw1Ifwuq
- FpP1jNT/HhXFWsTYW2xb2kz0i6QcS4rE4Ic7TLVAl4hFt0hblWRSZwJGTrk+yzU5rO/m
- /QMw==
-X-Gm-Message-State: AOAM530SuryxhhVF8G7+bYw4H6HpszW4uW0UJtIJmWgjykWPLA2FUDkS
- ipkJAmyg418MRze1kvlUheBRBw==
-X-Google-Smtp-Source: ABdhPJwmWihogTmdnnVewbBslv5mjEqGK9TOipfVT6uZ268tyVFKlnfV9znTFjnSvDQ9BW3mGruA0Q==
-X-Received: by 2002:a05:6a00:cca:b0:4ba:f5cc:538c with SMTP id
- b10-20020a056a000cca00b004baf5cc538cmr5892369pfv.60.1640335404048; 
- Fri, 24 Dec 2021 00:43:24 -0800 (PST)
+ bh=V96MCrbuR3Cmo1QVQzxpqsi+EQJPA/QIWspHhrAknFM=;
+ b=rRXovvScJlkhxBr1s3k+9WjyHDhKdaYWFgo12AzoTms6LUpraxpPS8kPo9UxckZAdU
+ SuYcnowEXumV8DlUBIukUuF8ZIhBsL3tn3jmiUNuhjz2GR759KCdd22XLuZhadXRV+sh
+ KkEDHVH9K7YpEzNJuOsaR4JvCAY3m8AtbUIu/lQfu8O666jmBoldgll2ihg+th/tNONN
+ Dv4nnIA6+JNzSKRHPLddfMM7XukKZcWxGr7mokaEaNDhkt2gTrUeEw6VyhEaAGgqsdVK
+ hRges8KqKmCUg0QIRRthbtaTRFYZ1jlr+u4RjM9zs84Ti+rtDJsVECK1G63wdyVYBH/l
+ 2ePw==
+X-Gm-Message-State: AOAM531DfHUsqj6+bhcCQlPp5n6N/6NoWAge1XHth7kKTnrrRmCefJdG
+ w8WIfbVvGUBYMXz0CTG99AKKJw==
+X-Google-Smtp-Source: ABdhPJycSb22GWmoTlWD+t4pDQjqs8Efzd6cRWdANOKAxMm8MlvU3BBpMjxjkO9FubRD/Q7BSmpdaA==
+X-Received: by 2002:a63:6ac9:: with SMTP id f192mr5281162pgc.79.1640335406365; 
+ Fri, 24 Dec 2021 00:43:26 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:fd40:cbd0:c42a:3c26])
- by smtp.gmail.com with ESMTPSA id p13sm436369pgl.23.2021.12.24.00.43.21
+ by smtp.gmail.com with ESMTPSA id p13sm436369pgl.23.2021.12.24.00.43.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Dec 2021 00:43:23 -0800 (PST)
+ Fri, 24 Dec 2021 00:43:26 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Philipp Zabel <p.zabel@pengutronix.de>,
@@ -65,17 +64,17 @@ To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 Cc: Tomasz Figa <tfiga@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH RFT 3/7] media: hantro: Support cropping visible area for
- encoders
-Date: Fri, 24 Dec 2021 16:42:44 +0800
-Message-Id: <20211224084248.3070568-4-wenst@chromium.org>
+Subject: [PATCH RFT 4/7] media: hantro: jpeg: Add JFIF APP0 segment to JPEG
+ encoder output
+Date: Fri, 24 Dec 2021 16:42:45 +0800
+Message-Id: <20211224084248.3070568-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.34.1.448.ga2b2bfdf31-goog
 In-Reply-To: <20211224084248.3070568-1-wenst@chromium.org>
 References: <20211224084248.3070568-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_004324_907186_A8463632 
-X-CRM114-Status: GOOD (  21.61  )
+X-CRM114-CacheID: sfid-20211224_004327_249178_D4CBCDA8 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,195 +92,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Encoders typically operate on macroblocks. Thus their output or coded
-resolution is constrained to multiples of macroblocks. For frame sizes
-not aligned to macroblocks, cropping is needed to limit the visible
-area of the frame.
+While the V4L2_PIX_FMT_JPEG format doesn't specify any requirements for
+the APP0 or APP1 segments, it would be nice if the output is JFIF
+compliant. While some programs can read JPEG streams that aren't, some
+guess work is involved.
 
-Add support for cropping on the output (source) side for encoders,
-using the selection API.
+Add the standard JFIF APP0 segment to the JPEG header, so that the JPEG
+encoder output is JFIF compliant.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/staging/media/hantro/TODO             |  3 -
- .../staging/media/hantro/hantro_h1_jpeg_enc.c | 17 +++-
- drivers/staging/media/hantro/hantro_v4l2.c    | 77 +++++++++++++++++++
- .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c  | 17 ++--
- 4 files changed, 101 insertions(+), 13 deletions(-)
+ drivers/staging/media/hantro/hantro_jpeg.c | 21 +++++++++++++--------
+ drivers/staging/media/hantro/hantro_jpeg.h |  2 +-
+ 2 files changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/TODO b/drivers/staging/media/hantro/TODO
-index fa0c94057007..da181dc93069 100644
---- a/drivers/staging/media/hantro/TODO
-+++ b/drivers/staging/media/hantro/TODO
-@@ -5,9 +5,6 @@
+diff --git a/drivers/staging/media/hantro/hantro_jpeg.c b/drivers/staging/media/hantro/hantro_jpeg.c
+index df62fbdff7c9..7d4018bd6876 100644
+--- a/drivers/staging/media/hantro/hantro_jpeg.c
++++ b/drivers/staging/media/hantro/hantro_jpeg.c
+@@ -12,15 +12,15 @@
+ #include "hantro_jpeg.h"
+ #include "hantro.h"
  
-   For this reason, we are keeping this driver in staging for now.
+-#define LUMA_QUANT_OFF		7
+-#define CHROMA_QUANT_OFF	72
+-#define HEIGHT_OFF		141
+-#define WIDTH_OFF		143
++#define LUMA_QUANT_OFF		25
++#define CHROMA_QUANT_OFF	90
++#define HEIGHT_OFF		159
++#define WIDTH_OFF		161
  
--* Add support for the S_SELECTION API.
--  See the comment for VEPU_REG_ENC_OVER_FILL_STRM_OFFSET.
--
- * Instead of having a DMA bounce buffer, it could be possible to use a
-   normal buffer and memmove() the payload to make space for the header.
-   This might need to use extra JPEG markers for padding reasons.
-diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-index 96153c755fb8..9104973af8df 100644
---- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-@@ -18,12 +18,21 @@
- static void hantro_h1_set_src_img_ctrl(struct hantro_dev *vpu,
- 				       struct hantro_ctx *ctx)
- {
--	struct v4l2_pix_format_mplane *pix_fmt = &ctx->src_fmt;
-+	u32 overfill_r, overfill_b;
- 	u32 reg;
+-#define HUFF_LUMA_DC_OFF	160
+-#define HUFF_LUMA_AC_OFF	193
+-#define HUFF_CHROMA_DC_OFF	376
+-#define HUFF_CHROMA_AC_OFF	409
++#define HUFF_LUMA_DC_OFF	178
++#define HUFF_LUMA_AC_OFF	211
++#define HUFF_CHROMA_DC_OFF	394
++#define HUFF_CHROMA_AC_OFF	427
  
--	reg = H1_REG_IN_IMG_CTRL_ROW_LEN(pix_fmt->width)
--		| H1_REG_IN_IMG_CTRL_OVRFLR_D4(0)
--		| H1_REG_IN_IMG_CTRL_OVRFLB(0)
-+	/*
-+	 * The format width and height are already macroblock aligned
-+	 * by .vidioc_s_fmt_vid_cap_mplane() callback. Destination
-+	 * format width and height can be further modified by
-+	 * .vidioc_s_selection(), and the width is 4-aligned.
-+	 */
-+	overfill_r = ctx->src_fmt.width - ctx->dst_fmt.width;
-+	overfill_b = ctx->src_fmt.height - ctx->dst_fmt.height;
-+
-+	reg = H1_REG_IN_IMG_CTRL_ROW_LEN(ctx->src_fmt.width)
-+		| H1_REG_IN_IMG_CTRL_OVRFLR_D4(overfill_r / 4)
-+		| H1_REG_IN_IMG_CTRL_OVRFLB(overfill_b)
- 		| H1_REG_IN_IMG_CTRL_FMT(ctx->vpu_src_fmt->enc_fmt);
- 	vepu_write_relaxed(vpu, reg, H1_REG_IN_IMG_CTRL);
- }
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index e595905b3bd7..67148ba346f5 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -554,6 +554,80 @@ vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	return hantro_set_fmt_cap(fh_to_ctx(priv), &f->fmt.pix_mp);
- }
+ /* Default tables from JPEG ITU-T.81
+  * (ISO/IEC 10918-1) Annex K, tables K.1 and K.2
+@@ -144,6 +144,11 @@ static const unsigned char hantro_jpeg_header[JPEG_HEADER_SIZE] = {
+ 	/* SOI */
+ 	0xff, 0xd8,
  
-+static int vidioc_g_selection(struct file *file, void *priv,
-+			      struct v4l2_selection *sel)
-+{
-+	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	/* JFIF-APP0 */
++	0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46,
++	0x00, 0x01, 0x01, 0x00, 0x00, 0x01, 0x00, 0x01,
++	0x00, 0x00,
 +
-+	/* Crop only supported on source. */
-+	if (!ctx->is_encoder ||
-+	    sel->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	switch (sel->target) {
-+	case V4L2_SEL_TGT_CROP_DEFAULT:
-+	case V4L2_SEL_TGT_CROP_BOUNDS:
-+		sel->r.top = 0;
-+		sel->r.left = 0;
-+		sel->r.width = ctx->src_fmt.width;
-+		sel->r.height = ctx->src_fmt.height;
-+		break;
-+	case V4L2_SEL_TGT_CROP:
-+		sel->r.top = 0;
-+		sel->r.left = 0;
-+		sel->r.width = ctx->dst_fmt.width;
-+		sel->r.height = ctx->dst_fmt.height;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int vidioc_s_selection(struct file *file, void *priv,
-+			      struct v4l2_selection *sel)
-+{
-+	struct hantro_ctx *ctx = fh_to_ctx(priv);
-+	struct v4l2_rect *rect = &sel->r;
-+	struct vb2_queue *vq;
-+
-+	/* Crop only supported on source. */
-+	if (!ctx->is_encoder ||
-+	    sel->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-+		return -EINVAL;
-+
-+	/* Change not allowed if the queue is streaming. */
-+	vq = v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx);
-+	if (vb2_is_streaming(vq))
-+		return -EBUSY;
-+
-+	if (sel->target != V4L2_SEL_TGT_CROP)
-+		return -EINVAL;
-+
-+	/*
-+	 * We do not support offsets, and we can crop only inside
-+	 * right-most or bottom-most macroblocks.
-+	 */
-+	if (rect->left != 0 || rect->top != 0 ||
-+	    round_up(rect->width, MB_DIM) != ctx->src_fmt.width ||
-+	    round_up(rect->height, MB_DIM) != ctx->src_fmt.height) {
-+		/* Default to full frame for incorrect settings. */
-+		rect->left = 0;
-+		rect->top = 0;
-+		rect->width = ctx->src_fmt.width;
-+		rect->height = ctx->src_fmt.height;
-+	} else {
-+		/* We support widths aligned to 4 pixels and arbitrary heights. */
-+		rect->width = round_up(rect->width, 4);
-+	}
-+
-+	ctx->dst_fmt.width = rect->width;
-+	ctx->dst_fmt.height = rect->height;
-+
-+	return 0;
-+}
-+
- const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_querycap = vidioc_querycap,
- 	.vidioc_enum_framesizes = vidioc_enum_framesizes,
-@@ -580,6 +654,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+ 	/* DQT */
+ 	0xff, 0xdb, 0x00, 0x84,
  
- 	.vidioc_streamon = v4l2_m2m_ioctl_streamon,
- 	.vidioc_streamoff = v4l2_m2m_ioctl_streamoff,
-+
-+	.vidioc_g_selection = vidioc_g_selection,
-+	.vidioc_s_selection = vidioc_s_selection,
- };
+diff --git a/drivers/staging/media/hantro/hantro_jpeg.h b/drivers/staging/media/hantro/hantro_jpeg.h
+index 035ab25b803f..f33c492134e4 100644
+--- a/drivers/staging/media/hantro/hantro_jpeg.h
++++ b/drivers/staging/media/hantro/hantro_jpeg.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0+ */
  
- static int
-diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-index b931fc5fa1a9..da275568874a 100644
---- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-@@ -35,18 +35,23 @@
- static void rockchip_vpu2_set_src_img_ctrl(struct hantro_dev *vpu,
- 					   struct hantro_ctx *ctx)
- {
--	struct v4l2_pix_format_mplane *pix_fmt = &ctx->src_fmt;
-+	u32 overfill_r, overfill_b;
- 	u32 reg;
+-#define JPEG_HEADER_SIZE	601
++#define JPEG_HEADER_SIZE	619
+ #define JPEG_QUANT_SIZE		64
  
- 	/*
--	 * The pix fmt width/height are already macroblock aligned
--	 * by .vidioc_s_fmt_vid_cap_mplane() callback
-+	 * The format width and height are already macroblock aligned
-+	 * by .vidioc_s_fmt_vid_cap_mplane() callback. Destination
-+	 * format width and height can be further modified by
-+	 * .vidioc_s_selection(), and the width is 4-aligned.
- 	 */
--	reg = VEPU_REG_IN_IMG_CTRL_ROW_LEN(pix_fmt->width);
-+	overfill_r = ctx->src_fmt.width - ctx->dst_fmt.width;
-+	overfill_b = ctx->src_fmt.height - ctx->dst_fmt.height;
-+
-+	reg = VEPU_REG_IN_IMG_CTRL_ROW_LEN(ctx->src_fmt.width);
- 	vepu_write_relaxed(vpu, reg, VEPU_REG_INPUT_LUMA_INFO);
- 
--	reg = VEPU_REG_IN_IMG_CTRL_OVRFLR_D4(0) |
--	      VEPU_REG_IN_IMG_CTRL_OVRFLB(0);
-+	reg = VEPU_REG_IN_IMG_CTRL_OVRFLR_D4(overfill_r / 4) |
-+	      VEPU_REG_IN_IMG_CTRL_OVRFLB(overfill_b);
- 	/*
- 	 * This register controls the input crop, as the offset
- 	 * from the right/bottom within the last macroblock. The offset from the
+ struct hantro_jpeg_ctx {
 -- 
 2.34.1.448.ga2b2bfdf31-goog
 
