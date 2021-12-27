@@ -4,50 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41857C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Dec 2021 08:50:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC78C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Dec 2021 23:45:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=O67HaWuY37vMfzwyjuup9yngpukBlSEIeu7e3OXvbew=; b=au9YoRP1boir4G
-	RcmS+Ny8gk1MkfhIBHJRu6+Kma0PvuLsG412g0yqtJ7hrrf0kwLN510eud0jY6Ff5RKQZIaQG85ly
-	EK+V/6vPW5hdIJKpiE/o7Ym5Uwey7YWscGQe+5OkTJMU9wnFSC6avOZhUUvocXMBZOUkjAnOIWXIG
-	QT8VzNEDbxBJoeJNt1fpgpn7jy+Qg6kP9rzwspSmLG06ivns995VzXGydBEDa8I3H2HKpeuluQhlM
-	oeOlYFnbZ9b3dQg4CX5yeXgkcdb29tl3B4uquqxcCNBr2iNXIDbSpYVe8axQIhOV/IBvT8eSxt+2e
-	qvNhDl0DMAiSfZcr30Jg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dZOo2fSbzmOiE/MApu53uG9fVnGJLIFtIkv508jV6Do=; b=OFz79Ogo2LsHEh
+	OH3cX+QXGVguJzNtGwQmlK7oYsLRj4eZMA0F0nDU0OroHy87WlMdaSPdGdcF+E1MXxl3HoclKksUT
+	0ZqVB49gieKwKSJ80UCB0bJBmp8yjnbycrfFyiBRlsVEoPAh2Hnqx9hCfGRD0bbp7/eNIF2Mxi/nb
+	Ph50P50uoTGzzTciDInN+3kdjo38O4b+kA0VB/mK8UdlbMb39C9uNvmUZQdxJ1X8w23w6gjtQ70Q2
+	AoBHIXQaPEY1gSEBnOvr5fLTVe+OoiMr6HHR7+h0hDbrmBb9+tKYrX7aN69qjzPuIupuk1wDvUD68
+	M2OXJI4AQkc+8HLtpI5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n1liH-00GP19-F2; Mon, 27 Dec 2021 08:50:37 +0000
-Received: from mail.portyid.pl ([192.36.61.58])
+	id 1n1zgO-00HZ0p-EQ; Mon, 27 Dec 2021 23:45:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n1liF-00GP0h-9w
- for linux-rockchip@lists.infradead.org; Mon, 27 Dec 2021 08:50:36 +0000
-Received: by mail.portyid.pl (Postfix, from userid 1001)
- id 6C26040E25; Mon, 27 Dec 2021 09:50:14 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=portyid.pl; s=mail;
- t=1640595033; bh=RZjfFpT9KGSFHXuIOzTjcb+Gwkun4EXriv7y2I0PG0A=;
- h=Date:From:To:Subject:From;
- b=OdggGZwhlicifibbpeezdPIoTByGQu98QBx4EI/OvQj/cZDvCqpX2qDZ91hSaY661
- Y5GAMJcWkeToSd4DAatFyybW33ac4a7Ayegx5kgdcmfxSVEVrNohgjKt23lqGhN9E5
- eIfvSrDGBKFD/Qb317iXATXmQJ1n59VEZqX1ZvuZKS6QUGC7Xd2DhALVhF2vMAuCJD
- AMx6UOZKiLKpYPeUUk6WYGT8WKoXEEL2GOmYqGegXFr9bGx1FlzR2Yte3kmiQpNG7C
- 9v0KruWRCk3PgmB1lMobPSpqIxUGLhi8LJrT3VzljYrvaXFQYjZQnoEqQC8RoIpXUN
- 2RF1aOkfykFww==
-Received: by mail.portyid.pl for <linux-rockchip@lists.infradead.org>;
- Mon, 27 Dec 2021 08:50:05 GMT
-Message-ID: <20211227084500-0.1.u.2icj.0.5c1vsage0v@portyid.pl>
-Date: Mon, 27 Dec 2021 08:50:05 GMT
-From: =?UTF-8?Q?"Pawe=C5=82_Jasi=C5=84ski"?= <pawel.jasinski@portyid.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Wycena paneli fotowoltaicznych
-X-Mailer: mail.portyid.pl
+ id 1n1zgL-00HZ06-IG; Mon, 27 Dec 2021 23:45:34 +0000
+Received: from p508fdc1f.dip0.t-ipconnect.de ([80.143.220.31]
+ helo=phil.fritz.box)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1n1zgH-0001e1-MA; Tue, 28 Dec 2021 00:45:29 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 1/2] arm64: dts: rockchip: define vdd_log on rk3399-puma
+Date: Tue, 28 Dec 2021 00:45:28 +0100
+Message-Id: <20211227234529.1970281-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211227_005035_528767_C541E6EE 
-X-CRM114-Status: UNSURE (   1.32  )
+X-CRM114-CacheID: sfid-20211227_154533_670004_7A6CCB6D 
+X-CRM114-Status: UNSURE (   9.09  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -61,17 +54,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
-hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
-Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
-eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
-ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0KUGF3ZcWCIEphc2nF
-hHNraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+vdd_log supplied a lot of the logic parts of the soc and is
+supplied through pwm2.
+
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index fb67db4619ea..b91fb0b078b9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -71,6 +71,17 @@ vcc5v0_sys: vcc5v0-sys {
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+ 	};
++
++	vdd_log: vdd-log {
++		compatible = "pwm-regulator";
++		pwms = <&pwm2 0 25000 1>;
++		pwm-supply = <&vcc5v0_sys>;
++		regulator-name = "vdd_log";
++		regulator-min-microvolt = <800000>;
++		regulator-max-microvolt = <1400000>;
++		regulator-always-on;
++		regulator-boot-on;
++	};
+ };
+ 
+ &cpu_b0 {
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
