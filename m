@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35325C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Dec 2021 08:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE2E6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 31 Dec 2021 13:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lNQQV9PrJthbTIVsfxNoGNb02cZYj5io0JvyFQNOj3U=; b=n5MNgUGVkPQj+F
-	Pkql2dozGqnrVoXPSnizyRxdcHGewQC2VTlL7s2w9HgkbZe0mGYfPWWBhE69sPW6Xgjl/ak/h4gXz
-	LRUFbC29PD1dVwiheKaEO0g/ULZUpVxqI0Y8nYuSJCoOzX1sLDL8jLtRv4VJvVRBsLaU5fY3/VsOI
-	E9WXd6klz4XdOLf9fykth4gL7uHcBYE6k8o5z0WAbCP8DaHKa5dqCyICoOAQIVq6ApnJewprjnig8
-	vYaSGsc1lI9XChyEPbk8hn8UfjNdY9o+aI44/X7YatFeDAUKQXFyBQbZQjQgO6spRXHR/glGfAFUQ
-	RFUyQTywisjMtDx5D8Cw==;
+	List-Owner; bh=ZGi8OOBPkvoCv5mVImgOjxCFqwNuXEYX/IY1bPp/FRo=; b=FwppL+QTelUguc
+	f0CwuW2oPKx0aOEdacxkvkruUQk1f7IbkeQ8qZ1rt0Ede+n9pynoBkiz5W4pqMgNGARFCuASf7yjf
+	t/S652GmTn6jlbS9fGZIQd+WPQgtW1TDRkm8Uni6yNYHRKHKuyJ9wEC3eByl3B3JvlrwbBl5Pxm60
+	hbD8s5C31e4vEeqVOvBrU7CthY8CiQqfRH44864ujdQspAbWQ2XCcRT+f/OUHOFQljQlkwEOnKdEB
+	DFJmffeUq5twMiQD59DS3u9ZMryCthq+Qg2jW0UVWN/9KMt7RbQaAXOOX4p5CN0QqaorSt0f5OPR+
+	OritHFaf/T0KAiADmLSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n3DBl-005oIE-A5; Fri, 31 Dec 2021 08:23:01 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1n3IQP-0066YL-Ar; Fri, 31 Dec 2021 13:58:29 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n3DBi-005oHP-HE; Fri, 31 Dec 2021 08:22:59 +0000
-Received: by mail-ed1-x530.google.com with SMTP id l5so72021142edj.13;
- Fri, 31 Dec 2021 00:22:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=iyG7F3GdrDJKWY8eEfULl873wU4wHKuuioOu/o/7Pyg=;
- b=mkKbfvzLgF55wWXJhcr7pCG7rLOzH2Ecm/DXt5W74TZW/RswduqkpsR3ATTHTxvp6d
- MgmDfmvajrZFVFHq2FOVIPQxBo2+IiuMtU3c3HiePBHdLiAeBJoz/xT4roLKuS/O1Jqe
- 03wxPpT7vwcTN3D8p4jk/AcOnxxtTTjWVO8hyiEgmJ6EpxKZqqh7SIAB/t4CIVmzL+Ts
- ogVPN0atspGBJLSn9cXADgGdFtlX3dg2j13r3VUvy9uj5WGKZ8KPQlS0Ga5SKJzYP8jA
- fUkmxCdSCQXV5yi7Ixv684P0NUVhEYxGcjhzrNem89/VRm4bVY05D1TqeDOkfZ1mfd/Q
- IHdQ==
+ id 1n3IQC-0066WM-Ob
+ for linux-rockchip@lists.infradead.org; Fri, 31 Dec 2021 13:58:18 +0000
+Received: by mail-lf1-x134.google.com with SMTP id g26so60356398lfv.11
+ for <linux-rockchip@lists.infradead.org>; Fri, 31 Dec 2021 05:58:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ADzJWr+CbGVX014WZDS2L6snWL7iPLu3/ZLqlh/Pj3s=;
+ b=wI4yxCNQ8DbOEzf9a0EEKR+uVoNpqKvP2j3TfccxorArKXFLWGvXnmq/u3210XY7Bt
+ 6SY+obn+o24I8ByNoCgePQrC00WOPliPKsVcJbKrys/NONrQfwABt+PYc9qNSjhQDXh4
+ nbip7b2zI1sg+e+4l9mNsHd2MOPZ8otBtAOAjqk8WfUql3FekXWomakhZ6RuuQvT2anB
+ x2gqumAvx4XayRNJBogn2ZkuHZpWolkn4EsDqtF3YlDHx2oBwLx1Fyj4cCuiQPK8xz0o
+ JZ4jhvwMP3FphymMKH6+FGcxVJ/zTIuNIXzTwmo2Sw7vgjcnNViKYKGEPpKmvv3w/HNW
+ 9CLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=iyG7F3GdrDJKWY8eEfULl873wU4wHKuuioOu/o/7Pyg=;
- b=gg4dQRJx3bpb8PoC3HVpSnxSrlNMg3GksMgQjjKBLehN9eF476vD29lX3mZmNRwTAm
- bwL6uqDqNiHz1iqxrVUxDvN08o892XYRYUd+S0nBKqlGlF9ApFjtxyOSXr2FvnMnEJDw
- 8USkw2isLxcDo0Uh8cyCENpFezEUke5DL60G/5+INPB8CzvXHS4sQ9zFiXBxBEEyVkQf
- WKt+1oBOGS3Za4Pwww+9PpcwXk5IEQ1F9HZo2WLo2L/XLVfXmgx2QhaZiWbiEJAbAdXY
- qPuZUhjs9mWrBHXAZmAtwANUuEUuiumxreJharbu7jBgEBXxdPCzMtmtEuwL2f2CykNF
- 7u7Q==
-X-Gm-Message-State: AOAM532Loxboq7za2bUSE1oORDjoR+iWLCjT981QkkCci1+x6Pnek+gA
- Xow+0e5lPTs6wKxFrUXxcv8=
-X-Google-Smtp-Source: ABdhPJw2lufwRqvKLSx+NUsyU75lGaMKIC8BYqcKl+pAqk33YZzW8DjErdh+TResgty5tz98g9iukg==
-X-Received: by 2002:a17:907:3ea2:: with SMTP id
- hs34mr70106ejc.403.1640938976213; 
- Fri, 31 Dec 2021 00:22:56 -0800 (PST)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id 26sm8225400ejk.138.2021.12.31.00.22.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Dec 2021 00:22:55 -0800 (PST)
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de,
-	yifeng.zhao@rock-chips.com
-Cc: robh+dt@kernel.org, vkoul@kernel.org, kishon@ti.com,
- p.zabel@pengutronix.de, michael.riesch@wolfvision.net,
- kever.yang@rock-chips.com, cl@rock-chips.com, wulf@rock-chips.com,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v7] dt-bindings: soc: grf: add naneng combo phy register
- compatible
-Date: Fri, 31 Dec 2021 09:22:49 +0100
-Message-Id: <20211231082249.5075-1-jbx6244@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20211230084815.28110-2-yifeng.zhao@rock-chips.com>
-References: <20211230084815.28110-2-yifeng.zhao@rock-chips.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ADzJWr+CbGVX014WZDS2L6snWL7iPLu3/ZLqlh/Pj3s=;
+ b=EZ9/rH0RA5yyTRb2i/UMDCRNFCeC+tAeFkJsIKy3RXfYObHa4Uz/2lLrKa3BbJEpvd
+ XFmDmaI4aMTrIpnqY40YQCXekJFm+1pFVnmBAnx6nvZbmRp0ih5vDpvrI5PoVBAxHtcy
+ f3SrpyayJVkpx9eEpwHsTWIQhJqX85avAi8owI8Hs01N9vnD3CTFuUM9U6MHu9swbVJn
+ T63/4XyMZMjvliZk9mdvLcdIevAH2x7fJEpXPBYe1lkSywVlZ6owHur2zT7teTT3tHaS
+ rWT9pf5FqcAAl9LsAFSSdxaxO6ZpWYKUMjhlUd4uGgbtpHK8wOlzFbiS6++47laUT03P
+ e8Gg==
+X-Gm-Message-State: AOAM532+g88aE1n1NZ+XFDGECjlkddkdOyEK1giDRHNjTjAUGSGM2er/
+ MbFx02yo2OvWI+evsP8jeeoI+8ONI7Pr+F92avt5ww==
+X-Google-Smtp-Source: ABdhPJzaghSLSAc0pNPQzuES57Tnf+aNwFRoLwgYkTTcyuTMuv5rOoeqy7bTcVpKTyo/oJWiGUWJw4io8u+6ND1nCZk=
+X-Received: by 2002:a05:6512:4015:: with SMTP id
+ br21mr32693525lfb.233.1640959094947; 
+ Fri, 31 Dec 2021 05:58:14 -0800 (PST)
 MIME-Version: 1.0
+References: <20211218130014.4037640-1-daniel.lezcano@linaro.org>
+ <20211218130014.4037640-6-daniel.lezcano@linaro.org>
+In-Reply-To: <20211218130014.4037640-6-daniel.lezcano@linaro.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 31 Dec 2021 14:57:38 +0100
+Message-ID: <CAPDyKFqWUJTKte3dM=7xG6EtKR8i9neCCNYFs7Jf1J34TezUEQ@mail.gmail.com>
+Subject: Re: [PATCH v5 5/6] rockchip/soc/drivers: Add DTPM description for
+ rk3399
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh@kernel.org>
+Cc: rjw@rjwysocki.net, lukasz.luba@arm.com, heiko@sntech.de, arnd@linaro.org, 
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211231_002258_613995_CEF0D856 
-X-CRM114-Status: UNSURE (   8.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211231_055816_813135_D28B092C 
+X-CRM114-Status: GOOD (  31.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +89,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Naneng combo phy register compatible.
+Hi Daniel, Rob,
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+On Sat, 18 Dec 2021 at 14:00, Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
+>
+> The DTPM framework does support now the hierarchy description.
+>
+> The platform specific code can call the hierarchy creation function
+> with an array of struct dtpm_node pointing to their parent.
+>
+> This patch provides a description of the big and Little CPUs and the
+> GPU and tie them together under a virtual package name. Only rk3399 is
+> described now.
+>
+> The description could be extended in the future with the memory
+> controller with devfreq if it has the energy information.
+>
+> The hierarchy uses the GPU devfreq with the panfrost driver, and this
+> one could be loaded as a module. If the hierarchy is created before
+> the panfrost driver is loaded, it will fail. For this reason the
+> Kconfig option depends on the panfrost Kconfig's option. If this one
+> is compiled as a module, automatically the dtpm hierarchy code will be
+> a module also. Module loading ordering will fix this chicken-egg
+> problem.
+>
+> Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> ---
+>  drivers/soc/rockchip/Kconfig  |  8 +++++
+>  drivers/soc/rockchip/Makefile |  1 +
+>  drivers/soc/rockchip/dtpm.c   | 56 +++++++++++++++++++++++++++++++++++
+>  3 files changed, 65 insertions(+)
+>  create mode 100644 drivers/soc/rockchip/dtpm.c
+>
+> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+> index 25eb2c1e31bb..a88fe6d3064a 100644
+> --- a/drivers/soc/rockchip/Kconfig
+> +++ b/drivers/soc/rockchip/Kconfig
+> @@ -34,4 +34,12 @@ config ROCKCHIP_PM_DOMAINS
+>
+>            If unsure, say N.
+>
+> +config ROCKCHIP_DTPM
+> +       tristate "Rockchip DTPM hierarchy"
+> +       depends on DTPM && DRM_PANFROST
+> +       help
+> +        Describe the hierarchy for the Dynamic Thermal Power
+> +        Management tree on this platform. That will create all the
+> +        power capping capable devices.
+> +
+>  endif
+> diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+> index 875032f7344e..05f31a4e743c 100644
+> --- a/drivers/soc/rockchip/Makefile
+> +++ b/drivers/soc/rockchip/Makefile
+> @@ -5,3 +5,4 @@
+>  obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
+>  obj-$(CONFIG_ROCKCHIP_IODOMAIN) += io-domain.o
+>  obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
+> +obj-$(CONFIG_ROCKCHIP_DTPM) += dtpm.o
+> diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
+> new file mode 100644
+> index 000000000000..77edc565c110
+> --- /dev/null
+> +++ b/drivers/soc/rockchip/dtpm.c
+> @@ -0,0 +1,56 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * Copyright 2021 Linaro Limited
+> + *
+> + * Author: Daniel Lezcano <daniel.lezcano@linaro.org>
+> + *
+> + * DTPM hierarchy description
+> + */
+> +#include <linux/dtpm.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +
+> +static struct dtpm_node __initdata rk3399_hierarchy[] = {
+> +       [0]{ .name = "rk3399" },
+> +       [1]{ .name = "package",
+> +            .parent = &rk3399_hierarchy[0] },
+> +       [2]{ .name = "/cpus/cpu@0",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [3]{ .name = "/cpus/cpu@1",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [4]{ .name = "/cpus/cpu@2",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [5]{ .name = "/cpus/cpu@3",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [6]{ .name = "/cpus/cpu@100",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [7]{ .name = "/cpus/cpu@101",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [8]{ .name = "rockchip,rk3399-mali",
+> +            .type = DTPM_NODE_DT,
+> +            .parent = &rk3399_hierarchy[1] },
+> +       [9]{ },
+> +};
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index b2ba7bed8..5079e9d24 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -15,6 +15,8 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3288-sgrf
-+              - rockchip,rk3568-pipe-grf
-+              - rockchip,rk3568-pipe-phy-grf
-               - rockchip,rk3568-usb2phy-grf
-               - rockchip,rv1108-usbgrf
-           - const: syscon
--- 
-2.20.1
+I will not object to this, as in the end this seems like what we need
+to do, unless we can describe things through generic DT bindings for
+DTPM. Right?
 
+Although, if the above is correct, I need to stress that I am kind of
+worried that this doesn't really scale. We would need to copy lots of
+information from the DTS files into platform specific c-files, to be
+able to describe the DTPM hierarchy.
+
+> +
+> +static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
+> +        { .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
+> +        {},
+> +};
+> +
+> +static int __init rockchip_dtpm_init(void)
+> +{
+> +       return dtpm_create_hierarchy(rockchip_dtpm_match_table);
+> +}
+> +late_initcall(rockchip_dtpm_init);
+> +
+> +MODULE_DESCRIPTION("Rockchip DTPM driver");
+> +MODULE_LICENSE("GPL");
+> +MODULE_ALIAS("platform:dtpm");
+> +MODULE_AUTHOR("Daniel Lezcano <daniel.lezcano@kernel.org");
+> --
+> 2.25.1
+>
+
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
