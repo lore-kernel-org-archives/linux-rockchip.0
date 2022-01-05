@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D59C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jan 2022 12:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66C82C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Jan 2022 19:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9QNfTEGNdCz8mz55QllqjSKQIvSYlR7CdACietV/3y8=; b=xccl4z7Fapo2up
-	Hr/45nT57S7YW6mxGWnBuzzCPGPypbR8s2qgf8UiQvm3cx1h7WNSCEvnWRI98jjVUG8AbDUmSXGZ9
-	dDLM5IKAkJ8qRAdRanRcoo70vLJtQ71U5GwoZiZ3ssf6ChCwimwwvYGjCvr9JIjSBkbYBqB8hEolU
-	4gjlUt/erch4JWbs69O5wV2UFe4UuivjPdVSkw3qRLLNrcT1Y5CTLusfe1sU3NpnJAqgN/NcR2J4j
-	blILmnOABWC4/mtwAm/HoxWV//kOhaYlT/w6XvN2WQijBgqGhnciQv9QZ796skE/ZRLhz9pHRC9Wn
-	F2r3Ft35KBNTGbUjB4wQ==;
+	List-Owner; bh=sYgNfLMNPUItYA9ZEydhXh0xHhRT9eGnczB4O+67iak=; b=CUm4Lw5H0McfkZ
+	HZhbDzy8r4ixN62/wBE55NEZUsXsAtNob9W1jiSaMVP/cNuDwtrz4M55DniYpcLAxBEmpY1LQejUJ
+	JQqGyUe1PDjkGwroPb9p2rlxmMsjVQCbbCmeZSnULAaVoJSrsDBYhONqTOKIOLIwXLaiN84cPjIZU
+	2AwxCMe5R45Y8uyiRcSwx/TrXsxwEwo7g1RQIGxZoVEFKLKMgfDQU5XX/RvSQqn8HM4H23bhCBDgQ
+	cJWM020Szt/3JtqScRdZs5O8B7oxDU7ekuKKAFBryEOb2FoirYanNPRUnWVfX4ZfqgZT9ynWdqa/4
+	Wtiera18VuhTqGESjyew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n55Ho-00EkTa-Ji; Wed, 05 Jan 2022 12:21:00 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n5CNh-00FioZ-W6; Wed, 05 Jan 2022 19:55:34 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n55Hc-00EkRi-IY
- for linux-rockchip@lists.infradead.org; Wed, 05 Jan 2022 12:20:49 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1n55HZ-00071u-Gu; Wed, 05 Jan 2022 13:20:45 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1n55HT-0001C5-Eu; Wed, 05 Jan 2022 13:20:39 +0100
-Date: Wed, 5 Jan 2022 13:20:39 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Kever Yang <Kever.yang@rock-chips.com>
-Subject: Re: [PATCH 22/22] drm: rockchip: Add VOP2 driver
-Message-ID: <20220105122039.GU6003@pengutronix.de>
-References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
- <20211220110630.3521121-23-s.hauer@pengutronix.de>
- <a0942adc-52c1-811e-0de6-d0616266ce2d@rock-chips.com>
+ id 1n5CNf-00Fin7-Kl
+ for linux-rockchip@lists.infradead.org; Wed, 05 Jan 2022 19:55:32 +0000
+Received: by mail-ot1-x332.google.com with SMTP id
+ n17-20020a9d64d1000000b00579cf677301so570770otl.8
+ for <linux-rockchip@lists.infradead.org>; Wed, 05 Jan 2022 11:55:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JlPJsMW5yVPe7P3RKOvMwPlqeJN1/Nu2FfKIApHsgbo=;
+ b=DwPxC3cLLNM8XVTzd55gQ7bhxNML705Ttl/ErwNTDEyJwlW4XJMuoiodES7QQ//mSL
+ NqvSpNl3q6yIa44pWFb8gv6RfQh9JDnxYAV18DuYJc10XKzkRm4oMwtHC9HPCapN6hMm
+ iqc0/E4iLeL6kOCUEBwGPMA/dnUvUs7BdnY/Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JlPJsMW5yVPe7P3RKOvMwPlqeJN1/Nu2FfKIApHsgbo=;
+ b=jXOcHTHrKNADVSTJAVAmek+YCFjds93syQFRNiSKCu0mEmXVVOn3cIoT7ae0fa7rOQ
+ N1f71MM6nauCtUMRKyYpjuHp1/eNzUO6ct+nvwIX+3PoExqSwESrJBEeOn04nXIT4ByQ
+ v7Da8f0hsnN/C8aBe/0pCspuWNIcMt1LhuStVFfeTwTrCEM9FU6IsYU9w8aEGcT3Dhwi
+ 4M4vTJFgF0kgOtLJTgRTONHTrndFYUQh9E6KTktkaCbPoxm9ybbjaHoYdmJ7uNkKgMKO
+ lBFhqDAcoOSS6nfF2vXt8Ow9DfUMyGbPRu5vBx3IbFdrnhKpozN/qTsVyPFQuaGR4k+0
+ feNg==
+X-Gm-Message-State: AOAM531cXpHCR7oDFcd+RTs4/ZZ0hDL0ck8FCBzn8J5atBgItFdEhBFP
+ z2lfy2SZl+qVnQFTgCdPf4B/2wbi+TzFdQ==
+X-Google-Smtp-Source: ABdhPJxW+h1dZMi++vL2jwKAt4IiWjs82OybAvoaKugFt3vNisCMZRCufNCFPiIaWvfb5FQVsJYcRA==
+X-Received: by 2002:a9d:7386:: with SMTP id j6mr930081otk.263.1641412528535;
+ Wed, 05 Jan 2022 11:55:28 -0800 (PST)
+Received: from mail-oi1-f169.google.com (mail-oi1-f169.google.com.
+ [209.85.167.169])
+ by smtp.gmail.com with ESMTPSA id g61sm9127005otg.43.2022.01.05.11.55.27
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Jan 2022 11:55:27 -0800 (PST)
+Received: by mail-oi1-f169.google.com with SMTP id u21so501398oie.10
+ for <linux-rockchip@lists.infradead.org>; Wed, 05 Jan 2022 11:55:27 -0800 (PST)
+X-Received: by 2002:a05:6808:3097:: with SMTP id
+ bl23mr3823157oib.77.1641412527103; 
+ Wed, 05 Jan 2022 11:55:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a0942adc-52c1-811e-0de6-d0616266ce2d@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 12:31:47 up 25 days, 20:17, 82 users,  load average: 1.24, 1.20, 1.14
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+References: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+In-Reply-To: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+From: Brian Norris <briannorris@chromium.org>
+Date: Wed, 5 Jan 2022 11:55:05 -0800
+X-Gmail-Original-Message-ID: <CA+ASDXOEv3xigBaEwtYcGM7Q9uNHrwijoWTHoiLg--UT=vA7TA@mail.gmail.com>
+Message-ID: <CA+ASDXOEv3xigBaEwtYcGM7Q9uNHrwijoWTHoiLg--UT=vA7TA@mail.gmail.com>
+Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Grab runtime PM reference for
+ DP-AUX
+To: Neil Armstrong <narmstrong@baylibre.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>
+Cc: Sean Paul <sean@poorly.run>, Jonas Karlman <jonas@kwiboo.se>, 
+ Linux Kernel <linux-kernel@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ stable <stable@vger.kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220105_042048_624081_A512C1DD 
-X-CRM114-Status: GOOD (  22.30  )
+X-CRM114-CacheID: sfid-20220105_115531_725140_ABF31ADF 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +94,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+(updating Andrzej's email)
 
-On Tue, Jan 04, 2022 at 07:07:23PM +0800, Andy Yan wrote:
-> =
+On Fri, Oct 1, 2021 at 2:50 PM Brian Norris <briannorris@chromium.org> wrote:
+> If the display is not enable()d, then we aren't holding a runtime PM
+> reference here. Thus, it's easy to accidentally cause a hang, if user
+> space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
+>
+> Let's get the panel and PM state right before trying to talk AUX.
+>
+> Fixes: 0d97ad03f422 ("drm/bridge: analogix_dp: Remove duplicated code")
+> Cc: <stable@vger.kernel.org>
+> Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>
+> Changes in v2:
+> - Fix spelling in Subject
+> - DRM_DEV_ERROR() -> drm_err()
+> - Propagate errors from un-analogix_dp_prepare_panel()
+>
+>  .../drm/bridge/analogix/analogix_dp_core.c    | 21 ++++++++++++++++++-
+>  1 file changed, 20 insertions(+), 1 deletion(-)
 
-> =
+Ping? Do I need to do anything more here?
 
-> I thinks we should be very carefully about switch to regmap.
-> =
-
-> Most of the registers are take effect by frame sync(that is you write the
-> config done bit and when vsync interrupt come),
-> =
-
-> Not only windows register, but also the SYS_CTRL, post processor(VP0/1/2)=
-,=A0
-> OVERLAY, hdr and so on.
-
-That's why I marked these as nonvolatile, so that reading the registers
-comes from the cache. I may have missed some registers, these could be
-added when needed.
-
-> > +	ret =3D vop2_win_init(vop2);
-> > +	if (ret)
-> > +		return ret;
-> Do you have a count about how much time the function vop2_win_init cost ?
-
-No. Why does that matter?
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Thanks,
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
