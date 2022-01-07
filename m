@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F181C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jan 2022 05:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9AEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jan 2022 09:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y/77bcFMyYiAVtvpwI027k4dtz+TiiwfeTvJ433GYR0=; b=ZT8xJ+/vJRVyQn
-	ViUZbwoDKcEJlBwBr60G04FO/4b8w11G1fQ72JY7CEMj/NnhdDyttk1/FJ1bgL0F3kV0/IsrYljvR
-	9+0w9Zs953zPuKzJViSQsTbS3Ij2L0groAx0/FYvMUIu0wppyrbvTMLEK8C59dXKK0PMS05+8bPlI
-	R/FqZeVpKNqWyF0kmdcIQcIgqHGXapD442H4A623PGEq4evK9aBG2AcvsQEk7uBkjwjYiatrFEGva
-	AMhvzmnh2aKuvW+Kq2orNPt8cl3Zi0Sc1+AI9GlYF8wCvfwH2PgyKvLn1iFi5v56M6Bqb+7ym/HEs
-	9OJD4E91JX1/wiLudxtQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UP3+kGuv2Co6Gmdm+4MthBipWzqG3vK27YECujWXNm4=; b=EDWBjz4FPaOha8
+	M0sEbTxvEi6GZ7vnEnCxiaA49G+QV6nwR0tPy/I6wuDmHZMJIUbYbTmYXD3OqB09kjQyDkJ0VqsbP
+	56sXtqcPp1z2BbZ3cww/hxw0OGQ3zBbWvnkwR6Jy3O+iZZIEEnbgooZaH/1b/b6jvZHvhcklJ2B8n
+	NDvE4LUVUuLDKZ+iEPUPaCuswJxlmKcq/6hwb8yY8CBvuAILH6vHYZLZzMaQYjtEAOcFg+iMex1Oy
+	v/c1cAjSFbaQMJlSjtdIk+eBFNLr40pNql7BlkILwTTjq+w4dGNkLw5MRyRw50xO5fwpSyowmpHgg
+	9N6DVlo2ISrBC2FDygNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5hZw-002LCu-68; Fri, 07 Jan 2022 05:14:16 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1n5leQ-0035BJ-Cm; Fri, 07 Jan 2022 09:35:10 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5hZR-002L0z-32; Fri, 07 Jan 2022 05:13:46 +0000
-Received: by mail-qk1-x731.google.com with SMTP id i187so4927269qkf.5;
- Thu, 06 Jan 2022 21:13:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=d0E8s9XkVMJfO71U0WZapgq3CBnEOczzCxvv2x4eTOI=;
- b=awhqnAkIp7trR8Jv9wraBB/3QMSgqaGlulcxwILOUKQ6xfuXvz9Cy8JIV1bqHeSk0B
- xnYQnCHZcvhNLYbBGUBPrlOIyR6Fve60BMqo0Egl92ueIIYwPolz+0ZcJfKwscAa4Zey
- tkW93zs0Ec5qd8bvHW3qA0sn2Lhok4E7VF92Zwsb8bCQspev1hIK5D8hOGo7s3IE+ZYF
- trPp6C4CZVfhFh+BZtLHqWE1xOvEyq6KPMMGIPBqBp+RV84KxSSRrc8uPIain2/P5NNw
- VmS6NhpD4RsKkEsJI6FVNMx/UxyyOdwZPUDG7VNJ+eDYKanizAGZGNYaJtaiPs++iD15
- np0Q==
+ id 1n5leM-00359d-NR
+ for linux-rockchip@lists.infradead.org; Fri, 07 Jan 2022 09:35:08 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id l15so4475596pls.7
+ for <linux-rockchip@lists.infradead.org>; Fri, 07 Jan 2022 01:35:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=M72YZwYw9pvtbpSVTp5m5V5BckLQlYZpyBC+Fudq/gQ=;
+ b=FCvRy/NgcsWkWaftL3OklPtrwlp3MakeGnyg3cfrO2T1HD/fsyh3L5GeeCeFioBMq1
+ hSL9ttME9mJXV2oZPc1y0C+l820gcPs+bfTNOep8HCpDh/415gXnxTV5eVDDLDD861ju
+ mAf2ui5aodGlhqLI6Tq869SrwIW07cn1XDsZQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=d0E8s9XkVMJfO71U0WZapgq3CBnEOczzCxvv2x4eTOI=;
- b=Y2dYyO0UyX0wh3ubTb5lgAaeHY7kMAsHSmeaBMNiJPHy+p2jRFIMc/cRS9uXTUokej
- s2+bzAHzFRMb19ilaGSLtptb3USyuqD94zDIQ4l5Ki0jJDQ4NHwsXb2DVM0N8nevHpoi
- EBCzqdgb19UCl32Pp5NP/uGVO/zSiNLcxZDyjhm8iMwQHGvWCxEGUi8wE4IW3MiZm2MA
- GF+iCTRNWPoQJ2vi4zkkpT6k4/x+lLArxrY07HiZTwWIN5fbZLVaCi9xRzw0FULyDPcv
- 5Iy1VnXorUasrk+oSSjeig3Yyy2opzNQXRcQfXOIjWJiCrltGy2F/qvpXKItSQWGXqG2
- 5Zcg==
-X-Gm-Message-State: AOAM531JBkWCdZULG+1A+rFXjOjRuOg7mLLdCzWT7oQ7vCb/8NsQYNzF
- rcAISlOW+KmYw8eBXfGsO7ONa7xddqNFKA==
-X-Google-Smtp-Source: ABdhPJwKGvck88HMWuNcgtplD8fVqm2IP/5UhmLKJ/hHRmQaUGaAF0uj1u94MoiOsIW91+gruO6WtQ==
-X-Received: by 2002:a05:620a:24ca:: with SMTP id
- m10mr43698820qkn.649.1641532420494; 
- Thu, 06 Jan 2022 21:13:40 -0800 (PST)
-Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
- [98.233.193.225])
- by smtp.gmail.com with ESMTPSA id d15sm1651461qka.3.2022.01.06.21.13.40
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=M72YZwYw9pvtbpSVTp5m5V5BckLQlYZpyBC+Fudq/gQ=;
+ b=toMw/DqoH0WaRL84duowiHbxHbWhweQFwPoTfVDAQcDu5u9t8eQlqWNpCYLWupZqIp
+ YzxRUFzERPnzGPby2yR700KLJju6mix2rfAscWeA7HmuwR9x6+xAAIrdnpLCYLrjdN1L
+ 5mKoxM16aqHg3vRxC98beIM3OKAHotS6pubD6BDmGwKqstoFQxNLS6TCFN3tbethw65c
+ R55yHGfjZxuAtbvfY+zNClvmm4ugkPGfCRiUDefFBoJEp+y1XfdkwdtIZFT8cX9/+KNU
+ X1v0uYHKTSmwq4ULx9B8BKBRjNtUaKVm0syKjaUAD8NgXSmn1NcccAc3TwjYZlfXCUle
+ m74w==
+X-Gm-Message-State: AOAM531ju4vXYdohV0Yk9ZW7qffSUo+bJ/B5ZeRsxELWX2uPru18ePH0
+ e/hfqFg5TZYbYFGadDEc3q6A9Q==
+X-Google-Smtp-Source: ABdhPJzSA56kYIS/uw09iEzjo1FQYuRC75hjOlr6z5DRrfMoNU3Mj+lNSS1VRZxmv/3eS4ZNnns7gg==
+X-Received: by 2002:a17:902:bc4c:b0:149:ed05:3027 with SMTP id
+ t12-20020a170902bc4c00b00149ed053027mr7388414plz.174.1641548105983; 
+ Fri, 07 Jan 2022 01:35:05 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:8f6b:ee:64d8:ae81])
+ by smtp.gmail.com with ESMTPSA id j17sm5269192pfu.77.2022.01.07.01.35.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jan 2022 21:13:40 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Fri, 07 Jan 2022 01:35:05 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 3/4] arm64: dts: rockchip: add pine64 touch panel display to
- rockpro64
-Date: Fri,  7 Jan 2022 00:13:34 -0500
-Message-Id: <20220107051335.3812535-4-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220107051335.3812535-1-pgwipeout@gmail.com>
-References: <20220107051335.3812535-1-pgwipeout@gmail.com>
+Subject: [PATCH RFT v2 0/8] media: hantro: jpeg: Various improvements
+Date: Fri,  7 Jan 2022 17:34:47 +0800
+Message-Id: <20220107093455.73766-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_211345_159231_E18FAF60 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20220107_013506_812457_258F0612 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,151 +90,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Pine64 touch panel is a panel consisting of the Feiyang fy07024di26a30d
-panel with a Goodix gt911 touch screen.
-Add the device tree nodes to the rockpro64 to permit attaching this display to
-the device.
+Hi everyone,
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 80 ++++++++++++++++++-
- 1 file changed, 76 insertions(+), 4 deletions(-)
+Here are some improvements to the Hantro JPEG encoder driver. This
+finishes two of the TODO items.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index 83db4ca67334..158befb9a48c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -20,6 +20,15 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	/* enable for panel backlight support */
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		pwms = <&pwm0 0 1000000 0>;
-+		brightness-levels = <0 4 8 16 32 64 128 255>;
-+		default-brightness-level = <5>;
-+		status = "disabled";
-+	};
-+
- 	clkin_gmac: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -220,6 +229,14 @@ vdd_log: vdd-log {
- 		regulator-max-microvolt = <1700000>;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
-+
-+	avdd: avdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd";
-+		regulator-min-microvolt = <11000000>;
-+		regulator-max-microvolt = <11000000>;
-+		vin-supply = <&vcc3v3_s0>;
-+	};
- };
- 
- &cpu_l0 {
-@@ -301,6 +318,11 @@ &hdmi {
- 	status = "okay";
- };
- 
-+/* force hdmi to vopb */
-+&hdmi_in_vopl {
-+	status = "disabled";
-+};
-+
- &hdmi_sound {
- 	status = "okay";
- };
-@@ -400,8 +422,6 @@ regulator-state-mem {
- 
- 			vcc3v0_touch: LDO_REG2 {
- 				regulator-name = "vcc3v0_touch";
--				regulator-always-on;
--				regulator-boot-on;
- 				regulator-min-microvolt = <3000000>;
- 				regulator-max-microvolt = <3000000>;
- 				regulator-state-mem {
-@@ -490,8 +510,6 @@ regulator-state-mem {
- 
- 			vcc3v3_s0: SWITCH_REG2 {
- 				regulator-name = "vcc3v3_s0";
--				regulator-always-on;
--				regulator-boot-on;
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
- 				};
-@@ -565,6 +583,19 @@ fusb0: typec-portc@22 {
- 		vbus-supply = <&vcc5v0_typec>;
- 		status = "okay";
- 	};
-+
-+	/* enable for pine64 touch screen support */
-+	touch: touchscreen@5d {
-+		compatible = "goodix,gt911";
-+		reg = <0x5d>;
-+		AVDD28-supply = <&vcc3v0_touch>;
-+		VDDIO-supply = <&vcc3v0_touch>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
-+		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
-+		status = "disabled";
-+	};
- };
- 
- &i2s0 {
-@@ -600,6 +631,47 @@ &io_domains {
- 	gpio1830-supply = <&vcc_3v0>;
- };
- 
-+/* enable for pine64 panel display support */
-+&mipi_dsi {
-+	status = "disabled";
-+	clock-master;
-+
-+	ports {
-+		mipi_out: port@1 {
-+			reg = <1>;
-+
-+			mipi_out_panel: endpoint {
-+				remote-endpoint = <&mipi_in_panel>;
-+			};
-+		};
-+	};
-+
-+	mipi_panel: panel@0 {
-+		compatible = "feiyang,fy07024di26a30d";
-+		reg = <0>;
-+		avdd-supply = <&avdd>;
-+		backlight = <&backlight>;
-+		dvdd-supply = <&vcc3v3_s0>;
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+
-+				mipi_in_panel: endpoint {
-+					remote-endpoint = <&mipi_out_panel>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+/* force dsi to vopl */
-+&mipi_in_vopb {
-+	status="disabled";
-+};
-+
- &pcie0 {
- 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
- 	num-lanes = <4>;
+Changes since v1:
+
+- New patch 8 cleaning up JPEG quantization table dimension magic
+  numbers and sanity checking of various tables
+
+- Add sanity checks for JPEG header size and alignment
+
+- Drop linux/dma-mapping.h header now that the DMA bounce buffer is gone
+
+- Make JPEG_ACTIVE_MARKER control read only
+
+Patch 1 cleans up the final register write sequence in the JPEG encoder
+driver. This particular bit was a bit confusing and hard to understand
+given the lack of context around the original wmb(). Was it used to
+force all the register writes to finish or to make sure memory writes
+were completed? In the end I stuck with what the other hantro decoders
+were doing.
+
+Patch 2 fixes a misleading register name.
+
+Patch 3 implements cropping on the output queue with the selection API
+for the JPEG encoder. This allows specifying the visible area slightly
+smaller than the macroblock-aligned coded size. This bit can be reused
+by other stateless encoders once they are implemented.
+
+Patch 4 adds a JFIF APP0 segment to the JPEG encoder output.
+
+Patch 5 adds a COM segment to the JPEG encoder output. This is used to
+align the SOS segment payload area.
+
+Patch 6 implements the V4L2_CID_JPEG_ACTIVE_MARKER control. This is only
+used to signal the segments added to userspace. The driver ignores any
+changes requested.
+
+Patch 7 lets the encoder output directly into the capture buffer,
+getting rid of the DMA bounce buffer.
+
+Patch 8 cleans up some of the magic number 64 instances around the
+quantization table code. Sanity checks are also added.
+
+Please have a look and test. I only tested this on the RK3399 with
+gstreamer, and with Chromium's jpeg_encode_accelerator_unittest with the
+patches backported to v5.10 on a RK3399 Kevin Chromebook. The H1 variant
+is untested by me.
+
+To test the selection API bits with gstreamer, the v4l2videoenc plugin
+needs to be patched. A gst_v4l2_object_set_crop() call should be
+inserted after gst_v4l2_object_set_format() in
+gst_v4l2_video_enc_set_format().
+
+
+Regards
+ChenYu
+
+
+Chen-Yu Tsai (8):
+  media: hantro: jpeg: Relax register writes before write starting
+    hardware
+  media: hantro: Fix overfill bottom register field name
+  media: hantro: Support cropping visible area for encoders
+  media: hantro: jpeg: Add JFIF APP0 segment to JPEG encoder output
+  media: hantro: jpeg: Add COM segment to JPEG header to align image
+    scan
+  media: hantro: Implement V4L2_CID_JPEG_ACTIVE_MARKER control
+  media: hantro: output encoded JPEG content directly to capture buffers
+  media: hantro: jpeg: Remove open-coded size in quantization table code
+
+ drivers/staging/media/hantro/TODO             |  7 --
+ drivers/staging/media/hantro/hantro.h         |  1 -
+ drivers/staging/media/hantro/hantro_drv.c     | 41 ++++++---
+ .../staging/media/hantro/hantro_h1_jpeg_enc.c | 44 ++++++----
+ drivers/staging/media/hantro/hantro_h1_regs.h |  2 +-
+ drivers/staging/media/hantro/hantro_hw.h      | 11 ---
+ drivers/staging/media/hantro/hantro_jpeg.c    | 86 ++++++++++---------
+ drivers/staging/media/hantro/hantro_jpeg.h    |  2 +-
+ drivers/staging/media/hantro/hantro_v4l2.c    | 77 +++++++++++++++++
+ .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c  | 47 +++++-----
+ .../staging/media/hantro/rockchip_vpu_hw.c    |  6 --
+ 11 files changed, 206 insertions(+), 118 deletions(-)
+
 -- 
-2.32.0
+2.34.1.575.g55b058a8bb-goog
 
 
 _______________________________________________
