@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0D79C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jan 2022 02:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B225C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jan 2022 05:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IuRhYpRiCiWefWaHlxleg6Kfb9HyB88z3RXxVRG98eI=; b=S9ykrXaP3PUl41
-	k5o2bvblJdqwTpdVy/n0lw3CPimnBvHjYv7R5g3yRsSSiS2sf57Je5MnycNoQog7q50VWOaZGJ5nY
-	RagUIBju5RkaE4XVyKmCLtNaAuH3ffyzGgM/kCr6yTBa6LAL8BQAFcWCpoSFHUXqh12HN6deA9e6S
-	U4/HZDsjlvzHqYbCAATlw3ZFRU/AjN85dZdM4QQ1Tuuq3IdJI7Gdg4mwyGn3qG4OGgEyh9s8ghlcF
-	xwc4skloMOYkegOCjODe6XeY0ocWui7qvy9xGzctsVMd/ZUNYsZf/7JkyPPDqIbzZWmkzDKK+/ADn
-	ggr/f1XA4L7PW+O0SoXg==;
+	List-Owner; bh=IuRhYpRiCiWefWaHlxleg6Kfb9HyB88z3RXxVRG98eI=; b=GBBhJaBeXgxluX
+	I1TrY4ocHovZ6nJJ/lr4KHZXMITmO3ZYAJ71fdNqThLMlcFuUHw8vnh1Fiyh5bAPyCQuzlnx72e5Z
+	lqgMLfBpQppxU5OtJPvohjoKsac2QnnMs08FxGgBmcbKBw+JvGrcK5zAsateZp8x9rjucxT7wihEZ
+	EzILF8+MkCqNVDOoKHXz9bE5davbWpticNKYbYo26WNGcAtViAZkz5AI7DlnmFkF/NxjSBSf5foc+
+	XasC8DI1GO3edQhDZab3IHjzPKY1bafzOF/NsCpqcUQbV9k0O82RCAM0u7g7aObkVkJ5I7fE74TKu
+	X8KfbuDvFKXJmr6BPwqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5eaM-001sEh-3q; Fri, 07 Jan 2022 02:02:30 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1n5hZb-002L7T-HW; Fri, 07 Jan 2022 05:13:55 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5eaA-001sBu-Ah; Fri, 07 Jan 2022 02:02:19 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id i187so4575575qkf.5;
- Thu, 06 Jan 2022 18:02:17 -0800 (PST)
+ id 1n5hZO-002L0i-IK; Fri, 07 Jan 2022 05:13:43 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id i130so4947074qke.3;
+ Thu, 06 Jan 2022 21:13:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
  bh=Li/jQ4nlT3gPpvd1NyTQnIxzc9JA+p42BI5110gVryI=;
- b=D48pMHDKbceVDw3lQnRewim5ayodaSN8T49QKqKck52RgM8Mk1qDNvXzqQZTnFoxUT
- cwf++gs/8Oewu2oZnv8+2UTTs7QjqQsCOUDMLb0NapFC1w3DOCVRufqCim/OZ4C9dUnd
- +oFMPFlkmFwfvmJkbdujiDwc5O++ZtZBcOkcjZZr3S53UF7oR3YhsJXqyoY14X2DverP
- Xcr+jZjlMins+iJLvn1DvIBZOpTRisZoI2kgWnfl8q0elZmlT2h63bzyNpNF+n5BWqPE
- OU4hOI1VfzBTi4rMdyRztgoAn4DZL0e1MMRPnNtUXCBRL4xOzpTOasUJgChGwtosRfzR
- uiVQ==
+ b=flgkUHgw4ONbU++HRN0/dcycqmYpQtCeuXbAZ978Y2HlS3hd45yMtsBSdhQcwc8dL6
+ 69sqSq1ogMCvac19pdxhTNzIZhDwegFYIGfnPiXMZ+4DLXSZt5wRv0OniLkLUBGnB2b7
+ XjTjbETLYgbS1L325wN3km5U6+gHDtMKydhcAFVwrcdJ4nebFD1W5I8i/d5AFzezksmg
+ R5eCgAJu720OURyKmnAEgKN/CP1b6r0GiTdOTLPcbvcRLtzaC3K+cs4NpK8hSU46Dvoq
+ NDsJc9q499uGQ91vEnxGq1JnCW+DAwNuRdUrrOyXZZk/TCHKbbGsUhaormBvLtjqEVd4
+ 9Ugw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
  bh=Li/jQ4nlT3gPpvd1NyTQnIxzc9JA+p42BI5110gVryI=;
- b=2+rGkudP34hyXmNt7iUKRyYRtAw+xYMa3HFQc5dBO/FJOO5MBcmhgbV1wsnXhkM21k
- p7XR+DoEAO+cJaF2pj5WfyBzi8cSbd3TgaJXhiymeBBd89z0jJqaZpiYDsZJ5KJffegV
- W7ABuBVpBcB/vBul9347cxrpD1Fpt6bQ+HKKdXa01ZXKLaisCBgqJEfKP3hD8tepwuml
- JW/U2USv+0W04p+sDEfXAFxbe5Q6yo4SDfrjt32tSGExOhTq8oYFmctycWRrDijbFSAS
- 0E0oOKV3vKB5DnuApRm0S54k548GW5FEmI5ZdtNexljKgM779WSmwc59dbWjdp3PiI3G
- n28g==
-X-Gm-Message-State: AOAM532CVABRdXV/FAUFS5z10fb1R/PqBIs/GhMPAwSg3IisFv20+Wip
- 1/VjdmBeogRc69v2whH1z14=
-X-Google-Smtp-Source: ABdhPJyFLUnXGpl/Ej//ERbkZnC0lZ7GVhRcnFLH5j/9dsaix5WLKtzn9XSDUBszz5HWPfy/+38YFw==
-X-Received: by 2002:a37:34c:: with SMTP id 73mr44285797qkd.726.1641520936215; 
- Thu, 06 Jan 2022 18:02:16 -0800 (PST)
+ b=ENDS+TH5GHosRwBI2ppN5jmm/TBl+IGkV2DTR9abQHDpNemoamUlFETMmHaWYIjCqI
+ 8dW7DKcYL0wSNVlPusOa2iWQrEZOBmksBVaWwWefxQtny+nx00mgByJJ0D9PdAZWABQW
+ kmMtRRfpDC2QGpKkSD14M6SH2YaelLOf2xA2Is8AXOhhlXHOqPj56z+b/tifCQTb80X5
+ +KD/s0cOSH8QDx5WO7p6M3k5d+7Oh/lby7bIo2E0w6tDnwuC3KJiy5M2FTilTg/zx1NS
+ uWi6qOhNY+Nvxw64Ipg+XDGeXssw4PuOynQ86J0/Mma6H2Z4zAzTnWXJNR1ADjrzEj6d
+ jEDA==
+X-Gm-Message-State: AOAM531XJ/UNFGrEiNLUTkI+8pd8NjJpX/VAKvEnCBfAtETcesEpuMtv
+ 3kunMdouwE2pnkV7bbDzJF8=
+X-Google-Smtp-Source: ABdhPJwKY6h//TE+tGAQiabm+i9yikHXhF4LBqqUoo9Q9fDk3rh6FQkdWelmqULqZGdTfgcbWDhPpw==
+X-Received: by 2002:a05:620a:40ca:: with SMTP id
+ g10mr41638232qko.425.1641532417910; 
+ Thu, 06 Jan 2022 21:13:37 -0800 (PST)
 Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
  [98.233.193.225])
- by smtp.gmail.com with ESMTPSA id m20sm2960331qtx.39.2022.01.06.18.02.15
+ by smtp.gmail.com with ESMTPSA id d15sm1651461qka.3.2022.01.06.21.13.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jan 2022 18:02:15 -0800 (PST)
+ Thu, 06 Jan 2022 21:13:37 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
 To: 
 Cc: Peter Geis <pgwipeout@gmail.com>, dri-devel@lists.freedesktop.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Subject: [PATCH 0/4] add pine64 touch panel support to rockpro64
-Date: Thu,  6 Jan 2022 20:22:06 -0500
-Message-Id: <20220107012207.3779449-1-pgwipeout@gmail.com>
+Date: Fri,  7 Jan 2022 00:13:31 -0500
+Message-Id: <20220107051335.3812535-1-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_180218_393550_2FDFCE6A 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20220106_211342_616400_4ADD71F2 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
