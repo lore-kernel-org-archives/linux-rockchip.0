@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9AEC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9AD6C433FE
 	for <linux-rockchip@archiver.kernel.org>; Fri,  7 Jan 2022 09:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UP3+kGuv2Co6Gmdm+4MthBipWzqG3vK27YECujWXNm4=; b=EDWBjz4FPaOha8
-	M0sEbTxvEi6GZ7vnEnCxiaA49G+QV6nwR0tPy/I6wuDmHZMJIUbYbTmYXD3OqB09kjQyDkJ0VqsbP
-	56sXtqcPp1z2BbZ3cww/hxw0OGQ3zBbWvnkwR6Jy3O+iZZIEEnbgooZaH/1b/b6jvZHvhcklJ2B8n
-	NDvE4LUVUuLDKZ+iEPUPaCuswJxlmKcq/6hwb8yY8CBvuAILH6vHYZLZzMaQYjtEAOcFg+iMex1Oy
-	v/c1cAjSFbaQMJlSjtdIk+eBFNLr40pNql7BlkILwTTjq+w4dGNkLw5MRyRw50xO5fwpSyowmpHgg
-	9N6DVlo2ISrBC2FDygNg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pD2OqfPFh/8e2lU+6oaGwUfZyr/dRs+PRK+3ejpCWGI=; b=0hcnHLqS/XN2PH
+	nx5+lQeC8eZUKCbSsig76M13jFSDLF9/Xn+W2qHOPb2bx2UussOOdfLOjRS7Oeg9I/hcIMGUsoCHv
+	haraAeEU0IXYjn3w/NuensFbqTh8R52XF2Qh3Fl6Gjzidy0HkwHfeaGz/+ARjVuk7ojjpmAUoL1tN
+	ZOQXlr0tLCeL2q+GPtpsqXG/vLluE21V9pFFN8PYKc6VJVhPjz2frp0zvxMZjSidQDJ2fazlLkvFT
+	3u4BXvx+rxvg1tcgvFsWwuN6hVgJDiOldCqgqnfJmn5OshWfAxJBT/0PIfZ7RicPnnRptUBMW4YKu
+	I6Gf6SLzLs8cZJgt8ePg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5leQ-0035BJ-Cm; Fri, 07 Jan 2022 09:35:10 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1n5leS-0035Cc-40; Fri, 07 Jan 2022 09:35:12 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5leM-00359d-NR
- for linux-rockchip@lists.infradead.org; Fri, 07 Jan 2022 09:35:08 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id l15so4475596pls.7
- for <linux-rockchip@lists.infradead.org>; Fri, 07 Jan 2022 01:35:06 -0800 (PST)
+ id 1n5leO-0035AK-T6
+ for linux-rockchip@lists.infradead.org; Fri, 07 Jan 2022 09:35:10 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id l15so4475664pls.7
+ for <linux-rockchip@lists.infradead.org>; Fri, 07 Jan 2022 01:35:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=M72YZwYw9pvtbpSVTp5m5V5BckLQlYZpyBC+Fudq/gQ=;
- b=FCvRy/NgcsWkWaftL3OklPtrwlp3MakeGnyg3cfrO2T1HD/fsyh3L5GeeCeFioBMq1
- hSL9ttME9mJXV2oZPc1y0C+l820gcPs+bfTNOep8HCpDh/415gXnxTV5eVDDLDD861ju
- mAf2ui5aodGlhqLI6Tq869SrwIW07cn1XDsZQ=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=rdOIoZ+TgGuU5AsegB3fHTze1qyXqLuPOXXXHf1uigo=;
+ b=N/iRPyGDvOpeNg78lIyT9dxhuh54SZrC9Wq054ryPDJeYxTiaD/9ob0UvN0CKHuB5/
+ VEWXt30685YBAH/gbvqXGQQlacbvGPse47ag/5OQtn126Yuo8qqqjdl/QpBVtQ3I6yxt
+ YAmHBVVZepadD41/3AdToNEZP/ml4Xe0uQ34A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=M72YZwYw9pvtbpSVTp5m5V5BckLQlYZpyBC+Fudq/gQ=;
- b=toMw/DqoH0WaRL84duowiHbxHbWhweQFwPoTfVDAQcDu5u9t8eQlqWNpCYLWupZqIp
- YzxRUFzERPnzGPby2yR700KLJju6mix2rfAscWeA7HmuwR9x6+xAAIrdnpLCYLrjdN1L
- 5mKoxM16aqHg3vRxC98beIM3OKAHotS6pubD6BDmGwKqstoFQxNLS6TCFN3tbethw65c
- R55yHGfjZxuAtbvfY+zNClvmm4ugkPGfCRiUDefFBoJEp+y1XfdkwdtIZFT8cX9/+KNU
- X1v0uYHKTSmwq4ULx9B8BKBRjNtUaKVm0syKjaUAD8NgXSmn1NcccAc3TwjYZlfXCUle
- m74w==
-X-Gm-Message-State: AOAM531ju4vXYdohV0Yk9ZW7qffSUo+bJ/B5ZeRsxELWX2uPru18ePH0
- e/hfqFg5TZYbYFGadDEc3q6A9Q==
-X-Google-Smtp-Source: ABdhPJzSA56kYIS/uw09iEzjo1FQYuRC75hjOlr6z5DRrfMoNU3Mj+lNSS1VRZxmv/3eS4ZNnns7gg==
-X-Received: by 2002:a17:902:bc4c:b0:149:ed05:3027 with SMTP id
- t12-20020a170902bc4c00b00149ed053027mr7388414plz.174.1641548105983; 
- Fri, 07 Jan 2022 01:35:05 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=rdOIoZ+TgGuU5AsegB3fHTze1qyXqLuPOXXXHf1uigo=;
+ b=JiFyzvUlzEXOOv/JePYtaIbN2baRt2H3hSLpQLpoisEvMud39XdhAKvcAQ0V2Wa1ve
+ usu0Wnvl580i9HqJxzA7d+EsYMRUIF+aPT1v1abO0hEuqFBYD1p27NMYD2hCxzeg+6xT
+ awpqyxeZhfRezXPzXydoDiKgBkBTrP6Y0jM+U55ET9jHwbJi2SRTbQJYmNmCQMADk2fO
+ nWJpuumzT3HKGOpO0Gu2TJ/7V/58SvTb2jrIbZVC4RkYRZxWZ9P1CQW2bvvv5qsF/jFt
+ 7rSdcipiBvcjDQ7+yZ1R+pj84hA92RQVi25n0fMuei7Q1oFYwm1yINzGM8D09juxqVnf
+ pnoQ==
+X-Gm-Message-State: AOAM5336PInr+H/xIpi/NG90AeKdtF/OZIuY7bWimIiP6yr7Oj5nZXm8
+ jkvRYEIGoH55ad9ImFOEG76JDQ==
+X-Google-Smtp-Source: ABdhPJzWLTwfR71eotanrG4gal1FGzLpvAEjuqNZ8B7j935+/nKhzmavNQfJtAdv/Ldrgr775DlDYg==
+X-Received: by 2002:a17:902:dac7:b0:148:ea85:af4d with SMTP id
+ q7-20020a170902dac700b00148ea85af4dmr62032775plx.131.1641548108204; 
+ Fri, 07 Jan 2022 01:35:08 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com
  ([2401:fa00:1:10:8f6b:ee:64d8:ae81])
- by smtp.gmail.com with ESMTPSA id j17sm5269192pfu.77.2022.01.07.01.35.03
+ by smtp.gmail.com with ESMTPSA id j17sm5269192pfu.77.2022.01.07.01.35.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 01:35:05 -0800 (PST)
+ Fri, 07 Jan 2022 01:35:07 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Philipp Zabel <p.zabel@pengutronix.de>,
@@ -65,14 +65,17 @@ To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org
-Subject: [PATCH RFT v2 0/8] media: hantro: jpeg: Various improvements
-Date: Fri,  7 Jan 2022 17:34:47 +0800
-Message-Id: <20220107093455.73766-1-wenst@chromium.org>
+Subject: [PATCH RFT v2 1/8] media: hantro: jpeg: Relax register writes before
+ write starting hardware
+Date: Fri,  7 Jan 2022 17:34:48 +0800
+Message-Id: <20220107093455.73766-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
+In-Reply-To: <20220107093455.73766-1-wenst@chromium.org>
+References: <20220107093455.73766-1-wenst@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_013506_812457_258F0612 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20220107_013508_964604_2907CEC4 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,91 +93,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+In the earlier submissions of the Hantro/Rockchip JPEG encoder driver, a
+wmb() was inserted before the final register write that starts the
+encoder. In v11, it was removed and the second-to-last register write
+was changed to a non-relaxed write, which has an implicit wmb() [1].
+The rockchip_vpu2 (then rk3399_vpu) variant is even weirder as there
+is another writel_relaxed() following the non-relaxed one.
 
-Here are some improvements to the Hantro JPEG encoder driver. This
-finishes two of the TODO items.
+Turns out only the last writel() needs to be non-relaxed. Device I/O
+mappings already guarantee strict ordering to the same endpoint, and
+the writel() triggering the hardware would force all writes to memory
+to be observed before the writel() to the hardware is observed.
 
-Changes since v1:
+[1] https://lore.kernel.org/linux-media/CAAFQd5ArFG0hU6MgcyLd+_UOP3+T_U-aw2FXv6sE7fGqVCVGqw@mail.gmail.com/
 
-- New patch 8 cleaning up JPEG quantization table dimension magic
-  numbers and sanity checking of various tables
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/staging/media/hantro/hantro_h1_jpeg_enc.c        | 3 +--
+ drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
-- Add sanity checks for JPEG header size and alignment
-
-- Drop linux/dma-mapping.h header now that the DMA bounce buffer is gone
-
-- Make JPEG_ACTIVE_MARKER control read only
-
-Patch 1 cleans up the final register write sequence in the JPEG encoder
-driver. This particular bit was a bit confusing and hard to understand
-given the lack of context around the original wmb(). Was it used to
-force all the register writes to finish or to make sure memory writes
-were completed? In the end I stuck with what the other hantro decoders
-were doing.
-
-Patch 2 fixes a misleading register name.
-
-Patch 3 implements cropping on the output queue with the selection API
-for the JPEG encoder. This allows specifying the visible area slightly
-smaller than the macroblock-aligned coded size. This bit can be reused
-by other stateless encoders once they are implemented.
-
-Patch 4 adds a JFIF APP0 segment to the JPEG encoder output.
-
-Patch 5 adds a COM segment to the JPEG encoder output. This is used to
-align the SOS segment payload area.
-
-Patch 6 implements the V4L2_CID_JPEG_ACTIVE_MARKER control. This is only
-used to signal the segments added to userspace. The driver ignores any
-changes requested.
-
-Patch 7 lets the encoder output directly into the capture buffer,
-getting rid of the DMA bounce buffer.
-
-Patch 8 cleans up some of the magic number 64 instances around the
-quantization table code. Sanity checks are also added.
-
-Please have a look and test. I only tested this on the RK3399 with
-gstreamer, and with Chromium's jpeg_encode_accelerator_unittest with the
-patches backported to v5.10 on a RK3399 Kevin Chromebook. The H1 variant
-is untested by me.
-
-To test the selection API bits with gstreamer, the v4l2videoenc plugin
-needs to be patched. A gst_v4l2_object_set_crop() call should be
-inserted after gst_v4l2_object_set_format() in
-gst_v4l2_video_enc_set_format().
-
-
-Regards
-ChenYu
-
-
-Chen-Yu Tsai (8):
-  media: hantro: jpeg: Relax register writes before write starting
-    hardware
-  media: hantro: Fix overfill bottom register field name
-  media: hantro: Support cropping visible area for encoders
-  media: hantro: jpeg: Add JFIF APP0 segment to JPEG encoder output
-  media: hantro: jpeg: Add COM segment to JPEG header to align image
-    scan
-  media: hantro: Implement V4L2_CID_JPEG_ACTIVE_MARKER control
-  media: hantro: output encoded JPEG content directly to capture buffers
-  media: hantro: jpeg: Remove open-coded size in quantization table code
-
- drivers/staging/media/hantro/TODO             |  7 --
- drivers/staging/media/hantro/hantro.h         |  1 -
- drivers/staging/media/hantro/hantro_drv.c     | 41 ++++++---
- .../staging/media/hantro/hantro_h1_jpeg_enc.c | 44 ++++++----
- drivers/staging/media/hantro/hantro_h1_regs.h |  2 +-
- drivers/staging/media/hantro/hantro_hw.h      | 11 ---
- drivers/staging/media/hantro/hantro_jpeg.c    | 86 ++++++++++---------
- drivers/staging/media/hantro/hantro_jpeg.h    |  2 +-
- drivers/staging/media/hantro/hantro_v4l2.c    | 77 +++++++++++++++++
- .../media/hantro/rockchip_vpu2_hw_jpeg_enc.c  | 47 +++++-----
- .../staging/media/hantro/rockchip_vpu_hw.c    |  6 --
- 11 files changed, 206 insertions(+), 118 deletions(-)
-
+diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+index 1450013d3685..03db1c3444f8 100644
+--- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
++++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+@@ -123,8 +123,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
+ 		| H1_REG_AXI_CTRL_INPUT_SWAP32
+ 		| H1_REG_AXI_CTRL_OUTPUT_SWAP8
+ 		| H1_REG_AXI_CTRL_INPUT_SWAP8;
+-	/* Make sure that all registers are written at this point. */
+-	vepu_write(vpu, reg, H1_REG_AXI_CTRL);
++	vepu_write_relaxed(vpu, reg, H1_REG_AXI_CTRL);
+ 
+ 	reg = H1_REG_ENC_CTRL_WIDTH(MB_WIDTH(ctx->src_fmt.width))
+ 		| H1_REG_ENC_CTRL_HEIGHT(MB_HEIGHT(ctx->src_fmt.height))
+diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
+index 4df16f59fb97..b931fc5fa1a9 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
++++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
+@@ -152,8 +152,7 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
+ 		| VEPU_REG_INPUT_SWAP8
+ 		| VEPU_REG_INPUT_SWAP16
+ 		| VEPU_REG_INPUT_SWAP32;
+-	/* Make sure that all registers are written at this point. */
+-	vepu_write(vpu, reg, VEPU_REG_DATA_ENDIAN);
++	vepu_write_relaxed(vpu, reg, VEPU_REG_DATA_ENDIAN);
+ 
+ 	reg = VEPU_REG_AXI_CTRL_BURST_LEN(16);
+ 	vepu_write_relaxed(vpu, reg, VEPU_REG_AXI_CTRL);
 -- 
 2.34.1.575.g55b058a8bb-goog
 
