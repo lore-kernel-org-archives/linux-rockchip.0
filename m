@@ -4,73 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A088BC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Jan 2022 20:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B983C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Jan 2022 07:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hs0+aXomsBgm2p92SXa+zsmz9BNNTmuqwb0e9TcR1ss=; b=PMiIYTNwhXxk4L
-	T6SuPkh0Y043rJmp7eH3JDQ4ChjmJIAj0f3FcRbJ7Lo3WpQjZ03Zj8z1flq8WzVCiCrK6T2/urp92
-	S3bI2Ezt1g549yHM6dcKcQ79X+3Tfq7wj+OW/Wlh0Xsdf/N5V64uw05wtPwlBe2R0/cR3eZwGnTrU
-	YkfC2SIdsX+XUXlY4v6hayxGJvL7omc8w00OxwZnZ9jCkNDml+mVt3SIemrfkG6PhYvRXmfJ4cSJ9
-	B0PFR2zG7xRHGkrBc3Dxc7D+rzDogB7fqELp5GNqUcxc0hhbRvJhxlHBtLOSaovxtqGBMt+skISuq
-	U7FHbJwkUtdyYjUVv8IA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aX9iIc6q1w1llIg/Cs5mWfo3HNbwk4jZ3+8Sey4fKC0=; b=W131JK9yr+2slI
+	zEBGFkYUXLmZcW1DkwsjwEtUO7oYsljlyvpLl7wW5ZTAKjsqbG0E7CbSJ/Ys/9NyyvTGxryR6ERiJ
+	fUxY+lKuNyHIwW64xOLrQBj5NSThtwPky55MCL3rFzpu81qJkbU+CZLXgqk50OBSH+FGQW1uw4zm+
+	+4+OUC4NynjBY1Osf/FM8qyBnTEPxWEY4FOO8k6E6K1NR7LlgwpzGUimhqcDAd7trAgY3gPcSVsrF
+	unbREVS9DmJufPrr8W2plmTLXjSvGSDhO382IIM9wwW9kEhLQioWWLB25s9OIrs1ugetSG2j+xdeA
+	Hgm3XrqZkoH++FcPSoVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n71Sv-00DFjM-3w; Mon, 10 Jan 2022 20:40:29 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1n7Bv3-00FBVs-Kj; Tue, 11 Jan 2022 07:50:13 +0000
+Received: from mail.betterbiz.pl ([45.86.209.138])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n71So-00DFgm-B4; Mon, 10 Jan 2022 20:40:23 +0000
-Received: by mail-ot1-f52.google.com with SMTP id
- j6-20020a056830240600b00590eab8f4fbso1757225ots.8; 
- Mon, 10 Jan 2022 12:40:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=brEnSG94a9dEuzAEhYmErXtFPNCp8zc17eSCyTs7HPY=;
- b=7cNWRJ2/eptC8TYsUaDaqTnZJ58t6Qm47b2/5YS+Tdq8vxAeIcnOWOPsHpyuoiwj91
- BC2lMqyfhJz6ON3+T/zgnMgB01qj8J7ESII2FTakAhnYdF75pvrTb9L/Cn615842kr2U
- FFmzl9lxzAfS8Wj/taLkbdbuubOxQ1bCciKUkmtDfZlz2TM8Eq2/QwDRYqwNVTHZEdLx
- 45tYttI+EUVgZgN1TiIdDxZk7OVxNpd8jS0xSzUc1cnx7NWuIBcjsgLdcJTbDWn50I15
- xdkoVbKKkzvenR4GReXyI5/qU4EFz9KBwjCJyE6AREvCnVFwCwjXYaFZSS8SWVdbxn3g
- 2a3A==
-X-Gm-Message-State: AOAM531L71yFTtwjjC78LEwPLNL79+c7pd1P8YMYscj/Ww1riHFfj++N
- wtglG/56axwXKfxwqSzlZQ==
-X-Google-Smtp-Source: ABdhPJzk49Ol9ambqLs0ZZIbcVdiZbc+q+NbxpnrF8t8Q/F7kIf1MubSNAMHOfkCOtRL57+99q7Pfg==
-X-Received: by 2002:a9d:27e1:: with SMTP id c88mr1144745otb.354.1641847221453; 
- Mon, 10 Jan 2022 12:40:21 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id v4sm1507610oot.36.2022.01.10.12.40.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Jan 2022 12:40:20 -0800 (PST)
-Received: (nullmailer pid 1466998 invoked by uid 1000);
- Mon, 10 Jan 2022 20:40:19 -0000
-Date: Mon, 10 Jan 2022 14:40:19 -0600
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: cl@rock-chips.com, vkoul@kernel.org, robh+dt@kernel.org,
- p.zabel@pengutronix.de, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, yifeng.zhao@rock-chips.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, kever.yang@rock-chips.com,
- heiko@sntech.de, wulf@rock-chips.com, kishon@ti.com,
- michael.riesch@wolfvision.net
-Subject: Re: [PATCH v7] dt-bindings: soc: grf: add naneng combo phy register
- compatible
-Message-ID: <YdyZs7dDFPCWfJd9@robh.at.kernel.org>
-References: <20211230084815.28110-2-yifeng.zhao@rock-chips.com>
- <20211231082249.5075-1-jbx6244@gmail.com>
+ id 1n7Bv1-00FBV5-BC
+ for linux-rockchip@lists.infradead.org; Tue, 11 Jan 2022 07:50:12 +0000
+Received: by mail.betterbiz.pl (Postfix, from userid 1001)
+ id 0FF1882507; Tue, 11 Jan 2022 02:46:00 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=betterbiz.pl; s=mail;
+ t=1641887411; bh=07NAgW1e0WiNB9zqagiM2BnwZfWBCpNa2E4+ccxBPgw=;
+ h=Date:From:To:Subject:From;
+ b=wUQL5BMTApIkneyTH9H6Rty7sUCHCr8Heh+0zuUuKTou7QGaqX80bhc6O4GOh4mqN
+ LtkL6eQBPpKkoZauX+EkKEqhdqTdGioeU6dnwnoDhi+ij1Mf2O5RKc5nKQy0dzAMVH
+ yhRw1tgfmphSIb+xzef1IhUIXkYE/SkZdy0Jx9NJxuxOnOAkRx+28rvaEF6N6TyUY0
+ n+MY024Tr76N4yXH2xfcx49TAeGlguy9B/lWdIfL4cAsAs8Uww3RzQAitbjGR1tWXx
+ d8WQ3DuWiyfldvcr4eLg/Yhhx+jcyYwr4CK74PAlF7S4yRwezfwoDZEHGfXepgVKHA
+ B3wEUE3UlYd7w==
+Received: by mail.betterbiz.pl for <linux-rockchip@lists.infradead.org>;
+ Tue, 11 Jan 2022 07:45:59 GMT
+Message-ID: <20220111024500-0.1.o.101k.0.whohq44n4q@betterbiz.pl>
+Date: Tue, 11 Jan 2022 07:45:59 GMT
+From: "Jakub Daroch" <jakub.daroch@betterbiz.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Wycena paneli fotowoltaicznych
+X-Mailer: mail.betterbiz.pl
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211231082249.5075-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_124022_419599_ADA8E7A4 
-X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-CacheID: sfid-20220110_235011_414398_D5F38039 
+X-CRM114-Status: UNSURE (   1.29  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,23 +61,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 31 Dec 2021 09:22:49 +0100, Johan Jonker wrote:
-> Add Naneng combo phy register compatible.
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
+hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
+Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
+eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
+ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0sCkpha3ViIERhcm9j
+aAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
