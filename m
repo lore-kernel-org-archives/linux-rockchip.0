@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70FCCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Jan 2022 02:04:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B84C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Jan 2022 07:40:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2iNbSqa6y+g/0Ass1gdhrCSkJ2UFAqMKOV/92CWT2C4=; b=XepQ0ekyNRdOoB
-	zwuawUxKgr/T9L6pNSeo+SIQ7CF/l18X3wotk8+bO4EJBUfWzc7R9gNjXBYnLS4+mK7IKr1jQGgm/
-	M4E8DbMLK09rzBSf1V68/BNVWT1PQRPFtT+sG+ouv9SF0VczFukw2WB4shfIWKcBeFglik+W2u5so
-	RqC1HtxpTSsndIY+t0/IRm/KYCtk6SLk4qBNkfgubnxVm6A3gIe10xzu5YFa/C9ME97ftiICILl6p
-	07MdRBtuaq5bkYs8ldTgPiVOSB3QxfE1B2ymHIEKK4B0nvxM7nvPFwiffrlteg8y4RvmwkVhwbRiy
-	RPdNgBuvzNJeQTFGQB4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=i05QJ8kGS1JgNlAG55aI3Okc0EDvwkjDU/gueo3l3Z4=; b=QoHnLiPH/xhvNU
+	c7Sw3xPH9/CeCawQZUqdzXWDF2lVENmQIhxVKjP1CWDWWOpHxrgZo6Dg9Botv1plN5cri7dRVgzX/
+	rzxw3Tahb3pZD7vxZd2vxZt+mzYeyDpAgsshfoquNgItChPa2h9C1dw6RgkZlFzfoCqHzzjMx0Iut
+	pf31cMjF7gR73i2IwHAZi38QxC6ekeaHqGdj8gK/qLR/OVdP9T4eHHzWoOmhwiJXjm8dNRGrkqzoA
+	/8AEs/zIId5qvZSHOfMDHdPkExDwCqkeOftjq4CmdH1Qtj3VhsUIJTfOTyyEgYozyeudXDYkzNcvo
+	aD3fS5x5yE+tOzm35xYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Szt-000m7t-Eq; Wed, 12 Jan 2022 02:04:21 +0000
-Received: from mail-ot1-f48.google.com ([209.85.210.48])
+	id 1n8HCb-00868f-Jk; Fri, 14 Jan 2022 07:40:49 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Szf-000m47-JL; Wed, 12 Jan 2022 02:04:08 +0000
-Received: by mail-ot1-f48.google.com with SMTP id
- r7-20020a05683001c700b005906f5b0969so932634ota.5; 
- Tue, 11 Jan 2022 18:04:06 -0800 (PST)
+ id 1n8HCY-00867H-ON
+ for linux-rockchip@lists.infradead.org; Fri, 14 Jan 2022 07:40:48 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id
+ ie23-20020a17090b401700b001b38a5318easo13404000pjb.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 13 Jan 2022 23:40:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EI6TVgd30tF1viMoRS7X9CLLIp4oh9sWJRBeqJ6vOEs=;
+ b=dJtwix545BgyqpGmuYhlM59DrUTSfFr4JBF2rTd97bZ2wvRA+ehYAsWMjHCkdTNPS5
+ Q8uleh7MqoEq2eYMGp4TTU7cYVRQupTMStIR8wYuOlNB+46IsL4XzIBBtk15KodOewS/
+ 3AvXU8JgZR8zP6U8TVmojq/c2wPZgf1ZaZlAw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=732LfXDboSsjn+njEaotROfdKRLLZkHsbM9vidIAV2s=;
- b=pHuFuNRDPnxkzAq7r+6OW1tRzQW3i2b2dV/i1GVZO5ogBLBaBs2dSM1lRUcKmp0b/W
- oIiVoNt352QYsFGinw5jrSa3KLesIpr/jmGdSo0KjQ1FJSxPBOv0IbE87U2QD8lauOw3
- yT7kVDOpjsnPBQgUk7yozPtzNT6LwlWoBO0BFzm8iEqby2UDN3q2ewauEZzmx42MITPU
- F6ziiYMKBqSOFNCKTFyV36M/ZXT1J0KLfKmuxtP//uWgYjjOV7mqi0RixE3+xBfeR7vX
- RMy/nqv3xmHEtLjT67otw0g0VLdoKH6vX0pSIvLhsQaSW+8Eo97qHZcoWpbhDgjAgOzT
- yUMQ==
-X-Gm-Message-State: AOAM531WkHdTGcyt78ZQi1MLFdIowjuLsTZzk/MfuSVm4wBmxKz+LHaE
- KTDZFS9WYKtiRxVg7TZl0w==
-X-Google-Smtp-Source: ABdhPJwY9dDpl1RJ6XKuFyePGvXumDgTUK6UNAgVzBPFfb/mWwiqA6knmsV9VO0FPVh3Jm7bTxlfAw==
-X-Received: by 2002:a9d:65cb:: with SMTP id z11mr5231750oth.241.1641953045635; 
- Tue, 11 Jan 2022 18:04:05 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id e69sm111160ote.1.2022.01.11.18.04.04
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=EI6TVgd30tF1viMoRS7X9CLLIp4oh9sWJRBeqJ6vOEs=;
+ b=iEHfKp2yUvgrhNtuKc9C1qFGaPBp7exGGsij3Lrmyw7x7gBifmtlIaijPXEm53SIiP
+ tW7UOdwvAH5xiVYTsyUwtoeO4Fu303QtOiFUn7l0Gbzmnc9LZm6UKQ1sjPSsat3SIi/k
+ WVUNNzaolzMOQSXD24ozC5XsfKt6tpBJ/IDNRg87sFmWAa3J4AIQ6p+WtZVEGxhCSyI9
+ jD+hWwomPyJKS02o/OnAoTUnlJJ/wJLgzV7sSHrGi8EgbTLzCm4LCJnKGSEceVoO+o4h
+ vBz21g8PIBe+MEkNSyh0B4GqpWrizGHZz+Vv+sGe4ER4u/0Bp2gTFa6CqSUJz96EZhvX
+ S2NQ==
+X-Gm-Message-State: AOAM532IkUfQ6vUnJMscQGTR/sgKsIcaPwHPKyghBZYa92LFcRpeIQ/+
+ pZl0/Z+guwQ5nvlfy9jO+iNzTQ==
+X-Google-Smtp-Source: ABdhPJyvVORg9pEv7zdC5lqN5kgYrK/wPIL/+XApB8HBIAg6uDXXKDS5BM7pCAQ4eBFY4dCiNDJaOw==
+X-Received: by 2002:a17:90a:df10:: with SMTP id
+ gp16mr9308813pjb.69.1642146043403; 
+ Thu, 13 Jan 2022 23:40:43 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:40e5:515f:fd6e:aa97])
+ by smtp.gmail.com with ESMTPSA id o15sm1205700pfg.176.2022.01.13.23.40.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jan 2022 18:04:05 -0800 (PST)
-Received: (nullmailer pid 3919030 invoked by uid 1000);
- Wed, 12 Jan 2022 02:04:04 -0000
-Date: Tue, 11 Jan 2022 20:04:04 -0600
-From: Rob Herring <robh@kernel.org>
-To: Brian Norris <briannorris@chromium.org>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-pm@vger.kernel.org, Derek Basehore <dbasehore@chromium.org>,
+ Thu, 13 Jan 2022 23:40:42 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 04/10] dt-bindings: devfreq: rk3399_dmc: Add more
- disable-freq properties
-Message-ID: <Yd43FL2JihCdn8Ta@robh.at.kernel.org>
-References: <20220107235320.965497-1-briannorris@chromium.org>
- <20220107155215.4.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
+Subject: [PATCH] drm/rockchip: Support YUV formats with U/V swapped
+Date: Fri, 14 Jan 2022 15:40:38 +0800
+Message-Id: <20220114074038.2633848-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.34.1.703.g22d0c6ccf7-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220107155215.4.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_180407_665915_27563BE9 
-X-CRM114-Status: GOOD (  21.54  )
+X-CRM114-CacheID: sfid-20220113_234046_805413_9B799D12 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,92 +89,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 07, 2022 at 03:53:14PM -0800, Brian Norris wrote:
-> DDR DVFS tuning has found that several power-saving features don't have
-> good tradeoffs at higher frequencies -- at higher frequencies, we'll see
-> glitches or other errors. Provide tuning controls so these can be
-> disabled at higher OPPs, and left active only at the lower ones.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> 
->  .../bindings/devfreq/rk3399_dmc.yaml          | 42 +++++++++++++++++++
->  1 file changed, 42 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> index 2c871c57fd97..357d07c5a3df 100644
-> --- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> @@ -271,6 +271,43 @@ properties:
->        When the DRAM type is LPDDR4, this parameter defines the PHY side ODT
->        strength. Default value is 60.
->  
-> +  rockchip,pd_idle_dis_freq:
+The VOP in Rockchip SoCs that support YUV planes also support swapping
+of the U and V elements. Supporting the swapped variants, especially
+NV21, would be beneficial for multimedia applications, as the hardware
+video decoders only output NV21, and supporting this pixel format in
+the display pipeline would allow the decoded video frames to be output
+directly.
 
-s/_/-/
+Add support for this to support the various formats that have U/V
+swapped.
 
-on all the new properties.
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
 
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the power-down idle disable frequency in Hz. When the DDR
-> +      frequency is greater than pd_idle_dis_freq, power-down idle is disabled.
-> +      See also rockchip,pd_idle.
-> +
-> +  rockchip,sr_idle_dis_freq:
+This was tested on an ROC-RK3399-PC with modetest only. Changes to all
+other SoC platforms were based on their respective TRMs.
 
-'-hz' suffix. Let's not repeat the same problem.
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 20 +++++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 11 +++++++++++
+ 3 files changed, 31 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 3e8d9e2d1b67..c75b39474977 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -262,6 +262,18 @@ static bool has_rb_swapped(uint32_t format)
+ 	}
+ }
+ 
++static bool has_uv_swapped(uint32_t format)
++{
++	switch (format) {
++	case DRM_FORMAT_NV21:
++	case DRM_FORMAT_NV61:
++	case DRM_FORMAT_NV42:
++		return true;
++	default:
++		return false;
++	}
++}
++
+ static enum vop_data_format vop_convert_format(uint32_t format)
+ {
+ 	switch (format) {
+@@ -277,10 +289,13 @@ static enum vop_data_format vop_convert_format(uint32_t format)
+ 	case DRM_FORMAT_BGR565:
+ 		return VOP_FMT_RGB565;
+ 	case DRM_FORMAT_NV12:
++	case DRM_FORMAT_NV21:
+ 		return VOP_FMT_YUV420SP;
+ 	case DRM_FORMAT_NV16:
++	case DRM_FORMAT_NV61:
+ 		return VOP_FMT_YUV422SP;
+ 	case DRM_FORMAT_NV24:
++	case DRM_FORMAT_NV42:
+ 		return VOP_FMT_YUV444SP;
+ 	default:
+ 		DRM_ERROR("unsupported format[%08x]\n", format);
+@@ -899,7 +914,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 	unsigned long offset;
+ 	dma_addr_t dma_addr;
+ 	uint32_t val;
+-	bool rb_swap;
++	bool rb_swap, uv_swap;
+ 	int win_index = VOP_WIN_TO_INDEX(vop_win);
+ 	int format;
+ 	int is_yuv = fb->format->is_yuv;
+@@ -988,6 +1003,9 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 							y2r_coefficients[i],
+ 							bt601_yuv2rgb[i]);
+ 		}
++
++		uv_swap = has_uv_swapped(fb->format->format);
++		VOP_WIN_SET(vop, win, uv_swap, uv_swap);
+ 	}
+ 
+ 	if (win->phy->scl)
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 857d97cdc67c..3aa95fdd427d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -166,6 +166,7 @@ struct vop_win_phy {
+ 	struct vop_reg gate;
+ 	struct vop_reg format;
+ 	struct vop_reg rb_swap;
++	struct vop_reg uv_swap;
+ 	struct vop_reg act_info;
+ 	struct vop_reg dsp_info;
+ 	struct vop_reg dsp_st;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 1f7353f0684a..af2b07fafadf 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -46,8 +46,11 @@ static const uint32_t formats_win_full[] = {
+ 	DRM_FORMAT_RGB565,
+ 	DRM_FORMAT_BGR565,
+ 	DRM_FORMAT_NV12,
++	DRM_FORMAT_NV21,
+ 	DRM_FORMAT_NV16,
++	DRM_FORMAT_NV61,
+ 	DRM_FORMAT_NV24,
++	DRM_FORMAT_NV42,
+ };
+ 
+ static const uint64_t format_modifiers_win_full[] = {
+@@ -272,6 +275,7 @@ static const struct vop_win_phy px30_win0_data = {
+ 	.enable = VOP_REG(PX30_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(PX30_WIN0_CTRL0, 0x7, 1),
+ 	.rb_swap = VOP_REG(PX30_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(PX30_WIN0_CTRL0, 0x1, 15),
+ 	.act_info = VOP_REG(PX30_WIN0_ACT_INFO, 0xffffffff, 0),
+ 	.dsp_info = VOP_REG(PX30_WIN0_DSP_INFO, 0xffffffff, 0),
+ 	.dsp_st = VOP_REG(PX30_WIN0_DSP_ST, 0xffffffff, 0),
+@@ -291,6 +295,7 @@ static const struct vop_win_phy px30_win1_data = {
+ 	.enable = VOP_REG(PX30_WIN1_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(PX30_WIN1_CTRL0, 0x7, 4),
+ 	.rb_swap = VOP_REG(PX30_WIN1_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(PX30_WIN1_CTRL0, 0x1, 15),
+ 	.dsp_info = VOP_REG(PX30_WIN1_DSP_INFO, 0xffffffff, 0),
+ 	.dsp_st = VOP_REG(PX30_WIN1_DSP_ST, 0xffffffff, 0),
+ 	.yrgb_mst = VOP_REG(PX30_WIN1_MST, 0xffffffff, 0),
+@@ -368,6 +373,7 @@ static const struct vop_win_phy rk3066_win0_data = {
+ 	.enable = VOP_REG(RK3066_SYS_CTRL1, 0x1, 0),
+ 	.format = VOP_REG(RK3066_SYS_CTRL1, 0x7, 4),
+ 	.rb_swap = VOP_REG(RK3066_SYS_CTRL1, 0x1, 19),
++	.uv_swap = VOP_REG(RK3066_SYS_CTRL1, 0x1, 22),
+ 	.act_info = VOP_REG(RK3066_WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3066_WIN0_DSP_INFO, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(RK3066_WIN0_DSP_ST, 0x1fff1fff, 0),
+@@ -386,6 +392,7 @@ static const struct vop_win_phy rk3066_win1_data = {
+ 	.enable = VOP_REG(RK3066_SYS_CTRL1, 0x1, 1),
+ 	.format = VOP_REG(RK3066_SYS_CTRL1, 0x7, 7),
+ 	.rb_swap = VOP_REG(RK3066_SYS_CTRL1, 0x1, 23),
++	.uv_swap = VOP_REG(RK3066_SYS_CTRL1, 0x1, 26),
+ 	.act_info = VOP_REG(RK3066_WIN1_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3066_WIN1_DSP_INFO, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(RK3066_WIN1_DSP_ST, 0x1fff1fff, 0),
+@@ -489,6 +496,7 @@ static const struct vop_win_phy rk3188_win0_data = {
+ 	.enable = VOP_REG(RK3188_SYS_CTRL, 0x1, 0),
+ 	.format = VOP_REG(RK3188_SYS_CTRL, 0x7, 3),
+ 	.rb_swap = VOP_REG(RK3188_SYS_CTRL, 0x1, 15),
++	.uv_swap = VOP_REG(RK3188_SYS_CTRL, 0x1, 18),
+ 	.act_info = VOP_REG(RK3188_WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3188_WIN0_DSP_INFO, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(RK3188_WIN0_DSP_ST, 0x1fff1fff, 0),
+@@ -619,6 +627,7 @@ static const struct vop_win_phy rk3288_win01_data = {
+ 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+ 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
+ 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+ 	.dsp_st = VOP_REG(RK3288_WIN0_DSP_ST, 0x1fff1fff, 0),
+@@ -753,6 +762,7 @@ static const struct vop_win_phy rk3368_win01_data = {
+ 	.enable = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(RK3368_WIN0_CTRL0, 0x7, 1),
+ 	.rb_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 15),
+ 	.x_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 21),
+ 	.y_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 22),
+ 	.act_info = VOP_REG(RK3368_WIN0_ACT_INFO, 0x1fff1fff, 0),
+@@ -902,6 +912,7 @@ static const struct vop_win_phy rk3399_win01_data = {
+ 	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+ 	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+ 	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
++	.uv_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 15),
+ 	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
+ 	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+ 	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+-- 
+2.34.1.703.g22d0c6ccf7-goog
 
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-
-And then the type can be dropped.
-
-> +    description:
-> +      Defines the self-refresh idle disable frequency in Hz. When the DDR
-> +      frequency is greater than sr_idle_dis_freq, self-refresh idle is
-> +      disabled. See also rockchip,sr_idle.
-> +
-> +  rockchip,sr_mc_gate_idle_dis_freq:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the self-refresh and memory-controller clock gating disable
-> +      frequency in Hz. When the DDR frequency is greater than
-> +      sr_mc_gate_idle_dis_freq, the clock will not be gated when idle. See also
-> +      rockchip,sr_mc_gate_idle.
-> +
-> +  rockchip,srpd_lite_idle_dis_freq:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the self-refresh power down idle disable frequency in Hz. When
-> +      the DDR frequency is greater than srpd_lite_idle_dis_freq, memory will
-> +      not be placed into self-refresh power down mode when idle. See also
-> +      rockchip,srpd_lite_idle.
-> +
-> +  rockchip,standby_idle_dis_freq:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    description:
-> +      Defines the standby idle disable frequency in Hz. When the DDR frequency
-> +      is greater than standby_idle_dis_freq, standby idle is disabled. See also
-> +      rockchip,standby_idle.
-> +
->  additionalProperties: false
->  
->  examples:
-> @@ -294,4 +331,9 @@ examples:
->        rockchip,ddr3_odt_dis_freq = <333000000>;
->        rockchip,lpddr3_odt_dis_freq = <333000000>;
->        rockchip,lpddr4_odt_dis_freq = <333000000>;
-> +      rockchip,pd_idle_dis_freq = <1000000000>;
-> +      rockchip,sr_idle_dis_freq = <1000000000>;
-> +      rockchip,sr_mc_gate_idle_dis_freq = <1000000000>;
-> +      rockchip,srpd_lite_idle_dis_freq = <0>;
-> +      rockchip,standby_idle_dis_freq = <928000000>;
->      };
-> -- 
-> 2.34.1.575.g55b058a8bb-goog
-> 
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
