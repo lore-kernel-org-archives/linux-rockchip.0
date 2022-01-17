@@ -4,61 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8113C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 16 Jan 2022 12:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C3DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jan 2022 06:54:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lKrjzSF4UGgiTZDmwznT+Layr5o6yp660PqZu5qUnko=; b=pR1czN3YEVQ61u
-	4yRPdD8P/guWeQzpIKS+OzehvqwIfQWq7TqDIs5xcgvBPHJQQChDDGnZkNnaybe2V7Cn9yXqsZJUI
-	QRB+LzLdjMKFHKsNAspL/SXZfkIBZNLXW/kGhEh/Ok0VN8FSdUpZYd/EnsuOl9dRtL5czjFyFVV9j
-	AhRm9B2A/CatjTntp1WG2Q18R5+lHxJBnm9Y71i9RBsnEQfdoaAL/jmc7cnfUgaz14OVOdrYN3RFd
-	KXsR2ezPf0PyekA+yoHr2p9OSKyaiQsF36u4yhgL2goC8T1NpdU9Lfh9qdT49Tisafb1r2OBThGA5
-	pIbcoeoAdslfDDnMKcfA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=EIy32eSageUAOAcVO/aPabJyeExM0b0yiCZyU4lg+fw=; b=VHvu1lC2bfDPU2uHxtT0icFwJC
+	7fYJvctQQAjSZ44ECcQsgqkkZXNOTPXqHBNbx6QP6SKnTqHpq4MhCjF5Yq2HXHlyWCoyWIN6WAchG
+	5m8isbyrK9Lup6S8AXDmsnD4k0gK8cQu3PJALZwMy7XrwJy5q3fH7MsynsQ09KL5bi/6ViN4h+jc1
+	PQhhOsj22hW+qrVtqyHpBbuc7wGN0AALZVCIR0iHGqE6qQt7WOmnvB0wRm7Q6wWTDtB7mnVuzkPwp
+	97seXwBzGuLVVR6Rs9VJror9JbO2tm2l0JaG9j9IThnNwkrc9UianvI65UqGbO/n2NKm5dFRwDqhD
+	eeyrEhbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n94z1-00CQvk-A9; Sun, 16 Jan 2022 12:50:07 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1n9LuV-00DihT-F4; Mon, 17 Jan 2022 06:54:35 +0000
+Received: from mail-eopbgr70057.outbound.protection.outlook.com ([40.107.7.57]
+ helo=EUR04-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n94yL-00CQk2-DI; Sun, 16 Jan 2022 12:49:27 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout4.routing.net (Postfix) with ESMTP id 3A1B0100849;
- Sun, 16 Jan 2022 12:49:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1642337363;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RsWiY6NKJ5AkUjMhLSoYcUhoVjYMYCy4n4F69Z8R3O4=;
- b=TMgVNvvATYt99C0LWEF0Qetw4G42JSDv2pgwaqCmad8833/5Op0u49g63eZOu5eU9Us+Fj
- ZwAIpp7dSpZDsfhXMDWqtr7iqNRo3/7W2GF3u2ExP8m93bFF3YgCMu2wIPdEheXSyCEeQX
- qMh3InoQqLPa2yBZAH8uMZVIfv1U4g0=
-Received: from localhost.localdomain (fttx-pool-80.245.74.150.bambit.de
- [80.245.74.150])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 9D30636014D;
- Sun, 16 Jan 2022 12:49:22 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ id 1n9LuS-00Diga-Tw; Mon, 17 Jan 2022 06:54:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=X4hpYXBo9es7lEKgG0bgmbXkjXqXjdJ3rlB25eVANDmeOqZFHoAHE3Qm7KjM9FyMV/HZDba44WFWHsrS+Sa5c+PjmYpjvbkIAwoEM3N6WZcXaDacYD06+LPqA14PgO7nUoirnAaZ/EO0Iwwwz9GzQNBJBX7ak7Um4UCUs+EyDRPr94Ja2c3TtFWgmkTINnu2a98uSXtosxYGTDanqblTzmEqFWQT0fRUY1mGqFz9VCLPEjUPqzK/h4qidv9xQjXWc4fcJwVL60U5/LrRFzmDDwucfjepgu/k2IDtNj7Qy72/keMSD3lHCz3tYPv6lPb6FAs9IuP8ZIzetMFDzCP1Mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Y4pIC4nL2Ffea+ifiPpHtgsApXsM57ZlGGp+C0Y92dw=;
+ b=TPZ59koYzKmn0NwELiYWN0l2pcL2wJntA5+H/v22cPdiXL+VXcaArMlzrKTTVXnphsZqq0oBB+1Nhxp0TuVYlzfOqOoFio6F5bksio2eziu7lo62mIDQ64bdV9VmO4iM1Vt0sJ4VxrBG5FVJqMgS6K+Hhu3lRqYkMHQVCXZWQIaSc2HZx/odYvlI39OFg9/DT31//go1HrxJwKc8i8Jy17+tsf20VlFNWafUkPsFfEJG1ulA/HeaNiY04zig2ihj7YbrBoh66Aitu0hBgyoJkRLHhV8FUFa91U7z9CqmdPUE9tYZJOgNusvRCvzdBr9J7f+/m1g1aKUl/NC3psNA0A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Y4pIC4nL2Ffea+ifiPpHtgsApXsM57ZlGGp+C0Y92dw=;
+ b=hOvwq3YqllrxEzN5qHuUMO8FfPwjBBekV/Obb8MbXahY3bPak76CvXaU/k+3EsU5oikjEM9qZHOIzabVoYx+7EYXJTLuT1H7WNQhxo/4T6B22Qz7HO6nn5J0HlQNqqODvDav0q4aNA87gCUi5DS99YHGgKReK/H5M35D41q8tXU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by HE1PR08MB2907.eurprd08.prod.outlook.com (2603:10a6:7:2d::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.11; Mon, 17 Jan
+ 2022 06:54:25 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::809:72af:1fb6:1294]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::809:72af:1fb6:1294%4]) with mapi id 15.20.4888.013; Mon, 17 Jan 2022
+ 06:54:25 +0000
+Message-ID: <cf821d43-6f9c-f05e-c479-7970aeda9986@wolfvision.net>
+Date: Mon, 17 Jan 2022 07:54:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.1
+Subject: Re: [PATCH v1 1/3] dts64: rk3568: drop pclk_xpcs from gmac0
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Johan Jonker <jbx6244@gmail.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v1 3/3] dts64: rockchip: Add Bananapi R2 Pro
-Date: Sun, 16 Jan 2022 13:49:11 +0100
-Message-Id: <20220116124911.65203-4-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220116124911.65203-1-linux@fw-web.de>
 References: <20220116124911.65203-1-linux@fw-web.de>
+ <20220116124911.65203-2-linux@fw-web.de>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+In-Reply-To: <20220116124911.65203-2-linux@fw-web.de>
+X-ClientProxiedBy: ZR0P278CA0172.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:45::6) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
-X-Mail-ID: a431e3d1-9eda-4fe6-b843-2258712747ae
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: aa1b3caf-cb42-43cc-dbca-08d9d986330f
+X-MS-TrafficTypeDiagnostic: HE1PR08MB2907:EE_
+X-Microsoft-Antispam-PRVS: <HE1PR08MB29077263211C7EB99A8005B6F2579@HE1PR08MB2907.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: HdLdaFSWF70MYaMVrTgrhFC+Z2vk9KTCFAtmrMxbMk557PXLwTaKppUYtTDeokEP/4s0fTpcLEu0FmxCcsMTxHmEgfkcbhYQKUKPY9AFALlaE6US73HJEqPRTrSbMHHi4jAPqJd864nlj2boizj/Zo8xlhsnW7tTrvWsq2evPXFSNf1Gb82ReZgCdtTWwgf3H5zgHiyuYp523qklTAOLDacqpCwE+971GbJVtPekmuGJ5308C//6xDB3h1m9XUcCw+StT/9l02ZikWLJaYVC9oc1yM9HBoJ+htMiQ4eDA38FzpVNtxeDd3FB5v5h99Cif/i3QrNhWkOdO8vgT4q8VpWoEmSwSiw02mH2loLokP09bzp+w1EzcU42GV+CKdt/TmYzmJ5qaUjyfeLj/XcerWbuHLX4p/W/Url8RvHIEK68SFvjbfjoqMDF+d5GhgmLINoaqfokL1l73QQbGwOSKbKKObrdIwc+U0vbGBnwOqBeCY45FRYuW/0dzO+xiKnhOFZ0MjnCUdXB+ElIL95OEsYIH6ajl9FfyfI5UpBEisMgeKxkc7hOrBug/p6XPgJEWbgmJeu5k5y2eYr9ovEL/FZrwD/W3H953nLWT+WJM0dOEXJM0LXAoGxTt8sE8r4cAKbPgw3WXGlInZeP6blwE1SFopb4Oe2eED7HgFXlQmzzWKadYohWtELy+7SZJnxjtsbQVsF8olzvIp4srnL+qmgDYmP0Jl72rNg6QeS2MIU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(31696002)(8676002)(36756003)(8936002)(86362001)(31686004)(2906002)(44832011)(6486002)(38100700002)(53546011)(6506007)(54906003)(186003)(316002)(508600001)(83380400001)(66946007)(5660300002)(6512007)(52116002)(2616005)(4326008)(66476007)(66556008)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NHpaU0lIbXhobXRVaUVUdTBhV0ovKy81dWFDTFJoaVYraWhzNUR2U2x5Q0xM?=
+ =?utf-8?B?cm9TTHRaUmFyNU5ObkErUzNmUkVwRHFVWW5WTkpwQjZ1STdCT1ltNitFQ0x6?=
+ =?utf-8?B?OUJHMmlHbTB1dm01M3VzOURkMlZCMkE3a05mOUhhTHFIV3N2UjJxbmdtQk9l?=
+ =?utf-8?B?NnY0bExid0t4WWIybWdwTmVlcXZaTlNibkxBb3VKOW0xVGtUS2VWOXFmNmZL?=
+ =?utf-8?B?SFdvWTZWWHRHSkZnaUlFYUV4SzNwVlJpZDZXOXN3MlhlS1VuTkcvZk0xa3Iz?=
+ =?utf-8?B?UUlYb0hqQjI5Z2ZCb3BMVWdkMnZsTHFlbGl3RnByMk9kUlh1MnpEY1ZFTjVW?=
+ =?utf-8?B?aVRZZU5ZckFSRUVmT3pkYnl1bUJmL0tialFPVW9JZXJUMnBOeWJBSG1BSDBX?=
+ =?utf-8?B?S3Z4b1pUdVF0emNpQUgzeVFiRFJiWTlxSnVSR2Y5TkJaUHh0MmthZW9VM0xl?=
+ =?utf-8?B?Z1JkMUg1Z3R1bHdBclA3aU5pOFJQVkJHNjZPYStqV2FhZzR5Rzd4ekNzTUZG?=
+ =?utf-8?B?T1lEUExUclBUOFpnVG5RblVyYy9UVjhsTWdrVEcwWG5Ka3pnMWVPandMeElp?=
+ =?utf-8?B?L09CQTZWdk90WTAydTJla0lLOHBUM2ZCS1lOcXhMTitmWU9tZWxaSGhyNUUx?=
+ =?utf-8?B?Zjl1NnRTclBFVnFMWG1UN0dZZUsyZzVIb3VSVFNaMnBReC92bkh6bWx3bnpF?=
+ =?utf-8?B?TWlVM1c1cGpCR2VZenFaVzAwR2pBd0E4SklzTVUvdTNpbHhZUnlTZzBST3h1?=
+ =?utf-8?B?dkpPMTBmbUp6bXNBR2JiVGZLVGN5dFZzYXd5SGI2d1lVYTJvdjJ2Q1dIQk15?=
+ =?utf-8?B?dDR2b21QSG1sdXBPeWl5QXFETWorZVRxQ2wvWDU0VXZJTlRTUUk5UkY3dEhk?=
+ =?utf-8?B?dllxNlRaUkw4dUxZRC9ucGY3ZGlNcGRBR09xd3NMT2tZVTU3REp6T1QxTWw3?=
+ =?utf-8?B?QUNtSTV1Nml5d3pzMXJyZmFrbkVrTHV0cmVqTTRsSDdJSWt3RTFHYUY3bk9w?=
+ =?utf-8?B?ajYwMzluZ1E2d21FSGJrMy9HakJjWkZnT3hkR2hxZDNOQXlBL0ptSm56VjdY?=
+ =?utf-8?B?dTRDNVgvQmluek5qWFFabHh5ajN1SnpROU9TblAyQ2hSN2o3LzdYVlZtMTRE?=
+ =?utf-8?B?Nzk4TWQ0cXhDZXhzaU1EY3RpbnBjVnpwQXlZTnVQbFUxOG1ING01ZnlpdUVu?=
+ =?utf-8?B?VWY5ZjRUMXB0amlNbzJweHlIcjRKa3Y1N3hwSElEdXNHU1hYRTlNVkxIVjJV?=
+ =?utf-8?B?VG1NRndSelNrRWtNRjhKWWhvTHdiL2JoRE41d3RQTHNIN0pNZ0JBYTNQRUdD?=
+ =?utf-8?B?b1RpNUJnRjRJY3JkalU1bXRxT01WNHFuR0ZZNGtYcUY4ZkYrSUJOWnhiRXI4?=
+ =?utf-8?B?eTl2RzhFVmhQVkhMb0tqZXJhYXBHMVgrKzV2ZGZMOUtMdHE0eURISlBKRjNX?=
+ =?utf-8?B?UFV3NXlWZTdVaDlXOXF2NmZFaGVKUkNCLzBNb0M4ZWZaR3Z5M2tudklJaFFD?=
+ =?utf-8?B?V2tZSm1rZ1FWc3JHYkg2MVZRMkZ4d0F0WHE3RGVRWVd5eUUwTVlYM093bElW?=
+ =?utf-8?B?cVJSUXFycXE1L3J3bmNoWDRkejVCTWRFQUd3TENuTVNjNzh1S0RyVUJkc256?=
+ =?utf-8?B?TnFpOFN3blpKNDdMMkVtL3E1NUs4Tng3SVVEcUgzV1BRWWIwUmxRdVFuYTBo?=
+ =?utf-8?B?SGh2RUlDWlpLbXZlT0lEcE11Nnpiamt0bUlLcXRPQTcyejIxYjF5cmtheW1n?=
+ =?utf-8?B?K1JORXNYVDRIZnpMS0RWcklEU0RTRmtjc1d0TGRZWnAyRldybzU5eUZIb1RD?=
+ =?utf-8?B?czdQYkZtNVM3US9vMXdSNUtJSG43eWwvdkZmS2lGMnA4NmpiazRtbWs1Vnl3?=
+ =?utf-8?B?RHgxa3lEODhNL3RMTGQ3UDBGWTM3OHRkSkJMTUxyWmdGQkVqanprSEs1ZjFx?=
+ =?utf-8?B?MnBlRUFOZ3VXdHhhZWJHUUt6TUJaSmQzbEpCT2Q5YjBadk9VS3FrZ3lmSzFh?=
+ =?utf-8?B?SDIrTXRyT01zZkU1MmlqRGZrd2VDUmJpU0Y4WVl1VDUwU21TM3o5VmtUaWo3?=
+ =?utf-8?B?SWwrRGlRaEd2OThNdndsWk50cXNwZExUc1AySEh3WjBBcmxhU1ZJM0xNRmFV?=
+ =?utf-8?B?OHhDSDM5U0o1d1UvZzNTK3Q2MVpxQVdyd3ZkZitnNTlTVUVocnUzSVFpZGpx?=
+ =?utf-8?B?RDhYS01Ja2NUSkI2NDJVeTh3S3U0MURNenJjaXJ6K25iZllxZ1FuZEdrZ2ZC?=
+ =?utf-8?B?SEk5WEpURDNWMkJMRzBCdzRiN096aGF1Wjl1bE1FcWMrWVRGS2c2SXZZWlk2?=
+ =?utf-8?B?eVIvTWhROG5VVzlxYW5sWnZFQTA2aXd3ZTV5c0NQaG11OFU5RjZtM094K080?=
+ =?utf-8?Q?cKiVZ94EpBrKCULY=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: aa1b3caf-cb42-43cc-dbca-08d9d986330f
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2022 06:54:25.7345 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Xbd/aPXQSBOX0rM2GeajilQC0KGCJXqsoxV4ZOPiA4MzzTW2VvwF1FUVOKxkcfdKuwAM9Bwog+yplqCtxW0XskadxaxCckNRxZM4+sMACOA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR08MB2907
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_044925_778139_EA8DED80 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20220116_225433_075597_9A528E23 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,472 +155,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hello Frank,
 
-This patch add rk3568-bpi-r2-pro.dts for Bananapi R2 Pro based on RK3568.
-Add uart/emmc/i2c/rk809/tsadc node for basic function.
-Gmac0 is directly connected to wan-port so usable without additional
-driver.
-On gmac1 there is a switch (rtl8367rb) is connected which have not yet a
-driver in mainline. A DSA driver for it is about to be merged.
+On 1/16/22 13:49, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> pclk_xpcs is not supported and breaks dtbs_check, so remove it
+> 
+> following warnings occour, and many more
+> 
+> rk3568-evb1-v10.dt.yaml: ethernet@fe2a0000: clocks:
+>     [[15, 386], [15, 389], [15, 389], [15, 184], [15, 180], [15, 181],
+>     [15, 389], [15, 185], [15, 172]] is too long
+> 	From schema: Documentation/devicetree/bindings/net/snps,dwmac.yaml
+> rk3568-evb1-v10.dt.yaml: ethernet@fe2a0000: clock-names:
+>     ['stmmaceth', 'mac_clk_rx', 'mac_clk_tx', 'clk_mac_refout', 'aclk_mac',
+>     'pclk_mac', 'clk_mac_speed', 'ptp_ref', 'pclk_xpcs'] is too long
+> 	From schema: Documentation/devicetree/bindings/net/snps,dwmac.yaml
+> 
+> after removing the clock the other warnings are also gone.
+> 
+> Co-developed-by: Peter Geis <pgwipeout@gmail.com>
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> index 2fd313a295f8..d91df1cde736 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> @@ -32,13 +32,11 @@ gmac0: ethernet@fe2a0000 {
+>  		clocks = <&cru SCLK_GMAC0>, <&cru SCLK_GMAC0_RX_TX>,
+>  			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_MAC0_REFOUT>,
+>  			 <&cru ACLK_GMAC0>, <&cru PCLK_GMAC0>,
+> -			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_GMAC0_PTP_REF>,
+> -			 <&cru PCLK_XPCS>;
+> +			 <&cru SCLK_GMAC0_RX_TX>, <&cru CLK_GMAC0_PTP_REF>;
+>  		clock-names = "stmmaceth", "mac_clk_rx",
+>  			      "mac_clk_tx", "clk_mac_refout",
+>  			      "aclk_mac", "pclk_mac",
+> -			      "clk_mac_speed", "ptp_ref",
+> -			      "pclk_xpcs";
+> +			      "clk_mac_speed", "ptp_ref";
+>  		resets = <&cru SRST_A_GMAC0>;
+>  		reset-names = "stmmaceth";
+>  		rockchip,grf = <&grf>;
 
-Patch also prepares nodes for GPIO header.
+This has been on my TODO list for a while, but I never found the time to
+submit this cleanup. As far as I am concerned:
 
-Co-developed-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 428 ++++++++++++++++++
- 2 files changed, 429 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+Acked-by: Michael Riesch <michael.riesch@wolfvision.net>
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 479906f3ad7b..70007b370d87 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -58,3 +58,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-sapphire-excavator.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-new file mode 100644
-index 000000000000..3455980dd393
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -0,0 +1,428 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Author: Frank Wunderlich <frank-w@public-files.de>
-+ *
-+ */
-+
-+/dts-v1/;
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3568.dtsi"
-+
-+/ {
-+	model = "Bananapi-R2 Pro (RK3568) DDR4 V00 Board";
-+	compatible = "rockchip,rk3568-bpi-r2pro", "rockchip,rk3568";
-+
-+	aliases {
-+		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
-+		mmc0 = &sdmmc0;
-+		mmc1 = &sdhci;
-+	};
-+
-+	chosen: chosen {
-+		stdout-path = "serial2:1500000n8";
-+		bootargs = "earlycon=uart8250,mmio32,0xfe660000";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		led-green {
-+			label = "gpio-green";
-+			gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-+			default-state = "on";
-+		};
-+
-+		led-blue {
-+			label = "gpio-blue";
-+			gpios = <&gpio0 RK_PD6 GPIO_ACTIVE_HIGH>;
-+			default-state = "off";
-+		};
-+	};
-+
-+	dc_12v: dc-12v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "dc_12v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc3v3_sys: vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	vcc5v0_sys: vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+};
-+
-+&gmac0 {
-+	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
-+	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
-+	clock_in_out = "input";
-+	phy-handle = <&rgmii_phy0>;
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac0_miim
-+		     &gmac0_tx_bus2
-+		     &gmac0_rx_bus2
-+		     &gmac0_rgmii_clk
-+		     &gmac0_rgmii_bus>;
-+
-+	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	/* Reset time is 20ms, 100ms for rtl8211f */
-+	snps,reset-delays-us = <0 20000 100000>;
-+
-+	tx_delay = <0x3c>;
-+	rx_delay = <0x2f>;
-+
-+	status = "okay";
-+};
-+
-+&i2c0 {
-+	status = "okay";
-+
-+	rk809: pmic@20 {
-+		compatible = "rockchip,rk809";
-+		reg = <0x20>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int>;
-+		rockchip,system-power-controller;
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc5-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		wakeup-source;
-+
-+		regulators {
-+			vdd_logic: DCDC_REG1 {
-+				regulator-name = "vdd_logic";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-init-microvolt = <900000>;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdd_gpu: DCDC_REG2 {
-+				regulator-name = "vdd_gpu";
-+				regulator-init-microvolt = <900000>;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-initial-mode = <0x2>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vdd_npu: DCDC_REG4 {
-+				regulator-name = "vdd_npu";
-+				regulator-init-microvolt = <900000>;
-+				regulator-initial-mode = <0x2>;
-+				regulator-min-microvolt = <500000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_1v8: DCDC_REG5 {
-+				regulator-name = "vcc_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_image: LDO_REG1 {
-+				regulator-name = "vdda0v9_image";
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda_0v9: LDO_REG2 {
-+				regulator-name = "vdda_0v9";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vdda0v9_pmu: LDO_REG3 {
-+				regulator-name = "vdda0v9_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <900000>;
-+				regulator-max-microvolt = <900000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <900000>;
-+				};
-+			};
-+
-+			vccio_acodec: LDO_REG4 {
-+				regulator-name = "vccio_acodec";
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vccio_sd: LDO_REG5 {
-+				regulator-name = "vccio_sd";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_pmu: LDO_REG6 {
-+				regulator-name = "vcc3v3_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcca_1v8: LDO_REG7 {
-+				regulator-name = "vcca_1v8";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcca1v8_pmu: LDO_REG8 {
-+				regulator-name = "vcca1v8_pmu";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcca1v8_image: LDO_REG9 {
-+				regulator-name = "vcca1v8_image";
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc_3v3: SWITCH_REG1 {
-+				regulator-name = "vcc_3v3";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+
-+			vcc3v3_sd: SWITCH_REG2 {
-+				regulator-name = "vcc3v3_sd";
-+				regulator-always-on;
-+
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+&i2c5 {
-+	/* pin 3 + 4 of header con2 */
-+	status = "disabled";
-+};
-+
-+&mdio0 {
-+	rgmii_phy0: ethernet-phy@0 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x0>;
-+	};
-+};
-+
-+&pinctrl {
-+	pmic {
-+		pmic_int: pmic_int {
-+			rockchip,pins =
-+				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pmu_io_domains {
-+	pmuio1-supply = <&vcc3v3_pmu>;
-+	pmuio2-supply = <&vcc3v3_pmu>;
-+	vccio1-supply = <&vccio_acodec>;
-+	vccio3-supply = <&vccio_sd>;
-+	vccio4-supply = <&vcc_1v8>;
-+	vccio5-supply = <&vcc_3v3>;
-+	vccio6-supply = <&vcc_3v3>;
-+	vccio7-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&pwm10 {
-+	/* pin 7 of header con2 */
-+	status = "disabled";
-+};
-+
-+&pwm11 {
-+	/* pin 15 of header con2 */
-+	status = "disabled";
-+};
-+
-+&pwm12 {
-+	/* pin 21 of header con2 */
-+	status = "disabled";
-+};
-+
-+&pwm13 {
-+	/* pin 24 of header con2 */
-+	status = "disabled";
-+};
-+
-+&pwm14 {
-+	/* pin 23 of header con2 */
-+	status = "disabled";
-+};
-+
-+&pwm15 {
-+	/* pin 19 of header con2 */
-+	status = "disabled";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcca_1v8>;
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	max-frequency = <200000000>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
-+	status = "okay";
-+};
-+
-+&sdmmc0 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc3v3_sd>;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "okay";
-+};
-+
-+&spi3 {
-+	/* pin 19 + 21 + 23 of header con2 */
-+	status = "disabled";
-+};
-+
-+&tsadc {
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	/* pin 8 + 10 (RTS:16, CTS: 18) of header con2 */
-+	status = "disabled";
-+};
-+
-+&uart2 {
-+	/* debug-uart */
-+	status = "okay";
-+};
-+
-+&uart7 {
-+	/* pin 11 + 13 of header con2 */
-+	status = "disabled";
-+};
-+
-+&uart9 {
-+	/* pin 21 + 24 of header con2 */
-+	status = "disabled";
-+};
--- 
-2.25.1
-
+Thanks and best regards,
+Michael
 
 _______________________________________________
 Linux-rockchip mailing list
