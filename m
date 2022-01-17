@@ -4,73 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD26C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jan 2022 07:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62011C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Jan 2022 08:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lAMf4oMeqL2x0pxwu52klPPrhHzODKIlmVEUo69d+Nc=; b=y2J3KvcUmBnncx
-	jw3JKucUdM6wg8rAfh0eL852S08yzOhQOlUC8PqkAcWANOplV24x8+TzQ3LvidAU8ltbqMkbVzclC
-	AO+uotdVxdzUJDtfe+AxeROZhE1gL6i77nBBmBlU82R5iZHVIdniF1u2lMeV6ebCXdW9TvD5F4Vp8
-	8r0+An8+JBXVHkC+Gl3P+R4OfiTN84Q0owveJDX7UKLyBpEiAzVCdYZt/Rm8Z/K1/vs+lfNzR0kCr
-	MUrHKVJtWh3CptknFnWws0PxJ6k4t9XNYhRm4McU1IL01La8TMKnGBCHyJtQdZGWoQFa6ALXkKZUt
-	4WlZXnobeTSsZiuoyWXg==;
+	List-Owner; bh=f+w3FBjdGoXwpempahBgUEnbvaw7fc+0lJ273Dq/c/0=; b=Va7qh5sXS5coIz
+	Ma3ylA1vHwrbNeTKZW7wY1jY8RnHLq3itceSsp2hkrf/6tfhGZQb6sy24p3Xm7mF1f3/Ez+78lER2
+	Tav/yg+vjn+QG547g840zHLT95yFZ5DtreIvJif2O8HR+OInUDQrmedWQiSrI5Yqi5hBTt/WgteHe
+	K3K+2P3fOKn8g6r3ao0sQ1Rqi9qc9rlfl+m15HhUwi2pos3ZwJHQstIYG8SwZ3kis1Pnr9HjlleaX
+	FaNgQ9ylXKZdd3Q2umu+au6AMtPAsyMqZzo1LoXth+Jvfs3Dkl7wla9+kXIBqFu0ehI7ofhplygL8
+	3n1D3HKOj6os7aijvhmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9Mhu-00Dxlj-I8; Mon, 17 Jan 2022 07:45:38 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1n9NZb-00E7Ll-Tp; Mon, 17 Jan 2022 08:41:07 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9Mhe-00DxeR-Kz
- for linux-rockchip@lists.infradead.org; Mon, 17 Jan 2022 07:45:23 +0000
-Received: by mail-lf1-x132.google.com with SMTP id s30so54311774lfo.7
- for <linux-rockchip@lists.infradead.org>; Sun, 16 Jan 2022 23:45:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nVojK749fmbikJ8Ylv61w+rfH9eMOuHdf6x9SWu9cSY=;
- b=SUwsxZsxjvlQaEwoE7XT7C+KHZ9jGQQayZYDeXg5DlUCjdR5AwuUOSqu5Vnxhj5hfU
- cZct8MLYPqEIXtyX72Hymgmw/UKBQ1+Skmdl8fCeXQDsuDDeIpc+chJKRuX7BUddxkgp
- I/CiGnBzl6R++Z3e4nfaDlKGmOZMTWnoQWeYY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=nVojK749fmbikJ8Ylv61w+rfH9eMOuHdf6x9SWu9cSY=;
- b=XBaz2lMvR3MB3Dzd2asE+Ubl3Lua4/HY6VTOhSbSZU6fntcWRBJ6Qghjs5XFkDnV5x
- QLU3+N992km3vJNqUYAYn6/fEFc9ABni/RmsJYAAzWr0BDL9YgM1RUaeJ+x/zymXB/qM
- qDzGulTP3kb4BfnTgsBK0yifa8JoMCBkJ3RfIkzJdBtGfGBQxXnTxeFR6EyFowEsygiT
- 0QptLgQoiY+S9B/l5ZCiuDnjA4StzkEpYmI2lax3vMu7JzsZI5TKvylUQgyLC61THToS
- 0ht3Fgci+42EMt7zlCnX4nWcO4R0lBfaw0vGNojUIcr/IuQkT5jqfh+ag1Bvk5Sm0rdu
- sIsw==
-X-Gm-Message-State: AOAM5313/TPYQMawgCgTD46uBKIMRd6ta4Mt5D7jid7MEvtzjBBOXHdE
- Mc2uXseC5Mm2k5hcp6eH26x8woi8UVFiJNeGJ8AyCg==
-X-Google-Smtp-Source: ABdhPJwG9NvWR9p35lcYW0jwX/k5v4481qRKalDO5NxJSEYxWGLzootcvrIELTsY/GzSoLCDQfiA7L3OWsPgQKfrGNM=
-X-Received: by 2002:a2e:2285:: with SMTP id i127mr4064849lji.414.1642405520722; 
- Sun, 16 Jan 2022 23:45:20 -0800 (PST)
-MIME-Version: 1.0
-References: <20220114230209.4091727-1-briannorris@chromium.org>
- <20220114150129.v2.2.I20d754a1228aa5c51a18c8eb15a2c60dec25b639@changeid>
-In-Reply-To: <20220114150129.v2.2.I20d754a1228aa5c51a18c8eb15a2c60dec25b639@changeid>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 17 Jan 2022 15:45:09 +0800
-Message-ID: <CAGXv+5Gm4ru8m5bZV_zm10U+FQRBSw7qq1eiL+hh+Z=5pZ7pYQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] drm/rockchip: cdn-dp: Support HDMI codec
- plug-change callback
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, 
- linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>, 
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+ id 1n9NZV-00E7I0-Gm; Mon, 17 Jan 2022 08:41:05 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1n9NZP-0006T4-TT; Mon, 17 Jan 2022 09:40:55 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Brian Norris <briannorris@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
  Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- linux-kernel@vger.kernel.org, 
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org
+ linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] arm64: dts: rockchip: Switch RK3399-Gru DP to
+ SPDIF output
+Date: Mon, 17 Jan 2022 09:40:54 +0100
+Message-ID: <3970568.xje1Q9F24u@diego>
+In-Reply-To: <CAGXv+5H0-dM28YQj_orS1_14NLcJve8VtO6oLcBiRpJFjaf5KA@mail.gmail.com>
+References: <20220114230209.4091727-1-briannorris@chromium.org>
+ <20220114150129.v2.1.I46f64b00508d9dff34abe1c3e8d2defdab4ea1e5@changeid>
+ <CAGXv+5H0-dM28YQj_orS1_14NLcJve8VtO6oLcBiRpJFjaf5KA@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_234522_712603_417AAC51 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220117_004101_589251_6CC8C144 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,14 +67,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 15, 2022 at 7:03 AM Brian Norris <briannorris@chromium.org> wrote:
->
-> Some audio servers like to monitor a jack device (perhaps combined with
-> EDID, for audio-presence info) to determine DP/HDMI audio presence.
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+Am Montag, 17. Januar 2022, 08:44:37 CET schrieb Chen-Yu Tsai:
+> On Sat, Jan 15, 2022 at 7:03 AM Brian Norris <briannorris@chromium.org> wrote:
+> >
+> > Commit b18c6c3c7768 ("ASoC: rockchip: cdn-dp sound output use spdif")
+> > switched the platform to SPDIF, but we didn't fix up the device tree.
+> >
+> > Drop the pinctrl settings, because the 'spdif_bus' pins are either:
+> >  * unused (on kevin, bob), so the settings is ~harmless
+> >  * used by a different function (on scarlet), which causes probe
+> >    failures (!!)
+> 
+> I suppose that means the default pinctrl should be dropped? Or maybe this
+> use case is the outlier. Up to Heiko?
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Interesting question. Right now it looks like Gru is the only one using spdif
+in that way, so I'd think dropping the pinctrl here is the "saner" option
+at this time ;-)
+
+I guess we can reevaluate if this becomes more widespread
+
+> > Fixes: b18c6c3c7768 ("ASoC: rockchip: cdn-dp sound output use spdif")
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
