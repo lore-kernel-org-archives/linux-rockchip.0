@@ -4,67 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 738AEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jan 2022 14:53:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55EF4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jan 2022 15:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=axJKKVwFR/Z4KCdv2QoUiSupXV+0V+q3/kNTpMU+r2c=; b=DvqLV8ZnOT0KNG
-	VNcMDzVKnLkXHxuJYwXvGIcleZoBA14AfGtGkOV8QhXB4LYpswnXRhpvcwQPwO71CPgTIaV5PA3cc
-	uCHmwMUnpzLe1jCDwU5kiEvpnWOZkklcf/RlFNGCvKkB3NG4ULT/Pz4DcmUrPXMgfaqes2AGomWSb
-	TTCwPLMZIHWptvO4bS0OA09V93XfqRAQyaw0zDXjYugh0t9vqwFRkuK/egHAIvAtWFzoCBN5w+uW4
-	8nc2cxfC9LLM9i5CPKLCSNqaMcMqhDgv7Vh3SeIdjSY7zvg/JYLg4kPpY5uwAW9UG/nUeBS6Bsdtl
-	YSoJ/KcuAxZCYLY7gXyw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g/Dgyy2Uh+xWlceryhTSvwq4lFbcbNzrg5ADEGI0rdk=; b=xz0mOtI9q6GDO1
+	tAtNwInzZ8WokD3GqPBh+SMOidc02ADTqXB6ADAsBXsj/E0hrPCi19IUPMSSk/zn7KZuuyS56t9fK
+	s4eqzUPNq0hy59QPbisQ1TWtUfbrLrWH5VD4to+dus1KqbLYDhnpBOd6+J618hRcG0x1EkU+hvITT
+	L+HPLrMRCpcYf7rLnJcm3f1fUj4bK0oNwfUhkQOcmA7Ob4D9whEH+8Ssclfuxw66TTwjitGEq19pd
+	sTXCVoNGBsBrpe/2lw+OXC5XuuuoH+FAMlOf+L2kfDJP4Mlm7vams3Mk0I8Am9keeyMEHGkaPx4ON
+	Wu8DU99yUik+kg2QBc4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9prd-001toX-O3; Tue, 18 Jan 2022 14:53:37 +0000
-Received: from zg8tmtyylji0my4xnjiumje2.icoremail.net ([162.243.162.216])
- by bombadil.infradead.org with smtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9prP-001tlp-Rt; Tue, 18 Jan 2022 14:53:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pku.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
- Message-Id; bh=nKjIk+QyyrrLSwY5HX2wb9fZlFZRRQmgCeY5n3zbj0M=; b=F
- 1XuCb5hlnnmUmj11T1zblFn+pOOPW89Aqu30kzBYnhmyD22vMTRE0gehUeHG/itA
- s4rEOL32g9+m6o3Rd5B7KS15/f62Wa4YGgbkLgnJNnPSRod/MDt3Q0pguk96z0WV
- mpzPIg50p3DGDZjBmlkcGHNbMnJWQHeCWxDamzyvUI=
-Received: from localhost (unknown [10.129.21.144])
- by front02 (Coremail) with SMTP id 54FpogAXH_fZ0+ZhUc91AA--.21908S2;
- Tue, 18 Jan 2022 22:51:06 +0800 (CST)
-From: Yongzhi Liu <lyz_cs@pku.edu.cn>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Yongzhi Liu <lyz_cs@pku.edu.cn>
-Subject: [PATCH] drm/rockchip: Fix runtime PM imbalance on error
-Date: Tue, 18 Jan 2022 06:51:03 -0800
-Message-Id: <1642517463-19769-1-git-send-email-lyz_cs@pku.edu.cn>
-X-Mailer: git-send-email 2.7.4
-X-CM-TRANSID: 54FpogAXH_fZ0+ZhUc91AA--.21908S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrZrW3Aw4rurW8GF1kAr48tFb_yoWDGFb_Kr
- 4UXrnxWFsYgFn8Jw17Cay3Xr92vrnF9F48Ca10yasxAF4rCwnFyryrZFyDuFZ8XF47Ar12
- ga12qFy7AFnxGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUIcSsGvfJTRUUUb4kFc2x0x2IEx4CE42xK8VAvwI8IcIk0rVWrJVCq3wAFIxvE14AK
- wVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK021l84ACjcxK6xIIjxv20x
- vE14v26w1j6s0DM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4UJVWxJr1l84ACjcxK6I8E
- 87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c
- 8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_
- Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwI
- xGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc2xSY4AK6svPMxAIw28IcxkI7VAKI48JMxAI
- w28IcVCjz48v1sIEY20_Kr1UJr1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67
- AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIY
- rxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14
- v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8
- JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUoOJ5UU
- UUU
-X-CM-SenderInfo: irzqijirqukmo6sn3hxhgxhubq/1tbiAwEKBlPy7uA+KwALs-
+	id 1n9qGO-0023ah-Kc; Tue, 18 Jan 2022 15:19:12 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n9qGG-0023UH-QT; Tue, 18 Jan 2022 15:19:06 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1n9qG7-0006C3-8I; Tue, 18 Jan 2022 16:18:55 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Alex Bee <knaerzche@gmail.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alex Bee <knaerzche@gmail.com>
+Subject: Re: [PATCH 0/4] add GPU for RK356x SoCs
+Date: Tue, 18 Jan 2022 16:18:54 +0100
+Message-ID: <6645896.O1m7UbTlE4@diego>
+In-Reply-To: <20211126151729.1026566-1-knaerzche@gmail.com>
+References: <20211126151729.1026566-1-knaerzche@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_065324_075086_DF45B94A 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20220118_071904_916038_6F8D057C 
+X-CRM114-Status: GOOD (  23.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +56,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_get_sync() will increase the rumtime PM counter
-even it returns an error. Thus a pairing decrement is needed
-to prevent refcount leak. Fix this by replacing this API with
-pm_runtime_resume_and_get(), which will not change the runtime
-PM counter on error.
+Hi Alex,
 
-Signed-off-by: Yongzhi Liu <lyz_cs@pku.edu.cn>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Am Freitag, 26. November 2021, 16:17:25 CET schrieb Alex Bee:
+> This is a respin of Ezequiel's series which adds GPU for RK3568 [0]:
+> 
+> > I've decided to split the GPU off previous series:
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 3e8d9e2..9fb83b6 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1930,7 +1930,7 @@ static int vop_initial(struct vop *vop)
- 		return PTR_ERR(vop->dclk);
- 	}
- 
--	ret = pm_runtime_get_sync(vop->dev);
-+	ret = pm_runtime_resume_get(vop->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(vop->dev, "failed to get pm runtime: %d\n", ret);
- 		return ret;
--- 
-2.7.4
+do you plan on a respin for Rob's comments?
+
+Thanks
+Heiko
+
+> >
+> > https://lore.kernel.org/linux-rockchip/2147216.TLkxdtWsSY@diego/
+> >
+> > This series now contains only the GPU support, as the VPU
+> > needs a tiny rework.
+> >
+> > This is compiled tested only, in this case. Similar patches
+> > have been tested on a v5.10-based kernel, so I'd say it's good
+> > to go.
+> >
+> > The mesa side is merged https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/10771
+> > and can be tested without a display, using something like weston --backend=headless-backend.so,
+> > which provides an environment for GL to work.
+> 
+> I hope to have resolved all DT-binding issues and added cooling map and trip points
+> which can make the GPU a cooling device.
+> 
+> Tested with mesa 21.3.0 on quartz64-a board.
+> 
+> [0] https://patchwork.kernel.org/project/linux-rockchip/list/?series=526661
+> 
+> Alex Bee (2):
+>   dt-bindings: gpu: mali-bifrost: Allow up to two clocks
+>   arm64: dts: rockchip: Add cooling map / trip points for RK356x' GPU
+> 
+> Ezequiel Garcia (2):
+>   arm64: dts: rockchip: Add GPU node for rk3568
+>   arm64: dts: rockchip: Enable the GPU on Quartz64 Model A
+> 
+>  .../bindings/gpu/arm,mali-bifrost.yaml        | 20 ++++-
+>  .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  5 ++
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 77 +++++++++++++++++++
+>  3 files changed, 101 insertions(+), 1 deletion(-)
+> 
+> 
+
+
+
 
 
 _______________________________________________
