@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD00C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 04:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948E2C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 05:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tSWvuxbdGhjkar4qP9RnBWf+hFfDUAwjyxCT3UYJ5bk=; b=w7PP01N10Ka2Yq
-	5Pgv+SwoJozlEEyipGgD1iDN9HLvOIhVSUZwzye0fjtdNSMNTepStTUWxqgg1X6xGCPTxTkYQLAe8
-	cVxF3mO6Z2OyYVBgwnPXcwC+JOqVRUAETYFnGYh9U1zu/uQMCKs0G1lsZGz/uTecgD39bP4HezuOw
-	/L+EXvkkjTSFYcr293KhzVPblv2nHEU37mm04Ix9/HPmDMbNAz7ibZsH5iTWAM0lbREPt1kuaMrMU
-	FbsQwdn0jyTB760iv4GsRKEAvuewgJcjHG1RezGGdYu9uPF6YADnaVNHAYWetpI7VUZKtu4BhZR1w
-	y2WqX8U3qJ5IeMhRG9sw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9kK0qjWrPFpAq+x56uk6nckJdCvQNWIx2op/sdJL5ZI=; b=0v1rhag2LLgQoK
+	cM3HxLsYa64clqKyOozSOJcGgl5eunBGozSMvi83K/+QUuKzCo5wiGZ3dMWZguo9is/L2cmkHKS+a
+	rBiZ6jATbbAlvcialDHZomuwf9TgZPVhz8i+YFYWhhynbJKWBONhWsVnd7MiY+Kke6OLnKngyw2Cr
+	PqpyWmfnrFakiE6Ha7tXk9fwm3RFSt4sDXjDlsZoJlvc8TlDe8lwpMezHGrzeaTSciw5qnFKX7TF6
+	aDKvF3jO8pLktc2ac+8PVUVLbFIHF3E+1IQ7Wv4aBFOjwV63BvO1C1XlQ02wiTgsyokzcjhvSGtL3
+	6yfBcdLLN6urwF/y+IFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA32L-003oQY-RX; Wed, 19 Jan 2022 04:57:33 +0000
-Received: from zg8tmja2lje4os4yms4ymjma.icoremail.net ([206.189.21.223])
- by bombadil.infradead.org with smtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA327-003oMr-6m; Wed, 19 Jan 2022 04:57:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=pku.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
- Message-Id; bh=49zBCY9KQsAb1xr/pbdv8Gk6y+VEm9m4YdC386ca2X0=; b=a
- YWN8svgNyPW3TSyDKOARO1jYBDwUHEzqim7qCVvqttjKpKqSWjr4alS9TvDTt8zJ
- yDqLBmMr2dotPjuWvNCSrxHCxpWxggP5X95dFCqpfLnKcFsx5Mzkjpbq1XEaDfsn
- t5LjW4SkERmA7hGF1WFJYaB5nDzGHRw4l9ZmtYlEkM=
-Received: from localhost (unknown [10.129.21.144])
- by front02 (Coremail) with SMTP id 54FpogBHR7M7medhSU97AA--.7476S2;
- Wed, 19 Jan 2022 12:53:15 +0800 (CST)
-From: Yongzhi Liu <lyz_cs@pku.edu.cn>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Yongzhi Liu <lyz_cs@pku.edu.cn>
-Subject: [PATCH] drm/rockchip: Fix runtime PM imbalance on error
-Date: Tue, 18 Jan 2022 20:53:14 -0800
-Message-Id: <1642567994-26165-1-git-send-email-lyz_cs@pku.edu.cn>
-X-Mailer: git-send-email 2.7.4
-X-CM-TRANSID: 54FpogBHR7M7medhSU97AA--.7476S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7tw4Utw4UJw1fXF1DJF48Xrb_yoW8WFWUpw
- 4kJFy0vrWxuayjqrWDCF4kXrZ0ka9FyayxGrs7GasxZF12yF1Dtw15uryFqF43Xr97AFya
- vrs7Aa47JF42qr7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkK1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AE
- w4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2
- IY67AKxVWDJVCq3wA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2
- z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s0DM2AIxVAIcxkEcV
- Aq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j
- 6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64
- vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkIecxEwVCm-wCF04k20xvY0x0EwIxGrwCF
- 04k20xvE74AGY7Cv6cx26w4UJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrV
- AFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCI
- c40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267
- AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_
- Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbXdbU
- UUUUU==
-X-CM-SenderInfo: irzqijirqukmo6sn3hxhgxhubq/1tbiAwEKBlPy7uA+KwAVsh
+	id 1nA40X-003tk6-62; Wed, 19 Jan 2022 05:59:45 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nA40U-003tiN-GV
+ for linux-rockchip@lists.infradead.org; Wed, 19 Jan 2022 05:59:43 +0000
+Received: by mail-lf1-x129.google.com with SMTP id o12so4798563lfu.12
+ for <linux-rockchip@lists.infradead.org>; Tue, 18 Jan 2022 21:59:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1tKYVg7wJMJMNFKIyw+d3Kv62PM5IDYj6Uiog3M1guQ=;
+ b=O3rjR1xwJ5RJa/8Pr4j+o/xz2ODymM24FgRvDAyyXVz801NpNIj40tnMPXagEzzIdN
+ YgApJ9Se2RtCuzQIBr9UoxOYieOUmAITh7Ff2mH+sSXNnt/MyPTQm0hxbsds1OhLg9Lx
+ iGrVXc3V0OyRFdbBmsPvPpedratR1otyTGqBk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1tKYVg7wJMJMNFKIyw+d3Kv62PM5IDYj6Uiog3M1guQ=;
+ b=7hvuZJTwyqoG2nquaUcSBcVnnQfi+meEPvQYXxVGS+2hNnFJe8pZl43RBsuJqTMNLS
+ lmNh6dxElI6wpTy8HBsVLXPdwqBfQ7v96X2V8371wSua++uhPAK4QgoyF0hfJqMegkT+
+ 6uElS05Mk+9HR9iCV6A/8WckVkX9F2rXvUpl9ueSQYDL+jJYzFbDjkGbmC6YN04Tnors
+ 19f4gok21uTFrqEmGjgjdXLobI6/xj6xsOd7aOko6/ue//qT/Lmp5IqKsn95PVFJWFNU
+ OZaG4m8XquOyQxZGFHK/cXCMDGxReIE0ZbkMm+f71pkqSOj1fOOiQ4LWtHHAbBL/347q
+ gPBQ==
+X-Gm-Message-State: AOAM531AiE13dAqYvfh96w8+WZM6YirEtwcluyMndRp91iwkIR/Wt+sX
+ swycABYKR7vj2Y+SSpFviiPHyIgb6d6ZdHDVayj9Nw==
+X-Google-Smtp-Source: ABdhPJxmDuwkFJziW4xvLsZmdp9HyrtsLl84OWqtBxpyS7OeNwc36CaaRT+rymCOgrfcQNTO0R57Np83PfJ/v382SjQ=
+X-Received: by 2002:a05:6512:1320:: with SMTP id
+ x32mr25449431lfu.597.1642571980606; 
+ Tue, 18 Jan 2022 21:59:40 -0800 (PST)
+MIME-Version: 1.0
+References: <20220114230209.4091727-1-briannorris@chromium.org>
+ <20220114150129.v2.3.I3c79b1466c14b02980071221e5b99283cd26ec77@changeid>
+ <CAGXv+5HC00YU6ARtGDahxWLqivvUCowh7wDq5H5OzoGO9htB+g@mail.gmail.com>
+ <YecgcwXrQNzCesMN@google.com>
+In-Reply-To: <YecgcwXrQNzCesMN@google.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 19 Jan 2022 13:59:29 +0800
+Message-ID: <CAGXv+5HANAorgJhSupH96V_n01VzvO5mY6LXf=bzzMi3ek089w@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] ASoC: rk3399_gru_sound: Wire up DP jack detection
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, 
+ linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>, 
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+ Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ linux-kernel@vger.kernel.org, 
+ alsa-devel@alsa-project.org, devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_205719_530126_584F9DD1 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20220118_215942_579465_B922DC76 
+X-CRM114-Status: GOOD (  27.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,53 +84,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_get_sync() will increase the rumtime PM counter
-even it returns an error. Thus a pairing decrement is needed
-to prevent refcount leak. Fix this by replacing this API with
-pm_runtime_resume_and_get(), which will not change the runtime
-PM counter on error.
+On Wed, Jan 19, 2022 at 4:18 AM Brian Norris <briannorris@chromium.org> wrote:
+>
+> Hi Chen-Yu,
+>
+> On Mon, Jan 17, 2022 at 05:01:52PM +0800, Chen-Yu Tsai wrote:
+> > On Sat, Jan 15, 2022 at 7:03 AM Brian Norris <briannorris@chromium.org> wrote:
+> > >
+> > > Now that the cdn-dp driver supports plug-change callbacks, let's wire it
+> > > up.
+> > >
+> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > > ---
+> > >
+> > > (no changes since v1)
+> > >
+> > >  sound/soc/rockchip/rk3399_gru_sound.c | 20 ++++++++++++++++++++
+> > >  1 file changed, 20 insertions(+)
+> > >
+> > > diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+> > > index e2d52d8d0ff9..eeef3ed70037 100644
+> > > --- a/sound/soc/rockchip/rk3399_gru_sound.c
+> > > +++ b/sound/soc/rockchip/rk3399_gru_sound.c
+> > > @@ -164,6 +164,25 @@ static int rockchip_sound_da7219_hw_params(struct snd_pcm_substream *substream,
+> > >         return 0;
+> > >  }
+> > >
+> > > +static struct snd_soc_jack cdn_dp_card_jack;
+> > > +
+> > > +static int rockchip_sound_cdndp_init(struct snd_soc_pcm_runtime *rtd)
+> > > +{
+> > > +       struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
+> >
+> > Using snd_soc_card_get_codec_dai() might be a better choice throughout this
+> > driver. While it will work for the cdn_dp case, because it is the first DAI
+> > in |rockchip_dais[]|, all the invocations for the other codecs are likely
+> > returning the wrong DAI.
+>
+> I'll admit, I'm not very familiar with the ASoC object model, so you may
+> well be correct that there's something fishy in here. But I did trace
+> through the objects involved here, and we *are* getting the correct DAI
+> for both this case and the DA7219 case (preexisting code).
 
-Signed-off-by: Yongzhi Liu <lyz_cs@pku.edu.cn>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c   | 2 +-
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Neither am I, so ...
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 4740cc1..05c6abf 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -100,7 +100,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 		goto err_core_clk;
- 	}
- 
--	ret = pm_runtime_get_sync(dp->dev);
-+	ret = pm_runtime_resume_and_get(dp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
- 		goto err_pm_runtime_get;
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 0b97241..721ee0f 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -146,7 +146,7 @@ static int rk3288_lvds_poweron(struct rockchip_lvds *lvds)
- 		DRM_DEV_ERROR(lvds->dev, "failed to enable lvds pclk %d\n", ret);
- 		return ret;
- 	}
--	ret = pm_runtime_get_sync(lvds->dev);
-+	ret = pm_runtime_resume_and_get(lvds->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
- 		clk_disable(lvds->pclk);
--- 
-2.7.4
+> It looks like we actually have a new runtime for each of our static
+> dai_links:
+>
+> devm_snd_soc_register_card()
+>   ...
+>   for_each_card_prelinks()
+>     snd_soc_add_pcm_runtime()
+>
+> So I think this is valid to keep as-is.
 
+I missed this bit. As you say, things are good.
+
+> > For this particular patch it works either way, so
+> >
+> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>
+> Thanks for looking!
+
+And thanks for double checking!
 
 _______________________________________________
 Linux-rockchip mailing list
