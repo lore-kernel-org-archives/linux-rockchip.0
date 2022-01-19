@@ -4,46 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B076C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 13:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F770C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 16:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GwK5+s8990QbWAK717rnpyYf3bIrWFuZeyP6AKqiFXY=; b=xly327MSHCPYMD
-	7Y+haI71FMww+Ndf0FAuo7E5SIjKPHrqx4jSmdc5Sup1o0DGjFSHeJ8taRZ0ocQZu8iSokgCiZf12
-	UYM7BInqTxm3G7jPyNGXhaGAyS/00LnPMuWDdL22z32BDwKdWe3odxz+kXP6UkH9/6VQpcJaFlOe1
-	2sf/nDHcMKdFnyAYImvs+Ags65SYDp8JAw83s0oD83WVTxO1MCIeyDo96BaQr+A1dZDk0NgIqO5AZ
-	+WrZHZubYjUbjuEGyc/x7ejrRbgQcd2Gy5VNHR+8AT6K05lReRbbaZ9jMlvsggKD3iLIei6CWEe8e
-	f8hiZauRL6xd8EcJzw5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DtOX7yP6Q1vth008LI4hRTAv8rIEhwfBomCiWKIAQ/M=; b=Zy2O0+mpUghBFr3gofDz+sq1qf
+	NaJTuVS6nlpaMGWEKzgW+0UdqmJeA1W9blBc7uUIY8WXTp5AJGSlbEyUwd6kCHqYXSISTCW/Z0nNM
+	KYWrFV0p0lrM79wmb67tdGYz5ZoZ6N9BT/IdBh6ZawRiLkq7eHRIk513ruDV0cpJDkyK4/PGKIMPt
+	+wsQFg1oCGnTLyWTk+QtASchd+p0+rpSbHhCTLxpn8HvU71btnooWMBRmHafso4pyW7cvf3rOvUvr
+	2i+AKADWrKrefTR+/swYjrr0zDvOdEdEmz4u7o7ze7rIUSxLXJJKoyXi9bDTVGSRKacxJoxA83zsC
+	pNaWVjAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nABMp-005l5U-FU; Wed, 19 Jan 2022 13:51:15 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1nADrG-006OFn-O7; Wed, 19 Jan 2022 16:30:50 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nABML-005kp4-So; Wed, 19 Jan 2022 13:50:48 +0000
-Received: (Authenticated sender: foss@0leil.net)
- by mail.gandi.net (Postfix) with ESMTPSA id 3930EFF802;
- Wed, 19 Jan 2022 13:50:35 +0000 (UTC)
-From: quentin.schulz@theobroma-systems.com
-To: robh+dt@kernel.org,
-	heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ id 1nADr4-006OBw-FF; Wed, 19 Jan 2022 16:30:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 6E46661581;
+ Wed, 19 Jan 2022 16:30:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 955B2C004E1;
+ Wed, 19 Jan 2022 16:30:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642609836;
+ bh=NPkrUgRYzcxwa3lnZh2dJ3qyPo1V5StcWneeKtWaOTI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=GMhWu7C3B60BdL8/99pPFWzH0CB7LU7Dz7GFXyQtbGWeKeKQJEE+V2fEbRhv/QrJW
+ yYagtUm7pysfgqkJMyR27/xktDwbdWcoif82n5bf4F716uAgvyW4CrM7nnlUKhGZf0
+ FU8zZ8ZvZl+QEyzj+ByrVczubpcuk9CdfXWCIEjg23SntmAfLaHiquJ5KbvTGWQWfn
+ Hr8GUX32FKay/k82RyllkJOyRWhWEFPpRz5SEs7TiLsMcVgix5+RDcoF6No3Mm8HeE
+ dgP9NlrSSG2qLfoDBPumyLb9lbK1A0ADtU3DkLXQ9hZS91Urze/uzDqpkaas6/c5dZ
+ OCMIIrEVF0X5A==
+Date: Wed, 19 Jan 2022 16:30:29 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, - <patches@opensource.cirrus.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>,
- Quentin Schulz <foss+kernel@0leil.net>,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3399-puma eMMC HS400 signal
- integrity
-Date: Wed, 19 Jan 2022 14:49:48 +0100
-Message-Id: <20220119134948.1444965-1-quentin.schulz@theobroma-systems.com>
-X-Mailer: git-send-email 2.34.1
+ linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
+ alsa-devel@alsa-project.org
+Subject: Re: [PATCH] dt-bindings: Drop unnecessary pinctrl properties
+Message-ID: <Yeg8pWYUwWKqOjhe@sirena.org.uk>
+References: <20220119015325.2438277-1-robh@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20220119015325.2438277-1-robh@kernel.org>
+X-Cookie: This bag is recyclable.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_055046_159343_BF746AFD 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20220119_083038_597841_1333F8BB 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,67 +81,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8794434134266926990=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
 
-There are signal integrity issues running the eMMC at 200MHz on Puma
-RK3399-Q7.
+--===============8794434134266926990==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pa3KE12yHs9Xnd2D"
+Content-Disposition: inline
 
-Similar to the work-around found for RK3399 Gru boards, lowering the
-frequency to 100MHz made the eMMC much more stable, so let's lower the
-frequency to 100MHz.
 
-It might be possible to run at 150MHz as on RK3399 Gru boards but only
-100MHz was extensively tested.
+--pa3KE12yHs9Xnd2D
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Cc: Quentin Schulz <foss+kernel@0leil.net>
-Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
----
+On Tue, Jan 18, 2022 at 07:53:25PM -0600, Rob Herring wrote:
+> For a single pinctrl mode, it is not necessary to define pinctrl
+> properties as the tools always allow pinctrl properties.
 
-Note/RFC: as opposed to gru DTSI, max-frequency is used here instead of
-assigned-clock-rates.
+Acked-by: Mark Brown <broonie@kernel.org>
 
-AFAIU, max-frequency applies to the SD bus rate, while
-assigned-clock-rates applies to the clock fed to the SD host controller
-inside the SoC. max-frequency does not interact with the clock subsystem
-AFAICT. assigned-clock-rates sets the clock rate at probe, regardless of
-eMMC tuning.
-Technically, the Arasan SDHC IP supports silicon-hardcoded clock
-multiplier so I think setting assigned-clock-rates as a way of rate
-limiting the eMMC block is incorrect and max-frequency should be used
-instead (as done in this patch). Otherwise the SDHC could still potentially
-derive a 200MHz clock from a lower rate clock thanks to its multiplier.
+--pa3KE12yHs9Xnd2D
+Content-Type: application/pgp-signature; name="signature.asc"
 
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+-----BEGIN PGP SIGNATURE-----
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index fb67db4619ea..a6108578aae0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -425,6 +425,12 @@ vcc5v0_host_en: vcc5v0-host-en {
- };
- 
- &sdhci {
-+	/*
-+	 * Signal integrity isn't great at 200MHz but 100MHz has proven stable
-+	 * enough.
-+	 */
-+	max-frequency = <100000000>;
-+
- 	bus-width = <8>;
- 	mmc-hs400-1_8v;
- 	mmc-hs400-enhanced-strobe;
--- 
-2.34.1
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHoPKQACgkQJNaLcl1U
+h9CK5ggAgSoOi6gEd+9fFCP6FCxOQatzUUojOHSGhmWyvIDZNwu17IQjUqhzZ5Lk
+8Z9Or7iFzVcEVfaKQ0w1HRWHQIrPLjnGtm1pnD26p3iqmdDC/1hDvKb/kd7EjOmF
+NEx6LRQoJL0LQX9I/c8rkwoW5mXpxaBck270IlQAaOI5/iOQFHp2oDn02Csbli0e
+XtJH3S6dPtjKQN/+SC9ruVF3usw6u4Vxi5FNXA1ABQYeKP+4/lyft2SWzGZEShhy
+Kmn6JJCH6fa4Aqbz85d4dpvuG9t9ukvdK8zrRCpsH2xw8AlHDeJtcDG6/LXw5hPG
+u+NgtzFSWl0tPBvoyeSNpNi3YEkbyg==
+=vG1Q
+-----END PGP SIGNATURE-----
 
+--pa3KE12yHs9Xnd2D--
+
+
+--===============8794434134266926990==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8794434134266926990==--
+
