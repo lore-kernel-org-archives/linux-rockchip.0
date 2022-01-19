@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BF50C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 10:58:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E7EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 11:30:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+JC3ljxgdz+hlN3htXLmGlUSJWC4pgjgjNn2nlFOWQM=; b=aVDClula2jHGH0
-	aRHuYRC/8tw+EbwHwnJ1kyghoQVVySuJJk1ymqKy6TojQy9uqOK052cNpZubbiSTEsbSJrnFdFgGf
-	k8eZTHvv83YZ9gw6MmSG0Am5V9LKt9uRy38qxmbnOOgE09hW3UrKMk34io3NjpykEoJYK/IPCCZXN
-	O5ebckWcn+ZiOjwLMQ6zJQ5jblmIuqfeq+/oroEMv+D6uoTC0WoAR8OFfTVlwNlwM11vmobPGTT3v
-	SzdIo+7BxZGPuFLnzJw3uodMjDxQDCNKBOx4lFJE1p1i5C5goS0cCPFnIRjEDj5nzrejUTovmnfeD
-	nLF53K883+ErP3kpjOxQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qhh9F6zMss3isHni0800UmkWl/Ap1iThdpnG3RgIst0=; b=kyULHYcZsnxuNl
+	6VytkoEcp6Usm6+5Kvhd0G5ZaMgrJ1rf3egUZqxjwSbEgd0vs18eDw0KhyoUfZM2Cajy9Byi5bjWK
+	9FS5IpiggDIKYD6DrznvE8iZeI26RcZ6QORkcE36upaJ1+pEATvz4nlouSbmIp+N9Epz6xeUkxrs7
+	4LmKKsY/AZfLpdHt0S1jaa8TtTZ2xxHaYO6uvlWm4f46hqU45t1j1qVu17H3Y6aNgwXbC9wCoJ9Ph
+	DM7mcXnGPntRmBAezBvjaVAQbfDIQVo1NvQHPFe6GQkh/0yQDEqdnQj55jqBCgnFeTKKV6XIjZwb2
+	ZVVBxyB8ksjcehvd6Fxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA8f7-0052lw-OH; Wed, 19 Jan 2022 10:57:57 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
- helo=mx0b-001ae601.pphosted.com)
+	id 1nA9AH-005AJP-Pz; Wed, 19 Jan 2022 11:30:09 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA8et-0052ea-OZ; Wed, 19 Jan 2022 10:57:45 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
- by mx0a-001ae601.pphosted.com (8.16.1.2/8.16.1.2) with ESMTP id 20J5aNQc003098;
- Wed, 19 Jan 2022 04:57:27 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=PODMain02222019;
- bh=YeXjvt2a/3UPggig0LgeC8zG+kAXAN5PBZnu2EVj7xY=;
- b=LrPgXwdH8VKL3HwRWaA6o8fKipetDIcgkbBL5GAST84W3pDLptBnYV5kxG7+L+BbEBid
- C/Kjm8mA761mT3PTXrMT6e2sJhJhnYD244TOsdNmGn+NRzc8LW0N6W5mbj0Kp77ZK0vy
- eg+1iuwXVygQPud3lxG8lHsCtImFhokOD9Kz372YX4Y2m9Qkj24Nd34Dah9erEYj5Ppt
- tw9PMtj8Fdj9uEXqGIth5cdSwAYKw4vbuKmE2Fz9kuj3JEAcwzaTwdpX7Rh5UP5chgwo
- knQP6V666OzxQe8dcg4399G7genTjTRx6DRYBytS3Fi4tggXiLKofGKaTqQ6xyxhj3aM lQ== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3dnaxhtd5c-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 19 Jan 2022 04:57:27 -0600
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.18; Wed, 19 Jan
- 2022 10:57:25 +0000
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.18 via
- Frontend Transport; Wed, 19 Jan 2022 10:57:25 +0000
-Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 89617B0E;
- Wed, 19 Jan 2022 10:57:24 +0000 (UTC)
-Date: Wed, 19 Jan 2022 10:57:24 +0000
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Rob Herring <robh@kernel.org>
-CC: Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?=
- <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Richard
- Fitzgerald <rf@opensource.cirrus.com>, Linus Walleij
- <linus.walleij@linaro.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, Sylwester Nawrocki
- <s.nawrocki@samsung.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, - <patches@opensource.cirrus.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- <dri-devel@lists.freedesktop.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-input@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
- <alsa-devel@alsa-project.org>
-Subject: Re: [PATCH] dt-bindings: Drop unnecessary pinctrl properties
-Message-ID: <20220119105724.GQ18506@ediswmail.ad.cirrus.com>
-References: <20220119015325.2438277-1-robh@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220119015325.2438277-1-robh@kernel.org>
-User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: qX5Mw540ExmwrU_vS7Og4PEUG2Xrc84A
-X-Proofpoint-ORIG-GUID: qX5Mw540ExmwrU_vS7Og4PEUG2Xrc84A
-X-Proofpoint-Spam-Reason: safe
+ id 1nA9A1-005AC2-9E; Wed, 19 Jan 2022 11:29:54 +0000
+Received: by mail-lf1-x133.google.com with SMTP id m1so8108077lfq.4;
+ Wed, 19 Jan 2022 03:29:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=/O/9gbEgb/RsADKkHzPbBZ+dKCzV5A6qaT+Ty+GAygs=;
+ b=NyCoWG49BpQBxaruMTutTBuStWQyn43epxiT0gOU5UGakpXSxVwJMN2Q5ptdoCiamC
+ 3RfdPspfwkG1ajs+tCjdYfeSkqqnbRR25DS0BKwk2j9OIgugkEk+9Df0TLxdiJFJ3PwV
+ dPFmoptAK/h2KfPLz4DRlVT2YSb641X9DhGVW/rRguAtFbTI2mw9DwhYM+q4dU5Bepoa
+ OSBA+8jzXLUEMKmHjLoZv3Hj4zDPXGE+y+Q+fnk7Wbj+J7QaxZIFy17cBQLmFJFacDC2
+ 5rFo8iY+iW0pAgQtGCkLE1h66522LXnxhvrmQS1999S5aUr/ckLVcn4Q3xGndjAzEVg9
+ KSVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=/O/9gbEgb/RsADKkHzPbBZ+dKCzV5A6qaT+Ty+GAygs=;
+ b=LUsT+6hYLGpyQd2OrWJ+F+ybTzpmkBGQd7C7qcc6zfFcuwmtTHeHOzla3TFIXmgRUY
+ sy+zxVr6m9WslBAvg/9CquU3UQHT0Qa0ZUB0gbIZ6hXHnKgOwU5jkfV2kMDgvwGC80pB
+ appETsJhcxeDq9UMyEmm7vKcJ1BXPToGoYXRZhjw96iBrAxkibCckTT80HoElfxBs212
+ TL7Tdi6ADLmlSKRkh8SsB9WT19wfcyupfcLStRrTxogmQwVmDpm5rVJ54d+/jCaY6n9l
+ Zp214irS06p0EAzO8SqlOFdNnRCCoDJ53/vx12oVnVZh1QBNk/b8LjZo63Z6l8SiQldU
+ L32g==
+X-Gm-Message-State: AOAM5338KiHxZZlg0T5O9VIK0KWdszJM9nLkkwPreewCInZFB8/FkMOA
+ cpK4tuGBDlpQ5qCo2d12X84=
+X-Google-Smtp-Source: ABdhPJy1z4RS+ms7ntE5sNfDU2ljl1ujtIN9nfavJi4ukAug4R6nUw7GZ6yKgchAuaUxn91nYztotQ==
+X-Received: by 2002:a05:6512:3d94:: with SMTP id
+ k20mr25617078lfv.272.1642591790928; 
+ Wed, 19 Jan 2022 03:29:50 -0800 (PST)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245])
+ by smtp.gmail.com with ESMTPSA id w10sm1980958lfu.173.2022.01.19.03.29.50
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 19 Jan 2022 03:29:50 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v3 00/22] drm/rockchip: RK356x VOP2 support
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+Date: Wed, 19 Jan 2022 12:29:49 +0100
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ linux-rockchip@lists.infradead.org,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Message-Id: <AA3A26CB-6282-4A6B-99DC-8042DC8926BB@gmail.com>
+References: <20211220110630.3521121-1-s.hauer@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_025743_888389_2BA4A1E3 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20220119_032953_361935_AD639573 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,24 +92,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 18, 2022 at 07:53:25PM -0600, Rob Herring wrote:
-> For a single pinctrl mode, it is not necessary to define pinctrl
-> properties as the tools always allow pinctrl properties.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-
-Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
-
-Thanks,
-Charles
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
+dXRyb25peC5kZT4gdyBkbml1IDIwLjEyLjIwMjEsIG8gZ29kei4gMTI6MDY6Cj4gCj4gCj4gVGhp
+cmQgcm91bmQgb2YgcGF0Y2hlcyBhbmQgbGFzdCBvbmUgZm9yIHRoaXMgeWVhci4gSSBob3BlZnVs
+bHkgaW50ZWdyYXRlZAo+IGFsbCByZXZpZXcgZmVlZGJhY2suIEFkZGl0aW9uYWxseSB0aGUgZHJp
+dmVyIGlzIG5vdyBmdWxseSBjb252ZXJ0ZWQgdG8KPiByZWdtYXAsIHNvIG5vIHN0cnVjdCB2b3Bf
+cmVnIG5lY2Vzc2FyeSBhbnltb3JlLgo+IAo+IFNhc2NoYQo+IAo+IENoYW5nZXMgc2luY2UgdjI6
+Cj4gLSBBZGQgcGluIG5hbWVzIHRvIEhETUkgc3VwcGx5IHBpbiBkZXNjcmlwdGlvbgo+IC0gQWRk
+IGhjbGsgc3VwcG9ydCB0byBIRE1JIGRyaXZlcgo+IC0gRHVhbCBsaWNlbnNlIHJvY2tjaGlwLXZv
+cDIgYmluZGluZywgdXBkYXRlIGJpbmRpbmcKPiAtIEFkZCBIRE1JIGNvbm5lY3RvciB0byBib2Fy
+ZCBkdHMgZmlsZXMKPiAtIGRyb3AgdW5uZWNlc3NhcnkgZ2FtbWFfbHV0IHJlZ2lzdGVycyBmcm9t
+IHZvcDIKPiAtIFVwZGF0ZSBkY2xrX3ZvcFswMTJdIGNsb2NrIGhhbmRsaW5nLCBubyBsb25nZXIg
+aGFja3MgbmVlZGVkCj4gLSBDb21wbGV0ZSByZWdtYXAgY29udmVyc2lvbgo+IAoKU2FzY2hhCgpJ
+J20gdXNpbmcgeW91IFZPUDIgY29kZSBvbiByazM1NjYgdHZib3ggKHg5Ni14Nikgd2l0aCB2ZXJ5
+IGdvb2QgcmVzdWx0cy4KCkkgaGF2ZSBqdXN0IGZldyBxdWVzdGlvbnM6CgoxLiBob3cgc3VwcG9y
+dCBmb3IgQ0VDIGxvb2tzL3Byb3NwZWN0cyAocGxhbnMgZm9yIGZ1dHVyZSwgbm90IGluIHRoaXMg
+Y29kZSwgZXhwZWN0aW5nIG90aGVycyBzaG91bGQgaW1wbGVtZW50LCBldGMpPwoKMi4gVk9QMiBj
+b2RlIHdvcmtzIG5pY2UgZm9yIG1lIGZvciB4MTEvZ2xhbW91ciBhbmQgZm9yIEVHTEZTIHdpdGgg
+RUdMIERNQWJ1ZiByZW5kZXJpbmcgYnkgTWVzYSBFR0xfTElOVVhfRE1BX0JVRl9FWFQuCkkgaGF2
+ZSBpc3N1ZSBob3dldmVyIHdpdGggYXBwLiByZW5kZXJpbmcgdG8gRFJNIHBsYW5lcyAoR1VJIGlz
+IERSTSBwbGFuZTEsIHZpZGVvIGlzIERSTSBwYW5lMikuIApNeSBwcHAgc3RhcnRzL3dvcmtzIHdp
+dGhvdXQgYW55IGVycm9ycyBpbiBsb2cgLSBidXQgc2NyZWVuIHN0YXlzIHdpdGgga2VybmVsIG1l
+c3NhZ2VzIGNvbnRlbnQuCihpdCBsb29rcyB0byBtZSBsaWtlIGkuZS4gYXBwIHJlbmRlcnMgdG8g
+RFJNIHBsYW5lIGJ1dCBEUk0gZGlzcGxheSBkcml2ZXIgbm90IHBhc3MgaXQgdG8gQ1JUQy4ganVz
+dCB3aWxkIGd1ZXNzIGhlcmUuLi4pLgoKMy4gaW4ga2VybmVsIGRtZXNnIEkgaGF2ZSBtYW55OgoK
+InJvY2tjaGlwLWRybSBkaXNwbGF5LXN1YnN5c3RlbTogW2RybV0gKkVSUk9SKiBVbnN1cHBvcnRl
+ZCBmb3JtYXQgbW9kaWZpZXIgMHg4MTAwMDAwMDAwMDAwMDEiLgoKSXQgY29tZXMgZnJvbSBNRVNB
+IGkgdGhpbmsgLSBidXQgaSBzdXNwZWN0IGJlY2F1c2UgVk9QMiBwcm92aWRlcyB1bmtub3duL3dy
+b25nIERSTSBtb2RpZmllciB0byBtZXNhPy4KSSdtIG5vdCBzdXJlIGhvdyB0byBwcm9ncmVzcyB3
+aXRoIHRoaXMgKHRhbGsgdG8geW91IG9yIGludm9sdmUgTUVTQSBkZXZzIG9yIHdhaXQgZm9yIFZP
+UDIgdjQpPwoKQWdhaW46IGdyZWF0IHdvcmsgd2l0aCBWT1AyIG9uIHJrMzU2eCEKCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
