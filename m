@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 921E4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 11:47:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8491BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 12:00:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l1JdTaHn5ZT6bNt+FaoE3XRwgog4FMMlwvl/e0v+Qt8=; b=zP1CPLnbXv1F5a
-	LwuicAcmknw7rMDmzTUqMLRnpwOwDqdU2CaBd3L8WMyWZj6hlw7+uWp2V75umUkKQhdn+XhSsH6VM
-	8orN+1DCrz/wNNCvUQ7zI6w5/bMk+pvPfpmzSFBF5QPeuoAhnK7D2zIwldftsKhp/eMAq+py9kkBa
-	RO3ow+YuejzhyPH+o+iCljEMzFappjcgeVSboUVJ/BeetHrVqJnY08+iaLrn21q3FGYq4CDM3RzYu
-	MZFGiX1xBYuYo7VnaGKd7EfIhyHCdSq/VsKOiXJ9pjhs3W+pY6WLfs3yiiTBF9ud63thBKDA83xqA
-	kVNpVsimOckl9KHDLZ+Q==;
+	List-Owner; bh=VSdt+TxCzvEn58BRaV8A5gE4dRmW437aArQ+uVl1AKY=; b=0X1f5stjJUdKnP
+	Iragq1CdNb6Xmp/P32QJ57FIaf4FtTurcD+TfyI5vXgWe6Yge2/J0D4s7LNRfbac1B+vphsrFtd2D
+	FNr4HvFbcaUacTkcGvdpHr/lk8TGWOxFqFCQN56w4wzQY1DptJx/2HMYZcmm3IFGfIuOijGUgy+Pw
+	yHwteXW6z+QItN+umWiF/RBs9GaIKKgE7MPT2EFnvdiigef2w2QYS6PmPueXdNujJ6cz3aQNVR8Qt
+	3yooWqQS3hJ4CpfAEU5kHHummylKITz9zdN5hFTnOEVfKosHwi/fH4ZHyfGgiMOA3Eg4VwvUg6FTM
+	1c8bSg/WCOMHoMvVMYpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA9RB-005ENK-C2; Wed, 19 Jan 2022 11:47:37 +0000
-Received: from honk.sigxcpu.org ([24.134.29.49])
+	id 1nA9dM-005ID4-7S; Wed, 19 Jan 2022 12:00:12 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA9Qv-005EIG-U8; Wed, 19 Jan 2022 11:47:24 +0000
-Received: from localhost (localhost [127.0.0.1])
- by honk.sigxcpu.org (Postfix) with ESMTP id F3A14FB03;
- Wed, 19 Jan 2022 12:47:15 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at honk.sigxcpu.org
-Received: from honk.sigxcpu.org ([127.0.0.1])
- by localhost (honk.sigxcpu.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y9w4dTYgLJjm; Wed, 19 Jan 2022 12:47:14 +0100 (CET)
-Date: Wed, 19 Jan 2022 12:47:12 +0100
-From: Guido =?iso-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
-To: Liu Ying <victor.liu@nxp.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-imx@nxp.com,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Heiko Stuebner <heiko@sntech.de>, Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH v2] phy: dphy: Correct clk_pre parameter
-Message-ID: <Yef6QJMNm1AAabp/@qwark.sigxcpu.org>
-References: <20220119023714.1498508-1-victor.liu@nxp.com>
+ id 1nA9dI-005IBk-SZ
+ for linux-rockchip@lists.infradead.org; Wed, 19 Jan 2022 12:00:10 +0000
+Received: by mail-ed1-x530.google.com with SMTP id j23so4944453edp.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 19 Jan 2022 04:00:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8BZXEWpLZHNGFLnHvF+VUrdwjsLd9cNgSucSnPROzJ4=;
+ b=OzbGVXBL5geph+h5UpYKQFMaYOvOFUNOW9r1GtHvF42MqCILSEJuzWweeMYMiVywz2
+ HIWYHcUvDh8D1JM1GPIIqNL+UYPrBNH/BN0Vx+hhuAGi8Rd/QYIjii/K81k0nSBGY9qg
+ tEdOi9gydP/ZKVyHMhD5nflgNWmoOZ7EC4sRylfCwNI0OjBN9xqW8/fOuBaNXFFHDevA
+ TDloC4Lcx9EsoIL0rl+Vq05B6PQLVDuFpLcBbEG6f6jOa1KsyGRDyuIfg+eiyizj0GvX
+ 163UvWCZZZtx7r6z9TIn0lwEGPQpbvJpa9NEEtZ3NPCKKce9ZLL6B3X5/opzn/anpWK9
+ HwMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8BZXEWpLZHNGFLnHvF+VUrdwjsLd9cNgSucSnPROzJ4=;
+ b=unco4W+A+nM+DUys9qcradecbrSZSG5xUBPAvxiMhGw3IcncVE/6Mdmjo7vKWpg+pG
+ zuKBzbyb25WKSQ9nT82957GiIbPBsiatKeJ3HxAjq7bGiQjNuQQDZeVkPZ8RLGjM3zAV
+ rD4CbOcWGEa2hC22oSzhs7J/gCMK36I0Ih+eHxmx+In6PNTgdui24xMyanx9ZqE1FpDL
+ DOv5soJ4lysmc6v0Bstp9dJCBAteiGC2auKKpHsTrpq9PQGZLBaODnrJRBM6tjXL95qG
+ A74Zn55EJjAAt308Fv4BIDcK9enwW9Asv/6cU16xNrJUu3pSVOv/dGVuOgoiGQ2KCbGV
+ Y6XA==
+X-Gm-Message-State: AOAM531WfAAdRavtEtQJAr7TcG2W4PHPQhIVrX6jP4d21l4xraa8G4gG
+ J0zcGzxrG5INbPG4sl9xWDnbZ6/QfixVuOnehlkXkA==
+X-Google-Smtp-Source: ABdhPJx698OCGgL9gobCcTHcx/x3zyqw6IuDjzeKHZeQHHEMq40nl0OIDYQzfYebVsR+hUN+VulaPBPAjUESyzV4Gqc=
+X-Received: by 2002:a17:907:972a:: with SMTP id
+ jg42mr25276206ejc.757.1642593607306; 
+ Wed, 19 Jan 2022 04:00:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220119023714.1498508-1-victor.liu@nxp.com>
+References: <20220107093455.73766-1-wenst@chromium.org>
+ <20220107093455.73766-2-wenst@chromium.org>
+ <Yecq111pZDP9XFNO@eze-laptop>
+ <CAGXv+5GfNgQGJOBihdpGQDbdx-1co_wi0m=-HyxiHDn-kKZBsA@mail.gmail.com>
+In-Reply-To: <CAGXv+5GfNgQGJOBihdpGQDbdx-1co_wi0m=-HyxiHDn-kKZBsA@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Wed, 19 Jan 2022 08:59:51 -0300
+Message-ID: <CAAEAJfBM4d4hd1Av_TO-WVXQoUCNUckm+YHawdg6PY3urkB9nA@mail.gmail.com>
+Subject: Re: [PATCH RFT v2 1/8] media: hantro: jpeg: Relax register writes
+ before write starting hardware
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ linux-media <linux-media@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_034722_194626_47E06D24 
-X-CRM114-Status: GOOD (  30.48  )
+X-CRM114-CacheID: sfid-20220119_040009_145930_1D2C9080 
+X-CRM114-Status: GOOD (  41.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,231 +89,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-On Wed, Jan 19, 2022 at 10:37:14AM +0800, Liu Ying wrote:
-> The D-PHY specification (v1.2) explicitly mentions that the T-CLK-PRE
-> parameter's unit is Unit Interval(UI) and the minimum value is 8.  Also,
-> kernel doc of the 'clk_pre' member of struct phy_configure_opts_mipi_dphy
-> mentions that it should be in UI.  However, the dphy core driver wrongly
-> sets 'clk_pre' to 8000, which seems to hint that it's in picoseconds.
-> And, the kernel doc of the 'clk_pre' member wrongly says the minimum value
-> is '8 UI', instead of 8.
-> =
+On Wed, 19 Jan 2022 at 07:09, Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> Hi,
+>
+> On Wed, Jan 19, 2022 at 5:02 AM Ezequiel Garcia
+> <ezequiel@vanguardiasur.com.ar> wrote:
+> >
+> > Hi Chen-Yu,
+> >
+> > The series looks good, thanks for picking up this task.
+> >
+> > Just a one comment.
+> >
+> > On Fri, Jan 07, 2022 at 05:34:48PM +0800, Chen-Yu Tsai wrote:
+> > > In the earlier submissions of the Hantro/Rockchip JPEG encoder driver, a
+> > > wmb() was inserted before the final register write that starts the
+> > > encoder. In v11, it was removed and the second-to-last register write
+> > > was changed to a non-relaxed write, which has an implicit wmb() [1].
+> > > The rockchip_vpu2 (then rk3399_vpu) variant is even weirder as there
+> > > is another writel_relaxed() following the non-relaxed one.
+> > >
+> > > Turns out only the last writel() needs to be non-relaxed. Device I/O
+> > > mappings already guarantee strict ordering to the same endpoint, and
+> > > the writel() triggering the hardware would force all writes to memory
+> > > to be observed before the writel() to the hardware is observed.
+> > >
+> > > [1] https://lore.kernel.org/linux-media/CAAFQd5ArFG0hU6MgcyLd+_UOP3+T_U-aw2FXv6sE7fGqVCVGqw@mail.gmail.com/
+> > >
+> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > > ---
+> > >  drivers/staging/media/hantro/hantro_h1_jpeg_enc.c        | 3 +--
+> > >  drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c | 3 +--
+> > >  2 files changed, 2 insertions(+), 4 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> > > index 1450013d3685..03db1c3444f8 100644
+> > > --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> > > +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
+> > > @@ -123,8 +123,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
+> > >               | H1_REG_AXI_CTRL_INPUT_SWAP32
+> > >               | H1_REG_AXI_CTRL_OUTPUT_SWAP8
+> > >               | H1_REG_AXI_CTRL_INPUT_SWAP8;
+> > > -     /* Make sure that all registers are written at this point. */
+> > > -     vepu_write(vpu, reg, H1_REG_AXI_CTRL);
+> > > +     vepu_write_relaxed(vpu, reg, H1_REG_AXI_CTRL);
+> > >
+> >
+> > As far as I can remember, this logic comes from really old Chromium Kernels.
+> > You might be right, and this barrier isn't needed... but then OTOH the comment
+> > is here for a reason, so maybe it is needed (or was needed on some RK3288 SoC revision).
+>
+> I just realized that my commit log is wrong.
+>
+> " ... a wmb() was inserted before the final register write that starts the
+> encoder. ... " . It is actually before the second-to-last register write.
+>
+> > I don't have RK3288 boards near me, but in any case, I'm not sure
+> > we'd be able to test this easily (maybe there are issues that only
+> > trigger under a certain load).
+>
+> I see. I do have a Veyron around that I haven't used in awhile. But as you
+> said, it might not be an obvious hardware limitation.
+>
+> > I'd personally avoid this one change, but if you are confident enough with it
+> > that's fine too.
+>
+> Unfortunately they didn't leave a whole lot of clues around. For most hardware,
+> as I mentioned in the commit log, I think the final non-relaxed write should
+> suffice. I'd point to the decoder drivers not having any barriers or
+> non-relaxed writes except the final one, but IIUC they are actually two
+> distinct pieces of hardware.
+>
+> I suspect we will never know. This JPEG encoder doesn't seem to get used
+> a lot. The VP8 and H.264 encoders on ChromeOS work correctly without the
+> extra barrier and get tested a lot, but that's only testing the RK3399.
+>
+> Hans, would it be possible for you to skip this patch and pick the rest?
+> Or would you like me to resent without this one?
+>
 
-> So, let's fix both the dphy core driver and the kernel doc of the 'clk_pr=
-e'
-> member to correctly reflect the T-CLK-PRE parameter's unit and the minimum
-> value according to the D-PHY specification.
-> =
+If you decide to resend, feel free to add:
 
-> I'm assuming that all impacted custom drivers shall program values in
-> TxByteClkHS cycles into hardware for the T-CLK-PRE parameter.  The D-PHY
-> specification mentions that the frequency of TxByteClkHS is exactly 1/8
-> the High-Speed(HS) bit rate(each HS bit consumes one UI).  So, relevant
-> custom driver code is changed to program those values as
-> DIV_ROUND_UP(cfg->clk_pre, BITS_PER_BYTE), then.
-> =
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-> Note that I've only tested the patch with RM67191 DSI panel on i.MX8mq EV=
-K.
-> Help is needed to test with other i.MX8mq, Meson and Rockchip platforms,
-> as I don't have the hardwares.
-> =
+to the whole series.
 
-> Fixes: 2ed869990e14 ("phy: Add MIPI D-PHY configuration options")
-> Cc: Andrzej Hajda <andrzej.hajda@intel.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Robert Foss <robert.foss@linaro.org>
-> Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-> Cc: Jonas Karlman <jonas@kwiboo.se>
-> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: Kishon Vijay Abraham I <kishon@ti.com>
-> Cc: Vinod Koul <vkoul@kernel.org>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Jerome Brunet <jbrunet@baylibre.com>
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Guido G=FCnther <agx@sigxcpu.org>
-> Tested-by: Liu Ying <victor.liu@nxp.com> # RM67191 DSI panel on i.MX8mq E=
-VK
-> Signed-off-by: Liu Ying <victor.liu@nxp.com>
-> ---
-> v1->v2:
-> * Use BITS_PER_BYTE macro. (Andrzej)
-> * Drop dsi argument from ui2bc() in nwl-dsi.c.
-> =
-
->  drivers/gpu/drm/bridge/nwl-dsi.c                 | 12 +++++-------
->  drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c    |  3 ++-
->  drivers/phy/phy-core-mipi-dphy.c                 |  4 ++--
->  drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c |  3 ++-
->  include/linux/phy/phy-mipi-dphy.h                |  2 +-
->  5 files changed, 12 insertions(+), 12 deletions(-)
-> =
-
-> diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nw=
-l-dsi.c
-> index a7389a0facfb..af07eeb47ca0 100644
-> --- a/drivers/gpu/drm/bridge/nwl-dsi.c
-> +++ b/drivers/gpu/drm/bridge/nwl-dsi.c
-> @@ -7,6 +7,7 @@
->   */
->  =
-
->  #include <linux/bitfield.h>
-> +#include <linux/bits.h>
->  #include <linux/clk.h>
->  #include <linux/irq.h>
->  #include <linux/math64.h>
-> @@ -196,12 +197,9 @@ static u32 ps2bc(struct nwl_dsi *dsi, unsigned long =
-long ps)
->  /*
->   * ui2bc - UI time periods to byte clock cycles
->   */
-> -static u32 ui2bc(struct nwl_dsi *dsi, unsigned long long ui)
-> +static u32 ui2bc(unsigned int ui)
->  {
-> -	u32 bpp =3D mipi_dsi_pixel_format_to_bpp(dsi->format);
-> -
-> -	return DIV64_U64_ROUND_UP(ui * dsi->lanes,
-> -				  dsi->mode.clock * 1000 * bpp);
-> +	return DIV_ROUND_UP(ui, BITS_PER_BYTE);
->  }
->  =
-
->  /*
-> @@ -232,12 +230,12 @@ static int nwl_dsi_config_host(struct nwl_dsi *dsi)
->  	}
->  =
-
->  	/* values in byte clock cycles */
-> -	cycles =3D ui2bc(dsi, cfg->clk_pre);
-> +	cycles =3D ui2bc(cfg->clk_pre);
->  	DRM_DEV_DEBUG_DRIVER(dsi->dev, "cfg_t_pre: 0x%x\n", cycles);
->  	nwl_dsi_write(dsi, NWL_DSI_CFG_T_PRE, cycles);
->  	cycles =3D ps2bc(dsi, cfg->lpx + cfg->clk_prepare + cfg->clk_zero);
->  	DRM_DEV_DEBUG_DRIVER(dsi->dev, "cfg_tx_gap (pre): 0x%x\n", cycles);
-> -	cycles +=3D ui2bc(dsi, cfg->clk_pre);
-> +	cycles +=3D ui2bc(cfg->clk_pre);
->  	DRM_DEV_DEBUG_DRIVER(dsi->dev, "cfg_t_post: 0x%x\n", cycles);
->  	nwl_dsi_write(dsi, NWL_DSI_CFG_T_POST, cycles);
->  	cycles =3D ps2bc(dsi, cfg->hs_exit);
-> diff --git a/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c b/drivers/phy/=
-amlogic/phy-meson-axg-mipi-dphy.c
-> index cd2332bf0e31..fdbd64c03e12 100644
-> --- a/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c
-> +++ b/drivers/phy/amlogic/phy-meson-axg-mipi-dphy.c
-> @@ -9,6 +9,7 @@
->  =
-
->  #include <linux/bitfield.h>
->  #include <linux/bitops.h>
-> +#include <linux/bits.h>
->  #include <linux/clk.h>
->  #include <linux/delay.h>
->  #include <linux/io.h>
-> @@ -250,7 +251,7 @@ static int phy_meson_axg_mipi_dphy_power_on(struct ph=
-y *phy)
->  		     (DIV_ROUND_UP(priv->config.clk_zero, temp) << 16) |
->  		     (DIV_ROUND_UP(priv->config.clk_prepare, temp) << 24));
->  	regmap_write(priv->regmap, MIPI_DSI_CLK_TIM1,
-> -		     DIV_ROUND_UP(priv->config.clk_pre, temp));
-> +		     DIV_ROUND_UP(priv->config.clk_pre, BITS_PER_BYTE));
->  =
-
->  	regmap_write(priv->regmap, MIPI_DSI_HS_TIM,
->  		     DIV_ROUND_UP(priv->config.hs_exit, temp) |
-> diff --git a/drivers/phy/phy-core-mipi-dphy.c b/drivers/phy/phy-core-mipi=
--dphy.c
-> index 288c9c67aa74..ccb4045685cd 100644
-> --- a/drivers/phy/phy-core-mipi-dphy.c
-> +++ b/drivers/phy/phy-core-mipi-dphy.c
-> @@ -36,7 +36,7 @@ int phy_mipi_dphy_get_default_config(unsigned long pixe=
-l_clock,
->  =
-
->  	cfg->clk_miss =3D 0;
->  	cfg->clk_post =3D 60000 + 52 * ui;
-> -	cfg->clk_pre =3D 8000;
-> +	cfg->clk_pre =3D 8;
->  	cfg->clk_prepare =3D 38000;
->  	cfg->clk_settle =3D 95000;
->  	cfg->clk_term_en =3D 0;
-> @@ -97,7 +97,7 @@ int phy_mipi_dphy_config_validate(struct phy_configure_=
-opts_mipi_dphy *cfg)
->  	if (cfg->clk_post < (60000 + 52 * ui))
->  		return -EINVAL;
->  =
-
-> -	if (cfg->clk_pre < 8000)
-> +	if (cfg->clk_pre < 8)
->  		return -EINVAL;
->  =
-
->  	if (cfg->clk_prepare < 38000 || cfg->clk_prepare > 95000)
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/p=
-hy/rockchip/phy-rockchip-inno-dsidphy.c
-> index 347dc79a18c1..630e01b5c19b 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-> @@ -5,6 +5,7 @@
->   * Author: Wyon Bi <bivvy.bi@rock-chips.com>
->   */
->  =
-
-> +#include <linux/bits.h>
->  #include <linux/kernel.h>
->  #include <linux/clk.h>
->  #include <linux/iopoll.h>
-> @@ -364,7 +365,7 @@ static void inno_dsidphy_mipi_mode_enable(struct inno=
-_dsidphy *inno)
->  	 * The value of counter for HS Tclk-pre
->  	 * Tclk-pre =3D Tpin_txbyteclkhs * value
->  	 */
-> -	clk_pre =3D DIV_ROUND_UP(cfg->clk_pre, t_txbyteclkhs);
-> +	clk_pre =3D DIV_ROUND_UP(cfg->clk_pre, BITS_PER_BYTE);
->  =
-
->  	/*
->  	 * The value of counter for HS Tlpx Time
-> diff --git a/include/linux/phy/phy-mipi-dphy.h b/include/linux/phy/phy-mi=
-pi-dphy.h
-> index a877ffee845d..59a5e77ab409 100644
-> --- a/include/linux/phy/phy-mipi-dphy.h
-> +++ b/include/linux/phy/phy-mipi-dphy.h
-> @@ -42,7 +42,7 @@ struct phy_configure_opts_mipi_dphy {
->  	 * the transmitter prior to any associated Data Lane beginning
->  	 * the transition from LP to HS mode.
->  	 *
-> -	 * Minimum value: 8 UI
-> +	 * Minimum value: 8
->  	 */
->  	unsigned int		clk_pre;
-
-
-Tested on the Librem 5 (imx8mq) with it's rather picky panel:
-
-Tested-by: Guido G=FCnther <agx@sigxcpu.org>
-
-Cheers
- -- Guido
-
-
->  =
-
-> -- =
-
-> 2.25.1
-> =
-
+Thanks,
+Ezequiel
 
 _______________________________________________
 Linux-rockchip mailing list
