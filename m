@@ -4,74 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948E2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 05:59:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 436DCC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 07:36:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9kK0qjWrPFpAq+x56uk6nckJdCvQNWIx2op/sdJL5ZI=; b=0v1rhag2LLgQoK
-	cM3HxLsYa64clqKyOozSOJcGgl5eunBGozSMvi83K/+QUuKzCo5wiGZ3dMWZguo9is/L2cmkHKS+a
-	rBiZ6jATbbAlvcialDHZomuwf9TgZPVhz8i+YFYWhhynbJKWBONhWsVnd7MiY+Kke6OLnKngyw2Cr
-	PqpyWmfnrFakiE6Ha7tXk9fwm3RFSt4sDXjDlsZoJlvc8TlDe8lwpMezHGrzeaTSciw5qnFKX7TF6
-	aDKvF3jO8pLktc2ac+8PVUVLbFIHF3E+1IQ7Wv4aBFOjwV63BvO1C1XlQ02wiTgsyokzcjhvSGtL3
-	6yfBcdLLN6urwF/y+IFA==;
+	List-Owner; bh=HlpelG+bdgwaNX9xSLu/SF9rEOEu2lvMtMmLMNNNas4=; b=dQh+8a/wMnvlSs
+	f4CUFRuAdh/EQWBxv1BmFpUdG7kk8pOqmjQ1airMzMBvoZCVWx2KJDGiwiLJyBAdEx0WCK55yRbyN
+	S406Pu3UCUhk9Zd/i0gGXGGbfCIyNMFGpay/FUMQ5tai03+I9szhOk/FSe1UOvpPVctlR/1zhHo2r
+	j5Go63ppGZNOCAeR5yfnHdLRxMUYhgnm58ZUG/PmlUAISKIRHc81yEedlpsE+teR90D+FV6fqVQxo
+	DSxRh/q1q9KEtzde5s6fjSPhpu2Hi0kqAebgi7t+e6awGeBqtLPvXZFx8H4wN6HICMah4a1lEGede
+	BooFl+TYLh8SX1CZFB7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA40X-003tk6-62; Wed, 19 Jan 2022 05:59:45 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1nA5Vd-004Bpr-5Y; Wed, 19 Jan 2022 07:35:57 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA40U-003tiN-GV
- for linux-rockchip@lists.infradead.org; Wed, 19 Jan 2022 05:59:43 +0000
-Received: by mail-lf1-x129.google.com with SMTP id o12so4798563lfu.12
- for <linux-rockchip@lists.infradead.org>; Tue, 18 Jan 2022 21:59:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1tKYVg7wJMJMNFKIyw+d3Kv62PM5IDYj6Uiog3M1guQ=;
- b=O3rjR1xwJ5RJa/8Pr4j+o/xz2ODymM24FgRvDAyyXVz801NpNIj40tnMPXagEzzIdN
- YgApJ9Se2RtCuzQIBr9UoxOYieOUmAITh7Ff2mH+sSXNnt/MyPTQm0hxbsds1OhLg9Lx
- iGrVXc3V0OyRFdbBmsPvPpedratR1otyTGqBk=
+ id 1nA5VZ-004Bof-8r
+ for linux-rockchip@lists.infradead.org; Wed, 19 Jan 2022 07:35:55 +0000
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 9561140050
+ for <linux-rockchip@lists.infradead.org>; Wed, 19 Jan 2022 07:35:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1642577745;
+ bh=ov9egi5r5E4XVL9ynR9hw1P76CtrpDcSLc1Oc2aKDbw=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=gxLylVZri5t+kiY0MNzi0fhQ8Dl/PG54f5u9ZZcsY628Q/6i+R64bBocxz65P7+vl
+ VNxRJUMyFasYobCA3ZS8bYm15EF2VXHOIH7B2714u4BVzRK3cIRzc/Da1MILNdqfq3
+ bfEj6dlhcCz3JeF+AwEf0fNY0VVpwaSOgUAAEHQ+ePTPnWVW8I19kCn2rLCTyiS5UZ
+ vSTxd8pGkb/qxMQA5KG95pmfC9KufIfWCIh+l+EVz5pqR08qNDU4+OdL+5kPkUOMcq
+ gxqAa5PWcR4Rfh5MfUPPbOk+R4tZL+ENpuveMWlnd8cKgI3eTOAt4UvJLpKgavUm69
+ sguu60/4Uxr4Q==
+Received: by mail-ed1-f71.google.com with SMTP id
+ t11-20020aa7d70b000000b004017521782dso1409633edq.19
+ for <linux-rockchip@lists.infradead.org>; Tue, 18 Jan 2022 23:35:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1tKYVg7wJMJMNFKIyw+d3Kv62PM5IDYj6Uiog3M1guQ=;
- b=7hvuZJTwyqoG2nquaUcSBcVnnQfi+meEPvQYXxVGS+2hNnFJe8pZl43RBsuJqTMNLS
- lmNh6dxElI6wpTy8HBsVLXPdwqBfQ7v96X2V8371wSua++uhPAK4QgoyF0hfJqMegkT+
- 6uElS05Mk+9HR9iCV6A/8WckVkX9F2rXvUpl9ueSQYDL+jJYzFbDjkGbmC6YN04Tnors
- 19f4gok21uTFrqEmGjgjdXLobI6/xj6xsOd7aOko6/ue//qT/Lmp5IqKsn95PVFJWFNU
- OZaG4m8XquOyQxZGFHK/cXCMDGxReIE0ZbkMm+f71pkqSOj1fOOiQ4LWtHHAbBL/347q
- gPBQ==
-X-Gm-Message-State: AOAM531AiE13dAqYvfh96w8+WZM6YirEtwcluyMndRp91iwkIR/Wt+sX
- swycABYKR7vj2Y+SSpFviiPHyIgb6d6ZdHDVayj9Nw==
-X-Google-Smtp-Source: ABdhPJxmDuwkFJziW4xvLsZmdp9HyrtsLl84OWqtBxpyS7OeNwc36CaaRT+rymCOgrfcQNTO0R57Np83PfJ/v382SjQ=
-X-Received: by 2002:a05:6512:1320:: with SMTP id
- x32mr25449431lfu.597.1642571980606; 
- Tue, 18 Jan 2022 21:59:40 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=ov9egi5r5E4XVL9ynR9hw1P76CtrpDcSLc1Oc2aKDbw=;
+ b=tXm2cK0YxkiIjeNLLaOFha8D0jBd0pU1Lv/usCt1m27aU6sxFmgq4EqO6vSaOk1u5N
+ afTkUA3ODnLi/axdrB7NU4Jqahlim0rRnFlQZak8dzDriiB1Y9EdCpGNkKMVg9r9u+SM
+ NiRYHMrhxfbXjLcXf3IvHFnKXm7TgFMpuaYJrz8fUyuXD4vjijhgEqkY3+vJW5u9HOju
+ vYyxucSATOyCVvqD5W+gt+q/jtGNPr7FWtSKEpty+XMMjOfoSGnQ/N3SFCZWVjH58AI3
+ OSSSlI9IJq2Aykg7QeLdo1pDsyN6kRwT0YfvSXXypciyJbFsz0WS/VDlzSNWF4u53NA5
+ Jknw==
+X-Gm-Message-State: AOAM530LLVW4ddFZF9g4tr1RFPhg7P9GVEEvSm7agGg/mUhE3a1jgDPW
+ ZjaLIPXi2CbEAkzIwQ5xWyyw72T2Ix82/5AA2IZSi0nQEOJQG7xwi55YHpkwPaXMWJNt4L0ET0F
+ eRm9PUVssl920SENnqqPNDr7tSxDNY8rQISZdoFadJEP8ajr6rw==
+X-Received: by 2002:a05:6402:214b:: with SMTP id
+ bq11mr21727247edb.380.1642577745119; 
+ Tue, 18 Jan 2022 23:35:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzGlkI4a+0j+FDYNuwrTHdaztz/FiAtsum5k959TJvtVGlwEMpbTA7l76r5zGrSraIO2PK8xw==
+X-Received: by 2002:a05:6402:214b:: with SMTP id
+ bq11mr21727224edb.380.1642577744928; 
+ Tue, 18 Jan 2022 23:35:44 -0800 (PST)
+Received: from [192.168.0.42] (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id t25sm779819edr.90.2022.01.18.23.35.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Jan 2022 23:35:44 -0800 (PST)
+Message-ID: <b303e38e-109b-e049-f536-c5b00830249b@canonical.com>
+Date: Wed, 19 Jan 2022 08:35:42 +0100
 MIME-Version: 1.0
-References: <20220114230209.4091727-1-briannorris@chromium.org>
- <20220114150129.v2.3.I3c79b1466c14b02980071221e5b99283cd26ec77@changeid>
- <CAGXv+5HC00YU6ARtGDahxWLqivvUCowh7wDq5H5OzoGO9htB+g@mail.gmail.com>
- <YecgcwXrQNzCesMN@google.com>
-In-Reply-To: <YecgcwXrQNzCesMN@google.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 19 Jan 2022 13:59:29 +0800
-Message-ID: <CAGXv+5HANAorgJhSupH96V_n01VzvO5mY6LXf=bzzMi3ek089w@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] ASoC: rk3399_gru_sound: Wire up DP jack detection
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, 
- linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>, 
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, 
- Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
- linux-kernel@vger.kernel.org, 
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [PATCH] dt-bindings: Drop unnecessary pinctrl properties
+Content-Language: en-US
+To: Rob Herring <robh@kernel.org>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ - <patches@opensource.cirrus.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
+ alsa-devel@alsa-project.org
+References: <20220119015325.2438277-1-robh@kernel.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220119015325.2438277-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_215942_579465_B922DC76 
-X-CRM114-Status: GOOD (  27.11  )
+X-CRM114-CacheID: sfid-20220118_233553_559497_349EC224 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +118,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 19, 2022 at 4:18 AM Brian Norris <briannorris@chromium.org> wrote:
->
-> Hi Chen-Yu,
->
-> On Mon, Jan 17, 2022 at 05:01:52PM +0800, Chen-Yu Tsai wrote:
-> > On Sat, Jan 15, 2022 at 7:03 AM Brian Norris <briannorris@chromium.org> wrote:
-> > >
-> > > Now that the cdn-dp driver supports plug-change callbacks, let's wire it
-> > > up.
-> > >
-> > > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > > ---
-> > >
-> > > (no changes since v1)
-> > >
-> > >  sound/soc/rockchip/rk3399_gru_sound.c | 20 ++++++++++++++++++++
-> > >  1 file changed, 20 insertions(+)
-> > >
-> > > diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
-> > > index e2d52d8d0ff9..eeef3ed70037 100644
-> > > --- a/sound/soc/rockchip/rk3399_gru_sound.c
-> > > +++ b/sound/soc/rockchip/rk3399_gru_sound.c
-> > > @@ -164,6 +164,25 @@ static int rockchip_sound_da7219_hw_params(struct snd_pcm_substream *substream,
-> > >         return 0;
-> > >  }
-> > >
-> > > +static struct snd_soc_jack cdn_dp_card_jack;
-> > > +
-> > > +static int rockchip_sound_cdndp_init(struct snd_soc_pcm_runtime *rtd)
-> > > +{
-> > > +       struct snd_soc_component *component = asoc_rtd_to_codec(rtd, 0)->component;
-> >
-> > Using snd_soc_card_get_codec_dai() might be a better choice throughout this
-> > driver. While it will work for the cdn_dp case, because it is the first DAI
-> > in |rockchip_dais[]|, all the invocations for the other codecs are likely
-> > returning the wrong DAI.
->
-> I'll admit, I'm not very familiar with the ASoC object model, so you may
-> well be correct that there's something fishy in here. But I did trace
-> through the objects involved here, and we *are* getting the correct DAI
-> for both this case and the DA7219 case (preexisting code).
+On 19/01/2022 02:53, Rob Herring wrote:
+> For a single pinctrl mode, it is not necessary to define pinctrl
+> properties as the tools always allow pinctrl properties.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../display/rockchip/rockchip,rk3066-hdmi.yaml         |  8 --------
+>  Documentation/devicetree/bindings/input/gpio-keys.yaml |  6 ------
+>  .../devicetree/bindings/pinctrl/cirrus,lochnagar.yaml  |  9 ---------
+>  .../devicetree/bindings/pinctrl/cirrus,madera.yaml     | 10 ----------
+>  .../devicetree/bindings/sound/samsung-i2s.yaml         |  6 ------
+>  5 files changed, 39 deletions(-)
+> 
 
-Neither am I, so ...
 
-> It looks like we actually have a new runtime for each of our static
-> dai_links:
->
-> devm_snd_soc_register_card()
->   ...
->   for_each_card_prelinks()
->     snd_soc_add_pcm_runtime()
->
-> So I think this is valid to keep as-is.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 
-I missed this bit. As you say, things are good.
 
-> > For this particular patch it works either way, so
-> >
-> > Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> Thanks for looking!
-
-And thanks for double checking!
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
