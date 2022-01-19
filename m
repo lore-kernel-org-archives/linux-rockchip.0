@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1088DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Jan 2022 21:02:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83890C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Jan 2022 01:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EkYJ63IdnUT1O5/2m4G1nt6B2Q8wy5m5xafT0a2UaRw=; b=y5GL9bMwG2ZfLn
-	qXms44DssViydmOm5HVuB9B91IO4VZrRJYYZ16BL8kczuYeu9NMu3WbGDrLg0dY4SXxyAWwCgSHxS
-	bsDemc3+/h/05RSbhOqYa2vzcMv+MgSyF4Wp6NZf4L8xQcKgaZFrt9jKtXxv4UEEi4w7GgU3ZfhjE
-	q99pq3+AR22xw0zyV3Dz7MFBjRu2cOpCIKiUuhbf+gdL+scqXOm0M3depeKXBYe1C/kIEBUPsSWGi
-	8sb44xAr0/c53ufmEBoWuPa5uT+Nl9T9l4ZlNr5S68Vp4VZhAzimx8ZdkaPsbzaRydF2HMfxKBTQB
-	085SVo18bXU6ieMimzBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+JBmWuHW/n7hQXGenZFAUa9HLprCtRKfyBmOzWksMaQ=; b=LeFDhWJhRcKy0d
+	I6AK8BYelwsD5eGvdaiD0MDpVQdG097aMRBLOmrKMCLkuwpWarPHYi3bPTbZkBCFyXsK9MJ+bXXXB
+	lP99ZmANBIl8eIGEvxFsPLhkPDP2GSkVKXPKzhvf+pVhil02Mp8v8DIPlqtovbSfYtthFxgYgZUIR
+	k1dNdcsusDpdhV6KdXK2YkJWQF+ln8/7tU3FM4QRWGWCxtGmWa9DPYUwJOehj5XmaBPdw+lfKgJ2u
+	UrZpZ7XfY6ZHpXiQirMz8A7owSsQkMSS1410frMiILCB2dm92aksOWE5QMe+DZ7CpbxsQqB+Jx2on
+	zUGnXuUEu9/3avNcl8iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9vcY-002y93-Tw; Tue, 18 Jan 2022 21:02:26 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1nA0Be-003Tlq-KW; Wed, 19 Jan 2022 01:54:58 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9vcV-002y7E-7u
- for linux-rockchip@lists.infradead.org; Tue, 18 Jan 2022 21:02:25 +0000
-Received: by mail-ot1-x333.google.com with SMTP id
- l64-20020a9d1b46000000b005983a0a8aaaso189937otl.3
- for <linux-rockchip@lists.infradead.org>; Tue, 18 Jan 2022 13:02:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=1VLSpDu78a/QQtlbDHw8oRJ41Gic+mpyfMuI9CFwaS4=;
- b=oyfsdS43YUPbHomPJmvS7UB7JpqPg2VMwTN5ajXlyJmBBvFNT7pc6f8z+BD7YjMWzd
- oUSCXl+2cA5Ln44yyBF46k6vdsJdA1GYZNYZQpVGADN1ZjomOWKlxGF2uXmimH0nnvSR
- wCZhSpABsmN4J/VgIgQDS+odQ2TxhhutMFE95eMNCXO5AWCtFlArmqO+/RR6szL8q0ub
- 0RhUNLHj+M9bTk6u7jNOHPtBMrPM5r1cpTopnnJ8fT6uVESC/kmMS+XI388RhK9AIyM8
- ISh4ZNhG9TM9J0X5HDZ0decq+jfKGz641ylwXHBTdTA/jq9fJs1BFAzKyRGG/09n1GHu
- wapg==
+ id 1nA0BP-003Ti0-8d; Wed, 19 Jan 2022 01:54:44 +0000
+Received: by mail-ot1-f46.google.com with SMTP id
+ g1-20020a9d6481000000b00592d01f2b6eso1030386otl.5; 
+ Tue, 18 Jan 2022 17:54:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=1VLSpDu78a/QQtlbDHw8oRJ41Gic+mpyfMuI9CFwaS4=;
- b=DVtL3O4mlxC5dkwUg6y48mB3HTtuMVqBcrCZw9HapjOo8zumk9YXElbIMtiQRqC5Pc
- kuakoVndcfrn259Tg9UgyFvaNfAJb+J7b4anDmxbUem7EPiNyhYB+sMaXXnBDsF5Hx1M
- +Xz9a7EqDiTPG2Ka0LaGHXcjF/Rbb0ym7OEHiycB7V+A7tl1Orcj9DUyKqFUI46wtxqK
- GLqTbObyPNyJXJ8EYG+kPpuzsxF5Zx/WLwk69MWVgTQ7nGShfzw8jJD9ojWTNINcKGeu
- 2zeyEvi30LIzyCTAHtLM0Wo0MUE+yAxuzWsgcGSrBt8OFl+M3yVzALksqo1SGL/39Kfr
- aEyw==
-X-Gm-Message-State: AOAM533vjG0vLmRzEoFjGazlVFMya+y+zf0YSkKYUn0LHb2dsCBYSt6z
- wLLwGOaSbqn6vdjJAbt4O1hiZw==
-X-Google-Smtp-Source: ABdhPJy9JqUlPm4DjmcQEbF/c7bKPYBtmvOFvFI1wvmpsaCmzCHcGp9F8cZ10lhpzdzWUlzzZUoGbg==
-X-Received: by 2002:a9d:17cc:: with SMTP id j70mr21545588otj.313.1642539741207; 
- Tue, 18 Jan 2022 13:02:21 -0800 (PST)
-Received: from eze-laptop ([190.194.87.200])
- by smtp.gmail.com with ESMTPSA id j26sm4929362oou.29.2022.01.18.13.02.18
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=qwNF7gDQbaVP4ndpQ6YMR5OTB3DEGyDODGB0cvvqRfI=;
+ b=uEYedR7Ovzvu9hWciufYXXEtH85YpGYsrlYs7kEjbCbHhaBTf3w0uJVRqlwcp7KBFv
+ dHO9Af9zoyrdW1Wj8BLYc95P/4EZxxe556JQZuK5JYsopbxeV/9X/5ClXoVAxDe+buMW
+ kxVtNzRLI/uO4BGZTQ5ZDZVEA0LrYnpSj+0c49vCWDNr0MscUSvcR5/MY6apC9SnXTxR
+ zW8Mj8m2vLRS6ZTYPyTBxyt4yVi2kmbTn1DbQV8uKO7oPbzFhIZ/BU+7mF1NfpVIoeEl
+ GXng3XUJp3jgN22WsUV/eJu/Kb9QV/ZqMER1Dt+4GD2fdHMWujrpnNcH4ikJn393BPl9
+ XeEA==
+X-Gm-Message-State: AOAM532SN5ZFnWVHK7hSkHg64zkksB6yN/w5hTNf2Ncs5AijWcfJvuts
+ 675TGi6dqVFElZxazAQKUg==
+X-Google-Smtp-Source: ABdhPJzVUKXAC2YcMFSv4hVv2ACgxjnkM4ifG2UCVa32kabvoUCd5Cz5lVIyctz4yYEGV/7yATw++g==
+X-Received: by 2002:a9d:4b13:: with SMTP id q19mr22246546otf.300.1642557282257; 
+ Tue, 18 Jan 2022 17:54:42 -0800 (PST)
+Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.googlemail.com with ESMTPSA id x26sm8030086ote.78.2022.01.18.17.54.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jan 2022 13:02:19 -0800 (PST)
-Date: Tue, 18 Jan 2022 18:02:15 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RFT v2 1/8] media: hantro: jpeg: Relax register writes
- before write starting hardware
-Message-ID: <Yecq111pZDP9XFNO@eze-laptop>
-References: <20220107093455.73766-1-wenst@chromium.org>
- <20220107093455.73766-2-wenst@chromium.org>
+ Tue, 18 Jan 2022 17:54:41 -0800 (PST)
+From: Rob Herring <robh@kernel.org>
+To: Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ - <patches@opensource.cirrus.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-gpio@vger.kernel.org,
+ alsa-devel@alsa-project.org
+Subject: [PATCH] dt-bindings: Drop unnecessary pinctrl properties
+Date: Tue, 18 Jan 2022 19:53:25 -0600
+Message-Id: <20220119015325.2438277-1-robh@kernel.org>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220107093455.73766-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_130223_473077_6A9054BC 
-X-CRM114-Status: GOOD (  23.29  )
+X-CRM114-CacheID: sfid-20220118_175443_344605_EF5595B2 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,79 +90,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+For a single pinctrl mode, it is not necessary to define pinctrl
+properties as the tools always allow pinctrl properties.
 
-The series looks good, thanks for picking up this task.
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ .../display/rockchip/rockchip,rk3066-hdmi.yaml         |  8 --------
+ Documentation/devicetree/bindings/input/gpio-keys.yaml |  6 ------
+ .../devicetree/bindings/pinctrl/cirrus,lochnagar.yaml  |  9 ---------
+ .../devicetree/bindings/pinctrl/cirrus,madera.yaml     | 10 ----------
+ .../devicetree/bindings/sound/samsung-i2s.yaml         |  6 ------
+ 5 files changed, 39 deletions(-)
 
-Just a one comment.
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml
+index 008c144257cb..1a68a940d165 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml
+@@ -26,14 +26,6 @@ properties:
+   clock-names:
+     const: hclk
+ 
+-  pinctrl-0:
+-    maxItems: 2
+-
+-  pinctrl-names:
+-    const: default
+-    description:
+-      Switch the iomux for the HPD/I2C pins to HDMI function.
+-
+   power-domains:
+     maxItems: 1
+ 
+diff --git a/Documentation/devicetree/bindings/input/gpio-keys.yaml b/Documentation/devicetree/bindings/input/gpio-keys.yaml
+index dbe7ecc19ccb..7fe1966ea28a 100644
+--- a/Documentation/devicetree/bindings/input/gpio-keys.yaml
++++ b/Documentation/devicetree/bindings/input/gpio-keys.yaml
+@@ -88,12 +88,6 @@ patternProperties:
+             which can be disabled to suppress events from the button.
+           type: boolean
+ 
+-        pinctrl-0:
+-          maxItems: 1
+-
+-        pinctrl-names:
+-          maxItems: 1
+-
+       required:
+         - linux,code
+ 
+diff --git a/Documentation/devicetree/bindings/pinctrl/cirrus,lochnagar.yaml b/Documentation/devicetree/bindings/pinctrl/cirrus,lochnagar.yaml
+index 80020539c3bb..5cd512b7d5ba 100644
+--- a/Documentation/devicetree/bindings/pinctrl/cirrus,lochnagar.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/cirrus,lochnagar.yaml
+@@ -51,15 +51,6 @@ properties:
+       appropriate of the LOCHNAGARx_PIN_NUM_GPIOS define, see [3].
+     maxItems: 1
+ 
+-  pinctrl-0:
+-    description:
+-      A phandle to the default pinctrl state.
+-
+-  pinctrl-names:
+-    description:
+-      A pinctrl state named "default" must be defined.
+-    const: default
+-
+   pin-settings:
+     type: object
+     patternProperties:
+diff --git a/Documentation/devicetree/bindings/pinctrl/cirrus,madera.yaml b/Documentation/devicetree/bindings/pinctrl/cirrus,madera.yaml
+index e50d7ad5c229..c85f759ae5a3 100644
+--- a/Documentation/devicetree/bindings/pinctrl/cirrus,madera.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/cirrus,madera.yaml
+@@ -30,16 +30,6 @@ description: |
+     Documentation/devicetree/bindings/pinctrl/pinctrl-bindings.txt
+ 
+ properties:
+-  pinctrl-0:
+-    description:
+-      A phandle to the node containing the subnodes containing default
+-      configurations.
+-
+-  pinctrl-names:
+-    description:
+-      A pinctrl state named "default" must be defined.
+-    const: default
+-
+   pin-settings:
+     description:
+       One subnode is required to contain the default settings. It
+diff --git a/Documentation/devicetree/bindings/sound/samsung-i2s.yaml b/Documentation/devicetree/bindings/sound/samsung-i2s.yaml
+index 2e3628ef48df..84c4d6cba521 100644
+--- a/Documentation/devicetree/bindings/sound/samsung-i2s.yaml
++++ b/Documentation/devicetree/bindings/sound/samsung-i2s.yaml
+@@ -110,12 +110,6 @@ properties:
+       Internal DMA register base address of the audio
+       subsystem (used in secondary sound source).
+ 
+-  pinctrl-0:
+-    description: Should specify pin control groups used for this controller.
+-
+-  pinctrl-names:
+-    const: default
+-
+   power-domains:
+     maxItems: 1
+ 
+-- 
+2.32.0
 
-On Fri, Jan 07, 2022 at 05:34:48PM +0800, Chen-Yu Tsai wrote:
-> In the earlier submissions of the Hantro/Rockchip JPEG encoder driver, a
-> wmb() was inserted before the final register write that starts the
-> encoder. In v11, it was removed and the second-to-last register write
-> was changed to a non-relaxed write, which has an implicit wmb() [1].
-> The rockchip_vpu2 (then rk3399_vpu) variant is even weirder as there
-> is another writel_relaxed() following the non-relaxed one.
-> 
-> Turns out only the last writel() needs to be non-relaxed. Device I/O
-> mappings already guarantee strict ordering to the same endpoint, and
-> the writel() triggering the hardware would force all writes to memory
-> to be observed before the writel() to the hardware is observed.
-> 
-> [1] https://lore.kernel.org/linux-media/CAAFQd5ArFG0hU6MgcyLd+_UOP3+T_U-aw2FXv6sE7fGqVCVGqw@mail.gmail.com/
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  drivers/staging/media/hantro/hantro_h1_jpeg_enc.c        | 3 +--
->  drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c | 3 +--
->  2 files changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> index 1450013d3685..03db1c3444f8 100644
-> --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
-> @@ -123,8 +123,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
->  		| H1_REG_AXI_CTRL_INPUT_SWAP32
->  		| H1_REG_AXI_CTRL_OUTPUT_SWAP8
->  		| H1_REG_AXI_CTRL_INPUT_SWAP8;
-> -	/* Make sure that all registers are written at this point. */
-> -	vepu_write(vpu, reg, H1_REG_AXI_CTRL);
-> +	vepu_write_relaxed(vpu, reg, H1_REG_AXI_CTRL);
->  
-
-As far as I can remember, this logic comes from really old Chromium Kernels.
-You might be right, and this barrier isn't needed... but then OTOH the comment
-is here for a reason, so maybe it is needed (or was needed on some RK3288 SoC revision).
-
-I don't have RK3288 boards near me, but in any case, I'm not sure
-we'd be able to test this easily (maybe there are issues that only
-trigger under a certain load).
-
-I'd personally avoid this one change, but if you are confident enough with it
-that's fine too.
-
-Thanks!
-Ezequiel
-
->  	reg = H1_REG_ENC_CTRL_WIDTH(MB_WIDTH(ctx->src_fmt.width))
->  		| H1_REG_ENC_CTRL_HEIGHT(MB_HEIGHT(ctx->src_fmt.height))
-> diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> index 4df16f59fb97..b931fc5fa1a9 100644
-> --- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> +++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
-> @@ -152,8 +152,7 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
->  		| VEPU_REG_INPUT_SWAP8
->  		| VEPU_REG_INPUT_SWAP16
->  		| VEPU_REG_INPUT_SWAP32;
-> -	/* Make sure that all registers are written at this point. */
-> -	vepu_write(vpu, reg, VEPU_REG_DATA_ENDIAN);
-> +	vepu_write_relaxed(vpu, reg, VEPU_REG_DATA_ENDIAN);
->  
->  	reg = VEPU_REG_AXI_CTRL_BURST_LEN(16);
->  	vepu_write_relaxed(vpu, reg, VEPU_REG_AXI_CTRL);
-> -- 
-> 2.34.1.575.g55b058a8bb-goog
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
