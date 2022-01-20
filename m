@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66BD7C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jan 2022 17:15:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B4CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jan 2022 17:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JbREYQWGSe857SpJUgkU9xUrGsCOgVVElXUS9UEgy+Y=; b=z6r8gA56U07UmU
-	qGnnaAg5BbakRmNV/k+lWM55XjtNsnzfSwgw324PDqY9OCwbwqr1Kz6PRAriNXYUfFWpplLARFWGu
-	ktN544o+puulkam3suqMOaoDQDuXepZ2p8041fZhaNhXxSAqViEF2oWlFVFVVPsM9ed1lQlROFV18
-	qkdWt0QO7UpW60NC4gmrUEQcmCeUQCSDL4c1iI22r6CIwGlMoMrKs7oxUe39ryOTlQ3tTW7qdyIVa
-	vmQJCzIc4FJVaWImIm5vZpHwKJTpsL28+LGelYWg09E4pzviu8BtPhMaT+oM/mv6YWmzHSi43jvE3
-	JH253W9ak1vkxtpPLYWg==;
+	List-Owner; bh=LEi/QFl/iNhiZOyRorM0X2oWObzbxokXFMNb1cKQjiI=; b=Ju6AdILz9cAoeE
+	HuHiYoHif+wC3jMWVAfaI5HhHdGhmkC9P31tOYytna3JcnQ4uUMzHyXqKIOWmXYOMyd+e3xMnDs+u
+	/CQ5XPYntAyTHNCAM/9l8peY1YJA2K6uNI1Jt4wSv60ZdpI2kumkfMTcNkeQtwBJp300imrqU6lFQ
+	PPi4JWzT/xIr6DNy2UJn6rFt/VX9pV6yUNEsBwpENDCxWB9jaV34MmWxxOlVox+vfXwln+nqjDiCi
+	09WCWYAldXUYIJrHSSE2EkvsueNg4aopd/C764LGx58JNCUut7jYjwoPKhvCmhwIw1/p6skQfbQ6m
+	9wO5ZetPZtgnVOSsMjPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAb1w-00CWp5-Ew; Thu, 20 Jan 2022 17:15:24 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1nAbMF-00Cbft-GC; Thu, 20 Jan 2022 17:36:23 +0000
+Received: from mail-ot1-f47.google.com ([209.85.210.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAb1k-00CWlr-0T; Thu, 20 Jan 2022 17:15:13 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id k31so18195269ybj.4;
- Thu, 20 Jan 2022 09:15:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=yT9EWMbXP3RpUqS/+1Dk4Xv8nRloB/d7Q7cHoePCJnE=;
- b=fa3ZYN8+fz5YzTQKAWtvk7h1sj8oC1aulkN8mEFZ5sm3P0dELvjUg2NaNTA/i0nGxk
- +3N1pP2ksmeit0EXA5ESsz4LVeh5yKR3v7msZwIPNItK0RpUyNDuslOTVSOQ1NiGfCcR
- +/xttfAvjnmGUJS/KOMaL8vnSDfZI1v5sOQMFnUlxaW7E4k+7u2ZaYKyKyTXu/xtkBjT
- IyCaaFR+skv2ciOHLi4sHQjOnl6t7Z9537inBQ6nMRD/qCOZDPNGdTskI93atmJREE0R
- Ev2VQuda3siBav0PuCP3vgx3Rzxcdi7zjI1dStRpviLhEU4YVJtBCojJ1VpDTSChbuMu
- RSKA==
+ id 1nAbMC-00CbdK-FX; Thu, 20 Jan 2022 17:36:21 +0000
+Received: by mail-ot1-f47.google.com with SMTP id
+ x31-20020a056830245f00b00599111c8b20so8488847otr.7; 
+ Thu, 20 Jan 2022 09:36:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=yT9EWMbXP3RpUqS/+1Dk4Xv8nRloB/d7Q7cHoePCJnE=;
- b=coUqwIVA5mfSs6Q8S+X2n+9Uh8bCbEbHamnm8Q+ABS9B10pDTlxdYysU+GBOClDqmz
- Dmj6tYpuIAJ9W2dvr8f7IQ2sH0vOlqTDUq8LW2EIqzaT6ZpERko84VSk7Q3wmEsrYc0R
- nn7UHC/vhRrRAWdpMkfBOqQh5Uha5/RmO6hv6P735BrxO5+ZcCmhFGQNJIDUUNWFvDNf
- t8PAkItV9KPlY9YqgUz1yeYYURlN7tdY8kv5Tw98gbrokqhSN9M6PQqcQ7ie1Y3wn4b5
- kne8dGwYBAThbK7yhMvLRm4A+OU0RrVKYR5CDljhS7Z3Dr9kLaKn4IbcemEZu4uE7fmu
- cIKw==
-X-Gm-Message-State: AOAM532q4dTZi+B5MLDJd7YthHCwSYiIX8jujLcbmkfKZe8nfMNb574Z
- 2bVt3BeqNJM+rD6vmhuPM2IWfTuoKRa++X5YHEI=
-X-Google-Smtp-Source: ABdhPJzc4Y20EzjdiZVWoekW5D9g0NzOEhOYrbRg+LeU73fGt2mL90R25QRXcjd6M0f/xvFFDRbW5Gv53WEBJUHY7hI=
-X-Received: by 2002:a05:6902:150d:: with SMTP id
- q13mr24253821ybu.355.1642698908078; 
- Thu, 20 Jan 2022 09:15:08 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=qQlvojQIJlI1LuVZbEtkS+KlAzI9wBW3pw0XQI8LAMk=;
+ b=XoAYdCiDzvNQZq0PA2o763gtV9MqdTt7ZcAEU/3safpmZRFAmLmy7SSBuro8oYSQM5
+ eY7a6Zq00oWiToHLdVjklKx87vv3ebDZ3FfreXeh4iXciEeyWd2KgsTv3dV7EJ2OkC/y
+ lJyF1uZXU+oSMAXEVay4DHFasuLaRmfQ49zGBKrAMyttnYhjTq4hlTkK451zxvdNMgaO
+ YM6RkpBXI1pHpSLj2rKFQyT5a7FWSCD1/Y97MvR+iI12okIGhRySdUhleuDYeDUexkg0
+ plg86fcOrAgdhpOS12Uru2mcm0qw3tPZXsdFqEdvqeCXJEoHL8wekslnJo/l3eO99aQv
+ UtSA==
+X-Gm-Message-State: AOAM530Yha1Ip4GnbKTGMAZOy03pRzdatbuv77oAEslwU3/ti42lR9kq
+ Y5T8RQn7iDtOHH22uaIAbQ==
+X-Google-Smtp-Source: ABdhPJzCRxVNcMKOq7T+/Z1lxu7In4u72P8sWp+eMD1DsgHGhcN9VmWOc7txoszaZlPCUT1Kd3fnYg==
+X-Received: by 2002:a9d:5a01:: with SMTP id v1mr21602978oth.337.1642700179177; 
+ Thu, 20 Jan 2022 09:36:19 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id d4sm1651420otq.44.2022.01.20.09.36.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Jan 2022 09:36:18 -0800 (PST)
+Received: (nullmailer pid 1648421 invoked by uid 1000);
+ Thu, 20 Jan 2022 17:36:16 -0000
+Date: Thu, 20 Jan 2022 11:36:16 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ linux-rockchip@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, linux-kernel@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, dri-devel@lists.freedesktop.org,
+ linux-gpio@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ - <patches@opensource.cirrus.com>, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ devicetree@vger.kernel.org, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ linux-input@vger.kernel.org, Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ David Airlie <airlied@linux.ie>, Liam Girdwood <lgirdwood@gmail.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: Drop unnecessary pinctrl properties
+Message-ID: <YemdkDfmemrwab2Y@robh.at.kernel.org>
+References: <20220119015325.2438277-1-robh@kernel.org>
 MIME-Version: 1.0
-References: <20220119134948.1444965-1-quentin.schulz@theobroma-systems.com>
- <CAMdYzYr+UXU-x=OakdHnOzLe1e4Y0xdGR-rybsmpLCMGbsWwXg@mail.gmail.com>
- <3e87ed0a-8b79-006a-dce6-62becc9906ef@theobroma-systems.com>
-In-Reply-To: <3e87ed0a-8b79-006a-dce6-62becc9906ef@theobroma-systems.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 20 Jan 2022 12:14:56 -0500
-Message-ID: <CAMdYzYpT8BUrukUozRSQDHgiQHMPbS5GtV7huL4xFFRsdxw0qQ@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3399-puma eMMC HS400 signal
- integrity
-To: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, 
- Quentin Schulz <foss+kernel@0leil.net>
+Content-Disposition: inline
+In-Reply-To: <20220119015325.2438277-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_091512_089684_8E8C6142 
-X-CRM114-Status: GOOD (  33.68  )
+X-CRM114-CacheID: sfid-20220120_093620_545712_FEBE573D 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,108 +93,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 20, 2022 at 11:03 AM Quentin Schulz
-<quentin.schulz@theobroma-systems.com> wrote:
->
-> Hi Peter,
->
-> On 1/20/22 16:06, Peter Geis wrote:
-> > On Wed, Jan 19, 2022 at 8:52 AM <quentin.schulz@theobroma-systems.com> wrote:
-> >>
-> >> From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-> >>
-> >> There are signal integrity issues running the eMMC at 200MHz on Puma
-> >> RK3399-Q7.
-> >>
-> >> Similar to the work-around found for RK3399 Gru boards, lowering the
-> >> frequency to 100MHz made the eMMC much more stable, so let's lower the
-> >> frequency to 100MHz.
-> >>
-> >> It might be possible to run at 150MHz as on RK3399 Gru boards but only
-> >> 100MHz was extensively tested.
-> >>
-> >> Cc: Quentin Schulz <foss+kernel@0leil.net>
-> >> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-> >> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> >> ---
-> >>
-> >> Note/RFC: as opposed to gru DTSI, max-frequency is used here instead of
-> >> assigned-clock-rates.
-> >>
-> >> AFAIU, max-frequency applies to the SD bus rate, while
-> >> assigned-clock-rates applies to the clock fed to the SD host controller
-> >> inside the SoC. max-frequency does not interact with the clock subsystem
-> >> AFAICT. assigned-clock-rates sets the clock rate at probe, regardless of
-> >> eMMC tuning.
-> >> Technically, the Arasan SDHC IP supports silicon-hardcoded clock
-> >> multiplier so I think setting assigned-clock-rates as a way of rate
-> >> limiting the eMMC block is incorrect and max-frequency should be used
-> >> instead (as done in this patch). Otherwise the SDHC could still potentially
-> >> derive a 200MHz clock from a lower rate clock thanks to its multiplier.
-> >>
-> >>   arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 6 ++++++
-> >>   1 file changed, 6 insertions(+)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> >> index fb67db4619ea..a6108578aae0 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-> >> @@ -425,6 +425,12 @@ vcc5v0_host_en: vcc5v0-host-en {
-> >>   };
-> >>
-> >>   &sdhci {
-> >> +       /*
-> >> +        * Signal integrity isn't great at 200MHz but 100MHz has proven stable
-> >> +        * enough.
-> >> +        */
-> >> +       max-frequency = <100000000>;
-> >> +
-> >>          bus-width = <8>;
-> >>          mmc-hs400-1_8v;
-> >>          mmc-hs400-enhanced-strobe;
-> >
-> > I don't have these boards nor the schematics handy for them, but
-> > wouldn't it be better to simply switch to mmc-hs200-1_8v?
->
-> Thanks for the suggestion, I just tested, by removing mmc-hs400-1_8v;
-> and mmc-hs400-enhanced-strobe; but keeping the clock rate at 200MHz and
-> adding mmc-hs200-1_8v; failed a basic dd test.
+On Tue, 18 Jan 2022 19:53:25 -0600, Rob Herring wrote:
+> For a single pinctrl mode, it is not necessary to define pinctrl
+> properties as the tools always allow pinctrl properties.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../display/rockchip/rockchip,rk3066-hdmi.yaml         |  8 --------
+>  Documentation/devicetree/bindings/input/gpio-keys.yaml |  6 ------
+>  .../devicetree/bindings/pinctrl/cirrus,lochnagar.yaml  |  9 ---------
+>  .../devicetree/bindings/pinctrl/cirrus,madera.yaml     | 10 ----------
+>  .../devicetree/bindings/sound/samsung-i2s.yaml         |  6 ------
+>  5 files changed, 39 deletions(-)
+> 
 
-Quite understandable.
-I more meant it may permit you to reach a higher clock rate than
-100mhz and thus possibly a higher data rate, for example perhaps
-150mhz would be reachable.
-For example I would do a bandwidth test for hs400-es at 100mhz, then
-test at hs200 and find the maximum stable clock rate.
-If 200mhz is stable enough to probe and /sys/kernel/debug/mmc<x>/ios
-shows you are in 8bit hs200, you can adjust the clock rate through
-/sys/kernel/debug/mmc<x>/clock without needing to reboot.
-It will speed up testing.
-
-If hs200 permits a higher overall data rate than hs400-es, it would be
-worth making that switch.
-
-Always,
-Peter
-
->
-> Cheers,
-> Quentin
->
-> > Other rk3399 boards don't have issues with hs200 at full 200mhz, and
-> > as I understand it hs400-es exhibits stability issues on most rk3399
-> > boards.
-> >
-> > Feel free to disregard my comments if you've already tested this.
-> >
-> >> --
-> >> 2.34.1
-> >>
-> >>
-> >> _______________________________________________
-> >> Linux-rockchip mailing list
-> >> Linux-rockchip@lists.infradead.org
-> >> https://urldefense.proofpoint.com/v2/url?u=http-3A__lists.infradead.org_mailman_listinfo_linux-2Drockchip&d=DwIBaQ&c=_sEr5x9kUWhuk4_nFwjJtA&r=LYjLexDn7rXIzVmkNPvw5ymA1XTSqHGq8yBP6m6qZZ4njZguQhZhkI_-172IIy1t&m=OTusi9XARCbef1Ba5t1gv4_LqRkOaxFY3UtvYky6NVLpeiziqqmdOJ8-R5WXWFNr&s=xBnqhBu20rxvu_V-5EhXyA_yNxcJpa4Dq6HO2Ow3Gk8&e=
+Applied, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
