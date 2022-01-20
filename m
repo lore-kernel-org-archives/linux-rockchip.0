@@ -4,57 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC8DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jan 2022 14:20:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D49CDC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Jan 2022 15:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xgG9XanVtJcSt3g03IKfV3s5tQStlCCah9W0pXJsqao=; b=q08r9aoiJ7JPVe
-	yzCL6K3GXv5TrXBVYazji+9VmNO2wj6QvTXlj4hgL3DhjOEFo9VU0+VAhONwVBYFIEsw51+bH7ehI
-	K8xZM1L94mOp43o0keHxFI1ZZ0vlPYhR5ty7tmgTn5XMiOuSoYwDABvMIAEnTQy1OctjAR7PAgr1T
-	rifGfjAXjeUQl2WxCZ7iha3REuiYyFDm8ZfYx+kc2CKMhKNjOiHFjRTlrmGz053zHXnc7zM4FLWg7
-	t9Q6uBpP2rMQcCB7ofF8Nj9+7TYKb/wPOxiRuc+JB4AmQy2VbdMzxGLSEqNSIqIH95cqc0eG0MlJh
-	TKykMywGn2Lf02dR81eA==;
+	List-Owner; bh=tjPa6xyzjhsK4SxGPS+kDtgtk2N0DfpabiRTWx4a4fE=; b=kwMymQ5j3kqjNM
+	QlHJe2CQpbtFFlHTwtsBoQA9wjyNokoDUaziweBbAUYLzKSm66XqhP6P39T/YPqfrX+0ZkyZj053e
+	9eRh9AkhBQ3DS6jN5KC9knTstFtY9tCi5YSqGNDV+hl3kjEgfc4iUWgXepqoWzH5WOiJg+arzXu8d
+	RJSB5TiXHOaN4STNNwABF652S5iS01ax2P+uWDHjKvqWTlGmvQRJ8D691z33BNOVUxpVyar8qjw5/
+	QySpx6Q2kxpcT8a8CmVEOK7/8r7Bxg6Xr+FyQ1kTMRFKYE9pQ4UgSl3CBpPo+j/1QPX7E3qRdWGi/
+	NhZDMpPCcXjHiwLnVnsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAYIr-00BsDX-Lc; Thu, 20 Jan 2022 14:20:41 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nAZ1q-00C33x-Gw; Thu, 20 Jan 2022 15:07:10 +0000
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAYIn-00BsC4-78
- for linux-rockchip@lists.infradead.org; Thu, 20 Jan 2022 14:20:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 2CCFF617A8;
- Thu, 20 Jan 2022 14:20:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5746C340E0;
- Thu, 20 Jan 2022 14:20:33 +0000 (UTC)
-Message-ID: <7b0ac4d2-a78e-f1be-e7ee-6f4c69acc386@xs4all.nl>
-Date: Thu, 20 Jan 2022 15:20:31 +0100
+ id 1nAZ1d-00C2zM-6z; Thu, 20 Jan 2022 15:06:58 +0000
+Received: by mail-yb1-xb2b.google.com with SMTP id v186so18716303ybg.1;
+ Thu, 20 Jan 2022 07:06:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fGjHIa2jvXZWf1yR2M9MGgRIENQb982AcoZ4m2JeeJo=;
+ b=lRGLIa4GeTFkep7n9Wuwyh5/c93qO0qQ24HfRGrUUzmCDs2/HU09tVDae9+JPYkqKk
+ JR2awu1Sq9NWVw+ThpWh+OroTgtSDuuejlVcsr2NGHP6XpTz6/f3WzgdVGO7mQKGVkz0
+ eKNm7XSZMqfWJO4sbVILc5eTaHhe7mbJCpMDODMqRuInZe63kin2DX9YXMO5xAvES1lQ
+ PNf7lieMlJgiu4HfiD68b8S72QcV/AYgHPb0/YfUHf/gDx5uaQz2IZX8bJGqvulfD0tF
+ 1cY+/L0/Zw5tpedrneWY3OvUaa4UNuiq7mv86QvFxfQAAMpExPAMbZ13uhkuc87R9G/I
+ nzwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fGjHIa2jvXZWf1yR2M9MGgRIENQb982AcoZ4m2JeeJo=;
+ b=BanJm9bZBAN0z9+xYXsteiQLwhpPYHq+xG4aOREHp3bjO2eGu5qMpIMH8n8B5bUjoC
+ piOdILXE7EVOM/QT6OU4RnIHqGnUWk+E3WesNerLjbWsPqlJKA5qrieyZIBunsWinOvM
+ T5ObAtf1g7iO/D+afpbrCI+oOOb/ZxC4F2YcaeKdTldN1rLjOnLoEpG8f2nB4n6vqCSH
+ lmx7ZHX1lzWYqkgIXAKSoiN6kdT2fUVLxNycNEHBDM5u0vPocAtpBNCyt81aDajFsqIS
+ HAIgBBfRrIu3QXnEVo4u7ydUzvtzhCMEZulS8LrNQiUsoXaWIFZHEnHtNdZaghpuJ3V6
+ fPCA==
+X-Gm-Message-State: AOAM5320YAKcdmEfZHH7KVRiuGtFzVPSuvBMmSzSm4b1owAEpZBvHWC0
+ hp5VcIq+Xp+t5QCgD+C73KdGMFgY/ZPhLaPlGqQ=
+X-Google-Smtp-Source: ABdhPJzwEQxsm+6uQCgTAdIN4x6j/M6Hgid4CJkWRsT2UHShukUYuLvUDLexpLYEr5YA4FTOI74fq2aAeavh8m6juds=
+X-Received: by 2002:a5b:a4c:: with SMTP id z12mr16083524ybq.490.1642691214228; 
+ Thu, 20 Jan 2022 07:06:54 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH RFT v2 1/8] media: hantro: jpeg: Relax register writes
- before write starting hardware
-Content-Language: en-US
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20220107093455.73766-1-wenst@chromium.org>
- <20220107093455.73766-2-wenst@chromium.org> <Yecq111pZDP9XFNO@eze-laptop>
- <CAGXv+5GfNgQGJOBihdpGQDbdx-1co_wi0m=-HyxiHDn-kKZBsA@mail.gmail.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-In-Reply-To: <CAGXv+5GfNgQGJOBihdpGQDbdx-1co_wi0m=-HyxiHDn-kKZBsA@mail.gmail.com>
+References: <20220119134948.1444965-1-quentin.schulz@theobroma-systems.com>
+In-Reply-To: <20220119134948.1444965-1-quentin.schulz@theobroma-systems.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Thu, 20 Jan 2022 10:06:43 -0500
+Message-ID: <CAMdYzYr+UXU-x=OakdHnOzLe1e4Y0xdGR-rybsmpLCMGbsWwXg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3399-puma eMMC HS400 signal
+ integrity
+To: quentin.schulz@theobroma-systems.com
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>, 
+ Quentin Schulz <foss+kernel@0leil.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220120_062037_381193_86C547F5 
-X-CRM114-Status: GOOD (  34.81  )
+X-CRM114-CacheID: sfid-20220120_070657_280671_AF1C1877 
+X-CRM114-Status: GOOD (  27.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,120 +87,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+On Wed, Jan 19, 2022 at 8:52 AM <quentin.schulz@theobroma-systems.com> wrote:
+>
+> From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+>
+> There are signal integrity issues running the eMMC at 200MHz on Puma
+> RK3399-Q7.
+>
+> Similar to the work-around found for RK3399 Gru boards, lowering the
+> frequency to 100MHz made the eMMC much more stable, so let's lower the
+> frequency to 100MHz.
+>
+> It might be possible to run at 150MHz as on RK3399 Gru boards but only
+> 100MHz was extensively tested.
+>
+> Cc: Quentin Schulz <foss+kernel@0leil.net>
+> Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> ---
+>
+> Note/RFC: as opposed to gru DTSI, max-frequency is used here instead of
+> assigned-clock-rates.
+>
+> AFAIU, max-frequency applies to the SD bus rate, while
+> assigned-clock-rates applies to the clock fed to the SD host controller
+> inside the SoC. max-frequency does not interact with the clock subsystem
+> AFAICT. assigned-clock-rates sets the clock rate at probe, regardless of
+> eMMC tuning.
+> Technically, the Arasan SDHC IP supports silicon-hardcoded clock
+> multiplier so I think setting assigned-clock-rates as a way of rate
+> limiting the eMMC block is incorrect and max-frequency should be used
+> instead (as done in this patch). Otherwise the SDHC could still potentially
+> derive a 200MHz clock from a lower rate clock thanks to its multiplier.
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> index fb67db4619ea..a6108578aae0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+> @@ -425,6 +425,12 @@ vcc5v0_host_en: vcc5v0-host-en {
+>  };
+>
+>  &sdhci {
+> +       /*
+> +        * Signal integrity isn't great at 200MHz but 100MHz has proven stable
+> +        * enough.
+> +        */
+> +       max-frequency = <100000000>;
+> +
+>         bus-width = <8>;
+>         mmc-hs400-1_8v;
+>         mmc-hs400-enhanced-strobe;
 
-I'll take patches 2-8.
+I don't have these boards nor the schematics handy for them, but
+wouldn't it be better to simply switch to mmc-hs200-1_8v?
+Other rk3399 boards don't have issues with hs200 at full 200mhz, and
+as I understand it hs400-es exhibits stability issues on most rk3399
+boards.
 
-So should I mark patch 1/8 as 'Rejected' or 'Changes Requested' in patchwork?
+Feel free to disregard my comments if you've already tested this.
 
-Regards,
-
-	Hans
-
-On 1/19/22 11:08, Chen-Yu Tsai wrote:
-> Hi,
-> 
-> On Wed, Jan 19, 2022 at 5:02 AM Ezequiel Garcia
-> <ezequiel@vanguardiasur.com.ar> wrote:
->>
->> Hi Chen-Yu,
->>
->> The series looks good, thanks for picking up this task.
->>
->> Just a one comment.
->>
->> On Fri, Jan 07, 2022 at 05:34:48PM +0800, Chen-Yu Tsai wrote:
->>> In the earlier submissions of the Hantro/Rockchip JPEG encoder driver, a
->>> wmb() was inserted before the final register write that starts the
->>> encoder. In v11, it was removed and the second-to-last register write
->>> was changed to a non-relaxed write, which has an implicit wmb() [1].
->>> The rockchip_vpu2 (then rk3399_vpu) variant is even weirder as there
->>> is another writel_relaxed() following the non-relaxed one.
->>>
->>> Turns out only the last writel() needs to be non-relaxed. Device I/O
->>> mappings already guarantee strict ordering to the same endpoint, and
->>> the writel() triggering the hardware would force all writes to memory
->>> to be observed before the writel() to the hardware is observed.
->>>
->>> [1] https://lore.kernel.org/linux-media/CAAFQd5ArFG0hU6MgcyLd+_UOP3+T_U-aw2FXv6sE7fGqVCVGqw@mail.gmail.com/
->>>
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>> ---
->>>  drivers/staging/media/hantro/hantro_h1_jpeg_enc.c        | 3 +--
->>>  drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c | 3 +--
->>>  2 files changed, 2 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
->>> index 1450013d3685..03db1c3444f8 100644
->>> --- a/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
->>> +++ b/drivers/staging/media/hantro/hantro_h1_jpeg_enc.c
->>> @@ -123,8 +123,7 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
->>>               | H1_REG_AXI_CTRL_INPUT_SWAP32
->>>               | H1_REG_AXI_CTRL_OUTPUT_SWAP8
->>>               | H1_REG_AXI_CTRL_INPUT_SWAP8;
->>> -     /* Make sure that all registers are written at this point. */
->>> -     vepu_write(vpu, reg, H1_REG_AXI_CTRL);
->>> +     vepu_write_relaxed(vpu, reg, H1_REG_AXI_CTRL);
->>>
->>
->> As far as I can remember, this logic comes from really old Chromium Kernels.
->> You might be right, and this barrier isn't needed... but then OTOH the comment
->> is here for a reason, so maybe it is needed (or was needed on some RK3288 SoC revision).
-> 
-> I just realized that my commit log is wrong.
-> 
-> " ... a wmb() was inserted before the final register write that starts the
-> encoder. ... " . It is actually before the second-to-last register write.
-> 
->> I don't have RK3288 boards near me, but in any case, I'm not sure
->> we'd be able to test this easily (maybe there are issues that only
->> trigger under a certain load).
-> 
-> I see. I do have a Veyron around that I haven't used in awhile. But as you
-> said, it might not be an obvious hardware limitation.
-> 
->> I'd personally avoid this one change, but if you are confident enough with it
->> that's fine too.
-> 
-> Unfortunately they didn't leave a whole lot of clues around. For most hardware,
-> as I mentioned in the commit log, I think the final non-relaxed write should
-> suffice. I'd point to the decoder drivers not having any barriers or
-> non-relaxed writes except the final one, but IIUC they are actually two
-> distinct pieces of hardware.
-> 
-> I suspect we will never know. This JPEG encoder doesn't seem to get used
-> a lot. The VP8 and H.264 encoders on ChromeOS work correctly without the
-> extra barrier and get tested a lot, but that's only testing the RK3399.
-> 
-> Hans, would it be possible for you to skip this patch and pick the rest?
-> Or would you like me to resent without this one?
-> 
-> 
-> Thanks
-> ChenYu
-> 
->> Thanks!
->> Ezequiel
->>
->>>       reg = H1_REG_ENC_CTRL_WIDTH(MB_WIDTH(ctx->src_fmt.width))
->>>               | H1_REG_ENC_CTRL_HEIGHT(MB_HEIGHT(ctx->src_fmt.height))
->>> diff --git a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
->>> index 4df16f59fb97..b931fc5fa1a9 100644
->>> --- a/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
->>> +++ b/drivers/staging/media/hantro/rockchip_vpu2_hw_jpeg_enc.c
->>> @@ -152,8 +152,7 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
->>>               | VEPU_REG_INPUT_SWAP8
->>>               | VEPU_REG_INPUT_SWAP16
->>>               | VEPU_REG_INPUT_SWAP32;
->>> -     /* Make sure that all registers are written at this point. */
->>> -     vepu_write(vpu, reg, VEPU_REG_DATA_ENDIAN);
->>> +     vepu_write_relaxed(vpu, reg, VEPU_REG_DATA_ENDIAN);
->>>
->>>       reg = VEPU_REG_AXI_CTRL_BURST_LEN(16);
->>>       vepu_write_relaxed(vpu, reg, VEPU_REG_AXI_CTRL);
->>> --
->>> 2.34.1.575.g55b058a8bb-goog
->>>
+> --
+> 2.34.1
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
