@@ -4,47 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6499CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 15:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 442FBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 15:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rah5Z4Ivf+Bq3gmStyJDvuLnq+XN3VUULK9mCt2nEDg=; b=MLXre3Js7ic86T
-	BBYxdsvrrBlw+A4Tmyi3fxSDSajl+KsRNvy1sx8VJ+lvHCkhDbXE9Q1hXBLVYH9wwOnTrKzJsScQh
-	nGh149bPl6fYXv2xIafsw43+wIDG6MqvVPIoJ6eTvg/7YFzNQbPDRkyRxKtGxhMYow1TzIFoFxDNR
-	TTS+SHtobErLIyajXkq8se6rOgQ71VkgSmmLpTqSqcOoFxgDjyI50/AtI+ADr2JB+CBGWStQY7DnM
-	5wh/PqkR/+5ZATe6SvuEQRAffyzem+ceC1WAFXM0AKzT4CMiexGHCgiHTcxc4uyFUucc8Wfe+h729
-	9gG3U8UTigbdj0ScQ4eQ==;
+	List-Owner; bh=qs0pWclpPIpZ0an92qO5tVCL9nQ8V7xJVn/suR/1mzc=; b=tbvvag0U121rc1
+	dK3BaONFDZ7aiNB+Nc23F5Na5rJ8h+BWQb2MKLn8fj99TrGhqM+A4LV5F8/Vp2TqcJOJYvJLW6bJG
+	/O1g8w7uQ4Y4ZdXwwEF7UCQPQUhjmAj1TVUKP8lvlLazKbE74RJRkkkkGvogCSziVdGg3c1uyR5YO
+	VJjB2wrEwLqc34MxDBXxNs1lsOGgBIGJyLe8cQWiKCzxwTUfYmzgloICpJcAUL1OxLXndqeg78dWX
+	lY7Li8JDubEA2YxtrbYNU1fq12wV+P1GmPD6WTnz3n5GUhFGkoiiTYVb6ylMHtTaMJzYG5Zvp/xT3
+	GC94aJ1XR6xm6qIt24eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBf6f-001BDB-4Y; Sun, 23 Jan 2022 15:48:41 +0000
+	id 1nBf8O-001BqX-K2; Sun, 23 Jan 2022 15:50:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBez4-0018dx-VH; Sun, 23 Jan 2022 15:40:52 +0000
+ id 1nBez7-0018ex-K4; Sun, 23 Jan 2022 15:40:54 +0000
 Received: from p508fcdea.dip0.t-ipconnect.de ([80.143.205.234]
  helo=phil.fritz.box)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nBez1-0005OB-Ci; Sun, 23 Jan 2022 16:40:47 +0100
+ id 1nBez0-0005OB-FH; Sun, 23 Jan 2022 16:40:46 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: "quentin.schulz@theobroma-systems.com"
- <quentin.schulz@theobroma-systems.com>, robh+dt@kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Quentin Schulz <foss+kernel@0leil.net>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3399-puma-haikou USB OTG mode
-Date: Sun, 23 Jan 2022 16:40:46 +0100
-Message-Id: <164295214821.418606.138757821449348671.b4-ty@sntech.de>
+To: Mark Brown <broonie@kernel.org>, Brian Norris <briannorris@chromium.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Liam Girdwood <lgirdwood@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Lin Huang <hl@rock-chips.com>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ alsa-devel@alsa-project.org, Sandy Huang <hjc@rock-chips.com>
+Subject: Re: (subset) [PATCH v2 0/3] (Re)enable DP/HDMI audio for RK3399 Gru
+Date: Sun, 23 Jan 2022 16:40:43 +0100
+Message-Id: <164295214821.418606.10125525976562860474.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220120125156.16217-1-quentin.schulz@theobroma-systems.com>
-References: <20220120125156.16217-1-quentin.schulz@theobroma-systems.com>
+In-Reply-To: <20220114230209.4091727-1-briannorris@chromium.org>
+References: <20220114230209.4091727-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_074051_086451_6DA8C904 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20220123_074053_751774_82F7AFF6 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,23 +65,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 20 Jan 2022 13:51:56 +0100, quentin.schulz@theobroma-systems.com wrote:
-> The micro USB3.0 port available on the Haikou evaluation kit for Puma
-> RK3399-Q7 SoM supports dual-role model (aka drd or OTG) but its support
-> was broken until now because of missing logic around the ID pin.
+On Fri, 14 Jan 2022 15:02:06 -0800, Brian Norris wrote:
+> This series fixes DP/HDMI audio for RK3399 Gru systems.
 > 
-> This adds proper support for USB OTG on Puma Haikou by "connecting" the
-> GPIO used for USB ID to the USB3 controller device.
+> First, there was a regression with the switch to SPDIF. Patch 1 can be
+> taken separately as a regression fix if desired. But it's not quite so
+> useful (at least on Chrome OS systems) without the second part.
+> 
+> Second, jack detection was never upstreamed, because the hdmi-codec
+> dependencies were still being worked out when this platform was first
+> supported.
+> 
+> [...]
 
 Applied as fix for 5.17, thanks!
 
-[1/1] arm64: dts: rockchip: fix rk3399-puma-haikou USB OTG mode
-      commit: ed2c66a95c0c5669880aa93d0d34c6e9694b4cbd
-
-I've done a bit of reordereing:
-- extcon comes alphabetically after dr_mode
-- extcon-usb3 before external-gmac...
-
+[1/3] arm64: dts: rockchip: Switch RK3399-Gru DP to SPDIF output
+      commit: b5fbaf7d779f5f02b7f75b080e7707222573be2a
 
 Best regards,
 -- 
