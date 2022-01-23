@@ -4,62 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2344C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 13:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 943B4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 15:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5WsvZDTy9bnz9sQokTIMByUZNm0C1QjtAjt/5GfH5qs=; b=VPKn+S6CYuOFDW
-	6Z7boEFzu8wSZkjEiEdVu6vxFmLKE5G6ANez/uNzdG+FReZWflTuY2W+CKd0qcaj+VSroptkmlI9N
-	lv93ELdPWaWDXz54q5FQBtriF8JZQpjEozqe4S/oMjnhaXoUvJDN+4lTckfy2SknfuzUJQf4yc0SJ
-	kJx1z5PzPrtsMygS6QqIYyWkzvHPBMzOcYmatYG75WGjRvqWZVZHlpLc8XzYD8wjeplOApjXHcUZN
-	VVwzKiGlrZkbAUE6acHKEovQjJo+JtIjBAF3sj5EakGl96WoYIGMIxM2GEdcK3iYpkXI+OSrqy6YO
-	H2u8Xpx53I/P309LxuBQ==;
+	List-Owner; bh=IgEKgMBW/wQb27XZLdw4Hxk0bw3OWVvoERIrHsygn3M=; b=gyVxt2VKUgI+Fg
+	2bWi3OUd/GK0xFCaklhHW/vxyg6Um9riw2xoTMmZP2EaxrDBIqdDs0MdCJlQjB6oqkGSveE+qH8dX
+	Pk91vF0rSuDj9D+t+5bW3VSa2yDq5opb7tfuIDDBC2hldhmlTnwLevVuAmwsFgk6PmHUO6vPnwiZw
+	rmb9gv4zi/B9I3A7/3oLjXKbh8VQfA6jgS7M43apBn3Sh/92/ptdO0AxIWHFbgCp7rPnijVOLB8tT
+	pgE6Hizkd/wIuh6xo8yIUjRkQ6gGBOHWaOXus/bA/W1qawBr9E9XFhF/agwTEPnS7KjyYeZQ1gpSo
+	swfUo5wFVnjU2AYYTk6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBdHh-000uSG-6F; Sun, 23 Jan 2022 13:51:57 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1nBeqd-00168N-SY; Sun, 23 Jan 2022 15:32:07 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBdH9-000uHT-J9; Sun, 23 Jan 2022 13:51:29 +0000
-Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
- by mxout1.routing.net (Postfix) with ESMTP id C829940177;
- Sun, 23 Jan 2022 13:51:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1642945881;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Cp8maleWJkAj3g8Rqy87pKYRY7/YmFrFYofmm6M7tfU=;
- b=rZUsMfTkDgNskC1cunOKZfTFi99yjhL47JXnmLDGS6pskjcUKEnyazJKBsHKHMLB9giDpp
- YwM6J6xT8wE1XY8HckZS5Kgu5rL68FI7lsW1qqnWRlojCQn1GtcEl6ll78DA1Z2y/ghZfv
- qnqjk7nWNbWYtWMaYY2n4Rj+kAtpmEk=
-Received: from localhost.localdomain (fttx-pool-80.245.79.232.bambit.de
- [80.245.79.232])
- by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 1A67A406FA;
- Sun, 23 Jan 2022 13:51:21 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Johan Jonker <jbx6244@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ id 1nBep4-0015Wy-SX; Sun, 23 Jan 2022 15:30:32 +0000
+Received: from p508fcdea.dip0.t-ipconnect.de ([80.143.205.234]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nBep2-0005KV-40; Sun, 23 Jan 2022 16:30:28 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Peter Geis <pgwipeout@gmail.com>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/2] dt-bindings: rockchip: Add BananaPi R2 Pro Board
-Date: Sun, 23 Jan 2022 14:51:15 +0100
-Message-Id: <20220123135116.136846-2-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220123135116.136846-1-linux@fw-web.de>
-References: <20220123135116.136846-1-linux@fw-web.de>
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: enable the pine64 touch screen
+ on rockpro64
+Date: Sun, 23 Jan 2022 16:30:29 +0100
+Message-ID: <5747938.922zgog0jt@phil>
+In-Reply-To: <20220107051335.3812535-5-pgwipeout@gmail.com>
+References: <20220107051335.3812535-1-pgwipeout@gmail.com>
+ <20220107051335.3812535-5-pgwipeout@gmail.com>
 MIME-Version: 1.0
-X-Mail-ID: fd44d46b-3834-4f3f-8039-6be9dbcf7176
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_055123_815969_766A8801 
-X-CRM114-Status: UNSURE (   8.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220123_073030_993290_EF596F20 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +62,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hi Peter,
 
-Add Devicetree Binding for Bananapi R2 Pro Board based on rk3568 SoC
+Am Freitag, 7. Januar 2022, 06:13:35 CET schrieb Peter Geis:
+> Enable the touch screen, backlight, and dsi nodes for the Pine64 touch panel
+> attached to the rockpro64.
 
-Co-developed-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+can you please also include me in the other patches of the series?
+I.e. they introduce a new property for the display, so it's nice to know
+when they get applied.
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 4aed16176434..33d6423fe6c3 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -651,6 +651,11 @@ properties:
-           - const: rockchip,rk3568-evb1-v10
-           - const: rockchip,rk3568
- 
-+      - description: Rockchip RK3568 Banana Pi R2 Pro
-+        items:
-+          - const: rockchip,rk3568-bpi-r2pro
-+          - const: rockchip,rk3568
-+
- additionalProperties: true
- 
- ...
--- 
-2.25.1
+While I do agree with patch 3/4, I'm hesistant about this one.
+The display/touchscreen will probably not be connected on every rockpro64
+so what happens if it doesn't?
+
+I.e are there alternative uses for the affected pins, that may get fried
+when this is always enabled?
+
+So part of me would think that an dt-overlay enabling this might be the
+nicer way to go?
+
+
+Heiko
+
+
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> index 158befb9a48c..f6c36fcd6db3 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> @@ -26,7 +26,7 @@ backlight: backlight {
+>  		pwms = <&pwm0 0 1000000 0>;
+>  		brightness-levels = <0 4 8 16 32 64 128 255>;
+>  		default-brightness-level = <5>;
+> -		status = "disabled";
+> +		status = "okay";
+>  	};
+>  
+>  	clkin_gmac: external-gmac-clock {
+> @@ -594,7 +594,7 @@ touch: touchscreen@5d {
+>  		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
+>  		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
+>  		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
+> -		status = "disabled";
+> +		status = "okay";
+>  	};
+>  };
+>  
+> @@ -633,7 +633,7 @@ &io_domains {
+>  
+>  /* enable for pine64 panel display support */
+>  &mipi_dsi {
+> -	status = "disabled";
+> +	status = "okay";
+>  	clock-master;
+>  
+>  	ports {
+> 
+
+
+
 
 
 _______________________________________________
