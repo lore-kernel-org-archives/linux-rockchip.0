@@ -4,51 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C8DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 16:28:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060F9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 23 Jan 2022 16:51:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+YbAI7LHG+wfBDjDW49QK544WI2ASP0yjulVEQ9FxO8=; b=exhuZ3lvc6Azjf
-	rx/eHIoyIWE75tYHN0K821I+UQda33IRF0IIMYB3pTGLojtLFxsDRyzrC8ZblMukLnxBD7nnPse6k
-	BcZZ4f3UdlodoTxu6NsocfTbRvlLj8T+ViRnKCKxvvjKHdgt0eKvD7TFIrNrhVx0CkOqZCDDqAL2A
-	u/Equm1YQ9d1mfe6CC2Jda5LXQz0gztd2NzYgdFDlYAvPnql7eVivga6m3R2RUBliaSanFX5JSkZh
-	RrimvVNfO+IpJ1mgU9/+FSOAHr16oBs1Sg/mjTl7MkvK6FC0QrzdYXWJ9RknrruMDPfOXaU9X1B+r
-	H79F9VL/q0Qk6e5/NqDA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+B2TNxztKR7/TG6IviIzunv7K2bH32V6VKUrSVBn9Mo=; b=2JZVcQUF70w1J2
+	wBPioBYrRLg9cXIM+v8ounmU1ruwO58lzyqNUPBezzm59+e6SlVTZuClebt5o3uZPWF7mkpib8SlP
+	F5l8TFyV7vZQUdAWAkKwcsnl3XVGLEoqx+5CFKvy56pr2KUnghl6jnXNKEsMnDIQKoUkmbVjSMEAw
+	9FReYkx+dZs2rQowTaOPrDyOrmpFigUlhjsqgdWP+KcxkoPJ6E/7XRKEQA/RBYwA7c2BJ/h0jghEz
+	Ng7nKboOb5o1obFIjm3G16A9bUKUL1fIMkRO5Ow3uEkl8NRn3hu+TtDQWE4HCTs6gcV+UTvRSGIKi
+	3/y98AkFbc18UKAtxmFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBfjE-001MTq-AF; Sun, 23 Jan 2022 16:28:32 +0000
-Received: from mail.pidancet.net ([51.15.50.178])
+	id 1nBg53-001Omt-KY; Sun, 23 Jan 2022 16:51:05 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBfj0-001MRA-GK; Sun, 23 Jan 2022 16:28:21 +0000
-Received: from authenticated-user (mail.pidancet.net [51.15.50.178])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.pidancet.net (Postfix) with ESMTPSA id 248877E08E;
- Sun, 23 Jan 2022 17:20:14 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=pidancet.net; s=mail;
- t=1642954815; bh=8hGxTEDhpfWNvrLKvHFmv2mDqr7pxBw8hsu2m3JKoWw=;
- h=From:To:Cc:Subject:Date:From;
- b=shJPNkAeIDWDGhwXW2fyskDA6IU6tIAhwWKBcpoeTq8Q2TEhf0+PuxlTnE+cDLTH0
- mdM+UsxG3dpoasNezTI/k4DXVgAm9/ErSAIkE963+NgCRxi6bdpAbGij4fz5rqnbXz
- gzwOHgFLjoUQSYzrd367nY1knxtI5kOTVdOTREVgFVfLfG76YvOmTgdDTYFBY4JtPD
- 3x+5OyfaVXH32OVjpAtL6thOj7arnOqk1E6o1vZtjK3l4PlWhXsFcTBz+Lsw4g3UBF
- ZcNM509E6EnWgh8y9wFSQxxA0YhMfKSIx3w0mPSn+S0w3XmKkHiQCsVRJRodmVN7Xx
- tWuQER5tvXRAw==
-From: Julian Pidancet <julian@pidancet.net>
-To: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org, mj8263788@gmail.com,
- robin.murphy@arm.com, Julian Pidancet <julian@pidancet.net>
-Subject: [PATCH v2] rockchip: rk3328: add support for FriendlyARM NanoPi NEO3
-Date: Sun, 23 Jan 2022 17:19:19 +0100
-Message-Id: <20220123161919.1024653-1-julian@pidancet.net>
+ id 1nBg4r-001Olf-Hv; Sun, 23 Jan 2022 16:50:54 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id v186so43787082ybg.1;
+ Sun, 23 Jan 2022 08:50:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=4yvJHbE2HNxARartPgZEnI7KYUuo7OOg2+KzBkUFctc=;
+ b=TRdQfaW2Z7xnVudanl7EA+d7B2tn85qLJ5/aXAqkqaOiQq4Hpi1o8AGHlamyUp0yxg
+ JSKT6wwEIeXFzAeRM2Rk0EY4UTEAhHT40Xp2mwND6wvwILkTXP4ImMmnAJZVk+gGZ5Ey
+ 4sOceV/4pPbztkoYGz6WaCEikMbUcNJj5UC5yP3vEkT3kSy2rFqM3IdZWk6krdLse5rB
+ 14RPQvRPVdZmEdRnEbxu2iZlEYsEt+knqWwN/3bvE5Pu28kOeQy1BetLpsKwfh+GyDLK
+ ZGg+r2d1vMGNwASJLzj1BH1wYtXT+mr5xjb0mF+OzxhoU9LoVwNP9u2VP8kEn+aTz4AF
+ jPaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=4yvJHbE2HNxARartPgZEnI7KYUuo7OOg2+KzBkUFctc=;
+ b=lT7tv6goZgkdiXrD4GTJe7IFecre6eIuRdDvV71eAtr7C7xB/nO9ops8ZONBYQ/Qjn
+ MfwjoO8a4c+ZpZ2BIPsuxAEcjk92Zp9F+prqgG4Jj30iGfj2FjDzt+9XyjqiyS802EAI
+ dFLmgy7GViPEdZjgUnHoJL7rkfs0sOzOhck/4QOE8GOxSxKhrvvx2tI9Di30N73wcSli
+ 1PO1+QkAaj/aqTfiAJdLyk5tnB5vvkliAJXuZ02ndBYXH6omWYWcJfyhh+FKNsKAIvZ9
+ ZBPKWDsllxHjnhKmuZzlOwAsNrw7EANHiXqkbnjkas7/HjTGBIx6obvLadi94KTMKV98
+ HJHA==
+X-Gm-Message-State: AOAM532TcEVoP3F1t2i34nlv/7wcEen9kLTw+nRrw/xTjgncrgVm8Qxa
+ 6qUGEmCysIl2Iq8USoukrWXDpVbR+yaofARbgdU=
+X-Google-Smtp-Source: ABdhPJwP4FgFRN4pOx7j4L3eY61ISzlzIn/vKBLTzNodrzsTgBeqRru9rQ0A1+4jIr5FMupyrd7C71w3rxvg4m/Ww9U=
+X-Received: by 2002:a25:8d10:: with SMTP id n16mr18024350ybl.696.1642956651654; 
+ Sun, 23 Jan 2022 08:50:51 -0800 (PST)
 MIME-Version: 1.0
+References: <20220107051335.3812535-1-pgwipeout@gmail.com>
+ <20220107051335.3812535-5-pgwipeout@gmail.com>
+ <5747938.922zgog0jt@phil>
+In-Reply-To: <5747938.922zgog0jt@phil>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sun, 23 Jan 2022 11:50:39 -0500
+Message-ID: <CAMdYzYrByfe6s3oKvJDN3skGXh7x=YSxQ4BKwySKhPzyEUEGQA@mail.gmail.com>
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: enable the pine64 touch screen
+ on rockpro64
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_082819_018028_FD9943F9 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20220123_085053_630950_FEBEF5D1 
+X-CRM114-Status: GOOD (  29.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,453 +86,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch adds support for FriendlyARM NanoPi NEO3
+On Sun, Jan 23, 2022 at 10:30 AM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> Hi Peter,
+>
+> Am Freitag, 7. Januar 2022, 06:13:35 CET schrieb Peter Geis:
+> > Enable the touch screen, backlight, and dsi nodes for the Pine64 touch panel
+> > attached to the rockpro64.
+>
+> can you please also include me in the other patches of the series?
+> I.e. they introduce a new property for the display, so it's nice to know
+> when they get applied.
 
-Soc:      RockChip RK3328
-RAM:      1GB/2GB DDR4
-LAN:      10/100/1000M Ethernet with unique MAC
-USB Host: 1x USB3.0 Type A and 2x USB2.0 on 2.54mm pin header
-MicroSD:  x 1 for system boot and storage
-LED:      Power LED x 1, System LED x 1
-Key:      User Button x 1
-Fan:      2 Pin JST ZH 1.5mm Connector for 5V Fan
-GPIO:     26 pin-header, include I2C, UART, SPI, I2S, GPIO
-Power:    5V/1A, via Type-C or GPIO
+Apologies, I use get-maintainers.pl automatically and it seems to need
+some help with tagging you in some Rockchip elements.
+I'll be sure to always manually include you and the rockchip mailing
+list on all patches in future series of this sort.
 
-Signed-off-by: Julian Pidancet <julian@pidancet.net>
----
+>
+> While I do agree with patch 3/4, I'm hesistant about this one.
+> The display/touchscreen will probably not be connected on every rockpro64
+> so what happens if it doesn't?
 
-This is another shot at previous work submitted by Marty Jones
-<mj8263788@gmail.com> (https://lore.kernel.org/linux-arm-kernel/20201228152836.02795e09.mj8263788@gmail.com/),
-which is now a year old.
+This was supposed to be tagged as Do-Not-Merge, but it seems I failed
+to do so on the actual patch.
+It's here for purely completeness and testing purposes.
 
-v2: Following up on Robin Murphy's comments, the NEO3 DTS is now
-standalone and no longer includes the nanopi R2S one. The lan_led and
-wan_len nodes have been removed, and the sys_led node has been renamed
-to stat_led in accordance with the board schematics.
+>
+> I.e are there alternative uses for the affected pins, that may get fried
+> when this is always enabled?
+>
+> So part of me would think that an dt-overlay enabling this might be the
+> nicer way to go?
 
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3328-nanopi-neo3.dts  | 396 ++++++++++++++++++
- 2 files changed, 397 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-neo3.dts
+Absolutely.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 479906f3a..5f6ffb496 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -10,6 +10,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-neo3.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock-pi-e.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-neo3.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-neo3.dts
-new file mode 100644
-index 000000000..1eb7fd5f7
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-neo3.dts
-@@ -0,0 +1,396 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2020 David Bauer <mail@david-bauer.net>
-+ * Copyright (c) 2022 Julian Pidancet <julian@pidancet.net>
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "FriendlyElec NanoPi NEO3";
-+	compatible = "friendlyarm,nanopi-neo3", "rockchip,rk3328";
-+
-+	aliases {
-+		led-boot = &stat_led;
-+		led-failsafe = &stat_led;
-+		led-running = &stat_led;
-+		led-upgrade = &stat_led;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac_clk: gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	keys {
-+		compatible = "gpio-keys";
-+		pinctrl-0 = <&reset_button_pin>;
-+		pinctrl-names = "default";
-+
-+		reset {
-+			label = "reset";
-+			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
-+			linux,code = <KEY_RESTART>;
-+			debounce-interval = <50>;
-+		};
-+	};
-+
-+	vcc_rtl8153: vcc-rtl8153-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio2 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&rtl8153_en_drv>;
-+		regulator-always-on;
-+		regulator-name = "vcc_rtl8153";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		enable-active-high;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&stat_led_pin>;
-+		pinctrl-names = "default";
-+
-+		stat_led: led-0 {
-+			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+			label = "nanopi-neo3:green:stat";
-+		};
-+	};
-+
-+	vcc_io_sdio: sdmmcio-regulator {
-+		compatible = "regulator-gpio";
-+		enable-active-high;
-+		gpios = <&gpio1 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&sdio_vcc_pin>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_io_sdio";
-+		regulator-always-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-settling-time-us = <5000>;
-+		regulator-type = "voltage";
-+		startup-delay-us = <2000>;
-+		states = <1800000 0x1>,
-+			 <3300000 0x0>;
-+		vin-supply = <&vcc_io_33>;
-+	};
-+
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&sdmmc0m1_pin>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_sd";
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_io_33>;
-+	};
-+
-+	vdd_5v: vdd-5v {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_5v";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+	};
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&display_subsystem {
-+	status = "disabled";
-+};
-+
-+&gmac2io {
-+	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-+	assigned-clock-parents = <&gmac_clk>, <&gmac_clk>;
-+	clock_in_out = "input";
-+	phy-handle = <&rtl8211e>;
-+	phy-mode = "rgmii";
-+	phy-supply = <&vcc_io_33>;
-+	pinctrl-0 = <&rgmiim1_pins>;
-+	pinctrl-names = "default";
-+	rx_delay = <0x18>;
-+	snps,aal;
-+	tx_delay = <0x24>;
-+	status = "okay";
-+
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		rtl8211e: ethernet-phy@1 {
-+			reg = <1>;
-+			pinctrl-0 = <&eth_phy_reset_pin>;
-+			pinctrl-names = "default";
-+			reset-assert-us = <10000>;
-+			reset-deassert-us = <50000>;
-+			reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+};
-+
-+&i2c1 {
-+	status = "okay";
-+
-+	rk805: pmic@18 {
-+		compatible = "rockchip,rk805";
-+		reg = <0x18>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
-+		#clock-cells = <1>;
-+		clock-output-names = "xin32k", "rk805-clkout2";
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+		pinctrl-0 = <&pmic_int_l>;
-+		pinctrl-names = "default";
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+
-+		vcc1-supply = <&vdd_5v>;
-+		vcc2-supply = <&vdd_5v>;
-+		vcc3-supply = <&vdd_5v>;
-+		vcc4-supply = <&vdd_5v>;
-+		vcc5-supply = <&vcc_io_33>;
-+		vcc6-supply = <&vdd_5v>;
-+
-+		regulators {
-+			vdd_log: DCDC_REG1 {
-+				regulator-name = "vdd_log";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+
-+			vdd_arm: DCDC_REG2 {
-+				regulator-name = "vdd_arm";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <712500>;
-+				regulator-max-microvolt = <1450000>;
-+				regulator-ramp-delay = <12500>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <950000>;
-+				};
-+			};
-+
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-name = "vcc_ddr";
-+				regulator-always-on;
-+				regulator-boot-on;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
-+
-+			vcc_io_33: DCDC_REG4 {
-+				regulator-name = "vcc_io_33";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3300000>;
-+				};
-+			};
-+
-+			vcc_18: LDO_REG1 {
-+				regulator-name = "vcc_18";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vcc18_emmc: LDO_REG2 {
-+				regulator-name = "vcc18_emmc";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
-+
-+			vdd_10: LDO_REG3 {
-+				regulator-name = "vdd_10";
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1000000>;
-+				regulator-max-microvolt = <1000000>;
-+
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1000000>;
-+				};
-+			};
-+		};
-+	};
-+
-+	usb {
-+		rtl8153_en_drv: rtl8153-en-drv {
-+			rockchip,pins = <2 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&io_domains {
-+	pmuio-supply = <&vcc_io_33>;
-+	vccio1-supply = <&vcc_io_33>;
-+	vccio2-supply = <&vcc18_emmc>;
-+	vccio3-supply = <&vcc_io_sdio>;
-+	vccio4-supply = <&vcc_18>;
-+	vccio5-supply = <&vcc_io_33>;
-+	vccio6-supply = <&vcc_io_33>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	button {
-+		reset_button_pin: reset-button-pin {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	ethernet-phy {
-+		eth_phy_reset_pin: eth-phy-reset-pin {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+	};
-+
-+	leds {
-+		stat_led_pin: stat-led-pin {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sd {
-+		sdio_vcc_pin: sdio-vcc-pin {
-+			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+};
-+
-+&pwm2 {
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-0 = <&sdmmc0_clk>, <&sdmmc0_cmd>, <&sdmmc0_dectn>, <&sdmmc0_bus4>;
-+	pinctrl-names = "default";
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr50;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_sd>;
-+	vqmmc-supply = <&vcc_io_sdio>;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <0>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	status = "okay";
-+	dr_mode = "host";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usbdrd3 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3 {
-+	dr_mode = "host";
-+	status = "okay";
-+
-+	usb-eth@2 {
-+		compatible = "realtek,rtl8153";
-+		reg = <2>;
-+
-+		realtek,led-data = <0x87>;
-+	};
-+};
--- 
-2.34.1
+>
+>
+> Heiko
 
+Thanks,
+Peter
+
+>
+>
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> > index 158befb9a48c..f6c36fcd6db3 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+> > @@ -26,7 +26,7 @@ backlight: backlight {
+> >               pwms = <&pwm0 0 1000000 0>;
+> >               brightness-levels = <0 4 8 16 32 64 128 255>;
+> >               default-brightness-level = <5>;
+> > -             status = "disabled";
+> > +             status = "okay";
+> >       };
+> >
+> >       clkin_gmac: external-gmac-clock {
+> > @@ -594,7 +594,7 @@ touch: touchscreen@5d {
+> >               interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
+> >               irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
+> >               reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
+> > -             status = "disabled";
+> > +             status = "okay";
+> >       };
+> >  };
+> >
+> > @@ -633,7 +633,7 @@ &io_domains {
+> >
+> >  /* enable for pine64 panel display support */
+> >  &mipi_dsi {
+> > -     status = "disabled";
+> > +     status = "okay";
+> >       clock-master;
+> >
+> >       ports {
+> >
+>
+>
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
