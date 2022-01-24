@@ -4,79 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 567B0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 11:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6804BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 11:51:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7bafdjrCFxnWk5IeJFJrCs706S47eM/Z2LBAw8PqyLY=; b=cjiN8i/bAegc3A
-	9jsPLekwis/m0c3Wj8jj4YV5CWA9KO4SsrghaiVfuXztMKde0FQYBm9uk5YYLZHpAdNeY0FDFbD07
-	OFJPOWUQdDm11VFFYxD2YTfUYwvYgRqB7lZ+dV742rJQNCTeE9Ml3ATD6hLcDO36POX+OZoBTsOMe
-	Eq4IxJX0i9Edsq4UsO951GAEmdMskmXAmUJI29ibdGNyR+UAPWy1IvUdhTQQM08RtmSjhpjriTtCa
-	5VU9Ohj+CX1qp032LZ5v2GlCr7QNDQzCK6P02ZTVOtLOEkRWoVGCAbideldnUDmfYrVOpon2acQUr
-	xgXUkN/2a2uWBeUv2yWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sXKwHgUpltySOXiQooaRq7pA5Pwi+GdDnNeRuFmWU58=; b=JNmhN+YeVE2TYI
+	+w+3TnPIYrJ+HuVm4mxJvzsLicBI0pbbbDCZQb6joNfZiGyZlk0apS6ZgrxpY9s7vwLZxiSizhGjD
+	XnuheNhdIbgtD/ZWzn430I8Mm5bQFGMwHVtdEPfsdjmpnHz65hn+eWD3D79oylkhVsije6Y994WcJ
+	gyUwI/qz1abSvRMIgI+3uMJvbLqBmAd+mO7wMh4isMkPM1gZg0GntddLLJEoJnKZLzHrXkTyw8LE8
+	fLVKjw360Yc7BJESL4GeMWo/DCjceROwGGzRDhFX7XYZIMw+k4rusfEuQiP6ibU8955nOF1Kd4hTp
+	+81TLD+dY/dGcWWxMiBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBxrG-0036mp-D4; Mon, 24 Jan 2022 11:50:02 +0000
-Received: from mout.gmx.net ([212.227.17.22])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBxrD-0036l1-Bi; Mon, 24 Jan 2022 11:50:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1643024983;
- bh=yNy7EZg3mbp0lvINimyGvIkMJmw3Um6hIqmwnMmXJTk=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=QHm2H2YsZcUks7oOV0TMT2ZiHWwjOhEF0Cx2YXeJXzb6rjrPVhn6AifVGEwZmAyGY
- m6OMPiD8s78NnV8yHIrOO+2FQR2dTNt2yThoHEmzQDEW+qneAttwpgkcuT1SGyVRWj
- qCtxPYoO6xyCXNgdyu4oyFQ06pD1kSr3BjUGwAzQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.79.70] ([80.245.79.70]) by web-mail.gmx.net
- (3c-app-gmx-bs10.server.lan [172.19.170.61]) (via HTTP); Mon, 24 Jan 2022
- 12:49:43 +0100
+	id 1nBxt2-0037RO-0n; Mon, 24 Jan 2022 11:51:52 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nBxso-0037MH-HW; Mon, 24 Jan 2022 11:51:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D188FD6E;
+ Mon, 24 Jan 2022 03:51:35 -0800 (PST)
+Received: from monolith.localdoman (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1F37C3F774;
+ Mon, 24 Jan 2022 03:51:33 -0800 (PST)
+Date: Mon, 24 Jan 2022 11:51:48 +0000
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+To: heikki.krogerus@linux.intel.com, heiko@sntech.de,
+ rafael.j.wysocki@intel.com, gregkh@linuxfoundation.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org
+Subject: [BUG] rockpro64-v2: NULL pointer dereference when booting
+Message-ID: <Ye6S1PBAHtWj1lRp@monolith.localdoman>
 MIME-Version: 1.0
-Message-ID: <trinity-263c703e-80d0-4663-9a42-21b9b7cb57e5-1643024983188@3c-app-gmx-bs10>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Sascha Hauer <sha@pengutronix.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Peter
- Geis <pgwipeout@gmail.com>, Johan Jonker <jbx6244@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Aw: Re: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Bananapi R2 Pro
-Date: Mon, 24 Jan 2022 12:49:43 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220124110331.GZ23490@pengutronix.de>
-References: <20220123135116.136846-1-linux@fw-web.de>
- <20220123135116.136846-3-linux@fw-web.de>
- <20220124083102.GW23490@pengutronix.de>
- <trinity-2e9cf5db-4c9b-4ad7-b684-74541e639edf-1643014505272@3c-app-gmx-bs10>
- <20220124110331.GZ23490@pengutronix.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:bZK1BGXbDbNyasi2iQqJob1z02lSju4CxKtjw7F5Pqt/vKLSqdxkWfw8Wlb8qbvqP+iCr
- U0CDRI3/s5wZS44yl7TWrzWA3MTf6aIgYmaMW00qXDCiXMKDvh7zuwPKxgmMEUi9z3raLRrNR+I9
- UjOwtGNFu+X0/GnMi6HowGf/0Qgj2lwbgXlblMPoEjKmoPa3DiMvxf3l9k/VcgWM9Fx1ncaghdOp
- O7R853vPEwzF1Fmn8Zfmc8OG/L6bkGK6pWkdD9bPci+/a0fPRWtAJgVt34sjiSdZKcjsfbhpFovY
- nQ=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kzCDCNdY4G0=:oyarcQiy9PUsJKUUVdcr3N
- i9VkGktYX1cF/ZRqOfx3MQKwkFg3TfiUGld43GnNR2l3V83F3SC2nR+QoVfHZr/uPqV+94MMD
- 1rZKfAZMCmqLzvM5uMbf+XN69DDN0uGzLlyORKZJFTmLuy3O1VTr9FvwyLqsYXl6BmhVGUrsQ
- ZlqlTXoZLSjF1gU218I4QkzZt9ooq4fgXge1rDnzj+ZgXjT4BJgnYTvKIuMmrq4UUzvI9DHi7
- woBEmFTOmfDBnjfsOV2W6iiyQ5QIyFSKIKoDq4KU8nrRf9T6CUxijpWmklPPEmCdwFoIBlw4f
- H1VCg7BEsHSCVhAx7MLErX1+IEMsk4vH+E754/PFF5dyF463lzJFT7hw1CwYhyPJHPLbhZnIM
- BirTdJUoNwKfFEyeIMUyQ2eTKmySoD7oVge1RBOlD+KOv1AGHmwzqT24OzHAu6BjCgJm9+ReR
- EzwJkq8MSVu39/CQ4LmTTd4a2Uf/VqGUoZB8r8kg8ZGUgVpjmBPMnz9G7QUS1bTuVVI6uegk3
- T8gEJVy9ZLD1gfjagwuJcmYZqO/IP/vt7K/CFntUDYdNiwrYmYNF1IlADlTg3MPS7hIbkKiHT
- XKxDOQzeG1M6Zm4y7HngmIxkevHi/v04uAY8fduOFzw/gXJv2vOH6xpbkgxdU/bVLrNgnvFFr
- 6B/cL2t0BQ3hCrp2MXysIU0pPhDJ3tmD6R8eYmS2f5XqA+ZPD/4F87/hwf/duKgbhN3k8O/q7
- lLhhzx1OGy2YtYwEs7UJ/paMgrmCyUtDUWruRBp3xS57QX/5g8kxdYPy4qlEXlrXhlk/li76H
- 1IJJmLz
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_034959_723990_1F2EAB45 
-X-CRM114-Status: GOOD (  15.60  )
+X-CRM114-CacheID: sfid-20220124_035138_721750_AAA4A65A 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,30 +60,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Montag, 24. Januar 2022 um 12:03 Uhr
-> Von: "Sascha Hauer" <sha@pengutronix.de>
+Hi,
 
-> On Mon, Jan 24, 2022 at 09:55:05AM +0100, Frank Wunderlich wrote:
+When booting a rockpro64-v2 with a kernel built from commit dd81e1c7d5fb
+("Merge tag 'powerpc-5.17-2' of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux"),
+which was the latest commit when ran the tests, I encounter a NULL pointer
+dereference:
 
-> > took this from the 3568-EVB (like the most parts, as the board is
-> > mostly the same), and in linux it's the same and working. The switch
-> > have also phy-id 0 on mdio bus #1, are you sure this is invalid?
+[..]
+[    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
+[..]
+[    3.396944] hub 7-0:1.0: USB hub found
+[    3.397575] hub 7-0:1.0: 1 port detected
+[    3.406086] ohci-platform fe3e0000.usb: Generic Platform OHCI controller
+[    3.406932] ohci-platform fe3e0000.usb: new USB bus registered, assigned bus number 8
+[    3.408530] ohci-platform fe3e0000.usb: irq 38, io mem 0xfe3e0000
+[    3.476869] hub 8-0:1.0: USB hub found
+[    3.477501] hub 8-0:1.0: 1 port detected
+[    3.483278] rk808 0-001b: chip id: 0x0
+[    3.498495] random: fast init done
+[    3.509322] rk808-regulator rk808-regulator: there is no dvs0 gpio
+[    3.510143] rk808-regulator rk808-regulator: there is no dvs1 gpio
+[    3.569278] OF: graph: no port node found in /i2c@ff3d0000/typec-portc@22
+[    3.573471] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+[    3.574466] Mem abort info:
+[    3.574800]   ESR = 0x96000004
+[    3.575163]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    3.575770]   SET = 0, FnV = 0
+[    3.576204]   EA = 0, S1PTW = 0
+[    3.576580]   FSC = 0x04: level 0 translation fault
+[    3.577140] Data abort info:
+[    3.577482]   ISV = 0, ISS = 0x00000004
+[    3.577927]   CM = 0, WnR = 0
+[    3.578279] [0000000000000000] user address but active_mm is swapper
+[    3.579065] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+[    3.579586] Modules linked in:
+[    3.579880] CPU: 5 PID: 7 Comm: kworker/u12:0 Not tainted 5.16.0-rc6-00081-g730b49aac426 #244
+[    3.580667] Hardware name: Pine64 RockPro64 v2.0 (DT)
+[    3.581135] Workqueue: events_unbound deferred_probe_work_func
+[    3.581689] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    3.582335] pc : component_master_add_with_match+0x20/0xfc
+[    3.582850] lr : typec_link_ports+0x58/0x8c
+[    3.583244] sp : ffff800013093980
+[    3.583553] x29: ffff800013093980 x28: ffff80001212b000 x27: ffff00000041d00d
+[    3.584223] x26: ffff0000063e85e0 x25: ffff800012fcb290 x24: ffff000001386820
+[    3.584891] x23: ffff000006c2e808 x22: ffff800011416670 x21: ffff000006c2e808
+[    3.585558] x20: 0000000000000000 x19: ffff000006c2e800 x18: ffffffffffffffff
+[    3.586224] x17: 000000040044ffff x16: 00400034b5503510 x15: 0000000000005ff9
+[    3.586890] x14: 0000000000000000 x13: 0000000000000003 x12: ffff0000063e8080
+[    3.587557] x11: 0000000000000005 x10: ffff800012c13a60 x9 : 0000000000000000
+[    3.588224] x8 : 0000200000000000 x7 : 0000000000000038 x6 : 000000000000004b
+[    3.588892] x5 : 0000000000000000 x4 : ffff000000711800 x3 : ffff800010cd6390
+[    3.589558] x2 : 0000000000000000 x1 : ffff800011416670 x0 : ffff000006c2e808
+[    3.590224] Call trace:
+[    3.590457]  component_master_add_with_match+0x20/0xfc
+[    3.590938]  typec_link_ports+0x58/0x8c
+[    3.591299]  typec_register_port+0x1ac/0x300
+[    3.591705]  tcpm_register_port+0x62c/0x90c
+[    3.592099]  fusb302_probe+0x260/0x430
+[    3.592453]  i2c_device_probe+0x338/0x370
+[    3.592835]  really_probe.part.0+0x9c/0x30c
+[    3.593229]  __driver_probe_device+0x98/0x144
+[    3.593639]  driver_probe_device+0xc8/0x160
+[    3.594033]  __device_attach_driver+0xb8/0x120
+[    3.594450]  bus_for_each_drv+0x78/0xd0
+[    3.594810]  __device_attach+0xd8/0x180
+[    3.595171]  device_initial_probe+0x14/0x20
+[    3.595565]  bus_probe_device+0x9c/0xa4
+[    3.595926]  deferred_probe_work_func+0x88/0xc4
+[    3.596351]  process_one_work+0x288/0x6e0
+[    3.596729]  worker_thread+0x220/0x464
+[    3.597081]  kthread+0x17c/0x190
+[    3.597392]  ret_from_fork+0x10/0x20
+[    3.597737] Code: aa0203f4 a9025bf5 aa0003f5 aa0103f6 (a9400440) 
+[    3.598301] ---[ end trace 823a8d1795013b55 ]---
 
-just to clarify: in linux dts only the basics were taken from evb and changed if
-needed (like iodomain, regulators).
-mixed this with the barebox submsission where i mainly used the evb dts.
+The full log can be found at [1]; config file can be found at [2]. All
+pastebins expire after 6 months.
 
-should i add a note in head that some parts are taken from EVB and vendors dts?
-As this is my first new DTS, i want to be sure the legal notice is correct.
+I tried bisecting the bug and the first bad commit is 730b49aac426 ("usb:
+typec: port-mapper: Convert to the component framework"). I tried to double
+check that the patch is indeed responsible by reverting it from master, but
+I got this build error:
 
-> It's not invalid, it's just the broadcast address to which other phys
-> might answer as well. Anyway, as long as there's only a single phy on
-> the bus it's probably okay.
+drivers/usb/typec/port-mapper.c: In function 'typec_link_ports':
+drivers/usb/typec/port-mapper.c:256:15: error: implicit declaration of function 'usb_for_each_port'; did you mean 'usb_for_each_dev'? [-Werror=implicit-function-declaration]
+  256 |         ret = usb_for_each_port(&con->dev, each_port);
+      |               ^~~~~~~~~~~~~~~~~
+      |               usb_for_each_dev
 
-ok, on mdio0 there is the rtl8211 phy and on mdio1 there is the rtl8367rb switch,
-so only 1 device per bus. I was not aware that 0 is broadcast.
+I tried building and booting from the bad commit, and I got the same NULL
+pointer dereference error. When building from the last good commit
+(8c67d06f3fd9 ("usb: Link the ports to the connectors they are attached
+to")), the board boots just fine. The log when booting from the good commit
+can be found at [3].
 
-regards Frank
+I can help with debugging and testing, but I'm not familiar enough with the
+USB subsystem to fix it myself.
+
+[1] https://pastebin.com/w4tMNhve
+[2] https://pastebin.com/SiUuLeMs
+[3] https://pastebin.com/Pcm9xmL7
+
+Thanks,
+Alex
 
 _______________________________________________
 Linux-rockchip mailing list
