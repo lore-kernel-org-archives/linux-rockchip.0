@@ -4,85 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72079C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B23A8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:36:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TzgQU1FRZfunDKFwGPrCyj2TUFG+ZAE56YPKybAKM8M=; b=tdSiQetRQdTMfl
-	7524WAax0lup4ERjrGcyMFUj3wt1ucGjnL97IM99CPZSSBTqreZXDoAeOC+EtrlZYrWO86WlGNlLq
-	0ujx5kt7tdBk2AkvRaIXYQU6eDEiT726pFI5/byc8zM2/WHgnECXAQo5YWRWu+ahjbGnRjiCckJwh
-	hLe+rjs+RTn6/Qxa5h7gm+9PFI50wwG4NXcmh8nDed6hcGNsK8IKI48ZWANj+1KO5fBky04MG0Du7
-	NHql4VUQwc7NNNQQ7rZzf0d6irCIVoDrYBWCFGuv+a7s5/XhXVET9vMWMiAkaaHvjo9KEe4v135z7
-	INn8BTSTz/nlkO8ksUTQ==;
+	List-Owner; bh=c5/h9Ghis2ygdDRP8YmQXLyqAQu1lmVqk4fg2NSD3DI=; b=fFPwyEdIbczhp2
+	nMPdu0RTzevp0yfzlh1yFGzaUjrsKknienGN+WrJXzlDqSmDFwFhLSKn6/GqwhX3WtsXo+ByXblP0
+	HUzkIGP/J3spkym1gAFivyo2BCKJkEV/in33k+iNOW/aTln94UcUEreFYNb+D18yEsU1bJuc2v1+o
+	Xzq3LO/2IY3ju80Z8On3mXAAGu3sKw9UE22jy8pomYJsPhoF2aiFz/8+trA9a7uVI58834UMdgGWQ
+	ToWavegQvSlFGBcX2oFaZZWsuaxQc1g6RyX3Dn4GNUx6PrnHve2c9BviFqHsm3OUPejfFEPGuH/n6
+	6QVoTlDwPiCc0OpnSHSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBpDk-0024HF-Up; Mon, 24 Jan 2022 02:36:40 +0000
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
+	id 1nBpDm-0024IE-Ax; Mon, 24 Jan 2022 02:36:42 +0000
+Received: from mail-vi1eur05on2059.outbound.protection.outlook.com
+ ([40.107.21.59] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBp9A-0021mU-Rp; Mon, 24 Jan 2022 02:31:58 +0000
-Received: by mail-il1-x12b.google.com with SMTP id i14so12607710ila.11;
- Sun, 23 Jan 2022 18:31:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=R2uTm/BD2isTXWldGmoljdaacGOnVbR7Md5p5huP0LI=;
- b=JmMDFkLadGqdIsUwAjemoOsUPgfceF0iUcKiswWmYTYrcE7n0bzZ/Z9tSNY6D4fDNQ
- 1EMCefN6u0VGCDqVHP2IOJs1hE9fFQ4rNuAeXJ29WNvjoqXy6kmpG1TCMyeZmfjzxRKJ
- D3bJNlPPVwj0wkSUjvE2mmI9W2Z6z95kj6RDHnof2xAGvib4QIKv6Dx6XoApeBSPV83w
- pjaiQNuTC1XxpSi7nzZjmvrznr3JCej2YCoZq2ZXAjWGdEGwB0IceLrTDTZaSI60Rovj
- nU/dqrFpv6d3mx8SguU5ITyk2raZu5ROKJxC6pM6/QPVlGXU3qRyfyfzG+Y9BFJvTN3x
- FNJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=R2uTm/BD2isTXWldGmoljdaacGOnVbR7Md5p5huP0LI=;
- b=hepNKP3n/rcAFWN6AVAX7yzE6DpPIAj7p8f/uCIjTWKXkbzxpR32bj15ky4+ebZfUS
- lLYEf90sWfLd6OQem6jGXE6F7H1gMVFEPuC4hJk+OK6CbMYgHt5jMsowtSzQlKTT03h9
- AhZVKtDJAVEn+XiLTwGST9YZQzjWBynHtSoavO9rWxDWkBYB6tV4dIiB9QqeYbIRA9hK
- DmayGitFdDj08Bogeefp0c0RsUi+5dmJDS7iGYGJacYZC1h0/awoCKNsGZHu5CpdPULm
- DZbeSZvW+IW1xDUw41JC5N0bI89gb93zBUB1V5Zi3GdSv0haBk+GXRQYC1X0Ehsp7Ogm
- 9KJQ==
-X-Gm-Message-State: AOAM531UZ6B+Oi3BVbim0BOh+p5zPP0aokK1Sgc1Pf0B5Q15Yy7EAL9a
- DAhXK7W+y/eb1RjaDVqjE2c=
-X-Google-Smtp-Source: ABdhPJzKUaRunuyBFbmDoIVKwmFF8W+zvBreaT8xlFp7AUwcmOghFLRUo5hbPrelnPoJRUglaPqf3g==
-X-Received: by 2002:a92:b10:: with SMTP id b16mr7624374ilf.187.1642991515536; 
- Sun, 23 Jan 2022 18:31:55 -0800 (PST)
-Received: from aford-IdeaCentre-A730.lan
- ([2601:448:8400:9e8:582d:ad0e:e5a6:94b6])
- by smtp.gmail.com with ESMTPSA id w4sm6625633ilq.56.2022.01.23.18.31.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Jan 2022 18:31:54 -0800 (PST)
-From: Adam Ford <aford173@gmail.com>
-To: linux-media@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, shawnguo@kernel.org,
- aford@beaconembedded.com, Adam Ford <aford173@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev
-Subject: [PATCH V3 10/10] arm64: dts: imx8mm: Enable Hantro G1 and G2 video
- decoders
-Date: Sun, 23 Jan 2022 20:31:24 -0600
-Message-Id: <20220124023125.414794-11-aford173@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220124023125.414794-1-aford173@gmail.com>
-References: <20220124023125.414794-1-aford173@gmail.com>
+ id 1nBp9L-0021r7-8Q; Mon, 24 Jan 2022 02:32:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dDxaZ6c9hd1y0M8kQo+odBkl1pAqhbv4pN4ir8wy95fq9PDhShzwksJfApCgFK01jvDuC2SeobEByjm9GqLgix4+B0a0745ObriODOQNFnFeF9HgHyRLjY7pdmnzB3iqC+mPqieRGwdquznjOVi2ARl9bd/IezwnVi6M7b5JiJbHojyYhNZUlZMovAQfoRnAIJBIIYuvBcKs2bGflTKo900+Al0DFivKGbSCf7XmuwvcmQjZZevPVlUt5UEdcdXUF0cjw4e2BRDIjwL1Mp46hQP881O3CtSZxkQBYCBjkX5X7WTYHPQCCQ4Ti1Ls3xEkD0DsCmz1gibvSArNrmx99A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bdjxUozbbY4+ZRR8J1Pyy8fGsQ1PJcYKWJuoyff7OKU=;
+ b=ZXHjSKQ81bA38pV5g52EKE8EhKBXMJzEDHzIMvO04OyzccA1DKmTiKO1DrlJUMKpHL6nSRxMhFs+aV/w9rlfUqHRGk8d2U+UD2eQhAMoVyW7xwobFFodFchQ4e9ZR+LSF818/VsDuNGu4drOmLj5PFnWRmG+SKqd5n4AFwxlyJ3su+FnPtO8wBo0nGDn8HIruKhBxKOlWfxTUgOSR4PSnOkDH0VknNLos1oyiApRUk/gi4gZZWE30b+DBrmd2AMFphSzoII52/4OJ4zx1QHGGoCzJIoEe6IPqF67MwIgVeWMRcjgnuoXoQE5y/R8/lukjJ98CtwRaWI9/vyt2Sphgg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bdjxUozbbY4+ZRR8J1Pyy8fGsQ1PJcYKWJuoyff7OKU=;
+ b=YXs0wVR1pCkzlN+++uzHiRwsKNCEKz1OJ2IRCDsmubgeKdAuvFPayUwKg1BnbMg2Ozgus32oSjr0o7NQj/76yGuOfrTpZfCZchiOmv+YOnk/v2QW6KQ7h/osar9cdXnz/uDqaOFJbHCdvzi41jPg9sd+OqSYKR7VUjY6tBJV9/k=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com (2603:10a6:20b:113::22)
+ by VI1PR04MB4925.eurprd04.prod.outlook.com (2603:10a6:803:60::26)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4909.17; Mon, 24 Jan
+ 2022 02:32:01 +0000
+Received: from AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::a5b3:9e5:366:a3fc]) by AM7PR04MB7046.eurprd04.prod.outlook.com
+ ([fe80::a5b3:9e5:366:a3fc%3]) with mapi id 15.20.4909.017; Mon, 24 Jan 2022
+ 02:32:01 +0000
+Message-ID: <bd5a0d5ac47c4b139ef5eaaaa9dd8a4e5429516f.camel@nxp.com>
+Subject: Re: [PATCH v2] phy: dphy: Correct clk_pre parameter
+From: Liu Ying <victor.liu@nxp.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-imx@nxp.com, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+ <narmstrong@baylibre.com>, Robert Foss <robert.foss@linaro.org>, Jonas
+ Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, David
+ Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Kishon Vijay
+ Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Kevin Hilman
+ <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin
+ Blumenstingl <martin.blumenstingl@googlemail.com>, Heiko Stuebner
+ <heiko@sntech.de>, Maxime Ripard <mripard@kernel.org>, Guido
+ =?ISO-8859-1?Q?G=FCnther?= <agx@sigxcpu.org>
+Date: Mon, 24 Jan 2022 10:31:48 +0800
+In-Reply-To: <Ye3TbIj5LMvGVRIg@pendragon.ideasonboard.com>
+References: <20220119023714.1498508-1-victor.liu@nxp.com>
+ <Ye3TbIj5LMvGVRIg@pendragon.ideasonboard.com>
+User-Agent: Evolution 3.36.4-0ubuntu1 
+X-ClientProxiedBy: SI2P153CA0027.APCP153.PROD.OUTLOOK.COM
+ (2603:1096:4:190::22) To AM7PR04MB7046.eurprd04.prod.outlook.com
+ (2603:10a6:20b:113::22)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f41d4da6-84b4-4fcc-eb3d-08d9dee1b390
+X-MS-TrafficTypeDiagnostic: VI1PR04MB4925:EE_
+X-Microsoft-Antispam-PRVS: <VI1PR04MB4925A41F1973C74F8D52E2DF985E9@VI1PR04MB4925.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hk9j3v7K2MdH8kNhwl3xUVwzHfdGfiN0IGKmqDlpovw+k1uGUfokjG9dzp8PhS/22E9WZ4IOfyf8nYUXmx4vOcuig6gmKb4ZKB+ex2IoPy+pwW42lWGyNCVWDj0A48M350a51lPwk/WPLYqBiAgqOyugBthFFlvIqTnT08ATwG0S1HgaR3p6Xs5ZxXodte6zRV2wFwuLwurcv7Gd7Bvgn7mJ3N14VjQKFoSpCkdq8ZOuSnkxA4zfmLYUz6/u/lfF2uxveRzmvtLkULy+4DCWKDXf/r+Fjqzg2aFQrpqLl/J8NlXYe3dNzLBMM7QJwTSByxVi3Piuz3CR0KNE97nbbu+qmqM5TAX+R8rnJFGYTrPiYtkLQVMcQNkNOhUA/hdWj2ueSvkWm2BrZjpzjVZqHgTpq/jR5RSvlzc7rhqwkgyCr0M8DNVud0X2c8nmv2yFTeKT+QePFoeKuFoCyy0NqU1h/Ln9+XoetN8PU/9wikEwNLzKgajsiulMbCIS5C6Vlfn4e8jKnfyai7Llm7rkVYzcl2R8GB1lXGyjTykZ5wXUXmJJSdGqxkSj7WwLuWiK3Oaz6MSlCzO0FaGpHor1R+gbTM0bG4MCcC//CUCB4KOcR/Nt/+1G2ToWUnfOiA/hE3VFxQ9CnHPUfMKRntFmhyd0eqstqzJqp7hBeyBsnLQRxY4m8m3XjMx+Ltw/nkk6byvYD6hFz1nO5nIYGWbQ4w==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM7PR04MB7046.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(2906002)(7416002)(52116002)(86362001)(8936002)(6512007)(316002)(6486002)(54906003)(66556008)(66476007)(66946007)(6506007)(6666004)(6916009)(2616005)(8676002)(26005)(36756003)(4326008)(38350700002)(38100700002)(5660300002)(508600001)(186003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZUxSaDFvVlBOYk1nTlpJcWRyZWZVV2RqbkVLYWFlR3JPMFI3Wi8rbHVHRnp5?=
+ =?utf-8?B?UCs3WUp0OUtvVDlZajFJVDY5dWI0ZGxpdDVRMit5RGc2T2YwZlBoUndPanJy?=
+ =?utf-8?B?aTUzK2VzMnBnVHdmZURocHlWaG0wS3lsT2lvQjNuUHVnTHlOVTJjUUhHMkN2?=
+ =?utf-8?B?N3REMjVmcGFRZnlNRXhueWV5MEVRMUxYR2tMdUFzZmVMSjNYYkFjQlhqbC9D?=
+ =?utf-8?B?TDhSNWFOTE5CSVJhOEdDUXB4a2xhbXVZbkZBa0JSZ0d0NnhKT2NkZWxrS0F6?=
+ =?utf-8?B?WEtnSjEwR1VOYUFDRGcvSkNQSjRuNXV0L05rUTVISFFWeXVQMVJkaWhsR0hE?=
+ =?utf-8?B?amJnYWFrZUZ5WUFtb2xhaGdjR1VjU3RERDg0VXpnN3p3WXdEb3h2VVBqVWRR?=
+ =?utf-8?B?N25TdWJQb3kwdk9LUXB2WjFkM1ZOeG90ZEZLbThNdEtCeFFwczZyOWFOK1JX?=
+ =?utf-8?B?cmFBbE84bEpBREEvT29wZ0ZnRmJCbXBxcEVzWGRrUDczRkxpVnBxRXpnYlhr?=
+ =?utf-8?B?T256Qmdmb2RJcjhKMFR2TWVpbnNDbktodDFQN09KbGloRCt1dTh3Z2hzd3hw?=
+ =?utf-8?B?LzVia3VXRkhMMlAwdElSUTdCVnR6c2JYbUJ0Q2JMZXUyNExYY2JUOGxEaUFP?=
+ =?utf-8?B?U2dxUCsyd3hiemk5SXprZ3R4b0FubTFKK0pnYy8xWjkrQVQzUXFsdmx2WG9C?=
+ =?utf-8?B?eFpHaFRnYW0vVHlkaWQ1Qi9TVXl5Y1dVOVF5Um5icUhFNDJrWTNocGZmS1dH?=
+ =?utf-8?B?QWpCVHNOYlZxcitmYVlGKzJGdHZUTVRVSWJWUm81NHBHQWwyRTB0TlRaMW53?=
+ =?utf-8?B?RUs5czk1emJ0WVo5dENVU3hjVUdNeHR5ZEFpVklMd3IwdmM1NnR2OFZUcHlk?=
+ =?utf-8?B?QWRzeDQ1Q3l6OEJ4Ly8rVGRZN09NWTYwSUhrS2RyNDU5S0s1TzA1QmoyZ2Nl?=
+ =?utf-8?B?T0lTV0lnYWFYZU9iRHQ0ZjJYcHpUcTdMOWU1ZlB2aDVwY1dGTERBMUluTEtp?=
+ =?utf-8?B?WHdJeHN6SzE4YVZCamtmVEdHUVh2aDNBcU5Jcy9oT01ydmJRWm9hbXRhdzJy?=
+ =?utf-8?B?MG4vTzVQbmJYbmxNV1Y5RVJvK3BBT1R3VTQxTWwwbytLOS9iR1F5SUVnWVJT?=
+ =?utf-8?B?RUh6blVMRTkyeWIvcFdPcTVOTXIyekxFNnYrK2pWdkdJV2QxeEEreFlvaWRX?=
+ =?utf-8?B?YVpMTGc2TVNCcXJ6TGZxVkYyaEpoMkpLeDRwYWx3TlI5ZndxbWNQTEdLSk5B?=
+ =?utf-8?B?Z29VNlI0RnlESDAwZDF2TTU4ZlZLbGxodkhaOWUyaU5aN1NOYkNVT1J5c1gr?=
+ =?utf-8?B?Q0JVYkViamZWV0x2M3RvVDZxaDQzb2sxUG50R2krR2FlY0ZDNmRpV0ZwWTQy?=
+ =?utf-8?B?czhCdzBodE1BUUdPWGdMUDFkMlp5UThTV2JiVjNEYVVMNzdqNW8wWjVySVU4?=
+ =?utf-8?B?M2trVEVCM2RqcU9WQjd1N3hCejByZktLUEloanY0QzNTSXlyRk41U2FiVCtX?=
+ =?utf-8?B?RTdXeEE1WEh3b3F2VlNiOVFNS3ErcWx6YUNCS29kUVF1OHF0YnlZZWZTNGN6?=
+ =?utf-8?B?dDZIM083VWtoN1VqMmltcFFFUmt5eHRZelZESnY4anJmcXlFTlBqRnFXMjVX?=
+ =?utf-8?B?bjE0aTJiRjhPd2NPcmFhUFNaTVNoWUoxQ01PdGU5TGFpTmwwU0RFV0ljVG9p?=
+ =?utf-8?B?WHVxeTQxZmM3MStKU2dLRGNpOVF3Q2prVlo0eDVqUVJFeDJKenNsQWtkTEpx?=
+ =?utf-8?B?R0RqMDVyM0ovUHFXWHRHaUlYaTZTcHJFbzk3UzRaamxjUWRDUVdwdXEzSVh5?=
+ =?utf-8?B?WHlFMFdubE9sVGU5OXlreG9QbVZVRXFINGRKU0M2Q2ZieVArRGdzcGRhWE9l?=
+ =?utf-8?B?M3RTZEZYNWlLcXVwZ3h2Z2grb0k4eSt2ZkRUV1JlZGJkekt6SWk0b2pTbjVn?=
+ =?utf-8?B?Rzg3YzZIZlVHWDVWWFB2TkQyRlEwNE4xdk9EMWxxVlhiS3lCejlDNmhCV3pp?=
+ =?utf-8?B?ZEVSa09PajVMOGZ5cVZzcWtMZE1MNG8yK1F2NWRGeVdvZUlXMDY0aFh5Smt5?=
+ =?utf-8?B?bk01QVA2MmlwbkZOaEV5TFN2Y0ZTVDdDdlZHUzFrM0o1RUo1eWVFV0h0MWtn?=
+ =?utf-8?B?OWpDZG0zT2dXQmlMMDMzN0FseTAzbG1iU203RjFpNEs1QWtrL09iUmJxVTh3?=
+ =?utf-8?Q?j4qPRy9s4x0bjuewAyKrV14=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f41d4da6-84b4-4fcc-eb3d-08d9dee1b390
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR04MB7046.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2022 02:32:01.3136 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XdzrtOtzOKrY1IZtC6UFe1MNxwE3muhqW2Hasmzp2nsLyAjhvgMBDxHfka1s95OvRgv4U/9dbCtB+yeQmqX+2A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB4925
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_183156_968655_D67116DD 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220123_183207_562486_70477717 
+X-CRM114-Status: GOOD (  19.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,54 +155,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are two decoders on the i.MX8M Mini controlled by the
-vpu-blk-ctrl.  The G1 supports H264 and VP8 while the
-G2 support HEVC and VP9.
+Hi Laurent,
 
-Signed-off-by: Adam Ford <aford173@gmail.com>
+On Mon, 2022-01-24 at 00:15 +0200, Laurent Pinchart wrote:
+> Hi Liu,
+> 
+> Thank you for the patch.
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-index 0c7a72c51a31..98aec4421713 100644
---- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-@@ -1272,6 +1272,22 @@ gpu_2d: gpu@38008000 {
- 			power-domains = <&pgc_gpu>;
- 		};
- 
-+		vpu_g1: video-codec@38300000 {
-+			compatible = "nxp,imx8mm-vpu-g1";
-+			reg = <0x38300000 0x10000>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&clk IMX8MM_CLK_VPU_G1_ROOT>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G1>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&clk IMX8MM_CLK_VPU_G2_ROOT>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G2>;
-+		};
-+
- 		vpu_blk_ctrl: blk-ctrl@38330000 {
- 			compatible = "fsl,imx8mm-vpu-blk-ctrl", "syscon";
- 			reg = <0x38330000 0x100>;
-@@ -1282,6 +1298,12 @@ vpu_blk_ctrl: blk-ctrl@38330000 {
- 				 <&clk IMX8MM_CLK_VPU_G2_ROOT>,
- 				 <&clk IMX8MM_CLK_VPU_H1_ROOT>;
- 			clock-names = "g1", "g2", "h1";
-+			assigned-clocks = <&clk IMX8MM_CLK_VPU_G1>,
-+					  <&clk IMX8MM_CLK_VPU_G2>;
-+			assigned-clock-parents = <&clk IMX8MM_VPU_PLL_OUT>,
-+						 <&clk IMX8MM_VPU_PLL_OUT>;
-+			assigned-clock-rates = <600000000>,
-+					       <600000000>;
- 			#power-domain-cells = <1>;
- 		};
- 
--- 
-2.32.0
+Thank you for your review.
+
+> 
+> On Wed, Jan 19, 2022 at 10:37:14AM +0800, Liu Ying wrote:
+> > The D-PHY specification (v1.2) explicitly mentions that the T-CLK-PRE
+> > parameter's unit is Unit Interval(UI) and the minimum value is 8.  Also,
+> > kernel doc of the 'clk_pre' member of struct phy_configure_opts_mipi_dphy
+> > mentions that it should be in UI.  However, the dphy core driver wrongly
+> > sets 'clk_pre' to 8000, which seems to hint that it's in picoseconds.
+> > And, the kernel doc of the 'clk_pre' member wrongly says the minimum value
+> > is '8 UI', instead of 8.
+> 
+> I'm not sure I'd change the kernel doc. Other fields that are documented
+> as "Time, in picoseconds" have min/max values expressed in ps, so
+> clk_pre, documented as "Time, in UI" doesn't appear wrong if the minimum
+> value is "8 UI".
+> 
+> Otherwise, this patch looks fine to me. With or without dropping that
+> documentation change,
+
+I'll drop the documentation change in v3.
+
+Regards,
+Liu Ying
+
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
 
 
 _______________________________________________
