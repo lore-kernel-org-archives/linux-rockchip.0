@@ -4,48 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B1CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 13:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05DBEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 18:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=31web7XOxMpTOZKwV0OpnvMBspeS9zmQFvozCxf6kyE=; b=UzQTNQ56ZwKNcb
-	gXqWMAEZSObygkDuFdc7os7fvxdCR8CyyUT5B8XWXD0oCRTuHJspsFBQ1j52viRIBcgeGq0Ab1Hyi
-	69jP0kQSwmVqvYxR1B5TE4D9lpUa/KdsAI/QDYiywNBpviT0OwWj/g7CKdtGM5dgliMCiO72EL03y
-	055ZCs6NaqNmqF7HC42HF/ot4FXKgCVp/vtKgboaS9qw8Cccsclu7fYgWocrMrObmpY+O9OABygrN
-	T0l5jsqb2Gg5nkfbzDCGXi+UNSb8feZeql4L/WF6gd3dRKsy5NZQxH+EIralIuZvs+zCJcc9D3nlp
-	BLY/14HvEsSX+tEH5jtQ==;
+	List-Owner; bh=oMPq9Ie/2QGRJVX+2mKmAylLMCo+Cc2N+t9CFVkEezA=; b=CB+wyCmINXPCXE
+	nIGcpgjjlLAkvsCtuQBMor7J/5ZERHQhB8vC7mUiNMKJw4eapT0hAsAKl6Cwn0iV3P79+y+PoMgHW
+	D6rACBvMDWK6PmwM6elo2WL7VEDJy3JNf80JDVjtIv46ySAJ4lquiVRCPyRnp37CW+agJDTSQxsfw
+	HEgF29oYr0eJ1RWFcrKEcGO5CfwJ+5PtM5PrWEOfLl9RnXs8s63zowaGfddyPbCrNXumDUT0RAl/I
+	lKMoEUQkABUB27KUbcr+y2dncCKE8ahu/v0MZiQLu5fLTe8v9W1LNwW0Wp2jXc+0347T/ZsMBCIcI
+	DvifjAq2QKKpgl1uI3RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBzWK-003WQD-J5; Mon, 24 Jan 2022 13:36:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBzW8-003WOw-VI; Mon, 24 Jan 2022 13:36:23 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A3C80D6E;
- Mon, 24 Jan 2022 05:36:19 -0800 (PST)
-Received: from monolith.localdoman (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 05BC53F774;
- Mon, 24 Jan 2022 05:36:17 -0800 (PST)
-Date: Mon, 24 Jan 2022 13:36:32 +0000
-From: Alexandru Elisei <alexandru.elisei@arm.com>
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: heiko@sntech.de, rafael.j.wysocki@intel.com, gregkh@linuxfoundation.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org
-Subject: Re: [BUG] rockpro64-v2: NULL pointer dereference when booting
-Message-ID: <Ye6rYLzRXZHdjJul@monolith.localdoman>
-References: <Ye6S1PBAHtWj1lRp@monolith.localdoman>
- <Ye6X0lgBBsk4Sd1X@kuha.fi.intel.com>
+	id 1nC3hx-004MZL-ER; Mon, 24 Jan 2022 18:04:49 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nC3Sl-004FX1-5K
+ for linux-rockchip@lists.infradead.org; Mon, 24 Jan 2022 17:49:11 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id v67so8510034oie.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 24 Jan 2022 09:49:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=+NLX3R1cE70RQfveZRD6FH9WgGQntlpSO5v8UvTcWFc=;
+ b=pBM5BTKeJF5ayuNLJyfZOfHiGDI1ZsCzdpCy2ANcmLXxEy30QSBbe8P3oEj7usFApd
+ LuwaT+lEJxm1+Cek9HZKcZ2Ax8mx7CgScbcC1pIIe9KX15W/2Le3EDwBgVXSKlQR84EY
+ XfzSpvWqVjrIMgMR0q1x+uYCxZlx1s77eSuJSOsd1Hct6cG/5Nvfn61ThsFmAgJDSgHz
+ fG7/WDYyzDW4yT72wqgXp8V8aH7mbyi5BM8/B6RkELX7tKp4qk2NrSmVWtFooTYZ4g4+
+ chZLJ4j5BYtZofzPDmcsdCOc6D8TrLyMVZdXdD+oSIaqhRAOoDvm9YWTrd2oIyEzUucR
+ OgBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=+NLX3R1cE70RQfveZRD6FH9WgGQntlpSO5v8UvTcWFc=;
+ b=X0kHU3hDBmhvg0717n7h3AR099sUjRX47JSowl/w95yIO/srRcQ9iLVDGNrRHxB1SY
+ v4uL0RW2gO9qnjZ27WMChmufFU9go3RlE3aLypAmsfxzirLZKQ4hZ2DDB6ISBceSAOTi
+ vD4aEvVmKwF9a55Ju6t6dbRhvNf+zo26pjiHOe/Pe4lzIuDz/l66hpGmHgJyNpyzzo1g
+ tjforXt6BtjBbgkaYAeTI9FY9+WUe+pko+hIu3Wk30mcdXMsDU20ctalpuTV2FN0tQcw
+ JRlfIFLiA0M3nq0nBBRsOzLlStrcIuI4kfBxTp9ExqmEny/JuTEwCDQJHsNFKUrly0zy
+ LvzA==
+X-Gm-Message-State: AOAM532t8mjygM7r5G2uqws0CS3GboG6y3JkMJiY2CjrPpLs+yPQ/5NS
+ fdRm/j2tPSF0n6e/OPJ+4jCnQA==
+X-Google-Smtp-Source: ABdhPJzj7F2gOyTNGb+hp2IschcMiHIeJMXg5e0x4my2DCxicYn20Rr+QiuG8pgtjjBJZjNj7uusnA==
+X-Received: by 2002:a54:4004:: with SMTP id x4mr2448324oie.18.1643046544089;
+ Mon, 24 Jan 2022 09:49:04 -0800 (PST)
+Received: from eze-laptop ([190.194.87.200])
+ by smtp.gmail.com with ESMTPSA id j19sm3642063oih.3.2022.01.24.09.48.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Jan 2022 09:49:02 -0800 (PST)
+Date: Mon, 24 Jan 2022 14:48:56 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Adam Ford <aford173@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ shawnguo@kernel.org, aford@beaconembedded.com,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lucas Stach <l.stach@pengutronix.de>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH V3 09/10] media: hantro: Add support for i.MX8MM Hantro-G1
+Message-ID: <Ye7miOjf0LUruuEk@eze-laptop>
+References: <20220124023125.414794-1-aford173@gmail.com>
+ <20220124023125.414794-10-aford173@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <Ye6X0lgBBsk4Sd1X@kuha.fi.intel.com>
+In-Reply-To: <20220124023125.414794-10-aford173@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220124_053621_298482_1DA3C7B1 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20220124_094907_287592_D86B6B97 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,120 +99,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Adam,
 
-On Mon, Jan 24, 2022 at 02:13:06PM +0200, Heikki Krogerus wrote:
-> On Mon, Jan 24, 2022 at 11:51:48AM +0000, Alexandru Elisei wrote:
-> > Hi,
-> > 
-> > When booting a rockpro64-v2 with a kernel built from commit dd81e1c7d5fb
-> > ("Merge tag 'powerpc-5.17-2' of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux"),
-> > which was the latest commit when ran the tests, I encounter a NULL pointer
-> > dereference:
-> > 
-> > [..]
-> > [    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
-> > [..]
-> > [    3.396944] hub 7-0:1.0: USB hub found
-> > [    3.397575] hub 7-0:1.0: 1 port detected
-> > [    3.406086] ohci-platform fe3e0000.usb: Generic Platform OHCI controller
-> > [    3.406932] ohci-platform fe3e0000.usb: new USB bus registered, assigned bus number 8
-> > [    3.408530] ohci-platform fe3e0000.usb: irq 38, io mem 0xfe3e0000
-> > [    3.476869] hub 8-0:1.0: USB hub found
-> > [    3.477501] hub 8-0:1.0: 1 port detected
-> > [    3.483278] rk808 0-001b: chip id: 0x0
-> > [    3.498495] random: fast init done
-> > [    3.509322] rk808-regulator rk808-regulator: there is no dvs0 gpio
-> > [    3.510143] rk808-regulator rk808-regulator: there is no dvs1 gpio
-> > [    3.569278] OF: graph: no port node found in /i2c@ff3d0000/typec-portc@22
-> > [    3.573471] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
-> > [    3.574466] Mem abort info:
-> > [    3.574800]   ESR = 0x96000004
-> > [    3.575163]   EC = 0x25: DABT (current EL), IL = 32 bits
-> > [    3.575770]   SET = 0, FnV = 0
-> > [    3.576204]   EA = 0, S1PTW = 0
-> > [    3.576580]   FSC = 0x04: level 0 translation fault
-> > [    3.577140] Data abort info:
-> > [    3.577482]   ISV = 0, ISS = 0x00000004
-> > [    3.577927]   CM = 0, WnR = 0
-> > [    3.578279] [0000000000000000] user address but active_mm is swapper
-> > [    3.579065] Internal error: Oops: 96000004 [#1] PREEMPT SMP
-> > [    3.579586] Modules linked in:
-> > [    3.579880] CPU: 5 PID: 7 Comm: kworker/u12:0 Not tainted 5.16.0-rc6-00081-g730b49aac426 #244
-> > [    3.580667] Hardware name: Pine64 RockPro64 v2.0 (DT)
-> > [    3.581135] Workqueue: events_unbound deferred_probe_work_func
-> > [    3.581689] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> > [    3.582335] pc : component_master_add_with_match+0x20/0xfc
-> > [    3.582850] lr : typec_link_ports+0x58/0x8c
-> > [    3.583244] sp : ffff800013093980
-> > [    3.583553] x29: ffff800013093980 x28: ffff80001212b000 x27: ffff00000041d00d
-> > [    3.584223] x26: ffff0000063e85e0 x25: ffff800012fcb290 x24: ffff000001386820
-> > [    3.584891] x23: ffff000006c2e808 x22: ffff800011416670 x21: ffff000006c2e808
-> > [    3.585558] x20: 0000000000000000 x19: ffff000006c2e800 x18: ffffffffffffffff
-> > [    3.586224] x17: 000000040044ffff x16: 00400034b5503510 x15: 0000000000005ff9
-> > [    3.586890] x14: 0000000000000000 x13: 0000000000000003 x12: ffff0000063e8080
-> > [    3.587557] x11: 0000000000000005 x10: ffff800012c13a60 x9 : 0000000000000000
-> > [    3.588224] x8 : 0000200000000000 x7 : 0000000000000038 x6 : 000000000000004b
-> > [    3.588892] x5 : 0000000000000000 x4 : ffff000000711800 x3 : ffff800010cd6390
-> > [    3.589558] x2 : 0000000000000000 x1 : ffff800011416670 x0 : ffff000006c2e808
-> > [    3.590224] Call trace:
-> > [    3.590457]  component_master_add_with_match+0x20/0xfc
-> > [    3.590938]  typec_link_ports+0x58/0x8c
-> > [    3.591299]  typec_register_port+0x1ac/0x300
-> > [    3.591705]  tcpm_register_port+0x62c/0x90c
-> > [    3.592099]  fusb302_probe+0x260/0x430
-> > [    3.592453]  i2c_device_probe+0x338/0x370
-> > [    3.592835]  really_probe.part.0+0x9c/0x30c
-> > [    3.593229]  __driver_probe_device+0x98/0x144
-> > [    3.593639]  driver_probe_device+0xc8/0x160
-> > [    3.594033]  __device_attach_driver+0xb8/0x120
-> > [    3.594450]  bus_for_each_drv+0x78/0xd0
-> > [    3.594810]  __device_attach+0xd8/0x180
-> > [    3.595171]  device_initial_probe+0x14/0x20
-> > [    3.595565]  bus_probe_device+0x9c/0xa4
-> > [    3.595926]  deferred_probe_work_func+0x88/0xc4
-> > [    3.596351]  process_one_work+0x288/0x6e0
-> > [    3.596729]  worker_thread+0x220/0x464
-> > [    3.597081]  kthread+0x17c/0x190
-> > [    3.597392]  ret_from_fork+0x10/0x20
-> > [    3.597737] Code: aa0203f4 a9025bf5 aa0003f5 aa0103f6 (a9400440) 
-> > [    3.598301] ---[ end trace 823a8d1795013b55 ]---
-> > 
-> > The full log can be found at [1]; config file can be found at [2]. All
-> > pastebins expire after 6 months.
-> > 
-> > I tried bisecting the bug and the first bad commit is 730b49aac426 ("usb:
-> > typec: port-mapper: Convert to the component framework"). I tried to double
-> > check that the patch is indeed responsible by reverting it from master, but
-> > I got this build error:
-> > 
-> > drivers/usb/typec/port-mapper.c: In function 'typec_link_ports':
-> > drivers/usb/typec/port-mapper.c:256:15: error: implicit declaration of function 'usb_for_each_port'; did you mean 'usb_for_each_dev'? [-Werror=implicit-function-declaration]
-> >   256 |         ret = usb_for_each_port(&con->dev, each_port);
-> >       |               ^~~~~~~~~~~~~~~~~
-> >       |               usb_for_each_dev
-> > 
-> > I tried building and booting from the bad commit, and I got the same NULL
-> > pointer dereference error. When building from the last good commit
-> > (8c67d06f3fd9 ("usb: Link the ports to the connectors they are attached
-> > to")), the board boots just fine. The log when booting from the good commit
-> > can be found at [3].
-> > 
-> > I can help with debugging and testing, but I'm not familiar enough with the
-> > USB subsystem to fix it myself.
-> > 
-> > [1] https://pastebin.com/w4tMNhve
-> > [2] https://pastebin.com/SiUuLeMs
-> > [3] https://pastebin.com/Pcm9xmL7
+On Sun, Jan 23, 2022 at 08:31:23PM -0600, Adam Ford wrote:
+> The i.MX8MM has a Hantro G1 video decoder similar to the
+> imx8mq but lacks the post-processor present in the imx8mq.
+> Add support in the driver for it with the post-processing
+> removed.
 > 
-> There is already a fix pending:
-> https://lore.kernel.org/linux-usb/20220124090228.41396-3-heikki.krogerus@linux.intel.com/
+> Signed-off-by: Adam Ford <aford173@gmail.com>
+> 
 
-Applied the patch, I can confirm that my rockpro64 is now booting. Thank
-you for the patch!
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-Thanks,
-Alex
+Thanks a lot,
+Ezequiel
+
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index a670ddd29c4c..b281ac4fb79c 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -615,6 +615,7 @@ static const struct of_device_id of_hantro_match[] = {
+>  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
+>  #endif
+>  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
+> +	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
+>  	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
+>  	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
+>  	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index f0bd2ffe290b..c00b46e06055 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -299,6 +299,7 @@ enum hantro_enc_fmt {
+>  	ROCKCHIP_VPU_ENC_FMT_UYVY422 = 3,
+>  };
+>  
+> +extern const struct hantro_variant imx8mm_vpu_g1_variant;
+>  extern const struct hantro_variant imx8mq_vpu_g1_variant;
+>  extern const struct hantro_variant imx8mq_vpu_g2_variant;
+>  extern const struct hantro_variant imx8mq_vpu_variant;
+> diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> index 849ea7122d47..9802508bade2 100644
+> --- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+> @@ -327,3 +327,15 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
+>  	.clk_names = imx8mq_g2_clk_names,
+>  	.num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
+>  };
+> +
+> +const struct hantro_variant imx8mm_vpu_g1_variant = {
+> +	.dec_fmts = imx8m_vpu_dec_fmts,
+> +	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
+> +	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
+> +		 HANTRO_H264_DECODER,
+> +	.codec_ops = imx8mq_vpu_g1_codec_ops,
+> +	.irqs = imx8mq_irqs,
+> +	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
+> +	.clk_names = imx8mq_g1_clk_names,
+> +	.num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
+> +};
+> -- 
+> 2.32.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
