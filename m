@@ -4,60 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50F4C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45034C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:35:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9zf/Ak621X9MAa5Sr7yMe/byo234qEu8ErKxgHsFFY=; b=nAM2QN55CSv4bs
-	KBirJ5CAklF3iaTwoLqp4Heabyl3qGlGWFhW6G06d3EqX1DlZ+po1T44vjdn7P54NvPEAJH7DJ3LG
-	1YVohnpf/RR2yzaRJZNyYiwFnfy/OZ+KfPtPFCYIiNmfKSTB9EHqJehbZBPMv1tWRksFFYDjXzugQ
-	07Fw7EKGceaNeiGEj3VrAj9lF5FTOQ2X/iFD5ldz/OI1/8maycMY/XpNeaznGIA+Avq0hkZsYF9hS
-	QWEt6jIdo3HsTA5/Qs2h/3RImgl/EoLB574cX1rW/NyEgxpO3u5VL2AMgHn8TTGm+MKVfZ4WgKzWe
-	aLDqg4TYKKP5qgwURa2A==;
+	List-Owner; bh=NBeCFioiFiVjEb9t04GwSKke5PaUYRmY0cftREGdl/A=; b=0EuDq6MXz62bdN
+	5RR+OWZ1j2x29eg4JhXw0KVW3XyXVCokyqRkWI81sjclCJZJhK1g9Oy44GarBIKmlBh6gZSMKhWNm
+	F2smC56FRWge38Hi4JBkv0Wf/v5iAeSUmymXnmt36cLiIDb8Bq9aOtEZpE/4ILQj4DemaVVyOkV39
+	ByQtuzVQ7IHNU2QZs7ZiT9OEoJkcce/6D2g0DTjhhA5XArrZyK/zJlvoKROm5VyT5WPmIJq/EATfF
+	3sGHahyfQc+ANng04QmVpafsaXC90nM5HN6HsXdpN31RsPu56zt+Tma65uQ3D/jftwxp6allph2T7
+	7G6gzgNYoHwwlPDtfyTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBpBm-0023EF-5x; Mon, 24 Jan 2022 02:34:38 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1nBpCT-0023cb-1P; Mon, 24 Jan 2022 02:35:21 +0000
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBp93-0021ha-Ga; Mon, 24 Jan 2022 02:31:50 +0000
-Received: by mail-il1-x131.google.com with SMTP id y17so1089706ilm.1;
- Sun, 23 Jan 2022 18:31:48 -0800 (PST)
+ id 1nBp95-0021jB-W5; Mon, 24 Jan 2022 02:31:53 +0000
+Received: by mail-io1-xd2c.google.com with SMTP id s18so1255788ioa.12;
+ Sun, 23 Jan 2022 18:31:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=mMhTEWTe94/lxvR3iguUuMULiaaMgsYkOT2qY7s3xZk=;
- b=iJ2k95ZXWZirEU8bh7HgcSE0cLcZLG8UBsmAXLbZx9hvWK1MtzagTzps3fE9ud0Dt6
- 3dl1qjaI1gdmN1GxlYJXDkE+uXmsTyZazE2HLsJBU2WJoAIVn6+MJ58eC6ct/1/5xQzA
- 6sQTNCiu8F5Ijk7PTZpf8seB/5qcxwqwEuEs2RqnJCB6yEIXvGk6C/yTlt65lnn28k1J
- Z1EdyWuI5GQSnSzct51pe3r/ejd2W0/roNplZDbgIOIDwBczinrOcMrEHFYfXRpW1z4C
- SbRx4kyUvDow7ajO+pSP+CLVWn283R3l8Q0ow0zy3VNtA4K8Cs2LaTFD+TY2kKd7ZZwa
- ISkA==
+ bh=wM27uiC4jZN6SIACqztmxLT6jE1eUS0JxDrZiiXzyRg=;
+ b=OeEzUz+xSnEJ37CVSWNU73LKZ0yZoFVZW300ZrxE0zAlrUsF5B00SQDxDtIgduR0qe
+ wjo+DFeHXaKCvIpUxXIFbK4SgqgFafQY2aFDBZtoanjokOm2VxhV7DApE36kYOI+qqk3
+ qXdObbAmy7fUyTuApsbsl8TCJxZuO/SnVDPIuV+Dstc4lZg2GlxRZUcgU9Y20Hji7HZ4
+ wzL/MIagejiycvC0z9eb39TB+hjzYvTywl7dF52F2Q+xmkcVkngQAHohfaqN2TiMSoKF
+ kqZB5Unnk90Jlk5hThs1ymZYgncn4s9DwQzGWnmiI/JdMHdhBPu4x4TEj4WuUQ6wN4cS
+ uOtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=mMhTEWTe94/lxvR3iguUuMULiaaMgsYkOT2qY7s3xZk=;
- b=lidgfYjg4Bl+VeTqHC7P++sb4vD+sURUHy5VKVwSQ+evH82zGWbEi+D3z3KqQbHVfX
- cOF0+msiQ7+LEMEeJHp9W6AxnoccsDjRjatL8ACV9r8zerbCPPhwVegFvIdqlZcsSyWS
- j8I2dyEyM44ayuys4c5ROY7KLKbsPAJOhRhpTcLqK8LqNcTasfr+lY0Dh/SgnGZzEiXH
- 0fm910NDzjIcgJabF70ZYiVNu4tloKrqg9aBw3qQ0XZ8HnRQYBWyALMqD9QsVdAoa2xh
- GeCMts6qjZQCDMWykS4ZbCBnFlRn8brmaahLyJt0OoiV0WeY8kTWFspXskrjXUOEcIdz
- UXQA==
-X-Gm-Message-State: AOAM533UqWbVjpdoSqTv4KqmFJSAULBUiT4pDYrElAc0Mkwu3kaFaxQi
- EaNfEmHbg72pwwUGdwysdHs=
-X-Google-Smtp-Source: ABdhPJwHTfqTsXF+kZcb3xdm1e8LTE53DcTCXSzva0z9kKf4O8RhDcx2Gr+M5yR2Za1D9tLhQp22Hg==
-X-Received: by 2002:a05:6e02:c71:: with SMTP id
- f17mr7680778ilj.309.1642991508220; 
- Sun, 23 Jan 2022 18:31:48 -0800 (PST)
+ bh=wM27uiC4jZN6SIACqztmxLT6jE1eUS0JxDrZiiXzyRg=;
+ b=XLsgUeAUi82YjoPN/o/RvpOupNUKtLsgmt50cgooJ0QZssL75sRFN3vHIZjlgSzrL5
+ ow5UVIcVIGwzMtJutMkHr98tNkTez4AHyLPtlFJ/IxL7yWi2ZN2uDTlmHZhLWByBqOAp
+ ajvId9Cm0OU9B5B77pQ02D9mXe5ucAaKauAsfbZkJxKo5WO/SUoIQVo7Kk74KscWusEY
+ 4ed64XDCN/xEPyDZvcUOcTYsGlfKpSTP7/SflmBpXluduIOXUqENYDoCDMRu7Z7QMna8
+ dPSnThVOlErx0BAUyZok2Tffu6awhCPAd2eENcX62Yo2NzAR5T1zX4xdijGDTLl5cMPC
+ ie2A==
+X-Gm-Message-State: AOAM530humsCi7GivYtjCNbn5T+lPrG65tVvkUlairn/CO0iWfkUpMPG
+ 0faG+2jGgiLZGJmv1GvC3xw=
+X-Google-Smtp-Source: ABdhPJwVCAXerAQEZRw1wksjIQuYDlek3Gm5nUOSoAy/LVpBfHxOaxA2QAELIH/ZTZREKTlcu6u43w==
+X-Received: by 2002:a02:3904:: with SMTP id l4mr5957775jaa.161.1642991510607; 
+ Sun, 23 Jan 2022 18:31:50 -0800 (PST)
 Received: from aford-IdeaCentre-A730.lan
  ([2601:448:8400:9e8:582d:ad0e:e5a6:94b6])
- by smtp.gmail.com with ESMTPSA id w4sm6625633ilq.56.2022.01.23.18.31.46
+ by smtp.gmail.com with ESMTPSA id w4sm6625633ilq.56.2022.01.23.18.31.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Jan 2022 18:31:47 -0800 (PST)
+ Sun, 23 Jan 2022 18:31:50 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
 To: linux-media@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org, shawnguo@kernel.org,
@@ -72,16 +71,17 @@ Cc: linux-arm-kernel@lists.infradead.org, shawnguo@kernel.org,
  Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-staging@lists.linux.dev
-Subject: [PATCH V3 07/10] arm64: dts: imx8mm: Fix VPU Hanging
-Date: Sun, 23 Jan 2022 20:31:21 -0600
-Message-Id: <20220124023125.414794-8-aford173@gmail.com>
+Subject: [PATCH V3 08/10] dt-bindings: media: nxp,
+ imx8mq-vpu: Add support for G1 on imx8mm
+Date: Sun, 23 Jan 2022 20:31:22 -0600
+Message-Id: <20220124023125.414794-9-aford173@gmail.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220124023125.414794-1-aford173@gmail.com>
 References: <20220124023125.414794-1-aford173@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_183149_598414_11AF2CAF 
-X-CRM114-Status: UNSURE (   9.59  )
+X-CRM114-CacheID: sfid-20220123_183152_096764_A0ABBD50 
+X-CRM114-Status: UNSURE (   8.92  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,25 +100,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The vpumix power domain has a reset assigned to it, however
-when used, it causes a system hang.  Testing has shown that
-it does not appear to be needed anywhere.
+The i.MX8M mini appears to have a similar G1 decoder but the
+post-processing isn't present, so different compatible flag is required.
+Since all the other parameters are the same with imx8mq, just add
+the new compatible flag to nxp,imx8mq-vpu.yaml.
 
-Fixes: d39d4bb15310 ("arm64: dts: imx8mm: add GPC node")
 Signed-off-by: Adam Ford <aford173@gmail.com>
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-index f77f90ed416f..0c7a72c51a31 100644
---- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-@@ -707,7 +707,6 @@ pgc_vpumix: power-domain@6 {
- 						clocks = <&clk IMX8MM_CLK_VPU_DEC_ROOT>;
- 						assigned-clocks = <&clk IMX8MM_CLK_VPU_BUS>;
- 						assigned-clock-parents = <&clk IMX8MM_SYS_PLL1_800M>;
--						resets = <&src IMX8MQ_RESET_VPU_RESET>;
- 					};
+diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+index 9c28d562112b..7dc13a4b1805 100644
+--- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+@@ -5,7 +5,7 @@
+ $id: "http://devicetree.org/schemas/media/nxp,imx8mq-vpu.yaml#"
+ $schema: "http://devicetree.org/meta-schemas/core.yaml#"
  
- 					pgc_vpu_g1: power-domain@7 {
+-title: Hantro G1/G2 VPU codecs implemented on i.MX8MQ SoCs
++title: Hantro G1/G2 VPU codecs implemented on i.MX8M SoCs
+ 
+ maintainers:
+   - Philipp Zabel <p.zabel@pengutronix.de>
+@@ -20,6 +20,7 @@ properties:
+         deprecated: true
+       - const: nxp,imx8mq-vpu-g1
+       - const: nxp,imx8mq-vpu-g2
++      - const: nxp,imx8mm-vpu-g1
+ 
+   reg:
+     maxItems: 1
 -- 
 2.32.0
 
