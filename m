@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3077C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:33:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C612C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Jan 2022 02:34:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d55nNM+j8+lT/AjH+kWlSnH9FLlt4E4tSuE8EG82EPc=; b=Ps1RNphO3F0/mm
-	AAfCpvDtCVro70RdY6LSvaEqN36FrHjYDxXA6ImMGQUROkzIFbfBwQmW1oyRxfqMJZ48woRg9ZWR4
-	SiLfnEwHfQNPpIB1dsiQSGoTVVyAP9tDTrj0qtIdxB2e3kpMO92utfMnnfdvBCAJPkx1FVYpTMi5s
-	ka+4xTNpYY3K9HJSTvBJ7mkAvUgaUtvZJJCsptpSULx2wYfXB5wFjUoPusJ0rRQy5UgYgkgP+liW7
-	v+x6WySkizhbCpL8YzQ9w9Nzbkn9P8Mva7wF22VHTDdN+UL2nE+HdiwqX1hTwijiNl8CkL+NKQotd
-	IoXWPkcl+RpUFnkOxLPg==;
+	List-Owner; bh=VW2aPRghda7XSlvjMLaZZNixksolzan+XRUfsHs+1fI=; b=UGz/kbPkXByNxX
+	v4dCiEBbakUfZPW4BsKLsx6mhd0pIDvPoull6yO9YGrUEvp4uSp6tFmK/dDW+0CJ26kNvBqAYBK2M
+	RQ3EYFJ/VFZop1yVuRsbZ4hdk63NwIQ6EpuhNDs0FixnT9tpIxwQjE2DXMO/kbFTfqpEL/ulJgDmm
+	3SFI1DHZSzH+u1QPn3fkNRhSH5+Vu4V4w8graDD/moxVfqAftygcz+J1HTArC7JUjHpxCJg+E7vSq
+	aysIVAN5oNiyZI15MvmJjANgdztlb4Os4zw4skxC09vBIX1Z7WbsXXGvmGNx7sycxS0nTwPme/kP7
+	JNMrO1epohUrBxRgFSVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nBpAk-0022e7-Tx; Mon, 24 Jan 2022 02:33:34 +0000
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+	id 1nBpBG-0022wH-1z; Mon, 24 Jan 2022 02:34:06 +0000
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nBp8z-0021ej-L6; Mon, 24 Jan 2022 02:31:47 +0000
-Received: by mail-il1-x12d.google.com with SMTP id w5so8406254ilo.2;
- Sun, 23 Jan 2022 18:31:44 -0800 (PST)
+ id 1nBp91-0021fc-C8; Mon, 24 Jan 2022 02:31:49 +0000
+Received: by mail-io1-xd2b.google.com with SMTP id i62so2078957ioa.1;
+ Sun, 23 Jan 2022 18:31:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=29a4zcS3pHxTyHJK2Q3LXBcB6ssRU9X7b70+ZfuDhkk=;
- b=B+HkZrzqHPwuLVtXpEO62WdGobbgIQ47rAPYherwmXm8Q1WRwHdfbo4AsIq5VsZ8Td
- //1rz6lrb1tyG35o8yKNmPejdgCbU8IE8PfGwQhH/ojDz3rjJ58wL56ezle8rmaZ5KNk
- rY32VN/gG2lB1m7PA+n+aJ/EeA8fphJV8NWKs3ROI4mxmupb7lOzYn0thH25+BWreMm3
- 7UBHCWoxu+EgubelI2bPSJ0H5OK74ngZtE3hMiU9SbtByRR2TvqkUDt2ZHlHhnRDsNdD
- rK3Yzglw7Xgp5nV7KRxHsio2llvO8pIRsUHHHjRIKpvMY4mMCtSZl84AbGsPgRb5nP+s
- 8QXw==
+ bh=0kqapHPsVAmMS1hoADzYhtB33F6J8cOET2+FNwBRYVI=;
+ b=UjHNdYVBgQuefHEiP7NbKEkMw+838O6fih8G046RqbW05XTz91K2as73j4bCJHEG/i
+ H+6hfjiigX46NZNy+WHb1T6KEYRkc42t+/G+r+z2ijG27j8F/GBOdDD0tRLLr/8+uT6y
+ /b34Ko2Gs9uwNfeEL4Teub3gJKq9UyFtGClm0clhY9NANQYj3Ga0L8TaR2whBThWAUsq
+ eK4IuWdTelBizfAvnVZyvp3a6sVnt3pAv0wqUxDw5oMNUXA0nA2OpA6C00az43q6IPbV
+ xQGGJObqJrmnXPn+Gnj08tQpHKkUOebFzut8qf62RljmsicwQ/ODD151qV2Hh9LfJozS
+ bPOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=29a4zcS3pHxTyHJK2Q3LXBcB6ssRU9X7b70+ZfuDhkk=;
- b=R9xjr7wJURx3b1fbLI5MypaMywaiE8FkGFYYxPCJHlV4VLN8+XmigJLUzzt74AbdS8
- HsQM061hUXrG787S/8uRP65CuWn12Q4aegseZv3CbYGVHNR15ReaB5ccYCmo5SGdJcnX
- ZpaN+BKv1XToAzJC/Daw+6EI+/1DGGI5J+/Cf2DynIO111CXOt9APUcfNR/OJI9E34ik
- tbUzrQIy2+B7SSzfd841h/OBHefVsFEZjk1vJIACp8NUonEXzUCtJYtIIOy7QTbG/flK
- kItdNzR+OeYWgA+fqEZkEzy4dptD17GJdvTtjOLL3Mac0ox7mgqYZtkMYB3hBKg1k+5l
- cCmA==
-X-Gm-Message-State: AOAM5313XikWjBN9bynXJkgkiMeuBgFCZ+MNN+pezDjoQY1RcnACU50K
- rBM34gxBCWMN29X01CD1K9Q=
-X-Google-Smtp-Source: ABdhPJyItfx9GIj1M0VNQJ4+FnHEk65zMmc2hyl51OUsipN+3WMxQ5OaFTfLpwOO+uyCetM2XuNghw==
-X-Received: by 2002:a92:c563:: with SMTP id b3mr7819309ilj.150.1642991503292; 
- Sun, 23 Jan 2022 18:31:43 -0800 (PST)
+ bh=0kqapHPsVAmMS1hoADzYhtB33F6J8cOET2+FNwBRYVI=;
+ b=I1l1FcVH8Dnu8rQu62YXTT3TJQ14z7XoHMQPugxqvT3S5fJlQBlvIL/1NBqwX2JVkr
+ BNzWIorTjrAJt5kUsdPmsdwrupidO/7Gc8ZWDm9iZL3wHol1YhHTvkfrznCxx0/3pIfU
+ lNB99q9iuoA8alWLIl5oiqOSJvjD8wI/1rQrLIn4AqYcY4lX4PuZiyI28xxgOx8TRu3B
+ SBZ+eBW8YZxdaNFpowYVTXYl6Ofd8WDjLUJ32F4c9fVfBDtwHrOXSJ5zgxqRB8u8djq6
+ +vsCiVyPPqxytRdWIbPkwtNHYcgxz/szUrqdPPoc9vqD2y3Xg5nKWbsNgZ521lAVUPRj
+ 4VKw==
+X-Gm-Message-State: AOAM531SO/H3/SguIcxxUaYg3U0Vd1gEFLUnh6sPccS5imPrJc66Fxz+
+ m7IKXeYYUkNtza474x9FuS8=
+X-Google-Smtp-Source: ABdhPJylwStRZxRkvSHduhjVQ/yru6kNZFcjW6rMzP6oabSV2mxLIBKRp4iZfbJ9guWf6zAYV+7YXA==
+X-Received: by 2002:a02:2201:: with SMTP id o1mr5733193jao.213.1642991505768; 
+ Sun, 23 Jan 2022 18:31:45 -0800 (PST)
 Received: from aford-IdeaCentre-A730.lan
  ([2601:448:8400:9e8:582d:ad0e:e5a6:94b6])
- by smtp.gmail.com with ESMTPSA id w4sm6625633ilq.56.2022.01.23.18.31.41
+ by smtp.gmail.com with ESMTPSA id w4sm6625633ilq.56.2022.01.23.18.31.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Jan 2022 18:31:42 -0800 (PST)
+ Sun, 23 Jan 2022 18:31:45 -0800 (PST)
 From: Adam Ford <aford173@gmail.com>
 To: linux-media@vger.kernel.org
 Cc: linux-arm-kernel@lists.infradead.org, shawnguo@kernel.org,
@@ -71,17 +71,17 @@ Cc: linux-arm-kernel@lists.infradead.org, shawnguo@kernel.org,
  Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-staging@lists.linux.dev
-Subject: [PATCH V3 05/10] media: hantro: Allow i.MX8MQ G1 and G2 to run
- independently
-Date: Sun, 23 Jan 2022 20:31:19 -0600
-Message-Id: <20220124023125.414794-6-aford173@gmail.com>
+Subject: [PATCH V3 06/10] arm64: dts: imx8mq: Enable both G1 and G2 VPU's with
+ vpu-blk-ctrl
+Date: Sun, 23 Jan 2022 20:31:20 -0600
+Message-Id: <20220124023125.414794-7-aford173@gmail.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220124023125.414794-1-aford173@gmail.com>
 References: <20220124023125.414794-1-aford173@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220123_183145_757270_979ABD14 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20220123_183147_489550_AF9BA7EB 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,137 +99,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VPU in the i.MX8MQ is really the combination of Hantro G1 and
-Hantro G2. With the updated vpu-blk-ctrl, the power domains system
-can enable and disable them separately as well as pull them out of
-reset. This simplifies the code and lets them run independently
-while still retaining backwards compatibility with older device
-trees for those using G1.
+With the Hantro G1 and G2 now setup to run independently, update
+the device tree to allow both to operate.  This requires the
+vpu-blk-ctrl node to be configured.  Since vpu-blk-ctrl needs
+certain clock enabled to handle the gating of the G1 and G2
+fuses, the clock-parents and clock-rates for the various VPU's
+to be moved into the pgc_vpu because they cannot get re-parented
+once enabled, and the pgc_vpu is the highest in the chain.
 
 Signed-off-by: Adam Ford <aford173@gmail.com>
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 6a51f39dde56..a670ddd29c4c 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -616,6 +616,7 @@ static const struct of_device_id of_hantro_match[] = {
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mq-vpu", .data = &imx8mq_vpu_variant, },
-+	{ .compatible = "nxp,imx8mq-vpu-g1", .data = &imx8mq_vpu_g1_variant },
- 	{ .compatible = "nxp,imx8mq-vpu-g2", .data = &imx8mq_vpu_g2_variant },
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_SAMA5D4
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 4a19ae8940b9..f0bd2ffe290b 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -299,6 +299,7 @@ enum hantro_enc_fmt {
- 	ROCKCHIP_VPU_ENC_FMT_UYVY422 = 3,
- };
+diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+index 2df2510d0118..549b2440f55d 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+@@ -737,7 +737,21 @@ pgc_gpu: power-domain@5 {
+ 					pgc_vpu: power-domain@6 {
+ 						#power-domain-cells = <0>;
+ 						reg = <IMX8M_POWER_DOMAIN_VPU>;
+-						clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
++						clocks = <&clk IMX8MQ_CLK_VPU_DEC_ROOT>,
++							 <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
++							 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
++						assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
++								  <&clk IMX8MQ_CLK_VPU_G2>,
++								  <&clk IMX8MQ_CLK_VPU_BUS>,
++								  <&clk IMX8MQ_VPU_PLL_BYPASS>;
++						assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
++									 <&clk IMX8MQ_VPU_PLL_OUT>,
++									 <&clk IMX8MQ_SYS1_PLL_800M>,
++									 <&clk IMX8MQ_VPU_PLL>;
++						assigned-clock-rates = <600000000>,
++								       <600000000>,
++								       <800000000>,
++								       <0>;
+ 					};
  
-+extern const struct hantro_variant imx8mq_vpu_g1_variant;
- extern const struct hantro_variant imx8mq_vpu_g2_variant;
- extern const struct hantro_variant imx8mq_vpu_variant;
- extern const struct hantro_variant px30_vpu_variant;
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index f5991b8e553a..849ea7122d47 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -205,13 +205,6 @@ static void imx8m_vpu_g1_reset(struct hantro_ctx *ctx)
- 	imx8m_soft_reset(vpu, RESET_G1);
- }
+ 					pgc_disp: power-domain@7 {
+@@ -1457,30 +1471,31 @@ usb3_phy1: usb-phy@382f0040 {
+ 			status = "disabled";
+ 		};
  
--static void imx8m_vpu_g2_reset(struct hantro_ctx *ctx)
--{
--	struct hantro_dev *vpu = ctx->dev;
--
--	imx8m_soft_reset(vpu, RESET_G2);
--}
--
- /*
-  * Supported codec ops.
-  */
-@@ -237,17 +230,33 @@ static const struct hantro_codec_ops imx8mq_vpu_codec_ops[] = {
- 	},
- };
- 
-+static const struct hantro_codec_ops imx8mq_vpu_g1_codec_ops[] = {
-+	[HANTRO_MODE_MPEG2_DEC] = {
-+		.run = hantro_g1_mpeg2_dec_run,
-+		.init = hantro_mpeg2_dec_init,
-+		.exit = hantro_mpeg2_dec_exit,
-+	},
-+	[HANTRO_MODE_VP8_DEC] = {
-+		.run = hantro_g1_vp8_dec_run,
-+		.init = hantro_vp8_dec_init,
-+		.exit = hantro_vp8_dec_exit,
-+	},
-+	[HANTRO_MODE_H264_DEC] = {
-+		.run = hantro_g1_h264_dec_run,
-+		.init = hantro_h264_dec_init,
-+		.exit = hantro_h264_dec_exit,
-+	},
-+};
+-		vpu: video-codec@38300000 {
+-			compatible = "nxp,imx8mq-vpu";
+-			reg = <0x38300000 0x10000>,
+-			      <0x38310000 0x10000>,
+-			      <0x38320000 0x10000>;
+-			reg-names = "g1", "g2", "ctrl";
+-			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+-				     <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+-			interrupt-names = "g1", "g2";
++		vpu_g1: video-codec@38300000 {
++			compatible = "nxp,imx8mq-vpu-g1";
++			reg = <0x38300000 0x10000>;
++			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>;
++			power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G1>;
++		};
 +
- static const struct hantro_codec_ops imx8mq_vpu_g2_codec_ops[] = {
- 	[HANTRO_MODE_HEVC_DEC] = {
- 		.run = hantro_g2_hevc_dec_run,
--		.reset = imx8m_vpu_g2_reset,
- 		.init = hantro_hevc_dec_init,
- 		.exit = hantro_hevc_dec_exit,
- 	},
- 	[HANTRO_MODE_VP9_DEC] = {
- 		.run = hantro_g2_vp9_dec_run,
- 		.done = hantro_g2_vp9_dec_done,
--		.reset = imx8m_vpu_g2_reset,
- 		.init = hantro_vp9_dec_init,
- 		.exit = hantro_vp9_dec_exit,
- 	},
-@@ -267,6 +276,8 @@ static const struct hantro_irq imx8mq_g2_irqs[] = {
- 
- static const char * const imx8mq_clk_names[] = { "g1", "g2", "bus" };
- static const char * const imx8mq_reg_names[] = { "g1", "g2", "ctrl" };
-+static const char * const imx8mq_g1_clk_names[] = { "g1" };
-+static const char * const imx8mq_g2_clk_names[] = { "g2" };
- 
- const struct hantro_variant imx8mq_vpu_variant = {
- 	.dec_fmts = imx8m_vpu_dec_fmts,
-@@ -287,6 +298,21 @@ const struct hantro_variant imx8mq_vpu_variant = {
- 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
- };
- 
-+const struct hantro_variant imx8mq_vpu_g1_variant = {
-+	.dec_fmts = imx8m_vpu_dec_fmts,
-+	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-+	.postproc_fmts = imx8m_vpu_postproc_fmts,
-+	.num_postproc_fmts = ARRAY_SIZE(imx8m_vpu_postproc_fmts),
-+	.postproc_ops = &hantro_g1_postproc_ops,
-+	.codec = HANTRO_MPEG2_DECODER | HANTRO_VP8_DECODER |
-+		 HANTRO_H264_DECODER,
-+	.codec_ops = imx8mq_vpu_g1_codec_ops,
-+	.irqs = imx8mq_irqs,
-+	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
-+	.clk_names = imx8mq_g1_clk_names,
-+	.num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
-+};
++		vpu_g2: video-codec@38310000 {
++			compatible = "nxp,imx8mq-vpu-g2";
++			reg = <0x38310000 0x10000>;
++			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
++			power-domains = <&vpu_blk_ctrl IMX8MQ_VPUBLK_PD_G2>;
++		};
 +
- const struct hantro_variant imx8mq_vpu_g2_variant = {
- 	.dec_offset = 0x0,
- 	.dec_fmts = imx8m_vpu_g2_dec_fmts,
-@@ -296,10 +322,8 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
- 	.postproc_ops = &hantro_g2_postproc_ops,
- 	.codec = HANTRO_HEVC_DECODER | HANTRO_VP9_DECODER,
- 	.codec_ops = imx8mq_vpu_g2_codec_ops,
--	.init = imx8mq_vpu_hw_init,
--	.runtime_resume = imx8mq_runtime_resume,
- 	.irqs = imx8mq_g2_irqs,
- 	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
--	.clk_names = imx8mq_clk_names,
--	.num_clocks = ARRAY_SIZE(imx8mq_clk_names),
-+	.clk_names = imx8mq_g2_clk_names,
-+	.num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
- };
++		vpu_blk_ctrl: blk-ctrl@38320000 {
++			compatible = "fsl,imx8mq-vpu-blk-ctrl";
++			reg = <0x38320000 0x100>;
++			power-domains = <&pgc_vpu>, <&pgc_vpu>, <&pgc_vpu>;
++			power-domain-names = "bus", "g1", "g2";
+ 			clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+-				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+-				 <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+-			clock-names = "g1", "g2", "bus";
+-			assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
+-					  <&clk IMX8MQ_CLK_VPU_G2>,
+-					  <&clk IMX8MQ_CLK_VPU_BUS>,
+-					  <&clk IMX8MQ_VPU_PLL_BYPASS>;
+-			assigned-clock-parents = <&clk IMX8MQ_VPU_PLL_OUT>,
+-						 <&clk IMX8MQ_VPU_PLL_OUT>,
+-						 <&clk IMX8MQ_SYS1_PLL_800M>,
+-						 <&clk IMX8MQ_VPU_PLL>;
+-			assigned-clock-rates = <600000000>, <600000000>,
+-					       <800000000>, <0>;
+-			power-domains = <&pgc_vpu>;
++				 <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
++			clock-names = "g1", "g2";
++			#power-domain-cells = <1>;
+ 		};
+ 
+ 		pcie0: pcie@33800000 {
 -- 
 2.32.0
 
