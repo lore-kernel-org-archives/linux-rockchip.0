@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E45C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jan 2022 17:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96594C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jan 2022 18:19:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cdMiZgElTxtEb1I+LLu0/VZZ1/Q4hGfc1YZkP/tCIFM=; b=cCX7Chzj2LwNcg
-	OT5XAHNHITEgYtvjYYI+6uJs6c7JC8QavwUZDxZRBD5aspfo3WIKMmOyX5JGTNbcJoGleoZXvWtxp
-	kwItrQJFQ73kp7/3hW61Xdpzh9G4PmTEzofuQ9IgW1+96qhbQGjPJdZQTlghGZOeTJ9LfAlCFJ9Zw
-	IvcfBFURfIy2KeaC2GExOPFlHVVkSRbQOVB/yqrRMWpPOPJyv8F5gxlE/Z71NXYojM9zeqqTgknLY
-	h8pj56w5NT2kt2r2Z/poOSv/yJ9KrA4ROnLF41oTwQ1QTiq7dhiVLbUTPqsRMO3CMqWmrS8yPTza0
-	jKUWWqOtTi201j6ng84g==;
+	List-Owner; bh=Ltc+lbiBtzTyFoJ1+E9taDP/tMBKo6nPo1sZv7Vr7TM=; b=t6TwLvIV2UG/+4
+	Ikb3Jb0Gm6fSzFxkaq1LicF7rTJ+bA3X6xJgEj04S8DQ6Li3wNnM7q0n/6mF4F5126O3+hosydXDY
+	AZWQ+/TMBgsxDaVKuimBuakiAQ1kDg4tHt0uX8w96Vm9MewZIMCuEr6OXYm2iNxxl4wDdyj49bQnw
+	A18QL7dPoWH85DDTNWskTnfDeBd0tiwQgw51uLTkfL7dZUyThWriq+lPqxvfRhW3HMWBTrgKygYYm
+	ztyhFUgDIuqSbfk1ZsnPggIPfWv7oTPfT/62onW/L0G9PfoqX6KMaOh5e3Yfbv96hzS3K1J37N54y
+	oSA4vvk1bfwD6YSOk6lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCPf6-0090xl-M5; Tue, 25 Jan 2022 17:31:20 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1nCQPt-009C7n-V2; Tue, 25 Jan 2022 18:19:41 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCPSq-008wCX-Ou
- for linux-rockchip@lists.infradead.org; Tue, 25 Jan 2022 17:18:44 +0000
-Received: by mail-wm1-x336.google.com with SMTP id
- f202-20020a1c1fd3000000b0034dd403f4fbso2366482wmf.1
- for <linux-rockchip@lists.infradead.org>; Tue, 25 Jan 2022 09:18:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=WvX/s8bbTEktU4nVsA2bYW4MFssxw4eAYf+UAFIZXJk=;
- b=aFEJkDCNwYf3UC4SHwZnnwU8qzZG3Oh8QnYPA/JKXnrv0rYkLvf3bzoymOYvF4vU70
- SI2n+ibZVnfwIru9Gk7Zm0EUAiyFchvKt1E6nXMpSqcx4+bigMXKDfT3kdFW19+Np0p/
- y28ICIzvDxjQ3R9MuxLDlgLLrbwVWY1d02jjnvsxKa8FLC7L+PdcEFTipUElG46Ij4gi
- +iCYApa2vfydHFRaAEjuQqoV0j+vT6nZb5is85rIby32x73+KsHtqRNKXRP8m8JGXPwv
- 0p6oslZg8mXf0PmVU4I7H1u3A1RiiEafYAnkgdFbi4LSKcUNu/EIXo0QoOEfvK8KHNAG
- D8IA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WvX/s8bbTEktU4nVsA2bYW4MFssxw4eAYf+UAFIZXJk=;
- b=zjpGEF751EnGisrleIJGGa0YDTIuCxawVY3zLuVOWWx89Ef9o4dUyMzeFqgxOQKq+o
- zbnFcC/5O5bjGoUg8hCwt/nEGhcds+xPEWId0GMM6L8c490v1uNkh9cNodrsd4P5nSim
- gf1C+5+999+aGLCyIYpN1UU7MyN8fuLdJ/XdE5BcmXKu/S5dErYjDD2XRvbPvSstQ5qO
- CUaXNUkj3YRZM/iCMSI4dH77xUpTGyQsQ4i0WwspL9bQPKB9TDDW7tzkj15IQriSop0P
- skEzgkxxl3mx9ky5Wlxa70UeLuThsZxVpRkwjIrvKa1g9OaTBYAKAFop/QHQ/CEYQ21f
- x6WA==
-X-Gm-Message-State: AOAM530lTGK7Bu9y/oWyXbrxzquqJ9qjTgcVZ5IPxlupkxDb9h7QWwVS
- YXZUOuFOYzfC7nHmxUZo1dYEEw==
-X-Google-Smtp-Source: ABdhPJwDB1k67p1xeoC/IyzRSlVdfgPPKVoaUXh0WUhoSf6YYRoGhugkBLidJ6Vcw6qWyAC3846+Yg==
-X-Received: by 2002:a7b:c923:: with SMTP id h3mr3915978wml.122.1643131118487; 
- Tue, 25 Jan 2022 09:18:38 -0800 (PST)
-Received: from localhost.localdomain ([2a01:e34:ed2f:f020:f589:cf7d:b2ee:bb5e])
- by smtp.gmail.com with ESMTPSA id t18sm17561901wri.34.2022.01.25.09.18.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jan 2022 09:18:37 -0800 (PST)
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: daniel.lezcano@linaro.org,
-	rjw@rjwysocki.net
-Cc: robh@kernel.org, lukasz.luba@arm.com, heiko@sntech.de, arnd@linaro.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
- linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
-Subject: [PATCH v7 5/5] rockchip/soc/drivers: Add DTPM description for rk3399
-Date: Tue, 25 Jan 2022 18:18:09 +0100
-Message-Id: <20220125171809.1273269-6-daniel.lezcano@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220125171809.1273269-1-daniel.lezcano@linaro.org>
-References: <20220125171809.1273269-1-daniel.lezcano@linaro.org>
+ id 1nCQPr-009C6G-Fc
+ for linux-rockchip@lists.infradead.org; Tue, 25 Jan 2022 18:19:40 +0000
+Received: from gallifrey.ext.pengutronix.de
+ ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <l.stach@pengutronix.de>)
+ id 1nCQPZ-000612-AU; Tue, 25 Jan 2022 19:19:21 +0100
+Message-ID: <3b1c784ac4e21c2e6d5a645fdf673aa47348c6f4.camel@pengutronix.de>
+Subject: Re: [PATCH V4 08/11] arm64: dts: imx8mm: Fix VPU Hanging
+From: Lucas Stach <l.stach@pengutronix.de>
+To: Adam Ford <aford173@gmail.com>, linux-media@vger.kernel.org
+Cc: aford@beaconembedded.com, cphealy@gmail.com, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-staging@lists.linux.dev
+Date: Tue, 25 Jan 2022 19:19:16 +0100
+In-Reply-To: <20220125171129.472775-9-aford173@gmail.com>
+References: <20220125171129.472775-1-aford173@gmail.com>
+ <20220125171129.472775-9-aford173@gmail.com>
+User-Agent: Evolution 3.40.4 (3.40.4-1.fc34) 
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
+X-SA-Exim-Mail-From: l.stach@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_091840_861517_4F77E5DD 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20220125_101939_532167_88066B4F 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,123 +76,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DTPM framework does support now the hierarchy description.
+Am Dienstag, dem 25.01.2022 um 11:11 -0600 schrieb Adam Ford:
+> The vpumix power domain has a reset assigned to it, however
+> when used, it causes a system hang.  Testing has shown that
+> it does not appear to be needed anywhere.
+> 
+> Fixes: d39d4bb15310 ("arm64: dts: imx8mm: add GPC node")
+> Signed-off-by: Adam Ford <aford173@gmail.com>
 
-The platform specific code can call the hierarchy creation function
-with an array of struct dtpm_node pointing to their parent.
+Reviewed-by: Lucas Stach <l.stach@pengutronix.de>
 
-This patch provides a description of the big / Little CPUs and the
-GPU and tie them together under a virtual 'package' name. Only rk3399 is
-described now.
+> 
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> index f77f90ed416f..0c7a72c51a31 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
+> @@ -707,7 +707,6 @@ pgc_vpumix: power-domain@6 {
+>  						clocks = <&clk IMX8MM_CLK_VPU_DEC_ROOT>;
+>  						assigned-clocks = <&clk IMX8MM_CLK_VPU_BUS>;
+>  						assigned-clock-parents = <&clk IMX8MM_SYS_PLL1_800M>;
+> -						resets = <&src IMX8MQ_RESET_VPU_RESET>;
+>  					};
+>  
+>  					pgc_vpu_g1: power-domain@7 {
 
-The description could be extended in the future with the memory
-controller with devfreq.
-
-The description is always a module and it describes the soft
-dependencies. The userspace has to load the softdeps module in the
-right order.
-
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
----
- drivers/soc/rockchip/Kconfig  |  8 +++++
- drivers/soc/rockchip/Makefile |  1 +
- drivers/soc/rockchip/dtpm.c   | 59 +++++++++++++++++++++++++++++++++++
- 3 files changed, 68 insertions(+)
- create mode 100644 drivers/soc/rockchip/dtpm.c
-
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index 25eb2c1e31bb..6dc017f02431 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -34,4 +34,12 @@ config ROCKCHIP_PM_DOMAINS
- 
-           If unsure, say N.
- 
-+config ROCKCHIP_DTPM
-+	tristate "Rockchip DTPM hierarchy"
-+	depends on DTPM && DRM_PANFROST && m
-+	help
-+	 Describe the hierarchy for the Dynamic Thermal Power
-+	 Management tree on this platform. That will create all the
-+	 power capping capable devices.
-+
- endif
-diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
-index 875032f7344e..05f31a4e743c 100644
---- a/drivers/soc/rockchip/Makefile
-+++ b/drivers/soc/rockchip/Makefile
-@@ -5,3 +5,4 @@
- obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
- obj-$(CONFIG_ROCKCHIP_IODOMAIN) += io-domain.o
- obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
-+obj-$(CONFIG_ROCKCHIP_DTPM) += dtpm.o
-diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
-new file mode 100644
-index 000000000000..0b73a9cba954
---- /dev/null
-+++ b/drivers/soc/rockchip/dtpm.c
-@@ -0,0 +1,59 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright 2021 Linaro Limited
-+ *
-+ * Author: Daniel Lezcano <daniel.lezcano@linaro.org>
-+ *
-+ * DTPM hierarchy description
-+ */
-+#include <linux/dtpm.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+
-+static struct dtpm_node __initdata rk3399_hierarchy[] = {
-+	[0]{ .name = "rk3399",
-+	     .type = DTPM_NODE_VIRTUAL },
-+	[1]{ .name = "package",
-+	     .type = DTPM_NODE_VIRTUAL,
-+	     .parent = &rk3399_hierarchy[0] },
-+	[2]{ .name = "/cpus/cpu@0",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[3]{ .name = "/cpus/cpu@1",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[4]{ .name = "/cpus/cpu@2",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[5]{ .name = "/cpus/cpu@3",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[6]{ .name = "/cpus/cpu@100",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[7]{ .name = "/cpus/cpu@101",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[8]{ .name = "/gpu@ff9a0000",
-+	     .type = DTPM_NODE_DT,
-+	     .parent = &rk3399_hierarchy[1] },
-+	[9]{ },
-+};
-+
-+static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
-+        { .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
-+        {},
-+};
-+
-+static int __init rockchip_dtpm_init(void)
-+{
-+	return dtpm_create_hierarchy(rockchip_dtpm_match_table);
-+}
-+module_init(rockchip_dtpm_init);
-+
-+MODULE_SOFTDEP("pre: panfrost cpufreq-dt");
-+MODULE_DESCRIPTION("Rockchip DTPM driver");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:dtpm");
-+MODULE_AUTHOR("Daniel Lezcano <daniel.lezcano@kernel.org");
--- 
-2.25.1
 
 
 _______________________________________________
