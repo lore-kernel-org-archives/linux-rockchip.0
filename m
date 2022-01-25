@@ -4,87 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1284BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jan 2022 17:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E45C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Jan 2022 17:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3esdphZiXiue8SliynOdnXDcSHDXi2XtFzWCGgSgm5o=; b=VBxAsTp4zq1BKK
-	HnhA4lugxtGTKspzxO6Xn3t7Q4wSzmeEtbTrgknNfgSOh7tnj/EsAlYuBFXdhsGp2hvJXAavpicmt
-	wK0mktmi+Y60IfcIEf6pfCPdN8h40fjRbie6E16eI/4U2M/Ytj6YpcZ6uQGnUhUa5hRKBLgDJaAPi
-	qrmICqulQaOSRWyD82O961UZyCrc1wDGk8FKPJM20IKm72xUCueBG8qK76sb8MkXhoJqU0HSrWUoI
-	hVF7vSomoanfBZ8jshkKvco08O9RCgW7ZrGIWuCeUvAe5WzFOQ/7nL5PEu/765OJRF/dBpYXMcRGq
-	TLmqrgW29Ds/we703G2w==;
+	List-Owner; bh=cdMiZgElTxtEb1I+LLu0/VZZ1/Q4hGfc1YZkP/tCIFM=; b=cCX7Chzj2LwNcg
+	OT5XAHNHITEgYtvjYYI+6uJs6c7JC8QavwUZDxZRBD5aspfo3WIKMmOyX5JGTNbcJoGleoZXvWtxp
+	kwItrQJFQ73kp7/3hW61Xdpzh9G4PmTEzofuQ9IgW1+96qhbQGjPJdZQTlghGZOeTJ9LfAlCFJ9Zw
+	IvcfBFURfIy2KeaC2GExOPFlHVVkSRbQOVB/yqrRMWpPOPJyv8F5gxlE/Z71NXYojM9zeqqTgknLY
+	h8pj56w5NT2kt2r2Z/poOSv/yJ9KrA4ROnLF41oTwQ1QTiq7dhiVLbUTPqsRMO3CMqWmrS8yPTza0
+	jKUWWqOtTi201j6ng84g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCPb3-008zRm-40; Tue, 25 Jan 2022 17:27:09 +0000
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
+	id 1nCPf6-0090xl-M5; Tue, 25 Jan 2022 17:31:20 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCPNE-008tUn-BR; Tue, 25 Jan 2022 17:12:54 +0000
-Received: by mail-io1-xd34.google.com with SMTP id n17so8622306iod.4;
- Tue, 25 Jan 2022 09:12:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ id 1nCPSq-008wCX-Ou
+ for linux-rockchip@lists.infradead.org; Tue, 25 Jan 2022 17:18:44 +0000
+Received: by mail-wm1-x336.google.com with SMTP id
+ f202-20020a1c1fd3000000b0034dd403f4fbso2366482wmf.1
+ for <linux-rockchip@lists.infradead.org>; Tue, 25 Jan 2022 09:18:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=erjBKsHCbTFn1bNJZRE4/B4FWXxROM3zXPT4j5v41B0=;
- b=Qvc/4Q8LAUUm6mig1v7jRED7ZQR+Lmj876e5fQ7onKxHmsRvWUSdwQUaOqTJRlXL4J
- k0XAmAX926nfOedOT/dC9YXrqDhvYDcqkMqOkCr+EBQhSvjp+7utIdItkhsymSBgGBj8
- +q8K0QYu3ym9kjcFN3rWZ1H//vX7xk4wmpoM6KQvluqevX/ERkspc2VtnsvTLAhC3PFT
- eKIKqKTqKhmbAME3LYLBLQIi9D1SQl6NeUEeXCi8jm5wSXcXo/ZzjK43M/+KSDjEtqcV
- cG5wnNEv85Zd4Sv2/VVm/lPVWdDYF0gB4nbmuPRDShjS0j1ABaPWUKWHJQ1tZKxFNCT0
- 3RWA==
+ bh=WvX/s8bbTEktU4nVsA2bYW4MFssxw4eAYf+UAFIZXJk=;
+ b=aFEJkDCNwYf3UC4SHwZnnwU8qzZG3Oh8QnYPA/JKXnrv0rYkLvf3bzoymOYvF4vU70
+ SI2n+ibZVnfwIru9Gk7Zm0EUAiyFchvKt1E6nXMpSqcx4+bigMXKDfT3kdFW19+Np0p/
+ y28ICIzvDxjQ3R9MuxLDlgLLrbwVWY1d02jjnvsxKa8FLC7L+PdcEFTipUElG46Ij4gi
+ +iCYApa2vfydHFRaAEjuQqoV0j+vT6nZb5is85rIby32x73+KsHtqRNKXRP8m8JGXPwv
+ 0p6oslZg8mXf0PmVU4I7H1u3A1RiiEafYAnkgdFbi4LSKcUNu/EIXo0QoOEfvK8KHNAG
+ D8IA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=erjBKsHCbTFn1bNJZRE4/B4FWXxROM3zXPT4j5v41B0=;
- b=UJhR0SV8jue6Nu4xSS1XWd/wzw2jpDAdp2Jd904jzKEgPstdhLW62QaDnrZKWlCPPy
- SRwTkMNE2UpGV+USZ4BX3wSXJW/HnYtILWuM3H6IWpg22/xg7MN8ESmOPqjuIj7t/umR
- SISFGSFYj/qoCIh3HLihkjSM9v6iXFznwY965AFulWEncUokbTZro0F+aRYnh3gluzWU
- JYfH1nat13zbiKDfx53bOuJepfh7PSZFv2xj1dJ4DXnjkYZ3FD7tRXpja+G25lft/T84
- fa3xciQm5qq8GR+LgoSX+kQpFlmB65VcUFs2r2KhQnslpGk6Lbu9WlQGnhumYqrqf/ct
- liiw==
-X-Gm-Message-State: AOAM532Jje8evvWe4gzyMzbap6BBpeCFqrJAqXy2Yna1zyHOARaoo7cm
- a5t/s0QdwUmgFBHhC8iUyg8=
-X-Google-Smtp-Source: ABdhPJwxZsBDj2g3gLA6p81rwxeZuPJpTDfsA/04BwXCKVHwGCrrRTsOIci3D55WHnEYjBtoZpqRzA==
-X-Received: by 2002:a05:6638:32a5:: with SMTP id
- f37mr9733167jav.208.1643130771042; 
- Tue, 25 Jan 2022 09:12:51 -0800 (PST)
-Received: from aford-IdeaCentre-A730.lan
- ([2601:448:8400:9e8:6592:b6fe:71b1:9f4c])
- by smtp.gmail.com with ESMTPSA id m14sm8090291iov.0.2022.01.25.09.12.49
+ bh=WvX/s8bbTEktU4nVsA2bYW4MFssxw4eAYf+UAFIZXJk=;
+ b=zjpGEF751EnGisrleIJGGa0YDTIuCxawVY3zLuVOWWx89Ef9o4dUyMzeFqgxOQKq+o
+ zbnFcC/5O5bjGoUg8hCwt/nEGhcds+xPEWId0GMM6L8c490v1uNkh9cNodrsd4P5nSim
+ gf1C+5+999+aGLCyIYpN1UU7MyN8fuLdJ/XdE5BcmXKu/S5dErYjDD2XRvbPvSstQ5qO
+ CUaXNUkj3YRZM/iCMSI4dH77xUpTGyQsQ4i0WwspL9bQPKB9TDDW7tzkj15IQriSop0P
+ skEzgkxxl3mx9ky5Wlxa70UeLuThsZxVpRkwjIrvKa1g9OaTBYAKAFop/QHQ/CEYQ21f
+ x6WA==
+X-Gm-Message-State: AOAM530lTGK7Bu9y/oWyXbrxzquqJ9qjTgcVZ5IPxlupkxDb9h7QWwVS
+ YXZUOuFOYzfC7nHmxUZo1dYEEw==
+X-Google-Smtp-Source: ABdhPJwDB1k67p1xeoC/IyzRSlVdfgPPKVoaUXh0WUhoSf6YYRoGhugkBLidJ6Vcw6qWyAC3846+Yg==
+X-Received: by 2002:a7b:c923:: with SMTP id h3mr3915978wml.122.1643131118487; 
+ Tue, 25 Jan 2022 09:18:38 -0800 (PST)
+Received: from localhost.localdomain ([2a01:e34:ed2f:f020:f589:cf7d:b2ee:bb5e])
+ by smtp.gmail.com with ESMTPSA id t18sm17561901wri.34.2022.01.25.09.18.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jan 2022 09:12:50 -0800 (PST)
-From: Adam Ford <aford173@gmail.com>
-To: linux-media@vger.kernel.org
-Cc: aford@beaconembedded.com, cphealy@gmail.com,
- Adam Ford <aford173@gmail.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Lucas Stach <l.stach@pengutronix.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: [PATCH V4 11/11] arm64: dts: imx8mm: Enable Hantro G1 and G2 video
- decoders
-Date: Tue, 25 Jan 2022 11:11:28 -0600
-Message-Id: <20220125171129.472775-12-aford173@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220125171129.472775-1-aford173@gmail.com>
-References: <20220125171129.472775-1-aford173@gmail.com>
+ Tue, 25 Jan 2022 09:18:37 -0800 (PST)
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: daniel.lezcano@linaro.org,
+	rjw@rjwysocki.net
+Cc: robh@kernel.org, lukasz.luba@arm.com, heiko@sntech.de, arnd@linaro.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+ linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH v7 5/5] rockchip/soc/drivers: Add DTPM description for rk3399
+Date: Tue, 25 Jan 2022 18:18:09 +0100
+Message-Id: <20220125171809.1273269-6-daniel.lezcano@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220125171809.1273269-1-daniel.lezcano@linaro.org>
+References: <20220125171809.1273269-1-daniel.lezcano@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220125_091252_514536_6EE0183F 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220125_091840_861517_4F77E5DD 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,55 +93,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are two decoders on the i.MX8M Mini controlled by the
-vpu-blk-ctrl.  The G1 supports H264 and VP8 while the
-G2 support HEVC and VP9.
+The DTPM framework does support now the hierarchy description.
 
-Signed-off-by: Adam Ford <aford173@gmail.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+The platform specific code can call the hierarchy creation function
+with an array of struct dtpm_node pointing to their parent.
 
-diff --git a/arch/arm64/boot/dts/freescale/imx8mm.dtsi b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-index 0c7a72c51a31..98aec4421713 100644
---- a/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-+++ b/arch/arm64/boot/dts/freescale/imx8mm.dtsi
-@@ -1272,6 +1272,22 @@ gpu_2d: gpu@38008000 {
- 			power-domains = <&pgc_gpu>;
- 		};
+This patch provides a description of the big / Little CPUs and the
+GPU and tie them together under a virtual 'package' name. Only rk3399 is
+described now.
+
+The description could be extended in the future with the memory
+controller with devfreq.
+
+The description is always a module and it describes the soft
+dependencies. The userspace has to load the softdeps module in the
+right order.
+
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+---
+ drivers/soc/rockchip/Kconfig  |  8 +++++
+ drivers/soc/rockchip/Makefile |  1 +
+ drivers/soc/rockchip/dtpm.c   | 59 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 68 insertions(+)
+ create mode 100644 drivers/soc/rockchip/dtpm.c
+
+diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+index 25eb2c1e31bb..6dc017f02431 100644
+--- a/drivers/soc/rockchip/Kconfig
++++ b/drivers/soc/rockchip/Kconfig
+@@ -34,4 +34,12 @@ config ROCKCHIP_PM_DOMAINS
  
-+		vpu_g1: video-codec@38300000 {
-+			compatible = "nxp,imx8mm-vpu-g1";
-+			reg = <0x38300000 0x10000>;
-+			interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&clk IMX8MM_CLK_VPU_G1_ROOT>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G1>;
-+		};
-+
-+		vpu_g2: video-codec@38310000 {
-+			compatible = "nxp,imx8mq-vpu-g2";
-+			reg = <0x38310000 0x10000>;
-+			interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&clk IMX8MM_CLK_VPU_G2_ROOT>;
-+			power-domains = <&vpu_blk_ctrl IMX8MM_VPUBLK_PD_G2>;
-+		};
-+
- 		vpu_blk_ctrl: blk-ctrl@38330000 {
- 			compatible = "fsl,imx8mm-vpu-blk-ctrl", "syscon";
- 			reg = <0x38330000 0x100>;
-@@ -1282,6 +1298,12 @@ vpu_blk_ctrl: blk-ctrl@38330000 {
- 				 <&clk IMX8MM_CLK_VPU_G2_ROOT>,
- 				 <&clk IMX8MM_CLK_VPU_H1_ROOT>;
- 			clock-names = "g1", "g2", "h1";
-+			assigned-clocks = <&clk IMX8MM_CLK_VPU_G1>,
-+					  <&clk IMX8MM_CLK_VPU_G2>;
-+			assigned-clock-parents = <&clk IMX8MM_VPU_PLL_OUT>,
-+						 <&clk IMX8MM_VPU_PLL_OUT>;
-+			assigned-clock-rates = <600000000>,
-+					       <600000000>;
- 			#power-domain-cells = <1>;
- 		};
+           If unsure, say N.
  
++config ROCKCHIP_DTPM
++	tristate "Rockchip DTPM hierarchy"
++	depends on DTPM && DRM_PANFROST && m
++	help
++	 Describe the hierarchy for the Dynamic Thermal Power
++	 Management tree on this platform. That will create all the
++	 power capping capable devices.
++
+ endif
+diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+index 875032f7344e..05f31a4e743c 100644
+--- a/drivers/soc/rockchip/Makefile
++++ b/drivers/soc/rockchip/Makefile
+@@ -5,3 +5,4 @@
+ obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
+ obj-$(CONFIG_ROCKCHIP_IODOMAIN) += io-domain.o
+ obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
++obj-$(CONFIG_ROCKCHIP_DTPM) += dtpm.o
+diff --git a/drivers/soc/rockchip/dtpm.c b/drivers/soc/rockchip/dtpm.c
+new file mode 100644
+index 000000000000..0b73a9cba954
+--- /dev/null
++++ b/drivers/soc/rockchip/dtpm.c
+@@ -0,0 +1,59 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright 2021 Linaro Limited
++ *
++ * Author: Daniel Lezcano <daniel.lezcano@linaro.org>
++ *
++ * DTPM hierarchy description
++ */
++#include <linux/dtpm.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++
++static struct dtpm_node __initdata rk3399_hierarchy[] = {
++	[0]{ .name = "rk3399",
++	     .type = DTPM_NODE_VIRTUAL },
++	[1]{ .name = "package",
++	     .type = DTPM_NODE_VIRTUAL,
++	     .parent = &rk3399_hierarchy[0] },
++	[2]{ .name = "/cpus/cpu@0",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[3]{ .name = "/cpus/cpu@1",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[4]{ .name = "/cpus/cpu@2",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[5]{ .name = "/cpus/cpu@3",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[6]{ .name = "/cpus/cpu@100",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[7]{ .name = "/cpus/cpu@101",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[8]{ .name = "/gpu@ff9a0000",
++	     .type = DTPM_NODE_DT,
++	     .parent = &rk3399_hierarchy[1] },
++	[9]{ },
++};
++
++static struct of_device_id __initdata rockchip_dtpm_match_table[] = {
++        { .compatible = "rockchip,rk3399", .data = rk3399_hierarchy },
++        {},
++};
++
++static int __init rockchip_dtpm_init(void)
++{
++	return dtpm_create_hierarchy(rockchip_dtpm_match_table);
++}
++module_init(rockchip_dtpm_init);
++
++MODULE_SOFTDEP("pre: panfrost cpufreq-dt");
++MODULE_DESCRIPTION("Rockchip DTPM driver");
++MODULE_LICENSE("GPL");
++MODULE_ALIAS("platform:dtpm");
++MODULE_AUTHOR("Daniel Lezcano <daniel.lezcano@kernel.org");
 -- 
-2.32.0
+2.25.1
 
 
 _______________________________________________
