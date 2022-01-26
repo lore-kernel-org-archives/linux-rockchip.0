@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56E5C28CF5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 17:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25861C28CF5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 17:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4pE8lc2njHKCJjgo12qCpoZOTcticsHCFcemlklr3Lc=; b=pZLN7s8HtXa5AD
-	oCYwMU1fbNpc9eTWrd03jE5WB/gqN7FI7l+3uEPo6+/g1weAm7lFFu+73JpnZBhMhOwJpRFWYePz9
-	7CC1Q3qjBSwq9tW5cclhyQpENxBfbcWXYn1m6qxBywFKxAB6POwSO3TBjnkNhHf8lPZlrv6zQfnoI
-	BZ+lt2th0h0JL1jMSaZzOdWZVrbN33ZBcITc7dh+rrmHesBvYnhnhl15eTPMV8HSLVb6/Xo+VfBmv
-	toyAxWSG9KEaNmCqMgks7scCRnRtkfrc70KwS7G9jRhcfSP0jbvTst/vVML0nBTXmhxsSmgh7emI2
-	XtIWgsihkrEQqcx2Usbw==;
+	List-Owner; bh=YgHJ4dRCE5tabDODp5BiheTVmqErvUBt8YPUN2djhCY=; b=0u7FBpbs8ls7WO
+	XC04rJS+Ys/F7k2z0hXR7BGCM4Xebtirq6ofoweuwzp6u+Mb6u8q3pYbrcL3BX7+1QWOkxfVtCU39
+	MFqthCJ6wq7DcXdgUPggnVO2Kq60tepPBpr41kuhDYJDroMsbbtUyHzvjxg7u/W9hfX9qSCSYoEZi
+	0gWPLzShOXwtCXOnN8mHosis5b9k0rd6coRcd9oa+kwtCXBnfJ21DVxVFCJXclkp405zQMYTTEgXB
+	X+sECS5jjtIL5vnMYJ4/UY2uMINqwfkIwCIji81kCkJHbT4X3+wXF+Jt8xxJwXVpblBV8LxOy9m3C
+	8g0vD5qIp3cieJS3KRkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nClhn-00CqjR-Dm; Wed, 26 Jan 2022 17:03:35 +0000
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e])
+	id 1nClkR-00CrsB-UA; Wed, 26 Jan 2022 17:06:19 +0000
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCkRt-00CNM3-LM
- for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 15:43:07 +0000
-Received: by mail-io1-xd2e.google.com with SMTP id h23so27704580iol.11
- for <linux-rockchip@lists.infradead.org>; Wed, 26 Jan 2022 07:43:03 -0800 (PST)
+ id 1nCkdY-00CRiZ-C3
+ for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 15:55:13 +0000
+Received: by mail-io1-xd2c.google.com with SMTP id c188so40719iof.6
+ for <linux-rockchip@lists.infradead.org>; Wed, 26 Jan 2022 07:55:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yAKLAxMEs2s6OrJ3pa4cx9PTkR+o5F/ZiccP0DlaJjY=;
- b=U3rXYwAr7EUCDTiIcY4gOCab99RYN1iHfQmfjJicIYZksZtQmg/cChGiZ8WtTbEYMN
- kFoan3HFEAaZI7XDJRVeB9sQwohId0ITWtX9z9laolWmpOE0khd2vvSYZAbtD8Hf/Kjt
- +1p6Q8Y0CvOUr5jcV3Bd1P5fseAkngVdrooBE=
+ :cc:content-transfer-encoding;
+ bh=8N6pkwfXspakdaJZNWnP38Bamfx4gDdG3F4Wrj2z8a0=;
+ b=R4PjleZoJRZEHoITMXop0eh4gJ/ykFxgKSZE/XIEndxWeSjox8Ho5Y5WSEwGWD5nwI
+ 9IYUDjyO/sH115RZ8zr4aaHKv4uwuJ6DuRjt//KHrKEHmkUBteL2Q1nGUdQFKi1z9vuI
+ qG8pW5RzxHr7VPzE3Xb0fueZxlRwCDsn2SfCw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yAKLAxMEs2s6OrJ3pa4cx9PTkR+o5F/ZiccP0DlaJjY=;
- b=LL1ru766D86MyQoEDOyvsMnALNcb2B69jrzp7UE3DS9WL87g33MaegDAX+WGA1XB6b
- LhKVrkVM8corRtzuqNbjYn2MCP+dbbdRC2R7GIYPFAnW3RHWlC33Lmnyf52+L0dxyk1A
- LNkyF0LQ78Dat0T4589RYCoY8SypnmfF+O6sS8PR/iK9d6sS8m/5vfmz7UZE5yUYq9V9
- Tx6j4TDiBmhnKalXTknh80owvH7SUJTVSGWD9Gz3teF5Ix776astUExSwA+Gv/dt4id6
- G7Q10q4/iLjrsxfWvlcfqaBnTfgjawEju134gxHWv35+r4IV9LG2SBG4gvWLRgmCviKa
- uNYw==
-X-Gm-Message-State: AOAM532jQGRDYEC9dw3z00xgZon0pKQQ3mb/EOfnEJupDVeiRsLGh5Ut
- uC6Msyq3Xrw/RPk9soehi0Bpw6thRP5k+Q==
-X-Google-Smtp-Source: ABdhPJzBoNQZ22RvKYW8StHp0YD7GG7KQR9ijZhzSBbGVeq4UXx0t1CAbvMBDqU6aFW3hNmNnUCKHQ==
-X-Received: by 2002:a05:6602:1483:: with SMTP id a3mr672915iow.6.1643211782189; 
- Wed, 26 Jan 2022 07:43:02 -0800 (PST)
-Received: from mail-io1-f52.google.com (mail-io1-f52.google.com.
- [209.85.166.52])
- by smtp.gmail.com with ESMTPSA id n9sm11821808ilk.27.2022.01.26.07.43.00
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=8N6pkwfXspakdaJZNWnP38Bamfx4gDdG3F4Wrj2z8a0=;
+ b=yVcT8DXARKl2Jbbqd8ssSq+smHVAOSSsSP1wYEmLhk896N8YZ2CJEFscKAHBAtNMWc
+ qwJ/z5HQXrHn+SDnQQo83s20YQfKnbCNqccajD53B7amAUI00WcOk1FxX4T0X4kevNfG
+ EsOd8P/3YeT3yMbWDLuAnw8C2FeDU/09jub17UjyWMD4NbbhxuM/fHeI9kc0uIfzH77q
+ E1cIHDo+YjC939HC66ELzv1RPSdjvaUndx6IPFkpXlVUYCAaJ299LAziDVJEKG9zjT+D
+ v00kOc6INslvim1Ne1b1qr4/NX8ZhEl6O/sD3ZDbAx5AMQrmph2VRoxYeOCvHTXT6oSW
+ KS0Q==
+X-Gm-Message-State: AOAM531Jy78HSgkeSWg1nIVYcrwZNvCPk7fW1BvvTCalkqcwZk1NDkeG
+ 3YX1ptZTc9SwFurCDNYrRIKH+e3HFI4T3Q==
+X-Google-Smtp-Source: ABdhPJxpRHxfK+qLScX4a42/U2fTGShW5S02zbl8bPLAOrgCaeH0LKisNCQ9+9/9jZFSvu3f7LRkgg==
+X-Received: by 2002:a02:caa5:: with SMTP id e5mr8224600jap.159.1643212506916; 
+ Wed, 26 Jan 2022 07:55:06 -0800 (PST)
+Received: from mail-io1-f47.google.com (mail-io1-f47.google.com.
+ [209.85.166.47])
+ by smtp.gmail.com with ESMTPSA id z23sm3862335iol.11.2022.01.26.07.55.06
  for <linux-rockchip@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Jan 2022 07:43:00 -0800 (PST)
-Received: by mail-io1-f52.google.com with SMTP id z199so13305803iof.10
- for <linux-rockchip@lists.infradead.org>; Wed, 26 Jan 2022 07:43:00 -0800 (PST)
-X-Received: by 2002:a05:6638:ec8:: with SMTP id
- q8mr8000709jas.44.1643211779964; 
- Wed, 26 Jan 2022 07:42:59 -0800 (PST)
+ Wed, 26 Jan 2022 07:55:06 -0800 (PST)
+Received: by mail-io1-f47.google.com with SMTP id h7so62512iof.3
+ for <linux-rockchip@lists.infradead.org>; Wed, 26 Jan 2022 07:55:06 -0800 (PST)
+X-Received: by 2002:a02:7a4f:: with SMTP id z15mr10410746jad.50.1643212505706; 
+ Wed, 26 Jan 2022 07:55:05 -0800 (PST)
 MIME-Version: 1.0
 References: <20220126145549.617165-1-s.hauer@pengutronix.de>
- <20220126145549.617165-10-s.hauer@pengutronix.de>
-In-Reply-To: <20220126145549.617165-10-s.hauer@pengutronix.de>
+ <20220126145549.617165-8-s.hauer@pengutronix.de>
+In-Reply-To: <20220126145549.617165-8-s.hauer@pengutronix.de>
 From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 26 Jan 2022 07:42:48 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=VCWW4c3iqfzezU5=KKVFNP+EhPGTBZ7uZdQ=bSCJHQVA@mail.gmail.com>
-Message-ID: <CAD=FV=VCWW4c3iqfzezU5=KKVFNP+EhPGTBZ7uZdQ=bSCJHQVA@mail.gmail.com>
-Subject: Re: [PATCH 09/27] drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
+Date: Wed, 26 Jan 2022 07:54:53 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=U7W_oWjS_gCurAkNdkcuHQGn-XH=-VwP2MSG9zO92ySg@mail.gmail.com>
+Message-ID: <CAD=FV=U7W_oWjS_gCurAkNdkcuHQGn-XH=-VwP2MSG9zO92ySg@mail.gmail.com>
+Subject: Re: [PATCH 07/27] drm/rockchip: dw_hdmi: Use auto-generated tables
 To: Sascha Hauer <s.hauer@pengutronix.de>
 Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sascha Hauer <kernel@pengutronix.de>, 
- Yakir Yang <ykk@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Peter Geis <pgwipeout@gmail.com>, Yakir Yang <ykk@rock-chips.com>, 
+ =?UTF-8?Q?St=C3=A9phane_Marchesin?= <marcheu@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_074305_743051_0EF03720 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20220126_075508_484192_B095DC5F 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,69 +97,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, Jan 26, 2022 at 6:58 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
->
-> From: Douglas Anderson <dianders@chromium.org>
->
-> Jitter was improved by lowering the MPLL bandwidth to account for high
-> frequency noise in the rk3288 PLL.  In each case MPLL bandwidth was
-> lowered only enough to get us a comfortable margin.  We believe that
-> lowering the bandwidth like this is safe given sufficient testing.
->
-> Changes since v3:
-> - new patch
->
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
-> (am from https://patchwork.kernel.org/patch/9223301/)
-
-Probably remove the "am from" line? It's not standard in upstream and
-that link doesn't seem to go anywhere anymore...
-
-
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 ++--------------
->  1 file changed, 2 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index c44eb4d2e2d5..77f82a4fd027 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -176,20 +176,8 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
->  static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
->         /*      pixelclk    bpp8    bpp10   bpp12 */
->         {
-> -               40000000,  { 0x0018, 0x0018, 0x0018 },
-> -       }, {
-> -               65000000,  { 0x0028, 0x0028, 0x0028 },
-> -       }, {
-> -               66000000,  { 0x0038, 0x0038, 0x0038 },
-> -       }, {
-> -               74250000,  { 0x0028, 0x0038, 0x0038 },
-> -       }, {
-> -               83500000,  { 0x0028, 0x0038, 0x0038 },
-> -       }, {
-> -               146250000, { 0x0038, 0x0038, 0x0038 },
-> -       }, {
-> -               148500000, { 0x0000, 0x0038, 0x0038 },
-> -       }, {
-> +               600000000, { 0x0000, 0x0000, 0x0000 },
-> +       },  {
-
-This is what we did for rk3288. I can't personally vouch for the
-effects on other SoCs.
-
--Doug
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiBXZWQsIEphbiAyNiwgMjAyMiBhdCA2OjU4IEFNIFNhc2NoYSBIYXVlciA8cy5oYXVl
+ckBwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4KPiBGcm9tOiBEb3VnbGFzIEFuZGVyc29uIDxkaWFu
+ZGVycyBhdCBjaHJvbWl1bS5vcmc+Cj4KPiBUaGUgcHJldmlvdXMgdGFibGVzIGZvciBtcGxsX2Nm
+ZyBhbmQgY3Vycl9jdHJsIHdlcmUgY3JlYXRlZCB1c2luZyB0aGUKPiAyMC1wYWdlcyBvZiBleGFt
+cGxlIHNldHRpbmdzIHByb3ZpZGVkIGJ5IHRoZSBQSFkgdmVuZG9yLiAgVGhvc2UKPiBleGFtcGxl
+IHNldHRpbmdzIHdlcmVuJ3QgcGFydGljdWxhcmx5IGRlbnNlLCBzbyB0aGVyZSB3ZXJlIHBsYWNl
+cwo+IHdoZXJlIHdlIHdlcmUgZ3Vlc3Npbmcgd2hhdCB0aGUgc2V0dGluZ3Mgd291bGQgYmUgZm9y
+IDEwLWJpdCBhbmQKPiAxMi1iaXQgKG5vdCB0aGF0IHdlIHVzZSB0aG9zZSBhbnl3YXkpLiAgSXQg
+d2FzIGFsc28gYWx3YXlzIGEgbG90IG9mCj4gZXh0cmEgd29yayBldmVyeSB0aW1lIHdlIHdhbnRl
+ZCB0byBhZGQgYSBuZXcgY2xvY2sgcmF0ZSBzaW5jZSB3ZSBoYWQKPiB0byBjcm9zcy1yZWZlcmVu
+Y2Ugc2V2ZXJhbCB0YWJsZXMuCj4KPiBJbiA8aHR0cDovL2Nyb3NyZXZpZXcuY29tLzI4NTg1NT4g
+SSd2ZSBnb25lIHRocm91Z2ggdGhlIHdvcmsgdG8gZmlndXJlCgpUaGUgYGNyb3NyZXZpZXcuY29t
+YCBzeW50YXggZG9lc24ndCBzZWVtIHRvIHdvcmsgYW55bW9yZS4gQ291bGQgbWF5YmUKdXBkYXRl
+IHRvIGh0dHBzOi8vY3JyZXYuY29tL2MvMjg1ODU1ID8KCj4gb3V0IGhvdyB0byBnZW5lcmF0ZSB0
+aGlzIHRhYmxlIGF1dG9tYXRpY2FsbHkuICBMZXQncyBub3cgdXNlIHRoZQo+IGF1dG9tYXRpY2Fs
+bHkgZ2VuZXJhdGVkIHRhYmxlIGFuZCB0aGVuIHdlJ2xsIG5ldmVyIG5lZWQgdG8gbG9vayBhdCBp
+dAo+IGFnYWluLgo+Cj4gV2Ugb25seSBzdXBwb3J0IDgtYml0IG1vZGUgcmlnaHQgbm93IGFuZCBv
+bmx5IHN1cHBvcnQgYSBzbWFsbCBudW1iZXIKPiBvZiBjbG9jayByYXRlcyBhbmQgYW5kIEkndmUg
+dmVyaWZpZWQgdGhhdCB0aGUgb25seSA4LWJpdCByYXRlIHRoYXQgd2FzCj4gYWZmZWN0ZWQgd2Fz
+IDE0OC41LiAgVGhhdCBtb2RlIGFwcGVhcnMgdG8gaGF2ZSBiZWVuIHdyb25nIGluIHRoZSBvbGQK
+PiB0YWJsZS4KPgo+IENoYW5nZXMgc2luY2UgdjM6Cj4gLSBuZXcgcGF0Y2gKPgo+IFNpZ25lZC1v
+ZmYtYnk6IERvdWdsYXMgQW5kZXJzb24gPGRpYW5kZXJzIGF0IGNocm9taXVtLm9yZz4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBZYWtpciBZYW5nIDx5a2sgYXQgcm9jay1jaGlwcy5jb20+CgpTaG91bGQgcHJv
+YmFibHkgY2hhbmdlIHRoZSAiYXQiIHRvICJAIiA/Cgo+IFJldmlld2VkLWJ5OiBTdMOpcGhhbmUg
+TWFyY2hlc2luIDxtYXJjaGV1IGF0IGNocm9taXVtLm9yZz4KCkluIGdlbmVyYWwgc2hvdWxkbid0
+IGNhcnJ5IGRvd25zdHJlYW0gcmV2aWV3cyB3aGVuIHBvc3RpbmcgdXBzdHJlYW0KdW5sZXNzIHlv
+dSdyZSBjZXJ0YWluIHRoYXQgdGhlIHBlcnNvbiBpbnRlbmRlZCBpdC4uLgoKCkl0J3MgYmVlbiBh
+IGxvbmcgdGltZSwgYnV0IGluIGdlbmVyYWwgSSB0aGluayBJIHdhcyBmYWlybHkgY29uZmlkZW50
+CmluIHRoZSBudW1iZXJzIHRoYXQgbXkgc2NyaXB0IHB1bXBlZCBvdXQsIGF0IGxlYXN0IGdpdmVu
+IHRoZSBjYXZlYXQgb2YKbm8gcGl4ZWwgcmVwZXRpdGlvbiBhbmQgOC1iaXQgb25seS4gVGhhdCBi
+ZWluZyBzYWlkLCBJIGRpZG4ndCBoYXZlIGFueQppbnNpZGUga25vd2xlZGdlIG9mIHRoZSBoYXJk
+d2FyZSBhbmQganVzdCBmaWd1cmVkIG91dCBmb3JtdWxhcyB0aGF0CnNlZW1lZCB0byBtYXRjaCB0
+aGUgdGFibGUgdGhhdCBJIGhhZC4gWU1NVi4KCkknbGwgYWxzbyBzYXkgdGhhdCB3aGVuIEkgZGlk
+IGEgcmViYXNlIG9mIHZleXJvbiAocmszMjg4LWJhc2VkCkNocm9tZWJvb2spIHRvIDQuMTkgYWJv
+dXQgMi41IHllYXJzIGFnbywgSSBlbmRlZCB1cCBzcXVhc2hpbmcgc2V2ZXJhbApvZiB0aGVzZSBw
+YXRjaGVzIGludG8gMS4gVGhhdCBjYW4gYmUgZm91bmQgYXQKPGh0dHBzOi8vY3JyZXYuY29tL2Mv
+MTY2MTA1Nj4uIFRoYXQgYWxzbyBoYXMgZGV0YWlscyBhYm91dCB3aHkgc29tZSBvZgp0aGVzZSBw
+YXRjaGVzIG5ldmVyIG1hZGUgaXQgdXBzdHJlYW0uIFRoZSBtYWluIHJlYXNvbiwgYXQgbGVhc3Qg
+aW4gdGhlCmNhc2Ugb2YgcmszMjg4LCB3YXMgdGhlIFBMTCBzaGFyaW5nIHByb2JsZW0gdGhhdCBu
+b2JvZHkgZXZlciBzb2x2ZWQuCnJrMzI4OCBkaWRuJ3QgaGF2ZSBxdWl0ZSBlbm91Z2ggUExMcyBh
+bmQgdGh1cywgaWYgeW91IHdlcmUgdXNpbmcgYm90aApWT1BzLCBvbmUgb2YgdGhlIFZPUHMgd2Fz
+IGdvaW5nIHRvIGJlIHNldmVyZWx5IGxpbWl0ZWQgaW4gd2hhdCBwaXhlbApjbG9ja3MgaXQgY291
+bGQgbWFrZS4gVGhlcmUgd2FzIG5vIGZyYW1ld29yayBkZWNpZGluZyB3aGljaCBWT1Agc2hvdWxk
+CmJlIGxpbWl0ZWQgYW5kIGhvdyB0aGUgc3lzdGVtIHNob3VsZCByZWFjdCB0byB0aGlzLi4uCgoK
+SW4gYW55IGNhc2UsIEknbSBwcmV0dHkgZmFyIGRpc2Nvbm5lY3RlZCBmcm9tIGFsbCB0aGlzIHN0
+dWZmIG5vdywgYnV0Ckkgd2lzaCB5b3UgdGhlIGJlc3Qgb2YgbHVjayBpbiB0cnlpbmcgdG8gZ2V0
+IGl0IGFsbCBzb2x2ZWQhCgotRG91ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
