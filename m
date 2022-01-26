@@ -4,74 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212EBC28CF5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 17:10:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77AA0C2BA4C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 17:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hCYlZCmUyJXDaNk3ahtsmskzqDsyu8/QyXJHGiMDcdk=; b=iQJ04dpeHYOS9n
-	XeL3YOwpMq4qgjYV63dRoY5hqbSEU+FH2VNjAN6MjizKr9lFpS+ONNZolVyREWxZ41r6I91SHPsqv
-	hVC+MXZhhianXdOlWt7UegPSxnFrXZxrk1ytiS+RTuD/7P7SQmhERO9MtZQox5m1I0nP8rJcgsoHa
-	ElZ/vT303gf1aN2aXjjlFGKI5MfXJDQLJvCBZz6IA5+KbLckG1Y+YsLtBarTGkm7QcJNQeLPYOHVj
-	IuB7MmmyPxgwbqNHVI/cxIBHbRfeO9oKNGPngBg4flMN02V4b9iKnSPwNk66aADmSOURsHXFJj1J0
-	ogiBaF9k/k/nvjbnSEng==;
+	List-Owner; bh=ewYgAA5nI5Mihemek8E4T0QvUFJ9qD8PVKDVZPmyFTo=; b=OsdLNeqBSqyNcN
+	teTsMtzX7lce+c3HeJ57h2Vo1HpTY6pWNxlRLDvuKavn342Zf+OLFmDwIAA/BwmzxxWE6cWvbw8A4
+	ZLUCOctjcvrRRN3emTj/APwVmy257QOcovCc1nqwMB3h3PJpMdVztJLTD7aHWceHi1bKuVoCHnnBb
+	4uDY4Ga60ixki20fZ0bBAJ4S3Znky0OA16lXmc2X5sHzEvX6ZMwOguBbn6BfaaUnT0CvMT1a5ZYp2
+	jz4FJbsy8rF2UHLb42D1WQSWVPYnFpBxWCqTZbVzQZsLASI8TRJfK29VQ5ZGDPpbPXBUFL28iCb2v
+	5OPILEwo+gKOMQqltONQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nClo3-00CtXA-Tz; Wed, 26 Jan 2022 17:10:03 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1nCmCy-00D2kH-Rg; Wed, 26 Jan 2022 17:35:48 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCkmm-00CVf2-2A; Wed, 26 Jan 2022 16:04:41 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id k17so210823ybk.6;
- Wed, 26 Jan 2022 08:04:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=I1PFWUBDwhEY3Hv2QBW+PKkoeBVqFCkIFV0TuJ7bvS8=;
- b=P0OwVjXGqxYvsrwB7spRllLzGtiOBqjE0WSO7AYtGnmDOvkbK58mgms4Kc+Cfe9CAb
- VCEcyBeitlDZUrJI9x+1xHYvONl3nxmo38WuR/WbDnARdBvrcbnw4EMDihlOd9gvprrI
- UioSkgQz5gCMF0iNPrsnwuxtjq5AKy17Nc3MH5MKgjwIstBOgWTGpEraXDgZxNkhip2W
- 5yRw89f4Rvmk+/tyRxy7haKoJMZgPw4Z+5oNXnC7qyLkJuaYvQt0oPNMCv+UWlNyiSQN
- BQuicCfmyi08sy50mYqftEt2JmvWlzo+QzjW+SS57BdbgZmAUSrqESwfbqhBYi/qfru4
- PXwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=I1PFWUBDwhEY3Hv2QBW+PKkoeBVqFCkIFV0TuJ7bvS8=;
- b=AB1A1Chh+w6IR2Nx0HpdaIGecxMZo59m6fZPQopDhkN5Fd2lT6MHf6AfCvVYGcPR7F
- 5hOqjycxCUQak+X+ZewnQjaoe6qpQ7gE5Ocsf2x0dn1GTpZHjTWo/c+l0ciVjv26eYnv
- GjAbS8gbri2k0j7mu9VCHplXEVvz39cz6DAhq4RDu+OBR0mRhzW9s2k/xZXKbJWBE3Ck
- sAt33eJKmMk8ecmTJEiYDFW3/GvXzFXPLRqWXHFWnzxPP14T1w0dir5RmYNTaFN6i3cU
- sCVMC0rCcV8g9vfA8mABWO3we1mivaVfXIMHahCu3PWSufaNFXIY1cnMoghemGWTVpgZ
- C7/w==
-X-Gm-Message-State: AOAM531TpI+Yc8d0YJdERXCldwvsdlLqkMkiXU9AJMvEq0trJ5WygJvy
- aagMfxi8fvNl5q+XluxCGh/5DBGVtvmPh+OrNYA=
-X-Google-Smtp-Source: ABdhPJw0/pa8cCSqurWfk1GgO29W+8GRV6N3mR0rOJRhQPTh932RajwBQ5CXANcMfITbWzinmuCmScUdNZmKYWuDiyc=
-X-Received: by 2002:a25:8888:: with SMTP id d8mr33876297ybl.405.1643213077990; 
- Wed, 26 Jan 2022 08:04:37 -0800 (PST)
+ id 1nCloz-00CtyY-Dq; Wed, 26 Jan 2022 17:11:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1643217034;
+ bh=kUqNJVfSqN8rx5gjFfwJ/0lwW2NKaOjKFQh3mYmuad0=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=iSY12iRc7lPsUnuh9tapUq7GvVpRQ4GITj+6rEj8KPPEjQK0790cKMU52Xq/HzQu+
+ AWFgv4GgRX9jXKE8CZQzbmspwVgv7hpwP0ujAjuc35l4YXcrT+P84oG4J2CrZ9UTf0
+ 0SJ8eLPTPqjTvjBQ8XokeXXQeZ/lgdnStvH7wihw=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.153.46] ([217.61.153.46]) by web-mail.gmx.net
+ (3c-app-gmx-bap59.server.lan [172.19.172.129]) (via HTTP); Wed, 26 Jan 2022
+ 18:10:33 +0100
 MIME-Version: 1.0
-References: <20220126145549.617165-1-s.hauer@pengutronix.de>
- <20220126145549.617165-22-s.hauer@pengutronix.de>
-In-Reply-To: <20220126145549.617165-22-s.hauer@pengutronix.de>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 26 Jan 2022 11:04:26 -0500
-Message-ID: <CAMdYzYrLw9+VW08cuj4_o4GDFhgBB8dZ-oVJ0TUnKFGLNetdyQ@mail.gmail.com>
-Subject: Re: [PATCH 21/27] arm64: dts: rockchip: rk356x: Add HDMI nodes
+Message-ID: <trinity-29a2d337-830f-4ff2-861d-bbe695726bbf-1643217033760@3c-app-gmx-bap59>
+From: Frank Wunderlich <frank-w@public-files.de>
 To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, kernel@pengutronix.de, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, 
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Michael Riesch
+ <michael.riesch@wolfvision.net>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Peter Geis
+ <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Aw: [PATCH 27/27] drm: rockchip: Add VOP2 driver
+Date: Wed, 26 Jan 2022 18:10:33 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220126145549.617165-28-s.hauer@pengutronix.de>
+References: <20220126145549.617165-1-s.hauer@pengutronix.de>
+ <20220126145549.617165-28-s.hauer@pengutronix.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:ymDBYVjKtSQdPfmVcjBk0159dDQ4Dupgs3VpHv0SQb4JX5jWMDtAhkONitEkb+tvDkUwE
+ ATKd2QG3EPsSyJgf+Uq6ZLU/XV06rJ0v1fpfZwrOXlrZFgVojhg0PuIM/jBv9vRSf+oIxHnVpsym
+ 3N3dSK6El+MIdPp4a5D7MpzNWX16ocB2YpMSKth1e53UDwJAGousLjFtu4GNo/EEorf02UiWGaNf
+ aqYoKiam5NXlrk8CJ9aJBQxeWdxSG7qTYsGaQl/kpeGUH90qS6Jkx6gPDKfhY0mStbMGnZoh3don
+ ns=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LXbgsP9OhrM=:vUyBSYaoC+r4+1AkJqjZXQ
+ AH2W08ld/yXoEcf943VwyRs6jzjnVz6vU2yIMf1ynN0ip0DfuMtLFnAQ3cnKATp6qGrntYx8d
+ dtKxDEohJcMsmoTjfWjQ1iPkpYKW0hYvdzyCGjkMybaAd2NU4B5iWmAqPARUHhEbvdC4bHBe8
+ 6KP81XLAPZdFG3LZe4TJ05v3c6FDgMaID+rxZto6WY6bVXmj1p5x7wOsC5l+OMn82X9jihpQo
+ dBkLP/fY4HBeMb4ah0IHzKtT3OAXo9IAXIVusMOtsqBxkiT71B9rE4sKuXimy+xMhBbCDEeq5
+ 0D6z5n1HL+i6Qh4oDQ8cgOAoRrxeip6Rl4ESrR9eV8RIV0aalpXOQ6eCmBWgpFsZYJTsqHuDd
+ 228UIg1XxU7z9A/hqxHH8x7YL0GDz3RqVofaBPd1n97qA9c+cUeLX5DuJa5nUA+vANA8ZP1t/
+ wk0H62wNW8QUTo7LnPJYtRP8ahykXgYsk2Lq32Z9viTeyOqVphfuXjKNTwCPPOEdp8tz9bJ/m
+ qYepkZQMBv+3v7TG9Mm19/eNSUDu2Mnf3E8TZ+zmi3gKIW+a/aLU62W0lYO0TJlabctyhXZ9K
+ vIIOH+FsZdMl3JTWWrIqvB/lXlbVI6zkSMt3L/xlvP2lFbkX7aY/DQ2Mofc9+q4zB/jZljrGX
+ HLKSlaS5yLO4e79jpjDfo/+o+7PnD/KeuFSbBGXuh0/O6yrV3FlX1MPIQ7ErZYYMXd+Sq3WAk
+ nEXCCChM14DAbICUX32jrvJE74kAvasEHX7K/jc9WfqUPTKdOY6T0RrVgFtorIsotM0ELp0x8
+ Iw5SM4njxe+BL42vZbv1DcQzS0dKuk9cmkba417pV2gTxOhTg/aL3Bd8CpxhJ51ZsSUI4KD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_080440_181900_9DF94751 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20220126_091101_779354_676C84A6 
+X-CRM114-Status: UNSURE (   5.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,83 +94,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 26, 2022 at 9:58 AM Sascha Hauer <s.hauer@pengutronix.de> wrote:
->
-> Add support for the HDMI port found on RK3568.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 37 +++++++++++++++++++++++-
->  1 file changed, 36 insertions(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 4008bd666d01..e38fb223e9b8 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -10,7 +10,6 @@
->  #include <dt-bindings/pinctrl/rockchip.h>
->  #include <dt-bindings/power/rk3568-power.h>
->  #include <dt-bindings/soc/rockchip,boot-mode.h>
-> -#include <dt-bindings/soc/rockchip,vop2.h>
->  #include <dt-bindings/thermal/thermal.h>
->
->  / {
-> @@ -502,6 +501,42 @@ vop_mmu: iommu@fe043e00 {
->                 status = "disabled";
->         };
->
-> +       hdmi: hdmi@fe0a0000 {
-> +               compatible = "rockchip,rk3568-dw-hdmi";
-> +               reg = <0x0 0xfe0a0000 0x0 0x20000>;
-> +               interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-> +               clocks = <&cru PCLK_HDMI_HOST>,
-> +                        <&cru CLK_HDMI_SFR>,
-> +                        <&cru CLK_HDMI_CEC>,
-> +                        <&pmucru CLK_HDMI_REF>,
-> +                        <&cru HCLK_VOP>;
-> +               clock-names = "iahb", "isfr", "cec", "ref", "hclk";
-> +               pinctrl-names = "default";
-> +               pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
+Hi Sascha
 
-I looked into CEC support here, and it seems that it does work with one change.
-Please add the two following lines to your patch:
-assigned-clocks = <&cru CLK_HDMI_CEC>;
-assigned-clock-rates = <32768>;
+tested full series on Bananapi r2 Pro V0 prototype (rk3568)
 
-The issue is the clk_rtc32k_frac clock that feeds clk_rtc_32k which
-feeds clk_hdmi_cec is 24mhz at boot, which is too high for CEC to
-function.
+4K@60Hz
+1080p@60Hz
 
-> +               power-domains = <&power RK3568_PD_VO>;
-> +               reg-io-width = <4>;
-> +               rockchip,grf = <&grf>;
-> +               #sound-dai-cells = <0>;
-> +               status = "disabled";
-> +
-> +               ports {
-> +                       #address-cells = <1>;
-> +                       #size-cells = <0>;
-> +
-> +                       hdmi_in: port@0 {
-> +                               reg = <0>;
-> +                               #address-cells = <1>;
-> +                               #size-cells = <0>;
-> +                       };
-> +
-> +                       hdmi_out: port@1 {
-> +                               reg = <1>;
-> +                               #address-cells = <1>;
-> +                               #size-cells = <0>;
-> +                       };
-> +               };
-> +       };
-> +
->         qos_gpu: qos@fe128000 {
->                 compatible = "rockchip,rk3568-qos", "syscon";
->                 reg = <0x0 0xfe128000 0x0 0x20>;
-> --
-> 2.30.2
->
+both look good
+
+Tested-By: Frank Wunderlich <frank-w@public-files.de>
+
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
