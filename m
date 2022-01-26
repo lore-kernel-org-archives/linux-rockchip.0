@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71BCC2BA4C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 15:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6779C63684
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 15:11:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9i5GcL4VRFwsRLb2fPHIiS0lS4y317axhsUfysIc988=; b=5FiFBDnn9ROGPh
-	+ciMuDDqwEePzrs0xkFrEsKDTWKq8nA4dmW3y815rXR44kCFXppEi8U/OKcCTrw7dWcDQN3m0qPOH
-	nD1MrdLK0twT2d05wml03slZl8oohMll1P9FpWsLxSpjhnpyo2QaeT3L8ZIlQ+O1B/aN8SMPlz+G7
-	WjedawojDk5+T1y7YGX7WWkybaYNLkICwE9LnZYidI4lH9t6T7SyFjQE5EvqPlEsO0SLHMQLIVs7C
-	sWTWCEEdMM5Fz5jO3A9DlEpogjtJ5Te0wbzqn57AXlZuWULBoos42mDXJfONEGoA4fM+nOfJiROBa
-	v0+nm0A4o+4E5MZYb7wQ==;
+	List-Owner; bh=832FAG1qN+rIm/CoEsIfjPfmKtJmM5qpMMTabThjU6o=; b=VIqB6h+RZZW4xm
+	aRtKMw4ncmST0Ha9qjQL726zbDk6W6QBsWgp+0qnRh9Xr91vE8SNWznx3VamrFjhMXk2MV4ilXNCt
+	9Dc6XZRutTGPiKWpdb0Ea1AdvvE7HxxGGCo4YxtP18Jf3F79vsnreYU3JuomoDp2C+D5YlodlwlVn
+	ymfTv/Bl1OAm9SjqDRwOCR2Kwef0VTSfH79vLHXIicLD4r9sigheVdFf2W9WDcb6AiClQEvlMJnpZ
+	dg/VmFrhKPbhpuIPYOePt7sU3OsSwAT9JhYz2BV7onGiVt6FhMBfmlu1Li4+mM9cCcvM+LMsnt33+
+	mb7gdSLFsgtiSRozeg6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCjwu-00CA3M-OU; Wed, 26 Jan 2022 15:11:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nCjx1-00CA8L-VD; Wed, 26 Jan 2022 15:11:12 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCjku-00C4PS-Bi
- for linux-rockchip@bombadil.infradead.org; Wed, 26 Jan 2022 14:58:40 +0000
+ id 1nCjko-00C4KT-95
+ for linux-rockchip@bombadil.infradead.org; Wed, 26 Jan 2022 14:58:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=lGItTcetu29OtcNtfOgrlryiBkhrObz8X7RQ+AwZTpM=; b=Hde3EvKbuEFd7cE+Gsl4jWXcpw
- eZ65IFfa2wIHCLlm7vOtr3Y5p/ZMJkj299NqKhkS6UMIBWTf6kY8RUrb6pNIUtzUV0cmudCF8OTkz
- pgqAcuSN53P7mmMs86PB7N4esyw6jemzR8UVs5Zm/U7uVYdrpbn/77lbX16ZJk1QrfvOObfXOVdyA
- ipLQ4Ywr5DqNLFaSMNNX0LTdvYlhvVeMiMr5jWTF03l5rTZPcSVA6pgYnqgsNDdwGlTFpYsIe3Phf
- lmUuHUj0uOAuHquDni2WEAyGw1Pm0CnhS7QE1Xvkl1DIhFRxKHlghHFS9ERtA4Yj5Bzm12zwys0nV
- IxNMNGMQ==;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=11P47DV2wy8fIMX3AF2aY4bujdUf6uzwjITtT9f/0zM=; b=TQvCF4waeXo8LbcOSCTheSqGuz
+ SShu9mbZeZ1/OoCrzAca8d/aBN4xO/hYCtVKDVeoF6+o0LUR83zfjbgrnXZg+Pjk5ol/0Tep0d+aI
+ 1ZwSH40pJkUkk/3Trktd99jqf6/T6EyQD4+IUbQAaYcyCdp5R/VF53debosR5lVnmSC7UgLGnDg0O
+ uGjeaFFpKttlBlL4ZQATwaIojVTa22RRasaQCbaZXqv6w2W2MTfgkQF5tIzSftr8wZ/Kxbpok0T3h
+ b4psTB3OPGNnA+BY1dfBRRbc2MksMu2J9u1k6RsqzHhZt9tveBK2YO7R89sWQ7nLyPIgNfSFhtO4G
+ mZ6W1iaQ==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCjkj-003pia-PU
- for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:58:39 +0000
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nCjkj-00490O-ES
+ for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:58:32 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjkc-0005fZ-An; Wed, 26 Jan 2022 15:58:22 +0100
+ id 1nCjkc-0005fa-DY; Wed, 26 Jan 2022 15:58:22 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjka-002l7I-SX; Wed, 26 Jan 2022 15:58:20 +0100
+ id 1nCjka-002l7L-T3; Wed, 26 Jan 2022 15:58:20 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -57,10 +57,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 25/27] clk: rk3568: Add CLK_SET_RATE_PARENT to the HDMI
- reference clock
-Date: Wed, 26 Jan 2022 15:55:47 +0100
-Message-Id: <20220126145549.617165-26-s.hauer@pengutronix.de>
+Subject: [PATCH 26/27] drm/rockchip: Make VOP driver optional
+Date: Wed, 26 Jan 2022 15:55:48 +0100
+Message-Id: <20220126145549.617165-27-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220126145549.617165-1-s.hauer@pengutronix.de>
 References: <20220126145549.617165-1-s.hauer@pengutronix.de>
@@ -71,8 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_145830_061314_79D1C3C8 
-X-CRM114-Status: GOOD (  16.41  )
+X-CRM114-CacheID: sfid-20220126_145829_888341_15F14151 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,45 +84,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gdGhlIHJrMzU2OCB3ZSBoYXZlIHRoaXMgKHNpbXBsaWZpZWQpIHNpdHVhdGlvbjoKCiAuLS0t
-LS0tLS0uICAgICAuLS0tLS0uICAgIC4tLS0tLS0tLS0uCi18IGhwbGwgICB8LS0uLS18IC9uICB8
-LS0tLXxkY2xrX3ZvcDB8LQogYC0tLS0tLS0twrQgIHwgIGAtLS0tLcK0ICAgIGAtLS0tLS0tLS3C
-tAogICAgICAgICAgICAgfCAgLi0tLS0tLiAgICAuLS0tLS0tLS0tLgogICAgICAgICAgICAgYC0t
-fCAvbSAgfC0tLS18ZGNsa192b3AxfC0KICAgICAgICAgICAgIHwgIGAtLS0tLcK0ICAgIGAtLS0t
-LS0tLS3CtAogICAgICAgICAgICAgfCAgICAgICAgICAgICAuLS0tLS0tLS0tLgogICAgICAgICAg
-ICAgYC0tLS0tLS0tLS0tLS18aGRtaV9yZWYgfC0KICAgICAgICAgICAgICAgICAgICAgICAgICAg
-YC0tLS0tLS0tLcK0CgpGb3IgdGhlIEhETUkgdG8gd29yayB0aGUgSERNSSByZWZlcmVuY2UgY2xv
-Y2sgbmVlZHMgdG8gYmUgdGhlIHNhbWUgYXMgdGhlCnBpeGVsIGNsb2NrIHdoaWNoIG1lYW5zIHRo
-ZSBkaXZpZGVycyBoYXZlIGJlIHNldCB0byBvbmUuIFRoZSBsYXN0IHBhdGNoIHJlbW92ZWQKdGhl
-IENMS19TRVRfUkFURV9QQVJFTlQgZmxhZyBmcm9tIHRoZSBwaXhlbCBjbG9ja3Mgd2hpY2ggbWVh
-bnMgdGhlIGhwbGwgaXMgbm90CmNoYW5nZWQgb24gcGl4ZWwgY2xvY2sgY2hhbmdlcy4gSW4gb3Jk
-ZXIgdG8gYWxsb3cgdGhlIEhETUkgY29udHJvbGxlciB0bwpzZXQgYSBzdWl0YWJsZSBQTEwgcmF0
-ZSB3ZSBub3cgYWRkIHRoZSBDTEtfU0VUX1JBVEVfUEFSRU5UIGZsYWcgdG8gdGhlCkhETUkgcmVm
-ZXJlbmNlIGNsb2NrLiBXaXRoIHRoaXMgdGhlIGZsb3cgYmVjb21lczoKCjEpIEhETUkgY29udHJv
-bGxlciBkcml2ZXIgc2V0cyB0aGUgcmF0ZSB0byBpdHMgcGl4ZWwgY2xvY2sgd2hpY2ggbWVhbnMK
-ICAgaHBsbCBpcyBzZXQgdG8gdGhlIHBpeGVsIGNsb2NrCjIpIFZPUDIgZHJpdmVyIHNldHMgZGNs
-a192b3BbMDEyXSB0byB0aGUgcGl4ZWwgY2xvY2suIEFzIHRoaXMgY2FuJ3QgY2hhbmdlCiAgIHRo
-ZSBocGxsIGNsb2NrIGFueW1vcmUgdGhpcyBtZWFucyBvbmx5IHRoZSBkaXZpZGVyIGlzIGFkanVz
-dGVkIHRvIHRoZQogICBkZXNpcmVkIHZhbHVlIG9mIGRpdmlkaW5nIGJ5IG9uZS4KClNpZ25lZC1v
-ZmYtYnk6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4KLS0tCiBkcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGstcmszNTY4LmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNl
-cnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hp
-cC9jbGstcmszNTY4LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszNTY4LmMKaW5kZXgg
-NzY4N2M2MmQxZmE4Li42M2RmYmVlZWIwNmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL3JvY2tj
-aGlwL2Nsay1yazM1NjguYworKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszNTY4LmMK
-QEAgLTE1NjgsNyArMTU2OCw3IEBAIHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX2JyYW5jaCBy
-azM1NjhfY2xrX3BtdV9icmFuY2hlc1tdIF9faW5pdGRhdGEgPSB7CiAJCQlSSzM1NjhfUE1VX0NM
-S0dBVEVfQ09OKDIpLCAxNCwgR0ZMQUdTKSwKIAlHQVRFKFhJTl9PU0MwX0VEUFBIWV9HLCAieGlu
-X29zYzBfZWRwcGh5X2ciLCAieGluMjRtIiwgMCwKIAkJCVJLMzU2OF9QTVVfQ0xLR0FURV9DT04o
-MiksIDE1LCBHRkxBR1MpLAotCU1VWChDTEtfSERNSV9SRUYsICJjbGtfaGRtaV9yZWYiLCBjbGtf
-aGRtaV9yZWZfcCwgMCwKKwlNVVgoQ0xLX0hETUlfUkVGLCAiY2xrX2hkbWlfcmVmIiwgY2xrX2hk
-bWlfcmVmX3AsIENMS19TRVRfUkFURV9QQVJFTlQsCiAJCQlSSzM1NjhfUE1VX0NMS1NFTF9DT04o
-OCksIDcsIDEsIE1GTEFHUyksCiB9OwogCi0tIAoyLjMwLjIKCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+With upcoming VOP2 support VOP won't be the only choice anymore, so make
+the VOP driver optional.
+
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/gpu/drm/rockchip/Kconfig            | 8 ++++++++
+ drivers/gpu/drm/rockchip/Makefile           | 3 ++-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 9f1ecefc3933..b9b156308460 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -21,8 +21,16 @@ config DRM_ROCKCHIP
+ 
+ if DRM_ROCKCHIP
+ 
++config ROCKCHIP_VOP
++	bool "Rockchip VOP driver"
++	default y
++	help
++	  This selects support for the VOP driver. You should enable it
++	  on all older SoCs up to RK3399.
++
+ config ROCKCHIP_ANALOGIX_DP
+ 	bool "Rockchip specific extensions for Analogix DP driver"
++	depends on ROCKCHIP_VOP
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+ 	  for the Analogix Core DP driver. If you want to enable DP
+diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
+index 1a56f696558c..dfc5512fdb9f 100644
+--- a/drivers/gpu/drm/rockchip/Makefile
++++ b/drivers/gpu/drm/rockchip/Makefile
+@@ -4,8 +4,9 @@
+ # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+ 
+ rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
+-		rockchip_drm_gem.o rockchip_drm_vop.o rockchip_vop_reg.o
++		rockchip_drm_gem.o
+ 
++rockchipdrm-$(CONFIG_ROCKCHIP_VOP) += rockchip_drm_vop.o rockchip_vop_reg.o
+ rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
+ rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
+ rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index bec207de4544..82c8faf1fb6b 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -458,7 +458,7 @@ static int __init rockchip_drm_init(void)
+ 	int ret;
+ 
+ 	num_rockchip_sub_drivers = 0;
+-	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
++	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_ROCKCHIP_VOP);
+ 	ADD_ROCKCHIP_SUB_DRIVER(rockchip_lvds_driver,
+ 				CONFIG_ROCKCHIP_LVDS);
+ 	ADD_ROCKCHIP_SUB_DRIVER(rockchip_dp_driver,
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
