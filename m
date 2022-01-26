@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0531AC2BA4C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 14:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DD91C28CF5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 14:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BJ4u8QBfNzgAwJ+SHghrEfQbdcxKcz+CxUH2kssHmVM=; b=qPoEjTnOqE3cVy
-	db7f1E86JH8osvk4xuEVIhS/26TZaEJ9y5eNNtZKjFFM43gF+JCKsLvIUigo2v5JcQHBGNW4GQF11
-	rTToJF+LjcPz5Dp7C6qSCVlXbRwty44xjC2AEgvXAHy1cc2aby6Ztt4Ss5LENKtHy8LqpTbLXeoKZ
-	XdsslO0EHJtLnRTgdhn3Si8M4abI+4jDRL8A/zDmSIVlspfuoZ3FnF0JVAbwKZUOb7mGUYJeSAux+
-	lgz7wVLw3jq1Ji0UXVM1d+jYO6mo+v/Pz2AqHps2z6SXwcF9hz2f5+PvQyEocaJrAkgTSoJxVRyNR
-	iQNOadJFMzyU+9NfUYzA==;
+	List-Owner; bh=mkWEru6nCbsO241ij7mwvnW6oc/bNFu/Ly83nMaGR8Y=; b=KL5yUuHKOucUC1
+	yG/GLJ9Vg4g2+WasJfQ7EHsqxvgAMPggOBKsEi8vuvmGQ35qOnRFDXMtCSbsmhbnl5Rhc1Y6DljFg
+	KkSFSbwXOeu7IcUvPRNeRoO5Bh9bgG9gXhc+C4F7L9LZE+15shPtPRK7VxTHk4qB0LL85QERZJJIw
+	E8j/64FR1bj0FrTvU5HkjW6YWmVnkoGWCxbgOfC11CQcDAq/4cbLr8tj4jHHJPCXNooHqkfuBOTA6
+	dBcesbsP9agya5aJd/4Qwoyecc3joMsKFDZMdvZ9pgXs/a1PHBBapz6c+IA6ltIudogrpBfvtkjZ3
+	6DjwIpMCWND+HwWwmVAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCjil-00C2vl-75; Wed, 26 Jan 2022 14:56:27 +0000
+	id 1nCjjL-00C3Dt-Be; Wed, 26 Jan 2022 14:57:03 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCjiL-00C2hF-95
- for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:56:02 +0000
+ id 1nCjiR-00C2ko-4z
+ for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:56:08 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjiG-0004tK-5m; Wed, 26 Jan 2022 15:55:56 +0100
+ id 1nCjiG-0004tL-5u; Wed, 26 Jan 2022 15:55:56 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjiD-002ktR-2n; Wed, 26 Jan 2022 15:55:53 +0100
+ id 1nCjiD-002ktU-3H; Wed, 26 Jan 2022 15:55:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,9 +43,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 01/27] drm/encoder: Add of_graph port to struct drm_encoder
-Date: Wed, 26 Jan 2022 15:55:23 +0100
-Message-Id: <20220126145549.617165-2-s.hauer@pengutronix.de>
+Subject: [PATCH 02/27] drm/rockchip: dw_hdmi: Do not leave clock enabled in
+ error case
+Date: Wed, 26 Jan 2022 15:55:24 +0100
+Message-Id: <20220126145549.617165-3-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220126145549.617165-1-s.hauer@pengutronix.de>
 References: <20220126145549.617165-1-s.hauer@pengutronix.de>
@@ -56,8 +57,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_065601_334374_7672ADD0 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20220126_065607_225204_0F965174 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,28 +76,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a device node to drm_encoder which corresponds with the port node
-in the DT description of the encoder. This allows drivers to find the
-of_graph link between a crtc and an encoder.
+The driver returns an error when devm_phy_optional_get() fails leaving
+the previously enabled clock turned on. Change order and enable the
+clock only after the phy has been acquired.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- include/drm/drm_encoder.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/drm/drm_encoder.h b/include/drm/drm_encoder.h
-index 6e91a0280f31..3acd054b1eb3 100644
---- a/include/drm/drm_encoder.h
-+++ b/include/drm/drm_encoder.h
-@@ -99,6 +99,8 @@ struct drm_encoder {
- 	struct drm_device *dev;
- 	struct list_head head;
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 830bdd5e9b7c..8677c8271678 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -529,13 +529,6 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
  
-+	struct device_node *port;
+-	ret = clk_prepare_enable(hdmi->vpll_clk);
+-	if (ret) {
+-		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI vpll: %d\n",
+-			      ret);
+-		return ret;
+-	}
+-
+ 	hdmi->phy = devm_phy_optional_get(dev, "hdmi");
+ 	if (IS_ERR(hdmi->phy)) {
+ 		ret = PTR_ERR(hdmi->phy);
+@@ -544,6 +537,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	ret = clk_prepare_enable(hdmi->vpll_clk);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI vpll: %d\n",
++			      ret);
++		return ret;
++	}
 +
- 	struct drm_mode_object base;
- 	char *name;
- 	/**
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+ 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
 -- 
 2.30.2
 
