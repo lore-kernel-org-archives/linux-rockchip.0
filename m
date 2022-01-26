@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E947AC28CF5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 14:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9FBAC63684
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Jan 2022 14:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DYSAH8t+DUjPne+CK5/+Cx3PT/2TNoQDPiHEdjlytHQ=; b=4VH16B0yo9UTVN
-	S+sxf3C20alUW999N3UQXU7ZnrCbU/2Nv1/mPolWtMWI7wi/Xly4h523rRHt/OYo8jk3dVQQsm1KI
-	1Jdowcc1Tkth88G8krGuM5+09S73U+RJRf2l0/iKxPuRyKpEaCLyIeI+Qlx51hWezx0qVshDbjLbt
-	K2n45QVqUs9fMP1Lh0vAzl9CZykcytHY+JeQTdxrm1/0fI+COLmbMKF4669w5FlYzEQxkgEhnrfOF
-	pauTjNEqG/hCd2nSO5R0Rfk/vHKqTj3ZppJct25BA43vc9tiVZDDcoyV1N/7CaFBP1cB+7lhjYMQl
-	9kJe0m8piNdw0xbR7jGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bNn8bOYMHmOZXc0SL1CmSD7WHqexXxmqxvq8qRfiR4A=; b=y3oFLiPsBw6CWx
+	XFDkTBzPENCIK67VFtEZR2sB7nVK1tJkXSu3fxfV4EeDEVXxx5pjSE92nw2fW/5I4EO7H4n6X9B1l
+	Td0QWlXz9mqH1iBO+e+lA/xjccojR9OPSwFaZ2t6gdCtMZN+7WjPw7nuhDZJydLuozc3e+ItymCp2
+	9TLtjRq/P6RaYTPI5WhA3HqgIecHTBftF9dYRRjUY/0fcmReSBVDFhpm+JIL2izTO9a5rcN965tPt
+	1x/ancgKN+jvb3OE3yb2EezVrNp7RntxNcS1rWnxA+Q3vpRxblhcdHcrlzg+m6o1k+Q26WT2puZIU
+	g6PXSJvdtnweB0H8l2LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCjk7-00C3mr-5G; Wed, 26 Jan 2022 14:57:51 +0000
+	id 1nCjkh-00C4Fk-1U; Wed, 26 Jan 2022 14:58:27 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCjiZ-00C2ob-As
- for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:56:18 +0000
+ id 1nCjih-00C2uG-An
+ for linux-rockchip@lists.infradead.org; Wed, 26 Jan 2022 14:56:24 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjiG-0004tJ-5m; Wed, 26 Jan 2022 15:55:56 +0100
+ id 1nCjiG-0004tO-5l; Wed, 26 Jan 2022 15:55:56 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nCjiD-002ktP-27; Wed, 26 Jan 2022 15:55:53 +0100
+ id 1nCjiD-002ktd-4s; Wed, 26 Jan 2022 15:55:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,10 +43,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v4 00/27] drm/rockchip: RK356x VOP2 support
-Date: Wed, 26 Jan 2022 15:55:22 +0100
-Message-Id: <20220126145549.617165-1-s.hauer@pengutronix.de>
+Subject: [PATCH 05/27] drm/rockchip: dw_hdmi: add regulator support
+Date: Wed, 26 Jan 2022 15:55:27 +0100
+Message-Id: <20220126145549.617165-6-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220126145549.617165-1-s.hauer@pengutronix.de>
+References: <20220126145549.617165-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::28
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -54,8 +56,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_065615_450229_D0B4D778 
-X-CRM114-Status: GOOD (  21.63  )
+X-CRM114-CacheID: sfid-20220126_065623_396713_FBB0CAF1 
+X-CRM114-Status: GOOD (  18.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,116 +75,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is v4 of adding RK356x VOP2 support. Due to popular demand I added
-a changelog to each patch, at least starting with changes to v3, I
-didn't care to add the older changes as well. I hopefully integrated all
-feedback I received to v3. Additionally I added some patches to the HDMI
-driver to support resolutions up to 4k@60Hz. The patches are mostly
-taken from the downstream kernel. Some have been send to public lists,
-but were never applied upstream for reasons I do not know. The patches
-are a bit more intrusive than needed for my case, but are present in the
-downstream kernel for a long time, so I decided just to take them
-instead of stripping them down to my needs. With these patches I
-successfully used the driver with 4k@30Hz. 4k@60Hz doesn't work for me,
-I hope this is due to my low quality cable.
+The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+for the HDMI port. add support for these to the driver for boards which
+have them supplied by switchable regulators.
 
-Sascha
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 41 +++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 3 deletions(-)
 
-Changes since v3:
-- added changelog to each patch
-- Add 4k support to hdmi driver
-- rebase on v5.17-rc1
-
-Changes since v2:
-- Add pin names to HDMI supply pin description
-- Add hclk support to HDMI driver
-- Dual license rockchip-vop2 binding, update binding
-- Add HDMI connector to board dts files
-- drop unnecessary gamma_lut registers from vop2
-- Update dclk_vop[012] clock handling, no longer hacks needed
-- Complete regmap conversion
-
-Changes since v1:
-- drop all unnecessary waiting for frames within atomic modeset and plane update
-- Cluster subwin support removed
-- gamma support removed
-- unnecessary irq_lock removed
-- interrupt handling simplified
-- simplified zpos handling
-- drop is_alpha_support(), use fb->format->has_alpha instead
-- use devm_regulator_get() rather than devm_regulator_get_optional() for hdmi regulators
-- Use fixed number of planes per video port
-- Drop homegrown regmap code from vop2 driver (not complete yet)
-- Add separate include file for vop2 driver to not pollute the vop include
-
-Andy Yan (1):
-  drm: rockchip: Add VOP2 driver
-
-Benjamin Gaignard (1):
-  dt-bindings: display: rockchip: dw-hdmi: Add compatible for rk3568
-    HDMI
-
-Douglas Anderson (2):
-  drm/rockchip: dw_hdmi: Use auto-generated tables
-  drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
-
-Michael Riesch (1):
-  arm64: dts: rockchip: enable vop2 and hdmi tx on quartz64a
-
-Nickey Yang (1):
-  drm/rockchip: dw_hdmi: add default 594Mhz clk for 4K@60hz
-
-Sascha Hauer (21):
-  drm/encoder: Add of_graph port to struct drm_encoder
-  drm/rockchip: dw_hdmi: Do not leave clock enabled in error case
-  drm/rockchip: dw_hdmi: rename vpll clock to reference clock
-  drm/rockchip: dw_hdmi: add rk3568 support
-  drm/rockchip: dw_hdmi: add regulator support
-  drm/rockchip: dw_hdmi: Add support for hclk
-  drm/rockchip: dw_hdmi: drop mode_valid hook
-  clk: rockchip: rk3568: Add more PLL rates
-  dt-bindings: display: rockchip: dw-hdmi: Make unwedge pinctrl optional
-  dt-bindings: display: rockchip: dw-hdmi: use "ref" as clock name
-  dt-bindings: display: rockchip: dw-hdmi: Add regulator support
-  dt-bindings: display: rockchip: dw-hdmi: Add additional clock
-  dt-bindings: display: rockchip: Add binding for VOP2
-  arm64: dts: rockchip: rk3399: reorder hmdi clocks
-  arm64: dts: rockchip: rk3399: rename HDMI ref clock to 'ref'
-  arm64: dts: rockchip: rk356x: Add VOP2 nodes
-  arm64: dts: rockchip: rk356x: Add HDMI nodes
-  arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
-  clk: rk3568: drop CLK_SET_RATE_PARENT from dclk_vop*
-  clk: rk3568: Add CLK_SET_RATE_PARENT to the HDMI reference clock
-  drm/rockchip: Make VOP driver optional
-
- .../display/rockchip/rockchip,dw-hdmi.yaml    |   29 +-
- .../display/rockchip/rockchip-vop2.yaml       |  146 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      |    6 +-
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   |   48 +
- arch/arm64/boot/dts/rockchip/rk3566.dtsi      |    4 +
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     |   48 +
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      |    4 +
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   86 +
- drivers/clk/rockchip/clk-rk3568.c             |   14 +-
- drivers/gpu/drm/rockchip/Kconfig              |   14 +
- drivers/gpu/drm/rockchip/Makefile             |    4 +-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  293 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    3 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    7 +-
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |    2 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   15 +
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 2665 +++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  480 +++
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |  285 ++
- include/drm/drm_encoder.h                     |    2 +
- include/dt-bindings/soc/rockchip,vop2.h       |   14 +
- 21 files changed, 4039 insertions(+), 130 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
- create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
- create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
- create mode 100644 drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
- create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
-
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 262eef614cb1..3d7c3f6fdf22 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -9,6 +9,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
+ 
+ #include <drm/bridge/dw_hdmi.h>
+ #include <drm/drm_edid.h>
+@@ -76,6 +77,8 @@ struct rockchip_hdmi {
+ 	struct clk *ref_clk;
+ 	struct clk *grf_clk;
+ 	struct dw_hdmi *hdmi;
++	struct regulator *avdd_0v9;
++	struct regulator *avdd_1v8;
+ 	struct phy *phy;
+ };
+ 
+@@ -223,6 +226,14 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 		return PTR_ERR(hdmi->grf_clk);
+ 	}
+ 
++	hdmi->avdd_0v9 = devm_regulator_get(hdmi->dev, "avdd-0v9");
++	if (IS_ERR(hdmi->avdd_0v9))
++		return PTR_ERR(hdmi->avdd_0v9);
++
++	hdmi->avdd_1v8 = devm_regulator_get(hdmi->dev, "avdd-1v8");
++	if (IS_ERR(hdmi->avdd_1v8))
++		return PTR_ERR(hdmi->avdd_1v8);
++
+ 	return 0;
+ }
+ 
+@@ -563,11 +574,23 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	ret = regulator_enable(hdmi->avdd_0v9);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: %d\n", ret);
++		goto err_avdd_0v9;
++	}
++
++	ret = regulator_enable(hdmi->avdd_1v8);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: %d\n", ret);
++		goto err_avdd_1v8;
++	}
++
+ 	ret = clk_prepare_enable(hdmi->ref_clk);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
+ 			      ret);
+-		return ret;
++		goto err_clk;
+ 	}
+ 
+ 	if (hdmi->chip_data == &rk3568_chip_data) {
+@@ -591,10 +614,19 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	 */
+ 	if (IS_ERR(hdmi->hdmi)) {
+ 		ret = PTR_ERR(hdmi->hdmi);
+-		drm_encoder_cleanup(encoder);
+-		clk_disable_unprepare(hdmi->ref_clk);
++		goto err_bind;
+ 	}
+ 
++	return 0;
++
++err_bind:
++	clk_disable_unprepare(hdmi->ref_clk);
++	drm_encoder_cleanup(encoder);
++err_clk:
++	regulator_disable(hdmi->avdd_1v8);
++err_avdd_1v8:
++	regulator_disable(hdmi->avdd_0v9);
++err_avdd_0v9:
+ 	return ret;
+ }
+ 
+@@ -605,6 +637,9 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 
+ 	dw_hdmi_unbind(hdmi->hdmi);
+ 	clk_disable_unprepare(hdmi->ref_clk);
++
++	regulator_disable(hdmi->avdd_1v8);
++	regulator_disable(hdmi->avdd_0v9);
+ }
+ 
+ static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.30.2
 
