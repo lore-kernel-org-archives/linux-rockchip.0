@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382C8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDED4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:09:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=opAc9YUwXzkgYZvg5GGy29I4MT+63Kw55Wk1xp/epoY=; b=o8Arhg1iDAYJvT
-	CBOsUUERQO5p/inxIojUg7PDShck6I0GbPHcM23YgrsWeVrVNb18QXSIaKxYYGAT4IEUj0Qw7BlBU
-	n6znXkBPEyOYSH7uG8L2xlqATTcXXGQTPfNnT+8jrURnN+Sk8diNxSlKHzDvw4WCjI2b6u+NZY3VC
-	drRtv+IQa4pVUiUkqbWF1y+F6MYKyoaS1ckd4hCfn5WaWB8tfM9JADYhacvvdHnJu0W9sKLF81F23
-	3/9iG3bDJZYRoGNejhNq2Ji5HGRiVcE+HZPd4S/a4eXR6bY/F58M2ggjdNyatD0w6oRgRpoBLBCU1
-	yzcCoTiUs2wEX1hlCqtQ==;
+	List-Owner; bh=4T9ojtoPbdkq4U6smnsExNs2ZA3srenH7nly9ASa4G8=; b=IGYjUudixQWTFM
+	MC0ZjKFeakTLLa52wRLZmCk3mDBvNyfPUdCvEMDj1S+vkHZxSW/uXDSUIQbuCVYXgVbDj5dWo25HC
+	5SWTJzj+KoqR2i6Zennzfoj6d6rWjZoe4twacnWAtFH78KtQ6D2+fvYMu3cD/JMtugVJKdWXNF5H/
+	9ygPpLOQ0hNDv103NSThCnSxyHs1jafzXFAS3mtAZxY6PFNrlYIl2jQESKhXessVM4IkvgRAdfreZ
+	Abk0c5yl2UXdTpyFr3xFlzJrLHcT06C+0BZIQ+K2potogqgEAYz2uwWef+yIqkzbnmFZVfVawEon6
+	dScZJv+pT6CEZDV0CwXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDDtJ-00HGnN-Jy; Thu, 27 Jan 2022 23:09:21 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1nDDtn-00HGz4-Pn; Thu, 27 Jan 2022 23:09:51 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDDsS-00HGIT-6S
- for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 23:08:32 +0000
-Received: by mail-pf1-x432.google.com with SMTP id 128so4337690pfe.12
- for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:08:27 -0800 (PST)
+ id 1nDDsW-00HGKK-Ck
+ for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 23:08:34 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id o64so4777417pjo.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:08:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=GtcaqeEbUVEF7c8CD//RjEQZFEd6SVIiY4Z9OyKXmWI=;
- b=lxBc+gjDYGe2Mf7EobWimq1wSjqT7NtWINtmYB+xJSBl9seqnK1ApP1sILvOY0tkEr
- Xi95R+XAyOC+iBeqmTAZlKIWaw2vAMLnKx2w71b4tSeP4Ulrt+67uxUDTHhIE5IeKU7Y
- IDmwb8usJ4BfyJyyGe7PsK59Fa2oivcSmfDIw=
+ bh=7h2TqwoqXaEMfjPzv9SF6ZGc4nNnV1XaxjSg49pOxCw=;
+ b=DPUvXSj4gGoUi2PZpwiU9r2MGTNKqUgmF4dU8QpNs/blxOChn/Dp4X5P6uc34QaFaV
+ DOvAxI8yXqbH/50nNHY73T7e0MH2ScJuvKPL2U+RdqfwtNhtdml4RTg/ip02fDK4yYwO
+ +/wg5JzxvX29Bfht/wS7TUy2EGdWPpsb4iBTk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=GtcaqeEbUVEF7c8CD//RjEQZFEd6SVIiY4Z9OyKXmWI=;
- b=L0y1slGzJ7nLuCT5CN/2IAt7pk27Ddx8VNukPC75gpCTet2yRru9Li9ludgIEHWiA9
- VViM09Sm7v28OUJVJ06ymVImaiSPa5y9tlArvHD2jmJdwUOKycMY5L5tEN+rfoMJDboq
- ml5IWMiiLCDHh0IvqAApdN+d+i4QXhll2T5cTxanxp9EthEPXue7S5m4SHwjP4T1thZv
- bWU+6gYKXrf6V/WdXdNqtijVV+D2OMM6YGHoRrXdzrCxjM3O87wswu3MWfgw97xsB2Az
- UaQLTuxQ7H9LeeOtpFzVsQWLV7Zhohdu72vzlAutwCd+U90GccWUaPAg3JvuLkXJmg/M
- HuJA==
-X-Gm-Message-State: AOAM532dMbZbVQRpm6ufC54r/Tlc3Yv6tG2beNQG41jiv4KHrzV3FWlu
- 0po/Ie7PzUwqXTdN1Dt7BgNzSA==
-X-Google-Smtp-Source: ABdhPJzWGpvg4uNE5zJeyh0Irrt/6NjcrPgkgR6BPqESbVN1+SG4fAJaZoXo0MC+4P4sXl54UFF72g==
-X-Received: by 2002:a05:6a00:c86:: with SMTP id
- a6mr5448671pfv.78.1643324906733; 
- Thu, 27 Jan 2022 15:08:26 -0800 (PST)
+ bh=7h2TqwoqXaEMfjPzv9SF6ZGc4nNnV1XaxjSg49pOxCw=;
+ b=AJhGibl5cBAyGAIw7iTjpcfY3JKFV21LewU9QIsUhIdamRiqjL9zmySnFIopakUNrR
+ 363lLcLN70QMh8OApMKvlPbXDftUMibMzsOidBKjecXkcqy/z4Pd/EJ7MGXkoCL0QSdN
+ zfyE0X86Cf3owwmoF/+4u85dfUpH30zLLE93R1VHglcTZPstqOuSeFXukJxxGfECNIWc
+ 7z0g9GDYoNbw9SjgD07gcVYhlzHNyfl9pLmJ0dkvjT7GAL0vnYrC9j+Mj7S8zts+oGTt
+ buVDDWO8fZP56C+LMWcBep9YDfgfOUNK3uHKp/EAAvJBLE10JdJgHGD3Gyzav/BtCAYE
+ RinQ==
+X-Gm-Message-State: AOAM533iSldgGZWRcTjAEzcKikP9Tu/0ZDSZNn0FXEKKciAJpconwylu
+ EG6jA0vIMOb8FInVsmaj0Vhh1w==
+X-Google-Smtp-Source: ABdhPJwF8ZK0wYylhQqNtZ4M2mQnejXec2VevUUW76yQtWHtCIpE5oy0RcA49p/AmsG5dRO59F5mzg==
+X-Received: by 2002:a17:90b:33c6:: with SMTP id
+ lk6mr6586908pjb.213.1643324910342; 
+ Thu, 27 Jan 2022 15:08:30 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:723d:38a9:9e7f:3435])
- by smtp.gmail.com with UTF8SMTPSA id b5sm20269263pgl.22.2022.01.27.15.08.25
+ by smtp.gmail.com with UTF8SMTPSA id h6sm6933258pfc.35.2022.01.27.15.08.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Jan 2022 15:08:26 -0800 (PST)
+ Thu, 27 Jan 2022 15:08:29 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
@@ -64,16 +64,16 @@ Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
  linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
  Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 01/15] dt-bindings: devfreq: rk3399_dmc: Convert to YAML
-Date: Thu, 27 Jan 2022 15:07:12 -0800
-Message-Id: <20220127150615.v2.1.I875ab8f28c5155a7d2f103316191954d4b07ac13@changeid>
+Subject: [PATCH v2 03/15] dt-bindings: devfreq: rk3399_dmc: Fix Hz units
+Date: Thu, 27 Jan 2022 15:07:14 -0800
+Message-Id: <20220127150615.v2.3.I9341269171c114d0e04e41d48037fd32816e2d8c@changeid>
 X-Mailer: git-send-email 2.35.0.rc0.227.g00780c9af4-goog
 In-Reply-To: <20220127230727.3369358-1-briannorris@chromium.org>
 References: <20220127230727.3369358-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_150828_279118_CA8C1ED1 
-X-CRM114-Status: GOOD (  25.93  )
+X-CRM114-CacheID: sfid-20220127_150832_520418_E7559CE2 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,557 +91,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I want to add, deprecate, and bugfix some properties, as well as add the
-first users. This is easier with a proper schema.
+The driver and all downstream device trees [1] are using Hz units, but
+the document claims MHz. DRAM frequency for these systems can't possibly
+exceed 2^32-1 Hz, so the choice of unit doesn't really matter than much.
 
-The transformation is mostly straightforward, plus a few notable tweaks:
+Rather than add unnecessary risk in getting the units wrong, let's just
+go with the unofficial convention and make the docs match reality.
 
- * Renamed rockchip,dram_speed_bin to rockchip,ddr3_speed_bin. The
-   driver code and the example matched, but the description was
-   different. I went with the implementation.
+A sub-1MHz frequency is extremely unlikely, so include a minimum in the
+schema, to help catch anybody who might have believed this was MHz.
 
- * Drop upthreshold and downdifferential properties from the example.
-   These were undocumented (so, wouldn't pass validation), but were
-   representing software properties (governor tweaks). I drop them from
-   the driver in subsequent patches.
-
- * Rename clock from pclk_ddr_mon to dmc_clk. The driver, DT example,
-   and all downstream users matched -- the binding definition was the
-   exception. Anyway, "dmc_clk" is a more appropriately generic name.
+[1] And notably, also those trying to upstream them:
+https://lore.kernel.org/lkml/20210308233858.24741-3-daniel.lezcano@linaro.org/
 
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
 
-Changes in v2:
- * rename to 'memory-controller' in example
- * place 'required' after properties
- * drop superluous free-form references and repetitions of other
-   bindings
- * fix for yamllint
+(no changes since v1)
 
- .../bindings/devfreq/rk3399_dmc.txt           | 212 -------------
- .../bindings/devfreq/rk3399_dmc.yaml          | 293 ++++++++++++++++++
- 2 files changed, 293 insertions(+), 212 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
- create mode 100644 Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
+ .../bindings/devfreq/rk3399_dmc.yaml          | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
-deleted file mode 100644
-index 58fc8a6cebc7..000000000000
---- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
-+++ /dev/null
-@@ -1,212 +0,0 @@
--* Rockchip rk3399 DMC (Dynamic Memory Controller) device
--
--Required properties:
--- compatible:		 Must be "rockchip,rk3399-dmc".
--- devfreq-events:	 Node to get DDR loading, Refer to
--			 Documentation/devicetree/bindings/devfreq/event/
--			 rockchip-dfi.txt
--- clocks:		 Phandles for clock specified in "clock-names" property
--- clock-names :		 The name of clock used by the DFI, must be
--			 "pclk_ddr_mon";
--- operating-points-v2:	 Refer to Documentation/devicetree/bindings/opp/opp-v2.yaml
--			 for details.
--- center-supply:	 DMC supply node.
--- status:		 Marks the node enabled/disabled.
--- rockchip,pmu:		 Phandle to the syscon managing the "PMU general register
--			 files".
--
--Optional properties:
--- interrupts:		 The CPU interrupt number. The interrupt specifier
--			 format depends on the interrupt controller.
--			 It should be a DCF interrupt. When DDR DVFS finishes
--			 a DCF interrupt is triggered.
--- rockchip,pmu:		 Phandle to the syscon managing the "PMU general register
--			 files".
--
--Following properties relate to DDR timing:
--
--- rockchip,dram_speed_bin :	  Value reference include/dt-bindings/clock/rk3399-ddr.h,
--				  it selects the DDR3 cl-trp-trcd type. It must be
--				  set according to "Speed Bin" in DDR3 datasheet,
--				  DO NOT use a smaller "Speed Bin" than specified
--				  for the DDR3 being used.
--
--- rockchip,pd_idle :		  Configure the PD_IDLE value. Defines the
--				  power-down idle period in which memories are
--				  placed into power-down mode if bus is idle
--				  for PD_IDLE DFI clock cycles.
--
--- rockchip,sr_idle :		  Configure the SR_IDLE value. Defines the
--				  self-refresh idle period in which memories are
--				  placed into self-refresh mode if bus is idle
--				  for SR_IDLE * 1024 DFI clock cycles (DFI
--				  clocks freq is half of DRAM clock), default
--				  value is "0".
--
--- rockchip,sr_mc_gate_idle :	  Defines the memory self-refresh and controller
--				  clock gating idle period. Memories are placed
--				  into self-refresh mode and memory controller
--				  clock arg gating started if bus is idle for
--				  sr_mc_gate_idle*1024 DFI clock cycles.
--
--- rockchip,srpd_lite_idle :	  Defines the self-refresh power down idle
--				  period in which memories are placed into
--				  self-refresh power down mode if bus is idle
--				  for srpd_lite_idle * 1024 DFI clock cycles.
--				  This parameter is for LPDDR4 only.
--
--- rockchip,standby_idle :	  Defines the standby idle period in which
--				  memories are placed into self-refresh mode.
--				  The controller, pi, PHY and DRAM clock will
--				  be gated if bus is idle for standby_idle * DFI
--				  clock cycles.
--
--- rockchip,dram_dll_dis_freq :	  Defines the DDR3 DLL bypass frequency in MHz.
--				  When DDR frequency is less than DRAM_DLL_DISB_FREQ,
--				  DDR3 DLL will be bypassed. Note: if DLL was bypassed,
--				  the odt will also stop working.
--
--- rockchip,phy_dll_dis_freq :	  Defines the PHY dll bypass frequency in
--				  MHz (Mega Hz). When DDR frequency is less than
--				  DRAM_DLL_DISB_FREQ, PHY DLL will be bypassed.
--				  Note: PHY DLL and PHY ODT are independent.
--
--- rockchip,ddr3_odt_dis_freq :	  When the DRAM type is DDR3, this parameter defines
--				  the ODT disable frequency in MHz (Mega Hz).
--				  when the DDR frequency is  less then ddr3_odt_dis_freq,
--				  the ODT on the DRAM side and controller side are
--				  both disabled.
--
--- rockchip,ddr3_drv :		  When the DRAM type is DDR3, this parameter defines
--				  the DRAM side driver strength in ohms. Default
--				  value is 40.
--
--- rockchip,ddr3_odt :		  When the DRAM type is DDR3, this parameter defines
--				  the DRAM side ODT strength in ohms. Default value
--				  is 120.
--
--- rockchip,phy_ddr3_ca_drv :	  When the DRAM type is DDR3, this parameter defines
--				  the phy side CA line (incluing command line,
--				  address line and clock line) driver strength.
--				  Default value is 40.
--
--- rockchip,phy_ddr3_dq_drv :	  When the DRAM type is DDR3, this parameter defines
--				  the PHY side DQ line (including DQS/DQ/DM line)
--				  driver strength. Default value is 40.
--
--- rockchip,phy_ddr3_odt : 	  When the DRAM type is DDR3, this parameter defines
--				  the PHY side ODT strength. Default value is 240.
--
--- rockchip,lpddr3_odt_dis_freq : When the DRAM type is LPDDR3, this parameter defines
--				  then ODT disable frequency in MHz (Mega Hz).
--				  When DDR frequency is less then ddr3_odt_dis_freq,
--				  the ODT on the DRAM side and controller side are
--				  both disabled.
--
--- rockchip,lpddr3_drv :		  When the DRAM type is LPDDR3, this parameter defines
--				  the DRAM side driver strength in ohms. Default
--				  value is 34.
--
--- rockchip,lpddr3_odt :		  When the DRAM type is LPDDR3, this parameter defines
--				  the DRAM side ODT strength in ohms. Default value
--				  is 240.
--
--- rockchip,phy_lpddr3_ca_drv :	  When the DRAM type is LPDDR3, this parameter defines
--				  the PHY side CA line (including command line,
--				  address line and clock line) driver strength.
--				  Default value is 40.
--
--- rockchip,phy_lpddr3_dq_drv :	  When the DRAM type is LPDDR3, this parameter defines
--				  the PHY side DQ line (including DQS/DQ/DM line)
--				  driver strength. Default value is 40.
--
--- rockchip,phy_lpddr3_odt : 	  When dram type is LPDDR3, this parameter define
--				  the phy side odt strength, default value is 240.
--
--- rockchip,lpddr4_odt_dis_freq : When the DRAM type is LPDDR4, this parameter
--				  defines the ODT disable frequency in
--				  MHz (Mega Hz). When the DDR frequency is less then
--				  ddr3_odt_dis_freq, the ODT on the DRAM side and
--				  controller side are both disabled.
--
--- rockchip,lpddr4_drv :		  When the DRAM type is LPDDR4, this parameter defines
--				  the DRAM side driver strength in ohms. Default
--				  value is 60.
--
--- rockchip,lpddr4_dq_odt : 	  When the DRAM type is LPDDR4, this parameter defines
--				  the DRAM side ODT on DQS/DQ line strength in ohms.
--				  Default value is 40.
--
--- rockchip,lpddr4_ca_odt :	  When the DRAM type is LPDDR4, this parameter defines
--				  the DRAM side ODT on CA line strength in ohms.
--				  Default value is 40.
--
--- rockchip,phy_lpddr4_ca_drv :	  When the DRAM type is LPDDR4, this parameter defines
--				  the PHY side CA line (including command address
--				  line) driver strength. Default value is 40.
--
--- rockchip,phy_lpddr4_ck_cs_drv : When the DRAM type is LPDDR4, this parameter defines
--				  the PHY side clock line and CS line driver
--				  strength. Default value is 80.
--
--- rockchip,phy_lpddr4_dq_drv :	  When the DRAM type is LPDDR4, this parameter defines
--				  the PHY side DQ line (including DQS/DQ/DM line)
--				  driver strength. Default value is 80.
--
--- rockchip,phy_lpddr4_odt :	  When the DRAM type is LPDDR4, this parameter defines
--				  the PHY side ODT strength. Default value is 60.
--
--Example:
--	dmc_opp_table: dmc_opp_table {
--		compatible = "operating-points-v2";
--
--		opp00 {
--			opp-hz = /bits/ 64 <300000000>;
--			opp-microvolt = <900000>;
--		};
--		opp01 {
--			opp-hz = /bits/ 64 <666000000>;
--			opp-microvolt = <900000>;
--		};
--	};
--
--	dmc: dmc {
--		compatible = "rockchip,rk3399-dmc";
--		devfreq-events = <&dfi>;
--		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
--		clocks = <&cru SCLK_DDRC>;
--		clock-names = "dmc_clk";
--		operating-points-v2 = <&dmc_opp_table>;
--		center-supply = <&ppvar_centerlogic>;
--		upthreshold = <15>;
--		downdifferential = <10>;
--		rockchip,ddr3_speed_bin = <21>;
--		rockchip,pd_idle = <0x40>;
--		rockchip,sr_idle = <0x2>;
--		rockchip,sr_mc_gate_idle = <0x3>;
--		rockchip,srpd_lite_idle	= <0x4>;
--		rockchip,standby_idle = <0x2000>;
--		rockchip,dram_dll_dis_freq = <300>;
--		rockchip,phy_dll_dis_freq = <125>;
--		rockchip,auto_pd_dis_freq = <666>;
--		rockchip,ddr3_odt_dis_freq = <333>;
--		rockchip,ddr3_drv = <40>;
--		rockchip,ddr3_odt = <120>;
--		rockchip,phy_ddr3_ca_drv = <40>;
--		rockchip,phy_ddr3_dq_drv = <40>;
--		rockchip,phy_ddr3_odt = <240>;
--		rockchip,lpddr3_odt_dis_freq = <333>;
--		rockchip,lpddr3_drv = <34>;
--		rockchip,lpddr3_odt = <240>;
--		rockchip,phy_lpddr3_ca_drv = <40>;
--		rockchip,phy_lpddr3_dq_drv = <40>;
--		rockchip,phy_lpddr3_odt = <240>;
--		rockchip,lpddr4_odt_dis_freq = <333>;
--		rockchip,lpddr4_drv = <60>;
--		rockchip,lpddr4_dq_odt = <40>;
--		rockchip,lpddr4_ca_odt = <40>;
--		rockchip,phy_lpddr4_ca_drv = <40>;
--		rockchip,phy_lpddr4_ck_cs_drv = <80>;
--		rockchip,phy_lpddr4_dq_drv = <80>;
--		rockchip,phy_lpddr4_odt = <60>;
--	};
 diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-new file mode 100644
-index 000000000000..467a7b5b374b
---- /dev/null
+index fd62a8cd62d5..8bb778df92ae 100644
+--- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
 +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-@@ -0,0 +1,293 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# %YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/devfreq/rk3399_dmc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip rk3399 DMC (Dynamic Memory Controller) device
-+
-+maintainers:
-+  - Brian Norris <briannorris@chromium.org>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3399-dmc
-+
-+  devfreq-events:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    minItems: 1
-+    description:
-+      Node to get DDR loading. Refer to
-+      Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt.
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: dmc_clk
-+
-+  operating-points-v2: true
-+
-+  center-supply:
-+    description:
-+      DMC regulator supply.
-+
-+  rockchip,pmu:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to the syscon managing the "PMU general register files".
-+
-+  interrupts:
-+    maxItems: 1
-+    description:
-+      The CPU interrupt number. It should be a DCF interrupt. When DDR DVFS
-+      finishes, a DCF interrupt is triggered.
-+
-+  rockchip,ddr3_speed_bin:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      For values, reference include/dt-bindings/clock/rk3399-ddr.h. Selects the
-+      DDR3 cl-trp-trcd type. It must be set according to "Speed Bin" in DDR3
-+      datasheet; DO NOT use a smaller "Speed Bin" than specified for the DDR3
-+      being used.
-+
-+  rockchip,pd_idle:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Configure the PD_IDLE value. Defines the power-down idle period in which
-+      memories are placed into power-down mode if bus is idle for PD_IDLE DFI
-+      clock cycles.
-+
-+  rockchip,sr_idle:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Configure the SR_IDLE value. Defines the self-refresh idle period in
-+      which memories are placed into self-refresh mode if bus is idle for
-+      SR_IDLE * 1024 DFI clock cycles (DFI clocks freq is half of DRAM clock).
-+      Default value is "0".
-+
-+  rockchip,sr_mc_gate_idle:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Defines the memory self-refresh and controller clock gating idle period.
-+      Memories are placed into self-refresh mode and memory controller clock
-+      arg gating started if bus is idle for sr_mc_gate_idle*1024 DFI clock
-+      cycles.
-+
-+  rockchip,srpd_lite_idle:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Defines the self-refresh power down idle period in which memories are
-+      placed into self-refresh power down mode if bus is idle for
-+      srpd_lite_idle * 1024 DFI clock cycles. This parameter is for LPDDR4
-+      only.
-+
-+  rockchip,standby_idle:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Defines the standby idle period in which memories are placed into
-+      self-refresh mode. The controller, pi, PHY and DRAM clock will be gated
-+      if bus is idle for standby_idle * DFI clock cycles.
-+
-+  rockchip,dram_dll_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: |
-+      Defines the DDR3 DLL bypass frequency in MHz. When DDR frequency is less
-+      than DRAM_DLL_DISB_FREQ, DDR3 DLL will be bypassed.
-+      Note: if DLL was bypassed, the odt will also stop working.
-+
-+  rockchip,phy_dll_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: |
-+      Defines the PHY dll bypass frequency in MHz (Mega Hz). When DDR frequency
-+      is less than DRAM_DLL_DISB_FREQ, PHY DLL will be bypassed.
-+      Note: PHY DLL and PHY ODT are independent.
-+
-+  rockchip,auto_pd_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      Defines the auto PD disable frequency in MHz.
-+
-+  rockchip,ddr3_odt_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the ODT disable
-+      frequency in MHz (Mega Hz). When the DDR frequency is less then
-+      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
-+      disabled.
-+
-+  rockchip,ddr3_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the DRAM side drive
-+      strength in ohms. Default value is 40.
-+
-+  rockchip,ddr3_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the DRAM side ODT
-+      strength in ohms. Default value is 120.
-+
-+  rockchip,phy_ddr3_ca_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the phy side CA line
-+      (incluing command line, address line and clock line) drive strength.
-+      Default value is 40.
-+
-+  rockchip,phy_ddr3_dq_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the PHY side DQ line
-+      (including DQS/DQ/DM line) drive strength. Default value is 40.
-+
-+  rockchip,phy_ddr3_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is DDR3, this parameter defines the PHY side ODT
-+      strength. Default value is 240.
-+
-+  rockchip,lpddr3_odt_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR3, this parameter defines then ODT disable
-+      frequency in MHz (Mega Hz). When DDR frequency is less then
-+      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
-+      disabled.
-+
-+  rockchip,lpddr3_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR3, this parameter defines the DRAM side drive
-+      strength in ohms. Default value is 34.
-+
-+  rockchip,lpddr3_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR3, this parameter defines the DRAM side ODT
-+      strength in ohms. Default value is 240.
-+
-+  rockchip,phy_lpddr3_ca_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR3, this parameter defines the PHY side CA line
-+      (including command line, address line and clock line) drive strength.
-+      Default value is 40.
-+
-+  rockchip,phy_lpddr3_dq_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR3, this parameter defines the PHY side DQ line
-+      (including DQS/DQ/DM line) drive strength. Default value is 40.
-+
-+  rockchip,phy_lpddr3_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When dram type is LPDDR3, this parameter define the phy side odt
-+      strength, default value is 240.
-+
-+  rockchip,lpddr4_odt_dis_freq:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the ODT disable
-+      frequency in MHz (Mega Hz). When the DDR frequency is less then
-+      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
-+      disabled.
-+
-+  rockchip,lpddr4_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the DRAM side drive
-+      strength in ohms. Default value is 60.
-+
-+  rockchip,lpddr4_dq_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the DRAM side ODT on
-+      DQS/DQ line strength in ohms. Default value is 40.
-+
-+  rockchip,lpddr4_ca_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the DRAM side ODT on
-+      CA line strength in ohms. Default value is 40.
-+
-+  rockchip,phy_lpddr4_ca_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the PHY side CA line
-+      (including command address line) drive strength. Default value is 40.
-+
-+  rockchip,phy_lpddr4_ck_cs_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the PHY side clock
-+      line and CS line drive strength. Default value is 80.
-+
-+  rockchip,phy_lpddr4_dq_drv:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the PHY side DQ line
-+      (including DQS/DQ/DM line) drive strength. Default value is 80.
-+
-+  rockchip,phy_lpddr4_odt:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description:
-+      When the DRAM type is LPDDR4, this parameter defines the PHY side ODT
-+      strength. Default value is 60.
-+
-+required:
-+  - compatible
-+  - devfreq-events
-+  - clocks
-+  - clock-names
-+  - operating-points-v2
-+  - center-supply
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3399-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    memory-controller {
-+      compatible = "rockchip,rk3399-dmc";
-+      devfreq-events = <&dfi>;
-+      rockchip,pmu = <&pmu>;
-+      interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&cru SCLK_DDRC>;
-+      clock-names = "dmc_clk";
-+      operating-points-v2 = <&dmc_opp_table>;
-+      center-supply = <&ppvar_centerlogic>;
-+      rockchip,ddr3_speed_bin = <21>;
-+      rockchip,pd_idle = <0x40>;
-+      rockchip,sr_idle = <0x2>;
-+      rockchip,sr_mc_gate_idle = <0x3>;
-+      rockchip,srpd_lite_idle = <0x4>;
-+      rockchip,standby_idle = <0x2000>;
-+      rockchip,dram_dll_dis_freq = <300>;
-+      rockchip,phy_dll_dis_freq = <125>;
-+      rockchip,auto_pd_dis_freq = <666>;
-+      rockchip,ddr3_odt_dis_freq = <333>;
-+      rockchip,ddr3_drv = <40>;
-+      rockchip,ddr3_odt = <120>;
-+      rockchip,phy_ddr3_ca_drv = <40>;
-+      rockchip,phy_ddr3_dq_drv = <40>;
-+      rockchip,phy_ddr3_odt = <240>;
-+      rockchip,lpddr3_odt_dis_freq = <333>;
-+      rockchip,lpddr3_drv = <34>;
-+      rockchip,lpddr3_odt = <240>;
-+      rockchip,phy_lpddr3_ca_drv = <40>;
-+      rockchip,phy_lpddr3_dq_drv = <40>;
-+      rockchip,phy_lpddr3_odt = <240>;
-+      rockchip,lpddr4_odt_dis_freq = <333>;
-+      rockchip,lpddr4_drv = <60>;
-+      rockchip,lpddr4_dq_odt = <40>;
-+      rockchip,lpddr4_ca_odt = <40>;
-+      rockchip,phy_lpddr4_ca_drv = <40>;
-+      rockchip,phy_lpddr4_ck_cs_drv = <80>;
-+      rockchip,phy_lpddr4_dq_drv = <80>;
-+      rockchip,phy_lpddr4_odt = <60>;
-+    };
+@@ -116,11 +116,11 @@ properties:
+ 
+   rockchip,ddr3_odt_dis_freq:
+     $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is DDR3, this parameter defines the ODT disable
+-      frequency in MHz (Mega Hz). When the DDR frequency is less then
+-      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
+-      disabled.
++      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
++      the ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,ddr3_drv:
+     deprecated: true
+@@ -160,11 +160,11 @@ properties:
+ 
+   rockchip,lpddr3_odt_dis_freq:
+     $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is LPDDR3, this parameter defines then ODT disable
+-      frequency in MHz (Mega Hz). When DDR frequency is less then
+-      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
+-      disabled.
++      frequency in Hz. When DDR frequency is less then ddr3_odt_dis_freq, the
++      ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,lpddr3_drv:
+     deprecated: true
+@@ -204,11 +204,11 @@ properties:
+ 
+   rockchip,lpddr4_odt_dis_freq:
+     $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 1000000  # In case anyone thought this was MHz.
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the ODT disable
+-      frequency in MHz (Mega Hz). When the DDR frequency is less then
+-      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
+-      disabled.
++      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
++      the ODT on the DRAM side and controller side are both disabled.
+ 
+   rockchip,lpddr4_drv:
+     deprecated: true
+@@ -287,7 +287,7 @@ examples:
+       rockchip,sr_mc_gate_idle = <0x3>;
+       rockchip,srpd_lite_idle = <0x4>;
+       rockchip,standby_idle = <0x2000>;
+-      rockchip,ddr3_odt_dis_freq = <333>;
+-      rockchip,lpddr3_odt_dis_freq = <333>;
+-      rockchip,lpddr4_odt_dis_freq = <333>;
++      rockchip,ddr3_odt_dis_freq = <333000000>;
++      rockchip,lpddr3_odt_dis_freq = <333000000>;
++      rockchip,lpddr4_odt_dis_freq = <333000000>;
+     };
 -- 
 2.35.0.rc0.227.g00780c9af4-goog
 
