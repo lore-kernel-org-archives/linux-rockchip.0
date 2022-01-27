@@ -4,128 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61853C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 19:05:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65029C43219
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:08:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q2L8hH6Ud1lVIHMzlCV9fFojXEV1iQC/Aa1TaEsvRxA=; b=vPQeRn3qJkq/jZ
-	6w5fRXzqFwIiOI1wEah8B5w+IArawHDo7sTHVea0j6RZHSOZQOnk25shPRF4HJZFd2IH57E6wmqyh
-	e9YDA/x9fY1lEq+DBnZbxHGgAtBszdMNP9BQUxWfZ8Yb2oyikeoQWoBPCvkras3n+ft0mZuVxdcfW
-	HUTU4SLpcU66JFe4jMc+RCfscew+O/JejgB7NxMq/523ZIZJ9Bg8pC/2ZWxvjc1E1NkdzKC0pB5HL
-	1cumLj3C4O3vv54q24IM70DvzuFLuLwOKN8U4CQX88polzHFwnEPppZgIC+F0hLtN6Lh9/2ekKryA
-	XvWPqnKTwDXh2LLvNbxA==;
+	List-Owner; bh=ePJ6AlxFK4jMQjE1QZQCpzoaL43XgfioKealkZnXGD4=; b=ndoAHUJarSjIQp
+	32ltDB8PTvIIBM6lGO2lv88AmGDpUYyZHBOn5ReIsMS8wP0Fku9ufqEpIzM2Pe+bIgQf16MhwbrJG
+	oBsRhAJHx8Wv3zU5yOdNKam+m6D5GkZQzsdiS+QDN8XyKameaMrzLhqKxh2xkd7g+AF9ki6GBluNJ
+	J9CzMRFMn0r6VYgQhltCnax1JOR+Ziyy/sPDfPdCVbdUD9nvQ7Zhr8AtDkKLFv6z5yR1ZU5qQ44zK
+	JEyXfsN5e1IVgaR27Y+MnwzwEt/od2R4wJ8xYiJOZDF+4c9obSr7YISNRpYprOFsOsDE+wQ5AVcEG
+	IkJaeOZO23TaeDDmmIRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDA5T-00GtsH-FX; Thu, 27 Jan 2022 19:05:39 +0000
-Received: from mail-am6eur05on2072.outbound.protection.outlook.com
- ([40.107.22.72] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1nDDsm-00HGUZ-Di; Thu, 27 Jan 2022 23:08:48 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDA55-00Gtln-5c; Thu, 27 Jan 2022 19:05:16 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XrA6EFXUioPOuQGbNS3pjhfeZ0T4fbxhmUa2Y/DNzfiPNmDB2UlPnAvc9Za/lu83nT6Fl+7y5thEDVOISNF/7WFfba7f2GWgyqxd8nXgIsG/LKY7h0PqEWSYfZM+0OqtbwWfpCheLBmFx8W54cBt1hGlSNu/6aw1h811eL3blzFyI5enOQOZAOiOPNu1xLWtbhJtQxmXKpRnqcmQgEVaTifQ4m0IFIqzuWDVmQOk22zSjp4PWSRiSg/6NipfJB4wtE+yGxXNJ1wiPYSzaZD90TLAf6mcMbnptWFptcwDN27ax9OCKnBac0hxzoyEOrMbBK6CRSBW8s1i8wKaszpoYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kIOXQA3PKm8u78cTTrQaCwjXsfrHlm0ewbpaN4mbu08=;
- b=Tt4UA5coQTFH46nnxijO3XgpU/HJH2rdkK6RAU1hbEjIo1xNAMIpNWSNzEovKZkt2M5MgNFUqlCBMSb3gOLoNyzN02Tc/g97xT8UyAgyeFgaFded69cgBMY0/pb1mjSA30P3kuOHV/D/hkFw6Ur1eDVS3O3Fg6F82WfBHBkJN6HwiHyLEbP2ufMHjnL2Ffwqi+aj1xnIHry6CysLpneSauMGFUDfIGu6E5MsNuG9clYVH6b+jiOpIWR+XpfFAnQ9eAgx5Fg7oUwxRPlyjwkSkkjN8CAGmh1LQX1v2xLwhiNzp7PzJTucgGHo+irmrLAK7LaOs2lOr37FhCvuR3OamQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kIOXQA3PKm8u78cTTrQaCwjXsfrHlm0ewbpaN4mbu08=;
- b=E2s8RgX/B99IRZqSTQN0PUGArqeKJunmlkiHF8l0kYa67GJNiyKectdO3E8gQxP/b5sGYVe+ZobfWbOkL5ZcwIzT7NCxVpFKd0rw0F7NQma0R4foZgUQ9sqayOvtQxWWm6TKwJyDNiLuZ0Bz39kAq8x36+lp0Unk9KFXzImMB2w=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
- by AM6PR08MB4072.eurprd08.prod.outlook.com (2603:10a6:20b:a8::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.17; Thu, 27 Jan
- 2022 19:05:11 +0000
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::e14f:197:5001:4c56]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::e14f:197:5001:4c56%3]) with mapi id 15.20.4930.017; Thu, 27 Jan 2022
- 19:05:11 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Liang Chen <cl@rock-chips.com>
-Subject: [PATCH 2/2] arm64: dts: rockchip: add usb2 support to rk3568-evb1-v10
-Date: Thu, 27 Jan 2022 20:04:56 +0100
-Message-Id: <20220127190456.2195527-2-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220127190456.2195527-1-michael.riesch@wolfvision.net>
-References: <20220127190456.2195527-1-michael.riesch@wolfvision.net>
-X-ClientProxiedBy: ZR0P278CA0179.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:45::19) To HE1PR0802MB2426.eurprd08.prod.outlook.com
- (2603:10a6:3:e1::23)
+ id 1nDDsT-00HGJL-QH
+ for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 23:08:32 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id
+ my12-20020a17090b4c8c00b001b528ba1cd7so4757969pjb.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:08:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ji/SQVVMeTn1tROVJbE5IrSuQIV7umlG4sAb9DJ1rd4=;
+ b=GJM/8zOZW0jPtcOYOaNBWtQ+KSUyKvUuXiUYQWTAO1rDvzd7irsrnCeZWw+gY+dvAC
+ H3rxT/8/ZAQ/SJDJWN7wVaxvIf4kTQZTn0JjyYXNgPVS470n10NfGh5KQRpfBL4P9EfB
+ SdBUplDn/Oxn1fbUeU8O1CKRon/hgYYO7VUyQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ji/SQVVMeTn1tROVJbE5IrSuQIV7umlG4sAb9DJ1rd4=;
+ b=mticQyxrVbTK38LKTBaZj0Yg3hMjYhjpjDsNxycmnvmr0+7ExfvknOl515F05FESXz
+ FtioKnF0KEUInBPez3UD0frlUVusTumX8fiU7HAHg3T+3UbdfZ6qp4fVvTNLUnYKf4OH
+ 9zRiG0bCPhptZmX/sYr0Ik8I4sArI0cUhwj601mJ272Wwa4Wcnb6QnFDrZ/FRe5jLdVO
+ orSYSmCoWIQ6ftmBm2jEbq/Q9FVEs0UuD5z/wXDlLFaUJ0Vn7Gmx+35L/MpYZBitwflZ
+ ipFizQjyo1Ia7D7/qgXI5T4fcQQ6fLQUAL3X9lWeoZsE+6HCpdaXgBHpFWzviovBDslu
+ LfWQ==
+X-Gm-Message-State: AOAM5303lewoCMtygf+WmrXGoz6uGpAjMjL2CoEJSo8KOth9HZ2BkCUu
+ urzzfnJqcJuyLKr5uyXvnkApaw==
+X-Google-Smtp-Source: ABdhPJx9wiK9xm45b/dDJyYOFbrCKmg/tP7sUb2cWXUt03ZZJppWUeBaQOtvpMF6ShLXjrrfnTWJFw==
+X-Received: by 2002:a17:902:c10c:: with SMTP id
+ 12mr5903890pli.158.1643324908569; 
+ Thu, 27 Jan 2022 15:08:28 -0800 (PST)
+Received: from localhost ([2620:15c:202:201:723d:38a9:9e7f:3435])
+ by smtp.gmail.com with UTF8SMTPSA id f12sm517852pfj.37.2022.01.27.15.08.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Jan 2022 15:08:28 -0800 (PST)
+From: Brian Norris <briannorris@chromium.org>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Lin Huang <hl@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Brian Norris <briannorris@chromium.org>
+Subject: [PATCH v2 02/15] dt-bindings: devfreq: rk3399_dmc: Deprecate
+ unused/redundant properties
+Date: Thu, 27 Jan 2022 15:07:13 -0800
+Message-Id: <20220127150615.v2.2.I5ba582cd678d34c03d647e5500db8e33b7524d66@changeid>
+X-Mailer: git-send-email 2.35.0.rc0.227.g00780c9af4-goog
+In-Reply-To: <20220127230727.3369358-1-briannorris@chromium.org>
+References: <20220127230727.3369358-1-briannorris@chromium.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 599868e6-ece3-4874-abce-08d9e1c7f161
-X-MS-TrafficTypeDiagnostic: AM6PR08MB4072:EE_
-X-Microsoft-Antispam-PRVS: <AM6PR08MB40725D67153EC74A479A6D88F2219@AM6PR08MB4072.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3631;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: sgkb80d2aVJwMHWyzxI3qo3GITemEU/3zCumHsdUmTkQ20qJ9rX5UoZN7JjJztyMTg/gIL5Qv+xJhByIfkBrpDENR8w3SPLksY19Bi1dxwurpFHIQyjVsx3KjJV1kofhaCROwRmsp6AZjo3XzTcp4bMpbr6Usm7LRm4uZoLU+64cb6KjmeRt05JNH9/GxasjERj8jtNeeT8qJ/mrR3Ob1dow7qHlZhxgRECimMjq7qrV7/u98s8JUm0Wj47pn9jHmqf4FdwjyCM4esKR1XBs6QNUbTmP4SUBZUIsGub+xUOX6vREJLHFVLp6fyPFJevQ0c95C45HcdaUF7SHvv/Z3RzO82UBEYoOq3sNbXDqwx5Ym6HKj/OztAzIqGM9ELLakjwePNkLAYjvsWFJ+ASF38T42JGpuWA4+myNriA1/2v1OYQpx9iLeruO3GI7jA2P9KwjaUpq/NMwc6GgCt6yGtxR3xcPEzBgRYLKFVzco4+QwZH/Wg4Q2mIgNJDydtQ0egvNFEzergOy9yR+cBOJsQAz4GbSBHJGiwMBvY6/WK6nzsAF5yBExH/q07m+qf45f9P7Pom1Z4Nq1kmH4ECQbaL5CR0ijIpvp5z6I0lf0xY+deL/s607NoBvUKdlhGVhkAktgdujMjkEONylgm4e8w==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(8676002)(4326008)(8936002)(66476007)(86362001)(66946007)(83380400001)(66556008)(38100700002)(5660300002)(44832011)(6666004)(186003)(2906002)(36756003)(316002)(2616005)(54906003)(6512007)(508600001)(1076003)(52116002)(6486002)(6506007)(20210929001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SMZR/sKZXCVhc4a9uUkwiy/xUrrWA5RN2+25xmpUGn/4CmB5emB+xo0SQuT1?=
- =?us-ascii?Q?eXhJfF9HnAhgys/39RxW3C2hjuCDLVSDGjtMj4DW97Rsy+CB1pgp3G+dqq/N?=
- =?us-ascii?Q?J+o33FFKtIMQ9lTMpjNQf3jjYBaEpIBIjgJJEPYPR5VgxnZBmnoc/eUxWYtT?=
- =?us-ascii?Q?zMJDCGaSTJtCYlLVvAEY4mAix85EQS5OyFTwx0LZorhYGzwg44CrSXAnedMF?=
- =?us-ascii?Q?qz+rodtipWY7ZhceYXEfJRREABAoihn+lNfPt18IfAhR2dvYj4ODC9b8DrOZ?=
- =?us-ascii?Q?pSHIFg7h+uGw5cnaIQDWrqfVukZ4tbkj8US+AViYGfu/6ruX91hJn0QsuWIt?=
- =?us-ascii?Q?uaEg6sZJLwCJCIAhStxEtGnHsHVuhx13cijCC3P5Wb90RhNg8vN2II+y1dQG?=
- =?us-ascii?Q?CfKUEE+JrRqiRtA6sL9luG892ZnkMvNtCd0hegmLy9EMsP3eRHnGq1cu9NOB?=
- =?us-ascii?Q?TdEDpZQ7Ax3giyhaM1D2iF7vcVSgLtbGMCIPIaNgYqrun4xfaSKX0jvGL5+g?=
- =?us-ascii?Q?n5IHZPalBQf/DMpef6Sr8rcNMqCdWg/lPYoFYcV9YFQ+HT9ezVQtv42t9WRF?=
- =?us-ascii?Q?gfiOKYPov+IhN1jjBFJfEX3B8ALTv8rNg+L3GWc96pb1y7HKk0u7BB0LLetR?=
- =?us-ascii?Q?PXGdFhJGwPJeo3HUs4Oiv44WSVVZJiUBBK2lglp93VjdkUNvQG6MRsdxYRFK?=
- =?us-ascii?Q?ammtFGZ0hU8EbRJxFv1BX1KgR/baqfKMa7k219+qxpYHG6V9yhOphbaBly3s?=
- =?us-ascii?Q?zsxcOxKkp7xZNcXqHmezkoYcdwEsJW8ZxnPcCtcX98JSHwe00pRmmUbf6N9+?=
- =?us-ascii?Q?0KCnXB/u5cAObLQeJPZ9oUIgDTtkSvJ6r3qvN3bD6Z79FQg07Wb513EokomQ?=
- =?us-ascii?Q?xMgp4lh1cilHsejDObBWRceXYuiPt4govQEoT0U9URszTvZVJe8pnQRjyqLE?=
- =?us-ascii?Q?AkwSiojAypzPgJpxXOn8Uhx9v09xZHZUBYLEBsC1S9hA0v2Ey1KWoqDAkDM4?=
- =?us-ascii?Q?6BJ07ZfhRUxeeEkMe25IikvRhVj+r4yxdssR2ZH5wLVKkXr/tluD5EDRMdRU?=
- =?us-ascii?Q?24syeOQZeuWvJcCQF2WpqU0DozXIEOaL3Zn2CtYpMMarN2ExRCoS21fjw0H+?=
- =?us-ascii?Q?Q87r9MOaI4nK+/beNf11KpgLwZhzInjP7gEuvHx3ejcpCTBlmvScUsGtyKCT?=
- =?us-ascii?Q?1Whd88JVQNxVgElIp4JTVBGy8EjUOtcz8H6bMU1y4jNRJklTA0bxu6hiNdIO?=
- =?us-ascii?Q?+Ohecty+o799L6kw0NYJyffgCD/hTevM1A/p2CLLQ93ei7QJmw7hDmRSY5H5?=
- =?us-ascii?Q?a58TTtAns0I4VP3Jhfjw9l1WFNx3xt1m+GtCZNBRPAJMHsZ0gcGnIaAqF65M?=
- =?us-ascii?Q?EtCiR7vr+Fswy7V3JBW3x3gBciHmr0xSNXDr4ebtp+ZGlE2lg71eDU/Vqte/?=
- =?us-ascii?Q?seTsRnpNLnsuLuF0CEtlzdRlqy31HfNEb6o8NPkw8wQBKCUWtpd7k6pja4lD?=
- =?us-ascii?Q?kDwpGZlCvV4hAi7C2GLr+KcD46T5tajoyYMYtY84yTgvskDahsWDP9/SqTW7?=
- =?us-ascii?Q?Uk36p4AUHzFafyS0yw60K9Lft4dUvHSihrYHJ9ZehSG5OkCBqJlrit3YNFW3?=
- =?us-ascii?Q?WnfZO3rcNfC78sNN/wXDia5TDD2QHki23faXDMPyJ5jYmgeVwrMAu/Wips+3?=
- =?us-ascii?Q?5bG5x020Ai1C+X80Lg6IHTFUOtn38aCXo6whNKc+d0qQC/DEeoxFYUHS+SGY?=
- =?us-ascii?Q?rFNkJRl7+edh0UQh1TxxDGX1Iy/b4RE=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 599868e6-ece3-4874-abce-08d9e1c7f161
-X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2022 19:05:11.5181 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 5BAhio4VLAsN78BIrLEAkoz+CVCH0VHndH1mrgxy3M8lV6EPaYDDOU26bPWc+cQT8+IWULhzw4InJoXlW9l7PzBKV7H1/21wqbBpNb/DlU4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR08MB4072
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_110515_242564_0D826323 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220127_150829_918613_78B23B58 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,96 +93,219 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Activate the USB2 controller and phy nodes in the device tree of the
-RK3568 EVB1.
+These DRAM configuration properties are all handled in ARM Trusted
+Firmware (and have been since the early days of this SoC), and there are
+no in-tree users of the DMC binding yet. It's better to just defer to
+firmware instead of maintaining this large list of properties.
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+There's also some confusion about units: many of these are specified in
+MHz, but the downstream users and driver code are treating them as Hz, I
+believe. Rather than straighten all that out, I just drop them.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 58 +++++++++++++++++++
- 1 file changed, 58 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index 184e2aa2416a..c68bade0d99b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -53,6 +53,28 @@ vcc5v0_sys: vcc5v0-sys {
- 		vin-supply = <&dc_12v>;
- 	};
+(no changes since v1)
+
+ .../bindings/devfreq/rk3399_dmc.yaml          | 42 +++++++++----------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
+index 467a7b5b374b..fd62a8cd62d5 100644
+--- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
++++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
+@@ -46,6 +46,7 @@ properties:
+       finishes, a DCF interrupt is triggered.
  
-+	vcc5v0_usb: vcc5v0-usb {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_usb";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&dc_12v>;
-+	};
-+
-+	vcc5v0_usb_host: vcc5v0-usb-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb_host_en>;
-+		regulator-name = "vcc5v0_usb_host";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
- 	vcc3v3_lcd0_n: vcc3v3-lcd0-n {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_lcd0_n";
-@@ -345,6 +367,12 @@ pmic_int: pmic_int {
- 				<0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
-+
-+	usb {
-+		vcc5v0_usb_host_en: vcc5v0_usb_host_en {
-+			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
+   rockchip,ddr3_speed_bin:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       For values, reference include/dt-bindings/clock/rk3399-ddr.h. Selects the
+@@ -92,6 +93,7 @@ properties:
+       if bus is idle for standby_idle * DFI clock cycles.
  
- &pmu_io_domains {
-@@ -390,3 +418,33 @@ &sdmmc0 {
- &uart2 {
- 	status = "okay";
- };
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usb2phy1 {
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy1_otg {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
+   rockchip,dram_dll_dis_freq:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description: |
+       Defines the DDR3 DLL bypass frequency in MHz. When DDR frequency is less
+@@ -99,6 +101,7 @@ properties:
+       Note: if DLL was bypassed, the odt will also stop working.
+ 
+   rockchip,phy_dll_dis_freq:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description: |
+       Defines the PHY dll bypass frequency in MHz (Mega Hz). When DDR frequency
+@@ -106,6 +109,7 @@ properties:
+       Note: PHY DLL and PHY ODT are independent.
+ 
+   rockchip,auto_pd_dis_freq:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       Defines the auto PD disable frequency in MHz.
+@@ -119,18 +123,21 @@ properties:
+       disabled.
+ 
+   rockchip,ddr3_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is DDR3, this parameter defines the DRAM side drive
+       strength in ohms. Default value is 40.
+ 
+   rockchip,ddr3_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is DDR3, this parameter defines the DRAM side ODT
+       strength in ohms. Default value is 120.
+ 
+   rockchip,phy_ddr3_ca_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is DDR3, this parameter defines the phy side CA line
+@@ -138,12 +145,14 @@ properties:
+       Default value is 40.
+ 
+   rockchip,phy_ddr3_dq_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is DDR3, this parameter defines the PHY side DQ line
+       (including DQS/DQ/DM line) drive strength. Default value is 40.
+ 
+   rockchip,phy_ddr3_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is DDR3, this parameter defines the PHY side ODT
+@@ -158,18 +167,21 @@ properties:
+       disabled.
+ 
+   rockchip,lpddr3_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR3, this parameter defines the DRAM side drive
+       strength in ohms. Default value is 34.
+ 
+   rockchip,lpddr3_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR3, this parameter defines the DRAM side ODT
+       strength in ohms. Default value is 240.
+ 
+   rockchip,phy_lpddr3_ca_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR3, this parameter defines the PHY side CA line
+@@ -177,12 +189,14 @@ properties:
+       Default value is 40.
+ 
+   rockchip,phy_lpddr3_dq_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR3, this parameter defines the PHY side DQ line
+       (including DQS/DQ/DM line) drive strength. Default value is 40.
+ 
+   rockchip,phy_lpddr3_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When dram type is LPDDR3, this parameter define the phy side odt
+@@ -197,42 +211,49 @@ properties:
+       disabled.
+ 
+   rockchip,lpddr4_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the DRAM side drive
+       strength in ohms. Default value is 60.
+ 
+   rockchip,lpddr4_dq_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the DRAM side ODT on
+       DQS/DQ line strength in ohms. Default value is 40.
+ 
+   rockchip,lpddr4_ca_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the DRAM side ODT on
+       CA line strength in ohms. Default value is 40.
+ 
+   rockchip,phy_lpddr4_ca_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the PHY side CA line
+       (including command address line) drive strength. Default value is 40.
+ 
+   rockchip,phy_lpddr4_ck_cs_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the PHY side clock
+       line and CS line drive strength. Default value is 80.
+ 
+   rockchip,phy_lpddr4_dq_drv:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the PHY side DQ line
+       (including DQS/DQ/DM line) drive strength. Default value is 80.
+ 
+   rockchip,phy_lpddr4_odt:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       When the DRAM type is LPDDR4, this parameter defines the PHY side ODT
+@@ -261,33 +282,12 @@ examples:
+       clock-names = "dmc_clk";
+       operating-points-v2 = <&dmc_opp_table>;
+       center-supply = <&ppvar_centerlogic>;
+-      rockchip,ddr3_speed_bin = <21>;
+       rockchip,pd_idle = <0x40>;
+       rockchip,sr_idle = <0x2>;
+       rockchip,sr_mc_gate_idle = <0x3>;
+       rockchip,srpd_lite_idle = <0x4>;
+       rockchip,standby_idle = <0x2000>;
+-      rockchip,dram_dll_dis_freq = <300>;
+-      rockchip,phy_dll_dis_freq = <125>;
+-      rockchip,auto_pd_dis_freq = <666>;
+       rockchip,ddr3_odt_dis_freq = <333>;
+-      rockchip,ddr3_drv = <40>;
+-      rockchip,ddr3_odt = <120>;
+-      rockchip,phy_ddr3_ca_drv = <40>;
+-      rockchip,phy_ddr3_dq_drv = <40>;
+-      rockchip,phy_ddr3_odt = <240>;
+       rockchip,lpddr3_odt_dis_freq = <333>;
+-      rockchip,lpddr3_drv = <34>;
+-      rockchip,lpddr3_odt = <240>;
+-      rockchip,phy_lpddr3_ca_drv = <40>;
+-      rockchip,phy_lpddr3_dq_drv = <40>;
+-      rockchip,phy_lpddr3_odt = <240>;
+       rockchip,lpddr4_odt_dis_freq = <333>;
+-      rockchip,lpddr4_drv = <60>;
+-      rockchip,lpddr4_dq_odt = <40>;
+-      rockchip,lpddr4_ca_odt = <40>;
+-      rockchip,phy_lpddr4_ca_drv = <40>;
+-      rockchip,phy_lpddr4_ck_cs_drv = <80>;
+-      rockchip,phy_lpddr4_dq_drv = <80>;
+-      rockchip,phy_lpddr4_odt = <60>;
+     };
 -- 
-2.30.2
+2.35.0.rc0.227.g00780c9af4-goog
 
 
 _______________________________________________
