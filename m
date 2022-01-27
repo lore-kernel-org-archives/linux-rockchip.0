@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501FDC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 01:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E90D3C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 01:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cCpw+fw5Dnq1og4Fkce264lAIT95xbADBZ5Cw7rTzs0=; b=PojO/YXsaiPI6F
-	5cVXhoe0sa5rKytKbaIA3Rq5GzoSGV4p5z9ZMhaZ3QGQUzGna7/kp30Tkg7WubqJ0HV1TiWr0JPBo
-	iPwF6NoR+x7K4RJWLUfVbveDRKj7SxHo4tbOctsotNUrpAW1mf4kExgodbT3OoSdP9KVPoPQAjb1y
-	GpU37qPnw4NoQulc3WaB4Q2AnMS7+xugm0hTgwG8R52kDXF2vNmVWAoO1oIa4BTPiOmwyO6OZFh/v
-	eV+NyzkQeFIboMQt1LI9kFOXHagztWq+QW4A6BXePOYLJgOWylUa9OZkwlNHIGhDuv/4cuIsh2OFf
-	UVe8c16WfwnxH04nyU9A==;
+	List-Owner; bh=rh3janl0u1k0t9ZuMUoe1ee5sjE+F6PWHoULl+g5JlY=; b=0JLP5vh2NJzri0
+	Eh9q2t2j+l31obfCQgQXK15J+M2YAuZUByFN0T6XmLVXYh6jXNkDwel/FiHOP/RWMQB3CuK6wU1qL
+	id/2NT+xZA6IBXtMh33cfZvWWqHT8tbQPiSwILfV1qFafGUcQXxjNQ/Zca8E7H6XiIEQicDPbMcVI
+	EBTVS9zvcHtx5WoQXPWwp5fQclR/KvynIjvPMdjx+hTOARq4vHw8YIAC1gUTlwaBrmni0+jddGRGr
+	Ei6sHbqvsXUo2RMROFgbE2/w7rctiI49BIQMy4jW2yP2CYFSfns05TpqaWXwml/YGsfSm8lY3DkB9
+	d0kYbzhJ/GJhDsBaItZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCt9m-00DueE-BF; Thu, 27 Jan 2022 01:00:58 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1nCtA2-00Dun4-Tw; Thu, 27 Jan 2022 01:01:14 +0000
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCt9J-00DuU8-SA; Thu, 27 Jan 2022 01:00:31 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id j12so967544qtr.2;
- Wed, 26 Jan 2022 17:00:29 -0800 (PST)
+ id 1nCt9K-00DuUN-Ms; Thu, 27 Jan 2022 01:00:31 +0000
+Received: by mail-qt1-x82b.google.com with SMTP id w6so1248187qtk.4;
+ Wed, 26 Jan 2022 17:00:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vajErjDWK29FvNOeA4ceH5ORPugHRCo1to0RNKcwTFU=;
- b=QgNvaXFHaMQz4rxk5UlHaIxI7n+089K4Astv6OBdqs2zKDF+fKF8kvop+rXFxvlq0W
- ZqdaCg4RP/DFJNkTn5zno3ps/kvQ9SHg/EVkTr9FinV4u/YkdQzO7Yy3XRpq5phdcNW/
- 4lPipLqukO3oiRwFsQR/Ndnd7F0Fmzm+Xbgbf3BHhft0ImKfgrCc6WiibW8CZxYuNIVE
- 46n306m5bvWDX7itR8X3dXCSJXshDxpWRhz1STS2C5spw2YN2itox9TXgDf5dQwZSNwT
- 8E7kdAQmics8nIiZEfX5YEuJL52EcaesDHWSo0JK7OGDqhS4HytMSJOHTECO+V3NDCFi
- 8mZg==
+ bh=pLFwv7MjOQ+N54vrBm9216io6/o12k65yBVIhwcPg5Y=;
+ b=UuXHtZj6naH5Qlpl7yYKAN24yAq91MwRMnrvc6+Msosu5VXeuPePja8bprAmpTnJrw
+ T+lqZ5TdlgyRuucCAbFlhxmiq+ZiaoZQlgwdw14R6w0jORWFp1ecrt7ndXhU9uON7qS0
+ netZb4cbt0tnQuHr+tfpp5SOj9hycUaRxFVZPjxYVmv8660d1jRsdS+nkyaOyp+0/5dr
+ a6bN/RRQHLNwSRcqLkEiP1Bfd+4rN9QvK2qjfoxWRwsu7Vo/Kr/k2F+mGLwHQgokw88H
+ 9dXJmomYclZd91El57AwX7mHFLyRUyvtlvjjM7x9WQGrBqtiS/FF0Jnvwgo/VrsetF+D
+ yyoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vajErjDWK29FvNOeA4ceH5ORPugHRCo1to0RNKcwTFU=;
- b=RtkXVhWSFORZTVlD/UnuKc697xgM1wlx/wi2nRah0sFoQ0Gs2Sep7yB6Pv8fJgzqfA
- oYR/vrbO4POl9xOqF1VhDyfPtBX30IGbzvygOF3O4jVMKhXtfB6KRlOxmkZa8P4Tmlg2
- 5fYZ3UlA3ABTncCpbositQhTRVgXBGpgZyfB7Zp9TgoNXu4g6b2y9UsNnr+KmHfD7YxL
- MTvS2KZuqiy4mXtgFHhCtyXPywYUzfGgMiyy2Wqe7BoTXsYvFG8qN1UqJ/yYi1zUSpFL
- 6LtP5aQ3bqm3egV1ioqJe23tMP1NrB8X1tMcXynbZgoJLnrB4/dAjs9gnxqu/tRE1Jtc
- sHMA==
-X-Gm-Message-State: AOAM53395G1EZr6nY+wYN9nQrcah8h/iSlu5BLsjy3z8o3vJLOTDd+M8
- FQwzm6Koe8wjkUbAEgUyEnfBNzfIOL8BYA==
-X-Google-Smtp-Source: ABdhPJwxQAwzc/Zno4iXwIWNgILmCOnWnIQJd6njQUYmw0iI1RfcM5/4qZKIH/FKJCNK3C1xAvrhQA==
-X-Received: by 2002:a05:622a:1102:: with SMTP id
- e2mr1121245qty.2.1643245228558; 
- Wed, 26 Jan 2022 17:00:28 -0800 (PST)
+ bh=pLFwv7MjOQ+N54vrBm9216io6/o12k65yBVIhwcPg5Y=;
+ b=X1TV7L3DEBPx5GSMCOrXRlYu3mrQR7yAas0zTMq5RNQf1WPGz4VQnVjzo8LZbw+AMA
+ vuffIoPrhcyTD4/gLwQ3Jd4aLfVkYQL4WjJTanIcC6pj06wlE56YlgtU9n7Y1bsYABWa
+ j2QFSHNA+/vjMAAcOLo/E8Y/f7btpW/eFozirEyI5cIjZKTv4W6EG/LuYRlUXs87jnCd
+ np3N++/V6JN/ugaK9B2vOxgpuIEdw8Y7Al3v+Ni7yiwcnSJAu3WyfbgtHtOM7mm15PSU
+ 5Od9oVM3OZy1bh8htR5iCjPjlJHPPNaMiwCT3rwY2dy5Z+f7lwXi962C4ATl1trkuzFX
+ 96Dw==
+X-Gm-Message-State: AOAM5308v3kczbsQsh4rUvxOlO21KNueOawQiqbaN+IRRC83rIJtUWcS
+ sth+r7+f7zE7nk4DStwooik=
+X-Google-Smtp-Source: ABdhPJw4SPn8Gn9OXwDfQ5CSfiB8YgLmJ9SonumxylWB5ioKxx/YkkbJtMLfedEtEg4B15f82eguSQ==
+X-Received: by 2002:a05:622a:181a:: with SMTP id
+ t26mr1059867qtc.81.1643245229362; 
+ Wed, 26 Jan 2022 17:00:29 -0800 (PST)
 Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
  [98.233.193.225])
  by smtp.gmail.com with ESMTPSA id n2sm483389qti.59.2022.01.26.17.00.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Jan 2022 17:00:28 -0800 (PST)
+ Wed, 26 Jan 2022 17:00:29 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+To: Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] arm64: dts: rockchip: fix Quartz64-A ddr regulator voltage
-Date: Wed, 26 Jan 2022 20:00:21 -0500
-Message-Id: <20220127010023.3169415-2-pgwipeout@gmail.com>
+Subject: [PATCH 2/3] arm64: dts: rockchip: add Quartz64-A pmu_io_domains
+Date: Wed, 26 Jan 2022 20:00:22 -0500
+Message-Id: <20220127010023.3169415-3-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220127010023.3169415-1-pgwipeout@gmail.com>
 References: <20220127010023.3169415-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_170029_936928_E9AE80A1 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20220126_170030_772539_E9A36B3C 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,34 +91,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Quartz64 Model A uses a voltage divider to ensure ddr voltage is
-within specification from the default regulator configuration.
-Adjusting this voltage is detrimental, and currently causes the ddr
-voltage to be about 0.8v.
-
-Remove the min and max voltage setpoints for the ddr regulator.
-
-Fixes: b33a22a1e7c4 ("arm64: dts: rockchip: add basic dts for Pine64
-Quartz64-A")
+Several io power domains on the Quartz64-A operate at 1.8v.
+Add the pmu_io_domains definition to enable support for this.
+This permits the enablement of the following features:
+sdio - wifi support
+sdhci - mmc-hs200-1_8v
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 2 --
- 1 file changed, 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 166399b7f13f..d9eb92d59099 100644
+index d9eb92d59099..33c2c18caaa9 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -285,8 +285,6 @@ regulator-state-mem {
- 			vcc_ddr: DCDC_REG3 {
- 				regulator-always-on;
- 				regulator-boot-on;
--				regulator-min-microvolt = <1100000>;
--				regulator-max-microvolt = <1100000>;
- 				regulator-initial-mode = <0x2>;
- 				regulator-name = "vcc_ddr";
- 				regulator-state-mem {
+@@ -482,6 +482,19 @@ vcc_sd_h: vcc-sd-h {
+ 	};
+ };
+ 
++&pmu_io_domains {
++	pmuio1-supply = <&vcc3v3_pmu>;
++	pmuio2-supply = <&vcc3v3_pmu>;
++	vccio1-supply = <&vccio_acodec>;
++	vccio2-supply = <&vcc_1v8>;
++	vccio3-supply = <&vccio_sd>;
++	vccio4-supply = <&vcc_1v8>;
++	vccio5-supply = <&vcc_3v3>;
++	vccio6-supply = <&vcc1v8_dvp>;
++	vccio7-supply = <&vcc_3v3>;
++	status = "okay";
++};
++
+ &sdhci {
+ 	bus-width = <8>;
+ 	mmc-hs200-1_8v;
 -- 
 2.25.1
 
