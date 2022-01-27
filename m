@@ -4,77 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E766C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:18:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE39C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LSVj41tmDQa8llCONqbxlKTH6/UE1fTAiC4PoTNeS34=; b=MPSgcNa0+tWvrV
-	KQpcHTvy8U0yT06eGip7JBEb9oMnuugr3MZ41mia/WfUFSTfoqK1gJL2cKJyFeQjtCJDtFokadp6Q
-	AOZg+7ta2jLduyLCIcWjh+MDaT7eGbuSlgsUTIxaAXBqpT/vqvYWsD4dwAP7GeyJmQlHA6t3sXCnL
-	NPKqIQszdkNyKEGMKs1Nx4UjmEApJHq4Xyd5NHDM0fZmP4c4RvR+TBAfr3V6aKJchjTfKlKNqgjOV
-	8petdFwpM8IvJ4fZ+zOXmtamfbLEo8Tpq1oooB9duUWsu6BgJmYwvQ3fD+eRT00QXr/hoRjalXu4J
-	Bz+5rnqGCp2IHGYhIb0Q==;
+	List-Owner; bh=hM8phITWJFLXgpm4HTt1DeaiQIFv2tVgPPHPzpgO92A=; b=A71oLSgKSmzMwf
+	OqzHygGceizrpDKGhodoINlAQfjGC0S9r2SdTxVxm1sQICncLzfNuiPLoR74ol2ltDWhr9U+p3Uln
+	yhiRIr+7jFIwiCNlCROX+iVU6XPbJg/vMnk1wHYaHzlAAV3ntyQ57vXJCIZPzVZwShNLXb8iFkSVt
+	w66ObZP5B6R6i5+xI39tPDRf+78nZ261R0BlNktu+aIzesdy1OZ3qP+tKg24m0oPUVjC0D0/2jBnc
+	P5euAYolgMZ1IPQTMwPryW6zi+bnDQEEupmkNqkqBmjMqImQO1rL/OMLusiuzAhd0FCFUDZ5Uus94
+	J4PqvF1AQb5RJInOQ76g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDE23-00HKtJ-2J; Thu, 27 Jan 2022 23:18:23 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1nDE4g-00HM0B-9Y; Thu, 27 Jan 2022 23:21:06 +0000
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDDsw-00HGYW-RA
- for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 23:09:01 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d18so4235054plg.2
- for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:08:54 -0800 (PST)
+ id 1nDE1L-00HKae-Qf
+ for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 23:17:41 +0000
+Received: by mail-oi1-x229.google.com with SMTP id b186so2793752oif.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:17:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Go5UOmrJA+s7smi2h52lD2tDLTL92TO4mF/3kSWc9Mw=;
- b=BD2hpR7jg+O2kVPF1qJXnuIpWgp1ScyjuAwtsYLAXOQDA3zbUFoCnVJJqrfqpylj9I
- WkldlnM7rS/nrlYZPEzyeNmMen8h5zRRumXIFqTs1NeKmEQvzAbFd1RxgdxH6oG+WCK3
- A4qUAHhNqs6bC9yAGwD49KrJgLsgRsUQsKBig=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZHgjzy8t853W7I+7RWJNG2X4/bJj/NvMkuBTg7rJMyI=;
+ b=lXfZj48otSZXbvvLK2IFxj2PbX/9TUU3oXrlHfV5EOgB8ydujVyzfPi/Y4WKkJVmvb
+ 3kCp+UaQ3QggL6uu4AMh5+RMEtNSAL4FZeHRAjpF08d+Q6o69AGfKYdsWVx51Pr0bfMZ
+ CRK8rLd1m3YZC0XS7gMZnsZJbFLKG0EeL6vjI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Go5UOmrJA+s7smi2h52lD2tDLTL92TO4mF/3kSWc9Mw=;
- b=fQSKCMiNi1oBwzGdKl4N9YQtLP4lYXwGbW67MB5ZiYAsSbNMvfAY5DJx/4SCEGcfRI
- xrPDDtMvDXD2DfBf+65vau4Nv0z7nFjlVbtmow8OV+5wdRDP/PqyyfS5nsbpsg1CrDk3
- bZQlX4gQxpoy8PXGTRraOlJkTSn4LolnfB+XAt0ydvyU/V0BngyAQpTcThaILJS/Lmb7
- zi6P5LC8rop3ciqfnWKS3cq/Ih9MwvSntmxqxbcgZjPfBo6TNmIB3gNmJ/2XHAQPAWtU
- +a4BJk59y5EvYCzrFqQ2ImjmwpqRjTi2Q1oFy5RKfM1C19xWFUWGH9nNQ1Xtl8HCQAni
- PiJg==
-X-Gm-Message-State: AOAM533Q6KX/evvxpp0TG8eyqwm5nfZZdHozNijY1MyQrrfpv7ayZFJQ
- drzFEtFeMVR6FJSfM4dR68XiKw==
-X-Google-Smtp-Source: ABdhPJzC64/S0pZWwwbAFZsH3pw2HjjqvrdmyZAjA0v0ob2Yy/chyC08JNhUoQmIoBfblbLksdOALg==
-X-Received: by 2002:a17:902:d4c5:: with SMTP id
- o5mr5877723plg.116.1643324934496; 
- Thu, 27 Jan 2022 15:08:54 -0800 (PST)
-Received: from localhost ([2620:15c:202:201:723d:38a9:9e7f:3435])
- by smtp.gmail.com with UTF8SMTPSA id 17sm7074374pfl.175.2022.01.27.15.08.53
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZHgjzy8t853W7I+7RWJNG2X4/bJj/NvMkuBTg7rJMyI=;
+ b=qrX7D0HZQHCsjvkO1zCOFPvkgbOSKOqoxsYof9NBUhVrO1fqpGITx8gB64l6VRQsD6
+ GYz5hZJGXPr1NI63Geucf7NfLsyqlqQDYjmxzwiuzpauWXmeX2dAlJDT9DWwxNKkzXsm
+ mKaoSoXIhnMpCwpvmYOf1pkJrzHvQbahup5f7kvltckO4WofAXkKDpLfMmpLamKBAfc1
+ ajoWaX45mZ9wbuAg3uQX/bSbnzhyme85Nr+NO6POixpsZrxrd1I/EELgQkM5ZCq9Wz1r
+ hl9qYrrlHG244ESgUA6Qo/QcbWRG4kacc1e3VJnR6m3jTryGb/wW0IdijfGcLNSRbrd3
+ nkYQ==
+X-Gm-Message-State: AOAM533mRaB3W+6WMliJoWNBWflWsQrWsBY9fyv2EglAZvf8/u9DP4Ym
+ C2RzKkfC/SXwj8gqUrS7QjHlCb5bKBX6+Q==
+X-Google-Smtp-Source: ABdhPJxI/STM/RwagdKheWkosQBMeSwJGKwJVIV5/SziDIxnSXyRGxtdSRDbRFUS0fJDG/yEP0y2lA==
+X-Received: by 2002:a05:6808:1897:: with SMTP id
+ bi23mr8454166oib.66.1643325458297; 
+ Thu, 27 Jan 2022 15:17:38 -0800 (PST)
+Received: from mail-oo1-f54.google.com (mail-oo1-f54.google.com.
+ [209.85.161.54])
+ by smtp.gmail.com with ESMTPSA id l19sm3475543ooa.7.2022.01.27.15.17.36
+ for <linux-rockchip@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Jan 2022 15:08:53 -0800 (PST)
-From: Brian Norris <briannorris@chromium.org>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Lin Huang <hl@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
- Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 15/15] PM / devfreq: rk3399_dmc: Avoid static (reused)
- profile
-Date: Thu, 27 Jan 2022 15:07:26 -0800
-Message-Id: <20220127150615.v2.15.I8d71e9555aca1fa7e532d22dd1ef27976f21799d@changeid>
-X-Mailer: git-send-email 2.35.0.rc0.227.g00780c9af4-goog
-In-Reply-To: <20220127230727.3369358-1-briannorris@chromium.org>
-References: <20220127230727.3369358-1-briannorris@chromium.org>
+ Thu, 27 Jan 2022 15:17:37 -0800 (PST)
+Received: by mail-oo1-f54.google.com with SMTP id
+ r15-20020a4ae5cf000000b002edba1d3349so1007290oov.3
+ for <linux-rockchip@lists.infradead.org>; Thu, 27 Jan 2022 15:17:36 -0800 (PST)
+X-Received: by 2002:a4a:dd86:: with SMTP id h6mr3051054oov.87.1643325456364;
+ Thu, 27 Jan 2022 15:17:36 -0800 (PST)
 MIME-Version: 1.0
+References: <20220127230727.3369358-1-briannorris@chromium.org>
+ <20220127150615.v2.2.I5ba582cd678d34c03d647e5500db8e33b7524d66@changeid>
+In-Reply-To: <20220127150615.v2.2.I5ba582cd678d34c03d647e5500db8e33b7524d66@changeid>
+From: Brian Norris <briannorris@chromium.org>
+Date: Thu, 27 Jan 2022 15:17:25 -0800
+X-Gmail-Original-Message-ID: <CA+ASDXOnO1EgStrynPe1uSB4T8=qNUPj+wY2y3vGs0fnEHdE0Q@mail.gmail.com>
+Message-ID: <CA+ASDXOnO1EgStrynPe1uSB4T8=qNUPj+wY2y3vGs0fnEHdE0Q@mail.gmail.com>
+Subject: Re: [PATCH v2 02/15] dt-bindings: devfreq: rk3399_dmc: Deprecate
+ unused/redundant properties
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Linux Kernel <linux-kernel@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Lin Huang <hl@rock-chips.com>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ Derek Basehore <dbasehore@chromium.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-pm <linux-pm@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_150858_968468_E4C955C3 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20220127_151739_898374_D9B9406F 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,68 +101,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This static struct can get reused if the device gets removed/reprobed,
-and that causes use-after-free in its ->freq_table.
+On Thu, Jan 27, 2022 at 3:08 PM Brian Norris <briannorris@chromium.org> wrote:
+>
+> These DRAM configuration properties are all handled in ARM Trusted
+> Firmware (and have been since the early days of this SoC), and there are
+> no in-tree users of the DMC binding yet. It's better to just defer to
+> firmware instead of maintaining this large list of properties.
+>
+> There's also some confusion about units: many of these are specified in
+> MHz, but the downstream users and driver code are treating them as Hz, I
+> believe. Rather than straighten all that out, I just drop them.
+>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>
+> (no changes since v1)
 
-Let's just move the struct to our dynamic allocation.
+Apologies, I didn't include Rob's Reviewed-by tag on patch 2 and 3. If
+this goes for version 3, I'll include them.
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v2:
- - New patch
-
- drivers/devfreq/rk3399_dmc.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index 9615658d04ae..e494d1497d60 100644
---- a/drivers/devfreq/rk3399_dmc.c
-+++ b/drivers/devfreq/rk3399_dmc.c
-@@ -38,6 +38,7 @@
- struct rk3399_dmcfreq {
- 	struct device *dev;
- 	struct devfreq *devfreq;
-+	struct devfreq_dev_profile profile;
- 	struct devfreq_simple_ondemand_data ondemand_data;
- 	struct clk *dmc_clk;
- 	struct devfreq_event_dev *edev;
-@@ -228,13 +229,6 @@ static int rk3399_dmcfreq_get_cur_freq(struct device *dev, unsigned long *freq)
- 	return 0;
- }
- 
--static struct devfreq_dev_profile rk3399_devfreq_dmc_profile = {
--	.polling_ms	= 200,
--	.target		= rk3399_dmcfreq_target,
--	.get_dev_status	= rk3399_dmcfreq_get_dev_status,
--	.get_cur_freq	= rk3399_dmcfreq_get_cur_freq,
--};
--
- static __maybe_unused int rk3399_dmcfreq_suspend(struct device *dev)
- {
- 	struct rk3399_dmcfreq *dmcfreq = dev_get_drvdata(dev);
-@@ -422,10 +416,16 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- 	data->volt = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
- 
--	rk3399_devfreq_dmc_profile.initial_freq = data->rate;
-+	data->profile = (struct devfreq_dev_profile) {
-+		.polling_ms	= 200,
-+		.target		= rk3399_dmcfreq_target,
-+		.get_dev_status	= rk3399_dmcfreq_get_dev_status,
-+		.get_cur_freq	= rk3399_dmcfreq_get_cur_freq,
-+		.initial_freq	= data->rate,
-+	};
- 
- 	data->devfreq = devm_devfreq_add_device(dev,
--					   &rk3399_devfreq_dmc_profile,
-+					   &data->profile,
- 					   DEVFREQ_GOV_SIMPLE_ONDEMAND,
- 					   &data->ondemand_data);
- 	if (IS_ERR(data->devfreq)) {
--- 
-2.35.0.rc0.227.g00780c9af4-goog
-
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
