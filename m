@@ -4,78 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A783C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 06:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C190C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 08:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GOYr89I6mlpwERy/qwYm8PECSh3NEpWPT05TDJqh8+o=; b=s9Mfya/sWPkMZF
-	rSOAPXyL5wbMRcdKX+INc9ZOb3yfNoyAfHbrA7Gj2eXxS+G6Sw3vxcdTH1Oqj0eTv9xl06ytbO3BN
-	pMloRDopzf+Q5a5QtbUNZ+kSvao+COYDY2NdoVYLiZpR/dc7sfxb1VNRs33jf5rTTxVoTs19hQ1dB
-	kF/SDea/uFALpl+/LnIubCudJJk1AbNZUilIXckgjTqdxhaE74ryOaA5Ide6kq0KpAiDx21M217jT
-	Kmh6i2HGhjrbkt5+OiFTfdDXkR/0xGPNs/uNVV5JlGbdu3YIpMHGVTKun6ZCfdVKKAoeBXP9heajw
-	/F2/W5NgNUVdWqzihs4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FJ1Y7Y6OpCjELnXMZE0XGAtMlh3NQCaSaeo4eJEC9TE=; b=BQE7gMz1yX6yDILxxp10rdfuFf
+	SHe5s88P9bWclCQHFnyXXDAIxnJH84+h08ayOXqUTirD76Lbu70ZwXTrSTJ5AQlemNuLcqHwiRq3R
+	U9yqzkjyVNgxobeXxtWMFT/R8zkIe5aKtYGvCaBF2Qzwb68xso1UZRbBgDJYLSj+GiLpsfzY/VU8k
+	1D/3zye+WAqzPAnrfGGVvKwmIamfbnMxyz65CHzXqFVf70+9hvELcqxEDz5K0wRkF/unNOY+oPE/1
+	nXauOmHpybZLMgMnSWlRAb9SMANTLrDUXzyorf8iD/tbv7iZ6iFyATkOfs685TjWdVZb9hklkhix+
+	aERQahzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nCy7O-00ETwU-VH; Thu, 27 Jan 2022 06:18:50 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1nD04M-00Ej8z-3m; Thu, 27 Jan 2022 08:23:50 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nCy78-00ETra-2R; Thu, 27 Jan 2022 06:18:35 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id u24so2136521eds.11;
- Wed, 26 Jan 2022 22:18:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=4AH18SqUt3875X1csGckeQTmdeWFVcmVXOtHFyC7kz4=;
- b=A+E+wvx3lHw1w4emZKAFoqzSw2nwDE+qG8qCxhSTNhQePLcchO5h4QG3vimuFqHOdF
- 0RsjioK2H0mVp2PDj17aOb/r8FO/kPBBCqcvqkArvKMXxMq+x6OKwT5S6fQ2yRLVMNIx
- UKhOWhTuQ/I0X8LQKb8T9DNSN7eeZn7/wHKKhN2WjC21B0f6KSRUljBKpOj2S3qLBuJs
- k3vHTcgzfWn8tC38vlV78Du4zdl0kluCZTvvn1Qfdj3SdSPgiYuI8OFtZtJ0BoBfP/8R
- 3/o3HuMeFd59aJ0gNdc/21oy+DXODCVsP9z6ai5CgIsR/LxGJtK7MrcUlkBtKCSPWKTq
- NGdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=4AH18SqUt3875X1csGckeQTmdeWFVcmVXOtHFyC7kz4=;
- b=AgMqsGeHHV3rT4RGyJrbM4cHTWjCGB9yt3QGRWhMvea7JSgfs5ApOSBGrkSgdj6lm8
- 7PJSL9deKjNFKmXjIHdyHzn5ybuKxl2NC5E6mINSBuMaKTklYs0XySGUzZZFKDXLRFQ/
- viN9/JoVtS7y2J/Pyc3/ZWDBWC4gDK7iNGg8Ik3SA47gumRQkxY8alTwoZilbNgOvO+V
- uxWX6r7ShfEMyGGNTRhUYwdpyEGfuRbm9S+B+N6ghIjzYEph7CdgI4jwwv/OJemeOjpf
- iMz12nOG+zAWBOLvLQ4JunUNheLBLB80JfJ1gpeiljGoxIgHel6y1jYCuGvc4GzWGaRa
- /oRA==
-X-Gm-Message-State: AOAM531ysb7IoTextwjfl9gXvIo+oDP5UGmhe3dSa88hhfpheZfAA5sO
- 6J4O/aS+n9DBZBitUcZlmZ0=
-X-Google-Smtp-Source: ABdhPJwQ8vX8FeqC2S0Sb+2I0GE54PRSylU6GWyscqXvsAB8TvF4rhL1nxhMv7ep+IRr/jbK4KaYPA==
-X-Received: by 2002:aa7:d1cd:: with SMTP id g13mr2304830edp.70.1643264312604; 
- Wed, 26 Jan 2022 22:18:32 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- cf13sm8388353ejb.141.2022.01.26.22.18.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Jan 2022 22:18:31 -0800 (PST)
-Message-ID: <07281029-0efd-0a74-0d96-92e3dcf5bbb7@gmail.com>
-Date: Thu, 27 Jan 2022 07:18:31 +0100
+ id 1nD04I-00Ej8Y-Ro
+ for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 08:23:49 +0000
+Message-ID: <066b38a3-eb4a-c3f6-6d26-2db0ab32a58f@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+ t=1643271822;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qwqZW37QkuRlkufzA+ayPpkTDdPqUvook3YoetOVbtk=;
+ b=OXFMsvA/4RISlSgDsGRd6GNyh86NuSgpcdR4GvuEwqUdKKbcvEU92YGoHrWwQWW7tV1WMz
+ MCWvXVltfDfaXBLWyJWUwFB8p80GAeJZroiIJXP7g92tdasHGVWWrMENWUCNSKTqD5kg0/
+ NPzi4IFzc+cI5MdletK0Gp/Ryc909Ub0P2ZNrn/JFsLlY5q8XOvA4J3bdLOg3/MaZqa/Qh
+ 07JBqptP1gUYEbyMSgVI8kKtlhctcm+dq5fU39OeooyllYw28aY6aVpBVp4bJ7JI+i+Gem
+ yKOMW02myuJiDOOVH3aVTayYw8bWdb7hfBnJyaLArDE3EL3EWOyiubzm7sZLQQ==
+Date: Thu, 27 Jan 2022 09:23:40 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add Quartz64-A sdmmc1 node
-Content-Language: en-US
-To: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220127010023.3169415-1-pgwipeout@gmail.com>
- <20220127010023.3169415-4-pgwipeout@gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20220127010023.3169415-4-pgwipeout@gmail.com>
+Subject: Re: [PATCH v4 RESEND 0/4] power: supply: Add Support for RK817 Charger
+Content-Language: da-DK
+To: linux-rockchip@lists.infradead.org
+References: <20210916194208.10387-1-macroalpha82@gmail.com>
+From: Dan Johansen <strit@manjaro.org>
+Organization: Manjaro ARM
+In-Reply-To: <20210916194208.10387-1-macroalpha82@gmail.com>
+Authentication-Results: ORIGINATING;
+ auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220126_221834_159308_4ED71A9F 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20220127_002347_422692_2CC3887B 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,119 +64,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Chris.
 
+Any chance of an updated series based on 5.17-rc1 soon?
 
-On 1/27/22 02:00, Peter Geis wrote:
-> The sdmmc1 node on Quartz64-A supports the optional wifi module from
-> Pine64.
-> Add the sdmmc1 node and requisite sdio_pwrseq to enable wifi support on
-> the Quartz64-A.
-> 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
->  .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 45 +++++++++++++++++++
->  1 file changed, 45 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> index 33c2c18caaa9..1d73ac6557c5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-> @@ -91,6 +91,18 @@ simple-audio-card,codec {
->  		};
->  	};
->  
-> +	sdio_pwrseq: sdio-pwrseq {
+Keep up the good work.
 
-> +		status = "okay";
-
-When a node is not previously disabled, then there's no need for "okay".
-
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&rk817 1>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_enable_h>;
-> +		reset-gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_LOW>;
-> +		post-power-on-delay-ms = <100>;
-> +		power-off-delay-us = <5000000>;
-> +	};
-> +
->  	vcc12v_dcin: vcc12v_dcin {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc12v_dcin";
-> @@ -147,6 +159,17 @@ vcc_sys: vcc_sys {
->  		regulator-max-microvolt = <4400000>;
->  		vin-supply = <&vbus>;
->  	};
-> +
-> +	/* sourced from vcc_sys, sdio module operates internally at 3.3v */
-> +	vcc_wl: vcc_wl {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_wl";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_sys>;
-> +	};
->  };
->  
->  &cpu0 {
-> @@ -475,6 +498,12 @@ pmic_int_l: pmic-int-l {
->  		};
->  	};
->  
-> +	sdio-pwrseq {
-> +		wifi_enable_h: wifi-enable-h {
-> +			rockchip,pins = <2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
->  	vcc_sd {
->  		vcc_sd_h: vcc-sd-h {
->  			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-> @@ -516,6 +545,22 @@ &sdmmc0 {
->  	status = "okay";
->  };
->  
-> +&sdmmc1 {
-> +	bus-width = <4>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-
-> +	disable-wp;
-
-From mmc-controller.yaml:
-
-  disable-wp:
-    $ref: /schemas/types.yaml#/definitions/flag
-    description:
-      When set, no physical write-protect line is present. This
-      property should only be specified when the controller has a
-      dedicated write-protect detection logic. If a GPIO is always used
-      for the write-protect detection logic, it is sufficient to not
-      specify the wp-gpios property in the absence of a write-protect
-      line. Not used in combination with eMMC or SDIO.
-
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
-> +	sd-uhs-sdr104;
-> +	vmmc-supply = <&vcc_wl>;
-> +	vqmmc-supply = <&vcc_1v8>;
-> +	status = "okay";
-> +};
-> +
->  &spdif {
->  	status = "okay";
->  };
+Den 16.09.2021 kl. 21.42 skrev Chris Morgan:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>
+> This series is to add support for the Rockchip rk817 battery charger
+> which is present in all Rockchip RK817 PMICs. The driver was written
+> as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
+> myself Chris Morgan <macromorgan@hotmail.com>.
+>
+> The driver requires some basic parameters be described about the
+> battery in the devicetree such as the maximum capacity, the minimum
+> and maximum voltage for the battery, the maximum charge current, the
+> maximum charge voltage, and the value of sample resistors and sleep
+> currents.
+>
+> The hardware itself contains an ADC capable of measuring the voltage,
+> current, and temperature of the battery (though my implementation of an
+> Odroid Go Advance lacks a thermistor for temperature). It also contains
+> a columb counter, registers for tracking the measured voltage and
+> current at boot, and a few bytes of nvram for storing data.
+>
+> Changes from V3:
+>
+>   - Corrected issues in device tree documentation.
+>   - Added additional logic to battery to correct for columb counter
+>     drift when the device stays plugged in at a full charge state.
+>
+> Changes from V2:
+>
+>   - Updated devicetree bindings to use common property units.
+>   - Removed unneeded includes.
+>   - Updated rk817_chg_cur_to_reg to make more legible.
+>   - Simplified formula for displaying calibrated voltage.
+>   - Updated power supply type to POWER_SUPPLY_TYPE_USB.
+>   - Implemented get/put_unaligned macros for bulk reads and writes.
+>   - Changed numerous dev_err() to dev_err_probe().
+>   - Call power_supply_put_battery_info() at end of probe function.
+>   - Removed unneeded whitespace.
+>
+> Changes from V1:
+>
+>   - Fixed a CLANG warning regarding an uninitalized variable.
+>   - Fixed a CLANG warning regarding a pointer as a bool value always
+>     returning as true.
+>   - Added Maya Matuszczyk to the Signed-off-by.
+>
+> Chris Morgan (4):
+>    dt-bindings: Add Rockchip rk817 battery charger support
+>    mfd: Add Rockchip rk817 battery charger support
+>    power: supply: Add charger driver for Rockchip RK817
+>    arm64: dts: rockchip: add rk817 charger to Odroid Go Advance
+>
+>   .../devicetree/bindings/mfd/rk808.txt         |  38 +
+>   .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  26 +
+>   drivers/mfd/rk808.c                           |  16 +-
+>   drivers/power/supply/Kconfig                  |   6 +
+>   drivers/power/supply/Makefile                 |   1 +
+>   drivers/power/supply/rk817_charger.c          | 959 ++++++++++++++++++
+>   include/linux/mfd/rk808.h                     |  87 ++
+>   7 files changed, 1132 insertions(+), 1 deletion(-)
+>   create mode 100644 drivers/power/supply/rk817_charger.c
+>
+-- 
+Kind regards
+*Dan Johansen*
+Project lead of the *Manjaro ARM* project
+Manjaro-ARM <https://manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
