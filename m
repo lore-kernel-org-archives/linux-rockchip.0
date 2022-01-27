@@ -4,73 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F89C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 11:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59971C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 14:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kcfaxh3OvWjgDIX5ilFaXU8xZOsFHt1wV4/+uUnDUkw=; b=eJ6YV6Uacxaaw2
-	KFWVxJtkn7eJ8LLJOEV+4yADPSznSMvdlZCpIsavay9U/BerM63U8A5V7pANm7g6TVS8rDppDIJVU
-	U3hDpiz5MApmHwVLJOFfbtPJLQVo4lmh5hRv1IvrUjh0ap1KBtE2ctAjGcQ+XXlV2t72tEuBDxtEW
-	/6VD904obV7iWgBOTeWRpzjqcFC8VPQJpiK4+c2KtpRKMUZw/J1Ge1+P3gwkpnd9E7CSiESqoZyiq
-	7U/Xyx231QQuUovsaMcsQ3BxR9ona1spa3uTd2rILn921sE1KNXjqoQkXw+y8L50Csp8e0zjCrccv
-	FvRnjMB8OUNniURx8QeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=LUPT0PhPdbP1iLyJym7T8hDj73MSVyezJtWSBNlYeFU=; b=MrFnx7S6lMVpBsgYSoxpnF0NHh
+	TIs6YaMIID7ve74Q+lBN7faWEO1fV64gzcxbSEG8GI5hERQwuF+XWWFN5IzSO+Su0QNNi7XiapeVa
+	ZZYHAFTZmVwyXwPe4dvihUMIZibB+nRVYE4TsKhL9pxyFG9cyImuzV5lQoSXojp5gfuQVuqvB5FdB
+	mMBEI9tqqM9a+jL+m2k5gjVk8Cc0aWNDc5PboIeXESUAlo6YXFfD7rGGzHnOPhMEUBMUggs2ddGqg
+	p+rGL669v11JyOBpBv71icfz0T5G1XTblrBx+Gq4MQTioxcXwBMvlFqIX5fhnQBHDfbEQWVS6GM9Q
+	mVYjDTsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nD2rI-00FPDO-GC; Thu, 27 Jan 2022 11:22:32 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nD5a0-00G2gS-KQ; Thu, 27 Jan 2022 14:16:52 +0000
+Received: from mail-eopbgr20067.outbound.protection.outlook.com ([40.107.2.67]
+ helo=EUR02-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nD2p6-00FOIM-5b
- for linux-rockchip@lists.infradead.org; Thu, 27 Jan 2022 11:20:18 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nD2p2-0004SH-WD; Thu, 27 Jan 2022 12:20:13 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nD2p1-00082z-2I; Thu, 27 Jan 2022 12:20:11 +0100
-Date: Thu, 27 Jan 2022 12:20:11 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Doug Anderson <dianders@chromium.org>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Sascha Hauer <kernel@pengutronix.de>,
+ id 1nD5Zf-00G2bO-U5; Thu, 27 Jan 2022 14:16:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gow80xqdq7KapSfVvK6/A5QAE8pY6hM4oZ8wEj+iimbDONGsYy1hswTYt4ZPOTSzEgMsRQvpVFNGmt/rHNbWYQyam2ufQGTrbJp7MJXCTDb1k0DjYyedjhe0TGaPThv4wWjMLwCkxrbMrK1f92CmnBOuYq+zbwwKDPbBY8QKX6MKeatTZ3u8tazBTN95ZOKkfW/G+OTEE74B5+jGaDS2u0zu8i7yWjIkKC9yG5kVDSG4mUC+xr6Q3OxHfN3ryxuvN2am8/VWiqomlyyGnoEZ3DpzYSAJ+QEOBGJw9ybtyfZaJArKnH4ONg46eaGVr4iBBWuK1Qao/OHNvVYjjVAjNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oB74yXfDIeGcK8yzn1eMZjHkfXzaaAs8xa26bHOZTb8=;
+ b=aCvVASbhAm1il+LULk3JxjGjpyB2Zynr+KDDngpaRZF6B4lGuT/G8T0D1K++E5HcS5256BabqSK8wK8XlZmP/t2KHmFYbmRHYrER7WjZCMxiWyKLwMtd5tnh0tBkyp19OkI5T6yZxvijkSMqwyapH6w9L1QOgn8TX2iuKC6P+NPdOxo55FT1UGd1V5FuMGxcQIZML5okeV9Vn18Ghb3m8JrcLqSSXj0cE8G+lFvA//cUGn+RJ79ifwWOA+0m72wOpusXcOB/6Ra7Puu61X5NEmkL9mi213WCbjfIVkf5AndK65fpenHFyXZ83p+JgMSBvNmf243xWzvnTqJixTKNWg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oB74yXfDIeGcK8yzn1eMZjHkfXzaaAs8xa26bHOZTb8=;
+ b=nFJBUY2IrDZHEU7viByXIQWMLTfhq3GLvyPCIK1lSbfveXujOpJjsgWLi/m9+xi4S2DzPwLRaQshSumri2T8xyOON3qViDpnY51z0qkV4OpOM0Hwj3HuuquP5Maov00s2uK1o/pt+qyJhxcImJbs+fRMQDgwE2UA0vy57e+JGVQ=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by VI1PR08MB5391.eurprd08.prod.outlook.com (2603:10a6:803:138::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.15; Thu, 27 Jan
+ 2022 14:16:25 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::e14f:197:5001:4c56]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::e14f:197:5001:4c56%3]) with mapi id 15.20.4930.017; Thu, 27 Jan 2022
+ 14:16:25 +0000
+Message-ID: <d0a0ddcd-43d0-fd48-7c9d-c4232b818212@wolfvision.net>
+Date: Thu, 27 Jan 2022 15:16:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v4 00/27] drm/rockchip: RK356x VOP2 support
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
  Andy Yan <andy.yan@rock-chips.com>,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Yakir Yang <ykk@rock-chips.com>,
- =?iso-8859-15?Q?St=E9phane?= Marchesin <marcheu@chromium.org>
-Subject: Re: [PATCH 07/27] drm/rockchip: dw_hdmi: Use auto-generated tables
-Message-ID: <20220127112011.GM23490@pengutronix.de>
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
 References: <20220126145549.617165-1-s.hauer@pengutronix.de>
- <20220126145549.617165-8-s.hauer@pengutronix.de>
- <CAD=FV=U7W_oWjS_gCurAkNdkcuHQGn-XH=-VwP2MSG9zO92ySg@mail.gmail.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+In-Reply-To: <20220126145549.617165-1-s.hauer@pengutronix.de>
+X-ClientProxiedBy: ZR0P278CA0071.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:21::22) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=U7W_oWjS_gCurAkNdkcuHQGn-XH=-VwP2MSG9zO92ySg@mail.gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 12:06:15 up 47 days, 19:51, 83 users,  load average: 0.13, 0.26, 0.26
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a50c0bbe-26f7-4209-5d2b-08d9e19f99e6
+X-MS-TrafficTypeDiagnostic: VI1PR08MB5391:EE_
+X-Microsoft-Antispam-PRVS: <VI1PR08MB5391C4773E6952A62C854B73F2219@VI1PR08MB5391.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: p6aLt6XhVS5VCZ3gsZSZP3F+8ielFa2dSnlw8Nee3Hj1tF1/Kn3+kcFgat011SUkrR2sjkESylRSaUIdhgzCJn2/gGpTFS6sVqFtaQbXCa5wPPNytKz514z2iEP5nCV9u/nKAB8lHFtHEuM0dOJ/YZ7FgLgcpUipeE0sXgPmbAuch8OWAsEgD23eoDTtToXZIvVyA7ouDpiDr2X4OycHG5DijFjtkPpFTLSL4DASVNtZp7KZX/O+gJdbqz2Oyoawbm48vYXF/g6iiQBlLblJtGYBiUh96SmmgV+jBRX4FUYfRhyjNqTmTlM6BpATg0H+7hHXTOgOmUPcL+Ci1HSe9L2KEAfi/ktydWj4fxh9BDw9gScKg+5MB3r1OjxTqtkclc+Au+3gKqsCopoJBDwRv0+ixKabei4E2HJClbo3TLD67zeAodYFqCPXJwwKv+Q8ivk8i6epc5EmSU+RQxJugku5GWSNKEv7BkHsPqIAZd8qGTMXrlOQI537OJgrtpN7qzGvxziLoGycEX+r39+tykYK/jTalU0Lw03up/+y/mJC8NApvt10q42og9rGsE7ZZr0V7F/FXMul0mClajcT/l52Jik89s9uTcsFOdH3h0NIvkPOL37tOzMUCCJ1dVBMuA9o4R0CrQo6OvhZBGv0lstDDlL6UJlEV5gkUtZ/aWJjFPQc/MdBnoIAeiabh4hXxC+Jd0nIzFVJJyO1OJS5xcbU37Eydq12Wj/NW78vZ/Mt/gC4l5564j1Xvy7tcaEp
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(6486002)(36756003)(5660300002)(7416002)(44832011)(508600001)(31686004)(6512007)(2906002)(66946007)(66556008)(38100700002)(52116002)(86362001)(31696002)(316002)(54906003)(66476007)(83380400001)(4326008)(8676002)(6666004)(8936002)(2616005)(186003)(53546011)(6506007)(43740500002)(45980500001)(20210929001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RnVEWVBWMUMyV0hJdld4NnJEQlBMRlFnaHJsRlJ0aG5uVnZ2TjA2R2hkMy9r?=
+ =?utf-8?B?ZG94MEZjZHl5OTFtbUp6K05DRjhOV0xTdmtCVEtPQW40UUsrbVpQVUV1T3dq?=
+ =?utf-8?B?NkFQL085ZU5xcEpRQkpHTGVTQWIzV3FweDZZcjFCREpyckd2MzVvQW95SE9B?=
+ =?utf-8?B?ejd3TVRwOXBadmMxUS9yaWI3alBRajNtZ0dwQk5IZnU3bzlxUHY1MTlLalZt?=
+ =?utf-8?B?eGhNTHk3eGNkZ3cwZTNUczR6Y0lhLzMrWTQzaW94Q0YyeitMWWlZYTdhSG1F?=
+ =?utf-8?B?cVB4OUtxTFlkR0FKWnZFclRVYWE1WXYrc2RuYUFHREUreUN1dWJEeWc5VVpB?=
+ =?utf-8?B?ZVB0Lzc1ZWhBeitVWHM4czJETXYvSXNvRi9NRG9IVUtRL1ZJTWRXOWpaMGJh?=
+ =?utf-8?B?OVdhakhuR29mYS84TVhpZUZrNW9HZ3hWc3RBT2U3TnQwd1hmbGNGY3kvZHBj?=
+ =?utf-8?B?eFBXNHJVUE9BbXRPWmtpUUlMbTl1c0E2eXBoNXRhZjh5OGtNVWlLQTZBVUVy?=
+ =?utf-8?B?V2ViYnFLVG5zVERzRFZ4bEJFWVV1bmNTZFMzY0VtS25kaENIZ0FLbXlQblNY?=
+ =?utf-8?B?K08xRWlVYXhqNjBCUWR5RURteUwxMW1wZkFPVk95VEk3TkRRc0QyMnpqanN1?=
+ =?utf-8?B?TUtkYW5BaUtaMGwwdTI2KzRqa0dxTzZwZWFpOUZ2cTkzOHNRRjNRRXFSZFFQ?=
+ =?utf-8?B?UEZmS0kvK0w0VUZ3aFZNanFqMDkzQjNnK29DTnlKdlhkUE5UQnhrbXNuUkNW?=
+ =?utf-8?B?L1dWSTBUMHNlbjlib3h4S2Y4amkxLytQWG5GSm5Rdk5SNXBtMXFxT1ZKcy9o?=
+ =?utf-8?B?TkNXRGZobDdnaFpJL3ZGbGR5WXdSLyt5WXJCdW8vVTh5Z0FZaGFSZ3BJang2?=
+ =?utf-8?B?SWpQdDcvOU8vd1FyN0pwaHJKS000NTZTSXVEbVNFemg0NURBb2hFSHlWZGdZ?=
+ =?utf-8?B?dDkvSkZBYUg1ekxQelhZSGVoZG9OTVFsbUdHb21TUzBiQkpZNGlWUG1rR0I0?=
+ =?utf-8?B?UHRaQlJOQ3h5dXEwOVA2NEpXRUJIMGdJdWhodmtvZUpaY0txR3lCZWxKSHBS?=
+ =?utf-8?B?UG5WSzZFZ1J5akNlbkJidzN4ditLbW5PODFwMGxrSjVpUzV3QUN4cXoveStD?=
+ =?utf-8?B?ejhLT011OHFONlcrd1QweWFQWGZBM2Y2VFc5TEwrOHVhWVBzMU40aGgydE1X?=
+ =?utf-8?B?L3gvYU5xQmZzbzl1TFAzUmlRQ3RnT2FyNWhkdlIyMmFCM0pmclNrckNGZnlO?=
+ =?utf-8?B?OFJxYVZrNU9lRTNZWW13Rmh3eDFUZSs5TkJyM0NLNXBkcmJKdloyNkhxTEpr?=
+ =?utf-8?B?L3NibDZ1akd5UlhuTldGUVhtUGN2eVVQY0JwVFF0amJxdFZ6WFRDb3grRDFS?=
+ =?utf-8?B?Q0xtdERzSTNHVmlsaEhYYlhTbEZ2RDhyckVzVWFkUTdpUU1HUzcwZkdUaXE3?=
+ =?utf-8?B?UUpjNEwyNGVYOEFlMjRRQ2FwMk5tUngyc0tDU1FvR05Va1BRaVlaQ3RzcElS?=
+ =?utf-8?B?QWdjUWxwNHB4QTBOWWwxSUo1amRwclc4UVlmOUZuWTRKSC9USEYxSFRLYnpZ?=
+ =?utf-8?B?TnJwbVkzRmpGSSszbHo5K0V1aEt5R1BhQkZ5d1p0QndNZHArYklONW9yMGJ4?=
+ =?utf-8?B?QjQxaW9kQUxScngzMzJmODdIOXc5NmpQcGJsb0NWS1JzbzRUM1N4czF4M1Fl?=
+ =?utf-8?B?ZlhjdkZRR1pnYW1BMXpPV2w4NDhqZjVQbkxRUVFNdTNqUjkvRTVBM3RFajN1?=
+ =?utf-8?B?RFFrR3d3QzFwKzVpcERlTTA5SDR0WFVOckV6Ymgxb04vUjQyY25henRBam13?=
+ =?utf-8?B?SnVJaXdwRi9SbG94Wkt2NUFOT3FveDAxbGhKaWlsZDBZbGpFZ2h0cGd5NHJv?=
+ =?utf-8?B?Ym0wTTIza2tJa0tXL2ZEWFhmaHhLTE9ETVUxdWZEUHE3eTlFN25OYlgwd3VI?=
+ =?utf-8?B?YnpKamlCV0VueEkvaW9WczJ1QUxzczY1MTdqYkVsWUV2SUFYaWl1czZJa2V5?=
+ =?utf-8?B?eERZbG5ReEo0L1cyYWpTZU1kekJkd1Z6eVYzWXNzS3ZwV04xcmsyS2tOTjg5?=
+ =?utf-8?B?RHplTHAzc2pMNEJiTjBtbXFFblR3WlQwd29YSHliOEQxN213dE01ZHJrbFNz?=
+ =?utf-8?B?Zkc1VkJmM0J1SnpIamRacjJVckFBV240KzQ0NmFmL0VMQ1FHc2QrbUlVRmpN?=
+ =?utf-8?B?THJoQnRBWnBDdDdFanJKcXo3RGFiTXN1U3UvK21sN1JzM0J5Q2c0YXNONDdl?=
+ =?utf-8?B?MkoxYnhxWkhwbmd5a1prckZzN01KVDdtbXQyeFc2bU01QWxOT25oM3JvTkNa?=
+ =?utf-8?B?WEdpeXVCTFpaVGRwc0g0QnQyTEpWWFFzeER5bitYZFYzTXh3bzAzYkVUdU1s?=
+ =?utf-8?Q?f5/mYH2ZrRtEYmT0=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: a50c0bbe-26f7-4209-5d2b-08d9e19f99e6
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2022 14:16:24.9102 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 28FWqEjOMsfC2/hPhOAkF87Q3njtDee+FsBjzVfnuxqVTb0Fb656utgpmTx8qifGY6kT5ECzIZJDOwgJ4IHUNybFYjtb5m3hvmOAxZbmkWU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB5391
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_032016_325179_C9C66632 
-X-CRM114-Status: GOOD (  44.39  )
+X-CRM114-CacheID: sfid-20220127_061631_991936_7797D55D 
+X-CRM114-Status: GOOD (  29.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,119 +150,137 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 26, 2022 at 07:54:53AM -0800, Doug Anderson wrote:
-> Hi,
-> =
+Hello Sascha,
 
-> On Wed, Jan 26, 2022 at 6:58 AM Sascha Hauer <s.hauer@pengutronix.de> wro=
-te:
-> >
-> > From: Douglas Anderson <dianders at chromium.org>
-> >
-> > The previous tables for mpll_cfg and curr_ctrl were created using the
-> > 20-pages of example settings provided by the PHY vendor.  Those
-> > example settings weren't particularly dense, so there were places
-> > where we were guessing what the settings would be for 10-bit and
-> > 12-bit (not that we use those anyway).  It was also always a lot of
-> > extra work every time we wanted to add a new clock rate since we had
-> > to cross-reference several tables.
-> >
-> > In <http://crosreview.com/285855> I've gone through the work to figure
-> =
+On 1/26/22 15:55, Sascha Hauer wrote:
+> This is v4 of adding RK356x VOP2 support. Due to popular demand I added
+> a changelog to each patch, at least starting with changes to v3, I
+> didn't care to add the older changes as well. I hopefully integrated all
+> feedback I received to v3. Additionally I added some patches to the HDMI
+> driver to support resolutions up to 4k@60Hz. The patches are mostly
+> taken from the downstream kernel. Some have been send to public lists,
+> but were never applied upstream for reasons I do not know. The patches
+> are a bit more intrusive than needed for my case, but are present in the
+> downstream kernel for a long time, so I decided just to take them
+> instead of stripping them down to my needs. With these patches I
+> successfully used the driver with 4k@30Hz. 4k@60Hz doesn't work for me,
+> I hope this is due to my low quality cable.
 
-> The `crosreview.com` syntax doesn't seem to work anymore. Could maybe
-> update to https://crrev.com/c/285855 ?
+The cable might be the issue indeed, at least in my tests 4k@60Hz worked
+just fine. On a RK3568 EVB1, using
 
-did that, thanks.
+$ modetest -M rockchip -s 69:{1920x1080,3840x2160}-{30,60}
 
-> =
+and a HP 27f 4K monitor:
 
-> > out how to generate this table automatically.  Let's now use the
-> > automatically generated table and then we'll never need to look at it
-> > again.
-> >
-> > We only support 8-bit mode right now and only support a small number
-> > of clock rates and and I've verified that the only 8-bit rate that was
-> > affected was 148.5.  That mode appears to have been wrong in the old
-> > table.
-> >
-> > Changes since v3:
-> > - new patch
-> >
-> > Signed-off-by: Douglas Anderson <dianders at chromium.org>
-> > Signed-off-by: Yakir Yang <ykk at rock-chips.com>
-> =
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
 
-> Should probably change the "at" to "@" ?
+Thanks for your work and best regards,
+Michael
 
-yes.
-
-> =
-
-> > Reviewed-by: St=E9phane Marchesin <marcheu at chromium.org>
-> =
-
-> In general shouldn't carry downstream reviews when posting upstream
-> unless you're certain that the person intended it...
-> =
-
-> =
-
-> It's been a long time, but in general I think I was fairly confident
-> in the numbers that my script pumped out, at least given the caveat of
-> no pixel repetition and 8-bit only. That being said, I didn't have any
-> inside knowledge of the hardware and just figured out formulas that
-> seemed to match the table that I had. YMMV.
-
-Rockchip adopted this patch for their downstream Kernel, so they haven't
-been able to come up with better values. Given that you created this
-patch for a fairly old SoC and the values are still usable on rk3568 I
-think that's the way to go.
-
-> =
-
-> I'll also say that when I did a rebase of veyron (rk3288-based
-> Chromebook) to 4.19 about 2.5 years ago, I ended up squashing several
-> of these patches into 1. That can be found at
-> <https://crrev.com/c/1661056>. That also has details about why some of
-> these patches never made it upstream. The main reason, at least in the
-> case of rk3288, was the PLL sharing problem that nobody ever solved.
-> rk3288 didn't have quite enough PLLs and thus, if you were using both
-> VOPs, one of the VOPs was going to be severely limited in what pixel
-> clocks it could make. There was no framework deciding which VOP should
-> be limited and how the system should react to this...
-> =
-
-> =
-
-> In any case, I'm pretty far disconnected from all this stuff now, but
-> I wish you the best of luck in trying to get it all solved!
-
-Nah, sorry, I won't get that all solved ;)
-
-I am not that interested in rk3288, my main concern is the rk3568. That
-one has two spare PLLs for three heads instead of one PLL for two heads,
-so the problem is less pressing.
-
-I'll stick to this version of the patch instead of the combined one
-because this patch seems to be correct regardless of the PLL problem.
-
-Thanks for the link though, it gives me some insights why things are the
-way they are currently.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> 
+> Sascha
+> 
+> Changes since v3:
+> - added changelog to each patch
+> - Add 4k support to hdmi driver
+> - rebase on v5.17-rc1
+> 
+> Changes since v2:
+> - Add pin names to HDMI supply pin description
+> - Add hclk support to HDMI driver
+> - Dual license rockchip-vop2 binding, update binding
+> - Add HDMI connector to board dts files
+> - drop unnecessary gamma_lut registers from vop2
+> - Update dclk_vop[012] clock handling, no longer hacks needed
+> - Complete regmap conversion
+> 
+> Changes since v1:
+> - drop all unnecessary waiting for frames within atomic modeset and plane update
+> - Cluster subwin support removed
+> - gamma support removed
+> - unnecessary irq_lock removed
+> - interrupt handling simplified
+> - simplified zpos handling
+> - drop is_alpha_support(), use fb->format->has_alpha instead
+> - use devm_regulator_get() rather than devm_regulator_get_optional() for hdmi regulators
+> - Use fixed number of planes per video port
+> - Drop homegrown regmap code from vop2 driver (not complete yet)
+> - Add separate include file for vop2 driver to not pollute the vop include
+> 
+> Andy Yan (1):
+>   drm: rockchip: Add VOP2 driver
+> 
+> Benjamin Gaignard (1):
+>   dt-bindings: display: rockchip: dw-hdmi: Add compatible for rk3568
+>     HDMI
+> 
+> Douglas Anderson (2):
+>   drm/rockchip: dw_hdmi: Use auto-generated tables
+>   drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
+> 
+> Michael Riesch (1):
+>   arm64: dts: rockchip: enable vop2 and hdmi tx on quartz64a
+> 
+> Nickey Yang (1):
+>   drm/rockchip: dw_hdmi: add default 594Mhz clk for 4K@60hz
+> 
+> Sascha Hauer (21):
+>   drm/encoder: Add of_graph port to struct drm_encoder
+>   drm/rockchip: dw_hdmi: Do not leave clock enabled in error case
+>   drm/rockchip: dw_hdmi: rename vpll clock to reference clock
+>   drm/rockchip: dw_hdmi: add rk3568 support
+>   drm/rockchip: dw_hdmi: add regulator support
+>   drm/rockchip: dw_hdmi: Add support for hclk
+>   drm/rockchip: dw_hdmi: drop mode_valid hook
+>   clk: rockchip: rk3568: Add more PLL rates
+>   dt-bindings: display: rockchip: dw-hdmi: Make unwedge pinctrl optional
+>   dt-bindings: display: rockchip: dw-hdmi: use "ref" as clock name
+>   dt-bindings: display: rockchip: dw-hdmi: Add regulator support
+>   dt-bindings: display: rockchip: dw-hdmi: Add additional clock
+>   dt-bindings: display: rockchip: Add binding for VOP2
+>   arm64: dts: rockchip: rk3399: reorder hmdi clocks
+>   arm64: dts: rockchip: rk3399: rename HDMI ref clock to 'ref'
+>   arm64: dts: rockchip: rk356x: Add VOP2 nodes
+>   arm64: dts: rockchip: rk356x: Add HDMI nodes
+>   arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
+>   clk: rk3568: drop CLK_SET_RATE_PARENT from dclk_vop*
+>   clk: rk3568: Add CLK_SET_RATE_PARENT to the HDMI reference clock
+>   drm/rockchip: Make VOP driver optional
+> 
+>  .../display/rockchip/rockchip,dw-hdmi.yaml    |   29 +-
+>  .../display/rockchip/rockchip-vop2.yaml       |  146 +
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |    6 +-
+>  .../boot/dts/rockchip/rk3566-quartz64-a.dts   |   48 +
+>  arch/arm64/boot/dts/rockchip/rk3566.dtsi      |    4 +
+>  .../boot/dts/rockchip/rk3568-evb1-v10.dts     |   48 +
+>  arch/arm64/boot/dts/rockchip/rk3568.dtsi      |    4 +
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   86 +
+>  drivers/clk/rockchip/clk-rk3568.c             |   14 +-
+>  drivers/gpu/drm/rockchip/Kconfig              |   14 +
+>  drivers/gpu/drm/rockchip/Makefile             |    4 +-
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  293 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    3 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    7 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |    2 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   15 +
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 2665 +++++++++++++++++
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  480 +++
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |  285 ++
+>  include/drm/drm_encoder.h                     |    2 +
+>  include/dt-bindings/soc/rockchip,vop2.h       |   14 +
+>  21 files changed, 4039 insertions(+), 130 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+>  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+>  create mode 100644 drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+>  create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
