@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37532C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Jan 2022 23:33:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596B8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jan 2022 01:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rR+yV0b3VPA2tUoLIA0XRLSYeXvlxVIOj/W8syMhTWo=; b=PKBLcGdj4pnsCF
-	Dj0seMKXRnpIsB6BHkG0fOt39B0lnZSDm1qpmU829JUjusWnHHffwbu9kYEWvwCdCKbW3bR4ONZI4
-	k91f94EaYYooYsFr+8ce/c8FBNh6ywnKNHJslUzVGDnfcWiik2ZljnBu04yi3kpSnpcSRMCjqF8MG
-	m3nKcQKAZvkMjc8Dm5MGaQeymYBnMw0tiJcSNb5cV4et7CC6yUEI4BemM+LpFlEj4CV0jkojA47hl
-	txXOxi18NEGeSF+3KojryPfHJKM6A8HdJ+KEvfgCP4uJ5rypdWcx3z5mnIuFxQI/isqpmEIhahtuO
-	y61MhBPkMZpgl5Sd377g==;
+	List-Owner; bh=0TqA2aSpgMjj0i13+ak71u8ri49gRJCIlM+S6t5pLko=; b=2ZL06wwsRHncQU
+	wmO3LeTWQAi0PeqKS0Af8AWL/HzOZ9Bcog+3I+Yg7IPRZ9iQE3bXf/ba2JueNGx1ngTmNIYasjFEe
+	fovyRC/L1FJcwr2wwSYwjWFQ1xOCgHYCVxY0T6wM2UvHltAtmCzp7b8K/03dxlRdtSqoCgJLEn2Aq
+	thXZn+GDhenRvT2QJSCoWW/8bA/XjJ3wS1nsabClN+niof5YmtwtFlNT3ZsJUlXqYvNhmfMtXUC9/
+	2qI4ByD4OxLR5ve9ByKy0wIt5o06Vnbflf6rDzNXDfEYUXy08xGiLZTRR0d7uDVklz/nIwWc4Rhi4
+	JSmjExHND8W2O/lk9EAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDEGF-00HORF-Hv; Thu, 27 Jan 2022 23:33:03 +0000
-Received: from mail-yb1-xb34.google.com ([2607:f8b0:4864:20::b34])
+	id 1nDFfs-00Hagc-8u; Fri, 28 Jan 2022 01:03:36 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDEG1-00HOKk-D7; Thu, 27 Jan 2022 23:32:50 +0000
-Received: by mail-yb1-xb34.google.com with SMTP id c6so13474514ybk.3;
- Thu, 27 Jan 2022 15:32:48 -0800 (PST)
+ id 1nDFHP-00HVaH-BI; Fri, 28 Jan 2022 00:38:21 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id s6so4383382qvv.11;
+ Thu, 27 Jan 2022 16:38:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=45b55r8UrP19JXUlLW74FhqYl/0CdywuMW59aCYj888=;
- b=flncRfSPwRoAgqDR9OXU6u8IxKFDE5sMsLuqOng6ONrSAhCQEKo08oV6HPk8FYDthr
- 9f0pU1HM9KHv1Il3dWqN1RCpfqD2WF/WEWC86K+0NuHgXbl2CKuCJ32D74Yr/w4luSmz
- +Kth0fcvEoCCWqcXYhCK1dLCN7T9y5aOnoHGYjEtTPTM+xD70/VvawKq/rPOO7bR57My
- ZNLsF9/l4SlDHgoVA38O5E2i5n0KK8+QEGfK8UtLaLpjtEbqmn9i3sJrpZImASTWmBBh
- lICci5Ql846yLCpsLrZz1mH0GqPaG3rmpRFNyDWV9WE7c3Ft2sUBl1+YxXDbZH0TGKIb
- t6Pg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=j2PLycvcW6dLTZ8kcMY5iFXYAkkFP3UnZiWjf1YUPQ4=;
+ b=qei5y1xK5AiiFqzeJefi3veSDhVeTBnZu8kMBlXneKUPa8tac/pYCkuigqyB6dU8po
+ jo6xLloKFqPXGZTlJEzi+nNm9P4AFCGOnAKG2pG3GUjrRjJ2J61K4UEiUj4QJz739dZg
+ UnpeXicZpoOkOSftq78cDX4rMTR38Tnoog8YEVHVTEhDrdwvPllI8QZM+kKjGt4O4FLO
+ tdh9wcNQLAB4Au3XCe3+8ZtLAM0fwd5ibfwz7VGdd1mWF5rMDW8A/c6QJfFue0GcXUs2
+ Ji7/dRmJ1PpHOuYqxm/yiEuRA2vB67e8c02i+YQN30MIacjrkFnKjCmFubKYmo+q6ggl
+ /YXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=45b55r8UrP19JXUlLW74FhqYl/0CdywuMW59aCYj888=;
- b=gXKZ32e6qnIIXGLerTxXYbO/KuV9SYNVM6m8umfawfww++NApAeRXxT5J8Swbv+PBu
- XA9COMNpfuIbhck0FIll3twu+zsacdM0VXPwOEdUGQXcXpsc8YvDgA3lQjbuJxOC2eyF
- pTQNdxb8VCkyaZAsqaQzNsPb329OZKzmAbotno6gNa4prieV4odG4paIiASJDigJWqBx
- 9u+v3I68TDn0vXzLvNDN7IQ0oOw76m7Ww/9nftouTKupPNAA5h49Usi3bp2N/aCVSZwo
- clwkOhhlPDVavDewmMCGu0Q8RUs6XGFgF2sCRSZwaht/s7xtL2RHx5y8aolkPno7We4K
- 2LOw==
-X-Gm-Message-State: AOAM533oD4Vo/+fsF/d57WITSDhC5c8uQ3jZsTpIcRSMLuR/XeMHz08v
- +rR4p78q3mp75vINvzLSALui5H7QSX2I0Qhl7Qo=
-X-Google-Smtp-Source: ABdhPJzw0vXppBjuNB3RMkeTHKdzaHn5o9WVCpp9aGE46D/kj99Jzrn/fB+HFG2Bllds+UXD7Yz1rLkpDvPrYyyERTc=
-X-Received: by 2002:a25:d0cb:: with SMTP id h194mr9514813ybg.680.1643326368214; 
- Thu, 27 Jan 2022 15:32:48 -0800 (PST)
-MIME-Version: 1.0
-References: <20220127010023.3169415-1-pgwipeout@gmail.com>
- <07281029-0efd-0a74-0d96-92e3dcf5bbb7@gmail.com>
- <CAMdYzYrKq==Bs0aonrJBC+W2c4nQ8cUn2dn_Se4WDaRCkT6SYg@mail.gmail.com>
- <3859424.JUeRptVaKW@diego>
-In-Reply-To: <3859424.JUeRptVaKW@diego>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=j2PLycvcW6dLTZ8kcMY5iFXYAkkFP3UnZiWjf1YUPQ4=;
+ b=cw095fpSKZbq249ndWp9yVUfTPYkkd1w0a0066q6DHaZoIKe8KoE+mdb6gbtIG8Bfe
+ IfGc5nhhcc9hNWfdOfLbz/PRoainHRr0Ox+jfQGRQF8VjQt7VQjwamsX1F+W+OW97Oqb
+ xnnXvSoMZyC0DFvpn1C8b3VKzz8g5I/84Ka6ISXd9mqfWkO9875vppiY5mA/SoVci+qS
+ kx3n9v0+v3FCYH9sEnl03/YrsZkjA7j8ezLgAeV2E0B4k/PkiGN7Q89naARy+1cCtA+X
+ bIUT2FeHkBKs1QNa0bboeZfXhBuKUsRx5o3ZBPIFmIZh0z8/pdFWbj4xpS3A8XGhPq1z
+ dwmQ==
+X-Gm-Message-State: AOAM533vIydetGiHBWSWbw79+w3h4wkaV/1/MieZ9C05BgDEOzy8YP85
+ 4LjO9ThLiDiOF5RNBVgZZ3I=
+X-Google-Smtp-Source: ABdhPJyR73xdepexciUgvlSA/jSq2GFvHyyuqvrAYyMxkwDfo1QZ7VBQCxZ2wWUgM/C9GfryivNEPA==
+X-Received: by 2002:a05:6214:1d2e:: with SMTP id
+ f14mr5730571qvd.2.1643330298334; 
+ Thu, 27 Jan 2022 16:38:18 -0800 (PST)
+Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
+ [98.233.193.225])
+ by smtp.gmail.com with ESMTPSA id t1sm2142883qtc.48.2022.01.27.16.38.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Jan 2022 16:38:18 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 27 Jan 2022 18:32:36 -0500
-Message-ID: <CAMdYzYoQkR805xCyPstf2nrnzymVB3Ff4_cQAz_qsbokz8DG2w@mail.gmail.com>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add Quartz64-A sdmmc1 node
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Johan Jonker <jbx6244@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 4/4] arm64: dts: rockchip: add Quartz64-A con40 hardware
+Date: Thu, 27 Jan 2022 19:38:08 -0500
+Message-Id: <20220128003809.3291407-5-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220128003809.3291407-1-pgwipeout@gmail.com>
+References: <20220128003809.3291407-1-pgwipeout@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_153249_470380_52F5D134 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20220127_163819_490550_C2540A3B 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,39 +86,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKYW4gMjcsIDIwMjIgYXQgNToxNSBBTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250
-ZWNoLmRlPiB3cm90ZToKPgo+IEFtIERvbm5lcnN0YWcsIDI3LiBKYW51YXIgMjAyMiwgMTA6NTU6
-MTMgQ0VUIHNjaHJpZWIgUGV0ZXIgR2VpczoKPiA+IE9uIFRodSwgSmFuIDI3LCAyMDIyIGF0IDE6
-MTggQU0gSm9oYW4gSm9ua2VyIDxqYng2MjQ0QGdtYWlsLmNvbT4gd3JvdGU6Cj4gPiA+Cj4gPiA+
-Cj4gPiA+Cj4gPiA+IE9uIDEvMjcvMjIgMDI6MDAsIFBldGVyIEdlaXMgd3JvdGU6Cj4gPiA+ID4g
-VGhlIHNkbW1jMSBub2RlIG9uIFF1YXJ0ejY0LUEgc3VwcG9ydHMgdGhlIG9wdGlvbmFsIHdpZmkg
-bW9kdWxlIGZyb20KPiA+ID4gPiBQaW5lNjQuCj4gPiA+ID4gQWRkIHRoZSBzZG1tYzEgbm9kZSBh
-bmQgcmVxdWlzaXRlIHNkaW9fcHdyc2VxIHRvIGVuYWJsZSB3aWZpIHN1cHBvcnQgb24KPiA+ID4g
-PiB0aGUgUXVhcnR6NjQtQS4KPiA+ID4gPgo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IFBldGVyIEdl
-aXMgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gIC4uLi9ib290L2R0
-cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYS5kdHMgICB8IDQ1ICsrKysrKysrKysrKysrKysr
-KysKPiA+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDQ1IGluc2VydGlvbnMoKykKPiA+ID4gPgo+ID4g
-PiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFy
-dHo2NC1hLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXF1YXJ0ejY0
-LWEuZHRzCj4gPiA+ID4gaW5kZXggMzNjMmMxOGNhYWE5Li4xZDczYWM2NTU3YzUgMTAwNjQ0Cj4g
-PiA+ID4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQt
-YS5kdHMKPiA+ID4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1x
-dWFydHo2NC1hLmR0cwo+ID4gPiA+IEBAIC05MSw2ICs5MSwxOCBAQCBzaW1wbGUtYXVkaW8tY2Fy
-ZCxjb2RlYyB7Cj4gPiA+ID4gICAgICAgICAgICAgICB9Owo+ID4gPiA+ICAgICAgIH07Cj4gPiA+
-ID4KPiA+ID4gPiArICAgICBzZGlvX3B3cnNlcTogc2Rpby1wd3JzZXEgewo+ID4gPgo+ID4gPiA+
-ICsgICAgICAgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ID4gPgo+ID4gPiBXaGVuIGEgbm9kZSBp
-cyBub3QgcHJldmlvdXNseSBkaXNhYmxlZCwgdGhlbiB0aGVyZSdzIG5vIG5lZWQgZm9yICJva2F5
-Ii4KPiA+Cj4gPiBUaGFua3MsIHRoaXMgaXMgaGVyZSBpbiBjYXNlIGFuIGVuZCB1c2VyIHdhbnRz
-IHRvIGVhc2lseSBoYWNrIHRoZQo+ID4gYm9hcmQgdG8gdXNlIHRoaXMgZm9yIG90aGVyIHB1cnBv
-c2VzLgo+Cj4gYnV0IHBsZWFzZSBkcm9wIGl0IGhlcmUgYXMgd2VsbC4KPgo+IEEgdXNlciAiaGFj
-a2luZyIgYSBkZXZpY2V0cmVlIHNob3VsZCBiZSBhYmxlIHRvIGFsc28ganVzdCBfYWRkXwo+IGEg
-c3RhdHVzICJkaXNhYmxlZCIgOi0pIC4KClVuZGVyc3Rvb2QsIHdpbGwgZG8uClRoYW5rcyEKCj4K
-PgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+The Quartz64-A has a 40 pin connector that exposes various functions.
+Annotate the functions exposed in the device tree.
+Enable i2c3, which is pulled up to vcc_3v3 on board.
+
+The following functions are currently exposed:
+i2c3
+spi1
+uart2
+uart0
+spdif
+
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index c5a79046a9d0..d3dc60ff60dd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -449,6 +449,14 @@ regulator-state-mem {
+ 	};
+ };
+ 
++/* i2c3 is exposed on con40
++ * pin 3 - i2c3_sda_m0, pullup to vcc_3v3
++ * pin 5 - i2c3_scl_m0, pullup to vcc_3v3
++ */
++&i2c3 {
++	status = "okay";
++};
++
+ &i2s1_8ch {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2s1m0_sclktx
+@@ -559,10 +567,17 @@ &sdmmc1 {
+ 	status = "okay";
+ };
+ 
++/* spdif is exposed on con40 pin 18 */
+ &spdif {
+ 	status = "okay";
+ };
+ 
++/* spi1 is exposed on con40
++ * pin 11 - spi1_mosi_m1
++ * pin 13 - spi1_miso_m1
++ * pin 15 - spi1_clk_m1
++ * pin 17 - spi1_cs0_m1
++ */
+ &spi1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi1m1_cs0 &spi1m1_pins>;
+@@ -576,6 +591,10 @@ &tsadc {
+ 	status = "okay";
+ };
+ 
++/* uart0 is exposed on con40
++ * pin 12 - uart0_tx
++ * pin 14 - uart0_rx
++ */
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_xfer>;
+@@ -602,6 +621,10 @@ bluetooth {
+ 	};
+ };
+ 
++/* uart2 is exposed on con40
++ * pin 8 - uart2_tx_m0_debug
++ * pin 10 - uart2_rx_m0_debug
++ */
+ &uart2 {
+ 	status = "okay";
+ };
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
