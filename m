@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5604FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jan 2022 01:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66DF4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jan 2022 01:07:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PKR+FYCxK3n3HEXz/EkIZ5Vo+Vucn1cpy5EyyVnUTEA=; b=wSeuoaQPxNEbre
-	DxGxLRvYaEc6MQ8Ppw4RM+FsUangVj3vo5xzJD8Gkxei28n+5uuOyyAXmHFi0kk8tA1lRejtDNArl
-	+3FUQSJfNxJT2rNKlZJHj2qHSCBOZjtlhsmmUDrSaiZWFFEmmpPTpf12b9Ugpy3jt4qJ6E0Py3HoB
-	mRCh6dtMBwkFwD2PZvNQDjL595zpb3ngyKnAOSbf0Jb00+z8hO9YkKSBp3rbFOEI73DQk4hkE8Coc
-	gdj0TQJelJc5PNiVStf2xkzLHuaz8d04RagYeF6T7C4iMMQT23dsOVl6WdREd7hHuI/1fs7uQFba7
-	+YQAdrwy+/jsIA5WImBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=t37XqOy3Uuy9j6w/pzXhvsDAstpsY1zsO6WIgHbzXxA=; b=BJIsZYmbJ9T6P2
+	70/v/We5ZyjkBdC50GXJLb9UzoCntzCCyhQfdItLf3ayJtidCjgo0DyXzjdF6RWwo6p9H1lu1743S
+	IALea63kybA9Ub0g8vSbNdluhLhH4jQhVwJQymdzXtx2/+HSfkjJfABxnnFWG5rQxgLtrASgDeS1+
+	ikx4hsmpkrajAQCqlTdB9IqiGK98Fz/e7+FHVMkDouJPucqFUS0jsqAlfRV1hcvwgq3kJXwXGKrB+
+	br0L1Hyhnvl1C5aQJ9Su0Ujb406IRDF5uyoK5/B+5APCW3mv8TGitWh85fs0PnqIsOx7wWJWwucOT
+	UUYNmXb9KyYR/eUAhIUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDFjf-0000Y1-Jz; Fri, 28 Jan 2022 01:07:31 +0000
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
+	id 1nDFjo-0000ap-QU; Fri, 28 Jan 2022 01:07:41 +0000
+Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDFHO-00HVZU-HW; Fri, 28 Jan 2022 00:38:20 +0000
-Received: by mail-qt1-x82d.google.com with SMTP id e16so3958110qtq.6;
- Thu, 27 Jan 2022 16:38:18 -0800 (PST)
+ id 1nDFHO-00HVYk-Gq; Fri, 28 Jan 2022 00:38:20 +0000
+Received: by mail-qt1-x82f.google.com with SMTP id r14so3973171qtt.5;
+ Thu, 27 Jan 2022 16:38:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=U0ZtMbfGNf5bI/1AePHt7T+pCQPNUqP752Ba3r+02dM=;
- b=ky3S5f7lhADSWWb9ST7r5M95iARgFNUMQiSs99hEtWaw9Cp2LuMvM2peP/BugzC8Qt
- hL9HrtWe8moyMoNhZNvQiBjznS0tyEp0+rY8HYfYN3VoUS9cBnnKNVKYMZvPiwqJ3hic
- rb+I9nYH8h0r66PhJaB8YPjBF9DzPXWTqulCSkokuNa48FoUim3pIGSCvAdRruR0m7or
- ZEFoVTctqzAl3Jqh0xysji9bV1mN4IQwTUN8w0vgoz9hC+t+leeHidi4OkC03NIkFhF6
- WMPV9PjfvLSKgDZRSQ/1m6rui25WgB5iCND4dEom4YN5aYnGka/J8MzSpBSV/2uSjfvw
- hwSg==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6NEtqARvV8XL726RAo68zVygz3uajpfAwMjDNLByJDQ=;
+ b=fBNtTWhfh0e2aupYsSMkm0mnr2auxfUY4KzigBbUxuOVVU4IqIa7omg+3VRdYc0AKg
+ QWvZrIl6JvCBPX4ownFqt6FIKka0D5MIdAX+lUDU+KvrkbX4KmRiuKYpAxtsWSKBmzWM
+ Y2IjRCK74mxaaxb5LdY0aJ7G2+Rfy7yHndEGXWj3IznuEqesufw+qdi6eNL+uQfS4ocw
+ C38/pBtqSr0W0ULk74ustaxL5xRjNHA8tt36FfTRMm20pIn8R6ww1EV10aAm/trnoLko
+ G7XGtvHgI4kIL8UZyt5CvLo9iuvCvaOv6/Y8vXEYebTCbyxS0R6Z3JPs+MWv/9BUbjnj
+ /8xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=U0ZtMbfGNf5bI/1AePHt7T+pCQPNUqP752Ba3r+02dM=;
- b=vr3MVtPtMAt25vBUawyaUkTTGrU9vdhmn5328UFgm72NEcPUjCRvrH9XNpGHFruiDG
- ed4+5PIy4/Z8cvtcJNckAVPm6MDSZmB4G52MeyUVsPX+ZKtbp26iww7XEnzavVdTXx89
- geDWOMCI5+rfWM5tkKgjn4Ulc0WTvaz5GfcTkCDJBcwLSyxaXPo6EomxwkWUqu6mrUEy
- KDivWUPSMIPZIo1XlkI156bVicc7G+qWXKtRC0FGsGZwWXwnLORGx5XboUsgDuNsk09k
- 3xZZS6c1NPzvkJsBO54cPAsp3ryJweEZeeebdXDlgDLH4c+GGWETyxlqYjuLfMapiYnG
- FQJw==
-X-Gm-Message-State: AOAM531UeUkJxoLcpPQt4ph+Qhxvh4v1ulq6Q36kON1EcRWitA5RFKcA
- O1jykL9HJGWorc5hYvC1n8k=
-X-Google-Smtp-Source: ABdhPJwRZPAqYv4oJNy1fNafX2Qj6lvpf2KHx++EeZKTn31dh+x8Mtfsyq8oYEbbM/XWJw5lq3VWrw==
-X-Received: by 2002:ac8:5e0d:: with SMTP id h13mr4763623qtx.97.1643330297428; 
- Thu, 27 Jan 2022 16:38:17 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6NEtqARvV8XL726RAo68zVygz3uajpfAwMjDNLByJDQ=;
+ b=B9GjVYSEKJt7Os15q3U7kqozYsXAhfIPerOSnf5wPc4XBJ5i06Ue8JCqqpvaxcGc+u
+ fRYERzl9oPJDVxsI4A6ZBPvU7nUvK4plW+4kNF+WH/p0HdnhF79eB1xthVy599h3DRgG
+ HmFSaxMqmTeKi15Ucye4hzNWoMx1b36gE5MGQXYtGgkNjodequAYjY+z4yaPDG6iklWw
+ mpnkQ1T9MAND7L5oIQ7yHJpBx3GRWIL/rWweoxai/JHpatezuU6u3+4ryIy3/56pJu+Z
+ vXiOVEjhCzTqMlRAYApTtEqyNiL0jUSHNAhhFKUkEppF82f2/r+SR5DGCU6drYPTEC72
+ 2XpQ==
+X-Gm-Message-State: AOAM531XKv/3vwmPAITPvRY6bccnUJs59ISjTOeK4AdyEpxO9MLNMeH4
+ qn7O0wg8gc2J8Wyh4cWpzlc=
+X-Google-Smtp-Source: ABdhPJwPHM2kqUrjC52kNZQDFaRBJEfsKeyyunuAJ0urBsruwsOfWYejieqgaQCjSHcLQUyEbAgTsA==
+X-Received: by 2002:a05:622a:164e:: with SMTP id
+ y14mr4503923qtj.471.1643330294894; 
+ Thu, 27 Jan 2022 16:38:14 -0800 (PST)
 Received: from master-x64.sparksnet (c-98-233-193-225.hsd1.dc.comcast.net.
  [98.233.193.225])
- by smtp.gmail.com with ESMTPSA id t1sm2142883qtc.48.2022.01.27.16.38.16
+ by smtp.gmail.com with ESMTPSA id t1sm2142883qtc.48.2022.01.27.16.38.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Jan 2022 16:38:17 -0800 (PST)
+ Thu, 27 Jan 2022 16:38:14 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+To: 
+Cc: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/4] arm64: dts: rockchip: add Quartz64-A sdmmc1 node
-Date: Thu, 27 Jan 2022 19:38:07 -0500
-Message-Id: <20220128003809.3291407-4-pgwipeout@gmail.com>
+Subject: [PATCH v2 0/4] Quartz64-A fixes and enablement from 5.17-rc1
+Date: Thu, 27 Jan 2022 19:38:04 -0500
+Message-Id: <20220128003809.3291407-1-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220128003809.3291407-1-pgwipeout@gmail.com>
-References: <20220128003809.3291407-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220127_163818_649755_436C03C5 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20220127_163818_638430_54DEEA37 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,99 +90,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The sdmmc1 node on Quartz64-A supports the optional wifi module from
-Pine64.
-Add the sdmmc1 node and requisite sdio_pwrseq to enable wifi support on
-the Quartz64-A.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
+Good Evening,
+
+This is the first of several patch series for further expanding
+Quartz64-A support.
+
+This series has the following patches:
+Fix the ddr regulator voltage.
+Add pmu_io_domains to permit sdio and high speed emmc support.
+Add sdmmc1 node for wifi support.
+Annotate con40 functions and enable i2c3.
+
+Please review and apply.
+
+Very Respectfully,
+Peter Geis
 
 Changelog:
 v2:
 - drop status = "okay" from sdio_pwrseq
 - drop disable-wp from sdmmc1
 - move reset-gpios to be alphabetical in sdio_pwrseq
+- add con40 annotation patch
 
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 43 +++++++++++++++++++
- 1 file changed, 43 insertions(+)
+Peter Geis (4):
+  arm64: dts: rockchip: fix Quartz64-A ddr regulator voltage
+  arm64: dts: rockchip: add Quartz64-A pmu_io_domains
+  arm64: dts: rockchip: add Quartz64-A sdmmc1 node
+  arm64: dts: rockchip: add Quartz64-A con40 hardware
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 33c2c18caaa9..c5a79046a9d0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -91,6 +91,17 @@ simple-audio-card,codec {
- 		};
- 	};
- 
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		clocks = <&rk817 1>;
-+		clock-names = "ext_clock";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		post-power-on-delay-ms = <100>;
-+		power-off-delay-us = <5000000>;
-+		reset-gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+
- 	vcc12v_dcin: vcc12v_dcin {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc12v_dcin";
-@@ -147,6 +158,17 @@ vcc_sys: vcc_sys {
- 		regulator-max-microvolt = <4400000>;
- 		vin-supply = <&vbus>;
- 	};
-+
-+	/* sourced from vcc_sys, sdio module operates internally at 3.3v */
-+	vcc_wl: vcc_wl {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_wl";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_sys>;
-+	};
- };
- 
- &cpu0 {
-@@ -475,6 +497,12 @@ pmic_int_l: pmic-int-l {
- 		};
- 	};
- 
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	vcc_sd {
- 		vcc_sd_h: vcc-sd-h {
- 			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -516,6 +544,21 @@ &sdmmc0 {
- 	status = "okay";
- };
- 
-+&sdmmc1 {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk>;
-+	sd-uhs-sdr104;
-+	vmmc-supply = <&vcc_wl>;
-+	vqmmc-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
- &spdif {
- 	status = "okay";
- };
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 81 ++++++++++++++++++-
+ 1 file changed, 79 insertions(+), 2 deletions(-)
+
 -- 
 2.25.1
 
