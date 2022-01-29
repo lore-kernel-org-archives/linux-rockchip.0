@@ -4,84 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65362C433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jan 2022 17:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A7AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jan 2022 17:57:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RX8+lbYEwEtOFeZtXkywGCwkwYHEDPC8HKaRKy68aw8=; b=AumriTAIpQ5JZL
-	Be3pX5G6jYmvsuSwnjtz6eehsSlNVDploEW1EQSeCMJcfEoA9kYgH1lCfq0bdrGkfo3nqDMNU7NHN
-	eO0Zi0bfP/HP+pBUp5bD58bkHJpjLKm9LIZ+9xgSmrNfatosCo7T1kyok05nq/b8q72rtiMRf8wzP
-	wLHOOFhr6AZ1gywAKh7Qy/isYBtNBp/dIu4xE/ZXmf1BlIFusuO+cD+QCvK95iRGFqnBiAKsbKG38
-	sHTJXmIP1bVu6+RueS7AyibD7v4oxT6hTEhX1vwabxQWS0cGwrR9/GCEQHpVRtqvSywTWLxf0uwD0
-	cmfLMm+XSEFolncqOLLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ccZnMFCTLBLNU58MR5ItgnsOsD4cbZoot+xp1/QF6Cw=; b=wDX/9akDfI3HR9
+	8x89ir0OevoBEnOVLtt9jpAhTyL7MIe9lDjxZ4x0Pha9o6lFmy/Mrh67Aawqb7kzm9v75mRajkJz2
+	xLF1RH1b0uW2LwWeWke50Sx7TFy4ahF2CaFZUim/9Uf442e/EILUb2/H2upqcOfgIFylH7bxfj/E3
+	KDbU7802neiduc9WduBSaPX/MSCu6C6QZH61l6CxjsLoUp44bvC8/W90f/yG5nupS/tpghlDH9M5i
+	8TpFlWGsfIs4Ri7XDFRstCZZmXoz+vq5p6nHAEHVhnffqQijOVW6uOwjgWWeTR+aglPtsOTgAoPJc
+	My916Yq8iQX3NgtqY27Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDrwH-005Ayk-8D; Sat, 29 Jan 2022 17:55:05 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nDryo-005CKx-LC; Sat, 29 Jan 2022 17:57:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDrvm-005Aj0-Di
- for linux-rockchip@lists.infradead.org; Sat, 29 Jan 2022 17:54:37 +0000
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 37E5E3F1D0
- for <linux-rockchip@lists.infradead.org>; Sat, 29 Jan 2022 17:54:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1643478873;
- bh=FfSK7PHOPnItg2UxrfQMXnmMovdesQ6QCsFxowTZ2mY=;
- h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
- b=unnrMevZztbPtESj/r5NpoxBdYPTBpVGCLxfClNhjdEFMHphBlBYQYT1K2lPwO0jn
- 5kfKE2NvG9iO4HY1wiZyPeqEemStq2AqhLCm4AndEVPk2qO0F/s7P23cVXynAeWOHk
- j7abiYHrfroQNVbKcJPPj9C3w0+HvGC/Vu7WVSGi3kDjJg/7q5P6PRzw7CQM2arvEX
- Z/HYQtDs5B1wLg1u+43Yif7shFQ2ttmt+HM6usRswcww7xMQNGNDwDYKY7HuctQvH5
- xJbR5f4NAPCV5JqxINwg+tI1L0fbFFeXxqGuQqYD/vkalClnyMf6zxj39YHWhltoJy
- xUKXphdcUGQlg==
-Received: by mail-ed1-f71.google.com with SMTP id
- w15-20020a056402268f00b00408234dc1dfso4684274edd.16
- for <linux-rockchip@lists.infradead.org>; Sat, 29 Jan 2022 09:54:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=FfSK7PHOPnItg2UxrfQMXnmMovdesQ6QCsFxowTZ2mY=;
- b=Qd00jJyLK4I9Uhx4IGgBijaTYtqGMN5KF3q8zHDE6WmAaE3btul4pbAo+zlSq0UJNZ
- BBJrWn4bQwChNPrK4JjKWhQX5u9Kc+tMdTjxOvBc8DCArKQtr1q7E3gkke1AHsJ3Ltdc
- vuE59GmWbwpzFE4Sk7mPk4d3hYv5VbZdQ4Ean7wmeFxVBMlq/xNwxfAunJhrIxlIDlwO
- 5FTG7So8hEOT3uHxpAnQjgO2uJpuOZwNd5lnJDkwZL9QNmn49oKLCsHsp69k9AW6t5qH
- ggLx0HlfAsfW/Z++3rOIYiALUEPKkLUDI0GWNp5YOY43vB5Vg5WAGWzaMcNB6+JtKbTE
- Sssg==
-X-Gm-Message-State: AOAM530y3FepBOg3n+h4E2rKrV0X8NV3FKiJ29JDwrZlP4qSF4irqrf2
- jNnAZ/MFWdqPJqUhVIso1ohXEGNV5kKNqZf8nUSMMIDmwdRwfefTKQi39hQVNvjwTn+eWkv2Oz0
- 67PgH4/yXbcIUzvAR8AvMa+Br2PwZkQLImwzd9yalNNZLcIPmAQ==
-X-Received: by 2002:aa7:cdc5:: with SMTP id h5mr13597839edw.293.1643478872941; 
- Sat, 29 Jan 2022 09:54:32 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx58d91XDto/xMjxDExr9JEzl/j/uOxsqzxZgQC3OzHOq4RT+oNor18vlDFtJgtZhK5hCpM2Q==
-X-Received: by 2002:aa7:cdc5:: with SMTP id h5mr13597817edw.293.1643478872702; 
- Sat, 29 Jan 2022 09:54:32 -0800 (PST)
-Received: from localhost.localdomain (xdsl-188-155-168-84.adslplus.ch.
- [188.155.168.84])
- by smtp.gmail.com with ESMTPSA id a25sm875655ejs.149.2022.01.29.09.54.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 29 Jan 2022 09:54:32 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-To: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Subject: [PATCH] arm64: dts: rockchip: align pl330 node name with dtschema
-Date: Sat, 29 Jan 2022 18:54:29 +0100
-Message-Id: <20220129175429.298836-1-krzysztof.kozlowski@canonical.com>
-X-Mailer: git-send-email 2.32.0
+ id 1nDryk-005CHe-6L; Sat, 29 Jan 2022 17:57:39 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nDryi-0005eg-Pg; Sat, 29 Jan 2022 18:57:36 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Liang Chen <cl@rock-chips.com>, sha@pengutronix.de
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: fix vcc3v3_lcd{0,
+ 1}_n regulators in rk3568-evb1-10
+Date: Sat, 29 Jan 2022 18:57:38 +0100
+Message-Id: <164347899463.1472860.17650444631712126787.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220129162440.5415-1-michael.riesch@wolfvision.net>
+References: <20220129162440.5415-1-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220129_095434_612427_4A954088 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20220129_095738_272562_1FBF1E9D 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,45 +64,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fixes dtbs_check warnings like:
+On Sat, 29 Jan 2022 17:24:39 +0100, Michael Riesch wrote:
+> The voltages VCC3V3_LCD{0,1} can be enabled with the pins GPIO0_C7 and
+> GPIO0_C5, respectively. This patch modifies the device tree in order to
+> reflect this.
 
-  dmac@ff240000: $nodename:0: 'dmac@ff240000' does not match '^dma-controller(@.*)?$'
+Applied, thanks!
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi   | 2 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+[1/2] arm64: dts: rockchip: fix vcc3v3_lcd{0,1}_n regulators in rk3568-evb1-10
+      commit: 9ade1ab4d85f5fc31a5d6cf5147702ed5c1b5b10
+[2/2] arm64: dts: rockchip: add the touchscreen controller to rk3568-evb1-v10
+      commit: 922237a6c211d9fe46b5dfb56307872cdced386d
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index f972704dfe7a..56dfbb2e2fa6 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -711,7 +711,7 @@ rktimer: timer@ff210000 {
- 		clock-names = "pclk", "timer";
- 	};
- 
--	dmac: dmac@ff240000 {
-+	dmac: dma-controller@ff240000 {
- 		compatible = "arm,pl330", "arm,primecell";
- 		reg = <0x0 0xff240000 0x0 0x4000>;
- 		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 39db0b85b4da..b822533dc7f1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -489,7 +489,7 @@ pwm3: pwm@ff1b0030 {
- 		status = "disabled";
- 	};
- 
--	dmac: dmac@ff1f0000 {
-+	dmac: dma-controller@ff1f0000 {
- 		compatible = "arm,pl330", "arm,primecell";
- 		reg = <0x0 0xff1f0000 0x0 0x4000>;
- 		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+Best regards,
 -- 
-2.32.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
