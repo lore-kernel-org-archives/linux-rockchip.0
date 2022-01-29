@@ -4,61 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA261C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Jan 2022 23:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A0DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Jan 2022 09:23:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vFQysaXbEi8NeA88S0jgkhxZNkGESy3aNVSkUr9K70g=; b=43NVQc2wxTQ3nI
-	7PoFAFsesVBUtgbkqmFdabfZzJixnIsaUunIa9KYZsliLX4e5Q6zuFLIjBuFKPHjh1Uudv3Im/R4l
-	pXB1YiyAbDiFmLOTfffK63kkcf7SU39zzATPrgvQeth3Ly07dLqY76nf34rNR1QYXJHCj3LpDQH02
-	rMwbxLXCgwwK7RbjFeIGhY8ce5haGEGTdb48NotuiyeCgBOYI8V4zo7ROqPfIG/s3Hl9LitmYK9gS
-	yOg9z+YPzQvY5CqDzLVJhUYuk4d/8PZrIk2uGb/PaINQ0sX8byXZjdAv6CCrsfOwHMJNcZnhuDtV7
-	4qmuksJV2M7r3my/vz2g==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Js6h0aRfV/W5LQelG/6VgO7ZMFyGGRPoeWxJErpBW48=; b=3jUyRXvWnP28is
+	kNMEfEsyXGEMlvkFRO4rPhaD3n2/ZNNBYo/QgE1gZAXyvepQqQLGPvgr3eb0447em0uMToJ5wuS6U
+	B4PZHdBB3sVLBopFyixIXx2V9DmUOhyZo2CNCvTbTmsF8DOmdgU6/Vnh9gV87Hnb6GvYhbk5UHErH
+	07C2vxoAiAbEtmwoTXIWlNUZLvWNAo1BXl4DEv6PBkmBY0rAiWU79z/l4TeQxCosfH+Y7HsztT2r+
+	mDOPmxpT7hSfyV7eBUeNzicBzqE53XOwNNXyqBNtLCpP9WLCqrSyWsLxoLF8NgdKaYZkSTddfyzIV
+	UHwf6usBmU447nEWLL4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nDaxV-003nVx-Ng; Fri, 28 Jan 2022 23:47:13 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nDjxI-004OT1-84; Sat, 29 Jan 2022 09:23:36 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nDaxJ-003nU0-QL; Fri, 28 Jan 2022 23:47:03 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4DFE361F3E;
- Fri, 28 Jan 2022 23:47:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1611DC340E8;
- Fri, 28 Jan 2022 23:46:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1643413620;
- bh=YbZLwG+eJY1ZimQ3PDJ414ftXS0oYjH5t+IwvoH0++s=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=H6N+qa02zvveNZcva5WhrGiGfFlJ66Cb6+yfRLYilkduh+hulF7T0OeTu/hburMzI
- yri78rLL6daKW9gr8X08EibZESI18/IBpN1Pbc1hUchVwsl9f1LfyCo1WFwktqwb8/
- WhMvDqfjoXFeMWDKTJAFvPq07d9H9J95VdV4XpgahRGHn8cMJcF4WTXB1tus4t4Uh1
- 5GnvTRmAL9qKEWspIPzel0cYJTWOmOhQW3fmKwYGPfuBHC5T3VxISuz3I97zsJVC+N
- KJ0PrtCoVJ9qsR9tTbUB13DANVzaUtP5ujdmoAOK3ZTdma0dMi9TkcPU5eWB2rSYik
- XmBrYqh7uuWpQ==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- Brian Norris <briannorris@chromium.org>, Heiko Stuebner <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>
-Cc: linux-kernel@vger.kernel.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- alsa-devel@alsa-project.org
-In-Reply-To: <20220114230209.4091727-1-briannorris@chromium.org>
-References: <20220114230209.4091727-1-briannorris@chromium.org>
-Subject: Re: (subset) [PATCH v2 0/3] (Re)enable DP/HDMI audio for RK3399 Gru
-Message-Id: <164341361780.694709.13259283241590347085.b4-ty@kernel.org>
-Date: Fri, 28 Jan 2022 23:46:57 +0000
-MIME-Version: 1.0
+ id 1nDjx4-004ORP-UH; Sat, 29 Jan 2022 09:23:24 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id b9so16494700lfq.6;
+ Sat, 29 Jan 2022 01:23:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=KVPWNoQrOh4gwIS/NTKfwX1pCCKtfusbVveEiycdTlA=;
+ b=DMKpx/mOMfOI21feRiUbT2oeVdaTx0RfWxyiFQ2n5jAFIdjM+oaXTaAWOTF51h8lIt
+ EfCy8DZfnipXO8aRfg0Mp/Y/DjwkUY3kjMzpyh3LhL7emtVBR7jykxnh9KuyyXu+IVzo
+ +Uv+hRCF2HBbvSkvq1KbPU4KnQotY2tyU8EVZdjGW4vNrC/aXsFj8v4RKWA1bAAqY7/i
+ V2GDPndsnk0wdqVwuogA7Uf8+TfDu7G4kdc3n4ksVQStfs7elj3cdb+Af92cwJuDqUCa
+ E67uootxFouyYc2Y3LyprLnGvamc+q6i/Jx0IbmUFkmG+vGEWG4ZJBJSGSrxIRWng7kM
+ 0gPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=KVPWNoQrOh4gwIS/NTKfwX1pCCKtfusbVveEiycdTlA=;
+ b=0iP8mVEO28XHLTvK7sxdl4PJ0tT9NzTlsccK05ieXTCbv9HJ6oVtjqgkOaE7RTQSyf
+ cZldSs56kyK5DlowUthdWN8pbb6OWmaCsO7s6HJMyFavF/MMeDMxJWSMeCv2m/kgmsDG
+ vCREMbe4hHbbi9JrMImjeBv/pMYdmNPkFEl16lnHrbnzAYPZBJmMmo3nvsPjECmRFF2j
+ 1J2rXQLuqmCSR+fsU9q4JnT5U5u2bwfkDNnjFB+dyxI+bSUUmvezLSX1R/YZK9HkcZ9S
+ MIZNCQdlbYBQVa/LTIxhjpuvhcx3bDUn2yz/7oSF/SbWJBLPF8ymKyt12ZuidHIRAFJq
+ agIw==
+X-Gm-Message-State: AOAM531nbUQaPNjTSLufsA2DHexKP5muw+aX0l0Pnx7QHdoy0DLbe6WX
+ ap5DVuo42xbREaZahSZFnxg=
+X-Google-Smtp-Source: ABdhPJyaLcKoXoj1+6kWfERTDb9i4r4ZTSXhTaGOw5RGwBC3tS/TconpSBW3IKUr+gPuifjgzU+3Ow==
+X-Received: by 2002:a05:6512:33d1:: with SMTP id
+ d17mr1232439lfg.455.1643448199773; 
+ Sat, 29 Jan 2022 01:23:19 -0800 (PST)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245])
+ by smtp.gmail.com with ESMTPSA id u15sm658935lfq.107.2022.01.29.01.23.18
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 29 Jan 2022 01:23:19 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: rename and sort the rk356x usb2
+ phy handles
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <CAMdYzYpkXdXDST+N8dEn7UvibXmytwNeJ+KZ9bn9Oq+RJuSaeQ@mail.gmail.com>
+Date: Sat, 29 Jan 2022 10:23:18 +0100
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liang Chen <cl@rock-chips.com>
+Message-Id: <FBB7C392-C5E0-4E34-AC17-5323414623F5@gmail.com>
+References: <20220127190456.2195527-1-michael.riesch@wolfvision.net>
+ <CAMdYzYpkXdXDST+N8dEn7UvibXmytwNeJ+KZ9bn9Oq+RJuSaeQ@mail.gmail.com>
+To: Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220128_154701_943876_7BE6700E 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20220129_012323_030712_C501A978 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,49 +98,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Jan 2022 15:02:06 -0800, Brian Norris wrote:
-> This series fixes DP/HDMI audio for RK3399 Gru systems.
+
+
 > 
-> First, there was a regression with the switch to SPDIF. Patch 1 can be
-> taken separately as a regression fix if desired. But it's not quite so
-> useful (at least on Chrome OS systems) without the second part.
+> Good Evening,
 > 
-> Second, jack detection was never upstreamed, because the hdmi-codec
-> dependencies were still being worked out when this platform was first
-> supported.
+> While I'm not against this idea, my main concern still stands.
+> I spent a great deal of thought on this, and decided to go the route I
+> did to maintain consistency with previous generations.
+> As such, I see one of three paths here:
+> - Pull this patch only and depart rk356x from previous SoCs.
+> - Do the same for previous SoCs to maintain consistency.
+> - Drop this patch to maintain consistency with previous SoCs.
 > 
-> [...]
+> I ask that others weigh in here, as offline discussion has produced
+> mixed results already.
 
-Applied to
+just pure user perspective
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+(who spent last weeks considerable time to develop DT for rk3566 tvbox. 99% of my work was by reading/learning from other boards existing DT's. Any inconsistencies in DTs makes work for such ppl like me much more harder):
 
-Thanks!
+For option 1 - i don't see value
+For option 2 - what is reward for extra work needs to be done on all other SoCs?
 
-[2/3] drm/rockchip: cdn-dp: Support HDMI codec plug-change callback
-      commit: 9da1467b49ad6c02840e8f331c5da69f6a5bdb2e
-[3/3] ASoC: rk3399_gru_sound: Wire up DP jack detection
-      commit: 6a8bc4b68ca0c6ef73518b692c00b7e1e010d056
+so option 3 seems to be natural choice...
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+in other words:
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+for me:
+option 1 brings practically zero value + increased inconsistency.
+option 2: extra work - but consistency is like in option 3 (so where is value?)
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+so option 3 offers the same consistency - but without extra work...
+ 
+just my 0.02$
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+ 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
