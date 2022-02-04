@@ -4,83 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5AF7C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Feb 2022 12:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F00BEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Feb 2022 20:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QWgQWnT/yhJOnAjyjSts7VzjdHYKtFioo2fonILkJQw=; b=qOcOvuanvaBFJz
-	saq6Irtji6ya63uuyVvE9sbgM58Rg+2cj6VMgj7syjewFsvrRfmfZfPzfWhrQvRnKX87ddkW6dWXo
-	JegG+dhP5zZ+Dji3YViLVnzIiMPBKL2wYvpmGTStDbYHF7ptRjz71kADqenD7vKzTVRJ1Q+XOfmKE
-	BnPTVFVtChIGYbJfzlj9yqexq0O0nWyKYWdtVGQ+Xaz2Ft2MkeBiAXR2qcNPybgkgcxkiWYfG07ta
-	R19VH9qi/OfFlhBMnOzuWVgs/hZ27cSlUD6b60Lq4WwBHXNuTbqY2LkxfuwPAm09Hd/0C3lM5c1Ug
-	ny2wAM0WQfaiv2nfnJQA==;
+	List-Owner; bh=//GZMY2jAuQlXSDiN/nhPvOvUmFtnn2LCWhie9uckbE=; b=mtlMOzvV/2d67f
+	E6djv4ilkpPi/SNryj3ab/M1zmkhxYt6ocUX5b6BwuANwGHJb5L/9husV2BjJartHOqVsHFP3E78l
+	dvOhyR2C9vjuEvYy+s4hPGUiOObVFcwK1Tq11sBXO9m7m6vikJE2QeSndOG9VxtvYtpcvfb6VVOpk
+	q4nY0hXquxe6ZKtFKoW1AgHnTybhx5hPV3WvlWFVtspkqDmp4qs8Qn6zxw/qo+bhRbT2TTlxUxBJQ
+	4/HZloB5ficS3ZMECPmDjsMJLRkWxz0MRENzrLNW7YND4ReUChG2fS/woi+PGAGe25mU9aA1C9++k
+	wtQOCQartHmCMOtzQv8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nFxXm-004EA4-BD; Fri, 04 Feb 2022 12:18:26 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nFxWU-004DSS-Tw; Fri, 04 Feb 2022 12:17:08 +0000
-Received: by mail-ed1-x535.google.com with SMTP id n10so12758067edv.2;
- Fri, 04 Feb 2022 04:17:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language
- :from:to:cc:references:in-reply-to:content-transfer-encoding;
- bh=eHBHzUia9mruyB4YUukSDrxzx6AfeOgulQdxUcrQ01Q=;
- b=SBeg0hAuVOVt3vAT8e1Ie0QdqByT0wbgDPzNIQNUUEAT1U4w1LOaL2DptiroXUHdfE
- Hkrw7cPb7cj5GDaCbStOaPaUkw+JP8qfpoQiCSQYYYzt4FjfH4dHw8qvlQk+lind9mtp
- dHPvgQrqwYy45MqJB4mDWxMKbNgBBqcPMb+bpbwtcCxJzm6woxWG90oMXT0We4Q9BuK+
- 8BNiPi6096ZHmkyprgC6Qrb+KtcsmS/EoDebY+VBVw52SHkXM6yv+oRDOS7tscUg05a8
- 8awoA+Fq3UtBbdMH+QgXWfx15LjDMS5MOCIxWjajedF5rl7RKVdADQThId4tJbTWSxy8
- FU6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
- :content-transfer-encoding;
- bh=eHBHzUia9mruyB4YUukSDrxzx6AfeOgulQdxUcrQ01Q=;
- b=NyYShTI2+yeBS4oXad6s4I2Yr5abRZmt0U15IVCKf2Ndm4R9jX4N1amB++bEX6WS6z
- M4DCyHaDjPgltoyLBELVzaFdZHkSuEbP4qqevllaIf8yjJyPRii8BkfenuCr5JEsT+9d
- tP/6gzVDuTjab7Mk1QecL2qKSRfa53UirfD3+RSRL8AF58j9oOXQff3aZxXILY6c0vFy
- g7fksq3kl383Wp70GBbYNm9KzxNr/2u9iw2/8ww7+/KYmpFbCxlFSuSVlTVwvwejpxFX
- As3WL6OE7nVIFSwyC7XP7M8MpDaMKyC9IWeELZ4JMcYFQ7PHGhjxajoZirWW2qoPKNTo
- MosA==
-X-Gm-Message-State: AOAM530GtVDma6P+EJOGqBAqOEDo+SK3bZst1p925jVOjh7mbguR8C7n
- RKBbq7yHwYrsJKoF44oE+xk=
-X-Google-Smtp-Source: ABdhPJwNGOsK4+pWoc1ci4iXaJJz7WgHa2jxbtSwbSsa9Axav2aDtMiirV3zHvkRizynn7vEBUFnvQ==
-X-Received: by 2002:a05:6402:40cd:: with SMTP id
- z13mr2737770edb.119.1643977024173; 
- Fri, 04 Feb 2022 04:17:04 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- d15sm610498ejw.143.2022.02.04.04.17.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Feb 2022 04:17:03 -0800 (PST)
-Message-ID: <72304aa8-6845-250b-dc0e-5122428b8dd8@gmail.com>
-Date: Fri, 4 Feb 2022 13:17:02 +0100
+	id 1nG514-005Nzo-JF; Fri, 04 Feb 2022 20:17:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nG50k-005NwK-0w; Fri, 04 Feb 2022 20:16:51 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CB3EA1476;
+ Fri,  4 Feb 2022 12:16:48 -0800 (PST)
+Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com
+ [10.1.196.40])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id BD2983F718;
+ Fri,  4 Feb 2022 12:16:47 -0800 (PST)
+From: Robin Murphy <robin.murphy@arm.com>
+To: joro@8bytes.org,
+	will@kernel.org
+Cc: iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] iommu/rockchip: : Use standard driver registration
+Date: Fri,  4 Feb 2022 20:16:41 +0000
+Message-Id: <c08d58bff340da6a829e76d66d2fa090a9718384.1644005728.git.robin.murphy@arm.com>
+X-Mailer: git-send-email 2.28.0.dirty
+In-Reply-To: <05ca5e1b29bdd350f4e20b9ceb031a2c281e23d2.1644005728.git.robin.murphy@arm.com>
+References: <05ca5e1b29bdd350f4e20b9ceb031a2c281e23d2.1644005728.git.robin.murphy@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v7 3/4] phy: rockchip: add naneng combo phy for RK3568
-Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, vkoul@kernel.org,
- michael.riesch@wolfvision.net, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-phy@lists.infradead.org, kishon@ti.com, p.zabel@pengutronix.de,
- cl@rock-chips.com, kever.yang@rock-chips.com, lee.jones@linaro.org,
- wulf@rock-chips.com, Frank Wunderlich <frank-w@public-files.de>
-References: <20211230084815.28110-1-yifeng.zhao@rock-chips.com>
- <20211230084815.28110-4-yifeng.zhao@rock-chips.com>
- <4838413b-c424-cf55-0699-9cd8ac23d9c2@gmail.com>
-In-Reply-To: <4838413b-c424-cf55-0699-9cd8ac23d9c2@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220204_041707_019025_8518A394 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20220204_121650_129110_CB67CE7C 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,159 +65,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko, Frank and others,
+It's been a long time since there was any reason to register IOMMU
+drivers early. Convert to the standard platform driver helper.
 
-China is on new year vacation.
+CC: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+ drivers/iommu/rockchip-iommu.c | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
 
-Question for Heiko:
-With xpcs in a separate node, how do we pass phy modes from gmac to
-xpcs, multiphy in a correct DT way?
-Can we brand xpcs as phy?
-Please advise.
-
-Johan
-===
-
-Found example for the way Rockchip connects sgmii in the manufacturer DT.
-https://github.com/Poco-Ye/rk-ethernet/blob/master/SGMII.rar
-
-From gmac1.txt:
-
-> &mdio1 {
->         sgmii_phy: phy@1 {
-         sgmii_phy: phy@0 { // ???
-
-What is correct?
-
->                 compatible = "ethernet-phy-ieee802.3-c22";
->                 reg = <0x0>;
-
-C45E
-Clause 45 PHY Enable
-When this bit is set, Clause 45 capable PHY is connected to MDIO.
-When this bit is reset, Clause 22 capable PHY is connected to
-MDIO.
-Values:
-1'b0: Clause 45 PHY is disabled
-1'b1: Clause 45 PHY is enabled
-
->         };
-> };
->
->
-> &combphy2_psq {
-> +       rockchip,sgmii-mac-sel = <1>;
->         status = "okay";
-> };
->
->
-> &gmac0 {
-> 	phy-mode = "sgmii";
-> 	
-> 	rockchip,pipegrf = <&pipegrf>;
-> 	rockchip,xpcs = <&xpcs>;
->
-> 	snps,reset-gpio = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-> 	snps,reset-active-low;
-> 	/* Reset time is 20ms, 100ms for rtl8211f */
-> 	snps,reset-delays-us = <0 20000 100000>;
->
-> 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>;
-> 	assigned-clock-parents = <&gmac1_xpcsclk>;
->
-> +	pinctrl-0 = <&gmac1m0_miim>;
-> 	power-domains = <&power RK3568_PD_PIPE>;
-> 	phys = <&combphy2_psq PHY_TYPE_SGMII>;
-> +	phy-handle = <&sgmii_phy>;
->
-> 	status = "okay";
-> };
-
-===
-
-Proposal:
-xpcs driver passes mode info to multiphy driver.
-Phy arg is used for gmac source selection for PHY_INTERFACE_MODE_SGMII
-and PHY_INTERFACE_MODE_QSGMII.
-
-> 	phys = <&xpcs 0>;
-
-===
-
-{
-	gmac0_xpcsclk: xpcs-gmac0-clock {
-		compatible = "fixed-clock";
-		clock-frequency = <125000000>;
-		clock-output-names = "clk_gmac0_xpcs_mii";
-		#clock-cells = <0>;
-	};
-
-	gmac1_xpcsclk: xpcs-gmac1-clock {
-		compatible = "fixed-clock";
-		clock-frequency = <125000000>;
-		clock-output-names = "clk_gmac1_xpcs_mii";
-		#clock-cells = <0>;
-	};
-
-	xpcs: syscon@fda00000 {
-		compatible = "rockchip,rk3568-xpcs", "syscon";
-		reg = <0x0 0xfda00000 0x0 0x200000>;
-		clocks = <&cru PCLK_XPCS>;
-		clock-names = "pclk_xpcs";
-
->		phys = <&multiphy2>;
-
-		power-domains = <&power RK3568_PD_PIPE>;
- 		rockchip,pipegrf = <&pipegrf>; // Switch between gmac0 and gmac1
-		status = "disabled";
-	};
-}
-
-&mdio1 {
-         sgmii_phy: phy@0 {
-                 compatible = "ethernet-phy-ieee802.3-c22";
-                 reg = <0x0>;
-         };
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 7f23ad61c094..204a93a72572 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1407,9 +1407,4 @@ static struct platform_driver rk_iommu_driver = {
+ 		   .suppress_bind_attrs = true,
+ 	},
  };
+-
+-static int __init rk_iommu_init(void)
+-{
+-	return platform_driver_register(&rk_iommu_driver);
+-}
+-subsys_initcall(rk_iommu_init);
++builtin_platform_driver(rk_iommu_driver);
+-- 
+2.28.0.dirty
 
-
-&multiphy2 {
-         status = "okay";
-};
-
-
-&gmac0 {
-	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>;
- 	assigned-clock-parents = <&gmac1_xpcsclk>;
-
- 	phys = <&combphy2_psq PHY_TYPE_SGMII>;
-	phy-handle = <&sgmii_phy>;
- 	phy-mode = "sgmii";
-
-> 	phys = <&xpcs 0>;
-
-	pinctrl-0 = <&gmac1m0_miim>;
-
- 	snps,reset-gpio = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-	snps,reset-active-low;
- 	/* Reset time is 20ms, 100ms for rtl8211f */
- 	snps,reset-delays-us = <0 20000 100000>;
-
-	status = "okay";
-};
-
-On 1/3/22 19:26, Johan Jonker wrote:
-> Hi Yifeng, Kishon, rob+dt,
-> 
-> Some comments, have a look if it's useful.
-> 
-> ====
-> 
-> Could the DT and phy maintainer advise the correct/right driver
-> structure to Yifeng, so that we can move forward!
-> 
-> ====
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
