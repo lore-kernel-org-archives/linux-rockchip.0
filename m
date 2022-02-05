@@ -4,84 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2B5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Feb 2022 14:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEE4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Feb 2022 19:49:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RiXow53dSNGKceU8q+FP5CKzmVBkBiOvTkmbRu1UixQ=; b=BGpgUI6s9V50JE
-	/w+Ht5VXl1VNhTkmi3M6EQBuqqpLpErRxmMHapIhYpqP2G1nd393ok733xuX37Ap/csXJiOAePM1o
-	bZY/ujMxeolpC4imgxaR0vovNSHAucrZPuZrTfqCtvO4qFCMV+uuZGmEREkFOaSYPSoGsrdG6ztdc
-	dIF7NdooPQU9+LVl8qPivELUDSjCkNUmu/nFjarGw3ixhDjMwZvGQFz6JOWas7o75GsDIdrNM6MCA
-	bV3pnhg/JHMTym70sJCaozL03ObW1PRIr63Da4R3s59rp+13PKmQmqm56n8fBug4liIBDAj5iotxb
-	iGGB7YRLmbbip4fGDTyw==;
+	List-Owner; bh=2L1z4ZkYsrZ4lvXjef37kiizNTXclyAnd7WW1i8CGRQ=; b=MBgSMc9jFSiCGZ
+	GI0bbrovnGZLeZu9vLB0yEfJwa5wEEfLOo/1fviYkfhlg9e63ETV5r8o3YyEkaI84w27c0qk1T+wK
+	1wLqBane3URwwcEUQLqzHDkRS8wcdgUWFWB/q3gG1r5Z4peWW6KpdJ6eTja9ZlnCoE1/nqtmT8T/v
+	sqOLCaN+5rp0qafibeeDk5ZWxmDBYlYPKNaSlONkpcmVlouyeOtn+s7FKii1Cr1mhdk+RSBMPpb1S
+	hfH2YhL8htJZU4+ZGZ10xeHu6LjKEhddA1GZ2r4U1yTsmPJ6rulQDiy1MOBE428exOsu0NkpAlSl5
+	slzlG0uiyixyICQsu0FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nGLdH-006azz-Um; Sat, 05 Feb 2022 14:01:43 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1nGR3X-007LY9-1S; Sat, 05 Feb 2022 19:49:11 +0000
+Received: from mout.gmx.net ([212.227.15.18])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nGLdE-006ayT-7m
- for linux-rockchip@lists.infradead.org; Sat, 05 Feb 2022 14:01:42 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id b13so19546933edn.0
- for <linux-rockchip@lists.infradead.org>; Sat, 05 Feb 2022 06:01:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/T0j4YmGJcgpIu421P1/dimIR0CxdCqo8uH7IcJ/4gQ=;
- b=ycgJvcnTlpqZNVhoA9CjXAOtRLtmOrllHT1AJKLyornTNPy09m2qelUk1JxtgQwfsh
- Emsd2HifHnckUBnGChCm10HiE0IGAta4CrWgFdqWXZTB0d/+t1dZw4cE8uESEFK/KosN
- bnscZp2nSU9kcgN5jFuravGijoeZsmlL4Rmxva3vPzZlmXfGdBzwtPTh5tkcYcKs0Koh
- 648OpvPXCqky7qcStI1CCBKxOht54+wepTL893Z13+mx+caKvBtpIh8t3q5S1jZcrj/I
- 6mHMOlPCdcHY24RFD7mDo+S1PDZm58w+2q5k9PldbILlFD8u9WGQYAvzqjmpAvBTctw1
- TYNQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/T0j4YmGJcgpIu421P1/dimIR0CxdCqo8uH7IcJ/4gQ=;
- b=n+E9e9+Mn5hO3f59GxAVXD8uULcNH2d/Q6d+j50rr8jx94o4NhdiIQlOa4++BhNqeE
- 3+AyE7J4dVqeMb0HKde+VXhyDjOLwE6lXyTvyA+PoBquRF/Laskf9PEwmUkI43AS3lGK
- QiJ8GEwPHFcVD1oHYDLksoH2Rsdk9l3ZCFa7/iXSkfgmUlz254E4D5pyP62GSzBG5ZjL
- hUNfXTyFzt09DMDDmuAwGWlxao8P1AkW/FB0180ihTXaaJBXDi0P0R6Ot/8Z4hBD5dp2
- 40Qvca72rtXFmtO/tRS4sEhfcT7rSTmRoeSpYWPNaACJzHfUJ+IXNR4Aohh+9Spef2mZ
- pnlA==
-X-Gm-Message-State: AOAM531jortkhRaLXYK0YIihzbbUJ+0+FfRnxD2uKmBI4IBz64fZ4Tdi
- XxGQXZEm+VlFDifqNxv3PFLrmUrO4ZPrRk184ehb4g==
-X-Google-Smtp-Source: ABdhPJxjORbMvr+wAzN/c18pI3z16Av5bxvxOpm75K+cTPP+HabLnq/blEZ/OGup/Zv8zvg4hjtNH/oISTd1EXOz5/M=
-X-Received: by 2002:a05:6402:34c2:: with SMTP id
- w2mr4442225edc.357.1644069696418; 
- Sat, 05 Feb 2022 06:01:36 -0800 (PST)
+ id 1nGQHl-0072IL-4W; Sat, 05 Feb 2022 18:59:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1644087575;
+ bh=Aw2WMDEbEhlH/mZNLfkFzJ3FjsJZHx67MeYHGf5Ed1c=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=E0SpvTtVR4zB+1sVAyIeA5Yex7HrM8hnFx8yFn76GNvJQ3xPdTEtV2PiicJSTPssn
+ CTs6y7cPyf9lyRjSz6pmToOCU7cQgebUk3lLq3spvAKBRyWrfOsQK8kfb7YDDWD9nF
+ eQBMy12TPbgTLLb5QeMLjwl7rkugiF0vqSNVWmG4=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.75.80] ([80.245.75.80]) by web-mail.gmx.net
+ (3c-app-gmx-bs06.server.lan [172.19.170.55]) (via HTTP); Sat, 5 Feb 2022
+ 19:59:35 +0100
 MIME-Version: 1.0
-References: <20220125171129.472775-1-aford173@gmail.com>
- <20220125171129.472775-3-aford173@gmail.com>
- <43e29322-fc4d-2c72-86b2-1f41fb05a2f9@xs4all.nl>
-In-Reply-To: <43e29322-fc4d-2c72-86b2-1f41fb05a2f9@xs4all.nl>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Sat, 5 Feb 2022 11:01:23 -0300
-Message-ID: <CAAEAJfDfd83LWOZmcg-==JTs7QHveT3dQ=BdnFc21=zZXrTxuA@mail.gmail.com>
-Subject: Re: [PATCH V4 02/11] dt-bindings: power: imx8mq: add defines for VPU
- blk-ctrl domains
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Shawn Guo <shawnguo@kernel.org>, Adam Ford-BE <aford@beaconembedded.com>, 
- Chris Healy <cphealy@gmail.com>, Lucas Stach <l.stach@pengutronix.de>, 
- Rob Herring <robh@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>,
- linux-media <linux-media@vger.kernel.org>, Adam Ford <aford173@gmail.com>
+Message-ID: <trinity-7a0de29e-ada7-43b1-ae8f-50da4736f2b1-1644087575012@3c-app-gmx-bs06>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>, Johan
+ Jonker <jbx6244@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: [PATCH v2 1/2] dt-bindings: rockchip: Add BananaPi R2 Pro Board
+Date: Sat, 5 Feb 2022 19:59:35 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220123135116.136846-2-linux@fw-web.de>
+References: <20220123135116.136846-1-linux@fw-web.de>
+ <20220123135116.136846-2-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:wtFtw4+ksp83Q2y92etl/kbPoD8QWRWOUoK1ywDfvhrdYz68Xyd1uZItuW7+kN2NdNUoZ
+ aPdebyWl5vMRsIAgFgy2jS4UjyDJt2ehF1gPcG0EyypqLdZUo9lpFfuHqqK8yWGUt0TftMCzK9mE
+ VugotwAhJxGnC+WVlRMwio86X5WDPXg0auY1pKBAsUdfCK9EJ3H6ZbPM7u/oqbyjOsxJqulSL2bp
+ ksL3Q432k+Xa+z1EeJdydiVlK5Y+0eGYvqekkNLVKfjsbyrXzxQdah5C3LsfbXrU8sBpuUEtcvnI
+ Tw=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZfuXrw71q/4=:ChBe3CXdNiA+BE9kiEo7w9
+ 6N/3blfcGwR9VfGH6FRU6JZ4bkHlQp8ry/OLIGjGqizYBCx1KwIXkWdiOfGyVcCzIEuj4eRwT
+ 8hlmsJIdNsnV0SCD9Et9KMWgUQUHlcaxcHzExdftklMxsnCdyhXiS7d+S9+cLsLcGEYoX+8cx
+ Bl91e/9oY/yZuZdDVpVuTc0bOOxiWuEtxoWCxRrlLo9BiUVQiL3dgrHwi/kXXuZTV/14LL1PU
+ K+uA932PyYEvqHxRmAuNRpGsvh5pTmHSjHnhM1sauyqvI75UcXxI50Ar8FDb0mg35vbG69M5J
+ u6/Mr/zq0ibXqCse/6mHpOZPmNE1yOo+DXkWPtyHkHjLq1zggYNc1qW0ZhvGTtN+YgiCPOraJ
+ S/N1WBC2j928AP+lz4XeffXTOBqNpwrHRr2IJUXoF5offlKluhkdi4Mu5SIFYJxqCMNpvUR9c
+ 42eEDDJ96jhAZecSKv6oM358msy7m1hxS1NTolGXr0v6WA9uh5RgIY6eHwX9G4mfCpH5MQmDn
+ y8DL34GJvXVnB8WmXSqsvjxPGuQ0/A6/iARRDOSEwmfrveywYIViAPcOJqNR0mNnhyE7vITA5
+ PjNF6PSOQLyLe8IUt4PzWBCNaRg1S/jLrN1uC7eLnwUNOkc2jE0zOD4SmfgNPZOWnUnYmnULo
+ iDb7a3DbcUfRE5rZ2/1TIdWAEZOLIY6w2YBoz2XLD1aO0R07Pzq9VE8tuxF8Fr+qD/UkYgSGI
+ ryq/tMgBIpso2/vYpbXDmxsAZPGJ9HhlZKhwKANMQ+aELB35qH9lmMyVldNSV5ZLttbf2uZnL
+ Pc7gl2l
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220205_060140_730877_6800A998 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20220205_105949_565863_1D631C99 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +90,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn, Hans,
+Hi
 
-On Thu, 27 Jan 2022 at 05:46, Hans Verkuil <hverkuil@xs4all.nl> wrote:
->
-> Shawn,
->
-> Can you take patches 2-4 of this series or shall I? In the latter case I
-> need your Acked-by for these three patches.
->
+just want to send a friendly ping ;)
 
-Gentle reminder about these patches.
-
-Thanks!
-Ezequiel
+regards Frank
 
 
-> Regards,
+> Gesendet: Sonntag, 23. Januar 2022 um 14:51 Uhr
+> Von: "Frank Wunderlich" <linux@fw-web.de>
+> An: linux-rockchip@lists.infradead.org
+> Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Rob Herring" <robh+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Peter Geis" <pgwipeout@gmail.com>, "Johan Jonker" <jbx6244@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+> Betreff: [PATCH v2 1/2] dt-bindings: rockchip: Add BananaPi R2 Pro Board
 >
->         Hans
+> From: Frank Wunderlich <frank-w@public-files.de>
 >
-> On 25/01/2022 18:11, Adam Ford wrote:
-> > From: Lucas Stach <l.stach@pengutronix.de>
-> >
-> > This adds the defines for the power domains provided by the VPU
-> > blk-ctrl on the i.MX8MQ.
-> >
-> > Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
-> > Acked-by: Rob Herring <robh@kernel.org>
-> >
-> > diff --git a/include/dt-bindings/power/imx8mq-power.h b/include/dt-bindings/power/imx8mq-power.h
-> > index 8a513bd9166e..9f7d0f1e7c32 100644
-> > --- a/include/dt-bindings/power/imx8mq-power.h
-> > +++ b/include/dt-bindings/power/imx8mq-power.h
-> > @@ -18,4 +18,7 @@
-> >  #define IMX8M_POWER_DOMAIN_MIPI_CSI2 9
-> >  #define IMX8M_POWER_DOMAIN_PCIE2     10
-> >
-> > +#define IMX8MQ_VPUBLK_PD_G1          0
-> > +#define IMX8MQ_VPUBLK_PD_G2          1
-> > +
-> >  #endif
+> Add Devicetree Binding for Bananapi R2 Pro Board based on rk3568 SoC
+>
+> Co-developed-by: Peter Geis <pgwipeout@gmail.com>
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 4aed16176434..33d6423fe6c3 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -651,6 +651,11 @@ properties:
+>            - const: rockchip,rk3568-evb1-v10
+>            - const: rockchip,rk3568
+>
+> +      - description: Rockchip RK3568 Banana Pi R2 Pro
+> +        items:
+> +          - const: rockchip,rk3568-bpi-r2pro
+> +          - const: rockchip,rk3568
+> +
+>  additionalProperties: true
+>
+>  ...
+> --
+> 2.25.1
+>
 >
 
 _______________________________________________
