@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F4F7C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Feb 2022 23:16:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D2B5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Feb 2022 14:01:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B2W4Di3uUQvUZMKc3bUnTupZNYzI/eVOtoTNW7lDOU4=; b=jruEybTJ1HqVje
-	+r6cpA2by4YOUZk/LnlR8UHUY1JgptcuF5hSYWTxXDhKGH8T4BYnudairMreB1Ys9MOv5CR2GrFnm
-	3V1GEMibdr0n8lmgxlGUiAsXlX9umb/skkGXawkA/E7P9CpxcKnqoIMURItMaueG+9OpqokxmnDtF
-	gyvGk1ZGhc/pKu3T8WCc0enGWLPgg3gqZF33m43Sj4b4b1WAVzRoBjcV6q5AD88trg/P8FYF033ia
-	iB0hrZcJEGOIq8oWUtY3Mr8057sNRkmX75Foq7qzz3bFoea+rP68P8IZAuu0lELQlM9/yi72UtFOV
-	NfySsB4Dnunr5KmFlwvA==;
+	List-Owner; bh=RiXow53dSNGKceU8q+FP5CKzmVBkBiOvTkmbRu1UixQ=; b=BGpgUI6s9V50JE
+	/w+Ht5VXl1VNhTkmi3M6EQBuqqpLpErRxmMHapIhYpqP2G1nd393ok733xuX37Ap/csXJiOAePM1o
+	bZY/ujMxeolpC4imgxaR0vovNSHAucrZPuZrTfqCtvO4qFCMV+uuZGmEREkFOaSYPSoGsrdG6ztdc
+	dIF7NdooPQU9+LVl8qPivELUDSjCkNUmu/nFjarGw3ixhDjMwZvGQFz6JOWas7o75GsDIdrNM6MCA
+	bV3pnhg/JHMTym70sJCaozL03ObW1PRIr63Da4R3s59rp+13PKmQmqm56n8fBug4liIBDAj5iotxb
+	iGGB7YRLmbbip4fGDTyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nG7oo-005kWj-FY; Fri, 04 Feb 2022 23:16:42 +0000
-Received: from mail-oo1-f49.google.com ([209.85.161.49])
+	id 1nGLdH-006azz-Um; Sat, 05 Feb 2022 14:01:43 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nG7om-005kUd-Ct; Fri, 04 Feb 2022 23:16:41 +0000
-Received: by mail-oo1-f49.google.com with SMTP id
- b15-20020a4a878f000000b002dccc412166so6337713ooi.11; 
- Fri, 04 Feb 2022 15:16:37 -0800 (PST)
+ id 1nGLdE-006ayT-7m
+ for linux-rockchip@lists.infradead.org; Sat, 05 Feb 2022 14:01:42 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id b13so19546933edn.0
+ for <linux-rockchip@lists.infradead.org>; Sat, 05 Feb 2022 06:01:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/T0j4YmGJcgpIu421P1/dimIR0CxdCqo8uH7IcJ/4gQ=;
+ b=ycgJvcnTlpqZNVhoA9CjXAOtRLtmOrllHT1AJKLyornTNPy09m2qelUk1JxtgQwfsh
+ Emsd2HifHnckUBnGChCm10HiE0IGAta4CrWgFdqWXZTB0d/+t1dZw4cE8uESEFK/KosN
+ bnscZp2nSU9kcgN5jFuravGijoeZsmlL4Rmxva3vPzZlmXfGdBzwtPTh5tkcYcKs0Koh
+ 648OpvPXCqky7qcStI1CCBKxOht54+wepTL893Z13+mx+caKvBtpIh8t3q5S1jZcrj/I
+ 6mHMOlPCdcHY24RFD7mDo+S1PDZm58w+2q5k9PldbILlFD8u9WGQYAvzqjmpAvBTctw1
+ TYNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Noz2S1R2/8Z3d7zvAFyG3K4LlMUyG1rJ009mn97U+i8=;
- b=ZWG1bLP+uojutXSnT0Xg9XNdkXvBfPH5Mm0tJV3ch0V5Tmn7RMUJ+vYVza0khp5DMx
- uirWw7mB9Gmf+dKXiS1ZsYJHb3LM9YeZOJq4EioFiWCaSCfjA2an0cp/eqSJc6SABpUg
- 9CBOy9Mm1WftKWTua/ueBsc7z4HmLrJMvFCos0+oIDp2mBZoOGUhN0oIMK+C598g7gQ+
- cjgrt1MCok4iy0w9+zcs4OXdnZ1LUUk/5m4uAY5De4+vdvcuHwgV4LAaUCPdBZFueYMH
- x1KEa0PLkshB6LBif68PG0lUNVOx5F0Ziyvsc+TVdstOBzt9Sy6u1YJ62OFyTKHrkwfL
- HGIg==
-X-Gm-Message-State: AOAM532SzUKeVeOUmWDST+GXukuFZ4SU1/AsYt2HD4170fqTS9H2qPAt
- 5snkoTytIIw004S44jI1Fw==
-X-Google-Smtp-Source: ABdhPJwHobYCqQ9RVCiAPVCUiGgX7dW2gc1hUD+YsotlyWKPy4uONG+pwbHb8zZ+M6FyRw/WrPeW6w==
-X-Received: by 2002:a05:6870:87c1:: with SMTP id
- s1mr328429oam.347.1644016597248; 
- Fri, 04 Feb 2022 15:16:37 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id bj8sm1520290oib.20.2022.02.04.15.16.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Feb 2022 15:16:36 -0800 (PST)
-Received: (nullmailer pid 3365859 invoked by uid 1000);
- Fri, 04 Feb 2022 23:16:35 -0000
-Date: Fri, 4 Feb 2022 17:16:35 -0600
-From: Rob Herring <robh@kernel.org>
-To: Adam Ford <aford173@gmail.com>
-Cc: Fabio Estevam <festevam@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, aford@beaconembedded.com,
- NXP Linux Team <linux-imx@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Lucas Stach <l.stach@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org,
- cphealy@gmail.com, linux-media@vger.kernel.org
-Subject: Re: [PATCH V4 09/11] dt-bindings: media: nxp, imx8mq-vpu: Add
- support for G1 on imx8mm
-Message-ID: <Yf2z0wF2KJKmQ4IS@robh.at.kernel.org>
-References: <20220125171129.472775-1-aford173@gmail.com>
- <20220125171129.472775-10-aford173@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/T0j4YmGJcgpIu421P1/dimIR0CxdCqo8uH7IcJ/4gQ=;
+ b=n+E9e9+Mn5hO3f59GxAVXD8uULcNH2d/Q6d+j50rr8jx94o4NhdiIQlOa4++BhNqeE
+ 3+AyE7J4dVqeMb0HKde+VXhyDjOLwE6lXyTvyA+PoBquRF/Laskf9PEwmUkI43AS3lGK
+ QiJ8GEwPHFcVD1oHYDLksoH2Rsdk9l3ZCFa7/iXSkfgmUlz254E4D5pyP62GSzBG5ZjL
+ hUNfXTyFzt09DMDDmuAwGWlxao8P1AkW/FB0180ihTXaaJBXDi0P0R6Ot/8Z4hBD5dp2
+ 40Qvca72rtXFmtO/tRS4sEhfcT7rSTmRoeSpYWPNaACJzHfUJ+IXNR4Aohh+9Spef2mZ
+ pnlA==
+X-Gm-Message-State: AOAM531jortkhRaLXYK0YIihzbbUJ+0+FfRnxD2uKmBI4IBz64fZ4Tdi
+ XxGQXZEm+VlFDifqNxv3PFLrmUrO4ZPrRk184ehb4g==
+X-Google-Smtp-Source: ABdhPJxjORbMvr+wAzN/c18pI3z16Av5bxvxOpm75K+cTPP+HabLnq/blEZ/OGup/Zv8zvg4hjtNH/oISTd1EXOz5/M=
+X-Received: by 2002:a05:6402:34c2:: with SMTP id
+ w2mr4442225edc.357.1644069696418; 
+ Sat, 05 Feb 2022 06:01:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220125171129.472775-10-aford173@gmail.com>
+References: <20220125171129.472775-1-aford173@gmail.com>
+ <20220125171129.472775-3-aford173@gmail.com>
+ <43e29322-fc4d-2c72-86b2-1f41fb05a2f9@xs4all.nl>
+In-Reply-To: <43e29322-fc4d-2c72-86b2-1f41fb05a2f9@xs4all.nl>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Sat, 5 Feb 2022 11:01:23 -0300
+Message-ID: <CAAEAJfDfd83LWOZmcg-==JTs7QHveT3dQ=BdnFc21=zZXrTxuA@mail.gmail.com>
+Subject: Re: [PATCH V4 02/11] dt-bindings: power: imx8mq: add defines for VPU
+ blk-ctrl domains
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Shawn Guo <shawnguo@kernel.org>, Adam Ford-BE <aford@beaconembedded.com>, 
+ Chris Healy <cphealy@gmail.com>, Lucas Stach <l.stach@pengutronix.de>, 
+ Rob Herring <robh@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>,
+ linux-media <linux-media@vger.kernel.org>, Adam Ford <aford173@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220204_151640_443163_D27D0C8A 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20220205_060140_730877_6800A998 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,17 +99,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Jan 2022 11:11:26 -0600, Adam Ford wrote:
-> The i.MX8M mini appears to have a similar G1 decoder but the
-> post-processing isn't present, so different compatible flag is required.
-> Since all the other parameters are the same with imx8mq, just add
-> the new compatible flag to nxp,imx8mq-vpu.yaml.
-> 
-> Signed-off-by: Adam Ford <aford173@gmail.com>
-> Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-> 
+Hi Shawn, Hans,
 
-Acked-by: Rob Herring <robh@kernel.org>
+On Thu, 27 Jan 2022 at 05:46, Hans Verkuil <hverkuil@xs4all.nl> wrote:
+>
+> Shawn,
+>
+> Can you take patches 2-4 of this series or shall I? In the latter case I
+> need your Acked-by for these three patches.
+>
+
+Gentle reminder about these patches.
+
+Thanks!
+Ezequiel
+
+
+> Regards,
+>
+>         Hans
+>
+> On 25/01/2022 18:11, Adam Ford wrote:
+> > From: Lucas Stach <l.stach@pengutronix.de>
+> >
+> > This adds the defines for the power domains provided by the VPU
+> > blk-ctrl on the i.MX8MQ.
+> >
+> > Signed-off-by: Lucas Stach <l.stach@pengutronix.de>
+> > Acked-by: Rob Herring <robh@kernel.org>
+> >
+> > diff --git a/include/dt-bindings/power/imx8mq-power.h b/include/dt-bindings/power/imx8mq-power.h
+> > index 8a513bd9166e..9f7d0f1e7c32 100644
+> > --- a/include/dt-bindings/power/imx8mq-power.h
+> > +++ b/include/dt-bindings/power/imx8mq-power.h
+> > @@ -18,4 +18,7 @@
+> >  #define IMX8M_POWER_DOMAIN_MIPI_CSI2 9
+> >  #define IMX8M_POWER_DOMAIN_PCIE2     10
+> >
+> > +#define IMX8MQ_VPUBLK_PD_G1          0
+> > +#define IMX8MQ_VPUBLK_PD_G2          1
+> > +
+> >  #endif
+>
 
 _______________________________________________
 Linux-rockchip mailing list
