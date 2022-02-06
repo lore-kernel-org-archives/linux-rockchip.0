@@ -4,75 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FEE4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Feb 2022 19:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7157FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Feb 2022 12:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2L1z4ZkYsrZ4lvXjef37kiizNTXclyAnd7WW1i8CGRQ=; b=MBgSMc9jFSiCGZ
-	GI0bbrovnGZLeZu9vLB0yEfJwa5wEEfLOo/1fviYkfhlg9e63ETV5r8o3YyEkaI84w27c0qk1T+wK
-	1wLqBane3URwwcEUQLqzHDkRS8wcdgUWFWB/q3gG1r5Z4peWW6KpdJ6eTja9ZlnCoE1/nqtmT8T/v
-	sqOLCaN+5rp0qafibeeDk5ZWxmDBYlYPKNaSlONkpcmVlouyeOtn+s7FKii1Cr1mhdk+RSBMPpb1S
-	hfH2YhL8htJZU4+ZGZ10xeHu6LjKEhddA1GZ2r4U1yTsmPJ6rulQDiy1MOBE428exOsu0NkpAlSl5
-	slzlG0uiyixyICQsu0FA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:From:To:MIME-Version:Date:Message-ID:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cQhho5uu8LsExXKM3R0/P8Vi9IcxWU5d7WkmSxJ/xb8=; b=FTBEMatUrqlRDA
+	uQshj1vSHBV1IhBJhvp3BKot46VUehiFHk6aBH7DYdTz9taF89vJy8qhjFOH1N04ew9QgpRke2Pa2
+	jvhB1As96YsxX6OGXkVt0HNuZSNwQmtQy2qKGpIGqAlIeXf0Jv6ad8vI72ZP7E76PLznQh9mmQvKi
+	7l10ALZl9sRy9LrB133JWaCzlNbc0UpjrsyjBqDuEkB4ENXPUTRWvmwKurlc8ZWC1WbYaTuiJxVtZ
+	1HC9bZ8i+WUmR4ZNymJTfTH/vvKkRczf4b9CBDx/GePPdt+6yqdfQlF1SuJPuU0EgEtU5IXhl++QH
+	9dH+88xQx9Bsnaba0IsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nGR3X-007LY9-1S; Sat, 05 Feb 2022 19:49:11 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1nGgy3-008BR5-3u; Sun, 06 Feb 2022 12:48:35 +0000
+Received: from pscan.eu ([31.193.140.172] helo=mail.pscan.uk)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nGQHl-0072IL-4W; Sat, 05 Feb 2022 18:59:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1644087575;
- bh=Aw2WMDEbEhlH/mZNLfkFzJ3FjsJZHx67MeYHGf5Ed1c=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=E0SpvTtVR4zB+1sVAyIeA5Yex7HrM8hnFx8yFn76GNvJQ3xPdTEtV2PiicJSTPssn
- CTs6y7cPyf9lyRjSz6pmToOCU7cQgebUk3lLq3spvAKBRyWrfOsQK8kfb7YDDWD9nF
- eQBMy12TPbgTLLb5QeMLjwl7rkugiF0vqSNVWmG4=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.75.80] ([80.245.75.80]) by web-mail.gmx.net
- (3c-app-gmx-bs06.server.lan [172.19.170.55]) (via HTTP); Sat, 5 Feb 2022
- 19:59:35 +0100
+ id 1nGgy0-008BQP-Dv
+ for linux-rockchip@lists.infradead.org; Sun, 06 Feb 2022 12:48:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pscan.uk;
+ s=2016050301; h=Content-Transfer-Encoding:Content-Type:Subject:From:To:
+ MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=yUR1G+G65gLkJOfNohwINHoLIefyL55aO9aWt4dYB7U=; b=gJjPZk+4qIZZAsXpBqN0Nllw5n
+ 5GRLlUNpSYkoFXmOcpJKlw/wME079Ofp3dYkZnHMWVAasoMUiSMF9moT+iw1AcEJ2SEuwXDkTr0ZO
+ gk25ebTmuGRnrvQedUswc1LOxPk0MBD5XphKJpE/3oxWTqvUf5nHo+16hlKbYJHl0VSk=;
+Received: from host86-151-200-4.range86-151.btcentralplus.com ([86.151.200.4]
+ helo=[192.168.1.77])
+ by mail.pscan.eu with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+ (Exim 4.94.2 (FreeBSD)) (envelope-from <subs@pscan.uk>)
+ id 1nGfuK-000Cxh-OE
+ for linux-rockchip@lists.infradead.org; Sun, 06 Feb 2022 11:40:40 +0000
+Message-ID: <d33c78f6-2f27-35d2-4ac1-2124edf8cd66@pscan.uk>
+Date: Sun, 6 Feb 2022 12:48:22 +0000
 MIME-Version: 1.0
-Message-ID: <trinity-7a0de29e-ada7-43b1-ae8f-50da4736f2b1-1644087575012@3c-app-gmx-bs06>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Frank Wunderlich <linux@fw-web.de>
-Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>, Johan
- Jonker <jbx6244@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Aw: [PATCH v2 1/2] dt-bindings: rockchip: Add BananaPi R2 Pro Board
-Date: Sat, 5 Feb 2022 19:59:35 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220123135116.136846-2-linux@fw-web.de>
-References: <20220123135116.136846-1-linux@fw-web.de>
- <20220123135116.136846-2-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:wtFtw4+ksp83Q2y92etl/kbPoD8QWRWOUoK1ywDfvhrdYz68Xyd1uZItuW7+kN2NdNUoZ
- aPdebyWl5vMRsIAgFgy2jS4UjyDJt2ehF1gPcG0EyypqLdZUo9lpFfuHqqK8yWGUt0TftMCzK9mE
- VugotwAhJxGnC+WVlRMwio86X5WDPXg0auY1pKBAsUdfCK9EJ3H6ZbPM7u/oqbyjOsxJqulSL2bp
- ksL3Q432k+Xa+z1EeJdydiVlK5Y+0eGYvqekkNLVKfjsbyrXzxQdah5C3LsfbXrU8sBpuUEtcvnI
- Tw=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZfuXrw71q/4=:ChBe3CXdNiA+BE9kiEo7w9
- 6N/3blfcGwR9VfGH6FRU6JZ4bkHlQp8ry/OLIGjGqizYBCx1KwIXkWdiOfGyVcCzIEuj4eRwT
- 8hlmsJIdNsnV0SCD9Et9KMWgUQUHlcaxcHzExdftklMxsnCdyhXiS7d+S9+cLsLcGEYoX+8cx
- Bl91e/9oY/yZuZdDVpVuTc0bOOxiWuEtxoWCxRrlLo9BiUVQiL3dgrHwi/kXXuZTV/14LL1PU
- K+uA932PyYEvqHxRmAuNRpGsvh5pTmHSjHnhM1sauyqvI75UcXxI50Ar8FDb0mg35vbG69M5J
- u6/Mr/zq0ibXqCse/6mHpOZPmNE1yOo+DXkWPtyHkHjLq1zggYNc1qW0ZhvGTtN+YgiCPOraJ
- S/N1WBC2j928AP+lz4XeffXTOBqNpwrHRr2IJUXoF5offlKluhkdi4Mu5SIFYJxqCMNpvUR9c
- 42eEDDJ96jhAZecSKv6oM358msy7m1hxS1NTolGXr0v6WA9uh5RgIY6eHwX9G4mfCpH5MQmDn
- y8DL34GJvXVnB8WmXSqsvjxPGuQ0/A6/iARRDOSEwmfrveywYIViAPcOJqNR0mNnhyE7vITA5
- PjNF6PSOQLyLe8IUt4PzWBCNaRg1S/jLrN1uC7eLnwUNOkc2jE0zOD4SmfgNPZOWnUnYmnULo
- iDb7a3DbcUfRE5rZ2/1TIdWAEZOLIY6w2YBoz2XLD1aO0R07Pzq9VE8tuxF8Fr+qD/UkYgSGI
- ryq/tMgBIpso2/vYpbXDmxsAZPGJ9HhlZKhwKANMQ+aELB35qH9lmMyVldNSV5ZLttbf2uZnL
- Pc7gl2l
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+To: linux-rockchip@lists.infradead.org
+From: Philip C <subs@pscan.uk>
+Subject: how to cross compile 4.19 BSP?
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220205_105949_565863_1D631C99 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20220206_044832_514520_AB811AA5 
+X-CRM114-Status: UNSURE (   6.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +64,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+I am sorry if this list is not exactly the right place for this 
+question, but I don't know where to ask.
 
-just want to send a friendly ping ;)
+Until mainline supports the DSI/LCD output I need something that I can 
+use for my project based on an RK3566 with an LCD screen.
 
-regards Frank
+So I have been trying (and failing) to compile the 4.19-develop branch 
+of https://github.com/rockchip-linux/kernel
+
+I have been using this cross compiler:-
+gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu
+
+using these commands:-
+export ARCH=arm64
+export 
+CROSS_COMPILE=/home/philip/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+make Image modules
+make dtbs
+
+This works on other kernels, but with the official kernel source I get 
+many, many errors which are probably beyond my abilities to fix.  For 
+example I can compile Radxa Team 4.19 kernels, but my project isn't a 
+Radxa product.
+
+Three questions:-
+
+1. Should I be using branch 4.19-develop? or 4.19-develop-rt87?
+2. Is there a particular OS/version and cross compiler that I should be 
+using?  Currently I am on ubuntu hirsute but I have no problem to change 
+it to something else.
+3. If this isn't the right place to ask then please where is?
+
+thanks, Philip
 
 
-> Gesendet: Sonntag, 23. Januar 2022 um 14:51 Uhr
-> Von: "Frank Wunderlich" <linux@fw-web.de>
-> An: linux-rockchip@lists.infradead.org
-> Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Rob Herring" <robh+dt@kernel.org>, "Heiko Stuebner" <heiko@sntech.de>, "Peter Geis" <pgwipeout@gmail.com>, "Johan Jonker" <jbx6244@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-> Betreff: [PATCH v2 1/2] dt-bindings: rockchip: Add BananaPi R2 Pro Board
->
-> From: Frank Wunderlich <frank-w@public-files.de>
->
-> Add Devicetree Binding for Bananapi R2 Pro Board based on rk3568 SoC
->
-> Co-developed-by: Peter Geis <pgwipeout@gmail.com>
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 4aed16176434..33d6423fe6c3 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -651,6 +651,11 @@ properties:
->            - const: rockchip,rk3568-evb1-v10
->            - const: rockchip,rk3568
->
-> +      - description: Rockchip RK3568 Banana Pi R2 Pro
-> +        items:
-> +          - const: rockchip,rk3568-bpi-r2pro
-> +          - const: rockchip,rk3568
-> +
->  additionalProperties: true
->
->  ...
-> --
-> 2.25.1
->
->
 
 _______________________________________________
 Linux-rockchip mailing list
