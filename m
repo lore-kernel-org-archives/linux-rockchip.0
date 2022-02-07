@@ -4,80 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A1DDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Feb 2022 10:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4CD8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Feb 2022 11:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:To:From:References:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rfQ4oFhGBA3r39IzYVLED+JUh5a2ciPXrT7U9TDYae0=; b=fGJXBQnXzj0knA
-	b7h/sFbWQ9M8eziG3XUGigeeMjr1ZKwmp0KDfSdrH8HfvgRSgtONKQP41MZGy+m5axbNa9rzZel16
-	vbpp4FYcpbK7Gc6N0k1GvK20nF5MEnY3vPeCeoOKfSOedupHlaGeKp6e0Yv+YfXZhDyoUVTKcMn/k
-	hIuSM/+cs73dXhPqyA93h3nKw3PsvtwKvUf/kN3hmhlEFM3C4t6MUTFjele18DPnAq/iDlLNZ4XPe
-	uMZmycJ5QowD++IXgQMLbbNRa9xgcz6tHiHPiSOhZnURSvUsOItIID83iNgQF0/azejY0WsF6X/zh
-	FZZSL8jVarQPYKcowLbA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5oqwXUhI0en7Syc/C3W8e9/CycKsK/F9UpMT0d+2oy0=; b=1DEAaDLD/v8iID90YNFVjbQJCb
+	CwDG3Ys221/tnqMP3eH9OKoINGYGKW/446LMBtEN+c6VxZdgWPnt8swpn7RHXfVLp611VM79WlGpV
+	aWtQqCFMZ0t4oG4HaBXGjmQ+PPzPWz2sEJUTuhKBO9ZT1cxSVVDCmflICMG9GtDY3zgsxFP/TLJv3
+	8wUwAEcR6Q9wm8eqjdMmaZNZtV1uog49GwBRyb1Mge8TtKfhnXyMkHYX3YpOMXkloGWcoJRj0wO4j
+	IYNsr6Fx6oqhjYHZYKeRE1sh/YJL7mGL82Lb4FlnAW43DSbuuoppcwW1UUDt34nF73lP2efm2UVnW
+	hHBjE8nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nH1hg-009udp-AP; Mon, 07 Feb 2022 10:57:04 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1nH21e-009xjO-Qd; Mon, 07 Feb 2022 11:17:42 +0000
+Received: from pscan.eu ([31.193.140.172] helo=mail.pscan.uk)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nH1hb-009ucE-TQ
- for linux-rockchip@lists.infradead.org; Mon, 07 Feb 2022 10:57:01 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id
- k127-20020a1ca185000000b0037bc4be8713so1860591wme.3
- for <linux-rockchip@lists.infradead.org>; Mon, 07 Feb 2022 02:56:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=references:user-agent:from:to:subject:date:in-reply-to:message-id
- :mime-version; bh=gCbLAdNfo6DzwKZZhiI2gvYSp0E58X2J6K8BZ7WMiCw=;
- b=HdVq6PkDWV64cO4Meh1wk8wgo8CdzN+zPTFC2pB2FI0bwgSi81Z/HYG5aXK5pBx5W9
- CmRKZIAdtvIRSGLTDlE7WkPAMx3+g4v7iK/1sAjHYfFRJIQxN++xO0oQC3iVySbmeEr2
- liwS39gPsfsrucyJX8zQIoivl9PssDAZCHqaTY/Q4YEotG+CRwK7yiaR7SA6dxoLkTLT
- XN4QMOE6TX7YM/Kbh9Mi64oJnP8lOtqYENqGa81nj35oCQXlA63fr2aOZkdR8SPGvjWe
- /QH8n567hcYJd3qk1Xz01BRQxfBCrVSfmkDJxRGb0BFFuatHy6dfNxj6/KD2RZaZSB2P
- 1GTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:references:user-agent:from:to:subject:date
- :in-reply-to:message-id:mime-version;
- bh=gCbLAdNfo6DzwKZZhiI2gvYSp0E58X2J6K8BZ7WMiCw=;
- b=IRaNBKGCAOlvXAQjCMnzX+b6UTHPo7FAr1emFvDtk2Jv+qrk4yzhuHzkUhMib4idzF
- 7YUmLOmUsAkAkv2J6TmzuCCDhE2HHlp8wwJAHcqFdyPyLRrqFPrX8AfbyChO3pL0QFsp
- 4r1KSRQkfznz9JuMm/l9DdqjyCC54Y+P4AzlXIndvMzylT/ZROboHq3CiBTVKi3TCxH+
- 3JKy5fKwrPQAh8UR5/g3RABW9GKYzITmddRNHBatUrhenqBxhANxECNkkO5qu1EOOj44
- 2SS1Hn4ubkibz7ylDaAwtLzEkSzPLJdzof9zH4AfArAC9S+TZxYxGrwFt8H59q7nCsBE
- lbVQ==
-X-Gm-Message-State: AOAM533Af4EFFeINP97Y6VuF7BwoPDqA4A//1mfxmVbY3tVqcpqOJ0IK
- ODni1+C7DcccCysgkpFITDLkzw==
-X-Google-Smtp-Source: ABdhPJya4Y4U2ZAbUsCovhbUSLiaQE9fPad2ZHKayIa+Ateyevndqek8qHHFBktc7reIkkgLh7oW+A==
-X-Received: by 2002:a7b:cbd7:: with SMTP id n23mr284984wmi.76.1644231416515;
- Mon, 07 Feb 2022 02:56:56 -0800 (PST)
-Received: from localhost (82-65-169-74.subs.proxad.net. [82.65.169.74])
- by smtp.gmail.com with ESMTPSA id u14sm11073998wmq.41.2022.02.07.02.56.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Feb 2022 02:56:56 -0800 (PST)
-References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
-User-agent: mu4e 1.6.10; emacs 27.1
-From: Jerome Brunet <jbrunet@baylibre.com>
-To: Erico Nunes <nunes.erico@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>, Kevin Hilman
- <khilman@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Neil Armstrong
- <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org,
- netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come
- up at boot
-Date: Mon, 07 Feb 2022 11:41:36 +0100
-In-reply-to: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
-Message-ID: <1jczjzt05k.fsf@starbuckisacylon.baylibre.com>
+ id 1nH21b-009xil-Ks
+ for linux-rockchip@lists.infradead.org; Mon, 07 Feb 2022 11:17:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pscan.uk;
+ s=2016050301; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+ References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=+u7W/0zcXkjFid9xfenITYtFKL3+eRjvoZ2seANAAmA=; b=U17FfTLr3++rWcG9o+GLiNjLER
+ 1VpVNYbWJHy3Mjggl7wxXNICmlQLNr5hzJbQHwKzhQ0ukZu34gPJtOy8vR/Ixpbfv2g9nR1FLcwss
+ Xm92//ZLTP8E6wuJx6UtSA1RvhjBjZqKlwjDqI1hK9kt2cYpi50eXAugsnKWop8LHL3w=;
+Received: from host86-151-200-4.range86-151.btcentralplus.com ([86.151.200.4]
+ helo=[192.168.1.77])
+ by mail.pscan.eu with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+ (Exim 4.94.2 (FreeBSD)) (envelope-from <subs@pscan.uk>)
+ id 1nH0xx-000EEB-MF
+ for linux-rockchip@lists.infradead.org; Mon, 07 Feb 2022 10:09:49 +0000
+Message-ID: <cd5fd459-cccd-3ba8-2eb8-162e3150a2ef@pscan.uk>
+Date: Mon, 7 Feb 2022 11:17:31 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.1
+Subject: Re: how to cross compile 4.19 BSP?
+To: linux-rockchip@lists.infradead.org
+References: <d33c78f6-2f27-35d2-4ac1-2124edf8cd66@pscan.uk>
+ <52eb0090-844e-d41d-a716-f735fc133b04@pscan.uk>
+From: Philip C <subs@pscan.uk>
+In-Reply-To: <52eb0090-844e-d41d-a716-f735fc133b04@pscan.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220207_025659_961922_1F492CDE 
-X-CRM114-Status: GOOD (  32.00  )
+X-CRM114-CacheID: sfid-20220207_031739_725423_BF010C4A 
+X-CRM114-Status: GOOD (  24.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,111 +66,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed 02 Feb 2022 at 21:18, Erico Nunes <nunes.erico@gmail.com> wrote:
-
-> Hello,
->
-> I've been tracking down an issue with network interfaces from
-> meson8b-dwmac sometimes not coming up properly at boot.
-> The target systems are AML-S805X-CC boards (Amlogic S805X SoC), I have
-> a group of them as part of a CI test farm that uses nfsroot.
->
-> After hopefully ruling out potential platform/firmware and network
-> issues I managed to bisect this commit in the kernel to make a big
-> difference:
->
->   46f69ded988d2311e3be2e4c3898fc0edd7e6c5a net: stmmac: Use resolved
-> link config in mac_link_up()
->
-> With a kernel before that commit, I am able to submit hundreds of test
-> jobs and the boards always start the network interface properly.
->
-> After that commit, around 30% of the jobs start hitting this:
->
->   [    2.178078] meson8b-dwmac c9410000.ethernet eth0: PHY
-> [0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
->   [    2.183505] meson8b-dwmac c9410000.ethernet eth0: Register
-> MEM_TYPE_PAGE_POOL RxQ-0
->   [    2.200784] meson8b-dwmac c9410000.ethernet eth0: No Safety
-> Features support found
->   [    2.202713] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
->   [    2.209825] meson8b-dwmac c9410000.ethernet eth0: configuring for
-> phy/rmii link mode
->   [    3.762108] meson8b-dwmac c9410000.ethernet eth0: Link is Up -
-> 100Mbps/Full - flow control off
->   [    3.783162] Sending DHCP requests ...... timed out!
->   [   93.680402] meson8b-dwmac c9410000.ethernet eth0: Link is Down
->   [   93.685712] IP-Config: Retrying forever (NFS root)...
->   [   93.756540] meson8b-dwmac c9410000.ethernet eth0: PHY
-> [0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
->   [   93.763266] meson8b-dwmac c9410000.ethernet eth0: Register
-> MEM_TYPE_PAGE_POOL RxQ-0
->   [   93.779340] meson8b-dwmac c9410000.ethernet eth0: No Safety
-> Features support found
->   [   93.781336] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
->   [   93.788088] meson8b-dwmac c9410000.ethernet eth0: configuring for
-> phy/rmii link mode
->   [   93.807459] random: fast init done
->   [   95.353076] meson8b-dwmac c9410000.ethernet eth0: Link is Up -
-> 100Mbps/Full - flow control off
->
-> This still happens with a kernel from master, currently 5.17-rc2 (less
-> frequently but still often hit by CI test jobs).
-> The jobs still usually get to work after restarting the interface a
-> couple of times, but sometimes it takes 3-4 attempts.
->
-> Here is one example and full dmesg:
-> https://gitlab.freedesktop.org/enunes/mesa/-/jobs/16452399/raw
->
-> Note that DHCP does not seem to be an issue here, besides the fact
-> that the problem only happens since the mentioned commit under the
-> same setup, I did try to set up the boards to use a static ip but then
-> the interfaces just don't communicate at all from boot.
->
-> For test purposes I attempted to revert
-> 46f69ded988d2311e3be2e4c3898fc0edd7e6c5a on top of master but that
-> does not apply trivially anymore, and by trying to revert it manually
-> I haven't been able to get a working interface.
->
-> Any advice on how to further debug or fix this?
-
-Hi Erico,
-
-Thanks a lot for digging into this topic.
-I'm seeing exactly the same behavior on the g12 based khadas-vim3:
-
-* Boot stalled waiting for DHCP - with an NFS based filesystem
-* Every minute, the network driver gets a reset and try again
-
-Sometimes it works on the first attempt, sometimes it takes up to 5
-attempts. Eventually, it reaches the prompt which might be why it went
-unnoticed so far.
-
-I think that NFS just makes the problem easier to see.
-On devices with an eMMC based filesystem, I noticed that, sometimes, I
-had unplug/plug the ethernet cable to make it go.
-
-So far, the problem is reported on all the Amlogic SoC generation we
-support. I think a way forward is to ask the the other users of
-stmmac whether they have this problem or not - adding Allwinner and
-Rockchip ML.
-
-Since the commit you have identified is in the generic part of the
-stmmac code, Maybe Jose can help us understand what is going on.
-
->
-> Thanks
->
-> Erico
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SSBoYXZlIG1hZGUgc29tZSBwcm9ncmVzcy4KClRoZXJlIGlzIGEgY29tcGxldGUgQlNQIGJ1aWxk
+IGVudmlyb25tZW50IGF2YWlsYWJsZSBoZXJlIApodHRwOi8vZmlsZXMucGluZTY0Lm9yZy9TREsv
+UXVhcnR6NjQvUVVBUlRaNjQtbW9kZWwtQV9CU1AlMjBMaW51eC50YXIuZ3oKCkJ5IHVzaW5nIHRo
+ZSBidWlsdCBpbiBzY3JpcHRzICIuL2VudnNldHVwLnNoIiBhbmQgdGhlbiAiLi9idWlsZC5zaCAK
+a2VybmVsIiBJIHdhcyBhYmxlIHRvIGNvbXBpbGUgYSA0LjE5LjE2MSBrZXJuZWwgdGhhdCBzdWNj
+ZXNzZnVsbHkgYm9vdHMgCm9uIHRoZSBxdWFydHo2NC1hLgoKTmV4dCBJIHN3YXBwZWQgb3V0IHRo
+ZSBrZXJuZWwgZGlyZWN0b3J5IGZvciB0aGUgZGV2ZWxvcC00LjE5IG9uZSBvbiAKZ2l0aHViIGFu
+ZCBjb21waWxlZCBpdCB1c2luZyB0aGUgc2FtZSBzY3JpcHRzLiAgVGhhdCBhbHNvIGNvbXBpbGVz
+IGFuZCAKYm9vdHMgYW5kIGFwcGVhcnMgdG8gYWxzbyBiZSA0LjE5LjE2MQoKTmV4dCBJIHN3YXBw
+ZWQgaW4gdGhlIGtlcm5lbCBkaXJlY3Rpb24gZm9yIGRldmVsb3AtNC4xOS1ydDg3IGFuZCB0aGF0
+IApvbmUgZmFpbHMgb24gZHJpdmVycy9uZXQvd2lyZWxlc3Mvcm9ja2NoaXBfd2xhbi9ya3dpZmkv
+YmNtZGhkL2RoZF9wbm8uYyAKd2l0aCAiLVdlcnJvcj1pbmNvbXBhdGlibGUtcG9pbnRlci10eXBl
+cyIuICBJdCBpc24ndCBjbGVhciB0byBtZSB3aGV0aGVyIApkZXZlbG9wLTQuMTktcnQ4NyBpcyBh
+IG5ld2VyIGtlcm5lbCB0aGFuIGRldmVsb3AtNC4xOQoKTmV4dCBJIG5lZWQgdG8gZmlndXJlIG91
+dCBob3cgdGhlc2Uga2VybmVscyBjb21waWxlIGZyb20gdGhlIGJ1aWxkLnNoIApzY3JpcHRzIGFu
+ZCBzZWUgaWYgSSBjYW4gZXh0cmFjdCB3aGF0ZXZlciBpdCBpcyB0aGF0IG1ha2VzIGl0IHdvcmsu
+CgpJZiB0aGlzIGlzIHRvbyBhbm5veWluZyAvIHRvbyBvZmYgdG9waWMgZm9yIHRoaXMgbWFpbGlu
+ZyBsaXN0IHBsZWFzZSBsZXQgCm1lIGtub3cuCgp0aGFua3MsIFBoaWxpcAoKT24gMDYvMDIvMjAy
+MiAxODowOCwgUGhpbGlwIEMgd3JvdGU6Cj4gc29ycnkgZm9sa3MswqAgbXkgRVhQT1JUIHdhcyBt
+ZXNzZWQgdXAuCj4gCj4gSSBkb3dubG9hZGVkIGdjYy1hcm0tMTAuMy0yMDIxLjA3LXg4Nl82NC1h
+YXJjaDY0LW5vbmUtbGludXgtZ251LnRhci54eiAKPiBhbmQgdW5wYWNrZWQgaXQgYWdhaW4KPiAK
+PiBleHBvcnQgQVJDSD1hcm02NAo+IGV4cG9ydCAKPiBDUk9TU19DT01QSUxFPS9ob21lL3BoaWxp
+cC9nY2MtYXJtLzEwLjMvZ2NjLWFybS0xMC4zLTIwMjEuMDcteDg2XzY0LWFhcmNoNjQtbm9uZS1s
+aW51eC1nbnUvYmluL2FhcmNoNjQtbm9uZS1saW51eC1nbnUtIAo+IAo+IAo+IElmIEkgZG8gbWFr
+ZSBtZW51Y29uZmlnIGFuZCBzYXZlIGl0IChzbyBhIGRlZmF1bHQgLmNvbmZpZykgSSBzdGlsbCBm
+YWlsIAo+IHdpdGggdGhpczotCj4gCj4gIMKgIENDwqDCoMKgwqDCoCBtbS9wYWdlX2NvdW50ZXIu
+bwo+ICDCoCBDQ8KgwqDCoMKgwqAgbW0vbWVtY29udHJvbC5vCj4gbW0vbWVtY29udHJvbC5jOiBJ
+biBmdW5jdGlvbiAnbWVtY2dfc3RhdF9zaG93JzoKPiBtbS9tZW1jb250cm9sLmM6MzU0MjoxOiB3
+YXJuaW5nOiB0aGUgZnJhbWUgc2l6ZSBvZiAxMDQwIGJ5dGVzIGlzIGxhcmdlciAKPiB0aGFuIDEw
+MjQgYnl0ZXMgWy1XZnJhbWUtbGFyZ2VyLXRoYW49XQo+IGVycm9yLCBmb3JiaWRkZW4gd2Fybmlu
+ZzptZW1jb250cm9sLmM6MzU0Mgo+ICDCoDM1NDIgfCB9Cj4gIMKgwqDCoMKgwqAgfCBeCj4gbW0v
+bWVtY29udHJvbC5jOiBJbiBmdW5jdGlvbiAnbWVtb3J5X3N0YXRfc2hvdyc6Cj4gbW0vbWVtY29u
+dHJvbC5jOjU3MDk6MTogd2FybmluZzogdGhlIGZyYW1lIHNpemUgb2YgMTA0MCBieXRlcyBpcyBs
+YXJnZXIgCj4gdGhhbiAxMDI0IGJ5dGVzIFstV2ZyYW1lLWxhcmdlci10aGFuPV0KPiBlcnJvciwg
+Zm9yYmlkZGVuIHdhcm5pbmc6bWVtY29udHJvbC5jOjU3MDkKPiAgwqA1NzA5IHwgfQo+ICDCoMKg
+wqDCoMKgIHwgXgo+IG1ha2VbMV06ICoqKiBbc2NyaXB0cy9NYWtlZmlsZS5idWlsZDozMzQ6IG1t
+L21lbWNvbnRyb2wub10gRXJyb3IgMQo+IG1ha2U6ICoqKiBbTWFrZWZpbGU6MTE5NDogbW1dIEVy
+cm9yIDIKPiAKPiAKPiBPbiAwNi8wMi8yMDIyIDEyOjQ4LCBQaGlsaXAgQyB3cm90ZToKPj4gSSBh
+bSBzb3JyeSBpZiB0aGlzIGxpc3QgaXMgbm90IGV4YWN0bHkgdGhlIHJpZ2h0IHBsYWNlIGZvciB0
+aGlzIAo+PiBxdWVzdGlvbiwgYnV0IEkgZG9uJ3Qga25vdyB3aGVyZSB0byBhc2suCj4+Cj4+IFVu
+dGlsIG1haW5saW5lIHN1cHBvcnRzIHRoZSBEU0kvTENEIG91dHB1dCBJIG5lZWQgc29tZXRoaW5n
+IHRoYXQgSSBjYW4gCj4+IHVzZSBmb3IgbXkgcHJvamVjdCBiYXNlZCBvbiBhbiBSSzM1NjYgd2l0
+aCBhbiBMQ0Qgc2NyZWVuLgo+Pgo+PiBTbyBJIGhhdmUgYmVlbiB0cnlpbmcgKGFuZCBmYWlsaW5n
+KSB0byBjb21waWxlIHRoZSA0LjE5LWRldmVsb3AgYnJhbmNoIAo+PiBvZiBodHRwczovL2dpdGh1
+Yi5jb20vcm9ja2NoaXAtbGludXgva2VybmVsCj4+Cj4+IEkgaGF2ZSBiZWVuIHVzaW5nIHRoaXMg
+Y3Jvc3MgY29tcGlsZXI6LQo+PiBnY2MtYXJtLTEwLjMtMjAyMS4wNy14ODZfNjQtYWFyY2g2NC1u
+b25lLWxpbnV4LWdudQo+Pgo+PiB1c2luZyB0aGVzZSBjb21tYW5kczotCj4+IGV4cG9ydCBBUkNI
+PWFybTY0Cj4+IGV4cG9ydCAKPj4gQ1JPU1NfQ09NUElMRT0vaG9tZS9waGlsaXAvZ2NjLWFybS0x
+MC4zLTIwMjEuMDcteDg2XzY0LWFhcmNoNjQtbm9uZS1saW51eC1nbnUvYmluL2FhcmNoNjQtbm9u
+ZS1saW51eC1nbnUtIAo+Pgo+PiBtYWtlIEltYWdlIG1vZHVsZXMKPj4gbWFrZSBkdGJzCj4+Cj4+
+IFRoaXMgd29ya3Mgb24gb3RoZXIga2VybmVscywgYnV0IHdpdGggdGhlIG9mZmljaWFsIGtlcm5l
+bCBzb3VyY2UgSSBnZXQgCj4+IG1hbnksIG1hbnkgZXJyb3JzIHdoaWNoIGFyZSBwcm9iYWJseSBi
+ZXlvbmQgbXkgYWJpbGl0aWVzIHRvIGZpeC7CoCBGb3IgCj4+IGV4YW1wbGUgSSBjYW4gY29tcGls
+ZSBSYWR4YSBUZWFtIDQuMTkga2VybmVscywgYnV0IG15IHByb2plY3QgaXNuJ3QgYSAKPj4gUmFk
+eGEgcHJvZHVjdC4KPj4KPj4gVGhyZWUgcXVlc3Rpb25zOi0KPj4KPj4gMS4gU2hvdWxkIEkgYmUg
+dXNpbmcgYnJhbmNoIDQuMTktZGV2ZWxvcD8gb3IgNC4xOS1kZXZlbG9wLXJ0ODc/Cj4+IDIuIElz
+IHRoZXJlIGEgcGFydGljdWxhciBPUy92ZXJzaW9uIGFuZCBjcm9zcyBjb21waWxlciB0aGF0IEkg
+c2hvdWxkIAo+PiBiZSB1c2luZz/CoCBDdXJyZW50bHkgSSBhbSBvbiB1YnVudHUgaGlyc3V0ZSBi
+dXQgSSBoYXZlIG5vIHByb2JsZW0gdG8gCj4+IGNoYW5nZSBpdCB0byBzb21ldGhpbmcgZWxzZS4K
+Pj4gMy4gSWYgdGhpcyBpc24ndCB0aGUgcmlnaHQgcGxhY2UgdG8gYXNrIHRoZW4gcGxlYXNlIHdo
+ZXJlIGlzPwo+Pgo+PiB0aGFua3MsIFBoaWxpcAo+Pgo+Pgo+IAo+IF9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
