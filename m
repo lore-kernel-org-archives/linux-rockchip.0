@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31282C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Feb 2022 12:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5913CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Feb 2022 13:14:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pGfEQjIq8NgtGSHskFJiXXVimQKP8DEZd5FfRK7dxM0=; b=AfvknzPyG9OB5N
-	+t/OuY/ib9NsGa5tQREQEAFP14Kq9Z6dL9dfRL9uKYjYaB4TgIyiqdbzTS2Oy71AfltJMZOs/d7Or
-	A03yM5/m2Bv2FuFoDcnJYa2SLkNfzHrn0NYVWDxmO8x0eBwPkxR8AwG4NtFrxZWrDS3tEQFD8F760
-	r8PeVPDOjypaex6mq+2uwFy3S0MaXfAwAuDUo2O6KSTG7FrMkR7ILn0iltmESk92JRLjcYSW2r4FO
-	FqO89jHodfS3Hi8JfbfXCeQqqmL0V5LBBAT28lSMly76vxQdwkf9F1nOjzYkEoWuFUIEudRHs8Axv
-	L+j7+YIYTJdUKDkhnAjw==;
+	List-Owner; bh=YJlcyYTAI45nSwGZ9KGlXWxVBlK0bQIIfcqZGd9lZjM=; b=nI1aU2rr/9ypr5
+	Q/gZWDTdJRX8njtITymGF7e5jZLjNLoNbIFRTM/tmDjWyEiH3cNU2Ujd8yyc7cm3LrjmCdalC295s
+	9DA7I6rVLflcZvuf1/sErl0wsqhm1ZFQi0Wl5TrtUkbmuXC8F0/aYpF4vwRuwsOTm+z8C6jVQHuJP
+	O42gvM1Y0JSiicscrSsYbLgTHvSFMJJNeXHPjmW9YHCMc9uQBo5shmBpqAdHBtagC+7l7udqXYJiN
+	4jdlCCo1Z0k3LG2WSLGRdwwstrJM1KS4R1eEGC2WG/Yutu0W6k2JnrDm2qQeJ1phCGl+B5Jx5Ixdb
+	8OFh4+5/smFRnWLqnE9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHPeN-00DkcD-CM; Tue, 08 Feb 2022 12:31:15 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1nHQK2-00E1US-S8; Tue, 08 Feb 2022 13:14:18 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHPeK-00Dkbg-Es
- for linux-rockchip@lists.infradead.org; Tue, 08 Feb 2022 12:31:14 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id 192so23168890ybd.10
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Feb 2022 04:31:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yfYLtbVg7Jphgpqo5l2mfLMwKt3fmTcNOyyPV835z9U=;
- b=X73BVSASthoFh71ZUYqhPOBlmWD6VlnN6mtxlLeUi48uyVMU0ZaQsH/cmXLKhp1Jui
- 4usjsDrOE/K++FH8OeqG4WNNAOcG9B+4N4GSjY7QwCYxcbUEhBC2Y/nh2OUlwsgnjeox
- eUtinaYsaItLRMZrGl5DhrtfLCm02TgJMPJqc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yfYLtbVg7Jphgpqo5l2mfLMwKt3fmTcNOyyPV835z9U=;
- b=zm/XYo5uOlhsEX/svF4BhjdjvbSJgT001xZ6kmRqx18TeTOoLTqrsoy3meyCAurUEp
- uWYeg4TilmjUysx0EZLJC7U/FPXwn77W86/3PUcejG9pGALiXvXDigkEap/iN51AMKZ1
- 7DDY547A12qHd+sE1TyXnB9Dj/yueWKCUoYGJCIDhi/fjyxIl1BgyW4iEMnPXjOJRsXt
- op83NP7d0dqNePDYYKonjBjWIQAAAlKu2ydn/1Ull/2sNgXHepb7DH02OSeloV0DX7r6
- Tx+ThepbOYPY3lZkrAibimd2amRjILgAbV4UhzarHK5Yp8gj9v1pjPPS+rDRQRwJFEai
- SLvA==
-X-Gm-Message-State: AOAM530XK3yXHewpNNTUwWa2dlKzYDj7kGzQkfcxsTEdswnXJcwmEDwT
- dZtbW9tRSdOu94tdvTZ/FbxvJrYYW0bVmRjijltIpw==
-X-Google-Smtp-Source: ABdhPJyCCYOYwDckY357tk7CH1jqmHDW4BUZPjfdeuj7J3jv7vIaHKcjBTuE6IB72wx2P7IBnypp3hlrdAC/yjDoo7g=
-X-Received: by 2002:a81:1b4e:: with SMTP id b75mr4316368ywb.295.1644323471148; 
- Tue, 08 Feb 2022 04:31:11 -0800 (PST)
+ id 1nHQBd-00Dy6Q-HJ
+ for linux-rockchip@lists.infradead.org; Tue, 08 Feb 2022 13:05:39 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: andrzej.p) with ESMTPSA id 8B08C1F445AC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1644325534;
+ bh=+LYk/UmBswNwBd6wWfrZcVl5V3vV0QlUdcWtoUKbDuQ=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=IanUsb20GeXPoeXi8WV425L3Z8GSZZDMd0uxkgXYPzceXXkZJh9UCows5Csu7Wvvc
+ B3yIDNzZT4Xy4oCBqx+wDXMTsql5c19joggI4o0NCcavdvhcu3HPkMpjZ/JTdD6lWt
+ 1ci/i++lztI4rFx09BtouRBuOS0jm/JXSjF08/fdua7R5mT+LTCOVWOseeYR57JO/y
+ F8xL5qxuJXEYjUHYtf3h4CECr7JoSHdDDNkOa0IoiA0+n5gq7baWcQ99XTE/UFrhyZ
+ qQy+aeuj0dfnjFYL/C7+b/vqY40oUyVHUW3CjmgJ3qxzYqA3twd6xi4DcFWuX0Xd6J
+ 8kaYKsldRv48Q==
+Message-ID: <73b30627-2908-8472-01db-d07e176ce129@collabora.com>
+Date: Tue, 8 Feb 2022 14:05:30 +0100
 MIME-Version: 1.0
-References: <20220208105456.321294-1-wenst@chromium.org>
-In-Reply-To: <20220208105456.321294-1-wenst@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 8 Feb 2022 20:30:59 +0800
-Message-ID: <CAGXv+5HT84sEv9TFV1H=mMEO4oqz4OdwXQGMhwrOf5dtMrjOBQ@mail.gmail.com>
-Subject: Re: [PATCH RFC] media: hantro: Implement support for encoder commands
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
- linux-kernel@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] drm/rockchip: vop: Correct RK3399 VOP register fields
+Content-Language: en-US
+To: Brian Norris <briannorris@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, 
+ David Airlie <airlied@linux.ie>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>
+Cc: Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ stable@vger.kernel.org, Mark Yao <markyao0591@gmail.com>
+References: <20220119161104.1.I1d01436bef35165a8cdfe9308789c0badb5ff46a@changeid>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+In-Reply-To: <20220119161104.1.I1d01436bef35165a8cdfe9308789c0badb5ff46a@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220208_043112_552686_B7B9D40E 
-X-CRM114-Status: GOOD (  28.75  )
+X-CRM114-CacheID: sfid-20220208_050537_812861_7470F6E9 
+X-CRM114-Status: GOOD (  19.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,157 +68,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 8, 2022 at 6:55 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> The V4L2 stateful encoder uAPI specification requires that drivers
-> support the ENCODER_CMD ioctl to allow draining of buffers. This
-> however was not implemented, and causes issues for some userspace
-> applications.
->
-> Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
-> This is entirely based on existing code found in the vicodec test
-> driver.
->
-> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->
-> This is based on linux-next-20220207, and was tested on RK3399 with
-> Gstreamer running the JPEG encoder. It was also tested on ChromeOS
-> 5.10 on Kevin with the video encoder used in ChromeOS ARC, which
-> requires this.
->
-> Everything works OK, but since I'm not very familiar with the mem2mem
-> framework, I might be missing something, causing resource leaks.
-> Hence this patch is labeled RFC.
-
-And it seems I failed to handle the case where the last capture buffer
-is empty.
-
-Will rework and send a new version tomorrow.
-
-
-ChenYu
-
-> ---
->  drivers/staging/media/hantro/hantro_drv.c  | 10 +++++
->  drivers/staging/media/hantro/hantro_v4l2.c | 44 ++++++++++++++++++++++
->  2 files changed, 54 insertions(+)
->
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index bc9bcb4eaf46..ccd47eee5c43 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
->         return hantro_get_dec_buf_addr(ctx, buf);
->  }
->
-> +static const struct v4l2_event hantro_eos_event = {
-> +       .type = V4L2_EVENT_EOS
-> +};
-> +
->  static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
->                                     struct hantro_ctx *ctx,
->                                     enum vb2_buffer_state result)
-> @@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
->         src->sequence = ctx->sequence_out++;
->         dst->sequence = ctx->sequence_cap++;
->
-> +       if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
-> +               dst->flags |= V4L2_BUF_FLAG_LAST;
-> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> +               v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
-> +       }
-> +
->         v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
->                                          result);
->  }
-> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> index 67148ba346f5..8c6746637236 100644
-> --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> @@ -628,6 +628,39 @@ static int vidioc_s_selection(struct file *file, void *priv,
->         return 0;
->  }
->
-> +static const struct v4l2_event hantro_eos_event = {
-> +       .type = V4L2_EVENT_EOS
-> +};
-> +
-> +static int vidioc_encoder_cmd(struct file *file, void *priv,
-> +                             struct v4l2_encoder_cmd *ec)
-> +{
-> +       struct hantro_ctx *ctx = fh_to_ctx(priv);
-> +       int ret;
-> +
-> +       ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
-> +           !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
-> +               return 0;
-> +
-> +       ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       if (ec->cmd == V4L2_ENC_CMD_STOP &&
-> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> +
-> +       if (ec->cmd == V4L2_ENC_CMD_START &&
-> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> +               vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
-> +
-> +       return 0;
-> +}
-> +
->  const struct v4l2_ioctl_ops hantro_ioctl_ops = {
->         .vidioc_querycap = vidioc_querycap,
->         .vidioc_enum_framesizes = vidioc_enum_framesizes,
-> @@ -657,6 +690,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
->
->         .vidioc_g_selection = vidioc_g_selection,
->         .vidioc_s_selection = vidioc_s_selection,
-> +
-> +       .vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
-> +       .vidioc_encoder_cmd = vidioc_encoder_cmd,
->  };
->
->  static int
-> @@ -759,6 +795,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
->         struct hantro_ctx *ctx = vb2_get_drv_priv(q);
->         int ret = 0;
->
-> +       v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
-> +
->         if (V4L2_TYPE_IS_OUTPUT(q->type))
->                 ctx->sequence_out = 0;
->         else
-> @@ -831,6 +869,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
->                 hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
->         else
->                 hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
-> +
-> +       v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
-> +
-> +       if (V4L2_TYPE_IS_OUTPUT(q->type) &&
-> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
->  }
->
->  static void hantro_buf_request_complete(struct vb2_buffer *vb)
-> --
-> 2.35.0.263.gb82422642f-goog
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQnJpYW4sCgpTb3JyeSBhYm91dCB0aGUgZGVsYXkuCgpXIGRuaXUgMjAuMDEuMjAyMiBvwqAw
+MToxMSwgQnJpYW4gTm9ycmlzIHBpc3plOgo+IENvbW1pdCA3NzA3ZjcyMjdmMDkgKCJkcm0vcm9j
+a2NoaXA6IEFkZCBzdXBwb3J0IGZvciBhZmJjIikgc3dpdGNoZWQgdXAKPiB0aGUgcmszMzk5X3Zv
+cF9iaWdbXSByZWdpc3RlciB3aW5kb3dzLCBidXQgaXQgZGlkIHNvIGluY29ycmVjdGx5Lgo+IAo+
+IFRoZSBiaWdnZXN0IHByb2JsZW0gaXMgaW4gcmszMjg4X3dpbjIzX2RhdGFbXSB2cy4KPiByazMz
+Njhfd2luMjNfZGF0YVtdIC5mb3JtYXQgZmllbGQ6Cj4gCj4gICAgUkszMjg4J3MgZm9ybWF0OiBW
+T1BfUkVHKFJLMzI4OF9XSU4yX0NUUkwwLCAweDcsIDEpCj4gICAgUkszMzY4J3MgZm9ybWF0OiBW
+T1BfUkVHKFJLMzM2OF9XSU4yX0NUUkwwLCAweDMsIDUpCj4gCj4gQml0cyA1OjYgKGkuZS4sIHNo
+aWZ0IDUsIG1hc2sgMHgzKSBhcmUgY29ycmVjdCBmb3IgUkszMzk5LCBhY2NvcmRpbmcgdG8KPiB0
+aGUgVFJNLgo+IAo+IFRoZXJlIGFyZSBhIGZldyBvdGhlciBzbWFsbCBkaWZmZXJlbmNlcyBiZXR3
+ZWVuIHRoZSAzMjg4IGFuZCAzMzY4Cj4gZGVmaW5pdGlvbnMgdGhhdCB3ZXJlIHN3YXBwZWQgaW4g
+Y29tbWl0IDc3MDdmNzIyN2YwOS4gSSByZXZpZXdlZCB0aGVtIHRvCj4gdGhlIGJlc3Qgb2YgbXkg
+YWJpbGl0eSBhY2NvcmRpbmcgdG8gdGhlIFJLMzM5OSBUUk0gYW5kIGZpeGVkIHRoZW0gdXAuCj4g
+Cj4gVGhpcyBmaXhlcyBJT01NVSBpc3N1ZXMgKGFuZCBkaXNwbGF5IGVycm9ycykgd2hlbiB0ZXN0
+aW5nIHdpdGggQkcyNAo+IGNvbG9yIGZvcm1hdHMuCj4gCj4gRml4ZXM6IDc3MDdmNzIyN2YwOSAo
+ImRybS9yb2NrY2hpcDogQWRkIHN1cHBvcnQgZm9yIGFmYmMiKQo+IENjOiBBbmRyemVqIFBpZXRy
+YXNpZXdpY3ogPGFuZHJ6ZWoucEBjb2xsYWJvcmEuY29tPgo+IENjOiA8c3RhYmxlQHZnZXIua2Vy
+bmVsLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9t
+aXVtLm9yZz4KClRlc3RlZC1ieTogQW5kcnplaiBQaWV0cmFzaWV3aWN6IDxhbmRyemVqLnBAY29s
+bGFib3JhLmNvbT4KCj4gLS0tCj4gSSdkIGFwcHJlY2lhdGUgbm90ZXMgb3IgdGVzdGluZyBmcm9t
+IEFuZHJ6ZWosIHNpbmNlIEknbSBub3Qgc3VyZSBob3cgaGUKPiB0ZXN0ZWQgaGlzIG9yaWdpbmFs
+IEFGQkMgd29yay4KPiAKPiAgIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3Bf
+cmVnLmMgfCA4ICsrKysrLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCAz
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfdm9wX3JlZy5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX3Zv
+cF9yZWcuYwo+IGluZGV4IDFmNzM1M2YwNjg0YS4uNzk4YjU0MmU1OTE2IDEwMDY0NAo+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF92b3BfcmVnLmMKPiArKysgYi9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfdm9wX3JlZy5jCj4gQEAgLTkwMiw2ICs5MDIs
+NyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHZvcF93aW5fcGh5IHJrMzM5OV93aW4wMV9kYXRhID0g
+ewo+ICAgCS5lbmFibGUgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDEsIDApLAo+ICAg
+CS5mb3JtYXQgPSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDcsIDEpLAo+ICAgCS5yYl9z
+d2FwID0gVk9QX1JFRyhSSzMyODhfV0lOMF9DVFJMMCwgMHgxLCAxMiksCj4gKwkueF9taXJfZW4g
+PSBWT1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDEsIDIxKSwKPiAgIAkueV9taXJfZW4gPSBW
+T1BfUkVHKFJLMzI4OF9XSU4wX0NUUkwwLCAweDEsIDIyKSwKPiAgIAkuYWN0X2luZm8gPSBWT1Bf
+UkVHKFJLMzI4OF9XSU4wX0FDVF9JTkZPLCAweDFmZmYxZmZmLCAwKSwKPiAgIAkuZHNwX2luZm8g
+PSBWT1BfUkVHKFJLMzI4OF9XSU4wX0RTUF9JTkZPLCAweDBmZmYwZmZmLCAwKSwKPiBAQCAtOTEy
+LDYgKzkxMyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9waHkgcmszMzk5X3dpbjAx
+X2RhdGEgPSB7Cj4gICAJLnV2X3ZpciA9IFZPUF9SRUcoUkszMjg4X1dJTjBfVklSLCAweDNmZmYs
+IDE2KSwKPiAgIAkuc3JjX2FscGhhX2N0bCA9IFZPUF9SRUcoUkszMjg4X1dJTjBfU1JDX0FMUEhB
+X0NUUkwsIDB4ZmYsIDApLAo+ICAgCS5kc3RfYWxwaGFfY3RsID0gVk9QX1JFRyhSSzMyODhfV0lO
+MF9EU1RfQUxQSEFfQ1RSTCwgMHhmZiwgMCksCj4gKwkuY2hhbm5lbCA9IFZPUF9SRUcoUkszMjg4
+X1dJTjBfQ1RSTDIsIDB4ZmYsIDApLAo+ICAgfTsKPiAgIAo+ICAgLyoKPiBAQCAtOTIyLDExICs5
+MjQsMTEgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCB2b3Bfd2luX3BoeSByazMzOTlfd2luMDFfZGF0
+YSA9IHsKPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgdm9wX3dpbl9kYXRhIHJrMzM5OV92b3Bfd2lu
+X2RhdGFbXSA9IHsKPiAgIAl7IC5iYXNlID0gMHgwMCwgLnBoeSA9ICZyazMzOTlfd2luMDFfZGF0
+YSwKPiAgIAkgIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfUFJJTUFSWSB9LAo+IC0JeyAuYmFzZSA9
+IDB4NDAsIC5waHkgPSAmcmszMjg4X3dpbjAxX2RhdGEsCj4gKwl7IC5iYXNlID0gMHg0MCwgLnBo
+eSA9ICZyazMzNjhfd2luMDFfZGF0YSwKPiAgIAkgIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfT1ZF
+UkxBWSB9LAo+IC0JeyAuYmFzZSA9IDB4MDAsIC5waHkgPSAmcmszMjg4X3dpbjIzX2RhdGEsCj4g
+Kwl7IC5iYXNlID0gMHgwMCwgLnBoeSA9ICZyazMzNjhfd2luMjNfZGF0YSwKPiAgIAkgIC50eXBl
+ID0gRFJNX1BMQU5FX1RZUEVfT1ZFUkxBWSB9LAo+IC0JeyAuYmFzZSA9IDB4NTAsIC5waHkgPSAm
+cmszMjg4X3dpbjIzX2RhdGEsCj4gKwl7IC5iYXNlID0gMHg1MCwgLnBoeSA9ICZyazMzNjhfd2lu
+MjNfZGF0YSwKPiAgIAkgIC50eXBlID0gRFJNX1BMQU5FX1RZUEVfQ1VSU09SIH0sCj4gICB9Owo+
+ICAgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
