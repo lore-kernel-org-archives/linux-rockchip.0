@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A8CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0444C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Omtd8Oorsb1QQY/AuvwQrw1ls8T/+TmfRnkQPl2wL0=; b=EmeM8gvqNJzJnc
-	JARUpvckS0Y1ojcqerupxfhAHi3BdEFBUFMobBNbnFh5KvqxmfPdL/oqxFvMz6bw3uGPMi2SxbzJA
-	NkEbvy51VToRSepb9RcHOypeACJfbc/aAefHVV+8lVTvfmNGEbDHF7CXuspZFyA/XeR8CSSwfaxcY
-	NGxSAkcF1CEs8Oo+EL9WGO4beCk6itfjBKRHLYsX+mba+QDdAx/Xqrw/y7Izt9744rjsXjiDv0WRz
-	b6Y/k7a5CJtRhMHH0Vf8Ezmi/3L5KyrOdzF8shBoQzudF1DYKsbBowU8KpCK8SSpTv5uRTN5PeBmc
-	yzFcjKAOmdMVVFfuNt8w==;
+	List-Owner; bh=h+KYlGMcELxvBEDFcA+9fBxhgxn8r0jc0Ab230Xpfs8=; b=mMqBDCYdcDS9Vb
+	eN/dLGk8ixt9IoXAlV35/Ko6uZgTuRQuHzHaZZqnteR0m9pG3H0P7p/GYOiiQ1T37lGmZTz4KWDL0
+	Pm9gdjLGhIaI40IfEzChG3jol872grZWnTOWsREkSzen6rrnVqbfrFIEOPcTKze0vyuNCpBaE/M4F
+	9u++maRnFkywt3lvr1CHPEcMNPuZj6sZOan4A+TbTwj9oMEUNgD8UilNwhGjOYRc/Cu0b2Q5kkNgw
+	gkNqDOV8IQ+WRlpazDTM82VrzNz853kS8t3Kf+Fgsrmcg5lGXsSPEZuOpw6nQkcFqN8ffgFfAQmos
+	o2/2JylWjjhN2zQ3NO5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHjmd-00H4XI-Fj; Wed, 09 Feb 2022 10:01:07 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjg1-00H04L-Jb
- for linux-rockchip@bombadil.infradead.org; Wed, 09 Feb 2022 09:54:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=EqjV8D6OA7BR3L4Z537SIf8e6zM3NxWpAqzJwA2AOJ4=; b=W1HVRQjH3AyZNT6JoxMlNL5ybp
- HCj/rMCJ4fLZXKOKvbA7nKprRM8IAdsuw5Cx6ATFQusCkwllzikFnBOcnk1Rce0oPuA3M7Z/eppdx
- 0eqEz3Urv0TFqyaJWsaUJy8ub4KX71ybIheKGrLOsRB8JxLez70aHlNHXVKdeAZERN5ZUqXl1cN7u
- hZL6L8ZSqd/7u1/UB80RA+4eeTzeUCASb9/lIPMv8RsWP/5j3VfbNnK380On5Bc9dOnIy9zkf1Yo8
- XDYj7+PIcwwWWfLIkhmJbG6Pzz+pPnwN0797d828E1f9y9/sYelFMrJydkvitK+JK2mHPk7+ntG12
- 5LY678Hw==;
+	id 1nHjq2-00H5s3-66; Wed, 09 Feb 2022 10:04:38 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjfu-008Nqt-LF
- for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:16 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nHjfz-00H02Y-5z
+ for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:18 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjfj-0002Op-EX; Wed, 09 Feb 2022 10:53:59 +0100
+ id 1nHjfm-0002P9-It; Wed, 09 Feb 2022 10:54:02 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjff-008qaW-Tx; Wed, 09 Feb 2022 10:53:55 +0100
+ id 1nHjfg-008qbU-Ba; Wed, 09 Feb 2022 10:53:56 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -57,10 +43,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v5 03/23] drm/rockchip: dw_hdmi: rename vpll clock to
- reference clock
-Date: Wed,  9 Feb 2022 10:53:30 +0100
-Message-Id: <20220209095350.2104049-4-s.hauer@pengutronix.de>
+Subject: [PATCH v5 23/23] dt-bindings: display: rockchip: Add binding for VOP2
+Date: Wed,  9 Feb 2022 10:53:50 +0100
+Message-Id: <20220209095350.2104049-24-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220209095350.2104049-1-s.hauer@pengutronix.de>
 References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
@@ -71,8 +56,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_095410_858232_B14669CC 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20220209_015415_245267_ADE63533 
+X-CRM114-Status: GOOD (  17.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,94 +75,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"vpll" is a misnomer. A clock input to a device should be named after
-the usage in the device, not after the clock that drives it. On the
-rk3568 the same clock is driven by the HPLL.
-To fix that, this patch renames the vpll clock to ref clock. The clock
-name "vpll" is left for compatibility to old device trees.
+The VOP2 is found on newer Rockchip SoCs like the rk3568 or the rk3566.
+The binding differs slightly from the existing VOP binding, so add a new
+binding file for it.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 29 ++++++++++++---------
- 1 file changed, 16 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 8677c8271678..e352e0404f77 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -69,7 +69,7 @@ struct rockchip_hdmi {
- 	struct regmap *regmap;
- 	struct drm_encoder encoder;
- 	const struct rockchip_hdmi_chip_data *chip_data;
--	struct clk *vpll_clk;
-+	struct clk *ref_clk;
- 	struct clk *grf_clk;
- 	struct dw_hdmi *hdmi;
- 	struct phy *phy;
-@@ -196,14 +196,17 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 		return PTR_ERR(hdmi->regmap);
- 	}
- 
--	hdmi->vpll_clk = devm_clk_get(hdmi->dev, "vpll");
--	if (PTR_ERR(hdmi->vpll_clk) == -ENOENT) {
--		hdmi->vpll_clk = NULL;
--	} else if (PTR_ERR(hdmi->vpll_clk) == -EPROBE_DEFER) {
-+	hdmi->ref_clk = devm_clk_get(hdmi->dev, "ref");
-+	if (PTR_ERR(hdmi->ref_clk) == -ENOENT)
-+		hdmi->ref_clk = devm_clk_get(hdmi->dev, "vpll");
+Notes:
+    Changes since v4:
+    - Fix clk names in example
+    - Drop unnecessary assigned-clocks, assigned-clock-rates and assigned-clock-parents
+    
+    Changes since v3:
+    - drop redundant _vop suffix from clock names
+    
+    Changes since v3:
+    - new patch
+
+ .../display/rockchip/rockchip-vop2.yaml       | 140 ++++++++++++++++++
+ 1 file changed, 140 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+new file mode 100644
+index 000000000000..655d9b327f7d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+@@ -0,0 +1,140 @@
++# SPDX-License-Identifier: GPL-2.0-only or BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	if (PTR_ERR(hdmi->ref_clk) == -ENOENT) {
-+		hdmi->ref_clk = NULL;
-+	} else if (PTR_ERR(hdmi->ref_clk) == -EPROBE_DEFER) {
- 		return -EPROBE_DEFER;
--	} else if (IS_ERR(hdmi->vpll_clk)) {
--		DRM_DEV_ERROR(hdmi->dev, "failed to get vpll clock\n");
--		return PTR_ERR(hdmi->vpll_clk);
-+	} else if (IS_ERR(hdmi->ref_clk)) {
-+		DRM_DEV_ERROR(hdmi->dev, "failed to get reference clock\n");
-+		return PTR_ERR(hdmi->ref_clk);
- 	}
- 
- 	hdmi->grf_clk = devm_clk_get(hdmi->dev, "grf");
-@@ -257,7 +260,7 @@ static void dw_hdmi_rockchip_encoder_mode_set(struct drm_encoder *encoder,
- {
- 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
- 
--	clk_set_rate(hdmi->vpll_clk, adj_mode->clock * 1000);
-+	clk_set_rate(hdmi->ref_clk, adj_mode->clock * 1000);
- }
- 
- static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
-@@ -537,9 +540,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 		return ret;
- 	}
- 
--	ret = clk_prepare_enable(hdmi->vpll_clk);
-+	ret = clk_prepare_enable(hdmi->ref_clk);
- 	if (ret) {
--		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI vpll: %d\n",
-+		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
- 			      ret);
- 		return ret;
- 	}
-@@ -558,7 +561,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(hdmi->hdmi)) {
- 		ret = PTR_ERR(hdmi->hdmi);
- 		drm_encoder_cleanup(encoder);
--		clk_disable_unprepare(hdmi->vpll_clk);
-+		clk_disable_unprepare(hdmi->ref_clk);
- 	}
- 
- 	return ret;
-@@ -570,7 +573,7 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
- 	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
- 
- 	dw_hdmi_unbind(hdmi->hdmi);
--	clk_disable_unprepare(hdmi->vpll_clk);
-+	clk_disable_unprepare(hdmi->ref_clk);
- }
- 
- static const struct component_ops dw_hdmi_rockchip_ops = {
++title: Rockchip SoC display controller (VOP2)
++
++description:
++  VOP2 (Video Output Processor v2) is the display controller for the Rockchip
++  series of SoCs which transfers the image data from a video memory
++  buffer to an external LCD interface.
++
++maintainers:
++  - Sandy Huang <hjc@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3566-vop
++      - rockchip,rk3568-vop
++
++  reg:
++    minItems: 1
++    items:
++      - description:
++          Must contain one entry corresponding to the base address and length
++          of the register space.
++      - description:
++          Can optionally contain a second entry corresponding to
++          the CRTC gamma LUT address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      The VOP interrupt is shared by several interrupt sources, such as
++      frame start (VSYNC), line flag and other status interrupts.
++
++  clocks:
++    items:
++      - description: Clock for ddr buffer transfer.
++      - description: Clock for the ahb bus to R/W the phy regs.
++      - description: Pixel clock for video port 0.
++      - description: Pixel clock for video port 1.
++      - description: Pixel clock for video port 2.
++
++  clock-names:
++    items:
++      - const: aclk
++      - const: hclk
++      - const: dclk_vp0
++      - const: dclk_vp1
++      - const: dclk_vp2
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to GRF regs used for misc control
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP0
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP1
++
++      port@2:
++        $ref: /schemas/graph.yaml#/properties/port
++        description:
++          Output endpoint of VP2
++
++  iommus:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - ports
++
++additionalProperties: false
++
++examples:
++  - |
++        #include <dt-bindings/clock/rk3568-cru.h>
++        #include <dt-bindings/interrupt-controller/arm-gic.h>
++        #include <dt-bindings/power/rk3568-power.h>
++        bus {
++            #address-cells = <2>;
++            #size-cells = <2>;
++            vop: vop@fe040000 {
++                compatible = "rockchip,rk3568-vop";
++                reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
++                interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++                clocks = <&cru ACLK_VOP>,
++                         <&cru HCLK_VOP>,
++                         <&cru DCLK_VOP0>,
++                         <&cru DCLK_VOP1>,
++                         <&cru DCLK_VOP2>;
++                clock-names = "aclk",
++                              "hclk",
++                              "dclk_vp0",
++                              "dclk_vp1",
++                              "dclk_vp2";
++                power-domains = <&power RK3568_PD_VO>;
++                iommus = <&vop_mmu>;
++                vop_out: ports {
++                    #address-cells = <1>;
++                    #size-cells = <0>;
++                    vp0: port@0 {
++                        reg = <0>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                    vp1: port@1 {
++                        reg = <1>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                    vp2: port@2 {
++                        reg = <2>;
++                        #address-cells = <1>;
++                        #size-cells = <0>;
++                    };
++                };
++            };
++        };
 -- 
 2.30.2
 
