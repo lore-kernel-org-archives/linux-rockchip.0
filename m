@@ -4,55 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B9CC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 16:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDEECC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 16:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v32mApYVDXG8JEWhGszi06SAQyOzxETKAKq7G4yLSFw=; b=dEWoZDtzgDKMNH
-	HZzZEi5TMXUvocLomuFH1yCQbF1mOG0hYes+CLw5ST8sEgwER7aJi18zFq+JlnASBNNOmfBh+i5J6
-	5GXSKeIAp/PhdqACD6L3Rq5sHShTeaxhyNF8JsvQtg3JhoSJ27E2fL7VlLmoQaODgOg883AVBVrDZ
-	mPJ1gmWGacN09rfO6QeQaAehPzd/CMx9FDRPfwa8Ne/0oEce7PAVJdS7F/thnQ7TDEybSTsXPb5GJ
-	4uEh43Yb7sml5k0Z/9xp8sf7+DuO97XmDU3IMjWENQU93IDTArZ+fwmAzRMFrLw7dIUuD4EOgXOF2
-	042mSvTEwL4r1fQ/CXtw==;
+	List-Owner; bh=RPxxo99W4CQKQwvSGG6LTUT42e51Ee7j8CKLou2zW1c=; b=QszDUIghxHj/c+
+	hCRYkaaeGeeCdu0cbSt6N+DfOQhsaKrh15A8QSNy0Htf4DCc5W+6bdUwpdFJMeXZ82YohVLUO0sdG
+	L0q8NPDBpax+EIZdcgdmWNIf7r2splW9Thlall+h2xYjfs7Y5vQl3Dh5th4AwfE23OtkADRCrsT8s
+	7l08JF1ezWhw0VuTtqEF/r/6C/k69a53cEx6w99Eu0oIiggY4fHrPL0NLH/mkIxrVpiJaFI6teaLL
+	j6aJe1DBP0sFQBS855bi9G+EYLqQtE713/6VYfWWbUsx47uUQ7xm0bzn4OQjfB/u37ry7CTIa2AeB
+	7pa/SeOR6hOZosOENztA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHppT-000nlJ-2A; Wed, 09 Feb 2022 16:28:27 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nHq0U-000raM-Pj; Wed, 09 Feb 2022 16:39:50 +0000
+Received: from mout.gmx.net ([212.227.15.15])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHppF-000ngx-Bi; Wed, 09 Feb 2022 16:28:14 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nHpp8-0002r1-Gg; Wed, 09 Feb 2022 17:28:06 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- Peter Geis <pgwipeout@gmail.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-kernel@vger.kernel.org,
- Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, Alex Bee <knaerzche@gmail.com>,
- Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v5 1/5] dt-bindings: gpu: mali-bifrost: describe clocks
- for the rk356x gpu
-Date: Wed, 09 Feb 2022 17:28:05 +0100
-Message-ID: <3297396.uCXnvZdJcx@diego>
-In-Reply-To: <01b78d95-fdf3-060a-831d-dae2abbc7109@wolfvision.net>
-References: <20220209085110.3588035-1-michael.riesch@wolfvision.net>
- <1644420908.380944.391811.nullmailer@robh.at.kernel.org>
- <01b78d95-fdf3-060a-831d-dae2abbc7109@wolfvision.net>
+ id 1nHq0R-000rYH-Ov; Wed, 09 Feb 2022 16:39:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1644424761;
+ bh=23VcDO1UBkUQfDfSRRv997yJv60exeA4uC8n5A+TDxE=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=Lpz1wJHH+K9of3uaGCbGNXyz1urRUVQbH1pD53xTOmIjHuNtxxi8IIZcdciYSKIsX
+ 4MJc9P3mlZPyRhaqQiYfwl6/pp+R93QqZKT1doLmBQ9ciW+xsUC+joHGpoDQcmUtUa
+ 9IF7W8+xVXr8lvNaQscVYGh5MRCOjDBYZwMY9ZzU=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.77.2] ([80.245.77.2]) by web-mail.gmx.net
+ (3c-app-gmx-bs62.server.lan [172.19.170.146]) (via HTTP); Wed, 9 Feb 2022
+ 17:39:21 +0100
 MIME-Version: 1.0
+Message-ID: <trinity-15c80db0-29c1-4cea-be14-794d9a02debf-1644424761490@3c-app-gmx-bs62>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, jbx6244@gmail.com,
+ devicetree@vger.kernel.org, vkoul@kernel.org,
+ michael.riesch@wolfvision.net, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, kishon@ti.com, p.zabel@pengutronix.de,
+ cl@rock-chips.com, kever.yang@rock-chips.com, lee.jones@linaro.org,
+ wulf@rock-chips.com, david.wu@rock-chips.com, Yifeng Zhao
+ <yifeng.zhao@rock-chips.com>
+Subject: Aw: [PATCH v8 0/4] Add Naneng combo PHY support for RK3568
+Date: Wed, 9 Feb 2022 17:39:21 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220208091326.12495-1-yifeng.zhao@rock-chips.com>
+References: <20220208091326.12495-1-yifeng.zhao@rock-chips.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:MM7Nx0+88CSi+CDhES/hxhcnP//1RXCCnodnqkxCyHMOIysSJnTzv+d82Mt13iCGAncX8
+ DgZq7W20vZbLm3xrY7uJN7LjQMf7VkEYdBuxa068oT0hSc7uaWya6GHwx0FG0exoqY9wfgQIvdtz
+ z/33dMmbL+E7IUjtCgMmZa1XUE7DeO1od88KOma67UbRir4X3wo24XXsrZ8wLyWJnt3cQlWVEEaT
+ sp0T2QHcIVYTwUfv5qMBAaQky7saSPMPuCJfKHnqB/DtCt3D5DgGhBR4tU3I4IbQIfi/3CGRJZTN
+ h8=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:peP6EjXS6tA=:oPaDBOwEnnaixYUZ5ZG4iW
+ hIbhVRUzRZM6vZEA0ca3IykLJ2yzYM1jAHDgCcmJkP+/7Zn22hg1DqKibs9vkHgJwhLIJ3QYl
+ KHh1rkMR/YzrtnPWLFof7S1U+ms0PlO9Hm6JjZUnZkJsnm15uaBOkwrQhCH9khSrl0BA8FOh3
+ ILTJlcdnrEkYGjSigZ4wjRcaQAkh6eved6z1bqID5nAZgUIjkp1z/5NTveMPYshvMecSbYp/R
+ XthpN2OOB//PFaD0AjvYNk8b7qG5bmUxAWyNUMenaR7ukwHQD0DmuBgPo67mkE/4qLzMUfIP4
+ XCL5sxqvSE4Nem6huPvK9/A7ZHKBAPK7XhOCJy7v0k7DPPHJBZJnsL+f5acLwysPyQh0gAsfj
+ sNzUWanufR8/4mpJ+fkfnNxsF070wThsKQyfUCQFWRZ5niSxAtPwMyAhJX154z9nBlol64dax
+ i1OYh2cBrArUq30TClk2Uym/jcJSYVNu9h4Aa0ysB5Qt4TAs0kiOgUemWhMUsGPuF4HN1zvCZ
+ xjceUAIAhlJRmoMLBEwePcmCa9az/jnEnFYG0IOqGhLVzJE+Sc1EJLLrhwnmcLYoowIZoz6dY
+ yuoEXv+SqWYOliW5TRQwIx2CbX7pYO67oxKnJlchVkvsomVIzyG/L+iNl+v/uilT+G6mUhQDQ
+ CmpjIWrh0zlPzEUJg55uu/TW4QVfvmL2T8gF0KtLNbVEcn8gnAp1FrnYcoLRwyPAWApJeuLln
+ ZDorxOKy/KY/QMDjggxoygmrEG+4TzkR0V/lv0vmiJ0NsVbpvNUnzRvq1OsrUAcJCnZ3sqC0n
+ HTxv+ei
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_082813_439687_84DD49B5 
-X-CRM114-Status: GOOD (  29.69  )
+X-CRM114-CacheID: sfid-20220209_083948_183156_D47A3BAE 
+X-CRM114-Status: UNSURE (   4.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,71 +94,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+Hi
 
-Am Mittwoch, 9. Februar 2022, 16:46:28 CET schrieb Michael Riesch:
-> Hi Rob,
-> 
-> On 2/9/22 16:35, Rob Herring wrote:
-> > On Wed, 09 Feb 2022 09:51:06 +0100, Michael Riesch wrote:
-> >> From: Alex Bee <knaerzche@gmail.com>
-> >>
-> >> The Bifrost GPU in Rockchip RK356x SoCs has a core and a bus clock.
-> >> Reflect this in the SoC specific part of the binding.
-> >>
-> >> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> >> [move the changes to the SoC section]
-> >> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> >> ---
-> >>  .../devicetree/bindings/gpu/arm,mali-bifrost.yaml | 15 +++++++++++++++
-> >>  1 file changed, 15 insertions(+)
-> >>
-> > 
-> > My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> > 
-> > yamllint warnings/errors:
-> > ./Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml:173:12: [warning] wrong indentation: expected 12 but found 11 (indentation)
-> 
-> D'oh! Sorry for the stupid mistake, I found that yamllint was indeed
-> missing.
-> 
-> Lines 173 and 174 need an extra space. In the case that a v6 is required
-> I'll fix this. But of course I wouldn't say no if this could be fixed
-> when the patch is applied :-)
+Tested complete series on rk3568 based Bananapi R2 Pro
 
-My guess is, Rob's bot filters out the easy wrongs, so I'm not sure if he
-actually looks at these in person.
+combphy0: usb3 (usbdrd3_0)
+combphy1: usb3 (usbdrd3_1)
+combphy2: sata (sata2)
 
-So doing a v6 might actually be better for a Review :-)
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
 
-
-Heiko
-
-
-> > 
-> > dtschema/dtc warnings/errors:
-> > 
-> > doc reference errors (make refcheckdocs):
-> > 
-> > See https://patchwork.ozlabs.org/patch/1590238
-> > 
-> > This check can fail if there are any dependencies. The base for a patch
-> > series is generally the most recent rc1.
-> > 
-> > If you already ran 'make dt_binding_check' and didn't see the above
-> > error(s), then make sure 'yamllint' is installed and dt-schema is up to
-> > date:
-> > 
-> > pip3 install dtschema --upgrade
-> > 
-> > Please check and re-submit.
-> > 
-> 
-
-
-
-
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
