@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6E2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 15:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6C84C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 15:37:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CLdJo6kPvv0EyInm7bZUdf8r7bX+6H6IPnJznosMyWY=; b=h7qXmqY5uUyYLO
-	RXZFRT5zo4V2NPFE1onWBomlygQjioPGgnIlyGFnR4VPUmH4bTBPdNLk4pQSnWEL1vH+d1omVBCjq
-	nTSZiyAiRQv3uFagVtYNmFWliEZfQTpuo5vsueyzaF4p3WPNA+r5/y5Rig9nm4D3yp5KD335cdsPf
-	jrPNnOIIJtsNselUacx931O5DIemyDErt32+/lVUTMo9GRnXfX1u+aFw0JZodbpwkpWIA0VKRrs/E
-	iaUpFPCCGcfzLWqRqmZCccX9fzk0Y3wzbRfSbsPNNr7C/5rZjL8SQulX5WYmwHgmn9ybMCuYVaLk1
-	Gqhtd8KTucJGOYUQ6BWA==;
+	List-Owner; bh=IopmqQizOs+XosLnlmFBlV9LHG+8bMnjmC2Y4mB+s1I=; b=stt6Razl4WfPIh
+	JRrSJeouC0SMv880KoY9vnNxqfkHC7Klhzh/6IqDvXcaPmqglnJcr3nbOX81iEMSuYeYZihGOPyHF
+	Vwjh0PizzklPZBzEM53jo2AlVdz2k+6F6OObPpBErV25+87AsBB1IlIvDI3r7QOty4xtbI8jVPWWV
+	9Pr4C3mDrd/k8BSrqvksR7bni2U1WT36kH6Urqg/o5N19mnPmVvG2LE6tHvSc3T72oReOI8GRq3ss
+	+1dRPwD/1y91VWmSz6+JcdinsS/LIom1RGCBHUGoP8xbwEuIFxk50OCKFG6bWXRytShjVLhMhqoIJ
+	kqt4gqxpAL900w5bsJag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHp15-000c2Z-Ts; Wed, 09 Feb 2022 15:36:23 +0000
-Received: from mail-oi1-f181.google.com ([209.85.167.181])
+	id 1nHp1z-000cOI-Ot; Wed, 09 Feb 2022 15:37:19 +0000
+Received: from mail-oi1-f179.google.com ([209.85.167.179])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHozv-000bYm-Tp; Wed, 09 Feb 2022 15:35:13 +0000
-Received: by mail-oi1-f181.google.com with SMTP id x193so2905431oix.0;
- Wed, 09 Feb 2022 07:35:11 -0800 (PST)
+ id 1nHozz-000baI-Rk; Wed, 09 Feb 2022 15:35:17 +0000
+Received: by mail-oi1-f179.google.com with SMTP id v67so2802720oie.9;
+ Wed, 09 Feb 2022 07:35:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
  :message-id;
- bh=rue2p+rxxRzTcpzXBjAx6Nrna1JsJ4CzugHpoyHjtrM=;
- b=NAMF8D7je3vpP2LCu0PEYEFhWrabc9Brzn/rxmUQOreA25R4V51GUCFbpgkxO3fZbn
- pezAMCaTPL3UFPF3RP+qQoKAgg3ly1qkS6Pdm6Jgn8jpmuf74WRtIIqo1bpy1vggCEKt
- mLzlfISwSWKcaH+MCDi90smrJ2spWeJhm0CkRIK41p9e39hcDPtcaVRyEQUtauF8sqMP
- Gog5Y79/cztuO8fWJx3aRmP+gzK6fRbHmoWTpZMMLZCRUAU5nrC+HF8CO72E1K5j+A2Q
- r/8xvYz60L3O6bGn6uhdvN58aMmT9Rtv5qULHlMIKIkzsbde2q2t+Kxvw61u5qkRj+5k
- OqzQ==
-X-Gm-Message-State: AOAM531G+MU4wsxEPGu+a62gdHm4mKNr98fmtzQh2O2TeFRT15hqvU3p
- 7yoPMoR/5N4u9Ohc5qh9GQ==
-X-Google-Smtp-Source: ABdhPJxWKdE43poQgnWFP4/5cT7wgQczeGULboq8vh/fIH2TWeERikdANfIAYgAS4jESe/UbnkGqnw==
-X-Received: by 2002:aca:1a0f:: with SMTP id a15mr1226523oia.61.1644420910248; 
- Wed, 09 Feb 2022 07:35:10 -0800 (PST)
+ bh=87D9xgRPVhpkd0CiBsmaPizvX+fSKhfflYptts+iImg=;
+ b=sZwJlul0F3WuS1ak/45V2GeVqBAPQ7rEEzMZvwX98tOyKxV3QJ87mpj0SHJqVSpSa7
+ jtwK2RXwenKOWbFadkHKuE/3CbVozkc3FPwJxMqq4FY08zavFBveXg96P5bjgpFl49l1
+ 58BqJKI4jI7nBnHyXqyxNzTLbdM7WpXwkjknrkSpmOP4jehcMFZmQxuUvCvTvjaXgpG+
+ BPhnwXxF99FOhCIaGP0MO23ABCe1jnXHHL65gSm5vYb64Os7lAyVdBDdj+T3+/av5pqx
+ U0/Qfz1x4GtG3hx0KrZJgaVTXrzcgPr0N/czvLc9rjpHg+taIfM7KBAgACPxTp8+0GK7
+ qVPQ==
+X-Gm-Message-State: AOAM531DTTD4Ux/rM8NIWfU5Xp8HxZVT5cqYfGJDr7n2fIU1/zn1AZNv
+ gr0Bs4GOpYyFwRJYbP4c5g==
+X-Google-Smtp-Source: ABdhPJyPtWLE9p5DCJLdWQMRseTeW96RxJVjhB+AI0HAGDUEn+OIKwknd3fnEw5Ei7fB18SrxNWNag==
+X-Received: by 2002:aca:1b05:: with SMTP id b5mr1554068oib.289.1644420914112; 
+ Wed, 09 Feb 2022 07:35:14 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id m26sm6845473ooa.36.2022.02.09.07.35.08
+ by smtp.gmail.com with ESMTPSA id s11sm6498640otq.69.2022.02.09.07.35.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Feb 2022 07:35:09 -0800 (PST)
-Received: (nullmailer pid 391812 invoked by uid 1000);
+ Wed, 09 Feb 2022 07:35:13 -0800 (PST)
+Received: (nullmailer pid 391815 invoked by uid 1000);
  Wed, 09 Feb 2022 15:35:08 -0000
 From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- Peter Geis <pgwipeout@gmail.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, linux-kernel@vger.kernel.org,
- Liang Chen <cl@rock-chips.com>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, Alex Bee <knaerzche@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-In-Reply-To: <20220209085110.3588035-2-michael.riesch@wolfvision.net>
-References: <20220209085110.3588035-1-michael.riesch@wolfvision.net>
- <20220209085110.3588035-2-michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v5 1/5] dt-bindings: gpu: mali-bifrost: describe clocks
- for the rk356x gpu
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ heiko@sntech.de, robh+dt@kernel.org, linux-crypto@vger.kernel.org,
+ krzysztof.kozlowski@canonical.com, davem@davemloft.net,
+ linux-rockchip@lists.infradead.org, herbert@gondor.apana.org.au,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20220209124725.2080986-1-clabbe@baylibre.com>
+References: <20220209124725.2080986-1-clabbe@baylibre.com>
+Subject: Re: [PATCH] dt-bindings: crypto: convert rockchip-crypto to yaml
 Date: Wed, 09 Feb 2022 09:35:08 -0600
-Message-Id: <1644420908.380944.391811.nullmailer@robh.at.kernel.org>
+Message-Id: <1644420908.395763.391814.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_073512_002545_E3C5D7A3 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20220209_073515_935266_E1AA3F32 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,31 +82,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 09 Feb 2022 09:51:06 +0100, Michael Riesch wrote:
-> From: Alex Bee <knaerzche@gmail.com>
+On Wed, 09 Feb 2022 12:47:25 +0000, Corentin Labbe wrote:
+> Convert rockchip-crypto to yaml.
 > 
-> The Bifrost GPU in Rockchip RK356x SoCs has a core and a bus clock.
-> Reflect this in the SoC specific part of the binding.
-> 
-> Signed-off-by: Alex Bee <knaerzche@gmail.com>
-> [move the changes to the SoC section]
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > ---
->  .../devicetree/bindings/gpu/arm,mali-bifrost.yaml | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
+>  .../bindings/crypto/rockchip-crypto.txt       | 28 --------
+>  .../bindings/crypto/rockchip-crypto.yaml      | 64 +++++++++++++++++++
+>  2 files changed, 64 insertions(+), 28 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.yaml
 > 
 
 My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
 on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
 yamllint warnings/errors:
-./Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml:173:12: [warning] wrong indentation: expected 12 but found 11 (indentation)
 
 dtschema/dtc warnings/errors:
+Error: Documentation/devicetree/bindings/crypto/rockchip-crypto.example.dts:22.25-26 syntax error
+FATAL ERROR: Unable to parse input tree
+make[1]: *** [scripts/Makefile.lib:378: Documentation/devicetree/bindings/crypto/rockchip-crypto.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1398: dt_binding_check] Error 2
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/patch/1590238
+See https://patchwork.ozlabs.org/patch/1590370
 
 This check can fail if there are any dependencies. The base for a patch
 series is generally the most recent rc1.
