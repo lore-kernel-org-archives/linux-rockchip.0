@@ -4,35 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0444C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:04:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D142C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:07:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h+KYlGMcELxvBEDFcA+9fBxhgxn8r0jc0Ab230Xpfs8=; b=mMqBDCYdcDS9Vb
-	eN/dLGk8ixt9IoXAlV35/Ko6uZgTuRQuHzHaZZqnteR0m9pG3H0P7p/GYOiiQ1T37lGmZTz4KWDL0
-	Pm9gdjLGhIaI40IfEzChG3jol872grZWnTOWsREkSzen6rrnVqbfrFIEOPcTKze0vyuNCpBaE/M4F
-	9u++maRnFkywt3lvr1CHPEcMNPuZj6sZOan4A+TbTwj9oMEUNgD8UilNwhGjOYRc/Cu0b2Q5kkNgw
-	gkNqDOV8IQ+WRlpazDTM82VrzNz853kS8t3Kf+Fgsrmcg5lGXsSPEZuOpw6nQkcFqN8ffgFfAQmos
-	o2/2JylWjjhN2zQ3NO5w==;
+	List-Owner; bh=bNn8bOYMHmOZXc0SL1CmSD7WHqexXxmqxvq8qRfiR4A=; b=cITe7pQzV8LtFE
+	0kaKwUna9JW13j6oPyi+RQ5lZOTu0LBj3XLqnnv89v4HzPSwkm+koqgrp8GBuzEG4rIdLB3myTnda
+	QrkQPwJwlIZRWdIloZfDbMnjbx5vkq2eDP7XiRVRL8I34J+d79fgPhkXDQkjwZNVqAMquCv8FX5gn
+	H1POzB0zNkFIwCVikBdy3GXo3sqLmxlWs8T7trZ5ZXLDuPvCfKVkXihcWCQ/Ep11OoH8cSSsbJ0cd
+	hYMuPvQDEbXk4UJ51v41KsYLC7gmcLSZZzDQt1sYRaAifehhYnX+YTkzNBSasJGUTapP3wNPeB3rU
+	7Sw3//rARmDDqyzBubqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHjq2-00H5s3-66; Wed, 09 Feb 2022 10:04:38 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nHjst-00H75U-FT; Wed, 09 Feb 2022 10:07:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjfz-00H02Y-5z
- for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:18 +0000
+ id 1nHjg3-00H05z-Hr
+ for linux-rockchip@bombadil.infradead.org; Wed, 09 Feb 2022 09:54:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=w+5y+yLsuZKnyEhXveMfQYBGastr0CZTn8haXi4cAIg=; b=f7eJRP3pqDCtf6FqhiG+/+5dev
+ 0DETIR2YBbA1udMnRyzMjmqkN9aEQ9wNstrntLxK8Owts7jPdXzE6lN6Cl+owxWJTVObifb1VGybr
+ UNAmzcb7TNY3rm/2Vmi+0AiRxdHo39pjyP52PJ4pqL3QAfLA3EHI9jh+XEb52fu2hUgHxiIHQSBBY
+ z8WQ4eZmq5OsK3j//wkZ4Dq1lV+OUgdIHyfRylo2rG0bup1vPU63qo3Y3cr8EaC8QsxgR8Si3xX59
+ ryfZ07P+ZChnNG8GV3DqBgSrkp/0mRaiLTLht0xJYGetEGhK5XKnAt5zzJPqQNENXoQVerrgfyUG2
+ jwaZsbHw==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nHjfu-008Nr9-ST
+ for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:17 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjfm-0002P9-It; Wed, 09 Feb 2022 10:54:02 +0100
+ id 1nHjfm-0002Ou-Fl; Wed, 09 Feb 2022 10:54:02 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjfg-008qbU-Ba; Wed, 09 Feb 2022 10:53:56 +0100
+ id 1nHjfg-008qal-0A; Wed, 09 Feb 2022 10:53:56 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,9 +57,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v5 23/23] dt-bindings: display: rockchip: Add binding for VOP2
-Date: Wed,  9 Feb 2022 10:53:50 +0100
-Message-Id: <20220209095350.2104049-24-s.hauer@pengutronix.de>
+Subject: [PATCH v5 08/23] drm/rockchip: dw_hdmi: add regulator support
+Date: Wed,  9 Feb 2022 10:53:35 +0100
+Message-Id: <20220209095350.2104049-9-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220209095350.2104049-1-s.hauer@pengutronix.de>
 References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
@@ -56,8 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_015415_245267_ADE63533 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20220209_095410_988867_8596EC47 
+X-CRM114-Status: GOOD (  17.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,174 +89,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 is found on newer Rockchip SoCs like the rk3568 or the rk3566.
-The binding differs slightly from the existing VOP binding, so add a new
-binding file for it.
+The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+for the HDMI port. add support for these to the driver for boards which
+have them supplied by switchable regulators.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 41 +++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 3 deletions(-)
 
-Notes:
-    Changes since v4:
-    - Fix clk names in example
-    - Drop unnecessary assigned-clocks, assigned-clock-rates and assigned-clock-parents
-    
-    Changes since v3:
-    - drop redundant _vop suffix from clock names
-    
-    Changes since v3:
-    - new patch
-
- .../display/rockchip/rockchip-vop2.yaml       | 140 ++++++++++++++++++
- 1 file changed, 140 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-new file mode 100644
-index 000000000000..655d9b327f7d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-@@ -0,0 +1,140 @@
-+# SPDX-License-Identifier: GPL-2.0-only or BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 262eef614cb1..3d7c3f6fdf22 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -9,6 +9,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
+ 
+ #include <drm/bridge/dw_hdmi.h>
+ #include <drm/drm_edid.h>
+@@ -76,6 +77,8 @@ struct rockchip_hdmi {
+ 	struct clk *ref_clk;
+ 	struct clk *grf_clk;
+ 	struct dw_hdmi *hdmi;
++	struct regulator *avdd_0v9;
++	struct regulator *avdd_1v8;
+ 	struct phy *phy;
+ };
+ 
+@@ -223,6 +226,14 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 		return PTR_ERR(hdmi->grf_clk);
+ 	}
+ 
++	hdmi->avdd_0v9 = devm_regulator_get(hdmi->dev, "avdd-0v9");
++	if (IS_ERR(hdmi->avdd_0v9))
++		return PTR_ERR(hdmi->avdd_0v9);
 +
-+title: Rockchip SoC display controller (VOP2)
++	hdmi->avdd_1v8 = devm_regulator_get(hdmi->dev, "avdd-1v8");
++	if (IS_ERR(hdmi->avdd_1v8))
++		return PTR_ERR(hdmi->avdd_1v8);
 +
-+description:
-+  VOP2 (Video Output Processor v2) is the display controller for the Rockchip
-+  series of SoCs which transfers the image data from a video memory
-+  buffer to an external LCD interface.
+ 	return 0;
+ }
+ 
+@@ -563,11 +574,23 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	ret = regulator_enable(hdmi->avdd_0v9);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: %d\n", ret);
++		goto err_avdd_0v9;
++	}
 +
-+maintainers:
-+  - Sandy Huang <hjc@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
++	ret = regulator_enable(hdmi->avdd_1v8);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: %d\n", ret);
++		goto err_avdd_1v8;
++	}
 +
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3566-vop
-+      - rockchip,rk3568-vop
+ 	ret = clk_prepare_enable(hdmi->ref_clk);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
+ 			      ret);
+-		return ret;
++		goto err_clk;
+ 	}
+ 
+ 	if (hdmi->chip_data == &rk3568_chip_data) {
+@@ -591,10 +614,19 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	 */
+ 	if (IS_ERR(hdmi->hdmi)) {
+ 		ret = PTR_ERR(hdmi->hdmi);
+-		drm_encoder_cleanup(encoder);
+-		clk_disable_unprepare(hdmi->ref_clk);
++		goto err_bind;
+ 	}
+ 
++	return 0;
 +
-+  reg:
-+    minItems: 1
-+    items:
-+      - description:
-+          Must contain one entry corresponding to the base address and length
-+          of the register space.
-+      - description:
-+          Can optionally contain a second entry corresponding to
-+          the CRTC gamma LUT address.
++err_bind:
++	clk_disable_unprepare(hdmi->ref_clk);
++	drm_encoder_cleanup(encoder);
++err_clk:
++	regulator_disable(hdmi->avdd_1v8);
++err_avdd_1v8:
++	regulator_disable(hdmi->avdd_0v9);
++err_avdd_0v9:
+ 	return ret;
+ }
+ 
+@@ -605,6 +637,9 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 
+ 	dw_hdmi_unbind(hdmi->hdmi);
+ 	clk_disable_unprepare(hdmi->ref_clk);
 +
-+  interrupts:
-+    maxItems: 1
-+    description:
-+      The VOP interrupt is shared by several interrupt sources, such as
-+      frame start (VSYNC), line flag and other status interrupts.
-+
-+  clocks:
-+    items:
-+      - description: Clock for ddr buffer transfer.
-+      - description: Clock for the ahb bus to R/W the phy regs.
-+      - description: Pixel clock for video port 0.
-+      - description: Pixel clock for video port 1.
-+      - description: Pixel clock for video port 2.
-+
-+  clock-names:
-+    items:
-+      - const: aclk
-+      - const: hclk
-+      - const: dclk_vp0
-+      - const: dclk_vp1
-+      - const: dclk_vp2
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to GRF regs used for misc control
-+
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP0
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP1
-+
-+      port@2:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP2
-+
-+  iommus:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - ports
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+        #include <dt-bindings/clock/rk3568-cru.h>
-+        #include <dt-bindings/interrupt-controller/arm-gic.h>
-+        #include <dt-bindings/power/rk3568-power.h>
-+        bus {
-+            #address-cells = <2>;
-+            #size-cells = <2>;
-+            vop: vop@fe040000 {
-+                compatible = "rockchip,rk3568-vop";
-+                reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
-+                interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+                clocks = <&cru ACLK_VOP>,
-+                         <&cru HCLK_VOP>,
-+                         <&cru DCLK_VOP0>,
-+                         <&cru DCLK_VOP1>,
-+                         <&cru DCLK_VOP2>;
-+                clock-names = "aclk",
-+                              "hclk",
-+                              "dclk_vp0",
-+                              "dclk_vp1",
-+                              "dclk_vp2";
-+                power-domains = <&power RK3568_PD_VO>;
-+                iommus = <&vop_mmu>;
-+                vop_out: ports {
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+                    vp0: port@0 {
-+                        reg = <0>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                    vp1: port@1 {
-+                        reg = <1>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                    vp2: port@2 {
-+                        reg = <2>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                };
-+            };
-+        };
++	regulator_disable(hdmi->avdd_1v8);
++	regulator_disable(hdmi->avdd_0v9);
+ }
+ 
+ static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.30.2
 
