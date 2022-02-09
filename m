@@ -4,35 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E18C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:00:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54845C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LiHnHFsRqTfWTvp1GhG3LqU0q9ktKfLPN9N/OUlNTMg=; b=OW6At7K4gbq70L
-	kaKXG5Xv/Ti3H3YMMYKlzfKI0ydJdbREdamVp7BNp6DIoyVruB0O6nF52G9vuo6KhNyONXkRs4wfT
-	YY4LDGqSydeAG6ft5Jv6IrATiN5wbOOeJ43RmWvz/HDxSYD4jZRY75hPXuKp4iabXHVQqfbe7RRCH
-	D3D938swFCIopSE4gT6LMCM+cszoLLzx4MqNZadGjgKHzPQI2vfzaHFO9SbL5qkZjOEOJ/wq+bpKa
-	xOSV75CPSBKut3lUA9chvMVPER3bXWD46DQx5fWLWkLOACrStv1DXOZ0vFAJXtXwHsFDZQ5yb0d59
-	ZzYLTtyLluyBBMDn1ngg==;
+	List-Owner; bh=5hpOgROzFRDXR/R6JD+cTgZSl3saMePPKr1ry8WVZmc=; b=18p5R6/o7E+vzJ
+	yak0GaqaLVT3w/VgD5k3tvqzLqJ3ZSmug8AboGo43bWcHe0nEsoNjBbjhLfTR/NatCeyFHd36Vy06
+	FR+jhGKsHpcP6JaQ4QFG9UEQloxZiP5ABKtHhuxBU/JdlmW+wuyKMMfUKc/N2jlW/wF51MCoPOpWQ
+	34oa12t6NvKsGvUF5Al0GyQCxdMJzqRGTUC5oYLzJ/SSjum75kjENolTUdHSBvY3R+IAWKkTjkNNZ
+	JF/p+AAdgldcuW8c5FNJqjiUDLV24d+QdZRmWqOsdvUT6QFZltUXp8q2Jl9bY0jn4W2PVclYNuMz3
+	AXQTk/7VK8s+2wdZlTxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHjlj-00H3zs-Ta; Wed, 09 Feb 2022 10:00:12 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nHjlp-00H431-7z; Wed, 09 Feb 2022 10:00:17 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjfv-00H003-25
- for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:15 +0000
+ id 1nHjg1-00H04H-Ee
+ for linux-rockchip@bombadil.infradead.org; Wed, 09 Feb 2022 09:54:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=nj6+XC04cId0YJg5XnbQod2FhhB9F3SgFYdu78whL4Y=; b=ZgRpic2I4BWmmVQs4Fg8+Iq8Ny
+ lXer4GRUiOj/5ZnrfqiT1M536wNALuVmn0rcsZpf23rS5ZOqq0lFZwKlLqvbJ1dIr68aNDlTDw6kn
+ MlMv4qHzviNIJXfgt5ghGyE+8Oc0ohXlWtnHpaEKXm0/5i/2Nja9hP2ujvCsJQCe+hN1Wh5b2yq64
+ GLCHUcCwvxmIhX62CKb/0y03rO6yuLn+F88Cqe9b+TlX2/D8uezPpU1xmPJ0D7O98y7/vCSaRyjPz
+ tRwqes3hwSAHunqRxgCEbS30+G/KtbaE3+1AqsYCb0SwU2eLehAG43gbtLfhyASEIJGAWajNPbAL4
+ WnluhVBA==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nHjfx-007KIW-Ph
+ for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 09:54:16 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjfj-0002Oz-EP; Wed, 09 Feb 2022 10:53:59 +0100
+ id 1nHjfj-0002Os-ET; Wed, 09 Feb 2022 10:53:59 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nHjfg-008qb0-39; Wed, 09 Feb 2022 10:53:56 +0100
+ id 1nHjff-008qaf-VQ; Wed, 09 Feb 2022 10:53:55 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,9 +57,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v5 13/23] drm/rockchip: dw_hdmi: drop mode_valid hook
-Date: Wed,  9 Feb 2022 10:53:40 +0100
-Message-Id: <20220209095350.2104049-14-s.hauer@pengutronix.de>
+Subject: [PATCH v5 06/23] drm/rockchip: dw_hdmi: add rk3568 support
+Date: Wed,  9 Feb 2022 10:53:33 +0100
+Message-Id: <20220209095350.2104049-7-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220209095350.2104049-1-s.hauer@pengutronix.de>
 References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
@@ -56,8 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_015411_116735_E4A202B1 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220209_095413_845398_E3EC5F6E 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,93 +89,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver checks if the pixel clock of the given mode matches an entry
-in the mpll config table. The frequencies in the mpll table are meant as
-a frequency range up to which the entry works, not as a frequency that
-must match the pixel clock. The downstream Kernel also does not have
-this check, so drop it to allow for more display resolutions.
+Add a new dw_hdmi_plat_data struct and new compatible for rk3568.
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
-
-Notes:
-    Changes since v3:
-    - new patch
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 25 ---------------------
- 1 file changed, 25 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 31 +++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 160107b333ef..c44eb4d2e2d5 100644
+index e352e0404f77..262eef614cb1 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -256,26 +256,6 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
- 	return 0;
- }
+@@ -50,6 +50,10 @@
+ #define RK3399_GRF_SOC_CON20		0x6250
+ #define RK3399_HDMI_LCDC_SEL		BIT(6)
  
--static enum drm_mode_status
--dw_hdmi_rockchip_mode_valid(struct dw_hdmi *hdmi, void *data,
--			    const struct drm_display_info *info,
--			    const struct drm_display_mode *mode)
--{
--	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
--	int pclk = mode->clock * 1000;
--	bool valid = false;
--	int i;
--
--	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
--		if (pclk == mpll_cfg[i].mpixelclock) {
--			valid = true;
--			break;
--		}
--	}
--
--	return (valid) ? MODE_OK : MODE_BAD;
--}
--
- static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
- {
- }
-@@ -441,7 +421,6 @@ static struct rockchip_hdmi_chip_data rk3228_chip_data = {
++#define RK3568_GRF_VO_CON1		0x0364
++#define RK3568_HDMI_SDAIN_MSK		BIT(15)
++#define RK3568_HDMI_SCLIN_MSK		BIT(14)
++
+ #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
+ 
+ /**
+@@ -470,6 +474,19 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
+ 	.use_drm_infoframe = true,
  };
  
- static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
--	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg = rockchip_mpll_cfg,
- 	.cur_ctr = rockchip_cur_ctr,
- 	.phy_config = rockchip_phy_config,
-@@ -458,7 +437,6 @@ static struct rockchip_hdmi_chip_data rk3288_chip_data = {
++static struct rockchip_hdmi_chip_data rk3568_chip_data = {
++	.lcdsel_grf_reg = -1,
++};
++
++static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
++	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mpll_cfg   = rockchip_mpll_cfg,
++	.cur_ctr    = rockchip_cur_ctr,
++	.phy_config = rockchip_phy_config,
++	.phy_data = &rk3568_chip_data,
++	.use_drm_infoframe = true,
++};
++
+ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3228-dw-hdmi",
+ 	  .data = &rk3228_hdmi_drv_data
+@@ -483,6 +500,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3399-dw-hdmi",
+ 	  .data = &rk3399_hdmi_drv_data
+ 	},
++	{ .compatible = "rockchip,rk3568-dw-hdmi",
++	  .data = &rk3568_hdmi_drv_data
++	},
+ 	{},
  };
+ MODULE_DEVICE_TABLE(of, dw_hdmi_rockchip_dt_ids);
+@@ -517,6 +537,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	encoder = &hdmi->encoder;
  
- static const struct dw_hdmi_plat_data rk3288_hdmi_drv_data = {
--	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg   = rockchip_mpll_cfg,
- 	.cur_ctr    = rockchip_cur_ctr,
- 	.phy_config = rockchip_phy_config,
-@@ -478,7 +456,6 @@ static struct rockchip_hdmi_chip_data rk3328_chip_data = {
- };
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
++
++	encoder->port = of_graph_get_port_by_id(dev->of_node, 0);
++
+ 	/*
+ 	 * If we failed to find the CRTC(s) which this encoder is
+ 	 * supposed to be connected to, it's because the CRTC has
+@@ -547,6 +570,14 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
  
- static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
--	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg = rockchip_mpll_cfg,
- 	.cur_ctr = rockchip_cur_ctr,
- 	.phy_config = rockchip_phy_config,
-@@ -496,7 +473,6 @@ static struct rockchip_hdmi_chip_data rk3399_chip_data = {
- };
++	if (hdmi->chip_data == &rk3568_chip_data) {
++		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
++			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK,
++					   RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK));
++	}
++
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+ 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
  
- static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
--	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg   = rockchip_mpll_cfg,
- 	.cur_ctr    = rockchip_cur_ctr,
- 	.phy_config = rockchip_phy_config,
-@@ -509,7 +485,6 @@ static struct rockchip_hdmi_chip_data rk3568_chip_data = {
- };
- 
- static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
--	.mode_valid = dw_hdmi_rockchip_mode_valid,
- 	.mpll_cfg   = rockchip_mpll_cfg,
- 	.cur_ctr    = rockchip_cur_ctr,
- 	.phy_config = rockchip_phy_config,
 -- 
 2.30.2
 
