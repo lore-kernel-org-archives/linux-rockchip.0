@@ -4,50 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBA34C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:24:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BAA9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 10:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R2saePrZViFQBur+ZQIgu19lLsPOPI/m95jznFJNb5k=; b=IkOkwhcggyOIos
-	D08dNuZ9a6ZhdYAXvFBh+g4XW1rOSyoqvJQF8Bj3YvNMcr6LZ68hmRMw2XEdaLNnzRe0GARu6u9Q+
-	81GEiD7XdjCuuimI0gHSSjUrZDpmsJvSd69jv7djrW7SWPT8UloPbKY0dYTBwEyGx0UsVF4xixQCv
-	gvwjjio6Xx3FiUz1GakL4Qht0YUrUDCzz/Gbo0kgGkbNykhWnMwRRZx73tY5rck/sgN1VtegHFQjC
-	nbpFFw4+NWppH2rY8AcMrOWKr4kkWRIHFpD/0dNK1PXI9xcNDm+N4mh4Vi/YbNYisWZiiTc4SRl0X
-	Rn/R155UPqlwOWbYoa1A==;
+	List-Owner; bh=6sKC7WRmcyW2g6oz6qjipGomT/2v7qu2wPJC8jYagfM=; b=JRF6bQuIKQcD5B
+	Aqk3HY1DqmcOchi5jjUMEwcn6T+yAaRglqInhdiXNGRCB3ardHXwLnoD7jZLphZ83tgT7INBKFyNm
+	ORxo72f3ylLmTFTwZllZ7E9Na3MizS6h4bumZLceTA3OSGHskDkWjl3tC0NFfBn5HsoIgdcodZzZd
+	NBRjJMBT1BG1tMW/YyhhgyJCKTmD15gf9FfQEibWvJ8AVhLhZJKIJjSFC9hOmWmiSzZZt40Vc8szN
+	oP/Rt/dLBBBpYIFG0/OydUaj84Ef6bCiOlkLDj4iXDdhsX00+V9+53fEq7RSh/4bS2qpuE2YGl/gf
+	skksiJbjtJWFM0QQTcBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHk8i-00HE69-82; Wed, 09 Feb 2022 10:23:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nHk9e-00HEVl-0c; Wed, 09 Feb 2022 10:24:54 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHjsF-00H6pL-AB; Wed, 09 Feb 2022 10:06:57 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nHjsD-0008UB-T1; Wed, 09 Feb 2022 11:06:53 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>,
+ id 1nHjt4-00H7CV-SN
+ for linux-rockchip@bombadil.infradead.org; Wed, 09 Feb 2022 10:07:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=4wnZwFHxP/E2HCJ4vAQczmxA5+C+eCcH/RGQeOZm1T8=; b=R2fI5QPuenYVglYA3feb++yzql
+ 3WD8mDI/tS1aCn8IgYmr/6dfTCk2fB9HlQu53hnj4uMGXYxENYVN0Uor/H/+ToGgQ+rSk6d1dKyGj
+ TW7JlBTI6JALUM3asb1zq6890ePhDgT+f8vE9yJxwHpO8QOnoeCNZCU39bjHR1ox0edObkss62wSi
+ VjAFrW87OrHpjB5TOfMGI8oB+xQaxZV3yEDD2BzPwi+yNyfJlPCdoQwrW9HNjfIO6kGxOOYdCeAEA
+ KZyxBZpM1FbuGMxTef1byiiVLP1QpDeb3oeSqzB2DTogCH8auxRbmnyYsgQ8xQmvoPWr2tWS4zrs2
+ dXl2y7iQ==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nHjsz-007M2Y-MB
+ for linux-rockchip@lists.infradead.org; Wed, 09 Feb 2022 10:07:45 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nHjsx-00068n-7I; Wed, 09 Feb 2022 11:07:39 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nHjsu-0001wJ-AP; Wed, 09 Feb 2022 11:07:36 +0100
+Date: Wed, 9 Feb 2022 11:07:36 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- Douglas Anderson <dianders@chromium.org>, Yakir Yang <ykk@rock-chips.com>
-Subject: Re: [PATCH v5 12/23] drm/rockchip: dw_hdmi: Use auto-generated tables
-Date: Wed, 09 Feb 2022 11:06:52 +0100
-Message-ID: <2784361.GuOZkLzhrA@diego>
-In-Reply-To: <20220209095350.2104049-13-s.hauer@pengutronix.de>
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH v5 01/23] drm/encoder: Add of_graph port to struct
+ drm_encoder
+Message-ID: <20220209100736.GV18637@pengutronix.de>
 References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
- <20220209095350.2104049-13-s.hauer@pengutronix.de>
+ <20220209095350.2104049-2-s.hauer@pengutronix.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220209095350.2104049-2-s.hauer@pengutronix.de>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 10:57:24 up 60 days, 18:42, 83 users,  load average: 0.77, 0.40, 0.27
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_020655_428422_D2355C21 
-X-CRM114-Status: GOOD (  25.72  )
+X-CRM114-CacheID: sfid-20220209_100741_749713_728FFCCD 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,200 +99,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 9. Februar 2022, 10:53:39 CET schrieb Sascha Hauer:
-> From: Douglas Anderson <dianders@chromium.org>
-> 
-> The previous tables for mpll_cfg and curr_ctrl were created using the
-> 20-pages of example settings provided by the PHY vendor.  Those
-> example settings weren't particularly dense, so there were places
-> where we were guessing what the settings would be for 10-bit and
-> 12-bit (not that we use those anyway).  It was also always a lot of
-> extra work every time we wanted to add a new clock rate since we had
-> to cross-reference several tables.
-> 
-> In <https://crrev.com/c/285855> I've gone through the work to figure
-> out how to generate this table automatically.  Let's now use the
-> automatically generated table and then we'll never need to look at it
-> again.
-> 
-> We only support 8-bit mode right now and only support a small number
-> of clock rates and and I've verified that the only 8-bit rate that was
-> affected was 148.5.  That mode appears to have been wrong in the old
-> table.
-> 
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+David, Daniel,
 
-missing Signed-off-by: Sascha Hauer <...>
+I'll need a word from you regarding this patch. It's needed in patch
+22/23 in this series.
+vop2_crtc_atomic_enable() needs to control the mux which routes the
+display output to the different encoders. Which encoder is used is
+described in the of_graph port, so I need a way to identify the encoder
+in the device tree.
 
+Sascha
+
+On Wed, Feb 09, 2022 at 10:53:28AM +0100, Sascha Hauer wrote:
+> Add a device node to drm_encoder which corresponds with the port node
+> in the DT description of the encoder. This allows drivers to find the
+> of_graph link between a crtc and an encoder.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
+>  include/drm/drm_encoder.h | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> Notes:
->     Changes since v3:
->     - new patch
-> 
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 130 +++++++++++---------
->  1 file changed, 69 insertions(+), 61 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index b9928e622adf..160107b333ef 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -87,80 +87,88 @@ struct rockchip_hdmi {
+> diff --git a/include/drm/drm_encoder.h b/include/drm/drm_encoder.h
+> index 6e91a0280f31..3acd054b1eb3 100644
+> --- a/include/drm/drm_encoder.h
+> +++ b/include/drm/drm_encoder.h
+> @@ -99,6 +99,8 @@ struct drm_encoder {
+>  	struct drm_device *dev;
+>  	struct list_head head;
 >  
->  static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
->  	{
-> -		27000000, {
-> -			{ 0x00b3, 0x0000},
-> -			{ 0x2153, 0x0000},
-> -			{ 0x40f3, 0x0000}
-> +		30666000, {
-> +			{ 0x00b3, 0x0000 },
-> +			{ 0x2153, 0x0000 },
-> +			{ 0x40f3, 0x0000 },
->  		},
-> -	}, {
-> -		36000000, {
-> -			{ 0x00b3, 0x0000},
-> -			{ 0x2153, 0x0000},
-> -			{ 0x40f3, 0x0000}
-> +	},  {
-> +		36800000, {
-> +			{ 0x00b3, 0x0000 },
-> +			{ 0x2153, 0x0000 },
-> +			{ 0x40a2, 0x0001 },
->  		},
-> -	}, {
-> -		40000000, {
-> -			{ 0x00b3, 0x0000},
-> -			{ 0x2153, 0x0000},
-> -			{ 0x40f3, 0x0000}
-> +	},  {
-> +		46000000, {
-> +			{ 0x00b3, 0x0000 },
-> +			{ 0x2142, 0x0001 },
-> +			{ 0x40a2, 0x0001 },
->  		},
-> -	}, {
-> -		54000000, {
-> -			{ 0x0072, 0x0001},
-> -			{ 0x2142, 0x0001},
-> -			{ 0x40a2, 0x0001},
-> +	},  {
-> +		61333000, {
-> +			{ 0x0072, 0x0001 },
-> +			{ 0x2142, 0x0001 },
-> +			{ 0x40a2, 0x0001 },
->  		},
-> -	}, {
-> -		65000000, {
-> -			{ 0x0072, 0x0001},
-> -			{ 0x2142, 0x0001},
-> -			{ 0x40a2, 0x0001},
-> +	},  {
-> +		73600000, {
-> +			{ 0x0072, 0x0001 },
-> +			{ 0x2142, 0x0001 },
-> +			{ 0x4061, 0x0002 },
->  		},
-> -	}, {
-> -		66000000, {
-> -			{ 0x013e, 0x0003},
-> -			{ 0x217e, 0x0002},
-> -			{ 0x4061, 0x0002}
-> +	},  {
-> +		92000000, {
-> +			{ 0x0072, 0x0001 },
-> +			{ 0x2145, 0x0002 },
-> +			{ 0x4061, 0x0002 },
->  		},
-> -	}, {
-> -		74250000, {
-> -			{ 0x0072, 0x0001},
-> -			{ 0x2145, 0x0002},
-> -			{ 0x4061, 0x0002}
-> +	},  {
-> +		122666000, {
-> +			{ 0x0051, 0x0002 },
-> +			{ 0x2145, 0x0002 },
-> +			{ 0x4061, 0x0002 },
->  		},
-> -	}, {
-> -		83500000, {
-> -			{ 0x0072, 0x0001},
-> +	},  {
-> +		147200000, {
-> +			{ 0x0051, 0x0002 },
-> +			{ 0x2145, 0x0002 },
-> +			{ 0x4064, 0x0003 },
->  		},
-> -	}, {
-> -		108000000, {
-> -			{ 0x0051, 0x0002},
-> -			{ 0x2145, 0x0002},
-> -			{ 0x4061, 0x0002}
-> +	},  {
-> +		184000000, {
-> +			{ 0x0051, 0x0002 },
-> +			{ 0x214c, 0x0003 },
-> +			{ 0x4064, 0x0003 },
->  		},
-> -	}, {
-> -		106500000, {
-> -			{ 0x0051, 0x0002},
-> -			{ 0x2145, 0x0002},
-> -			{ 0x4061, 0x0002}
-> +	},  {
-> +		226666000, {
-> +			{ 0x0040, 0x0003 },
-> +			{ 0x214c, 0x0003 },
-> +			{ 0x4064, 0x0003 },
->  		},
-> -	}, {
-> -		146250000, {
-> -			{ 0x0051, 0x0002},
-> -			{ 0x2145, 0x0002},
-> -			{ 0x4061, 0x0002}
-> +	},  {
-> +		272000000, {
-> +			{ 0x0040, 0x0003 },
-> +			{ 0x214c, 0x0003 },
-> +			{ 0x5a64, 0x0003 },
->  		},
-> -	}, {
-> -		148500000, {
-> -			{ 0x0051, 0x0003},
-> -			{ 0x214c, 0x0003},
-> -			{ 0x4064, 0x0003}
-> +	},  {
-> +		340000000, {
-> +			{ 0x0040, 0x0003 },
-> +			{ 0x3b4c, 0x0003 },
-> +			{ 0x5a64, 0x0003 },
->  		},
-> -	}, {
-> +	},  {
-> +		600000000, {
-> +			{ 0x1a40, 0x0003 },
-> +			{ 0x3b4c, 0x0003 },
-> +			{ 0x5a64, 0x0003 },
-> +		},
-> +	},  {
->  		~0UL, {
-> -			{ 0x00a0, 0x000a },
-> -			{ 0x2001, 0x000f },
-> -			{ 0x4002, 0x000f },
-> +			{ 0x0000, 0x0000 },
-> +			{ 0x0000, 0x0000 },
-> +			{ 0x0000, 0x0000 },
->  		},
->  	}
->  };
+> +	struct device_node *port;
+> +
+>  	struct drm_mode_object base;
+>  	char *name;
+>  	/**
+> -- 
+> 2.30.2
+> 
 > 
 
-
-
-
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
