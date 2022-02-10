@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E18AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Feb 2022 11:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D16AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Feb 2022 11:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VinQyNz9Az9BdqzkrvOCa6Qe+SJBFWzox/RCijbpV0w=; b=PgkwwN0aae4TTb
-	omI/hYNALaXC0885EyKJn8mCBOa+G8LZyW49QHhRIygaCzH36qm2XDj++0RRRUs8DWB7VkqOWmQxz
-	YzT4it7Wbc2OwfEZtNTutY9IBDNAN2IT/6YerqEvd8k16uooJoWbAA5Cvu+0FbdBEdanM1W34re4X
-	xVUDmUM5Bjdax05/pBimz221j1mWlTPNvVeNQTqNyX7eZOKB5ca5zxvnHYu123/LnSqe+Q4gm0eiE
-	Dwae0ynNmiErWUr8psJu9njeqjcHD1GHhGjj5i6pmzU27C1R2JRiL1ohdJz1/rdhMumhunKEQJUGc
-	rMB7XWFK0ME01zX/dDsQ==;
+	List-Owner; bh=NXpUd0Q+USjpruX4A1+9SmPNiy707hdPHr4hwpTK8EU=; b=CR7JpsKmyCLx/l
+	jcjuGSTze/3RK1Km7cp7gso1tRU3iEnFWoVHxbmpmxBxX1Miy2tWbjRoA2OXyQ9fM9jewtR5+8gjL
+	VgS8+fFO34doSApDoyOYZA4rYmyKWTEjSpIWJT5T5qbnOTL9XViWNl31qf4rRE4Rw7reD1jBTG7Jc
+	RQ8Xpx3QA80cWs76NWubt/UsidH07x2ulaDHd1tutD398QrKuaL4/hTQyhzdu/JebrViwKvx9RPhX
+	mWqbK4llYKgneW3GiwAmebDTRa3/dj419MSyg21uAcgkiS4+6jEhDa995CptHbOgM51xZKq3C2+Uw
+	G78xZS1pR81Kxt0oKf5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nI7vh-003eX4-Tj; Thu, 10 Feb 2022 11:48:05 +0000
+	id 1nI80L-003f2I-Fv; Thu, 10 Feb 2022 11:52:53 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nI7vW-003eUt-VG
- for linux-rockchip@lists.infradead.org; Thu, 10 Feb 2022 11:47:57 +0000
+ id 1nI80B-003ezN-US
+ for linux-rockchip@lists.infradead.org; Thu, 10 Feb 2022 11:52:45 +0000
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nI7vR-00068e-Gs; Thu, 10 Feb 2022 12:47:49 +0100
+ id 1nI802-0006hc-JZ; Thu, 10 Feb 2022 12:52:34 +0100
 Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nI7vO-0003JB-MC; Thu, 10 Feb 2022 12:47:46 +0100
-Date: Thu, 10 Feb 2022 12:47:46 +0100
+ id 1nI800-0003TL-18; Thu, 10 Feb 2022 12:52:32 +0100
+Date: Thu, 10 Feb 2022 12:52:32 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: David Airlie <airlied@linux.ie>, devicetree@vger.kernel.org,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v5 19/23] arm64: dts: rockchip: rk3568-evb: Enable VOP2
- and hdmi
-Message-ID: <20220210114746.GX18637@pengutronix.de>
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v5 01/23] drm/encoder: Add of_graph port to struct
+ drm_encoder
+Message-ID: <20220210115232.GY18637@pengutronix.de>
 References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
- <20220209095350.2104049-20-s.hauer@pengutronix.de>
- <3492afbf-b9fc-d5f5-6f7a-2157442d8209@gmail.com>
+ <20220209095350.2104049-2-s.hauer@pengutronix.de>
+ <20220209100736.GV18637@pengutronix.de> <87fsospa36.fsf@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <3492afbf-b9fc-d5f5-6f7a-2157442d8209@gmail.com>
+In-Reply-To: <87fsospa36.fsf@intel.com>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-IRC: #ptxdist @freenode
 X-Accept-Language: de,en
 X-Accept-Content-Type: text/plain
-X-Uptime: 12:15:38 up 61 days, 20:01, 81 users,  load average: 0.29, 0.17, 0.17
+X-Uptime: 12:47:57 up 61 days, 20:33, 81 users,  load average: 0.17, 0.18, 0.14
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -66,8 +65,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_034755_013472_3AACFADE 
-X-CRM114-Status: GOOD (  25.55  )
+X-CRM114-CacheID: sfid-20220210_035243_994083_06BB126C 
+X-CRM114-Status: GOOD (  31.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +84,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 10, 2022 at 01:10:32AM +0100, Johan Jonker wrote:
-> Hi Sascha,
+On Wed, Feb 09, 2022 at 01:12:45PM +0200, Jani Nikula wrote:
+> On Wed, 09 Feb 2022, Sascha Hauer <s.hauer@pengutronix.de> wrote:
+> > David, Daniel,
+> >
+> > I'll need a word from you regarding this patch. It's needed in patch
+> > 22/23 in this series.
+> > vop2_crtc_atomic_enable() needs to control the mux which routes the
+> > display output to the different encoders. Which encoder is used is
+> > described in the of_graph port, so I need a way to identify the encoder
+> > in the device tree.
 > 
-> Something with port and endpoint gives notifications.
-> Somehow with the conversion of rockchip,dw-hdmi.txt to YAML not all SoC
-> options were checked/covered (see rk3328 and rk3568).
+> I think the question is how useful is this going to be in general. IMO
+> we should not be adding members that are useful in a single driver only.
 > 
-> Allow multiple vop:
-> port or
-> port@0
-> 1x vop -> endpoint
+> For example i915 wraps encoders with:
 > 
-> 2x vop -> endpoint@0
->        -> endpoint@1
+> 	struct intel_encoder {
+> 		struct drm_encoder base;
 > 
-> Also allow for connector:
-> (not all existing DT have this yet)
-> port@1
->       -> endpoint
+> 		/* i915 specific stuff here*/
+> 	};
 > 
-> See also at graph.yaml
-
-Ok, let me see if I get this right. The HDMI can either have one or two
-ports. It has one when the HDMI connector is not described in the device
-tree and two when it is. Also the first (or only) port can have one or
-two endpoints. It has one endpoint when the SoC has a single VOP and two
-endpoints when the SoC has two VOPs.
-
-It's been a painful morning because my YAML knowledge is fairly limited,
-but here's what I came up with:
-
-  ports:
-    $ref: /schemas/graph.yaml#/properties/ports
-    unevaluatedProperties: false
-    patternProperties:
-      "^port(@0)?$":
-        $ref: /schemas/graph.yaml#/properties/port
-        description: Input of the DWC HDMI TX
-        properties:
-          endpoint:
-            description: Connection to the VOP
-          endpoint@0:
-            description: Connection to the VOPB
-          endpoint@1:
-            description: Connection to the VOPL
-    properties:
-      port@1:
-        $ref: /schemas/graph.yaml#/properties/port
-        description: Output of the DWC HDMI TX
-
-Does this look sane to you? With this a make dtbs_check on this binding
-doesn't generate warnings anymore, and even better it does generate
-warnings when I add some wrong nodes/properties to the dts files.
-
-> ===
+> So that we can add stuff of our own there. Of course, it does mean a
+> bunch of overhead for the first time you need to do it. But adding
+> driver specific stuff to struct drm_encoder adds overhead for everyone.
 > 
-> dtc -I dtb -O dts rk3568-evb1-v10.dtb
-> <stdout>: Warning (avoid_unnecessary_addr_size):
-> /hdmi@fe0a0000/ports/port@1: unnecessary #address-cells/#size-cells
-> without "ranges" or child "reg" property
-> <stdout>: Warning (graph_child_address): /hdmi@fe0a0000/ports/port@0:
-> graph node has single child node 'endpoint@0',
-> #address-cells/#size-cells are not necessary
-> <stdout>: Warning (graph_child_address): /hdmi@fe0a0000/ports/port@1:
-> graph node has single child node 'endpoint', #address-cells/#size-cells
-> are not necessary
+> All that said, *I* don't know how useful the port member would be in
+> drivers that use device tree. Maybe it's worth it.
 
-That's easy. I dropped the @0 suffix and reg property from the node.
+I don't know either.
+
+Right now the drm_encoder is directly embedded into the encoder drivers
+private data structures, like this:
+
+struct rockchip_hdmi {
+        struct drm_encoder encoder;
+	...
+};
+
+I could change this to:
+
+struct rockchip_encoder {
+	struct device_node *port;
+	struct drm_encoder encoder;
+}
+
+and then
+
+struct rockchip_hdmi {
+	struct rockchip_encoder encoder;
+	...
+};
+
+That would solve the issue without touching generic DRM code if that's
+preferred.
 
 Sascha
+
 
 -- 
 Pengutronix e.K.                           |                             |
