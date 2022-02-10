@@ -4,132 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80D52C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Feb 2022 21:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 652C8C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Feb 2022 00:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cRkgc0NChP4C4BiqVh/HyIGJ2B/Y7xbtwiVoebR55Jw=; b=CI+mzgF5/eG53B
-	Mmj1coNkV62oS7MEmlL/agvnWVJjWQiH0oDHYxEOLJvmZimbPFTGT7o+Dli5NRqv3GA8lnNCZY3Q3
-	sPbRxpyvcrEiK+ymTSNxNphU4D09xsllvM1ZEUd/fN57rsDZTs87nKw4eKaWC6zvi/hD2h/X3ohjT
-	8zSHw7T2EO90De8Irkx+pdy+ZBfSZ+7v8As9SLH5Trf8lciKD+dVZu2SNRo0rhvgsOpk7vBGNtxXo
-	wja/lIAFYC4WQHGlnuGrh+TpZK48WUNOwY1MmWi1QilsEXkukPvCLmz4P+TUyIaPZOy+PLqUS0Bbs
-	VjZJucCLLHfnsR6MfFMw==;
+	List-Owner; bh=ust5yrZw8vVFmu3+cbFSlWDzKp73yuBbl0Qjb9gFaYc=; b=iW0p5DB7oukhCE
+	VXI41U/Bdxay2NSe2WaMndsp+cgYREX/LVCj/hf1evemHzuGxfw4vBv4mVllPg0O7PMrYgoSLyVd/
+	hN+r64rYCWQ3aVVYh6oAPl/4BbvW61mZuDFsKWJhAuP7XiFPQg1754cFP7mtJtYAMzvA+X+Pyu8IV
+	XbibfDek9G44L+jzrBETIoUkb1Pr8oav+58/LunZFeV6i9qn5ryI5jhXKXUEo+D9pmCrSIPxk+SgF
+	i2jKZCqCY+zK1LVwkrMPHtcepqc+VGLVjNN2GT/UCDmCS3SZSVkhqADstWcF5p+Vhe9EmCq2g6TLf
+	rYJGH9ySlXoopDdL+zCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nHuz8-001lfX-VQ; Wed, 09 Feb 2022 21:58:47 +0000
-Received: from mail-ve1eur02on0600.outbound.protection.outlook.com
- ([2a01:111:f400:fe06::600]
- helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1nHx2v-0026Ll-D4; Thu, 10 Feb 2022 00:10:49 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nHuwj-001kMp-F9; Wed, 09 Feb 2022 21:56:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mel02+VPhLCRpZVKfJ3uH/zinH8fI3ruY7AszZjam/xqGs79OQrw2MOmLNqlsP8NjyGT7YQsozPwTkDaBkwQrws7qM9uMR2GwjZgDUpn9Cp1C4FaZLkMn9P/twNIjhyYL6ENHVy9JuQO4rMruemBvyl/3YzwC1D+9NhL67e/bIPaXQENy3reOO4ZEdYp7qIbUbZGjvTd0H5qIMtn22RDpru116E9AbSWvCKuvgItvd5yawBY9BA6kHQJZmJayBzA9sAcyS8KGnJy+vzOiovHteLDEA73gkz7jm+05my/30RKF9j2Qld3fKMW0vBL4DcN8119oF3meMw1EUIiZbdwCQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=maYIBthui/wiXVu7QZ+ik0rjmMzwVfPApPwcKGj9fFM=;
- b=Kk/BTX6FV1ENIOJpsiM7kWtpubDE3jCG4TxJMnto6gpooqIz9fqfD6OsD2kIGhe0n5eG/EEUahKvgiZEXvk0N1Fm6/SoTXeTogPg6v9m9scBpBIqKz7LkEnFo6KXmqSUeQkbjk6nQqiyrVu1xgvB3VSdAMqjpLY330wZJiZ7o1DWPdlpnQ+PVW0n7qOH/TTM19DbGEtmK6SPXZjsAFqu/HFXS9RPFK4843RyfeX46EFdfYT5c1uEY7/7JwixQJEbbiX1NmZFX4jWPKDPJMrQ7dvznZ0vUPj3u3J3F+hCl5J4NVR5pUS+o8FwEpRLZMUkwoAjbWMXNBk888J51F5Ymw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=maYIBthui/wiXVu7QZ+ik0rjmMzwVfPApPwcKGj9fFM=;
- b=lnoDTr5+OQQRPID+rxkYWRGDwLoxoXeM+2PZ8pSHt0OFrlnDgTvfX8dNBJdDPy1sG9S7zlB5qqXYrUWKeaPXDNaJFpWNMiUCW9kzf07m3KrPU+DiLQXJjmOCSoOQmxrGXEm9A7ccD2ZYMOzggN9kEsnuO6i5RutIDezV3AzXElI=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
- by VI1PR08MB4575.eurprd08.prod.outlook.com (2603:10a6:803:eb::26)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.17; Wed, 9 Feb
- 2022 21:56:11 +0000
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::e14f:197:5001:4c56]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::e14f:197:5001:4c56%3]) with mapi id 15.20.4951.019; Wed, 9 Feb 2022
- 21:56:11 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Alex Bee <knaerzche@gmail.com>, Liang Chen <cl@rock-chips.com>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v6 5/5] arm64: dts: rockchip: enable the gpu on rk3568-evb1-v10
-Date: Wed,  9 Feb 2022 22:55:49 +0100
-Message-Id: <20220209215549.94524-6-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220209215549.94524-1-michael.riesch@wolfvision.net>
-References: <20220209215549.94524-1-michael.riesch@wolfvision.net>
-X-ClientProxiedBy: ZR0P278CA0197.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:44::8) To HE1PR0802MB2426.eurprd08.prod.outlook.com
- (2603:10a6:3:e1::23)
+ id 1nHx2i-0026KM-Lp; Thu, 10 Feb 2022 00:10:38 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id fj5so8541878ejc.4;
+ Wed, 09 Feb 2022 16:10:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=KuWfWfuWnqE3Lf1pLThOJ9cbGV0fB5/az1fd713TDVM=;
+ b=eORsgRc5opCCy82zZDyt/YscGu57swjkPfQHflgTUMgjhFWIaTU9Avbx8cRoq0Ja+0
+ pPdE0URc2/SwKMYrfmpYNRCJlHk9mHA9K6htJlKYQkVrIVjWCL41AaKObtFjGuIbBb6m
+ hafyl4vx9aXs9g6fxXOF8xxNLh56Nr+2udy3B6Uy8hagxNMDojP5oKiFOECZJ/S5n4l3
+ 3AaeEKJbs8rAmJNha6Mj8uASFVLRJNnl0Y4A8t7V4I80A9SG/2jG5uoDSwDc+ldo8UoO
+ Cd+Q+oxKWOFppQQz+jeUO69JYP6ixXpx/38c+iUWuwM6JoabkalmscwpEj4hQ3LIZYuw
+ DZsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=KuWfWfuWnqE3Lf1pLThOJ9cbGV0fB5/az1fd713TDVM=;
+ b=09b3vVNsZAy1KcSABrZDNdJVyeFlZnw+zHwN1yea3hDgw11lbBEXEJwi4FQ1wzLdRl
+ uW81P93k8kGYu6Hea1Qz9q6QJdFHjwQ/12M/geXa0OaGnV7fCnLGjdH2EnRhZJmuIOLz
+ MpIClRhUWWfXpN37NjFSRutSuQ8FpOowrBu6M1DfLyiinL5FntOTVa5U8E3jXGiGW0z5
+ Ujfu5SH2iryT2bGeyqca2G3iKaOYN+cerlWwsc6MsnX2Kk2fuDi8I1S/vU2/P53hMTUC
+ UH9/87wtC62Zo2TkD0w/9hz/cjz/J9KFsGdI2p1DunPspXgnfX4tdpP3Cn5m9J4VsUHW
+ 5Abw==
+X-Gm-Message-State: AOAM533ijqLQJdYvenFzxGrKcyntjFefOAQtYytPif+4gXHD2gWGwC1d
+ nZiThfNNEUYoGg+QVOJVUik=
+X-Google-Smtp-Source: ABdhPJz5HdwaLCZg0YGvrdms4wZCJ7d2vvjkkE7V8xjEya3YrI6hanWQq3TZeFNN4LgM/36xxIBSKQ==
+X-Received: by 2002:a17:906:4781:: with SMTP id
+ cw1mr4273977ejc.264.1644451833902; 
+ Wed, 09 Feb 2022 16:10:33 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ i6sm8992267edf.20.2022.02.09.16.10.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Feb 2022 16:10:33 -0800 (PST)
+Message-ID: <3492afbf-b9fc-d5f5-6f7a-2157442d8209@gmail.com>
+Date: Thu, 10 Feb 2022 01:10:32 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5732fd5d-8de5-46f5-8747-08d9ec16fc35
-X-MS-TrafficTypeDiagnostic: VI1PR08MB4575:EE_
-X-Microsoft-Antispam-PRVS: <VI1PR08MB457563BC741397E91CA2D8A5F22E9@VI1PR08MB4575.eurprd08.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:983;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: aNjspTOzH+dT/7ElZ/ySJ/XKm+MYxBMw1KL3IF4OMkytRhURNqz8gdWn41V2qKMz2G9KdIrMHEqq5dzksOEkYo+F6/TIRb6oY3kNSIcBNRbLv11NFitiqanaxFo30UEXL63aSe1zBM6R1LkFmcv3r5otDFNLKkF3vqnHT06apLS3AFqXtVFbUKEbVZtplAboafQh7IMfl1CI+GxGLzegnIDF8ld68iqB94tA8K3VBnu0hT3zZGCXAtSrEbhUPurfYsWhaHXiWfRtPfZ79Ouk/FaNIUWzT83Hs9v6dUFsiRc2FlbBw3esqzkiTQfbAgUU44gTKWPr2/AhslsbtB4w4j50JdqNYl80RbUqjb1zfQ4154Kjcx632ii2N+p6bjdBg0lyKxtW9JyWnEkLbCZH9sS++jwfruLlceRQpMzztW+XpvDXNW41ARDbEfZfs+lebBGBccbpsjmHxzTtpjeiw+5Zsw9Lybq/2/ShAaCvSb/MgliXIpoHqhfjgwJl/VJW+VHRRxASXN/Pm6c7mGD2cJqMrRL6dHZlg5LM8bv4Y2ps3dXAuHN0QvVbYN8lVlt0GQcT2mm0tTvqPR/6LKqs0Jaa8XLKwaeMF9GSEplrihYYR9SWSgjE+92ZZRl08jlo2+7ZwTTMi7Lh/JpefDQyKw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(6512007)(38100700002)(2906002)(4326008)(508600001)(316002)(54906003)(52116002)(36756003)(6666004)(6506007)(6486002)(2616005)(44832011)(1076003)(86362001)(7416002)(66946007)(66556008)(186003)(4744005)(8676002)(66476007)(8936002)(5660300002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?T1YckavoAlKkyxtImsZTJkAPNCF8FR8gflCwPSAGftNHedZ3qliLE2d7vrsT?=
- =?us-ascii?Q?zQjECaJifGesmSElpc2Y1J1Puu32g/3CdZSjsHeyG8VZYeUAR2F/PURjkkZU?=
- =?us-ascii?Q?AjckSPu4eKq8U2QG+Ouk1YU3x1tjkkFrMYA03If2Qv/dDT5rSbhZSY7j2qCW?=
- =?us-ascii?Q?iQxZq50XEI1JQ3LOj/ujWZe5bvnGhVuRWuZKMh2y2423mthpobsNOpiqJiLW?=
- =?us-ascii?Q?NJRiARYcbcSEXPX4Gmep9eWwzQXbhWNUL2nhzvuBuHiPsLVFhnKEceSI9wh6?=
- =?us-ascii?Q?JFtrEZTZLSXVEzH19ZMLuSu6ce6j5fDUrKxTUQ67eyPSpnZw8oXkXss6u8AM?=
- =?us-ascii?Q?giN+Izk9llKcJgYptXRsdWm5GkSXEdmlhIc8kqmQStffVfMuicGQukJz7b+g?=
- =?us-ascii?Q?wDQ3sZ5fN4FJ7TIgrF9Qy/Xe0qUnJbCFVFxdBQZxNNYR0E1XFzexEqMXFRg4?=
- =?us-ascii?Q?WDfspxtUr4is6H77pJ5DsgBmrN3GKSnUiO9mz2TSgbf0HH9K1RDq+Hi3TXNZ?=
- =?us-ascii?Q?fsx5yGlyivL1Fh6gzIpZaUDCU6G6Nt2UZs72OXesiDOkHNSi8iQRqZtQompr?=
- =?us-ascii?Q?isidDUqDaQl1sLVWpTKglQ3G7GFcCV0DbPzEsk2gmE5WUdnd82vILWe55rrl?=
- =?us-ascii?Q?k2N4FulNwLR/PHzL8DfjfbddoleMLNlA8rmWLvDu9Y8PkdjQtU5Ml0E37BpB?=
- =?us-ascii?Q?8AvMAOqzdLofmB0F+pMzHxS/EFAJ4qptdZ+brOUHSQoolUwq5T5JSjcfu4pi?=
- =?us-ascii?Q?IL7tJc6BldvAjC9VH28O+3u04mYqsGsiGpCtuoB6bEdpF9TZ3TXKGJHFn+2v?=
- =?us-ascii?Q?4M3sYw3jiP2I2yGv0zolAn2iKSa3C/PHmwnPc48ZZ28mSZtXQOn4dIfhNCOT?=
- =?us-ascii?Q?nhutAdD+9WyCmi5h9WMuaivtVGtmqDW08JTLtFCV7Ekaqlu4pcT8fs/J05m3?=
- =?us-ascii?Q?AHIjtdyWGrcKeK9Lq2rfb4TqHn5sLM8lAYF3lN+5yk8/mOfEqoC4ZTz+l9O5?=
- =?us-ascii?Q?p+uZzR4Xuk48oa2lJIiK45GUwtRmkCYpnJ4OWDURQHexumLiQvnXKRB9BkNg?=
- =?us-ascii?Q?UV18/d6H7HyQvk7ipb+GUwlyaxEnYKkcd0mz3XL5ShyQA8IOHjx2ei9aUMKy?=
- =?us-ascii?Q?q51FKOWDbtaom++yYdH+tKBjq5NhjcVDBk7VMnzNtzc9uTp4Uk531xY/T9OV?=
- =?us-ascii?Q?gLOTZ207KSUIeoJXXzU8E3BzpPedislJMXpsGW1TRmjP5+aFlEMw5lKDpdpN?=
- =?us-ascii?Q?ycPlntp4pt3EjhWrFSnx8KRaE3idryiAX6KnuU8Qh52WTz8bwYVnaW5fBqyD?=
- =?us-ascii?Q?vKd6sRl9+5zWMkFKynTxuYYraeLtOq/QI6sAFNaidDI90UiPnq0JQ7EI6Otz?=
- =?us-ascii?Q?hobRObTaiAxViQ2xyCkZ7CqUll24oRTm+oT1pZpW5JubCNcKQhMTgyVaq3Js?=
- =?us-ascii?Q?jWnQm+IeYWedsxe2fLvL0WqHJfmGsl2bsSNNGDUDyF1ACfgDRIa4EYydszo1?=
- =?us-ascii?Q?ylY8O+3x7eartncmeOmw4FSCwhWhxQKBIlu9CiJnDzcY1czkYrGSc79XIxOL?=
- =?us-ascii?Q?tvM8uX4W63mv9pahjk3xYEmCzPV+NjqmqwVknuTnCrhRHtaM6xE+5QjfdsvH?=
- =?us-ascii?Q?C/RKtC6vq4RTfIX24AS9wNsBcA2pd6mQERED200yoEyiAUJrKroHjePP7E0A?=
- =?us-ascii?Q?sY4OyqMWGrM3ms8nspuJIq+LVOQAX0ssWf1htb3S/bmM7lxc6qggcXws76ZS?=
- =?us-ascii?Q?wWY/9C8ahkw1N+DPFSFXQll9SE/SNmg=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5732fd5d-8de5-46f5-8747-08d9ec16fc35
-X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Feb 2022 21:56:11.6469 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: DhAwlU5YOwAfrLHtYv27SsV8NfCbLMPMuc+zR7rtt3hChzzXtNipIOCyaS+VItsubYr3IaEXdtG61pjQi70ms9jflbKmCe58evvDuHJ4cNU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB4575
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v5 19/23] arm64: dts: rockchip: rk3568-evb: Enable VOP2
+ and hdmi
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
+References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
+ <20220209095350.2104049-20-s.hauer@pengutronix.de>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20220209095350.2104049-20-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220209_135617_586783_C1E62D09 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20220209_161036_762060_7EB2EE66 
+X-CRM114-Status: GOOD (  16.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,45 +99,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the GPU core on the Rockchip RK3568 EVB1.
+Hi Sascha,
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
----
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Something with port and endpoint gives notifications.
+Somehow with the conversion of rockchip,dw-hdmi.txt to YAML not all SoC
+options were checked/covered (see rk3328 and rk3568).
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index d8a4f7a9f562..39c495ff0157 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -140,6 +140,11 @@ &gmac1m1_rgmii_clk
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_gpu>;
-+	status = "okay";
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-@@ -462,6 +467,12 @@ &sdmmc0 {
- 	status = "okay";
- };
- 
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
- &uart2 {
- 	status = "okay";
- };
--- 
-2.30.2
+Allow multiple vop:
+port or
+port@0
+1x vop -> endpoint
 
+2x vop -> endpoint@0
+       -> endpoint@1
+
+Also allow for connector:
+(not all existing DT have this yet)
+port@1
+      -> endpoint
+
+See also at graph.yaml
+===
+
+dtc -I dtb -O dts rk3568-evb1-v10.dtb
+<stdout>: Warning (avoid_unnecessary_addr_size):
+/hdmi@fe0a0000/ports/port@1: unnecessary #address-cells/#size-cells
+without "ranges" or child "reg" property
+<stdout>: Warning (graph_child_address): /hdmi@fe0a0000/ports/port@0:
+graph node has single child node 'endpoint@0',
+#address-cells/#size-cells are not necessary
+<stdout>: Warning (graph_child_address): /hdmi@fe0a0000/ports/port@1:
+graph node has single child node 'endpoint', #address-cells/#size-cells
+are not necessary
+
+===
+
+ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+
+  DTC     arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dt.yaml
+  CHECK   arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dt.yaml
+/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dt.yaml: hdmi@fe0a0000:
+ports: 'port' is a required property
+	From schema:
+/home/user/Downloads/linux-next-20220202/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+  DTC     arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dt.yaml
+  CHECK   arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dt.yaml
+/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dt.yaml: hdmi@fe0a0000:
+ports: 'port' is a required property
+	From schema:
+/home/user/Downloads/linux-next-20220202/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+
+===
+
+On 2/9/22 10:53, Sascha Hauer wrote:
+> This enabled the VOP2 display controller along with hdmi and the
+> required port routes which is enough to get a picture out of the
+> hdmi port of the board.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+> 
+> Notes:
+>     Changes since v4:
+>     - Sort nodes alphabetically
+>     
+>     Changes since v3:
+>     - Fix HDMI connector type
+> 
+>  .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 48 +++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> index 184e2aa2416a..18f0f5abddcf 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+> @@ -7,6 +7,7 @@
+>  /dts-v1/;
+>  #include <dt-bindings/gpio/gpio.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+>  #include "rk3568.dtsi"
+>  
+>  / {
+> @@ -33,6 +34,17 @@ dc_12v: dc-12v {
+>  		regulator-max-microvolt = <12000000>;
+>  	};
+>  
+> +	hdmi-con {
+> +		compatible = "hdmi-connector";
+> +		type = "a";
+> +
+> +		port {
+> +			hdmi_con_in: endpoint {
+> +				remote-endpoint = <&hdmi_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+>  	vcc3v3_sys: vcc3v3-sys {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc3v3_sys";
+> @@ -106,6 +118,25 @@ &gmac1m1_rgmii_clk
+>  	status = "okay";
+>  };
+>  
+> +&hdmi {
+> +	avdd-0v9-supply = <&vdda0v9_image>;
+> +	avdd-1v8-supply = <&vcca1v8_image>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_in {
+> +	hdmi_in_vp0: endpoint@0 {
+> +		reg = <0>;
+> +		remote-endpoint = <&vp0_out_hdmi>;
+> +	};
+> +};
+> +
+> +&hdmi_out {
+> +	hdmi_out_con: endpoint {
+> +		remote-endpoint = <&hdmi_con_in>;
+> +	};
+> +};
+> +
+>  &i2c0 {
+>  	status = "okay";
+>  
+> @@ -390,3 +421,20 @@ &sdmmc0 {
+>  &uart2 {
+>  	status = "okay";
+>  };
+> +
+> +&vop {
+> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
+> +	status = "okay";
+> +};
+> +
+> +&vop_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vp0 {
+> +	vp0_out_hdmi: endpoint@RK3568_VOP2_EP_HDMI {
+> +		reg = <RK3568_VOP2_EP_HDMI>;
+> +		remote-endpoint = <&hdmi_in_vp0>;
+> +	};
+> +};
 
 _______________________________________________
 Linux-rockchip mailing list
