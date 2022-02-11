@@ -4,79 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4270DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Feb 2022 16:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF28C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 03:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tuD0msvtd4YPd/tuBi2cw2YabZTTMq2xnIT6FmhuhrY=; b=sO+NbeSkvx9vG+
-	pUNgbU3GSKiTXq/xpSxJvBVBCezm2aZ5YBxO0kiPnwG34BhSjp4GUFVnYqMypeWrz4B+3SRYKs4js
-	grEsrD1N7WlGJzeVy0JtJhXj0/TYGUt7GvfjJpNVw3JyaWZ46DFo43P4CLcpGaBhCXlIt3neakQyx
-	w41lSK1JlyExYMjybhuYmQ90SkmGVG+A+whZzjlqRytnLM0wwDYn6dTssFsKR+7fBAYuqV3sKb1wX
-	fKFbQwfxJX3jbEsq7WYizN9t2nptsb3SiL5RmBZ2IseH2P78xNTbM+kxWLnrAK3NkcLhdMHqOPEz9
-	tmpgFu7JOnqqgTN2v2Sw==;
+	List-Owner; bh=9fWs9qGaK/Jl9S1X8S6wE8qTvYfJqbs7og+x3+lSj5s=; b=KzC7eSiRLH7iAh
+	H0smzrM/sS1krYaJ3K7VwYQXux6CQ+wLA9XFBoOfakyCaiqX+lQw6LUn0F8y0h0JXG0O/jYPUVVc/
+	bKiD5Xej/m3H2bCDeLTMX3jsP/hANoeYUhdMkFD7cQ2S/jTuOdsUHztItklHYuKNDwXrulfqUe3/j
+	+FfpG3BeFEd3hu2dNmiHLP8ui1AvCIDBCOAdT88e6KXQYBQm9dkyVIe5tjXDhrEw6v0ceeU+Or9QL
+	V6MKb3YNno3MIP9a0yG7Q3xX6/bS3QecpasUt2YgDyQwgc2cCbptYeD2X/7iunBtrk8JzSMuybxFP
+	SymSstJUmiNnKOE7GtHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nICZO-004PCg-8A; Thu, 10 Feb 2022 16:45:22 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1nIMr9-005bZj-Qx; Fri, 11 Feb 2022 03:44:23 +0000
+Received: from mail-m17664.qiye.163.com ([59.111.176.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nICZL-004PBk-3F
- for linux-rockchip@lists.infradead.org; Thu, 10 Feb 2022 16:45:21 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- m126-20020a1ca384000000b0037bb8e379feso5559437wme.5
- for <linux-rockchip@lists.infradead.org>; Thu, 10 Feb 2022 08:45:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=yjDhqf592V3qt8wWnx7Xe2xWw8Y2UB9NWdwLTiczK1o=;
- b=5TiOMJ8Mlb50qXyWCZxwL5pAfIOmsQI/kinuGONPUTIEg0Szrjxp1VmltFKf/RGzoy
- tJJCDStGrt7koz6rkvJ2pE08unxcEkVEMaJOJ7qf2OF2JsuPVRUo8YQi8cpo/cHtEBBh
- JoyDWNohkzUHovRFWv5Gb9N0Y0mYf/B5ZDzxuW4ZrD4QBlWy+lg1JxpU7PP+XC/J5DkZ
- 6TVoQcBVjEJWG6G6FgN9q1DmuMjc3Zp4tcNhK/dfz9/IJz7etW8HuC5W+sKw7Z4hTJ8g
- D+BrYu9wDbOh8eatRoUaYM3FtdzJ4E+S3+b8p1MQhvKbDOyr20N6nIogcEAIyCtCNXdY
- YoIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=yjDhqf592V3qt8wWnx7Xe2xWw8Y2UB9NWdwLTiczK1o=;
- b=fgrLRG2+0RPORyEhO+VtZtSZGjwXqQ7wEheCHW1s2wKdyWZ/FRy9V+5y8POnBxinxc
- nbsmRru65F/kC93++UbhI8Lu4FIiygPdB917qMCGUOEhm2tK1eqQosmPRyrvp3Aaq8yJ
- B4iM1tzZIQyH9nWxNzvR/7T2KN8Grwb8B7I3sw9F+rk0G6OgTpPFYiKmbQBYbiqTlixO
- kHeu2auMcfi21BBoh2bnzLs0ngsHn5tg177iPlR/TdQiP0EyrEsF+300ceeaIG5IwMWM
- zVafLKWkiSUfIObYupfWVU0Fp5pjN7++M1jtyLzLskTchl626DtwV9Mt0DVZ42N5iH4G
- pMKw==
-X-Gm-Message-State: AOAM532fqcH9Q7ZzkShkl/PRKIDvSKuq4RxT7blRo43hOicz42QJeQGN
- pmc55vbzI5KKvDW4zo3nc6C+ug==
-X-Google-Smtp-Source: ABdhPJyc2/8ZJ4hxIbLPFVcCV1rZ1Bg0TV7Oh4Mt69EeuvSrocHuFZNrVs7yoFvWEICUdpXlSZYVqg==
-X-Received: by 2002:a7b:cb90:: with SMTP id m16mr2868273wmi.3.1644511517233;
- Thu, 10 Feb 2022 08:45:17 -0800 (PST)
-Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
- by smtp.googlemail.com with ESMTPSA id d14sm2743881wrv.50.2022.02.10.08.45.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Feb 2022 08:45:16 -0800 (PST)
-Date: Thu, 10 Feb 2022 17:45:14 +0100
-From: LABBE Corentin <clabbe@baylibre.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: davem@davemloft.net, heiko@sntech.de, herbert@gondor.apana.org.au,
- robh+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2] dt-bindings: crypto: convert rockchip-crypto to yaml
-Message-ID: <YgVBGvTBuMd17sm8@Red>
-References: <20220210161403.2966196-1-clabbe@baylibre.com>
- <7acb44da-5833-f638-9348-0cbcc21cfc13@canonical.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7acb44da-5833-f638-9348-0cbcc21cfc13@canonical.com>
+ id 1nIMqk-005bRb-Dz; Fri, 11 Feb 2022 03:44:00 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 2840D140193;
+ Fri, 11 Feb 2022 11:43:49 +0800 (CST)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Jon Lin <jon.lin@rock-chips.com>
+Subject: [PATCH 3/6] spi: rockchip: Fix error in getting num-cs property
+Date: Fri, 11 Feb 2022 11:43:39 +0800
+Message-Id: <20220211034344.4130-3-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220211034344.4130-1-jon.lin@rock-chips.com>
+References: <20220211034344.4130-1-jon.lin@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+ kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWRpDShpWTU4dSUoYSk4fHh
+ ofVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MAg6Ayo6Lj4DNB4UNggNF0xL
+ DkoKCgxVSlVKTU9PTk5KS0lCTkJJVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+ QVlOQ1VJSVVMVUpKT1lXWQgBWUFJSU1CNwY+
+X-HM-Tid: 0a7ee6e1424ada2fkuws2840d140193
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_084519_152345_8307B005 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20220210_194358_665078_ADDD2EB8 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,63 +61,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Thu, Feb 10, 2022 at 05:19:50PM +0100, Krzysztof Kozlowski a =E9crit :
-> On 10/02/2022 17:14, Corentin Labbe wrote:
-> > Convert rockchip-crypto to yaml
-> > =
+Get num-cs u32 from dts of_node property rather than u16.
 
-> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> > ---
-> > Change since v1:
-> > - fixed example
-> > - renamed to a new name
-> > - fixed some maxItems
-> > =
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+---
 
-> >  .../crypto/rockchip,rk3288-crypto.yaml        | 66 +++++++++++++++++++
-> >  .../bindings/crypto/rockchip-crypto.txt       | 28 --------
-> >  2 files changed, 66 insertions(+), 28 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,r=
-k3288-crypto.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-c=
-rypto.txt
-> > =
+ drivers/spi/spi-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-> > diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-c=
-rypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypt=
-o.yaml
-> > new file mode 100644
-> > index 000000000000..44f415597e32
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.y=
-aml
-> > @@ -0,0 +1,66 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/crypto/rockchip,rk3288-crypto.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Rockchip Electronics And Security Accelerator
-> > +
-> > +maintainers:
-> > +  - Corentin Labbe <clabbe@baylibre.com>
-> =
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 1738a2611a2b..5f6a70664871 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -738,7 +738,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	struct spi_controller *ctlr;
+ 	struct resource *mem;
+ 	struct device_node *np = pdev->dev.of_node;
+-	u32 rsd_nsecs;
++	u32 rsd_nsecs, num_cs;
+ 	bool slave_mode;
+ 
+ 	slave_mode = of_property_read_bool(np, "spi-slave");
+@@ -848,8 +848,9 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		 * rk spi0 has two native cs, spi1..5 one cs only
+ 		 * if num-cs is missing in the dts, default to 1
+ 		 */
+-		if (of_property_read_u16(np, "num-cs", &ctlr->num_chipselect))
+-			ctlr->num_chipselect = 1;
++		if (of_property_read_u32(np, "num-cs", &num_cs))
++			num_cs = 1;
++		ctlr->num_chipselect = num_cs;
+ 		ctlr->use_gpio_descriptors = true;
+ 	}
+ 	ctlr->dev.of_node = pdev->dev.of_node;
+-- 
+2.17.1
 
-> You removed Heiko. It's fine for me, just is it expected?
-> =
-
-
-This is an error I fixed manualy in v1 file and forgot to change and commit=
-...
-
-Sorry
-I will resend a new version later
 
 _______________________________________________
 Linux-rockchip mailing list
