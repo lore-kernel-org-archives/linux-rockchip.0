@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92733C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 03:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6092C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 03:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bLtma2GIABHnqEwo0ftnr0OgRIK2F57tyeHPiCMlJmc=; b=l/BeR8sBaUvu2H
-	oVFMrhDoquO0atgkjAD+4cvBdqUpDt0OCFOI3RNWzesa63KNIZFeDBdFDmGJpOauYxXolSqV/o9Pv
-	oSHlsqqSj224xDlUBWshr+5A3CCAkIHo+z5yQ35noO3t6jBexg6p5+HovJdwKD5tcdMsgeTfNv2dk
-	pZ7m4WeSLB+hqrmG0vevxnJnyMuJUcuX/3fbCHhnHEkmVIyMa5uaSz/aNZPUYp1anIIqhupoTptGG
-	GQk9SF7eUIUkuUvf2vxIbC7ESjTfeodHGXGYKRZFdTQKs5CKJt+BO1Lxi2z2fGZsjIjmBY0ejqMnV
-	gasuAck+FaqVbdZu4+aQ==;
+	List-Owner; bh=CqlgBd9WSluto1JDSf3F7tB8h8R/xjbBlDEmorGfBIA=; b=j1hXyS87Asz5Z9
+	4T0T802Ym2xVP75dJkBU7BZQeVTJW+NMWodZCVmmvaIQaKTDNH0tOlnSa52JXuj08PRGT66fo3Tbj
+	GesK7u5GfUtsgSOs4l3JTRC6wTQGv0zhjZZAILqZ0w/BbeJ1Qki7Dk7sRHKenP0zi1Mlbx7QOLo5+
+	9Ang6OIs/RloapZVp2S0BoNKABK4KF6cgrO3G63iV/bDRejbHhxQqDjT7Oc+PKRYVpPbUakNmDLml
+	LOj8XQLQajQ8IrEuw4j3oWCG3yv3wseJZ7MZfN2sC/jO7V1fQUqRair+eQlOP+/t309RmSJzkUYQy
+	IhwV3IoSovplCvJ8cRMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIMr8-005bZS-8c; Fri, 11 Feb 2022 03:44:22 +0000
+	id 1nIMrZ-005bno-8p; Fri, 11 Feb 2022 03:44:49 +0000
 Received: from mail-m17664.qiye.163.com ([59.111.176.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIMqk-005bRp-Fu; Fri, 11 Feb 2022 03:44:00 +0000
+ id 1nIMqk-005bRk-Fu; Fri, 11 Feb 2022 03:44:01 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
- by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 5529D1401A6;
- Fri, 11 Feb 2022 11:43:51 +0800 (CST)
+ by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 3B3D91401A7;
+ Fri, 11 Feb 2022 11:43:50 +0800 (CST)
 From: Jon Lin <jon.lin@rock-chips.com>
 To: broonie@kernel.org
 Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jon Lin <jon.lin@rock-chips.com>
-Subject: [PATCH v10 5/6] spi: rockchip: Support cs-gpio
-Date: Fri, 11 Feb 2022 11:43:41 +0800
-Message-Id: <20220211034344.4130-5-jon.lin@rock-chips.com>
+ linux-kernel@vger.kernel.org, shengfei Xu <xsf@rock-chips.com>,
+ Jon Lin <jon.lin@rock-chips.com>
+Subject: [PATCH 4/6] spi: rockchip: Suspend and resume the bus during
+ NOIRQ_SYSTEM_SLEEP_PM ops
+Date: Fri, 11 Feb 2022 11:43:40 +0800
+Message-Id: <20220211034344.4130-4-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220211034344.4130-1-jon.lin@rock-chips.com>
 References: <20220211034344.4130-1-jon.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWUMfGBhWQxoZSx4dTh9KQ0
- NCVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NSo6Vgw*Sj5PGh4MGAg2F08o
- TwkwCRpVSlVKTU9PTk5KS0hKTEhIVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
- QVlOQ1VJSVVMVUpKT1lXWQgBWUFJTEhNNwY+
-X-HM-Tid: 0a7ee6e14ad7da2fkuws5529d1401a6
+ kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWUJPTB1WT01CQ0wYSRpPHU
+ 8aVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NzY6ATo4LD5CAh4dCA8cF08C
+ Sy0KCx9VSlVKTU9PTk5KS0hLTUNKVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+ QVlOQ1VJSVVMVUpKT1lXWQgBWUFISk5MNwY+
+X-HM-Tid: 0a7ee6e1469dda2fkuws3b3d91401a7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_194358_731958_A003C0CD 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220210_194358_751124_D66730FB 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,58 +68,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1.Add standard cs-gpio support
-2.Refer to spi-controller.yaml for details
+From: shengfei Xu <xsf@rock-chips.com>
 
+the wakeup interrupt handler which is guaranteed not to run while
+@resume noirq() is being executed. the patch can help to avoid the
+wakeup source try to access spi when the spi is in suspend mode.
+
+Signed-off-by: shengfei Xu <xsf@rock-chips.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
 
-Changes in v10: None
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-
- drivers/spi/spi-rockchip.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ drivers/spi/spi-rockchip.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 950d3bce443b..fbd750b1d28e 100644
+index 5f6a70664871..5457af616a44 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -157,7 +157,8 @@
-  */
- #define ROCKCHIP_SPI_MAX_TRANLEN		0xffff
+@@ -959,14 +959,14 @@ static int rockchip_spi_suspend(struct device *dev)
+ {
+ 	int ret;
+ 	struct spi_controller *ctlr = dev_get_drvdata(dev);
++	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
  
--#define ROCKCHIP_SPI_MAX_CS_NUM			2
-+/* 2 for native cs, 2 for cs-gpio */
-+#define ROCKCHIP_SPI_MAX_CS_NUM			4
- #define ROCKCHIP_SPI_VER2_TYPE1			0x05EC0002
- #define ROCKCHIP_SPI_VER2_TYPE2			0x00110002
+ 	ret = spi_controller_suspend(ctlr);
+ 	if (ret < 0)
+ 		return ret;
  
-@@ -245,11 +246,15 @@ static void rockchip_spi_set_cs(struct spi_device *spi, bool enable)
- 		/* Keep things powered as long as CS is asserted */
- 		pm_runtime_get_sync(rs->dev);
+-	ret = pm_runtime_force_suspend(dev);
+-	if (ret < 0)
+-		return ret;
++	clk_disable_unprepare(rs->spiclk);
++	clk_disable_unprepare(rs->apb_pclk);
  
--		ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER,
--				      BIT(spi->chip_select));
-+		if (spi->cs_gpiod)
-+			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
-+		else
-+			ROCKCHIP_SPI_SET_BITS(rs->regs + ROCKCHIP_SPI_SER, BIT(spi->chip_select));
- 	} else {
--		ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER,
--				      BIT(spi->chip_select));
-+		if (spi->cs_gpiod)
-+			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, 1);
-+		else
-+			ROCKCHIP_SPI_CLR_BITS(rs->regs + ROCKCHIP_SPI_SER, BIT(spi->chip_select));
+ 	pinctrl_pm_select_sleep_state(dev);
  
- 		/* Drop reference from when we first asserted CS */
- 		pm_runtime_put(rs->dev);
+@@ -981,10 +981,14 @@ static int rockchip_spi_resume(struct device *dev)
+ 
+ 	pinctrl_pm_select_default_state(dev);
+ 
+-	ret = pm_runtime_force_resume(dev);
++	ret = clk_prepare_enable(rs->apb_pclk);
+ 	if (ret < 0)
+ 		return ret;
+ 
++	ret = clk_prepare_enable(rs->spiclk);
++	if (ret < 0)
++		clk_disable_unprepare(rs->apb_pclk);
++
+ 	ret = spi_controller_resume(ctlr);
+ 	if (ret < 0) {
+ 		clk_disable_unprepare(rs->spiclk);
+@@ -1026,7 +1030,7 @@ static int rockchip_spi_runtime_resume(struct device *dev)
+ #endif /* CONFIG_PM */
+ 
+ static const struct dev_pm_ops rockchip_spi_pm = {
+-	SET_SYSTEM_SLEEP_PM_OPS(rockchip_spi_suspend, rockchip_spi_resume)
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_spi_suspend, rockchip_spi_resume)
+ 	SET_RUNTIME_PM_OPS(rockchip_spi_runtime_suspend,
+ 			   rockchip_spi_runtime_resume, NULL)
+ };
 -- 
 2.17.1
 
