@@ -4,49 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59AC8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 03:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3067C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 03:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Oig/oKkxlRQQwOmNPIZzgT/P17dtdvVgiYFECHf8jL0=; b=VJg7WNsBoO8TpV
-	wXNRs8wm+OndDoe9soJ89OG1yk7C/UeAGPrB5uM5WXYPac2wl9vfO4bRqbcbk2jmaO6Uad5aLEjbc
-	h/wsuaF4226ayeVmqqd7UigMZe3zYeWY0x1RGH75FjXI10G1C26TdWM2cdG2a8Rgxg8KAICHj4ore
-	DWqnZ15Whle57c2ikTsMII1o9kZHn8viPL7NCQ4mysrWQG44jVHlDCCxGe3197U/ERef8h+oLAvHh
-	Tg7UPxVVKOhKnGNHtMWIM8Fa5BmL2h+/niVVtmuHOjJ2zjlzLNwEsd2k66kU28/YRxZQAKVZI8E0X
-	rPfTu+LU/tuWvcEkOkUA==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/K21gxg6zv3LgUlmUjxeOIctzxRTsPnVUrbxfonQGJI=; b=QFFU8e6XSPASTw
+	iOT07M/VhxsDsV0SfFSL40rnrOuf6IeSzYbSha+naR9YmJqVfLo6139UMTnJbDxH6fpuSprK2hs8h
+	7rAf6XgSSj1tW0Ie9JRNa0w2DDbRvXaPFYduKW/Jb0Vob1+2Ca0an7XWDU3wq4peSfXDWJG+RquzA
+	YFFxvd0JsvH5tVbgIBJ47L8oDOvZUPt/8zni3tsXDiOzriWrKnPVEdwCre4P5yRicYR8mQkFq/+5Y
+	Tu9P3yIRr/YooLPeKMvKR6iFSc5uAO4xuNfqlTUGDC3+7tWOQbocWj1kuBadzdERUaqyceJiOM8NU
+	uRCD9mtdnprOuxjioj+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nIMrx-005c44-5U; Fri, 11 Feb 2022 03:45:13 +0000
+	id 1nIMsB-005cDY-Ji; Fri, 11 Feb 2022 03:45:27 +0000
 Received: from mail-m17664.qiye.163.com ([59.111.176.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nIMqk-005bR4-GJ; Fri, 11 Feb 2022 03:44:02 +0000
+ id 1nIMqn-005bUC-OP; Fri, 11 Feb 2022 03:44:03 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
- by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 378231400FD;
- Fri, 11 Feb 2022 11:43:45 +0800 (CST)
+ by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 3BDCC1401C9;
+ Fri, 11 Feb 2022 11:43:53 +0800 (CST)
 From: Jon Lin <jon.lin@rock-chips.com>
 To: broonie@kernel.org
 Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Jon Lin <jon.lin@rock-chips.com>
-Subject: [PATCH 1/6] spi: rockchip: Stop spi slave dma receiver when cs
- inactive
-Date: Fri, 11 Feb 2022 11:43:37 +0800
-Message-Id: <20220211034344.4130-1-jon.lin@rock-chips.com>
+Subject: [PATCH 6/6] spi: rockchip: clear interrupt status in error handler
+Date: Fri, 11 Feb 2022 11:43:43 +0800
+Message-Id: <20220211034344.4130-7-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20220211034344.4130-1-jon.lin@rock-chips.com>
+References: <20220211034344.4130-1-jon.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWRlJGU5WGRhNGkhMT01OGR
- 9NVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OTI6Ngw*Oj5MSx4TGA9CFwIL
- SQ8aFCNVSlVKTU9PTk5KS0lOTUxPVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
- QVlOQ1VJSVVMVUpKT1lXWQgBWUFMTkpLNwY+
-X-HM-Tid: 0a7ee6e132fada2fkuws378231400fd
+ kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWUJMGR5WSUlJT05DGEoZGB
+ 1LVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OjI6TCo6SD5NTx4JTQ4IF0tK
+ OhIwCjZVSlVKTU9PTk5KS0hITUxJVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+ QVlOQ1VJSVVMVUpKT1lXWQgBWUFKQkJMNwY+
+X-HM-Tid: 0a7ee6e15238da2fkuws3bdcc1401c9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220210_194358_913554_A2E2B3E6 
-X-CRM114-Status: GOOD (  18.73  )
+X-CRM114-CacheID: sfid-20220210_194402_022573_C2B574E5 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,210 +67,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The spi which's version is higher than ver 2 will automatically
-enable this feature.
-
-If the length of master transmission is uncertain, the RK spi slave
-is better to automatically stop after cs inactive instead of waiting
-for xfer_completion forever.
+The interrupt status bit of the previous error data transmition will
+affect the next operation and cause continuous SPI transmission failure.
 
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
 
- drivers/spi/spi-rockchip.c | 85 ++++++++++++++++++++++++++++++++++----
- 1 file changed, 77 insertions(+), 8 deletions(-)
+ drivers/spi/spi-rockchip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 553b6b9d0222..7ac07569e103 100644
+index 3d4e95eda4a6..bc547b79a2a1 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -133,7 +133,8 @@
- #define INT_TF_OVERFLOW				(1 << 1)
- #define INT_RF_UNDERFLOW			(1 << 2)
- #define INT_RF_OVERFLOW				(1 << 3)
--#define INT_RF_FULL					(1 << 4)
-+#define INT_RF_FULL				(1 << 4)
-+#define INT_CS_INACTIVE				(1 << 6)
- 
- /* Bit fields in ICR, 4bit */
- #define ICR_MASK					0x0f
-@@ -194,6 +195,8 @@ struct rockchip_spi {
- 	bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
- 
- 	bool slave_abort;
-+	bool cs_inactive; /* spi slave tansmition stop when cs inactive */
-+	struct spi_transfer *xfer; /* Store xfer temporarily */
- };
- 
- static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
-@@ -343,6 +346,15 @@ static irqreturn_t rockchip_spi_isr(int irq, void *dev_id)
- 	struct spi_controller *ctlr = dev_id;
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
- 
-+	/* When int_cs_inactive comes, spi slave abort */
-+	if (rs->cs_inactive && readl_relaxed(rs->regs + ROCKCHIP_SPI_IMR) & INT_CS_INACTIVE) {
-+		ctlr->slave_abort(ctlr);
-+		writel_relaxed(0, rs->regs + ROCKCHIP_SPI_IMR);
-+		writel_relaxed(0xffffffff, rs->regs + ROCKCHIP_SPI_ICR);
-+
-+		return IRQ_HANDLED;
-+	}
-+
- 	if (rs->tx_left)
- 		rockchip_spi_pio_writer(rs);
- 
-@@ -350,6 +362,7 @@ static irqreturn_t rockchip_spi_isr(int irq, void *dev_id)
- 	if (!rs->rx_left) {
- 		spi_enable_chip(rs, false);
- 		writel_relaxed(0, rs->regs + ROCKCHIP_SPI_IMR);
-+		writel_relaxed(0xffffffff, rs->regs + ROCKCHIP_SPI_ICR);
- 		spi_finalize_current_transfer(ctlr);
- 	}
- 
-@@ -357,14 +370,18 @@ static irqreturn_t rockchip_spi_isr(int irq, void *dev_id)
- }
- 
- static int rockchip_spi_prepare_irq(struct rockchip_spi *rs,
--		struct spi_transfer *xfer)
-+				    struct spi_controller *ctlr,
-+				    struct spi_transfer *xfer)
- {
- 	rs->tx = xfer->tx_buf;
- 	rs->rx = xfer->rx_buf;
- 	rs->tx_left = rs->tx ? xfer->len / rs->n_bytes : 0;
- 	rs->rx_left = xfer->len / rs->n_bytes;
- 
--	writel_relaxed(INT_RF_FULL, rs->regs + ROCKCHIP_SPI_IMR);
-+	if (rs->cs_inactive)
-+		writel_relaxed(INT_RF_FULL | INT_CS_INACTIVE, rs->regs + ROCKCHIP_SPI_IMR);
-+	else
-+		writel_relaxed(INT_RF_FULL, rs->regs + ROCKCHIP_SPI_IMR);
- 	spi_enable_chip(rs, true);
- 
- 	if (rs->tx_left)
-@@ -383,6 +400,9 @@ static void rockchip_spi_dma_rxcb(void *data)
- 	if (state & TXDMA && !rs->slave_abort)
- 		return;
- 
-+	if (rs->cs_inactive)
-+		writel_relaxed(0, rs->regs + ROCKCHIP_SPI_IMR);
-+
+@@ -278,8 +278,9 @@ static void rockchip_spi_handle_err(struct spi_controller *ctlr,
+ 	 */
  	spi_enable_chip(rs, false);
- 	spi_finalize_current_transfer(ctlr);
- }
-@@ -423,14 +443,16 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
  
- 	atomic_set(&rs->state, 0);
+-	/* make sure all interrupts are masked */
++	/* make sure all interrupts are masked and status cleared */
+ 	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_IMR);
++	writel_relaxed(0xffffffff, rs->regs + ROCKCHIP_SPI_ICR);
  
-+	rs->tx = xfer->tx_buf;
-+	rs->rx = xfer->rx_buf;
-+
- 	rxdesc = NULL;
- 	if (xfer->rx_buf) {
- 		struct dma_slave_config rxconf = {
- 			.direction = DMA_DEV_TO_MEM,
- 			.src_addr = rs->dma_addr_rx,
- 			.src_addr_width = rs->n_bytes,
--			.src_maxburst = rockchip_spi_calc_burst_size(xfer->len /
--								     rs->n_bytes),
-+			.src_maxburst = rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes),
- 		};
- 
- 		dmaengine_slave_config(ctlr->dma_rx, &rxconf);
-@@ -474,10 +496,13 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
- 	/* rx must be started before tx due to spi instinct */
- 	if (rxdesc) {
- 		atomic_or(RXDMA, &rs->state);
--		dmaengine_submit(rxdesc);
-+		ctlr->dma_rx->cookie = dmaengine_submit(rxdesc);
- 		dma_async_issue_pending(ctlr->dma_rx);
- 	}
- 
-+	if (rs->cs_inactive)
-+		writel_relaxed(INT_CS_INACTIVE, rs->regs + ROCKCHIP_SPI_IMR);
-+
- 	spi_enable_chip(rs, true);
- 
- 	if (txdesc) {
-@@ -584,7 +609,46 @@ static size_t rockchip_spi_max_transfer_size(struct spi_device *spi)
- static int rockchip_spi_slave_abort(struct spi_controller *ctlr)
- {
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
-+	u32 rx_fifo_left;
-+	struct dma_tx_state state;
-+	enum dma_status status;
-+
-+	/* Get current dma rx point */
-+	if (atomic_read(&rs->state) & RXDMA) {
-+		dmaengine_pause(ctlr->dma_rx);
-+		status = dmaengine_tx_status(ctlr->dma_rx, ctlr->dma_rx->cookie, &state);
-+		dmaengine_terminate_sync(ctlr->dma_rx);
-+		atomic_set(&rs->state, 0);
-+		if (status == DMA_ERROR) {
-+			rs->rx = rs->xfer->rx_buf;
-+			rs->xfer->len = 0;
-+			rx_fifo_left = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXFLR);
-+			for (; rx_fifo_left; rx_fifo_left--)
-+				readl_relaxed(rs->regs + ROCKCHIP_SPI_RXDR);
-+			goto out;
-+		} else {
-+			rs->rx += rs->xfer->len - rs->n_bytes * state.residue;
-+		}
-+	}
-+
-+	/* Get the valid data left in rx fifo and set rs->xfer->len real rx size */
-+	if (rs->rx) {
-+		rx_fifo_left = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXFLR);
-+		for (; rx_fifo_left; rx_fifo_left--) {
-+			u32 rxw = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXDR);
-+
-+			if (rs->n_bytes == 1)
-+				*(u8 *)rs->rx = (u8)rxw;
-+			else
-+				*(u16 *)rs->rx = (u16)rxw;
-+			rs->rx += rs->n_bytes;
-+		}
- 
-+		rs->xfer->len = (unsigned int)(rs->rx - rs->xfer->rx_buf);
-+	}
-+
-+out:
-+	spi_enable_chip(rs, false);
- 	rs->slave_abort = true;
- 	spi_finalize_current_transfer(ctlr);
- 
-@@ -620,7 +684,7 @@ static int rockchip_spi_transfer_one(
- 	}
- 
- 	rs->n_bytes = xfer->bits_per_word <= 8 ? 1 : 2;
--
-+	rs->xfer = xfer;
- 	use_dma = ctlr->can_dma ? ctlr->can_dma(ctlr, spi, xfer) : false;
- 
- 	ret = rockchip_spi_config(rs, spi, xfer, use_dma, ctlr->slave);
-@@ -630,7 +694,7 @@ static int rockchip_spi_transfer_one(
- 	if (use_dma)
- 		return rockchip_spi_prepare_dma(rs, ctlr, xfer);
- 
--	return rockchip_spi_prepare_irq(rs, xfer);
-+	return rockchip_spi_prepare_irq(rs, ctlr, xfer);
- }
- 
- static bool rockchip_spi_can_dma(struct spi_controller *ctlr,
-@@ -808,8 +872,13 @@ static int rockchip_spi_probe(struct platform_device *pdev)
- 	switch (readl_relaxed(rs->regs + ROCKCHIP_SPI_VERSION)) {
- 	case ROCKCHIP_SPI_VER2_TYPE2:
- 		ctlr->mode_bits |= SPI_CS_HIGH;
-+		if (ctlr->can_dma && slave_mode)
-+			rs->cs_inactive = true;
-+		else
-+			rs->cs_inactive = false;
- 		break;
- 	default:
-+		rs->cs_inactive = false;
- 		break;
- 	}
- 
+ 	if (atomic_read(&rs->state) & TXDMA)
+ 		dmaengine_terminate_async(ctlr->dma_tx);
 -- 
 2.17.1
 
