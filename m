@@ -4,76 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29969C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 11:06:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111F8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Feb 2022 11:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Vlvjj9DYRBs/M6vs3r99xubotL1NWl/5MEhZT0AOv3g=; b=wNkD5jVGA1+/gz
-	UjbmKb9Rg9wL7JYLcQ/MMtjkMmGSqttHFKgPni8+qeEzNmBn8FVjItisagp6d75KCjK4dH5iqYUgo
-	aRALFG7RL9DeWRmnMZHAunlTW6fcX6zYiNjbGUVdARYYdJfeBt3pPY5690v9fwfBZZYDBWth/yd35
-	kapdp1yZ2tV1izKz/Gr/JCvoK8aVAtkGo8dQhheVFpyqYj8XtYNQ90gDNxQsPIMAoZ0nL5d7OZyXh
-	d2BxcIdKIFGkSNkmohvmAut7bKiPtynvzEY7nLfAOypUYJ07Y9NX15vMHfHZWGS4C/dTJYoXRvLjk
-	mHvLr/5YuzlC0TIZVgFg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N0JySrGvFqYZzKoF84uon5Pm0yGyeazNW6laMayPIFY=; b=Kw8zCmSDowbCQ2cTbjO5JIj/92
+	TFx7NexUuqWQVT92q0HP/fFxdy8wY2GX7cSTLsICXtuQDgDGJONEdiB79cDqpo/97rY+ja7Tvy0rn
+	JOT/rutT5Bd7OtazV/hL3zs+/aAEg0vwDQpS/HKfTaqEJWTpu6SEKUnMVankPaAilozIwykT3G2No
+	IYaiYP9c7LjJHxzWlaMTzActu4sYRQvDDpr8jj0qaUUksOuPkdX+YMyJF1ZlFyPTZpAKQLQWpl/iQ
+	FDBVMQPXg01kQFfdCclOnr8ifCFJh4augGDwMc2Z9wY+5xhGfoumRoUw5gQAQeZG2gdXVi6bHV5ue
+	N34dVb7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nITl8-006oEy-8m; Fri, 11 Feb 2022 11:06:38 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1nIU2f-006roO-W1; Fri, 11 Feb 2022 11:24:46 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nITkx-006o5r-GC
- for linux-rockchip@lists.infradead.org; Fri, 11 Feb 2022 11:06:33 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- v5-20020a17090a4ec500b001b8b702df57so11562453pjl.2
- for <linux-rockchip@lists.infradead.org>; Fri, 11 Feb 2022 03:06:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fW7IuBQjL7ot5s2XNwOb0lPZCAyNMYMY9WGVkx7MplM=;
- b=BBIeZ2kgtc/6SDJXIBQR58F+g1uEH7L8NY9TO/KeVX52BuUXHSn8zjoh5GCqghSp1c
- Uh3BgcTANITBbkhSsYJEYocXBH4GuEakjrm2OZSlIINMTIhewoJRQD5GuY9/KWwi9Clm
- lyuRcP7JqNLD3xoFCBZrlHIB+GnOvfrCX8g2Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fW7IuBQjL7ot5s2XNwOb0lPZCAyNMYMY9WGVkx7MplM=;
- b=GKOtzR1kW2tt4X4UIyWol0hxbytS3krg1dvmVAp5uRTcbl2t+kjXkehy5g5zFtWvIW
- 485BIsm+VDV4LJ7QpfWsrzzgqIX4af3ub5rc8apUHeyCrXJe87i/nCAVFTt4YD3075G3
- /NvCsvVkP2rNwX00HX6tR7NHf2gb4SlEWF+f9eab3juO7QeWvs7aTQqpj4K0i48foAh/
- 0Bi7EYRZrmjzUcxqCnu4Ep+YsiGlIlOaku2IkTuStGKcBi01sRC8RKRmjpKEwc0xB4FV
- uhVSUzod+65UQPriMHdwZGPh4Wqv1wabGpxeNiuLSRuL6ztkvXliM0mpJxYs/23jLWBg
- Injg==
-X-Gm-Message-State: AOAM532H4lcbhrjGjKpcDYQzT4zsVzC8bADBPk3oKIKmgkn5IeZ1VU1l
- i8KnuoW1HwPx6rAhIbG4aEy1dA==
-X-Google-Smtp-Source: ABdhPJxB3kHWd5L92viS8b4mkySdIs5+B3FyMFUnLaO6CG5CVT+YhqgVuy52zrEeUUbKylRNMLt1gw==
-X-Received: by 2002:a17:90a:1d:: with SMTP id 29mr1188822pja.140.1644577586017; 
- Fri, 11 Feb 2022 03:06:26 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com
- ([2401:fa00:1:10:c4e0:c7ee:38f6:b6d])
- by smtp.gmail.com with ESMTPSA id t14sm4410290pgo.19.2022.02.11.03.06.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Feb 2022 03:06:25 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH RFC v2] media: hantro: Implement support for encoder commands
-Date: Fri, 11 Feb 2022 19:06:17 +0800
-Message-Id: <20220211110617.2202714-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.35.1.265.g69c8d7142f-goog
+ id 1nIU2U-006rls-2v; Fri, 11 Feb 2022 11:24:35 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id A6A66618C5;
+ Fri, 11 Feb 2022 11:24:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 144C1C340E9;
+ Fri, 11 Feb 2022 11:24:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1644578671;
+ bh=kgjamcWZJRnrpWcKV4c05OC6uDAyQHhZAjqdsl9DYiM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=qDstbpDgj5EaBkwYW8RU14zD613j8a7qUPIXbUSYIGe3IFJTNkigkeTZpfE/VwakJ
+ avs2nhUSR+xULtnq08pOjLaaDkQOKPaCj/S6prT54TqSPVG6QKwzVPvMOr+QNIqRh4
+ lNtlUh94Jsz43zRr//3XjfBjAhQKr524MTjsbY4UYTJ4s3NDVnelgAwnOKzMgDIV8K
+ ucdVy+9AVXhaj7Yklz8mncqrJFMzntZeksj9UOak0Jlm1NTYzBBZAQBnlPCcQxVucn
+ 3Dp2t0V51EL3I3m4SecrUM0/4FO5OdlOhDzuBzvMfVT8Q51nzIyJ8gbAEnSfiOSC2V
+ UxtZnAUTtmuyw==
+Date: Fri, 11 Feb 2022 11:24:26 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/6] spi: rockchip: Preset cs-high and clk polarity in
+ setup progress
+Message-ID: <YgZHalrdhhilxROt@sirena.org.uk>
+References: <20220211034344.4130-1-jon.lin@rock-chips.com>
+ <20220211034344.4130-2-jon.lin@rock-chips.com>
 MIME-Version: 1.0
+In-Reply-To: <20220211034344.4130-2-jon.lin@rock-chips.com>
+X-Cookie: do {
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220211_030627_597984_1B6311D9 
-X-CRM114-Status: GOOD (  20.62  )
+X-CRM114-CacheID: sfid-20220211_032434_187548_13F5CF6E 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,209 +70,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8430686144524355361=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The V4L2 stateful encoder uAPI specification requires that drivers
-support the ENCODER_CMD ioctl to allow draining of buffers. This
-however was not implemented, and causes issues for some userspace
-applications.
 
-Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
-This is entirely based on existing code found in the vicodec test
-driver.
+--===============8430686144524355361==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lAF4Pc7uRcV0XAJA"
+Content-Disposition: inline
 
-Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
 
-Changes since v1:
-- Correctly handle last buffers that are empty
-- Correctly handle last buffers that just got queued
-- Disable (TRY_)ENCODER_CMD ioctls for hantro decoder
+--lAF4Pc7uRcV0XAJA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This is based on linux-next-20220208, and was tested on RK3399 with
-Gstreamer running the JPEG encoder. It was also tested on ChromeOS
-5.10 on Kevin with the video encoder used in ChromeOS ARC, which
-requires this. For ChromeOS, both encoder and decoder tests were run
-to check for regressions.
+On Fri, Feb 11, 2022 at 11:43:38AM +0800, Jon Lin wrote:
 
-Everything really works OK now, but since I'm not very familiar with
-the mem2mem framework, I might be missing something, causing resource
-leaks. Hence this patch is labeled RFC.
+> +static int rockchip_spi_setup(struct spi_device *spi)
+> +{
+> +	struct rockchip_spi *rs = spi_controller_get_devdata(spi->controller);
+> +	u32 cr0;
+> +
+> +	pm_runtime_get_sync(rs->dev);
+> +
+> +	cr0 = readl_relaxed(rs->regs + ROCKCHIP_SPI_CTRLR0);
+> +
+> +	cr0 |= ((spi->mode & 0x3) << CR0_SCPH_OFFSET);
+> +	if (spi->mode & SPI_CS_HIGH)
+> +		cr0 |= BIT(spi->chip_select) << CR0_SOI_OFFSET;
 
-Last, I suppose we could also add support for (TRY_)DECODER_CMD now?
+What ensures that this read/modify/write doesn't race with a transfer
+running on another client device in the case where the controller has
+more than one device connected?  Similarly with the mode, though it's
+not great to have devices with different modes connected to a single
+controller.
 
----
- drivers/staging/media/hantro/hantro_drv.c  | 17 +++++-
- drivers/staging/media/hantro/hantro_v4l2.c | 68 +++++++++++++++++++++-
- 2 files changed, 81 insertions(+), 4 deletions(-)
+--lAF4Pc7uRcV0XAJA
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index bc9bcb4eaf46..99bc650a5a93 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
- 	return hantro_get_dec_buf_addr(ctx, buf);
- }
- 
-+static const struct v4l2_event hantro_eos_event = {
-+	.type = V4L2_EVENT_EOS
-+};
-+
- static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
- 				    struct hantro_ctx *ctx,
- 				    enum vb2_buffer_state result)
-@@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
- 	src->sequence = ctx->sequence_out++;
- 	dst->sequence = ctx->sequence_cap++;
- 
-+	if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
-+		dst->flags |= V4L2_BUF_FLAG_LAST;
-+		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-+		v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
-+	}
-+
- 	v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
- 					 result);
- }
-@@ -807,10 +817,13 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
- 	snprintf(vfd->name, sizeof(vfd->name), "%s-%s", match->compatible,
- 		 funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "enc" : "dec");
- 
--	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
-+	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
- 		vpu->encoder = func;
--	else
-+	} else {
- 		vpu->decoder = func;
-+		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
-+		v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
-+	}
- 
- 	video_set_drvdata(vfd, vpu);
- 
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 67148ba346f5..777bd3dbd875 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -628,6 +628,39 @@ static int vidioc_s_selection(struct file *file, void *priv,
- 	return 0;
- }
- 
-+static const struct v4l2_event hantro_eos_event = {
-+	.type = V4L2_EVENT_EOS
-+};
-+
-+static int vidioc_encoder_cmd(struct file *file, void *priv,
-+			      struct v4l2_encoder_cmd *ec)
-+{
-+	struct hantro_ctx *ctx = fh_to_ctx(priv);
-+	int ret;
-+
-+	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
-+	if (ret < 0)
-+		return ret;
-+
-+	if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
-+	    !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
-+		return 0;
-+
-+	ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
-+	if (ret < 0)
-+		return ret;
-+
-+	if (ec->cmd == V4L2_ENC_CMD_STOP &&
-+	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-+		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-+
-+	if (ec->cmd == V4L2_ENC_CMD_START &&
-+	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-+		vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
-+
-+	return 0;
-+}
-+
- const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_querycap = vidioc_querycap,
- 	.vidioc_enum_framesizes = vidioc_enum_framesizes,
-@@ -657,6 +690,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 
- 	.vidioc_g_selection = vidioc_g_selection,
- 	.vidioc_s_selection = vidioc_s_selection,
-+
-+	.vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
-+	.vidioc_encoder_cmd = vidioc_encoder_cmd,
- };
- 
- static int
-@@ -733,8 +769,12 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
- 	 * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
- 	 * it to buffer length).
- 	 */
--	if (V4L2_TYPE_IS_CAPTURE(vq->type))
--		vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
-+	if (V4L2_TYPE_IS_CAPTURE(vq->type)) {
-+		if (ctx->is_encoder)
-+			vb2_set_plane_payload(vb, 0, 0);
-+		else
-+			vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
-+	}
- 
- 	return 0;
- }
-@@ -744,6 +784,22 @@ static void hantro_buf_queue(struct vb2_buffer *vb)
- 	struct hantro_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
- 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
- 
-+	if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type) &&
-+	    vb2_is_streaming(vb->vb2_queue) &&
-+	    v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
-+		unsigned int i;
-+
-+		for (i = 0; i < vb->num_planes; i++)
-+			vb->planes[i].bytesused = 0;
-+
-+		vbuf->field = V4L2_FIELD_NONE;
-+		vbuf->sequence = ctx->sequence_cap++;
-+
-+		v4l2_m2m_last_buffer_done(ctx->fh.m2m_ctx, vbuf);
-+		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-+		return;
-+	}
-+
- 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
- }
- 
-@@ -759,6 +815,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
- 	struct hantro_ctx *ctx = vb2_get_drv_priv(q);
- 	int ret = 0;
- 
-+	v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
-+
- 	if (V4L2_TYPE_IS_OUTPUT(q->type))
- 		ctx->sequence_out = 0;
- 	else
-@@ -831,6 +889,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
- 		hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
- 	else
- 		hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
-+
-+	v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
-+
-+	if (V4L2_TYPE_IS_OUTPUT(q->type) &&
-+	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-+		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
- }
- 
- static void hantro_buf_request_complete(struct vb2_buffer *vb)
--- 
-2.35.1.265.g69c8d7142f-goog
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIGR2kACgkQJNaLcl1U
+h9BfyQf/exE8+iCXNV1fW3KseTOTWzPwI1YKjOVKpLUK5KiyNUWaF/i9rC5TRKq6
+DYL//DLorpWKPt16bQTJUITGV4n0Me0ps0mgpCSFUBcWNknN6ZhGRoopU+YtYsqq
+JuUyZ4IXQqa+2FD8PTKZYNYYi1KwYpD/95NwyzhxtqjFYleINO64dcFpzz6kuOzG
+2eluAh49aSNJmPS8z8/o/CI8rjMWkB+JioGo5yTTHoG41pK5mXsxVwBcxihTISkV
+yK9eLoFZ/wTwC9sTQUnxMZvedvHQbIN1/ZUkeL3dRa7mkduqQwAHgOy+9FRu8Yu1
+UEDeO1CtCL19tCK5ONwNoA2vEMN8kA==
+=zClG
+-----END PGP SIGNATURE-----
+
+--lAF4Pc7uRcV0XAJA--
+
+
+--===============8430686144524355361==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8430686144524355361==--
+
