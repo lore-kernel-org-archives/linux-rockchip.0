@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B14C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31936C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:19:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R23ec0ZeMxtb/TOppE7NrzIpGkOoWIH1JMhfyeuqTJQ=; b=sahb+znVnbS6fP
-	hqcTtuw5AsAzFI61fQzHNP2BhckvfQs4KTq2pgBA/+nXGVib+X5TK8dxGIUP/JrCWebd9U9k9SPqH
-	dW40UgzqYaMhC5B7j2+dRkFRwZ7aUYGKHSrmYs2fw0TMfw7pK8JjfQqlh5F+9kQz08D0IIyoOav6P
-	1haO2rsHUiJT0u+tKS/BO7/2Ny3orWyL5iHijXMlQ6P4zr/iKWYDjiOE20OqcK+DlLiXikyRCykNT
-	zO3Z/qYxl9zCLzyhS1sFrh3U5efxE6VP/j8zaKSckFQVn7mcjVaL3VshH8Y6Yl5NiVSrXD19HpSnI
-	NtbrzKWsAx3tllHk/wKQ==;
+	List-Owner; bh=AJwiSsIMyu0Q2dWA2hqSRD6KRAqMYUOzFwYBb9aObXE=; b=Ythm1xSBJmNBHs
+	Y5+3/F90yAsr9c5SbjKTc+9MamXvdHW0tl8bUwP77KMT/FcfJWxoNIKDBuh0G1gcsCXlNwDLeu3Af
+	wuB/Xxx3VMLL7Mkaxvzx0tUBfdnelpvsOZtAHEeG8pNPsko4AGOLADAp9vh7aImkeFM7lLOHMuds0
+	milqdWQe6GsHxoxepCmWWhrzbeR9Y71nCA7KFsA9YBL4VYONWkwUMmmWUiviThP0CXTYS58WQ4DZR
+	qkepVM7EMFJiOv55XnEZIqGU0woHB5sXJdIOXIP6ceZuafOkbKnoPY+0tNtO2Xn0TnppquSDqfMYX
+	mNQnSVnqkE+bh3GQ73/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJWZM-00DqSt-7g; Mon, 14 Feb 2022 08:18:48 +0000
+	id 1nJWZb-00Dqcj-4a; Mon, 14 Feb 2022 08:19:03 +0000
 Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJWXZ-00DpO0-MW
+ id 1nJWXa-00DpOP-Jt
  for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 08:17:01 +0000
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71])
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id A5CE9404AE
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:16:49 +0000 (UTC)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id BB13040520
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:16:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1644826609;
- bh=RUrvha3jd75o7xb7qinVq9MRNe4Hz0+UgFNjZM5U/KA=;
+ s=20210705; t=1644826612;
+ bh=rXTrjGyqcJ3i7iMn5DJq5QR/kPtoX00uoKdkO1EvWnA=;
  h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
  MIME-Version;
- b=MwFtOB/nEfHDWBMbfaet3rRGfkGMeYjtynHsOh7ppn2Xz+WwurZ1PVjDRwW+aNA31
- NzLtt5h91kV+od0OAH+P/lSe6XSE9g4b285RwAgeSZbSpv5g2tpK8RoR4E9OF6opKG
- xWUrdZGA0f8aAjvlByzZzkqd3s1V7k09B3mxQqChv45uknxAE5rqfBrQURigDo+LzJ
- BlpjkzztZowY6m8dfUB4pZKY09x+rjHEe9gKRAV5ZqnUnbTeosyd1Uyq8Z3JlC2UB+
- 9VmOz14W3ghMpBO2aiZ3GFJLC8gX5k60QRmeqq0oEwCMhIp6vJ2tHAIDxx3WEbseup
- 7DvKQjsbTb25w==
-Received: by mail-ej1-f71.google.com with SMTP id
- d7-20020a1709061f4700b006bbf73a7becso5466327ejk.17
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 00:16:49 -0800 (PST)
+ b=XguQib6tqbQdHn2xFczwuTV9mnJe52komOQN1koFGv95u6P2pbaz8YonvIdH3LHsh
+ jphP7OwoTCNldHaEcDFVqdFgSXhiOO0jhZyhHIhK9Czvdfruq8jj+9jHY8nLiUo/gK
+ vqFOfdB2MZE+Lr1LRc0El3+TKF+aU2Wg3OPKhU7/jXMx62+u/BFnMVY/xJJVoRksYb
+ 1kpzFSRf+syeTny0SBg0unbbNn4t/ANMMILrFG8MdYOrEX0qY3SNmS0K3p3CxpLR22
+ gD0DrZlj6PLBVwRhiQZvOUaVOcKmmsKNXYTsddH3K1cRcfi4d6SDeaRudhJ6Zre+GF
+ InqLUFQfdzOUg==
+Received: by mail-ej1-f72.google.com with SMTP id
+ ky6-20020a170907778600b0068e4bd99fd1so5483129ejc.15
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 00:16:52 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=RUrvha3jd75o7xb7qinVq9MRNe4Hz0+UgFNjZM5U/KA=;
- b=kk9uXLn1OoXZwKznAk4Rzt22yg5yucyIcxIOOlmt3l7JhKZaMFJ1qneu1SBukN449r
- 0CmUqsraGac2xQvayEU/kk/NLaX6C/V8qiFiOwEo9S00E0BikN6h5PYMfN8Ss6uyGbtD
- 4u4/Q7oUMnJJhGTVvM2Zrb/UgXNCY0yYwUbyJ6E/YivqiIzy49sjFGitqsKffqbC3m9g
- bQKa8yQNZ66HqU2TbxVyO7K3djyV30vWL34W9cHUYvHJA7hZ38eDYmBxhgfQW9nThyug
- 7+Miy0tFkt587PgpW+HA+oO0mI4jwBtWyhwCbVtXKn2Yz2bzsNf+gd29KDRbUOR2SHNz
- bt4Q==
-X-Gm-Message-State: AOAM531nFQM14Cnq73pp7f5izRJl44iExxli4ekx2oWoo4Im6M/YAzdq
- nlUxqQS+p6g+ZE/7lzfekyAOyA4XAo0Lk5CqzyPV11Z7TAhNGDYn5W27ow+vjoAXsBP0r8r6pOJ
- d0h0nCv07ml9HZYL8m9X4ggq12xKdB8h/ReaMnABi43cWSNxPWA==
-X-Received: by 2002:a05:6402:2683:: with SMTP id
- w3mr14323056edd.405.1644826609112; 
- Mon, 14 Feb 2022 00:16:49 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyzkuxNo1QP+7t12yVjZD9t3Y/Itl5ApNf4frcHdZJDQgI3MTIUIYVP/fV2AVsdZ2EHF8ILcQ==
-X-Received: by 2002:a05:6402:2683:: with SMTP id
- w3mr14323005edd.405.1644826608899; 
- Mon, 14 Feb 2022 00:16:48 -0800 (PST)
+ bh=rXTrjGyqcJ3i7iMn5DJq5QR/kPtoX00uoKdkO1EvWnA=;
+ b=j5V9TNPKfKqhTdrfBTVzn76dQk0ennsBcxr2nlNiIgOrRimg0O72jHmlVOW28/8NPY
+ AOsrwo2aNlHyVCWMJ2TMOaooTUrdZCCHJyUb+BQSs6wL54KyBtwxLi5ls1wYCtdCwSFF
+ fIrJlMWTXkCsE+wtjiJcRD2PUNTSkVuTiRAIFeW+rxb2sL1Vd528p96JZckErJLeB+Fj
+ cJhGI6PkKTo0eWPnBYvExLXN8RkDHp3qKC594j4bHtZd2InBFTuxGWUk34Uz/Vx3l9TX
+ rO1rsZtEmGZ98GHpWJD7ctO/zpQ3lwgOAm+k9NwXsvl2VltSbET47Dq37c4y3OFsWqvt
+ zHTA==
+X-Gm-Message-State: AOAM532wfwgwKn1xB4ynAVPnFfycdzCRwtas2jkr+cCYYDSV0Avf4z6/
+ 3JIr6lmhMmEKUCjCEsqp5H1I61Q9h1Vyc+UpJZP+SbSxwyyXCAdKLq4FxmW8meMRxIStO9DjL7g
+ qZNAdvXGNgI1O9Jx6JRIOeD7yRoKlkkdmv+pVkXuzY3YAgyoPrw==
+X-Received: by 2002:a05:6402:c1a:: with SMTP id
+ co26mr8160832edb.442.1644826612060; 
+ Mon, 14 Feb 2022 00:16:52 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwS9jQ9wGixoRtv+jL2Y9f4opmRogKX8GhZRCH8lW8x+aJuR/wbCf92drFjmIbNOrRWeCUm2w==
+X-Received: by 2002:a05:6402:c1a:: with SMTP id
+ co26mr8160813edb.442.1644826611896; 
+ Mon, 14 Feb 2022 00:16:51 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-168-84.adslplus.ch.
  [188.155.168.84])
- by smtp.gmail.com with ESMTPSA id t21sm3363642edd.74.2022.02.14.00.16.47
+ by smtp.gmail.com with ESMTPSA id t21sm3363642edd.74.2022.02.14.00.16.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Feb 2022 00:16:48 -0800 (PST)
+ Mon, 14 Feb 2022 00:16:51 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
@@ -98,16 +98,17 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-riscv@lists.infradead.org
-Subject: [PATCH 06/15] dt-bindings: pwm: rockchip: include generic pwm schema
-Date: Mon, 14 Feb 2022 09:15:56 +0100
-Message-Id: <20220214081605.161394-6-krzysztof.kozlowski@canonical.com>
+Subject: [PATCH 08/15] dt-bindings: pwm: renesas,
+ pwm: include generic pwm schema
+Date: Mon, 14 Feb 2022 09:15:58 +0100
+Message-Id: <20220214081605.161394-8-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
 References: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_001657_935248_16B5E783 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20220214_001658_849271_D0C00D88 
+X-CRM114-Status: GOOD (  11.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,91 +131,46 @@ brings pwm-cells requirement.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 ---
- .../devicetree/bindings/pwm/pwm-rockchip.yaml | 74 ++++++++++---------
- 1 file changed, 38 insertions(+), 36 deletions(-)
+ .../bindings/pwm/renesas,pwm-rcar.yaml        | 26 ++++++++++---------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-index 81a54a4e8e3e..a336ff9364a9 100644
---- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
-@@ -51,42 +51,44 @@ properties:
+diff --git a/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml b/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
+index 7ea1070b4b3a..1c94acbc2b4a 100644
+--- a/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
++++ b/Documentation/devicetree/bindings/pwm/renesas,pwm-rcar.yaml
+@@ -59,21 +59,23 @@ properties:
  required:
    - compatible
    - reg
--  - "#pwm-cells"
--
+-  - '#pwm-cells'
+   - clocks
+   - power-domains
+ 
 -if:
--  properties:
--    compatible:
--      contains:
--        enum:
--          - rockchip,rk3328-pwm
--          - rockchip,rv1108-pwm
--
+-  not:
+-    properties:
+-      compatible:
+-        contains:
+-          enum:
+-            - renesas,pwm-r8a7778
+-            - renesas,pwm-r8a7779
 -then:
--  properties:
--    clocks:
--      items:
--        - description: Used to derive the functional clock for the device.
--        - description: Used as the APB bus clock.
--
--    clock-names:
--      items:
--        - const: pwm
--        - const: pclk
--
 -  required:
--    - clocks
--    - clock-names
--
--else:
--  properties:
--    clocks:
--      maxItems: 1
--      description:
--        Used both to derive the functional clock
--        for the device and as the bus clock.
--
--  required:
--    - clocks
-+
+-    - resets
 +allOf:
 +  - $ref: pwm.yaml#
 +
 +  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3328-pwm
-+              - rockchip,rv1108-pwm
-+
++      not:
++        properties:
++          compatible:
++            contains:
++              enum:
++                - renesas,pwm-r8a7778
++                - renesas,pwm-r8a7779
 +    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: Used to derive the functional clock for the device.
-+            - description: Used as the APB bus clock.
-+
-+        clock-names:
-+          items:
-+            - const: pwm
-+            - const: pclk
-+
 +      required:
-+        - clocks
-+        - clock-names
-+
-+    else:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+          description:
-+            Used both to derive the functional clock
-+            for the device and as the bus clock.
-+
-+      required:
-+        - clocks
++        - resets
  
  additionalProperties: false
  
