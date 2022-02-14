@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7C4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 21:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E53C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 21:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RriuFm0OmQqhtK1d6ySOogHeeAY4lUK0tkocgYBy7WY=; b=tzfRufVJITL4EP
-	FYNNQ1MCKLUHWkTtNpcxmLeIzYR38GTS2ti2HCYsbVbonDDK5aUWEg3yb2FJ0RMvDMxehI9oQW+Ol
-	HZZHEzl1nqVsaVe3vFPaHQfjy9tNVeU+emOFMK3DcyhoIGrePIVj6/Y3mTrnwtmtcUqVcTEOsWUKa
-	gMZacc5Jm8vfqLUSQaX1JvDhuHvz02LrmAu/aW3CZpiiRha/T9mYg2JKgttDXVPNhnSMDRlPRqjjU
-	HsQ1x670J5+PUsIRWgTcnWe1bxPAAQ4jVQbHszHCmRCh+2JOUi5WxZvXdvNT2944tDvm+ux0YX4kO
-	EJNp/g+zMHlbVW/viM6g==;
+	List-Owner; bh=AD+gid6XAi4/ph8CN7MUKJjg66NK8HlBEzsY69/cYLM=; b=AbStqcnB7M/SIt
+	EZBPFpiiwq/XMh7aOC3XV/4u1fFGPvSkTnQIyaG6ZS8b3X0E2f1MM4gGK7I1EOt2w04wZwcGRxVrX
+	0a0G8rfzIwR/PDpvEDncYVlgSAzS5/zcCcDN5fTUGCZhlCpS0O9rEfaFD3osw/4g/qTQOxfTNdZSr
+	TwwzhgK8c2GrrMxUlCGFfzaGJ83LOrqMG642qVxk7tTXEkw5mbGsYgPVqDlNZGlIwz0Exzrbs/RS2
+	HwizBAVHEfuGGTA21B8fuPNVqJLIpIBVX0gmUOMXvz3bkOkGgRdAx2o9L+2cUJQyUMIccPxRZDARF
+	NDv5zsvexCOXnzPaNO4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJiVB-00Gv5z-DL; Mon, 14 Feb 2022 21:03:17 +0000
+	id 1nJinR-00GyD3-GU; Mon, 14 Feb 2022 21:22:09 +0000
 Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJiV8-00Gv4l-NE
- for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 21:03:16 +0000
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70])
+ id 1nJinJ-00Gy7p-4i
+ for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 21:22:02 +0000
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 95B8A4033E
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 21:03:06 +0000 (UTC)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id E7DA94033C
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 21:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1644872586;
- bh=2bp2Rosxu6+8ZhH/EAY6coxFH5lGR8Dxl8BwV5vJAno=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=GyBG5qnie5SYEK6t+mzBwe6I+QC3QBsorZzTpJy741H0Px8qrnxVpeA4TzMgJ+l4J
- u2KwdmVIOARsCHYbIG4KHaVYON+soBEfR1WROzxUbshV8cCy3ox7XhAKqPxesQuiUo
- pmbIOwGoC5I1TrkX68d3osnFbDbRutE1EjumwQhBeAbAV4b4SyjuBKOVpsJEMllP8/
- 2o5DNKNUbAVb4vMOJVnhiw2aGOLXJuLuCkXst/n741ahbScziWtLnCJQTBG1LCoM7W
- KjvKjYYoED4JI0CvxcIdQn2DiZ+4wdnGg20W+j9B98az8ySbF9hmqKduhCj52aEtsD
- I4V7EFAc5YZ5g==
-Received: by mail-ej1-f70.google.com with SMTP id
- m4-20020a170906160400b006be3f85906eso6379057ejd.23
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 13:03:06 -0800 (PST)
+ s=20210705; t=1644873719;
+ bh=pHflPK+1dIKzIsgbbrg2ywYytRq8pFheQaXjxJrMqyY=;
+ h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
+ MIME-Version;
+ b=g1ty9RcHmZPCCgi2rSNdJHf5y7lTyZ4lEB9frpgvmS2aj+8g+ZALAfWMJRrqDzMpe
+ JdRYC8v80pIS9wxNaTFhcdZ0LqnK7SXe20MMfaXuX4xnG1P+KHVbxkKsuQl/ms9F2+
+ AxeBRjFWaOIN1/wJFPvr2lv4gqt01Mrvy1drs7yepAfdg5uoccTayNDNE6doPXXtst
+ aMmd8hQ1wvk27HvxCR4YNz4ovPJykrP3oFAvHWroy+7nMhNjZbEK9auYnnu3Ia6ZnZ
+ A5VRC4j3sgfQh7SvbQz0NtGWfzkHqJDJHtJLhyznMflxLGq4flDx0OJ5/5HR4E8nTm
+ chA8/tStdV3kQ==
+Received: by mail-ed1-f72.google.com with SMTP id
+ j10-20020a05640211ca00b004090fd8a936so6440363edw.23
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 13:21:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=2bp2Rosxu6+8ZhH/EAY6coxFH5lGR8Dxl8BwV5vJAno=;
- b=SqPIpivJkMBGzuUK96LM7J5mBShIQwX96Tlc1XK5YoORPh1FmJiAXn7m2XUTFLCCKE
- HOTaqzxTwZdPXM5n5OVBiID5rB+YBB3gyxi85bASNMdQx8VE3OORLNSftsJo3GHBci9B
- hQGme+o/5egoVC6DGkklhnR3qYmnUzLwPe0f6uLsBVcBRCPnFSdO2E2bLT6toFN1+0Yj
- XKedyrLPZkjDZJCmf4pcicNohiz0vF+NIpJ9l1lMXELBsAA1S3cugmq28c2rmc4Gc4wg
- 1RsZGRJByjkfNmknHlC5V0sKBa2FEHJEnB6BUaRFPLDim3cPyIA68vnRwr8I3nZOS8Mo
- HohQ==
-X-Gm-Message-State: AOAM533n7N0JMudR512Zm3ADAYTM6viwqqy3bm0mYNWA0cXBRfDjJmDD
- FnLi5CmMA7Nfsj65irJY0ofiF5TDHUQEobYmKv8KCeDzAdmjm/jVkDlJWu7rWPe9DRU48foEiJT
- uJbTYs7L8yTmP84z1caQbWBxO0xtM48eQ64XwB4EQv5YS8Exg8Q==
-X-Received: by 2002:aa7:c3da:: with SMTP id l26mr727090edr.294.1644872586069; 
- Mon, 14 Feb 2022 13:03:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx2FJZ3WFrmr3yKtdBu95hKE7kW2/adNT3dVxtT4u/B6q+4CQFvbOXViM594Gt5SL7EJZdGvA==
-X-Received: by 2002:aa7:c3da:: with SMTP id l26mr727056edr.294.1644872585884; 
- Mon, 14 Feb 2022 13:03:05 -0800 (PST)
-Received: from [192.168.0.106] (xdsl-188-155-168-84.adslplus.ch.
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=pHflPK+1dIKzIsgbbrg2ywYytRq8pFheQaXjxJrMqyY=;
+ b=i4lzbuhhxDxSFDndHVGWgsMfKvkfUnRyEf2GdVfFsBr/seagdkI9umTCD7LLPck1GH
+ OHAtdFEW9uBoCTB2kqmD8TfD6CRdw/YWUrGBPFb1AIBwdrJBq2quLe/n2aHM8q+uRe9N
+ 3IAAcj8X32rrlHzN1w3YmEWlWAXziAbzoGHrXoKvsapuKi2YhMOnzlbF5TsHSgU5Pfql
+ +M56WVj2qwZU6uL4CH10A+WAJoLnPN0mQ2Ot5LTxJejsZ3/TeOjwiGVDrNMT4GafmLzo
+ ja1JXFX9Bcvlu4CXAGD7b6CVvhmw30ruEEh8MYJ4sCvOXsVlBlD0jnjbbBthYBL0A1NL
+ i6Fg==
+X-Gm-Message-State: AOAM532USWR4GFLtvw8BO4IDD5sta0/9zTN1q7WNsjRS7RH5KVfnJXg+
+ ChFu1mPDN4f+xOlCQBaALTaZFFiJv6Mg4b8HvylNLQ9caX5YaK/59gyQyNas8niE/GMAIT0gEJU
+ pt0bze4YJDIBYpZ5/tgEgjdt4OTVX2ybdifDTtG9uu2b7qf0IAw==
+X-Received: by 2002:a17:906:d555:: with SMTP id
+ cr21mr592291ejc.428.1644873719505; 
+ Mon, 14 Feb 2022 13:21:59 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyXvrgHPtrdYKNQY7C7Wd9/NsvQdSUG3/eoACXgHTI31beBEFWPYpjvuWpVSYib/oyyZwbB2w==
+X-Received: by 2002:a17:906:d555:: with SMTP id
+ cr21mr592282ejc.428.1644873719273; 
+ Mon, 14 Feb 2022 13:21:59 -0800 (PST)
+Received: from localhost.localdomain (xdsl-188-155-168-84.adslplus.ch.
  [188.155.168.84])
- by smtp.gmail.com with ESMTPSA id j21sm1153464ejj.193.2022.02.14.13.03.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Feb 2022 13:03:05 -0800 (PST)
-Message-ID: <f9cdef5e-a52b-03ba-a069-e0bc16ccd595@canonical.com>
-Date: Mon, 14 Feb 2022 22:03:04 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH 11/15] dt-bindings: pwm: intel, keembay: do not require
- pwm-cells
-Content-Language: en-US
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
+ by smtp.gmail.com with ESMTPSA id v24sm2327203ejf.7.2022.02.14.13.21.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Feb 2022 13:21:58 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
  Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
  Jernej Skrabec <jernej.skrabec@gmail.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
@@ -103,14 +98,17 @@ Cc: Thierry Reding <thierry.reding@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-riscv@lists.infradead.org
-References: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
- <20220214081605.161394-11-krzysztof.kozlowski@canonical.com>
- <20220214182824.gevtqbtv4qrddjqb@pengutronix.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220214182824.gevtqbtv4qrddjqb@pengutronix.de>
+Subject: [PATCH v2 01/15] dt-bindings: pwm: allwinner,
+ sun4i-a10: Include generic pwm schema
+Date: Mon, 14 Feb 2022 22:21:40 +0100
+Message-Id: <20220214212154.8853-2-krzysztof.kozlowski@canonical.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
+References: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_130314_903008_D4B43C1C 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20220214_132201_359049_3424EFA0 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,17 +121,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTQvMDIvMjAyMiAxOToyOCwgVXdlIEtsZWluZS1Lw7ZuaWcgd3JvdGU6Cj4gSGVsbG8gS3J6
-eXN6dG9mLAo+IAo+IHdoZW4gSSByZWFkIHRoZSBzdWJqZWN0IGxpbmUgSSB0aG91Z2h0IHRoZSBw
-YXRjaCBpbnRlbnRpb24gdG8gYmUgd3JvbmcuCj4gTWF5YmUgbWFrZSB0aGF0Ogo+IAo+IAlkdC1i
-aW5kaW5nczogaW50ZWwsa2VlbWJheS1wd206IERvbid0IHJlcXVpcmUgI3B3bS1jZWxscyB0d2lj
-ZQo+IAo+ID8KCkFoLCB5ZXMsIHRoaXMgc291bmRzIGJldHRlci4gSSdsbCBzZW5kIGEgdjIuCgoK
-QmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Include generic pwm.yaml schema, which enforces PWM node naming and
+brings pwm-cells requirement.
+
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+---
+ .../bindings/pwm/allwinner,sun4i-a10-pwm.yaml | 53 ++++++++++---------
+ 1 file changed, 28 insertions(+), 25 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml b/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
+index 800d511502c4..e93e935564fb 100644
+--- a/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
+@@ -52,33 +52,36 @@ properties:
+   resets:
+     maxItems: 1
+ 
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        const: allwinner,sun50i-h6-pwm
+-
+-then:
+-  properties:
+-    clocks:
+-      maxItems: 2
+-
+-    clock-names:
+-      items:
+-        - const: mod
+-        - const: bus
+-
+-  required:
+-    - clock-names
+-    - resets
+-
+-else:
+-  properties:
+-    clocks:
+-      maxItems: 1
++
++allOf:
++  - $ref: pwm.yaml#
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: allwinner,sun50i-h6-pwm
++
++    then:
++      properties:
++        clocks:
++          maxItems: 2
++
++        clock-names:
++          items:
++            - const: mod
++            - const: bus
++
++      required:
++        - clock-names
++        - resets
++
++    else:
++      properties:
++        clocks:
++          maxItems: 1
+ 
+ required:
+-  - "#pwm-cells"
+   - compatible
+   - reg
+   - clocks
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
