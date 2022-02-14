@@ -4,51 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B2C7C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:52:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55FDC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 11:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MYJGoNk2+A/dgT7wyFu5AN9QCUL4xNmRP5F3/NxSAMs=; b=byrKON2W7KcssU
-	UBwMNhol9jabL3Vmqd2fAWlD4HliXen9R4cEDy5/gfQROJ3QvOQxP/Fzjc4neHhu5zpTHTWlcq5Tl
-	q8XOJhlRHuGSGyQhv5oY+R33+2m2x2Nr/JvczwNe+qGlkB/UQvzEu/mLTryZtMIGhXAXMu8nx4oNu
-	2ko/Yxr/1SqkjjOodQ/1umdI1nfkINBxgFuccN+fAy+vX5bH4x1PIKlQNqe8o0D+SA36Bf8YPmqKh
-	y/GVcc/mOIWTtGekLIs/fKsqJkmsxiso/+HiM1b7poioJ/dsUQMVruL8c7F+kFrMeHwsXHEmxo7vY
-	aIxQFf/s3xE3872r97Xw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cVqrUSb8BTAAuBb6N6qAEbjiFFO+BXbuIzJS0ziDrZI=; b=ga5hlVBFvTtzJb
+	ddRC3kEzsr864sH82ApXSVUMFLBtVbbJ16l1rJKRSVG+mvhjGll+2jX3sEBnAtSr3FzsFzS0PyMyw
+	t3SQDfSPPlkTm+3ET4kaVOJV6XU9dsmbqLhEuvLrRftH825BD8St9T7VHBm9E7+bAjOi5+RwQ9j5j
+	P5GnkZp+xkyxVCFaEBbNuYbHtxPQoYW1rLS+jf7I62VjDcQjFnHAOyK60pwrTkSna4zZODAAd8eY+
+	El/zQ4Hxr8iDccIugFc/12GaVclQmLY8qBr4ej5ALRBCSwhdikGRVVNmHtFREqTNSA6jDK5w7RVGA
+	tbkI+oFQ37OfZaOnPYLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJX5Y-00E4vG-4U; Mon, 14 Feb 2022 08:52:04 +0000
-Received: from mail.ruletown.pl ([192.71.213.39])
+	id 1nJa0B-00EzBE-Na; Mon, 14 Feb 2022 11:58:43 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJX0F-00E2BQ-U0
- for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 08:46:37 +0000
-Received: by mail.ruletown.pl (Postfix, from userid 1001)
- id 0AE6C40AF6; Mon, 14 Feb 2022 09:46:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ruletown.pl; s=mail;
- t=1644828369; bh=VNuNg2MzRkdVVfp4kSZZW7SxoKEFGotk5GCW4ktyH/8=;
- h=Date:From:To:Subject:From;
- b=hSD1oKuvYdvy0GhorZqV7UMRGxkkFXrgDA13xoi+lM3lupPxG0pw9Fyv2lPv79N0h
- RZ/cFCuFQKAm0LDK6atkKibZzV8/eVH3gCysFn/LoyzmFESxggtt6yZG3LyKkBW9N7
- i33/jaJpqe0BYSwf9g0YYnDdkrwCsXR7whP2BQW/hoA4k0QQ8XNUKJxVwlpOvXbdXq
- QRrxtJoRcDNYvFxvfS7xCdP9Xr/c72BZ0HtaBlq7b82LKpGBr1lz/C+o4q0rBCnHHn
- q9C3U+zChEr47yQKOJx8SBshgxmfUF5y1U9adXLqzBQzxfxD8rdLGWqvYQfFb0c/93
- dsNd4/8iBytCg==
-Received: by mail.ruletown.pl for <linux-rockchip@lists.infradead.org>;
- Mon, 14 Feb 2022 08:46:01 GMT
-Message-ID: <20220214084500-0.1.v.202l.0.pacnfbg7ao@ruletown.pl>
-Date: Mon, 14 Feb 2022 08:46:01 GMT
-From: "Filip Ostrowski" <filip.ostrowski@ruletown.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: W sprawie samochodu
-X-Mailer: mail.ruletown.pl
+ id 1nJZ4i-00Ef54-J6; Mon, 14 Feb 2022 10:59:22 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nJZ4E-00080o-TO; Mon, 14 Feb 2022 11:58:50 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Anson Huang <anson.huang@nxp.com>,
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>, Jeff LaBundy <jeff@labundy.com>,
+ Yash Shah <yash.shah@sifive.com>, Sagar Kadam <sagar.kadam@sifive.com>,
+ Vignesh R <vigneshr@ti.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Subject: Re: [PATCH 06/15] dt-bindings: pwm: rockchip: include generic pwm
+ schema
+Date: Mon, 14 Feb 2022 11:58:49 +0100
+Message-ID: <2270696.mDkAqzPR1c@diego>
+In-Reply-To: <20220214081605.161394-6-krzysztof.kozlowski@canonical.com>
+References: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
+ <20220214081605.161394-6-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_004636_163419_F4226FA8 
-X-CRM114-Status: UNSURE (   1.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220214_025920_692097_86B684AA 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,23 +77,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKY2hjaWVsaWJ5xZtteSB6YXBld25pxIcgUGHFhHN0d3Uga29tcGxla3Nv
-d2Ugcm96d2nEhXphbmlhLCBqZcWbbGkgY2hvZHppIG8gc3lzdGVtIG1vbml0b3Jpbmd1IEdQUy4K
-ClByZWN5enlqbmUgbW9uaXRvcm93YW5pZSBwb2phemTDs3cgbmEgbWFwYWNoIGN5ZnJvd3ljaCwg
-xZtsZWR6ZW5pZSBpY2ggcGFyYW1ldHLDs3cgZWtzcGxvYXRhY3lqbnljaCB3IGN6YXNpZSByemVj
-enl3aXN0eW0gb3JheiBrb250cm9sYSBwYWxpd2EgdG8ga2x1Y3pvd2UgZnVua2Nqb25hbG5vxZtj
-aSBuYXN6ZWdvIHN5c3RlbXUuIAoKT3JnYW5pem93YW5pZSBwcmFjeSBwcmFjb3duaWvDs3cgamVz
-dCBkemnEmWtpIHRlbXUgcHJvc3RzemUgaSBiYXJkemllaiBlZmVrdHl3bmUsIGEgb3N6Y3rEmWRu
-b8WbY2kgaSBvcHR5bWFsaXphY2phIHcgemFrcmVzaWUgcG9ub3N6b255Y2gga29zenTDs3csIG1h
-asSFIGRsYSBrYcW8ZGVnbyBwcnplZHNpxJliaW9yY3kgb2dyb21uZSB6bmFjemVuaWUuCgpEb3Bh
-c3VqZW15IG5hc3rEhSBvZmVydMSZIGRvIFBhxYRzdHdhIG9jemVraXdhxYQgaSBwb3RyemViIG9y
-Z2FuaXphY2ppLiBDenkgbW9nbGliecWbbXkgcG9yb3ptYXdpYcSHIG8gbmFzemVqIHByb3Bvenlj
-amk/CgoKUG96ZHJhd2lhbSwKRmlsaXAgT3N0cm93c2tpCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Montag, 14. Februar 2022, 09:15:56 CET schrieb Krzysztof Kozlowski:
+> Include generic pwm.yaml schema, which enforces PWM node naming and
+> brings pwm-cells requirement.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+> ---
+>  .../devicetree/bindings/pwm/pwm-rockchip.yaml | 74 ++++++++++---------
+>  1 file changed, 38 insertions(+), 36 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> index 81a54a4e8e3e..a336ff9364a9 100644
+> --- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+> @@ -51,42 +51,44 @@ properties:
+>  required:
+>    - compatible
+>    - reg
+> -  - "#pwm-cells"
+> -
+> -if:
+> -  properties:
+> -    compatible:
+> -      contains:
+> -        enum:
+> -          - rockchip,rk3328-pwm
+> -          - rockchip,rv1108-pwm
+> -
+> -then:
+> -  properties:
+> -    clocks:
+> -      items:
+> -        - description: Used to derive the functional clock for the device.
+> -        - description: Used as the APB bus clock.
+> -
+> -    clock-names:
+> -      items:
+> -        - const: pwm
+> -        - const: pclk
+> -
+> -  required:
+> -    - clocks
+> -    - clock-names
+> -
+> -else:
+> -  properties:
+> -    clocks:
+> -      maxItems: 1
+> -      description:
+> -        Used both to derive the functional clock
+> -        for the device and as the bus clock.
+> -
+> -  required:
+> -    - clocks
+> +
+> +allOf:
+> +  - $ref: pwm.yaml#
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3328-pwm
+> +              - rockchip,rv1108-pwm
+> +
+> +    then:
+> +      properties:
+> +        clocks:
+> +          items:
+> +            - description: Used to derive the functional clock for the device.
+> +            - description: Used as the APB bus clock.
+> +
+> +        clock-names:
+> +          items:
+> +            - const: pwm
+> +            - const: pclk
+> +
+> +      required:
+> +        - clocks
+> +        - clock-names
+> +
+> +    else:
+> +      properties:
+> +        clocks:
+> +          maxItems: 1
+> +          description:
+> +            Used both to derive the functional clock
+> +            for the device and as the bus clock.
+> +
+> +      required:
+> +        - clocks
+>  
+>  additionalProperties: false
+>  
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
