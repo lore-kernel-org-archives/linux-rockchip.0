@@ -4,62 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E5D1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 13:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F5FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 13:16:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j51b4K9J2nh80SPXaQ5hxRWbeNcnZjMPb89dh96iEQY=; b=hlHpZgJTgdefwB05AaMW4KFW7D
-	zVOVA/d3u2Bw6nWlI/baqlLnRrjXGariG/xzt6xIG4JdnCzAR2sGrYqJZq7tzrzVmLT3YrKmfhK4S
-	FEbSSZv75xGwk8zW9goLKpw/YljbZf+CpjBkUaZBFS+1zUgpOV5RT2kWX5RRorTl29kiyfU8XO+rT
-	rxE8mnDhRhMOoANf6CQikvYbpHkvSYKlNpJVRv1ylw6pmzd6pvLSTs/ixpozoAIwf9ybxwJwp7+H+
-	v2w6MuoUwJldWkTWucMJ/mXDkEcJKJgFMmC4nUKV8Wt+D4J7/s81oQzZghi9WsBO2AHvg0PcQ+MCQ
-	6YRexO8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WbgPiuDo9kZQ0h8oRIuTgZ/sGHtpjXU29CnXHuHjhwk=; b=uUuTfbdEcdzj0r
+	+F6QGh+pJ0aoOHntZ3jmH7BPJV/4Jy9UmbjRgIIiyIb4Gx3YW/cyDxBfgBi698Rey6OQJ/1FCkhUU
+	HLCGjYl51NwdVA0UGf/T+qcs6iRlffL+AQJXO84p7P1nm50ZZAIyintj0d7tCXF7qEWQpkwVq3CJo
+	ehngisiF48mtxi1mi5mcGiF5LgED0xQ4u7fpvUtRIcStaSEMnT4WPQvrNn9GlHxku2o+4ytFynQ3c
+	ugsCjoyyR8cXuDNRw+7xVfBhou1ZHBKt5262/fb2OvSvLgMCQK2scJI2xZ9sJZ+VDtT/aGhud8FVD
+	/1v7auz4Ukcq02ZNfW5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJayF-00FK4b-E9; Mon, 14 Feb 2022 13:00:47 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nJbDE-00FOok-NM; Mon, 14 Feb 2022 13:16:16 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJanu-00FFm2-QW; Mon, 14 Feb 2022 12:50:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A96E9B80E99;
- Mon, 14 Feb 2022 12:50:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E67EFC340E9;
- Mon, 14 Feb 2022 12:50:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644843003;
- bh=dCZAZFFTFztaUC3w9E7PynQEzmnHStV4WtGOFsBCoMc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=NxuzBnXVhRj04xQho/0LIHIQWG+EkuGcsPcdH80rm/QChJgLscBCwiEIrFWu1I9Ig
- UgkI+xyU50G6u5+t+lNJSNW/HEtSdBRL0oOzFH83eXtZQbIQ92FiYwkLov3vpZGIln
- NU8XzL8C6+/lhtAy4CvvbKb/v1blCUd1Vzi66K2EETkJn51JpahjmH3s+YByDuW9ja
- Wv8BQ8RFp0aQs9sfW9RMtGqDJgjgwf0WTeSYGUA0j9DIxcQME/GuHEWBH8qrFL0uHQ
- KFdJUAeG/I0dONMbAe6iDvOZwc7uzp5t6mTegnEiF+qjW7LkoDWHkGsp+1lwNnBHsy
- UrI0lE4UaIkAA==
-Date: Mon, 14 Feb 2022 12:49:58 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/6] spi: rockchip: Preset cs-high and clk polarity in
- setup progress
-Message-ID: <YgpP9j80OuhkCN8p@sirena.org.uk>
-References: <20220211034344.4130-1-jon.lin@rock-chips.com>
- <20220211034344.4130-2-jon.lin@rock-chips.com>
- <YgZHalrdhhilxROt@sirena.org.uk>
- <4222ce7d-a1e3-1728-fec2-976946b06ba9@rock-chips.com>
+ id 1nJbD0-00FOn7-B2; Mon, 14 Feb 2022 13:16:07 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id A1DAB2FB; Mon, 14 Feb 2022 14:15:59 +0100 (CET)
+Date: Mon, 14 Feb 2022 14:15:58 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: will@kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ iommu@lists.linux-foundation.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] iommu/rockchip: : Use standard driver registration
+Message-ID: <YgpWDkcftsILEjpq@8bytes.org>
+References: <05ca5e1b29bdd350f4e20b9ceb031a2c281e23d2.1644005728.git.robin.murphy@arm.com>
+ <c08d58bff340da6a829e76d66d2fa090a9718384.1644005728.git.robin.murphy@arm.com>
+ <4984895.Adqdaih0Sd@phil>
 MIME-Version: 1.0
-In-Reply-To: <4222ce7d-a1e3-1728-fec2-976946b06ba9@rock-chips.com>
-X-Cookie: Am I in GRADUATE SCHOOL yet?
+Content-Disposition: inline
+In-Reply-To: <4984895.Adqdaih0Sd@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_045007_304413_F477CFA7 
-X-CRM114-Status: GOOD (  20.86  )
+X-CRM114-CacheID: sfid-20220214_051602_553431_DDC4966E 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,76 +57,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5081061725137271783=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Feb 04, 2022 at 10:34:05PM +0100, Heiko Stuebner wrote:
+> Am Freitag, 4. Februar 2022, 21:16:41 CET schrieb Robin Murphy:
+> > It's been a long time since there was any reason to register IOMMU
+> > drivers early. Convert to the standard platform driver helper.
+> > 
+> > CC: Heiko Stuebner <heiko@sntech.de>
+> > Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> 
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
---===============5081061725137271783==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WgfHOPUjhPwyc1Eh"
-Content-Disposition: inline
-
-
---WgfHOPUjhPwyc1Eh
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Mon, Feb 14, 2022 at 04:40:19PM +0800, Jon Lin wrote:
-> =E5=9C=A8 2022/2/11 19:24, Mark Brown =E5=86=99=E9=81=93:
-
-> > > +   cr0 |=3D ((spi->mode & 0x3) << CR0_SCPH_OFFSET);
-> > > +   if (spi->mode & SPI_CS_HIGH)
-> > > +           cr0 |=3D BIT(spi->chip_select) << CR0_SOI_OFFSET;
-
-> > What ensures that this read/modify/write doesn't race with a transfer
-> > running on another client device in the case where the controller has
-> > more than one device connected?  Similarly with the mode, though it's
-> > not great to have devices with different modes connected to a single
-> > controller.
-
-> I have no idea how to deal with the conflict configuration between
-> different cs, and also I find nothing strategy in others spi drivers.
-> As we all know, some configurations should be consistent for different
-> CS devices, such as SPI_CPOL, so I suggest the framework to make
-> corresponding early warning prompts.
-
-As covered in the documentation setup() for one device may run while
-another is active, therefore if multiple devices are configured in the
-same register you should use a lock to ensure there can't be multiple
-writes.  Note that the above appears to not just be setting the mode but
-also the chip select so if you've got two SPI_CS_HIGH devices then
-they'll both be going in and separately setting cr0.
-
---WgfHOPUjhPwyc1Eh
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmIKT/YACgkQJNaLcl1U
-h9AZKAf/VpLE2vWn6R3N7yXYDuY8eeyBOVUEXfG484ts/lnv56h0WYC6lFZRT6Ge
-4yg6uV+fWsAsC+jbNXgNg5+AOpVwuN/fDkAN/5E3bVOAVTnTaWDvT0A7U1YvsP+u
-IGrkUB3RTshl8j/w7V2v7axa+tWkEH8s6lkz1T+UhgqQFPeFtQfuHY6kRbuFYAGW
-IOs1d3Au4t0jQmhhT3dT9Q/2Cm0lM7nOCNxqh/JbkPD/G6Va1NKYh2dLSUgR2pZe
-tkD6K1gmx05dWC+olXHVLYu8ZHuqjJysmrrwpQM7pprHZAShZ8+MYW8UGnYPJ+Bx
-6k2s6LozuXeMH+w3ygNO8f4axFUKVQ==
-=xViN
------END PGP SIGNATURE-----
-
---WgfHOPUjhPwyc1Eh--
-
-
---===============5081061725137271783==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Applied both, thanks.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5081061725137271783==--
-
