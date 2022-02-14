@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8FF5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73192C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:51:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6EfF7oTFVf1E6vLKe2qP5NxKZMSr9HK/tguvBaUZpc=; b=kWDlOD7E6jTb95
-	0X+dDJDPqqriUFvK4QlnfOtJF5zNs1eYoQsWx2Vb/0XLZwmFp+hXZYJoJ4WDSWdo6lvz2S4Q2rEQb
-	dcBy1e5eX6lCJcepm0Ld5pUCCKgBm2xrrGScikApllc5IxmtN3egrehNYzJaNz4qUyEkXy2//FCn1
-	AJ6SwJP/MGC8goVl1ClPmvUTh+YYSqJp5MHbZ80tAQ9kleLi8cgFjpTJ/8z61xj6b6R0oeNh/STWa
-	ceZMnorZkKYoakn69jBkpiZ/n5IxHTWDZ1On6iyEstI4YcW5OAILQbIWvutxbzUUSQtyve0DsugyF
-	eSHyb64ukHaqs1AukmYA==;
+	List-Owner; bh=eU4pRS444tt/O01xFhNRvVsxjSIR1QouDym70xTtLnw=; b=AgmUR1/G759GvC
+	Dp9iAayhJsiuUUT2DYgAYLPF1hgyYx5tfeud0N0GPT6M/rlEIspM6EBVlOt71xF1IMlSQJzicZuWO
+	xNPqztIoCSSVCfYWwa/sot1x02hcgES9NCLkoXRHdcBy7GLxtnPYdBegPwfarV/hd86JQvONTXMLT
+	6qTPO2mBUtG46PnBswHQs5qpOXNeozFotwWjDMBExnKKhGAwdOjZRonRFyQzKkNpZ+wZxljIgHYbU
+	MoLhTIOevtQveYMRzEaavx1R89UZfI87zBQFLqlbekpBpGBMgEEXk/sBVvTO1xcWc+DS5tFHY/iDw
+	IoJY4Wa9rPzYfe5XjGYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJX57-00E4ZJ-5g; Mon, 14 Feb 2022 08:51:37 +0000
+	id 1nJX5C-00E4dZ-62; Mon, 14 Feb 2022 08:51:42 +0000
 Received: from mail-m17664.qiye.163.com ([59.111.176.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJWxo-00E17i-Gs; Mon, 14 Feb 2022 08:44:08 +0000
+ id 1nJWxr-00E19G-4Q; Mon, 14 Feb 2022 08:44:09 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
- by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 3DB14140362;
- Mon, 14 Feb 2022 16:44:02 +0800 (CST)
+ by mail-m17664.qiye.163.com (Hmail) with ESMTPA id 4636E140208;
+ Mon, 14 Feb 2022 16:44:04 +0800 (CST)
 From: Jon Lin <jon.lin@rock-chips.com>
 To: broonie@kernel.org
 Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, shengfei Xu <xsf@rock-chips.com>,
- Jon Lin <jon.lin@rock-chips.com>
-Subject: [PATCH v2 5/6] spi: rockchip: Suspend and resume the bus during
- NOIRQ_SYSTEM_SLEEP_PM ops
-Date: Mon, 14 Feb 2022 16:43:38 +0800
-Message-Id: <20220214084339.18996-6-jon.lin@rock-chips.com>
+ linux-kernel@vger.kernel.org, Jon Lin <jon.lin@rock-chips.com>
+Subject: [PATCH v2 6/6] spi: rockchip: clear interrupt status in error handler
+Date: Mon, 14 Feb 2022 16:43:39 +0800
+Message-Id: <20220214084339.18996-7-jon.lin@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20220214084339.18996-1-jon.lin@rock-chips.com>
 References: <20220214084339.18996-1-jon.lin@rock-chips.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWRlNGklWHUlNGBhNTB0dSE
- wdVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MCI6PTo5Ej5DLBEhTj4PGRkz
- TRgaFB5VSlVKTU9PQ0lDSU9JTEhDVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
- QVlOQ1VJSVVMVUpKT1lXWQgBWUFISUpINwY+
-X-HM-Tid: 0a7ef7673204da2fkuws3db14140362
+ kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWUMZTB9WHx1NTh0ZTB5IH0
+ JIVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mio6Pww6Kz5LPBEhTjxIGQ1R
+ Hi9PFApVSlVKTU9PQ0lDSU9OSkpLVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+ QVlOQ1VJSVVMVUpKT1lXWQgBWUFJS05INwY+
+X-HM-Tid: 0a7ef76739ddda2fkuws4636e140208
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_004404_790021_90AEAF66 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20220214_004407_401262_AE373AAF 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,69 +67,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: shengfei Xu <xsf@rock-chips.com>
+The interrupt status bit of the previous error data transmition will
+affect the next operation and cause continuous SPI transmission failure.
 
-the wakeup interrupt handler which is guaranteed not to run while
-@resume noirq() is being executed. the patch can help to avoid the
-wakeup source try to access spi when the spi is in suspend mode.
-
-Signed-off-by: shengfei Xu <xsf@rock-chips.com>
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
 ---
 
 Changes in v2: None
 Changes in v1: None
 
- drivers/spi/spi-rockchip.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ drivers/spi/spi-rockchip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 2628cf4e6f3d..fd6a1f9de119 100644
+index fd6a1f9de119..6751aafc382a 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -961,14 +961,14 @@ static int rockchip_spi_suspend(struct device *dev)
- {
- 	int ret;
- 	struct spi_controller *ctlr = dev_get_drvdata(dev);
-+	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
+@@ -278,8 +278,9 @@ static void rockchip_spi_handle_err(struct spi_controller *ctlr,
+ 	 */
+ 	spi_enable_chip(rs, false);
  
- 	ret = spi_controller_suspend(ctlr);
- 	if (ret < 0)
- 		return ret;
+-	/* make sure all interrupts are masked */
++	/* make sure all interrupts are masked and status cleared */
+ 	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_IMR);
++	writel_relaxed(0xffffffff, rs->regs + ROCKCHIP_SPI_ICR);
  
--	ret = pm_runtime_force_suspend(dev);
--	if (ret < 0)
--		return ret;
-+	clk_disable_unprepare(rs->spiclk);
-+	clk_disable_unprepare(rs->apb_pclk);
- 
- 	pinctrl_pm_select_sleep_state(dev);
- 
-@@ -983,10 +983,14 @@ static int rockchip_spi_resume(struct device *dev)
- 
- 	pinctrl_pm_select_default_state(dev);
- 
--	ret = pm_runtime_force_resume(dev);
-+	ret = clk_prepare_enable(rs->apb_pclk);
- 	if (ret < 0)
- 		return ret;
- 
-+	ret = clk_prepare_enable(rs->spiclk);
-+	if (ret < 0)
-+		clk_disable_unprepare(rs->apb_pclk);
-+
- 	ret = spi_controller_resume(ctlr);
- 	if (ret < 0) {
- 		clk_disable_unprepare(rs->spiclk);
-@@ -1028,7 +1032,7 @@ static int rockchip_spi_runtime_resume(struct device *dev)
- #endif /* CONFIG_PM */
- 
- static const struct dev_pm_ops rockchip_spi_pm = {
--	SET_SYSTEM_SLEEP_PM_OPS(rockchip_spi_suspend, rockchip_spi_resume)
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(rockchip_spi_suspend, rockchip_spi_resume)
- 	SET_RUNTIME_PM_OPS(rockchip_spi_runtime_suspend,
- 			   rockchip_spi_runtime_resume, NULL)
- };
+ 	if (atomic_read(&rs->state) & TXDMA)
+ 		dmaengine_terminate_async(ctlr->dma_tx);
 -- 
 2.17.1
 
