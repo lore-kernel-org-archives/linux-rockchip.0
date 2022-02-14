@@ -4,76 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76061C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 21:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43847C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 23:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dz5Y8zZC/JUp6klXtlBTzDDzmpS1onO4WnaSpZZ+6XI=; b=Z8bDCgPe/WnUHQ
-	z4MnoL/BENBg5DXRBjYCvV7cM426niyUKKp5+QZKljqjjfR7qbWwP0RqbUDy/pDPNbSD5WxSMq2A1
-	wKATTAMe+ygWWqbkIv8XEKb8E8Zdq3JUO+FVHyt7Zm4VVrEeXqK1oYi2CU1GnBBgf7G3X6PcXmh1b
-	4sr3tgI72WQIxP9PrqkC9oNk4ug+2trg8l6M46t4CcotnSiA9cp1o6ZrzpGfpPhDGnQwng3mZ0EKg
-	28IADqzYL0to4oNfD0eQEdKBz6Nd3ZohqXsQGd6GmLWYU6/zg1p4/9elca3JjTpQaPdM2arMlCFgs
-	BHfnmhK8NYtoqvtnza+A==;
+	List-Owner; bh=qPSiRG2vUbwI0Vtl+ePpx6esYaKs+URnymGEinRtkhM=; b=m/EUPH5kYbG6rx
+	XZpezAXJaKOVSGfWvwGzjaYX566awArMGr2NJbeE19ntVaGwphmt98CCzx31yj7ngR2Z/9hsMygo2
+	WyIG4zzInlqn9kiatSdcxI+ATPR1geD0eZB9JSLQZcOnfLUtJlpWdNSGFNuxj8ovFY4pbgcrgXMrK
+	0915kOcoGK9APUy6LK0APx0k2es+YracOdtdUkhgV8ahFqrIndG9NqIF38rEQp9tbZ9s1dl7CS88i
+	O0EUU6RK3gJ4V7MoN16XgEgJn5L74b4n9ciUijWEGM+vZXEiXqX34stNQI7QZJRY0nM2fvS+0h9RB
+	zwjlkiica4+zGsqZnneg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJj8d-00H6m7-Tt; Mon, 14 Feb 2022 21:44:04 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1nJkhO-00HHSS-9g; Mon, 14 Feb 2022 23:24:02 +0000
+Received: from mail-co1nam11on2061e.outbound.protection.outlook.com
+ ([2a01:111:f400:7eab::61e]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJiuH-00H1Fc-KA
- for Linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 21:29:19 +0000
-Received: by mail-lj1-x231.google.com with SMTP id c10so11407264ljr.9
- for <Linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 13:29:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=KAsCtIlfmp+m7ShyllLFJYAj9FEeo8wO2Fz9dFrEzUk=;
- b=oviBn1dwswIq6zXepxKju+gVEouA9bnn6Bd2iFa/bIWH0fkx9MbgJMD2YGwR7k8K7o
- byLrXrGvwcgWvYOqHvjd44h/zB43zde4T5mYQEr1hamdbDkFHDHuxc9euFmgpaJ+Pojg
- LlIRGRlCkMjOXdMs2I5V4M/CMtzvg2Mo6Hpi3QbUrd6lBR0cUfcEz2NhENMfzTo+mmYR
- 1yXhc2Wk6WFU/1jusIHPk+ADc35oOOH6xP1PZZ/XECUyVWjnlDNzJcadeRnH2HTZO6l5
- eBwhe+BcMAmZIFBdmlwC/uF/Ng+DINUUuiLPbGRvfRtnYzQ51QhtGeMlQh8Ua+gxhZje
- lkRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KAsCtIlfmp+m7ShyllLFJYAj9FEeo8wO2Fz9dFrEzUk=;
- b=uTAQbYgBS4WICV88S/k3nNUCjD7ZnuzUa4ew/bbqMBhwNhnGjvqROXFk7+8ypzVS0+
- tjkALz+VrZ77cCKoiS3ohSxFoiRyJdzZLsGIdftBrWb8omCLvWCofegskWa7LjzJ9Yi+
- O8PPwgrFsXoI4yMF7z3sTbsVvpljYRsVCpsqKigi7GoQJKixq41Tl7mQaqgRDo9Ox3rA
- FTodK07lmtKHendlePmEmy+uMHRf5t0Jxg0lHECHmeA42+bMHp+eIIMrp+4DwW6+vGqT
- m1jVuLeysCiwBPWvyyHOjEx1/rP/XHDvyTYI0y1/Jd++1bdYXuvaIShRZmfgko3RwH+g
- EQvg==
-X-Gm-Message-State: AOAM530WBP8g4bN/JSWgWVRtbl5h9VaFKNqdcVNBkpPjHno4n5nmbJKg
- KsuA4cQI430eD3r+Cg4KwGE=
-X-Google-Smtp-Source: ABdhPJygCRUKcXYRREzCPhlgnMRY/xJ2BV/jbHvhY0MtRmH/g5VjCExQ76VosAuSlDwk9Q67S2g3kw==
-X-Received: by 2002:a05:651c:1054:: with SMTP id
- x20mr415144ljm.349.1644874151550; 
- Mon, 14 Feb 2022 13:29:11 -0800 (PST)
-Received: from localhost (31-178-191-245.dynamic.chello.pl. [31.178.191.245])
- by smtp.gmail.com with ESMTPSA id
- a22sm491184lfr.24.2022.02.14.13.29.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Feb 2022 13:29:11 -0800 (PST)
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-To: linux-media@vger.kernel.org,
-	Linux-rockchip@lists.infradead.org
-Cc: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Subject: [PATCH v2 2/3] arm64: dts: rockchip: Add VPU support for RK3568/RK3566
-Date: Mon, 14 Feb 2022 22:29:54 +0100
-Message-Id: <20220214212955.1178947-2-piotr.oniszczuk@gmail.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
-References: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
+ id 1nJkhB-00HHPS-I7; Mon, 14 Feb 2022 23:23:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VmhSK5EvdJvpupyUB3RGq6XYGHrVput4hHCJFgBatqMZ83FEfyq70ZGvT3n0mOTyYyRz8dwkQLfHYHOJ6/L564B50uVZOImj6qJysQJkC783lWU2GuBG4N6n4gwgYoYIljc/mfFRQA85nPIU7AN7w1/GHBa27HDbmHeoy8I2Vn+Jxj7VE0fqxpHiaoXAHmhna7eVrv5PFh1y0/cjdmxd5PUItMiKldEKlc5PEKK58tE5vncPfa6Ewdme+4B/s6xkzndFNG5ACdBg2MLmsoaZ/j7gQS7FCkPaSmJqEgtGuqOVB/+r0voFr6DjpoH5n0SgK/pTO+Mo/99+dh8t8frHyA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sxdzs9bkvfMn7wY+xduUITSPic/i/42/o68/mWbVp2A=;
+ b=ZAu02pnE3Bg4+smakVACoCV5yZLm9GMTCoI/++noDwb9R2i5zzdYW63RESNV0EqLnXap9/7sZSE0cZ7yNZByg7iepG1/ZIzW/scLJI7SELoLroqGCxwA3yYW6PRtBS6MvolfDmRzJ8ODg09iRNagFJ5C3ktfQ6Erg+hAPz7DaNHLDPE5OrB4/y7jPfH2gZWkSfsnAu0HkJ9MCD/hfEFVFTNxeczzA1gRsgOIYlpNQWZbqSZkfpwQU0/rRnHiamin9uCXst3MXdXm+JDi3xWFU9cenGi9kuMto+Xg9JRe8FBYk3sl8jQiwxVqq/OqYnIBthwl999F28ERVYDhFX9sxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sxdzs9bkvfMn7wY+xduUITSPic/i/42/o68/mWbVp2A=;
+ b=H7qgWFHyz3C6zy5fVNBUbeXSQxrklAF29lEvgMAHpv56pmCVM8IRA/VX7xzn2CQFKY9I9Kqoe83nW2b36GUBoOxczkdwQAwOd9twPdSkXCOj/3oBPwCdJQByYvB/pGFlIazs/pWN+VfSyrYhFzhXQJfNkHIbA4fwrHsbVsdpvGU=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=labundy.com;
+Received: from SJ0PR08MB6544.namprd08.prod.outlook.com (2603:10b6:a03:2d3::16)
+ by MW5PR08MB8190.namprd08.prod.outlook.com (2603:10b6:303:1ab::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4930.19; Mon, 14 Feb
+ 2022 23:23:37 +0000
+Received: from SJ0PR08MB6544.namprd08.prod.outlook.com
+ ([fe80::b48c:eec:fcaf:3379]) by SJ0PR08MB6544.namprd08.prod.outlook.com
+ ([fe80::b48c:eec:fcaf:3379%4]) with mapi id 15.20.4975.019; Mon, 14 Feb 2022
+ 23:23:36 +0000
+Date: Mon, 14 Feb 2022 17:23:29 -0600
+From: Jeff LaBundy <jeff@labundy.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ bcm-kernel-feedback-list@broadcom.com, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Anson Huang <anson.huang@nxp.com>,
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>, Yash Shah <yash.shah@sifive.com>,
+ Sagar Kadam <sagar.kadam@sifive.com>, Vignesh R <vigneshr@ti.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org
+Subject: Re: [PATCH v2 04/15] dt-bindings: pwm: iqs620a: Include generic pwm
+ schema
+Message-ID: <20220214232329.GA5918@nixie71>
+References: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
+ <20220214212154.8853-5-krzysztof.kozlowski@canonical.com>
+Content-Disposition: inline
+In-Reply-To: <20220214212154.8853-5-krzysztof.kozlowski@canonical.com>
+X-ClientProxiedBy: SN4PR0701CA0014.namprd07.prod.outlook.com
+ (2603:10b6:803:28::24) To SJ0PR08MB6544.namprd08.prod.outlook.com
+ (2603:10b6:a03:2d3::16)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f359ca54-2047-474e-1e0e-08d9f011065b
+X-MS-TrafficTypeDiagnostic: MW5PR08MB8190:EE_
+X-Microsoft-Antispam-PRVS: <MW5PR08MB81904D9246C9FD4EDEBC7911D3339@MW5PR08MB8190.namprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2512;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: G0d6/SPUnspYrgZIa5JgTt97xuVgLGgrIo1lrdqE0Uk5fbyrgClDnpjSH7e2LRifLQeDIycK7gxkAyrPB5x3F01oP8UzDWOWTT7LsbgGUbwZwvPRTnf1jotEJDOBFmaMww9Ea8qXoF08pdNGoV28YlMfd3NJU1iNbFs/sbdxxofcUA3GPQ4QHKCGk6R82m5capLN3HGBkgt0z0FXtrWj7eNAkB7gjsKLFcL+pw/Uzw7smMaTN4t9Mwlnek1qCPZa0fGEX/MVnbfMyaO6bi7XekwREb4xGRpeeJFt2GsqXFH4OYqXj9Q+EjzYeD0bejXc1XNgpEP5KSDUtmuEuaZkFYOnNPAhzcwz21T4ps1vGq9WBPMfgwKdmihyrvpIWo0L04riIz4aVSnU//mCqlqU6ATGDSBxSfHIdTB5DdTDGUt6yNhmOVC5kvjhW9t5th+Cb4NQuI0S5q0ke0o0ftD/la9ICGmDkkgO4Ez97MNdo92HYK6Vr/L8cLNqih7DWxN+0+Zx+ZwXBTmxsANqGAqE2e0WOnqmnLHq2w3AbVsOYcdV21Z7DFnzHcJ3OAkxg45rVc8SlcfRc1k9fqofIUnW+3gnPT3KEBG36yq+o+aHjAkj9FqUyXVdYx2qJCFrXIZjJwGtga1r+Cvfv10TKPZhWOOTQSMo8bQeLAVcBH4+wTrtqAWs3xBQRC+KJSl/D7GzR0riKrf/o4B3C8avWLVW2MtFsJke4ezpl2JthIOOnd0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR08MB6544.namprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(376002)(396003)(136003)(39830400003)(346002)(5660300002)(9686003)(6916009)(83380400001)(33656002)(4326008)(66946007)(54906003)(66556008)(8936002)(33716001)(7406005)(66476007)(38100700002)(7416002)(2906002)(186003)(26005)(1076003)(316002)(38350700002)(6512007)(86362001)(508600001)(6486002)(8676002)(52116002)(6666004)(6506007)(41533002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ogY+BA6gi5y2wPOKb1wb9ztX+uCnX9UjZb5/0CCdxFnFb1fk6y8kowBLvt0f?=
+ =?us-ascii?Q?9HRobc90eDzaQ+r+PgG1scjigIkyFLSgfFxQwYm994LGgOvVzXwbcn8sNAAV?=
+ =?us-ascii?Q?kX5FGMr5VM4HWTL8O5bOogUxbh9CsWnjaxn+Ffc2J/4KacHecLYNZ6rUnYsc?=
+ =?us-ascii?Q?h8dr+rklYrg5q4J+O84m7/8tFj2+hjQBqfeQvCfhJ1co1CgezQlpgM8PQ1ol?=
+ =?us-ascii?Q?iDd/n0hyRSvUdRH9IqqPamGTnV5F0qA6pCIY76Y5ESzgkHEgJu87xRVZ/crH?=
+ =?us-ascii?Q?miaV/RZpN1sLMDICVhyCdKGqb/mDyb/pdWPbC9/bPGWPnAunRT2cK3e2W2/E?=
+ =?us-ascii?Q?iw67mOyP8mqPf0LWluzgfYWt95dzN28uE76BXA5RYuXhqrn1P9+jIuOFpbQQ?=
+ =?us-ascii?Q?EQNExZChChKt0jVmqlHLSshFPFvAn4djeP5ZeX3A7IDjGpUaWQg7hVKoGHiB?=
+ =?us-ascii?Q?skrQAToYO4FnzcSSdaurTtH+JS1RhkurMg9xOMdtbmZ5UmTejX/2OTiFXD6k?=
+ =?us-ascii?Q?Li70B/arQL5eX5UdnollGPNdmuTKN28kOUqU/HMwalsqG2fp3UN2xLEkhNbz?=
+ =?us-ascii?Q?+QTVjjstk6yV2nTyOeRYwAmRQnBVVGg5GWaWnwdxsVVg4ty9fA/qHSo9TAQZ?=
+ =?us-ascii?Q?brPJslKJacR/UTivIIZ6SS8clbo4sQcbk1L/vy09rHyWd2jz2IiBzG2tcQrr?=
+ =?us-ascii?Q?VIBeDXVfsjWEZFSIfrTJOMpgPN9Q+KZZsdzy3ToBz4UlGBoW6FUa89MLme0Q?=
+ =?us-ascii?Q?YsLzfaNeQXt5MhHwqLKZHRQjyqJoMQ2K494UnOhCfwuEfY67OkoF7EivcOOH?=
+ =?us-ascii?Q?zwgV9lDJ5T8DsFn5PmzrP/ohFSJLRlkftdIdFwB3QPYeaWZ7PRcnGV55p9/j?=
+ =?us-ascii?Q?vpT4/UI+xXPVcEhQ6D+/0FESLfGi3XPMW+XF5KMaWEewGNFLFrURHXDPfgFL?=
+ =?us-ascii?Q?tDyYlFtm+rrzZXG9TXXCQPHspgFhldTJ1m8685V5DcHLYvaUa/KYMsj69fg0?=
+ =?us-ascii?Q?VsD6HpXdAdJd6VN5sfp9yzHar6XtEFEyX4eCl3jcV3PtW+CseNvRNT4h2zd1?=
+ =?us-ascii?Q?OkwUGitOef9N3/2zcy4O5QITbFM+DdmNE8LJjtMfTAYhxZCZgX9Jp5idJrzN?=
+ =?us-ascii?Q?TN4aEsAXXPYjXlpbEPV3QE2aR4L7aTGNlRfKiPIn3e/cTVMlyT2iWEv8ZTdb?=
+ =?us-ascii?Q?puFXD06/sCQEYpaza8CWelB0s1dfRUS20vUQL+tS7FunedGHskbCBNlzS8xr?=
+ =?us-ascii?Q?I3hWSupUvBZaewcIt0MoYEV++URmTobmd5qd2H4fLzrGjn228zw15eKE5FZM?=
+ =?us-ascii?Q?+AquRLa7+25DmuOONR89E3tbzRlebb0AVFnSILEa0vY7ErGw7fTfWqMLIoGj?=
+ =?us-ascii?Q?QRgEgfEfx09v5zZvdlE9Qu7lO3Y/+xPE9KmO/V7pW1Qr7nTwaVu/WeUiy/2M?=
+ =?us-ascii?Q?VMPQaD/YUcst9Sl8aqKOU9+4/XGG+Vt3zOcYLr46q6vixQQ4Vti7SkHtnUUr?=
+ =?us-ascii?Q?LX43EVN3qqyO8MjdpqIDDhvh4Ujgdy/sfyEqiSLaH89qqSvlXZxQY2ChqCtL?=
+ =?us-ascii?Q?X0dVfk9kPoDwDuuNT4TPJ7JQ8SdLT2M7YJxtL/DS0FzMvjRCpD6+kDrkbkpH?=
+ =?us-ascii?Q?ldB3tW9nGoEAH8FLbfaD5yE=3D?=
+X-OriginatorOrg: labundy.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f359ca54-2047-474e-1e0e-08d9f011065b
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR08MB6544.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2022 23:23:36.5926 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zgk9dNa/J2j9lbhaEm2FP3M3tZQPhi5hK7BuQvwmb6+prAjyF5Sg0/62iQNxSxaeptJhbW2rwDryM6XWkfDFKw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR08MB8190
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_132913_713277_944FDBA2 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220214_152349_633987_BA980D42 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,60 +160,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Hi Krzysztof,
 
-RK356x has Hantro G1 video decoder capable to decode MPEG2/H.264/VP8
-video formats.
+On Mon, Feb 14, 2022 at 10:21:43PM +0100, Krzysztof Kozlowski wrote:
+> Include generic pwm.yaml schema, which enforces PWM node naming and
+> brings pwm-cells requirement.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/iqs620a-pwm.yaml | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/iqs620a-pwm.yaml b/Documentation/devicetree/bindings/pwm/iqs620a-pwm.yaml
+> index 1d7c27be50da..0a46af240d83 100644
+> --- a/Documentation/devicetree/bindings/pwm/iqs620a-pwm.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/iqs620a-pwm.yaml
+> @@ -15,6 +15,9 @@ description: |
+>    Documentation/devicetree/bindings/mfd/iqs62x.yaml for further details as
+>    well as an example.
+>  
+> +allOf:
+> +  - $ref: pwm.yaml#
+> +
+>  properties:
+>    compatible:
+>      enum:
+> @@ -25,7 +28,6 @@ properties:
+>  
+>  required:
+>    - compatible
+> -  - "#pwm-cells"
+>  
+>  additionalProperties: false
+>  
+> -- 
+> 2.32.0
+> 
 
-This patch enables RK356x video decoder in RK356x device-tree
-include.
+Acked-by: Jeff LaBundy <jeff@labundy.com>
 
-Tested on [1] with FFmpeg v4l2_request code taken from [2]
-with MPEG2, H.642 and VP8 samples with results [3].
-
-[1] https://github.com/warpme/minimyth2
-[2] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
-[3] https://github.com/warpme/minimyth2/blob/master/video-test-summary.txt
-
-Signed-off-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index a68033a23975..33ecaafa8cb7 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -390,6 +390,26 @@ power-domain@RK3568_PD_RKVENC {
- 		};
- 	};
- 
-+	vpu: video-codec@fdea0400 {
-+		compatible = "rockchip,rk3568-vpu";
-+		reg = <0x0 0xfdea0000 0x0 0x800>;
-+		interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		clock-names = "aclk", "hclk";
-+		iommus = <&vdpu_mmu>;
-+		power-domains = <&power RK3568_PD_VPU>;
-+	};
-+
-+	vdpu_mmu: iommu@fdea0800 {
-+		compatible = "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfdea0800 0x0 0x40>;
-+		interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "aclk", "iface";
-+		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+		power-domains = <&power RK3568_PD_VPU>;
-+		#iommu-cells = <0>;
-+	};
-+
- 	sdmmc2: mmc@fe000000 {
- 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe000000 0x0 0x4000>;
--- 
-2.29.2
-
+Kind regards,
+Jeff LaBundy
 
 _______________________________________________
 Linux-rockchip mailing list
