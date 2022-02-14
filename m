@@ -4,61 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB1A0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AC48C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:17:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+BBiNVmG5DXmzJnAP0jqS198khIzgs6v51ppJKrhljw=; b=opU0N7QXZDTBl8
-	i/J70s9D87/rbdwFM5i/XF34wc/AYjcShS5a79JMXPzDzvbXRamDppz8rdyN8Cty8XmJDPaYB2O1Z
-	Duheb333JykiDM4SIByu0Wb6hvBtYXNdSPJ7zhnAzOn9gwECkDPFmi92tIzvLfIdwsJpDtR/pb8FQ
-	g6Y68r4qqGV2YXYAN+iivGEOqgoNqDDZkyx7BBbk4/Jg2fJCVmm5UDO0s+qLumLbYuMRWVHefGOVe
-	sz89vLAtTdEgFlMQ4mHMORlp+bXnuu2sgz64Nziluw+6fgphhqzt6bP4MFV64fRwI7HWMP7Unw2Sk
-	U9AADP1AEv3M/j/U5U6A==;
+	List-Owner; bh=0ll871JVBirrzIQ0giifItlFn7UwAygiR3MeuGtslVQ=; b=Q+wOAYJPohGX+Y
+	KhLlTepdgjJpxfJ6TpmCrWroJ+trwcIUBRMrXcay4srFT6bAx0KQZ1gljqbdErcIucSgXgA6x4CSb
+	XSN++F5tJ+wLuuSPqtws26Hina08qEfCSRGnLtVFmxm5aOr6F5XnbDpeD2Pwhv9tJM65yuCGZE+jT
+	E/JxKgvb8hS5tf6gyx+gp+2hltCJhuKvCROfhUQZ127gXXUZiOsqHJMxniTTz+HfmOtNWYG+b4Vf+
+	LrapB4lgx+GpI3IfBJTOf7pRFosbglQp7M9NVywheRoRQxVJZGGJ0C1rO03OQ+Mb58wOojvc9Dby2
+	d18UcF4quxysypxtGDug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJWKl-00Dn9S-Hi; Mon, 14 Feb 2022 08:03:43 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nJWXe-00DpTw-5w; Mon, 14 Feb 2022 08:17:02 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJWKZ-00Dn74-JV; Mon, 14 Feb 2022 08:03:32 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nJWKA-0006vg-Ok; Mon, 14 Feb 2022 09:03:06 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, Yong Wu <yong.wu@mediatek.com>
-Cc: James Wang <james.qian.wang@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ id 1nJWXW-00DpJE-Pz
+ for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 08:16:57 +0000
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 52ED94049B
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:16:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1644826605;
+ bh=Vx5pgZq+wTDk2cXNM++1rpL4of1cb6TeLTw59n/JqH4=;
+ h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
+ MIME-Version;
+ b=tl8dZp90zTN/3EA0rvFUUsZ/TaCS/1BYBo2ZytSqcEgUKVNNGj13npXlHNH2OzXmf
+ N13k/v/AEBmU5eWO40/75lsP6qhTxJXjB94Ok2IV+jA6v31/T8grK3MvgGyz6pQ/Q8
+ hnVWXvh4liqTeDcaHS60FmwKG3O7rtxC63YpXkvMcd1gnwUh5+xvRVnQkd/Izixzij
+ 0TN8yvW8fR0PdsdqLGlRI/ke6gVLl9ZNh6dvAkSvIMcoIoIXsGDe33OrDUphRvsjC1
+ 7zf9suvoGsl6rJeMAywggUX8VAZxK8CXjg2snbq4KSP34PA4n8mXfaNNODujuPrge/
+ RL0D3muNxk9iQ==
+Received: by mail-ed1-f69.google.com with SMTP id
+ j10-20020a05640211ca00b004090fd8a936so5147845edw.23
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 00:16:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Vx5pgZq+wTDk2cXNM++1rpL4of1cb6TeLTw59n/JqH4=;
+ b=27zC2snIKsW6zI72203EbVXsmWunGKXe3TJN6D41HAPfyccrO4cbeW5Q6QtpTxKcUT
+ 4Mnvzbbk7enzvU+zITnhvJSzGim+HsNYZeclY5oI+zJrW5lRxWoaRejkvNkBqZ4IZcYE
+ yXqD+pHcA15pUrJdVKVMD9jDBYzwbVgjM9t8HInttiRzTDe836rZ/WhTt/Yew75JsTsu
+ /kx6K4aGxwxXgSPcMkDzesBRPgws5jIYyCbDrAqIv8MiTrTfcu/27B75KtrAT4JycHxS
+ AeQ2GlbOBepcL8Kr9FohJM95LV6nOzvmnbMbavawEtdrNMBq0buwCPEcVtG4mg4xCZAR
+ TbHQ==
+X-Gm-Message-State: AOAM531ISPLnpeC6bQgfWJO5VYwfK2zmzATKj1t0dvjU1Msj+APH+qg1
+ /QuKMLb+01faeI9Ji7TKiaWa6M7N+nKrSvj2g/p7+vV3pi4bJXO8+59GvxJfHNPZ9eb4zV6nPxB
+ ZDOHgeRRiTlhyi1Unk6rIGmEaTzbzn/C4ZECGWzvtlfObWqbw/w==
+X-Received: by 2002:a17:907:86a1:: with SMTP id
+ qa33mr10593904ejc.516.1644826604835; 
+ Mon, 14 Feb 2022 00:16:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzHLCvj9EOOMBQpfPrsB+GOXcyF6v8PbErxtuwvlpLnjLHBW4y7stXTy+wJs5s8ptFN23VAWQ==
+X-Received: by 2002:a17:907:86a1:: with SMTP id
+ qa33mr10593877ejc.516.1644826604628; 
+ Mon, 14 Feb 2022 00:16:44 -0800 (PST)
+Received: from localhost.localdomain (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id t21sm3363642edd.74.2022.02.14.00.16.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Feb 2022 00:16:43 -0800 (PST)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- linux-kernel@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-mediatek@lists.infradead.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, srv_heupstream@mediatek.com,
- Rob Clark <robdclark@gmail.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Sebastian Reichel <sre@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
- Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 13/23] drm/rockchip: Make use of the helper
- component_compare_dev
-Date: Mon, 14 Feb 2022 09:03:04 +0100
-Message-ID: <3640952.nfqboWGjmy@diego>
-In-Reply-To: <20220214060819.7334-14-yong.wu@mediatek.com>
-References: <20220214060819.7334-1-yong.wu@mediatek.com>
- <20220214060819.7334-14-yong.wu@mediatek.com>
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ bcm-kernel-feedback-list@broadcom.com, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Anson Huang <anson.huang@nxp.com>,
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>, Jeff LaBundy <jeff@labundy.com>,
+ Yash Shah <yash.shah@sifive.com>, Sagar Kadam <sagar.kadam@sifive.com>,
+ Vignesh R <vigneshr@ti.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-riscv@lists.infradead.org
+Subject: [PATCH 03/15] dt-bindings: pwm: intel, lgm: include generic pwm schema
+Date: Mon, 14 Feb 2022 09:15:53 +0100
+Message-Id: <20220214081605.161394-3-krzysztof.kozlowski@canonical.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
+References: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_000331_651053_13F81A0B 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20220214_001655_002024_E062E0EC 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,63 +120,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 14. Februar 2022, 07:08:09 CET schrieb Yong Wu:
-> Use the common compare helper from component.
-> =
+Include generic pwm.yaml schema, which enforces PWM node naming and
+brings pwm-cells requirement.
 
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=A8=B9bner" <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+---
+ Documentation/devicetree/bindings/pwm/intel,lgm-pwm.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
-> =
-
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/dr=
-m/rockchip/rockchip_drm_drv.c
-> index bec207de4544..3c2f2d6ecc36 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -290,11 +290,6 @@ int rockchip_drm_endpoint_is_subdriver(struct device=
-_node *ep)
->  	return false;
->  }
->  =
-
-> -static int compare_dev(struct device *dev, void *data)
-> -{
-> -	return dev =3D=3D (struct device *)data;
-> -}
-> -
->  static void rockchip_drm_match_remove(struct device *dev)
->  {
->  	struct device_link *link;
-> @@ -321,7 +316,7 @@ static struct component_match *rockchip_drm_match_add=
-(struct device *dev)
->  				break;
->  =
-
->  			device_link_add(dev, d, DL_FLAG_STATELESS);
-> -			component_match_add(dev, &match, compare_dev, d);
-> +			component_match_add(dev, &match, component_compare_dev, d);
->  		} while (true);
->  	}
->  =
-
-> =
-
-
-
-
+diff --git a/Documentation/devicetree/bindings/pwm/intel,lgm-pwm.yaml b/Documentation/devicetree/bindings/pwm/intel,lgm-pwm.yaml
+index 11a606536169..59d7c4d864c1 100644
+--- a/Documentation/devicetree/bindings/pwm/intel,lgm-pwm.yaml
++++ b/Documentation/devicetree/bindings/pwm/intel,lgm-pwm.yaml
+@@ -9,6 +9,9 @@ title: LGM SoC PWM fan controller
+ maintainers:
+   - Rahul Tanwar <rtanwar@maxlinear.com>
+ 
++allOf:
++  - $ref: pwm.yaml#
++
+ properties:
+   compatible:
+     const: intel,lgm-pwm
+-- 
+2.32.0
 
 
 _______________________________________________
