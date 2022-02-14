@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CCEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:37:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1BFC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 08:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ejgvz8/5fMj6KPiBIE6K92I4GM3xdkNZhg1aWYb2k1g=; b=NHw83Pq15EyA7a
-	pzaTMVHMdW2jyC/U9AHQZ3rqwEM110C+mYq3T8bcCsCBDfCc9feJM22znTomSo8O4ucuND2yW+DYa
-	8IbBx7wlUXHOobQ7DnOUGJfLLlDX3Jj6Bc5dHx8HNUrcpjvwXZrow0GWJ3mL59ksHpykGBjr3PH2t
-	tQOQ5ytDO/zW/k9L7AhI4c8kx3DXbQVCj2sUKAQ1rpLfK2j+kKk/SOnCTHcxg70FsvQqzmyVq8+Xx
-	P+Hfh9Kv/SxMuPBt+DVc5eXiWufOlnvOdo56YWS8n3cdZXx+zE0KT6Mt1korAcWLNKzSo65BO/GyM
-	DCyoEuoPBqRhmJ/+bftg==;
+	List-Owner; bh=726CAYqQJhRkFET9Iyso+jkdy3fexXfBnsj125uZNh4=; b=IPrLL5dKC2wg+X
+	txyO9EkSk4NPN8vVJlMWkxdWAM8gIfmgEGSovTVFOK+Mjl6GtHt/cBkqv63lytzXrwyDYUHRIn2H3
+	93gsdIezTX2o3yugrvb2C8MNmCiJrYH5eNtVZaanRHWV4G/3WgZy3A6e4vTeRKH1YqTiRAmeGuwGI
+	25qvR9a2g305xbQwUAecOc7B2m7ZqkBY2VwF91W1/UABNTdZQ81Z7eqofzwTYI6/i5eDIx43yKQSc
+	FWWbmdYdhCsk063GPI00TySMwhr0sSw92lc9D8IojNWUEdwI0Quas2MsffBVxcsVpiFCwqGR6qddc
+	UPzVBFi425cd0vZxBpRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJWra-00DyXy-9o; Mon, 14 Feb 2022 08:37:38 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nJWss-00Dz4E-Kb; Mon, 14 Feb 2022 08:38:58 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJWaS-00DrAb-L7
- for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 08:20:02 +0000
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70])
+ id 1nJWaV-00DrCl-Ar
+ for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 08:20:03 +0000
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 4872F4033B
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:19:55 +0000 (UTC)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id E1E8A407E4
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:19:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1644826795;
- bh=23CQAl/07AaN2dxN1TfTdDj5so/NCdWTbjb57ZtNLwo=;
+ s=20210705; t=1644826797;
+ bh=o/YgTPBdxwkk76YIPJfDwO9KLR8OIlu6EoGrWBDU/GQ=;
  h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
  MIME-Version;
- b=Ah1UupAoINeRCa+UtdPXztTePkYfs2ooX5tQRF6YqDHLCj4fOsLrLszYyo1SzXCyq
- axMRDOzHIudG+Pqc0ec6ebKh4zmyKcerOvHSWvpFsbPW1YBYwnjGWpY7zVcRZHWhNe
- OaNIWiFdGgZPeE5n3cjNx1f3goxIl7Fp2KpN8B9BniBYhXMv4Ferp1VQhCznIrLVdy
- LE2uktIzvLNe2G04mkiN0IDujzL7SkBspAqMUePvKEv2g0zqb9XiwMEpvmQDavRPyO
- +4WpWvTRdL15qFsiBc1D+9I87h2YPFqisEBAeWqc7GlVwK6qDLc1rhee4/NHUBylnn
- nRJ1FYkb1mKAg==
-Received: by mail-ed1-f70.google.com with SMTP id
- l14-20020aa7cace000000b003f7f8e1cbbdso9766785edt.20
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 00:19:55 -0800 (PST)
+ b=EwTyN5N67UAQHLpprepPlAdArEoxH9FHAtFV+b2v/8mCpJO9jzmVzcILyPM1QfAbE
+ mcYvaKAxFLktyuhN6d8z+h5Ije00wbvaMxqdQcusXQUlfOszPBuuMobs1BrXaKaANb
+ 9dlfmVgYjSoQt2dKnfeJ/ZSY+y1qzxVO9Fjhv7VR++Dy8m0dWIbJnuE5jhsBzkGIA1
+ n+qAYg2y5g/hq71m0WQZbiuHAxmVjasQzBlAgOptKuU9jy81ta9rak5q4puZxmImiQ
+ QzRXART7ckrtwQCvBQSSU96TSsvUzC9xC0sKw2KEQYTwjoP0Ah9DwcJioZJ7+YEa0R
+ 8mDjyxKbwq3Dg==
+Received: by mail-ej1-f70.google.com with SMTP id
+ qf24-20020a1709077f1800b006ce8c140d3dso582149ejc.18
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 00:19:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=23CQAl/07AaN2dxN1TfTdDj5so/NCdWTbjb57ZtNLwo=;
- b=rrRvJZ106JWaYSlRaLznYxXRgquNbn6BqzZ3OZtrKjqKZk1wciesxiepVYrgmCCmWd
- UQe6y40aiRQzY7H6Oe+9N1G+5y2WYFtgFA65vEdkWrRj0k7RxoDhWF7bGTuQAD9lRrZy
- 3MO+2AQDpXUUyxEnibs0A+5OeLHnVRD1QEex4nuRRYekhesy/HgC067FD32nOvHXDw5T
- wRkBm+cgNGTX7enCe2fOJIXBpGRfN0efVEXMzmXIDk5anmFXYLJFl0MIRKu0Db8IHGBY
- kXKlfbAIsNJrA52gbnmSTA3cythg2bg3ogvcC2oeXP7rlcbgGOtKROzAjOkTAsxHecdi
- 2/3w==
-X-Gm-Message-State: AOAM533j7lFgMDCHTCsNSLPXhPmcPEpHu53OvxeXDel27UGk2JjaHhe3
- AoTXkcS2KyQu/0oGiwXaI5nWZ+ckt7uU0uQ8hmcxp/uZgUvu659zlXxz+pHXx+V/W6b8wb6PH71
- MAjtR+QITuUyA/kGh/VJPf1F7vL81OIa5Z059VvF737wfwz33ww==
-X-Received: by 2002:a17:907:3d01:: with SMTP id
- gm1mr10671195ejc.695.1644826795041; 
- Mon, 14 Feb 2022 00:19:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyduVMGZqiqcBn+5NbYVmKbo23S2Kx2GnaG0uOcebe1lzeD4dxVvKdv5SiQHDzJAeAj67dMnw==
-X-Received: by 2002:a17:907:3d01:: with SMTP id
- gm1mr10671188ejc.695.1644826794896; 
- Mon, 14 Feb 2022 00:19:54 -0800 (PST)
+ bh=o/YgTPBdxwkk76YIPJfDwO9KLR8OIlu6EoGrWBDU/GQ=;
+ b=78R+EFv7GAc+Ymav8srkvChYRUXskG+obZnfsPBzguxrXBQ1Mf3/J/1ainKStMVmOT
+ HdUOUD79529tSjxl2sqNi/bdjwm00aKOp1D0jKZgeHStEfWXXZsq0KJXndPVK5BQ5jgv
+ 6342wNEjF2PS+rvDP+NG2OgCHt4AHzMKBF5Y1jSMGvjSWEmgCibvCm4KVzTzu5nK3Ufo
+ 7dRZg2rcBuggPieN5RdbaKG87E/6cH1uMu1dATPNXOp0ZfB+P6gzRq2y0E7yAzAnPkd5
+ 616arD6gV6FqB/ZkE4QovPuvXGM8GTtGW4csA1HCB8crG390lZ5v1H6vR4uxWYb1jqcv
+ +6Zg==
+X-Gm-Message-State: AOAM533U8PyL268MNIc2prmtQsJkHMcsX5F0YQLk74C6X1Jm+6+/54dY
+ wGFNQBRgmQDEC4qRZlRZaBe1Q/ketbBPpTw7lptwIR6JTOqz3gUr6/oYscXbRrY+wJxUaVYnqha
+ UKbZnKM+Jqf+KHMI+mswtlAzp/nVctzztVzpxDaHCzvlHZyWprw==
+X-Received: by 2002:a17:907:6091:: with SMTP id
+ ht17mr10718076ejc.607.1644826797377; 
+ Mon, 14 Feb 2022 00:19:57 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwkFPJeiJWjmWYMYKnbVg1bBwxgaPTZV+oh4RSUxGNA67GTozBuexvPDdoyT1VdY/d6fUhgGw==
+X-Received: by 2002:a17:907:6091:: with SMTP id
+ ht17mr10718069ejc.607.1644826797215; 
+ Mon, 14 Feb 2022 00:19:57 -0800 (PST)
 Received: from localhost.localdomain (xdsl-188-155-168-84.adslplus.ch.
  [188.155.168.84])
- by smtp.gmail.com with ESMTPSA id b20sm2022941ede.23.2022.02.14.00.19.53
+ by smtp.gmail.com with ESMTPSA id b20sm2022941ede.23.2022.02.14.00.19.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Feb 2022 00:19:54 -0800 (PST)
+ Mon, 14 Feb 2022 00:19:56 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
@@ -85,17 +85,17 @@ To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH 2/4] arm64: dts: mt8183: align Google CROS EC PWM node name
+Subject: [PATCH 4/4] arm64: dts: rk3399: align Google CROS EC PWM node name
  with dtschema
-Date: Mon, 14 Feb 2022 09:19:14 +0100
-Message-Id: <20220214081916.162014-3-krzysztof.kozlowski@canonical.com>
+Date: Mon, 14 Feb 2022 09:19:16 +0100
+Message-Id: <20220214081916.162014-5-krzysztof.kozlowski@canonical.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
 References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_001956_881199_2171D0EB 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20220214_001959_546018_543BB435 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,14 +118,14 @@ Devicetree specification requirements about generic node names.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-index 8f7bf33f607d..2d7a193272ae 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
-@@ -92,7 +92,7 @@ volume_up {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 9b2c679f5eca..3355fb90fa54 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -462,7 +462,7 @@ ap_i2c_tp: &i2c5 {
  };
  
  &cros_ec {
@@ -133,7 +133,7 @@ index 8f7bf33f607d..2d7a193272ae 100644
 +	cros_ec_pwm: pwm {
  		compatible = "google,cros-ec-pwm";
  		#pwm-cells = <1>;
- 		status = "disabled";
+ 	};
 -- 
 2.32.0
 
