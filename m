@@ -4,89 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6254C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 16:29:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00303C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Feb 2022 17:13:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1C4khHJVye/ErWNJr8rRO6Lp54Q53SHYYLy4X/BaEtg=; b=heN4gqkkRBDT30
-	VtL3514ACQW6bgEWbaOAiJqSpSC8ccDV+1kUc+3LYFzcwmcCzfb9PVWZFDW9xmLTkKHRzEwzBdv4D
-	sxnipCXykwbemIMoEhn+GVWm93N9ePuNAk6EJlsSR/8uCd0BWxCPIJYQpBIwkRYKs7IIKHuBn8ir8
-	FD8GUwGQUwZUV+GGO9rYWZx4DKRIwiBYYB7s7edrNTOGWAhnCmjkf8zN1V/WF5DcUmxXXnF5PNLqV
-	InkEYx+EUhbiHlyXNqpPM+8aJzWPk0rNdwCD1Un8GB0CS39BQEPvnoSRopKLeGBX3AJ3/gYrnXeHe
-	xTx8uI+tIDtrw9dCr/vQ==;
+	List-Owner; bh=6Hh/WVOWRrZfT7GPLsOlUFd0RfsvHPOByhv7EzcVRvk=; b=IjeGOmej2KmMLi
+	T3BxrxHi29Qrk/Y9BLYy7CH1VVixqhVbKCseeflFdhEgFE7cwjFmGt/ZpGxBzCa4lpmEdpg8b+99K
+	EjXLsIyPvE7jTA7jt/wL73YzDsg1IRJ2qKrJX2/fKx/IbBObUIjH+/WDe6fGFaivXfpO8pbA9zE1s
+	GL/A3sO5b7KJ4mztNB2WOzYwp5cK8svM+0wx2lWc1cy4bUV2Q56y6g5S7AKFYXnl8n7kB9Y1hUeZC
+	K8WYav5u7fBkmDcTz9HHbVbtm5nMjEeOnXRfryy5al3LrIaQ9WLnGJDLFj+6L8Jc3s2bnwibHjDsJ
+	nr9CVnLtF3P4seFYNh4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nJeE0-00G0j5-QA; Mon, 14 Feb 2022 16:29:16 +0000
-Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
+	id 1nJeuy-00GKHN-FI; Mon, 14 Feb 2022 17:13:40 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJeDs-00G0gm-PJ
- for linux-rockchip@lists.infradead.org; Mon, 14 Feb 2022 16:29:10 +0000
-Received: by mail-io1-xd2a.google.com with SMTP id q204so20497066iod.8
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:29:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=y/lXxznWJk6t4L5VwAqaMS0+NBIKS0zk3kQAGJ/1b/k=;
- b=JZLXUfRWra54tioTiu2lrYxDJmGtcUX8NNdySo/F7BWBvDruBVnf1bOydWNgXOogN5
- Iz7arnCufrG1kJ9V7DcoDSRxMCbNRVV3btf8XwNiGUJYm3d1E2eS92/RlK7bOd1VQe5G
- IQJLzFRnqEVjliOJs+NOd9nwMMPcEvNaZXjNo=
+ id 1nJeuS-00GK40-EO; Mon, 14 Feb 2022 17:13:11 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id lw4so8054272ejb.12;
+ Mon, 14 Feb 2022 09:13:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=3Fk8twNCDj+wvRPPnauS0r1tDhPrGepWuPsXEFLTKTk=;
+ b=NDAe7fCLf6sA/zxhNxQ77owR34T8UGjUGbAzZikk4FcorqiCJK7lWuW/PEigNr6TDZ
+ tT+BBY45s4+cKDEYBWfD61KxSAsdIsalAEo26xD37BJMrWH8ichvKOaVbNtpNSG3e+O1
+ OFP+uRStpbszEyHXQH4E7zmSB5F1o/g9/1OcJ1LJVXVSMwfpJC+Z7QdB7457m+aeGtss
+ eVwivFzm1n31yfxocGOGwnuiv73LrZIksNQx/Ko+HDM3JZihJpE08XV1/n7RXrZzlXG2
+ 2RZ0Gc0PSH9UXf5IY4wI7xqoRzyIs1C6YZXHdi7T1aQs2LLpwFGUkRVN5dA09LDjTVQJ
+ 7gVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=y/lXxznWJk6t4L5VwAqaMS0+NBIKS0zk3kQAGJ/1b/k=;
- b=p0PFKgE0iW6gUIasegHSs+Tse/VYbvq/cmyKzvwFNDzA9UyPr9Y46JXhbQy/QzX0UX
- e6g354+gEByDx69jCFfw3S0OnsWgSTBxEoWrPjy80q8xTtEcUgm2i/NdSxL5CH4Jassw
- KZKV2gS4X0hPMnnN1BNkpqnZF1tzK9BrIokFKlbWOHdTBt1Tc0JEca9njnPYguXZhoSe
- qNv6BB/v8EMP2MG9xObgF6rq0W+lzspayCNiSpvuzaUGTeHbcpowRVYlBk+Ufp/TKQK4
- TyyIK1CvgjLTgNHZuCPWcsUHqPRFD+DTQxECshXM6FPIoGbBhw566Y92IxuD4Fy98TUQ
- bsHg==
-X-Gm-Message-State: AOAM531tH5CeD7hNiDZqC4zkoUUD13CDCSvZts5qmiWIUHVJBfDgVtuc
- HtyvutHdanQNjccaqqrY4XJ8CovCU0RGCQ==
-X-Google-Smtp-Source: ABdhPJzerqmsbLeUtw+IsYSRplbCBYV4kQk/ZdijHdHd5TBNbitJIeUcpJqXzm1zeb0HgHMWdqtFbQ==
-X-Received: by 2002:a02:272d:: with SMTP id g45mr279845jaa.165.1644856147987; 
- Mon, 14 Feb 2022 08:29:07 -0800 (PST)
-Received: from mail-il1-f182.google.com (mail-il1-f182.google.com.
- [209.85.166.182])
- by smtp.gmail.com with ESMTPSA id b5sm14526906ilr.0.2022.02.14.08.29.07
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Feb 2022 08:29:07 -0800 (PST)
-Received: by mail-il1-f182.google.com with SMTP id z7so12730139ilb.6
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Feb 2022 08:29:07 -0800 (PST)
-X-Received: by 2002:a05:6e02:19cf:: with SMTP id
- r15mr119973ill.180.1644855716786; 
- Mon, 14 Feb 2022 08:21:56 -0800 (PST)
-MIME-Version: 1.0
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 14 Feb 2022 08:21:45 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=VNarYKq8cZVqWfFKccTqxH46Wmm8Tr979EVsiAoOnT_g@mail.gmail.com>
-Message-ID: <CAD=FV=VNarYKq8cZVqWfFKccTqxH46Wmm8Tr979EVsiAoOnT_g@mail.gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: qcom: align Google CROS EC PWM node name
- with dtschema
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
- Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, 
- Thierry Reding <thierry.reding@gmail.com>, 
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3Fk8twNCDj+wvRPPnauS0r1tDhPrGepWuPsXEFLTKTk=;
+ b=1q0cQlUljRC4r9VrJiv3zVICKOpqzdZqxOGfnx/Sk/o0IAEZQirjxA4CLAaVA1bR6Q
+ ax+DlU4uOYnDi1Ogxvl+8KMK8j6zru9hzBpfr/l3GgOXM4ybhy/4RgpCPBxcqm8IK28V
+ cOFeqT32/KcK3DL1uuKb4xKU5e/emPC/FlMW4MKeH+dvEfkv9fBzZ69X7VHXiE7IFTIV
+ dRS5C+gFQPU8cmCa+5NQhozmazUTK+LZ+NWyzaZ5/wPW8OqjSlMQTlMbU7cJxA0jjMPe
+ ODzdVpHRUULyawPqXo/DvS9dUGzm1RwHIeyP0cFa9E68SS8NZXtXsdl9PiUNB+KHXSye
+ kHuA==
+X-Gm-Message-State: AOAM533SjLVOKxsC2Ohl4Qkr2zzpQXtfVxx1w7LPxHPr5xWC+6+zlPIL
+ s8yC+Gi7/aaI7q5kHmle7uc=
+X-Google-Smtp-Source: ABdhPJzg4slRDT/mw7ZOBMAOQzMQYAcNt8auS9xTWhsl5NDb/5V8h4eVpjx6YXnsY8ve32KgLbEa+A==
+X-Received: by 2002:a17:907:a428:: with SMTP id
+ sg40mr512036ejc.128.1644858784198; 
+ Mon, 14 Feb 2022 09:13:04 -0800 (PST)
+Received: from kista.localnet (cpe-86-58-32-107.static.triera.net.
+ [86.58.32.107])
+ by smtp.gmail.com with ESMTPSA id 23sm2427068ejg.209.2022.02.14.09.13.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Feb 2022 09:13:03 -0800 (PST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>, 
  =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>, 
- Bjorn Andersson <bjorn.andersson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, chrome-platform@lists.linux.dev, 
- LKML <linux-kernel@vger.kernel.org>, linux-pwm <linux-pwm@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+ Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Chen-Yu Tsai <wens@csie.org>, Florian Fainelli <f.fainelli@gmail.com>, 
+ bcm-kernel-feedback-list@broadcom.com, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Paul Walmsley <paul.walmsley@sifive.com>, 
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Anson Huang <anson.huang@nxp.com>, 
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>, 
+ Jeff LaBundy <jeff@labundy.com>, Yash Shah <yash.shah@sifive.com>, 
+ Sagar Kadam <sagar.kadam@sifive.com>, Vignesh R <vigneshr@ti.com>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-pwm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org
+Subject: Re: [PATCH 01/15] dt-bindings: pwm: allwinner,
+ sun4i-a10: include generic pwm schema
+Date: Mon, 14 Feb 2022 18:13:01 +0100
+Message-ID: <3485219.R56niFO833@kista>
+In-Reply-To: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
+References: <20220214081605.161394-1-krzysztof.kozlowski@canonical.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220214_082908_842932_D4BB0A54 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20220214_091308_587763_40ECBEC8 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,24 +111,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, Feb 14, 2022 at 12:20 AM Krzysztof Kozlowski
-<krzysztof.kozlowski@canonical.com> wrote:
->
-> dtschema expects PWM node name to be a generic "pwm".  This also matches
-> Devicetree specification requirements about generic node names.
->
+Dne ponedeljek, 14. februar 2022 ob 09:15:51 CET je Krzysztof Kozlowski 
+napisal(a):
+> Include generic pwm.yaml schema, which enforces PWM node naming and
+> brings pwm-cells requirement.
+> 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi               | 2 +-
->  arch/arm64/boot/dts/qcom/sc7280-herobrine-herobrine-r0.dts | 2 +-
->  arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi             | 2 +-
->  arch/arm64/boot/dts/qcom/sc7280-idp-ec-h1.dtsi             | 2 +-
->  arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi                 | 2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+Best regards,
+Jernej
+
+> ---
+>  .../bindings/pwm/allwinner,sun4i-a10-pwm.yaml | 53 ++++++++++---------
+>  1 file changed, 28 insertions(+), 25 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-
+pwm.yaml b/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
+> index 800d511502c4..e93e935564fb 100644
+> --- a/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
+> +++ b/Documentation/devicetree/bindings/pwm/allwinner,sun4i-a10-pwm.yaml
+> @@ -52,33 +52,36 @@ properties:
+>    resets:
+>      maxItems: 1
+>  
+> -if:
+> -  properties:
+> -    compatible:
+> -      contains:
+> -        const: allwinner,sun50i-h6-pwm
+> -
+> -then:
+> -  properties:
+> -    clocks:
+> -      maxItems: 2
+> -
+> -    clock-names:
+> -      items:
+> -        - const: mod
+> -        - const: bus
+> -
+> -  required:
+> -    - clock-names
+> -    - resets
+> -
+> -else:
+> -  properties:
+> -    clocks:
+> -      maxItems: 1
+> +
+> +allOf:
+> +  - $ref: pwm.yaml#
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: allwinner,sun50i-h6-pwm
+> +
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 2
+> +
+> +        clock-names:
+> +          items:
+> +            - const: mod
+> +            - const: bus
+> +
+> +      required:
+> +        - clock-names
+> +        - resets
+> +
+> +    else:
+> +      properties:
+> +        clocks:
+> +          maxItems: 1
+>  
+>  required:
+> -  - "#pwm-cells"
+>    - compatible
+>    - reg
+>    - clocks
+> -- 
+> 2.32.0
+> 
+> 
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
