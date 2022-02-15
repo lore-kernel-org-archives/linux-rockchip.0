@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F001AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 19:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818FFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 19:48:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y00TQL6Lns2PlmQpQebsKelOfR88qu9N4ECEhwlnDSY=; b=gl5/UffMJh/+bi
-	Reg/75RKSn64BXnDrYBVfhSW8gIrWEImvEFJFV1lNhDW0ticJz+X9lzfSxgW6ww4AENhDEgF7qAT/
-	XEI/eqrrOtTqtnl6ztpnMBKIkAO8385xIH7xB2XAUrXsk8WGWFmW6W6b45tHdRL9KkClWR644xBJo
-	GL1I9JmY8Mc6MxYB+y59WIyk30VcDTdfg22XFmae9gkyT/XSNkGgjyIFtEy4QXuUdfOlbH7Zfabff
-	JQM/NYr3sTZmBfBBbcUh3cmosrFc4dPH98NHb3L5qBT2QRMVIxV09Tit67p7N0aEXeTJioTozhmCs
-	tdPQguWabJYXqj3ZoWUA==;
+	List-Owner; bh=s8bQDfilh0E6nsPXNOdvlR09Am08xUFK5RNNfjOE9FU=; b=l266NOqKxJYcBz
+	ZfkueaRR9qx9SsjGaj/7fJ8unFEuEwJf1sL7cjRN+cy1a8KSVG4g6icKd4/X5rppMeYVWfxCT7N67
+	cD+GkO3vvWZqWh58Wt5qQsWPJoWINGBPkfjSUMURT0KyN3CF5mxtU7H+j9YsI+q7xmVWoIhdVJBrO
+	6rIIPhXQYg6Yp6IN88lhYLZ2aF7MHz5dDa1ZjoRHqB2c9wgQfXg9fGnLyrejqnY/x4I97kakonM9t
+	Z38IvA8IADmB3hfKvZScjjGkb2jChJJbEi+vFNdAxqMqh+cPCnA5eZAbN5nkR/7Z8VoYvPZdGV72h
+	TLjO+lixDQ3Sohgss03A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK3nS-004OYG-PY; Tue, 15 Feb 2022 19:47:34 +0000
+	id 1nK3nx-004OlK-LW; Tue, 15 Feb 2022 19:48:05 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK3nD-004OTD-7w; Tue, 15 Feb 2022 19:47:20 +0000
+ id 1nK3nc-004Obe-3y; Tue, 15 Feb 2022 19:47:45 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dmitry.osipenko) with ESMTPSA id EFACD1F449B2
+ (Authenticated sender: dmitry.osipenko) with ESMTPSA id 3ABF71F449B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1644954435;
- bh=+YgXqeJrHqFTrBc7nNza8mpO7pm7+pfwAsDkpv4pNz4=;
+ s=mail; t=1644954463;
+ bh=+wF39v+i9uxNDfcWDhypRIJ638tyJz2rqw6HQGEMdlQ=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=SJT/cT3z6Oe736iCsABTRHAx3R4tCsz4+nHv/JuPm2Tyam52yfDfimh7Fkbkq35o1
- gRzGvnKshiDDh/pKdrvLN65+axpJpsmLgSW5f23ssBu5fijvipN0az1xRnCPP6hebK
- WAnVn8hkJ6kHt593SC2RwsQd1U+YhkQuBxjjt2GnCkHugOQMD+viIhSwBAUR/oeb0W
- jw77yFZZCXl5DxHGa10V83rGNUb/hi9fh0/iuIMfY8C+LUDsqsrDqQpVTSz9HdXmNl
- geWqU/3Y49qoQslpA+JLGD588bIf77WSzLGRnfK9Ke6CCjFIkDPzXk70TS0vnGScF3
- QDnTJvZdpFFRA==
-Message-ID: <60b8830b-4c26-3b21-9ec4-ae8998f3ccb7@collabora.com>
-Date: Tue, 15 Feb 2022 22:47:12 +0300
+ b=d3zn21eufiv2dWW4/zfxwV3et55Zy0Hdl5er4draQrp9tYcMKEmp7DJwOUM524+48
+ mBWMq1rflGWirNr/0VaAEkK1rWaaxQWAo6plZcUOdk0527vp9Xus39ypxCTCMV3TFu
+ YEMLg33T4FTWV0+RvlQiWq4W3ywruzN+9dpGOPjLCffuICXcjjZUopehbyhdYhwKdl
+ UPPHWlpcoWwaKFHdAOFCP3IWD+ylbYl7TugczKA8EpPWeP4zWJfbmQAZV27UM1w6uG
+ fXbS6U2JrEbQ2tvFk3zQDwcT2nKZcphvCGUmU3iZDySC4Gjk43oZn6IKmzc35EppMK
+ BCAedlwL6vjFg==
+Message-ID: <09ed17be-5780-011b-6801-87a5afd4e907@collabora.com>
+Date: Tue, 15 Feb 2022 22:47:39 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
@@ -55,9 +55,8 @@ References: <20220209095350.2104049-1-s.hauer@pengutronix.de>
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 In-Reply-To: <20220209095350.2104049-23-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_114719_506960_D56947FE 
-X-CRM114-Status: UNSURE (   5.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220215_114744_331150_E5CE1722 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,10 +74,26 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CjA5LjAyLjIwMjIgMTI6NTMsIFNhc2NoYSBIYXVlciDQv9C40YjQtdGCOgo+ICsJCW5wID0gb2Zf
-Z3JhcGhfZ2V0X3JlbW90ZV9ub2RlKGRldi0+b2Zfbm9kZSwgaSwgLTEpOwo+ICsJCWlmICghbnAp
-IHsKPiArCQkJcHJpbnRrKCIlczogTm8gcmVtb3RlIGZvciB2cCVkXG4iLCBfX2Z1bmNfXywgaSk7
-Cgpkcm1fZGJnCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+CjA5LjAyLjIwMjIgMTI6NTMsIFNhc2NoYSBIYXVlciDQv9C40YjQtdGCOgo+ICtzdGF0aWMgaXJx
+cmV0dXJuX3Qgdm9wMl9pc3IoaW50IGlycSwgdm9pZCAqZGF0YSkKPiArewo+ICsJc3RydWN0IHZv
+cDIgKnZvcDIgPSBkYXRhOwo+ICsJY29uc3Qgc3RydWN0IHZvcDJfZGF0YSAqdm9wMl9kYXRhID0g
+dm9wMi0+ZGF0YTsKPiArCXVpbnQzMl90IGF4aV9pcnFzW1ZPUDJfU1lTX0FYSV9CVVNfTlVNXTsK
+PiArCWludCByZXQgPSBJUlFfTk9ORTsKPiArCWludCBpOwo+ICsKPiArCS8qCj4gKwkgKiBUaGUg
+aXJxIGlzIHNoYXJlZCB3aXRoIHRoZSBpb21tdS4gSWYgdGhlIHJ1bnRpbWUtcG0gc3RhdGUgb2Yg
+dGhlCj4gKwkgKiB2b3AyLWRldmljZSBpcyBkaXNhYmxlZCB0aGUgaXJxIGhhcyB0byBiZSB0YXJn
+ZXRlZCBhdCB0aGUgaW9tbXUuCj4gKwkgKi8KPiArCWlmICghcG1fcnVudGltZV9nZXRfaWZfaW5f
+dXNlKHZvcDItPmRldikpCj4gKwkJcmV0dXJuIElSUV9OT05FOwo+ICsKPiArCWZvciAoaSA9IDA7
+IGkgPCB2b3AyX2RhdGEtPm5yX3ZwczsgaSsrKSB7Cj4gKwkJc3RydWN0IHZvcDJfdmlkZW9fcG9y
+dCAqdnAgPSAmdm9wMi0+dnBzW2ldOwo+ICsJCXN0cnVjdCBkcm1fY3J0YyAqY3J0YyA9ICZ2cC0+
+Y3J0YzsKPiArCQl1aW50MzJfdCBpcnFzOwo+ICsKPiArCQlpcnFzID0gdm9wMl9yZWFkbCh2b3Ay
+LCBSSzM1NjhfVlBfSU5UX1NUQVRVUyh2cC0+aWQpKTsKPiArCQl2b3AyX3dyaXRlbCh2b3AyLCBS
+SzM1NjhfVlBfSU5UX0NMUih2cC0+aWQpLCBpcnFzIDw8IDE2IHwgaXJxcyk7Cj4gKwo+ICsJCWlm
+IChpcnFzICYgVlBfSU5UX0RTUF9IT0xEX1ZBTElEKSB7Cj4gKwkJCWNvbXBsZXRlKCZ2cC0+ZHNw
+X2hvbGRfY29tcGxldGlvbik7Cj4gKwkJCXJldCA9IElSUV9IQU5ETEVEOwo+ICsJCX0KPiArCj4g
+KwkJaWYgKGlycXMgJiBWUF9JTlRfRlNfRklFTEQpIHsKPiArCQkJdW5zaWduZWQgbG9uZyBmbGFn
+czsKPiArCj4gKwkJCWRybV9jcnRjX2hhbmRsZV92YmxhbmsoY3J0Yyk7Cj4gKwkJCXNwaW5fbG9j
+a19pcnFzYXZlKCZjcnRjLT5kZXYtPmV2ZW50X2xvY2ssIGZsYWdzKTsKCklSUSBpcyBkaXNhYmxl
+ZCBpbnNpZGUgb2YgSVNSKCksIG5vIG5lZWQgdG8gc2F2ZS9yZXN0b3JlIHRoZSBmbGFncy4KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
