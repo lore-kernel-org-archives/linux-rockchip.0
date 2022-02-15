@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6347C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 15:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F355C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 15:57:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fexDm6ugow3imdqdASIaYRJ7KRNqyQYpnOrVsqq9gRI=; b=i0xtq2t1FR58ve
-	tfkjn/ZnRgAByfk80Hw7djlsnwq/eCAdFKaGIhnwlutcarnI1jHuMBl6MD6F1YLFMXnOVHu3vi27E
-	VW6FpEkwCjtK7nQTlmMKWuNFg7EbyK6YJqkyqVMuC3BQmV9lwUEHkTtiFHFC5XcZy8Cu0XQZzIFGj
-	VRQzefTCs7/R8Ec8keXhxAZ5608sVyr1Ucwkdt31pRBjyD39Q2DauIPU8ZFnGyWJXspB6WWrS2l66
-	nS965rRVy2gEj+jPI7rHTmtqkYp9BY3+sCUSRhV4A/T550AdbmR6hjAyXhTypCc4LfPyaCPgQgv1m
-	Yfddtc7uF9kFjtYS8NwQ==;
+	List-Owner; bh=d6jzDXeZypoeEoNWb20M1z/8zxj56KSfjBLezIZj25w=; b=kSyYmorEeho8ye
+	0Z7UymN0j74DvyVEKYl1029GFvgf29t7CO32Mc75FQsNPtOiKd2kDOUyLVW9lp59lFPkmqqAhADE6
+	tMvD4mm2tygqkzLCqP2U4ePxES2gihbd5gv2WWtZihBeLokbdQqAQZeRVc/qAokLXdq9+caQeAVrq
+	yO0+zzkpdY22GHY87LAQ4jJ7gV4V2UEqvQhpUsEPMexRo5t35fw0WY/t0XtvrMKeLGNPxKAMp+Mdr
+	HLbJRTGZp6Gi/8fSlYU9ziM2gGNmQuS7BVOKCf8z1Ei3/1pexkt0eONubJmeOGwiOrJA7SwUhcow9
+	0CyEPVP/yj+AX6lLpCqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK07U-003S72-V8; Tue, 15 Feb 2022 15:52:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nK0D7-003UmR-H8; Tue, 15 Feb 2022 15:57:49 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJzmh-003Hjc-6e; Tue, 15 Feb 2022 15:30:32 +0000
+ id 1nJzn8-003Hv0-AW; Tue, 15 Feb 2022 15:31:01 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 754A66167F;
- Tue, 15 Feb 2022 15:30:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC850C340F2;
- Tue, 15 Feb 2022 15:30:28 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id CFB2D612D7;
+ Tue, 15 Feb 2022 15:30:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 174A8C340EB;
+ Tue, 15 Feb 2022 15:30:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644939029;
- bh=RNW58nSsRsrieD9LQbLqGoEK92RO06a2eAk7Sjr86jQ=;
+ s=k20201202; t=1644939057;
+ bh=Tp7Y9YHMOncNoiZZF7GWXAcQGmy39O0B35RFEcRctCM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=EKvxLzUugU0GgOuJJjbxBYykRb2OSiPvpfRBbTA/Nx50kU/NBrhsRwadVYpN9iM27
- muieE5PJtigOPQgi+nGFRawT8aBkXXYl9Hbl6KHV+S2Z/CJ1l5eaEPadE9BnOop98d
- YRemsSEcbM/UbYUe99wbNF5dBnJp9l/AR4s2ogqlv5TYC6v+dSyQpV78h6jDWe7NjH
- Wg3EnuMx+XhSVVrGZCk3zjxwxcSKiP8Lk1ARNMumjwiy2NrsUWNIk3CQte4lkRNVwn
- WQ/rDQBGWuK+dvq/Xzgj/vdQgifrH1nKKxUoTqNgasodWt+eAXcmzMMrME5wbT5ZI6
- RKjIjeqlFazpg==
+ b=PMPm82cSl99aE8ZYOjciVuXoisbBWkZRx4Tydr5+cSzyPn9louex23MWvcQDPR2W6
+ ZamMyWu+MACbIMvfSb08rZoyB4xNdsG9zY3EUA0sA0Ko9AMuVNyRuK6bxYy+8XGlEy
+ vQBMUTbtlnkDC+C4dy22OK88lxVnKYRhb7eRd1UFaTtGfrBHBXvZ9UHueBTPV9Cvnn
+ VE9BjKKmJTv+JzNQiTUZo0QPRkR0k3ANdtNhEx9Wf9wKTejMV0Fnfj7V1dgI6wH1Uu
+ RUcUqYs3uJGPaqCkAIIUmmY7PBIJ2sdl+mubB8OgDjlEZq1w7QZ1w0vkjt92Jpkbck
+ 23tb/iKyRL5Eg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -48,18 +48,18 @@ Cc: Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
  Sasha Levin <sashal@kernel.org>, hjc@rock-chips.com, airlied@linux.ie,
  daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 18/23] drm/rockchip: dw_hdmi: Do not leave clock
+Subject: [PATCH AUTOSEL 5.4 12/17] drm/rockchip: dw_hdmi: Do not leave clock
  enabled in error case
-Date: Tue, 15 Feb 2022 10:29:52 -0500
-Message-Id: <20220215152957.581303-18-sashal@kernel.org>
+Date: Tue, 15 Feb 2022 10:30:32 -0500
+Message-Id: <20220215153037.581579-12-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220215152957.581303-1-sashal@kernel.org>
-References: <20220215152957.581303-1-sashal@kernel.org>
+In-Reply-To: <20220215153037.581579-1-sashal@kernel.org>
+References: <20220215153037.581579-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_073031_347787_10C347E2 
+X-CRM114-CacheID: sfid-20220215_073058_442504_3ABCD325 
 X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,10 +95,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 23de359a1dec6..515e6f187dc77 100644
+index 906891b03a38d..7805091bac32d 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -529,13 +529,6 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+@@ -528,13 +528,6 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
  		return ret;
  	}
  
@@ -112,7 +112,7 @@ index 23de359a1dec6..515e6f187dc77 100644
  	hdmi->phy = devm_phy_optional_get(dev, "hdmi");
  	if (IS_ERR(hdmi->phy)) {
  		ret = PTR_ERR(hdmi->phy);
-@@ -544,6 +537,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+@@ -543,6 +536,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
  		return ret;
  	}
  
@@ -124,8 +124,8 @@ index 23de359a1dec6..515e6f187dc77 100644
 +	}
 +
  	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
- 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
- 
+ 	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
+ 			 DRM_MODE_ENCODER_TMDS, NULL);
 -- 
 2.34.1
 
