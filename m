@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B49CFC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 15:46:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6347C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 15:52:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZoyWYQzWgS9CCbN9jLApO3+zBzcpf4vz3KcJhZLpYo4=; b=Yc9kx5nrUKshSL
-	SM3w3MoRmJ1/HwPcWmyJyEiJb1OFzIjdO0/ZqIJ7DY4DrAJ/C7sp5anEO8xKh7FgnE3ik9a652TS2
-	puA0UUM0Bet+xCkqM1c+LKuVfs9cQBEBDqvSyGlGRPtjusv4DvWYhl3zy7Gp5YJ9p3tl3Zy+j7UXt
-	2TqPR5ubetlwTfCL/qnSBvo23wVi5ICK3foO8o3w8tK0hEqNIDpCYWpup0WcM8wTNq6MA9auPlaRQ
-	mbuK9M6u9MFZPo+yMFZL8GI7ZFEv+EdbsyYncTcETrpwixunKatVday7FpkA1rNiBQXWeCdjLAWQb
-	VAs8RMjPS735MTpR0V6Q==;
+	List-Owner; bh=fexDm6ugow3imdqdASIaYRJ7KRNqyQYpnOrVsqq9gRI=; b=i0xtq2t1FR58ve
+	tfkjn/ZnRgAByfk80Hw7djlsnwq/eCAdFKaGIhnwlutcarnI1jHuMBl6MD6F1YLFMXnOVHu3vi27E
+	VW6FpEkwCjtK7nQTlmMKWuNFg7EbyK6YJqkyqVMuC3BQmV9lwUEHkTtiFHFC5XcZy8Cu0XQZzIFGj
+	VRQzefTCs7/R8Ec8keXhxAZ5608sVyr1Ucwkdt31pRBjyD39Q2DauIPU8ZFnGyWJXspB6WWrS2l66
+	nS965rRVy2gEj+jPI7rHTmtqkYp9BY3+sCUSRhV4A/T550AdbmR6hjAyXhTypCc4LfPyaCPgQgv1m
+	Yfddtc7uF9kFjtYS8NwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK022-003PNW-UY; Tue, 15 Feb 2022 15:46:22 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nK07U-003S72-V8; Tue, 15 Feb 2022 15:52:00 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nJzlY-003H6U-KL; Tue, 15 Feb 2022 15:29:23 +0000
+ id 1nJzmh-003Hjc-6e; Tue, 15 Feb 2022 15:30:32 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id A53BC60AC8;
- Tue, 15 Feb 2022 15:29:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A399C340F1;
- Tue, 15 Feb 2022 15:29:18 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 754A66167F;
+ Tue, 15 Feb 2022 15:30:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC850C340F2;
+ Tue, 15 Feb 2022 15:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1644938959;
- bh=BOnIhtOxhnn7VldcjnILH2G5d8hO49/zPZe3pqe3v6o=;
+ s=k20201202; t=1644939029;
+ bh=RNW58nSsRsrieD9LQbLqGoEK92RO06a2eAk7Sjr86jQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Kb7/rZzWFfUeLaXnH1CVQWIlVb48NF6UqRL84jm9lnRCzQRyhZEUQmdV9kNf+F5bo
- EU75YtnFPjNp1F0+x4sPa5XpOa6rsCArpZHA45wR0Z3ulqv1Z3SPOqVPNdMT3A8VOY
- l+9bPrdCUQaJiKL5IjVAk16jzRjBEYEFLYzE9U66/c2TVXa4tBDR5y5avsBO+7EPfg
- ZS0HbUuHBJRryf3AYWaTpuBxNppeieFPDj7/y2P0Qz+OC0dt32D0JSjNNDLo0o9Msf
- 8fUdGVjymnbTXNLqbQwOpFBjOcccFKn14xsXetIkhAjbjlCs+I46p3MOm1azYPsFck
- O4CsfIuIyU9Kg==
+ b=EKvxLzUugU0GgOuJJjbxBYykRb2OSiPvpfRBbTA/Nx50kU/NBrhsRwadVYpN9iM27
+ muieE5PJtigOPQgi+nGFRawT8aBkXXYl9Hbl6KHV+S2Z/CJ1l5eaEPadE9BnOop98d
+ YRemsSEcbM/UbYUe99wbNF5dBnJp9l/AR4s2ogqlv5TYC6v+dSyQpV78h6jDWe7NjH
+ Wg3EnuMx+XhSVVrGZCk3zjxwxcSKiP8Lk1ARNMumjwiy2NrsUWNIk3CQte4lkRNVwn
+ WQ/rDQBGWuK+dvq/Xzgj/vdQgifrH1nKKxUoTqNgasodWt+eAXcmzMMrME5wbT5ZI6
+ RKjIjeqlFazpg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -48,18 +48,18 @@ Cc: Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
  Sasha Levin <sashal@kernel.org>, hjc@rock-chips.com, airlied@linux.ie,
  daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 25/33] drm/rockchip: dw_hdmi: Do not leave clock
+Subject: [PATCH AUTOSEL 5.10 18/23] drm/rockchip: dw_hdmi: Do not leave clock
  enabled in error case
-Date: Tue, 15 Feb 2022 10:28:23 -0500
-Message-Id: <20220215152831.580780-25-sashal@kernel.org>
+Date: Tue, 15 Feb 2022 10:29:52 -0500
+Message-Id: <20220215152957.581303-18-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220215152831.580780-1-sashal@kernel.org>
-References: <20220215152831.580780-1-sashal@kernel.org>
+In-Reply-To: <20220215152957.581303-1-sashal@kernel.org>
+References: <20220215152957.581303-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_072920_790880_C565455B 
+X-CRM114-CacheID: sfid-20220215_073031_347787_10C347E2 
 X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,7 +95,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 830bdd5e9b7ce..8677c82716784 100644
+index 23de359a1dec6..515e6f187dc77 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 @@ -529,13 +529,6 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
