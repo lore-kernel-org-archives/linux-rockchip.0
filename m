@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C49C8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 21:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6687C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Feb 2022 22:52:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UaTGbEUoc8AMnqp6FMm+wf8JZS52ZYTCyMkiXFSg03w=; b=FPJefzwpR0hvfI
-	wvZRRxjklu1gjLJEsuEuc+XTI1lqbdIjPvFU2PNzF3o8VaBjeOrqa/U6HCiIgGoWc2F49HnTFtHt8
-	RN2ta+7tFxT0rE2+k7UuFFGMJjpO3oOt0xSHeV2nFqHwZPHIOJtU/RHtXdlu1aRE/C3mQ6Gvw2ZoG
-	7u3h4Lp807sfEjB7MJgGHoYltBgkuqO7sf8DGHx9IHQaKgr6AJLyZg/S/x9cN0FLUHCRAIqa19wPX
-	Xj4vBCDaUtKBR3akVv+upNFbgndF2PXPl0LTAHZNLuo78eC2SsDa+IyYIC/rS9b49LqWyjDUa7GjO
-	ctJEGt17coEyYxGq5b9w==;
+	List-Owner; bh=AILAOaSFTEKdg6mTkA7KT94LMIjvcHvM99qCL+rV7j4=; b=YM+U7GLOoHTBzb
+	nmbIuCzN0XIHvDwOkpfp8D6v9BQB++lO0DnV7fKgdEoXcqCwHO8k5Vpd9n+MqbitNXbQEV3jQvTpx
+	3mI+FJvQZd5eH2gdvCFoZ1W3q1ysf8y3STkXTGmRZ/xmQYHaKDsc3uUkQvg1sVAt1LZ4qxwGlIiwh
+	5jYOu+2SsE6Pz+KlxJ+z8egBFPEp3R303yigTkonQbOBLBcIgQZ6cdN0reto96rw2es7imy/G1UQz
+	fqqg8N656EsaSbTxMjbNf1lo/FVzwkcPLEv11tMT6/UErLJmWwuONM5fd6PG9FXX+jwdXSDYAh60B
+	r/7QtrH4Wnl3QmhBxuIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK5Q0-004hlv-FB; Tue, 15 Feb 2022 21:31:28 +0000
-Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35])
+	id 1nK6g9-004oi2-MF; Tue, 15 Feb 2022 22:52:13 +0000
+Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK5Pw-004hlA-PX
- for linux-rockchip@lists.infradead.org; Tue, 15 Feb 2022 21:31:26 +0000
-Received: by mail-io1-xd35.google.com with SMTP id h16so18164iol.11
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 13:31:23 -0800 (PST)
+ id 1nK6g6-004ofz-Ad
+ for linux-rockchip@lists.infradead.org; Tue, 15 Feb 2022 22:52:12 +0000
+Received: by mail-oo1-xc34.google.com with SMTP id
+ c7-20020a4ad207000000b002e7ab4185d2so429424oos.6
+ for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 14:52:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fele8naCnj1tSHRyG9Ogo68xWxTgJNE5hEc6t985U/Y=;
- b=LZbo2DiOH2tF8Tl/t20r4OjE/KvnsUs22LNv7+pZLZ5HIaTwZBqaF3RtAUUkAPDCOZ
- GumOIavgQoROuq7iGLNguigwifsX10SlH0/8Rh9RwLTK2Tp2DNoNJkJcc2FBrePaIk6L
- lbGzzlgNgGf7bUUma7sCUxDF7/TpqLm2sRqnU=
+ :cc; bh=1FB9vEgE7XNXDYnECZNocmKPYP8d5C7TWz0lgDEn7xk=;
+ b=fjG712BlrOTYrfwnSRNCBRY8yRQW9o6qR1hiZlZWQq91Sm5fVmIhzlRa+s7C/PBz2T
+ eJ4cgsB9JemF8urXL4CrzCBOFzhtwz5N7W5Kotgar0OKQBgyUhdOiRujxY9FKvRk0roG
+ NZoBf1wVhyOnoD6NCrsjPrRQ5hEQ7qliayxC0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=fele8naCnj1tSHRyG9Ogo68xWxTgJNE5hEc6t985U/Y=;
- b=hM/AdFaTXBJe+Zt6GsawPlbwmijdns1bn1UVCU/E/wd2y12PuXbvVbSZiB1CTUl2DJ
- WtZyZr3RmQfqRIJI1kwOUt5SMuzs6TEKcXKStOZY91fGTqfqnBpb6BwiVeedN88USJd9
- ENCQ6u2i4dH5+v/BPFvq+IOEsIvPWjjTMM4TawaVS5PakUJs3rZqkAGsARgP5GHah5f3
- qt+PE+8OkkQtIZqM20XPd+6F7ZsV1lw9rJXgrfCroHkN896a7o4dVvSZ2yYXzGXkofmR
- LagK4vyhynk3dDAhq6uB/19edcTeDYBQFnGYUDK8g/71O8oaRbzAUGh73N3y3BNv4to+
- Dk5w==
-X-Gm-Message-State: AOAM533vaEUQBmPNMY8InkOg9H4dWfpVv6XHUt1Ts8B+aekhJ7JnSeZh
- L/6LnLDwflmaBU0tpn2yTRelzi6eQm3v0Q==
-X-Google-Smtp-Source: ABdhPJxk7hN5KPRU5JjRis28ETOuCbF/iD3+pkYKy4L8UBlNk2qeAjcGnFVDPnJ/Rro0sZ1hD3nFeA==
-X-Received: by 2002:a02:7781:: with SMTP id g123mr550761jac.244.1644960682392; 
- Tue, 15 Feb 2022 13:31:22 -0800 (PST)
-Received: from mail-il1-f178.google.com (mail-il1-f178.google.com.
- [209.85.166.178])
- by smtp.gmail.com with ESMTPSA id t195sm17089808iof.47.2022.02.15.13.31.21
+ bh=1FB9vEgE7XNXDYnECZNocmKPYP8d5C7TWz0lgDEn7xk=;
+ b=K65/utCPMc9GBCPkPUZdTn8ifLzm6UrBcVOW660z4JHcus0IShgfbTxq7Vl49JVPoc
+ dXzSMifjct1lVEN2DiP19jh6fR+GHV8cpvB6EpKfZeXKat52oNpbid5yMk+CywOfUSCS
+ adF0Y1NqmCByByOg7kq9bt3jLxTEWMj62gwj+mD63R11OsIpLnjtYHW67vDjJFc6OCwy
+ uxI6Tgh5LjGSGIx0qzD920MLdW8HFbIoAvv7GD6lIjjcehe6ymDQ6yjO7ooF0vUqhi9w
+ uRqV4vL3JOqFi/vkgfWFbxYDIgIPelK1MjdY+HLzsyj0gkcMg0uU2uTrKp3Gcdp2wZv3
+ o9Ow==
+X-Gm-Message-State: AOAM530tdkB+5t4hFaIOuG0dBS/3d9u2aIrYVMGv6IGrsKdng7ihyH1a
+ 5YbAnpuJ8IipWiWsQce/ngl2JvFZNzYVxA==
+X-Google-Smtp-Source: ABdhPJx1UwS8ZZoViE2wLokEBX1LqepfymZkMPUB0OHualyIJ8O6c2Amd1XCX2MzTYq0Cw2CFOhy9Q==
+X-Received: by 2002:a05:6870:ed92:b0:d2:9e7c:903d with SMTP id
+ fz18-20020a056870ed9200b000d29e7c903dmr52817oab.350.1644965521005; 
+ Tue, 15 Feb 2022 14:52:01 -0800 (PST)
+Received: from mail-ot1-f41.google.com (mail-ot1-f41.google.com.
+ [209.85.210.41])
+ by smtp.gmail.com with ESMTPSA id s64sm14339316oos.0.2022.02.15.14.51.58
  for <linux-rockchip@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Feb 2022 13:31:21 -0800 (PST)
-Received: by mail-il1-f178.google.com with SMTP id o10so57931ilh.0
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 13:31:21 -0800 (PST)
-X-Received: by 2002:a05:6e02:1bef:: with SMTP id
- y15mr639379ilv.120.1644960680707; 
- Tue, 15 Feb 2022 13:31:20 -0800 (PST)
+ Tue, 15 Feb 2022 14:51:58 -0800 (PST)
+Received: by mail-ot1-f41.google.com with SMTP id
+ a12-20020a05683012cc00b005acf7c91097so296801otq.10
+ for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 14:51:58 -0800 (PST)
+X-Received: by 2002:a9d:755a:: with SMTP id b26mr513845otl.230.1644965517513; 
+ Tue, 15 Feb 2022 14:51:57 -0800 (PST)
 MIME-Version: 1.0
 References: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
-In-Reply-To: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
-From: Doug Anderson <dianders@chromium.org>
-Date: Tue, 15 Feb 2022 13:31:09 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
-Message-ID: <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
+ <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
+In-Reply-To: <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Date: Tue, 15 Feb 2022 14:51:46 -0800
+X-Gmail-Original-Message-ID: <CA+ASDXPXKVwcZGYoagJYPm4E7DzaJmEVEv2FANhLH-juJw+r+Q@mail.gmail.com>
+Message-ID: <CA+ASDXPXKVwcZGYoagJYPm4E7DzaJmEVEv2FANhLH-juJw+r+Q@mail.gmail.com>
 Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Grab runtime PM reference for
  DP-AUX
-To: Brian Norris <briannorris@chromium.org>
+To: Doug Anderson <dianders@chromium.org>
 Cc: Andrzej Hajda <a.hajda@samsung.com>,
  Neil Armstrong <narmstrong@baylibre.com>, 
  Sean Paul <sean@poorly.run>, Jonas Karlman <jonas@kwiboo.se>,
@@ -81,8 +84,8 @@ Cc: Andrzej Hajda <a.hajda@samsung.com>,
  "# 4.0+" <stable@vger.kernel.org>, 
  Tomeu Vizoso <tomeu.vizoso@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_133124_870704_EC68A215 
-X-CRM114-Status: GOOD (  26.84  )
+X-CRM114-CacheID: sfid-20220215_145210_391493_69A5731C 
+X-CRM114-Status: GOOD (  34.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,92 +103,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Fri, Oct 1, 2021 at 2:50 PM Brian Norris <briannorris@chromium.org> wrote:
+On Tue, Feb 15, 2022 at 1:31 PM Doug Anderson <dianders@chromium.org> wrote:
 >
-> If the display is not enable()d, then we aren't holding a runtime PM
-> reference here. Thus, it's easy to accidentally cause a hang, if user
-> space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
+> Hi,
+
+Hi!
+
+> On Fri, Oct 1, 2021 at 2:50 PM Brian Norris <briannorris@chromium.org> wrote:
+> >
+> > If the display is not enable()d, then we aren't holding a runtime PM
+> > reference here. Thus, it's easy to accidentally cause a hang, if user
+> > space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
+> >
+> > Let's get the panel and PM state right before trying to talk AUX.
+
+> > diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> > index b7d2e4449cfa..6fc46ac93ef8 100644
+> > --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> > +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> > @@ -1632,8 +1632,27 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+...
+> > +       pm_runtime_get_sync(dp->dev);
+> > +       ret = analogix_dp_transfer(dp, msg);
+> > +       pm_runtime_put(dp->dev);
 >
-> Let's get the panel and PM state right before trying to talk AUX.
+> I've spent an unfortunate amount of time digging around the DP AUX bus
+> recently, so I can at least say that I have some experience and some
+> opinions here.
+
+Thanks! Experience is welcome, and opinions too sometimes ;)
+
+> IMO:
 >
-> Fixes: 0d97ad03f422 ("drm/bridge: analogix_dp: Remove duplicated code")
-> Cc: <stable@vger.kernel.org>
-> Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
->
-> Changes in v2:
-> - Fix spelling in Subject
-> - DRM_DEV_ERROR() -> drm_err()
-> - Propagate errors from un-analogix_dp_prepare_panel()
->
->  .../drm/bridge/analogix/analogix_dp_core.c    | 21 ++++++++++++++++++-
->  1 file changed, 20 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index b7d2e4449cfa..6fc46ac93ef8 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1632,8 +1632,27 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
->                                        struct drm_dp_aux_msg *msg)
->  {
->         struct analogix_dp_device *dp = to_dp(aux);
-> +       int ret, ret2;
->
-> -       return analogix_dp_transfer(dp, msg);
-> +       ret = analogix_dp_prepare_panel(dp, true, false);
-> +       if (ret) {
-> +               drm_err(dp->drm_dev, "Failed to prepare panel (%d)\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       pm_runtime_get_sync(dp->dev);
-> +       ret = analogix_dp_transfer(dp, msg);
-> +       pm_runtime_put(dp->dev);
+> 1. Don't power the panel on. If the panel isn't powered on then the DP
+> AUX transfer will timeout. Tough nuggies. Think of yourself more like
+> an i2c controller and of this as an i2c transfer implementation. The
+> i2c controller isn't in charge of powering up the i2c devices on the
+> bus. If userspace does an "i2c detect" on an i2c bus and some of the
+> devices aren't powered then they won't be found. If you try to
+> read/write from a powered off device that won't work either.
 
-I've spent an unfortunate amount of time digging around the DP AUX bus
-recently, so I can at least say that I have some experience and some
-opinions here.
+I guess this, paired with the driver examples below (ti-sn65dsi86.c,
+especially, which specifically throws errors if the panel isn't on),
+makes some sense. It's approximately (but more verbosely) what Andrzej
+was recommending too, I guess. It still makes me wonder what the point
+of the /dev/drm_dp_aux<N> interface is though, because it seems like
+you're pretty much destined to not have reliable operation through
+that means.
 
-IMO:
+Also note: I found that the AUX bus is really not working properly at
+all (even with this patch) in some cases due to self-refresh. Not only
+do we need the panel enabled, but we need to not be in self-refresh
+mode. Self-refresh is not currently exposed to user space, so user
+space has no way of knowing the panel is currently active, aside from
+racily inducing artificial display activity.
 
-1. Don't power the panel on. If the panel isn't powered on then the DP
-AUX transfer will timeout. Tough nuggies. Think of yourself more like
-an i2c controller and of this as an i2c transfer implementation. The
-i2c controller isn't in charge of powering up the i2c devices on the
-bus. If userspace does an "i2c detect" on an i2c bus and some of the
-devices aren't powered then they won't be found. If you try to
-read/write from a powered off device that won't work either.
+But if we're OK with "just throw errors" or "just let stuff time out",
+then I guess that's not a big deal. My purpose is to avoid hanging the
+system, not to make /dev/drm_dp_aux<N> useful.
 
-2. In theory if the DP driver can read HPD (I haven't looked through
-the analogix code to see how it handles it) then you can fail an AUX
-transfer right away if HPD isn't asserted instead of timing out. If
-this is hard, it's probably fine to just time out though.
+> 2. In theory if the DP driver can read HPD (I haven't looked through
+> the analogix code to see how it handles it) then you can fail an AUX
+> transfer right away if HPD isn't asserted instead of timing out. If
+> this is hard, it's probably fine to just time out though.
 
-3. Do the "pm_runtime" calls, but enable "autosuspend" with something
-~1 second autosuspend delay. When using the AUX bus to read an EDID
-the underlying code will call your function 16 times in quick
-succession. If you're powering up and down constantly that'll be a bit
-of a waste.
+This driver does handle HPD, but it also has overrides because
+apparently it doesn't work on some systems. I might see if we can
+leverage it, or I might just follow the bridge-enabled state (similar
+to ti-sn65dsi86.c's 'comms_enabled').
 
+> 3. Do the "pm_runtime" calls, but enable "autosuspend" with something
+> ~1 second autosuspend delay. When using the AUX bus to read an EDID
+> the underlying code will call your function 16 times in quick
+> succession. If you're powering up and down constantly that'll be a bit
+> of a waste.
 
-The above will help set us up for when someone goes through and
-enables the "new" DP AUX bus and generic eDP panels on for
-analogix-edp. See commit aeb33699fc2c ("drm: Introduce the DP AUX
-bus"). In that case panels will actually be instantiated DP AUX
-Endpoints instead of platform devices. They'll be given the DP AUX bus
-and they'll be able to read the EDID over that. In this case, the
-panel code turns itself on (it knows how to turn itself on enough to
-read the EDID) and then calls the DP AUX transfer code. :-)
+Does this part really matter? For properly active cases, the bridge
+remains enabled, and it holds a runtime PM reference. For "maybe
+active" (your "tough nuggies" situation above), you're probably right
+that it's inefficient, but does it matter, when it's going to be a
+slow timed-out operation anyway? The AUX failure will be much slower
+than the PM transition.
+
+I guess I can do this anyway, but frankly, I'll just be copy/pasting
+stuff from other drivers, because the runtime PM documentation still
+confuses me, and moreso once you involve autosuspend.
+
+> For a reference, you could look at
+> `drivers/gpu/drm/bridge/ti-sn65dsi86.c`. Also
+> `drivers/gpu/drm/bridge/parade-ps8640.c`
+
+Thanks for these. They look like reasonable patterns to follow.
 
 
-For a reference, you could look at
-`drivers/gpu/drm/bridge/ti-sn65dsi86.c`. Also
-`drivers/gpu/drm/bridge/parade-ps8640.c`
-
--Doug
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
