@@ -4,89 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93119C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 00:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F25CEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 01:24:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fhBLMaSHwVqx09TsQjKi9Awqsuxf4XTZUnXp7qcMCXY=; b=BMSfmRgT2Ogw4h
-	7+t0dhCMd4EGuql4z9dvDYBiWed88VnJ46NPbmZ/wiw/aSJd9bB1zMc0LeviRNhVoaemJU4gDVAC0
-	a4Wj7nJf1MNYv+rEGnM+agATUjwE0ZPedRR/Eq4ynbGoH53xsBJ+6eZSVEKdWe0u1pE5wcegcQ1BN
-	cc85aDUeFC2jIHgTW1tBn3bpdzUcz7RzlFX73L5BspDOi56eaXhPp7XaTY6DFbBv+BgpFY1wB86Eh
-	I3B3H1KRD0ORF73GteSJ5cq6cojLoccPMV08h/oux2gjlf2uSras8ev+pb5jJmIhNmNLjmjOq23EZ
-	zRgK+sMCN0WwXc46cB9A==;
+	List-Owner; bh=thuBPVH+sbC+socZbQS1aA+df5zJ8eUpuOUCZXP1b7U=; b=kBUtiNzOSop+Ay
+	Yuik52sXS/6BzfqK1loGPfD0F/HhfLYOlpkizZD6y9h3KQuFC7g9ij39zPwP9OfFHJIK8QgBghHHr
+	xpX9hOYqMSyPqOnHJvdy3Mpu3ID2n89FOmbh04hPoHKvMTpd68wStWHT8y7OqnzcWOfjUp0Iqn0AI
+	b6BNHz/7t3uilzZYZ/xW0pjtE/NgkHFDo9aOAI1HhsgCsODK++eXjAUNN7S5ku7PJvjCL1t0ekdo5
+	2Ftq5yx9ExqECxL8/7zHuQ85t5t7NbBKYdugptGSHqcxm14/enGHui4LdssHzbLZ1jeisirMG3YTs
+	y6F2SF4hc0CSvc9/ai4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nK8NY-0055QR-Pb; Wed, 16 Feb 2022 00:41:08 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1nK93H-0059ME-5B; Wed, 16 Feb 2022 01:24:15 +0000
+Received: from mail-m17640.qiye.163.com ([59.111.176.40])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nK8NV-0055Pr-UT
- for linux-rockchip@lists.infradead.org; Wed, 16 Feb 2022 00:41:07 +0000
-Received: by mail-oi1-x230.google.com with SMTP id q8so840571oiw.7
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 16:41:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=D6kOuJ3sFRAfxlfcJvGvD0WdwWS/gNKzCWsG8Lno9eY=;
- b=iX4gNuGKYZNG9hM1lAyY7Nf/bZLA5KTwEcEMmT3v/Wkao8xyAeGNUtg1UxOYaO42aC
- XZstBpPHLaxU6YJNIWfSub+ULsZeKmX/L7ae/TPdpY5zEOmW7JYZjAIs56FeEgSA/CLE
- wG0hkTYT7TAeJo1PVmmZFXS/PQWpRu2EtuOzM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=D6kOuJ3sFRAfxlfcJvGvD0WdwWS/gNKzCWsG8Lno9eY=;
- b=kNPdKyWzrxtysg/zpX7zN4NdBnICdFpudEzOAxZwwglOXHAh1piULEXg/1Pw6pUTbi
- b9xa0Geso/h/ZaCsaoAYHjMiHFegd/8J97KlCzpu4CufJIUuUZPntuhR5wXYOC1hN3nl
- c0zyXGCU3JAs60kBH8k9mWoOterBVM1zNF8JGfvtGX7PrgK/oYt01gwNG0NdBOYdYJ6p
- TxPeKMOABI1VXzbHMLL06VgeoS0rsvLJFKepKpLhWH4FtTD9RYgQfPrpdTpcGOb+/0+V
- zfnlweto3S3pJCml0BxVQiYcyTNwReLMh/AYy3LmsxVY6XY/sNN8QnkrohIAggtgVoeM
- fjsA==
-X-Gm-Message-State: AOAM532H3gOhHxLb+FQsB9qzOFuaTPKwgjJ/Lf7iosnF3O4Va5EtN2xG
- VkBHAnv5haO+WKlKxw+7nVxYb9ZJfNUEjA==
-X-Google-Smtp-Source: ABdhPJy+kAosoX471udB6O0lBHROuwPCOZKUhKp1rb6RNicNno7fjoObavBdiWPBCgCr9tAMv6QUWw==
-X-Received: by 2002:aca:210d:0:b0:2ce:37af:62d4 with SMTP id
- 13-20020aca210d000000b002ce37af62d4mr209327oiz.58.1644972064238; 
- Tue, 15 Feb 2022 16:41:04 -0800 (PST)
-Received: from mail-oi1-f175.google.com (mail-oi1-f175.google.com.
- [209.85.167.175])
- by smtp.gmail.com with ESMTPSA id f40sm12535014oaq.34.2022.02.15.16.41.01
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Feb 2022 16:41:02 -0800 (PST)
-Received: by mail-oi1-f175.google.com with SMTP id 13so810808oiz.12
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Feb 2022 16:41:01 -0800 (PST)
-X-Received: by 2002:a05:6808:1b29:b0:2ce:6ee7:2cc5 with SMTP id
- bx41-20020a0568081b2900b002ce6ee72cc5mr2715980oib.243.1644972061370; Tue, 15
- Feb 2022 16:41:01 -0800 (PST)
+ id 1nK935-0059KW-2m; Wed, 16 Feb 2022 01:24:05 +0000
+Received: from [172.16.12.40] (unknown [58.22.7.114])
+ by mail-m17640.qiye.163.com (Hmail) with ESMTPA id D921E540269;
+ Wed, 16 Feb 2022 09:23:58 +0800 (CST)
+Message-ID: <0ee7ab71-5d01-58e2-baf7-4dd41455b377@rock-chips.com>
+Date: Wed, 16 Feb 2022 09:23:58 +0800
 MIME-Version: 1.0
-References: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
- <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
- <CA+ASDXPXKVwcZGYoagJYPm4E7DzaJmEVEv2FANhLH-juJw+r+Q@mail.gmail.com>
- <CAD=FV=VYe1rLKANQ8eom7g8x1v6_s_OYnX819Ax4m7O3UwDHmg@mail.gmail.com>
-In-Reply-To: <CAD=FV=VYe1rLKANQ8eom7g8x1v6_s_OYnX819Ax4m7O3UwDHmg@mail.gmail.com>
-From: Brian Norris <briannorris@chromium.org>
-Date: Tue, 15 Feb 2022 16:40:49 -0800
-X-Gmail-Original-Message-ID: <CA+ASDXO8c4dK31p=kvBABJQsDUs20qVHM6NxYf1JQDCr2oswAw@mail.gmail.com>
-Message-ID: <CA+ASDXO8c4dK31p=kvBABJQsDUs20qVHM6NxYf1JQDCr2oswAw@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Grab runtime PM reference for
- DP-AUX
-To: Doug Anderson <dianders@chromium.org>
-Cc: Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>, 
- Sean Paul <sean@poorly.run>, Jonas Karlman <jonas@kwiboo.se>,
- LKML <linux-kernel@vger.kernel.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "# 4.0+" <stable@vger.kernel.org>, 
- Tomeu Vizoso <tomeu.vizoso@collabora.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH 2/6] spi: rockchip: Preset cs-high and clk polarity in
+ setup progress
+To: Mark Brown <broonie@kernel.org>
+Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220211034344.4130-1-jon.lin@rock-chips.com>
+ <20220211034344.4130-2-jon.lin@rock-chips.com>
+ <YgZHalrdhhilxROt@sirena.org.uk>
+ <4222ce7d-a1e3-1728-fec2-976946b06ba9@rock-chips.com>
+ <YgpP9j80OuhkCN8p@sirena.org.uk>
+ <e0f0ca0d-40df-cf86-9471-9272bcc171f9@rock-chips.com>
+ <YgueWHKur2w55s+0@sirena.org.uk>
+From: Jon Lin <jon.lin@rock-chips.com>
+In-Reply-To: <YgueWHKur2w55s+0@sirena.org.uk>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+ kWDxoPAgseWUFZKDYvK1lXWShZQUhPN1dZLVlBSVdZDwkaFQgSH1lBWUIaGUJWSR9NTkgdShgfHU
+ geVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWVVLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NzI6Eyo4ST5IOBZLAUMVCC9N
+ MjowCS1VSlVKTU9PQkxPTUhCSEtDVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+ QVlOQ1VJSVVMVUpKT1lXWQgBWUFJQ05MNwY+
+X-HM-Tid: 0a7f002107c5d995kuwsd921e540269
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220215_164106_018757_1FAA5155 
-X-CRM114-Status: GOOD (  28.81  )
+X-CRM114-CacheID: sfid-20220215_172403_333696_3DB5EAAE 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +69,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 15, 2022 at 3:46 PM Doug Anderson <dianders@chromium.org> wrote:
-> On Tue, Feb 15, 2022 at 2:52 PM Brian Norris <briannorris@chromium.org> wrote:
-> > It still makes me wonder what the point
-> > of the /dev/drm_dp_aux<N> interface is though, because it seems like
-> > you're pretty much destined to not have reliable operation through
-> > that means.
->
-> I can't say I have tons of history for those files. I seem to recall
-> maybe someone using them to have userspace tweak the embedded
-> backlight on some external DP connected panels? I think we also might
-> use it in Chrome OS to update the firmware of panels (dunno if
-> internal or external) in some cases too? I suspect that it works OK
-> for certain situations but it's really not going to work in all
-> cases...
-
-Yes, I believe I'm only submitting patches like this because fwupd
-apparently likes to indiscriminately whack at dpaux devices:
-https://github.com/fwupd/fwupd/tree/main/plugins/synaptics-mst#kernel-dp-aux-interface
-
-That seems like a bad idea.
-
-(We've already disabled that plugin on these systems, but it seems
-wise not to leave the stumbling block here for the next time.)
-
-> I suppose this just further proves the point that this is really not a
-> great interface to rely on. It's fine for debugging during hardware
-> bringup and I guess in limited situations it might be OK, but it's
-> really not something we want userspace tweaking with anyway, right? In
-> general I expect it's up to the kernel to be controlling peripherals
-> on the DP AUX bus. The kernel should have a backlight driver and
-> should do the AUX transfers needed. Having userspace in there mucking
-> with things is just a bad idea. I mean, userspace also doesn't know
-> when a panel has been power cycled and potentially lost any changes
-> that they might have written, right?
->
-> I sorta suspect that most of the uses of these files are there because
-> there wasn't a kernel driver and someone thought that doing it in
-> userspace was the way to go?
-
-*shrug* beats me.
-
-Brian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CgrlnKggMjAyMi8yLzE1IDIwOjM2LCBNYXJrIEJyb3duIOWGmemBkzoKPiBPbiBUdWUsIEZlYiAx
+NSwgMjAyMiBhdCAxMTowMDo1NEFNICswODAwLCBKb24gTGluIHdyb3RlOgo+PiDlnKggMjAyMi8y
+LzE0IDIwOjQ5LCBNYXJrIEJyb3duIOWGmemBkzoKPiAKPj4+IEFzIGNvdmVyZWQgaW4gdGhlIGRv
+Y3VtZW50YXRpb24gc2V0dXAoKSBmb3Igb25lIGRldmljZSBtYXkgcnVuIHdoaWxlCj4+PiBhbm90
+aGVyIGlzIGFjdGl2ZSwgdGhlcmVmb3JlIGlmIG11bHRpcGxlIGRldmljZXMgYXJlIGNvbmZpZ3Vy
+ZWQgaW4gdGhlCj4+PiBzYW1lIHJlZ2lzdGVyIHlvdSBzaG91bGQgdXNlIGEgbG9jayB0byBlbnN1
+cmUgdGhlcmUgY2FuJ3QgYmUgbXVsdGlwbGUKPj4+IHdyaXRlcy4gIE5vdGUgdGhhdCB0aGUgYWJv
+dmUgYXBwZWFycyB0byBub3QganVzdCBiZSBzZXR0aW5nIHRoZSBtb2RlIGJ1dAo+Pj4gYWxzbyB0
+aGUgY2hpcCBzZWxlY3Qgc28gaWYgeW91J3ZlIGdvdCB0d28gU1BJX0NTX0hJR0ggZGV2aWNlcyB0
+aGVuCj4+PiB0aGV5J2xsIGJvdGggYmUgZ29pbmcgaW4gYW5kIHNlcGFyYXRlbHkgc2V0dGluZyBj
+cjAuCj4gCj4+IElzIHRoZSBpb19tdXRleCBpbiBmdW5jdGlvbiBzcGlfc2V0dXAgaXMgZ29vZCBl
+bm91Z2g/Cj4gCj4gSXQncyBub3Qgc3VwcG9zZWQgdG8gYmUgZm9yIHRoYXQgYnV0IGxvb2tpbmcg
+YXQgdGhlIGNvZGUgcXVpY2tseSBJCj4gKnRoaW5rKiBzZXR1cCgpIGlzIG5ldmVyIGNhbGxlZCB3
+aXRoIGlvX211dGV4IGhlbGQgc28gaXQgbWlnaHQgd2VsbCBiZQo+IGZpbmUgLSB5b3Ugc2hvdWxk
+IGRvdWJsZSBjaGVjayB0aG91Z2guICBJZiBub3QgeW91J2QgbmVlZCB0byBhZGQgYW5vdGhlcgo+
+IGxvY2sgaW4geW91ciBkcml2ZXIgZGF0YS4KCuOAi3NldHVwKCkgaXMgbmV2ZXIgY2FsbGVkIHdp
+dGggaW9fbXV0ZXggaGVsZApJIHRoaW5rIHNvLiBhbmQgSSB0aGluayB0aGUgaW9fbXV0ZXggaXMg
+ZW5vdWdoIGZvciBtZS4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
