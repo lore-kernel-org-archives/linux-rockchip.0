@@ -4,90 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A374C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 18:10:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B97C0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 20:42:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w40dVpehV9EJhv2UHreoz7jqpuPU03/vHwgcfTaU9Uw=; b=rmzsXB7wGDdro7
-	rlR3qalzDYbPpObW0hZFYcbKYQNN5w5tnYkXf8LmFAC5dlIfJbbAP6811dqYV5a8RMZOD/RYFHXMX
-	yKA5PPb+s8Kksj+1CckcRUMaspcCQvUoWDvtitjz03A70Plh/7Rp84asf2f1WQJBT7/cLiJPiT61e
-	PyP0Ywr8xaKBrdZ9e25OTOywTKRgGqhRLVvuFIsj/RnOaUpZFZ6AOfpxN0igjKIoc60mDTbIjzZyY
-	1RAiQ948HIsNItnDGQCvyHRMYp9A4/uM2U7H8Y7wj0YFv93PyYDTdN6cQnX4h42YjLjBuJAPvy698
-	Glls16jLDdZc3kkhcL4w==;
+	List-Owner; bh=0mYrD3M+l50aZOMuixZq8M1Ta2kksraIrL6xl/V6808=; b=taA0XV5MYSB26R
+	BcmxlwtBGVWHzh5uYSp1yZ/aYonD7g7FokmpraFcezNMaqAvuatQ7IfXnxdJfsnwZ95ke5G/Urwra
+	/1nkVyiKMj6Y7at/6WjY1Elm6/Eb67Rw1/XnyaYQ+K3CjeXNJOasNjr5Qu9sxoOcfeZsbH/gHwMho
+	RVvg6U3mrt1XBCa2s5wE9oRTwqNUUUZtUyXsAxECTtrVUrgoJpROO8Cn5W2Rj1nOJv12w5g8SuKhl
+	j/i5Ml9ckSiJbcPrV+OrBCu3a/f/Pfn2rJ1ZFu2WgOCchXaQOjVkahycg4eU6xrFDwdU1+E8pwDq5
+	lLxZBnxnt8GVar5l3rxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKOlA-0083tu-Ax; Wed, 16 Feb 2022 18:10:36 +0000
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
+	id 1nKR83-008LSS-5C; Wed, 16 Feb 2022 20:42:23 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKOl7-0083sN-3S
- for linux-rockchip@lists.infradead.org; Wed, 16 Feb 2022 18:10:34 +0000
-Received: by mail-io1-xd32.google.com with SMTP id e79so652392iof.13
- for <linux-rockchip@lists.infradead.org>; Wed, 16 Feb 2022 10:10:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dhg8ObNqJqU9MXgC8htbZHEYozTLZfTKNUE4M3ppPEQ=;
- b=X3YBCQPLYrjbSwdYieYTzfp5aHHmxsfeg3RTf4qZg0wFQ6+c9DxcKdaAJmOlc37Dsv
- CTdEpl0BzCTg87o7PF2lX4vr7saXRgNN4zH/iPLgcyLTPMZGhRdeuiUlyPMWzB1yffkQ
- L1SizYyjHV+Gfh5MA9OSmEyn4e1glalJ49FS0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dhg8ObNqJqU9MXgC8htbZHEYozTLZfTKNUE4M3ppPEQ=;
- b=HHrxjElJuSs2lPgGcVYjwPP4gb/wrpQ5NZ6WkWPRliHe/npX7yUgyNeChCOG3dUdEn
- Qec6ZKGwlVoNUrLG6QaPPLb3PVxUn648ZGN/mKBoM/h8eDH4ckng5yUWrsmMcMih8tp3
- +p5R5ICXmPfYiHLrU/oD54wX6tVXFF0z5+yVy7HzKDjcaqZ5osOILvy6HjTQD7xrZEVJ
- gVUAr1lnm3466P0b0/AotD91rOzuC92Fo1dH43Y/alfdU3oWs2Xwl1BY3gDSbMMQs4q/
- yjRENDkdquPbKtCb2Tc+58kKbxRpRwayiwTPB9/uC2Yn20tQdWTkeAcZfZFHv3HlWyUp
- hnJg==
-X-Gm-Message-State: AOAM532kR076ddq1ndxq+SRpyGZ/hW93lwyXj4ed4QmxpWCfRmE/LU6+
- dwnej9JYJ+oChHP80G7cWjm+o++7CF9E2A==
-X-Google-Smtp-Source: ABdhPJwJc6JMzcyU3wsgK9uamm4mcb/fWWbEeE3JkgDD0CwO59Hrr+RLf1InH5ukUhPwx2DnQ4I9Cw==
-X-Received: by 2002:a5d:9301:0:b0:614:549c:4c40 with SMTP id
- l1-20020a5d9301000000b00614549c4c40mr2629739ion.50.1645035031765; 
- Wed, 16 Feb 2022 10:10:31 -0800 (PST)
-Received: from mail-il1-f179.google.com (mail-il1-f179.google.com.
- [209.85.166.179])
- by smtp.gmail.com with ESMTPSA id f13sm280499ion.18.2022.02.16.10.10.28
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Feb 2022 10:10:29 -0800 (PST)
-Received: by mail-il1-f179.google.com with SMTP id o10so454026ilh.0
- for <linux-rockchip@lists.infradead.org>; Wed, 16 Feb 2022 10:10:28 -0800 (PST)
-X-Received: by 2002:a05:6e02:144f:b0:2bd:da3d:f50b with SMTP id
- p15-20020a056e02144f00b002bdda3df50bmr2425111ilo.165.1645035028535; Wed, 16
- Feb 2022 10:10:28 -0800 (PST)
+ id 1nKR81-008LRe-24
+ for linux-rockchip@lists.infradead.org; Wed, 16 Feb 2022 20:42:22 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nKR7q-0001N5-A6; Wed, 16 Feb 2022 21:42:10 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: devicetree@vger.kernel.org, Chris Morgan <macroalpha82@gmail.com>
+Cc: robh+dt@kernel.org, jon.lin@rock-chips.com,
+ linux-rockchip@lists.infradead.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Correct clock-output-names for rk817
+Date: Wed, 16 Feb 2022 21:42:09 +0100
+Message-ID: <44462609.a43xROnmBz@diego>
+In-Reply-To: <20220216165837.4721-1-macroalpha82@gmail.com>
+References: <20220216165837.4721-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-References: <20211001144212.v2.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
- <CAD=FV=XU0bYVZk+-jPWZVoODW79QXOJ=NQy+RH=fYyX+LCZb2Q@mail.gmail.com>
- <CA+ASDXPXKVwcZGYoagJYPm4E7DzaJmEVEv2FANhLH-juJw+r+Q@mail.gmail.com>
- <CAD=FV=VYe1rLKANQ8eom7g8x1v6_s_OYnX819Ax4m7O3UwDHmg@mail.gmail.com>
- <CA+ASDXO8c4dK31p=kvBABJQsDUs20qVHM6NxYf1JQDCr2oswAw@mail.gmail.com>
-In-Reply-To: <CA+ASDXO8c4dK31p=kvBABJQsDUs20qVHM6NxYf1JQDCr2oswAw@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 16 Feb 2022 10:10:16 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=XivCxy-7Wszv9pnHELi=gRCMeVasEweza17XTtEoiT4A@mail.gmail.com>
-Message-ID: <CAD=FV=XivCxy-7Wszv9pnHELi=gRCMeVasEweza17XTtEoiT4A@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Grab runtime PM reference for
- DP-AUX
-To: Brian Norris <briannorris@chromium.org>
-Cc: Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>, 
- Sean Paul <sean@poorly.run>, Jonas Karlman <jonas@kwiboo.se>,
- LKML <linux-kernel@vger.kernel.org>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "# 4.0+" <stable@vger.kernel.org>, 
- Tomeu Vizoso <tomeu.vizoso@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_101033_173515_88EA649B 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20220216_124221_110572_90BB555C 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +62,50 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-On Tue, Feb 15, 2022 at 4:41 PM Brian Norris <briannorris@chromium.org> wrote:
->
-> On Tue, Feb 15, 2022 at 3:46 PM Doug Anderson <dianders@chromium.org> wrote:
-> > On Tue, Feb 15, 2022 at 2:52 PM Brian Norris <briannorris@chromium.org> wrote:
-> > > It still makes me wonder what the point
-> > > of the /dev/drm_dp_aux<N> interface is though, because it seems like
-> > > you're pretty much destined to not have reliable operation through
-> > > that means.
-> >
-> > I can't say I have tons of history for those files. I seem to recall
-> > maybe someone using them to have userspace tweak the embedded
-> > backlight on some external DP connected panels? I think we also might
-> > use it in Chrome OS to update the firmware of panels (dunno if
-> > internal or external) in some cases too? I suspect that it works OK
-> > for certain situations but it's really not going to work in all
-> > cases...
->
-> Yes, I believe I'm only submitting patches like this because fwupd
-> apparently likes to indiscriminately whack at dpaux devices:
-> https://github.com/fwupd/fwupd/tree/main/plugins/synaptics-mst#kernel-dp-aux-interface
->
-> That seems like a bad idea.
->
-> (We've already disabled that plugin on these systems, but it seems
-> wise not to leave the stumbling block here for the next time.)
+Am Mittwoch, 16. Februar 2022, 17:58:37 CET schrieb Chris Morgan:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> According to the datasheet for the rk817 there is only a single output
+> clock for the PMIC. I don't believe this is causing any harm though
+> and testing this change doesn't appear to have any noticeable effects.
 
-Yeah, it doesn't seem great. I guess it's _slightly_ less bad since
-it's for an external device. As I understand it, they never really
-turn off in the same way. It still feels like letting userspace
-indiscriminately whack at DP AUX registers isn't a great idea, though.
+hmm, looking at the go2's schematics, I'd disagree:
+
+- yes, the rk817 has only one clock output
+- but no, it is used for the clkout_32k signal, which gets piped back into
+  the SoC. As that clock dynamically appears at some unspecified point
+  when the rk817 probes, the clock controller expects it to be named
+  xin32k to bind into its clock-tree.
+
+The driver (drivers/clk/clk-rk808.c) really puts that rk817-clk32k at
+position 2 but I'm not sure if that simply papers over some implementation
+
+
+Heiko
+
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> index ea0695b51ecd..5b23e607876e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> @@ -296,7 +296,7 @@ rk817: pmic@20 {
+>  		reg = <0x20>;
+>  		interrupt-parent = <&gpio0>;
+>  		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+> -		clock-output-names = "rk808-clkout1", "xin32k";
+> +		clock-output-names = "rk808-clkout1";
+>  		clock-names = "mclk";
+>  		clocks = <&cru SCLK_I2S1_OUT>;
+>  		pinctrl-names = "default";
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
