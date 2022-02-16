@@ -4,50 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A82AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 12:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD63C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Feb 2022 14:55:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6wWqmZCNyADxzjc0MdlDoaXTtHDtjd6ly7coC2Vxt6c=; b=SVMjL6n1vCWD6+
-	e6sQb/cQX36YpFLWz+12gktEIdQ3y84O95IXuZzwhZWwNyMxnyh3/rYZ1vl/nEJ3/nlB1lS7+Vaue
-	wbYfgRfz2hWDdWx0+kRkqc2NwsurZGX/WkDSnmd2wwZGU2qvNsTI/3N3dWQFTjnvnLIisgIqd0g/g
-	mSPqfRmMOky/W+xx2cq9xp5nZ6i7WoWiQDoud9RaIC8oaySX6zk/MmIN0zesDOKIIrnDAehsTUR/L
-	5YS0GklKBn2YbtweR3xgzej0YtvaFjf2MSUsAdQZCUccDoOm4PGX6ta+x80OCcnOcYZ0BdBzSxHYI
-	oN+m3HJtBqWyYrlfTjiw==;
+	List-Owner; bh=GmWN2d1W8E4iPZ4w/hvl6MSeRxuwrRkRDiwLbPsap2Y=; b=FtMrFHNkxhC7Ub
+	91m929lrZIwa3UarH42htHTH6k9tlY9nyHqju5ISvpjGSVpIJ4dmNDiA62chEjm8cTbsS2FstmjW9
+	iTWaQeXP1L04d2oUuevQVrIMpSKWPlBszQ9NUK8z3Iz7TcoDtV5ARiFZZM7/tUxL2MX73QWue6PiQ
+	fvTl1Uvo16o9OtrnBBwv8TQpJ11pzkpFKrj7d38Hc7GGfPLQUHvmM4DBPvaVr02Gmkpej84aNMfZx
+	NdG4E3xsoxxMbv8ilS1FZ5rGcT2xocFRUeo8YcPyKiqUrzQ5P0L2uZxiFQRZIz03KZXE4s5LUEXsy
+	vBYM9YuHnF/zkswyMgyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKJab-006xgW-O1; Wed, 16 Feb 2022 12:39:21 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKJaX-006xf6-TE
- for linux-rockchip@lists.infradead.org; Wed, 16 Feb 2022 12:39:19 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9544DD6E;
- Wed, 16 Feb 2022 04:39:15 -0800 (PST)
-Received: from [10.57.70.89] (unknown [10.57.70.89])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CDC523F718;
- Wed, 16 Feb 2022 04:39:13 -0800 (PST)
-Message-ID: <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
-Date: Wed, 16 Feb 2022 12:39:09 +0000
+	id 1nKLib-007Ozc-KM; Wed, 16 Feb 2022 14:55:45 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nKLiY-007Owp-Re
+ for linux-rockchip@lists.infradead.org; Wed, 16 Feb 2022 14:55:44 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id t21so4358266edd.3
+ for <linux-rockchip@lists.infradead.org>; Wed, 16 Feb 2022 06:55:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=iuYrqVGn1TXdwN+P98XHhqL2+XquzgdKMr559j4kzX0=;
+ b=m7KLBnpGSaAT+kElQbyWCpRqg8l5Xarj7SE9j9Q+Gl2zvdSTaYahgURCT8X5H2Ni2L
+ vKgECZZX8XD2Y+QnZUn27ISb3qicevOkHpXjolTw4zvDUEZ72k1XrDUvmMrxR54sLgeY
+ n13R9STJnkboF2nq0JYVV0CkTfuV7LwJVNvxNS5xWP5B6cH2rixzqtQf2Cdo2K3XlnwY
+ Y3/XG4x8s2oNS9/DZTMyIJntOp4KAtdJtIzNeA4e5c8HhqkwQdzAK+3eH3jMcrW9BiHV
+ j3lDpWbx9LLmAtuLKrS+VdGFzIfr2OJ8Hil2kSdMkWrSio4XnljeNfior5cdXBv/M9nm
+ 55Sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=iuYrqVGn1TXdwN+P98XHhqL2+XquzgdKMr559j4kzX0=;
+ b=UdzbpuVtVC6ei6+vJ6XiHzPJgYWG0KWhNRc5BeiFcoiYer8SYSGShd4ZNgg0uxw2Hd
+ TpBc9HkPC3KZkGyLIM+JwSzKsyXVYOrO45wadiJiAkxfNNs4VT65/f8ReFz+uds28JBv
+ YrmK7dHQ2E7wuHJ0J0EaG6GOP2hWEwWz+ji/us/KIu3S8P1W6WLTfQqGHntGGnUap1kn
+ acFSkZUvzZfnGnVaK1MpsPrvQAaz7wiKEUqkyXt6is8vpg8KVt3esWcK8Q1R9sbmBUZn
+ /mERW17M1hAK36tJWoqiOIP2zt/duXfuiP53eAtZ+ddUbzT6hQHm8bs1Gm+F9E/+dg+7
+ WkdQ==
+X-Gm-Message-State: AOAM532Lg4j8Pq9VetZzKA1u6Ge1M/h9HMzLhX24smU+bOZ2hYhZJEsy
+ d/wwD0xBmPyTarWAEj1L4ndBYttWHxfajYWZl1nSSojooWI=
+X-Google-Smtp-Source: ABdhPJzRulNtz/zoAWp3FH3AaM0DWDfR2fpgNtKv4EW2Sx9/HjO3bwTxfgHobgEyuXG7kSkT/MQf3yK3aZjoHeh44u4=
+X-Received: by 2002:a05:6402:5194:b0:409:97ec:3bdc with SMTP id
+ q20-20020a056402519400b0040997ec3bdcmr3466054edd.314.1645023340859; Wed, 16
+ Feb 2022 06:55:40 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH v3] dt-bindings: mfd: rk808: Convert bindings to yaml
-Content-Language: en-GB
-To: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org
-Cc: lee.jones@linaro.org, robh+dt@kernel.org, heiko@sntech.de,
- zyw@rock-chips.com, zhangqing@rock-chips.com,
- linux-rockchip@lists.infradead.org, Chris Morgan <macromorgan@hotmail.com>
-References: <20220215211548.31940-1-macroalpha82@gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220215211548.31940-1-macroalpha82@gmail.com>
+References: <20220212205048.43862-1-samuel@sholland.org>
+In-Reply-To: <20220212205048.43862-1-samuel@sholland.org>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Wed, 16 Feb 2022 15:55:30 +0100
+Message-ID: <CAMRc=Me8cmiJSu3dKDgzhKZchSYyC0KmnrLSDL0ckr_uASLv-g@mail.gmail.com>
+Subject: Re: [PATCH] gpio: rockchip: Reset int_bothedge when changing trigger
+To: Samuel Holland <samuel@sholland.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jianqun Xu <jay.xu@rock-chips.com>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Guillaume Savaton <guillaume@baierouge.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220216_043918_071559_5AA06F37 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20220216_065542_916603_A86B0109 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,198 +84,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-02-15 21:15, Chris Morgan wrote:
-[...]
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> new file mode 100644
-> index 000000000000..1b928b94fbfd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> @@ -0,0 +1,88 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/rockchip,rk805.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: RK805 Power Management Integrated Circuit
-> +
-> +maintainers:
-> +  - Chris Zhong <zyw@rock-chips.com>
-> +  - Zhang Qing <zhangqing@rock-chips.com>
-> +
-> +description: |
-> +  Rockchip RK805 series PMIC. This device consists of an i2c controlled MFD
-> +  that includes multiple switchable regulators.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk805
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    const: 1
-> +
-> +  clock-output-names:
-> +    maxItems: 2
+On Sat, Feb 12, 2022 at 9:50 PM Samuel Holland <samuel@sholland.org> wrote:
+>
+> With v2 hardware, an IRQ can be configured to trigger on both edges via
+> a bit in the int_bothedge register. Currently, the driver sets this bit
+> when changing the trigger type to IRQ_TYPE_EDGE_BOTH, but fails to reset
+> this bit if the trigger type is later changed to something else. This
+> causes spurious IRQs, and when using gpio-keys with wakeup-event-action
+> set to EV_ACT_(DE)ASSERTED, those IRQs translate into spurious wakeups.
+>
+> Fixes: 3bcbd1a85b68 ("gpio/rockchip: support next version gpio controller")
+> Reported-by: Guillaume Savaton <guillaume@baierouge.fr>
+> Tested-by: Guillaume Savaton <guillaume@baierouge.fr>
+> Signed-off-by: Samuel Holland <samuel@sholland.org>
+> ---
 
-I think this should be 1, since RK805 only has a single CLK32K output - 
-ditto for RK817.
+Queued for fixes, thanks!
 
-[...]
-> diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
-> new file mode 100644
-> index 000000000000..f5908fa01a61
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
-> @@ -0,0 +1,257 @@
-> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/rockchip,rk808.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: RK808 Power Management Integrated Circuit
-> +
-> +maintainers:
-> +  - Chris Zhong <zyw@rock-chips.com>
-> +  - Zhang Qing <zhangqing@rock-chips.com>
-> +
-> +description: |
-> +  Rockchip RK808 series PMIC. This device consists of an i2c controlled MFD
-> +  that includes regulators, an RTC, and a power button.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk808
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    description:
-> +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
-> +    const: 1
-> +
-> +  clock-output-names:
-> +    description:
-> +      From common clock binding to override the default output clock name.
-
-minItems should be consistent across RK808/818/819 - when two clocks 
-exist, either it's legitimate to rename only the first one, or it isn't. 
-There shouldn't be an arbitrary difference just because of what existing 
-DTs happen to use.
-
-> +    maxItems: 2
-> +
-> +  rockchip,system-power-controller:
-> +    type: boolean
-> +    description:
-> +      Telling whether or not this PMIC is controlling the system power.
-> +
-> +  wakeup-source:
-> +    type: boolean
-> +    description:
-> +      Device can be used as a wakeup source.
-> +
-> +  vcc1-supply:
-> +    description:
-> +      The input supply for DCDC_REG1.
-> +
-> +  vcc2-supply:
-> +    description:
-> +      The input supply for DCDC_REG2.
-> +
-> +  vcc3-supply:
-> +    description:
-> +      The input supply for DCDC_REG3.
-> +
-> +  vcc4-supply:
-> +    description:
-> +      The input supply for DCDC_REG4.
-> +
-> +  vcc6-supply:
-> +    description:
-> +      The input supply for LDO_REG1 and LDO_REG2.
-> +
-> +  vcc7-supply:
-> +    description:
-> +      The input supply for LDO_REG3 and LDO_REG7.
-> +
-> +  vcc8-supply:
-> +    description:
-> +      The input supply for SWITCH_REG1.
-> +
-> +  vcc9-supply:
-> +    description:
-> +      The input supply for LDO_REG4 and LDO_REG5.
-> +
-> +  vcc10-supply:
-> +    description:
-> +      The input supply for LDO_REG6.
-> +
-> +  vcc11-supply:
-> +    description:
-> +      The input supply for LDO_REG8.
-> +
-> +  vcc12-supply:
-> +    description:
-> +      The input supply for SWITCH_REG2.
-> +
-> +  vddio-supply:
-> +    description:
-> +      The input supply for digital IO.
-> +
-> +  dvs-gpios:
-> +    description: |
-> +      buck1/2 can be controlled by gpio dvs, this is GPIO specifiers for
-> +      2 host gpio's used for dvs. The format of the gpio specifier
-> +      depends in the gpio controller. If DVS GPIOs aren't present,
-> +      voltage changes will happen very quickly with no slow ramp time.
-> +    maxItems: 2
-> +
-> +  regulators:
-> +    type: object
-> +    patternProperties:
-> +      "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
-> +        type: object
-> +        $ref: ../regulator/regulator.yaml#
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - "#clock-cells"
-
-Is this actually required (ditto elsewhere)? Technically it's only 
-necessary if there are any clock consumers targeting this node, so 
-arguably it should be the clock binding's responsibility to validate that.
-
-It wouldn't make much sense for a dedicated clock controller to omit 
-#clock-cells such that it couldn't have any consumers, but given that 
-these things are primarily PMICs I think it's reasonable to allow a 
-board not to care about the clocks at all if it doesn't use them. I know 
-that the original binding claimed it was required, but if we're already 
-relaxing that for RK805 here then we may as well relax it entirely.
-
-Cheers,
-Robin.
+Bart
 
 _______________________________________________
 Linux-rockchip mailing list
