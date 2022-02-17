@@ -4,35 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A4FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 08:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37AE8C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 08:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s5v5FAHTurGkbFWDDun7u6w3X52l6QvROfCTwK5xp7c=; b=Os3a/65Zqoy5MV
-	MUnCfl9kTKpyRi41E4lxuhRfiiRATJre5SCn2mCgLUazjxUIbwVjGRu9/I9P8Rs+pT5ASWHG4tw6a
-	OtHbZ6sZVMMkZ5obA5bf+a347TTE8bomFZnhR0uHZEjFZ1pAQwcBSfSo8Di3Hxl0wy33MozmB6eCs
-	mgtUv7YuVtDPOtLSlVvgBB5aEbLkRVvPlOddThjBq5pZez4qf4A1xEpI9p///rQolxiMuuGsFjKWA
-	f0Zk/Ox+uC25xtkxONFBB52mPCutKqDrUdltM4jmgdBeonPFxRct9+zu4JtdJNWXYdc52s0i4P4de
-	9u6uJtszn39ojAaPgdmA==;
+	List-Owner; bh=AVbcITEu2OFUgjWvaDFWZypanqV+vSn5m5/L6f7KGto=; b=qwX7kl8uMgEdtg
+	6lnZEf/EJqhJJv6bB6IqtWiUHRKEzqkJpRXRmyfgAy5pKmKjJtIoImxElp/VQA2d4EW18QboUq01W
+	x9Rr9ipgbxDuGDpzx0Mwc0BOCbaWaKf6C0p2AH1k4JezpZ283PSxQKLAF5/ueUBqV6/Efj1/ngkhs
+	YmsqffrNIfKPTXX5wN+OyTMzdyDrq4hw8So5LCBHtLR/M7Cd/Cl/cWECvkNyYV+676JLLkak/rCer
+	cYcwc7BMXh1qY/GD/60Pthv0y+/tkr4VIhG+Y8T/Us+p842clp2mNNwjBZg/0MweYo+QC7lpXfOyP
+	B4DzTLWuNdpok5Vv7FHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKcM8-009WU7-Nw; Thu, 17 Feb 2022 08:41:40 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nKcOB-009XU3-3d; Thu, 17 Feb 2022 08:43:47 +0000
+Received: from desiato.infradead.org ([90.155.92.199])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKcB4-009QKd-0e
- for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 08:30:22 +0000
+ id 1nKcBE-009QQc-EM
+ for linux-rockchip@bombadil.infradead.org; Thu, 17 Feb 2022 08:30:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=bzqef1wkM3dqDBuSPIUL9kG7FL0RH9+tt68QgFQPtXE=; b=m4VFI7weuRewrvAch8B8KEYSfe
+ b/mnAiKkFU6xNPIUu666bx8nQvCdMie3EixgB+0Fs+wRh7pePD+CA3d5d0pgowhsDYdMnwXiTx2f+
+ LIVZ4A6LU3V5MEYOrsq87d4oOYg69/ZE0iKfSFLjag21QjEoQixSdFmgn0B2oxS0O3SFnl9ztVZjk
+ Qx/18ZP8QqoYOup9oUlMiUHIYJPCfPLeukx/J3LU0+Zdi26QYRLkyB9OytTkaoSoipBT7xx36mb/d
+ aKuo88vCBAdmCS2Txh8f+JARZdhz8qF7sh2JZxaGParEK7rp3urquflCrIYFGCPWkaNdk/r5hY4LX
+ nCQ93j0Q==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nKcBB-00AXwH-79
+ for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 08:30:23 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nKcAs-0002E9-A8; Thu, 17 Feb 2022 09:30:02 +0100
+ id 1nKcAs-0002EL-CO; Thu, 17 Feb 2022 09:30:02 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nKcAp-00ClTG-TW; Thu, 17 Feb 2022 09:29:59 +0100
+ id 1nKcAq-00ClU6-BY; Thu, 17 Feb 2022 09:30:00 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,11 +56,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
- Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v6 11/23] drm/rockchip: dw_hdmi: Use auto-generated tables
-Date: Thu, 17 Feb 2022 09:29:42 +0100
-Message-Id: <20220217082954.2967889-12-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v6 23/23] dt-bindings: display: rockchip: dw-hdmi: fix ports
+ description
+Date: Thu, 17 Feb 2022 09:29:54 +0100
+Message-Id: <20220217082954.2967889-24-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220217082954.2967889-1-s.hauer@pengutronix.de>
 References: <20220217082954.2967889-1-s.hauer@pengutronix.de>
@@ -57,8 +71,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_003014_071896_DCC11FC3 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20220217_083021_308032_B2346BCC 
+X-CRM114-Status: GOOD (  12.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,195 +90,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Douglas Anderson <dianders@chromium.org>
+Current port description doesn't cover all possible cases. It currently
+expects one single port with two endpoints.
 
-The previous tables for mpll_cfg and curr_ctrl were created using the
-20-pages of example settings provided by the PHY vendor.  Those
-example settings weren't particularly dense, so there were places
-where we were guessing what the settings would be for 10-bit and
-12-bit (not that we use those anyway).  It was also always a lot of
-extra work every time we wanted to add a new clock rate since we had
-to cross-reference several tables.
+When the HDMI connector is described in the device tree there can be two
+ports, first one going to the VOP and the second one going to the connector.
 
-In <https://crrev.com/c/285855> I've gone through the work to figure
-out how to generate this table automatically.  Let's now use the
-automatically generated table and then we'll never need to look at it
-again.
+Also on SoCs which only have a single VOP there will be only one
+endpoint instead of two.
 
-We only support 8-bit mode right now and only support a small number
-of clock rates and I've verified that the only 8-bit rate that was
-affected was 148.5.  That mode appears to have been wrong in the old
-table.
+This patch addresses both issues. With this there can either be a single
+port ("port") , or two of them ("port@0", "port@1") when the connector
+is also in the device tree. Also the first or only port can either have
+one endpoint ("endpoint") for single VOP SoCs or two ("endpoint@0",
+"endpoint@1") for dual VOP SoCs.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
 
 Notes:
     Changes since v5:
-    - Add missing Signed-off-by me
-    
-    Changes since v3:
     - new patch
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 130 +++++++++++---------
- 1 file changed, 69 insertions(+), 61 deletions(-)
+ .../display/rockchip/rockchip,dw-hdmi.yaml    | 24 +++++++------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 45f66fd613a6d..dfc0fedbcf06c 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -92,80 +92,88 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+index 7dd753630b46a..fc26f1d4d001c 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+@@ -102,27 +102,21 @@ properties:
+   ports:
+     $ref: /schemas/graph.yaml#/properties/ports
  
- static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 	{
--		27000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+		30666000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40f3, 0x0000 },
- 		},
--	}, {
--		36000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+	},  {
-+		36800000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		40000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+	},  {
-+		46000000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		54000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+	},  {
-+		61333000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		65000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+	},  {
-+		73600000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		66000000, {
--			{ 0x013e, 0x0003},
--			{ 0x217e, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		92000000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		74250000, {
--			{ 0x0072, 0x0001},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		122666000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		83500000, {
--			{ 0x0072, 0x0001},
-+	},  {
-+		147200000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		108000000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		184000000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		106500000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		226666000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		146250000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		272000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
- 		},
--	}, {
--		148500000, {
--			{ 0x0051, 0x0003},
--			{ 0x214c, 0x0003},
--			{ 0x4064, 0x0003}
-+	},  {
-+		340000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
- 		},
--	}, {
-+	},  {
-+		600000000, {
-+			{ 0x1a40, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
-+		},
-+	},  {
- 		~0UL, {
--			{ 0x00a0, 0x000a },
--			{ 0x2001, 0x000f },
--			{ 0x4002, 0x000f },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
- 		},
- 	}
- };
+-    properties:
+-      port:
+-        $ref: /schemas/graph.yaml#/$defs/port-base
+-        unevaluatedProperties: false
++    patternProperties:
++      "^port(@0)?$":
++        $ref: /schemas/graph.yaml#/properties/port
+         description: Input of the DWC HDMI TX
+-
+         properties:
++          endpoint:
++            description: Connection to the VOP
+           endpoint@0:
+-            $ref: /schemas/graph.yaml#/properties/endpoint
+             description: Connection to the VOPB
+-
+           endpoint@1:
+-            $ref: /schemas/graph.yaml#/properties/endpoint
+             description: Connection to the VOPL
+-
+-        required:
+-          - endpoint@0
+-          - endpoint@1
+-
+-    required:
+-      - port
++    properties:
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output of the DWC HDMI TX
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
 -- 
 2.30.2
 
