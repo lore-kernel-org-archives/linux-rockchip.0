@@ -4,57 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B593C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 18:32:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F05E4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 22:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YvUhGBION1xg7FFvoWFx82S69N3n/GK7j/6bSIX1BBY=; b=MooSl14P09/45Z
-	AUYQWfHw51G54gaZsY2MbFDwnySSg3KMdVPbFn54jEofEm7yv/Icp9xXNQasPfKezqhpeHn+dO7Xh
-	d0FiIum7ceM5+fKA0TrnJHHjL3tbkpcY1fdxf4dXjoU6DhFJKci3D/ZmvM4KY52SK27Tjn3Q8a3hp
-	TwYhDWUKCefg+Gh9egN+q2VcBjAWsgoobjEmYUEsuCApMWzqViwpmiNwvqSKQNoz4DY4di9aBC+P4
-	ywhe7zhx5IgzYEO4oD1pZ0gYgxzwLaJYWKfIZE+dAbPqxiBVnNGbmbdTGpVg2KGLnrLCaUk2HFuJo
-	yNQcb6xfU7yC+BDRaF2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=N/D98IOsE/7406fFah7jMc64uME3VBSClY3077L5I4U=; b=rWhO96nnZTyBLo
+	3/JEbkbua6B+Qq3xOApCYfojqGZhsQiRfeU3u3FhCKo40K/rnO7TDLXx4xwSs+pM3k2/2s9ASJL2S
+	J0qYHg2+7icYYoICe+fnbnFmpoaTWuXlgtus8ljzKsH+mU0WpiwIMMAk+vP7kXyX50zApUgx4gdwK
+	6zAaYkExa3sTIV3WuibN70RtzSy/orT4z2XogucF4DgH9ds8IpdmksUDmFTS/QlNGvkTqTMxdj4AW
+	UwncbSDnvI6J4RqNlXjpMC5rLY+r2xv8LXUzL1B0tvzc2w9jFVZR4N4r/CDihBkq+kGe4dRCWkKF+
+	XSGiSpOJjoGYlJmvT4tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKla7-00Bk2s-PQ; Thu, 17 Feb 2022 18:32:43 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nKpTW-00CNhn-HW; Thu, 17 Feb 2022 22:42:10 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKlZv-00Bk1J-K8; Thu, 17 Feb 2022 18:32:33 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id AEEC9B823D2;
- Thu, 17 Feb 2022 18:32:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 266F8C340E8;
- Thu, 17 Feb 2022 18:32:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645122748;
- bh=8YextsepZgUr4+oe5f01LRtpOeJxsq+lsISRRrHwJn0=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=VNBraLvw8tzhp5HQKFZZQSD/eEBmA9GYmGDGvVdYGnsnSsO4hMlTzHp8ezULp/NLk
- h7CPFgftAYTLPNyj3edHai5GLyuHYAjLYbMroo6G6AvP4gKXYxxSTkH2BQzpOX63/C
- vuRkB0sdMBQOZRaBPa8ElUHxUVBxqAky1tvm1UkCt2YKRg0qCC3TEPT6v92SD0zqiy
- OeCX8+5JHLVdBgIHsHtg+1e5Cfl1REQXfB018lH2tCaqMm6UAYDJrMAn5EW4TnhdV0
- iUztK2QZBL6h8tvOPfVqOp03wTgeLulMk54ltLJV5eFFkPaVOztdyqnrducnSFHq0n
- /Di2Lbd1EjYnQ==
-From: Mark Brown <broonie@kernel.org>
-To: Jon Lin <jon.lin@rock-chips.com>
-Cc: linux-spi@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220216014028.8123-1-jon.lin@rock-chips.com>
-References: <20220216014028.8123-1-jon.lin@rock-chips.com>
-Subject: Re: (subset) [PATCH v3 0/6] New support and problem adjustment of SPI
- rockchip
-Message-Id: <164512274685.3993181.4255845764381770585.b4-ty@kernel.org>
-Date: Thu, 17 Feb 2022 18:32:26 +0000
+ id 1nKpTU-00CNgh-O0
+ for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 22:42:10 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 132so6239836pga.5
+ for <linux-rockchip@lists.infradead.org>; Thu, 17 Feb 2022 14:42:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/pFhxh4a1mIJWKVvwWf0TWI0PzyzDNvxgd8MaYxtB4g=;
+ b=DRjZUlF38aKhKGF1HEEXpShz5dNW4rV1EZ3PJsdeXyBLxzGJJMj2+9g6pi+MiKGhYt
+ H+9E29WZ8V4Np9zsahnlGJmkvOu6FMFXZxC9SU+qF5bJdkcsbldinSAPqonRI6Ftb1Dz
+ YKCtyN3JvqpZZ/nc5796hnay3gO0nfEdVSefs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/pFhxh4a1mIJWKVvwWf0TWI0PzyzDNvxgd8MaYxtB4g=;
+ b=NSt4OX8DAZf2jRRifjjUdTogTDYI08nYNgMaKCZ69r5fVq70N0JzakCB4tRsgcDae2
+ BTGpkrQEzZBKk0WoG0SFcoTefZvT6d+0LQvynd/jP3I+5nbnR0DZa8N6rIYBicw7dLTh
+ GXM17DT0Z1lS4DxqFgveX6a6aZmjrq+1gZJb2W4ooj5N72I7XsEW0dCY/WygY1vyl4T4
+ KF95HIoiJxgrI9T/MVof3eX6ZsUbLqGJ298DS6gpdfmPKYCsdSzqggkMqhg0ANk9baRr
+ V3T+7TrDnnovPpaJPtDWs6AiZT6WnfFaCObd45m+cTNLeiLm8q+63kjSZflSR4xV/7qe
+ y90A==
+X-Gm-Message-State: AOAM5325zCEEwx+0ao70Tmr588rb0QkKIAPXogCrCAr5Afrph4n012Vz
+ O33rFK5HfH7zM6SD40fBrAR5bQ==
+X-Google-Smtp-Source: ABdhPJx0I/9dms8bGvA0MQ9aczlCf/u6f2qI/Tw9lU7d6SMBvt5gmujVGb3LwnbbS//bPCI4KYGOjg==
+X-Received: by 2002:aa7:83c2:0:b0:4e0:91c1:6795 with SMTP id
+ j2-20020aa783c2000000b004e091c16795mr4885484pfn.54.1645137726160; 
+ Thu, 17 Feb 2022 14:42:06 -0800 (PST)
+Received: from localhost ([2620:15c:202:201:677e:1914:4c14:1662])
+ by smtp.gmail.com with UTF8SMTPSA id u1sm628435pfg.151.2022.02.17.14.42.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Feb 2022 14:42:05 -0800 (PST)
+From: Brian Norris <briannorris@chromium.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <narmstrong@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Doug Anderson <dianders@chromium.org>, Sean Paul <sean@poorly.run>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, dri-devel@lists.freedesktop.org,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Brian Norris <briannorris@chromium.org>,
+ stable@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Subject: [PATCH v3 1/2] drm/bridge: analogix_dp: Grab runtime PM reference for
+ DP-AUX
+Date: Thu, 17 Feb 2022 14:41:45 -0800
+Message-Id: <20220217144136.v3.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+X-Mailer: git-send-email 2.35.1.265.g69c8d7142f-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_103231_849170_8687F393 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20220217_144208_788490_2E856039 
+X-CRM114-Status: GOOD (  13.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,51 +90,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Feb 2022 09:40:22 +0800, Jon Lin wrote:
-> Changes in v3:
-> - Support clear the bits of configure bits filed
-> 
-> Changes in v2:
-> - Fix patches should be at the start of the series
-> - Fix patches should be at the start of the series
-> - Delete useless messages
-> - Limit cs-high presetting to the chip select n <= 1
-> 
-> [...]
+If the display is not enable()d, then we aren't holding a runtime PM
+reference here. Thus, it's easy to accidentally cause a hang, if user
+space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
 
-Applied to
+Let's get a runtime PM reference, and check that we "see" the panel.
+Don't force any panel power-up, etc., because that can be intrusive, and
+that's not what other drivers do (see
+drivers/gpu/drm/bridge/ti-sn65dsi86.c and
+drivers/gpu/drm/bridge/parade-ps8640.c.)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Fixes: 0d97ad03f422 ("drm/bridge: analogix_dp: Remove duplicated code")
+Cc: <stable@vger.kernel.org>
+Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
 
-Thanks!
+Changes in v3:
+- Avoid panel power-up; just check for HPD state, and let the rest
+  happen "as-is" (e.g., time out, if the caller hasn't prepared things
+  properly)
 
-[3/6] spi: rockchip: Stop spi slave dma receiver when cs inactive
-      commit: 869f2c94db92f0f1d6acd0dff1c1ebb8160f5e29
-[4/6] spi: rockchip: Preset cs-high and clk polarity in setup progress
-      commit: 3a4bf922d42efa4e9a3dc803d1fd786d43e8a501
-[5/6] spi: rockchip: Suspend and resume the bus during NOIRQ_SYSTEM_SLEEP_PM ops
-      commit: e882575efc771f130a24322377dc1033551da11d
-[6/6] spi: rockchip: clear interrupt status in error handler
-      commit: 2fcdde56c44fe1cd13ce328128f509bbda2cdb41
+Changes in v2:
+- Fix spelling in Subject
+- DRM_DEV_ERROR() -> drm_err()
+- Propagate errors from un-analogix_dp_prepare_panel()
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index b7d2e4449cfa..16be279aed2c 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1632,8 +1632,19 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+ 				       struct drm_dp_aux_msg *msg)
+ {
+ 	struct analogix_dp_device *dp = to_dp(aux);
++	int ret;
++
++	pm_runtime_get_sync(dp->dev);
++
++	ret = analogix_dp_detect_hpd(dp);
++	if (ret)
++		goto out;
+ 
+-	return analogix_dp_transfer(dp, msg);
++	ret = analogix_dp_transfer(dp, msg);
++out:
++	pm_runtime_put(dp->dev);
++
++	return ret;
+ }
+ 
+ struct analogix_dp_device *
+-- 
+2.35.1.265.g69c8d7142f-goog
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-rockchip mailing list
