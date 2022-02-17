@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 848B2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 08:39:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B040C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 08:41:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nONz9+Q7OJAQf09J3S06JzPtzG0FSsP2OEtVEK1314Q=; b=l4eWrj+8PClxXc
-	Z3HQ8GgeLLouTy4nQgxOlPZTRr6hGDV0hA3uOvdJBvr4AvBNQ3JH7njrqAse1HLw9S7r/KrvwjLYV
-	pWJY3gjTyZ/TMhxdHPblj0eaz4+pHfI0iZFua3oYULO7jFZdNKcXsYcs/s+1JNCZsY80wVklvi7Kk
-	AIqE66Lub/fI0uF8GaluBYI2G92uBSam4Eo5apDfucVVhX/AJskEhAkt/a8kTQT6l3ipGqIusSozU
-	1ezUrMdIEoNJ/rtboaggxaK80IWT0xzpNeWX8e3LjAb4/go+etqg1162mkx6MI8uEWNP1H+tKdbC8
-	kECVrUPtb9OxoWfELXiw==;
+	List-Owner; bh=0KkWwnijp2DPsGuiexvqRN06rQtKGuzx5OTQ34OSatQ=; b=pwFFkuyjndPdh0
+	16MrZE+Qkd3SX1v1wz9jr3TzYVb2Up5IcwdtE/9kEI7k5G0/MiWQ5ndsPdqS9yGb9oXa2fTIbaOv7
+	Tv7QbSFlK3jaS4sMuWwekXDGPD84OD49JVws8Lp1ysMOKTnkPpaL+CYfKHmDDrbRsx+UqfQYIL5IV
+	WRQigYmCZ1DR+34kKgphVVlfyAQ8YkHkMZq+ByfLdiiEpkr6/+aJ9XzQ1P5MkinVElhDldSB3KEgI
+	nmekhLRDimVZuihNKCMHVai9QvCGPkShK/vvzEysicJkt15acMP9NSWyk9hsTVY4YttG/04fo0PYo
+	FePKKwKm6kRF9a7ap6qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKcJZ-009V0p-Am; Thu, 17 Feb 2022 08:39:01 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKcB9-009QOT-3i
- for linux-rockchip@bombadil.infradead.org; Thu, 17 Feb 2022 08:30:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=Ylwbq95l0Mm9FxsxOV6QaYnDgP36KUfOScIIYrOYbmQ=; b=PA9Q1pam8LaOvz3naDbfQSkyLj
- 0OelYEZ6xvGxfpN58sxTrQSEKJ+y2Pa1f4BTI5ZBysoxnNVjdEtcKtTD8D73jPyWvPGbwq/jLq8FG
- 7mfKI12Gc+2nD9ItU7xFSU1YZsuE93PcXMJEBUzFxehsKKI9uoZG5DeB7N7ZSCjYZoZ67L/0/LvW5
- ZrFiND1G0tpV+HZptWRko5CwWnMGXbNhfop2FW6ZIgHuHOpwjfBjd5KUeUKVC8/eP3W+zLf2DOECM
- ySilbhKdY6HpWO6y8n4xrmojOAYr151nCGRuTA1RFVlrurfsEbQOUVA2Fopuzof4cuCGsT5kte65X
- 9bgKieCw==;
+	id 1nKcM6-009WSi-4i; Thu, 17 Feb 2022 08:41:38 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKcB4-00AXvH-4i
- for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 08:30:17 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nKcB4-009QKm-3Z
+ for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 08:30:22 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nKcAs-0002E6-El; Thu, 17 Feb 2022 09:30:02 +0100
+ id 1nKcAs-0002E1-El; Thu, 17 Feb 2022 09:30:02 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nKcAp-00ClT3-RX; Thu, 17 Feb 2022 09:29:59 +0100
+ id 1nKcAp-00ClSo-O9; Thu, 17 Feb 2022 09:29:59 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -58,10 +44,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
  Rob Herring <robh@kernel.org>
-Subject: [PATCH v6 08/23] dt-bindings: display: rockchip: dw-hdmi: Add
- regulator support
-Date: Thu, 17 Feb 2022 09:29:39 +0100
-Message-Id: <20220217082954.2967889-9-s.hauer@pengutronix.de>
+Subject: [PATCH v6 03/23] dt-bindings: display: rockchip: dw-hdmi: use "ref"
+ as clock name
+Date: Thu, 17 Feb 2022 09:29:34 +0100
+Message-Id: <20220217082954.2967889-4-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220217082954.2967889-1-s.hauer@pengutronix.de>
 References: <20220217082954.2967889-1-s.hauer@pengutronix.de>
@@ -72,8 +58,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_083014_290009_1E7080C2 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20220217_003014_163642_80B8014C 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,8 +77,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs
-needed for the HDMI port. Add the binding for these supplies.
+"vpll" is a misnomer. A clock input to a device should be named after
+the usage in the device, not after the clock that drives it. On the
+rk3568 the same clock is driven by the HPLL.
+This patch adds "ref" as a new alternative clock name for "vpll"
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 Acked-by: Rob Herring <robh@kernel.org>
@@ -101,32 +89,43 @@ Acked-by: Rob Herring <robh@kernel.org>
 Notes:
     Changes since v4:
     - Add Robs Ack
+    
+    Changes since v3:
+    - Keep old clock name for compatibility reasons
 
- .../bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ .../bindings/display/rockchip/rockchip,dw-hdmi.yaml      | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index e6b8437a1e2d1..38ebb69830287 100644
+index da3b889ad8fcd..0400f67e5f2c9 100644
 --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
 +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -28,6 +28,17 @@ properties:
-   reg-io-width:
-     const: 4
+@@ -36,7 +36,8 @@ properties:
+       # order when present.
+       - description: The HDMI CEC controller main clock
+       - description: Power for GRF IO
+-      - description: External clock for some HDMI PHY
++      - description: External clock for some HDMI PHY (old clock name, deprecated)
++      - description: External clock for some HDMI PHY (new name)
  
-+  avdd-0v9-supply:
-+    description:
-+      A 0.9V supply that powers up the SoC internal circuitry. The actual pin name
-+      varies between the different SoCs and is usually HDMI_TX_AVDD_0V9 or sometimes
-+      HDMI_AVDD_1V0.
-+
-+  avdd-1v8-supply:
-+    description:
-+      A 1.8V supply that powers up the SoC internal circuitry. The pin name on the
-+      SoC usually is HDMI_TX_AVDD_1V8.
-+
-   clocks:
+   clock-names:
      minItems: 2
-     items:
+@@ -47,10 +48,14 @@ properties:
+           - cec
+           - grf
+           - vpll
++          - ref
+       - enum:
+           - grf
+           - vpll
+-      - const: vpll
++          - ref
++      - enum:
++          - vpll
++          - ref
+ 
+   ddc-i2c-bus:
+     $ref: /schemas/types.yaml#/definitions/phandle
 -- 
 2.30.2
 
