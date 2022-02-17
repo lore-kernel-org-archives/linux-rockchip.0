@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F05E4C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF61C433EF
 	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 22:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=N/D98IOsE/7406fFah7jMc64uME3VBSClY3077L5I4U=; b=rWhO96nnZTyBLo
-	3/JEbkbua6B+Qq3xOApCYfojqGZhsQiRfeU3u3FhCKo40K/rnO7TDLXx4xwSs+pM3k2/2s9ASJL2S
-	J0qYHg2+7icYYoICe+fnbnFmpoaTWuXlgtus8ljzKsH+mU0WpiwIMMAk+vP7kXyX50zApUgx4gdwK
-	6zAaYkExa3sTIV3WuibN70RtzSy/orT4z2XogucF4DgH9ds8IpdmksUDmFTS/QlNGvkTqTMxdj4AW
-	UwncbSDnvI6J4RqNlXjpMC5rLY+r2xv8LXUzL1B0tvzc2w9jFVZR4N4r/CDihBkq+kGe4dRCWkKF+
-	XSGiSpOJjoGYlJmvT4tw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jDxH1WWQUluBqirXZvtFdPABCVsVfCQsO6BRbn7IPgs=; b=KdnPff5pgHF8Wh
+	j1qlyxQCIDSdOp7u3U722+haip1aWbv3jshBajdSMvbO/Ljpvw5r7trzQo21S2AMGxoCEUabUB23d
+	foPJTGQBsXri/VTqRIFSm60OBZ08X7tMdna6jBuEe1YZFdtvgH0Llir7yu0YZ8l+/y6m9QJy+1DRM
+	ejlX1Sp33ZhRtEhbFTpV1zxkLai+ELHOrZhsOsFdafNd3q5BggGl1mDadOvCxfleoddLMpNVIqvhb
+	iVGwoiOJNsYfE/3SivPjvPn2gWWtzHuncH9j4G2EF4WfzRgsVovZ3kw/nR27vHZM9rcPU8f0XAIJb
+	j4At7D/pAVFs45dldaQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKpTW-00CNhn-HW; Thu, 17 Feb 2022 22:42:10 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1nKpTY-00CNiR-22; Thu, 17 Feb 2022 22:42:12 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKpTU-00CNgh-O0
- for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 22:42:10 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 132so6239836pga.5
- for <linux-rockchip@lists.infradead.org>; Thu, 17 Feb 2022 14:42:06 -0800 (PST)
+ id 1nKpTV-00CNgw-9L
+ for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 22:42:11 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id v4so6987946pjh.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 17 Feb 2022 14:42:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/pFhxh4a1mIJWKVvwWf0TWI0PzyzDNvxgd8MaYxtB4g=;
- b=DRjZUlF38aKhKGF1HEEXpShz5dNW4rV1EZ3PJsdeXyBLxzGJJMj2+9g6pi+MiKGhYt
- H+9E29WZ8V4Np9zsahnlGJmkvOu6FMFXZxC9SU+qF5bJdkcsbldinSAPqonRI6Ftb1Dz
- YKCtyN3JvqpZZ/nc5796hnay3gO0nfEdVSefs=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=5mmtHfGvX3QTdzLz6j/Nu6tjim8GE4bCKl/5zpm/NAQ=;
+ b=BzfZpeq3rZdStoI1Wr0xcS8Cf55hQJ/D+7O5l60/MUPozDdqMR3PzVwSfYraa+nLNT
+ NyD7gmG5bjFJAZvQjb+UrhHZ97vZIwQxC6do5y2+9SD9RrVdz/VEfZyfLpsRW5Svhs3y
+ 0aDXxqIAti6kqYHFQ6CBjV1g6soYBlxXwNrSQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=/pFhxh4a1mIJWKVvwWf0TWI0PzyzDNvxgd8MaYxtB4g=;
- b=NSt4OX8DAZf2jRRifjjUdTogTDYI08nYNgMaKCZ69r5fVq70N0JzakCB4tRsgcDae2
- BTGpkrQEzZBKk0WoG0SFcoTefZvT6d+0LQvynd/jP3I+5nbnR0DZa8N6rIYBicw7dLTh
- GXM17DT0Z1lS4DxqFgveX6a6aZmjrq+1gZJb2W4ooj5N72I7XsEW0dCY/WygY1vyl4T4
- KF95HIoiJxgrI9T/MVof3eX6ZsUbLqGJ298DS6gpdfmPKYCsdSzqggkMqhg0ANk9baRr
- V3T+7TrDnnovPpaJPtDWs6AiZT6WnfFaCObd45m+cTNLeiLm8q+63kjSZflSR4xV/7qe
- y90A==
-X-Gm-Message-State: AOAM5325zCEEwx+0ao70Tmr588rb0QkKIAPXogCrCAr5Afrph4n012Vz
- O33rFK5HfH7zM6SD40fBrAR5bQ==
-X-Google-Smtp-Source: ABdhPJx0I/9dms8bGvA0MQ9aczlCf/u6f2qI/Tw9lU7d6SMBvt5gmujVGb3LwnbbS//bPCI4KYGOjg==
-X-Received: by 2002:aa7:83c2:0:b0:4e0:91c1:6795 with SMTP id
- j2-20020aa783c2000000b004e091c16795mr4885484pfn.54.1645137726160; 
- Thu, 17 Feb 2022 14:42:06 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=5mmtHfGvX3QTdzLz6j/Nu6tjim8GE4bCKl/5zpm/NAQ=;
+ b=wQrUvn8RZw3f9BC6c+5D/uDdFb/GzLMm3iDmqKleHZqJx8hrp2LdnmAv+IfK81LCAC
+ Of2NtO7zmN/txlOGbCt769nmZHNs11RiHZ1sgpsIqedCN8gp5bhoP8G9RobTbXsl8x+e
+ +1KwXdgPz7GGOMGzCFRn16Neuf+KTBiT4h4L+yVgctrzwS8q8kcDEIVxy/zN01rldo9L
+ t11ZNILiAOiQDjB1ou/oZ019Sgy6hmmueuRn06XVjUwkI7d+OTaIshNhGYLdWwlTJ4UN
+ tyko15H7/h0X/5V5wAftl7BgfPVRF/RJoi5813UikGmhj/xI+kJnq/N0E4fNgg2zoyKI
+ oOmA==
+X-Gm-Message-State: AOAM531k/e9nvw1xQ3RsMSjE0T+RibFOwUq0nNI2LaLFZN4Pv6wduSiA
+ Ol26s5zzwJNTIQloIfiODgqVfg==
+X-Google-Smtp-Source: ABdhPJz3bf7M0OSxfziRldKe7HpMouFMO9Ur2/1DPJi+T1EoIE3EpMv4yzP/J7CTVuwGmI1BEieWyg==
+X-Received: by 2002:a17:902:bd85:b0:14d:c29b:d534 with SMTP id
+ q5-20020a170902bd8500b0014dc29bd534mr4651443pls.99.1645137728224; 
+ Thu, 17 Feb 2022 14:42:08 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:677e:1914:4c14:1662])
- by smtp.gmail.com with UTF8SMTPSA id u1sm628435pfg.151.2022.02.17.14.42.04
+ by smtp.gmail.com with UTF8SMTPSA id 4sm574985pfh.125.2022.02.17.14.42.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Feb 2022 14:42:05 -0800 (PST)
+ Thu, 17 Feb 2022 14:42:07 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <narmstrong@baylibre.com>
@@ -62,17 +62,17 @@ Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Doug Anderson <dianders@chromium.org>, Sean Paul <sean@poorly.run>,
  Jernej Skrabec <jernej.skrabec@gmail.com>, dri-devel@lists.freedesktop.org,
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Brian Norris <briannorris@chromium.org>,
- stable@vger.kernel.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Subject: [PATCH v3 1/2] drm/bridge: analogix_dp: Grab runtime PM reference for
- DP-AUX
-Date: Thu, 17 Feb 2022 14:41:45 -0800
-Message-Id: <20220217144136.v3.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+ Jonas Karlman <jonas@kwiboo.se>, Brian Norris <briannorris@chromium.org>
+Subject: [PATCH v3 2/2] drm/bridge: analogix_dp: Enable autosuspend
+Date: Thu, 17 Feb 2022 14:41:46 -0800
+Message-Id: <20220217144136.v3.2.I48b18ab197c9b649d376cf8cfd934e59d338f86d@changeid>
 X-Mailer: git-send-email 2.35.1.265.g69c8d7142f-goog
+In-Reply-To: <20220217144136.v3.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+References: <20220217144136.v3.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_144208_788490_2E856039 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20220217_144209_346622_B1F5A6AB 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,60 +90,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If the display is not enable()d, then we aren't holding a runtime PM
-reference here. Thus, it's easy to accidentally cause a hang, if user
-space is poking around at /dev/drm_dp_aux0 at the "wrong" time.
+DP AUX transactions can consist of many short operations. There's no
+need to power things up/down in short intervals.
 
-Let's get a runtime PM reference, and check that we "see" the panel.
-Don't force any panel power-up, etc., because that can be intrusive, and
-that's not what other drivers do (see
-drivers/gpu/drm/bridge/ti-sn65dsi86.c and
-drivers/gpu/drm/bridge/parade-ps8640.c.)
+I pick an arbitrary 100ms; for the systems I'm testing (Rockchip
+RK3399), runtime-PM transitions only take a few microseconds.
 
-Fixes: 0d97ad03f422 ("drm/bridge: analogix_dp: Remove duplicated code")
-Cc: <stable@vger.kernel.org>
-Cc: Tomeu Vizoso <tomeu.vizoso@collabora.com>
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
 
 Changes in v3:
-- Avoid panel power-up; just check for HPD state, and let the rest
-  happen "as-is" (e.g., time out, if the caller hasn't prepared things
-  properly)
+ - New in v3
 
-Changes in v2:
-- Fix spelling in Subject
-- DRM_DEV_ERROR() -> drm_err()
-- Propagate errors from un-analogix_dp_prepare_panel()
-
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index b7d2e4449cfa..16be279aed2c 100644
+index 16be279aed2c..d82a4ddf44e7 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1632,8 +1632,19 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
- 				       struct drm_dp_aux_msg *msg)
- {
- 	struct analogix_dp_device *dp = to_dp(aux);
-+	int ret;
-+
-+	pm_runtime_get_sync(dp->dev);
-+
-+	ret = analogix_dp_detect_hpd(dp);
-+	if (ret)
-+		goto out;
+@@ -1121,7 +1121,7 @@ static int analogix_dp_get_modes(struct drm_connector *connector)
  
--	return analogix_dp_transfer(dp, msg);
-+	ret = analogix_dp_transfer(dp, msg);
-+out:
-+	pm_runtime_put(dp->dev);
-+
-+	return ret;
+ 		pm_runtime_get_sync(dp->dev);
+ 		edid = drm_get_edid(connector, &dp->aux.ddc);
+-		pm_runtime_put(dp->dev);
++		pm_runtime_put_autosuspend(dp->dev);
+ 		if (edid) {
+ 			drm_connector_update_edid_property(&dp->connector,
+ 							   edid);
+@@ -1642,7 +1642,7 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+ 
+ 	ret = analogix_dp_transfer(dp, msg);
+ out:
+-	pm_runtime_put(dp->dev);
++	pm_runtime_put_autosuspend(dp->dev);
+ 
+ 	return ret;
  }
+@@ -1775,6 +1775,8 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+ 	if (ret)
+ 		return ret;
  
- struct analogix_dp_device *
++	pm_runtime_use_autosuspend(dp->dev);
++	pm_runtime_set_autosuspend_delay(dp->dev, 100);
+ 	pm_runtime_enable(dp->dev);
+ 
+ 	ret = analogix_dp_create_bridge(drm_dev, dp);
 -- 
 2.35.1.265.g69c8d7142f-goog
 
