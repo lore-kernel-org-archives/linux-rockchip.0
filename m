@@ -4,69 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E424C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 15:13:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1DAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Feb 2022 16:23:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6mh7599AB4Z83O52FToVqbjcB/HWRUHj+jZPoxk+/ts=; b=dZJPy/cEW01ygl
-	hf11W5gaG50c1tUGR8RLez9bQVwuJjOn3YEEnMRH2W13UaqG6NMKqo6NVtygJeJR0F3Y3ifI7GWUA
-	aa8IkhKNawGqkxV8nkggtheESxLJtvdlg7Z7DdS15lbD4G4f4sYLodAgr4mGYpy1EgWA8grIO1UWJ
-	/hEPTaMdWgoX77GfUxpKbWIsg446G/cSspQ8NfDtjVsiHwrqHk41VneafBx3ciQVyK9utijqN1Foy
-	5tmDRMZJ5fIIQcvZJOykJHQcmDYMTSLWY/DuWmC62tfpYLA3wJOt8teCRhhwmLvIb8cbrM/VoncmW
-	5Qk0UOyuje3X73pFdV8A==;
+	List-Owner; bh=uadoM+el3mmMPz7zkdA5Sq3b6gxA8DAPpcvRN2InQP0=; b=Xs2AHppxbjVhbB
+	1AyXVbUHdZaFJQ30zHr46dox52BoYCYOeZg41+PZGcy5maz2lMjp9PeRswcbRHx6URiQa/l4h1gQz
+	lodPrdY19+3QSmTC79RfXG1gv+8BFAVSErBar27FsvMyAH2VA7jbK1BaBL2P9GZO88fGebXZFjqNV
+	7TCf4MmvozaKNhRskAzBjIdZiErZ+CRdJ/nk4kNEKnlH5guy9urPjvFuQywW2deZjc8Iu2/neI1wi
+	tYi4hRys3YKob0bYDk2bchBZ/Tf44zhQ40SEJyAc8BkFiStHbbAL0Xmk2w2fTfPj0sYbN32pYBqzw
+	22eG5OJDh+tnXcNYy7rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nKiT3-00BDTd-7B; Thu, 17 Feb 2022 15:13:13 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nKjYd-00BQ9q-Ru; Thu, 17 Feb 2022 16:23:03 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nKiSz-00BDSY-NZ
- for linux-rockchip@lists.infradead.org; Thu, 17 Feb 2022 15:13:11 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nKiSr-0001t9-Hc; Thu, 17 Feb 2022 16:13:01 +0100
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nKiSp-000720-G6; Thu, 17 Feb 2022 16:12:59 +0100
-Date: Thu, 17 Feb 2022 16:12:59 +0100
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
- Douglas Anderson <dianders@chromium.org>,
- linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>,
- kernel@pengutronix.de, Yakir Yang <ykk@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 13/23] drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
-Message-ID: <20220217151259.GT18637@pengutronix.de>
-References: <20220217082954.2967889-1-s.hauer@pengutronix.de>
- <20220217082954.2967889-14-s.hauer@pengutronix.de>
- <f5abe6aa-473a-a00d-2bc5-b8a1d0560d1f@collabora.com>
+ id 1nKjYQ-00BQ5e-IB; Thu, 17 Feb 2022 16:22:52 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 3EACBB82362;
+ Thu, 17 Feb 2022 16:22:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CD63C340E8;
+ Thu, 17 Feb 2022 16:22:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1645114967;
+ bh=WdbxnQytOJyFGKv/5Vdo8JVuxQQcHwb/2yJR9P+3OUU=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=MQGFC60n2jBDWLwIZ3rq3bUFlfWZHDDeM04QnUnmEq3EZy4AT4bVB2yAK8tINWZRX
+ 5yyZoymrJIp3YKQIsYEadHe5ug8dYbReYeKcU04c5fHo9pRqp1ul+pAyVO+T7DRdVH
+ ocSIHsTV7PXwKPdkbG3FoLs+aTqhwNvaPXJz/pjypPjkQsLPvVWd98OH127aCNzx7F
+ HoCuKqJnea7b39bJMd34xDSFb0UwwPPxtB+4HfiXf8AMYDHhuVL/dxnh7sGiGO3utF
+ fBf+DZ4hQ2LHut0+L0iCChPA9EAWoUAj/OfjNC3nG6CoVX7DbO9jBNppE48w7WnGsO
+ 4+FZY1qhknxKQ==
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20220216014028.8123-1-jon.lin@rock-chips.com>
+References: <20220216014028.8123-1-jon.lin@rock-chips.com>
+Subject: Re: (subset) [PATCH v3 0/6] New support and problem adjustment of SPI
+ rockchip
+Message-Id: <164511496635.1843820.10942141701559024729.b4-ty@kernel.org>
+Date: Thu, 17 Feb 2022 16:22:46 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f5abe6aa-473a-a00d-2bc5-b8a1d0560d1f@collabora.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 16:04:18 up 68 days, 23:49, 87 users,  load average: 0.37, 0.42, 0.35
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220217_071309_777731_63DDE924 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20220217_082250_761975_8F8AA8CD 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,36 +68,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBGZWIgMTcsIDIwMjIgYXQgMDU6MDA6MzdQTSArMDMwMCwgRG1pdHJ5IE9zaXBlbmtv
-IHdyb3RlOgo+IDE3LjAyLjIwMjIgMTE6MjksIFNhc2NoYSBIYXVlciDQv9C40YjQtdGCOgo+ID4g
-RnJvbTogRG91Z2xhcyBBbmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPgo+ID4gCj4gPiBK
-aXR0ZXIgd2FzIGltcHJvdmVkIGJ5IGxvd2VyaW5nIHRoZSBNUExMIGJhbmR3aWR0aCB0byBhY2Nv
-dW50IGZvciBoaWdoCj4gPiBmcmVxdWVuY3kgbm9pc2UgaW4gdGhlIHJrMzI4OCBQTEwuICBJbiBl
-YWNoIGNhc2UgTVBMTCBiYW5kd2lkdGggd2FzCj4gPiBsb3dlcmVkIG9ubHkgZW5vdWdoIHRvIGdl
-dCB1cyBhIGNvbWZvcnRhYmxlIG1hcmdpbi4gIFdlIGJlbGlldmUgdGhhdAo+ID4gbG93ZXJpbmcg
-dGhlIGJhbmR3aWR0aCBsaWtlIHRoaXMgaXMgc2FmZSBnaXZlbiBzdWZmaWNpZW50IHRlc3Rpbmcu
-Cj4gCj4gVGhlcmUgYXJlIG5vIGRldmljZS10cmVlcyB0aGF0IHVzZSAicm9ja2NoaXAscmszMjg4
-LWNydSIsIEFGQUlDUy4uCgpXaGF0IGRvIHlvdSBtZWFuPyBJbiBteSB0cmVlIEkgaGF2ZToKCmFy
-Y2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC5kdHNpOjg2MzogICAgICAgICAgICAgIGNvbXBhdGlibGUg
-PSAicm9ja2NoaXAscmszMjg4LWNydSI7CmRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMyODgu
-Yzo5ODU6Q0xLX09GX0RFQ0xBUkUocmszMjg4X2NydSwgInJvY2tjaGlwLHJrMzI4OC1jcnUiLCBy
-azMyODhfY2xrX2luaXQpOwoKPiAKPiBXYXMgdGhpcyBjaGFuZ2UgdGVzdGVkIG9uIGEgbm9uLVJL
-MzI4OCBkZXZpY2VzPwoKWWVzLCBvbiBhIHJrMzU2OCA7KQoKVGhlIHBhdGNoIGhhcyBiZWVuIHBv
-c3RlZCBiYWNrIGluIDIwMTUgYW5kIHdhcyBhZGRlZCB0byB0aGUgUm9ja2NoaXAKZG93bnN0cmVh
-bSBrZXJuZWwgaW4gMjAxNi4gSSBkb24ndCBrbm93IGhvdyB0aG9yb3VnaGx5IFJvY2tjaGlwIHRl
-c3RzCnRoZWlyIGtlcm5lbHMsIGJ1dCBJIGFzc3VtZSB0aGUgcGF0Y2ggd291bGRuJ3QgYmUgdGhl
-cmUgaWYgaXQgY2F1c2VkCmFueSBwcm9ibGVtcy4KClNhc2NoYQoKLS0gClBlbmd1dHJvbml4IGUu
-Sy4gICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ClN0ZXVlcndhbGRlciBTdHIuIDIxICAgICAgICAgICAgICAgICAgICAgICB8IGh0dHA6Ly93
-d3cucGVuZ3V0cm9uaXguZGUvICB8CjMxMTM3IEhpbGRlc2hlaW0sIEdlcm1hbnkgICAgICAgICAg
-ICAgICAgICB8IFBob25lOiArNDktNTEyMS0yMDY5MTctMCAgICB8CkFtdHNnZXJpY2h0IEhpbGRl
-c2hlaW0sIEhSQSAyNjg2ICAgICAgICAgICB8IEZheDogICArNDktNTEyMS0yMDY5MTctNTU1NSB8
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+On Wed, 16 Feb 2022 09:40:22 +0800, Jon Lin wrote:
+> Changes in v3:
+> - Support clear the bits of configure bits filed
+> 
+> Changes in v2:
+> - Fix patches should be at the start of the series
+> - Fix patches should be at the start of the series
+> - Delete useless messages
+> - Limit cs-high presetting to the chip select n <= 1
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-linus
+
+Thanks!
+
+[1/6] spi: rockchip: Fix error in getting num-cs property
+      commit: 9382df0a98aad5bbcd4d634790305a1d786ad224
+[2/6] spi: rockchip: terminate dma transmission when slave abort
+      commit: 80808768e41324d2e23de89972b5406c1020e6e4
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
