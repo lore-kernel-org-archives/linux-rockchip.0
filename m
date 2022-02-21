@@ -4,74 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 271FBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Feb 2022 02:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4804C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Feb 2022 09:54:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=N+OF0aF7uwjlK/2sbtVNASHLSu+1A6rbsq9fR0pAClc=; b=qPRnWBxr4nS0nW
-	nPzDnZCXYuWWQXXm4MICH78+H2pi1GG/Heik6/spqV6WMdxZZanhT+2f9O+7ginBK2ClRZpInqt71
-	eUltoySE1Ev5WFpbNvpOnI7/DlXHf0PDFDKO6xTnF7fIA2jgZBYS277eXE4ORpjU0jcCRVDxzJ1nf
-	bR1sjBsl7ue3AcZmufpu4K12gIR7/eM3hYeBIbiFtnTsqHMEAajq40kMNYsmGQoX/xnXpIsrLdzPM
-	iSN2onuPaMuhuEg05P7Wy442Chxl4g4ctf7qNLNtadxLVu+xqZxl1AM5Eg3yr74346APkx1deB4eR
-	3MBjBIf5gCOrZ3W0Zbog==;
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xtZQLp4MRX1n39+VjenbBFpEtFdXi8I/fc2J1fccYX0=; b=Y+Ch7UUWv9y8Cf
+	0HoEffh4TRZBZ8MP/JirRDzXFg04xEZ0Bgm2EEysECdiOfkgp1ldb9ZOTbMhPcg9uNcsM/aSpeM6i
+	nMPkM9GKZZAWisnQb6r1gDa7xAvxAB/N+ODZpRfmxiNxXIAeewRNkhWfI7G3DSo17BsMJFqF2xyfN
+	vSxqwM3f1vbwNn2kpdd+qoOqMrFehAKS6Oo8uP14GY19b05zIGWO8+u0Vk0dNhJTxlVDLXRuud0dY
+	fjOdNQ7iejZoSxjHHpJ0FISdcWctAvPRBWWdROUj6KW7nlr+O/iKnawA7Gj2jBQi8kcOyol6frJIt
+	xufJamnMp+A3Va6biYVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nLy2W-002tfN-CR; Mon, 21 Feb 2022 02:03:00 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1nM5P7-004haS-IO; Mon, 21 Feb 2022 09:54:49 +0000
+Received: from mout.gmx.net ([212.227.15.15])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nLy0p-002stK-Lc; Mon, 21 Feb 2022 02:01:17 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id h9so28230646qvm.0;
- Sun, 20 Feb 2022 18:01:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=L6UJ01aO6yqMFyXgXVkysCIqiLsld/b/1p7hzthZA8U=;
- b=FV9H/c+eRAbiraRlbbFVbiUpp+PdGevLPwWpXp5zDNgnKnVqO4+fED7zaFyE9HDmpN
- sH9fo9LkiNQvf+JSp7FIt0dXcZrM8SpUS6013DfVUatIToW0uNqgotay7nH5s+QmgHtf
- ZKJQl2sitkYGDNKctwH+fS3sNIx+DMsWOmYxst2OBZQGO2S/lpY89MHoOlMDIocPv4vz
- 43t8PxlZR8lDUGouHja3QhGoAHmWXsI2nQOJ5GA4wvEFsLmqsiKV1A/rSCmsmh/i8v3G
- NUYVz3L7reQ+1IppHRMjhh7Rer6gPXkQsSj7HuZ4zvmJkOkb8gPYF43v98Aket1bna5L
- CgvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=L6UJ01aO6yqMFyXgXVkysCIqiLsld/b/1p7hzthZA8U=;
- b=mH7Vn5LSjV1L7BeWV9D0+UY/HYoe/sojQ47W5AwGMnsoEksBtvKgkUf2GCKjIbIut3
- u2eV5iIZm+rpVle2yBS9Onhs4tZcmug8q+fqebhKdoSkItodM/SO+w4KH8Wz5mMdXLOV
- lYsn/mp4q/2pUuRkUSX0bA9LlnV5VSqXxiOKJuhmOFG6+/hWybf2MDROOkbC/Xfo/02J
- rF9ncSJsWVlHoZs2J3P/tS+YNFWBbLYRrk4eWhuyzmxnhZCtxyog3gEX6lJNK1FllMjN
- zaOEybMqogg4ShSOYh1HWkY6PxoPgyiIanX+uWYC6RGkBKxqAL9XlCyPV80MoEDsrrYB
- /cxA==
-X-Gm-Message-State: AOAM530UJnc93BoB1yCW1XdP11C1yodPkIbTFDrizFTUKZI0EJ3wvuyr
- 7WUQ9TZpG5j35a0HYnnj1pA=
-X-Google-Smtp-Source: ABdhPJyti2fe/0D7jey1jMV+CH6mSxJq2zIFxoITidmlU76ohHSP58kKVGfznBiNbihuemWWiby6Ww==
-X-Received: by 2002:a05:6214:e6f:b0:431:46cd:dd9a with SMTP id
- jz15-20020a0562140e6f00b0043146cddd9amr6013348qvb.125.1645408874012; 
- Sun, 20 Feb 2022 18:01:14 -0800 (PST)
-Received: from localhost.localdomain ([193.203.214.57])
- by smtp.gmail.com with ESMTPSA id n19sm19160708qtk.66.2022.02.20.18.01.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Feb 2022 18:01:13 -0800 (PST)
-From: cgel.zte@gmail.com
-X-Google-Original-From: chi.minghao@zte.com.cn
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org, heiko@sntech.de, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Minghao Chi <chi.minghao@zte.com.cn>,
- Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH] clk/rockchip: Use of_device_get_match_data()
-Date: Mon, 21 Feb 2022 02:01:03 +0000
-Message-Id: <20220221020103.1925026-1-chi.minghao@zte.com.cn>
-X-Mailer: git-send-email 2.25.1
+ id 1nM4T9-004Rks-9m; Mon, 21 Feb 2022 08:54:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1645433669;
+ bh=Z8EpCecM7RhGma2bC7EtfcMj8Tocmigz2nMw62yYXOI=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=SGP/t2lI+xhMg/JrfB13WY4xxriDcSAHgJ6ylum/H9flWMPRdIgPX98DGQ/1h6i3Q
+ qairigJXYCvXvVFnp/yDTP+h9lWb9PEJfSmaS5aqGry3mW27en1R96IHha5jvJWvL+
+ qu5OOcNGUpraNYgoYe2Z5euBaUOZK40LBlFXjLxY=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.156.188] ([217.61.156.188]) by web-mail.gmx.net
+ (3c-app-gmx-bs60.server.lan [172.19.170.144]) (via HTTP); Mon, 21 Feb 2022
+ 09:54:28 +0100
 MIME-Version: 1.0
+Message-ID: <trinity-1fb35fb4-c954-46bc-ae87-02d5df121a01-1645433668183@3c-app-gmx-bs60>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Michael Riesch
+ <michael.riesch@wolfvision.net>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Peter Geis
+ <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: Aw: [PATCH v6 17/23] arm64: dts: rockchip: rk356x: Add HDMI nodes
+Date: Mon, 21 Feb 2022 09:54:28 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220217082954.2967889-18-s.hauer@pengutronix.de>
+References: <20220217082954.2967889-1-s.hauer@pengutronix.de>
+ <20220217082954.2967889-18-s.hauer@pengutronix.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:x3LBl6EdmehdGuwhuzd1xOiFb5z5EOYnOHMNPxoOy2rR8Mp7JmyFo1r/Het2WBDJ+/P/C
+ MbmK1DBWnywY9nPp//MWoUl0xvSo2oFozeETajq/jVz0zEjHvB8ykHCkzW7YiAG74BlX4x6IKiyJ
+ ykAnSyyPrbCPT438/Jx32+Zl/DaxIVQbl7p0P6yOye/7si/IiLDQ+qkkt+Dt7Ttsr2PEr1u0BJ0p
+ cLwZzSo1tEct6iqdXWkPu3nprszone4sbWeWnDcadvyteaibWI8AbYRahHEstwIQjQWq74mTVvoZ
+ fs=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DwdkB/65TKg=:HKvkpn7knmxoBuuiGPVqAX
+ a52f8isbXjpRDRLNOGCNM74lVG9WMh/GmZaZqg1g2Y6WUvSocvo8X6OpfMrb+kH/epU2SqxaG
+ Y7TUYu3SamCGVywdGnqbSey7MI0noKv+mmeTEXF2bKSnWsDz5BjcuaD6lNsxg7fWpLPWXqLdo
+ q0YNDHYn4XZ/wNzVIC4jBKiJwM0w5UNRBDWiZ2WT0Hn73geP30gdDbfF/P3W5RHZpl3HUvOzI
+ 5gLlwXgOzajIyabSo57wTRTHeYjX/ll+Ev9WBKdiziKzt6UnhU695W5nWhWJtjtUjUFgg9Xtv
+ u3kJVcG93Sqo0gkiXedAIiAgxNsg9pxhBAySNczCCgPfZhwahFsgNgMSkWQ/668LAmPtj3DMr
+ PAkdnsiDMUHJ1VBUZBn9jVlQ2DteRFw3AjOxJq+fEF2HNA+T+L3z/EC7G9TW3lNaFgk4CeDjq
+ rQmthDdyPzoVE+9N2QXeLkqTlvUvoDqYI0Op7Y92VWeSiODLkoOrzXL3TZDBVVx22jbpJ6bHR
+ XGUcLyDTRau47Z7BUzzgjdWcYlwu6qJ1d9g/+5YhOVe63hEfy4xkCejUWVtRb7oqiaZnHd91T
+ KmCQC5cYSjNz/m4sSFFdrb+EOa0A3P3rB4PkGm9stkHLg1e6d5Zd3VSIYQnO5+uDWaFt1Xpuj
+ ztMk1+oqEUPnl1E0lV3o1Tm6H5msgDGQuHP8PbuV1JrzaUshTR2Qpif8slsHA/jwaYEt9BHTX
+ uImMXEI9pDkYEp8rw3zxNI0Qc0TVj0AvIrLEaTJlvjO5BepPQqjpGxtVpwB+cU8Awj1tfX6dR
+ 4SoFCOx
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220220_180115_769238_A2491477 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20220221_005455_666556_27198E01 
+X-CRM114-Status: UNSURE (   8.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +94,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
+Hi
 
-Use of_device_get_match_data() to simplify the code.
+> Gesendet: Donnerstag, 17. Februar 2022 um 09:29 Uhr
+> Von: "Sascha Hauer" <s.hauer@pengutronix.de>
 
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
----
- drivers/clk/rockchip/clk-rk3568.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -10,7 +10,6 @@
+>  #include <dt-bindings/pinctrl/rockchip.h>
+>  #include <dt-bindings/power/rk3568-power.h>
+>  #include <dt-bindings/soc/rockchip,boot-mode.h>
+> -#include <dt-bindings/soc/rockchip,vop2.h>
 
-diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-index 69a9e8069a48..9ca1a26a2533 100644
---- a/drivers/clk/rockchip/clk-rk3568.c
-+++ b/drivers/clk/rockchip/clk-rk3568.c
-@@ -1697,14 +1697,12 @@ static const struct of_device_id clk_rk3568_match_table[] = {
- static int __init clk_rk3568_probe(struct platform_device *pdev)
- {
- 	struct device_node *np = pdev->dev.of_node;
--	const struct of_device_id *match;
- 	const struct clk_rk3568_inits *init_data;
- 
--	match = of_match_device(clk_rk3568_match_table, &pdev->dev);
--	if (!match || !match->data)
-+	init_data = (struct clk_rk3568_inits *)of_device_get_match_data(&pdev->dev);
-+	if (!init_data)
- 		return -EINVAL;
- 
--	init_data = match->data;
- 	if (init_data->inits)
- 		init_data->inits(np);
- 
--- 
-2.25.1
+why dropping this after adding in part 16?
 
+>  #include <dt-bindings/thermal/thermal.h>
+
+it looks like you moved this to board includes...imho this should stay in the rk356x.dtsi, because compilation will fail if a board without the vop2 (and missing the include) is derived from rk356x.dtsi.
+
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
