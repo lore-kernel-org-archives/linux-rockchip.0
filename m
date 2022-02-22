@@ -4,78 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7FECC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 21:13:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8239DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 22:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3E4Kk1+WS75JCPn6rMrXoQ/KpwtQJQ9p3x2OZrRaOIs=; b=mBmS5gx+uBx85Y
-	DU2D6gU/oqp9UiPHHi+0WWcGYuvH8Qbb7405jzkrjMTBuxkEQmbkAvCNVgwFV85bkkfzahwtZ7MWC
-	YR2Eh3iUPondooRx00m5oIG99ayOSnBAJRHlxBbSWAzi/7VtWSqQJL+ESkLG1CKmZ7hzSjsdZvtPZ
-	H+FKW0cMxfEaKUQhyFmPHDQOrBXt6nV1GJw/7nmHTylv+53sawywMwL3ti+jypo0L9fcL+Y0H8va7
-	d5WSXrUTT2esskPotcqqaPCdU2/xXOCqvslLGUDcel+VuQwe2RhbdoFqLtS1EClOPDopr/XENB2Nb
-	LNC8PHIwQuudC2cJZ35w==;
+	List-Owner; bh=uKOHQgF7uDrGDUCQ5R1zxAAM+no5hpNxTmFN7XEXWS0=; b=NnysrqfEC4SEbj
+	mahnH8JnOeuFaGnIJq0wu5PJFXnWhgUyc0fsVBdy5C4wF543egixzI/Ms2mXCPy+AWTVdLXeZe5UR
+	1oW6x3KpSU2a+RUw5E642docq94lZHOxAjuRs9Hs15w/GyOxwK4Mhpct31B/3Jx95faSM47ETeXGx
+	VMwU6oVr7D9i5k5eVjL/i3akiKTEYFqFYic960fi5fQEUEwwcVdQfLrDKmj4E74nudiZ6uASALyJM
+	zaijgznXJFbmtzMiciUbAWsYl4LXLDPgV9fdCclyWNWEWS/rTH3FU+0tUAcRFS3EfVKDzcUoCIbOd
+	B1ql40cQ/zdFBYuK98tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMcTa-00Bd0O-Sn; Tue, 22 Feb 2022 21:13:38 +0000
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
+	id 1nMdMK-00BkwT-Uc; Tue, 22 Feb 2022 22:10:12 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMcTW-00Bcyt-Rr; Tue, 22 Feb 2022 21:13:36 +0000
-Received: by mail-oo1-f51.google.com with SMTP id
- j7-20020a4ad6c7000000b0031c690e4123so10361736oot.11; 
- Tue, 22 Feb 2022 13:13:34 -0800 (PST)
+ id 1nMdMG-00BkuT-Dc
+ for linux-rockchip@lists.infradead.org; Tue, 22 Feb 2022 22:10:12 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id lw4so47144888ejb.12
+ for <linux-rockchip@lists.infradead.org>; Tue, 22 Feb 2022 14:10:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ncJM2T87X2o8pTyVRveZGSOn+a2+yRMOSUhJC3B/Gq4=;
+ b=Ivl+fOAzjwZVikAE//GhKXqrg3FgwasunygzL6X3K7tmMukt25sYmGH/BgwYn33eey
+ 2oGVVJytRTJ3g4D06lpohmTyGRsIdaXZQWvxUoiiNWjYdiWXL/9J4CrtB84gRRQ47W25
+ ecpmNDu6kl1oulpWSeokNUQNW6BZAhhT25Rls=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=cgkndvT1T4jmwO27r780XgLtHhcjKRbYMWE4rDOy7BI=;
- b=nP6yjc1HvV9hbzQQEB9pVtS7zLwCVnN9GtzxUqPtvKe8kpweXltLTSyuMgFf7S5XUe
- j9CmJhP0oL3wzhhYLB3WxVRovbmq9ZZCXSrT2SoTvFJHyX1ekL758KiCkVC+kxcC5X7Y
- mybkDxJ1mF6bLhKvzyiVdF6zE7vLIJfvVWNlniP5B6XU1/HpeSBxTpM1X3Q0yPMke2Ia
- VAsklLn2rw7gEMxdS8RL8CuZ3dB4B4ITB9DbwBswjG1fADEPUv1Y9CQEnse8SUx1sGZY
- iWSg9jy6Fyqu+KTuzcxmE2ZyBZuBPRd80QACRIJr7X2DdRVZ2lp4Hdm6vxOqlTmh/T/C
- z/Qw==
-X-Gm-Message-State: AOAM531ZJwChl3sD2oJuaoZNvgV0T7gogPBTb6LJHTUBlndycJXEnzTQ
- TgfeEjFVTNkI66/X/7MNIA==
-X-Google-Smtp-Source: ABdhPJy2NX8pMjrtMgNUu4fjsnzN/bbxQgfvS1zRIpcdc0Lc8SuOVgeKX9OsMW7ynJcbMh2oqPNIZw==
-X-Received: by 2002:a05:6870:e38e:b0:d5:20e6:2b63 with SMTP id
- x14-20020a056870e38e00b000d520e62b63mr1599153oad.141.1645564413901; 
- Tue, 22 Feb 2022 13:13:33 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id bj38sm6235745oib.20.2022.02.22.13.13.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 13:13:33 -0800 (PST)
-Received: (nullmailer pid 3597239 invoked by uid 1000);
- Tue, 22 Feb 2022 21:13:31 -0000
-Date: Tue, 22 Feb 2022 15:13:31 -0600
-From: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, devicetree@vger.kernel.org,
- Andy Gross <agross@kernel.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, Benson Leung <bleung@chromium.org>,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, chrome-platform@lists.linux.dev,
- Guenter Roeck <groeck@chromium.org>, linux-pwm@vger.kernel.org,
- Douglas Anderson <dianders@chromium.org>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Subject: Re: [PATCH 1/4] dt-bindings: pwm: google,cros-ec: include generic
- pwm schema
-Message-ID: <YhVR+66zwVrqs1QQ@robh.at.kernel.org>
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-2-krzysztof.kozlowski@canonical.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ncJM2T87X2o8pTyVRveZGSOn+a2+yRMOSUhJC3B/Gq4=;
+ b=fW6JYDdXMkCh/m/bcOC08X2Hl4SR+p08hw3VNalr/yseWO+F8rUAZ053bS/GBFuo8o
+ vJwlUz839W/6MXTzus5JnEYbbsrHbIccOVprFEISpZWUPiLWMjvCz/L2N1iR0R1R0qjD
+ M1kdUgLmFMw7KRAPqQ3tsyD/GWrBn3S95t/4NqTZD4W9z6a6hxPk3qhJmB/45MAG0Gpr
+ zVT15uX2b3dhODlOOE03uFqPCOMffKMBeLtVU0PT5xhluMd2XJ6oILXdRBqRY6ZUUsrL
+ sO7U4S+RTxsJzjT0z2xPGcVY6x3e97UqnJ+oNz2UpnZDl1OyxQ0CjGeC1m1BlQkJLEiS
+ NuWA==
+X-Gm-Message-State: AOAM532V4ZeIKUr7sM91c/bZpId5t0MI1c4+Z+1epuqzZJbe3oQ2NFPd
+ vinGSnGYCFPGNNtvpdgWTi592BgU4/wjd3WDFkE=
+X-Google-Smtp-Source: ABdhPJxLiCOcM3Kauscef/Fo8Brx9yb+EdovCMK31xF9wLoy4qYkCL//Q638wbMWq2OG/1xLzz0BVQ==
+X-Received: by 2002:a17:906:4987:b0:6c9:e16a:b5bf with SMTP id
+ p7-20020a170906498700b006c9e16ab5bfmr20087576eju.247.1645567806022; 
+ Tue, 22 Feb 2022 14:10:06 -0800 (PST)
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com.
+ [209.85.221.48])
+ by smtp.gmail.com with ESMTPSA id ek26sm7916525edb.68.2022.02.22.14.10.04
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Feb 2022 14:10:04 -0800 (PST)
+Received: by mail-wr1-f48.google.com with SMTP id s13so7541666wrb.6
+ for <linux-rockchip@lists.infradead.org>; Tue, 22 Feb 2022 14:10:04 -0800 (PST)
+X-Received: by 2002:adf:ef07:0:b0:1e3:333f:a101 with SMTP id
+ e7-20020adfef07000000b001e3333fa101mr21559376wro.301.1645567804216; Tue, 22
+ Feb 2022 14:10:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220214081916.162014-2-krzysztof.kozlowski@canonical.com>
+References: <20220217144136.v3.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+ <20220217144136.v3.2.I48b18ab197c9b649d376cf8cfd934e59d338f86d@changeid>
+In-Reply-To: <20220217144136.v3.2.I48b18ab197c9b649d376cf8cfd934e59d338f86d@changeid>
+From: Doug Anderson <dianders@chromium.org>
+Date: Tue, 22 Feb 2022 14:09:51 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=UudBo7aZqD8oGHAu94LEYovMtFq7hjwOG2_8yxUeNi_w@mail.gmail.com>
+Message-ID: <CAD=FV=UudBo7aZqD8oGHAu94LEYovMtFq7hjwOG2_8yxUeNi_w@mail.gmail.com>
+Subject: Re: [PATCH v3 2/2] drm/bridge: analogix_dp: Enable autosuspend
+To: Brian Norris <briannorris@chromium.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, 
+ LKML <linux-kernel@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Sean Paul <sean@poorly.run>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_131334_923336_C2BA5C71 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20220222_141008_505298_486DF2A3 
+X-CRM114-Status: GOOD (  22.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,18 +99,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 14 Feb 2022 09:19:13 +0100, Krzysztof Kozlowski wrote:
-> Include generic pwm.yaml schema, which enforces PWM node naming.  Keep
-> the old name in bindings as deprecated.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> ---
->  Documentation/devicetree/bindings/mfd/google,cros-ec.yaml    | 4 ++++
->  .../devicetree/bindings/pwm/google,cros-ec-pwm.yaml          | 5 ++++-
->  2 files changed, 8 insertions(+), 1 deletion(-)
-> 
+Hi,
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On Thu, Feb 17, 2022 at 2:42 PM Brian Norris <briannorris@chromium.org> wrote:
+>
+> DP AUX transactions can consist of many short operations. There's no
+> need to power things up/down in short intervals.
+>
+> I pick an arbitrary 100ms; for the systems I'm testing (Rockchip
+> RK3399), runtime-PM transitions only take a few microseconds.
+>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+>
+> Changes in v3:
+>  - New in v3
+>
+>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index 16be279aed2c..d82a4ddf44e7 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -1121,7 +1121,7 @@ static int analogix_dp_get_modes(struct drm_connector *connector)
+>
+>                 pm_runtime_get_sync(dp->dev);
+>                 edid = drm_get_edid(connector, &dp->aux.ddc);
+> -               pm_runtime_put(dp->dev);
+> +               pm_runtime_put_autosuspend(dp->dev);
+
+So I think you can fully get rid of these ones now and rely on the
+ones in the aux transfer, right?
+
+
+>                 if (edid) {
+>                         drm_connector_update_edid_property(&dp->connector,
+>                                                            edid);
+> @@ -1642,7 +1642,7 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+>
+>         ret = analogix_dp_transfer(dp, msg);
+>  out:
+> -       pm_runtime_put(dp->dev);
+> +       pm_runtime_put_autosuspend(dp->dev);
+>
+>         return ret;
+>  }
+> @@ -1775,6 +1775,8 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
+>         if (ret)
+>                 return ret;
+>
+> +       pm_runtime_use_autosuspend(dp->dev);
+> +       pm_runtime_set_autosuspend_delay(dp->dev, 100);
+
+It's explicitly listed in the Documentation that you need the
+corresponding pm_runtime_dont_use_autosuspend(). Specifically, it
+says:
+
+> Drivers in ->remove() callback should undo the runtime PM changes done
+> in ->probe(). Usually this means calling pm_runtime_disable(),
+> pm_runtime_dont_use_autosuspend() etc.
+
+Not that it's very common to see anyone actually get it right, but I
+seem to remember running into an issue when I didn't do it. I think
+ti-sn65dsi86 still has it wrong since I found out about this later.
+Need to write a patch up for that... Basically you want to put it
+right before the two calls in your driver to pm_runtime_disable().
+
+-Doug
 
 _______________________________________________
 Linux-rockchip mailing list
