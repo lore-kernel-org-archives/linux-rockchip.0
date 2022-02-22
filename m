@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC6F5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 19:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42AFEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 19:22:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yiD01Ator1KHqwpSCCEimCA7EzLPRijcv12gL7eYYUQ=; b=SqB71qsUDjHCgz
-	A/XAscVVNPpWZNHi0PEMwGExmNkqKydTSiebqWXol+gVKFZ5S4J+yhj6BbWGSTDVdnJy55Vrs9/Zq
-	6lXGeKHsAYSpgomi6y9ccXU6ZRqPoPWp/xGbSmoCNlpuYynDQMzV9g/BfOD03Tt9U6L166UnJNOk3
-	rwJYxE7wx5S0xABEAT2/Z+5uT08qB4JwteMClM1PygdyJXebHVZlFX1EJuot9Wz+J0rsf2b8KnA5t
-	/oNp47WjuxmRH4gGC9odURTY9CyKVEzcDIJeSuO4mZarhIdgc5sNArcFrC747ygjoLnDd/BwFgDqN
-	t6BVHTYtFNTnsNHAPNEA==;
+	List-Owner; bh=n5Wj3taAu50IAnz3SI7zztEdMNEsUFA8U1W0P6EfXTo=; b=W/XW1zL9Xq1fBP
+	Aly170ncmaJ/1OM+zb35yC30ky6EePrifFXpaQ1SSM/AVtl8mbCoJ2zCHFyd5eSuB+x0V6IkDCHFb
+	mEzkp7tBtUX5vl4woHS4pYMWgcF9aVNDCA0KmQuCny1/YnfTVJ3HYYqPOvyqqesLVaJ2J9wGXUpHQ
+	i/YWcl4FJq0D6upLj2BuQH9iJCc+zWX3vaD/ojrMsS02FK272g1dzylpXojElPdPeL6d+nMKwIX1N
+	WaP0D/IqewTKVn3jSlMKjH5RciKXy35wSmqjxqs1GncFyW+p/MX3P396WDU9FlDTA6Z9VfvTHn/76
+	6yOoSNMuLjOoXMTk4cgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMacY-00BIuJ-Lz; Tue, 22 Feb 2022 19:14:46 +0000
-Received: from mail-oo1-xc31.google.com ([2607:f8b0:4864:20::c31])
+	id 1nMak3-00BKMS-1X; Tue, 22 Feb 2022 19:22:31 +0000
+Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMacV-00BIsU-Kg
- for linux-rockchip@lists.infradead.org; Tue, 22 Feb 2022 19:14:45 +0000
-Received: by mail-oo1-xc31.google.com with SMTP id
- r41-20020a4a966c000000b0031bf85a4124so19034913ooi.0
- for <linux-rockchip@lists.infradead.org>; Tue, 22 Feb 2022 11:14:39 -0800 (PST)
+ id 1nMajz-00BKKl-04
+ for linux-rockchip@lists.infradead.org; Tue, 22 Feb 2022 19:22:29 +0000
+Received: by mail-oi1-x22d.google.com with SMTP id j2so15683802oie.7
+ for <linux-rockchip@lists.infradead.org>; Tue, 22 Feb 2022 11:22:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=+uICciuaj7jdFCwues4OKN2T3O3A4k1mD1Fk4dP/Kh0=;
- b=UehtrZGjdpmOsyLQueoAeY7by4QrBSoByAQe2tPBmT4Pv4dqT1F2pmG6c+7KC74+i4
- Pvgk2RF4/tvICKJ0MSqfZEArHKjGgEdxYv5olA8KQRdWQ2GycteVo9SwLEE0agc869Zl
- RoNhbbOpjthqQZ3RnhLSfUd1Vl02aOdv3ks8okqze17/e4mc75S+1EcXBF/7ZA5Evt2B
- KmikRbX4vT1xu6fvuP4KSuXpMBJWMc8O765QEdCPvznI50o+3MpawmcsySpgf0TwVC0F
- Utva92qS43knnqf/n+HNFDzyfTF3gFUrfdnknccVLJetV50vPm7Rp6OobQMCHCm9rT22
- K/Zw==
+ :content-disposition:in-reply-to;
+ bh=1FEb2vFIot1a/ue+S1CbtNu4PdAP/tmkTp+OxHWSu2U=;
+ b=j39nnOx2RiOA0hfc9CBH7seR0aOWzY3omNhUPQ/276xKKpMUPa/uOpJp+LFtAP7cTc
+ I+191DUzCSlEy+EaJH+yNVe8Fsim1u1z0vv7I5GNcF9g2tLrEgJaAUJvl53QVX3+0F0S
+ qZkvn/eEoHk14eonc0K3K4AJLxWhbMav92lImxAsoE7sNcv4xNrSpulGS9qUfEnJQLhH
+ aoxqd2VDpV6u9FtYUDuE7NfyC+pxaEUqxWB3EroHgpdJj/usodEAf5Erqi3MPEa4ImDA
+ Im0nuYtr1wsTdyWYhEnvdd2J4+AP6FBtlfA1qyhRMfpjWi6u/nkriYEsAci9SLo9ltJ2
+ 9HpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=+uICciuaj7jdFCwues4OKN2T3O3A4k1mD1Fk4dP/Kh0=;
- b=NYtxFnJOJNhdMPt4B8VMqSjk1ycvt8YShCugL7U+abSXNEMOpEHCoZ5P9jpkJTeL1c
- CX7IKZ+mPktdpZ7ZTMO49NhxbzcmI/5StT+iEtuSlvsw0F0X6kpT7qx644efV1mm0xjZ
- CSLg308G8KdeQGNMVCnC89nr5jAwSLjqQvHl3mSZceCugcOgR3+0A7eZsz5Ubo30snLR
- SPvwk4LLcef0QNuHCcZ1iBn+dvrohsXapxEaA6Auuwcy72nBmmfZp45uGcAdOoxB7v1z
- su0T60gTEOEbT3fK/t+6/qnt3yzvsfogIToCeelKjrxNvNZFyKFOAT7RDUjJZ2V7BWYC
- GtPQ==
-X-Gm-Message-State: AOAM5313YuY6QApOKCul3qn6HPUGt7RJz9go+b3YMGsb6kfX+HnI8Ni+
- RSafcnmiTt8JnQbdEStsXkg=
-X-Google-Smtp-Source: ABdhPJz9sc3sYp8PEoEW+pqVUVc5880oolD2dYtkhg0DhxSoRSpwI22BbPR+X9GiXgYBSDjB8l4YPQ==
-X-Received: by 2002:a05:6870:1054:b0:d6:a9d7:1b69 with SMTP id
- 20-20020a056870105400b000d6a9d71b69mr412848oaj.273.1645557278828; 
- Tue, 22 Feb 2022 11:14:38 -0800 (PST)
+ :mime-version:content-disposition:in-reply-to;
+ bh=1FEb2vFIot1a/ue+S1CbtNu4PdAP/tmkTp+OxHWSu2U=;
+ b=flDKfi+CG6rnn92PgcIkNLvRLVB7bIPZJAdXpPeIEAKaJNPDvyXykSLgP6FLptnq/W
+ Tld6mUQi4bQrXM1PeIqztqBfIC8WUYBIZSBbwKVpCNG9sUC8zloCBK5+jXTGZ10tY7l9
+ SHGlgAdGdCNnxlU9hL7TPmmXY0evkxZP3vg9caXE3zVmEfRjLiJ1x3HKdBBZ0pKvZVe6
+ ePunyCRfku0mTe1SSSzoZpmVKRINPLFns/EFjWd+Nylx99pxKvyygrV3zRR63WEMQey8
+ s9K5hyILQjDzO8MA6LYy+d3nhhQNf+9thPoGoq5XutGXIKVbuBfb8XYkY9BB61EI304g
+ Fs+Q==
+X-Gm-Message-State: AOAM5332FsTcFgAM+Lwscyrc2WsfIZlj3sMK3EHFATn6X58WDOEQ1Tom
+ ++i//iJUC3t9nS9l3H3HSc4=
+X-Google-Smtp-Source: ABdhPJxiD0wNuWNEqUKbS5+bAJtfpBAXFIGiwKUm6VQq7JG8INz4GlhpBPjs0LFYauQU+yu0tjwurA==
+X-Received: by 2002:a05:6808:a88:b0:2d4:8ece:2453 with SMTP id
+ q8-20020a0568080a8800b002d48ece2453mr2697561oij.217.1645557744924; 
+ Tue, 22 Feb 2022 11:22:24 -0800 (PST)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35])
- by smtp.gmail.com with ESMTPSA id z4sm7336864otu.24.2022.02.22.11.14.37
+ by smtp.gmail.com with ESMTPSA id i14sm3585376oig.24.2022.02.22.11.22.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Feb 2022 11:14:38 -0800 (PST)
-Date: Tue, 22 Feb 2022 13:14:37 -0600
+ Tue, 22 Feb 2022 11:22:24 -0800 (PST)
+Date: Tue, 22 Feb 2022 13:22:23 -0600
 From: Chris Morgan <macroalpha82@gmail.com>
 To: Robin Murphy <robin.murphy@arm.com>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- devicetree@vger.kernel.org, robh+dt@kernel.org,
- jon.lin@rock-chips.com, linux-rockchip@lists.infradead.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Correct clock-output-names for rk817
-Message-ID: <20220222191437.GA7995@wintermute.localdomain>
-References: <20220216165837.4721-1-macroalpha82@gmail.com>
- <44462609.a43xROnmBz@diego>
- <4b88f0f1-7422-7beb-2f7a-563f1f4b3360@arm.com>
+Cc: devicetree@vger.kernel.org, lee.jones@linaro.org, robh+dt@kernel.org,
+ heiko@sntech.de, zyw@rock-chips.com, zhangqing@rock-chips.com,
+ linux-rockchip@lists.infradead.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH v3] dt-bindings: mfd: rk808: Convert bindings to yaml
+Message-ID: <20220222192223.GA8011@wintermute.localdomain>
+References: <20220215211548.31940-1-macroalpha82@gmail.com>
+ <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <4b88f0f1-7422-7beb-2f7a-563f1f4b3360@arm.com>
+In-Reply-To: <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_111443_691905_C2C8FEAC 
-X-CRM114-Status: GOOD (  32.13  )
+X-CRM114-CacheID: sfid-20220222_112227_085723_54461FCA 
+X-CRM114-Status: GOOD (  38.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,101 +87,223 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 16, 2022 at 09:34:52PM +0000, Robin Murphy wrote:
-> On 2022-02-16 20:42, Heiko St=FCbner wrote:
-> > Hi,
-> > =
+On Wed, Feb 16, 2022 at 12:39:09PM +0000, Robin Murphy wrote:
+> On 2022-02-15 21:15, Chris Morgan wrote:
+> [...]
+> > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+> > new file mode 100644
+> > index 000000000000..1b928b94fbfd
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+> > @@ -0,0 +1,88 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/mfd/rockchip,rk805.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: RK805 Power Management Integrated Circuit
+> > +
+> > +maintainers:
+> > +  - Chris Zhong <zyw@rock-chips.com>
+> > +  - Zhang Qing <zhangqing@rock-chips.com>
+> > +
+> > +description: |
+> > +  Rockchip RK805 series PMIC. This device consists of an i2c controlled MFD
+> > +  that includes multiple switchable regulators.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - rockchip,rk805
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  '#clock-cells':
+> > +    const: 1
+> > +
+> > +  clock-output-names:
+> > +    maxItems: 2
+> 
+> I think this should be 1, since RK805 only has a single CLK32K output -
+> ditto for RK817.
 
-> > Am Mittwoch, 16. Februar 2022, 17:58:37 CET schrieb Chris Morgan:
-> > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > =
+I've confirmed that some boards use this behavior because of how the
+driver is written. Basically they define 2 clocks to ensure the 2nd
+clock gets renamed something else, as the first clock doesn't exist
+(but the driver won't let them rename a clock without defining the
+first clock).
 
-> > > According to the datasheet for the rk817 there is only a single output
-> > > clock for the PMIC. I don't believe this is causing any harm though
-> > > and testing this change doesn't appear to have any noticeable effects.
-> > =
+Should I push this patch series forward knowing that issue exists and
+then work to update the clock driver, or is that a showstopper? I'm
+honestly just trying to get these yaml updates done because I want to
+submit a battery driver and I was told they wanted the rk808.txt
+rewritten.
 
-> > hmm, looking at the go2's schematics, I'd disagree:
-> > =
+I can add examples to each of the other yaml files as well from the
+devicetrees as they exist today (I'll just randomly pick one for each
+device for which we don't already have an example).
 
-> > - yes, the rk817 has only one clock output
-> > - but no, it is used for the clkout_32k signal, which gets piped back i=
-nto
-> >    the SoC. As that clock dynamically appears at some unspecified point
-> >    when the rk817 probes, the clock controller expects it to be named
-> >    xin32k to bind into its clock-tree.
-> > =
+So for now it looks like 2 issues remain though:
+1) there are 4 boards that specify a supply regulator that doesn't
+exist (rk809 doesn't have vcc13 and vcc14).
+2) there are 3 PMICs that use 2 clocks to overcome a driver issue,
+even though they only support 1 clock (rk805, rk809, and rk817 only
+have one clock output).
 
-> > The driver (drivers/clk/clk-rk808.c) really puts that rk817-clk32k at
-> > position 2 but I'm not sure if that simply papers over some implementat=
-ion
-> =
-
-> Indeed it appears to be a hangover from RK808 where CLK32KOUT1 is always-=
-on
-> and CLK32KOUT2 is the switchable one. It's even more obvious on RK805 whi=
-ch
-> still shares the original control register layout.
-> =
-
+> 
+> [...]
+> > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+> > new file mode 100644
+> > index 000000000000..f5908fa01a61
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+> > @@ -0,0 +1,257 @@
+> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/mfd/rockchip,rk808.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: RK808 Power Management Integrated Circuit
+> > +
+> > +maintainers:
+> > +  - Chris Zhong <zyw@rock-chips.com>
+> > +  - Zhang Qing <zhangqing@rock-chips.com>
+> > +
+> > +description: |
+> > +  Rockchip RK808 series PMIC. This device consists of an i2c controlled MFD
+> > +  that includes regulators, an RTC, and a power button.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    enum:
+> > +      - rockchip,rk808
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  interrupts:
+> > +    maxItems: 1
+> > +
+> > +  '#clock-cells':
+> > +    description:
+> > +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
+> > +    const: 1
+> > +
+> > +  clock-output-names:
+> > +    description:
+> > +      From common clock binding to override the default output clock name.
+> 
+> minItems should be consistent across RK808/818/819 - when two clocks exist,
+> either it's legitimate to rename only the first one, or it isn't. There
+> shouldn't be an arbitrary difference just because of what existing DTs
+> happen to use.
+> 
+> > +    maxItems: 2
+> > +
+> > +  rockchip,system-power-controller:
+> > +    type: boolean
+> > +    description:
+> > +      Telling whether or not this PMIC is controlling the system power.
+> > +
+> > +  wakeup-source:
+> > +    type: boolean
+> > +    description:
+> > +      Device can be used as a wakeup source.
+> > +
+> > +  vcc1-supply:
+> > +    description:
+> > +      The input supply for DCDC_REG1.
+> > +
+> > +  vcc2-supply:
+> > +    description:
+> > +      The input supply for DCDC_REG2.
+> > +
+> > +  vcc3-supply:
+> > +    description:
+> > +      The input supply for DCDC_REG3.
+> > +
+> > +  vcc4-supply:
+> > +    description:
+> > +      The input supply for DCDC_REG4.
+> > +
+> > +  vcc6-supply:
+> > +    description:
+> > +      The input supply for LDO_REG1 and LDO_REG2.
+> > +
+> > +  vcc7-supply:
+> > +    description:
+> > +      The input supply for LDO_REG3 and LDO_REG7.
+> > +
+> > +  vcc8-supply:
+> > +    description:
+> > +      The input supply for SWITCH_REG1.
+> > +
+> > +  vcc9-supply:
+> > +    description:
+> > +      The input supply for LDO_REG4 and LDO_REG5.
+> > +
+> > +  vcc10-supply:
+> > +    description:
+> > +      The input supply for LDO_REG6.
+> > +
+> > +  vcc11-supply:
+> > +    description:
+> > +      The input supply for LDO_REG8.
+> > +
+> > +  vcc12-supply:
+> > +    description:
+> > +      The input supply for SWITCH_REG2.
+> > +
+> > +  vddio-supply:
+> > +    description:
+> > +      The input supply for digital IO.
+> > +
+> > +  dvs-gpios:
+> > +    description: |
+> > +      buck1/2 can be controlled by gpio dvs, this is GPIO specifiers for
+> > +      2 host gpio's used for dvs. The format of the gpio specifier
+> > +      depends in the gpio controller. If DVS GPIOs aren't present,
+> > +      voltage changes will happen very quickly with no slow ramp time.
+> > +    maxItems: 2
+> > +
+> > +  regulators:
+> > +    type: object
+> > +    patternProperties:
+> > +      "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
+> > +        type: object
+> > +        $ref: ../regulator/regulator.yaml#
+> > +    unevaluatedProperties: false
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - interrupts
+> > +  - "#clock-cells"
+> 
+> Is this actually required (ditto elsewhere)? Technically it's only necessary
+> if there are any clock consumers targeting this node, so arguably it should
+> be the clock binding's responsibility to validate that.
+> 
+> It wouldn't make much sense for a dedicated clock controller to omit
+> #clock-cells such that it couldn't have any consumers, but given that these
+> things are primarily PMICs I think it's reasonable to allow a board not to
+> care about the clocks at all if it doesn't use them. I know that the
+> original binding claimed it was required, but if we're already relaxing that
+> for RK805 here then we may as well relax it entirely.
+> 
+> Cheers,
 > Robin.
-
-Okay, so I'm thinking for now we cancel this patch, note in the yaml updates
-patch series that this issue is present, update the driver, and then notify
-the board dts maintainers to switch over and test. Does that sound good?
-
-Thank you.
-
-> =
-
-> > =
-
-> > =
-
-> > Heiko
-> > =
-
-> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > > ---
-> > >   arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 2 +-
-> > >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > > =
-
-> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arc=
-h/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> > > index ea0695b51ecd..5b23e607876e 100644
-> > > --- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> > > +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-> > > @@ -296,7 +296,7 @@ rk817: pmic@20 {
-> > >   		reg =3D <0x20>;
-> > >   		interrupt-parent =3D <&gpio0>;
-> > >   		interrupts =3D <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
-> > > -		clock-output-names =3D "rk808-clkout1", "xin32k";
-> > > +		clock-output-names =3D "rk808-clkout1";
-> > >   		clock-names =3D "mclk";
-> > >   		clocks =3D <&cru SCLK_I2S1_OUT>;
-> > >   		pinctrl-names =3D "default";
-> > > =
-
-> > =
-
-> > =
-
-> > =
-
-> > =
-
-> > =
-
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
