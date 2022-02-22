@@ -4,127 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 287DEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 17:50:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9722C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 18:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2F94mmNe1/m4JyEcZHkQ8AcOQTRGkaGF4KldSPI2tyU=; b=GItC8nkVmk+C3J
-	QUM9NVioIx+5Wy5yaAPcsQ8M2mI4TyLJMxuqMupNDjgDAn1BFep7DPX5Ka/18dFBGSP81CIeC3zfL
-	ACDPHzbX4C7QNZnhLTnoQbK0br5ZLrCJqT1Xj12rwUoBMKOKFFIYYiH9wQgfHhg8vYfQVD1SmUIZ7
-	QNKlg28z3mcuaPjCBee8qI4XehU5J8DOPYG/NxF1+xJNLQTzs3gAHarRnC6rvFB8JQgrsvZx9Ilej
-	VfhJUL6LWQu9Y9F4pvy0CbNPi7y805Ekhkno+KkcAN53IFT1SKJCuG9ueLPqmYqF+6ZIYHRQ73Zr3
-	IeGkjdMgV5qu6Yru3Pgg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YTwbeepENMGuWdZ7e6PrvejkR1X+1xvwo8BbOFZZN58=; b=sn+Buqvl94+YiM
+	Pui5hc7QOHKogSFbiWiO7NgNM2r6e5La98rf3GWAazvwuGJfoV04NA2nJ+XLlFMIQzZMPbeiYqT0q
+	Eb/3axmlW7y+6Z0zJIQlg9/PCCzV3NqBTrZ5JKJrGP/Ln41dwqBFWNqt476mNQxV/FiHCGVUkople
+	NPA3n6WQItLFTdxAaYuh4msigXo01+6SBy6dBiSB6B9LD2Rbe2l2ndX7LabdMpGMxVV9JZzQE6dPO
+	Ahgdr1q3KJoOG0X5fsvwSZpL2CuMUVs7vEDF5byBrscnbxiF76waZzC79FYYuur6srXiU+sBlQRML
+	8haVrZul0n/EevM327aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMZJG-00B49t-Qo; Tue, 22 Feb 2022 17:50:46 +0000
-Received: from mail-db8eur05on20602.outbound.protection.outlook.com
- ([2a01:111:f400:7e1a::602]
- helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1nMZVh-00B7WG-4S; Tue, 22 Feb 2022 18:03:37 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMZIt-00B43V-JH; Tue, 22 Feb 2022 17:50:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZSEsOeu/pi4PTh1PW/OuoPHGk3IojBOE6kjpWW1tDsgiKgQWs8tWW//zZw1A90rDusJyhbVrVItTLeGh8IR4YmeREhpX1a8AiHjvr46GXeTLQwvqGDnd5FqaQDdfALvC30nvb0VA0RuDqnA2JJSMMvmi0ePsvr4sFWZHGgfoR9JK2WJg2eo8IJJEgr5P71EfNYS0csvpbIAypwKn/UfRIt3eTNSCGYWwOq3iYqW+jATUaC6fCq0fjaYUBm87tF9sddPLTlaqADfXAOrcGaD0pQSlM/9xrtbSFqrxU5ywWPk2AZHKOHBRHUQlJAOfZmMMunwHg89+Ea0M2PKX/suuYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Xa9a50z8axd5ANlexAiN4AyVjouQNh4aYAjqck44Htw=;
- b=NMvXmYI+BPHHwkkwhlnr/D43pb0iLBe3q7Fgt/wqJf3PJQHv8sKoVnbvFf3f759X5QkzmN8YgAZXVl7AcaC5/UD19h7jsV/2Xy0S1hiFuuM0JrADXBCs97fLLBS85Ab1tSKywSHYyYLKrFKW3zF2DnITIiHFcbgGPmUwKISGoI3zR2yW66pNy+HulUOP5PXyNqwkM8ko5IT0THSYa6bJGt0uhfgSZP2OqfJKewJU0GvWpT6RzZ6MDtKUuyr0QrGa6ixSnVetz4qFXjQUCjkF0/d507qOlzT8mEptZbEQNSMkkbFo5hSgAy8kTKnCkkQVdlV6h1b2Y3Ww2yEBrJFKaw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Xa9a50z8axd5ANlexAiN4AyVjouQNh4aYAjqck44Htw=;
- b=x545O4++S6fknLVNTJS86bnfAKuVDfU9sWHGbyvYS8EgrQ+/dxuL4pq2im2fSuZtQig3C/wErqLwmxvNhkifOugHLmmOoB8bcrhFovpJLYemzoazgbj4wRPM7GHRC09q/ESIidHjidyMzsCBMVEvgQJCgtvKyWF50+B2ITw04IA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
- by DU0PR08MB7485.eurprd08.prod.outlook.com (2603:10a6:10:355::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.16; Tue, 22 Feb
- 2022 17:50:16 +0000
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.4995.027; Tue, 22 Feb 2022
- 17:50:16 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Liang Chen <cl@rock-chips.com>, frank-w@public-files.de
-Subject: [PATCH 2/2] arm64: dts: rockchip: enable rk809 audio codec on the
- rk3568 evb1
-Date: Tue, 22 Feb 2022 18:50:04 +0100
-Message-Id: <20220222175004.1308990-2-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
-References: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
-X-ClientProxiedBy: ZR0P278CA0108.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:23::23) To HE1PR0802MB2426.eurprd08.prod.outlook.com
- (2603:10a6:3:e1::23)
+ id 1nMZVe-00B7V7-F1; Tue, 22 Feb 2022 18:03:35 +0000
+Received: by mail-wr1-x432.google.com with SMTP id u1so34930423wrg.11;
+ Tue, 22 Feb 2022 10:03:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZA1AEF6WYe53I9xc29Ywox25Ld05hhSuOKpOWRLCD0Q=;
+ b=ga5HhF1kzBzWTvKfcvvy2G6pPpg6ZSlIrxkAJbJ6v+ZHmwIpqeVSDShxafKYqADvsD
+ yq8c5Vm8FrreBj0AuOhaGzsvaQHpvpXH09xRLPmTecId0D7mR5b0Q5QfjE6jrErigbjv
+ VVVTT5kSvy5xYfdJGr4uWS6OtpC7cbb5DXOXTCjiDAybnm4+pJTkZvZjCrRdNONlHgEa
+ P+AQ7H9H0+OXErltcVA5VO9AQiJ8YsKgPkoPLwkvqXwMdvToUIr1Idi1wzfR6Yrs5P2N
+ VTp+munJbWJ8b9j+H0C8zrdeOKVysbJVHxCtezfJWdAa9UuZS36msAUUHMT1jz2ov/XA
+ G2Ng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZA1AEF6WYe53I9xc29Ywox25Ld05hhSuOKpOWRLCD0Q=;
+ b=G7p9CjTEL5VP9yaISlOKJEyxrn+zg55qV75M3yeJrO98USFVrIu1CYyVEXjVqWr9cW
+ iDXXYarx+g0xdwPckLdt1I6lw2EOZoaNFn3KaEnnm0Cj31TeZRPNTQsemIVSD2ru6K11
+ eGRu5eDliEs4jZOkJe65EaIUectO1y6NofkxZZC4u3oDianPtN7FRHG8YPYO25K5aLF4
+ J/HUfqnpaHVQr8CqQVe4U8OgZOYN2AQ1dqSyt5wuRMCePrg2/cb/laORjOJhuuMP1ONM
+ Dwg1ZoIRXSRS6M3V+vMVVm+ZJrz6yleCcz5zR8Nulwn1Ni2B0rCLh4pUh/v3qvnuy9PC
+ k3AQ==
+X-Gm-Message-State: AOAM531wiavm6kTK/hZi02FPjVXb5VTee2XxWKXYc3QUlFsB6akYtmPU
+ MJRQiTcc409ielribMRzn80=
+X-Google-Smtp-Source: ABdhPJzNFYx5oAjf3+Rk5ssr7+hioPDrHat9vTUipqzp/XT0YyvI9V4d7cbaImdepV5Gxc87H7QYTw==
+X-Received: by 2002:adf:8122:0:b0:1e7:b111:3b92 with SMTP id
+ 31-20020adf8122000000b001e7b1113b92mr21076844wrm.695.1645553011872; 
+ Tue, 22 Feb 2022 10:03:31 -0800 (PST)
+Received: from kista.localdomain (cpe-86-58-32-107.static.triera.net.
+ [86.58.32.107])
+ by smtp.gmail.com with ESMTPSA id w8sm54251377wre.83.2022.02.22.10.03.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Feb 2022 10:03:31 -0800 (PST)
+From: Jernej Skrabec <jernej.skrabec@gmail.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de
+Cc: mchehab@kernel.org, gregkh@linuxfoundation.org, mripard@kernel.org,
+ wens@csie.org, hverkuil-cisco@xs4all.nl, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Jernej Skrabec <jernej.skrabec@gmail.com>
+Subject: [PATCH] media: hantro: sunxi: Fix VP9 steps
+Date: Tue, 22 Feb 2022 19:03:28 +0100
+Message-Id: <20220222180328.2097103-1-jernej.skrabec@gmail.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6e7507cd-f939-46a3-c163-08d9f62bc8f9
-X-MS-TrafficTypeDiagnostic: DU0PR08MB7485:EE_
-X-Microsoft-Antispam-PRVS: <DU0PR08MB74854876BF80D19F162B7593F23B9@DU0PR08MB7485.eurprd08.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: E3WWnb+u2tJe1ASPwBSrb4n4hP0JfyLDosgFN55keb21MqU34f3UzQvbnm2SJeD2iY5DhxKlN8CscP0GeaRj0REyvPmO7tnbNypa5jFtzlwMcwtJj9zfuqMjq+r1w29ATa40DZS530FZQGNY2iZCHggzTvq8/edBlsQZGRlRy8KCVJI2wBL2oARxv8bdYJxPxnRxP2ZcIP2Z8aHTq5pgRF/UKx0e+kZvGkwIebjJHrssErzRg5k6yHIzPDR6KL+6dmAzCf8X/UwYoXSn6fqEiG3nGlOGduijCqWelJxm4Aq4RYa4PrWUPrNGxIUIaVVD5MzQfVVtHU9C661QskYE8+VRNCA73s3nYoBc+xpNnpp/9llv4YM9H6uhW8l3fUlq6lpZtAIUqGu9QgtYcBHDdfR2cgBuZMlYU50gPjqcs62qVhfuoevyItS25qJgwLWWsrU0PoQBNlIfctp757Azz5M1F3c4++TUPlDm7OsmUtjLN9Bsa16r8CKcdEKee+ZJEHau9fiMw2e9nAl2S2wnJABZz8fp1e17qzrl1mfe3seofuLleIVnih7EAYFL6ulgTZoo1VrEf9SlAg8op/7S52hfF70dnTJ0sMIBFGjngFisvgr+XLYarSTRbqD2j7ehTVjT+/OLh0yh5YY2rvODgQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(346002)(39830400003)(376002)(396003)(366004)(136003)(186003)(8676002)(4326008)(54906003)(6506007)(2906002)(2616005)(316002)(38100700002)(5660300002)(6512007)(66476007)(1076003)(66556008)(66946007)(44832011)(6486002)(6666004)(83380400001)(8936002)(36756003)(508600001)(52116002)(86362001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qAY7kH1hIll19+8r0zWniJ6L7UsQB+7i6sRMvuwf4k5VpxQbbsq9LnYSBxVJ?=
- =?us-ascii?Q?/+OLXP2GB1w2vfsLoImFb6W8EQ+TtBtJ/gtOMbAsfUc/1VRWUWFAxL3ePs7B?=
- =?us-ascii?Q?qyxJA2jyqBw24NKkG30IITl9N6WuJd9Qoy0BS5p1MCHg65sSWX6W58nU0GaV?=
- =?us-ascii?Q?6yzBSnORK+vUXy+RdUvYZiLtEUsLVX+6hkHrb20Fe8K2MW+A96v7lrbxGNea?=
- =?us-ascii?Q?pCqoOlAlBW02uARRxPeNjEL5X3pIiunIbxFBSndENNG2KKHb7INIHob/e9/u?=
- =?us-ascii?Q?zNfPG6Kxtb1WhbMmdM1Ci3+xDo0Qm1J2X1lrTMP3X79snbj88bUryQ9MjVWS?=
- =?us-ascii?Q?pPlHVGOazhR5BW34u50vyoHwQ6TYC0qrt8dOfW5Y00NSYJUnDp+1Pmo/xmzx?=
- =?us-ascii?Q?H9/v2oDl18OP92jvNRIoa97AeCIS6TuT42j6zcntC5b21hVa6cPuiL/37l7t?=
- =?us-ascii?Q?F0DY5dqaX3glzXbCQL3UKq4uQxdDjyH5iOb2ye45l1oxxsFMaWkb3sEDgXAt?=
- =?us-ascii?Q?bFw5ZZyLv1V1cYz0Es9pfBMVDfsUvrMPTg/Y4BAJy0YfXHWcidR/1pknJHnd?=
- =?us-ascii?Q?ENLHbJOTZV/O4FfQCasGbEdDYTKLhzoLqa1JC5MTc+F6u/xZra9zT3E23q67?=
- =?us-ascii?Q?2IJTNvAoG6RkH37vL04UsWE3WS0xwmL4zuuwZhQJUXiKi1/HPXGry4gL4dft?=
- =?us-ascii?Q?AFDUiESabFi9LkwoA8qm7Q3r78VJL3AZGtPH3MsD/Y4HrU5/lD4bSsdDVOLm?=
- =?us-ascii?Q?y6KNQOxGEfqv5LxiM8ha11LqQaJ1D7F+/l3Z2x9F1fbR021KOB1/3yPBokyd?=
- =?us-ascii?Q?8Eovf+2HxLNa8FvtsX8lYXaAgrO+QEPAKWM8Q9Al/bwn0+/3/Zj1shABAld6?=
- =?us-ascii?Q?n5ljEtigtthCrey1cziWKXERxGmNFcr/qa+PkmZb+uTn1hSWEm5kmhZZs3e4?=
- =?us-ascii?Q?Co2vb+HUlMFVbo0MVZ8Xu1lcRUIAq2BoVILnXBZtc3ykHd3p3PMJkWBiKLIT?=
- =?us-ascii?Q?bRL0SKRGG4KCDLPbLrhEsNHmlHGj7DXIOj/dOXbodAzu93HGBBohBpmZcvxX?=
- =?us-ascii?Q?ADqJi5C6kU9hCW8BfBsEndxeE/3DxRI1+RibWOkPIMH/CXsBttWzPnBKnF6R?=
- =?us-ascii?Q?PT0gmEiTuiYk9nyKHU8uynx62RvFhXOGfjEsYWGKCWvBUwM1rSkuAbhiU+a9?=
- =?us-ascii?Q?QjimAr8+3b4zaTWRAh6HLiickeg/jpkhHOYx05lt9OX2hvsleqeZU+XvTpa/?=
- =?us-ascii?Q?qxpGdM1s74APaPVpI4UnrpPIhJ74kHCgS8MddEeo9fIkJgRPUfcqODelBjJn?=
- =?us-ascii?Q?xCN2Ti4pdmyIvXWzfqisNCeuIbC9xD9EkqogW1R5dEGQ5ISxjyoEbfiwjjoi?=
- =?us-ascii?Q?doqfZwnNgCOs4DzBONT1AVUUyZd/Nxf7sGz7ZSBEB/P5/OmASbTC33Nd56CX?=
- =?us-ascii?Q?OzQOFgtNgJUyxlR04r/iyZat3X+RVZ8xUN9KA/phf+3SPHlc331kFOf0J8n+?=
- =?us-ascii?Q?+ODCkBBf2cywdgd69HB1no5GuiuAHZ7+XSbxLMSlO5/3MAQX0fvVcvhsV2Vx?=
- =?us-ascii?Q?v2SYSVh+Iu/hJVuNIylraowDhToyfYZ0IU2nl908M/sgMtKfnFICTG+QmVz7?=
- =?us-ascii?Q?HMbx7AFQucsUcbMjNsFqCV62nJcJ+JG8kwylkKFXnt5I7zfq9fs1XaPPL8dF?=
- =?us-ascii?Q?JpehqVKPe4OITxSULKNGdhIdKlvSOR3TYcbM4H7bdCC3aV2SHUOlv4lm2s9R?=
- =?us-ascii?Q?ehWnrD8tOq1n34kmdXPmGObJyvyvIHs=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e7507cd-f939-46a3-c163-08d9f62bc8f9
-X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Feb 2022 17:50:16.7192 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QBwDCwdIZWB2TEkY33OzkM/MSxxHn7mirlmn0yDcybEkZ3+OoUwoZneylFLpYegoOlBaEeAOWmUVrZ/ct/3BtHcihiEVQzcUFkk0YbOAPdI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR08MB7485
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_095023_661594_F9055E13 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20220222_100334_531241_2A126950 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,90 +91,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the Rockchip RK809 audio codec on the Rockchip RK3568
-EVB1. This requires the VCCIO_ACODEC voltage regulator to be set
-to always on.
+It turns out that postproc on Allwinner H6 needs width and height to be
+multiple of 32.
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Fixes: 86790a4fdf4b ("media: hantro: Add support for Allwinner H6")
+Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 ---
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 31 ++++++++++++++++++-
- 1 file changed, 30 insertions(+), 1 deletion(-)
+ drivers/staging/media/hantro/sunxi_vpu_hw.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index aaf7b4bed24b..1ed92531e626 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -45,6 +45,20 @@ led_work: led-work {
- 		};
- 	};
- 
-+	rk809-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Analog RK809";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_8ch>;
-+		};
-+		simple-audio-card,codec {
-+			sound-dai = <&rk809>;
-+		};
-+	};
-+
- 	vcc3v3_sys: vcc3v3-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
-@@ -165,10 +179,15 @@ rk809: pmic@20 {
- 		reg = <0x20>;
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
-+		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
- 		#clock-cells = <1>;
-+		clock-names = "mclk";
-+		clocks = <&cru I2S1_MCLKOUT_TX>;
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int>;
-+		pinctrl-0 = <&pmic_int>, <&i2s1m0_mclk>;
- 		rockchip,system-power-controller;
-+		#sound-dai-cells = <0>;
- 		vcc1-supply = <&vcc3v3_sys>;
- 		vcc2-supply = <&vcc3v3_sys>;
- 		vcc3-supply = <&vcc3v3_sys>;
-@@ -282,6 +301,7 @@ regulator-state-mem {
- 
- 			vccio_acodec: LDO_REG4 {
- 				regulator-name = "vccio_acodec";
-+				regulator-always-on;
- 				regulator-min-microvolt = <3300000>;
- 				regulator-max-microvolt = <3300000>;
- 
-@@ -366,6 +386,10 @@ regulator-state-mem {
- 				};
- 			};
- 		};
-+
-+		codec {
-+			mic-in-differential;
-+		};
- 	};
+diff --git a/drivers/staging/media/hantro/sunxi_vpu_hw.c b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+index 90633406c4eb..c0edd5856a0c 100644
+--- a/drivers/staging/media/hantro/sunxi_vpu_hw.c
++++ b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+@@ -29,10 +29,10 @@ static const struct hantro_fmt sunxi_vpu_dec_fmts[] = {
+ 		.frmsize = {
+ 			.min_width = 48,
+ 			.max_width = 3840,
+-			.step_width = MB_DIM,
++			.step_width = 32,
+ 			.min_height = 48,
+ 			.max_height = 2160,
+-			.step_height = MB_DIM,
++			.step_height = 32,
+ 		},
+ 	},
  };
- 
-@@ -386,6 +410,11 @@ touchscreen0: goodix@14 {
- 	};
- };
- 
-+&i2s1_8ch {
-+	rockchip,trcm-sync-tx-only;
-+	status = "okay";
-+};
-+
- &mdio0 {
- 	rgmii_phy0: ethernet-phy@0 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
-2.30.2
+2.35.1
 
 
 _______________________________________________
