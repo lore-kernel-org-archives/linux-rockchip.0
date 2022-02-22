@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E10C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 23:11:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC1F9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Feb 2022 23:27:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nMUytCHg72jG8LMgJ1GnEGoZosEsSc6VGhImez8VEH0=; b=rrT/sMcKIVbTgw
-	QZQfVjjXL/E/TEoYrHZ/l3h4YcS6pi8ddKkRI3mEGjV8QT17icYcMSrh5QAqwt1STp3gJ8NQRnIm/
-	pRb/ux74e/cK6MNCunYAFvkjNk2fBoTItr18XeQ+SbxceicrsaKONEd12FiNA+R7ipaYQAyG3oTFH
-	vjX1/pUNkVBoIiVZRhGydDfhldf+rmRDoiPmBtq8Qtrq0wtBsOSfwX22LwRBQdL+n0qyBxl3o17qP
-	yisoefZeU7NfddBYDIhRa+7yAb8PfEetYhVJpITcssjqUnh7nKrye2eyDVBA0o1Tq/AYRJwn0fY91
-	h28rShogRCC0+Wd63zuw==;
+	List-Owner; bh=0+0mvgFW41/R/0t9ndLLh8Z/K1ay8oVLsOqWFebDm+E=; b=Hmrr1NmSs90Bxo
+	oss1anPWoFLI9PrvdqMQIwftdSYwb/X7QuwHGsyj2UsE7zlD9oJqtOkkrDIAJvHr12SVJJv0XlqyI
+	pCx0FUaa3JcvQpnEYJy5fdhImZhlZqCgCQ8HGGuxCg5u6KMaUU3QKO5OZLrvpBKI8iBtr7ThU81cZ
+	m4SomNdYlZ9rCdKgpJ3RiXEmiArk7L4TuT5HFUq7H7eFwo2fecCpG0KmPj62iY9VHJXIoLWHL4Jix
+	9SCbBJ2wNE3ieuBRLuarJ7eQa69ibaNPr0zTY0Vik5oIZgit6nnMTPcNL3otw/uWcAsT4NQKD1l/f
+	FKitZOpk0ou1/HYCynyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMeJg-00Bs3P-3H; Tue, 22 Feb 2022 23:11:32 +0000
+	id 1nMeYu-00BuUS-JW; Tue, 22 Feb 2022 23:27:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMeJQ-00Bs1X-L5; Tue, 22 Feb 2022 23:11:22 +0000
-Received: from [185.156.123.69] (helo=phil.localnet)
+ id 1nMeYs-00BuTw-4G; Tue, 22 Feb 2022 23:27:15 +0000
+Received: from [185.156.123.69] (helo=phil.sntech)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nMeJN-0006se-UC; Wed, 23 Feb 2022 00:11:13 +0100
+ id 1nMeYq-0006wl-4q; Wed, 23 Feb 2022 00:27:12 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, Liang Chen <cl@rock-chips.com>,
- frank-w@public-files.de
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: enable rk809 audio codec on the
- rk3568 evb1
-Date: Wed, 23 Feb 2022 00:11:12 +0100
-Message-ID: <3287619.yDqD7nnjd0@phil>
-In-Reply-To: <20220222175004.1308990-2-michael.riesch@wolfvision.net>
+To: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ frank-w@public-files.de, Rob Herring <robh+dt@kernel.org>
+Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: enable work led on
+ rk3568-evb1
+Date: Wed, 23 Feb 2022 00:27:09 +0100
+Message-Id: <164557235424.1264579.1250826680856309781.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
 References: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
- <20220222175004.1308990-2-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220222_151116_744631_7CDB46D5 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20220222_152714_190975_586E26BE 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,61 +63,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, 22 Feb 2022 18:50:03 +0100, Michael Riesch wrote:
+> Enable the blue work LED on the Rockchip RK3568 EVB1.
 
-Am Dienstag, 22. Februar 2022, 18:50:04 CET schrieb Michael Riesch:
-> Enable the Rockchip RK809 audio codec on the Rockchip RK3568
-> EVB1. This requires the VCCIO_ACODEC voltage regulator to be set
-> to always on.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Applied, thanks!
 
-[...]
+[1/2] arm64: dts: rockchip: enable work led on rk3568-evb1
+      commit: e2bcb9477e48ff7c10d0d3508cd16f0a10e81dd8
 
-> @@ -282,6 +301,7 @@ regulator-state-mem {
->  
->  			vccio_acodec: LDO_REG4 {
->  				regulator-name = "vccio_acodec";
-> +				regulator-always-on;
-
-As this seems to supply the codec (in the rk809?) shouldn't the
-sound part model that relationship and handle regulators
-instead of requiring an arbitary regulator to be always on?
+- Renamed the node to led-0 (according to binding)
+- dropped label (deprecated) and instead moved to
+  color and function properties (to try them out)
 
 
-Heiko
-
->  				regulator-min-microvolt = <3300000>;
->  				regulator-max-microvolt = <3300000>;
->  
-> @@ -366,6 +386,10 @@ regulator-state-mem {
->  				};
->  			};
->  		};
-> +
-> +		codec {
-> +			mic-in-differential;
-> +		};
->  	};
->  };
->  
-> @@ -386,6 +410,11 @@ touchscreen0: goodix@14 {
->  	};
->  };
->  
-> +&i2s1_8ch {
-> +	rockchip,trcm-sync-tx-only;
-> +	status = "okay";
-> +};
-> +
->  &mdio0 {
->  	rgmii_phy0: ethernet-phy@0 {
->  		compatible = "ethernet-phy-ieee802.3-c22";
-> 
-
-
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
