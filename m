@@ -4,89 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA646C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 09:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42CD9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 11:20:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NtkJyF3rLCg4kI+rC/CTFtJwLP52JNBrScqDn/elvu0=; b=wXjPgvM/k5PhsU
-	nToykLv2zklshAbUCFdjSsWlOtc0KkdCVfIU0kOjuPBH0W4eLCM+NA2tfzjQKpp8p0VT3IM86dXgT
-	LVGqpyGsAf5v2FF6V5Ao3pAvX9dGxvf5O0cOofw2ouRKQWv7UUI5du61QnWzvZvRhqjz14Ag6QNDx
-	Qq7tEGMoDZP4nMt5WIxv07FqsD4DlG65UxhblAMs5+BsKuYn9tHXcPHVCcYBQpCHij5biibhkH9ol
-	28nCeH2wLac3GwADLF+Zme+aifNK1XyRc+c2WJ2r3NZ688Gx8QOPF2g0/jGrJk0FTGOJgTDzqq61W
-	zjP7p5Rf/9RSxr+Y7E6Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+9YnwW2jK/7NGouNplXFcDFMSLTGjluOooYCdmTYF5I=; b=dmGFPeDM9PFzeg
+	0IlbM/vT+2uKsulhM59tgZaS9rUYhpYeQOkBYgYbRpcUR3cDoRaezhbmBXep5lC9DLF2wZNwrAVig
+	O6hS6UgNek3aVkq0b3tTd44MPeUp+o5CV9t9Mda+kJQ/4cYCjWEMqu1PbGVWrUJs1ukQnRinnzw2f
+	9dxbvcEKujiExr+K5vuwDsM6dfFDQTGl3ER7mvPvOHARIiFsRDWGzSxWyX9p+PbfrE1hjunKiccQ9
+	MPB2Jz8G4GJ/Bo2GBGUy6gk4N9QIj0tKPSlZ8oe76DExUPke1x3YmNw++suYY/ybreQVf/cXNginQ
+	2d4L0IJEwZH3iEk9SCRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMnko-00DS0m-6f; Wed, 23 Feb 2022 09:16:10 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1nMphK-00Dq7j-RC; Wed, 23 Feb 2022 11:20:42 +0000
+Received: from mail-db5eur01on0600.outbound.protection.outlook.com
+ ([2a01:111:f400:fe02::600]
+ helo=EUR01-DB5-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMnkk-00DRyj-DZ
- for linux-rockchip@lists.infradead.org; Wed, 23 Feb 2022 09:16:07 +0000
-Received: by mail-wm1-x334.google.com with SMTP id
- v2-20020a7bcb42000000b0037b9d960079so1124487wmj.0
- for <linux-rockchip@lists.infradead.org>; Wed, 23 Feb 2022 01:16:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=ZUexAi7XZpt/IXnr6iWEdkKC6eoohAZnCV7GkbV1MDk=;
- b=UPs30jYkSROqMLjG9j1ccaDvuvFBZ5GNgJvTkAHoPWEguU9vkan3wlqp8w4RRC+sNC
- d6HpX1ZOmhxyb28eXxfPplk+OaEdgK7CK1LlCHbScbnKriOWRk9o0nkk8CQL+j3M8rIz
- uHYHshSSLKD9qppDHOPTFPQo1j2TB4mGO6JJt26ND9E5k+LQJNTi3Unm4yssGvV8rK6F
- csNHqtqJuoSDtXq/kTvRq/JNzMut6/oIOrWqxA9Q1fFh92hTdcaLmwyedYdGhRCd/nC8
- Pi6oTFPTmPvKaXDd5PQ2t8SSGOPBjkBgPW7AROQg92nxlhgTUSXDbHq6ozZVhTRGR6WO
- yPjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=ZUexAi7XZpt/IXnr6iWEdkKC6eoohAZnCV7GkbV1MDk=;
- b=XBZeW7lY2esCua2Uj2IvHOO9VxrjhlucEmtRph95uDCcQ4JwL/IkQTG2ZCVt+PpQOG
- CpTBx4+GugpNH2kpUYI+raVN+qBq7BnPkaWDER6NYNxUGWismsWhRlehManuaSpSUL0Z
- LXlMUj2F5re20rKL0vjUMW4FksyO7wWJ+knpIhmwnxIIQR5FHwW7GCkvYNPjbg5V/mzL
- AmLNTACT9Etbm5d46PGYoBjX4jyXEEoC8qUOIScV/HHtSXgmfmIyDR9/4eqElZeUTK1n
- k1LhtAtGznQZ4Qw9tYVdvcsyb9v4Ui2my78qjFK2eLLNyRhqbFh/l6y7dAI381GiZDRa
- C4Nw==
-X-Gm-Message-State: AOAM530cBWPZn7/QOnxkVafA/nwEzd/C4ZXWjmLfCuDzzrQiIXeHFx/v
- H3jMxcHKBtebaLsuazHDSpE+uw==
-X-Google-Smtp-Source: ABdhPJwE97ajBq4XbB7MA2j4GjW5Zdm1JD/pIlevtg+JNehqxG7yZMbVnQQYKJW2cgh7nNAlFO7JGg==
-X-Received: by 2002:a05:600c:cf:b0:380:f85a:1cd8 with SMTP id
- u15-20020a05600c00cf00b00380f85a1cd8mr1239350wmm.1.1645607764646; 
- Wed, 23 Feb 2022 01:16:04 -0800 (PST)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
- [86.27.177.88])
- by smtp.gmail.com with ESMTPSA id m5sm2565403wrb.13.2022.02.23.01.16.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Feb 2022 01:16:04 -0800 (PST)
-Date: Wed, 23 Feb 2022 09:16:01 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Douglas Anderson <dianders@chromium.org>,
- devicetree@vger.kernel.org, chrome-platform@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/4] dt-bindings: pwm: google,cros-ec: include generic
- pwm schema
-Message-ID: <YhX7UZSDaqNyD1rV@google.com>
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-2-krzysztof.kozlowski@canonical.com>
+ id 1nMph3-00Dq2T-Mo; Wed, 23 Feb 2022 11:20:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gsgjwJW70aJ2I6TWHL6Ln9u6MwRA2GK4f7/iVe6akWAfSkhz6FScXPZVT3l8oOi4rMkBwPd+dNTnN3IU8f6KjD8iIdtCsAiHfDYhXFdkQMwm273jRHxnaLKPR1V4ts6pJc1yw1ughzNNFDt91u70XOWrjKwLYfKf47rghGOzLr44zJbTjoiSLcTSDxKUxbFnUyv+wGk+4zthRQE7k3caUcGKqi0r4gOfbheQedDTB8id+dGRKrN72kyvbfJDI6p+g0ZoCVtCkKAnu07M8AsUCgK+3lMbVG/vetGq16c4FY1aXYLUiIPMNPRi+l+MYIg8t7teUl5ScPDCYooGGsoRGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4KjwKtmoK86wHhk1IlyOesOntQTAdFYrECkwZ+Z6ULo=;
+ b=ikR9F5//VGGiN+08gmV2amgnF8wj5PFVc/2STMtsFdqZmperKJAfLPOOM1Fgy4UoD7/5pT6JRKNPi//8fzH5igrXNPHKsASPPHr2yGZIdHwXghAVSr/ikVb3pJqX8e8b+wP0IoBoi/UtLplGA7wdVO63CHHkmlxa4Y7bcuRsbuh+/G4CshxmRNQp6tW3NioyuROBju18s1Fk8fiTNFErQlg8swEEtTJYpR4wTcr20L/Pcn7d6M+qXEjVQcFzl6zHnxu4QL4jSdnKRH9zeHnz1JKdalE9LA/1AsYjtn6rxjXccpwbsOiZuuP7p6cQwiad3qxWQM22mZJl1JymOCqBgA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4KjwKtmoK86wHhk1IlyOesOntQTAdFYrECkwZ+Z6ULo=;
+ b=dkxVAFFZJPldTabRNXJMG/M4EeInRPmA50J+apob+5LA6gNEtyVvKmLdqF3+v2FdEw/SXSkcz/kqYfHA/36FjMf+9SAj3B6rJCIsLk0ve2b+4m/774v4qjBACIiohqvzw5YFGuJfDanAkQDQd48agYyyMUL/2PpjKYy7BLF9eA0=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by HE1PR0801MB1819.eurprd08.prod.outlook.com (2603:10a6:3:89::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.19; Wed, 23 Feb
+ 2022 11:20:19 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.4995.027; Wed, 23 Feb 2022
+ 11:20:19 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Liang Chen <cl@rock-chips.com>
+Subject: [PATCH] arm64: dts: rockchip: set vdd_gpu regulator on
+ rk3568-evb1-v10 to always on
+Date: Wed, 23 Feb 2022 12:20:08 +0100
+Message-Id: <20220223112008.1316132-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.30.2
+X-ClientProxiedBy: ZR0P278CA0092.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:23::7) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220214081916.162014-2-krzysztof.kozlowski@canonical.com>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f909c656-9b32-4fa0-f627-08d9f6be7984
+X-MS-TrafficTypeDiagnostic: HE1PR0801MB1819:EE_
+X-Microsoft-Antispam-PRVS: <HE1PR0801MB1819539C2429A264CEFADE3AF23C9@HE1PR0801MB1819.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZEF1OBtddT549FpLu/dLQhjXlA4bqIf6B2xdpkorKbRzhjr0eF6L8+IlzltXsbdOSMuHWi0fOuHAHqzveipEl38k6LK6NKSE+dsqoHYjC+I8cj9I24L71+ZvmyM6xthmF41fhSqGaswbtqdBIJllS3b4nK4i74SoX2qD1UMSG1nX9J6Wff0mYynVA6PL2m8J8F7dnoZG0xe/VT+eP498tV2f2I/4xcoB5VCSSZqY1kR1O3WGh06c4xMOvOUNfMnKiapNKbLEjdrjBhIHVO2AbQrTvGgUO7DMxXhJCqNwk4O5Ar8wa9KWOSBBxIQUqnrsr1nuI84xEjktU3c9va1ZdwcyWTPihb22ZNXjd448Y/fTBOzt0CmA76y8VrZJX+H8GnwlPCx5FWYVwWVABmsEMcqQCMFMnmnuWTznK+cCr7ArzTiLxHpHuqIORXLeTogyLui4wcIpieMsCJiwHLWMDIndL9z2RW5B9fEkdpRbPMhhg1Z3h79yvGDBgkKM2mRjh21QHr9nAUO6QEkZr1DZTRe2e1hQf4iiX5yLTbw7PqnsQrP2Dzsmpv33ij+K2K/ZZ5u8IklSBgEuu7lxmHYBUd7q0+6DZD18TjZV10IMSINALa/QJohIkYVomCSTw2fm2lM33eRiZRnhkOQFND4RY6qN5omKLVabz2hHqwbQ/DuWzUNXw1vuFnMEUjhvJ3FzBqzz6l9JdtpoJMFHqZyOFb2a3TcqEThQD9mIdhkHRWY=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(136003)(366004)(396003)(376002)(39850400004)(346002)(36756003)(6666004)(2616005)(6486002)(52116002)(966005)(508600001)(6512007)(2906002)(6506007)(38100700002)(8676002)(66946007)(54906003)(186003)(4326008)(66476007)(66556008)(1076003)(5660300002)(316002)(44832011)(86362001)(8936002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wEmNL8ThBYubYBnXRqAtmWHpilTGq3oMplwnqKPt0IivErteV8N+rqhx++H/?=
+ =?us-ascii?Q?o+zK1/WNQolB0bsDY/OF767UvX6KIFkcuDmKLzH1KcBIIrGTOObeex4cT5Bo?=
+ =?us-ascii?Q?sisY1fc8qV2K6l5qShc34d7HqsXE/B9lNvkYtVdujkWlpt65qbp+XrTc7vUy?=
+ =?us-ascii?Q?KKeFzkWTJe0eGQY5s/HEhlJvVeuTCu8NAgpxvMs8fQOBOwp4YxKNchrBUBpP?=
+ =?us-ascii?Q?qD5BebP8eBV4e8kT0SRf+A7I93reExK4isUbP3ZoDRkpDN9H9Pa0xKPIl+F2?=
+ =?us-ascii?Q?j17w442FI8PIA6CFSr2u/5zHyvNKVxeHstxeaQ9BUY9fPARF848Zei7ecq0j?=
+ =?us-ascii?Q?keB4I/aP0L5UV9blIdq+JTwMZZD4r5O+G/p08ICrznLRgbQJ9Caxp8kYgZGJ?=
+ =?us-ascii?Q?OLVl/pAdo7HnAQaRi/2g+4ZOm7qIODjEqbwlH1k2wdKyLLz8tIN4tG/E25qF?=
+ =?us-ascii?Q?vC3ZK9V4AsKQbTTvBUy5V69sE1y5Cw1YwtUdCE+xns3gLogsAPPQC5G6+f1+?=
+ =?us-ascii?Q?y2Uaanx9E3V/BrziZ88ZyPrIR+a18drjlPi6xTwIaH9ksrML63aIbv880R08?=
+ =?us-ascii?Q?gIP73W6kxlUbsyuuAnIaAcsvn9IbWE6VVXh64CmbZcvgNcXdJzlB0uaIsfwg?=
+ =?us-ascii?Q?M8I+CTI4W8r2Ny3vQebwKrYiZJGPqpZ2HaGnGWShPyZacf5M/2uB/d7ixKAT?=
+ =?us-ascii?Q?ZNWGjE4XjZoH3Brk1XyJUWco/n5NGa2b+dpS9v97vT8B+5YUlDdBmeMnjMiL?=
+ =?us-ascii?Q?KparxTQB4dB/wNu32QlSsmXnNx9mcw0da9SfO/wg0111gfhSkSQmIaSR9N2l?=
+ =?us-ascii?Q?FI7ai9uRZyQeV5yrl9+wlKLPBg6xDD78AsXdRfcdPlpF2daEygx97JWxzJk6?=
+ =?us-ascii?Q?Tq271Dv/ZaTvCoUmzm9fIGdPUgRTcQh5YF5QBEJ0LrSDLJdQi4gY2hIGXmSm?=
+ =?us-ascii?Q?sxISbK1pj1OnEZbXu1OWZmBoc67U6giT924G9LcZHBiumAaRrjvJovjUgRAP?=
+ =?us-ascii?Q?q2prmewQ5w0X1tlS3dtkY3bic30YCycvSE5Qrr3pzZR9o4z4l9GMUo4VJPdP?=
+ =?us-ascii?Q?psHONHULm6b/i2UGi/jaKQo8d8SHIc1SSevqqQyzewTq3NZJ6C/Jlfntd1ko?=
+ =?us-ascii?Q?i1ZycuNlWb0p3243lutjlVwb/WnLu2qj/mmXnWPb1gf7By39mcXfhYZt1GGQ?=
+ =?us-ascii?Q?WjEIy8DcQNFtUbPL/Uxp5h109E1RWT7N2RoH6edq4kq2FW7GZO/Qu5vhUUmR?=
+ =?us-ascii?Q?56gLMLwX00Lxi7XvIEKZX5R+UDZNsBv0hHcZfnEkMBRqHKrtwrrm8TUpJ8Zs?=
+ =?us-ascii?Q?0NxqLTbhOy95aYahylXqSDiAzpPepZzJEu/CG6T6EhmFh9bfKIyXKOP0K36Y?=
+ =?us-ascii?Q?AFVMLQnpDLwAZ9aLcvon36RPqhNnKx+z2649WHYhcg7Owujbm51iEi1vkGBN?=
+ =?us-ascii?Q?qImGK1eJD5qg1YRen6l/Mmo3hD/UTQt3OF5S7Kh9tUwFKWuPcny8I7eok3J4?=
+ =?us-ascii?Q?2aK2OUH0aibh+D1ybJeYihy5YitelUBds+8mG+rc2e1zVDpuocIF1wP73RcP?=
+ =?us-ascii?Q?6C7SxorJ46l9EsKtYSpgGOKiIjMToXOdNalRhTeLp3cN6t9jCmBrspLS09eX?=
+ =?us-ascii?Q?coINS1+vq1xHAX1gbau/uA92xrmEJf7E/7TZOTQBJNmjRDgqORBPApEKfLmf?=
+ =?us-ascii?Q?lZu+PWV2dv0Mus/Z3wIPJHLwuGAyXbbMH7DdjLyzldrY1+MbHVTEHG/dQUef?=
+ =?us-ascii?Q?aFxJHk9kve8Dpgdvy30RevIkz9q3kP0=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: f909c656-9b32-4fa0-f627-08d9f6be7984
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Feb 2022 11:20:19.4799 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Y7AFwzl3aT7KKuP2yzOYkpgBjUb/xkYWgnDZF0M+dE8o4k/ob3qr0uwIpgXN44nDi+H0ypIoYbS76pqGfgmcoo6CRcIuN2lLxhQIxqklbJA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0801MB1819
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_011606_498976_724F6227 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20220223_032025_845877_18397597 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,23 +135,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAxNCBGZWIgMjAyMiwgS3J6eXN6dG9mIEtvemxvd3NraSB3cm90ZToKCj4gSW5jbHVk
-ZSBnZW5lcmljIHB3bS55YW1sIHNjaGVtYSwgd2hpY2ggZW5mb3JjZXMgUFdNIG5vZGUgbmFtaW5n
-LiAgS2VlcAo+IHRoZSBvbGQgbmFtZSBpbiBiaW5kaW5ncyBhcyBkZXByZWNhdGVkLgo+IAo+IFNp
-Z25lZC1vZmYtYnk6IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lAY2Fu
-b25pY2FsLmNvbT4KPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21m
-ZC9nb29nbGUsY3Jvcy1lYy55YW1sICAgIHwgNCArKysrCgpBY2tlZC1ieTogTGVlIEpvbmVzIDxs
-ZWUuam9uZXNAbGluYXJvLm9yZz4KCj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3B3bS9nb29n
-bGUsY3Jvcy1lYy1wd20ueWFtbCAgICAgICAgICB8IDUgKysrKy0KPiAgMiBmaWxlcyBjaGFuZ2Vk
-LCA4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCi0tIApMZWUgSm9uZXMgW+adjueQvOaW
-r10KUHJpbmNpcGFsIFRlY2huaWNhbCBMZWFkIC0gRGV2ZWxvcGVyIFNlcnZpY2VzCkxpbmFyby5v
-cmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBcm0gU29DcwpGb2xsb3cgTGluYXJvOiBG
-YWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+As discussed in [0], the Rockchip power domain driver does not consider
+the external supplies (such as VDD_GPU on the RK3568 EVB1). In the scope of
+this discussion it has been pointed out that turning this voltage on/off
+on the fly is not explicitly supported. This patch follows the other RK356x
+boards by example and sets the vdd_gpu regulator to always on.
+
+[0] https://lore.kernel.org/linux-rockchip/20211217130919.3035788-1-s.hauer@pengutronix.de/
+
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+index f3d0bc259166..bb7177ff92ac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+@@ -219,6 +219,7 @@ regulator-state-mem {
+ 
+ 			vdd_gpu: DCDC_REG2 {
+ 				regulator-name = "vdd_gpu";
++				regulator-always-on;
+ 				regulator-init-microvolt = <900000>;
+ 				regulator-initial-mode = <0x2>;
+ 				regulator-min-microvolt = <500000>;
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
